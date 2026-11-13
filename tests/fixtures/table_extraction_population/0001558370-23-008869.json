@@ -1,0 +1,7487 @@
+{
+ "accession": "0001558370-23-008869",
+ "cik": "0001821159",
+ "form": "10-Q",
+ "filing_date": "2023-05-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "evgo-20230331x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-2326098"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2023\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-39572\nEVgo Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "11835 West Olympic Boulevard, Suite 900E, Los Angeles, CA 90064"
+    ],
+    [
+     "(Address of Principal Executive Offices)"
+    ],
+    [
+     ""
+    ],
+    [
+     "(877) 494-3833"
+    ],
+    [
+     "(Registrant\u2019s telephone number)"
+    ]
+   ],
+   "caption_stack": [
+    "11835 West Olympic Boulevard, Suite 900E, Los Angeles, CA 90064",
+    "(Address of Principal Executive Offices)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Class A common stock, $0.0001 par value per share",
+     "EVGO",
+     "The Nasdaq Global Select Market"
+    ],
+    [
+     "Redeemable warrants included as part of the units, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50",
+     "EVGOW",
+     "The Nasdaq Global Select Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 60
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]  Emerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "As of May 1, 2023, the Registrant had 72,637,313 shares of Class A common stock and 195,800,000 shares of Class B common stock outstanding.\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cautionary Statement Regarding Forward-Looking Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Frequently Used Terms",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I. Financial Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of March 31, 2023 (unaudited) and December 31, 2022",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations for the Three Months Ended March 31, 2023 and 2022 (unaudited)",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Stockholders\u2019 Deficit for the Three Months Ended\n\nMarch 31, 2023 and 2022 (unaudited)",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2023 and 2022 (unaudited)",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (unaudited)",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II. Other Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "52"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of May 1, 2023, the Registrant had 72,637,313 shares of Class A common stock and 195,800,000 shares of Class B common stock outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis Quarterly Report on Form 10-Q (this \u201cQuarterly Report\u201d), including Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations in Part I, Item 2, contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). All statements contained in this document other than statements of historical fact, including, without limitation, statements regarding future financial performance, business strategies, market size and opportunity, expansion plans, future results of operations, factors affecting EVgo\u2019s performance, estimated revenues, losses, projected costs, prospects, plans and objectives of management, are forward-looking statements. Such statements can be identified by the fact that they do not relate strictly to historical or current facts. When used in this Quarterly Report, words such as \u201cmay,\u201d \u201cwill,\u201d \u201cmight,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201ccan,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201cobjective,\u201d \u201cseek,\u201d \u201cgrow,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201coutlook,\u201d \u201cforecast,\u201d \u201ctarget,\u201d \u201cif,\u201d \u201cpredict,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201ccontinue,\u201d \u201cproject\u201d and the negative of such terms or other similar expressions may identify forward-looking statements, but the absence of these words does not mean that a statement is not forward-looking. These forward-looking statements are based on EVgo\u2019s current expectations, estimates, projections and beliefs, as well as a number of assumptions concerning future events, and are not guarantees of performance. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including the risk factors described in EVgo\u2019s filings with the Securities and Exchange Commission (the \u201cSEC\u201d). Moreover, EVgo operates in a very competitive and rapidly changing environment. New risks emerge from time to time. It is not possible for EVgo to predict all risks, nor can it assess the impact of all factors on its business or the extent to which any factor, or combination of factors, may cause actual results to differ materially from those contained in any forward-looking statements EVgo may make. In light of these risks, uncertainties and assumptions, the future events and trends discussed in this document may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements. Accordingly, you should not rely upon forward-looking statements as predictions of future events. Forward-looking statements in this Quarterly Report may include, without limitation, statements about:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash",
+     "",
+     "$",
+     "163,512",
+     "",
+     "$",
+     "246,193"
+    ],
+    [
+     "Accounts receivable, net of allowance of $782 and $687 as of March 31, 2023 and December 31, 2022, respectively",
+     "",
+     "",
+     "29,263",
+     "",
+     "",
+     "11,075"
+    ],
+    [
+     "Accounts receivable, capital-build",
+     "",
+     "",
+     "9,418",
+     "",
+     "",
+     "8,011"
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "",
+     "4,077",
+     "",
+     "",
+     "4,953"
+    ],
+    [
+     "Other current assets",
+     "",
+     "",
+     "10,501",
+     "",
+     "",
+     "5,252"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "216,771",
+     "",
+     "",
+     "275,484"
+    ],
+    [
+     "Property, equipment and software, net",
+     "",
+     "",
+     "367,195",
+     "",
+     "",
+     "308,112"
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "",
+     "54,670",
+     "",
+     "",
+     "51,856"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "300",
+     "",
+     "",
+     "300"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "2,137",
+     "",
+     "",
+     "2,308"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "",
+     "57,708",
+     "",
+     "",
+     "60,612"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "31,052",
+     "",
+     "",
+     "31,052"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "729,833",
+     "",
+     "$",
+     "729,724"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities, redeemable noncontrolling interest and stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "18,640",
+     "",
+     "$",
+     "9,128"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "40,126",
+     "",
+     "",
+     "39,233"
+    ],
+    [
+     "Operating lease liabilities, current",
+     "",
+     "",
+     "5,590",
+     "",
+     "",
+     "4,958"
+    ],
+    [
+     "Deferred revenue, current",
+     "",
+     "",
+     "24,529",
+     "",
+     "",
+     "16,023"
+    ],
+    [
+     "Customer deposits",
+     "",
+     "",
+     "12,833",
+     "",
+     "",
+     "17,867"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "",
+     "415",
+     "",
+     "",
+     "136"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "102,133",
+     "",
+     "",
+     "87,345"
+    ],
+    [
+     "Operating lease liabilities, noncurrent",
+     "",
+     "",
+     "48,234",
+     "",
+     "",
+     "45,689"
+    ],
+    [
+     "Earnout liability, at fair value",
+     "",
+     "",
+     "3,793",
+     "",
+     "",
+     "1,730"
+    ],
+    [
+     "Asset retirement obligations",
+     "",
+     "",
+     "17,371",
+     "",
+     "",
+     "15,473"
+    ],
+    [
+     "Capital-build liability",
+     "",
+     "",
+     "28,152",
+     "",
+     "",
+     "26,157"
+    ],
+    [
+     "Deferred revenue, noncurrent",
+     "",
+     "",
+     "37,175",
+     "",
+     "",
+     "23,900"
+    ],
+    [
+     "Warrant liabilities, at fair value",
+     "",
+     "",
+     "18,684",
+     "",
+     "",
+     "12,304"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "$",
+     "255,542",
+     "",
+     "$",
+     "212,598"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands, except share data)",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Redeemable noncontrolling interest",
+     "",
+     "$",
+     "1,525,282",
+     "",
+     "$",
+     "875,226"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 10,000,000 shares authorized as of March 31, 2023 and December 31, 2022; none issued and outstanding",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 1,200,000,000 shares authorized as of March 31, 2023 and December 31, 2022; 71,403,860 and 70,247,726 shares outstanding (excluding 718,750 shares subject to possible forfeiture) as of March 31, 2023 and December 31, 2022, respectively",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "7"
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 400,000,000 shares authorized as of March 31, 2023 and December 31, 2022; 195,800,000 shares issued and outstanding as of March 31, 2023 and December 31, 2022",
+     "",
+     "",
+     "20",
+     "",
+     "",
+     "20"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,533"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(1,051,018)",
+     "",
+     "",
+     "(375,660)"
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "",
+     "(1,050,991)",
+     "",
+     "",
+     "(358,100)"
+    ],
+    [
+     "Total liabilities, redeemable noncontrolling interest and stockholders\u2019 deficit",
+     "",
+     "$",
+     "729,833",
+     "",
+     "$",
+     "729,724"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 294,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": null
+   },
+   "prose_before": "Asset retirement obligations                                                                                            17,371        15,473\nCapital-build liability                                                                                                 28,152        26,157\nDeferred revenue, noncurrent                                                                                            37,175        23,900\nWarrant liabilities, at fair value                                                                                      18,684        12,304\n-------------  ------------\nTotal liabilities                                                                                                    $ 255,542     $ 212,598\nCommitments and contingencies (Note 8)\n</TABLE>\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Balance Sheets (continued)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations\n<TABLE>\nThree Months Ended\nMarch 31,\n--------------------------\n(in thousands, except per share data)                                     2023         2022\n--------------------------------------------------------------------  -----------  -----------\nRevenue                                                                  $ 25,300      $ 7,700\n-----------  -----------",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 290,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "",
+     "18,917",
+     "",
+     "",
+     "4,846"
+    ],
+    [
+     "Depreciation, net of capital-build amortization",
+     "",
+     "",
+     "6,342",
+     "",
+     "",
+     "3,454"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "25,259",
+     "",
+     "",
+     "8,300"
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "",
+     "41",
+     "",
+     "",
+     "(600)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "37,889",
+     "",
+     "",
+     "25,428"
+    ],
+    [
+     "Depreciation, amortization and accretion",
+     "",
+     "",
+     "4,784",
+     "",
+     "",
+     "3,887"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "42,673",
+     "",
+     "",
+     "29,315"
+    ],
+    [
+     "Operating loss",
+     "",
+     "",
+     "(42,632)",
+     "",
+     "",
+     "(29,915)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "1,998",
+     "",
+     "",
+     "55"
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "(263)"
+    ],
+    [
+     "Change in fair value of earnout liability",
+     "",
+     "",
+     "(2,063)",
+     "",
+     "",
+     "(2,264)"
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "",
+     "(6,380)",
+     "",
+     "",
+     "(22,874)"
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "",
+     "(6,444)",
+     "",
+     "",
+     "(25,346)"
+    ],
+    [
+     "Loss before income tax expense",
+     "",
+     "",
+     "(49,076)",
+     "",
+     "",
+     "(55,261)"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "(5)"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(49,081)",
+     "",
+     "",
+     "(55,266)"
+    ],
+    [
+     "Less: net loss attributable to redeemable noncontrolling interest",
+     "",
+     "",
+     "(36,005)",
+     "",
+     "",
+     "(40,867)"
+    ],
+    [
+     "Net loss attributable to Class A common stockholders",
+     "",
+     "$",
+     "(13,076)",
+     "",
+     "$",
+     "(14,399)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share to Class A common stockholders, basic and diluted",
+     "",
+     "$",
+     "(0.18)",
+     "",
+     "$",
+     "(0.21)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "70,248",
+     "",
+     "$",
+     "7",
+     "",
+     "",
+     "195,800",
+     "",
+     "$",
+     "20",
+     "",
+     "$",
+     "17,533",
+     "",
+     "$",
+     "(375,660)",
+     "",
+     "$",
+     "(358,100)"
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,797",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,797"
+    ],
+    [
+     "Issuance of stock under share-based compensation plans",
+     "",
+     "1,156",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss (1)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(13,076)",
+     "",
+     "",
+     "(13,076)"
+    ],
+    [
+     "Redeemable noncontrolling interest adjustment to fair value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(23,330)",
+     "",
+     "",
+     "(662,282)",
+     "",
+     "",
+     "(685,612)"
+    ],
+    [
+     "Balance, March 31, 2023",
+     "",
+     "71,404",
+     "",
+     "$",
+     "7",
+     "",
+     "",
+     "195,800",
+     "",
+     "$",
+     "20",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(1,051,018)",
+     "",
+     "$",
+     "(1,050,991)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "68,021",
+     "",
+     "$",
+     "7",
+     "",
+     "",
+     "195,800",
+     "",
+     "$",
+     "20",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(1,358,358)",
+     "",
+     "$",
+     "(1,358,331)"
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,999",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,999"
+    ],
+    [
+     "Warrants exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2"
+    ],
+    [
+     "Release of warrant liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0"
+    ],
+    [
+     "Issuance of stock under share-based compensation plans",
+     "",
+     "248",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss (2)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(14,399)",
+     "",
+     "",
+     "(14,399)"
+    ],
+    [
+     "Redeemable noncontrolling interest adjustment to fair value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,001)",
+     "",
+     "",
+     "(609,095)",
+     "",
+     "",
+     "(612,096)"
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "68,269",
+     "",
+     "$",
+     "7",
+     "",
+     "",
+     "195,800",
+     "",
+     "$",
+     "20",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(1,981,852)",
+     "",
+     "$",
+     "(1,981,825)"
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(49,081)",
+     "",
+     "$",
+     "(55,266)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, amortization and accretion",
+     "",
+     "",
+     "11,126",
+     "",
+     "",
+     "7,341"
+    ],
+    [
+     "Net loss on disposal of property and equipment and impairment expense",
+     "",
+     "",
+     "3,460",
+     "",
+     "",
+     "1,010"
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "",
+     "6,427",
+     "",
+     "",
+     "3,506"
+    ],
+    [
+     "Change in fair value of earnout liability",
+     "",
+     "",
+     "2,063",
+     "",
+     "",
+     "2,264"
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "",
+     "6,380",
+     "",
+     "",
+     "22,874"
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "288"
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "",
+     "(18,188)",
+     "",
+     "",
+     "(257)"
+    ],
+    [
+     "Receivables from related parties",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,499"
+    ],
+    [
+     "Prepaid expenses and other current and noncurrent assets",
+     "",
+     "",
+     "(4,415)",
+     "",
+     "",
+     "3,538"
+    ],
+    [
+     "Operating lease assets and liabilities, net",
+     "",
+     "",
+     "365",
+     "",
+     "",
+     "(2,135)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "6,493",
+     "",
+     "",
+     "154"
+    ],
+    [
+     "Payables to related parties",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "(799)",
+     "",
+     "",
+     "(2,596)"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "",
+     "21,781",
+     "",
+     "",
+     "(561)"
+    ],
+    [
+     "Customer deposits",
+     "",
+     "",
+     "(5,034)",
+     "",
+     "",
+     "(862)"
+    ],
+    [
+     "Other current and noncurrent liabilities",
+     "",
+     "",
+     "79",
+     "",
+     "",
+     "(653)"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(19,343)",
+     "",
+     "",
+     "(19,831)"
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property, equipment and software",
+     "",
+     "",
+     "(65,246)",
+     "",
+     "",
+     "(28,274)"
+    ],
+    [
+     "Proceeds from insurance for property losses",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "202"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(65,246)",
+     "",
+     "",
+     "(28,072)"
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from capital-build funding",
+     "",
+     "",
+     "2,216",
+     "",
+     "",
+     "4,099"
+    ],
+    [
+     "Proceeds from exercise of warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2"
+    ],
+    [
+     "Payments of issuance costs and deferred transaction costs",
+     "",
+     "",
+     "(308)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "1,908",
+     "",
+     "",
+     "4,101"
+    ],
+    [
+     "Net decrease in cash, cash equivalents and restricted cash",
+     "",
+     "",
+     "(82,681)",
+     "",
+     "",
+     "(43,802)"
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of period",
+     "",
+     "",
+     "246,493",
+     "",
+     "",
+     "485,181"
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of period",
+     "",
+     "$",
+     "163,812",
+     "",
+     "$",
+     "441,379"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of noncash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value adjustment to redeemable noncontrolling interest",
+     "",
+     "$",
+     "685,612",
+     "",
+     "$",
+     "612,096"
+    ],
+    [
+     "Purchases of property and equipment in accounts payable and accrued liabilities",
+     "",
+     "$",
+     "26,840",
+     "",
+     "$",
+     "24,454"
+    ],
+    [
+     "Non-cash increase in accounts receivable, capital-build, and capital-build liability",
+     "",
+     "$",
+     "3,624",
+     "",
+     "$",
+     "2,380"
+    ],
+    [
+     "Non-cash increase in asset retirement obligations",
+     "",
+     "$",
+     "1,377",
+     "",
+     "$",
+     "1,001"
+    ],
+    [
+     "Accrued transaction costs",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "182"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Charging revenue, retail",
+     "",
+     "$",
+     "6,615",
+     "",
+     "$",
+     "3,502"
+    ],
+    [
+     "Charging revenue, commercial",
+     "",
+     "",
+     "1,715",
+     "",
+     "",
+     "709"
+    ],
+    [
+     "Charging revenue, OEM",
+     "",
+     "",
+     "552",
+     "",
+     "",
+     "151"
+    ],
+    [
+     "Regulatory credit sales",
+     "",
+     "",
+     "1,215",
+     "",
+     "",
+     "1,378"
+    ],
+    [
+     "Network revenue, OEM",
+     "",
+     "",
+     "2,699",
+     "",
+     "",
+     "490"
+    ],
+    [
+     "eXtend revenue",
+     "",
+     "",
+     "10,292",
+     "",
+     "",
+     "80"
+    ],
+    [
+     "Ancillary revenue",
+     "",
+     "",
+     "2,212",
+     "",
+     "",
+     "1,390"
+    ],
+    [
+     "Total revenue",
+     "",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "In March 2020, the FASB issued ASU 2020-04, Reference Rate Reform (Topic 848): Facilitation of the Effects of Reference Rate Reform on Financial Reporting (\u201cASU 2020-04\u201d), as amended in December 2022 by ASU 2022-06, Reference Rate Reform (Topic 848): Deferral of the Sunset Date of Topic 848 (\u201cASU 2022-06\u201d). ASU 2020-04 provides guidance to alleviate the burden in accounting for reference rate reform by allowing certain expedients and exceptions in applying GAAP to contracts, hedging relationships and other transactions impacted by reference rate reform. The provisions apply only to those transactions that reference LIBOR or another reference rate expected to be discontinued due to reference rate reform. Adoption of the provisions of ASU 2020-04 are optional and are effective from March 12, 2020 through December 31, 2024, as amended by ASU 2022-06. As of March 31, 2023, the Company has not adopted any expedients and exceptions under ASU 2020-04. The Company will continue to evaluate the impact of ASU 2020-04 on its condensed consolidated financial statements.\nNote 3 \u2013 Revenue Recognition\nThe table below presents a disaggregation of EVgo\u2019s revenue for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "The following table provides information about contract assets and liabilities from contracts with customers as of March 31, 2023 and December 31, 2022:\n<TABLE>\nMarch 31,  December 31,          Change\n----------------------\n(dollars in thousands)      2023         2022          $           %\n----------------------  -----------  ------------------------------------\nContract assets                 $ \u2014       $ 2,861   $ (2,861)     (100) %\nContract liabilities       $ 74,537      $ 57,790    $ 16,747        29 %\n</TABLE>\nThere were no contract assets as of March 31, 2023 compared to $2.9 million as of December 31, 2022 which was driven by the difference between the timing of when revenue is recognized from performance obligations satisfied in the current reporting period and when amounts are invoiced to the customer. Contract liabilities as of March 31, 2023 increased $16.7 million, or 29%, to $74.5 million compared to $57.8 million as of December 31, 2022 due to receipt of cash payments partially offset by the satisfaction of performance obligations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 544,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,861",
+     "",
+     "$",
+     "(2,861)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "$",
+     "74,537",
+     "",
+     "$",
+     "57,790",
+     "",
+     "$",
+     "16,747",
+     "",
+     "",
+     "29",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2022",
+     "",
+     "$",
+     "57,790"
+    ],
+    [
+     "Additions",
+     "",
+     "",
+     "27,471"
+    ],
+    [
+     "Recognized in revenue",
+     "",
+     "",
+     "(10,654)"
+    ],
+    [
+     "Marketing activities recognized on a net basis",
+     "",
+     "",
+     "(70)"
+    ],
+    [
+     "Balance as of March 31, 2023",
+     "",
+     "$",
+     "74,537"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 590,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "----------------------\n(dollars in thousands)      2023         2022          $           %\n----------------------  -----------  ------------------------------------\nContract assets                 $ \u2014       $ 2,861   $ (2,861)     (100) %\nContract liabilities       $ 74,537      $ 57,790    $ 16,747        29 %\n</TABLE>\nThere were no contract assets as of March 31, 2023 compared to $2.9 million as of December 31, 2022 which was driven by the difference between the timing of when revenue is recognized from performance obligations satisfied in the current reporting period and when amounts are invoiced to the customer. Contract liabilities as of March 31, 2023 increased $16.7 million, or 29%, to $74.5 million compared to $57.8 million as of December 31, 2022 due to receipt of cash payments partially offset by the satisfaction of performance obligations.\nThe following table provides the activity for the contract liabilities recognized during the three months ended March 31, 2023:",
+   "prose_after": "Revenues for the three months ended March 31, 2023 and 2022 include the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Amounts included in the beginning of period contract liability balance",
+     "",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "1,202"
+    ],
+    [
+     "Amounts associated with performance obligations satisfied in previous periods",
+     "",
+     "$",
+     "25",
+     "",
+     "$",
+     "5"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "Revenues for the three months ended March 31, 2023 and 2022 include the following:",
+   "prose_after": "It is anticipated that deferred revenue as of March 31, 2023 will be recognized for the following periods ending December 31, as follows:\n<TABLE>\n(in thousands)\n2023    $ 18,978\n2024      10,636\n2025      14,371\n2026       7,164\n----------\n$ 51,149\n==========",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "$",
+     "18,978"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "10,636"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "14,371"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "7,164"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "51,149"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating lease costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "$",
+     "1,319",
+     "",
+     "$",
+     "361"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "1,219",
+     "",
+     "",
+     "673"
+    ],
+    [
+     "Variable lease costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "39",
+     "",
+     "",
+     "90"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "36",
+     "",
+     "",
+     "21"
+    ],
+    [
+     "Short-term lease costs",
+     "",
+     "",
+     "33",
+     "",
+     "",
+     "12"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "2,646",
+     "",
+     "$",
+     "1,157"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 640,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Lease Accounting"
+    }
+   },
+   "prose_before": "The Company has entered into agreements with Site Hosts, which allow the Company to operate charging stations on the Site Hosts\u2019 property. Additionally, the Company leases offices, off-site charging hubs, a warehouse and laboratory space under agreements with third-party landlords. The agreements with the Site Hosts and landlords are deemed to be operating leases. Original lease terms generally range from one to 15 years and generally leases contain renewal options that can extend the term for up to an additional five years. The Company has not entered into any finance leases.\nThe Company has estimated operating lease commitments of $49.2 million for leases where the Company has not yet taken possession of the underlying asset as of March 31, 2023. As such, the related operating lease right-of-use assets and operating lease liabilities have not been recognized in the Company\u2019s condensed consolidated balance sheet as of March 31, 2023.\nFor the three months ended March 31, 2023 and 2022, the Company\u2019s lease costs consisted of the following:",
+   "prose_after": "As of March 31, 2023, the maturities of operating lease liabilities for the periods ending December 31, were as follows:\n<TABLE>\n(in thousands)\n2023      $ 7,386\n2024        9,685\n2025        8,798\n2026        8,305\n2027        7,667\nThereafter       38,613\n-----------",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 637,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "$",
+     "7,386"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "9,685"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "8,798"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "8,305"
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "7,667"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "38,613"
+    ],
+    [
+     "Total undiscounted operating lease payments",
+     "",
+     "",
+     "80,454"
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "",
+     "(26,630)"
+    ],
+    [
+     "Total discounted operating lease liabilities",
+     "",
+     "$",
+     "53,824"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 16,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term (in years)",
+     "",
+     "",
+     "8.9",
+     "",
+     "",
+     "",
+     "7.6",
+     ""
+    ],
+    [
+     "Weighted-average discount rate",
+     "",
+     "",
+     "9.16",
+     "%",
+     "",
+     "",
+     "5.71",
+     "%"
+    ],
+    [
+     "Cash paid for amounts included in measurement of operating lease liabilities",
+     "",
+     "$",
+     "1,849",
+     "",
+     "",
+     "$",
+     "910",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "",
+     "$",
+     "3,409",
+     "",
+     "",
+     "$",
+     "5,008",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 679,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Lease Accounting"
+    }
+   },
+   "prose_before": "2027        7,667\nThereafter       38,613\n-----------\nTotal undiscounted operating lease payments       80,454\nLess: imputed interest     (26,630)\n-----------\nTotal discounted operating lease liabilities     $ 53,824\n===========\n</TABLE>\nOther supplemental and cash flow information, for the three months ended March 31, 2023 and 2022, consisted of the following:",
+   "prose_after": "Lessor Accounting\nThe Company leases charging equipment, charging stations and other technical installations and subleases properties leased from Site Hosts to third parties under operating leases where EVgo is the lessor. Initial lease terms are generally one to five years with renewal options. Since the leasing arrangements the Company enters into with lessees are operating leases, the underlying asset is carried at its carrying value as owned and operated systems within property, equipment and software, net, or included in operating lease right-of-use assets on the condensed consolidated balance sheets.\nFor the three months ended March 31, 2023 and 2022, the Company\u2019s lease income consisted of the following components:\n<TABLE>\nThree Months Ended\nMarch 31,\n----------------------\n(in thousands)              2023        2022\n-----------------------  ----------  ----------\nOperating lease income:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating lease income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed lease income",
+     "",
+     "$",
+     "458",
+     "",
+     "$",
+     "261"
+    ],
+    [
+     "Sublease income",
+     "",
+     "",
+     "267",
+     "",
+     "",
+     "170"
+    ],
+    [
+     "Total lease income",
+     "",
+     "$",
+     "725",
+     "",
+     "$",
+     "431"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "$",
+     "1,971"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "1,618"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "663"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "242"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "4,494"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 715,
+    "end_line": 725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Lease Accounting"
+    }
+   },
+   "prose_before": "(in thousands)              2023        2022\n-----------------------  ----------  ----------\nOperating lease income:\nFixed lease income            $ 458       $ 261\nSublease income                 267         170\n----------  ----------\nTotal lease income            $ 725       $ 431\n==========  ==========\n</TABLE>\nAs of March 31, 2023, future minimum rental payments due to the Company as lessor under operating leases (including subleases) for the periods ending December 31, were as follows:",
+   "prose_after": "The components of charging equipment, charging stations, land, and subleased host sites leased to third parties under operating leases, which are included within the Company\u2019s property, equipment and software, net, and operating lease right-of-use-assets were as follows as of March 31, 2023 and December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Charging station equipment and construction costs",
+     "",
+     "$",
+     "3,558",
+     "",
+     "",
+     "$",
+     "3,557"
+    ],
+    [
+     "Land and building",
+     "",
+     "",
+     "10,507",
+     "",
+     "",
+     "",
+     "10,507"
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "",
+     "(1,094)",
+     "",
+     "",
+     "",
+     "(980)"
+    ],
+    [
+     "Property, equipment and software, net",
+     "",
+     "$",
+     "12,971",
+     "",
+     "",
+     "$",
+     "13,084"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "$",
+     "5,357",
+     "",
+     "",
+     "$",
+     "5,554"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Lease Accounting"
+    }
+   },
+   "prose_before": "The components of charging equipment, charging stations, land, and subleased host sites leased to third parties under operating leases, which are included within the Company\u2019s property, equipment and software, net, and operating lease right-of-use-assets were as follows as of March 31, 2023 and December 31, 2022:",
+   "prose_after": "Note 5 \u2013 Property, Equipment and Software, Net\nProperty, equipment and software, net, consisted of the following as of March 31, 2023 and December 31, 2022:\n<TABLE>\nMarch 31,  December 31,\n(in thousands)                                      2023         2022\n----------------------------------------------  -----------  ------------\nCharging station installation costs               $ 138,764     $ 121,820\nConstruction in process                             120,011       104,395\nCharging station equipment                           92,068        79,031\nCharging equipment                                   42,610        20,596",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Charging station installation costs",
+     "",
+     "$",
+     "138,764",
+     "",
+     "$",
+     "121,820"
+    ],
+    [
+     "Construction in process",
+     "",
+     "",
+     "120,011",
+     "",
+     "",
+     "104,395"
+    ],
+    [
+     "Charging station equipment",
+     "",
+     "",
+     "92,068",
+     "",
+     "",
+     "79,031"
+    ],
+    [
+     "Charging equipment",
+     "",
+     "",
+     "42,610",
+     "",
+     "",
+     "20,596"
+    ],
+    [
+     "Land and building",
+     "",
+     "",
+     "15,932",
+     "",
+     "",
+     "15,932"
+    ],
+    [
+     "Software",
+     "",
+     "",
+     "14,590",
+     "",
+     "",
+     "14,289"
+    ],
+    [
+     "Office equipment, vehicles and other",
+     "",
+     "",
+     "1,769",
+     "",
+     "",
+     "1,647"
+    ],
+    [
+     "Total property, equipment and software",
+     "",
+     "",
+     "425,744",
+     "",
+     "",
+     "357,710"
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "",
+     "(58,549)",
+     "",
+     "",
+     "(49,598)"
+    ],
+    [
+     "Property, equipment and software, net",
+     "",
+     "$",
+     "367,195",
+     "",
+     "$",
+     "308,112"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation of property and equipment",
+     "",
+     "$",
+     "7,971",
+     "",
+     "$",
+     "4,618"
+    ],
+    [
+     "Amortization of capital-build liability",
+     "",
+     "",
+     "(1,629)",
+     "",
+     "",
+     "(1,164)"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation of property and equipment",
+     "",
+     "",
+     "126",
+     "",
+     "",
+     "63"
+    ],
+    [
+     "Amortization of software",
+     "",
+     "",
+     "1,215",
+     "",
+     "",
+     "461"
+    ],
+    [
+     "Impairment expense",
+     "",
+     "",
+     "3,433",
+     "",
+     "",
+     "534"
+    ],
+    [
+     "Loss on disposal of property and equipment, net of insurance recoveries",
+     "",
+     "",
+     "27",
+     "",
+     "",
+     "274"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "11,143",
+     "",
+     "$",
+     "4,786"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 787
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Property, Equipment and Software, Net"
+    }
+   },
+   "prose_before": "Software                                             14,590        14,289\nOffice equipment, vehicles and other                  1,769         1,647\n-----------  ------------\nTotal property, equipment and software              425,744       357,710\nLess accumulated depreciation and amortization     (58,549)      (49,598)\n-----------  ------------\nProperty, equipment and software, net             $ 367,195     $ 308,112\n===========  ============\n</TABLE>\nDepreciation, amortization, impairment expense and loss on disposal of property and equipment, net of insurance recoveries, consisted of the following for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "Note 6 \u2013 Intangible Assets, Net\nIntangible assets, net, consisted of the following as of March 31, 2023:\n<TABLE>\nMarch 31, 2023\n-------------------------------------------\nRemaining\nWeighted\nGross               Net      Avera\nge\nCarrying   Accumulated    Carrying   Amort",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 766,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Remaining",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Gross",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Carrying",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Carrying",
+     "",
+     "",
+     "Amortization",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Amount",
+     "",
+     "",
+     "Amortization",
+     "",
+     "",
+     "Value",
+     "",
+     "",
+     "Period",
+     ""
+    ],
+    [
+     "Site Host relationships",
+     "",
+     "$",
+     "41,500",
+     "",
+     "$",
+     "(11,100)",
+     "",
+     "$",
+     "30,400",
+     "",
+     "8.8 years",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "",
+     "",
+     "19,000",
+     "",
+     "",
+     "(13,112)",
+     "",
+     "",
+     "5,888",
+     "",
+     "1.5 years",
+     ""
+    ],
+    [
+     "Developed technology",
+     "",
+     "",
+     "14,000",
+     "",
+     "",
+     "(2,905)",
+     "",
+     "",
+     "11,095",
+     "",
+     "11.3 years",
+     ""
+    ],
+    [
+     "User base",
+     "",
+     "",
+     "11,000",
+     "",
+     "",
+     "(4,746)",
+     "",
+     "",
+     "6,254",
+     "",
+     "2.3 years",
+     ""
+    ],
+    [
+     "Trade name",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "(929)",
+     "",
+     "",
+     "4,071",
+     "",
+     "13.3 years",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "90,500",
+     "",
+     "$",
+     "(32,792)",
+     "",
+     "$",
+     "57,708",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2023",
+    "Remaining",
+    "Weighted"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2022",
+     "",
+     "$",
+     "15,473"
+    ],
+    [
+     "Liabilities incurred",
+     "",
+     "",
+     "1,391"
+    ],
+    [
+     "Accretion expense",
+     "",
+     "",
+     "539"
+    ],
+    [
+     "Change in estimate",
+     "",
+     "",
+     "(14)"
+    ],
+    [
+     "Liabilities settled",
+     "",
+     "",
+     "(18)"
+    ],
+    [
+     "Balance as of March 31, 2023",
+     "",
+     "$",
+     "17,371"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 827,
+    "end_line": 838
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Asset Retirement Obligations"
+    }
+   },
+   "prose_before": "years\nTrade name                    5,000         (929)       4,071   13.3\nyears\n------------------------  ----------\n$ 90,500    $ (32,792)           $ 57,708\n==========  ============  =================\n</TABLE>\nAmortization of intangible assets was $2.9 million for each of the three months ended March 31, 2023 and 2022.\nNote 7 \u2013 Asset Retirement Obligations\nAsset retirement obligations represent the present value of the estimated costs to remove the commercial charging stations and restore the sites to the condition prior to installation. The Company reviews estimates of removal costs on an ongoing basis. Asset retirement obligation activity for the three months ended March 31, 2023 was as follows:",
+   "prose_after": "Note 8 \u2013 Commitments and Contingencies\nPilot Infrastructure Agreement\nOn July 5, 2022, EVgo entered into a charging infrastructure agreement (the \u201cPilot Infrastructure Agreement\u201d) and an operations and maintenance agreement (the \u201cPilot O&M\u201d) with Pilot Travel Centers LLC (the \u201cPilot Company\u201d) and General Motors LLC (\u201cGM\u201d) to build, operate, and maintain up to 2,000 stalls served by DC chargers that the Pilot Company will own. The stalls will be located at the Pilot Company sites across the U.S.\nPursuant to the Pilot Infrastructure Agreement, EVgo is required to meet certain construction milestones measured by the number of sites commissioned, and the Pilot Company is required to make certain payments each month based on completion of pre-engineering and development work, the progress of construction at each site and for each charger procured by EVgo. Subject to extensions of time for specified excusable events, if EVgo is unable to meet its commissioning obligations, the Pilot Company will be entitled to liquidated damages calculated per day, subject to a cap of $30,000 at each site. The Pilot Infrastructure Agreement contains various provisions that may permit or cause early termination, including the Pilot Company\u2019s right to terminate after 1,000 stalls have been completed, the inability of EVgo to secure certain chargers and a material increase in the price of chargers due to a change in law. If the Pilot Company elects to terminate the Pilot Infrastructure Agreement after 1,000 stalls have been completed, the Pilot Company must pay EVgo a termination fee per stall for those not built; such fee varies based on the number of stalls already built. If EVgo is wholly or partially unable to perform its obligations under the Pilot Infrastructure Agreement due to certain circumstances outside its control, including delays by permitting authorities and utilities or certain force majeure events, such inability will not be considered a breach or default under the Pilot Infrastructure Agreement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 839,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "Level",
+     "",
+     "Balance",
+     "",
+     "",
+     "Level",
+     "",
+     "Balance",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "1",
+     "",
+     "$",
+     "125,125",
+     "",
+     "1",
+     "",
+     "$",
+     "150,125"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnout liability",
+     "",
+     "",
+     "3",
+     "",
+     "$",
+     "3,793",
+     "",
+     "3",
+     "",
+     "$",
+     "1,730"
+    ],
+    [
+     "Warrant liability \u2013 Public Warrants",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "15,399",
+     "",
+     "1",
+     "",
+     "",
+     "10,164"
+    ],
+    [
+     "Warrant liability \u2013 Private Placement Warrants",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "3,285",
+     "",
+     "2",
+     "",
+     "",
+     "2,140"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "22,477",
+     "",
+     "",
+     "",
+     "$",
+     "14,034"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 892,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Fair Value Measurements"
+    }
+   },
+   "prose_before": "As of March 31, 2023, EVgo had $66.0 million in outstanding purchase order commitments to EVgo\u2019s contract manufacturers and component suppliers for charging equipment, all of which were short-term. In certain instances, EVgo is permitted to cancel, reschedule or adjust these orders.\nNote 9 \u2013 Fair Value Measurements\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities).\nThe following table presents information about the Company\u2019s assets and liabilities that are measured at fair value on a recurring basis and indicates the level within the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value as of March 31, 2023 and December 31, 2022:",
+   "prose_after": "The earnout liability was valued using a Monte Carlo simulation methodology. Assumptions used in the valuation of the earnout liability are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 883,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "7.79",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "3.75",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "",
+     "2.5",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Dividend rate",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,",
+    "2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 923
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Fair Value Measurements"
+    }
+   },
+   "prose_before": "The earnout liability was valued using a Monte Carlo simulation methodology. Assumptions used in the valuation of the earnout liability are as follows:",
+   "prose_after": "The warrants are accounted for as liabilities in accordance with ASC 815, Derivatives and Hedging, and are presented as warrant liabilities on the condensed consolidated balance sheets. The warrant liabilities are measured at fair value at inception and on a recurring basis, with changes in fair value presented within change in fair value of warrant liabilities in the condensed consolidated statements of operations. The close price of the Public Warrants was used as its fair value as of each relevant date.\nAs of March 31, 2023, the Private Placement Warrants were valued using a Monte Carlo simulation methodology, which is considered a Level 3 fair value measurement. As of December 31, 2022, the fair value of the Private Placement Warrants was measured by reference to the trading price of the Public Warrants, which is considered a Level 2 fair value measurement. Assumptions used in the valuation of the Private Placement Warrant liability are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "7.79",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "3.78",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Dividend rate",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Exercise price",
+     "",
+     "$",
+     "11.50",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,",
+    "2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Fair Value Measurements"
+    }
+   },
+   "prose_before": "The warrants are accounted for as liabilities in accordance with ASC 815, Derivatives and Hedging, and are presented as warrant liabilities on the condensed consolidated balance sheets. The warrant liabilities are measured at fair value at inception and on a recurring basis, with changes in fair value presented within change in fair value of warrant liabilities in the condensed consolidated statements of operations. The close price of the Public Warrants was used as its fair value as of each relevant date.\nAs of March 31, 2023, the Private Placement Warrants were valued using a Monte Carlo simulation methodology, which is considered a Level 3 fair value measurement. As of December 31, 2022, the fair value of the Private Placement Warrants was measured by reference to the trading price of the Public Warrants, which is considered a Level 2 fair value measurement. Assumptions used in the valuation of the Private Placement Warrant liability are as follows:",
+   "prose_after": "The following table presents a reconciliation for all liabilities measured and recognized at fair value on a recurring basis using significant unobservable inputs (Level 3) for the three months ended March 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Private",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Placement",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Warrant",
+     "",
+     "",
+     "Earnout",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Liability",
+     "",
+     "",
+     "Liability",
+     ""
+    ],
+    [
+     "Fair value as of December 31, 2022",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,730"
+    ],
+    [
+     "Change in fair value of liability",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,063"
+    ],
+    [
+     "Transfers into Level 3",
+     "",
+     "",
+     "3,285",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Fair value as of March 31, 2023",
+     "",
+     "$",
+     "3,285",
+     "",
+     "$",
+     "3,793"
+    ]
+   ],
+   "caption_stack": [
+    "Private",
+    "Placement"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 943,
+    "end_line": 956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following table presents a reconciliation for all liabilities measured and recognized at fair value on a recurring basis using significant unobservable inputs (Level 3) for the three months ended March 31, 2023:",
+   "prose_after": "There were no other transfers between levels of the fair value hierarchy for the three months ended March 31, 2023.\nThe carrying values of certain accounts such as accounts receivable, accounts payable and accrued expenses are deemed to approximate their fair values due to their short-term nature. The fair values of the Company\u2019s money market funds are based on quoted prices in active markets for identical assets. There were no assets measured on a recurring basis using significant unobservable inputs (Level 3) as of March 31, 2023 or December 31, 2022.\nNote 10 \u2013 Income Taxes\nThe Company\u2019s provision for income taxes consists primarily of income taxes related to federal and state jurisdictions where business is conducted related to the Company\u2019s ownership in EVgo OpCo. All income (loss) before income taxes is generated in the U.S. For the three months ended March 31, 2023 and 2022, the Company\u2019s provision for income taxes and effective tax rates were de minimis primarily due to the Company\u2019s full valuation allowance on its deferred tax assets and a significant portion of income (loss) being allocated to a nontaxable partnership. Prior to July 1, 2021, the Company was not a taxable entity for U.S. federal income tax purposes or for any of the states in which the Company operated. On July 1, 2021, pursuant to the CRIS Business Combination, the Company became a taxable entity for U.S. federal income tax purposes and for all of the states in which the Company operates.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(49,081)",
+     "",
+     "$",
+     "(55,266)"
+    ],
+    [
+     "Less: net loss attributable to redeemable noncontrolling interest",
+     "",
+     "",
+     "(36,005)",
+     "",
+     "",
+     "(40,867)"
+    ],
+    [
+     "Net loss attributable to Class A common stockholders",
+     "",
+     "",
+     "(13,076)",
+     "",
+     "",
+     "(14,399)"
+    ],
+    [
+     "Less: net loss attributable to participating securities",
+     "",
+     "",
+     "(131)",
+     "",
+     "",
+     "(151)"
+    ],
+    [
+     "Net loss attributable to Class A common stockholders, basic and diluted",
+     "",
+     "$",
+     "(12,945)",
+     "",
+     "$",
+     "(14,248)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding",
+     "",
+     "",
+     "71,713",
+     "",
+     "",
+     "68,742"
+    ],
+    [
+     "Less: weighted average unvested Earnout Shares outstanding",
+     "",
+     "",
+     "(719)",
+     "",
+     "",
+     "(719)"
+    ],
+    [
+     "Weighted average common stock outstanding, basic and diluted",
+     "",
+     "",
+     "70,994",
+     "",
+     "",
+     "68,023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 basic and diluted",
+     "",
+     "$",
+     "(0.18)",
+     "",
+     "$",
+     "(0.21)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 1007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Net Loss Per Share"
+    }
+   },
+   "prose_before": "In connection with the CRIS Business Combination, EVgo entered into a tax receivable agreement (the \u201cTax Receivable Agreement\u201d) with EVgo Holdings (along with permitted assigns, the \u201cTRA Holders\u201d) and LS Power Equity Advisors, LLC, as agent. The Tax Receivable Agreement generally provides for payment by the Company , Thunder Sub or any of their subsidiaries (other than EVgo OpCo and its subsidiaries) (\u201cCompany Group\u201d) to the TRA Holders of 85% of the net cash savings, if any, in U.S. federal, state and local income tax or franchise tax that the Company actually realizes or is deemed to realize in certain circumstances after the CRIS Business Combination as a result of (i) certain increases in tax basis that occur as a result of the Company Group\u2019s acquisition (or deemed acquisition for U.S. federal income tax purposes) of all or a portion of the TRA Holders\u2019 EVgo OpCo Units pursuant to the CRIS Business Combination or the exercise of the redemption or Call Rights set forth in the EVgo OpCo A&R LLC Agreement and (ii) imputed interest deemed to be paid by the Company Group as a result of, and additional tax basis arising from, any payments the Company Group makes under the Tax Receivable Agreement. The Company Group will retain the benefit of any remaining net cash savings. If the Company Group elects to terminate the Tax Receivable Agreement early (or it is terminated early due to the Company Group\u2019s failure to honor a material obligation thereunder or due to certain mergers, asset sales, other forms of business combinations or other changes of control), the Company Group is required to make an immediate payment equal to the present value of the anticipated future payments to be made by it under the Tax Receivable Agreement (based upon certain assumptions and deemed events set forth in the Tax Receivable Agreement, including (i) that the Company Group has sufficient taxable income on a current basis to fully utilize the tax benefits covered by the Tax Receivable Agreement and (ii) that any EVgo OpCo Units (other than those held by the Company Group) outstanding on the termination date or change of control date, as applicable, are deemed to be redeemed on such date).\nAmounts payable by the Company under the Tax Receivable Agreement are accrued through a charge to income when it is probable that a liability has been incurred and the amount is estimable. As of March 31, 2023, no transactions have occurred that would result in a cash tax savings benefit that would trigger the recording of a liability by the Company based on the terms of the Tax Receivable Agreement.\nNote 12 \u2013 Net Loss Per Share\nThe following table sets forth the computation of basic and diluted net loss per share for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "The Company\u2019s potentially dilutive securities consist of the Company\u2019s Public Warrants, Private Placement Warrants, restricted stock units (\u201cRSUs\u201d), stock options and unvested Earnout Shares. For the periods in which net loss per share is presented, the Company excluded the following potential shares, presented based on amounts outstanding at each period end, from the computation of diluted net loss per share attributable to Class A common stockholders since their impact would have been antidilutive:\n<TABLE>\nThree Months Ended\nMarch 31,\n------------------\n(in thousands)                2023      2022\n--------------------------  --------  --------\nPublic Warrants               14,949    14,949\nPrivate Placement Warrants     3,149     3,149\nRSUs                           7,237     1,781",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1013,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "2022"
+    ],
+    [
+     "Public Warrants",
+     "",
+     "14,949",
+     "",
+     "14,949"
+    ],
+    [
+     "Private Placement Warrants",
+     "",
+     "3,149",
+     "",
+     "3,149"
+    ],
+    [
+     "RSUs",
+     "",
+     "7,237",
+     "",
+     "1,781"
+    ],
+    [
+     "Stock options",
+     "",
+     "473",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "25,808",
+     "",
+     "19,879"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "$",
+     "22",
+     "",
+     "$",
+     "11"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "6,405",
+     "",
+     "",
+     "3,495"
+    ],
+    [
+     "Total share-based compensation expense",
+     "",
+     "$",
+     "6,427",
+     "",
+     "$",
+     "3,506"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1032,
+    "end_line": 1044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "Private Placement Warrants     3,149     3,149\nRSUs                           7,237     1,781\nStock options                    473         \u2014\n--------  --------\n25,808    19,879\n========  ========\n</TABLE>\nAdditionally, 718,750 unvested Earnout Shares were excluded from the computation of diluted net loss per share since their vesting threshold (i.e., the $15.00 Triggering Event) had not yet been met as of March 31, 2023 and 2022.\nNote 13 \u2013 Share-Based Compensation\nThe following table sets forth the Company\u2019s total share-based compensation expense included in the Company\u2019s condensed consolidated statements of operations for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "2021 Long Term Incentive Plan\nOn July 1, 2021, concurrent with the closing of the CRIS Business Combination, stockholders approved the Board of Directors-approved 2021 Long Term Incentive Plan (the \u201c2021 Incentive Plan\u201d). The 2021 Incentive Plan reserves 33,918,000 shares of Class A common stock for issuance to employees, non-employee directors and other service providers. As of March 31, 2023, there were 24,407,475 shares of Class A common stock available for grant.\nStock Options\nThe following table summarizes stock option activity for the three months ended March 31, 2023:\n<TABLE>\nShares Underlying                      Weighted Average       Aggregate\nOptions        Weighted Average      Remaining        Intrinsic Value\n(in 000's)        Exercise Price   Contractual Life           (in 000's)\n-----------------  -----------------  ------------------  ------------------",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1013,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1045,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Shares Underlying",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average",
+     "",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "",
+     "Weighted Average",
+     "",
+     "",
+     "Remaining",
+     "",
+     "",
+     "Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in 000's)",
+     "",
+     "",
+     "Exercise Price",
+     "",
+     "",
+     "Contractual Life",
+     "",
+     "",
+     "(in 000's)",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2022",
+     "",
+     "",
+     "375",
+     "",
+     "$",
+     "12.86",
+     "",
+     "",
+     "9.2 years",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "",
+     "98",
+     "",
+     "$",
+     "6.13",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of March 31, 2023",
+     "",
+     "",
+     "473",
+     "",
+     "$",
+     "11.47",
+     "",
+     "",
+     "9.2 years",
+     "",
+     "$",
+     "162"
+    ],
+    [
+     "Outstanding and exercisable as of March 31, 2023",
+     "",
+     "",
+     "125",
+     "",
+     "$",
+     "12.86",
+     "",
+     "",
+     "9.0 years",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 32,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "3.5",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "",
+     "79",
+     "%"
+    ],
+    [
+     "Expected life (in years)",
+     "",
+     "",
+     "5.7",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1072,
+    "end_line": 1078
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "Outstanding as of December 31, 2022                             375            $ 12.86           9.2 years                 $ \u2014\nGranted                                                          98             $ 6.13\n-  --------------\nOutstanding as of March 31, 2023                                473            $ 11.47           9.2 years               $ 162\n=  ==============\nOutstanding and exercisable as of March 31, 2023                125            $ 12.86           9.0 years                 $ \u2014\n</TABLE>\nAs of March 31, 2023, the Company\u2019s unrecognized share-based compensation expense related to stock options was approximately $1.6 million, which is expected to be recognized over a period of 1.5 years. No stock options were exercised during the three months ended March 31, 2023.\nThe fair value of the stock options granted during the three months ended March 31, 2023 was computed using Black-Scholes option-pricing model using the following key assumptions:",
+   "prose_after": "Restricted Stock Units\nThe table below represents the Company\u2019s RSU activity under the 2021 Incentive Plan during the three months ended March 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "(shares in thousands)",
+     "",
+     "",
+     "Shares",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Unvested as of December 31, 2022",
+     "",
+     "",
+     "3,930",
+     "",
+     "$",
+     "10.85"
+    ],
+    [
+     "Granted",
+     "",
+     "",
+     "4,706",
+     "",
+     "$",
+     "5.77"
+    ],
+    [
+     "Vested",
+     "",
+     "",
+     "(1,156)",
+     "",
+     "$",
+     "11.57"
+    ],
+    [
+     "Forfeited",
+     "",
+     "",
+     "(243)",
+     "",
+     "$",
+     "8.90"
+    ],
+    [
+     "Unvested as of March 31, 2023",
+     "",
+     "",
+     "7,237",
+     "",
+     "$",
+     "7.50"
+    ],
+    [
+     "Vested but not released",
+     "",
+     "",
+     "491",
+     "",
+     "$",
+     "10.83"
+    ],
+    [
+     "Outstanding as of March 31, 2023",
+     "",
+     "",
+     "7,728",
+     "",
+     "$",
+     "7.71"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1083,
+    "end_line": 1100
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "Restricted Stock Units\nThe table below represents the Company\u2019s RSU activity under the 2021 Incentive Plan during the three months ended March 31, 2023:",
+   "prose_after": "The total fair value of RSUs vested during the three months ended March 31, 2023 was $7.7 million. As of March 31, 2023, the Company\u2019s unrecognized share-based compensation expense related to unvested RSUs was approximately $39.3 million, which is expected to be recognized over a period of 1.7 years.\nEVgo Management Holdings, LLC Incentive Units\nFollowing the Holdco Merger and prior to the CRIS Business Combination, all employees of EVgo Services received share-based compensation in the form of units in EVgo Management Holdings, LLC (\u201cEVgo Management\u201d) that track incentive units issued by EVgo Holdings to EVgo Management (\u201cIncentive Units\u201d). Of each individual grant of Incentive Units, 65% of the grant was designated as time vesting (the \u201cTime Vesting Incentive Units\u201d) and the remaining portion (35% of the grant) was designated as sale vesting (the \u201cSale Vesting Incentive Units\u201d). The Time Vesting Incentive Units vest annually and equally over a period of four years from the date of grant. Sale Vesting Incentive Units vest based upon the achievement of certain trigger events relating to the sale of EVgo Holdings. Presented below is a summary of the activity of the Company\u2019s Incentive Units during the three months ended March 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "(units in thousands)",
+     "",
+     "",
+     "Units",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2022",
+     "",
+     "",
+     "471",
+     "",
+     "$",
+     "18.68"
+    ],
+    [
+     "Vested",
+     "",
+     "",
+     "(108)",
+     "",
+     "$",
+     "17.29"
+    ],
+    [
+     "Forfeited",
+     "",
+     "",
+     "(12)",
+     "",
+     "$",
+     "17.64"
+    ],
+    [
+     "Outstanding as of March 31, 2023",
+     "",
+     "",
+     "351",
+     "",
+     "$",
+     "19.13"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average",
+    "Grant Date"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                  7"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "The total fair value of RSUs vested during the three months ended March 31, 2023 was $7.7 million. As of March 31, 2023, the Company\u2019s unrecognized share-based compensation expense related to unvested RSUs was approximately $39.3 million, which is expected to be recognized over a period of 1.7 years.\nEVgo Management Holdings, LLC Incentive Units\nFollowing the Holdco Merger and prior to the CRIS Business Combination, all employees of EVgo Services received share-based compensation in the form of units in EVgo Management Holdings, LLC (\u201cEVgo Management\u201d) that track incentive units issued by EVgo Holdings to EVgo Management (\u201cIncentive Units\u201d). Of each individual grant of Incentive Units, 65% of the grant was designated as time vesting (the \u201cTime Vesting Incentive Units\u201d) and the remaining portion (35% of the grant) was designated as sale vesting (the \u201cSale Vesting Incentive Units\u201d). The Time Vesting Incentive Units vest annually and equally over a period of four years from the date of grant. Sale Vesting Incentive Units vest based upon the achievement of certain trigger events relating to the sale of EVgo Holdings. Presented below is a summary of the activity of the Company\u2019s Incentive Units during the three months ended March 31, 2023:",
+   "prose_after": "As of March 31, 2023, the Company\u2019s unrecognized share-based compensation expense related to unvested Incentive Units was approximately $6.4 million, which is expected to be recognized over a period of 1.4 years.\nLiability-Classified Awards\nIn February 2023, the Company\u2019s Board of Directors approved grants of $4.4 million in stock options underlying shares of Class A common stock to certain employees. The number of options subject to the grants was to be determined based on the Black-Scholes value of the Company\u2019s common stock on the trading day period prior to the award date. The awards were accounted for as liability-classified awards as of March 31, 2023 and compensation expense for the three months ended March 31, 2023 was recognized using the accelerated attribution method over the service period. As of March 31, 2023, the Company had $4.2 million of unrecognized costs related to unvested liability-classified awards which were expected to be recognized over a weighted average period of 1.9 years. In April 2023, the number of shares became fixed on the award date and the Company accordingly reclassified these awards as equity-classified awards on the award date.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1104,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2022",
+     "",
+     "$",
+     "875,226"
+    ],
+    [
+     "Net loss attributable to redeemable noncontrolling interest for the period",
+     "",
+     "",
+     "(36,005)"
+    ],
+    [
+     "Equity-based compensation attributable to redeemable noncontrolling interest during the period",
+     "",
+     "",
+     "449"
+    ],
+    [
+     "Adjustment to revise redeemable noncontrolling interest to its redemption value at period-end",
+     "",
+     "",
+     "685,612"
+    ],
+    [
+     "Balance as of March 31, 2023",
+     "",
+     "$",
+     "1,525,282"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022"
+    ],
+    [
+     "Network throughput (GWh) for the three months ended",
+     "",
+     "17.9",
+     "",
+     "8.0"
+    ],
+    [
+     "Number of DC stalls on EVgo network as of",
+     "",
+     "2,352",
+     "",
+     "1,772"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1272,
+    "end_line": 1280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Network throughput represents the total amount of GWh that was consumed by EVs using chargers and charging stations on EVgo\u2019s network. EVgo typically monitors GWh sales by three components: business line, customer and customer class. EVgo believes monitoring of component trends and contributions is the appropriate way to monitor and measure business-related health.\nNumber of DC Stalls on EVgo\u2019s Network\nNumber of DC stalls represents the total number of DC stalls that EVgo has operational on its network (energized, inspected and commissioned). One stall can charge one vehicle at a time. There are certain configurations of EVgo sites where one DC charger is capable of charging only one vehicle at a time; all chargers at such a site are counted as one stall per one charger. There are certain configurations of EVgo sites where one DC charger is capable of charging two vehicles simultaneously; all chargers at such a site are counted as two stalls per one charger. The following table represents network throughput and the number of DC stalls on EVgo\u2019s network:",
+   "prose_after": "Receipts\nEVgo defines Receipts as total revenue plus change in deferred revenue over the same period. Pursuant to the term of certain OEM contracts, EVgo is paid well in advance of when revenue can be recognized according to ASC Topic 606; usually, the payment is tied to the number of stalls that commence operations under the applicable contract arrangement. EVgo believes that its Receipts metric provides investors valuable insight into cash that has been generated from EVgo\u2019s customers and EVgo\u2019s periodic performance. EVgo uses Receipts to monitor and measure EVgo\u2019s commercial performance, liquidity and growth as EVgo\u2019s OEM customers pay EVgo in advance for placing stalls in operation and then EVgo recognizes a portion of the related revenue over time.\nThe following table presents the calculation of Receipts for the three months ended March 31, 2023 and 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1263,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1310,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "GAAP revenue (1)",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ],
+    [
+     "GAAP changes in deferred revenue (2)",
+     "",
+     "21,781",
+     "",
+     "",
+     "(561)"
+    ],
+    [
+     "Total Receipts",
+     "$",
+     "47,081",
+     "",
+     "$",
+     "7,139"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year-over-year percentage change in total Receipts",
+     "",
+     "559%",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Receipts\nEVgo defines Receipts as total revenue plus change in deferred revenue over the same period. Pursuant to the term of certain OEM contracts, EVgo is paid well in advance of when revenue can be recognized according to ASC Topic 606; usually, the payment is tied to the number of stalls that commence operations under the applicable contract arrangement. EVgo believes that its Receipts metric provides investors valuable insight into cash that has been generated from EVgo\u2019s customers and EVgo\u2019s periodic performance. EVgo uses Receipts to monitor and measure EVgo\u2019s commercial performance, liquidity and growth as EVgo\u2019s OEM customers pay EVgo in advance for placing stalls in operation and then EVgo recognizes a portion of the related revenue over time.\nThe following table presents the calculation of Receipts for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "1 As presented in the condensed consolidated statements of operations.\n2 As presented in the condensed consolidated statements of cash flows.\nFactors Affecting EVgo\u2019s Operating Results\nEVgo believes its performance and future success depend on a number of factors, including those discussed below and in \u201cPart II, Item 1A., Risk Factors.\u201d\nEV Sales\nEVgo\u2019s revenue growth is directly tied to the adoption and continued acceptance and usage of passenger and commercial EVs, which it believes drives the demand for electricity, charging infrastructure and charging services. The market for EVs is still rapidly evolving and, although demand for EVs has grown in recent years, there is no guarantee of such future demand. Additionally, as demand increases, the supply must keep pace for adoption to continue to accelerate at a rapid pace. Factors impacting the adoption of EVs include perceptions about EV features, quality, safety, performance and cost\u037e perceptions about the limited range over which EVs may be driven on a single battery charge\u037e availability of services for EVs\u037e consumers\u2019 perception about the convenience, speed, reliability and cost of EV charging\u037e volatility in the price of gasoline and diesel; EV supply chain shortages and disruptions including, but not limited to, availability of certain components (e.g., semiconductors and critical raw materials necessary for the production of EVs and EV batteries), the ability of EV OEMs to ramp-up EV production and/or allocate sufficient quantities of EV models to the U.S. market; domestic content requirements or other policy constraints; availability of batteries and battery materials; availability, cost and desirability of other alternative fuel vehicles, including plug-in hybrid EVs and high fuel-economy gasoline and diesel-powered vehicles; and increases in fuel efficiency. In addition, macroeconomic factors could impact demand for EVs, particularly since the sales price of EVs can be more expensive than traditional gasoline-powered vehicles. If the market for EVs does not develop as expected or if there is any slowdown or delay in overall adoption of EVs, EVgo\u2019s operating results may be adversely affected.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1263,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1310,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700",
+     "",
+     "$",
+     "17,600",
+     "",
+     "229",
+     "%"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "",
+     "(18,917)",
+     "",
+     "",
+     "(4,846)",
+     "",
+     "",
+     "(14,071)",
+     "",
+     "290",
+     "%"
+    ],
+    [
+     "Depreciation, net of capital-build amortization",
+     "",
+     "",
+     "(6,342)",
+     "",
+     "",
+     "(3,454)",
+     "",
+     "",
+     "(2,888)",
+     "",
+     "84",
+     "%"
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "",
+     "41",
+     "",
+     "",
+     "(600)",
+     "",
+     "",
+     "641",
+     "",
+     "107",
+     "%"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "37,889",
+     "",
+     "",
+     "25,428",
+     "",
+     "",
+     "12,461",
+     "",
+     "49",
+     "%"
+    ],
+    [
+     "Depreciation, amortization and accretion",
+     "",
+     "",
+     "4,784",
+     "",
+     "",
+     "3,887",
+     "",
+     "",
+     "897",
+     "",
+     "23",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "",
+     "",
+     "(42,632)",
+     "",
+     "",
+     "(29,915)",
+     "",
+     "",
+     "(12,717)",
+     "",
+     "(43)",
+     "%"
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "1,998",
+     "",
+     "",
+     "55",
+     "",
+     "",
+     "1,943",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "(263)",
+     "",
+     "",
+     "264",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Change in fair value of earnout liability",
+     "",
+     "",
+     "(2,063)",
+     "",
+     "",
+     "(2,264)",
+     "",
+     "",
+     "201",
+     "",
+     "9",
+     "%"
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "",
+     "(6,380)",
+     "",
+     "",
+     "(22,874)",
+     "",
+     "",
+     "16,494",
+     "",
+     "72",
+     "%"
+    ],
+    [
+     "Loss before income tax expense",
+     "",
+     "",
+     "(49,076)",
+     "",
+     "",
+     "(55,261)",
+     "",
+     "",
+     "6,185",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(49,081)",
+     "",
+     "",
+     "(55,266)",
+     "",
+     "",
+     "6,185",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "Less: net loss attributable to redeemable noncontrolling interest",
+     "",
+     "",
+     "(36,005)",
+     "",
+     "",
+     "(40,867)",
+     "",
+     "",
+     "4,862",
+     "",
+     "12",
+     "%"
+    ],
+    [
+     "Net loss attributable to Class A common stockholders",
+     "",
+     "$",
+     "(13,076)",
+     "",
+     "$",
+     "(14,399)",
+     "",
+     "$",
+     "1,323",
+     "",
+     "9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "",
+     "0.2",
+     "%",
+     "",
+     "(7.8)",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating margin",
+     "",
+     "",
+     "(168.5)",
+     "%",
+     "",
+     "(388.5)",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Network throughput (GWh)",
+     "",
+     "",
+     "17.9",
+     "",
+     "",
+     "8.0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of DC stalls",
+     "",
+     "",
+     "2,352",
+     "",
+     "",
+     "1,772",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "*Percentage greater than 999% or not meaningful",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1345,
+    "end_line": 1380
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "EVgo derives revenue from selling regulatory credits earned for participating in LCFS programs, or other similar carbon or emissions trading schemes, in various jurisdictions in the U.S. EVgo currently sells these credits at market prices. These credits are exposed to various market and supply and demand dynamics which can drive price volatility and which are difficult to predict. Price fluctuations in credits may have a material effect on future results of operations. The availability of such credits depends on continued governmental support for these programs. If these programs are modified, reduced or eliminated, EVgo\u2019s ability to generate this revenue in the future would be adversely impacted. In addition to current programs, EVgo\u2019s management is currently monitoring the implementation of Washington\u2019s program and additional proposals in varying stages of discussions including in New York, along with potential changes to the Renewable Fuels Standard.\nResults of Operations\nThe table below presents EVgo\u2019s results of operations for the three months ended March 31, 2023 and 2022.",
+   "prose_after": "The table below presents a disaggregation of EVgo\u2019s revenue for the three months ended March 31, 2023 and 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1381,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Charging revenue, retail",
+     "",
+     "$",
+     "6,615",
+     "",
+     "$",
+     "3,502",
+     "",
+     "$",
+     "3,113",
+     "89",
+     "%"
+    ],
+    [
+     "Charging revenue, commercial",
+     "",
+     "",
+     "1,715",
+     "",
+     "",
+     "709",
+     "",
+     "",
+     "1,006",
+     "142",
+     "%"
+    ],
+    [
+     "Charging revenue, OEM",
+     "",
+     "",
+     "552",
+     "",
+     "",
+     "151",
+     "",
+     "",
+     "401",
+     "266",
+     "%"
+    ],
+    [
+     "Regulatory credit sales",
+     "",
+     "",
+     "1,215",
+     "",
+     "",
+     "1,378",
+     "",
+     "",
+     "(163)",
+     "(12)",
+     "%"
+    ],
+    [
+     "Network revenue, OEM",
+     "",
+     "",
+     "2,699",
+     "",
+     "",
+     "490",
+     "",
+     "",
+     "2,209",
+     "451",
+     "%"
+    ],
+    [
+     "eXtend revenue",
+     "",
+     "",
+     "10,292",
+     "",
+     "",
+     "80",
+     "",
+     "",
+     "10,212",
+     "*",
+     ""
+    ],
+    [
+     "Ancillary revenue",
+     "",
+     "",
+     "2,212",
+     "",
+     "",
+     "1,390",
+     "",
+     "",
+     "822",
+     "59",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700",
+     "",
+     "$",
+     "17,600",
+     "229",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "*Percentage greater than 999% or not meaningful",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The table below presents a disaggregation of EVgo\u2019s revenue for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "Total revenue for the three months ended March 31, 2023 increased $17.6 million, or 229%, to $25.3 million compared to $7.7 million for the three months ended March 31, 2022. As further discussed below, the increase in revenue was primarily due to a $10.2 million increase in eXtend revenue, a $3.1 million increase in retail charging revenue resulting from increased throughput and subscription fees, a $2.2 million increase in network revenue, and a $1.0 million increase in commercial charging revenue.\nCharging Revenue, Retail. Charging revenue, retail, for the three months ended March 31, 2023 increased $3.1 million, or 89%, to $6.6 million compared to $3.5 million for the three months ended March 31, 2022. Period-over-period growth was due to an overall increase in throughput and subscription fees driven primarily by increased charging volume and a growing number of customers.\nCharging Revenue, Commercial. Charging revenue, commercial, for the three months ended March 31, 2023 increased $1.0 million, or 142%, to $1.7 million compared to $0.7 million for the three months ended March 31, 2022. Period-over-period growth was due to higher charging volumes by the Company\u2019s public fleet customers and reclassification of pass-through electricity expense as revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1381,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "GAAP revenue",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ],
+    [
+     "GAAP cost of sales",
+     "",
+     "25,259",
+     "",
+     "",
+     "8,300"
+    ],
+    [
+     "GAAP gross profit (loss)",
+     "$",
+     "41",
+     "",
+     "$",
+     "(600)"
+    ],
+    [
+     "GAAP cost of sales as a percentage of revenue",
+     "",
+     "99.8%",
+     "",
+     "",
+     "107.8%"
+    ],
+    [
+     "GAAP gross margin",
+     "",
+     "0.2%",
+     "",
+     "",
+     "(7.8%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, net of capital-build amortization",
+     "$",
+     "6,342",
+     "",
+     "$",
+     "3,454"
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "22",
+     "",
+     "",
+     "11"
+    ],
+    [
+     "  Total adjustments",
+     "",
+     "6,364",
+     "",
+     "",
+     "3,465"
+    ],
+    [
+     "Adjusted Cost of Sales",
+     "$",
+     "18,895",
+     "",
+     "$",
+     "4,835"
+    ],
+    [
+     "Adjusted Cost of Sales as a Percentage of Revenue",
+     "",
+     "74.7%",
+     "",
+     "",
+     "62.8%"
+    ],
+    [
+     "Adjusted Gross Profit",
+     "$",
+     "6,405",
+     "",
+     "$",
+     "2,865"
+    ],
+    [
+     "Adjusted Gross Margin",
+     "",
+     "25.3%",
+     "",
+     "",
+     "37.2%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1473,
+    "end_line": 1499
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "EVgo defines Adjusted Cost of Sales as cost of sales before: (i) depreciation, net of capital-build amortization, and (ii) share-based compensation. EVgo defines Adjusted Cost of Sales as a Percentage of Revenue as Adjusted Cost of Sales as a percentage of revenue. EVgo defines Adjusted Gross Profit (Loss) as revenue less Adjusted Cost of Sales. EVgo defines Adjusted Gross Margin as Adjusted Gross Profit (Loss) as a percentage of revenue. EVgo defines Adjusted General and Administrative Expenses as general and administrative expenses before (i) share-based compensation, (ii) loss on disposal of property and equipment and impairment expense, (iii) bad debt expense and (iv) certain other items that management believes are not indicative of EVgo\u2019s ongoing performance. EVgo defines Adjusted General and Administrative Expenses as a Percentage of Revenue as Adjusted General and Administrative Expenses as a percentage of revenue. EVgo defines EBITDA as net income (loss) before (i) depreciation, net of capital-build amortization, (ii) amortization, (iii) accretion, (iv) interest income, and (v) income tax expense. EVgo defines EBITDA Margin as EBITDA as a percentage of revenue. EVgo defines Adjusted EBITDA as EBITDA plus (i) share-based compensation, (ii) loss on disposal of property and equipment and impairment expense, (iii) (gain) loss on investments, (iv) bad debt expense, (v) change in fair value of earnout liability, (vi) change in fair value of warrant liabilities, and (vii) certain other items that management believes are not indicative of EVgo\u2019s ongoing performance. EVgo defines Adjusted EBITDA Margin as Adjusted EBITDA as a percentage of revenue.\nThe following unaudited table presents a reconciliation of Adjusted Cost of Sales, Adjusted Cost of Sales as a Percentage of Revenue, Adjusted Gross Profit (Loss) and Adjusted Gross Margin to the most directly comparable GAAP measures, in each case, for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "The following unaudited table presents a reconciliation of Adjusted General and Administrative Expenses and Adjusted General and Administrative Expenses as a Percentage of Revenue to the most directly comparable GAAP measures for the three months ended March 31, 2023 and 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1468,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "GAAP revenue",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ],
+    [
+     "GAAP general and administrative expenses",
+     "$",
+     "37,889",
+     "",
+     "$",
+     "25,428"
+    ],
+    [
+     "GAAP general and administrative expenses as a percentage of revenue",
+     "",
+     "149.8%",
+     "",
+     "",
+     "330.2%"
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "$",
+     "6,405",
+     "",
+     "$",
+     "3,495"
+    ],
+    [
+     "Loss on disposal of property and equipment and impairment expense",
+     "",
+     "3,460",
+     "",
+     "",
+     "1,010"
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "97",
+     "",
+     "",
+     "116"
+    ],
+    [
+     "Other (1)",
+     "",
+     "1,455",
+     "",
+     "",
+     "(226)"
+    ],
+    [
+     "  Total adjustments",
+     "",
+     "11,417",
+     "",
+     "",
+     "4,395"
+    ],
+    [
+     "Adjusted General and Administrative Expenses",
+     "$",
+     "26,472",
+     "",
+     "$",
+     "21,033"
+    ],
+    [
+     "Adjusted General and Administrative Expenses as a Percentage of Revenue",
+     "",
+     "104.6%",
+     "",
+     "",
+     "273.2%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1503,
+    "end_line": 1524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The following unaudited table presents a reconciliation of Adjusted General and Administrative Expenses and Adjusted General and Administrative Expenses as a Percentage of Revenue to the most directly comparable GAAP measures for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "(1) For the three months ended March 31, 2023, comprised primarily of costs related to the reorganization of Company resources previously announced by the Company on February 23, 2023 and the petition filed by EVgo in the Delaware Court of Chancery in February 2023 seeking validation of EVgo's charter and share structure (the \u201c205 Petition\u201d), which are not expected to recur. For the three months ended March 31, 2022, comprised primarily of insurance proceeds for property losses.\nThe following unaudited table presents a reconciliation of EBITDA, EBITDA Margin, Adjusted EBITDA, and Adjusted EBITDA Margin to the most directly comparable GAAP measure, in each case, for the three months ended March 31, 2023 and 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "GAAP revenue",
+     "$",
+     "25,300",
+     "",
+     "$",
+     "7,700"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GAAP net loss",
+     "$",
+     "(49,081)",
+     "",
+     "$",
+     "(55,266)"
+    ],
+    [
+     "GAAP net loss margin",
+     "",
+     "(194.0%)",
+     "",
+     "",
+     "(717.7%)"
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, net of capital-build amortization",
+     "",
+     "6,468",
+     "",
+     "",
+     "3,517"
+    ],
+    [
+     "Amortization",
+     "",
+     "4,119",
+     "",
+     "",
+     "3,365"
+    ],
+    [
+     "Accretion",
+     "",
+     "539",
+     "",
+     "",
+     "459"
+    ],
+    [
+     "Interest income",
+     "",
+     "(1,998)",
+     "",
+     "",
+     "(55)"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "5",
+     "",
+     "",
+     "5"
+    ],
+    [
+     "EBITDA",
+     "$",
+     "(39,948)",
+     "",
+     "$",
+     "(47,975)"
+    ],
+    [
+     "EBITDA Margin",
+     "",
+     "(157.9%)",
+     "",
+     "",
+     "(623.1%)"
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "6,427",
+     "",
+     "",
+     "3,506"
+    ],
+    [
+     "Loss on disposal of property and equipment and impairment expense",
+     "",
+     "3,460",
+     "",
+     "",
+     "1,010"
+    ],
+    [
+     "(Gain) loss on investments",
+     "",
+     "(1)",
+     "",
+     "",
+     "255"
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "97",
+     "",
+     "",
+     "116"
+    ],
+    [
+     "Change in fair value of earnout liability",
+     "",
+     "2,063",
+     "",
+     "",
+     "2,264"
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "6,380",
+     "",
+     "",
+     "22,874"
+    ],
+    [
+     "Other (1)",
+     "",
+     "1,455",
+     "",
+     "",
+     "(226)"
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "(20,067)",
+     "",
+     "$",
+     "(18,176)"
+    ],
+    [
+     "Adjusted EBITDA Margin",
+     "",
+     "(79.3%)",
+     "",
+     "",
+     "(236.1%)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1530,
+    "end_line": 1564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(1) For the three months ended March 31, 2023, comprised primarily of costs related to the reorganization of Company resources previously announced by the Company on February 23, 2023 and the petition filed by EVgo in the Delaware Court of Chancery in February 2023 seeking validation of EVgo's charter and share structure (the \u201c205 Petition\u201d), which are not expected to recur. For the three months ended March 31, 2022, comprised primarily of insurance proceeds for property losses.\nThe following unaudited table presents a reconciliation of EBITDA, EBITDA Margin, Adjusted EBITDA, and Adjusted EBITDA Margin to the most directly comparable GAAP measure, in each case, for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "(1) For the three months ended March 31, 2023, comprised primarily of costs related to the reorganization of Company resources previously announced by the Company on February 23, 2023 and the 205 Petition, which are not expected to recur. For the three months ended March 31, 2022, comprised primarily of insurance proceeds for property losses.\nLiquidity and Capital Resources\nEVgo has a history of operating losses and negative operating cash flows. As of March 31, 2023, EVgo had $163.8 million of cash, cash equivalents and restricted cash and working capital of $114.6 million. As of December 31, 2022, EVgo had $246.5 million of cash, cash equivalents and restricted cash and working capital of $188.1 million. The Company\u2019s net cash outflow for the three months ended March 31, 2023 was $82.7 million. EVgo believes its cash and cash equivalents on hand as of March 31, 2023 are sufficient to meet EVgo\u2019s current working capital and capital expenditure requirements for a period of at least twelve months from the filing date of this Quarterly Report.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1573,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities",
+     "",
+     "$",
+     "(19,343)",
+     "",
+     "$",
+     "(19,831)"
+    ],
+    [
+     "Cash flows used in investing activities",
+     "",
+     "",
+     "(65,246)",
+     "",
+     "",
+     "(28,072)"
+    ],
+    [
+     "Cash flows provided by financing activities",
+     "",
+     "",
+     "1,908",
+     "",
+     "",
+     "4,101"
+    ],
+    [
+     "Net decrease in cash, cash equivalents and restricted cash",
+     "",
+     "$",
+     "(82,681)",
+     "",
+     "$",
+     "(43,802)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The term of the Tax Receivable Agreement commenced upon the completion of the CRIS Business Combination and will continue until all tax benefits that are subject to the Tax Receivable Agreement have been utilized or expired and all required payments are made, unless the Tax Receivable Agreement is terminated early (including upon a change of control). The actual timing and amount of any payments that may be made under the Tax Receivable Agreement are unknown at this time and will vary based on a number of factors. However, the Company Group expects that the payments that it will be required to make to TRA Holders in connection with the Tax Receivable Agreement will be substantial. Any payments made by the Company Group to TRA Holders under the Tax Receivable Agreement will generally reduce the amount of cash that might have otherwise been available to EVgo or EVgo OpCo. To the extent EVgo OpCo has available cash and subject to the terms of any current or future debt or other agreements, the EVgo OpCo A&R LLC Agreement will require EVgo OpCo to make pro rata cash distributions to holders of EVgo OpCo Units, including Thunder Sub, in an amount sufficient to allow the Company Group to pay its taxes and to make payments under the Tax Receivable Agreement. EVgo generally expects EVgo OpCo to fund such distributions out of available cash. However, except in cases where the Company Group elects to terminate the Tax Receivable Agreement early, the Tax Receivable Agreement is terminated early due to certain mergers or other changes of control, or the Company Group has available cash but fails to make payments when due, generally the Company Group may elect to defer payments due under the Tax Receivable Agreement if it does not have available cash to satisfy its payment obligations under the Tax Receivable Agreement or if its contractual obligations limit its ability to make these payments. Any such deferred payments under the Tax Receivable Agreement generally will accrue interest at the rate provided for in the Tax Receivable Agreement and such interest may significantly exceed the Company Group\u2019s other costs of capital. In certain circumstances (including an early termination of the Tax Receivable Agreement due to a change of control or otherwise), payments under the Tax Receivable Agreement may be accelerated and/or significantly exceed the actual benefits, if any, the Company Group realizes in respect of the tax attributes subject to the Tax Receivable Agreement. In the case of such an acceleration in connection with a change of control, where applicable, EVgo generally expects the accelerated payments due under the Tax Receivable Agreement to be funded out of the proceeds of the change of control transaction giving rise to such acceleration, which could have a significant impact on EVgo\u2019s ability to consummate a change of control or the proceeds received by EVgo\u2019s stockholders in connection with a change of control. However, the Company Group may be required to fund such payment from other sources and as a result, any early termination of the Tax Receivable Agreement could have a substantial negative impact on EVgo\u2019s liquidity or financial condition.\nCash Flows\nThe following table summarizes EVgo\u2019s consolidated cash flows for the three months ended March 31, 2023 and 2022:",
+   "prose_after": "Operating Activities. Cash used in operating activities for the three months ended March 31, 2023 was $19.3 million compared to $19.8 million for the three months ended March 31, 2022. The year-over-year change primarily reflected a $22.3 million increase in cash flows from deferred revenue and an $6.3 million increase in cash flows from accounts payable, which were partially offset by a $17.9 million decrease in cash flows from accounts receivable and an $8.0 million decrease in cash flows from prepaid expenses and other current and long-term assets.\nInvesting Activities. Cash used in investing activities for the three months ended March 31, 2023 was $65.2 million, compared to $28.1 million for the three months ended March 31, 2022. The increase was primarily driven by an increase in purchases of property, equipment and software.\nFinancing Activities. Cash provided by financing activities for the three months ended March 31, 2023 was $1.9 million compared to $4.1 million for the three months ended March 31, 2022. The decrease was driven primarily by a decrease in proceeds from capital-build funding received for charging stations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1573,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1595,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNo.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K, filed with the Securities and Exchange Commission on July 8, 2022)."
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Company (incorporated by reference to Exhibit 3.2 to the Company\u2019s Current Report on Form 8-K, filed with the Securities and Exchange Commission on July 8, 2022)."
+    ],
+    [
+     "4.1",
+     "Specimen Class A Common Stock Certificate (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-1 (Registration No. 333-248718), filed with the Securities and Exchange Commission on September 10, 2020)."
+    ],
+    [
+     "4.2",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.4 to the Company\u2019s Registration Statement on Form S-1 (Registration No. 333-248718), filed with the Securities and Exchange Commission on September 10, 2020)."
+    ],
+    [
+     "4.3",
+     "Warrant Agreement, dated September 29, 2020, between the Company and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K, filed with the Securities and Exchange Commission on October 5, 2020)."
+    ],
+    [
+     "10.1\u2020\u2020",
+     "EVgo Inc. Executive Change in Control and Severance Plan (incorporated by reference to Exhibit 10.12 to the Company\u2019s Annual Report, filed with the Securities and Exchange Commission on March 30, 2023)."
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 Certification of Chief Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 Certification of Chief Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1\u2020",
+     "Certification of Chief Executive Officer and Chief Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted in Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1712,
+    "end_line": 1752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Not applicable.\nItem 3. Defaults Upon Senior Securities\nNot applicable.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits\nSee Exhibit Index.\nEXHIBIT INDEX",
+   "prose_after": "* Filed herewith. \u2020 Furnished herewith. \u2020\u2020 Indicates a management contract or compensatory plan, contract or arrangement.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1709,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1755,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "EVgo Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2023",
+     "By:",
+     "/s/ Catherine Zoi"
+    ],
+    [
+     "",
+     "Name:",
+     "Catherine Zoi"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2023",
+     "By:",
+     "/s/ Olga Shevorenkova"
+    ],
+    [
+     "",
+     "Name:",
+     "Olga Shevorenkova"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "EVgo Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1760,
+    "end_line": 1775
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith. \u2020 Furnished herewith. \u2020\u2020 Indicates a management contract or compensatory plan, contract or arrangement.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1755,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1776,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

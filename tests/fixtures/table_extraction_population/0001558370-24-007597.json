@@ -1,0 +1,6926 @@
+{
+ "accession": "0001558370-24-007597",
+ "cik": "0001684144",
+ "form": "10-Q",
+ "filing_date": "2024-05-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "zom-20240331x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Alberta, Canada",
+     "N/A"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, DC 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2024.\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________.\nCommission File Number: 001-38298\nZomedica Corp.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "100 Phoenix Drive, Suite 125 Ann Arbor, Michigan",
+     "48108"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(734) 369-2555\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Shares, without par value",
+     "ZOM",
+     "NYSE American"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 60
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "As of May 9, 2024, 979,949,668 shares of the registrant\u2019s common shares, without par value, were issued and outstanding.\nFORM 10-Q\nFOR THE QUARTERLY PERIOD ENDED March 31, 2024\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of March 31, 2024 and December 31, 2023",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations and Comprehensive Loss for the Three Months Ended March 31, 2024 and 2023",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Shareholders\u2019 Equity for the Three Months Ended March 31, 2024 and 2023",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2024 and 2023",
+     ""
+    ],
+    [
+     "",
+     "Notes to the Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "26"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "34"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "35"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I",
+    "FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 91
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of May 9, 2024, 979,949,668 shares of the registrant\u2019s common shares, without par value, were issued and outstanding.\nFORM 10-Q\nFOR THE QUARTERLY PERIOD ENDED March 31, 2024\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nConsolidated Balance Sheets as of March 31, 2024 (Unaudited) and December 31, 2023\n(United States Dollars in Thousands)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "10,939",
+     "",
+     "$",
+     "12,952"
+    ],
+    [
+     "Available-for-sale securities",
+     "",
+     "",
+     "72,023",
+     "",
+     "",
+     "77,545"
+    ],
+    [
+     "Trade receivables, net",
+     "",
+     "",
+     "1,649",
+     "",
+     "",
+     "1,197"
+    ],
+    [
+     "Inventory, net",
+     "",
+     "",
+     "5,062",
+     "",
+     "",
+     "5,123"
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "",
+     "1,616",
+     "",
+     "",
+     "2,064"
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "780",
+     "",
+     "",
+     "1,001"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "92,069",
+     "",
+     "",
+     "99,882"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "",
+     "243",
+     "",
+     "",
+     "250"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "23,971",
+     "",
+     "",
+     "22,828"
+    ],
+    [
+     "Right-of-use asset",
+     "",
+     "",
+     "2,253",
+     "",
+     "",
+     "2,466"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "61,580",
+     "",
+     "",
+     "61,580"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "",
+     "54,802",
+     "",
+     "",
+     "55,364"
+    ],
+    [
+     "Non current available-for-sale securities",
+     "",
+     "",
+     "7,964",
+     "",
+     "",
+     "10,005"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "819",
+     "",
+     "",
+     "822"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "243,701",
+     "",
+     "$",
+     "253,197"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and shareholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "$",
+     "6,676",
+     "",
+     "$",
+     "7,668"
+    ],
+    [
+     "Accrued income taxes",
+     "",
+     "",
+     "66",
+     "",
+     "",
+     "65"
+    ],
+    [
+     "Current portion of lease obligations",
+     "",
+     "",
+     "847",
+     "",
+     "",
+     "916"
+    ],
+    [
+     "Customer contract liabilities",
+     "",
+     "",
+     "260",
+     "",
+     "",
+     "276"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "",
+     "159",
+     "",
+     "",
+     "107"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "8,008",
+     "",
+     "",
+     "9,032"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease obligations",
+     "",
+     "",
+     "1,657",
+     "",
+     "",
+     "1,814"
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "",
+     "955",
+     "",
+     "",
+     "1,138"
+    ],
+    [
+     "Customer contract liabilities",
+     "",
+     "",
+     "279",
+     "",
+     "",
+     "252"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "907",
+     "",
+     "",
+     "944"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "$",
+     "11,806",
+     "",
+     "$",
+     "13,180"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 14)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unlimited common shares, no par value; 979,949,668 issued and outstanding at March 31, 2024 and December 31, 2023",
+     "",
+     "$",
+     "380,973",
+     "",
+     "$",
+     "380,973"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "31,030",
+     "",
+     "",
+     "29,929"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(180,093)",
+     "",
+     "",
+     "(170,933)"
+    ],
+    [
+     "Accumulated comprehensive income (loss)",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "48"
+    ],
+    [
+     "Total shareholders' equity",
+     "",
+     "",
+     "231,895",
+     "",
+     "",
+     "240,017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "",
+     "$",
+     "243,701",
+     "",
+     "$",
+     "253,197"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nConsolidated Balance Sheets as of March 31, 2024 (Unaudited) and December 31, 2023\n(United States Dollars in Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive Loss for the Three Months Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands, Except for Per Share Data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 98,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue",
+     "",
+     "",
+     "$",
+     "6,262",
+     "",
+     "$",
+     "5,482"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "",
+     "",
+     "2,145",
+     "",
+     "",
+     "1,647"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "",
+     "4,117",
+     "",
+     "",
+     "3,835"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "",
+     "8,625",
+     "",
+     "",
+     "7,013"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "",
+     "1,771",
+     "",
+     "",
+     "918"
+    ],
+    [
+     "Selling and marketing",
+     "",
+     "",
+     "",
+     "4,107",
+     "",
+     "",
+     "3,416"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "",
+     "(10,386)",
+     "",
+     "",
+     "(7,512)"
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "",
+     "1,093",
+     "",
+     "",
+     "1,412"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(50)"
+    ],
+    [
+     "Gain on disposal of assets",
+     "",
+     "",
+     "",
+     "12",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other income (loss)",
+     "",
+     "",
+     "",
+     "84",
+     "",
+     "",
+     "(1)"
+    ],
+    [
+     "Foreign exchange loss",
+     "",
+     "",
+     "",
+     "(129)",
+     "",
+     "",
+     "(26)"
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "",
+     "",
+     "(9,326)",
+     "",
+     "",
+     "(6,177)"
+    ],
+    [
+     "Income tax (benefit) expense",
+     "",
+     "",
+     "",
+     "(166)",
+     "",
+     "",
+     "208"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "(9,160)",
+     "",
+     "",
+     "(6,385)"
+    ],
+    [
+     "Unrealized gain (loss), change in fair value of available-for-sale securities, net of tax",
+     "",
+     "",
+     "",
+     "(11)",
+     "",
+     "",
+     "283"
+    ],
+    [
+     "Change in foreign currency translation",
+     "",
+     "",
+     "",
+     "(52)",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "Net loss and comprehensive loss",
+     "",
+     "",
+     "$",
+     "(9,223)",
+     "",
+     "$",
+     "(6,099)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares - basic and diluted",
+     "",
+     "",
+     "",
+     "979,949,668",
+     "",
+     "",
+     "979,949,668"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share - basic and diluted (Note 16)",
+     "",
+     "",
+     "",
+     "(0.009)",
+     "",
+     "",
+     "(0.007)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 174,
+    "end_line": 212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive Loss for the Three Months Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands, Except for Per Share Data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Shareholders\u2019 Equity for the Three Months Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 215,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Loss)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "979,949,668",
+     "",
+     "$",
+     "380,973",
+     "",
+     "$",
+     "29,929",
+     "",
+     "$",
+     "(170,933)",
+     "",
+     "$",
+     "48",
+     "",
+     "$",
+     "240,017"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,101",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,101"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9,160)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9,160)"
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(63)",
+     "",
+     "",
+     "(63)"
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "979,949,668",
+     "",
+     "$",
+     "380,973",
+     "",
+     "$",
+     "31,030",
+     "",
+     "$",
+     "(180,093)",
+     "",
+     "$",
+     "(15)",
+     "",
+     "$",
+     "231,895"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 221,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Shareholders\u2019 Equity for the Three Months Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 215,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Loss)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "979,949,668",
+     "",
+     "$",
+     "380,973",
+     "",
+     "$",
+     "23,666",
+     "",
+     "$",
+     "(136,404)",
+     "",
+     "$",
+     "(843)",
+     "",
+     "$",
+     "267,392"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,765",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,765"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,385)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,385)"
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "286",
+     "",
+     "",
+     "286"
+    ],
+    [
+     "Balance at March 31, 2023",
+     "",
+     "979,949,668",
+     "",
+     "$",
+     "380,973",
+     "",
+     "$",
+     "25,431",
+     "",
+     "$",
+     "(142,789)",
+     "",
+     "$",
+     "(557)",
+     "",
+     "$",
+     "263,058"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 238,
+    "end_line": 254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Cash Flows for the Three Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 215,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(9,160)",
+     "",
+     "$",
+     "(6,385)"
+    ],
+    [
+     "Adjustments for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "334",
+     "",
+     "",
+     "164"
+    ],
+    [
+     "Amortization - intangible assets",
+     "",
+     "",
+     "1,597",
+     "",
+     "",
+     "1,199"
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "1,101",
+     "",
+     "",
+     "1,765"
+    ],
+    [
+     "Non cash portion of rent benefit",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "(1)"
+    ],
+    [
+     "Accretion/amortization of available-for-sale securities",
+     "",
+     "",
+     "(543)",
+     "",
+     "",
+     "(654)"
+    ],
+    [
+     "Deferred tax expense",
+     "",
+     "",
+     "(184)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in assets and liabilities, net of acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchased inventory",
+     "",
+     "",
+     "60",
+     "",
+     "",
+     "(731)"
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "",
+     "450",
+     "",
+     "",
+     "(1,022)"
+    ],
+    [
+     "Trade receivables",
+     "",
+     "",
+     "(452)",
+     "",
+     "",
+     "144"
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "322",
+     "",
+     "",
+     "263"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "",
+     "(1,133)",
+     "",
+     "",
+     "721"
+    ],
+    [
+     "Accrued income tax",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "46"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "",
+     "52",
+     "",
+     "",
+     "(16)"
+    ],
+    [
+     "Customer contract liabilities",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "116"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "(35)",
+     "",
+     "",
+     "134"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "$",
+     "(7,590)",
+     "",
+     "$",
+     "(4,257)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities (purchased) matured",
+     "",
+     "$",
+     "7,988",
+     "",
+     "$",
+     "(8,072)"
+    ],
+    [
+     "Investment in debt security (at fair value)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,750)"
+    ],
+    [
+     "Investment in property and equipment",
+     "",
+     "",
+     "(2,335)",
+     "",
+     "",
+     "(970)"
+    ],
+    [
+     "Acquisition of intangibles",
+     "",
+     "",
+     "(28)",
+     "",
+     "",
+     "(4,000)"
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "$",
+     "5,625",
+     "",
+     "$",
+     "(14,792)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in cash and cash equivalents",
+     "",
+     "$",
+     "(1,965)",
+     "",
+     "$",
+     "(19,049)"
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "",
+     "",
+     "(48)",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "",
+     "12,952",
+     "",
+     "",
+     "27,399"
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "$",
+     "10,939",
+     "",
+     "$",
+     "8,353"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of available-for-sale securities, net of tax",
+     "",
+     "$",
+     "(11)",
+     "",
+     "$",
+     "283"
+    ],
+    [
+     "Property and equipment accrued for in accounts payable",
+     "",
+     "$",
+     "151",
+     "",
+     "$",
+     "3"
+    ],
+    [
+     "Transfer of property and equipment into intangibles",
+     "",
+     "$",
+     "1,007",
+     "",
+     "$",
+     "354"
+    ],
+    [
+     "Transfer of inventory into property and equipment",
+     "",
+     "$",
+     "2",
+     "",
+     "$",
+     "732"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest received on available-for-sale securities",
+     "",
+     "$",
+     "708",
+     "",
+     "$",
+     "783"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 263,
+    "end_line": 317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nConsolidated Statements of Cash Flows for the Three Ended March 31, 2024 and 2023\n(Unaudited) (United States Dollars in Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\n1. Nature of Operations\nZomedica is a veterinary health company creating products for companion animals by focusing on the unmet needs of clinical veterinarians. The Company consists of the parent company, Zomedica Corp., its wholly owned U.S subsidiary, Zomedica Inc., and the wholly owned subsidiaries of Zomedica Inc.\n2. Basis of Preparation\nPrinciples of Consolidation\nThe consolidated financial statements include the accounts of the Company, and its wholly owned subsidiaries. Intercompany transactions and balances between consolidated businesses have been eliminated.\nThe accounting policies set out below have been applied consistently in the consolidated financial statements. The consolidated financial statements have been prepared in conformity with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d). In the opinion of management, the unaudited consolidated financial statements include all normal recurring adjustments necessary to present fairly the information required to be set forth therein.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 320,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Diagnostics",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Therapeutic Devices",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Consolidated",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023"
+    ],
+    [
+     "Capital",
+     "",
+     "$",
+     "450",
+     "",
+     "$",
+     "217",
+     "",
+     "$",
+     "1,774",
+     "",
+     "$",
+     "1,493",
+     "",
+     "$",
+     "2,224",
+     "",
+     "$",
+     "1,710"
+    ],
+    [
+     "Consumables",
+     "",
+     "",
+     "294",
+     "",
+     "",
+     "182",
+     "",
+     "",
+     "3,716",
+     "",
+     "",
+     "3,567",
+     "",
+     "",
+     "4,010",
+     "",
+     "",
+     "3,749"
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "28",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "28",
+     "",
+     "",
+     "23"
+    ],
+    [
+     "Total revenue",
+     "",
+     "$",
+     "744",
+     "",
+     "$",
+     "399",
+     "",
+     "$",
+     "5,518",
+     "",
+     "$",
+     "5,083",
+     "",
+     "$",
+     "6,262",
+     "",
+     "$",
+     "5,482"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 428,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The nature of the Company\u2019s PulseVet\u00ae business gives rise to variable consideration, including discounts and applicator (\u201ctrode\u201d) returns for refurbishment. Credits are issued for unused shocks on returned trodes, which can be used toward the purchase of replacement trodes. Discounts and the estimated unused shock credits decrease the transaction price, which reduces revenue. Variable consideration related to unused shock credits is estimated using the expected value method, which estimates the amount that is expected to be earned.\nEstimated amounts are included in the transaction price to the extent it is probable that a significant reversal of cumulative revenue recognized will not occur when the uncertainty associated with the variable consideration is resolved. Estimates of variable consideration are based upon historical experience and known trends. These estimated credits are nonrefundable and may only be used towards the purchase of future trode refurbishments. This practice encourages refurbishment purchase prior to complete utilization of the previous trode, so the customer will always have a trode on hand with ample capacity to perform treatments.\nAt times, the Company receives consideration prior to when the performance obligation is completed, giving rise to a contract liability. Sales are recorded net of sales tax. Sales tax is charged on sales to end users and remitted to the appropriate state authority.\nDisaggregated revenue for the three months ended March 31, 2024 and 2023 is as follows:",
+   "prose_after": "Zomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nCost of Revenue\nCost of goods sold consists of overhead, materials, labor, shipping costs, and a portion of depreciation incurred internally to produce and receive the products. Shipping and handling costs incurred by the Company are included in cost of revenue.\nResearch and Development\nResearch and development costs related to continued research and development programs are expensed as incurred.\nStock-based Compensation\nThe Company calculates stock-based compensation using the fair value method, under which the fair value of the options at the grant date is calculated using the Black-Scholes Option Pricing Model, and subsequently expensed over the vesting period of the option using the graded vesting method. The provisions of the Company\u2019s stock-based compensation plans do not require the Company to settle any options by transferring cash or other assets, and therefore the Company classifies the awards as equity. Stock-based compensation expense recognized during the period is based on the value of stock-based payment awards that are ultimately expected to vest.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at March 31, 2024",
+     "",
+     "",
+     "Acquisition Cost",
+     "",
+     "",
+     "Accretion / (Amortization)",
+     "",
+     "",
+     "Unrealized Gain / (Loss)",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "24,983",
+     "",
+     "$",
+     "527",
+     "",
+     "$",
+     "(26)",
+     "",
+     "$",
+     "25,484"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "39,077",
+     "",
+     "",
+     "349",
+     "",
+     "",
+     "(70)",
+     "",
+     "",
+     "39,356"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,133",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,133"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "9,080",
+     "",
+     "",
+     "152",
+     "",
+     "",
+     "(18)",
+     "",
+     "",
+     "9,214"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "7,467",
+     "",
+     "",
+     "184",
+     "",
+     "",
+     "(21)",
+     "",
+     "",
+     "7,630"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "85,740",
+     "",
+     "$",
+     "1,212",
+     "",
+     "$",
+     "(135)",
+     "",
+     "$",
+     "86,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 514,
+    "end_line": 525
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Investment Securities"
+    }
+   },
+   "prose_before": "The nature of the Company\u2019s business gives rise to variable consideration, including discounts and applicator (\u201ctrode\u201d) returns for refurbishment. Credits are issued for unused shocks on returned trodes, which can be used toward the purchase of replacement trodes. Discounts and the estimated unused shock credits decrease the transaction price, which reduces revenue. Variable consideration related to unused shock credits is estimated using the expected value method, which estimates the amount that is expected to be earned. Estimated amounts are included in the transaction price to the extent it is probable that a significant reversal of cumulative revenue recognized will not occur when the uncertainty associated with the variable consideration is resolved. Estimates of variable consideration are estimated based upon historical experience and known trends. These estimated credits are non-refundable and may only be used towards the purchase of future trode refurbishments. This practice encourages refurbishment purchase prior to complete utilization of the previous trode, so the customer will always have a trode at hand with ample capacity to perform treatments.\n5. Investment Securities\nThe following represents the Company\u2019s investment securities as of March 31, 2024 and December 31, 2023 (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at December 31, 2023",
+     "",
+     "",
+     "Acquisition Cost",
+     "",
+     "",
+     "Accretion / (Amortization)",
+     "",
+     "",
+     "Unrealized Gain / (Loss)",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "15,681",
+     "",
+     "$",
+     "285",
+     "",
+     "$",
+     "20",
+     "",
+     "$",
+     "15,986"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "45,954",
+     "",
+     "",
+     "614",
+     "",
+     "",
+     "(75)",
+     "",
+     "",
+     "46,493"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,374",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,374"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "18,076",
+     "",
+     "",
+     "122",
+     "",
+     "",
+     "(33)",
+     "",
+     "",
+     "18,165"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "10,282",
+     "",
+     "",
+     "156",
+     "",
+     "",
+     "(36)",
+     "",
+     "",
+     "10,402"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "95,367",
+     "",
+     "$",
+     "1,177",
+     "",
+     "$",
+     "(124)",
+     "",
+     "$",
+     "96,420"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Investment Securities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Accretion / (amortization) refers to the discounts and premiums incurred on bonds and notes purchased and are included within interest income on our consolidated income statement.\nAccrued interest receivable, related to the above investment securities, amounted to $521 and $690 for the three months ended March 31, 2024 and 2023 and are included within Other Receivables on our consolidated balance sheets.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nContractual maturities of investment securities as of March 31, 2024 are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Acquisition Cost",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Original maturities of 90 days or less",
+     "",
+     "$",
+     "6,824",
+     "",
+     "$",
+     "6,830"
+    ],
+    [
+     "Original maturities of 91-365 days",
+     "",
+     "",
+     "70,926",
+     "",
+     "",
+     "72,023"
+    ],
+    [
+     "Original maturities of 366+ days",
+     "",
+     "",
+     "7,990",
+     "",
+     "",
+     "7,964"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "85,740",
+     "",
+     "$",
+     "86,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 556
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Investment Securities"
+    }
+   },
+   "prose_before": "Accretion / (amortization) refers to the discounts and premiums incurred on bonds and notes purchased and are included within interest income on our consolidated income statement.\nAccrued interest receivable, related to the above investment securities, amounted to $521 and $690 for the three months ended March 31, 2024 and 2023 and are included within Other Receivables on our consolidated balance sheets.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nContractual maturities of investment securities as of March 31, 2024 are as follows (in thousands):",
+   "prose_after": "6. Fair Value Measurements\nIn accordance with FASB ASC 820, \u201cFair Value Measurements and Disclosures,\u201d (\u201cASC 820\u201d), the Company measures its cash and cash equivalents and investments at fair value on a recurring basis. The Company also measures certain assets and liabilities at fair value on a non-recurring basis when applying acquisition accounting.\nASC Topic 820 clarifies that fair value is an exit price, representing the amount that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants. As such, fair value is a market-based measurement that should be determined based on assumptions that market participants would use in pricing an asset or liability.\nAs a basis for considering such assumptions, ASC Topic 820 establishes a three-tier fair value hierarchy, which prioritizes the inputs used in measuring fair value as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1:",
+     "Observable inputs that reflect quoted prices (unadjusted) in active markets for identical assets or liabilities."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "6. Fair Value Measurements\nIn accordance with FASB ASC 820, \u201cFair Value Measurements and Disclosures,\u201d (\u201cASC 820\u201d), the Company measures its cash and cash equivalents and investments at fair value on a recurring basis. The Company also measures certain assets and liabilities at fair value on a non-recurring basis when applying acquisition accounting.\nASC Topic 820 clarifies that fair value is an exit price, representing the amount that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants. As such, fair value is a market-based measurement that should be determined based on assumptions that market participants would use in pricing an asset or liability.\nAs a basis for considering such assumptions, ASC Topic 820 establishes a three-tier fair value hierarchy, which prioritizes the inputs used in measuring fair value as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 2:",
+     "Observable inputs other than quoted prices included in Level 1 for similar assets or liabilities, quoted prices in markets that are not active, or other inputs that are observable or can be corroborated by observable market data for substantially the full term of the related assets or liabilities."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3:",
+     "Unobservable data points for the assets or liability, and include situations where there is little, if any, market activity for the asset or liability. Valuations based on inputs that are unobservable and involve management judgement and the reporting entity\u2019s own assumptions about market participants and pricing."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Cash and cash equivalents, accounts receivable, and accounts payable: The carrying amount of these assets approximate fair value due to the short maturity of these instruments. Cash and cash equivalents include marketable securities with an original maturity within 90 days.\nAvailable-for-sale securities: The Company classifies marketable securities and other highly liquid investments, with a maturity of greater than three months and that can be readily purchased or sold using established markets, as available-for-sale. These investments are reported at fair value on the Company\u2019s consolidated balance sheets and unrealized gains and losses are reported as a component of shareholders\u2019 equity.\nEarnout liability: The Company has reported the fair value of the earnout liability within other liabilities on the consolidated balance sheet. See footnote 7 for additional details.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nIn accordance with the fair value hierarchy described above, the following table shows the fair value of our investments as of March 31, 2024 and December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at March 31, 2024",
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,484",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,484"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,356",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,356"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,133",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,133"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "9,214",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,214"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "7,630",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,630"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "21,977",
+     "",
+     "$",
+     "64,840",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "86,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 590,
+    "end_line": 601
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Cash and cash equivalents, accounts receivable, and accounts payable: The carrying amount of these assets approximate fair value due to the short maturity of these instruments. Cash and cash equivalents include marketable securities with an original maturity within 90 days.\nAvailable-for-sale securities: The Company classifies marketable securities and other highly liquid investments, with a maturity of greater than three months and that can be readily purchased or sold using established markets, as available-for-sale. These investments are reported at fair value on the Company\u2019s consolidated balance sheets and unrealized gains and losses are reported as a component of shareholders\u2019 equity.\nEarnout liability: The Company has reported the fair value of the earnout liability within other liabilities on the consolidated balance sheet. See footnote 7 for additional details.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nIn accordance with the fair value hierarchy described above, the following table shows the fair value of our investments as of March 31, 2024 and December 31, 2023:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at December 31, 2023",
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "15,986",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "15,986"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "46,493",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "46,493"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,374",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,374"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "18,165",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "18,165"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "10,402",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,402"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "33,941",
+     "",
+     "$",
+     "62,479",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "96,420"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 602,
+    "end_line": 613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following tables shows our investments as of March 31, 2024 and December 31, 2023 and their respective balance sheet classifications:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at March 31, 2024",
+     "",
+     "",
+     "Cash & Cash Equiv.",
+     "",
+     "",
+     "Available- For-Sale (Current)",
+     "",
+     "",
+     "Available- For-Sale (Non-Current)",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,484",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,484"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "31,392",
+     "",
+     "",
+     "7,964",
+     "",
+     "",
+     "39,356"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,133",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,133"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,214",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,214"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "1,697",
+     "",
+     "",
+     "5,933",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,630"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "6,830",
+     "",
+     "$",
+     "72,023",
+     "",
+     "$",
+     "7,964",
+     "",
+     "$",
+     "86,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following tables shows our investments as of March 31, 2024 and December 31, 2023 and their respective balance sheet classifications:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at December 31, 2023",
+     "",
+     "",
+     "Cash & Cash Equiv.",
+     "",
+     "",
+     "Available- For-Sale (Current)",
+     "",
+     "",
+     "Available- For-Sale (Non-Current)",
+     "",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Commercial paper",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "15,986",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "15,986"
+    ],
+    [
+     "Corporate notes / bonds",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "36,973",
+     "",
+     "",
+     "9,520",
+     "",
+     "",
+     "46,493"
+    ],
+    [
+     "Money market funds",
+     "",
+     "",
+     "5,374",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,374"
+    ],
+    [
+     "U.S. govt. agencies",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "17,680",
+     "",
+     "",
+     "485",
+     "",
+     "",
+     "18,165"
+    ],
+    [
+     "U.S. treasuries",
+     "",
+     "",
+     "3,496",
+     "",
+     "",
+     "6,906",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,402"
+    ],
+    [
+     "Total investment securities",
+     "",
+     "$",
+     "8,870",
+     "",
+     "$",
+     "77,545",
+     "",
+     "$",
+     "10,005",
+     "",
+     "$",
+     "96,420"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Unrealized gains on our investments have not been recorded into income as we do not intend to sell nor is it more likely than not that we will be required to sell these investments prior to recovery of their amortized cost basis. The decline in fair value of our debt securities is largely due to the rising interest rate environment driven by current market conditions that have resulted in higher credit spreads. The credit ratings associated with our debt securities are mostly unchanged, are highly rated, and the debtors continue to make timely principal and interest payments. As a result, there were no credit or non-credit impairment charges recorded through March 31, 2024.\n7. Business Combinations\nAll of the Company\u2019s acquisitions of businesses have been accounted for under ASC 805, Business Combinations. Accordingly, the assets of the acquired companies reflect the fair values and have been included in the Company\u2019s Condensed Financial Statements from their respective dates of acquisition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Initial",
+     "",
+     "",
+     "Measurement",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Allocation of",
+     "",
+     "",
+     "Period",
+     "",
+     "",
+     "Updated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consideration",
+     "",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "Allocation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade receivables, net",
+     "",
+     "$",
+     "8",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "8"
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10"
+    ],
+    [
+     "Intangible Assets (estimated useful life)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade name (5 years)",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "200"
+    ],
+    [
+     "Developed technology (10 years)",
+     "",
+     "",
+     "2,300",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,300"
+    ],
+    [
+     "Customer relationships (16 years)",
+     "",
+     "",
+     "1,200",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,200"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "",
+     "3,718",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,718"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnout liabilities",
+     "",
+     "",
+     "2,458",
+     "",
+     "",
+     "(458)",
+     "",
+     "",
+     "2,000"
+    ],
+    [
+     "Total liabilities assumed",
+     "",
+     "",
+     "2,458",
+     "",
+     "",
+     "(458)",
+     "",
+     "",
+     "2,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired, excluding goodwill",
+     "",
+     "",
+     "1,260",
+     "",
+     "",
+     "458",
+     "",
+     "",
+     "1,718"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "6,528",
+     "",
+     "",
+     "(458)",
+     "",
+     "",
+     "6,070"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "$",
+     "7,788",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "7,788"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 672,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "In addition, Zomedica Inc. has agreed to pay Revo Squared aggregate earn-out payments ranging from $0 to $4,000 based on the achievement of milestones related to future net sales from Revo Squared Products. One-time earn-out payments of $2,000 each will be payable upon net sales from Revo Squared Products exceeding $5,000 and $10,000 during any calendar year ending on or prior to December 31, 2027. The fair value of the earnout liability was adjusted from $2,000 to $540 at March 31, 2024. Fair value of the earnout was determined using Level 3 inputs.\nAs a result of total consideration exceeding the preliminary fair value of the net assets acquired, goodwill in the amount of $6,528 was recorded in connection with this acquisition, which will be deductible for US tax purposes. The goodwill largely results from our ability to market and sell their respective products and services through our established customer base.\nThe Company finalized the allocation of the purchase price for Revo Squared as of the acquisition date based on its understanding of the fair value of the acquired assets and assumed liabilities.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nThe final allocation of the purchase price to the assets acquired and liabilities assumed, based on their estimated fair values at the acquisition date, is as follows:",
+   "prose_after": "Purchase price consideration was made up of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "",
+     "$",
+     "6,011"
+    ],
+    [
+     "Fair value of warrants",
+     "",
+     "",
+     "1,777"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "7,788"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "Purchase price consideration was made up of the following:",
+   "prose_after": "Asset Purchase Agreement with Assisi Animal Health LLC\nOn July 15, 2022, Zomedica Corp. and its wholly owned subsidiary Zomedica Inc. entered into an Asset Purchase Agreement with Assisi Animal Health LLC (\u201cAssisi\u201d), its wholly owned subsidiary, AAH Holdings LLC, and certain of Assisi\u2019s members (collectively the \u201cSeller\u201d) pursuant to which Zomedica Inc. agreed to acquire substantially all of the assets related to the Assisi\u00ae product lines. The Sellers were in the business of developing, manufacturing, marketing, distributing and selling animal health products which use targeted Pulsed Electromagnetic Field (PEMF) therapy to decrease pain and inflammation, accelerate healing, and reduce anxiety that include the Assisi Loop\u00ae, Assisi Loop Lounge\u00ae, Assisi DentaLoop\u00ae and Calmer Canine\u00ae product lines.\nZomedica Inc. paid Assisi a purchase price of $18,293 in cash, which was subject to adjustments based on, among other things, the value of Assisi\u2019s inventory and prepaid expenses at the closing of the acquisition. A portion of the purchase price ($1,400) was deposited into a third-party escrow account. The balance of the escrow account was released to seller on the 18-month anniversary of the Closing Date as there were no indemnification claims. The Company also issued to Assisi a ten-year warrant to purchase an aggregate of 22,000,000 of the Company\u2019s common shares at a per share exercise price equal to $0.252. The warrants may be exercised on a cash or cashless basis, at the election of the warrant holder.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Initial",
+     "",
+     "",
+     "Measurement",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Allocation of",
+     "",
+     "",
+     "Period",
+     "",
+     "",
+     "Updated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consideration",
+     "",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "Allocation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "$",
+     "220",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "220"
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "",
+     "271",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "271"
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "406",
+     "",
+     "",
+     "(206)",
+     "",
+     "",
+     "200"
+    ],
+    [
+     "Right of use asset",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "260",
+     "",
+     "",
+     "260"
+    ],
+    [
+     "Intangible Assets (estimated useful life)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "E-commerce technology (2 years)",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "200"
+    ],
+    [
+     "Trade name (5 years)",
+     "",
+     "",
+     "300",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "300"
+    ],
+    [
+     "Developed technology (10 years)",
+     "",
+     "",
+     "4,500",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,500"
+    ],
+    [
+     "Customer relationships (19 years)",
+     "",
+     "",
+     "2,800",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,800"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "",
+     "8,697",
+     "",
+     "",
+     "54",
+     "",
+     "",
+     "8,751"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of lease obligations",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "49",
+     "",
+     "",
+     "49"
+    ],
+    [
+     "Non current portion of lease obligations",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "211",
+     "",
+     "",
+     "211"
+    ],
+    [
+     "Other non current liabilities",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "45"
+    ],
+    [
+     "Total liabilities assumed",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "260",
+     "",
+     "",
+     "305"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired, excluding goodwill",
+     "",
+     "",
+     "8,652",
+     "",
+     "",
+     "(206)",
+     "",
+     "",
+     "8,446"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "14,329",
+     "",
+     "",
+     "206",
+     "",
+     "",
+     "14,535"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "$",
+     "22,981",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "22,981"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 723,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "Zomedica Inc. paid Assisi a purchase price of $18,293 in cash, which was subject to adjustments based on, among other things, the value of Assisi\u2019s inventory and prepaid expenses at the closing of the acquisition. A portion of the purchase price ($1,400) was deposited into a third-party escrow account. The balance of the escrow account was released to seller on the 18-month anniversary of the Closing Date as there were no indemnification claims. The Company also issued to Assisi a ten-year warrant to purchase an aggregate of 22,000,000 of the Company\u2019s common shares at a per share exercise price equal to $0.252. The warrants may be exercised on a cash or cashless basis, at the election of the warrant holder.\nAs a result of total consideration exceeding the preliminary fair value of the net assets acquired, goodwill in the amount of $14,329 was recorded in connection with this acquisition, which will be deductible for US tax purposes. The goodwill largely results from our ability to market and sell their respective products and services through our established customer base.\nThe Company finalized the allocation of the purchase price for Assisi as of the acquisition date based on its understanding of the fair value of the acquired assets and assumed liabilities.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nThe final allocation of the purchase price to the assets acquired and liabilities assumed, based on their estimated fair values at the acquisition date, is as follows:",
+   "prose_after": "Purchase price consideration was made up of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "",
+     "$",
+     "18,293"
+    ],
+    [
+     "Fair value of warrants",
+     "",
+     "",
+     "4,688"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "22,981"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "Purchase price consideration was made up of the following:",
+   "prose_after": "2023 Acquisitions\nStock Purchase Agreement with Structured Monitoring Products, Inc.\nOn September 4, 2023, Zomedica Inc., a wholly owned subsidiary of Zomedica Corp. (the \u201cCompany\u201d), entered into a Stock Purchase Agreement with Structured Monitoring Products, Inc. pursuant to which Zomedica Inc. acquired 100% of the capital stock of Structured Monitoring Products, Inc., a Florida corporation (\u201cSMP\u201d). SMP is the maker of VetGuardian\u00ae, a zero-touch vital signs remote monitoring system that improves the quality of care for pets during recovery from surgery and for those staying in clinic overnight. The system provides real-time remote monitoring of the pet\u2019s vital signs with the ability to alert staff if the vital signs fall outside preset ranges (the \u201cAcquisition\u201d). The Acquisition was consummated on September 5, 2023.\nIn connection with the Acquisition, the Company converted $2,750 in convertible debt and accrued interest of $171 owed by SMP to the Company into equity totaling 28.7% outstanding equity of SMP, which has an implied value of $5,095 based upon the SMP\u2019s enterprise value of $18,000. Zomedica paid a purchase price of $12,952 for the balance of 71.3% equity of SMP. The cash purchase price was funded through a $250 deposit previously paid to SMP and $12,702 of cash on hand. At closing, Zomedica deposited $1,295 in escrow. $215 was released at 90 days as there were no adjustments to the working capital, cash, indebtedness, and transaction expenses. The remaining balance will be released 18 months following the date of closing less the amount of any pending or prior indemnification claims.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Initial",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Allocation of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consideration",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "42"
+    ],
+    [
+     "Trade receivables, net(1)",
+     "",
+     "",
+     "11"
+    ],
+    [
+     "Inventory, net",
+     "",
+     "",
+     "316"
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "Intangible assets (estimated useful life)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Developed technology (10 years)",
+     "",
+     "",
+     "9,400"
+    ],
+    [
+     "Non-competition agreement (3 years)",
+     "",
+     "",
+     "200"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "",
+     "9,970"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "6"
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "",
+     "1,713"
+    ],
+    [
+     "Total liabilities assumed",
+     "",
+     "",
+     "1,719"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired, excluding goodwill",
+     "",
+     "",
+     "8,251"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "9,796"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "$",
+     "18,047"
+    ]
+   ],
+   "caption_stack": [
+    "Initial",
+    "Allocation of",
+    "Consideration"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 809
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "As a result of total consideration exceeding the preliminary fair value of the net assets acquired, goodwill in the amount of $9,796 was recorded in connection with the Acquisition, none of which will be deductible for U.S tax purposes. The goodwill is mainly attributable to skills and technical talent of SMP\u2019s work force and the synergies expected to be achieved from integrating SMP into the Company\u2019s existing business.\nThe previously held equity interests were remeasured to its fair value as of the acquisition date. The Company computed the fair value based upon the SMP\u2019s enterprise value of $18,000 and the fair value of previously held 28.7% equity interests were determined to be $5,095. The Company recognized an amount of $2,174 as a gain on the fair valuation of Company\u2019s previously held equity interest in SMP and was included in other income (loss) in our Form 10-K as part of our consolidated statements of operations and comprehensive loss for the period ended December 31, 2023.\nThe following table summarizes the fair value amounts of identifiable assets acquired and liabilities assumed at the acquisition date:",
+   "prose_after": "(1) The \u201ctrade receivables, net\u201d comprise gross contractual amounts due of $11, of which no amounts were expected to be uncollectable at the date of acquisition.\nThe Company evaluated the disclosure requirements under ASC 805 and determined SMP was not considered a material business combination for purposes of disclosing the earnings of SMP since the date of acquisition and supplemental pro forma information.\nPurchase price consideration was made up of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "",
+     "$",
+     "12,702"
+    ],
+    [
+     "Fair value of previously held interest",
+     "",
+     "",
+     "5,095"
+    ],
+    [
+     "Prepaid deposits",
+     "",
+     "",
+     "250"
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "$",
+     "18,047"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "12,702"
+    ],
+    [
+     "Less: cash acquired",
+     "",
+     "",
+     "(42)"
+    ],
+    [
+     "Investment in acquisitions, net of cash acquired",
+     "",
+     "$",
+     "12,660"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 816,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "(1) The \u201ctrade receivables, net\u201d comprise gross contractual amounts due of $11, of which no amounts were expected to be uncollectable at the date of acquisition.\nThe Company evaluated the disclosure requirements under ASC 805 and determined SMP was not considered a material business combination for purposes of disclosing the earnings of SMP since the date of acquisition and supplemental pro forma information.\nPurchase price consideration was made up of the following:",
+   "prose_after": "The determination of the final purchase price allocation to specific assets, primarily intangibles, is incomplete and may change in future periods.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nLLC Membership Interest Purchase Agreement for the Acquisition of Qorvo Biotechnologies, LLC\nOn October 4, 2023, Zomedica Inc., a wholly owned subsidiary of Zomedica Corp. (the \u201cCompany\u201d), entered into an LLC Membership Interest Purchase Agreement with Qorvo US, Inc. (\u201cQorvo\u201d) pursuant to which Zomedica Inc. acquired 100% of the membership interests of Qorvo Biotechnologies, LLC, a Delaware limited liability company (\u201cQBT\u201d) from Qorvo. QBT develops the TRUFORMA\u00ae Platform that utilizes innovative Bulk Acoustic Wave sensor technology to provide a non-optical and fluorescence free system for the detection of disease at the point of care (the \u201cAcquisition\u201d). The Acquisition was consummated on October 4, 2023.\nZomedica paid Qorvo a purchase price of $7,646, which comprised of cash of $11,300 and settlement of pre-existing relationship of $3,654. The cash purchase price was funded through the cash on hand.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Initial",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Allocation of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consideration",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "$",
+     "1,674"
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "52"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "6,495"
+    ],
+    [
+     "Right-of-use asset",
+     "",
+     "",
+     "1,202"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "19"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "",
+     "9,442"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "",
+     "594"
+    ],
+    [
+     "Current portion of lease obligations",
+     "",
+     "",
+     "249"
+    ],
+    [
+     "Lease obligations",
+     "",
+     "",
+     "953"
+    ],
+    [
+     "Total liabilities assumed",
+     "",
+     "",
+     "1,796"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired, excluding goodwill",
+     "",
+     "",
+     "7,646"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "$",
+     "7,646"
+    ]
+   ],
+   "caption_stack": [
+    "Initial",
+    "Allocation of",
+    "Consideration"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 842,
+    "end_line": 868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "LLC Membership Interest Purchase Agreement for the Acquisition of Qorvo Biotechnologies, LLC\nOn October 4, 2023, Zomedica Inc., a wholly owned subsidiary of Zomedica Corp. (the \u201cCompany\u201d), entered into an LLC Membership Interest Purchase Agreement with Qorvo US, Inc. (\u201cQorvo\u201d) pursuant to which Zomedica Inc. acquired 100% of the membership interests of Qorvo Biotechnologies, LLC, a Delaware limited liability company (\u201cQBT\u201d) from Qorvo. QBT develops the TRUFORMA\u00ae Platform that utilizes innovative Bulk Acoustic Wave sensor technology to provide a non-optical and fluorescence free system for the detection of disease at the point of care (the \u201cAcquisition\u201d). The Acquisition was consummated on October 4, 2023.\nZomedica paid Qorvo a purchase price of $7,646, which comprised of cash of $11,300 and settlement of pre-existing relationship of $3,654. The cash purchase price was funded through the cash on hand.\nThe following table summarizes the fair value amounts of identifiable assets acquired and liabilities assumed at the acquisition date:",
+   "prose_after": "The Company incurred $499 thousand in acquisition costs that were expensed in the period incurred and are included in general and administrative expense in the accompanying consolidated statements of operations and comprehensive loss.\nThe Company evaluated the disclosure requirements under ASC 805 and determined QBT was not considered a material business combination for purposes of disclosing the earnings of QBT since the date of acquisition and supplemental pro forma information.\nPurchase price consideration was made up of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "",
+     "$",
+     "11,300"
+    ],
+    [
+     "Settlement of pre-existing relationship(1)",
+     "",
+     "",
+     "(3,654)"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "7,646"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 875,
+    "end_line": 881
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Business Combinations"
+    }
+   },
+   "prose_before": "The Company incurred $499 thousand in acquisition costs that were expensed in the period incurred and are included in general and administrative expense in the accompanying consolidated statements of operations and comprehensive loss.\nThe Company evaluated the disclosure requirements under ASC 805 and determined QBT was not considered a material business combination for purposes of disclosing the earnings of QBT since the date of acquisition and supplemental pro forma information.\nPurchase price consideration was made up of the following:",
+   "prose_after": "(1) The Company had entered into a Development and Manufacturing License Agreement with QBT on January 17, 2023 and the Company had an intangible asset and liability balance of $6,945 and $3,654, respectively as of the acquisition date related to this agreement. The effect of the pre-existing liability (i.e., $3,654) is included in the consideration transferred.\nThe determination of the final purchase price allocation to specific assets, primarily fixed assets, is incomplete and may change in future periods in the event that the intended uses of the assets change as we continue to deploy and integrate operations.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\n8. Inventory",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Diagnostics",
+     "",
+     "",
+     "Therapeutic Devices",
+     "",
+     "",
+     "Consolidated",
+     "",
+     "",
+     "Diagnostics",
+     "",
+     "",
+     "Therapeutic Devices",
+     "",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "$",
+     "1,659",
+     "",
+     "$",
+     "1,940",
+     "",
+     "$",
+     "3,599",
+     "",
+     "$",
+     "1,801",
+     "",
+     "$",
+     "2,026",
+     "",
+     "$",
+     "3,827"
+    ],
+    [
+     "Finished goods",
+     "",
+     "",
+     "74",
+     "",
+     "",
+     "451",
+     "",
+     "",
+     "525",
+     "",
+     "",
+     "141",
+     "",
+     "",
+     "256",
+     "",
+     "",
+     "397"
+    ],
+    [
+     "Purchased inventory",
+     "",
+     "",
+     "330",
+     "",
+     "",
+     "628",
+     "",
+     "",
+     "958",
+     "",
+     "",
+     "331",
+     "",
+     "",
+     "617",
+     "",
+     "",
+     "948"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "2,063",
+     "",
+     "",
+     "3,019",
+     "",
+     "",
+     "5,082",
+     "",
+     "",
+     "2,273",
+     "",
+     "",
+     "2,899",
+     "",
+     "",
+     "5,172"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves",
+     "",
+     "",
+     "(20)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(20)",
+     "",
+     "",
+     "(49)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(49)"
+    ],
+    [
+     "Net inventory",
+     "",
+     "$",
+     "2,043",
+     "",
+     "$",
+     "3,019",
+     "",
+     "$",
+     "5,062",
+     "",
+     "$",
+     "2,224",
+     "",
+     "$",
+     "2,899",
+     "",
+     "$",
+     "5,123"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "(1) The Company had entered into a Development and Manufacturing License Agreement with QBT on January 17, 2023 and the Company had an intangible asset and liability balance of $6,945 and $3,654, respectively as of the acquisition date related to this agreement. The effect of the pre-existing liability (i.e., $3,654) is included in the consideration transferred.\nThe determination of the final purchase price allocation to specific assets, primarily fixed assets, is incomplete and may change in future periods in the event that the intended uses of the assets change as we continue to deploy and integrate operations.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\n8. Inventory",
+   "prose_after": "9. Prepaid Expenses and Deposits",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "$",
+     "550",
+     "",
+     "$",
+     "919"
+    ],
+    [
+     "Prepaid marketing",
+     "",
+     "",
+     "190",
+     "",
+     "",
+     "259"
+    ],
+    [
+     "Prepaid insurance",
+     "",
+     "",
+     "258",
+     "",
+     "",
+     "436"
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "861",
+     "",
+     "",
+     "700"
+    ],
+    [
+     "Total prepaid expenses and deposits",
+     "",
+     "$",
+     "1,859",
+     "",
+     "$",
+     "2,314"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 912,
+    "end_line": 924
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Prepaid Expenses and Deposits"
+    }
+   },
+   "prose_before": "9. Prepaid Expenses and Deposits",
+   "prose_after": "10. Property and Equipment",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Machinery and office equipment",
+     "",
+     "$",
+     "9,721",
+     "",
+     "$",
+     "9,142"
+    ],
+    [
+     "Furniture and equipment",
+     "",
+     "",
+     "224",
+     "",
+     "",
+     "224"
+    ],
+    [
+     "Laboratory equipment",
+     "",
+     "",
+     "969",
+     "",
+     "",
+     "1,073"
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "",
+     "1,962",
+     "",
+     "",
+     "1,953"
+    ],
+    [
+     "Construction in progress",
+     "",
+     "",
+     "13,373",
+     "",
+     "",
+     "12,481"
+    ],
+    [
+     "",
+     "",
+     "",
+     "26,249",
+     "",
+     "",
+     "24,873"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated depreciation and amortization",
+     "",
+     "",
+     "2,278",
+     "",
+     "",
+     "2,045"
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "$",
+     "23,971",
+     "",
+     "$",
+     "22,828"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 945
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "10. Property and Equipment",
+   "prose_after": "Depreciation expense for the three months ended March 31, 2024 and 2023 was $334 and $164, respectively.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\n11. Goodwill and Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Diagnostics",
+     "",
+     "",
+     "Therapeutic Devices",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "Goodwill - December 31, 2021",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "43,288",
+     "",
+     "$",
+     "43,288"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions",
+     "",
+     "",
+     "6,528",
+     "",
+     "",
+     "14,329",
+     "",
+     "",
+     "20,857"
+    ],
+    [
+     "Adjustment to Purchase Price Allocations",
+     "",
+     "",
+     "(458)",
+     "",
+     "",
+     "292",
+     "",
+     "",
+     "(166)"
+    ],
+    [
+     "Impairment",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill - December 31, 2022",
+     "",
+     "$",
+     "6,070",
+     "",
+     "$",
+     "57,909",
+     "",
+     "$",
+     "63,979"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions",
+     "",
+     "",
+     "9,796",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,796"
+    ],
+    [
+     "Adjustment to Purchase Price Allocations",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Impairment",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(12,195)",
+     "",
+     "",
+     "(12,195)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill - December 31, 2023",
+     "",
+     "$",
+     "15,866",
+     "",
+     "$",
+     "45,714",
+     "",
+     "$",
+     "61,580"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Adjustment to Purchase Price Allocations",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Impairment",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill - March 31, 2024",
+     "",
+     "$",
+     "15,866",
+     "",
+     "$",
+     "45,714",
+     "",
+     "$",
+     "61,580"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "Depreciation expense for the three months ended March 31, 2024 and 2023 was $334 and $164, respectively.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\n11. Goodwill and Intangible Assets",
+   "prose_after": "The following table summarizes our intangible assets, net of accumulated amortization:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer software",
+     "",
+     "$",
+     "2,776",
+     "",
+     "$",
+     "1,741"
+    ],
+    [
+     "Customer relationships",
+     "",
+     "",
+     "26,851",
+     "",
+     "",
+     "26,850"
+    ],
+    [
+     "Licenses",
+     "",
+     "",
+     "8,042",
+     "",
+     "",
+     "8,042"
+    ],
+    [
+     "Technology",
+     "",
+     "",
+     "25,050",
+     "",
+     "",
+     "25,050"
+    ],
+    [
+     "Trademarks",
+     "",
+     "",
+     "16",
+     "",
+     "",
+     "16"
+    ],
+    [
+     "Tradename",
+     "",
+     "",
+     "2,850",
+     "",
+     "",
+     "2,850"
+    ],
+    [
+     "Website",
+     "",
+     "",
+     "962",
+     "",
+     "",
+     "962"
+    ],
+    [
+     "",
+     "",
+     "",
+     "66,547",
+     "",
+     "",
+     "65,511"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "",
+     "11,745",
+     "",
+     "",
+     "10,147"
+    ],
+    [
+     "Net intangibles",
+     "",
+     "$",
+     "54,802",
+     "",
+     "$",
+     "55,364"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 1002
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "The following table summarizes our intangible assets, net of accumulated amortization:",
+   "prose_after": "Included within intangibles are $563 in licenses associated with future exclusivity to sell products should we determine that they have both market viability and are a complementary fit within our suite of offerings. As these relationships are still in the exploratory phase with no revenue stream to match expenses against nor a guarantee that this exclusivity will ever be used, we are considering these to be indefinite lived as of March 31, 2024. This accounts for the difference between the net intangibles as found within our consolidated balance sheets and the amortization table below. We will continue to assess the commercialization status and relationship with these companies on a quarterly basis and will adjust our amortization schedules accordingly.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nThe estimated future amortization of intangible assets is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024",
+     "",
+     "$",
+     "4,841"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "6,307"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "5,842"
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "5,615"
+    ],
+    [
+     "2028 and beyond",
+     "",
+     "",
+     "31,634"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "54,239"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1010,
+    "end_line": 1020
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "Included within intangibles are $563 in licenses associated with future exclusivity to sell products should we determine that they have both market viability and are a complementary fit within our suite of offerings. As these relationships are still in the exploratory phase with no revenue stream to match expenses against nor a guarantee that this exclusivity will ever be used, we are considering these to be indefinite lived as of March 31, 2024. This accounts for the difference between the net intangibles as found within our consolidated balance sheets and the amortization table below. We will continue to assess the commercialization status and relationship with these companies on a quarterly basis and will adjust our amortization schedules accordingly.\nZomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nThe estimated future amortization of intangible assets is as follows:",
+   "prose_after": "Amortization expense for the three months ended March 31, 2024 and 2023 was $1,597 and $1,199, respectively.\n12. Stock-Based Compensation\nDuring the three months ended March 31, 2024 and 2023, the Company issued 795,000 and 6,710,000 stock options to purchase an aggregate of 795,000 and 6,710,000 common shares. These options also vest over a period of four years and have an expiration period of 10 years.\nThe continuity of stock options for the three months ended March 31, 2024 and 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Weighted Avg",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "93,349,943",
+     "",
+     "$",
+     "0.3338"
+    ],
+    [
+     "Stock options granted",
+     "",
+     "795,000",
+     "",
+     "",
+     "0.1535"
+    ],
+    [
+     "Stock options forfeited",
+     "",
+     "1,092,500",
+     "",
+     "",
+     "0.2557"
+    ],
+    [
+     "Vested stock options expired",
+     "",
+     "435,000",
+     "",
+     "",
+     "0.9408"
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "92,617,443",
+     "",
+     "$",
+     "0.3303"
+    ],
+    [
+     "Vested at March 31, 2024",
+     "",
+     "44,713,274",
+     "",
+     "$",
+     "0.3474"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1029,
+    "end_line": 1042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Amortization expense for the three months ended March 31, 2024 and 2023 was $1,597 and $1,199, respectively.\n12. Stock-Based Compensation\nDuring the three months ended March 31, 2024 and 2023, the Company issued 795,000 and 6,710,000 stock options to purchase an aggregate of 795,000 and 6,710,000 common shares. These options also vest over a period of four years and have an expiration period of 10 years.\nThe continuity of stock options for the three months ended March 31, 2024 and 2023 are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Weighted Avg",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "84,112,443",
+     "",
+     "$",
+     "0.3602"
+    ],
+    [
+     "Stock options granted",
+     "",
+     "6,710,000",
+     "",
+     "",
+     "0.2431"
+    ],
+    [
+     "Stock options forfeited",
+     "",
+     "705,000",
+     "",
+     "",
+     "0.4063"
+    ],
+    [
+     "Vested stock options expired",
+     "",
+     "462,500",
+     "",
+     "",
+     "0.1546"
+    ],
+    [
+     "Balance at March 31, 2023",
+     "",
+     "89,654,943",
+     "",
+     "$",
+     "0.3449"
+    ],
+    [
+     "Vested at March 31, 2023",
+     "",
+     "27,066,474",
+     "",
+     "$",
+     "0.3484"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1043,
+    "end_line": 1056
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the three months ended March 31, 2024 and 2023, the Company recorded $1,101 and $1,765 of stock-based expense.\n13. Income Taxes\nThe Company is in an overall domestic net deferred tax liability position for the three months ended March 31, 2024. Management has assessed that the future taxable income resulting from the deferred tax liability position will result in partial utilization of the Company's US federal and state net operating loss carryforwards and has therefore concluded a valuation allowance of $10,023 is currently necessary. Due to the uncertainty of realizing any tax benefits as of March 31, 2024 due to historical losses, a full valuation allowance remains necessary to fully offset our Canadian deferred tax assets.\n14. Commitments and Contingencies\nFrom time to time, the Company may be exposed to claims and legal actions in the normal course of business. As of March 31, 2024, and continuing as of May 9, 2024, the Company is not aware of any pending or threatened material litigation claims against the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Diagnostics",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Therapeutic Devices",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Consolidated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net revenue",
+     "",
+     "$",
+     "744",
+     "",
+     "$",
+     "399",
+     "",
+     "$",
+     "5,518",
+     "",
+     "$",
+     "5,083",
+     "",
+     "$",
+     "6,262",
+     "",
+     "$",
+     "5,482"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "",
+     "583",
+     "",
+     "",
+     "338",
+     "",
+     "",
+     "1,562",
+     "",
+     "",
+     "1,309",
+     "",
+     "",
+     "2,145",
+     "",
+     "",
+     "1,647"
+    ],
+    [
+     "Gross profit",
+     "",
+     "$",
+     "161",
+     "",
+     "$",
+     "61",
+     "",
+     "$",
+     "3,956",
+     "",
+     "$",
+     "3,774",
+     "",
+     "$",
+     "4,117",
+     "",
+     "$",
+     "3,835"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1091,
+    "end_line": 1102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "\u25cf Therapeutic Devices, which consists of Assisi\u00ae and PulseVet\u00ae products. The Company\u2019s Chief Operating Decision Maker (CODM) is its Chief Executive Officer who has ultimate responsibility for enterprise decisions.\nAlthough our reportable segments provide similar products, each one is managed separately to better align with the Company\u2019s customers and distribution / development partners. The CODM determines resource allocation for, and monitors performance of, the consolidated enterprise, the Diagnostics segment, and the Therapeutic Devices segment together. The CODM relies on internal segment reporting that analyzes results on certain key performance indicators, namely, revenues and gross profit. Costs below gross profit are not allocated to the segments nor are asset groupings except for the purpose of periodic impairment analysis.\nThe following is a reconciliation of consolidated revenue, cost of revenue, and gross profit amongst our reportable segments for the three months ended March 31, 2024 and 2023:",
+   "prose_after": "16. Loss Per Share",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "$",
+     "(9,160)",
+     "",
+     "$",
+     "(6,385)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares - basic",
+     "",
+     "",
+     "979,949,668",
+     "",
+     "",
+     "979,949,668"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share - basic and diluted",
+     "",
+     "$",
+     "(0.009)",
+     "",
+     "$",
+     "(0.007)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1105,
+    "end_line": 1119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "16. Loss Per Share",
+   "prose_after": "Zomedica Corp. Notes to the Consolidated Financial Statements (United States Dollars in Thousands)\nAs of March 31, 2024 and 2023, the Company had stock options outstanding of 92,617,443 and 89,654,943 and warrants outstanding of 32,561,418 for both periods. These securities could potentially dilute basic earnings per share in the future but were excluded from the computation of diluted loss per share in the periods presented, as their effect would be anti-dilutive.\n17. Subsequent Events\nWe have evaluated events and transactions occurring subsequent to the consolidated balance sheet date of March 31, 2024 for items that could potentially be recognized or disclosed in these financial statements. We did not identify any items which would require disclosure in or adjustment to the consolidated financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nMANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION\nAND RESULTS OF OPERATION\n(All amounts are expressed in thousands unless otherwise indicated)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "$",
+     "(7,590)",
+     "",
+     "$",
+     "(4,257)",
+     "",
+     "$",
+     "(3,333)",
+     "",
+     "78%"
+    ],
+    [
+     "Cash provided by (used in) investing activities",
+     "",
+     "",
+     "5,625",
+     "",
+     "",
+     "(14,792)",
+     "",
+     "",
+     "20,417",
+     "",
+     "(138)%"
+    ],
+    [
+     "(Decrease) increase in cash and cash equivalents",
+     "",
+     "",
+     "(1,965)",
+     "",
+     "",
+     "(19,049)",
+     "",
+     "",
+     "17,084",
+     "",
+     "(90)%"
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "",
+     "",
+     "(48)",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "(51)",
+     "",
+     "(1,700)%"
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "",
+     "12,952",
+     "",
+     "",
+     "27,399",
+     "",
+     "",
+     "(14,447)",
+     "",
+     "(53)%"
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "$",
+     "10,939",
+     "",
+     "$",
+     "8,353",
+     "",
+     "$",
+     "2,586",
+     "",
+     "31%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1308,
+    "end_line": 1322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Selling and marketing expense for the three months ended March 31, 2024 was $4,107, compared to $3,416 for the three months ended March 31, 2023, an increase of $691 or 20%.\nThe increase in selling and marketing expenses was primarily driven by salaries, commissions, and non-cash stock option expense associated with increased hiring campaigns and increased marketing campaigns / attendance at tradeshows to build brand awareness and recognition of our expanding suite of products. We expect future selling and marketing expense to increase in line with product expansion and growth in our commercialization efforts.\nNet Loss\nNet loss for the three months ended March 31, 2024 was $9,160, compared to a loss of $6,385 for the three months ended March 31, 2023, an increase of $2,775 or 43%.\nThe increase in net loss was attributed to the matters described above. We expect to continue to record net losses in future periods until such time as we have sufficient revenue from product sales to offset our operating expenses.\nCash Flows\nThe following table shows a summary of our cash flows for the periods set forth below",
+   "prose_after": "Net cash used in operating activities for the three months ended March 31, 2024 was $7,590, compared to $4,257 for the three months ended March 31, 2023, an increase in cash used of $3,333 or 78%. The increase in cash used in operating activities primarily resulted from the losses noted above and lower non-cash stock compensation.\nNet cash provided by investing activities for the three months ended March 31, 2024 was $5,625, compared to cash used of $14,792 for the three months ended March 31, 2023. The decrease in cash used in investing activities primarily resulted from a significant reduction in spend on available for sale securities as compared to 2022 offset by the acquisition related buildup of construction in progress.\nLiquidity, Capital Resources, and Financial Condition\nWe have incurred losses and negative cash flows from operations since our inception in May 2015. As of March 31, 2024, we had an accumulated deficit of $180,093. We have funded our working capital requirements primarily through the sale of our equity and equity-related securities and the exercise of stock options and warrants.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1303,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1349,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1+",
+     "",
+     "Amendment to Executive Employment Agreement of Larry C. Heaton dated April 1, 2024 (incorporated by reference to Exhibit 10.19 to the Company\u2019s Form 10-K filed with the Commission on April 1, 2024 (File No. 001-38298))"
+    ],
+    [
+     "10.2+",
+     "",
+     "Amendment to Offer letter Peter Donato dated April 1, 2024 (incorporated by reference to Exhibit 10.20 to the Company\u2019s Form 10-K filed with the Commission on April 1, 2024 (File No. 001-38298))"
+    ],
+    [
+     "10.3+**",
+     "",
+     "Offer letter, dated November 6, 2023, among Zomedica Inc., Zomedica Corp., and Russell Kevin Klass"
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2*",
+     "",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1*",
+     "",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, 18 U.S.C. Section 1350."
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document (the Instance Document does not appear in the Interactive Data File because its XBRL (1)."
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document (1)."
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document (1)."
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document (1)."
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document (1)."
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document (1)."
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101.1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1419,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Company and its Board of Directors are committed to maintaining a strong internal control environment. Management, with oversight from the Audit Committee of the Board of Directors, has begun developing a comprehensive plan to remediate the material weakness. Remediation efforts are focused on more rigorous policies and procedures and sufficiency of reviews of the projections included in the discounted cash flow model used in the Company\u2019s evaluation of goodwill for impairment. These efforts will include development of a continuous process for monitoring, assessment and communication, as well as involvement of additional key stakeholders in reviews.\nWe will not be able to conclude whether these efforts will fully remediate the material weakness until the updated controls have operated for a sufficient period of time and management has concluded, through testing, that such controls are operating effectively.\nPART II \u2013 OTHER INFORMATION\nItem 1. Legal Proceedings.\nItem 1A. Risk Factors.\nThere have been no material changes in our risk factors from those previously disclosed in our annual report on Form 10-K for the year ended December 31, 2023.\nItem 6. Exhibits.\nThe exhibits listed on the accompanying index to exhibits immediately preceding the exhibits are filed as part of, or hereby incorporated by reference into, this Quarterly Report.\nEXHIBIT INDEX",
+   "prose_after": "+ Indicates management contract or compensatory plan.\n* Furnished herewith ** Filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on May 9, 2024.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Zomedica Corp.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Larry Heaton"
+    ],
+    [
+     "",
+     "Name:",
+     "Larry Heaton"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Peter Donato"
+    ],
+    [
+     "",
+     "Name:",
+     "Peter Donato"
+    ],
+    [
+     "",
+     "Title:",
+     "Executive Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Zomedica Corp."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "+ Indicates management contract or compensatory plan.\n* Furnished herewith ** Filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on May 9, 2024.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

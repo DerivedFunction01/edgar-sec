@@ -1,0 +1,7557 @@
+{
+ "accession": "0001493152-22-007327",
+ "cik": "0001335105",
+ "form": "10-K",
+ "filing_date": "2022-03-21",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the fiscal year ended December 31, 2021"
+    ]
+   ],
+   "caption_stack": [
+    "For the fiscal year ended December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 8,
+    "end_line": 11
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission file number: 000-51476\nLIXTE BIOTECHNOLOGY HOLDINGS, INC.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "20-2903526"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "680 East Colorado Boulevard, Suite 180",
+     ""
+    ],
+    [
+     "Pasadena, California",
+     "91101"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission file number: 000-51476\nLIXTE BIOTECHNOLOGY HOLDINGS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number: (631) 830-7092\nSecurities registered pursuant to Section 12(b) of the Act: Common Stock, $0.0001 par value.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.0001 per share",
+     "LIXT",
+     "The NASDAQ Stock Market, LLC"
+    ],
+    [
+     "Warrants to Purchase Common Stock, par value $0.0001 per share",
+     "LIXTW",
+     "The NASDAQ Stock Market, LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number: (631) 830-7092\nSecurities registered pursuant to Section 12(b) of the Act: Common Stock, $0.0001 par value.",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting, or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "4"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "17"
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "53"
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "53"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "53"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "53"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "54"
+    ],
+    [
+     "ITEM 6.",
+     "SELECTED FINANCIAL DATA",
+     "55"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "56"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "71"
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "71"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "71"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "71"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "72"
+    ],
+    [
+     "ITEM 9C.",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "72"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "73"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "80"
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "88"
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "91"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "91"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "92"
+    ],
+    [
+     "ITEM 16.",
+     "FORM 10-K SUMMARY",
+     "92"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "93"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "96"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CONSOLIDATED FINANCIAL STATEMENTS",
+     "F-1"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act):\nYes [ ] No [X]\nThe aggregate market value of the common stock held by non-affiliates of the registrant as of June 30, 2021 was approximately $30,550,000.\nThe Company had 13,746,593 shares of common stock, $0.0001 par value, issued and outstanding as of March 11, 2022.\nDocuments incorporated by reference: None.\nTABLE OF CONTENTS",
+   "prose_after": "Introductory Comment\nThroughout this Annual Report on Form 10-K, the terms \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d \u201cour company,\u201d \u201cLixte,\u201d the \u201cCompany\u201d and the \u201cRegistrant\u201d refer to Lixte Biotechnology Holdings, Inc., a Delaware corporation, and Lixte Biotechnology, Inc., a Delaware corporation, our wholly-owned subsidiary.\nFORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (the \u201cReport\u201d) contains certain forward-looking statements. For example, statements regarding our financial position, business strategy and other plans and objectives for future operations, and assumptions and predictions about future product demand, supply, manufacturing, costs, marketing and pricing factors are all forward-looking statements. These statements are generally accompanied by words such as \u201cintend,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpotential(ly),\u201d \u201ccontinue,\u201d \u201cforecast,\u201d \u201cpredict,\u201d \u201cplan,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cshould,\u201d \u201cexpect\u201d or the negative of such terms or other comparable terminology. We believe that the assumptions and expectations reflected in such forward-looking statements are reasonable, based on information available to us on the date hereof, but we cannot assure you that these assumptions and expectations will prove to have been correct or that we will take any action that we may presently be planning. However, these forward-looking statements are inherently subject to known and unknown risks and uncertainties. Actual results or experience may differ materially from those expected or anticipated in the forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, regulatory policies, competition from other similar businesses, and market and general policies, competition from other similar businesses, and market and general economic factors. This discussion should be read in conjunction with the consolidated financial statements and notes thereto included in this Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or International Filing Date (non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AM 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "AU 2008214299",
+     "2/6/2008",
+     "1/19/2014",
+     "2/6/2028"
+    ],
+    [
+     "AZ 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "BR 0806365",
+     "2/6/2008",
+     "1/21/2020",
+     "2/6/2028"
+    ],
+    [
+     "BY 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "CA 2,676,422",
+     "2/6/2008",
+     "10/16/2018",
+     "2/6/2028"
+    ],
+    [
+     "CN 101662939",
+     "2/6/2008",
+     "11/25/2015",
+     "2/6/2028"
+    ],
+    [
+     "CN 103788108",
+     "2/6/2008",
+     "4/12/2017",
+     "2/6/2028"
+    ],
+    [
+     "EP 2124550",
+     "2/6/2008",
+     "4/19/2017",
+     "2/6/2028"
+    ],
+    [
+     "EA 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "HK 1140375",
+     "2/6/2008",
+     "3/9/2018",
+     "2/6/2028"
+    ],
+    [
+     "JP 5693850",
+     "2/6/2008",
+     "4/1/2015",
+     "2/6/2028"
+    ],
+    [
+     "KG 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "KZ 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "MD 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "MX 309985",
+     "2/6/2008",
+     "5/28/2013",
+     "2/6/2028"
+    ],
+    [
+     "RU 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "TJ 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "TM 023804",
+     "2/6/2008",
+     "7/29/2016",
+     "2/6/2028"
+    ],
+    [
+     "US 7,998,957",
+     "2/6/2007",
+     "8/16/2011",
+     "2/20/2030"
+    ],
+    [
+     "US 8,426,444",
+     "2/6/2007",
+     "4/23/2013",
+     "2/6/2028"
+    ],
+    [
+     "US 8,227,473",
+     "8/1/2008",
+     "7/24/2012",
+     "3/11/2030"
+    ],
+    [
+     "US 8,541,458",
+     "8/1/2008",
+     "9/24/2013",
+     "7/17/2029"
+    ],
+    [
+     "US 8,822,461",
+     "2/6/2007",
+     "9/2/2014",
+     "2/6/2028"
+    ],
+    [
+     "US 9,079,917",
+     "2/6/2007",
+     "7/14/2015",
+     "2/6/2028"
+    ],
+    [
+     "US 10,023,587",
+     "2/6/2007",
+     "7/17/2018",
+     "2/6/2028"
+    ],
+    [
+     "US 10,399,993",
+     "2/6/2007",
+     "9/3/2019",
+     "2/6/2028"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "LB-100 Therapeutic Methods. Administration of LB-100 for treating myelodysplastic syndrome is covered by U.S. Patent Nos. 10,434,100 and 10,071,094, which are jointly owned by Lixte Biotechnology, Inc. and H. Lee Moffitt Cancer Center and Research Institute, Inc. These patents and their non-U.S. counterparts are projected to expire in 2035, exclusive of any patent term extension. Administration of LB-100 for treating breast cancer, colon cancer, large cell lung cancer, adenocarcinoma of the lung, small cell lung cancer, stomach cancer, liver cancer, ovary adenocarcinoma, pancreas carcinoma, prostate carcinoma, promyelocytic leukemia, chronic myelocytic leukemia or acute lymphocytic leukemia, is covered by U.S. Patent No. 9,079,917, which is solely owned by Lixte Biotechnology, Inc. This patent and its non-U.S. counterparts are projected to expire in 2028, exclusive of any patent term extension.\nLB-100 Prodrugs. The Company\u2019s LB-100 prodrugs are covered by U.S. Patent Nos. 10,618,908, 9,988,394, 8,822,461, 8,227,473 and 7,998,957, which are solely owned by Lixte Biotechnology, Inc. These patents and their non-U.S. counterparts are projected to expire in 2036, 2030 or 2028, exclusive of any patent term extension. Pharmaceutical compositions of LB-100 prodrugs are covered by U.S. Patent Nos. 11,236,102, 10,532,050, 10,023,587, 8,822,461, 8,227,473 and 7,998,957, which are solely owned by Lixte Biotechnology, Inc. These patents and their non-U.S. counterparts are projected to expire in 2034, 2030 or 2028, exclusive of any patent term extension.\nOur portfolio of domestic and international patents issued is summarized below. We have additional domestic and international patents pending.\nLB-100 Series of Compounds - Phosphatase Inhibitors \u2013 Composition and Use in Cancer Treatment\nOxabicycloheptanes and Oxabicycloheptenes, Their Preparation and Use",
+   "prose_after": "LB-100 and LB-200 Series of Compounds \u2013 Use in Treatment of Multiple CNS Diseases\nNeuroprotective Agents for the Prevention and Treatment of Neurodegenerative Diseases",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 268,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US 8,058,268",
+     "8/1/2008",
+     "11/15/2011",
+     "12/31/2029"
+    ],
+    [
+     "US 8,329,719",
+     "8/1/2008",
+     "12/11/2012",
+     "7/29/2029"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 321,
+    "end_line": 332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "LB-100 and LB-200 Series of Compounds \u2013 Use in Treatment of Multiple CNS Diseases\nNeuroprotective Agents for the Prevention and Treatment of Neurodegenerative Diseases",
+   "prose_after": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Reperfusion Injury",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date (non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CN 104619710",
+     "6/28/2013",
+     "9/22/2017",
+     "6/28/2033"
+    ],
+    [
+     "EP 2870161",
+     "6/28/2013",
+     "8/8/2018",
+     "6/28/2033"
+    ],
+    [
+     "DE 2870161",
+     "6/28/2013",
+     "8/8/2018",
+     "6/28/2033"
+    ],
+    [
+     "FR 2870161",
+     "6/28/2013",
+     "8/8/2018",
+     "6/28/2033"
+    ],
+    [
+     "GB 2870161",
+     "6/28/2013",
+     "8/8/2018",
+     "6/28/2033"
+    ],
+    [
+     "HK 1209424",
+     "6/28/2013",
+     "10/11/2019",
+     "6/28/2033"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 335,
+    "end_line": 348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Reperfusion Injury",
+   "prose_after": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Depressive and Stress Disorders",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date (non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AU 2016219853",
+     "2/19/2016",
+     "5/16/2019",
+     "2/19/2036"
+    ],
+    [
+     "EP 3258930",
+     "2/19/2016",
+     "12/9/2020",
+     "2/19/2036"
+    ],
+    [
+     "DE 3258930",
+     "2/19/2016",
+     "12/9/2020",
+     "2/19/2036"
+    ],
+    [
+     "FR 3258930",
+     "2/19/2016",
+     "12/9/2020",
+     "2/19/2036"
+    ],
+    [
+     "GB 3258930",
+     "2/19/2016",
+     "12/9/2020",
+     "2/19/2036"
+    ],
+    [
+     "US 9,833,450",
+     "2/19/2015",
+     "12/5/2017",
+     "2/19/2036"
+    ],
+    [
+     "US 10,413,541",
+     "2/19/2015",
+     "9/17/2019",
+     "2/19/2036"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 351,
+    "end_line": 365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Depressive and Stress Disorders",
+   "prose_after": "HDAC Inhibitors",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US 8,143,445",
+     "10/1/2007",
+     "3/27/2012",
+     "8/23/2029"
+    ],
+    [
+     "US 8,455,688",
+     "10/1/2007",
+     "6/4/2013",
+     "10/1/2028"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 368,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "HDAC Inhibitors",
+   "prose_after": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Diabetes",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US 10,149,847",
+     "6/29/2012",
+     "12/11/2018",
+     "12/7/2033"
+    ],
+    [
+     "US 10,668,062",
+     "6/29/2012",
+     "6/2/2020",
+     "6/28/2033"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 383,
+    "end_line": 394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Oxabicycloheptanes and Oxabicycloheptenes for the Treatment of Diabetes",
+   "prose_after": "Formulations of Oxabicycloheptanes and Oxabicycloheptenes",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AU 2014251087",
+     "4/8/2014",
+     "5/2/2019",
+     "4/8/2034"
+    ],
+    [
+     "CN 105209036",
+     "4/8/2014",
+     "10/26/2018",
+     "4/8/2034"
+    ],
+    [
+     "IL 241945",
+     "4/8/2014",
+     "4/30/2019",
+     "4/8/2034"
+    ],
+    [
+     "US 10,532,050",
+     "4/9/2013",
+     "1/14/2020",
+     "7/5/2034"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Formulations of Oxabicycloheptanes and Oxabicycloheptenes",
+   "prose_after": "Process of Synthesizing 3-(4-Methylpiperazine-1-Carbonyl)-7-Oxabicyclo [2.2.1] Heptane-2-Carboxylic Acid",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US 9,994,584",
+     "10/15/2014",
+     "6/12/2018",
+     "10/14/2035"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 413,
+    "end_line": 423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Process of Synthesizing 3-(4-Methylpiperazine-1-Carbonyl)-7-Oxabicyclo [2.2.1] Heptane-2-Carboxylic Acid",
+   "prose_after": "Protein Phosphatase 2A Inhibitors for Treating Myelodysplastic Syndromes",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JP 6453441",
+     "7/23/2015",
+     "1/16/2019",
+     "7/23/2035"
+    ],
+    [
+     "US 10,071,094",
+     "7/24/2014",
+     "9/11/2018",
+     "7/23/2035"
+    ],
+    [
+     "US 10,434,100",
+     "7/24/2014",
+     "10/8/2019",
+     "7/23/2035"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 426,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Protein Phosphatase 2A Inhibitors for Treating Myelodysplastic Syndromes",
+   "prose_after": "Oxabicycloheptane Prodrugs",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patent",
+     "Priority Date or\n\n\n\nInternational Filing Date\n\n\n\n(non-U.S. applications)",
+     "Issue/Grant Date",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AU 2016263079",
+     "5/12/2016",
+     "8/15/2019",
+     "5/12/2036"
+    ],
+    [
+     "EP 3294287",
+     "5/12/2016",
+     "4/8/2020",
+     "5/12/2036"
+    ],
+    [
+     "IL 255516",
+     "5/12/2016",
+     "2/27/2020",
+     "5/12/2036"
+    ],
+    [
+     "US 9,988,394",
+     "5/15/2015",
+     "6/5/2018",
+     "5/13/2036"
+    ],
+    [
+     "US 10,364,252",
+     "5/15/2015",
+     "7/30/2019",
+     "5/13/2036"
+    ],
+    [
+     "US 10,618,908",
+     "5/15/2015",
+     "4/14/2020",
+     "5/13/2036"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 441,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Oxabicycloheptane Prodrugs",
+   "prose_after": "The Market\nAnti-Cancer Drugs\nWe have developed two series of pharmacologically active drugs, the LB-100 series and the LB-200 series. We believe that the mechanism by which compounds of the LB-100 series affect cancer cell growth is different from cancer agents currently approved for clinical use. Lead compounds from each series have activity against a broad spectrum of common and rarer human cancers in cell culture systems. In addition, compounds from both series have anti-cancer activity in animal models of glioblastoma multiforme, neuroblastoma, and medulloblastoma, all cancers of neural tissue. Lead compounds of the LB-100 series also have activity against melanoma, breast cancer and sarcoma in animal models and enhance the effectiveness of commonly used anti-cancer drugs in animal models. The enhancement of anti-cancer activity of these anti-cancer drugs occurs at doses of LB-100 that do not significantly increase toxicity in animals. It is therefore hoped that when combined with standard anti-cancer regimens against many tumor types, our compounds will improve therapeutic benefit without enhancing toxicity in humans.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Low",
+     "",
+     "High",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2020",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "3.90",
+     "$",
+     "6.00"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "4.80",
+     "$",
+     "6.00"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "5.10",
+     "$",
+     "7.20"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "3.09",
+     "$",
+     "7.02"
+    ],
+    [
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "3.05",
+     "$",
+     "5.58"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.38",
+     "$",
+     "3.37"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.00",
+     "$",
+     "3.25"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "1.15",
+     "$",
+     "2.08"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1283,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Effective November 25, 2020, the Company\u2019s common stock and Warrants began to trade on The Nasdaq Capital Market under the symbols \u201cLIXT\u201d and \u201cLIXTW\u201d, respectively. Prior to November 30, 2020, the Company\u2019s common stock traded on the OTCQB. The stock market in general has experienced extreme stock price fluctuations in the past few years. In some cases, these fluctuations have been unrelated to the operating performance of the affected companies. Many companies have experienced dramatic volatility in the market prices of their common stock. The Company believes that a number of factors, both within and outside its control, could cause the price of the Company\u2019s common stock to fluctuate, perhaps substantially.\nThe following table sets forth the range of reported closing prices of the Company\u2019s common stock during the periods presented. Such quotations reflect prices between dealers in securities and do not include any retail mark-up, markdown or commissions, and may not necessarily represent actual transactions.\nAll share and per share amounts and information presented herein have been retroactively adjusted for all periods presented to reflect the 1-for-6 reverse stock split effected November 18, 2020.",
+   "prose_after": "Holders\nAs of March 11, 2022, the Company had 46 stockholders of record holding 13,746,593 shares of the Company\u2019s common stock outstanding, including 9,132,118 shares of common stock held by an indeterminate number of beneficial owners of securities whose shares are held in the names of various depository accounts, brokerage firms and clearing agencies.\nDividends\nThe Company\u2019s dividend policy is determined by its Board of Directors and will depend upon a number of factors, including the Company\u2019s financial condition and performance, its cash needs and expansion plans, income tax consequences, and the restrictions that applicable laws and any credit or other contractual arrangements may then impose. The Company has not paid any cash dividends on its common stock to date and at the current time the Company does not anticipate paying a cash dividend on its common stock in the foreseeable future.\nSecurities Authorized For Issuance Under Equity Incentive Plans\nSet forth in the table below is information regarding awards made through compensation plans or arrangements through December 31, 2021, the most recently completed fiscal year.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1272,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of\n\n\n\nsecurities to be\n\n\n\nissued upon\n\n\n\nexercise of outstanding\n\n\n\noptions,\n\n\n\nwarrants\n\n\n\nand rights",
+     "",
+     "Weighted\n\n\n\naverage\n\n\n\nprice of outstanding\n\n\n\noptions,\n\n\n\nwarrants\n\n\n\nand rights",
+     "",
+     "Number of\n\n\n\nsecurities\n\n\n\nremaining\n\n\n\navailable for\n\n\n\nfuture issuance\n\n\n\ncompensation\n\n\n\nplans (excluding\n\n\n\nsecurities\n\n\n\nreflected in\n\n\n\ncolumn 2)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(1)",
+     "",
+     "(2)",
+     "",
+     "(3)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity Compensation Plans Approved by Security Holders",
+     "",
+     "N/A",
+     "$",
+     "N/A",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity Compensation Plans Not Approved by Security Holders",
+     "",
+     "2,666,667",
+     "$",
+     "3.74",
+     "",
+     "933,333",
+     "(1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1311,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "As of March 11, 2022, the Company had 46 stockholders of record holding 13,746,593 shares of the Company\u2019s common stock outstanding, including 9,132,118 shares of common stock held by an indeterminate number of beneficial owners of securities whose shares are held in the names of various depository accounts, brokerage firms and clearing agencies.\nDividends\nThe Company\u2019s dividend policy is determined by its Board of Directors and will depend upon a number of factors, including the Company\u2019s financial condition and performance, its cash needs and expansion plans, income tax consequences, and the restrictions that applicable laws and any credit or other contractual arrangements may then impose. The Company has not paid any cash dividends on its common stock to date and at the current time the Company does not anticipate paying a cash dividend on its common stock in the foreseeable future.\nSecurities Authorized For Issuance Under Equity Incentive Plans\nSet forth in the table below is information regarding awards made through compensation plans or arrangements through December 31, 2021, the most recently completed fiscal year.",
+   "prose_after": "(1) The 2,133,333 shares that remain available are pursuant to the Company\u2019s 2020 Stock Incentive Plan, which was adopted on July 14, 2020 (see \u201cITEM 11. EXECUTIVE COMPENSATION\u201d).\nITEM 6. SELECTED FINANCIAL DATA\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nOverview\nThe Company is a drug discovery company that uses biomarker technology to identify enzyme targets associated with serious common diseases and then designs novel compounds to attack those targets. The Company\u2019s product pipeline is primarily focused on inhibitors of protein phosphatases, used alone and in combination with cytotoxic agents and/or x-ray and immune checkpoint blockers, and encompasses two major categories of compounds at various stages of pre-clinical and clinical development that the Company believes have broad therapeutic potential not only for cancer but also for other debilitating and life-threatening diseases. The Company has developed two classes of drugs for the treatment of cancer, consisting of protein phosphatase inhibitors (PTase-i), designated by us as the LB-100 series of compounds, and histone deacetylase inhibitors (HDACi), designated by us as the LB-200 series of compounds.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1345,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation to related parties",
+     "",
+     "2,931,280",
+     "",
+     "",
+     "765,085",
+     ""
+    ],
+    [
+     "Patent and licensing legal and filing fees and costs",
+     "",
+     "729,171",
+     "",
+     "",
+     "553,173",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,323,218",
+     "",
+     "",
+     "724,506",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "",
+     "1,736,776",
+     "",
+     "",
+     "1,223,676",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "6,720,445",
+     "",
+     "",
+     "3,266,440",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(6,720,445)",
+     "",
+     "",
+     "(3,266,440)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "626",
+     "",
+     "",
+     "4,342",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(7,414)",
+     "",
+     "",
+     "(3,674)",
+     ""
+    ],
+    [
+     "Foreign currency gain (loss)",
+     "",
+     "(1,163)",
+     "",
+     "",
+     "890",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,728,396)",
+     "",
+     "$",
+     "(3,264,882)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share \u2013 basic and diluted",
+     "$",
+     "(0.50)",
+     "",
+     "$",
+     "(0.29)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 basic and diluted",
+     "",
+     "13,473,839",
+     "",
+     "",
+     "11,277,126",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1469,
+    "end_line": 1501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The coronavirus pandemic presents a challenge to medical facilities worldwide. As the Company\u2019s clinical trials are conducted on an outpatient basis, it is not currently possible to predict the full impact of this developing health crisis on such clinical trials, which could include delays in and increased costs of such clinical trials. Current indications from the clinical research organizations conducting the clinical trials for the Company are that such clinical trials are being delayed or extended for several months or more as a result of the coronavirus pandemic.\nOver the near term, there is also significant and continuing uncertainty as to the effect that the coronavirus may have on the capital markets in general and on the amount and type of financing available to the Company in particular.\nThe Company is continuing to monitor the situation and will adjust its current business and financing plans as more information and guidance become available.\nResults of Operations\nAt December 31, 2021, the Company had not yet commenced any revenue-generating operations, does not have any positive cash flows from operations, and is dependent on its ability to raise equity capital to fund its operating requirements.\nThe Company\u2019s consolidated statements of operations as discussed herein are presented below.",
+   "prose_after": "Years Ended December 31, 2021 and 2020\nRevenues. The Company did not have any revenues for the years ended December 31, 2021 and 2020.\nGeneral and Administrative Costs. For the year ended December 31, 2021, general and administrative costs were $4,983,669, which consisted of the fair value of vested stock options issued to directors and officers of $2,201,280, patent and licensing legal and filing fees and costs of $729,171, other consulting and professional fees of $610,846, insurance expense of $385,312, officer\u2019s salary and related costs of $781,254, cash-based director and committee fees of $92,833, licensing fees of $24,999, shareholder reporting costs of $42,792, listing fees of $58,000, filing fees of $18,114, taxes and licenses of $16,200, and other operating costs of $22,868.\nFor the year ended December 31, 2020, general and administrative costs were $2,042,764, which consisted of the fair value of vested stock options issued to directors and officers of $480,634, patent and licensing legal and filing fees and costs of $553,173, other consulting and professional fees of $503,983, insurance expense of $142,575, officer\u2019s salary and related costs of $268,457, licensing fees of $25,001, shareholder reporting costs of $11,801, listing fees of $12,000, filing fees of $10,616, taxes and licenses of $19,032, and other operating costs of $15,492.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(4,142,915)",
+     "",
+     "$",
+     "(2,131,414)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "3,897,394",
+     "",
+     "",
+     "4,601,816",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "$",
+     "(245,521)",
+     "",
+     "$",
+     "2,470,402",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1531,
+    "end_line": 1544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Interest Income. For the year ended December 31, 2021, the Company had interest income of $626, as compared to interest income of $4,342 for the year ended December 31, 2020, as a result of a reduction in the Company\u2019s cash resources previously invested in short-term federally insured certificates of deposit.\nInterest Expense. For the year ended December 31, 2021, the Company had interest expense of $7,414, as compared to interest expense of $3,674 for the year ended December 31, 2020, related to the financing of its directors and officers liability insurance policy premium.\nForeign Currency Loss. For the year ended December 31, 2021, the Company had a loss from foreign currency transactions of $1,163 as compared to a gain of $890 for the year ended December 31, 2020.\nNet Loss. For the year ended December 31, 2021, the Company incurred a net loss of $6,728,396, as compared to a net loss of $3,264,882 for the year ended December 31, 2020.\nLiquidity and Capital Resources \u2013 December 31, 2021\nThe Company\u2019s consolidated statements of cash flows as discussed herein are presented below.",
+   "prose_after": "At December 31, 2021, the Company had working capital of $4,790,338, as compared to working capital of $5,011,951 at December 31, 2020, reflecting a decrease in working capital of $221,613 for the year ended December 31, 2021. The decrease in working capital during the year ended December 31, 2021 was the result of the net cash proceeds of $3,689,761 from the Company\u2019s March 2021 direct equity offering, proceeds of $17,100 from the exercise of warrants, and proceeds of $201,000 from the exercise of stock options that were utilized to pay offering costs of $10,467 and to fund the Company\u2019s research and development activities and ongoing operating expenses, including the Company\u2019s clinical trial program and maintaining and developing its patent portfolio. At December 31, 2021, the Company had cash of $4,823,745 available to fund its operations.\nThe Company\u2019s ability to continue as a going concern is dependent upon its ability to raise additional equity capital to fund its research and development activities and to ultimately achieve sustainable operating revenues and profitability. The amount and timing of future cash requirements depends on the pace and design of the Company\u2019s clinical trial program, which, in turn, depends on the availability of operating capital to fund such activities.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 1547,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) Held with the Company"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. John S. Kovach",
+     "85",
+     "President, Chief Executive Officer, Chief Scientific Officer, and Chairman of the Board of Directors"
+    ],
+    [
+     "Dr. James S. Miser",
+     "74",
+     "Chief Medical Officer"
+    ],
+    [
+     "Robert N. Weingarten",
+     "69",
+     "Vice President and Chief Financial Officer"
+    ],
+    [
+     "Eric J. Forman",
+     "42",
+     "Chief Administrative Officer"
+    ],
+    [
+     "Dr. Philip F. Palmedo",
+     "87",
+     "Director"
+    ],
+    [
+     "Dr. Stephen J. Forman",
+     "73",
+     "Director"
+    ],
+    [
+     "Gil N Schwartzberg",
+     "79",
+     "Director"
+    ],
+    [
+     "Regina Brown",
+     "58",
+     "Director"
+    ],
+    [
+     "Dr. Yun Yen",
+     "65",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1728,
+    "end_line": 1742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nDirectors and Executive Officers\nThe following table and text set forth the names of all of our directors and executive officers as of March 11, 2021. The Board of Directors is comprised of only one class. All of the directors will serve until the next annual meeting of stockholders and until their successors are elected and qualified, or until their earlier death, retirement, resignation or removal. The brief descriptions of the business experience of each director and executive officers and an indication of directorships held by each director in other companies subject to the reporting requirements under the Federal securities laws are provided herein below. Also provided are the biographies of the members of the Scientific Advisory Committee and our consultants.\nOur directors and executive officers are as follows:",
+   "prose_after": "Biographies of Directors and Executive Officers\nDr. John S. Kovach\nDr. John S. Kovach founded the Company in August 2005 and is our President, Chief Executive Officer, Chief Scientific Officer and Chairman of our Board of Directors. He received a B.A. (cum laude) from Princeton University and an M.D. (AOA) from the College of Physicians & Surgeons, Columbia University. Dr. Kovach trained in Internal Medicine and Hematology at Presbyterian Hospital, Columbia University, and spent six years in the laboratory of Chemical Biology at the National Institute of Arthritis and Metabolic Diseases studying control of gene expression in bacterial systems.\nDr. Kovach was recruited to the State University of New York at Stony Brook (\u201cSUNY \u2013 Stony Brook\u201d) in Stony Brook, New York in 2000 to found the Long Island Cancer Center (now named the Stony Brook University Cancer Center). From 1994 to 2000, Dr. Kovach was Executive Vice President for Medical and Scientific Affairs at the City of Hope National Medical Center in Los Angeles, California. His responsibilities included oversight of all basic and clinical research initiatives at the City of Hope. During that time, Dr. Kovach was also Director of the Beckman Research Center at City of Hope and a member of the Arnold and Mabel Beckman Scientific Advisory Board in Newport Beach, California.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1755,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)(1)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Non-Qualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John S. Kovach (2)",
+     "2021",
+     "",
+     "250,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "250,000"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "107,500",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "107,500"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "60,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "60,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James S. Miser (3)",
+     "2021",
+     "",
+     "166,667",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "62,500",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "572,650",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "635,150"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert N. Weingarten (4)",
+     "2021",
+     "",
+     "156,667",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "156,667"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "46,451",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "400,855",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "447,306"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eric J. Forman (5)",
+     "2021",
+     "",
+     "156,667",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "156,667"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "30,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "400,855",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "430,855"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1917,
+    "end_line": 1938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "To the Company\u2019s knowledge, based solely on its review of the copies of the Section 16(a) reports furnished to the Company and any written representations to the Company, that no other reports were required, the Company believes that all individual filing requirements applicable to a director, officer, or beneficial owner of more than 10% of the Company\u2019s common stock were complied with under Section 16(a) of the Exchange Act during the year ended December 31, 2021, except as follows: Eric Forman was late in filing one Form 4 and Glenn Krinsky was late in filing one Form 3, each document relating to the change of the trustee from Mr. Forman to Mr. Krinsky with respect to the John and Barbara Kovach 2015 Trust.\nITEM 11. EXECUTIVE COMPENSATION\nEXECUTIVE AND DIRECTOR COMPENSATION\nSummary Compensation Table\nThe table set forth below presents the compensation awarded to, earned by or paid to our named executive officers for the years ended December 31, 2021, 2020 and 2019.\nOFFICER COMPENSATION TABLE",
+   "prose_after": "(1) Consists of grant date fair value of option award calculated pursuant to the Black-Scholes option-pricing model.\n(2) John S. Kovach has been the Company\u2019s President and Chief Executive Officer since inception and entered into an employment agreement with the Company effective July 15, 2020.\n(3) James S. Miser has been the Company\u2019s Chief Medical Officer since August 1, 2020. In connection with his employment agreement, Dr. Miser was awarded an option grant for 83,333 shares of the Company\u2019s common stock valued at $6.8718 per share.\n(4) Robert N. Weingarten has been the Company\u2019s Vice President and Chief Financial Officer since August 12, 2020. In connection with his employment agreement, Mr. Weingarten was awarded an option grant for 58,333 shares of the Company\u2019s common stock valued at $6.8718 per share.\n(5) Eric J. Forman has been the Company\u2019s Chief Administrative Officer since July 15, 2020. In connection with his employment agreement, Mr. Forman was awarded an option grant for 58,333 shares of the Company\u2019s common stock valued at $6.8718 per share.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1900,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 1951,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "GRANT DATE",
+     "VESTING COMMENCEMENT DATE",
+     "NUMBER OF SECURITIES UNDERLYING UNEXERCISED OPTIONS EXERCISABLE (#)",
+     "",
+     "NUMBER OF SECURITIES UNDERLYING UNEXERCISED OPTIONS UNEXERCISABLE (#)",
+     "",
+     "OPTION EXERCISE PRICE ($)",
+     "",
+     "OPTION EXPIRATION DATE"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. John S. Kovach",
+     "N/A",
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. James S. Miser",
+     "August 1, 2020",
+     "August 1, 2020",
+     "",
+     "41,667",
+     "",
+     "41,667",
+     "$",
+     "7.14",
+     "August 1, 2025"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert N. Weingarten",
+     "August 12, 2020",
+     "August 12, 2020",
+     "",
+     "29,167",
+     "",
+     "29,166",
+     "$",
+     "7.14",
+     "August 12, 2025"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eric J. Forman",
+     "June 7, 2016",
+     "June 7, 2016",
+     "",
+     "16,667",
+     "",
+     "-",
+     "$",
+     "0.90",
+     "June 7, 2021"
+    ],
+    [
+     "",
+     "October 16, 2017",
+     "October 16, 2017",
+     "",
+     "16,667",
+     "",
+     "-",
+     "$",
+     "0.90",
+     "October 16, 2022"
+    ],
+    [
+     "",
+     "May 22, 2019",
+     "May 22, 2019",
+     "",
+     "16,667",
+     "",
+     "-",
+     "$",
+     "6.60",
+     "May 22, 2024"
+    ],
+    [
+     "",
+     "August 12, 2020",
+     "August 12, 2020",
+     "",
+     "29,167",
+     "",
+     "29,166",
+     "$",
+     "7.14",
+     "August 12, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1956,
+    "end_line": 1973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(3) James S. Miser has been the Company\u2019s Chief Medical Officer since August 1, 2020. In connection with his employment agreement, Dr. Miser was awarded an option grant for 83,333 shares of the Company\u2019s common stock valued at $6.8718 per share.\n(4) Robert N. Weingarten has been the Company\u2019s Vice President and Chief Financial Officer since August 12, 2020. In connection with his employment agreement, Mr. Weingarten was awarded an option grant for 58,333 shares of the Company\u2019s common stock valued at $6.8718 per share.\n(5) Eric J. Forman has been the Company\u2019s Chief Administrative Officer since July 15, 2020. In connection with his employment agreement, Mr. Forman was awarded an option grant for 58,333 shares of the Company\u2019s common stock valued at $6.8718 per share.\nThere were no option exercises during the years ended December 31, 2019, 2020 or 2021.\nOutstanding Equity Awards at December 31, 2021\nThe table set forth below presents information regarding outstanding stock options held by our named executive officers as of December 31, 2021. There were no stock options issued and outstanding to our executive officers at December 31, 2019.",
+   "prose_after": "The intrinsic value of exercisable but unexercised in-the-money stock options held by our named executive officers at December 31, 2021 was approximately $9,667, based on a fair market value of $1.19 per share on December 31, 2021.\nEmployment Agreements; Compensation\nDuring July and August 2020, the Company entered into one-year employment agreements with its executive officers, consisting of Dr. John S. Kovach, Eric J. Forman, Dr. James S. Miser, and Robert N. Weingarten, payable monthly, as described below. The employment agreements are automatically renewable for additional one-year periods unless terminated by either party upon 60 days written notice prior to the end of the applicable one-year period, or by death, or by termination for cause. These employment agreements were automatically renewed for an additional one-year period in July and August 2021.\nDr. John Kovach. On July 15, 2020, the Company entered into an employment agreement with Dr. John Kovach to continue to act as the Company\u2019s President, Chief Executive Officer and Chief Scientific Officer, with an annual salary of $250,000, payable monthly. His responsibilities include the oversight of the Company\u2019s entire operations and strategic planning, and he will act as the primary contact between the Company\u2019s executive team and the Board of Directors, to whom he shall report. Dr. Kovach shall supervise all scientific endeavors, providing guidance to the Chief Medical Officer. He shall be the principal spokesperson for the Company. The effective date of the agreement was October 1, 2020 and shall remain in effect until the earlier of (i) one year from the effective date, automatically renewable for additional one-year periods unless terminated by either party upon 60 days written notice prior to the end of the applicable one-year period, (ii) his death, or (iii) termination for cause.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1951,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1982,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal\n\n\n\nPosition",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)(1)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Non-Qualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "John S. Kovach",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Director (2)",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Philip F. Palmedo",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "427,047",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "20,458",
+     "",
+     "447,505"
+    ],
+    [
+     "Director",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen J. Forman",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "427,047",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "16,819",
+     "",
+     "443,866"
+    ],
+    [
+     "Director",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Winson Sze Chun Ho",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "142,828",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "142,828"
+    ],
+    [
+     "Director(3)",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Yun Yen",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "427,047",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "21,833",
+     "",
+     "448,880"
+    ],
+    [
+     "Director",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "47,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gil Schwartzberg",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,037,830",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "14,556",
+     "",
+     "1,052,386"
+    ],
+    [
+     "Director(4)",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regina Brown",
+     "",
+     "2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "942,582",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "19,167",
+     "",
+     "961,749"
+    ],
+    [
+     "Director(5)",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2014,
+    "end_line": 2047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "On June 30, 2021, the Board of Directors, in accordance with the Company\u2019s cash and equity compensation package for the independent members of the Board of Directors, granted to each of the five non-officer directors of the Company stock options exercisable for a period of five years to purchase 100,000 shares (a total of 500,000 shares) of the Company\u2019s common stock at an exercise price of $3.03 per share (the closing market price on the grant date), vesting 12.5% on the last day of each subsequent calendar quarter-end until fully vested. The total fair value of the 500,000 stock options, as calculated pursuant to the Black-Scholes option-pricing model, was determined to be $1,421,095 ($2.84225 per share), which is being charged to operations ratably from July 1, 2021 through June 30, 2023. During the year ended December 31, 2021, the Company recorded charges to general and administrative costs in the consolidated statement of operations of $358,200 with respect to these stock options.\nSummary Compensation Table\nThe table set forth below presents the compensation awarded to, earned by or paid to our named directors for the years ended December 31, 2021, 2020 and 2019.\nDIRECTOR COMPENSATION TABLE",
+   "prose_after": "(1) Consists of grant date fair value of option award calculated pursuant to the Black-Scholes option-pricing model.\n(2) Dr. Kovach is also the Company\u2019s President, Chief Executive Officer and Chief Scientific Officer.\n(3) Resigned as a director of the Company effective April 9, 2021.\n(4) Appointed as a director of the Company effective April 9, 2021.\n(5) Appointed as a director of the Company effective May 11, 2021.\nScientific Advisory Committee Compensation\nOn December 24, 2013, wr entered into an agreement with NDA Consulting Corp. for consultation and advice in the field of oncology research and drug development. As part of the agreement, NDA also agreed to cause its president, Dr. Daniel D. Von Hoff, M.D., to become a member of our Scientific Advisory Committee. The term of the agreement was for one year and provided for a quarterly cash fee of $4,000. The agreement has been automatically renewed for additional one-year terms on its anniversary date since 2014. Consulting and advisory fees charged to operations pursuant to this agreement were $16,000 and $16,000 for the years ended December 31, 2021 and 2020, respectively, which were included in research and development costs in the consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2011,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 2058,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 84
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Amount and Nature\n\n\n\nof Beneficial\n\n\n\nOwnership",
+     "",
+     "",
+     "Percent of\n\n\n\nClass",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. John S. Kovach",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "1,561,284",
+     "(1)",
+     "",
+     "11.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Philip F. Palmedo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "432,275",
+     "(2)",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Stephen J. Forman",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "216,690",
+     "(3)",
+     "",
+     "1.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Yun Yen",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "234,430",
+     "(13)",
+     "",
+     "1.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gil Schwartzberg",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "2,324,360",
+     "(6)",
+     "",
+     "15.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regina Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "209,375",
+     "(12)",
+     "",
+     "1.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Weingarten",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "29,166",
+     "(14)",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eric J. Forman",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "104,430",
+     "(5)",
+     "",
+     "0.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. James S. Miser",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "",
+     "41,667",
+     "(15)",
+     "",
+     "0.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All officers and directors as a group (nine persons)",
+     "",
+     "6,153,677",
+     "",
+     "",
+     "32.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2139,
+    "end_line": 2187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The table set forth below presents certain information regarding beneficial ownership of our common stock (the only class of our voting equity securities issued and outstanding) as of March 11, 2022 by (i) each person or entity who is known by us to own beneficially more than 5% of our outstanding shares of common stock, (ii) each of our directors, and (iii) all of our directors and executive officers as a group. As of March 11, 2022, there were 13,746,593 shares of our common stock issued and outstanding. In computing the number and percentage of shares beneficially owned by a person, shares of common stock that a person has a right to acquire within sixty (60) days of March 11, 2022 pursuant to stock options, warrants, convertible preferred stock or other rights are counted as outstanding, while these shares are not counted as outstanding for computing the percentage ownership of any other person. This table is based upon information supplied by our directors, officers and principal stockholders and reports filed with the Securities and Exchange Commission.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2134,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 2227,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Other Stockholders Owning More Than 5%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John and Barbara Kovach 2015 Trust",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn L. Krinsky, Trustee",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "1,333,333",
+     "(4)",
+     "9.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Debbie Schwartzberg",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5500 Military Trail, Suite 22, Box 356",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jupiter, Florida 33458",
+     "1,645,807",
+     "(7)",
+     "11.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Arthur and Jane Riggs",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4852 Saint Andres Avenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "La Verne, California 91750",
+     "1,957,500",
+     "(8)",
+     "13.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert and Susan Greenberg",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "228 Manhattan Beach Boulevard",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Manhattan Beach, California 90266",
+     "1,380,264",
+     "(9)",
+     "9.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lalit R. Bahl and Kavit K. Kinra",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3 Pheasant Run",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Setauket, New York 11733",
+     "1,000,000",
+     "(16)",
+     "7.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lawrence J. Goldstein",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1865 Palmer Avenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Larchmont, New York 10538",
+     "666,668",
+     "(10)",
+     "4.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hung Tak Ho",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mayfair by the Sea II",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tower T8, 1/F, Unit A",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21 Fo Chun Road Pak ShekKok",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taipo NT, Hong Kong SAR",
+     "1,084,210",
+     "(11)",
+     "7.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn L. Krinsky",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "608 East Colorado Boulevard, Suite 180",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pasadena, California 91101",
+     "1,474,988",
+     "(17)",
+     "10.7",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Other Stockholders Owning More Than 5%"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2188,
+    "end_line": 2226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Includes 1,540,184 shares of common stock and stock warrants to purchase 21,100 shares of common stock owned as of record by the John\nS. Kovach Trust. Dr. Kovach is a co-trustee of the Trust and has the exclusive right to control the investment of the assets of the Trust.\n(2) Includes 183,333 shares of common stock and stock warrants to purchase 16,667 shares of common stock owned by the Philip Palmedo Partnership, and 107,056 shares of common stock, stock warrants to purchase 21,053 shares of common stock and stock options to purchase 104,166 shares of common stock owned by Dr. Philip Palmedo. Dr. Palmedo, as the general partner of the Philip Palmedo Partnership, has voting, dispositive and investment control with respect to the common stock and common stock warrants owned by the partnership. All stock options and common stock warrants are immediately exercisable or within 60 days.\n(3) Includes 58,137 shares of common stock, stock warrants to purchase 21,053 shares of common stock and stock options to purchase 104,166 shares of common stock which are immediately exercisable or within 60 days, owned by Dr. Stephen Forman. Also includes 16,667 shares of common stock and stock warrants to purchase 16,667 shares of common stock owned by the Stephen Forman Living Trust dated 12/16/98. Stephen Forman is trustee of the trust and holds voting and dispositive power over the common stock and common stock warrants owned by the trust.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2134,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 2227,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "78,567",
+     "$",
+     "93,681"
+    ],
+    [
+     "Audit-Related Fees(2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax Fees(3)",
+     "",
+     "14,134",
+     "",
+     "28,140"
+    ],
+    [
+     "Other Fees(4)",
+     "",
+     "71,537",
+     "",
+     "25,200"
+    ],
+    [
+     "Total",
+     "$",
+     "164,238",
+     "$",
+     "147,021"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2311,
+    "end_line": 2324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS, AND DIRECTOR INDEPENDENCE\n(a) Related Party Transactions\nDuring the years ended December 31, 2019, 2020 and 2021, there have been no transactions, whether directly or indirectly, between the Company and any of its officers, directors or affiliates, including their family members, except as described herein or elsewhere in this document.\n(b) Director Independence\nThe Company considers Dr. Philip Palmedo, Dr. Stephen Forman, Dr. Yun Yen, Gil Schwartzberg and Regina Brown to each be an \u201cindependent director,\u201d as defined under Nasdaq rules and by Rule 10-A-3 of the Exchange Act.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nWeinberg & Company, P.C. acted as our independent registered public accounting firm for the fiscal years ended December 31, 2020 and 2021 and for the interim periods in such fiscal years. The following table shows the fees that were incurred by us for audit and other services provided by Weinberg & Company, P.C for the years ended December 31, 2020 and 2021.",
+   "prose_after": "(1) Audit fees represent fees for professional services provided in connection with the audit of our annual financial statements included in our Annual Reports on Form 10-K and the review of our interim financial statements included in our Quarterly Reports on Form 10-Q and services that are normally provided in connection with statutory or regulatory filings, excluding those fees included in Other Fees.\n(2) Audit-related fees represent fees for assurance and related services that are reasonably related to the performance of the audit or review of our financial statements and not reported above under \u201cAudit Fees.\u201d\n(3) Tax fees represent fees for professional services related to tax compliance, tax advice and tax planning.\n(4) Other fees represent fees incurred with respect to our Registration Statements on Forms S-1, S-3 and S-8 declared effective by the SEC during the years ended December 31, 2020 and 2021.\nAll audit and audit-related services, tax services and other services rendered by Weinberg & Company, P.C. during the fiscal years ended December 31, 2020 and 2021 were pre-approved by either our Audit Committee or by our Board of Directors. The Board of Directors has adopted a pre-approval policy that provides for the pre-approval of all services performed for us by our independent registered public accounting firm.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2296,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 90
+    },
+    "after": {
+     "line": 2332,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 91
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description of Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1.1",
+     "",
+     "Form of Underwriter Agreement (22)"
+    ],
+    [
+     "2.1",
+     "",
+     "Share Exchange Agreement dated as of June 8, 2006 among the Company, John S. Kovach and Lixte Biotechnology, Inc. (1)"
+    ],
+    [
+     "3.1",
+     "",
+     "Certificate of Incorporation, as filed with the Delaware Secretary of State on May 24, 2005 (2)"
+    ],
+    [
+     "3.2",
+     "",
+     "Certificate of Amendment of Certificate of Incorporation (3)"
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Designations for the Company\u2019s Series A Convertible Preferred Stock (6)"
+    ],
+    [
+     "3.4",
+     "",
+     "Certificate of Amendment of Certificate of Designations of the Series A Convertible Preferred Stock.8"
+    ],
+    [
+     "3.6",
+     "",
+     "Amended and Restated Bylaws (15)"
+    ],
+    [
+     "3.7",
+     "",
+     "Certificate of Amendment of Certificate of Incorporation (23)"
+    ],
+    [
+     "4.1",
+     "",
+     "Form of Warrant included in Unit (22)"
+    ],
+    [
+     "4.2",
+     "",
+     "Form of Warrant Agent Agreement (22)"
+    ],
+    [
+     "4.3",
+     "",
+     "Description of Registrant\u2019s Securities Registered Pursuant to Section 12 of the Securities Exchange Act of 1934, as amended (21)"
+    ],
+    [
+     "10.1",
+     "",
+     "Master Agreement between Lixte Biotechnology Holdings, Inc. and Theradex Systems, Inc. dated January 12, 2010 (4)"
+    ],
+    [
+     "10.2",
+     "",
+     "Materials Cooperative Research and Development Agreement between Lixte Biotechnology Holdings, Inc. and the National Institute of Neurological Disorders and Stroke dated October 18, 2013 (5)"
+    ],
+    [
+     "10.3",
+     "",
+     "Scientific Advisory Board Agreement between Lixte Biotechnology Holdings, Inc. and NDA Consulting Corp. dated December 24, 2013 (5)"
+    ],
+    [
+     "10.4",
+     "",
+     "Collaboration Agreement between Lixte Biotechnology Holdings, Inc. and BioPharmaWorks LLC effective September 14, 2015 (7)"
+    ],
+    [
+     "10.5",
+     "",
+     "Form of First Warrant to purchase common stock issued to BioPharmaWorks LLC dated September 14, 2015 (7)"
+    ],
+    [
+     "10.6",
+     "",
+     "Form of Second Warrant to purchase common stock issued to BioPharmaWorks LLC dated September 14, 2015 (7)"
+    ],
+    [
+     "10.7",
+     "",
+     "Clinical Trial Research Agreement between H. Lee Moffitt Cancer Center and Research Institute Hospital, Inc. and Lixte Biotechnology Holdings, Inc. dated and effective as of August 20, 2018 (9)"
+    ],
+    [
+     "10.8",
+     "",
+     "Exclusive License Agreement between H. Lee Moffitt Cancer Center and Research Institute Hospital, Inc. and Lixte Biotechnology Holdings, Inc. dated and effective as of August 20, 2018 (certain portions of this exhibit have been omitted based on a request for confidential treatment filed by the Company with the Securities and Exchange Commission that was granted on September 17, 2018) (9)"
+    ],
+    [
+     "10.9",
+     "",
+     "Form of Warrant to Purchase Common Stock of Llxte Biotechnology Holdings, Inc. (issued in connection with common stock unit rights offering that closed on November 30, 2018) (10)"
+    ],
+    [
+     "10.10",
+     "",
+     "Collaboration Agreement for an Investigator-Initiated Clinical Trial between Lixte Biotechnology Holdings, Inc. and the Spanish Sarcoma Group as of July 31, 2019 (certain portions of this exhibit have been omitted based on a request for confidential treatment filed by the Company with the Securities and Exchange Commission that was granted on September 19, 2019) (11)"
+    ],
+    [
+     "10.11",
+     "",
+     "Employment Agreement Between the Company and Dr. James Miser13+"
+    ],
+    [
+     "10.12",
+     "",
+     "Employment Agreement Between the Company and Robert N. Weingarten17+"
+    ],
+    [
+     "10.13",
+     "",
+     "Employment Agreement Between the Company and Dr. John Kovach14+"
+    ],
+    [
+     "10.14",
+     "",
+     "Employment Agreement Between the Company and Eric Forman15+"
+    ],
+    [
+     "10.15",
+     "",
+     "2020 Stock Incentive Plan16+"
+    ],
+    [
+     "10.16",
+     "",
+     "Master Services Agreement between Foundation for Angelman Syndrome Therapeutics (\u201cFAST\u201d) and Lixte Biotechnology Holdings, Inc. dated as of August 12, 2020 (17)"
+    ],
+    [
+     "10.17",
+     "",
+     "Clinical Trial Research Agreement between the Company and the City of Hope National Medical Center (18)"
+    ],
+    [
+     "10.18",
+     "",
+     "Amendment to Employment Agreement between the Company and Eric Forman22+"
+    ],
+    [
+     "10.19",
+     "",
+     "Development Collaboration Agreement by and between Lixte Biotechnology Holdings, Inc. and the Netherlands Cancer Institute, Amsterdam, and Oncode Institute, Utrecht, entered into on October 8, 2021 (certain portions of this Exhibit have been omitted based on a pending request for confidential treatment being filed with the Securities and Exchange Commission). (23)"
+    ],
+    [
+     "21.1",
+     "",
+     "Subsidiaries of the Registrant*"
+    ],
+    [
+     "23.1",
+     "",
+     "Consent of Weinberg & Company, P.A., Independent Registered Public Accounting Firm*"
+    ],
+    [
+     "31.1",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "31.2",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "32.1",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "32.2",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document (does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)"
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Scheme Document"
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL document and included in Exhibit 101.INS)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2363,
+    "end_line": 2420
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules\nThe financial statement schedules have been omitted because the required information is not applicable, or not present in amounts sufficient to require submission of the schedules, or because the information is included in the financial statements or notes thereto.\n(3) Exhibits\nSee\n(b) below.\n(b) Exhibits:\nA list of exhibits required to be filed as part of this Annual Report on Form 10-K is set forth in the Index to Exhibits, which is presented elsewhere in this document, and is incorporated herein by reference.\nITEM 16. FORM 10-K SUMMARY\nNone\nINDEX TO EXHIBITS",
+   "prose_after": "1 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 7, 2006 and incorporated herein by reference. 2 Filed as an Exhibit to the Company\u2019s Registration Statement on Form 10-SB, as filed with the Securities and Exchange Commission on August 3, 2005 and incorporated herein by reference. 3 Filed as Appendix A to the Company\u2019s Information Statement, as filed with the Securities and Exchange Commission on September 20, 2006 and incorporated herein by reference. 4 Filed as an Exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on March 15, 2013 and incorporated herein by reference. 5 Filed as an Exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on March 21, 2014 and incorporated herein by reference. 6 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on March 18, 2015 and incorporated herein by reference. 7 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on September 18, 2015 and incorporated herein by reference. 8 Filed as an Exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on March 28, 2016 and incorporated herein by reference. 9 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on August 23, 2018 and incorporated herein by reference. 10 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on December 5, 2018 and incorporated herein by reference. 11 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on August 6, 2019 and incorporated herein by reference. 12 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 17, 2020 and incorporated herein by reference. 13 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 17, 2020 and incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2360,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 92
+    },
+    "after": {
+     "line": 2421,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 93
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 21, 2022",
+     "",
+     "LIXTE BIOTECHNOLOGY HOLDINGS, INC."
+    ],
+    [
+     "",
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ JOHN S. KOVACH"
+    ],
+    [
+     "",
+     "Name:",
+     "John S. Kovach"
+    ],
+    [
+     "",
+     "Title:",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2435,
+    "end_line": 2445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "14 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 17, 2020 and incorporated herein by reference. 15 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 17, 2020 and incorporated herein by reference. 16 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 17, 2020 and incorporated herein by reference. 17 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on August 18, 2020 and incorporated herein by reference. 18 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on January 22, 2021 and incorporated herein by reference. 19 Filed as an Exhibit to the Company\u2019s Registration Statement on Form S-1/A, as filed with the Securities and Exchange Commission on November 16, 2020. 20 Filed as an Exhibit to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on November 27, 2020 and incorporated herein by reference. 21 Filed as an Exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on March 25, 2020 and incorporated herein by reference. 22 Filed as an Exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on March 26, 2021 and incorporated herein by reference. 23 Filed as an Exhibit to the Company\u2019s Quarterly Report on Form 10-Q, as filed with the Securities and Exchange Commission on November 10, 2021 and incorporated herein by reference.\n* Filed herewith.\n+ Indicates a management contract or any compensatory plan, contract or arrangement.\nSIGNATURES\nIn accordance with Section 13 and 15(d) of the Securities Exchange Act of 1934, the Registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant in the capacity and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2430,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2481,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ JOHN S. KOVACH",
+     "President and Chief Executive Officer",
+     "March 21, 2022"
+    ],
+    [
+     "John S. Kovach",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ ROBERT N. WEINGARTEN",
+     "Vice President and Chief Financial Officer",
+     "March 21, 2022"
+    ],
+    [
+     "Robert N. Weingarten",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ PHILIP F. PALMEDO",
+     "Director",
+     "March 21, 2022"
+    ],
+    [
+     "Philip F. Palmedo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ STEPHEN J. FORMAN",
+     "Director",
+     "March 21, 2022"
+    ],
+    [
+     "Stephen J. Forman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ GIL N SCHWARTZBERG",
+     "Director",
+     "March 21, 2022"
+    ],
+    [
+     "Gil N Schwartzberg",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ YUN YEN",
+     "Director",
+     "March 21, 2022"
+    ],
+    [
+     "Yun Yen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ REGINA BROWN",
+     "Director",
+     "March 21, 2022"
+    ],
+    [
+     "Regina Brown",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2448,
+    "end_line": 2480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant in the capacity and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS\n(INCLUDING REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM)\nYears Ended December 31, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2430,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2481,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID NO. 572)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets \u2013 December 31, 2021 and 2020",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations \u2013 Years Ended December 31, 2021 and 2020",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity \u2013 Years Ended December 31, 2021 and 2020",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows \u2013 Years Ended December 31, 2021 and 2020",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements \u2013 Years Ended December 31, 2021 and 2020",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2489,
+    "end_line": 2505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS\n(INCLUDING REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM)\nYears Ended December 31, 2021 and 2020",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders\nPasadena, California\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Lixte Biotechnology Holdings, Inc. and subsidiary (the \u201cCompany\u201d) as of December 31, 2021 and 2020, and the related consolidated statements of operations, stockholders\u2019 equity and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the consolidated financial position of the Company as of December 31, 2021 and 2020, and the results of its consolidated operations and its consolidated cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the consolidated financial statements, the Company has no recurring source of revenue and has experienced negative operating cash flows since inception. The Company has financed its working capital requirements primarily through the recurring sale of its equity securities. These matters raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1 to the consolidated financial statements. These consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2481,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "4,823,745",
+     "",
+     "$",
+     "5,069,266",
+     ""
+    ],
+    [
+     "Advances on research and development contract services",
+     "",
+     "150,241",
+     "",
+     "",
+     "76,898",
+     ""
+    ],
+    [
+     "Prepaid insurance",
+     "",
+     "109,029",
+     "",
+     "",
+     "67,311",
+     ""
+    ],
+    [
+     "Other prepaid expenses and current assets",
+     "",
+     "10,249",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "5,093,264",
+     "",
+     "",
+     "5,228,475",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "5,093,264",
+     "",
+     "$",
+     "5,228,475",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses, including $32,500 and $0 to related parties at December 31, 2021 and 2020, respectively",
+     "$",
+     "225,965",
+     "",
+     "$",
+     "190,292",
+     ""
+    ],
+    [
+     "Accrued offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,467",
+     ""
+    ],
+    [
+     "Research and development contract liabilities",
+     "",
+     "76,961",
+     "",
+     "",
+     "15,765",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "302,926",
+     "",
+     "",
+     "216,524",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.0001 par value; authorized \u2013 10,000,000 shares; issued and outstanding \u2013 350,000 shares of Series A Convertible Preferred Stock, $10.00 per share stated value, liquidation preference based on assumed conversion into common shares \u2013 729,167 shares",
+     "",
+     "3,500,000",
+     "",
+     "",
+     "3,500,000",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; authorized \u2013 100,000,000 shares; issued and outstanding \u2013 13,746,593 shares and 12,402,157 shares at December 31, 2021 and 2020, respectively",
+     "",
+     "1,374",
+     "",
+     "",
+     "1,240",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "38,371,128",
+     "",
+     "",
+     "31,864,479",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(37,082,164)",
+     "",
+     "",
+     "(30,353,768)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "4,790,338",
+     "",
+     "",
+     "5,011,951",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "5,093,264",
+     "",
+     "$",
+     "5,228,475",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2563,
+    "end_line": 2605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cfWe obtained and read the Equity Award agreements and management\u2019s valuation analyses, including supporting schedules and related narrative information.\n\u25cfWe evaluated management\u2019s valuation methodology, including the selection of the model to determine the fair values of the Equity Awards.\n\u25cfWe evaluated the reasonableness of management\u2019s valuation assumptions and the underlying source information of significant valuation assumptions, including the risk-free interest rate, volatility, and dividend yield.\n\u25cfWe assessed whether management\u2019s calculations of the fair values were applied in accordance with the selected methodology, including testing the mathematical accuracy of the valuation analyses.\n\u25cfWe developed independent estimates for the fair values of the Equity Awards based on assumptions utilized by the Company in its calculations.\nWe have served as the Company\u2019s auditor since 2008.\n/s/ Weinberg & Company, P.A.\nLos Angeles, California\nMarch 21, 2022\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2559,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2606,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation to related parties, including stock-based compensation of $2,201,280 and $480,634 for the years ended December 31, 2021 and 2020, respectively",
+     "",
+     "2,931,280",
+     "",
+     "",
+     "765,085",
+     ""
+    ],
+    [
+     "Patent and licensing legal and filing fees and costs",
+     "",
+     "729,171",
+     "",
+     "",
+     "553,173",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,323,218",
+     "",
+     "",
+     "724,506",
+     ""
+    ],
+    [
+     "Research and development costs, including $397,642 and $670,715 of stock-based compensation costs to a consultant for the years ended December 31, 2021 and 2020, respectively",
+     "",
+     "1,736,776",
+     "",
+     "",
+     "1,223,676",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "6,720,445",
+     "",
+     "",
+     "3,266,440",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(6,720,445)",
+     "",
+     "",
+     "(3,266,440)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "626",
+     "",
+     "",
+     "4,342",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(7,414)",
+     "",
+     "",
+     "(3,674)",
+     ""
+    ],
+    [
+     "Foreign currency gain (loss)",
+     "",
+     "(1,163)",
+     "",
+     "",
+     "890",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,728,396)",
+     "",
+     "$",
+     "(3,264,882)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share \u2013 basic and diluted",
+     "$",
+     "(0.50)",
+     "",
+     "$",
+     "(0.29)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 basic and diluted",
+     "",
+     "13,473,839",
+     "",
+     "",
+     "11,277,126",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2610,
+    "end_line": 2644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nYears Ended December 31, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2606,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 2645,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Series A Convertible Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "350,000",
+     "$",
+     "3,500,000",
+     "",
+     "11,174,737",
+     "$",
+     "1,117",
+     "$",
+     "26,021,904",
+     "$",
+     "(27,088,886)",
+     "",
+     "$",
+     "2,434,135",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock units in public offering, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,200,000",
+     "",
+     "120",
+     "",
+     "4,591,229",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,591,349",
+     ""
+    ],
+    [
+     "Stock-based compensation expense, including $670,715 for extension of stock options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,151,349",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,151,349",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "27,420",
+     "",
+     "3",
+     "",
+     "99,997",
+     "",
+     "\u2014",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,264,882)",
+     "",
+     "",
+     "(3,264,882)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "350,000",
+     "",
+     "3,500,000",
+     "",
+     "12,402,157",
+     "",
+     "1,240",
+     "",
+     "31,864,479",
+     "",
+     "(30,353,768)",
+     "",
+     "",
+     "5,011,951",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock in direct equity offering, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,133,102",
+     "",
+     "113",
+     "",
+     "3,689,648",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,689,761",
+     ""
+    ],
+    [
+     "Exercise of warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,000",
+     "",
+     "1",
+     "",
+     "17,099",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,100",
+     ""
+    ],
+    [
+     "Exercise of options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "208,334",
+     "",
+     "20",
+     "",
+     "200,980",
+     "",
+     "\u2014",
+     "",
+     "",
+     "201,000",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,598,922",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,598,922",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,728,396)",
+     "",
+     "",
+     "(6,728,396)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "350,000",
+     "$",
+     "3,500,000",
+     "",
+     "13,746,593",
+     "$",
+     "1,374",
+     "$",
+     "38,371,128",
+     "$",
+     "(37,082,164)",
+     "",
+     "$",
+     "4,790,338",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2651,
+    "end_line": 2674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nYears Ended December 31, 2021 and 2020",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2645,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 2675,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,728,396)",
+     "",
+     "$",
+     "(3,264,882)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense included in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative costs",
+     "",
+     "2,201,280",
+     "",
+     "",
+     "580,634",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "",
+     "397,642",
+     "",
+     "",
+     "670,715",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances on research and development contract services",
+     "",
+     "(73,343)",
+     "",
+     "",
+     "(76,898)",
+     ""
+    ],
+    [
+     "Accrued interest receivable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14,367",
+     ""
+    ],
+    [
+     "Prepaid insurance",
+     "",
+     "(41,718)",
+     "",
+     "",
+     "(32,803)",
+     ""
+    ],
+    [
+     "Other prepaid expenses and current assets",
+     "",
+     "4,751",
+     "",
+     "",
+     "9,294",
+     ""
+    ],
+    [
+     "Increase (decrease) in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "35,673",
+     "",
+     "",
+     "46,743",
+     ""
+    ],
+    [
+     "Research and development contract liabilities",
+     "",
+     "61,196",
+     "",
+     "",
+     "(78,584)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,142,915)",
+     "",
+     "",
+     "(2,131,414)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock units in public offering, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,601,816",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock in direct equity offering, net of offering costs",
+     "",
+     "3,689,761",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Exercise of common stock warrants",
+     "",
+     "17,100",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Exercise of common stock options",
+     "",
+     "201,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of costs incurred in connection with sale of common stock units",
+     "",
+     "(10,467)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "3,897,394",
+     "",
+     "",
+     "4,601,816",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease)",
+     "",
+     "(245,521)",
+     "",
+     "",
+     "2,470,402",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "",
+     "5,069,266",
+     "",
+     "",
+     "2,598,864",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "4,823,745",
+     "",
+     "$",
+     "5,069,266",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "7,414",
+     "",
+     "$",
+     "3,674",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued offering costs (paid subsequent to December 31, 2020)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "10,467",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2679,
+    "end_line": 2732
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nYears Ended December 31, 2021 and 2020\n1. Organization and Basis of Presentation\nLixte Biotechnology Holdings, Inc., a Delaware corporation (\u201cHoldings\u201d), including its wholly-owned Delaware subsidiary, Lixte Biotechnology, Inc. (\u201cLixte\u201d) (collectively, the \u201cCompany\u201d), is a drug discovery company that uses biomarker technology to identify enzyme targets associated with serious common diseases and then designs novel compounds to attack those targets. The Company\u2019s product pipeline is primarily focused on inhibitors of protein phosphatases, used alone and in combination with cytotoxic agents and/or x-ray and immune checkpoint blockers, and encompasses two major categories of compounds at various stages of pre-clinical and clinical development that the Company believes have broad therapeutic potential not only for cancer but also for other debilitating and life-threatening diseases. The Company has developed two classes of drugs for the treatment of cancer, consisting of protein phosphatase inhibitors (PTase-i), designated by us as the LB-100 series of compounds, and histone deacetylase inhibitors (HDACi), designated by us as the LB-200 series of compounds.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2675,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": null,
+     "page_number": 6
+    },
+    "after": {
+     "line": 2733,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred Stock",
+     "",
+     "729,167",
+     "",
+     "729,167"
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "3,110,310",
+     "",
+     "3,000,000"
+    ],
+    [
+     "Common stock options, including options issued in the form of warrants",
+     "",
+     "2,666,667",
+     "",
+     "1,475,000"
+    ],
+    [
+     "Total",
+     "",
+     "6,506,144",
+     "",
+     "5,204,167"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2839,
+    "end_line": 2852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company\u2019s computation of earnings (loss) per share (\u201cEPS\u201d) includes basic and diluted EPS. Basic EPS is measured as the income (loss) attributable to common stockholders divided by the weighted average common shares outstanding for the period. Diluted EPS is similar to basic EPS but presents the dilutive effect on a per share basis of potential common shares (e.g., preferred shares, warrants and stock options) as if they had been converted at the beginning of the periods presented, or issuance date, if later. Potential common shares that have an anti-dilutive effect (i.e., those that increase income per share or decrease loss per share) are excluded from the calculation of diluted EPS.\nLoss per common share is computed by dividing net loss by the weighted average number of shares of common stock outstanding during the respective periods. Basic and diluted loss per common share was the same for all periods presented because all preferred shares, warrants and stock options outstanding were anti-dilutive.\nAt December 31, 2021 and 2020, the Company excluded the outstanding securities summarized below, which entitle the holders thereof to acquire shares of common stock, from its calculation of earnings per share, as their effect would have been anti-dilutive.\nSchedule of Anti-dilutive Securities Excluded from Computation of Earnings Per Share",
+   "prose_after": "Fair Value of Financial Instruments\nThe authoritative guidance with respect to fair value established a fair value hierarchy that prioritizes the inputs to valuation techniques used to measure fair value into three levels and requires that assets and liabilities carried at fair value be classified and disclosed in one of three categories, as presented below. Disclosure as to transfers in and out of Levels 1 and 2, and activity in Level 3 fair value measurements, is also required.\nLevel\n1. Observable inputs such as quoted prices in active markets for an identical asset or liability that the Company has the ability to access as of the measurement date. Financial assets and liabilities utilizing Level 1 inputs include active-exchange traded securities and exchange-based derivatives.\nLevel\n2. Inputs, other than quoted prices included within Level 1, which are directly observable for the asset or liability or indirectly observable through corroboration with observable market data. Financial assets and liabilities utilizing Level 2 inputs include fixed income securities, non-exchange-based derivatives, mutual funds, and fair-value hedges.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2828,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2862,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average\n\n\n\nExercise Price",
+     "",
+     "Weighted Average\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (in Years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding at December 31, 2019",
+     "",
+     "1,500,000",
+     "",
+     "$",
+     "6.000",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "1,500,000",
+     "",
+     "",
+     "5.700",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding at December 31, 2020",
+     "",
+     "3,000,000",
+     "",
+     "$",
+     "5.850",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "113,310",
+     "",
+     "",
+     "3.700",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "5.700",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding at December 31, 2021",
+     "",
+     "3,110,310",
+     "",
+     "$",
+     "5.772",
+     "",
+     "2.48"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at December 31, 2020",
+     "",
+     "3,000,000",
+     "",
+     "$",
+     "5.850",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at December 31, 2021",
+     "",
+     "3,110,310",
+     "",
+     "$",
+     "5.772",
+     "",
+     "2.48"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2914,
+    "end_line": 2942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Effective March 2, 2021, the Company completed the sale of 1,133,102 shares of common stock at a price of $3.70 per share in a registered direct equity offering, generating gross proceeds of $4,192,478. The total cash costs of this offering were $502,717, resulting in net cash proceeds of $3,689,761. Pursuant to the placement agents\u2019 agreement, the Company granted warrants to the placement agents to purchase up to 113,310 shares of common stock commencing on March 2, 2021 and expiring on March 2, 2026, at an exercise price of $3.70 per share.\nEffective April 22, 2021, stock options held by an officer and two of the Company\u2019s directors for 125,001 shares of common stock were exercised. Such stock options consisted of 75,000 options at $0.72 per share, 16,667 options at $0.90 per share, and 33,334 options at $0.96 per share. The exercise of these stock options generated total cash proceeds of $101,000 and resulted in the issuance of 125,001 shares of common stock.\nEffective July 14, 2021, a stock option held by a consultant of the Company for 83,333 shares of common stock were exercised at $1.20 per share. The exercise of this stock option generated total cash proceeds of $100,000 and resulted in the issuance of 83,333 shares of common stock.\nCommon Stock Warrants\nA summary of common stock warrant activity, including warrants to purchase common stock that were issued in conjunction with the Company\u2019s public offering, during the years ended December 31, 2021 and 2020 is presented below.\nSchedule of Warrants Outstanding",
+   "prose_after": "At December 31, 2021, the outstanding warrants are exercisable at the following prices per common share:\nSchedule of Warrants Outstanding and Exercisable",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2897,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2942,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise\n\n\n\nPrices",
+     "",
+     "Warrants\n\n\n\nOutstanding\n\n\n\n(Shares)",
+     ""
+    ],
+    [
+     "$",
+     "3.700",
+     "",
+     "113,310"
+    ],
+    [
+     "$",
+     "5.700",
+     "",
+     "1,497,000"
+    ],
+    [
+     "$",
+     "6.000",
+     "",
+     "1,500,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "3,110,310"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2947,
+    "end_line": 2961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "At December 31, 2021, the outstanding warrants are exercisable at the following prices per common share:\nSchedule of Warrants Outstanding and Exercisable",
+   "prose_after": "Based on a fair market value of $1.19 per share on December 31, 2021, there was no intrinsic value attributed to exercisable but unexercised common stock warrants at December 31, 2021.\nInformation with respect to the issuance of common stock in connection with various stock-based compensation arrangements is provided at Note 5.\n4. Related Party Transactions\nRelated party transactions include transactions with the Company\u2019s officers, directors and affiliates.\nGil N Schwartzberg\nOn September 12, 2007, the Company entered into a consulting agreement with Gil N Schwartzberg for Mr. Schwartzberg to provide financial advisory and consulting services to the Company with respect to financing matters, capital structure and strategic development, and to assist management in communications with investors and stockholders. Mr. Schwartzberg is currently a significant stockholder and director of the Company. Consideration under this consulting agreement, including amendments thereto, has been paid exclusively in the form of stock options. On August 2, 2018, the Company entered into a third amendment to the consulting agreement to extend it to January 28, 2024, as well as to extend the exercise date of previously issued, fully-vested stock options for 666,667 shares of common stock, exercisable at $3.00 per share, from January 28, 2019 to January 28, 2024.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2942,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2981,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Related party costs:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash-based",
+     "$",
+     "822,834",
+     "$",
+     "284,451"
+    ],
+    [
+     "Stock-based",
+     "",
+     "2,201,280",
+     "",
+     "480,634"
+    ],
+    [
+     "Total",
+     "$",
+     "3,024,114",
+     "$",
+     "765,085"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3010,
+    "end_line": 3025
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "Chairman of audit committee - additional $10,000 per year\nChairman of any other committees - additional $5,000 per year\nMember of audit committee - additional $5,000 per year\nMember of any other committees - additional $2,500 per year\nTotal cash compensation paid to independent directors was $92,833 for the year ended December 31, 2021.\nStock-based compensation arrangements involving members of the Company\u2019s Board of Directors. officers and affiliates are described at Note 5.\nA summary of related party costs, including compensation under employment and consulting agreements and fees paid to non-officer directors for their services on the Board of Directors, for the years ended December 31, 2021 and 2020 is presented below. This summary includes the above-described payments to Mr. Forman in 2020 prior to his appointment as Chief Administrative Officer and excludes the payments to Mr. Weingarten in 2020 prior to his appointment as Vice President and Chief Financial Officer.\nSummary of Related Party Costs",
+   "prose_after": "5. Stock-Based Compensation\nThe Company issues common stock and stock options as incentive compensation to directors and as compensation for the services of employees, contractors, and consultants of the Company.\nOn July 14, 2020, the Board of Directors of the Company adopted the 2020 Stock Incentive Plan (the \u201c2020 Plan\u201d), which provides for the granting of equity-based awards, consisting of stock options, restricted stock, restricted stock units, stock appreciation rights, and other stock-based awards to employees, officers, directors and consultants of the Company and its affiliates for up to 2,333,333 shares of the Company\u2019s common stock, under terms and conditions as determined by the Company\u2019s Board of Directors. Stockholders holding a majority of the voting power of the common stock of the Company approved the 2020 Plan pursuant to an action by written consent dated July 31, 2020. Stockholders of the Company were notified of such action by written consent pursuant to an Information Statement dated August 31, 2020 and mailed to stockholders on or about September 3, 2020. As of December 31, 2021, unexpired stock options for 1,400,000 shares were issued and outstanding under the 2020 Plan and 933,333 shares were available for issuance under the 2020 Plan.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2981,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 3025,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "0.89% to 1.13",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "187.7% to 198.8",
+     "%"
+    ],
+    [
+     "Expected life",
+     "3.5 to 5 years",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3042,
+    "end_line": 3048
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The fair value of a stock option award is calculated on the grant date using the Black-Scholes option-pricing model. The risk-free interest rate is based on the U.S. Treasury yield curve in effect as of the grant date. The expected dividend yield assumption is based on the Company\u2019s expectation of dividend payouts and is assumed to be zero. The estimated volatility is based on the historical volatility of the Company\u2019s common stock, calculated utilizing a look-back period approximately equal to the contractual life of the stock option being granted. Unless sufficient historical exercise data is available, the expected life of the stock option is calculated as the mid-point between the vesting period and the contractual term (the \u201csimplified method\u201d). The fair market value of the common stock is determined by reference to the quoted market price of the common stock on the grant date.\nFor stock options requiring an assessment of value during the year ended December 31, 2021, the fair value of each stock option award was estimated using the Black-Scholes option-pricing model with the following assumptions:\nSchedule of Fair Value of Each Option Award Estimated Assumption",
+   "prose_after": "For stock options requiring an assessment of value during the year ended December 31, 2020, the fair value of each stock option award was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3025,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 3059,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "0.23% to 0.31",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "207.7",
+     "%"
+    ],
+    [
+     "Expected life",
+     "4 to 5 years",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3051,
+    "end_line": 3057
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "For stock options requiring an assessment of value during the year ended December 31, 2020, the fair value of each stock option award was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "prose_after": "Effective September 14, 2015, in connection with the Collaboration Agreement with BioPharmaWorks LLC (\u201cBioPharmaWorks\u201d) as described at Note 7, the Company issued to BioPharmaWorks two stock options, in the form of warrants, to purchase 166,667 shares (83,333.5 shares per warrant) of the Company\u2019s common stock. The first warrant vested on September 14, 2016 and was exercisable for a period of five years from the grant date at $6.00 per share. The second warrant vested on September 14, 2017 and was exercisable for a period of five years from the grant date at $12.00 per share. On July 3, 2020, the Company\u2019s Board of Directors approved an extension of the term of the outstanding warrants to acquire an aggregate of 166,667 shares of the Company\u2019s common stock from September 14, 2020 to September 14, 2025. The Company\u2019s closing stock price on July 2, 2020 was $5.40 per share. The fair value of the extension of these stock options, as calculated pursuant to the Black-Scholes option-pricing model, was measured for accounting purposes as the difference in the fair value of the stock options immediately before and immediately after the extension date and was determined to be $670,715 ($4.0242 per share), which was reflected as a charge to general and administrative costs in the consolidated statement of operations on that date.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3025,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 3059,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Related parties",
+     "$",
+     "2,201,280",
+     "$",
+     "480,634"
+    ],
+    [
+     "Non-related parties",
+     "",
+     "397,642",
+     "",
+     "770,715"
+    ],
+    [
+     "Total stock-based compensation costs",
+     "$",
+     "2,598,922",
+     "$",
+     "1,251,349"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3080,
+    "end_line": 3094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "On June 30, 2021, the Board of Directors, in accordance with the recently adopted cash and equity compensation package for the members of the Board of Directors, granted to each of the five non-officer directors of the Company stock options exercisable for a period of five years to purchase 100,000 shares (a total of 500,000 shares) of the Company\u2019s common stock at an exercise price of $3.03 per share (the closing market price on the grant date), vesting 12.5% on the last day of each subsequent calendar quarter-end until fully vested. The total fair value of the 500,000 stock options, as calculated pursuant to the Black-Scholes option-pricing model, was determined to be $1,421,095 ($2.84225 per share), which is being charged to operations ratably from July 1, 2021 through June 30, 2023. During the year ended December 31, 2021, the Company recorded charges to general and administrative costs in the consolidated statement of operations of $358,200 with respect to these stock options.\nOn November 8, 2021, the Company issued to BioPharmaWorks a stock option, in the form of a warrant, to purchase 200,000 shares of the Company\u2019s common stock. The warrant is exercisable for a period of five years from the issue date at $2.06 per share (the closing market price on the issue date). The fair value of the fully-vested stock warrant, as calculated pursuant to the Black-Scholes option-pricing model, was determined to be $397,642 ($1.9882 per share) and was charged to general and administrative costs in the consolidated statement of operations on that date.\nA summary of stock-based compensation costs for the years ended December 31, 2021 and 2020 is as follows:\nSummary of Stock-based Compensation Costs",
+   "prose_after": "A summary of stock option activity, including options issued in the form of warrants, during the years ended December 31, 2021 and 2020 is presented below.\nSummary of Stock Option Activity Including Options Form of Warrants",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3067,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 3094,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average\n\n\n\nExercise\n\n\n\nPrice",
+     "",
+     "Weighted Average Remaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options outstanding at December 31, 2019",
+     "",
+     "1,308,333",
+     "",
+     "$",
+     "3.648",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "200,000",
+     "",
+     "",
+     "7.140",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(33,333)",
+     "",
+     "",
+     "3.000",
+     "",
+     ""
+    ],
+    [
+     "Stock options outstanding at December 31, 2020",
+     "",
+     "1,475,000",
+     "",
+     "",
+     "4.136",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,400,000",
+     "",
+     "",
+     "2.906",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(208,334)",
+     "",
+     "",
+     "0.965",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Rounding adjustment attributable to reverse stock split",
+     "",
+     "1",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Stock options outstanding at December 31, 2021",
+     "",
+     "2,666,667",
+     "",
+     "$",
+     "3.738",
+     "",
+     "3.42"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options exercisable at December 31, 2020",
+     "",
+     "1,325,000",
+     "",
+     "$",
+     "3.796",
+     "",
+     ""
+    ],
+    [
+     "Stock options exercisable at December 31, 2021",
+     "",
+     "2,004,167",
+     "",
+     "$",
+     "3.770",
+     "",
+     "3.13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3099,
+    "end_line": 3127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "A summary of stock option activity, including options issued in the form of warrants, during the years ended December 31, 2021 and 2020 is presented below.\nSummary of Stock Option Activity Including Options Form of Warrants",
+   "prose_after": "Total deferred compensation expense for the outstanding value of unvested stock options was approximately $2,097,000 at December 31, 2021, which will be recognized subsequent to December 31, 2021 over a weighted-average period of approximately 18 months.\nThe exercise prices of common stock options outstanding and exercisable, including options issued in the form of warrants, at December 31, 2021 are as follows:\nSchedule of Exercise Prices of Common Stock Options Outstanding and Exercisable Including Options Form of Warrants",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3094,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 3162,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise\n\n\n\nPrices",
+     "",
+     "Options\n\n\n\nOutstanding (Shares)",
+     "",
+     "Options\n\n\n\nExercisable (Shares)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$",
+     "0.900",
+     "",
+     "33,333",
+     "",
+     "33,333"
+    ],
+    [
+     "$",
+     "1.680",
+     "",
+     "66,667",
+     "",
+     "66,667"
+    ],
+    [
+     "$",
+     "2.060",
+     "",
+     "200,000",
+     "",
+     "200,000"
+    ],
+    [
+     "$",
+     "2.800",
+     "",
+     "250,000",
+     "",
+     "156,250"
+    ],
+    [
+     "$",
+     "3.000",
+     "",
+     "666,667",
+     "",
+     "666,667"
+    ],
+    [
+     "$",
+     "3.030",
+     "",
+     "500,000",
+     "",
+     "125,000"
+    ],
+    [
+     "$",
+     "3.200",
+     "",
+     "250,000",
+     "",
+     "156,250"
+    ],
+    [
+     "$",
+     "3.210",
+     "",
+     "200,000",
+     "",
+     "200,000"
+    ],
+    [
+     "$",
+     "6.000",
+     "",
+     "166,667",
+     "",
+     "166,667"
+    ],
+    [
+     "$",
+     "6.600",
+     "",
+     "50,000",
+     "",
+     "50,000"
+    ],
+    [
+     "$",
+     "7.140",
+     "",
+     "200,000",
+     "",
+     "100,000"
+    ],
+    [
+     "$",
+     "12.000",
+     "",
+     "83,333",
+     "",
+     "83,333"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2,666,667",
+     "",
+     "2,004,167"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3134,
+    "end_line": 3156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Total deferred compensation expense for the outstanding value of unvested stock options was approximately $2,097,000 at December 31, 2021, which will be recognized subsequent to December 31, 2021 over a weighted-average period of approximately 18 months.\nThe exercise prices of common stock options outstanding and exercisable, including options issued in the form of warrants, at December 31, 2021 are as follows:\nSchedule of Exercise Prices of Common Stock Options Outstanding and Exercisable Including Options Form of Warrants",
+   "prose_after": "The intrinsic value of exercisable but unexercised in-the-money stock options at December 31, 2021 was approximately $10,000, based on a fair market value of $1.19 per share on December 31, 2021.\nOutstanding stock options to acquire 662,500 shares of the Company\u2019s common stock had not vested at December 31, 2021.\nThe Company expects to satisfy such stock obligations through the issuance of authorized but unissued shares of common stock.\n6. Income Taxes\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets as of December 31, 2021 and 2020 are summarized below.\nSchedule of Components of Deferred Tax Assets",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3094,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 3162,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Start-up and organization costs",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Research credits",
+     "",
+     "451,000",
+     "",
+     "",
+     "390,000",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "1,821,000",
+     "",
+     "",
+     "1,107,000",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "",
+     "6,723,000",
+     "",
+     "",
+     "5,477,000",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "8,995,000",
+     "",
+     "",
+     "6,979,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(8,995,000)",
+     "",
+     "",
+     "(6,979,000)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3169,
+    "end_line": 3185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The intrinsic value of exercisable but unexercised in-the-money stock options at December 31, 2021 was approximately $10,000, based on a fair market value of $1.19 per share on December 31, 2021.\nOutstanding stock options to acquire 662,500 shares of the Company\u2019s common stock had not vested at December 31, 2021.\nThe Company expects to satisfy such stock obligations through the issuance of authorized but unissued shares of common stock.\n6. Income Taxes\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets as of December 31, 2021 and 2020 are summarized below.\nSchedule of Components of Deferred Tax Assets",
+   "prose_after": "In assessing the potential realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the Company attaining future taxable income during the periods in which those temporary differences become deductible. As of December 31, 2021 and 2020, management was unable to determine if it is more likely than not that the Company\u2019s deferred tax assets will be realized and has therefore recorded an appropriate valuation allowance against deferred tax assets at such dates.\nNo federal tax provision has been provided for the years ended December 31, 2021 and 2020 due to the losses incurred during such periods. The reconciliation below presents the difference between the income tax rate computed by applying the U.S. federal statutory rate and the effective tax rate for the years ended December 31, 2021 and 2020.\nSchedule of Effective Income Tax Rate",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3162,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 3211,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U. S. federal statutory tax rate",
+     "",
+     "(21.0)",
+     "%",
+     "",
+     "(21.0)",
+     "%"
+    ],
+    [
+     "State income taxes, net of federal tax benefit",
+     "",
+     "(6.0)",
+     "%",
+     "",
+     "(6.0)",
+     "%"
+    ],
+    [
+     "Expirations related to stock-based compensation",
+     "",
+     "0.6",
+     "%",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "Adjustment to deferred tax asset",
+     "",
+     "(0.4)",
+     "%",
+     "",
+     "(0.8)",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "26.8",
+     "%",
+     "",
+     "27.3",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3192,
+    "end_line": 3209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "In assessing the potential realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the Company attaining future taxable income during the periods in which those temporary differences become deductible. As of December 31, 2021 and 2020, management was unable to determine if it is more likely than not that the Company\u2019s deferred tax assets will be realized and has therefore recorded an appropriate valuation allowance against deferred tax assets at such dates.\nNo federal tax provision has been provided for the years ended December 31, 2021 and 2020 due to the losses incurred during such periods. The reconciliation below presents the difference between the income tax rate computed by applying the U.S. federal statutory rate and the effective tax rate for the years ended December 31, 2021 and 2020.\nSchedule of Effective Income Tax Rate",
+   "prose_after": "At December 31, 2021, the Company has available net operating loss carryforwards for federal and state income tax purposes of approximately $23,173,000 and $23,287,000, respectively. Federal net operating losses, if not utilized earlier, expire through 2041. The state net operating loss carryovers include approximately $19,141,000 that was incurred in the State of New York. New York tax law requires New York net operating loss carryovers from years prior to 2015 to be converted, by applying a formula, into a Prior Net Operating Loss Conversion (PNOLC) subtraction pool. The Company may utilize up to 1/10 of the PNOLC subtraction pool, or $928,313, each year. Unutilized PNOLC amounts carry forward to succeeding years until they expire in 2035. In addition, the full New York net operating losses incurred in post-2015 tax years may be utilized in future tax years. Post-2015 New York net operating losses expire through 2040. The state net operating loss carryovers also include approximately $4,146,000 that was incurred in the State of California. As the Company\u2019s net operating losses have yet to be utilized, all previous tax years since 2006 remain subject to adjustment by Federal authorities and other jurisdictions in which the Company currently operates or has operated in the past.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3162,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 3211,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

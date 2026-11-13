@@ -1,0 +1,4309 @@
+{
+ "accession": "0000950170-25-047908",
+ "cik": "0002024306",
+ "form": "10-K",
+ "filing_date": "2025-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "jfb-10k-123124.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "99-2549040"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ],
+    [
+     "1300 S. Dixie Highway, Suite B\n\nLantana, FL",
+     "33462"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended DECEMBER 31, 2024\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM TO\nCommission File Number 001-42538\nJFB CONSTRUCTION HOLDINGS\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (561)582-9840\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading\n\nSymbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock,par value $0.0001per share",
+     "JFB",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (561)582-9840\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. YES [X] NO [ ]\nIndicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). YES [X] NO [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "26"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "26"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "27"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "27"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "28"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "29"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "30"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "38"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "F-1"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "40"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "40"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "41"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "47"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "50"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "52"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "56"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "56"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the Registrant,computed by reference to the closing price as of December 31,2024 of $(()) per share, the last business day of the Registrant's most recently completed fourth quarter, was approximately $(()).\nThe number of shares of Registrant\u2019s Common Stock outstanding as of March 28,2025 was 9,250,000.\nTable of Contents",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (\u201cAnnual Report\u201d) contains forward-looking statements within the meaning of the federal securities laws. All statements contained in this Annual Report, other than statements of historical fact, including statements regarding our future operating results and financial position, our business strategy and plans, potential growth or growth prospects, future research and development, sales and marketing and general and administrative expenses, and our objectives for future operations, are forward-looking statements. Words such as \u201cbelieves,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cestimates,\u201d \u201cpotential,\u201d \u201ccontinues,\u201d \u201canticipates,\u201d \u201cintends,\u201d \u201cexpects,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cprojects,\u201d \u201cplans,\u201d \u201ctargets,\u201d and variations of such words and similar expressions are intended to identify forward-looking statements. We have based these forward-looking statements largely on our current expectations and projections about future events and trends that we believe may affect our financial condition, results of operations, business strategy, short-term and long-term business operations and objectives, and financial needs. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the \u201cRisk Factors\u201d in this Annual Report. Readers are urged to carefully review and consider the various disclosures made in this Annual Report and in other documents we file from time to time with the Securities and Exchange Commission (the \u201cSEC\u201d) that disclose risks and uncertainties that may affect our business. Moreover, we operate in a very competitive and rapidly changing environment. New risks emerge from time to time. It is not possible for us to predict all risks, nor can we assess the impact of all factors on our business or the extent to which any factor, or combination of factors, may cause actual results to differ materially from those contained in any forward-looking statements we may make. In light of these risks, uncertainties, and assumptions, the future events and circumstances discussed in this Annual Report may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "Revenues\n\n",
+     "$",
+     "23,087,885\n\n",
+     "",
+     "$",
+     "32,366,003\n\n",
+     "",
+     "$",
+     "9,278,118\n\n",
+     ""
+    ],
+    [
+     "Cost of revenues\n\n",
+     "",
+     "18,053,324\n\n",
+     "",
+     "",
+     "25,095,042\n\n",
+     "",
+     "",
+     "7,041,718\n\n",
+     ""
+    ],
+    [
+     "Gross profit\n\n",
+     "",
+     "5,034,561\n\n",
+     "",
+     "",
+     "7,270,961\n\n",
+     "",
+     "",
+     "2,236,400\n\n",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing expense\n\n",
+     "",
+     "51,635\n\n",
+     "",
+     "",
+     "41,573\n\n",
+     "",
+     "",
+     "10,062\n\n",
+     ""
+    ],
+    [
+     "General and administrative\n\n",
+     "",
+     "4,836,781\n\n",
+     "",
+     "",
+     "3,107,635\n\n",
+     "",
+     "",
+     "1,729,146\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense\n\n",
+     "",
+     "179,649\n\n",
+     "",
+     "",
+     "100,029\n\n",
+     "",
+     "",
+     "79,620\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "5,068,065\n\n",
+     "",
+     "",
+     "3,249,237\n\n",
+     "",
+     "",
+     "1,818,828\n\n",
+     ""
+    ],
+    [
+     "Income from operations\n\n",
+     "",
+     "(33,504)",
+     "",
+     "",
+     "4,021,724\n\n",
+     "",
+     "",
+     "(4,055,228)",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "(8,142)",
+     "",
+     "",
+     "18,382\n\n",
+     "",
+     "",
+     "26,524\n\n",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "(32,649)",
+     "",
+     "",
+     "(31,292)",
+     "",
+     "",
+     "1,357\n\n",
+     ""
+    ],
+    [
+     "Interest income\n\n",
+     "",
+     "193,300\n\n",
+     "",
+     "",
+     "136,948\n\n",
+     "",
+     "",
+     "56,352\n\n",
+     ""
+    ],
+    [
+     "Total other income (expense), net\n\n",
+     "",
+     "152,509\n\n",
+     "",
+     "",
+     "124,038\n\n",
+     "",
+     "",
+     "28,471\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "119,005\n\n",
+     "",
+     "$",
+     "4,145,762\n\n",
+     "",
+     "$",
+     "(4,026,757)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1091
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022Standardizing and disaggregating rate reconciliation categories.\n\u2022Requiring disclosure of income taxes paid by jurisdiction.\nThis ASU is effective for annual periods beginning after December 15, 2024, and may be applied on a prospective or retrospective basis. Early adoption is permitted.\nThe Company is currently assessing the impact of ASU 2023-09 on its income tax disclosures and reporting requirements.\nOther Accounting Standards Updates\nThe FASB has issued various technical corrections and industry-specific updates that are not expected to have a material impact on the Company\u2019s consolidated financial position, results of operations, or cash flows.\nResults of Operations\nFor the Year Ended December 31, 2024 Compared to Year Ended December 31, 2023\nThe following table summarizes the results of condensed consolidated statements of operations and comprehensive income (loss) for the years ended December 31, 2024 and 2023 in U.S. dollars, and provides information regarding the dollar and percentage increase or (decrease) during such periods.",
+   "prose_after": "Revenues.\nRevenues decreased by $9,278,118, or 28.66%, to approximately $23 million in the year ended December 31, 2024 from approximately $32.3 million for the year ended December 31, 2023. The decrease in revenue was principally driven by a decline in the number of new contracts awarded and new project commencements compared to the same period the previous year. This is attributable to seasonality in the industry, inflation, and high interest rates on construction loans. Seasonality significantly impacts the construction industry, with the first and second quarter traditionally being the weakest for JFB. Compounded by weather-related delays, most of our clients aim to complete their construction projects before the end of the calendar year to maximize their tax benefits by writing off the asset in that tax year. As a result, Q3 and Q4 have historically been our strongest quarters, with a surge in project completions and revenue recognition during these periods. The impact of seasonality was greater in the first 6 months of 2024 compared to 2023 for various reasons, including the reasons discussed below. Inflation has caused the prices of key construction materials, such as steel, lumber, and concrete, to rise substantially. These increased costs have made projects more expensive overall, which has, in turn, materially affected the number of new contracts awarded to JFB in the first nine months of 2024. Clients are more cautious about committing to new projects due to higher anticipated costs, leading to a decline in contract volume during the quarter. Rising interest rates have significantly increased the cost of financing for both us and our clients. Higher borrowing costs have led to a reduction in demand for new construction projects, as clients delay or scale back their plans due to the increased cost of capital. Additionally, to a lesser extent, the higher interest rates have directly increased our own financing costs, squeezing margins and reducing profitability. JFB is actively attempting to mitigate the impact of these factors in a number of different approaches, which include strategic procurement initiatives to lock-in pricing and ensure material availability, diversify our supplier base to attempt to reduce dependency of single sources and mitigate supply chain disruptions. Further, JFB is considering alternative financing options and strategies to optimize their capital structures in light of current market conditions.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1044,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities\n\n",
+     "$",
+     "3,481,851\n\n",
+     "",
+     "$",
+     "1,722,022\n\n",
+     ""
+    ],
+    [
+     "Net cash used in investing activities\n\n",
+     "",
+     "(817,534)",
+     "",
+     "",
+     "(375,220)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities\n\n",
+     "",
+     "1,204,877\n\n",
+     "",
+     "",
+     "(142,054)",
+     ""
+    ],
+    [
+     "Net (decreased) increase in cash\n\n",
+     "",
+     "1,459,439\n\n",
+     "",
+     "",
+     "1,204,748\n\n",
+     ""
+    ],
+    [
+     "Cash, beginning of the period\n\n",
+     "",
+     "1,236,744\n\n",
+     "",
+     "",
+     "31,996\n\n",
+     ""
+    ],
+    [
+     "Cash, end of the period\n\n",
+     "$",
+     "2,696,183\n\n",
+     "",
+     "$",
+     "1,236,744\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1138,
+    "end_line": 1158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Our interest income increased by $56,352, or 41.1%, to $193,300 in the year ended December 31, 2024 from $136,948 in the year ended December 31, 2023. The increase in our interest income was the result of higher interest paid on bank balances. The improvement in these rates has led to higher earnings on interest bearing deposits and cash balances held at Sea Coast bank. The increase in interest income reflects the Company\u2019s successful efforts to capitalized on improved banking terms and optimize its cash management practices. We continue to monitor interest rate trends and banking relationships to ensure sustained benefits from these favorable conditions.\nNet income\nOur net income decreased by $4,026,757, or 97.13%, to $119,005 in the year ended December 31, 2024 from $4,145,762 in year ended December 31, 2023, primarily due to decrease in new construction projects during this period of 2024. Increase in Depreciation and amortization expenses, a slowdown in revenue growth compared to the previous year, and an increase in operational expenses are all the result of the net income difference.\nFor the Years Ended December 31, 2024 and 2023\nThe following table sets forth summary of our cash flows for the periods indicated:",
+   "prose_after": "Operating Activities\nNet cash provided by operating activities was $3,481,851 in the year ended December 31, 2024, compared to cash provided in operating activities of approximately $1,722,022 in the year ended December 31, 2023. This is a 102% increase primarily driven by a significant increase in contract receivables. The rise in receivables reflects higher sales and contract activity during the year, resulting in corresponding increase in the amount of cash expected to be collected in future periods. The increase in contract receivables contributed significantly to the overall improvements in operating cash flow during the period.\nInvesting Activities\nNet cash used in investing activities was $817,534 in the year ended December 31, 2024, compared to net cash used in investing activities of $375,220 in the year ended December 31, 2023. The increase in net cash used in investing activities was primarily attributable to two factors: an increased in investments in the Company's fleet of vehicles and the construction of the new headquarters. In 2024 significant capital expenditures were made for the development of the new headquarters, which contributed to higher cash outflow.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1133,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm PCAOB ID 2738",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2024and 2023",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Income for the Years ended December 31, 2024 and 2023",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Equity for the Years ended December 31, 2024and 2023",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years ended December 31, 2024and 2023",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1274,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022Our failure to comply with the regulations of Occupational Safety and Health Administration (\u201cOSHA\u201d) and state and local agencies that oversee transportation and safety compliance could adversely affect our business, financial condition, results of operations, profitability, cash flows and growth prospects.\n\u2022A change in tax laws or regulations of any federal or state jurisdiction in which we operate could increase our tax burden and otherwise adversely affect our business, financial condition, results of operations, and cash flows.\n\u2022Tariffs by the U.S. government on imports from Canada, Mexico, and China could materially and adversely affect our business operations and financial performance.\n\u2022We have broad discretion as to the use of the net proceeds from this offering and may not use them effectively.\n\u2022The nature of our contracts, particularly those that are fixed-price, subjects us to risks associated with cost overruns, operating cost inflation and potential claims for liquidated damages.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of JFB Construction Holdings\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of JFB Construction Holdings (the Company) as of December 31, 2024 and 2023, and the related consolidated statements of income, shareholder equity, and cash flows for the years ended December 31, 2024 and 2023, and the related notes (collectively referred to as the financial statements). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2024 and 2023, and the results of its operations and its cash flows for the years ended December 31, 2024 and 2023, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s consolidated financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ M&K CPAS, PLLC"
+    ],
+    [
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2023."
+    ],
+    [
+     ""
+    ],
+    [
+     "The Woodlands, TX"
+    ],
+    [
+     ""
+    ],
+    [
+     "March 31, 2025"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ M&K CPAS, PLLC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1313,
+    "end_line": 1322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The critical audit matter communicated below is a matter arising from the current period audit of the consolidated financial statements that was communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. The communication of critical audit matters does not alter in any way our opinion on the financial statements, taken as a whole, and we are not, by communicating the critical audit matter below, providing separate opinions on the critical audit matter or on the accounts or disclosures to which it relates.\nRevenue Recognition\nAs discussed in Note 2, the Company recognizes revenue on construction projects in which the performance obligation is satisfied over time.\nAuditing management\u2019s evaluation of cost to complete v/s cost incurred on long term contracts involves significant judgment.\nTo evaluate the appropriateness and accuracy of the assessment by management, we evaluated management\u2019s past history with cost estimation, completed job profitability, observation and or conformation of the progress related to certain jobs and testing of the underling inputs and data.",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash\n\n",
+     "$",
+     "2,696,183\n\n",
+     "$",
+     "1,236,744\n\n"
+    ],
+    [
+     "Contract Receivables\n\n",
+     "",
+     "3,047,255\n\n",
+     "",
+     "7,135,091\n\n"
+    ],
+    [
+     "Contract Assets\n\n",
+     "",
+     "1,213,614\n\n",
+     "",
+     "240,943\n\n"
+    ],
+    [
+     "Prepaid Expenses\n\n",
+     "",
+     "166,527\n\n",
+     "",
+     "125,760\n\n"
+    ],
+    [
+     "Contract Assets- Related Party\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "120,696\n\n"
+    ],
+    [
+     "TOTAL CURRENT ASSETS\n\n",
+     "",
+     "7,123,579\n\n",
+     "",
+     "8,859,234\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET PROPERTY AND EQUIPMENT\n\n",
+     "",
+     "1,021,930\n\n",
+     "",
+     "384,045\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "RIGHT-OF-USE ASSETS-RELATED PARTY\n\n",
+     "",
+     "819,529\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS\n\n",
+     "$",
+     "8,965,038\n\n",
+     "$",
+     "9,243,279\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and other payables\n\n",
+     "$",
+     "1,102,686\n\n",
+     "$",
+     "720,304\n\n"
+    ],
+    [
+     "Accrued expenses\n\n",
+     "",
+     "79,270\n\n",
+     "",
+     "745,124\n\n"
+    ],
+    [
+     "Contract liabilities\n\n",
+     "",
+     "633,794\n\n",
+     "",
+     "754,869\n\n"
+    ],
+    [
+     "Related Party Payables\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "332,870\n\n"
+    ],
+    [
+     "Lease liability-related party\n\n",
+     "",
+     "819,529\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES\n\n",
+     "",
+     "2,635,279\n\n",
+     "",
+     "2,553,167\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHAREHOLDER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value, 10,000,000 shares authorized; 0 shares issued and\n   outstanding.\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "Class A Common stock, $0.0001 par value, 186,000,000 shares authorized; 4,000,000 and 3,640,000 issued and outstanding respectively\n\n",
+     "",
+     "400\n\n",
+     "",
+     "364\n\n"
+    ],
+    [
+     "Class B Common stock, $0.0001 par value, 4,000,000  shares authorized; 4,000,000\n   shares issued and outstanding.\n\n",
+     "",
+     "400\n\n",
+     "",
+     "400\n\n"
+    ],
+    [
+     "Additional paid in Capital\n\n",
+     "",
+     "425,136\n\n",
+     "",
+     "32,523\n\n"
+    ],
+    [
+     "Accumulated deficit\n\n",
+     "",
+     "5,903,823\n\n",
+     "",
+     "6,656,825\n\n"
+    ],
+    [
+     "Total SHAREHOLDER\u2019S EQUITY\n\n",
+     "",
+     "6,329,759\n\n",
+     "",
+     "6,690,112\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND SHAREHOLDER EQUITY\n\n",
+     "$",
+     "8,965,038\n\n",
+     "$",
+     "9,243,279\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1326,
+    "end_line": 1397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF INCOME",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Sales\n\n",
+     "$",
+     "22,183,871\n\n",
+     "",
+     "$",
+     "31,386,003\n\n",
+     ""
+    ],
+    [
+     "Sales \u2013 Related Parties\n\n",
+     "",
+     "904,014\n\n",
+     "",
+     "",
+     "980,000\n\n",
+     ""
+    ],
+    [
+     "Cost of Goods Sold\n\n",
+     "",
+     "17,140,993\n\n",
+     "",
+     "",
+     "24,164,066\n\n",
+     ""
+    ],
+    [
+     "Cost of Goods Sold \u2013 Related Parties\n\n",
+     "",
+     "912,331\n\n",
+     "",
+     "",
+     "930,976\n\n",
+     ""
+    ],
+    [
+     "Gross Profit\n\n",
+     "",
+     "5,034,561\n\n",
+     "",
+     "",
+     "7,270,961\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing expenses\n\n",
+     "",
+     "51,635\n\n",
+     "",
+     "",
+     "41,573\n\n",
+     ""
+    ],
+    [
+     "General and administrative expense\n\n",
+     "",
+     "4,836,781\n\n",
+     "",
+     "",
+     "3,107,635\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense\n\n",
+     "",
+     "179,649\n\n",
+     "",
+     "",
+     "100,029\n\n",
+     ""
+    ],
+    [
+     "Total Operating Expense\n\n",
+     "",
+     "5,068,065\n\n",
+     "",
+     "",
+     "3,249,237\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income(Loss) from Operations\n\n",
+     "",
+     "(33,504)",
+     "",
+     "",
+     "4,201,724\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expenses)\n\n",
+     "",
+     "(8,142)",
+     "",
+     "",
+     "18,382\n\n",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "(32,649)",
+     "",
+     "",
+     "(31,292)",
+     ""
+    ],
+    [
+     "Interest Income\n\n",
+     "",
+     "193,300\n\n",
+     "",
+     "",
+     "136,948\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME\n\n",
+     "",
+     "152,509\n\n",
+     "",
+     "",
+     "124,038\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME\n\n",
+     "$",
+     "119,005\n\n",
+     "",
+     "$",
+     "4,145,762\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings Per Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Common Share\n\n",
+     "$",
+     "0.02\n\n",
+     "",
+     "$",
+     "0.54\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted- Average Common Shares Outstanding, Basic and Diluted\n\n",
+     "",
+     "7,804,262\n\n",
+     "",
+     "",
+     "7,640,000\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1403,
+    "end_line": 1462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF INCOME",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN SHAREHOLDERS' EQUITY\nFor the Years Ended December 31, 2024 and 2023",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022\n\n",
+     "",
+     "3,640,000\n\n",
+     "$",
+     "364\n\n",
+     "",
+     "4,000,000\n\n",
+     "$",
+     "400\n\n",
+     "$",
+     "(764)",
+     "",
+     "$",
+     "2,649,767\n\n",
+     "",
+     "$",
+     "2,649,767\n\n",
+     ""
+    ],
+    [
+     "Distributions 2023\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(138,704)",
+     "",
+     "",
+     "(138,704)",
+     ""
+    ],
+    [
+     "Imputed Interest\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "33,287\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "33,287\n\n",
+     ""
+    ],
+    [
+     "Net income 2023\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "4,145,762\n\n",
+     "",
+     "",
+     "4,145,762\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023\n\n",
+     "",
+     "3,640,000\n\n",
+     "$",
+     "364\n\n",
+     "",
+     "4,000,000\n\n",
+     "$",
+     "400\n\n",
+     "$",
+     "32,523\n\n",
+     "",
+     "$",
+     "6,656,825\n\n",
+     "",
+     "$",
+     "6,690,112\n\n",
+     ""
+    ],
+    [
+     "Distributions 2024\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(872,007)",
+     "",
+     "",
+     "(872,007)",
+     ""
+    ],
+    [
+     "Issuance of Common stock for services\n\n",
+     "",
+     "360,000\n\n",
+     "",
+     "36\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "359,964\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "360,000\n\n",
+     ""
+    ],
+    [
+     "Imputed Interest\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "32,649\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "32,649\n\n",
+     ""
+    ],
+    [
+     "Net Income 2024\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "119,005\n\n",
+     "",
+     "",
+     "119,005\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024\n\n",
+     "",
+     "4,000,000\n\n",
+     "$",
+     "400\n\n",
+     "",
+     "4,000,000\n\n",
+     "$",
+     "400\n\n",
+     "$",
+     "425,136\n\n",
+     "",
+     "$",
+     "5,903,823\n\n",
+     "",
+     "$",
+     "6,329,759\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1470,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN SHAREHOLDERS' EQUITY\nFor the Years Ended December 31, 2024 and 2023",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income\n\n",
+     "",
+     "119,005\n\n",
+     "",
+     "",
+     "4,145,762\n\n",
+     ""
+    ],
+    [
+     "Adjustments to reconcile Net Income to Net Cash provided by operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation Expense\n\n",
+     "",
+     "179,649\n\n",
+     "",
+     "",
+     "100,029\n\n",
+     ""
+    ],
+    [
+     "Shares issued for Services\n\n",
+     "",
+     "360,000\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Imputed Interest\n\n",
+     "",
+     "32,649\n\n",
+     "",
+     "",
+     "33,287\n\n",
+     ""
+    ],
+    [
+     "Changes in assets and Liabilities (increase) decrease in :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contracts Receivable\n\n",
+     "",
+     "4,087,836\n\n",
+     "",
+     "",
+     "(1,039,850)",
+     ""
+    ],
+    [
+     "Contract Assets\n\n",
+     "",
+     "(851,975)",
+     "",
+     "",
+     "1,442,906\n\n",
+     ""
+    ],
+    [
+     "Prepaid Expenses\n\n",
+     "",
+     "(40,767)",
+     "",
+     "",
+     "(59,079)",
+     ""
+    ],
+    [
+     "Vendor Prepaids/Deposits\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "135,864\n\n",
+     ""
+    ],
+    [
+     "Accounts Payable\n\n",
+     "",
+     "382,382\n\n",
+     "",
+     "",
+     "(1,719,057)",
+     ""
+    ],
+    [
+     "Accrued Expenses\n\n",
+     "",
+     "(665,854)",
+     "",
+     "",
+     "674,459\n\n",
+     ""
+    ],
+    [
+     "Customer Deposits\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "(95,338)",
+     ""
+    ],
+    [
+     "Contract Liabilities\n\n",
+     "",
+     "121,075\n\n",
+     "",
+     "",
+     "(1,896,959)",
+     ""
+    ],
+    [
+     "CASH PROVIDED BY OPERATING ACTIVITIES\n\n",
+     "",
+     "3,481,850\n\n",
+     "",
+     "",
+     "1,722,022\n\n",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Received from sale of Fixed Asset\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Cash Paid for purchased of Fixed Assets\n\n",
+     "",
+     "(817,534)",
+     "",
+     "",
+     "(375,220)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities\n\n",
+     "",
+     "(817,534)",
+     "",
+     "",
+     "(375,220)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment on loan payable\n\n",
+     "",
+     "(332,870)",
+     "",
+     "",
+     "(3,350)",
+     ""
+    ],
+    [
+     "Shareholder Distributions\n\n",
+     "",
+     "(872,007)",
+     "",
+     "",
+     "(138,704)",
+     ""
+    ],
+    [
+     "CASH USED FOR FINANCING ACTIVITIES\n\n",
+     "",
+     "(1,204,877)",
+     "",
+     "",
+     "(142,054)",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH\n\n",
+     "",
+     "1,459,439\n\n",
+     "",
+     "",
+     "1,204,748\n\n",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF YEAR\n\n",
+     "",
+     "1,236,744\n\n",
+     "",
+     "",
+     "31,996\n\n",
+     ""
+    ],
+    [
+     "Cash at end of period\n\n",
+     "$",
+     "2,696,183\n\n",
+     "",
+     "$",
+     "1,236,744\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Paid\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Taxes Paid\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Non-Cash Financing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Addition of lease during this period\n\n",
+     "$",
+     "908,705\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1510,
+    "end_line": 1581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "JFB Construction Holding\nNotes to the Audited Financial Statements\nNote 1 \u2013 Nature of the Business\nJFB Construction & Development, Inc. (\u201cJFB\u201d or the \u201cCompany\u201d) was incorporated in the State of Florida on May 28, 2014, and is based in Lantana, Florida. The Company offers more than 100 years of combined generational experience in residential and commercial construction and development. JFB builds multifamily communities, exclusive estate & equestrian homes, and over 2 million square feet of commercial retail and shopping centers. The Company meets its customers\u2019 needs through advanced scheduling, deep construction expertise, innovative problem solving and continuous communication during construction.\nOn April 09, 2024, JFB Construction Holdings was formed out of the state of Nevada to serve as the parent company of JFB Construction & Development, Inc. The consolidated financial statements of JFB Construction Holdings reflect the financial position, results of operations and cash flows of both JFB Construction Holdings and its subsidiaries from the date of consolidation.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1581,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Estimated Life",
+     ""
+    ],
+    [
+     "Office, Field, and Computer Equipment",
+     "5 years"
+    ],
+    [
+     "Vehicles",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated Life"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1678,
+    "end_line": 1683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Accounts receivables are generally based on amounts billed to the customer in accordance with contractual provisions. They are uncollateralized customer obligations due under normal trade terms, only recorded for those amounts deemed collectible, based upon experience with its customers. No finance or interest charges are charged to accounts receivable. The Company uses the allowance method to account for uncollectible accounts receivable. The Company records an allowance against uncollectible items for each customer after all reasonable means of collection have been exhausted, and the potential for recovery is considered remote. The allowance for doubtful accounts was $0 as of December 31, 2024 and 2023. The net contract receivable balance was $3,047,255 on December 31, 2024, and $7,135,091 on December 31, 2023.\nAdvertising Costs\nThe Company expenses the cost of advertising and promotional materials when incurred. The advertising costs were $51,635 for the year ended December 31, 2024 and $41,573 and for the year ended December 31, 2023.\nProperty and Equipment\nProperty and equipment are recorded at cost and depreciated on a straight-line basis over their estimated useful lives, including vehicles, computers and office equipment and field equipment. Gain or loss is recognized upon disposal of property and equipment, and the asset and related accumulated depreciation are removed from the accounts. Expenditures for maintenance and repairs are charged to expense as incurred, while expenditures for addition and betterment are capitalized. Property and Equipment include the following categories:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1665,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1718,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "31-Dec",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Field Equipment\n\n",
+     "",
+     "114,206\n\n",
+     "",
+     "",
+     "114,206\n\n",
+     ""
+    ],
+    [
+     "Computer Equipment\n\n",
+     "",
+     "6,911\n\n",
+     "",
+     "",
+     "6,911\n\n",
+     ""
+    ],
+    [
+     "Vehicles\n\n",
+     "",
+     "819,599\n\n",
+     "",
+     "",
+     "592,496\n\n",
+     ""
+    ],
+    [
+     "Leasehold Improvements\n\n",
+     "",
+     "589,525\n\n",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Office Equipment\n\n",
+     "",
+     "2,076\n\n",
+     "",
+     "",
+     "1,502\n\n",
+     ""
+    ],
+    [
+     " ",
+     "",
+     "1,532,317\n\n",
+     "",
+     "",
+     "715,115\n\n",
+     ""
+    ],
+    [
+     "Less accumulated depreciation\n\n",
+     "",
+     "(510,387)",
+     "",
+     "",
+     "(331,070)",
+     ""
+    ],
+    [
+     "Net Property and Equipment\n\n",
+     "$",
+     "1,021,930\n\n",
+     "",
+     "$",
+     "384,045\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "31-Dec"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1684,
+    "end_line": 1708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Long-lived assets held and used by the Company are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset may not be recoverable. In the event that the facts and circumstances indicate that the cost of any long-lived assets may be impaired, an evaluation of recoverability would be performed following generally accepted accounting principles.\nDepreciation expense during the year ended December 31, 2024 and 2023, was $179,649 and $100,029, respectively.\nFair Value of Financial Instruments\nFair Value of Financial Instruments requires disclosure of the fair value information, whether or not to recognized in the balance sheet, where it is practicable to estimate that value. As of December 31, 2024, the balances reported for cash, contract receivables, cost in excess of billing, prepaid expenses, accounts payable, billing in excess of cost, and accrued expenses approximate the fair value because of their short maturities.\nWe adopted ASC Topic 820 for financial instruments measured as fair value on a recurring basis. ASC Topic 820 defines fair value, established a framework for measuring fair value in accordance with accounting principles generally accepted in the United States and expands disclosures about fair value measurements.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1665,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1718,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year ended December 31, 2024",
+     "Commercial",
+     "",
+     "",
+     "Residential",
+     "",
+     "",
+     "Real Estate Development",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "Sales\n\n",
+     "",
+     "18,008,550\n\n",
+     "",
+     "",
+     "5,079,335\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "23,087,885\n\n",
+     ""
+    ],
+    [
+     "Cost of Goods Sold\n\n",
+     "",
+     "14,081,593\n\n",
+     "",
+     "",
+     "3,971,731\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "18,053,324\n\n",
+     ""
+    ],
+    [
+     "Gross Profit (Loss)\n\n",
+     "",
+     "3,926,958\n\n",
+     "",
+     "",
+     "1,107,603\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "5,034,561\n\n",
+     ""
+    ],
+    [
+     "Operating Expenses\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "\u2014\n\n",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Selling & Marketing Expenses\n\n",
+     "",
+     "39,615\n\n",
+     "",
+     "",
+     "12,020\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "51,635\n\n",
+     ""
+    ],
+    [
+     "General & Administrative Expenses\n\n",
+     "",
+     "3,772,869\n\n",
+     "",
+     "",
+     "1,063,912\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "4,836,781\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense\n\n",
+     "",
+     "140,126\n\n",
+     "",
+     "",
+     "39,523\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "179,649\n\n",
+     ""
+    ],
+    [
+     "Total Operating Expense\n\n",
+     "",
+     "3,952,610\n\n",
+     "",
+     "",
+     "1,115,455\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "5,068,065\n\n",
+     ""
+    ],
+    [
+     "Income From Operations\n\n",
+     "",
+     "(25,652)",
+     "",
+     "",
+     "(7,852)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "(33,504)",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "\u2014\n\n",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Income (expense)\n\n",
+     "",
+     "(6,351)",
+     "",
+     "",
+     "(1,791)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "(8,142)",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "(25,466)",
+     "",
+     "",
+     "(7,183)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "(32,649)",
+     ""
+    ],
+    [
+     "Interest Income\n\n",
+     "",
+     "150,774\n\n",
+     "",
+     "",
+     "42,526\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "193,300\n\n",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME\n\n",
+     "",
+     "118,957\n\n",
+     "",
+     "",
+     "33,552\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "152,509\n\n",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)\n\n",
+     "",
+     "92,824\n\n",
+     "",
+     "",
+     "26,181\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "$",
+     "119,005\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1791,
+    "end_line": 1840
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "In accordance with ASC 280-10-50-30(b), the Company provides the total of profit or loss for all reportable segments, which reflects the combined operating results for each reportable segment included in the financial statements. The total segment profit or loss represents the aggregation of segment results before the allocation of corporate expenses and certain other items not attributable to specific segments.\nAs required by ASC 280-10-50-30(c), the Company has also disclosed the basis of measurement for segment profit or loss. The measure used to assess segment performance and allocate resources is operating income (or loss), which includes revenues, cost of sales, and directly attributable operating expenses for each segment. The operating income (or loss) for each reportable segment is reviewed by the Company\u2019s chief operating decision maker (CODM) and serves as the primary performance metric used in resource allocation and operational decision-making.\nSegment information is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1776,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year ended December 31, 2023",
+     "Commercial",
+     "",
+     "",
+     "Residential",
+     "",
+     "",
+     "Real Estate Development",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "Sales\n\n",
+     "",
+     "28,482,083\n\n",
+     "",
+     "",
+     "3,883,920\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "32,366,003\n\n",
+     ""
+    ],
+    [
+     "Cost of Goods Sold\n\n",
+     "",
+     "22,083,637\n\n",
+     "",
+     "",
+     "3,011,405\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "25,095,042\n\n",
+     ""
+    ],
+    [
+     "Gross Profit (Loss)\n\n",
+     "",
+     "6,398,446\n\n",
+     "",
+     "",
+     "872,515\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "7,270,961\n\n",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling & Marketing Expenses\n\n",
+     "",
+     "36,584\n\n",
+     "",
+     "",
+     "4,989\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "41,573\n\n",
+     ""
+    ],
+    [
+     "General & Administrative Expenses\n\n",
+     "",
+     "2,734,719\n\n",
+     "",
+     "",
+     "372,916\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "3,107,635\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense\n\n",
+     "",
+     "88,025\n\n",
+     "",
+     "",
+     "12,004\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "100,029\n\n",
+     ""
+    ],
+    [
+     "Total Operating Expense\n\n",
+     "",
+     "2,859,329\n\n",
+     "",
+     "",
+     "389,908\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "3,249,237\n\n",
+     ""
+    ],
+    [
+     "Income From Operations\n\n",
+     "",
+     "3,539,117\n\n",
+     "",
+     "",
+     "482,607\n\n",
+     "",
+     " ",
+     "",
+     "",
+     "4,021,724\n\n",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (expense)\n\n",
+     "",
+     "16,176\n\n",
+     "",
+     "",
+     "2,206\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "18,382\n\n",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "(27,537)",
+     "",
+     "",
+     "(3,755)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "(31,292)",
+     ""
+    ],
+    [
+     "Interest Income\n\n",
+     "",
+     "120,514\n\n",
+     "",
+     "",
+     "16,434\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "136,948\n\n",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME\n\n",
+     "",
+     "109,153\n\n",
+     "",
+     "",
+     "14,885\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "124,038\n\n",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)\n\n",
+     "",
+     "3,648,271\n\n",
+     "",
+     "",
+     "497,491\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "$",
+     "4,145,762\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1841,
+    "end_line": 1880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The total assets for each segments are presented in accordance with segment reporting requirements of ASC 280-10, which requires the disclosure of total assets for each reportable segment.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "As of December 31, 2024",
+     "Commercial",
+     "",
+     "Residential",
+     "",
+     "Real Estate Development",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash\n\n",
+     "$",
+     "2,103,023\n\n",
+     "$",
+     "593,160\n\n",
+     "",
+     "\u2014\n\n",
+     "$",
+     "2,696,183\n\n"
+    ],
+    [
+     "Contract Receivables\n\n",
+     "",
+     "2,392,459\n\n",
+     "",
+     "654,796\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "3,047,255\n\n"
+    ],
+    [
+     "Contract Assets\n\n",
+     "",
+     "946,619\n\n",
+     "",
+     "266,995\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,213,614\n\n"
+    ],
+    [
+     "Prepaid Expenses\n\n",
+     "",
+     "129,891\n\n",
+     "",
+     "36,636\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "166,527\n\n"
+    ],
+    [
+     "Contract Assets-Related Party\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "TOTAL CURRENT ASSETS\n\n",
+     "",
+     "5,572,132\n\n",
+     "",
+     "1,551,447\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "7,123,579\n\n"
+    ],
+    [
+     "NET PROPERTY AND ROU ASSET\n\n",
+     "",
+     "1,616,634\n\n",
+     "",
+     "224,825\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,841,459\n\n"
+    ],
+    [
+     "TOTAL ASSETS\n\n",
+     "$",
+     "7,009,110\n\n",
+     "$",
+     "1,955,928\n\n",
+     "",
+     "\u2014\n\n",
+     "$",
+     "8,965,038\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1883,
+    "end_line": 1906
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "The total assets for each segments are presented in accordance with segment reporting requirements of ASC 280-10, which requires the disclosure of total assets for each reportable segment.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "As of December 31, 2023",
+     "Commercial",
+     "",
+     "Residential",
+     "",
+     "Real Estate Development",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash\n\n",
+     "$",
+     "1,088,335\n\n",
+     "$",
+     "148,409\n\n",
+     "",
+     "\u2014\n\n",
+     "$",
+     "1,236,744\n\n"
+    ],
+    [
+     "Contract Receivables\n\n",
+     "",
+     "6,278,880\n\n",
+     "",
+     "856,211\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "7,135,091\n\n"
+    ],
+    [
+     "Contract Assets\n\n",
+     "",
+     "212,030\n\n",
+     "",
+     "28,913\n\n",
+     " ",
+     "",
+     "",
+     "240,943\n\n"
+    ],
+    [
+     "Prepaid Expenses\n\n",
+     "",
+     "110,669\n\n",
+     "",
+     "15,091\n\n",
+     " ",
+     "",
+     "",
+     "125,760\n\n"
+    ],
+    [
+     "Contract Assets-Related Party\n\n",
+     "",
+     "106,212\n\n",
+     "",
+     "14,484\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "120,696\n\n"
+    ],
+    [
+     "TOTAL CURRENT ASSETS\n\n",
+     "",
+     "7,796,126\n\n",
+     "",
+     "1,063,108\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "8,859,234\n\n"
+    ],
+    [
+     "NET PROPERTY AND EQUIPMENT\n\n",
+     "",
+     "337,960\n\n",
+     "",
+     "46,085\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "384,045\n\n"
+    ],
+    [
+     "TOTAL ASSETS\n\n",
+     "$",
+     "8,134,086\n\n",
+     "$",
+     "1,109,193\n\n",
+     "",
+     "\u2014\n\n",
+     "$",
+     "9,243,279\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1907,
+    "end_line": 1930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 5 \u2013 Lease Arrangements\nIn the ordinary course of business, the Company enters into lease arrangements, including operating and finance leases.\nThe Company determines if an arrangement is a lease at inception. The operating lease right-of-use (\u201cROU\u201d) assets are included within the Company\u2019s non-current assets and lease liabilities are included in current or non-current liabilities on the Company\u2019s Consolidated Balance Sheets. Finance leases are included in \u201cProperty and equipment,\u201d \u201cCurrent maturities of long-term debt,\u201d and \u201cLong-term debt\u201d on the Company\u2019s Consolidated Balance Sheets. ROU assets represent the Company\u2019s right to use, or control the use of, a specified asset for the lease term. Lease liabilities are the Company\u2019s obligation to make lease payments arising from a lease and are measured on a discounted basis. Operating lease ROU assets and operating lease liabilities are recognized based on the present value of the future minimum lease payments over the lease term on the commencement date. The operating lease ROU asset includes any lease payments made and initial direct costs incurred and excludes lease incentives. The lease terms may include options to extend or terminate the lease when it is reasonably certain that the Company will exercise that option. Lease expense for minimum lease payments continues to be recognized on a straight-line basis over the lease term.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "Joseph F. Basile III",
+     "46",
+     "President/Chief Executive Officer, Secretary and Chairman of the Board of Directors"
+    ],
+    [
+     "Ruben Calderon",
+     "42",
+     "Treasurer/Chief Financial Officer"
+    ],
+    [
+     "Bjarne Borg",
+     "58",
+     "Independent Director"
+    ],
+    [
+     "David Clukey",
+     "49",
+     "Independent Director"
+    ],
+    [
+     "Nelson Garcia",
+     "38",
+     "Independent Director"
+    ],
+    [
+     "Christopher Melton",
+     "53",
+     "Independent Director"
+    ],
+    [
+     "Miklos \u201cJohn\u201d Gulyas",
+     "48",
+     "Director"
+    ],
+    [
+     "Jamie Zambrana Jr.",
+     "48",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2058,
+    "end_line": 2070
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "The matters involving internal controls over financial reporting that may be considered material weaknesses included the small size of the Company and the resulting lack of segregation of duties. Specifically, the Company's system of internal controls failed to identify multiple journal entries that were subsequently identified by the Company's external auditor. Additionally, multiple errors within the Company's draft Form 10-K were noted by the external auditor, further highlighting weakness in the control environment.\nChanges in Internal Control over Financial Reporting\nThere have been no changes in our internal control over financial reporting, as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act, during our most recently completed fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\n(b) During the fiscal quarter ended December 31, 2024, none of our officers or directors informed us of the adoption, modification or termination of a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as those terms are defined in Item 408 of Regulation S-K.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors and Executive Officers\nThe following table sets forth information concerning our executive officers and directors and their ages as of the date of this annual report:",
+   "prose_after": "Biographies of Executive Officers and Directors\nThe following is a brief account of the business experience during the past five years (and, in some instances, for prior years) of each director, executive officer, and director nominees of our Company.\nJoseph F. Basile III \u2013Chief Executive Officer, Secretary and Chairman of the Board of Directors\nJoseph F. Basile III is a third generation developer and general contractor with over a decade of experience in construction and development, land acquisition and other entrepreneurial ventures. He founded JFB Construction & Development Inc. in 2014 and has overseen the company\u2019s growth from its inception, gaining extensive experience by performing various roles within the organization. Mr. Basile has led business development initiatives and ensured operational efficiency by collaborating with specialists in accounting, legal matters, and various other trades. Mr. Basile has been a state certified general contractor in over 31 states, including Florida, Georgia, North Carolina and Tennessee. As a licensed general contractor in multiple states, he has demonstrated his capability and reliability in navigating through complex systems such as logistics, compliance, and regulatory frameworks. His leadership is characterized by a pragmatic approach and a commitment to continuous improvement.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2045,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary $",
+     "",
+     "Bonus $",
+     "",
+     "Option Based Awards $",
+     "Stock Awards $",
+     "Other Compensation $",
+     "",
+     "Total $",
+     ""
+    ],
+    [
+     "Joseph Basile\n\n",
+     "2024\n\n",
+     "$",
+     "282,307\n\n",
+     "$",
+     "600,000\n\n",
+     " ",
+     " ",
+     "$",
+     "872,846\n\n",
+     "$",
+     "1,755,153\n\n"
+    ],
+    [
+     "Chief Executive Officer(1)\n\n",
+     "2023\n\n",
+     "$",
+     "219,231\n\n",
+     "$",
+     "\u2014\n\n",
+     " ",
+     " ",
+     "$",
+     "133,640\n\n",
+     "$",
+     "352,871\n\n"
+    ],
+    [
+     "Ruben Calderon\n\n",
+     "2024\n\n",
+     "$",
+     "126,395\n\n",
+     "$",
+     "20,000\n\n",
+     " ",
+     " ",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "146,395\n\n"
+    ],
+    [
+     "Chief Financial Officer(2)\n\n",
+     "2023\n\n",
+     "$",
+     "90,000\n\n",
+     "$",
+     "20,000\n\n",
+     " ",
+     " ",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "110,000\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2298,
+    "end_line": 2311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "Typically, we have awarded stock options and restricted stock to executives upon joining the Company and thereafter grants may be at the discretion of the Board, a role that will be assumed by our compensation committee on a going forward basis. Generally, options are priced at the closing price of the Company\u2019s common stock on the date of each grant, or, in the case of new employees, on such later date as the employee joins the Company. We also have granted restricted stock to members of the Board of Directors and executive officers from time to time.\nWe do not have a formal written policy relating to the timing of equity awards. We encourage, but we do not require, that our executive officers own stock in the Company.\nRetirement and Other Benefits\nAll eligible employees in the United States are automatically enrolled in our 401(k) plan.\nPerquisites and Other Personal Benefits\nLimitation on Deduction of Compensation Paid to Certain Executive Officers Section 162(m) of the Internal Revenue Code, or Section 162(m) limits the Company deduction for federal income tax purposes to no more than $1 million of compensation paid to each of the named executive officers in a taxable year.\nThe following table sets forth the aggregate compensation paid to our Chief Executive Officer and each of our other executive officers whose aggregate salary and bonus exceeded $100,000 for services rendered in all capacities for the fiscal years December 31, 2024 and 2023.\nSummary Compensation Table",
+   "prose_after": "(1)The compensation in the table includes the compensation paid to Mr. Basile by JFB Construction & Development Inc. The Company declared and paid cash dividends of $138,704 and $872,007 in 2023 and 2024, respectively.\n(2)The compensation in the table includes the compensation paid to Mr. Calderon by JFB Construction & Development Inc. Mr. Calderon first became the Company\u2019s Chief Financial Officer on October 31, 2022.\nHistorically, we have not entered into employment agreements with our executive officers. We intend to rely on such employment agreements on a go-forward basis.\nJoseph F. Basile III\nOn July 18, 2024, the Company entered into an employment agreement with our Chief Executive Officer, Joseph F. Basile III (the \u201c2024 Basile Employment Agreement\u201d). Pursuant to the 2024 Basile Employment Agreement, Mr. Basile shall receive a base salary of $300,000 per year. For fiscal year 2024, Mr. Basile shall receive (i) a cash bonus of $200,000 if the Company, including its subsidiaries, has Gross Revenue between $10,000,00 to $15,000,000; (ii) an additional cash bonus of $200,000 if the Company, including its subsidiaries, has Gross Revenue between $15,000,00 to $20,000,000; and (iii) an additional cash bonus of $200,000 if the Company, including its subsidiaries, has Gross Revenue over $20,000,000. The 2024 Basile Employment Agreement also mistakenly purported to grant Mr. Basile stock options to purchase up to 150,000 shares of the Company\u2019s Class A Common Stock. The 2024 Basile Employment Agreement was terminated on February 1, 2025 and replaced with an amended and restated employment agreement to correct the scriveners\u2019 error. All other terms 2025 Basile Employment Agreement remain the same as the 2024 Basile Employment Agreement.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2277,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 2318,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Voting Power %(2)",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Title",
+     "Number",
+     "",
+     "%",
+     "",
+     "",
+     "Number(1)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph F. Basile III\n\n",
+     "President/CEO,\nSecretary and Chairman\n\n",
+     "",
+     "365,000\n\n",
+     "",
+     "9.13\n\n",
+     "%",
+     "",
+     "4,000,000\n\n",
+     "",
+     "100\n\n",
+     "%",
+     "",
+     "71.68\n\n",
+     "%"
+    ],
+    [
+     "Ruben Calderon\n\n",
+     "Treasurer/CFO\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "Bjarne Borg\n\n",
+     "Independent Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "David Clukey\n\n",
+     "Independent Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "Nelson Garcia\n\n",
+     "Independent Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "Christopher Melton\n\n",
+     "Independent Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "Miklos \u201cJohn\u201d Gulyas\n\n",
+     "Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "Jamie Zambrana Jr.\n\n",
+     "Director\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "%"
+    ],
+    [
+     "All current executive officers and\n   directors as a group (8 persons)\n\n",
+     " ",
+     "",
+     "365,000\n\n",
+     "",
+     "9.13\n\n",
+     "%",
+     "",
+     "4,000,000\n\n",
+     "",
+     "100\n\n",
+     "%",
+     "",
+     "71.68\n\n",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The Basile Family Irrevocable\n   Trust\n\n",
+     "Shareholder\n\n",
+     "",
+     "3,250,000\n\n",
+     "",
+     "81.25\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "18.84\n\n",
+     "%"
+    ],
+    [
+     "Chartered Services, LLC\n\n",
+     "Shareholder\n\n",
+     "",
+     "360,000\n\n",
+     "",
+     "9.00\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "2.09\n\n",
+     "%"
+    ],
+    [
+     "Total of 5% Shareholders\n\n",
+     " ",
+     "",
+     "3,610,000\n\n",
+     "",
+     "90.25\n\n",
+     "%",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "%",
+     "",
+     "20.93\n\n",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2367,
+    "end_line": 2407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "Beneficial ownership is determined in accordance with the rules of the SEC and includes voting or investment power with respect to the securities. In computing the number and percentage of shares beneficially owned by a person, shares that may be acquired by such person (for example, upon the exercise of options or warrants) within 60 days of the date of this annual report are counted as outstanding, while these shares are not counted as outstanding for computing the percentage ownership of any other person. Except as otherwise indicated, each person or entity named in the table has sole voting and investment power with respect to all shares of our capital shown as beneficially owned, subject to applicable community property laws.\nThe address of each holder listed below, except as otherwise indicated, is c/o JFB Construction Holdings, 1300 S. Dixie Highway, Suite B, Lantana, FL 33462.\nThe following table provides the total compensation for each person who served as a non-employee member of our Board of Directors during fiscal year 2024 and 2023, including all compensation awarded to, earned by or paid to each person who served as a non-employee director for some portion or all of fiscal year 2024 and 2023:",
+   "prose_after": "(1)Each outstanding share of Class B common stock is convertible into one shares of Class A common stock.\n(2)Percentage of total voting power represents voting power with respect to all of our Class A and Class B Common Stock, as a single class. We have 4,000,000 shares of Class A Common Stock and 4,000,000 shares of Class B Common Stock issued and outstanding as of March 28,2025. Holders of our Class A common stock are entitled to one (1) vote per share, whereas holders of our Class B common stock are entitled to three (3) votes per share. For more information about the voting rights of our Class A Common Stock and Class B Common Stock, see \u201cDescription of Capital Stock.\u201d\n(3)Lisa Ann Basile is the trustee with control over The Basile Family Irrevocable Trust which her both voting and dispositive control of the Company\u2019s securities owned by the trust and, as such, is considered the beneficial owner of the above-reference shares for the purposes of Section 16 of the Securities Act. Her address is 200 Hypoluxo Rd #204, Lantana, FL 33462.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2362,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 2414,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description"
+    ],
+    [
+     "1.1**",
+     "Form of Underwriting Agreement"
+    ],
+    [
+     "3.1**",
+     "Amended and Restated Articles of Incorporation of the Company dated September 30, 2024"
+    ],
+    [
+     "3.2**",
+     "Bylaws of the Company dated September 26, 2024"
+    ],
+    [
+     "4.1**",
+     "Specimen Stock Certificate evidencing the shares of Class A Common Stock"
+    ],
+    [
+     "4.3**",
+     "Form of Representative's Warrants"
+    ],
+    [
+     "4.4**",
+     "Form of Representative's Warrants"
+    ],
+    [
+     "4.5**",
+     "Form of Offering Warrants"
+    ],
+    [
+     "10.1**",
+     "Contribution and Shares Exchange Agreement dated July 18,2024, by and among JFB Construction Holdings and the shareholders of JFB Construction & Development, Inc"
+    ],
+    [
+     "10.2**",
+     "Employment Agreement dated July 18, 2024 between the Company and Joseph F. Basile III"
+    ],
+    [
+     "10.3**",
+     "Employment Agreement dated July 18, 2024 between the Company and Ruben Calderon"
+    ],
+    [
+     "10.4**",
+     "2024 Equity Incentive Plan"
+    ],
+    [
+     "10.5**",
+     "Loose Cannon Lease Agreement dated March 29,2024 by and between the Company and Aura Commercial, LLC"
+    ],
+    [
+     "10.6**",
+     "Construction Agreement dated July 18,2024 by and between the Company and Chartered Services, LLC"
+    ],
+    [
+     "10.7**",
+     "Aura Commercial Lease Agreement dated March 29,2024 by and between the Company and Aura Commercial ,LLC"
+    ],
+    [
+     "10.8**",
+     "Construction Agreement dated July 18,2024 and between the Company and Rare Capital Partners, LLC"
+    ],
+    [
+     "10.9**",
+     "Consulting Agreement with Chartered Services, LLC dated July 17, 2024 by and between the Company and Chartered Services, LLC"
+    ],
+    [
+     "10.10**",
+     "Form Construction Contract"
+    ],
+    [
+     "10.11**",
+     "Form Officer and Director Indemnification Agreement"
+    ],
+    [
+     "10.12**",
+     "Amendment to Lease Agreement by and between the Company and Aura Commercial, LLC"
+    ],
+    [
+     "10.13**",
+     "Amendment to Consulting Agreement with Chartered Services, LLC"
+    ],
+    [
+     "10.14**",
+     "Amended and Restated Employment Agreement dated February 1, 2025 between the Company and Joseph F. Basile III"
+    ],
+    [
+     "10.15**",
+     "Amended and Restated Employment Agreement dated February 1,2025 between the Company and Ruben Calderon"
+    ],
+    [
+     "14.1**",
+     "Code of Conduct"
+    ],
+    [
+     "21.1**",
+     "List of Subsidiaries"
+    ],
+    [
+     "23.1*",
+     "Independent Registered Public Accounting Firm's Consent"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2511,
+    "end_line": 2548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "2) All financial statement schedules are omitted because they are not applicable, not material or the required information is shown in the financial statements or notes thereto.\nItem 16. Form 10-K Summary\nRegistrants may, at their option, include a summary of information required by this form, but only if each item in the summary is presented fairly and accurately and includes a hyperlink to the material contained in this form to which such item relates, including to materials contained in any exhibits fi led with the form.\nInstruction: The summary shall refer only to Form 10-K disclosure that is included in the form at the time it is filed. A registrant need not update the summary to reflect information required by Part III of Form 10-K that the registrant incorporates by reference from a proxy or information statement filed after the Form 10-K, but must state in the summary that the summary does not include Part III information because that information will be incorporated by reference from a later fi led proxy or information statement involving the election of directors.\nExhibit Index",
+   "prose_after": "* Filed herewith.\n** Previously Filed\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2508,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 2553,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "JFB Construction Holdings",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2025",
+     "By:",
+     "/s/ Joseph F. Basile III"
+    ],
+    [
+     "",
+     "",
+     "Joseph F. Basile III"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "JFB Construction Holdings"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2558,
+    "end_line": 2566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Previously Filed\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2553,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2605,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joseph F. Basile III",
+     "",
+     ""
+    ],
+    [
+     "Joseph F. Basile II",
+     "Chief Executive Officer and Director",
+     "March 31,2025"
+    ],
+    [
+     "/s/ Ruben Calderon",
+     "Principal Executive Officer",
+     ""
+    ],
+    [
+     "Ruben Calderon",
+     "Chief Financial Officer",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ NelsonGarcia",
+     "Principal Financial officer, Principal Accounting Officer",
+     ""
+    ],
+    [
+     "Nelson Garcia",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bjarne Borg",
+     "",
+     ""
+    ],
+    [
+     "Bjarne Borg",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Christopher Melton",
+     "",
+     ""
+    ],
+    [
+     "Christopher Melton",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Clukey",
+     "",
+     ""
+    ],
+    [
+     "David Clukey",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Miklos Gulyas",
+     "",
+     ""
+    ],
+    [
+     "Miklos \"John\" Gulyas",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jamie Zambra Jr",
+     "",
+     ""
+    ],
+    [
+     "Jamie Zambran, Jr",
+     "Director",
+     "March 31, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2569,
+    "end_line": 2604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Subsequent Event"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2553,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2605,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,523 @@
+{
+ "accession": "0001104659-20-038661",
+ "cik": "0001260125",
+ "form": "10-K",
+ "filing_date": "2020-03-26",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tm2013584d3_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the fiscal year ended December 31, 2019"
+    ]
+   ],
+   "caption_stack": [
+    "For the fiscal year ended December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________________________ to ___________________________\nCommission File Number of Issuing Entity 333-205844-03\nCentral Index Key Number of Issuing Entity 0001699234\nHyundai Auto Receivables Trust 2017-A\n(Exact Name of Issuing Entity as Specified in its Charter)\nCommission File Number of Depositor 333-205844\nCentral Index Key Number of Depositor 0001260125\nHyundai ABS Funding, LLC\n(Exact Name of Depositor as Specified in its Charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "33-0978453"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation of the Registrant)",
+     "(I.R.S. Employer Identification No. of the Registrant)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Central Index Key Number of Issuing Entity 0001699234\nHyundai Auto Receivables Trust 2017-A\n(Exact Name of Issuing Entity as Specified in its Charter)\nCommission File Number of Depositor 333-205844\nCentral Index Key Number of Depositor 0001260125\nHyundai ABS Funding, LLC\n(Exact Name of Depositor as Specified in its Charter)\nCentral Index Key Number of Sponsor 0001541028\nHyundai Capital America\n(Exact Name of Sponsor as Specified in its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "c/o 3161 Michelson Drive, Irvine, California",
+     "92612"
+    ],
+    [
+     "(Address of Principal Executive Offices of Registrant)",
+     "(Zip Code of Registrant)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 46,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(949) 732-2697"
+    ],
+    [
+     "(Registrant\u2019s telephone number including area code)"
+    ]
+   ],
+   "caption_stack": [
+    "(949) 732-2697",
+    "(Registrant\u2019s telephone number including area code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 51,
+    "end_line": 55
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 64
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of Hyundai ABS Funding, LLC (incorporated by reference to Exhibit 3.1 to Amendment No. 1 to the Form SF-3 of Hyundai ABS Funding, LLC, filed with the Securities and Exchange Commission on February 11, 2019, File No. 333-229037)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Limited Liability Company Agreement of Hyundai ABS Funding, LLC (incorporated by reference to Exhibit 3.2 to Amendment No. 1 to the Form SF-3 of Hyundai ABS Funding, LLC, filed with the Securities and Exchange Commission on February 11, 2019, File No. 333-229037)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Indenture, dated as of March 29, 2017, by and between the Issuing Entity and the Indenture Trustee (incorporated by reference to Exhibit 4.1 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Receivables Purchase Agreement, dated as of March 29, 2017, by and between Hyundai Capital America, as seller, and Hyundai ABS Funding, LLC, as depositor (incorporated by reference to Exhibit 10.1 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Sale and Servicing Agreement, dated as of March 29, 2017, by and among the Issuing Entity, as issuer, Hyundai ABS Funding, LLC, as depositor, Hyundai Capital America, as seller and servicer, and the Indenture Trustee (incorporated by reference to Exhibit 10.2 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Owner Trust Administration Agreement, dated as of March 29, 2017, by and among the Issuing Entity, as issuer, Hyundai Capital America, as administrator, and the Indenture Trustee (incorporated by reference to Exhibit 10.3 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Amended and Restated Trust Agreement, dated as of March 29, 2017, by and between Hyundai ABS Funding, LLC, as depositor, U.S. Bank Trust, National Association, as owner trustee, and Hyundai Capital America, as administrator (incorporated by reference to Exhibit 10.4 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Asset Representations Review Agreement, dated as of March 29, 2017, by and among the Issuing Entity, as issuer, Hyundai Capital America, as servicer, and Clayton Fixed Income Services LLC, as asset representations reviewer (incorporated by reference to Exhibit 10.5 of Form 8-K, filed with the Securities and Exchange Commission on March 30, 2017, File No. 333-205844-03)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of senior officer in charge of securitization of the depositor pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.1",
+     "Management\u2019s Assessment on Compliance with SEC Regulation AB Criteria (Hyundai Capital America)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.2",
+     "Management\u2019s Assessment of Compliance (Citibank, N.A.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.1",
+     "Attestation Report of KPMG LLP on Management\u2019s Assessment on Compliance with SEC Regulation AB Criteria relating to Hyundai Capital America"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.2",
+     "Attestation Report of KPMG LLP on Management\u2019s Assessment of Compliance relating to Citibank, N.A."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.1",
+     "Annual Servicer\u2019s Compliance Certificate"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 205,
+    "end_line": 248
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Not applicable.\n(3) The exhibits filed in response to Item 601 of Regulation S-K are listed in the Exhibit Index.\n(b) The exhibits filed in response to Item 601 of Regulation S-K are listed in the Exhibit Index.\n(c) Not applicable.\nItem 16. Form 10\u2013K Summary.\nNot applicable.\nSupplemental information to be furnished with Reports Filed Pursuant to Section 15(d) of the Act by Registrants which have not Registered Securities Pursuant to Section 12 of the Act.\nNo annual report, proxy statement, form of proxy or other proxy soliciting material has been sent to the registrant\u2019s securityholders, and the registrant does not presently contemplate sending any such materials subsequent to the filing of this report.\nEXHIBIT INDEX\nThe following exhibits are filed as part of this annual report or, where indicated, were heretofore filed and are hereby incorporated by reference.",
+   "prose_after": "SIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated:  March 26, 2020",
+     "HYUNDAI ABS FUNDING, LLC",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Charley Changmin Yoon"
+    ],
+    [
+     "",
+     "",
+     "Name: Charley Changmin Yoon"
+    ],
+    [
+     "",
+     "",
+     "Title:  President and Secretary"
+    ],
+    [
+     "",
+     "",
+     "(senior officer in charge of securitization of the depositor)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

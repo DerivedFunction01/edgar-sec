@@ -1,0 +1,1859 @@
+{
+ "accession": "0001056520-11-000565",
+ "cik": "0001472862",
+ "form": "10-K",
+ "filing_date": "2011-12-14",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "wsml10k8311191211final.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "42-1766696"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended August 31, 2011\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from N/A to N/A\nCommission File No. 333-162461\nWHITE SMILE GLOBAL, INC.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "927 Lincoln Rd., Suite 200\nMiami, Fl 33139-2618\n(Address of Principal Executive Offices)\nRegistrant's Telephone Number, including area code: 888-976-4531\nSecurities Registered Pursuant to Section 12(b) of the Act:\nNone\nSecurities Registered Pursuant to Section 12(g) of the Act:\nCommon Stock, Par Value $0.001 per Share\n(Title of each class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 51,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "August 31,",
+     "August 31,"
+    ],
+    [
+     "",
+     "2011\n\n\n\n$",
+     "2010\n\n\n\n$"
+    ],
+    [
+     "Current Assets",
+     "1,265",
+     "6,972"
+    ],
+    [
+     "Current Liabilities",
+     "38,496",
+     "17,622"
+    ],
+    [
+     "Working Capital (Deficit)",
+     "(37,231)",
+     "(10,650)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Management's Discussion and Analysis of Results of Financial Condition and Results of Operations (\"MD&A\") should be read in conjunction with the financial statements included herein.\nPLAN OF OPERATION\nLIMITED OPERATING HISTORY; NEED FOR ADDITIONAL CAPITAL\nThere is no historical financial information about us upon which to base an evaluation of our performance. We are a start-up company and have not generated any revenues. We cannot guarantee success of our business operations. Our business is subject to risks inherent in the establishment of a new business enterprise, including limited capital resources and possible cost overruns due to price and cost increases in services and products.\nWe have no assurance that future financing will be available to us on acceptable terms. If financing is not available on satisfactory terms, we may be unable to continue, develop or expand our operations. Equity financing could result in additional dilution to existing shareholders.\nRESULTS OF OPERATIONS\nWorking Capital",
+   "prose_after": "Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 353,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended August 31,\n\n\n\n2011\n\n\n\n$",
+     "For the year ended August 31,\n\n\n\n2010\n\n\n\n$"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows used in Operating Activities",
+     "(26,884)",
+     "(26,765)"
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "21,177",
+     "14,000"
+    ],
+    [
+     "Net decrease in Cash During Period",
+     "(5,707)",
+     "(12,765)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 357,
+    "end_line": 368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Cash Flows",
+   "prose_after": "Operating Revenues\nWe have not generated any revenues since inception.\nOperating Expenses and Net Loss\nOperating expenses and net loss for the year ended August 31, 2011 were $26,581 compared with $30,088 for the year ended August 31, 2010. The decrease is due to the fact that the Company had limited amounts of cash and had lower overall operating activity.\nLiquidity and Capital Resources\nAs at August 31, 2011, the Company\u2019s cash and total assets was $1,265 compared to cash and total assets of $6,972 as at August 31, 2010. The decrease in cash and total assets was due to the fact that the Company incurred operating expenditures during the year and had raised limited amounts of cash.\nAs at August 31, 2011, the Company had total liabilities of $38,496 compared with total liabilities of $17,622 as at August 31, 2010. The increase in total liabilities were attributed to an increase of $21,177 in amounts due to related parties due to additional funds raised by related parties to settle expenditures incurred during the year.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 353,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Omar John Ahmadzai",
+     "",
+     "CEO, President, CFO, Treasurer, Secretary, Director"
+    ],
+    [
+     "Dr. Martin S. Giniger",
+     "",
+     "Director, CSO"
+    ],
+    [
+     "Matthew E. Silpe",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "b) Changes in Internal Control over Financial Reporting.\nDuring the Quarter ended August 31, 2011, there was no change in our internal control over financial reporting (as such term is defined in Rule 13a-15(f) under the Exchange Act) that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nOn July 20, 2011, the Company filed Amended and Restated Articles of Incorporation to amend, among other thing, the name of the company. The name was changed, effective July 20, 2011, to White Smile Global, Inc. The Amended and Restated Articles were approved by the Board of Directors and a majority of shareholders on or about July 6, 2011. A copy of the amended and restated Articles of Incorporation are included as an exhibit to his Annual Report on Form 10K.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth certain information with respect to our directors, executive officers and key employees.",
+   "prose_after": "Following is a brief description of each officer and director\u2019s prior business experience:\nOmar John Ahmadzai\nMr. Ahmadzai is highly experienced in the areas of sales and marketing. From 1998 to 2000, Mr. Ahmadzai was the Vice President of Sales Driven Inc., which at the time was a startup information solutions provider for litigation support for law firms. As Vice President, Mr. Ahmadzai oversaw the sales force and client accounts. From 2000 to 2003, Mr. Ahmadzai was the Vice President and Sales Manager for Home Solutions Inc., a residential remodeling firm, which has locations throughout the east coast. During his time at Home Solutions, he was the number one sales consultant for the company on the east coast. From 2002 to 2005, Mr. Ahmadzai started Exteriors Unlimited LLC, a home building and remodeling firm, where he served as President. As President, he managed and oversaw all aspects of the firm. From 2005 to 2006, Mr. Ahmadzai was the Vice President of Sales of Traco Windows, Inc. Mr. Ahmadzai was chosen for this position due to his highly decorated accomplishments in the remodeling industry. As Vice President, he managed all sales throughout the nation, designed and implemented new sales programs, and directly oversaw regional sales managers. From 2005 to 2007, Mr. Ahmadzai was the Vice President of Empero Intenational, an international manufacturer of various products ranging from beverage and clothing lines to electronic devices and other retail products. As Vice President, he was responsible for international sales management and distribution, and he worked directly on new product development, branding product lines, marketing strategies, and coordinating global distribution. From 2006 to 2009, Mr. Ahmadzai worked as a consultant, developing and presenting marketing strategies and training programs for some of his previous employers, and for Tom Hopkins, and Zig Ziglar Seminars. Most recently, from 2008 to present, Mr. Ahmadzai has been the founder and President of White Smile Global Inc. As President, he has designed, created and marketed the company and its products.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Year",
+     "Salary ($)",
+     "Bonus ($)",
+     "Stock Awards ($)",
+     "Option Awards ($)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "All Other Compensation",
+     "Total ($)"
+    ],
+    [
+     "Omar John Ahmadzai, CEO, Pres., CFO,(1)",
+     "2011",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Martin S. Giniger, CSO(2)",
+     "2011",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Gary Burkinshaw, former Pres., CEO, CFO(3)",
+     "2011\n\n\n\n2010",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "To the best of our knowledge, during the past five years, none of the following occurred with respect to a present or former director or executive officer of the Company: (1) any bankruptcy petition filed by or against any business of which such person was a general partner or executive officer either at the time of the bankruptcy or within two years prior to that time; (2) any conviction in a criminal proceeding or being subject to a pending criminal proceeding (excluding traffic violations and other minor offenses); (3) being subject to any order, judgment or decree, not subsequently reversed, suspended or vacated, of any court of any competent jurisdiction, permanently or temporarily enjoining, barring, suspending or otherwise limiting his involvement in any type of business, securities or banking activities; and (4) being found by a court of competent jurisdiction (in a civil action), the Commission or the commodities futures trading commission to have violated a Federal or state securities or commodities law, and the judgment has not been reversed, suspended or vacated.\nITEM 11. EXECUTIVE COMPENSATION\nSUMMARY COMPENSATION TABLE\nThe following table sets forth for the fiscal year ended August 31, 2011, the compensation awarded to, paid to, or earned by, our Chief Executive Officer and our Chief Science Officer whose total compensation was zero.",
+   "prose_after": "(1)\nHas served since June 17, 2011\n(2)\nHas served since October 13, 2011\n(3)\nResigned June 17, 2011\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END TABLE\nNone.\nOPTION EXERCISES AND STOCK VESTED TABLE\nNone.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 493,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of class",
+     "Name and address of beneficial owner",
+     "Amount and nature of beneficial ownership",
+     "Percent of class(1)"
+    ],
+    [
+     "Common",
+     "Omar John Ahmadzai",
+     "60,000,000",
+     "47.8%"
+    ],
+    [
+     "",
+     "Officers and directors as a group (1)",
+     "60,000,000",
+     "47.8%"
+    ],
+    [
+     "Common",
+     "Martin S. Giniger\n\n\n\n101 Briny Ave. #2206\n\n\n\nPompany Beach, FL 33062 (2)",
+     "18,000,000",
+     "14.4%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 570,
+    "end_line": 586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of the common stock as of August 31, 2011, by (i) each person who is known by the Company to own beneficially more than 5% of the any classes of outstanding Stock, (ii) each director of the Company, (iii) each officer and (iv) all directors and executive officers of the Company as a group.\nThe number and percentage of shares beneficially owned is determined in accordance with Rule 13d-3 and 13d-5 of the Exchange Act, and the information is not necessarily indicative of beneficial ownership for any other purpose. We believe that each individual or entity named has sole investment and voting power with respect to the securities indicated as beneficially owned by them, subject to community property laws, where applicable, except where otherwise noted. Unless otherwise stated, the address of each person is the same as the corporate address.",
+   "prose_after": "(1)\nBased on 125,500,000 issued and outstanding shares of common stock as of November 22, 2011.\n(2)\nReceived shares after 8/31/2011.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nOn June 27, 2011, Omar John Ahmadzai (\u201cMr. Ahmadzai\u201d) acquired control of three million (3,000,000) shares of the Company\u2019s issued and outstanding common stock, representing approximately 58.81% of the Company\u2019s total issued and outstanding common stock on that date, from Gary Burkinshaw (\u201cMr. Burkinshaw\u201d), in accordance with stock purchase agreements between Mr. Ahmadzai and Mr. Burkinshaw, (the \u201cStock Purchase Agreements\u201d). Pursuant to the Stock Purchase Agreements, Mr. Ahmadzai paid a purchase price of ten thousand dollars ($10,000) to Mr. Burkinshaw in exchange for the shares.\nAs part of the acquisition the following changes to the Company's directors and officers have occurred:\n\u00b7\nAs of June 17th, 2011, Mr. Burkinshaw resigned as the Company\u2019s President, Chief Executive Officer, Chief Financial Officer, Secretary, Treasurer and Director.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010"
+    ],
+    [
+     "",
+     "De Joya Griffith &",
+     "",
+     "De Joya Griffith &"
+    ],
+    [
+     "",
+     "Company, LLC",
+     "",
+     "Company, LLC"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "4,000",
+     "",
+     "$6,850"
+    ],
+    [
+     "Audit-Related Fees",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "6,250",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "10,250",
+     "",
+     "$6,850"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 614,
+    "end_line": 626
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "On June 27, 2011, Omar John Ahmadzai (\u201cMr. Ahmadzai\u201d) acquired control of three million (3,000,000) shares of the Company\u2019s issued and outstanding common stock, representing approximately 58.81% of the Company\u2019s total issued and outstanding common stock on that date, from Gary Burkinshaw (\u201cMr. Burkinshaw\u201d), in accordance with stock purchase agreements between Mr. Ahmadzai and Mr. Burkinshaw, (the \u201cStock Purchase Agreements\u201d). Pursuant to the Stock Purchase Agreements, Mr. Ahmadzai paid a purchase price of ten thousand dollars ($10,000) to Mr. Burkinshaw in exchange for the shares.\nAs part of the acquisition the following changes to the Company's directors and officers have occurred:\n\u00b7\nAs of June 17th, 2011, Mr. Burkinshaw resigned as the Company\u2019s President, Chief Executive Officer, Chief Financial Officer, Secretary, Treasurer and Director.\n\u00b7\nAs of June 17th, 2011, Mr. Ahmadzai was appointed as the sole member of the Company\u2019s Board of Directors and as the Company\u2019s President, Chief Executive Officer, Chief Financial Officer, Treasurer, and Secretary.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following table sets forth fees related to services performed by De Joya Griffith & Company, LLC in 2011 and Fees related to services performed by De Joya Griffith & Company, LLC in 2010 were as follows:",
+   "prose_after": "The Board of Directors has reviewed and discussed with the Company's management and independent registered public accounting firm the audited financial statements of the Company contained in the Company's Annual Report on Form 10-K for the Company's 2011 fiscal year. The Board has also discussed with the auditors the matters required to be discussed pursuant to SAS No. 114 (Codification of Statements on Auditing Standards, AU Section 380), which includes, among other items, matters related to the conduct of the audit of the Company's financial statements.\nThe Board has received and reviewed the written disclosures and the letter from the independent registered public accounting firm required by Independence Standards Board Standard No. 1 (Independence Discussions with Audit Committees), and has discussed with its auditors its independence from the Company. The Board has considered whether the provision of services other than audit services is compatible with maintaining auditor independence.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1",
+     "Articles of Incorporation (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Articles of Incorporation (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "By-laws (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of auditors.(2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/15d- 14(a) Certifications of the Chief Executive Officer and Chief Financial Officer (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/15d-14(a) Certifications of the Chief Executive Officer and Chief Financial Officer (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certification of the Chief Executive and Chief Financial Officer (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "XBRL Exhibits(3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 644,
+    "end_line": 661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "Based on the review and discussions referred to above, the Board approved the inclusion of the audited financial statements be included in the Company's Annual Report on Form 10-K for its 2011 fiscal year for filing with the SEC.\nPRE-APPROVAL POLICIES\nThe Board's policy is now to pre-approve all audit services and all permitted non-audit services (including the fees and terms thereof) to be provided by the Company's independent registered public accounting firm; provided, however, pre-approval requirements for non-audit services are not required if all such services (1) do not aggregate to more than five percent of total revenues paid by the Company to its accountant in the fiscal year when services are provided; (2) were not recognized as non-audit services at the time of the engagement; and (3) are promptly brought to the attention of the Board and approved prior to the completion of the audit.\nThe Board pre-approved all fees described above.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENTS SCHEDULES",
+   "prose_after": "----------\n(1) Incorporated by reference to the Form. S-1 filed with the Securities and Exchange Commission on October 14, 2009.\n(2) Filed herein.\n(3) * XBRL Information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended and otherwise is not subject to liability under these sections.\n(formerly Shawcore Development Corp.)\nFinancial Statements\nFor the Years Ended August 31, 2011 and 2010\nBalance Sheets\nStatements of Operations\nStatements of Stockholders\u2019 Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 661,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "August 31,\n\n\n\n 2011\n\n\n\n $",
+     "August 31,\n\n\n\n 2010\n\n\n\n $"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "1,265",
+     "6,972"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "1,265",
+     "6,972"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "3,020",
+     "3,323"
+    ],
+    [
+     "Due to related party",
+     "",
+     "35,476",
+     "14,299"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "38,496",
+     "17,622"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized: 550,000,000 common shares, par value of $0.001 per share",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued and outstanding: 107,500,000 common shares",
+     "",
+     "107,500",
+     "107,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit during the development stage",
+     "",
+     "(144,731)",
+     "(118,150)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(37,231)",
+     "(10,650)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 deficit",
+     "",
+     "1,265",
+     "6,972"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 727,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of White Smile Global, Inc. (A Development Stage Company) as of August 31, 2011 and the results of its operations and its cash flows for the years then ended and from inception (September 25, 2008) to August 31, 2011 and 2010, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has suffered recurring losses from operations, which raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nDe Joya Griffith & Company, LLC\n/s/ De Joya Griffith & Company, LLC\nHenderson, Nevada\nDecember 13, 2011\nBalance Sheets",
+   "prose_after": "(The accompanying notes are an integral part of these financial statements.)\nStatements of Operations",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 725,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the Year Ended\n\n\n\nAugust 31,\n\n\n\n2011\n\n\n\n$",
+     "For the Year Ended\n\n\n\nAugust 31,\n\n\n\n2010\n\n\n\n$",
+     "Since inception (September 25, 2008) to August 31,\n\n\n\n2011\n\n\n\n$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "\u2013",
+     "\u2013",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "26,581",
+     "30,088",
+     "58,731"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "",
+     "26,581",
+     "30,088",
+     "58,731"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(26,581)",
+     "(30,088)",
+     "(58,731)"
+    ],
+    [
+     "Net loss per share \u2013 Basic",
+     "",
+     "",
+     "\u2013",
+     "-",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013 Basic",
+     "",
+     "",
+     "107,500,000",
+     "107,500,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 779,
+    "end_line": 808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these financial statements.)\nStatements of Operations",
+   "prose_after": "(The accompanying notes are an integral part of these financial statements.)\nStatement of Stockholders\u2019 Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Accumulated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "During the",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "Development",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Stage",
+     "Total"
+    ],
+    [
+     "",
+     "#",
+     "$",
+     "$",
+     "$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 September 25, 2008 (Date of Inception)",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for cash at $0.00005 per share",
+     "90,000,000",
+     "90,000",
+     "(85,500)",
+     "4,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for cash at $0.0005 per share",
+     "12,000,000",
+     "12,000",
+     "(6,000)",
+     "6,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for cash at $0.002 per share",
+     "5,500,000",
+     "5,500",
+     "5,500",
+     "11,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "\u2013",
+     "\u2013",
+     "(2,062)",
+     "(2,062)"
+    ],
+    [
+     "Balance \u2013 August 31, 2009",
+     "107,500,000",
+     "107,500",
+     "(88,062)",
+     "19,438"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "\u2013",
+     "\u2013",
+     "(30,088)",
+     "(30,088)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 August 31, 2010",
+     "107,500,000",
+     "107,500",
+     "(118,150)",
+     "(10,650)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "\u2013",
+     "\u2013",
+     "(26,581)",
+     "(26,581)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 August 31, 2011",
+     "107,500,000",
+     "107,500",
+     "(144,731)",
+     "(37,231)"
+    ]
+   ],
+   "caption_stack": [
+    "Deficit",
+    "Accumulated",
+    "During the"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these financial statements.)\nStatement of Stockholders\u2019 Equity (Deficit)",
+   "prose_after": "(The accompanying notes are an integral part of these financial statements.)\nStatements of cash flow",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 816,
+     "token": "REPEATING_HEADER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\n\n\nAugust 31,\n\n\n\n2011\n\n\n\n$",
+     "For the Year Ended\n\n\n\nAugust 31,\n\n\n\n2010\n\n\n\n$",
+     "Since\n\n\n\ninception (September 25, 2008)\n\n\n\nto August 31,\n\n\n\n2011\n\n\n\n$"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "(26,581)",
+     "(30,088)",
+     "(58,731)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(303)",
+     "3,323",
+     "3,020"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(26,884)",
+     "(26,765)",
+     "(55,711)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common shares",
+     "\u2013",
+     "\u2013",
+     "21,500"
+    ],
+    [
+     "Advance from a related party",
+     "21,177",
+     "14,000",
+     "35,476"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "21,177",
+     "14,000",
+     "58,976"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Cash",
+     "(5,707)",
+     "(12,765)",
+     "1,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "6,972",
+     "19,737",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "1,265",
+     "6,972",
+     "1,265"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "\u2013",
+     "\u2013",
+     "\u2013"
+    ],
+    [
+     "Income tax paid",
+     "\u2013",
+     "\u2013",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these financial statements.)\nStatements of cash flow",
+   "prose_after": "(The accompanying notes are an integral part of these financial statements.)\nNature of Operations and Continuance of Business\nWhite Smile Global, Inc. (formerly Shawcore Development Corp.) (\"the Company\") was incorporated under the laws of the State of Nevada, U.S. on September 25, 2008. The Company is in the development stage as defined under Financial Accounting Standards Board Accounting Standards Codification (FASB ASC 915-205) \"Development-Stage Entities\" and it was formerly set up to design and construct eco-friendly self assembly housing and storage structures. The Company intended to build a product that would be suited to a more environmentally conscious market looking for affordable quality housing and storage that can be put together easily and quickly. On October 7, 2011, the Company acquired certain patents and intellectual property relating to dental health and care, and changed its operating name to White Smile Global, Inc.\nGoing Concern\nThese financial statements have been prepared on a going concern basis, which implies that the Company will continue to realize its assets and discharge its liabilities in the normal course of business. As at August 31, 2011, the Company has a working capital deficit of $37,231 and an accumulated deficit of $144,731. The continuation of the Company as a going concern is dependent upon the continued financial support from its management, and its ability to identify future investment opportunities and obtain the necessary debt or equity financing, and generating profitable operations from the Company\u2019s future operations. These factors raise substantial doubt regarding the Company\u2019s ability to continue as a going concern. These financial statements do not include any adjustments to the recoverability and classification of recorded asset amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2011\n\n\n\n$",
+     "2010\n\n\n\n$"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "",
+     "58,731",
+     "32,150"
+    ],
+    [
+     "Statutory rate",
+     "",
+     "35%",
+     "35%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected tax recovery",
+     "",
+     "20,556",
+     "11,253"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(20,556)",
+     "(11,253)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "\u2013",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1048,
+    "end_line": 1064
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "On June 27, 2011, Omar John Ahmadzai (\u201cMr. Ahmadzai\u201d) acquired control of three million (3,000,000) pre-split shares of the Company\u2019s issued and outstanding common stock from Gary Burkinshaw (\u201cMr. Burkinshaw:\u201d) in accordance with Stock Purchase Agreements between Mr. Ahmadzai and Mr. Burkinshaw. Pursuant to the Stock Purchase Agreements, Mr. Ahmadzai paid a purchase price of ten thousand ($10,000) to Mr. Burkinshaw in exchange for the shares.\nf)\nOn July 6, 2011, the Company effected a forward stock split on the basis of 20 new shares of common stock for each 1 share of common stock outstanding as of July 20, 2011. All reference in these financial statements and notes to financial statements to number of shares, price per shares and weighted average number of shares outstanding of common stock prior to this forward split have been adjusted to reflect the forward stock split on a retroactive basis unless otherwise noted.\nIncome Taxes\nThe Company has $58,731 of net operating losses carried forward to offset taxable income in future years which expire commencing in fiscal 2029. The income tax benefit differs from the amount computed by applying the US federal income tax rate of 35% to net loss before income taxes for the years ended August 31, 2011 and 2010 as a result of the following:",
+   "prose_after": "The significant components of deferred income tax assets and liabilities as at August 31, 2011 and 2010, after applying enacted corporate income tax rates, are as follows:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2011\n\n\n\n$",
+     "2010\n\n\n\n$"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating losses carried forward",
+     "",
+     "20,556",
+     "11,253"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(20,556)",
+     "(11,253)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "\u2013",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1079
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The significant components of deferred income tax assets and liabilities as at August 31, 2011 and 2010, after applying enacted corporate income tax rates, are as follows:",
+   "prose_after": "Future tax benefits, which may arise as a result of these losses, have not been recognized in these financial statements, and have been offset by a valuation allowance. As at August 31, 2011, the Company has no uncertain tax positions.\nSubsequent Events\na)\nOn October 7, 2011, the Company entered into an asset purchase agreement to acquire patents and intellectual property relating to dental care from a non-related party in exchange for 18,000,000 restricted common shares of the Company and $100,000 due within 30 days of the closing date of the agreement. The Company changed its operating name from Shawcore Development Corp. to White Smile Global, Inc.\nb)\nOn October 13, 2011, the Company entered into an exclusive employment agreement with Dr. Martin Giniger as Chief Science Officer. The agreement is for a term of four years beginning October 13, 2011 and ending October 13, 2015 and may be extended for an additional five (5) year term upon written mutual agreement between the parties. Dr. Giniger will be paid $180,000 per annum. His base salary will be increased to $250,000 when the Company generates in excess of $10,000,000 in annualized gross revenue using a calendar year calculated from first date of Employment, or has established a minimum of one (1) White Smile Dental SpaTM (Corporate and/or franchised locations). This new base salary will be further increased to $500,000 when the Company generates in excess of $15,000,000 in annualized gross revenue using a calendar year calculated from the day of Employment, and has established a minimum of ten (10) White Smile Dental SpasTM (Corporate and/or franchised locations).",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "/s/ Omar John Ahmadzai",
+     "",
+     "President, CEO, CFO, Sec., Treas., Director",
+     "",
+     "December 14, 2011"
+    ],
+    [
+     "Omar John Ahmadzai",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dr. Martin S. Giniger",
+     "",
+     "Director, CSO",
+     "",
+     "December 14, 2011"
+    ],
+    [
+     "Dr. Martin S. Giniger",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Matthew E. Silpe",
+     "",
+     "Director",
+     "",
+     "December 14, 2011"
+    ],
+    [
+     "Matthew E. Silpe",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "e) On November 10, 2011, White Smile Global, Inc. (\u201cthe Company\u201d), entered into a Distribution Agreement (the \u201cAgreement\u201d) with Institut de Saint Paul (Institut) (\u201cdistributor\u201d). Under the terms of the Agreement, Distributor shall serve as the Company\u2019s exclusive distributor for the White SmileTM products in the country of France. The Agreement expires one year from the effective date, with the option to extend for an additional one year period at the end of any agreement period, and is terminable sooner by either party following breach of the Agreement or written notice, as described in the Agreement. Products subject to the Agreement include White Smile \u201cOTC\u201d retail products, Solar Smile \u201crefill\u201d pen, and all marketing and sales material.\nSIGNATURES\nIn accordance with the requirements of the Securities Act of 1933, the registrant certifies that it has reasonable grounds to believe that it meets all of the requirements of filing on Form 10-K and authorized this registration statement to be signed on its behalf by the undersigned, on the 14th day of December 2011.\nBy:\n/s/ Omar John Ahmadzai\nOmar John Ahmadzai, CEO, President, CFO\nTreasurer, Secretary\nIn accordance with the requirements of the Securities Act of 1933, this registration statement was signed by the following persons in the capacities and on the dates stated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1108,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

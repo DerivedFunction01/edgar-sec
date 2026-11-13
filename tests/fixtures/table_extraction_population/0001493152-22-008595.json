@@ -1,0 +1,3724 @@
+{
+ "accession": "0001493152-22-008595",
+ "cik": "0001829999",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-3093926"
+    ],
+    [
+     "(State or jurisdiction of\n\n\n\nIncorporation or organization)",
+     "I.R.S Employer\n\n\n\nIdentification No."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission file number 001-39891\nFOXWAYNE ENTERPRISES ACQUISITION CORP.\n(Exact name of registrant as specified in charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1 Rockefeller Plaza, Suite 1039\n\n\n\nNew York, New York",
+     "10020"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(917) 284-8938\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Units, each consisting of one share of Class A common stock and one redeemable warrant to purchase one share of Class A common stock",
+     "FOXWU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "FOXW",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Redeemable warrants exercisable for one share of Class A common stock at an exercise price of $11.50",
+     "FOXWW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(917) 284-8938\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "6"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "25"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "50"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "50"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "50"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "50"
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market For Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "51"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "52"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "52"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "58"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "58"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "58"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "58"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "60"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "60"
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "60"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "69"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "69"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "70"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "73"
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibit and Financial Statement Schedules",
+     "74"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "75"
+    ],
+    [
+     "Signatures",
+     "",
+     "76"
+    ]
+   ],
+   "caption_stack": [
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 108
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act) Yes [X] No [ ]\nThe aggregate market value of the voting stock and non-voting common equity held by non-affiliates of the registrant as of the last business day of the registrant\u2019s most recently completed second fiscal quarter ended June 30, 2021 was $60,610,000 based upon the closing price of the registrant\u2019s common stock of $10.45 on The Nasdaq Capital Market as of that date.\nAs of March 31, 2022, 5,750,000 shares of Class A common stock, par value $0.0001, and 1,437,500 shares of Class B common stock, par value $0.0001, were issued and outstanding.\nDocuments Incorporated by Reference: None.\nTable of Contents",
+   "prose_after": "CERTAIN TERMS\nUnless otherwise stated in this Annual Report on Form 10-K (this \u201cReport\u201d), references to:\n\u25cf \u201ccommon stock\u201d are to our Class A common stock and our Class B common stock, collectively;\n\u25cf \u201ccompany\u201d or \u201cour company\u201d \u201cwe,\u201d \u201cus,\u201d \u201care to FoxWayne Enterprises Acquisition Corp.;\n\u25cf \u201cequity-linked securities\u201d are to any securities of our company which are convertible into or exchangeable or exercisable for, common stock of our company, including, but not limited to, a private placement of equity or debt.\n\u25cf \u201cfounder shares\u201d are to shares of our Class B common stock initially purchased by our sponsor in a private placement prior to our initial public offering, and the shares of our Class A common stock issued upon the conversion thereof as provided herein;\n\u25cf \u201cinitial stockholders\u201d are to holders of our founder shares prior to our initial public offering;\n\u25cf \u201cmanagement\u201d or our \u201cmanagement team\u201d are to our officers and directors;\n\u25cf \u201cprivate placement warrants\u201d are to the warrants issued to our sponsor in a private placement simultaneously with the closing of our initial public offering;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of Transaction",
+     "Whether Stockholder Approval is Required"
+    ],
+    [
+     "Purchase of assets",
+     "No"
+    ],
+    [
+     "Purchase of stock of target not involving a merger with the company",
+     "No"
+    ],
+    [
+     "Merger of target into a subsidiary of the company",
+     "No"
+    ],
+    [
+     "Merger of the company with a target",
+     "Yes"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 363,
+    "end_line": 371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Although we intend to closely scrutinize the management of a prospective target business when evaluating the desirability of effecting our business combination with that business, our assessment of the target business\u2019 management may not prove to be correct. In addition, the future management may not have the necessary skills, qualifications or abilities to manage a public company. Furthermore, the future role of members of our management team or of our board, if any, in the target business cannot presently be stated with any certainty. While it is possible that one or more of our directors will remain associated in some capacity with us following our business combination, it is presently unknown if any of them will devote their full efforts to our affairs subsequent to our business combination. Moreover, we cannot assure you that members of our management team will have significant experience or knowledge relating to the operations of the particular target business. The determination as to whether any members of our board of directors will remain with the combined company will be made at the time of our initial business combination.\nFollowing a business combination, to the extent that we deem it necessary, we may seek to recruit additional managers to supplement the incumbent management team of the target business. We cannot assure you that we will have the ability to recruit additional managers, or that additional managers will have the requisite skills, knowledge or experience necessary to enhance the incumbent management.\nStockholders May Not Have the Ability to Approve our Initial Business Combination\nWe may conduct redemptions without a stockholder vote pursuant to the tender offer rules of the SEC. However, we will seek stockholder approval if it is required by law or applicable stock exchange rule, or we may decide to seek stockholder approval for business or other legal reasons. Presented in the table below is a graphic explanation of the types of initial business combinations we may consider and whether stockholder approval is currently required under Delaware law for each such transaction.",
+   "prose_after": "Under Nasdaq\u2019s listing rules, stockholder approval would be required for our initial business combination if, for example:\n\u25cf we issue shares of Class A common stock that will be equal to or in excess of 20% of the number of shares of our common stock then outstanding;\n\u25cf any of our directors, officers or substantial stockholders (as defined by Nasdaq rules) has a 5% or greater interest (or such persons collectively have a 10% or greater interest), directly or indirectly, in the target business or assets to be acquired or otherwise and the present or potential issuance of common stock could result in an increase in outstanding common shares or voting power of 5% or more; or\n\u25cf the issuance or potential issuance of common stock will result in our undergoing a change of control.\nThe decision as to whether we will seek stockholder approval of a proposed business combination in those instances in which stockholder approval is not required by applicable law or stock exchange listing requirements will be made by us, solely in our discretion, and will be based on business and legal reasons, which include a variety of factors, including, but not limited to: (i) the timing of the transaction, including in the event we determine stockholder approval would require additional time and there is either not enough time to seek stockholder approval or doing so would place the company at a disadvantage in the transaction or result in other additional burdens on the company;",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 358,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Robb Knie",
+     "53",
+     "Chairman, Chief Executive Officer, and Chief Financial Officer"
+    ],
+    [
+     "Michael Reavey",
+     "46",
+     "Director"
+    ],
+    [
+     "Jeff Pavell",
+     "55",
+     "Director"
+    ],
+    [
+     "Jonathan Hale Zippin",
+     "46",
+     "Director"
+    ],
+    [
+     "Sundeep Agrawal",
+     "36",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "The Chief Executive Officer and Chief Financial Officer performed additional accounting and financial analyses and other post-closing procedures including consulting with subject matter experts related to the accounting for certain complex features of the Class A common stock and warrants. The Company\u2019s management has expended, and will continue to expend, a substantial amount of effort and resources for the remediation and improvement of our internal control over financial reporting. While we have processes to properly identify and evaluate the appropriate accounting technical pronouncements and other literature for all significant or unusual transactions, we have expanded and will continue to improve these processes to ensure that the nuances of such transactions are effectively evaluated in the context of the increasingly complex accounting standards\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth the name, age and positions of our executive officers and directors.",
+   "prose_after": "Robb Knie, has been our Chairman, Chief Executive Officer, and Chief Financial Officer since inception. Mr. Knie has also served as President and Chief Executive Officer and as a director of Hoth Therapeutics, Inc. (Nasdaq: HOTH) since May 2017 and served as its principal financial and accounting officer from June 2018 until March 2019. Mr. Knie served as the President of Lifeline Industries Inc. since its inception in 1995. From 2002 to 2010 he was a Semiconductor Analyst for PAW Partners. From 1993 until 1995, Mr. Knie served as Northeast Regional Manager of American Express Financial Advisors. Mr. Knie has served as a board member for Nasdaq-listed companies. He has been featured on Bloomberg, The Wall Street Journal and Forbes Magazine as an Independent Equity Analyst. Mr. Knie has over 20 years of equity markets experience. Mr. Knie has been a member of the American Chemical Society, Institute of Electrical and Electronics Engineers, as well as The National Alliance for Youth Sports. We believe that Mr. Knie is qualified to serve as a director because of his business and leadership experience and experience as a board member of public companies in the healthcare industry.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Individual",
+     "Entity",
+     "Entity\u2019s Business",
+     "Affiliation"
+    ],
+    [
+     "Robb Knie",
+     "Hoth Therapeutics, Inc.",
+     "Biotechnology",
+     "Chairman, President and CEO"
+    ],
+    [
+     "Michael Reavey",
+     "Electronic Arts",
+     "Gaming",
+     "Vice President, Enterprise Security"
+    ],
+    [
+     "Sundeep Agrawal",
+     "Colt Ventures",
+     "Investing",
+     "Managing Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1338,
+    "end_line": 1345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf it would not be fair to our company and its stockholders for the opportunity not to be brought to the attention of the corporation.\nAccordingly, as a result of multiple business affiliations, our officers and directors may have similar legal obligations relating to presenting business opportunities meeting the above-listed criteria to multiple entities. Furthermore, our amended and restated certificate of incorporation provides that we renounce our interest in any corporate opportunity offered to any director or officer unless such opportunity is expressly offered to such person solely in his or her capacity as a director or officer of our company and such opportunity is one we are legally and contractually permitted to undertake and would otherwise be reasonable for us to pursue, and to the extent the director or officer is permitted to refer that opportunity to us without violating another legal obligation.\nBelow is a table summarizing the entities to which our executive officers and directors currently have fiduciary duties or contractual obligations:",
+   "prose_after": "We are not prohibited from pursuing an initial business combination with a company that is affiliated with our sponsor, officers or directors, subject to certain approvals and consents. In the event we seek to complete our initial business combination with such a company, we, or a committee of independent directors, would obtain an opinion from an independent investment banking firm which is a member of FINRA, or from an independent accounting firm, that such an initial business combination is fair to our company from a financial point of view.\nIn the event that we submit our initial business combination to our stockholders for a vote, our sponsor, officers and directors have agreed to vote any founder shares held by them and any public shares purchased during or after the offering in favor of our initial business combination and our officers and directors have also agreed to vote any public shares purchased during or after the offering in favor of our initial business combination.\nLimitation on Liability and Indemnification of Officers and Directors",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Number of Shares Beneficially Owned(2)",
+     "",
+     "Approximate Percentage of Outstanding Common Stock",
+     "",
+     ""
+    ],
+    [
+     "FoxWayne Enterprises Acquisition Sponsor LLC(3)",
+     "",
+     "1,157,500",
+     "",
+     "16.1",
+     "%"
+    ],
+    [
+     "Robb Knie(3)(4)",
+     "",
+     "1,157,500",
+     "",
+     "16.1",
+     "%"
+    ],
+    [
+     "Michael Reavey",
+     "",
+     "25,000",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Jeff Pavell",
+     "",
+     "25,000",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Jonathan Hale Zippin",
+     "",
+     "25,000",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Sundeep Agrawal",
+     "",
+     "25,000",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "All executive officers and directors (5 individuals)",
+     "",
+     "1,257,500",
+     "",
+     "17.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "FoxWayne does not intend to take any action to ensure that members of its management team maintain their positions with the combined company after the consummation of the business combination, and it is not intended that FoxWayne\u2019s directors and officers will remain with the combined company after the business combination. FoxWayne is not party to any agreements with its directors or officers that provide for benefits upon termination of employment.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth information regarding the beneficial ownership of our common stock as of March [__], 2022, by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our outstanding shares of common stock;\n\u25cf each of our executive officers and directors that beneficially owns shares of our common stock; and\n\u25cf all our executive officers and directors as a group.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all shares of common stock beneficially owned by them.",
+   "prose_after": "* less than 1%.\n(1) Unless otherwise noted, the business address of each of the following entities or individuals is c/o FoxWayne Enterprises Acquisition Corp., 1 Rockefeller Plaza, Suite 1039, New York, NY 10020.\n(2) Interests shown consist solely of founder shares, classified as shares of Class B common stock. Such shares are convertible into shares of Class A common stock at the closing of our initial business combination on a one-for-one basis, subject to adjustment.\n(3) Our sponsor is the record holder of the Class B common stock reported herein. Robb Knie, our Chairman and Chief Executive Officer, is the managing member of our sponsor, and as such may be deemed to have sole voting and investment discretion with respect to the Class B common stock held by our sponsor.\n(4) Does not include 100,000 shares of Class B Common Stock owned by Mr. Knie\u2019s children.\nOur initial stockholders beneficially owned 20% of the issued and outstanding shares of our common stock immediately following our initial public offering. Because of this ownership block, our initial stockholders may be able to effectively influence the outcome of all matters requiring approval by our stockholders, including the election of directors, amendments to our amended and restated certificate of incorporation and approval of significant corporate transactions, including approval of our initial business combination.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 1404,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended",
+     "",
+     "For the Period from September 17, 2020 (inception) through",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "92,816",
+     "$",
+     "69,010"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Tax Fees (3)",
+     "$",
+     "7,210",
+     "$",
+     "-"
+    ],
+    [
+     "All Other Fees (4)",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "100,026",
+     "$",
+     "69,010"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1482,
+    "end_line": 1496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Repayment of loans which may be made by our Sponsor or an affiliate of our Sponsor or certain of our officers and directors to finance transaction costs in connection with an intended Initial Business Combination, the terms of which have not been determined nor have any written agreements been executed with respect thereto. Up to $1,500,000 of such loans may be convertible into warrants, at a price of $1.00 per warrant at the option of the lender.\nOur audit committee will review on a quarterly basis all payments that were made to our sponsor, officers or directors or our or their affiliates.\nRisks and Uncertainties\nManagement continues to evaluate the impact of the COVID-19 pandemic on the industry and has concluded that while it is reasonably possible that the virus could have a negative effect on our financial position, results of our operations and/or search for a target company, the specific impact is not readily determinable as of the date of the consolidated financial statements. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following is a summary of fees paid or to be paid to WithumSmith+Brown, PC, or Withum, for services rendered.",
+   "prose_after": "The following is a summary of fees paid to WithumSmith+Brown, PC, for services rendered.\n(1) Audit Fees. Audit fees consist of fees billed for professional services rendered for the audit of our year-end financial statements, reviews of our quarterly financial statements and services that are normally provided by our independent registered public accounting firm in connection with statutory and regulatory filings. The aggregate fees billed by WithumSmith+Brown, PC for audit fees, inclusive of required filings with the SEC for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020, and of services rendered in connection with our initial public offering, totalled $93,000 and $69,000, respectively.\n(2) Audit-Related Fees. Audit-related fees consist of fees billed for assurance and related services that are reasonably related to performance of the audit of our year-end financial statements and are not reported under \u201cAudit Fees.\u201d These services include attest services that are not required by statute or regulation and consultation concerning financial accounting and reporting standards. We did not pay WithumSmith+Brown, PC any audit-related fees for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1477,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1511,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "F-2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2021 and 2020",
+     "",
+     "F-3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit) for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated financial statements",
+     "",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1520,
+    "end_line": 1534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Sarbanes-Oxley Act, our audit committee charter requires the audit committee to pre-approve all audit and permitted non-audit services provided by our independent registered public accounting firm, including the review and approval in advance of our independent registered public accounting firm\u2019s annual engagement letter and the proposed fees contained therein. The audit committee has the ability to delegate the authority to pre-approve non-audit services to one or more designated members of the audit committee. If such authority is delegated, such delegated members of the audit committee must report to the full audit committee at the next audit committee meeting all items pre-approved by such delegated members. Since the Company became a publicly listed company all of the services performed by our independent registered public accounting firm were pre-approved by the audit committee.\nPART IV\nITEM 15. EXHIBIT AND FINANCIAL STATEMENT SCHEDULES\n(a) The following documents are filed as part of this report:\n(1) Financial Statements:",
+   "prose_after": "The consolidated financial statements required by this Item are included beginning at page F-1.\n(1) Financial Statement Schedules:\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the consolidated financial statements or the notes thereto.\n(b) Exhibits\nEXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1511,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Exhibit"
+    ],
+    [
+     "3.1",
+     "",
+     "Second Amended and Restated Certificate of Incorporation. (incorporated by reference to Exhibit 3.1 to FoxWayne\u2019s Current Report on Form 8-K filed on April 8, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Bylaws of FoxWayne Enterprises Acquisition Corp. (incorporated by reference to Exhibit 3.3 to FoxWayne\u2019s Registration Statement on Form S-1 (File No. 333-251203) filed on December 9, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Warrant Agreement, dated January 19, 2021, by and between the Company and Continental Stock Transfer & Trust Company, as warrant agent. (Incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Specimen Unit Certificate (Incorporated by reference to Exhibit 4.1 to Amendment No. 1 to FoxWayne\u2019s Registration Statement on Form S-1 (File No. 333-251203) filed on January 8, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "Specimen Class A Common Stock Certificate (Incorporated by reference to Exhibit 4.2 to Amendment No. 1 to FoxWayne\u2019s Registration Statement on Form S-1 (File No. 333-251203) filed on January 8, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Specimen Warrant Certificate (Incorporated by reference to Exhibit 4.3 to Amendment No. 1 to FoxWayne\u2019s Registration Statement on Form S-1 (File No. 333-251203) filed on January 8, 2021)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1546,
+    "end_line": 1566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The consolidated financial statements required by this Item are included beginning at page F-1.\n(1) Financial Statement Schedules:\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the consolidated financial statements or the notes thereto.\n(b) Exhibits\nEXHIBIT INDEX",
+   "prose_after": "10.1 Letter Agreement, dated January 19, 2021, by and among the Company and its officers, its directors the Sponsor and other initial stockholders. (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.2 Investment Management Trust Agreement, dated January 19, 2021, by and between the Company and Continental Stock Transfer & Trust Company, as trustee. (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.3 Registration Rights Agreement, dated January 19, 2021, by and among the Company, the Sponsor and other initial stockholders. (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.4 Administrative Services Agreement, dated January 19, 2021, by and between the Company and the Sponsor. (Incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.5 Private Placement Warrant Purchase Agreement, dated January 19, 2021, by and between the Company and the Sponsor. (Incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.7 Form of Promissory Note (Incorporated by reference to Exhibit 10.1 to FoxWayne\u2019s Current Report on Form 8-K filed on September 27, 2021) 31.1* Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Rule 13a-14(a) of the Exchange Act, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "32.1*",
+     "",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Rule 13a-14(b) of the Exchange Act and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "",
+     "Cover Page Interactive Data File \u2013 the cover page of the Registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 2021 is formatted in Inline XBRL"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1569,
+    "end_line": 1587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "10.1 Letter Agreement, dated January 19, 2021, by and among the Company and its officers, its directors the Sponsor and other initial stockholders. (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.2 Investment Management Trust Agreement, dated January 19, 2021, by and between the Company and Continental Stock Transfer & Trust Company, as trustee. (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.3 Registration Rights Agreement, dated January 19, 2021, by and among the Company, the Sponsor and other initial stockholders. (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.4 Administrative Services Agreement, dated January 19, 2021, by and between the Company and the Sponsor. (Incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.5 Private Placement Warrant Purchase Agreement, dated January 19, 2021, by and between the Company and the Sponsor. (Incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed on January 22, 2021). 10.7 Form of Promissory Note (Incorporated by reference to Exhibit 10.1 to FoxWayne\u2019s Current Report on Form 8-K filed on September 27, 2021) 31.1* Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Rule 13a-14(a) of the Exchange Act, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+   "prose_after": "* Filed herewith.\n\u2020 Certain of the schedules (and/or exhibits) have been omitted pursuant to Item 601(b)(2) of Regulation S-K. A copy of any omitted schedule (and/or exhibit) will be furnished to the SEC upon request.\nITEM 16. FORM 10-K SUMMARY\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized on this 31st day of March, 2022.\nFoxWayne Enterprises Acquisition Corp. /s/ Robb Knie Robb Knie Chairman, Chief Executive Officer and Chief Financial Officer (Principal Executive Officer and Principal Financial and Accounting Officer)\nPursuant to the requirements of the Securities Act of 1934, this Annual Report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robb Knie",
+     "Chairman, Chief Executive Officer and Chief Financial Officer\n\n\n\n(Principal Executive Officer and Principal Financial and Accounting Officer)",
+     "March 31, 2022"
+    ],
+    [
+     "Robb Knie",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Reavey",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Michael Reavey",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jeff Pavell",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Jeff Pavell",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jonathan Hale Zippin",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Jonathan Hale Zippin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Sundeep Agrawal",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Sundeep Agrawal",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1605,
+    "end_line": 1631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\n\u2020 Certain of the schedules (and/or exhibits) have been omitted pursuant to Item 601(b)(2) of Regulation S-K. A copy of any omitted schedule (and/or exhibit) will be furnished to the SEC upon request.\nITEM 16. FORM 10-K SUMMARY\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized on this 31st day of March, 2022.\nFoxWayne Enterprises Acquisition Corp. /s/ Robb Knie Robb Knie Chairman, Chief Executive Officer and Chief Financial Officer (Principal Executive Officer and Principal Financial and Accounting Officer)\nPursuant to the requirements of the Securities Act of 1934, this Annual Report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Index to Consolidated Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated financial statements",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID NO: 100)",
+     "",
+     "F-2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of December 31, 2021 and 2020",
+     "",
+     "F-3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit) for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-5"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the year ended December 31, 2021 and for the period from September 17, 2020 (inception) through December 31, 2020",
+     "",
+     "F-6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated financial statements",
+     "",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1636,
+    "end_line": 1655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Index to Consolidated Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Stockholders and the Board of Directors of\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of FoxWayne Enterprises Acquisition Corp. (the \u201cCompany\u201d) as of December 31, 2021 and 2020, the related consolidated statements of operations, changes in stockholders\u2019 equity (deficit) and cash flows for the year ended December 31, 2021 and the period from September 17, 2020 (inception) through December 31, 2020, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021, and 2020, and the results of its operations and its cash flows for the year ended December 31, 2021 and the period from September 17, 2020 (inception) through December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 1655,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "41,574",
+     "",
+     "$",
+     "2,966",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "23,787",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "65,361",
+     "",
+     "",
+     "2,966",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "58,080,426",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred offering costs associated with initial public offering",
+     "",
+     "-",
+     "",
+     "",
+     "150,176",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "58,145,787",
+     "",
+     "$",
+     "153,142",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities, Class A Common Stock Subject to Possible Redemption and Stockholders\u2019 Equity (Deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "115,238",
+     "",
+     "$",
+     "32,102",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "924,014",
+     "",
+     "",
+     "61,147",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "132,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "170,400",
+     "",
+     "",
+     "740",
+     ""
+    ],
+    [
+     "Note payable - related party",
+     "",
+     "-",
+     "",
+     "",
+     "40,510",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "1,342,352",
+     "",
+     "",
+     "134,499",
+     ""
+    ],
+    [
+     "Promissory note - related party",
+     "",
+     "100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred underwriting commissions",
+     "",
+     "2,012,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities",
+     "",
+     "3,505,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "6,960,352",
+     "",
+     "",
+     "134,499",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock subject to possible redemption, $0.0001 par value; 5,750,000 and -0- shares issued and outstanding at $10.10 per share redemption value at December 31, 2021 and 2020, respectively",
+     "",
+     "58,075,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value\u037e 1,000,000 shares authorized\u037e none issued or outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 50,000,000 shares authorized; 50,000 and -0- non-redeemable shares issued and outstanding as of December 31, 2021 and 2020, respectively",
+     "",
+     "5",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 2,000,000 shares authorized; 1,437,500 shares issued and outstanding at December 31, 2021 and 2020 (1)",
+     "",
+     "144",
+     "",
+     "",
+     "144",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "-",
+     "",
+     "",
+     "24,856",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(6,889,714)",
+     "",
+     "",
+     "(6,357)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity (Deficit)",
+     "",
+     "(6,889,565)",
+     "",
+     "",
+     "18,643",
+     ""
+    ],
+    [
+     "Total Liabilities, Class A Common Stock Subject to Possible Redemption and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "58,145,787",
+     "",
+     "$",
+     "153,142",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1691,
+    "end_line": 1743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ WithumSmith+Brown, PC\nWe have served as the Company's auditor since 2020.\nNew York, New York\nMarch 31, 2022\nPCAOB Number 100\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "(1) This number includes up to 187,500 Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. The underwriter exercised its over-allotment option in full on January 22, 2021; thus, these 187,500 shares are no longer subject to forfeiture (see Note 8).\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1687,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "For the Period From September 17, 2020 (inception) through December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "1,631,877",
+     "",
+     "$",
+     "5,617",
+     ""
+    ],
+    [
+     "General and administrative expenses - related party",
+     "",
+     "120,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Franchise tax expense",
+     "",
+     "170,538",
+     "",
+     "",
+     "740",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,922,415)",
+     "",
+     "",
+     "(6,357)",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "1,083,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing costs - derivative warrant liabilities",
+     "",
+     "(212,494)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income from investments held in Trust Account",
+     "",
+     "5,426",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before income tax",
+     "",
+     "(1,045,983)",
+     "",
+     "",
+     "(6,357)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,045,983)",
+     "",
+     "$",
+     "(6,357)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding of Class A common stock",
+     "",
+     "5,466,301",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share, Class A common stock",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding of Class B common stock",
+     "",
+     "1,426,712",
+     "",
+     "",
+     "1,250,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share, Class B common stock",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1751,
+    "end_line": 1784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "(1) This number includes up to 187,500 Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. The underwriter exercised its over-allotment option in full on January 22, 2021; thus, these 187,500 shares are no longer subject to forfeiture (see Note 8).\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFor The Year Ended December 31, 2021 And\nFor The Period From September 17, 2020 (inception) Through December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1786,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total\n\n\n\nStockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance - September 17, 2020 (inception)",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Class B common stock to Sponsor",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,437,500",
+     "",
+     "144",
+     "",
+     "24,856",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(6,357)",
+     "",
+     "",
+     "(6,357)",
+     ""
+    ],
+    [
+     "Balance - December 31, 2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,437,500",
+     "",
+     "144",
+     "",
+     "24,856",
+     "",
+     "",
+     "(6,357)",
+     "",
+     "",
+     "18,643",
+     ""
+    ],
+    [
+     "Issuance of Representative\u2019s Shares",
+     "",
+     "50,000",
+     "",
+     "5",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "499,995",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "Excess of cash received over fair value of the private placement warrants",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,316,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,316,000",
+     ""
+    ],
+    [
+     "Accretion of Class A common stock subject to redemption amount",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,840,851)",
+     "",
+     "",
+     "(5,837,374)",
+     "",
+     "",
+     "(7,678,225)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,045,983)",
+     "",
+     "",
+     "(1,045,983)",
+     ""
+    ],
+    [
+     "Balance - December 31, 2021",
+     "",
+     "50,000",
+     "$",
+     "5",
+     "",
+     "1,437,500",
+     "$",
+     "144",
+     "$",
+     "-",
+     "",
+     "$",
+     "(6,889,714)",
+     "",
+     "$",
+     "(6,889,565)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1794,
+    "end_line": 1816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFor The Year Ended December 31, 2021 And\nFor The Period From September 17, 2020 (inception) Through December 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1786,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "For the Period From September 17, 2020 (inception) through December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,045,983)",
+     "",
+     "$",
+     "(6,357)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "(1,083,500)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing costs - derivative warrant liabilities",
+     "",
+     "212,494",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income from investments held in Trust Account",
+     "",
+     "(5,426)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(23,787)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "83,136",
+     "",
+     "",
+     "472",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "854,014",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "132,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "169,660",
+     "",
+     "",
+     "740",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(706,692)",
+     "",
+     "",
+     "(5,145)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash deposited in Trust Account",
+     "",
+     "(58,075,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(58,075,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of promissory note to related party",
+     "",
+     "(40,510)",
+     "",
+     "",
+     "(1,615)",
+     ""
+    ],
+    [
+     "Proceeds from promissory note to related party",
+     "",
+     "100,000",
+     "",
+     "",
+     "42,125",
+     ""
+    ],
+    [
+     "Proceeds from issuance of Class B common stock to Sponsor",
+     "",
+     "-",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Proceeds received from initial public offering, gross",
+     "",
+     "57,500,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds received from private placement",
+     "",
+     "2,800,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Offering costs paid",
+     "",
+     "(1,539,190)",
+     "",
+     "",
+     "(57,399)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "58,820,300",
+     "",
+     "",
+     "8,111",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "38,608",
+     "",
+     "",
+     "2,966",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - beginning of the period",
+     "",
+     "2,966",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash - end of the period",
+     "$",
+     "41,574",
+     "",
+     "$",
+     "2,966",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of noncash activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Offering costs included in accounts payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,630",
+     ""
+    ],
+    [
+     "Offering costs included in accrued expenses",
+     "$",
+     "70,000",
+     "",
+     "$",
+     "61,147",
+     ""
+    ],
+    [
+     "Deferred underwriting commissions in connection with the initial public offering",
+     "$",
+     "2,012,500",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1822,
+    "end_line": 1872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNote 1-Description of Organization and Business Operations\nFoxWayne Enterprises Acquisition Corp. (the \u201cCompany\u201d and \u201cFoxWayne\u201d) is a blank check company incorporated in Delaware on September 17, 2020, for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses (the \u201cBusiness Combination\u201d). The Company is an emerging growth company and, as such, the Company is subject to all of the risks associated with emerging growth companies.\nAs of December 31, 2021, the Company had not commenced any operations. All activity for the period from September 17, 2020 (inception) through December 31, 2021, relates to the Company\u2019s formation and the initial public offering (the \u201cInitial Public Offering\u201d) described below, and, subsequent to the Initial Public Offering, identifying a target company for a Business Combination. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company generates non-operating income in the form of interest income on its investments held in the trust account from the proceeds of its Initial Public Offering.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1874,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Period From\n\n\n\nSeptember 17, 2020\n\n\n\n(inception) through December 31, 2020",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss",
+     "$",
+     "(829,486)",
+     "",
+     "$",
+     "(216,497)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(6,357)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common stock outstanding",
+     "",
+     "5,466,301",
+     "",
+     "",
+     "1,426,712",
+     "",
+     "",
+     "-",
+     "",
+     "1,250,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per common stock",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(0.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2010,
+    "end_line": 2030
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company complies with accounting and disclosure requirements of FASB ASC Topic 260, \u201cEarnings Per Share.\u201d The Company has two classes of shares, which are referred to as Class A common stock and Class B common stock. Income and losses are shared pro rata between the two classes of shares. Net income (loss) per common share is calculated by dividing the net income (loss) by the weighted average shares of common stock outstanding for the respective period.\nThe calculation of diluted net income (loss) per common stock does not consider the effect of the warrants issued in connection with the Initial Public Offering and the Private Placement to purchase an aggregate of 8,550,000 shares of common stock in the calculation of diluted income (loss) per share, because their exercise is contingent upon future events. Accretion associated with the redeemable Class A common stock is excluded from earnings per share as the redemption value approximates fair value.\nThe following table reflects presents a reconciliation of the numerator and denominator used to compute basic and diluted net income per ordinary share for each class of ordinary shares:\nSchedule of Basic and Diluted Earnings Per Common Share",
+   "prose_after": "Recent Accounting Pronouncements\nThe Company\u2019s management does not believe that any other recently issued, but not yet effective, accounting standards updates, if currently adopted, would have a material effect on the accompanying consolidated financial statements.\nNote 3 - Initial Public Offering\nOn January 22, 2021, the Company consummated its Initial Public Offering of 5,750,000 Units, including 750,000 Over-Allotment Units, at $10.00 per Unit, generating gross proceeds of $57.5 million, and incurring offering costs of approximately $4.2 million, of which approximately $2.0 million was for deferred underwriting commissions.\nEach Unit consists of one share of Class A common stock and one redeemable warrant (each, a \u201cPublic Warrant\u201d). Each whole Public Warrant entitles the holder to purchase one share of Class A common stock at a price of $11.50 per share, subject to adjustment (see Note 8).\nNote 4 - Related Party Transactions\nFounder Shares\nOn October 15, 2020, the Sponsor purchased 1,437,500 shares of the Company\u2019s Class B common stock, par value $0.0001 per share (the \u201cFounder Shares\u201d), for an aggregate price of $25,000. In October 2020, the Sponsor transferred 25,000 Founder Shares to each of Messrs. Reavey, Pavell, Zippin and Agrawal and 180,000 Founder Shares to certain other Initial Stockholders. The per share purchase price of the Founder Shares was determined by dividing the amount of cash contributed to the Company by the aggregate number of Founder Shares issued. The Initial Stockholders agreed to forfeit up to 187,500 Founder Shares to the extent that the over-allotment option was not exercised in full by the underwriters, so that the Founder Shares would represent 20.0% of the Company\u2019s issued and outstanding shares after the Initial Public Offering (excluding the Representative\u2019s Shares, as defined in Note 5). The underwriter exercised its over-allotment option in full on January 22, 2021; thus, these 187,500 Founder Shares are no longer subject to forfeiture.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2004,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2048,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross proceeds received from Initial Public Offering",
+     "$",
+     "57,500,000",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of Public Warrants at issuance",
+     "",
+     "(3,105,000)",
+     ""
+    ],
+    [
+     "Class A common stock issuance costs",
+     "",
+     "(3,998,225)",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion on Class A ordinary shares to redemption value",
+     "",
+     "7,678,225",
+     ""
+    ],
+    [
+     "Class A ordinary shares subject to possible redemption",
+     "$",
+     "58,075,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2138,
+    "end_line": 2149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Class A Common Stock Subject to Possible Redemption"
+    }
+   },
+   "prose_before": "If the Company is unable to complete a Business Combination within the Combination Period and the Company liquidates the funds held in the Trust Account, holders of warrants will not receive any of such funds with respect to their warrants, nor will they receive any distribution from the Company\u2019s assets held outside of the Trust Account with the respect to such warrants. Accordingly, the warrants may expire worthless.\nNote 7 - Class A Common Stock Subject to Possible Redemption\nThe Company\u2019s Class A common stock feature certain redemption rights that are considered to be outside of the Company\u2019s control and subject to the occurrence of future events. The Company is authorized to issue 50,000,000 shares of Class A common stock with a par value of $0.0001 per share. Holders of the Company\u2019s Class A common stock are entitled to one vote for each share. As of December 31, 2021, there were 5,800,000 shares of Class A common stock outstanding, 5,750,000 shares of which were subject to possible redemption and are classified outside of permanent equity in the consolidated balance sheets. As of December 31, 2020, there were no shares of Class A common stock issued or outstanding.\nThe Class A common stock subject to possible redemption reflected on the consolidated balance sheet is reconciled on the following table:\nSchedule of Redemption of Condensed Balance Sheet",
+   "prose_after": "Note 8 - Stockholders\u2019 Equity (Deficit)\nPreferred Stock - The Company is authorized to issue 1,000,000 shares of preferred stock, par value $0.0001 per share, with such designations, voting and other rights and preferences as may be determined from time to time by the Company\u2019s board of directors. As of December 31, 2021 and 2020, there were no shares of preferred stock issued or outstanding.\nClass A Common Stock - The Company is authorized to issue 50,000,000 shares of Class A common stock with a par value of $0.0001 per share. As of December 31, 2021, there were 5,800,000 shares of Class A common stock issued or outstanding, 5,750,000 shares of which were subject to possible redemption and are classified outside of permanent equity in the consolidated balance sheets (see Note 7). As of December 31, 2020, there were no shares of Class A common stock issued or outstanding.\nClass B Common Stock - The Company is authorized to issue 2,000,000 shares of Class B common stock with a par value of $0.0001 per share. As of December 31, 2021 and 2020, there were 1,437,500 shares of Class B common stock issued and outstanding , of which an aggregate of up to 187,500 shares of Class B common stock were subject to forfeiture to the extent that the underwriters\u2019 over-allotment option was not exercised in full or in part, so that the Initial Stockholders will collectively own 20% of the Company\u2019s issued and outstanding common stock after the Initial Public Offering (excluding the Representative\u2019s Shares). The underwriter exercised its over-allotment option in full on January 22, 2021; thus, these 187,500 Founder Shares are no longer subject to forfeiture.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2132,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2161,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Quoted Prices in Active Markets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Other Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "$",
+     "58,080,426",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities - Public warrants",
+     "$",
+     "2,357,500",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Derivative warrant liabilities - Private placement warrants",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,148,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2169,
+    "end_line": 2179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "The Class B common stock will automatically convert into Class A common stock at the closing of the initial Business Combination on a one-for-one basis, subject to adjustment for stock splits, stock dividends, reorganizations, recapitalizations and the like, and subject to further adjustment as provided herein. In the case that additional shares of Class A common stock or equity-linked securities are issued or deemed issued in connection with the initial Business Combination, the number of shares of Class A common stock issuable upon conversion of all Founder Shares will equal, in the aggregate, on an as-converted basis, 20% of the sum of the total number of all shares of common stock outstanding upon the completion of the Initial Public Offering, plus the total number of shares of Class A common stock issued, or deemed issued or issuable upon conversion or exercise of any equity-linked securities or rights issued or deemed issued, by the Company in connection with or in relation to the consummation of the initial Business Combination, excluding any shares of Class A common stock or equity-linked securities exercisable for or convertible into shares of Class A common stock issued, or to be issued, to any seller in the initial Business Combination and any private placement-equivalent warrants issued to the Sponsor, officers or directors upon conversion of Working Capital Loans or Extension Loans; provided that such conversion of Founder Shares will never occur on a less than one for one basis.\nNote 9 - Fair Value Measurements\nThe following table presents information about the Company\u2019s financial assets and liabilities that are measured at fair value on a recurring basis as of December 31, 2021.\nSchedule of Fair Value Measurement of Financial Assets and Liabilities",
+   "prose_after": "Transfers to/from Levels 1, 2, and 3 are recognized at the beginning of the reporting period. The estimated fair value of the Public Warrants transferred from a Level 3 fair value measurement to a Level 1 fair value measurement, when the Public Warrants were separately listed and traded in February 2021.\nLevel 1 assets include investments in mutual funds that invest in U.S. Treasury securities. The Company uses inputs such as actual trade data, quoted market prices from dealers or brokers, and other similar sources to determine the fair value of its investments. Subsequent to the Public Warrants being separately listed and traded, their value is based on their observable listed trading price, a Level 1 measurement.\nLevel 3 instruments are comprised of derivative warrant liabilities measured at fair value using a Monte Carlo simulation model. The estimated fair value of the Private Placement Warrants and the Public Warrants, prior to the Public Warrants being traded in an active market, was determined using Level 3 inputs. Inherent in a Monte Carlo simulation model are assumptions related to expected stock-price volatility, expected life, risk-free interest rate and dividend yield. The Company estimates the volatility of its common stock warrants based on implied volatility from the Company\u2019s traded warrants and from historical volatility of select peer company\u2019s common stock that matches the expected remaining life of the warrants. The risk-free interest rate is based on the U.S. Treasury zero-coupon yield curve on the grant date for a maturity similar to the expected remaining life of the warrants. The expected life of the warrants is assumed to be equivalent to their remaining contractual term. The dividend rate is based on the historical rate, which the Company anticipates remaining at zero",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2161,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of January 22, 2021",
+     "",
+     "",
+     "As of December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Option term (in years)",
+     "",
+     "6.50",
+     "",
+     "",
+     "5.25",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "11.80",
+     "%",
+     "",
+     "8.00",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.69",
+     "%",
+     "",
+     "1.28",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Stock price",
+     "$",
+     "9.46",
+     "",
+     "$",
+     "9.94",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2192,
+    "end_line": 2201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Level 3 instruments are comprised of derivative warrant liabilities measured at fair value using a Monte Carlo simulation model. The estimated fair value of the Private Placement Warrants and the Public Warrants, prior to the Public Warrants being traded in an active market, was determined using Level 3 inputs. Inherent in a Monte Carlo simulation model are assumptions related to expected stock-price volatility, expected life, risk-free interest rate and dividend yield. The Company estimates the volatility of its common stock warrants based on implied volatility from the Company\u2019s traded warrants and from historical volatility of select peer company\u2019s common stock that matches the expected remaining life of the warrants. The risk-free interest rate is based on the U.S. Treasury zero-coupon yield curve on the grant date for a maturity similar to the expected remaining life of the warrants. The expected life of the warrants is assumed to be equivalent to their remaining contractual term. The dividend rate is based on the historical rate, which the Company anticipates remaining at zero\nThe following table provides quantitative information regarding Level 3 fair value measurements inputs at their measurement dates.\n:\nSchedule of Fair Value Input Measurements",
+   "prose_after": "The change in the fair value of the derivative warrant liabilities, measured using Level 3 inputs, for the year ended December 31, 2021, is summarized as follows:\nSchedule of Changes in Derivative Warrant Liabilities",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2161,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Derivative warrant liabilities at January 1, 2021",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Public and Private Warrants",
+     "",
+     "4,589,000",
+     ""
+    ],
+    [
+     "Transfer of Public Warrants to a Level 1 measurement",
+     "",
+     "(3,105,000)",
+     ""
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "(336,000)",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities at December 31, 2021",
+     "$",
+     "1,148,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2207,
+    "end_line": 2216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "The change in the fair value of the derivative warrant liabilities, measured using Level 3 inputs, for the year ended December 31, 2021, is summarized as follows:\nSchedule of Changes in Derivative Warrant Liabilities",
+   "prose_after": "Note 10-Income Taxes\nThe Company\u2019s general and administrative costs are generally considered start-up costs and, along with the change in fair value of the warrant liabilities and related offering costs, are not currently deductible.\nThe income tax provision consists of the following:\nSchedule of Income Tax Provision",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "For the Period From September 17, 2020 (inception) through December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "(34,674)",
+     "",
+     "$",
+     "(155)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "(367,894)",
+     "",
+     "",
+     "(1,180)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "402,568",
+     "",
+     "",
+     "1,335",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2225,
+    "end_line": 2241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Note 10-Income Taxes\nThe Company\u2019s general and administrative costs are generally considered start-up costs and, along with the change in fair value of the warrant liabilities and related offering costs, are not currently deductible.\nThe income tax provision consists of the following:\nSchedule of Income Tax Provision",
+   "prose_after": "The Company\u2019s net deferred tax assets are as follows:\nSchedule of Deferred Tax",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Start-up/Organization costs",
+     "$",
+     "369,074",
+     "",
+     "$",
+     "1,180",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "",
+     "34,829",
+     "",
+     "",
+     "155",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "403,903",
+     "",
+     "",
+     "1,335",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(403,903)",
+     "",
+     "",
+     "(1,335)",
+     ""
+    ],
+    [
+     "Deferred tax asset, net of allowance",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2246,
+    "end_line": 2261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company\u2019s net deferred tax assets are as follows:\nSchedule of Deferred Tax",
+   "prose_after": "In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax assets, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. As of December 31, 2021 and 2020, the valuation allowance increased by approximately $404,000 and $1,300, respectively.\nAs of December 31, 2021 and 2020, the Company had approximately $166,000 and $1,000, respectively, of U.S. federal net operating loss carryovers, which do not expire, available to offset future taxable income.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "For the Period From September 17, 2020 (inception) through December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "21.8",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Transaction costs allocated to derivative warrant liabilities",
+     "",
+     "(4.3)",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Loss upon issuance of private placement warrants",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(38.6)",
+     "%",
+     "",
+     "(21.0)",
+     "%"
+    ],
+    [
+     "Income Taxes Benefit",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2273,
+    "end_line": 2286
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax assets, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. As of December 31, 2021 and 2020, the valuation allowance increased by approximately $404,000 and $1,300, respectively.\nAs of December 31, 2021 and 2020, the Company had approximately $166,000 and $1,000, respectively, of U.S. federal net operating loss carryovers, which do not expire, available to offset future taxable income.\nThere were no unrecognized tax benefits as of December 31, 2021 and 2020. No amounts were accrued for the payment of interest and penalties as of December 31, 2021 and 2020. The Company is currently not aware of any issues under review that could result in significant payments, accruals or material deviation from its position. The Company is subject to income tax examinations by major taxing authorities since inception.\nA reconciliation of the statutory federal income tax rate (benefit) to the Company\u2019s effective tax rate (benefit) is as follows:\nSchedule of Statutory Federal Income Tax Rate Benefit",
+   "prose_after": "Note 11-Subsequent Events\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date and up to the date the financial statements were issued. Based upon this review, the Company did not identify any subsequent events that have occurred that would require adjustment or disclosures in the financial statements, except as noted below and in Note 4:\nWithdrawal of Registration Statement\nIn accordance with Rule 457(p) under the Securities Act, the Company has also requested that all fees paid to the Commission in connection with the filing of the Registration Statement be credited for potential future use.\nFor further information see the Current Report on Form 8-K filed by the Company on March 7, 2022.\nPromissory Notes\nOn January 19, 2022, the Company\u2019s Chief Executive Officer, loaned an additional $310,000 to the Company. The loan was evidenced by a promissory note which is non-interest bearing, non-convertible, and payable upon the consummation of the Company\u2019s initial merger, share exchange, asset acquisition or other similar business combination with one or more businesses or entities. If an initial merger, share exchange, asset acquisition or other similar business combination is not consummated, the note will not be repaid by the Company and all amounts owed thereunder by the Company will be forgiven except to the extent that the Company has funds available to us outside of the Trust Account.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2296,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

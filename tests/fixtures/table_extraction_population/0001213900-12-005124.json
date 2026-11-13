@@ -1,0 +1,3404 @@
+{
+ "accession": "0001213900-12-005124",
+ "cik": "0001499618",
+ "form": "10-Q",
+ "filing_date": "2012-09-06",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0612_yellow7.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Texas",
+     "61-155055"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104 Hardwicke Lane, Little Elm, Texas",
+     "75068"
+    ],
+    [
+     "(Address of principal executive office)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor The Quarterly Period Ended June 30, 2012\n[ ][ ]\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from                        to\nCommission file number- 333-170578\nYELLOW7, INC.\n(Exact name of registrant as specified in the charter)",
+   "prose_after": "(972) 731-6720 ext 305\n(Registrant's telephone number including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "PART I\u2014FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance Sheets (unaudited) at June 30, 2012 and December 31, 2011",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Operations (unaudited) for the six months ended June 30, 2011 and 2012",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statement of Stockholders Equity (deficit) for June 30, 2012",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Cash Flows (unaudited) for the six months ended June 30, 2011 and 2012",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II\u2014OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Default Upon Senior Securities",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Shareholders",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signature",
+     "",
+     "20"
+    ]
+   ],
+   "caption_stack": [
+    "Page No.",
+    "PART I\u2014FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act.\nLarge Accelerated Filer [ ]  Accelerated Filer [ ]  Non-accelerated filer [ ]   Smaller reporting company [X]\n(Do not check if a\nsmaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nAs of August 30, 2012, there were 185,400,000 shares of the Registrant's common stock, $.0001 par value outstanding.\nTable of Contents\nYellow7, Inc.\nIndex",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis quarterly report on Form 10-Q contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, or the Securities Act, and Section 21E of the Securities Exchange Act of 1934, as amended, or the Exchange Act, that involve substantial risks and uncertainties. In addition, we, or our executive officers on our behalf, may from time to time make forward-looking statements in reports and other documents we file with the Securities and Exchange Commission, or SEC, or in connection with oral statements made to the press, potential investors or others. All statements, other than statements of historical facts, including statements regarding our strategy, future operations, future financial position, future revenues, projected costs, prospects, plans and objectives of management are forward-looking statements. The words \"expect,\" \"estimate,\" \"anticipate,\" \"predict,\" \"believe,\" \"think,\" \"plan,\" \"will,\" \"should,\" \"intend,\" \"seek,\" \"potential\" and similar expressions and variations are intended to identify forward-looking statements, although not all forward-looking statements contain these identifying words.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yellow7, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Formerly Yellow7, LLC)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2012 and December 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,\n\n2012",
+     "",
+     "",
+     "December 31,\n\n2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "21,527",
+     "",
+     "$",
+     "4,612",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance of $7,000 and $3,500, respectively",
+     "",
+     "56,781",
+     "",
+     "",
+     "40,846",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "4,375",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "82,683",
+     "",
+     "",
+     "50,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture and Equipment, net",
+     "",
+     "140,122",
+     "",
+     "",
+     "153,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset - non-current",
+     "",
+     "2,000",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "224,805",
+     "",
+     "$",
+     "205,784",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIENCY)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "101,088",
+     "",
+     "$",
+     "83,140",
+     ""
+    ],
+    [
+     "Loans payable - stockholders",
+     "",
+     "16,000",
+     "",
+     "",
+     "8,000",
+     ""
+    ],
+    [
+     "Loans payable - current portion",
+     "",
+     "23,129",
+     "",
+     "",
+     "22,136",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "140,217",
+     "",
+     "",
+     "113,276",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans payable - net of current portion",
+     "",
+     "109,577",
+     "",
+     "",
+     "119,759",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "109,577",
+     "",
+     "",
+     "119,759",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficiency):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 250,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "185,400,000 shares issued and outstanding",
+     "",
+     "18,540",
+     "",
+     "",
+     "18,540",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "(10,576)",
+     "",
+     "",
+     "(7,076)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "Retained Earnings (Deficiency)",
+     "",
+     "(32,953)",
+     "",
+     "",
+     "(35,215)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(24,989)",
+     "",
+     "",
+     "(27,251)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "224,805",
+     "",
+     "$",
+     "205,784",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7, LLC)",
+    "Condensed Balance Sheets",
+    "June 30, 2012 and December 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 170
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The financial statements of Yellow7, Inc. (\"Yellow7\" or the \"Company\") as of June 30, 2012 and December 31, 2011 and for the six months ended June 30, 2012 included herein have been prepared by the Company, without audit, pursuant to U.S. generally accepted accounting principles and the rules and regulations of the SEC. In addition, certain information and note disclosures normally included in financial statements prepared in accordance with U.S. generally accepted accounting principles have been condensed or omitted pursuant to such rules and regulations, although the Company believes that the disclosures are adequate to make the information presented not misleading. These financial statements reflect, in the opinion of management, all adjustments (consisting only of normal recurring adjustments) necessary to present fairly the results for the interim periods. The results of operations for such interim periods are not necessarily indicative of the results for the full year. These financial statements should be read in conjunction with the financial statements and the notes thereto included in the Company's Annual Report on Form 10-K filed with the SEC, on March 31, 2012.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yellow7, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Formerly Yellow7, LLC)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Six Months Ended June 30, 2012 and 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Three Months Ended\n\n June 30,",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "$",
+     "216,694",
+     "$",
+     "238,313",
+     "",
+     "$",
+     "422,402",
+     "",
+     "$",
+     "414,875",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract labor",
+     "",
+     "11,253",
+     "",
+     "11,977",
+     "",
+     "",
+     "25,086",
+     "",
+     "",
+     "22,340",
+     ""
+    ],
+    [
+     "Other costs of sales",
+     "",
+     "7,457",
+     "",
+     "8,207",
+     "",
+     "",
+     "11,624",
+     "",
+     "",
+     "14,578",
+     ""
+    ],
+    [
+     "Total cost of sales",
+     "",
+     "18,710",
+     "",
+     "20,184",
+     "",
+     "",
+     "36,710",
+     "",
+     "",
+     "36,918",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "197,984",
+     "",
+     "218,129",
+     "",
+     "",
+     "385,692",
+     "",
+     "",
+     "377,957",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising",
+     "",
+     "8,922",
+     "",
+     "5,555",
+     "",
+     "",
+     "16,086",
+     "",
+     "",
+     "8,986",
+     ""
+    ],
+    [
+     "Provision for bad debts",
+     "",
+     "3,500",
+     "",
+     "-",
+     "",
+     "",
+     "3,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "7,729",
+     "",
+     "6,879",
+     "",
+     "",
+     "13,204",
+     "",
+     "",
+     "13,757",
+     ""
+    ],
+    [
+     "Rent",
+     "",
+     "10,739",
+     "",
+     "10,979",
+     "",
+     "",
+     "21,589",
+     "",
+     "",
+     "22,434",
+     ""
+    ],
+    [
+     "Salaries",
+     "",
+     "91,015",
+     "",
+     "96,873",
+     "",
+     "",
+     "201,445",
+     "",
+     "",
+     "202,919",
+     ""
+    ],
+    [
+     "Telephone",
+     "",
+     "3,467",
+     "",
+     "5,079",
+     "",
+     "",
+     "7,412",
+     "",
+     "",
+     "8,720",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "64,120",
+     "",
+     "54,322",
+     "",
+     "",
+     "119,569",
+     "",
+     "",
+     "96,294",
+     ""
+    ],
+    [
+     "",
+     "",
+     "189,492",
+     "",
+     "179,687",
+     "",
+     "",
+     "382,805",
+     "",
+     "",
+     "353,110",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income before other income and expenses",
+     "",
+     "8,492",
+     "",
+     "38,442",
+     "",
+     "",
+     "2,887",
+     "",
+     "",
+     "24,847",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income and (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative (expense)/income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax benefit (expense)",
+     "",
+     "-",
+     "",
+     "(7,000)",
+     "",
+     "",
+     "(625)",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on disposal of fixed assets",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "(7,000)",
+     "",
+     "",
+     "(625)",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)/income",
+     "$",
+     "8,492",
+     "$",
+     "31,442",
+     "",
+     "$",
+     "2,262",
+     "",
+     "$",
+     "19,847",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)/income per common share - Basic and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "fully diluted",
+     "$",
+     "0.00",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "outstanding - Basic and fully diluted",
+     "",
+     "112,188,579",
+     "",
+     "40,210,000",
+     "",
+     "",
+     "112,188,579",
+     "",
+     "",
+     "40,210,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7, LLC)",
+    "Condensed Statements of Operations",
+    "For the Six Months Ended June 30, 2012 and 2011",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 173,
+    "end_line": 236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 172,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 236,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yellow7, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Formerly Yellow7, LLC)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "(Deficiency)",
+     "",
+     "",
+     "Deficiency",
+     "",
+     ""
+    ],
+    [
+     "Balance - January 1, 2011",
+     "",
+     "212,900,000",
+     "",
+     "$",
+     "21,290",
+     "",
+     "$",
+     "(9,826)",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(58,881)",
+     "",
+     "$",
+     "(47,417)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancellation of stock",
+     "",
+     "(27,500,000)",
+     "",
+     "",
+     "(2,750)",
+     "",
+     "",
+     "2,750",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of treasury stock, at cost",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "350,000",
+     "",
+     "",
+     "(3,500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "23,666",
+     "",
+     "",
+     "23,666",
+     ""
+    ],
+    [
+     "Balance - December 31, 2011",
+     "",
+     "185,400,000",
+     "",
+     "",
+     "18,540",
+     "",
+     "",
+     "(7,076)",
+     "",
+     "",
+     "350,000",
+     "",
+     "",
+     "(3,500)",
+     "",
+     "",
+     "(35,215)",
+     "",
+     "",
+     "(27,251)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancellation of treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     "",
+     "",
+     "(350,000)",
+     "",
+     "",
+     "3,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,262",
+     "",
+     "",
+     "2,262",
+     ""
+    ],
+    [
+     "Balance - June 30, 2012",
+     "",
+     "185,400,000",
+     "",
+     "$",
+     "18,540",
+     "",
+     "$",
+     "(10,576)",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(32,953)",
+     "",
+     "$",
+     "(24,989)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7, LLC)",
+    "Statement of Stockholders' Equity (Deficit)",
+    "June 30, 2012",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 239,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 268,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yellow7, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Formerly Yellow7, LLC)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Six Months Ended June 30, 2012 and 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,262",
+     "",
+     "$",
+     "19,847",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "13,204",
+     "",
+     "",
+     "13,757",
+     ""
+    ],
+    [
+     "Provision for doubtful accounts",
+     "",
+     "3,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(19,435)",
+     "",
+     "",
+     "(12,818)",
+     ""
+    ],
+    [
+     "Deferred tax asset - current",
+     "",
+     "625",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "17,948",
+     "",
+     "",
+     "(5,408)",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "18,104",
+     "",
+     "",
+     "20,378",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder loans",
+     "",
+     "8,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loans payable",
+     "",
+     "(9,189)",
+     "",
+     "",
+     "(12,968)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "(1,189)",
+     "",
+     "",
+     "(12,968)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "16,915",
+     "",
+     "",
+     "7,410",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "4,612",
+     "",
+     "",
+     "12,021",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "21,527",
+     "",
+     "$",
+     "19,431",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "12,280",
+     "",
+     "$",
+     "8,675",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7, LLC)",
+    "Condensed Statements of Cash Flows",
+    "For the Six Months Ended June 30, 2012 and 2011",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 271,
+    "end_line": 314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 314,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Yellow7, Inc."
+    ],
+    [
+     "(Formerly Yellow7 , LLC)"
+    ],
+    [
+     "Notes to Condensed Financial Statements"
+    ],
+    [
+     "June 30, 2012"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7 , LLC)",
+    "Notes to Condensed Financial Statements",
+    "June 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 317,
+    "end_line": 323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Note 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nOrganization\nYellow7, Inc. (the \"Company\") was organized in Texas in January 2008 as a limited liability company. Prior to that date the Company was organized as a general partnership. On July 13, 2010 the Company's' equity structure was converted to that of a corporation. The Company provides software development and web development services to the general public.\nBasis of Presentation\nThe accompanying unaudited financial statements of Yellow7 have been prepared in accordance with U.S. generally accepted accounting principles for interim financial information. Certain information and footnote disclosures normally included in annual financial statements prepared in accordance with U.S. generally accepted accounting principles have been condensed or omitted pursuant to such principles and regulations of the Securities and Exchange Commission for Form 10-Q. All adjustments, consisting of normal recurring adjustments, have been made which, in the opinion of management, are necessary for a fair presentation of the results of interim periods. The results of operations for such interim periods are not necessarily indicative of the results that may be expected for a full year. The unaudited financial statements contained herein should be read in conjunction with the audited financial statements and notes thereto for the fiscal year ended December 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 343,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Yellow7, Inc."
+    ],
+    [
+     "(Formerly Yellow7 , LLC)"
+    ],
+    [
+     "Notes to Condensed Financial Statements"
+    ],
+    [
+     "June 30, 2012"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7 , LLC)",
+    "Notes to Condensed Financial Statements",
+    "June 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 317,
+    "end_line": 323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Note 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nOrganization\nYellow7, Inc. (the \"Company\") was organized in Texas in January 2008 as a limited liability company. Prior to that date the Company was organized as a general partnership. On July 13, 2010 the Company's' equity structure was converted to that of a corporation. The Company provides software development and web development services to the general public.\nBasis of Presentation\nThe accompanying unaudited financial statements of Yellow7 have been prepared in accordance with U.S. generally accepted accounting principles for interim financial information. Certain information and footnote disclosures normally included in annual financial statements prepared in accordance with U.S. generally accepted accounting principles have been condensed or omitted pursuant to such principles and regulations of the Securities and Exchange Commission for Form 10-Q. All adjustments, consisting of normal recurring adjustments, have been made which, in the opinion of management, are necessary for a fair presentation of the results of interim periods. The results of operations for such interim periods are not necessarily indicative of the results that may be expected for a full year. The unaudited financial statements contained herein should be read in conjunction with the audited financial statements and notes thereto for the fiscal year ended December 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 343,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Equipment and vehicles",
+     "5 - 10 years"
+    ],
+    [
+     "Furniture and fixtures",
+     "5 - 7 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 361,
+    "end_line": 365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "<TABLE>\nYellow7, Inc.\n(Formerly Yellow7 , LLC)\nNotes to Condensed Financial Statements\nJune 30, 2012\n</TABLE>\nNote 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (continued)\nFurniture and Equipment\nFurniture and equipment are stated at cost. Maintenance, repairs and minor renewals are expensed as incurred. Furniture and equipment that is retired or sold, and the related gain or loss, if any, is taken into income currently. Depreciation is computed using the straight-line method over the estimated useful lives of the assets.\nThe estimated useful lives for computing depreciation are:",
+   "prose_after": "Use of Estimates\nThe preparation of financial statements in conformity with accounting principles generally accepted in the United States of America requires management to make estimates and assumptions that affect the amounts reported in the financial statements and accompanying notes. Actual results could differ from those estimates.\nSegment Information\nThe Company follows Accounting Standards Codification (\"ASC\") 280, \"Segment Reporting\". The Company currently operates in a single segment and will evaluate additional segment disclosure requirements as it expands its operations.\nIncome Taxes\nDeferred income taxes are recognized for the tax consequences related to temporary differences between the carrying amount of assets and liabilities for financial reporting purposes and the amounts used for tax purposes at each year end, based on enacted tax laws and statutory tax rates applicable to the periods in which the differences are expected to affect taxable income. A valuation allowance is recognized when, based on the weight of all available evidence, it is considered more likely than not that all, or some portion, of the deferred tax assets will not be realized. Income tax expense is the sum of current income tax plus the change in deferred tax assets and liabilities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 379,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Yellow7, Inc."
+    ],
+    [
+     "(Formerly Yellow7 , LLC)"
+    ],
+    [
+     "Notes to Condensed Financial Statements"
+    ],
+    [
+     "June 30, 2012"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7 , LLC)",
+    "Notes to Condensed Financial Statements",
+    "June 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 382,
+    "end_line": 388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Deferred income taxes are recognized for the tax consequences related to temporary differences between the carrying amount of assets and liabilities for financial reporting purposes and the amounts used for tax purposes at each year end, based on enacted tax laws and statutory tax rates applicable to the periods in which the differences are expected to affect taxable income. A valuation allowance is recognized when, based on the weight of all available evidence, it is considered more likely than not that all, or some portion, of the deferred tax assets will not be realized. Income tax expense is the sum of current income tax plus the change in deferred tax assets and liabilities.\nASC 740, Income Taxes, requires a company to first determine whether it is more likely than not (defined as a likelihood of more than fifty percent) that a tax position will be sustained based on its technical merits as of the reporting date, assuming that taxing authorities will examine the position and have full knowledge of all relevant information. A tax position that meets this more-likely-than-not threshold is then measured and recognized at the largest amount of benefit that is greater than fifty percent likely to be realized upon effective settlement with a taxing authority.",
+   "prose_after": "Note 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (continued)\nNet Income (Loss) per Common Share\nBasic net income (loss) per common share is calculated using the weighted average common shares outstanding during each reporting period. Diluted net income (loss) per common share adjusts the weighted average common shares outstanding for the potential dilution that could occur if common stock equivalents (convertible debt and preferred stock, warrants, stock options, and restricted stock shares and units) were exercised or converted into common stock. There were no common stock equivalents at June 30, 2012.\nFinancial Instruments\nThe carrying value of the Company\u2019s financial instruments, including cash and cash equivalents, accounts receivable, accounts payable and accrued liabilities approximate fair value because of the short maturities of those instruments.\nCash and Cash Equivalents\nFor purposes of the statement of cash flows, the Company considers all highly liquid equity instruments with a maturity of three months or less to be cash equivalents.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Yellow7, Inc."
+    ],
+    [
+     "(Formerly Yellow7 , LLC)"
+    ],
+    [
+     "Notes to Condensed Financial Statements"
+    ],
+    [
+     "June 30, 2012"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7 , LLC)",
+    "Notes to Condensed Financial Statements",
+    "June 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 382,
+    "end_line": 388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Deferred income taxes are recognized for the tax consequences related to temporary differences between the carrying amount of assets and liabilities for financial reporting purposes and the amounts used for tax purposes at each year end, based on enacted tax laws and statutory tax rates applicable to the periods in which the differences are expected to affect taxable income. A valuation allowance is recognized when, based on the weight of all available evidence, it is considered more likely than not that all, or some portion, of the deferred tax assets will not be realized. Income tax expense is the sum of current income tax plus the change in deferred tax assets and liabilities.\nASC 740, Income Taxes, requires a company to first determine whether it is more likely than not (defined as a likelihood of more than fifty percent) that a tax position will be sustained based on its technical merits as of the reporting date, assuming that taxing authorities will examine the position and have full knowledge of all relevant information. A tax position that meets this more-likely-than-not threshold is then measured and recognized at the largest amount of benefit that is greater than fifty percent likely to be realized upon effective settlement with a taxing authority.",
+   "prose_after": "Note 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (continued)\nNet Income (Loss) per Common Share\nBasic net income (loss) per common share is calculated using the weighted average common shares outstanding during each reporting period. Diluted net income (loss) per common share adjusts the weighted average common shares outstanding for the potential dilution that could occur if common stock equivalents (convertible debt and preferred stock, warrants, stock options, and restricted stock shares and units) were exercised or converted into common stock. There were no common stock equivalents at June 30, 2012.\nFinancial Instruments\nThe carrying value of the Company\u2019s financial instruments, including cash and cash equivalents, accounts receivable, accounts payable and accrued liabilities approximate fair value because of the short maturities of those instruments.\nCash and Cash Equivalents\nFor purposes of the statement of cash flows, the Company considers all highly liquid equity instruments with a maturity of three months or less to be cash equivalents.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n2012",
+     "",
+     "",
+     "December 31,\n\n2011",
+     "",
+     ""
+    ],
+    [
+     "Vehicles",
+     "$",
+     "158,523",
+     "",
+     "$",
+     "158,523",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "21,154",
+     "",
+     "",
+     "21,154",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "9,070",
+     "",
+     "",
+     "9,070",
+     ""
+    ],
+    [
+     "",
+     "",
+     "188,747",
+     "",
+     "",
+     "188,747",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(48,625)",
+     "",
+     "",
+     "(35,421)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "140,122",
+     "",
+     "$",
+     "153,326",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FURNITURE AND EQUIPMENT"
+    }
+   },
+   "prose_before": "In June 2011, the FASB issued guidance regarding the presentation of comprehensive income. The new standard requires the presentation of comprehensive income, the components of net income and the components of other comprehensive income either in a single continuous statement of comprehensive income or in two separate but consecutive statements. The new standard also requires presentation of adjustments for items that are reclassified from other comprehensive income to net income in the statement where the components of net income and the components of other comprehensive income are presented. The updated guidance is effective on a retrospective basis for financial statements issued for fiscal years, and interim periods within those fiscal years, beginning after December 15, 2011. The Company adopted this standard effective January 1, 2012 and it did not affect our results of operations, financial condition or liquidity.\nIn August 2011, the FASB approved a revised accounting standard update intended to simplify how an entity tests goodwill for impairment. The amendment will allow an entity to first assess qualitative factors to determine whether it is necessary to perform the two-step quantitative goodwill impairment test. An entity no longer will be required to calculate the fair value of a reporting unit unless the entity determines, based on a qualitative assessment, that it is more likely than not that its fair value is less than its carrying amount. This accounting standard update will be effective for the Company beginning in the first quarter of fiscal 2013 and early adoption is permitted.\nNote 2. FURNITURE AND EQUIPMENT",
+   "prose_after": "Depreciation expense was $13,204 and $13,757 for the six months ended June 30, 2012 and 2011, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Yellow7, Inc."
+    ],
+    [
+     "(Formerly Yellow7 , LLC)"
+    ],
+    [
+     "Notes to Condensed Financial Statements"
+    ],
+    [
+     "June 30, 2012"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Formerly Yellow7 , LLC)",
+    "Notes to Condensed Financial Statements",
+    "June 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 454,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FURNITURE AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Depreciation expense was $13,204 and $13,757 for the six months ended June 30, 2012 and 2011, respectively.",
+   "prose_after": "Note 3. LOANS PAYABLE\nAt June 30, 2012 and December 31, 2011, the Company was obligated for the following loans:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n2012",
+     "",
+     "",
+     "December 31,\n\n2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.90% Loan payable due in 60 equal monthly installments of $1,068 through December 2016; secured by vehicle",
+     "$",
+     "52,164",
+     "",
+     "$",
+     "56,602",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.90% Loan payable due in 60 equal monthly installments of $1,031 through December 2016; secured by vehicle",
+     "",
+     "50,346",
+     "",
+     "",
+     "54,630",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8.00% Loan payable due in 144 equal monthly installments of $383 through October 2020; secured by motor home",
+     "",
+     "30,196",
+     "",
+     "",
+     "30,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "132,706",
+     "",
+     "",
+     "141,895",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(23,129)",
+     "",
+     "",
+     "(22,136)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "109,577",
+     "",
+     "$",
+     "119,759",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 465,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LOANS PAYABLE"
+    }
+   },
+   "prose_before": "Note 3. LOANS PAYABLE\nAt June 30, 2012 and December 31, 2011, the Company was obligated for the following loans:",
+   "prose_after": "Note 4. STOCKHOLDERS' EQUITY\nOn March 20, 2012, the Board of Directors increased the authorized number of common shares to 250,000,000.\nNote 5. RELATED PARTY TRANSACTIONS\nIn November 2011, the Company signed a five year lease for its offices with a managing member of the Company. The lease, which terminates in October 2016, calls for monthly rental payments of $3,337. Rent expense for the six months ended June 30, 2012 and 2011 was $21,589 and $22,434, respectively.\nFuture minimum annual rentals under the terms of this lease are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Amount",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "20,022"
+    ],
+    [
+     "2013",
+     "",
+     "40,044"
+    ],
+    [
+     "2014",
+     "",
+     "40,044"
+    ],
+    [
+     "2015",
+     "",
+     "40,044"
+    ],
+    [
+     "2016",
+     "",
+     "33,370"
+    ],
+    [
+     "",
+     "$",
+     "173,524"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Note 4. STOCKHOLDERS' EQUITY\nOn March 20, 2012, the Board of Directors increased the authorized number of common shares to 250,000,000.\nNote 5. RELATED PARTY TRANSACTIONS\nIn November 2011, the Company signed a five year lease for its offices with a managing member of the Company. The lease, which terminates in October 2016, calls for monthly rental payments of $3,337. Rent expense for the six months ended June 30, 2012 and 2011 was $21,589 and $22,434, respectively.\nFuture minimum annual rentals under the terms of this lease are as follows:",
+   "prose_after": "ITEM 2: MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion should be read in conjunction with (i) our financial statements for the years ended December 31, 2011 and December 31, 2010 together with the notes to these financial statements; and (ii) the section entitled \u201cBusiness\u201d that appears elsewhere in this report. The following discussion contains forward-looking statements that reflect our plans, estimates and beliefs. Our actual results could differ materially from those discussed in the forward looking statements. Factors that could cause or contribute to such differences include, but are not limited to, those discussed below and elsewhere in this report. You should not place undue certainty on these forward-looking statements, which apply only as of the date of this report. Our financial statements are stated in United States Dollars and are prepared in accordance with United States Generally Accepted Accounting Principles.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "N[ ].",
+     "Exhibit"
+    ],
+    [
+     "31.1",
+     "Certification by Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification by Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification by Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Certification by Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "The Company has or is not currently involved in any legal proceedings.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nThere have been no sales of unregistered securities during this quarter ended June 30, 2012.\nITEM 3. DEFAULT UPON SENIOR SECURITIES\nNot applicable.\nITEM 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY SHAREHOLDERS\nThere have been no matters submitted to a vote of the Company\u2019s shareholders.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 660,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Yellow7, Inc.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 30, 2012",
+     "By:",
+     "/s/ Jason Burgess"
+    ],
+    [
+     "",
+     "",
+     "Jason Burgess"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 30, 2012",
+     "By:",
+     "/s/ Jon Burgess"
+    ],
+    [
+     "",
+     "",
+     "Jon Burgess"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Yellow7, Inc.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 700,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "INDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "N[ ].",
+     "Exhibit"
+    ],
+    [
+     "31.1",
+     "Certification by Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification by Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification by Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Certification by Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "INDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 716,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

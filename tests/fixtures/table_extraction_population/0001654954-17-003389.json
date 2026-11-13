@@ -1,0 +1,5356 @@
+{
+ "accession": "0001654954-17-003389",
+ "cik": "0001414043",
+ "form": "10-K",
+ "filing_date": "2017-04-17",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "fdbl_10k-17114.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "98-0546715"
+    ],
+    [
+     "State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2016\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________________ to __________________\nCommission file number: 000-52917\nFRIENDABLE, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1821 S Bascom Ave., Suite 353, Campbell, California 95008\n(Address of principal executive offices and Zip Code)\nRegistrant\u2019s telephone number, including area code (855) 473-7473\nSecurities registered pursuant to Section 12(b) of the Act",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1821 S Bascom Ave., Suite 353, Campbell, California 95008\n(Address of principal executive offices and Zip Code)\nRegistrant\u2019s telephone number, including area code (855) 473-7473\nSecurities registered pursuant to Section 12(b) of the Act",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act\nCommon Stock, par value $0.0001 per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 1.",
+     "BUSINESS",
+     "5"
+    ],
+    [
+     "",
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "15"
+    ],
+    [
+     "",
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "27"
+    ],
+    [
+     "",
+     "ITEM 2.",
+     "PROPERTIES",
+     "27"
+    ],
+    [
+     "",
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "27"
+    ],
+    [
+     "",
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "27"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "27"
+    ],
+    [
+     "",
+     "ITEM 6",
+     "SELECTED FINANCIAL DATA",
+     "29"
+    ],
+    [
+     "",
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "29"
+    ],
+    [
+     "",
+     "ITEM 7A",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "34"
+    ],
+    [
+     "",
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "35"
+    ],
+    [
+     "",
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "36"
+    ],
+    [
+     "",
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "36"
+    ],
+    [
+     "",
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "37"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "37"
+    ],
+    [
+     "",
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "40"
+    ],
+    [
+     "",
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "42"
+    ],
+    [
+     "",
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "44"
+    ],
+    [
+     "",
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "46"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 15.",
+     "EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "",
+     "49"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]                                                 Accelerated filer          [ ]\nNon-accelerated filer    [ ]  (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No [X]\nAs of June 30, 2016, the last business day of the registrant\u2019s most recently completed second fiscal quarter the aggregate market value of the voting and non-voting common stock held by non-affiliates of the registrant was approximately $6,774,118, based on the closing price (last sale of the day) for the registrant\u2019s common stock on the OTC Pink marketplace on June 30, 2016 of $0.012 per share.\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date. As of April 13, 2017, there were 1,557,092,583 shares of the registrant\u2019s common stock issued and outstanding.\nDocuments Incorporated By Reference: None.\nTABLE OF CONTENTS",
+   "prose_after": "Cautionary Statement Regarding Forward-looking Information\nThis annual report on Form 10-K contains \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. The use of words such as \u201canticipates,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans\u201d and \u201cbelieves,\u201d among others, generally identify forward-looking statements. These forward-looking statements include, among others, statements relating to: the Company\u2019s future financial performance, the Company\u2019s business prospects and strategy, anticipated trends and prospects in the industries in which the Company\u2019s businesses operate and other similar matters. These forward-looking statements are based on the Company\u2019s management's expectations and assumptions about future events as of the date of this annual report, which are inherently subject to uncertainties, risks and changes in circumstances that are difficult to predict.\nActual results could differ materially from those contained in these forward-looking statements for a variety of reasons, including, among others, the risk factors set forth below. Other unknown or unpredictable factors that could also adversely affect the Company\u2019s business, financial condition and results of operations may arise from time to time. In light of these risks and uncertainties, the forward-looking statements discussed in this annual report may not prove to be accurate. Accordingly, you should not place undue reliance on these forward-looking statements, which only reflect the views of the Company\u2019s management as of the date of this annual report. The Company does not undertake to update these forward-looking statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High Bid",
+     "Low Bid"
+    ],
+    [
+     "December 31, 2016",
+     "$0.0045",
+     "$0.0013"
+    ],
+    [
+     "September 30, 2016",
+     "$0.013",
+     "$0.0033"
+    ],
+    [
+     "June 30, 2016",
+     "$0.0334",
+     "$0.0036"
+    ],
+    [
+     "March 31, 2016",
+     "$0.0065",
+     "$0.0029"
+    ],
+    [
+     "December 31, 2015",
+     "$0.0106",
+     "$0.002"
+    ],
+    [
+     "September 30, 2015",
+     "$0.0127",
+     "$0.0059"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 939,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "We are currently not involved in any litigation that we believe could have a materially adverse effect on our financial condition or results of operations. There is no action, suit, proceeding, inquiry or investigation before or by any court, public board, government agency, self-regulatory organization or body pending or, to the knowledge of the executive officers of our Company or any of our subsidiaries, threatened against or affecting our Company, our common stock, any of our subsidiaries or of our Company\u2019s or our Company\u2019s subsidiaries\u2019 officers or directors in their capacities as such, in which an adverse decision could have a material adverse effect.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\n(a)\nMarket Information\nOur common stock is quoted on the OTC Pink marketplace under the symbol \u201cFDBL\u201d.\nSet forth below are the range of high and low bid quotations for the periods indicated as reported by the OTC Pink marketplace. The market quotations reflect inter-dealer prices, without retail mark-up, mark-down or commissions and may not necessarily represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 898,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "June 30, 2015",
+     "$0.0131",
+     "$0.0008"
+    ],
+    [
+     "March 31, 2015",
+     "$0.400",
+     "$0.0051"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 950,
+    "end_line": 954
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES - continued\n(b)\nHolders of Our Common Stock\nAs of April 13, 2017 there were 47 registered holders of record of our common stock. As of such date, 1,557,092,583 shares of our common stock were issued and outstanding.\n(c)\nDividends\nThe payment of dividends, if any, in the future, rests within the sole discretion of our board of directors. The payment of dividends will depend upon our earnings, our capital requirements and our financial condition, as well as other relevant factors. We have not declared any cash dividends since our inception and have no present intention of paying any cash dividends on our common stock in the foreseeable future.\nThere are no restrictions in our articles of incorporation or bylaws that prevent us from declaring dividends. The Nevada Revised Statutes, however, do prohibit us from declaring dividends where, after giving effect to the distribution of the dividend:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 898,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of Securities to be Issued Upon Exercise of Outstanding Options, Warrants and Rights",
+     "Weighted-Average Exercise Price of Outstanding Options, Warrants and Rights",
+     "Number of Securities Remaining Available for Future Issuance under Equity Compensation Plan"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "Nil",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "3,325",
+     "$1,045",
+     "1,649"
+    ],
+    [
+     "Total",
+     "3,325",
+     "$1,045",
+     "1,649"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 980,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "1. We would not be able to pay our debts as they become due in the usual course of business; or\n2. Our total assets would be less than the sum of our total liabilities plus the amount that would be needed to satisfy the rights of shareholders who have preferential rights superior to those receiving the distribution.\n(d)\nSecurities Authorized for Issuance under Equity Compensation Plans\nEffective November 22, 2011 our board of directors adopted and approved our stock option plan. The purpose of the stock option plan is to enhance the long-term stockholder value of our company by offering opportunities to directors, key employees, officers, independent contractors and consultants of our company to acquire and maintain stock ownership in our company in order to give these persons the opportunity to participate in our company\u2019s growth and success, and to encourage them to remain in the service of our company. A total of 1,649 shares of our common stock are available for issuance under the stock option plan.",
+   "prose_after": "Transfer Agent\nOur transfer agent is Nevada Agency and Transfer Company, 50 West Liberty Street Suite 880, Reno, Nevada 89501, phone (775) 322-0626.\nRecent Sales of Unregistered Securities\nExcept as provided below, all unregistered sales of our securities were previously disclosed in a Quarterly Report on Form 10-Q or a Current Report on Form 8-K.\nDuring the fourth quarter of the year ended December 31, 2016, $163,200 of convertible debentures were settled by issuing 228,400,000 shares of common stock of the Company. The notes were converted at an average price per share of $0.00071.\nDuring the fourth quarter of the year ended December 31, 2016, the Company issued 21,680,000 shares of common stock to consultants in exchange for investor relations and advertising services. The shares were issued as follows: 7,440,000 on October 24, 2016, 4,800,000 on October 28, 2016, and 9,440,000 on December 22, 2016.\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES - continued",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1003,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31, 2016",
+     "Year Ended\n\nDecember 31, 2015"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$28,884",
+     "$151,191"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     ""
+    ],
+    [
+     "Accretion and interest expense",
+     "$2,073,893",
+     "$1,416,715"
+    ],
+    [
+     "App hosting (Note 10)",
+     "492,487",
+     "382,330"
+    ],
+    [
+     "Commissions",
+     "8,635",
+     "45,357"
+    ],
+    [
+     "General and administrative (Note 10)",
+     "887,345",
+     "881,539"
+    ],
+    [
+     "Financing costs",
+     "549",
+     "29,261"
+    ],
+    [
+     "Product development (Note 10)",
+     "493,917",
+     "249,221"
+    ],
+    [
+     "Sales and marketing",
+     "1,527,366",
+     "228,880"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "5,484,192",
+     "3,233,303"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "(5,455,308)",
+     "(3,080,112)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER EXPENSES",
+     "",
+     ""
+    ],
+    [
+     "Loss on investment (Note 12)",
+     "(575,000)",
+     "-"
+    ],
+    [
+     "Loss on settlement agreement (Note 13)",
+     "(82,931)",
+     "-"
+    ],
+    [
+     "Gain -on extinguishment of debt",
+     "-",
+     "5,096"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS AND COMPREHENSIVE LOSS",
+     "$(6,113,239)",
+     "$(3,077,016)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "(0.01)",
+     "(0.03)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING",
+     "571,100,443",
+     "96,575,512"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "Our management\u2019s discussion and analysis provides a narrative about our financial performance and condition that should be read in conjunction with the audited and unaudited consolidated financial statements and related notes thereto included in this annual report on Form 10-K. This discussion contains forward looking statements reflecting our current expectations and estimates and assumptions about events and trends that may affect our future operating results or financial position. Our actual results and the timing of certain events could differ materially from those discussed in these forward-looking statements due to a number of factors, including, but not limited to, those set forth in the sections of this annual report on Form 10-K titled \u201cRisk Factors\u201d beginning at page 13 above and \u201cForward-Looking Statements\u201d beginning at page 4 above.\nResults of Operations\nYears Ended December 31, 2016 and 2015\nOur cash as of December 31, 2016 was $119,804. As a result of our minimal amount of revenues and ongoing expenditures in pursuit of our business, we have incurred net losses since our inception. For the period from inception (December 4, 2013) to December 31, 2016 we incurred a net loss of $13,500,287. For the year ended December 31, 2016, our net loss was $6,113,239.\nOur operating expenses for our fiscal years ended December 31, 2016 and 2015 and the changes between those periods for the respective items are summarized as follows:",
+   "prose_after": "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS - continued\nRevenues\nRevenues for the year ended December 31, 2016 decreased $122,307 (81%) to $28,884 as compared to $151,191 for the year ended December 31, 2015. This decrease was primarily due to the Company\u2019s decision to focus on what management believes is a much broader market of \u201cSocial Networking \u2013 Friendship Meetups\u201d and the re-branding of the application to \u201cFriendable\u201d. As user acquisition remains the Company\u2019s main driver the the Friendable mobile app, subscription based services are now offered for free, encouraging user adoption and frequency of use.\nOperating Expenses\nOperating expenses for the year ended December 31, 2016 and the December 31, 2015 were $5,484,192 and $3,233,303 respectively. The increase was primarily related to increased marketing initiatives, celebrity related promotions, technology, mobile application development, and server infrastructure scaling.\nNet Loss\nOur operating results have recognized net loss in the amount of $6,113,239 for the year ended December 31, 2016 as compared to a net loss of $3,077,016 for the year ended December 31, 2015. The increase was primarily related to the increase in operating expenses as well as the Company\u2019s strategic investment in Hang With, Inc.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1003,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2016",
+     "December 31, 2015"
+    ],
+    [
+     "",
+     "(audited)",
+     "(audited)"
+    ],
+    [
+     "Current Assets",
+     "$127,776",
+     "$21,625"
+    ],
+    [
+     "Current Liabilities",
+     "$3,732,596",
+     "$1,683,234"
+    ],
+    [
+     "Working Capital Deficiency",
+     "$(3,604,820)",
+     "$(1,661,609)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1087,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "Revenues for the year ended December 31, 2016 decreased $122,307 (81%) to $28,884 as compared to $151,191 for the year ended December 31, 2015. This decrease was primarily due to the Company\u2019s decision to focus on what management believes is a much broader market of \u201cSocial Networking \u2013 Friendship Meetups\u201d and the re-branding of the application to \u201cFriendable\u201d. As user acquisition remains the Company\u2019s main driver the the Friendable mobile app, subscription based services are now offered for free, encouraging user adoption and frequency of use.\nOperating Expenses\nOperating expenses for the year ended December 31, 2016 and the December 31, 2015 were $5,484,192 and $3,233,303 respectively. The increase was primarily related to increased marketing initiatives, celebrity related promotions, technology, mobile application development, and server infrastructure scaling.\nNet Loss\nOur operating results have recognized net loss in the amount of $6,113,239 for the year ended December 31, 2016 as compared to a net loss of $3,077,016 for the year ended December 31, 2015. The increase was primarily related to the increase in operating expenses as well as the Company\u2019s strategic investment in Hang With, Inc.\nLiquidity and Capital Resources\nWorking Capital",
+   "prose_after": "As of December 31, 2016, current assets consisted primarily of cash $119,804. As of December 31, 2015, current assets consisted primarily of cash of $15,880. The increase is primarily related to the issuance of convertible notes.\nAs of December 31, 2016, current liabilities consisted primarily of accounts payable of $1,554,350 and convertible notes of $2,171,923. As of December 31, 2015, current liabilities consisted primarily of accounts payable of $1,183,169 and convertible notes of $493,742. The increase is primarily related to the issuance of convertible notes.\nWe currently do not have sufficient capital to fund our needs for the next 12 months. We rely on financing from convertible and promissory notes to fund our operations.\nCash Flows",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "Year Ended"
+    ],
+    [
+     "",
+     "December 31, 2016",
+     "December 31, 2014"
+    ],
+    [
+     "Net Cash Provided by (Used in) Operating Activities",
+     "$(2,817,518)",
+     "$(1,279,345)"
+    ],
+    [
+     "Net Cash Provided by (Used in) Investing Activities",
+     "(575,000)",
+     "(35,000)"
+    ],
+    [
+     "Net Cash Provided by (Used in) Financing Activities",
+     "3,496,442",
+     "1,331,170"
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "$103,924",
+     "$16,825"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "As of December 31, 2016, current assets consisted primarily of cash $119,804. As of December 31, 2015, current assets consisted primarily of cash of $15,880. The increase is primarily related to the issuance of convertible notes.\nAs of December 31, 2016, current liabilities consisted primarily of accounts payable of $1,554,350 and convertible notes of $2,171,923. As of December 31, 2015, current liabilities consisted primarily of accounts payable of $1,183,169 and convertible notes of $493,742. The increase is primarily related to the issuance of convertible notes.\nWe currently do not have sufficient capital to fund our needs for the next 12 months. We rely on financing from convertible and promissory notes to fund our operations.\nCash Flows",
+   "prose_after": "Operating Activities\nCash provided by operating activities\nThe Company lost $2,817,518 in cash from operating activities for the year ended December 31, 2016 as compared to a loss of $1,279,345 for the year ended December 31, 2015. This increased cash loss used in operating activities is primarily attributed to increased marketing initiatives, celebrity related promotions, technology, mobile application development, and server infrastructure scaling.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS - continued\nCash used in investing activities\nInvesting activities for the year ended December 31, 2016 used $575,000 as compared to using $35,000 of cash for the year ended December 31, 2015. The increase in cash used is attributable to the Company\u2019s investment in Hang With, Inc.\nCash provided by financing activities\nFinancing activities for the year ended December 31, 2016 generated cash of $3,496,442 as compared to generating $1,331,170 of cash for the year ended December 31, 2015. This increase in cash provided from financing activities is mostly attributed to the Company and its current lenders desire to fund certain transactions related to the Company\u2019s celebrity marketing activities, general awareness and strategic investment in Hang With, Inc.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2016 and 2016",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss for the years ended December 31, 2016 and 2015",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit for the years ended December 31, 2016 and 2015",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2016 and 2015",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-6 - F-17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1244,
+    "end_line": 1257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "We have implemented all other new accounting pronouncements that are in effect and that may impact its financial statements and does not believe that there are any other new accounting pronouncements that have been issued that might have a material impact on its financial position or results of operations.\nOff-Balance Sheet Arrangements\nWe do not have any off -balance sheet arrangements\nITEM 7A QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nNot Applicable\nITEM 8 FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nPART I - FINANCIAL INFORMATION\n(FORMERLY IHOOKUP SOCIAL, INC.)\nCONSOLIDATED FINANCIAL STATEMENTS\nDecember 31, 2016",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of\nWe have audited the accompanying consolidated balance sheets of Friendable, Inc. as of December 31, 2016 and 2015 and the related consolidated statements of comprehensive loss, stockholders\u2019 deficit and cash flows for the years then ended. These consolidated financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1236,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "December 31, \n\n2016",
+     "December 31, \n\n2015"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$119,804",
+     "$15,880"
+    ],
+    [
+     "Accounts receivable",
+     "1,009",
+     "3,848"
+    ],
+    [
+     "Prepaid expenses",
+     "6,963",
+     "1,897"
+    ],
+    [
+     "Total current assets",
+     "127,776",
+     "21,625"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets (Note 3)",
+     "35,000",
+     "35,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$162,776",
+     "$56,625"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$1,554,350",
+     "$1,183,169"
+    ],
+    [
+     "Convertible debentures short-term (Note 10)",
+     "2,171,923",
+     "493,742"
+    ],
+    [
+     "Deferred revenue",
+     "6,323",
+     "6,323"
+    ],
+    [
+     "Total current liabilities",
+     "3,732,596",
+     "1,683,234"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible debentures long-term (Note 10)",
+     "218,964",
+     "45,731"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "3,951,560",
+     "1,728,965"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Going concern (Note 1)",
+     "",
+     ""
+    ],
+    [
+     "Commitments (Note 7)",
+     "",
+     ""
+    ],
+    [
+     "Subsequent events (Note 14)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, 50,000,000 shares authorized at par value of $0.0001, 21,655 (December 31, 2015 \u2013 22,165) shares issued and outstanding (Note 4)",
+     "2",
+     "2"
+    ],
+    [
+     "Common stock, 10,000,000,000 shares authorized at par value of $0.0001, 1,068,031,823 (December 31, 2015 \u2013 218,977,542) shares issued and outstanding (Note 4)",
+     "106,803",
+     "21,898"
+    ],
+    [
+     "Additional paid-in capital",
+     "9,609,198",
+     "5,697,308"
+    ],
+    [
+     "Common stock subscriptions receivable (Note 8)",
+     "(4,500)",
+     "(4,500)"
+    ],
+    [
+     "Deficit",
+     "(13,500,287)",
+     "(7,387,048)"
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "(3,788,784)",
+     "(1,672,340)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$162,776",
+     "$56,625"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of Friendable, Inc. as of December 31, 2016 and 2015, and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States.\nThe accompanying consolidated financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has a working capital deficit and has accumulated losses since inception. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also discussed in Note 1. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nAs discussed in Note 2 to the financial statements, the Company has changed its method of accounting for debt issuance costs in the years ended December 31, 2016 and 2015 due to the adoption of ASU No. 2015-03.\n/s/ Manning Elliott LLP\nCHARTERED PROFESSIONAL ACCOUNTANTS\nVancouver, Canada\nApril 17, 2017\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1285,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31, 2016",
+     "Year Ended\n\nDecember 31, 2015"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$28,884",
+     "$151,191"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     ""
+    ],
+    [
+     "Accretion and interest expense (Note 10)",
+     "$2,073,893",
+     "$1,416,715"
+    ],
+    [
+     "App hosting (Note 8)",
+     "492,487",
+     "382,330"
+    ],
+    [
+     "Commissions",
+     "8,635",
+     "45,357"
+    ],
+    [
+     "General and administrative (Note 8)",
+     "887,345",
+     "881,539"
+    ],
+    [
+     "Financing costs",
+     "549",
+     "29,261"
+    ],
+    [
+     "Product development (Note 8)",
+     "493,917",
+     "249,221"
+    ],
+    [
+     "Sales and marketing",
+     "1,527,366",
+     "228,880"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "5,484,192",
+     "3,233,303"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "(5,455,308)",
+     "(3,082,112)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER EXPENSES",
+     "",
+     ""
+    ],
+    [
+     "Loss on investment (Note 12)",
+     "(575,000)",
+     "-"
+    ],
+    [
+     "Loss on settlement agreement  (Note 13)",
+     "(82,931)",
+     "-"
+    ],
+    [
+     "Gain on extinguishment of debt",
+     "-",
+     "5,096"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS AND COMPREHENSIVE LOSS",
+     "$(6,113,239)",
+     "$(3,077,016)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "(0.01)",
+     "(0.03)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING",
+     "571,100,443",
+     "96,575,512"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1349,
+    "end_line": 1387
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2015 AND 2016",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1347,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1389,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common # Stock",
+     "Common Stock Amount",
+     "Preferred #",
+     "Preferred Stock Amount",
+     "Additional Paid-in Capital",
+     "Common Stock Subscriptions",
+     "Deficit",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2014",
+     "8,802,940",
+     "$881",
+     "22,807",
+     "$2",
+     "$3,340,495",
+     "$(4,500)",
+     "$(4,310,032)",
+     "$(973,154)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "1,150,000",
+     "115",
+     "\u2014",
+     "\u2014",
+     "6,325",
+     "\u2014",
+     "\u2014",
+     "6,440"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of convertible notes (Note 10)",
+     "190,385,736",
+     "19,038",
+     "\u2014",
+     "\u2014",
+     "269,629",
+     "\u2014",
+     "\u2014",
+     "288,667"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of preferred shares (Note 4)",
+     "18,638,866",
+     "1,864",
+     "(642)",
+     "\u2014",
+     "(1,864)",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of convertible notes (net) (Note 10)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "2,082,723",
+     "\u2014",
+     "\u2014",
+     "2,082,723"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(3,077,016)",
+     "(3,077,016)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2015",
+     "218,977,542",
+     "$21,898",
+     "22,165",
+     "$2",
+     "$5,697,308",
+     "$(4,500)",
+     "$(7,387,048)",
+     "$(1,672,340)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "65,465,714",
+     "6,547",
+     "\u2014",
+     "\u2014",
+     "231,545",
+     "\u2014",
+     "\u2014",
+     "238,092"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of convertible notes (Note 10)",
+     "652,069,721",
+     "65,207",
+     "\u2014",
+     "\u2014",
+     "311,248",
+     "\u2014",
+     "\u2014",
+     "376,455"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of preferred shares (Note 4)",
+     "104,524,944",
+     "10,452",
+     "(510)",
+     "\u2014",
+     "(10,452)",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of convertible notes (net) (Note 10)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "2,882,248",
+     "\u2014",
+     "\u2014",
+     "2,882,248"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of warrants",
+     "26,993,902",
+     "2,699",
+     "\u2014",
+     "\u2014",
+     "(2,699)",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt forgiveness (Note 8)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "500,000",
+     "\u2014",
+     "\u2014",
+     "500,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(6,113,239)",
+     "(6,113,239)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2016",
+     "1,068,031,823",
+     "$106,803",
+     "21,655",
+     "$2",
+     "$9,609,198",
+     "$(4,500)",
+     "$(13,500,287)",
+     "$(3,788,784)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1397,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2015 AND 2016",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1395,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended \n\nDecember 31, 2016",
+     "Year Ended \n\nDecember 31, 2015"
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$(6,113,239)",
+     "$(3,077,016)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Loss to Net Cash Used in Operating Activities:",
+     "",
+     ""
+    ],
+    [
+     "Interest on promissory notes",
+     "272,859",
+     "64,129"
+    ],
+    [
+     "Accretion expense",
+     "1,634,045",
+     "1,123,165"
+    ],
+    [
+     "Gain on extinguishment of debt",
+     "-",
+     "(5,096)"
+    ],
+    [
+     "Loss on investment",
+     "575,000",
+     "-"
+    ],
+    [
+     "Shares issued for services",
+     "177,034",
+     "50,830"
+    ],
+    [
+     "Changes in Operating Assets and Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Decrease (increase) in accounts receivable",
+     "2,839",
+     "10,289"
+    ],
+    [
+     "Increase in deferred revenue",
+     "-",
+     "(11,513)"
+    ],
+    [
+     "Decrease (increase) in prepaid expenses",
+     "-",
+     "3,453"
+    ],
+    [
+     "Increase in accounts payable",
+     "633,944",
+     "562,414"
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "(2,817,518)",
+     "(1,279,345)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of Intangible Assets",
+     "-",
+     "(35,000)"
+    ],
+    [
+     "Purchase of investment in Hang With",
+     "(575,000)",
+     "-"
+    ],
+    [
+     "Net Cash Provided by (Used in) Investing Activities",
+     "(575,000)",
+     "(35,000)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from convertible debentures (net)",
+     "3,496,442",
+     "1,331,170"
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "3,496,442",
+     "1,331,170"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase in Cash",
+     "103,924",
+     "16,825"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning",
+     "15,880",
+     "(945)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 Ending",
+     "$119,804",
+     "$15,880"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information:",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$-",
+     "$-"
+    ],
+    [
+     "Cash paid for income taxes",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash Investing and Financing Items:",
+     "",
+     ""
+    ],
+    [
+     "Convertible debentures issued to extinguish promissory notes",
+     "-",
+     "261,425"
+    ],
+    [
+     "Shares issued for conversion of debt (net)",
+     "$376,455",
+     "$288,688"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1447,
+    "end_line": 1497
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1445,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash consists of:",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$119,804",
+     "$15,880"
+    ]
+   ],
+   "caption_stack": [
+    "Cash consists of:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1498,
+    "end_line": 1503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nFOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n1. NATURE OF BUSINESS AND GOING CONCERN\nFriendable, Inc., a Nevada corporation (the \u201cCompany\u201d), was incorporated in the State of Nevada as Digital Yearbook Inc.\nEffective June 15, 2011, the Company completed a merger with its subsidiary, Titan Iron Ore Corp., a Nevada corporation, which was incorporated solely to effect a change in the Company\u2019s name from \u201cDigital Yearbook Inc.\u201d to \u201cTitan Iron Ore Corp.\u201d The Company then began to pursue business in the area of mining exploration.\nOn February 3, 2014, the Company entered into an Agreement and Plan of Merger and Reorganization (the \u201cMerger\u201d) with iHookup Operations Corp., a wholly-owned Delaware subsidiary of the Company (\u201cAcquisition Sub\u201d) and iHookup-DE, whereby iHookup-DE was the surviving entity and became the wholly-owned subsidiary of the Company. iHookup-DE\u2019s former stockholders exchanged all of their 6,000 shares of outstanding common stock for 25,000 shares of the Company\u2019s designated Series A Preferred Stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1445,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Weighted Average"
+    ],
+    [
+     "",
+     "",
+     "Exercise"
+    ],
+    [
+     "",
+     "Number of Warrants",
+     "Price\n\n$"
+    ],
+    [
+     "Balance, December 31, 2014",
+     "334",
+     "2,000"
+    ],
+    [
+     "Warrants expired",
+     "(334)",
+     "(2,000)"
+    ],
+    [
+     "Warrants issued",
+     "119,471,154",
+     "0.014"
+    ],
+    [
+     "Balance, December 31, 2015",
+     "119,471,154",
+     "0.014"
+    ],
+    [
+     "Warrants exercised",
+     "(27,609,756)",
+     "0.004"
+    ],
+    [
+     "Warrants issued",
+     "886,474,359",
+     "0.003"
+    ],
+    [
+     "Balance, December 31, 2016",
+     "978,335,757",
+     "0.005"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted Average",
+    "Exercise"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1667,
+    "end_line": 1685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2015, the Company issued 1,150,000 shares of common stock to a consultant in exchange for investor relations and advertising services.\nDuring the year ended December 31, 2015, the Company issued 18,638,866 shares of common stock to various Series A preferred stockholders on conversion of 642 preferred shares.\nPreferred Stock:\nThe Series A Preferred Stock is convertible into nine (9) times the number of common stock outstanding until the closing of a Qualified Financing (i.e. the sale and issuance of the Company\u2019s equity securities that results in gross proceeds in excess of $2,500,000). The number of shares of common stock issued on conversion of preferred stock is based on the ratio of the number of shares of preferred stock converted to the total number of shares of preferred stock outstanding at the date of conversion multiplied by nine (9) times the number of common stock outstanding at the date of conversion.\n5. SHARE PURCHASE WARRANTS\nDetails of share purchase warrants during the years ended December 31, 2016 and 2015 are:",
+   "prose_after": "FOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n6. STOCK-BASED COMPENSATION\nOn November 22, 2011, the Board of Directors of Titan Iron Ore Corp. (see Note 1) approved a stock option plan (\u201c2011 Stock Option Plan\u201d), the purpose of which is to enhance the Company\u2019s stockholder value and financial performance by attracting, retaining and motivating the Company\u2019s officers, directors, key employees, consultants and its affiliates and to encourage stock ownership by such individuals by providing them with a means to acquire a proprietary interest in the Company\u2019s success through stock ownership. Under the 2011 Stock Option Plan, officers, directors, employees and consultants who provide services to the Company may be granted options to acquire common shares of the Company. The aggregate number of options authorized by the plan shall not exceed 4,974 shares of common stock of the Company.\nThe following table summarizes the options outstanding and exercisable under the 2011 Stock Option Plan as of December 31, 2016:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1647,
+     "token": "REPEATING_HEADER",
+     "id": 56,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1685,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Price",
+     ""
+    ],
+    [
+     "Expiry Date",
+     "Per Share($)",
+     "Number"
+    ],
+    [
+     "December 21, 2021",
+     "1,680",
+     "1,725"
+    ],
+    [
+     "June 21, 2022",
+     "400",
+     "500"
+    ],
+    [
+     "June 25, 2023",
+     "134",
+     "850"
+    ],
+    [
+     "",
+     "$1,044",
+     "3,075"
+    ]
+   ],
+   "caption_stack": [
+    "Option Price"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1697,
+    "end_line": 1708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "FOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n6. STOCK-BASED COMPENSATION\nOn November 22, 2011, the Board of Directors of Titan Iron Ore Corp. (see Note 1) approved a stock option plan (\u201c2011 Stock Option Plan\u201d), the purpose of which is to enhance the Company\u2019s stockholder value and financial performance by attracting, retaining and motivating the Company\u2019s officers, directors, key employees, consultants and its affiliates and to encourage stock ownership by such individuals by providing them with a means to acquire a proprietary interest in the Company\u2019s success through stock ownership. Under the 2011 Stock Option Plan, officers, directors, employees and consultants who provide services to the Company may be granted options to acquire common shares of the Company. The aggregate number of options authorized by the plan shall not exceed 4,974 shares of common stock of the Company.\nThe following table summarizes the options outstanding and exercisable under the 2011 Stock Option Plan as of December 31, 2016:",
+   "prose_after": "The Board of Directors and the stockholders holding a majority of the voting power approved a 2014 Equity Incentive Plan (the \u201c2014 Plan\u201d) on February 28, 2014, with a to be determined effective date. The purpose of the 2014 Plan is to assist the Company and its affiliates in attracting, retaining and providing incentives to employees, directors, consultants and independent contractors who serve the Company and its affiliates by offering them the opportunity to acquire or increase their proprietary interest in the Company and to promote the identification of their interests with those of the stockholders of the Company. The 2014 Plan will also be used to make grants to further reward and incentivize current employees and others.\nThere are 120,679 shares of common stock reserved for issuance under the 2014 Plan. The Board shall have the power and authority to make grants of stock options to employees, directors, consultants and independent contractors who serve the Company and its affiliates. Any stock options granted under the 2014 Plan shall have an exercise price equal to or greater than the fair market value of the Company\u2019s shares of common stock. Unless otherwise determined by the Board of Directors, stock options shall vest over a four-year period with 25% being vested after the end of one (1) year of service and the remainder vesting equally over a 36-month period. The Board may award options that may vest based upon the achievement of certain performance milestones. As of December 31, 2016, no options have been awarded under the 2014 Plan.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1689,
+     "token": "REPEATING_HEADER",
+     "id": 58,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "Weighted Average Exercise Price",
+     "Weighted- Average Remaining Contractual Term (years)",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "$"
+    ],
+    [
+     "Outstanding and exercisable, December 31, 2014",
+     "3,075",
+     "1,044",
+     "8.57",
+     "-"
+    ],
+    [
+     "Outstanding and exercisable, December 31, 2015",
+     "3,075",
+     "1,044",
+     "7.57",
+     "-"
+    ],
+    [
+     "Outstanding and exercisable, December 31, 2016",
+     "3,075",
+     "1,044",
+     "6.57",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1715,
+    "end_line": 1724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "The Board of Directors and the stockholders holding a majority of the voting power approved a 2014 Equity Incentive Plan (the \u201c2014 Plan\u201d) on February 28, 2014, with a to be determined effective date. The purpose of the 2014 Plan is to assist the Company and its affiliates in attracting, retaining and providing incentives to employees, directors, consultants and independent contractors who serve the Company and its affiliates by offering them the opportunity to acquire or increase their proprietary interest in the Company and to promote the identification of their interests with those of the stockholders of the Company. The 2014 Plan will also be used to make grants to further reward and incentivize current employees and others.\nThere are 120,679 shares of common stock reserved for issuance under the 2014 Plan. The Board shall have the power and authority to make grants of stock options to employees, directors, consultants and independent contractors who serve the Company and its affiliates. Any stock options granted under the 2014 Plan shall have an exercise price equal to or greater than the fair market value of the Company\u2019s shares of common stock. Unless otherwise determined by the Board of Directors, stock options shall vest over a four-year period with 25% being vested after the end of one (1) year of service and the remainder vesting equally over a 36-month period. The Board may award options that may vest based upon the achievement of certain performance milestones. As of December 31, 2016, no options have been awarded under the 2014 Plan.\nThe following table summarizes the Company\u2019s stock options outstanding and exercisable:",
+   "prose_after": "7. COMMITMENTS\nThe following table summarizes the Company\u2019s significant contractual obligations as of December 31, 2016:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1689,
+     "token": "REPEATING_HEADER",
+     "id": 58,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Employment Agreements (1)",
+     "300,000"
+    ]
+   ],
+   "caption_stack": [
+    "$"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1729,
+    "end_line": 1736
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "User Account & Settings"
+    }
+   },
+   "prose_before": "7. COMMITMENTS\nThe following table summarizes the Company\u2019s significant contractual obligations as of December 31, 2016:",
+   "prose_after": "(1) Employment agreements with related parties.\nFOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n8. RELATED PARTY TRANSACTIONS AND BALANCES\nDuring the year ended December 31, 2016, the Company incurred $419,183 (2015: $443,187) in salaries to officers and directors with such costs being recorded as general and administrative expenses.\nDuring the year ended December 31, 2016, the Company incurred $492,487, $475,000 and $60,000 (2015: $379,420, $188,500 and $60,000) in app hosting, app development, and rent, respectively to a company with two officers and directors in common with such costs being recorded as app hosting, product development and general and administrative expenses, respectively.\nAs of December 31, 2016, the Company had a stock subscription receivable totaling $4,500 (December 31, 2015: $4,500) from an officer and director and from a company with an officer and director in common.\nAs of December 31, 2016, accounts payable includes $234,058 (December 31, 2015: $236,571) payable to a company with two officers and directors in common, and $215,000 (December 31, 2015: $175,000) payable in salaries to directors and officers of the Company. The amounts are unsecured, non-interest bearing and are due on demand.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1689,
+     "token": "REPEATING_HEADER",
+     "id": 58,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Conversion Feature",
+     "",
+     "Issuance",
+     "Net Principal ($)",
+     "Discount ($)",
+     "Carrying Value ($)",
+     "Interest Rate",
+     "",
+     "Maturity Date"
+    ],
+    [
+     "a",
+     ")",
+     "02-Apr-13",
+     "5,054",
+     "-",
+     "5,054",
+     "0",
+     "%",
+     "02-Jan-14"
+    ],
+    [
+     "b",
+     ")",
+     "05-Aug-15",
+     "737,630",
+     "160,001",
+     "577,629",
+     "7",
+     "%",
+     "05-Feb-17"
+    ],
+    [
+     "b",
+     ")",
+     "05-Aug-15",
+     "18,249",
+     "4,001",
+     "14,248",
+     "7",
+     "%",
+     "05-Feb-17"
+    ],
+    [
+     "d",
+     ")",
+     "15-Jan-15",
+     "40,000",
+     "-",
+     "40,000",
+     "8",
+     "%",
+     "15-Jan-16"
+    ],
+    [
+     "d",
+     ")",
+     "15-Feb-15",
+     "35,000",
+     "-",
+     "35,000",
+     "8",
+     "%",
+     "15-Feb-16"
+    ],
+    [
+     "d",
+     ")",
+     "17-Feb-15",
+     "102,135",
+     "-",
+     "102,135",
+     "8",
+     "%",
+     "17-Feb-16"
+    ],
+    [
+     "d",
+     ")",
+     "17-Feb-15",
+     "5,000",
+     "-",
+     "5,000",
+     "8",
+     "%",
+     "17-Feb-16"
+    ],
+    [
+     "c",
+     ")",
+     "27-Feb-15",
+     "37,500",
+     "-",
+     "37,500",
+     "8",
+     "%",
+     "27-Feb-16"
+    ],
+    [
+     "c",
+     ")",
+     "12-Mar-15",
+     "12,500",
+     "-",
+     "12,500",
+     "8",
+     "%",
+     "11-Mar-16"
+    ],
+    [
+     "d",
+     ")",
+     "19-Mar-15",
+     "53,551",
+     "-",
+     "53,551",
+     "8",
+     "%",
+     "19-Mar-16"
+    ],
+    [
+     "d",
+     ")",
+     "19-Mar-15",
+     "8,000",
+     "-",
+     "8,000",
+     "8",
+     "%",
+     "19-Mar-16"
+    ],
+    [
+     "c",
+     ")",
+     "27-Mar-15",
+     "50,000",
+     "-",
+     "50,000",
+     "8",
+     "%",
+     "26-Mar-16"
+    ],
+    [
+     "c",
+     ")",
+     "11-May-15",
+     "50,000",
+     "-",
+     "50,000",
+     "8",
+     "%",
+     "10-May-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "29,500",
+     "-",
+     "29,500",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "45,965",
+     "-",
+     "45,965",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "10,000",
+     "-",
+     "10,000",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "58,540",
+     "-",
+     "58,540",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "35,408",
+     "-",
+     "35,408",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "02-Jun-15",
+     "20,758",
+     "-",
+     "20,758",
+     "8",
+     "%",
+     "01-Jun-16"
+    ],
+    [
+     "c",
+     ")",
+     "11-Jun-15",
+     "50,000",
+     "-",
+     "50,000",
+     "8",
+     "%",
+     "10-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "16-Jun-15",
+     "30,464",
+     "-",
+     "30,464",
+     "8",
+     "%",
+     "15-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "19-Jun-15",
+     "30,000",
+     "-",
+     "30,000",
+     "8",
+     "%",
+     "18-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "19-Jun-15",
+     "35,408",
+     "-",
+     "35,408",
+     "8",
+     "%",
+     "18-Jun-16"
+    ],
+    [
+     "c",
+     ")",
+     "24-Jun-15",
+     "37,500",
+     "-",
+     "37,500",
+     "8",
+     "%",
+     "23-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "24-Jun-15",
+     "35,000",
+     "-",
+     "35,000",
+     "8",
+     "%",
+     "23-Jun-16"
+    ],
+    [
+     "c",
+     ")",
+     "24-Jun-15",
+     "37,500",
+     "-",
+     "37,500",
+     "8",
+     "%",
+     "23-Jun-16"
+    ],
+    [
+     "d",
+     ")",
+     "07-Jul-15",
+     "75,000",
+     "-",
+     "75,000",
+     "8",
+     "%",
+     "07-Oct-15"
+    ],
+    [
+     "d",
+     ")",
+     "01-Aug-15",
+     "17,408",
+     "-",
+     "17,408",
+     "8",
+     "%",
+     "04-Aug-16"
+    ],
+    [
+     "d",
+     ")",
+     "01-Aug-15",
+     "30,000",
+     "-",
+     "30,000",
+     "8",
+     "%",
+     "01-Aug-16"
+    ],
+    [
+     "d",
+     ")",
+     "01-Aug-15",
+     "35,408",
+     "-",
+     "35,408",
+     "8",
+     "%",
+     "01-Aug-16"
+    ],
+    [
+     "d",
+     ")",
+     "21-Sep-15",
+     "64,744",
+     "-",
+     "64,744",
+     "8",
+     "%",
+     "21-Sep-16"
+    ],
+    [
+     "b",
+     ")",
+     "03-May-16",
+     "50,000",
+     "40,035",
+     "9,965",
+     "8",
+     "%",
+     "03-May-17"
+    ],
+    [
+     "c",
+     ")",
+     "03-May-16",
+     "50,000",
+     "-",
+     "50,000",
+     "8",
+     "%",
+     "03-May-17"
+    ],
+    [
+     "d",
+     ")",
+     "03-May-16",
+     "29,500",
+     "-",
+     "29,500",
+     "8",
+     "%",
+     "03-May-17"
+    ],
+    [
+     "d",
+     ")",
+     "03-May-15",
+     "45,965",
+     "-",
+     "45,965",
+     "8",
+     "%",
+     "03-May-17"
+    ],
+    [
+     "b",
+     ")",
+     "24-May-16",
+     "61,571",
+     "52,609",
+     "8,962",
+     "8",
+     "%",
+     "24-May-17"
+    ],
+    [
+     "d",
+     ")",
+     "24-May-16",
+     "30,464",
+     "-",
+     "30,464",
+     "8",
+     "%",
+     "24-May-17"
+    ],
+    [
+     "b",
+     ")",
+     "26-May-16",
+     "157,500",
+     "142,197",
+     "15,303",
+     "8",
+     "%",
+     "26-May-17"
+    ],
+    [
+     "d",
+     ")",
+     "15-Jun-16",
+     "50,000",
+     "46,146",
+     "3,854",
+     "8",
+     "%",
+     "15-Jun-17"
+    ],
+    [
+     "c",
+     ")",
+     "07-Apr-16",
+     "18,000",
+     "12,449",
+     "5,551",
+     "8",
+     "%",
+     "07-Apr-17"
+    ],
+    [
+     "b",
+     ")",
+     "02-Jun-16",
+     "160,000",
+     "152,829",
+     "7,171",
+     "7",
+     "%",
+     "02-Jun-17"
+    ],
+    [
+     "b",
+     ")",
+     "02-Jun-16",
+     "4,000",
+     "3,625",
+     "375",
+     "7",
+     "%",
+     "02-Jun-17"
+    ],
+    [
+     "b",
+     ")",
+     "15-Jun-16",
+     "50,000",
+     "43,810",
+     "6,190",
+     "7",
+     "%",
+     "15-Jun-17"
+    ],
+    [
+     "b",
+     ")",
+     "15-Jun-16",
+     "1,250",
+     "1,042",
+     "208",
+     "7",
+     "%",
+     "15-Jun-17"
+    ],
+    [
+     "b",
+     ")",
+     "17-May-16",
+     "100,000",
+     "93,640",
+     "6,360",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "17-May-16",
+     "2,500",
+     "2,175",
+     "325",
+     "7",
+     "%",
+     "08-Sep-17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1789,
+    "end_line": 1839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "CONVERTIBLE DEBENTURES"
+    }
+   },
+   "prose_before": "Level 3 applies to assets or liabilities for which there are unobservable inputs to the valuation methodology that are significant to the measurement of the fair value of the assets or liabilities. The determination of fair value for Level 3 instruments requires the most management judgment and subjectivity.\nPursuant to ASC 825, cash is based on Level 1 inputs. The Company believes that the recorded values of accounts receivable and accounts payable approximate their current fair values because of their nature or respective relatively short durations. The fair value of the Company\u2019s convertible debentures approximates their carrying values as the underlying imputed interest rates approximates the estimated current market rate for similar instruments.\nAs of December 31, 2016, there were no assets or liabilities measured at fair value on a recurring basis presented on the Company\u2019s balance sheet, other than cash.\nFOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n10. CONVERTIBLE DEBENTURES\nShort-term Convertible Debentures:",
+   "prose_after": "FOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n10. CONVERTIBLE DEBENTURES (CONTINUED)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1783,
+     "token": "REPEATING_HEADER",
+     "id": 62,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1839,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "b",
+     ")",
+     "19-May-16",
+     "110,000",
+     "103,446",
+     "6,554",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "19-May-16",
+     "2,750",
+     "2,413",
+     "337",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "27-Jan-16",
+     "248,540",
+     "36,331",
+     "212,209",
+     "7",
+     "%",
+     "27,Jul-17"
+    ],
+    [
+     "b",
+     ")",
+     "08-Mar-16",
+     "110,000",
+     "100,645",
+     "9,355",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "27-Jan-16",
+     "10,929",
+     "-",
+     "10,929",
+     "7",
+     "%",
+     "27-Jul-17"
+    ],
+    [
+     "b",
+     ")",
+     "08-Mar-16",
+     "5,000",
+     "3,257",
+     "1,743",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "08-Mar-16",
+     "90,000",
+     "81,615",
+     "8,385",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "07-Jul-16",
+     "50,000",
+     "46,719",
+     "3,281",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "04-Aug-16",
+     "110,000",
+     "106,095",
+     "3,905",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "15-Aug-16",
+     "157,000",
+     "152,850",
+     "4,150",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "12-Sep-16",
+     "83,000",
+     "80,468",
+     "2,532",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "07-Jul-16",
+     "1,250",
+     "1,063",
+     "187",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "04-Aug-16",
+     "2,750",
+     "2,522",
+     "228",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "15-Aug-16",
+     "3,925",
+     "3,679",
+     "246",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "12-Sep-16",
+     "2,075",
+     "1,914",
+     "161",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "07-Jul-16",
+     "50,000",
+     "45,429",
+     "4,571",
+     "7",
+     "%",
+     "07-Jul-17"
+    ],
+    [
+     "b",
+     ")",
+     "04-Aug-16",
+     "110,000",
+     "105,438",
+     "4,562",
+     "7",
+     "%",
+     "04-Aug-17"
+    ],
+    [
+     "b",
+     ")",
+     "15-Aug-16",
+     "157,500",
+     "152,903",
+     "4,597",
+     "7",
+     "%",
+     "15-Aug-17"
+    ],
+    [
+     "b",
+     ")",
+     "08-Sep-16",
+     "80,000",
+     "77,384",
+     "2,616",
+     "7",
+     "%",
+     "08-Sep-17"
+    ],
+    [
+     "b",
+     ")",
+     "11-Nov-16",
+     "80,000",
+     "78,877",
+     "1,123",
+     "7",
+     "%",
+     "11-Nov-17"
+    ],
+    [
+     "b",
+     ")",
+     "06-Dec-16",
+     "88,000",
+     "87,161",
+     "839",
+     "7",
+     "%",
+     "06-Dec-17"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "4,196,691",
+     "2,024,768",
+     "2,171,923",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1847,
+    "end_line": 1874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "CONVERTIBLE DEBENTURES"
+    }
+   },
+   "prose_before": "FOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n10. CONVERTIBLE DEBENTURES (CONTINUED)",
+   "prose_after": "Long-term Convertible Debentures:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1843,
+     "token": "REPEATING_HEADER",
+     "id": 64,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1918,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Conversion Feature",
+     "",
+     "Issuance",
+     "Net Principal ($)",
+     "Discount ($)",
+     "Carrying Value ($)",
+     "Interest Rate",
+     "",
+     "Maturity Date"
+    ],
+    [
+     "b",
+     ")",
+     "07-Oct-16",
+     "465,000",
+     "463,533",
+     "1,467",
+     "7",
+     "%",
+     "18-Apr-18"
+    ],
+    [
+     "b",
+     ")",
+     "7-Nov-16",
+     "283,443",
+     "253,145",
+     "30,298",
+     "7",
+     "%",
+     "18-Apr-18"
+    ],
+    [
+     "b",
+     ")",
+     "12-Dec-16",
+     "284,379",
+     "97,180",
+     "187,199",
+     "7",
+     "%",
+     "18-Apr-18"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "1,032,822",
+     "813,858",
+     "218,964",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1877,
+    "end_line": 1888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "CONVERTIBLE DEBENTURES"
+    }
+   },
+   "prose_before": "Long-term Convertible Debentures:",
+   "prose_after": "a)\nThe conversion price per share equal to the lower of:\ni.\n100% of the average price of the Company\u2019s common stock for the 5 trading days preceding the conversion date;\nii.\n70% of the daily average price of the Company\u2019s common stock for the 10 trading days preceding the conversion date.\nb)\nThe conversion price is a range of $0.0025-$0.0078.\nc)\nThe conversion price equal to 50% of the lowest closing bid price of the Company\u2019s common stock in the 20-25 trading days prior to the conversion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1843,
+     "token": "REPEATING_HEADER",
+     "id": 64,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1918,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016\n\n$",
+     "2015\n\n$"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "(6,113,239)",
+     "(3,077,016)"
+    ],
+    [
+     "Statutory rate",
+     "35%",
+     "35%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computed expected tax (recovery)",
+     "(2,139,634)",
+     "(1,076,956)"
+    ],
+    [
+     "Amortization of beneficial conversion feature",
+     "993,519",
+     "535,648"
+    ],
+    [
+     "Accretion of convertible debt",
+     "571,916",
+     "393,108"
+    ],
+    [
+     "Other",
+     "(535,648)",
+     "(481,078)"
+    ],
+    [
+     "Change in valuation allowance",
+     "1,109,847",
+     "629,278"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reported income taxes",
+     "\u2013",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1938,
+    "end_line": 1958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company has evaluated whether separate financial instruments with the same terms as the conversion features above would meet the characteristics of a derivative instrument as described in paragraphs ASC 815-15-25. The terms of the contracts do not permit net settlement, as the shares delivered upon conversion are not readily convertible to cash. The Company\u2019s trading history indicated that the shares are thinly traded and the market would not absorb the sale of the shares issued upon conversion without significantly affecting the price. As the conversion features would not meet the characteristics of a derivative instrument as described in paragraphs ASC 815-15-25, the conversion features are not required to be separated from the host instrument and accounted for separately. As a result, at December 31, 2016 and 2015 the conversion features and non-standard anti-dilutions provisions would not meet derivative classification.\nConvertible debentures with maturity dates prior to December 31, 2016 are now due on demand.\n11. INCOME TAXES\nThe Company has adopted the provisions of ASC 740, Income Taxes. Pursuant to ASC 740 the Company is required to compute tax asset benefits for net operating losses carried forward. The potential benefit of net operating losses have not been recognized in the financial statements because the Company cannot be assured that it is more likely than not that it will utilize the net operating losses carried forward in future years. The Company has approximately $8,174,543 (2015 - $4,270,350) of net operating losses to carry forward which are available to offset taxable income in future years which expire through fiscal 2036.\nThe components of the net deferred tax asset at December 31, 2016, and 2015, the statutory tax rate, the effective tax rate, and the amounts of the valuation allowance are indicated below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1922,
+     "token": "REPEATING_HEADER",
+     "id": 66,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1976,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2016\n\n$",
+     "December 31,\n\n2015\n\n$"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Potential deferred tax asset",
+     "",
+     ""
+    ],
+    [
+     "- Net operating losses",
+     "2,861,090",
+     "1,494,622"
+    ],
+    [
+     "-Beneficial conversion feature and other",
+     "(792,269)",
+     "(535,648)"
+    ],
+    [
+     "-Less valuation allowance",
+     "(2,068,821)",
+     "(958,974)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "\u2013",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1959,
+    "end_line": 1976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "FOR THE YEARS ENDED DECEMBER 31, 2016 AND 2015\n12. LOSS ON INVESTMENT AND INTANGIBLE ASSET\nOn October 7, 2016, the Company entered into a Securities Purchase Agreement (the \u201cAlpha SPA\u201d) with Alpha Capital Anstalt (\u201cAlpha Capital\u201d), to issue and sell up to, in principal amount, $1,615,000 of convertible notes, payable in four tranches (the \u201cAlpha Notes\u201d). The first tranche of $465,000 was funded on October 7, 2016 (the \u201cInitial Closing Date\u201d) and the second, third, and fourth tranches of $375,000 were funded, respectively, during the first week of each of November 2016, December 2016, and January 2017 (the subsequent closing dates and, with the Initial Closing Date, each a \u201cClosing\u201d).\nThe Company used a portion of the proceeds of each Closing to purchase Series A Convertible Participating Preferred Stock of a private entity named Hang With, Inc. (\u201cHang With\u201d). Alpha Capital is currently Hang With\u2019s majority shareholder. On October 7, 2016, the Company entered into a Securities Purchase Agreement with Hang With (the \u201cHang With SPA\u201d) to buy up to 330,397 shares of Hang With\u2019s Series A Convertible Participating Preferred Stock (the \u201cPreferred Stock\u201d) for $750,000. On the Initial Closing Date, the Company paid $225,000 and was to receive 99,118 shares of Preferred Stock. The Company paid Hang With $175,000 on each of the subsequent three Closings. In connection with entering into the Hang With SPA, the Company and Hang With entered into a Software License Agreement (the \u201cLicense Agreement\u201d) in which Hang With is licensing the intellectual property of the Hang With apps to the Company. As part of the Hang With SPA and as compensation for the Company entering into the License Agreement and the future development agreement, Hang With was to issue 154,185 shares of Preferred Stock on the Initial Closing Date, and was to issue 100,000 shares of its common stock to the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1922,
+     "token": "REPEATING_HEADER",
+     "id": 66,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1976,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position Held with Our Company",
+     "Age",
+     "Date First Elected or Appointed"
+    ],
+    [
+     "Robert Rositano",
+     "CEO, Secretary and Director",
+     "48",
+     "January 31, 2014"
+    ],
+    [
+     "Dean Rositano",
+     "President, CTO and Director",
+     "45",
+     "January 31, 2014"
+    ],
+    [
+     "Frank Garcia",
+     "CFO",
+     "59",
+     "June 30, 2011"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2057,
+    "end_line": 2065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(c)\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the fiscal quarter ended December 31, 2016 that have materially affected, or are reasonably likely to materially affect our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nDirectors and Executive Officers\nOur directors hold office until the next annual meeting or until their successors have been elected and qualified, or until they resign or are removed. Our board of directors appoints our officers, and our officers hold office for such term as may be prescribed by our board of directors and until their successors are chosen and qualify, or until their death or resignation, or until their removal.\nOur directors and executive officers, their ages, positions held, and duration of such are as follows:",
+   "prose_after": "Business Experience\nThe following is a brief account of the education and business experience during at least the past five years of each director and executive officer of our company, indicating the person\u2019s principal occupation during that period, and the name and principal business of the organization in which such occupation and employment were carried out.\nRobert Rositano, CEO, Secretary and Director:\nPrior to founding iHookup, Robert Rositano was the third employee at Netcom Online Communications, Inc., an internet service provider which went public in 1993 and eventually merged into Earthlink and AT&T Canada. From 2006-2010, Robert Rositano worked as Chief Executive Officer of Zippi Networks, Inc. Zippi Networks, Inc. created a home-based business system that allowed users to become certified eBay sellers and earn commission by selling items on eBay for others. Zippi Networks, Inc. supplied its users with everything one would need to begin a home-based business as an eBay seller, including but not limited to, certain training, materials, uniforms, processes and software. Robert Rositano was responsible for its day-to-day operations and overseeing the development of eBay seller applications for the web, as well as mobile applications for windows and iPhone devices. He was also in charge of fundraising, and raised over $2 million for Zippi Networks, Inc. In 2010, Robert Rositano became Chief Executive Officer of Checkmate Mobile, Inc. (\u201cCMI\u201d), which developed mobile applications on a work-for-hire basis as well as incubated creative concepts conceived among a core group of product managers, graphic designers and mobile developers. CMI has successfully developed applications for the education market (e.g. released Cloud9 Learning to Brigham Young University with a pilot of over 7,000 students), cause-related or donation style applications, and applications used by restaurants and bars. Robert Rositano has continued in his role at CMI while serving as a director and officer of the Company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2034,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2079,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number and Description of Transactions Not Reported on a Timely Basis"
+    ],
+    [
+     "Robert Rositano",
+     "3 transactions were not reported on a timely basis following the conversion of shares of Series APreferred Stock into shares of common stock in the year ended December 31, 2016."
+    ],
+    [
+     "Dean Rositano",
+     "3 transactions were not reported on a timely basis following the conversion of shares of Series A Preferred Stock into shares of common stock in the year ended December 31, 2016."
+    ],
+    [
+     "Frank Garcia",
+     "1 transaction was not reported on a timely basis following the acquisition of shares of Series A Preferred Stock in the year ended December 31, 2016."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2156,
+    "end_line": 2166
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the Merger Agreement dated January 31, 2014 by and between Friendable, Inc. and Titan Iron Ore Corp., the Company\u2019s Series A Preferred Stock consists of the following: 4,510,400 shares owned by Dean Rositano, 4,510,400 shares owned by Robert Rositano, 36,083,350 shares owned by Copper Creek Holdings, LLC, and 4,895,850 shares owned by CMI. Each share of common stock entitles its holder to one vote on each matter submitted to the stockholders. The holders of preferred stock are entitled to cast votes equal to the number of votes equal to the number of whole shares of common stock into which the shares of Series A Preferred Stock held by such holder are convertible. The total aggregate issued shares of Series A Preferred Stock at any given time regardless of their number shall be convertible into the number of shares of common stock which equals nine (9) times the total number of shares of common stock which are issued and outstanding at the time of any conversion, at the option of the preferred holders or until the closing of a Qualified Financing (i.e. the sale and issuance of our equity securities that results in gross proceeds in excess of $2,500,000) at one time or in the same round. As a result of the Titan Iron Ore Corp. and iHookup merger transaction, the former iHookup stockholders received a controlling interest in the Company due to the voting rights of the Series A Preferred Stock being connected to their super-majority conversion rights.\nAs described above, Dean Rositano and Robert Rositano are both directors and officers of the Company.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Securities Exchange Act of 1934 requires our executive officers and directors, and persons who own more than 10% of our common stock, to file initial statements of beneficial ownership, reports of changes in ownership and annual reports concerning their ownership of our common stock and other equity securities with the Securities and Exchange Commission and to provide us with copies of those filings. Based solely on our review of the copies of such forms received by us, or written representations from certain reporting persons, we believe that during year ended December 31, 2016 all filing requirements applicable to our executive officers and directors, and persons who own more than 10% of our common stock were complied with, with the exception of the following:",
+   "prose_after": "Code of Ethics\nWe have not yet adopted a Code of Ethics.\nITEM 11. EXECUTIVE COMPENSATION\nSummary Compensation\nThe following table summarizes information regarding the compensation awarded to, earned by or paid to, our Chief Executive Officer, and our other most highly compensated executive officers who earned in excess of $100,000 during the year ended December 31, 2016 and 2015.\nwho we will collectively refer to as the named executive officers, for the years ended December 31, 2016 and 2015, are set out in the following summary compensation table:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2145,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 2198,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\n Principal Position",
+     "Year",
+     "Salary Incurred\n\n ($)",
+     "Bonus\n\n ($)",
+     "Stock Awards\n\n ($) 1",
+     "Option Awards\n\n ($)",
+     "Non-Equity Incentive Plan Compensation\n\n ($)",
+     "Nonqualified Deferred Compensation Earnings\n\n ($)",
+     "All other Compensation\n\n ($)",
+     "Total\n\n ($)"
+    ],
+    [
+     "Robert Rositano\n\n CEO, Secretary, & Director",
+     "2016\n\n2015",
+     "150,000 (1)\n\n150,000 (2)",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "150,000\n\n150,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dean Rositano\n\n President and CTO",
+     "2016\n\n2015",
+     "150,000 (1)\n\n150,000 (2)",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "150,000\n\n150,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank Garcia\n\n Chief Financial Officer",
+     "2016\n\n2015",
+     "102,083\n\n100,000",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "Nil\n\nNil",
+     "102,083\n\n100,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2179,
+    "end_line": 2198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Code of Ethics\nWe have not yet adopted a Code of Ethics.\nITEM 11. EXECUTIVE COMPENSATION\nSummary Compensation\nThe following table summarizes information regarding the compensation awarded to, earned by or paid to, our Chief Executive Officer, and our other most highly compensated executive officers who earned in excess of $100,000 during the year ended December 31, 2016 and 2015.\nwho we will collectively refer to as the named executive officers, for the years ended December 31, 2016 and 2015, are set out in the following summary compensation table:",
+   "prose_after": "ITEM 11. EXECUTIVE COMPENSATION - continued\n(1)\nDuring 2016, each of Robert Rositano and Dean Rositano was paid $30,000. Each of Robert Rositano and Dean Rositano was owed $120,000 in accrued salary, however, pursuant to debt settlement agreements dated December 5, 2016 and December 7, 2016 respectively, each of Robert Rositano and Dean Rositano agreed to be paid $70,000 in accrued salary and forego the remaining $50,000 in accrued salary.\n(2)\nDuring 2015, each of Robert Rositano and Dean Rositano was paid $62,500. Each of Robert Rositano and Dean Rositano was owed $87,500 in accrued salary, however, pursuant to debt settlement agreements dated December 5, 2016 and December 7, 2016 respectively, each of Robert Rositano and Dean Rositano agreed to be paid $37,500 in accrued salary and forego the remaining $50,000 in accrued salary.\nCompensation for Executive Officers and Directors\nCompensation arrangements for our named executive officers and directors are described below.\nEmployment Agreement \u2013 Robert Rositano",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2145,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 2198,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "",
+     "Amount and Nature of Beneficial Ownership",
+     "",
+     "Percent of Class (3)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(a)",
+     "Holders Over 5%",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Robert A Rositano Jr.",
+     "",
+     "10,046 (1)",
+     "Direct",
+     "46.60%"
+    ],
+    [
+     "",
+     "3846 Moanna Way,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Santa Cruz, CA 95062",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Dean Rositano\n\n126 Sea Terrace Way,\n\nAptos, CA 95003",
+     "",
+     "2,256",
+     "Direct",
+     "10.46%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Frank Garcia\n\n1735 E Ft Lowell Rd Ste9,\n\nTucson, AZ 85719",
+     "",
+     "250",
+     "Direct",
+     "1.16%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Checkmate Mobile, Inc.\n\n125 E. Campbell Ave.,\n\nCampbell, California 95008",
+     "",
+     "290",
+     "Direct",
+     "1.35%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Copper Creek Holdings, LLC (2)\n\n7960 B Soquel Dr., Suite #146\n\nAptos, CA 95003",
+     "",
+     "15,581",
+     "Direct",
+     "72.27%"
+    ],
+    [
+     "",
+     "-Robert Rositano",
+     "",
+     "7,791",
+     "",
+     "36.14%"
+    ],
+    [
+     "",
+     "-Stacy Rositano",
+     "",
+     "7,791",
+     "",
+     "36.14%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(b)",
+     "Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Robert A Rositano Jr.",
+     "",
+     "10,046 (1)",
+     "Direct and",
+     "46.60%"
+    ],
+    [
+     "",
+     "3846 Moanna Way,",
+     "",
+     "",
+     "Indirect",
+     ""
+    ],
+    [
+     "",
+     "Santa Cruz, CA 95062",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Dean Rositano",
+     "",
+     "2,256",
+     "Direct",
+     "10.46%"
+    ],
+    [
+     "",
+     "126 Sea Terrace Way,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Aptos, CA 95003",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(c)",
+     "Executive Officers",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "Robert Rositano, Jr. and Dean Rositano as named above",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred",
+     "(d)",
+     "Officers and Directors as a Group for preferred stock",
+     "12,552 (1)",
+     "Direct and Indirect",
+     "58.22%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2238,
+    "end_line": 2291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Each share of common stock entitles its holder to one vote on each matter submitted to the stockholders. The holders of preferred stock are entitled to cast votes equal to the number of votes equal to the number of whole shares of common stock into which the shares of Series A Preferred Stock held by such holder are convertible. The total aggregate issued shares of Series A Preferred Stock at any given time regardless of their number shall be convertible into the number of shares of common stock which equals nine (9) times the total number of shares of common stock which are issued and outstanding at the time of any conversion, at the option of the preferred holders or until the closing of a Qualified Financing (i.e. the sale and issuance of our equity securities that results in gross proceeds in excess of $2,500,000) at one time or in the same round. As a result of the Titan Iron Ore Corp. and iHookup merger transaction, the former iHookup stockholders received a controlling interest in the Company due to the voting rights of the Series A Preferred Stock being connected to their super-majority conversion rights.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS - continued\nThe following tabulation shows, as of April 13, 2017, the number of shares of capital stock owned beneficially by: (a) all persons known to be the holders of more than five percent (5%) of voting securities, (b) Directors, (c) Executive Officers and (d) all other Officers and Directors as a group.",
+   "prose_after": "(1) Includes the shares beneficially owned by Robert Rositano through Copper Creek Holdings, LLC. Does not include the shares beneficially owned by Stacy Rositano through Copper Creek Holdings, LLC.\n(2) Copper Creek Holdings, LLC is owned and managed by Robert Rositano and his wife Stacy Rositano, thus each may be deemed to beneficially own half of the interest of Copper Creek Holdings,\nLLC.\n(3) Based on 21,558 shares of preferred stock issued and outstanding as of April 13, 2017.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS - continued",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2233,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 2298,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "",
+     "Amount and Nature of Beneficial Ownership",
+     "",
+     "Percent of Class (3)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(a)",
+     "Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Copper Creek Holdings, LLC (2)\n\n7960 B Soquel Dr., Suite #146\n\nAptos, CA 95003",
+     "",
+     "225,512",
+     "Direct",
+     "*"
+    ],
+    [
+     "",
+     "-Robert Rositano",
+     "",
+     "112,756",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "-Stacy Rositano",
+     "",
+     "112,756",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Robert A Rositano Jr.",
+     "",
+     "11,010,155 (1)",
+     "Direct and",
+     "*"
+    ],
+    [
+     "",
+     "3846 Moanna Way,",
+     "",
+     "",
+     "Indirect",
+     ""
+    ],
+    [
+     "",
+     "Santa Cruz, CA 95062",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Dean Rositano",
+     "",
+     "11,310,793",
+     "Direct",
+     "*"
+    ],
+    [
+     "",
+     "126 Sea Terrace Way,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Aptos, CA 95003",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(b)",
+     "Executive Officers",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Frank Garcia",
+     "",
+     "770 (4)",
+     "Direct",
+     "*"
+    ],
+    [
+     "",
+     "1735 E Ft Lowell Rd,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Tucson, AZ 85719",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Robert Rositano, Jr. and Dean Rositano as named above",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "(c)",
+     "Officers and Directors as a Group for common stock",
+     "22,321,718 (1)",
+     "Direct and Indirect",
+     "1.43%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2301,
+    "end_line": 2334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Includes the shares beneficially owned by Robert Rositano through Copper Creek Holdings, LLC. Does not include the shares beneficially owned by Stacy Rositano through Copper Creek Holdings, LLC.\n(2) Copper Creek Holdings, LLC is owned and managed by Robert Rositano and his wife Stacy Rositano, thus each may be deemed to beneficially own half of the interest of Copper Creek Holdings,\nLLC.\n(3) Based on 21,558 shares of preferred stock issued and outstanding as of April 13, 2017.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS - continued",
+   "prose_after": "* Less than 1%.\n(1) Includes the shares beneficially owned by Robert Rositano through Copper Creek Holdings, LLC. Does not include the shares beneficially owned by Stacy Rositano through Copper Creek Holdings, LLC.\n(2) Copper Creek Holdings, LLC is owned and managed by Robert Rositano and his wife Stacy Rositano, thus each may be deemed to beneficially own half of the interest of Copper Creek Holdings, LLC.\n(3) Based on 1,557,092,583 of common stock issued and outstanding as of April 13, 2017.\n(4) Includes 350 vested stock options.\nChanges in Control\nWe are not aware of any arrangements that may result in \u201cchanges in control\u201d as that term is defined by the provisions of Item 403(c) of Regulation S-K.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nTransactions with related persons\nOther than as disclosed below, there has been no transaction, or currently proposed transaction, in which our company was or is to be a participant and the amount involved exceeds the lesser of $120,000 or one percent of the average of our total assets at year end for the last two completed fiscal years, and in which any of the following persons had or will have a direct or indirect material interest:",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2298,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 2357,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended",
+     "Fiscal Year Ended"
+    ],
+    [
+     "Fee Category",
+     "December 31, 2016",
+     "December 31, 2015"
+    ],
+    [
+     "Audit Fees (1)",
+     "$54,950",
+     "$44,250"
+    ],
+    [
+     "Audit Related Fees (2)",
+     "-",
+     "-"
+    ],
+    [
+     "Tax Fees (3)",
+     "5,600",
+     "-"
+    ],
+    [
+     "All Other Fees (4)",
+     "-",
+     "5,250"
+    ],
+    [
+     "Total",
+     "$60,550",
+     "$49,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2411,
+    "end_line": 2423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf the director or a family member of the director is employed as an executive officer of an entity where, at any time during the past three years, any of the executive officers of the company served on the compensation committee of such other entity; or the director or a family member of the director is a current partner of the company\u2019s outside auditor, or at any time during the past three years was a partner or employee of the company\u2019s outside auditor, and who worked on the company\u2019s audit.\nBased upon the above, we currently do not have any independent board members.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nAudit Fees\nThe aggregate fees billed by Manning Elliott LLP for the most recently completed fiscal year ended December 31, 2016 and for fiscal year ended December 31, 2015 for professional services rendered by the principal accountant for the audit of our annual financial statements and review of the financial statements included in our quarterly reports on Form 10-Q and services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for these fiscal periods were as follows:\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES - continued",
+   "prose_after": "1 Audit fees consist of fees incurred for professional services rendered for the audit of our financial statements, for reviews of our interim financial statements included in our quarterly reports on Form 10-Q and for services that are normally provided in connection with statutory or regulatory filings or engagements.\n2 Audit-related fees consist of fees billed for professional services that are reasonably related to the performance of the audit or review of our financial statements, but are not reported under \u201cAudit fees.\u201d\n3 Tax fees consist of fees billed for professional services relating to tax compliance, tax planning, and tax advice.\n4 All other fees consist of fees billed for all other services.\nPre-Approval Policies and Procedures with respect to Services Performed by Independent Registered Public Accounting Firms\nBefore Manning Elliott LLP was engaged by us to render any auditing or permitted non-audit related service, our board of directors approved the engagement.\nOur board of directors has considered the nature and amount of fees billed by Manning Elliott LLP and believe that the provision of services for activities unrelated to the audit was compatible with maintaining Manning Elliott LLP\u2019s independence.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2408,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 2464,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "Number",
+     "Description"
+    ],
+    [
+     "(2)",
+     "Plan of Acquisition, re-organization, arrangement, liquidation or succession"
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger and Reorganization, dated as of January 31, 2014, by and among Titan Iron Ore Corp., iHookup Operations Corp and iHookup Social, Inc. (Incorporated by reference to Amendment No. 1 to the Current Report on Form 8-K, previously filed with the SEC on February 18, 2014)"
+    ],
+    [
+     "(3)",
+     "Articles of Incorporation and Bylaws"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on April 30, 2014)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on April 30, 2014)"
+    ],
+    [
+     "3.3",
+     "Amended and Restated Articles of Incorporation (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on April 29, 2014)"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to the Amended and Restated Articles of Incorporation (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on January 22, 2015)"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2444,
+    "end_line": 2464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "1 Audit fees consist of fees incurred for professional services rendered for the audit of our financial statements, for reviews of our interim financial statements included in our quarterly reports on Form 10-Q and for services that are normally provided in connection with statutory or regulatory filings or engagements.\n2 Audit-related fees consist of fees billed for professional services that are reasonably related to the performance of the audit or review of our financial statements, but are not reported under \u201cAudit fees.\u201d\n3 Tax fees consist of fees billed for professional services relating to tax compliance, tax planning, and tax advice.\n4 All other fees consist of fees billed for all other services.\nPre-Approval Policies and Procedures with respect to Services Performed by Independent Registered Public Accounting Firms\nBefore Manning Elliott LLP was engaged by us to render any auditing or permitted non-audit related service, our board of directors approved the engagement.\nOur board of directors has considered the nature and amount of fees billed by Manning Elliott LLP and believe that the provision of services for activities unrelated to the audit was compatible with maintaining Manning Elliott LLP\u2019s independence.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\n(b)",
+   "prose_after": "ITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES - continued",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2408,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 2464,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(10)",
+     "Material Contracts"
+    ],
+    [
+     "10.1*",
+     "2014 Stock Option Plan (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on April 30, 2014)"
+    ],
+    [
+     "10.2*",
+     "Form of Stock Option Agreement (Incorporated by reference to the Definitive Information Statement on Schedule 14C, previously filed with the SEC on April 30, 2014)"
+    ],
+    [
+     "10.3",
+     "General Contract for Services dated January 18, 2014 by and between Checkmate Mobile Inc. and iHookup Social Inc. (Incorporated by reference to Amendment No. 1 to the Current Report on Form 8-K, previously filed with the SEC on February 18, 2014)"
+    ],
+    [
+     "10.4*",
+     "Employment Agreement dated January 19, 2014 by and between iHookup Social Inc. and Dean Rositano (Incorporated by reference to Amendment No. 1 to the Current Report on Form 8-K, previously filed with the SEC on February 18, 2014)"
+    ],
+    [
+     "10.5*",
+     "Employment Agreement dated January 19, 2014 by and between iHookup Social Inc. and Robert Rositano (Incorporated by reference to Amendment No. 1 to the Current Report on Form 8-K, previously filed with the SEC on February 18, 2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2467,
+    "end_line": 2480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES - continued",
+   "prose_after": "10.6*+ Employment Agreement dated January 29, 2014 by and between iHookup Social Inc. and Frank Garcia. 10.7*+ Debt Write Off Agreement between the Company and Robert Rositano, dated December 5, 2016. 10.8*+ Debt Write Off Agreement between the Company and Dean Rositano, dated December 7, 2016. 10.9 Convertible Promissory Note dated August 1, 2015 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 11, 2015) 10.10 Convertible Promissory Notes dated August 5, 2015 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 11, 2015) 10.11 Securities Purchase Agreement dated June 15, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on June 23, 2016) 10.12 Convertible Promissory Notes dated June 15, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on June 23, 2016) 10.13 Securities Purchase Agreement dated July 7, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on July 13, 2016) 10.14 Convertible Promissory Notes dated August 4, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 10, 2016) 10.15 Securities Purchase Agreement dated August 4, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 10, 2016) 10.16 Sixth Amendment and Closing Agreement with Alpha Capital Anstalt and Palladium Capital Advisors, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 10, 2016) 10.17 Common Stock Warrant Agreement dated August 1, 2016 with Alpha Capital Anstalt (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 10, 2016) 10.18 Marketing Agreement with The Kluger Agency dated August 3, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 10, 2016) 10.19 Securities Purchase Agreement dated August 15, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 25, 2016) 10.20 Convertible Promissory Note dated August 15, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 25, 2016) 10.21 Seventh Amendment and Closing Agreement with Alpha Capital Anstalt and Palladium Capital Advisors, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 25, 2016) 10.22 Common Stock Warrant Agreement dated August 1, 2016 with Alpha Capital Anstalt (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 25, 2016) 10.23 Securities Purchase Agreement dated September 8, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on September 16, 2016) 10.24 Convertible Promissory Note dated September 8, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on September 16, 2016) 10.25 Eighth Amendment and Closing Agreement with Alpha Capital Anstalt and Palladium Capital Advisors, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on September 16, 2016) 10.26 Common Stock Warrant Agreement dated September 12, 2016 with Alpha Capital Anstalt (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on September 16, 2016)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2464,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 2482,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(21)",
+     "Subsidiaries"
+    ],
+    [
+     "21.1",
+     "IHookup Social, Inc., a Delaware corporation"
+    ],
+    [
+     "(31)",
+     "Rule 13a-14(a)/15d-14(a) Certification"
+    ],
+    [
+     "31.1+",
+     "Section 302 Certification under Sarbanes-Oxley Act of 2002 of the Chief Executive Officer"
+    ],
+    [
+     "31.2+",
+     "Section 302 Certification under Sarbanes-Oxley Act of 2002 of the Chief Financial Officer"
+    ],
+    [
+     "(32)",
+     "Section 1350 Certification"
+    ],
+    [
+     "32.1#",
+     "Section 906 Certifications under Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "(101)",
+     "XBRL"
+    ],
+    [
+     "101.INS+",
+     "XBRL INSTANCE DOCUMENT"
+    ],
+    [
+     "101.SCH+",
+     "XBRL TAXONOMY EXTENSION SCHEMA"
+    ],
+    [
+     "101.CAL+",
+     "XBRL TAXONOMY EXTENSION CALCULATION LINKBASE"
+    ],
+    [
+     "101.DEF+",
+     "XBRL TAXONOMY EXTENSION DEFINITION LINKBASE"
+    ],
+    [
+     "101.LAB+",
+     "XBRL TAXONOMY EXTENSION LABEL LINKBASE"
+    ],
+    [
+     "101.PRE+",
+     "XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2487,
+    "end_line": 2511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "10.27 Securities Purchase Agreement dated October 7, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on October 14, 2016) 10.28 Convertible Promissory Notes dated October 7, 2016 (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on October 14, 2016) 10.29 Common Stock Warrant Agreement dated October 7, 2016 with Alpha Capital Anstalt (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on August 25, 2016) 10.30 Securities Purchase Agreement dated October 7, 2016 with Coventry Enterprises, LLC (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on October 14, 2016) 10.31 Software License Agreement Dated October 7, 2016 with Hang With, Inc. (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on October 14, 2016) 10.32 Agreement dated December 2, 2016 with Alpha Capital Anstalt (Incorporated by reference to the Current Report on Form 8-K, previously filed with the SEC on December 5, 2016) 10.33 Funding Commitment Letter dated December 2, 2016 with Coventry Enterprises, LLC",
+   "prose_after": "* Indicates management contract or compensatory plan or agreement\n+ Filed herewith.\n# Furnished herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2482,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 2532,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FRIENDABLE INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 17, 2017",
+     "By:",
+     "/s/ Robert Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Robert Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, Secretary, and Director\n\n(Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "FRIENDABLE INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2522,
+    "end_line": 2532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Indicates management contract or compensatory plan or agreement\n+ Filed herewith.\n# Furnished herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2482,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 2532,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 17, 2017",
+     "By:",
+     "/s/ Robert Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Robert Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, Secretary, and Director\n\n(Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2535,
+    "end_line": 2543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2532,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 2559,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 17, 2017",
+     "By:",
+     "/s/ Frank Garcia",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Frank Garcia",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer\n\n(Principal Financial Officer and Principal Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2544,
+    "end_line": 2552
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2532,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 2559,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 17, 2017",
+     "By:",
+     "/s/ Dean Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Dean Rositano",
+     ""
+    ],
+    [
+     "",
+     "",
+     "President and Chief Technology Officer and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2553,
+    "end_line": 2559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2532,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 2559,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

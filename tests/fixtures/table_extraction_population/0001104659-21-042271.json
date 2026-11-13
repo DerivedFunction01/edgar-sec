@@ -1,0 +1,122 @@
+{
+ "accession": "0001104659-21-042271",
+ "cik": "0001766101",
+ "form": "10-K",
+ "filing_date": "2021-03-26",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tm2110478d2_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "World Omni Automobile Lease Securitization Trust 2019-A"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By: World Omni Financial Corp.,"
+    ],
+    [
+     "",
+     "as Servicer on behalf of the Trust"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 26, 2021",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Edward J. Brown, Jr."
+    ],
+    [
+     "",
+     "Edward J. Brown, Jr."
+    ],
+    [
+     "",
+     "Group Vice President"
+    ],
+    [
+     "",
+     "(Senior officer in charge of the servicing function)"
+    ],
+    [
+     "",
+     "World Omni Financial Corp."
+    ],
+    [
+     "",
+     "(Servicer on behalf of the Trust)"
+    ]
+   ],
+   "caption_stack": [
+    "World Omni Automobile Lease Securitization Trust 2019-A"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 312,
+    "end_line": 328
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "99.1 Trust Agreement, dated as of March 13, 2019, relating to the Trust. Incorporated by reference to Exhibit 99.1 to the Registrant\u2019s Current Report on Form 8-K, Registration File Number 333-210865-06, filed with the Commission on March 13, 2019.\n99.2 Administration Agreement, dated as of March 13, 2019, relating to the Trust. Incorporated by reference to Exhibit 99.2 to the Registrant\u2019s Current Report on Form 8-K, Registration File Number 333-210865-06, filed with the Commission on March 13, 2019.\n99.3 Asset Representations Review Agreement, dated as of March 13, 2019, relating to the Trust. Incorporated by reference to Exhibit 99.3 to the Registrant\u2019s Current Report on Form 8-K, Registration File Number 333-210865-06, filed with the Commission on March 13, 2019.\n(c) Not applicable.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Supplemental Information to be Furnished With Reports Filed Pursuant to Section 15(d) of the Act by Registrants Which Have Not Registered Securities Pursuant to Section 12 of the Act.\nNo annual report or proxy materials have been sent to security holders and no such report or proxy materials are to be furnished to security holders subsequent to the filing of this Annual Report on Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 307,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

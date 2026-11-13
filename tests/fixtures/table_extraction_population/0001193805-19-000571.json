@@ -1,0 +1,2093 @@
+{
+ "accession": "0001193805-19-000571",
+ "cik": "0000895464",
+ "form": "10-K",
+ "filing_date": "2019-06-12",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "e618516_10k-magna.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "",
+     "11-3074326"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer I.D. Number)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1662 Old Country Road, # 355, Plainview, NY",
+     "",
+     "11803"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuer\u2019s telephone number - C/O (301) 972-5232",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered under Section 12(b) of the Exchange Act:",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended February 28, 2019\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 0-21320\nMagna-Lab Inc.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered under Section 12(g) of the Exchange Act:\nClass A Common Stock, $.001 par value per share (Title of Class)\nIndicate by check mark if the issuer is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the issuer is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the issuer: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the issuer has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended February 28,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "Low",
+     "High",
+     "Low"
+    ],
+    [
+     "Class A Common Stock:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter ended  May 31,",
+     "$0.02",
+     "$0.02",
+     "$0.02",
+     "$0.02"
+    ],
+    [
+     "Second Quarter ended August 31,",
+     "$0.08",
+     "$0.02",
+     "$0.02",
+     "$0.02"
+    ],
+    [
+     "Third Quarter ended  November 30,",
+     "$0.80",
+     "$0.02",
+     "$0.10",
+     "$0.02"
+    ],
+    [
+     "Fourth Quarter ended  February 28,",
+     "$0.02",
+     "$0.02",
+     "$0.09",
+     "$0.02"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended February 28,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 200,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters and Registrant Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "We maintained an office of approximately 150 square feet in Syosset, New York under a lease calling for monthly rent at approximately $1,000 plus services until July 2018 when we vacated that office and put records in storage.\nItem 3. Legal Proceedings.\nWe have been the subject of several threatened, and certain actual, litigation actions for nonpayment of obligations or for breach of agreements in the past, primarily as a result of cash shortages we experienced in 1997 and again beginning in 2003. To the best of our knowledge, all other material litigation has been settled or is otherwise no longer pending and there is no material pending or threatened litigation against us. See Note 8 to Consolidated Financial Statements for additional information concerning these and other matters.\nPART II\nItem 5. Market for Common Equity and Related Stockholder Matters and Registrant Purchases of Equity Securities\nThe following sets forth the high and low bid prices for the Company's Class A Common Stock for each quarter during the last two fiscal years. The source for the high and low bid information is publicly available charts on www.otcmarkets.com.",
+   "prose_after": "There is no established public trading market for the Company's Class B Common Stock.\nOn June 3, 2019 the closing bid price for the Class A Common Stock was approximately $0.03.\nThe number of record holders of the Company\u2019s securities as of June 3, 2019 is as follows:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 185,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Number of Record Holders"
+    ],
+    [
+     "Class A Common Stock*",
+     "443"
+    ],
+    [
+     "Class B Common Stock",
+     "23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 218,
+    "end_line": 223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters and Registrant Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "There is no established public trading market for the Company's Class B Common Stock.\nOn June 3, 2019 the closing bid price for the Class A Common Stock was approximately $0.03.\nThe number of record holders of the Company\u2019s securities as of June 3, 2019 is as follows:",
+   "prose_after": "* Includes 103 shareholders of record holding shares reflecting the 1-for-100 reverse split on March 1, 2007 and 340 shareholders of record who continue to hold pre reverse-split shares.\nWe have not paid any cash dividends on our common stock since our formation and do not intend to do so in the future.\nItem 7. Management's Discussion and Analysis of Financial Condition and Results of Operations\nOverview\nOur business had been focused on pre-revenue development and commercialization of disposable medical devices designed to enhance the effectiveness of magnetic resonance imaging in detection and diagnosis of heart disease. Due to the unavailability of additional funding, beginning in the year ended February 28, 2003, we essentially ceased all of our operations including product development and commercialization efforts. In connection with shutting down our activities, we no longer have full-time employees. As a result, our efforts to realize value for our shareholders since that time have been conducted by a limited number of remaining Board members and part-time management.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 185,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL STATEMENTS:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CONSOLIDATED BALANCE SHEETS AS OF FEBRUARY 28, 2019 and 2018",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CONSOLIDATED STATEMENTS OF OPERATIONS FOR THE YEARS ENDED FEBRUARY 28, 2019 and 2018",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS FOR THE YEARS ENDED FEBRUARY 28, 2019 and 2018",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' DEFICIT FOR THE YEARS ENDED FEBRUARY 28, 2019 and 2018",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS",
+     "16 -20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 286,
+    "end_line": 301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Going Concern Consideration \u2013 Our consolidated financial statements have been prepared assuming we are a \u201cgoing concern\u201d. We are in need of immediate substantial additional capital or a strategic business arrangement in order to continue our planned activities. There can be no assurance that our plans can be realized. As such, we may be unable to continue operations as a going concern. No adjustment has been made in the consolidated financial statements which could result should we be unable to continue as a going concern.\nOur other accounting politices, which we do not consider critical accounting policies, are contained in Note 1 to the Consolidated Financial Statements.\nRecent Accounting Pronouncements\nThe Company has evaluated recent accounting pronouncements and believes that none of them will have a material effect on the Company\u2019s consolidated financial statements.\nManagement does not believe that any other recently issued, but not yet effective, accounting standards if currently adopted would have a material effect on the accompanying consolidated financial statements.\nItem 8. Financial Statements and Supplementary Data.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nThe Stockholders and the Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Magna-Lab Inc. and Subsidiary (collectively, the \u201cCompany\u201d) as of February 28, 2019 and 2018, and the related consolidated statements of operations, stockholders\u2019 deficit and cash flows for each of the two years in the period ended February 28, 2019, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at February 28, 2019 and 2018, and the results of its operations and its cash flows for each of the two years in the period ended February 28, 2019, in conformity with U.S. generally accepted accounting principles.\nThe Company's Ability to Continue as a Going Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has suffered recurring losses from operations, will require additional capital to fund its current operating plan, and has stated that substantial doubt exists about the Company\u2019s ability to continue as a going concern. Management\u2019s plans regarding these matters are also described in Note 1. The consolidated financial statements do not include any adjustments to reflect the possible future effects on the recoverability and classification of assets or the amounts and classification of liabilities that may result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 282,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 28,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "2,000",
+     ""
+    ],
+    [
+     "  Prepaid expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes payable and accrued interest payable to a stockholder",
+     "$",
+     "1,285,000",
+     "",
+     "$",
+     "1,151,000",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "342,000",
+     "",
+     "",
+     "332,000",
+     ""
+    ],
+    [
+     "  Accrued expenses and other current liabilities",
+     "",
+     "41,000",
+     "",
+     "",
+     "38,000",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "1,668,000",
+     "",
+     "",
+     "1,521,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (Notes 4, 7 and 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, par value $.01 per share, 5,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    none issued",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common stock, Class A, par value $.001 per share, 120,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    authorized, 1,178,762 issued and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    outstanding at February 28, 2019 and 2018",
+     "",
+     "1,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "  Common stock, Class B, par value $.001 per share, 3,750,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    authorized, 18,750 shares issued, 10,000 shares forfeited, 8,183 converted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    to Class A and 567 shares outstanding at February 28, 2019 and 2018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Additional paid in capital",
+     "",
+     "27,290,000",
+     "",
+     "",
+     "27,290,000",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(28,955,000)",
+     "",
+     "",
+     "(28,807,000)",
+     ""
+    ],
+    [
+     "    Total stockholders' deficit",
+     "",
+     "(1,664,000)",
+     "",
+     "",
+     "(1,516,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total liabilities and stockholders\u2019 deficit",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "5,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ASSETS",
+    "February 28,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 337,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ RBSM LLP\nWe have served as the Company\u2019s auditor since 2016.\nNew York, NY\nJune 12, 2019\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended February 28,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "48,000",
+     "",
+     "",
+     "58,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(48,000)",
+     "",
+     "",
+     "(58,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "(86,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE INCOME TAX",
+     "",
+     "(148,000)",
+     "",
+     "",
+     "(144,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(148,000)",
+     "",
+     "$",
+     "(144,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHARES OUTSTANDING, BASIC AND DILUTED",
+     "",
+     "1,179,000",
+     "",
+     "",
+     "1,179,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE, BASIC AND DILUTED",
+     "$",
+     "(0.13)",
+     "",
+     "$",
+     "(0.12",
+     ")."
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended February 28,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended February 28,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018.",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(148,000)",
+     "",
+     "$",
+     "(144,000)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Effect on cash of changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable, accrued expenses and other liabilities",
+     "",
+     "116,000",
+     "",
+     "",
+     "89,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(32,000)",
+     "",
+     "",
+     "(55,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH PROVIDED BY FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Proceeds received from notes payable to stockholder",
+     "",
+     "34,000",
+     "",
+     "",
+     "56,000",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "34,000",
+     "",
+     "",
+     "56,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY OR USED IN INVESTING ACTIVITIES:",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH",
+     "",
+     "2,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Beginning of year",
+     "",
+     "2,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  End of year",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "2,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL SCHEDULE ON NON-CASH ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Liabilities settled by principal shareholder and added to note payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "74,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended February 28,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 426,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "Paid In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, March 1, 2017",
+     "",
+     "1,178,762",
+     "$",
+     "1,000",
+     "",
+     "567",
+     "$",
+     "\u2014",
+     "$",
+     "27,290,000",
+     "$",
+     "(28,663,000)",
+     "",
+     "$",
+     "(1,372,000)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(144,000)",
+     "",
+     "",
+     "(144,000)",
+     ""
+    ],
+    [
+     "BALANCE, February 28, 2018",
+     "",
+     "1,178,762",
+     "",
+     "1,000",
+     "",
+     "567",
+     "",
+     "\u2014",
+     "",
+     "27,290,000",
+     "",
+     "(28,807,000)",
+     "",
+     "",
+     "(1,516,000)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(148,000)",
+     "",
+     "",
+     "(148,000)",
+     ""
+    ],
+    [
+     "BALANCE, February 28, 2019",
+     "",
+     "1,178,762",
+     "$",
+     "1,000",
+     "",
+     "567",
+     "$",
+     "\u2014",
+     "$",
+     "27,290,000",
+     "$",
+     "(28,955,000)",
+     "",
+     "$",
+     "(1,664,000)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' DEFICIT",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 - BUSINESS DESCRIPTION AND GOING CONCERN:\nCompany Activities - Magna-Lab Inc. and Subsidiary (collectively, the \u201cCompany\u201d) is focused on engaging in a \u201creverse merger\u201d transaction with an unrelated business that could benefit from the Company\u2019s public reporting status. Additional activities have included preserving cash, attempting to raise capital to support its activities and continuing its public reporting.\nThe Company was previously engaged in research, development and commercialization activities until it ceased such activities during the period September 2002 through March 2003 since the Company was unable to secure financing to support its planned activities. The Company\u2019s efforts to enter into a strategic arrangement or to seek other means to realize value for its cardiac diagnostic technologies through sale, license or otherwise have been unsuccessful and therefore, in January 2017, the Company sold such technology to its President and CEO in exchange for relief from certain liabilities.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 487,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions with the Company"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lawrence A. Minkoff, Ph.D.",
+     "69",
+     "Chairman of the Board, President, Chief Scientific Officer and Director"
+    ],
+    [
+     "Kenneth C. Riscica",
+     "65",
+     "Treasurer and Secretary (Chief Financial Officer)"
+    ],
+    [
+     "J. M. Feldman",
+     "74",
+     "Vice President and Director"
+    ],
+    [
+     "Joel Kanter (1)(2)",
+     "62",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 629
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance; Compliance with Section 16 (a) of the Exchange Act."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "The Company\u2019s management, including the chief executive officer and chief financial officer, do not expect that our Disclosure Controls or our internal control over financial reporting will prevent or detect all error and all fraud. A control system, no matter how well designed and operated, can provide only reasonable, not absolute, assurance that the control system\u2019s objectives will be met. The design of a control system must reflect the fact that there are resource constraints, and the benefits of controls must be considered relative to their costs. Further, because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that misstatements due to error or fraud will not occur or that all control issues and instances of fraud, if any, within the company have been detected. These inherent limitations include the realities that judgments in decision-making can be faulty and that breakdowns can occur because of simple error or mistake. Controls can also be circumvented by the individual acts of some persons, by collusion of two or more people, or by management override of the controls. The design of any system of controls is based in part on certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated goals under all potential future conditions. Projections of any evaluation of controls effectiveness to future periods are subject to risks. Over time, controls may become inadequate because of changes in conditions or deterioration in the degree of compliance with policies or procedures.\nItem 9B. Other Information\nSubsequent to February 28, 2019 and through June 7, 2019, the Company borrowed on an unsecured basis an aggregate $10,000 from a director of the Company who is also the managing member of MALLC at an interest rate of 10% per year (12% after maturity), principal and interest due and payable 120 days thereafter. For a description of other borrowings from and transactions with MALLC, see Item 12. Certain Relationships and Related Transactions.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance; Compliance with Section 16 (a) of the Exchange Act.\nThe names and ages of our directors and executive officers (we have no employees), and their positions with us, are as follows:",
+   "prose_after": "__________\n(1) Member of the Compensation Committee\n(2) Member of the Audit Committee\nLawrence A. Minkoff, Ph.D., our founder, is presently our Chairman of the Board, President and Chief Scientific Officer and, since May 1, 2004, our Principal Executive Officer. He has served in various executive capacities with our company since inception in February 1991. Dr. Minkoff ceased being a full time employee of the Company on November 1, 2004 and currently devotes time as required to our affairs. Beginning in May 2006, Dr. Minkoff became a full time employee of Fonar Corporation, a publicly traded company. Dr. Minkoff is one of the pioneers in the field of MRI technology.\nKenneth C. Riscica has served as our Treasurer and Secretary since September 28, 2000 and served as Vice President-Finance and Chief Financial Officer from November 1993 until April 1997. Between April 1997 and September 2000, Mr. Riscica served as a consultant to us. Mr. Riscica devotes part time to our affairs. Mr. Riscica is the principal owner of Riscica Associates, Inc., a management and financial consulting company serving both private and public companies and his principal employer from May 1999 to the present. From 1976 until 1992, Mr. Riscica was with Arthur Andersen & Co. LLP in their audit practice in progressively more responsible positions including five years as Audit and Business Advisory Partner.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address\n\n\n\nof Beneficial Owner (1)",
+     "Class of\n\n\n\nCommon Stock (2)",
+     "Number of\n\n\n\nShares\n\n\n\nBeneficially\n\n\n\nOwned(3)",
+     "Percentage of\n\n\n\nTotal Voting\n\n\n\nPower (2)(3)"
+    ],
+    [
+     "Magna Acquisition LLC (6)",
+     "Class A",
+     "607,727",
+     "51.5%"
+    ],
+    [
+     "Kenneth C. Riscica (4)(6)",
+     "Class A",
+     "41,102",
+     "3.5%"
+    ],
+    [
+     "Lawrence A. Minkoff, Ph.D. (4)",
+     "Class A",
+     "20,029",
+     "1.7%"
+    ],
+    [
+     "Joel Kanter (4)(5)(6)",
+     "Class A",
+     "23,320",
+     "2.0%"
+    ],
+    [
+     "J.M. Feldman (4)(6)",
+     "Class A",
+     "21,581",
+     "1.8%"
+    ],
+    [
+     "All Executive Officers and Directors as a Group\n(4 persons)",
+     "Class A",
+     "106,032",
+     "9.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 680,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "There are no post retirement benefit plans, medical, life, dental or other benefit plans, cash bonus or other compensation arrangements. There are no stock options or equity awards outstanding at February 28, 2019.\nIn July 2008 the Company recorded stock-based compensation expense of approximately $10,000 reflecting the fair value of 90,000 shares that were issuable to management at that time at the closing bid price of the Company\u2019s stock. Because of cash constraints, the Company has not been able to issue such shares. However, for accounting purposes, the Company has accounted for such shares as though they have been issued.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nPRINCIPAL SHAREHOLDERS\nThe following table sets forth information regarding the beneficial ownership of our common stock as of June 9,2019. The table includes:\n\u00b7 each of our directors and Named Executive Officers;\n\u00b7 all of our directors and executive officers as a group; and\n\u00b7 each person or entity known by us to be the beneficial owner of more than 5% of our common stock.",
+   "prose_after": "______________________\nThe information presented in the table above and footnotes is based solely upon Schedules and Reports filed by the respective holders under the Securities Exchange Act of 1934 and certain representations furnished to us by executive officers and Board members and has not been otherwise independently verified by us. To the extent that any required holders have not filed timely reports on such Forms, we would not be in a position to know the current holdings of such persons.\n(1) All shares are beneficially owned and sole voting and investment power is held by the persons named, except as otherwise noted.\n(2) Class B Common Stock is entitled to five votes per share but is otherwise substantially identical to the Class A Common Stock, which has one vote per share. Each share of Class B Common Stock is convertible into one share of Class A Common Stock.\n(3) Based upon 1,178,762 shares of Class A common stock and 567 shares of Class B common stock outstanding at June 1, 2019.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "Weighted average exercise price of outstanding options, warrants and rights",
+     "Number of securities remaining available for future issuance"
+    ],
+    [
+     "",
+     "(a)",
+     "(b)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "-",
+     "$0.00",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "-",
+     "$0.00",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "-",
+     "$0.00",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "(2) Class B Common Stock is entitled to five votes per share but is otherwise substantially identical to the Class A Common Stock, which has one vote per share. Each share of Class B Common Stock is convertible into one share of Class A Common Stock.\n(3) Based upon 1,178,762 shares of Class A common stock and 567 shares of Class B common stock outstanding at June 1, 2019.\n(4) The address for Messrs. Minkoff, Riscica, Feldman, and Kanter is c/o Magna-Lab Inc., 1662 Old Country Road, # 355, Plainview, NY 11803.\n(5) Includes the holding of The Kanter Family Foundation to which Mr. Kanter does not have sole voting or investment power.\n(6) The address for Magna Acquisition LLC is 8000 Towers Crescent Drive, Suite 1070, Vienna. VA 22182. Voting and investment decisions regarding the shares of Common Stock held by this entity are made by a majority of three persons, consisting of Messrs. Jerome\nM. Feldman and Joel S. Kanter, directors of our company, and Kenneth C. Riscica, an executive officer of our company.\nSECURITIES AUTHORIZED FOR ISSUANCE UNDER EQUITY COMPENSATION PLANS -",
+   "prose_after": "___________\nNote: The 90,000 shares previously reserved for issuance to management and the board of directors were approved to be issued effective July 24, 2008 as described further in Executive Compensation above.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nUp until February 28, 2009, Lawrence A. Minkoff, Ph.D. had made payments totaling approximately $68,000 to the Company\u2019s intellectual property counsel on behalf of the Company in an attempt to preserve intellectual property rights of the Company. The Company has recorded this as an amount payable to Dr. Minkoff.\nIn January 2017, the Company entered into an Asset Purchase Agreement (the \u201cPurchase Agreement\u201d) with Dr Minkoff. Under the Purchase Agreement, Dr. Minkoff purchased all of the intellectual property rights, any and all physical assets, any and all permits and all non-financial books, records, files, design specification, software and other data related to the Company\u2019s magnetic resonance imaging technology. In exchange for purchased assets, Dr. Minkoff (a) assumed all liabilities of the Company related exclusively to the purchased assets and (b) agreed to forgiveness of all indebtedness owing from the Company (including the $68,000 discussed in the previous paragraph) totaling approximately $110,000.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNo.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation of the Company. (1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 920,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "There were no fees billed for Audit-Related Services by RBSM LLP for each of the two fiscal years ended February 28, 2019.\nTAX FEES\nThere were no tax compliance, advice or planning fees billed by RBSM LLP to the Company for each of the two fiscal years ended February 28, 2019.\nALL OTHER FEES\n$-0- and $1,500 other fees were billed by RBSM LLP for each of the two fiscal years ended February 28, 2019 and 2018.\nPeriodically, generally annually, the Company\u2019s principal independent auditor, RBSM LLP, presents to the Company its estimate of its fees for the coming year. This estimate is reviewed and approved by the Audit Committee of the Board of Directors. The Company generally does not routinely procure non-audit services from RBSM LLP, however, such services would currently require the pre-approval of the Audit Committee.\nThe Company is not aware of any services provided by its principal independent auditor that are performed by other than such independent auditor\u2019s full-time, permanent employees.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\nExhibit",
+   "prose_after": "3.1(a) Form of Certificate of Amendment to Restated Certificate of Incorporation of the Company. (2)\n3.1(b) Certificate of Amendment of Restated Certificate of Incorporation. (3)\n3.1(c) Certificate of Amendment of Restated Certificate of Incorporation dated October 21, 2001. (8)\n3.1(d) Certificate of Amendment to the Certificate of Incorporation effecting the reverse stock split. (9)\n3.2 By-Laws of the Company. (1)\n3.2(a) Amendment to By-Laws of the Company. (2)\n4.1 Form of Specimen Class A Common Stock Certificate. (2)\n10.2 License Agreement, dated February 28, 1992, between the Company and Dr. Lawrence A. Minkoff. (1)\n10.3 Form of Indemnification Agreement entered into between the Company and each officer and Director of the Company. (1)\n10.4 Assignment from Dr. Lawrence Minkoff to the Company dated December 22, 1992. (1)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 913,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 963,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MAGNA-LAB INC."
+    ],
+    [
+     "Dated: June 12, 2019",
+     ""
+    ],
+    [
+     "",
+     "By: /s/ Lawrence A. Minkoff"
+    ],
+    [
+     "",
+     "Lawrence A. Minkoff"
+    ],
+    [
+     "",
+     "Chairman, President and Chief Scientific Officer"
+    ],
+    [
+     "",
+     "(principal executive officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By: /s/ Kenneth C. Riscica"
+    ],
+    [
+     "",
+     "Treasurer and Secretary (principal financial officer)"
+    ]
+   ],
+   "caption_stack": [
+    "MAGNA-LAB INC.",
+    "Dated: June 12, 2019",
+    "By: /s/ Lawrence A. Minkoff",
+    "Lawrence A. Minkoff",
+    "Chairman, President and Chief Scientific Officer",
+    "(principal executive officer)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1012,
+    "end_line": 1023
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "(10) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended May 31, 2017 10Q\n(11) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended August 31, 2017 10Q\n(12) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended November 31, 2017 10Q\n(13) Incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ended February 28, 2018 10K\n(14) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended May 31, 2018\n(15) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended August 31, 2018 10Q\n(16) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended November 30, 2018 10Q\n(17) Filed herewith\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the Registrant caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lawrence A. Minkoff",
+     "Chairman, President and Chief Scientific Officer and Director",
+     "June 12, 2019"
+    ],
+    [
+     "Lawrence A. Minkoff, Ph.D.",
+     "(principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jerome M. Feldman",
+     "Director",
+     "June 12, 2019"
+    ],
+    [
+     "Jerome M. Feldman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joel Kanter",
+     "Director",
+     "June 12, 2019"
+    ],
+    [
+     "Joel Kanter",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1026,
+    "end_line": 1041
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES:"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

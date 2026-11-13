@@ -1,0 +1,4570 @@
+{
+ "accession": "0000939802-11-000052",
+ "cik": "0000814926",
+ "form": "10-K",
+ "filing_date": "2011-03-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k123110.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "84-1047159"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation",
+     "(I.R.S. Employer No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______ to _______\nCommission File Number 000-28831\nCHDT CORPORATION\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "350 Jim Moran Boulevard, Suite 120\nDeerfield Beach, Florida 33442\n(Address of principal executive offices)\n(Zip Code)\n(954) 252-3440\n(Small business issuer\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nCOMMON STOCK, $0.0001 PAR VALUE\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item Number",
+     "Description",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I",
+     "",
+     "4"
+    ],
+    [
+     "Item 1.",
+     "The Company",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved SEC Staff Letters",
+     "16"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "16"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "17"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "18"
+    ],
+    [
+     "Item 4A.",
+     "Executive Officers",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     "19"
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters",
+     "19"
+    ],
+    [
+     "Item 6.",
+     "Management\u2019s Discussion and Analysis of Operation",
+     "20"
+    ],
+    [
+     "Item 7.",
+     "Financial Statements",
+     "28"
+    ],
+    [
+     "Item 8.",
+     "Change in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "28"
+    ],
+    [
+     "Item 8A(T).",
+     "Evaluation of Disclosure Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     "29"
+    ],
+    [
+     "Item 9.",
+     "Directors and Executive Officers of the Registrant",
+     "29"
+    ],
+    [
+     "Item 10.",
+     "Executive Compensation",
+     "29"
+    ],
+    [
+     "Item 11.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "30"
+    ],
+    [
+     "Item 12.",
+     "Certain Relationships and Related Transactions",
+     "30"
+    ],
+    [
+     "Item 13.",
+     "Exhibits, and Reports on Form 8-K",
+     "30"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees & Services",
+     "32"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting Company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting Company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting Company [X]\nIndicate by check mark whether the registrant is a shell Company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the average bid and asked price of such common equity as March 14, 2011 was approximately $ 2,573,296.\nNumber of shares outstanding of the Registrant\u2019s Common Stock, as of March 14, 2011, is 649,357,786.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Registrant\u2019s Definitive Information Statement under Regulation 14C to be filed within 120 days after the Registrant\u2019s fiscal year ended December 31, 2010, are incorporated by reference into Part III.\nTABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Report on Form 10-K contains statements that constitute \"forward-looking statements\u201d as defined under the Private Securities Litigation Reform Act 1995, as amended. Those statements appear in a number of places in this Form 10-K Report and include, without limitation, statements regarding the intent, belief and current expectations of the Company, its directors or its officers with respect to the Company's policies regarding investments, dispositions, financings, conflicts of interest and other matters; and trends affecting the Company's financial condition or results of operations. Forward looking statements include words like \u201cexpect,\u201d \u201canticipate,\u201d \u201chope,\u201d \u201cproject,\u201d \u201cmay\u201d or similar words. Any such forward-looking statement is not a guarantee of future performance and involves several risks and uncertainties, and actual results may differ materially from those in the forward-looking statement as a result of various factors \u2013 some factors being beyond the Company\u2019s control or ability to foresee. The accompanying information contained in this Form 10-K Report, including the \"Management's Discussion and Analysis of Results of Operations and Financial Condition,\" identifies important factors that could cause such differences. With respect to any such forward-looking statement that includes a statement of its underlying assumptions or bases, the Company cautions that, while it believes such assumptions or bases to be reasonable and has formed them in good faith, assumed facts or bases almost always vary from actual results, and the differences between assumed facts or bases and actual results can be significant or \u201cmaterial\u201d depending on the circumstances. When, in any forward-looking statement, the Company, or its management, expresses an expectation or belief as to future results, that expectation or belief is expressed in good faith and is believed to have a reasonable basis, but there can be no assurance that the stated expectation or belief will result or be achieved or accomplished. Further, the Company is a \"penny stock\" and a micro-cap Company with no primary market makers. Such a status makes highly risky any investment in the Company securities. The forward-looking statements in this Report on Form 10-K are made as of the date hereof, and we do not assume any obligation to update, amend or clarify them to reflect events, new information or circumstances occurring after the date hereof.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "high",
+     "low",
+     "high",
+     "low"
+    ],
+    [
+     "1st Quarter",
+     ".008",
+     ".008",
+     ".015",
+     ".008"
+    ],
+    [
+     "2nd Quarter",
+     ".008",
+     ".004",
+     ".029",
+     ".011"
+    ],
+    [
+     "3rd Quarter",
+     ".012",
+     ".008",
+     ".017",
+     ".010"
+    ],
+    [
+     "4th Quarter",
+     ".095",
+     ".0.006",
+     ".015",
+     ".009"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 477,
+    "end_line": 487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "On February 23, 2011 and without notice to the Company, OTC Bulletin Board moved the Company\u2019s Common Stock to the OTC QB quotation system along with some 622 other companies\u2019 securities. The Company understands that the basis for the move was that a market maker had not maintained a quote on the Common Stock for four consecutive business days in February 2011. The Company believes that the move of these securities was based on the fact that market makers do not have to pay a monthly fee to quote the securities quoted on the OTC QB while such a fee is required on the OTC Bulletin Board. The Common Stock continues to be quoted under the trading symbol \u201cCHDO.\u201d As of the date of this Report on Form 10-K, the Company is not aware of any negative consequences from the quotation of the Common Stock on the OTC QB. The Company is endeavoring to restore the quotation of the Common Stock on the OTC Bulletin Board by asking market makers to file the requisite Form 211 with FINRA. The Company has been advised by a market maker that such a filing has been made and, while the status of the filing cannot be verified by the Company because it is not the filing party, legal counsel to the Company has verified with FINRA that an open file exits for the Company (which open file status typically means a pending Form 211 filing). The Company expects that the Form 211 will be processed by and hopefully approved by FINRA by the end of March 2011.",
+   "prose_after": "We changed our name and trading symbol on the OTC Bulletin Board in second fiscal quarter of 2007 from \u201cChina Direct Trading Corporation\u201d and CHDT.OB\u201d to \u201cCHDT Corporation\u201d and \u201cCHDO.OB,\u201d respectively. We changed our name because we believed that the old name did not accurately reflect the current business and strategy of our Company.\nDividend Policy\nWe have not declared or paid any cash or other dividends on shares of our Common Stock in the last five years, and we presently have no intention of paying any cash dividends on shares of our Common Stock. We do not currently anticipate, based on existing financial performance, to be declaring or paying dividends on any series of our preferred stock in the foreseeable future. Our current policy is to retain earnings, if any, to finance the expansion and development of our business. The future payment of dividends on shares of our Common Stock will be at the sole discretion of our board of directors, but we do not anticipate declaring or paying any dividends in the foreseeable future due to our need to fund business and product development.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PAGE",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-1",
+     "Report of Independent Registered Public Accountants"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-2",
+     "Consolidated Balance Sheets as of December 31, 2010, and 2009"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-4",
+     "Consolidated Statements of Operations for the years ended December 31, 2010 and 2009"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-5",
+     "Consolidated Statement of Stockholders' Equity For the Years Ended December 31, 2010 and 2009"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-6",
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2010 and 2009"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "F-7",
+     "Notes to Consolidated Financial Statements"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 670,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Item 11. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nInformation regarding security ownership of certain beneficial owners and management is incorporated by reference to the information set forth under the caption \u201cSecurity Ownership of Certain Beneficial Owners and Management Ownership\" in our Information Statement to be filed with the Commission within 120 days after the end of our year ended December 31, 2010.\nItem 12. Certain Relationships and Related Transactions, Director Independence and Potential Conflicts of Interest.\nInformation regarding certain relationships and related transactions is incorporated by reference to the information set forth under the caption \"Certain Relationships and Related Transactions\" in our Information Statement to be filed with the Commission within 120 days after the end of our year ended December 31, 2010.\nItem 13. Exhibits, and Reports on Form 8-K\n(a) The following documents are filed as part of this report.\n1. FINANCIAL STATEMENTS",
+   "prose_after": "2. FINANCIAL STATEMENT SCHEDULES\nThe following financial statement schedules required by Regulation S-X are included herein. All schedules are omitted because they are not applicable or the required information is shown in the financial statements or notes thereto.\n3. EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT #",
+     "DESCRIPTION OF EXHIBIT"
+    ],
+    [
+     "2.1",
+     "Purchase Agreement, dated January 27, 2006, by and among CHDT Corporation, William Dato and Complete Power Solutions, LLC. +"
+    ],
+    [
+     "2.1.1",
+     "Purchase and Settlement Agreement by and among CHDT Corporation, Complete Power Solutions, LLC, William Dato and Howard Ullman, January 26, 2007 ++"
+    ],
+    [
+     "2.1.1.1",
+     "Stock Purchase Agreement dated September 15, 2006, by and between CHDT Corporation, and Capstone Industries, Inc. +++"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of CHDT Corp.*"
+    ],
+    [
+     "3.1.1",
+     "Amendment to the Articles of Incorporation of CHDT Corp. **"
+    ],
+    [
+     "3.2",
+     "By-laws of the Company***"
+    ],
+    [
+     "3.3",
+     "Certificate of Designation of the Preferences, Limitations, and Relative Rights of Series B Convertible Preferred Stock of CHDT Corp. ****"
+    ],
+    [
+     "10.1",
+     "Voting Agreement, dated January 27, 2006, by and among CHDT Corp., William Dato and Howard Ullman. +"
+    ],
+    [
+     "10.2",
+     "Operating Agreement, dated January 27, 2006, for Complete Power Solutions, LLC. +"
+    ],
+    [
+     "10.3",
+     "Employment Agreement dated January 27, 2006, by and between William Dato, CHDT Corporation and Complete Power Solutions, LLC. +"
+    ],
+    [
+     "10.4",
+     "Purchase Agreement, dated December 1, 2007, by Capstone Industries, Inc. and Magnet World, Ltd. For sale of operating assets of Souvenir Direct, Inc. ++++"
+    ],
+    [
+     "10.6",
+     "2005 Equity Plan of CHDT Corp.^^"
+    ],
+    [
+     "10.7",
+     "2011 Employment Agreement by Stewart Wallach and CHDT Corp.^ ^"
+    ],
+    [
+     "10.8",
+     "2011 Employment Agreement by James Gerald (Gerry) McClinton and CHDT Corp. ^^"
+    ],
+    [
+     "10.9",
+     "2011 Employment Agreement by Howard Ullman and CHDT Corp.^^"
+    ],
+    [
+     "10.10",
+     "Form of Non-Qualified Stock Option+"
+    ],
+    [
+     "10.11",
+     "Non-Employee Director Compensation^^"
+    ],
+    [
+     "14",
+     "Code of Ethics Policy, dated December 31, 2006+++++"
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by Stewart Wallach, Chief Executive Officer^"
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by Gerry McClinton, Chief Financial Officer and Chief Operating Officer^"
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, by Stewart Wallach, Chief Executive Officer. ^"
+    ],
+    [
+     "32.2",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by Gerry McClinton, Chief Financial Officer & Chief Operating Officer^"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Incorporated by reference to Annex G to the Special Meeting Proxy Statement, Dated April 15, 2004, filed by CHDT Corporation with the Commission on April 20, 2004."
+    ],
+    [
+     "**",
+     "Incorporated by reference to Exhibit 3(I) to the Form 8-K filed by CHDT Corporation with the Commission on July 10, 2007."
+    ],
+    [
+     "***",
+     "Incorporated by reference to Annex H the Special Meeting Proxy Statement, Dated April 15, 2004, filed by CHDT Corporation with the Commission on April 20, 2004."
+    ],
+    [
+     "****",
+     "Incorporated by reference to Exhibit 99.2 to the Form 8-K filed by CHDT Corp. With the Commission on November 6, 2007."
+    ],
+    [
+     "+",
+     "Incorporated by reference to Exhibit 2 to the Form 8-K filed by CHDT Corporation with the Commission on January 31, 2006."
+    ],
+    [
+     "++",
+     "Incorporated by reference to Exhibit 2 to the Form 8-K filed by CHDT Corporation with the Commission on January 26, 2007."
+    ],
+    [
+     "+++",
+     "Incorporated by reference to Exhibit 2.1 to the Form 8-K filed by CHDT Corporation with the Commission on September 18, 2006."
+    ],
+    [
+     "++++",
+     "Incorporated by reference to Exhibit 99 to the Form 8-K filed by CHDT Corp. With the Commission on December 3, 2007."
+    ],
+    [
+     "+++++",
+     "Incorporated by reference to Exhibit 14 to the Form 10-KSB for the fiscal year ended December 31, 2006 and filed by CHDT Corp. With the Commission on April 17, 2007."
+    ],
+    [
+     "^^",
+     "Filed as an exhibit to the Form 10-K for the fiscal year ending December 31, 2007."
+    ],
+    [
+     "^",
+     "Filed Herein."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 732
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2. FINANCIAL STATEMENT SCHEDULES\nThe following financial statement schedules required by Regulation S-X are included herein. All schedules are omitted because they are not applicable or the required information is shown in the financial statements or notes thereto.\n3. EXHIBITS",
+   "prose_after": "(b) Reports on Form 8-K filed.\nThe following reports were filed during the last quarter of the 2010 fiscal year: January 11, 2010; January 22, 2010; May 7, 2010; September 1, 2010; October 12, 2010; and November 16, 2010.\nItem 14. Principal Accountant Fees & Services\nThe following is a summary of the fees billed to us by Robison, Hill & Company for professional services rendered for the years ended December 31, 2010 and 2009:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "53,855",
+     "$",
+     "55,005"
+    ],
+    [
+     "Tax Fees",
+     "$",
+     "2,500",
+     "$",
+     "2,500"
+    ],
+    [
+     "Total",
+     "$",
+     "56,355",
+     "$",
+     "57,505"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "(b) Reports on Form 8-K filed.\nThe following reports were filed during the last quarter of the 2010 fiscal year: January 11, 2010; January 22, 2010; May 7, 2010; September 1, 2010; October 12, 2010; and November 16, 2010.\nItem 14. Principal Accountant Fees & Services\nThe following is a summary of the fees billed to us by Robison, Hill & Company for professional services rendered for the years ended December 31, 2010 and 2009:",
+   "prose_after": "Audit Fees. Consists of fees billed for professional services rendered for the audits of our consolidated financial statements, reviews of our interim consolidated financial statements included in quarterly reports, services performed in connection with filings with the Securities & Exchange Commission and related comfort letters and other services that are normally provided by Robison, Hill & Company in connection with statutory and regulatory filings or Engagements.\nTax Fees. Consists of fees billed for professional services for tax compliance, tax advice and tax planning. These services include assistance regarding federal, state and local tax compliance and consultation in connection with various transactions and acquisitions.\nAUDIT COMMITTEE PRE-APPROVAL OF AUDIT AND PERMISSIBLE NON-AUDIT SERVICES OF INDEPENDENT AUDITORS\nThe Audit Committee is to pre-approve all audit and non-audit services provided by the independent auditors. These services may include audit services, audit-related services, tax services and other services as allowed by law or regulation. Pre-approval is generally provided for up to one year and any pre-approval is detailed as to the particular service or category of services and is generally subject to a specifically approved amount. The independent auditors and management are required to periodically report to the Audit Committee regarding the extent of services provided by the independent auditors in accordance with this pre-approval and the fees incurred to date. The Audit Committee may also pre-approve particular services on a case-by-case basis.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accountants",
+     "F - 1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     ""
+    ],
+    [
+     "December 31, 20109 and 2009",
+     "F - 2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the",
+     ""
+    ],
+    [
+     "Years Ended December 31, 20109 and 2009",
+     "F - 4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Stockholders' Equity for the",
+     ""
+    ],
+    [
+     "Years Ended December 31, 20109 and 2009",
+     "F - 5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the",
+     ""
+    ],
+    [
+     "Years Ended December 31, 20109 and 2009",
+     "F - 6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F - 7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 779,
+    "end_line": 799
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "The Audit Committee is to pre-approve all audit and non-audit services provided by the independent auditors. These services may include audit services, audit-related services, tax services and other services as allowed by law or regulation. Pre-approval is generally provided for up to one year and any pre-approval is detailed as to the particular service or category of services and is generally subject to a specifically approved amount. The independent auditors and management are required to periodically report to the Audit Committee regarding the extent of services provided by the independent auditors in accordance with this pre-approval and the fees incurred to date. The Audit Committee may also pre-approve particular services on a case-by-case basis.\nThe Audit Committee pre-approved 100% of the Company's 2010 audit fees, audit-related fees, tax fees, and all other fees to the extent the services occurred after the effective date of the Securities and Exchange Commission\u2019s final pre-approval rules.\nCHDT CORPORATION\nAND SUBSIDIARIES\n-:-\nINDEPENDENT REGISTERED PUBLIC ACCOUNTANTS\u2019 REPORT\nDECEMBER 31, 2010 AND 2009\nCONTENTS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 776,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ROBISON, HILL & CO.",
+     "",
+     "",
+     "",
+     "Certified Public Accountants"
+    ],
+    [
+     "A PROFESSIONAL CORPORATION",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "BRENT M. DAVIES, CPA"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "DAVID O. SEAL, CPA"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "W. DALE WESTENSKOW, CPA"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "BARRY D. LOVELESS, CPA"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "STEPHEN M. HALLEY, CPA"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 802,
+    "end_line": 811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTANTS\nTo the Board of Directors and Shareholders\nCHDT Corporation and Subsidiaries\nWe have audited the accompanying consolidated balance sheets of CHDT Corporation and Subsidiaries as of December 31, 2010 and 2009 and the related consolidated statements of operations, stockholders\u2019 equity and cash flows for the years then ended. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CHDT CORPORATION AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "115,239",
+     "",
+     "$",
+     "266,867",
+     ""
+    ],
+    [
+     "Accounts receivable - net",
+     "",
+     "1,256,913",
+     "",
+     "",
+     "1,341,883",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "387,990",
+     "",
+     "",
+     "397,908",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "527,562",
+     "",
+     "",
+     "57,076",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,287,704",
+     "",
+     "",
+     "2,063,734",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment & software",
+     "",
+     "64,047",
+     "",
+     "",
+     "63,448",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "487,538",
+     "",
+     "",
+     "461,146",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "5,665",
+     "",
+     "",
+     "5,665",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(486,974)",
+     "",
+     "",
+     "(353,854)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fixed Assets",
+     "",
+     "70,276",
+     "",
+     "",
+     "176,405",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Non-current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product development costs - net",
+     "",
+     "18,895",
+     "",
+     "",
+     "44,756",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,936,020",
+     "",
+     "",
+     "1,936,020",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "-",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Non-current Assets",
+     "",
+     "1,954,915",
+     "",
+     "",
+     "1,995,776",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "4,312,895",
+     "",
+     "$",
+     "4,235,915",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHDT CORPORATION AND SUBSIDIARIES",
+    "CONSOLIDATED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 832,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of CHDT Corporation and Subsidiaries as of December 31, 2010 and 2009 and the results of its operations and its cash flows for the years ended December 31, 2010 and 2009 in conformity with accounting principles generally accepted in the United States of America.\n/s/ ROBISON, HILL & CO.\nCertified Public Accountants\nSalt Lake City, Utah\nMarch 14, 2011",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 873,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CHDT CORPORATION AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Continued)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "259,788",
+     "",
+     "$",
+     "306,196",
+     ""
+    ],
+    [
+     "Note payable - Sterling Factors",
+     "",
+     "889,708",
+     "",
+     "",
+     "1,277,151",
+     ""
+    ],
+    [
+     "Notes and loans payable to related parties - current maturities",
+     "",
+     "1,550,144",
+     "",
+     "",
+     "1,198,288",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "2,699,640",
+     "",
+     "",
+     "2,781,635",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long Term Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes and loans payable to related parties - Long Term",
+     "",
+     "671,313",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "3,370,953",
+     "",
+     "",
+     "2,781,635",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, Series A, par value $.001 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 100,000,000 shares, issued -0- shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "at December 31, 2010 and December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Stock, Series B, par value $.10 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 100,000,000 shares, issued -0- shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "at March 31, 2009 and December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, Series B-1, par value $.0001 per share",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Authorized 50,000,000 shares, issued -0- shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "at December 31, 2010 and December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Stock, Series C, par value $1.00 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 1,000 shares, issued 1,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "at December 31, 2010 and December 31, 2009",
+     "",
+     "1,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Common Stock, par value $.0001 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 850,000,000 shares,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued 649,357,786 shares at December 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and December 31, 2009",
+     "",
+     "64,936",
+     "",
+     "",
+     "64,863",
+     ""
+    ],
+    [
+     "Related party receivable",
+     "",
+     "(40,441)",
+     "",
+     "",
+     "(40,441)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "6,961,187",
+     "",
+     "",
+     "6,734,720",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(6,044,740)",
+     "",
+     "",
+     "(5,305,862)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity",
+     "",
+     "941,942",
+     "",
+     "",
+     "1,454,280",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "4,312,895",
+     "",
+     "$",
+     "4,235,915",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHDT CORPORATION AND SUBSIDIARIES",
+    "CONSOLIDATED BALANCE SHEETS",
+    "(Continued)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 874,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 873,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CHDT CORPORATION AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Twelve Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "5,287,261",
+     "",
+     "",
+     "6,161,367",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "(3,674,819)",
+     "",
+     "",
+     "(4,350,019)",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "1,612,442",
+     "",
+     "",
+     "1,811,348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "414,670",
+     "",
+     "",
+     "355,480",
+     ""
+    ],
+    [
+     "Compensation",
+     "",
+     "955,860",
+     "",
+     "",
+     "1,283,262",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "116,120",
+     "",
+     "",
+     "265,434",
+     ""
+    ],
+    [
+     "Product Development",
+     "",
+     "140,917",
+     "",
+     "",
+     "198,134",
+     ""
+    ],
+    [
+     "Other general and administrative",
+     "",
+     "464,151",
+     "",
+     "",
+     "542,210",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "2,091,718",
+     "",
+     "",
+     "2,644,520",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Income (Loss)",
+     "",
+     "(479,276)",
+     "",
+     "",
+     "(833,172)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Miscellaneous income",
+     "",
+     "-",
+     "",
+     "",
+     "57",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(259,602)",
+     "",
+     "",
+     "(266,132)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "-",
+     "",
+     "",
+     "179",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(259,602)",
+     "",
+     "",
+     "(265,896)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(738,878)",
+     "",
+     "",
+     "(1,099,068)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) per Common Share",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "648,831,416",
+     "",
+     "",
+     "563,178,018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHDT CORPORATION AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CHDT CORPORATION AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "YEARS ENDED DECEMBER 31, 2010 AND 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Series B",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Series C",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Retained",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2009",
+     "",
+     "60",
+     "",
+     "$",
+     "1",
+     "",
+     "",
+     "2,108,813",
+     "",
+     "$",
+     "210,882",
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "557,941,646",
+     "$",
+     "55,794",
+     "$",
+     "5,585,702",
+     "$",
+     "(4,206,794)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "February 2009-Common shares issued   for consulting fees",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,100,000",
+     "",
+     "210",
+     "",
+     "20,790",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series B Preferred Shares returned to   treasury and cancelled",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(779,813)",
+     "",
+     "",
+     "(77,982)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "77,982",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series A Preferred Shares returned to   treasury and cancelled",
+     "",
+     "(60)",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series B Preferred Shares converted   to common shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,329,000)",
+     "",
+     "",
+     "(132,900)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "88,591,140",
+     "",
+     "8,859",
+     "",
+     "124,041",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series C Preferred Shares issued for cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     "",
+     "1,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "699,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options for compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "227,204",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,099,068)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     "",
+     "1,000",
+     "",
+     "648,632,786",
+     "",
+     "64,863",
+     "",
+     "6,734,720",
+     "",
+     "(5,305,862)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 2010-Common shares issued   for consulting fees",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "725,000",
+     "",
+     "73",
+     "",
+     "6,452",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock options for compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "220,015",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(738,878)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "1,000",
+     "$",
+     "1,000",
+     "",
+     "649,357,786",
+     "$",
+     "64,936",
+     "$",
+     "6,961,187",
+     "$",
+     "(6,044,740)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHDT CORPORATION AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+    "YEARS ENDED DECEMBER 31, 2010 AND 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 979,
+    "end_line": 1015
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CHDT CORPORATION AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Twelve Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(738,878)",
+     "",
+     "$",
+     "(1,099,068)",
+     ""
+    ],
+    [
+     "Adjustments necessary to reconcile net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for expenses",
+     "",
+     "6,525",
+     "",
+     "",
+     "21,000",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "177,655",
+     "",
+     "",
+     "230,048",
+     ""
+    ],
+    [
+     "Compensation expense from stock options",
+     "",
+     "220,015",
+     "",
+     "",
+     "227,204",
+     ""
+    ],
+    [
+     "(Increase) decrease in accounts receivable",
+     "",
+     "84,972",
+     "",
+     "",
+     "1,057,976",
+     ""
+    ],
+    [
+     "(Increase) decrease in inventory",
+     "",
+     "9,918",
+     "",
+     "",
+     "(10,159)",
+     ""
+    ],
+    [
+     "(Increase) decrease in prepaid expenses",
+     "",
+     "(470,486)",
+     "",
+     "",
+     "26,770",
+     ""
+    ],
+    [
+     "(Increase) decrease in deposits",
+     "",
+     "15,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in other assets",
+     "",
+     "(18,675)",
+     "",
+     "",
+     "(37,142)",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable and accrued expenses",
+     "",
+     "(120,108)",
+     "",
+     "",
+     "(1,518,099)",
+     ""
+    ],
+    [
+     "Increase (decrease) in accrued interest on notes payable",
+     "",
+     "67,308",
+     "",
+     "",
+     "12,880",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(766,754)",
+     "",
+     "",
+     "(1,088,590)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(26,991)",
+     "",
+     "",
+     "(55,518)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "(26,991)",
+     "",
+     "",
+     "(55,518)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of Stock",
+     "",
+     "-",
+     "",
+     "",
+     "700,000",
+     ""
+    ],
+    [
+     "Proceeds from notes payable",
+     "",
+     "2,399,340",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments of notes payable",
+     "",
+     "(2,786,784)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from notes and loans payable to related parties",
+     "",
+     "3,114,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments of notes and loans payable to related parties",
+     "",
+     "(2,084,439)",
+     "",
+     "",
+     "554,604",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "642,117",
+     "",
+     "",
+     "1,254,604",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Decrease) Increase in Cash and Cash Equivalents",
+     "",
+     "(151,628)",
+     "",
+     "",
+     "110,496",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents at Beginning of Period",
+     "",
+     "266,867",
+     "",
+     "",
+     "156,371",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents at End of Period",
+     "$",
+     "115,239",
+     "",
+     "$",
+     "266,867",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "197,733",
+     "",
+     "$",
+     "242,718",
+     ""
+    ],
+    [
+     "Franchise and income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable converted to accounts payable",
+     "$",
+     "73,700.00",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHDT CORPORATION AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1016,
+    "end_line": 1077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 1 - ORGANIZATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nThis summary of accounting policies for CHDT Corporation, a Florida corporation (formerly, \u201cChina Direct Trading Corporation\u201d) (\u201cCompany\u201d or \u201cCHDT\u201d) and its wholly-owned subsidiaries (\u201cSubsidiaries\u201d) is presented to assist in understanding the Company's financial statements. The accounting policies conform to generally accepted accounting principles and have been consistently applied in the preparation of the financial statements. CHDT changed its name to \u201cCHDT Corporation\u201d by amending its Articles of Incorporation, which name change was effective July 16, 2007 in respect of NASD Regulation, Inc. and OTC Bulletin Board approval of the name change, the trading symbol change from \u201cCHDT.OB\u201d to \u201cCHDO.OB\u201d and change in CUSIP Number for CHDT Common Stock and effective May 7, 2007 in terms of approval by the State of Florida of the charter amendment.\nOrganization and Basis of Presentation\nCHDT was initially incorporated September 18, 1986 under the laws of the State of Delaware under the name \"Yorkshire Leveraged Group, Incorporated\", and then changed its domicile situs to Colorado in 1989 by merging into a Colorado corporation, named \"Freedom Funding, Inc.\" Freedom Funding, Inc. then changed its name to \"CBQ, Inc.\" by amendment of its Articles of Incorporation on November 25, 1998. In May 2004, the Company changed its name from \u201cCBQ, Inc.\u201d to \u201cChina Direct Trading Corporation\u201d as part of a reincorporation from the State of Colorado to the State of Florida. Effective May 7, 2007, the Company amended its charter to change its name from \u201cChina Direct Trading Corporation\u201d to \u201cCHDT Corporation.\u201d This name change was effective as of July 16, 2007 for purposes of the change of its name on the OTC Bulletin Board.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Computer equipment",
+     "3 - 7 years"
+    ],
+    [
+     "Computer software",
+     "3 - 7 years"
+    ],
+    [
+     "Machinery and equipment",
+     "3 - 7 years"
+    ],
+    [
+     "Furniture and fixtures",
+     "3 - 7 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1121,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "ORGANIZATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "As of December 31, 2010, management has determined that the accounts receivable are fully collectible. As such, management has not recorded an allowance for doubtful accounts.\nInventory\nThe Company's inventory, which is recorded at lower of cost (first-in, first-out) or market, consists of finished goods for resale by Capstone, totaling $387,990and $397,908 at December 31, 2010 and December 31, 2009, respectively.\nBBI (previously \u201cOverseas Building Supply, L.C.\u201d) had inventory of $40,441 at December 31, 2007. During 2008, a director and shareholder of the Company took the remaining inventory of BBI and agreed to pay the Company for the cost of the inventory, which was $40,441. As a result, the inventory was removed from the balance sheet as an asset, and a shareholder receivable was recorded and disclosed in the equity section of the balance sheet.\nProperty and Equipment\nFixed assets are stated at cost. Depreciation and amortization are computed using the straight- line method over the estimated economic useful lives of the related assets as follows:",
+   "prose_after": "Long-lived assets to be held and used are reviewed for impairment whenever events or changes in circumstances indicate that the related carrying amount may not be recoverable. When required, impairment losses on assets to be held and used are recognized based on the fair value of the asset. Long-lived assets to be disposed of, if any, are reported at the lower of carrying amount or fair value less cost to sell. No impairments were recognized by the Company during 2010.\nUpon sale or other disposition of property and equipment, the cost and related accumulated depreciation or amortization are removed from the accounts and any gain or loss is included in the determination of income or loss.\nExpenditures for maintenance and repairs are charged to expense as incurred. Major overhauls and betterments are capitalized and depreciated over their estimated economic useful lives.\nDepreciation expense was $133,120 and $133,961 for the years ended December 31, 2010 and 2009, respectively.\nGoodwill and Other Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Gross Revenue %",
+     "",
+     "Accounts Receivable",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "2009",
+     "2010",
+     "2009"
+    ],
+    [
+     "Customer A",
+     "42%",
+     "41%",
+     "$          82,041",
+     "$             2500"
+    ],
+    [
+     "Customer B",
+     "23%",
+     "24%",
+     "987,231",
+     "0"
+    ],
+    [
+     "Customer C",
+     "6%",
+     "23%",
+     "48,046",
+     "1,305,821"
+    ],
+    [
+     "",
+     "71%",
+     "88%",
+     "$     1,117,318",
+     "$     1,308,321"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1278,
+    "end_line": 1290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CONCENTRATIONS OF CREDIT RISK AND ECONOMIC DEPENDENCE"
+    }
+   },
+   "prose_before": "The Company at times has cash and cash equivalents with its financial institution in excess of Federal Deposit Insurance Corporation (FDIC) insurance limits. The Company places its cash and cash equivalents with high credit quality financial institutions, which minimize these risks. As of December 31, 2010, the Company had no cash in excess of FDIC limits.\nAccounts Receivable\nThe Company grants credit to its customers, substantially all of whom are retail establishments located throughout the United States. The Company typically does not require collateral from customers. Credit risk is limited due to the financial strength of the customers comprising the Company\u2019s customer base and their dispersion across different geographical regions. The Company monitors exposure of credit losses and maintains allowances for anticipated losses considered necessary under the circumstances.\nNOTE 2 \u2013 CONCENTRATIONS OF CREDIT RISK AND ECONOMIC DEPENDENCE (continued)\nMajor Customers\nThe Company had three customers who comprised at least ten percent (10%) of gross revenue during the fiscal years ended December 31, 2010 and 2009. The loss of these customers would adversely impact the business of the Company. The percentage of gross revenue and the accounts receivable from each of these customers is as follows:",
+   "prose_after": "Major Vendors\nThe Company had three vendors from which it purchased at least ten percent (10%) of merchandise during the fiscal year ended December 31, 2010 and four vendors from which it purchased at least ten percent (10%) of merchandise during the fiscal year ended December 31, 2009. The loss of these suppliers would adversely impact the business of the Company. The percentage of purchases, and the related accounts payable from each of these vendors is as follows:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Purchases %",
+     "",
+     "Accounts Payable",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "2009",
+     "2010",
+     "2009"
+    ],
+    [
+     "Vendor A",
+     "71%",
+     "36%",
+     "$     24,597",
+     "$             -"
+    ],
+    [
+     "Vendor B",
+     "17%",
+     "25%",
+     "14,701",
+     "2524"
+    ],
+    [
+     "Vendor C",
+     "9%",
+     "17%",
+     "0",
+     "12,688"
+    ],
+    [
+     "Vendor D",
+     "0%",
+     "10%",
+     "0",
+     "75,525"
+    ],
+    [
+     "",
+     "97%",
+     "88%",
+     "$     39,298",
+     "$    90,737"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CONCENTRATIONS OF CREDIT RISK AND ECONOMIC DEPENDENCE"
+    }
+   },
+   "prose_before": "Major Vendors\nThe Company had three vendors from which it purchased at least ten percent (10%) of merchandise during the fiscal year ended December 31, 2010 and four vendors from which it purchased at least ten percent (10%) of merchandise during the fiscal year ended December 31, 2009. The loss of these suppliers would adversely impact the business of the Company. The percentage of purchases, and the related accounts payable from each of these vendors is as follows:",
+   "prose_after": "NOTE 3 \u2013 NOTES PAYABLE\nSterling Bank\nOn May 1, 2008, Capstone secured a conventional $2,000,000 asset based loan agreement from Sterling National Bank, located in New York City whereby Capstone received a credit line to fund working capital needs. The loan provides funding for an amount up to 85% of eligible Capstone accounts receivable and 50% of eligible Capstone inventory. The interest rate of the loan is the Wall Street Journal prime rate plus one and one-half percent per annum. CHDT and Howard Ullman, the Chairman of the Board of Directors of CHDT, have personally guaranteed Capstone\u2019s obligations under the Loan. As part of the loan agreement with Sterling National Bank, a subordination agreement was executed with Howard Ullman, a shareholder and director of the Company. These agreements subordinated the debt of $121,263 (plus future interest) and $546,025 due to Howard Ullman to the Sterling National Bank loan. No payments will be made on the subordinated debt until the Sterling Bank is paid in full, except for scheduled payments of interest.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "2011",
+     "$",
+     "1,550,144"
+    ],
+    [
+     "2012",
+     "",
+     "671,313"
+    ],
+    [
+     "2013",
+     "",
+     "-"
+    ],
+    [
+     "2014",
+     "",
+     "-"
+    ],
+    [
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Total future maturities",
+     "$",
+     "2,221,457"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "Average",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "Remaining",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Exercise\n\nPrice",
+     "",
+     "Contractual\n\nTerm (Years)",
+     "",
+     "Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, January 1, 2009",
+     "",
+     "64,433,333",
+     "$",
+     "0.029",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "4,500,000",
+     "",
+     "0.029",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited/expired",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2009",
+     "",
+     "68,933,333",
+     "",
+     "0.29",
+     "",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "4,800,000",
+     "",
+     "0.29",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited/expired",
+     "",
+     "4,000,000",
+     "",
+     "0.029",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31 , 2010",
+     "",
+     "69,733,333",
+     "$",
+     "0.029",
+     "",
+     "5.92",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested/exercisable at December 31, 2008",
+     "",
+     "43,102,777",
+     "$",
+     "0.029",
+     "",
+     "6.37",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested/exercisable at December 31, 2009",
+     "",
+     "57,266,667",
+     "$",
+     "0.029",
+     "",
+     "6.99",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested/exercisable at December  31, 2010",
+     "",
+     "53,936,666",
+     "$",
+     "0.029",
+     "",
+     "5.95",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1654,
+    "end_line": 1686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "On April 23rd, 2010, the Company granted 4,500,000 stock options to four directors of the Company and 300,000 stock options to the Company Secretary. The options vest over one year.\nThe Binomial Lattice (Suboptimal) option pricing model was used to calculate the fair value of the options granted. For the years ended December 31, 2010, the Company recognized compensation expense of $27,000 related to these options. The following assumptions were used in the fair value calculations:\nRisk free rate \u2013 2.61%\nExpected term \u2013 5 to 10 years\nExpected volatility of stock \u2013 500.5%\nExpected dividend yield \u2013 0%\nSuboptimal Exercise Behavior Multiple \u2013 2.0\nNumber of Steps \u2013 100\nThe Company will recognize compensation expense of $12,000 in 2011 related to these stock options.\nThe following table sets forth the Company\u2019s stock options outstanding as of December 31, 2010 and 2009 and activity for the years then ended:",
+   "prose_after": "NOTE 7 - STOCK TRANSACTIONS (continued)\nThe following table summarizes the information with respect to options granted, outstanding and exercisable under the 2005 plan:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1628,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1686,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "Options Outstanding",
+     "Remaining Contractual Life in Years",
+     "Average Exercise Price",
+     "Number of Options Currently Exercisable"
+    ],
+    [
+     "$.02",
+     "250,000",
+     "4.42",
+     "$.020",
+     "250,000"
+    ],
+    [
+     "$.029",
+     "54,983,333",
+     "6.33",
+     "$.029",
+     "43,986,666"
+    ],
+    [
+     "$.029",
+     "2,500,000",
+     "7.33",
+     "$.029",
+     "2,500,000"
+    ],
+    [
+     "$.029",
+     "700,000",
+     "8.33",
+     "$.029",
+     "700,000"
+    ],
+    [
+     "$.029",
+     "1,000,000",
+     "7.00",
+     "$.029",
+     "1,000,000"
+    ],
+    [
+     "$.029",
+     "150,000",
+     "7.08",
+     "$.029",
+     "150,000"
+    ],
+    [
+     "$.029",
+     "850,000",
+     "8.42",
+     "$.029",
+     "850,000"
+    ],
+    [
+     "$.029",
+     "4,500,000",
+     ".42",
+     "$.029",
+     "4,500,000"
+    ],
+    [
+     "$.029",
+     "4,500,000",
+     "4.330",
+     "$.029",
+     "-"
+    ],
+    [
+     "$.029",
+     "300,000",
+     "9.330",
+     "$.029",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1692,
+    "end_line": 1707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "NOTE 7 - STOCK TRANSACTIONS (continued)\nThe following table summarizes the information with respect to options granted, outstanding and exercisable under the 2005 plan:",
+   "prose_after": "NOTE 8 \u2013 BUSINESS ACQUISITIONS AND DISPOSALS\nComplete Power Solutions\nOn January 27, 2006, the Company entered into a Purchase Agreement (the \"Purchase Agreement\") with William Dato and Complete Power Solutions (\"CPS\") pursuant to which the Company acquired 51% of the member interests of CPS owned by Mr. Dato for a purchase price consisting of the payment of $637,000 in cash and the delivery of 600,000 shares of Company's Series A Convertible Preferred Stock (the \"Series A Preferred Stock\") having a stated value of $1,200,000, which Series A Preferred Stock are convertible into 50,739,958 shares of the Company's Common Stock at the demand of Mr. Dato. The cash paid in the transaction was obtained from capital provided to the Company for use in connection with acquisitions by Howard Ullman, our Chief Executive Officer and President, and certain of our directors and principal shareholders.\nOn January 26, 2007, the Company entered into a Purchase and Settlement Agreement (the \"Settlement Agreement\"), dated and effective as of December 31, 2006, with William Dato and CPS whereby: (a) CPS repurchased the 51% membership interest owned by China Direct in return for the transfer of the 600,000 shares of the Company\u2019s \"Series A Preferred Stock\u201d, which are convertible into 50,739,958 shares of the Company's common stock, and (b) the issuance of a promissory note by CPS to CHDT for 225,560, bearing annual interest at 7% with interest-only payments commencing on July 1, 2007 and thereafter being paid quarterly on April 1st, July 1st, October 1st, and January 1st until the principal and all unpaid interest thereon shall become due and payable on the maturity date, being January 6, 2010 (the \u201c2007 Promissory Note\u201d). The 2007 Promissory Note also provides that the principal amount may be automatically increased by an amount of up to $7,500 if the amount of a customer claim is settled for less than $7,500. As of the date of this report the principal amount has not been increased by an amount up to $7,500, as described above. The shares were valued at $1,775,864 based on the market value of the common stock that the shares are convertible into.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1686,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "33,676",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "208,851",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "340,109",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "7,500",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "16,127",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,936,020",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(417,283)",
+     ""
+    ],
+    [
+     "Loan payable to China Direct",
+     "",
+     "(125,000)",
+     ""
+    ],
+    [
+     "Total purchase price",
+     "$",
+     "2,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1736,
+    "end_line": 1749
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 BUSINESS ACQUISITIONS AND DISPOSALS"
+    }
+   },
+   "prose_before": "On September 13, 2006, the Company entered into a Stock Purchase Agreement (the Purchase Agreement) with Capstone Industries, Inc., a Florida corporation (Capstone), engaged in the business of producing and selling portable book lights and related consumer goods, and Stewart Wallach, the sole shareholder of Capstone. Under the Stock Purchase Agreement the Company acquired 100% of the issued and outstanding shares of Capstone Common Stock in exchange for $750,000 in cash (funded by a note payable to the Company\u2019s CEO and $1.25 million of the Company\u2019s Series B Preferred Stock, $0.01 par value per share, which Series \u201cB\u201d stock is convertible into 15.625 million \u201crestricted\u201d shares of CHDT Common Stock, $0.0001 par value (common stock). CHDT has agreed to register shares of Common Stock under the Securities Act of 1933, as amended, to cover conversion of the Series \u201cB\u201d Stock issued to Mr. Wallach in the acquisition of Capstone. Such registration has not been filed as of the date of this Report. CHDT will operate Capstone as a wholly-owned subsidiary. As of the date of this report these share have not been registered.\nNOTE 8 \u2013 BUSINESS ACQUISITIONS AND DISPOSALS (continued)\nThe Capstone acquisition was recorded as follows:",
+   "prose_after": "Capstone was acquired to expand the Company\u2019s customer base and sources of supply, the value of which contributed to the recording of goodwill.\nFor tax purposes, the goodwill is expected to be amortized as an IRC Sec. 197 intangible over a period of fifteen years from date of acquisition.\nNOTE 9 - INCOME TAXES\nAs of December 31, 2010, the Company had a net operating loss carry-forward for income tax reporting purposes of approximately $4,300,000 that may be offset against future taxable income through 2030. Current tax laws limit the amount of loss available to be offset against future taxable income when a substantial change in ownership occurs. Therefore, the amount available to offset future taxable income may be limited. No tax benefit has been reported in the financial statements, because the Company believes there is a 50% or greater chance the carry-forwards will expire unused. Accordingly, the potential tax benefits of the loss carry-forwards are offset by a valuation allowance of the same amount.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1730,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Losses",
+     "$",
+     "903,000",
+     "",
+     "$",
+     "799,500",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(903,000)",
+     "",
+     "",
+     "(799,500)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1758,
+    "end_line": 1767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Capstone was acquired to expand the Company\u2019s customer base and sources of supply, the value of which contributed to the recording of goodwill.\nFor tax purposes, the goodwill is expected to be amortized as an IRC Sec. 197 intangible over a period of fifteen years from date of acquisition.\nNOTE 9 - INCOME TAXES\nAs of December 31, 2010, the Company had a net operating loss carry-forward for income tax reporting purposes of approximately $4,300,000 that may be offset against future taxable income through 2030. Current tax laws limit the amount of loss available to be offset against future taxable income when a substantial change in ownership occurs. Therefore, the amount available to offset future taxable income may be limited. No tax benefit has been reported in the financial statements, because the Company believes there is a 50% or greater chance the carry-forwards will expire unused. Accordingly, the potential tax benefits of the loss carry-forwards are offset by a valuation allowance of the same amount.",
+   "prose_after": "The provision for income taxes differ from the amount computed using the federal US statutory income tax rate as follows:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1730,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Provision (Benefit) at US Statutory Rate",
+     "$",
+     "(155,000)",
+     "",
+     "$",
+     "(205,000)",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Valuation Allowance",
+     "",
+     "155,000",
+     "",
+     "",
+     "205,000",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1770,
+    "end_line": 1779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The provision for income taxes differ from the amount computed using the federal US statutory income tax rate as follows:",
+   "prose_after": "The Company evaluates its valuation allowance requirements based on projected future operations. When circumstances change and cause a change in management\u2019s judgment about the recoverability of deferred tax assets, the impact of the change on the valuation is reflected in current income.\nNOTE 9 - INCOME TAXES (continued)\nEffective January 1, 2007, the Company adopted the provisions of FASB Interpretation No. 48, \u201cAccounting for Uncertainty in Income Taxes \u2013 an interpretation of FASB Statement No. 109\u201d (\u201cFIN 48\u201d). FIN 48 prescribes a recognition threshold and a measurement attribute for the financial statement recognition and measurement of tax positions taken or expected to be taken in a tax return. For those benefits to be recognized, a tax position must be more-likely-than-not to be sustained upon examination by taxing authorities. The adoption of the provisions of FIN 48 did not have a material impact on the company\u2019s condensed consolidated financial position and results of operations. At January 1, 2008, the company had no liability for unrecognized tax benefits and no accrual for the payment of related interest.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1730,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "United States (a)",
+     "2008 \u2013 Present"
+    ],
+    [
+     "(a) Includes federal as well as state or similar local jurisdictions, as applicable.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1789,
+    "end_line": 1795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees & Services"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Effective January 1, 2007, the Company adopted the provisions of FASB Interpretation No. 48, \u201cAccounting for Uncertainty in Income Taxes \u2013 an interpretation of FASB Statement No. 109\u201d (\u201cFIN 48\u201d). FIN 48 prescribes a recognition threshold and a measurement attribute for the financial statement recognition and measurement of tax positions taken or expected to be taken in a tax return. For those benefits to be recognized, a tax position must be more-likely-than-not to be sustained upon examination by taxing authorities. The adoption of the provisions of FIN 48 did not have a material impact on the company\u2019s condensed consolidated financial position and results of operations. At January 1, 2008, the company had no liability for unrecognized tax benefits and no accrual for the payment of related interest.\nInterest costs related to unrecognized tax benefits are classified as \u201cInterest expense, net\u201d in the accompanying consolidated statements of operations. Penalties, if any, would be recognized as a component of \u201cSelling, general and administrative expenses\u201d. The Company recognized $0 of interest expense related to unrecognized tax benefits for the year ended December 31, 2010 and 2009. In many cases, the company\u2019s uncertain tax positions are related to tax years that remain subject to examination by relevant tax authorities. With few exceptions, the company is generally no longer subject to U.S. federal, state, local or non-U.S. income tax examinations by tax authorities for years before 2008. The following describes the open tax years, by major tax jurisdiction, as of December 31, 2010:",
+   "prose_after": "NOTE 10 \u2013 CONTINGENCIES\nESQUIRE TRADE & FINANCE INC. & INVESTOR, LLC v. (Case Number 03 CIV. 9650 (SC), decided November 5, 2009) (formerly styled \u201cCELESTE TRUST REG., ESQUIRE TRADE, ET AL. V. CBQ, INC., Case Number 03 CIV. 9650 RMB) (\u201cCeleste case\u201d). The parties settled this case on February 18, 2010. A summary of the settlement is below. A stipulation withdrawing the plaintiff's appeal in the Celeste case was filed with and accepted by the court on February 8, 2010, which filing effectively ended the litigation in the Celeste case.\nThe settlement and release provides a mutual, general release of all claims that plaintiffs and Company may have against each other as the date of the release, including any causes of action or claims under the Celeste case and any related proceedings. The settlement provides, in part, that: (1) the parties will seek a court order dismissing the Celeste case; (2) the parties will release each other from any and all claims and causes of action in or related to the Celeste case or the pending appeal to the U.S. Circuit Court for the Second Circuit; (3) the plaintiffs will pay $100,000 towards the Company\u2019s legal fees incurred in the Celeste case; (4) the Company will support the release of shares of Company Common Stock, $0.0001 par value per share, (\u201cCommon Stock\u201d) owned of record by Networkland, Inc., a Virginia corporation, (\u201cNET\u201d) and Technet Computer Services, Inc., a Virginia corporation, (\u201cTECH\u201d) to the plaintiffs or their designees (each such block of Common Stock was sought by the plaintiffs in the Celeste case as part of their claims against the Company (collectively, said shares of Common Stock held of record by NET and TECH being referred to as the \u201cN&T Shares\u201d)); (5) the issuance of 350,000 shares of Common Stock owned by Howard Ullman, a director of the Company, to the plaintiffs or their designees; and (6) the granting by Mr. Ullman of a five year option to purchase 20 million shares of Common Stock owned by Mr. Ullman to the plaintiffs or their designees, which option has an exercise price of $0.029 per share. Under the proposed settlement agreement and release, the Company will grant piggy-back registration rights to the option and underlying shares of Common Stock referenced in (6) above, which rights",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

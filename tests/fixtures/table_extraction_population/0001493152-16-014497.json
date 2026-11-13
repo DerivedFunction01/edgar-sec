@@ -1,0 +1,3830 @@
+{
+ "accession": "0001493152-16-014497",
+ "cik": "0001493174",
+ "form": "10-Q",
+ "filing_date": "2016-11-04",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "27-2692640"
+    ],
+    [
+     "(State of Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "420 Jericho Turnpike, Suite 110",
+     ""
+    ],
+    [
+     "Jericho, NY 11753",
+     "11753"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: August 31, 2016\nOR\n[ ] TRANSACTION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to ______________\nCommission file number: 333-168413\nECOSCIENCES, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(516) 465-3964\n(Registrant\u2019s Telephone Number, Including Area Code)\nWith a copy to:\nPhilip Magri, Esq.\nMagri Law, LLC\n2642 NE 9th Avenue\nFort Lauderdale, FL 33334\nT:\n(646) 502-5900\nF:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "3"
+    ],
+    [
+     "  item 1. financial statements (unaudited)",
+     "3"
+    ],
+    [
+     "  item 2. management\u2019s discussion and analysis of financial condition and results of operations",
+     "4"
+    ],
+    [
+     "    Forward Looking Statements",
+     "4"
+    ],
+    [
+     "    Corporate History",
+     "4"
+    ],
+    [
+     "    Overview",
+     "5"
+    ],
+    [
+     "    Product Development",
+     "6"
+    ],
+    [
+     "    Growth Strategy of the Company",
+     "6"
+    ],
+    [
+     "    Critical Accounting Policies, Estimates, and Judgments",
+     "6"
+    ],
+    [
+     "    Results of Operations",
+     "6"
+    ],
+    [
+     "    Financial Condition, Liquidity and Capital Resources",
+     "8"
+    ],
+    [
+     "    Working Capital",
+     "10"
+    ],
+    [
+     "    Cash and Cash Equivalents",
+     "10"
+    ],
+    [
+     "    Off-Balance Sheet Operations",
+     "11"
+    ],
+    [
+     "  item 3. quantitative and qualitative disclosures about market risk",
+     "11"
+    ],
+    [
+     "  item 4. controls and procedures",
+     "11"
+    ],
+    [
+     "    Evaluation of Disclosure Controls and Procedures.",
+     "11"
+    ],
+    [
+     "    Changes in Internal Control over Financial Reporting",
+     "11"
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "11"
+    ],
+    [
+     "  item 1. legal proceedings",
+     "11"
+    ],
+    [
+     "  item 1A. risk factors",
+     "11"
+    ],
+    [
+     "  item 2. unregistered sale of equity securities and use of proceeds",
+     "11"
+    ],
+    [
+     "  item 3. defaults upon senior securities",
+     "12"
+    ],
+    [
+     "  item 5. other information",
+     "12"
+    ],
+    [
+     "    Subsequent Events",
+     "12"
+    ],
+    [
+     "  item 6. exhibits",
+     "14"
+    ],
+    [
+     "SIGNATURES",
+     "15"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 116
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\nYes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201cnon-accelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer  [ ]      Accelerated filer      [ ]\nNon-accelerated filer   [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAPPLICABLE ONLY TO CORPORATE ISSUERS:\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of Common Stock, as of the latest practicable date. As of November 3, 2016, there were 147,951,500 shares of Common Stock, $0.0001 par value per share, issued and outstanding.\nTable of Contents",
+   "prose_after": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements (unaudited)\nCondensed Consolidated Financial Statements\nIndex",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Table of Contents",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Unaudited Condensed Consolidated Balance Sheets",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Unaudited Condensed Consolidated Statements of Operations",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Unaudited Condensed Consolidated Statements of Cash Flows",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Unaudited Condensed Consolidated Financial Statements",
+     "F-4"
+    ]
+   ],
+   "caption_stack": [
+    "Table of Contents"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 131,
+    "end_line": 142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements (unaudited)\nCondensed Consolidated Financial Statements\nIndex",
+   "prose_after": "Condensed Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "",
+     "May 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "9,435",
+     "",
+     "$",
+     "4,220",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "4,374",
+     "",
+     "",
+     "5,169",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "-",
+     "",
+     "",
+     "771",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "13,809",
+     "",
+     "$",
+     "10,160",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "151,545",
+     "",
+     "$",
+     "165,483",
+     ""
+    ],
+    [
+     "  Accrued liabilities",
+     "",
+     "413,284",
+     "",
+     "",
+     "331,505",
+     ""
+    ],
+    [
+     "  Due to related parties",
+     "",
+     "49,083",
+     "",
+     "",
+     "42,046",
+     ""
+    ],
+    [
+     "  Notes payable",
+     "",
+     "230,432",
+     "",
+     "",
+     "261,157",
+     ""
+    ],
+    [
+     "  Convertible notes payable, net",
+     "",
+     "64,868",
+     "",
+     "",
+     "30,177",
+     ""
+    ],
+    [
+     "  Derivative liabilities",
+     "",
+     "186,889",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "1,096,101",
+     "",
+     "",
+     "830,368",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock 50,000,000 shares authorized, $0.0001 par value;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series A Redeemable and Convertible Preferred Stock 1,593,630 shares issued and outstanding",
+     "",
+     "160",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series B Preferred Stock 200,000 shares issued and outstanding",
+     "",
+     "20",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series C Redeemable and Convertible Preferred Stock 4,700,000 shares issued and outstanding",
+     "",
+     "470",
+     "",
+     "",
+     "470",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series D Convertible Preferred Stock 610,000 shares issued and outstanding",
+     "",
+     "61",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock 500,000,000 shares authorized, $0.0001 par value; 101,751,500 shares issued and outstanding",
+     "",
+     "10,175",
+     "",
+     "",
+     "10,175",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "108,956",
+     "",
+     "",
+     "108,956",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deficit",
+     "",
+     "(1,202,134)",
+     "",
+     "",
+     "(940,050)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(1,082,292)",
+     "",
+     "",
+     "(820,208)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "13,809",
+     "",
+     "$",
+     "10,160",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 149,
+    "end_line": 208
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 147,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 210,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "",
+     "August 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "3,472",
+     "",
+     "$",
+     "3,354",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "(1,774)",
+     "",
+     "",
+     "(2,421)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "1,698",
+     "",
+     "",
+     "933",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "15,462",
+     "",
+     "",
+     "69,390",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "125,636",
+     "",
+     "",
+     "97,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "141,098",
+     "",
+     "",
+     "166,890",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Before Other Expenses",
+     "",
+     "(139,400)",
+     "",
+     "",
+     "(165,957)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(37,795)",
+     "",
+     "",
+     "(5,128)",
+     ""
+    ],
+    [
+     "  Loss on derivative liabilities",
+     "",
+     "(84,889)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(262,084)",
+     "",
+     "$",
+     "(171,085)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Per Share \u2013 Basic and Diluted",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "Weighted-average Common Shares Outstanding \u2013 Basic and Diluted",
+     "",
+     "101,751,500",
+     "",
+     "",
+     "101,751,500",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 216,
+    "end_line": 251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 214,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended August 31, 2016",
+     "",
+     "",
+     "Three Months Ended August 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(262,084)",
+     "",
+     "$",
+     "(171,085)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest expense",
+     "",
+     "24,691",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Loss on derivative liabilities",
+     "",
+     "84,889",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Stock-based compensation",
+     "",
+     "\u2013",
+     "",
+     "",
+     "61,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts receivable",
+     "",
+     "\u2013",
+     "",
+     "",
+     "933",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "795",
+     "",
+     "",
+     "88",
+     ""
+    ],
+    [
+     "    Prepaid expenses",
+     "",
+     "771",
+     "",
+     "",
+     "487",
+     ""
+    ],
+    [
+     "    Accounts payable",
+     "",
+     "(13,938)",
+     "",
+     "",
+     "30,994",
+     ""
+    ],
+    [
+     "    Accrued liabilities",
+     "",
+     "81,779",
+     "",
+     "",
+     "61,859",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(83,097)",
+     "",
+     "",
+     "(15,724)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Advances from related party, net",
+     "",
+     "7,037",
+     "",
+     "",
+     "8,800",
+     ""
+    ],
+    [
+     "  Proceeds from notes payable",
+     "",
+     "7,500",
+     "",
+     "",
+     "7,196",
+     ""
+    ],
+    [
+     "  Payment of notes payable",
+     "",
+     "(38,225)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Proceeds from convertible notes payable",
+     "",
+     "112,000",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "88,312",
+     "",
+     "",
+     "15,996",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in Cash",
+     "",
+     "5,215",
+     "",
+     "",
+     "272",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Beginning of Period",
+     "",
+     "4,220",
+     "",
+     "",
+     "381",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - End of Period",
+     "$",
+     "9,435",
+     "",
+     "$",
+     "653",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "175",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Income taxes paid",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 259,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\n1. Nature of Operations\nEcosciences, Inc. (the \u201cCompany\u201d) was incorporated in the State of Nevada on May 26, 2010. The Company\u2019s principal business is focused on the development, production and sale of environmentally focused wastewater products. It currently produces organic tablets and powders to be used regularly and in lieu of harmful chemical cleaning products in grease trap and septic tank systems. The Company intends to generate revenue through the sale of tablets and powders to domestic and international customers in the food and sanitation industries as well as residential consumers.\nThe accompanying unaudited condensed consolidated financial statements of the Company should be read in conjunction with the consolidated financial statements and accompanying notes filed with the U.S. Securities and Exchange Commission in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended May 31, 2016. In the opinion of management, the accompanying unaudited condensed consolidated financial statements reflect all adjustments of a recurring nature considered necessary to present fairly the Company\u2019s financial position and the results of its operations and its cash flows for the periods shown.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "May 31, 2016",
+     ""
+    ],
+    [
+     "Raw Materials",
+     "$",
+     "1,171",
+     "$",
+     "1,353"
+    ],
+    [
+     "Finished Goods",
+     "",
+     "1,600",
+     "",
+     "2,213"
+    ],
+    [
+     "Packaging Supplies",
+     "",
+     "1,603",
+     "",
+     "1,603"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "4,374",
+     "$",
+     "5,169"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 328,
+    "end_line": 340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "These unaudited condensed consolidated financial statements have been prepared on a going concern basis, which implies that the Company will continue to realize its assets and discharge its liabilities in the normal course of business. The Company has not generated significant revenue since inception and has not generated significant earnings. The continuation of the Company as a going concern is dependent upon the continued financial support from its shareholders, the ability of the Company to obtain necessary equity financing to continue operations, and the attainment of profitable operations. As of August 31, 2016, the Company has accumulated losses of $1,202,134 and a working capital deficit of $1,082,292. These factors raise substantial doubt regarding the Company\u2019s ability to continue as a going concern. These unaudited condensed consolidated financial statements do not include any adjustments to the recoverability and classification of recorded asset amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.\n3. Inventory\nInventory consists of the following:",
+   "prose_after": "4. Related Party Transactions\na) During the three months ended August 31, 2016, the Company incurred management services fees of $7,800 (2015 - $17,800) to the President of the Company.\nb) At August 31, 2016, and May 31, 2016, the Company was indebted to the President of the Company and a company controlled by the President of the Company for $49,083 and $42,046, respectively. The amount is unsecured, non-interest bearing and due on demand.\n5. Notes Payable\nNotes payable consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "August 31, 2016",
+     "",
+     "",
+     "May 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "a)",
+     "Notes payable that are unsecured, non-guaranteed, non-interest bearing and due on demand.",
+     "$",
+     "5,528",
+     "",
+     "$",
+     "5,528",
+     ""
+    ],
+    [
+     "b)",
+     "Note payable which is unsecured, non-guaranteed, and non-interest bearing. The note is due one year following the borrowing date.",
+     "",
+     "8,000",
+     "",
+     "",
+     "8,000",
+     ""
+    ],
+    [
+     "c)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 10% per annum. The note is due 60 days following demand. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $6,778 and $6,274, respectively.",
+     "",
+     "20,000",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "d)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due one year following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $31,424 and $27,848, respectively.",
+     "",
+     "140,000",
+     "*",
+     "",
+     "170,000",
+     "*"
+    ],
+    [
+     "e)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due one year following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $420 and $364, respectively.",
+     "",
+     "2,500",
+     "",
+     "",
+     "2,500",
+     ""
+    ],
+    [
+     "f)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due one year following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $1,788 and $1,465, respectively.",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "g)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due six months following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $1 and $5, respectively",
+     "",
+     "3,904",
+     "",
+     "",
+     "1,229",
+     ""
+    ],
+    [
+     "h)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due one year following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $1,398 and $987, respectively.",
+     "",
+     "20,000",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "i)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 8% per annum. The note is due six months following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $773 and $527, respectively.",
+     "",
+     "12,000",
+     "",
+     "",
+     "12,000",
+     ""
+    ],
+    [
+     "j)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 10% per annum. The note is due six months following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $235 and $176, respectively.",
+     "",
+     "1,300",
+     "",
+     "",
+     "4,700",
+     ""
+    ],
+    [
+     "k)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 10% per annum. The note is due six months following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $58 and $33, respectively.",
+     "",
+     "1,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "l)",
+     "Note payable which is unsecured, non-guaranteed, and bears interest at 10% per annum. The note is due six months following the borrowing date. At August 31, 2016, and May 31, 2016, the Company owed accrued interest of $66 and $36, respectively.",
+     "",
+     "1,200",
+     "",
+     "",
+     "1,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "230,432",
+     "",
+     "$",
+     "261,157",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 351,
+    "end_line": 382
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "4. Related Party Transactions\na) During the three months ended August 31, 2016, the Company incurred management services fees of $7,800 (2015 - $17,800) to the President of the Company.\nb) At August 31, 2016, and May 31, 2016, the Company was indebted to the President of the Company and a company controlled by the President of the Company for $49,083 and $42,046, respectively. The amount is unsecured, non-interest bearing and due on demand.\n5. Notes Payable\nNotes payable consist of the following:",
+   "prose_after": "5. Notes Payable (continued)\n* On May 9, 2014, the Company entered into a Master Loan Agreement (the \u201cLoan Agreement\u201d), whereby the lender agreed, from time to time, to purchase from the Company one or more Promissory Notes for the account of the Company, provided, however, that the aggregate principal amount of all Promissory Notes then outstanding shall not exceed $500,000 and that no Event of Default has occurred and remains uncured. Amounts borrowed under the Loan Agreement are evidenced by an unsecured, non-recourse Promissory Note, bearing interest at a rate of 8% per annum, maturing on the first anniversary date thereof, and may be prepaid by the Company before the maturity date. Amounts borrowed under the Loan Agreement and repaid or prepaid may not be re-borrowed. The Loan Agreement will automatically terminate and be of no further force and effect upon the earlier to occur of (i) the satisfaction of all indebtedness, including the promissory notes and any additional indebtedness issued thereafter, between the Company and the lender and (ii) written termination notice is delivered by the Company or the lender to the other party. Two notes matured in May 2015 and were not repaid. Therefore, under the default terms of the Loan Agreement, all remaining promissory notes immediately become due and payable.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended August 31, 2016",
+     ""
+    ],
+    [
+     "Balance at the beginning of the period",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Addition of new derivative liabilities",
+     "",
+     "170,621"
+    ],
+    [
+     "Change in fair value of embedded conversion option",
+     "",
+     "16,268"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at the end of the period",
+     "$",
+     "186,889"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended August 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 409,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Derivative Liabilities"
+    }
+   },
+   "prose_before": "h) On July 19, 2016, the Company entered into a Convertible Promissory Note agreement for $56,750. The principal amount and any interest thereon are due nine months following the borrowing date. The Note bears interest at 12% per annum, increasing to 24% per annum if any principal or interest in not paid when due. For the first 180 days, the Company has the right to prepay the Note of up to 150% of all amounts owed. Pursuant to the agreement, the Note is convertible into shares of common stock at a conversion price equal to the lesser of (i) a 50% discount to the lowest trading price of the common stock during the 25 trading days prior to the issue date and (ii) a 50% discount to the lowest trading price of the common stock during the 25 trading day period prior to conversion. The Company incurred financing costs of $6,750 which has been recorded as a discount. The embedded conversion option qualifies for derivative accounting and bifurcation under ASC 815-15 Derivatives and Hedging. The initial fair value of the conversion feature of $79,631 resulted in an additional discount to the note payable of $50,000 and the remaining $29,631 was recognized as a loss on changes in fair value of derivative liability. During the three months ended August 31, 2016, the Company recorded accretion of $13,212 increasing the carrying value of the note to $13,212. At August 31, 2016, the Company owed accrued interest of $802.\n7. Derivative Liabilities\nThe embedded conversion options of the Company\u2019s convertible debentures described in Note 6 contain conversion features that qualify for embedded derivative classification. The fair value of these liabilities will be re-measured at the end of every reporting period and the change in fair value will be reported in the statement of operations as a gain or loss on derivative financial instruments.\nThe table below sets forth a summary of changes in the fair value of the Company\u2019s Level 3 financial liabilities:",
+   "prose_after": "7. Derivative Liabilities (continued)\nThe Company uses Level 3 inputs for its valuation methodology for the warrant derivative liabilities and embedded conversion option liabilities as their fair values were determined by using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s common stock (as quoted on the Over the Counter Bulletin Board), volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. As required, these are classified based on the lowest level of input that is significant to the fair value measurement. The following table shows the assumptions used in the calculations:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Expected Volatility",
+     "",
+     "Risk-free Interest Rate",
+     "",
+     "",
+     "Expected Dividend Yield",
+     "",
+     "",
+     "Expected Life (in years)"
+    ],
+    [
+     "At issuance",
+     "222% - 232",
+     "%",
+     "",
+     "0.56",
+     "%",
+     "",
+     "0",
+     "%",
+     "0.75-1.00"
+    ],
+    [
+     "At August 31, 2016",
+     "227% - 241",
+     "%",
+     "",
+     "0.61",
+     "%",
+     "",
+     "0",
+     "%",
+     "0.63-0.88"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Derivative Liabilities"
+    }
+   },
+   "prose_before": "7. Derivative Liabilities (continued)\nThe Company uses Level 3 inputs for its valuation methodology for the warrant derivative liabilities and embedded conversion option liabilities as their fair values were determined by using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s common stock (as quoted on the Over the Counter Bulletin Board), volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. As required, these are classified based on the lowest level of input that is significant to the fair value measurement. The following table shows the assumptions used in the calculations:",
+   "prose_after": "8. Preferred Stock\na) On June 4, 2015, the Company filed a Certificate of Amendment (the \u201cAmendment\u201d) to its Certificate of Designation for the Company\u2019s Series C convertible preferred stock originally filed with the Secretary of State of Nevada on April 20, 2015. Pursuant to the Amendment, the Company increased the number of shares of common stock issuable upon the conversion of each share of Series C preferred stock from 10 shares to 12 shares but also added the restriction that the holder has to wait until the one year anniversary date of issuance before the holder can elect to convert. Also, the Company removed the right of the holder to elect to have any portion of the shares be repurchased by the Company at $0.10 per share, and amended the voting rights to increase the voting equivalency of each share of Series C preferred stock from 10 shares to 12 shares of common stock.\nb) On June 4, 2015, the Company designated 10,000,000 shares of preferred stock as Series D convertible preferred stock. The holders of the Series D convertible preferred stock may elect to convert their shares at any time and from time to time and after the first year anniversary of the issue date. Each share of Series D convertible preferred stock is convertible into 10 shares of common stock of the Company; provided, however, that the holder is prohibited from converting such number of shares of Series D convertible preferred stock that would result in the stockholder beneficially owning more than 4.99% of the common stock of the Company. The holders of the Series D convertible preferred stock shall be entitled to a number of votes equal to the number of shares of common stock into which the Series D shares held are convertible.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Customer",
+     "Revenue for the Three Months Ended August 31, 2016",
+     "",
+     "",
+     "Revenue for the Three Months Ended August 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "1",
+     "",
+     "45",
+     "%",
+     "",
+     "37",
+     "%"
+    ],
+    [
+     "2",
+     "",
+     "31",
+     "%",
+     "",
+     "23",
+     "%"
+    ],
+    [
+     "3",
+     "",
+     "11",
+     "%",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "4",
+     "",
+     "*",
+     "",
+     "",
+     "11",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 459,
+    "end_line": 469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "e) On June 11, 2015, the Company entered into Services Agreements with two unrelated third party persons or companies. In consideration of these services, the Company has agreed to issue an aggregate 600,000 shares of the Company\u2019s Series D convertible preferred stock, of which 60,000 shares were issued upon the execution of the Services Agreements, and the remaining 540,000 shares of which shall vest in increments upon the achievement by the Company of the milestones set forth in the Services Agreements, including the completion of product line expansion, and signing distributors nationally and internationally. The terms of the Services Agreements are for one year, commencing on the date of the agreements, and are automatically renewable for successive one year terms unless mutually agreed to in writing.\n10. Concentrations\nThe Company\u2019s revenues were concentrated among three customers for the three months ended August 31, 2016, and four customers for the three months ended August 31, 2015:",
+   "prose_after": "The Company\u2019s receivables were concentrated among three customers as at August 31, 2016, and four customers as at May 31, 2016:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Customer",
+     "Receivables as at August 31, 2016",
+     "",
+     "",
+     "Receivables as at May 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "1",
+     "",
+     "45",
+     "%",
+     "",
+     "37",
+     "%"
+    ],
+    [
+     "2",
+     "",
+     "19",
+     "%",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "3",
+     "",
+     "17",
+     "%",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "4",
+     "",
+     "*",
+     "",
+     "",
+     "16",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 472,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "The Company\u2019s receivables were concentrated among three customers as at August 31, 2016, and four customers as at May 31, 2016:",
+   "prose_after": "* not greater than 10%\n11. Subsequent Events\n\u25cf On October 31, 2016, the Company issued an aggregate of 5 million (5,000,000) shares of common stock to an unaffiliated lender pursuant to a Notice of Conversion whereby the lender elected to convert an aggregate of $5,000 of indebtedness of the Company into such shares at a price of $0.001 per share under a Debt Conversion Agreement dated October 18, 2016 between the Company and the lender.\n\u25cf On October 31, 2016, the Company issued an aggregate of 5 million (5,000,000) shares of common stock to an unaffiliated lender pursuant to a Notice of Conversion whereby the lender elected to convert an aggregate of $5,000 of indebtedness of the Company into such shares at a price of $0.001 per share under a Debt Conversion Agreement dated October 19, 2016 between the Company and the lender.\n\u25cf On October 31, 2016, the Company issued an aggregate of 5 million (5,000,000) shares of common stock to an unaffiliated lender pursuant to a Notice of Conversion whereby the lender elected to convert an aggregate of $5,000 of indebtedness of the Company into such shares at a price of $0.001 per share under a Debt Conversion Agreement dated October 21, 2016 between the Company and the lender.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1.",
+     "Execution of this Agreement",
+     "100,000"
+    ],
+    [
+     "2.",
+     "Complete product line expansion with the development and introduction of \u201cgreen line\u201d products that complement our existing line for use in commercial kitchens, the food service industry and other industries and produce Green Seal approved Eco-Logical market ready inventory",
+     "45,000"
+    ],
+    [
+     "3.",
+     "Sign Northeast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "4.",
+     "Sign Midwest, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "5.",
+     "Sign West Coast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "6.",
+     "Sign Southern, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "7.",
+     "Sign Retail Distributor - Design and produce a retail package for in-store shelf and clip strip displays and place product in minimum of five (5) retail outlets",
+     "60,000"
+    ],
+    [
+     "8.",
+     "Sign Regional Distributor for expansion into South America",
+     "75,000"
+    ],
+    [
+     "9.",
+     "Sign Regional Distributor for expansion into Europe",
+     "75,000"
+    ],
+    [
+     "10.",
+     "Sign Regional Distributor for expansion into the Middle East",
+     "75,000"
+    ],
+    [
+     "11.",
+     "Sign Regional Distributor for expansion into India",
+     "75,000"
+    ],
+    [
+     "12.",
+     "Sign Regional Distributor for expansion into Asia",
+     "75,000"
+    ],
+    [
+     "13.",
+     "Redesign the product for expansion into the municipal wastewater service industry and sign minimum of two (2) contracts with municipalities within the industry",
+     "60,000"
+    ],
+    [
+     "14.",
+     "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast",
+     "60,000"
+    ],
+    [
+     "TOTAL:",
+     "",
+     "1,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Since 2009, Mr. Cohen (57 years old), has been serving as Partner, Vice President and Director of Sales & Marketing for Newco Marketing, Inc., marketing consultants, and manufacturer/distributor of an innovative home shower spa system, as well as service provider of a remote computer support service. From 1988 to 2009, Mr. Cohen was a Partner and held the positions of Vice President and Director of Marketing for Back To Nature Products Co., manufacturers of safer paint removers, lead abatement products and green cleaners. Mr. Cohen has over 28 years of experience running the day-to-day operations of a company, including hiring personnel and negotiating contracts. Mr. Cohen has proven success in the areas of marketing, sales, digital, direct response infomercials, advertising, new product launches, and establishing both retail and commercial distribution. He is also a published author in various trade publications and award winner of the QVC Hobby and Craft Recognition Awards.\nOn November 1, 2016, the Company entered into a Management Services Agreement with Dan Cohen. In consideration for Mr. Cohen serving as the Company\u2019s Chief Operating Officer, the Company has agreed to pay Mr. Cohen $84,000 a year, accruing in equal monthly increments of $7,000, plus 3% commission on gross sales, and to issue to Mr. Cohen an aggregate of one million (1,000,000) shares of the Company\u2019s Series D Preferred Stock, of which 100,000 shares were issued upon the execution the Management Services Agreement and a Purchase Agreement (as defined below), with the remaining 900,000 incrementally vesting upon the achievement by the Company of the milestones set forth below:",
+   "prose_after": "The term of Mr. Cohen\u2019s Management Services Agreement with the Company is for six months, commencing on the date of the agreement, and automatically renews for successive one year terms unless terminated pursuant to the terms thereto.\n\u25cf On November 1, 2016, the Company entered into a Restricted Stock Purchase Agreement (\u201cPurchase Agreement\u201d) with Dan Cohen in connection with Mr. Cohen\u2019s Management Services Agreement. Pursuant to the Purchase Agreement, the Company issued 100,000 shares of Series D Preferred Stock to Mr. Cohen for a purchase price of $0.001 per share, which is equal to the Stated Value of the shares, in consideration for services rendered to the Company by Mr. Cohen.\n\u25cf On November 2, 2016, the Company entered into an Amended and Restated Management Services Agreement with Joel Falitz. In consideration for Mr. Falitz serving as the Company\u2019s Chief Executive Officer, President, Secretary and Treasurer, the Company has agreed to pay Mr. Falitz a $31,200 signing bonus and a salary of $84,000 per year, accruing at $7,000 per month. In satisfaction of the $31,200 signing bonus, the Company issued Mr. Falitz an aggregate of 31.2 million (31,200,000) shares of Common Stock for $0.001 per share. Pursuant to the Amended and Restated Management Services Agreement, the Company also agreed to issue to Mr. Falitz an aggregate of 900,000 shares of the Company\u2019s Series D Preferred Stock, all of which vest in increments upon the achievement by the Company of the milestones set forth below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1.",
+     "Complete product line expansion with the development and introduction of \u201cgreen line\u201d products that complement our existing line for use in commercial kitchens, the food service industry and other industries and produce Green Seal approved Eco-Logical market ready inventory",
+     "45,000"
+    ],
+    [
+     "2.",
+     "Sign Northeast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "3.",
+     "Sign Midwest, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "4.",
+     "Sign West Coast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "5.",
+     "Sign Southern, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "6.",
+     "Sign Retail Distributor - Design and produce a retail package for in-store shelf and clip strip displays and place product in minimum of five (5) retail outlets",
+     "60,000"
+    ],
+    [
+     "7.",
+     "Sign Regional Distributor for expansion into South America",
+     "75,000"
+    ],
+    [
+     "8.",
+     "Sign Regional Distributor for expansion into Europe",
+     "75,000"
+    ],
+    [
+     "9.",
+     "Sign Regional Distributor for expansion into the Middle East",
+     "75,000"
+    ],
+    [
+     "10.",
+     "Sign Regional Distributor for expansion into India",
+     "75,000"
+    ],
+    [
+     "11.",
+     "Sign Regional Distributor for expansion into Asia",
+     "75,000"
+    ],
+    [
+     "12.",
+     "Redesign the product for expansion into the municipal wastewater service industry and sign minimum of two (2) contracts with municipalities within the industry",
+     "60,000"
+    ],
+    [
+     "13.",
+     "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast",
+     "60,000"
+    ],
+    [
+     "TOTAL:",
+     "",
+     "900,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 522,
+    "end_line": 541
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "\u25cf On November 1, 2016, the Company entered into a Restricted Stock Purchase Agreement (\u201cPurchase Agreement\u201d) with Dan Cohen in connection with Mr. Cohen\u2019s Management Services Agreement. Pursuant to the Purchase Agreement, the Company issued 100,000 shares of Series D Preferred Stock to Mr. Cohen for a purchase price of $0.001 per share, which is equal to the Stated Value of the shares, in consideration for services rendered to the Company by Mr. Cohen.\n\u25cf On November 2, 2016, the Company entered into an Amended and Restated Management Services Agreement with Joel Falitz. In consideration for Mr. Falitz serving as the Company\u2019s Chief Executive Officer, President, Secretary and Treasurer, the Company has agreed to pay Mr. Falitz a $31,200 signing bonus and a salary of $84,000 per year, accruing at $7,000 per month. In satisfaction of the $31,200 signing bonus, the Company issued Mr. Falitz an aggregate of 31.2 million (31,200,000) shares of Common Stock for $0.001 per share. Pursuant to the Amended and Restated Management Services Agreement, the Company also agreed to issue to Mr. Falitz an aggregate of 900,000 shares of the Company\u2019s Series D Preferred Stock, all of which vest in increments upon the achievement by the Company of the milestones set forth below:",
+   "prose_after": "The term of Mr. Falitz\u2019s Amended and Restated Management Agreement with the Company is for one year, commencing on the date of the agreement, and automatically renews for successive one year terms unless terminated pursuant thereto.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nYou should read the following discussion together with our unaudited condensed consolidated financial statements and the related notes included elsewhere in this report. This discussion contains forward-looking statements, which involve risks and uncertainties. Our actual results may differ materially from those we currently anticipate as a result of many factors, including the factors we describe in this report and our other reports filed with the Securities and Exchange Commission.\nForward Looking Statements\nSome of the information in this section contains forward-looking statements that involve substantial risks and uncertainties. You can identify these statements by forward-looking words such as \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate\u201d and \u201ccontinue,\u201d or similar words. You should read statements that contain these words carefully because they:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-Month Period Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016*",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "August 31, 2015*",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "% of Revenue",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "% of Revenue",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "$",
+     "3,472",
+     "",
+     "",
+     "\u2013",
+     "",
+     "$",
+     "3,354",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cost of sales:",
+     "",
+     "(1,774)",
+     "",
+     "",
+     "(51.09)",
+     "%",
+     "",
+     "(2,421)",
+     "",
+     "",
+     "(72.18)",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,698",
+     "",
+     "",
+     "48.91",
+     "%",
+     "",
+     "933",
+     "",
+     "",
+     "27.82",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "15,462",
+     "",
+     "",
+     "445.33",
+     "%",
+     "",
+     "69,390",
+     "",
+     "",
+     "2,068.87",
+     "%"
+    ],
+    [
+     "  Professional fees",
+     "",
+     "125,636",
+     "",
+     "",
+     "3,618.55",
+     "%",
+     "",
+     "97,500",
+     "",
+     "",
+     "2,906.98",
+     "%"
+    ],
+    [
+     "Total Expenses",
+     "",
+     "141,098",
+     "",
+     "",
+     "4,063.88",
+     "%",
+     "",
+     "166,890",
+     "",
+     "",
+     "4,975.85",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before other expenses:",
+     "",
+     "(139,400)",
+     "",
+     "",
+     "(4,014.98)",
+     "%",
+     "",
+     "(165,957)",
+     "",
+     "",
+     "(4,948.03)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(37,795)",
+     "",
+     "",
+     "(1,088.57)",
+     "%",
+     "",
+     "(5,128)",
+     "",
+     "",
+     "(152.89)",
+     "%"
+    ],
+    [
+     "  Loss on derivative liabilities",
+     "",
+     "(84,889)",
+     "",
+     "",
+     "(2,444.96)",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(262,084)",
+     "",
+     "",
+     "(7,548.50)",
+     "%",
+     "$",
+     "(171,085)",
+     "",
+     "",
+     "(5,100.92)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three-Month Period Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "Our unaudited condensed consolidated financial statements are prepared in accordance with accounting principles generally accepted in the United States. The preparation of these financial statements requires us to make estimates and judgments that affect the reported amounts of assets and liabilities, disclosure of contingent assets and liabilities at the date of the financial statements, and the reported amounts of revenues and expenses during the reporting period. We continually evaluate our estimates and judgments, our commitments to strategic alliance partners and the timing of the achievement of collaboration milestones. We base our estimates and judgments on historical experience and other factors that we believe to be reasonable under the circumstances. Materially different results can occur as circumstances change and additional information becomes known. Besides the estimates identified above that are considered critical, we make many other accounting estimates in preparing our financial statements and related disclosures. All estimates, whether or not deemed critical, affect reported amounts of assets, liabilities, revenues and expenses, as well as disclosures of contingent assets and liabilities. These estimates and judgments are also based on historical experience and other factors that are believed to be reasonable under the circumstances. Materially different results can occur as circumstances change and additional information becomes known, even for estimates and judgments that are not deemed critical.\nResults of Operations\nThree Months Ended August 31, 2016 Compared to the Three Months Ended August 31, 2015\nThe following table presents Eco-Logical\u2019s results of operations for the periods indicated and as a percentage of total revenue. Historical results are not necessarily indicative of results for future periods.",
+   "prose_after": "*Amounts may not sum due to rounding.\nThe following tables present our revenue and operating expenses for the periods indicated.\nRevenue",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-Month Period Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "August 31, 2015",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "3,472",
+     "$",
+     "3,354",
+     "",
+     "3.52",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three-Month Period Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "*Amounts may not sum due to rounding.\nThe following tables present our revenue and operating expenses for the periods indicated.\nRevenue",
+   "prose_after": "Our Revenue increased 3.52% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The increase is attributed to more repeat sales from existing customers.\nCosts and Expenses\nCosts of Sales",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-Month Period Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "August 31, 2015",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs of Sales",
+     "$",
+     "1,774",
+     "$",
+     "2,421",
+     "",
+     "(26.72)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three-Month Period Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 676,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "Our Revenue increased 3.52% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The increase is attributed to more repeat sales from existing customers.\nCosts and Expenses\nCosts of Sales",
+   "prose_after": "Our Costs of Sales decreased 26.72% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The decrease is due to a decrease in sales volume through E-commerce which carries additional shipping and merchant fees.\nOperating Expenses",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-Month Period Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "August 31, 2015",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "141,098",
+     "$",
+     "166,890",
+     "",
+     "(15.45)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three-Month Period Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 691,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "Our Costs of Sales decreased 26.72% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The decrease is due to a decrease in sales volume through E-commerce which carries additional shipping and merchant fees.\nOperating Expenses",
+   "prose_after": "Our Operating Expenses decreased 15.45% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The decrease is the result of a decrease in Management Fees as well as several less significant decreases in administrative costs.\nInterest Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-Month Period Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "August 31, 2015",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "$",
+     "37,795",
+     "$",
+     "5,128",
+     "",
+     "637.03",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three-Month Period Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 705,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "Our Operating Expenses decreased 15.45% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The decrease is the result of a decrease in Management Fees as well as several less significant decreases in administrative costs.\nInterest Expense",
+   "prose_after": "Our Interest Expense increased 637.03% for the three months ended August 31, 2016 as compared to the three months ended August 31, 2015. The increase is attributable to the sale of additional promissory notes to finance operations, some of which included debt discounts which are amortized to interest expense each period.\nFinancial Condition, Liquidity and Capital Resources\nAt August 31, 2016, we had $9,435 in cash on hand and an accumulated deficit of $1,202,134; and had $3,472 in revenues for the three-month period ended August 31, 2016. In their report for the fiscal year ended May 31, 2016, our auditors have expressed that there is substantial doubt as to our ability to continue as a going concern. We have incurred operating losses since our formation and expect to incur losses and negative operating cash flows for the foreseeable future. We expect to incur substantial losses for the foreseeable future and may never become profitable. We also expect to continue to incur significant operating and capital expenditures for the next several years and anticipate that our expenses will increase substantially in the foreseeable future. We also expect to experience negative cash flow for the foreseeable future as we fund our operating losses and capital expenditures. As a result, we will need to generate significant revenues in order to achieve and maintain profitability. We may not be able to generate these revenues or achieve profitability in the future. Our failure to achieve or maintain profitability could negatively impact the value of our Common Stock.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2016",
+     "",
+     "",
+     "August 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "$",
+     "4,220",
+     "",
+     "$",
+     "381",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(83,097)",
+     "",
+     "",
+     "(7,224)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "88,312",
+     "",
+     "",
+     "7,496",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "9,435",
+     "",
+     "$",
+     "653",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 760,
+    "end_line": 773
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "At August 31, 2016, the Company was indebted to the President of the Company and a company controlled by the President of the Company for $49,083. The amount is unsecured, non-interest bearing and due on demand.\nWe do not believe our cash resources are sufficient to implement our current business plan, support operations and meet current obligations for the next 12 months. We plan to raise additional capital to finance our operations. There can be no assurance that financing will be available when required in sufficient amounts, on acceptable terms or at all. In the event that the necessary additional financing is not obtained, we may be required to reduce our discretionary overhead costs substantially, including research and development, general and administrative and sales and marketing expenses or otherwise curtail operations.\nCash and Cash Equivalents\nThe following table summarizes the sources and uses of cash for the periods stated. The Company held no cash equivalents for any of the periods presented.",
+   "prose_after": "Off-Balance Sheet Operations\nThe Company does not have any off-balance sheet transactions.\nItem 3. Quantitative and Qualitative Disclosures about Market Risk\nN/A\nItem 4. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures.\nIn accordance with Exchange Act Rules 13a-15 and 15d-15, our management is required to perform an evaluation under the supervision and with the participation of the Company\u2019s management, including the Company\u2019s principal executive officer and principal financial officer, of the effectiveness of the design and operation of the Company\u2019s disclosure controls and procedures as of the end of the period.\nBased upon that evaluation, our management has concluded that, as of August 31, 2016, our disclosure controls and procedures were not effective.\nChanges in Internal Control over Financial Reporting\nNo change in our internal control over financial reporting (as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) occurred during the fiscal quarter ended August 31, 2016 that has materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 741,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1.",
+     "Execution of this Agreement",
+     "100,000"
+    ],
+    [
+     "2.",
+     "Complete product line expansion with the development and introduction of \u201cgreen line\u201d products that complement our existing line for use in commercial kitchens, the food service industry and other industries and produce Green Seal approved Eco-Logical market ready inventory",
+     "45,000"
+    ],
+    [
+     "3.",
+     "Sign Northeast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "4.",
+     "Sign Midwest, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "5.",
+     "Sign West Coast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "6.",
+     "Sign Southern, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "7.",
+     "Sign Retail Distributor - Design and produce a retail package for in-store shelf and clip strip displays and place product in minimum of five (5) retail outlets",
+     "60,000"
+    ],
+    [
+     "8.",
+     "Sign Regional Distributor for expansion into South America",
+     "75,000"
+    ],
+    [
+     "9.",
+     "Sign Regional Distributor for expansion into Europe",
+     "75,000"
+    ],
+    [
+     "10.",
+     "Sign Regional Distributor for expansion into the Middle East",
+     "75,000"
+    ],
+    [
+     "11.",
+     "Sign Regional Distributor for expansion into India",
+     "75,000"
+    ],
+    [
+     "12.",
+     "Sign Regional Distributor for expansion into Asia",
+     "75,000"
+    ],
+    [
+     "13.",
+     "Redesign the product for expansion into the municipal wastewater service industry and sign minimum of two (2) contracts with municipalities within the industry",
+     "60,000"
+    ],
+    [
+     "14.",
+     "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast",
+     "60,000"
+    ],
+    [
+     "TOTAL:",
+     "",
+     "1,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 835,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "Since 2009, Mr. Cohen (57 years old), has been serving as Partner, Vice President and Director of Sales & Marketing for Newco Marketing, Inc., marketing consultants, and manufacturer/distributor of an innovative home shower spa system, as well as service provider of a remote computer support service. From 1988 to 2009, Mr. Cohen was a Partner and held the positions of Vice President and Director of Marketing for Back To Nature Products Co., manufacturers of safer paint removers, lead abatement products and green cleaners. Mr. Cohen has over 28 years of experience running the day-to-day operations of a company, including hiring personnel and negotiating contracts. Mr. Cohen has proven success in the areas of marketing, sales, digital, direct response infomercials, advertising, new product launches, and establishing both retail and commercial distribution. He is also a published author in various trade publications and award winner of the QVC Hobby and Craft Recognition Awards.\nOn November 1, 2016, the Company entered into a Management Services Agreement with Dan Cohen. In consideration for Mr. Cohen serving as the Company\u2019s Chief Operating Officer, the Company has agreed to pay Mr. Cohen $84,000 a year, accruing in equal monthly increments of $7,000, plus 3% commission on gross sales, and to issue to Mr. Cohen an aggregate of one million (1,000,000) shares of the Company\u2019s Series D Preferred Stock, of which 100,000 shares were issued upon the execution the Management Services Agreement and a Purchase Agreement (as defined below), with the remaining 900,000 incrementally vesting upon the achievement by the Company of the milestones set forth below:",
+   "prose_after": "The term of Mr. Cohen\u2019s Management Services Agreement with the Company is for six months, commencing on the date of the agreement, and automatically renews for successive one year terms unless terminated pursuant to the terms thereto.\n\u25cf On November 1, 2016, the Company entered into a Restricted Stock Purchase Agreement (\u201cPurchase Agreement\u201d) with Dan Cohen in connection with Mr. Cohen\u2019s Management Services Agreement. Pursuant to the Purchase Agreement, the Company issued 100,000 shares of Series D Preferred Stock to Mr. Cohen for a purchase price of $0.001 per share, which is equal to the Stated Value of the shares, in consideration for services rendered to the Company by Mr. Cohen.\n\u25cf On November 2, 2016, the Company entered into an Amended and Restated Management Services Agreement with Joel Falitz. In consideration for Mr. Falitz serving as the Company\u2019s Chief Executive Officer, President, Secretary and Treasurer, the Company has agreed to pay Mr. Falitz a $31,200 signing bonus and a salary of $84,000 per year, accruing at $7,000 per month. In satisfaction of the $31,200 signing bonus, the Company issued Mr. Falitz an aggregate of 31.2 million (31,200,000) shares of Common Stock for $0.001 per share. Pursuant to the Amended and Restated Management Services Agreement, the Company also agreed to issue to Mr. Falitz an aggregate of 900,000 shares of the Company\u2019s Series D Preferred Stock, all of which vest in increments upon the achievement by the Company of the milestones set forth below:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 883,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1.",
+     "Complete product line expansion with the development and introduction of \u201cgreen line\u201d products that complement our existing line for use in commercial kitchens, the food service industry and other industries and produce Green Seal approved Eco-Logical market ready inventory",
+     "45,000"
+    ],
+    [
+     "2.",
+     "Sign Northeast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "3.",
+     "Sign Midwest, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "4.",
+     "Sign West Coast, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "5.",
+     "Sign Southern, USA Master Distributor",
+     "75,000"
+    ],
+    [
+     "6.",
+     "Sign Retail Distributor - Design and produce a retail package for in-store shelf and clip strip displays and place product in minimum of five (5) retail outlets",
+     "60,000"
+    ],
+    [
+     "7.",
+     "Sign Regional Distributor for expansion into South America",
+     "75,000"
+    ],
+    [
+     "8.",
+     "Sign Regional Distributor for expansion into Europe",
+     "75,000"
+    ],
+    [
+     "9.",
+     "Sign Regional Distributor for expansion into the Middle East",
+     "75,000"
+    ],
+    [
+     "10.",
+     "Sign Regional Distributor for expansion into India",
+     "75,000"
+    ],
+    [
+     "11.",
+     "Sign Regional Distributor for expansion into Asia",
+     "75,000"
+    ],
+    [
+     "12.",
+     "Redesign the product for expansion into the municipal wastewater service industry and sign minimum of two (2) contracts with municipalities within the industry",
+     "60,000"
+    ],
+    [
+     "13.",
+     "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast",
+     "60,000"
+    ],
+    [
+     "TOTAL:",
+     "",
+     "900,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "\u25cf On November 1, 2016, the Company entered into a Restricted Stock Purchase Agreement (\u201cPurchase Agreement\u201d) with Dan Cohen in connection with Mr. Cohen\u2019s Management Services Agreement. Pursuant to the Purchase Agreement, the Company issued 100,000 shares of Series D Preferred Stock to Mr. Cohen for a purchase price of $0.001 per share, which is equal to the Stated Value of the shares, in consideration for services rendered to the Company by Mr. Cohen.\n\u25cf On November 2, 2016, the Company entered into an Amended and Restated Management Services Agreement with Joel Falitz. In consideration for Mr. Falitz serving as the Company\u2019s Chief Executive Officer, President, Secretary and Treasurer, the Company has agreed to pay Mr. Falitz a $31,200 signing bonus and a salary of $84,000 per year, accruing at $7,000 per month. In satisfaction of the $31,200 signing bonus, the Company issued Mr. Falitz an aggregate of 31.2 million (31,200,000) shares of Common Stock for $0.001 per share. Pursuant to the Amended and Restated Management Services Agreement, the Company also agreed to issue to Mr. Falitz an aggregate of 900,000 shares of the Company\u2019s Series D Preferred Stock, all of which vest in increments upon the achievement by the Company of the milestones set forth below:",
+   "prose_after": "The term of Mr. Falitz\u2019s Amended and Restated Management Agreement with the Company is for one year, commencing on the date of the agreement, and automatically renews for successive one year terms unless terminated pursuant thereto.\nItem 6. Exhibits\nIndex to Exhibits",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 883,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No:",
+     "Description:"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Management Services Agreement, dated November 1, 2016, between Ecosciences, Inc. and Dan Cohen"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Restricted Stock Purchase Agreement, dated November 1, 2016, between Ecosciences, Inc. and Dan Cohen"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Management Services Agreement, dated November 2, 2016, between Ecosciences, Inc. and Joel Falitz"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Restricted Stock Purchase Agreement, dated November 2, 2016, between Ecosciences, Inc. and Joel Falitz"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Lease Agreement, dated November 1, 2016, between Ecosciences, Inc. and Preferred Distribution, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13(a)-14(a)/15(d)-14(a) Certification"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certification"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 888,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "The term of Mr. Falitz\u2019s Amended and Restated Management Agreement with the Company is for one year, commencing on the date of the agreement, and automatically renews for successive one year terms unless terminated pursuant thereto.\nItem 6. Exhibits\nIndex to Exhibits",
+   "prose_after": "* Furnished herewith. Users of this data are advised that, pursuant to Rule 406T of Regulation S-T, these interactive data files are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933 or Section 18 of the Exchange Act of 1934 and otherwise are not subject to liability.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 883,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 4, 2016",
+     "By:",
+     "/s/ JOEL FALITZ"
+    ],
+    [
+     "",
+     "Name:",
+     "Joel Falitz"
+    ],
+    [
+     "",
+     "Title:",
+     "President, Chief Executive Officer, Secretary and Treasurer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 926,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Sign contract with Infomercial production company for consumer products and launch the infomercial campaign with the first TV infomercial broadcast                      60,000"
+    }
+   },
+   "prose_before": "* Furnished herewith. Users of this data are advised that, pursuant to Rule 406T of Regulation S-T, these interactive data files are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933 or Section 18 of the Exchange Act of 1934 and otherwise are not subject to liability.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

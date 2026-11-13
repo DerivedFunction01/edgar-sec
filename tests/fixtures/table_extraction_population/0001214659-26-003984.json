@@ -1,0 +1,3529 @@
+{
+ "accession": "0001214659-26-003984",
+ "cik": "0001279715",
+ "form": "10-K",
+ "filing_date": "2026-03-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "iwsh-20251231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "13-4005439"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "",
+     "(IRS Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to _______\nCommission file Number: 000-50587\nWRIGHT INVESTORS\u2019 SERVICE HOLDINGS, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "118 North Bedford Road, Ste. 100, Mount Kisco, NY 10549",
+     ""
+    ],
+    [
+     "",
+     "(Address of Principal Executive Offices, including Zip Code)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "118 North Bedford Road, Ste. 100, Mount Kisco, NY 10549",
+    "(Address of Principal Executive Offices, including Zip Code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(914) 242-5700",
+     ""
+    ],
+    [
+     "",
+     "(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(914) 242-5700",
+    "(Registrant\u2019s telephone number, including area code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     "None"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(g) of the Act:",
+     "",
+     "Common Stock, $0.01 Par Value"
+    ],
+    [
+     "",
+     "",
+     "(Title of Class)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 51
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, if any, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or, an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d, in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "3"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 1C",
+     "Cybersecurity",
+     "6"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "7"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "7"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "8"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "8"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "10"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "11"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "24"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "24"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "25"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "25"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "25"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "25"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "25"
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "25"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period. Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nThe aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant, computed by reference to the price at which the common stock was last sold, or the average bid and asked price of such common stock, as of the last business day of the registrant\u2019s most recently completed second quarter, is $4,000,000.\nAs of March 30, 2026, 20,620,711 shares of the registrant\u2019s common stock were outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nPart III of this report incorporates certain information by reference from the registrant\u2019s proxy statement for the 2025 annual meeting of stockholders, or an amendment to this Annual Report on Form 10-K, to be filed no later than 120 days after the close of the registrant\u2019s fiscal year ended December 31, 2025.\nTABLE OF CONTENTS",
+   "prose_after": "Cautionary Statement Regarding Forward-Looking Statements\nThis Annual Report on Form 10-K contains \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). The Private Securities Litigation Reform Act of 1995 provides a \u201csafe harbor\u201d for forward looking statements. Forward-looking statements are not statements of historical facts, but rather reflect our current expectations concerning future events and results. The words \u201cmay,\u201d \u201cwill,\u201d \u201canticipate,\u201d \u201cshould,\u201d \u201cwould,\u201d \u201cbelieve,\u201d \u201ccontemplate,\u201d \u201ccould,\u201d \u201cproject,\u201d \u201cpredict,\u201d \u201cexpect,\u201d \u201cestimate,\u201d \u201ccontinue,\u201d and \u201cintend,\u201d as well as other similar words and expressions of the future, are intended to identify forward-looking statements.\nThese forward-looking statements generally relate to our plans, objectives and expectations for future events and include statements about our expectations, beliefs, plans, objectives, intentions, assumptions and other statements that are not historical facts. These statements are based upon our opinions and estimates as of the date they are made. Although we believe that the expectations reflected in these forward-looking statements are reasonable, such forward-looking statements are subject to known and unknown risks and uncertainties that may be beyond our control, which could cause actual results, performance and achievements to differ materially from results, performance and achievements projected, expected, expressed or implied by the forward-looking statements. While we cannot assess the future impact that any of these differences could have on our business, financial condition, results of operations and cash flows or the market price of shares of our common stock, the differences could be significant. You are cautioned not to unduly rely on such forward-looking statements when evaluating the information presented in this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm \u2013 (PCAOB ID: 274)",
+     "12"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets - December 31, 2025 and 2024",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations - Years ended December 31, 2025 and 2024",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss \u2013 Years ended December 31, 2025 and 2024",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity \u2013 Years ended December 31, 2025 and 2024",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows - Years ended December 31, 2025 and 2024",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "18"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 405
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The decrease in cash and cash equivalents of $1,407,000 for the year ended December 31, 2025 was primarily the result of $1,054,000 used in operating activities and proceeds from redemptions of investments in money market mutual funds of $248,000, offset by the purchase of money market mutual funds of $601,000.\nThe Company\u2019s recurring operating losses and negative cash flows from operations for the fiscal year ended December 31, 2025, raise substantial doubt about its ability to continue as a going concern for the one-year period from the date of filing of this Form 10-K.\nBased on the Company\u2019s current cash and investment balances and projected cash burn, Management has implemented, or is in the process of implementing, operational cost reductions to decrease cash outflows and extend the Company's liquidity runway.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nNot required.\nItem 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nIndex to the Consolidated Financial Statements\nFinancial Statements of Wright Investors\u2019 Service Holdings, Inc.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nWright Investors' Service Holdings, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Wright Investors' Service Holdings, Inc. (the \u201cCompany\u201d) as of December 31, 2025 and 2024, and the related consolidated statements of operations, comprehensive loss, changes in stockholders\u2019 equity, and cash flows for each of the years then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the consolidated financial position of the Company as of December 31, 2025 and 2024, and the consolidated results of their operations and their cash flows for each of the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has incurred recurring operating losses and negative cash flows from operating activities that raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "33",
+     "",
+     "$",
+     "1,440",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "1,267",
+     "",
+     "",
+     "914",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "78",
+     "",
+     "",
+     "84",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "1,378",
+     "",
+     "",
+     "2,438",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "8",
+     "",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,386",
+     "",
+     "$",
+     "2,446",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "79",
+     "",
+     "$",
+     "115",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "79",
+     "",
+     "",
+     "115",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "79",
+     "",
+     "",
+     "115",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies \u2013 Note 8",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.01 per share, authorized 10,000,000 shares; none issued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.01 per share, authorized 30,000,000 shares; issued 21,628,680 as of December 31, 2025 and 2024; outstanding 20,620,711 as of December 31, 2025 and 2024.",
+     "",
+     "216",
+     "",
+     "",
+     "216",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "34,392",
+     "",
+     "",
+     "34,392",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(31,554)",
+     "",
+     "",
+     "(30,530)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost (1,007,969 shares at December 31, 2025 and 2024)",
+     "",
+     "(1,747)",
+     "",
+     "",
+     "(1,747)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "1,307",
+     "",
+     "",
+     "2,331",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,386",
+     "",
+     "$",
+     "2,446",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there are no critical audit matters.\nWe have served as the Company\u2019s auditor since 2004.\nEISNERAMPER LLP\nCoral Gables, Florida\nMarch 30, 2026\nCONSOLIDATED BALANCE SHEETS\n(in thousands, except share and per share amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 493,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation and benefits",
+     "$",
+     "462",
+     "",
+     "$",
+     "452",
+     ""
+    ],
+    [
+     "Other operating",
+     "",
+     "634",
+     "",
+     "",
+     "627",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,096",
+     "",
+     "",
+     "1,079",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,096)",
+     "",
+     "",
+     "(1,079)",
+     ""
+    ],
+    [
+     "Interest and other income, net",
+     "",
+     "72",
+     "",
+     "",
+     "159",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,024)",
+     "",
+     "$",
+     "(920)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "20,620,711",
+     "",
+     "",
+     "20,620,711",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "$",
+     "(0.05)",
+     "",
+     "$",
+     "(0.04)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(in thousands, except per share amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 525,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,024)",
+     "",
+     "$",
+     "(920)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized holding gain on available for sale securities",
+     "",
+     "-",
+     "",
+     "",
+     "23",
+     ""
+    ],
+    [
+     "Reclassification adjustment for gains realized in net loss",
+     "",
+     "-",
+     "",
+     "",
+     "(63)",
+     ""
+    ],
+    [
+     "Total other comprehensive loss",
+     "",
+     "-",
+     "",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(1,024)",
+     "",
+     "$",
+     "(960)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 533,
+    "end_line": 550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(in thousands)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY\nYEARS ENDED DECEMBER 31, 2025 AND 2024\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 551,
+     "token": "REPEATING_FOOTER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated other",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Total stock-",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock (Issued)",
+     "",
+     "",
+     "",
+     "paid \u2013 in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "comprehensive",
+     "",
+     "",
+     "stock, at",
+     "",
+     "",
+     "holders",
+     "",
+     ""
+    ],
+    [
+     "",
+     "shares",
+     "",
+     "amount",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "income",
+     "",
+     "",
+     "cost",
+     "",
+     "",
+     "equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "21,628,680",
+     "$",
+     "216",
+     "$",
+     "34,392",
+     "$",
+     "(29,610)",
+     "",
+     "$",
+     "40",
+     "",
+     "$",
+     "(1,747)",
+     "",
+     "$",
+     "3,291",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(920)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(920)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(40)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024",
+     "",
+     "21,628,680",
+     "$",
+     "216",
+     "$",
+     "34,392",
+     "$",
+     "(30,530)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(1,747)",
+     "",
+     "$",
+     "2,331",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,024)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,024)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2025",
+     "",
+     "21,628,680",
+     "$",
+     "216",
+     "$",
+     "34,392",
+     "$",
+     "(31,554)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(1,747)",
+     "",
+     "$",
+     "1,307",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY\nYEARS ENDED DECEMBER 31, 2025 AND 2024\n(in thousands, except per share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 553,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 583,
+     "token": "REPEATING_FOOTER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,024)",
+     "",
+     "$",
+     "(920)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized gain on investments",
+     "",
+     "-",
+     "",
+     "",
+     "(63)",
+     ""
+    ],
+    [
+     "Changes in other operating items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "6",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(36)",
+     "",
+     "",
+     "32",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,054)",
+     "",
+     "",
+     "(938)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from redemptions of investments",
+     "",
+     "248",
+     "",
+     "",
+     "4,257",
+     ""
+    ],
+    [
+     "Purchase of investments",
+     "",
+     "(601)",
+     "",
+     "",
+     "(2,004)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(353)",
+     "",
+     "",
+     "2,253",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(1,407)",
+     "",
+     "",
+     "1,315",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the beginning of the year",
+     "",
+     "1,440",
+     "",
+     "",
+     "125",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the end of the year",
+     "$",
+     "33",
+     "",
+     "$",
+     "1,440",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized loss on available for sale securities",
+     "$",
+     "-",
+     "",
+     "$",
+     "(40)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "prose_after": "WRIGHT INVESTORS\u2019 SERVICE HOLDINGS, INC.\n1. Description of activities\nWright Investors\u2019 Service Holdings, Inc. (the \u201cCompany\u201d) has nominal operations and nominal assets aside from its cash and cash equivalents and investments in money market mutual funds, and is therefore considered a shell company, as defined in U.S. securities laws and regulations. The Company is not engaged in the business of investing, reinvesting, or trading in securities, and it does not hold itself out as being engaged in those activities.\nThe Company intends to evaluate and explore all available strategic options. The Company will continue to work to maximize stockholder value. Such strategic options may include acquisition of an investment advisory business, acquisition of a financial services business, creating partnerships or joint ventures for those or other businesses and investing in other businesses that provide attractive opportunities for growth. The directors will also consider alternatives for distributing some or all of the Company\u2019s cash and cash equivalents, and investments to stockholders. Until such time as a decision is made as to how the liquid assets of the Company are so deployed, the Company intends to invest its liquid assets in high-grade, short- term investments (such as cash and cash equivalents and investments in money market mutual funds) consistent with the preservation of principal, maintenance of liquidity and avoidance of speculation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 625,
+     "token": "REPEATING_FOOTER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "Unadjusted quoted prices in active markets for identical assets or liabilities."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2",
+     "Inputs other than quoted market prices that are observable, either directly or indirectly, and reasonably available. Observable inputs reflect the assumptions market participants would use in pricing the asset or liability and are developed based on market data obtained from sources independent of the Company."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3",
+     "Unobservable inputs. Unobservable inputs reflect the assumptions that the Company develops based on available information about what market participants would use in valuing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 670,
+    "end_line": 679
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "Cash equivalents represent short-term, highly liquid investments, which are readily convertible to cash and have maturities of three months or less at time of purchase. Cash equivalents do not include money market mutual funds which are classified as investments. Cash and cash equivalents amounted to approximately $33,000 and $1,440,000 at December 31, 2025 and 2024, respectively.\nInvestment Valuation\nThe Company\u2019s investments in marketable securities consist of investments in equity securities which are money market mutual funds. The Company carries its investments at fair value. Fair value is an estimate of the exit price, representing the amount that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants (i.e., the exit price at the measurement date). Fair value measurements are not adjusted for transaction costs. A fair value hierarchy provides for prioritizing inputs to valuation techniques used to measure fair value into three levels:",
+   "prose_after": "An asset or liability's level within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement. Availability of observable inputs can vary and is affected by a variety of factors. The Company uses judgment in determining fair value of assets and liabilities and Level 3 assets and liabilities involve greater judgment than Level 1 or Level 2 assets or liabilities.\nAs of December 31, 2025 and December 31, 2024, the Company held investments in equity securities which consist of a money market mutual fund of $1,267,000 and $914,000, respectively. Money market mutual funds are valued at the closing price reported by the fund sponsor from an actively traded exchange. Money market mutual funds are categorized in Level 1 of the fair value hierarchy, depending on the unadjusted quoted prices in active markets for identical assets.\nThe Company follows the guidance in ASC 321, \u201cInvestments \u2013 Equity Securities\u201d (\u201cASC 321\u201d) for its investments in equity securities with unrealized and realized gains and losses recorded as Interest and other income, net, on the Consolidated Statements of Operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements\n\n\n\nas of December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Quoted Prices in Active Markets for Identical Assets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments in Money Market Mutual Funds",
+     "$",
+     "1,267",
+     "$",
+     "1,267",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements\n\n\n\nas of December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "An asset or liability's level within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement. Availability of observable inputs can vary and is affected by a variety of factors. The Company uses judgment in determining fair value of assets and liabilities and Level 3 assets and liabilities involve greater judgment than Level 1 or Level 2 assets or liabilities.\nAs of December 31, 2025 and December 31, 2024, the Company held investments in equity securities which consist of a money market mutual fund of $1,267,000 and $914,000, respectively. Money market mutual funds are valued at the closing price reported by the fund sponsor from an actively traded exchange. Money market mutual funds are categorized in Level 1 of the fair value hierarchy, depending on the unadjusted quoted prices in active markets for identical assets.\nThe Company follows the guidance in ASC 321, \u201cInvestments \u2013 Equity Securities\u201d (\u201cASC 321\u201d) for its investments in equity securities with unrealized and realized gains and losses recorded as Interest and other income, net, on the Consolidated Statements of Operations.\nThe following table presents the Company\u2019s financial instruments measured at fair value (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements\n\n\n\nas of December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Quoted Prices in Active Markets for Identical Assets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments in Money Market Mutual Funds",
+     "$",
+     "914",
+     "$",
+     "914",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements\n\n\n\nas of December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Investments in equity securities as of December 31, 2025 and 2024 are summarized by type below (in thousands).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Money Market Mutual Funds",
+     "$",
+     "1,267",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "1,267"
+    ],
+    [
+     "Total",
+     "$",
+     "1,267",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,267"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "Investments in equity securities as of December 31, 2025 and 2024 are summarized by type below (in thousands).",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost / Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Money Market Mutual Funds",
+     "$",
+     "914",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "914"
+    ],
+    [
+     "Total",
+     "$",
+     "914",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "914"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Investment in undeveloped land\nThe Company owns certain non-strategic assets, including an investment in land and certain flowage rights in undeveloped property (the \u201cproperties\u201d) primarily located Killingly, Connecticut. The properties were fully impaired as of December 31, 2018.\nPer share data\nLoss per share for the year ended December 31, 2025 and 2024, respectively, is calculated based on 20,620,711 weighted average outstanding shares of common stock.\nIncome taxes\nDeferred tax assets and liabilities are recognized for the estimated future tax consequences attributable to carryforwards and to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates in effect for the year in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued professional fees",
+     "$",
+     "34",
+     "$",
+     "15"
+    ],
+    [
+     "Other",
+     "",
+     "45",
+     "",
+     "100"
+    ],
+    [
+     "Total",
+     "$",
+     "79",
+     "$",
+     "115"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Accounts payable and accrued expenses"
+    }
+   },
+   "prose_before": "In November 2023, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update (\u201cASU\u201d) 2023-09, Improvements to Income Tax Disclosures, which requires entities to disclose disaggregated information about their effective tax rate reconciliations as well as expanded information on income taxes by jurisdiction. The standard is effective for fiscal years beginning after December 15, 2024, on a prospective basis. The Company discloses its income tax rate reconciliation in its annual consolidated financial statements only and the adoption, effective January 1, 2025, did not have a material impact on its consolidated financial statements.\nIn November 2024, the FASB issued ASU 2024-03, Income Statement Reporting-Comprehensive Income-Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. The standard update improves the disclosures about a public business entity\u2019s expenses by requiring more detailed information about the types of expenses (including compensation and benefits and other operating expenses) included within income statement expense captions. The guidance will be effective for annual reporting periods beginning after December 15, 2026, and interim reporting periods beginning after December 15, 2027. Early adoption is permitted. The standard will be applied on a prospective basis, with retrospective application permitted. The Company is currently evaluating the impact of adoption of the standard on its financial statement disclosures.\n4. Accounts payable and accrued expenses\nAccounts payable and accrued expenses consist of the following (in thousands):",
+   "prose_after": "5. Income taxes\nFor the years ended December 31, 2025 and 2024, the Company recorded no income tax expense.\nASU 2023-09 requires disaggregation of pretax income (loss), income tax expense (benefit), and income taxes paid by jurisdiction. The Company has no foreign operations; accordingly, all pretax income (loss) is domestic (United States).\nThe following table shows the components of loss before income taxes and the related current tax provision benefits (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. operations",
+     "$",
+     "(1,024)",
+     "",
+     "$",
+     "(920)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S federal",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total income tax expense",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 800,
+    "end_line": 814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income taxes"
+    }
+   },
+   "prose_before": "5. Income taxes\nFor the years ended December 31, 2025 and 2024, the Company recorded no income tax expense.\nASU 2023-09 requires disaggregation of pretax income (loss), income tax expense (benefit), and income taxes paid by jurisdiction. The Company has no foreign operations; accordingly, all pretax income (loss) is domestic (United States).\nThe following table shows the components of loss before income taxes and the related current tax provision benefits (in thousands):",
+   "prose_after": "For the years ended December 31, 2025 and 2024 there were no income taxes paid. As no income taxes were paid, disaggregation by U.S. federal, state, or foreign jurisdictions was not applicable for the period presented.\nThe following table provides a reconciliation of the U.S. statutory federal income tax rate to the Company\u2019s effective income tax rate for the years ended December 31, 2025 and 2024 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. federal statutory income tax",
+     "$",
+     "(215)",
+     "",
+     "21.0",
+     "%",
+     "$",
+     "(193)",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in U.S. federal valuation allowance",
+     "",
+     "210",
+     "",
+     "(20.5)",
+     "%",
+     "",
+     "180",
+     "",
+     "(19.6)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nontaxable or nondeductible items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Meals and entertainment",
+     "",
+     "5",
+     "",
+     "(0.5)",
+     "%",
+     "",
+     "12",
+     "",
+     "(1.3)",
+     "%"
+    ],
+    [
+     "Other adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset adjustments",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%",
+     "",
+     "1",
+     "",
+     "(0.1)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income taxes"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2025 and 2024 there were no income taxes paid. As no income taxes were paid, disaggregation by U.S. federal, state, or foreign jurisdictions was not applicable for the period presented.\nThe following table provides a reconciliation of the U.S. statutory federal income tax rate to the Company\u2019s effective income tax rate for the years ended December 31, 2025 and 2024 (in thousands):",
+   "prose_after": "Deferred income taxes reflect the tax effects of the differences between the amounts recorded as assets and liabilities for financial statement purposes and the comparable amounts recorded for income tax purposes. The following table depicts the significant components of the deferred tax assets (liabilities) (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "5,728",
+     "",
+     "$",
+     "5,530",
+     ""
+    ],
+    [
+     "Unrealized loss on investments",
+     "",
+     "93",
+     "",
+     "",
+     "93",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "3",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Gross deferred tax assets",
+     "",
+     "5,824",
+     "",
+     "",
+     "5,626",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(5,824)",
+     "",
+     "",
+     "(5,626)",
+     ""
+    ],
+    [
+     "Deferred tax assets after valuation allowance",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 842,
+    "end_line": 858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income taxes"
+    }
+   },
+   "prose_before": "Deferred income taxes reflect the tax effects of the differences between the amounts recorded as assets and liabilities for financial statement purposes and the comparable amounts recorded for income tax purposes. The following table depicts the significant components of the deferred tax assets (liabilities) (in thousands):",
+   "prose_after": "The Company accounts for income taxes in accordance with ASC 740, Income Taxes. Deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial reporting and tax bases of existing assets and liabilities and for net operating loss carryforwards. Deferred tax assets are reduced by a valuation allowance when, based on the weight of available evidence, it is more likely than not that some portion or all of the deferred tax assets will not be realized.\nA valuation allowance is provided when it is more likely than not that some portion of deferred tax assets will not be realized. The valuation allowance increased / (decreased) by approximately $198,000 during the year ended December 31, 2025, related to the U.S. federal and New York State jurisdictions in the amounts of $210,000 and $(12,000), respectively. The valuation allowance increased by $224,000 during the year ended December 31, 2024, related to the U.S. federal and New York State jurisdictions in the amounts of $180,000 and $44,000, respectively. The increases in the valuation allowance during the years ended December 31, 2025 and 2024 were mainly due to increases in the net operating loss carryforward.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements of Wright Investors\u2019 Service Holdings, Inc.:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets - December 31, 2025 and 2024",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations - Years ended December 31, 2025 and 2024",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss - Years ended December 31, 2025 and 2024",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity \u2013 Years ended December 31, 2025 and 2024",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows - Years ended December 31, 2025 and 2024",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "18"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 968
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments, Contingencies, and Other"
+    }
+   },
+   "prose_before": "Additional information required by this item is incorporated by reference to the Company\u2019s Proxy Statement for its 2025 Annual Meeting of Stockholders under the caption \u201cStock Ownership of Management and Principal Stockholders\u201d.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nThis information required by this item is incorporated by reference to the Company\u2019s Proxy Statement for its 2025 Annual Meeting of Stockholders under the captions \u201cCertain Transactions with Management\u201d and \u201cDirector Independence\u201d.\nItem 14. Principal Accounting Fees and Services.\nThe information regarding principal accountant fees and services and the Company\u2019s pre-approval policies and procedures for audit and non-audit services provided by the Company\u2019s independent accountants is incorporated by reference to the Company\u2019s Proxy Statement for its 2025 Annual Meeting of Stockholders under the caption \u201cPrincipal Accountant Fees and Services.\u201d\nItem 15. Exhibits and Financial Statement Schedules\n(a)(1) The following financial statements are included in Part II, Item 8. Financial Statements and Supplementary Data:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 924,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a)(2)",
+     "Schedules have been omitted because they are not required or are not applicable, or the required information has been included in the financial statements or the notes thereto."
+    ],
+    [
+     "(a)(3)",
+     "See accompanying Index to Exhibits."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 969,
+    "end_line": 974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments, Contingencies, and Other"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 924,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBITS",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3(i)",
+     "",
+     "Articles of Incorporation.  Incorporated herein by reference to Exhibit 3.1 of the Registrant\u2019s Form S-1, Registration No. 333-118568."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3(ii)",
+     "",
+     "Bylaws.  Incorporated herein by reference to Exhibit 3.2 of the Registrant\u2019s Form S-1, Registration No. 333-118568."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Form of certificate representing shares of common stock, par value $0.01 per share.  Incorporated herein by reference to Exhibit 4.1 of the Registrant\u2019s Form S-1, Registration No. 333-118568."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "14",
+     "",
+     "Code of Business Conduct and Ethics for Chief Executive Officer and Senior Financial Officers of the Registrant and its subsidiaries.  Incorporated herein by reference to Exhibit 14.1 to the Registrant\u2019s Form 10-K for the year ended December 31, 2004 filed on April 15, 2005"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "21",
+     "",
+     "Subsidiaries of the Registrant*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of the principal executive officer of the Registrant, pursuant to Securities Exchange Act Rule 13a-14(a)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of the principal financial officer of the Registrant, pursuant to Securities Exchange Act Rule 13a-14(a)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "*",
+     "Certifications pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of The Sarbanes-Oxley Act of 2002, signed by the principal executive officer and the principal financial officer of the Company"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document. The instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [
+    "EXHIBITS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 976,
+    "end_line": 1012
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments, Contingencies, and Other"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "_________________________________\n*Filed within\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1021,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "WRIGHT INVESTORS\u2019 SERVICE HOLDINGS, INC",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ HARVEY P. EISEN",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Harvey P. Eisen"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Chairman, President and Chief Executive Officer\n\n\n\n(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "WRIGHT INVESTORS\u2019 SERVICE HOLDINGS, INC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1026,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments, Contingencies, and Other"
+    }
+   },
+   "prose_before": "_________________________________\n*Filed within\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1021,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Capacity",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ HARVEY P. EISEN",
+     "",
+     "Chairman, President and Chief Executive Officer",
+     "March 30, 2026"
+    ],
+    [
+     "Harvey P. Eisen",
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ HAROLD KAHN",
+     "",
+     "Acting Chief Financial Officer and Acting Principal Accounting Officer",
+     "March 30, 2026"
+    ],
+    [
+     "Harold Kahn",
+     "",
+     "(Principal Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ LAWRENCE G. SCHAFRAN",
+     "",
+     "Director",
+     "March 30, 2026"
+    ],
+    [
+     "Lawrence G. Schafran",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ DORT CAMERON III",
+     "",
+     "Director",
+     "March 30, 2026"
+    ],
+    [
+     "Dort Cameron III",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1039,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments, Contingencies, and Other"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1021,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

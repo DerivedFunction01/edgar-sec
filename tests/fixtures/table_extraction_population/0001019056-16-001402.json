@@ -1,0 +1,4184 @@
+{
+ "accession": "0001019056-16-001402",
+ "cik": "0001566243",
+ "form": "10-K/A",
+ "filing_date": "2016-07-12",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "arax_10ka15.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "2013",
+     "",
+     "EIN 99-0376721"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "",
+     "(Primary Standard Industrial Classification Number)",
+     "",
+     "(IRS Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K/A\n(Amendment No. 1)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended October 31, 2015\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________to _________\nCommission File No. 333-185928\nARAX HOLDINGS CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2329 N. Career Avenue\nSuite 317\nSioux Falls, SD 57107\n(605) 553 2238\n(Address and telephone number of principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for shorter period that the registrant as required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]*",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART 1",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business",
+     "3"
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "ITEM 2",
+     "Description of Property",
+     "4"
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "ITEM 4",
+     "Mine Safety Disclosures",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM  5",
+     "Market for Common Equity and Related Stockholder Matters",
+     "5"
+    ],
+    [
+     "ITEM  6",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "ITEM  7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "ITEM 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "8"
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements and Supplementary Data",
+     "9"
+    ],
+    [
+     "ITEM 9",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "F-18"
+    ],
+    [
+     "ITEM 9A",
+     "Controls and Procedures",
+     "F-18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "Directors, Executive Officers, Promoters and Control Persons of the Company",
+     "F-20"
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation",
+     "F-21"
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "F-21"
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships and Related Transactions",
+     "F-22"
+    ],
+    [
+     "ITEM 14",
+     "Principal Accountant Fees and Services",
+     "F-22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits",
+     "F-23"
+    ],
+    [
+     "",
+     "Signatures",
+     "F-24"
+    ]
+   ],
+   "caption_stack": [
+    "PART 1"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The purpose of this Amendment No. 1 (the \u201cAmendment\u201d) to the registrant\u2019s Annual Report on Form 10-K for the year ended October 31, 2015, filed with the Securities and Exchange Commission on February 16, 2016 (the \u201cAnnual Report\u201d), is to record related party payables due to two consultants under consulting agreements with Thru Pharma to be paid with 7,500 options for the first consultant on a monthly basis convertible at $.80 per share entered into in February 2015 and the other to be paid in 10,000 common shares as stock payable, and record a management estimate of 25% of their overall compensation as a consulting expense. The Company issued 600,000 warrants on September 22, 2015 as payment for legal expenses that had not been recorded. The Company also entered into a convertible note agreement that previously had not been recorded that is considered a derivative or contains embedded features subject to derivative accounting related to a revolving convertible note in which the Company can borrow up to $200,000, which includes a 10% OID. The Company issued the first tranche of the convertible note totaling $75,000, of which $65,000 was paid in cash, $2,500 was paid for legal fees, and a OID of $7,500, which included a ratchet provision in the conversion price of $.95 or a price equal to 60% of the last equity transaction completed by the Company as part of a subscription agreement. The note has a maturity date of nine months after funding and also includes a fifty percent premium totaling $37,500 which is added on 90 days after funding. The fair values of the derivative instruments are measured each quarter, which resulted in a gain of $19,934 and derivative expense of $25,434 during the year ended October 31, 2015. As of October 31, 2015, the fair market value of the derivatives aggregated $5,500 using the following assumptions: estimated 0.42 to 0.75-year term, estimated volatility of 133.49% to 243.69%, and a discount rate of 0.21% to 0.23%. Subsequent to the year ending October 31, 2015, 35,294 shares of common stock were issued on February 5, 2016. The shares were issued as part of an incentive to enter into convertible notes that were owed as of October 31, 2015, with a relative fair value of $11,881.\nNo other changes have been made to the Annual Report except as noted above. This Amendment to the Annual Report speaks as of the original filing date of the Annual Report, does not reflect events that may have occurred subsequent to the original filing date, and does not modify or update in any way disclosures made in the original Annual Report except that changes have been made to the cover page, Note 9 \u2013 Convertible Debt and Derivative Liabilities, Note 10 - Fair Value Measurement, Note 11\n\u2013 Stock Purchase Options and Warrants, and Note 12 \u2013 Correction of Financial Statements.\nFORM 10K/A\nOCTOBER 31, 2015\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nFORWARD-LOOKING STATEMENTS\nThis annual report contains forward-looking statements. These statements relate to future events or our future financial performance. These statements often can be identified by the use of terms such as \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201capproximate\u201d or \u201ccontinue,\u201d or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management\u2019s best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "  January 31, 2015",
+     "$",
+     "0.62",
+     "$",
+     "0.52"
+    ],
+    [
+     "  April 30, 2015",
+     "$",
+     "0.52",
+     "$",
+     "0.40"
+    ],
+    [
+     "  July 31, 2015",
+     "$",
+     "0.40",
+     "$",
+     "0.40"
+    ],
+    [
+     "  October 31, 2015",
+     "$",
+     "0.40",
+     "$",
+     "0.40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 174,
+    "end_line": 182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Our shares of common stock are traded on the OTCBB under the symbol \u201cARAT.\u201d Trading in stocks quoted on the OTC Bulletin Board is often thin and is characterized by wide fluctuations in trading prices due to many factors that may be unrelated to a company\u2019s operations or business prospects. We cannot assure you that there will be a market in the future for our common stock.\nOTC Bulletin Board securities are not listed or traded on the floor of an organized national or regional stock exchange. Instead, OTC Bulletin Board securities transactions are conducted through a telephone and computer network connecting dealers in stocks. OTC Bulletin Board issuers are traditionally smaller companies that do not meet the financial and other listing requirements of a regional or national stock exchange.\nThe following table sets forth the high and low trade information for our common stock for each quarter of the fiscal year ended October 31, 2015. As of October 31, 2014, the common stock was at $0.62. The first trade of our common stock this fiscal year was on November 3, 2014. No shares were traded during the fiscal quarters ended July 31, 2015 and October 31, 2015.",
+   "prose_after": "No shares traded during Q3 and Q4. Bid price remained at $0.40.\nNumber of Holders\nAs of October 31, 2015, the 10,300,000 issued and outstanding shares of common stock were held by 37 total shareholders of record.\nDividends\nNo cash dividends were paid on our shares of common stock during the fiscal years ended October 31, 2015, 2014 and 2013. We have not paid any cash dividends since our inception and do not foresee declaring any cash dividends on our common stock in the foreseeable future.\nRecent Sales of Unregistered Securities\nNo sales of unregistered securities were completed in the twelve months ended October 31, 2015.\nPurchase of our Equity Securities by Officers and Directors\nNo purchase of equity securities took place in the twelve months ended October 31, 2015.\nOther Stockholder Matters",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 205,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F - 1 and F - 2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of October 31, 2015 and 2014",
+     "F - 3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the years ended October 31, 2015 and 2014",
+     "F - 4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Changes in Stockholders\u2019 Deficit for the years ended October 31, 2015 and 2014",
+     "F - 5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the years ended October 31, 2015 and 2014",
+     "F - 6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "F - 7 - F - 17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 310,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this Annual Report, we do not have any off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that are material to investors.\nGOING CONCERN\nThe independent auditors\u2019 report accompanying our October 31, 2015 and October 31, 2014 financial statements contains an explanatory paragraph expressing substantial doubt about our ability to continue as a going concern. The financial statements have been prepared \u201cassuming that we will continue as a going concern,\u201d which contemplates that we will realize our assets and satisfy our liabilities and commitments in the ordinary course of business.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nAs a \u201csmaller reporting company\u201d as defined by Item 10 of Regulation S-K, we are not required to provide information required by this Item.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO FINANCIAL STATEMENTS\nTABLE OF CONTENTS\nFOR THE TWELVE MONTHS ENDED OCTOBER 31, 2015 AND 2014",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nBoard of Directors\n2329 N. Career Avenue, Suite 317 Sioux Falls, South Dakota, 57107\nWe have audited the accompanying balance sheet of Arax Holdings Corp. as of October 31, 2014 and the related statement of operations, changes in stockholders\u2019 deficit and cash flows for the year then ended. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 301,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "October 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Total current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loans from related party",
+     "$",
+     "37,682",
+     "",
+     "$",
+     "45,458",
+     ""
+    ],
+    [
+     "  Convertible Notes payable, net of $43,188 debt discount",
+     "",
+     "69,312",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accrued Interest Payable",
+     "",
+     "1,923",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Derivative Liability",
+     "",
+     "5,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Total current liabilities",
+     "",
+     "114,417",
+     "",
+     "",
+     "45,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "114,417",
+     "",
+     "",
+     "45,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value; 75,000,000 shares authorized; 10,300,000 shares issued and outstanding",
+     "",
+     "10,300",
+     "",
+     "",
+     "10,300",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "258,564",
+     "",
+     "",
+     "25,548",
+     ""
+    ],
+    [
+     "  Stock Subscription Payable",
+     "",
+     "50,281",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(433,562)",
+     "",
+     "",
+     "(81,306)",
+     ""
+    ],
+    [
+     "  Total stockholders\u2019 deficit",
+     "$",
+     "(114,417)",
+     "",
+     "$",
+     "(45,458)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Arax Holdings Corp. as of October 31, 2015 and the results of its operations and its cash flows for the year then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered continuing losses and has yet to establish a reliable, consistent and proven source of revenue to meet its operating costs on an ongoing basis and currently does not have sufficient available funding to fully implement its business plan. These factors raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Pritchett, Siler and Hardy PC\nPritchett, Siler and Hardy PC\nFarmington Utah\nFebruary 16, 2016\nExcept for Notes 8 and 12, which are July 8, 2016\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nBalance Sheets",
+   "prose_after": "Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 393,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "For the Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "October 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  REVENUE",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "    Bank service charges",
+     "",
+     "\u2014",
+     "",
+     "",
+     "24",
+     ""
+    ],
+    [
+     "    Professional fees",
+     "",
+     "328,640",
+     "",
+     "",
+     "49,813",
+     ""
+    ],
+    [
+     "    Loss on disposal of fixed assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "428",
+     ""
+    ],
+    [
+     "  TOTAL OPERATING EXPENSES",
+     "",
+     "328,640",
+     "",
+     "",
+     "50,294",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    NET LOSS FROM OPERATIONS",
+     "",
+     "(328,640)",
+     "",
+     "",
+     "(50,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest Expense",
+     "",
+     "(18,116)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Derivative Expense",
+     "",
+     "(25,434)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Change in Fair Value of Derivative",
+     "",
+     "19,934",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSES)",
+     "",
+     "(23,616)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET LOSS BEFORE INCOME TAXES",
+     "",
+     "(352,256)",
+     "",
+     "",
+     "(50,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Provision for Income Taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET LOSS",
+     "",
+     "(352,256)",
+     "",
+     "",
+     "(50,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.00)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  WEIGHTED AVERAGE NUMBER OF COMMON SHARES OUTSTANDING: BASIC AND DILUTED",
+     "",
+     "10,300,000",
+     "",
+     "",
+     "10,300,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  *Denotes a loss of less than $(0.01) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 442,
+    "end_line": 484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Operations",
+   "prose_after": "Statement of Changes in Stockholders\u2019 Deficit\nFor the years ended October 31, 2015 and 2014",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Stock",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid In",
+     "",
+     "Subscription",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Payable",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balances, October 31, 2013",
+     "",
+     "10,300,000",
+     "$",
+     "10,300",
+     "$",
+     "20,700",
+     "$",
+     "\u2014",
+     "$",
+     "(31,012)",
+     "",
+     "$",
+     "(12)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of related party loan payable",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,848",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,848",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(50,294)",
+     "",
+     "",
+     "(50,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, October 31, 2014",
+     "",
+     "10,300,000",
+     "$",
+     "10,300",
+     "$",
+     "25,548",
+     "$",
+     "\u2014",
+     "$",
+     "(81,306)",
+     "",
+     "$",
+     "(45,458)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock as Incentive for Convertible Note",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,881",
+     "",
+     "\u2014",
+     "",
+     "",
+     "11,881",
+     ""
+    ],
+    [
+     "Stock for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,400",
+     "",
+     "\u2014",
+     "",
+     "",
+     "38,400",
+     ""
+    ],
+    [
+     "Options Granted for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,217",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,217",
+     ""
+    ],
+    [
+     "Warrants Issued for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "216,799",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "216,799",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(352,256)",
+     "",
+     "",
+     "(352,256)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, October 31, 2015",
+     "",
+     "10,300,000",
+     "$",
+     "10,300",
+     "$",
+     "258,564",
+     "$",
+     "50,281",
+     "$",
+     "(433,562)",
+     "",
+     "$",
+     "(114,417)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "Statement of Changes in Stockholders\u2019 Deficit\nFor the years ended October 31, 2015 and 2014",
+   "prose_after": "Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "For the Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "October 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss for the period",
+     "$",
+     "(361,103)",
+     "",
+     "$",
+     "(50,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Stock for Compensation",
+     "",
+     "38,400",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Derivative Expense",
+     "",
+     "25,434",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Related party payable for services",
+     "",
+     "27,450",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Options granted for compensation",
+     "",
+     "16,217",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Warrants issued for professional fees",
+     "",
+     "216,799",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Change in Fair Value of Derivative",
+     "",
+     "(19,934)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Amortization of debt discount and Original Issue Discount",
+     "",
+     "16,193",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Depreciation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "    Loss on disposal of fixed assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "428",
+     ""
+    ],
+    [
+     "Changes in Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accrued Interest Payable",
+     "",
+     "1,923",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "(49,837)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Loan from related party",
+     "",
+     "29,774",
+     "",
+     "",
+     "46,085",
+     ""
+    ],
+    [
+     "    Proceeds from convertible note",
+     "",
+     "65,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Payments to related party",
+     "",
+     "(65,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  NET CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "29,774",
+     "",
+     "",
+     "46,085",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET (DECREASE) INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,752)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH, BEGINNING OF PERIOD",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,752",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH, END OF PERIOD",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SUPPLEMENTAL DISCLOSURE OF CASH FLOWS INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest paid",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Income taxes paid",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SUPPLEMENTAL SCHEDULE OF NON-CASH",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Original Issue Discount",
+     "$",
+     "10,000",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Stock as Incentive for Convertible Note",
+     "$",
+     "11,881",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Disposal of equipment without cash proceeds",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "428",
+     ""
+    ],
+    [
+     "    Forgiveness of loan from related party",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,848",
+     ""
+    ],
+    [
+     "  TOTAL NON-CASH INVESTING AND FINANCING ACTIVITIES",
+     "$",
+     "21,881",
+     "",
+     "$",
+     "5,276",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Cash Flows",
+   "prose_after": "NOTES TO THE FINANCIAL STATEMENTS\nFOR THE TWELVE MONTHS ENDED OCTOBER 31, 2015 AND 2014\nNOTE 1 \u2013 ORGANIZATION AND NATURE OF BUSINESS\nArax Holdings Corp. (the \u201cCompany\u201d, \u201cwe\u201d, \u201cour\u201d or \u201cus\u201d) was incorporated under the laws of the State of Nevada on February 23, 2012 with a business plan to sell hot dogs from mobile hot dog stands throughout the major cities in Mexico. As of the filing of the 10K for last year, the Company stated that it was re-evaluating its business plan.\nIt was further indicated as possible that a new business model could be related to a new business sector other than the food sector, and that any new business model could entail a capital restructuring of the Company in order to provide new capital and a broader base of shareholders. Such a capital restructuring of the Company could involve a merger or acquisition of assets through various techniques, including a possible reverse-merger. At October 31, 2015, and as of the date of this filing, Management believes that the best business model for our investors is to pursue business activity in the Life Sciences sector of the United States and possibly internationally. We will continue to assess these opportunities and structures as well as the various pre-requisite actions needed to finalize and implement any new business model.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements Using",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Total Fair Value at October 31, 2015",
+     "",
+     "Quoted Prices in Active Markets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "$",
+     "5,500",
+     "$",
+     "\u2014",
+     "$",
+     "5,500",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value Measurements Using",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Total Fair Value at October 31, 2014",
+     "",
+     "Quoted Prices in Active Markets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "None",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements Using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 721,
+    "end_line": 738
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 FAIR VALUE MEASUREMENT"
+    }
+   },
+   "prose_before": "The Company has financial instruments that are considered derivatives or contain embedded features subject to derivative accounting related to a revolving convertible note in which the Company can borrow up to $200,000, which includes a 10% OID. The Company issued the first tranche of the convertible note totaling $75,000, of which $65,000 was paid in cash, $2,500 was paid for legal fees, and a OID of $7,500, which included a ratchet provision in the conversion price of $.95 or a price equal to 60% of the last equity transaction completed by the Company as part of a subscription agreement. The note has a maturity date of nine months after funding and also includes a fifty percent premium which is added on 90 days after funding. The note is to be paid off in installments of $19,453 for six months after the ninety day period. Embedded derivatives are valued separately from the host instrument and are recognized as derivative liabilities in the Company\u2019s balance sheet. The Company measures these instruments at their estimated fair value and recognizes changes in their estimated fair value in results of operations during the period of change. The Company has estimated the fair value of these embedded derivatives for convertible debentures using a multinomial lattice model as of July 31, 2015 and October 31, 2015.\nThe fair values of the derivative instruments are measured each quarter, which resulted in a gain of $19,934 and derivative expense of $25,434 during the year ended October 31, 2015. As of October 31, 2015, the fair market value of the derivatives aggregated $5,500 using the following assumptions: estimated 0.42 to 0.75-year term, estimated volatility of 133.49% to 243.69%, and a discount rate of 0.21% to 0.23%.\nNOTE 10 \u2013 FAIR VALUE MEASUREMENT\nThe Company uses the multinomial lattice model to calculate the fair value of the derivative liability.\nOur financial assets and (liabilities) carried at fair value measured on a recurring basis as of October 31, 2015 and 2014 consisted of the following:",
+   "prose_after": "NOTE 11 - STOCK PURCHASE OPTIONS AND WARRANTS\nDuring the year ended October 31, 2015, the Company issued options to purchase a total of 37,500 shares of the Company\u2019s Common Stock. The Company issued 37,500 options in conjunction with a consulting agreement entered into in February 2015. According to the consulting agreement, the company is to issue either 5,000 common shares or 7,500 options per month during the duration of their agreements. The options were valued using the multinomial lattice pricing model under the assumptions noted below.\nStock Purchase Options\nDuring the year ended October 31, 2015, the Company issued 37,500 stock purchase options for a value of $16,217.\nDuring the year ended October 31, 2014, the Company did not issue any stock purchase options.\nThe following table presents the assumptions used to estimate the fair values of the stock warrants and options granted:",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "202-213",
+     "%",
+     "",
+     "N/A"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "N/A"
+    ],
+    [
+     "Expected term",
+     "",
+     "3 Years",
+     "",
+     "",
+     "N/A"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.80-1.09",
+     "%",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 751,
+    "end_line": 759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "NOTE 11 - STOCK PURCHASE OPTIONS AND WARRANTS\nDuring the year ended October 31, 2015, the Company issued options to purchase a total of 37,500 shares of the Company\u2019s Common Stock. The Company issued 37,500 options in conjunction with a consulting agreement entered into in February 2015. According to the consulting agreement, the company is to issue either 5,000 common shares or 7,500 options per month during the duration of their agreements. The options were valued using the multinomial lattice pricing model under the assumptions noted below.\nStock Purchase Options\nDuring the year ended October 31, 2015, the Company issued 37,500 stock purchase options for a value of $16,217.\nDuring the year ended October 31, 2014, the Company did not issue any stock purchase options.\nThe following table presents the assumptions used to estimate the fair values of the stock warrants and options granted:",
+   "prose_after": "The following table summarizes the changes in options outstanding of the Company during the year ended October 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date Issued",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Grant Date Fair Value",
+     "",
+     "Expiration Date (yrs)",
+     "",
+     "Value if Exercised",
+     ""
+    ],
+    [
+     "  Balance as of October 31, 2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "  Granted",
+     "",
+     "37,500",
+     "",
+     "0.80",
+     "",
+     "0.41",
+     "",
+     "2.64",
+     "",
+     "30,000"
+    ],
+    [
+     "  Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Cancelled/Expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Outstanding as of October 31, 2015",
+     "",
+     "37,500",
+     "$",
+     "0.80",
+     "$",
+     "0.41",
+     "",
+     "2.47",
+     "$",
+     "30,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 762,
+    "end_line": 773
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "The following table summarizes the changes in options outstanding of the Company during the year ended October 31, 2015.",
+   "prose_after": "Stock Purchase Warrants\nDuring the year ended October 31, 2015, the Company issued warrants to purchase a total of 600,000. The Company issued 600,000 warrants in conjunction with a consulting agreement entered into in July 2015. The warrants were valued using the multinomial lattice pricing model under the assumptions noted below.\nDuring the year ended October 31, 2015, the Company issued 600,000 stock purchase warrants for a value of $216,799.\nDuring the year ended October 31, 2014, the Company did not issue any stock purchase warrants.\nThe following table presents the assumptions used to estimate the fair values of the stock warrants and options granted:",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "212",
+     "%",
+     "",
+     "N/A"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "N/A"
+    ],
+    [
+     "Expected term",
+     "",
+     "3 Years",
+     "",
+     "",
+     "N/A"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.08",
+     "%",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 784,
+    "end_line": 792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "Stock Purchase Warrants\nDuring the year ended October 31, 2015, the Company issued warrants to purchase a total of 600,000. The Company issued 600,000 warrants in conjunction with a consulting agreement entered into in July 2015. The warrants were valued using the multinomial lattice pricing model under the assumptions noted below.\nDuring the year ended October 31, 2015, the Company issued 600,000 stock purchase warrants for a value of $216,799.\nDuring the year ended October 31, 2014, the Company did not issue any stock purchase warrants.\nThe following table presents the assumptions used to estimate the fair values of the stock warrants and options granted:",
+   "prose_after": "The following table summarizes the changes in warrants outstanding issued to employees and non-employees of the Company during the year ended October 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Grant Date Fair Value",
+     "",
+     "Expiration Date (yrs)",
+     "",
+     "Value if Exercised",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of October 31, 2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "600,000",
+     "",
+     "0.80",
+     "",
+     "0.36",
+     "",
+     "2.73",
+     "",
+     "480,000"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Cancelled/Expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding as of October 31, 2015",
+     "",
+     "600,000",
+     "$",
+     "0.80",
+     "$",
+     "0.36",
+     "",
+     "2.73",
+     "$",
+     "480,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 795,
+    "end_line": 807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "The following table summarizes the changes in warrants outstanding issued to employees and non-employees of the Company during the year ended October 31, 2015.",
+   "prose_after": "NOTE 12 \u2013 RESTATEMENT OF FINANCIAL STATEMENTS\nThis Amendment No. 1 corrects our previously issued financial statements for the year ended October 31, 2015, to record related party payable due to two consultants relating to consulting agreements to be paid with 7,500 options for the first consultant on a monthly basis convertible at $.80 per share entered into in February 2015 and the other to be paid in 10,000 common shares as stock payable. The Company issued 600,000 warrants on September 22, 2015 as payment for legal expenses that had not been recorded. The Company also entered into a convertible note agreement that previously had not been recorded that is considered a derivative or contains embedded features subject to derivative accounting related to a revolving convertible note where the Company can borrow up to $200,000, which includes a 10% OID. The Company issued the first tranche of the convertible note totaling $75,000, of which $65,000 was paid in cash, $2,500 was paid for legal fees, and a OID of $7,500, which included a ratchet provision in the conversion price of $.95 or a price equal to 60% of the last equity transaction completed by the Company as part of a subscription agreement. The note has a maturity date of nine months after funding and also includes a fifty percent premium totaling $37,500 which is added on 90 days after funding. The fair values of the derivative instruments are measured each quarter, which resulted in a gain of $19,934 and derivative expense of $25,434 during the year ended October 31, 2015. As of October 31, 2015, the fair market value of the derivatives aggregated $5,500 using the following assumptions: estimated 0.42 to 0.75-year term, estimated volatility of 133.49% to 243.69%, and a discount rate of 0.21% to 0.23%. Subsequent to the year ending October 31, 2015, 35,294 shares of common stock were issued on February 5, 2016. The shares were issued as part of an incentive to enter into convertible notes that were owed as of October 31, 2015, with a relative fair value of $11,881.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Arax Holdings Corp.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As Reported",
+     "",
+     "",
+     "Correction",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Loans from related party",
+     "$",
+     "75,232",
+     "",
+     "$",
+     "(37,550)",
+     "",
+     "$",
+     "37,682",
+     ""
+    ],
+    [
+     "Convertible Notes payable, net of $43,188 debt discount",
+     "",
+     "\u2014",
+     "",
+     "",
+     "69,312",
+     "",
+     "",
+     "69,312",
+     ""
+    ],
+    [
+     "Accrued Interest Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,923",
+     "",
+     "",
+     "1,923",
+     ""
+    ],
+    [
+     "Derivative Liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,500",
+     "",
+     "",
+     "5,500",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "75,232",
+     "",
+     "",
+     "39,185",
+     "",
+     "",
+     "114,417",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "75,232",
+     "",
+     "",
+     "39,185",
+     "",
+     "",
+     "114,417",
+     ""
+    ],
+    [
+     "Stock Subscription Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,281",
+     "",
+     "",
+     "50,281",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(111,080)",
+     "",
+     "",
+     "(322,482)",
+     "",
+     "",
+     "(433,562)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "$",
+     "(111,080)",
+     "",
+     "$",
+     "(3,337)",
+     "",
+     "$",
+     "(114,417)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Arax Holdings Corp.",
+    "Balance Sheets",
+    "October 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "This Amendment No. 1 corrects our previously issued financial statements for the year ended October 31, 2015, to record related party payable due to two consultants relating to consulting agreements to be paid with 7,500 options for the first consultant on a monthly basis convertible at $.80 per share entered into in February 2015 and the other to be paid in 10,000 common shares as stock payable. The Company issued 600,000 warrants on September 22, 2015 as payment for legal expenses that had not been recorded. The Company also entered into a convertible note agreement that previously had not been recorded that is considered a derivative or contains embedded features subject to derivative accounting related to a revolving convertible note where the Company can borrow up to $200,000, which includes a 10% OID. The Company issued the first tranche of the convertible note totaling $75,000, of which $65,000 was paid in cash, $2,500 was paid for legal fees, and a OID of $7,500, which included a ratchet provision in the conversion price of $.95 or a price equal to 60% of the last equity transaction completed by the Company as part of a subscription agreement. The note has a maturity date of nine months after funding and also includes a fifty percent premium totaling $37,500 which is added on 90 days after funding. The fair values of the derivative instruments are measured each quarter, which resulted in a gain of $19,934 and derivative expense of $25,434 during the year ended October 31, 2015. As of October 31, 2015, the fair market value of the derivatives aggregated $5,500 using the following assumptions: estimated 0.42 to 0.75-year term, estimated volatility of 133.49% to 243.69%, and a discount rate of 0.21% to 0.23%. Subsequent to the year ending October 31, 2015, 35,294 shares of common stock were issued on February 5, 2016. The shares were issued as part of an incentive to enter into convertible notes that were owed as of October 31, 2015, with a relative fair value of $11,881.\nThe effects of these corrections on the financial statements are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Arax Holdings Corp.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As Reported",
+     "",
+     "",
+     "Correction",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "$",
+     "29,774",
+     "",
+     "$",
+     "298,866",
+     "",
+     "$",
+     "328,640",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "29,774",
+     "",
+     "",
+     "298,866",
+     "",
+     "",
+     "328,640",
+     ""
+    ],
+    [
+     "NET LOSS FROM OPERATIONS",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "(298,866)",
+     "",
+     "",
+     "(328,640)",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(18,116)",
+     "",
+     "",
+     "(18,116)",
+     ""
+    ],
+    [
+     "Derivative Expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,434)",
+     "",
+     "",
+     "(25,434)",
+     ""
+    ],
+    [
+     "Change in Fair Value of Derivative",
+     "",
+     "\u2014",
+     "",
+     "",
+     "19,934",
+     "",
+     "",
+     "19,934",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(23,616)",
+     "",
+     "",
+     "(23,616)",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE INCOME TAXES",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "(322,482)",
+     "",
+     "",
+     "(352,256)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "(322,482)",
+     "",
+     "",
+     "(352,256)",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Arax Holdings Corp.",
+    "Statements of Operations",
+    "Year Ended October 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 836,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Arax Holdings Corp.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the year ended October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Additional Paid In",
+     "",
+     "Stock Subscription",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "As Reported",
+     "Capital",
+     "",
+     "Payable",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Stock as Incentive for Convertible Note",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Options Granted for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrants Issued for Compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "(29,774)",
+     ""
+    ],
+    [
+     "Balances, October 31, 2015",
+     "$",
+     "25,548",
+     "",
+     "\u2014",
+     "$",
+     "(111,080)",
+     "",
+     "$",
+     "(75,232)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Correction",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock as Incentive for Convertible Note",
+     "$",
+     "\u2014",
+     "$",
+     "11,881",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "11,881",
+     ""
+    ],
+    [
+     "Stock for Compensation",
+     "",
+     "\u2014",
+     "",
+     "38,400",
+     "",
+     "\u2014",
+     "",
+     "",
+     "38,400",
+     ""
+    ],
+    [
+     "Options Granted for Compensation",
+     "",
+     "16,217",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,217",
+     ""
+    ],
+    [
+     "Warrants Issued for Compensation",
+     "",
+     "216,799",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "216,799",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(322,482)",
+     "",
+     "",
+     "(322,482)",
+     ""
+    ],
+    [
+     "Balances, October 31, 2015",
+     "$",
+     "233,016",
+     "$",
+     "50,281",
+     "$",
+     "(322,482)",
+     "",
+     "$",
+     "(39,185)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As Corrected",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock as Incentive for Convertible Note",
+     "$",
+     "\u2014",
+     "$",
+     "11,881",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "11,881",
+     ""
+    ],
+    [
+     "Stock for Compensation",
+     "",
+     "\u2014",
+     "",
+     "38,400",
+     "",
+     "\u2014",
+     "",
+     "",
+     "38,400",
+     ""
+    ],
+    [
+     "Options Granted for Compensation",
+     "",
+     "16,217",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,217",
+     ""
+    ],
+    [
+     "Warrants Issued for Compensation",
+     "",
+     "216,799",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "216,799",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(352,256)",
+     "",
+     "",
+     "(352,256)",
+     ""
+    ],
+    [
+     "Balances, October 31, 2015",
+     "$",
+     "258,564",
+     "$",
+     "50,281",
+     "$",
+     "(433,562)",
+     "",
+     "$",
+     "(114,417)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Arax Holdings Corp.",
+    "Statements of Changes in Stockholders\u2019 Deficit",
+    "For the year ended October 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 863,
+    "end_line": 902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Arax Holdings Corp.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As Reported",
+     "",
+     "",
+     "Correction",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "$",
+     "(29,774)",
+     "",
+     "$",
+     "(322,482)",
+     "",
+     "$",
+     "(352,256)",
+     ""
+    ],
+    [
+     "Stock For Compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "38,400",
+     "",
+     "",
+     "38,400",
+     ""
+    ],
+    [
+     "Derivative Liability addition",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,434",
+     "",
+     "",
+     "25,434",
+     ""
+    ],
+    [
+     "Related party payable for services",
+     "",
+     "\u2014",
+     "",
+     "",
+     "27,450",
+     "",
+     "",
+     "27,450",
+     ""
+    ],
+    [
+     "Options granted for compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,217",
+     "",
+     "",
+     "16,217",
+     ""
+    ],
+    [
+     "Warrants issued for professional fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "216,799",
+     "",
+     "",
+     "216,799",
+     ""
+    ],
+    [
+     "Change in Fair Value of Derivative",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19,934)",
+     "",
+     "",
+     "(19,934)",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,193",
+     "",
+     "",
+     "16,193",
+     ""
+    ],
+    [
+     "Accrued Interest Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,923",
+     "",
+     "",
+     "1,923",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(29,774)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(29,774)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Convertible Note",
+     "",
+     "29,774",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29,774",
+     ""
+    ],
+    [
+     "Proceeds from Convertible Note",
+     "",
+     "\u2014",
+     "",
+     "",
+     "65,000",
+     "",
+     "",
+     "65,000",
+     ""
+    ],
+    [
+     "Payments to related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(65,000)",
+     "",
+     "",
+     "(65,000)",
+     ""
+    ],
+    [
+     "NET CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "29,774",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29,774",
+     ""
+    ],
+    [
+     "Original Issue Discount",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "10,000",
+     "",
+     "$",
+     "10,000",
+     ""
+    ],
+    [
+     "Stock as Incentive for Convertible Note",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "11,881",
+     "",
+     "$",
+     "11,881",
+     ""
+    ],
+    [
+     "TOTAL NON-CASH INVESTING AND FINANCING ACTIVITIES",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "21,881",
+     "",
+     "$",
+     "21,881",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Arax Holdings Corp.",
+    "Statements of Cash Flows",
+    "Year Ended October 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures about Market Risk"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Item 9. Changes In and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures\nThe Company maintains disclosure controls and procedures (as defined in Rule 15d-15(e) under the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d)) that are designed to ensure that information required to be disclosed by the Company in the reports that it files or submits under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and forms, and that such information is accumulated and communicated to the Company\u2019s management, including its Chief Executive Officer and Chief Financial Officer, as appropriate to allow timely decisions regarding required disclosure.\nThe Company\u2019s management carried out an evaluation, under the supervision and with the participation of its Chief Executive Officer and its Chief Financial Officer, of the effectiveness of the Company\u2019s disclosure controls and procedures as of October 31, 2015. Based upon this evaluation, our management concluded that the Company\u2019s disclosure controls and procedures were not effective as of October 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Executive",
+     "",
+     ""
+    ],
+    [
+     "Officer and/or Director",
+     "Age",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steven J. Keough",
+     "60",
+     "Chairman, President, Secretary,"
+    ],
+    [
+     "2329 N. Career Avenue, Suite 317",
+     "",
+     "Treasurer and Director"
+    ],
+    [
+     "Sioux Falls, South Dakota, 57107",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Name and Address of Executive"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 976,
+    "end_line": 985
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters and Control Persons of the Company"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this Annual Report on Form 10-K.\nChanges in Internal Control Over Financial Reporting.\nDuring the most recently completed fiscal quarter, there has been no change in our internal control over financial reporting that has materially affected or is reasonably likely to materially affect, our internal control over financial reporting. Management plans to routinely assess its internal control over financial reporting against appropriate standards, and to make changes as determined necessary and according to the scope of business operations.\nPART III\nItem 10. Directors, Executive Officers, Promoters and Control Persons of the Company\nDIRECTORS AND EXECUTIVE OFFICERS\nThe name, address and position of our present officers and directors are set forth below:",
+   "prose_after": "Mr. Keough is the Chairman and Chief Executive Officer of THRU PHARMA, LLC, a related party to the Company. He received his Bachelor of Science degree from the U.S. Naval Academy (Annapolis, MD), his Master of Arts degree from the Catholic University of America (Washington, D.C.) and his Juris Doctorate degree from Boston College Law School (Newton, MA.). He is the recipient of a financial management certificate from the University of Chicago Graduate School of Business. Mr. Keough was Senior Vice President of a NASDAQ-listed company, SurModics, during a vibrant growth period of that company. He may only be devoting limited time to our operations, and our operations may be sporadic and occur at times which are convenient to him. As a result, operations may be periodically interrupted or suspended which could result in a lack of revenues and a cessation of operations.\nAUDIT COMMITTEE\nWe do not have an audit committee financial expert. We do not have an audit committee financial expert because we believe the cost related to retaining a financial expert at this time is prohibitive. Further, because we have no operations, at the present time, we believe the services of a financial expert are not warranted.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 995,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Salary (US$)",
+     "",
+     "Bonus (US$)",
+     "",
+     "Stock Awards (US$)",
+     "",
+     "Option Awards (US$)",
+     "",
+     "Non-Equity Incentive Plan Compensation (US$)",
+     "",
+     "Nonqualified Deferred Compensation Earnings (US$)",
+     "",
+     "All Other Compensation (US$)",
+     "",
+     "Total (US$)",
+     ""
+    ],
+    [
+     "2015 Steven J Keough *",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "*CEO, President, CFO/Treasurer, Secretary",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2014 Steven J Keough *",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1002,
+    "end_line": 1012
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Keough is the Chairman and Chief Executive Officer of THRU PHARMA, LLC, a related party to the Company. He received his Bachelor of Science degree from the U.S. Naval Academy (Annapolis, MD), his Master of Arts degree from the Catholic University of America (Washington, D.C.) and his Juris Doctorate degree from Boston College Law School (Newton, MA.). He is the recipient of a financial management certificate from the University of Chicago Graduate School of Business. Mr. Keough was Senior Vice President of a NASDAQ-listed company, SurModics, during a vibrant growth period of that company. He may only be devoting limited time to our operations, and our operations may be sporadic and occur at times which are convenient to him. As a result, operations may be periodically interrupted or suspended which could result in a lack of revenues and a cessation of operations.\nAUDIT COMMITTEE\nWe do not have an audit committee financial expert. We do not have an audit committee financial expert because we believe the cost related to retaining a financial expert at this time is prohibitive. Further, because we have no operations, at the present time, we believe the services of a financial expert are not warranted.\nSIGNIFICANT EMPLOYEES\nWe have no employees other than our sole director, Steven Keough who currently devotes minimal time per week to company matters. We intend to hire employees on an as-needed basis.\nItem 11. Executive Compensation\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our President, and Secretary and all other executive officers (collectively, the \u201cNamed Executive Officers\u201d) for the years ended October 31, 2014 and 2015.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "As of October 31, 2015, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table provides certain information regarding the ownership of our common stock, as of October 31, 2015 and as of the date of the filing of this annual report by:\n\u2022 each of our executive officers;\n\u2022 each director;\n\u2022 each person known to us to own more than 5% of our outstanding common stock; and\n\u2022 all of our executive officers and directors and as a group.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 995,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Type",
+     "Name and Address of Beneficial Owner",
+     "Number of Shares of Common Stock Beneficially Owned and Nature of Beneficial Ownership",
+     "Percentage"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Thru Pharma, LLC",
+     "8,000,000",
+     "77.67%"
+    ],
+    [
+     "",
+     "2329 N. Career Avenue,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Suite 317",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Sioux Falls, SD 57107",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1024,
+    "end_line": 1035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "As of October 31, 2015, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table provides certain information regarding the ownership of our common stock, as of October 31, 2015 and as of the date of the filing of this annual report by:\n\u2022 each of our executive officers;\n\u2022 each director;\n\u2022 each person known to us to own more than 5% of our outstanding common stock; and\n\u2022 all of our executive officers and directors and as a group.",
+   "prose_after": "The percent of class is based on 10,300,000 shares of common stock issued and outstanding as of the date of this annual report.\nItem 13. Certain Relationships and Related Transactions\nIn support of the Company\u2019s efforts and cash requirements, it may rely on advances from related parties until such time that the Company can support its operations or attains adequate financing through sales of its equity or traditional debt financing. There is no formal written commitment for continued support by shareholders or directors. Amounts represent advances or amounts paid in satisfaction of liabilities. The advances are considered temporary in nature and have not been formalized by a promissory note.\nDuring the year ended October 31, 2015, we borrowed $29,774 and accrued expenses of $27,450 from our shareholder, Thru Pharma, in the form of a related party payable. We also made payments of $65,000 on the related party payable. It is due on demand and is non-interest bearing.\nItem 14. Principal Accountant Fees and Services",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "ARAX HOLDINGS CORP."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: July 12, 2016",
+     "By:",
+     "/s/ Steven J. Keough"
+    ],
+    [
+     "",
+     "",
+     "Steven J. Keough, Chairman, President, Chief Executive Officer and Chief Financial Officer and Secretary"
+    ]
+   ],
+   "caption_stack": [
+    "ARAX HOLDINGS CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1072,
+    "end_line": 1079
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 RESTATEMENT OF FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "31.1 Certification of Chief Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act 32.1 Certification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act 32.1 Certification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act\n101.INS XBRL Instance Document (furnished herewith)*\n101.SCH XBRL Taxonomy Extension Schema Document (furnished herewith)*\n101.CAL XBRL Taxonomy Extension Calculation Linkbase Document (furnished herewith)*\n101.DEF XBRL Taxonomy Extension Definition Linkbase Document (furnished herewith)*\n101.LAB XBRL Taxonomy Extension Label Linkbase Document (furnished herewith)*\n101.PRE XBRL Taxonomy Extension Presentation Linkbase Document (furnished herewith)*\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

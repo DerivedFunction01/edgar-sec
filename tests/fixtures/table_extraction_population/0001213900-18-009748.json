@@ -1,0 +1,3623 @@
+{
+ "accession": "0001213900-18-009748",
+ "cik": "0001456857",
+ "form": "10-K",
+ "filing_date": "2018-07-27",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2017_mjholdingsinc.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NEVADA",
+     "20-8235905"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2017\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 000-55900\nMJ HOLDINGS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "3275 South Jones Blvd, Las Vegas, NV 89146 (Address of principal executive offices)\n(702) 879-4440 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1.    Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "14"
+    ],
+    [
+     "Item 2.    Properties",
+     "14"
+    ],
+    [
+     "Item 3.    Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 4.    Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 5.    Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "15"
+    ],
+    [
+     "Item 6.    Selected Financial Data",
+     "15"
+    ],
+    [
+     "Item 7.    Management\u2019s Discussion And Analysis of Financial Condition And Results of Operations",
+     "16"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosure About Market Risk",
+     ""
+    ],
+    [
+     "Item 8.    Financial Statements and Supplementary Data",
+     "19"
+    ],
+    [
+     "Item 9.    Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "19"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "19"
+    ],
+    [
+     "Item 9B. Other Information",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "21"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "22"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "24"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "25"
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [ ]                        Smaller reporting company [X]\n(Do not check if a smaller reporting company)  Emerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 7(a)(2)(B) of the securities act. [ ]\nIndicate by a check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting shares of the Company\u2019s Common Stock held by non-affiliates based on the last sale of the Common Stock on June 30, 2017, was $721,992.\nThe number of shares outstanding of the issuer\u2019s Common Stock as of July 20, 2018, was 63,310,522.\nMJ HOLDINGS, INC. TABLE OF CONTENTS",
+   "prose_after": "i\nForward-Looking Statements\nIn addition to historical information, this Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended. Forward-looking statements are those that predict or describe future events or trends and that do not relate solely to historical matters. You can generally identify forward-looking statements as statements containing the words \u201cbelieve,\u201d \u201cexpect,\u201d \u201cwill,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cassume\u201d or other similar expressions, although not all forward-looking statements contain these identifying words. All statements in this report regarding our future strategy, future operations, projected financial position, estimated future revenue, projected costs, future prospects, and results that might be obtained by pursuing management\u2019s current plans and objectives are forward-looking statements. You should not place undue reliance on our forward-looking statements because the matters they describe are subject to known and unknown risks, uncertainties and other unpredictable factors, many of which are beyond our control. Important risks that might cause our actual results to differ materially from the results contemplated by the forward-looking statements are contained in \u201cItem 1A. Risk Factors\u201d and \u201cItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d of this report and in our subsequent filings with the SEC. Our forward-looking statements are based on the information currently available to us and speak only as of the date on which this report was filed with the SEC. We expressly disclaim any obligation to issue any updates or revisions to our forward-looking statements, even if subsequent events cause our expectations to change regarding the matters discussed in those statements. Over time, our actual results, performance or achievements will likely differ from the anticipated results, performance or achievements that are expressed or implied by our forward-looking statements, and such difference may be significant and materially adverse to our stockholders.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 99,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Closing Bid Price per Share\n\n2017",
+     "",
+     "",
+     "",
+     "Closing Bid Price per Share\n\n2016",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First Quarter",
+     "",
+     "1.08",
+     "",
+     "0.58",
+     "",
+     "0.62",
+     "",
+     "0.62"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "1.00",
+     "",
+     "0.75",
+     "",
+     "1.00",
+     "",
+     "0.65"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "0.95",
+     "",
+     "0.55",
+     "",
+     "1.00",
+     "",
+     "0.635"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "4.10",
+     "",
+     "0.63",
+     "",
+     "3.50",
+     "",
+     "0.53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Issuer Purchases of Equity Securities"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "We hold a triple net leasehold interest in a 17,298 square-foot building located at 2310 Western Avenue, Las Vegas, Nevada. The lease is for an initial term of 10 years, with a 12-month rent abatement. The commencement date of the lease is June 29, 2017. The lease includes two options to extend, each for an additional 5 years. The lease grants Tenant an option to purchase the property on or after the 25th month of the lease and continuing through the 60th month of the lease for the sum of $2,607,880. Currently, we have no intention to exercise the purchase option.\nItem 3. Legal Proceedings\nAs of the date of this Annual Report on Form 10-K, there are no legal proceedings which are pending or have been threatened against us or any of our officers, directors or control persons of which management is aware.\nItem 4. Mine Safety Disclosures\nThe disclosures are not applicable to us.\nPART II\nItem\n5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nOur shares of common stock are currently quoted on the OTC Bulletin Board under the symbol MJNE. The following table sets forth the high and low closing bid prices of our common stock for the quarterly periods for the years ended December 31, 2017 and 2016. These bid prices represent prices quoted by broker-dealers on the OTC Bulletin Board. The quotations reflect inter-dealer prices, without retail mark-up, mark-down or commissions, and may not represent actual transactions.",
+   "prose_after": "Holders\nAs of July 20, 2018, there were 103 shareholders of record. However, we believe that there are more beneficial holders of our common stock as beneficial holders may hold their stock in \u201cstreet\u201d name.\nDividends\nWe did not pay any cash dividends on our common stock during 2017 or 2016 and have no intention of doing so in the foreseeable future. We intend to retain any earnings for use in our operations and the expansion of our business. Any future determination to declare and pay cash dividends will be made at the discretion of our board of directors, subject to applicable laws and will depend on our financial condition, results of operations, liquidity, capital requirements, general business conditions, any contractual restriction on the payment of dividends and other factors that our board of directors may deem relevant.\nRecent Sales of Unregistered Securities\nIn connection with and contemporaneously with the Reverse Merger, in December 2017, we sold an aggregate of 3,524,496 shares of our common stock at a price of $0.75 per share for gross proceeds of $2,643,372 to 43 otherwise unaffiliated third parties. Between January 2018 and the date of this Annual Report, we sold an additional 762,000 shares of our common stock at a price of $0.75 per share for gross proceeds of $571,500 to 13 unaffiliated third parties. The proceeds of the common stock sales will be used to develop certain business opportunities, including but not limited to monetizing the acquired Red Earth asset.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 433,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(122,453)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(317,535)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,953,851",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "2,513,863",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "2,513,863",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2017",
+    "Cash Flows:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "The Company has not generated any revenues from inception (October 17, 2016) to December 31, 2017. During the first quarter of 2018, we began accepting customer deposits for the sale, design, installation and/or construction of greenhouse solutions to be used in the cultivation process in the cannabis industry. We expect to begin generating revenues from these greenhouse projects during the fourth quarter of 2018.\nOperating Expenses\nGeneral and administrative expenses were $270,267 for the year ended December 31, 2017. The general and administrative expenses consisted of facility costs of $179,615, of which $104,565 was for non-cash deferred rent expense, professional fees of $53,480, conferences and travel expense of $24,481, and other administrative costs of $12,691.\nInterest Expense\nThe Company recorded $64,521 of interest expense during the year ended December 31, 2017. The interest expense was associated with an investor\u2019s advance of $350,000 to fund the acquisition of a Provisional Grow License in February 2017. Interest expense for the year was comprised of a $50,000 fee due to the investor for consideration of the advance and the amortization of debt issuance costs paid in conjunction with securing the $350,000 advance.\nLiquidity and Capital Resources\nThe following table summarizes the cash flows for the year ended December 31, 2017:",
+   "prose_after": "The Company had cash of $2,513,863 at December 31, 2017, compared with cash of $0 at December 31, 2016. The increase in cash during 2017 was attributed to cash provided by financing activities of $2,953,851, partially offset by $317,535 of cash used in investing activities and $122,453 of cash used in operating activities.\nOperating Activities\nNet cash used in operating activities for the year ended December 31, 2017, was $122,453, which consisted of a net loss of $334,788, plus an increase in prepaids and other assets of $22,883; partially offset by non-cash expenses of $169,086 and an increase in accounts payable and accrued liabilities of $66,132.\nInvesting Activities\nNet cash used in investing activities during the year ended December 31, 2017, was $317,535, which consisted of the purchase of a provisional grow license issued in the State of Nevada for $300,000 and building improvements of $17,535.\nFinancing Activities\nDuring 2017, the Company raised $2,643,372 through the sale of shares of the Company\u2019s common stock at $0.75 per share and will continue to raise capital in 2018 to fund the build out and development of our business operations. In addition, the Company received gross proceeds of $350,000 from an investor advance to fund the purchase of a provisional grow license issued by the State of Nevada, partially offset by debt issuance costs of $14,521 and the $25,000 distribution to founding member.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Director",
+     "Age",
+     "Position with Company",
+     "Director Since"
+    ],
+    [
+     "Paris Balaouras",
+     "46",
+     "CEO and Chairman of the Board of Directors",
+     "December 15, 2017"
+    ],
+    [
+     "John R. Wheeler",
+     "66",
+     "CFO",
+     "-"
+    ],
+    [
+     "Andrew Boutsikakis",
+     "41",
+     "President",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "The Company is neither an accelerated filer nor a large accelerated filer, as defined in Rule 12b-2 under the Exchange Act, and there is not otherwise included in this Annual Report an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not required to be attested by the Company\u2019s registered public accounting firm pursuant to Item 308(b) of Regulation S-K.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting that occurred during the fourth quarter ended December 31, 2017, that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting. During 2018, as our business operations expand, the Company plans to hire additional employees and engage outside professionals to address the material weaknesses identified above.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors & Executive Officers\nThe names of our directors and executive officers and certain information about them are set forth below:",
+   "prose_after": "Paris Balaouras was appointed CEO and Chairman of the Board of Directors of MJ Holdings, Inc. on December 15, 2017. Mr. Balaouras has significant experience in the development and operations of legal cannabis businesses, including license acquisition, facility management, cannabis cultivation and legislative initiatives. During the past five years Mr. Balaouras has raised over $100,000,000 for the development, construction and launch of cannabis related businesses in Arizona, California and Nevada. Mr. Balaouras was the founding and managing partner of Acres Medical, LLC until February 2016. While with Acres Medical Paris was instrumental in raising investment capital for the acquisition of five Nevada Medical and Recreational Marijuana Establishment Certificates, the development and opening of a 20,000 sq. ft dispensary in Las Vegas, and the opening of a 37-acre cultivation facility in the Amargosa Valley, creating the largest cultivation site in the State of Nevada. In 2016, while serving as the Principal Officer at Natural Remedy Patient Center, Paris obtained an Arizona dispensary, cultivation and production license. Mr. Balaouras is a member of the NDA (Nevada Dispensary Association), ASA (Americans for Safe Access) and NORML (the National Organization for the Reform of Marijuana Laws).",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary\n\n\n\n($)",
+     "",
+     "Bonus\n\n\n\n($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Change in Pensions Value and Nonqualified Deferred Compensation Earnings\n\n\n\n($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total\n\n\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Paris Balaouras",
+     "2017",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "  Chief Executive Officer",
+     "2016",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  John R. Wheeler",
+     "2017",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "  Chief Financial Officer",
+     "2016",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Andrew Boutsikakis",
+     "2017",
+     "$",
+     "15,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "15,000"
+    ],
+    [
+     "  President",
+     "2016",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Shawn Chemtov",
+     "2017",
+     "$",
+     "75,000",
+     "$",
+     "75,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "150,000"
+    ],
+    [
+     "  Former co-Chief Executive Officer",
+     "2016",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Adam Laufer",
+     "2017",
+     "$",
+     "74,120",
+     "$",
+     "75,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "149,120"
+    ],
+    [
+     "  Former co-Chief Executive Officer",
+     "2016",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "The Company has adopted a code of ethics within the meaning of Item 406 of Regulation S-K promulgated under the Securities Act of 1933, as amended, titled, \u201cBusiness Conduct: \u201cCode of Conduct and Policy,\u201d that applies to all of the Company's employees, including its principal executive officer, principal financial officer and principal accounting officer, and the Board. The Company intends to disclose any changes in or waivers from its code of ethics by posting such information on its website or by filing a Current Report on Form 8-K.\nItem 11. Executive Compensation\nSummary Compensation Table\nThe following table provides certain summary information concerning the compensation earned for services rendered to the Company for the fiscal years ended December 31, 2017 and 2016, by our Chief Executive Officer and our two other most highly compensated executive officers (the \u201cnamed executive officers\u201d) who served in such capacities at the end of the fiscal year ended December 31, 2017. Except as provided below, none of our named executive officers received any other compensation required to be disclosed by law in excess of $10,000 annually.",
+   "prose_after": "Outstanding Equity Awards at Fiscal Year-End\nThe following table provides information with respect to outstanding stock option awards for shares of our common stock classified as exercisable and unexercisable as of December 31, 2017, for the named executive officers.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Options (#)\nExercisable",
+     "Number of Securities Underlying Unexercised Options (#)\nUnexercisable",
+     "Equity Incentive Plan Awards:\nNumber of Securities Underlying Unexercised Unearned Options\n\n\n\n(#)",
+     "Option Exercise Price\n\n\n\n($)",
+     "Option Expiration Date",
+     "Number of Shares or Units of Stock That Have Not Vested (#)",
+     "Market Value of Shares or Units of Stock That Have Not Vested ($)",
+     "Equity Incentive Plan Awards:\nNumber of Unearned Shares, Units or Other Rights That Have Not Vested (#)",
+     "Equity Incentive Plan Awards:\nMarket or Payout Value of Unearned Shares, Units or Other Rights That Have Not Vested ($)"
+    ],
+    [
+     "(a)",
+     "(b)",
+     "(c)",
+     "(d)",
+     "(e)",
+     "(f)",
+     "(g)",
+     "(h)",
+     "(i)",
+     "(j)"
+    ],
+    [
+     "  Paris Balaouras",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "  John R. Wheeler",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "  Andrew Boutsikakis",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "  Shawn Chemtov",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "  Adam Laufer",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 741,
+    "end_line": 764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "Outstanding Equity Awards at Fiscal Year-End\nThe following table provides information with respect to outstanding stock option awards for shares of our common stock classified as exercisable and unexercisable as of December 31, 2017, for the named executive officers.",
+   "prose_after": "Item 12. Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth information regarding the beneficial ownership of our common stock as of July 20, 2018:\n\u25cf each person whom we know beneficially owns more than 5% of our common stock;\n\u25cf each of our named executive officers and directors; and\n\u25cf all of our executive officers and directors as a group.\nExcept as otherwise indicated, each person and each group shown in the table has sole voting and investment power with respect to the shares of common stock indicated. For purposes of the table below, in accordance with Rule 13d-3 under the Securities Exchange Act of 1934, as amended, a person is deemed to be the beneficial owner, of any shares of our common stock over which he or she has or shares, directly or indirectly, voting or investment power or of which he or she has the right to acquire beneficial ownership at any time within 60 days. As used in this Annual Report, \u201cvoting power\u201d is the power to vote or direct the voting of shares and \u201cinvestment power\u201d includes the power to dispose or direct the disposition of shares. Common stock beneficially owned and percentage ownership was based on 63,310,522 shares outstanding on July 20, 2018.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner/Management and Address",
+     "Number of Shares of Common Stock Beneficially Owned",
+     "",
+     "Percent of Total Shares of Common Stock Beneficially Owned",
+     "",
+     ""
+    ],
+    [
+     "Directors and Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paris Balaouras (1) (3)",
+     "",
+     "20,319,500",
+     "",
+     "32.1",
+     "%"
+    ],
+    [
+     "Chief Executive Officer and Director",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John R. Wheeler (2) (3)",
+     "",
+     "700,000",
+     "",
+     "1.1",
+     "%"
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrew Boutsikakis (3)",
+     "",
+     "150,000",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "President",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (3 persons)",
+     "",
+     "21,169,500",
+     "",
+     "33.4",
+     "%"
+    ],
+    [
+     "Five Percent Beneficial Owner:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Red Dot Development LLC (4)",
+     "",
+     "25,056,484",
+     "",
+     "39.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 776,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "\u25cf each person whom we know beneficially owns more than 5% of our common stock;\n\u25cf each of our named executive officers and directors; and\n\u25cf all of our executive officers and directors as a group.\nExcept as otherwise indicated, each person and each group shown in the table has sole voting and investment power with respect to the shares of common stock indicated. For purposes of the table below, in accordance with Rule 13d-3 under the Securities Exchange Act of 1934, as amended, a person is deemed to be the beneficial owner, of any shares of our common stock over which he or she has or shares, directly or indirectly, voting or investment power or of which he or she has the right to acquire beneficial ownership at any time within 60 days. As used in this Annual Report, \u201cvoting power\u201d is the power to vote or direct the voting of shares and \u201cinvestment power\u201d includes the power to dispose or direct the disposition of shares. Common stock beneficially owned and percentage ownership was based on 63,310,522 shares outstanding on July 20, 2018.",
+   "prose_after": "(1) Mr. Balaouras beneficially owns 20,319,500 shares of our common stock, held by Roll On LLC, a limited liability company in which Mr. Balaouras is a member and manager.\n(2) Mr. Wheeler acquired his shares in our recent private placement at $0.75 per share, for an aggregate cost of $500,000.\n(3) The business address is 3275 South Jones Boulevard, Suite 104, Las Vegas, NV 89146.\n(4) The business address is 400 South 4th Street, Suite 500, Las Vegas, NV 89101. The managing member of Red Dot Development LLC is Ron Sassano.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nTransactions with Related Persons\nThe following is a description of transactions since October 17, 2016, to which we have been a party in which:\n\u25cf the amounts involved exceeded or will exceed the lesser of $120,000 or one percent of the average of our total assets at year-end for the last two completed fiscal years; and\n\u25cf our directors and executive officers or holders of more than 5% of our common stock, or any member of the immediate family of the foregoing persons or entities affiliated with them, had or will have a direct or indirect material interest.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Paritz & Company, P.A.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "2016",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "28,200",
+     "$",
+     "15,475"
+    ],
+    [
+     "Audit related fees",
+     "",
+     "-",
+     "",
+     "500"
+    ],
+    [
+     "Tax fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Other fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "28,200",
+     "$",
+     "15,975"
+    ]
+   ],
+   "caption_stack": [
+    "Paritz & Company, P.A."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 829,
+    "end_line": 842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "Paritz & Company, P.A. (\u201cParitz\u201d) has served as the Company\u2019s independent registered public accounting firm for the years ended December 31, 2017 and 2016. In accordance with the requirements of the Sarbanes-Oxley Act of 2002, all audit and audit-related services and all non-audit services performed by our current independent public accounting firm are approved in advance by our Board of Directors, including the proposed fees for any such service, in order to assure that the provision of any such service does not impair the accounting firm\u2019s independence. The Board of Directors is informed of each service actually rendered.\nIndependent Auditor Fees\nThe following table sets forth fees billed, or expected to be billed, to the Company by the Company\u2019s independent auditors for the years ended December 31, 2017 and 2016, for (i) services rendered for the audit of the Company\u2019s annual financial statements and the review of the Company\u2019s quarterly financial statements; (ii) services rendered that are reasonably related to the performance of the audit or review of the Company\u2019s financial statements that are not reported as Audit Fees; (iii) services rendered in connection with tax preparation, compliance, advice and assistance; and (iv) all other services:",
+   "prose_after": "PART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) List of Documents filed as part of this report:\n(1) Financial Statements\n\u25cf Report of Paritz & Co., Independent Registered Public Accounting Firm\n\u25cf Consolidated Balance Sheets as of December 31, 2017 and 2016\n\u25cf Consolidated Statements of Operations for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Consolidated Statements of Changes in Stockholders\u2019 Equity for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Consolidated Statements of Cash Flows for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Notes to Consolidated Financial Statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Registrant (1)"
+    ],
+    [
+     "3.2",
+     "Bylaws of the Registrant (2)"
+    ],
+    [
+     "4.4",
+     "Specimen Common Stock Certificate (2)"
+    ],
+    [
+     "10.1 *",
+     "Lease for Principal Corporate Office"
+    ],
+    [
+     "10.2 *",
+     "Lease for Cultivation Facility"
+    ],
+    [
+     "21.1 *",
+     "Subsidiaries of the Registrant"
+    ],
+    [
+     "14.1",
+     "Code of Ethics (2)"
+    ],
+    [
+     "31.1*",
+     "Rule 13a14(a)/15d-14(a) Certification of Chief Executive Officer"
+    ],
+    [
+     "31.2*",
+     "Rule 13a14(a)/15d-14(a) Certification of Chief Financial Officer"
+    ],
+    [
+     "32.1*",
+     "Section 1350 Certification of Chief Executive Officer"
+    ],
+    [
+     "32.2*",
+     "Section 1350 Certification of Chief Financial Officer"
+    ],
+    [
+     "101.INS *",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH *",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL *",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.LAB *",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE *",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "101.DEF *",
+     "XBRL Taxonomy Definition Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "\u25cf Report of Paritz & Co., Independent Registered Public Accounting Firm\n\u25cf Consolidated Balance Sheets as of December 31, 2017 and 2016\n\u25cf Consolidated Statements of Operations for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Consolidated Statements of Changes in Stockholders\u2019 Equity for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Consolidated Statements of Cash Flows for the year ended December 31, 2017 and from inception (October 17, 2016) to December 31, 2016\n\u25cf Notes to Consolidated Financial Statements\n(2) Financial Statement Schedules\nSchedules are omitted because they are not applicable, or because the required information is included in the financial statements or notes thereto.\n(b) Exhibits.\nThe following exhibits are filed herewith or incorporated herein by reference.",
+   "prose_after": "* Filed herewith.\n(1) Incorporated by reference to the Registrant\u2019s Periodic Report on Form 8-K as filed with the SEC on February 28, 2014.\n(2) Incorporated by reference to Registration Statement on Form S-1, filed with the Securities and Exchange Commission, Registration Statement File No. 333-167824, on June 28, 2010.\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and Board of Directors of\nLas Vegas, NV\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of MJ Holdings, Inc. (the \u201cCompany\u201d) as of December 31, 2017 and 2016, and the related consolidated statements of operations, changes in stockholders\u2019 equity, and cash flows for the year ended December 31, 2017 and for the period from inception (October 17, 2016) to December 31, 2016, and the related notes (collectively referred to as the financial statements). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2017 and 2016, and the results of its operations and its cash flows for the year ended December 31, 2017 and for the period from inception (October 17, 2016) to December 31, 2016, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 893,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "2,513,863",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Prepaid assets",
+     "",
+     "5,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "2,519,363",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "42,383",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Intangible assets, net of accumulated amortization of $0",
+     "",
+     "300,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Property and equipment, net of accumulated depreciation of $0",
+     "",
+     "17,535",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Noncurrent assets held for disposition",
+     "",
+     "584",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2,879,865",
+     "",
+     "$",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "$",
+     "70,382",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Convertible note payable due to related party",
+     "",
+     "900,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "970,382",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "",
+     "104,565",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "1,074,947",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, par value $0.001, 5,000,000 shares authorized; 0 shares issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common stock, par value $0.001, 95,000,000 shares authorized; 62,675,407 and 52,732,969 shares issued and outstanding as of December 31, 2017 and 2016, respectively",
+     "",
+     "62,675",
+     "",
+     "",
+     "52,733",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "1,704,764",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common stock to be issued of 533,333 shares",
+     "",
+     "400,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(362,521)",
+     "",
+     "",
+     "(27,733)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "1,804,918",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "  Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "2,879,865",
+     "",
+     "$",
+     "25,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 931,
+    "end_line": 974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Paritz& Company, P.A.\nWe have served as the Company\u2019s auditor since 2011.\nHackensack, NJ\nJuly 26, 2018\nConsolidated Balance Sheets\nAs of December 31, 2017 and 2016",
+   "prose_after": "Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2017",
+     "",
+     "",
+     "From Inception (October 17, 2016) to December 31, 2016",
+     ""
+    ],
+    [
+     "Net revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    General and administrative expenses",
+     "",
+     "270,267",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "      Total operating expenses",
+     "",
+     "270,267",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(270,267)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(64,521)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(334,788)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(334,788)",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic and diluted net loss per common share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Weighted average shares outstanding",
+     "",
+     "53,149,168",
+     "",
+     "",
+     "52,732,969"
+    ],
+    [
+     "    Net loss per common share",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "0.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 979,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "Consolidated Statements of Operations",
+   "prose_after": "Consolidated Statements of Changes in Stockholders\u2019 Equity\nFor the year ended December 31, 2017 and from Inception (October 17, 2016) to December 31, 2016",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Common Stock to be",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Issued",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "Balance at Inception (October 17, 2016)",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued to founder",
+     "\u2014",
+     "",
+     "\u2014",
+     "52,732,969",
+     "",
+     "52,733",
+     "",
+     "\u2014",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "(27,733)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Capital contribution",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "25,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2016",
+     "\u2014",
+     "",
+     "\u2014",
+     "52,732,969",
+     "",
+     "52,733",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(27,733)",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distribution",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "Effect of reverse merger",
+     "\u2014",
+     "",
+     "\u2014",
+     "6,951,275",
+     "",
+     "6,951",
+     "",
+     "\u2014",
+     "",
+     "(510,617)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(503,666)",
+     ""
+    ],
+    [
+     "Issuance of common stock in private placement",
+     "\u2014",
+     "",
+     "\u2014",
+     "2,991,163",
+     "",
+     "2,991",
+     "",
+     "\u2014",
+     "",
+     "2,240,381",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,243,372",
+     ""
+    ],
+    [
+     "Common stock subscribed, but not issued",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "400,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(334,788)",
+     "",
+     "",
+     "(334,788)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2017",
+     "\u2014",
+     "$",
+     "\u2014",
+     "62,675,407",
+     "$",
+     "62,675",
+     "$",
+     "400,000",
+     "$",
+     "1,704,764",
+     "",
+     "$",
+     "(362,521)",
+     "",
+     "$",
+     "1,804,918",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1015,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "Consolidated Statements of Changes in Stockholders\u2019 Equity\nFor the year ended December 31, 2017 and from Inception (October 17, 2016) to December 31, 2016",
+   "prose_after": "Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 1039,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31, 2017",
+     "",
+     "",
+     "From Inception (October 17, 2016) to December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "  Cash flow from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss",
+     "$",
+     "(334,788)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Amortization of debt issuance costs",
+     "",
+     "14,521",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "      Amortization of deferred rent expense",
+     "",
+     "104,565",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "      Non-cash interest expense",
+     "",
+     "50,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Prepaid assets",
+     "",
+     "(5,500)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "      Deposits",
+     "",
+     "(17,383)",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued liabilities",
+     "",
+     "66,132",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(122,453)",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Purchase of provisional grow license",
+     "",
+     "(300,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Purchase of property, equipment, and building improvements",
+     "",
+     "(17,535)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "(317,535)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash flow from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Capital contribution",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "    Distribution",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of common stock",
+     "",
+     "2,243,372",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Proceeds from common stock to be issued",
+     "",
+     "400,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of note payable",
+     "",
+     "350,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Payment of debt issuance costs",
+     "",
+     "(14,521)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "2,953,851",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net increase in cash",
+     "",
+     "2,513,863",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash at beginning of year",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "2,513,863",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash paid for interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Cash paid for income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net liabilities incurred in connection with reverse merger",
+     "$",
+     "(503,666)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1043,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Properties"
+    }
+   },
+   "prose_before": "Consolidated Statements of Cash Flows",
+   "prose_after": "Notes to the Consolidated Financial Statements\nDecember 31, 2017\nNote 1 \u2014 Description of Business\nMJ Holdings, Inc. is a holding company whose subsidiaries provide infrastructure, consulting and construction services, in addition to holding, and managing third party state issued cultivation and production licenses.\nMJ Holdings, Inc. was originally incorporated on November 17, 2006, as Securitas EDGAR Filings, Inc. under the laws of the State of Nevada. Prior to the formation of Securitas EDGAR Filings Inc., the business was operated as Xpedient EDGAR Filings, LLC, a Florida Limited Liability Company, formed on October 31, 2005. On November 21, 2005, Xpedient EDGAR Filings LLC amended its Articles of Organization to change its name to Securitas EDGAR Filings, LLC. On January, 21 2009, Securitas EDGAR Filings LLC merged into Securitas EDGAR Filings, Inc., a Nevada corporation. On February 14, 2014, we amended and restated our Articles of Incorporation and changed our name to MJ Holdings, Inc.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1039,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 15, 2017",
+     "",
+     ""
+    ],
+    [
+     "Assets Acquired:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Website (recorded as Asset Held for Disposition)",
+     "$",
+     "584",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities Assumed:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "",
+     "(4,250)",
+     ""
+    ],
+    [
+     "  Convertible note payable due to related party",
+     "",
+     "(900,000)",
+     ""
+    ],
+    [
+     "    Less: Assumption of existing liability by related party (see Note 7)",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Liabilities Acquired",
+     "$",
+     "(503,666)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 15, 2017",
+    "Assets Acquired:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1205,
+    "end_line": 1220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 Reverse Merger"
+    }
+   },
+   "prose_before": "On December 15, 2017, the Company acquired all of the issued and outstanding membership interests of Red Earth LLC, a Nevada limited liability company (\u201cRed Earth\u201d) established in October 2016, in exchange for 52,732,969 shares of common stock of the Company, par value $0.001 and a Promissory Note in the amount of $900,000. The merger was accounted for as a reverse merger, whereby Red Earth was considered the accounting acquirer and became a wholly-owned subsidiary of the Company. As a result of the acquisition, the members of Red Earth became the beneficial owners of approximately 88% of the Company\u2019s common stock immediately following the acquisition, obtained controlling interest of the Company, and retained key management positions of the Company. In accordance with the accounting treatment for a \u201creverse merger,\u201d Red Earth was treated as the \u201cacquiring company\u201d and MJ Holdings was treated as the \u201cacquired company.\u201d The Company\u2019s historical financial statements prior to the reverse merger were replaced with the historical financial statements of Red Earth prior to the reverse merger in all future filings with the U.S. Securities and Exchange Commission (the \u201cSEC\u201d). The consolidated financial statements after completion of the reverse merger will include the assets, liabilities and results of operations of the combined company from and after the closing date of the reverse merger.\nThe assets acquired and liabilities assumed recorded from the acquisition of MJ Holdings were recognized at their fair values as of the effective acquisition date, December 15, 2017. The following table summarizes the fair values assigned to the assets acquired and liabilities assumed:",
+   "prose_after": "Note 4 \u2014 Going Concern\nThe Company\u2019s financial statements have been prepared on a going concern basis, which contemplates the realization of assets and settlement of liabilities and commitments in the normal course of business. In December 2017, the Company acquired 100% of the assets and operations of Red Earth, as discussed above in Note 3, and changed its business operations to provide a 360-degree spectrum of infrastructure, construction, cultivation management, production management, distribution consulting and operating services to cultivation and production operators in the regulated cannabis industry.\nRed Earth is a development stage company established in October 2016. The Company\u2019s primary asset is a provisional Medical Marijuana Establishment Registration Certificate issued by the State of Nevada for the cultivation of medical marijuana. There is no assurance on the receipt and/or timing of final approvals from the appropriate authorities. The Company has not generated any revenues from inception (October 17, 2016) to December 31, 2017 and has an accumulated deficit of $362,521. These factors, among others, raise substantial doubt about the Company\u2019s ability to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1202,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Avg.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Exercise",
+     ""
+    ],
+    [
+     "Warrants:",
+     "Shares",
+     "",
+     "Price",
+     ""
+    ],
+    [
+     "Balance at Inception (October 17, 2016)",
+     "",
+     "166,665",
+     "$",
+     "5.88"
+    ],
+    [
+     "  Issued",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance at December 31, 2016",
+     "",
+     "166,665",
+     "$",
+     "5.88"
+    ],
+    [
+     "  Issued",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance at December 31, 2017",
+     "",
+     "166,665",
+     "$",
+     "5.88"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Avg.",
+    "Exercise"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1261,
+    "end_line": 1280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The shares were issued pursuant to an exemption from the registration requirements under Section 4(2) of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Rule 506 of Regulation D promulgated thereunder (\u201cRegulation D\u201d) since, among other things, the transactions did not involve a public offering and the securities were acquired for investment purposes only and not with a view to or for sale in connection with any distribution thereof. Offers and sales were made solely to persons qualifying as \u201caccredited investors\u201d (as such term is defined by Rule 501 of Regulation D).\nThe securities offered will not be and have not been registered under the Securities Act and may not be offered or sold in the United States absent registration or an applicable exemption from registration requirements.\nNote 9 \u2014 Stock Based Compensation\nWarrants\nPrior to the Reverse Merger, the Company had issued warrants as compensation for consulting services. The warrants expire between June 2019 and October 2019. A summary of the warrants issued, exercised and expired is as follows:",
+   "prose_after": "Note 10 \u2014 Commitments and Contingencies\nOperating Leases\nThe Company leases an office facility and a production / warehouse facility under two non-cancelable operating leases that expire in May 2019 and June 2027, respectively. Future minimal rental and lease commitments under non-cancelable operating leases with terms in excess of one year as of December 31, 2017, are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "Fiscal year ending December 31:",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "$",
+     "162,270"
+    ],
+    [
+     "2019",
+     "",
+     "249,090"
+    ],
+    [
+     "2020",
+     "",
+     "230,640"
+    ],
+    [
+     "2021",
+     "",
+     "230,640"
+    ],
+    [
+     "2022",
+     "",
+     "230,755"
+    ],
+    [
+     "  Thereafter",
+     "",
+     "1,043,315"
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "2,146,710"
+    ]
+   ],
+   "caption_stack": [
+    "Amount",
+    "Fiscal year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Note 10 \u2014 Commitments and Contingencies\nOperating Leases\nThe Company leases an office facility and a production / warehouse facility under two non-cancelable operating leases that expire in May 2019 and June 2027, respectively. Future minimal rental and lease commitments under non-cancelable operating leases with terms in excess of one year as of December 31, 2017, are as follows:",
+   "prose_after": "Rent expense, including deferred rent expense of $104,565, incurred pursuant to operating leases for the year ended December 31, 2017, was $112,815.\nLitigation\nThere are no legal proceedings which are pending or have been threatened against us or any of our officers, directors or control persons of which management is aware.\nNote 11 \u2014 Income Taxes\nThe Company had no operation in 2016 and had no net loss carryforward to the year 2017.\nThe Company did not incur any federal or state income tax expense or benefit for the year ended December 31, 2017.\nThe provision for income taxes differs from the amounts which would result from applying the federal statutory rate of 34% to the Company\u2019s loss before income taxes as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Computed \u201cexpected\u201d income tax benefit",
+     "$",
+     "(113,828)",
+     ""
+    ],
+    [
+     "State income tax benefit, net of federal benefit",
+     "",
+     "15,209",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(191,667)",
+     ""
+    ],
+    [
+     "Permanent differences, net",
+     "",
+     "(106,919)",
+     ""
+    ],
+    [
+     "Change in federal income tax rate",
+     "",
+     "120,784",
+     ""
+    ],
+    [
+     "IRC section 382 limitations on future NOL utilization",
+     "",
+     "249,208",
+     ""
+    ],
+    [
+     "Write-off of property & equipment deferred tax asset",
+     "",
+     "27,213",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2017"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1316,
+    "end_line": 1331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "Rent expense, including deferred rent expense of $104,565, incurred pursuant to operating leases for the year ended December 31, 2017, was $112,815.\nLitigation\nThere are no legal proceedings which are pending or have been threatened against us or any of our officers, directors or control persons of which management is aware.\nNote 11 \u2014 Income Taxes\nThe Company had no operation in 2016 and had no net loss carryforward to the year 2017.\nThe Company did not incur any federal or state income tax expense or benefit for the year ended December 31, 2017.\nThe provision for income taxes differs from the amounts which would result from applying the federal statutory rate of 34% to the Company\u2019s loss before income taxes as follows:",
+   "prose_after": "Temporary differences that give rise to the components of deferred tax assets and liabilities are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deferred expenses",
+     "$",
+     "176,030",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "",
+     "(65)",
+     ""
+    ],
+    [
+     "  Capitalized start-up expenses",
+     "",
+     "48,078",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "224,043",
+     ""
+    ],
+    [
+     "Less: Valuation allowance",
+     "",
+     "(224,043)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2017",
+    "Deferred tax assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1334,
+    "end_line": 1348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "Temporary differences that give rise to the components of deferred tax assets and liabilities are as follows:",
+   "prose_after": "As of December 31, 2017, the Company did not have any net operating losses for federal or state income tax purposes. All of the federal and state net operating losses incurred through December 15, 2017, are subject to 100 percent limitation under the provisions of Internal Revenue Code section 382 due to various ownership changes and the continuity of business requirement.\nThe U.S. Tax Cuts and Jobs Act (the \u201cAct\u201d) was enacted on December 22, 2017 and introduces significant changes to U.S. income tax law. Effective in 2018, the Tax Act reduces the U.S. statutory tax rate from 35% to 21%. The Company\u2019s deferred tax assets were calculated to reflect the reduction in the U.S. corporate income tax rate from 35% to 21%. As of December 31, 2017, management determined a valuation allowance against the net deferred tax assets of $224,043. In assessing the ability to realize a portion of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of the deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities and projected future taxable income in making the assessment.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MJ HOLDINGS, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Paris Balaouras"
+    ],
+    [
+     "",
+     "Paris Balaouras"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Date: July 27, 2018"
+    ]
+   ],
+   "caption_stack": [
+    "MJ HOLDINGS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1381,
+    "end_line": 1391
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the management agreement, the Licensed Operator will retain 15% of the net revenues generated from product cultivated from the outdoor grow facility and pay 85% of the net revenues to the Company. Upon execution of the agreement, the Company paid $300,000 to the Licensed Operator as consideration for the opportunity to construct and manage the outdoor grow facility on the Licensed Operator\u2019s property. In exchange for the initial consideration, the Licensed Operator has agreed not to retain 15% of the first $2 million of net revenues generated from the outdoor grow facility. In addition, once the outdoor grow facility begins production, the Company has agreed to pay the Licensed Operator $7,000 per month for compliance, security, and other administration costs incurred by the Licensed Operator during the term of the agreement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, the following persons on behalf of the registrant and in the capacities and on the dates indicated have signed this report below.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paris Balaouras",
+     "Chief Executive Officer and Director",
+     "July 27, 2018"
+    ],
+    [
+     "Paris Balaouras",
+     "(principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John R. Wheeler",
+     "Chief Financial Officer",
+     "July 27, 2018"
+    ],
+    [
+     "John R. Wheeler",
+     "(principal financial and accounting officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, the following persons on behalf of the registrant and in the capacities and on the dates indicated have signed this report below.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

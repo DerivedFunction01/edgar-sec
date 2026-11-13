@@ -1,0 +1,7743 @@
+{
+ "accession": "0001683168-23-004734",
+ "cik": "0001756180",
+ "form": "10-K/A",
+ "filing_date": "2023-07-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "nocera_i10ka-123122.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "16-1626611"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED DECEMBER 31, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM _______ TO ___________\nCOMMISSION FILE NO. 001-41434\nNOCERA, INC.\n(Exact name of registrant as specified in charter)",
+   "prose_after": "3F (Building B), No. 185, Sec. 1, Datong Rd., Xizhi Dist., New Taipei City 221, Taiwan (R.O.C.)\n(Address of principal executive offices and zip code)\n(886)-910-163-358\n(Registrant\u2019s telephone number, including area code)\nSECURITIES REGISTERED PURSUANT TO SECTION 12(b) OF THE ACT:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class:",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered:"
+    ],
+    [
+     "Common Stock",
+     "NCRA",
+     "The Nasdaq Capital Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "3F (Building B), No. 185, Sec. 1, Datong Rd., Xizhi Dist., New Taipei City 221, Taiwan (R.O.C.)\n(Address of principal executive offices and zip code)\n(886)-910-163-358\n(Registrant\u2019s telephone number, including area code)\nSECURITIES REGISTERED PURSUANT TO SECTION 12(b) OF THE ACT:",
+   "prose_after": "SECURITIES REGISTERED PURSUANT TO SECTION 12(g) OF THE ACT:\nNone.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART II",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "1"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "14"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "14"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "17"
+    ],
+    [
+     "ITEM 9C",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXHIBIT INDEX",
+     "",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "F-1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Useful life"
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of the remaining lease terms and estimated useful lives"
+    ],
+    [
+     "Furniture and fixture",
+     "5 years"
+    ],
+    [
+     "Equipment",
+     "3 years"
+    ],
+    [
+     "Machinery",
+     "5 years"
+    ],
+    [
+     "Vehicle",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Useful life"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Inventories are stated at lower of cost or net realizable value. Cost is determined using the weighted average method. Inventories include raw materials, work in progress and finished goods. The variable production overhead is allocated to each unit of product on the basis of the actual use of the production facilities. The allocation of fixed production overhead to the costs of conversion is based on the normal capacity of the production facilities.\nWhere there is evidence that the utility of inventories, in their disposal in the ordinary course of business, will be less than cost, whether due to physical deterioration, obsolescence, changes in price levels, or other causes, the inventories are written down to net realizable value.\nProperty and Equipment, Net\nProperty and equipment are stated at cost less accumulated depreciation. Cost represents the purchase price of the asset and other costs incurred to bring the asset into its existing use. Maintenance, repairs, and betterments, including replacement of minor items, are charged to expense; major additions to physical properties are capitalized.\nDepreciation of property and equipment is provided using the straight-line method over their estimated useful lives, which are shown as follows.",
+   "prose_after": "Upon sale or disposal, the applicable amounts of asset cost and accumulated depreciation are removed from the accounts and the net amount less proceeds from disposal are charged or credited to income.\nBusiness Combination\nFor a business combination, the assets acquired, the liabilities assumed and any noncontrolling interest in the acquiree are recognized at the acquisition date and measured at their fair values as of that date. In a business combination achieved in stages, the identifiable assets and liabilities, as well as the noncontrolling interest in the acquiree, are recognized at the full amounts of their fair values. In a bargain purchase in which the total acquisition-date fair value of the identifiable net assets acquired exceeds the fair value of the consideration transferred plus any noncontrolling interest in the acquiree, that excess in earnings is recognized as a gain attributable to the acquirer.\nDeferred tax liability and assets are recognized for the deferred tax consequences of differences between the tax bases and the recognized values of assets acquired and liabilities assumed in a business combination in accordance with Accounting Standards Codification (\u201cASC\u201d) Topic 740-10.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "14,102,138",
+     "",
+     "$",
+     "3,844,222",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "(13,846,172)",
+     "",
+     "",
+     "(3,770,412)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "255,966",
+     "",
+     "",
+     "73,810",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(2,772,102)",
+     "",
+     "",
+     "(10,205,821)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "(2,772,102)",
+     "",
+     "",
+     "(10,205,821)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "417,999",
+     "",
+     "",
+     "309",
+     ""
+    ],
+    [
+     "Net loss from continuing operations before income taxes",
+     "",
+     "(2,098,137)",
+     "",
+     "",
+     "(10,131,702)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (expense) benefit",
+     "",
+     "23,808",
+     "",
+     "",
+     "(9,421)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(2,074,329)",
+     "",
+     "",
+     "(10,141,123)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss (income) from discontinued operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal",
+     "",
+     "(2,569,975)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "(Loss) income from discontinued operations",
+     "",
+     "(92,285)",
+     "",
+     "",
+     "522,044",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(2,662,260)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,736,589)",
+     "",
+     "$",
+     "(9,619,079)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "On March 29, 2022, management was authorized to approve and commit to a plan to sell XFC. On November 30, 2022, the parties completed all the share transfer registration procedure as required by the laws of Taiwan and all the other closing conditions have been satisfied. The Disposition closed on November 30, 2022.\nIn accordance with ASC 205-20, Reporting Discontinued Operations and Disclosures of Disposals of Components of an Entity, a disposal of a component of an entity or a group of components of an entity is required to be reported as discontinued operations if the disposal represents a strategic shift that has (or will have) a major effect on an entity\u2019s operations and financial results when the components of an entity meets the criteria in paragraph 205-20-45-1E to be classified as held for sale. The disposition of XFC met the criteria in paragraph 205-20-45-1E and was reported as a discontinued operation.\nThe following table sets forth our consolidated statements of operations for the years ended December 31, 2022 and 2021.\nConsolidated Statements of Operations",
+   "prose_after": "Comparison of Results of Operations for the years ended December 31, 2022 and December 31, 2021\nRevenue\nThe revenue of the company for the year ended December 31, 2022 was approximately $14.1 million compared to approximately $3.84 million for the comparable period in 2021. The revenue for the year ended December 31, 2022 was mostly generated from Meixin catering business and the fish trading business from NTB with the revenue of $1.6 million and $12.4 million respectively. The revenue for the year ended December 31, 2021 was generated from XFC delivery of construction services to its customers. As of December 31, 2021, JC Development Co., Ltd. (\u201cJCD\u201d) and us have mutually agreed to terminate of the Regional Agency Cooperation Agreement dated as of September 2019, as amended by the Regional Agency Cooperation Supplementary Agreement dated as of May 31, 2020, by and between Grand Smooth Inc Ltd and JCD.\nThe disposition of XFC with $2.6 million loss can be attributed to various factors. In 2022, government measures and business decisions influenced construction services, resulting in project completions, cancellations, and budget reductions. This led to a decrease in cases and programs, which didn't meet our initial expectations for XFC's business development. Additionally, we strategically shifted our focus to fully develop a fish farm in Montgomery, Alabama, necessitating the sale of XFC. We determined the market value of the associated Class A building/construction license for the sale. These factors, including government measures, business decisions, and the strategic shift towards the fish farm, significantly contributed to the loss.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 367,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 420,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenue (a)",
+     "$",
+     "2,236,616",
+     "",
+     "$",
+     "6,101,103",
+     ""
+    ],
+    [
+     "Cost of revenues (b)",
+     "",
+     "(2,225,487)",
+     "",
+     "",
+     "(5,230,321)",
+     ""
+    ],
+    [
+     "General and administrative expenses (c)",
+     "",
+     "(105,226)",
+     "",
+     "",
+     "(213,863)",
+     ""
+    ],
+    [
+     "Other (expenses) income",
+     "",
+     "1,812",
+     "",
+     "",
+     "(4,364)",
+     ""
+    ],
+    [
+     "Income tax expenses (e)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(130,511)",
+     ""
+    ],
+    [
+     "Net (loss) / profit income from discontinued operations",
+     "$",
+     "(92,285)",
+     "",
+     "$",
+     "522,044",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 435,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "General and administrative expenses were $2.77 million, for the year ended December 31, 2022, compared to $10.1 million for the comparable period in 2021. The significant decrease was mainly because in 2021 we recognized significant share based compensation expenses to employees and consultants for professional services.\nOther income (expense)\nOther income of $417,999 for the year ended December 31, 2022, compared to other income were $309 for the comparable period in 2021. The income for the year ended December 31, 2022 was mainly due to the waiver of payables.\nDuring the year ended December 31, 2022, we recorded an income tax benefit of $23,808 as compared to income tax expense of $9,421 for the comparable period in 2021.\nLoss (income) from discontinued operations\nIn November 2022, we completed the termination of VIE agreements with XFC. The results of XFC, as a discontinued operation, for the years ended December 31, 2022 and 2021, are reported as components of net loss separate from the net loss of continuing operations. The details of composition of net loss from discontinued operations were as below.",
+   "prose_after": "(a) Revenues. During the year ended December 31, 2022 and 2021, we recognized revenues of $2.2 million and $6.1 million from continuing construction services. The decrease was primarily due to government changed measures and business decisions influenced construction services in 2022, resulting in project completions, cancellations, and budget reductions. This led to a decrease in cases and programs.\n(b) Cost of revenues. The cost of revenues is comprised of cost of materials and labor cost. The decrease in cost of revenues was deduction of the projects.\n(c) General and administrative expenses. General and administrative expenses was mainly comprised of employee salary and welfare expenses, office rental expenses, marketing expenses and travel expenses. The decrease of general and administrative expenses was mainly attributable to the size of the project reduced and deduction of the employee.\n(d) Impairment of goodwill. For the year ended December 31, 2022, we accrued impairment of goodwill of $332,040 arising from acquisition of XFC with we terminated VIE agreements.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 420,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) provided by operating activities",
+     "$",
+     "(1,771,551)",
+     "",
+     "$",
+     "203,103",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(4,030,834)",
+     "",
+     "",
+     "25,067",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "",
+     "6,288,391",
+     "",
+     "",
+     "1,203,833",
+     ""
+    ],
+    [
+     "Effect of the exchange rate change on cash and cash equivalents",
+     "",
+     "(23,941)",
+     "",
+     "",
+     "(11,525)",
+     ""
+    ],
+    [
+     "Increase in cash and cash equivalents",
+     "$",
+     "462,065",
+     "",
+     "$",
+     "1,420,478",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 478,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 On August 10, 2022, our Registration Statement relating to the Public Offering was declared effective by the SEC. The Public Offering consisted of 1,880,000 units at a public offering price of $3.50 per unit, with each unit consisting of (i) one (1) share of our common stock and (ii) a warrant to purchase two (2) shares of our common stock. We received total gross proceeds of $6.58 million from the Public Offering and after deducting the underwriting commissions, discounts and offering expenses, we received net proceeds of approximately $5.3 million. On August 11, 2022, the shares of our common stock began trading on The Nasdaq Stock Market LLC under the symbol \u201cNCRA.\u201d The Shares and the Warrants comprising the units were immediately separable and issued separately in the Public Offering, which closed on August 15, 2022. In connection with the Public Offering and pursuant to the underwriting agreement between the underwriters named therein and us, we granted the underwriters a 45-day option to purchase up to 282,000 additional shares of our common stock and warrants, equivalent to 15% of the units sold in the Public Offering, at the public offering price of $3.50 per unit, less underwriting discounts and commissions, to cover over-allotments, if any. On September 23, 2022, the underwriters exercised their option to purchase an additional 282,000 warrants from us for gross proceeds of $2,820. The warrants were issued to the underwriters on September 26, 2022.\nThe following table provides detailed information about our net cash flows for the periods indicated:",
+   "prose_after": "Net cash provided by (used in) operating activities\nNet cash used in operating activities amounted to $1,771,551 for the year ended December 31, 2022. This reflected a net loss of $4,736,589, as adjusted for non-cash items primarily including loss on disposal of XFC of $2,569,975, depreciation of $66,907 and share-based compensation of $413,453, and offset by effect of changes in working capital including a decrease of $5,382 of inventories.\nThe decrease in our inventories by $1.2 million can primarily be attributed to the construction services provided by XFC. In accordance with industry practices, the construction in progress within the construction industry is categorized as inventories. Therefore, it is essential to differentiate the $6 million increase in sales from the $1.2 million decrease in inventories. The $6 million in sales predominantly originates from NTB fish trading business, officially commenced in November, 2021, and Meixin catering business which acquired in September, 2022 conducted by NTB, which officially commenced in November, 2021. It is worth noting that a portion of the $1.2 million decrease in inventories will be transferred into revenue once the construction projects are fully completed.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "139,000",
+     "$",
+     "131,600"
+    ],
+    [
+     "Audit-Related Fees (1)",
+     "",
+     "\u2013",
+     "",
+     "10,000"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total",
+     "$",
+     "139,000",
+     "$",
+     "141,600"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "We have no awareness or belief that any governmental entity in the foreign jurisdiction of incorporation or organization owns shares of our capital stock. Similarly, no official from the Chinese government or Hong Kong Special Administrative Region serves as a board member or officer within our Company or its operating subsidiaries. Our amended articles of incorporation do not contain any provisions known to include charter or charter provisions of the Chinese Communist Party. Based on the absence of a Schedule 13D or 13G filing by any such governmental entity, the lack of material contracts with foreign governmental parties, and the absence of foreign government representation on our Board, we have determined that no governmental entity in mainland China or Hong Kong has the power to direct or control our management, policies, or possess a controlling financial interest.\nPART III\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nDuring the years ended December 31, 2022 and 2021, we engaged Centurion ZD CPA & Co. as our independent registered accounting firm. For the years ended December 31, 2022 and 2021, we incurred fees, as discussed below:",
+   "prose_after": "(1) Fees incurred in conjunction with consents for various registration statements filed during the 2022 and 2021 fiscal years.\nAudit fees consist of fees related to professional services rendered in connection with the audit of our annual financial statements. All other fees relate to professional services rendered in connection with the review of the quarterly financial statements.\nThe principal accountant\u2019s percentage of hours of engagement to audit our financial statements for the most recent fiscal year that were attributed to work performed is 100% by full-time, permanent staff employees perform from Hong Kong accounting firm.\nOur policy is to pre-approve all audit and permissible non-audit services performed by the independent accountants. These services may include audit services, audit-related services, tax services and other services. Under our Audit Committee\u2019s policy, pre-approval is generally provided for particular services or categories of services, including planned services, project based services and routine consultations. In addition, the Audit Committee may also pre-approve particular services on a case-by-case basis. Our Audit Committee approved all services that our independent accountants provided to us in the past two fiscal years.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description",
+     "Previously Filed and Incorporated by Reference Herein"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation of the Registrant",
+     "Filed as Exhibit 3.2 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment of Amended and Restated Articles of Incorporation of the Registrant",
+     "Filed as Exhibit 3.6 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment of Articles of Incorporation of the Registrant",
+     "Filed as Exhibit 3.7 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "3.4",
+     "Certificate of Change of the Registrant",
+     "Filed as Exhibit 3.3 to Form 10-12G filed on October 19, 2018."
+    ],
+    [
+     "3.5",
+     "Amended and Restated Bylaws of the Registrant",
+     "Filed as Exhibit 3.1 to Form 8-K filed on February 28, 2022."
+    ],
+    [
+     "3.6",
+     "Articles of Incorporation of GSI Acquisition Corp.",
+     "Filed as Exhibit 3.3 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "3.7",
+     "Articles of Association of Grand Smooth Inc Limited",
+     "Filed as Exhibit 3.4 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "3.8",
+     "Agreement and Plan of Merger, dated as of December 27, 2018, by and among the Registrant, Grand Smooth Inc Limited and GSI Acquisition Corp.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on December 31, 2018."
+    ],
+    [
+     "3.9",
+     "Amended Agreement and Plan of Merger, dated as of December 27, 2018, and effective as of December 31, 2018, by and among the Registrant, Grand Smooth Inc Limited and GSI Acquisition Corp.",
+     "Filed as Exhibit 2.1 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "3.10",
+     "Statement of Merger \u2013 GSI Acquisition Corp. and Grand Smooth Inc Limited",
+     "Filed as Exhibit 3.5 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "4.1",
+     "Description of Nocera, Inc.\u2019s securities registered under section 12 of the Securities Exchange Act of 1934, as amended",
+     "Filed as Exhibit 4.1 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "10.1\u2020",
+     "2018 Nocera, Inc. Stock Option and Award Incentive Plan",
+     "Filed as Exhibit 10.2 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "10.2",
+     "Share Exchange Agreement",
+     "Filed as Exhibit 10.1 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "10.3\u2020",
+     "Consulting Agreement dated as of December 27, 2018, between Nocera, Inc. and Yin-Chieh Cheng",
+     "Filed as Exhibit 2.1 to Form 8-K12G3 filed on January 31, 2019."
+    ],
+    [
+     "10.4",
+     "Regional Agency Cooperation Agreement dated as of September 2019, by and between Grand Smooth Inc Ltd and Jie Hao Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on October 30, 2019."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 640,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "PART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n1. Financial Statements: The following Financial Statements and Supplementary Data of Nocera, Inc. and the Report of Independent Registered Public Accounting Firm included in Part II, Item 8:\n\u00b7 Balance Sheets at December 31, 2022 and 2021;\n\u00b7 Statements of Operations for the years ended December 31, 2022 and 2021;\n\u00b7 Statements of Changes in Stockholders\u2019 Deficit for the years ended December 31, 2022 and 2021;\n\u00b7 Statements of Cash Flows for the years ended December 31, 2022 and 2021; and\n\u00b7 Notes to Financial Statements.\n2. Exhibits:\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.5",
+     "Procare International Co., Limited Project Contract",
+     "Filed as Exhibit 10.1 to Form 8-K filed on January 10, 2020."
+    ],
+    [
+     "10.6",
+     "Regional Agency Cooperation Supplementary Agreement dated as of May 31, 2020, by and between Grand Smooth Inc Ltd and JC Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on June 19, 2020."
+    ],
+    [
+     "10.7",
+     "Consulting Agreement dated as of May 15, 2020, between Nocera, Inc. and Atlanta Capital Partners, LLC",
+     "Filed as Exhibit 10.2 to Form 8-K filed on June 19, 2020."
+    ],
+    [
+     "10.8",
+     "Settlement Agreement and Release dated as of October 8, 2020, by and between Guizhou Wan Feng Hu Zhi Shui Chan Company, Ltd. and Nocera, Inc.",
+     "Filed as Exhibit 10.4 to Form 10-Q filed on November 16, 2020."
+    ],
+    [
+     "10.9",
+     "Exchange Agreement, Consent, and Representations dated as of December 31, 2020 of the Registrant and Agreement and Plan of Share Exchange for VIE Interest dated as of December 31, 2020, by and between Nocera, Inc., Xin Feng Construction Co. Ltd., and Shunda Feed Co. Ltd",
+     "Filed as Exhibit 2.1 to Form 8-K filed on January 4, 2021."
+    ],
+    [
+     "10.10",
+     "Voting Rights Proxy Agreement dated as of December 31, 2020, by and among Hui-Min Tu, Wen-Chih Tsai, Ching-Yao Tsai, Ching-Chao Tsai, Nocera, Inc. and Xin Feng Construction Co. Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on January 4, 2021."
+    ],
+    [
+     "10.11",
+     "Exclusive Business Cooperation Agreement dated as of December 31, 2020, by and among Nocera, Inc. and Xin Feng Construction Co. Ltd.",
+     "Filed as Exhibit 10.2 to Form 8-K filed on January 4, 2021."
+    ],
+    [
+     "10.12",
+     "Equity Pledge Agreement dated as of December 31, 2020, by and among Hui-Min Tu, Wen-Chih Tsai, Ching-Yao Tsai, Ching-Chao Tsai, Nocera, Inc. and Xin Feng Construction Co. Ltd.",
+     "Filed as Exhibit 10.3 to Form 8-K filed on January 4, 2021."
+    ],
+    [
+     "10.13",
+     "Exclusive Call Option Agreement dated as of December 31, 2020, by and among Nocera, Inc., Hui-Min Tu, Wen-Chih Tsai, Ching-Yao Tsai, Ching-Chao Tsai and Xin Feng Construction Co. Ltd.",
+     "Filed as Exhibit 10.4 to Form 8-K filed on January 4, 2021."
+    ],
+    [
+     "10.14",
+     "Subscription Agreement dated as of April 1, 2021, by and between Nocera, Inc. and Han-Chieh Shih",
+     "Filed as Exhibit 10.4 to Form 10-Q filed on May 17, 2021."
+    ],
+    [
+     "10.15",
+     "Consulting Agreement dated as of November 15, 2021, by and between Nocera, Inc. and Shih-Chung Lin",
+     "Filed as Exhibit 10.15 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "10.16",
+     "Consulting Agreement dated as of November 15, 2021, by and between Nocera, Inc. and Han-Chieh Shih",
+     "Filed as Exhibit 10.16 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "10.17\u2020",
+     "Employment Agreement dated as of August 16, 2019, by and between Nocera, Inc. and Shun-Chih Chuang",
+     "Filed as Exhibit 10.18 to Form 10-K filed on March 23, 2022."
+    ],
+    [
+     "10.18\u2020",
+     "Employment Agreement dated as of January 3, 2022, by and between Nocera, Inc. and Gerald H. Lindberg",
+     "Filed as Exhibit 10.15 to Form S-1 filed on July 20, 2022."
+    ],
+    [
+     "10.19\u2020",
+     "Addendum, dated December 31, 2021, to that certain Employment Agreement, dated August 16, 2019, between Nocera, Inc. and Shun-Chih Chuang",
+     "Filed as Exhibit 10.15 to Form S-1 filed on July 20, 2022."
+    ],
+    [
+     "10.20\u2020",
+     "Employment Agreement, dated September 1, 2022, between Nocera, Inc. and Mr. Hong-Wen Ruan",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 1, 2022."
+    ],
+    [
+     "10.21",
+     "VIE Purchase, dated September 7, 2022, between Nocera, Inc., Meixin Institutional Food Development Co., Ltd., and the Selling Stockholder",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 12, 2022."
+    ],
+    [
+     "10.22",
+     "Voting Rights Proxy Agreement, dated September 7, 2022, between Nocera, Inc., the Selling Stockholder and Meixin Institutional Food Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 12, 2022."
+    ],
+    [
+     "10.23",
+     "Exclusive Business Cooperation Agreement, September 7, 2022, between Nocera, Inc. and Meixin Institutional Food Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 12, 2022."
+    ],
+    [
+     "10.24",
+     "Equity Pledge Agreement, dated September 7, 2022, between Nocera, Inc. the Selling Stockholder and Meixin Institutional Food Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 12, 2022."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 665,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.25",
+     "Exclusive Call Option Agreement, dated September 7, 2022, between Nocera, Inc., the Selling Stockholder and Meixin Institutional Food Development Co., Ltd.",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 12, 2022."
+    ],
+    [
+     "10.26",
+     "Real Estate Purchase Agreement, dated September 8, 2022",
+     "Filed as Exhibit 10.1 to Form 8-K filed on September 13, 2022."
+    ],
+    [
+     "10.27",
+     "Farmers Vending Co. Ltd. Purchase Agreement dated as of September 26, 2022, by and between Farmers Vending Machine Co. Ltd. and Nocera, Inc.",
+     "Filed as Exhibit 10.2 to Form 8-K filed on September 30, 2022."
+    ],
+    [
+     "10.28",
+     "Purchase of Business Agreement dated as of November 30, 2022, by and between Nocera, Inc. and Han-Chieh Shih",
+     "Filed as Exhibit 10.1 to Form 8-K filed on December 2, 2022."
+    ],
+    [
+     "14.1",
+     "Code of Ethics",
+     "Filed as Exhibit 14.1 to Form S-1 filed on July 20, 2022"
+    ],
+    [
+     "21.1",
+     "List of Subsidiaries of Nocera, Inc.",
+     "Filed as Exhibit 21.1 to Form 10-K filed on March 31, 2023"
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/15d-14(a) Certification of the President and Chief Executive Officer of Nocera, Inc.",
+     "*"
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/15d-14(a) Certification of the Chief Financial Officer of Nocera, Inc.",
+     "*"
+    ],
+    [
+     "32.1",
+     "Section 1350 Certification of the President and Chief Executive Officer of Nocera, Inc.",
+     "**"
+    ],
+    [
+     "32.2",
+     "Section 1350 Certification of the Chief Financial Officer of Nocera, Inc.",
+     "**"
+    ],
+    [
+     "99.1",
+     "Audit Committee Charter",
+     "Filed as Exhibit 99.1 to Form S-1 filed on July 20, 2022."
+    ],
+    [
+     "99.2",
+     "Compensation Committee Charter",
+     "Filed as Exhibit 99.2 to Form S-1 filed on July 20, 2022."
+    ],
+    [
+     "99.3",
+     "Nominating and Corporate Governance Committee Charter",
+     "Filed as Exhibit 99.3 to Form S-1 filed on July 20, 2022."
+    ],
+    [
+     "101",
+     "Interactive Data Files",
+     "*"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document",
+     "*"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Schema Document",
+     "*"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Calculation Linkbase Document",
+     "*"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Definition Linkbase Document",
+     "*"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Label Linkbase Document",
+     "*"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Presentation Linkbase Document",
+     "*"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101).",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "________________________\n* Filed herewith.\n** Furnished herewith and not to be incorporated by reference into any filing of Nocera, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Annual Report on Form 10-K. \u2020 Management contract or compensatory plan.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Yin-Chieh Cheng",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Yin-Chieh Cheng",
+     "",
+     ""
+    ],
+    [
+     "President and Chief Executive Officer",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "________________________\n* Filed herewith.\n** Furnished herewith and not to be incorporated by reference into any filing of Nocera, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Annual Report on Form 10-K. \u2020 Management contract or compensatory plan.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Shun-Chih Chuang",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Shun-Chih Chuang",
+     "",
+     ""
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Yin-Chieh Cheng",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Yin-Chieh Cheng",
+     "",
+     ""
+    ],
+    [
+     "President, Chief Executive Officer, and Chairman of the Board",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 766,
+    "end_line": 772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Shun-Chih Chuang",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Shun-Chih Chuang",
+     "",
+     ""
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 773,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Gerald H. Lindberg",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Gerald H. Lindberg",
+     "",
+     ""
+    ],
+    [
+     "Corporate Secretary and Director",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ David Yu-Lung Kou",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "David Yu-Lung Kou",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 787,
+    "end_line": 793
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Thomas A. Steele",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Thomas A. Steele",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 794,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Hui Ying Zhuang",
+     "",
+     "July 10, 2023"
+    ],
+    [
+     "Hui Ying Zhuang",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firm (PCAOB ID 2769)",
+     "F 2-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2022 and 2021",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the Years ended December 31, 2022, and 2021",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Equity for the Years ended December 31, 2022, and 2021",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years ended December 31, 2022, and 2021",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements for the Years ended December 31, 2022 and 2021",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Pages"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 816,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and the Board of Directors of Nocera, Inc.:\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of Nocera, Inc. and its subsidiaries (the \"Group\") as of December 31, 2022 and 2021, the related consolidated statements of operations, comprehensive income (loss), changes in equity, and cash flows, for the year then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Group at December 31, 2022 and 2021, and the results of its operations and its cash flows for the year then ended, in conformity with the U.S. generally accepted accounting principles.\nBasis for Opinion\nThese consolidated financial statements are the responsibility of the Group's management. Our responsibility is to express an opinion on the Group's financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Group in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 832,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,906,074",
+     "",
+     "$",
+     "2,103,677",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "209,777",
+     "",
+     "",
+     "114,515",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "",
+     "91,781",
+     "",
+     "",
+     "97,163",
+     ""
+    ],
+    [
+     "Advance to suppliers",
+     "",
+     "1,732",
+     "",
+     "",
+     "1,732",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets, net",
+     "",
+     "27,470",
+     "",
+     "",
+     "75,686",
+     ""
+    ],
+    [
+     "Due from related parties",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(6,893)",
+     ""
+    ],
+    [
+     "Assets of disposal group",
+     "",
+     "\u2013",
+     "",
+     "",
+     "4,460,637",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "3,236,834",
+     "",
+     "",
+     "6,846,517",
+     ""
+    ],
+    [
+     "Retention receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "",
+     "22,703",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "844,613",
+     "",
+     "",
+     "24,132",
+     ""
+    ],
+    [
+     "Intangible assets - customer relations",
+     "",
+     "130,434",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,905,735",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "8,140,319",
+     "",
+     "$",
+     "6,870,649",
+     ""
+    ],
+    [
+     "LIABILITIES AND EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,631",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "38,388",
+     "",
+     "",
+     "12,407",
+     ""
+    ],
+    [
+     "Advance receipts",
+     "",
+     "42,880",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Due to related parties",
+     "",
+     "18,919",
+     "",
+     "",
+     "39,341",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "",
+     "1,179,768",
+     "",
+     "",
+     "312,320",
+     ""
+    ],
+    [
+     "Long-term secured other borrowing \u2013 current portion",
+     "",
+     "214,913",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Dividend payable",
+     "",
+     "22,312",
+     "",
+     "",
+     "6,312",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "1,920",
+     "",
+     "",
+     "6,632",
+     ""
+    ],
+    [
+     "Bank borrowing",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Disposal VIE liabilities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1,723,673",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "1,521,731",
+     "",
+     "",
+     "2,100,685",
+     ""
+    ],
+    [
+     "Deferred tax liabilities, net",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Long-term secured other borrowing",
+     "",
+     "436,341",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,958,072",
+     "",
+     "",
+     "2,100,685",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock ($0.001 par value; authorized 200,000,000 shares; 9,243,587 shares and 7,071,920 shares issued and outstanding as of December 31, 2022 and 2021, respectively) (1)",
+     "",
+     "9,243",
+     "",
+     "",
+     "7,071",
+     ""
+    ],
+    [
+     "Preferred stock ($0.001 par value; authorized 10,000,000 shares; Series A Preferred Stock, 2,000,000 authorized, 80,000 shares issued and outstanding as of December 31, 2022 and 2021, respectively)",
+     "",
+     "80",
+     "",
+     "",
+     "80",
+     ""
+    ],
+    [
+     "Additional paid-in capital (1)",
+     "",
+     "20,484,518",
+     "",
+     "",
+     "14,476,241",
+     ""
+    ],
+    [
+     "Statutory and other reserves",
+     "",
+     "191,219",
+     "",
+     "",
+     "191,219",
+     ""
+    ],
+    [
+     "(Accumulated losses) retained earnings",
+     "",
+     "(14,747,461)",
+     "",
+     "",
+     "(9,918,553)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "103,594",
+     "",
+     "",
+     "13,906",
+     ""
+    ],
+    [
+     "Total Nocera, Inc.\u2019s stockholders\u2019 equity",
+     "",
+     "6,041,193",
+     "",
+     "",
+     "4,769,964",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "",
+     "141,054",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total equity",
+     "",
+     "6,182,247",
+     "",
+     "",
+     "4,769,964",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "8,140,319",
+     "",
+     "$",
+     "6,870,649",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 945
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 Evaluating management\u2019s assumptions related to projections of revenue and projections of gross margin involved evaluating whether the assumptions used by management were reasonable considering\n(i) the current and past performance of the Catering Business reporting unit and\n(ii) the consistency with external market and industry data. Professionals with specialized skill and knowledge were used to assist in the evaluation of the appropriateness of the Company\u2019s discounted cash flow model\n/s/ Centurion ZD CPA & Co.\nCenturion ZD CPA & Co.\nWe have served as the Group's auditor since 2020.\nHong Kong, China\nMarch 31, 2023\nPCAOB ID 2769\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "(1) On August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. All shares and associated amounts have been retroactively restated to reflect the stock split.\nSee notes to the consolidated financial statements which are an integral part of these audited financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(Expressed in U.S. dollars, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "14,102,138",
+     "",
+     "$",
+     "3,844,222",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "13,846,172",
+     "",
+     "",
+     "(3,770,412)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "255,966",
+     "",
+     "",
+     "73,810",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(2,772,102)",
+     "",
+     "",
+     "(10,205,821)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "(2,772,102)",
+     "",
+     "",
+     "(10,205,821)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (expenses) income, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest (expenses) income, net",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Equity investment loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Impairment of deposits for property and equipment",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Impairment of long-term investments",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Other (expenses) income",
+     "",
+     "417,999",
+     "",
+     "",
+     "309",
+     ""
+    ],
+    [
+     "Total other (expenses) income, net",
+     "",
+     "417,999",
+     "",
+     "",
+     "309",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations before income taxes",
+     "",
+     "(2,098,137)",
+     "",
+     "",
+     "(10,131,702)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expenses",
+     "",
+     "23,808",
+     "",
+     "",
+     "(9,421)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(2,074,329)",
+     "",
+     "",
+     "(10,141,123)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from discontinued operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal",
+     "",
+     "(2,569,975)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "(Loss) income from discontinued operations",
+     "",
+     "(92,285)",
+     "",
+     "",
+     "522,044",
+     ""
+    ],
+    [
+     "Net (loss) income from discontinued operations",
+     "",
+     "(2,662,260)",
+     "",
+     "",
+     "522,044",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(4,736,589)",
+     "",
+     "",
+     "(9,619,079)",
+     ""
+    ],
+    [
+     "Less: Net loss (income) attributable to non-controlling interests",
+     "",
+     "76,319",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net loss attributable to Nocera Shareholders",
+     "",
+     "(4,812,908)",
+     "",
+     "",
+     "(9,619,079)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "(89,688)",
+     "",
+     "",
+     "(63,676)",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "",
+     "(4,826,277)",
+     "",
+     "",
+     "(9,682,755)",
+     ""
+    ],
+    [
+     "Less: Total comprehensive loss (income) attributable to non-controlling interests",
+     "",
+     "76,319",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Comprehensive loss attributable to Nocera Shareholders",
+     "$",
+     "(4,902,596)",
+     "",
+     "$",
+     "(9,682,755)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share - basic and diluted",
+     "",
+     "(0.6111)",
+     "",
+     "",
+     "(1.5749)",
+     ""
+    ],
+    [
+     "Net loss per share from continuing operations \u2013 basic and diluted",
+     "",
+     "(0.2731)",
+     "",
+     "",
+     "(1.6604)",
+     ""
+    ],
+    [
+     "Net (loss) income per share from discontinued operations \u2013 basic and diluted",
+     "",
+     "(0.3380)",
+     "",
+     "",
+     "0.0855",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding - Basic and Diluted",
+     "",
+     "7,876,367",
+     "",
+     "",
+     "6,107,727",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 955,
+    "end_line": 1016
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "(1) On August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. All shares and associated amounts have been retroactively restated to reflect the stock split.\nSee notes to the consolidated financial statements which are an integral part of these audited financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(Expressed in U.S. dollars, except share and per share data)",
+   "prose_after": "See notes to the consolidated financial statements which are an integral part of these audited financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN EQUITY",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Preferred stock",
+     "",
+     "Additional Paid-in",
+     "",
+     "Statutory and other",
+     "Retained",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "Total Nocera Inc.\u2019s Stockholders\u2019 Equity",
+     "",
+     "Non- controlling",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "",
+     "Stock(1)",
+     "Amount(1)",
+     "Stock",
+     "Amount",
+     "Capital(1)",
+     "",
+     "Reserves",
+     "Earnings",
+     "",
+     "Loss",
+     "",
+     "(Deficit)",
+     "",
+     "Interests",
+     "(Deficit)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "$",
+     "",
+     "$",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "$",
+     ""
+    ],
+    [
+     "Balance, January 1, 2021",
+     "6,088,343",
+     "6,088",
+     "\u2013",
+     "\u2013",
+     "2,696,017",
+     "",
+     "191,219",
+     "(293,162)",
+     "",
+     "(49,770)",
+     "",
+     "2,550,392",
+     "",
+     "\u2013",
+     "2,550,392",
+     ""
+    ],
+    [
+     "Common stock and warrant issuance",
+     "32,000",
+     "32",
+     "\u2013",
+     "\u2013",
+     "2,848",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "2,880",
+     "",
+     "\u2013",
+     "2,880",
+     ""
+    ],
+    [
+     "Preferred stock and warrant issuance",
+     "\u2013",
+     "\u2013",
+     "80,000",
+     "80",
+     "29,520",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "29,600",
+     "",
+     "\u2013",
+     "29,600",
+     ""
+    ],
+    [
+     "Changes in fair value of warranty liabilities",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "(24,800)",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "(24,800)",
+     "",
+     "\u2013",
+     "(24,800)",
+     ""
+    ],
+    [
+     "Issuance of new shares upon private placement",
+     "557,334",
+     "557",
+     "\u2013",
+     "\u2013",
+     "2,089,443",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "2,090,000",
+     "",
+     "\u2013",
+     "2,090,000",
+     ""
+    ],
+    [
+     "Consultancy services settled by equities",
+     "336,667",
+     "337",
+     "\u2013",
+     "\u2013",
+     "3,044,813",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "3,045,150",
+     "",
+     "\u2013",
+     "3,045,150",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "57,576",
+     "58",
+     "\u2013",
+     "\u2013",
+     "6,638,399",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "6,638,457",
+     "",
+     "\u2013",
+     "6,638,457",
+     ""
+    ],
+    [
+     "Foreign currency translation Adjustments",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "63,676",
+     "",
+     "63,676",
+     "",
+     "\u2013",
+     "63,676",
+     ""
+    ],
+    [
+     "Preferred stock dividend",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "(6,312)",
+     "",
+     "\u2013",
+     "",
+     "(6,312)",
+     "",
+     "\u2013",
+     "(6,312)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "(9,619,079)",
+     "",
+     "\u2013",
+     "",
+     "(9,619,079)",
+     "",
+     "\u2013",
+     "(9,619,079)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "7,071,920",
+     "7,072",
+     "80,000",
+     "80",
+     "14,476,240",
+     "",
+     "191,219",
+     "(9,918,553)",
+     "",
+     "13,906",
+     "",
+     "4,769,964",
+     "",
+     "\u2013",
+     "4,769,964",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2022",
+     "7,071,920",
+     "7,072",
+     "80,000",
+     "80",
+     "14,476,240",
+     "",
+     "191,219",
+     "(9,918,553)",
+     "",
+     "13,906",
+     "",
+     "4,769,964",
+     "",
+     "\u2013",
+     "4,769,964",
+     ""
+    ],
+    [
+     "Common stock issuance",
+     "1,880,000",
+     "1,880",
+     "\u2013",
+     "\u2013",
+     "4,799,616",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "4,801,496",
+     "",
+     "\u2013",
+     "4,801,496",
+     ""
+    ],
+    [
+     "Purchase of non-controlling interest",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "64,735",
+     "64,735",
+     ""
+    ],
+    [
+     "Consultancy services settled by equities",
+     "291,667",
+     "291",
+     "\u2013",
+     "\u2013",
+     "795,209",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "795,500",
+     "",
+     "\u2013",
+     "795,500",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "413,453",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "413,453",
+     "",
+     "\u2013",
+     "413,453",
+     ""
+    ],
+    [
+     "Foreign currency translation Adjustments",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "\u2013",
+     "",
+     "89,688",
+     "",
+     "89,688",
+     "",
+     "\u2013",
+     "89,688",
+     ""
+    ],
+    [
+     "Preferred stock dividend",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "(16,000)",
+     "",
+     "\u2013",
+     "",
+     "(16,000)",
+     "",
+     "\u2013",
+     "(16,000)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "\u2013",
+     "",
+     "\u2013",
+     "(4,812,908)",
+     "",
+     "\u2013",
+     "",
+     "(4,812,908)",
+     "",
+     "76,319",
+     "(4,736,589)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "9,243,587",
+     "9,243",
+     "80,000",
+     "80",
+     "20,484,518",
+     "",
+     "191,219",
+     "(14,747,461)",
+     "",
+     "103,594",
+     "",
+     "6,041,193",
+     "",
+     "141,054",
+     "6,182,247",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1024,
+    "end_line": 1065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "See notes to the consolidated financial statements which are an integral part of these audited financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN EQUITY",
+   "prose_after": "(1) On August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. All shares and associated amounts have been retroactively restated to reflect the stock split.\nSee notes to the consolidated financial statements which are an integral part of these audited financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1069,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(4,736,589)",
+     "",
+     "",
+     "(9,619,079)",
+     ""
+    ],
+    [
+     "Less: net (loss) income from discontinued operations",
+     "",
+     "(2,662,260)",
+     "",
+     "",
+     "522,044",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(2,074,329)",
+     "",
+     "",
+     "(10,141,123)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expenses",
+     "",
+     "66,907",
+     "",
+     "",
+     "6,127",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "4,891",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Loss on disposal of XFC",
+     "",
+     "2,569,975",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Deferred income tax",
+     "",
+     "(22,703)",
+     "",
+     "",
+     "2,258",
+     ""
+    ],
+    [
+     "Changes in fair value of warranty liabilities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "24,800",
+     ""
+    ],
+    [
+     "Consultancy services settled by equities",
+     "",
+     "795,500",
+     "",
+     "",
+     "3,045,150",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "",
+     "413,453",
+     "",
+     "",
+     "6,638,371",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "(95,262)",
+     "",
+     "",
+     "(693)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "5,382",
+     "",
+     "",
+     "18,210",
+     ""
+    ],
+    [
+     "Advance to suppliers",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets, net",
+     "",
+     "(1,989,716)",
+     "",
+     "",
+     "1,549,585",
+     ""
+    ],
+    [
+     "Retention receivables",
+     "",
+     "(130,434)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,631",
+     "",
+     "",
+     "(18,801)",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "(54,526)",
+     "",
+     "",
+     "49,463",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "(4,712)",
+     "",
+     "",
+     "6,632",
+     ""
+    ],
+    [
+     "Advance receipts",
+     "",
+     "42,880",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities from continuing operations",
+     "",
+     "(470,063)",
+     "",
+     "",
+     "1,179,979",
+     ""
+    ],
+    [
+     "Net cash used in operating activities from discontinued operations",
+     "",
+     "(1,301,488)",
+     "",
+     "",
+     "(976,876)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "(1,771,551)",
+     "",
+     "",
+     "203,103",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "\u2013",
+     "",
+     "",
+     "25,067",
+     ""
+    ],
+    [
+     "Proceeds from disposal of XFC",
+     "",
+     "300,082",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cash acquired from merger",
+     "",
+     "7,824",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cash disposed upon termination of VIE",
+     "",
+     "(46,564)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net cash outflow upon acquisition of a subsidiary",
+     "",
+     "(4,292,176)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net cash used in investing activities from continuing operations",
+     "",
+     "(4,030,834)",
+     "",
+     "",
+     "25,067",
+     ""
+    ],
+    [
+     "Net cash used in investing activities from discontinued operations",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(4,030,834)",
+     "",
+     "",
+     "25,067",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related parties",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(1,596,150)",
+     ""
+    ],
+    [
+     "Proceeds from common stock and warrant issuance",
+     "",
+     "\u2013",
+     "",
+     "",
+     "120,000",
+     ""
+    ],
+    [
+     "Proceeds from preferred stock and warrant issuance",
+     "",
+     "\u2013",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "5,666,124",
+     "",
+     "",
+     "2,090,000",
+     ""
+    ],
+    [
+     "Proceeds from issuance of IPO warrant",
+     "",
+     "2,820",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Proceeds from secured other borrowings",
+     "",
+     "619,447",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Repayment of short-term bank loan",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(487,826)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities from continuing operations",
+     "",
+     "6,288,391",
+     "",
+     "",
+     "326,024",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities from discontinued operations",
+     "",
+     "\u2013",
+     "",
+     "",
+     "877,809",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "6,288,391",
+     "",
+     "",
+     "1,203,833",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "",
+     "(23,941)",
+     "",
+     "",
+     "(11,525)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in cash and cash equivalents from continuing operations",
+     "",
+     "802,397",
+     "",
+     "",
+     "1,937,700",
+     ""
+    ],
+    [
+     "Decrease in cash and cash equivalents from discontinued operations",
+     "",
+     "(340,332)",
+     "",
+     "",
+     "(517,222)",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "462,065",
+     "",
+     "",
+     "1,420,478",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents from continuing operations, beginning of year",
+     "",
+     "2,103,677",
+     "",
+     "",
+     "165,977",
+     ""
+    ],
+    [
+     "Cash and cash equivalents from discontinued operations, beginning of year",
+     "",
+     "340,332",
+     "",
+     "",
+     "857,554",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "",
+     "2,444,009",
+     "",
+     "",
+     "1,023,531",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of year",
+     "",
+     "2,906,074",
+     "",
+     "",
+     "2,444,009",
+     ""
+    ],
+    [
+     "Less: Cash and cash equivalents from discontinued operations, end of year",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(340,332)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents form continuing operations, end of year",
+     "",
+     "2,906,074",
+     "",
+     "",
+     "2,103,677",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "(1) On August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. All shares and associated amounts have been retroactively restated to reflect the stock split.\nSee notes to the consolidated financial statements which are an integral part of these audited financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See notes to the consolidated financial statements which are an integral part of these audited financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNote 1 PRINCIPAL ACTIVITIES AND ORGANIZATION\nThe consolidated financial statements include the financial statements of Nocera, Inc. (\u201cNocera\u201d or the \u201cCompany\u201d) and its subsidiaries, Grand Smooth Inc. Limited (\u201cGSI\u201d) and Guizhou Grand Smooth Technology Ltd. (\u201cGZ GST\u201d or \u201cWFOE\u201d), and Meixin Institutional Food Development Co., Ltd. (\u201cMeixin\u201d) that is controlled through contractual arrangements. The Company, GSI, GZ GST and Mexin are collectively referred to as the \u201cCompany\u201d.\nNocera was incorporated in the State of Nevada on February 1, 2002 and is based in New Taipei City, Taiwan (R.O.C.). It did not engage in any operations and was dormant from its inception until its reverse merger of GSI on December 31, 2018.\nReverse merger\nEffective December 31, 2018, Nocera completed a reverse merger transaction (the \u201cTransaction\u201d) pursuant to an Agreement and Plan of Merger (the \u201cAgreement\u201d), with (i) GSI, (ii) GSI\u2019s stockholders, Yin-Chieh Cheng and Zhang Bi, who together owned shares constituting 100% of the issued and outstanding ordinary shares of GSI (the \u201cGSI Shares\u201d) and (iii) GSI Acquisition Corp. Under the terms of the Agreement, the GSI Stockholders transferred to Nocera all of the GSI Shares in exchange for the issuance of 10,000,000 shares (the \u201cShares\u201d) of Nocera\u2019s common stock (the \u201cShare Exchange\u201d). As a result of the reverse merger, GSI became Nocera\u2019s wholly-owned subsidiary and Yin-Chieh Cheng and Zhang Bi, the former stockholders of GSI, became Nocera\u2019s controlling stockholders. The share exchange transaction with GSI was treated as a reverse merger, with GSI as the accounting acquirer and Nocera as the acquired party.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1073,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1158,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Concentrations of credit risk",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage of the Company\u2019s accounts receivable",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "50.83%",
+     "",
+     "16.37%"
+    ],
+    [
+     "Customer B",
+     "",
+     "14.73%",
+     "",
+     "\u2013"
+    ],
+    [
+     "Customer C",
+     "",
+     "31.82%",
+     "",
+     "\u2013"
+    ],
+    [
+     "Customer D",
+     "",
+     "\u2013",
+     "",
+     "59.53%"
+    ],
+    [
+     "Customer E",
+     "",
+     "\u2013",
+     "",
+     "16.30%"
+    ],
+    [
+     "",
+     "",
+     "97.38%",
+     "",
+     "92.20%"
+    ]
+   ],
+   "caption_stack": [
+    "Concentrations of credit risk"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1230,
+    "end_line": 1245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICY"
+    }
+   },
+   "prose_before": "The preparation of financial statements in conformity with US GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements, and the reported amounts of revenue and expenses during the reporting period. Significant items subject to such estimates and assumptions include, but are not limited to, the allowance for doubtful receivables; the useful lives of property and equipment and intangible assets; impairment of long-lived assets; recoverability of the carrying amount of inventory; fair value of financial instruments; provisional amounts based on reasonable estimates for certain income tax effects of the Tax Act and the assessment of deferred tax assets or liabilities. These estimates are often based on complex judgments and assumptions that management believes to be reasonable but are inherently uncertain and unpredictable. Actual results could differ from these estimates.\nConcentrations of Credit Risk\nFinancial instruments that potentially expose the Company to concentrations of credit risk consist primarily of accounts receivable. The Company conducts credit evaluations of its customers and suppliers, and generally does not require collateral or other security from them. The Company evaluates its collection experience and long outstanding balances to determine the need for an allowance for doubtful accounts. The Company conducts periodic reviews of the financial condition and payment practices of its customers to minimize collection risk on accounts receivable.\nThere was four customers who represented 49.62% of the Company's total revenue during the years ended December 31, 2022. There was one customer who represented 58.22% of the Company's total revenue during the years ended December 31, 2021.\nThe following table sets forth a summary of single customers who represent 10% or more of the Company\u2019s total accounts receivable, net:",
+   "prose_after": "The following table sets forth a summary of single suppliers who represent 10% or more of the Company\u2019s total purchase:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage of the Company\u2019s purchase",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplier A",
+     "",
+     "\u2013",
+     "",
+     "48.76%"
+    ],
+    [
+     "Supplier B",
+     "",
+     "18.60%",
+     "",
+     "15.14%"
+    ],
+    [
+     "Supplier C",
+     "",
+     "\u2013",
+     "",
+     "14.26%"
+    ],
+    [
+     "",
+     "",
+     "18.60%",
+     "",
+     "78.16%"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1248,
+    "end_line": 1262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICY"
+    }
+   },
+   "prose_before": "The following table sets forth a summary of single suppliers who represent 10% or more of the Company\u2019s total purchase:",
+   "prose_after": "Fair Value Measurement\nThe Company applies ASC Topic 820, Fair Value Measurements and Disclosures which defines fair value, establishes a framework for measuring fair value and expands financial statement disclosure requirements for fair value measurements.\nASC Topic 820 defines fair value as the price that would be received from the sale of an asset or paid to transfer a liability (an exit price) on the measurement date in an orderly transaction between market participants in the principal or most advantageous market for the asset or liability.\nASC Topic 820 specifies a hierarchy of valuation techniques, which is based on whether the inputs into the valuation technique are observable or unobservable. The hierarchy is as follows:\nLevel 1 inputs to the valuation methodology are quoted prices (unadjusted) for identical assets or liabilities in active markets.\nLevel 2 inputs to the valuation methodology include quoted prices for similar assets and liabilities in active markets, and inputs that are observable for the assets or liability, either directly or indirectly, for substantially the full term of the financial instruments.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property and Equipment Useful Lives",
+     ""
+    ],
+    [
+     "",
+     "Useful life"
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of the remaining lease terms and estimated useful lives"
+    ],
+    [
+     "Furniture and fixture",
+     "5 years"
+    ],
+    [
+     "Equipment",
+     "3 years"
+    ],
+    [
+     "Machinery",
+     "5 years"
+    ],
+    [
+     "Vehicle",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Property and Equipment Useful Lives",
+    "Useful life"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1318
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICY"
+    }
+   },
+   "prose_before": "Inventories are stated at lower of cost or net realizable value. Cost is determined using the weighted average method. Inventories include raw materials, work in progress and finished goods. The variable production overhead is allocated to each unit of product on the basis of the actual use of the production facilities. The allocation of fixed production overhead to the costs of conversion is based on the normal capacity of the production facilities.\nWhere there is evidence that the utility of inventories, in their disposal in the ordinary course of business, will be less than cost, whether due to physical deterioration, obsolescence, changes in price levels, or other causes, the inventories are written down to net realizable value.\nProperty and Equipment, Net\nProperty and equipment are stated at cost less accumulated depreciation. Cost represents the purchase price of the asset and other costs incurred to bring the asset into its existing use. Maintenance, repairs, and betterments, including replacement of minor items, are charged to expense; major additions to physical properties are capitalized.\nDepreciation of property and equipment is provided using the straight-line method over their estimated useful lives, which are shown as follows.",
+   "prose_after": "Upon sale or disposal, the applicable amounts of asset cost and accumulated depreciation are removed from the accounts and the net amount less proceeds from disposal is charged or credited to income.\nBusiness Combination\nFor a business combination, the assets acquired, the liabilities assumed and any noncontrolling interest in the acquiree are recognized at the acquisition date and measured at their fair values as of that date. In a business combination achieved in stages, the identifiable assets and liabilities, as well as the noncontrolling interest in the acquiree, are recognized at the full amounts of their fair values. In a bargain purchase in which the total acquisition-date fair value of the identifiable net assets acquired exceeds the fair value of the consideration transferred plus any noncontrolling interest in the acquiree, that excess in earnings is recognized as a gain attributable to the acquirer.\nDeferred tax liability and assets are recognized for the deferred tax consequences of differences between the tax bases and the recognized values of assets acquired and liabilities assumed in a business combination in accordance with Accounting Standards Codification (\u201cASC\u201d) Topic 740-10.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Discontinued operation XFC",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "42,800",
+     "",
+     "",
+     "340,332"
+    ],
+    [
+     "Account receivables",
+     "",
+     "100,302",
+     "",
+     "",
+     "\u2013"
+    ],
+    [
+     "Other receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1,622,110"
+    ],
+    [
+     "Prepayment",
+     "",
+     "\u2013",
+     "",
+     "",
+     "72,995"
+    ],
+    [
+     "Inventories",
+     "",
+     "1,303",
+     "",
+     "",
+     "1,391,518"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "820,579",
+     "",
+     "",
+     "47,113"
+    ],
+    [
+     "Other noncurrent assets",
+     "",
+     "\u2013",
+     "",
+     "",
+     "69,489"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "946,984",
+     "",
+     "",
+     "3,543,557"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1,723,672"
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "\u2013",
+     "",
+     "",
+     "1,723,672"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,\n\n\n\n2022",
+     "",
+     "",
+     "December 31,\n\n\n\n2021"
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,688,453",
+     "",
+     "$",
+     "6,101,103"
+    ],
+    [
+     "Net (loss) / profit",
+     "",
+     "(381,593)",
+     "",
+     "",
+     "522,044"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1374,
+    "end_line": 1400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICY"
+    }
+   },
+   "prose_before": "2. obligation to absorb losses of the entity that could potentially be significant to the VIE or right to receive benefits from the entity that could potentially be significant to the VIE.\nPursuant to the VIE Agreements, Nocera is entitled to receive 100% of expected residual returns from VIE. The VIE Agreements are designed so that VIEs operate for the benefit of the Company. Accordingly, the accounts of VIEs are consolidated in the accompanying financial statements pursuant to ASC 810-10, Consolidation. In addition, their financial positions and results of operations are included in the Company\u2019s consolidated financial statements.\nSince the VIE agreements with XFC were terminated in November 30, 2022, and XFC was accounted for a discontinued operations for the year ended December, 2022, the following financial statement balances and amounts reflect the financial position and financial performances of Meixin and XFC respectively, which were included in the consolidated financial statements as of December 31, 2022 and 2021, and for the years ended December 31, 2022 and 2021, after elimination of intercompany transactions and balances:",
+   "prose_after": "(v) Discontinued operation\nIn accordance with ASU No. 2014-08, Reporting Discontinued Operations and Disclosures of Disposals of Components of an Entity, a disposal of a component of an entity or a group of components of an entity is required to be reported as discontinued operations if the disposal represents a strategic shift that has (or will have) a major effect on an entity\u2019s operations and financial results when the components of an entity meets the criteria in paragraph 205-20-45-1E to be classified as held for sale. When all of the criteria to be classified as held for sale are met, including management, having the authority to approve the action, commits to a plan to sell the entity, the major current assets, other assets, current liabilities, and noncurrent liabilities shall be reported as components of total assets and liabilities separate from those balances of the continuing operations. At the same time, the results of all discontinued operations, less applicable income taxes (benefit), shall be reported as components of net income (loss) separate from the net income (loss) of continuing operations in accordance with ASC 205-20-45.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1400,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of accounts receivable",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "209,777",
+     "",
+     "114,515"
+    ],
+    [
+     "Less: Allowance for doubtful accounts",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total",
+     "",
+     "209,777",
+     "",
+     "114,515"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of accounts receivable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1491,
+    "end_line": 1502
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "ACCOUNTS RECEIVABLE, NET"
+    }
+   },
+   "prose_before": "The Company\u2019s reporting currency is the U.S. dollar (\u201cUS$\u201d). The functional currency of the Company\u2019s subsidiary and the consolidated VIE is RMB. In the consolidated financial statements, the financial information of the Company\u2019s subsidiary and the consolidated VIE has been translated into US$. Assets and liabilities are translated at the exchange rates on the balance sheet date, equity amounts are translated at historical exchange rates, except for changes in accumulated deficit during the year which is the result of income statement translation process, and revenue, expense, gains or losses are translated using the average exchange rate during the year. Translation adjustments are reported as foreign currency translation adjustments and are shown as a separate component of other comprehensive income or loss in the consolidated statements of changes in equity and comprehensive (loss) income. The exchange rates as of December 31, 2022 and 2021 are 6.9646 and 6.4854, respectively. The annual average exchange rates for the year ended December 31, 2022 and 2021 are 6.7208 and 6.3700, respectively.\n(Loss) Earnings per Share\nBasic (loss) earnings per share is computed by dividing net (loss) income attributable to holders of common stock by the weighted average number of common shares outstanding during the year. Diluted earnings per share reflect the potential dilution that could occur if securities or other contracts to issue common shares were exercised or converted into common shares.\nRecent Accounting Pronouncements\nRecent accounting pronouncements issued by the Financial Accounting Standards Board, its Emerging Issues Task Force, the American Institute of Certified Public Accountants, and the Securities and Exchange Commission did not or are not believed by management to have a material impact on the Company\u2019s present or future financial statements.\nNote 4 ACCOUNTS RECEIVABLE, NET\nAs of December 31, 2022 and 2021, accounts receivable consisted of the following:",
+   "prose_after": "For the years ended December 31, 2022 and 2021, the Company has recorded provision for doubtful accounts of nil 0 and nil, 0 respectively.\nNote 5 INVENTORIES, NET\nAs of December 31, 2022 and 2021, inventories consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of inventory",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "91,781",
+     "",
+     "97,163"
+    ],
+    [
+     "Work in process",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total",
+     "",
+     "91,781",
+     "",
+     "97,163"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of inventory"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1509,
+    "end_line": 1520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INVENTORIES, NET"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2022 and 2021, the Company has recorded provision for doubtful accounts of nil 0 and nil, 0 respectively.\nNote 5 INVENTORIES, NET\nAs of December 31, 2022 and 2021, inventories consisted of the following:",
+   "prose_after": "The inventory write downs were $nil 0 and $nil 0 for the years ended December 31, 2022 and December 31, 2021, respectively.\nNote 6 ADVANCE TO SUPPLIERS\nBalances of advances to suppliers were $1,732 and $1,732 as of December 31, 2022 and 2021, respectively, which represented prepayments to suppliers for raw materials.\nNote 7 PREPAID EXPENSES AND OTHER ASSETS, NET",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of prepaid expenses and other assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Other receivables from third party",
+     "",
+     "27,470",
+     "",
+     "75,686"
+    ],
+    [
+     "Prepaid expenses and other assets, net",
+     "",
+     "27,470",
+     "",
+     "75,686"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of prepaid expenses and other assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1529,
+    "end_line": 1539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "PREPAID EXPENSES AND OTHER ASSETS, NET"
+    }
+   },
+   "prose_before": "The inventory write downs were $nil 0 and $nil 0 for the years ended December 31, 2022 and December 31, 2021, respectively.\nNote 6 ADVANCE TO SUPPLIERS\nBalances of advances to suppliers were $1,732 and $1,732 as of December 31, 2022 and 2021, respectively, which represented prepayments to suppliers for raw materials.\nNote 7 PREPAID EXPENSES AND OTHER ASSETS, NET",
+   "prose_after": "Note 8 PROPERTY AND EQUIPMENT, NET\nAs of December 31, 2022 and December 31, 2021, property and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of property and equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "903,867",
+     "",
+     "",
+     "24,725",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(59,254)",
+     "",
+     "",
+     "(593)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "844,613",
+     "",
+     "",
+     "24,132",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of property and equipment"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1544,
+    "end_line": 1555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "PROPERTY AND EQUIPMENT, NET"
+    }
+   },
+   "prose_before": "Note 8 PROPERTY AND EQUIPMENT, NET\nAs of December 31, 2022 and December 31, 2021, property and equipment consisted of the following:",
+   "prose_after": "Depreciation expenses for the years ended December 31, 2022 and 2021 were $66,907 and $6,127, respectively.\nNote 9 GOODWILL AND OTHER INTANGIBLE ASSETS\nAs of December 31, 2022 and December 31, 2021, goodwill and other intangible assets consisted of the followings:\nGoodwill",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of goodwill",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Goodwill - XFC",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Goodwill - Meixin",
+     "",
+     "3,905,735",
+     "",
+     "\u2013"
+    ],
+    [
+     "Less: Impairment",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Balance at end of year",
+     "",
+     "3,905,735",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of goodwill"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1564,
+    "end_line": 1576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "GOODWILL AND OTHER INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Depreciation expenses for the years ended December 31, 2022 and 2021 were $66,907 and $6,127, respectively.\nNote 9 GOODWILL AND OTHER INTANGIBLE ASSETS\nAs of December 31, 2022 and December 31, 2021, goodwill and other intangible assets consisted of the followings:\nGoodwill",
+   "prose_after": "Customer relations",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of intangible assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Acquisitions",
+     "",
+     "135,325",
+     "",
+     "",
+     "\u2013"
+    ],
+    [
+     "Translation/ Adjustments",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013"
+    ],
+    [
+     "Less: Accumulated amortization",
+     "",
+     "(4,891)",
+     "",
+     "",
+     "\u2013"
+    ],
+    [
+     "Less: Impairment",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013"
+    ],
+    [
+     "Balance at end of year",
+     "",
+     "130,434",
+     "",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of intangible assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1579,
+    "end_line": 1592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "GOODWILL AND OTHER INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Customer relations",
+   "prose_after": "Note 10 OTHER BORROWINGS\nOthers loans consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of other loans",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Secured loan from Chailease Finance Co., Ltd wholly repayable within 1 year",
+     "$",
+     "214,913",
+     "$",
+     "\u2013"
+    ],
+    [
+     "Total secured loan wholly repayable within 1 year",
+     "",
+     "214,913",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Secured loan from Chailease Finance Co., Ltd wholly repayable more than 1 year",
+     "",
+     "436,341",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total",
+     "$",
+     "651,254",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of other loans",
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1597,
+    "end_line": 1613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "OTHER BORROWINGS"
+    }
+   },
+   "prose_before": "Note 10 OTHER BORROWINGS\nOthers loans consisted of the following:",
+   "prose_after": "As of December 31, 2022, the outstanding loan from Chailease Finance Co., Ltd of $651,254 (or TWD 20,000,000) with annual interest rate of 6% was secured by pledging the timely deposit in Sunny Bank (Xizhi Brench) of 500,000, and denominated in TWD for a term of 24 months. This facility of credit limit of TWD 20,000,000 was obtained on December 19, 2022 and will be expired on December 16, 2024.\nNote 11 WARRANTS\nOn April 1, 2021, the Company entered in a securities purchase agreement with certain investors for an aggregate of 80,000 shares of its preferred stock at a per share purchase price of $2.50. As part of the transaction, the investors received one Class C warrant and one Class D warrant for the subscription of each preferred share. The Class C warrants consist of the right to purchase up to 80,000 shares of the Company\u2019s common stock at an exercise price of $2.50 per share exercisable for 36 months from the date of inception. The Class D warrants consist of the right to purchase up to 80,000 shares of the Company\u2019s common stock at an exercise price of $5.00 per share exercisable for 36 months from the date of inception. The subscription was completed on August 10, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of assumptions used",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Appraisal Date (Inception Date)",
+     "C Warrant August 10,\n\n\n\n2021",
+     "",
+     "D Warrant August 10,\n\n\n\n2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Market price per share (USD/share)",
+     "",
+     "1.47",
+     "",
+     "0.66"
+    ],
+    [
+     "Exercise price (USD/price)",
+     "",
+     "2.50",
+     "",
+     "5.00"
+    ],
+    [
+     "Risk free rate",
+     "",
+     "0.14%",
+     "",
+     "0.14%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0.00%",
+     "",
+     "0.00%"
+    ],
+    [
+     "Expected term/ Contractual life (years)",
+     "",
+     "1.39",
+     "",
+     "1.39"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "56.36%",
+     "",
+     "56.36%"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of assumptions used"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1628,
+    "end_line": 1642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "WARRANTS"
+    }
+   },
+   "prose_before": "In connection with the Public Offering and pursuant to the underwriting agreement between us and the underwriters named therein, we granted the underwriters a 45-day option to purchase up to 282,000 additional shares of common stock and warrants, equivalent to 15% of the Units sold in the Public Offering, at the public offering price per Unit, less underwriting discounts and commissions, to cover over-allotments, if any. On September 23, 2022, the underwriters exercised their option to purchase an additional 282,000 warrants from us for gross proceeds of $2,820. The warrants were issued to the underwriters on September 26, 2022.\nThe exercise price of the Warrants shall be decreased to the reset price, which means the greater of (i) 50% of the exercise price and (ii) 100% of the last volume weighted average price immediately preceding the 90th calendar day following the initial issuance date (the greater of (i) and (ii), the \u201cReset Price\u201d) if, on the date that is 90 calendar days immediately following the initial issuance date, the Reset Price is less than the exercise price on that date.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1642,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Appraisal Date (Inception Date)",
+     "C Warrant September 27, 2021",
+     "",
+     "D Warrant September 27, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Market price per share (USD/share)",
+     "",
+     "1.71",
+     "",
+     "0.73"
+    ],
+    [
+     "Exercise price (USD/price)",
+     "",
+     "2.50",
+     "",
+     "5.00"
+    ],
+    [
+     "Risk free rate",
+     "",
+     "0.15%",
+     "",
+     "0.15%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0.00%",
+     "",
+     "0.00%"
+    ],
+    [
+     "Expected term/ Contractual life (years)",
+     "",
+     "1.26",
+     "",
+     "1.26"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "52.93%",
+     "",
+     "52.93%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1643,
+    "end_line": 1654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "WARRANTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1642,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Appraisal Date (Inception Date)",
+     "IPO Warrant September 26, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Market price per share (USD/share)",
+     "",
+     "1.28"
+    ],
+    [
+     "Exercise price (USD/price)",
+     "",
+     "1.925"
+    ],
+    [
+     "Risk free rate",
+     "",
+     "4.03%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0.00%"
+    ],
+    [
+     "Expected term/ Contractual life (years)",
+     "",
+     "4.65"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "46.10%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1655,
+    "end_line": 1667
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "WARRANTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following is a reconciliation of the beginning and ending balances of warrants liability measured at fair value on a recurring basis using Level 3 inputs:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1642,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of warranty liability activity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Balance at the beginning of period",
+     "",
+     "312,320",
+     "",
+     "\u2013"
+    ],
+    [
+     "Warrants issued to investors",
+     "",
+     "754,303",
+     "",
+     "287,520"
+    ],
+    [
+     "Warrants issued to underwriter",
+     "",
+     "113,145",
+     "",
+     "\u2013"
+    ],
+    [
+     "Fair value change of warrants included in earnings",
+     "",
+     "\u2013",
+     "",
+     "24,800"
+    ],
+    [
+     "Total",
+     "",
+     "1,179,768",
+     "",
+     "312,320"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of warranty liability activity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1670,
+    "end_line": 1683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "WARRANTS"
+    }
+   },
+   "prose_before": "The following is a reconciliation of the beginning and ending balances of warrants liability measured at fair value on a recurring basis using Level 3 inputs:",
+   "prose_after": "The following is a summary of the warrant activity:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1642,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of warrant activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\n\n\nWarrants",
+     "",
+     "Average\n\n\n\nExercise Price",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nTerm in\n\n\n\nYears",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2021",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Exercisable at January 1, 2021",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Granted",
+     "",
+     "256,000",
+     "",
+     "3.75",
+     "",
+     "3.00"
+    ],
+    [
+     "Exercised / surrendered",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Expired",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Outstanding at December 31, 2021",
+     "",
+     "256,000",
+     "",
+     "3.75",
+     "",
+     "2.66"
+    ],
+    [
+     "Exercisable at December 31, 2021",
+     "",
+     "256,000",
+     "",
+     "3.75",
+     "",
+     "2.66"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2022",
+     "",
+     "256,000",
+     "",
+     "3.75",
+     "",
+     "2.66"
+    ],
+    [
+     "Exercisable at January 1, 2022",
+     "",
+     "256,000",
+     "",
+     "3.75",
+     "",
+     "2.66"
+    ],
+    [
+     "Granted",
+     "",
+     "2,162,000",
+     "",
+     "1.93",
+     "",
+     "4.98"
+    ],
+    [
+     "Exercised / surrendered",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Expired",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Outstanding at December 31, 2022",
+     "",
+     "2,418,000",
+     "",
+     "2.12",
+     "",
+     "4.73"
+    ],
+    [
+     "Exercisable at December 31, 2022",
+     "",
+     "2,418,000",
+     "",
+     "2.12",
+     "",
+     "4.73"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of warrant activity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1686,
+    "end_line": 1717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "WARRANTS"
+    }
+   },
+   "prose_before": "The following is a summary of the warrant activity:",
+   "prose_after": "Note 12 LEASES\nThe Company has two non-cancelable lease agreements for certain office and accommodation as well as fish farming containers for research and develop advanced technology for water circulation applying in fishery with original lease periods expiring between 2022 and 2023. The lease terms may include options to extend or terminate the lease when it is reasonably certain the Company will exercise that option. The Company recognizes rental expense on a straight-line basis over the lease term.\nThe components of lease expenses for the year ended December 31, 2022 and December 31, 2021 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1737,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Components of lease expenses",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statement of Income Location",
+     "For the year ended December 31, 2022",
+     "",
+     "For the year ended December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Lease Costs",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "General and administrative expenses",
+     "",
+     "51,227",
+     "",
+     "4,424"
+    ],
+    [
+     "Total net lease costs",
+     "",
+     "",
+     "51,227",
+     "",
+     "4,424"
+    ]
+   ],
+   "caption_stack": [
+    "Components of lease expenses"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1724,
+    "end_line": 1735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Note 12 LEASES\nThe Company has two non-cancelable lease agreements for certain office and accommodation as well as fish farming containers for research and develop advanced technology for water circulation applying in fishery with original lease periods expiring between 2022 and 2023. The lease terms may include options to extend or terminate the lease when it is reasonably certain the Company will exercise that option. The Company recognizes rental expense on a straight-line basis over the lease term.\nThe components of lease expenses for the year ended December 31, 2022 and December 31, 2021 were as follows:",
+   "prose_after": "Maturity of lease liabilities under our non-cancelable operating leases as of December 31, 2022 and December 31, 2021 are US$ nil. 0\nNote 13 OTHER PAYABLES AND ACCRUED LIABILITIES",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1737,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of payables",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "VAT payable",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Salary payable",
+     "",
+     "861",
+     "",
+     "\u2013"
+    ],
+    [
+     "Others",
+     "",
+     "37,527",
+     "",
+     "12,407"
+    ],
+    [
+     "Total",
+     "",
+     "38,388",
+     "",
+     "12,407"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of payables"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1740,
+    "end_line": 1752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "OTHER PAYABLES AND ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "Maturity of lease liabilities under our non-cancelable operating leases as of December 31, 2022 and December 31, 2021 are US$ nil. 0\nNote 13 OTHER PAYABLES AND ACCRUED LIABILITIES",
+   "prose_after": "Note 14 TAXATION\nThe Company and its subsidiary, and the consolidated VIE file tax returns separately.\n1) Value-added tax (\u201cVAT\u201d)\nPRC\nPursuant to the Provisional Regulation of the PRC on VAT and the related implementing rules, all entities and individuals (\u201ctaxpayers\u201d) that are engaged in the sale of products in the PRC are generally required to pay VAT, at a rate of which was changed from 16% to 13% on April 1, 2019 of the gross sales proceeds received, less any deductible VAT already paid or borne by the taxpayers. GZ WFH also subjected to 10% for the installment service provided.\nTaiwan\nPursuant to the Value-added and Non-value-added Business Tax Act and the related implementing rules, all entities and individuals (\"taxpayers\") that are engaged in the sale of products in the Taiwan are generally required to pay VAT, at a rate of 5%.\n2) Income tax\nUnited States\nOn December 22, 2017, the Tax Cuts and Jobs Act (the \u201cTax Act\u201d) was signed into legislation. The 2017 Tax Act significantly revises the U.S. corporate income tax by, among other things, lowering the statutory corporate tax rate from 34% to 21%, imposing a mandatory one-time tax on accumulated earnings of foreign subsidiaries, introducing new tax regimes, and changing how foreign earnings are subject to U.S. tax.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1737,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1774,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Income tax components",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "23,808",
+     "",
+     "(9,421)",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total income tax expense (benefit)",
+     "",
+     "23,808",
+     "",
+     "(9,421)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Income tax components",
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1801,
+    "end_line": 1814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "TAXATION"
+    }
+   },
+   "prose_before": "As of December 31, 2022, The Company\u2019s subsidiary in Hong Kong had net operating loss carry forwards available to offset future taxable income. The net operating losses will be carryforward indefinitely under Hong Kong Profits Tax regulation. There is a full valuation allowance applied against these loss carry forward as management determined it was not more likely than not that these net operating losses would be utilized in the foreseeable future.\nPRC\nWFOE and the consolidated VIE established in the PRC are subject to the PRC statutory income tax rate of 25%, according to the PRC Enterprise Income Tax (\u201cEIT\u201d) law.\nIn accordance with the relevant tax laws and regulations of the PRC, a company registered in the PRC is subject to income taxes within the PRC at the applicable tax rate on taxable income. All the PRC subsidiaries were subject to income tax at a rate of 25% for the year ended December 31, 2021 and 2020. According to PRC tax regulations, the PRC net operating loss can generally carry forward for no longer than five years starting from the year subsequent to the year in which the loss was incurred.\nThe components of the income tax (benefit) expense are:",
+   "prose_after": "The reconciliation of income taxes expenses computed at the TW statutory tax rate (2021: at PRC statutory tax rate) applicable to income tax expense is as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1834,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Reconciliation of income tax expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Taiwan (2021 - PRC) income tax statutory rate",
+     "",
+     "20.00%",
+     "",
+     "",
+     "20.00%",
+     ""
+    ],
+    [
+     "Tax effect of non-deductible expense",
+     "",
+     "(13.48%)",
+     "",
+     "",
+     "(6.78%)",
+     ""
+    ],
+    [
+     "Tax effect of stock-based compensation",
+     "",
+     "(8.69%)",
+     "",
+     "",
+     "(14.71%)",
+     ""
+    ],
+    [
+     "Tax effect of non-taxable income",
+     "",
+     "2.54%",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Tax effect of different tax rates in other jurisdictions",
+     "",
+     "(0.01%)",
+     "",
+     "",
+     "1.07%",
+     ""
+    ],
+    [
+     "Others",
+     "",
+     "0.12%",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Changes in valuation allowance",
+     "",
+     "(0.49%)",
+     "",
+     "",
+     "(1.01%)",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "(0.01%)",
+     "",
+     "",
+     "(1.43%)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Reconciliation of income tax expense",
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1817,
+    "end_line": 1834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "TAXATION"
+    }
+   },
+   "prose_before": "The reconciliation of income taxes expenses computed at the TW statutory tax rate (2021: at PRC statutory tax rate) applicable to income tax expense is as follows:",
+   "prose_after": "3) Deferred tax assets (liabilities), net\nThe tax effects of temporary differences representing deferred income tax assets and liabilities result principally from the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1834,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of deferred income taxes",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax loss carried forward",
+     "",
+     "23,391",
+     "",
+     "\u2013"
+    ],
+    [
+     "Allowance for doubtful receivables",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "23,391",
+     "",
+     "\u2013"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total deferred tax assets, net",
+     "",
+     "23,391",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, difference in depreciation",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities, net",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of deferred income taxes"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1839,
+    "end_line": 1861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "TAXATION"
+    }
+   },
+   "prose_before": "3) Deferred tax assets (liabilities), net\nThe tax effects of temporary differences representing deferred income tax assets and liabilities result principally from the following:",
+   "prose_after": "The valuation allowance as of December 31, 2022 and 2021 was primarily provided for the deferred income tax assets if it is more likely than not that these items will expire before the Company is able to realize its benefits, or that the future deductibility is uncertain. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible or utilizable. Management considers projected future taxable income and tax planning strategies in making this assessment. The movement for the valuation allowance is as following.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1834,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Movement in valuation allowance",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Balance at beginning of the year",
+     "",
+     "95,844",
+     "",
+     "\u2013"
+    ],
+    [
+     "Additions of valuation allowance",
+     "",
+     "\u2013",
+     "",
+     "95,844"
+    ],
+    [
+     "Reductions of valuation allowance",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Balance at the end of the year",
+     "",
+     "95,844",
+     "",
+     "95,844"
+    ]
+   ],
+   "caption_stack": [
+    "Movement in valuation allowance"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1864,
+    "end_line": 1876
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "TAXATION"
+    }
+   },
+   "prose_before": "The valuation allowance as of December 31, 2022 and 2021 was primarily provided for the deferred income tax assets if it is more likely than not that these items will expire before the Company is able to realize its benefits, or that the future deductibility is uncertain. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible or utilizable. Management considers projected future taxable income and tax planning strategies in making this assessment. The movement for the valuation allowance is as following.",
+   "prose_after": "PRC Withholding Tax on Dividends\nThe current PRC Enterprise Income Tax Law imposes a 10% withholding income tax for dividends distributed by foreign-invested enterprises to their immediate holding companies outside the PRC. A lower withholding tax rate will be applied if there is a tax treaty arrangement between the PRC and the jurisdiction of the foreign holding company. Distributions to holding companies in Hong Kong that satisfy certain requirements specified by PRC tax authorities, for example, will be subject to a 5% withholding tax rate.\nAs of December 31, 2022 and 2021, the Company had not recorded any withholding tax on the retained earnings of its foreign-invested enterprises in the PRC, since the Company intends to reinvest its earnings to potentially continue its business in mainland China, namely the manufacturing of the RASs through GZ GST, and its foreign-invested enterprises do not intend to declare dividends to their immediate foreign holding companies.\nNote 15 RELATED PARTY BALANCES AND TRANSACTIONS",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1834,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of related party transactions",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Mountain Share Transfer, LLC (1)",
+     "",
+     "39,341",
+     "",
+     "39,341"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of related party transactions"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1889,
+    "end_line": 1896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY BALANCES AND TRANSACTIONS"
+    }
+   },
+   "prose_before": "The current PRC Enterprise Income Tax Law imposes a 10% withholding income tax for dividends distributed by foreign-invested enterprises to their immediate holding companies outside the PRC. A lower withholding tax rate will be applied if there is a tax treaty arrangement between the PRC and the jurisdiction of the foreign holding company. Distributions to holding companies in Hong Kong that satisfy certain requirements specified by PRC tax authorities, for example, will be subject to a 5% withholding tax rate.\nAs of December 31, 2022 and 2021, the Company had not recorded any withholding tax on the retained earnings of its foreign-invested enterprises in the PRC, since the Company intends to reinvest its earnings to potentially continue its business in mainland China, namely the manufacturing of the RASs through GZ GST, and its foreign-invested enterprises do not intend to declare dividends to their immediate foreign holding companies.\nNote 15 RELATED PARTY BALANCES AND TRANSACTIONS\nDue to related parties\nThe balance due to related parties was as following:",
+   "prose_after": "Due from a related party\nThe balance due from a related party was as following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1935,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Taisi Electrical & Plumbing Co. Pte Ltd. (2)",
+     "",
+     "\u2013",
+     "",
+     "1,615,217"
+    ],
+    [
+     "Total",
+     "",
+     "\u2013",
+     "",
+     "1,615,217"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1901,
+    "end_line": 1910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY BALANCES AND TRANSACTIONS"
+    }
+   },
+   "prose_before": "Due from a related party\nThe balance due from a related party was as following:",
+   "prose_after": "Sales\nThe balance of sales with a related party was as following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1935,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Related Party Categories",
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "\u9249\u9806\u4f01\u696d\u6709\u9650\u516c\u53f8 (3)",
+     "",
+     "Same director",
+     "",
+     "993,918",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "993,918",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1915,
+    "end_line": 1925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY BALANCES AND TRANSACTIONS"
+    }
+   },
+   "prose_before": "Sales\nThe balance of sales with a related party was as following:",
+   "prose_after": "The sales prices and payment terms to related parties were not significantly different from those of sales to third parties. For other related party transactions, price and terms were determined in accordance with mutual agreements\nNote:\n(1) Mountain Share Transfer, LLC is company 100% controlled by Erik S. Nelson, the corporate secretary and director of the Company. The balances represented the amount paid on behalf of the Company for its daily operation purpose.\n(2) Mr. Tsai Wen-Chih is the director of XFC and has control power over Taisi Electrical & Plumbing Co. Pte Ltd. The Company took over the receivable amount of $877,809 from acquisition of XFC in December 2020. None of the receivables have been impaired and it is expected that the full contractual amounts can be collected.\n(3) \u9249\u9806\u4f01\u696d\u6709\u9650\u516c\u53f8 chairman is Mr. Yin-Chieh Cheng (\u201cMr. Cheng\u201d) same with Company. \u9249\u9806\u4f01\u696d\u6709\u9650\u516c\u53f8 will purchase goods from Company and re-sell it. All the terms were not significantly different from those of sales to third parties.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1935,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assumptions used",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.16%",
+     "",
+     "1.16%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "4.31",
+     "",
+     "4.31"
+    ],
+    [
+     "Volatility",
+     "",
+     "48.15%",
+     "",
+     "48.15%"
+    ]
+   ],
+   "caption_stack": [
+    "Assumptions used"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1960,
+    "end_line": 1970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SHARE-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "On December 1, 2021, Nocera granted Mr. Shun-Chih Chuang and Mr. Hsien-Wen Yu 75,000 shares of Class A warrants and 60,000 shares of Class A warrants separately, each with exercise price of $0.50 per share, for serving as the Company\u2019s Chief Financial Officer and Chief Operating Officer. The Company also granted 2 employees 70,000 shares of Class A warrant with exercise price of $0.50 per share.\nOn December 31, 2021, the Company issued an aggregate of 505,000 shares of common stock to Mr. Shun-Chih Chuang and a total of five consultants in consideration for services rendered.\nOn December 22, 2022, the Company issued 150,000 and 75,000 shares of common stock to Chen-Chun Chung and TraDigital respectively in consideration for services rendered.\nThe estimated fair value of share-based compensation for employees is recognized as a charge against income on a ratable basis over the requisite service period, which is generally the vesting period of the award. The fair value of stock option grant was estimated on the date of grant using the Black-Scholes option pricing model under the following assumptions:",
+   "prose_after": "The Company estimated the grant date fair value of time-based stock option awards using the Black-Scholes option valuation model, which requires assumptions involving an estimate of the fair value of the underlying common stock on the date of grant, the expected term of the options, volatility, discount rate and dividend yield. The Company calculated expected option terms based on the \u201csimplified\u201d method for \u201cplain vanilla\u201d options due to the limited exercise information. The \u201csimplified method\u201d calculates the expected term as the average of the vesting term and the original contractual term of the options. The Company calculated volatility using the average adjusted volatility of quick companies feature of Capital IQ for a period of time reflective of the expected option term, while the discount rate was estimated using the interest rate for a treasury note with the same contractual term as the options granted. Dividend yield is estimated at our current dividend rate, which adjustments for any known future changes in the rate.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1957,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1982,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of earnings (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,812,908)",
+     "",
+     "",
+     "(9,619,079)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(2,074,329)",
+     "",
+     "",
+     "(10,141,123)",
+     ""
+    ],
+    [
+     "Net (loss) income from discontinued operations",
+     "",
+     "(2,662,260)",
+     "",
+     "",
+     "522,044",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding - Basic and Diluted",
+     "",
+     "7,876,367",
+     "",
+     "",
+     "6,107,727",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share - basic and diluted",
+     "",
+     "(0.6111)",
+     "",
+     "",
+     "(1.5749)",
+     ""
+    ],
+    [
+     "Net loss per share from continuing operations \u2013 basic and diluted (1)",
+     "",
+     "(0.2731)",
+     "",
+     "",
+     "(1.6604)",
+     ""
+    ],
+    [
+     "Net (loss) income per share from discontinued operations \u2013 basic and diluted (1)",
+     "",
+     "(0.3380)",
+     "",
+     "",
+     "0.0855",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of earnings (loss) per share",
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1987,
+    "end_line": 2006
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "(LOSS) INCOME PER SHARE"
+    }
+   },
+   "prose_before": "In August 2021, the Company issued 80,000 shares of preferred shares of $1.00 each at an issue price of $2.50 per share to certain investors credited as fully paid. The preferred shares are non-voting and non-redeemable. The holder of the preferred shares will have priority over the holders of ordinary shares of the Company on the assets and funds of the Company available for distribution in a distribution of assets on liquidation, winding up or dissolution of the Company. The holder of the preferred shares shall not have the right to attend or vote at any general meeting of the Company (except a general meeting for winding up of the Company or a resolution is to be proposed which if passed would vary or abrogate the rights or privileges of such holder).\nOn August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. As a result of reverse stock split, the shares of common stock issuable upon the conversion of Series A Preferred Stock decreased from 80,000 shares to 53,334 shares.\nNote 19 (LOSS) INCOME PER SHARE\nThe following table sets forth the computation of basic and diluted (loss) earnings per common share for the years ended December 31, 2022 and 2021.",
+   "prose_after": "Basic (loss) income per share is computed by dividing the net loss by the weighted average number of common shares outstanding during the period. Diluted (loss) per income share is the same as basic loss per share due to the lack of dilutive items in the Company for the years ended December 31, 2022 and 2021. The number of warrants is excluded from the computation as the anti-dilutive effect.\n(1) On August 11, 2022, the Company effected a 2:3 reverse stock split for each share of common stock issued and outstanding. All shares and associated amounts have been retroactively restated to reflect the stock split.\nNote 20 DISPOSAL OF XIN FENG CONSTRUCTION CO., LTD (\u201cXFC\u201d)\nOn December 31, 2020, we exchanged 466,667 (post-split) shares of our restricted common stock to stockholders of Xin Feng Construction Co., Ltd., a Taiwan limited liability company (\u201cXFC\u201d), in exchange for 100% controlling interest in XFC. We also entered into contractual arrangements with a stockholder of XFC, that enabled us to have the power to direct the activities that most significantly affects the economic performance of XFC and receive the economic benefits of XFC that could be significant to XFC. On November 30, 2022, the Company, XFC and Han-Chieh Shih (the \u201cPurchaser\u201d) entered into certain Share Purchase Agreement (the \u201cPurchase Agreement\u201d). Pursuant to the Purchase Agreement, the Purchaser agreed to purchase XFC 100% controlling interest in exchange of cash purchase price of $300,000 (the \u201cConsideration\u201d). The transaction contemplated by the Purchase Agreement is hereby referred as the Disposal. On March 29, 2022, management was authorized to approve and commit to a plan to sell XFC. On November 30, 2022, the parties completed all the share transfer registration procedure as required by the laws of Taiwan and all the other closing conditions have been satisfied, as a result, the Disposal contemplated by the Purchase Agreement is completed and the VIE agreements were terminated.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1982,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2016,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Discontinued operations XFC 1",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Discontinued Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "2,236,616",
+     "",
+     "$",
+     "6,101,103",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "(2,225,487)",
+     "",
+     "",
+     "(5,230,321)",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(105,226)",
+     "",
+     "",
+     "(213,863)",
+     ""
+    ],
+    [
+     "Other revenue",
+     "",
+     "1,812",
+     "",
+     "",
+     "1,455",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(5,819)",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(130,511)",
+     ""
+    ],
+    [
+     "Net gain from discontinued operations",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net income (loss) from discontinued operations",
+     "$",
+     "(92,285)",
+     "",
+     "$",
+     "522,044",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2019,
+    "end_line": 2038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 20,
+     "label": "NOTE 20",
+     "title": "DISPOSAL OF XIN FENG CONSTRUCTION CO., LTD (\u201cXFC\u201d)"
+    }
+   },
+   "prose_before": "On December 31, 2020, we exchanged 466,667 (post-split) shares of our restricted common stock to stockholders of Xin Feng Construction Co., Ltd., a Taiwan limited liability company (\u201cXFC\u201d), in exchange for 100% controlling interest in XFC. We also entered into contractual arrangements with a stockholder of XFC, that enabled us to have the power to direct the activities that most significantly affects the economic performance of XFC and receive the economic benefits of XFC that could be significant to XFC. On November 30, 2022, the Company, XFC and Han-Chieh Shih (the \u201cPurchaser\u201d) entered into certain Share Purchase Agreement (the \u201cPurchase Agreement\u201d). Pursuant to the Purchase Agreement, the Purchaser agreed to purchase XFC 100% controlling interest in exchange of cash purchase price of $300,000 (the \u201cConsideration\u201d). The transaction contemplated by the Purchase Agreement is hereby referred as the Disposal. On March 29, 2022, management was authorized to approve and commit to a plan to sell XFC. On November 30, 2022, the parties completed all the share transfer registration procedure as required by the laws of Taiwan and all the other closing conditions have been satisfied, as a result, the Disposal contemplated by the Purchase Agreement is completed and the VIE agreements were terminated.\nIn accordance with ASC 205-20-45, XFC met the criteria as a discontinued operation. As of November 30, 2022, the assets relevant to the sale of XFC with a carrying value of $2.6 million were classified as assets held, the liabilities relevant to the sale of XFC with a carrying value of $71,168 were classified as liabilities held for sale, and the cumulative translation adjustments relevant to the sale of XFC of $1.8 million was removed from the equity component and was reported as a gain on the sale of XFC. A net loss of $2.8 million was recognized as the net loss from disposal of discontinued operation in the year ended December 31, 2022.\nThe following is a reconciliation of the amounts of major classes of income from operations classified as discontinued operations in the consolidated statements of operations and comprehensive loss for the years ended December 31, 2022 and 2021:",
+   "prose_after": "Note 21 COMMITMENTS AND CONTINGENCIES\nCapital commitments\nAs of December 31, 2022 and 2021, the Company\u2019s capital commitments contracted but not yet reflected in the consolidated financial statements amounted to $nil. 0\nContingencies\nIn the ordinary course of business, the Company may be subject to legal proceeding regarding contractual and employment relationships and a variety of other matters. The Company records contingent liabilities resulting from such claims when a loss is assessed to be probable and the amount of the loss is reasonably estimable.\nThe Company has no significant pending litigation for the year ended December 31, 2022 and 2021.\nNote 22 BUSINESS COMBINATION\nMeixin Institutional Food Development Company Limited\nOn September 7, 2022, the Company acquired 80% shares of Meixin. The fair values of assets acquired and liabilities assumed were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 20
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2016,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 32
+    },
+    "after": {
+     "line": 2050,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 53,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of assets acquired and liabilities assumed",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and bank balance",
+     "$",
+     "7,824",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "",
+     "10,646",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "14,225",
+     ""
+    ],
+    [
+     "Plant and equipment, net",
+     "",
+     "872,939",
+     ""
+    ],
+    [
+     "Intangible assets \u2013 customer relations",
+     "",
+     "169,156",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "(581,959)",
+     ""
+    ],
+    [
+     "Net assets value",
+     "",
+     "492,831",
+     ""
+    ],
+    [
+     "Net assets acquired @ 80%",
+     "",
+     "394,265",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,905,735",
+     ""
+    ],
+    [
+     "Purchases price",
+     "$",
+     "4,300,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of assets acquired and liabilities assumed"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2057,
+    "end_line": 2074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "Note 21 COMMITMENTS AND CONTINGENCIES\nCapital commitments\nAs of December 31, 2022 and 2021, the Company\u2019s capital commitments contracted but not yet reflected in the consolidated financial statements amounted to $nil. 0\nContingencies\nIn the ordinary course of business, the Company may be subject to legal proceeding regarding contractual and employment relationships and a variety of other matters. The Company records contingent liabilities resulting from such claims when a loss is assessed to be probable and the amount of the loss is reasonably estimable.\nThe Company has no significant pending litigation for the year ended December 31, 2022 and 2021.\nNote 22 BUSINESS COMBINATION\nMeixin Institutional Food Development Company Limited\nOn September 7, 2022, the Company acquired 80% shares of Meixin. The fair values of assets acquired and liabilities assumed were as follows:",
+   "prose_after": "Xin Feng Construction Co., Ltd.\nOn November 30, 2022, the Company terminated the VIE agreements with and settled all debt claims as to XFC. The fair values of assets and liabilities of XFC were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2050,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 33
+    },
+    "after": {
+     "line": 2098,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 53,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 54,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of assets acquired and liabilities assumed",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and bank balance",
+     "$",
+     "46,564",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "",
+     "378,798",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "144,968",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "2,000,452",
+     ""
+    ],
+    [
+     "Plant and equipment, net",
+     "",
+     "38,402",
+     ""
+    ],
+    [
+     "Bank borrowing",
+     "",
+     "(19,054)",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "(19,839)",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "(32,274)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "332,040",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "2,870,057",
+     ""
+    ],
+    [
+     "Consideration received",
+     "",
+     "(300,082)",
+     ""
+    ],
+    [
+     "Loss on disposal of subsidiary",
+     "$",
+     "2,569,975",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of assets acquired and liabilities assumed"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2079,
+    "end_line": 2098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "Xin Feng Construction Co., Ltd.\nOn November 30, 2022, the Company terminated the VIE agreements with and settled all debt claims as to XFC. The fair values of assets and liabilities of XFC were as follows:",
+   "prose_after": "Note 23 SUBSEQUENT EVENT\nPurchases of Real Estate\nOn September 8, 2022, Nocera, Inc. (\u201cNocera\u201d or the \u201cCompany\u201d) entered into a real estate purchase agreement (the \u201cAgreement\u201d) with an unaffiliated third party (the \u201cSeller\u201d) pursuant to which the Company agreed to purchase 229 contiguous acres of land located in Montgomery County, Alabama. The Company paid an earnest deposit of $10,000 on the land with the balance of $865,000 payable at closing. The Company is in the process of obtaining financing from local banking institutions expected to finance approximately 85% of the remaining purchase price.\nOn February 16, 2023, the Land Acquisition was completed. The Company paid $875,000 to the Seller, which was funded through available cash in the amount of $225,000 and loan proceeds in the amount of $650,000 from the unaffiliated Taiwan financial company, of which bears interest at a rate of 6% per annum payable every month for a term of two years (the \u201cLoan\u201d). The Company, through Nocera Taiwan Branch, an unincorporated division of the Company, pledged a certificate of deposit in the amount of $500,000 as security for the Loan.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2050,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 33
+    },
+    "after": {
+     "line": 2098,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 54,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

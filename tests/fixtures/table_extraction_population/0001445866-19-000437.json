@@ -1,0 +1,2580 @@
+{
+ "accession": "0001445866-19-000437",
+ "cik": "0001423325",
+ "form": "10-K",
+ "filing_date": "2019-04-16",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "icnn-20181231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "000-53616",
+     "421768468"
+    ],
+    [
+     "(State or Other Jurisdiction\n\n\n\nof Incorporation or Organization)",
+     "(Commission File Number)",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D. C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2018\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nIncoming, Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "244 Fifth Avenue, Suite V235\nNew York, NY 10001\n(Address of principal executive offices) (Zip Code)\n(800) 385-5705\n(Registrant\u2019s telephone number, including area code)\n________________\nN/A\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities Registered pursuant to Section 12(g) of the Act: Class A Common Stock, par value $0.001 per share",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 44,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Cautionary Statement Regarding Forward Looking Statements",
+     "i"
+    ],
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "7"
+    ],
+    [
+     "Item 2. Properties",
+     "7"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "7"
+    ],
+    [
+     "Item 4. Removed and Reserved",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "9"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures about Market Risk",
+     "15"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "15"
+    ],
+    [
+     "Item 9. Changes In and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "27"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "27"
+    ],
+    [
+     "Item 9B. Other Information",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "29"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "29"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "30"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "31"
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services",
+     "32"
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 131
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [ ] Accelerated filer [ ]\nNon-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAs of March 31, 2019, there were 33,754,332 shares of common stock issued and outstanding (31,774,332 Class A Common Stock outstanding and 1,980,000 Class B Common Stock outstanding).\nAPPLICABLE ONLY TO REGISTRANTS INVOLVED IN BANKRUPTCY\nPROCEEDINGS DURING THE PRECEDING FIVE YEARS\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes [ ] No [ ]\nDOCUMENTS INCORPORATED BY REFERENCE\nNot Applicable\nTable Of Contents",
+   "prose_after": "CAUTIONARY STATEMENT REGARDING FORWARD LOOKING STATEMENTS\nSome discussions in this Annual Report on Form 10-K (the \u201cAnnual Report\u201d) contain forward-looking statements that involve assumptions, and describe our future plans, strategies, and expectations. Such statements are generally identifiable by use of the words \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cbelieve,\u201d \u201cintend,\u201d or \u201cproject\u201d or the negative of these words or other variations on these words or comparable terminology. These statements are expressed in good faith and based upon a reasonable basis when made, but there can be no assurance that these expectations will be achieved or accomplished.\nSuch forward-looking statements include statements regarding, among other things (a) the potential markets for our products, our potential profitability, and cash flows, (b) our growth strategies, (c) anticipated trends in our industry, (d) our future financing plans and (e) our anticipated needs for working capital. This information may involve known and unknown risks, uncertainties, and other factors that may cause our actual results, performance, or achievements to be materially different from the future results, performance, or achievements expressed or implied by any forward-looking statements. These statements may be found under \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operation\u201d as well as in this Annual Report generally. Actual events or results may differ materially from those discussed in forward-looking statements as a result of various factors and matters described in this Annual Report generally. In light of these risks and uncertainties, there can be no assurance that the forward-looking statements contained in this filing will in fact occur. In addition to the information expressly required to be included in this filing, we will provide such further material information, if any, as may be necessary to ensure that the required statements, in light of the circumstances under which they are made, are not misleading.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 131,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year 2018",
+     "",
+     "High Bid",
+     "",
+     "",
+     "Low Bid (1)",
+     ""
+    ],
+    [
+     "Fourth Quarter (10-01-2018 to 12-31-2018)",
+     "",
+     "$",
+     "0.0152",
+     "",
+     "$",
+     "0.0152"
+    ],
+    [
+     "Third Quarter (07-01-2018 to 09-30-2018)",
+     "",
+     "$",
+     "0.2750",
+     "",
+     "$",
+     "0.0152"
+    ],
+    [
+     "Second Quarter (04-01-2018 to 06-30-2018)",
+     "",
+     "$",
+     "0.0200",
+     "",
+     "$",
+     "0.0152"
+    ],
+    [
+     "First Quarter (01-01-2018 to 03-31-2018)",
+     "",
+     "$",
+     "0.0350",
+     "",
+     "$",
+     "0.0152"
+    ],
+    [
+     "Fiscal Year 2017",
+     "",
+     "High Bid",
+     "",
+     "",
+     "Low Bid (1)",
+     ""
+    ],
+    [
+     "Fourth Quarter (10-01-2017 to 12-31-2017)",
+     "",
+     "$",
+     "0.1400",
+     "",
+     "$",
+     "0.0200"
+    ],
+    [
+     "Third Quarter (07-01-2017 to 09-30-2017)",
+     "",
+     "$",
+     "0.2800",
+     "",
+     "$",
+     "0.0200"
+    ],
+    [
+     "Second Quarter (04-01-2017 to 06-30-2017)",
+     "",
+     "$",
+     "0.0300",
+     "",
+     "$",
+     "0.0200"
+    ],
+    [
+     "First Quarter (01-01-2017 to 03-31-2017)",
+     "",
+     "$",
+     "0.0300",
+     "",
+     "$",
+     "0.0200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 324,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nOur Class A Common Stock is currently traded on the Over-the-Counter Bulletin Board (OTCBB) under the symbol \"ICNN.\" Our Class B Common Stock is not registered under the Securities Exchange Act of 1934 and thus is not currently traded on any exchange or market.\nOnly a limited market exists for our securities. There is no assurance that a regular trading market will develop, or if developed, that it will be sustained. Therefore, a stockholder in all likelihood will be unable to resell his or her securities in the Company. Furthermore, it is unlikely that a lending institution will accept our securities as pledged collateral for loans unless a regular trading market develops.\nAs of April 15, 2019, the stock was trading at a market price of $0.0108 per share; however, the Company\u2019s Class A Common Stock is thinly traded with a limited market. The closing price of $0.0108 was from the last reported sale date of April 15, 2019.",
+   "prose_after": "(1) The quotations set out herein reflect inter-dealer prices without retail mark-up, markdown or commission and may not necessarily reflect actual transactions.\nShareholders\nAt April 15, 2019, we had 99 total shareholders of record of our common stock (99 shareholders of Class A Common Stock and one shareholder of Class B Common Stock), including shares held by brokerage clearing houses, depositories or otherwise unregistered form.\nWithin the holders of record of the Company's Class A Common Stock are depositories such as Cede & Co., a nominee for The Depository Trust Company (or DTC), that holds shares of stock for brokerage firms which, in turn, hold shares of stock for one or more beneficial owners. Accordingly, the Company believes there are many more beneficial owners of its Class A Common Stock whose shares are held in \"street name\", not in the name of the individual stockholder.\nDividend Policy\nHolders of Class A Common Stock and Class B Common Stock are entitled to receive dividends on an equal basis out of funds legally available when and as declared by our board of directors. Pursuant to Section 78.196 of the Nevada Revised Statutes, our board of directors may declare dividends that are cumulative, noncumulative, or partially cumulative. Our board of directors has never declared any dividends and does not anticipate declaring any dividends in the foreseeable future. Should we decide in the future to pay dividends, our ability to do so and meet other obligations may depend upon the receipt of dividends or other payments from any subsidiaries and other holdings and investments. In the event of our liquidation, dissolution or winding up, holders of Class A Common Stock and Class B Common Stock are entitled to receive, ratably in proportion to the amount held by them, the net assets available to stockholders after payment of all creditors.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "As of December 31, 2018",
+     "",
+     "As of December 31, 2017"
+    ],
+    [
+     "Current Assets",
+     "$",
+     "628",
+     "$",
+     "7,929"
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "796,489",
+     "",
+     "699,206"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Working Capital Deficiency",
+     "",
+     "(795,861)",
+     "",
+     "(691,277)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(7,311,685)",
+     "",
+     "(6,935,447)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 514,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation."
+    },
+    "note": null
+   },
+   "prose_before": "Other Income totaled $1,666 during 2017. During 2017, this amount was partially attributable to $202 in funding received from the USDA Biofuel Program and to a rebate from our insurance carrier. Each quarter, the Company submits a Payment Request (Form RD-4288) and supporting documents to the USDA delineating those gallons produced/sold. Along with the documentation, the Company informs the USDA regarding the type and quantity of feedstocks utilized. These payment requests are reviewed by an agent of the USDA and then submitted as part of the \u201cpool\u201d for funding. Biodiesel producers compete for whatever funding is available from the USDA\u2019s pool. Since it is difficult to predict the amount of funding that may be received, the Company only recognizes Other Income associated with the USDA Biofuel Program when the funds are received. The additional $1,464 of Other Income recognized during the 2017 was related to a refund from our insurance carrier.\nInterest Expense\nInterest expense was $70 during 2018.\nInterest expense was $368 during 2017.\nNet Loss\nThe Company had a net loss of ($376,238) during 2018.\nThe Company had a net loss of ($422,271) during 2017.\nLiquidity and Capital Resources\nWorking Capital",
+   "prose_after": "Cash Flows",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year ended\n\n\n\nDecember 31,\n\n\n\n2018",
+     "",
+     "Year ended\n\n\n\nDecember 31,\n\n\n\n2017"
+    ],
+    [
+     "Cash used in activities",
+     "$",
+     "(98,240)",
+     "$",
+     "(79,809)"
+    ],
+    [
+     "Cash provided by investing activities",
+     "",
+     "-",
+     "",
+     "14,271"
+    ],
+    [
+     "Cash provided by financing activities",
+     "",
+     "94,760",
+     "",
+     "57,558"
+    ],
+    [
+     "Net change in cash",
+     "",
+     "(3,480)",
+     "",
+     "(7,980)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation."
+    },
+    "note": null
+   },
+   "prose_before": "Cash Flows",
+   "prose_after": "As of December 31, 2018, our current assets totaling $628 consisted of accounts receivable and other current assets. Our accounts payable and accrued liabilities and current portion of amounts due to related parties and third parties were $796,489 as of December 31, 2018. As a result we had a working capital deficiency of $795,861 at December 31, 2018.\nCurrent assets for the Company totaled $7,929 as of December 31, 2017. Current liabilities for the Company totaled $699,206 as of December 31, 2017. As a result the Company had a working capital deficiency of $691,277 at December 31, 2017.\nThrough December 31, 2018, the Company has funded its operations through the issuance of 33,774,332 shares (31,774,332 shares of Class A stock and 1,980,000 shares of Class B stock), loans from the former director, loans from related parties, and loans from third parties.\nTo date, our cash flow requirements have been primarily met by equity financings and from operating the Company's biodiesel production facility in Lenoir, NC. Management expects to keep operational costs to a minimum until cash is available through financing or operating activities. Management plans to continue to seek other sources of financing on favorable terms; however, there are no assurances that any such financing can be obtained on favorable terms, if at all. Our auditors have issued a going concern opinion on the Company\u2019s financial statements for the year ended December 31, 2018.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "December 31,\n\n\n\n2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "-",
+     "$",
+     "3,480"
+    ],
+    [
+     "  Accounts receivable, trade, net",
+     "",
+     "228",
+     "",
+     "228"
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "-",
+     "",
+     "3,821"
+    ],
+    [
+     "  Other current assets",
+     "",
+     "400",
+     "",
+     "400"
+    ],
+    [
+     "    Total current assets",
+     "",
+     "628",
+     "",
+     "7,929"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "-",
+     "",
+     "271,654"
+    ],
+    [
+     "Total assets",
+     "$",
+     "628",
+     "$",
+     "279,583"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "193,066",
+     "$",
+     "196,883"
+    ],
+    [
+     "  Short-term debt",
+     "",
+     "-",
+     "",
+     "1,690"
+    ],
+    [
+     "  Accrued liabilities",
+     "",
+     "88,205",
+     "",
+     "81,865"
+    ],
+    [
+     "  Accounts payable \u2013 related party",
+     "",
+     "274,916",
+     "",
+     "274,916"
+    ],
+    [
+     "  Related party debt \u2013 short-term",
+     "",
+     "240,302",
+     "",
+     "143,852"
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "796,489",
+     "",
+     "699,206"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total Liabilities",
+     "",
+     "796,489",
+     "",
+     "699,206"
+    ],
+    [
+     "Capital stock $0.001 par value; 200,000,000 shares authorized",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A \u2013 31,774,332 shares issued and outstanding, respectively",
+     "",
+     "31,774",
+     "",
+     "31,774"
+    ],
+    [
+     "Convertible Class B \u2013 1,980,000 shares issued and outstanding",
+     "",
+     "1,980",
+     "",
+     "1,980"
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "6,482,070",
+     "",
+     "6,482,070"
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(7,311,685)",
+     "",
+     "(6,935,447)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total Stockholders\u2019 Deficit",
+     "",
+     "(795,861)",
+     "",
+     "(419,623)"
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficit",
+     "$",
+     "628",
+     "$",
+     "279,583"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 628,
+    "end_line": 670
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ MaloneBailey, LLP\nwww.malonebailey.com\nWe have served as the Company's auditor since 2010.\nHouston, Texas\nApril 16, 2019\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year ended\n\n\n\nDecember 31, 2018",
+     "",
+     "Year ended\n\n\n\nDecember 31, 2017"
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "$",
+     "6,380"
+    ],
+    [
+     "  Revenue from related parties",
+     "",
+     "-",
+     "",
+     "64,655"
+    ],
+    [
+     "    Total revenue",
+     "",
+     "-",
+     "",
+     "71,035"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "32,591",
+     "",
+     "142,998"
+    ],
+    [
+     "  Depreciation",
+     "",
+     "24,492",
+     "",
+     "64,083"
+    ],
+    [
+     "    Gross loss",
+     "",
+     "(57,083)",
+     "",
+     "(136,046)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "",
+     "72,392",
+     "",
+     "87,692"
+    ],
+    [
+     "Loss on impairment of property and equipment",
+     "",
+     "247,162",
+     "",
+     "199,831"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(376,637)",
+     "",
+     "(423,569)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other income",
+     "",
+     "469",
+     "",
+     "1,666"
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(70)",
+     "",
+     "(368)"
+    ],
+    [
+     "    Total other income",
+     "",
+     "399",
+     "",
+     "1,298"
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(376,238)",
+     "$",
+     "(422,271)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per Class A Common Share (Basic and Diluted)",
+     "",
+     "(0.01)",
+     "",
+     "(0.01)"
+    ],
+    [
+     "Net Loss per Class B Common Share (Basic and Diluted)",
+     "",
+     "(0.19)",
+     "",
+     "(0.21)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Class A Common Shares Outstanding (Basic and Diluted)",
+     "",
+     "31,774,332",
+     "",
+     "31,774,332"
+    ],
+    [
+     "Weighted Average Number of Class B Common Shares Outstanding (Basic and Diluted)",
+     "",
+     "1,980,000",
+     "",
+     "1,980,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 678,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 674,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended\n\n\n\nDecember 31, 2018",
+     "",
+     "Year Ended\n\n\n\nDecember 31, 2017"
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(376,238)",
+     "$",
+     "(422,271)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss on impairment of fixed assets",
+     "",
+     "247,162",
+     "",
+     "199,831"
+    ],
+    [
+     "  Write off of inventory",
+     "",
+     "-",
+     "",
+     "10,761"
+    ],
+    [
+     "  Depreciation",
+     "",
+     "24,492",
+     "",
+     "64,083"
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "-",
+     "",
+     "11,818"
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "3,821",
+     "",
+     "9,480"
+    ],
+    [
+     "  Inventory",
+     "",
+     "-",
+     "",
+     "15,049"
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(3,817)",
+     "",
+     "5,807"
+    ],
+    [
+     "  Accounts payable \u2013 related party",
+     "",
+     "-",
+     "",
+     "13,245"
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "6,340",
+     "",
+     "12,388"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(98,240)",
+     "",
+     "(79,809)"
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from sale of equipment",
+     "",
+     "-",
+     "",
+     "14,271"
+    ],
+    [
+     "Net cash provided by (used) in investing activities",
+     "",
+     "-",
+     "",
+     "14,271"
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from loan from employee",
+     "",
+     "-",
+     "",
+     "5,072"
+    ],
+    [
+     "  Payments on loan from employee",
+     "",
+     "-",
+     "",
+     "(5,072)"
+    ],
+    [
+     "  Proceeds from related party debt",
+     "",
+     "96,450",
+     "",
+     "66,494"
+    ],
+    [
+     "  Payments on short-term debt",
+     "",
+     "(1,690)",
+     "",
+     "(8,936)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "94,760",
+     "",
+     "57,558"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash for the period",
+     "",
+     "(3,480)",
+     "",
+     "(7,980)"
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "3,480",
+     "",
+     "11,460"
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "-",
+     "$",
+     "3,480"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "70",
+     "$",
+     "368"
+    ],
+    [
+     "Cash paid for income taxes",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable-related party converted to notes payable-related party",
+     "",
+     "-",
+     "",
+     "77,358"
+    ],
+    [
+     "Prepaid insurance financed with notes payable",
+     "",
+     "-",
+     "",
+     "8,450"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFor the Years Ended December 31, 2018 and 2017",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 770,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A Shares",
+     "Par",
+     "Class B Shares",
+     "Par",
+     "Additional Paid-In Capital",
+     "Accumulated Deficit",
+     "Total\n\n\n\nEquity"
+    ],
+    [
+     "Balances, December 31, 2016",
+     "31,774,332",
+     "$ 31,774",
+     "1,980,000",
+     "$ 1,980",
+     "$ 6,482,070",
+     "$ (6,513,176)",
+     "$ 2,648"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(422,271)",
+     "(422,271)"
+    ],
+    [
+     "Balances, December 31, 2017",
+     "31,774,332",
+     "$ 31,774",
+     "1,980,000",
+     "$ 1,980",
+     "$ 6,482,070",
+     "$ (6,935,447)",
+     "$ (419,623)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(376,238)",
+     "(376,238)"
+    ],
+    [
+     "Balances, December 31, 2018",
+     "31,774,332",
+     "$ 31,774",
+     "1,980,000",
+     "$ 1,980",
+     "$ 6,482,070",
+     "$ (7,311,685)",
+     "$ (795,861)"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 778,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFor the Years Ended December 31, 2018 and 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNote 1Nature and Continuance of Operations\nOrganization\nOn December 22, 2006, Incoming, Inc. (\u201cwe\u201d or the \u201cCompany\u201d) was incorporated in Nevada. Through our wholly-owned subsidiary North American Bio-Energies LLC (\u201cNABE\u201d), we operate in the alternative energy industry in the development and acquisition of commercial grade biodiesel facilities and the distribution and marketing of petroleum and biofuel products. In addition to operating as NABE, our subsidiary also does business as Foothills Bio-Energies, LLC (\u201cFoothills\u201d).\nGoing Concern\nThe consolidated financial statements presented in this document have been prepared on a going-concern basis. As of December 31, 2018, the Company has a working capital deficit of $795,861 and has an accumulated deficit of $7,311,685. Its ability to continue as a going concern is dependent upon the ability of the Company to generate profitable operations in the future and/or to obtain the necessary financing to meet its obligations and repay liabilities arising from normal business operations when they come due. The outcome of these matters cannot be predicted with any certainty at this time. These factors raise substantial doubt that the Company will be able to continue as a going concern. The Company to date has funded its initial operations through the issuance of capital stock and common stock options, loans from related parties, and revenue generated in the normal course of business. Management plans to continue to provide for the Company\u2019s capital needs by the issuance of common stock and related party loans. These financial statements do not include any adjustments to the amounts and classification of assets and liabilities that may be necessary should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "2017"
+    ],
+    [
+     "Plant and equipment (1-20 years)",
+     "$ -",
+     "",
+     "$ 456,100"
+    ],
+    [
+     "",
+     "-",
+     "",
+     "456,100"
+    ],
+    [
+     "Less: accumulated depreciation",
+     "-",
+     "",
+     "(184,446)"
+    ],
+    [
+     "Total",
+     "$ -",
+     "",
+     "$ 271,654"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 917
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "Inventory is reviewed periodically for slow-moving and obsolete items. The Company wrote off its inventory balance of $10,761 as of December 31, 2017 and did not engage in any inventory transactions during 2018. The 2017 write-off to cost of goods sold was deemed appropriate as all inventory items were associated with biodiesel production.\nNote 4Property and Equipment, Net\nLong-lived assets, including property and equipment, are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount may not be recoverable. The evaluation of recoverability is performed using undiscounted estimated net cash flows generated by the related asset. If an asset is deemed to be impaired, the amount of impairment is determined as the amount by which the net carrying value exceeds discounted estimated net cash flows. As a result of the analysis, the Company determined it necessary to record an impairment loss of $247,162 and $199,831 on property and equipment during 2018 and 2017, respectively. As a result, the book value of all property and equipment was written down to zero as of December 31, 2018.\nProperty and equipment consisted of the following as of December 31, 2018 and 2017:",
+   "prose_after": "Depreciation expense totaled $24,492 and $64,083 for the years ended 2018 and 2017, respectively. The 2018 depreciation expense of $24,492 was recognized prior to the determination to impair the remaining book value of property and equipment.\nThe Company also wrote off fully depreciated assets with a total cost of $80,893 in 2017.\nNote 5 Third Party Notes Payable\nThe Company had no third party borrowings during 2018 and did not finance operations that would have resulted in third party notes payable.\nNABE entered into a term note totaling $8,450 in April 2017 that matured in February 2018. The note was to finance the Company\u2019s insurance premiums and was payable in ten monthly principal and interest installments of $880. Interest was payable at a rate of $35 per month. During 2017, payments on the short-term debt totaled $8,936. The balance outstanding at December 31, 2017 was $1,690. There was no collateral required for the note. The note, and all interest, was fully paid in February 2018.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "2017"
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net operating losses",
+     "$ 537,000",
+     "",
+     "$ 458,000"
+    ],
+    [
+     "  Less: valuation allowance",
+     "(537,000)",
+     "",
+     "(458,000)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$ -",
+     "",
+     "$ -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "During 2018 and 2017, the Company consummated no equity transactions.\nNote 8Income Taxes\nThe Company uses the liability method, where deferred tax assets and liabilities are determined based on the expected future tax consequences of temporary differences between the carrying amounts of assets and liabilities for financial and income tax reporting purposes. The Company is current on all of its corporate tax filings. Tax year 2018 is currently under extension and we expect to file the returns by the due date. The Company has no open tax years.\nDue to the enactment of the Tax Reform Act of 2017, the corporate tax rate for those tax years beginning with 2018 has been reduced to 21%. The net deferred tax asset generated by the loss carry-forward has been fully reserved. The cumulative net operating loss carry-forward is approximately $2,557,000 and $2,180,000 at December 31, 2018 and 2017 and will expire beginning in 2028.\nAt December 31, 2018 and 2017, deferred tax assets consisted of the following:",
+   "prose_after": "Note 9Major Customers and Vendors\nThere were no sales during 2018. As a result of not producing biodiesel or re-selling kerosene during 2018, there were no purchases from materials vendors.\nDuring 2017, one related party customer accounted for 91% of total revenue. During 2017, there was a single third party vendor who accounted for 71% of direct material costs while one related party vendor accounted for 29% of direct material costs.\nNote 10Contingencies\nThe Company may be subject to various legal proceedings and claims that arise in the ordinary course of business. The Company records a liability when it is probable that a loss has been incurred and the amount is reasonably estimable. There is significant judgment required in both the probability determination and as to whether an exposure can be reasonably estimated. If any legal matter, that may arise, were resolved against the Company in a reporting period for amounts in excess of management\u2019s expectations, the Company\u2019s would reflect any potential claim in the consolidated financial statements for that reporting period.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "R. Samuel Bell, Jr.",
+     "63",
+     "CEO, Chairman"
+    ],
+    [
+     "William D. Curtis",
+     "62",
+     "Director"
+    ],
+    [
+     "Frank A. Gay",
+     "57",
+     "Director"
+    ],
+    [
+     "James Gay",
+     "58",
+     "Director"
+    ],
+    [
+     "David Mixson",
+     "58",
+     "Director"
+    ],
+    [
+     "Eric S. Norris",
+     "50",
+     "Treasurer, Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1022,
+    "end_line": 1031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "There were no changes in the Company\u2019s internal control over financial reporting identified in connection with the evaluation of such internal control that occurred during the Company\u2019s last fiscal quarter that have materially affected, or are reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nWe believe that a controls system, no matter how well designed and operated, cannot provide absoluter assurance that the objectives of the controls system are met, and no evaluation of controls can provide absolute assurance that all control issues and instances of fraud, if any, within a company have been detected.\nItem 9B. Other Information\nAt this time the Company has no other information to disclose.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth our directors and executive officers, their ages and all offices and positions with our company. Other employees will serve at the will of the Board of Directors:",
+   "prose_after": "The directors will serve as directors until our next annual shareholder meeting or until a successor is elected who accepts the position. Directors are elected for one-year terms. Officers hold their positions at the will of the Board of Directors, absent any employment agreement. There are no arrangements, agreements or understandings between non-management shareholders and management under which non-management shareholders may directly or indirectly participate in or influence the management of the Company\u2019s affairs.\nInvolvement in Certain Material Legal Proceedings During the Last Ten Years\nTo the best of our knowledge, none of our directors or executive officers, during the past ten years, has been convicted in a criminal proceeding, excluding traffic violations or similar misdemeanors, or has been a party to any judicial or administrative proceeding during the past ten years that has resulted in a judgment, decree or final order enjoining the person from future violations of, or prohibiting activities subject to, federal or state securities laws, or a finding of any violation of federal or state securities laws, except for matters that were dismissed without sanction or settlement. Except as set forth in our discussion below in \u201cCertain Relationships and Related Transactions, and Director Independence,\u201d none of our directors, director nominees or executive officers has been involved in any transactions with us or any of our directors, executive officers, affiliates or associates which are required to be disclosed pursuant to SEC rules or regulations.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position\n\n\n\n(a)",
+     "Year\n\n\n\n(b)",
+     "Salary ($)\n\n\n\n(c)",
+     "Bonus ($)\n\n\n\n(d)",
+     "Stock Awards ($)\n\n\n\n(e)",
+     "Option Awards ($)\n\n\n\n(f)",
+     "Non-Equity Incentive Plan Compensation ($)\n\n\n\n(g)",
+     "Nonqualified Deferred Compensation Earnings\n\n\n\n($)\n\n\n\n(h)",
+     "All Other Compensation ($)\n\n\n\n(i)",
+     "Total\n\n\n\n($)\n\n\n\n(j)"
+    ],
+    [
+     "R. Samuel Bell, Jr., Chief Executive Officer and Chairman",
+     "2017",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2018",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "Eric S. Norris, Treasurer and Director",
+     "2017",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2018",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "Currently, we have no independent audit committee nor have we adopted an audit committee charter. In lieu of an audit committee, our full Board of Directors assumes the responsibilities that would normally be those of an audit committee. None of our directors or officers has the qualifications or experience to be considered an audit committee financial expert. We believe the cost related to retaining an audit committee financial expert at this time is prohibitive. Further, given our limited operations to date, we believe the services of an audit committee financial expert are not warranted.\nItem 11. Executive Compensation\nThe following table sets forth information concerning all cash and non-cash compensation awarded to, earned by or paid to the named persons for services rendered in all capacities during the noted periods. No executive officer received total annual salary, bonus compensation, stock awards, option awards, non-equity incentive plan compensation, or non-qualified deferred compensation earnings in excess of $100,000.",
+   "prose_after": "__________________________________\nEmployment Agreements\nWe currently do not have employment agreements with any of our directors or executive officers.\nOutstanding Equity Awards at Fiscal Year End\nFor the fiscal year ended December 31, 2018, no director or executive officer has received compensation from us pursuant to any compensatory or benefit plan and there is no plan or understanding, express or implied, to pay any compensation to any director or executive officer pursuant to any compensatory or benefit plan. We anticipate that we will compensate our officers and directors in the future for services to us with stock or options to purchase common stock, in lieu of cash.\nCompensation of Directors\nNo member of our board of directors received any compensation for their services as a director during the years ended December 31, 2018 and 2017 and currently no compensation arrangements are in place for the compensation of directors.\nCompensation Committee\nIn August of 2014, the Board of Directors formed a Compensation Committee. The committee\u2019s purpose is to determine appropriate pay programs that serve the Company\u2019s best interests and are aligned with our business strategy. Eric S. Norris and W. Dennis Curtis, Jr. were appointed to serve on the committee having been determined to meet the necessary requirements.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Office, If\n\n\n\nAny",
+     "Title of Class",
+     "Amount and Nature of Beneficial Ownership",
+     "Percent of Class A Common Stock",
+     "Percent of Class\n\n\n\nB Common\n\n\n\nStock"
+    ],
+    [
+     "",
+     "",
+     "Officers & directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "R. Samuel Bell, Jr.\n\n\n\nc/o Incoming Inc\n\n\n\n244 5th Ave Ste V235\n\n\n\nNew York, NY 10001",
+     "CEO, Chairman of the Board",
+     "Class A Common Stock/\n\n\n\nClass B Common Stock(1)",
+     "7,700,000/\n\n\n\n1,980,000",
+     "24.2%",
+     "100%"
+    ],
+    [
+     "W. Dennis Curtis, Sr.\n\n\n\nc/o Incoming Inc\n\n\n\n244 5th Ave Ste V235\n\n\n\nNew York, NY 10001",
+     "Director",
+     "Class A Common Stock",
+     "125,000",
+     "0.4%",
+     "--"
+    ],
+    [
+     "Frank Aaron Gay\n\n\n\nc/o Incoming Inc\n\n\n\n244 5th Ave Ste V235\n\n\n\nNew York, NY 10001",
+     "Director",
+     "Class A Common Stock",
+     "2,000,000",
+     "6.3%",
+     "--"
+    ],
+    [
+     "David Mixson\n\n\n\nc/o Incoming Inc\n\n\n\n244 5th Ave Ste V235\n\n\n\nNew York, NY 10001",
+     "Director",
+     "Class A Common Stock",
+     "250,000",
+     "0.8%",
+     "--"
+    ],
+    [
+     "Eric S. Norris\n\n\n\nc/o Incoming Inc\n\n\n\n244 5th Ave Ste V235\n\n\n\nNew York, NY 10001",
+     "Treasurer, Director",
+     "Class A Common Stock",
+     "1,500,000",
+     "4.7%",
+     "--"
+    ],
+    [
+     "All officers and directors as a group (5 total)",
+     "",
+     "Class A Common Stock/\n\n\n\nClass B Common Stock(1)",
+     "11,575,000/\n\n\n\n1,980,000",
+     "36.5%",
+     "100%"
+    ],
+    [
+     "",
+     "",
+     "5% Beneficial Owners",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aaron West\n\n\n\n1635 N Cahuenga Blvd.\n\n\n\nLos Angeles, CA 90028",
+     "",
+     "Class A Common Stock",
+     "3,000,000",
+     "9.4%",
+     "--"
+    ],
+    [
+     "Steve Gilcrease\n\n\n\n3103 Pluto Street\n\n\n\nDallas, TX 75212",
+     "",
+     "Class A Common Stock",
+     "2,750,000",
+     "8.7%",
+     "--"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1091,
+    "end_line": 1154
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "The following table sets forth information with respect to the beneficial ownership of the Company\u2019s outstanding common stock by: (i) each person who is known by the Company to be the beneficial owner of five percent (5%) or more of the Company\u2019s common stock; (ii) the Company\u2019s chief executive officer, its other executive officers, and each director; and (iii) all of the Company\u2019s directors and officers as a group. Unless otherwise specified, the address of each of the persons set forth below is in care of the Company, 244 Fifth Avenue, Suite V235, New York, New York 10001. Except as indicated in the footnotes to this table and subject to applicable community property laws, the persons named in the table to our knowledge have sole voting and investment power with respect to all shares of common stock shown as beneficially owned by them. The information in this table is as of March 1, 2019 based upon: (i) 31,774,332 shares of Class A Common Stock outstanding; and (ii) 1,980,000 shares of Class B Common Stock outstanding. Information relating to beneficial ownership of common stock by our principal stockholders and management is based upon information furnished by each person using \u201cbeneficial ownership\u201d concepts under the rules of the Commission. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the Commission rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power.",
+   "prose_after": "_________________________\n(1) In accordance with the terms of the Exchange Transaction, the holder of Class B Common Stock is entitled to two votes per share on all matters and votes with holders of Class A Common Stock together on all matters as one class.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nCertain Relationships and Related Transactions\nThe following includes a summary of transactions since the beginning of the 2018 fiscal year of the Company, or any currently proposed transaction, in which we were or are to be a participant and the amount involved exceeded or exceeds the lesser of $120,000 or one percent of the average of our total assets at year end for the last two completed fiscal years, and in which any related person had or will have a direct or indirect material interest (other than compensation described under \u201cExecutive Compensation\u201d). We believe the terms obtained or consideration that we paid or received, as applicable, in connection with the transactions described below were comparable to terms available or the amounts that would be paid or received, as applicable, in an arm\u2019s length transaction.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "2017"
+    ],
+    [
+     "Audit Fees",
+     "",
+     "",
+     "",
+     "33,500",
+     "",
+     "33,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax Fees",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "",
+     "",
+     "$ 33,500",
+     "",
+     "$ 33,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1180,
+    "end_line": 1193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "Except for the foregoing, neither our directors and officers, nor any proposed nominee for election as a director, nor any person who beneficially owns, directly or indirectly, shares carrying more than 10% of the voting rights attached to all of our outstanding shares, nor any promoter, nor any relative or spouse of any of the foregoing persons has any material interest, direct or indirect, in any transaction since our incorporation or in any presently proposed transaction which, in either case, has or will materially affect us.\nOur management is involved in other business activities and may, in the future become involved in other business opportunities. If a specific business opportunity becomes available, such persons may face a conflict in selecting between our business and their other business interests. In the event that a conflict of interest arises at a meeting of our directors, a director who has such a conflict will disclose his interest in a proposed transaction and will abstain from voting for or against the approval of such transaction.\nDirector Independence\nWe currently do not have any independent directors as the term \u201cindependent\u201d is defined by the rules of the Nasdaq Stock Market.\nItem 14. Principal Accountant Fees and Services\nThe following table shows the audit and tax fees that were billed or are expected to be billed for fiscal years 2018 and 2017:",
+   "prose_after": "Audit fees consist of the aggregate fees billed for services rendered for the audit of our annual financial statements, the reviews of the financial statements included in our Forms 10-Q and for any other services that are normally provided by our independent auditors in connection with our statutory and regulatory filings or engagements.\nAudit related fees consist of the aggregate fees billed for professional services rendered for assurance and related services that reasonably related to the performance of the audit or review of our financial statements that were not otherwise included in Audit Fees.\nTax fees consist of the aggregate fees billed for professional services rendered for tax compliance, tax advice and tax planning. These services include assistance regarding federal, state and local tax compliance and consultation in connection with various transactions and acquisitions.\nAll other fees consist of the aggregate fees billed for products and services provided by our independent auditors and not otherwise included in Audit Fees, Audit Related fees or Tax Fees.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1)",
+     "3.1",
+     "Articles of Incorporation, as amended"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1)",
+     "3.2",
+     "Bylaws of Incoming, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "3.3",
+     "Certificate of Amendment to the Articles of Incorporation, as filed with the Nevada Secretary of State on August 19, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "3.4",
+     "Form of Certificate of Amendment to the Articles of Incorporation to be effective March 17, 2011"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(3)",
+     "4.1",
+     "Promissory Note issued by Incoming, Inc. to Christian Fauria, dated November 25, 2009, as amended by that certain extension of promissory note dated January 14, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(4)",
+     "4.2",
+     "Note Modification Agreement by and between North American Bio-Energies, LLC and Branch Banking and Trust Company dated April 27, 2010."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(4)",
+     "4.3",
+     "Note Modification Agreement by and between North American Bio-Energies, LLC and Branch Banking and Trust Company dated April 27, 2010."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "10.1",
+     "Second Amended and Restated Exchange Agreement by and among Incoming, Inc., North American Bio-Energies, LLC and the members of North\n\n\n\nAmerican Bio-Energies, LLC, dated August 18, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "10.2",
+     "Exchange Agreement by and among Incoming, Inc., North American Bio-Energies, LLC and the members of North American Bio-Energies, LLC, dated\n\n\n\nJune 18, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(5)",
+     "10.3",
+     "Exchange Agreement by and among Incoming, Inc., North American Bio-Energies, LLC and the members of North American Bio-Energies, LLC, dated June 18, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "10.4",
+     "Loan Agreement by and between Incoming, Inc. and Ephren Taylor II, dated October 1, 2009"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "10.5",
+     "Loan Agreement by and between Incoming, Inc. and City Capital Corporation, dated November 6, 2009"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "10.6",
+     "Loan Agreement by and between Incoming, Inc. and Resilient Innovations, LLC, dated April 14, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(4)",
+     "10.7",
+     "Lease Agreement by and between North American Bio-Energies, LLC and Neptune, Inc. dated April 1, 2007."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1207,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "Audit fees consist of the aggregate fees billed for services rendered for the audit of our annual financial statements, the reviews of the financial statements included in our Forms 10-Q and for any other services that are normally provided by our independent auditors in connection with our statutory and regulatory filings or engagements.\nAudit related fees consist of the aggregate fees billed for professional services rendered for assurance and related services that reasonably related to the performance of the audit or review of our financial statements that were not otherwise included in Audit Fees.\nTax fees consist of the aggregate fees billed for professional services rendered for tax compliance, tax advice and tax planning. These services include assistance regarding federal, state and local tax compliance and consultation in connection with various transactions and acquisitions.\nAll other fees consist of the aggregate fees billed for products and services provided by our independent auditors and not otherwise included in Audit Fees, Audit Related fees or Tax Fees.\nPART IV\nItem 15. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*",
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "32.2",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1275,
+    "end_line": 1291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\n(1) Incorporated by reference to the Company's Registration Statement on Form S-1 filed on June 30, 2008.\n(2) Incorporated by reference to the Company's Current Report on Form 8-K filed on August 24, 2010.\n(3) Incorporated by reference to Amendment No. 1 to the Company's Current Report on Form 8-K filed on September 9, 2010.\n(4) Incorporated by reference to Amendment No. 2 to the Company's Current Report on Form 8-K filed on November 19, 2010.\n(5) Incorporated by reference to the Company's Current Report on Form 8-K filed on February 16, 2010.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized.\nBy:/s/ R. Samuel Bell, Jr.\nR. Samuel Bell, Jr.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1303,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/  R. Samuel Bell, Jr.\n\n\n\nR. Samuel Bell, Jr.",
+     "CEO and Chairman, Board of Directors\n\n\n\n(Principal Executive Officer)",
+     "April 16, 2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/  Eric Norris\n\n\n\nEric Norris",
+     "Vice President of Finance, Director\n\n\n\n(Principal Financial Officer)",
+     "April 16, 2019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1321,
+    "end_line": 1335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Third Party Notes Payable"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Annual Report on Form 10-K has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated. Each of the undersigned, being a director or officer of Incoming, Inc. (the \u201cCompany\u201d), hereby constitutes and appoints R Samuel Bell and Eric Norris, and each of them (with full power to each of them to act alone), his or her true and lawful attorney-in-fact and agent for him or her and in his or her name, place and stead in any and all capacities, to sign the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2018 under the Securities Exchange Act of 1934, as amended, and any and all amendments thereto, and to file the same with all exhibits thereto and other documents in connection therewith with the Securities and Exchange Commission and any other appropriate authority, granting unto such attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing required and necessary to be done in and about the premises in order to effectuate the same as fully to all intents and purposes as he or she might or could do if personally present, hereby ratifying and confirming all that such attorneys-in-fact and agents, or any of them, may lawfully do or cause to be done by virtue hereof.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1309,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4968 @@
+{
+ "accession": "0001213900-26-029357",
+ "cik": "0001844417",
+ "form": "10-K",
+ "filing_date": "2026-03-18",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0276230-10k_estrella.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-1314502"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5858 Horton Street, Suite 370\n\n\n\nEmeryville, California",
+     "94608"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM TO\nCommission File Number 001-40608\nESTRELLA IMMUNOPHARMA, INC.\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (510) 318-9098\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.0001 per share",
+     "ESLA",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Warrants, each warrant exercisable for one share of Common Stock, each at an exercise price of $11.50 per share",
+     "ESLAW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (510) 318-9098\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant:\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "27"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "86"
+    ],
+    [
+     "Item 1C. Cybersecurity",
+     "86"
+    ],
+    [
+     "Item 2. Properties",
+     "87"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "87"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "87"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "88"
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "88"
+    ],
+    [
+     "Item 6. [Reserved]",
+     "88"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "89"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "93"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "94"
+    ],
+    [
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "94"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "94"
+    ],
+    [
+     "Item 9B. Other Information",
+     "95"
+    ],
+    [
+     "Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "95"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "96"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "96"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "96"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "96"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "96"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "96"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "97"
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "97"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "101"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 119
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the Registrant, based on the closing price of $1.25 per share of the Registrant\u2019s common stock on the Nasdaq Stock Market LLC on March 12, 2026, was $20,496,203.\nThe number of Registrant\u2019s shares of common stock outstanding as of March 12, 2026 was 42,665,228.\nDocuments incorporated by reference\nPortions of the registrant\u2019s Proxy Statement for the 2026 Annual Meeting of Stockholders are incorporated herein by reference in Part III of this Annual Report on Form 10-K to the extent stated herein. Such proxy statement will be filed with the Securities and Exchange Commission within 120 days of the registrant\u2019s fiscal year ended December 31, 2025.\nTABLE OF CONTENTS",
+   "prose_after": "Estrella MARKET AND INDUSTRY DATA\nThis Annual Report includes estimates regarding market and industry data and forecasts, which are based on our own estimates utilizing our management\u2019s knowledge of and experience in, as well as information obtained from our subscribers, trade and business organizations, and other contacts in the market sectors in which we compete, and from statistical information obtained from publicly available information, industry publications and surveys, reports from government agencies, and reports by market research firms. We confirm that, where such information is reproduced herein, such information has been accurately reproduced and that, so far as we are aware and are able to ascertain from information published by publicly available sources and other publications, no facts have been omitted that would render the reproduced information inaccurate or misleading. Industry publications, reports, and other published data generally state that the information contained therein has been obtained from sources believed to be reliable, but we cannot assure you that the information contained in these reports, and therefore the information contained in this Annual Report that is derived therefrom, is accurate or complete. Our estimates of our market position may prove to be inaccurate because of the method by which we obtain some of the data for our estimates or because this information cannot always be verified with complete certainty due to the limits on the availability and reliability of raw data, the voluntary nature of the data gathering process, and other limitations and uncertainties. As a result, although we believe our sources are reliable, we have not independently verified the information and cannot guarantee its accuracy and completeness.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "COMPANY",
+     "BRAND NAME",
+     "YEAR FIRST APPROVED",
+     "DISEASE(S)",
+     "LOCATIONS APPROVED"
+    ],
+    [
+     "Novartis",
+     "Kymriah",
+     "2017",
+     "Pediatric/Young Adult B-ALL; R/R DLBCL; R/R Follicular Lymphoma",
+     "US, EU, UK"
+    ],
+    [
+     "Kite Pharma (Gilead)",
+     "Yescarta",
+     "2017",
+     "R/R Large B-cell Lymphoma; R/R Follicular Lymphoma; R/R Primary CNS Lymphoma",
+     "US, EU, UK"
+    ],
+    [
+     "Kite Pharma (Gilead)",
+     "Tecartus",
+     "2020",
+     "R/R Mantle Cell Lymphoma (MCL); Adult B-ALL",
+     "US, EU, UK"
+    ],
+    [
+     "Juno (Bristol Myers Squibb)",
+     "Breyanzi",
+     "2021",
+     "R/R LBCL; CLL/SLL; Follicular Lymphoma; Mantle Cell Lymphoma; Marginal Zone Lymphoma",
+     "US, EU, UK"
+    ],
+    [
+     "Autolus",
+     "Aucatzyl",
+     "2024",
+     "Adult Relapsed/Refractory B-cell precursor Acute Lymphoblastic Leukemia (ALL)",
+     "US, EU, UK"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "The biotechnology and pharmaceutical industries are characterized by rapid, unpredictable technological advancement and significant competition. These industries dedicate significant resources to developing novel and proprietary therapies for the treatment of cancer, which often incorporate innovative technologies and incorporate valuable intellectual property. We compete with companies in the cell therapy and immunotherapy space, as well as with companies developing other novel targeted therapies for cancer. If approved, our product candidates will compete with commercially available and development-stage innovative products in the fields of cell and immunotherapy, as well as against existing products generally accepted as the standard-of-care for indications in which we plan to seek marketing approval. We anticipate that we will face intense and increasing competition from many different sources, including new and established biotechnology and pharmaceutical companies, academic research institutions, governmental agencies, and public and private research institutions.\nOur product candidates cover both hematological malignancies and solid tumors, and we expect to face direct competition in both areas from companies focused on CAR-T and other cell-based therapies. There are currently ten total FDA-approved drugs or therapies targeting CD19, five of which are CD19-targeting T-cell therapies:",
+   "prose_after": "Our competitors operating in the T-cell therapy space include, but are not limited to:\n\u25cf Novartis (Product: Kymriah)\n\u25cf Kite Pharma, Inc. (Products: Yescarta, Tecartus, KITE-753 and KITE-363)\n\u25cf Juno Therapeutics Inc. (Bristol Myers Squibb) (Product: Breyanzi)\n\u25cf JW Therapeutics (Product: Carteyva/Relma-cel)\n\u25cf Allogene Therapeutics (Product: Cema-cel)\n\u25cf Mustang Bio (Product: MB-106)\n\u25cf Poseida Therapeutics (Product Candidates: P-MUC1C-ALLO1, and P-CD19CD20-ALLO1)\n\u25cf Autolus Therapeutics PLC (Product Candidates: obe-cel and Auto1/22)\nOur competitors pursuing CD19 targeted drugs outside of the T-cell therapy space include, but are not limited to:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights (a)",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights (b)",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a)) (c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "3,600,000",
+     "$",
+     "0.815",
+     "3,781,860"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "None",
+     "",
+     "\u2014",
+     "None"
+    ],
+    [
+     "Total",
+     "3,600,000",
+     "$",
+     "0.815",
+     "3,781,860"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2034,
+    "end_line": 2045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2025, there were 19 registered holders of record of our Common Stock and one holder of record of our warrants. The single record holder for our warrants is Cede & Co., a nominee for The Depository Trust Company, which holds all of our outstanding warrants in \u201cstreet name\u201d. These figures do not include the number of beneficial owners whose shares or warrants are held in \u201cstreet name\u201d through banks or broker-dealers.\nDividends\nWe have not paid any cash dividends to date. The payment of cash dividends in the future will be dependent upon our revenues and earnings, if any, capital requirements and general financial condition. The payment of any cash dividends will be within the discretion of the Board at such time.\nUnregistered Sales of Equity Securities\nAll sales of unregistered securities during the fiscal year ended December 31, 2025, were previously disclosed in our quarterly reports on Form 10-Q or current reports on Form 8-K, as applicable.\nIssuer Purchases of Common Stock\nNone.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nEquity Compensation Plan Information",
+   "prose_after": "Item 6. [Reserved]\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThe following discussion and analysis of our results of operations and financial condition should be read together with our audited consolidated financial statements and the notes thereto, which are included elsewhere in this report. Certain information contained in the discussion and analysis set forth below includes forward-looking statements that involve risks and uncertainties. Our consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d).\nOverview\nWe are a clinical-stage biopharmaceutical company developing T-cell therapies with the capacity to address treatment challenges for patients with blood cancers and solid tumors. Our mission is to harness the evolutionary power of the human immune system to provide patients fighting cancer with safe, effective therapies. Our lead product candidate, EB103, is a T-cell therapy called \u201cCD19-Redirected ARTEMIS\u00ae T-Cell Therapy,\u201d which utilizes Eureka Therapeutics, Inc.\u2019s (\u201cEureka\u201d) ARTEMIS\u00ae technology to target CD19. On March 2, 2023, the FDA cleared the Investigational New Drug (\u201cIND\u201d) application for EB103, allowing us to proceed with the Phase I/II STARLIGHT-1 Clinical Trial.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2005,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 2048,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31, 2025",
+     "",
+     "For the twelve months ended December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Unaudited)",
+     ""
+    ],
+    [
+     "Consulting and laboratory related fee",
+     "$",
+     "10,207,228",
+     "$",
+     "6,401,435"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "41,317",
+     "",
+     "7,131"
+    ],
+    [
+     "Total research and development",
+     "$",
+     "10,248,545",
+     "$",
+     "6,408,566"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2078,
+    "end_line": 2089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Research and development expenses consist primarily of costs related to conducting work related to the conduct of the STARLIGHT-1 clinical trial, which was mainly performed by Eureka. For the year ended December 31, 2025 and for the twelve months ended December 31, 2024, we incurred approximately $10.2 million and $6.4 million of research and development expenses, respectively. All research and development expenses incurred for the periods presented above were dedicated to the development of ARTEMIS\u00ae T-cell therapies targeting CD19 and CD22. The increase in research and development expenses was mainly due to Estrella incurring higher service fees during the clinical phase and the dosing of seven patients, and a second site activation under the SOW for the year ended December 31, 2025 compared to two patients dosed during the same period in 2024. In addition, for the twelve months ended December 31, 2024, we have incurred $3.5 million R&D expense from Eureka for achieving the milestones associated with the initiation of the study, the preparation and activation of the first study site, and the First Patient First Visit (FPFV) under the SOW.\nOur breakdown of research and development expenses by categories for the year ended December 31, 2025 and for the twelve months ended December 31, 2024 are summarized below:",
+   "prose_after": "General and Administrative Expenses\nFor the year ended December 31, 2025 and for the twelve months ended December 31, 2024, we incurred approximately $2.8 million and $2.4 million in general and administrative expenses, respectively. The increase was primarily driven by higher professional fees and stock-based compensation expense related to stock options granted in October 2024 under our 2023 Omnibus Incentive Plan, partially offset by lower other corporate expenses.\nNet Loss\nWe incurred a net loss of approximately $13.1 million and $8.8 million for the year ended December 31, 2025 and for the twelve months ended December 31, 2024, respectively. We expect our research and development expenses to continue to increase as we continue to work with Eureka to advance the IND filings, preclinical and clinical development of our product candidates and preclinical programs, seek regulatory approval for any product candidates that successfully complete clinical trials, scale up our clinical and regulatory capabilities, adapt our regulatory compliance efforts to incorporate requirements applicable to marketed products, maintain, expand, and protect our intellectual property portfolio, add operational, financial, and management information systems and personnel, including personnel to support our product development and planned future commercialization efforts, and incur additional legal, accounting, and other expenses in operating as a public company.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2075,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 89
+    },
+    "after": {
+     "line": 2114,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 90
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (Macias Gini and O\u2019Connell LLP, PCAOB ID 324)",
+     "F-2"
+    ],
+    [
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 (Deficit) Equity",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2270,
+    "end_line": 2279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The information required by this Item is incorporated herein by reference to our Proxy Statement for the 2026 Annual Meeting of Stockholders, which is expected to be filed with the SEC within 120 days after the close of our fiscal year.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nThe information required by this Item is incorporated herein by reference to our Proxy Statement for the 2026 Annual Meeting of Stockholders, which is expected to be filed with the SEC within 120 days after the close of our fiscal year.\nItem 14. Principal Accounting Fees and Services.\nThe information required by this Item is incorporated herein by reference to our Proxy Statement for the 2026 Annual Meeting of Stockholders, which is expected to be filed with the SEC within 120 days after the close of our fiscal year.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a)(1) Financial Statements.\nThe following documents are included on pages F-1 through F-28 attached hereto and are filed as part of this Annual Report on Form 10-K.\nIndex to Financial Statements",
+   "prose_after": "(a)(2) Financial Statement Schedules.\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(a)(3) Exhibits.\nThe following is a list of exhibits filed, furnished, or incorporated by reference as part of this Annual Report on Form 10-K.\nExhibit Index",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2259,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 96
+    },
+    "after": {
+     "line": 2288,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 97
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "2.1*",
+     "Agreement and Plan of Merger, dated as of September 30, 2022, by and among TradeUP Acquisition Corp., Tradeup Merger Sub Inc. and Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 2.1 to the Current Report on Form 8-K filed with the SEC on October 3, 2022, File No. 001-40608)"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on October 5, 2023, File No. 001-40608)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 3.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on October 5, 2023, File No. 001-40608)"
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 to Amendment No. 9 to the Registration Statement on Form S-1/A filed with the SEC on July 9, 2021, File No. 333-253322)"
+    ],
+    [
+     "4.2",
+     "Specimen Common Stock Certificate. (incorporated by reference to Exhibit 4.2 to Amendment No. 9 to the Registration Statement on Form S-1/A filed with the SEC on July 9, 2021, File No. 333-253322)"
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate (included as Exhibit A to Exhibit 4.4 below)"
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated July 14, 2021, between TradeUP Acquisition Corp. and VStock Transfer, LLC, as warrant agent (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed with the SEC on July 19, 2021, File No. 001-40608)"
+    ],
+    [
+     "4.5",
+     "Description of Registrant\u2019s Securities"
+    ],
+    [
+     "4.6",
+     "Form of Pre-Funded Warrant to Purchase Common Stock (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2026)."
+    ],
+    [
+     "4.7",
+     "Form of PIPE Common Warrant to Purchase Common Stock (incorporated by reference to Exhibit 4.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2026)."
+    ],
+    [
+     "10.1",
+     "Promissory Note, dated July 25, 2022, issued by TradeUP Acquisition Corp. to Running Lion Holdings Limited (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on July 27, 2022, File No. 001-40608)"
+    ],
+    [
+     "10.2",
+     "Promissory Note, dated July 25, 2022, issued by TradeUP Acquisition Corp. to Tradeup INC. (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on July 27, 2022, File No. 001-40608)"
+    ],
+    [
+     "10.3",
+     "Contribution Agreement, dated June 28, 2022, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.3 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.4\u2020",
+     "License Agreement, dated June 28, 2022, by and among Eureka Therapeutics, Inc., Eureka Therapeutics (Cayman) Ltd. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.4 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.5\u2020",
+     "Services Agreement, dated June 28, 2022, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.5 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.6",
+     "Amendment to Executive Offer Letter, by and between Estrella Immunopharma, Inc. and Dr. Cheng Liu incorporated by reference to Exhibit 10.16 to the Current Report on Form 8-K filed with the SEC on October 5, 2023"
+    ],
+    [
+     "10.7",
+     "Amendment to Employment Agreement, by and between Estrella Immunopharma, Inc. and Jiandong (Peter) Xu incorporated by reference to Exhibit 10.17 to the Current Report on Form 8-K filed with the SEC on October 5, 2023"
+    ],
+    [
+     "10.8",
+     "Amendment to Employment Agreement, by and between Estrella Immunopharma, Inc. and Qian (Vicky) Yang incorporated by reference to Exhibit 10.18 to the Current Report on Form 8-K filed with the SEC on October 5, 2023"
+    ],
+    [
+     "10.9*",
+     "Support Agreement, dated September 30, 2022, by and among TradeUP Acquisition Corp., Estrella Immunopharma, Inc., TradeUP Acquisition Sponsor LLC, Tradeup INC. and the officers and directors of TradeUP Acquisition Corp. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on October 3, 2022, File No. 001-40608)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2291,
+    "end_line": 2332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(a)(2) Financial Statement Schedules.\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(a)(3) Exhibits.\nThe following is a list of exhibits filed, furnished, or incorporated by reference as part of this Annual Report on Form 10-K.\nExhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2288,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 97
+    },
+    "after": {
+     "line": 2333,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 98
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "10.10",
+     "Estrella Immunopharma, Inc. 2023 Omnibus Incentive Plan incorporated by reference to Annex C to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.11",
+     "Estrella Immunopharma, Inc. Option Grant Notice, including 2022 Equity Incentive Plan incorporated by reference to Exhibit 10.12 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.12",
+     "Business Combination Marketing Agreement, dated July 14, 2021, among TradeUP Acquisition Corp., US Tiger Securities, Inc. EF Hutton, division of Benchmark Investments, LLC, and R. F. Lafferty & Co., Inc. (incorporated by reference to Exhibit 1.2 to the Current Report on Form 8-K filed with the SEC on July 19, 2021, File No. 001-40608)"
+    ],
+    [
+     "10.13",
+     "Registration Rights Agreement, dated July 14, 2021, among TradeUP Acquisition Corp., TradeUP Acquisition Sponsor LLC and certain security holders named therein (incorporated by reference to Exhibit 10.3 to the Current Report on Form 8-K filed with the SEC on July 19, 2021, File No. 001-40608)"
+    ],
+    [
+     "10.14",
+     "Amendment No. 1 to Services Agreement, effective October 1, 2022, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.15 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.15",
+     "Amendment No. 1 to License Agreement, effective October 1, 2022, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.16 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.16",
+     "Promissory Note, dated January 19, 2023, issued by TradeUP Acquisition Corp. to TradeUP Acquisition Sponsor LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on January 24, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.17",
+     "Extension Promissory Note, dated January 19, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on January 24, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.18",
+     "Extension Promissory Note, dated February 19, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on February 21, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.19",
+     "Extension Promissory Note, dated March 17, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on March 17, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.20",
+     "Extension Promissory Note, dated April 12, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on April 13, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.21",
+     "Common Stock Purchase Agreement, dated as of April 20, 2023, by and between TradeUP Acquisition Corp. and White Lion Capital LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on April 24, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.22",
+     "Registration Rights Agreement, dated as of April 20, 2023, by and between TradeUP Acquisition Corp. and White Lion Capital LLC. (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on April 24, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.23",
+     "Amendment to the Common Stock Purchase Agreement, dated as of April 26, 2023, by and between TradeUP Acquisition Corp. and White Lion Capital LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on April 26, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.24",
+     "Extension Promissory Note, dated May 19, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on May 19, 2023, File No. 001-40608)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2334,
+    "end_line": 2369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2333,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 98
+    },
+    "after": {
+     "line": 2370,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 99
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "10.25",
+     "Promissory Note, dated June 6, 2023, issued by TradeUP Acquisition Corp. to Tradeup INC. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on June 6, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.26",
+     "Amendment No. 2 to Services Agreement, effective March 1, 2023, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.27 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.27",
+     "Amendment No. 2 to License Agreement, effective March 1, 2023, by and between Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. incorporated by reference to Exhibit 10.28 to the registration statement on Form S-4/A filed with the SEC on July 7, 2023 (File No. 333-267918)"
+    ],
+    [
+     "10.28",
+     "Extension Promissory Note, dated June 16, 2023, issued by TradeUP Acquisition Corp. to Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on June 20, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.29",
+     "Subscription Agreement dated September 14, 2023 by and among TradeUP Acquisition Corp. and Plentiful Limited (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on September 20, 2023)"
+    ],
+    [
+     "10.30",
+     "Subscription Agreement dated September 14, 2023 by and among TradeUP Acquisition Corp. and Lianhe World Limited (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on September 20, 2023)"
+    ],
+    [
+     "10.31",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and Lianhe World Limited (incorporated by reference to Exhibit 10.4 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.32",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and CoFame Investments, LLC (incorporated by reference to Exhibit 10.5 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.33",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and US Tiger Securities, Inc. (incorporated by reference to Exhibit 10.6 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.34",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and Smart Crest International Limited (incorporated by reference to Exhibit 10.7 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.35",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and Yangbing Xiao (incorporated by reference to Exhibit 10.8 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.36",
+     "Joinder to the Estrella Series A Purchase Agreement by and between Estrella Biopharma, Inc. and Yuandong Wang (incorporated by reference to Exhibit 10.9 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.37",
+     "Stock Transfer Agreement by and among Cheng Liu, Jiandong (Peter) Xu and Qian (Vicky) Yang, Yuandong Wang and Estrella Biopharma, Inc. (incorporated by reference to Exhibit 10.10 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.38",
+     "Stock Transfer Agreement by and among Cheng Liu, Jiandong (Peter) Xu and Qian (Vicky) Yang, Yangbing Xiao and Estrella Biopharma, Inc. (incorporated by reference to Exhibit 10.11 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.39",
+     "Stock Transfer Agreement by and among Cheng Liu, Jiandong (Peter) Xu and Qian (Vicky) Yang, Smart Crest International Limited and Estrella Biopharma, Inc. (incorporated by reference to Exhibit 10.12 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.40",
+     "Unsecured Promissory Note by and between Hongbin Zhang and Estrella Biopharma Inc. (incorporated by reference to Exhibit 10.15 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.41",
+     "Employment agreement by and between Dr. Cheng Liu and Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.19 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.42",
+     "Employment Agreement by and between Peter Xu and Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.20 to the Current Report on Form 8-K filed with the SEC on October 5, 2023)"
+    ],
+    [
+     "10.43",
+     "Registration Rights Agreement, dated as of April 20, 2023, by and between TradeUP Acquisition Corp. and White Lion Capital LLC. (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on April 24, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.44",
+     "Amendment to the Common Stock Purchase Agreement, dated as of April 26, 2023, by and between TradeUP Acquisition Corp. and White Lion Capital LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on April 26, 2023, File No. 001-40608)"
+    ],
+    [
+     "10.45",
+     "Private Placement Shares Purchase Agreement, dated July 14, 2021, among the TradeUP Acquisition Corp., TradeUP Acquisition Sponsor LLC and Tradeup INC. (incorporated by reference to Exhibit 10.4 to the Current Report on Form 8-K filed with the SEC on July 19, 2021)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2371,
+    "end_line": 2417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2370,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 99
+    },
+    "after": {
+     "line": 2418,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 100
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "10.46",
+     "Securities Subscription Agreement, between the TradeUP Acquisition Corp. and TradeUP Acquisition Sponsor LLC dated February 12, 2021 (incorporated by reference to Exhibit 10.5 to the Registration Statement on Form S-1 filed with the SEC on July 9, 2021 File No. 333-253322)"
+    ],
+    [
+     "10.47",
+     "Securities Subscription Agreement, between the TradeUP Acquisition Corp. and Tradeup INC. dated February 12, 2021(incorporated by reference to Exhibit 10.6 to the Registration Statement on Form S-1 filed with the SEC on July 9, 2021 File No. 333-253322)"
+    ],
+    [
+     "10.48",
+     "Form of Share Purchase Agreement between the TradeUP Acquisition Corp. and the founders (incorporated by reference to Exhibit 10.7 to the Registration Statement on Form S-1 filed with the SEC on June 11, 2021 File No. 333-253322)"
+    ],
+    [
+     "10.49",
+     "Letter Agreement, dated July 14, 2021, among the TradeUP Acquisition Corp., TradeUP Acquisition Sponsor LLC, Tradeup INC. and certain security holders named therein (incorporated by reference to Exhibit 10.1 to the Current Report on 8-K filed with the SEC on July 19, 2021 File No. 001-40608)"
+    ],
+    [
+     "10.50",
+     "Statement of Work No. 001, dated and effective as of March 4, 2024, by and among Estrella Biopharma, Inc., Eureka Therapeutics, Inc and Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on 8-K filed with the SEC on March 7, 2024, File No. 001-40608)"
+    ],
+    [
+     "10.51",
+     "Amendment No. 1 to Statement of Work No. 001, dated May 13, 2024 and effective as of March 4, 2024, by and among Estrella Biopharma, Inc., Eureka Therapeutics, Inc. and Estrella Immunopharma, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on 8-K filed with the SEC on May 13, 2024, File No. 001-40608)"
+    ],
+    [
+     "10.52",
+     "Securities Purchase Agreement, dated January 5, 2026, by and between the Company and the Investor (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2026)."
+    ],
+    [
+     "10.53",
+     "Placement Agency Agreement, dated January 5, 2026, by and between the Company and Aegis Capital Corp. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2026)."
+    ],
+    [
+     "10.54",
+     "Registration Rights Agreement, dated January 5, 2026, by and between the Company and the Investor (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2026)."
+    ],
+    [
+     "16.1",
+     "Letter from Marcum LLP, dated February 1, 2024 (incorporated by reference to Exhibit 16.1 to the Current Report on Form 8-K filed with the SEC on February 2, 2024, File No. 001-40608)"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm (Macias Gini & O\u2019Connell LLP)"
+    ],
+    [
+     "31.1**",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2**",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "97.1",
+     "Clawback Policy (incorporated by reference to Exhibit 97.1 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on September 27, 2024, File No. 001-40608)"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2419,
+    "end_line": 2458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Annexes, schedules and exhibits have been omitted pursuant to Item 601(b)(2) of Regulation S-K. The registrant agrees to furnish supplementally a copy of any omitted attachment to the Securities and Exchange Commission on a confidential basis upon request.\n\u2020 Portions of this exhibit (indicated by asterisks) have been omitted because the registrant has determined that the information is both not material and is the type that the registrant treats as private or confidential.\n** These certifications are furnished to the SEC pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and are deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, nor shall they be deemed incorporated by reference in any filing under the Securities Act of 1933, except as shall be expressly set forth by specific reference in such filing.\nItem 16. Form 10-K Summary\nNone.\nIndex to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2418,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 100
+    },
+    "after": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 101
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (Macias Gini and O\u2019Connell LLP, PCAOB ID 324)",
+     "F-2"
+    ],
+    [
+     "Consolidated financial statements",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2025 and 2024",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the year ended December 31, 2025 and for the six months ended December 31, 2024 (Short year)",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 (Deficit) Equity for the year ended December 31, 2025 and for the six months ended December 31, 2024 (Short year)",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the year ended December 31, 2025 and for the six months ended December 31, 2024 (Short year)",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2472,
+    "end_line": 2481
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "* Annexes, schedules and exhibits have been omitted pursuant to Item 601(b)(2) of Regulation S-K. The registrant agrees to furnish supplementally a copy of any omitted attachment to the Securities and Exchange Commission on a confidential basis upon request.\n\u2020 Portions of this exhibit (indicated by asterisks) have been omitted because the registrant has determined that the information is both not material and is the type that the registrant treats as private or confidential.\n** These certifications are furnished to the SEC pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and are deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, nor shall they be deemed incorporated by reference in any filing under the Securities Act of 1933, except as shall be expressly set forth by specific reference in such filing.\nItem 16. Form 10-K Summary\nNone.\nIndex to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nBoard of Directors and Stockholders\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Estrella Immunopharma, Inc. (the \u201cCompany\u201d) as of December 31, 2025 and 2024, and the related consolidated statements of operations, changes in stockholders\u2019 (deficit) equity and cash flows for the year ended December 31, 2025 and for the six months ended December 31, 2024, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2025 and 2024, and the results of its operations and its cash flows for the year ended December 31, 2025 and the six months ended December 31, 2024, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Uncertainty\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has suffered recurring losses from operations and has negative cash flows from operating activities. These matters raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters also are described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 101
+    },
+    "after": {
+     "line": 2481,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "",
+     "As of December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,384,302",
+     "",
+     "$",
+     "916,916",
+     ""
+    ],
+    [
+     "Prepaid expenses and other receivable",
+     "",
+     "292,673",
+     "",
+     "",
+     "723,861",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "1,676,975",
+     "",
+     "",
+     "1,640,777",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses, related party, non-current",
+     "",
+     "1,500,000",
+     "",
+     "",
+     "1,500,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "3,176,975",
+     "",
+     "$",
+     "3,140,777",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 (Deficit) Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "$",
+     "554,781",
+     "",
+     "$",
+     "4,435",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "238,414",
+     "",
+     "",
+     "201,760",
+     ""
+    ],
+    [
+     "Accrued liability - related party",
+     "",
+     "12,393,333",
+     "",
+     "",
+     "2,786,667",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "",
+     "356,505",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "-",
+     "",
+     "",
+     "4,134",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "-",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "13,543,033",
+     "",
+     "",
+     "2,997,046",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "13,543,033",
+     "",
+     "",
+     "2,997,046",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.0001 par value, 10,000,000 shares authorized; 0 shares issued and outstanding as of December 31, 2025 and 2024",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 (Deficit) Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 250,000,000 shares authorized; 38,486,219 and 36,680,870 shares issued as of December 31, 2025 and 2024, respectively",
+     "",
+     "3,849",
+     "",
+     "",
+     "3,668",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "27,219,287",
+     "",
+     "",
+     "24,636,283",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(36,990,815)",
+     "",
+     "",
+     "(23,927,303)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost 515,281 and 486,979 shares as of December 31, 2025 and 2024, respectively",
+     "",
+     "(598,379)",
+     "",
+     "",
+     "(568,917)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 (Deficit) Equity",
+     "",
+     "(10,366,058)",
+     "",
+     "",
+     "143,731",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 (Deficit) Equity",
+     "$",
+     "3,176,975",
+     "",
+     "$",
+     "3,140,777",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2519,
+    "end_line": 2570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nWe have served as the Company\u2019s auditor since 2024.\n/s/ Macias Gini & O\u2019Connell LLP\nIrvine, California\nMarch 17, 2026\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2515,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 2572,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2025",
+     "",
+     "",
+     "For the Six Months Ended December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(Short Year)",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development (including $10,125,000 for the year ended December 31, 2025 and $2,801,435 for the six months ended December 31, 2024, from a related party)",
+     "$",
+     "10,248,545",
+     "",
+     "$",
+     "2,858,566",
+     ""
+    ],
+    [
+     "General and administrative (including $265,448 for the year ended December 31, 2025 and $103,667 for the six months ended December 31, 2024, from related parties)",
+     "",
+     "2,814,129",
+     "",
+     "",
+     "1,568,398",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "13,062,674",
+     "",
+     "",
+     "4,426,964",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(13,062,674)",
+     "",
+     "",
+     "(4,426,964)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(13,062,674)",
+     "",
+     "",
+     "(4,426,964)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "(838)",
+     "",
+     "",
+     "(63)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(13,063,512)",
+     "",
+     "$",
+     "(4,427,027)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss applicable to common stock per share, basic and diluted",
+     "$",
+     "(0.35)",
+     "",
+     "$",
+     "(0.12)",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding, basic and diluted",
+     "",
+     "36,820,810",
+     "",
+     "",
+     "36,515,688",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2576,
+    "end_line": 2606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 (DEFICIT) EQUITY",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2572,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2608,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Stock",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2024",
+     "",
+     "36,610,870",
+     "$",
+     "3,661",
+     "$",
+     "(354,440)",
+     "",
+     "$",
+     "24,124,543",
+     "",
+     "$",
+     "(19,500,276)",
+     "",
+     "$",
+     "4,273,488",
+     ""
+    ],
+    [
+     "Issuance of common stock through common stock purchase agreement",
+     "",
+     "70,000",
+     "",
+     "7",
+     "",
+     "-",
+     "",
+     "",
+     "79,484",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "79,491",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "432,256",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "432,256",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(214,477)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(214,477)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4,427,027)",
+     "",
+     "",
+     "(4,427,027)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024",
+     "",
+     "36,680,870",
+     "",
+     "3,668",
+     "",
+     "(568,917)",
+     "",
+     "",
+     "24,636,283",
+     "",
+     "",
+     "(23,927,303)",
+     "",
+     "",
+     "143,731",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(29,462)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(29,462)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "618,974",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "618,974",
+     ""
+    ],
+    [
+     "Issuance of common stock for PIPE investment",
+     "",
+     "1,600,000",
+     "",
+     "160",
+     "",
+     "-",
+     "",
+     "",
+     "1,964,051",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,964,211",
+     ""
+    ],
+    [
+     "Issuance of additional common stock for settlement of subscription agreement",
+     "",
+     "205,349",
+     "",
+     "21",
+     "",
+     "-",
+     "",
+     "",
+     "(21)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(13,063,512)",
+     "",
+     "",
+     "(13,063,512)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2025",
+     "",
+     "38,486,219",
+     "$",
+     "3,849",
+     "$",
+     "(598,379)",
+     "",
+     "$",
+     "27,219,287",
+     "",
+     "$",
+     "(36,990,815)",
+     "",
+     "$",
+     "(10,366,058)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2612,
+    "end_line": 2634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 (DEFICIT) EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2608,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2636,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2025",
+     "",
+     "",
+     "For the Six Months Ended December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(Short Year)",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(13,063,512)",
+     "",
+     "$",
+     "(4,427,027)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "618,974",
+     "",
+     "",
+     "432,256",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "38,189",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other receivable",
+     "",
+     "431,188",
+     "",
+     "",
+     "(435,100)",
+     ""
+    ],
+    [
+     "Prepaid expenses - related party",
+     "",
+     "-",
+     "",
+     "",
+     "(1,500,000)",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "550,346",
+     "",
+     "",
+     "4,435",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "36,654",
+     "",
+     "",
+     "69,937",
+     ""
+    ],
+    [
+     "Accrued liability - related party",
+     "",
+     "9,606,666",
+     "",
+     "",
+     "2,782,667",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "(4,134)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax payables",
+     "",
+     "(50)",
+     "",
+     "",
+     "(40,694)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,785,679)",
+     "",
+     "",
+     "(3,113,526)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments of transactions cost",
+     "",
+     "(117,473)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock through stock purchase agreement",
+     "",
+     "-",
+     "",
+     "",
+     "79,491",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock for PIPE investment",
+     "",
+     "2,400,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "(29,462)",
+     "",
+     "",
+     "(214,477)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "2,253,065",
+     "",
+     "",
+     "(134,986)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "467,386",
+     "",
+     "",
+     "(3,248,512)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of the year",
+     "",
+     "916,916",
+     "",
+     "",
+     "4,165,428",
+     ""
+    ],
+    [
+     "Cash at end of the year",
+     "$",
+     "1,384,302",
+     "",
+     "$",
+     "916,916",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income tax",
+     "$",
+     "913",
+     "",
+     "$",
+     "42,366",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Non-cash Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recognition of derivative liabilities upon closing of the PIPE investment",
+     "$",
+     "318,316",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2640,
+    "end_line": 2688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNote 1 \u2014 Organization and Business Operation\nDescription of business\nEstrella Immunopharma, Inc. (\u201cEstrella\u201d), a Delaware corporation, is a clinical-stage biopharmaceutical company developing T-cell therapies with the capacity to potentially cure patients with blood cancers and solid tumors.\nEstrella was incorporated in the State of Delaware on March 30, 2022 by Eureka Therapeutics, Inc. (\u201cEureka\u201d), which was incorporated in California in February 2006 and reincorporated in Delaware in March 2018 and is the predecessor of Estrella.\nOn June 28, 2022, pursuant to a Contribution Agreement between Estrella and Eureka (the \u201cContribution Agreement\u201d), Eureka contributed certain assets (the \u201cAssets\u201d) related to T-cell therapies targeting CD19 and CD22, proteins expressed on the surface of almost all B-cell leukemias and lymphomas, in exchange for 105,000,000 shares of Estrella\u2019s Series AA Preferred Stock (the \u201cSeparation\u201d).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2636,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2690,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "As of December 31, 2024",
+     ""
+    ],
+    [
+     "Public warrant",
+     "",
+     "2,214,993",
+     "",
+     "2,214,993"
+    ],
+    [
+     "Stock options granted",
+     "",
+     "3,600,000",
+     "",
+     "3,600,000"
+    ],
+    [
+     "Total",
+     "",
+     "5,814,993",
+     "",
+     "5,814,993"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2759,
+    "end_line": 2768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant accounting policies"
+    }
+   },
+   "prose_before": "The Company maintains its operating accounts in a single financial institution. The balance is insured by the United States Federal Deposit Insurance Corporation (\u201cFDIC\u201d) but only up to specified limits. The Company\u2019s cash is maintained in a checking account. Cash equivalents consist of funds held at the third-party broker\u2019s account for stock repurchase purpose, and the funds are unrestricted and immediately available for withdrawal and use. The balance held at the third-party broker\u2019s account is insured by the United States Securities Investor Protection Corporation (\u201cSIPC\u201d) but only up to specified limits.\nPrepaid expenses and other receivable\nPrepaid expenses and other receivable primarily include prepayments for third party services, such as professional fees, insurance premium, and others.\nBasic and Diluted Loss per Common Stock\nBasic net loss per Common Stock is calculated by dividing the net loss by the weighted average number of Common Stock outstanding for the period. Diluted net loss per share is computed by dividing the net loss by the weighted average number of Common Stock and dilutive share equivalents outstanding for the period, determined using the treasury stock and if-converted methods. Since the Company has had net losses for all periods presented, all potentially dilutive securities are anti- dilutive.\nAs of December 31, 2025 and 2024, the Company had the following potential Common Stock outstanding which were not included in the calculation of diluted net loss per Common Stock because inclusion thereof would be anti-dilutive:",
+   "prose_after": "Stock-Based Compensation\nThe Company recognizes compensation costs resulting from the issuance of stock-based awards to employees, non-employees and directors as an expense in the consolidated statements of operations over the requisite service period based on a measurement of fair value for each stock-based award. The fair value of each option granted is estimated as of the date of grant using the Black-Scholes-Merton option-pricing model, net of actual forfeitures. The fair value is amortized as compensation cost on a straight-line basis over the requisite service period of the awards, which is generally the vesting period. The Black-Scholes-Merton option-pricing model includes various assumptions, including the fair market value of the Common Stock of the Company, expected life of stock options, the expected volatility and the expected risk-free interest rate, among others. These assumptions reflect the Company\u2019s best estimates, but they involve inherent uncertainties based on market conditions generally outside the control of the Company.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2744,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2774,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1 \u2014",
+     "Quoted prices (unadjusted) in active markets for identical assets and liabilities."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 2 \u2014",
+     "Inputs other than Level 1 that are observable, either directly or indirectly, such as unadjusted quoted prices for similar assets and liabilities, unadjusted quoted prices in the markets that are not active, or other inputs that are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 3 \u2014",
+     "Unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2799,
+    "end_line": 2808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant accounting policies"
+    }
+   },
+   "prose_before": "The Company\u2019s future success depends on the Company and Eureka\u2019s ability to retain key employees, directors, and advisors and to attract, retain and motivate qualified personnel. The Company relies on Eureka to provide certain technical assistance to facilitate the Company\u2019s exploitation of the intellectual property licensed by Eureka, and Eureka will be solely responsible for the manufacture and supply of clinical quantities of the licensed products and final filled and finished (including packaged) drug product form of the licensed products. Pursuant to the Services Agreement, Eureka currently performs or supports the Company\u2019s important research and development activities. The Statement of Work (see Note 5) may be terminated by mutual agreement at any time. Following the termination of, or the expiration of the term of, the Statement of Work, the Company may not be able to replace the research and development-related services that Eureka provides or enter into appropriate third-party arrangements on terms and conditions, including cost, comparable to those that the Company will receive from Eureka. Additionally, after the Statement of Work terminates, the Company may be unable to sustain the research and development-related services at the same levels or obtain the same benefits as when the Company was receiving such services and benefits from Eureka. If the Company is required to operate these research and development functions separately in the future, or is unable to obtain them from other providers, the Company may not be able to operate the Company\u2019s business effectively, which could result in a material adverse effect.\nFair Value of Financial Instruments\nThe fair value of the Company\u2019s assets and liabilities, which qualify as financial instruments under ASC Topic 820, \u201cFair Value Measurements and Disclosures,\u201d approximates the carrying amounts represented in the accompanying balance sheet, primarily due to their short-term nature. The Company measures the fair value of certain of its financial assets and liabilities on a recurring basis. A fair value hierarchy is used to rank the quality and reliability of the information used to determine fair values. Financial assets and liabilities carried at fair value which is not equivalent to cost will be classified and disclosed in one of the following three categories:",
+   "prose_after": "The following table sets forth by level within the fair value hierarchy our financial asset and liability that were accounted for at fair value on a recurring basis as of December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2794,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2837,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Carrying Value at December 31,",
+     "",
+     "Fair Value Measurement at December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Derivative liabilities (True-Up Shares)",
+     "$",
+     "356,505",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "356,505"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2811,
+    "end_line": 2819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant accounting policies"
+    }
+   },
+   "prose_before": "The following table sets forth by level within the fair value hierarchy our financial asset and liability that were accounted for at fair value on a recurring basis as of December 31, 2025:",
+   "prose_after": "The following is a reconciliation of the beginning and ending balance of the financial liability measured at fair value on a recurring basis for the year ended December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2794,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2837,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Derivative Liabilities",
+     ""
+    ],
+    [
+     "Initial fair value of derivative liabilities attributable to True-Up shares feature embedded in the Private Placement",
+     "$",
+     "318,316"
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "38,189"
+    ],
+    [
+     "Ending balance as of December 31, 2025",
+     "$",
+     "356,505"
+    ]
+   ],
+   "caption_stack": [
+    "Derivative Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2822,
+    "end_line": 2831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant accounting policies"
+    }
+   },
+   "prose_before": "The following is a reconciliation of the beginning and ending balance of the financial liability measured at fair value on a recurring basis for the year ended December 31, 2025:",
+   "prose_after": "Derivative Liabilities\nThe Company does not use derivative instruments to hedge exposures to cash flow, market, or foreign currency risks. The Company evaluates all of its financial instruments, including the True-Up Shares in connection with the Securities Purchase Agreements entered during May 2025 to September 2025 (refer to Note 7), to determine if such instruments are derivatives or contain features that qualify as embedded derivatives, pursuant to ASC 480 and FASB ASC 815, Derivatives and Hedging (\u201cASC 815\u201d). The classification of derivative instruments, including whether such instruments should be recorded as liabilities or as equity, is reassessed at the end of each reporting period.\nThe True-Up Shares embedded within Securities Purchase Agreement do not qualify as equity under ASC 815; therefore, the True-Up Shares are required to be bifurcated and classified as a liability and measured at fair value with subsequent changes in fair value recorded in the consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2794,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2837,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "As of December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued professional fees(i)",
+     "$",
+     "162,162",
+     "$",
+     "177,029"
+    ],
+    [
+     "Salary and payroll taxes payable",
+     "",
+     "57,501",
+     "",
+     "14,100"
+    ],
+    [
+     "Others",
+     "",
+     "18,751",
+     "",
+     "10,631"
+    ],
+    [
+     "Total other payables and accrued liabilities",
+     "$",
+     "238,414",
+     "$",
+     "201,760"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2901,
+    "end_line": 2912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 Other payables and accrued liabilities"
+    }
+   },
+   "prose_before": "\u2014 codification amendments in response to SEC\u2019s disclosure Update and Simplification initiative which amend the disclosure or presentation requirements of codification subtopic 230-10 Statement of Cash Flows \u2014 Overall, 250-10 Accounting Changes and Error Corrections \u2014 Overall, 260-10 Earnings Per Share \u2014 Overall, 270-10 Interim Reporting \u2014 Overall, 440-10 Commitments \u2014 Overall, 470-10 Debt \u2014 Overall, 505-10 Equity \u2014 Overall, 815-10 Derivatives and Hedging \u2014 Overall, 860-30 Transfers and Servicing \u2014 Secured Borrowing and Collateral, 932-235 Extractive Activities \u2014 Oil and Gas \u2014 Notes to Financial Statements, 946-20 Financial Services \u2014 Investment Companies \u2014 Investment Company Activities, and 974-10 Real Estate \u2014 Real Estate Investment Trusts \u2014 Overall. The amendments represent changes to clarify or improve disclosure and presentation requirements of above subtopics. Many of the amendments allow users to more easily compare entities subject to the SEC\u2019s existing disclosures with those entities that were not previously subject to the SEC\u2019s requirements. Also, the amendments align the requirements in the Codification with the SEC\u2019s regulations. For entities subject to existing SEC disclosure requirements or those that must provide financial statements to the SEC for securities purposes without contractual transfer restrictions, the effective date aligns with the date when the SEC removes the related disclosure from Regulation S-X or Regulation S-K. Early adoption is not allowed. For all other entities, the amendments will be effective two years later from the date of the SEC\u2019s removal. The Company is currently evaluating the impact of the update on the Company\u2019s consolidated financial statements and related disclosures.\nOn November 4, 2024, the FASB issued ASU No. 2024-03, Expense Disaggregation Disclosures (\u201cASU 2024-03\u201d). ASU 2024-03 amends ASC 220, Comprehensive Income to expand income statement expense disclosures and require disclosure in the notes to the financial statements of specified information about certain costs and expenses. ASU 2024-03 is required to be adopted for fiscal years commencing after December 15, 2026, with early adoption permitted. The Company is currently evaluating the impact of adopting the standard on its financial position and results of operations.\nThe Company does not believe recently issued but not yet effective accounting standards, if currently adopted, would have a material effect on the Company\u2019s consolidated financial statements.\nNote 3 \u2014 Other payables and accrued liabilities",
+   "prose_after": "(i) The balance of accrued professional fees represented amount due to third party service providers which include, legal and consulting fee related to research and development, and others.\nNote 4 \u2014 Commitments and contingencies\nManufacturing Commitment\nOn June 28, 2022, Eureka and the Company entered into the License Agreement under which Eureka granted to the Company a license under certain intellectual property controlled by Eureka for exploitation by the Company in the Company\u2019s territory under the License Agreement (the \u201cLicensed Territory\u201d). Estrella\u2019s supply of clinical quantities of the licensed products and final filled and finished (including packaged) drug product form of the licensed products for development and commercialization purposes, both in the Licensed Territory and elsewhere, are to be manufactured either by Eureka, its affiliate or a third party contract manufacturer. Refer to Note 5.\nRegistration Rights\nIn connection with the Securities Purchase Agreements entered into with the Selling Stockholders on or about May 30, 2025 and June 1, 2025, the Company agreed to file a registration statement to register the resale of the Shares of Common Stock purchased by the Selling Stockholders (refer to Note 7). The Company also agreed to register the resale of any additional shares of Common Stock, or \u201cTrue-Up Securities,\u201d that may be issuable pursuant to the true-up mechanism in such agreements. The Company agreed to cause such registration statement to be declared effective, which occurred on January 23, 2026.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2891,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2914,
+     "token": "PAGE_BREAK",
+     "id": 123,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of related party",
+     "Relationship",
+     "Nature",
+     "For the Year Ended December 31, 2025",
+     "",
+     "For the Six Months Ended December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Short Year)",
+     ""
+    ],
+    [
+     "Eureka",
+     "Shareholders of the Company",
+     "Research and development expenses",
+     "$",
+     "10,125,000",
+     "$",
+     "2,801,435"
+    ],
+    [
+     "Eureka",
+     "Shareholders of the Company",
+     "General and administrative expenses",
+     "",
+     "45,453",
+     "",
+     "12,000"
+    ],
+    [
+     "CoFame",
+     "Hong Zhang, director of the Company, is the manager of CoFame",
+     "General and administrative expenses",
+     "",
+     "219,995",
+     "",
+     "91,667"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "$",
+     "10,390,448",
+     "$",
+     "2,905,102"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2977,
+    "end_line": 2989
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Related Party Transactions"
+    }
+   },
+   "prose_before": "On November 1, 2024, the Company entered into a consulting agreement (the \u201cConsulting Agreement\u201d) with CoFame Investment Holding LLC (\u201cCoFame\u201d), a related party, as CoFame\u2019s manager, Hong Zhang, is a director of the Company. Pursuant to the Consulting Agreement, CoFame provides advisory and consulting services to the Company regarding activities in Asia, including investor relations and potential business collaborations, as mutually agreed upon from time to time.\nAs of December 31, 2025, the Company has accrued $18,333 under accrued liability - related party, and recorded $36,666 as accounts payable \u2013 related party, representing unpaid consulting fees due to CoFame. As of December 31, 2024, $36,667 was accrued under accrued liability - related party, and $0 was recorded as accounts payable - related party. For the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024, the Company recorded a consulting expense of $219,995 and $91,667 related to CoFame, respectively.\nThe following table summarizes research and development expenses and general and administrative expenses incurred by the Company in connection with related party transactions for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024, as discussed above.",
+   "prose_after": "Series AA Preferred Stock\nOn June 28, 2022, Estrella and Eureka entered into the Contribution Agreement pursuant to which Eureka agreed to contribute and assign to Estrella all rights, title and interest in and to the Assets in exchange for 105,000,000 shares of Estrella\u2019s Series AA Preferred Stock. The issued shares of Series AA preferred stock were converted to common stock immediately prior to the closing of the business combination on September 29, 2023 (see Note 6). As of December 31, 2025 and 2024, Eureka collectively owned 66.6% and 69.8% of the Company on a fully diluted basis, respectively.\nLease\nOn October 1, 2023, Estrella entered into an office sublease agreement with Eureka, to lease 180 square feet of office space with $2,000 monthly lease payments for nine months until June 30, 2024, without any renewal option (\u201cLease 1\u201d).\nOn July 1, 2024, the Company entered into a new office sublease agreement with Eureka. Pursuant to the Sublease Agreement, the sublease commenced on July 1, 2024 and expired on December 31, 2024 with $2,000 sublease fee per month (\u201cLease 2\u201d).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2968,
+     "token": "PAGE_BREAK",
+     "id": 126,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 3003,
+     "token": "PAGE_BREAK",
+     "id": 127,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended December 31, 2025",
+     "",
+     "For the Six Months ended December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "41,317",
+     "$",
+     "7,131"
+    ],
+    [
+     "General and administrative",
+     "",
+     "577,657",
+     "",
+     "425,125"
+    ],
+    [
+     "Total stock-based compensation",
+     "$",
+     "618,974",
+     "$",
+     "432,256"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3074,
+    "end_line": 3085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Stock Based Compensation"
+    }
+   },
+   "prose_before": "At the special meeting of UPTD stockholders related to the Business Combination held on July 31, 2023, UPTD\u2019s shareholders approved the adoption of the Company\u2019s 2023 Omnibus Incentive Plan (the \u201c2023 Plan\u201d), which became effective on the Closing Date. Upon the closing of the Business Combination, 3,520,123 shares of Common Stock became authorized for issuance under the 2023 Plan. On January 1, 2024, under the plan\u2019s evergreen provision, the share reserve automatically increased by 1,941,293 shares, and on January 1, 2025, it increased by an additional 1,920,444 shares. As of December 31, 2025, 7,381,860 shares were authorized for issuance under the plan. On October 30, 2024, the Company granted options under the 2023 Plan to purchase 3,600,000 shares of its Common Stock to its employees, board of directors, and other consultants. For the year ended December 31, 2025, no additional stock options were granted or exercised.\nThe stock-based compensation expense was recorded in the Company\u2019s results of operations. For the years ended December 31, 2025, and for the six-month transition period ended December 31, 2024, the stock-based compensation expense was $618,974 and $432,256, respectively.\nThe breakdown of stock-based compensation by categories for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024 are summarized below:",
+   "prose_after": "The fair value of the granted options under 2023 plan was $2,350,018. As of December 31, 2025 and 2024, there were $1,298,788 and $1,917,762 unvested compensation costs, which is expected to be recognized over the weighted average remaining 2.29 and 3.27 years of employment service period, respectively.\nThe Company estimated the fair value of the stock options using the Black-Scholes option pricing model. The fair value of stock options issued was estimated using the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3057,
+     "token": "PAGE_BREAK",
+     "id": 129,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grant date",
+     "October 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Exercise price",
+     "$",
+     "0.815",
+     ""
+    ],
+    [
+     "Stock price",
+     "$",
+     "0.815",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "101.5-101.6",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "5.5-6.0",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "4.16-4.17",
+     "%"
+    ],
+    [
+     "Expected dividend",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3090,
+    "end_line": 3100
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The fair value of the granted options under 2023 plan was $2,350,018. As of December 31, 2025 and 2024, there were $1,298,788 and $1,917,762 unvested compensation costs, which is expected to be recognized over the weighted average remaining 2.29 and 3.27 years of employment service period, respectively.\nThe Company estimated the fair value of the stock options using the Black-Scholes option pricing model. The fair value of stock options issued was estimated using the following assumptions:",
+   "prose_after": "The risk-free interest rate was obtained from U.S. Treasury rates for the applicable periods. The Company\u2019s expected volatility was calculated from a blended volatility estimate from the implied volatility of a portfolio of comparable companies and the Company\u2019s trading history since October 2, 2023. Due to a limited history of relevant stock option exercise activity, the expected life of the Company\u2019s options was determined using the simplified method, which is based on the average of the time-to-vesting and the contractual life of the options.\nA summary of information related to stock option activities during the year ended December 31, 2025 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3057,
+     "token": "PAGE_BREAK",
+     "id": 129,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Options",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price Per Share",
+     "",
+     "Weighted Average Remaining Contractual Term",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2024",
+     "",
+     "3,600,000",
+     "$",
+     "0.815",
+     "",
+     "9.84",
+     "$",
+     "1,278,000"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2025",
+     "",
+     "3,600,000",
+     "$",
+     "0.815",
+     "",
+     "8.84",
+     "$",
+     "2,682,000"
+    ],
+    [
+     "Options vested and expected to vest at December 31, 2025",
+     "",
+     "3,600,000",
+     "$",
+     "0.815",
+     "",
+     "8.84",
+     "$",
+     "2,682,000"
+    ],
+    [
+     "Options exercisable at December 31, 2025",
+     "",
+     "1,612,467",
+     "$",
+     "0.815",
+     "",
+     "8.84",
+     "$",
+     "1,201,288"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3105,
+    "end_line": 3119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The risk-free interest rate was obtained from U.S. Treasury rates for the applicable periods. The Company\u2019s expected volatility was calculated from a blended volatility estimate from the implied volatility of a portfolio of comparable companies and the Company\u2019s trading history since October 2, 2023. Due to a limited history of relevant stock option exercise activity, the expected life of the Company\u2019s options was determined using the simplified method, which is based on the average of the time-to-vesting and the contractual life of the options.\nA summary of information related to stock option activities during the year ended December 31, 2025 is as follows:",
+   "prose_after": "Note 9 \u2014 Income Taxes\nThe Company has no income tax expense except state minimum taxes, due to operating losses incurred for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024. Loss before income taxes were $13,062,674, and $4,426,964 for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024, respectively.\nThe provision for income taxes for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3155,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31,",
+     "",
+     "For the six months ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current income tax expense",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State",
+     "",
+     "838",
+     "",
+     "63"
+    ],
+    [
+     "Total",
+     "$",
+     "838",
+     "$",
+     "63"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3126,
+    "end_line": 3139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "Note 9 \u2014 Income Taxes\nThe Company has no income tax expense except state minimum taxes, due to operating losses incurred for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024. Loss before income taxes were $13,062,674, and $4,426,964 for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024, respectively.\nThe provision for income taxes for the year ended December 31, 2025 and for the six-month transition period ended December 31, 2024 consisted of the following:",
+   "prose_after": "Beginning in 2025, the Company adopted ASU 2023-09 on a prospective basis. Accordingly, the reconciliation of the U.S. federal statutory income tax rate to the effective tax rate for the year ended December 31, 2025, is presented using the updated disaggregated categories and reporting currency amounts. Comparative information for the six-month transition period ended December 31, 2024 is presented under the legacy disclosure requirements.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3155,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the six months ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount ($)",
+     "",
+     "",
+     "Rate(%)",
+     "",
+     "",
+     "Rate(%)",
+     "",
+     ""
+    ],
+    [
+     "U.S federal statutory tax rate",
+     "",
+     "(2,743,161)",
+     "",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "State and local income taxes, net of federal income tax effect",
+     "",
+     "652",
+     "",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "2,670,305",
+     "",
+     "",
+     "(20.4)",
+     "%",
+     "",
+     "(20.9)",
+     "%"
+    ],
+    [
+     "Nondeductible items",
+     "",
+     "83,734",
+     "",
+     "",
+     "(0.7)",
+     "%",
+     "",
+     "(0.9)",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "(10,692)",
+     "",
+     "",
+     "0.1",
+     "%",
+     "",
+     "0.8",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "838",
+     "",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3142,
+    "end_line": 3155
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "Beginning in 2025, the Company adopted ASU 2023-09 on a prospective basis. Accordingly, the reconciliation of the U.S. federal statutory income tax rate to the effective tax rate for the year ended December 31, 2025, is presented using the updated disaggregated categories and reporting currency amounts. Comparative information for the six-month transition period ended December 31, 2024 is presented under the legacy disclosure requirements.",
+   "prose_after": "The Company\u2019s net deferred tax assets were as follows as of December 31, 2025 and 2024:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3155,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "",
+     "As of December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$",
+     "6,393,470",
+     "",
+     "$",
+     "2,425,707",
+     ""
+    ],
+    [
+     "Accruals and reserves",
+     "",
+     "168",
+     "",
+     "",
+     "168",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "104,730",
+     "",
+     "",
+     "49,398",
+     ""
+    ],
+    [
+     "Capitalized Research and development and intangibles",
+     "",
+     "1,575,352",
+     "",
+     "",
+     "2,928,142",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "8,073,720",
+     "",
+     "",
+     "5,403,415",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(8,073,720)",
+     "",
+     "",
+     "(5,403,415)",
+     ""
+    ],
+    [
+     "Deferred tax asset, net of allowance",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3158,
+    "end_line": 3172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "The Company\u2019s net deferred tax assets were as follows as of December 31, 2025 and 2024:",
+   "prose_after": "The cash paid for income taxes, net of refunds received, by jurisdiction pursuant to the disclosure requirements of ASU 2023-09 for the year ended December 31, 2025 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3155,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 3194,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State and local",
+     "",
+     ""
+    ],
+    [
+     "California",
+     "",
+     "800"
+    ],
+    [
+     "New York",
+     "",
+     "113"
+    ],
+    [
+     "Foreign",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "913"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31,",
+    "2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3175,
+    "end_line": 3188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Income Taxes"
+    }
+   },
+   "prose_before": "The cash paid for income taxes, net of refunds received, by jurisdiction pursuant to the disclosure requirements of ASU 2023-09 for the year ended December 31, 2025 is as follows:",
+   "prose_after": "As of December 31, 2025 and 2024, the Company had gross federal income tax net operating loss (\u201cNOL\u201d) carry forwards of approximately $28.3 million and $9.4 million, respectively. As of December 31, 2025 and 2024, the Company had gross state income tax net operating loss (\u201cNOL\u201d) carry forwards of approximately $6.5 million and $6.5 million, respectively. The federal net operating losses are carried forward indefinitely. The state net operating losses will begin to expire in 2042.\nUnder the Code, the NOL can be carried forward indefinitely and can be used to offset up to 80% of taxable income for losses arising in tax years beginning after June 30, 2022. In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax asset will be realized. The ultimate realization of deferred tax assets is dependent upon the Company attaining future taxable income during periods in which those temporary differences become deductible.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3155,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 3194,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31, 2025",
+     "",
+     "For the six months ended December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Clinical trial related service fee, a related party (see Note 5)",
+     "$",
+     "10,125,000",
+     "$",
+     "2,801,435"
+    ],
+    [
+     "Consulting fee",
+     "",
+     "82,228",
+     "",
+     "75,000"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "618,974",
+     "",
+     "432,256"
+    ],
+    [
+     "Salary expense",
+     "",
+     "524,891",
+     "",
+     "266,571"
+    ],
+    [
+     "Professional fee",
+     "",
+     "1,149,786",
+     "",
+     "631,395"
+    ],
+    [
+     "Insurance expense",
+     "",
+     "335,658",
+     "",
+     "169,513"
+    ],
+    [
+     "Other general and administrative fee",
+     "",
+     "226,137",
+     "",
+     "75,794"
+    ],
+    [
+     "Loss before income tax",
+     "",
+     "13,062,674",
+     "",
+     "4,426,964"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "838",
+     "",
+     "63"
+    ],
+    [
+     "Net loss",
+     "$",
+     "13,063,512",
+     "$",
+     "4,427,027"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3221,
+    "end_line": 3243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014 Segment Information"
+    }
+   },
+   "prose_before": "The Company elected not to apply the ROU and lease liability recognition requirements to above mentioned short-term lease in accordance with ASC 842-20-25-2 and continued to recognize the lease monthly payments in profit or loss on a straight-line basis over the remaining lease term period.\nRent expense for the year ended December 31, 2025 and during the six-month transition period ended December 31, 2024 was $24,000 and $12,000, respectively.\nNote 11 \u2014 Segment Information\nThe Company conducts its business as a single operating and reportable segment based on its organizational and management structure and the manner in which the Chief Operating Decision Maker (\u201cCODM\u201d) reviews financial information to allocate resources and access performance, consistent with the Company\u2019s segment reporting policy described in Note 2. The accounting policies of the Company\u2019s single operating segment are the same as those described in Note 2. The key measure of segment profitability used by the CODM to allocate resources and assess performance is net income (loss), as reported on the consolidated statements of operations. The following table presents the significant expense categories of the Company\u2019s single operating segment for the periods presented.",
+   "prose_after": "Note 12 \u2014 Transition Period Comparative Data\nThe following table shows financial information for the twelve months ended December 31, 2025 and the comparative period ended December 31, 2024 (the \u201cComparative Period\u201d). The Comparative Period information is derived from the Company\u2019s unaudited, consolidated and combined financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3216,
+     "token": "PAGE_BREAK",
+     "id": 133,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 3279,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Twelve Months Ended",
+     "",
+     "",
+     "For the Twelve Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "10,248,545",
+     "",
+     "$",
+     "6,408,566",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "2,814,129",
+     "",
+     "",
+     "2,437,375",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "13,062,674",
+     "",
+     "",
+     "8,845,941",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(13,062,674)",
+     "",
+     "",
+     "(8,845,941)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(13,062,674)",
+     "",
+     "",
+     "(8,845,941)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes provision",
+     "",
+     "(838)",
+     "",
+     "",
+     "(1,688)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(13,063,512)",
+     "",
+     "$",
+     "(8,847,629)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss applicable to common stock per share, basic and diluted",
+     "$",
+     "(0.35)",
+     "",
+     "$",
+     "(0.24)",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding, basic and diluted",
+     "",
+     "36,820,810",
+     "",
+     "",
+     "36,189,502",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3250,
+    "end_line": 3279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 Transition Period Comparative Data"
+    }
+   },
+   "prose_before": "Note 12 \u2014 Transition Period Comparative Data\nThe following table shows financial information for the twelve months ended December 31, 2025 and the comparative period ended December 31, 2024 (the \u201cComparative Period\u201d). The Comparative Period information is derived from the Company\u2019s unaudited, consolidated and combined financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "Consolidated Statements of Cash Flows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3216,
+     "token": "PAGE_BREAK",
+     "id": 133,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 3279,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Twelve Months Ended December 31, 2025",
+     "",
+     "",
+     "For the Twelve Months Ended December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(13,063,512)",
+     "",
+     "$",
+     "(8,847,629)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "618,974",
+     "",
+     "",
+     "432,256",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "38,189",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other receivable",
+     "",
+     "431,188",
+     "",
+     "",
+     "(322,613)",
+     ""
+    ],
+    [
+     "Prepaid expenses - related party",
+     "",
+     "-",
+     "",
+     "",
+     "(1,500,000)",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "550,346",
+     "",
+     "",
+     "(72,641)",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "36,654",
+     "",
+     "",
+     "(68,819)",
+     ""
+    ],
+    [
+     "Accrued liability - related party",
+     "",
+     "9,606,666",
+     "",
+     "",
+     "2,780,667",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "(4,134)",
+     "",
+     "",
+     "(200)",
+     ""
+    ],
+    [
+     "Income tax payables",
+     "",
+     "(50)",
+     "",
+     "",
+     "(40,694)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,785,679)",
+     "",
+     "",
+     "(7,639,673)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments of transactions cost",
+     "",
+     "(117,473)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock through stock purchase agreement",
+     "",
+     "-",
+     "",
+     "",
+     "79,491",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock for PIPE investment",
+     "",
+     "2,400,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "(29,462)",
+     "",
+     "",
+     "(568,917)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "2,253,065",
+     "",
+     "",
+     "(489,426)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "467,386",
+     "",
+     "",
+     "(8,129,099)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of the period",
+     "",
+     "916,916",
+     "",
+     "",
+     "9,046,015",
+     ""
+    ],
+    [
+     "Cash at end of the period",
+     "$",
+     "1,384,302",
+     "",
+     "$",
+     "916,916",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income tax",
+     "$",
+     "913",
+     "",
+     "$",
+     "43,966",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Non-cash Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recognition of derivative liabilities upon closing of the PIPE investment",
+     "$",
+     "318,316",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3282,
+    "end_line": 3329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 Transition Period Comparative Data"
+    }
+   },
+   "prose_before": "Consolidated Statements of Cash Flows:",
+   "prose_after": "Note 13 \u2014 Subsequent Events\nRegistered Direct Offering and Private Placement\nOn January 5, 2026, the Company entered into a Securities Purchase Agreement with a healthcare-focused institutional investor. On January 6, 2026, the Company consummated a Registered Direct Offering and a concurrent Private Placement, resulting in gross proceeds of approximately $8.0 million, before deducting placement agent fees and other offering expenses.\nThe Company issued 4,063,290 shares of Common Stock and Pre-Funded Warrants to purchase 1,000,000 shares of Common Stock at an exercise price of $0.00001 per warrant share. These securities were offered pursuant to a shelf registration statement on Form S-3 (File No. 333-283770).\nThe Company issued PIPE Common Warrants exercisable for up to 7,594,935 shares of Common Stock at an exercise price of $1.39 per warrant share. These warrants expire on the fifth anniversary of the issuance date.\nOn January 16, 2026, the Company filed a Form S-1 relating to the offer and resale by certain selling stockholders of up to 9,236,141 shares of Common Stock. This registration statement includes shares issued in private placements in September 2025, shares issuable under contingent \u201ctrue-up\u201d provisions, and the 7,594,935 shares of Common Stock issuable upon exercise of the PIPE Common Warrants issued on January 6, 2026. The registration statement became effective on January 23, 2026.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3279,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 3329,
+     "token": "PAGE_BREAK",
+     "id": 135,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ESTRELLA IMMUNOPHARMA, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 17, 2026",
+     "By:",
+     "/s/ Cheng Liu",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Cheng Liu"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ESTRELLA IMMUNOPHARMA, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3360,
+    "end_line": 3368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "On February 27, 2026, Nasdaq notified us that it has granted an extension until June 29, 2026, to regain compliance by holding an annual meeting of shareholders. As outlined in our plan of compliance submitted to Nasdaq on February 24, 2026, we intend to satisfy this requirement by holding a joint 2025/2026 annual meeting.\nOffice Sublease Agreement\nOn January 1, 2026, the Company entered into an office sublease agreement (\u201cLease 5\u201d) with Eureka, a related party. Pursuant to this agreement, the sublease commenced on January 1, 2026 and expires on June 30, 2026 with $2,000 sublease fee per month.\nMilestones under Statement of Work #001\nIn January 2026, one additional patient was dosed in the STARLIGHT-1 clinical trial. The Company accrued an additional $1.375 million for this milestone under this SOW.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3355,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 3408,
+     "token": "PAGE_BREAK",
+     "id": 137,
+     "namespace": "arabic",
+     "page_number": 102
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Cheng Liu",
+     "Chief Executive Officer and Director",
+     "March 17, 2026"
+    ],
+    [
+     "Cheng Liu",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Peter Xu",
+     "Chief Financial Officer",
+     "March 17, 2026"
+    ],
+    [
+     "Peter Xu",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Hong Zhang",
+     "Chairperson and Director",
+     "March 17, 2026"
+    ],
+    [
+     "Hong Zhang",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marsha Roberts",
+     "Director",
+     "March 17, 2026"
+    ],
+    [
+     "Marsha Roberts",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Fan Wu",
+     "Director",
+     "March 17, 2026"
+    ],
+    [
+     "Fan Wu",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Janelle Wu",
+     "Director",
+     "March 17, 2026"
+    ],
+    [
+     "Janelle Wu",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Pei Xu",
+     "Director",
+     "March 17, 2026"
+    ],
+    [
+     "Pei Xu",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dengyao Jia",
+     "Director",
+     "March 17, 2026"
+    ],
+    [
+     "Dengyao Jia",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3371,
+    "end_line": 3407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3355,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 3408,
+     "token": "PAGE_BREAK",
+     "id": 137,
+     "namespace": "arabic",
+     "page_number": 102
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

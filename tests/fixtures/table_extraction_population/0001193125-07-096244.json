@@ -1,0 +1,2433 @@
+{
+ "accession": "0001193125-07-096244",
+ "cik": "0001141399",
+ "form": "10-K/A",
+ "filing_date": "2007-04-30",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "68-0389419"
+    ],
+    [
+     "(State of incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "11755 Wilshire Boulevard, Suite 2000\n\n\n\nLos Angeles, CA 90025",
+     "(310) 883-1300"
+    ],
+    [
+     "(Address of principal executive offices, including zip code)",
+     "(Registrant\u2019s telephone number, including area code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K/A\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2006\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 0-33407\nAbraxis BioScience, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 42,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock, par value $0.001 per share",
+     "The NASDAQ Stock Market LLC"
+    ],
+    [
+     "(Title of class)",
+     "(Name of each exchange on which registered)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [X] No [ ]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained to the best of the registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 42,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "  Patrick Soon-Shiong, M.D.",
+     "54",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Michael Blaszyk",
+     "54",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Kirk K. Calhoun",
+     "62",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  David S. Chen, Ph.D.",
+     "58",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stephen D. Nimer, M.D.",
+     "52",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Leonard Shapiro",
+     "78",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Michael S. Sitrick",
+     "59",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Sir Richard Sykes",
+     "64",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lisa Gopalakrishnan (Gopala)",
+     "45",
+     "Executive Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Frank Harmon",
+     "52",
+     "Chief Operating Officer and Executive Vice President of Abraxis Pharmaceutical Products Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard E. Maroun",
+     "52",
+     "Chief Administrative Officer, General Counsel and Corporate Secretary"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Carlo Montagner",
+     "40",
+     "President of Abraxis Oncology Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Thomas H. Silberg",
+     "60",
+     "President of Abraxis Pharmaceutical Products Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Bruce Wendel",
+     "53",
+     "Executive Vice President, Corporate Development"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Abraxis BioScience, Inc. is filing this Amendment to its Annual Report on Form 10-K for the fiscal year ended December 31, 2006 as filed with the Securities and Exchange Commission on March 1, 2007 (the \u201cAnnual Report\u201d), for the purpose of accelerating the delivery of information that was to be incorporated by reference from its definitive proxy statement pursuant to Regulation 14A of the Securities Exchange Act of 1934.\nIn addition, as a result of NASDAQ\u2019s transition to a national securities exchange on August 1, 2006, the securities of NASDAQ listed companies have now become registered under Section 12(b) of the Securities Exchange Act of 1934, and the name of the exchange upon which these securities are listed has been changed to \u201cThe NASDAQ Stock Market LLC.\u201d This Amendment corrects the cover page of the Annual Report to reflect these changes.\nNo other amendments are being made to the Annual Report. Except as otherwise expressly stated below, this Amendment does not reflect events occurring after the date of the Annual Report nor does it modify or update the disclosure contained in the Annual Report in any way other than as required to reflect the amendments discussed above and reflected below.\nPART III\nItem 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following sets forth certain information with respect to our directors and executive officers as of March 31, 2007:",
+   "prose_after": "Patrick Soon-Shiong, M.D. became chairman and chief executive officer of Abraxis BioScience in April 2006. Dr. Soon-Shiong previously served American Pharmaceutical Partners (\u201cAPP\u201d) as president since July 2001 and chief executive officer and chairman of the board of directors from its inception in March 1996. Dr. Soon-Shiong also served as president, chief financial officer and a director of American BioScience, Inc. (\u201cABI\u201d) from June 1994 until April 2006 when APP and ABI were merged to form Abraxis BioScience. From June 1994 to June 1998, he served as chief executive officer and chairman of the board of directors of VivoRx, Inc., a biotechnology company. Dr. Soon-Shiong is named as a co-inventor on over 40 issued U.S. and foreign patents and is a fellow of the American College of Surgeons and the Royal College of Physicians and Surgeons of Canada. Dr. Soon-Shiong holds a degree in medicine from the University of the Witwatersrand and a M.Sc. in science from the University of British Columbia.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "  David Bowman",
+     "51",
+     "Vice President\u2014Product Development, APP Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Mitchall G. Clark",
+     "46",
+     "Vice President\u2014Regulatory Affairs, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Nguyen V. Dat, Ph.D.",
+     "56",
+     "Vice President\u2014Clinical Research, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Neil P. Desai, Ph.D.",
+     "42",
+     "Vice President\u2014Research and Development, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Nicholas Everett, Ph.D.",
+     "54",
+     "Chief Scientist of Drug Discovery, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Barry Flannelly",
+     "49",
+     "Vice President\u2014Global Sales and Marketing, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Katherine Gregory",
+     "48",
+     "Vice President\u2014Business Development, APP Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Michael J. Hawkins",
+     "60",
+     "Chief Medical Officer, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Scott W. Meacham",
+     "48",
+     "Vice President\u2014Sales and National Accounts, APP Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Robert H. Murdock, Jr.",
+     "60",
+     "Vice President\u2014Clinical Operations, ABI Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deena Reyes",
+     "41",
+     "Vice President\u2014Marketing, APP Division"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Sam Trippie",
+     "66",
+     "Senior Vice President\u2014Manufacturing, APP Division"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 150,
+    "end_line": 177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Thomas H. Silberg has served as president of Abraxis Pharmaceutical Products since September 2006, after joining us as executive vice president, commercial operations & operational excellence in May 2006. Mr. Silberg is responsible for all global operations for APP. From March 2004 to June 2005, Mr. Silberg served as chief operating officer of Tercica, Inc., where his direct responsibilities included regulatory, clinical development, medical affairs, manufacturing, quality assurance/quality control, sales and marketing, business development, and project management. Prior to his work at Tercica, Mr. Silberg was executive vice president and chief operating officer of Ligand Pharmaceuticals from March 2001 to May 2003, after serving as senior vice president of commercial operations from January 2000. Mr. Silberg began his career in 1972 with Hoffmann-LaRoche, Inc., where, over a 27-year span he held a variety of positions and rose through the management ranks to vice president of business operations. Mr. Silberg earned a B.S. in marketing and advertising from the University of Minnesota.\nBruce Wendel became our executive vice president of corporate development in March 2006. Mr. Wendel joined APP in 2004 as vice president of corporate development. He began his 14 years with Bristol-Myers Squibb as in-house counsel before shifting to business and corporate development. Before joining APP, he served as vice president, business development & licensing for IVAX Corporation. Previously, Mr. Wendel served in the legal departments of Playtex and Combe. He earned a Juris Doctorate degree from Georgetown University Law School where he was an editor of Law & Policy in International Business, and a B.S. from Cornell University.\nThe following table shows other officers and key employees as of March 31, 2007:",
+   "prose_after": "David Bowman has served as Vice President of Product Development of APP since December 2006. Prior to joining APP, he served as President and CEO of NeuRxus, Inc. from June 2004 to December 2006. From August 2002 to June 2004 he ran global projects for Pharmacia/Pfizer and served as Vice President of Operations for Zonagen, Inc. prior to leaving after 11 years. Mr. Bowman holds a M.P.H. in Toxicology and Laboratory Sciences and a B.S. in Microbiology and Cell & Molecular Biology from the University of Michigan.\nMitchall G. Clark has served as Vice President of Regulatory Affairs of ABI since May 2002. Mr. Clark served as Vice President of Regulatory Affairs of APP from September 1998 to May 2002. From May 1997 to September 1998, Mr. Clark served as senior director of regulatory affairs at VivoRx, Inc. Prior to that, he served as Senior Director of Regulatory Affairs from April 1996 to May 1997 at Faulding, Inc. Mr. Clark holds a B.Pharm. from the University of Nottingham, United Kingdom.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 186,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Component",
+     "Type of Payment",
+     "Purpose"
+    ],
+    [
+     "  Base Salary",
+     "Fixed annual cash payments with each executive eligible for annual increase.",
+     "Attract and retain talent."
+    ],
+    [
+     "  Annual Performance Incentives",
+     "Performance-based annual cash payment.",
+     "Focus on company, business unit and individual goals."
+    ],
+    [
+     "  Long-term Incentives",
+     "Stock option and restricted stock awards.",
+     "Align individual and business unit performance with interests of stockholders."
+    ],
+    [
+     "  Health and Welfare Benefits",
+     "Fixed and available to all employees.",
+     "Attract and retain talent. Equitable pay."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 303,
+    "end_line": 312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Aligning performance with stockholder interests. We seek to align the performance of our NEOs with stockholder interests through the grant of stock options and shares of restricted stock under our stock incentive plan. Because the price of our common stock is subject to external factors, we also tie annual incentive compensation to our financial, operational and individual performance. The stock options granted to our NEOs vest solely based on the passage of time. We believe that time-vested equity awards encourage long-term value creation and executive retention because executives can realize value from such rewards only if they remain employed by us until the awards vest. In addition, we use stock options because we believe that options will generate value to the recipient only if our stock price increases during the term of the option.\nElements of Executive Compensation\nOur executive compensation program is designed to reflect the philosophy and objectives we have described above. The elements of executive pay are presented in the table below and discussed in more detail in the following paragraphs:",
+   "prose_after": "We view the base salary, incentive bonus and benefit components of compensation as related and designed to reward executives on an annual basis, while we make determinations regarding long-term incentives with a longer time horizon than we do with the salary, bonus and benefit components. We determine the appropriate level for each compensation component based in part, but not exclusively, on competitive benchmarking consistent with our recruiting and retention goals, our view of internal equity and consistency and other considerations we deem relevant, such as rewarding extraordinary performance or unique accomplishments. We make our salary and annual bonus decisions so that we can remain competitive with our peers. Except as described below, our compensation committee has not adopted any formal or informal policies or guidelines for allocating compensation between long-term and currently paid out compensation, between cash and non-cash compensation or among different forms of non-cash compensation.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 313,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary (1)($)",
+     "Bonus\n(2) ($)",
+     "Stock Awards\n(3) ($)",
+     "Option Awards\n(4) ($)",
+     "Non-Equity Incentive Plan Compensation\n\n\n\n(5) ($)",
+     "All Other Compensation\n\n\n\n(6)($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "  Patrick Soon-Shiong\n\n\n\nChairman of the Board and Chief Executive Officer",
+     "2006",
+     "692,885",
+     "\u2014",
+     "41,283",
+     "306,605",
+     "830,000",
+     "769,828",
+     "2,640,601"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lisa Gopalakrishnan\n\n\n\nExecutive Vice President and Chief Financial Officer",
+     "2006",
+     "169,231",
+     "100,000",
+     "\u2014",
+     "39,397",
+     "\u2014",
+     "\u2014",
+     "308,628"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Ronald Pauli\n\n\n\nFormer Chief Financial Officer (7)",
+     "2006",
+     "121,363",
+     "\u2014",
+     "\u2014",
+     "89,544",
+     "\u2014",
+     "\u2014",
+     "210,907"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Nicole Williams\n\n\n\nFormer Executive Vice President and Chief Financial Officer (8)",
+     "2006",
+     "155,988",
+     "\u2014",
+     "\u2014",
+     "259,309",
+     "\u2014",
+     "\u2014",
+     "415,297"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard Maroun\n\n\n\nChief Administrative Officer and General Counsel",
+     "2006",
+     "350,000",
+     "\u2014",
+     "1,284,406",
+     "65,389",
+     "\u2014",
+     "\u2014",
+     "1,699,795"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Bruce Wendel\n\n\n\nExecutive Vice President of Corporate Development",
+     "2006",
+     "309,246",
+     "\u2014",
+     "\u2014",
+     "144,316",
+     "\u2014",
+     "302,879",
+     "756,441"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Carlo Montagner\n\n\n\nPresident Abraxis Oncology Division",
+     "2006",
+     "623,077",
+     "275,000",
+     "\u2014",
+     "93,415",
+     "\u2014",
+     "74,281",
+     "1,065,773"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 375,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The compensation committee has reviewed and discussed the Compensation Discussion and Analysis with management and, based on the review and discussions, recommended to the board of directors that the Compensation Discussion and Analysis be included in this Annual Report on Form 10-K and our 2007 Annual Stockholders\u2019 Meeting Proxy Statement. The material in this report is not deemed filed with the SEC and is not incorporated by reference in any of our filings under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made on, before, or after the date of this Annual Report and irrespective of any general incorporation language in such filing.\nCompensation Committee of the Board of Directors /S/ STEPHEN D. NIMER Stephen D. Nimer /S/ DAVID S. CHEN David S. Chen\nCompensation Committee Interlocks and Insider Participation\nNo interlocking relationship exists between any member of our board of directors or compensation committee and any member of the board of directors or compensation committee of any other company, nor has such interlocking relationship existed in the past.\nSUMMARY COMPENSATION TABLE\nThe following table sets forth information regarding the compensation of our CEO, each of the persons who served as our CFO in 2006 and our three other highest paid executive officers for 2006.",
+   "prose_after": "(1) The salaries for Mr. Maroun and Mr. Montagner include amounts paid by ABI prior to our merger. ABI paid $58,462 to Mr. Maroun and $155,769 to Mr. Montagner.\n(2) The annual cash incentive award that is paid to the executive officers is reflected under the Non-Equity Incentive Plan Compensation column. The bonus amounts for Ms. Gopalakrishnan and Mr. Montagner represent signing bonuses. The signing bonus for Mr. Montagner was paid by ABI prior to the closing of the merger.\n(3) The amount shown in this column reflects the compensation expense for outstanding restricted stock awards held by the NEOs recognized by us in 2006 in accordance with SFAS 123R, disregarding for this purpose the estimate of forfeitures related to service-based vesting conditions. The stock award for Mr. Maroun related to a restricted stock unit that he was granted by American BioScience that we assumed in connection with the merger. There were no forfeitures by the NEOs in 2006. The restricted stock awards for which this expense is shown in the Summary Compensation Table (\u201cSCT\u201d) also includes awards granted in 2003 and 2006 for which we recognized expense in 2006. A discussion of the assumptions used in calculating the compensation cost is set forth in Note 12 to the Notes to our consolidated financial statements included in our Annual Report on Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Other Annual Compensation ($)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Dr. Soon-Shiong",
+     "Mr. Wendel",
+     "Mr. Montagner"
+    ],
+    [
+     "Personal Use of Aircraft (a)",
+     "34,739",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Security (b)",
+     "727,199",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Company Provided Housing (c)",
+     "\u2014",
+     "\u2014",
+     "65,000"
+    ],
+    [
+     "Relocation Expenses (d)",
+     "\u2014",
+     "295,072",
+     "9,281"
+    ],
+    [
+     "Other",
+     "7,890",
+     "7,807",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total:",
+     "769,828",
+     "302,879",
+     "74,281"
+    ]
+   ],
+   "caption_stack": [
+    "Other Annual Compensation ($)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(4) The amount shown in this column reflects the compensation expense for outstanding options held by the NEOs recognized by us in 2006 in accordance with SFAS 123R, disregarding for this purpose the estimate of forfeitures related to service-based vesting conditions. Options to purchase 51,070 that were granted to Nicole Williams and options to purchase 16,000 granted to Ronald Pauli expired in 2006. The stock option awards for which this expense is shown in the SCT also includes awards granted in 2002, 2003, 2004 and 2005 for which we continued to recognize expense in 2006. A discussion of the assumptions used in calculating the compensation cost is set forth in Note 12 to the Notes to our consolidated financial statements included in our Annual Report on Form 10-K.\n(5) The amount shown in this column represents the annual cash incentive award earned under the 2006 Management Incentive Compensation Program, based on our achievement of our budgeted goals of EBITDA, gross sales and gross profit, as well as the executive\u2019s individual and business unit performance. The compensation committee has not determined the amount of bonus payable to Lisa Gopalakrishnan, Richard Maroun, Bruce Wendell or Carlo Montanger. The amount of these bonuses are expected to be determined in the second quarter. Once the amount of these bonuses have been determined, we will disclose these amounts on a Form 8-K.\n(6) The table below provides the aggregate incremental cost of the components of the Other Annual Compensation provided by or paid for by us for the personal benefit of the NEOs to the extent that such NEO received Other Annual Compensation in excess of $10,000 in 2006.",
+   "prose_after": "(a) For security and management efficiency reasons, certain of our executive officers travel on our private aircraft primarily for business-related matters. The methodology that we use to calculate our incremental direct operating cost for an officer\u2019s personal use of the aircraft is based on the cost of fuel, trip-related airport fees, and pilot meals and lodging. Since the aircraft is primarily used for business travel, the methodology excludes the fixed costs which do not change based on the usage of the aircraft (such as pilot salaries) and non-trip related hanger and maintenance expenses.\n(b) For security-related reasons, we provide Dr. Soon-Shiong with the use of cars, trained security drivers, security systems for his residences, and 24 hour personal and family security services.\n(c) Mr. Montagner was provided the use of a house that is owned by us. The amount reflected represented the value of the housing provided by us.\n(d) We provided for relocation expenses that were incurred by Mr. Wendel and Mr. Montagner pursuant to the terms of their employment agreements.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Grant Date",
+     "Estimate Future Payouts Under Non-Equity Incentive Plan Awards (1)",
+     "",
+     "",
+     "All Other Stock Awards:\nNumber of Shares of Stock or Units (2)(#)",
+     "All Other Option Awards:\nNumber of Securities Underlying Options\n\n\n\n(2)(#)",
+     "Exercise or Base Price of Option Awards\n\n\n\n(3)($/sh)",
+     "Grant Date Fair Value of Stock and Option Awards (4)($)"
+    ],
+    [
+     "",
+     "",
+     "Threshold\n\n\n\n($)",
+     "Target\n\n\n\n($)",
+     "Maximum\n\n\n\n($)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Patrick Soon-Shiong",
+     "\u2014",
+     "493,850",
+     "705,500",
+     "917,150",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lisa Gopalakrishnan",
+     "\u2014   8/1/06",
+     "140,000\n\u2014",
+     "200,000\n\u2014",
+     "260,000\n\u2014",
+     "\u2014  \n\u2014",
+     "\u2014   35,000",
+     "\u2014   20.07",
+     "\u2014   375,900"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard Maroun",
+     "\u2014   4/18/06 5/19/06",
+     "157,500 \u2014  \n\u2014",
+     "225,000 \u2014  \n\u2014",
+     "292,500 \u2014  \n\u2014",
+     "\u2014   176,866\n\u2014",
+     "\u2014   \u2014   35,000",
+     "\u2014   \u2014   29.97",
+     "\u2014   5,000,000 421,750"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Bruce Wendel",
+     "\u2014   4/17/06 5/21/06",
+     "75,600 \u2014  \n\u2014",
+     "108,000 \u2014  \n\u2014",
+     "140,400 \u2014  \n\u2014",
+     "\u2014   \u2014  \n\u2014",
+     "\u2014   10,000 5,000",
+     "\u2014   30.56 29.97",
+     "\u2014   148,500 60,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Carlo Montagner",
+     "\u2014   5/19/06",
+     "236,250\n\u2014",
+     "337,500\n\u2014",
+     "438,750\n\u2014",
+     "\u2014  \n\u2014",
+     "\u2014   50,000",
+     "\u2014   29.97",
+     "\u2014   602,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 455,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(a) For security and management efficiency reasons, certain of our executive officers travel on our private aircraft primarily for business-related matters. The methodology that we use to calculate our incremental direct operating cost for an officer\u2019s personal use of the aircraft is based on the cost of fuel, trip-related airport fees, and pilot meals and lodging. Since the aircraft is primarily used for business travel, the methodology excludes the fixed costs which do not change based on the usage of the aircraft (such as pilot salaries) and non-trip related hanger and maintenance expenses.\n(b) For security-related reasons, we provide Dr. Soon-Shiong with the use of cars, trained security drivers, security systems for his residences, and 24 hour personal and family security services.\n(c) Mr. Montagner was provided the use of a house that is owned by us. The amount reflected represented the value of the housing provided by us.\n(d) We provided for relocation expenses that were incurred by Mr. Wendel and Mr. Montagner pursuant to the terms of their employment agreements.\n(7) Mr. Pauli served as our interim Chief Financial Officer from June 1, 2006 through August 18, 2006.\n(8) Ms. Williams served as our Executive Vice President and Chief Financial Officer until May 31, 2006.\nGRANTS OF PLAN-BASED AWARDS TABLE\nThe following table sets forth information regarding the grants of annual cash incentive compensation, stock options and restricted stock to our NEOs made in 2006.",
+   "prose_after": "(1) These columns show the range of awards under our 2006 Corporate Bonus Program, which is described in the section \u201cBonuses\u201d in the Compensation Discussion and Analysis. The \u201cthreshold\u201d column represents the minimum payout for the performance metrics under the Management Cash Incentive Program assuming that the minimum level of performance is attained. The \u201ctarget\u201d column represents the amount payable if the performance metrics are reached. The \u201cmaximum\u201d column represents the maximum payout for the performance metrics under the 2006 Corporate Bonus Program assuming that the maximum level of performance is attained.\n(2) These columns show the awards under the 2001 Stock Incentive Plan as described in the section \u201cLong-Term Incentives\u201d in the Compensation Discussion and Analysis as well as grants of restricted units under the Restricted Unit Plan II that we assumed from ABI. The dollar amount recognized by us for theses awards is shown in the Summary Compensation Table in the columns entitled \u201cStock Awards\u201d and \u201cOption Awards\u201d, respectively, and their valuation assumptions are referenced in footnotes 3 and 4, respectively, of that table.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 482,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number\n\n\n\n[ ]f\n\n\n\nSecurities Underlying Unexercised Options\n\n\n\nExercisable",
+     "Number of Securities Underlying Unexercised Options Unexercisable",
+     "",
+     "Equity Incentive Plan Awards:\nNumber of Securities Underlying Unexercised Unearned Options",
+     "Option Exercise Price",
+     "Option Expiration Date",
+     "Number of Shares or Units of Stock That Have Not Vested",
+     "",
+     "Market Value of Shares or Units of Stock That Have Not Vested",
+     "",
+     "Equity Incentive Plan Awards:\nNumber of Unearned Shares, Units or Other Rights That Have Not Vested",
+     "",
+     "Equity Incentive Plan Awards:\nMarket or Payout Value of Unearned Shares, Units or Other Rights That Have Not Vested",
+     ""
+    ],
+    [
+     "  Patrick Soon-Shiong",
+     "187,500 202,500 3,278 6,722 10,000",
+     "3,278 6,722 27,837 2,163",
+     "(1)\n(1)\n(2)\n(3)",
+     "",
+     "2.67 4.00 29.75 32.73 46.23 50.85",
+     "3/15/10 3/8/11 11/18/14 11/18/09 2/16/15 2/16/10",
+     "1,875",
+     "(4)",
+     "$",
+     "51,263",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lisa Gopalakrishnan",
+     "",
+     "35,000",
+     "(5)",
+     "",
+     "20.07",
+     "8/1/16",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard Maroun",
+     "",
+     "35,000",
+     "(6)",
+     "",
+     "29.97",
+     "5/19/16",
+     "",
+     "",
+     "",
+     "",
+     "176,866",
+     "(7)",
+     "$",
+     "5,000,000"
+    ],
+    [
+     "  Bruce Wendel",
+     "12,500 2,500",
+     "12,500 7,500 5,000",
+     "(8)\n(6)\n(6)",
+     "",
+     "27.89 30.56 29.97",
+     "8/9/14 4/17/16 5/21/16",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Carlo Montagner",
+     "12,500",
+     "37,500",
+     "(9)",
+     "",
+     "29.97",
+     "5/19/16",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(2) These columns show the awards under the 2001 Stock Incentive Plan as described in the section \u201cLong-Term Incentives\u201d in the Compensation Discussion and Analysis as well as grants of restricted units under the Restricted Unit Plan II that we assumed from ABI. The dollar amount recognized by us for theses awards is shown in the Summary Compensation Table in the columns entitled \u201cStock Awards\u201d and \u201cOption Awards\u201d, respectively, and their valuation assumptions are referenced in footnotes 3 and 4, respectively, of that table.\n(3) The exercise price per share is the closing price of our common stock on the Nasdaq at the date of the option grant.\n(4) The amount shown in this column represents the total grant date fair value of the awards computed in accordance with SFAS 123R. See Note 12 to the Notes to our Consolidated Financial Statements included in our Annual Report on Form 10-K for the valuation assumptions used in determining the grant date fair value of stock and option grants.\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END TABLE\nThe following table sets forth the outstanding equity awards of our NEOs at the end of 2006.",
+   "prose_after": "(1) Stock options which vests in four equal annual installments beginning on 11/18/05.\n(2) Stock option of which 10,000 shares vests on 2/16/06, 2/16/07 and 2/16/08 and 7,837 shares vests on 2/16/09.\n(3) Stock option that vests on 2/16/09.\n(4) Restricted Stock that vests on 2/25/07.\n(5) Stock options which vests in four equal annual installments beginning on 8/1/07.\n(6) Stock option which vests in four equal annual installments beginning on 5/21/07.\n(7) Restricted unit grant which was issued under the Restricted Unit Plan II that we assumed from ABI in connection with the merger that vests in two equal installments on April 18, 2008 and April 18, 2010.\n(8) Stock option which vests in four equal annual installments beginning on 8/9/06.\n(9) Stock option which vests in four equal annual installments beginning on 8/9/06.\nOPTION EXERCISES AND STOCK VESTED",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 532,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\n\n\nShares\n\n\n\nAcquired\n\n\n\non Exercise",
+     "Value Realized\n\n\n\non Exercise",
+     "",
+     "Number of\n\n\n\nShares\n\n\n\nAcquired\n\n\n\non Vesting",
+     "Value Realized\n\n\n\non Vesting",
+     ""
+    ],
+    [
+     "  Patrick Soon-Shiong",
+     "\u2014",
+     "",
+     "\u2014",
+     "5,625",
+     "$",
+     "174,937"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Ronald E. Pauli",
+     "10,000 3,000 2,000 5,500 2,000 748 1,252",
+     "$ $ $ $ $ $ $",
+     "122,096 40,350 29,900 78,257 32,900 2,109 3,530",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Nicole Williams",
+     "290 3,640 12,000 33,000",
+     "$ $ $ $",
+     "594 7,093 179,816 494,495",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Stock option of which 10,000 shares vests on 2/16/06, 2/16/07 and 2/16/08 and 7,837 shares vests on 2/16/09.\n(3) Stock option that vests on 2/16/09.\n(4) Restricted Stock that vests on 2/25/07.\n(5) Stock options which vests in four equal annual installments beginning on 8/1/07.\n(6) Stock option which vests in four equal annual installments beginning on 5/21/07.\n(7) Restricted unit grant which was issued under the Restricted Unit Plan II that we assumed from ABI in connection with the merger that vests in two equal installments on April 18, 2008 and April 18, 2010.\n(8) Stock option which vests in four equal annual installments beginning on 8/9/06.\n(9) Stock option which vests in four equal annual installments beginning on 8/9/06.\nOPTION EXERCISES AND STOCK VESTED\nThe following table reflects the aggregate value realized by the NEOs for option exercises and for restricted stock that vested in 2006.",
+   "prose_after": "AGREEMENTS WITH OUR NEOs\nThe following is a description of selected terms of the agreements that we have entered into with our NEOs, as such terms relate to the compensation reported and described in the \u201cCompensation Discussion and Analysis\u201d section above.\nEmployment Agreement with Carlo Montagner\nUnder the terms of our agreement with Mr. Montagner, he receives an annual base salary of $675,000, subject to annual review by our board of directors or compensation committee in accordance with established practices, and is eligible to participate in our bonus plan designed for other executive officers. Mr. Montagner\u2019s bonus target was 50% of his base salary for 2006. In addition, consistent with the terms of the agreement, Mr. Montagner received an option to purchase 50,000 shares of our common stock on May 19, 2006 with an exercise price of $29.97. This option will vest in four equal annual installments with the first installment vesting on the first anniversary of the grant date. The agreement also provides that Mr. Montagner will be paid $400,000 in cash and/or our common stock in four equal annual installments provided that Mr. Montagner is employed by us upon the date of each annual installment payment. The first payment of $100,000 was made in the first quarter of 2007 in cash. Mr. Montagner was also entitled to reimbursement of relocation expenses.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned\n\n\n\n($)",
+     "Option\n\n\n\nAwards\n\n\n\n($)(2)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "  Michael Blaszyk(1)",
+     "13,833",
+     "11,227",
+     "25,060"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Kirk Calhoun",
+     "52,000",
+     "44,909",
+     "96,909"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  David Chen",
+     "45,500",
+     "141,338",
+     "186,838"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stephen Nimer",
+     "37,500",
+     "141,338",
+     "178,838"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Leonard Shapiro",
+     "43,500",
+     "141,338",
+     "184,838"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Michael Sitrick(1)",
+     "13,833",
+     "11,227",
+     "25,060"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard Sykes(1)",
+     "10,833",
+     "11,227",
+     "22,060"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 612,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Directors who are also our employees receive no additional compensation for their services as directors. Our non-employee directors receive cash compensation as follows: (i) an annual retainer of $20,000, (ii) $2,500 for each board meeting attended in person and $500 for each board meeting attended telephonically, (iii) an annual retainer for the Audit Committee Chair of $5,000; (iv) $2,000 for attendance at each audit committee meeting in person and $500 for each audit committee meeting attended telephonically; and (v) $1,000 for attendance at each compensation committee meeting in person and $500 for each compensation committee meeting attended telephonically. Non-employee directors are also reimbursed for travel expenses and other out-of-pocket costs of attending board and committee meetings. In addition, non-employee directors are eligible to receive options and shares of common stock directly under our 2001 non-employee director stock option program established under our 2001 Stock Incentive Plan. Non-employee directors are eligible to be granted an initial option to purchase 7,500 shares of common stock upon their initial appointment to the board of directors with subsequent annual option grants to purchase 10,000 shares of common stock, in both instances at an exercise price per share equal to the fair market value of the common stock at the date of grant. Directors who are also our employees are eligible to receive options and shares of common stock directly under our 2001 Stock Incentive Plan.\nThe following table sets forth specified information regarding the compensation for 2006 of our directors who are not employees:",
+   "prose_after": "(1) Messrs. Blaszyk, Sitrick and Sykes became directors effective August 1, 2006.\n(2) The amount shown in this column reflects the compensation expense for outstanding options held by the directors recognized by us in 2006 in accordance with SFAS 123R, disregarding for this purpose the estimate of forfeitures related to service-based vesting conditions. There were no forfeitures by the directors in 2006. A discussion of the assumptions used in calculating the compensation cost is set forth in Note 12 to the Notes to our consolidated financial statements included in our Annual Report on Form 10-K.\nThe stock option detail for each director is shown in the following table along with the total grant date fair value of the awards computed in accordance with SFAS 123R.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director",
+     "Grant Date",
+     "Options Granted (#)",
+     "Option\n\n\n\nPrice ($/Sh)",
+     "Grant Date Fair Value of Option Awards ($)",
+     "Total Options Outstanding (#)"
+    ],
+    [
+     "  Mr. Blaszyk",
+     "8/1/2006",
+     "7,500",
+     "20.07",
+     "80,578",
+     "7,500"
+    ],
+    [
+     "  Mr. Calhoun",
+     "8/1/2006",
+     "10,000",
+     "20.07",
+     "107,437",
+     "38,750"
+    ],
+    [
+     "  Dr. Chen",
+     "8/1/2006",
+     "10,000",
+     "20.07",
+     "107,437",
+     "32,000"
+    ],
+    [
+     "  Dr. Nimer",
+     "8/1/2006",
+     "10,000",
+     "20.07",
+     "107,437",
+     "54,500"
+    ],
+    [
+     "  Mr. Shapiro",
+     "8/1/2006",
+     "10,000",
+     "20.07",
+     "107,437",
+     "38,750"
+    ],
+    [
+     "  Mr. Sitrick",
+     "8/1/2006",
+     "7,500",
+     "20.07",
+     "80,578",
+     "7,500"
+    ],
+    [
+     "  Mr. Sykes",
+     "8/1/2006",
+     "7,500",
+     "20.07",
+     "80,578",
+     "7,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 639,
+    "end_line": 653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Messrs. Blaszyk, Sitrick and Sykes became directors effective August 1, 2006.\n(2) The amount shown in this column reflects the compensation expense for outstanding options held by the directors recognized by us in 2006 in accordance with SFAS 123R, disregarding for this purpose the estimate of forfeitures related to service-based vesting conditions. There were no forfeitures by the directors in 2006. A discussion of the assumptions used in calculating the compensation cost is set forth in Note 12 to the Notes to our consolidated financial statements included in our Annual Report on Form 10-K.\nThe stock option detail for each director is shown in the following table along with the total grant date fair value of the awards computed in accordance with SFAS 123R.",
+   "prose_after": "Item 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information with respect to the beneficial ownership of our common stock as of March 30, 2007, for\n(i) each person who is known by us to beneficially own more than 5% of our common stock, (ii) each of the directors, (iii) each of the named executive officers appearing in the Summary Compensation Table above, and (iv) all of the directors and executive officers as a group.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Number of Common Stock Shares\n\n\n\nBeneficially Owned (1)",
+     "Percent of Class (%)"
+    ],
+    [
+     "  5% Stockholders",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Steven Hassen, Trustee (2)\n\n\n\nThemba 2005 Trust I\n\n\n\n10182 Culver Boulevard\n\n\n\nCulver City, CA 90232",
+     "39,616,143",
+     "24.84"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Steven Hassen, Trustee (3)\n\n\n\nThemba 2005 Trust II\n\n\n\n10182 Culver Boulevard\n\n\n\nCulver City, CA 90232",
+     "36,116,144",
+     "22.65"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    California Capital Limited Partnership (4)\n\n\n\n10182 Culver Boulevard\n\n\n\nCulver City, CA 90232",
+     "37,015,318",
+     "23.21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Fifth Third Bancorp (5)\n\n\n\nFifth Third Center\n\n\n\nCincinnati, OH 45263",
+     "8,684,488",
+     "5.45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Directors and Named Executive Officers (6)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Patrick Soon-Shiong, M.D. (7) (8)(9)",
+     "133,343,055",
+     "83.63"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Lisa Gopala",
+     "-0-",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Bruce Wendel (10)",
+     "16,250",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Rick Maroun (11) (12)",
+     "8,964",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Carlo Montagner (13)",
+     "25,000",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    David S. Chen, Ph.D. (14)",
+     "22,000",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Stephen D. Nimer, M.D. (15)",
+     "52,000",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Leonard Shapiro (16)",
+     "53,250",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Kirk K. Calhoun (17)",
+     "28,750",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Michael S. Sitrick",
+     "-0-",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Richard Sykes",
+     "-0-",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Michael Blaszyk",
+     "-0-",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    All named executive officers and directors as a group (twelve persons) (18)",
+     "133,549,269",
+     "83.75"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 661,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information with respect to the beneficial ownership of our common stock as of March 30, 2007, for\n(i) each person who is known by us to beneficially own more than 5% of our common stock, (ii) each of the directors, (iii) each of the named executive officers appearing in the Summary Compensation Table above, and (iv) all of the directors and executive officers as a group.",
+   "prose_after": "* Represents beneficial ownership of less than 1% of issued and outstanding common stock on March 31, 2007\n(1) Beneficial ownership as reported in the above table has been determined in accordance with Rule 13d-3 of the Securities Exchange Act of 1934. The percentage of shares beneficially owned is based on 159,453,229 shares of common stock outstanding as of March 31, 2007. To our knowledge, except as indicated in the footnotes to this table, and subject to applicable community property laws, such persons have sole voting and investment power with respect to the shares of common stock set forth opposite such person\u2019s name.\n(2) Themba 2005 Trust I has shared voting power of 39,616,143 shares and has shared dispositive power and is deemed to be the beneficial owner of 39,616,143 shares.\n(3) Themba 2005 Trust II has shared voting power of 36,116,144 shares and has shared dispositive power and is deemed to be the beneficial owner of 36,116,144 shares.\n(4) California Capital Limited Partnership has shared voting power of 37,015,318 shares and has shared dispositive power and is deemed to be the beneficial owner of 37,015,318 shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Plan Category",
+     "Number of Securities to be Issued Upon Exercise of Outstanding Options",
+     "",
+     "Weighted- Average Exercise Price of Outstanding Options",
+     "",
+     "Number of Securities Remaining Available for Future Issuance Under Equity Compensation Plans",
+     ""
+    ],
+    [
+     "  Equity Compensation Plans Approved by Security Holders",
+     "3,971,871",
+     "(1)",
+     "$",
+     "23.83",
+     "27,985,381",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Equity Compensation Plans Not Approved by Security Holders",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total",
+     "3,971,871",
+     "",
+     "$",
+     "23.83",
+     "27,985,381",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(16) Includes 28,750 shares of common stock subject to options that are currently exercisable or will become exercisable within 60 days of March 31, 2007.\n(17) Represents 28,750 shares of common stock subject to options that are currently exercisable or will become exercisable within 60 days of March 31, 2007.\n(18) See footnotes (7) through (17). Includes 594,000 shares of common stock subject to options that are currently exercisable or will become exercisable within 60 days of March 31, 2007.\nEQUITY COMPENSATION PLAN INFORMATION\nWe maintain three compensation plans that provide for the issuance of our common stock to officers, directors, other employees or consultants: the\n(i) 1997 Stock Option Plan (the \u201c1997 Plan\u201d), (ii) 2001 Stock Incentive Plan (the \u201c2001 Stock Incentive Plan\u201d) and (iii) 2001 Employee Stock Purchase Plan (the \u201c2001 Stock Purchase Plan\u201d). Each of these plans has been approved by the stockholders.\nThe following table provides information about the 1997 Plan, the 2001 Stock Incentive Plan and the 2001 Stock Purchase Plan as of December 31, 2006.",
+   "prose_after": "(1) Does not include 3,537,319 shares of our common stock issuable under the Restricted Stock Plan II (\u201cRSU Plan\u201d) that were assumed in connection with our merger with ABI in April 2006. Under the terms of RSU Plan, in general one-half of the units granted thereunder will vest on the second anniversary of the merger and the remaining one-half of the units will vest on the fourth anniversary of the merger. On each vesting date, the value of the restricted stock unit award will convert into the right to receive a number of shares of our common stock equal to the value of the award divided by the average trading price of our common stock over the three trading days prior to vesting. In the event that the average trading price of our common stock for such period is less than $28.27, then the value of the award will be determined by multiplying the average trading price of our common stock over the three trading days prior to vesting by the number of vested units. In the event that the average trading price of our common stock for such period is greater than $28.27, then the value of the award will be computed by multiplying $28.27 by the number of vested units. We may elect to pay to the holder the cash value of our common stock that vests on each vesting date in lieu of delivery of our common stock.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 769,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "2005",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "2,004",
+     "$",
+     "1,290"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "261",
+     "",
+     "122"
+    ],
+    [
+     "Tax fees",
+     "",
+     "210",
+     "",
+     "171"
+    ],
+    [
+     "All other fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,475",
+     "$",
+     "1,583"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 809,
+    "end_line": 823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "If Mr. Harmon\u2019s employment is terminated by us following a change of control prior to December 12, 2009 other than for cause or by reason of disability, such executive shall be entitled to receive as severance pay two times his base salary. The severance pay would be payable in equal installments through the second anniversary of his termination. In connection with his retention agreement, Mr. Harmon agreed that during his employment and for 12 months thereafter that he would not be employed by or participate in the ownership of an enterprise that is engaged in the generic injectable pharmaceutical industry. He also agreed that during this period he would not solicit our employees or customers.\nAircraft Purchase and Sale Agreement\nOn August 1, 2006, our board ratified the purchase of a Gulfstream G550 aircraft for a purchase price of $46.5 million, the closing of which is subject to certain conditions related to the title and condition of the aircraft. Dr. Soon-Shiong entered into the aircraft purchase and sale agreement on June 23, 2006, which agreement was subsequently assigned to the company.\nEmployment Agreements\nWe entered into employment agreements with Carlo Montanger and Lisa Gopala. See the discussion of these agreements under \u201cAgreements with our NEOs\u201d and \u201cPayments upon Termination\u201d in Item 11 hereof.\nItem 14. Principal Accountant Fees and Services.\nFees for professional services provided by our independent auditors, Ernst & Young, LLP, in each of the last two fiscal years, were as follows:",
+   "prose_after": "Our audit committee pre-approves all audit and non-audit services provided by our independent auditor, as described in the audit committee\u2019s charter. All of the above fees were billed to us by Ernst & Young for the services categorized above, and all such services were pre-approved by our audit committee. Audit fees included fees associated with the audit of our year-end financial statements (including internal control evaluation and reporting) and the review of documents filed with the Securities and Exchange Commission including our quarterly reports on Form 10-Q and annual report on Form 10-K. Audit-related fees principally included fees in connection with accounting consultations and the audit of our 401(k) plan. Tax fees included fees for tax compliance, tax advice and tax planning services.\nThe audit committee considered whether the provision of other non-audit services is compatible with the principal accountants\u2019 independence and concluded that provision of other non-audit services are compatible with maintaining the independence of our external auditors.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger, dated as of November 27, 2005, by and among American Pharmaceutical Partners, Inc., American BioScience, Inc. and, with respect to specified matters, Patrick Soon-Shiong and certain other ABI shareholders (Incorporated by reference to the Registrant\u2019s report on Form 8-K filed with the Securities and Exchange Commission on November 29, 2005)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Registrant (Incorporated by reference to Registrant\u2019s Registration Statement filed on Form S-1/A, file number 333-70900, filed with the Securities and Exchange Commission on December 11, 2001)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit committee pre-approves all audit and non-audit services provided by our independent auditor, as described in the audit committee\u2019s charter. All of the above fees were billed to us by Ernst & Young for the services categorized above, and all such services were pre-approved by our audit committee. Audit fees included fees associated with the audit of our year-end financial statements (including internal control evaluation and reporting) and the review of documents filed with the Securities and Exchange Commission including our quarterly reports on Form 10-Q and annual report on Form 10-K. Audit-related fees principally included fees in connection with accounting consultations and the audit of our 401(k) plan. Tax fees included fees for tax compliance, tax advice and tax planning services.\nThe audit committee considered whether the provision of other non-audit services is compatible with the principal accountants\u2019 independence and concluded that provision of other non-audit services are compatible with maintaining the independence of our external auditors.\nPART IV\nItem 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULE AND REPORTS ON FORM 8-K\n(3) Exhibits",
+   "prose_after": "3.2 Amended Bylaws of the Registrant (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 3.3 Certificate of Merger of American BioScience, Inc. into American Pharmaceutical Partners, Inc., dated April 18, 2006 Bylaws of the Registrant (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on May 10, 2006) 4.1 Reference is made to Exhibits 3.1, 3.2 and 3.3 4.2 Specimen Stock Certificate of the Registrant (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on May 10, 2006) 4.3 First Amended Registration Rights Agreement, dated as of June 1, 1998, between the Registrant and certain holders of the Registrant\u2019s capital stock (Incorporated by reference to the Registrant\u2019s Registration Statement filed on Form S-1, file number 333-70900, filed with the Securities and Exchange Commission on October 3, 2001) 4.4 Registration Rights Agreement, dated April 18, 2006, by and among APP, Patrick Soon-Shiong and certain other ABI shareholders set forth therein (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on May 10, 2006) 4.5 Corporate Governance and Voting Agreement, dated April 18, 2006, by and among APP, Patrick Soon-Shiong and certain other ABI shareholders set forth therein (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on May 10, 2006) 10.1 Form of Indemnification Agreement between the Registrant and each of its executive officers and directors (Incorporated by reference to Registrant\u2019s Registration Statement filed on Form S-1/A, file number 333-70900, filed with the Securities and Exchange Commission on November 20, 2001) 10.2 1997 Stock Option Plan (Incorporated by reference to the Registrant\u2019s Registration Statement filed on Form S-1, file number 333-70900, filed with the Securities and Exchange Commission on October 3, 2001) 10.3 2001 Stock Incentive Plan, including forms of agreements thereunder (Incorporated by reference to the Registrant\u2019s Definitive Proxy Statement on Form 14A filed with the Securities and Exchange Commission on April 29, 2005) 10.4 2001 Employee Stock Purchase Plan, including forms of agreements thereunder (Incorporated by reference to the Registrant\u2019s Registration Statement filed on Form S-1, file number 333-70900, filed with the Securities and Exchange Commission on October 3, 2001) 10.5 Lease Agreement dated December 4, 2000, between the Registrant and AMB Property II, L.P. (Incorporated by reference to the Registrant\u2019s Registration Statement filed on Form S-1, file number 333-70900, filed with the Securities and Exchange Commission on October 3, 2001) 10.6 Lease Agreement between Manufacturers Life Insurance Company (U.S.A.) and the Registrant for 1501 E. Woodfield Road, Suite 300 East Schaumburg, Illinois, known as Schaumburg Corporate Center (Incorporated by reference to the Registrant\u2019s report on Form 8-K filed with the Securities and Exchange Commission on February 23, 2005) 10.7 Description of Non-Employee Director Cash Compensation Program (Incorporated by reference to the Registrant\u2019s report on Form 8-K filed with the Securities and Exchange Commission on July 25, 2005)",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ABRAXIS BIOSCIENCE, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/S/ PATRICK S[ ][ ]N-SHIONG, M.D."
+    ],
+    [
+     "",
+     "Patrick Soon-Shiong, M.D."
+    ],
+    [
+     "",
+     "Chairman of the Board of Directors and\n\n\n\nChief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ABRAXIS BIOSCIENCE, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 875
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "10.21 Employment Agreement, dated July 3, 2006, between the Registrant and Lisa Gopalakrishnan (Incorporated by reference to Registrant\u2019s report on Form 8-Q filed with the Securities and Exchange Commission on August 7, 2006) 10.22 Standard Form Office Lease, dated March 24, 2006, between the Registrant and California State Teacher\u2019s Retirement System, as amended on May 26, 2006, for the premises located at 11755 Wilshire Boulevard, Los Angeles, California (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on November 9, 2006) 10.23* Aircraft Purchase and Sale Agreement (Incorporated by reference to Registrant\u2019s report on Form 10-Q filed with the Securities and Exchange Commission on November 9, 2006) 10.24 Retention Agreement, dated as of November 20, 2006, between the Registration and Thomas H. Silberg (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 10.25 Retention Agreement, dated as of November 20, 2006, between the Registration and Frank Harmon (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 14.1 Code of Business Conduct (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 21.1 List of Subsidiaries of the Registrant (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 23.1 Consent of Independent Registered Public Accounting Firm (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 31.1\u2020 Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 31.2\u2020 Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 32.1 Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted by Section 906 of the Sarbanes-Oxley Act of 2002 (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007) 32.2 Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted by Section 906 of the Sarbanes-Oxley Act of 2002 (Incorporated by reference to Registrant\u2019s report on Form 10-K filed with the Securities and Exchange Commission on March 1, 2007)\n* Certain portions of this exhibit have been omitted pursuant to a request for confidential treatment filed with the Securities and Exchange Commission. \u2020 Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of Los Angeles, State of California on the 30th day of April 2007.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ PATRICK S[ ][ ]N-SHIONG, M.D.",
+     "Chairman of the Board of Directors and Chief Executive Officer",
+     "April 30, 2007"
+    ],
+    [
+     "Patrick Soon-Shiong, M.D.",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ LISA GOPALAKRISHNAN",
+     "Executive Vice President and Chief Financial Officer",
+     "April 30, 2007"
+    ],
+    [
+     "Lisa Gopalakrishnan",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ KI[ ]K K. CALHOUN",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "Kirk K. Calhoun",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ DAVID S. CHEN, PH.D.",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "David S. Chen Ph.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ STEPHEN D. NIMER, M.D.",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "Stephen D. Nimer, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ LEONARD S. SHAPIRO",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "Leonard S. Shapiro",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ SI[ ] [ ]ICHARD SYKES",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "Sir Richard Sykes",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "Michael D. Blasyk",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  /S/ MICHAEL S. SITRICK",
+     "Director",
+     "April 30, 2007"
+    ],
+    [
+     "Michael S. Sitrick",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 878,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

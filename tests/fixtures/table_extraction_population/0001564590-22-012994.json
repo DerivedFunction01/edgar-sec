@@ -1,0 +1,7303 @@
+{
+ "accession": "0001564590-22-012994",
+ "cik": "0000088000",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "slgd-10k_20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "84-0920811"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "8400 E. Crescent Parkway, Suite 450, Greenwood Village, CO",
+     "80111"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM                      TO\nCommission File Number 001-13458\nSCOTT\u2019S LIQUID GOLD-INC.\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (303) 373-4860\nSecurities registered pursuant to Section 12(b) of the Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (303) 373-4860\nSecurities registered pursuant to Section 12(b) of the Act.",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, $0.10 Par Value\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "8"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "9"
+    ],
+    [
+     "Item 6.",
+     "RESERVED",
+     "9"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "38"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "38"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "38"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "38"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "39"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "39"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "39"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "39"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "39"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "39"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "41"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 119,
+    "end_line": 149
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2022 the degree of success of our conversion to outsourced manufacturing and dependence on third-party manufacturers;\n\u2022 changes in the regulation of our products, including applicable environmental, U.S. and international Food and Drug Administration regulations and process-audit compliance;\n\u2022 the loss of any executive officer or other personnel;\n\u2022 future losses which could affect our liquidity;\n\u2022 other matters discussed in this Report, including the risks described in the Risk Factors section of this Report.\nWe caution you that forward-looking statements are not guarantees of future performance and that actual results or performance may be materially different from those expressed or implied in the forward-looking statements. The forward-looking statements in this Report speak as of the filing date of this Report. Although we may from time to time voluntarily update our prior forward-looking statements, we undertake no obligation to revise any forward-looking statements in order to reflect events or circumstances that may arise after the date of this Report.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\n(in thousands, except per share data)\nITEM 1. BUSINESS\nOverview\nScott\u2019s Liquid Gold-Inc., a Colorado corporation, was incorporated on February 15, 1954. In this Report the terms \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d refer to Scott\u2019s Liquid Gold-Inc. and our subsidiaries, collectively. We develop, market, and sell high-quality, high-value household and health and beauty care products. Our business is divided into two operating segments; household products and health and beauty care products. Our family of brands include:\n\u2022 Scott\u2019s Liquid Gold\u00ae;\n\u2022 Alpha\u00ae Skin Care;\n\u2022 Prell\u00ae;\n\u2022 Denorex\u00ae;\n\u2022 Kids N Pets\u00ae; and",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "% of Net Sales",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Household",
+     "",
+     "42.8",
+     "%",
+     "",
+     "43.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Health and beauty care",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributed",
+     "",
+     "21.5",
+     "%",
+     "",
+     "22.8",
+     "%"
+    ],
+    [
+     "Manufactured",
+     "",
+     "35.7",
+     "%",
+     "",
+     "33.3",
+     "%"
+    ],
+    [
+     "Total health and beauty care",
+     "",
+     "57.2",
+     "%",
+     "",
+     "56.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "% of Net Sales"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 178,
+    "end_line": 190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Scott\u2019s Liquid Gold-Inc., a Colorado corporation, was incorporated on February 15, 1954. In this Report the terms \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d refer to Scott\u2019s Liquid Gold-Inc. and our subsidiaries, collectively. We develop, market, and sell high-quality, high-value household and health and beauty care products. Our business is divided into two operating segments; household products and health and beauty care products. Our family of brands include:\n\u2022 Scott\u2019s Liquid Gold\u00ae;\n\u2022 Alpha\u00ae Skin Care;\n\u2022 Prell\u00ae;\n\u2022 Denorex\u00ae;\n\u2022 Kids N Pets\u00ae; and\n\u2022 BIZ\u00ae.\nEffective as of December 31, 2021, we sold the Dryel\u00ae brand and we are no longer distributing Batiste Dry Shampoo.\nFinancial Information About Segments and Principal Products\nThe table set forth below shows the percentage of our net sales contributed by each operating segment during 2021 and 2020:",
+   "prose_after": "For more financial information on our operating segments, refer to Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and Note 13 to our Consolidated Financial Statements in Item 8.\nHousehold Products\nThe principal products in our household products segment include:\n\u2022 Scott\u2019s Liquid Gold\u00ae Wood Care;\n\u2022 Scott\u2019s Liquid Gold\u00ae Floor Restore; and\n\u2022 Kids N Pets\u00ae and Messy Pet\u00ae; and\n\u2022 BIZ\u00ae .\nScott\u2019s Liquid Gold\u00ae Wood Care has been our core product since our inception. It has been sold in the United States for over 70 years. Unlike leading furniture polishes, our higher quality product contains natural oils that penetrate the wood\u2019s surface to clean, replace lost moisture, minimize the appearance of scratches and bring out the natural beauty of wood. Our Scott\u2019s Liquid Gold\u00ae Floor Restore product is a quick and easy way to renew and protect hardwood floors.\nOn October 1, 2019, we acquired Kids N Pets\u00ae brands, which includes Messy Pet\u00ae. Founded in 1989, Kids N Pets\u00ae brands are award winning, safe, stain and odor removing products targeted toward households with children and pets. These high-quality, high-value brands currently encompass six SKUs exceptional at controlling odor and cleaning up kid and pet accidents, and food and drink stains while being products that parents can feel safe using around their children and pets. Kids N Pets\u00ae primary sales channel is through retail stores such as Walmart and Home Depot, and online through properties such as such as Amazon and Chewy.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "% of Net Sales",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Walmart Inc. (\"Walmart\")",
+     "",
+     "30.9",
+     "%",
+     "",
+     "29.2",
+     "%"
+    ],
+    [
+     "Ulta",
+     "",
+     "18.8",
+     "%",
+     "",
+     "15.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "% of Net Sales"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 240,
+    "end_line": 247
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "We were a distributor in the United States for Batiste Dry Shampoo from 2009 through 2021. Under our distribution agreement with the manufacturer of Batiste Dry Shampoo, Church & Dwight Co. Inc. (\u201cChurch & Dwight\u201d), we were the exclusive specialty retail distributor in the United States of Batiste Dry Shampoo until our agreement expired on December 31, 2021.\nMarketing and Distribution\nWe primarily market our products through: (1) trade promotions to support price features, displays, slotting fees and other merchandising of our products by our retail customers; (2) consumer marketing in print, social and digital media and television advertising; and (3) to a lesser extent, consumer incentives such as coupons and rebates.\nOur products are sold nationally through our sales force and internationally (Canada and China) through independent distributors, to mass merchandisers, drugstores, supermarkets, hardware stores, e-commerce retailers, and other retail outlets and to wholesale distributors.\nThe table set forth below shows net sales to our significant customers as a percentage of consolidated net sales during 2021 and 2020:",
+   "prose_after": "As is typical in our industry, we do not have long-term contracts with Walmart, Ulta, or any other retail customer.\nHistorically, we have used our websites for sales of our products directly to consumers. Beginning in January 2022, our websites redirect consumers to our e-commerce retail partners to fulfill sales of our products directly to our consumers.\nCurrently, our international sales are made to distributors who are responsible for the selling and marketing of the products, and we are paid for these products in United States dollars.\nFrom time to time, our customers return products to us. For our household products, we permit returns only for a limited time. For our health and beauty care products, returns are accepted for a greater period of time in order to maintain or enhance our relationship with the customer. Typically, customers are granted a credit equal to the original sale price plus a handling charge.\nManufacturing and Suppliers\nOn March 10, 2020, we consummated an agreement with Colorado Quality Products LLC (\u201cElevation\u201d), pursuant to which Elevation (i) acquired certain of our assets, which included all fixed assets utilized in the manufacturing and warehouse operations of the Company, (ii) assumed all of the Company\u2019s obligations under its existing real property leases, (iii) manufactured certain products of the Company for a transitional period, and (iv) paid cash consideration of $500,000 (collectively, the \u201cElevation Transaction\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Three Months Ended",
+     "2021",
+     "",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "March 31",
+     "$",
+     "3.03",
+     "$",
+     "1.78",
+     "$",
+     "2.50",
+     "$",
+     "1.25"
+    ],
+    [
+     "June 30",
+     "",
+     "3.00",
+     "",
+     "2.28",
+     "",
+     "2.05",
+     "",
+     "1.28"
+    ],
+    [
+     "September 30",
+     "",
+     "3.00",
+     "",
+     "2.00",
+     "",
+     "1.82",
+     "",
+     "1.51"
+    ],
+    [
+     "December 31",
+     "",
+     "2.08",
+     "",
+     "1.00",
+     "",
+     "1.84",
+     "",
+     "1.52"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 451,
+    "end_line": 461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 3. LEGAL PROCEEDINGS.\nWe are subject to lawsuits from time to time in the ordinary course of business. While we expect those lawsuits not to have a material effect on us, an adverse development in any such lawsuit or the lack of insurance coverage for a lawsuit could materially and adversely affect our financial condition and cash flow.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\n(in thousands, except per share data)\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nOur $0.10 par value common stock is traded on the OTC Pink Market tier of the OTC Markets (an electronic inter-dealer quotation system) under the ticker symbol \u201cSLGD.\u201d Over-the-counter market quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not necessarily represent actual transactions. The high and low prices of our common stock as traded on the OTC Pink Market tier of the OTC Markets were as follows:",
+   "prose_after": "Shareholders of Record\nAs of March 30, 2022, based on inquiry, we had approximately 638 shareholders of record.\nDividends\nWe did not pay any cash dividends during the two most recent fiscal years. We do not anticipate paying dividends in the foreseeable future.\nITEM 6. RESERVED.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.\nManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations should be read in conjunction with the Company\u2019s consolidated financial statements. This Item 7 contains forward-looking statements. The matters discussed in these forward-looking statements are subject to risk, uncertainties, and other factors that could cause actual results to differ materially from those made, projected or implied in the forward-looking statements. Please refer to \"Item 1A. Risk Factors\" for a discussion of the uncertainties, risks and assumptions associated with these statements.\nCOVID-19 Pandemic\nIn 2020, the global economy began experiencing a downturn related to the impacts of the COVID-19 global pandemic. While many businesses resumed operations towards the end of the second quarter of 2020, the effects of the pandemic have continued into 2021 and the duration of the impact still remains uncertain. We expect to see continued volatility in the economic markets and government responses to the COVID-19 pandemic. These changing conditions and governmental responses could have impacts on our operating results for the remainder of the year or longer.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, (in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "33,081",
+     "",
+     "$",
+     "28,958",
+     "",
+     "$",
+     "4,123",
+     "",
+     "",
+     "14.2",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "19,082",
+     "",
+     "",
+     "16,433",
+     "",
+     "",
+     "2,649",
+     "",
+     "",
+     "16.1",
+     "%"
+    ],
+    [
+     "Impairment of inventories",
+     "",
+     "404",
+     "",
+     "",
+     "876",
+     "",
+     "",
+     "(472)",
+     "",
+     "",
+     "(53.9",
+     "%)"
+    ],
+    [
+     "Total cost of sales",
+     "",
+     "19,486",
+     "",
+     "",
+     "17,309",
+     "",
+     "",
+     "2,177",
+     "",
+     "",
+     "12.6",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "13,595",
+     "",
+     "",
+     "11,649",
+     "",
+     "",
+     "1,946",
+     "",
+     "",
+     "16.7",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "",
+     "41.1",
+     "%",
+     "",
+     "40.2",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising",
+     "",
+     "639",
+     "",
+     "",
+     "702",
+     "",
+     "",
+     "(63)",
+     "",
+     "",
+     "(9.0",
+     "%)"
+    ],
+    [
+     "Selling",
+     "",
+     "9,797",
+     "",
+     "",
+     "7,546",
+     "",
+     "",
+     "2,251",
+     "",
+     "",
+     "29.8",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,611",
+     "",
+     "",
+     "4,724",
+     "",
+     "",
+     "(113)",
+     "",
+     "",
+     "(2.4",
+     "%)"
+    ],
+    [
+     "Intangible asset amortization",
+     "",
+     "1,111",
+     "",
+     "",
+     "1,005",
+     "",
+     "",
+     "106",
+     "",
+     "",
+     "10.5",
+     "%"
+    ],
+    [
+     "Impairment of goodwill and intangible assets",
+     "",
+     "6,294",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,294",
+     "",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Impairment of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "107",
+     "",
+     "",
+     "(107)",
+     "",
+     "",
+     "(100.0",
+     "%)"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "22,452",
+     "",
+     "",
+     "14,084",
+     "",
+     "",
+     "8,368",
+     "",
+     "",
+     "59.4",
+     "%"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(8,857)",
+     "",
+     "",
+     "(2,435)",
+     "",
+     "",
+     "(6,422)",
+     "",
+     "",
+     "(263.7",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(373)",
+     "",
+     "",
+     "(216)",
+     "",
+     "",
+     "(157)",
+     "",
+     "",
+     "(72.7",
+     "%)"
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "350",
+     "",
+     "",
+     "(350)",
+     "",
+     "",
+     "(100.0",
+     "%)"
+    ],
+    [
+     "Loss before income taxes and discontinued operations",
+     "",
+     "(9,230)",
+     "",
+     "",
+     "(2,301)",
+     "",
+     "",
+     "(6,929)",
+     "",
+     "",
+     "(301.1",
+     "%)"
+    ],
+    [
+     "Income tax (expense) benefit",
+     "",
+     "(1,008)",
+     "",
+     "",
+     "707",
+     "",
+     "",
+     "(1,715)",
+     "",
+     "",
+     "(242.6",
+     "%)"
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(10,238)",
+     "",
+     "",
+     "(1,594)",
+     "",
+     "",
+     "(8,644)",
+     "",
+     "",
+     "(542.3",
+     "%)"
+    ],
+    [
+     "(Loss) income from discontinued operations, net of taxes",
+     "",
+     "(853)",
+     "",
+     "",
+     "43",
+     "",
+     "",
+     "(896)",
+     "",
+     "",
+     "(2,083.7",
+     "%)"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,091)",
+     "",
+     "$",
+     "(1,551)",
+     "",
+     "$",
+     "(9,540)",
+     "",
+     "",
+     "(615.1",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, (in thousands)",
+    "Increase / (Decrease)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 545,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Changes in national and international regulations;\n\u2022 Changes in policies or practices of some of our key retail customers;\n\u2022 Rapid growth of e-commerce and alternative retail channels; and\n\u2022 Volatility in the costs of products, transportation, and labor associated with our logistics and warehousing partners.\nWe believe our history of providing high-quality, high-value products to consumers positions us to meet the challenges in our marketplace by continuing to focus on the following key priorities in 2022:\n\u2022 Pursuing growth opportunities, including distributing Alpha\u00ae Skin Care, Kids N Pets\u00ae, and other products to broader markets;\n\u2022 Improving our processes and systems, specifically through the implementation of a new ERP;\n\u2022 Optimizing our inventories, supply chain, and third-party logistics partners, and operations; and\n\u2022 Paydown of debt and improving cash flows from operations through growth of sales and optimization of cost structure.\nResults of Operations",
+   "prose_after": "Net loss increased primarily due to the following:\n\u2022 Increase in gross profit due to the acquisition of BIZ in July 2020 and additional foot traffic at our retail customers from eased restrictions related to the COVID-19 pandemic in 2021. Additionally, net sales increased due to restored finished goods inventory of key products in 2021 in our household segment.\n\u2022 Increase in selling expenses from the acquisition of BIZ and COVID-19 driven increases in costs in transportation and labor associated with our logistics and warehousing partners.\n\u2022 Decrease in general and administrative expenses is due to reduced professional costs from acquisition-related expenses that were incurred in 2020 and offset by restructuring costs associated with separation of employees in 2021.\n\u2022 Increase in interest expense associated with our increased debt facilities. The increased debt resulting from simultaneous supply chain shortages and investment in building depleted finished goods inventories has also increased our interest expense.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, (in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "14,152",
+     "",
+     "$",
+     "12,003",
+     "",
+     "$",
+     "2,149",
+     "",
+     "",
+     "17.9",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "5,583",
+     "",
+     "$",
+     "5,830",
+     "",
+     "$",
+     "(247)",
+     "",
+     "",
+     "(4.2",
+     "%)"
+    ],
+    [
+     "Gross margin",
+     "",
+     "39.5",
+     "%",
+     "",
+     "48.6",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income from operations",
+     "$",
+     "(3,963)",
+     "",
+     "$",
+     "52",
+     "",
+     "$",
+     "(4,015)",
+     "",
+     "",
+     "(7,721.2",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, (in thousands)",
+    "Increase / (Decrease)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 609,
+    "end_line": 621
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Decrease in general and administrative expenses is due to reduced professional costs from acquisition-related expenses that were incurred in 2020 and offset by restructuring costs associated with separation of employees in 2021.\n\u2022 Increase in interest expense associated with our increased debt facilities. The increased debt resulting from simultaneous supply chain shortages and investment in building depleted finished goods inventories has also increased our interest expense.\n\u2022 Increase in income tax expense due to the establishment of a valuation allowance against our deferred tax asset.\n\u2022 Loss from discontinued operations due to the sale of our Dryel brand, which resulted in the recognition of a loss on the sale of the business.\n\u2022 Impairment of goodwill and intangible assets of Detergent and Shampoo reporting units.\nSegment Results\nThe following tables show comparative net sales, gross margin, gross profit, loss (income) from operations, volume and percentage changes for our household and health and beauty care products between periods:\nHousehold products",
+   "prose_after": "\u2022 Household products increase in net sales was attributable to our acquisition of BIZ. This was offset by a decrease in net sales from key product shortages, including our Scott\u2019s Liquid Gold Wood Care product.\n\u2022 Gross profit and gross margin decreased due to cost increases in our manufacturing partners\u2019 raw materials and inventory impairment related to slow moving and obsolete raw materials and finished goods.\n\u2022 Loss from operations was related to increases in transportation and labor associated with our logistics and warehousing partners, restructuring costs, and impairment of goodwill and intangible assets in our Detergent and All-Purpose reporting units.\nHealth and beauty care products",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, (in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Health and beauty care net sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales- distributed products",
+     "$",
+     "7,123",
+     "",
+     "$",
+     "6,834",
+     "",
+     "$",
+     "289",
+     "",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "Net sales- manufactured products",
+     "",
+     "11,806",
+     "",
+     "",
+     "10,121",
+     "",
+     "",
+     "1,685",
+     "",
+     "",
+     "16.6",
+     "%"
+    ],
+    [
+     "Total health and beauty care net sales",
+     "$",
+     "18,929",
+     "",
+     "$",
+     "16,955",
+     "",
+     "$",
+     "1,974",
+     "",
+     "",
+     "11.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "8,012",
+     "",
+     "$",
+     "5,819",
+     "",
+     "$",
+     "2,193",
+     "",
+     "",
+     "37.7",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "",
+     "42.3",
+     "%",
+     "",
+     "34.3",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "(4,894)",
+     "",
+     "$",
+     "(2,487)",
+     "",
+     "$",
+     "(2,407)",
+     "",
+     "",
+     "(96.8",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, (in thousands)",
+    "Increase / (Decrease)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 630,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Household products increase in net sales was attributable to our acquisition of BIZ. This was offset by a decrease in net sales from key product shortages, including our Scott\u2019s Liquid Gold Wood Care product.\n\u2022 Gross profit and gross margin decreased due to cost increases in our manufacturing partners\u2019 raw materials and inventory impairment related to slow moving and obsolete raw materials and finished goods.\n\u2022 Loss from operations was related to increases in transportation and labor associated with our logistics and warehousing partners, restructuring costs, and impairment of goodwill and intangible assets in our Detergent and All-Purpose reporting units.\nHealth and beauty care products",
+   "prose_after": "\u2022 Net sales of distributed health and beauty care products increased due to additional foot traffic at our retail customers from eased restrictions related to the COVID-19 pandemic in 2021. This increase is offset by the conclusion of our distribution arrangement with Montagne Jeunesse in the second quarter of 2020.\n\u2022 Net sales of manufactured health and beauty care products increased primarily due to higher sales of our Alpha Skin Care line to e-commerce partners and China as well as higher sales of our Denorex brand due to the restoration of consistent inventory levels in 2021.\n\u2022 Increase in gross margin was due to increased sales of manufactured products, improved margins from outsourced manufacturing operations, and a reduction in impaired inventories in 2021.\n\u2022 Loss from operations was primarily due to the impairment of goodwill and intangible assets of our Shampoo reporting unit, inventory impairment related to slow moving and obsolete raw materials and finished goods, and increases in transportation and labor associated with our logistics and warehousing partners.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, (in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(322)",
+     "",
+     "$",
+     "3,582",
+     "",
+     "$",
+     "(3,904)",
+     "",
+     "",
+     "(109.0",
+     "%)"
+    ],
+    [
+     "Investing activities",
+     "",
+     "4,381",
+     "",
+     "",
+     "(10,097)",
+     "",
+     "",
+     "14,478",
+     "",
+     "",
+     "143.4",
+     "%"
+    ],
+    [
+     "Financing activities",
+     "",
+     "(2,794)",
+     "",
+     "",
+     "5,426",
+     "",
+     "",
+     "(8,220)",
+     "",
+     "",
+     "(151.5",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, (in thousands)",
+    "Increase / (Decrease)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 669,
+    "end_line": 678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Increase in gross margin was due to increased sales of manufactured products, improved margins from outsourced manufacturing operations, and a reduction in impaired inventories in 2021.\n\u2022 Loss from operations was primarily due to the impairment of goodwill and intangible assets of our Shampoo reporting unit, inventory impairment related to slow moving and obsolete raw materials and finished goods, and increases in transportation and labor associated with our logistics and warehousing partners.\nLiquidity and Capital Resources\nFinancing Agreements\nPlease see Note 7 to our Consolidated Financial Statements for information on our debt facilities with UMB Bank, N.A. and La Plata Capital, LLC.\nLiquidity and Changes in Cash Flows\nAt December 31, 2021, we had $5,467 available on our revolving credit facility with UMB, and approximately $770 in cash on hand, an increase of $765 from December 31, 2020 due to our sale of Dryel and paydown of our revolving credit facility.\nThe following is a summary of cash provided by or used in each of the indicated types of activities:",
+   "prose_after": "\u2022 Net cash used by operating activities decreased primarily related increases in costs related to supply chain and third party logistics impacted as well as investments in finished goods inventories.\n\u2022 Net cash provided by investing activities was primarily attributable to our sale of Dryel.\n\u2022 Net cash used in financing activities was primarily attributable to repayments of the UMB revolving credit facility and term loan and was offset by proceeds from La Plata term loan.\nThe uncertainty related to the COVID-19 outbreak has impacted our operations and could affect our future results. While we believe that our business model will allow us to generate sufficient operating cash flows, our liquidity has been affected by the timing of our build of depleted finished goods inventories, while our net sales have been delayed due to supply chain shortages. We expect that our current cash reserves and availability under our UMB Loan Agreement and La Plata Loan Agreement will be sufficient to meet operational cash needs during the next twelve months, but further supply chain disruptions in the short-term could limit our liquidity.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Intangible Assets",
+     "",
+     "Goodwill",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Detergent",
+     "$",
+     "1,085",
+     "$",
+     "593",
+     "$",
+     "1,678"
+    ],
+    [
+     "Shampoo",
+     "",
+     "2,966",
+     "",
+     "1,520",
+     "",
+     "4,486"
+    ],
+    [
+     "All-Purpose",
+     "",
+     "130",
+     "",
+     "-",
+     "",
+     "130"
+    ],
+    [
+     "",
+     "$",
+     "4,181",
+     "$",
+     "2,113",
+     "$",
+     "6,294"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "Determining the expected life of a brand requires management judgment and is based on an evaluation of several factors including market share, brand history, future expansion expectations, the level of in-market support anticipated by management, legal or regulatory restrictions and the economic environment where the products are sold.\nWe made revisions to the internal forecasts relating to all reporting units during the fourth quarter of 2021 due primarily to the sale of our Dryel brand and the impact of rising costs associated with the manufacture and distribution of our products. Through our annual assessments conducted on December 31, 2021, we concluded that the changes in circumstances in these reporting units triggered the need for a quantitative review of the carrying values of goodwill and certain intangible assets and resulted in impairment charges to each of our Detergent, All-Purpose, and Shampoo reporting units during the year ended December 31,2021, and resulted in the following impairment charges:",
+   "prose_after": "Inventories Valuation\nOur inventory valuation policy is significant because the costs and valuation of slow-moving or obsolete inventories are key components of our results of operations. See Note 1(f), \u201cInventories Valuation\u201d in our Consolidated Financial Statements in Item 8 for additional discussion.\nDuring the year ended December 31, 2021, we specifically identified slow moving and obsolete inventories, resulting in an impairment of $404.\nIncome Taxes\nOur income taxes policy is significant because our estimate for taxes is a key component of our results of operations. See Note 1(l), \u201cIncome Taxes\u201d in our Consolidated Financial Statements in Item 8 for additional discussion.\nRecently Issued Accounting Standards\nFor information on recently issued accounting standards, see Note 1(q), \u201cRecently Issued Accounting Standards,\u201d to our Consolidated Financial Statements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nNot applicable.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 738,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "33,081",
+     "",
+     "$",
+     "28,958",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "19,082",
+     "",
+     "",
+     "16,433",
+     ""
+    ],
+    [
+     "Impairment of inventories",
+     "",
+     "404",
+     "",
+     "",
+     "876",
+     ""
+    ],
+    [
+     "Total cost of sales",
+     "",
+     "19,486",
+     "",
+     "",
+     "17,309",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "13,595",
+     "",
+     "",
+     "11,649",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising",
+     "",
+     "639",
+     "",
+     "",
+     "702",
+     ""
+    ],
+    [
+     "Selling",
+     "",
+     "9,797",
+     "",
+     "",
+     "7,546",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,611",
+     "",
+     "",
+     "4,724",
+     ""
+    ],
+    [
+     "Intangible asset amortization",
+     "",
+     "1,111",
+     "",
+     "",
+     "1,005",
+     ""
+    ],
+    [
+     "Impairment of goodwill and intangible assets",
+     "",
+     "6,294",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Impairment of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "107",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "22,452",
+     "",
+     "",
+     "14,084",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(8,857)",
+     "",
+     "",
+     "(2,435)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(373)",
+     "",
+     "",
+     "(216)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "350",
+     ""
+    ],
+    [
+     "Loss before income taxes and discontinued operations",
+     "",
+     "(9,230)",
+     "",
+     "",
+     "(2,301)",
+     ""
+    ],
+    [
+     "Income tax (expense) benefit",
+     "",
+     "(1,008)",
+     "",
+     "",
+     "707",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(10,238)",
+     "",
+     "",
+     "(1,594)",
+     ""
+    ],
+    [
+     "(Loss) income from discontinued operations, net of taxes",
+     "",
+     "(853)",
+     "",
+     "",
+     "43",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,091)",
+     "",
+     "$",
+     "(1,551)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(0.81)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.88)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "12,678",
+     "",
+     "",
+     "12,635",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "To test the estimated fair value of the Company's reporting units, we performed audit procedures that included, among others, assessing the methodologies used and testing the significant assumptions discussed above, including the completeness and accuracy of the underlying data used by the Company in its analyses. We compared the significant assumptions used by management to current industry and economic trends, historical financial results and other relevant factors. We performed sensitivity analyses of significant assumptions to evaluate the change in the fair value of the reporting units resulting from changes in the inputs and assumptions. We also assessed the historical accuracy of management's projections. In addition, we involved our valuation specialists to assist in our evaluation of the valuation methodology and significant assumptions described above used to develop the fair value estimates.\n/s/ Plante & Moran, PLLC\nWe have served as the Company\u2019s auditor since 2003.\nMarch 31, 2022\nDenver, Colorado\nConsolidated Statements of Operations\n(in thousands, except per share data)",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Balance Sheets\n(in thousands, except par value amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 798,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "770",
+     "$",
+     "5"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "500",
+     "",
+     "-"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "3,516",
+     "",
+     "4,512"
+    ],
+    [
+     "Inventories",
+     "",
+     "5,677",
+     "",
+     "3,808"
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "320",
+     "",
+     "535"
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "436",
+     "",
+     "596"
+    ],
+    [
+     "Other current assets",
+     "",
+     "-",
+     "",
+     "112"
+    ],
+    [
+     "Current assets associated with discontinued operations",
+     "",
+     "-",
+     "",
+     "180"
+    ],
+    [
+     "Total current assets",
+     "",
+     "11,219",
+     "",
+     "9,748"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "7",
+     "",
+     "18"
+    ],
+    [
+     "Deferred tax asset, net",
+     "",
+     "-",
+     "",
+     "969"
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,710",
+     "",
+     "3,823"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "5,160",
+     "",
+     "9,984"
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "2,735",
+     "",
+     "2,985"
+    ],
+    [
+     "Other assets",
+     "",
+     "38",
+     "",
+     "38"
+    ],
+    [
+     "Long-term assets associated with discontinued operations",
+     "",
+     "-",
+     "",
+     "5,991"
+    ],
+    [
+     "Total assets",
+     "$",
+     "20,869",
+     "$",
+     "33,556"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "2,647",
+     "$",
+     "1,799"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "747",
+     "",
+     "296"
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "1,000",
+     "",
+     "1,000"
+    ],
+    [
+     "Operating lease liabilities, current portion",
+     "",
+     "251",
+     "",
+     "249"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "-",
+     "",
+     "67"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "4,645",
+     "",
+     "3,411"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion and debt issuance costs",
+     "",
+     "1,876",
+     "",
+     "4,521"
+    ],
+    [
+     "Operating lease liabilities, net of current",
+     "",
+     "2,780",
+     "",
+     "3,032"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "27",
+     "",
+     "127"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "9,328",
+     "",
+     "11,091"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, no par value, authorized 20,000 shares; no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common stock; $0.10 par value, authorized 50,000 shares; issued and outstanding 12,727 shares (2021) and 12,618 shares (2020)",
+     "",
+     "1,273",
+     "",
+     "1,262"
+    ],
+    [
+     "Capital in excess of par",
+     "",
+     "7,789",
+     "",
+     "7,633"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "2,479",
+     "",
+     "13,570"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "11,541",
+     "",
+     "22,465"
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "20,869",
+     "$",
+     "33,556"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 862,
+    "end_line": 919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Balance Sheets\n(in thousands, except par value amounts)",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Shareholders\u2019 Equity\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital in Excess of Par",
+     "",
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2020",
+     "",
+     "12,462",
+     "$",
+     "1,246",
+     "$",
+     "7,250",
+     "",
+     "$",
+     "15,121",
+     "",
+     "$",
+     "23,617",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "176",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "51",
+     "",
+     "5",
+     "",
+     "62",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "67",
+     ""
+    ],
+    [
+     "Restricted stock unit vesting",
+     "",
+     "105",
+     "",
+     "11",
+     "",
+     "145",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "156",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,551)",
+     "",
+     "",
+     "(1,551)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "12,618",
+     "$",
+     "1,262",
+     "$",
+     "7,633",
+     "",
+     "$",
+     "13,570",
+     "",
+     "$",
+     "22,465",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(9)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "45",
+     "",
+     "4",
+     "",
+     "53",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "57",
+     ""
+    ],
+    [
+     "Restricted stock unit vesting",
+     "",
+     "64",
+     "",
+     "7",
+     "",
+     "112",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "119",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(11,091)",
+     "",
+     "",
+     "(11,091)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "12,727",
+     "$",
+     "1,273",
+     "$",
+     "7,789",
+     "",
+     "$",
+     "2,479",
+     "",
+     "$",
+     "11,541",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 928,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Shareholders\u2019 Equity\n(in thousands)",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Cash Flows\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 953,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,091)",
+     "",
+     "$",
+     "(1,551)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used) provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,820",
+     "",
+     "",
+     "1,430",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "110",
+     "",
+     "",
+     "332",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "784",
+     "",
+     "",
+     "(229)",
+     ""
+    ],
+    [
+     "Loss on disposal of discontinued operations",
+     "",
+     "834",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Impairment of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "107",
+     ""
+    ],
+    [
+     "Impairment of inventories",
+     "",
+     "404",
+     "",
+     "",
+     "876",
+     ""
+    ],
+    [
+     "Impairment of goodwill and intangible assets",
+     "",
+     "6,294",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "996",
+     "",
+     "",
+     "(1,817)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(2,093)",
+     "",
+     "",
+     "4,256",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "272",
+     "",
+     "",
+     "(323)",
+     ""
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "215",
+     "",
+     "",
+     "170",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses, and other liabilities",
+     "",
+     "1,133",
+     "",
+     "",
+     "331",
+     ""
+    ],
+    [
+     "Total adjustments to net loss",
+     "",
+     "10,769",
+     "",
+     "",
+     "5,133",
+     ""
+    ],
+    [
+     "Net cash (used) provided by operating activities",
+     "",
+     "(322)",
+     "",
+     "",
+     "3,582",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition",
+     "",
+     "-",
+     "",
+     "",
+     "(10,529)",
+     ""
+    ],
+    [
+     "Purchase of software",
+     "",
+     "(469)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from sale of discontinued operations",
+     "",
+     "4,850",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(17)",
+     ""
+    ],
+    [
+     "Proceeds from sale of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "Cash paid for leasehold improvements",
+     "",
+     "-",
+     "",
+     "",
+     "(484)",
+     ""
+    ],
+    [
+     "Reimbursement of leasehold improvements",
+     "",
+     "-",
+     "",
+     "",
+     "433",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "4,381",
+     "",
+     "",
+     "(10,097)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from revolving credit facility",
+     "",
+     "40,677",
+     "",
+     "",
+     "16,995",
+     ""
+    ],
+    [
+     "Repayments of revolving credit facility",
+     "",
+     "(43,885)",
+     "",
+     "",
+     "(13,573)",
+     ""
+    ],
+    [
+     "Proceeds from term loan",
+     "",
+     "2,000",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "Repayments of term loan",
+     "",
+     "(1,583)",
+     "",
+     "",
+     "(417)",
+     ""
+    ],
+    [
+     "Payments for debt issuance costs",
+     "",
+     "(60)",
+     "",
+     "",
+     "(646)",
+     ""
+    ],
+    [
+     "Proceeds from PPP loan",
+     "",
+     "-",
+     "",
+     "",
+     "600",
+     ""
+    ],
+    [
+     "Repayment of PPP loan",
+     "",
+     "-",
+     "",
+     "",
+     "(600)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "57",
+     "",
+     "",
+     "67",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "",
+     "(2,794)",
+     "",
+     "",
+     "5,426",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "1,265",
+     "",
+     "",
+     "(1,089)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and restricted cash, beginning of period",
+     "",
+     "5",
+     "",
+     "",
+     "1,094",
+     ""
+    ],
+    [
+     "Cash and restricted cash, end of period",
+     "$",
+     "1,270",
+     "",
+     "$",
+     "5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and restricted cash, end of period associated with discontinued operations",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash and restricted cash, end of period associated with continuing operations",
+     "$",
+     "1,270",
+     "",
+     "$",
+     "5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest",
+     "$",
+     "564",
+     "",
+     "$",
+     "183",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 959,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Cash Flows\n(in thousands)",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nNotes to Consolidated Financial Statements\n(in thousands, except per share data)\nNote 1. Organization and Summary of Significant Accounting Policies\n(a)Company Background\nScott\u2019s Liquid Gold-Inc., a Colorado corporation, was incorporated on February 15, 1954. Scott\u2019s Liquid Gold-Inc. and its wholly-owned subsidiaries (collectively, the \u201cCompany,\u201d \u201cwe,\u201d \u201cour\u201d or \u201cus\u201d) develop, market, and sell quality household and health and beauty care products. Our business is comprised of two segments; household products and health and beauty care products.\n(b) Principles of Consolidation\nOur Consolidated Financial Statements include our accounts and those of our wholly-owned subsidiaries. All intercompany accounts and transactions have been eliminated.\nOn December 23, 2021, we entered into an asset purchase agreement with a buyer, pursuant to which we agreed to sell to all of our right, title and interest in and to certain assets of the Dryel\u00ae product line. We have reflected the operations the Dryel\u00ae product line as discontinued operations for all periods presented, which was previously classified under our household products segment. See Note 2 for further information.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 953,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "770",
+     "$",
+     "5"
+    ],
+    [
+     "Restricted Cash",
+     "",
+     "500",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "1,270",
+     "$",
+     "5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1060,
+    "end_line": 1069
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The accompanying consolidated financial statements have been prepared in accordance with GAAP and pursuant to the rules and regulations of the Securities and Exchange Commission (the \u201cSEC\u201d). Certain previously reported financial information has been reclassified to conform to the current year\u2019s presentation.\n(d) Use of Estimates\nThe preparation of financial statements in conformity with GAAP requires us to make estimates and assumptions that affect the reported amounts in our financial statements of assets and liabilities, the disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. Significant estimates include, but are not limited to, the realization of deferred tax assets, reserves for slow moving and obsolete inventory, customer returns and allowances, intangible asset useful lives and amortization method, fair value of assets acquired in business combinations, future cash flows associated with impairment testing of goodwill and other long-lived assets, and stock-based compensation. Actual results could differ from our estimates.\n(e) Cash and Restricted Cash\nCash and restricted cash consist of the following:",
+   "prose_after": "(f)Inventories Valuation\nInventories consist of raw materials and finished goods and are stated at the lower of cost (first-in, first-out method) or net realizable value, which is defined as the estimated selling price in the ordinary course of business, less reasonably predictable costs of completion, disposal, and transportation. We specifically identify impairment write downs for slow moving and obsolete products and raw materials based upon, among other things, an assessment of historical and anticipated sales of our products. In the event that actual results differ from our estimates, the results of future periods may be impacted.\nDuring the years ended December 31, 2021 and 2020 respectively, we specifically identified slow moving and obsolete raw material and finished goods inventories, resulting in impairment charges that are reflected on the Consolidated Statements of Operations.\n(g) Property and Equipment\nProperty and equipment are recorded at historical cost. Depreciation is provided using the straight-line method over the estimated useful lives of the assets ranging from three to 20 years. Office furniture and office machines are estimated to have useful lives of 10 to 20 and three to five years, respectively. Maintenance and repairs are expensed as incurred. Improvements that extend the useful lives of the asset or provide improved efficiency are capitalized.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Trade promotions",
+     "$",
+     "1,242",
+     "$",
+     "2,153"
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "14",
+     "",
+     "183"
+    ],
+    [
+     "",
+     "$",
+     "1,256",
+     "$",
+     "2,336"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1133,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Sales returns are generally not material to our financial statements, and do not comprise a significant portion of variable consideration. Estimates for sales returns are based on, among other things, an assessment of historical trends, information from customers, and anticipated returns related to current sales activity. These estimates are established in the period of sale and reduce our revenue in that period.\nSales are recorded at the time that control of the products is transferred to customers. In evaluating the timing of the transfer of control of products to customers, we consider several indicators, including significant risks and rewards of products, our right to payment, and the legal title of the products. Based on the assessment of control indicators, sales are generally recognized when products are delivered to customers.\nWe have also established an allowance for doubtful accounts. We estimate this allowance based upon, among other things, an assessment of the credit risk of specific customers and historical trends. We believe our allowance for doubtful accounts is adequate to absorb any losses which may arise. In the event that actual losses differ from our estimates, the results of future periods may be impacted.\nCustomer allowances for trade promotions and allowance for doubtful accounts at December 31 were as follows:",
+   "prose_after": "(n) Advertising Costs\nWe expense advertising costs as incurred.\n(o) Stock-Based Compensation\nWe account for share based payments by recognizing compensation expense based upon the estimated fair value of the awards on the date of grant. We determine the estimated grant-date fair value of stock options with only service conditions using the Black-Scholes option pricing model. In order to calculate the fair value of the options, certain assumptions are made regarding the components of the model, including the estimated fair value of underlying common stock, risk-free interest rate, volatility, expected dividend yield and expected option life. Changes to the assumptions could cause significant adjustments to the valuation. We recognize compensation costs ratably over the vesting period using the straight-line method, which approximates the service period.\nThe Company issues restricted stock unit (\"RSUs\") awards with restrictions that lapse upon the passage of time (service vesting) and satisfaction of market conditions targeted to our Company\u2019s stock price. For those restricted stock unit awards with only service vesting, the Company recognizes compensation cost on a straight-line basis over the service period. For awards with both market and service conditions, the Company starts recognizing compensation cost over the requisite service period, with the effect of the market conditions reflected in the calculation of the award's fair value at grant date. The Company values awards with only service vesting requirements based on the grant date share price. The Company values awards with market and service conditions using a Monte Carlo simulation. The Company determines the requisite service period for awards with both market and service conditions based on the longer of the explicit service period and the derived service period. Stock awards that contain market vesting conditions are included in the computations of diluted EPS reflecting the average number of shares that would be issued based on the highest 30-day average market price at the end during the reporting periods, if their effect is dilutive. If the condition is based on an average of market prices over some period of time, the corresponding average for the period is used.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1124,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "2,827",
+     "",
+     "$",
+     "1,314",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "1,482",
+     "",
+     "",
+     "601",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,345",
+     "",
+     "",
+     "713",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling",
+     "",
+     "625",
+     "",
+     "",
+     "285",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "34",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Intangible asset amortization",
+     "",
+     "492",
+     "",
+     "",
+     "246",
+     ""
+    ],
+    [
+     "Income from discontinued operations before tax",
+     "",
+     "194",
+     "",
+     "",
+     "182",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(398)",
+     "",
+     "",
+     "(126)",
+     ""
+    ],
+    [
+     "Income tax benefit (expense)",
+     "",
+     "185",
+     "",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Impairment of goodwill and intangible assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on sale of discontinued operations",
+     "",
+     "(834)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Loss) income from discontinued operations, net of tax",
+     "$",
+     "(853)",
+     "",
+     "$",
+     "43",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1183,
+    "end_line": 1209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "Under ASC 360, a long-lived asset group should be classified as held for sale if all of the established criteria are met. The sale of Dryel did not meet these criteria in either of the years ending December 31, 2021 and 2020, respectively, because we had not established an active program to locate a buyer and because the brand was not being marketed for sale. All efforts between the buyer and the Company occurred during the fourth quarter of 2021. As a result, there was no adjustment to fair value under ASC 360 guidance related to held for sale assets, and the difference between the consideration paid to us and the carrying amount of all assets is reflected in the loss on sale of discontinued operations.\nWe have reflected the operations\nthe Dryel\u00ae product line as discontinued operations. Our consolidated balance sheets and consolidated statements of operations report discontinued operations separate from continuing operations. Our consolidated statements of equity and statements of cash flows combine the results of continuing and discontinued operations. A summary of financial information related to our discontinued operations is as follows:\nReconciliation of the Line Items Constituting Pretax Loss from Discontinued Operations to the After-Tax Loss from Discontinued Operations in the Consolidated Statements of Operations for the years ended December 31:",
+   "prose_after": "There were no capital expenditures or significant operating and investing noncash items related to discontinued operations during the years ended December 31, 2021 and 2020, respectively.\nReconciliation of Major Classes of Assets and Liabilities of the Discontinued Operations to Amounts Presented Separately in the Consolidated Balance Sheets as of December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "$",
+     "-",
+     "$",
+     "180"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "-",
+     "",
+     "1,457"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "-",
+     "",
+     "4,719"
+    ],
+    [
+     "Total assets",
+     "$",
+     "-",
+     "$",
+     "6,356"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "There were no capital expenditures or significant operating and investing noncash items related to discontinued operations during the years ended December 31, 2021 and 2020, respectively.\nReconciliation of Major Classes of Assets and Liabilities of the Discontinued Operations to Amounts Presented Separately in the Consolidated Balance Sheets as of December 31:",
+   "prose_after": "The following summarizes the carrying values of goodwill, intangible assets, and the resulting loss on sale of discontinued operations associated with Dryel at the date of disposition:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Customer relationships",
+     "$",
+     "2,663",
+     ""
+    ],
+    [
+     "Trade names",
+     "",
+     "1,064",
+     ""
+    ],
+    [
+     "Formulas and batching processes",
+     "",
+     "488",
+     ""
+    ],
+    [
+     "Non-compete",
+     "",
+     "12",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,457",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,684",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of Dryel",
+     "",
+     "4,850",
+     ""
+    ],
+    [
+     "Loss on sale",
+     "$",
+     "(834)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1230,
+    "end_line": 1244
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "The following summarizes the carrying values of goodwill, intangible assets, and the resulting loss on sale of discontinued operations associated with Dryel at the date of disposition:",
+   "prose_after": "Note 3. Inventories\nInventories, consisting of materials, labor and overhead at December 31 were comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "5,499",
+     "",
+     "$",
+     "3,583",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "1,186",
+     "",
+     "",
+     "1,151",
+     ""
+    ],
+    [
+     "Impairment of raw materials",
+     "",
+     "(1,008)",
+     "",
+     "",
+     "(746)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,677",
+     "",
+     "$",
+     "3,988",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1250,
+    "end_line": 1260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "Note 3. Inventories\nInventories, consisting of materials, labor and overhead at December 31 were comprised of the following:",
+   "prose_after": "Note 4. Property and Equipment\nProperty and equipment at December 31 were comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Office furniture and equipment",
+     "$",
+     "151",
+     "",
+     "$",
+     "151",
+     ""
+    ],
+    [
+     "Other",
+     "-",
+     "",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "",
+     "",
+     "151",
+     "",
+     "",
+     "185",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(144)",
+     "",
+     "",
+     "(167)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "7",
+     "",
+     "$",
+     "18",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1265,
+    "end_line": 1277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Note 4. Property and Equipment\nProperty and equipment at December 31 were comprised of the following:",
+   "prose_after": "Depreciation expense for the years ended December 31, 2021 and 2020 was $11 and $17, respectively.\nNote 5. Acquisition\nOn June 25, 2020, we entered into an Asset Purchase Agreement (the \u201cCR Brands Purchase Agreement\u201d) with CR Brands, Inc., a Delaware corporation (\u201cCR Brands\u201d), and Sweep Acquisition Company, a Delaware corporation (\u201cSweep\u201d and together with CR Brands, \u201cSellers\u201d), pursuant to which we agreed to purchase from Sellers substantially all of the assets, properties, rights and interests of Sellers primarily used in the business of designing, formulating, marketing and selling laundry care products to retail and wholesale customers under the BIZ\u00ae and Dryel\u00ae brand names. The transactions contemplated by the CR Brands Purchase Agreement were consummated on July 1, 2020 (the \u201cCR Brands Acquisition\u201d). The Company concluded that the CR Brands Acquisition qualified as a business combination under ASC 805. The total cash consideration paid for the CR Brands Acquisition was $10,529. The CR Brands Acquisition included contingent consideration we valued at $35. During the year ended December 31, 2021, we determined that the initial contingent consideration was no longer likely to be realized. This adjustment is recorded to general and administrative expenses in the Consolidated Statement of Operations. The acquisition and related financial information are part of our household segment.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Inventories",
+     "$",
+     "1,279"
+    ],
+    [
+     "Intangible assets",
+     "",
+     "7,235"
+    ],
+    [
+     "Goodwill",
+     "",
+     "2,050"
+    ],
+    [
+     "Total assets acquired",
+     "$",
+     "10,564"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1288,
+    "end_line": 1296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition"
+    }
+   },
+   "prose_before": "On June 25, 2020, we entered into an Asset Purchase Agreement (the \u201cCR Brands Purchase Agreement\u201d) with CR Brands, Inc., a Delaware corporation (\u201cCR Brands\u201d), and Sweep Acquisition Company, a Delaware corporation (\u201cSweep\u201d and together with CR Brands, \u201cSellers\u201d), pursuant to which we agreed to purchase from Sellers substantially all of the assets, properties, rights and interests of Sellers primarily used in the business of designing, formulating, marketing and selling laundry care products to retail and wholesale customers under the BIZ\u00ae and Dryel\u00ae brand names. The transactions contemplated by the CR Brands Purchase Agreement were consummated on July 1, 2020 (the \u201cCR Brands Acquisition\u201d). The Company concluded that the CR Brands Acquisition qualified as a business combination under ASC 805. The total cash consideration paid for the CR Brands Acquisition was $10,529. The CR Brands Acquisition included contingent consideration we valued at $35. During the year ended December 31, 2021, we determined that the initial contingent consideration was no longer likely to be realized. This adjustment is recorded to general and administrative expenses in the Consolidated Statement of Operations. The acquisition and related financial information are part of our household segment.\n(a) Purchase Price Allocation\nThe following summarizes the aggregate fair values of the assets acquired as part of the CR Brands Acquisition:",
+   "prose_after": "Intangible assets for the CR Brands Acquisition consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Intangible Assets",
+     "",
+     "Useful Life",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "4,500",
+     "",
+     "9 years"
+    ],
+    [
+     "Trade names",
+     "",
+     "1,780",
+     "",
+     "20 years"
+    ],
+    [
+     "Formulas and batching processes",
+     "",
+     "930",
+     "",
+     "8 years"
+    ],
+    [
+     "Non-compete",
+     "",
+     "25",
+     "",
+     "5 years"
+    ],
+    [
+     "",
+     "$",
+     "7,235",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1299,
+    "end_line": 1311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition"
+    }
+   },
+   "prose_before": "Intangible assets for the CR Brands Acquisition consist of the following:",
+   "prose_after": "(b) Pro Forma Results of Operations (Unaudited)\nThe following table summarizes selected unaudited pro forma consolidated statements of operations data for the years ended December 31, 2020, as if the BIZ had been completed on January 1, 2020.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "32,402",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(1,393)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1317,
+    "end_line": 1323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition"
+    }
+   },
+   "prose_before": "(b) Pro Forma Results of Operations (Unaudited)\nThe following table summarizes selected unaudited pro forma consolidated statements of operations data for the years ended December 31, 2020, as if the BIZ had been completed on January 1, 2020.",
+   "prose_after": "This selected unaudited pro forma consolidated financial data is included only for the purpose of illustration and does not necessarily indicate what the operating results would have been if the BIZ had been completed on that date. Moreover, this information does not indicate what our future operating results will be. The information for 2020 prior to the acquisition of BIZ is based on prior accounting records maintained by CR Brands. In some cases, CR Brands\u2019 accounting policies may differ materially from accounting policies adopted by the Company following acquisition of BIZ.\nThe pro forma amounts above reflect the application of accounting policies and adjustment of the results of the CR Brands Acquisition to reflect: (1) the additional amortization that would have been charged to the acquired intangible assets; (2) additional interest expense relating to the borrowings on our Chase line of credit and UMB term loan and revolving credit facility, respectively; and (3) the tax impacts.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Detergent",
+     "",
+     "",
+     "Shampoo",
+     "",
+     "",
+     "All-Purpose",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2020",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,520",
+     "",
+     "$",
+     "1,710",
+     "$",
+     "3,230",
+     ""
+    ],
+    [
+     "Additions",
+     "",
+     "593",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "593",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "593",
+     "",
+     "",
+     "1,520",
+     "",
+     "",
+     "1,710",
+     "",
+     "3,823",
+     ""
+    ],
+    [
+     "Additions",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "(593)",
+     "",
+     "",
+     "(1,520)",
+     "",
+     "",
+     "-",
+     "",
+     "(2,113)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,710",
+     "$",
+     "1,710",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1332,
+    "end_line": 1347
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "This selected unaudited pro forma consolidated financial data is included only for the purpose of illustration and does not necessarily indicate what the operating results would have been if the BIZ had been completed on that date. Moreover, this information does not indicate what our future operating results will be. The information for 2020 prior to the acquisition of BIZ is based on prior accounting records maintained by CR Brands. In some cases, CR Brands\u2019 accounting policies may differ materially from accounting policies adopted by the Company following acquisition of BIZ.\nThe pro forma amounts above reflect the application of accounting policies and adjustment of the results of the CR Brands Acquisition to reflect: (1) the additional amortization that would have been charged to the acquired intangible assets; (2) additional interest expense relating to the borrowings on our Chase line of credit and UMB term loan and revolving credit facility, respectively; and (3) the tax impacts.\nNote 6. Goodwill and Intangible Assets\nThe changes in the carrying amount of goodwill by reporting unit for the fiscal years ended December 31, 2021 and 2020 were as follows:",
+   "prose_after": "Goodwill related to the disposition of Dryel is included in long-term assets associated with discontinued operations on the consolidated balance sheets. The goodwill impairment charges related to our Detergent and Shampoo reporting units are more fully described below.\nIntangible assets consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As of December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Value",
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Value",
+     ""
+    ],
+    [
+     "Intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "2,103",
+     "$",
+     "329",
+     "$",
+     "1,774",
+     "$",
+     "7,655",
+     "$",
+     "2,118",
+     "$",
+     "5,537"
+    ],
+    [
+     "Trade names",
+     "",
+     "1,850",
+     "",
+     "151",
+     "",
+     "1,699",
+     "",
+     "3,872",
+     "",
+     "781",
+     "",
+     "3,091"
+    ],
+    [
+     "Formulas and batching processes",
+     "",
+     "1,370",
+     "",
+     "452",
+     "",
+     "918",
+     "",
+     "1,369",
+     "",
+     "319",
+     "",
+     "1,050"
+    ],
+    [
+     "Internal-use software (not placed in service)",
+     "",
+     "756",
+     "",
+     "-",
+     "",
+     "756",
+     "",
+     "286",
+     "",
+     "-",
+     "",
+     "286"
+    ],
+    [
+     "Non-compete agreement",
+     "",
+     "48",
+     "",
+     "35",
+     "",
+     "13",
+     "",
+     "48",
+     "",
+     "28",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "$",
+     "6,127",
+     "$",
+     "967",
+     "$",
+     "5,160",
+     "$",
+     "13,230",
+     "$",
+     "3,246",
+     "$",
+     "9,984"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1352,
+    "end_line": 1367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "Goodwill related to the disposition of Dryel is included in long-term assets associated with discontinued operations on the consolidated balance sheets. The goodwill impairment charges related to our Detergent and Shampoo reporting units are more fully described below.\nIntangible assets consisted of the following:",
+   "prose_after": "The change in the net carrying amounts of intangible assets during 2021 was primarily due to cash paid for our internal-use software, the impact of impairment charges related to intangible assets in our Shampoo and Detergent reporting units more fully described below, and amortization expense. Amortization expense for the years ended December 31, 2021 and 2020 was $1,111 and $1,005, respectively.\nEstimated amortization expense for 2022 and subsequent years is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022",
+     "$",
+     "420"
+    ],
+    [
+     "2023",
+     "",
+     "420"
+    ],
+    [
+     "2024",
+     "",
+     "419"
+    ],
+    [
+     "2025",
+     "",
+     "416"
+    ],
+    [
+     "2026",
+     "",
+     "416"
+    ],
+    [
+     "Thereafter",
+     "",
+     "2,313"
+    ],
+    [
+     "Total",
+     "$",
+     "4,404"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1373,
+    "end_line": 1384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "The change in the net carrying amounts of intangible assets during 2021 was primarily due to cash paid for our internal-use software, the impact of impairment charges related to intangible assets in our Shampoo and Detergent reporting units more fully described below, and amortization expense. Amortization expense for the years ended December 31, 2021 and 2020 was $1,111 and $1,005, respectively.\nEstimated amortization expense for 2022 and subsequent years is as follows:",
+   "prose_after": "We made revisions to the internal forecasts relating to all reporting units during the fourth quarter of 2021 due primarily to the sale of our Dryel brand and the impact of rising costs associated with the manufacture and distribution of our products. Through our annual assessments conducted on December 31, 2021, The Company we concluded that the changes in circumstances in these reporting units triggered the need for a quantitative review of the carrying values of goodwill and certain intangible assets and resulted in impairment charges to each of our Detergent, All-Purpose, and Shampoo reporting units during the year ended December 31,2021, and resulted in the following impairment charges:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Intangible Assets",
+     "",
+     "Goodwill",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Detergent",
+     "$",
+     "1,085",
+     "$",
+     "593",
+     "$",
+     "1,678"
+    ],
+    [
+     "Shampoo",
+     "",
+     "2,966",
+     "",
+     "1,520",
+     "",
+     "4,486"
+    ],
+    [
+     "All-Purpose",
+     "",
+     "130",
+     "",
+     "-",
+     "",
+     "130"
+    ],
+    [
+     "",
+     "$",
+     "4,181",
+     "$",
+     "2,113",
+     "$",
+     "6,294"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1387,
+    "end_line": 1398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "We made revisions to the internal forecasts relating to all reporting units during the fourth quarter of 2021 due primarily to the sale of our Dryel brand and the impact of rising costs associated with the manufacture and distribution of our products. Through our annual assessments conducted on December 31, 2021, The Company we concluded that the changes in circumstances in these reporting units triggered the need for a quantitative review of the carrying values of goodwill and certain intangible assets and resulted in impairment charges to each of our Detergent, All-Purpose, and Shampoo reporting units during the year ended December 31,2021, and resulted in the following impairment charges:",
+   "prose_after": "The Company used the income approach and market approach to determine the fair value of the reporting units that required significant judgments and estimates by management regarding several key inputs, including future cash flows consistent with management\u2019s strategic plans, sales growth rates and the selection of royalty rate and a discount rate, among others. Estimating sales growth rates requires significant judgment by management in areas such as future economic conditions, category and industry growth rates, product pricing, consumer tastes and preferences and future expansion expectations.\nNote 7. Long-Term Debt and Line-of-Credit\nOn July 1, 2020, we entered into a Loan and Security Agreement (the \u201cUMB Loan Agreement\u201d) with UMB Bank, N.A. (\u201cUMB\u201d) and we terminated our Credit Agreement, dated June 30, 2016, with JPMorgan Chase Bank, N.A., (as amended, the \u201cPrior Credit Agreement\u201d). Under the UMB Loan Agreement we obtained a $3,000 term loan, with equal monthly payments fully amortized over three years, and interest at the LIBOR Rate + 4.50% with a floor of 5.50%, and a revolving credit facility, with a maximum commitment of $7,000 with interest at the LIBOR Rate + 3.75%, with a floor of 4.75%. The revolving credit facility will terminate on July 1, 2023, unless terminated earlier pursuant to the terms of the Loan Agreement. The loans are secured by all of the assets of the Company and all of its subsidiaries. With UMB, we are assessing the impact of the discontinuation of LIBOR as a benchmark interest rate on the UMB Loan Agreement. We believe it will not be material as the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Revolving Credit Facility",
+     "",
+     "Term Loan",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "-",
+     "$",
+     "1,000",
+     "$",
+     "1,000"
+    ],
+    [
+     "2023",
+     "",
+     "214",
+     "",
+     "2,000",
+     "",
+     "2,214"
+    ],
+    [
+     "Total minimum principal payments",
+     "$",
+     "214",
+     "$",
+     "3,000",
+     "$",
+     "3,214"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1428,
+    "end_line": 1437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt and Line-of-Credit"
+    }
+   },
+   "prose_before": "On November 9, 2021, we entered into a loan and security agreement (the \u201cLa Plata Loan Agreement\u201d) with La Plata Capital, LLC (\u201cLa Plata\u201d). Under the La Plata Loan Agreement, we obtained a $2,000 term loan that bears interest at 14% and a maturity date of November 9, 2023. Interest-only payments are required on a monthly basis beginning in January 2022 and ending on December 1, 2022. Beginning on January 1, 2023, monthly principal payments of $30 are required in addition to accrued and unpaid interest. All remaining unpaid principal and interest are fully due on November 9, 2023.\nThe La Plata Loan Agreement requires compliance with affirmative, negative, and financial covenants, as determined on a monthly basis beginning in July 2022. The La Plata Loan Agreement is secured by all of the assets of the Company and all of its subsidiaries, subordinate to the security of the UMB Loan Agreement. In conjunction with this agreement, we also entered into an intercreditor and subordination agreement with UMB and La Plata, effective November 9, 2021.\nThe Company was in compliance with the La Plata Loan Agreement financial covenants as of December 31, 2021.\nAs of December 31, 2021, our La Plata term loan had an outstanding balance of $2,000. La Plata unamortized loan costs were $41 as of December 31, 2021.\nAs of December 31, 2021, the total principal payments due on our outstanding debt were as follows:",
+   "prose_after": "Note 8. Leases\nWe have entered into leases for our corporate headquarters and office equipment with remaining lease terms up to 10 years. Some of these leases include both lease and non-lease components, which are accounted for as a single lease component as we have elected the practical expedient to combine these components for all leases. As most of the leases do not provide an implicit rate, we calculated the right-of-use assets and lease liabilities using our secured incremental borrowing rate at the lease commencement date. We currently do not have any finance leases outstanding.\nOn March 11, 2020, we executed an office lease for a new corporate headquarters. As of that date, we had the right to control the use of the asset, which qualified as an operating lease. There were no initial direct costs associated with our new office lease and our deposit is fully refundable.\nInformation related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Operating lease information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "411",
+     "",
+     "$",
+     "355",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "",
+     "411",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Net assets obtained in exchange for new operating lease liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "3,156",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term in years",
+     "",
+     "8.91",
+     "",
+     "",
+     "9.86",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "5.1",
+     "%",
+     "",
+     "5.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1447,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Note 8. Leases\nWe have entered into leases for our corporate headquarters and office equipment with remaining lease terms up to 10 years. Some of these leases include both lease and non-lease components, which are accounted for as a single lease component as we have elected the practical expedient to combine these components for all leases. As most of the leases do not provide an implicit rate, we calculated the right-of-use assets and lease liabilities using our secured incremental borrowing rate at the lease commencement date. We currently do not have any finance leases outstanding.\nOn March 11, 2020, we executed an office lease for a new corporate headquarters. As of that date, we had the right to control the use of the asset, which qualified as an operating lease. There were no initial direct costs associated with our new office lease and our deposit is fully refundable.\nInformation related to leases was as follows:",
+   "prose_after": "Future minimum annual lease payments are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022",
+     "",
+     "399",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "406",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "413",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "420",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "427",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,739",
+     ""
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "3,804",
+     ""
+    ],
+    [
+     "Less imputed interest",
+     "",
+     "(773)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating lease liability",
+     "$",
+     "3,031",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1461,
+    "end_line": 1476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Future minimum annual lease payments are as follows:",
+   "prose_after": "Note 9. Income Taxes\nThe provision for income tax attributable to continuing operations for the years ended December 31 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Current provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "60",
+     "",
+     "$",
+     "(458)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(21)",
+     "",
+     "",
+     "(28)",
+     ""
+    ],
+    [
+     "Total current provision (benefit)",
+     "",
+     "39",
+     "",
+     "",
+     "(486)",
+     ""
+    ],
+    [
+     "Deferred provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "740",
+     "",
+     "",
+     "(141)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "229",
+     "",
+     "",
+     "(80)",
+     ""
+    ],
+    [
+     "Total deferred provision (benefit)",
+     "",
+     "969",
+     "",
+     "",
+     "(221)",
+     ""
+    ],
+    [
+     "Provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "800",
+     "",
+     "",
+     "(599)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "208",
+     "",
+     "",
+     "(108)",
+     ""
+    ],
+    [
+     "Total provision (benefit)",
+     "$",
+     "1,008",
+     "",
+     "$",
+     "(707)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1481,
+    "end_line": 1503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Note 9. Income Taxes\nThe provision for income tax attributable to continuing operations for the years ended December 31 is as follows:",
+   "prose_after": "The current tax provision related to discontinued operations for the years ended December 31, 2021 and 2020 was $0 and $21, respectively. The deferred tax (benefit) related to discontinued operations for the years ended December 31, 2021 and 2020 was ($185) and ($8), respectively. These amounts are combined with amounts related to continuing operations on the consolidated statements of cash flows.\nIncome tax expense at the statutory tax rate is reconciled to the overall income tax expense for the years ended December 31 as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax at statutory rates",
+     "$",
+     "(1,939)",
+     "",
+     "$",
+     "(480)",
+     ""
+    ],
+    [
+     "State income taxes, net of federal tax effect",
+     "",
+     "(179)",
+     "",
+     "",
+     "(75)",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "(6)",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Nondeductible stock-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Rate difference in NOL Carryback",
+     "",
+     "11",
+     "",
+     "",
+     "(167)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "3",
+     "",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "3,118",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "$",
+     "1,008",
+     "",
+     "$",
+     "(707)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1509,
+    "end_line": 1523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The current tax provision related to discontinued operations for the years ended December 31, 2021 and 2020 was $0 and $21, respectively. The deferred tax (benefit) related to discontinued operations for the years ended December 31, 2021 and 2020 was ($185) and ($8), respectively. These amounts are combined with amounts related to continuing operations on the consolidated statements of cash flows.\nIncome tax expense at the statutory tax rate is reconciled to the overall income tax expense for the years ended December 31 as follows:",
+   "prose_after": "ASC 740 requires that the tax benefit of net operating losses, temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \"more likely than not.\" Realization of the future tax benefits is dependent on the Company's ability to generate sufficient taxable income within the carryforward period. The net deferred tax assets and liabilities as of December 31, 2021 and 2020 are comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "531",
+     "",
+     "$",
+     "42",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "30",
+     "",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "410",
+     "",
+     "",
+     "238",
+     ""
+    ],
+    [
+     "Accrued vacation and bonus",
+     "",
+     "161",
+     "",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "Intangibles and Goodwill",
+     "",
+     "1,771",
+     "",
+     "",
+     "322",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "697",
+     "",
+     "",
+     "801",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "168",
+     "",
+     "",
+     "59",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "3,768",
+     "",
+     "",
+     "1,698",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "(629)",
+     "",
+     "",
+     "(729)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(21)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "(650)",
+     "",
+     "",
+     "(729)",
+     ""
+    ],
+    [
+     "Net deferred tax asset, before allowance",
+     "",
+     "3,118",
+     "",
+     "",
+     "969",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(3,118)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "969",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1526,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "ASC 740 requires that the tax benefit of net operating losses, temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \"more likely than not.\" Realization of the future tax benefits is dependent on the Company's ability to generate sufficient taxable income within the carryforward period. The net deferred tax assets and liabilities as of December 31, 2021 and 2020 are comprised of the following:",
+   "prose_after": "Net operating losses and tax credit carryforwards as of December 31, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Expiration Years"
+    ],
+    [
+     "Net operating losses, state (After December 31, 2017)",
+     "$",
+     "2,198",
+     "Do not expire"
+    ],
+    [
+     "Tax credits, federal",
+     "$",
+     "4",
+     "2042"
+    ]
+   ],
+   "caption_stack": [
+    "Expiration Years"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1556,
+    "end_line": 1562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Net operating losses and tax credit carryforwards as of December 31, 2021 are as follows:",
+   "prose_after": "Accounting for uncertainty in income taxes is based on a recognition threshold and measurement attribute for the financial statement recognition and measurement of a tax position taken or expected to be taken in a tax return. We recognize in our consolidated financial statements only those tax positions that are more-likely-than-not to be sustained as of the adoption date, based on the technical merits of the position. Each year we perform a comprehensive review of our material tax positions.\nWe believe that it is more likely than not we will not realize all the tax benefits of the deferred tax assets within the allowable carryforward period. Therefore, an appropriate valuation allowance has been provided. The valuation allowance as of December 31, 2021, primarily relates to net operating loss carryforwards. The increase in the valuation allowance during the year ended December 31, 2021, was primarily due to the establishment of the valuation allowance.\nOur policy is to recognize interest and penalties related to uncertain tax benefits in income tax expense. As we had no uncertain tax benefits during 2021 and 2020, we had no accrued interest or penalties related to uncertain tax positions in either year.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "2015 Plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maximum number of shares under the plan",
+     "",
+     "2,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2019",
+     "",
+     "675",
+     "",
+     "$",
+     "1.66",
+     "3.3 years",
+     "$",
+     "231"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(51)",
+     "",
+     "$",
+     "1.31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Expired",
+     "",
+     "(154)",
+     "",
+     "$",
+     "1.33",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2020",
+     "",
+     "470",
+     "",
+     "$",
+     "1.80",
+     "3.3 years",
+     "$",
+     "125"
+    ],
+    [
+     "Exercisable, December 31, 2020",
+     "",
+     "389",
+     "",
+     "$",
+     "1.71",
+     "3.4 years",
+     "$",
+     "125"
+    ],
+    [
+     "Available for issuance, December 31, 2020",
+     "",
+     "1,530",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(45)",
+     "",
+     "$",
+     "1.26",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Expired",
+     "",
+     "(118)",
+     "",
+     "$",
+     "2.17",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2021",
+     "",
+     "307",
+     "",
+     "$",
+     "1.80",
+     "2.6 years",
+     "$",
+     "45"
+    ],
+    [
+     "Exercisable, December 31, 2021",
+     "",
+     "289",
+     "",
+     "$",
+     "1.76",
+     "2.7 years",
+     "$",
+     "45"
+    ],
+    [
+     "Available for issuance, December 31, 2021",
+     "",
+     "1,693",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1588,
+    "end_line": 1619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Shareholders\u2019 Equity"
+    }
+   },
+   "prose_before": "On October 2, 2020, we awarded 240 RSUs to executives and employees (the \u201c2020 Employee Grant\u201d). On November 9, 2021, we awarded 107 RSUs to executives and employees (the \u201c2021 Employee Grant\u201d). The 2020 Employee Grant vested one-third on the initial grant date, October 2, 2020, and the remaining two-thirds will vest on each anniversary of the grant date. The 2021 Employee Grant vests in thirds on each anniversary of the grant date.\nDuring 2021 and 2020, we did not grant any options to acquire shares of our common stock.\nCompensation cost related to stock options recognized in operating results (included in general and administrative expenses) totaled $54 and $80 for the years ended December 31, 2021 and 2020, respectively. Approximately $12 of total unrecognized compensation costs related to non-vested stock options is expected to be recognized over the next two years, depending on the vesting provisions of the options. There was no tax benefit from recording the non-cash expense as it relates to the options granted to employees, as these were qualified stock options which are not normally tax deductible.\nCompensation cost related to RSUs totaled $56 and $252 for the year ended December 31, 2021 and 2020, respectively. Approximately $277 of total unrecognized compensation costs related to non-vested RSUs is expected to be recognized over the next three years.\nStock option activity under the 2015 Plan is as follows:",
+   "prose_after": "A summary of additional information related to the options outstanding as of December 31, 2021 under the 2015 Plan is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Range of Exercise Prices",
+     "Number of Options\n\n\n\n(in thousands)",
+     "",
+     "Weighted Average Remaining Contractual Life",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "2015 Plan",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$1.20-$1.25",
+     "",
+     "94",
+     "3.7 years",
+     "$",
+     "1.25"
+    ],
+    [
+     "$1.26-$1.38",
+     "",
+     "40",
+     "4.9 years",
+     "$",
+     "1.26"
+    ],
+    [
+     "$1.80-$2.25",
+     "",
+     "173",
+     "1.5 years",
+     "$",
+     "2.15"
+    ],
+    [
+     "Total",
+     "",
+     "307",
+     "2.6 years",
+     "$",
+     "1.66"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1623,
+    "end_line": 1638
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Shareholders\u2019 Equity"
+    }
+   },
+   "prose_before": "A summary of additional information related to the options outstanding as of December 31, 2021 under the 2015 Plan is as follows:",
+   "prose_after": "Under our 2015 Plan, we have 1,335 shares available for future equity grants, which comprises our maximum shares available under the plan less all options and RSUs granted.\nWe have an Employee Stock Ownership Plan (\u201cPlan\u201d) to provide retirement benefits for our employees. The Plan is designed to invest primarily in our common stock and is non-contributory on the part of our employees. Contributions to the Plan are discretionary as determined by our Board of Directors. We expense the cost of contributions to the Plan. As of December 1, 2021, we terminated the Plan. No contributions were made to the Plan in 2021 and 2020. At December 31, 2021 and 2020, a total of 14 and 355 shares of our common stock, respectively, have been allocated and earned by our employees.\nNote 11. Earnings per Share\nPer share data is determined by using the weighted average number of common shares outstanding. Common equivalent shares are considered only for diluted earnings per share, unless considered anti-dilutive. Common equivalent shares, determined using the treasury stock method, result from stock options with exercise prices that are below the average market price of the common stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Common shares outstanding, beginning of the period",
+     "",
+     "12,618",
+     "",
+     "12,462"
+    ],
+    [
+     "Weighted average common shares issued",
+     "",
+     "60",
+     "",
+     "173"
+    ],
+    [
+     "Weighted average number of common shares outstanding",
+     "",
+     "12,678",
+     "",
+     "12,635"
+    ],
+    [
+     "Dilutive effect of common share equivalents",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Diluted weighted average number of common shares outstanding",
+     "",
+     "12,678",
+     "",
+     "12,635"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "We have an Employee Stock Ownership Plan (\u201cPlan\u201d) to provide retirement benefits for our employees. The Plan is designed to invest primarily in our common stock and is non-contributory on the part of our employees. Contributions to the Plan are discretionary as determined by our Board of Directors. We expense the cost of contributions to the Plan. As of December 1, 2021, we terminated the Plan. No contributions were made to the Plan in 2021 and 2020. At December 31, 2021 and 2020, a total of 14 and 355 shares of our common stock, respectively, have been allocated and earned by our employees.\nNote 11. Earnings per Share\nPer share data is determined by using the weighted average number of common shares outstanding. Common equivalent shares are considered only for diluted earnings per share, unless considered anti-dilutive. Common equivalent shares, determined using the treasury stock method, result from stock options with exercise prices that are below the average market price of the common stock.\nBasic earnings per share include no dilution and are computed by dividing income available to common shareholders by the weighted-average number of shares outstanding during the period. Diluted earnings per share reflect the potential of securities that could share in our earnings.\nA reconciliation of the weighted average number of common shares outstanding (in thousands) for the years ended December 31 is as follows:",
+   "prose_after": "Common stock equivalents (in thousands) that have been excluded from the calculation of earnings per share as of December 31 because they would have been anti-dilutive are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Stock options",
+     "",
+     "188",
+     "",
+     "261"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1666,
+    "end_line": 1671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Common stock equivalents (in thousands) that have been excluded from the calculation of earnings per share as of December 31 because they would have been anti-dilutive are as follows:",
+   "prose_after": "Note 12. Income from Distribution Agreement Termination\nOn May 8, 2020, we entered into a settlement agreement with Montagne Jeunesse (\u201cMJ\u201d), the manufacturer of 7th Heaven skin care sachets, wherein both parties agreed to terminate our exclusive distribution agreement (the \u201cTermination Agreement\u201d). During the year ended December 31, 2020, we received two transition payments totaling $350, which is included in other income on the consolidated statements of operations. Further, $1.0 million of inventory was repurchased by MJ during the year ended December 31, 2020.\nNote 13. Segment Information\nSegments\nWe operate in two different segments: household products and health and beauty care products. We have chosen to organize our business around these segments based on differences in the products sold. Accounting policies for our segments are the same as those described in Note 1. We evaluate segment performance based on segment income or loss before income taxes.\nThe following provides information on our segments as of and for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Household Products",
+     "",
+     "",
+     "Health and Beauty Care Products",
+     "",
+     "",
+     "Corporate",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "14,152",
+     "",
+     "$",
+     "18,929",
+     "",
+     "$",
+     "-",
+     "$",
+     "33,081",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(3,963)",
+     "",
+     "",
+     "(4,894)",
+     "",
+     "",
+     "-",
+     "",
+     "(8,857)",
+     ""
+    ],
+    [
+     "Identifiable assets",
+     "",
+     "13,207",
+     "",
+     "",
+     "6,398",
+     "",
+     "",
+     "1,264",
+     "",
+     "20,869",
+     ""
+    ],
+    [
+     "Capital and intangible asset expenditures",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "469",
+     "",
+     "469",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,202",
+     "",
+     "",
+     "618",
+     "",
+     "",
+     "-",
+     "",
+     "1,820",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Household Products",
+     "",
+     "",
+     "Health and Beauty Care Products",
+     "",
+     "",
+     "Corporate",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "12,003",
+     "",
+     "$",
+     "16,955",
+     "",
+     "$",
+     "-",
+     "$",
+     "28,958",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "52",
+     "",
+     "",
+     "(2,487)",
+     "",
+     "",
+     "-",
+     "",
+     "(2,435)",
+     ""
+    ],
+    [
+     "Identifiable assets",
+     "",
+     "20,413",
+     "",
+     "",
+     "11,068",
+     "",
+     "",
+     "2,075",
+     "",
+     "33,556",
+     ""
+    ],
+    [
+     "Capital and intangible asset expenditures",
+     "",
+     "10,529",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "17",
+     "",
+     "10,546",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "802",
+     "",
+     "",
+     "628",
+     "",
+     "",
+     "-",
+     "",
+     "1,430",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1685,
+    "end_line": 1706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "On May 8, 2020, we entered into a settlement agreement with Montagne Jeunesse (\u201cMJ\u201d), the manufacturer of 7th Heaven skin care sachets, wherein both parties agreed to terminate our exclusive distribution agreement (the \u201cTermination Agreement\u201d). During the year ended December 31, 2020, we received two transition payments totaling $350, which is included in other income on the consolidated statements of operations. Further, $1.0 million of inventory was repurchased by MJ during the year ended December 31, 2020.\nNote 13. Segment Information\nSegments\nWe operate in two different segments: household products and health and beauty care products. We have chosen to organize our business around these segments based on differences in the products sold. Accounting policies for our segments are the same as those described in Note 1. We evaluate segment performance based on segment income or loss before income taxes.\nThe following provides information on our segments as of and for the years ended December 31:",
+   "prose_after": "Corporate assets noted above are comprised of our income tax receivable and internal-use software.\nCustomers\nNet sales to significant customers were the following for the years ended December 31, 2021 and 2020, respectively:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Walmart",
+     "$",
+     "11,102",
+     "$",
+     "8,829"
+    ],
+    [
+     "Ulta",
+     "",
+     "6,764",
+     "",
+     "4,790"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1713,
+    "end_line": 1719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Corporate assets noted above are comprised of our income tax receivable and internal-use software.\nCustomers\nNet sales to significant customers were the following for the years ended December 31, 2021 and 2020, respectively:",
+   "prose_after": "Outstanding accounts receivable from significant customers represented the following percentages of our total accounts receivable as of December 31, 2021 and 2020, respectively:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Walmart",
+     "",
+     "51.7",
+     "%",
+     "",
+     "39.7",
+     "%"
+    ],
+    [
+     "Ulta",
+     "",
+     "2.9",
+     "%",
+     "",
+     "16.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1722,
+    "end_line": 1728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Outstanding accounts receivable from significant customers represented the following percentages of our total accounts receivable as of December 31, 2021 and 2020, respectively:",
+   "prose_after": "A loss of any of our significant customers could have a material adverse effect on us because it is uncertain whether our consumer base served by these customers would purchase our products at other retail outlets. Our distribution agreement with HK NFS renewed on January 1, 2022 and is effective for a one-year term. This agreement automatically renews for additional successive one-year terms unless and until either party provides notice of nonrenewal at least 90 days before the end of the then-current term. No long-term contracts exist between us and our other significant customers.\nNote 14. Commitments and Contingencies\nAs of December 31, 2021, the Company had no material commitments or contingencies.\nNote 15. Subsequent Events\nThe Company performed a review of events subsequent to the balance sheet date through the date the financial statements were issued and determined that there were no such events requiring recognition or disclosure in the financial statements.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Document"
+    ],
+    [
+     "3.1",
+     "Restated Articles of Incorporation, as amended and restated through May 1, 1996, incorporated by reference to Exhibit 3.1 of our Annual Report on Form 10-KSB for the year ended December 31, 2007."
+    ],
+    [
+     "3.2",
+     "Bylaws, as amended through July 13, 2011, incorporated by reference to Exhibit 99.1 of our Current Report on Form 8-K filed on July 19, 2011."
+    ],
+    [
+     "4.1",
+     "Description of Registrant\u2019s Securities, incorporated by reference to Exhibit 4.1 of our Annual Report on Form 10-K for the year ended December 31, 2020."
+    ],
+    [
+     "10.1*",
+     "Scott\u2019s Liquid Gold-Inc. Health and Accident Plan, Plan Document and Summary Plan Description Amended and Restated Effective October 1, 2003 incorporated by reference to Exhibit 10.1 of our Annual Report on Form 10-K for the year ended December 31, 2004."
+    ],
+    [
+     "10.2*",
+     "Scott\u2019s Liquid Gold & Affiliated Companies Employee Benefit Health and Welfare Plan Amendment #1-2004 incorporated by reference to Exhibit 10.2 of our Annual Report on Form 10-K for the year ended December 31, 2004."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1814,
+    "end_line": 1826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "PART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.\nConsolidated Financial Statements:\nReport of Independent Registered Public Accounting Firm (Plante & Moran, PLLC; Denver, Colorado; PCAOB ID #166)\nConsolidated Statements of Operations for the years ended December 31, 2021 and 2020\nConsolidated Balance Sheets as of December 31, 2021 and 2020\nConsolidated Statements of Shareholders\u2019 Equity for the years ended December 31, 2021 and 2020\nConsolidated Statements of Cash Flows for the years ended December 31, 2021 and 2020\nNotes to Consolidated Financial Statements\nExhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1773,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Document"
+    ],
+    [
+     "10.3*",
+     "Form of Indemnification Agreement for executive officers and directors incorporated by reference to Exhibit 10.3 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012."
+    ],
+    [
+     "10.4*",
+     "Employment Agreement, dated as of March 26, 2014, between Scott\u2019s Liquid Gold-Inc. and Mark Goldstein incorporated by reference to Exhibit 10.5 of the Company\u2019s Annual Report on Form 10-K, filed on March 28, 2014."
+    ],
+    [
+     "10.5*",
+     "Form of 2005 Stock Incentive Plan Nonqualified Stock Option Agreement, incorporated by reference to Exhibit 10.6 of our Quarterly Report on Form 10-QSB for the quarter ended March 31, 2007."
+    ],
+    [
+     "10.6*",
+     "Scott\u2019s Liquid Gold-Inc. 2015 Equity and Incentive Plan incorporated by reference to Appendix A to the Company\u2019s Definitive Proxy Statement for its annual meeting of shareholders held on June 4, 2015 filed on April 27, 2015."
+    ],
+    [
+     "10.7*",
+     "Form of 2015 Equity and Incentive Plan Incentive Stock Option Agreement incorporated by reference to Exhibit 10.24 of the Company\u2019s Annual Report on Form 10-K, filed on March 30, 2016."
+    ],
+    [
+     "10.8*",
+     "Form of 2015 Equity and Incentive Plan Non-Qualified Stock Option Agreement incorporated by reference to Exhibit 10.25 of the Company\u2019s Annual Report on Form 10-K, filed on March 30, 2016."
+    ],
+    [
+     "10.9*",
+     "Form of Director RSU Award Agreement, incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K, filed on November 20, 2019."
+    ],
+    [
+     "10.10*",
+     "Form of Executive Officer RSU Award Agreement, incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K, filed on November 20, 2019."
+    ],
+    [
+     "10.11*",
+     "Form of Executive Officer RSU Award Agreement, dated October 2, 2020"
+    ],
+    [
+     "10.12*",
+     "Employee at Will, Non-Disclosure, Non-Compete, and Development Assignment Agreement, dated May 2, 2018, between the Company and Kevin A. Paprzycki incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed on May 3, 2018."
+    ],
+    [
+     "10.13*",
+     "Amendment to Employee At Will, Non-Disclosure, Non-Compete and Development Assignment Agreement, dated June 25, 2020, incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed on July 1, 2020."
+    ],
+    [
+     "10.14*",
+     "Employee at Will, Non-Disclosure, Non-Compete, and Development Assignment Agreement, dated May 14, 2021, between the Company and Tisha Pedrazzini incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 10-Q filed on May 14, 2021."
+    ],
+    [
+     "10.15*",
+     "Employment Agreement, dated as of November 11, 2021, by and between Scott\u2019s Liquid Gold-Inc. and David Arndt, incorporated by reference to Exhibit 10.4 of the Company\u2019s Quarterly Report on Form 10-Q filed on November 15, 2021."
+    ],
+    [
+     "10.16",
+     "Distribution Agreement, effective January 1, 2018, between Neoteric Cosmetics, Inc. and HK NFS Limited, incorporated by reference to Exhibit 10.25 of the Company\u2019s Annual Report on Form 10-K, filed on April 2, 2018."
+    ],
+    [
+     "10.17",
+     "Asset Purchase Agreement, by and among SLG Chemicals, Inc., a wholly owned subsidiary of Scott\u2019s Liquid Gold-Inc., Scott\u2019s Liquid Gold-Inc. and Paramount Chemical Specialties, Inc., dated October 1, 2019, incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed on October 2, 2019."
+    ],
+    [
+     "10.18",
+     "Asset Purchase Agreement, by and between Scott\u2019s Liquid Gold-Inc. and Colorado Quality Products LLC, dated December 3, 2019, incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed on December 5, 2019."
+    ],
+    [
+     "10.19",
+     "Asset Purchase Agreement, by and between Scott\u2019s Liquid Gold-Inc. and CR Brands, Inc., dated June 25, 2020, incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed on July 1, 2020."
+    ],
+    [
+     "10.20",
+     "Asset Purchase Agreement, by and between Scott\u2019s Liquid Gold-Inc. and Iron Out, Inc. d/b/a Summit Brands., dated December 23, 2021."
+    ],
+    [
+     "10.21",
+     "Loan and Security Agreement, dated July 1, 2020, UMB Bank, N.A., Scott\u2019s Liquid Gold-Inc., SLG Chemicals, Inc., and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 2.2 of the Company\u2019s Current Report on Form 8-K filed on July 1, 2020."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1828,
+    "end_line": 1866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1867,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Document"
+    ],
+    [
+     "10.22",
+     "First Amendment to Loan and Security Agreement, dated March 26, 2021, UMB Bank, N.A., Scott\u2019s Liquid Gold-Inc., SLG Chemicals, Inc., and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 10.22 of the Company\u2019s Annual Report on Form 10-K, filed on March 29, 2021."
+    ],
+    [
+     "10.23",
+     "Second Amendment to Loan and Security Agreement, dated June 25, 2021, UMB Bank, N.A., Scott\u2019s Liquid Gold-Inc., SLG Chemicals, Inc., and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K, filed on June 25, 2021."
+    ],
+    [
+     "10.24",
+     "Third Amendment to Loan and Security Agreement, dated August 13, 2021, UMB Bank, N.A., Scott\u2019s Liquid Gold-Inc., SLG Chemicals, Inc., and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 10.1 of the Company\u2019s Quarterly Report on Form 10-Q filed on August 13, 2021."
+    ],
+    [
+     "10.25",
+     "Consent and Fourth Amendment to Loan and Security Agreement, dated November 15, 2021, UMB Bank, N.A., Scott\u2019s Liquid Gold-Inc., SLG Chemicals, Inc., and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 10.1 of the Company\u2019s Quarterly Report on Form 10-Q filed on November 15, 2021."
+    ],
+    [
+     "10.26",
+     "Loan Agreement, dated November 9, 2021, by and between La Plata Capital, LLC, and Scott's Liquid Gold-Inc., incorporated by reference to Exhibit 10.2 of the Company\u2019s Quarterly Report on Form 10-Q filed on November 15, 2021."
+    ],
+    [
+     "10.27",
+     "Security Agreement, dated November 9, 2021, by and between La Plata Capital, LLC, and Scott's Liquid Gold-Inc., incorporated by reference to Exhibit 10.3 of the Company\u2019s Quarterly Report on Form 10-Q filed on November 15, 2021."
+    ],
+    [
+     "21",
+     "List of Subsidiaries incorporated by reference to Exhibit 21 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2014."
+    ],
+    [
+     "23.1",
+     "Consent of Plante & Moran, PLLC."
+    ],
+    [
+     "24",
+     "Powers of Attorney."
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a) Certification of the President."
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a) Certification of the Chief Financial Officer."
+    ],
+    [
+     "32.1**",
+     "Section 1350 Certification."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1868,
+    "end_line": 1897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Management contract or compensatory plan or arrangement.\n**Furnished, not filed.\nITEM 16. FORM 10-K SUMMARY.\nNone.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1867,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1906,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SCOTT\u2019S LIQUID GOLD-INC.,\n\n\n\na Colorado corporation",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Tisha Pedrazzini"
+    ],
+    [
+     "",
+     "Tisha Pedrazzini, President\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ David M. Arndt"
+    ],
+    [
+     "",
+     "David M. Arndt, Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial and Chief Accounting Officer)"
+    ],
+    [
+     "Date:",
+     "March 31, 2022"
+    ]
+   ],
+   "caption_stack": [
+    "SCOTT\u2019S LIQUID GOLD-INC.,\n\n\n\na Colorado corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1911,
+    "end_line": 1928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Management contract or compensatory plan or arrangement.\n**Furnished, not filed.\nITEM 16. FORM 10-K SUMMARY.\nNone.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1906,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1944,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Name and Title",
+     "Signature"
+    ],
+    [
+     "March 31, 2022",
+     "Tisha Pedrazzini,",
+     ""
+    ],
+    [
+     "",
+     "Director and President",
+     "/s/ Tisha Pedrazzini"
+    ],
+    [
+     "March 31, 2022",
+     "Leah S. Bailey, Director",
+     "Tisha Pedrazzini for herself and as"
+    ],
+    [
+     "March 31, 2022",
+     "Rimmy R. Malhotra, Director",
+     "Attorney-in-Fact for the named directors"
+    ],
+    [
+     "March 31, 2022",
+     "Daniel J. Roller, Director",
+     "who constitute all of the members of the"
+    ],
+    [
+     "",
+     "",
+     "the Board of Directors and for the named officers"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1931,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1906,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1944,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

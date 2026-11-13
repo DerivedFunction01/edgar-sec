@@ -1,0 +1,6893 @@
+{
+ "accession": "0001104659-26-043813",
+ "cik": "0001318484",
+ "form": "10-K",
+ "filing_date": "2026-04-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ctrn-20260131x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "52-2150697"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "incorporation or organization)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "17 Park of Commerce Boulevard, Suite 200, Savannah, Georgia",
+     "31405"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended January 31, 2026\nOr\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from to\nCommission File Number: 001-41886\nCITI TRENDS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code (912) 236-1561\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $.01 Par Value",
+     "CTRN",
+     "NASDAQ Stock Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code (912) 236-1561\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10-K Part and Item No.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "19"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "20"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "21"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "22"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "23"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "29"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "30"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "48"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "48"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "51"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "51"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "51"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "51"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "51"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "52"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "54"
+    ]
+   ],
+   "caption_stack": [
+    "10-K Part and Item No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: $241,618,980 as of August 2, 2025.\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date: Common Stock, par value $0.01 per share, 8,343,340 shares outstanding as of April 10, 2026.\nDOCUMENTS INCORPORATED BY REFERENCE\nPart III incorporates information from the registrant\u2019s definitive proxy statement, to be filed with the Securities and Exchange Commission within 120 days after the close of the registrant\u2019s fiscal year covered by this Annual Report on Form 10-K, with respect to the Annual Meeting of Stockholders to be held on June 10, 2026.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nSome statements in, or incorporated by reference into, this Annual Report on Form 10-K (this \u201cReport\u201d) of Citi Trends, Inc. (\u201cCITITRENDS\u201d, \u201cwe\u201d, \u201cus\u201d, or the \u201cCompany\u201d) may constitute \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). All statements other than historical facts contained in this Report, including statements regarding our future financial results and position, business policy and plans, objectives and expectations of management for future operations and capital allocation expectations, are forward-looking statements. The words \u201cbelieve,\u201d \u201canticipate,\u201d \u201cproject,\u201d \u201cplan,\u201d \u201cexpect,\u201d \u201ctrend,\u201d \u201cestimate,\u201d \u201cobjective,\u201d \u201cforecast,\u201d \u201cupcoming,\u201d \u201cgoal,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201ccould,\u201d \u201cwill likely result,\u201d or \u201cwill continue\u201d and similar expressions, as they relate to us, are intended to identify forward-looking statements, although not all forward-looking statements contain such language. We have based these forward-looking statements largely on our current expectations and projections about future events, including, among other things: general economic conditions, including inflation, energy and fuel costs, unemployment levels, and any deterioration whether caused by acts of war, terrorism, political or social unrest (including any resulting store closures, damage or loss of inventory) or other factors; changes in market interest rates and market levels of wages; the imposition of new taxes on imports, new tariffs and changes in existing tariff rates; the imposition of new trade restrictions and changes in existing trade restrictions or trade relationships; impacts of natural disasters such as hurricanes; uncertainty and economic impact of pandemics, epidemics or other public health emergencies; transportation and distribution delays or interruptions; changes in freight rates; the Company\u2019s ability to attract and retain workers; the Company\u2019s ability to negotiate effectively the cost and purchase of merchandise inventory risks due to shifts in market demand and to manage inventory shrink; the Company\u2019s ability to gauge fashion trends and changing consumer preferences; consumer confidence and changes in consumer spending patterns; competition within the industry; competition in our markets; the duration and extent of any economic stimulus programs; changes in product mix; interruptions in suppliers\u2019 businesses; risks related to cybersecurity, data privacy and intellectual property; temporary changes in demand due to weather patterns; seasonality of the Company\u2019s business; the results of pending or threatened litigation; delays associated with building, remodeling, opening and operating new stores; and delays associated with building, opening or expanding new or existing distribution centers.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Divisions",
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Women's",
+     "",
+     "27",
+     "%",
+     "27",
+     "%",
+     "27",
+     "%"
+    ],
+    [
+     "Children's",
+     "",
+     "23",
+     "%",
+     "23",
+     "%",
+     "23",
+     "%"
+    ],
+    [
+     "Men's",
+     "",
+     "17",
+     "%",
+     "17",
+     "%",
+     "17",
+     "%"
+    ],
+    [
+     "Accessories & Beauty",
+     "",
+     "16",
+     "%",
+     "17",
+     "%",
+     "17",
+     "%"
+    ],
+    [
+     "Home & Lifestyle",
+     "",
+     "10",
+     "%",
+     "10",
+     "%",
+     "9",
+     "%"
+    ],
+    [
+     "Footwear",
+     "",
+     "7",
+     "%",
+     "6",
+     "%",
+     "7",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 199,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Women\u2019s: a wide selection of apparel for juniors, missy and plus size, including trend right sportswear, outerwear, sleepwear, lingerie and scrubs.\n\u25cf Children\u2019s: a wide assortment of basics, fashion and trends for boys up to size 20 and girls up to size 16. Also, sizes for newborns, infants and toddlers, as well as children\u2019s uniforms, accessories and sleepwear.\n\u25cf Men\u2019s: a wide selection of apparel for men and big men, including trend right sportswear and outerwear.\n\u25cf Accessories & Beauty: fashionable handbags, luggage, hats, belts, sunglasses, jewelry and watches for men and women, underwear and socks for the entire family, as well as beauty and fragrance offerings for women and men.\n\u25cf Home & Lifestyle: home goods for the bedroom, bathroom, kitchen and decorative accessories, plus an eclectic composition of wants and needs such as books, food, tech products, team sports products, toys, health and beauty products and seasonal items.\n\u25cf Footwear: casual and dress footwear in sizes for men, women and children.\nThe following table provides the percentage of net sales for each Division within the store:",
+   "prose_after": "Our goal is to deliver outstanding value every day. We do this by offering access to fashion and trends at affordable prices that are desirable for Black families. As a normal course, we do not engage in promotional activity such as high-low pricing, coupons or sales other than our regularly scheduled markdowns. Our assortment balances tiers of good, better, best products, ensuring a broad appeal across diverse income levels. The flexibility of our model allows our pricing structure to fluctuate in response to marketplace changes while maintaining our merchandise margins. Both branded and non-branded offerings validate our fashion and value to our customers.\nSourcing and Allocation\nWe believe that our flexible, value-conscious business model and ever-changing assortment that results from our fresh flow of inventory differentiates us from traditional retailers. We source our merchandise from thousands of domestic manufacturers and importers. Our merchandising division consists of a buying team, a planning team and an allocation team.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 230,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Alabama",
+     "35"
+    ],
+    [
+     "Arkansas",
+     "15"
+    ],
+    [
+     "California",
+     "6"
+    ],
+    [
+     "Connecticut",
+     "5"
+    ],
+    [
+     "Delaware",
+     "3"
+    ],
+    [
+     "Florida",
+     "51"
+    ],
+    [
+     "Georgia",
+     "61"
+    ],
+    [
+     "Illinois",
+     "25"
+    ],
+    [
+     "Indiana",
+     "18"
+    ],
+    [
+     "Iowa",
+     "3"
+    ],
+    [
+     "Kansas",
+     "2"
+    ],
+    [
+     "Kentucky",
+     "7"
+    ],
+    [
+     "Louisiana",
+     "34"
+    ],
+    [
+     "Maryland",
+     "9"
+    ],
+    [
+     "Massachusetts",
+     "5"
+    ],
+    [
+     "Michigan",
+     "23"
+    ],
+    [
+     "Minnesota",
+     "2"
+    ],
+    [
+     "Mississippi",
+     "30"
+    ],
+    [
+     "Missouri",
+     "8"
+    ],
+    [
+     "Nebraska",
+     "1"
+    ],
+    [
+     "Nevada",
+     "3"
+    ],
+    [
+     "New Jersey",
+     "1"
+    ],
+    [
+     "New York",
+     "12"
+    ],
+    [
+     "North Carolina",
+     "47"
+    ],
+    [
+     "Ohio",
+     "30"
+    ],
+    [
+     "Oklahoma",
+     "6"
+    ],
+    [
+     "Pennsylvania",
+     "9"
+    ],
+    [
+     "Rhode Island",
+     "1"
+    ],
+    [
+     "South Carolina",
+     "42"
+    ],
+    [
+     "Tennessee",
+     "16"
+    ],
+    [
+     "Texas",
+     "55"
+    ],
+    [
+     "Virginia",
+     "19"
+    ],
+    [
+     "Wisconsin",
+     "6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES"
+    },
+    "note": null
+   },
+   "prose_before": "Our board of directors considers cybersecurity risk as part of its risk oversight function. Our audit committee oversees management\u2019s policies, programs and procedures related to cybersecurity risk management and reports to the board regarding these efforts. In addition, the audit committee receives briefings from management bi-annually, or more frequently as needed, on material aspects of our cybersecurity program.\nITEM 2.PROPERTIES\nStore Locations\nAs of January 31, 2026, we operated 590 stores located in 33 states. Our stores average approximately 11,000 square feet of selling space and are typically located in outdoor community shopping centers that are convenient to Black customers.\nWe have no franchising relationships, and all of the stores are company operated. All existing 590 stores, totaling 7.9 million total square feet and 6.5 million selling square feet, are leased under operating leases. The typical store lease is for five years with options to extend the lease term for three additional five-year periods. Nearly all store leases provide us the right to cancel following an initial three-year period in the event the store does not meet pre-determined sales levels. The table below sets forth the number of stores in each of the 33 states in which we operated as of January 31, 2026:",
+   "prose_after": "Corporate Offices and Distribution Center Facilities\nOur corporate headquarter is in Savannah, Georgia under a lease agreement that expires in June 2030. In addition, we currently lease office space in New York City.\nWe lease and operate two distribution centers, one in Darlington, South Carolina totaling approximately 550,000 square feet, and another in Roland, Oklahoma totaling approximately 565,000 square feet.\nWe believe our facilities are suitable and adequate to meet our current business and operational needs.\nITEM 3.LEGAL PROCEEDINGS\nWe are from time to time involved in various legal proceedings incidental to the conduct of our business, including claims by customers, employees or former employees. Once it becomes probable that we will incur costs in connection with a legal proceeding and such costs can be reasonably estimated, we establish appropriate reserves. While legal proceedings are subject to uncertainties and the outcome of any such matter is not predictable, we are not aware of any legal proceedings pending or threatened against us that we expect to have a material adverse effect on our business strategy, financial condition, results of operations or liquidity.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total Return Analysis",
+     "",
+     "1/21",
+     "",
+     "1/22",
+     "",
+     "1/23",
+     "",
+     "1/24",
+     "",
+     "1/25",
+     "",
+     "1/26"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Citi Trends, Inc.",
+     "",
+     "100.00",
+     "",
+     "82.58",
+     "",
+     "53.36",
+     "",
+     "45.64",
+     "",
+     "43.90",
+     "",
+     "73.14"
+    ],
+    [
+     "Russell 2000",
+     "",
+     "100.00",
+     "",
+     "98.79",
+     "",
+     "95.45",
+     "",
+     "97.75",
+     "",
+     "116.41",
+     "",
+     "134.81"
+    ],
+    [
+     "Dow Jones US Specialty Retailers",
+     "",
+     "100.00",
+     "",
+     "100.89",
+     "",
+     "96.22",
+     "",
+     "112.85",
+     "",
+     "167.01",
+     "",
+     "159.96"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "In 2020, the Company announced it would suspend quarterly cash dividends. Any determination to declare and pay cash dividends in the future will be made by the Company\u2019s board of directors.\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers.\nThe Company did not repurchase any shares of its common stock during the fourth quarter of fiscal 2025. As of January 31, 2026, approximately $40.0 million remains available under our share repurchase programs. The programs do not have expiration dates.\nEquity Compensation Plan Information.\nSee Item 12 of this Report.\nStock Performance Graph\nSet forth below is a line graph comparing the last five years\u2019 percentage change in the cumulative total stockholder return on shares of our common stock against the cumulative total returns of the Russell 2000 Index and the Dow Jones US Specialty Retailers Index. This graph assumes that $100 was invested on January 31, 2021 in our common stock and in each of the market index and the industry indexes, and that all cash distributions were reinvested. Our common stock price performance shown on the graph is not indicative of future price performance.",
+   "prose_after": "ITEM 6.RESERVED\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with our audited consolidated financial statements and the related notes included elsewhere in this Annual Report on Form 10-K. This discussion may contain forward-looking statements that involve risks and uncertainties. As a result of many factors, such as those set forth under the section entitled \u201cRisk Factors\u201d and elsewhere in this Report, our actual results may differ materially from those anticipated in these forward-looking statements.\nDiscussions of our results of operations for the year ended February 1, 2025 compared to the year ended February 3, 2024 that have been omitted under this item can be found in \"Part II, Item 7 - Management's Discussion and Analysis of Financial Condition and Results of Operations\" in our Annual Report on Form 10-K for the year ended February 1, 2025, which was filed with the United States Securities and Exchange Commission on April 16, 2025.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 611,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations Data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "819,962",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "753,079",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "747,941",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales (exclusive of depreciation)",
+     "",
+     "",
+     "(495,320)",
+     "",
+     "(60.4)",
+     "%",
+     "",
+     "(471,036)",
+     "",
+     "(62.5)",
+     "%",
+     "",
+     "(462,824)",
+     "",
+     "(61.9)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "(313,171)",
+     "",
+     "(38.2)",
+     "%",
+     "",
+     "(300,173)",
+     "",
+     "(39.9)",
+     "%",
+     "",
+     "(284,530)",
+     "",
+     "(38.0)",
+     "%"
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "(18,482)",
+     "",
+     "(2.3)",
+     "%",
+     "",
+     "(18,822)",
+     "",
+     "(2.5)",
+     "%",
+     "",
+     "(18,990)",
+     "",
+     "(2.5)",
+     "%"
+    ],
+    [
+     "Asset impairment",
+     "",
+     "",
+     "(579)",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "(2,536)",
+     "",
+     "(0.3)",
+     "%",
+     "",
+     "(1,051)",
+     "",
+     "(0.1)",
+     "%"
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "",
+     "10,960",
+     "",
+     "1.3",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "0.0",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Gain on insurance",
+     "",
+     "",
+     "482",
+     "",
+     "0.1",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "0.0",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "",
+     "3,852",
+     "",
+     "0.5",
+     "%",
+     "",
+     "(39,488)",
+     "",
+     "(5.2)",
+     "%",
+     "",
+     "(19,454)",
+     "",
+     "(2.6)",
+     "%"
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "1,993",
+     "",
+     "0.2",
+     "%",
+     "",
+     "2,473",
+     "",
+     "0.3",
+     "%",
+     "",
+     "3,874",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(342)",
+     "",
+     "(0.0)",
+     "%",
+     "",
+     "(319)",
+     "",
+     "(0.0)",
+     "%",
+     "",
+     "(306)",
+     "",
+     "(0.0)",
+     "%"
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "",
+     "5,503",
+     "",
+     "0.7",
+     "%",
+     "",
+     "(37,334)",
+     "",
+     "(5.0)",
+     "%",
+     "",
+     "(15,886)",
+     "",
+     "(2.1)",
+     "%"
+    ],
+    [
+     "Income tax (expense) benefit",
+     "",
+     "",
+     "(296)",
+     "",
+     "0.0",
+     "%",
+     "",
+     "(5,836)",
+     "",
+     "(0.8)",
+     "%",
+     "",
+     "3,907",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "5,207",
+     "",
+     "0.6",
+     "%",
+     "$",
+     "(43,170)",
+     "",
+     "(5.7)",
+     "%",
+     "$",
+     "(11,979)",
+     "",
+     "(1.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 695,
+    "end_line": 723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Net sales consist of store sales and layaway fees, net of returns by customers. Cost of sales consists of the cost of products we sell and associated freight costs. Depreciation is not considered a component of cost of sales and is included as a separate line item in the consolidated statements of operations. Selling, general and administrative expenses are comprised of store costs, including payroll and occupancy costs, corporate and distribution center costs and marketing costs. The years ended January 31, 2026, February 1, 2025 and February 3, 2024 are referred to herein as fiscal 2025, fiscal 2024 and fiscal 2023, respectively. Fiscal years 2025 and 2024 are each comprised of 52 weeks, while fiscal 2023 is comprised of 53 weeks.\nResults of Operations\nThe following discussion of our financial performance is based on the consolidated financial statements set forth in Item 8 of this Report. The nature of our business is seasonal. Results may fluctuate due to changes in our business, consumer spending patterns, the macroeconomic environment and strategic initiatives. Furthermore, the seasonal nature of our business may affect comparisons between periods.\nNet Sales and Additional Operating Data\nThe following table provides selected consolidated statement of operations data expressed both in dollars and as a percentage of net sales:",
+   "prose_after": "The following table provides information about store activity and the change in comparable store sales for each fiscal year:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stores open, beginning of year",
+     "",
+     "591",
+     "",
+     "602",
+     "",
+     "611",
+     ""
+    ],
+    [
+     "New stores",
+     "",
+     "3",
+     "",
+     "1",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Closed stores",
+     "",
+     "(4)",
+     "",
+     "(12)",
+     "",
+     "(14)",
+     ""
+    ],
+    [
+     "Total stores open, end of year",
+     "",
+     "590",
+     "",
+     "591",
+     "",
+     "602",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comparable store sales increase (decrease) (1)",
+     "",
+     "9.7",
+     "%",
+     "3.4",
+     "%",
+     "(6.8)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 726,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The following table provides information about store activity and the change in comparable store sales for each fiscal year:",
+   "prose_after": "(1) Stores included in the comparable store sales calculation for any year are those stores that were open for at least 14 full consecutive months without closure for more than seven days within the same fiscal month. Remodeled and relocated stores are included in the comparable store sales results if the selling square footage is not changed significantly, the store is not closed for more than five days in any fiscal month and the store remains in the same trade area, while stores that are closed permanently or for an extended period are excluded from the comparable store sales results.\nKey Operating Statistics\nWe measure performance using key operating statistics. One of the main performance measures we use is comparable store sales growth. We define a comparable store as a store that has been open for at least 14 full consecutive months without closure for more than seven days within the same fiscal month. Remodeled and relocated stores are included in the comparable store sales results if the selling square footage is not changed significantly, the store is not closed for more than five days in any fiscal month and the store remains in the same trade area. We also use other operating statistics, most notably average sales per store, to measure our performance. As we typically occupy existing space in established shopping centers rather than sites built specifically for our stores, store square footage (and therefore sales per square foot) varies by store. We focus on overall store sales volume as the critical driver of profitability. In addition to sales, we measure cost of sales as a percentage of sales and store operating expenses, with a particular focus on labor, as a percentage of sales. These results translate into store level contribution, which we use to evaluate overall performance of each individual store. Finally, we monitor corporate and distribution center expenses against budgeted amounts.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (Deloitte & Touche LLP - PCAOB ID: 34)",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "36"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "37"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 840,
+    "end_line": 853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In November 2025, the FASB issued ASU 2025-11, \u201cInterim Reporting (Topic 270): Narrow-Scope Improvements\u201d (\u201cASU 2025-11\u201d), which amends the guidance in ASC 270 to clarify the applicability of interim disclosure requirements and enhance the navigability of the existing guidance. ASU 2025-11 provides a comprehensive list of required interim disclosures and establishes a new disclosure principle requiring entities to disclose events that occur after the end of the last annual reporting period. The new standard is effective for interim periods within annual reporting periods beginning after December 15, 2027, with early adoption permitted. The Company is currently evaluating the impact the amended guidance will have on its consolidated financial statements and related disclosures.\nITEM 7A.QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nWe source all of our products from markets in the United States in U.S. Dollars and, therefore, are not directly subject to fluctuations in foreign currency exchange rates. However, fluctuations in currency exchange rates could affect our purchasing power with vendors that import merchandise to sell to us. We have not entered into forward contracts to hedge against fluctuations in foreign currency prices.\nITEM 8.FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nIndex to Consolidated Financial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Citi Trends, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Citi Trends, Inc. and subsidiary (the \"Company\") as of January 31, 2026 and February 1, 2025, the related consolidated statements of operations, cash flows, and stockholders\u2019 equity, for each of the three years in the period ended January 31, 2026, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of January 31, 2026 and February 1, 2025, and the results of its operations and its cash flows for each of the three years in the period ended January 31, 2026, in conformity with accounting principles generally accepted in the United States of America.\nWe have also audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the Company's internal control over financial reporting as of January 31, 2026, based on criteria established in Internal Control \u2014 Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission and our report dated April 15, 2026, expressed an unqualified opinion on the Company's internal control over financial reporting.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 854,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "January 31,",
+     "",
+     "",
+     "February 1,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "66,092",
+     "",
+     "$",
+     "61,085",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "",
+     "113,515",
+     "",
+     "",
+     "122,640",
+     "",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "",
+     "",
+     "12,254",
+     "",
+     "",
+     "10,216",
+     "",
+     ""
+    ],
+    [
+     "Income tax receivable",
+     "",
+     "",
+     "1,187",
+     "",
+     "",
+     "3,119",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "193,048",
+     "",
+     "",
+     "197,060",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net of accumulated depreciation of $301,921 and $297,396 as of January 31, 2026 and February 1, 2025, respectively.",
+     "",
+     "",
+     "54,384",
+     "",
+     "",
+     "50,715",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right of use assets",
+     "",
+     "",
+     "221,775",
+     "",
+     "",
+     "214,148",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "1,964",
+     "",
+     "",
+     "846",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "471,171",
+     "",
+     "$",
+     "462,769",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "100,693",
+     "",
+     "$",
+     "102,456",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "",
+     "44,397",
+     "",
+     "",
+     "47,724",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "15,134",
+     "",
+     "",
+     "16,647",
+     "",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "",
+     "12,800",
+     "",
+     "",
+     "7,176",
+     "",
+     ""
+    ],
+    [
+     "Layaway deposits",
+     "",
+     "",
+     "383",
+     "",
+     "",
+     "388",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "173,407",
+     "",
+     "",
+     "174,391",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent operating lease liabilities",
+     "",
+     "",
+     "178,921",
+     "",
+     "",
+     "172,675",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Liability",
+     "",
+     "",
+     "245",
+     "",
+     "",
+     "142",
+     "",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "",
+     "2,278",
+     "",
+     "",
+     "2,385",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "354,851",
+     "",
+     "",
+     "349,593",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value. Authorized 32,000,000 shares; 16,545,723 shares issued as of January 31, 2026 and 16,497,092 shares issued as of February 1, 2025; 8,345,917 shares outstanding as of January 31, 2026 and 8,547,841 shares outstanding as of February 1, 2025",
+     "",
+     "",
+     "163",
+     "",
+     "",
+     "162",
+     "",
+     ""
+    ],
+    [
+     "Paid in capital",
+     "",
+     "",
+     "112,352",
+     "",
+     "",
+     "108,101",
+     "",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "",
+     "281,108",
+     "",
+     "",
+     "275,901",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock, at cost; 8,199,806 shares held as of January 31, 2026 and 7,949,251 shares held as of February 1, 2025",
+     "",
+     "",
+     "(277,303)",
+     "",
+     "",
+     "(270,988)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "",
+     "116,320",
+     "",
+     "",
+     "113,176",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 7)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "$",
+     "471,171",
+     "",
+     "$",
+     "462,769",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 907,
+    "end_line": 956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf We tested the effectiveness of controls over the measurement of inventory under the retail inventory method, including merchandise markdowns.\n\u25cf We tested the timing of markdowns by:\no Making a selection of markdowns recorded throughout the year and after year-end to test the accuracy and timeliness of the markdowns recorded.\no Making a selection of purchases made throughout the year; determining if those purchases were subsequently marked down; and, if marked down, that the markdown was recorded timely.\n/s/ Deloitte & Touche LLP\nAtlanta, Georgia\nApril 15, 2026\nWe have served as the Company's auditor since 2021.\nConsolidated Balance Sheets\n(in thousands, except share data)",
+   "prose_after": "Consolidated Statements of Operations\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 957,
+     "token": "REPEATING_FOOTER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "819,962",
+     "",
+     "$",
+     "753,079",
+     "",
+     "$",
+     "747,941",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales (exclusive of depreciation shown separately below)",
+     "",
+     "",
+     "(495,320)",
+     "",
+     "",
+     "(471,036)",
+     "",
+     "",
+     "(462,824)",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "(313,171)",
+     "",
+     "",
+     "(300,173)",
+     "",
+     "",
+     "(284,530)",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "(18,482)",
+     "",
+     "",
+     "(18,822)",
+     "",
+     "",
+     "(18,990)",
+     ""
+    ],
+    [
+     "Asset impairment",
+     "",
+     "",
+     "(579)",
+     "",
+     "",
+     "(2,536)",
+     "",
+     "",
+     "(1,051)",
+     ""
+    ],
+    [
+     "Gain on sale of building",
+     "",
+     "",
+     "10,960",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on insurance",
+     "",
+     "",
+     "482",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "",
+     "3,852",
+     "",
+     "",
+     "(39,488)",
+     "",
+     "",
+     "(19,454)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "1,993",
+     "",
+     "",
+     "2,473",
+     "",
+     "",
+     "3,874",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(342)",
+     "",
+     "",
+     "(319)",
+     "",
+     "",
+     "(306)",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "",
+     "5,503",
+     "",
+     "",
+     "(37,334)",
+     "",
+     "",
+     "(15,886)",
+     ""
+    ],
+    [
+     "Income tax (expense) benefit",
+     "",
+     "",
+     "(296)",
+     "",
+     "",
+     "(5,836)",
+     "",
+     "",
+     "3,907",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "5,207",
+     "",
+     "$",
+     "(43,170)",
+     "",
+     "$",
+     "(11,979)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net income (loss) per common share",
+     "",
+     "$",
+     "0.65",
+     "",
+     "$",
+     "(5.19)",
+     "",
+     "$",
+     "(1.46)",
+     ""
+    ],
+    [
+     "Diluted net income (loss) per common share",
+     "",
+     "$",
+     "0.63",
+     "",
+     "$",
+     "(5.19)",
+     "",
+     "$",
+     "(1.46)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "8,057",
+     "",
+     "",
+     "8,315",
+     "",
+     "",
+     "8,221",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "8,300",
+     "",
+     "",
+     "8,315",
+     "",
+     "",
+     "8,221",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 965,
+    "end_line": 1000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations\n(in thousands, except per share data)",
+   "prose_after": "Consolidated Statements of Cash Flows\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1001,
+     "token": "REPEATING_FOOTER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "5,207",
+     "",
+     "$",
+     "(43,170)",
+     "",
+     "$",
+     "(11,979)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "18,482",
+     "",
+     "",
+     "18,822",
+     "",
+     "",
+     "18,990",
+     ""
+    ],
+    [
+     "Non-cash operating lease costs",
+     "",
+     "",
+     "47,733",
+     "",
+     "",
+     "48,863",
+     "",
+     "",
+     "50,462",
+     ""
+    ],
+    [
+     "Asset impairment",
+     "",
+     "",
+     "579",
+     "",
+     "",
+     "2,536",
+     "",
+     "",
+     "1,051",
+     ""
+    ],
+    [
+     "(Gain) Loss on disposal of property and equipment",
+     "",
+     "",
+     "(602)",
+     "",
+     "",
+     "27",
+     "",
+     "",
+     "238",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "",
+     "102",
+     "",
+     "",
+     "5,247",
+     "",
+     "",
+     "(2,211)",
+     ""
+    ],
+    [
+     "Insurance proceeds related to operating activities",
+     "",
+     "",
+     "339",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,483",
+     ""
+    ],
+    [
+     "Non-cash stock-based compensation expense",
+     "",
+     "",
+     "5,389",
+     "",
+     "",
+     "3,302",
+     "",
+     "",
+     "4,095",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "",
+     "(10,960)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on insurance related activities",
+     "",
+     "",
+     "(339)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,483)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "",
+     "9,125",
+     "",
+     "",
+     "7,792",
+     "",
+     "",
+     "(24,638)",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "",
+     "",
+     "(2,038)",
+     "",
+     "",
+     "622",
+     "",
+     "",
+     "2,139",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "(1,118)",
+     "",
+     "",
+     "160",
+     "",
+     "",
+     "178",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "(3,305)",
+     "",
+     "",
+     "101",
+     "",
+     "",
+     "17,861",
+     ""
+    ],
+    [
+     "Accrued expenses and other long-term liabilities",
+     "",
+     "",
+     "(55,191)",
+     "",
+     "",
+     "(49,489)",
+     "",
+     "",
+     "(58,318)",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "",
+     "5,624",
+     "",
+     "",
+     "330",
+     "",
+     "",
+     "(3,977)",
+     ""
+    ],
+    [
+     "Income tax payable/receivable",
+     "",
+     "",
+     "1,932",
+     "",
+     "",
+     "1,004",
+     "",
+     "",
+     "(3,508)",
+     ""
+    ],
+    [
+     "Layaway deposits",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "40",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "",
+     "20,954",
+     "",
+     "",
+     "(3,849)",
+     "",
+     "",
+     "(9,577)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "",
+     "(20,330)",
+     "",
+     "",
+     "(10,108)",
+     "",
+     "",
+     "(14,875)",
+     ""
+    ],
+    [
+     "Insurance proceeds related to investing activities",
+     "",
+     "",
+     "630",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,517",
+     ""
+    ],
+    [
+     "Proceeds from sale of building",
+     "",
+     "",
+     "11,206",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(8,494)",
+     "",
+     "",
+     "(10,108)",
+     "",
+     "",
+     "(13,358)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used to settle withholding taxes on vested restricted stock",
+     "",
+     "",
+     "(1,138)",
+     "",
+     "",
+     "(887)",
+     "",
+     "",
+     "(854)",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "",
+     "(6,315)",
+     "",
+     "",
+     "(3,777)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "",
+     "(7,453)",
+     "",
+     "",
+     "(4,664)",
+     "",
+     "",
+     "(854)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "",
+     "5,007",
+     "",
+     "",
+     "(18,621)",
+     "",
+     "",
+     "(23,789)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "",
+     "",
+     "61,085",
+     "",
+     "",
+     "79,706",
+     "",
+     "",
+     "103,495",
+     ""
+    ],
+    [
+     "End of year",
+     "",
+     "$",
+     "66,092",
+     "",
+     "$",
+     "61,085",
+     "",
+     "$",
+     "79,706",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "",
+     "$",
+     "210",
+     "",
+     "$",
+     "168",
+     "",
+     "$",
+     "159",
+     ""
+    ],
+    [
+     "Cash (receipts) payments of income taxes",
+     "",
+     "$",
+     "(1,699)",
+     "",
+     "$",
+     "(415)",
+     "",
+     "$",
+     "1,813",
+     ""
+    ],
+    [
+     "Supplemental disclosures of non-cash investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrual for purchases of property and equipment",
+     "",
+     "$",
+     "2,399",
+     "",
+     "$",
+     "4,446",
+     "",
+     "$",
+     "2,936",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1009,
+    "end_line": 1070
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows\n(in thousands)",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity\n(in thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1003,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1071,
+     "token": "REPEATING_FOOTER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balances \u2014 January 28, 2023",
+     "",
+     "16,158,494",
+     "",
+     "$",
+     "160",
+     "",
+     "$",
+     "102,445",
+     "",
+     "$",
+     "331,050",
+     "",
+     "7,804,013",
+     "",
+     "$",
+     "(267,211)",
+     "",
+     "$",
+     "166,444",
+     ""
+    ],
+    [
+     "Grant of restricted shares",
+     "",
+     "272,426",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Forfeiture of restricted shares",
+     "",
+     "(39,321)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,095",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,095",
+     ""
+    ],
+    [
+     "Shares withheld for settlement of employee taxes on vesting",
+     "",
+     "(36,885)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(854)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(854)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,979)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,979)",
+     ""
+    ],
+    [
+     "Balances \u2014 February 3, 2024",
+     "",
+     "16,354,714",
+     "",
+     "$",
+     "160",
+     "",
+     "$",
+     "105,686",
+     "",
+     "$",
+     "319,071",
+     "",
+     "7,804,013",
+     "",
+     "$",
+     "(267,211)",
+     "",
+     "$",
+     "157,706",
+     ""
+    ],
+    [
+     "Vesting of restricted shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Grant of restricted shares",
+     "",
+     "230,852",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Forfeiture of restricted shares",
+     "",
+     "(51,450)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,302",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,302",
+     ""
+    ],
+    [
+     "Shares withheld for settlement of employee taxes on vesting",
+     "",
+     "(37,024)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(887)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(887)",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "145,238",
+     "",
+     "",
+     "(3,777)",
+     "",
+     "",
+     "(3,777)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(43,170)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(43,170)",
+     ""
+    ],
+    [
+     "Balances \u2014 February 1, 2025",
+     "",
+     "16,497,092",
+     "",
+     "$",
+     "162",
+     "",
+     "$",
+     "108,101",
+     "",
+     "$",
+     "275,901",
+     "",
+     "7,949,251",
+     "",
+     "$",
+     "(270,988)",
+     "",
+     "$",
+     "113,176",
+     ""
+    ],
+    [
+     "Vesting of restricted shares",
+     "",
+     "52,244",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Grant of restricted shares",
+     "",
+     "64,468",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Forfeiture of restricted shares",
+     "",
+     "(26,464)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,389",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,389",
+     ""
+    ],
+    [
+     "Shares withheld for settlement of employee taxes on vesting",
+     "",
+     "(41,617)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,138)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,138)",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "250,555",
+     "",
+     "",
+     "(6,315)",
+     "",
+     "",
+     "(6,315)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,207",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,207",
+     ""
+    ],
+    [
+     "Balances \u2014 January 31, 2026",
+     "",
+     "16,545,723",
+     "",
+     "$",
+     "163",
+     "",
+     "$",
+     "112,352",
+     "",
+     "$",
+     "281,108",
+     "",
+     "8,199,806",
+     "",
+     "$",
+     "(277,303)",
+     "",
+     "$",
+     "116,320",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1079,
+    "end_line": 1112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity\n(in thousands, except share amounts)",
+   "prose_after": "Notes to Consolidated Financial Statements\n1. Organization and Business\nCiti Trends, Inc. and its subsidiary (the \u201cCompany\u201d) is the leading off-price value retailer of apparel, accessories and home trends primarily for Black families in the United States. As of January 31, 2026, the Company operated 590 stores in urban, suburban and rural markets in 33 states.\n2. Summary of Significant Accounting Policies\nPrinciples of Consolidation\nThe consolidated financial statements include the accounts of the Company and its wholly owned subsidiary. All intercompany transactions and balances have been eliminated in consolidation.\nFiscal Year\nThe Company\u2019s fiscal year ends on the Saturday closest to January 31 of each year. The years ended January 31, 2026, February 1, 2025 and February 3, 2024 are referred to as fiscal 2025, fiscal 2024 and fiscal 2023, respectively, in the accompanying consolidated financial statements. Fiscal years 2025 and 2024 have a 52-week accounting period, and fiscal year 2023 is comprised of 53 weeks.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1113,
+     "token": "REPEATING_FOOTER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Divisions",
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Women's",
+     "",
+     "27",
+     "%",
+     "27",
+     "%",
+     "27",
+     "%"
+    ],
+    [
+     "Children's",
+     "",
+     "23",
+     "%",
+     "23",
+     "%",
+     "23",
+     "%"
+    ],
+    [
+     "Men's",
+     "",
+     "17",
+     "%",
+     "17",
+     "%",
+     "17",
+     "%"
+    ],
+    [
+     "Accessories & Beauty",
+     "",
+     "16",
+     "%",
+     "17",
+     "%",
+     "17",
+     "%"
+    ],
+    [
+     "Home & Lifestyle",
+     "",
+     "10",
+     "%",
+     "10",
+     "%",
+     "9",
+     "%"
+    ],
+    [
+     "Footwear",
+     "",
+     "7",
+     "%",
+     "6",
+     "%",
+     "7",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1176,
+    "end_line": 1188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company\u2019s primary source of revenue is derived from the sale of apparel, accessories and home goods to its customers with the Company\u2019s performance obligations satisfied at the point of sale when the customer pays for their purchase and receives the merchandise. Sales taxes collected by the Company from customers are excluded from revenue. Revenue from layaway sales is recognized at the point in time when the merchandise is paid for and control of the goods is transferred to the customer, thereby satisfying the Company\u2019s performance obligation. The Company defers revenue from the sale of gift cards and recognizes the associated revenue upon the redemption of the cards by customers to purchase merchandise. Breakage on gift cards is minimal as the cards are generally subject to escheat regulations of the state in which the gift card subsidiary is located.\nSales Returns\nThe Company allows customers to return merchandise for up to thirty days after the date of sale. Expected refunds to customers are recorded based on estimated margin using historical return information. The refund liability for merchandise returns is recorded in accrued expenses on the consolidated balance sheet and totaled $0.1 million and $0.2 million as of January 31, 2026 and February 1, 2025, respectively. The corresponding asset for the recoverable cost of expected refunds is included in prepaid and other current assets and totaled $0.1 million as of both January 31, 2026 and February 1, 2025.\nDisaggregation of Revenue\nIn the following table, the Company\u2019s revenue is disaggregated by Division or major product category. The following table provides the percentage of net sales for each Division within the merchandise assortment:",
+   "prose_after": "Cost of Sales\nCost of sales includes the cost of inventory sold during the period and transportation costs, including inbound freight related to inventory sold, freight from the distribution centers to the stores and freight from vendors to stores, net of discounts and allowances. Distribution center costs, store occupancy expenses and marketing expenses are not considered components of cost of sales and are included as part of selling, general and administrative expenses. Depreciation is also not considered a component of cost of sales and is included as a separate line item in the consolidated statements of operations. Distribution center costs (exclusive of depreciation) for fiscal 2025, 2024 and 2023 were $32.7 million, $32.1 million and $31.0 million, respectively.\nEarnings per Share\nBasic earnings per common share amounts are calculated using the weighted average number of common shares outstanding for the period. Diluted earnings per common share amounts are calculated using the weighted average number of common shares outstanding plus the additional dilution for all potentially dilutive securities, such as nonvested restricted stock. During loss periods, diluted loss per share amounts are based on the weighted average number of common shares outstanding because the inclusion of common stock equivalents would be antidilutive.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1151,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1189,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding (basic)",
+     "",
+     "8,057,405",
+     "",
+     "8,314,825",
+     "",
+     "8,221,450",
+     ""
+    ],
+    [
+     "Incremental shares from assumed vesting of nonvested restricted stock",
+     "",
+     "242,685",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Average number of common shares and common stock equivalents outstanding",
+     "",
+     "8,300,090",
+     "",
+     "8,314,825",
+     "",
+     "8,221,450",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1200,
+    "end_line": 1211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Cost of sales includes the cost of inventory sold during the period and transportation costs, including inbound freight related to inventory sold, freight from the distribution centers to the stores and freight from vendors to stores, net of discounts and allowances. Distribution center costs, store occupancy expenses and marketing expenses are not considered components of cost of sales and are included as part of selling, general and administrative expenses. Depreciation is also not considered a component of cost of sales and is included as a separate line item in the consolidated statements of operations. Distribution center costs (exclusive of depreciation) for fiscal 2025, 2024 and 2023 were $32.7 million, $32.1 million and $31.0 million, respectively.\nEarnings per Share\nBasic earnings per common share amounts are calculated using the weighted average number of common shares outstanding for the period. Diluted earnings per common share amounts are calculated using the weighted average number of common shares outstanding plus the additional dilution for all potentially dilutive securities, such as nonvested restricted stock. During loss periods, diluted loss per share amounts are based on the weighted average number of common shares outstanding because the inclusion of common stock equivalents would be antidilutive.\nThe following table provides a reconciliation of the number of average common shares outstanding used to calculate basic earnings per share to the number of common shares and common stock equivalents outstanding used in calculating diluted earnings per share:",
+   "prose_after": "The dilutive effect of stock-based compensation arrangements is accounted for using the treasury stock method. The Company includes as assumed proceeds the amount of compensation costs attributed to future services and not yet recognized. For fiscal 2025, 2024 and 2023, respectively, there were 0, 248,000, and 273,000 shares of nonvested restricted stock excluded from the calculation of diluted earnings per share because of antidilution.\nMarketing\nThe Company expenses marketing as incurred. Marketing expense for fiscal 2025, 2024 and 2023 was $1.3 million, $2.3 million and $1.6 million, respectively.\nOperating Leases\nThe Company leases all of its retail store locations, its distribution centers and certain office space and equipment. All leases are classified as operating leases. The Company records right-of-use assets and lease liabilities based on the present value of future minimum lease payments using an incremental borrowing rate. The incremental borrowing rate is determined based on rates and terms from the Company\u2019s existing borrowing facility with adjustments to bridge for differences in collateral, terms and payments. Lease costs are recognized over the estimated term of the lease, which includes any reasonably certain lease periods associated with available renewal periods. Lease expense for fixed lease payments is recognized on a straight-line basis over the lease term. In addition, certain leases provide for contingent rents that are not measurable at inception. These contingent rents are primarily based on a percentage of net sales that are in excess of a predetermined level. These amounts are excluded from minimum rent and included in the determination of total rent expense when it is probable that the expense has been incurred and the amount can be reasonably estimated. If an operating lease asset is impaired, the remaining operating lease asset will be amortized on a straight-line basis over the remaining lease term. Leases with an initial term of 12 months or less are not recorded on the balance sheet.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1189,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "January 31,",
+     "",
+     "",
+     "February 1,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Buildings",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,849",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "",
+     "146,979",
+     "",
+     "",
+     "136,491",
+     ""
+    ],
+    [
+     "Furniture, fixtures and equipment",
+     "",
+     "",
+     "146,181",
+     "",
+     "",
+     "144,321",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "",
+     "",
+     "62,289",
+     "",
+     "",
+     "59,993",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "",
+     "856",
+     "",
+     "",
+     "2,457",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "356,305",
+     "",
+     "",
+     "348,111",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "",
+     "(301,921)",
+     "",
+     "",
+     "(297,396)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "54,384",
+     "",
+     "$",
+     "50,715",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1248,
+    "end_line": 1264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Property and Equipment, net"
+    }
+   },
+   "prose_before": "In September 2025, the FASB issued ASU 2025-06, \u201cIntangibles \u2013 Goodwill and Other Internal-Use Software: Targeted Improvements to the Accounting for Internal-Use Software\u201d (\u201cASU 2025-06\u201d), which amends the guidance in ASC 350 to revise the criteria for when an entity is required to start capitalizing software costs and requires an entity to consider whether there is significant uncertainty associated with the development activities of the software when evaluating the probable-to-complete recognition threshold. ASU 2025-06 is required to be adopted in the annual reporting periods beginning after December 15, 2027, including interim periods within those annual reporting periods, with early adoption permitted. The Company is currently evaluating the impact the amended guidance will have on its consolidated financial statements and related disclosures.\nIn November 2025, the FASB issued ASU 2025-11, \u201cInterim Reporting (Topic 270): Narrow-Scope Improvements\u201d (\u201cASU 2025-11\u201d), which amends the guidance in ASC 270 to clarify the applicability of interim disclosure requirements and enhance the navigability of the existing guidance. ASU 2025-11 provides a comprehensive list of required interim disclosures and establishes a new disclosure principle requiring entities to disclose events that occur after the end of the last annual reporting period. The new standard is effective for interim periods within annual reporting periods beginning after December 15, 2027, with early adoption permitted. The Company is currently evaluating the impact the amended guidance will have on its consolidated financial statements and related disclosures.\n3. Property and Equipment, net\nProperty and equipment, net, consists of the following (in thousands):",
+   "prose_after": "4. Revolving Credit Facility\nIn October 2011, the Company entered into a five-year, $50 million credit facility with Bank of America. The facility was amended in August 2015, May 2020 and April 2021 to modify terms and extend the maturity dates. The facility was further amended on April 10, 2025 to extend the maturity date to April 10, 2030. The amended facility provides a $75 million credit commitment and a $25 million uncommitted \u201caccordion\u201d feature that under certain circumstances could allow the Company to increase the size of the facility to $100 million.\nThe facility is secured by the Company\u2019s inventory, accounts receivable and related assets, but not its real estate, fixtures and equipment, and it contains one financial covenant, a fixed charge coverage ratio, which is applicable and tested only in certain circumstances. The facility has an unused commitment fee of 0.25% and permits the payment of cash dividends subject to certain limitations.\nBorrowings under the credit facility bear interest (a) for SOFR Loans, at a rate equal to the SOFR Rate plus a SOFR adjustment equal to 0.10% plus either 1.50%, 1.75% or 2.00%, or (b) for Base Rate Loans, at a rate equal to the highest of (i) the prime rate, (ii) the Federal Funds Rate plus 0.5% and (iii) the Terms SOFR Rate plus 1.0%, plus, in each case either 0.50%, 0.75% or 1.00%, based in any such case on the average daily availability for borrowings under the facility.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1300,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "$",
+     "(160)",
+     "",
+     "$",
+     "(275)",
+     "",
+     "$",
+     "2,025",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "",
+     "(34)",
+     "",
+     "",
+     "(420)",
+     "",
+     "",
+     "(329)",
+     ""
+    ],
+    [
+     "Total current",
+     "",
+     "",
+     "(194)",
+     "",
+     "",
+     "(695)",
+     "",
+     "",
+     "1,696",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "(102)",
+     "",
+     "",
+     "(2,266)",
+     "",
+     "",
+     "2,635",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,875)",
+     "",
+     "",
+     "(424)",
+     ""
+    ],
+    [
+     "Total deferred",
+     "",
+     "",
+     "(102)",
+     "",
+     "",
+     "(5,141)",
+     "",
+     "",
+     "2,211",
+     ""
+    ],
+    [
+     "Total income tax (expense) benefit",
+     "",
+     "$",
+     "(296)",
+     "",
+     "$",
+     "(5,836)",
+     "",
+     "$",
+     "3,907",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1279,
+    "end_line": 1299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The facility is secured by the Company\u2019s inventory, accounts receivable and related assets, but not its real estate, fixtures and equipment, and it contains one financial covenant, a fixed charge coverage ratio, which is applicable and tested only in certain circumstances. The facility has an unused commitment fee of 0.25% and permits the payment of cash dividends subject to certain limitations.\nBorrowings under the credit facility bear interest (a) for SOFR Loans, at a rate equal to the SOFR Rate plus a SOFR adjustment equal to 0.10% plus either 1.50%, 1.75% or 2.00%, or (b) for Base Rate Loans, at a rate equal to the highest of (i) the prime rate, (ii) the Federal Funds Rate plus 0.5% and (iii) the Terms SOFR Rate plus 1.0%, plus, in each case either 0.50%, 0.75% or 1.00%, based in any such case on the average daily availability for borrowings under the facility.\nAs of January 31, 2026, the Company had no borrowings under the credit facility and $2.2 million of letters of credit outstanding.\n5. Income Taxes\nIncome tax (expense) benefit consists of the following (in thousands):",
+   "prose_after": "Income tax (expense) benefit computed using the federal statutory rate is reconciled to the reported income tax (expense) benefit as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1300,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Rate",
+     "",
+     "",
+     "(Expense) / Benefit",
+     "",
+     "Rate",
+     "",
+     "",
+     "(Expense) / Benefit",
+     "",
+     "Rate",
+     "",
+     "",
+     "(Expense) / Benefit"
+    ],
+    [
+     "Statutory rate applied to income before income taxes",
+     "21%",
+     "",
+     "$",
+     "(1,165)",
+     "",
+     "21%",
+     "",
+     "$",
+     "7,840",
+     "",
+     "21%",
+     "",
+     "$",
+     "3,337"
+    ],
+    [
+     "State income taxes, net of federal benefit *",
+     "5%",
+     "",
+     "",
+     "(292)",
+     "",
+     "3%",
+     "",
+     "",
+     "1,109",
+     "",
+     "2%",
+     "",
+     "",
+     "240"
+    ],
+    [
+     "State tax credits, net of federal benefit",
+     "32%",
+     "",
+     "",
+     "(1,775)",
+     "",
+     "(3)%",
+     "",
+     "",
+     "(1,001)",
+     "",
+     "(1)%",
+     "",
+     "",
+     "(167)"
+    ],
+    [
+     "General business credits, net of nondeductible expenses",
+     "(20)%",
+     "",
+     "",
+     "1,130",
+     "",
+     "3%",
+     "",
+     "",
+     "1,235",
+     "",
+     "11%",
+     "",
+     "",
+     "1,840"
+    ],
+    [
+     "Nondeductible compensation",
+     "6%",
+     "",
+     "",
+     "(364)",
+     "",
+     "0%",
+     "",
+     "",
+     "(46)",
+     "",
+     "0%",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Excess (deficit) tax benefits from stock-based compensation",
+     "(4)%",
+     "",
+     "",
+     "220",
+     "",
+     "0%",
+     "",
+     "",
+     "(96)",
+     "",
+     "(3)%",
+     "",
+     "",
+     "(519)"
+    ],
+    [
+     "Valuation Allowance",
+     "(37)%",
+     "",
+     "",
+     "2,028",
+     "",
+     "(39)%",
+     "",
+     "",
+     "(14,582)",
+     "",
+     "(5)%",
+     "",
+     "",
+     "(774)"
+    ],
+    [
+     "Changes in tax rates",
+     "3%",
+     "",
+     "",
+     "(150)",
+     "",
+     "0%",
+     "",
+     "",
+     "42",
+     "",
+     "0%",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Nondeductible or nontaxable items",
+     "1%",
+     "",
+     "",
+     "(52)",
+     "",
+     "0%",
+     "",
+     "",
+     "(47)",
+     "",
+     "0%",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Changes in Unrecognized tax benefits",
+     "0%",
+     "",
+     "",
+     "(2)",
+     "",
+     "0%",
+     "",
+     "",
+     "\u2014",
+     "",
+     "0%",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other",
+     "(2)%",
+     "",
+     "",
+     "126",
+     "",
+     "(1)%",
+     "",
+     "",
+     "(290)",
+     "",
+     "0%",
+     "",
+     "",
+     "(50)"
+    ],
+    [
+     "Income tax (expense) benefit",
+     "5%",
+     "",
+     "$",
+     "(296)",
+     "",
+     "(16)%",
+     "",
+     "$",
+     "(5,836)",
+     "",
+     "25%",
+     "",
+     "$",
+     "3,907"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1303,
+    "end_line": 1325
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Income tax (expense) benefit computed using the federal statutory rate is reconciled to the reported income tax (expense) benefit as follows (in thousands):",
+   "prose_after": "* The only state that contributes to the majority (greater than 50%) of the tax effect in this category is Louisiana.\nDeferred tax assets and deferred tax liabilities consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1300,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1362,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "January 31,",
+     "",
+     "",
+     "February 1,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory capitalization",
+     "",
+     "$",
+     "1,863",
+     "",
+     "$",
+     "1,930",
+     ""
+    ],
+    [
+     "Vacation liability",
+     "",
+     "",
+     "24",
+     "",
+     "",
+     "395",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "",
+     "56,683",
+     "",
+     "",
+     "55,247",
+     ""
+    ],
+    [
+     "State tax credits",
+     "",
+     "",
+     "767",
+     "",
+     "",
+     "1,597",
+     ""
+    ],
+    [
+     "Federal tax credits",
+     "",
+     "",
+     "2,938",
+     "",
+     "",
+     "1,518",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "",
+     "685",
+     "",
+     "",
+     "545",
+     ""
+    ],
+    [
+     "Insurance liabilities",
+     "",
+     "",
+     "554",
+     "",
+     "",
+     "366",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "150",
+     "",
+     "",
+     "2,227",
+     ""
+    ],
+    [
+     "Net operating loss and charitable contribution carryforwards",
+     "",
+     "",
+     "14,815",
+     "",
+     "",
+     "10,097",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "606",
+     "",
+     "",
+     "585",
+     ""
+    ],
+    [
+     "Subtotal deferred tax assets",
+     "",
+     "",
+     "79,085",
+     "",
+     "",
+     "74,507",
+     ""
+    ],
+    [
+     "Less: Valuation allowance - net",
+     "",
+     "",
+     "(15,436)",
+     "",
+     "",
+     "(16,519)",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "",
+     "63,649",
+     "",
+     "",
+     "57,988",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "",
+     "(55,072)",
+     "",
+     "",
+     "(52,935)",
+     ""
+    ],
+    [
+     "Book and tax depreciation differences",
+     "",
+     "",
+     "(8,398)",
+     "",
+     "",
+     "(4,783)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "",
+     "(424)",
+     "",
+     "",
+     "(412)",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "",
+     "(63,894)",
+     "",
+     "",
+     "(58,130)",
+     ""
+    ],
+    [
+     "Net deferred tax (liability) asset",
+     "",
+     "$",
+     "(245)",
+     "",
+     "$",
+     "(142)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1330,
+    "end_line": 1361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "* The only state that contributes to the majority (greater than 50%) of the tax effect in this category is Louisiana.\nDeferred tax assets and deferred tax liabilities consist of the following (in thousands):",
+   "prose_after": "The following table summarizes (receipts) payments of income taxes in fiscal 2025 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1300,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1362,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "$",
+     "(1,710)"
+    ],
+    [
+     "State",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  North Carolina",
+     "",
+     "",
+     "10"
+    ],
+    [
+     "  Georgia",
+     "",
+     "",
+     "9"
+    ],
+    [
+     "  Kentucky",
+     "",
+     "",
+     "9"
+    ],
+    [
+     "  Other (net of refunds)",
+     "",
+     "",
+     "(17)"
+    ],
+    [
+     "Total (receipts) payments of income taxes",
+     "",
+     "$",
+     "(1,699)"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year",
+    "2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1365,
+    "end_line": 1380
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The following table summarizes (receipts) payments of income taxes in fiscal 2025 (in thousands):",
+   "prose_after": "The Company files income tax returns in U.S. federal and state jurisdictions where it does business and is subject to examinations by the Internal Revenue Service (\u201cIRS\u201d) and other taxing authorities. With a few exceptions, the Company is no longer subject to U.S. federal and state income tax examinations by tax authorities for years prior to fiscal 2021. The Company reviews and assesses uncertain tax positions, if any, with recognition and measurement of tax benefit based on a \u201cmore-likely-than-not\u201d standard with respect to the ultimate outcome, regardless of whether this assessment is favorable or unfavorable. As of January 31, 2026, there were no material benefits taken on the Company\u2019s income tax returns that do not qualify for financial statement recognition. If a tax position does not meet the minimum statutory threshold to avoid payment of penalties and interest, a company is required to recognize an expense for the amount of the interest and penalty in the period in which the company claims or expects to claim the position on its tax return. For financial statement purposes, companies are allowed to elect whether to classify such charges as either income tax expense or another expense classification. Should such expense be incurred in the future, the Company will classify such interest as a component of interest expense and penalties as a component of income tax expense.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1362,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Total number of shares purchased",
+     "",
+     "",
+     "251",
+     "",
+     "",
+     "145",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Average price paid per share (including commissions)",
+     "",
+     "$",
+     "25.21",
+     "",
+     "$",
+     "25.99",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total investment",
+     "",
+     "$",
+     "6,315",
+     "",
+     "$",
+     "3,777",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1396,
+    "end_line": 1405
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income, and tax planning strategies in making this assessment. Based upon the level of historical taxable income and projections for future taxable income over the periods in which the deferred tax assets are deductible and income tax credits may be utilized, management believes sufficient negative evidence exists to require a valuation allowance. We intend to maintain a valuation allowance until sufficient positive evidence exists to support its reversal, resulting in no deferred tax asset balance being recognized. In accordance with ASC 740 \u201cAccounting for Income Taxes\u201d (\u201cASC 740\u201d), the Company evaluates deferred income tax assets quarterly to determine if valuation allowances are required or should be adjusted. ASC 740 requires that companies assess whether valuation allowances should be established against their deferred tax assets based on consideration of all available evidence, both positive and negative, using a \u201cmore likely than not\u201d standard. The analysis that the Company prepared to determine the valuation allowance required significant judgment and assumptions regarding future market conditions, as well as forecasts for profits, taxable income, and taxable income by jurisdiction. Due to the sensitivity of the analysis, changes to the assumptions in subsequent periods could have a material effect on the valuation allowance. At January 31, 2026 and February 1, 2025, the Company had a full valuation allowance on its deferred tax assets. Based on an evaluation in accordance with the accounting standards, as of January 31, 2026, the valuation allowance established against the entire net deferred tax asset totaled $15.4 million.\nThe effective income tax rate for fiscal 2025, 2024 and 2023 included the recognition of benefits arising from various federal and state tax credits. Under current IRS and state income tax regulations, these credits may be carried back for one year or carried forward for periods up to 20 years. The income tax benefit included $0.0 million, $0.0 million, and $2.2 million related to such credits in each of fiscal 2025, 2024 and 2023, respectively. The credits generated for fiscal year 2025 and fiscal year 2024 were recorded with a full valuation allowance.\n6. Stockholders\u2019 Equity\nRepurchases of common stock\nThe Company periodically repurchases shares of its common stock under board-authorized repurchase programs. Such repurchases may be made in the open market, through block trades or through other negotiated transactions. Share repurchases are as follows (in thousands, except per share data):",
+   "prose_after": "At January 31, 2026, $40.0 million remained available under the Company\u2019s previously announced stock repurchase authorization.\nStock-Based Compensation\nThe Company maintains the Citi Trends, Inc. Incentive Plan (the \u201cPlan\u201d) which permits the grant of stock-based incentive awards to employees, officers, directors and consultants. The Plan provides for the grant of incentive and nonqualified options, stock appreciation rights, restricted stock, restricted stock units, performance awards and other forms of stock-based and cash-settled equity compensation. At January 31, 2026, the Company had 694,570 shares reserved for future grants under the Plan. During fiscal 2025, 2024 and 2023, non-cash stock-based compensation expense recorded in selling and general and administrative expenses totaled $5.4 million, $3.3 million and $4.1 million, respectively. The income tax expense resulting from the fair market value of restricted stock at vesting versus the cumulative compensation cost of such stock is recorded as a component of income tax expense and was $0.2 million, $0.1 million and $0.5 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Price on grant date",
+     "",
+     "$16.33"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "4.21%"
+    ],
+    [
+     "Expected volatility (annualized)",
+     "",
+     "62.90%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1418,
+    "end_line": 1424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company issues shares of restricted stock to key team members and non-employee directors. Restricted stock granted to employees vests in equal installments over three years from the date of grant. Restricted stock granted to non-employee directors vests one year from the date of grant.\nThe Company also issues performance-based restricted stock units (\u201cPSUs\u201d) to key team members that cliff vest at the end of a three-year period based upon the Company\u2019s achievement of pre-established goals. The number of units earned and vested is subject to scaling based on a pre-established performance matrix.\nOn November 18, 2024, the Company granted a performance-based restricted stock award to the Chief Executive Officer. The total number of shares earned depends on the attainment of predefined average stock price targets measured over rolling 45-trading-day periods during the performance period ending November 15, 2027. Earned shares vest annually over a period extending through November 15, 2028. The Company estimated the fair value of the awards using a Monte Carlo simulation including the following assumptions:",
+   "prose_after": "The risk-free interest rate was derived from the continuously compounded yield of zero-coupon U.S. Treasury STRIPS. The expected volatility is based on the Company\u2019s historical daily stock price movements for a period equal to the simulation term. The dividend yield was based on the Company\u2019s recent dividend history. The total grant date fair value of the award was $3.36 million, or $10.45 per share.\nThe fair value associated with each tranche of the award will be recognized, straight-line, over the requisite service period for that tranche. Failure to meet the market conditions for an award does not result in reversal of previously recognized expense, so long as the required service period condition is met. The Company recognized $1.5 million and $0.3 million of expense related to the award in fiscal 2025 and fiscal 2024, respectively.\nThe following tables summarize activity related to nonvested restricted stock and PSUs and performance-based restricted stock during fiscal 2025:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Time-Based Restricted Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Nonvested",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Outstanding as of February 1, 2025",
+     "",
+     "334,083",
+     "",
+     "$",
+     "20.15"
+    ],
+    [
+     "Granted",
+     "",
+     "64,468",
+     "",
+     "$",
+     "25.62"
+    ],
+    [
+     "Vested",
+     "",
+     "(151,716)",
+     "",
+     "$",
+     "21.21"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(26,464)",
+     "",
+     "$",
+     "19.66"
+    ],
+    [
+     "Outstanding as of January 31, 2026",
+     "",
+     "220,371",
+     "",
+     "$",
+     "21.07"
+    ]
+   ],
+   "caption_stack": [
+    "Time-Based Restricted Stock",
+    "Weighted Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1432,
+    "end_line": 1447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The risk-free interest rate was derived from the continuously compounded yield of zero-coupon U.S. Treasury STRIPS. The expected volatility is based on the Company\u2019s historical daily stock price movements for a period equal to the simulation term. The dividend yield was based on the Company\u2019s recent dividend history. The total grant date fair value of the award was $3.36 million, or $10.45 per share.\nThe fair value associated with each tranche of the award will be recognized, straight-line, over the requisite service period for that tranche. Failure to meet the market conditions for an award does not result in reversal of previously recognized expense, so long as the required service period condition is met. The Company recognized $1.5 million and $0.3 million of expense related to the award in fiscal 2025 and fiscal 2024, respectively.\nThe following tables summarize activity related to nonvested restricted stock and PSUs and performance-based restricted stock during fiscal 2025:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Performance-Based Restricted Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Nonvested",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Outstanding as of February 1, 2025",
+     "",
+     "321,502",
+     "",
+     "$",
+     "10.45"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "",
+     "(52,244)",
+     "",
+     "$",
+     "10.45"
+    ],
+    [
+     "Outstanding as of January 31, 2026",
+     "",
+     "269,258",
+     "",
+     "$",
+     "10.45"
+    ]
+   ],
+   "caption_stack": [
+    "Performance-Based Restricted Stock",
+    "Weighted Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Performance-Based Restricted Stock Units",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Nonvested",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Units",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Outstanding as of February 1, 2025",
+     "",
+     "89,981",
+     "",
+     "$",
+     "20.06"
+    ],
+    [
+     "Granted",
+     "",
+     "189,256",
+     "",
+     "$",
+     "24.15"
+    ],
+    [
+     "Vested",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(15,578)",
+     "",
+     "$",
+     "21.46"
+    ],
+    [
+     "Outstanding as of January 31, 2026",
+     "",
+     "263,659",
+     "",
+     "$",
+     "22.91"
+    ]
+   ],
+   "caption_stack": [
+    "Performance-Based Restricted Stock Units",
+    "Weighted Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1478
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "At January 31, 2026, there was $4.5 million of unrecognized compensation expense related to restricted stock, and $3.3 million of unrecognized compensation expense related to our PSUs.\n7. Commitments and Contingencies\nThe Company is, from time to time, involved in legal proceedings arising in the ordinary course of business, including claims by customers, employees, or former employees and matters relating to real estate and contractual disputes. Once it becomes probable that the Company will incur costs in connection with a legal proceeding and such costs can be reasonably estimated, it establishes appropriate reserves.\nIn connection with the January 2023 cyber disruption previously disclosed in the Company\u2019s Form 8-K filed on February 23, 2023, four putative class action lawsuits were filed against the Company in the United States District Court for the Southern District of Georgia (the \u201cCourt\u201d). These matters, Matousek et al v. Citi Trends, Inc.; Sienna Thomas v. Citi Trends, Inc.; Yeimy Sambrano v. Citi Trends, Inc.; Sabrina Green-Fogg v. Citi Trends, Inc. were filed in the second half of 2023, and consolidated into one case by the Court on November 8, 2023. The plaintiffs allege harm in connection with the January 2023 cyber disruption and assert a variety of claims seeking unspecified monetary damages and other related relief. A consolidated class action complaint was filed on February 15, 2024, adding an additional plaintiff, Shykira Scott. The Company has successfully settled these class actions without any admission of liability. In addition, the Attorneys General of Alabama, Connecticut, Indiana and Texas sent inquiry letters to the Company regarding the January 2023 cyber disruption, which the Company has answered.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "",
+     "$",
+     "61,640",
+     "",
+     "$",
+     "61,227",
+     "",
+     "$",
+     "62,163"
+    ],
+    [
+     "Variable lease cost",
+     "",
+     "",
+     "12,719",
+     "",
+     "",
+     "11,061",
+     "",
+     "",
+     "11,070"
+    ],
+    [
+     "Short term lease cost",
+     "",
+     "",
+     "1,635",
+     "",
+     "",
+     "2,241",
+     "",
+     "",
+     "1,598"
+    ],
+    [
+     "Total lease cost",
+     "",
+     "$",
+     "75,994",
+     "",
+     "$",
+     "74,529",
+     "",
+     "$",
+     "74,831"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1502,
+    "end_line": 1514
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "The Company is also party to purchase obligations for open merchandise orders of $161.7 million that is due within 12 months.\n8. Leases\nThe Company leases its retail store locations, its distribution centers and certain office space and equipment. Leases for store locations are typically for a term of five years with options to extend for one or more five-year periods.\nThe Company analyzes all leases at inception to determine if a right-of-use asset and lease liability should be recognized. Leases with an initial term of 12 months or less and leases with mutual termination clauses are not included on the consolidated balance sheets. The lease liability is measured at the present value of future lease payments as of the lease commencement date.\nTotal lease cost is comprised of operating lease costs, short-term lease costs and variable lease costs, which include rent paid as a percentage of sales, common area maintenance, real estate taxes and insurance for the Company\u2019s real estate leases. Lease costs consisted of the following (in thousands):",
+   "prose_after": "Future minimum lease payments as of January 31, 2026 are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1515,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year",
+     "",
+     "Lease Costs",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "$",
+     "63,477",
+     "",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "51,588",
+     "",
+     ""
+    ],
+    [
+     "2028",
+     "",
+     "",
+     "42,083",
+     "",
+     ""
+    ],
+    [
+     "2029",
+     "",
+     "",
+     "32,612",
+     "",
+     ""
+    ],
+    [
+     "2030",
+     "",
+     "",
+     "22,216",
+     "",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "97,927",
+     "",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "",
+     "",
+     "309,903",
+     "",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "",
+     "(86,585)",
+     "(1)",
+     ""
+    ],
+    [
+     "Total present value of lease liabilities",
+     "",
+     "$",
+     "223,318",
+     "(2)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1518,
+    "end_line": 1534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Future minimum lease payments as of January 31, 2026 are as follows (in thousands):",
+   "prose_after": "(1) Calculated using the incremental borrowing rate for each lease.\n(2) Includes short-term and long-term portions of operating leases.\nCertain operating leases provide for fixed monthly rents, while others provide for contingent rents computed as a percentage of net sales and others provide for a combination of both fixed monthly rents and contingent rents computed as a percentage of net sales.\nSupplemental cash flow and other information related to operating leases are as follows (in thousands, except for weighted average amounts):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1515,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Cash paid for operating leases",
+     "",
+     "$",
+     "63,261",
+     "",
+     "$",
+     "62,582",
+     "",
+     "$",
+     "68,371"
+    ],
+    [
+     "Right of use assets obtained in exchange for new operating lease liabilities",
+     "",
+     "$",
+     "55,634",
+     "",
+     "$",
+     "33,183",
+     "",
+     "$",
+     "27,836"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (years) - operating leases",
+     "",
+     "",
+     "6.86",
+     "",
+     "",
+     "7.26",
+     "",
+     "",
+     "7.54"
+    ],
+    [
+     "Weighted average discount rate - operating leases",
+     "",
+     "",
+     "6.12%",
+     "",
+     "",
+     "5.61%",
+     "",
+     "",
+     "5.04%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1542,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "(1) Calculated using the incremental borrowing rate for each lease.\n(2) Includes short-term and long-term portions of operating leases.\nCertain operating leases provide for fixed monthly rents, while others provide for contingent rents computed as a percentage of net sales and others provide for a combination of both fixed monthly rents and contingent rents computed as a percentage of net sales.\nSupplemental cash flow and other information related to operating leases are as follows (in thousands, except for weighted average amounts):",
+   "prose_after": "9. Segment Reporting\nThe Company is the leading off-price value retailer of fashion apparel, accessories and home trends primarily for Black families. The retail operations represent a single operating segment based on the way the Company manages its business. The Company\u2019s Chief Executive Officer, as our chief operating decision maker (\u201cCODM\u201d), manages and allocates resources to the operations of the Company on a consolidated basis. This enables the Chief Executive Officer to assess the Company\u2019s overall level of available resources and determine how best to deploy these resources across retail stores that are in line with the Company\u2019s long-term company-wide strategic goals. The Company\u2019s retail stores sell similar products, use similar processes to sell those products, and sell their products to similar classes of customers. All sales and assets are located within the United States. The CODM assesses performance based on consolidated net (loss) income that is reported on the statement of operations as part of the annual budgeting and forecasting process. The CODM considers budget-to-actual variances on a monthly basis when making decisions about allocating capital and personnel. The CODM does not review assets in evaluating results, therefore such information is not provided.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1515,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023"
+    ],
+    [
+     "Net sales",
+     "$",
+     "819,962",
+     "",
+     "$",
+     "753,079",
+     "",
+     "$",
+     "747,941"
+    ],
+    [
+     "Cost of sales (exclusive of depreciation shown separately below)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Merchandising and other",
+     "",
+     "(452,734)",
+     "",
+     "",
+     "(430,300)",
+     "",
+     "",
+     "(418,103)"
+    ],
+    [
+     "Freight in and out",
+     "",
+     "(42,586)",
+     "",
+     "",
+     "(40,736)",
+     "",
+     "",
+     "(44,721)"
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Store expenses - payroll and related expenses",
+     "",
+     "(94,579)",
+     "",
+     "",
+     "(91,558)",
+     "",
+     "",
+     "(90,405)"
+    ],
+    [
+     "Store expenses - rent",
+     "",
+     "(67,648)",
+     "",
+     "",
+     "(66,660)",
+     "",
+     "",
+     "(67,110)"
+    ],
+    [
+     "Corporate expenses - payroll and related expenses",
+     "",
+     "(28,808)",
+     "",
+     "",
+     "(29,614)",
+     "",
+     "",
+     "(26,189)"
+    ],
+    [
+     "Distribution center expenses - payroll and related expenses",
+     "",
+     "(17,787)",
+     "",
+     "",
+     "(16,686)",
+     "",
+     "",
+     "(17,412)"
+    ],
+    [
+     "Other segment expenses (1)",
+     "",
+     "(104,349)",
+     "",
+     "",
+     "(95,655)",
+     "",
+     "",
+     "(83,414)"
+    ],
+    [
+     "Depreciation",
+     "",
+     "(18,482)",
+     "",
+     "",
+     "(18,822)",
+     "",
+     "",
+     "(18,990)"
+    ],
+    [
+     "Asset impairment",
+     "",
+     "(579)",
+     "",
+     "",
+     "(2,536)",
+     "",
+     "",
+     "(1,051)"
+    ],
+    [
+     "Gain on sale of building",
+     "",
+     "10,960",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gain on insurance",
+     "",
+     "482",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest income",
+     "",
+     "1,993",
+     "",
+     "",
+     "2,473",
+     "",
+     "",
+     "3,874"
+    ],
+    [
+     "Interest expense",
+     "",
+     "(342)",
+     "",
+     "",
+     "(319)",
+     "",
+     "",
+     "(306)"
+    ],
+    [
+     "Income tax (provision) benefit",
+     "",
+     "(296)",
+     "",
+     "",
+     "(5,836)",
+     "",
+     "",
+     "3,907"
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,207",
+     "",
+     "$",
+     "(43,170)",
+     "",
+     "$",
+     "(11,979)"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1561,
+    "end_line": 1587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "The Company is the leading off-price value retailer of fashion apparel, accessories and home trends primarily for Black families. The retail operations represent a single operating segment based on the way the Company manages its business. The Company\u2019s Chief Executive Officer, as our chief operating decision maker (\u201cCODM\u201d), manages and allocates resources to the operations of the Company on a consolidated basis. This enables the Chief Executive Officer to assess the Company\u2019s overall level of available resources and determine how best to deploy these resources across retail stores that are in line with the Company\u2019s long-term company-wide strategic goals. The Company\u2019s retail stores sell similar products, use similar processes to sell those products, and sell their products to similar classes of customers. All sales and assets are located within the United States. The CODM assesses performance based on consolidated net (loss) income that is reported on the statement of operations as part of the annual budgeting and forecasting process. The CODM considers budget-to-actual variances on a monthly basis when making decisions about allocating capital and personnel. The CODM does not review assets in evaluating results, therefore such information is not provided.\nThe following table summarizes the Company\u2019s one reportable segment profit or loss, including significant segment expenses, and includes the reconciliation to consolidated net income (loss) (in thousands):",
+   "prose_after": "(1) Other segment expenses represent other store, corporate and distribution center expenses including utilities, repairs, supplies, insurance, professional fees and other miscellaneous fees.\nITEM 9.CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE\nNot applicable.\nITEM 9A.CONTROLS AND PROCEDURES\nEvaluation of Disclosure Controls and Procedures\nWe carried out an evaluation under the supervision and with the participation of management, including the principal executive officer and the principal financial officer, of the effectiveness of the design and operation of our disclosure controls and procedures as of the end of the period covered by this Report pursuant to Rules 13a-15 and 15d-15 of the Exchange Act. Based on that evaluation, the principal executive officer and the principal financial officer each concluded that our disclosure controls and procedures are effective to provide reasonable assurance that information required to be disclosed by us in reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and forms, and that such information has been accumulated and communicated to our management, including the officers who certify our financial reports, as appropriate, to allow timely decisions regarding the required disclosures.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1606,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Third Amended and Restated Certificate of Incorporation (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on June 7, 2018)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Fourth Amended and Restated Bylaws (incorporated by reference to Exhibit 3.2 to the Company's Current Report on Form 8-K filed with the SEC on October 31, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen certificate for shares of common stock, $.01 par value (incorporated by reference to Exhibit 4.1 to Amendment No. 2 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-123028) filed with the SEC on April 29, 2005)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Description of Registrant\u2019s Securities (incorporated by reference to Exhibit 4.2 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on May 14, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Credit Agreement, dated October 27, 2011 among Citi Trends, Inc., as Borrower, its wholly owned subsidiary, as Guarantor, and Bank of America, N.A., as Lender (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended October 29, 2011)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "First Amendment to Credit Agreement, dated as of August 18, 2015, by and among Citi Trends, Inc., as Borrower, Citi Trends Marketing Solutions, Inc., as Guarantor, and Bank of America, N.A., as Lender (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on August 19, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Second Amendment to Credit Agreement and Waiver, dated as of May 12, 2020, by and among Citi Trends, Inc., as Borrower, Citi Trends Marketing Solutions, Inc., as Guarantor, and Bank of America, N.A., as Lender (incorporated by reference to Exhibit 10.28 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on May 14, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Third Amendment to Credit Agreement, dated as of April 15, 2021, by and among the Company, as Borrower, Citi Trends Marketing Solutions, Inc., as Guarantor, and Bank of America, N.A., as Lender (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 15, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Fourth Amendment to Credit Agreement, dated as of April 10, 2025, by and among Citi Trends, Inc., as Borrower, Citi Trends Marketing Solutions, Inc., as Guarantor, and Bank of America, N.A., as Lender (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 15, 2025)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+*10.6",
+     "Citi Trends, Inc. Amended and Restated 2021 Incentive Plan, dated as of April 13, 2026"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.7",
+     "Form of Restricted Stock Award Agreement for Employees (2025) under the Citi Trends, Inc. 2021 Incentive Plan (incorporated by reference to Exhibit 10.2 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 10, 2025)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1692,
+    "end_line": 1726
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "The information required by this Item is incorporated herein by reference to the information under the captions entitled \u201cCertain Relationships and Related Party Transactions\u201d and \u201cBoard of Directors and Committees of the Board of Directors\u201d in our definitive proxy statement for our 2026 Annual Meeting of Stockholders (or will be filed by amendment to this Report).\nITEM 14.PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe information required by this Item is incorporated herein by reference to the information under the caption entitled \u201cRatification of Independent Registered Public Accounting Firm\u201d in our definitive proxy statement for our 2026 Annual Meeting of Stockholders (or will be filed by amendment to this Report).\nPART IV\nITEM 15.EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\nThe following information required under this item is filed as part of this report:\n(a) Financial Statements. See Part II, Item 8.\n(b) Financial Statement Schedules. Other schedules are omitted as they are not applicable or the information is included elsewhere in this Report.\n(c) Exhibits:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1679,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1727,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "*10.8",
+     "Form of Restricted Stock Award Agreement for Directors under the Citi Trends, Inc. 2021 Incentive Plan (incorporated by reference to Exhibit 10.2 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 8, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.9",
+     "Form of Performance-Based Restricted Stock Unit Award Agreement for Employees under the Citi Trends, Inc. 2021 Incentive Plan (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 6, 2023)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.10",
+     "Form of Performance-Based Restricted Stock Unit Award Agreement for Employees (2025) under the Citi Trends, Inc. 2021 Incentive Plan (incorporated by reference to Exhibit 10.3 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 10, 2025)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.11",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement between the Company and Lisa Powell dated August 16, 2019 (incorporated by reference to Exhibit 10.20 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on May 14, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.12",
+     "Severance Agreement between the Company and Lisa Powell dated August 16, 2019 (incorporated by reference to Exhibit 10.21 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on May 14, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.13",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement, dated as of June 27, 2022, between Citi Trends, Inc. and Heather Plutino (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on June 16, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.14",
+     "Severance Agreement, dated as of June 27, 2022, between Citi Trends, Inc. and Heather Plutino (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on June 16, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.15",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement, dated as of February 15, 2023, between Citi Trends, Inc. and Vivek Bhargava (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on June 7, 2023)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.16",
+     "Severance Agreement, dated as of February 15, 2023, between Citi Trends, Inc. and Vivek Bhargava (incorporated by reference to Exhibit 10.2 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on June 7, 2023)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.17",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement, dated as of March 24, 2018, between Citi Trends, Inc. and Kyle Koenig (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on December 11, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.18",
+     "Severance Agreement, dated as of March 24, 2018, between Citi Trends, Inc. and Kyle Koenig (incorporated by reference to Exhibit 10.4 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 11, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.19",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement, dated as of September 6, 2024, between Citi Trends, Inc. and Katrina George (incorporated by reference to Exhibit 10.5 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 11, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.20",
+     "Severance Agreement, dated as of September 6, 2024, between Citi Trends, Inc. and Katrina George (incorporated by reference to Exhibit 10.6 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 11, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.21",
+     "Separation Agreement, dated May 31, 2024 to be effective as of June 1, 2024, between David N. Makuen and Citi Trends, Inc. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on May 31, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.22",
+     "Employment Non-Compete, Non-Solicit and Confidentiality Agreement, dated as of November 18, 2024, between Citi Trends, Inc. and Kenneth D. Seipel (incorporated by reference to Exhibit 10.24 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 16, 2025)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1728,
+    "end_line": 1776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1727,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "*10.23",
+     "Severance Agreement, dated as of November 18, 2024, between Citi Trends, Inc. and Kenneth D. Seipel (incorporated by reference to Exhibit 10.25 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 16, 2025)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.24",
+     "Performance-Based Restricted Stock Award Agreement, dated as of November 18, 2024, between Citi Trends, Inc. and Kenneth D. Seipel (incorporated by reference to Exhibit 10.26 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 16, 2025)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.25",
+     "Agreement for Purchase and Sale of Real Property, dated as of March 14, 2022, between Citi Trends, Inc. and an affiliate of Oak Street Real Estate Capital, LLC (incorporated by reference to Exhibit 10.2 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on June 9, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.26",
+     "Lease Agreement, dated April 19, 2022, between Citi Trends, Inc. and CTDASC001 LLC (incorporated by reference to Exhibit 10.3 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on September 8, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.27",
+     "Lease Agreement, dated September 6, 2022, between Citi Trends, Inc. and CTROOK2 LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q filed with the SEC on December 8, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.28",
+     "Amended and Restated Cooperation Agreement, dated March 25, 2025, by and between Citi Trends, Inc. and Fund 1 Investments, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on March 27, 2025)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "19.1",
+     "Citi Trends, Inc. Insider Trading Policy (incorporated by reference to Exhibit 19.1 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 16, 2025)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+21.1",
+     "Subsidiary of the Registrant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+23.1",
+     "Consent of Deloitte & Touche LLP"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+31.1",
+     "Certification of Principal Executive Officer, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+31.2",
+     "Certification of Principal Financial Officer, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+32.1",
+     "Certification of Principal Executive Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+32.2",
+     "Certification of Principal Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "97.1",
+     "Citi Trends, Inc. Policy for Recovery of Erroneously Awarded Compensation, adopted December 1, 2023 (incorporated by reference to Exhibit 97.1 to the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 18, 2024)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+101",
+     "Inline XBRL Document Set for the consolidated financial statements and accompanying notes in Part II, Item 8, \u201cFinancial Statements and Supplementary Data\u201d of this Annual Report on Form 10-K"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "+104",
+     "Inline XBRL for the cover page of this Annual Report on Form 10-K, included in the Exhibit 101 Inline XBRL Document Set"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1778,
+    "end_line": 1821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "+ Filed herewith\n* Indicates management contract or compensatory plan or arrangement.\nITEM 16.FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n(Registrant)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1829,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 15, 2026",
+     "By",
+     "/s/ Kenneth D. Seipel"
+    ],
+    [
+     "",
+     "",
+     "Kenneth D. Seipel"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer\n\n(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1838,
+    "end_line": 1846
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "+ Filed herewith\n* Indicates management contract or compensatory plan or arrangement.\nITEM 16.FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n(Registrant)",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1834,
+     "token": "REPEATING_HEADER",
+     "id": 60,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kenneth D. Seipel",
+     "Chief Executive Officer",
+     "April 15, 2026"
+    ],
+    [
+     "Kenneth D. Seipel",
+     "(Principal Executive Officer) and Chairman",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Heather Plutino",
+     "Chief Financial Officer",
+     "April 15, 2026"
+    ],
+    [
+     "Heather Plutino",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Pamela Edwards",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Pamela Edwards",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Benjamin Faw",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Benjamin Faw",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Heath",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "David Heath",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Margaret L. Jenkins",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Margaret L. Jenkins",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael S. Kvitko",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Michael S. Kvitko",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Charles Liu",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Charles Liu",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Cara Robinson",
+     "Director",
+     "April 15, 2026"
+    ],
+    [
+     "Cara Robinson",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1849,
+    "end_line": 1889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1834,
+     "token": "REPEATING_HEADER",
+     "id": 60,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

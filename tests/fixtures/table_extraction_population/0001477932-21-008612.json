@@ -1,0 +1,2552 @@
+{
+ "accession": "0001477932-21-008612",
+ "cik": "0001301838",
+ "form": "10-Q",
+ "filing_date": "2021-11-19",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "pmpg_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "68-0582275"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 20
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-Q\nQUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor Quarter Ended: September 30, 2021\nCommission File Number 000-51232\nPremier Product Group, Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "6303 Owensmouth, Suite 1058\nWoodland Hills, CA 91367\n(Address of principal executive offices) (Zip Code)\n(818) 798-1878\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days: Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I \u2013 CONSOLIDATED FINANCIAL INFORMATION",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Consolidated Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative And Qualitative Disclosures About Market Risk.",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls And Procedures.",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits.",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 77
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the exchange act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe number of shares of the registrant\u2019s only class of common stock issued and outstanding as of November 10, 2021 was 367,949,425 shares.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I \u2013 CONSOLIDATED FINANCIAL INFORMATION\nItem 1. Consolidated Financial Statements\nPREMIER PRODUCTS GROUP, INC.\nSeptember 30, 2021 and 2020\nIndex to the Consolidated Financial Statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     "Page(s)"
+    ],
+    [
+     "Consolidated Balance Sheets on September 30, 2021 (Unaudited) and December 31, 2020",
+     "F-1"
+    ],
+    [
+     "Consolidated Statements of Operations for the Three and Nine Months Ended September 30, 2021 and 2020 (Unaudited)",
+     "F-2"
+    ],
+    [
+     "Consolidated Statements of Changes in Shareholders\u2019 (Deficit) for the Nine Months Ended September 30, 2021 and 2020 (Unaudited)",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Nine Months Ended September 30, 2021 and 2020 (Unaudited)",
+     "F-4"
+    ],
+    [
+     "Notes to the Consolidated Financial Statements (Unaudited)",
+     "F-5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 90,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I \u2013 CONSOLIDATED FINANCIAL INFORMATION\nItem 1. Consolidated Financial Statements\nPREMIER PRODUCTS GROUP, INC.\nSeptember 30, 2021 and 2020\nIndex to the Consolidated Financial Statements",
+   "prose_after": "PREMIER PRODUCTS GROUP, INC. CONSOLIDATED BALANCE SHEETS (Unaudited)*",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "4,403",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "250,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "254,403",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "100",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "84,785",
+     "",
+     "$",
+     "269,526",
+     ""
+    ],
+    [
+     "Contingent liability \u2013 legal",
+     "",
+     "-",
+     "",
+     "",
+     "197,283",
+     ""
+    ],
+    [
+     "Contingent liability \u2013 notes",
+     "",
+     "-",
+     "",
+     "",
+     "225,200",
+     ""
+    ],
+    [
+     "Derivative liability \u2013 warrants",
+     "",
+     "-",
+     "",
+     "",
+     "221,814",
+     ""
+    ],
+    [
+     "Derivative liability \u2013 convertible notes",
+     "",
+     "330,744",
+     "",
+     "",
+     "513,185",
+     ""
+    ],
+    [
+     "Convertible notes \u2013 related parties",
+     "",
+     "146,600",
+     "",
+     "",
+     "31,500",
+     ""
+    ],
+    [
+     "Convertible notes",
+     "",
+     "255,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable \u2013 related parties",
+     "",
+     "178,580",
+     "",
+     "",
+     "173,532",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "309,682",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "996,109",
+     "",
+     "",
+     "1,941,722",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "996,109",
+     "",
+     "",
+     "1,941,722",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock (Series B), $0.001 par value, 51 shares authorized, and 51 shares issued and outstanding, on September 30, 2021, and December 31, 2020, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.00001 par value, 2,000,000,000 shares authorized, 367,949,425 and 285,555,605 shares issued and outstanding on September 30, 2021, and December 31, 2020, respectively",
+     "",
+     "3,536",
+     "",
+     "",
+     "3,536",
+     ""
+    ],
+    [
+     "Paid in capital",
+     "",
+     "6,761,817",
+     "",
+     "",
+     "6,761,817",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(7,507,059)",
+     "",
+     "",
+     "(8,707,075)",
+     ""
+    ],
+    [
+     "Total Stockholders' (Deficit)",
+     "",
+     "(741,706)",
+     "",
+     "",
+     "(1,941,722)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' (Equity)",
+     "$",
+     "254,403",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PREMIER PRODUCTS GROUP, INC. CONSOLIDATED BALANCE SHEETS (Unaudited)*",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PREMIER PRODUCTS GROUP, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)*",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the nine months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,\n\n2021",
+     "",
+     "",
+     "September 30,\n\n2020",
+     "",
+     "",
+     "September 30,\n\n2021",
+     "",
+     "",
+     "September 30,\n\n2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative expense",
+     "",
+     "18,214",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "62,210",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "",
+     "15,075",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "54,365",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "33,289",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(116,575)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(33,289)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(116,575)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on derivative liability*",
+     "",
+     "",
+     "",
+     "",
+     "(5,494)",
+     "",
+     "",
+     "182,441",
+     "",
+     "",
+     "(2,055)",
+     ""
+    ],
+    [
+     "Interest expense*",
+     "",
+     "",
+     "",
+     "",
+     "(7,049)",
+     "",
+     "",
+     "(25,949)",
+     "",
+     "",
+     "(20,913)",
+     ""
+    ],
+    [
+     "Gain on extinguishment of liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,160,098",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income (loss) before provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "(12,543)",
+     "",
+     "",
+     "1,200,015",
+     "",
+     "",
+     "(22,968)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net (Loss)",
+     "$",
+     "(33,289)",
+     "",
+     "$",
+     "(12,543)",
+     "",
+     "$",
+     "1,200,015",
+     "",
+     "$",
+     "(22,968)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted earnings(loss) per common share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "",
+     "367,949,425",
+     "",
+     "",
+     "285,555,605",
+     "",
+     "",
+     "367,949,425",
+     "",
+     "",
+     "285,555,605",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PREMIER PRODUCTS GROUP, INC.",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "(Unaudited)*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 150,
+    "end_line": 188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY\n(Unaudited)*",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": 1
+    },
+    "after": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Value",
+     "",
+     "Shares",
+     "",
+     "Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "285,555,605",
+     "$",
+     "2,856",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,253,949",
+     "$",
+     "(7,429,987)",
+     "",
+     "$",
+     "(1,173,182)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,930)",
+     "",
+     "",
+     "(2,930)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2020",
+     "",
+     "285,555,605",
+     "$",
+     "2,856",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,253,949",
+     "$",
+     "(7,432,917)",
+     "",
+     "$",
+     "(1,176,112)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(7,495)",
+     "",
+     "",
+     "(7,495)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2020",
+     "",
+     "285,555,605",
+     "$",
+     "2,856",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,253,949",
+     "$",
+     "(7,440,412)",
+     "",
+     "$",
+     "(1,183,607)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020 (as restated)",
+     "",
+     "353,524,425",
+     "$",
+     "3,536",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,761,817",
+     "$",
+     "(8,707,075)",
+     "",
+     "$",
+     "(1,941,722)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "137,291",
+     "",
+     "",
+     "137,291",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2021 (as restated)",
+     "",
+     "353,524,425",
+     "$",
+     "3,536",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,761,817",
+     "$",
+     "(8,569,783)",
+     "",
+     "$",
+     "(1,804,431)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,096,013",
+     "",
+     "",
+     "1,096,013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2021",
+     "",
+     "353,524,425",
+     "$",
+     "3,536",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,761,817",
+     "$",
+     "(7,473,770)",
+     "",
+     "$",
+     "(708,417)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(33,289)",
+     "",
+     "",
+     "(33,289)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2021",
+     "",
+     "367,949,425",
+     "$",
+     "3,536",
+     "",
+     "51",
+     "$",
+     "-",
+     "$",
+     "6,761,817",
+     "$",
+     "(7,507,059)",
+     "",
+     "$",
+     "(741,706)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 238
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY\n(Unaudited)*",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PREMIER PRODUCTS GROUP, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)*",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30",
+     "",
+     "",
+     "September 30",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "1,200,015",
+     "",
+     "$",
+     "(22,968)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss (gain) on derivative liability*",
+     "",
+     "(182,441)",
+     "",
+     "",
+     "(2,055)",
+     ""
+    ],
+    [
+     "Gain on extinguishment of liabilities",
+     "",
+     "(1,159,098)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses*",
+     "",
+     "25,426",
+     "",
+     "",
+     "20,913",
+     ""
+    ],
+    [
+     "Interest payable*",
+     "",
+     "20,901",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) operating activities*",
+     "",
+     "(95,197)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "*To be recalculated on 10Q amendment filing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in joint venture",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) investing activities",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from notes payable",
+     "",
+     "402,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) financing activities",
+     "",
+     "402,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) In Cash",
+     "",
+     "4,403",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash At The Beginning Of The Period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash At The End Of The Period",
+     "$",
+     "4,403",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued to retire debt and accrued interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PREMIER PRODUCTS GROUP, INC.",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "(Unaudited)*",
+    "As of September 30, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 286
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\n(Unaudited)*\nNOTE 1 \u2013 BASIS OF PRESENTATION\n*Financial statements and notes were not reviewed by our auditor. PREMIER PRODUCTS GROUP, INC. (the Company\u201d) is in the process of interviewing auditors. In the best interest of the Shareholders, the Company decided to file the 10Q accordingly and file an amendment when a new auditor is selected.\nThe Company has prepared the accompanying financial statements without audit. In the opinion of management, all adjustments (which include only normal recurring adjustments) necessary to present fairly the financial position, results of operations, and cash flows for all periods presented herein, have been made.\nAs filed on Form 8-K with the Securities Exchange Commission on March 1, 2018, the Company completed a Holding Company Reorganization, whereby On February 22, 2018, the issuer (having been renamed, immediately prior to this Holding Company Reorganization, from \u201cPremier Products Group, Inc.\u201d to \u201cValley High Mining Company\u201d) completed a corporate reorganization (the \u201cHolding Company Reorganization\u201d) pursuant to which Valley High Mining Company, as previously constituted (the \u201cPredecessor\u201d) became a direct, wholly-owned subsidiary of a newly formed Delaware corporation, Premier Products Group, Inc. (the \u201cHolding Company\u201d), which became the successor issuer. In other words, the Holding Company is now the public entity. The Holding Company Reorganization was effected by a merger conducted pursuant to Section 251(g) of the Delaware General Corporation Law (the \u201cDGCL\u201d), which provides for the formation of a holding company without a vote of the stockholders of the constituent corporations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 289,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "$",
+     "(734,999)",
+     ""
+    ],
+    [
+     "Total gains (losses) included in earnings, nine months ended June 30, 2021",
+     "",
+     "404,255",
+     ""
+    ],
+    [
+     "Ending balance, June 30, 2021",
+     "$",
+     "(330,744)",
+     "*"
+    ]
+   ],
+   "caption_stack": [
+    "Balance"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Level 2 Financial assets and liabilities for which values are based on quoted prices in markets that are not active or model inputs that are observable either directly or indirectly for substantially the full term of the asset or liability (commodity derivatives and interest rate swaps).\nLevel 3 Financial assets and liabilities for which values are based on prices or valuation techniques that require inputs that are both unobservable and significant to the overall fair value measurement. These inputs reflect management\u2019s own assumptions about the assumptions a market participant would use in pricing the asset or liability.\nWhen the inputs used to measure fair value fall within different levels of the hierarchy, the level within which the fair value measurement is categorized is based on the lowest level input that is significant to the fair value measurement in its entirety. The Company conducts a review of fair value hierarchy classifications on a quarterly basis. Changes in the observability of valuation inputs may result in a reclassification for certain financial assets or liabilities.",
+   "prose_after": "*This figure will be recalculated when the 10Q amendment is filed.\nNOTE 4 \u2013 RELATED PARTY TRANSACTIONS\nManagement Compensation\nFor the nine months ended September 30, 2021, the Company paid its CEO, President, and CFO an aggregate of $0 as compensation. For the nine months ended September 30, 2020, the Company paid its CEO/President/CFO an aggregate of $-0- as compensation.\nNOTE 5 \u2013 RELATED PARTY TRANSACTIONS - DEBT\nConvertible notes and notes payable to related parties at September 30, 2021 and December 31, 2020 had an outstanding balance of $146,600 and $205,032 respectively. Last quarter June 30, 2021, a 100,000 note was classified as a related party transaction and the correct classification is convertible note unrelated party transaction.\nNOTE 6 \u2013 CONVERTIBLE NOTES, NOTES PAYABLE AND DERIVATIVE LIABILITY\nNotes Payable\nAt the period ended September 30, 2021, the Company had third-party notes payable and accrued interest in the amount of $255,400 compared to $-0- in the prior fiscal year ended December 31, 2020. The notes included notes to seven unaffiliated parties at interest rates of between 6% and 12% per year. Several of these notes are in default and the Company is in communication with the holders to resolve these outstanding issues. The notes are convertible into common stock, at the election of the holder, at discounts of between 12.5% and 25%. Additionally, the Company is carrying $178,580 in notes payable contingent liability representing three (3) prior notes that are either in dispute or the Company is unable to substantiate.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "*June 30,\n\n2021",
+     "",
+     "",
+     "December 31,\n\n2020",
+     "",
+     ""
+    ],
+    [
+     "*Estimated number of underlying shares",
+     "-0-",
+     "",
+     "",
+     "",
+     "1,427,780",
+     ""
+    ],
+    [
+     "*Estimated market price per share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "*Exercise price per share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "*Expected volatility",
+     "",
+     "0",
+     "%",
+     "",
+     "382",
+     "%"
+    ],
+    [
+     "*Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "*Expected term (in years)",
+     "",
+     "0",
+     "",
+     "",
+     "3.00",
+     ""
+    ],
+    [
+     "*Derivative liability",
+     "$",
+     "-0-",
+     "",
+     "$",
+     "221,814",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 435,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 CONVERTIBLE NOTES, NOTES PAYABLE AND DERIVATIVE LIABILITY"
+    }
+   },
+   "prose_before": "The Company issued warrants and has evaluated the terms and conditions of the conversion features contained in the warrants to determine whether they represent embedded or freestanding derivative instruments under the provisions of ASC 815. The Company determined that the conversion features contained in the warrants represent freestanding derivative instruments that meet the requirements for liability classification under ASC 815. As a result, the fair value of the derivative financial instruments in the warrants is reflected in the Company\u2019s balance sheet as a liability. The fair value of the derivative financial instruments of the warrants was measured at the inception date of the warrants and each subsequent balance sheet date. Any changes in the fair value of the derivative financial instruments are recorded as non-operating, non-cash income, or expense at each balance sheet date. Additionally, the Company has issued convertible notes with variable conversion features resulting in a derivative liability.\nThe Company valued the conversion features in its warrants and convertible notes using the Black-Scholes model.\nIncluded in the September 30, 2021 and December 31, 2020 financial statements is a derivative liability in the amount of $330,744* and $734,999, respectively, to account for these transactions. It is revalued quarterly henceforth and adjusted as a gain or loss to the consolidated statements of operations depending on its value at that time.\n*Please note: The September 30, 2021 derivative liability was not calculated to date and will recalculated in the next 10Q amendment filing.\n*Derivative Liability -Warrants",
+   "prose_after": "*Please note: The September 30, 2021 Derivative Liability-Warrants was not calculated to date and will be recalculated in the next 10Q amendment filing.\n*Derivative Liability -Convertible Notes",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "*June 30,\n\n2021",
+     "",
+     "",
+     "December 31,\n\n2020",
+     "",
+     ""
+    ],
+    [
+     "*Estimated number of underlying shares",
+     "",
+     "14,033,420",
+     "",
+     "",
+     "3,422,330",
+     ""
+    ],
+    [
+     "*Estimated market price per share",
+     "$",
+     "0.0395",
+     "",
+     "$",
+     "0.15",
+     ""
+    ],
+    [
+     "*Exercise price per share",
+     "$",
+     ".020-.041",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "*Expected volatility",
+     "",
+     "130.60",
+     "%",
+     "",
+     "600",
+     "%"
+    ],
+    [
+     "*Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "*Expected term (in years)",
+     "",
+     "3.00",
+     "",
+     "",
+     "1.00",
+     ""
+    ],
+    [
+     "*Derivative liability",
+     "$",
+     "330,744",
+     "",
+     "$",
+     "513,185",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 CONVERTIBLE NOTES, NOTES PAYABLE AND DERIVATIVE LIABILITY"
+    }
+   },
+   "prose_before": "*Please note: The September 30, 2021 Derivative Liability-Warrants was not calculated to date and will be recalculated in the next 10Q amendment filing.\n*Derivative Liability -Convertible Notes",
+   "prose_after": "Included in our Consolidated Statements of Operations for the six months ended June 30, 2021 and June 30, 2020 is a gain of $182,441 and a gain of $3,439 in change of fair value of derivative in non-cash charges pertaining to the derivative liability as it pertains to the gain (loss) on derivative liability and debt discount, respectively.\n*Please note: The September 30, 2021 Derivative Liability-Convertible Notes was not calculated to date and will be recalculated in the next 10Q amendment filing.\nNOTE 7 \u2013 ACCOUNTS PAYABLE AND ACCRUED EXPENSES\nFor the nine months ended September 30, 2021, and the year ended December 31, 2020, the Company recorded accounts payable and accrued expenses in the amount of $84,785 and $269,526, respectively.\nNOTE 8 \u2013 COMMITMENTS AND CONTINGENCIES\nContingent Liabilities\nThe Company recorded contingent liabilities for the nine months ended September 30, 2021, and the year ended December 31, 2020 in the amount of $-0- and $422,483, respectively.\nLegal proceedings\nNone to date.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT",
+     ""
+    ],
+    [
+     "NUMBER",
+     "DESCRIPTION"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by the Principal Executive Officer of Registrant pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (Rule 13a- 14(a) or Rule 15d-14(a)).*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification by the Principal Financial Officer of Registrant pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (Rule 13a- 14(a) or Rule 15d-14(a)).*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification by the Principal Executive Officer pursuant to 18 U.S.C. 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes- Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [
+    "EXHIBIT"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We believe there are no changes that constitute material changes from the risk factors previously disclosed in our Annual Report on Form 10-K, filed with the SEC on May 6, 2021.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nThere were no unregistered sales of the Company\u2019s equity securities during the quarter ended September 30, 2021, that were not otherwise disclosed in a Current Report on Form 8-K.\nItem 3. Defaults Upon Senior Securities.\nThere has been no default in payment of principal, interest, sinking or purchase fund installment, or any other material default, with respect to any indebtedness of the Company.\nItem 4. Mine Safety Disclosures.\nNot Applicable.\nItem 5. Other Information.\nThere is no other information required to be disclosed under this item that has not previously been reported.\nItem 6. Exhibits.",
+   "prose_after": "_______\n*Filed herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PREMIER PRODUCTS GROUP, INC",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 19, 2021",
+     "By:",
+     "/s/ Tony Hicks"
+    ],
+    [
+     "",
+     "Name:",
+     "Tony Hicks"
+    ],
+    [
+     "",
+     "Title:",
+     "Principal Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "Principal Accounting Officer"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "Interim Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "PREMIER PRODUCTS GROUP, INC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "_______\n*Filed herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

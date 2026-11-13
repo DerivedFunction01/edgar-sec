@@ -1,0 +1,4232 @@
+{
+ "accession": "0001493152-18-016524",
+ "cik": "0001627611",
+ "form": "10-Q",
+ "filing_date": "2018-11-19",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "38-3954047"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE QUARTERLY PERIOD ENDED: SEPTEMBER 30, 2018\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number:000-55915\n12 ReTech Corporation\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10785 W. Twain Ave,\n\n\n\nSuite 210\n\n\n\nLas Vegas, Nevada",
+     "89135"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "530-539-4329\nRegistrant\u2019s telephone number\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such fling requirements for the past 90 days.\nYes\n[X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "FINANCIAL STATEMENTS (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Balance Sheets",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations and Comprehensive Loss",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "27"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "36"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "36"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "38"
+    ],
+    [
+     "Item 1A.",
+     "Risks Factors",
+     "38"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "39"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "39"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "39"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 90
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\nEmerging Growth Company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe number of shares of common stock ($0.00001 par value) outstanding as of November 9, 2018 was 424,315,855.\n12 RETECH CORPORATION\nFOR THE THREE AND NINE MONTHS ENDED SEPTEMBER 30, 2018\nIndex to Report",
+   "prose_after": "2\nFORWARD-LOOKING STATEMENTS\nThis document contains \u201cforward-looking statements\u201d. All statements other than statements of historical fact are \u201cforward-looking statements\u201d for purposes of federal and state securities laws, including, but not limited to, any projections of earnings, revenue or other financial items; any statements of the plans, strategies and objectives of management for future operations; any statements concerning proposed new services or developments; any statements regarding future economic conditions or performance; any statements or belief; and any statements of assumptions underlying any of the foregoing.\nForward-looking statements may include the words \u201cmay,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cintend,\u201d \u201ccontinue,\u201d \u201cbelieve,\u201d \u201cexpect\u201d or \u201canticipate\u201d or other similar words. These forward-looking statements present our estimates and assumptions only as of the date of this report. Accordingly, readers are cautioned not to place undue reliance on forward-looking statements, which speak only as of the dates on which they are made. We do not intend, and undertake no obligation, to update any forward-looking statement. You should, however, consult further disclosures we make in future filings of our Annual Report on Form 10-K, Quarterly Reports on Form 10-Q and Current Reports on Form 8-K.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "50,513",
+     "",
+     "$",
+     "100,264",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "26,396",
+     "",
+     "",
+     "2,884",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "18,874",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "2,121",
+     "",
+     "",
+     "1,290",
+     ""
+    ],
+    [
+     "  Other current assets",
+     "",
+     "21,451",
+     "",
+     "",
+     "13,878",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "119,355",
+     "",
+     "",
+     "118,316",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets, net",
+     "",
+     "31,095",
+     "",
+     "",
+     "8,615",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "551,111",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Software development",
+     "",
+     "177,270",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "12,918",
+     "",
+     "",
+     "5,555",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "891,749",
+     "",
+     "$",
+     "132,486",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "$",
+     "965,497",
+     "",
+     "$",
+     "105,904",
+     ""
+    ],
+    [
+     "  Due to stockholders",
+     "",
+     "558,213",
+     "",
+     "",
+     "669,126",
+     ""
+    ],
+    [
+     "  Notes payable, net of discounts of $94,535",
+     "",
+     "157,904",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Convertible notes payable, net of discounts of $185,814",
+     "",
+     "870,737",
+     "",
+     "",
+     "408,247",
+     ""
+    ],
+    [
+     "  Derivative liabilities",
+     "",
+     "1,735,027",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "4,287,378",
+     "",
+     "",
+     "1,183,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "4,287,378",
+     "",
+     "",
+     "1,183,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series B Preferred Stock, 1,000,000 shares designated; $0.00001 par value $1.00 stated value; 191,400 and 0 shares issued and outstanding at Septmeber 30, 2018 and December 31, 2017, respectively. Liquidation preference $191,400",
+     "",
+     "191,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Series D-1 Preferred Stock, 500,000 shares designated; $0.00001 par value $2.00 stated value; 311,250 shares issued and outstanding at September 30, 2018 and December 31, 2017, respectively. Liquidation preference $622,500",
+     "",
+     "622,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Series D-3 Preferred Stock, 500,000 shares designated; $0.00001 par value $5.00 stated value; 54,848 shares issued and outstanding at September 30, 2018 and December 31, 2017, respectively. Liquidation preference $274,234",
+     "",
+     "178,124",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Preferred Stock",
+     "",
+     "992,024",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock: 50,000,000 authorized; $0.00001 par value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Series A Preferred Stock, 10,000,000 shares designated; $0.00001 par value; 6,500,000 shares issued and outstanding at September 30, 2018 and December 31, 2017",
+     "",
+     "65",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "    Series C Preferred Stock, 1 share designated; $1 par value; 1 share issued and outstanding at September 30, 2018 and 0 shares December 31, 2017",
+     "",
+     "1",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock: 1,000,000,000 and 500,000,000 authorized at September 30, 2018 and December 31, 2017, respectively; $0.00001 par value; 154,524,807 and 82,200,000 shares issued and outstanding at June 30, 2018 and December 31, 2017, respectively",
+     "",
+     "1,545",
+     "",
+     "",
+     "822",
+     ""
+    ],
+    [
+     "    Additional paid-in capital",
+     "",
+     "3,468,445",
+     "",
+     "",
+     "1,267,916",
+     ""
+    ],
+    [
+     "    Subscription receivable",
+     "",
+     "(67,500)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock to be issued, 0 and 487,612 shares at September 30, 2018 and December 31, 2017, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "92,646",
+     ""
+    ],
+    [
+     "    Accumulated other comprehensive income",
+     "",
+     "-",
+     "",
+     "",
+     "1,514",
+     ""
+    ],
+    [
+     "    Accumulated deficit",
+     "",
+     "(7,790,209)",
+     "",
+     "",
+     "(2,413,739)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(4,387,653)",
+     "",
+     "",
+     "(1,050,791)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "891,749",
+     "",
+     "$",
+     "132,486",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 125,
+    "end_line": 188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "- inability to efficiently manage our operations;\n- inability to achieve future sales levels or other operating results; and\n- the unavailability of funds for capital expenditures.\nFor a detailed description of these and other factors that could cause actual results to differ materially from those expressed in any forward-looking statement, please see \u201cItem 1A. Risk Factors\u201d in this document.\nThroughout this Annual Report references to \u201cwe\u201d, \u201cour\u201d, \u201cus\u201d, \u201c12 ReTech\u201d, \u201cRETC\u201d, \u201cthe Company\u201d, and similar terms refer to 12 ReTech Corporation.\nPART I\nITEM 1. FINANCIAL STATEMENTS\n12 ReTech Corporation\nCondensed Consolidated Balance Sheets\n(unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\n12 ReTech Corporation\nCondensed Consolidated Statement of Operations\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "48,102",
+     "",
+     "$",
+     "7,790",
+     "",
+     "$",
+     "73,726",
+     "",
+     "$",
+     "51,187",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "26,795",
+     "",
+     "",
+     "46",
+     "",
+     "",
+     "26,831",
+     "",
+     "",
+     "497",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "21,307",
+     "",
+     "",
+     "7,744",
+     "",
+     "",
+     "46,895",
+     "",
+     "",
+     "50,689",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "506,327",
+     "",
+     "",
+     "221,961",
+     "",
+     "",
+     "1,740,398",
+     "",
+     "",
+     "364,101",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "429,409",
+     "",
+     "",
+     "2,920",
+     "",
+     "",
+     "934,459",
+     "",
+     "",
+     "11,748",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "",
+     "2,552",
+     "",
+     "",
+     "1,347",
+     "",
+     "",
+     "5,085",
+     "",
+     "",
+     "7,448",
+     ""
+    ],
+    [
+     "  Impairment loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "938,288",
+     "",
+     "",
+     "226,229",
+     "",
+     "",
+     "2,679,942",
+     "",
+     "",
+     "383,296",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(916,981)",
+     "",
+     "",
+     "(218,485)",
+     "",
+     "",
+     "(2,633,047)",
+     "",
+     "",
+     "(332,607)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "(7)",
+     "",
+     "",
+     "(2,394)",
+     "",
+     "",
+     "(7)",
+     "",
+     "",
+     "(2,394)",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(75,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(147,719)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(986,312)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in derivative liabilities",
+     "",
+     "(704,116)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,637,527)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Other Expense",
+     "",
+     "(851,842)",
+     "",
+     "",
+     "(2,394)",
+     "",
+     "",
+     "(2,698,846)",
+     "",
+     "",
+     "(2,394)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,768,823)",
+     "",
+     "$",
+     "(216,091)",
+     "",
+     "$",
+     "(5,331,893)",
+     "",
+     "$",
+     "(330,213)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income- foreign currency translation adjustment",
+     "$",
+     "131",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "5,256",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "$",
+     "(1,768,692)",
+     "",
+     "$",
+     "(216,091)",
+     "",
+     "$",
+     "(5,326,637)",
+     "",
+     "$",
+     "(330,213)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Per Common Share: Basic and Diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Common Shares Outstanding: Basic and Diluted",
+     "",
+     "101,515,538",
+     "",
+     "",
+     "50,000,000",
+     "",
+     "",
+     "89,660,273",
+     "",
+     "",
+     "50,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 198,
+    "end_line": 245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\n12 ReTech Corporation\nCondensed Consolidated Statement of Operations\n(unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\n12 ReTech Corporation\nCondensed Consolidated Statements of Cash Flows\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net Loss",
+     "$",
+     "(5,331,893)",
+     "",
+     "$",
+     "(330,213)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "",
+     "5,085",
+     "",
+     "",
+     "7,448",
+     ""
+    ],
+    [
+     "  Stock based compensation",
+     "",
+     "1,231,549",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Amortization of debt discount",
+     "",
+     "972,641",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Change in fair value of derivative liabilities",
+     "",
+     "1,637,527",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss on debt extinguishment",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accretion of interest for note payable",
+     "",
+     "1,854",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "(26,396)",
+     "",
+     "",
+     "(15,744)",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "(13,865)",
+     "",
+     "",
+     "439",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "18,874",
+     "",
+     "",
+     "5,160",
+     ""
+    ],
+    [
+     "  Other current assets",
+     "",
+     "(2,257)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Security deposit",
+     "",
+     "3,143",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "",
+     "443,981",
+     "",
+     "",
+     "(7,641)",
+     ""
+    ],
+    [
+     "  Net Cash Used in Operating Activities",
+     "",
+     "(984,757)",
+     "",
+     "",
+     "(340,551)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Purchases of property and equipment",
+     "",
+     "(2,412)",
+     "",
+     "",
+     "1,170",
+     ""
+    ],
+    [
+     "  Cash received from acquisition",
+     "",
+     "779",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Software development",
+     "",
+     "(177,270)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net Cash (Provided by) Used in Investing Activities",
+     "",
+     "(178,903)",
+     "",
+     "",
+     "1,170",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from stockholders",
+     "",
+     "62,326",
+     "",
+     "",
+     "188,770",
+     ""
+    ],
+    [
+     "  Repayment to stockholders",
+     "",
+     "(36,931)",
+     "",
+     "",
+     "94,917",
+     ""
+    ],
+    [
+     "  Proceeds from convertible notes payable",
+     "",
+     "482,500",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "  Costs on issuance of convertible notes payable",
+     "",
+     "(26,469)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Issuance of common stock for cash",
+     "",
+     "211,250",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from sale of Series D-3 Preferred Stock",
+     "",
+     "100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from sale of Series B Preferred Stock",
+     "",
+     "329,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Costs of issuance of Series B Preferred stock",
+     "",
+     "(9,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net Cash Provided by Financing Activities",
+     "",
+     "1,112,676",
+     "",
+     "",
+     "433,687",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of Exchange Rate Changes on Cash and Cash Equivalents",
+     "",
+     "1,231",
+     "",
+     "",
+     "348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(49,751)",
+     "",
+     "",
+     "94,654",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "100,264",
+     "",
+     "",
+     "56,644",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "50,513",
+     "",
+     "$",
+     "151,298",
+     ""
+    ],
+    [
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Cash paid for taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock to be issued in current period",
+     "$",
+     "12,500",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock issued in conjunction with convertible notes",
+     "$",
+     "86,600",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Original issue discount on convertible notes payable",
+     "$",
+     "46,324",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Beneficial conversion feature for Series B preferred stock",
+     "$",
+     "173,923",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Beneficial conversion feature for convertible notes payable",
+     "$",
+     "349,576",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Related party liability relieved with Series D-3 preferred stock",
+     "$",
+     "154,234",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock issued for acquisition for E-motion (see Note 3)",
+     "$",
+     "80,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 255,
+    "end_line": 332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\n12 ReTech Corporation\nCondensed Consolidated Statements of Cash Flows\n(unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\n12 RETECH CORPORATION\nNotes to the Condensed Consolidated Financial Statements\nSeptember 30, 2018\n(Unaudited)\nNOTE\n1. NATURE OF BUSINESS\n12 Retech Corporation (\u201cwe\u201d, \u201cus\u201d, \u201cour\u201d, \u201c12 ReTech\u201d, \u201cRETC\u201d, or the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada, U.S. as DEVAGO INC. on September 8, 2014. On June 8, 2017, the Company amended our Articles of Incorporation to change the name to 12 Retech Corporation. At our core, we are a software company whose technology allows retailers to combat the dual threats of Walmart and Amazon \u2014 both online and in physical stores. Our microbrand rollup acquisition strategy allows us to demonstrate the effectiveness of our software, devise and test new products, while providing shareholder value through immediate revenue and earnings growth. The Company operates through our subsidiaries on three continents, Asia, North America and Europe.\nPrincipal subsidiaries",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 335,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Company",
+     "Place of Incorporation",
+     "Date of Incorporation",
+     "Acquisition\n\n\n\nDate",
+     "Attributable\n\n\n\nEquity\n\n\n\nInterest %",
+     "",
+     "",
+     "Business"
+    ],
+    [
+     "12 Retail Corporation (\u201c12 Retail\u201d)",
+     "Arizona, USA",
+     "Sept. 18, 2017",
+     "Formed by 12 Retech Corporation",
+     "",
+     "100",
+     "%",
+     "As a holding Company to execute the Company\u2019s microbrand roll up acquisition strategy as well as to penetrate the North American market with our technology to select retailers."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12 Hong Kong Limited (\u201c12HK\u201d)",
+     "Hong Kong, China",
+     "Feb. 2, 2014",
+     "June 27, 2017",
+     "",
+     "100",
+     "%",
+     "Development of our technology and sales of our technology applications."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12 Japan Limited (\u201c12JP\u201d)",
+     "Japan",
+     "Feb. 12, 2015",
+     "July 31, 2017",
+     "",
+     "100",
+     "%",
+     "Consultation and sales of technology applications."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12 Europe AG (\u201c12EU\u201d)",
+     "Switzerland",
+     "Aug. 22, 2013",
+     "Oct. 26, 2017",
+     "",
+     "100",
+     "%",
+     "Consultation and sales of technology applications."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "E-motion Fashion Group, Inc. F/K/A Emotion Apparel, Inc, Lexi Luu Designs, Inc, Punkz Gear, Skipjack Dive and Dancewear, Cleo VII",
+     "Re-incorpora-ed, in Utah, USA F/K/I in California, USA",
+     "Sept. 9, 2010.\nReincorpor-ated on July 6, 2018 and changed its name on July 26, 2018",
+     "May 1, 2018",
+     "",
+     "100",
+     "%",
+     "A subsidiary of 12 Retail and is the first microbrand acquired under the microbrand acquisitions roll up strategy. Operates its own production facilities that can be utilized by all of the Company\u2019s future microbrands."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 353,
+    "end_line": 384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "NATURE OF BUSINESS"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\n12 RETECH CORPORATION\nNotes to the Condensed Consolidated Financial Statements\nSeptember 30, 2018\n(Unaudited)\nNOTE\n1. NATURE OF BUSINESS\n12 Retech Corporation (\u201cwe\u201d, \u201cus\u201d, \u201cour\u201d, \u201c12 ReTech\u201d, \u201cRETC\u201d, or the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada, U.S. as DEVAGO INC. on September 8, 2014. On June 8, 2017, the Company amended our Articles of Incorporation to change the name to 12 Retech Corporation. At our core, we are a software company whose technology allows retailers to combat the dual threats of Walmart and Amazon \u2014 both online and in physical stores. Our microbrand rollup acquisition strategy allows us to demonstrate the effectiveness of our software, devise and test new products, while providing shareholder value through immediate revenue and earnings growth. The Company operates through our subsidiaries on three continents, Asia, North America and Europe.\nPrincipal subsidiaries\nThe details of the principal subsidiaries of the Company are set out as follows:",
+   "prose_after": "NOTE\n2. GOING CONCERN\nThe Company accounts for going concern matters under the guidance of ASU 2014-15, \u201cPresentation of Financial Statements \u2013 Going Concern (Subtopic 205-40), Disclosure of Uncertainties about an Entities Ability to Continue as a\u201d Going Concern\u201d (\u201cASU 2014-15\u201d). The guidance in ASU 2014-15 sets forth management\u2019s responsibility to evaluate whether there is substantial doubt about an entity\u2019s ability to continue as a going concern as well as required disclosures. ASU 2014-15 indicates that, when preparing financial statements for interim and annual financial statements, management should evaluate whether conditions or events, in the aggregate, raise substantial doubt about the entity\u2019s ability to continue as a going concern for one year from the date the financial statements are issued or are available to be issued. This evaluation should include consideration of conditions and events that are either known or are reasonably knowable at the date the financial statements are issued or are available to be issued, as well as whether it is probable that management\u2019s plans to address the substantial doubt will be implemented and, if so, whether it is probable that the plans will alleviate the substantial doubt.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 335,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "779",
+     ""
+    ],
+    [
+     "Assets (except cash)",
+     "",
+     "62,704",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "551,110",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "(534,593)",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "80,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "On July 6, 2018, the Company re-incorporated EAI in the state of Utah and later re-named it as Emotion Fashion Group, Inc. (\u201cEmotion Fashion Group\u201d or \u201cEFG\u201d) and does business under the brand name, \u201cEmotion Fashions.\u201d Going forward, and as part of the re-incorporation as Emotion Fashion Group, the Company has consolidated all of its subsidiaries and the Company now operates all brands under the single entity, Emotion Fashion Group.\nEmotion Fashion Group, was then deemed to be founded in 2010 and designs and manufactures women\u2019s apparel and kids\u2019 dancewear.\nThe acquisition of Emotion Fashion Group was accounted for under ASC 805. The following table summarizes the final allocation of assets acquired and liabilities assumed as of the Acquisition Date at estimated fair value. During the third quarter there was an increase in Goodwill associated with the acquisition due to additional disputed liabilities that were discovered after the date of the acquisition.\nFair value below:\nAs of May 1, 2018, the assets and net liabilities acquired were as follows:",
+   "prose_after": "The fair values of the net assets acquired were determined using the market approach, which indicates value for a subject asset based on available market pricing for comparable assets. The fair value of the fixed assets of $37,687 has been determined by a third-party valuation firm and is valued at its estimated liquidation price. The fair value of the debt has been determined using an appropriately required yield and comparing against the stated interest rate on\nthe debt.\nThe purchase price for the acquisition was allocated to the fair value of the assets acquired and liabilities assumed based on the estimates of the fair values at the acquisition date, with the amount exceeding the estimated fair values being recorded as goodwill. The amount of goodwill has increased during the third quarter as due to adding additional disputed liabilities for which were discovered after date of acquisition.\nThe fixed assets are being depreciated over their estimated useful lives of 5 years. Goodwill recorded will not be amortized but tested for impairment at least annually. The Company performs its annual test during the fourth quarter.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Proforma",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "80,083",
+     "",
+     "$",
+     "116,181",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(5,347,469)",
+     "",
+     "$",
+     "(720,865)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Per Share",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Proforma",
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "The Company assumed the liabilities of the Emotion Fashion Group, which included a disputed $250,000 note that bears a 2% annual interest rate. The fair market value of the note of $148,051 has been determined as the present value of the expected cash flow from the note assuming a market rate of interest.\nEmotion Fashion Group\u2019s results of operations have been included in the Company\u2019s operating results for the period subsequent to the acquisition on May 1, 2018. Emotion Fashion Group contributed revenues of $26,896.\nRevenues for Emotion Fashion Group were lower because the company was dormant most of 2017 and first quarter of the 2018. This was partly due to the fact that the company moved operations from Los Angeles, CA to Salt Lake City, Utah. In additional the company was re-branded and is gearing for its re-launch that began in June 2018.\nThe below table sets forth selected unaudited pro forma financial information for the Company as if Emotion Fashion Group was owned for the nine months ended September 30, 2018 and 2017.",
+   "prose_after": "The unaudited pro forma information set forth above is for informational purposes only. The pro forma information should not be considered indicative of actual results that would have been achieved if the Emotion Fashion Group acquisition had occurred on January 1, 2017. The unaudited supplemental pro forma financial information was calculated by combining the Company\u2019s results with the stand-alone results of Emotion Fashion Group. For the identified periods, which were adjusted for certain transactions and other costs that would have been occurred during this pre-acquisition period.\nNOTE\n4. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe accompanying interim unaudited condensed consolidated financial statements have been prepared in accordance with generally accepted accounting principles for interim financial information and in accordance with the instructions to Form 10-Q and Article 8 of Regulation S-X. In our opinion, all adjustments (consisting of normal recurring adjustments) considered necessary for a fair presentation have been included. Operating results for the three and nine months ended September 30, 2018 are not necessarily indicative of the results that may be expected for the year ending December 31, 2018. Notes to the unaudited interim condensed consolidated financial statements that would substantially duplicate the disclosures contained in the audited consolidated financial statements for fiscal year 2017 have been omitted. This report should be read in conjunction with the audited consolidated financial statements and the footnotes thereto for the fiscal year ended December 31, 2017 included in the Company\u2019s Form 10-K as filed with the Securities and Exchange Commission on April 16, 2018.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "\u2014",
+     "Inputs are quoted prices in active markets for identical assets or liabilities as of the reporting date."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 2",
+     "\u2014",
+     "Inputs other than quoted prices included within Level 1, such as quoted prices for similar assets and liabilities in active markets; quoted prices for identical or similar assets and liabilities in markets that are not active; or other inputs that are observable or can be corroborated with observable market data."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 3",
+     "\u2014",
+     "Unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets and liabilities. This includes certain pricing models, discounted cash flow methodologies, and similar techniques that use significant unobservable inputs. Unobservable inputs for the asset or liability that reflect management\u2019s own assumptions about the assumptions that market participants would use in pricing the asset or liability as of the reporting date."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 504,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "When a convertible preferred stock contains a BCF, after allocating the proceeds to the BCF, the resulting discount is either amortized over the period beginning when the convertible preferred stock is issued up to the earliest date the conversion feature may be exercised, or if the convertible preferred stock is immediately exercisable, the discount is fully amortized at the date of issuance. The amortization is recorded similar to a dividend.\nDerivative Liabilities and Fair Value Measurements\nFair value is defined as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. Assets and liabilities measured at fair value are categorized based on whether the inputs are observable in the market and the degree that the inputs are observable. Inputs refer broadly to the assumptions that market participants would use in pricing the asset or liability, including assumptions about risk. Observable inputs are based on market data obtained from sources independent of our company. Unobservable inputs reflect our own assumptions based on the best information available in the circumstances. The fair value hierarchy prioritizes the inputs used to measure fair value into three broad levels, defined as follows:",
+   "prose_after": "The Company carries certain derivative financial instruments using inputs classified as \u201cLevel 3\u201d in the fair value hierarchy on the Company\u2019s consolidated balance sheets.\nThe Company classified certain conversion features in the convertible notes issued during 2017 and 2018 as embedded derivative instruments due to down-round ratchet provisions and potential adjustments to conversion prices due to events of default and accordingly measures and carries the conversion features as derivative liabilities in the consolidated financial statements. Also, the Company determined that the certain notes should be measured and carried at fair value in the consolidated financial statements according to ASC 480, as they are settleable in a variable number of shares based on a fixed monetary amount known at inception. These fair value estimates were measured using inputs classified as \u201clevel 3\u201d of the fair value hierarchy. We develop unobservable \u201clevel 3\u201d inputs using the best information available in the circumstances, which might include our own data, or when we believe inputs based on external data better reflect the data that market participants would use, we base our inputs on comparison with similar entities. Due to the existence of down round provisions, which create a path-dependent nature of the conversion prices of the convertible notes, the Company decided a Monte Carlo Simulation model, which incorporates inputs classified as \u201clevel 3\u201d was appropriate.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Inputs",
+     ""
+    ],
+    [
+     "Volatility (1)",
+     "252% - 291%"
+    ],
+    [
+     "Risk free interest rate",
+     "2.12% - 2.59%"
+    ],
+    [
+     "Common stock price",
+     ".004"
+    ],
+    [
+     "Conversion price",
+     "25% - 55% discount to common stock price"
+    ]
+   ],
+   "caption_stack": [
+    "Inputs"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 522,
+    "end_line": 533
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company classified certain conversion features in the convertible notes issued during 2017 and 2018 as embedded derivative instruments due to down-round ratchet provisions and potential adjustments to conversion prices due to events of default and accordingly measures and carries the conversion features as derivative liabilities in the consolidated financial statements. Also, the Company determined that the certain notes should be measured and carried at fair value in the consolidated financial statements according to ASC 480, as they are settleable in a variable number of shares based on a fixed monetary amount known at inception. These fair value estimates were measured using inputs classified as \u201clevel 3\u201d of the fair value hierarchy. We develop unobservable \u201clevel 3\u201d inputs using the best information available in the circumstances, which might include our own data, or when we believe inputs based on external data better reflect the data that market participants would use, we base our inputs on comparison with similar entities. Due to the existence of down round provisions, which create a path-dependent nature of the conversion prices of the convertible notes, the Company decided a Monte Carlo Simulation model, which incorporates inputs classified as \u201clevel 3\u201d was appropriate.\nKey inputs used in the Monte Carlo Simulation model to determine the fair value of the embedded derivatives and notes at September 30, 2018 are as follows:",
+   "prose_after": "(1) \u201cLevel 3\u201d input.\nThe \u201clevel 3\u201d stock volatility assumption represents the range of the volatility curves used in the valuation analysis based on the actual volatility of the Company\u2019s common stock. The risk-free interest rate is interpolated where appropriate and is based on treasury yields. The valuation model also included a \u201clevel 3\u201d assumption the developed as to dates of potential future financings by the Company and potential events of default that may cause a reset of the conversion prices.\nCommitments and Contingencies\nThe Series B Redeemable Convertible Preferred Stock is classified as temporary equity, as it is mandatorily redeemable by the holder at a future date. The Series D-1 Preferred Stock is classified as temporary equity due to the fact that it redeemable immediately. The Series D-3 Preferred Stock is also classified as temporary equity due to the existence of the PUT.\nEarnings per Share\nThe Company follows ASC 260, \u201cEarnings per Share\u201d (\u201cEPS\u201d), which requires presentation of basic EPS on the face of the income statement for all entities with complex capital structures and requires a reconciliation of the numerator and denominator of the basic EPS computation. In the accompanying financial statements, basic earnings (loss) per share are computed by dividing net loss by the weighted average number of shares of common stock outstanding during the period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Office equipment",
+     "$",
+     "7,432",
+     "",
+     "$",
+     "7,371",
+     ""
+    ],
+    [
+     "Furniture and equipment",
+     "",
+     "607",
+     "",
+     "",
+     "607",
+     ""
+    ],
+    [
+     "Computer",
+     "",
+     "13,704",
+     "",
+     "",
+     "12,998",
+     ""
+    ],
+    [
+     "Technical equipment",
+     "",
+     "23,435",
+     "",
+     "",
+     "23,435",
+     ""
+    ],
+    [
+     "Machinery",
+     "",
+     "22,916",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "68,094",
+     "",
+     "",
+     "44,411",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(36,999)",
+     "",
+     "",
+     "(35,796)",
+     ""
+    ],
+    [
+     "Equipment",
+     "$",
+     "31,095",
+     "",
+     "$",
+     "8,615",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 FIXED ASSETS, NET"
+    }
+   },
+   "prose_before": "Diluted earnings per share reflects the potential dilution that could occur if securities were exercised or converted into common stock or other contracts to issue common stock resulting in the issuance of common stock that would then share in the Company\u2019s earnings subject to anti-dilution limitations. In a period in which the Company has a net loss, all potentially dilutive securities are excluded from the computation of diluted shares outstanding as they would have an anti-dilutive impact. For the nine and three months ended September 30, 2018 and 2017, potentially dilutive common shares consist of common stock issuable upon the conversion of convertible notes payable, Series A Preferred Stock, Series B Preferred Stock, Series D-1 Preferred Stock and Series D-3 Preferred Stock (using the if converted method). All potentially dilutive securities were excluded from the computation of diluted weighted average number of shares of common stock outstanding as they would have had an anti-dilutive impact.\nFinancial Instruments\nThe Company\u2019s financial instruments consist primarily of cash and cash equivalents, accounts receivable, prepaid expenses and other current assets, accounts payable and accrued liabilities, due to stockholders and notes payable. The carrying amounts of such financial instruments approximate their respective estimated fair value due to the short-term maturities and approximate market interest rates of these instruments.\nRecent Accounting Pronouncements\nManagement has considered all recent accounting pronouncements issued. The Company\u2019s management believes that these recent pronouncements will not have a material effect on the Company\u2019s financial statements.\nNOTE 5 \u2013 FIXED ASSETS, NET\nFixed assets, net at September 30, 2018 and December 31, 2017 consist of the following:",
+   "prose_after": "Depreciation expense for the three months ended September 30, 2018 and 2017 amount to $2,552 and $1,347, respectively. Depreciation expense for the nine months ended September 30, 2018 and 2017 amounted to $5,085 and $7,448, respectively.\nNOTE 6 \u2013 ACCOUNTS PAYABLE AND ACCRUED LIABILITIES\nAccounts payable and accrued liabilities at September 30, 2018 and December 31, 2017 consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "December 31, 2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "545,742",
+     "$",
+     "30,625"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "331,438",
+     "",
+     "66,931"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "88,317",
+     "",
+     "8,348"
+    ],
+    [
+     "",
+     "$",
+     "965,497",
+     "$",
+     "105,904"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 ACCOUNTS PAYABLE AND ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "Depreciation expense for the three months ended September 30, 2018 and 2017 amount to $2,552 and $1,347, respectively. Depreciation expense for the nine months ended September 30, 2018 and 2017 amounted to $5,085 and $7,448, respectively.\nNOTE 6 \u2013 ACCOUNTS PAYABLE AND ACCRUED LIABILITIES\nAccounts payable and accrued liabilities at September 30, 2018 and December 31, 2017 consists of the following:",
+   "prose_after": "NOTE 7 - STOCKHOLDER TRANSACTIONS\nDue to stockholders at September 30, 2018 and December 31, 2017 consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "December 31, 2017",
+     ""
+    ],
+    [
+     "Daniel Monteverde",
+     "$",
+     "84,317",
+     "$",
+     "8,214"
+    ],
+    [
+     "Angelo Ponzetta",
+     "",
+     "473,896",
+     "",
+     "500,798"
+    ],
+    [
+     "Gianni Ponzetta",
+     "",
+     "-",
+     "",
+     "160,114"
+    ],
+    [
+     "",
+     "$",
+     "558,213",
+     "$",
+     "669,126"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 602,
+    "end_line": 612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCKHOLDER TRANSACTIONS"
+    }
+   },
+   "prose_before": "NOTE 7 - STOCKHOLDER TRANSACTIONS\nDue to stockholders at September 30, 2018 and December 31, 2017 consists of the following:",
+   "prose_after": "On August 12, 2017, Gianni Ponzetta loaned CHF 60,000 (approximately $62,946 as of September 30, 2018 and $61,584 at December 31, 2017, to the Company. The promissory note was unsecured, bore an interest at 1% per annum and is due December 31, 2019.\nIn September 2018, Gianni Ponzetta converted this note and all the due to Gianni Ponzetta payables to Preferred D-3 shares. See Preferred D-3 shares in Note 10 below.\nThe other amounts due to stockholders are non-interest bearing, unsecured and due on demand.\nIn September 2018, $20,000 was repaid to Angelo Ponzetta, which offset the amounts due to Angelo Ponzetta.\nDuring the nine months ended September 30, 2018 and 2017, total advances and expenses paid directly by stockholders on behalf of the Company were $62,326 and $40,766, respectively, and the Company repaid $16,931 and $0, respectively.\nNOTE 8 \u2013 CONVERTIBLE NOTES PAYABLE\nConvertible notes payable at September 30, 2018 and December 31, 2017 which consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Dated September 15, 2017",
+     "$",
+     "405,000",
+     "",
+     "$",
+     "387,500",
+     ""
+    ],
+    [
+     "Dated December 8, 2017",
+     "",
+     "154,442",
+     "",
+     "",
+     "92,646",
+     ""
+    ],
+    [
+     "Dated December 12, 2017",
+     "",
+     "132,109",
+     "",
+     "",
+     "92,646",
+     ""
+    ],
+    [
+     "Dated March 15, 2018",
+     "",
+     "95,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dated April 27, 2018",
+     "",
+     "50,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dated May 17, 2018",
+     "",
+     "60,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dated September 17, 2018",
+     "",
+     "100,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated September 21, 2018",
+     "",
+     "60,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total convertible notes payable",
+     "",
+     "1,056,551",
+     "",
+     "",
+     "572,792",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Unamortized debt discount",
+     "",
+     "(185,814)",
+     "",
+     "",
+     "(164,545)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total convertible notes",
+     "",
+     "870,737",
+     "",
+     "",
+     "408,247",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: current portion of convertible notes",
+     "",
+     "870,737",
+     "",
+     "",
+     "408,247",
+     ""
+    ],
+    [
+     "Long-term convertible notes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "On August 12, 2017, Gianni Ponzetta loaned CHF 60,000 (approximately $62,946 as of September 30, 2018 and $61,584 at December 31, 2017, to the Company. The promissory note was unsecured, bore an interest at 1% per annum and is due December 31, 2019.\nIn September 2018, Gianni Ponzetta converted this note and all the due to Gianni Ponzetta payables to Preferred D-3 shares. See Preferred D-3 shares in Note 10 below.\nThe other amounts due to stockholders are non-interest bearing, unsecured and due on demand.\nIn September 2018, $20,000 was repaid to Angelo Ponzetta, which offset the amounts due to Angelo Ponzetta.\nDuring the nine months ended September 30, 2018 and 2017, total advances and expenses paid directly by stockholders on behalf of the Company were $62,326 and $40,766, respectively, and the Company repaid $16,931 and $0, respectively.\nNOTE 8 \u2013 CONVERTIBLE NOTES PAYABLE\nConvertible notes payable at September 30, 2018 and December 31, 2017 which consists of the following:",
+   "prose_after": "For the three months ended September 30, 2018 and 2017, the Company recognized interest expense of $49,557 and $0 respectively, all of which represented the amortization of original issue discounts, debt discounts and beneficial conversion features. For the three and the months ended September 30, 2018, the Company reduced the principal by $146,500 of principal and interest of $11,438 through conversions. The issue discounts and debt discounts are being amortized over the life of the notes using straight line amortization due to the short term nature of the note. Remaining issue discounts and debt discounts of $185,814 will be fully amortized by May 2019.\nFor the nine months ended September 30, 2018 and 2017, the Company recognized interest expense of $986,312 and $0 respectively, all of which represented the amortization of original issue discounts, debt discounts, derivative liabilities, beneficial conversion features and accrued interest.\nAs a subsequent event, as of November 9, 2018, the principal debt was further reduced by $343,096 of principal and $19,307 of interest.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine Months Ended September 30, 2018",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2017",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of new derivative liabilities",
+     "",
+     "1,136,871",
+     ""
+    ],
+    [
+     "Conversions to paid-in capital",
+     "",
+     "(125,135)",
+     ""
+    ],
+    [
+     "Change in fair market value of derivative liabilities",
+     "",
+     "723,291",
+     ""
+    ],
+    [
+     "Balance - September 30, 2018",
+     "$",
+     "1,735,027",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Nine Months Ended September 30, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 661,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "For the three months ended September 30, 2018 and 2017, the Company recognized interest expense of $49,557 and $0 respectively, all of which represented the amortization of original issue discounts, debt discounts and beneficial conversion features. For the three and the months ended September 30, 2018, the Company reduced the principal by $146,500 of principal and interest of $11,438 through conversions. The issue discounts and debt discounts are being amortized over the life of the notes using straight line amortization due to the short term nature of the note. Remaining issue discounts and debt discounts of $185,814 will be fully amortized by May 2019.\nFor the nine months ended September 30, 2018 and 2017, the Company recognized interest expense of $986,312 and $0 respectively, all of which represented the amortization of original issue discounts, debt discounts, derivative liabilities, beneficial conversion features and accrued interest.\nAs a subsequent event, as of November 9, 2018, the principal debt was further reduced by $343,096 of principal and $19,307 of interest.\nThe following is the change in derivative liability for the nine months ended September 30, 2018:",
+   "prose_after": "The company recognized a change in derivative liability of $1,735,027 for the period ended September 30, 2018. The derivative liability was determined using the Monte Carlo valuation method as of September 30, 2018.\nThe Company classified certain conversion features in the convertible notes issued during 2017 and 2018 as embedded derivative instruments due to variable conversion prices without a floor, down-round ratchet provisions and potential adjustments to conversion prices due to events of default and accordingly measures and carries the conversion features as derivative liabilities in the consolidated financial statements. Most derivative liabilities were triggered in June 2018, when the notes first became convertible. Also, the Company determined that the certain notes should be measured and carried at fair value in the consolidated financial statements according to ASC 480, as they are settleable in a variable number of shares based on a fixed monetary amount known at inception. These fair value estimates were measured using inputs classified as \u201clevel 3\u201d of the fair value hierarchy. We develop unobservable \u201clevel 3\u201d inputs using the best information available in the circumstances, which might include our own data, or when we believe inputs based on external data better reflect the data that market participants would use, we base our inputs on comparison with similar entities. Due to the existence of down round provisions, which create a path-dependent nature of the conversion prices of the convertible notes, the Company decided a Monte Carlo Simulation model, which incorporates inputs classified as \u201clevel 3\u201d was appropriate.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Inputs",
+     ""
+    ],
+    [
+     "Volatility (1)",
+     "252% - 291%"
+    ],
+    [
+     "Risk free interest rate",
+     "2.12% - 2.59%"
+    ],
+    [
+     "Common stock price",
+     ".004"
+    ],
+    [
+     "Conversion price",
+     "25% - 55% discount to common stock price"
+    ]
+   ],
+   "caption_stack": [
+    "Inputs"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 680,
+    "end_line": 691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "The Company classified certain conversion features in the convertible notes issued during 2017 and 2018 as embedded derivative instruments due to variable conversion prices without a floor, down-round ratchet provisions and potential adjustments to conversion prices due to events of default and accordingly measures and carries the conversion features as derivative liabilities in the consolidated financial statements. Most derivative liabilities were triggered in June 2018, when the notes first became convertible. Also, the Company determined that the certain notes should be measured and carried at fair value in the consolidated financial statements according to ASC 480, as they are settleable in a variable number of shares based on a fixed monetary amount known at inception. These fair value estimates were measured using inputs classified as \u201clevel 3\u201d of the fair value hierarchy. We develop unobservable \u201clevel 3\u201d inputs using the best information available in the circumstances, which might include our own data, or when we believe inputs based on external data better reflect the data that market participants would use, we base our inputs on comparison with similar entities. Due to the existence of down round provisions, which create a path-dependent nature of the conversion prices of the convertible notes, the Company decided a Monte Carlo Simulation model, which incorporates inputs classified as \u201clevel 3\u201d was appropriate.\nKey inputs used in the Monte Carlo Simulation model to determine the fair value of the embedded derivatives and notes at September 30, 2018 are as follows:",
+   "prose_after": "(1) \u201cLevel 3\u201d input.\nThe \u201clevel 3\u201d stock volatility assumption represents the range of the volatility curves used in the valuation analysis based on the actual volatility of the Company\u2019s common stock. The risk-free interest rate is interpolated where appropriate and is based on treasury yields. The valuation model also included a \u201clevel 3\u201d assumption the developed as to dates of potential future financings by the Company and potential events of default that may cause a\nSeptember 15, 2017 Note\nOn September 15, 2017, the Company entered into the promissory note agreement with SBI Investments LLC (\u201cSBI\u201d) for loans up to a maximum of $1,250,000, together with interest at the rate of 8% per annum. The consideration to the Company for this promissory note is up to $1,000,000, resulting in a potential original issuance discount (\u201cOID\u201d) of up to $250,000. The maturity date for each tranche funded shall be six months from the effective date of the respective payment date. The promissory note may be converted into shares of the Company\u2019s common stock at any time on or after the occurrence of an event of default. The conversion price shall be the 60% multiplied by the lowest trading price during the 30 trading days period ending, in holder\u2019s sole discretion on each conversion, on either (i) the last complete trading day prior to the conversion date or (ii) the conversion date. All terms of the note, including but not limited to interest rate, prepayment terms, conversion discount or look-back period will be adjusted downward if the Company offers more favorable terms to another party, while this note is in effect.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30, 2018 and December 31, 2017, 191,400 and 0 shares of Series B Preferred Stock were issued and outstanding at $1 par value, respectively."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "As of subsequent event, as an additional $123,400 of principal was reduced and interest of $7,404 through converting 191,400 of Series B Preferred Stock."
+    ]
+   ],
+   "caption_stack": [
+    "As of September 30, 2018 and December 31, 2017, 191,400 and 0 shares of Series B Preferred Stock were issued and outstanding at $1 par value, respectively."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 843,
+    "end_line": 848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 PREFERRED STOCK AND STOCKHOLDERS DEFICIT"
+    }
+   },
+   "prose_before": "\u25cf On July 31, 2018, Geneva converted 15,000 Series B Preferred shares into 1,500,708 shares of common stock. On August 14, 2018, Geneva converted 15,000 Series B Preferred shares into 4,173,228 shares of common stock. On September 10, 2018, Geneva converted 20,000 Series B Preferred shares into 4,173,228 shares of common stock. On September 13, 2018, Geneva converted 25,000 Series B Preferred shares into 4,274194 shares of common stock.\n\u25cf On September 13, 2018, Geneva agreed to purchase an additional 68,000 Series B Preferred shares for $63,000 under the same terms as the initial purchase on January 31, 2018.\n\u25cf On September 13, 2018, Geneva converted 25,000 Series B Preferred shares into 4,274,194 shares of common stock. On September 20, 2018, Geneva converted 25,000 Series B Preferred shares into 5,257,937 shares of common stock. On September 26, 2018, Geneva converted 20,000 Series B Preferred shares into 5,653,333 shares of common stock.\n\u25cf As of September 30, 2018, the total principal was reduced by $142,600 and interest of $7,656 through conversion.",
+   "prose_after": "Series C Preferred Stock\nThere was a single issuance of the Series C Preferred Stock during the nine months ended September 30, 2018.\nOn August 6, 2018, the Board of Directors of 12 ReTech corporation authorized the issuance of one (1) share of our Series C Preferred Shares to the founder, Angelo Ponzetta, effective August 14, 2018. The Series C Preferred Shares have no equity value, no preference in liquidation and is not convertible into common shares, but authorizes the holder to vote one billion (1,000,000,000) votes on any matter that shareholders are entitled to vote for under our Bylaws at a cost of $1.00 per share. The Board believes that this was necessary so that the Company maintains a consistent vision going forward that can only be achieved if the Founder\u2019s vision is maintained. This vision is the same vision that all current shareholders bought into as evidenced by their investment into the Company. To ensure that the founder\u2019s vision is maintained, it is necessary that no outsider person or group can gain voting control from the founder as the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "19,642",
+     "$",
+     "28,460",
+     "$",
+     "-",
+     "$",
+     "48,102"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 928,
+    "end_line": 933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "The Company issued 12,157,264 shares to various consultants and recognized stock compensation expense of $391,017 and $609,291 for both the three and nine months September 30, 2018. The stocks were issued for services rendered to the company in the form of consulting and or bought for cash during the period.\nAs of September 30, 2018, and December 31, 2017, 147,056,747 and 82,200,000 shares of common stock were issued and outstanding, respectively.\nNOTE 11 - SEGMENTS\nThe Company does business on three continents (Asia, North America and Europe) in four different jurisdictions (Hong Kong-special economic zone of the People\u2019s Republic of China, Japan, United States of America, and The European common market through Switzerland). These segments are components of the Company about which separate financial information is available and regularly evaluated by the chief operating decision maker in deciding how to allocate resources and in assessing performance. The accounting policies of the segments are the same as those described in Note 3, Summary of Significant Accounting Policies.\nThe following table shows operating activities information by geographic segment for the three and nine months ended September 30, 2018 and 2017.\n3 months ended September 30, 2018",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 917,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2018",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "22,916",
+     "$",
+     "8,179",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,095"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "635,420",
+     "$",
+     "261,495",
+     "$",
+     "(5,166)",
+     "",
+     "$",
+     "891,749"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 934,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "3 months ended September 30, 2017",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 917,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "$",
+     "7,790",
+     "$",
+     "-",
+     "$",
+     "7,790"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 943,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "3 months ended September 30, 2017",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 917,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3 mths Sept 30, 2017",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "-",
+     "$",
+     "7,647",
+     "$",
+     "14,400",
+     "$",
+     "22,047"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "200",
+     "$",
+     "170,298",
+     "$",
+     "60,372",
+     "$",
+     "230,870"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 949,
+    "end_line": 957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "9 months ended September 30, 2018",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 917,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2018",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Revenue",
+     "$",
+     "26,896",
+     "$",
+     "46,792",
+     "$",
+     "38",
+     "",
+     "$",
+     "73,726"
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "22,916",
+     "$",
+     "8,179",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,095"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "635,420",
+     "$",
+     "261,495",
+     "$",
+     "(5,166)",
+     "",
+     "$",
+     "891,749"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 968
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "9 months ended September 30, 2018",
+   "prose_after": "9 months ended September 30, 2017",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2017",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Revenue",
+     "$",
+     "-",
+     "$",
+     "51,187",
+     "$",
+     "-",
+     "$",
+     "51,187"
+    ],
+    [
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "-",
+     "$",
+     "7,647",
+     "$",
+     "14,400",
+     "$",
+     "22,047"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "200",
+     "$",
+     "170,298",
+     "$",
+     "60,372",
+     "$",
+     "230,870"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "9 months ended September 30, 2017",
+   "prose_after": "The following table shows assets information by geographic segment at September 30, 2018 and December 31, 2017.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2018",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "22,916",
+     "$",
+     "8,179",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,095"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "635,420",
+     "$",
+     "261,495",
+     "$",
+     "(5,166)",
+     "",
+     "$",
+     "891,749"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 983,
+    "end_line": 989
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "The following table shows assets information by geographic segment at September 30, 2018 and December 31, 2017.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1024,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2017",
+     "North America",
+     "",
+     "Asia",
+     "",
+     "Europe",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "  Fixed assets, net",
+     "$",
+     "-",
+     "$",
+     "7,647",
+     "$",
+     "14,400",
+     "$",
+     "22,047"
+    ],
+    [
+     "  Total assets",
+     "$",
+     "200",
+     "$",
+     "170,298",
+     "$",
+     "60,372",
+     "$",
+     "230,870"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 990,
+    "end_line": 996
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 12 - SUBSEQUENT EVENTS\nThe Company evaluated all events and transactions that occurred after September 30, 2018 and through the date of this filing in accordance with FASB ASC 855, \u201cSubsequent Events.\u201d The Company determined that it does have a material subsequent events to disclose as follows:\nThe Company sourced additional working capital from the following sources:\n\u25cf Adar Bays Capital funded their \u201cback end\u201d note originally dated March 15, 2018 for $50,000 on October 4, 2018. the terms and conditions of the funding of this bank end note we previously disclosed on the note dated March 15, 2018.\n\u25cf Bellridge Capital LLC funded an additional convertible promissory note in the amount of $50,000 on October 16, 2018 under the exact same conditions of the original note dated May 17, 2018.\n\u25cf On October 20, 2018 Dominick D\u2019Alleva, one of the members of the Company\u2019s Advisory Board paid the last $80,000 releasing the final 500,000 common shares of stock held in escrow by the Company until that payment was made at $.16 per share.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1024,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number",
+     "",
+     "Description of Exhibit"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1276,
+    "end_line": 1280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company has outstanding Preferred Stock and Convertible Notes with possibility of a number of common shares.\nAlthough we have attempted to discuss meaningful factors, our investors need to be aware that other factors and risks may become important in the future. New risks may emerge at any time. We cannot predict such risks or estimate the extent to which they may affect our operations and financial performance. Investors should carefully consider the discussion of risks and the other information included in this Quarterly Report on Form 10-Q, including the Cautionary Information Regarding Forward-Looking Information provided above in Part I, Item 2, Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nItem 2. Unregistered Sales of equity AND USE OF PROCEEDS\nThe Company issued 6,250,000 shares of common stock and received proceeds of $211,250. The proceeds will be used for working capital purposes.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES.\nNone.\nITEM 6 Exhibits\nThe following documents are included herein:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1263,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer to Rule 14a-14 and Rule 15d-14(a), promulgated under the Securities and Exchange Act of 1934 as emended"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14 and Rule 15d 14(a), promulgated under the Securities and Exchange Act of 1934, as amended"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (Chief Executive Officer and Chief Financial Officer)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "33",
+     "",
+     "Issuance of Series D-3 Preferred Stock"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1281,
+    "end_line": 1290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n12 ReTech Corporation",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1263,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 19, 2018",
+     "By:",
+     "/s/ Angelo Ponzetta"
+    ],
+    [
+     "",
+     "",
+     "Angelo Ponzetta"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1298,
+    "end_line": 1304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n12 ReTech Corporation",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934 this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.\n12 ReTech Corporation",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 19, 2018",
+     "By:",
+     "/s/ Angelo Ponzetta"
+    ],
+    [
+     "",
+     "",
+     "Angelo Ponzetta"
+    ],
+    [
+     "",
+     "Its:",
+     "Chairman, Director, President,\n\n\n\nChief Executive Officer,\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Daniele Monteverde"
+    ],
+    [
+     "",
+     "",
+     "Daniele Monteverde"
+    ],
+    [
+     "",
+     "Its:",
+     "Director\n\n\n\nSecretary\n\n\n\nTreasurer\n\n\n\nChief Operating Officer\n\n\n\n(Principal Accounting Officer)\n\n\n\n(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934 this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.\n12 ReTech Corporation",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

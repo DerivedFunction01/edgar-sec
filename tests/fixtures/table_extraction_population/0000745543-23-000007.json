@@ -1,0 +1,811 @@
+{
+ "accession": "0000745543-23-000007",
+ "cik": "0001410187",
+ "form": "10-K/A",
+ "filing_date": "2023-06-13",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cnnc12312021_10ka2.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "84-2870437"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IR.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "937 Old Seneca Turnpike Road",
+     "",
+     ""
+    ],
+    [
+     "Skaneateles, NY",
+     "",
+     "13252-9318"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(315) 558-3702",
+     ""
+    ],
+    [
+     "Registrant\u2019s telephone number Including area code",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(b) of the Act: None",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(g) of the Act.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock, $0.001 Par Value",
+     ""
+    ],
+    [
+     "",
+     "(Title of class)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A 2\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE\nEXCHANGE ACT\nCommission File Number: 333-145876\nCANNONAU CORP\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] YES [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] YES [X] No\nNote \u2013 Checking the box above will not relieve any registrant required to file reports pursuant to Section 13 or 15(d) of the Exchange Act from their obligations under those Sections.\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] NO\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [ ] YES [X] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Item 7",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "7",
+     ""
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk`",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "",
+     "22",
+     ""
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "",
+     "22",
+     ""
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "",
+     "23",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "",
+     "23",
+     ""
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "",
+     "27",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "27",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 130
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "EXPLANATORY NOTE REGARDING THIS FORM 10 K/A\nThis Amendment No. 2 to the Annual Report on Form 10-K of Cannonau Corp. (the \"Company\") for the fiscal year ended on December 31, 2021, as originally filed on May 05, 2022 (such Annual Report on Form 10-K being referred to as the \"Annual Report,\" and Amendment No. 1 as \"Amendment No. 1\"), was filed on June 24, 2022 solely to incorporate audit report along with audited financial statements. This Amendment No. 2 is being filed solely to complete the information missing in Item 12 Security Ownership of Certain Beneficial Owners and Management It is not intended to, nor does it, reflect events occurring after the filing of the Annual Report, and does not modify or update the disclosures therein in any way other than as required to reflect the change described above. Accordingly, this Amendment No. 2 should be read in conjunction with the Company's filings made with the Securities and Exchange Commission subsequent to the filing of the Annual Report on December 31, 2021.\n2\nTABLE OF CONTENTS",
+   "prose_after": "3\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following tables set forth information as of December 31, 2021 regarding the beneficial ownership of our common stock each stockholder who is known by the Company to own beneficially in excess of 5% of our outstanding common stock; each director known to hold common or preferred stock; the Company's chief executive officer; and the executive officers and directors as a group. Except as otherwise indicated, all persons listed below have (i) sole voting power and investment power with respect to their shares of stock, except to the extent that authority is shared by spouses under applicable law, and (ii) record and beneficial ownership with respect to their shares of stock.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "NUMBER OF SHARES",
+     "",
+     "",
+     "",
+     "PERCENT OF SHARES",
+     "",
+     ""
+    ],
+    [
+     "NAME AND ADDRESS OF",
+     "",
+     "TITLE",
+     "",
+     "",
+     "",
+     "BENEFICIALLY",
+     "",
+     "",
+     "",
+     "BENEFICIALLY",
+     "",
+     ""
+    ],
+    [
+     "BENEFICIAL OWNER",
+     "",
+     "OF CLASS",
+     "",
+     "",
+     "",
+     "OWNED",
+     "",
+     "",
+     "",
+     "OWNED",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carman J. Carbona",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "220,050,000",
+     "",
+     "",
+     "",
+     "91%",
+     ""
+    ],
+    [
+     "937 Old Seneca Turnpike",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Skaneateles, NY 13152",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Directors and officers as a group (1 member)",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 137,
+    "end_line": 150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "3\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following tables set forth information as of December 31, 2021 regarding the beneficial ownership of our common stock each stockholder who is known by the Company to own beneficially in excess of 5% of our outstanding common stock; each director known to hold common or preferred stock; the Company's chief executive officer; and the executive officers and directors as a group. Except as otherwise indicated, all persons listed below have (i) sole voting power and investment power with respect to their shares of stock, except to the extent that authority is shared by spouses under applicable law, and (ii) record and beneficial ownership with respect to their shares of stock.",
+   "prose_after": "(1) Carman J. Carbona, our CEO, is the sole member of Aqua Marine Holdings, LLC a Utah limited liability company that owns 220,050,000 Common Share of the Company which accounts for 91% off all issue and outstanding shares.\nThe above table reflects share ownership as of the most recent date. Each share of common stock has one vote per share on all matters submitted to a vote of our shareholders.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nWe do not have a specific policy or procedure for the review, approval, or ratification of any transaction involving related persons. We historically have sought and obtained funding from officers, directors, and family members as these categories of persons are familiar with our management and often provide better terms and conditions than we can obtain from unassociated sources. Also, we are so small that having specific policies or procedures of this type would be unworkable.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 177,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit fees",
+     "",
+     "$",
+     "2,500",
+     "",
+     "",
+     "$",
+     "2,500",
+     ""
+    ],
+    [
+     "Audit related fees",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Tax fees",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "All other fees",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 163,
+    "end_line": 171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Carman J. Carbona, our CEO, is the sole member of Aqua Marine Holdings, LLC a Utah limited liability company that owns 220,050,000 Common Share of the Company which accounts for 91% off all issue and outstanding shares.\nThe above table reflects share ownership as of the most recent date. Each share of common stock has one vote per share on all matters submitted to a vote of our shareholders.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nWe do not have a specific policy or procedure for the review, approval, or ratification of any transaction involving related persons. We historically have sought and obtained funding from officers, directors, and family members as these categories of persons are familiar with our management and often provide better terms and conditions than we can obtain from unassociated sources. Also, we are so small that having specific policies or procedures of this type would be unworkable.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nThe following table shows the fees paid or accrued for the audit and other services provided by our independent registered public accounting firm.",
+   "prose_after": "Audit Fees\nAudit fees represent the professional services rendered for the audit of our annual financial statements and the review of our financial statements included in quarterly reports, along with services normally provided by the accountant in connection with statutory and regulatory filings or engagements.\n26\nAudit Related Fees\nAudit-related fees represent professional services rendered for assurance and related services by the principal accountant that are reasonably related to the performance of the audit or review of our financial statements that are not reported under audit fees.\nTax Fees\nTax fees represent professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning.\nAll Other Fees\nAll other fees represent fees billed for products and services provided by the principal accountant, other than the services reported for the other categories.\nPRE-APPROVAL POLICIES",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 177,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cannonau Corp.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/ s/ Carmen J. Carbona",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Carmen J. Carbona",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Principal executive officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cannonau Corp."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 217
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Our board of directors pre-approves all services provided by our independent auditors. All of the above services and fees were reviewed and approved by the board of directors before the respective services were rendered. Our board of directors has considered the nature and amount of fees billed by our independent auditors and believes that the provision of services for activities unrelated to the audit is compatible with maintaining our independent auditors\u2019 independence.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\nThe following exhibits are filed as part of this Form 10-K/A 2:\n31.1 Rule 13a-15(e)/15d-15(e) Certification by the Chief Executive Officer * 31.2 Rule 13a-15(e)/15d-15(e) Certification by the Chief Financial Officer * 32.1 Certification by the Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 * 32.2 Certification by the Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 *\n*Filed herewith\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on June 13, 2023.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 177,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

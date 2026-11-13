@@ -1,0 +1,474 @@
+{
+ "accession": "0001161697-21-000116",
+ "cik": "0001575345",
+ "form": "10-K/A",
+ "filing_date": "2021-02-19",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form_10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "",
+     "46-2500923"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "207 W. Division Street, Suite 137\n\n\n\nChicago, Illinois",
+     "",
+     "60622"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Amendment No. 1\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended April 30, 2019\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 000-55880\nBLGI, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number (773) 683-1671\nSecurities registered under Section 12(b) of the Act: None\nSecurities registered under Section 12(g) of the Act: Common Stock\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1(i)",
+     "Articles of Incorporation (incorporated by reference to Exhibit 3.1 to the registrant\u2019s registration statement on Form S-1 filed with the Commission on May 23, 2013)."
+    ],
+    [
+     "3.1(ii)",
+     "Amendment to Articles of Incorporation (incorporated by reference to Exhibit 3.3 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on June 9, 2014)."
+    ],
+    [
+     "3.1(iii)",
+     "Amendment to Articles of Incorporation (incorporated by reference to Exhibit 3.1 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 1, 2017)."
+    ],
+    [
+     "3.2",
+     "By-Laws (incorporated by reference to Exhibit 3.2 to the registrant\u2019s registration statement on Form S-1 filed with the Commission on May 23, 2013)."
+    ],
+    [
+     "4.1",
+     "Specimen Stock Certificate (incorporated by reference to Exhibit 4.1 to the registrant\u2019s registration statement on Form S-1 filed with the Commission on May 23, 2013)."
+    ],
+    [
+     "4.2",
+     "Senior Secured Convertible Promissory Note (incorporated by reference to Exhibit 4.1 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Effective June 29, 2020, Jeremy Towning resigned as Chief Executive Officer;\n\u25cf Effective June 29, 2020, the Company appointed Lawrence P. Cummins as Chief Executive Officer and as a member of the Company\u2019s board of directors;\n\u25cf Effective October 15, 2020, the Company changed its name from Black Cactus Global, Inc. to BLGI, Inc.; and\n\u25cf Effective October 15, 2020, the Company effected a 1-for-20 reverse stock split of its shares of common stock, par value $0.0001 per share; provided, however, that no changes or adjustments have been made to the financial information in the Form 10-K to reflect such reverse stock split.\nOther than the submission of the Interactive Data Files, no other changes, revisions, or updates have been made to the Form 10-K in this Form 10-K/A, which speaks as of the original filing date of the Form 10-K and does not reflect any events that may have occurred subsequent to the filing date of the Form 10-K.\nItem 15. Exhibits and Financial Statement Schedules.\n(b) Exhibits",
+   "prose_after": "continued",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "4.3",
+     "Common Stock Purchase Warrant (incorporated by reference to Exhibit 4.2 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "4.4",
+     "Security Agreement (incorporated by reference to Exhibit 4.3 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "4.5",
+     "Intellectual Property Security Agreement (incorporated by reference to Exhibit 4.4 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "4.6",
+     "Subsidiary Guarantee Agreement (incorporated by reference to Exhibit 4.5 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "4.7",
+     "Form of Senior Secured Convertible Promissory Note issued to Bellridge Capital, L.P. in November 2017 (incorporated by reference to Exhibit 4.7 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "4.8",
+     "Form of Financial Advisory Common Stock Purchase Warrant issued to Aegis Capital Corp. (incorporated by reference to Exhibit 4.8 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "4.9",
+     "Form of Common Stock Purchase Warrants issued to Bellridge Capital, L.P. in April 2017 (incorporated by reference to Exhibit 4.9 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "4.10",
+     "Description of Registrant\u2019s Securities Registered Pursuant to Section 12 of the Securities Exchange Act of 1934 (1)"
+    ],
+    [
+     "10.1",
+     "Definitive Acquisition Agreement dated June 18, 2017 by and among the registrant and the BitReturn shareholders (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on June 27, 2017)."
+    ],
+    [
+     "10.2",
+     "Securities Purchase Agreement dated November 27, 2017 by and among the registrant and Black Cactus, LLC (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "10.3",
+     "Registration Rights Agreement dated November 27, 2017 by and among the Registrant and Black Cactus, LLC (incorporated by reference to Exhibit 10.2 to the registrant\u2019s Current Report on Form 8-K filed with the Commission on December 15, 2017)"
+    ],
+    [
+     "10.4",
+     "Amendment to Registration Rights Agreement, dated November 27, 2017 (Amendment dated April 13, 2018) (incorporated by reference to Exhibit 10.4 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "10.5",
+     "Amendment to Securities Purchase Agreement, dated November 27, 2017 (Amendment dated April 5, 2018) (incorporated by reference to Exhibit 10.5 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "10.6",
+     "Securities Purchase Agreement, dated April 5, 2018 (incorporated by reference to Exhibit 10.6 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "10.7",
+     "Registration Rights Agreement, dated April 13, 2018 (incorporated by reference to Exhibit 10.7 to the registrant\u2019s Registration Statement on Form S-1 filed with the Commission on April 24, 2018)"
+    ],
+    [
+     "10.8",
+     "Software License Agreement, dated August 24, 2019, between Charteris, Mackie, Baillie & Cummins Limited and Black Cactus Global, Inc. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report for the quarter ended October 31, 2018)"
+    ],
+    [
+     "10.9",
+     "Assignment Agreement, dated November 15, 2019, between Charteris, Mackie, Ballie & Cummins Limited and Black Cactus Global, Inc. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Quarterly Report for the quarter ended October 31, 2018)"
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant (1)"
+    ],
+    [
+     "31.1 *",
+     "Certification of CEO pursuant to Rule 13a-14(a)/15d-14(a), pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2 *",
+     "Certification of CFO pursuant to Rule 13a-14(a)/15d-14(a), pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1 *",
+     "Certification of CEO pursuant to 18 U.S.C. Section 1350, pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2 *",
+     "Certification of CFO pursuant to 18 U.S.C. Section 1350, pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance File"
+    ],
+    [
+     "101.SCH",
+     "XBRL Schema File"
+    ],
+    [
+     "101.CAL",
+     "XBRL Calculation File"
+    ],
+    [
+     "101.DEF",
+     "XBRL Definition File"
+    ],
+    [
+     "101.LAB",
+     "XBRL Label File"
+    ],
+    [
+     "101.PRE",
+     "XBRL Presentation File"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 110,
+    "end_line": 157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "continued",
+   "prose_after": "__________\n* Filed herewith\n(1) Filed previously as an exhibit to the Form 10-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BLGI, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: February 19, 2021",
+     "By:",
+     "/s/ Lawrence P. Cummins"
+    ],
+    [
+     "",
+     "",
+     "Lawrence P. Cummins, Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "BLGI, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "__________\n* Filed herewith\n(1) Filed previously as an exhibit to the Form 10-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: February 19, 2021",
+     "By:",
+     "/s/ Jeremy Towning"
+    ],
+    [
+     "",
+     "",
+     "Jeremy Towning, Chief Financial Officer and Director (Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 177,
+    "end_line": 182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

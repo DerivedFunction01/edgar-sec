@@ -1,0 +1,927 @@
+{
+ "accession": "0000032776-08-000032",
+ "cik": "0000032776",
+ "form": "10-Q",
+ "filing_date": "2008-11-06",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "esba10qbb.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets:",
+     "June 30, 2008",
+     "December 31, 2007"
+    ],
+    [
+     "Real Estate:",
+     "",
+     ""
+    ],
+    [
+     "Building",
+     "$38,933,801",
+     "$38,933,801"
+    ],
+    [
+     "Less, accumulated depreciation",
+     "6,198,651",
+     "5,699,520"
+    ],
+    [
+     "",
+     "32,735,150",
+     "33,234,281"
+    ],
+    [
+     "Land",
+     "21,550,588",
+     "21,550,588"
+    ],
+    [
+     "Total real estate",
+     "54,285,738",
+     "54,784,869"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "6,273,739",
+     "23,161,493"
+    ],
+    [
+     "Restricted cash re: mortgage interest - Capital One bank",
+     "1,855,322",
+     "889,535"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivable from participants re:",
+     "",
+     ""
+    ],
+    [
+     "NYS estimated tax",
+     "53,872",
+     "279,438"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage financing costs",
+     "1,796,287",
+     "1,796,287"
+    ],
+    [
+     "Less, accumulated amortization",
+     "1,115,195",
+     "1,025,381"
+    ],
+    [
+     "Mortgage financing costs, net",
+     "681,092",
+     "770,906"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$ 63,149,763",
+     "$79,886,241"
+    ],
+    [
+     "Liabilities and Members' Equity",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     ""
+    ],
+    [
+     "First mortgage payable",
+     "$ 60,500,000",
+     "$ 60,500,000"
+    ],
+    [
+     "Accrued interest payable",
+     "327,708",
+     "338,632"
+    ],
+    [
+     "Due to Empire State Building Company L.L.C., a related party",
+     "-0-",
+     "974,251"
+    ],
+    [
+     "Accrued supervisory services, to a related party",
+     "-0-",
+     "853,439"
+    ],
+    [
+     "Total liabilities",
+     "60,827,708",
+     "62,666,322"
+    ],
+    [
+     "Commitments and contingencies",
+     "-",
+     "-"
+    ],
+    [
+     "Members' equity",
+     "2,322,055",
+     "17,219,919"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and members' equity",
+     "$63,149,763",
+     "$79,886,241"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act) Yes [ ] No [X] .\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge Accelerated Filer [ ] Accelerated Filer [ ] Non-Accelerated Filer [ ]\nSmaller Reporting Company [X]\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements.\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Balance Sheets\n(Unaudited)",
+   "prose_after": "See notes to condensed consolidated financial statements.\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Operations\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the",
+     "Three Months",
+     "For the",
+     "Six Months"
+    ],
+    [
+     "",
+     "Ended",
+     "June 30,",
+     "Ended",
+     "June 30,"
+    ],
+    [
+     "",
+     "2008",
+     "2007",
+     "2008",
+     "2007"
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rent income from a related party",
+     "$1,504,688",
+     "$1,504,688",
+     "$3,009,375",
+     "$3,009,375"
+    ],
+    [
+     "Dividend and interest income",
+     "34,789",
+     "80,992",
+     "170,302",
+     "288,125"
+    ],
+    [
+     "Total revenues",
+     "1,539,477",
+     "1,585,680",
+     "3,179,677",
+     "3,297,500"
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest on mortgage",
+     "994,049",
+     "994,049",
+     "1,988,097",
+     "1,977,174"
+    ],
+    [
+     "Supervisory services, to a related party",
+     "39,854",
+     "39,854",
+     "79,708",
+     "79,708"
+    ],
+    [
+     "Depreciation of building",
+     "249,565",
+     "249,565",
+     "499,131",
+     "499,131"
+    ],
+    [
+     "Amortization of mortgage financing costs",
+     "44,907",
+     "44,907",
+     "89,814",
+     "89,814"
+    ],
+    [
+     "Fees and miscellaneous, including\n\n\n\namounts paid to a related party",
+     "41,259",
+     "980",
+     "105,581",
+     "99,727"
+    ],
+    [
+     "Total expenses",
+     "1,369,634",
+     "1,329,355",
+     "2,762,331",
+     "2,745,554"
+    ],
+    [
+     "Net income",
+     "$169,843",
+     "$256,325",
+     "$417,346",
+     "$551,946"
+    ],
+    [
+     "Earnings per $10,000 participation unit, based on 3,300 participation units outstanding during the period",
+     "$51.47",
+     "$77.67",
+     "$126.47",
+     "$167.26"
+    ],
+    [
+     "Distributions per $10,000 participation unit consisted of the following:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income",
+     "$ 51.47",
+     "$ 77.67",
+     "$ 126.47",
+     "$ 167.26"
+    ],
+    [
+     "Return of capital",
+     "243.17",
+     "216.97",
+     "4,514.50",
+     "5,011.13"
+    ],
+    [
+     "Total distributions",
+     "$ 294.64",
+     "$ 294.64",
+     "$ 4,640.97",
+     "$ 5,178.39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 108,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See notes to condensed consolidated financial statements.\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Operations\n(Unaudited)",
+   "prose_after": "At June 30, 2008 and 2007, there were $33,000,000 of participation units outstanding.\nSee notes to condensed consolidated financial statements\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Members' Equity\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the",
+     "For the Year"
+    ],
+    [
+     "",
+     "Six Months Ended",
+     "Ended"
+    ],
+    [
+     "",
+     "June 30, 2008",
+     "December 31, 2007"
+    ],
+    [
+     "Members' equity:",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2008",
+     "$17,219,919",
+     ""
+    ],
+    [
+     "January 1, 2007",
+     "",
+     "$19,184,695"
+    ],
+    [
+     "Add, net income:",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2008 through June 30, 2008",
+     "417,346",
+     "-0-"
+    ],
+    [
+     "January 1, 2007 through December 31, 2007",
+     "-0-",
+     "17,068,579"
+    ],
+    [
+     "",
+     "17,637,265",
+     "36,253,274"
+    ],
+    [
+     "Less, distributions:",
+     "",
+     ""
+    ],
+    [
+     "Monthly distributions",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2008 through June 30, 2008",
+     "1,944,666",
+     "-0-"
+    ],
+    [
+     "January 1, 2007 through December 31, 2007",
+     "-0-",
+     "3,889,333"
+    ],
+    [
+     "Additional distribution on March 6, 2008",
+     "13,370,544",
+     "-0-"
+    ],
+    [
+     "Additional distribution on March 5, 2007",
+     "-0-",
+     "15,144,022"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total distributions",
+     "15,315,210",
+     "19,033,355"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Members' equity:",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2008",
+     "$2,322,055",
+     ""
+    ],
+    [
+     "December 31, 2007",
+     "",
+     "$17,219,919"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 145,
+    "end_line": 169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "At June 30, 2008 and 2007, there were $33,000,000 of participation units outstanding.\nSee notes to condensed consolidated financial statements\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Members' Equity\n(Unaudited)",
+   "prose_after": "See notes to condensed consolidated financial statements.\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Six Months",
+     "For the Six Months"
+    ],
+    [
+     "",
+     "Ended",
+     "Ended"
+    ],
+    [
+     "",
+     "June 30, 2008",
+     "June 30, 2007"
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$ 417,346",
+     "$ 551,946"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in) operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Depreciation of building",
+     "499,131",
+     "499,131"
+    ],
+    [
+     "Amortization of mortgage financing costs",
+     "89,814",
+     "89,814"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Additional rent due to/from sublessee",
+     "(974,251)",
+     "1,291,329"
+    ],
+    [
+     "Accounts receivable",
+     "-0-",
+     "1,625"
+    ],
+    [
+     "Accrued interest payable",
+     "(10,924)",
+     "(10,924)"
+    ],
+    [
+     "Prepaid rent income",
+     "-0-",
+     "(501,564)"
+    ],
+    [
+     "Accrued supervisory services",
+     "(853,439)",
+     "(966,640)"
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "(832,323)",
+     "954,717"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     ""
+    ],
+    [
+     "Change in receivable from participants",
+     "225,566",
+     "44,734"
+    ],
+    [
+     "Change in restricted cash",
+     "(965,787)",
+     "(634,732)"
+    ],
+    [
+     "Cash distributions to participants",
+     "(15,315,210)",
+     "(17,088,688)"
+    ],
+    [
+     "Net cash used in financing activities",
+     "(16,055,431)",
+     "(17,678,686)"
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "(16,887,754)",
+     "(16,723,969)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents,",
+     "",
+     ""
+    ],
+    [
+     "beginning of period",
+     "23,161,493",
+     "22,346,462"
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$ 6,273,739",
+     "$ 5,622,493"
+    ],
+    [
+     "Cash paid for:",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$ 1,999,021",
+     "$ 1,988,097"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 180,
+    "end_line": 210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See notes to condensed consolidated financial statements.\nEmpire State Building Associates L.L.C.\n(A Limited Liability Company)\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "prose_after": "See notes to condensed consolidated financial statements.\nNotes to Condensed Consolidated Financial Statements (unaudited)\nNote A Interim Period Reporting\nIn the opinion of management, the accompanying unaudited condensed consolidated financial statements of Empire State Building Associates L.L.C. (the \"Registrant\") reflect all adjustments, consisting of normal recurring accruals, necessary to present fairly the financial position of Registrant as of June 30, 2008, its results of operations for the three months and six months ended June 30, 2008 and 2007 and its cash flows for the six months ended June 30, 2008 and 2007. The condensed consolidated financial statements include the accounts of the Registrant and its wholly-owned limited liability company, Empire State Land Associates L.L.C. All intercompany accounts and transactions have been eliminated in consolidation. Information included in the condensed balance sheet as of December 31, 2007 has been derived from the audited balance sheet included in Registrant's Form 10-K for the year ended December 31, 2007 (the \"10-K\") previously filed with the Securities and Exchange Commission (the \"SEC\"). Pursuant to rules and regulations of the SEC, certain information and disclosures normally included in financial statements prepared in accordance with accounting principles generally accepted in the United States of America have been condensed or omitted from these consolidated financial statements unless significant changes have taken place since the end of the most recent fiscal year. Accordingly, these unaudited condensed consolidated financial statements should be read in conjunction with the audited consolidated financial statements and notes thereto and the other information contained in the 10-K. The consolidated results of operations for the six months ended June 30, 2008 are not necessarily indicative of the results to be expected for the full year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contractual Obligations",
+     "Total",
+     "Less than\n1 year",
+     "1-3 years",
+     "3-5 years",
+     "More than\n5 years"
+    ],
+    [
+     "Long-Term Debt Obligations",
+     "$60,500,000",
+     "$0",
+     "$0",
+     "$60,500,000",
+     "$0"
+    ],
+    [
+     "Interest Obligations",
+     "15,282,132",
+     "3,987,118",
+     "7,974,236",
+     "3,320,778",
+     "0"
+    ],
+    [
+     "Capital Lease Obligations",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Purchase Obligations",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Other Long-Term Liabilities Reflected on the Registrant's Balance Sheet",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Total",
+     "$75,782,132",
+     "$3,987,118",
+     "$7,974,236",
+     "$63,820,778",
+     "$0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 316,
+    "end_line": 326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of"
+    },
+    "note": null
+   },
+   "prose_before": "Registrant anticipates that funds for working capital for the Real Estate will be provided from rental payments received by Sublessee, which entity is required to make payments of Basic Rent and Additional Rent under the Sublease and, to the extent necessary, from additional capital investment by the members of the Sublessee. Registrant has no requirement to maintain substantial reserves to defray any operating expenses of the Real Estate.\nSublessee is to maintain the Building as a high-class office building as required by the terms of the Sublease.\nBased on Sublessee's review of the need for upgrades and improvements to the Property, Sublessee has incurred improvement costs of approximately $9,565,182 for the six months ended June 30, 2008. Sublessee estimates that the total cost of all projects will be approximately $625,000,000 over 10 years, including sprinklering of the building of approximately $30,000,000 required by Local Law #26.\nThe Sublessee anticipates that the direct or indirect costs of improvements incurred in 2008 will reduce Additional Rent for the year 2008, but should have no effect on the payment of Basic Rent. The ultimate cost of improvements incurred in 2008 and its related impact on Additional Rent is not yet quantifiable.\nRegistrant has the following contractual obligations:\nPayments due by period",
+   "prose_after": "A June 9, 2008 solicitation was mailed to Participants seeking consent to a financing program permitting Registrant to fund approximately $600 million of improvements and tenanting costs at the Building over 10 years and to acquire additional property on terms deemed favorable by the Agents.\nInflation\nRegistrant believes that there has been no material change in the impact of inflation on its operations since the filing of the 10-K for the year ended December 31, 2007.\nSecurity Ownership\nAs of June 30, 2008, the Members of Registrant owned of record and beneficially an aggregate of $23,334 of Participations in Registrant, representing less than .071% of the currently outstanding Participations therein totaling $33,000,000.\nAs of June 30, 2008, certain of the Members of Registrant held additional Participations as follows:\nEntities for the benefit of members of Peter L. Malkin's family owned of record and beneficially $909,444 of Participations. Peter L. Malkin disclaims any\nbeneficial ownership of such Participations, except that related trusts are required to complete scheduled payments to Peter L. Malkin.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number",
+     "Document",
+     "Page*"
+    ],
+    [
+     "3(a)",
+     "Attached hereto as Exhibit 3(c) is Registrant's Consent and Operating Agreement dated as of September 30, 2001 as a Limited Liability Company, which incorporates by reference the Registrant's prior Partnership Agreement dated July 11, 1961, filed as Exhibit No. 1 to Registrant's Registration Statement on Form S-1 as amended (the \"Registration Statement\") by letter dated August 8, 1962 and assigned File No. 2-18741 and, is itself incorporated by reference as an exhibit hereto.",
+     ""
+    ],
+    [
+     "3(b)",
+     "Amended Business Certificate of Registrant filed with the Clerk of New York County on August 19, 1996 reflecting a change in the Partners of Registrant which was filed as Exhibit 3(b) to Registrant's Annual Report on 10-K for the fiscal year ended December 31, 1996 and is incorporated by reference as an exhibit hereto.",
+     ""
+    ],
+    [
+     "3(c)",
+     "Registrant's Consent and Operating Agreement dated as of September 30, 2001",
+     ""
+    ],
+    [
+     "3(d)",
+     "Certificate of Conversion of Registrant to a limited liability company dated October 1, 2001 filed with the New York Secretary of State on October 3, 2001.",
+     ""
+    ],
+    [
+     "4",
+     "Registrant's form of Participating Agreement, filed as Exhibit No. 6 to the Registration Statement by letter dated August 8, 1962 and assigned File No. 2-18741, is incorporated by reference as an exhibit hereto.",
+     ""
+    ],
+    [
+     "Number",
+     "EXHIBIT INDEX\n\n\n\n(cont.)\n\n\n\n\n\n \n\n\n\nDocument",
+     "Page*"
+    ],
+    [
+     "24",
+     "Powers of Attorney dated October 13, 2003 between the Partners of Registrant and Mark Labell which is filed as Exhibit 24 to Registrant's 10-Q for the quarter ended September 30, 2003 and is incorporated herein by reference.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Mark Labell, Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Mark Labell, Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Mark Labell, Pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Mark Labell, Pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "Wien & Malkin LLC and Peter L. Malkin, a member in Registrant, were engaged in a proceeding with Sublessee's former managing agent, Helmsley-Spear, Inc. commenced in 1997, concerning the management, leasing and supervision of the property that is subject to the Sublease to Sublessee. In this connection, certain costs for legal and professional fees and other expenses have been paid by Wien & Malkin and Mr. Malkin. Wien & Malkin and Mr. Malkin have represented that such costs will be recovered only to the extent that (a) a competent tribunal authorizes payment or (b) an investor voluntarily agrees that his or her proportionate share be paid. Accordingly, Registrant's allocable share of such costs is as yet undetermined, and Registrant has not provided for the expense and related liability with respect to such costs in its consolidated financial statements. As a result of an August 29, 2006 settlement agreement which included termination of this proceeding, Registrant will not recognize any gains or losses from this proceeding other than the possible charges for the aforementioned fees and expenses.\nThe August 29, 2006 settlement agreement terminated Helmsley-Spear, Inc. as managing and leasing agent at the Property as of August 30, 2006. CB Richard Ellis was engaged by the Sublessee as the new leasing agent, and Sublessee self-manages the Property.\n6. Exhibits\nEXHIBIT INDEX",
+   "prose_after": "___________________________________________________________\n* Page references are based on sequential numbering system.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nThe individual signing this report on behalf of Registrant is Attorney-in-Fact for Registrant and each of the Members in Registrant, pursuant to Powers of Attorney, dated October 13, 2003 (collectively, the \"Power\").\nEMPIRE STATE BUILDING ASSOCIATES L.L.C.\n(Registrant)\nBy: /s/ Mark Labell\nMark Labell, Attorney-in-Fact*\nDate: November 6, 2008",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

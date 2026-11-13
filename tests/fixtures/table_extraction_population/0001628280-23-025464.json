@@ -1,0 +1,5109 @@
+{
+ "accession": "0001628280-23-025464",
+ "cik": "0000771856",
+ "form": "10-K",
+ "filing_date": "2023-07-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "csbr-20230430.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "52-1401755"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "One University Plaza, Suite 307",
+     "07601"
+    ],
+    [
+     "Hackensack, New Jersey",
+     "(Zip Code)"
+    ],
+    [
+     "(Address of principal executive offices)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended April 30, 2023\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from                 to\nCommission file number 001-11504\nCHAMPIONS ONCOLOGY, INC.\n(Exact name of registrant as defined in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\n(201) 808-8400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "CSBR",
+     "Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code:\n(201) 808-8400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone.\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "13"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "13"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "14"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "15"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "20"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "20"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "20"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "20"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "21"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "21"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "21"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "22"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "22"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules.",
+     "22"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "24"
+    ],
+    [
+     "Signatures",
+     "",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b).\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe approximate aggregate market value of the voting stock held by non-affiliates of the Registrant as of October 31, 2022 was $28.0 million based on the closing price of the Registrant\u2019s common stock as quoted on the Nasdaq Capital Market as of that date.\nThe number of shares of common stock of the Registrant outstanding as of July 18, 2023 was 13,459,539.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Registrant\u2019s definitive Proxy Statement for its 2023 Annual Meeting of Shareholders to be filed with the Securities and Exchange Commission pursuant to Regulation 14A under the Securities Exchange Act of 1934, as amended, are incorporated by reference into Part III of this Form 10-K.\nINDEX TO FORM 10-K\nFOR THE YEAR ENDED APRIL 30, 2023",
+   "prose_after": "1\nAs used in this Annual Report on Form 10-K (the \"Annual Report\"), \u201cChampions Oncology, Inc.,\u201d \u201cChampions,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cours,\u201d and \u201cus\u201d refer to Champions Oncology, Inc. and its subsidiaries, except where the context otherwise requires or as otherwise indicated.\nDISCLOSURE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report contains \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, (the \"Exchange Act\") that inherently involve risk and uncertainties. Forward-looking statements may be identified by the words \u201cproject,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cplan,\u201d \u201cexpect,\u201d \u201cestimate,\u201d \u201cintend,\u201d \u201cshould,\u201d \u201cwould,\u201d \u201ccould,\u201d \u201cwill,\u201d \u201cmay,\u201d \u201clikely\u201d or similar expressions. Forward-looking statements in this Annual Report include statements about our business strategies and products development activities, including the anticipated benefits and risks associated with those strategies as well as statements about the sufficiency of our capital resources. One should not place undue reliance on these forward-looking statements. We cannot guarantee that we will achieve the plans, intentions or expectations expressed or implied in our forward-looking statement. There are a number of important factors that could cause actual results, levels of activity, performance or events to differ materially from those expressed or implied in the forward-looking statements we make. These important factors are described under \u201cRisk Factors\u201d set forth below. In addition, any forward-looking statements we make in this Annual Report speak only as of the date of this document, and we do not intend to update any such forward-looking statements to reflect events or circumstances that occur after that date, except as required by law. As a result of these and other factors, our stock price may fluctuate dramatically.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "Fiscal Year Ended April 30, 2023:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "9.53",
+     "$",
+     "6.81"
+    ],
+    [
+     "Second quarter",
+     "9.88",
+     "",
+     "6.90",
+     ""
+    ],
+    [
+     "Third quarter",
+     "7.24",
+     "",
+     "3.75",
+     ""
+    ],
+    [
+     "Fourth quarter",
+     "5.54",
+     "",
+     "3.95",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 489,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022VIA LEONE XIII, 14, Milan, Italy, which consists of laboratory and office space where the Company conducts operations related to its flow cytometry service offerings. The Company consolidated its lab and office space leases into one lease during fiscal 2023. The lease expires October 31, 2028. The Company recognized $98,000 and $81,000 of rental costs relative to these leases for fiscal 2023 and 2022, respectively.\nItem 3. Legal Proceedings\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nPrincipal Market or Markets\nOur shares of common stock are currently quoted on the Nasdaq Capital Market under the symbol \u201cCSBR.\u201d Our common stock commenced trading on the Nasdaq Capital Market on August 21, 2015. Prior to such date, our shares of common stock were traded over-the-counter and quoted on the OTCQB Marketplace.\nThe table below sets forth the high and low bid prices of our common stock, as reported on Nasdaq for the periods shown:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "Fiscal Year Ended April 30, 2022:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "11.25",
+     "$",
+     "8.45"
+    ],
+    [
+     "Second quarter",
+     "11.00",
+     "",
+     "9.23",
+     ""
+    ],
+    [
+     "Third quarter",
+     "10.38",
+     "",
+     "7.60",
+     ""
+    ],
+    [
+     "Fourth quarter",
+     "8.93",
+     "",
+     "7.06",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Approximate Number of Holders of Common Stock\nAs of July 18, 2023 there were approximately 1,900 record holders of the Company\u2019s common stock.\nDividends\nHolders of our common stock are entitled to receive such dividends as may be declared by our Board of Directors. No dividends have been declared or paid with respect to our common stock and no dividends are anticipated to be paid in the foreseeable future. Any future decisions as to the payment of dividends will be at the discretion of our Board of Directors, subject to applicable law.\nRecent Sales by the Company of Unregistered Securities\nNone.\nRepurchases of Securities\nOn March 29, 2023, the Board of Directors approved a share repurchase program authorizing the Company to purchase up to an aggregate of $5.0 million of the Company\u2019s common stock. The share repurchase program is designed in accordance with Rule 10b-18 of the Exchange Act. The shares may be purchased from time to time in the open market, as permitted under applicable rules and regulations, at prevailing market prices. The timing and amount of repurchases will depend on market conditions, share price, applicable legal requirements and other factors. The program does not obligate the Company to acquire a minimum number of shares. As of April 30, 2023, the Company had purchased approximately 14,000 shares of its common stock, at an average price of $5.11 per share, totaling approximately $74,000 and leaving an available balance of approximately $4.9 million authorized by the Board for use in the program as of that date.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Years Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "% of Revenue",
+     "",
+     "2022",
+     "",
+     "% of Revenue",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oncology services revenue",
+     "$",
+     "53,870",
+     "100.0",
+     "%",
+     "$",
+     "49,109",
+     "100.0",
+     "%",
+     "9.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of oncology services",
+     "29,532",
+     "",
+     "54.8",
+     "",
+     "23,632",
+     "",
+     "48.1",
+     "",
+     "25.0",
+     ""
+    ],
+    [
+     "Research and development",
+     "11,545",
+     "",
+     "21.4",
+     "",
+     "9,374",
+     "",
+     "19.1",
+     "",
+     "23.2",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "7,002",
+     "",
+     "13.0",
+     "",
+     "6,379",
+     "",
+     "13.0",
+     "",
+     "9.8",
+     ""
+    ],
+    [
+     "General and administrative",
+     "10,240",
+     "",
+     "19.0",
+     "",
+     "9,117",
+     "",
+     "18.6",
+     "",
+     "12.3",
+     ""
+    ],
+    [
+     "Asset Impairment",
+     "807",
+     "",
+     "1.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "100.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total costs and operating expenses",
+     "59,126",
+     "",
+     "109.7",
+     "",
+     "48,502",
+     "",
+     "98.8",
+     "",
+     "21.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income from operations",
+     "$",
+     "(5,256)",
+     "(9.7)",
+     "%",
+     "$",
+     "607",
+     "1.2",
+     "%",
+     "(965.9)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 579
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Our drug discovery and development business leverages the computational and experimental capabilities within our platforms. Our discovery strategy utilizes our rich and unique Datacenter, coupled with artificial intelligence and other advanced computational analytics, to identify novel therapeutic targets. We then employ the use of our proprietary experimental platforms to rapidly validate these targets for further drug development efforts.\nWe have a pipeline of targets at various stages of discovery and validation, with a select group that has progressed to early stage therapeutic development. Our commercial strategy for the validated targets and therapeutics established from this business is wide-ranging and still being developed. It will depend on many factors, and will be specific for each target or therapeutic area identified. Any expenses associated with this part of our business are research and development and are expensed as incurred.\nWe regularly evaluate strategic options to create additional value from our drug discovery business, which may include, but are not limited to, potential spin-out transactions or capital raises.\nResults of Operations\nThe following table summarizes our operating results for the periods presented below (dollars in thousands):",
+   "prose_after": "Oncology Services Revenue\nOncology services revenue, which is primarily derived from research services, was $53.9 million and $49.1 million, for the years ended April 30, 2023 and 2022, respectively, an increase of $4.8 million, or 9.7%. The increase in revenue was primarily due to the expansion of both our platform and product lines creating additional demand for our services, leading to larger pharmacology study sizes in both our in-vivo and ex-vivo platforms.\nCost of Oncology Services\nCost of oncology services were $29.5 million and $23.6 million for the years ended April 30, 2023 and 2022, respectively, an increase of $5.9 million or 25.0%. The increase in cost of oncology services was primarily from an increase in compensation\nand supply expenses. Gross margin was 45% for the twelve months ended April 30, 2023 compared to 52% for the twelve months ended April 30, 2022. The decrease in gross margin was the result of increasing costs in compensation and supplies to support revenue growth that didn't materialize as expected.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statement of Changes in Stockholders' Equity",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The information required by this item will be contained in our 2023 Proxy Statement and such information is incorporated herein by this reference.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe information required by this item will be contained in our 2023 Proxy Statement and such information is incorporated herein by this reference.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this item will be contained in our 2023 Proxy Statement and such information is incorporated herein by this reference.\nItem 14. Principal Accounting Fees and Services\nThe information required by this item will be contained in our 2023 Proxy Statement and such information is incorporated herein by this reference.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a)1. Financial Statements",
+   "prose_after": "(a)2. Financial Statement Schedules\nAll schedules have been omitted because they are not applicable.\n(a)3. Exhibits required to be filed by Item 601 of Regulation S-K.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 729,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation (incorporated by reference to Appendix A to the Company\u2019s Information Statement on Schedule 14C filed March 7, 2011)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1.1",
+     "Certificate of Amendment to Amended and Restated Articles of Incorporation (incorporated by reference to Exhibit 3(i) to the Company\u2019s Current Report on Form 8-K filed April 28, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws, as amended (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed May 9, 2017)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Description of Registered Securities (incorporated by reference to Exhibit 4.1 to the Company\u2019s Annual Report on Form 10-K filed July 28, 2020)"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 767,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(a)2. Financial Statement Schedules\nAll schedules have been omitted because they are not applicable.\n(a)3. Exhibits required to be filed by Item 601 of Regulation S-K.",
+   "prose_after": "10.1 Employment Agreement, dated November 5, 2013, between the Company and Ronnie Morris, M.D. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed November 12, 2013) *** 10.2 Amendment to Employment Agreement, dated March 16, 2015, between the Company and Ronnie Morris (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)*** 10.3 Offer letter dated June 3, 2013 between the Company and David Miller (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed June 3, 2013)*** 10.4 2010 Equity Incentive Plan (incorporated by reference to Appendix B to the Company\u2019s Definitive Information Statement on Schedule 14C filed March 7, 2011) *** 10.5 Form of Note Purchase Agreement, dated December 1, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014) 10.6 Form of Convertible Promissory Note, dated December 1, 2014, issued to each of Joel Ackerman and Ronnie Morris in connection with the Note Purchase Agreement, dated December 1, 2014 between the Company and each of Joel Ackerman and Ronnie Morris incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014) 10.7 Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Joel Ackerman in connection with the Note Purchase Agreement, dated December , 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015) 10.8 Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Ronnie Morris in connection with the Note Purchase Agreement, dated December , 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015) 10.9 Amended and Restated 2011 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.10 Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013) 10.11 Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.12 Amended and Restated 2013 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.13 Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013) 10.14 Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.15 Put Right Agreement, dated January 29, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 6, 2014) 10.16 Securities Purchase Agreement, dated March 11, 2015, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 12, 2015)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 729,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "10.17",
+     "Amended and Restated Registration Rights Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to (i) the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature page thereto, (ii) the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature page thereto, and (iii) the Securities Purchase Agreement, dated March 11, 2015, between the Company. And each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "Form of Investor Warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated March 11, 2015, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and Joel Ackerman (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and Ronnie Morris (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and David Miller (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "Code of Ethics (incorporated by reference to Exhibit 14 of the April 30, 2008 Form 10-KSB)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21",
+     "List of Subsidiaries"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certifications**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "10.1 Employment Agreement, dated November 5, 2013, between the Company and Ronnie Morris, M.D. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed November 12, 2013) *** 10.2 Amendment to Employment Agreement, dated March 16, 2015, between the Company and Ronnie Morris (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)*** 10.3 Offer letter dated June 3, 2013 between the Company and David Miller (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed June 3, 2013)*** 10.4 2010 Equity Incentive Plan (incorporated by reference to Appendix B to the Company\u2019s Definitive Information Statement on Schedule 14C filed March 7, 2011) *** 10.5 Form of Note Purchase Agreement, dated December 1, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014) 10.6 Form of Convertible Promissory Note, dated December 1, 2014, issued to each of Joel Ackerman and Ronnie Morris in connection with the Note Purchase Agreement, dated December 1, 2014 between the Company and each of Joel Ackerman and Ronnie Morris incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014) 10.7 Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Joel Ackerman in connection with the Note Purchase Agreement, dated December , 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015) 10.8 Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Ronnie Morris in connection with the Note Purchase Agreement, dated December , 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015) 10.9 Amended and Restated 2011 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.10 Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013) 10.11 Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.12 Amended and Restated 2013 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.13 Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013) 10.14 Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015) 10.15 Put Right Agreement, dated January 29, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 6, 2014) 10.16 Securities Purchase Agreement, dated March 11, 2015, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 12, 2015)",
+   "prose_after": "___________________________\n* Filed herewith\n** Furnished hereto.\n*** Management contract or compensatory plan or arrangement.\nItem 16. Form 10-K Summary\nNot Required.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "CHAMPIONS ONCOLOGY, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "July 24, 2023",
+     "/s/ RONNIE MORRIS"
+    ],
+    [
+     "",
+     "Ronnie Morris"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "(principal executive officer)"
+    ]
+   ],
+   "caption_stack": [
+    "CHAMPIONS ONCOLOGY, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "___________________________\n* Filed herewith\n** Furnished hereto.\n*** Management contract or compensatory plan or arrangement.\nItem 16. Form 10-K Summary\nNot Required.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ RONNIE MORRIS",
+     "Chief Executive Officer and Director",
+     "July 24, 2023"
+    ],
+    [
+     "Ronnie Morris",
+     "(principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ DAVID MILLER",
+     "Chief Financial Officer",
+     "July 24, 2023"
+    ],
+    [
+     "David Miller",
+     "(principal financial and accounting officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ JOEL ACKERMAN",
+     "Director,",
+     "July 24, 2023"
+    ],
+    [
+     "Joel Ackerman",
+     "Chairman of the Board of Directors",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ DAVID SIDRANSKY",
+     "Director",
+     "July 24, 2023"
+    ],
+    [
+     "David Sidransky",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ ROBERT BRAININ",
+     "Director",
+     "July 24, 2023"
+    ],
+    [
+     "Robert Brainin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ SCOTT R. TOBIN",
+     "Director",
+     "July 24, 2023"
+    ],
+    [
+     "Scott R. Tobin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ DANIEL MENDELSON",
+     "Director",
+     "July 24, 2023"
+    ],
+    [
+     "Daniel Mendelson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ PHILIP BREITFELD",
+     "Director",
+     "July 24, 2023"
+    ],
+    [
+     "Philip Breitfeld",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID# 274)",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders' Equity",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 901
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nChampions Oncology, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Champions Oncology, Inc. and Subsidiaries (the \u201cCompany\") as of April 30, 2023 and 2022, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for each of the years then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the consolidated financial position of the Company as of April 30, 2023 and 2022, and the consolidated results of their operations and their cash flows for each of the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "10,118",
+     "$",
+     "9,007"
+    ],
+    [
+     "Accounts receivable, net",
+     "8,011",
+     "",
+     "9,513",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "1,328",
+     "",
+     "1,144",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "19,457",
+     "",
+     "19,664",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets, net",
+     "7,318",
+     "",
+     "8,230",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "7,186",
+     "",
+     "7,134",
+     ""
+    ],
+    [
+     "Other long term assets",
+     "15",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Goodwill",
+     "335",
+     "",
+     "335",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "34,311",
+     "$",
+     "35,378"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "5,334",
+     "$",
+     "2,868"
+    ],
+    [
+     "Accrued liabilities",
+     "2,270",
+     "",
+     "2,414",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "1,208",
+     "",
+     "1,054",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "145",
+     "",
+     "72",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "12,776",
+     "",
+     "11,071",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "21,733",
+     "",
+     "17,479",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current portion operating lease liabilities",
+     "7,391",
+     "",
+     "8,412",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "551",
+     "",
+     "391",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "29,675",
+     "$",
+     "26,282"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.001 par value; 200,000,000 shares authorized; 13,558,650 and 13,522,441 shares issued; and 13,544,228 and 13,522,441 shares outstanding at April 30, 2023 and 2022, respectively",
+     "14",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Treasury Stock, at cost",
+     "(74)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "82,013",
+     "",
+     "81,064",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(77,317)",
+     "",
+     "(71,982)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "4,636",
+     "",
+     "9,096",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "34,311",
+     "35,378",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 949,
+    "end_line": 1002
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We identified the accounting for revenue and the related deferred revenue recognized over time as a critical audit matter due to the complexity and subjectivity of management\u2019s estimate of the progress towards completion of its projects. This in turn led to a high degree of auditor judgement and subjectivity and significant audit effort was required in performing procedures to evaluate management\u2019s determination of the project completion progress, related costs incurred and deferred revenue.\nAddressing the matter involved performing procedures and evaluating audit evidence in connection with forming our overall opinion on the financial statements. We obtained an understanding and evaluated the design of controls relating to the Company's revenue recognition and deferred revenue. Our audit procedures related to the recognition of revenue over time and deferred revenue included the following procedures, among others, (i) testing the Company\u2019s estimates of project progress by evaluating the appropriate SOW and customer acceptance documentation, (ii) testing the significant assumptions used to develop the estimates of project progress pursuant to the SOW and (iii) testing completeness and accuracy of the underlying data.\n/s/ EisnerAmper LLP\nWe have served as the Company\u2019s auditor since 2015.\nEISNERAMPER LLP\nIselin, New Jersey\nJuly 24, 2023\nCONSOLIDATED BALANCE SHEETS\nAS OF APRIL 30\n(In Thousands except for shares)",
+   "prose_after": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Dollars in Thousands Except Share and Per Share Amounts)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Oncology services revenue",
+     "$",
+     "53,870",
+     "$",
+     "49,109"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of oncology services",
+     "29,532",
+     "",
+     "23,632",
+     ""
+    ],
+    [
+     "Research and development",
+     "11,545",
+     "",
+     "9,374",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "7,002",
+     "",
+     "6,379",
+     ""
+    ],
+    [
+     "General and administrative",
+     "10,240",
+     "",
+     "9,117",
+     ""
+    ],
+    [
+     "Asset impairment",
+     "807",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total costs and operating expenses",
+     "59,126",
+     "",
+     "48,502",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income from operations",
+     "(5,256)",
+     "",
+     "607",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "(11)",
+     "",
+     "(24)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income before income tax expense",
+     "(5,267)",
+     "",
+     "583",
+     ""
+    ],
+    [
+     "Provision for income tax",
+     "68",
+     "",
+     "35",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(5,335)",
+     "$",
+     "548"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income per common share outstanding",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic",
+     "$",
+     "(0.39)",
+     "$",
+     "0.04"
+    ],
+    [
+     "and diluted",
+     "$",
+     "(0.39)",
+     "$",
+     "0.04"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic",
+     "13,541,559",
+     "",
+     "13,197,170",
+     ""
+    ],
+    [
+     "and diluted",
+     "13,541,559",
+     "",
+     "14,159,799",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1055
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Dollars in Thousands Except Share and Per Share Amounts)",
+   "prose_after": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In Thousands except for shares)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total Stockholders' Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2021",
+     "13,414,066",
+     "$",
+     "13",
+     "",
+     "",
+     "",
+     "$",
+     "79,945",
+     "$",
+     "(72,530)",
+     "$",
+     "7,428"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "912",
+     "",
+     "\u2014",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "Issuance of common stock on exercise of stock options",
+     "108,375",
+     "1",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "207",
+     "",
+     "\u2014",
+     "",
+     "208",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "548",
+     "",
+     "548",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2022",
+     "13,522,441",
+     "$",
+     "14",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "81,064",
+     "$",
+     "(71,982)",
+     "$",
+     "9,096"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "864",
+     "",
+     "\u2014",
+     "",
+     "864",
+     ""
+    ],
+    [
+     "Issuance of common stock on exercise of stock options",
+     "36,209",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "85",
+     "",
+     "\u2014",
+     "",
+     "85",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "(14,422)",
+     "\u2014",
+     "",
+     "14,422",
+     "(74)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(74)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(5,335)",
+     "",
+     "(5,335)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2023",
+     "13,544,228",
+     "$",
+     "14",
+     "14,422",
+     "$",
+     "(74)",
+     "$",
+     "82,013",
+     "$",
+     "(77,317)",
+     "$",
+     "4,636"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In Thousands except for shares)",
+   "prose_after": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Dollars in Thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(5,335)",
+     "$",
+     "548"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "864",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "2,246",
+     "",
+     "1,627",
+     ""
+    ],
+    [
+     "Net gain on disposal of equipment",
+     "\u2014",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "952",
+     "",
+     "786",
+     ""
+    ],
+    [
+     "Asset impairment",
+     "807",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "195",
+     "",
+     "292",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "1,308",
+     "",
+     "(2,818)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "(184)",
+     "",
+     "(187)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "2,465",
+     "",
+     "974",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "(145)",
+     "",
+     "183",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "(907)",
+     "",
+     "(631)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "1,706",
+     "",
+     "4,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "3,972",
+     "",
+     "6,497",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(2,872)",
+     "",
+     "(2,384)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(2,872)",
+     "",
+     "(2,384)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercise of options",
+     "85",
+     "",
+     "207",
+     ""
+    ],
+    [
+     "Repurchases of common stock",
+     "(74)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "11",
+     "",
+     "207",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in cash",
+     "1,111",
+     "",
+     "4,320",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "9,007",
+     "",
+     "4,687",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "10,118",
+     "$",
+     "9,007"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash financing and investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for operating lease liabilities",
+     "$",
+     "231",
+     "$",
+     "205"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1092,
+    "end_line": 1145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Dollars in Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these Consolidated Financial Statements.\nCHAMPIONS ONCOLOGY\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote 1. Organization and Basis of Presentation\nBackground\nChampions Oncology, Inc. (the \u201cCompany\u201d), is engaged in drug discovery and development through data-driven research strategies and innovative pharmacology, biomarker and data platforms. The Company\u2019s TumorGraft Technology Platform is an approach to personalizing cancer care based upon the implantation of human tumors in immune-deficient mice. The Company provides a technology platform to pharmaceutical and biotechnology companies using proprietary TumorGraft studies, which the Company believes may be predictive of how drugs may perform in clinical settings. Utilizing the TumorGraft Technology Platform (the \"Platform\"), a comprehensive Bank of unique, well characterized \"Patient Derived XenoGrafts\" (PDX) models, the Company offers multiple services to pharmaceutical and biotechnology companies seeking personalized approaches to drug development. By performing studies to predict the efficacy of oncology drugs, our Platform is designed to facilitate drug discovery with lower costs and increased speed of drug development as well as increased adoption of existing drugs.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "April 30, 2023",
+     "",
+     "April 30, 2022",
+     "",
+     "April 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "3,843",
+     "$",
+     "6,037",
+     "$",
+     "4,304"
+    ],
+    [
+     "Unbilled services",
+     "4,993",
+     "",
+     "4,106",
+     "",
+     "3,020",
+     ""
+    ],
+    [
+     "Total accounts receivable and unbilled services",
+     "8,836",
+     "",
+     "10,143",
+     "",
+     "7,324",
+     ""
+    ],
+    [
+     "Less: allowance for doubtful accounts",
+     "(825)",
+     "",
+     "(630)",
+     "",
+     "(338)",
+     ""
+    ],
+    [
+     "Total accounts receivable, net",
+     "$",
+     "8,011",
+     "$",
+     "9,513",
+     "$",
+     "6,986"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Accounts Receivable, Unbilled Services and Deferred Revenue"
+    }
+   },
+   "prose_before": "Deferred revenue consists of unearned payments received in excess of revenue recognized. As the contracted services are subsequently performed and the associated revenue recognized, the deferred revenue balance is reduced by the amount of the revenue recognized during the period. Deferred revenue is classified as a current liability on the consolidated balance sheet as the Company expects to recognize the associated revenue in less than one year.\nAccounting Pronouncements Being Evaluated\nIn June 2016, the FASB issued ASU No. 2016-13, \"Financial Instruments - Credit Losses\". This update requires immediate recognition of management\u2019s estimates of current expected credit losses (\"CECL\"). Under the prior model, losses were recognized only as they were incurred. The new model is applicable to all financial instruments that are not accounted for at fair value through net income. The standard is effective May 1, 2023 for the Company. The Company is currently assessing the impact of this update on its consolidated financial statements but does not expect the adoption of the pronouncement to have a material impact on its balance sheet or results of operations.\nNote 3. Accounts Receivable, Unbilled Services and Deferred Revenue\nAccounts receivable and unbilled services were as follows (in thousands):",
+   "prose_after": "Deferred revenue was as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2023",
+     "",
+     "April 30, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "$",
+     "12,776",
+     "$",
+     "11,071"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1323,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Accounts Receivable, Unbilled Services and Deferred Revenue"
+    }
+   },
+   "prose_before": "Deferred revenue was as follows (in thousands):",
+   "prose_after": "Deferred revenue is shown as a current liability on the Company's balance sheet.\nNote 4. Property and Equipment\nProperty and equipment consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "$",
+     "246",
+     "$",
+     "246"
+    ],
+    [
+     "Computer equipment and software",
+     "2,102",
+     "",
+     "1,667",
+     ""
+    ],
+    [
+     "Laboratory equipment",
+     "10,390",
+     "",
+     "8,618",
+     ""
+    ],
+    [
+     "Capitalized software development costs",
+     "1,888",
+     "",
+     "1,888",
+     ""
+    ],
+    [
+     "Assets in progress",
+     "1,079",
+     "",
+     "181",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "111",
+     "",
+     "111",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "15,816",
+     "",
+     "12,711",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "(8,630)",
+     "",
+     "(5,577)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "7,186",
+     "$",
+     "7,134"
+    ]
+   ],
+   "caption_stack": [
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1337,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Deferred revenue is shown as a current liability on the Company's balance sheet.\nNote 4. Property and Equipment\nProperty and equipment consisted of the following (in thousands):",
+   "prose_after": "Depreciation and amortization expense was $2.2 million and $1.6 million for the years ended April 30, 2023 and 2022, respectively. Depreciation and amortization expense, excluding expense recorded under finance leases, was $2.1 million and $1.5 million for the years ended April 30, 2023 and 2022, respectively.\nAs of April 30, 2023 and 2022, property, plant and equipment included gross assets held under finance leases of $1.0 million and $713,000, respectively. Related depreciation expense for these assets was $135,000 and $87,000 for the years ended April 30, 2023 and 2022, respectively.\nCapitalized software development costs under a hosting arrangement\nThe Company accounts for the cost of computer software obtained or developed for internal use as well as the software development and implementation costs associated with a hosting arrangement (\"internal-use software\") that is a service contract in accordance and with ASC 350, Intangibles - Goodwill and Other (\"ASC-350\"). We capitalize certain costs in the development of our internal-use software when the preliminary project stage is completed and it is probable that the project itself will be completed and the software will perform as intended. These capitalized costs include personnel and related expenses for employees and costs of third-party consultants who are directly associated with and who devote time to these internal-use software projects. Capitalization of these costs ceases once the project is substantially complete and the software is ready for its intended purpose. Costs incurred for significant upgrades, increased functionality, and enhancements to the Company's internal-use software solutions are also capitalized. Costs incurred for training, maintenance, and minor modifications are expensed as incurred. Capitalized software development costs are amortized using the straight-line method over an estimated useful economic life of three years.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1369,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Pharmacology services",
+     "$",
+     "50,708",
+     "$",
+     "46,833"
+    ],
+    [
+     "Other TOS revenue",
+     "3,046",
+     "",
+     "2,227",
+     ""
+    ],
+    [
+     "Personalized oncology services",
+     "116",
+     "",
+     "49",
+     ""
+    ],
+    [
+     "Total oncology services revenue",
+     "$",
+     "53,870",
+     "$",
+     "49,109"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Revenue from Contracts with Customers"
+    }
+   },
+   "prose_before": "During fiscal 2022, the Company recognized a finance lease for laboratory equipment. This equipment was obtained as the result of a laboratory supplies purchase commitment with costs of approximately $370,000 at inception through December 2025. Cash payments for this lease are in the form of consideration for purchasing lab supplies under a purchase commitment agreement. The present value of the minimum future obligations of $370,000 was calculated based on an interest rate of 3.25%. Depreciation and amortization expense related to this finance lease was $72,000 and $87,000 for the years ended April 30, 2023 and 2022, respectively.\nDuring fiscal 2023, the Company recognized a finance lease for laboratory equipment. This equipment was obtained as the result of a laboratory supplies purchase commitment with costs of approximately $368,000 at inception through December 2025. Cash payments for this lease are in the form of consideration for purchasing lab supplies under a purchase commitment agreement. The present value of the minimum future obligations of $368,000 was calculated based on an interest rate of 3.5%. Depreciation and amortization expense related to this finance lease was $63,000 and zero for the years ended April 30, 2023 and 2022, respectively.\nNote 5. Revenue from Contracts with Customers\nOncology Services Revenue\nThe following table represents disaggregated revenue for the twelve months ended April 30, 2023 and 2022:",
+   "prose_after": "Other TOS revenue represents additional services provided to the Company's pharmaceutical and biotechnology customers, specifically flow cytometry services and SaaS provided via our Lumin Bioinformatics software.\nContract Balances\nContract assets include unbilled amounts typically resulting from revenue recognized in excess of the amounts billed to the customer for which the right to payment is subject to factors other than the passage of time. These amounts may not exceed their net realizable value. Contract assets are classified as current. Contract liabilities consist of customer payments received in advance of performance and billings in excess of revenue recognized, net of revenue recognized from the balance at the beginning of the period. Contract assets and liabilities are presented on the balance sheet on a net contract-by-contract basis at the end of each reporting period. Refer to Note 3 for related balances.\nNote 6. Significant Customers\nFor the years ended April 30, 2023 and 2022, one of our customers accounted for more than 10% of our total revenue, at 14% and 13%, respectively.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1369,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "505",
+     "$",
+     "563"
+    ],
+    [
+     "Sales and marketing",
+     "192",
+     "",
+     "189",
+     ""
+    ],
+    [
+     "Research and development",
+     "19",
+     "",
+     "18",
+     ""
+    ],
+    [
+     "TOS cost of sales",
+     "148",
+     "",
+     "142",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "864",
+     "$",
+     "912"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1429,
+    "end_line": 1443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Payments"
+    }
+   },
+   "prose_before": "The Company contracts with third-party vendors to license tumor samples for development into PDX models and use in our TOS business. These types of arrangements have an upfront fee ranging from approximately nil to $30,000 per tumor sample depending on the successful growth of the tumor model and ability to develop them into a sellable product. The upfront costs are expensed as incurred. In addition, under certain agreements, for a limited period of time, the Company is subject to royalty payments if the licensed tumor models are used for sale in our TOS business, ranging from 2% to 20% of the contract price after recouping certain initiation costs. Some of these arrangements also set forth an annual minimum royalty due regardless of tumor models used for sale. For the years ended April 30, 2023 and 2022, we have recognized approximately $212,000 and $401,000 in expense related to these royalty arrangements, respectively.\nNote 8. Stock-based Payments\nStock-based compensation in the amount of $864,000 and $912,000 was recognized for years ended April 30, 2023 and 2022, respectively. Stock-based compensation costs were recorded as follows (in thousands):",
+   "prose_after": "The Company has in place a 2021 Equity Incentive Plan, 2010 Equity Incentive Plan and 2008 Equity Incentive Plan (\"the Plans\"). In general, these plans provide for stock-based compensation to the Company\u2019s employees, directors and non-employees. The plans also provide for limits on the aggregate number of shares that may be granted, the term of grants and the strike price of option awards.\n2021 Equity Incentive Plan\nAs part of the 2021 Annual Shareholders Meeting, shareholders approved the adoption of the 2021 Equity Incentive Plan (\u201c2021 Equity Plan\u201d). The purpose of the 2021 Equity Plan is to grant (i) Non-statutory Stock Options; (ii) Incentive Stock Options; (iii) Restricted Stock Awards; and/or (iv) Stock Appreciation Rights (collectively, stock-based compensation) to its employees, directors and non-employees. Total stock awards under the 2021 Equity Plan shall not exceed 2 million shares of common stock. Options and Stock Appreciation Rights expire no later than ten years from the date of grant and the awards vest as determined by the Board of Directors. Options and Stock Appreciation Rights have a strike price not less than 100% of the fair market value of the common stock subject to the option or right at the date of grant. As of April 30, 2023, approximately 1.7 million shares were left to issue under this plan.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "2022"
+    ],
+    [
+     "Expected term in years",
+     "6",
+     "6"
+    ],
+    [
+     "Risk-free interest rates",
+     "2.9% - 3.9%",
+     "0.8% - 1.2%"
+    ],
+    [
+     "Volatility",
+     "61% - 63%",
+     "64% - 66%"
+    ],
+    [
+     "Dividend yield",
+     "0%",
+     "0%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1469,
+    "end_line": 1479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Payments"
+    }
+   },
+   "prose_before": "On December 12, 2013, the Compensation Committee of the Board of Directors of the Company adopted changes to the Director Compensation Plan of 2010 (the \u201cDirector Plan\u201d) effective December 1, 2013. Under the Director Plan, independent directors of the Company were entitled to an annual award of a five-year option to purchase 8,333 shares of the Company\u2019s common stock, and the Chairman of the Board of the Company was entitled to an annual award of a five-year option to purchase 16,667 shares of the Company\u2019s common stock. Independent directors who serve as chairperson of a committee were also to receive an annual grant of a five-year option to purchase 1,667 shares of the Company\u2019s common stock. During fiscal year 2021, the plan was modified to an annual base compensation of $100,000 for each Board Director which could be taken in either company options or a combination of company options and cash, not to exceed $35,000. The Chairman of the Board\u2019s annual compensation was set at an equivalent of $150,000. Compensation for Independent Directors who serve as chairperson of a committee was set at an equivalent of between $110,000 to $120,000. All options issued under the Director Plan vest quarterly at a rate of 25%. Option grants will typically be issued after the annual shareholder meeting which will generally be held in October of each year. New directors will receive compensation upon joining the Board equal to a pro-rata equivalent for the remainder of the year. Options issued under the Director Plan are now issued pursuant to the 2021 Equity Plan.\nStock Option Grants\nBlack-Scholes assumptions used to calculate the fair value of options granted during the years ended April 30, 2023 and 2022 were as follows:",
+   "prose_after": "The weighted average fair value of stock options granted during the years ended April 30, 2023 and 2022, was $4.31 and $5.56, respectively. The Company\u2019s stock options activity and related information as of and for the years ended April 30, 2023 and 2022 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Directors and Employees",
+     "Non- Employees",
+     "Total",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding, May 1, 2022",
+     "1,617,324",
+     "40,915",
+     "1,658,239",
+     "$",
+     "4.51",
+     "4.9",
+     "$",
+     "6,131,000"
+    ],
+    [
+     "Granted",
+     "186,720",
+     "\u2014",
+     "186,720",
+     "7.22",
+     "",
+     "9.4",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "(36,209)",
+     "\u2014",
+     "(36,209)",
+     "3.21",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Canceled",
+     "(13,874)",
+     "\u2014",
+     "(13,874)",
+     "3.93",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(14,625)",
+     "\u2014",
+     "(14,625)",
+     "7.94",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "\u2014",
+     "(4,584)",
+     "(4,584)",
+     "5.40",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, April 30, 2023",
+     "1,739,336",
+     "36,331",
+     "1,775,667",
+     "4.80",
+     "",
+     "4.6",
+     "$",
+     "2,683,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested and expected to vest as of April 30, 2023",
+     "1,739,336",
+     "36,331",
+     "1,775,667",
+     "4.80",
+     "",
+     "4.6",
+     "$",
+     "2,683,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of April 30, 2023",
+     "1,436,932",
+     "1,875",
+     "1,438,807",
+     "4.35",
+     "",
+     "3.8",
+     "$",
+     "2,681,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1483,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Payments"
+    }
+   },
+   "prose_before": "The weighted average fair value of stock options granted during the years ended April 30, 2023 and 2022, was $4.31 and $5.56, respectively. The Company\u2019s stock options activity and related information as of and for the years ended April 30, 2023 and 2022 is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Directors and Employees",
+     "Non- Employees",
+     "Total",
+     "Weighted Average Exercise Price",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding, May 1, 2021",
+     "1,618,231",
+     "35,415",
+     "1,653,646",
+     "3.96",
+     "5.4",
+     "$",
+     "11,384,000"
+    ],
+    [
+     "Granted",
+     "155,552",
+     "10,500",
+     "166,052",
+     "9.44",
+     "9.3",
+     "\u2014",
+     ""
+    ],
+    [
+     "Exercised",
+     "(108,375)",
+     "\u2014",
+     "(108,375)",
+     "2.29",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Canceled",
+     "(11,209)",
+     "\u2014",
+     "(11,209)",
+     "4.71",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(36,875)",
+     "\u2014",
+     "(36,875)",
+     "7.45",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "\u2014",
+     "(5,000)",
+     "(5,000)",
+     "9.60",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, April 30, 2022",
+     "1,617,324",
+     "40,915",
+     "1,658,239",
+     "4.51",
+     "4.9",
+     "$",
+     "6,131,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested and expected to vest as of April 30, 2022",
+     "1,617,324",
+     "40,915",
+     "1,658,239",
+     "4.51",
+     "4.9",
+     "$",
+     "6,131,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of April 30, 2022",
+     "1,349,895",
+     "4,584",
+     "1,354,479",
+     "3.93",
+     "4.2",
+     "$",
+     "5,778,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1506,
+    "end_line": 1528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Payments"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Share Repurchase Program\nOn March 29, 2023, the Board of Directors approved a share repurchase program authorizing the Company to purchase up to an aggregate of $5.0 million of the Company\u2019s common stock. The share repurchase program is designed in accordance with Rule 10b-18 of the Exchange Act. The shares may be purchased from time to time in the open market, as permitted under applicable rules and regulations, at prevailing market prices. The timing and amount of repurchases will depend on market conditions, share price, applicable legal requirements and other factors. The program does not obligate the Company to acquire a minimum number of shares. As of April 30, 2023, the Company had purchased approximately 14,000 shares of its common stock, at an average price of $5.11 per share, totaling approximately $74,000 and leaving an available balance of approximately $4.9 million authorized by the Board for use in the program as of that date.\nNote 9. Provision for Income Taxes\nThe components of the provision for income taxes are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Federal",
+     "",
+     "State",
+     "",
+     "Foreign",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     "$",
+     "15",
+     "$",
+     "53",
+     "$",
+     "68"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "\u2014",
+     "$",
+     "15",
+     "$",
+     "53",
+     "$",
+     "68"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1538,
+    "end_line": 1548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Provision for Income Taxes"
+    }
+   },
+   "prose_before": "On March 29, 2023, the Board of Directors approved a share repurchase program authorizing the Company to purchase up to an aggregate of $5.0 million of the Company\u2019s common stock. The share repurchase program is designed in accordance with Rule 10b-18 of the Exchange Act. The shares may be purchased from time to time in the open market, as permitted under applicable rules and regulations, at prevailing market prices. The timing and amount of repurchases will depend on market conditions, share price, applicable legal requirements and other factors. The program does not obligate the Company to acquire a minimum number of shares. As of April 30, 2023, the Company had purchased approximately 14,000 shares of its common stock, at an average price of $5.11 per share, totaling approximately $74,000 and leaving an available balance of approximately $4.9 million authorized by the Board for use in the program as of that date.\nNote 9. Provision for Income Taxes\nThe components of the provision for income taxes are as follows (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Federal",
+     "",
+     "State",
+     "",
+     "Foreign",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     "$",
+     "10",
+     "$",
+     "25",
+     "$",
+     "35"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "\u2014",
+     "$",
+     "10",
+     "$",
+     "25",
+     "$",
+     "35"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1549,
+    "end_line": 1559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Provision for Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "A reconciliation between the Company\u2019s effective tax rate and the United States statutory tax rate for the years ended April 30, 2023 and 2022 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Federal income tax at statutory rate",
+     "21.0",
+     "%",
+     "21.0",
+     "%"
+    ],
+    [
+     "US vs. foreign tax rate difference",
+     "(0.2)",
+     "",
+     "1.3",
+     ""
+    ],
+    [
+     "State income tax, net of federal benefit",
+     "2.2",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "(0.5)",
+     "",
+     "(47.3)",
+     ""
+    ],
+    [
+     "Increase in uncertain tax position",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "(23.8)",
+     "",
+     "27.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "(1.3)",
+     "%",
+     "6.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1562,
+    "end_line": 1578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Provision for Income Taxes"
+    }
+   },
+   "prose_before": "A reconciliation between the Company\u2019s effective tax rate and the United States statutory tax rate for the years ended April 30, 2023 and 2022 is as follows:",
+   "prose_after": "Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets and liabilities as of April 30, 2023 and 2022 consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "273",
+     "$",
+     "162"
+    ],
+    [
+     "Right of use, net asset/liability",
+     "403",
+     "",
+     "316",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "(297)",
+     "",
+     "(396)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "4,024",
+     "",
+     "3,874",
+     ""
+    ],
+    [
+     "Capitalized research and development costs",
+     "2,597",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net operating loss carry-forward",
+     "9,756",
+     "",
+     "11,546",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "16,756",
+     "",
+     "15,502",
+     ""
+    ],
+    [
+     "Less: Valuation allowance",
+     "(16,756)",
+     "",
+     "(15,502)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "As of April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1580,
+    "end_line": 1600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Provision for Income Taxes"
+    }
+   },
+   "prose_before": "Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets and liabilities as of April 30, 2023 and 2022 consist of the following (in thousands):",
+   "prose_after": "Management has evaluated the available evidence about future tax planning strategies, taxable income, and other possible sources of realization of deferred tax assets and has established a full valuation allowance against its net deferred tax assets as of April 30, 2023 and 2022. For the years ended April 30, 2023 and 2022, the Company recorded a valuation allowance\nof $16.8 million and $15.5 million, respectively. The net changes in the valuation allowance of $1.3 million and $0.2 million during the fiscal years ended April 30, 2023 and 2022, respectively, were mainly due to increases in the deferred tax asset related to capitalized research expenses and other timing differences. Management continues to assess the realizability of the deferred tax assets at each interim and annual balance sheet date based upon actual and forecasted operating results.\nAs of April 30, 2023 and 2022, the Company\u2019s estimated U.S. net operating loss carry-forwards were approximately $41.3 million and $48.0 million, respectively. Net operating losses generated prior to May 1, 2018 have a 20-year carryforward and will begin expiring in 2025 for federal and 2031 for state purposes. Losses generated in the fiscal years since the year ended April 30, 2019 may be carried forward indefinitely. A valuation allowance has been recorded against all of these loss carryforwards.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Balance, beginning of the year",
+     "$",
+     "181",
+     "$",
+     "181"
+    ],
+    [
+     "Addition based on tax positions related to prior years",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment made on tax positions related to prior years",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Addition based on tax positions related to current year",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, end of year",
+     "$",
+     "181",
+     "$",
+     "181"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1614,
+    "end_line": 1628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Provision for Income Taxes"
+    }
+   },
+   "prose_before": "Under the provisions of the Internal Revenue Code, certain substantial changes in the Company\u2019s ownership may result in a limitation on the amount of net operating losses that may be utilized in future years. During the fiscal year ended April 30, 2013, approximately $12.0 million of the Company\u2019s net operating losses became subject to limitation under Internal Revenue Code Section 382 in connection with an ownership change on January 28, 2013. As a result of the ownership change, the Company\u2019s annual limitation on its use of net operating loss carry-forwards is approximately $432,000.\nThe Company files income tax returns in various jurisdictions with varying statutes of limitations. As of April 30, 2023, the earliest tax year still subject to examination for state purposes is fiscal 2019. The Company\u2019s tax years for periods ending April 30, 2002 and forward are subject to examination by the United States and certain states due to the carry-forward of unutilized net operating losses.\nThe following table indicates the changes to the Company\u2019s uncertain tax positions for the period and years ended April 30, 2023 and 2022 in thousands:",
+   "prose_after": "As of April 30, 2023 and 2022, the above amounts of $181,000 for each fiscal year were included in other long-term liabilities.\nNote 10. Earnings Per Share\nA reconciliation of net income and number of shares used in computing basic and diluted earnings per share was as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1634,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share computation (dollars in thousands):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to common stockholders",
+     "$",
+     "(5,335)",
+     "$",
+     "548"
+    ],
+    [
+     "Weighted Average common shares - basic",
+     "13,541,559",
+     "",
+     "13,197,170",
+     ""
+    ],
+    [
+     "Basic net income (loss) per share",
+     "$",
+     "(0.39)",
+     "$",
+     "0.04"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income (loss) per share computation",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to common stockholders",
+     "$",
+     "(5,335)",
+     "$",
+     "548"
+    ],
+    [
+     "Income (loss) available to common stockholders",
+     "$",
+     "(5,335)",
+     "$",
+     "548"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average common shares",
+     "13,541,559",
+     "",
+     "13,197,170",
+     ""
+    ],
+    [
+     "Incremental shares from assumed exercise of warrants and stock options",
+     "\u2014",
+     "",
+     "962,629",
+     ""
+    ],
+    [
+     "Adjusted weighted average share \u2013 diluted",
+     "13,541,559",
+     "",
+     "14,159,799",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net income (loss) per share",
+     "$",
+     "(0.39)",
+     "$",
+     "0.04"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1636,
+    "end_line": 1662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Earnings Per Share"
+    }
+   },
+   "prose_before": "As of April 30, 2023 and 2022, the above amounts of $181,000 for each fiscal year were included in other long-term liabilities.\nNote 10. Earnings Per Share\nA reconciliation of net income and number of shares used in computing basic and diluted earnings per share was as follows:",
+   "prose_after": "The following table reflects the total potential stock-based instruments outstanding at April 30, 2023 and 2022 that could have an effect on the future computation of dilution per common share. These figures were not included in the above calculation as, to do so, would be antidilutive:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1634,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended April 30",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "2022"
+    ],
+    [
+     "Stock options",
+     "1,775,667",
+     "1,658,239"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total common stock equivalents",
+     "1,775,667",
+     "1,658,239"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended April 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1665,
+    "end_line": 1676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Earnings Per Share"
+    }
+   },
+   "prose_before": "The following table reflects the total potential stock-based instruments outstanding at April 30, 2023 and 2022 that could have an effect on the future computation of dilution per common share. These figures were not included in the above calculation as, to do so, would be antidilutive:",
+   "prose_after": "Note 11. Related Party Transactions\nRelated party transactions include transactions between the Company and its shareholders, management, or affiliates. The following transactions were in the normal course of operations and were measured at the exchange amount, which is the amount of consideration established and agreed to by the parties.\nConsulting Services\nFor both years ended April 30, 2023 and 2022, the Company paid a member of its Board of Directors $36,000 for consulting services unrelated to his duties as a board member. During the years ended April 30, 2023 and 2022, the Company paid another board member zero and $5,500, respectively, for consulting services unrelated to his duties as a board member. All of the amounts paid to these related parties have been recognized in expense in the period the services were performed.\nNote 12. Leases\nThe Company accounts for its leases under ASC 842. Under this guidance, arrangements meeting the definition of a lease are classified as operating or financing leases, and are recorded on the consolidated balance sheet as both an operating lease ROU asset and operating lease liability, calculated by discounting fixed lease payments over the lease term at the rate implicit in the lease or the Company\u2019s incremental borrowing rate. Lease liabilities are increased by interest and reduced by payments each period, and the right of use asset is amortized over the lease term. For operating leases, interest on the lease liability and the amortization of the right of use asset result in straight-line rent expense over the lease term. Variable lease expenses, if any, are recorded when incurred. The Company has elected to apply the short-term lease exemption practical expedient for each class of underlying assets and excludes short-term leases having initial terms of 12 months or less. The Company recognizes rent expense on a straight-line basis over the lease term for these short-term leases. The Company has determined that no material",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1634,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "April 30, 2023",
+     "April 30, 2022"
+    ],
+    [
+     "Operating lease right-of-use assets, net",
+     "7,318",
+     "8,230"
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "1,208",
+     "1,054"
+    ],
+    [
+     "Non-current portion of operating lease liabilities",
+     "7,391",
+     "8,412"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1706,
+    "end_line": 1713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "\u2022VIA LEONE XIII, 14, Milan, Italy, which consists of laboratory and office space where the Company conducts operations related to its flow cytometry service offerings. The Company executed separate leases for its laboratory space and office space during fiscal 2022. During fiscal 2023, the Company executed a new lease to consolidate its office and laboratory space at a new nearby location in Italy. The lease expires October 31, 2028 and it replaces the previous two leases, which were terminated. Upon new lease execution, the Company recognized an operating ROU asset and related operating lease liability for the lab and office space of $231,000 each, respectively. Upon termination of the office space lease, the Company recognized a reduction in the related net operating ROU asset and operating lease liability of approximately $41,000. Upon termination of the laboratory space lease, the Company recognized a reduction in the related net operating ROU asset and operating lease liability of approximately $20,000. The Company recognized $98,000 and $81,000 of rent expense associated with the leases in Italy for fiscal 2023 and 2022, respectively.\nROU assets and lease liabilities related to our current operating leases are as follows (in thousands):",
+   "prose_after": "As of April 30, 2023, the weighted average remaining operating lease term and the weighted average discount rate were 5.7 years and 5.82%, respectively.\nFuture minimum lease payments due each fiscal year as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024",
+     "$",
+     "2,841"
+    ],
+    [
+     "2025",
+     "2,889",
+     ""
+    ],
+    [
+     "2026",
+     "2,938",
+     ""
+    ],
+    [
+     "2027",
+     "2,904",
+     ""
+    ],
+    [
+     "2028",
+     "2,854",
+     ""
+    ],
+    [
+     "Thereafter",
+     "2,390",
+     ""
+    ],
+    [
+     "Total undiscounted liabilities",
+     "16,816",
+     ""
+    ],
+    [
+     "Less: Imputed interest",
+     "(8,217)",
+     ""
+    ],
+    [
+     "Present value of minimum lease payments",
+     "$",
+     "8,599"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1719,
+    "end_line": 1733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "As of April 30, 2023, the weighted average remaining operating lease term and the weighted average discount rate were 5.7 years and 5.82%, respectively.\nFuture minimum lease payments due each fiscal year as follows (in thousands):",
+   "prose_after": "Refer to Note 4, Property and Equipment, for more information on financing leases.\nExhibit Index",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation (incorporated by reference to Appendix A to the Company\u2019s Information Statement on Schedule 14C filed March 7, 2011)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1.1",
+     "Certificate of Amendment to Amended and Restated Articles of Incorporation (incorporated by reference to Exhibit 3(i) to the Company\u2019s Current Report on Form 8-K filed April 28, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws, as amended (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed May 9, 2017)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Description of Registered Securities (incorporated by reference to Exhibit 4.1 to the Company\u2019s Annual Report on Form 10-K filed July 28, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Employment Agreement, dated November 5, 2013, between the Company and Ronnie Morris, M.D. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed November 12, 2013)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Amendment to Employment Agreement, dated March 16, 2015, between the Company and Ronnie Morris (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Offer letter dated June 3, 2013 between the Company and David Miller (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed June 3, 2013)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "2010 Equity Incentive Plan (incorporated by reference to Appendix B to the Company\u2019s Definitive Information Statement on Schedule 14C filed March 7, 2011)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Note Purchase Agreement, dated December 1, 2014, between the Company and each of  Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Convertible Promissory Note, dated December 1, 2014, issued to each of Joel Ackerman and Ronnie Morris in connection with the Note Purchase Agreement, dated December 1, 2014 between the Company and each of Joel Ackerman and Ronnie Morris incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed December 5, 2014)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Joel Ackerman in connection with the Note Purchase Agreement, dated December 1, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Amendment No. 1 to Convertible Promissory Note, dated December 1, 2014 issued to Ronnie Morris in connection with the Note Purchase Agreement, dated December 1, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 2, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "Amended and Restated 2011 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1738,
+    "end_line": 1788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Refer to Note 4, Property and Equipment, for more information on financing leases.\nExhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "10.12",
+     "Amended and Restated 2013 Securities Purchase Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Form of warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed January 30, 2013)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "Amendment No. 1 to warrants, dated March 13, 2015, between the Company and each person or entities that are signatories to the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "Put Right Agreement, dated January 29, 2014, between the Company and each of Joel Ackerman and Ronnie Morris (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed March 6, 2014)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "Securities Purchase Agreement, dated March 11, 2015, between the Company and each investor identified on the signature pages thereto (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 12, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "Amended and Restated Registration Rights Agreement, dated March 13, 2015, between the Company and each person or entities that are signatories to (i) the Securities Purchase Agreement, dated March 24, 2011, between the Company and each investor identified on the signature page thereto, (ii) the Securities Purchase Agreement, dated January 28, 2013, between the Company and each investor identified on the signature page thereto, and (iii) the Securities Purchase Agreement, dated March 11, 2015, between the Company. And each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "Form of Investor Warrant issued to each person or entities that are signatories to the Securities Purchase Agreement, dated March 11, 2015, between the Company and each investor identified on the signature page thereto (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 17, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and Joel Ackerman (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and Ronnie Morris (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "Option Exchange Agreement, dated March 16, 2015, between the Company and David Miller (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed March 20, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "Code of Ethics (incorporated by reference to Exhibit 14 of the April 30, 2008 Form 10-KSB)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21",
+     "List of Subsidiaries"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certifications**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1789,
+    "end_line": 1842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "101.LAB* XBRL Taxonomy Extension Label Linkbase Document. 101.PRE* XBRL Taxonomy Extension Presentation Linkbase Document. 101.LAB* XBRL Taxonomy Extension Label Linkbase Document. 101.PRE* XBRL Taxonomy Extension Presentation Linkbase Document.\n__________________________\n* Filed herewith\n** Furnished hereto.\n*** Management contract or compensatory plan or arrangement.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1842,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

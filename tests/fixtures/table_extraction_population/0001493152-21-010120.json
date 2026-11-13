@@ -1,0 +1,2586 @@
+{
+ "accession": "0001493152-21-010120",
+ "cik": "0001642380",
+ "form": "10-K/A",
+ "filing_date": "2021-04-30",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "California",
+     "27-1041563"
+    ],
+    [
+     "(State or other jurisdiction\n\n\n\nof incorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K/A-1\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to __________\nCommission file number 1-37648\nOncoCyte Corporation\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "15 Cushing\nIrvine, California 92618\n(Address of principal executive offices) (Zip Code)\nRegistrant\u2019s telephone number, including area code (949) 409-7600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, no par value",
+     "OCX",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "15 Cushing\nIrvine, California 92618\n(Address of principal executive offices) (Zip Code)\nRegistrant\u2019s telephone number, including area code (949) 409-7600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned Or Paid in Cash(1)",
+     "",
+     "",
+     "Option Awards (2)",
+     "",
+     "",
+     "Nonqualified Deferred Compensation\n\n\n\nEarnings(3)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Andrew Arno",
+     "$",
+     "65,000",
+     "(4)",
+     "$",
+     "106,590",
+     "(5)",
+     "$",
+     "628",
+     "$",
+     "172,218"
+    ],
+    [
+     "Jennifer Levin Carter",
+     "$",
+     "17,500",
+     "",
+     "$",
+     "61,560",
+     "(6)",
+     "",
+     "\u2013",
+     "$",
+     "79,060"
+    ],
+    [
+     "Melinda Griffith",
+     "$",
+     "55,000",
+     "",
+     "$",
+     "106,590",
+     "(5)",
+     "$",
+     "1,163",
+     "$",
+     "162,753"
+    ],
+    [
+     "Alfred D. Kingsley",
+     "$",
+     "40,000",
+     "(7)",
+     "$",
+     "106,590",
+     "(5)",
+     "$",
+     "387",
+     "$",
+     "146,977"
+    ],
+    [
+     "Andrew J. Last",
+     "$",
+     "72,500",
+     "(8)",
+     "$",
+     "106,590",
+     "(5)",
+     "$",
+     "1,459",
+     "$",
+     "180,549"
+    ],
+    [
+     "Aditya Mohanty (9)",
+     "$",
+     "17,500",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "17,500"
+    ],
+    [
+     "Cavan Redmond",
+     "$",
+     "82,500",
+     "(10)",
+     "$",
+     "115,940",
+     "(11)",
+     "$",
+     "1,660",
+     "$",
+     "200,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Nominating/Corporate Governance Committee Member other than Chairman: $5,000\n\u25cf Science and Technology Committee Chairman: $10,000\n\u25cf Science and Technology Committee Member other than Chairman: $5,000\n\u25cf Finance and Strategy Committee Member: $5,000\nDuring May 2020, we entered into Acknowledgement and Agreements (the \u201cDeferral Agreements\u201d) with certain of our non-employee directors pursuant to which our they agreed to defer a portion of their compensation. Deferred fees accrued interest at 6% per annum. On December 8, 2020 the deferred fee obligations were settled by paying the fees and accrued interest in cash or, as agreed individually by participating directors and Oncocyte, a combination of cash and shares of our common stock.\nThe following table summarizes certain information concerning the compensation paid during the past fiscal year to each of the persons who served as directors during the year ended December 31, 2020 and who were not our employees on the date the compensation was earned.",
+   "prose_after": "(1) Certain directors elected to receive shares of Oncocyte common stock at market value in lieu of a portion of their cash fees.\n(2) Options granted will vest and become exercisable one year from the date of grant, subject to the non-employee director\u2019s continued service as a director of Oncocyte or a subsidiary from the date of grant until the vesting date or, if earlier, until the next annual meeting of shareholders, but must be reported here at the aggregate grant date fair value, as if all options were fully vested and exercisable at the date of grant. Values are computed in accordance with FASB Accounting Standards Codification (ASC) Topic 718, Compensation - Stock Compensation. We used the Black-Scholes Pricing Model to compute option fair values based on applicable exercise and stock prices, an expected option term, volatility assumptions, and risk-free interest rates.\n(3) Reflects interest accrued and paid to those directors who elected to enter into Deferral Agreements. Certain directors elected to receive a portion of their interest in shares of Oncocyte common stock at market value.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Year",
+     "Salary",
+     "",
+     "",
+     "Bonus",
+     "",
+     "",
+     "Stock\n\n\n\nAwards(1)",
+     "",
+     "",
+     "Option Awards(1)",
+     "",
+     "",
+     "Nonqualified Deferred Compensation Earnings(2)",
+     "",
+     "",
+     "All Other Compensation(3)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Ronald Andrews",
+     "2020",
+     "$",
+     "487,385",
+     "",
+     "$",
+     "465,600",
+     "(4)",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "68,500",
+     "(5)",
+     "$",
+     "9,190",
+     "",
+     "$",
+     "16,175",
+     "",
+     "$",
+     "1,046,850"
+    ],
+    [
+     "President and Chief Executive Officer",
+     "2019",
+     "$",
+     "276,250",
+     "(6)",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "163,150",
+     "(7)",
+     "$",
+     "1,626,562",
+     "(7)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,065,962"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mitchell Levine",
+     "2020",
+     "$",
+     "361,999",
+     "(8)",
+     "$",
+     "131,670",
+     "",
+     "$",
+     "44,800",
+     "(9)",
+     "$",
+     "504,431",
+     "(10)",
+     "$",
+     "721",
+     "(8)",
+     "$",
+     "14,839",
+     "",
+     "$",
+     "1,058,460"
+    ],
+    [
+     "Chief Financial Officer",
+     "2019",
+     "$",
+     "343,063",
+     "",
+     "$",
+     "131,670",
+     "",
+     "$",
+     "70,400",
+     "(11)",
+     "$",
+     "600,142",
+     "(11)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "12,662",
+     "",
+     "$",
+     "1,157,937"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Padma Sundar",
+     "2020",
+     "$",
+     "293,260",
+     "(13)",
+     "$",
+     "60,000",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "543,150",
+     "(14)",
+     "$",
+     "297",
+     "(13)",
+     "$",
+     "11,665",
+     "",
+     "$",
+     "908,372"
+    ],
+    [
+     "Senior Vice President, Marketing and Market Access(12)",
+     "2019",
+     "$",
+     "158,323",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "615,600",
+     "(14)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "773,923"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Albert P. Parker",
+     "2020",
+     "$",
+     "348,948",
+     "(16)",
+     "$",
+     "133,465",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "530,363",
+     "(17)",
+     "$",
+     "1,082",
+     "(16)",
+     "$",
+     "386,135",
+     "(18)",
+     "$",
+     "1,399,993"
+    ],
+    [
+     "Chief Operating Officer(15)",
+     "2019",
+     "$",
+     "350,233",
+     "",
+     "$",
+     "57,120",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "490,000",
+     "(19)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "14,000",
+     "",
+     "$",
+     "911,353"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 206,
+    "end_line": 225
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "We are an \u201cemerging growth company\u201d as defined in the Jumpstart Our Business Startups Act of 2012 and a \u201csmaller reporting company\u201d as defined in the rules and regulations of the SEC. As an emerging growth company and as a smaller reporting company we may take advantage of specified reduced disclosure and other requirements that are otherwise applicable, in general, to public companies that are not emerging growth companies or smaller reporting companies. Accordingly, this Report includes reduced disclosure about our executive compensation arrangements.\nThe following tables show certain information relating to the compensation of our President and Chief Executive Officer, the two highest paid individuals other than our President and Chief Executive Officer who were serving as executive officers at year end and whose total individual compensation exceeded $100,000 during 2020, and our former Chief Operating Officer whose total individual compensation exceeded $100,000 during 2020 and who would have been among the two highest paid executive officers other than our President and Chief Executive Officer had he continued to serve as an executive officer at the end of 2020. We refer to such executive officers as our \u201cNamed Executive Officers\u201d.\nSummary Compensation Table",
+   "prose_after": "(1) Option awards granted under our 2010 Employee Stock Option Plan (the \u201cOption Plan\u201d) or under our Incentive Plan are valued at the aggregate grant date fair value, as if all options were fully vested and exercisable at the date of grant. Except as otherwise indicated below, one quarter of the options will vest upon completion of 12 full months of continuous employment measured from the grant date, and the balance of the options shall vest in 36 equal monthly installments commencing on the first anniversary of the date of grant, based upon the completion of each month of continuous employment. Amounts shown in this column do not reflect dollar amounts actually received by our Named Executive Officers. Instead, these amounts reflect the aggregate grant date fair value of each stock option granted, computed in accordance with the provisions of FASB ASC Topic 718. For stock options that have performance-based (sometimes referred to as milestone-based) vesting conditions, compensation is shown in the tables in the same manner as Oncocyte recorded stock based compensation expense for the grant on the basis of the estimated probability that the vesting condition will be met or the determination that the condition has been met. We used the Black-Scholes Pricing Model to compute option fair values based on applicable exercise and stock prices, an expected option term, volatility assumptions, and risk-free interest rates. Our Named Executive Officers will only realize compensation upon exercise of the stock options and to the extent the trading price of our common stock is greater than the exercise price of such stock options at the time of exercise. Stock awards consist entirely of restricted stock units (\u201cRSUs\u201d) and are valued in the table at the aggregate grant date fair value based on the closing price of Oncocyte common stock as quoted on the NYSE American as if the stock awards were fully vested. Beginning on March 8, 2021, our common stock began trading on the NASDAQ Global Market under the symbol \u201cOCX\u201d, and prior to that date our common stock was traded on the NYSE American under the same symbol. For a full discussion of OncoCyte\u2019s accounting of stock-based compensation under ASC 718, please refer to Note 11 to our consolidated financial statements found elsewhere in this Report.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 226,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised Options\n\n\n\nExercisable",
+     "",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised Options\n\n\n\nUnexercisable (1)",
+     "",
+     "",
+     "Equity Incentive plan awards: Number of securities underlying unexercised unearned options (#)",
+     "",
+     "Option Exercise\n\n\n\nPrice",
+     "",
+     "Option Expiration\n\n\n\nDate",
+     "Number of shares or units of stock that have not vested (#)",
+     "",
+     "",
+     "Market value of shares of units of stock that have not vested ($)",
+     "",
+     "Equity Incentive plan awards: Number of unearned shares, units or other rights that have not vested (#)",
+     "",
+     "Equity Incentive plan awards: Market or payout value of unearned shares, units or other rights that have not vested ($)",
+     ""
+    ],
+    [
+     "Ronald Andrews",
+     "",
+     "20,000",
+     "(2)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "$",
+     "2.10",
+     "April 1, 2028",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "n/a",
+     "n/a",
+     "",
+     "65,000",
+     "(3)",
+     "$",
+     "155,350",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "45,000",
+     "(4)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "$",
+     "2.40",
+     "August 29, 2028",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "n/a",
+     "n/a",
+     "",
+     "106,221",
+     "(5)",
+     "$",
+     "253,868",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "336,458",
+     "(6)",
+     "",
+     "613,542",
+     "",
+     "",
+     "\u2014",
+     "$",
+     "2.51",
+     "June 30, 2029",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     "(7)",
+     "",
+     "\u2014",
+     "$",
+     "1.68",
+     "June 30, 2030",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mitchell Levine",
+     "",
+     "154,169",
+     "(8)",
+     "",
+     "45,831",
+     "",
+     "",
+     "",
+     "$",
+     "5.90",
+     "November 15, 2027",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "73,958",
+     "(9)",
+     "",
+     "17,708",
+     "",
+     "",
+     "\u2014",
+     "$",
+     "2.35",
+     "May 22, 2028",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "107,188",
+     "(10)",
+     "",
+     "137,812",
+     "",
+     "",
+     "",
+     "$",
+     "3.52",
+     "March 13, 2029",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "n/a",
+     "n/a",
+     "",
+     "20,000",
+     "(12)",
+     "$",
+     "47,800",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "204,000",
+     "(11)",
+     "",
+     "",
+     "$",
+     "2.63",
+     "February 9, 2030",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Albert P. Parker",
+     "",
+     "200,000",
+     "(13)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "2.30",
+     "August 5, 2028,",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "137,052",
+     "(14)",
+     "",
+     "62,498",
+     "",
+     "",
+     "",
+     "$",
+     "3.52",
+     "March 13, 2029",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "93,500",
+     "(15)",
+     "",
+     "110,500",
+     "",
+     "",
+     "",
+     "$",
+     "2.63",
+     "February 9, 2030",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Padma Sundar",
+     "",
+     "71,250",
+     "(16)",
+     "",
+     "108,750",
+     "",
+     "",
+     "",
+     "$",
+     "4.94",
+     "May 21, 2029",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "255,000",
+     "(17)",
+     "",
+     "",
+     "$",
+     "2.63",
+     "February 9, 2030",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 289,
+    "end_line": 337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "We have adopted the OncoCyte Corporation Change in Control and Severance Plan (the \u201cCIC Plan\u201d) which provides change in control and other severance benefits to a select group of our management or highly compensated employees, including our executive officers, who have executed a Change in Control and Severance Agreement (\u201cCIC Agreement\u201d) and who otherwise satisfy the conditions set forth in their CIC Agreement and the provisions of the CIC Plan. Pursuant to the CIC Plan, we have entered into CIC Agreements with certain executive officers, including our President and Chief Executive Officer, Ronald Andrews, our Chief Financial Officer, Mitchell Levine, our Chief Commercial Officer, Padma Sundar, and our former Chief Operating Officer, Albert Parker. Each of their CIC Agreements has the effect of modifying the executive\u2019s employment agreement and provides that if we terminate the executive\u2019s employment without \u201ccause\u201d or if the executive resigns for \u201cgood reason\u201d, the executive will receive a severance payment in the amount of 12 months of his or her base salary and accelerated vesting of stock options, restricted stock units, and any other equity awards (\u201cEquity Awards\u201d) that were schedule to vest based on the passage of time during the 12 months following the termination of employment. In addition to those severance benefits, if a termination of the executive\u2019s employment without \u201ccause\u201d or a resignation for \u201cgood reason\u201d occurs within three months before or twelve months after a \u201cchange in control,\u201d the executive will also receive his or her target bonus for the year and the vesting of all Equity Awards will be fully accelerated. In addition to the foregoing, the terminated executive will receive a lump sum payment (which shall not be grossed up for applicable income and employment taxes) equal to twelve months of the premium costs of group health plan continuation coverage under the Consolidated Omnibus Budget Reconciliation Act of 1985 (\u201cCOBRA\u201d) to the same extent provided under Oncocyte\u2019s group health plan. In order to receive the severance benefits, the executive must execute and comply with a separation agreement and general release of all claims against Oncocyte.\nEquity Awards Outstanding at Year End\nThe following table summarizes certain information concerning stock options and other equity awards granted by us under the Option Plan and the Incentive Plan held as of December 31, 2020 by our Named Executive Officers:\nEquity Awards Outstanding At Year-End",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 282,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 338,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(1)",
+     "Except as otherwise indicated below, one quarter of the options shall vest upon completion of 12 full months of continuous employment measured from the date of grant, and the balance of the options will vest in 36 equal monthly installments commencing on the first anniversary of the date of grant, based upon the completion of each month of continuous employment."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(2)",
+     "The date of grant was April 2, 2018 for services of Mr. Andrews as a non-employee director of Oncocyte. The options vested on the first anniversary of the grant date."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(3)",
+     "The date of grant of the RSUs was July 1, 2019. The RSUs will vest upon completion of two years of continuous service as an employee from the grant date. The market value of the RSUs was determined based on the closing price of Oncocyte common stock on December 31, 2020."
+    ],
+    [
+     ".",
+     ""
+    ],
+    [
+     "(4)",
+     "The date of grant was August 30, 2018 for services of Mr. Andrews as a non-employee director of Oncocyte. The options vested on the first anniversary of the grant date."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(5)",
+     "Mr. Andrews agreed to accept RSUs for 106,221 shares of common stock under our Incentive Plan in lieu of $279,360 in cash as part of his discretionary bonus. The 106,221 shares of RSUs were determined based on the cash payable value of $279,360 divided by the $2.63 per share closing price of Oncocyte common stock on May 7, 2020. The RSUs will vest on May 7, 2021, the anniversary of the grant date. The market value of the RSUs shown above was determined based on the closing price of Oncocyte common stock on December 31, 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(6)",
+     "The date of grant was July 1, 2019."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(7)",
+     "The date of grant was July 1, 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(8)",
+     "These options were granted to Mr. Levine upon his appointment as Chief Financial Officer on November 16, 2017."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(9)",
+     "The date of grant was May 23, 2018. Included in the number of options exercisable is 41,666 options which vested in June 2020 based on certain performance conditions for vesting having been met."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(10)",
+     "The date of grant was March 14, 2019."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(11)",
+     "The date of grant was February 10, 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(12)",
+     "The date of the grant was April 28, 2020 and the 20,000 restricted stock units will vest one year from the date of grant. The market value of the RSUs was determined based on the closing price of Oncocyte common stock on December 31, 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(13)",
+     "The date of grant was August 6, 2018. The number of exercisable options includes 65,000 options that vested during June 2020 upon on the attainment of certain performance conditions required for vesting, and includes additional stock options that vested through acceleration, pursuant to Mr. Parker\u2019s CIC Agreement, upon the termination of Mr. Parker\u2019s employment in December 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(14)",
+     "The date of grant was March 14, 2019. The number of exercisable options includes stock options that vested through acceleration, pursuant to Mr. Parker\u2019s CIC Agreement, upon the termination of Mr. Parker\u2019s employment in December 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(15)",
+     "The date of grant was February 10, 2020. The number of exercisable options includes stock options that vested through acceleration, pursuant to Mr. Parker\u2019s CIC Agreement, upon the termination of Mr. Parker\u2019s employment in December 2020."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(16)",
+     "The date of grant was May 22, 2019."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(17)",
+     "The date of grant was February 10, 2020."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 339,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The Incentive Plan\nThe following summary of the Incentive Plan is a summary only and does not purport to include all of the terms of the Inventive Plan, and is qualified by the full terms of the Incentive Plan.\nWe have adopted the Incentive Plan that permits us to grant awards, or Awards, consisting of stock options, the grant or sale of restricted stock (\u201cRestricted Stock\u201d), the grant of stock appreciation rights (\u201cSARs\u201d), and the grant of hypothetical units issued with reference to our common stock (\u201cRestricted Stock Units\u201d or \u201cRSUs\u201d), for up to 11,000,000 shares of our common stock. The Incentive Plan also permits Oncocyte to issue such other securities as our Board of Directors (the \u201cBoard\u201d) or the Compensation Committee (the \u201cCommittee\u201d) administering the Incentive Plan may determine. Awards of stock options, Restricted Stock, SARs, and RSUs (\u201cAwards\u201d) may be granted under the Incentive Plan to Oncocyte employees, directors, and consultants.\nAwards may vest and thereby become exercisable or have restrictions on forfeiture lapse on the date of grant or in periodic installments or upon the attainment of performance goals, or upon the occurrence of specified events. Awards may not vest, in whole or in part, earlier than one year from the date of grant. Vesting of an Award after the date of grant may be accelerated only in the limited circumstances specified in the Incentive Plan. In the case of the acceleration of vesting of any performance-based Award, acceleration of vesting shall be limited to actual performance achieved, pro rata achievement of the performance goal(s) on the basis for the elapsed portion of the performance period, or a combination of actual and pro rata achievement of performance goals.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 338,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Shareholder",
+     "Number of Shares",
+     "",
+     "Percent of Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Broadwood Partners, L.P. (1)\n\n\n\nBroadwood Capital, Inc.\n\n\n\nNeal Bradsher\n\n\n\n724 Fifth Avenue, 9th Floor\n\n\n\nNew York, New York 10019",
+     "",
+     "18,409,051",
+     "",
+     "20.57",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pura Vida Investments, LLC(2)\n\n\n\nEfrem Kamen\n\n\n\n150 East 52nd Street, Suite 32001\n\n\n\nNew York, NY 10022",
+     "",
+     "12,223,953",
+     "",
+     "13.75",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George Karfunkel\n\n\n\n126 East 56th Street/15th Floor\n\n\n\nNew York, New York 10022",
+     "",
+     "5,120,000",
+     "",
+     "5.76",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management, and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Shares subject to an Award shall not again be made available for issuance or delivery under the Incentive Plan if those shares are (a) shares tendered in payment of an option, (b) shares delivered or withheld by us to satisfy any tax withholding obligation, (c) shares covered by a stock-settled SAR or other Award that were not issued upon the settlement of the Award, or (d) shares repurchased by us using the proceeds from option exercises. Only shares subject to an Award that is cancelled or forfeited or expires prior to exercise or realization may be regranted under the Incentive Plan.\nOther Compensation Plans\nWe do not have any pension plans, defined benefit plans, or non-qualified deferred compensation plans other than those described above. We do make contributions to 401(k) plans for participating executive officers and other employees.\nItem 12. Security Ownership of Certain Beneficial Owners and Management, and Related Stockholder Matters\nPrincipal Shareholders\nThe following table sets forth information as of March 31, 2021 concerning beneficial ownership of our common stock by each shareholder known by us to be the beneficial owner of 5% or more of our outstanding shares of common stock. Information concerning certain beneficial owners of more than 5% of the outstanding common stock is based upon information disclosed by such owners in their reports on Schedule 13D or Schedule 13G.",
+   "prose_after": "(1) Includes 17,832,445 shares beneficially owned by Broadwood Partners, L.P. and 3,145 shares owned by Neal Bradsher. Broadwood Capital, Inc. is the general partner of Broadwood Partners, L.P. Neal Bradsher is the President of Broadwood Capital, Inc. Mr. Bradsher and Broadwood Capital, Inc. share voting power over and may be deemed to beneficially own the shares owned by Broadwood Partners, L.P. The shares owned by Broadwood Partners, L.P. include 573,461 shares that may be acquired upon the exercise of certain warrants.\n(2) Includes shares held by Pura Vida Master Fund, Ltd. (the \u201cPura Vida Master Fund\u201d) and certain separately managed accounts (the \u201cAccounts\u201d). Pura Vida Investments, LLC (\u201cPVI\u201d) serves as the investment manager to the Pura Vida Master Fund and the Accounts. Efrem Kamen serves as the managing member of PVI. PVI and Mr. Kamen may be deemed to have shared voting and dispositive power with respect to the shares owned directly by the Pura Vida Master Fund and the Accounts. PVI and Mr. Kamen disclaim beneficial ownership of those shares except to the extent of their pecuniary interest therein.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of\n\n\n\nShares",
+     "",
+     "",
+     "",
+     "Percent of\n\n\n\nTotal",
+     "",
+     ""
+    ],
+    [
+     "Ronald Andrews (1)",
+     "",
+     "",
+     "737,817",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mitchell Levine (2)",
+     "",
+     "",
+     "520,824",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Padma Sundar (3)",
+     "",
+     "",
+     "173,865",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Albert Parker (4)",
+     "",
+     "",
+     "333,586",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alfred D. Kingsley (5)",
+     "",
+     "",
+     "759,523",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrew Arno (6)",
+     "",
+     "",
+     "311,016",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrew J. Last (7)",
+     "",
+     "",
+     "176,690",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cavan Redmond (8)",
+     "",
+     "",
+     "279,830",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Melinda Griffith (9)",
+     "",
+     "",
+     "45,000",
+     "",
+     "",
+     "",
+     "*%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jennifer Levin Carter (10)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All executive officers and directors as a group (11 persons) (11)",
+     "",
+     "",
+     "3,416,384",
+     "",
+     "",
+     "",
+     "3.74%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management, and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes 17,832,445 shares beneficially owned by Broadwood Partners, L.P. and 3,145 shares owned by Neal Bradsher. Broadwood Capital, Inc. is the general partner of Broadwood Partners, L.P. Neal Bradsher is the President of Broadwood Capital, Inc. Mr. Bradsher and Broadwood Capital, Inc. share voting power over and may be deemed to beneficially own the shares owned by Broadwood Partners, L.P. The shares owned by Broadwood Partners, L.P. include 573,461 shares that may be acquired upon the exercise of certain warrants.\n(2) Includes shares held by Pura Vida Master Fund, Ltd. (the \u201cPura Vida Master Fund\u201d) and certain separately managed accounts (the \u201cAccounts\u201d). Pura Vida Investments, LLC (\u201cPVI\u201d) serves as the investment manager to the Pura Vida Master Fund and the Accounts. Efrem Kamen serves as the managing member of PVI. PVI and Mr. Kamen may be deemed to have shared voting and dispositive power with respect to the shares owned directly by the Pura Vida Master Fund and the Accounts. PVI and Mr. Kamen disclaim beneficial ownership of those shares except to the extent of their pecuniary interest therein.\nSecurity Ownership of Management\nThe following table sets forth information as of March 31, 2021 concerning beneficial ownership of our common stock and equity awards by each member of the Board of Directors, all Named Executive Officers, and all executive officers and directors as a group.",
+   "prose_after": "*Less than 1%\n(1) Includes 500,416 shares that may be acquired through the exercise of stock options that are presently exercisable or that may become exercisable within 60 days, 106,221 RSUs that will vest within 60 days, and 17,482 shares that may be acquired upon the exercise of certain warrants. Excludes 1,064,584 shares that may be acquired upon the exercise of certain stock options that are not presently exercisable and that will not become exercisable within 60 days and 65,000 RSUs that are currently unvested and will not vest within 60 days.\n(2) Includes 450,629 shares that may be acquired through the exercise of stock options that are presently exercisable or that may become exercisable within 60 days, 20,000 RSUs that will vest within 60 days, and 3,495 shares that may be acquired upon the exercise of certain warrants. Excludes 545,037 shares that may be acquired upon the exercise of certain stock options that are not presently exercisable and that will not become exercisable within 60 days.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "",
+     "$206,400",
+     "",
+     "$179,780"
+    ],
+    [
+     "Audit Related Fees (2)",
+     "",
+     "145,202",
+     "",
+     "80,064"
+    ],
+    [
+     "Total Fees",
+     "",
+     "$351,602",
+     "",
+     "$259,844"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 563,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Our Board of Directors has determined that Andrew Arno, Jennifer Levin Carter, Melinda Griffith, Alfred D. Kingsley, Andrew Last, and Cavan Redmond, qualify as \u201cindependent\u201d in accordance with Rule 5605(a)(2) of The Nasdaq Stock Market LLC (\u201cNasdaq\u201d). The members of our Audit Committee meet the additional independence standards under Nasdaq Rule 5605(c)(2) and Rule 10A-3 under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), and the members of our Compensation Committee meet the additional independence standards under Nasdaq Rule 5605(d)(2). Our independent directors received no compensation or remuneration for serving as directors except as disclosed under \u201cCORPORATE GOVERNANCE\u2014Compensation of Directors.\u201d None of these directors, nor any of the members of their respective families, have participated in any transaction with us that would disqualify them as \u201cindependent\u201d directors under the standards described above. Ronald Andrews does not qualify as \u201cindependent\u201d because he is our Chief Executive Officer and President.\nItem 14. Principal Accounting Fees and Services\nOUM & Co., LLP (\u201cOUM\u201d) has served as our independent registered public accountants since the fourth quarter of 2015, and audited our annual consolidated financial statements for the fiscal years ended December 31, 2020 and 2019.\nAudit Fees, Audit Related Fees, Tax Fees and Other Fees\nThe following table sets forth the aggregate fees billed to us during the fiscal years ended December 31, 2020 and 2019 by OUM:",
+   "prose_after": "(1) Audit Fees consist of fees billed for professional services rendered for the audit of Oncocyte\u2019s annual consolidated financial statements included in our Annual Report on Form 10-K, and review of the interim consolidated financial statements included in our Quarterly Reports on Form 10-Q, as applicable, and services that are normally provided by our independent registered public accountants in connection with statutory and regulatory filings or engagements.\n(2) Audit-Related Fees consist of fees billed for assurance and related services that are reasonably related to the performance of the audit or review of our consolidated financial statements and are not reported under \u201cAudit Fees.\u201d This category includes fees related to non-routine SEC filings.\nPre-Approval of Audit and Permissible Non-Audit Services\nOur Audit Committee requires pre-approval of all audit and non-audit services. Other than de minimis services incidental to audit services, non-audit services shall generally be limited to tax services such as advice and planning and financial due diligence services. All fees for such non-audit services must be approved by the Audit Committee, except to the extent otherwise permitted by applicable SEC regulations. The Committee may delegate to one or more designated members of the Committee the authority to grant pre-approvals, provided such approvals are presented to the Committee at a subsequent meeting. During 2020, all of the fees paid to OUM were approved by the Audit Committee.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a-1)",
+     "",
+     "Financial Statements."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "The following consolidated financial statements of OncoCyte Corporation are filed in the Form 10-K:"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consolidated Balance Sheets"
+    ],
+    [
+     "",
+     "",
+     "Consolidated Statements of Operations"
+    ],
+    [
+     "",
+     "",
+     "Consolidated Statements of Comprehensive Loss"
+    ],
+    [
+     "",
+     "",
+     "Consolidated Statements of Shareholders\u2019 Equity"
+    ],
+    [
+     "",
+     "",
+     "Consolidated Statements of Cash Flows"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Audit-Related Fees consist of fees billed for assurance and related services that are reasonably related to the performance of the audit or review of our consolidated financial statements and are not reported under \u201cAudit Fees.\u201d This category includes fees related to non-routine SEC filings.\nPre-Approval of Audit and Permissible Non-Audit Services\nOur Audit Committee requires pre-approval of all audit and non-audit services. Other than de minimis services incidental to audit services, non-audit services shall generally be limited to tax services such as advice and planning and financial due diligence services. All fees for such non-audit services must be approved by the Audit Committee, except to the extent otherwise permitted by applicable SEC regulations. The Committee may delegate to one or more designated members of the Committee the authority to grant pre-approvals, provided such approvals are presented to the Committee at a subsequent meeting. During 2020, all of the fees paid to OUM were approved by the Audit Committee.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumbers",
+     "",
+     "Exhibit Description"
+    ],
+    [
+     "2.1",
+     "",
+     "Subscription and Stock Purchase Agreement, dated September 4, 2019, among OncoCyte Corporation, Encore Clinical, Inc., and Razor Genomics Inc.\u2020 (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on October 3, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "",
+     "Agreement and Plan of Merger, dated as of January 10, 2020, among OncoCyte Corporation, Cancer DX Sub, Inc., Insight Genetics, Inc., the Shareholders who became a Party to the Merger Agreement and the Equityholder Representative. (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on February 5, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.3",
+     "",
+     "Agreement and Plan of Merger, dated as of February 2, 2021, among Oncocyte Corporation, CNI Monitor Sub, Inc., Chronix Biomedical, Inc., the Shareholders who became a Party to the Merger Agreement and the Equityholder Representative (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on February 3, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation with all amendments (Incorporated by reference to OncoCyte Corporation\u2019s Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on July 29, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Amended and Restated By-Laws (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on March 6, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Specimen of Common Stock Certificate (Incorporated by reference to OncoCyte Corporation\u2019s Form 10 12(b) filed with the Securities and Exchange Commission on November 23, 2015)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Form of August 2016 Warrant (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 29, 2016)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "Form of 2017 Warrant, Exercise Price $3.25 (Incorporated by reference to OncoCyte Corporation\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on February 27, 2017)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Form of 2017 Warrant, Exercise Price $5.50 (Incorporated by reference to OncoCyte Corporation\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on February 27, 2017)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "",
+     "Silicon Valley Bank Warrant (Incorporated by reference to OncoCyte Corporation\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on February 27, 2017)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 597,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "4.6 Form of July 2017 Warrant, Exercise Price $5.50; five-year term (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on July 26, 2017) 4.7 Form of July 2017 Warrant, Exercise Price $3.25, five-year term (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on July 26, 2017) 4.8 Form of July 2018 Warrant (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 1, 2018) 4.9 Warrant to Purchase Shares of Common Stock, dated August 1, 2019 (Incorporated by reference to OncoCyte Corporation\u2019s Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on August 14, 2019) 4.10 Warrant to Purchase Common Stock, dated October 17, 2019, between OncoCyte Corporation and Silicon Valley Bank (Incorporated by Reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on October 21, 2019)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.38",
+     "",
+     "Exclusive Sublicense Agreement in the PRC Territory, Dated December 14, 2020, by and among Razor Genomics, Inc., OncoCyte Corporation, Encore Clinical, Inc., and Burning Rock Biotech Limited (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on December 16, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.39",
+     "",
+     "Subscription Agreements, dated January 20, 2021, between OncoCyte Corporation and the Investors Named Therein (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on January 21, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.40",
+     "",
+     "Amended and Restated Exclusive License Agreement, effective February 15, 2018, between Razor Genomics, Inc. and the licensor named therein\u2020*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "21",
+     "",
+     "Subsidiaries*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "",
+     "Consent of OUM & Co. LLP *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "",
+     "Rule 13a-14(a)/15d-14(a) Certification **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "",
+     "Section 1350 Certification *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101",
+     "",
+     "Interactive Data Files *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "10.23 First Amendment to Loan and Security Agreement, dated October 17, 2019, between OncoCyte Corporation and Silicon Valley Bank\u2020 (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on October 21, 2019) 10.24 Office Lease Agreement, dated December 23, 2019, as amended between OncoCyte Corporation and Cushing Ventures, LLC (Incorporated by reference to OncoCyte Corporation\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 27, 2019) 10.25 Lease Agreement, dated November 10, 2011, between Insight Genetics, Inc. and MPC Holdings, LLC, as renewed by notice dated January 3, 2019 (Incorporated by Reference to Annual Report on Form 10-K Filed with the Securities and Exchange Commission on March 26, 2020) 10.26 Oncocyte Corporation Change in Control and Severance Plan (Incorporated by Reference to Annual Report on Form 10-K Filed with the Securities and Exchange Commission on March 26, 2020) 10.27 Form of Change in Control and Severance Agreement (Incorporated by Reference to Annual Report on Form 10-K Filed with the Securities and Exchange Commission on March 26, 2020) 10.28 Form of Subscription Agreement between OncoCyte Corporation and Certain Investors (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on April 28, 2020) 10.29 U.S. Small Business Administration Paycheck Protection Program Note (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on April 29, 2020) 10.30 Loan Deferral Agreement, dated April 2, 2020, between OncocCyte Corporation and Silicon Valley Bank (Incorporated by Reference to Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on May 12, 2020) 10.31 Acknowledgement and Agreement, dated May 7, 2020, between OncoCyte Corporation and Ronald Andrews (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on May 12, 2020) 10.32 Acknowledgement and Agreement, dated May 7, 2020, between OncoCyte Corporation and Mitchell Levine (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on May 12, 2020) 10.33 Acknowledgement and Agreement, dated May 7, 2020, between OncoCyte Corporation and Lyndal Hesterberg (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on May 12, 2020) 10.34 Employment Agreement, dated March 23, 2020, between OncoCyte Corporation and Doug Ross (Incorporated by Reference to Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on July 29, 2020) 10.35 Reduction in Salary Agreement between OncoCyte Corporation and Albert Parker (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on September 28, 2020) 10.36 Reduction in Salary Agreement between OncoCyte Corporation and Lyndal Hesterberg (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on September 28, 2020) 10.37 Reduction in Salary Agreement between OncoCyte Corporation and Tony Kalajian (Incorporated by Reference to Current Report on Form 8-K filed with the Securities and Exchange Commission on September 28, 2020)",
+   "prose_after": "*Previously filed\n**Filed herewith\n\u2020 Portions of this exhibit have been omitted because the omitted information is (i) not material and (ii) would likely cause competitive harm to the registrant if publicly disclosed\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Amendment No. 1 on Form 10-K/A to be signed on its behalf by the undersigned, thereunto duly authorized on the 30th day of April 2021.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ONCOCYTE CORPORATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Ronald Andrews"
+    ],
+    [
+     "",
+     "Ronald Andrews"
+    ],
+    [
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ONCOCYTE CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "*Previously filed\n**Filed herewith\n\u2020 Portions of this exhibit have been omitted because the omitted information is (i) not material and (ii) would likely cause competitive harm to the registrant if publicly disclosed\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Amendment No. 1 on Form 10-K/A to be signed on its behalf by the undersigned, thereunto duly authorized on the 30th day of April 2021.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

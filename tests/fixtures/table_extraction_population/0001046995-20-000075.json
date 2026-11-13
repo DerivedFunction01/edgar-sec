@@ -1,0 +1,5246 @@
+{
+ "accession": "0001046995-20-000075",
+ "cik": "0001046995",
+ "form": "10-Q",
+ "filing_date": "2020-08-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "eman-20200630x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "56-1764501"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2020\nOr\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 001-15751\neMAGIN CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "700 South Drive, Suite 201, Hopewell Junction, NY 12533\n(Address of principal executive offices) (Zip Code)\n(845) 838-7900\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $.001 Par Value Per Share",
+     "EMAN",
+     "NYSE American"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "700 South Drive, Suite 201, Hopewell Junction, NY 12533\n(Address of principal executive offices) (Zip Code)\n(845) 838-7900\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Condensed Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of June 30, 2020 (unaudited) and December 31, 2019",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations for the three and six months ended June 30, 2020 and 2019 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Changes in Shareholders\u2019 Equity for the three and six months ended June 30, 2020 and 2019 (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the six months ended June 30, 2020 and 2019 (unaudited)",
+     "8"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (unaudited)",
+     "9"
+    ],
+    [
+     "Item 2",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "22"
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "30"
+    ],
+    [
+     "Item 4",
+     "Controls and Procedures",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "30"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "31"
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "32"
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "32"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "32"
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "32"
+    ],
+    [
+     "Item 6",
+     "Exhibits",
+     "33"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]   Smaller Reporting Company  [X]\nAccelerated filer           [ ]  Emerging growth company    [ ]\nNon-accelerated filer    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) Yes [ ] No [X]\nAs of July 31, 2020, there were 67,381,256 common shares at $0.001 par value per share of the registrant outstanding.\nTable of Contents",
+   "prose_after": "2\nSTATEMENT REGARDING FORWARD-LOOKING INFORMATION\nThis Quarterly Report on Form 10-Q, or Report, contains forward-looking statements that are based on our management\u2019s belief and assumptions and on information currently available to our management. Although we believe that the expectations reflected in these forward-looking statements are reasonable, these statements relate to future events or our future financial performance, and involve known and unknown risks, uncertainties and other factors that may cause our actual results, levels of activity, performance or achievements to be materially different from any future results, levels of activity, performance or achievements expressed or implied by these forward-looking statements.\nIn some cases, you can identify forward-looking statements by terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinue\u201d or the negative of these terms or other comparable terminology. You should not place undue reliance on forward-looking statements because they involve known and unknown risks, uncertainties and other factors, which are, in some cases, beyond our control and which could materially affect our results. Factors that may cause actual results to differ materially from current expectations include, among other things, those listed in the section entitled \u201cRisk Factors\u201d in our Annual Report on Form 10-K for the fiscal year ended December 31, 2019, and in this Report on Form 10-Q. If one or more of these risks or uncertainties occur, or if our underlying assumptions prove to be incorrect, actual events or results may vary significantly from those implied or projected by the forward-looking statements. No forward-looking statement is a guarantee of future performance. You should read this Report and the documents that we reference in this Report and have filed with the Securities and Exchange Commission, or the SEC, as exhibits to this Report, completely and with the understanding that our actual future results may be materially different from any future results expressed or implied by these forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,447",
+     "$",
+     "3,515"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "6,085",
+     "",
+     "3,966"
+    ],
+    [
+     "Unbilled accounts receivable",
+     "",
+     "16",
+     "",
+     "155"
+    ],
+    [
+     "Inventories",
+     "",
+     "8,470",
+     "",
+     "8,832"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "1,389",
+     "",
+     "1,130"
+    ],
+    [
+     "Total current assets",
+     "",
+     "21,407",
+     "",
+     "17,598"
+    ],
+    [
+     "Equipment, furniture and leasehold improvements, net",
+     "",
+     "7,817",
+     "",
+     "8,100"
+    ],
+    [
+     "Operating lease right - of - use assets",
+     "",
+     "3,358",
+     "",
+     "3,729"
+    ],
+    [
+     "Intangibles and other assets",
+     "",
+     "130",
+     "",
+     "160"
+    ],
+    [
+     "Total assets",
+     "$",
+     "32,712",
+     "$",
+     "29,587"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,809",
+     "$",
+     "1,302"
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "1,914",
+     "",
+     "1,778"
+    ],
+    [
+     "Paycheck Protection Program loan - current",
+     "",
+     "496",
+     "",
+     "\u2014"
+    ],
+    [
+     "Revolving credit facility, net",
+     "",
+     "420",
+     "",
+     "2,891"
+    ],
+    [
+     "Common stock warrant liability",
+     "",
+     "1,524",
+     "",
+     "23"
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "1,598",
+     "",
+     "1,401"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "289",
+     "",
+     "277"
+    ],
+    [
+     "Operating lease liability - current",
+     "",
+     "809",
+     "",
+     "775"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "508",
+     "",
+     "342"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "9,367",
+     "",
+     "8,789"
+    ],
+    [
+     "Finance lease liability - long term",
+     "",
+     "16",
+     "",
+     "24"
+    ],
+    [
+     "Paycheck Protection Program - Long Term payable",
+     "",
+     "1,467",
+     "",
+     "\u2014"
+    ],
+    [
+     "Deferred Income - Government awards - long term",
+     "",
+     "2,263",
+     "",
+     "\u2014"
+    ],
+    [
+     "Operating lease liability - long term",
+     "",
+     "2,654",
+     "",
+     "3,067"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "15,767",
+     "",
+     "11,880"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 8)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.001 par value: authorized 10,000,000 shares:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series B Convertible Preferred stock, (liquidation preference of $5,659) stated value $1,000 per share, $.001 par value: 10,000 shares designated and 5,659 issued and outstanding as of June 30, 2020 and December 31, 2019.",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $.001 par value: authorized 200,000,000 shares, issued 61,407,331 shares, outstanding 61,245,265 shares as of June 30, 2020 and issued 50,250,378 shares, outstanding 50,088,312 shares as of December 31, 2019.",
+     "",
+     "61",
+     "",
+     "50"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "262,194",
+     "",
+     "258,767"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(244,810)",
+     "",
+     "(240,610)"
+    ],
+    [
+     "Treasury stock, 162,066 shares as of June 30, 2020 and December 31, 2019.",
+     "",
+     "(500)",
+     "",
+     "(500)"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "16,945",
+     "",
+     "17,707"
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "32,712",
+     "$",
+     "29,587"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The forward-looking statements in this Report represent our views as of the date of this Report. We anticipate that subsequent events and developments may cause our views to change. However, while we may elect to update these forward-looking statements at some point in the future, we have no current intention of doing so except to the extent required by applicable law. Therefore, these forward-looking statements do not represent our views as of any date other than the date of this Report.\nIn this Report, references to \u201ceMagin Corporation,\u201d \u201ceMagin,\u201d \u201cthe Company,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour company\u201d refer to eMagin Corporation and our wholly owned subsidiary, Virtual Vision, Inc. References to \u201cConsumer Night Vision Business\u201d refers to our consumer night vision products business.\neMagin\u00ae is a registered trademark of eMagin Corporation. dPdTM is an unregistered trademark of eMagin. All rights reserved. All other trademarks used in this Report are the property of their respective owners.\nITEM 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 167,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 228,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product",
+     "$",
+     "6,260",
+     "$",
+     "4,958",
+     "$",
+     "11,894",
+     "$",
+     "10,465"
+    ],
+    [
+     "Contract",
+     "",
+     "1,440",
+     "",
+     "403",
+     "",
+     "2,537",
+     "",
+     "1,008"
+    ],
+    [
+     "Total revenues, net",
+     "",
+     "7,700",
+     "",
+     "5,361",
+     "",
+     "14,431",
+     "",
+     "11,473"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product",
+     "",
+     "4,978",
+     "",
+     "4,898",
+     "",
+     "9,768",
+     "",
+     "9,324"
+    ],
+    [
+     "Contract",
+     "",
+     "746",
+     "",
+     "238",
+     "",
+     "1,253",
+     "",
+     "588"
+    ],
+    [
+     "Total cost of revenues",
+     "",
+     "5,724",
+     "",
+     "5,136",
+     "",
+     "11,021",
+     "",
+     "9,912"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,976",
+     "",
+     "225",
+     "",
+     "3,410",
+     "",
+     "1,561"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "1,599",
+     "",
+     "1,300",
+     "",
+     "2,579",
+     "",
+     "2,897"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "1,712",
+     "",
+     "1,777",
+     "",
+     "3,510",
+     "",
+     "3,716"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,311",
+     "",
+     "3,077",
+     "",
+     "6,089",
+     "",
+     "6,613"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,335)",
+     "",
+     "(2,852)",
+     "",
+     "(2,679)",
+     "",
+     "(5,052)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of common stock warrant liability",
+     "",
+     "(1,481)",
+     "",
+     "536",
+     "",
+     "(1,501)",
+     "",
+     "1,330"
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(18)",
+     "",
+     "(21)",
+     "",
+     "(35)",
+     "",
+     "(55)"
+    ],
+    [
+     "Other income, net",
+     "",
+     "3",
+     "",
+     "\u2014",
+     "",
+     "15",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total other (expense) income",
+     "",
+     "(1,496)",
+     "",
+     "515",
+     "",
+     "(1,521)",
+     "",
+     "1,275"
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(2,831)",
+     "",
+     "(2,337)",
+     "",
+     "(4,200)",
+     "",
+     "(3,777)"
+    ],
+    [
+     "Income taxes",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,831)",
+     "$",
+     "(2,337)",
+     "$",
+     "(4,200)",
+     "$",
+     "(3,777)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share, basic and diluted",
+     "$",
+     "(0.05)",
+     "$",
+     "(0.05)",
+     "$",
+     "(0.08)",
+     "$",
+     "(0.08)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "",
+     "56,754,867",
+     "",
+     "48,817,940",
+     "",
+     "54,196,732",
+     "",
+     "46,979,505"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 240,
+    "end_line": 296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except share and per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDER\u2019S EQUITY\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 297,
+     "token": "REPEATING_FOOTER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Shares",
+     "",
+     "Preferred Stock",
+     "",
+     "Common Shares",
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Shareholders\u2019 Equity",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "50,250,378",
+     "$",
+     "50",
+     "$",
+     "258,767",
+     "$",
+     "(240,610)",
+     "$",
+     "(500)",
+     "$",
+     "17,707"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "43",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "43"
+    ],
+    [
+     "Public offering of common shares, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,730,540",
+     "",
+     "4",
+     "",
+     "1,548",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,552"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,369)",
+     "",
+     "\u2014",
+     "",
+     "(1,369)"
+    ],
+    [
+     "Balance, March 31, 2020",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "53,980,918",
+     "$",
+     "54",
+     "$",
+     "260,358",
+     "$",
+     "(241,979)",
+     "$",
+     "(500)",
+     "$",
+     "17,933"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "44",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "44"
+    ],
+    [
+     "Public offering of common shares, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,408,913",
+     "",
+     "3",
+     "",
+     "1,756",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,759"
+    ],
+    [
+     "Exercise of common stock warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,017,500",
+     "",
+     "4",
+     "",
+     "36",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "40"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,831)",
+     "",
+     "\u2014",
+     "",
+     "(2,831)"
+    ],
+    [
+     "Balance, June 30, 2020",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "61,407,331",
+     "$",
+     "61",
+     "$",
+     "262,194",
+     "$",
+     "(244,810)",
+     "$",
+     "(500)",
+     "$",
+     "16,945"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Shares",
+     "",
+     "Preferred Stock",
+     "",
+     "Common Shares",
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Shareholders\u2019 Equity",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "45,323,339",
+     "$",
+     "45",
+     "$",
+     "254,736",
+     "$",
+     "(236,312)",
+     "$",
+     "(500)",
+     "$",
+     "17,969"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "193",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "193"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,439)",
+     "",
+     "\u2014",
+     "",
+     "(1,439)"
+    ],
+    [
+     "Balance, March 31, 2019",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "45,323,339",
+     "$",
+     "45",
+     "$",
+     "254,929",
+     "$",
+     "(237,751)",
+     "$",
+     "(500)",
+     "$",
+     "16,723"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "97",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "97"
+    ],
+    [
+     "Public offering of common shares, net of offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,000,000",
+     "",
+     "4",
+     "",
+     "3,299",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,303"
+    ],
+    [
+     "Exercise of common stock options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12,500",
+     "",
+     "\u2014",
+     "",
+     "8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,337)",
+     "",
+     "\u2014",
+     "",
+     "(2,337)"
+    ],
+    [
+     "Balance, June 30, 2019",
+     "",
+     "5,659",
+     "$",
+     "\u2014",
+     "",
+     "49,335,839",
+     "$",
+     "49",
+     "$",
+     "258,333",
+     "$",
+     "(240,088)",
+     "$",
+     "(500)",
+     "$",
+     "17,794"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 309,
+    "end_line": 345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDER\u2019S EQUITY\n(In thousands, except share data)",
+   "prose_after": "See notes to Condensed Consolidated Financial Statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 307,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,200)",
+     "$",
+     "(3,777)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "963",
+     "",
+     "988"
+    ],
+    [
+     "Change in fair value of common stock warrant liability",
+     "",
+     "1,501",
+     "",
+     "(1,330)"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "87",
+     "",
+     "290"
+    ],
+    [
+     "Amortization of operating lease right-of-use assets",
+     "",
+     "371",
+     "",
+     "314"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "144",
+     "",
+     "453"
+    ],
+    [
+     "Unbilled accounts receivable",
+     "",
+     "139",
+     "",
+     "203"
+    ],
+    [
+     "Inventories",
+     "",
+     "362",
+     "",
+     "214"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(259)",
+     "",
+     "(72)"
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "12",
+     "",
+     "96"
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(387)",
+     "",
+     "(291)"
+    ],
+    [
+     "Accounts payable, accrued expenses, and other current liabilities",
+     "",
+     "1,032",
+     "",
+     "(242)"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(235)",
+     "",
+     "(3,154)"
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(676)",
+     "",
+     "(833)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(676)",
+     "",
+     "(833)"
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayments (borrowings) under revolving line of credit, net",
+     "",
+     "(2,471)",
+     "",
+     "1,022"
+    ],
+    [
+     "Proceeds from public offering, net",
+     "",
+     "3,311",
+     "",
+     "3,303"
+    ],
+    [
+     "Proceeds from Paycheck Protection Program loan",
+     "",
+     "1,963",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from warrant exercise, net",
+     "",
+     "40",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "\u2014",
+     "",
+     "8"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,843",
+     "",
+     "4,333"
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "1,932",
+     "",
+     "346"
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "3,515",
+     "",
+     "3,359"
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "5,447",
+     "$",
+     "3,705"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "40",
+     "$",
+     "32"
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 358,
+    "end_line": 407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See notes to Condensed Consolidated Financial Statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO UNAUDITED CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNote 1 \u2013 Description of the Business and Summary of Significant Accounting Policies\nThe Business\neMagin Corporation (the \u201cCompany\u201d) designs, develops, manufactures and markets Active Matrix OLED (organic light emitting diode) -on-silicon microdisplays used in military and commercial AR/VR devices and other near-eye imaging products which utilize OLED microdisplays. The Company\u2019s products are sold mainly in North America, Asia, and Europe.\nBasis of Presentation\nIn the opinion of management, the accompanying unaudited interim condensed consolidated financial statements of eMagin Corporation and its subsidiary reflect all adjustments, including normal recurring accruals, necessary for a fair presentation. All significant intercompany balances and transactions have been eliminated in consolidation. Certain information and footnote disclosure normally included in annual financial statements prepared in accordance with accounting principles generally accepted in the United States of America have been condensed or omitted pursuant to instructions, rules and regulations prescribed by the SEC. The Company believes that the disclosures provided herein are adequate to make the information presented not misleading when these unaudited consolidated financial statements are read in conjunction with the audited consolidated financial statements contained in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2019. The results of operations for the periods ended June 30, 2020 are not necessarily indicative of the results to be expected for the full year. The consolidated financial statements as of December 31, 2019 are derived from audited financial statements included in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 356,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 408,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "331",
+     "$",
+     "321",
+     "$",
+     "300",
+     "$",
+     "423"
+    ],
+    [
+     "Warranty accruals and adjustments",
+     "",
+     "21",
+     "",
+     "39",
+     "",
+     "59",
+     "",
+     "(39)"
+    ],
+    [
+     "Warranty claims",
+     "",
+     "(1)",
+     "",
+     "(43)",
+     "",
+     "(8)",
+     "",
+     "(67)"
+    ],
+    [
+     "Ending balance",
+     "$",
+     "351",
+     "$",
+     "317",
+     "$",
+     "351",
+     "$",
+     "317"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 Description of the Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The total intangible amortization expense was approximately $2 thousand and approximately $4 thousand and for the three and six months ended June 30, 2020 and approximately $9 thousand and approximately $14 thousand for the comparable 2019, periods, respectively.\nProduct warranty\nThe Company generally offers a one-year product replacement warranty. The standard policy is to repair or replace the defective products. The Company accrues for estimated returns of defective products at the time revenue is recognized based on historical activity as well as for specific known product issues. The determination of these accruals requires the Company to make estimates of the frequency and extent of warranty activity and estimate future costs to replace the products under warranty. If the actual warranty activity and/or repair and replacement costs differ significantly from these estimates, adjustments to cost of revenue may be required in future periods.\nThe following table provides a summary of the activity related to the Company's warranty liability included in other current liabilities, (in thousands):",
+   "prose_after": "Net Loss per Common Share\nBasic loss per share is computed using the weighted average number of common shares outstanding during the period, and excludes any dilutive effects of common stock equivalent shares such as stock options, warrants, and convertible preferred stock. Diluted loss per share is computed using the weighted average number of common shares outstanding and potentially dilutive common stock equivalent shares outstanding during the period. Common stock equivalent shares are excluded from the computation if their effect is anti-dilutive.\nThe Company\u2019s Series B Convertible Preferred stock (\u201cPreferred Stock \u2013 Series B\u201d) is considered a participating security as the preferred stock participates in dividends with the common stock, which requires the use of the two-class method when computing basic and diluted earnings per share. The Preferred Stock \u2013 Series B is not required to absorb any net loss. Although the Company paid a one-time special dividend in 2012, the Company does not expect to pay dividends on its common or preferred stock in the near future.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019",
+     "2020",
+     "2019"
+    ],
+    [
+     "Options",
+     "5,058,360",
+     "4,832,468",
+     "5,058,360",
+     "4,832,468"
+    ],
+    [
+     "Warrants",
+     "15,265,773",
+     "19,295,773",
+     "15,265,773",
+     "19,295,773"
+    ],
+    [
+     "Convertible preferred stock",
+     "7,545,333",
+     "7,545,333",
+     "7,545,333",
+     "7,545,333"
+    ],
+    [
+     "Total potentially dilutive common stock equivalents",
+     "27,869,466",
+     "31,673,574",
+     "27,869,466",
+     "31,673,574"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 481
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 Description of the Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company\u2019s Series B Convertible Preferred stock (\u201cPreferred Stock \u2013 Series B\u201d) is considered a participating security as the preferred stock participates in dividends with the common stock, which requires the use of the two-class method when computing basic and diluted earnings per share. The Preferred Stock \u2013 Series B is not required to absorb any net loss. Although the Company paid a one-time special dividend in 2012, the Company does not expect to pay dividends on its common or preferred stock in the near future.\nFor the three and six months ended June 30, 2020 and 2019, the Company reported a net loss and as a result, basic and diluted loss per common share are the same. Therefore, in calculating net loss per share amounts, shares underlying the potentially dilutive common stock equivalents were excluded from the calculation of diluted net income per common share because their effect was anti-dilutive.\nThe following table sets forth the potentially dilutive common stock equivalents for the three and six months ended June 30, 2020 and 2019 that were not included in diluted EPS as their effect would be anti-dilutive:",
+   "prose_after": "Government Funding\nThe Company accounts for awards received from the U.S. Government for procurement of capital equipment after analysis of the terms of the underlying award contract, and in accordance with contract and equipment purchase milestones and accounting principles for grant accounting. For awards in which the Company will hold title to the underlying equipment, the Company initially records amounts invoiced to the U.S. Government for equipment progress payments on the accompanying Consolidated Balance Sheets as Deferred Income \u2013 Government Awards \u2013 long term and Accounts Receivable. The Company records said progress payments made to capital equipment vendors in Equipment, Furniture and Leasehold improvements. Amounts recorded in Deferred Income \u2013 Government Awards \u2013 long term will be recognized as Other Income on the accompanying Consolidated Statement of Operations on a systematic basis as depreciation and other expenses are incurred over the useful life of the capital equipment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2020",
+     "$",
+     "23"
+    ],
+    [
+     "Fair value of warrants issuance during period",
+     "",
+     "-"
+    ],
+    [
+     "Change in fair value of warrant liability, net",
+     "",
+     "1,501"
+    ],
+    [
+     "Balance as of June 30, 2020",
+     "$",
+     "1,524"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated Fair Value"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 506,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 Description of the Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Assets and liabilities recorded in the balance sheets at fair value are categorized based on a hierarchy of inputs as follows:\nLevel 1 \u2013 Unadjusted quoted prices in active markets of identical assets or liabilities.\nLevel 2 \u2013 Quoted prices for similar assets or liabilities in active markets or inputs that are observable for the asset or liability, either directly or indirectly through market corroboration, for substantially the full term of the financial instrument.\nLevel 3 \u2013 Unobservable inputs for the asset or liability.\nThe common stock warrant liability is currently the only financial asset or liability recorded at fair value on a recurring basis, and is considered a Level 3 liability. The fair value of the common stock warrant liability is included in current liabilities on the Condensed Consolidated Balance Sheets, as the warrants are currently exercisable.\nThe following table shows the reconciliation of the Level 3 warrant liability measured and recorded at fair value on a recurring basis, using significant unobservable inputs (in thousands):",
+   "prose_after": "The fair value of the liability for common stock purchase warrants at issuance and at June 30, 2020 was estimated using the Black Scholes option pricing model based on the market value of the underlying common stock at the measurement date. Inputs to the model at June 30, 2020 included remaining contractual terms of the warrants ranging from 1.9 to 2.6 years, at risk-free interest rates of 0.3%, with no expected dividends, and expected volatility of the price of the underlying common stock of 97.9%.\nConcentrations\nThe Company purchases principally all of its silicon wafers, which are a key ingredient in its OLED production process, from two suppliers located in Taiwan and Korea.\nFor the three and six months ended June 30, 2020, five customers of 17.3%, 14.4%, 10.9%, 10.2%, and 10.0% and three customer of 14.61%, 14.43% and 14.02% accounted for over 10% of net revenues, respectively. As of June 30, 2020, three customers accounted for 38.9%, 11.9%, and 11.2% of the Company\u2019s consolidated accounts receivable balance, respectively. As of June 30, 2019, three customers accounted for 13%, 13%, and 12% of the Company\u2019s consolidated accounts receivable balance, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "North and South America",
+     "$",
+     "4,177",
+     "$",
+     "2,855",
+     "$",
+     "7,717",
+     "$",
+     "6,253"
+    ],
+    [
+     "Europe, Middle East, and Africa",
+     "",
+     "2,221",
+     "",
+     "2,152",
+     "",
+     "4,922",
+     "",
+     "4,479"
+    ],
+    [
+     "Asia Pacific",
+     "",
+     "1,302",
+     "",
+     "354",
+     "",
+     "1,792",
+     "",
+     "741"
+    ],
+    [
+     "Total",
+     "$",
+     "7,700",
+     "$",
+     "5,361",
+     "$",
+     "14,431",
+     "$",
+     "11,473"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "The Company also recognizes revenues under the over time method from certain research and development (\u201cR&D\u201d) activities (contract revenues) under both firm fixed-price contracts and cost-type contracts. Progress and revenues from research and development activities relating to firm fixed-price contracts and cost-type contracts are generally recognized on an input method of accounting as costs are incurred. Under the input method, revenue is recognized based on efforts expended to date (e.g., the costs of resources consumed or labor hours worked, or machine hours used) relative to total efforts intended to be expended. Contract costs include all direct material, labor and subcontractor costs and an allocation of allowable indirect costs as defined by each contract, as periodically adjusted to reflect revised agreed upon rates. These rates are subject to audit by the other party. Any changes in estimate related to contract accounting are accounted for prospectively over the remaining life of the contract. Under the over time method, billings may not correlate directly to the revenue recognized. Based upon the terms of the specific contract, billings may be in excess of the revenue recognized, in which case the amounts are included in deferred revenues as a liability on the Condensed Consolidated Balance Sheets. Likewise, revenue recognized may exceed customer billings in which case the amounts are reported as unbilled receivables. Unbilled revenues are expected to be billed and collected within one year. The incidental costs related to obtaining product sales contracts are non-recoverable from customers and, accordingly, are expensed as incurred.\nDisaggregation of Revenue\nThe Company sells products directly to military contractors and OEM\u2019s and they use our displays in a diverse range of applications encompassing the military and commercial, including medical and industrial, market sectors. Revenues are classified as either military, commercial, consumer or multiple based on management\u2019s knowledge of the customer\u2019s products and markets served by displays or the R&D contract work. Revenues classified as multiple are for sales to customers that incorporate the Company\u2019s displays in products that could be used for either military or commercial applications. R&D activities are performed for both military customers and U.S. Government defense related agencies and consumer companies. Product and contract revenues are disclosed on the Consolidated Statements of Operations.\nAdditional disaggregated revenue information for the three and six months ended June 30, 2020 and 2019 were as follows (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "2019"
+    ],
+    [
+     "Military",
+     "$",
+     "4,952",
+     "$",
+     "3,199",
+     "$",
+     "9,751",
+     "$",
+     "7,646"
+    ],
+    [
+     "Commercial, including industrial and medical",
+     "",
+     "409",
+     "",
+     "776",
+     "",
+     "722",
+     "",
+     "1,112"
+    ],
+    [
+     "Consumer",
+     "",
+     "1,335",
+     "",
+     "324",
+     "",
+     "2,023",
+     "",
+     "746"
+    ],
+    [
+     "Multiple",
+     "",
+     "1,004",
+     "",
+     "1,062",
+     "",
+     "1,935",
+     "",
+     "1,969"
+    ],
+    [
+     "Total",
+     "$",
+     "7,700",
+     "$",
+     "5,361",
+     "$",
+     "14,431",
+     "$",
+     "11,473"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Accounts Receivable from Customers\nAccounts receivable, net of allowances, were $6.1 million and $4.0 million as of June 30, 2020 and December 31, 2019. Accounts receivable associated with revenue from customers were $3.7 million and the receivable under the IBAS award was $2.4 million as of June 30, 2020, as described in Note 12 - Government Funding.\nContract Assets and Liabilities\nUnbilled Accounts Receivables (Contract Assets) - Pursuant to the over time revenue recognition model, revenue may be recognized prior to the customer being invoiced. An unbilled accounts receivable is recorded to reflect revenue that is recognized when the cost based input method is applied and such revenue exceeds the amount invoiced to the customer. Unbilled receivables are disclosed on the Condensed Consolidated Balance Sheet.\nCustomer Advances and Deposits (Contract Liabilities) - The Company recognizes a contract liability when it has billed and received consideration from the customer pursuant to the terms of a contract but has not yet recognized the related revenue. These billings in excess of revenue are classified as deferred revenue on the Condensed Consolidated Statements of Operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "21",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unbilled Receivables (contract assets)",
+     "",
+     "$",
+     "16",
+     "$",
+     "155"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Revenue (contract liabilities)",
+     "",
+     "$",
+     "(289)",
+     "$",
+     "(277)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 612,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Revenue Recognition"
+    }
+   },
+   "prose_before": "Accounts receivable, net of allowances, were $6.1 million and $4.0 million as of June 30, 2020 and December 31, 2019. Accounts receivable associated with revenue from customers were $3.7 million and the receivable under the IBAS award was $2.4 million as of June 30, 2020, as described in Note 12 - Government Funding.\nContract Assets and Liabilities\nUnbilled Accounts Receivables (Contract Assets) - Pursuant to the over time revenue recognition model, revenue may be recognized prior to the customer being invoiced. An unbilled accounts receivable is recorded to reflect revenue that is recognized when the cost based input method is applied and such revenue exceeds the amount invoiced to the customer. Unbilled receivables are disclosed on the Condensed Consolidated Balance Sheet.\nCustomer Advances and Deposits (Contract Liabilities) - The Company recognizes a contract liability when it has billed and received consideration from the customer pursuant to the terms of a contract but has not yet recognized the related revenue. These billings in excess of revenue are classified as deferred revenue on the Condensed Consolidated Statements of Operations.\nTotal contract assets and liabilities consisted of the following amounts (in thousands):",
+   "prose_after": "For the three and six months ended June 30, 2020 the Company recognized $3 thousand and $33 thousand of revenue related to its contract liabilities that existed at December 31, 2019. For the three and six months ended June 30, 2019 the Company recognized no revenue and $38 thousand of revenue related to its contract liabilities that existed at December 31, 2018.\nRemaining Performance Obligations\nThe Company has elected the practical expedient, which allows disclosure of remaining performance obligations only for contracts with an original duration of greater than one year. Such remaining performance obligations primarily relate to engineering and design services. As of June 30, 2020, the aggregate amount of the transaction price allocated to remaining performance obligations was $0.9 million. The Company expects to recognize revenue on all of its remaining performance obligations over the next 12 months.\nNote 3 \u2013 Accounts Receivable\nThe majority of the Company\u2019s commercial accounts receivable are due from OEM\u2019s. Credit is extended based on an evaluation of a customer\u2019s financial condition and, generally, collateral is not required.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Accounts receivable (1)",
+     "$",
+     "6,224",
+     "$",
+     "4,105"
+    ],
+    [
+     "Less allowance for doubtful accounts",
+     "",
+     "(139)",
+     "",
+     "(139)"
+    ],
+    [
+     "Accounts receivable, net",
+     "$",
+     "6,085",
+     "$",
+     "3,966"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Accounts Receivable"
+    }
+   },
+   "prose_before": "For the three and six months ended June 30, 2020 the Company recognized $3 thousand and $33 thousand of revenue related to its contract liabilities that existed at December 31, 2019. For the three and six months ended June 30, 2019 the Company recognized no revenue and $38 thousand of revenue related to its contract liabilities that existed at December 31, 2018.\nRemaining Performance Obligations\nThe Company has elected the practical expedient, which allows disclosure of remaining performance obligations only for contracts with an original duration of greater than one year. Such remaining performance obligations primarily relate to engineering and design services. As of June 30, 2020, the aggregate amount of the transaction price allocated to remaining performance obligations was $0.9 million. The Company expects to recognize revenue on all of its remaining performance obligations over the next 12 months.\nNote 3 \u2013 Accounts Receivable\nThe majority of the Company\u2019s commercial accounts receivable are due from OEM\u2019s. Credit is extended based on an evaluation of a customer\u2019s financial condition and, generally, collateral is not required.\nAccounts receivable consisted of the following (in thousands):",
+   "prose_after": "(1) Accounts receivable associated with revenue from customers were $3.7 million and receivable due to the Company from an IBAS award was $2.4 million as of June 30, 2020, as described in Note 12 - Government Funding.\nNote 4 \u2013 Inventories, net\nThe components of inventories are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "2,853",
+     "$",
+     "2,788"
+    ],
+    [
+     "Work in process",
+     "",
+     "1,610",
+     "",
+     "1,561"
+    ],
+    [
+     "Finished goods",
+     "",
+     "4,946",
+     "",
+     "5,248"
+    ],
+    [
+     "Total inventories",
+     "",
+     "9,409",
+     "",
+     "9,597"
+    ],
+    [
+     "Less inventory reserve",
+     "",
+     "(939)",
+     "",
+     "(765)"
+    ],
+    [
+     "Total inventories, net",
+     "$",
+     "8,470",
+     "$",
+     "8,832"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 655,
+    "end_line": 669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Inventories, net"
+    }
+   },
+   "prose_before": "(1) Accounts receivable associated with revenue from customers were $3.7 million and receivable due to the Company from an IBAS award was $2.4 million as of June 30, 2020, as described in Note 12 - Government Funding.\nNote 4 \u2013 Inventories, net\nThe components of inventories are as follows (in thousands):",
+   "prose_after": "Note 5 \u2013 Line of Credit / Loan Payable\nRevolving Credit Facility",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revolving credit facility",
+     "$",
+     "420",
+     "$",
+     "2,891"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Line of Credit / Loan Payable"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Line of Credit / Loan Payable\nRevolving Credit Facility",
+   "prose_after": "On December 21, 2016, the Company entered into the ABL Facility with a lender that provides for up to a maximum amount of $5 million based on a borrowing base equivalent to 85% of eligible accounts receivable plus the lesser of $2 million or 50% of eligible inventory. The interest on the ABL Facility is equal to the Prime Rate plus 3% but may not be less than 6.5% with a minimum monthly interest payment of $2 thousand. The Company is also obligated to pay the lender a monthly administrative fee of $1 thousand and an annual facility fee equal to 1% of the maximum amount borrowable under the facility.\nThe ABL Facility will automatically renew on December 31, 2020 for a one-year term unless written notice to terminate the agreement is provided by either party.\nThe ABL Facility is secured by a lien on all receivables, property and the proceeds thereof, credit insurance policies and other insurance relating to the collateral, books, records and other general intangibles, inventory and equipment, proceeds of the collateral and accounts, instruments, chattel paper, and documents. Collections received on accounts receivable are directly used to pay down the outstanding borrowings on the credit facility.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "$",
+     "6",
+     "$",
+     "6",
+     "$",
+     "12",
+     "$",
+     "14"
+    ],
+    [
+     "Research and development",
+     "",
+     "18",
+     "",
+     "21",
+     "",
+     "35",
+     "",
+     "45"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "20",
+     "",
+     "70",
+     "",
+     "40",
+     "",
+     "231"
+    ],
+    [
+     "Total stock compensation expense",
+     "$",
+     "44",
+     "$",
+     "97",
+     "$",
+     "87",
+     "$",
+     "290"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Stock Compensation"
+    }
+   },
+   "prose_before": "On June 8, 2020, the Company received a loan under the U.S. Small Business Administration\u2019s Paycheck Protection Program from KeyBank National Association related to the COVID-19 crisis in the amount of $1.96 million. Under the PPP loan, the loan has a fixed interest rate of 1% per annum, a maturity date two years from the date of the funding of the loan, and deferral of payments for six months. Pursuant to the terms of the PPP loan, the Company may apply for forgiveness of the loan in an amount equal to the sum of the following costs incurred by the Company during period beginning on the date of first disbursement of the loan and ending on the earlier of (a) the date that is 24 weeks after the date of funding or b) December 31, 2020: payroll costs, any payment of interest on a covered mortgage obligation, payment on a covered rent obligation, and any covered utility payment. The amount of PPP loan forgiveness shall be calculated in accordance with the requirements of the Paycheck Protection Program, including the provisions of Section 1106 of the Coronavirus Aid, Relief, and Economic Security Act (CARES Act), although no more than 40% of the amount forgiven can be attributable to non-payroll costs. The Company intends to use the proceeds for purposes consistent with the PPP. Future annual minimum loan payments as of June 30, 2020 were $1.0 million for 2021 and 2022, respectively.\nNote 6 \u2013 Stock Compensation\nThe Company uses the fair value method of accounting for share-based compensation arrangements. The fair value of stock options is estimated at the date of grant using the Black-Scholes option valuation model. Stock-based compensation expense is reduced for estimated forfeitures and is amortized over the vesting period using the straight-line method.\nThe following table summarizes the allocation of non-cash stock-based compensation to our expense categories for the three and six months ended June 30, 2020 and 2019 (in thousands):",
+   "prose_after": "At June 30, 2020, total unrecognized compensation costs related to stock options was approximately $20 thousand, net of estimated forfeitures. Total unrecognized compensation cost will be adjusted for future changes in estimated forfeitures and is expected to be recognized over a weighted average period of approximately 0.3 years.\nThe following key assumptions were used in the Black-Scholes option pricing model to determine the fair value of stock options granted:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0",
+     "%",
+     "0",
+     "%"
+    ],
+    [
+     "Risk free interest rates",
+     "",
+     "2.48",
+     "%",
+     "2.48",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "41.7 to 49.2",
+     "%",
+     "41.7 to 49.2",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "3.5 to 4.8",
+     "",
+     "3.5 to 4.0",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Stock Compensation"
+    }
+   },
+   "prose_before": "At June 30, 2020, total unrecognized compensation costs related to stock options was approximately $20 thousand, net of estimated forfeitures. Total unrecognized compensation cost will be adjusted for future changes in estimated forfeitures and is expected to be recognized over a weighted average period of approximately 0.3 years.\nThe following key assumptions were used in the Black-Scholes option pricing model to determine the fair value of stock options granted:",
+   "prose_after": "The Company does not expect to pay dividends in the near future. Therefore, the Company used an expected dividend yield of 0%. The risk-free interest rate used in the Black-Scholes option pricing model is based on applicable yield available at the date of the option grant on U.S. Treasury securities with an equivalent term. Expected volatility is based on the weighted average historical volatility of the Company\u2019s common stock for the equivalent term. The expected term of the options represents the period that the Company\u2019s stock-based awards are expected to be outstanding and was determined based on historical experience and vesting schedules of similar awards.\nA summary of the Company\u2019s stock option activity for the six months ended June 30, 2020, presented in the following table (unaudited):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (In Years)",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2019",
+     "",
+     "5,404,985",
+     "$",
+     "2.40",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options granted",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options forfeited",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options cancelled or expired",
+     "",
+     "(346,625)",
+     "",
+     "3.54",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2020",
+     "",
+     "5,058,360",
+     "$",
+     "2.40",
+     "",
+     "3.04",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested or expected to vest at June 30, 2020 (1)",
+     "",
+     "5,055,131",
+     "$",
+     "2.40",
+     "",
+     "3.04",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable at June 30, 2020",
+     "",
+     "4,896,954",
+     "$",
+     "2.32",
+     "",
+     "3.03",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 740,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Stock Compensation"
+    }
+   },
+   "prose_before": "The Company does not expect to pay dividends in the near future. Therefore, the Company used an expected dividend yield of 0%. The risk-free interest rate used in the Black-Scholes option pricing model is based on applicable yield available at the date of the option grant on U.S. Treasury securities with an equivalent term. Expected volatility is based on the weighted average historical volatility of the Company\u2019s common stock for the equivalent term. The expected term of the options represents the period that the Company\u2019s stock-based awards are expected to be outstanding and was determined based on historical experience and vesting schedules of similar awards.\nA summary of the Company\u2019s stock option activity for the six months ended June 30, 2020, presented in the following table (unaudited):",
+   "prose_after": "(1) The expected to vest options are the result of applying the pre-vesting forfeiture rate assumptions to total unvested options.\nThe aggregate intrinsic value in the table above represents the difference between the exercise price of the underlying options and the quoted price of the Company\u2019s common stock. The aggregate intrinsic value of options exercised was zero for the three and six months ended June 30, 2020. The Company issues new shares of common stock upon exercise of stock options.\nNote 7 \u2013 Income Taxes\nThe Company\u2019s effective tax rate is calculated quarterly based upon current assumptions relating to the full year\u2019s estimated operating results and various tax-related items. The Company\u2019s effective tax rate was 0% for the three months ended June 30, 2020 and 2019. The difference between the effective tax rate of 0% and the U.S. federal statutory rate of 21% for the three months ended June 30, 2020 and 2019 was primarily due to recognizing a full valuation allowance on deferred tax assets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Issued",
+     "",
+     "Outstanding",
+     "",
+     "Exercise Price",
+     "",
+     "Expire",
+     ""
+    ],
+    [
+     "2015 Warrant Issuance",
+     "",
+     "383,500",
+     "",
+     "383,500",
+     "",
+     "2.05",
+     "",
+     "Jun 2021"
+    ],
+    [
+     "2016 Warrant Issuance",
+     "",
+     "2,947,949",
+     "",
+     "2,947,949",
+     "",
+     "2.60",
+     "",
+     "Feb 2022"
+    ],
+    [
+     "2017 Warrant Issuance(1)",
+     "",
+     "100,000",
+     "",
+     "100,000",
+     "",
+     "2.25",
+     "",
+     "Mar 2022"
+    ],
+    [
+     "2017 Warrant Issuance(2)",
+     "",
+     "1,650,000",
+     "",
+     "1,650,000",
+     "",
+     "2.45",
+     "",
+     "Nov 2022"
+    ],
+    [
+     "2018 Warrant Issuance(2)",
+     "",
+     "4,004,324",
+     "",
+     "3,974,324",
+     "",
+     "1.55",
+     "",
+     "Jul 2023"
+    ],
+    [
+     "2019 Warrant Issuance",
+     "",
+     "240,000",
+     "",
+     "210,000",
+     "",
+     "0.55",
+     "",
+     "Apr 2024"
+    ],
+    [
+     "2019 Warrant Issuance(3)",
+     "",
+     "6,000,000",
+     "",
+     "6,000,000",
+     "",
+     "0.78",
+     "",
+     "Oct 2024"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "15,265,773",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 794,
+    "end_line": 808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Warrants"
+    }
+   },
+   "prose_before": "As disclosed in the financial statements of our Annual Report on Form 10-K for the year ended December 31, 2019, during the quarter ended June 30, 2018, the Company made a decision to exit the Consumer Night Vision Business and accrued approximately $1.0 million related to invoices received for inventory purchased by Suga in anticipation of future production. While the Company believes that it has adequately accrued for the losses and is in discussions to resolve related claims by the contract manufacturers, there is the risk that additional losses or litigation related expenses may be incurred above the amounts accrued for as of June 30, 2020 if the Company fails to resolve these claims in a timely and/or favorable manner.\nNote 9 \u2013 Warrants\nThe Company accounts for common stock warrants pursuant to applicable accounting guidance contained in ASC 815, \"Derivatives and Hedging - Contracts in Entity's Own Equity\" and makes a determination as to their treatment as either equity instruments or a warrant liability based on an analysis of the underlying warrant agreements.",
+   "prose_after": "(1) Issued in conjunction with an unsecured line of credit.\n(2) Warrants are subject to liability accounting.\n(3) Private Placement unregistered warrants exercisable six months following issuance.\nEquity classified warrants\nThe 2015, 2016, and 2019 warrants share similar terms, and the exercise price of the Warrant Shares are subject to adjustment in the event of any stock dividends and splits, reverse stock splits, stock dividends, recapitalizations, reorganizations or similar transactions. The Warrants will be exercisable on a \u201ccashless\u201d basis in certain circumstances, including in the event a registration statement is not in effect at time of exercise. The warrant agreements contain a clause specifying that in the event there is no effective registration in effect for the underlying warrant shares to be issued at time of exercise, in no circumstance will the Company be required to net cash settle the warrants.\nBased on the Company\u2019s analysis of the terms and conditions of the warrants, the Company has concluded that they meet the conditions outlined in applicable accounting guidance to be classified as equity instruments. As a result, the Company has accounted for the exercise price paid by investors for purchase of the pre-funded warrants as additional paid in capital on the accompanying Balance Sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "2018 January and February Issuance",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value",
+     "$",
+     "1,216",
+     "$",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2017 May issuance",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value",
+     "",
+     "308",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "$",
+     "1,524",
+     "$",
+     "23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 835,
+    "end_line": 848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Warrants"
+    }
+   },
+   "prose_before": "The 2017 and 2018 warrants have alternative settlement provisions that, at the option of the holder, provide for physical settlement or if, at the time of settlement there is no effective registration statement, a cashless exercise as defined in the warrant agreement.\nBased on analysis of the underlying warrant agreement and applicable accounting guidance, the Company concluded that these registered warrants require the issuance of registered securities upon exercise and do not sufficiently preclude an implied right to net cash settlement. Accordingly, these warrants were classified in the accompanying Consolidated Balance Sheet as a current liability\nupon issuance and will be revalued at each subsequent balance sheet date.\nThe fair value of the liability for common stock purchase warrants is estimated using the Black Scholes option pricing model based on the market value of the underlying common stock at the measurement date, the contractual term of the warrant, risk-free interest rates, expected dividends and expected volatility of the price of the underlying common stock.\nBased on the Black Sholes method the fair value of the Company\u2019s warrants are as follows (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Change in Fair Value of common stock warrant liability (1)",
+     "$",
+     "(1,481)",
+     "$",
+     "536",
+     "$",
+     "(1,501)",
+     "",
+     "1,330"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 849,
+    "end_line": 857
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Warrants"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) The combined changes in fair value is reflected as income from change in the fair market value of common stock warrant liability.\nDuring the quarter ended June 30, 2020, 4,000,000 of pre-funded warrants were exercised (with cash exercise price of $0.01 per share) in exchange for 4,000,000 shares of the Company\u2019s common stock. On June 12, 2020, 30,000 warrants were exercised on a cashless basis in exchange for 17,500 shares of the Company\u2019s common stock.\nNote 10 \u2013 Leases\nThe Company leases office and manufacturing facilities in Hopewell Junction, NY under a non-cancelable operating lease agreement. The lease for these facilities, as amended, expires in May 2024 and does not contain a renewal option. The lease agreement does not contain any residual value guarantees, or material restrictive covenants.\nThe Company also leases an office facility for its design group in Santa Clara, California. During the fourth quarter of 2019, the Company signed a two-year extension of this lease that expires on October 31, 2021. The lease agreement does not contain any residual value guarantees or material restrictive covenants.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Finance Lease Cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of right-of-use assets",
+     "$",
+     "4",
+     "$",
+     "3",
+     "$",
+     "8",
+     "$",
+     "3"
+    ],
+    [
+     "Interest on lease liabilities",
+     "",
+     "1",
+     "",
+     "1",
+     "",
+     "2",
+     "",
+     "1"
+    ],
+    [
+     "Operating lease cost",
+     "",
+     "246",
+     "",
+     "246",
+     "",
+     "493",
+     "",
+     "503"
+    ],
+    [
+     "Short-term lease cost",
+     "",
+     "15",
+     "",
+     "14",
+     "",
+     "31",
+     "",
+     "28"
+    ],
+    [
+     "Total Lease Cost",
+     "$",
+     "266",
+     "$",
+     "264",
+     "$",
+     "534",
+     "$",
+     "535"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 874,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "The Company leases office and manufacturing facilities in Hopewell Junction, NY under a non-cancelable operating lease agreement. The lease for these facilities, as amended, expires in May 2024 and does not contain a renewal option. The lease agreement does not contain any residual value guarantees, or material restrictive covenants.\nThe Company also leases an office facility for its design group in Santa Clara, California. During the fourth quarter of 2019, the Company signed a two-year extension of this lease that expires on October 31, 2021. The lease agreement does not contain any residual value guarantees or material restrictive covenants.\nThe Company's operating leases generally do not provide an implicit rate, and therefore the Company uses its incremental borrowing rate as the discount rate when measuring operating lease liabilities. The incremental borrowing rate represents an estimate of the interest rate the Company would incur at lease commencement to borrow an amount equal to the lease payments on a collateralized basis over the term of a lease within a particular currency environment. The Company used incremental borrowing rates as of January 1, 2019 for operating leases that commenced prior to that date.\nThe components of lease expense were as follows (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash paid for amounts included in the measurement lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "266",
+     "$",
+     "251",
+     "$",
+     "531",
+     "$",
+     "501"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "$",
+     "5",
+     "$",
+     "2",
+     "$",
+     "10",
+     "$",
+     "2"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new finance lease liabilities",
+     "$",
+     "-",
+     "$",
+     "50",
+     "$",
+     "-",
+     "$",
+     "550"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Cash paid for amounts included in the measurement lease liabilities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Finance lease right-of-use assets",
+     "$",
+     "32",
+     "$",
+     "40"
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "$",
+     "3,358",
+     "$",
+     "3,729"
+    ],
+    [
+     "Finance lease liability, current",
+     "$",
+     "18",
+     "$",
+     "16"
+    ],
+    [
+     "Finance lease liability, non-current",
+     "$",
+     "16",
+     "$",
+     "24"
+    ],
+    [
+     "Operating lease liabilities, current",
+     "$",
+     "809",
+     "$",
+     "775"
+    ],
+    [
+     "Operating lease liabilities, non-current",
+     "$",
+     "2,654",
+     "$",
+     "3,067"
+    ],
+    [
+     "Weighted average remaining lease terms - finance leases",
+     "",
+     "1.83 years",
+     "",
+     "2.33 years"
+    ],
+    [
+     "Weighted average remaining lease terms - operating leases",
+     "",
+     "3.92 years",
+     "",
+     "4.42 years"
+    ],
+    [
+     "Weighted average discount rate - finance leases",
+     "",
+     "10.91%",
+     "",
+     "10.91%"
+    ],
+    [
+     "Weighted average discount rate - operating leases",
+     "",
+     "8.48%",
+     "",
+     "8.48%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 897,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Future annual minimum lease payments and finance lease commitments as of June 30, 2020 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Leases",
+     "",
+     "Finance Leases",
+     ""
+    ],
+    [
+     "2020 (excluding the six months ended June 30, 2020)",
+     "$",
+     "532",
+     "$",
+     "9"
+    ],
+    [
+     "2021",
+     "",
+     "1,054",
+     "",
+     "20"
+    ],
+    [
+     "2022",
+     "",
+     "1,014",
+     "",
+     "8"
+    ],
+    [
+     "2023",
+     "",
+     "1,022",
+     "",
+     "-"
+    ],
+    [
+     "2024",
+     "",
+     "426",
+     "",
+     "-"
+    ],
+    [
+     "Total undiscounted future minimum lease payments",
+     "",
+     "4,048",
+     "",
+     "37"
+    ],
+    [
+     "Less imputed interest",
+     "",
+     "585",
+     "",
+     "3"
+    ],
+    [
+     "Lease liability",
+     "$",
+     "3,463",
+     "$",
+     "34"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 915,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "Future annual minimum lease payments and finance lease commitments as of June 30, 2020 were as follows (in thousands):",
+   "prose_after": "Note 11 \u2013 Shareholders\u2019 Equity\nEquity Raises\nOn June 10, 2020, the Company filed a prospectus supplement to update and amend the aggregate amount of shares it may sell pursuant to the Company\u2019s At The Market Offering Agreement, dated November 22, 2019 and amended February 13, 2020, between the Company and H.C. Wainwright & Co., LLC, to $7.29 million. The Company intends to use the net proceeds from sales made under the ATM offering for working capital and other general corporate purposes. As of June 30, 2020, the Company raised $3.3 million, net of offering expenses, through the sale of shares under the ATM facility.\nNote 12 \u2013 Government Funding\nOn June 11, 2020 the Company announced that it was awarded $5.5 million under the US Department of Defense (\u201cDoD\u201d), IBAS Program for OLED Supply Chain Assurance. These funds are for procurement and installation of capital equipment in eMagin\u2019s NY-based manufacturing facility.\nThe capital funding of $5.5 million provided during this program will be used to procure key equipment and tooling, and reimburse the Company for certain labor and material costs, which the Company believes will improve all aspects of eMagin\u2019s OLED microdisplay production, including increased throughput and capacity. The IBAS agreement indicated that additional awards might be available, and were subsequently received by the Company as described in Note 13 \u2013 Subsequent events.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Change",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Product",
+     "$",
+     "6,260",
+     "$",
+     "4,958",
+     "$",
+     "1,302",
+     "$",
+     "11,894",
+     "$",
+     "10,465",
+     "$",
+     "1,429"
+    ],
+    [
+     "Contract",
+     "",
+     "1,440",
+     "$",
+     "403",
+     "",
+     "1,037",
+     "",
+     "2,537",
+     "",
+     "1,008",
+     "",
+     "1,529"
+    ],
+    [
+     "Total revenue, net",
+     "$",
+     "7,700",
+     "$",
+     "5,361",
+     "$",
+     "2,339",
+     "$",
+     "14,431",
+     "$",
+     "11,473",
+     "$",
+     "2,958"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1008,
+    "end_line": 1019
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Our common stock is listed on the NYSE American, and we are subject to its continued listing requirements, including maintaining certain share prices and a minimum amount of shareholder\u2019s equity. If we are unable to comply with the NYSE American continued listing requirements, including its trading price requirements, our common stock may be suspended from trading on and/or delisted from the NYSE American.\nCritical Accounting Policies\nPlease refer to the information provided under the heading \"Critical Accounting Policies and Estimates\" included in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2019, filed with the SEC on March 11, 2020, for a discussion of our critical accounting policies. There were no material changes to such policies in the first six months of June 30, 2020. New accounting policies adopted during the quarter, including accounting for Government funding are described in Note 1, \"Summary of Significant Accounting Policies,\" to our unaudited consolidated financial statements included in this Report.\nResults of Operations\nComparative results of operations for the three and six months ended June 30, 2020 and 2019 (in thousands):\nRevenues",
+   "prose_after": "Revenues for the three and six months ended June 30, 2020 were $7.7 million and $14.4 million, respectively, as compared to revenues of $5.4 million and $11.5 million, respectively for the three and six months ended June 30, 2019.\nProduct revenue is comprised primarily of sales of displays as well as sales of other hardware. For the three and six months ended June 30, 2020 product revenue increased by $1.3 million and $1.4 million, respectively, from the comparable prior year periods. The increase in display revenues during the three months ended June 30, 2020 was primarily due increases in demand from military customers and displays shipped at higher average selling prices, as compared to the three months ended June 30, 2019. The increase in display revenues during the six months ended June 30, 2020 also reflected increases in volume of displays shipped at higher average selling prices, as compared to the six months ended June 30, 2019. Revenues in 2019 were impacted by manufacturing challenges that began in the fourth quarter of 2018 and continued through the second quarter of 2019, which affected yields and throughput and resulted in lower than planned shipments during the first six months of 2019.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Change",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Product",
+     "$",
+     "4,978",
+     "$",
+     "4,898",
+     "$",
+     "80",
+     "$",
+     "9,768",
+     "$",
+     "9,324",
+     "$",
+     "444"
+    ],
+    [
+     "Contract",
+     "",
+     "746",
+     "",
+     "238",
+     "",
+     "508",
+     "",
+     "1,253",
+     "$",
+     "588",
+     "",
+     "665"
+    ],
+    [
+     "Total cost of revenues",
+     "$",
+     "5,724",
+     "$",
+     "5,136",
+     "$",
+     "588",
+     "$",
+     "11,021",
+     "$",
+     "9,912",
+     "$",
+     "1,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1028,
+    "end_line": 1039
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Product revenue is comprised primarily of sales of displays as well as sales of other hardware. For the three and six months ended June 30, 2020 product revenue increased by $1.3 million and $1.4 million, respectively, from the comparable prior year periods. The increase in display revenues during the three months ended June 30, 2020 was primarily due increases in demand from military customers and displays shipped at higher average selling prices, as compared to the three months ended June 30, 2019. The increase in display revenues during the six months ended June 30, 2020 also reflected increases in volume of displays shipped at higher average selling prices, as compared to the six months ended June 30, 2019. Revenues in 2019 were impacted by manufacturing challenges that began in the fourth quarter of 2018 and continued through the second quarter of 2019, which affected yields and throughput and resulted in lower than planned shipments during the first six months of 2019.\nContract revenue is comprised of revenue from R&D and non-recurring engineering contracts. For the three and six months ended June 30, 2020, contract revenue increased by $1.0 million and $1.5 million, respectively, reflecting the contribution from contract R&D work for the consumer market, as compared to the prior year period.\nCost of Revenues",
+   "prose_after": "Total cost of revenues is comprised of costs of product and contract revenues. Cost of product revenue includes materials, labor and manufacturing overhead, warranty costs and depreciation related to our products. Total cost of revenues for the three and six months ended June 30, 2020 increased by $0.6 million and $1.1 million, respectively, from the comparable prior year periods due to increased revenues.\nThe following table outlines product and contract total gross profit and related gross margins for the three and six months ended June 30, 2020 and 2019 (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Product revenues gross profit",
+     "$",
+     "1,282",
+     "",
+     "$",
+     "60",
+     "",
+     "$",
+     "2,126",
+     "",
+     "$",
+     "1,141",
+     ""
+    ],
+    [
+     "Product revenues gross margin",
+     "",
+     "20",
+     "%",
+     "",
+     "1",
+     "%",
+     "",
+     "18",
+     "%",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "Contract revenues gross profit",
+     "$",
+     "694",
+     "",
+     "$",
+     "165",
+     "",
+     "$",
+     "1,284",
+     "",
+     "$",
+     "420",
+     ""
+    ],
+    [
+     "Contract revenues gross margin",
+     "",
+     "48",
+     "%",
+     "",
+     "41",
+     "%",
+     "",
+     "51",
+     "%",
+     "",
+     "42",
+     "%"
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "1,976",
+     "",
+     "$",
+     "225",
+     "",
+     "$",
+     "3,410",
+     "",
+     "$",
+     "1,561",
+     ""
+    ],
+    [
+     "Total gross margin",
+     "",
+     "26",
+     "%",
+     "",
+     "4",
+     "%",
+     "",
+     "24",
+     "%",
+     "",
+     "14",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1044,
+    "end_line": 1057
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Total cost of revenues is comprised of costs of product and contract revenues. Cost of product revenue includes materials, labor and manufacturing overhead, warranty costs and depreciation related to our products. Total cost of revenues for the three and six months ended June 30, 2020 increased by $0.6 million and $1.1 million, respectively, from the comparable prior year periods due to increased revenues.\nThe following table outlines product and contract total gross profit and related gross margins for the three and six months ended June 30, 2020 and 2019 (dollars in thousands):",
+   "prose_after": "Total gross profit is a function of revenues less cost of revenues. Gross profit for the three months ended June 30, 2020 of $2.0 million increased $1.8 million, from the comparable prior year period primarily reflecting both increases in product and contract revenues. Gross profit for the six months ended June 30, 2020, of $3.4 million also increased $1.8 million as compared to the prior year period and also benefitted from increases in product and contract revenues. Total gross margin was 26% and 24% for the three and six months ended June 30, 2020 compared to 4% and 14% for the comparable 2019 periods, respectively.\nThe product gross profit of $1.3 million and $2.1 million for the three and six months ended June 30, 2020, respectively, increased from the comparable prior year primarily due to increased shipments of displays in the three and six months ended June 30, 2020 compared to the prior year period, and improvements in yield in the first half of 2020 compared to the first half of 2019. The increase in product gross margins was impacted by the higher average selling prices for the three and six months ended June 30, 2020 as compared to lower throughput due to manufacturing challenges from the comparable prior year periods.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "$",
+     "1,599",
+     "",
+     "$",
+     "1,300",
+     "",
+     "$",
+     "299",
+     "$",
+     "2,579",
+     "",
+     "$",
+     "2,897",
+     "",
+     "$",
+     "(318)"
+    ],
+    [
+     "Percentage of net revenue",
+     "",
+     "21",
+     "%",
+     "",
+     "24",
+     "%",
+     "",
+     "",
+     "",
+     "18",
+     "%",
+     "",
+     "25",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "$",
+     "1,712",
+     "",
+     "$",
+     "1,777",
+     "",
+     "$",
+     "(65)",
+     "$",
+     "3,510",
+     "",
+     "$",
+     "3,716",
+     "",
+     "$",
+     "(206)"
+    ],
+    [
+     "Percentage of net revenue",
+     "",
+     "22",
+     "%",
+     "",
+     "33",
+     "%",
+     "",
+     "",
+     "",
+     "24",
+     "%",
+     "",
+     "32",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "$",
+     "3,311",
+     "",
+     "$",
+     "3,077",
+     "",
+     "$",
+     "234",
+     "$",
+     "6,089",
+     "",
+     "$",
+     "6,613",
+     "",
+     "$",
+     "(524)"
+    ],
+    [
+     "Percentage of net revenue",
+     "",
+     "43",
+     "%",
+     "",
+     "57",
+     "%",
+     "",
+     "",
+     "",
+     "42",
+     "%",
+     "",
+     "58",
+     "%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1068,
+    "end_line": 1081
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The product gross profit of $1.3 million and $2.1 million for the three and six months ended June 30, 2020, respectively, increased from the comparable prior year primarily due to increased shipments of displays in the three and six months ended June 30, 2020 compared to the prior year period, and improvements in yield in the first half of 2020 compared to the first half of 2019. The increase in product gross margins was impacted by the higher average selling prices for the three and six months ended June 30, 2020 as compared to lower throughput due to manufacturing challenges from the comparable prior year periods.\nContract gross margin is dependent upon the mix of internal versus external third party costs and materials, with the external third party costs and materials causing a lower gross margin and reducing the contract gross profit. For the three and six months ended June 30, 2020, contract revenue gross profit was $0.7 million and $1.3 million, compared to $0.2 million and $0.4 million, respectively, for the prior year periods. Increased contract revenue gross profit in the three and six months ended June 30, 2020 reflects favorable margins on contract revenues for the consumer market.\nOperating Expenses",
+   "prose_after": "Research and Development\nR&D expenses are Company funded and are primarily compromised of salaries and related benefits, development materials and other costs specifically allocated to the development of new technologies, microdisplay products, OLED technologies and production processes. R&D related costs associated with fulfilling contracts are categorized as contract cost of revenues. R&D expenses were $1.6 million and $2.6 million for the three and six months ended June 30, 2020 and increased by $0.3 million and decreased $0.3 million, respectively, compared to prior year periods, which on a percentage basis was 21% and 18% of revenues, respectively. The change in R&D costs in the current year periods reflects focus on R&D projects related to dPd technology and XLE display development, partially offset by costs charged to contract R&D work for the consumer market.\nSelling, General and Administrative\nSG&A expenses consist primarily of personnel expenses, professional services fees, as well as other marketing, general corporate and administrative expenses. SG&A expenses for the three and six months ended June 30, 2020, decreased $0.1 million and $0.2 million, respectively, compared to the prior year periods. The decrease was primarily due to lower spending on salaries resulting from a 20% work status reduction implemented in October 2019, reductions in non-cash compensation for the Board of Directors that took effect in December 2019, and lower travel and other discretionary expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1094,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ITEM 6. Exhibits",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference to an appendix to the Company\u2019s Definitive Proxy Statement filed on September 21, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment of Amended and Restated Certificate of Incorporation (incorporated by reference to an appendix to the Company\u2019s Definitive Proxy Statement filed on October 26, 2010)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Bylaws of the Company (incorporated by reference to exhibit 99.3 to the Company\u2019s Definitive Proxy Statement filed on June 14, 2001)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Common Stock Purchase Warrant (incorporated by reference to Exhibit 4.1 of the Registrant\u2019s current report on Form 8-K filed on December 23, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Letter Agreement (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed on August 24, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of common Stock Purchase Warrant (incorporated by reference to Exhibit 4.1 to the Registrant\u2019s current report on Form 8-K filed on December 18, 2015)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Form of Common Stock Purchase Warrant issued to the Warrant Holders in the Transaction (incorporated by reference to Exhibit 4.2 to the Company\u2019s Current Report on Form 8-K filed on August 24, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Common Stock Purchase Warrant issued on March 24, 2017 to the holder of an unsecured line of credit (incorporated by reference to exhibit 4.5 to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2017 filed on November 9, 2017)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Form of Common Stock Purchase Warrant issued to the Warrant Holders in conjunction with an issuance of common shares on May 19, 2017 (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed on May 24, 2017)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.8",
+     "Description of Registrants Securities."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "At Market Offering Agreement, between eMagin Corporation and H.C. Wainwright & Co., LLC (the Company\u2019s Current Report on Form 8-K filed on June 10, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Department of Defense Industrial Base Analysis and Sustainment program for Organic Light Emitting Diode (OLED) Supply Chain Assurance award (incorporated by reference to exhibit 99.1 of the Registrant\u2019s Current Report on Form 8-K filed on June 11, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Prototype Project Agreement for Organic Light Emitting Diode (OLED) Micro-Displays, dated June 8, 2020, by and between the Company and the United States of America. (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "U.S. Small Business Administration\u2019s Paycheck Protection Program (\u201cSBA Loan\u201d) loan received (the Company\u2019s Current Report on Form 8-K filed on June 12, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification by Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification by Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification by Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document (1)"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document (1)"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document (1)"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document (1)"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document (1)"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(1)  Filed herewith.",
+     ""
+    ],
+    [
+     "(2)  Furnished herewith.",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ITEM 6. Exhibits"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1216,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The pandemic has significantly increased economic and demand uncertainty. It is likely that the current outbreak and continued spread of COVID-19 or any resurgence will cause the economic slowdown to continue, and it is possible that it could cause a global recession. There is a significant degree of uncertainty and lack of visibility as to the extent and duration of the current slowdown or any recession. If either were prolonged, demand for our products will be significantly harmed. We are currently seeing delays in product shipments. There is no assurance that our operations will not be disrupted in the future by additional impacts of the COVID-19 virus or resurgences, on either our internal operations or those of our suppliers or customers, including the possible impact on state or international quarantine requirements on shipments and delivery personnel. Slowing economic conditions could adversely affect our business in the second half of 2020. Given the significant economic uncertainty and volatility created by the pandemic, it is difficult to predict the nature and extent of the impact on demand for our products. These expectations are subject to change without warning and investors are cautioned not to place undue reliance on them. Unanticipated consequences of the pandemic and resulting economic uncertainty could adversely affect our liquidity and capital resources in the future as well as our ability to continue as a going concern.\nITEM 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nITEM 3. Defaults Upon Senior Securities\nNone.\nITEM 4. Mine Safety Disclosures\nNot applicable.\nITEM 5. Other Information\nNone.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nDate: August 13, 2020",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1214,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "eMAGIN CORPORATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Andrew G. Sculley"
+    ],
+    [
+     "",
+     "Andrew G. Sculley"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "Principal Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "eMAGIN CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1279,
+    "end_line": 1288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nDate: August 13, 2020",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

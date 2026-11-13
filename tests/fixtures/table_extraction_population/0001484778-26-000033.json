@@ -1,0 +1,5490 @@
+{
+ "accession": "0001484778-26-000033",
+ "cik": "0001484778",
+ "form": "10-Q",
+ "filing_date": "2026-11-04",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tdup-20260930.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "26-4009181"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "969 Broadway, Suite 200 Oakland, California",
+     "94607"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2026\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________________ to ____________________\nCommission File Number: 001-40249\nThredUp Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(415) 402-5202\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock, $0.0001 par value per share",
+     "TDUP",
+     "The Nasdaq Stock Market LLC Long-Term Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(415) 402-5202\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "5"
+    ],
+    [
+     "",
+     "Unaudited Condensed Consolidated Balance Sheets",
+     "5"
+    ],
+    [
+     "",
+     "Unaudited Condensed Consolidated Statements of Operations",
+     "6"
+    ],
+    [
+     "",
+     "Unaudited Condensed Consolidated Statements of Comprehensive Loss",
+     "7"
+    ],
+    [
+     "",
+     "Unaudited Condensed Consolidated Statements of Stockholders\u2019 Equity",
+     "8"
+    ],
+    [
+     "",
+     "Unaudited Condensed Consolidated Statements of Cash Flows",
+     "10"
+    ],
+    [
+     "",
+     "Notes to Unaudited Condensed Consolidated Financial Statements",
+     "11"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "26"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "29"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "29"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "29"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "29"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "29"
+    ],
+    [
+     "",
+     "Signatures",
+     "31"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThere were 112,783,815 shares of Class A common stock and 20,323,399 shares of Class B common stock outstanding as of October 28, 2026.\nTABLE OF CONTENTS",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Quarterly Report on Form 10-Q contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are statements that involve substantial risks and uncertainties. Forward-looking statements generally relate to future events or our future financial or operating performance. In some cases, you can identify forward-looking statements because they contain words such as \u201cmay,\u201d \u201cwill,\u201d \u201cshall,\u201d \u201cshould,\u201d \u201cexpects,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201ccould,\u201d \u201cintends,\u201d \u201ctarget,\u201d \u201cprojects,\u201d \u201ccontemplates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201cpossible\u201d or \u201ccontinue\u201d or the negative of these words or other similar terms or expressions that concern our expectations, strategy, plans or intentions. Forward-looking statements contained in this Quarterly Report on Form 10-Q include, but are not limited to, statements about:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except par value amounts)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "42,682",
+     "$",
+     "38,629"
+    ],
+    [
+     "Marketable securities",
+     "12,156",
+     "",
+     "9,498",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "4,925",
+     "",
+     "2,437",
+     ""
+    ],
+    [
+     "Other current assets",
+     "5,976",
+     "",
+     "6,112",
+     ""
+    ],
+    [
+     "Total current assets",
+     "65,739",
+     "",
+     "56,676",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "23,988",
+     "",
+     "25,376",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "64,065",
+     "",
+     "67,243",
+     ""
+    ],
+    [
+     "Goodwill",
+     "10,746",
+     "",
+     "10,746",
+     ""
+    ],
+    [
+     "Other assets",
+     "4,998",
+     "",
+     "7,204",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "169,536",
+     "$",
+     "167,245"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "14,210",
+     "$",
+     "10,329"
+    ],
+    [
+     "Accrued and other current liabilities",
+     "22,460",
+     "",
+     "24,511",
+     ""
+    ],
+    [
+     "Seller payable",
+     "20,366",
+     "",
+     "18,264",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current",
+     "5,764",
+     "",
+     "5,401",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "\u2014",
+     "",
+     "3,875",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "62,800",
+     "",
+     "62,380",
+     ""
+    ],
+    [
+     "Operating lease liabilities, non-current",
+     "25,537",
+     "",
+     "28,580",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "17,741",
+     "",
+     "14,276",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "2,985",
+     "",
+     "2,816",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "109,063",
+     "",
+     "108,052",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 9)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A and B common stock, $0.0001 par value; 1,120,000 shares authorized as of September 30, 2026 and December 31, 2025; 132,849 and 127,027 shares issued and outstanding as of September 30, 2026 and December 31, 2025, respectively",
+     "13",
+     "",
+     "12",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "654,491",
+     "",
+     "635,253",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "(79)",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(593,952)",
+     "",
+     "(576,075)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "60,473",
+     "",
+     "59,193",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "169,536",
+     "$",
+     "167,245"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 141,
+    "end_line": 187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "The \u201cestimated retail price\u201d of an item is based on the estimated original retail price of a comparable item of the same quality, construction and material offered elsewhere in new condition. Our estimated original retail prices are set by our team of merchants who periodically monitor market prices for the brands and styles that we offer on our marketplaces.\nChannels for Disclosure of Information\nThredUp intends to announce material information to the public through the ThredUp Investor Relations website (ir.thredup.com), SEC filings, press releases, public conference calls, and public webcasts. ThredUp uses these channels, as well as social media, to communicate with its investors, customers, and the public about the company, its offerings, and other issues. It is possible that the information ThredUp posts on social media could be deemed to be material information. As such, ThredUp encourages investors, the media, and others to follow the channels listed above, including the social media channels listed on ThredUp\u2019s investor relations website, and to review the information disclosed through such channels.\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 139,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 190,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except per share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "88,230",
+     "$",
+     "82,161",
+     "$",
+     "260,668",
+     "$",
+     "231,109"
+    ],
+    [
+     "Cost of revenue",
+     "19,197",
+     "",
+     "16,949",
+     "",
+     "54,451",
+     "",
+     "47,790",
+     ""
+    ],
+    [
+     "Gross profit",
+     "69,033",
+     "",
+     "65,212",
+     "",
+     "206,217",
+     "",
+     "183,319",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations, product, and technology",
+     "42,468",
+     "",
+     "38,545",
+     "",
+     "128,658",
+     "",
+     "111,196",
+     ""
+    ],
+    [
+     "Marketing",
+     "18,173",
+     "",
+     "16,186",
+     "",
+     "50,875",
+     "",
+     "45,535",
+     ""
+    ],
+    [
+     "Sales, general, and administrative",
+     "13,652",
+     "",
+     "14,869",
+     "",
+     "44,646",
+     "",
+     "41,655",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "74,293",
+     "",
+     "69,600",
+     "",
+     "224,179",
+     "",
+     "198,386",
+     ""
+    ],
+    [
+     "Operating loss",
+     "(5,260)",
+     "",
+     "(4,388)",
+     "",
+     "(17,962)",
+     "",
+     "(15,067)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(340)",
+     "",
+     "(477)",
+     "",
+     "(1,023)",
+     "",
+     "(1,487)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "132",
+     "",
+     "583",
+     "",
+     "1,161",
+     "",
+     "1,969",
+     ""
+    ],
+    [
+     "Loss before provision (benefit) for income taxes",
+     "(5,468)",
+     "",
+     "(4,282)",
+     "",
+     "(17,824)",
+     "",
+     "(14,585)",
+     ""
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "2",
+     "",
+     "(34)",
+     "",
+     "53",
+     "",
+     "54",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,470)",
+     "$",
+     "(4,248)",
+     "$",
+     "(17,877)",
+     "$",
+     "(14,639)"
+    ],
+    [
+     "Loss per share, basic and diluted",
+     "$",
+     "(0.04)",
+     "$",
+     "(0.03)",
+     "$",
+     "(0.14)",
+     "$",
+     "(0.12)"
+    ],
+    [
+     "Weighted-average shares used to compute loss per share, basic and diluted",
+     "131,827",
+     "",
+     "123,903",
+     "",
+     "129,806",
+     "",
+     "120,318",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 196,
+    "end_line": 225
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 194,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,470)",
+     "$",
+     "(4,248)",
+     "$",
+     "(17,877)",
+     "$",
+     "(14,639)"
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on available-for-sale securities",
+     "(39)",
+     "",
+     "2",
+     "",
+     "(82)",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss)",
+     "(39)",
+     "",
+     "2",
+     "",
+     "(82)",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "Total comprehensive loss",
+     "$",
+     "(5,509)",
+     "$",
+     "(4,246)",
+     "$",
+     "(17,959)",
+     "$",
+     "(14,642)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 234,
+    "end_line": 249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 232,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 252,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2025",
+     "127,027",
+     "$",
+     "12",
+     "$",
+     "635,253",
+     "$",
+     "3",
+     "$",
+     "(576,075)",
+     "$",
+     "59,193"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options and restricted stock units",
+     "1,977",
+     "\u2014",
+     "",
+     "1,080",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,080",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "5,612",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,612",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(6,472)",
+     "",
+     "(6,472)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(22)",
+     "",
+     "",
+     "",
+     "(22)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2026",
+     "129,004",
+     "$",
+     "12",
+     "$",
+     "641,945",
+     "$",
+     "(19)",
+     "$",
+     "(582,547)",
+     "$",
+     "59,391"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options, restricted stock units, and employee stock purchase plan",
+     "2,292",
+     "1",
+     "",
+     "1,197",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,198",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "6,115",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6,115",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,935)",
+     "",
+     "(5,935)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(21)",
+     "",
+     "",
+     "",
+     "(21)",
+     ""
+    ],
+    [
+     "Balance as of June 30, 2026",
+     "131,296",
+     "$",
+     "13",
+     "$",
+     "649,257",
+     "$",
+     "(40)",
+     "$",
+     "(588,482)",
+     "$",
+     "60,748"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options and restricted stock units",
+     "1,553",
+     "\u2014",
+     "",
+     "187",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "187",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "5,047",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,047",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,470)",
+     "",
+     "(5,470)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(39)",
+     "",
+     "",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2026",
+     "132,849",
+     "$",
+     "13",
+     "$",
+     "654,491",
+     "$",
+     "(79)",
+     "$",
+     "(593,952)",
+     "$",
+     "60,473"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 258,
+    "end_line": 294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 256,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2024",
+     "116,134",
+     "$",
+     "11",
+     "$",
+     "612,148",
+     "$",
+     "3",
+     "$",
+     "(555,861)",
+     "$",
+     "56,301"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options and restricted stock units",
+     "2,047",
+     "\u2014",
+     "",
+     "344",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "344",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "5,594",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,594",
+     ""
+    ],
+    [
+     "Shares withheld for net share settlement",
+     "(400)",
+     "\u2014",
+     "",
+     "(936)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(936)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,215)",
+     "",
+     "(5,215)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2025",
+     "117,781",
+     "$",
+     "11",
+     "$",
+     "617,150",
+     "$",
+     "(2)",
+     "$",
+     "(561,076)",
+     "$",
+     "56,083"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options, restricted stock units, and employee stock purchase plan",
+     "5,570",
+     "1",
+     "",
+     "6,853",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6,854",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "4,624",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,624",
+     ""
+    ],
+    [
+     "Shares withheld for net share settlement",
+     "(303)",
+     "\u2014",
+     "",
+     "(2,178)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,178)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,176)",
+     "",
+     "(5,176)",
+     ""
+    ],
+    [
+     "Balance as of June 30, 2025",
+     "123,048",
+     "$",
+     "12",
+     "$",
+     "626,449",
+     "$",
+     "(2)",
+     "$",
+     "(566,252)",
+     "$",
+     "60,207"
+    ],
+    [
+     "Issuance of common stock from exercise of stock options and restricted stock units",
+     "2,352",
+     "\u2014",
+     "",
+     "1,865",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,865",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "4,642",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,642",
+     ""
+    ],
+    [
+     "Shares withheld for net share settlement",
+     "(314)",
+     "\u2014",
+     "",
+     "(3,396)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,396)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,248)",
+     "",
+     "(4,248)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2025",
+     "125,086",
+     "$",
+     "12",
+     "$",
+     "629,560",
+     "$",
+     "\u2014",
+     "$",
+     "(570,500)",
+     "$",
+     "59,072"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 296,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(17,877)",
+     "$",
+     "(14,639)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "16,303",
+     "",
+     "14,459",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "10,638",
+     "",
+     "9,473",
+     ""
+    ],
+    [
+     "Reduction in carrying amount of right-of-use assets",
+     "3,509",
+     "",
+     "3,429",
+     ""
+    ],
+    [
+     "Other",
+     "198",
+     "",
+     "(83)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "(2,488)",
+     "",
+     "(158)",
+     ""
+    ],
+    [
+     "Other current and non-current assets",
+     "117",
+     "",
+     "154",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "4,914",
+     "",
+     "4,376",
+     ""
+    ],
+    [
+     "Accrued and other current liabilities",
+     "(1,430)",
+     "",
+     "(3,622)",
+     ""
+    ],
+    [
+     "Seller payable",
+     "2,103",
+     "",
+     "2,792",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "(4,800)",
+     "",
+     "(3,566)",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "\u2014",
+     "",
+     "(500)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "11,187",
+     "",
+     "12,115",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of marketable securities",
+     "(14,645)",
+     "",
+     "(12,961)",
+     ""
+    ],
+    [
+     "Sale and maturities of marketable securities",
+     "12,039",
+     "",
+     "20,804",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "(8,749)",
+     "",
+     "(8,745)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(11,355)",
+     "",
+     "(902)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments on debt",
+     "(469)",
+     "",
+     "(3,000)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock-based awards",
+     "10,104",
+     "",
+     "21,767",
+     ""
+    ],
+    [
+     "Payments of withholding taxes on stock-based awards",
+     "(7,637)",
+     "",
+     "(19,215)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "1,998",
+     "",
+     "(448)",
+     ""
+    ],
+    [
+     "Net change in cash, cash equivalents and restricted cash",
+     "1,830",
+     "",
+     "10,765",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash, beginning of period",
+     "43,577",
+     "",
+     "40,488",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash, end of period",
+     "$",
+     "45,407",
+     "$",
+     "51,253"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 345,
+    "end_line": 389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n1. Organization and Description of Business\nThredUp Inc. (\u201cThredUp\u201d or the \u201cCompany\u201d) was formed as a corporation in the State of Delaware in January 2009. ThredUp operates a large resale platform that enables consumers to buy and sell primarily secondhand apparel, shoes, and accessories.\n2. Significant Accounting Policies\nBasis of Presentation and Use of Estimates\nThe accompanying unaudited condensed consolidated financial statements include the accounts of the Company and its wholly-owned subsidiaries. All intercompany account balances and transactions have been eliminated upon consolidation. The unaudited condensed consolidated financial statements were prepared in accordance with the United States (\u201cU.S.\u201d) Generally Accepted Accounting Principles (\u201cGAAP\u201d) for interim financial information and with the instructions to Quarterly Report on Form 10\u2011Q and Article 10 of Regulation S-X. As permitted under those rules, certain footnotes or other financial information may be condensed or omitted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 343,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "42,682",
+     "$",
+     "38,629"
+    ],
+    [
+     "Restricted cash included in Other current assets",
+     "153",
+     "",
+     "225",
+     ""
+    ],
+    [
+     "Restricted cash included in Other assets",
+     "2,572",
+     "",
+     "4,723",
+     ""
+    ],
+    [
+     "Total cash, cash equivalents, and restricted cash shown in the statement of cash flows",
+     "$",
+     "45,407",
+     "$",
+     "43,577"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 454,
+    "end_line": 465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Seller payable includes amounts owed to sellers upon the purchase of sellers\u2019 goods by the Company or by buyers. Amounts are initially provided as a credit to sellers (\u201cseller credits\u201d). These credits may be applied towards purchases from the Company, converted to third-party retailer or ThredUp gift cards or redeemed for cash. As of September 30, 2026 and December 31, 2025, there was $20.4 million and $18.3 million, respectively, of seller payable within the Company\u2019s condensed consolidated balance sheets. Revenue recognized from the redemption of seller credits was $8.9 million and $8.2 million for the three months ended September 30, 2026 and 2025, respectively, and $26.7 million and $21.7 million for the nine months ended September 30, 2026 and 2025, respectively.\nCash, Cash Equivalents and Restricted Cash\nThe following table provides a reconciliation of cash, cash equivalents and restricted cash reported within the Company\u2019s condensed consolidated balance sheets, which sum to the total of the same such amounts shown in the Company\u2019s condensed consolidated statements of cash flows:",
+   "prose_after": "3. Financial Instruments and Fair Value Measurements\nThe Company applies the provisions of FASB ASC Topic 820, Fair Value Measurements and Disclosures, for its financial and non-financial assets and liabilities. ASC 820 defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. ASC 820 establishes a fair value hierarchy, which prioritizes the inputs used in measuring fair value into three broad levels as follows:\n\u2022Level 1 inputs are quoted prices (unadjusted) in active markets for identical assets or liabilities that the reporting entity has the ability to access at the measurement date.\n\u2022Level 2 inputs include quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not active, inputs other than quoted prices that are observable for the asset or liability and inputs that are derived principally from or corroborated by observable market data by correlation or other means.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "2,087",
+     "$",
+     "\u2014",
+     "$",
+     "2,087"
+    ],
+    [
+     "Commercial paper",
+     "\u2014",
+     "",
+     "8,144",
+     "",
+     "8,144",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "831",
+     "",
+     "831",
+     ""
+    ],
+    [
+     "U.S. government agency bonds",
+     "\u2014",
+     "",
+     "100",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "Total cash equivalents",
+     "2,087",
+     "",
+     "9,075",
+     "",
+     "11,162",
+     ""
+    ],
+    [
+     "Marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. treasury securities",
+     "\u2014",
+     "",
+     "8,938",
+     "",
+     "8,938",
+     ""
+    ],
+    [
+     "U.S. government agency bonds",
+     "\u2014",
+     "",
+     "2,074",
+     "",
+     "2,074",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "1,144",
+     "",
+     "1,144",
+     ""
+    ],
+    [
+     "Total marketable securities",
+     "\u2014",
+     "",
+     "12,156",
+     "",
+     "12,156",
+     ""
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "2,087",
+     "$",
+     "21,231",
+     "$",
+     "23,318"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Instruments and Fair Value Measurements"
+    }
+   },
+   "prose_before": "The Company applies the provisions of FASB ASC Topic 820, Fair Value Measurements and Disclosures, for its financial and non-financial assets and liabilities. ASC 820 defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. ASC 820 establishes a fair value hierarchy, which prioritizes the inputs used in measuring fair value into three broad levels as follows:\n\u2022Level 1 inputs are quoted prices (unadjusted) in active markets for identical assets or liabilities that the reporting entity has the ability to access at the measurement date.\n\u2022Level 2 inputs include quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not active, inputs other than quoted prices that are observable for the asset or liability and inputs that are derived principally from or corroborated by observable market data by correlation or other means.\n\u2022Level 3 inputs are unobservable inputs for the asset or liability.\nFair Value Measurements - Recurring Basis\nThe following tables provide information about the Company\u2019s financial instruments that are measured at fair value on a recurring basis and indicate the fair value hierarchy of the valuation techniques utilized to determine such values as of September 30, 2026 and December 31, 2025:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "5,030",
+     "$",
+     "\u2014",
+     "$",
+     "5,030"
+    ],
+    [
+     "Commercial paper",
+     "\u2014",
+     "",
+     "6,681",
+     "",
+     "6,681",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "849",
+     "",
+     "849",
+     ""
+    ],
+    [
+     "U.S. government agency bonds",
+     "\u2014",
+     "",
+     "697",
+     "",
+     "697",
+     ""
+    ],
+    [
+     "Total cash equivalents",
+     "5,030",
+     "",
+     "8,227",
+     "",
+     "13,257",
+     ""
+    ],
+    [
+     "Marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "2,374",
+     "",
+     "2,374",
+     ""
+    ],
+    [
+     "U.S. treasury securities",
+     "\u2014",
+     "",
+     "6,126",
+     "",
+     "6,126",
+     ""
+    ],
+    [
+     "U.S. government agency bonds",
+     "\u2014",
+     "",
+     "998",
+     "",
+     "998",
+     ""
+    ],
+    [
+     "Total marketable securities",
+     "\u2014",
+     "",
+     "9,498",
+     "",
+     "9,498",
+     ""
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "5,030",
+     "$",
+     "17,725",
+     "$",
+     "22,755"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Instruments and Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "As of September 30, 2026 and December 31, 2025, the Company\u2019s cash equivalents and marketable securities approximated their estimated fair value. As such, the unrealized gains or losses related to the Company\u2019s cash equivalents and marketable securities were not material.\nFor the Company\u2019s marketable securities, which were all classified as available-for-sale, the Company utilizes third-party pricing services to obtain fair value. Third-party pricing methodologies incorporate bond terms and conditions, current performance data, proprietary pricing models, real-time quotes from contributing dealers, trade prices and other market data. The Company determined that the declines in the fair value of its marketable securities were not driven by credit-related factors. During the three and nine months ended September 30, 2026 and 2025, the Company did not recognize any losses on its marketable securities due to credit-related factors.\nAs of September 30, 2026, the Company\u2019s money market funds were valued using Level 1 inputs because they were valued using quoted prices in active markets. The Company\u2019s commercial paper, corporate debt securities, U.S. government agency bonds and U.S. treasury securities were valued using Level 2 inputs because they were valued using quoted prices for similar assets or liabilities in active markets and quoted prices for identical or similar assets or liabilities in markets that are not active.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Less than 1 year",
+     "",
+     "1 to 2 years",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. treasury securities",
+     "$",
+     "4,640",
+     "$",
+     "4,298",
+     "$",
+     "8,938"
+    ],
+    [
+     "Corporate debt securities",
+     "1,144",
+     "",
+     "\u2014",
+     "",
+     "1,144",
+     ""
+    ],
+    [
+     "U.S. government agency bonds",
+     "1,085",
+     "",
+     "989",
+     "",
+     "2,074",
+     ""
+    ],
+    [
+     "Total marketable securities",
+     "$",
+     "6,869",
+     "$",
+     "5,287",
+     "$",
+     "12,156"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 544,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Instruments and Fair Value Measurements"
+    }
+   },
+   "prose_before": "For the Company\u2019s marketable securities, which were all classified as available-for-sale, the Company utilizes third-party pricing services to obtain fair value. Third-party pricing methodologies incorporate bond terms and conditions, current performance data, proprietary pricing models, real-time quotes from contributing dealers, trade prices and other market data. The Company determined that the declines in the fair value of its marketable securities were not driven by credit-related factors. During the three and nine months ended September 30, 2026 and 2025, the Company did not recognize any losses on its marketable securities due to credit-related factors.\nAs of September 30, 2026, the Company\u2019s money market funds were valued using Level 1 inputs because they were valued using quoted prices in active markets. The Company\u2019s commercial paper, corporate debt securities, U.S. government agency bonds and U.S. treasury securities were valued using Level 2 inputs because they were valued using quoted prices for similar assets or liabilities in active markets and quoted prices for identical or similar assets or liabilities in markets that are not active.\nAs of September 30, 2026 and December 31, 2025, the Company had no assets or liabilities measured at fair value on a recurring basis that were classified within Level 3 of the fair value hierarchy. There were no transfers into or out of Level 3 during the three and nine months ended September 30, 2026.\nThe following table presents the fair value of the Company\u2019s marketable securities by contractual maturities as of September 30, 2026:",
+   "prose_after": "The Company classifies marketable securities as current assets as they are available to support current operations, including highly liquid securities with maturities beyond 12 months.\nFair Value Measurements - Nonrecurring Basis\nThe Company holds a minority equity interest in a privately held company of which 91% was divested in 2024. The investment does not have a readily determinable fair value and is accounted for under the measurement alternative. Under this approach, the investment is carried at cost, adjusted for observable transactions or impairment.\nNo remeasurements or impairments were recognized during the three and nine months ended September 30, 2026 and 2025. As of September 30, 2026 and December 31, 2025, the carrying amount of the investment was $1.8 million, included in other assets on the Company\u2019s condensed consolidated balance sheets, and is classified as a Level 3 asset within the fair value hierarchy. Cumulatively, the Company has recorded $0.8 million of upward adjustments from observable transactions and no impairments or downward adjustments to the carrying value of the investment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, at cost:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "$",
+     "91,693",
+     "$",
+     "84,745"
+    ],
+    [
+     "Leasehold improvements",
+     "23,549",
+     "",
+     "23,457",
+     ""
+    ],
+    [
+     "Internal-use software",
+     "14,335",
+     "",
+     "13,444",
+     ""
+    ],
+    [
+     "Computers and software",
+     "8,073",
+     "",
+     "7,909",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "5,371",
+     "",
+     "6,858",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "2,202",
+     "",
+     "2,196",
+     ""
+    ],
+    [
+     "Total property and equipment, at cost",
+     "145,223",
+     "",
+     "138,609",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "(81,158)",
+     "",
+     "(71,366)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "64,065",
+     "$",
+     "67,243"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 576,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment, Net"
+    }
+   },
+   "prose_before": "No remeasurements or impairments were recognized during the three and nine months ended September 30, 2026 and 2025. As of September 30, 2026 and December 31, 2025, the carrying amount of the investment was $1.8 million, included in other assets on the Company\u2019s condensed consolidated balance sheets, and is classified as a Level 3 asset within the fair value hierarchy. Cumulatively, the Company has recorded $0.8 million of upward adjustments from observable transactions and no impairments or downward adjustments to the carrying value of the investment.\nOther Fair Value Disclosures\nAs of September 30, 2026 and December 31, 2025, the carrying amounts of the Company\u2019s accounts receivable, other current assets, other assets, accounts payable, seller payable and accrued and other current liabilities approximated their estimated fair values due to their relatively short maturities. Management believes the terms of its long-term variable-rate debt reflect current market conditions for an instrument with similar terms and maturity, and as such, the carrying value of the Company\u2019s long-term debt approximated its fair value as of September 30, 2026 and December 31, 2025.\n4. Property and Equipment, Net\nProperty and equipment, net consisted of the following:",
+   "prose_after": "Depreciation and amortization expense of property and equipment was $3.2 million and $3.1 million for the three months ended September 30, 2026 and 2025, respectively, and $10.6 million and $9.5 million for the nine months ended September 30, 2026 and 2025, respectively.\n5. Balance Sheet Components\nAccrued and other current liabilities consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gift card and site credit liabilities",
+     "$",
+     "7,516",
+     "$",
+     "8,026"
+    ],
+    [
+     "Accrued compensation",
+     "3,691",
+     "",
+     "2,527",
+     ""
+    ],
+    [
+     "Allowance for returns",
+     "3,299",
+     "",
+     "3,814",
+     ""
+    ],
+    [
+     "Accrued taxes",
+     "2,919",
+     "",
+     "2,571",
+     ""
+    ],
+    [
+     "Accrued vendor liabilities",
+     "2,401",
+     "",
+     "4,844",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "1,640",
+     "",
+     "1,573",
+     ""
+    ],
+    [
+     "Accrued other",
+     "994",
+     "",
+     "1,156",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "22,460",
+     "$",
+     "24,511"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense of property and equipment was $3.2 million and $3.1 million for the three months ended September 30, 2026 and 2025, respectively, and $10.6 million and $9.5 million for the nine months ended September 30, 2026 and 2025, respectively.\n5. Balance Sheet Components\nAccrued and other current liabilities consisted of the following:",
+   "prose_after": "6. Long-Term Debt\nIn February 2019, the Company entered into a loan and security agreement (\u201cTerm Loan\u201d) with Western Alliance Bank for an aggregate amount of up to $40.0 million. Following subsequent amendments, with the most recent amendment taking place on January 30, 2026, the Term Loan matures on July 10, 2030, provides for an aggregate borrowing capacity of up to $28.0 million, of which $10.0 million remains available and is designated for the purchase of certain equipment, and bears interest at secured overnight financing rate (\u201cSOFR\u201d), subject to a 2.50% per annum floor, plus a margin of 3.25% per annum. The January 2026 amendment also modified amortization such that only interest, and no principal, is payable until January 10, 2028, after which the Term Loan is payable in consecutive monthly installments.\nThe Term Loan requires the Company to comply with certain financial covenants, including, among other things, liquidity requirements and minimum cash deposits with Western Alliance Bank. The Term Loan also contains affirmative and negative covenants customary for financings of this type, including, among other things, limitations or prohibitions on repurchasing common shares, declaring and paying dividends and other distributions, redeeming and repurchasing certain other indebtedness, loans and investments, additional indebtedness, liens, mergers, asset sales and transactions with affiliates. In addition, the Term Loan contains customary events of default. As of September 30, 2026, the Company was in compliance with its debt covenants under the Term Loan. The Company is permitted to make voluntary prepayments without penalty or premium at any time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "2028",
+     "$",
+     "4,000"
+    ],
+    [
+     "2029",
+     "4,000",
+     ""
+    ],
+    [
+     "2030",
+     "10,000",
+     ""
+    ],
+    [
+     "Total principal payments",
+     "18,000",
+     ""
+    ],
+    [
+     "Less: unamortized debt discount",
+     "(259)",
+     ""
+    ],
+    [
+     "Non-current portion of long-term debt",
+     "$",
+     "17,741"
+    ]
+   ],
+   "caption_stack": [
+    "Amount",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 632,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "The Term Loan requires the Company to comply with certain financial covenants, including, among other things, liquidity requirements and minimum cash deposits with Western Alliance Bank. The Term Loan also contains affirmative and negative covenants customary for financings of this type, including, among other things, limitations or prohibitions on repurchasing common shares, declaring and paying dividends and other distributions, redeeming and repurchasing certain other indebtedness, loans and investments, additional indebtedness, liens, mergers, asset sales and transactions with affiliates. In addition, the Term Loan contains customary events of default. As of September 30, 2026, the Company was in compliance with its debt covenants under the Term Loan. The Company is permitted to make voluntary prepayments without penalty or premium at any time.\nAs of September 30, 2026 and December 31, 2025, the effective interest rate for borrowings under the Term Loan was 7.60% and 8.94%, respectively.\nDuring the nine months ended September 30, 2026 and 2025, the Company did not make any borrowings under the Term Loan and repaid $0.3 million and $3.0 million in principal, respectively. As of September 30, 2026 and December 31, 2025, the principal outstanding under the Term Loan was $18.0 million and $18.3 million, respectively.\nThe Company incurred interest expense related to the Term Loan of $0.3 million and $0.5 million for the three months ended September 30, 2026 and 2025, respectively, and $1.0 million and $1.5 million for the nine months ended September 30, 2026 and 2025, respectively.\nAs of September 30, 2026, the future annual principal payments of the Term Loan were as follows:",
+   "prose_after": "7. Common Stock and Stockholders\u2019 Equity\nEach share of Class A common stock is entitled to one vote per share. Each share of Class B common stock is entitled to ten votes per share and is convertible at any time into one share of Class A common stock.\nThe table below summarizes the Class A common stock and Class B common stock authorized, issued and outstanding as of September 30, 2026 and December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "debt_maturity",
+    "aligned_family": "debt_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "Authorized",
+     "Issued and Outstanding",
+     "Authorized",
+     "Issued and Outstanding"
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock",
+     "1,000,000",
+     "112,526",
+     "1,000,000",
+     "106,358"
+    ],
+    [
+     "Class B common stock",
+     "120,000",
+     "20,323",
+     "120,000",
+     "20,669"
+    ],
+    [
+     "Total",
+     "1,120,000",
+     "132,849",
+     "1,120,000",
+     "127,027"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 653,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "7. Common Stock and Stockholders\u2019 Equity\nEach share of Class A common stock is entitled to one vote per share. Each share of Class B common stock is entitled to ten votes per share and is convertible at any time into one share of Class A common stock.\nThe table below summarizes the Class A common stock and Class B common stock authorized, issued and outstanding as of September 30, 2026 and December 31, 2025:",
+   "prose_after": "8. Stock-Based Compensation\nThe Company has stock-based compensation plans, which are more fully described in Note 9, Stock-Based Compensation Plans, to the consolidated financial statements included in the 2025 10-K. During the nine months ended September 30, 2026, the Company granted restricted stock units subject to service condition (\u201cRSUs\u201d) and performance-based restricted stock units subject to service and performance conditions (\u201cPSUs\u201d).\nStock-Based Compensation Expense\nThe following table provides information about stock-based compensation expense by financial statement line item:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations, product, and technology",
+     "$",
+     "2,284",
+     "$",
+     "1,982",
+     "$",
+     "7,343",
+     "$",
+     "6,933"
+    ],
+    [
+     "Marketing",
+     "203",
+     "",
+     "99",
+     "",
+     "678",
+     "",
+     "325",
+     ""
+    ],
+    [
+     "Sales, general, and administrative",
+     "2,388",
+     "",
+     "2,358",
+     "",
+     "8,282",
+     "",
+     "7,201",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "4,875",
+     "$",
+     "4,439",
+     "$",
+     "16,303",
+     "$",
+     "14,459"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "8. Stock-Based Compensation\nThe Company has stock-based compensation plans, which are more fully described in Note 9, Stock-Based Compensation Plans, to the consolidated financial statements included in the 2025 10-K. During the nine months ended September 30, 2026, the Company granted restricted stock units subject to service condition (\u201cRSUs\u201d) and performance-based restricted stock units subject to service and performance conditions (\u201cPSUs\u201d).\nStock-Based Compensation Expense\nThe following table provides information about stock-based compensation expense by financial statement line item:",
+   "prose_after": "Stock-based compensation expense capitalized in internal use software was not material for the three and nine months ended September 30, 2026 and 2025.\nStock Options\nThe following table summarizes the activities for all stock options under the Company\u2019s stock-based compensation plans for the nine months ended September 30, 2026:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Options Outstanding",
+     "Weighted-Average Exercise Price Per Share",
+     "",
+     "Weighted-Average Remaining Contractual Life",
+     "Aggregate Intrinsic Value (1)",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2025",
+     "9,411",
+     "$",
+     "2.16",
+     "3.30 years",
+     "$",
+     "39,825"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(927)",
+     "$",
+     "2.05",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited or expired",
+     "(28)",
+     "$",
+     "3.09",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of September 30, 2026",
+     "8,456",
+     "$",
+     "2.17",
+     "2.71 years",
+     "$",
+     "576"
+    ],
+    [
+     "Exercisable as of September 30, 2026",
+     "8,456",
+     "$",
+     "2.17",
+     "2.71 years",
+     "$",
+     "576"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 695,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Stock-based compensation expense capitalized in internal use software was not material for the three and nine months ended September 30, 2026 and 2025.\nStock Options\nThe following table summarizes the activities for all stock options under the Company\u2019s stock-based compensation plans for the nine months ended September 30, 2026:",
+   "prose_after": "(1) The intrinsic value is the amount by which the current market value of the underlying stock exceeds the exercise price of the stock awards.\nAs of September 30, 2026, there was no unrecognized compensation cost related to nonvested stock options.\nRSUs and PSUs\nThe following table summarizes the activities for all RSUs and PSUs, under the Company\u2019s stock-based compensation plans for the nine months ended September 30, 2026:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Outstanding and nonvested as of December 31, 2025",
+     "8,930",
+     "$",
+     "3.78"
+    ],
+    [
+     "Granted (1)",
+     "4,041",
+     "$",
+     "4.18"
+    ],
+    [
+     "Vested",
+     "(4,760)",
+     "$",
+     "3.52"
+    ],
+    [
+     "Forfeited",
+     "(434)",
+     "$",
+     "3.90"
+    ],
+    [
+     "Outstanding and nonvested as of September 30, 2026",
+     "7,777",
+     "$",
+     "4.14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 731
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "(1) The intrinsic value is the amount by which the current market value of the underlying stock exceeds the exercise price of the stock awards.\nAs of September 30, 2026, there was no unrecognized compensation cost related to nonvested stock options.\nRSUs and PSUs\nThe following table summarizes the activities for all RSUs and PSUs, under the Company\u2019s stock-based compensation plans for the nine months ended September 30, 2026:",
+   "prose_after": "(1) Includes 869 thousand PSUs at target, with a weighted-average grant-date fair value of $3.39. Actual shares earned may range from 0% to 200% of target based on the achievement of applicable performance conditions.\nAs of September 30, 2026, the total unrecognized compensation cost related to all nonvested RSUs and PSUs was $27.8 million, of which $0.7 million was related to PSUs, and the related weighted-average period over which it is expected to be recognized was approximately two years.\n9. Commitments and Contingencies\nLegal Contingencies\nThe Company is subject to litigation claims and assessments from time to time in the ordinary course of business. The Company\u2019s management does not believe that any such matters, individually or in the aggregate, will have a material adverse effect on the Company\u2019s business, financial condition, results of operations or cash flows.\nIndemnifications\nIn the normal course of business, the Company enters into contracts and agreements that contain a variety of representations and warranties and provide for limited and customary indemnification obligations. The Company\u2019s exposure under these agreements is unknown because it involves claims that may be made against the Company in the future, but that have not yet been made.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2026",
+     "September 30, 2025"
+    ],
+    [
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "Restricted stock units",
+     "7,787",
+     "8,780"
+    ],
+    [
+     "Stock options",
+     "8,456",
+     "9,664"
+    ],
+    [
+     "Employee stock purchase plan",
+     "214",
+     "60"
+    ],
+    [
+     "Total",
+     "16,457",
+     "18,504"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                        5"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "In the normal course of business, the Company enters into contracts and agreements that contain a variety of representations and warranties and provide for limited and customary indemnification obligations. The Company\u2019s exposure under these agreements is unknown because it involves claims that may be made against the Company in the future, but that have not yet been made.\n10. Income Taxes\nThe quarterly income tax provision reflects an estimate of the corresponding quarter\u2019s state taxes in the U.S. The provision for income tax expense for the three and nine months ended September 30, 2026 and 2025 was determined based upon estimates of the Company\u2019s annual effective tax rate for the years ending December 31, 2026 and 2025, respectively. Since the Company is in a full valuation allowance position due to losses incurred since inception, the provision for taxes consists solely of certain state income taxes.\n11. Loss Per Share\nThe following securities have been excluded from the computation of diluted loss per share for the periods presented because including them would have been anti-dilutive:",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with other information, including our condensed consolidated financial statements and related notes included in Part I, Item 1, Financial Statements, of this Quarterly Report on Form 10-Q; Part II, Item 1A, Risk Factors, of this Quarterly Report on Form 10-Q; and our consolidated financial statements and related notes appearing in our Annual Report on Form 10-K for the year ended December 31, 2025 (the \u201c2025 10-K\u201d). There have been no material changes to the risk factors described in our 2025 10-K. The following discussion contains forward-looking statements that reflect our plans, estimates and beliefs. Our actual results could differ materially from those discussed in the forward-looking statements. You should review the section titled \u201cSpecial Note Regarding Forward-Looking Statements\u201d for a discussion of forward-looking statements and the section titled \u201cRisk Factors\u201d for a discussion of factors that could cause actual results to differ materially from the results described in or implied by the forward-looking statements contained in the following discussion and analysis. Our historical results are not necessarily indicative of the results that may be expected for any period in the future, and our interim results are not necessarily indicative of the results we expect for the full calendar year or any other period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 767,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Change",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Active Buyers (as of period end)",
+     "1,821",
+     "",
+     "",
+     "1,568",
+     "",
+     "",
+     "16.1",
+     "%",
+     "1,821",
+     "",
+     "",
+     "1,568",
+     "",
+     "",
+     "16.1",
+     "%"
+    ],
+    [
+     "Orders",
+     "1,888",
+     "",
+     "",
+     "1,608",
+     "",
+     "",
+     "17.4",
+     "%",
+     "5,394",
+     "",
+     "",
+     "4,514",
+     "",
+     "",
+     "19.5",
+     "%"
+    ],
+    [
+     "Revenue",
+     "$",
+     "88,230",
+     "",
+     "$",
+     "82,161",
+     "",
+     "7.4",
+     "%",
+     "$",
+     "260,668",
+     "",
+     "$",
+     "231,109",
+     "",
+     "12.8",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "69,033",
+     "",
+     "$",
+     "65,212",
+     "",
+     "5.9",
+     "%",
+     "$",
+     "206,217",
+     "",
+     "$",
+     "183,319",
+     "",
+     "12.5",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "78.2",
+     "",
+     "%",
+     "79.4",
+     "",
+     "%",
+     "(120)",
+     "bps",
+     "79.1",
+     "",
+     "%",
+     "79.3",
+     "",
+     "%",
+     "(20)",
+     "bps"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,470)",
+     "",
+     "$",
+     "(4,248)",
+     "",
+     "28.8",
+     "%",
+     "$",
+     "(17,877)",
+     "",
+     "$",
+     "(14,639)",
+     "",
+     "22.1",
+     "%"
+    ],
+    [
+     "Net loss margin",
+     "(6.2)",
+     "",
+     "%",
+     "(5.2)",
+     "",
+     "%",
+     "(100)",
+     "bps",
+     "(6.9)",
+     "",
+     "%",
+     "(6.3)",
+     "",
+     "%",
+     "(60)",
+     "bps"
+    ],
+    [
+     "Non-GAAP Adjusted EBITDA(1)",
+     "$",
+     "3,524",
+     "",
+     "$",
+     "3,772",
+     "",
+     "(6.6)",
+     "%",
+     "$",
+     "11,048",
+     "",
+     "$",
+     "10,597",
+     "",
+     "4.3",
+     "%"
+    ],
+    [
+     "Non-GAAP Adjusted EBITDA margin(1)",
+     "4.0",
+     "",
+     "%",
+     "4.6",
+     "",
+     "%",
+     "(60)",
+     "bps",
+     "4.2",
+     "",
+     "%",
+     "4.6",
+     "",
+     "%",
+     "(40)",
+     "bps"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 795,
+    "end_line": 811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Net Loss was $5.5 million, or a negative 6.2% of revenue, for the third quarter of 2026, compared to $4.2 million, or a negative 5.2% of revenue, for the third quarter of 2025, representing an increase of 28.8% year over year.\nNon-GAAP Adjusted EBITDA(1) was $3.5 million, or 4.0% of revenue, for the third quarter of 2026, compared to $3.8 million, or 4.6% of revenue, for the third quarter of 2025, representing a decrease of 6.6% year over year.\nActive Buyers and Orders: Active Buyers totaled 1.8 million and Orders totaled 1.9 million in the third quarter of 2026, compared to 1.6 million and 1.6 million, respectively, in the third quarter of 2025, representing increases of 16.1% and 17.4%, respectively, year over year.\nKey Financial and Operating Metrics\nWe review a number of operating and financial metrics, including the following key business and non-GAAP metrics, to evaluate our business, measure our performance, identify trends affecting our business, formulate business plans and make strategic decisions. These key financial and operating metrics are set forth below for the periods presented.",
+   "prose_after": "(1)Non-GAAP Adjusted EBITDA and Non-GAAP Adjusted EBITDA margin are non-GAAP measures, which may not be comparable to similarly-titled measures used by other companies. See below for a reconciliation of Non-GAAP Adjusted EBITDA to its most directly comparable GAAP measure, Net loss.\nActive Buyers\nAn Active Buyer is a ThredUp buyer who has made at least one purchase in the last twelve months. A ThredUp buyer is a customer who has created an account and purchased in our marketplaces, including through our RaaS clients, and is identified by a unique email address. A single person could have multiple ThredUp accounts and count as multiple Active Buyers. The number of Active Buyers is a key driver of revenue for our marketplaces.\nOrders\nOrders means the total number of orders placed by buyers across our marketplaces, including through our RaaS clients, in a given period, net of cancellations.\nNon-GAAP Financial Measures\nNon-GAAP Adjusted EBITDA and Non-GAAP Adjusted EBITDA Margin\nNon-GAAP Adjusted EBITDA means Net loss adjusted to exclude, where applicable in a given period, stock-based compensation expense, depreciation and amortization, legal settlement and fees, interest expense, provision for income taxes, severance and other reorganization costs, and gains related to non-marketable equity investments. Non-GAAP Adjusted EBITDA margin represents Non-GAAP Adjusted EBITDA divided by Revenue. We use these non-GAAP measures to evaluate and assess our operating performance and the operating leverage in our business, and for internal planning and forecasting purposes. We believe these non-GAAP measures, when taken collectively with our GAAP results, may be helpful to investors because they provide consistency and comparability with past financial performance and assist in comparisons with other companies, some of which use similar non-GAAP financial information to supplement their GAAP results.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,470)",
+     "",
+     "$",
+     "(4,248)",
+     "",
+     "$",
+     "(17,877)",
+     "",
+     "$",
+     "(14,639)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "4,875",
+     "",
+     "",
+     "4,439",
+     "",
+     "",
+     "16,303",
+     "",
+     "",
+     "14,459",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "3,231",
+     "",
+     "",
+     "3,138",
+     "",
+     "",
+     "10,638",
+     "",
+     "",
+     "9,473",
+     "",
+     ""
+    ],
+    [
+     "Legal settlement and fees",
+     "546",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "546",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "340",
+     "",
+     "",
+     "477",
+     "",
+     "",
+     "1,023",
+     "",
+     "",
+     "1,487",
+     "",
+     ""
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "2",
+     "",
+     "",
+     "(34)",
+     "",
+     "",
+     "53",
+     "",
+     "",
+     "54",
+     "",
+     ""
+    ],
+    [
+     "Severance and other reorganization costs",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "362",
+     "",
+     "",
+     "(3)",
+     "",
+     ""
+    ],
+    [
+     "Gains related to non-marketable equity investments",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(234)",
+     "",
+     ""
+    ],
+    [
+     "Non-GAAP Adjusted EBITDA",
+     "$",
+     "3,524",
+     "",
+     "$",
+     "3,772",
+     "",
+     "$",
+     "11,048",
+     "",
+     "$",
+     "10,597",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "88,230",
+     "",
+     "$",
+     "82,161",
+     "",
+     "$",
+     "260,668",
+     "",
+     "$",
+     "231,109",
+     ""
+    ],
+    [
+     "Non-GAAP Adjusted EBITDA margin",
+     "4.0",
+     "",
+     "%",
+     "4.6",
+     "",
+     "%",
+     "4.2",
+     "",
+     "%",
+     "4.6",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Non-GAAP Adjusted EBITDA means Net loss adjusted to exclude, where applicable in a given period, stock-based compensation expense, depreciation and amortization, legal settlement and fees, interest expense, provision for income taxes, severance and other reorganization costs, and gains related to non-marketable equity investments. Non-GAAP Adjusted EBITDA margin represents Non-GAAP Adjusted EBITDA divided by Revenue. We use these non-GAAP measures to evaluate and assess our operating performance and the operating leverage in our business, and for internal planning and forecasting purposes. We believe these non-GAAP measures, when taken collectively with our GAAP results, may be helpful to investors because they provide consistency and comparability with past financial performance and assist in comparisons with other companies, some of which use similar non-GAAP financial information to supplement their GAAP results.\nThe following table provides a reconciliation of Net loss to Non-GAAP Adjusted EBITDA:",
+   "prose_after": "Comparison of Financial Results for the Three and Nine Months Ended September 30, 2026 and 2025\nRevenue",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "88,230",
+     "$",
+     "82,161",
+     "$",
+     "6,069",
+     "7.4",
+     "%",
+     "$",
+     "260,668",
+     "$",
+     "231,109",
+     "$",
+     "29,559",
+     "12.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 856,
+    "end_line": 865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Comparison of Financial Results for the Three and Nine Months Ended September 30, 2026 and 2025\nRevenue",
+   "prose_after": "Revenue increased $6.1 million, or 7.4%, for the three months ended September 30, 2026 as compared to the same period in 2025. The growth in revenue was mainly driven by a 17.4% increase in Orders, supported by higher engagement from both new and returning buyers, and a 2.4% increase in the average order value, partially offset by higher promotional discounts.\nRevenue increased $29.6 million, or 12.8%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The growth in revenue was mainly driven by a 19.5% increase in Orders, supported by higher engagement from both new and returning buyers, partially offset by higher promotional discounts, primarily in the third quarter, and a 0.6% decrease in the average order value.\nGross Margin",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "19,197",
+     "",
+     "$",
+     "16,949",
+     "",
+     "$",
+     "2,248",
+     "13.3",
+     "%",
+     "$",
+     "54,451",
+     "",
+     "$",
+     "47,790",
+     "",
+     "$",
+     "6,661",
+     "13.9",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "69,033",
+     "",
+     "$",
+     "65,212",
+     "",
+     "$",
+     "3,821",
+     "5.9",
+     "%",
+     "$",
+     "206,217",
+     "",
+     "$",
+     "183,319",
+     "",
+     "$",
+     "22,898",
+     "12.5",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "78.2",
+     "",
+     "%",
+     "79.4",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "79.1",
+     "",
+     "%",
+     "79.3",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 872,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Revenue increased $6.1 million, or 7.4%, for the three months ended September 30, 2026 as compared to the same period in 2025. The growth in revenue was mainly driven by a 17.4% increase in Orders, supported by higher engagement from both new and returning buyers, and a 2.4% increase in the average order value, partially offset by higher promotional discounts.\nRevenue increased $29.6 million, or 12.8%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The growth in revenue was mainly driven by a 19.5% increase in Orders, supported by higher engagement from both new and returning buyers, partially offset by higher promotional discounts, primarily in the third quarter, and a 0.6% decrease in the average order value.\nGross Margin",
+   "prose_after": "Gross margin was 78.2% for the three months ended September 30, 2026, compared to 79.4% in the same period in 2025, a decrease of 120 basis points, primarily driven by higher labor and packaging costs as a percentage of revenue.\nGross margin was 79.1% for the nine months ended September 30, 2026, compared to 79.3% in the same period in 2025, a decrease of 20 basis points. Overall, gross margin remained relatively stable across the periods.\nOperations, Product, and Technology",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations, product, and technology",
+     "$",
+     "42,468",
+     "",
+     "$",
+     "38,545",
+     "",
+     "$",
+     "3,923",
+     "10.2",
+     "%",
+     "$",
+     "128,658",
+     "",
+     "$",
+     "111,196",
+     "",
+     "$",
+     "17,462",
+     "15.7",
+     "%"
+    ],
+    [
+     "Operations, product, and technology as a percentage of revenue",
+     "48.1",
+     "",
+     "%",
+     "46.9",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "49.4",
+     "",
+     "%",
+     "48.1",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Gross margin was 78.2% for the three months ended September 30, 2026, compared to 79.4% in the same period in 2025, a decrease of 120 basis points, primarily driven by higher labor and packaging costs as a percentage of revenue.\nGross margin was 79.1% for the nine months ended September 30, 2026, compared to 79.3% in the same period in 2025, a decrease of 20 basis points. Overall, gross margin remained relatively stable across the periods.\nOperations, Product, and Technology",
+   "prose_after": "Operations, product, and technology expenses increased $3.9 million, or 10.2%, for the three months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $2.1 million increase in personnel-related costs, mainly reflecting distribution center headcount, a $1.2 million increase in inbound shipping costs driven by higher supply volume, and a $0.6 million increase in facilities, technology and other costs. The increase in operations, product, and technology expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects higher labor and inbound shipping costs associated with increased processing volume.\nOperations, product, and technology expenses increased $17.5 million, or 15.7%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $9.9 million increase in personnel-related costs, mainly reflecting distribution center headcount, a $4.9 million increase in inbound shipping costs driven by higher supply volume, and a $2.7 million increase in facilities, technology and other distribution center-related costs. The increase in operations, product, and technology expenses as a percentage of revenue for the nine months ended September 30, 2026 as compared to the same period in 2025 reflects higher labor and inbound shipping costs associated with increased processing volume.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketing",
+     "$",
+     "18,173",
+     "",
+     "$",
+     "16,186",
+     "",
+     "$",
+     "1,987",
+     "12.3",
+     "%",
+     "$",
+     "50,875",
+     "",
+     "$",
+     "45,535",
+     "",
+     "$",
+     "5,340",
+     "11.7",
+     "%"
+    ],
+    [
+     "Marketing as a percentage of revenue",
+     "20.6",
+     "",
+     "%",
+     "19.7",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "19.5",
+     "",
+     "%",
+     "19.7",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 905,
+    "end_line": 914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Operations, product, and technology expenses increased $3.9 million, or 10.2%, for the three months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $2.1 million increase in personnel-related costs, mainly reflecting distribution center headcount, a $1.2 million increase in inbound shipping costs driven by higher supply volume, and a $0.6 million increase in facilities, technology and other costs. The increase in operations, product, and technology expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects higher labor and inbound shipping costs associated with increased processing volume.\nOperations, product, and technology expenses increased $17.5 million, or 15.7%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $9.9 million increase in personnel-related costs, mainly reflecting distribution center headcount, a $4.9 million increase in inbound shipping costs driven by higher supply volume, and a $2.7 million increase in facilities, technology and other distribution center-related costs. The increase in operations, product, and technology expenses as a percentage of revenue for the nine months ended September 30, 2026 as compared to the same period in 2025 reflects higher labor and inbound shipping costs associated with increased processing volume.\nMarketing",
+   "prose_after": "Marketing expenses increased $2.0 million, or 12.3%, for the three months ended September 30, 2026 as compared to the same period in 2025, which was primarily due to an increase in advertising costs related to our marketing initiatives aimed at driving customer engagement and platform growth. The increase in marketing expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects a higher rate of marketing spend relative to the growth in revenue, as we continue to invest in marketing initiatives to support future growth.\nMarketing expenses increased $5.3 million, or 11.7%, for the nine months ended September 30, 2026 as compared to the same period in 2025, which was primarily due to an increase in advertising costs related to our marketing initiatives aimed at driving customer engagement and platform growth. The marketing expenses as a percentage of revenue remained consistent across the periods.\nSales, General and Administrative",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales, general, and administrative",
+     "$",
+     "13,652",
+     "",
+     "$",
+     "14,869",
+     "",
+     "$",
+     "(1,217)",
+     "(8.2)",
+     "%",
+     "$",
+     "44,646",
+     "",
+     "$",
+     "41,655",
+     "",
+     "$",
+     "2,991",
+     "7.2",
+     "%"
+    ],
+    [
+     "Sales, general, and administrative as a percentage of revenue",
+     "15.5",
+     "",
+     "%",
+     "18.1",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "17.1",
+     "",
+     "%",
+     "18.0",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 922,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Marketing expenses increased $2.0 million, or 12.3%, for the three months ended September 30, 2026 as compared to the same period in 2025, which was primarily due to an increase in advertising costs related to our marketing initiatives aimed at driving customer engagement and platform growth. The increase in marketing expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects a higher rate of marketing spend relative to the growth in revenue, as we continue to invest in marketing initiatives to support future growth.\nMarketing expenses increased $5.3 million, or 11.7%, for the nine months ended September 30, 2026 as compared to the same period in 2025, which was primarily due to an increase in advertising costs related to our marketing initiatives aimed at driving customer engagement and platform growth. The marketing expenses as a percentage of revenue remained consistent across the periods.\nSales, General and Administrative",
+   "prose_after": "Sales, general, and administrative expenses decreased $1.2 million, or 8.2%, for the three months ended September 30, 2026 as compared to the same period in 2025. The decrease was primarily due to a $0.9 million decrease in personnel-related costs, mainly due to lower bonus and salary expense, a $0.4 million decrease in payment processing fees, and a $0.3 million decrease in facilities, technology and other costs, partially offset by a $0.4 million increase in professional services. The decrease in sales, general, and administrative expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects increased operating leverage resulting from lower expenses coupled with higher revenue.\nSales, general, and administrative expenses increased $3.0 million, or 7.2%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $1.6 million increase in personnel-related costs, of which $1.1 million was attributable to stock-based compensation, a $0.5 million increase in facilities, technology and other costs, a $0.5 million increase in professional services, and a $0.3 million increase in payment processing fees. The decrease in sales, general, and administrative expenses as a percentage of revenue for the nine months ended September 30, 2026 as compared to the same period in 2025 reflects increased operating leverage resulting from higher revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "340",
+     "$",
+     "477",
+     "$",
+     "(137)",
+     "(28.7)",
+     "%",
+     "$",
+     "1,023",
+     "$",
+     "1,487",
+     "$",
+     "(464)",
+     "(31.2)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 938,
+    "end_line": 947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Sales, general, and administrative expenses decreased $1.2 million, or 8.2%, for the three months ended September 30, 2026 as compared to the same period in 2025. The decrease was primarily due to a $0.9 million decrease in personnel-related costs, mainly due to lower bonus and salary expense, a $0.4 million decrease in payment processing fees, and a $0.3 million decrease in facilities, technology and other costs, partially offset by a $0.4 million increase in professional services. The decrease in sales, general, and administrative expenses as a percentage of revenue for the three months ended September 30, 2026 as compared to the same period in 2025 reflects increased operating leverage resulting from lower expenses coupled with higher revenue.\nSales, general, and administrative expenses increased $3.0 million, or 7.2%, for the nine months ended September 30, 2026 as compared to the same period in 2025. The increase was primarily due to a $1.6 million increase in personnel-related costs, of which $1.1 million was attributable to stock-based compensation, a $0.5 million increase in facilities, technology and other costs, a $0.5 million increase in professional services, and a $0.3 million increase in payment processing fees. The decrease in sales, general, and administrative expenses as a percentage of revenue for the nine months ended September 30, 2026 as compared to the same period in 2025 reflects increased operating leverage resulting from higher revenue.\nInterest Expense",
+   "prose_after": "Interest expense decreased $0.1 million for the three months ended September 30, 2026 as compared to the same period in 2025, primarily due to a lower interest rate resulting from our recent debt amendment and reduced outstanding debt balances.\nInterest expense decreased $0.5 million for the nine months ended September 30, 2026 as compared to the same period in 2025, primarily due to a lower interest rate resulting from our recent debt amendment and reduced outstanding debt balances.\nOther Income, Net",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     "",
+     "Amount",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "$",
+     "132",
+     "$",
+     "583",
+     "$",
+     "(451)",
+     "(77.4)",
+     "%",
+     "$",
+     "1,161",
+     "$",
+     "1,969",
+     "$",
+     "(808)",
+     "(41.0)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 955,
+    "end_line": 964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Interest expense decreased $0.1 million for the three months ended September 30, 2026 as compared to the same period in 2025, primarily due to a lower interest rate resulting from our recent debt amendment and reduced outstanding debt balances.\nInterest expense decreased $0.5 million for the nine months ended September 30, 2026 as compared to the same period in 2025, primarily due to a lower interest rate resulting from our recent debt amendment and reduced outstanding debt balances.\nOther Income, Net",
+   "prose_after": "Other income, net decreased $0.5 million for the three months ended September 30, 2026 as compared to the same period in 2025, primarily due to higher non-operating expenses.\nOther income, net, decreased $0.8 million for the nine months ended September 30, 2026 as compared to the same period in 2025, primarily due to higher non-operating expenses in the third quarter of 2026 and a gain recognized on a non-marketable equity investment in the first quarter of 2025.\nLiquidity and Capital Resources\nWe generated positive cash flows from operating activities of $11.2 million for the nine months ended September 30, 2026. We have primarily financed our operations through private and public sales of equity securities and a term loan facility (\u201cTerm Loan\u201d). As of September 30, 2026, we had cash, cash equivalents, restricted cash and marketable securities of $57.6 million, an increase of $4.5 million from December 31, 2025. Additionally, we have a Term Loan under which $10.0 million remained available to be drawn as of September 30, 2026 for the purchase of certain equipment, and we were in full compliance with our debt covenants under the Term Loan as of that date. See Note 6, Long-Term Debt, to the condensed consolidated financial statements included in Part I, Item 1, Financial Statements, of this Quarterly Report on Form 10-Q for a further discussion on our Term Loan.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 996,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2026",
+     "",
+     "September 30, 2025",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "11,187",
+     "$",
+     "12,115"
+    ],
+    [
+     "Investing activities",
+     "(11,355)",
+     "",
+     "(902)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "1,998",
+     "",
+     "(448)",
+     ""
+    ],
+    [
+     "Net change in cash, cash equivalents and restricted cash",
+     "$",
+     "1,830",
+     "$",
+     "10,765"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 981,
+    "end_line": 995
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Our primary sources of liquidity are cash flows generated from operations, cash on hand and borrowings available under the Term Loan. Our primary uses of cash include seller payouts, operating costs such as distribution network spend, product and technology, marketing, personnel-related expenses, and other expenditures necessary to support our operations and our growth, as well as repayments on our Term Loan. Additionally, our primary capital expenditures are related to the set-up, expansion and/or automation of our distribution network. Based upon our current operating plans, we believe that our existing cash, cash equivalents and marketable securities will be sufficient for at least the next 12 months and beyond to meet our short and long-term capital requirements, and we do not anticipate expanding our distribution network to include additional locations in the near term. Our cash flow forecast is a forward-looking statement that involves risks and uncertainties, and actual results could vary materially.\nOur future capital requirements will depend on many factors, including but not limited to, the timing of any future distribution center automation and expansion plans to support planned revenue growth, the expansion of sales and marketing activities, the potential introduction of new offerings, the continuing growth of our marketplaces and overall economic conditions. However, we expect that our capital expenditures will remain modest for the remainder of 2026. See the section titled \u201cRisk Factors\u2014Risks Relating to Our Indebtedness and Liquidity\u2014We may require additional capital to support business growth, and this capital might not be available or may be available only by diluting existing stockholders\u201d within the 2025 10-K.\nCash Flows\nThe following table summarizes our cash flows for the periods indicated:",
+   "prose_after": "Changes in Cash Flows from Operating Activities\nNet cash provided by operating activities was $11.2 million during the nine months ended September 30, 2026, compared to $12.1 million for the same period in 2025. The $0.9 million decrease in operating cash inflows was primarily due to changes in operating assets and liabilities, which were driven by $2.3 million in higher cash outflows from accounts receivable, reflecting timing of cash receipts, $1.2 million in higher cash outflows from operating liabilities, reflecting escalating lease payments, $0.7 million in higher cashouts of seller payable, partially offset by $3.2 million in higher cash inflows from accounts payable and accrued and other liabilities, reflecting the timing of vendor payments.\nChanges in Cash Flows from Investing Activities\nNet cash used in investing activities for the nine months ended September 30, 2026 was $11.4 million as compared to $0.9 million for the same period in 2025. The $10.5 million increase in cash outflows was primarily due to an $8.8 million decrease in sale and maturities of marketable securities and a $1.7 million increase in purchases of marketable securities, reflecting the maturity schedule of our investment portfolio.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 996,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Description",
+     "Form",
+     "Exhibit",
+     "Filing Date"
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation of the Registrant",
+     "10-Q",
+     "3.1",
+     "8/5/2024"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Registrant, as adopted on February 16, 2023",
+     "8-K",
+     "3.1",
+     "2/21/2023"
+    ],
+    [
+     "4.1",
+     "Form of Class A common stock certificate of the Registrant",
+     "S-1",
+     "4.1",
+     "3/3/2021"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (formatted as inline XBRL with applicable taxonomy extension information contained in Exhibits 101)",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1099,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "Item 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\n(a)None.\n(b)None.\n(c)Rule 10b5-1 Trading Plans\nJames Reinhart, Chief Executive Officer, terminated a Rule 10b5-1 plan on August 24, 2026. The plan was adopted on December 5, 2025, providing for the sale of up to 803,152 shares of the Company\u2019s Class A common stock until March 8, 2027.\nOther than as disclosed above, during the three months ended September 30, 2026, none of our directors or officers (as defined in Rule 16a-1(f) under the Exchange Act) adopted or terminated any contract, instruction or written plan for the purchase or sale of our securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) under the Exchange Act or any \u201cnon-Rule 10b5-1 trading arrangement,\u201d as defined in Item 408(c) of Regulation S-K.\nItem 6. Exhibits\n(a)Exhibit Index:",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1129,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "THREDUP INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ SEAN SOBERS"
+    ],
+    [
+     "",
+     "Sean Sobers"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "THREDUP INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1134,
+    "end_line": 1143
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Date: November 4, 2026",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1129,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

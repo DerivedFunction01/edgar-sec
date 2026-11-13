@@ -1,0 +1,3244 @@
+{
+ "accession": "0001023458-25-000009",
+ "cik": "0001023458",
+ "form": "10-K",
+ "filing_date": "2025-03-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "aei22-20241231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "State of Minnesota",
+     "",
+     "41-1848181",
+     ""
+    ],
+    [
+     "",
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer\n\nIdentification No.)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "30 East 7th Street, Suite 1300\n\nSt. Paul, Minnesota 55101",
+     "",
+     "(651) 227-7333",
+     ""
+    ],
+    [
+     "",
+     "(Address of principal executive offices)",
+     "",
+     "(Registrant\u2019s telephone number)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nAnnual Report Pursuant to Section 13 or 15(d) of The Securities Exchange Act of 1934\nFor the Fiscal Year Ended: December 31, 2024\nCommission file number: 000-24003\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Trading Symbol(s)",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     "None",
+     "",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nLimited Partnership Units (Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the\nSecurities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or\nSection 15(d) of the Exchange Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property",
+     "Purchase\n\nDate",
+     "",
+     "Original Property\n\nCost",
+     "",
+     "Tenant",
+     "Annual\n\nLease\n\nPayment",
+     "",
+     "Annual\n\nRent\n\nPer Sq. Ft.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advance Auto Parts Store\n\n   Indianapolis, IN\n\n   (65%)",
+     "12/21/06",
+     "$",
+     "1,244,173",
+     "",
+     "Advance Stores\n\nCompany, Inc.",
+     "$",
+     "81,861",
+     "$",
+     "17.99"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Talecris Plasma Facility\n\n   Dallas, TX\n\n   (50%)",
+     "7/31/20",
+     "$",
+     "2,746,350",
+     "",
+     "Talecris Plasma Resources, Inc.",
+     "$",
+     "211,028",
+     "$",
+     "41.87"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DaVita Dialysis\n\n   Hempstead, TX",
+     "9/22/22",
+     "$",
+     "3,051,009",
+     "",
+     "Bollinger Dialysis, LLC",
+     "$",
+     "182,209",
+     "$",
+     "26.56"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 178,
+    "end_line": 201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES."
+    },
+    "note": null
+   },
+   "prose_before": "The Partnership's properties are commercial, single tenant buildings. The properties were acquired on a debt-free basis and are leased to tenants under net leases, classified as operating leases. The Partnership holds an undivided fee simple interest in the properties.\nThe Partnership's properties are subject to the general competitive conditions incident to the ownership of single tenant investment real estate. Since each property is leased under a longterm lease, there is little competition until the Partnership decides to sell the property. At this time, the Partnership will be competing with other real estate owners, on both a national and local level, in attempting to find buyers for the properties. In the event of a tenant default, the Partnership would be competing with other real estate owners, who have property vacancies, to attract a new tenant to lease the property. The Partnership's tenants operate in industries that are competitive and can be affected by factors such as changes in regional or local economies, seasonality and changes in consumer preference.\nITEM 2. PROPERTIES. (Continued)\nThe following table is a summary of the properties that the Partnership acquired and owned as of December 31, 2024.",
+   "prose_after": "The properties listed above with a partial ownership percentage are owned with the following affiliated entities: Advance Auto Parts store in Indianapolis, Indiana (AEI Income & Growth Fund 25 LLC) and Talecris Plasma Facility in Dallas, Texas (AEI Income & Growth Fund 25 LLC).\nThe Partnership accounts for properties owned as tenants-in-common with affiliated entities and/or unrelated third parties using the proportionate consolidation method. Each tenant-in-common owns a separate, undivided interest in the properties. Any tenant-in-common that holds more than a 50% interest does not control decisions over the other tenant-in-common interests. The financial statements reflect only this Partnership's percentage share of the properties' land, building, intangible assets, liabilities, revenues and expenses.\nAt the time the properties were acquired, the remaining primary lease terms varied from 7.75 to 20 years. The leases provide the tenants with two to five five-year renewal options subject to the same terms and conditions as the primary term, except for the Talecris Plasma Facility in Dallas, Texas which has one 10-year renewal option. The lease for the Advance Auto Parts store in Indianapolis, Indiana was extended on August 2, 2024 to have an end date of April 30, 2035.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 172,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,\n\n2024",
+     "",
+     "December 31,\n\n2023"
+    ],
+    [
+     "Properties",
+     "$",
+     "6,537,000",
+     "$",
+     "7,610,000"
+    ],
+    [
+     "Cash",
+     "",
+     "214,000",
+     "",
+     "269,000"
+    ],
+    [
+     "Current liabilities, net of sale proceeds",
+     "",
+     "556,000",
+     "",
+     "(165,000)"
+    ],
+    [
+     "Value attributable to the interest of the General Partners",
+     "",
+     "(73,000)",
+     "",
+     "(77,000)"
+    ],
+    [
+     "Value attributable to the interest of the Limited Partners",
+     "$",
+     "7,234,000",
+     "$",
+     "7,637,000"
+    ],
+    [
+     "Limited Partnership Units outstanding",
+     "",
+     "11,749",
+     "",
+     "11,749"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 288,
+    "end_line": 303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": null
+   },
+   "prose_before": "The per Unit value was the aggregate estimated value of the Partnership's assets less the Partnership's liabilities, and less the value attributable to the interest of the General Partners, divided by the number of Units outstanding. The Partnership's cash, receivables and liabilities were valued at face value as of September 30, 2024. Each of the Partnership's properties were valued by dividing their annual rental income as of December 1, 2024 by a capitalization rate the Managing General Partner believed, based upon the aforementioned valuation process, to be representative of the retail market for the sale of each property. The resulting value for each property was reviewed to determine that it also reflected circumstances that may have been unique to each specific property. For recently acquired properties, an appraisal report received at or near the time of acquisition from an independent commercial property appraiser was used to determine the value of the property. The appraisal report is used to value the property for approximately one year after the date of acquisition. The valuations were estimates only, and were based on a number of assumptions which may not be accurate or complete. In addition, property values are subject to change and could decline after the date of the valuations. Accordingly, this estimated value should not be viewed as the amount at which a Limited Partner may be able to sell units, or the fair market value of the Partnership properties, nor does it represent the amount of net proceeds Limited Partners would receive if the Partnership properties were sold and the proceeds distributed in a liquidation of the Partnership.\nThe following table provides a breakdown of each major asset type, liabilities and the number of Units that were used to calculate the estimated value per Unit, using the methodology described above, as of December 31:",
+   "prose_after": "ITEM 6. (Reserved)\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL\nCONDITION AND RESULTS OF OPERATIONS.\nThis section contains \"forward-looking statements\" which represent management's expectations or beliefs concerning future events, including statements regarding anticipated application of cash, expected returns from rental income, growth in revenue, the sufficiency of cash to meet operating expenses, rates of distribution, and other matters. These, and other forward-looking statements, should be evaluated in the context of a number of factors that may affect the Partnership's financial condition and results of operations, including the following:\n\u2014\nMarket and economic conditions which affect the value of the properties the Partnership owns and the cash from rental income such properties generate;\n\u2014\nthe federal income tax consequences of rental income, deductions, gain on sales and other items and the effects of these consequences for the Partners;\n\u2014\nresolution by the General Partners of conflicts with which they may be confronted;",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 306,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Report of Independent Registered Public Accounting Firm (PCAOB ID 542)",
+     "",
+     "18 \u2013 19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Balance Sheets as of December 31, 2024 and 2023",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Statements for the Years Ended December 31, 2024 and 2023:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Income",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash Flows",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Changes in Partners\u2019 Capital",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes to Financial Statements",
+     "",
+     "24 \u2013 38"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Partnership may repurchase Units from Limited Partners who have tendered their Units to the Partnership. Such Units may be acquired at a discount. The Partnership will not be obligated to purchase in any year any number of Units that, when aggregated with all other transfers of Units that have occurred since the beginning of the same calendar year (excluding Permitted Transfers as defined in the Partnership Agreement), would exceed 5% of the total number of Units outstanding on January 1 of such year. In no event shall the Partnership be obligated to purchase Units if, in the sole discretion of the Managing General Partner, such purchase would impair the capital or operation of the Partnership.\nDuring 2024 and 2023, the Partnership did not repurchase any Units from Limited Partners.\nThe continuing rent payments from the properties, together with cash generated from property sales, should be adequate to fund continuing distributions and meet other Partnership obligations on both a short-term and long-term basis.\nOff-Balance Sheet Arrangements\nAs of December 31, 2024 and 2023, the Partnership had no material off-balance sheet arrangements that had or are reasonably likely to have current or future effects on its financial condition, results of operations, liquidity or capital resources.\nITEM 7A. QUANTITATIVE & QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nNot required for a smaller reporting company.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nSee accompanying index to financial statements.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Partners:\nSt. Paul, Minnesota\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of AEI Income & Growth Fund XXII Limited Partnership (a Minnesota limited partnership) (the \u201cPartnership\u201d) as of December 31, 2024 and 2023, and the related statements of income, changes in partners' capital, and cash flows for each of the years in the two-year period ended December 31, 2024, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Partnership as of December 31, 2024 and 2023, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2024, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Partnership\u2019s management. Our responsibility is to express an opinion on the Partnership\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Partnership in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 426,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Boulay PLLP",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "We have served as the Partnership\u2019s auditor since 1996.",
+     ""
+    ],
+    [
+     "Minneapolis, Minnesota",
+     ""
+    ],
+    [
+     "March 28, 2025",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Boulay PLLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 486,
+    "end_line": 495
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements\nthat were communicated or required to be communicated to the audit committee and that (1) relate\nto accounts or disclosures that are material to the financial statements and (2) involved our\nespecially challenging, subjective, or complex judgments. We determined that there were no\ncritical audit matters.",
+   "prose_after": "BALANCE SHEETS\nASSETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 472,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 496,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "914,846",
+     "$",
+     "273,604"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Real Estate Investments:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "1,753,065",
+     "",
+     "1,914,315"
+    ],
+    [
+     "Buildings",
+     "",
+     "4,484,085",
+     "",
+     "5,356,358"
+    ],
+    [
+     "Acquired Intangible Lease Assets",
+     "",
+     "804,382",
+     "",
+     "1,415,859"
+    ],
+    [
+     "Real Estate Held for Investment, at Cost",
+     "",
+     "7,041,532",
+     "",
+     "8,686,532"
+    ],
+    [
+     "Accumulated Depreciation and Amortization",
+     "",
+     "(1,347,233)",
+     "",
+     "(2,056,836)"
+    ],
+    [
+     "Real Estate Held for Investment, Net",
+     "",
+     "5,694,299",
+     "",
+     "6,629,696"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "6,609,145",
+     "$",
+     "6,903,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 504,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEETS\nASSETS",
+   "prose_after": "LIABILITIES AND PARTNERS' CAPITAL",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 498,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 552,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payable to AEI Fund Management, Inc.",
+     "$",
+     "32,946",
+     "$",
+     "67,322"
+    ],
+    [
+     "Unearned Revenue",
+     "",
+     "50,356",
+     "",
+     "15,184"
+    ],
+    [
+     "Distributions Payable",
+     "",
+     "69,220",
+     "",
+     "103,813"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "152,522",
+     "",
+     "186,319"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital (Deficit):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners",
+     "",
+     "(13,646)",
+     "",
+     "(5,504)"
+    ],
+    [
+     "  Limited Partners \u2013 24,000 Units authorized;\n\n   11,749.37 Units issued and outstanding\n\n   as of December 31, 2024 and 2023",
+     "",
+     "6,470,269",
+     "",
+     "6,722,485"
+    ],
+    [
+     "Total Partners' Capital",
+     "",
+     "6,456,623",
+     "",
+     "6,716,981"
+    ],
+    [
+     "Total Liabilities and Partners' Capital",
+     "$",
+     "6,609,145",
+     "$",
+     "6,903,300"
+    ]
+   ],
+   "caption_stack": [
+    "Current Liabilities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "LIABILITIES AND PARTNERS' CAPITAL",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF INCOME",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 498,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 552,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years Ended December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental Income",
+     "$",
+     "440,126",
+     "$",
+     "547,015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partnership Administration \u2013 Affiliates",
+     "",
+     "116,430",
+     "",
+     "121,277"
+    ],
+    [
+     "Partnership Administration and Property\n\n   Management \u2013 Unrelated Parties",
+     "",
+     "69,899",
+     "",
+     "44,384"
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "276,037",
+     "",
+     "300,200"
+    ],
+    [
+     "Real Estate Impairment",
+     "",
+     "0",
+     "",
+     "35,000"
+    ],
+    [
+     "Total Expenses",
+     "",
+     "462,366",
+     "",
+     "500,861"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Income (Loss)",
+     "",
+     "(22,240)",
+     "",
+     "46,154"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on Sale of Real Estate",
+     "",
+     "32,817",
+     "",
+     "0"
+    ],
+    [
+     "Interest Income",
+     "",
+     "5,944",
+     "",
+     "5,641"
+    ],
+    [
+     "Total Other Income",
+     "",
+     "38,761",
+     "",
+     "5,641"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "16,521",
+     "$",
+     "51,795"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income Allocated:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners",
+     "$",
+     "165",
+     "$",
+     "1,904"
+    ],
+    [
+     "Limited Partners",
+     "",
+     "16,356",
+     "",
+     "49,891"
+    ],
+    [
+     "Total",
+     "$",
+     "16,521",
+     "$",
+     "51,795"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income per Limited Partnership Unit",
+     "$",
+     "1.39",
+     "$",
+     "4.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Units Outstanding \u2013\n\n      Basic and Diluted",
+     "",
+     "11,749",
+     "",
+     "11,749"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 558,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF INCOME",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years Ended December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "16,521",
+     "$",
+     "51,795"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Income\n\nTo Net Cash Provided by Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "306,913",
+     "",
+     "365,587"
+    ],
+    [
+     "Gain on Sale of Real Estate",
+     "",
+     "(32,817)",
+     "",
+     "0"
+    ],
+    [
+     "Real Estate Impairment",
+     "",
+     "0",
+     "",
+     "35,000"
+    ],
+    [
+     "Increase (Decrease) in Payable to\n\n   AEI Fund Management, Inc.",
+     "",
+     "(34,376)",
+     "",
+     "(20,651)"
+    ],
+    [
+     "Increase (Decrease) in Unearned Rent",
+     "",
+     "35,172",
+     "",
+     "441"
+    ],
+    [
+     "(Increase) Decrease in Receivable",
+     "",
+     "0",
+     "",
+     "6,822"
+    ],
+    [
+     "Total Adjustments",
+     "",
+     "274,892",
+     "",
+     "387,199"
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Operating Activities",
+     "",
+     "291,413",
+     "",
+     "438,994"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Sale of Real Estate",
+     "",
+     "661,301",
+     "",
+     "0"
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Investing Activities",
+     "",
+     "661,301",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Paid to Partners",
+     "",
+     "(311,472)",
+     "",
+     "(421,555)"
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Financing Activities",
+     "",
+     "(311,472)",
+     "",
+     "(421,555)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "641,242",
+     "",
+     "17,439"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "",
+     "273,604",
+     "",
+     "256,165"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "914,846",
+     "$",
+     "273,604"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 613,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CHANGES IN PARTNERS' CAPITAL",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "General Partners",
+     "",
+     "Limited Partners",
+     "",
+     "Total",
+     "",
+     "Limited Partnership Units Outstanding"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "$",
+     "5,050",
+     "$",
+     "7,081,691",
+     "$",
+     "7,086,741",
+     "",
+     "11,749.37"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Declared",
+     "",
+     "(12,458)",
+     "",
+     "(409,097)",
+     "",
+     "(421,555)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "1,904",
+     "",
+     "49,891",
+     "",
+     "51,795",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023",
+     "",
+     "(5,504)",
+     "",
+     "6,722,485",
+     "",
+     "6,716,981",
+     "",
+     "11,749.37"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Declared",
+     "",
+     "(8,307)",
+     "",
+     "(268,572)",
+     "",
+     "(276,879)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "165",
+     "",
+     "16,356",
+     "",
+     "16,521",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024",
+     "$",
+     "(13,646)",
+     "$",
+     "6,470,269",
+     "$",
+     "6,456,623",
+     "",
+     "11,749.37"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CHANGES IN PARTNERS' CAPITAL",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\n(1) Organization \u2013\nAEI Income & Growth Fund XXII Limited Partnership (the \u201cPartnership\u201d) was formed to acquire and lease commercial properties to operating tenants. The Partnership's operations are managed by AEI Fund Management XXI, Inc. (\u201cAFM\u201d), the Managing General Partner. The Estate of Robert P. Johnson serves as the Individual General Partner. AFM is a wholly owned subsidiary of AEI Capital Corporation of which the Credit Trust fbo Patricia Johnson and Patricia Johnson own a majority interest. AEI Fund Management, Inc. (\u201cAEI\u201d), an affiliate of AFM, performs the administrative and operating functions for the Partnership.\nThe terms of the Partnership offering called for a subscription price of $1,000 per Limited Partnership Unit, payable on acceptance of the offer. The Partnership commenced operations on May 1, 1997 when minimum subscriptions of 1,500 Limited Partnership Units ($1,500,000) were accepted. The offering terminated January 9, 1999 when the extended offering period ended. The Partnership received subscriptions for 16,917.222 Limited Partnership Units. Under the terms of the Limited Partnership Agreement, the Limited Partners and General Partners contributed funds of $16,917,222 and $1,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "AEI is reimbursed for costs incurred in providing services related to managing the Partnership's operations and properties, maintaining the Partnership's books, and communicating with the Limited Partners.",
+     "$",
+     "116,430",
+     "$",
+     "121,277"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "AEI is reimbursed for all direct expenses it paid on the Partnership's behalf to third parties related to Partnership administration and property management. These expenses included printing costs, legal and filing fees, direct administrative costs, outside audit costs, taxes, insurance and other property costs.",
+     "$",
+     "69,899",
+     "$",
+     "44,384"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "AEI is reimbursed for costs incurred in providing services and direct expenses related to the acquisition of property on behalf of the Partnership.",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "AEI is reimbursed for costs incurred in providing services related to the sale of property on behalf of the Partnership.",
+     "$",
+     "6,262",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "In November 2023, the Financial Accounting Standards Board (FASB) issued Accounting Standards Update (ASU) 2023-07: Improvements to Reportable Segment Disclosures. This ASU, which amends Topic 280: Segment Reporting, improves disclosure requirements for reportable segments. The Partnership has a single reportable segment based on the nature of its services and regulatory environment under which it operates. The nature of business and the accounting policies of the segment are the same as described throughout Notes 1 and 2. The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements.\n(3) Related Party Transactions \u2013\nThe Partnership owns the percentage interest shown below in the following properties as tenants-in-common with the affiliated entities listed: Advance Auto Parts store in Indianapolis, Indiana (65% \u2013 AEI Income & Growth Fund 25 LLC) and Talecris Plasma Facility in Dallas, Texas (50% \u2013 AEI Income & Growth Fund 25 LLC).\nAEI received the following reimbursements for costs and expenses from the Partnership for the years ended December 31:",
+   "prose_after": "The payable to AEI represents the balance due for the services described in 3a, b, c and d. This balance is non-interest bearing and unsecured and is to be paid in the normal course of business.\n(4) Real Estate Investments \u2013\nThe Partnership leases its properties to tenants under net leases, classified as operating leases. Under a net lease, the tenant is responsible for real estate taxes, insurance, maintenance, repairs and operating expenses for the property. For some leases, the Partnership is responsible for repairs to the structural components of the building, the roof, and the parking lot. At the time the properties were acquired, the remaining primary lease terms varied from 7.75 to 20 years. The leases provide the tenants with two to five five-year renewal options subject to the same terms and conditions as the primary term, except for the Talecris Plasma Facility in Dallas, Texas which has one ten-year renewal option. The lease for the Advance Auto Parts store in Indianapolis, Indiana was extended on August 2, 2024 to have an end date of April 30, 2035.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 829,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property",
+     "Land",
+     "",
+     "Buildings",
+     "",
+     "Total",
+     "",
+     "Accumulated\n\nDepreciation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advance Auto Parts, Indianapolis, IN",
+     "$",
+     "537,914",
+     "$",
+     "706,259",
+     "$",
+     "1,244,173",
+     "$",
+     "509,691"
+    ],
+    [
+     "DaVita, Hempstead, TX",
+     "",
+     "629,728",
+     "",
+     "2,069,828",
+     "",
+     "2,699,556",
+     "",
+     "186,284"
+    ],
+    [
+     "Talecris Plasma Facility, Dallas, TX",
+     "",
+     "585,423",
+     "",
+     "1,707,998",
+     "",
+     "2,293,421",
+     "",
+     "301,747"
+    ],
+    [
+     "",
+     "$",
+     "1,753,065",
+     "$",
+     "4,484,085",
+     "$",
+     "6,237,150",
+     "$",
+     "997,722"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 870,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "The Partnership leases its properties to tenants under net leases, classified as operating leases. Under a net lease, the tenant is responsible for real estate taxes, insurance, maintenance, repairs and operating expenses for the property. For some leases, the Partnership is responsible for repairs to the structural components of the building, the roof, and the parking lot. At the time the properties were acquired, the remaining primary lease terms varied from 7.75 to 20 years. The leases provide the tenants with two to five five-year renewal options subject to the same terms and conditions as the primary term, except for the Talecris Plasma Facility in Dallas, Texas which has one ten-year renewal option. The lease for the Advance Auto Parts store in Indianapolis, Indiana was extended on August 2, 2024 to have an end date of April 30, 2035.\nThe Partnership's properties are commercial, single-tenant buildings. The Advance Auto Parts store in Indianapolis, Indiana was constructed in 2005 and acquired in 2006. The Talecris Plasma Facility in Dallas, Texas was constructed in 2008 and acquired in 2020. The DaVita facility in Hempstead, Texas was constructed in 2015 and acquired in 2022. The St. Vincent Medical Clinic in Lonoke, Arkansas was constructed in 2010, acquired in 2013, and sold in December 2024. There have been no costs capitalized as improvements subsequent to the acquisitions.\nThe cost of the properties not held for sale and related accumulated depreciation at December 31, 2024 are as follows:",
+   "prose_after": "For the years ended December 31, 2024 and 2023, the Partnership recognized depreciation expense of $205,532 and $215,304, respectively.\n(4) Real Estate Investments \u2013 (Continued)\nThe following schedule presents the cost and related accumulated amortization of acquired lease intangibles not held for sale at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 860,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Cost",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Cost",
+     "",
+     "Accumulated Amortization"
+    ],
+    [
+     "In-Place Lease Intangibles\n\n   (weighted average life of 55 and 51 months, respectively)",
+     "$",
+     "558,153",
+     "$",
+     "234,881",
+     "$",
+     "738,140",
+     "$",
+     "344,362"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Above-Market Lease Intangibles\n\n   (weighted average life of 51 and 23 months, respectively)",
+     "",
+     "246,229",
+     "",
+     "114,631",
+     "",
+     "677,719",
+     "",
+     "515,245"
+    ],
+    [
+     "  Acquired Intangible Lease Assets",
+     "$",
+     "804,382",
+     "$",
+     "349,512",
+     "$",
+     "1,415,859",
+     "$",
+     "859,607"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "For the years ended December 31, 2024 and 2023, the Partnership recognized depreciation expense of $205,532 and $215,304, respectively.\n(4) Real Estate Investments \u2013 (Continued)\nThe following schedule presents the cost and related accumulated amortization of acquired lease intangibles not held for sale at December 31:",
+   "prose_after": "For the years ended December 31, 2024 and 2023, the value of in-place lease intangibles amortized to expense was $70,506 and $84,896 and the decrease to rental income for above-market leases was $30,875 and $65,387, respectively.\nFor lease intangibles not held for sale at December 31, 2024, the estimated amortization for the next five years is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Amortization Expense for\n\nIn-Place Lease Intangibles",
+     "",
+     "",
+     "Decrease to Rental Income\n\nfor Above-Market Leases",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "$",
+     "70,506",
+     "",
+     "$",
+     "30,875"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "70,506",
+     "",
+     "",
+     "30,875"
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "70,506",
+     "",
+     "",
+     "30,875"
+    ],
+    [
+     "2028",
+     "",
+     "",
+     "58,777",
+     "",
+     "",
+     "23,927"
+    ],
+    [
+     "2029",
+     "",
+     "",
+     "35,318",
+     "",
+     "",
+     "10,031"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "305,613",
+     "",
+     "$",
+     "126,583"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "For the years ended December 31, 2024 and 2023, the value of in-place lease intangibles amortized to expense was $70,506 and $84,896 and the decrease to rental income for above-market leases was $30,875 and $65,387, respectively.\nFor lease intangibles not held for sale at December 31, 2024, the estimated amortization for the next five years is as follows:",
+   "prose_after": "(4) Real Estate Investments \u2013 (Continued)\nIn October 2024, the Partnership entered into an agreement to sell its 100% interest in the St. Vincent Clinic in Lonoke, Arkansas to an unrelated third party. On December 17, 2024, the sale closed with the Partnership receiving net proceeds of $661,301, which resulted in a net gain of $32,817. At the time of sale, the cost and related accumulated depreciation was $1,645,000 and $1,016,516, respectively.\nFor properties owned as of December 31, 2024, the minimum future rent payments required by the leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2025",
+     "$",
+     "477,245"
+    ],
+    [
+     "2026",
+     "",
+     "488,212"
+    ],
+    [
+     "2027",
+     "",
+     "494,798"
+    ],
+    [
+     "2028",
+     "",
+     "422,411"
+    ],
+    [
+     "2029",
+     "",
+     "268,680"
+    ],
+    [
+     "Thereafter",
+     "",
+     "486,965"
+    ],
+    [
+     "",
+     "$",
+     "2,638,311"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 951
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "(4) Real Estate Investments \u2013 (Continued)\nIn October 2024, the Partnership entered into an agreement to sell its 100% interest in the St. Vincent Clinic in Lonoke, Arkansas to an unrelated third party. On December 17, 2024, the sale closed with the Partnership receiving net proceeds of $661,301, which resulted in a net gain of $32,817. At the time of sale, the cost and related accumulated depreciation was $1,645,000 and $1,016,516, respectively.\nFor properties owned as of December 31, 2024, the minimum future rent payments required by the leases are as follows:",
+   "prose_after": "There were no contingent rents recognized in 2024 and 2023.\n(5) Major Tenants \u2013\nThe following schedule presents rental income from individual tenants, or affiliated groups of tenants, who each contributed more than ten percent of the Partnership's total rental income for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Tenants",
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bollinger Dialysis, LLC",
+     "",
+     "",
+     "$",
+     "172,178",
+     "$",
+     "172,178"
+    ],
+    [
+     "St. Vincent Health System",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "112,917"
+    ],
+    [
+     "Talecris Plasma Resources, Inc.",
+     "",
+     "",
+     "",
+     "186,087",
+     "",
+     "180,059"
+    ],
+    [
+     "Advance Stores Company",
+     "",
+     "",
+     "",
+     "81,861",
+     "",
+     "81,861"
+    ],
+    [
+     "Aggregate rental income of major tenants",
+     "",
+     "",
+     "$",
+     "440,126",
+     "$",
+     "547,015"
+    ],
+    [
+     "Aggregate rental income of major tenants\n\nas a percentage of total rental income",
+     "",
+     "",
+     "",
+     "100%",
+     "",
+     "100%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 962,
+    "end_line": 977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "There were no contingent rents recognized in 2024 and 2023.\n(5) Major Tenants \u2013\nThe following schedule presents rental income from individual tenants, or affiliated groups of tenants, who each contributed more than ten percent of the Partnership's total rental income for the years ended December 31:",
+   "prose_after": "(6) Partners\u2019 Capital \u2013\nFor the years ended December 31, 2024 and 2023, the Partnership declared distributions of $276,879 and $421,555, respectively. The Limited Partners were allocated distributions of $268,572 and $409,097 and the General Partners were allocated distributions of $8,307 and $12,458 for the years ended December 31, 2024 and 2023, respectively. The Limited Partners' distributions represented $22.86 and $34.82 per Limited Partnership Unit outstanding using 11,749 weighted average Units in 2024 and 2023. The distributions represented $22.86 and $34.82 per Unit of Net Income and $0 and $0 per Unit of return of capital in 2024 and 2023, respectively.\nThe Partnership may repurchase Units from Limited Partners who have tendered their Units to the Partnership. Such Units may be acquired at a discount. The Partnership will not be obligated to purchase in any year any number of Units that, when aggregated with all other transfers of Units that have occurred since the beginning of the same calendar year (excluding Permitted Transfers as defined in the Partnership Agreement), would exceed 5% of the total number of Units outstanding on January 1 of such year. In no event shall the Partnership be obligated to purchase Units if, in the sole discretion of the Managing General Partner, such purchase would impair the capital or operation of the Partnership.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 956,
+     "token": "REPEATING_HEADER",
+     "id": 53,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 986,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income for Financial Reporting Purposes",
+     "$",
+     "16,521",
+     "$",
+     "51,795"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation for Tax Purposes Under Depreciation\n\n    and Amortization for Financial Reporting Purposes",
+     "",
+     "121,412",
+     "",
+     "172,134"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Accrued for Tax Purposes Under\n\n    Income for Financial Reporting Purposes",
+     "",
+     "16,477",
+     "",
+     "1,550"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on Sale of Real Estate for Tax Purposes\n\n  Under Gain for Financial Reporting Purposes",
+     "",
+     "(595,672)",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment loss of Real Estate for Tax Purposes\n\n    Under Loss for Financial Reporting Purposes",
+     "",
+     "0",
+     "",
+     "35,000"
+    ],
+    [
+     "Taxable Income to Partners",
+     "$",
+     "(441,262)",
+     "$",
+     "260,479"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 994,
+    "end_line": 1018
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "For the years ended December 31, 2024 and 2023, the Partnership declared distributions of $276,879 and $421,555, respectively. The Limited Partners were allocated distributions of $268,572 and $409,097 and the General Partners were allocated distributions of $8,307 and $12,458 for the years ended December 31, 2024 and 2023, respectively. The Limited Partners' distributions represented $22.86 and $34.82 per Limited Partnership Unit outstanding using 11,749 weighted average Units in 2024 and 2023. The distributions represented $22.86 and $34.82 per Unit of Net Income and $0 and $0 per Unit of return of capital in 2024 and 2023, respectively.\nThe Partnership may repurchase Units from Limited Partners who have tendered their Units to the Partnership. Such Units may be acquired at a discount. The Partnership will not be obligated to purchase in any year any number of Units that, when aggregated with all other transfers of Units that have occurred since the beginning of the same calendar year (excluding Permitted Transfers as defined in the Partnership Agreement), would exceed 5% of the total number of Units outstanding on January 1 of such year. In no event shall the Partnership be obligated to purchase Units if, in the sole discretion of the Managing General Partner, such purchase would impair the capital or operation of the Partnership.\nDuring 2024 and 2023, the Partnership did not repurchase any Units from Limited Partners.\n(7) Income Taxes \u2013\nThe following is a reconciliation of net income for financial reporting purposes to income reported for federal income tax purposes for the years ended December 31:",
+   "prose_after": "The following is a reconciliation of Partners' capital for financial reporting purposes to Partners' capital reported for federal income tax purposes for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 988,
+     "token": "REPEATING_HEADER",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners' Capital for Financial Reporting Purposes",
+     "$",
+     "6,456,623",
+     "$",
+     "6,716,980"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted Tax Basis of Investments in Real Estate\n\n    Over Net Investments in Real Estate\n\n    for Financial Reporting Purposes",
+     "",
+     "601,388",
+     "",
+     "1,059,171"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Syndication Costs Treated as Reduction\n\n    of Capital For Financial Reporting Purposes",
+     "",
+     "2,418,726",
+     "",
+     "2,418,726"
+    ],
+    [
+     "Partners' Capital for Tax Reporting Purposes",
+     "$",
+     "9,476,737",
+     "$",
+     "10,194,877"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1021,
+    "end_line": 1039
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "The following is a reconciliation of Partners' capital for financial reporting purposes to Partners' capital reported for federal income tax purposes for the years ended December 31:",
+   "prose_after": "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON\nACCOUNTING AND FINANCIAL DISCLOSURE.\nNone.\nITEM 9A. CONTROLS AND PROCEDURES.\n(a) Disclosure Controls and Procedures\nUnder the supervision and with the participation of management, including its President and Chief Financial Officer, the Managing General Partner of the Partnership evaluated the effectiveness of the design and operation of our disclosure controls and procedures (as defined in Rule 13a-15(e) under the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d)). Based upon that evaluation, the President and Chief Financial Officer of the Managing General Partner concluded that, as of the end of the period covered by this report, our disclosure controls and procedures were effective in ensuring that information required to be disclosed by us in the reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in applicable rules and forms and that such information is accumulated and communicated to management, including the President and Chief Financial Officer of the Managing General Partner, in a manner that allows timely decisions regarding required disclosure.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 988,
+     "token": "REPEATING_HEADER",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": "equity_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address\n\nof Beneficial Owner",
+     "Number of\n\nUnits Held",
+     "Percent\n\nof Class"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "AEI Fund Management XXI, Inc.",
+     "22",
+     "0.18%"
+    ],
+    [
+     "Patricia L. Johnson",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Marni J. Nygard",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Kevin S. Steele",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Keith E. Petersen",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Address for all:  1300 Wells Fargo Place, 30 East 7th Street, St. Paul, Minnesota 55101",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrea B. Currier",
+     "824.74227",
+     "7.02%"
+    ],
+    [
+     "P.O. Box E, The Plains, Virginia 20198",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1118,
+    "end_line": 1133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "The General Partner and affiliates are reimbursed at cost for all services performed on behalf of the registrant and for all third party expenses paid on behalf of the registrant. The cost for services performed on behalf of the registrant is based on actual time spent performing such services plus an overhead burden. These services include organizing the registrant and arranging for the offer and sale of Units, reviewing properties for acquisition and rendering administrative, property management, and property sales services. The amount and nature of such payments are detailed in Item 13 of this annual report on Form 10-K.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND\nMANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth information pertaining to the ownership of the Units by each person known by the Partnership to beneficially own 5% or more of the Units, by each General Partner, and by each officer or director of the Managing General Partner as of February 28, 2025:",
+   "prose_after": "The persons set forth in the preceding table hold sole voting power and power of disposition with respect to all of the Units set forth opposite their names.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND\nDIRECTOR INDEPENDENCE.\nThe registrant, AFM and its affiliates have common management and utilize the same facilities. As a result, certain administrative expenses are allocated among these related entities. All of such activities and any other transactions involving the affiliates of the General Partner of the registrant are governed by, and are conducted in conformity with, the limitations set forth in the Limited Partnership Agreement of the registrant. Reference is made to Note 3 of the Financial Statements, as presented, and is incorporated herein by reference, for details of related party transactions for the years ended December 31, 2024 and 2023.\nNeither the registrant, nor the Managing General Partner of the registrant, has a board of directors consisting of any members who are \u201cindependent.\u201d In 2020 through date of his death, the sole director of the Managing General Partner, Robert P. Johnson, was also the Individual General Partner of the registrant, and was the Chief Executive Officer, and indirectly the principal owner, of the Managing General Partner. Patricia Johnson now serves as the sole director of the Managing General Partner. Accordingly, there is no disinterested board, or other functioning body, that reviews related party transactions, or the transactions between the registrant and the General Partners, except as performed in connection with the audit of its financial statements.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Person or Entity\n\nReceiving\n\nCompensation",
+     "Form and Method\n\nof Compensation",
+     "Amount Incurred From\n\nInception (July 31, 1996)\n\nTo December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AEI Securities, Inc.",
+     "Selling Commissions equal to 8% of proceeds plus a 2% nonaccountable expense allowance, most of which was reallowed to Participating Dealers.",
+     "",
+     "$",
+     "1,691,722"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners and Affiliates",
+     "Reimbursement at Cost for other Organization and Offering Costs.",
+     "",
+     "$",
+     "762,880"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners and Affiliates",
+     "Reimbursement at Cost for all Acquisition Expenses.",
+     "",
+     "$",
+     "629,927"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners and Affiliates",
+     "Reimbursement at Cost for providing administrative services to the Fund, including all expenses related to management of the Fund's properties and all other transfer agency, reporting, partner relations and other administrative functions.",
+     "",
+     "$",
+     "4,114,246"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners and Affiliates",
+     "Reimbursement at Cost for providing services related to the disposition of the Fund's properties.",
+     "",
+     "$",
+     "721,498"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners",
+     "3% of Net Cash Flow in any fiscal year.",
+     "",
+     "$",
+     "610,770"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1154,
+    "end_line": 1178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "The limitations included in the Partnership Agreement require that the cumulative reimbursements to the General Partners and their affiliates for certain expenses will not exceed an amount equal to the sum of (i) 20% of gross offering proceeds, (ii) 5% of Net Cash Flow for property management, (iii) 3% of Net Proceeds of Sale, and (iv) 10% of Net Cash Flow less the Net Cash Flow actually distributed to the General Partners. The cumulative reimbursements subject to this limitation are reimbursements for (i) organization and offering expenses, including commissions, (ii) acquisition expenses, (iii) services provided in the sales effort of properties, and (iv) expenses of controlling persons and overhead expenses directly attributable to the forgoing services or attributable to administrative services. As of December 31, 2024, these cumulative reimbursements to the General Partners and their affiliates did not exceed the limitation amount.\nThe following table sets forth the forms of compensation, distributions and cost reimbursements paid by the registrant to the General Partners or their Affiliates in connection with the operation of the Fund for the period from inception through December 31, 2024.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1179,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "General Partners",
+     "1% of distributions of Net Proceeds of Sale until Limited Partners have received an amount equal to (a) their Adjusted Capital Contributions, plus (b) an amount equal to 9% of their Adjusted Capital Contributions per annum, cumulative but not compounded, to the extent not previously distributed. 10% of distributions of Net Proceeds of Sale thereafter.",
+     "$",
+     "53,702"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1181,
+    "end_line": 1186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe following is a summary of the fees billed to the Partnership by Boulay PLLP for professional services rendered for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1179,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "",
+     "2024",
+     "",
+     "2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "16,250",
+     "$",
+     "21,125"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "16,250",
+     "$",
+     "21,125"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1193,
+    "end_line": 1204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "ITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe following is a summary of the fees billed to the Partnership by Boulay PLLP for professional services rendered for the years ended December 31:",
+   "prose_after": "Audit Fees - Consists of fees billed for professional services rendered for the audit of the Partnership\u2019s annual financial statements and review of the interim financial statements included in quarterly reports, and services that are normally provided by Boulay PLLP in connection with statutory and regulatory filings or engagements.\nAudit-Related Fees - Consists of fees billed for assurance and related services that are reasonably related to the performance of the audit or review of financial statements and are not reported under \"Audit Fees.\" These services include consultations concerning financial accounting and reporting standards.\nTax Fees - Consists of fees billed for professional services for federal and state tax compliance, tax advice and tax planning.\nAll Other Fees - Consists of fees for products and services other than the services reported above.\nPolicy for Preapproval of Audit and Permissible Non-Audit Services\nBefore the Independent Registered Public Accounting Firm is engaged by the Partnership to render audit or non-audit services, the engagement is approved by Mrs. Johnson acting as the Partnership\u2019s audit committee.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AEI INCOME & GROWTH FUND XXII",
+     ""
+    ],
+    [
+     "",
+     "Limited Partnership",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "AEI Fund Management XXI, Inc."
+    ],
+    [
+     "",
+     "",
+     "Its Managing General Partner"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 28, 2025",
+     "By:",
+     "/s/ Marni J. Nygard"
+    ],
+    [
+     "",
+     "",
+     "Marni J. Nygard, President"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "AEI INCOME & GROWTH FUND XXII",
+    "Limited Partnership"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1267,
+    "end_line": 1278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "10.3\nPurchase and Sale Agreement dated July 9, 2019 between the Partnership, AEI Income and Growth Fund 24 LLC and Agree Development, LLC relating to the property at 4460 32nd Avenue South, Grand Forks, North Dakota (incorporated by reference to Exhibit filed with Form 8-K filed August 6, 2019).\n31.1\nCertification of President of General Partner pursuant to Rule 15d-14(a)(17 CFR 240.15d-14(a)) and Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2\nCertification of Chief Financial Officer of General Partner pursuant to Rule 15d-14(a)(17 CFR 240.15d-14(a)) and Section 302 of the Sarbanes-Oxley Act of 2002.\n32\nCertification of President and Chief Financial Officer of General Partner pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marni J. Nygard",
+     "",
+     "President",
+     "",
+     "March 28, 2025"
+    ],
+    [
+     "Marni J. Nygard",
+     "",
+     "(Principal Executive Officer)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Keith E. Petersen",
+     "",
+     "Chief Financial Officer and Treasurer",
+     "",
+     "March 28, 2025"
+    ],
+    [
+     "Keith E. Petersen",
+     "",
+     "(Principal Accounting Officer)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1281,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ". The Partnership\u2019s Chief Operating Decision Maker is the General Partners. The Partnership adopted the standard as of January 1, 2024. The adoption did not have a material impact on the Partnership\u2019s financial statements."
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

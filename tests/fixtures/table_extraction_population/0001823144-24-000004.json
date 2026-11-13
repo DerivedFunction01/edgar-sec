@@ -1,0 +1,4891 @@
+{
+ "accession": "0001823144-24-000004",
+ "cik": "0001823144",
+ "form": "10-Q",
+ "filing_date": "2024-05-06",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cmpo-20240331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "85-2749902"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2024\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from to\nCommission File Number 001-39687\nCompoSecure, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "309 Pierce St.\nSomerset, NJ 08873\n(908) 518-0500\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock, $0.0001 par value per share",
+     "CMPO",
+     "The Nasdaq Global Market"
+    ],
+    [
+     "Redeemable Warrants, each whole warrant exercisable for one share of Class A Common Stock",
+     "CMPOW",
+     "The Nasdaq Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "309 Pierce St.\nSomerset, NJ 08873\n(908) 518-0500\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I.",
+     "Financial Information",
+     "2"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "2"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Income (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Deficit (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (Unaudited)",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "31"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "32"
+    ],
+    [
+     "Part II.",
+     "Other Information",
+     "34"
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "34"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "55"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "56"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "56"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "56"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "56"
+    ],
+    [
+     "Signatures",
+     "",
+     "57"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 66,
+    "end_line": 90
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 7(a)(2)(B) of the Securities Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act): Yes [ ] No [X]\nAs of May 01, 2024, there were 20,632,837 shares of the registrant's Class A common stock outstanding and 59,958,422 shares of the registrant's Class B common stock outstanding.\nTable of Contents",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis report, and the documents incorporated by reference herein, may contain forward-looking statements as defined by the Private Securities Litigation Reform Act of 1995. These statements are based on the beliefs and assumptions of management. Although the Company believes that its plans, intentions, and expectations reflected in or suggested by these forward- looking statements are reasonable, the Company cannot assure you that it will achieve or realize these plans, intentions, or expectations. Forward-looking statements are inherently subject to risks, uncertainties, and assumptions. Generally, statements that are not historical facts, including statements concerning the Company\u2019s possible or assumed future actions, business strategies, events, or results of operations, are forward- looking statements. In some instances, these statements may be preceded by, followed by or include the words \u201cbelieves,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cprojects,\u201d \u201cforecasts,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cseeks,\u201d \u201cplans,\u201d \u201cscheduled,\u201d \u201canticipates\u201d or \u201cintends\u201d or the negatives of these terms or variations of them or similar terminology.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "55,146",
+     "$",
+     "41,216"
+    ],
+    [
+     "Accounts receivable, net",
+     "35,110",
+     "",
+     "40,488",
+     ""
+    ],
+    [
+     "Inventories",
+     "55,197",
+     "",
+     "52,540",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "5,252",
+     "",
+     "5,133",
+     ""
+    ],
+    [
+     "Total current assets",
+     "150,705",
+     "",
+     "139,377",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "24,604",
+     "",
+     "25,212",
+     ""
+    ],
+    [
+     "Right of use assets, net",
+     "6,964",
+     "",
+     "7,473",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "25,529",
+     "",
+     "23,697",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "5,745",
+     "",
+     "5,258",
+     ""
+    ],
+    [
+     "Deposits and other assets",
+     "24",
+     "",
+     "24",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "213,571",
+     "$",
+     "201,041"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "4,747",
+     "",
+     "5,193",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "13,473",
+     "",
+     "11,986",
+     ""
+    ],
+    [
+     "Commission payable",
+     "5,442",
+     "",
+     "4,429",
+     ""
+    ],
+    [
+     "Bonus payable",
+     "3,405",
+     "",
+     "5,616",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "11,875",
+     "",
+     "10,313",
+     ""
+    ],
+    [
+     "Current portion of lease liabilities",
+     "1,988",
+     "",
+     "1,948",
+     ""
+    ],
+    [
+     "Current portion of tax receivable agreement liability",
+     "1,425",
+     "",
+     "1,425",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "42,355",
+     "",
+     "40,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of deferred finance costs",
+     "192,299",
+     "",
+     "198,331",
+     ""
+    ],
+    [
+     "Convertible notes",
+     "127,959",
+     "",
+     "127,832",
+     ""
+    ],
+    [
+     "Derivative liability - convertible notes redemption make-whole provision",
+     "722",
+     "",
+     "425",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "15,691",
+     "",
+     "8,294",
+     ""
+    ],
+    [
+     "Lease liabilities, operating",
+     "5,655",
+     "",
+     "6,220",
+     ""
+    ],
+    [
+     "Tax receivable agreement liability",
+     "23,949",
+     "",
+     "23,949",
+     ""
+    ],
+    [
+     "Earnout consideration liability",
+     "2,312",
+     "",
+     "853",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "410,942",
+     "",
+     "406,814",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 13)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable non-controlling interest",
+     "596,587",
+     "",
+     "596,587",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 10,000,000 shares authorized, no shares issued and outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 250,000,000 shares authorized, 20,598,246 and 19,415,123 shares issued and outstanding as of March 31, 2024 and December 31, 2023, respectively.",
+     "2",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 75,000,000 shares authorized, 59,958,422 shares issued and outstanding as of March 31, 2024 and December 31, 2023, respectively.",
+     "6",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "40,494",
+     "",
+     "39,466",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "5,443",
+     "",
+     "4,991",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(839,903)",
+     "",
+     "(846,825)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "(793,958)",
+     "",
+     "(802,360)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "213,571",
+     "$",
+     "201,041"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 116,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "These and other factors that could cause actual results to differ from those implied by the forward-looking statements in this report are more fully described in the \u201cRisk Factors\u201d section. The risks described in \u201cRisk Factors\u201d are not exhaustive. New risk factors emerge from time to time and it is not possible for us to predict all such risk factors, nor can the Company assess the impact of all such risk factors on its business or the extent to which any factor or combination of factors may cause actual results to differ materially from those contained in any forward-looking statements. All forward-looking statements attributable to the Company or persons acting on its behalf are expressly qualified in their entirety by the foregoing cautionary statements. The Company undertakes no obligations to update or revise publicly any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law.\nPart I - Financial Statements\nItem 1. Financial Statements\nCOMPOSECURE, INC. Consolidated Balance Sheets ($ in thousands, except par value and share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Operations (Unaudited) ($ in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "104,010",
+     "$",
+     "95,316"
+    ],
+    [
+     "Cost of sales",
+     "48,797",
+     "",
+     "41,962",
+     ""
+    ],
+    [
+     "Gross profit",
+     "55,213",
+     "",
+     "53,354",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "24,077",
+     "",
+     "23,944",
+     ""
+    ],
+    [
+     "Income from operations",
+     "31,136",
+     "",
+     "29,410",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (expense):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revaluation of earnout consideration liability",
+     "(1,459)",
+     "",
+     "(1,973)",
+     ""
+    ],
+    [
+     "Revaluation of warrant liability",
+     "(7,397)",
+     "",
+     "(10,759)",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability - convertible notes redemption make-whole provision",
+     "(297)",
+     "",
+     "(708)",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(5,419)",
+     "",
+     "(5,929)",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "(327)",
+     "",
+     "(567)",
+     ""
+    ],
+    [
+     "Total other (expense), net",
+     "(14,899)",
+     "",
+     "(19,936)",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "16,237",
+     "",
+     "9,474",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "836",
+     "",
+     "1,263",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to redeemable non-controlling interests",
+     "$",
+     "13,048",
+     "$",
+     "8,408"
+    ],
+    [
+     "Net income attributable to CompoSecure, Inc.",
+     "$",
+     "4,025",
+     "$",
+     "2,329"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per share attributable to Class A common stockholders - basic",
+     "$",
+     "0.20",
+     "$",
+     "0.13"
+    ],
+    [
+     "Net income per share attributable to Class A common stockholders - diluted",
+     "$",
+     "0.17",
+     "$",
+     "0.11"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares used to compute net income per share attributable to Class A common stockholders - basic (in thousands)",
+     "20,567",
+     "",
+     "17,632",
+     ""
+    ],
+    [
+     "Weighted average shares used to compute net income per share attributable to Class A common stockholders - diluted (in thousands)",
+     "96,235",
+     "",
+     "94,736",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 186,
+    "end_line": 225
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Operations (Unaudited) ($ in thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Comprehensive Income (Unaudited) ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "Other comprehensive (loss) income, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on derivative - interest rate swap, (net of tax)",
+     "452",
+     "",
+     "(1,649)",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss), net",
+     "452",
+     "",
+     "(1,649)",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "17,525",
+     "$",
+     "9,088"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Comprehensive Income (Unaudited) ($ in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Stockholders' Deficit (Unaudited) ($ in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "Accumulated",
+     "",
+     "Total Stockholders'",
+     "",
+     "Redeemable Non-Controlling",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "Deficit",
+     "",
+     "Deficit",
+     "",
+     "Interest",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2023",
+     "19,415,123",
+     "2",
+     "",
+     "59,958,422",
+     "6",
+     "",
+     "39,466",
+     "",
+     "4,991",
+     "",
+     "(846,825)",
+     "",
+     "(802,360)",
+     "",
+     "596,587",
+     ""
+    ],
+    [
+     "Distributions to non-controlling interests",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(10,151)",
+     "",
+     "(10,151)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,397",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,397",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from employee stock purchase plan and exercises of options",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "107",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "107",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,025",
+     "",
+     "4,025",
+     "",
+     "13,048",
+     ""
+    ],
+    [
+     "Class A common stock issued pursuant to equity awards, net of shares withheld for taxes, and ESPP transactions",
+     "1,183,123",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock withheld related to net share settlement of equity awards",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(3,476)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,476)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock issued pursuant to Class B common stock exchanges",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized loss on derivative - interest rate swap",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "452",
+     "",
+     "\u2014",
+     "",
+     "452",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjustment of redeemable non-controlling interests to redemption value",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "13,048",
+     "",
+     "13,048",
+     "",
+     "(13,048)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2024",
+     "20,598,246",
+     "2",
+     "",
+     "59,958,422",
+     "6",
+     "",
+     "40,494",
+     "",
+     "5,443",
+     "",
+     "(839,903)",
+     "",
+     "(793,958)",
+     "",
+     "596,587",
+     ""
+    ],
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "Accumulated",
+     "",
+     "Total Stockholders'",
+     "",
+     "Redeemable Non-Controlling",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "Deficit",
+     "",
+     "Deficit",
+     "",
+     "Interest",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2022",
+     "16,446,748",
+     "$",
+     "2",
+     "60,325,057",
+     "$",
+     "6",
+     "$",
+     "24,107",
+     "$",
+     "8,283",
+     "$",
+     "(924,630)",
+     "$",
+     "(892,232)",
+     "$",
+     "600,234"
+    ],
+    [
+     "Distributions to non-controlling interests",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,714)",
+     "",
+     "(9,714)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,022",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,022",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,329",
+     "",
+     "2,329",
+     "",
+     "8,408",
+     ""
+    ],
+    [
+     "Class A common stock issued pursuant to equity awards, net of shares withheld for taxes, and ESPP transactions",
+     "1,564,956",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from employee stock purchase plan and exercises of options",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "146",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "146",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock withheld related to net share settlement of equity awards",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(2,409)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,409)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock issued pursuant to Class B common stock exchanges",
+     "366,635",
+     "\u2014",
+     "",
+     "(366,635)",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized loss on derivative - interest rate swap",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,649)",
+     "",
+     "\u2014",
+     "",
+     "(1,649)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax receivable agreement liability",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(290)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(290)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjustment of redeemable non-controlling interests to redemption value",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12,055",
+     "",
+     "12,055",
+     "",
+     "(12,055)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2023",
+     "18,378,339",
+     "$",
+     "2",
+     "59,958,422",
+     "$",
+     "6",
+     "$",
+     "25,576",
+     "$",
+     "6,634",
+     "$",
+     "(919,960)",
+     "$",
+     "(887,742)",
+     "$",
+     "596,587"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Stockholders' Deficit (Unaudited) ($ in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Cash Flows (Unaudited) ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "by operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "2,221",
+     "",
+     "2,040",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "4,397",
+     "",
+     "4,022",
+     ""
+    ],
+    [
+     "Amortization of deferred finance costs",
+     "345",
+     "",
+     "559",
+     ""
+    ],
+    [
+     "Change in fair value of earnout consideration liability",
+     "1,459",
+     "",
+     "1,973",
+     ""
+    ],
+    [
+     "Revaluation of warrant liability",
+     "7,397",
+     "",
+     "10,759",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "297",
+     "",
+     "708",
+     ""
+    ],
+    [
+     "Deferred tax (benefit) expense",
+     "(1,867)",
+     "",
+     "(2,034)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "5,378",
+     "",
+     "(1,915)",
+     ""
+    ],
+    [
+     "Inventories",
+     "(2,657)",
+     "",
+     "(8,901)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "(119)",
+     "",
+     "(373)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(446)",
+     "",
+     "8,367",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "1,486",
+     "",
+     "2,069",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "(1,213)",
+     "",
+     "(3,114)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "33,751",
+     "",
+     "24,897",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(1,613)",
+     "",
+     "(3,666)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(1,613)",
+     "",
+     "(3,666)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from employee stock purchase plan and exercises of equity awards",
+     "107",
+     "",
+     "146",
+     ""
+    ],
+    [
+     "Payments for taxes related to net share settlement of equity awards",
+     "(3,476)",
+     "",
+     "(2,409)",
+     ""
+    ],
+    [
+     "Payment of term loan",
+     "(4,688)",
+     "",
+     "(330)",
+     ""
+    ],
+    [
+     "Distributions to non-controlling interest",
+     "(10,151)",
+     "",
+     "(9,714)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(18,208)",
+     "",
+     "(12,307)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "13,930",
+     "",
+     "8,924",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "41,216",
+     "",
+     "13,642",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "55,146",
+     "$",
+     "22,566"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest expense",
+     "$",
+     "4,175",
+     "$",
+     "4,567"
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "$",
+     "452",
+     "$",
+     "(1,649)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 307,
+    "end_line": 363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Cash Flows (Unaudited) ($ in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\n1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nCompoSecure, Inc. (\u201cCompoSecure\u201d or the \u201cCompany\u201d) is a manufacturer and designer of complex metal, composite and proprietary financial transaction cards. The Company was founded and commenced operations in 2000. It provides products and services primarily to global financial institutions, plastic card manufacturers, system integrators, and security specialists. The Company is located in Somerset, New Jersey. Since its inception, CompoSecure has established itself as a technology partner to market leaders, fintechs and consumers enabling trust for millions of people around the globe. The Company combines elegance, simplicity and security to deliver exceptional experiences and peace of mind in the physical and digital world. The Company\u2019s innovative payment card technology and metal cards with Arculus secure authentication and digital asset storage capabilities deliver unique, premium branded experiences, enable people to access and use their financial and digital assets, and ensure trust at the point of a transaction.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 366,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "52,680",
+     "$",
+     "50,867"
+    ],
+    [
+     "Work in process",
+     "5,397",
+     "",
+     "4,110",
+     ""
+    ],
+    [
+     "Finished goods",
+     "357",
+     "",
+     "662",
+     ""
+    ],
+    [
+     "Inventory reserve",
+     "(3,237)",
+     "",
+     "(3,099)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "55,197",
+     "$",
+     "52,540"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "entities subject to income taxes. For public business entities (PBEs), the new requirements will be effective for annual periods beginning after December 15, 2024. For entities other than public business entities (non-PBEs), the requirements will be effective for annual periods beginning after December 15, 2025. The guidance will be applied on a prospective basis with the option to apply the standard retrospectively. Early adoption is permitted. The amendments in this Update require that public business entities on an annual basis disclose specific categories in the rate reconciliation and provide additional information for reconciling items that meet a quantitative threshold if the effect of those reconciling items is equal to or greater than five percent of the amount computed by multiplying pretax income (or loss) by the applicable statutory income tax rate. The new guidance focuses on two specific disclosure areas: the rate reconciliation and income taxes paid. The rate reconciliation disclosure requirements differ for PBEs as compared to non-PBEs. The income taxes paid disclosures are the same for all entities. The adoption of these ASUs did not have a material impact to the Company's consolidated financial statements.\n3. INVENTORIES\nThe major classes of inventories were as follows:",
+   "prose_after": "We monitor inventory costs relative to selling prices and perform physical cycle count procedures on inventories throughout the year to determine if a lower of cost or net realizable value reserve is necessary. The Company reviews inventory for slow-moving or obsolete amounts based on expected product sales volume and provides reserves against the carrying amount of inventory as appropriate. This reserve may fluctuate as our assumptions change due to new information, discrete events, or changes in our business, such as entering new markets or discontinuing a specific product.\n4. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Useful Life",
+     "March 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "5 - 10 years",
+     "$",
+     "76,910",
+     "$",
+     "72,538"
+    ],
+    [
+     "Furniture and fixtures",
+     "3 - 5 years",
+     "987",
+     "",
+     "987",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "3 - 5 years",
+     "927",
+     "",
+     "927",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of lease term or estimated useful life",
+     "15,370",
+     "",
+     "14,981",
+     ""
+    ],
+    [
+     "Vehicles",
+     "5 years",
+     "264",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Software",
+     "1 - 3 years",
+     "2,924",
+     "",
+     "2,924",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "1,041",
+     "",
+     "4,189",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "98,423",
+     "",
+     "96,810",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "(73,819)",
+     "",
+     "(71,598)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "$",
+     "24,604",
+     "$",
+     "25,212"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 455,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "We monitor inventory costs relative to selling prices and perform physical cycle count procedures on inventories throughout the year to determine if a lower of cost or net realizable value reserve is necessary. The Company reviews inventory for slow-moving or obsolete amounts based on expected product sales volume and provides reserves against the carrying amount of inventory as appropriate. This reserve may fluctuate as our assumptions change due to new information, discrete events, or changes in our business, such as entering new markets or discontinuing a specific product.\n4. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "prose_after": "Depreciation and amortization expense on property and equipment was $2,221 and $2,040 for the three months ended March 31, 2024 and 2023, respectively.\n5. DEBT\nExchangeable Senior Notes\nOn April 19, 2021, concurrent with the execution of the Merger Agreement for the Business Combination, the Company and its subsidiary, Holdings, entered into subscription agreements (the \u201cNote Subscription Agreements\u201d) with certain investors (\"Notes Investors\") pursuant to which such Notes Investors, severally and not jointly, purchased on the Closing Date of the Business Combination, senior notes (the \u201cExchangeable Notes\u201d) issued by Holdings and guaranteed by its operating subsidiaries, CompoSecure, L.L.C. and Arculus Holdings, L.L.C., in an aggregate principal amount of up to $130,000 that are exchangeable into shares of Class A common stock at a conversion price of $11.50 per share, subject to the terms and conditions of an Indenture entered by the Company and its subsidiary, Holdings, and the trustee under the Indenture. The Exchangeable Notes bear interest at a rate of 7% per year, payable semiannually in arrears on each June 15 and December 15, commencing on June 15, 2022, to holders of record at the close of business on the preceding June 1 and December 1 (whether or not such day is a Business Day), respectively. The Exchangeable Notes mature in five years on",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Term Loan",
+     "",
+     "Exchangeable Notes",
+     "",
+     "Total debt",
+     "",
+     "Term Loan",
+     "",
+     "Exchangeable Notes",
+     "",
+     "Total debt",
+     ""
+    ],
+    [
+     "Loan Balance",
+     "$",
+     "205,625",
+     "$",
+     "130,000",
+     "$",
+     "335,625",
+     "$",
+     "210,313",
+     "$",
+     "130,000",
+     "$340,313",
+     ""
+    ],
+    [
+     "Less: current portion of term loan (scheduled payments)",
+     "(11,875)",
+     "",
+     "\u2014",
+     "",
+     "(11,875)",
+     "",
+     "(10,313)",
+     "",
+     "\u2014",
+     "",
+     "(10,313)",
+     ""
+    ],
+    [
+     "Less: net deferred financing costs",
+     "(1,451)",
+     "",
+     "(2,041)",
+     "",
+     "(3,492)",
+     "",
+     "(1,669)",
+     "",
+     "(2,168)",
+     "",
+     "(3,837)",
+     ""
+    ],
+    [
+     "Total Long Term debt",
+     "$",
+     "192,299",
+     "$",
+     "127,959",
+     "$",
+     "320,258",
+     "$",
+     "198,331",
+     "$",
+     "127,832",
+     "$",
+     "326,163"
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "",
+     "",
+     "$",
+     "722",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "425",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "Interest on the Revolver and Term Loan are based on the outstanding principal amount during the interest period multiplied by the fluctuating bank prime rate plus the applicable margin of 1.75% or for portions of the debt converted to Term Benchmark Loan, the quoted SOFR rate plus the applicable margin of 2.75%. At March 31, 2024 and 2023, the effective interest rate on the Revolver and Term Loan was 7.80% and 7.99% per year, respectively. Interest is payable monthly in arrears or upon maturity of the Euro loans that can run 30, 90, 120, 180 day time periods. The Company must pay quarterly an annual commitment fee of 0.35% on the unused portion of the $60,000 Revolver.\nThe credit facility is secured by substantially all of the assets of the Company. The Company recognized $4,459 and $5,161 of interest expense related to the Revolver and the Term Loan for the quarter ended March 31, 2024 and 2023, respectively.\nThe terms of the credit facilities contain certain financial covenants including a minimum interest coverage ratio, a maximum total debt to EBITDA ratio and a minimum fixed charge coverage ratio. At March 31, 2024 and December 31, 2023, the Company was in compliance with all financial covenants. The fair value of the Company's debt approximates the carrying value for all periods presented.\nAs of March 31, 2024 and December 31, 2023, there were no balances outstanding on the Revolver. At March 31, 2024, there was $60,000 available for borrowing under the Revolver.\nThe balances payable under all borrowing facilities are as follows:",
+   "prose_after": "The maturity of all the borrowings facilities is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Remainder of 2024",
+     "$",
+     "5,625"
+    ],
+    [
+     "2025",
+     "200,000",
+     ""
+    ],
+    [
+     "2026",
+     "130,000",
+     ""
+    ],
+    [
+     "Total debt",
+     "$",
+     "335,625"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "The maturity of all the borrowings facilities is as follows:",
+   "prose_after": "The Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company had entered into an interest rate swap agreement on November 5, 2020 to hedge forecasted interest rate payments on its variable rate debt. In January 2022, the Company cancelled the November 2020 swap agreement and entered into a new interest rate swap agreement. At March 31, 2024, the Company\u2019s interest rate swap contract outstanding had a notional amount of $125,000 maturing in December 2025. The Company has designated the interest rate swap agreement as a cash flow hedge for accounting purposes, that was determined to be effective. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $5,745 and $5,258 at March 31, 2024 and December 31, 2023, respectively. The Company reflects the realized gains and losses of the actual monthly settlement activity of the interest rate swap through interest income or expense in its consolidated statements of operations. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability will be recognized at each reporting period in the Company\u2019s financial statements. The interest rate swap converted to SOFR from LIBOR at the same time as the amendment of 2021 Credit Facility in February 2023.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Stock option expense",
+     "$",
+     "3",
+     "$",
+     "90"
+    ],
+    [
+     "Restricted stock unit expense",
+     "4,193",
+     "",
+     "3,481",
+     ""
+    ],
+    [
+     "Performance stock unit expense",
+     "173",
+     "",
+     "408",
+     ""
+    ],
+    [
+     "Employee stock purchase plan",
+     "28",
+     "",
+     "43",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "4,397",
+     "$",
+     "4,022"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Non-controlling interests represent direct interests held in Holdings other than by the Company immediately after the Business Combination. The non-controlling interests in the Company are represented by Class B Units, or such other equity securities in the Company as the Board may establish in accordance with the terms hereof. Since the potential cash redemptions of the non-controlling interests are outside the control of the Company, such non-controlling interests are classified as temporary equity on the consolidated balance sheet in accordance with ASC 480. Income tax benefit or expense is applied to the income attributable to the controlling interest as the income attributable to the non-controlling interest is pass-through income. The non-controlling interest has been adjusted to redemption value as of March 31, 2024, in accordance with ASC 480-10. This measurement adjustment results in a corresponding adjustment to shareholders\u2019 deficit through adjustments to additional paid-in capital and retained earnings. The redemption value of the Class B Units was $596,587 on March 31, 2024. The redemption value was calculated by multiplying the 59,958,422 Class B Units outstanding at March 31, 2024 by the $9.95 trading price of our Class A common stock on December 27, 2021.\n7. STOCK-BASED COMPENSATION\nThe following table summarizes share-based compensation expense included in Selling, general and administrative expenses within the consolidated statements of operations:",
+   "prose_after": "The following table sets forth the options activity under the Holdings' equity plan, which was assumed by the Company, for the three month period ended March 31, 2024:\nStock Option Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Weighted Average Exercise Price Per Shares",
+     "",
+     "Weighted Average Remaining Contractual Term (years)",
+     "Aggregate Intrinsic Value (in thousands)",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2024",
+     "3,278,463",
+     "$",
+     "1.88",
+     "2.9",
+     "$",
+     "11,780"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "17,740",
+     "$",
+     "0.01",
+     "1.1",
+     "$",
+     "128"
+    ],
+    [
+     "Outstanding at March 31, 2024",
+     "3,260,723",
+     "$",
+     "1.90",
+     "2.7",
+     "$",
+     "17,383"
+    ],
+    [
+     "Vested and expected to vest at March 31, 2024",
+     "3,260,723",
+     "$",
+     "1.90",
+     "2.7",
+     "$",
+     "17,383"
+    ],
+    [
+     "Exercisable at March 31, 2024",
+     "3,260,723",
+     "$",
+     "1.90",
+     "2.7",
+     "$",
+     "17,383"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The following table sets forth the options activity under the Holdings' equity plan, which was assumed by the Company, for the three month period ended March 31, 2024:\nStock Option Activity",
+   "prose_after": "Restricted Stock Unit Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Outstanding at January 1, 2024",
+     "5,651,895"
+    ],
+    [
+     "Granted",
+     "1,900,678"
+    ],
+    [
+     "Vested",
+     "(1,781,932)"
+    ],
+    [
+     "Forfeited",
+     "(39,450)"
+    ],
+    [
+     "Nonvested at March 31, 2024",
+     "5,731,191"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Restricted Stock Unit Activity",
+   "prose_after": "Performance and Market based Stock Unit Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Outstanding at January 1, 2024",
+     "1,107,536"
+    ],
+    [
+     "Granted",
+     "872,685"
+    ],
+    [
+     "Vested",
+     "\u2014"
+    ],
+    [
+     "Nonvested at March 31, 2024",
+     "1,980,221"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 670
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Performance and Market based Stock Unit Activity",
+   "prose_after": "Earnouts",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Outstanding at January 1, 2024",
+     "657,160"
+    ],
+    [
+     "Granted",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "\u2014"
+    ],
+    [
+     "Nonvested at March 31, 2024",
+     "657,160"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 673,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Earnouts",
+   "prose_after": "Incentive Units\nUpon consummation of the Business Combination on December 27, 2021, all of the incentive units, whether vested or unvested, outstanding immediately prior to the merger that were not settled as part of the transaction, were assumed by the Company and converted into Class B common stock and such shares of converted Class B common stock outstanding were 1,236,027 as of March 31, 2024.\nUnrecognized compensation cost for restricted stock awards and performance and market based stock units as of March 31, 2024 totaled $41,842, and is expected to be recognized over a weighted average period of approximately 2.1 years. No unrecognized compensation expense remained for the incentive units as of March 31, 2024.\n8. RETIREMENT PLANS\nDefined Contribution Plan\nThe Company has a 401(k) profit sharing plan for all full-time employees who have attained the age of 21 and completed 90 days of service. The Company matches 100% of the first 1% and then 50% of the next 5% of employee contributions. Retirement plan expense for the three months ended March 31, 2024 and 2023 was approximately $591 and $525, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "$",
+     "\u2014",
+     "$",
+     "5,745",
+     "$",
+     "\u2014",
+     "$",
+     "5,745"
+    ],
+    [
+     "Liabilities Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public warrants",
+     "$",
+     "15,691",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "15,691"
+    ],
+    [
+     "Earnout consideration",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,312",
+     "",
+     "2,312",
+     ""
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "722",
+     "",
+     "722",
+     ""
+    ],
+    [
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "$",
+     "\u2014",
+     "$",
+     "5,258",
+     "$",
+     "\u2014",
+     "$",
+     "5,258"
+    ],
+    [
+     "Liabilities Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public warrants",
+     "$",
+     "8,294",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "8,294"
+    ],
+    [
+     "Earnout consideration",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "853",
+     "",
+     "853",
+     ""
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "425",
+     "",
+     "425",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 704,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Unrecognized compensation cost for restricted stock awards and performance and market based stock units as of March 31, 2024 totaled $41,842, and is expected to be recognized over a weighted average period of approximately 2.1 years. No unrecognized compensation expense remained for the incentive units as of March 31, 2024.\n8. RETIREMENT PLANS\nDefined Contribution Plan\nThe Company has a 401(k) profit sharing plan for all full-time employees who have attained the age of 21 and completed 90 days of service. The Company matches 100% of the first 1% and then 50% of the next 5% of employee contributions. Retirement plan expense for the three months ended March 31, 2024 and 2023 was approximately $591 and $525, respectively.\n9. FAIR VALUE MEASUREMENTS\nIn accordance with ASC 820-10, the Company evaluates assets and liabilities subject to fair value measurements on a recurring basis to determine the appropriate level at which to classify them for each reporting period. This determination requires significant judgments to be made by the Company.\nThe Company\u2019s financial assets and liabilities measured at fair value on a recurring basis, consisted of the following types of instruments as of the following dates:",
+   "prose_after": "Additional information is provided below about assets and liabilities remeasured at fair value on a recurring basis and for which the Company utilizes Level 3 inputs to determine fair value.\nDerivative asset - interest rate swap\nThe Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company entered into an interest rate swap agreement on January 5, 2022. See Note 5.\nWarrant liabilities\nAs a result of the Business Combination, the Company assumed warrant liability related to previously issued warrants in connection with Roman DBDR's initial public offering. The warrants were accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on our consolidated balance sheet. The warrant\nliabilities were remeasured at March 31, 2024, with changes in fair value presented within revaluation of warrant liabilities in the consolidated statement of operations.\nThe following table provides a reconciliation of the ending balances for the warrant liabilities remeasured at fair value:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Warrant Liabilities",
+     ""
+    ],
+    [
+     "Estimated fair value at December 31, 2023",
+     "$",
+     "8,294"
+    ],
+    [
+     "Change in estimated fair value",
+     "7,397",
+     ""
+    ],
+    [
+     "Estimated fair value at March 31, 2024",
+     "$",
+     "15,691"
+    ]
+   ],
+   "caption_stack": [
+    "Warrant Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 741,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Additional information is provided below about assets and liabilities remeasured at fair value on a recurring basis and for which the Company utilizes Level 3 inputs to determine fair value.\nDerivative asset - interest rate swap\nThe Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company entered into an interest rate swap agreement on January 5, 2022. See Note 5.\nWarrant liabilities\nAs a result of the Business Combination, the Company assumed warrant liability related to previously issued warrants in connection with Roman DBDR's initial public offering. The warrants were accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on our consolidated balance sheet. The warrant\nliabilities were remeasured at March 31, 2024, with changes in fair value presented within revaluation of warrant liabilities in the consolidated statement of operations.\nThe following table provides a reconciliation of the ending balances for the warrant liabilities remeasured at fair value:",
+   "prose_after": "The Public warrants were valued using the quoted market price as the fair value at the end of each balance sheet date.\nEarnout Consideration\nHoldings' equity holders have the right to receive an aggregate of up to 7,500,000 additional (i) shares of the Company's class A common stock or (ii) Holdings Units (and a corresponding number of shares of the Company's class B common stock), as applicable, in earnout consideration based on the achievement of certain stock price thresholds. Earnout consideration (not including the holders under ASC 718) was determined to be a derivative instrument in accordance with ASC 815 and were accounted as derivative liabilities, initially valued at fair value in accordance with ASC 815-40-30-1. The liability for earnout consideration is remeasured at each reporting period at fair value, with changes in fair value recorded in earnings in accordance with ASC 815. The Company established the initial fair value for the earnout consideration at the closing date on December 27, 2021 using a Monte Carlo simulation model. The following table provides a reconciliation of the ending balances for the earnout consideration liabilities remeasured at fair value:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Earnout Consideration Liability",
+     ""
+    ],
+    [
+     "Estimated fair value at December 31, 2023",
+     "$",
+     "853"
+    ],
+    [
+     "Change in estimated fair value",
+     "1,459",
+     ""
+    ],
+    [
+     "Estimated fair value at March 31, 2024",
+     "$",
+     "2,312"
+    ]
+   ],
+   "caption_stack": [
+    "Earnout Consideration Liability"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Holdings' equity holders have the right to receive an aggregate of up to 7,500,000 additional (i) shares of the Company's class A common stock or (ii) Holdings Units (and a corresponding number of shares of the Company's class B common stock), as applicable, in earnout consideration based on the achievement of certain stock price thresholds. Earnout consideration (not including the holders under ASC 718) was determined to be a derivative instrument in accordance with ASC 815 and were accounted as derivative liabilities, initially valued at fair value in accordance with ASC 815-40-30-1. The liability for earnout consideration is remeasured at each reporting period at fair value, with changes in fair value recorded in earnings in accordance with ASC 815. The Company established the initial fair value for the earnout consideration at the closing date on December 27, 2021 using a Monte Carlo simulation model. The following table provides a reconciliation of the ending balances for the earnout consideration liabilities remeasured at fair value:",
+   "prose_after": "The following assumptions were used to determine the fair value of the Earnout considerations as of March 31, 2024:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Common stock market value",
+     "$",
+     "7.23",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "4.70% - 5.21%",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "37.5% - 40.0%",
+     "",
+     ""
+    ],
+    [
+     "Expected dividends",
+     "0",
+     "",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "0.7-1.7 years",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following assumptions were used to determine the fair value of the Earnout considerations as of March 31, 2024:",
+   "prose_after": "The fair value of Earnouts has been classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\n10. GEOGRAPHIC INFORMATION AND CONCENTRATIONS\nThe Company headquarters and substantially all of its operations, including its long-lived assets, are located in the United States. Geographical sales information based on the location of the customer was as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net sales by region:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "92,790",
+     "$",
+     "73,667"
+    ],
+    [
+     "International",
+     "11,220",
+     "",
+     "21,649",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "104,010",
+     "$",
+     "95,316"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 787,
+    "end_line": 799
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "GEOGRAPHIC INFORMATION AND CONCENTRATIONS"
+    }
+   },
+   "prose_before": "The fair value of Earnouts has been classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\n10. GEOGRAPHIC INFORMATION AND CONCENTRATIONS\nThe Company headquarters and substantially all of its operations, including its long-lived assets, are located in the United States. Geographical sales information based on the location of the customer was as follows:",
+   "prose_after": "The Company\u2019s principal direct customers as of March 31, 2024 consist primarily of leading international and domestic banks and other payment card issuers primarily within the U.S., with additional direct and indirect customers in Europe, Asia, Latin America, Canada, and the Middle East. The Company periodically assesses the financial strength of these customers and establishes allowances for anticipated losses, if necessary.\nTwo customers individually accounted for more than 10% of the Company\u2019s revenue or 73.2% combined, of total revenue for the three months ended March 31, 2024. Three customers individually accounted for more than 10% of the Company\u2019s revenue or 77.6%, combined, of total revenue for the three months ended March 31, 2023. Four customers individually accounted for more than 10% of the Company\u2019s accounts receivable or approximately 80% and two customers individually accounted for more than 10% or approximately 73% of total accounts receivable as of March 31, 2024 and December 31, 2023, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Basic and diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "(13,048)",
+     "",
+     "(8,408)",
+     ""
+    ],
+    [
+     "Net income attributable to Class A Common Stockholders - basic",
+     "$",
+     "4,025",
+     "$",
+     "2,329"
+    ],
+    [
+     "Plus: adjustment to net income due to net effect of equity awards, exchangeable notes and Class B units",
+     "11,995",
+     "",
+     "8,410",
+     ""
+    ],
+    [
+     "Net income attributable to Class A Common Stockholders after adjustment",
+     "$",
+     "16,020",
+     "$",
+     "10,739"
+    ],
+    [
+     "Weighted average common shares outstanding used in computing net income per share - basic",
+     "20,566,970",
+     "",
+     "17,632,000",
+     ""
+    ],
+    [
+     "Plus: net effect of dilutive equity awards, exchangeable notes and Class B units - diluted",
+     "75,668,499",
+     "",
+     "77,104,000",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding used in computing net income per share - diluted",
+     "96,235,469",
+     "",
+     "94,736,000",
+     ""
+    ],
+    [
+     "Net income per share\u2014basic",
+     "$",
+     "0.20",
+     "$",
+     "0.13"
+    ],
+    [
+     "Net income per share\u2014diluted",
+     "$",
+     "0.17",
+     "$",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "In calculating the provision for income taxes on an interim basis, the Company uses an estimate of the annual effective tax rate based upon currently known facts and circumstances and applies that rate to its year-to-date earnings or losses. The Company\u2019s effective tax rate is based on expected income and statutory tax rates and takes into consideration permanent differences between financial statement and tax return income applicable to the Company in the various jurisdictions in which the Company operates. The effect of discrete items, such as changes in estimates, changes in enacted tax laws or rates or tax status, and unusual or infrequently occurring events, is recognized in the interim period in which the discrete item occurs. The accounting estimates used to compute the provision for income taxes may change as new events occur, additional information is obtained or as the result of new judicial interpretations or regulatory or tax law changes. The Company's interim effective tax rate, inclusive of any discrete items, was (5.10)% and (13.33)% for the three months ended March 31, 2024 and March 31, 2023, respectively. The Company\u2019s effective income tax rate differs from the U.S. statutory rate primarily due to the non-controlling interest adjustment as the income attributable to the non-controlling interest is pass-through income.\n12. EARNINGS PER SHARE\nThe following table sets forth the computation of net income used to compute basic and diluted net earnings per share of Class A common stock for the three months ended March 31, 2024 and March 31, 2023, respectively. Shares of Class B common stock do not participate in the Company's income or loss and are, therefore, not participating securities.",
+   "prose_after": "Basic earnings per share for the three months ended March 31, 2024 was calculated by dividing net income attributable to Class A Common shareholders of $4,025 divided by 20,566,970 of weighted average Class A common shares outstanding at March 31, 2024. Diluted earnings per share for the three months ended March 31, 2024 was calculated by dividing net income adjusted for the net effect of dilutive equity awards and exchangeable notes of $16,020 divided by 96,235,469 of weighted average common shares after adjusting for the net effect of dilutive equity awards and exchangeable notes outstanding at March 31, 2024.\nBasic earnings per share for the three months ended March 31, 2023 was calculated by dividing net income attributable to Class A Common shareholders of $2,329 divided by 17,632,000 of weighted average Class A common shares outstanding at March 31, 2023. Diluted earnings per share for the three months ended March 31, 2023 was calculated by dividing net income adjusted for the net effect of dilutive equity awards of $10,739, divided by 94,736,000 of weighted average common shares after adjusting for the net effect of dilutive equity awards outstanding at March 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "2023"
+    ],
+    [
+     "Potentially dilutive securities:",
+     "",
+     ""
+    ],
+    [
+     "Warrants",
+     "22,415,400",
+     "22,415,400"
+    ],
+    [
+     "Earnout consideration shares",
+     "7,500,000",
+     "7,500,000"
+    ],
+    [
+     "Equity awards",
+     "2,918,984",
+     "1,112,413"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Basic earnings per share for the three months ended March 31, 2023 was calculated by dividing net income attributable to Class A Common shareholders of $2,329 divided by 17,632,000 of weighted average Class A common shares outstanding at March 31, 2023. Diluted earnings per share for the three months ended March 31, 2023 was calculated by dividing net income adjusted for the net effect of dilutive equity awards of $10,739, divided by 94,736,000 of weighted average common shares after adjusting for the net effect of dilutive equity awards outstanding at March 31, 2023.\nSecurities that could potentially be dilutive are excluded from the computation of diluted earnings per share when the exercise price exceeds the average closing price of the Company\u2019s common stock during the period, because their inclusion would result in an antidilutive effect on per share amounts. The Company applied the if-converted method for the Exchangeable Notes to calculate diluted earnings per share in accordance with ASU 2020-06.\nThe following amounts were not included in the calculation of net earnings per diluted share because their effects were anti-dilutive:",
+   "prose_after": "13. COMMITMENTS AND CONTINGENCIES\nOperating Leases\nFuture minimum commitments under all non-cancelable operating leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024 (excluding the three months ended March 31, 2024)",
+     "$",
+     "1,825"
+    ],
+    [
+     "2025",
+     "2,502",
+     ""
+    ],
+    [
+     "2026",
+     "2,240",
+     ""
+    ],
+    [
+     "2027",
+     "912",
+     ""
+    ],
+    [
+     "2028",
+     "846",
+     ""
+    ],
+    [
+     "Later years",
+     "359",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "8,684",
+     ""
+    ],
+    [
+     "Less: Imputed interest",
+     "(1,041)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "7,643"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 885
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "13. COMMITMENTS AND CONTINGENCIES\nOperating Leases\nFuture minimum commitments under all non-cancelable operating leases are as follows:",
+   "prose_after": "Tax Receivable Agreement\nThe Company is obligated to make certain payments under a tax receivable agreement to certain historical holders of units in Holdings. Although the actual timing and amount of any payments that may be made under the agreement will vary, the Company expects the cash obligation required will be significant. Any payments made under the tax receivable agreement will generally reduce the amount of overall cash flows that might have otherwise been available to the Company. To the extent that the Company is unable to make payments under the tax receivable agreement for any reason, the unpaid amounts generally will be deferred and will accrue interest until paid by the Company. The tax receivable agreement liability includes amounts to be paid assuming the Company will have sufficient taxable income over the term of the tax receivable agreement to utilize the related tax benefits. In determining the estimated timing of payments, the current year\u2019s taxable income was used to extrapolate an estimate of future taxable income.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024 (excluding the three months ended March 31, 2024)",
+     "$",
+     "1,425"
+    ],
+    [
+     "2025",
+     "1,484",
+     ""
+    ],
+    [
+     "2026",
+     "1,513",
+     ""
+    ],
+    [
+     "2027",
+     "1,544",
+     ""
+    ],
+    [
+     "2028",
+     "1,568",
+     ""
+    ],
+    [
+     "Later years",
+     "17,840",
+     ""
+    ],
+    [
+     "Total payments",
+     "$",
+     "25,374"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 892,
+    "end_line": 903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The Company is obligated to make certain payments under a tax receivable agreement to certain historical holders of units in Holdings. Although the actual timing and amount of any payments that may be made under the agreement will vary, the Company expects the cash obligation required will be significant. Any payments made under the tax receivable agreement will generally reduce the amount of overall cash flows that might have otherwise been available to the Company. To the extent that the Company is unable to make payments under the tax receivable agreement for any reason, the unpaid amounts generally will be deferred and will accrue interest until paid by the Company. The tax receivable agreement liability includes amounts to be paid assuming the Company will have sufficient taxable income over the term of the tax receivable agreement to utilize the related tax benefits. In determining the estimated timing of payments, the current year\u2019s taxable income was used to extrapolate an estimate of future taxable income.\nAs of March 31, 2024, the Company had the following obligations expected to be paid pursuant to the tax receivable agreement:",
+   "prose_after": "In addition to the above, the Company's tax receivable agreement liability and future payments thereunder are expected to increase as we realize (or are deemed to realize) an increase in tax basis of Holdings\u2019 assets resulting from any future purchases, redemptions or exchanges of Holdings' interests by holders. The Company currently expect to fund these future tax receivable agreement liability payments from some of the realized cash tax savings as a result of this increase in tax basis.\nLitigation\nThe Company may be, from time to time, party to various disputes and claims arising from normal business activities. The Company accrues for amounts related to legal matters if it is probable that a liability has been incurred and the amount is reasonably estimable. Litigation costs are expensed as incurred.\n14. RELATED PARTY TRANSACTIONS\nAs a result of the Business Combination, the Company entered into a tax receivable agreement with Holdings and holders of interests in Holdings. See Note 13. The Company is obligated to make certain payments under the tax receivable agreement to certain historical holders of units in Holdings. The Company made no payment related to the tax receivable agreement liability in the quarter ended March 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "$ Change",
+     "",
+     "% Change"
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "104,010",
+     "$",
+     "95,316",
+     "$",
+     "8,694",
+     "9%"
+    ],
+    [
+     "Cost of sales",
+     "48,797",
+     "",
+     "41,962",
+     "",
+     "6,835",
+     "",
+     "16%"
+    ],
+    [
+     "Gross profit",
+     "55,213",
+     "",
+     "53,354",
+     "",
+     "1,859",
+     "",
+     "3%"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Selling, general and administrative expenses",
+     "24,077",
+     "",
+     "23,944",
+     "",
+     "133",
+     "",
+     "1%"
+    ],
+    [
+     "Income from operations",
+     "31,136",
+     "",
+     "29,410",
+     "",
+     "1,726",
+     "",
+     "6%"
+    ],
+    [
+     "    Other (expense), net",
+     "(14,899)",
+     "",
+     "(19,936)",
+     "",
+     "5,037",
+     "",
+     "(25)%"
+    ],
+    [
+     "  Income before income taxes",
+     "16,237",
+     "",
+     "9,474",
+     "",
+     "6,763",
+     "",
+     "71%"
+    ],
+    [
+     "    Income tax benefit",
+     "836",
+     "",
+     "1,263",
+     "",
+     "(427)",
+     "",
+     "(34)%"
+    ],
+    [
+     "Net income",
+     "17,073",
+     "",
+     "10,737",
+     "",
+     "6,336",
+     "",
+     "59%"
+    ],
+    [
+     "Net income attributable to redeemable non-controlling interests",
+     "13,048",
+     "",
+     "8,408",
+     "",
+     "4,640",
+     "",
+     "55%"
+    ],
+    [
+     "Net income attributable to CompoSecure, Inc",
+     "$",
+     "4,025",
+     "$",
+     "2,329",
+     "$",
+     "1,696",
+     "73%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 979,
+    "end_line": 1004
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Income from operations consists of the Company\u2019s gross profit less its operating expenses. Operating margin is income from the Company\u2019s operations as a percentage of its net sales.\nOther Expense, net\nOther expense primarily consists of changes in fair value of warrant liability, earnout consideration liability and interest expense net of any interest income.\nNet Income\nNet income consists of the Company\u2019s income from operations, less other expenses and income tax provision or benefit.\nFactors Affecting the Company\u2019s Operating Results\nWe believe that our performance and future success depend on a number of factors that present significant opportunities for us but also pose risks and challenges. Please see the factors discussed in this Quarterly Report on Form 10-Q, including those discussed in the sections entitled \u201cRisk Factors\u201d and \u201cCautionary Note Regarding Forward-Looking Statements\u201d for additional information.\nResults of Operations\nThree months ended March 31, 2024 vs three months ended March 31, 2023\nThe following table presents the Company\u2019s results of operations for the periods indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "53",
+     "%",
+     "56",
+     "%"
+    ],
+    [
+     "Operating margin",
+     "30",
+     "%",
+     "31",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1005,
+    "end_line": 1013
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Net Sales",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "$ Change",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales by region",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "92,790",
+     "$",
+     "73,667",
+     "$",
+     "19,123",
+     "26",
+     "%"
+    ],
+    [
+     "International",
+     "11,220",
+     "",
+     "21,649",
+     "",
+     "(10,429)",
+     "",
+     "(48)",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "104,010",
+     "$",
+     "95,316",
+     "$",
+     "8,694",
+     "9",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1016,
+    "end_line": 1029
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Net Sales",
+   "prose_after": "The Company\u2019s net sales for the quarter ended March 31, 2024 increased $8.7 million, or 9%, to $104.0 million compared to $95.3 million for the quarter ended March 31, 2023. The increase was primarily driven by continued\ndomestic growth in the Company\u2019s premium payment card business, which was up 26%. This was offset by lower\ninternational sales attributable to the timing of sales. Timing of international sales is more variable due to current global economic uncertainty, customer mix and a smaller sales base.\nDomestic: The Company\u2019s domestic net sales for the quarter ended March 31, 2024 increased $19.1 million, or 26%, to $92.8 million compared to $73.7 million for the quarter ended March 31, 2023. This was driven by increased sales to a major customer in the current year.\nInternational: The Company\u2019s international net sales for the quarter ended March 31, 2024 decreased $10.4 million, or 48%, to $11.2 million compared to $21.6 million for the quarter ended March 31, 2023. International sales decreased primarily due to ongoing global economic uncertainty and international markets being a more variable market",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 53,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "Add:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "2,221",
+     "",
+     "2,040",
+     ""
+    ],
+    [
+     "Interest expense, net (1)",
+     "5,746",
+     "",
+     "6,496",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "(836)",
+     "",
+     "(1,263)",
+     ""
+    ],
+    [
+     "EBITDA",
+     "$",
+     "24,204",
+     "$",
+     "18,010"
+    ],
+    [
+     "Stock-based compensation expense",
+     "4,397",
+     "",
+     "4,022",
+     ""
+    ],
+    [
+     "Mark-to-market adjustments, net (2)",
+     "9,153",
+     "",
+     "13,440",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "37,754",
+     "$",
+     "35,472"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1070,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "This Form 10-Q includes certain non-GAAP financial measures that are not prepared in accordance with accounting principles generally accepted in the United States (\u201cGAAP\u201d) and that may be different from non-GAAP financial measures used by other companies. The Company believes EBITDA, Adjusted EBITDA and non-GAAP earnings per share are useful to investors in evaluating the Company\u2019s financial performance. The Company uses these measures internally to establish forecasts, budgets and operational goals to manage and monitor its business, as well as evaluate its underlying historical performance and to measure incentive compensation, as we believe that these non-GAAP financial measures depict the true performance of the business by encompassing only relevant and controllable events, enabling the Company to evaluate and plan more effectively for the future. In addition, the Company\u2019s debt agreements contain covenants that use a variation of these measures for purposes of determining debt covenant compliance. The Company believes that investors should have access to the same set of tools that its management uses in analyzing operating results. EBITDA, Adjusted EBITDA and non-GAAP earnings per share should not be considered as measures of financial performance under U.S. GAAP, and the items excluded from EBITDA, Adjusted EBITDA and non-GAAP earnings per share are significant components in understanding and assessing the Company\u2019s financial performance. Accordingly, these key business metrics have limitations as an analytical tool. They should not be considered as an alternative to net income or any other performance measures derived in accordance with U.S. GAAP or as an alternative to cash flows from operating activities as a measure of the Company\u2019s liquidity, and may be different from similarly titled non-GAAP measures used by other companies.\nThe following unaudited table presents the reconciliation of net income to EBITDA and Adjusted EBITDA for the periods indicated:",
+   "prose_after": "(1)Includes amortization of deferred financing cost for the three months ended March 31, 2024 and 2023, respectively.\n(2)Includes the changes in fair value of warrant liability, derivative liabilities and earnout consideration liability for the three months ended March 31, 2024 and 2023, respectively.\nThe following unaudited table presents the non-GAAP earnings per share and reconciliation of GAAP net income to non-GAAP adjusted net income for the periods indicated:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 53,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 54,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(in thousands) except per share amounts",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "17,073",
+     "$",
+     "10,737"
+    ],
+    [
+     "Less: benefit for income taxes",
+     "(836)",
+     "",
+     "(1,263)",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "16,237",
+     "",
+     "9,474",
+     ""
+    ],
+    [
+     "Income tax expense (1)",
+     "(6,405)",
+     "",
+     "(5,581)",
+     ""
+    ],
+    [
+     "Adjusted net income before adjustments",
+     "9,832",
+     "",
+     "3,893",
+     ""
+    ],
+    [
+     "Add: mark-to-market adjustments (2)",
+     "8,856",
+     "",
+     "12,732",
+     ""
+    ],
+    [
+     "Add: stock-based compensation",
+     "4,397",
+     "",
+     "4,022",
+     ""
+    ],
+    [
+     "Adjusted net income",
+     "$",
+     "23,085",
+     "$",
+     "20,647"
+    ],
+    [
+     "Common shares outstanding used in    computing net income per share, basic:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A and Class B common shares (3)",
+     "80,525",
+     "",
+     "77,591",
+     ""
+    ],
+    [
+     "Common shares outstanding used in    computing net income per share, diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants (Public and Private) (4)",
+     "8,094",
+     "",
+     "8,094",
+     ""
+    ],
+    [
+     "Equity awards",
+     "2,710",
+     "",
+     "4,145",
+     ""
+    ],
+    [
+     "Total Shares outstanding used in    computing net income per share - diluted",
+     "91,329",
+     "",
+     "89,830",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted net income per share -basic",
+     "$",
+     "0.29",
+     "$",
+     "0.27"
+    ],
+    [
+     "Adjusted net income per share -diluted",
+     "$",
+     "0.25",
+     "$",
+     "0.23"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1098,
+    "end_line": 1131
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "(1)Includes amortization of deferred financing cost for the three months ended March 31, 2024 and 2023, respectively.\n(2)Includes the changes in fair value of warrant liability, derivative liabilities and earnout consideration liability for the three months ended March 31, 2024 and 2023, respectively.\nThe following unaudited table presents the non-GAAP earnings per share and reconciliation of GAAP net income to non-GAAP adjusted net income for the periods indicated:",
+   "prose_after": "1) Calculated using the Company's blended tax rate.\n2) Includes the changes in fair value of warrant liability and earnout consideration liability.\n3) Assumes both Class A shares and Class B shares participate in earnings and are outstanding at the end of the period.\n4) Assumes treasury stock method, valuation at assumed fair market value of $18.00.\n5) The Company did not include the effect of Exchangeable Notes in its total shares outstanding used in diluted adjusted net income per share.\nCritical Accounting Policies and Estimates\nCritical accounting policies are detailed in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2023.\nNew Accounting Pronouncements\nReference is made to Note 2 of Notes to Financial Statements - unaudited in Item 1, \u201cFinancial Statements,\u201d for information concerning recent accounting pronouncements since the filing of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2023.\nLiquidity and Capital Resources",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 54,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 55,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Effective Dates",
+     "Notional Amount",
+     "",
+     "Fixed Rate",
+     ""
+    ],
+    [
+     "",
+     "($ in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 5, 2022 through December 5, 2023",
+     "$",
+     "125,000",
+     "1.06",
+     "%"
+    ],
+    [
+     "December 5, 2023 through December 22, 2025",
+     "$",
+     "125,000",
+     "1.90",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1205,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative Disclosures About Market Risk"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "In addition to existing cash balances and cash provided by operating activities, the Company uses variable rate debt to finance its operations. The Company is exposed to interest rate risk on these debt obligations and a related interest rate swap agreement. As of March 31, 2024, CompoSecure had $205.6 million in debt outstanding under the 2021 Credit Facility, all of which was variable rate debt, and $130.0 million in long-term debt principal outstanding from the issuance of Exchangeable Notes.\nThe Company performed a sensitivity analysis based on the principal amount of debt outstanding as of March 31, 2024, as well as the effect of its interest rate swap agreement. In this sensitivity analysis, the change in interest rates is assumed to be applicable for an entire year. An increase or decrease of 100 basis points in the applicable interest rate would cause an increase or decrease in interest expense of approximately $4.0 million on an annual basis.\nOn January 11, 2022, CompoSecure entered into an interest rate swap agreement to hedge forecasted interest rate payments on its variable rate debt. As of March 31, 2024, the Company had the following interest rate swap agreements (in thousands):",
+   "prose_after": "Under the terms of the interest rate swap agreement, the Company receives payments based on the greater of 1-month SOFR rate, as amended in February 2023, or a minimum of 1.00%. On February 28, 2023, the Company amended the 2021 Credit Facility to, among other things, transition from bearing interest based on LIBOR to SOFR or the Alternate Base Rate (as defined in the 2021 Credit Facility), at the election of the Company, plus an applicable margin. The existing swap converted to SOFR from LIBOR at the same time as the 2021 Credit Facility.\nThe Company has designated the interest rate swap as a cash flow hedge for accounting purposes that was determined to be effective. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $5.7 million at March 31, 2024. The Company reflects the realized gains and losses of the actual monthly settlement activity of the interest rate swap in its consolidated statements of operations. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability is recognized at each reporting period in the Company\u2019s financial statements.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1228,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 55,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 56,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     ""
+    ],
+    [
+     "10.1*",
+     "Amendment No. 2, dated March 1, 2024, to Third Amended and Restated Credit Agreement, dated as of December 21, 2021, by and among CompoSecure, L.L.C., Arculus Holdings, L.L.C., CompoSecure Holdings, L.L.C., the Lenders (as defined therein) parties thereto and JPMorgan Chase Bank, N.A."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer Pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of Chief Financial Officer Pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following materials from CompoSecure, Inc.'s Form 10-Q for the quarter ended March 31, 2024, formatted in Extensible Business Reporting Language (XBRL): (i) Consolidated Balance Sheets as of March 31, 2024 (Unaudited) and December 31, 2023, (ii) Consolidated Statements of Operations (Unaudited) for the three months ended March 31, 2024 and March 31, 2023, (iii) Consolidated Statements of Comprehensive Income (Unaudited) for the three months ended March 31, 2024 and March 31, 2023 (iv) Consolidated Statements of Stockholders\u2019 Equity (Unaudited) for the three months ended March 31, 2024 and March 31, 2023, as well as the year ended December 31, 2023, (v) Consolidated Statements of Cash Flows (Unaudited) for the three months ended March 31, 2024 and March 31, 2023, and (vi) Notes to Consolidated Financial Statements - Unaudited."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the inline XBRL document)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "* Filed herewith",
+     ""
+    ],
+    [
+     "** In accordance with SEC Release 33-8238, Exhibits 32.1 and 32.2 are being furnished and not filed.",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "In accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: May 6, 2024 By: /s/ Jonathan C. Wilk\nName: Jonathan C. Wilk\nTitle: President and Chief Executive Officer\n(Principal Executive Officer)\nDate: May 6, 2024 By: /s/ Timothy Fitzsimmons\nName: Timothy Fitzsimmons\nTitle: Chief Financial Officer\n(Principal Financial and Accounting Officer)\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1797,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 56,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

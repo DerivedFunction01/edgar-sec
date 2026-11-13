@@ -1,0 +1,284 @@
+{
+ "accession": "0001193125-05-003065",
+ "cik": "0000935724",
+ "form": "10-K/A",
+ "filing_date": "2005-01-07",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Large Accelerated",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "94-3199675"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K/A\n(Amendment No. 2)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2002\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number 1-13664\nTHE PMI GROUP, INC.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "3003 Oak Road\nWalnut Creek, California 94597\n(Address of principal executive offices) (Zip code)\n(925) 658-7878\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 37,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "New York Stock Exchange\n\n\n\nPacific Exchange"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock Purchase Rights",
+     "New York Stock Exchange\n\n\n\nPacific Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 51
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "3003 Oak Road\nWalnut Creek, California 94597\n(Address of principal executive offices) (Zip code)\n(925) 658-7878\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of Registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by checkmark whether the registrant is an accelerated filer (as defined in Exchange Act Rule 12b-2). Yes [X] No [ ]\nThe market value of the voting stock (common stock) held by non-affiliates of the registrant as of the close of business on June 28, 2002 was $3,430,198,758 based on the closing sale price of the common stock on the New York Stock Exchange consolidated tape on that date.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 37,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "The PMI Group, Inc.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Victor J. Bacigalupi"
+    ],
+    [
+     "",
+     "Victor J. Bacigalupi"
+    ],
+    [
+     "",
+     "Senior Executive Vice President,"
+    ],
+    [
+     "",
+     "Secretary and General Counsel"
+    ]
+   ],
+   "caption_stack": [
+    "The PMI Group, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 91
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships"
+    },
+    "note": null
+   },
+   "prose_before": "This filing amends Item 13 of the Registrant\u2019s Annual Report on Form 10-K (the \u201cOriginal Form 10-K\u201d) for the year ended December 31, 2002, on behalf of the Registrant, to disclose employment information concerning a sister of one of the Registrant\u2019s directors, Steven J. Scheid, who was a non-executive employee of the Registrant during fiscal 2002. In April 2004, Mr. Scheid\u2019s son also became employed by the Registrant in a non-executive capacity. Item 13 of the Original Form 10-K is hereby amended to add the following:\nItem 13. Certain Relationships\nMarilee Groth, sister of Steven L. Scheid, was a non-executive employee of the Registrant during fiscal 2002 and was paid aggregate compensation of $84,314 during that fiscal year.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this amendment to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of Walnut Creek, State of California, on the 7th day of January, 2005.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Description"
+    ],
+    [
+     "31.1",
+     "Chief Executive Officer Certification pursuant to Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Chief Financial Officer Certification pursuant to Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships"
+    },
+    "note": null
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

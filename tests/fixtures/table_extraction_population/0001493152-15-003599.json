@@ -1,0 +1,4081 @@
+{
+ "accession": "0001493152-15-003599",
+ "cik": "0000849636",
+ "form": "10-Q",
+ "filing_date": "2015-08-13",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "33-0303583"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2015\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 1-16467\nCORTEX PHARMACEUTICALS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "126 Valley Road, Suite C\nGlen Rock, New Jersey 07452\n(Address of principal executive offices)\n(201) 444-4947\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes\n[X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Condensed Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets - June 30, 2015 (Unaudited) and December 31, 2014",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations (Unaudited) - Three Months and Six Months Ended June 30, 2015 and 2014",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statement of Stockholders\u2019 Deficiency (Unaudited) - Six Months Ended June 30, 2015",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows (Unaudited) - Six Months Ended June 30, 2015 and 2014",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements (Unaudited) - Three Months and Six Months Ended June 30, 2015 and 2014",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures about Market Risk",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 107
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer (as defined in Rule 12b-2 of the Exchange Act).\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAs of July 31, 2015, the Company had 413,976,852 shares of common stock, $0.001 par value, issued and outstanding.\nDocuments incorporated by reference: None\nCORTEX PHARMACEUTICALS, INC. AND SUBSIDIARY\nTABLE OF CONTENTS",
+   "prose_after": "2\nForward-Looking Statements\nThis Quarterly Report on Form 10-Q of Cortex Pharmaceuticals, Inc. (the \u201cCompany\u201d) contains certain forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, and Section 21E of the Securities Exchange Act of 1934. These might include statements regarding the Company\u2019s financial position, business strategy and other plans and objectives for future operations, and assumptions and predictions about future product demand, supply, manufacturing, costs, marketing and pricing factors are all forward-looking statements. These statements are generally accompanied by words such as \u201cintend,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpotential(ly),\u201d \u201ccontinue,\u201d \u201cforecast,\u201d \u201cpredict,\u201d \u201cplan,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cshould,\u201d \u201cexpect\u201d or the negative of such terms or other comparable terminology. The Company believes that the assumptions and expectations reflected in such forward-looking statements are reasonable, based on information available to it on the date hereof, but the Company cannot provide assurances that these assumptions and expectations will prove to have been correct or that the Company will take any action that the Company may presently be planning. These forward-looking statements are inherently subject to known and unknown risks and uncertainties. Actual results or experience may differ materially from those expected, anticipated or implied in the forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, regulatory policies or changes thereto, available cash, research and development results, competition from other similar businesses, and market and general economic factors. This discussion should be read in conjunction with the condensed consolidated financial statements (unaudited) and notes thereto included in Item 1 of this Quarterly Report on Form 10-Q and the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2014, including the section entitled \u201cItem 1A. Risk Factors.\u201d The Company does not intend to update or revise any forward-looking statements to reflect new information, future events or otherwise.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "53,182",
+     "",
+     "$",
+     "162,752",
+     ""
+    ],
+    [
+     "  Grant receivable",
+     "",
+     "-",
+     "",
+     "",
+     "48,000",
+     ""
+    ],
+    [
+     "  Capitalized financing costs",
+     "",
+     "35,306",
+     "",
+     "",
+     "85,702",
+     ""
+    ],
+    [
+     "  Deferred offering costs",
+     "",
+     "8,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Prepaid expenses, including current portion of long-term prepaid insurance of $14,945 at June 30, 2015 and December 31, 2014",
+     "",
+     "58,445",
+     "",
+     "",
+     "24,219",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "154,933",
+     "",
+     "",
+     "320,673",
+     ""
+    ],
+    [
+     "Equipment, net of accumulated depreciation of $5,300 and $1,659 at June 30, 2015 and December 31, 2014, respectively",
+     "",
+     "15,597",
+     "",
+     "",
+     "16,741",
+     ""
+    ],
+    [
+     "Long-term prepaid insurance, net of current portion of $14,945 at June 30, 2015 and December 31, 2014",
+     "",
+     "55,422",
+     "",
+     "",
+     "62,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "225,952",
+     "",
+     "$",
+     "400,308",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued expenses, including $89,000 and $108,375 payable to related parties at June 30, 2015 and December 31, 2014, respectively",
+     "$",
+     "1,463,846",
+     "",
+     "$",
+     "1,845,875",
+     ""
+    ],
+    [
+     "  Accrued compensation and related expenses",
+     "",
+     "230,500",
+     "",
+     "",
+     "144,000",
+     ""
+    ],
+    [
+     "  Note payable to Chairman, including accrued interest of $164",
+     "",
+     "40,164",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Unearned grant revenues",
+     "",
+     "-",
+     "",
+     "",
+     "34,333",
+     ""
+    ],
+    [
+     "  10% convertible notes payable, including accrued interest of $31,363 and $4,093, net of unamortized discount of $168,370 and $323,350, at June 30, 2015 and December 31, 2014, respectively",
+     "",
+     "442,493",
+     "",
+     "",
+     "50,243",
+     ""
+    ],
+    [
+     "  Note payable to related party, including accrued interest of $146,738 and $122,618 at June 30, 2015 and December 31, 2014, respectively",
+     "",
+     "540,569",
+     "",
+     "",
+     "526,257",
+     ""
+    ],
+    [
+     "  Other short-term notes payable, including accrued interest of $1,448",
+     "",
+     "86,659",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,804,231",
+     "",
+     "",
+     "2,600,708",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 9)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficiency:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series B convertible preferred stock, $0.001 par value; $0.6667 per share liquidation preference; aggregate liquidation preference $25,001; shares authorized: 37,500; shares issued and outstanding: 37,500; common shares issuable upon conversion at 0.09812 per share: 3,679",
+     "",
+     "21,703",
+     "",
+     "",
+     "21,703",
+     ""
+    ],
+    [
+     "  Series G 1.5% cumulative mandatorily convertible preferred stock, $0.001 par value, $1,000 per share stated value and liquidation preference; aggregate liquidation preference (including dividends) $313,977 and $872,737 at June 30, 2015 and December 31, 2014, respectively; shares authorized: 1,700; shares issued and outstanding: 314.0 and 872.7 at June 30, 2015 and December 31, 2014, respectively; common shares issuable upon conversion at 303,030.3 common shares per Series G share: 95,144,652 shares, including 1,805,259 shares issuable for dividends of $5,957 at June 30, 2015, and 264,465,728 shares, including 3,102,094 shares issuable for dividends of $10,237 at December 31, 2014",
+     "",
+     "313,977",
+     "",
+     "",
+     "872,737",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value; shares authorized: 1,400,000,000; shares issued and outstanding: 413,476,853 and 232,145,326 at June 30, 2015 and December 31, 2014, respectively",
+     "",
+     "413,476",
+     "",
+     "",
+     "232,145",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "140,966,016",
+     "",
+     "",
+     "138,984,110",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(144,293,451)",
+     "",
+     "",
+     "(142,311,095)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficiency",
+     "",
+     "(2,578,279)",
+     "",
+     "",
+     "(2,200,400)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 deficiency",
+     "$",
+     "225,952",
+     "",
+     "$",
+     "400,308",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 123,
+    "end_line": 186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "This Quarterly Report on Form 10-Q of Cortex Pharmaceuticals, Inc. (the \u201cCompany\u201d) contains certain forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, and Section 21E of the Securities Exchange Act of 1934. These might include statements regarding the Company\u2019s financial position, business strategy and other plans and objectives for future operations, and assumptions and predictions about future product demand, supply, manufacturing, costs, marketing and pricing factors are all forward-looking statements. These statements are generally accompanied by words such as \u201cintend,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpotential(ly),\u201d \u201ccontinue,\u201d \u201cforecast,\u201d \u201cpredict,\u201d \u201cplan,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cshould,\u201d \u201cexpect\u201d or the negative of such terms or other comparable terminology. The Company believes that the assumptions and expectations reflected in such forward-looking statements are reasonable, based on information available to it on the date hereof, but the Company cannot provide assurances that these assumptions and expectations will prove to have been correct or that the Company will take any action that the Company may presently be planning. These forward-looking statements are inherently subject to known and unknown risks and uncertainties. Actual results or experience may differ materially from those expected, anticipated or implied in the forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, regulatory policies or changes thereto, available cash, research and development results, competition from other similar businesses, and market and general economic factors. This discussion should be read in conjunction with the condensed consolidated financial statements (unaudited) and notes thereto included in Item 1 of this Quarterly Report on Form 10-Q and the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2014, including the section entitled \u201cItem 1A. Risk Factors.\u201d The Company does not intend to update or revise any forward-looking statements to reflect new information, future events or otherwise.\nPART I - FINANCIAL INFORMATION\nITEM 1. CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 119,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Grant revenues",
+     "$",
+     "12,382",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "86,916",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative, including $657,600 and $12,000 to related parties for the three months ended June 30, 2015 and 2014, respectively, and $667,600 and $1,972,000 for the six months ended June 30, 2015 and 2014, respectively",
+     "",
+     "800,393",
+     "",
+     "",
+     "207,256",
+     "",
+     "",
+     "1,030,293",
+     "",
+     "",
+     "2,555,363",
+     ""
+    ],
+    [
+     "  Research and development, including $93,700 and $0 to related parties for the three months ended June 30, 2015 and 2014, respectively, and $170,200 and $0 for the six months ended June 30, 2015 and 2014, respectively",
+     "",
+     "272,340",
+     "",
+     "",
+     "80,433",
+     "",
+     "",
+     "713,132",
+     "",
+     "",
+     "144,522",
+     ""
+    ],
+    [
+     "  Total operating expenses",
+     "",
+     "1,072,733",
+     "",
+     "",
+     "287,689",
+     "",
+     "",
+     "1,743,425",
+     "",
+     "",
+     "2,669,885",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,060,351)",
+     "",
+     "",
+     "(287,689)",
+     "",
+     "",
+     "(1,656,509)",
+     "",
+     "",
+     "(2,669,885)",
+     ""
+    ],
+    [
+     "Gain (loss) on settlements with former management",
+     "",
+     "(840)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "91,710",
+     "",
+     "",
+     "1,038,270",
+     ""
+    ],
+    [
+     "Gain on settlements with service providers",
+     "",
+     "75,375",
+     "",
+     "",
+     "393,590",
+     "",
+     "",
+     "75,375",
+     "",
+     "",
+     "393,590",
+     ""
+    ],
+    [
+     "Interest expense, including $12,291 and $12,126 to related parties for the three months ended June 30, 2015 and 2014, respectively, and $24,284 and $24,173 to related parties for the six months ended June 30, 2015 and 2014, respectively",
+     "",
+     "(269,433)",
+     "",
+     "",
+     "(13,142)",
+     "",
+     "",
+     "(497,968)",
+     "",
+     "",
+     "(26,203)",
+     ""
+    ],
+    [
+     "Foreign currency transaction gain (loss)",
+     "",
+     "5,617",
+     "",
+     "",
+     "(30,335)",
+     "",
+     "",
+     "9,808",
+     "",
+     "",
+     "(24,058)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "(1,249,632)",
+     "",
+     "",
+     "62,424",
+     "",
+     "",
+     "(1,977,584)",
+     "",
+     "",
+     "(1,318,286)",
+     ""
+    ],
+    [
+     "Adjustments related to Series G 1.5% Convertible Preferred Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of deemed dividend on Series G 1.5% Convertible Preferred Stock",
+     "",
+     "-",
+     "",
+     "",
+     "(8,839,876)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(10,049,846)",
+     ""
+    ],
+    [
+     "  Dividend on Series G 1.5% Convertible Preferred Stock",
+     "",
+     "(1,574)",
+     "",
+     "",
+     "(3,396)",
+     "",
+     "",
+     "(4,772)",
+     "",
+     "",
+     "(3,804)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders",
+     "$",
+     "(1,251,206)",
+     "",
+     "$",
+     "(8,780,848)",
+     "",
+     "$",
+     "(1,982,356)",
+     "",
+     "$",
+     "(11,371,936)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.04)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - basic and diluted",
+     "",
+     "375,150,770",
+     "",
+     "",
+     "201,041,556",
+     "",
+     "",
+     "307,305,205",
+     "",
+     "",
+     "176,792,937",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 193,
+    "end_line": 230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIENCY\nSix Months Ended June 30, 2015",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Series B",
+     "",
+     "",
+     "",
+     "Series G 1.5%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Series G 1.5%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Convertible",
+     "",
+     "",
+     "",
+     "Convertible",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficiency",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2014",
+     "",
+     "37,500",
+     "$",
+     "21,703",
+     "",
+     "872.7",
+     "",
+     "$",
+     "872,737",
+     "",
+     "",
+     "232,145,326",
+     "$",
+     "232,145",
+     "$",
+     "138,984,110",
+     "$",
+     "(142,311,095)",
+     "",
+     "$",
+     "(2,200,400)",
+     ""
+    ],
+    [
+     "Conversion of Series G 1.5% Convertible Preferred Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(563.5)",
+     "",
+     "",
+     "(563,532)",
+     "",
+     "",
+     "170,767,241",
+     "",
+     "170,767",
+     "",
+     "392,765",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued as compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,500,000",
+     "",
+     "1,500",
+     "",
+     "109,500",
+     "",
+     "-",
+     "",
+     "",
+     "111,000",
+     ""
+    ],
+    [
+     "Common stock issued to service providers",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,064,286",
+     "",
+     "9,064",
+     "",
+     "149,561",
+     "",
+     "-",
+     "",
+     "",
+     "158,625",
+     ""
+    ],
+    [
+     "Fair value of common stock options issued as compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "473,000",
+     "",
+     "-",
+     "",
+     "",
+     "473,000",
+     ""
+    ],
+    [
+     "Fair value of common stock options issued to service providers",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "608,064",
+     "",
+     "-",
+     "",
+     "",
+     "608,064",
+     ""
+    ],
+    [
+     "Fair value of common stock options issued in connection with settlements with former management",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "26,290",
+     "",
+     "-",
+     "",
+     "",
+     "26,290",
+     ""
+    ],
+    [
+     "Fair value of common stock warrants issued to investors in connection with the convertible note and warrant financing",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "112,557",
+     "",
+     "-",
+     "",
+     "",
+     "112,557",
+     ""
+    ],
+    [
+     "Fair value of common stock warrants issued to finders in connection with the convertible note and warrant financing",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,726",
+     "",
+     "-",
+     "",
+     "",
+     "12,726",
+     ""
+    ],
+    [
+     "Fair value of beneficial conversion feature of convertible notes payable issued to investors in connection with the convertible note and warrant financing",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "97,443",
+     "",
+     "-",
+     "",
+     "",
+     "97,443",
+     ""
+    ],
+    [
+     "Dividends on Series G 1.5% Convertible Preferred Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4.8",
+     "",
+     "",
+     "4,772",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,772)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,977,584)",
+     "",
+     "",
+     "(1,977,584)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2015",
+     "",
+     "37,500",
+     "$",
+     "21,703",
+     "",
+     "314.0",
+     "",
+     "$",
+     "313,977",
+     "",
+     "",
+     "413,476,853",
+     "$",
+     "413,476",
+     "$",
+     "140,966,016",
+     "$",
+     "(144,293,451)",
+     "",
+     "$",
+     "(2,578,279)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 239,
+    "end_line": 266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIENCY\nSix Months Ended June 30, 2015",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 235,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "$",
+     "(1,977,584)",
+     "",
+     "",
+     "$",
+     "(1,318,286)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation expense",
+     "",
+     "",
+     "3,641",
+     "",
+     "",
+     "",
+     "177",
+     ""
+    ],
+    [
+     "    Amortization of discounts related to convertible notes payable -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Investor warrants",
+     "",
+     "",
+     "182,964",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Beneficial conversion feature",
+     "",
+     "",
+     "182,017",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Amortization of capitalized financing costs",
+     "",
+     "",
+     "78,822",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Gains on settlements -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      With former management",
+     "",
+     "",
+     "(91,710)",
+     "",
+     "",
+     "",
+     "(1,038,270)",
+     ""
+    ],
+    [
+     "      With service providers",
+     "",
+     "",
+     "(75,375)",
+     "",
+     "",
+     "",
+     "(393,590)",
+     ""
+    ],
+    [
+     "    Stock-based compensation expense included in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      General and administrative expenses",
+     "",
+     "",
+     "438,600",
+     "",
+     "",
+     "",
+     "2,280,000",
+     ""
+    ],
+    [
+     "      Research and development expenses",
+     "",
+     "",
+     "145,400",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Foreign currency transaction (gain) loss",
+     "",
+     "",
+     "(9,808)",
+     "",
+     "",
+     "",
+     "24,058",
+     ""
+    ],
+    [
+     "    Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      (Increase) decrease in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Grant receivable",
+     "",
+     "",
+     "48,000",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Prepaid expenses",
+     "",
+     "",
+     "9,371",
+     "",
+     "",
+     "",
+     "(135,060)",
+     ""
+    ],
+    [
+     "      Increase (decrease) in -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "",
+     "519,798",
+     "",
+     "",
+     "",
+     "72,614",
+     ""
+    ],
+    [
+     "      Accrued compensation and related expenses",
+     "",
+     "",
+     "204,500",
+     "",
+     "",
+     "",
+     "(118,084)",
+     ""
+    ],
+    [
+     "      Accrued interest payable",
+     "",
+     "",
+     "53,002",
+     "",
+     "",
+     "",
+     "26,092",
+     ""
+    ],
+    [
+     "      Unearned grant revenues",
+     "",
+     "",
+     "(34,333)",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net cash used in operating activities",
+     "",
+     "",
+     "(322,695)",
+     "",
+     "",
+     "",
+     "(600,349)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchases of equipment",
+     "",
+     "",
+     "(2,497)",
+     "",
+     "",
+     "",
+     "(1,924)",
+     ""
+    ],
+    [
+     "  Net cash used in investing activities",
+     "",
+     "",
+     "(2,497)",
+     "",
+     "",
+     "",
+     "(1,924)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from sale of Series G 1.5% Convertible Preferred Stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "928,500",
+     ""
+    ],
+    [
+     "  Proceeds from convertible note and warrant financing",
+     "",
+     "",
+     "210,000",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from issuance of notes payable to Chairman",
+     "",
+     "",
+     "40,000",
+     "",
+     "",
+     "",
+     "75,000",
+     ""
+    ],
+    [
+     "  Principal paid on other notes payable",
+     "",
+     "",
+     "(10,678)",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Repayment of notes payable to Chairman",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "(150,000)",
+     ""
+    ],
+    [
+     "  Cash payments made for deferred costs incurred in connection with proposed private placement",
+     "",
+     "",
+     "(8,000)",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Cash payments made for deferred costs incurred in connection with convertible note and warrant financing",
+     "",
+     "",
+     "(15,700)",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Cash payments made for costs incurred in connection with sale of Series G 1.5% Convertible Preferred Stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "(92,921)",
+     ""
+    ],
+    [
+     "  Net cash provided by financing activities",
+     "",
+     "",
+     "215,622",
+     "",
+     "",
+     "",
+     "760,579",
+     ""
+    ],
+    [
+     "Cash and cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease)",
+     "",
+     "",
+     "(109,570)",
+     "",
+     "",
+     "",
+     "158,306",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "",
+     "",
+     "162,752",
+     "",
+     "",
+     "",
+     "14,352",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "$",
+     "53,182",
+     "",
+     "",
+     "$",
+     "172,658",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 273,
+    "end_line": 330
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "(Continued)\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Continued)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 271,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 332,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for -",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "$",
+     "1,164",
+     "$",
+     "102"
+    ],
+    [
+     "  Income taxes",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of deemed dividend on Series G 1.5% Convertible Preferred Stock",
+     "$",
+     "-",
+     "$",
+     "10,049,846"
+    ],
+    [
+     "  Dividends on Series G 1.5% Convertible Preferred Stock",
+     "$",
+     "4,772",
+     "$",
+     "3,804"
+    ],
+    [
+     "  Short-term note payable issued in connection with the procurement of director and officer insurance",
+     "$",
+     "36,125",
+     "$",
+     "-"
+    ],
+    [
+     "  Stated value of Series G 1.5% Convertible Preferred Stock converted into common stock",
+     "$",
+     "563,532",
+     "$",
+     "-"
+    ],
+    [
+     "  Fair value of common stock options issued in connection with settlements with former management",
+     "$",
+     "26,290",
+     "$",
+     "179,910"
+    ],
+    [
+     "  Fair value of common stock options issued in connection with settlements with service providers",
+     "$",
+     "608,064",
+     "$",
+     "42,250"
+    ],
+    [
+     "  Fair value of common stock warrants issued to investors in connection with the convertible note and warrant financing",
+     "$",
+     "112,557",
+     "$",
+     "-"
+    ],
+    [
+     "  Fair value of common stock warrants issued to finders in connection with the convertible note and warrant financing",
+     "$",
+     "12,726",
+     "$",
+     "-"
+    ],
+    [
+     "  Fair value of beneficial conversion feature of convertible notes payable issued to investors in connection with the convertible note and warrant financing",
+     "$",
+     "97,443",
+     "$",
+     "-"
+    ],
+    [
+     "  Fair value of common stock warrants issued to placement agents and selected dealers in connection with the sale of Series G 1.5% Convertible Preferred Stock",
+     "$",
+     "-",
+     "$",
+     "443,848"
+    ],
+    [
+     "  Deferred financing costs transferred to additional paid-in capital in connection with sale of Series G 1.5% Convertible Preferred Stock",
+     "$",
+     "-",
+     "$",
+     "35,120"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 338,
+    "end_line": 377
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "(Continued)\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Continued)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nThree Months and Six Months Ended June 30, 2015 and 2014\n1. Basis of Presentation\nThe condensed consolidated financial statements of Cortex Pharmaceuticals, Inc. (\u201cCortex\u201d) and its wholly-owned subsidiary, Pier Pharmaceuticals, Inc. (\u201cPier\u201d) (collectively referred to herein as the \u201cCompany,\u201d unless the context indicates otherwise), at June 30, 2015 and for the three months and six months ended June 30, 2015 and 2014, are unaudited. In the opinion of management, all adjustments (including normal recurring adjustments) have been made that are necessary to present fairly the consolidated financial position of the Company as of June 30, 2015, the results of its consolidated operations for the three months and six months ended June 30, 2015 and 2014, and its consolidated cash flows for the six months ended June 30, 2015 and 2014. Consolidated operating results for the interim periods presented are not necessarily indicative of the results to be expected for a full fiscal year. The consolidated balance sheet at December 31, 2014 has been derived from the Company\u2019s audited consolidated financial statements at such date.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 336,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "1.3% to 1.7",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "184% to 249",
+     "%"
+    ],
+    [
+     "Expected life",
+     "5-7 years",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 527
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "All stock-based payments to employees, including grants of employee stock options, are recognized in the financial statements based on their fair values. The fair value of stock options is determined utilizing the Black-Scholes option-pricing model, and is affected by several variables, the most significant of which are the life of the equity award, the exercise price of the security as compared to the fair market value of the common stock on the grant date, and the estimated volatility of the common stock over the term of the equity award. Estimated volatility is based on the historical volatility of the Company\u2019s common stock. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant. The fair value of common stock is determined by reference to the quoted market price of the Company\u2019s common stock.\nStock options and warrants issued to non-employees as compensation for services to be provided to the Company or in settlement of debt are accounted for based upon the fair value of the services provided or the estimated fair value of the option or warrant, whichever can be more clearly determined. Management utilizes the Black-Scholes option-pricing model to determine the fair value of the stock options and warrants issued by the Company. The Company recognizes this expense over the period in which the services are provided.\nFor options granted during the six months ended June 30, 2015, the fair value of each option award was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "prose_after": "For options granted during the six months ended June 30, 2014, the fair value of each option award was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "1.5% to 2.7",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "200% to 249",
+     "%"
+    ],
+    [
+     "Expected life",
+     "5-10 years",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 530,
+    "end_line": 536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "For options granted during the six months ended June 30, 2014, the fair value of each option award was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "prose_after": "The Company issues new shares to satisfy stock option and warrant exercises. There were no options exercised during the six months ended June 30, 2015 and 2014.\nThe Company recognizes the fair value of stock-based compensation in general and administrative costs and in research and development costs, as appropriate, in the Company\u2019s consolidated statements of operations.\nIncome Taxes\nThe Company accounts for income taxes under an asset and liability approach for financial accounting and reporting for income taxes. Accordingly, the Company recognizes deferred tax assets and liabilities for the expected impact of differences between the financial statements and the tax basis of assets and liabilities.\nThe Company records a valuation allowance to reduce its deferred tax assets to the amount that is more likely than not to be realized. In the event the Company was to determine that it would be able to realize its deferred tax assets in the future in excess of its recorded amount, an adjustment to the deferred tax assets would be credited to operations in the period such determination was made. Likewise, should the Company determine that it would not be able to realize all or part of its deferred tax assets in the future, an adjustment to the deferred tax assets would be charged to operations in the period such determination was made.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Series B convertible preferred stock",
+     "",
+     "3,679",
+     "",
+     "3,679"
+    ],
+    [
+     "Series G 1.5% convertible preferred stock",
+     "",
+     "95,144,652",
+     "",
+     "282,516,482"
+    ],
+    [
+     "10% convertible notes payable",
+     "",
+     "17,453,230",
+     "",
+     "-"
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "32,106,094",
+     "",
+     "19,251,271"
+    ],
+    [
+     "Common stock options",
+     "",
+     "112,885,138",
+     "",
+     "10,716,668"
+    ],
+    [
+     "Total",
+     "",
+     "257,592,793",
+     "",
+     "312,488,100"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 595,
+    "end_line": 609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company\u2019s computation of earnings per share (\u201cEPS\u201d) includes basic and diluted EPS. Basic EPS is measured as the income (loss) attributable to common stockholders divided by the weighted average common shares outstanding for the period. Diluted EPS is similar to basic EPS but presents the dilutive effect on a per share basis of potential common shares (e.g., warrants and options) as if they had been converted at the beginning of the periods presented, or issuance date, if later. Potential common shares that have an anti-dilutive effect (i.e., those that increase income per share or decrease loss per share) are excluded from the calculation of diluted EPS.\nNet income (loss) attributable to common stockholders consists of net income or loss, as adjusted for actual and deemed preferred stock dividends declared, amortized or accumulated.\nLoss per common share is computed by dividing net loss by the weighted average number of shares of common stock outstanding during the respective periods. Basic and diluted loss per common share is the same for all periods presented because all warrants and stock options outstanding are anti-dilutive.\nAt June 30, 2015 and 2014, the Company excluded the outstanding securities summarized below, which entitle the holders thereof to acquire shares of common stock, from its calculation of earnings per share, as their effect would have been anti-dilutive.",
+   "prose_after": "Reclassifications\nCertain comparative figures in 2014 have been reclassified to conform to the current year\u2019s presentation. These reclassifications were immaterial, both individually and in the aggregate.\nRecent Accounting Pronouncements\nIn May 2014, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update No. 2014-09 (ASU 2014-09), Revenue from Contracts with Customers. ASU 2014-09 will eliminate transaction- and industry-specific revenue recognition guidance under current GAAP and replace it with a principle based approach for determining revenue recognition. ASU 2014-09 will require that companies recognize revenue based on the value of transferred goods or services as they occur in the contract. ASU 2014-09 also will require additional disclosure about the nature, amount, timing and uncertainty of revenue and cash flows arising from customer contracts, including significant judgments and changes in judgments and assets recognized from costs incurred to obtain or fulfill a contract. Based on the FASB\u2019s Exposure Draft Update issued on April 29, 2015, and approved in July 2015, Revenue from Contracts With Customers (Topic 606): Deferral of the Effective Date, ASU 2014-09 is now effective for reporting periods beginning after December 15, 2017, with early adoption permitted only as of annual reporting periods beginning after December 15, 2016, including interim reporting periods within that reporting period. Entities will be able to transition to the standard either retrospectively or as a cumulative-effect adjustment as of the date of adoption. As the Company does not expect to have any operating revenues for the foreseeable future, the Company does not expect the adoption of ASU 2014-09 to have any impact on the Company\u2019s financial statement presentation or disclosures.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 617,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "Principal amount of notes payable",
+     "$",
+     "579,500",
+     "",
+     "$",
+     "369,500",
+     ""
+    ],
+    [
+     "Add accrued interest payable",
+     "",
+     "31,363",
+     "",
+     "",
+     "4,093",
+     ""
+    ],
+    [
+     "",
+     "",
+     "610,863",
+     "",
+     "",
+     "373,593",
+     ""
+    ],
+    [
+     "Less unamortized discounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock warrants",
+     "",
+     "(84,858)",
+     "",
+     "",
+     "(155,264)",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "(83,512)",
+     "",
+     "",
+     "(168,086)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "442,493",
+     "",
+     "$",
+     "50,243",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 667
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "The Company used the Black-Scholes option-pricing model to estimate the fair value of the warrants to purchase 16,557,141 shares of the Company\u2019s common stock sold to investors in connection with the four closings at a fixed exercise price of $0.035 per share. The Company applied the relative fair value method to allocate the proceeds from the borrowing to the Notes and the Warrants. Consequently, approximately 50% of the proceeds of the borrowing were attributed to the debt instrument. The 50% value attributed to the Warrants is being amortized as additional interest expense over the original term of the related Notes. During the three months and six months ended June 30, 2015, $100,287 and $182,954 was charged to interest expense from the amortization of debt discount related to the value attributed to the Warrants.\nDuring the three months and six months ended June 30, 2015, $98,697 and $182,017 was charged to interest expense from the amortization of debt discount related to the value attributed to the beneficial conversion feature.\nThe 10% Convertible Notes Payable consist of the following at June 30, 2015 and December 31, 2014:",
+   "prose_after": "As of June 30, 2015, the 10% Convertible Notes Payable were convertible into 17,453,230 shares of the Company\u2019s common stock, including 896,087 shares attributable to accrued interest of $31,363 payable as of such date. As of December 31, 2014, the 10% Convertible Notes Payable were convertible into 10,674,107 shares of the Company\u2019s common stock, including 116,964 shares attributable to accrued interest of $4,093 payable as of such date.\nNote Payable to Related Party\nOn June 25, 2012, the Company borrowed 465,000,000 Won (the currency of South Korea, equivalent to approximately $400,000 United States Dollars) from and executed a secured note payable to SY Corporation Co., Ltd., formerly known as Samyang Optics Co. Ltd. (\u201cSamyang\u201d), an approximately 20% common stockholder of the Company at that time. The note accrues simple interest at the rate of 12% per annum and has a maturity date of June 25, 2013, although Samyang was permitted to demand early repayment of the promissory note on or after December 25, 2012. Samyang did not demand early repayment. The Company has not made any payments on the promissory note. At June 30, 2013 and subsequently, the promissory note was outstanding and in technical default, although Samyang has not issued a notice of default or a demand for repayment. The Company believes that Samyang is in default of its obligations under its January 2012 license agreement, as amended, with the Company, but the Company has not yet issued a notice of default. The Company is continuing efforts to enter into discussions with Samyang with a view toward a comprehensive resolution of the aforementioned matters.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     ""
+    ],
+    [
+     "Principal amount of note payable",
+     "$",
+     "399,774",
+     "",
+     "$",
+     "399,774"
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "146,738",
+     "",
+     "",
+     "122,618"
+    ],
+    [
+     "Foreign currency transaction adjustment",
+     "",
+     "(5,943)",
+     "",
+     "",
+     "3,865"
+    ],
+    [
+     "",
+     "$",
+     "540,569",
+     "",
+     "$",
+     "526,257"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 684,
+    "end_line": 695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "The Company used the Black-Scholes option-pricing model to estimate the fair value of the two-year detachable warrants to purchase 4,000,000 shares of the Company\u2019s common stock at a fixed exercise price of $0.056 per share. The Company applied the relative fair value method to allocate the proceeds from the borrowing to the note payable and the detachable warrants. The Company did not consider the expansion of the existing license agreement with Samyang to have any significant value. Consequently, approximately 64% of the proceeds of the borrowing were attributed to the debt instrument.\nThe 36% value attributed to the warrant was amortized as additional interest expense over the expected life of the note. Additionally, financing costs aggregating $21,370 incurred in connection with the transaction were also amortized over the expected life of the note. In that repayment could be demanded after six months, that period was used as the expected life of the note payable for amortization purposes.\nNote payable to Samyang consists of the following at June 30, 2015 and December 31, 2014:",
+   "prose_after": "Notes Payable to Chairman\nOn June 25, 2013, the Arnold Lippa Family Trust, an affiliate of Dr. Arnold S. Lippa, the Company\u2019s Chairman and Chief Executive Officer, began advancing funds to the Company in order to meet minimum operating needs. At December 31, 2013, Dr. Lippa had advanced a total of $75,000 to the Company. Such advances reached a maximum of $150,000 on March 3, 2014 and were due on demand with interest at a rate per annum equal to the \u201cBlended Annual Rate\u201d, as published by the U.S. Internal Revenue Service of approximately 0.22% for the period outstanding. In March 2014, the Company repaid the working capital advances, including accrued interest of $102, with the proceeds from the private placement of its Series G 1.5% Convertible Preferred Stock.\nOn June 16, 2015, Dr. Lippa advanced $40,000 to the Company in order to meet working capital requirements. The advance is due on demand with interest at 10% per annum. As of June 30, 2015, accrued interest was $164.\nOther Short-Term Notes Payable",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "Warrants outstanding at December 31, 2014",
+     "",
+     "25,686,096",
+     "$",
+     "0.01744",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "6,419,998",
+     "",
+     "0.03500",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding at June 30, 2015",
+     "",
+     "32,106,094",
+     "$",
+     "0.02095",
+     "",
+     "1.84"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at December 31, 2014",
+     "",
+     "25,686,096",
+     "$",
+     "0.01744",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at June 30, 2015",
+     "",
+     "32,106,094",
+     "$",
+     "0.02095",
+     "",
+     "1.84"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 812,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Settlements"
+    }
+   },
+   "prose_before": "In connection with a private placement of debt on June 25, 2012, the Company issued to Samyang two-year detachable warrants to purchase 4,000,000 shares of the Company\u2019s common stock at a fixed exercise price of $0.056 per share. The warrants had a call right for consideration of $0.001 per share, in favor of the Company, to the extent that the weighted average closing price of the Company\u2019s common stock exceeded $0.084 per share for each of ten consecutive trading days, subject to certain circumstances. The warrants expired unexercised in June 2014.\nInformation with respect to the issuance and exercise of common stock purchase warrants with respect to finders and placement agents in connection with the private placement of the Series G 1.5% Convertible Preferred Stock is provided above at \u201cSeries G 1.5% Convertible Preferred Stock.\u201d Information with respect to the issuance of common stock purchase warrants in connection with the 10% Convertible Note Payable and Warrant Purchase Agreement is provided at Note 4.\nA summary of warrant activity for the six months ended June 30, 2015 is presented below.",
+   "prose_after": "The exercise prices of common stock warrants outstanding and exercisable are as follows at June 30, 2015:\n<TABLE>\nWarrants Outstanding        Warrants Exercisable\nExercise Price           (Shares)                    (Shares)           Expiration Date\n--------------------------  --------------------------  --------------------------  ----------------\n$ 0.00396                  14,531,953                  14,531,953   April 17, 2019\n$ 0.03500                  17,574,141                  17,574,141   September 15,\n--------------------------  -----------------------\n32,106,094                  32,106,094\n==========================  =======================",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 2015
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Warrants Outstanding (Shares)",
+     "",
+     "Warrants Exercisable (Shares)",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "$",
+     "0.00396",
+     "",
+     "14,531,953",
+     "",
+     "14,531,953",
+     "April 17, 2019"
+    ],
+    [
+     "$",
+     "0.03500",
+     "",
+     "17,574,141",
+     "",
+     "17,574,141",
+     "September 15, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "32,106,094",
+     "",
+     "32,106,094",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "Warrants outstanding at December 31, 2013",
+     "",
+     "4,000,000",
+     "",
+     "$",
+     "0.05600",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "19,251,271",
+     "",
+     "",
+     "0.00396",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(4,000,000)",
+     "",
+     "",
+     "0.05600",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding at June 30, 2014",
+     "",
+     "19,251,271",
+     "",
+     "$",
+     "0.00396",
+     "",
+     "4.80"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at December 31, 2013",
+     "",
+     "4,000,000",
+     "",
+     "$",
+     "0.05600",
+     "",
+     ""
+    ],
+    [
+     "Warrants exercisable at June 30, 2014",
+     "",
+     "19,251,271",
+     "",
+     "$",
+     "0.05600",
+     "",
+     "4.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 848,
+    "end_line": 865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Settlements"
+    }
+   },
+   "prose_before": "Exercise Price           (Shares)                    (Shares)           Expiration Date\n--------------------------  --------------------------  --------------------------  ----------------\n$ 0.00396                  14,531,953                  14,531,953   April 17, 2019\n$ 0.03500                  17,574,141                  17,574,141   September 15,\n--------------------------  -----------------------\n32,106,094                  32,106,094\n==========================  =======================\n</TABLE>\nBased on a fair market value of $0.0175 per share on June 30, 2015, the intrinsic value of exercisable in-the-money stock warrants was $196,763 as of June 30, 2015.\nA summary of warrant activity for the six months ended June 30, 2014 is presented below.",
+   "prose_after": "The exercise prices of common stock warrants outstanding and exercisable are as follows at June 30, 2014:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 2015
+    },
+    "after": {
+     "line": 876,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Warrants Outstanding (Shares)",
+     "",
+     "Warrants Exercisable (Shares)",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "$",
+     "0.00396",
+     "",
+     "19,251,271",
+     "",
+     "19,251,271",
+     "April 17, 2019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 868,
+    "end_line": 874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Settlements"
+    }
+   },
+   "prose_before": "The exercise prices of common stock warrants outstanding and exercisable are as follows at June 30, 2014:",
+   "prose_after": "Based on a fair market value of $0.0295 per share on June 30, 2014, the intrinsic value of exercisable in-the-money stock warrants was $491,697 as of June 30, 2014.\nStock Options\nIn connection with the initial closing of the Private Placement completed on March 18, 2014, the stockholders of the Company holding a majority of the votes to be cast on the issue approved the adoption of the Company\u2019s 2014 Equity, Equity-Linked and Equity Derivative Incentive Plan (the \u201c2014 Plan\u201d), which had been previously adopted by the Board of Directors of the Company, subject to stockholder approval. The Plan permits the grant of options and restricted stock with respect to up to 105,633,002 shares of common stock, in addition to stock appreciation rights and phantom stock, to directors, officers, employees, consultants and other service providers of the Company.\nOn July 17, 2014, the Board of Directors of the Company awarded stock options to purchase a total of 15,000,000 shares of common stock of the Company, consisting of options for 5,000,000 shares to each of the Company\u2019s three executive officers, who were also all of the directors of the Company at that time. The stock options were awarded as compensation for those individuals through December 31, 2014. The stock options vested in three equal installments on July 17, 2014 (at issuance), September 30, 2014, and December 31, 2014, and expire on July 17, 2019. The exercise price of the stock options was established on the grant date at $0.05 per share, as compared to the closing market price of the Company\u2019s common stock on such date of $0.044 per share, reflecting an exercise price premium of $0.006 per share or 13.6%. These awards were made under the Company\u2019s 2014 Plan. During the period July 17, 2014 through December 31, 2014, the Company recorded charges to operations of $655,500 with respect to these stock options, reflecting the grant date fair value of the stock options calculated pursuant to the Black-Scholes option-pricing model.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 2015
+    },
+    "after": {
+     "line": 876,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "Options outstanding at December 31, 2014",
+     "",
+     "25,716,668",
+     "$",
+     "0.0503",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "87,168,470",
+     "",
+     "0.0233",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding at June 30, 2015",
+     "",
+     "112,885,138",
+     "$",
+     "0.0294",
+     "",
+     "5.96"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at December 31, 2014",
+     "",
+     "25,716,668",
+     "$",
+     "0.0503",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at June 30, 2015",
+     "",
+     "85,385,138",
+     "$",
+     "0.0309",
+     "",
+     "5.63"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Settlements"
+    }
+   },
+   "prose_before": "On June 30, 2015, the Board of Directors of the Company awarded stock options to purchase a total of 55,000,000 shares of common stock, consisting of options for 15,000,000 shares to each of three of the Company\u2019s executive officers, Dr. Arnold S. Lippa, Jeff E. Margolis and Robert N. Weingarten, and options for 2,000,000 shares to each of five other individuals who are members of management, the Company\u2019s Scientific Advisory Board, or independent members of the Board of Directors. The stock options were awarded as partial compensation for those individuals through December 31, 2015. The stock options vested 50% on June 30, 2015 (at issuance), will vest 25% on September 30, 2015 and December 31, 2015, and will expire on June 30, 2022. The exercise price of the stock options was established on the grant date at $0.025 per share, as compared to the closing market price of the Company\u2019s common stock on such date of $0.0175 per share, reflecting an exercise price premium of $0.0075 per share or 42.9%. These awards were made under the Company\u2019s 2015 Plan. The aggregate grant date fair value of these stock options calculated pursuant to the Black-Scholes option-pricing model was $946,000. During the three months and six months ended June 30, 2015, the Company recorded charges to operations of $473,000 with respect to these stock options, reflecting the vested portion of the grant date fair value of these stock options at June 30, 2015 calculated pursuant to the Black-Scholes option-pricing model.\nSee Note 6 for information with respect to the issuance of common stock options in connection with the settlement of debt obligations.\nInformation with respect to common stock awards issued to officers and directors as compensation is provided above under \u201cCommon Stock.\u201d\nA summary of stock option activity for the six months ended June 30, 2015 is presented below.",
+   "prose_after": "Total deferred compensation expense for the outstanding value of 27,500,000 unvested stock options was approximately $551,000 at June 30, 2015, which is being recognized subsequent to June 30, 2015 over a weighted-average period of approximately 5.7 months.\nThe exercise prices of common stock options outstanding and exercisable were as follows at June 30, 2015:\n<TABLE>\nOptions Outstanding        Options Exercisable\nExercise Price           (Shares)                   (Shares)           Expiration Date\n-------------------------  -------------------------  --------------------------  ---------------\n$ 0.0175                 29,148,028                  29,148,028   June 30, 2020\n$ 0.0250                 55,000,000                  27,500,000   June 30, 2022\n$ 0.0400                  2,400,000                   2,400,000   March 13, 2019\n$ 0.0400                  1,250,000                   1,250,000   April 14, 2019",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 876,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Options Outstanding (Shares)",
+     "",
+     "Options Exercisable (Shares)",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "$",
+     "0.0175",
+     "",
+     "29,148,028",
+     "",
+     "29,148,028",
+     "June 30, 2020"
+    ],
+    [
+     "$",
+     "0.0250",
+     "",
+     "55,000,000",
+     "",
+     "27,500,000",
+     "June 30, 2022"
+    ],
+    [
+     "$",
+     "0.0400",
+     "",
+     "2,400,000",
+     "",
+     "2,400,000",
+     "March 13, 2019"
+    ],
+    [
+     "$",
+     "0.0400",
+     "",
+     "1,250,000",
+     "",
+     "1,250,000",
+     "April 14, 2019"
+    ],
+    [
+     "$",
+     "0.0430",
+     "",
+     "1,100,000",
+     "",
+     "1,100,000",
+     "March 14, 2024"
+    ],
+    [
+     "$",
+     "0.0476",
+     "",
+     "2,520,442",
+     "",
+     "2,520,442",
+     "April 8, 2020"
+    ],
+    [
+     "$",
+     "0.0490",
+     "",
+     "800,000",
+     "",
+     "800,000",
+     "February 28, 2024"
+    ],
+    [
+     "$",
+     "0.0500",
+     "",
+     "15,000,000",
+     "",
+     "15,000,000",
+     "July 17, 2019"
+    ],
+    [
+     "$",
+     "0.0512",
+     "",
+     "500,000",
+     "",
+     "500,000",
+     "January 29, 2020"
+    ],
+    [
+     "$",
+     "0.0600",
+     "",
+     "3,083,334",
+     "",
+     "3,083,334",
+     "July 17, 2022"
+    ],
+    [
+     "$",
+     "0.0600",
+     "",
+     "2,083,334",
+     "",
+     "2,083,334",
+     "August 10, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "112,885,138",
+     "",
+     "85,385,138",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "Options outstanding at December 31, 2013",
+     "",
+     "5,166,668",
+     "$",
+     "0.0600",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "5,550,000",
+     "",
+     "0.0419",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding at June 30, 2014",
+     "",
+     "10,716,668",
+     "$",
+     "0.0506",
+     "",
+     "7.23"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at December 31, 2013",
+     "",
+     "5,166,668",
+     "$",
+     "0.0600",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at June 30, 2014",
+     "",
+     "10,716,668",
+     "$",
+     "0.0506",
+     "",
+     "7.23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 941,
+    "end_line": 958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Settlements"
+    }
+   },
+   "prose_before": "$ 0.0500                 15,000,000                  15,000,000   July 17, 2019\n$ 0.0512                    500,000                     500,000    January 29,\n$ 0.0600                  3,083,334                   3,083,334   July 17, 2022\n$ 0.0600                  2,083,334                   2,083,334  August 10, 2022\n-------------------------  -----------------------\n112,885,138                  85,385,138\n=========================  =======================\n</TABLE>\nBased on a fair market value of $0.0175 per share on June 30, 2015, there were no exercisable in-the-money common stock options as of June 30, 2015.\nA summary of stock option activity for the six months ended June 30, 2014 is presented below.",
+   "prose_after": "The exercise prices of common stock options outstanding and exercisable were as follows at June 30, 2014:\n<TABLE>\nOptions Outstanding        Options Exercisable\nExercise Price           (Shares)                   (Shares)           Expiration Date\n-------------------------  -------------------------  --------------------------  ---------------\n$ 0.0400                  2,400,000                   2,400,000   March 13, 2019\n$ 0.0400                  1,250,000                   1,250,000   April 14, 2019\n$ 0.0430                  1,100,000                   1,100,000   March 14, 2024\n$ 0.0490                    800,000                     800,000    February 28,\n$ 0.0600                  3,083,334                   3,083,334   July 17, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2020
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 2024
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Options Outstanding (Shares)",
+     "",
+     "Options Exercisable (Shares)",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "$",
+     "0.0400",
+     "",
+     "2,400,000",
+     "",
+     "2,400,000",
+     "March 13, 2019"
+    ],
+    [
+     "$",
+     "0.0400",
+     "",
+     "1,250,000",
+     "",
+     "1,250,000",
+     "April 14, 2019"
+    ],
+    [
+     "$",
+     "0.0430",
+     "",
+     "1,100,000",
+     "",
+     "1,100,000",
+     "March 14, 2024"
+    ],
+    [
+     "$",
+     "0.0490",
+     "",
+     "800,000",
+     "",
+     "800,000",
+     "February 28, 2024"
+    ],
+    [
+     "$",
+     "0.0600",
+     "",
+     "3,083,334",
+     "",
+     "3,083,334",
+     "July 17, 2022"
+    ],
+    [
+     "$",
+     "0.0060",
+     "",
+     "2,083,334",
+     "",
+     "2,083,334",
+     "August 10, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "10,716,668",
+     "",
+     "10,716,668",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CORTEX PHARMACEUTICALS, INC.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "Date: August 13, 2015",
+     "By:",
+     "/s/ ARNOLD S. LIPPA"
+    ],
+    [
+     "",
+     "",
+     "Arnold S. Lippa"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 13, 2015",
+     "By:",
+     "/s/ ROBERT N. WEINGARTEN"
+    ],
+    [
+     "",
+     "",
+     "Robert N. Weingarten"
+    ],
+    [
+     "",
+     "",
+     "Vice President and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "CORTEX PHARMACEUTICALS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1415,
+    "end_line": 1429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "On June 25, 2012, the Company borrowed 465,000,000 Won (the currency of South Korea, equivalent to approximately $400,000 United States Dollars) from and executed a secured note payable to SY Corporation Co., Ltd., formerly known as Samyang Optics Co. Ltd. (\u201cSamyang\u201d), an approximately 20% common stockholder of the Company at that time. The note accrues simple interest at the rate of 12% per annum and had a maturity date of June 25, 2013, although Samyang was permitted to demand early repayment of the promissory note on or after December 25, 2012. Samyang did not demand early repayment. The Company has not made any payments on the promissory note. At June 30, 2013 and subsequently, the promissory note was outstanding and in technical default, although Samyang had not issued a notice of default or a demand for repayment. The Company believes that Samyang is in default of its obligations under its January 2012 license agreement, as amended, with the Company, but the Company has not yet issued a notice of default. The Company is continuing efforts to enter into discussions with Samyang with a view toward a comprehensive resolution of the aforementioned matters.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNot applicable.\nITEM 6. EXHIBITS\nA list of exhibits required to be filed as part of this report is set forth in the Index to Exhibits, which is presented elsewhere in this document, and is incorporated herein by reference.\nSIGNATURES\nIn accordance with the requirements of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "INDEX TO EXHIBITS\nThe following documents are filed as part of this report:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1430,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description of Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "Demand Promissory Note payable to Arnold S. Lippa, incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on June 19, 2015."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Cortex Pharmaceuticals, Inc. 2015 Stock and Stock Option Plan, incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 8, 2015."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "",
+     "Form of Non-Statutory Stock Option Award Agreement under the Cortex Pharmaceuticals, Inc. 2015 Stock and Stock Option Plan, incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K, as filed with the Securities and Exchange Commission on July 8, 2015."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "",
+     "Officer\u2019s Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS**",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH**",
+     "",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL**",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB**",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE**",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF**",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1435,
+    "end_line": 1468
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "INDEX TO EXHIBITS\nThe following documents are filed as part of this report:",
+   "prose_after": "* Filed herewith.\n** In accordance with Regulation S-T, the XBRL related information on Exhibit No. 101 to this Quarterly Report on Form 10-Q shall be deemed \u201cfurnished\u201d herewith not \u201cfiled.\u201d",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1430,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1259 @@
+{
+ "accession": "0001640334-16-001730",
+ "cik": "0001598323",
+ "form": "10-Q",
+ "filing_date": "2016-09-28",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "acmb_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada\n\n(State or Other Jurisdiction of Incorporation or Organization)",
+     "2013\n\n(Primary Standard Industrial Classification Number)",
+     "EIN 33-1230673\n\n (IRS Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nForm 10-Q\nMark One\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2016\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to _______\nCommission File No. 333-185928\nAGRO CAPITAL MANAGEMENT CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1255 W. Rio Salado Pkwy, Suite 215\nTempe, AZ 85281\n480-339-0181\n(Address and telephone number of principal executive offices)\nIndicate by checkmark whether the issuer: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [ ] Yes [X] No\nIndicate by check mark whether the registrant is a large accelerated filed, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class Common Stock: $0.001",
+     "Outstanding as of September 27, 2016: 72,500,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 54,
+    "end_line": 57
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [ ] Yes [X] No\nIndicate by check mark whether the registrant is a large accelerated filed, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by checkmark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nApplicable Only to Issuer Involved in Bankruptcy Proceedings During the Preceding Five Years.\nN/A\nIndicate by checkmark whether the issuer has filed all documents and reports required to be filed by Section 12, 13 and 15(d) of the Securities Exchange Act of 1934 after the distribution of securities under a plan confirmed by a court. Yes [ ] No [ ]\nApplicable Only to Corporate Registrants\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the most practicable date:",
+   "prose_after": "Table of Contents",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART 1",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1",
+     "Financial Statements (Unaudited)",
+     "F-1"
+    ],
+    [
+     "",
+     "  Balance Sheets",
+     "F-1"
+    ],
+    [
+     "",
+     "  Statements of Operations",
+     "F-2"
+    ],
+    [
+     "",
+     "  Statements of Cash Flows",
+     "F-3"
+    ],
+    [
+     "",
+     "  Notes to Financial Statements",
+     "F-4-6"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "3"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "5"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "5"
+    ],
+    [
+     "PART II.",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "6"
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "6"
+    ],
+    [
+     "Item 4",
+     "Mine safety disclosures",
+     "6"
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "6"
+    ],
+    [
+     "Item 6",
+     "Exhibits",
+     "7"
+    ],
+    [
+     "",
+     "Signatures",
+     "7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 59,
+    "end_line": 79
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Table of Contents",
+   "prose_after": "AGRO CAPITAL MANAGEMENT CORP.\nfka GUATE TOURISM INC.\nBALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n2016",
+     "",
+     "",
+     "December 31,\n\n2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "45",
+     "",
+     "$",
+     "15,445",
+     ""
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "6,656",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "6,701",
+     "",
+     "",
+     "15,445",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "6,701",
+     "",
+     "",
+     "15,445",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY(DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "7,939",
+     "",
+     "$",
+     "1,529",
+     ""
+    ],
+    [
+     "Due to shareholder",
+     "",
+     "65,039",
+     "",
+     "",
+     "49,074",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "72,978",
+     "",
+     "",
+     "50,603",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001, 300,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "72,500,000 and 72,500,000 shares issued and outstanding respectively;*",
+     "",
+     "72,500",
+     "",
+     "",
+     "72,500",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "(38,633)",
+     "",
+     "",
+     "(38,633)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(100,144)",
+     "",
+     "",
+     "(69,025)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity (Deficit)",
+     "",
+     "(66,277)",
+     "",
+     "",
+     "(35,158)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "$",
+     "6,701",
+     "",
+     "$",
+     "15,445",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 123
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "AGRO CAPITAL MANAGEMENT CORP.\nfka GUATE TOURISM INC.\nBALANCE SHEETS",
+   "prose_after": "_________\n* Common stock retroactively adjusted for 10:1 forward stock split, effective December 11, 2015.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative Expenses",
+     "",
+     "2,840",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,840",
+     "",
+     "",
+     "4,195",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "13,254",
+     "",
+     "",
+     "3,296",
+     "",
+     "",
+     "23,279",
+     "",
+     "",
+     "9,569",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "16,094",
+     "",
+     "",
+     "3,296",
+     "",
+     "",
+     "31,119",
+     "",
+     "",
+     "13,764",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE INCOME TAXES",
+     "",
+     "(16,094)",
+     "",
+     "",
+     "(3,296)",
+     "",
+     "",
+     "(31,119)",
+     "",
+     "",
+     "(13,764)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(16,094)",
+     "",
+     "$",
+     "(3,296)",
+     "",
+     "$",
+     "(31,119)",
+     "",
+     "$",
+     "(13,764)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING: BASIC AND DILUTED*",
+     "",
+     "72,500,000",
+     "",
+     "",
+     "70,169,230",
+     "",
+     "",
+     "72,500,000",
+     "",
+     "",
+     "69,594,520",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 132,
+    "end_line": 162
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "_________\n* Common stock retroactively adjusted for 10:1 forward stock split, effective December 11, 2015.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "_________\n* Common stock retroactively adjusted for 10:1 forward stock split, effective December 11, 2015.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": null,
+     "page_number": 1
+    },
+    "after": {
+     "line": 167,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(unaudited)",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(31,119)",
+     "",
+     "$",
+     "(13,764)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "6,410",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of prepaid expenses",
+     "",
+     "5,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expense additions",
+     "",
+     "(11,656)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(31,365)",
+     "",
+     "",
+     "(13,764)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property, plant and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans from previous director",
+     "",
+     "-",
+     "",
+     "",
+     "4,671",
+     ""
+    ],
+    [
+     "Repayment to previous director",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loans from shareholder",
+     "",
+     "15,965",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "15,965",
+     "",
+     "",
+     "4,671",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(15,400)",
+     "",
+     "",
+     "(9,093)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - beginning of period",
+     "",
+     "15,445",
+     "",
+     "",
+     "9,093",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - end of period",
+     "$",
+     "45",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Disclosures",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 171,
+    "end_line": 213
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "_________\n* Common stock retroactively adjusted for 10:1 forward stock split, effective December 11, 2015.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO THE FINANCIAL STATEMENTS\nJune 30, 2016\nNOTE 1 \u2013 ORGANIZATION AND NATURE OF BUSINESS\nAgro Capital Management Corp. (the \u201cCompany\u201d) registered as Guate Tourism Inc. in the State of Nevada on November 12, 2013 and was formed to promote tourism in Guatemala.\nOn September 11, 2015, the major shareholder of the Company sold 6,000,000 common shares owned by her to unrelated 3rd parties. These 6,000,000 common shares represent 82.8% of common stock of the Company. As a result, the Company changed control on September 11, 2015.\nOn October 29, 2015, the Company filed Articles of Merger with the Secretary of State of the State of Nevada whereby the Company conducted a statutory merger with its wholly-owned subsidiary Agro Capital Management Corp., which was incorporated on October 29, 2015 and changed its name in connection therewith to \u201cAgro Capital Management Corp\u201d.\nIn connection therewith the Company also amended its Articles of Incorporation to (i) increase the Company\u2019s authorized number of shares of common stock from 75,000,000 to 300,000,000 and (ii) increase the Company\u2019s total issued and outstanding shares of common stock by conducting a forward split of such shares at the rate of ten (10) shares for every one (1) share currently issued and outstanding (the \u201cForward Split\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 167,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 214,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Agro Capital Management Corp."
+    ],
+    [
+     "Dated: September 28, 2016",
+     "By: /s/ Christopher Xavier Dorairaj"
+    ],
+    [
+     "",
+     "Christopher Xavier Dorairaj\n\nChief Executive Officer and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Agro Capital Management Corp."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 418,
+    "end_line": 426
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company and the Owners decided to unwind and rescind the transactions and share issuances pursuant to the Share Exchange Agreement due to, among other reasons, the lack of currently available information regarding Agro Capital Management Berhad, a Malaysian corporation (\u201cTarget\u201d) necessary for the Company to complete a full financial audit of Target for the two (2) prior fiscal years. As a result, the acquisition held little to no value for the Company\u2019s shareholders, including CE and Dato Mohd Nasir, who became shareholders as a result of such transaction, it therefore became mutually beneficial to all parties for the transactions to be rescinded and return each party to their former positions. In connection with the unwinding and rescission of the transactions under the Share Exchange Agreement, the Target Shares were returned to the Owners and the Exchange Shares were returned to the Company for cancellation. The Company filed a Form 8-K with the Securities and Exchange Commission pertaining to the above transactions on September 23, 2016.\nITEM 6. EXHIBITS\nExhibits:\n31.1 Certification of Chief Executive Officer and Chief Financial Officer pursuant to Securities Exchange Act of 1934 Rule 13a-14(a) or 15d-14(a).\n32.1 Certifications pursuant to Securities Exchange Act of 1934 Rule 13a-14(b) or 15d-14(b) and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes- Oxley Act of 2002.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 412,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

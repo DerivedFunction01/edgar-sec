@@ -1,0 +1,6076 @@
+{
+ "accession": "0001640334-26-000598",
+ "cik": "0000895464",
+ "form": "10-K",
+ "filing_date": "2026-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "yubo_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "",
+     "11-3074326"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer I.D. Number)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Room 1102, 11th Floor,\n\nBuilding 2, No. 10 Chaoyang Park South Road, Chaoyang District, Beijing, China",
+     "",
+     "100026"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________________ to _____________________\nCommission File Number 000-21320\nYUBO INTERNATIONAL BIOTECH LIMITED (Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (+86) 136-0129-6655\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to Section 12(g) of the Act:\nClass A common stock, par value $0.001 per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "ABOUT THIS ANNUAL REPORT",
+     "",
+     "3"
+    ],
+    [
+     "STATEMENT REGARDING FORWARD-LOOKING STATEMENTS",
+     "",
+     "4"
+    ],
+    [
+     "PART I",
+     "",
+     "5"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "17"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "44"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "46"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "46"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "46"
+    ],
+    [
+     "PART II",
+     "",
+     "47"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "47"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "49"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "49"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "54"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "55"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreement with Accountants on Accounting and Financial Disclosure",
+     "56"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "56"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "57"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "57"
+    ],
+    [
+     "PART III",
+     "",
+     "58"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "58"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "61"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "63"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "64"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "66"
+    ],
+    [
+     "PART IV",
+     "",
+     "67"
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "67"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "67"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the Registrant, based on the last reported sale price of the Class A common stock on the OTC Markets on June 30, 2025, was approximately $1.27 million.\nAs of March 25, 2026, 170,416,343 shares of Class A common stock, $0.001 par value, and 4,447 shares of Class B common stock, par value $0.001 per share, of the Registrant were outstanding.\nTable of Contents",
+   "prose_after": "2\nABOUT THIS ANNUAL REPORT\nIn this Annual Report on Form 10-K (this \u201cAnnual Report\u201d), unless otherwise specified, the terms \u201cwe,\u201d \u201cour,\u201d \u201cus,\u201d our \u201cCompany,\u201d the \u201cCompany,\u201d or the \u201cRegistrant\u201d refer to Yubo International Biotech Limited, a U.S. holding company and a New York corporation and its wholly owned subsidiaries, including Platinum International Biotech Co., Ltd., a company organized under the laws of the Cayman Islands (\u201cPlatinum\u201d), Platinum International Biotech (Hong Kong) Limited, a company organized under the laws of Hong Kong and a wholly owned subsidiary of Platinum (\u201cPlatinum HK\u201d), Yubo International Biotech (Chengdu) Limited, a company organized under the laws of the People\u2019s Republic of China and a wholly owned subsidiary of Platinum HK (\u201cYubo Chengdu\u201d or the \u201cWFOE\u201d), and Yubo Global Biotechnology (Chengdu) Co., Ltd., a company organized under the laws of the People\u2019s Republic of China and a wholly owned subsidiary of Platinum HK (\u201cYubo Global\u201d). We are a U.S. holding company primarily operating through our wholly owned subsidiary, Platinum. Platinum is not a Chinese operating company but a Cayman Islands holding company, which in turn operates in China through its subsidiaries and contractual arrangements with a variable interest entity (\u201cVIE\u201d), Yubo International Biotech (Beijing) Limited, a company organized under the laws of the People\u2019s Republic of China and, through contractual arrangements with us, the Chinese operating company. None of our Company, Platinum, or Platinum HK, each as a holding company, conducts any day-to-day business operations in China.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Licenses and Approvals",
+     "PRC Regulatory Authority"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Food Operation License Permit",
+     "Xicheng District Market Supervision and Administration Office of Beijing Municipality"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Medical License Distribution Enterprise Filing Certificate",
+     "Xicheng District Market Supervision and Administration Office of Beijing Municipality"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this Annual Report, Yubo Beijing has not been involved in any investigations on cybersecurity review initiated by CAC, and Yubo Beijing has not received any official inquiry, notice, warning, or sanctions regarding cybersecurity and overseas listing from CAC, CSRC or any other PRC authorities. However, given (i) the uncertainties with respect to the enactment, implementation, and interpretation of the Overseas Listing Filing Rules and laws and regulations relating to data security, privacy, and cybersecurity, and (ii) that the PRC government authorities have significant discretion in interpreting and implementing statutory provisions in general, there can be no assurance that PRC government authorities will not take a contrary position or adopt different interpretations, or that there will not be changes in the regulatory landscape. Consequently, a cybersecurity review and the approval from or filing with CSRC, CAC, or other government authorities may be required in connection with offering of our securities in the future. If (a) Yubo Beijing does not receive or maintain any required permission, or fails to complete any required review or filing, (b) Yubo Beijing inadvertently concludes that such permission, review or filing is not required, or (c) applicable laws, regulations, or interpretations change such that it becomes mandatory for Yubo Beijing to obtain any permission, review or filing in the future, Yubo Beijing may have to expend significant time and costs to comply with these requirements. If Yubo Beijing is unable to do so, on commercially reasonable terms, in a timely manner or otherwise, it may become subject to sanctions imposed by the PRC regulatory authorities, which could include fines and penalties, proceedings against it, and other forms of sanctions, and Yubo Beijing\u2019s ability to conduct its business, invest into China as foreign investments or accept foreign investments, complete any future offering, or list on a U.S. or other overseas exchange may be restricted, and its business, reputation, financial condition, and results of operations may be materially and adversely affected. Further, Yubo Beijing\u2019s ability to offer or continue to offer securities to investors may be significantly limited or completely hindered, and the value of our Class A common stock may significantly decline or become worthless.\nOther\nTo operate its business activities in China, Yubo Beijing is required to obtain the following licenses and approvals. Yubo Beijing has obtained such licenses and approvals, and, to date, no application for any such licenses and approvals has been denied.",
+   "prose_after": "Business Strategy\nYubo Beijing plans to build a first-class stem cell storage facility, which we believe, will be the first global bank of endometrial stem cells. Yubo Beijing also intends to develop and expand its current product line, to include a series of endometrial stem cells light application technology and medical-grade cell therapeutic products for health management, innovative medicine, anti-aging treatments, clinical transformation and other application fields. We believe Yubo Beijing\u2019s existing technology and leadership position in stem cell processing will drive significant future growth for the company.\nStem Cell Storage Facility\nThe endometrial stem cell bank is divided into a public resources library and private repositories. The public resources library will meet strict testing standards. Yubo Beijing will enter into standard donation agreements with the donor customers who meet the public resources library standards, and store the collection of stem cell samples in the public resources library. Such public resources library biological samples can be widely used in research and development and subsequent commercial development. See \u201c\u2014Services and Products\u2014Endometrial Stem Cell Bank\u201d below for a detailed discussion regarding the regulatory approvals, operational steps and construction timeline in connection with the stem cell bank.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 273,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Payments due by period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Less than\n\n1 year",
+     "",
+     "1-3 years",
+     "",
+     "4-5 years",
+     "",
+     "More than\n\n5 years",
+     ""
+    ],
+    [
+     "Operating lease obligations",
+     "$",
+     "79,742",
+     "$",
+     "79,742",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Payments due by period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1036,
+    "end_line": 1045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "As repayment of the shareholder loans from Jun Wang and Yang Wang, on July 23, 2025, we entered into the Securities Purchase Agreement, by and among our Company, on the one hand, and FlyDragon and ChinaOne, as the Purchasers on the other hand, for a sale of an aggregate of 50,600,000 shares of our Class A Common Stock. Jun Wang is the sole director of and owns 100% of the equity interest in FlyDragon, and Yang Wang is the sole director of and owns 100% of the equity interest in ChinaOne. The Transaction was reviewed and approved by the disinterested director on the Board in accordance with the New York Business Corporation Law and our Related Party Transactions Policy, and was subsequently approved by our majority shareholders pursuant to a written consent, which was disclosed in our Definitive Information Statement on Schedule 14C made pursuant to Rule 14c-2 of the Securities Exchange Act of 1934, as amended.\nAt the closing of the Transaction, we issued and sold 42,000,000 shares and 8,600,000 shares of our Class A common stock to FlyDragon and ChinaOne, respectively. The purchase price of each Share is $0.05 per share, which represented approximately 125% of the closing price of our Class A common stock on OCTQB on August 11, 2025.\nShareholder loans amounting to $2,530,000 were settled at the closing of the Transaction.\nContractual Obligations and Off-Balance Sheet Arrangements\nContractual Obligations\nOur principal commitments consist of obligations under certain operating leases. The following table sets forth our principal commitments as of December 31, 2025:",
+   "prose_after": "The commitment amounts in the table above are associated with contracts that are enforceable and legally binding and that specify all significant terms. The table above does not include obligations under agreements that we can cancel without a significant penalty.\nOff-Balance Sheet Arrangements\nWe have not entered into any other financial guarantees or other commitments to guarantee the payment obligations of any third parties. We have not entered into any derivative contracts that are indexed to our shares and classified as shareholder\u2019s equity or that are not reflected in our consolidated financial statements. Furthermore, we do not have any retained or contingent interest in assets transferred to an unconsolidated entity that serves as credit, liquidity or market risk support to such entity. We do not have any variable interest in any unconsolidated entity that provides financing, liquidity, market risk or credit support to us or engages in leasing, hedging or research and development services with us.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM (PCAOB ID: 7269)",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM (PCAOB ID: 7222)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 EQUITY",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1068,
+    "end_line": 1083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We have not entered into any other financial guarantees or other commitments to guarantee the payment obligations of any third parties. We have not entered into any derivative contracts that are indexed to our shares and classified as shareholder\u2019s equity or that are not reflected in our consolidated financial statements. Furthermore, we do not have any retained or contingent interest in assets transferred to an unconsolidated entity that serves as credit, liquidity or market risk support to such entity. We do not have any variable interest in any unconsolidated entity that provides financing, liquidity, market risk or credit support to us or engages in leasing, hedging or research and development services with us.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nWe are a smaller reporting company as defined by Rule 12b-2 of the Exchange Act and are not required to provide the information under this item.\nItem 8. Financial Statements and Supplementary Data.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS\nFor the years ended December 31, 2025 and 2024",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo: The Board of Directors and Stockholders of Yubo International Biotech Limited\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of Yubo International Biotech Limited (the \u201cCompany\u201d), its subsidiaries and its variable interest entity (collectively, the \u201cCompany\u201d) as of December 31, 2025 and the related consolidated statements of operations and comprehensive loss, changes in shareholders\u2019 deficit, and cash flows for the year ended December 31, 2025 and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2025 and the results of its operations and cash flows for the year ended December 31, 2025, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph Regarding Going Concern",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "REPEATING_HEADER",
+     "id": 53,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1084,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "8,062",
+     "",
+     "$",
+     "7,015",
+     ""
+    ],
+    [
+     "Receivables",
+     "",
+     "138,043",
+     "",
+     "",
+     "164,984",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "209,316",
+     "",
+     "",
+     "196,417",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "24,034",
+     "",
+     "",
+     "36,953",
+     ""
+    ],
+    [
+     "Due from related parties",
+     "",
+     "288,057",
+     "",
+     "",
+     "277,382",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "667,512",
+     "",
+     "",
+     "682,751",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "43,030",
+     "",
+     "",
+     "205,911",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "42,080",
+     "",
+     "",
+     "50,523",
+     ""
+    ],
+    [
+     "Operating lease right of use asset",
+     "",
+     "78,783",
+     "",
+     "",
+     "478,765",
+     ""
+    ],
+    [
+     "Lease security deposit",
+     "",
+     "15,689",
+     "",
+     "",
+     "116,881",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "847,094",
+     "",
+     "$",
+     "1,534,831",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses (including accounts payable and accrued expenses of VIE without recourse to the Company of $1,008,758 and $880,787 of December 31, 2025 and December 31, 2024, respectively)",
+     "$",
+     "1,060,730",
+     "",
+     "$",
+     "1,037,836",
+     ""
+    ],
+    [
+     "Advances from prospective customers/distributors (including advances from prospective customers/distributors of VIE without recourse to the Company of $440,344 and $424,026 as of December 31, 2025 and December 31, 2025, respectively)",
+     "",
+     "440,344",
+     "",
+     "",
+     "424,026",
+     ""
+    ],
+    [
+     "Due to related parties (including due to related parties without recourse to the Company of $1,061,372 and $2,741,830 as of December 31, 2025 and December 31, 2024, respectively)",
+     "",
+     "1,211,440",
+     "",
+     "",
+     "2,891,895",
+     ""
+    ],
+    [
+     "Operating lease liabilities \u2013 current (including operating lease liabilities - current of VIE without recourse to the Company of $78,783 and $285,182 as of December 31, 2025 and December 31, 2024, respectively)",
+     "",
+     "78,783",
+     "",
+     "",
+     "367,992",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "2,791,297",
+     "",
+     "",
+     "4,721,749",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities - non-current (including operating lease liability \u2013 non- current of VIE without recourse to the Company of $197,202 and $197,202 as of December 31, 2025 and December 31, 2024, respectively)",
+     "",
+     "-",
+     "",
+     "",
+     "110,773",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "2,791,297",
+     "",
+     "",
+     "4,832,522",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.01 per share, 5,000,000 shares authorized, none issued",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, Class A par value $0.001 per share; authorized 1,000,000,000 shares, 170,416,343 and 119,816,343 issued and outstanding at December 31, 2025 and December 31, 2024, respectively",
+     "",
+     "170,416",
+     "",
+     "",
+     "119,816",
+     ""
+    ],
+    [
+     "Common stock, Class B, par value $0.001 per share, 3,750,000 shares authorized, 4,447 shares issued and outstanding at December 31, 2025 and December 31, 2024",
+     "",
+     "4",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "5,468,883",
+     "",
+     "",
+     "2,989,483",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(7,740,059)",
+     "",
+     "",
+     "(6,660,812)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "",
+     "146,100",
+     "",
+     "",
+     "127,044",
+     ")"
+    ],
+    [
+     "Total deficit attributable to common shareholders",
+     "",
+     "(1,954,657)",
+     "",
+     "",
+     "(3,424,465)",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "",
+     "10,454",
+     "",
+     "",
+     "126,774",
+     ""
+    ],
+    [
+     "Total Deficit",
+     "",
+     "(1,944,203)",
+     "",
+     "",
+     "(3,297,691)",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholders\u2019 Equity",
+     "$",
+     "847,094",
+     "",
+     "$",
+     "1,534,831",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there were no critical audit matters.\n/s/ HHL LLP\nWe have served as the Company\u2019s auditor from 2024 to January, 2026.\nNew York, NY\nMarch 31, 2025\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1149,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1215,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of products and services",
+     "$",
+     "12,353",
+     "",
+     "$",
+     "3,470",
+     ""
+    ],
+    [
+     "Cost of goods and services sold",
+     "",
+     "(4,188)",
+     "",
+     "",
+     "(822)",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "8,165",
+     "",
+     "",
+     "2,648",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee compensation",
+     "",
+     "766,888",
+     "",
+     "",
+     "857,355",
+     ""
+    ],
+    [
+     "Occupancy",
+     "",
+     "116,034",
+     "",
+     "",
+     "390,150",
+     ""
+    ],
+    [
+     "Depreciation and amortization of property and equipment",
+     "",
+     "167,581",
+     "",
+     "",
+     "169,875",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "10,192",
+     "",
+     "",
+     "13,422",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "135,166",
+     "",
+     "",
+     "341,765",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "1,195,861",
+     "",
+     "",
+     "1,772,567",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,187,696)",
+     "",
+     "",
+     "(1,769,919)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on obsolescence inventory",
+     "",
+     "-",
+     "",
+     "",
+     "(211,923)",
+     ""
+    ],
+    [
+     "Interest income (expense)",
+     "",
+     "(243)",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Total Other Income (Expenses)",
+     "",
+     "(243)",
+     "",
+     "",
+     "(211,873)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before Provision for Income Tax",
+     "",
+     "(1,187,939)",
+     "",
+     "",
+     "(1,981,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,187,939)",
+     "",
+     "$",
+     "(1,981,792)",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest",
+     "",
+     "(108,691)",
+     "",
+     "",
+     "(206,489",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders",
+     "",
+     "(1,079,248)",
+     "",
+     "",
+     "(1,775,303)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share basic and diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding basic and diluted",
+     "",
+     "139,644,900",
+     "",
+     "",
+     "119,820,790",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss to the Company",
+     "$",
+     "(1,079,248)",
+     "",
+     "$",
+     "(1,775,648)",
+     ""
+    ],
+    [
+     "Net loss to non-controlling interests",
+     "",
+     "(108,691)",
+     "",
+     "",
+     "(206,489",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment to the Company",
+     "",
+     "19,056",
+     "",
+     "",
+     "140,248",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment to non-controlling interests",
+     "",
+     "(7,629)",
+     "",
+     "",
+     "13,035",
+     ""
+    ],
+    [
+     "Total comprehensive loss",
+     "$",
+     "(1,176,511)",
+     "",
+     "$",
+     "(1,839,509)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1221,
+    "end_line": 1279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1219,
+     "token": "REPEATING_HEADER",
+     "id": 59,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "paid in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Income",
+     "",
+     "",
+     "Company\u2019s",
+     "",
+     "",
+     "controlling",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(loss)",
+     "",
+     "",
+     "equity",
+     "",
+     "",
+     "interest",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2024",
+     "",
+     "119,816,343",
+     "$",
+     "119,816",
+     "",
+     "4,447",
+     "",
+     "4",
+     "",
+     "2,989,483",
+     "",
+     "(6,660,812)",
+     "",
+     "",
+     "127,044",
+     "",
+     "$",
+     "(3,424,465)",
+     "",
+     "",
+     "126,774",
+     "",
+     "",
+     "(3,297,691)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of ordinary shares",
+     "",
+     "50,600,000",
+     "",
+     "50,600",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,479,400",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,530,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,530,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2025",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,079,248)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,079,248)",
+     "",
+     "",
+     "(108,691)",
+     "",
+     "",
+     "(1,187,939)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "19,056",
+     "",
+     "",
+     "19,056",
+     "",
+     "",
+     "(7,629)",
+     "",
+     "",
+     "11,427",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2025",
+     "",
+     "170,416,343",
+     "$",
+     "170,416",
+     "",
+     "4,447",
+     "",
+     "4",
+     "",
+     "5,468,883",
+     "",
+     "(7,740,059)",
+     "",
+     "",
+     "146,100",
+     "",
+     "$",
+     "(1,954,657)",
+     "",
+     "",
+     "10,454",
+     "",
+     "",
+     "(1,944,203)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2023",
+     "",
+     "119,816,343",
+     "$",
+     "119,816",
+     "",
+     "4,447",
+     "",
+     "4",
+     "",
+     "2,935,190",
+     "",
+     "(4,885,509)",
+     "",
+     "",
+     "(13,204)",
+     "",
+     "$",
+     "(1,843,703)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,843,703)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions to subsidiary by non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "374,521",
+     "",
+     "",
+     "374,521",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transfer of 27% interest in subsidiary (Yubo Jingzhi) to non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "54,293",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "54,293",
+     "",
+     "",
+     "(54,293)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2024",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,775,303)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,775,303)",
+     "",
+     "",
+     "(206,489)",
+     "",
+     "",
+     "(1,981,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "140,248",
+     "",
+     "",
+     "140,248",
+     "",
+     "",
+     "13,035",
+     "",
+     "",
+     "153,283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2024",
+     "",
+     "119,816,343",
+     "$",
+     "119,816",
+     "",
+     "4,447",
+     "",
+     "4",
+     "",
+     "2,989,483",
+     "",
+     "(6,660,812)",
+     "",
+     "",
+     "127,044",
+     "",
+     "$",
+     "(3,424,465)",
+     "",
+     "",
+     "126,774",
+     "",
+     "",
+     "(3,297,691)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1285,
+     "token": "REPEATING_HEADER",
+     "id": 61,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,187,939)",
+     "",
+     "$",
+     "(1,981,792)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "177,773",
+     "",
+     "",
+     "183,298",
+     ""
+    ],
+    [
+     "Loss on obsolescence inventory",
+     "",
+     "-",
+     "",
+     "",
+     "211,923",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables",
+     "",
+     "26,941",
+     "",
+     "",
+     "(85,330)",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "(12,898)",
+     "",
+     "",
+     "(57,745)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "12,919",
+     "",
+     "",
+     "177,622",
+     ""
+    ],
+    [
+     "Due from related parties",
+     "",
+     "-",
+     "",
+     "",
+     "8,592",
+     ""
+    ],
+    [
+     "Lease security deposit",
+     "",
+     "101,190",
+     "",
+     "",
+     "3,622",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "22,896",
+     "",
+     "",
+     "212,205",
+     ""
+    ],
+    [
+     "Advances from prospective customers/distributors",
+     "",
+     "16,316",
+     "",
+     "",
+     "(10,126)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(842,802)",
+     "",
+     "$",
+     "(1,337,729)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds for sale of Equipment",
+     "",
+     "-",
+     "",
+     "",
+     "118,431",
+     ""
+    ],
+    [
+     "Net cash provided in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "118,431",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from related parties (net)",
+     "",
+     "849,545",
+     "",
+     "",
+     "1,032,618",
+     ""
+    ],
+    [
+     "Capital contributions to subsidiary",
+     "",
+     "-",
+     "",
+     "",
+     "374,521",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "849,545",
+     "",
+     "",
+     "1,407,139",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes",
+     "",
+     "(5,696)",
+     "",
+     "",
+     "(187,185)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "1,047",
+     "",
+     "",
+     "656",
+     ")"
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "7,015",
+     "",
+     "",
+     "6,359",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "8,062",
+     "",
+     "$",
+     "7,015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1331,
+    "end_line": 1384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFor the years ended December 31, 2025 and 2024\nNOTE 1 \u2013 ORGANIZATION\nYubo International Biotech Limited (formerly Magna-Lab Inc.) (the \u201cCompany\u201d), a New York corporation, acquired Platinum International Biotech Co. Ltd. (\u201cPlatinum\u201d) in a \u201creverse merger\u201d transaction on January 14, 2021.\nOn January 14, 2021 (the \u201cClosing Date\u201d), the Company closed a voluntary share exchange transaction with Platinum International Biotech Co., Ltd., a company organized under the laws of the Cayman Islands (\u201cPlatinum\u201d), pursuant to that certain Agreement and Plan of Share Exchange, dated January 14, 2021 (the \u201cExchange Agreement\u201d), by and among the Company, Platinum, Yubo International Biotech (Beijing) Limited, a company organized under the laws of the People\u2019s Republic of China (\u201cPRC\u201d) (\u201cYubo Beijing\u201d), and certain selling stockholders named therein.\nIn accordance with the terms of the Exchange Agreement, on the Closing Date, the Company issued a total of 117,000,000 shares of its Class A common stock to the Selling Stockholders, who were then stockholders of Platinum (the \u201cSelling Stockholders\u201d), in exchange for 100% of the issued and outstanding capital stock of Platinum (the \u201cExchange Transaction\u201d). As a result of the Exchange Transaction, the Selling Stockholders acquired more than 99% of the Company\u2019s issued and outstanding capital stock, Platinum became the Company\u2019s wholly-owned subsidiary, and the Company acquired the business and operations of Platinum and Yubo Beijing. Immediately prior to the Exchange Transaction, the Company had 117,875,323 shares of Class A common stock and 4,447 shares of Class B common stock issued and outstanding. Immediately after the Exchange Transaction and the surrender and cancellation of 116,697,438 shares held by Lina Liu, the controlling shareholder, Chief Financial Officer, Treasurer and Secretary of the Company, the Company had 118,177,885 shares of Class A common stock and 4,447 shares of Class B common stock issued and outstanding.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1329,
+     "token": "REPEATING_HEADER",
+     "id": 63,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Background",
+     "Ownership"
+    ],
+    [
+     "Yubo International Biotech Limited (\u201cYubo New York\u201d)",
+     "\u00b7",
+     "A holding company",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "Incorporated in New York",
+     ""
+    ],
+    [
+     "Platinum International Biotech Co. LTD (\u201cPlatinum\u201d)",
+     "\u00b7",
+     "A Cayman Island company",
+     "100% owned by Yubo New York"
+    ],
+    [
+     "",
+     "\u00b7",
+     "Incorporated on April 7, 2020",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "A holding company",
+     ""
+    ],
+    [
+     "Platinum International Biotech (Hong Kong) Limited. (\u201cPlatinum HK\u201d)",
+     "\u00b7",
+     "A Hong Kong company",
+     "100% owned by Platinum"
+    ],
+    [
+     "",
+     "\u00b7",
+     "Incorporated on May 4, 2020",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "A holding company",
+     ""
+    ],
+    [
+     "Yubo International Biotech (Chengdu) Limited (\u201cYubo Chengdu\u201d)",
+     "\u00b7",
+     "A PRC company and deemed a wholly foreign owned enterprise",
+     "100% owned by Platinum HK"
+    ],
+    [
+     "",
+     "\u00b7",
+     "Incorporated on September 4, 2020",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "Subscribed capital of $1,500,000",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "A holding company",
+     ""
+    ],
+    [
+     "Yubo International Biotech (Beijing) Limited (\u201cYubo Beijing\u201d)",
+     "\u00b7",
+     "A PRC limited liability company",
+     "VIE of Yubo Chengdu WFOE"
+    ],
+    [
+     "",
+     "\u00b7",
+     "Incorporated on June 14, 2016",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "Subscribed capital of $1,454,038 (RMB 10,000,000)",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "Stem cell storage and bank",
+     ""
+    ],
+    [
+     "Yubo Jingzhi Biotechnology (ChengDu) Co. Ltd. (\u201cYubo Jingzhi\u201d)",
+     "\u00b7",
+     "A PRC company incorporated on January 21, 2021",
+     "73% owned by Yubo Beijing"
+    ],
+    [
+     "Yubo Global Biotechnology (Chengdu) Co. Ltd (\u201cYubo Global\u201d)",
+     "\u00b7",
+     "A PRC company incorporated on December 20, 2020",
+     "100% owned by Platinum HK"
+    ],
+    [
+     "Phoenix Club Bio-Medical Technology (Chengdu) Co., LTD (\u201cYubo Phoenix\u201d)",
+     "\u00b7",
+     "A PRC company incorporated on April 12, 2021",
+     "100% owned by Yubo Beijing"
+    ],
+    [
+     "EpiAis Biomedical Engineering Co., Ltd. (\u201cYubo Shenzhen\u201d)",
+     "\u00b7",
+     "A PRC company incorporated on January 26, 2024",
+     "70% owned by Yubo Beijing"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1434,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "On February 27, 2025, the Company sold 27% of the subscribed capital of Yubo Jingzhi to an affiliated investor for no consideration. The Company retains 73% ownership of Yubo Jinghzi.\nYubo International Biotech Limited and its consolidated subsidiaries and VIE are collectively referred to herein as the \u201cCompany\u201d unless specific reference is made to an entity.\nNOTE 2 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe accompanying consolidated financial statements have been prepared in conformity with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d).\nPrinciples of Consolidation\nThe consolidated financial statements include the accounts of the Company, its majority owned subsidiaries, and its consolidated VIE for which the Company is the primary beneficiary.\nAll transactions and balances among the Company, its subsidiaries and consolidated VIE have been eliminated upon consolidation.\nThe accompanying consolidated financial statements reflect the activities of the following entities:",
+   "prose_after": "On September 11, 2020, our wholly-owned subsidiary, Yubo Chengdu, entered into the following contractual arrangements with Yubo Beijing and the shareholders of Yubo Beijing (the \u201cYubo Shareholders\u201d), as applicable, each of which is enforceable and valid in accordance with the laws of the PRC:\nExclusive Consulting Services Agreement\nPursuant to the Exclusive Consulting Services Agreement among Yubo Beijing, Yubo WFOE, and the Yubo Shareholders, Yubo WFOE agrees to provide, and Yubo Beijing agrees to accept, exclusive management services provided by Yubo WFOE. Such management services include but are not limited to financial management, business management, marketing management, human resource management and internal control of Yubo Beijing. The Exclusive Consulting Services Agreement will remain in effect until the acquisition of all assets or equity of Yubo Beijing by Yubo WFOE is complete (as more fully described in the Exclusive Purchase Option Agreement below).\nExclusive Purchase Option Agreement",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1419,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1458,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "3,869",
+     "",
+     "$",
+     "2,960",
+     ""
+    ],
+    [
+     "Receivables (net)",
+     "",
+     "68,576",
+     "",
+     "",
+     "119,223",
+     ""
+    ],
+    [
+     "Prepaid Expenses",
+     "",
+     "209,316",
+     "",
+     "",
+     "170,116",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "24,034",
+     "",
+     "",
+     "36,953",
+     ""
+    ],
+    [
+     "Due from related parties",
+     "",
+     "288,057",
+     "",
+     "",
+     "277,382",
+     ""
+    ],
+    [
+     "Property and equipment (net)",
+     "",
+     "43,030",
+     "",
+     "",
+     "205,911",
+     ""
+    ],
+    [
+     "Intangible assets (net)",
+     "",
+     "42,080",
+     "",
+     "",
+     "50,523",
+     ""
+    ],
+    [
+     "Operating lease right of use asset",
+     "",
+     "78,783",
+     "",
+     "",
+     "478,765",
+     ""
+    ],
+    [
+     "Lease security deposit",
+     "",
+     "15,690",
+     "",
+     "",
+     "95,810",
+     ""
+    ],
+    [
+     "Receivables from other consolidated entities (A)",
+     "",
+     "1,345,332",
+     "",
+     "",
+     "552,274",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "2,118,772",
+     "",
+     "",
+     "1,989,917",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "1,008,758",
+     "",
+     "",
+     "800,085",
+     ""
+    ],
+    [
+     "Advances from prospective customers/distributors",
+     "",
+     "440,344",
+     "",
+     "",
+     "424,026",
+     ""
+    ],
+    [
+     "Due to related parties",
+     "",
+     "1,061,372",
+     "",
+     "",
+     "2,741,830",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "78,783",
+     "",
+     "",
+     "478,765",
+     ""
+    ],
+    [
+     "Payables to other consolidated entities (A)",
+     "",
+     "1,224,020",
+     "",
+     "",
+     "936,692",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "3,813,277",
+     "",
+     "",
+     "5,381,398",
+     ""
+    ],
+    [
+     "Shareholders' equity",
+     "$",
+     "(1,694,505)",
+     "",
+     "$",
+     "(3,391,481)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1477,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Under the Exclusive Option Agreement among Yubo Beijing, Yubo WFOE, and the Yubo Shareholders, the Yubo Shareholders granted Yubo WFOE an irrevocable and exclusive purchase option to acquire Yubo Beijing\u2019s equity and/or assets at a nominal consideration. Yubo WFOE may exercise the purchase option at any time.\nEquity Pledge Agreement\nUnder the Equity Pledge Agreement among Yubo WFOE and the Yubo Shareholders, the Yubo Shareholders pledged all of their equity interests in Yubo Beijing, including the proceeds thereof, to guarantee all of Yubo WFOE\u2019s rights and benefits under the Exclusive Consulting Services Agreement and the Exclusive Option Agreement. Prior to termination of this Equity Pledge Agreement, the pledged equity interests cannot be transferred without Yubo WFOE\u2019s prior consent. The Yubo Shareholders covenants to Yubo WFOE that among other things, it will only appoint/elect the candidates for the directors of Yubo Beijing nominated by Yubo WFOE.\nFinancial Statements of Yubo Beijing (VIE)\nThe consolidated assets and liabilities of Yubo Beijing (VIE) and its subsidiaries at December 31, 2025 and December 31, 2024 consist of:",
+   "prose_after": "(A) Eliminated in consolidation.\nSee Note 16 for a condensed consolidating balance sheet of the Company at December 31, 2025 and a condensed consolidating statement of operations of the Company for year ended December 31, 2025.\nForeign Currency Translation\nThe accompanying consolidated financial statements are presented in United States dollars (\u201c$\u201d), which is the reporting currency of the Company. The functional currency of Platinum and Platinum HK is the United States dollar. The functional currency of the Company\u2019s subsidiaries and VIE located in the PRC is the Renminbi (\u201cRMB\u201d). For the entities whose functional currencies are the RMB, results of operations and cash flows are translated at average exchange rates during the period ($1=7.1641 RMB for the year ended December 31, 2025 and $1=7.1846 RMB for the year ended December 31, 2024), assets and liabilities are translated at the current exchange rate at the end of the period ($1=7.0288 RMB at December 31, 2025 and $1=7.2993 RMB at December 31, 2024), and equity is translated at historical exchange rates. The resulting translation adjustments are included in determining other comprehensive income (loss). Transaction gains and losses, which were not significant for the periods presented, are reflected in the consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1458,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Leasehold improvements",
+     "Remaining term of lease"
+    ],
+    [
+     "Air conditioning equipment",
+     "5 years"
+    ],
+    [
+     "Office equipment",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1534,
+    "end_line": 1540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "tax assets. While the Company believes that the estimates and assumptions used in the preparation of the financial statements are appropriate, actual results could differ from those estimates. Estimates and assumptions are periodically reviewed and the effects of revisions are reflected in the financial statements in the period they are determined to be necessary.\nCash and Cash Equivalents\nCash and cash equivalents include cash on hand, cash in bank accounts, cash in time deposits, certificates of deposit and all highly liquid instruments with original maturities of three months or less.\nInventories\nInventories are stated at the lower of cost utilizing the weighted average method or net realizable value. Net realizable value is the estimated selling price in the ordinary course of business less the estimated selling costs.\nThe valuation of inventory requires the Company to estimate excess and slow-moving inventories. The Company evaluates the recoverability of the inventory based on expected demand and market conditions.\nProperty and Equipment\nProperty and equipment consist of leasehold improvements and office equipment. All property and equipment are stated at historical cost net of accumulated depreciation. Repairs and maintenance are expensed as incurred. Property and equipment are depreciated on a straight-line basis over the following periods:",
+   "prose_after": "Intangible Assets\nIntangible assets consist of distribution software and patents and are stated at historical cost less accumulated amortization. Amortization of intangible assets is calculated on a straight-line basis over the shorter of the contractual terms or the expected useful lives of the respective assets. The amortization period by major asset classes is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1540,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Distribution software",
+     "5 years"
+    ],
+    [
+     "Patents",
+     "20 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1545,
+    "end_line": 1549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Intangible Assets\nIntangible assets consist of distribution software and patents and are stated at historical cost less accumulated amortization. Amortization of intangible assets is calculated on a straight-line basis over the shorter of the contractual terms or the expected useful lives of the respective assets. The amortization period by major asset classes is as follows:",
+   "prose_after": "Impairment of Long-Lived Assets\nThe Company\u2019s long-lived assets are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount of the asset may not be recoverable. Recoverability of an asset to be held and used is measured by a comparison of the carrying amount of the asset to the future undiscounted cash flows expected to be generated by the asset. If such asset is considered to be impaired, the impairment to be recognized is measured by the amount by which the carrying amount of the asset exceeds its fair value. Impairment evaluations involve management\u2019s estimates on asset useful lives and future cash flows. Actual useful lives and cash flows could be different from those estimated by management which could have a material effect on our reporting results and financial position. Fair value is determined through various valuation techniques including discounted cash flow models, quoted market values and third-party independent appraisals, as considered necessary.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1540,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1573,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Nebulizers and components",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Oral liquid health products",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Beauty care products",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other",
+     "",
+     "24,034",
+     "",
+     "36,953"
+    ],
+    [
+     "Total Inventory",
+     "$",
+     "24,034",
+     "$",
+     "36,953"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1620,
+    "end_line": 1632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INVENTORY"
+    }
+   },
+   "prose_before": "The Company\u2019s financial statements as of December 31, 2025 have been prepared using generally accepted accounting principles in the United States of America applicable to a going concern, which contemplates the realization of assets and liquidation of liabilities in the normal course of business. The Company has not yet established an ongoing source of revenues and cash flows sufficient to cover its operating costs and allow it to continue as a going concern. At December 31, 2025, the Company had cash of $8,062 and negative working capital of $2,135,801. For the year ended December 31, 2025 and December 31, 2024, the Company had losses of $1,187,939 and $1,981,792 respectively. These factors among others raise substantial doubt about the ability of the Company to continue as a going concern for a reasonable period of time.\nIn order to continue as a going concern, the Company will need, among other things, additional capital resources. Management\u2019s plan is to obtain such resources for the Company by obtaining capital from management and significant shareholders sufficient to meet its operating expenses and seeking third party equity and/or debt financing. On March 27, 2026, the Company obtained a financial support letter from its major shareholder. It is stated in the financial support letter that the main shareholder of the Company will undertake to provide continuous financial support to enable the Companies to meet its liabilities as and when they fall due for a period of 12 months from this report date.\nNOTE 4 \u2013 INVENTORY\nInventory consisted of the following:",
+   "prose_after": "NOTE 5 \u2013 DUE FROM RELATED PARTIES\nDue from related parties consisted of:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1609,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Beijing Zhenhuikang Biotechnology Co., LTD (\u201cZhenhuikang\u201d) (1)",
+     "$",
+     "288,057",
+     "$",
+     "285,974"
+    ],
+    [
+     "Total Due from Related Parties",
+     "$",
+     "288,057",
+     "$",
+     "285,974"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1637,
+    "end_line": 1646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 DUE FROM RELATED PARTIES"
+    }
+   },
+   "prose_before": "NOTE 5 \u2013 DUE FROM RELATED PARTIES\nDue from related parties consisted of:",
+   "prose_after": "(1) Zhenhuikang is controlled by Beijing Zhenxigu Medical Research Center LP (\u201cZhenxigu\u201d). Zhenxigu is controlled by Mr. Yulin Cao, a director and significant stockholder of Yubo Beijing. The due from related parties receivable is non-interest bearing and due on demand.\nNOTE 6 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment, net, consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1609,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "$",
+     "187,186",
+     "",
+     "$",
+     "187,186",
+     ""
+    ],
+    [
+     "X-Ray equipment",
+     "",
+     "18,900",
+     "",
+     "",
+     "18,900",
+     ""
+    ],
+    [
+     "Air conditioning equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Office equipment",
+     "",
+     "21,420",
+     "",
+     "",
+     "21,420",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "",
+     "227,506",
+     "",
+     "",
+     "227,506",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "(184,476)",
+     "",
+     "",
+     "(21,591)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "43,030",
+     "",
+     "$",
+     "205,911",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1653,
+    "end_line": 1668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "(1) Zhenhuikang is controlled by Beijing Zhenxigu Medical Research Center LP (\u201cZhenxigu\u201d). Zhenxigu is controlled by Mr. Yulin Cao, a director and significant stockholder of Yubo Beijing. The due from related parties receivable is non-interest bearing and due on demand.\nNOTE 6 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment, net, consisted of the following:",
+   "prose_after": "For the years ended December 31, 2025 and 2024, depreciation of property and equipment was $167,581 and $169,875, respectively.\nNOTE 7 \u2013 INTANGIBLE ASSETS\nIntangible assets, net, consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Distribution software",
+     "$",
+     "33,912",
+     "",
+     "$",
+     "33,912",
+     ""
+    ],
+    [
+     "Experience center software",
+     "",
+     "38,773",
+     "",
+     "",
+     "38,773",
+     ""
+    ],
+    [
+     "Patents acquired from related party",
+     "",
+     "10,851",
+     "",
+     "",
+     "10,851",
+     ""
+    ],
+    [
+     "Wechat application",
+     "",
+     "10,960",
+     "",
+     "",
+     "10,960",
+     ""
+    ],
+    [
+     "Total intangible assets",
+     "",
+     "94,496",
+     "",
+     "",
+     "94,496",
+     ""
+    ],
+    [
+     "Less: Accumulated amortization",
+     "",
+     "(52,416)",
+     "",
+     "",
+     "(43,972)",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "$",
+     "42,080",
+     "",
+     "$",
+     "50,523",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1675,
+    "end_line": 1690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2025 and 2024, depreciation of property and equipment was $167,581 and $169,875, respectively.\nNOTE 7 \u2013 INTANGIBLE ASSETS\nIntangible assets, net, consisted of the following:",
+   "prose_after": "For the year ended December 31, 2025 and 2024, amortization of intangible assets expense was $10,192 and $11,700, respectively.\nAt December 31, 2025, the expected future amortization of intangible assets expense was:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "intangibles",
+    "aligned_family": "intangibles",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31, 2026",
+     "",
+     "13,302"
+    ],
+    [
+     "Thereafter",
+     "",
+     "28,778"
+    ],
+    [
+     "Total",
+     "$",
+     "42,080"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1695,
+    "end_line": 1702
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2025 and 2024, amortization of intangible assets expense was $10,192 and $11,700, respectively.\nAt December 31, 2025, the expected future amortization of intangible assets expense was:",
+   "prose_after": "NOTE 8 \u2013 OPERATING LEASE RIGHT OF USE ASSETS AND OPERATING LEASE LIABILITIES\nOn August 1, 2019, Yubo Beijing executed a lease agreement with Jiu Si Cheng Investment Management (the \u201cLandlord\u201d) to rent approximately 746 square meters of office space in Beijing China. The lease provided for an initial term of 2 years and 4 months from August 2, 2019 to November 30, 2021 with a right to renew for an additional term of 2 years and 8 months from December 1, 2021 to July 31, 2024. In December 2021, Yubo Beijing renewed the lease. The lease provided for monthly rent of RMB 166,845 ($23,289) through July 31, 2023 and RMB 176,833 ($24,683) for the year ended July 31, 2024. On July 1, 2024, Yubo Beijing executed an agreement with the Landlord to vacate the space no later than July 31, 2024 (which occurred) and for Yubo Beijing to pay the Landlord past due rent of RMB 2,061,473 ($287,750) in two instalments: RMB 500,000 ($69,792) before July 31, 2024 (which occurred) and RMB 1,561,473 ($218,958) before August 31, 2024 (which has not occurred). As of September 30, 2025, Yubo Beijing was past due in the amount of RMB 1,561,473 ($218,958). This amount is included in accounts payable and accrued expenses in the accompanying consolidated balance sheet at September 30, 2025.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     ""
+    ],
+    [
+     "Year ending December 31, 2026",
+     "",
+     "79,742"
+    ],
+    [
+     "Total",
+     "$",
+     "79,742"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1720,
+    "end_line": 1728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 OPERATING LEASE RIGHT OF USE ASSETS AND OPERATING LEASE LIABILITIES"
+    }
+   },
+   "prose_before": "\u00b7 712 square meter office space at Unit 605-09, 6th Floor, Material Holdings Landmark Building Shenzhen at a monthly rent of RMB 97,686 ($13,383). The lease began on April 1, 2024 and ends on March 15, 2026. The lease is terminated effective January 24, 2025. The termination caused a decrease in right-of-use balance and total future lease payments.\n\u00b7 160 square meter office space at Shenzhen HALO Plaza Phase 3, 2nd Floor, 205 at a monthly rent of RMB 17,280 ($2,367). The lease began on April 1, 2025 and ends on November 17, 2025.\nOn August 5, 2024, Yubo Beijing executed a lease agreement with Beijing Bohui Business Management Services Co. Ltd. for office space in Beijing China for a term of two years from August 26, 2024 to August 25, 2026. The lease provides for Yubo Beijing to pay landlord a security deposit of RMB 110,000 ($15,354) and to pay monthly rent of RMB 55,000 ($7,677).\nAt December 31, 2025, the future undiscounted minimum lease payments under the four noncancellable capitalized operating leases are as follows:",
+   "prose_after": "The operating lease liabilities totaling $78,782 at December 31, 2025 as presented in the Consolidated Balance Sheet represents the discounted (at a 4.75% estimated incremental borrowing rate) value of the future lease payments of $79,742 at December 31, 2025.\nFor the year ended December 31, 2025 and December 31, 2024, occupancy expense attributable to leases was $116,034 and $390,150, respectively.\nNOTE 9 \u2013 ADVANCES FROM PROSPECTIVE CUSTOMERS/DISTRIBUTORS\nAdvances from prospective customers/distributors consists of:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1732,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "In RMB",
+     "",
+     "",
+     "",
+     "In USD",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Source of Advance",
+     "December 31,\n\n2025",
+     "",
+     "December 31,\n\n2024",
+     "",
+     "December 31,\n\n2025",
+     "",
+     "December 31,\n\n2024",
+     ""
+    ],
+    [
+     "Advancer 1",
+     "\u00a5",
+     "1,544,748",
+     "\u00a5",
+     "1,544,748",
+     "$",
+     "219,774",
+     "$",
+     "211,630"
+    ],
+    [
+     "Advancer 2",
+     "",
+     "550,000",
+     "",
+     "550,000",
+     "",
+     "78,249",
+     "",
+     "75,350"
+    ],
+    [
+     "Advancer 3",
+     "",
+     "500,000",
+     "",
+     "500,000",
+     "",
+     "71,136",
+     "",
+     "68,500"
+    ],
+    [
+     "Advancer 4",
+     "",
+     "348,000",
+     "",
+     "348,000",
+     "",
+     "49,511",
+     "",
+     "47,675"
+    ],
+    [
+     "Advancer 5",
+     "",
+     "50,000",
+     "",
+     "50,000",
+     "",
+     "7,114",
+     "",
+     "6,850"
+    ],
+    [
+     "Advancer 6",
+     "",
+     "50,000",
+     "",
+     "50,000",
+     "",
+     "7,114",
+     "",
+     "6,850"
+    ],
+    [
+     "Advancer 7",
+     "",
+     "31,012",
+     "",
+     "31,012",
+     "",
+     "4,412",
+     "",
+     "4,249"
+    ],
+    [
+     "Advancer 8",
+     "",
+     "31",
+     "",
+     "31",
+     "",
+     "4",
+     "",
+     "4"
+    ],
+    [
+     "Advancer 9",
+     "",
+     "21,300",
+     "",
+     "21,300",
+     "",
+     "3,030",
+     "",
+     "2,918"
+    ],
+    [
+     "",
+     "\u00a5",
+     "3,095,091",
+     "\u00a5",
+     "3,095,091",
+     "$",
+     "440,344",
+     "$",
+     "424,026"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1737,
+    "end_line": 1757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 ADVANCES FROM PROSPECTIVE CUSTOMERS/DISTRIBUTORS"
+    }
+   },
+   "prose_before": "The operating lease liabilities totaling $78,782 at December 31, 2025 as presented in the Consolidated Balance Sheet represents the discounted (at a 4.75% estimated incremental borrowing rate) value of the future lease payments of $79,742 at December 31, 2025.\nFor the year ended December 31, 2025 and December 31, 2024, occupancy expense attributable to leases was $116,034 and $390,150, respectively.\nNOTE 9 \u2013 ADVANCES FROM PROSPECTIVE CUSTOMERS/DISTRIBUTORS\nAdvances from prospective customers/distributors consists of:",
+   "prose_after": "The related verbal agreements between Yubo Beijng and the nine advancers provide for the eight advancers to purchase inventory from Yubo Beijing or enter into such other arrangements with Yubo Beijing as the parties mutually agree. Pending formal approval of any such arrangements, all of the nine remaining PRC advancers have the right to request the return of their advances.\nNOTE 10 \u2013 DUE TO RELATED PARTIES\nDue to related parties consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1732,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Mr. Yang Wang (1)",
+     "$",
+     "129,956",
+     "$",
+     "434,764"
+    ],
+    [
+     "Mr. Jun Wang (2)",
+     "",
+     "1,025,624",
+     "",
+     "2,293,341"
+    ],
+    [
+     "Ms. Huang Li (3)",
+     "",
+     "55,486",
+     "",
+     "53,430"
+    ],
+    [
+     "Mr. Jin Wei (4)",
+     "",
+     "-",
+     "",
+     "30,000"
+    ],
+    [
+     "Mr. Yanxi Wang",
+     "",
+     "374",
+     "",
+     "55,360"
+    ],
+    [
+     "Ms. Xiuqin Xu",
+     "",
+     "-",
+     "",
+     "15,000"
+    ],
+    [
+     "Ms. Lina Fang",
+     "",
+     "-",
+     "",
+     "10,000"
+    ],
+    [
+     "Total",
+     "$",
+     "1,211,440",
+     "$",
+     "2,891,895"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1764,
+    "end_line": 1779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 DUE TO RELATED PARTIES"
+    }
+   },
+   "prose_before": "The related verbal agreements between Yubo Beijng and the nine advancers provide for the eight advancers to purchase inventory from Yubo Beijing or enter into such other arrangements with Yubo Beijing as the parties mutually agree. Pending formal approval of any such arrangements, all of the nine remaining PRC advancers have the right to request the return of their advances.\nNOTE 10 \u2013 DUE TO RELATED PARTIES\nDue to related parties consisted of the following:",
+   "prose_after": "(1) Mr. Yang Wang controls 20.85% of the outstanding Class A common stock of Yubo New York and is a director of the Company and Yubo Beijing.\n(2) Mr. Jun Wang controls 33.34% of the outstanding Class A common stock of Yubo New York and is the CEO of the Company and Yubo Beijing.\n(3) Ms. Huang Li is a shareholder of Focus One Technology Group Limited (\u201cFocus One\u201d). Focus One owns 9.62% of the issued and outstanding Class A common stock of the Company.\n(4) Mr. Jin Wei controls 9.62% of the outstanding Class A commons stock of Yubo New York.\nThe due to related parties payables are noninterest bearing and are due on demand.\nAn additional sum of $2,530,000 owed to Mr. Yang Wang and Jun Wang was settled in a transaction that closed on July 31, 2025, among the Company, FlyDragon International Limited and ChinaOne Technology Limited described in Note 11.\nNOTE 11 \u2013 SHAREHOLDERS\u2019 EQUITY\nYubo Biotech International Limited\nThe Company has three types of stocks:\nPreferred stock \u2013 par value 0.01 per share, 5,000,000 shares authorized, none issued.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1732,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Selling Shareholder",
+     "Number of Exchange Shares",
+     "",
+     "Percentage of Exchange Shares",
+     "",
+     ""
+    ],
+    [
+     "FLYDRAGON INTERNATIONAL LIMITED (controlled by Mr. Jun Wang)",
+     "",
+     "39,943,800",
+     "",
+     "34.14",
+     "%"
+    ],
+    [
+     "CHINAONE TECHNOLOGY LIMITED (controlled by Mr. Yang Wang)",
+     "",
+     "19,211,400",
+     "",
+     "16.42",
+     "%"
+    ],
+    [
+     "BOAO BIOTECH LIMITED (controlled by Mr. Yulin Cao)",
+     "",
+     "24,967,800",
+     "",
+     "21.34",
+     "%"
+    ],
+    [
+     "FOCUS DRAW GROUP LIMITED (controlled by Ms. Lina Liu)",
+     "",
+     "13,829,400",
+     "",
+     "11.82",
+     "%"
+    ],
+    [
+     "FOCUSONE TECHNOLOGY GROUP LIMITED (controlled by Mr. Jin Wei)",
+     "",
+     "11,524,500",
+     "",
+     "9.85",
+     "%"
+    ],
+    [
+     "DRAGONCLOUD TECHNOLOGY LIMITED (Controlled by Mr. Yang Wang)",
+     "",
+     "5,768,100",
+     "",
+     "4.93",
+     "%"
+    ],
+    [
+     "CHEUNG HO SHUN",
+     "",
+     "1,755,000",
+     "",
+     "1.50",
+     "%"
+    ],
+    [
+     "TOTAL",
+     "",
+     "117,000,000",
+     "",
+     "100.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1803,
+    "end_line": 1817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "(4) Mr. Jin Wei controls 9.62% of the outstanding Class A commons stock of Yubo New York.\nThe due to related parties payables are noninterest bearing and are due on demand.\nAn additional sum of $2,530,000 owed to Mr. Yang Wang and Jun Wang was settled in a transaction that closed on July 31, 2025, among the Company, FlyDragon International Limited and ChinaOne Technology Limited described in Note 11.\nNOTE 11 \u2013 SHAREHOLDERS\u2019 EQUITY\nYubo Biotech International Limited\nThe Company has three types of stocks:\nPreferred stock \u2013 par value 0.01 per share, 5,000,000 shares authorized, none issued.\nCommon Stock Class A \u2013 par value 0.001 per share, 1,000,000,000 shares authorized, 119,816,343 shares issued and outstanding at December 31, 2025 and December 31, 2024.\nCommon Stock Class B \u2013 par value 0.001 per share, 3,750,000 shares authorized, 4,447 shares issued and outstanding at December 31, 2025 and December 31, 2024.\nOn January 14, 2021, the Company issued 117,000,000 shares of Class A common stock in connection with the acquisition of Platinum, as follows:",
+   "prose_after": "On September 2, 2022, the Company issued 1,638,458 shares of its Class A Common stock to World Precision Medicine Technology, Inc. (\u201cWorld Precision\u201d) in settlement of a $819,229 liability due to World Precision.\nOn July 23, 2025, Yubo New York, entered into a Securities Purchase Agreement, by and among the Company, on the one hand, and FlyDragon International Limited, a British Virgin Islands limited liability company (\u201cFlyDragon\u201d), and ChinaOne Technology Limited, a British Virgin Islands limited liability company (\u201cChinaOne\u201d), on the other hand (together, the \u201cPurchasers\u201d), for a sale of an aggregate of 50,600,000 shares of Class A Common Stock of the Company (the \u201cTransaction\u201d).\nJun Wang, who is the President and a director of the Company, is the sole director of and owns 100% of the equity interest in FlyDragon. Yang Wang, who is the Chief Executive Officer and a director of the Company, is the sole director of and owns 100% of the equity interest in ChinaOne. The Transaction was reviewed and approved by the disinterested director on the Board in accordance with the New York Business Corporation Law and the Company\u2019s Related Party Transactions Policy, and was subsequently approved by the majority shareholders of the Company pursuant to a written consent, which was disclosed in a Definitive Information Statement on Schedule 14C of the Company made pursuant to Rule 14c-2 of the Securities Exchange Act of 1934, as amended.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1851,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Entity",
+     "Shares",
+     ""
+    ],
+    [
+     "1. Flydragon International Limited (controlled by Mr. Jun Wang)",
+     "",
+     "3,466,000"
+    ],
+    [
+     "2. Chinaone Technology Limited (controlled by Mr. Yang Wang)",
+     "",
+     "1,667,000"
+    ],
+    [
+     "3. Boao Biotech Limited (controlled by Mr. Yulin Cao)",
+     "",
+     "2,167,000"
+    ],
+    [
+     "4. Dragoncloud Technology Limited (controlled by Mr. Yang Wang)",
+     "",
+     "500,000"
+    ],
+    [
+     "5. Focus Draw Group Limited (controlled by Ms. Lina Liu)",
+     "",
+     "1,200,000"
+    ],
+    [
+     "6. Focusone Technology Group Limited (controlled by Mr. Jin Wei)",
+     "",
+     "1,000,000"
+    ],
+    [
+     "Total",
+     "",
+     "10,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1834,
+    "end_line": 1847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "At the closing of the Transaction, the Company issued 42,000,000 shares and 8,600,000 shares of Class A Common Stock to FlyDragon and ChinaOne, respectively. The purchase price of each Share was $0.05 per Share, which represents approximately 125% of the closing price of Class A Common Stock on OCTQB on July 23, 2025. The Company did not receive any net proceeds from the Transaction as the consideration was in the form of cancellation of certain shareholder loans of the Company that were due and payable to Jun Wang and Yang Wang.\nThe Securities Purchase Agreement contained customary representations, warranties, and covenants of the Company and the Purchasers, and customary closing conditions, indemnification rights, and other obligations of the parties. The Transaction was closed on July 31, 2025.\nPlatinum International Biotech Co., LTD (Cayman Islands) (\u201cPlatinum\u201d)\nPlatinum has authorized 500,000,000 ordinary shares with a par value of $0.0001 per share with 10,152,284 shares issued and outstanding at December 31, 2025 and December 31, 2024.\nOn April 7, 2020, Platinum issued a total of 10,000,000 ordinary shares to six entities as follows:",
+   "prose_after": "On September 11, 2020, Platinum sold 152,284 ordinary shares to Mr. Cheung Ho Shun for $750,000 cash.\nOn January 21, 2021, Yubo New York acquired all 10,152,284 ordinary shares of Platinum outstanding.\nYubo International Biotech (Chengdu) Limited (\u201cYubo Chengdu\u201d)\nYubo Chengdu has subscribed capital of $1,500,000 which has not yet been paid by its shareholder. The subscribed capital is due for payment on January 1, 2040.\nYubo International Biotech (Beijing) Limited (\u201cYubo Beijing\u201d)\nYubo Beijing has subscribed capital of $1,425,984 (RMB 10,000,000), all of which was paid by its shareholders as of December 31, 2021.\nRestricted net assets\nThe Company\u2019s ability to pay dividends is primarily dependent on the Company receiving distributions of funds from its subsidiaries or its VIE. Relevant PRC statutory laws and regulations permit payments of dividends by Yubo Beijing, Yubo Chengdu, Yubo Jingzhi, Yubo Global, Yubo Phoenix, and Yubo Shenzhen ( collectively, the \u201cPRC subsidiaries and VIE\u201d) only out of their retained earnings, if any, as determined in accordance with PRC accounting standards and regulations and after it has met the PRC requirements for appropriation to statutory reserves. Paid in capital of the PRC subsidiaries and VIE included in the Company\u2019s consolidated net assets are also non-distributable for dividend purposes. The results of operations reflected in the accompanying consolidated financial statements prepared in accordance with U.S. GAAP differ from those reflected in the statutory financial statements of the PRC subsidiaries and VIE.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1851,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2025",
+     "",
+     "",
+     "December 31,\n\n2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating losses carry forward",
+     "$",
+     "1,833,066",
+     "",
+     "$",
+     "1,536,802",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(1,833,066)",
+     "",
+     "",
+     "(1,536,802)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1913,
+    "end_line": 1925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 INCOME TAX"
+    }
+   },
+   "prose_before": "Yubo Global had a net loss of $488,790 for the year ended December 31, 2021, net income of $23,257 for the year ended December 31, 2022, a net loss of $20,859 for the year ended December 31, 2023, a net loss of $3,563 for the year ended December 31, 2024, and a net income of nil for the year ended December 31, 2025.\nYubo Jingzhi had a net loss of $1,207 for the year ended December 31, 2021, a net loss of $145,763 for the year ended December 31, 2022, a net loss of $284,501 for the year ended December 31, 2023, a net loss of $3,563 for the year ended December 31, 2024, and a net loss of $341,918 for the year ended December 31, 2025.\nYubo Phoenix had a net loss $157,285 for the year ended December 31, 2024 and a net loss $159,565 for the year ended December 31, 2025.\nThese losses can be carried forward for five years to reduce future years\u2019 taxable income through year 2026 to year 2030. Based on management\u2019s present assessment, the Company has not yet determined it to be more likely than not that future utilization of the net operating loss carry-forwards will be realized. Accordingly, the Company has recorded a 100% valuation allowance against the deferred tax asset at December 31, 2025 and December 31, 2024.\nThe components of deferred tax assets were as follows:",
+   "prose_after": "The reconciliation of the provisions for (benefits from) income tax by applying the PRC tax rate to income (loss) before provisions for income tax and the actual provisions for income tax is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1884,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31, 2025",
+     "",
+     "",
+     "For the year ended December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (benefit) at 25%",
+     "$",
+     "(296,984)",
+     "",
+     "$",
+     "(298,771)",
+     ""
+    ],
+    [
+     "Net loss of Platinum",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,063",
+     ""
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "296,984",
+     "",
+     "",
+     "288,053",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,345)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1928,
+    "end_line": 1940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 INCOME TAX"
+    }
+   },
+   "prose_before": "The reconciliation of the provisions for (benefits from) income tax by applying the PRC tax rate to income (loss) before provisions for income tax and the actual provisions for income tax is as follows:",
+   "prose_after": "Accounting for Uncertainty in Income Taxes\nThe tax authority of the PRC government conducts periodic and ad hoc tax filing reviews on business enterprises operating in the PRC after those enterprises complete their relevant tax filings. Therefore, the Company\u2019s PRC entities\u2019 tax filings results are subject to change and may lead to tax liabilities.\nASC 740 requires recognition and measurement of uncertain income tax positions using a \u201cmore-likely-than-not\u201d approach. The management evaluated the Company\u2019s tax positions and concluded that no liability for uncertainty in income taxes was necessary as of December 31, 2025 and December 31, 2024.\nNOTE 14 \u2013 COMMITMENTS AND CONTINGENCIES\nCredit risk\nCash deposits with banks are held in financial institutions in the PRC, which are insured with deposit protection up to RMB 500,000 (approximately $71,135 at December 31, 2025). Accordingly, the Company has a concentration of credit risk from time to time relating to the uninsured part of bank deposits. The Company has not experienced any losses in such accounts and believes it is not exposed to significant credit risk.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Yubo International Biotech Limited",
+     "",
+     "",
+     "Platinum (Cayman Island) and Platinum HK",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Yubo",
+     "",
+     "Yubo Beijing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Parent Company)",
+     "",
+     "",
+     "(Cayman Island)",
+     "",
+     "",
+     "Yubo Global",
+     "",
+     "",
+     "Chengdu\n\n(WFOE)",
+     "",
+     "(VIE Subsidiaries)",
+     "",
+     "",
+     "Elimination",
+     "",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "359",
+     "",
+     "$",
+     "73,301",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "593,852",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "667,512",
+     ""
+    ],
+    [
+     "Investment in subsidiaries and variable interest entity (VIE)",
+     "",
+     "(2,181,987)",
+     "",
+     "",
+     "930,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "521,568",
+     "",
+     "",
+     "730,419",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Intercompany receivables",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "445,066",
+     "",
+     "",
+     "\u2014",
+     "",
+     "823,769",
+     "",
+     "",
+     "(1,268,836)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "179,582",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "179,582",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "(2,181,987)",
+     "",
+     "$",
+     "930,359",
+     "",
+     "",
+     "518,367",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,118,772",
+     "",
+     "",
+     "(538,417)",
+     "",
+     "",
+     "847,094",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "150,000",
+     "",
+     "$",
+     "52,039",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "2,589,257",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,791,297",
+     ""
+    ],
+    [
+     "Intercompany payables",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "44,816",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1,224,020",
+     "",
+     "",
+     "(1,268,836)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "150,000",
+     "",
+     "",
+     "96,855",
+     "",
+     "",
+     "\u2014",
+     "",
+     "3,813,277",
+     "",
+     "",
+     "(1,268,836)",
+     "",
+     "",
+     "2,791,297",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital stock and additional paid in capital",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,569,229",
+     "",
+     "",
+     "851,595",
+     "",
+     "",
+     "\u2014",
+     "",
+     "4,751,716",
+     "",
+     "",
+     "(1,533,238)",
+     "",
+     "",
+     "5,639,303",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(2,181,987)",
+     "",
+     "",
+     "(788,870)",
+     "",
+     "",
+     "(430,083)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(6,602,776)",
+     "",
+     "",
+     "2,263,657",
+     "",
+     "",
+     "(7,740,059)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "146,100",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "146,100",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "10,454",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,454",
+     ""
+    ],
+    [
+     "Total Deficit",
+     "",
+     "(2,181,987)",
+     "",
+     "",
+     "780,359",
+     "",
+     "",
+     "421,512",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(1,694,505)",
+     "",
+     "",
+     "730,419",
+     "",
+     "",
+     "(1,944,203)",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholders' Equity",
+     "$",
+     "(2,181,987)",
+     "",
+     "$",
+     "930,359",
+     "",
+     "$",
+     "518,367",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "2,118,772",
+     "",
+     "$",
+     "(538,417)",
+     "",
+     "$",
+     "847,094",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1965,
+    "end_line": 2001
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "Although the structure the Company has adopted is consistent with longstanding industry practice, and is commonly adopted by comparable companies in China, the PRC government may not agree that these arrangements comply with PRC licensing, registration or other regulatory requirements, with existing policies or with requirements or policies that may be adopted in the future. There are uncertainties regarding the interpretation and application of PRC laws and regulations including those that govern the Company\u2019s contractual arrangements, which could limit the Company\u2019s ability to enforce these contractual arrangements. If the Company or its variable interest entity is found to be in violation of any existing or future PRC laws, rules or regulations, or fail to obtain or maintain any of the required permits or approvals, the relevant PRC regulatory authorities would have broad discretion to take action in dealing with such violations or failures, including levying fines, revoking business and other licenses of the Company\u2019s variable interest entity, requiring the Company to discontinue or restrict its operations, restricting its right to collect revenue, requiring the Company to restructure its operations or taking other regulatory or enforcement actions against the Company. In addition, it is unclear what impact the PRC government actions would have on the Company and on its ability to consolidate the financial results of its variable interest entity in the consolidated financial statements, if the PRC government authorities were to find the Company\u2019s legal structure and contractual arrangements to be in violation of PRC laws, rules and regulations. If the imposition of any of these government actions causes the Company to lose its right to direct the activities of Yubo Beijing or the right to receive their economic benefits, the Company would no longer be able to consolidate Yubo Beijing.\nNOTE 15 \u2013 MAJOR CUSTOMERS\nOne customer accounted for 100% of total sales for the year ended December 31, 2025.\nNOTE 16 \u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS\nA condensed consolidating balance sheet of the Company as of December 31, 2025 follows:",
+   "prose_after": "A condensed consolidating statement of operations of the Company for the year ended December 31, 2025 follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Yubo International Biotech Limited",
+     "",
+     "",
+     "Platinum (Cayman Island) and Platinum HK",
+     "",
+     "",
+     "",
+     "Yubo",
+     "",
+     "Yubo Beijing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Parent Company)",
+     "",
+     "",
+     "(Cayman Island)",
+     "",
+     "Yubo Global",
+     "",
+     "Chengdu \n\n(WFOE)",
+     "",
+     "(VIE Subsidiaries)",
+     "",
+     "",
+     "Elimination",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of product and services",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "12,353",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "12,353",
+     ""
+    ],
+    [
+     "Cost of goods and services sold",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,188)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(4,188)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,165",
+     "",
+     "",
+     "\u2014",
+     "",
+     "8,165",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,195,861",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1,195,861",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,187,696)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(1,187,696)",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(243)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(243)",
+     ""
+    ],
+    [
+     "Equity in net loss of subsidiaries and variable interest entity (VIE)",
+     "",
+     "(1,628,906)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,628,906",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,628,906)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "(1,187,939)",
+     "",
+     "$",
+     "1,628,906",
+     "$",
+     "(1,187,939)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2004,
+    "end_line": 2026
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "A condensed consolidating statement of operations of the Company for the year ended December 31, 2025 follows:",
+   "prose_after": "Item 9. Changes in and Disagreement with Accountants on Accounting and Financial Disclosure.\nChanges in Accountants in Fiscal Year 2025\nOn January 13, 2026, HHL LLP (\u201cHHL\u201d) tendered its resignation as the independent registered public accounting firm to the Company, which resignation was approved and accepted by the Company\u2019s Board with immediate effect.\nHHL was previously engaged by the Company to audit the Company\u2019s consolidated financial statements for the year ended December 31, 2024. HHL\u2019s report on the financial statements of the Company for the year ended December 31, 2024 did not contain an adverse opinion or a disclaimer of opinion, nor was such report qualified or modified as to uncertainty, audit scope, or accounting principle, other than an explanatory paragraph regarding the Company\u2019s ability to continue as a going concern.\nDuring the Company\u2019s fiscal years ended December 31, 2025 and December 31, 2024 and the subsequent interim period from January 1, 2026 to January 13, 2026, (i) there were no disagreements with HHL on any matter of accounting principles or practices, financial statement disclosure, or auditing scope or procedure, which disagreements, if not resolved to the satisfaction of HHL, would have caused HHL to make reference to the subject matter of the disagreements in connection with its report, and (ii) there were no \u201creportable events\u201d as such term is defined in Item 304(a)(1)(v) of Regulation S-K.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2026,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions with the Company"
+    ],
+    [
+     "Jun Wang",
+     "57",
+     "President and Director"
+    ],
+    [
+     "Yang Wang",
+     "45",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "Lina Liu",
+     "45",
+     "Chief Financial Officer, Treasurer, Secretary and Director"
+    ],
+    [
+     "Nanping Hu",
+     "64",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2099,
+    "end_line": 2107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "Our management, including the chief executive officer and chief financial officer, do not expect that our disclosure controls or our internal control over financial reporting will prevent or detect all error and all fraud. A control system, no matter how well designed and operated, can provide only reasonable, not absolute, assurance that the control system\u2019s objectives will be met. The design of a control system must reflect the fact that there are resource constraints, and the benefits of controls must be considered relative to their costs. Further, because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that misstatements due to error or fraud will not occur or that all control issues and instances of fraud, if any, within the company have been detected. These inherent limitations include the realities that judgments in decision-making can be faulty and that breakdowns can occur because of simple error or mistake. Controls can also be circumvented by the individual acts of some persons, by collusion of two or more people, or by management override of the controls. The design of any system of controls is based in part on certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated goals under all potential future conditions. Projections of any evaluation of controls effectiveness to future periods are subject to risks. Over time, controls may become inadequate because of changes in conditions or deterioration in the degree of compliance with policies or procedures.\nItem 9B. Other Information\nDuring the year ended December 31, 2025, no director or officer of our Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 408(a) of Regulation S-K.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nThe names and ages of our directors and executive officers, and their positions with us, as of the date hereof, are as follows:",
+   "prose_after": "Jun Wang. Mr. Jun Wang was appointed as our President and a Director in 2020. He has also served as the President of Yubo Beijing since 2019. From 2015 to 2019, Mr. Wang served as President of Borongtai Asset Management (Beijing) Co., Ltd. He graduated with a Bachelor\u2019s degree from Tianjin Commercial University, Department of Business Management in 1989. In making the decision to appoint Mr. Wang to serve as a director, the Board considered, in addition to the criteria referred to above, his extensive marketing experience in the healthcare industry, current service as our Chief Executive Officer and his comprehensive knowledge of Yubo Beijing, its business and operations.\nYang Wang. Mr. Yang Wang was appointed as our Chief Executive Officer and a Director in 2020. He has also served as the Chief Executive Officer of Yubo Beijing since 2019. From 2015 to 2019, Mr. Wang served as General Manager of Beijing Zunsheng Investment Consulting Co., Ltd. Additionally, he has worked for Horwath Financing Asia Limited, Mingli CHINA Growth Fund, Peking University Shangshuai Alumni Industry Investment Fund and Zhonsheng Capital Partners. He graduated with an MBA from New York Institute of Technology in 2014. Mr. Wang\u2019s experience in the capital markets and mergers and acquisitions were the primary qualifications that the Board considered in appointing him as a director of the Company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2091,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2124,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Annual\n\nSalary\n\n($US)",
+     "",
+     "Bonus\n\n($US)",
+     "",
+     "Total\n\n($US)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jun Wang, President",
+     "2025(1)",
+     "$",
+     "13,658",
+     "",
+     "54,632",
+     "",
+     "68,290"
+    ],
+    [
+     "",
+     "2024(2)",
+     "$",
+     "13,152",
+     "",
+     "52,608",
+     "",
+     "65,760"
+    ],
+    [
+     "Yang Wang, Chief Executive Officer",
+     "2025(1)",
+     "$",
+     "15,024",
+     "",
+     "36,194",
+     "",
+     "51,218"
+    ],
+    [
+     "",
+     "2024(2)",
+     "$",
+     "14,467",
+     "",
+     "34,853",
+     "",
+     "49,320"
+    ],
+    [
+     "Lina Liu, Chief Financial Officer",
+     "2025(1)",
+     "$",
+     "13,658",
+     "",
+     "37,560",
+     "",
+     "51,218"
+    ],
+    [
+     "",
+     "2024(2)",
+     "$",
+     "13,152",
+     "",
+     "36,168",
+     "",
+     "49,320"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2208,
+    "end_line": 2223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "Insofar as indemnification for liabilities arising under the Securities Act may be permitted to directors, officers or persons controlling us pursuant to the foregoing provisions, we have been informed that in the opinion of the SEC such indemnification is against public policy as expressed in the Securities Act and is therefore unenforceable.\nItem 11. Executive Compensation.\nWe qualify as a \u201csmaller reporting company\u201d under rules adopted by the SEC. Accordingly, we have provided scaled executive compensation disclosure that satisfies the requirements applicable to us in our status as a smaller reporting company. Under the scaled disclosure obligations, we are not required to provide, among other things, a compensation discussion and analysis or a compensation committee report, and certain other tabular and narrative disclosures relating to executive compensation.\nSummary Compensation Table\nThe following table summarizes all compensation earned by our \u201cNamed Executive Officers\u201d, as such term is defined pursuant to the relevant SEC rules, for fiscal years 2025 and 2024:",
+   "prose_after": "(1) Translated from RMB at an exchange rate of RMB7.0288=US$1.00 as of December 31, 2025.\n(2) Translated from RMB at an exchange rate of RMB7.2993=US$1.00 as of December 31, 2024.\nWe do not have any arrangements to pay out, any bonus, stock awards, option awards, non-equity incentive plan compensation, or non-qualified deferred compensation to our named executive officers.\nEmployment Agreements\nWe do not have employment agreements with our executive officers. Yubo International Biotech (Beijing) Limited, a variable interest entity organized under the laws of the People\u2019s Republic of China which conducts the day-to-day business operations of our Company in China through contractual relationships with us (\u201cYubo Beijing\u201d), is a party to employment agreements with Jun Wang, Yang Wang and Lina Liu, providing for monthly salaries of RMB8,000 (approximately $1,138 at an exchange rate of RMB7.0288 =US$1.00 as of December 31, 2025), RMB8,800 (approximately $1,252 at an exchange rate of RMB7.0288=US$1.00 as of December 31, 2025) and RMB8,000 (approximately $1,138 at an exchange rate of RMB7.0288=US$1.00 as of December 31, 2025), respectively.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2188,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2227,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class of Common Stock(1)",
+     "Number of Shares Beneficially\n\nOwned",
+     "",
+     "Percentage of Total Voting Power(1)",
+     "",
+     ""
+    ],
+    [
+     "Jun Wang(2)",
+     "Class A",
+     "",
+     "81,943,800",
+     "",
+     "48.1",
+     "%"
+    ],
+    [
+     "Yang Wang(3)",
+     "Class A",
+     "",
+     "25,811,400",
+     "",
+     "15.1",
+     "%"
+    ],
+    [
+     "Lina Liu(4)",
+     "Class A",
+     "",
+     "9,101,400",
+     "",
+     "5.3",
+     "%"
+    ],
+    [
+     "Nanping Hu",
+     "Class A",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All Executive Officers and Directors (as a group four (4) persons)",
+     "Class A",
+     "",
+     "116,856,600",
+     "",
+     "68.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% and above Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jun Wang(2)",
+     "Class A",
+     "",
+     "81,943,800",
+     "",
+     "48.1",
+     "%"
+    ],
+    [
+     "Yulin Cao(5)",
+     "Class A",
+     "",
+     "19,927,660",
+     "",
+     "11.7",
+     "%"
+    ],
+    [
+     "Yang Wang(3)",
+     "Class A",
+     "",
+     "25,811,400",
+     "",
+     "15.1",
+     "%"
+    ],
+    [
+     "Wei Jin(6)",
+     "Class A",
+     "",
+     "11,524,500",
+     "",
+     "6.8",
+     "%"
+    ],
+    [
+     "Lina Liu(4)",
+     "Class A",
+     "",
+     "9,101,400",
+     "",
+     "5.3",
+     "%"
+    ],
+    [
+     "Cheung Ho Shun(7)",
+     "Class A",
+     "",
+     "7,121,458",
+     "",
+     "4.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2275,
+    "end_line": 2294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "Beneficial ownership is determined in accordance with the rules of the SEC and includes voting or investment power with respect to the securities. We deem shares of common stock that may be acquired by an individual or group within 60 days of March 18, 2026 pursuant to the exercise of options or warrants to be outstanding for the purpose of computing the percentage ownership of such individual or group but are not deemed to be outstanding for the purpose of computing the percentage ownership of any other person shown in the table. Except as indicated in footnotes to this table, we believe that the stockholders named in this table have sole voting and investment power with respect to all shares of common stock shown to be beneficially owned by them based on information provided to us by these stockholders.\nThe percentages in the table below are based on 170,416,343 shares of Class A common stock and 4,447 shares of Class B common stock outstanding as of March 18, 2026.\nUnless otherwise noted below, the address for each of the stockholders listed in the table below is c/o Yubo International Biotech Ltd., Room 1102, 11th Floor, Building 2, No. 10 Chaoyang Park South Road, Chaoyang District, Beijing PRC (100026).",
+   "prose_after": "(1) Class B common stock is entitled to five votes per share but is otherwise substantially identical to the Class A common stock, which has one vote per share. Each share of Class B common stock is convertible into one share of Class A common stock. None of our officers, director and 5% or more stockholders in the table above beneficially own any shares of Class B common stock.\n(2) Represents the shares of Class A Common Stock held directly by FlyDragon International Limited. Mr. Jun Wang is the sole shareholder and sole director of FlyDragon International Limited, and as such, Mr. Jun Wang may be deemed to have voting and investment power over such shares held by FlyDragon International Limited. The address for FlyDragon International Limited is c/o Wickham\u2019s Cay II, P.O. Box 2221, Road Town, Tortola, British Virgin Islands.\n(3) Represents the shares of Class A Common Stock held directly by ChinaOne Technology Limited. Mr. Yang Wang is the sole shareholder and sole director of ChinaOne Technology Limited, and as such, Mr. Yang Wang may be deemed to have voting and investment power over such shares held by ChinaOne Technology Limited. The address for ChinaOne Technology Limited is c/o Wickham\u2019s Cay II, P.O. Box 2221, Road Town, Tortola, British Virgin Islands.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2298,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended \n\nDecember 31,\n\n2025",
+     "",
+     "Year ended \n\nDecember 31,\n\n2024",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "60,000",
+     "$",
+     "60,000"
+    ],
+    [
+     "Audit-Related Fees(1)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Tax Fees(2)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Other Fees(3)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2353,
+    "end_line": 2365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "We have adopted a Related Party Transactions Policy, pursuant to which, we rely on our board to review related party transactions on an ongoing basis to prevent conflicts of interest. Our board reviews a transaction in light of the affiliations of the director, officer or employee and the affiliations of such person\u2019s immediate family. Transactions are presented to our board for approval before they are entered into or, if this is not possible, for ratification after the transaction has occurred. If our board finds that a conflict of interest exists, then it will determine the appropriate remedial action, if any. Our board approves or ratifies a transaction if it determines that the transaction is consistent with the best interests of our Company.\nItem 14. Principal Accountant Fees and Services.\nFees Paid to Principal Accountants\nHCL served as our independent registered public accounting firm for the year ended December 31, 2025. HHL served as our independent registered public accounting firm for the year ended December 31, 2024. The following table sets out the aggregate fees for professional audit services and other services rendered by HCL and HHL for the years ended December 31, 2025 and 2024, respectively:",
+   "prose_after": "(1) \u201cAudit-related fees\u201d means the aggregate fees for due diligence related to mergers and acquisitions and attest services that are not required by statute or regulation.\n(2) \u201cTax fees\u201d means the fees billed for tax compliance services, including the preparation of tax returns and tax consultations.\n(3) \u201cOther Fees\u201d means the fees paid for access to a proprietary accounting research tool provided by MTS CPA.\nPre-Approval Policies and Procedures\nWe do not have an audit committee. Our Board reviews the independence of our independent registered public accounting firm on an annual basis and has determined that HCL and HHL are independent. In addition, our Board pre-approves all work (and the related estimated fees) that is to be performed by our independent registered public accounting firm.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a)(1) Financial Statements. See Item 8 of Part II of this Annual Report.\n(a)(2) Financial Statement Schedules. All financial statement schedules have been omitted since the required information is either not applicable or not required, or has been included in the Financial Statements and related notes.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2345,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 2374,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of Registrant, as amended (incorporated by reference to Exhibit 3.1 to Registrant\u2019s Current Report on Form 8-K filed with the SEC on January 14, 2021)"
+    ],
+    [
+     "3.2",
+     "Bylaws of Registrant (incorporated by reference to Exhibit 3.2 to Registrant\u2019s Current Report on Form 8-K filed with the SEC on January 14, 2021)"
+    ],
+    [
+     "4.1",
+     "Description of Securities"
+    ],
+    [
+     "10.1",
+     "Financial Support Letter"
+    ],
+    [
+     "10.2+",
+     "Lease Agreement, dated April 1, 2024 [English Translation] (incorporated by reference to Exhibit 10.2 to Registrant\u2019s Annual Report on Form 10-K filed with the SEC on March 31, 2025)"
+    ],
+    [
+     "10.3+",
+     "Sublease agreement, dated April 20, 2024 [English Translation] (incorporated by reference to Exhibit 10.3 to Registrant\u2019s Annual Report on Form 10-K filed with the SEC on March 31, 2025)"
+    ],
+    [
+     "10.4",
+     "Securities Purchase Agreement, dated as of July 23, 2025, by and among Registrant, FlyDragon International Limited and Chinaone Technology Limited (incorporated by reference to Exhibit 10.1 to Registrant\u2019s Current Report on Form 8-K filed with the SEC on July 25, 2025)"
+    ],
+    [
+     "16.1",
+     "Letter from Michael T. Studer CPA P.C. (incorporated by reference to Exhibit 16.1 to Registrant\u2019s Current Report on Form 8-K filed with the SEC on January 6, 2025)"
+    ],
+    [
+     "16.2",
+     "Letter from HHL LLP (incorporated by reference to Exhibit 16.1 to Registrant\u2019s Current Report on Form 8-K filed with the SEC on January 16, 2026)"
+    ],
+    [
+     "19.1",
+     "Insider Trading Policy (incorporated by reference to Exhibit 19.1 to Registrant\u2019s Annual Report on Form 10-K filed with the SEC on March 31, 2025)"
+    ],
+    [
+     "21.1",
+     "List of Subsidiaries (incorporated by reference to Exhibit 21.1 to Registrant\u2019s Annual Report on Form 10-K filed with the SEC on March 31, 2025)"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Exchange Act Rule 13a \u2013 14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to Exchange Act Rule 13a \u2013 14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "Certification of Principal Executive Officer pursuant to Exchange Act Rule 13a \u2013 14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2386,
+    "end_line": 2416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "(1) \u201cAudit-related fees\u201d means the aggregate fees for due diligence related to mergers and acquisitions and attest services that are not required by statute or regulation.\n(2) \u201cTax fees\u201d means the fees billed for tax compliance services, including the preparation of tax returns and tax consultations.\n(3) \u201cOther Fees\u201d means the fees paid for access to a proprietary accounting research tool provided by MTS CPA.\nPre-Approval Policies and Procedures\nWe do not have an audit committee. Our Board reviews the independence of our independent registered public accounting firm on an annual basis and has determined that HCL and HHL are independent. In addition, our Board pre-approves all work (and the related estimated fees) that is to be performed by our independent registered public accounting firm.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a)(1) Financial Statements. See Item 8 of Part II of this Annual Report.\n(a)(2) Financial Statement Schedules. All financial statement schedules have been omitted since the required information is either not applicable or not required, or has been included in the Financial Statements and related notes.\n(a)(3) Exhibits",
+   "prose_after": "+ Certain portions of this exhibit containing personally identifiable information have been redacted.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the Registrant caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2374,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2423,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YUBO INTERNATIONAL BIOTECH LIMITED",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 31, 2026",
+     "By:",
+     "/s/ Yang Wang"
+    ],
+    [
+     "",
+     "",
+     "Yang Wang"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "YUBO INTERNATIONAL BIOTECH LIMITED"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2429,
+    "end_line": 2437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "+ Certain portions of this exhibit containing personally identifiable information have been redacted.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the Registrant caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2423,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 2461,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yang Wang",
+     "Chief Executive Officer and Director",
+     "March 31, 2026"
+    ],
+    [
+     "Yang Wang",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lina Liu",
+     "Chief Financial Officer, Treasurer and Director",
+     "March 31, 2026"
+    ],
+    [
+     "Lina Liu",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Jun Wang",
+     "President and Director",
+     "March 31, 2026"
+    ],
+    [
+     "Jun Wang",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nanping Hu",
+     "Director",
+     "March 31, 2026"
+    ],
+    [
+     "Nanping Hu",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2440,
+    "end_line": 2460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONDENSED CONSOLIDATING BALANCE SHEET AND STATEMENT OF OPERATIONS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2423,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 2461,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

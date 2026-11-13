@@ -1,0 +1,3752 @@
+{
+ "accession": "0001262463-21-000495",
+ "cik": "0001598308",
+ "form": "10-K",
+ "filing_date": "2021-09-27",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gwhp_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "46-2316220"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1402 N El Camino Real",
+     "",
+     ""
+    ],
+    [
+     "San Clemente, California",
+     "",
+     "92672"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2021\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission file number 000-56035\nGLOBAL WHOLEHEALTH PARTNERS CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(714) 392-9752"
+    ]
+   ],
+   "caption_stack": [
+    "(714) 392-9752"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act.\nYes [X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "7"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "7"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "7"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "7"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "14"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "15"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "34"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "34"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "34"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "36"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "39"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "41"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "41"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "43"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "44"
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "45"
+    ],
+    [
+     "",
+     "EXHIBIT INDEX",
+     "46"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "Increase /\n\n(Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "40,196",
+     "",
+     "$",
+     "241,624",
+     "",
+     "$",
+     "(201,428)",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "201,495",
+     "",
+     "",
+     "150,588",
+     "",
+     "",
+     "50,907",
+     ""
+    ],
+    [
+     "  Gross profit",
+     "",
+     "(161,299)",
+     "",
+     "",
+     "91,036",
+     "",
+     "",
+     "(252,335)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "83,790",
+     "",
+     "",
+     "61,550",
+     "",
+     "",
+     "22,240",
+     ""
+    ],
+    [
+     "  Research and development",
+     "",
+     "481,740",
+     "",
+     "",
+     "513,003",
+     "",
+     "",
+     "(31,263)",
+     ""
+    ],
+    [
+     "  Selling, general and administrative",
+     "",
+     "317,062",
+     "",
+     "",
+     "82,078",
+     "",
+     "",
+     "234,984",
+     ""
+    ],
+    [
+     "  Stock compensation",
+     "",
+     "2,544,000",
+     "",
+     "",
+     "3,700,000",
+     "",
+     "",
+     "(1,156,000)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,426,592",
+     "",
+     "",
+     "4,356,631",
+     "",
+     "",
+     "(930,039)",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(3,587,891)",
+     "",
+     "",
+     "(4,265,595)",
+     "",
+     "",
+     "(677,704)",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(64,732)",
+     "",
+     "",
+     "(2,857)",
+     "",
+     "",
+     "61,875",
+     ""
+    ],
+    [
+     "  Interest recorded on compensatory warrants",
+     "",
+     "(737,569)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "737,569",
+     ""
+    ],
+    [
+     "  Amortization of debt discount",
+     "",
+     "(163,931)",
+     "",
+     "",
+     "(17,075)",
+     "",
+     "",
+     "146,856",
+     ""
+    ],
+    [
+     "  Loss on related party transfer of intangible assets",
+     "",
+     "(4,480,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,480,000",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(5,446,232)",
+     "",
+     "",
+     "(19,932)",
+     "",
+     "",
+     "5,426,300",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,034,123)",
+     "",
+     "$",
+     "(4,285,527)",
+     "",
+     "$",
+     "4,748,596",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 322,
+    "end_line": 353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial condition and results of operations"
+    },
+    "note": null
+   },
+   "prose_before": "As of June 30, 2021, we had negative working capital of $104,534, a cash balance of $74,702 and inventory balance of $29,681. Management recognizes that in order for us to meet our capital requirements, and continue to operate, additional financing will be necessary. We expect to raise additional funds through private or public equity investment in order to expand the range and scope of our business operations. We will seek access to private or public equity but there is no assurance that such additional funds will be available for us to finance our operations on acceptable terms, if at all. If we are unable to raise additional capital or generate positive cash flow, it is unlikely that we will be able to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nCOVID-19\nIn late 2019, COVID-19 was reported to have surfaced in Wuhan, China, which has since spread globally. In March 2020, the World Health Organization declared COVID-19 a global pandemic. The COVID-19 outbreak has resulted in government authorities in the United States and around the world implementing numerous measures to try to reduce the spread of COVID-19, such as travel bans and restrictions, social distancing, quarantines, shelter in place or total lock-down orders and business limitations and shutdowns. While some of these measures were relaxed or rolled back, we continue to monitor the situation as various government authorities have begun to pause the relaxation of restrictions or re-implement or modify certain restrictive measures.\nResults of Operations\nYear ended June 30, 2021 compared with the year ended June 30, 2020",
+   "prose_after": "Revenue and Cost of Revenue\nDuring fiscal 2021, the Company\u2019s sales decreased $201,428 from $241,624 in Fiscal 2020 to $40,196 in fiscal 2021. As a result of the COVID pandemic, the Company became laser focused on developing and selling COVID tests. The decrease in our revenue was due to our ability to sell unapproved COVID tests in fiscal 2020 compared to decreasing demand for unapproved tests beginning in fiscal 2021. Our attempts to develop our own FDA approved COVID test proved unsuccessful as was our ability to resell third party COVID tests primarily due to their high-cost relative to our competitors. The Company is currently in the process of refocusing its attention on marketing its core FDA OTC approved products which includes tests for pregnancy, ovulation, colorectal, drugs of abuse, glucose strips and glucose monitors through various platforms, including Walmart, Amazon and eBay. The Company estimates sales of non-COVID-19 tests to begin in fiscal Q2.\nCost of revenue increased in fiscal 2021 resulting in negative gross profit due primarily to fair value adjustments to inventory totaling $171,811 as a result of shelf-life expiration for some products.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase / (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(642,802)",
+     "",
+     "$",
+     "(685,136)",
+     "",
+     "$",
+     "42,334",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "(3,505)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,505)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "706,512",
+     "",
+     "",
+     "679,715",
+     "",
+     "",
+     "26,797",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "$",
+     "60,205",
+     "",
+     "$",
+     "(5,421)",
+     "",
+     "$",
+     "65,626",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 394,
+    "end_line": 406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial condition and results of operations"
+    },
+    "note": null
+   },
+   "prose_before": "As of June 30, 2021, our cash totaled $74,702, compared to current liabilities of $508,649. From inception to June 30, 2021, we have incurred an accumulated deficit of $13,782,732. This loss has been incurred through a combination of professional fees, R&D, SG&A and non-cash stock related costs of $11,493,569 to support our plans to develop our business. During fiscal 2021, the Company had revenue of $40,196, gross profit of negative $161,299 and used cash in operations of $642,802. The Company has incurred losses since inception and may not be able to generate sufficient net revenue from its business in the future to achieve or sustain profitability. The Company currently has insufficient funds to operate over the next twelve months. To finance our operations, we have entered into a Common Stock Purchase Agreement with EMC2 Capital LLC, which provided us with $250,000 (upon the sale of 721,663 shares of common stock) during the fourth quarter of fiscal 2021 and $800,000 (upon the sale of 2,343,986 shares of common stock) thus far in fiscal 2022. Additionally, we entered into a Securities Purchase Agreement and related 12% senior secured convertible promissory note on June 18, 2021, under which the Company received funding of $224,500 on July 8, 2021.We are currently pursuing additional funds through equity or debt financing or a combination thereof. However, aside from the EMC2 SPA, the Company has no commitments to obtain any such financing, and there can be no assurance that financing will be available in amounts or on terms acceptable to the Company, if at all.\nSummary of Cash Flows\nPresented below is a table that summarizes the cash provided or used in our activities and the amount of the respective increases or decreases in cash provided by (used in) those activities between the fiscal periods:",
+   "prose_after": "Operating Activities\nNet cash used in operating activities increased $42,334 or 6% during fiscal 2021 compared to fiscal 2020.\nInvesting Activities\nThe Company purchased computer equipment totaling $3,505 in fiscal 2021.\nFinancing Activities\nDuring fiscal 2021, the Company financed its operations from the sale of common stock ($680,051) and net issuance of promissory notes ($26,461). During fiscal 2020, the Company received 1) $20,000 upon the sale of 2,000,000 shares of common stock to LionsGate for $0.01 per share; 2) $564,715 from related party notes and advances; and 3) 95,000 from the sale of convertible promissory notes.\nContractual Obligations\nNone.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of June 30, 2021 and 2020",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended June 30, 2021 and 2020",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended June 30, 2021 and 2020",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended June 30, 2021 and 2020",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "21"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Our discussion and analysis of our financial condition and results of operations are based upon our Financial Statements, which have been prepared in accordance with accounting principles generally accepted in the United States of America (\u201cGAAP\u201d). The preparation of these financial statements requires us to make estimates and judgments that affect the reported amounts of assets, liabilities, revenues, and expenses, and the related disclosure of contingent assets and liabilities. On an ongoing basis, we evaluate our estimates based on its historical experience and on various other assumptions that are believed to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities that are not readily apparent from other sources. Actual results may differ from these estimates under different assumptions or conditions.\nDue to the level of activity and lack of complex transactions, we believe there are currently no critical accounting policies and estimates that affect the preparation of our financial statements.\nRecently Issued Accounting Pronouncements\nFor a discussion of new accounting pronouncements see Note 2, Summary of Significant Accounting Policies, of the consolidated financial statements appearing elsewhere in this Form 10-K.\nRelated Party Transactions\nFor a discussion of our Related Party Transactions, see \u201cNote 5 - Transactions With Related Persons\u201d to our Financial Statements included under Item 8 in this Annual Report on Form 10-K.\nITEM 7A. Quantitative and Qualitative Disclosures About Market Risk\nSmaller reporting companies are not required to provide the information required by this item.\nItem 8. Financial Statements\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the shareholders and the board of directors of Global WholeHealth Partners Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Global WholeHealth Partners Corporation as of June 30, 2021 and 2020, the related statements of operations, stockholders' equity (deficit), and cash flows for the years then ended, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of June 30, 2021 and 2020, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 447,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "74,702",
+     "",
+     "$",
+     "14,497",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "27,918",
+     "",
+     "",
+     "15,064",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "29,681",
+     "",
+     "",
+     "152,147",
+     ""
+    ],
+    [
+     "Deferred financing costs",
+     "",
+     "271,814",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "404,115",
+     "",
+     "",
+     "181,708",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment, net of accumulated depreciation of $1,067",
+     "",
+     "2,438",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Investment in related party common stock",
+     "",
+     "5,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "411,553",
+     "",
+     "$",
+     "181,708",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Related party note",
+     "$",
+     "2,785",
+     "",
+     "$",
+     "120,965",
+     ""
+    ],
+    [
+     "Convertible notes payable, net of discount of $27,460 and $25,149, respectively",
+     "",
+     "85,000",
+     "",
+     "",
+     "69,851",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "43,320",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "148,946",
+     "",
+     "",
+     "46,321",
+     ""
+    ],
+    [
+     "Related party payables",
+     "",
+     "228,598",
+     "",
+     "",
+     "4,306",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "508,649",
+     "",
+     "",
+     "241,443",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "508,649",
+     "",
+     "",
+     "241,443",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; $0.001 par value, 10,000,000 shares authorized, no shares issued or outstanding at June 30, 2021 and 2020",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock; $0.001 par value, 400,000,000 shares authorized, 78,713,899 and 59,966,358 shares issued and outstanding at June 30, 2021 and 2020, respectively",
+     "",
+     "78,714",
+     "",
+     "",
+     "59,966",
+     ""
+    ],
+    [
+     "Common stock payable",
+     "",
+     "77,061",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "13,529,861",
+     "",
+     "",
+     "4,628,908",
+     ""
+    ],
+    [
+     "Retained deficit",
+     "",
+     "(13,782,732)",
+     "",
+     "",
+     "(4,748,609)",
+     ""
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "",
+     "(97,096)",
+     "",
+     "",
+     "(59,735)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity (deficit)",
+     "$",
+     "411,553",
+     "",
+     "$",
+     "181,708",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(The accompanying notes are an integral part of these consolidated financial statements)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+    "CONSOLIDATED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\nSubstantial Doubt about the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has suffered recurring losses from operations and has a significant accumulated deficit. In addition, the Company continues to experience negative cash flows from operations. These factors raise substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/S/ BF Borgers CPA PC\nBF Borgers CPA PC\nWe have served as the Company's auditor since 2019\nLakewood, CO\nSeptember 27, 2021",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Year Ended June 30,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "$        40,196",
+     "$     241,624"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "201,495",
+     "150,588"
+    ],
+    [
+     "Gross profit",
+     "",
+     "(161,299)",
+     "91,036"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Professional fees",
+     "83,790",
+     "61,550"
+    ],
+    [
+     "",
+     "Research and development - related party",
+     "461,040",
+     "492,440"
+    ],
+    [
+     "",
+     "Research and development",
+     "20,700",
+     "20,563"
+    ],
+    [
+     "",
+     "Selling, general and administrative - related party",
+     "1,690,204",
+     "1,512,422"
+    ],
+    [
+     "",
+     "Selling, general and administrative",
+     "1,170,858",
+     "2,269,656"
+    ],
+    [
+     "Total operating expense",
+     "",
+     "3,426,592",
+     "4,356,631"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(3,587,891)",
+     "(4,265,595)"
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest expense",
+     "(802,301)",
+     "(2,857)"
+    ],
+    [
+     "",
+     "Amortization of debt discount",
+     "(163,931)",
+     "(17,075)"
+    ],
+    [
+     "",
+     "Loss on related party transfer of intangible assets",
+     "(4,480,000)",
+     "-"
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(5,446,232)",
+     "(19,932)"
+    ],
+    [
+     "Net loss",
+     "",
+     "$ (9,034,123)",
+     "$(4,285,527)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "",
+     "$          (0.14)",
+     "$         (0.07)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "65,905,595",
+     "57,804,167"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(The accompanying notes are an integral part of these consolidated financial statements)",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "Retained",
+     "",
+     "",
+     "Total Stockholders' Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Payable",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2019",
+     "",
+     "56,116,358",
+     "$",
+     "56,116",
+     "$",
+     "426,784",
+     "",
+     "$",
+     "-",
+     "$",
+     "(463,082)",
+     "",
+     "$",
+     "19,818",
+     ""
+    ],
+    [
+     "Common stock issued to related party for cash at $0.01 per share",
+     "",
+     "2,000,000",
+     "",
+     "2,000",
+     "",
+     "18,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Issuance of common stock for services",
+     "",
+     "1,850,000",
+     "",
+     "1,850",
+     "",
+     "3,698,150",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "3,700,000",
+     ""
+    ],
+    [
+     "Forgiveness of related party advances",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "443,750",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "443,750",
+     ""
+    ],
+    [
+     "Discount on convertible promissory notes due to beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "42,224",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "42,224",
+     ""
+    ],
+    [
+     "  Net loss for the year ended June 30, 2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(4,285,527)",
+     "",
+     "",
+     "(4,285,527)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2020",
+     "",
+     "59,966,358",
+     "",
+     "59,966",
+     "",
+     "4,628,908",
+     "",
+     "",
+     "-",
+     "",
+     "(4,748,609)",
+     "",
+     "",
+     "(59,735)",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "514,298",
+     "",
+     "514",
+     "",
+     "429,486",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "430,000",
+     ""
+    ],
+    [
+     "Common stock sold pursuant to the EMC2 SPA",
+     "",
+     "721,663",
+     "",
+     "722",
+     "",
+     "(722)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued upon conversion of convertible promissory note",
+     "",
+     "146,486",
+     "",
+     "147",
+     "",
+     "55,503",
+     "",
+     "",
+     "77,061",
+     "",
+     "-",
+     "",
+     "",
+     "132,711",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "2,950,000",
+     "",
+     "2,950",
+     "",
+     "2,541,050",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "2,544,000",
+     ""
+    ],
+    [
+     "Common stock issued for license agreements with Charles Strongo",
+     "",
+     "8,000,000",
+     "",
+     "8,000",
+     "",
+     "4,472,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "4,480,000",
+     ""
+    ],
+    [
+     "Investment in related party common stock",
+     "",
+     "5,000,000",
+     "",
+     "5,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Common stock issued as compensation for financings",
+     "",
+     "1,415,094",
+     "",
+     "1,415",
+     "",
+     "1,258,019",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "1,259,434",
+     ""
+    ],
+    [
+     "Discount on convertible promissory notes due to beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "145,617",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "145,617",
+     ""
+    ],
+    [
+     "  Net loss for the year ended June 30, 2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(9,034,123)",
+     "",
+     "",
+     "(9,034,123)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2021",
+     "",
+     "78,713,899",
+     "$",
+     "78,714",
+     "$",
+     "13,529,861",
+     "",
+     "$",
+     "77,061",
+     "$",
+     "(13,782,732)",
+     "",
+     "$",
+     "(97,096)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(The accompanying notes are an integral part of these consolidated financial statements)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+    "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 607,
+    "end_line": 639
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,034,123)",
+     "",
+     "$",
+     "(4,285,527)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash flows used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on related party transfer of intangible assets",
+     "",
+     "4,480,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "2,544,000",
+     "",
+     "",
+     "3,700,000",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "163,931",
+     "",
+     "",
+     "17,075",
+     ""
+    ],
+    [
+     "Interest recorded on compensatory warrants",
+     "",
+     "737,569",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,067",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Increase) decrease in prepaid expenses and other current assets",
+     "",
+     "(12,854)",
+     "",
+     "",
+     "(15,064)",
+     ""
+    ],
+    [
+     "(Increase) decrease in inventory",
+     "",
+     "122,466",
+     "",
+     "",
+     "(152,147)",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable and accrued expenses",
+     "",
+     "127,336",
+     "",
+     "",
+     "46,321",
+     ""
+    ],
+    [
+     "Increase (decrease) related party payables",
+     "",
+     "227,806",
+     "",
+     "",
+     "4,206",
+     ""
+    ],
+    [
+     "Net cash flows used in operating activities",
+     "",
+     "(642,802)",
+     "",
+     "",
+     "(685,136)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in investing activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(3,505)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash flows used in investing activity",
+     "",
+     "(3,505)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "680,051",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Proceeds from convertible promissory notes",
+     "",
+     "162,000",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Payments on convertible promissory notes",
+     "",
+     "(73,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from promissory notes",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payments on promissory notes",
+     "",
+     "(15,845)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from related party note, net",
+     "",
+     "144,576",
+     "",
+     "",
+     "564,715",
+     ""
+    ],
+    [
+     "Payments of related party note",
+     "",
+     "(266,270)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash flows from financing activities",
+     "",
+     "706,512",
+     "",
+     "",
+     "679,715",
+     ""
+    ],
+    [
+     "Change in cash",
+     "",
+     "60,205",
+     "",
+     "",
+     "(5,421)",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "14,497",
+     "",
+     "",
+     "19,918",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "74,702",
+     "",
+     "$",
+     "14,497",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid in cash",
+     "$",
+     "32,680",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid in cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for conversion of note payable",
+     "$",
+     "132,711",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Debt discount recorded for beneficial conversion feature",
+     "$",
+     "145,617",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(The accompanying notes are an integral part of these consolidated financial statements)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GLOBAL WHOLEHEALTH PARTNERS CORPORATION",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "Year Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "GLOBAL WHOLEHEALTH PARTNERS CORPORATION\nNOTES TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED JUNE 30, 2021 AND 2020\nNOTE 1 \u2013 Organization and Going Concern\nOrganization\nGlobal WholeHealth Partners Corporation was incorporated on March 7, 2013 in the State of Nevada under the name Texas Jack Oil and Gas Corp. On May 9, 2019, the Company amended its Articles of Incorporation to effect a change of name to Global WholeHealth Partners Corporation. The Company\u2019s ticker symbol changed to GWHP.\nThe Company sells and develops in-vitro diagnostic products, including rapid diagnostic tests, such as the COVID-19 Test, 6-minute rapid whole blood Ebola Test, 6-minute whole blood Zika test, 8-minute whole blood rapid TB test and over 75 other tests.\nThe Company was originally organized for the purpose of exploration of Oil and Gas. However, the Company was unable to establish an oil and gas concern and was abandoned in 2016. On February 27, 2019, the Clark County District Court of Nevada appointed a custodian to the Company. The custodian reestablished the Company in good standing.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated"
+    ],
+    [
+     "",
+     "Useful Lives"
+    ],
+    [
+     "Computer equipment and software",
+     "3 years"
+    ],
+    [
+     "Equipment, furniture and fixtures",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated",
+    "Useful Lives"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 761,
+    "end_line": 768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Inventory is comprised of finished goods and stated at the lower of cost or net realizable value. Inventory cost is determined on a weighted average basis in accordance with ASC 330-10-30-9. Provisions are made to reduce slow-moving, obsolete, or unusable inventories to their estimated useful or scrap values. When necessary, the Company establishes reserves for this purpose. During the year ended June 30, 2021, the Company recognized $171,811 of adjustments to reduce the value of inventory due primarily to the reduction in selling prices of COVID-19 test products.\nEquipment\nFixed assets are carried at cost, less accumulated depreciation. Major improvements are capitalized, while repair and maintenance are expensed when incurred. Renewals and betterments that materially extend the life of the assets are capitalized. When assets are retired or otherwise disposed of, the cost and related accumulated depreciation are removed from the accounts, and any resulting gain or loss is reflected in that period.\nDepreciation is computed on a straight-line basis over estimated useful lives of the related assets. The estimated useful lives of depreciable assets are:",
+   "prose_after": "Intangible assets\nOther definite-lived intangible assets are amortized over their useful lives. The Company reviews the recoverability of long-lived assets whenever events or changes in circumstances indicate the carrying amount of such assets may not be recoverable.\nRevenue Recognition\nThe Company recognizes revenue from operations through the sale of products. Product revenue is comprised of the sale of consumables. To date, all products sold have been fully paid for in advance of shipment.\nRevenue is recognized when control of products and services is transferred to the customer in an amount that reflects the consideration that the Company expects to receive from the customer in exchange for those products and services. This process involves identifying the contract with the customer, determining the performance obligations in the contract, determining the contract price, allocating the contract price to the distinct performance obligations in the contract, if applicable, and recognizing revenue when the performance obligations have been satisfied. A performance obligation is considered distinct from other obligations in a contract when it provides a benefit to the customer either on its own or together with other resources that are readily available to the customer and is separately identified in the contract. The Company considers a performance obligation satisfied once it has transferred control of a good or service to the customer, meaning the customer has the ability to use and obtain the benefit of the good or service. The Company recognizes revenue for satisfied performance obligations only when it determines there are no uncertainties regarding payment terms or transfer of control.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 757,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended June 30, 2021",
+     "Year Ended June 30, 2020"
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "2,216,975",
+     "-"
+    ],
+    [
+     "Convertible promissory notes",
+     "",
+     "10,354",
+     "10,727"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 837
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Basic net loss per common share attributable to common stockholders is calculated by dividing the net loss attributable to common stockholders by the weighted-average number of common shares outstanding for the period, without consideration for common stock equivalents. Diluted net loss per common share attributable to common stockholders is computed by dividing the net loss attributable to common stockholders by the weighted-average number of common share equivalents outstanding for the period determined using the treasury-stock method. Dilutive common stock equivalents are comprised of convertible notes and warrants to purchase common stock. For all periods presented, there is no difference in the number of shares used to calculate basic and diluted shares outstanding due to the Company\u2019s net loss position.\nThe potentially dilutive securities that would be anti-dilutive due to the Company\u2019s net loss are not included in the calculation of diluted net loss per share attributable to common stockholders. The anti-dilutive securities are as follows (in common stock equivalent shares):",
+   "prose_after": "Research and Development\nResearch and development costs primarily consist of research contracts for the advancement of product development. The Company expenses all research and development costs in the period incurred.\nStock-Based Compensation\nThe Company accounts for stock-based compensation in accordance with Accounting Standards Codification (\u201cASC\u201d) 718, Stock Based Compensation. ASC 718 requires all stock-based payments to directors, employees and consultants, including grants of stock options, to be recognized in the consolidated statements of operations based on their fair values. If a stock-based award contains performance-based conditions, at the point that it becomes probable that the performance conditions will be met, the Company records a cumulative catch-up of the expense from the grant date to the current date, and then amortizes the remainder of the expense over the remaining service period. Management evaluates when the achievement of a performance-based condition is probable based on the expected satisfaction of the performance conditions as of the reporting date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 850,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Computers, office equipment and software",
+     "$",
+     "3,505",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "  Total equipment",
+     "",
+     "3,505",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(1,067)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Equipment, net",
+     "$",
+     "2,438",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 870,
+    "end_line": 883
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Equipment"
+    }
+   },
+   "prose_before": "In July 2017, the FASB issued ASU No. 2017-11, Earnings Per Share (Topic 260), Distinguishing Liabilities from Equity (Topic 480), Derivatives and Hedging (Topic 815). The amendments in Part I of this Update change the classification analysis of certain equity-linked financial instruments (or embedded features) with down round features. When determining whether certain financial instruments should be classified as liabilities or equity instruments, a down round feature no longer precludes equity classification when assessing whether the instrument is indexed to an entity\u2019s own stock. The amendments also clarify existing disclosure requirements for equity-classified instruments. As a result, a free-standing equity-linked financial instrument (or embedded conversion option) no longer would be accounted for as a derivative liability at fair value as a result of the existence of a down round feature. For freestanding equity classified financial instruments, the amendments require entities that present earnings per share (EPS) in accordance with Topic 260 to recognize the effect of the down round feature when it is triggered. That effect is treated as a dividend and as a reduction of income available to common shareholders in basic EPS. Convertible instruments with embedded conversion options that have down round features are now subject to the specialized guidance for contingent beneficial conversion features (in Subtopic 470-20, Debt\u2014Debt with Conversion and Other Options), including related EPS guidance (in Topic 260). The amendments in Part II of this Update recharacterize the indefinite deferral of certain provisions of Topic 480 that now are presented as pending content in the Codification, to a scope exception. Those amendments do not have a material accounting effect. For public business entities, the amendments in Part I of this Update are effective for fiscal years, and interim periods within those fiscal years, beginning after December 15, 2018. Early adoption is permitted for all entities, including adoption in an interim period. If an entity early adopts the amendments in an interim period, any adjustments should be reflected as of the beginning of the fiscal year that includes that interim period. The Company adopted ASU No. 2017-11 at the beginning of the fiscal 2020 with no impact on its Financial Statements.\nThe Company reviews new accounting standards as issued. Although some of these accounting standards issued or effective after the end of the Company\u2019s previous fiscal year may be applicable, the Company has not identified any standards that the Company believes merit further discussion. The Company believes that none of the new standards will have a significant impact on the consolidated financial statements.\nNOTE 3 \u2013 Equipment\nEquipment consists of the following:",
+   "prose_after": "During the year ended June 30, 2021, the Company purchased $3,505 of computer equipment. During fiscal 2021, the Company recognized depreciation expense of $1,067.\nNOTE 4 \u2013 Stockholder\u2019s Equity\nPreferred Stock\nThe Company has Preferred stock: $0.001 par value; 10,000,000 shares authorized with no shares issued and outstanding.\nCommon Stock\nThe Company has 400,000,000 shares of Common Stock authorized of which 78,713,899 and 56,116,358 shares were issued and outstanding as of June 30, 2021 and June 30, 2020, respectively.\nOn April 20, 2021, the Company and Empire Associates, Inc. entered into a Stock Purchase Agreement whereby the Company agreed to issue 250,000 to Empire Associates, Inc. in full satisfaction of the $77,060 paid to Geneva by Empire Associates on behalf of the Company. The shares were unissued as of June 30, 2021, but are included in the calculation of EPS on an as-if issued basis.\nOn April 12, 2021, the Company and Nunzia Pharmaceutical, Inc. entered into a Mutual Sales and Marketing Agreement (the \u201cMSMA\u201d). Pursuant to the terms of the MSMA, each company has mutual abilities to share their products for sale under nonexclusive but favorable conditions and prices. The duration of the agreement is for an initial period of five years commencing on April 12, 2021. As consideration for the MSMA, the Company agreed to issue 5,000,000 shares of its restricted common stock to Nunzia and Nunzia agreed to issue 5,000,000 shares of its restricted common stock to the Company. Due to the related party nature of the MSMA, the Company recorded the issuance of its shares at par value and the receipt of shares from Global at par value or $5,000 and reflected the balance as a non-current asset under the account \u201cInvestment in related party.\u201d",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 864,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares of Common Stock Issuable from Warrants Outstanding as of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "June 30,",
+     "June 30,",
+     "Weighted Average\n\nExercise Price",
+     "Date of",
+     "Expiration"
+    ],
+    [
+     "",
+     "2021",
+     "2020",
+     "",
+     "Issuance",
+     ""
+    ],
+    [
+     "EMC2 Capital",
+     "2,000,000",
+     "-",
+     "Variable",
+     "July 22, 2020",
+     "July 22, 2025"
+    ],
+    [
+     "Geneva",
+     "51,975",
+     "-",
+     "Variable",
+     "April 26, 2021",
+     "April 26, 2024"
+    ],
+    [
+     "Firstfire",
+     "165,000",
+     "-",
+     "variable",
+     "June 18, 2021",
+     "June 18, 2024"
+    ],
+    [
+     "Total",
+     "2,216,975",
+     "-",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Shares of Common Stock Issuable from Warrants Outstanding as of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 934,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Stockholder\u2019s Equity"
+    }
+   },
+   "prose_before": "On July 9, 2020, the Company and Dr. Scott Ford, Director, entered into a subscription agreement for the purchase 45,000 shares of restricted common stock at a price of $2.00 per share which represents a 50% discount to the share price due to the lack of marketability and the thinly traded nature of our common stock on the OTC. These shares were issued on February 5, 2021, and are included in the earnings per share calculation on an as-if-issued basis.\nDuring the year ended June 30, 2020, the number of shares increased by 3,850,000 as a result of the Company selling 2,000,000 shares at $0.01 per share to LionsGate in exchange for cash of $20,000 and on May 8, 2020, issuing 1,850,000 shares valued at $2.00 as a bonus for prior service, including related party issuances of 500,000 shares to Charles Strongo, our CEO and 750,000 shares to LionsGate.\nWarrants\nEach of the Company\u2019s warrants outstanding entitles the holder to purchase one share of the Company\u2019s common stock for each warrant share held. A summary of the Company\u2019s warrants outstanding and exercisable as of June 30, 2021 and 2020 is as follows:",
+   "prose_after": "NOTE 5 \u2013Transactions with Related Persons\nOn April 12, 2021, the Company and Nunzia Pharmaceutical, Inc. entered into a Mutual Sales and Marketing Agreement pursuant to which Nunzia and the Company exchanged 5,000,000 shares of common stock. For additional information, see \u201cNOTE 4 \u2013 Stockholder\u2019s Equity.\u201d\nOn March 30, 2021, the Company entered into a five-year License Agreement with Charles Strongo and issued 5,000,000 shares of restricted common stock. For additional information, see \u201cNOTE 4 \u2013 Stockholder\u2019s Equity.\u201d\nOn February 21, 2021 the Company agreed to issue and on February 25, issued 1,750,000 shares to LionsGate. The Company recorded compensation expense of $1,680,000.\nOn January 12, 2021, the Company entered into a five-year License Agreement with Charles Strongo and issued 3,000,000 shares of restricted common stock. For additional information, see \u201cNOTE 4 \u2013 Stockholder\u2019s Equity.\u201d\nOn January 5, 2021, the Board appointed a new member, Dr. Miriam Lisbeth Paez De La Cerda and issued 200,000 shares of restricted common stock to each of the six Directors for a total issuance of 1,200,000 shares valued at $0.72 per share.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "1,275,168",
+     "",
+     "$",
+     "166,545",
+     ""
+    ],
+    [
+     "Statutory tax rate",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "267,785",
+     "",
+     "",
+     "34,974",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(267,785)",
+     "",
+     "",
+     "(34,974)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "On December 22, 2017, the Tax Cuts and Jobs Act (\u201cThe Act\u201d) was enacted into law. The Act applies to corporations generally beginning with taxable years starting after December 31, 2017 and reduces the corporate tax rate from a graduated set of rates with a maximum 35% tax rate to a flat 21% tax rate. Additionally, the Act introduced other changes that impacted corporations, including a net operating loss (\u201cNOL\u201d) deduction annual limitation, an interest expense deduction annual limitation, elimination of the alternative minimum tax, and immediate expensing of the full cost of qualified property. The Act also introduced an international tax reform that moved the U.S. toward a territorial system, in which income earned in other countries will generally not be subject to U.S. taxation. However, the accumulated foreign earnings of certain foreign corporations were subject to a one-time transition tax, which can be elected to be paid over an eight-year tax transition period, using specified percentages, or in one lump sum. NOL and foreign tax credit (\u201cFTC\u201d) carryforwards can be used to offset the transition tax liability. This change had no impact on the Company as it has not earned taxable income in the past and it has significant NOL carryforwards.\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets at June 30, 2021 and 2020 are as follows:",
+   "prose_after": "A reconciliation between the amount of income tax benefit determined by applying the applicable U.S. statutory income tax rate to pre-tax loss for the years ended June 30, 2021 and 2020 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Federal Statutory Rate",
+     "$",
+     "1,897,166",
+     "",
+     "$",
+     "899,961",
+     ""
+    ],
+    [
+     "Nondeductible expenses",
+     "",
+     "(1,664,355)",
+     "",
+     "",
+     "(873,877)",
+     ""
+    ],
+    [
+     "Change in allowance on deferred tax assets",
+     "",
+     "232,811",
+     "",
+     "",
+     "26,084",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1039,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "A reconciliation between the amount of income tax benefit determined by applying the applicable U.S. statutory income tax rate to pre-tax loss for the years ended June 30, 2021 and 2020 is as follows:",
+   "prose_after": "The net increase in the valuation allowance for deferred tax assets was $232,811 and $26,084 for the years ended June 30, 2021 and 2020, respectively. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. Due to the uncertainty of realizing the deferred tax asset, management has recorded a valuation allowance against the entire deferred tax asset.\nFor federal income tax purposes, the Company has net U.S. operating loss carry forwards at June 30, 2021 available to offset future federal taxable income, if any, of $1,275,168. The utilization of the tax net operating loss carry forwards may be limited due to ownership changes that have occurred as a result of sales of common stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Current Position With Us",
+     "Director or Officer Since"
+    ],
+    [
+     "Charles Strongo",
+     "57",
+     "CEO, Treasurer, Chairman and Secretary",
+     "August 1, 2019"
+    ],
+    [
+     "Rene Alvarez",
+     "83",
+     "COO, President, Director",
+     "August 1, 2019"
+    ],
+    [
+     "Dr. Shuijie Cui",
+     "57",
+     "Chief Science Officer and Director",
+     "August 1, 2019"
+    ],
+    [
+     "Dr. Scott Ford",
+     "68",
+     "Director",
+     "August 1, 2019"
+    ],
+    [
+     "Wolfgang Groeters",
+     "86",
+     "Director",
+     "August 1, 2019"
+    ],
+    [
+     "Dr. Miriam Lisbeth Paez De La Cerda",
+     "44",
+     "Director",
+     "January 5, 2021"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "There were no changes in our internal control over financial reporting (as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) that occurred during the period covered by this report that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nDIRECTORS AND EXECUTIVE OFFICERS\nThe following table sets forth the names and ages of all of our directors and executive officers as of the date of this report. We have a Board comprised of two members. Each director holds office until a successor is duly elected or appointed. Executive officers serve at the discretion of the Board and are appointed by the Board. Also provided herein are brief descriptions of the business experience of each of the directors and officers during the past five years, and an indication of directorships held by each director in other companies subject to the reporting requirements under the Federal securities law.",
+   "prose_after": "Former Officers and Directors\nRichard Johnson, CFO, Treasurer and Director from August 1, 2019 through his retirement on August 21, 2020.\nSara P. Gonzales, CEO, President, Secretary, Treasurer and Director since May 6, 2019 through August 1, 2019 resigned all position except for Secretary on August 1, 2019 maintaining the position of Secretary.\nSara Gonzales, Secretary from May 6, 2019 to April 15, 2020. On April 15, 2020, the Company\u2019s Board of Directors accepted the resignation letter dated January 1, 2020 from Sarah Gonzales as the Company\u2019s Secretary. Her resignation was not due to any dispute or disagreement with the Company on any matter relating to the Company's operations, policies or practices and on April 15, 2020 was officially accepted by the Company\u2019s Board of Directors To fill the vacancy created by Ms. Gonzales\u2019 resignation, the Company\u2019s Board of Directors appointed Charles Strongo as the Company\u2019s Secretary.\nBiographical Information\nSet forth below are the names of all of our directors and executive officers, all positions and offices held by each person, the period during which each has served as such, and the principal occupations and employment of such persons during at least the last five years, and other director positions held currently or during the last five years:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1104,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1141,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year Ended June 30,",
+     "Salary ($)",
+     "Stock Awards ($)",
+     "Total ($)"
+    ],
+    [
+     "Charles Strongo (1) (2) CEO, Treasurer, Chairman and Secretary",
+     "2021",
+     "75,000",
+     "4,624,000",
+     "4,699,000"
+    ],
+    [
+     "",
+     "2020",
+     "-",
+     "1,000,000",
+     "1,000,000"
+    ],
+    [
+     "Richard Johnson (1) Former CFO, Treasurer and Director",
+     "2021",
+     "20,000",
+     "-",
+     "20,000"
+    ],
+    [
+     "",
+     "2020",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Rene Alvarez (3) COO, President and Director",
+     "2021",
+     "79,800",
+     "144,000",
+     "223,800"
+    ],
+    [
+     "",
+     "2020",
+     "10,000",
+     "1,000,000",
+     "1,010,000"
+    ],
+    [
+     "Dr. Shuijie Cui (4) Chief Science Officer and Director",
+     "2021",
+     "-",
+     "144,000",
+     "144,000"
+    ],
+    [
+     "",
+     "2020",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Sara P. Gonzales (1) Former CEO, President, Treasurer and Secretary",
+     "2020",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1203,
+    "end_line": 1225
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "During the fiscal year ended June 30, 2020, the Board held a total of six (6) meetings. All members of the Board attended all Board meetings. We do not maintain a policy regarding director attendance at annual meetings and we did not have an annual meeting of shareholders during the fiscal years ended June 30, 2020 and 2019.\nWe do not currently have any standing committees of the Board. The full Board is responsible for performing the functions of: (i) the Audit Committee, (ii) the Compensation Committee and (iii) the Nominating Committee.\nITEM 11. EXECUTIVE COMPENSATION\nOur Board is responsible for establishing the compensation and benefits for our executive officers. The Board reviews the performance and total compensation package for our executive officers, and considers the modification of existing compensation and the adoption of new compensation plans. The board has not retained any compensation consultants.\nSummary Compensation Table\nThe following table sets forth information concerning compensation earned for services rendered to us by our executive officers who were serving as executive officers during the fiscal years ended June 30, 2021 and 2020:",
+   "prose_after": "(1) Sara Gonzales was appointed as CEO, President, Treasurer, Secretary and Director on May 6, 2019. Sara Gonzales did not earn and was not paid any compensation during her tenure. Sara Gonzales resigned all positions on August 1, 2019 except as Secretary which position she resigned from on April 15, 2020 and Mr. Strongo assumed. In her place, on August 1, 2019, the Company appointed Charles Strongo to serve as the Company\u2019s CEO, President and Chairman and Richard Johnson to serve as the Company\u2019s CFO, Treasurer and Director. Richard Johnson served a CFO, Treasurer and Director through August 21, 2020.\n(2) Mr Strongo was granted 500,000 shares of common stock on May 8, 2020 valued at the close price of our common stock ($2.00 per share) resulting in $1,000,000 of compensation in fiscal 2020. In Fiscal 2021, Mr. Strongo was granted 1) 200,000 shares on January 5, 2021 valued at the close price of our common stock ($0.72 per share) or $144,000; 2) 3,000,000 shares pursuant to the Patent License Agreement dated January 12, 2021 valued at the close price of our common stock ($0.46 per share) or $1,380,000; and 3) 5,000,000 shares pursuant to the IP License Agreement dated March 30, 2021 valued at the close price of our common stock ($0.62 per share) or $3,100,000. For additional information see \u201cNOTE 4 \u2013 Stockholders\u2019 Equity\u201d, under Item 8 of this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "Number of shares Beneficially Owned (2)",
+     "Percent of Class Owned (2)"
+    ],
+    [
+     "Directors and Officers",
+     "",
+     ""
+    ],
+    [
+     "Charles Strongo",
+     "14,025,531",
+     "17.1%"
+    ],
+    [
+     "Rene Alvarez",
+     "7,493,698",
+     "9.1%"
+    ],
+    [
+     "Dr. Scott Ford",
+     "1,039,132",
+     "1.3%"
+    ],
+    [
+     "Dr. Shuijie Cui",
+     "2,975,000",
+     "3.6%"
+    ],
+    [
+     "Wolfgang Groeters",
+     "2,230,000",
+     "2.7%"
+    ],
+    [
+     "Dr. Miriam Lisbeth Paez De La Cerda",
+     "200,000",
+     "*"
+    ],
+    [
+     "All Directors and Officers as a Group",
+     "27,963,361",
+     "34.1%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% shareholders",
+     "",
+     ""
+    ],
+    [
+     "Charles Strongo",
+     "14,025,531",
+     "17.1%"
+    ],
+    [
+     "Rene Alvarez",
+     "7,493,698",
+     "9.1%"
+    ],
+    [
+     "5% shareholders as a group",
+     "21,519,229",
+     "26.2%"
+    ],
+    [
+     "Total Directors and Officers and 5% Shareholders",
+     "27,963,361",
+     "34.1%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1274,
+    "end_line": 1294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Limitation on Directors' Liabilities; Indemnification of Officers and Directors\nOur Bylaws designate the relative duties and responsibilities of our officers and establish procedures for actions by directors and stockholders and other items. Our bylaws also contain indemnification provisions, which will permit us to indemnify our officers and directors to the maximum extent provided by Nevada law. For additional information, see Exhibit 3.2 to this Annual Report.\nDirectors' and Officers' Liability Insurance\nWe have not obtained directors' and officers' liability insurance.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information as of the date of this report by (i) all persons who are known by us to beneficially own more than 5% of our outstanding shares of common stock, (ii) each director, director nominee, and Named Executive Officer; and (iii) all executive officers and directors as a group:",
+   "prose_after": "* less than 1%\n(1) Beneficial ownership is determined in accordance with SEC rules and generally includes voting or investment power with respect to securities. Each of the beneficial owners listed above has direct ownership of and sole voting power and investment power with respect to the shares of our common stock and except as indicated the address of each beneficial owner is 1402 N El Camino Real, San Clemente, CA 92672.\n(2) Calculated pursuant to rule 13d-3(d) of the Exchange Act. Beneficial ownership is calculated based on 82,057,885 shares of common stock issued and outstanding as of September 8, 2021. Under Rule 13d-3(d) of the Exchange Act, shares not outstanding which are subject to options, warrants, rights or conversion privileges exercisable within 60 days are deemed outstanding for the purpose of calculating the number and percentage owned by such person, but are not deemed outstanding for the purpose of calculating the percentage owned by each other person listed. All the share amounts listed represent common stock held. No derivatives are owned by the parties listed in the table.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1268,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1305,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Charles Strongo\n\nCharles Strongo",
+     "Chief Executive Officer and Director\n\n(Principal Executive Officer)",
+     "September 27, 2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Rene Alvarez\n\nRene Alvarez",
+     "Chief Operating Officer, President and Director",
+     "September 27, 2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dr. Shuijie Cui\n\nDr. Shuijie Cui",
+     "Chief Science Officer and Director",
+     "September 27, 2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dr. Scott Ford\n\nDr. Scott Ford",
+     "Director",
+     "September 27, 2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Wolfgang Groeters\n\nWolfgang Groeters",
+     "Director",
+     "September 27, 2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dr. Miriam Lisbeth Paez De La  Cerda \n\nDr. Miriam Lisbeth Paez De La Cerda",
+     "Director",
+     "September 27, 2021"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1419,
+    "end_line": 1446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Sections 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nGlobal WholeHealth Partners Corporation\n(Registrant)\nSeptember 27, 2021\nBy: /s/ Charles Strongo\nCharles Strongo\nChief Executive Officer, Treasurer, Secretary and Chairman\n(Principal Executive Officer and Principal Financial Officer)\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in capacities and on the dates indicated.",
+   "prose_after": "Exhibit Index",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1397,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No",
+     "Description of Exhibit"
+    ],
+    [
+     "2.1",
+     "Notice of Entry of Order, Eight Judicial District Court, Clark County, Nevada, Case No.: A-19-787038-P\n\n(Incorporated by reference to the Form 10 filed on December 19, 2019)"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (Incorporated by reference to Form S-1 filed on January 28, 2014)"
+    ],
+    [
+     "3.2",
+     "By-Laws (Incorporated by reference to Form S-1 filed on January 28, 2014)"
+    ],
+    [
+     "3.3",
+     "Certificate of Change dated May 9, 2019 (Incorporated by reference to Form 10 filed on December 19, 2019)"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment dated May 9, 2019 (Incorporated by reference to Form 10 filed on December 19, 2019)"
+    ],
+    [
+     "3.5",
+     "Certificate of Change dated August 30, 2019 (Incorporated by reference to Form 10 filed on December 19, 2019)"
+    ],
+    [
+     "4.1",
+     "Stock Purchase and Sale Agreement between the Company and Lionsgate Funding Group, LLC dated May 23, 2019 (Incorporated by reference to Form 10 filed on December 19, 2019)"
+    ],
+    [
+     "4.2",
+     "Media and Marketing Services Agreement between Global WholeHealth Partners Corp and Empire Associates, Inc. dated August 18, 2020 (Incorporated by reference to the Form 8-K filed on August 21, 2020)"
+    ],
+    [
+     "4.3",
+     "Form of Common Stock Purchase Agreement between Global WholeHealth Partners Corp and EMC2 Capital, LLC dated July 22, 2020 (Incorporated by reference to the Form 8-K filed on July 23, 2020)"
+    ],
+    [
+     "4.4",
+     "Form of Common Stock Purchase Warrant between Global WholeHealth Partners Corp and EMC2 Capital, LLC dated July 22, 2020 (Incorporated by reference to the Form 8-K filed on July 23, 2020)"
+    ],
+    [
+     "4.5",
+     "Registration Rights Agreement between Global WholeHealth Partners Corp and EMC2 Capital, LLC dated July 22, 2020 (Incorporated by reference to the Form 8-K filed on July 23, 2020)"
+    ],
+    [
+     "4.6",
+     "Form of Stock Purchase Agreement between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated July 13, 2020 (Incorporated by reference to the Form 10-K filed on September 28, 2020)"
+    ],
+    [
+     "4.7",
+     "Form of Convertible Promissory Note between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated July 13, 2020 (Incorporated by reference to the Form 10-K filed on September 28, 2020)"
+    ],
+    [
+     "4.8",
+     "Form of Stock Purchase Agreement between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated August 3, 2020 (Incorporated by reference to the Form 10-K filed on September 28, 2020)"
+    ],
+    [
+     "4.9",
+     "Form of Convertible Promissory Note between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated August 3, 2020 (Incorporated by reference to the Form 10-K filed on September 28, 2020)"
+    ],
+    [
+     "4.10",
+     "Form of Stock Purchase Agreement between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated April 26, 2021 (Incorporated by reference to Form 10-Q filed on May 24, 2021)"
+    ],
+    [
+     "4.11",
+     "Form of Common Stock Purchase Warrant between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated April 26, 2021 (Incorporated by reference to Form 10-Q filed on May 24, 2021)"
+    ],
+    [
+     "4.12*",
+     "Form of Securities Purchase Agreement between Global WholeHealth Partners Corp and Firstfire Global Opportunities Fund, LLC dated June 18, 2021."
+    ],
+    [
+     "4.13*",
+     "Form of Senior Secured Convertible Promissory Note between Global WholeHealth Partners Corp and Firstfire Global Opportunities Fund, LLC dated June 18, 2021."
+    ],
+    [
+     "4.14*",
+     "Form of Security Agreement between Global WholeHealth Partners Corp and Firstfire Global Opportunities Fund, LLC dated June 18, 2021."
+    ],
+    [
+     "4.15*",
+     "Form of Common Stock Purchase Warrant issued to by Global WholeHealth Partners Corp to Firstfire Global Opportunities Fund, LLC dated June 18, 2021."
+    ],
+    [
+     "10.1",
+     "Distribution Agreement and Letter of Exclusivity (Incorporated by reference to Form 10 filed on March 20, 2020)"
+    ],
+    [
+     "10.2",
+     "Form of Promissory Note between LionsGate Funding Group LLC and Global WholeHealth Partners Corp. dated March 29, 2020 (Incorporated by reference to the Form 10-Q filed on May 7, 2020)"
+    ],
+    [
+     "10.3",
+     "Form of convertible promissory Note dated April 18, 2020 (Incorporated by reference to the Form 10-K filed on September 28, 2020)"
+    ],
+    [
+     "10.4",
+     "Licensing Agreement with Charles Strongo dated January 12, 2021 (Incorporated by reference to the Form 8-K filed on January 21, 2021)"
+    ],
+    [
+     "10.5",
+     "Loan Agreement and Promissory Note between LionsGate Funding Group LLC and Global WholeHealth Partners Corp. dated January 27, 2021 (Incorporated by reference to the Form 10-Q filed February 16, 2021)"
+    ],
+    [
+     "10.6",
+     "License Agreement with Charles Strongo dated March 21, 2021 (Incorporated by reference to Form 10-Q filed on May 24, 2021)"
+    ],
+    [
+     "10.7",
+     "Mutual Sales and Marketing Agreement dated April 12, 2021 (Incorporated by reference to the Form 8-K filed on April 19, 2021)"
+    ],
+    [
+     "10.8",
+     "Form of Promissory Note between Global WholeHealth Partners Corp and Geneva Roth Remark Holdings, Inc. dated April 26, 2021 (Incorporated by reference to Form 10-Q filed on May 24, 2021)"
+    ],
+    [
+     "10.9",
+     "Partnership Joint Venture Philippines Agreement dated May 19, 2021 (Incorporated by reference to Form 8-K filed on May 21, 2021)"
+    ],
+    [
+     "10.10*",
+     "Media and Marketing Services Agreement between Global WholeHealth Partners Corp and LinosGate Funding Mangement LLC dated July 18, 2021"
+    ],
+    [
+     "99.1",
+     "Acknowledgement Letter from the FDA dated March 15, 2020 (Incorporated by reference to the Form 10-Q filed on May 7, 2020)"
+    ],
+    [
+     "99.2",
+     "Acknowledgement Letter from the FDA dated April 6, 2020 (Incorporated by reference to the Form 8-K filed on April 10, 2020)"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to Rule 13a-14 of the Securities Exchange Act of 1934, As Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, As Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension - Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension - Calculation Linkbase Document*"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension - Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension - Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension - Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover page formatted as Inline XBRL and contained in Exhibit 101"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1451,
+    "end_line": 1515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Exhibit Index",
+   "prose_after": "*Filed herewith.\n\u00a7 Management contract or compensatory plan.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1520,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5877 @@
+{
+ "accession": "0001437749-11-004794",
+ "cik": "0001020302",
+ "form": "10-K",
+ "filing_date": "2011-07-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "internet_10k-033111.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "0-27633",
+     "95-4679342"
+    ],
+    [
+     "(state of",
+     "(Commission File Number)",
+     "(IRS Employer"
+    ],
+    [
+     "incorporation)",
+     "",
+     "I.D. Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED MARCH 31, 2011\nOR\n[ ] TRANSITION UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nINTERNET INFINITY, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "413 Avenue G, #1\nRedondo Beach, CA 90277\n(310) 493-2244\n(Address and telephone number of registrant's principal executive offices and principal place of business)\nSecurities registered under Section 12(b) of the Exchange Act: None\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, $0.001 par value\nCheck whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nCheck whether the issuer is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nCheck whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act during the past twelve months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 33,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business",
+     "2"
+    ],
+    [
+     "ITEM 2",
+     "Properties",
+     "3"
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings",
+     "3"
+    ],
+    [
+     "ITEM 4",
+     "Submission of Matters to a Vote of Security Holders",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "3"
+    ],
+    [
+     "ITEM 6",
+     "Sales of Unregistered Securities",
+     "4"
+    ],
+    [
+     "ITEM 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "4"
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements",
+     "6"
+    ],
+    [
+     "ITEM 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "20"
+    ],
+    [
+     "ITEM 9A(T)",
+     "Controls and Procedures",
+     "20"
+    ],
+    [
+     "ITEM 9B",
+     "Other Information",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "21"
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation",
+     "23"
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "24"
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "25"
+    ],
+    [
+     "ITEM 14",
+     "Principal Accounting Fees and Services",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits",
+     "27"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nSmaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of June 29, 2011, there were 28,718,780 shares of the Registrant's Common Stock, par value $0.001 per share, outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nIf the following documents are incorporated by reference, briefly describe them and identify the part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated: (1) any annual report to security holders; (2) any proxy or information statement; and (3) any prospectus filed pursuant to Rule 424(b) or (c) of the Securities Act of 1933 (\u201cSecurities Act\u201d). The listed documents should be clearly described for identification purposes (e.g., annual report to security holders for fiscal year ended December 24, 1990). None\nTransitional Small Business Disclosure Format (check one): Yes [ ] No [X]\nii\nTABLE OF CONTENTS",
+   "prose_after": "iii\nPART I\nForward Looking Statements\nForward-looking statements are not guarantees of future performance. They involve risks, uncertainties and assumptions. The Company\u2019s future results and shareholder values may differ materially from those expressed in these forward-looking statements. Readers are cautioned not to put undue reliance on any forward-looking statements.\nThe matters discussed in this section and in certain other sections of this Form 10-K contain forward-looking statements within the meaning of Section 21D of the Securities Exchange Act of 1934, as amended (\"Exchange Act\"), and Section 27A of the Securities Act of 1933, as amended (\"Securities Act\"), that involve risks and uncertainties. All statements other than statements of historical information provided herein may be deemed to be forward-looking statements. Without limiting the foregoing, the words \"may\", \"will\", \"could\", \"should\", \"intends\", \"thinks\", \"believes\", \"anticipates\", \"estimates\", \"plans\", \"expects\", or the negative of such terms and similar expressions are intended to identify assumptions and uncertainties which could cause actual results to differ materially from those expressed in them. Any forward-looking statements are qualified in their entirety by reference to the factors discussed throughout this Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "High",
+     "Low",
+     ""
+    ],
+    [
+     "FY 2011",
+     "1st Qtr.",
+     "0.005",
+     "",
+     "0.0005"
+    ],
+    [
+     "",
+     "2nd Qtr.",
+     "0.15",
+     "",
+     "0.15"
+    ],
+    [
+     "",
+     "3rd Qtr.",
+     "0.06",
+     "",
+     "0.00"
+    ],
+    [
+     "",
+     "4th Qtr.",
+     "0.04",
+     "",
+     "0.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FY 2010",
+     "1st Qtr.",
+     "0.01",
+     "",
+     "0.00"
+    ],
+    [
+     "",
+     "2nd Qtr.",
+     "0.02",
+     "",
+     "0.00"
+    ],
+    [
+     "",
+     "3rd Qtr.",
+     "0.01",
+     "",
+     "0.003"
+    ],
+    [
+     "",
+     "4th Qtr.",
+     "0.01",
+     "",
+     "0.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Our offices require less than 100 square feet of office space provided by our Chairman George Morris with utilities for the operation. Storage of our records and accounting documents are provided by George Morris and public storage.\nITEM 3. LEGAL PROCEEDINGS.\nWe are not, and none of our property is, a party to any pending legal proceedings, and no such proceedings are known to be contemplated.\nITEM 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS.\nThere were no matters submitted to a vote of the stockholders of our company during FY 2011 through the solicitation of proxies or otherwise.\nPART II\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information. Internet Infinity\u2019s common stock is quoted on the Electronic OTC Bulletin Board. Its symbol is \u201cITNF.\u201d\nDuring the last two fiscal years, the range of high and low bid information for our common stock is set forth below. The source of this information is the OTC Bulletin Board.\nThe quotations reflect the inter-dealer prices without markup, markdown or commissions and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 226,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FY 2011",
+     "1st Qtr.",
+     "0.01",
+     "0.00"
+    ],
+    [
+     "",
+     "2nd Qtr.",
+     "0.02",
+     "0.00"
+    ],
+    [
+     "",
+     "3rd Qtr.",
+     "0.01",
+     "0.003"
+    ],
+    [
+     "",
+     "4th Qtr.",
+     "0.01",
+     "0.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 213,
+    "end_line": 220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "On July 12, 2011 there were 28,718,780 shares of common stock outstanding. No shares are subject to securities convertible into such shares of stock.\nHolders. On July 12, 2011 there were approximately 230 holders of record of our common stock. Some 2,309,984 shares of common stock are held in brokerage accounts under the record name of \u201cCede & Co.\u201d\nDividends. No cash dividends have been declared on the common stock. There are no restrictions that limit the ability of the company to pay dividends on the common stock or that are likely to do so in the future.\nITEM 6. SALES OF UNREGISTERED SECURITIES.\nDuring the past three fiscal years, there was one unregistered sale of our common stock by the company. On December 29, 2006, we sold 10 million shares of our common stock in exchange for $28,000 cash and the extinguishment of $222,000 debt owed to the purchaser of the shares \u2013 L&M Media, Inc. which is under the control of George Morris, chairman of the board of directors, chief financial officer, and controlling shareholder of the company.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 226,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended 3-31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "00.0",
+     "",
+     "",
+     "80.0",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "00..0",
+     "",
+     "",
+     "20.0",
+     ""
+    ],
+    [
+     "Selling, general and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "(100.0)",
+     "",
+     "",
+     "(324.3)",
+     ""
+    ],
+    [
+     "Interest income (expense)",
+     "",
+     "(00.0)",
+     "",
+     "",
+     "(578.4)",
+     ""
+    ],
+    [
+     "Net income (loss) before Income taxes",
+     "",
+     "(100.0)",
+     "",
+     "",
+     "(822.7)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended 3-31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS."
+    },
+    "note": null
+   },
+   "prose_before": "We file reports with the Securities and Exchange Commission. These reports are annual 10-K, quarterly 10-Q and periodic 8-K reports. We will furnish stockholders on the internet with annual reports containing financial statements audited by independent certified public accountants and such other periodic reports as we may deem appropriate or as required by law. The public may read and copy any materials we file with the SEC at the Public Reference Room of the SEC at 100 F Street, NE, Washington, D.C. 20549. The public may obtain information on the operation of the Public Reference Room by calling the SEC at 1-800-SEC-0330. Internet Infinity is an electronic filer, and the SEC maintains an Internet Web site that contains reports, proxy and information statements and other information regarding issuers that file electronically with the SEC. The address of such site is http://www.sec.gov.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS.\nThe following discussion and analysis should be read in conjunction with the financial statements and the accompanying notes thereto and is qualified in its entirety by the foregoing and by more detailed financial information appearing elsewhere. See \"Financial Statements.\"\nResults of Operations\nThe following table presents, as a percentage of sales, certain selected financial data for the two fiscal years ended March 31, 2010 and March 31, 2011.",
+   "prose_after": "Sales\nSales decreased from $9,300 in the fiscal year ended March 31, 2010 to $0 in the fiscal year ended March 31, 2011. The decrease in sales was attributable primarily to an interim lack of management.\nGross Margin\nGross margin decreased from $7,440in fiscal year ended March 31, 2010 to $0 in fiscal year 2011. The decrease in gross margin was attributable to zero orders.\nSelling, General and Administrative Expense\nSelling, general and administrative expenses decreased by $14,052 from $30,156, in fiscal year 2010, to $16,664 in fiscal year 2011. A breakdown of the changes is:\n\u00b7 Consulting fees to related party increased to $1,100 in fiscal year 2011 from $900 in 2010\n\u00b7 Professional fees decreased to $14,249 in fiscal year 2011 from $18,567 in 2010\n\u00b7 Other expenses decreased to $1,315 in fiscal year 2011 from $10,689 in 2010.\n\u00b7 Salaries and related expense remained at $0 for 2011 and $0 in 2010.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm dated July 11, 2011",
+     "7"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm dated July 9, 2010",
+     "8"
+    ],
+    [
+     "Balance Sheet at March 31, 2011 and 2010",
+     "9"
+    ],
+    [
+     "Statement of Operations for the Years Ended March 31, 2011 and 2010",
+     "10"
+    ],
+    [
+     "Statement of Stockholders\u2019 Deficit for the Years Ended March 31, 2011 and 2010",
+     "11"
+    ],
+    [
+     "Statement of Cash Flows for the Years Ended March 31, 2011 and 2010",
+     "12"
+    ],
+    [
+     "Notes to Financial Statements",
+     "13"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 320,
+    "end_line": 331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "In addition to cash provided from operations, loans from George Morris can provide additional cash to Internet Infinity.\nThe payment record of our existing customers is no longer relevant.\nOff-Balance Sheet Arrangements\nOur company has not entered into any transaction, agreement or other contractual arrangement with an entity unconsolidated with us under which we have\n\u00b7 an obligation under a guarantee contract,\n\u00b7 a retained or contingent interest in assets transferred to the unconsolidated entity or similar arrangement that serves as credit, liquidity or market risk support to such entity for such assets,\n\u00b7 an obligation, including a contingent obligation, under a contract that would be accounted for as a derivative instrument, or\n\u00b7 an obligation, including a contingent obligation, arising out of a variable interest in an unconsolidated entity that is held by, and material to, us where such entity provides financing, liquidity, market risk or credit risk support to, or engages in leasing, hedging, or research and development services with, us.\nITEM 8. FINANCIAL STATEMENTS.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo: The Board of Directors and Stockholders\nInternet Infinity Inc.\nIrvine, California\nI have audited the accompanying balance sheet of Internet Infinity Inc. as of March 31, 2011 and the related statements of operations, shareholders\u2019 deficit and cash flows for the years then ended. These financial statements are the responsibility of the Company\u2019s management. My responsibility is to express an opinion on these financial statements based on my audit.\nI conducted my audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that I plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. I believe that my audit provides a reasonable basis for my opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTERNET INFINITY INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as at March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equvalents",
+     "",
+     "432",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "432",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable and Accrued Expenses",
+     "$",
+     "226,402",
+     "",
+     "$",
+     "256,892",
+     ""
+    ],
+    [
+     "Note Payable",
+     "",
+     "-",
+     "",
+     "",
+     "27,000",
+     ""
+    ],
+    [
+     "Note Payable - Related Parties",
+     "",
+     "404,333",
+     "",
+     "",
+     "411,400",
+     ""
+    ],
+    [
+     "Due to Officer",
+     "",
+     "345,706",
+     "",
+     "",
+     "305,239",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "7,209",
+     "",
+     "",
+     "7,209",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "983,650",
+     "",
+     "",
+     "1,007,740",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.001 par value, 30,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "none issued and outstanding at March 31, 2010 and 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.001 par value, 100,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "28,718,780 shares issued and outstanding as at March 31, 2010 and 2009",
+     "",
+     "28,719",
+     "",
+     "",
+     "28,719",
+     ""
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "1,161,140",
+     "",
+     "",
+     "1,075,043",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(2,173,077)",
+     "",
+     "",
+     "(2,111,502)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "(983,218)",
+     "",
+     "",
+     "(1,007,740)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "$",
+     "432",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTERNET INFINITY INC.",
+    "Balance Sheet",
+    "as at March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 394,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "In my opinion the financial statements referred to above present fairly, in all material respects, the financial position of Internet Infinity Inc. as of March 31, 2010 and 2009 and the results of its operations and its cash flows for the years then ended in conformity with United States generally accepted accounting principles.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern, which contemplates the realization of assets and liquidation of liabilities in the normal course of business. As discussed in Note 3 to the financial statements, the Company has incurred significant losses and has limited revenue. This raises substantive doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 3. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nThe Company has determined that it is not required to have, nor was I engaged to perform, an audit of the effectiveness of its documented internal controls over financial reporting.\n/ s / John Kinross-Kennedy\nJohn Kinross-Kennedy\nCertified Public Accountant\nIrvine, California\nJuly 9, 2010",
+   "prose_after": "The accompanying notes are an integral part of the financial statements",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTERNET INFINITY INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "for the year ended March 31, 2011 and 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "9,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "1,860",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "-",
+     "",
+     "",
+     "7,440",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "",
+     "14,249",
+     "",
+     "",
+     "18,567",
+     ""
+    ],
+    [
+     "Consulting",
+     "",
+     "1,100",
+     "",
+     "",
+     "900",
+     ""
+    ],
+    [
+     "Salaries and related expenses",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,315",
+     "",
+     "",
+     "10,689",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "16,664",
+     "",
+     "",
+     "30,156",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(16,664)",
+     "",
+     "",
+     "(22,716)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-operating income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(44,911)",
+     "",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "(44,911)",
+     "",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(61,575)",
+     "",
+     "",
+     "(76,508)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(61,575)",
+     "",
+     "",
+     "(76,508)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "common shares outstanding",
+     "",
+     "28,718,780",
+     "",
+     "",
+     "28,718,780",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTERNET INFINITY INC.",
+    "Statement of Operations",
+    "for the year ended March 31, 2011 and 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 445,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements",
+   "prose_after": "The accompanying notes are an integral part of the financial statements",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 498,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTERNET INFINITY INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the years ended March 31, 2007 to March 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accum-",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "ulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances as of April 1, 2006",
+     "",
+     "18,718,780",
+     "$",
+     "18,719",
+     "$",
+     "825,877",
+     "$",
+     "(1,677,595)",
+     "",
+     "$",
+     "(832,999)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued part for debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "settlement, part for cash",
+     "",
+     "10,000,000",
+     "",
+     "10,000",
+     "",
+     "240,000",
+     "",
+     "",
+     "",
+     "",
+     "250,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(130,344)",
+     "",
+     "",
+     "(130,344)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2007",
+     "",
+     "28,718,780",
+     "$",
+     "28,719",
+     "$",
+     "1,065,877",
+     "$",
+     "(1,807,939)",
+     "",
+     "$",
+     "(713,343)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,667",
+     "",
+     "",
+     "",
+     "",
+     "3,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(119,527)",
+     "",
+     "",
+     "(119,527)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2008",
+     "",
+     "28,718,780",
+     "$",
+     "28,719",
+     "$",
+     "1,069,544",
+     "$",
+     "(1,927,466)",
+     "",
+     "$",
+     "(829,203)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,499",
+     "",
+     "",
+     "",
+     "",
+     "5,499",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(107,528)",
+     "",
+     "",
+     "(107,528)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2009",
+     "",
+     "28,718,780",
+     "$",
+     "28,719",
+     "$",
+     "1,075,043",
+     "$",
+     "(2,034,994)",
+     "",
+     "$",
+     "(931,232)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(76,508)",
+     "",
+     "",
+     "(76,508)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2010",
+     "",
+     "28,718,780",
+     "$",
+     "28,719",
+     "$",
+     "1,075,043",
+     "$",
+     "(2,111,502)",
+     "",
+     "$",
+     "(1,007,740)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officer contributed assumption",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of payables",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "35,537",
+     "",
+     "",
+     "",
+     "",
+     "35,537",
+     ""
+    ],
+    [
+     "Officer contributed assumption",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of investor notes and interest",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "50,560",
+     "",
+     "",
+     "",
+     "",
+     "50,560",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(61,575)",
+     "",
+     "",
+     "(61,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, march 31, 2011",
+     "",
+     "28,718,780",
+     "",
+     "28,719",
+     "",
+     "1,161,140",
+     "",
+     "(2,173,077)",
+     "",
+     "$",
+     "(983,218)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTERNET INFINITY INC.",
+    "Statement of Stockholders' Equity (Deficit)",
+    "For the years ended March 31, 2007 to March 31, 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements",
+   "prose_after": "The accompanying notes are an integral part of the financial statements",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INERNET INFINITY INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "for the years ended March 31, 2011 and 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(61,575)",
+     "",
+     "$",
+     "(76,508)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(30,490)",
+     "",
+     "",
+     "25,529",
+     ""
+    ],
+    [
+     "Net cash (used by) operating activities",
+     "",
+     "(92,065)",
+     "",
+     "",
+     "(50,979)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used by) investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in investors' notes",
+     "",
+     "(27,000)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in note payable - related party",
+     "",
+     "(7,067)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in due to officer",
+     "",
+     "40,467",
+     "",
+     "",
+     "47,201",
+     ""
+    ],
+    [
+     "Increase (decrease) in due to related party",
+     "",
+     "-",
+     "",
+     "",
+     "3,778",
+     ""
+    ],
+    [
+     "Officer contributed assumption of payables",
+     "",
+     "35,537",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Officer contributed assumption of investors' notes and accrued interest",
+     "",
+     "50,560",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "92,497",
+     "",
+     "",
+     "50,979",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of the period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of the period",
+     "$",
+     "432",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the year",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Taxes paid during the year",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INERNET INFINITY INC.",
+    "Statement of Cash Flows",
+    "for the years ended March 31, 2011 and 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 560,
+    "end_line": 610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements",
+   "prose_after": "The accompanying notes are an integral part of the financial statements\nINTERNET INFINITY, INC.\nNOTES TO FINANCIAL STATEMENTS\nFor the Year Ended\nMARCH 31, 2011\nNOTE 1 ORGANIZATION\nInternet Infinity, Inc. (III or \u201cthe Company\u201d) was incorporated in the State of Delaware on October 27, 1995. III was in the business of distribution of electronic media duplication services and electronic blank media. The Company was re-incorporated in Nevada on December 17, 2004. The Company is currently seeking an acquisition or merger to redirect the structure and management to new profitable activities.\nNOTE 2 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nCash and cash equivalents\nThe Company considers all liquid investments with a maturity of three months or less from the date of purchase that are readily convertible into cash to be cash equivalents.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "9,066",
+     "$",
+     "36,122"
+    ],
+    [
+     "Accrued taxes",
+     "",
+     "0",
+     "",
+     "550"
+    ],
+    [
+     "Accrued accounting",
+     "",
+     "0",
+     "",
+     "8,000"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "217,336",
+     "",
+     "212,220"
+    ],
+    [
+     "",
+     "$",
+     "226,402",
+     "$",
+     "256,892"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "In April 2010, the FASB codified the consensus reached in Emerging Issues Task Force Issue No. 08-09, \u201cMilestone Method of Revenue Recognition.\u201d FASB ASU No. 2010-29 \u201cRevenue Recognition \u2013 Milestone Method (Topic 605)\u201d provides guidance on defining a milestone and determining when it may be appropriate to apply the milestone method of revenue recognition for research and development transactions. FASB ASU No. 2010 \u2013 17 is effective for fiscal years beginning on or after June 15, 2010, and is effective on a prospective basis for milestones achieved after the adoption date. The Company does not expect this ASU has a material impact on its financial position or results of operations at this time.\nOn December 1, 2010, we adopted guidance issued by the FASB ASU 2010-15 on the consolidation of variable interest entities. The new guidance requires revised evaluations of whether entities represent variable interest entities, ongoing assessments of control over such entities, and additional disclosures for variable interests. Adoption of the new guidance did not have a material impact on our financial statements.\nThe Company has reviewed issued accounting pronouncements and plans to adopt those that are applicable to it. The Company does not expect the adoption of any other pronouncements to have an impact on its results of operations or financial position.\nAccounts payable & accrued expenses\nAccounts payable and accrued expenses consist of the following at March 31, 2011 and 2010, respectively.",
+   "prose_after": "NOTE 3 UNCERTAINTY OF ABILITY TO CONTINUE AS A GOING CONCERN\nThe Company's financial statements are prepared using the generally accepted accounting principles applicable to a going concern, which contemplates the realization of assets and liquidation of liabilities in the normal course of business. However, the Company has incurred significant losses and has an accumulated deficit of ($2,173,077) and ($2,111,502) at March 31, 2011 and 2010 respectively. The Company incurred net losses of ($61,575) and ($76,508) for the years ended March 31, 2011 and 2010, respectively.\nIn view of the matters described above, recoverability of a major portion of the recorded asset amounts shown in the accompanying balance sheets is dependent upon continued operations of the Company, which in turn is dependent upon the Company\u2019s ability to raise additional capital, obtain financing and to succeed in its future operations. The financial statements do not include any adjustments relating to the recoverability and classification of recorded asset amounts or amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,\n\n2011",
+     "",
+     "March 31,\n\n2010",
+     ""
+    ],
+    [
+     "Five notes payable with various unrelated individuals.  The notes are due upon 90 days written notice from the individuals.  The notes are unsecured, with interest ranging from 6% to 12% payable quarterly.  The notes have been outstanding since 1990.  Interest expense for the years ended March 31, 2011 and 2010 was $zero and $2,640\n\nOn March 31, 2011, the President of the Company assumed the notes.  A capital contribution of $27,000 was recorded.",
+     "$",
+     "0",
+     "$",
+     "27,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "NOTES PAYABLE"
+    }
+   },
+   "prose_before": "In view of the matters described above, recoverability of a major portion of the recorded asset amounts shown in the accompanying balance sheets is dependent upon continued operations of the Company, which in turn is dependent upon the Company\u2019s ability to raise additional capital, obtain financing and to succeed in its future operations. The financial statements do not include any adjustments relating to the recoverability and classification of recorded asset amounts or amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.\nManagement has taken the following steps to revise its operating and financial requirements, which it believes are sufficient to provide the Company with the ability to continue as a going concern. The Company is actively pursuing additional funding and potential merger or acquisition candidates to redirect the structure and management to new profitable activities. The Company is also seeking strategic partners, which would enhance stockholders\u2019 investment. Management believes that the above actions will allow the Company to continue operations through the next fiscal year.\nNOTE 4 NOTES PAYABLE",
+   "prose_after": "NOTE 5 RELATED ENTITIES TRANSACTIONS\nGeorge Morris is chief financial officer, vice president, the chairman of the Board of directors of the Company and the controlling shareholder of the Company and its related parties through his beneficial ownership of the following percentages of the outstanding voting shares of the related parties:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Internet Infinity, Inc. (The Company)",
+     "90.59",
+     "%"
+    ],
+    [
+     "Morris & Associates, Inc.",
+     "71.30",
+     "%"
+    ],
+    [
+     "Electronic Media Central, Corp.",
+     "82.87",
+     "%"
+    ],
+    [
+     "Apple Realty, Inc.",
+     "100.00",
+     "%"
+    ],
+    [
+     "L&M Media, Inc.",
+     "100.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED ENTITIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "NOTE 5 RELATED ENTITIES TRANSACTIONS\nGeorge Morris is chief financial officer, vice president, the chairman of the Board of directors of the Company and the controlling shareholder of the Company and its related parties through his beneficial ownership of the following percentages of the outstanding voting shares of the related parties:",
+   "prose_after": "The Company has notes payable to related parties on March 31, 2010 and March 31, 2009 as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,\n\n2011",
+     "",
+     "March 31,\n\n2010",
+     ""
+    ],
+    [
+     "Anna Moras (mother of George Morris), with interest at 6% per annum, unsecured and due upon 90 days written notice.  Interest expense for the years ended March 31, 2011 and 2010 on this note was $2,172 and $2,172, respectively.",
+     "$",
+     "14,652",
+     "$",
+     "14,652"
+    ],
+    [
+     "Apple Realty, Inc. (related through a common controlling shareholder), secured by assets of the Company, past due and payable upon demand.  Interest accrues at 6% per annum. This note is in connection with consulting fees and office expenses owed.  Interest expense on this note for the years ended March 31, 2011 and 2010 was $21,612 and $21,612, respectively.",
+     "$",
+     "360,215",
+     "$",
+     "360,215"
+    ],
+    [
+     "L&M Media, Inc. (related through a common controlling shareholder) \u2013 Accounts payable for purchases, converted into a note during the three month period ended September 30, 2004. The note is due on demand, unsecured and interest accrues at 6% per annum. Interest expense on this note for the years ended March 31, 2011 and 2010 was $1,768 and $2,192, respectively.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total notes payable \u2013 related parties",
+     "$",
+     "404,333",
+     "$",
+     "411,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 746
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED ENTITIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "The Company has notes payable to related parties on March 31, 2010 and March 31, 2009 as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     "2010"
+    ],
+    [
+     "The Company has a payable to officer as follows:\n\nUnsecured miscellaneous payable upon demand to George Morris, with interest at 6% per annum, with monthly installments of $3,000 beginning June 30, 2000 and paid as available. George Morris is the chairman of the Company. The Company has not made any principal payments to George Morris and is in default of this note.",
+     "Current",
+     "$",
+     "196,286",
+     "$",
+     "185,406"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Officer\n\nNote Payable \u2013 G. Morris\n\nUnsecured notes payable upon demand to George Morris, with interest at 6% per annum. The Company has not made any principal payments to George Morris and is in default of these notes                       \n\n \n\nNote payable - Officer",
+     "Current",
+     "",
+     "62,063",
+     "",
+     "63,433"
+    ],
+    [
+     "Note Payable \u2013 G. Morris",
+     "Current",
+     "",
+     "14,821",
+     "",
+     "0"
+    ],
+    [
+     "Interest payable \u2013 Officer",
+     "Current",
+     "",
+     "72,536",
+     "",
+     "56,400"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "345,706",
+     "$",
+     "305,239"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 747,
+    "end_line": 771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED ENTITIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company has a payable to Morris Business Development Company and Morris & Associates, Inc., two parties related through a common controlling shareholder, amounting to $7,209 as of March 31, 2011 and March 31, 2010, respectively. The amount is interest free, unsecured and due on demand.\nThe Company utilizes office space, telephone and utilities provided by Apple Realty, Inc. at estimated fair market values, as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Monthly",
+     "",
+     "Annually",
+     ""
+    ],
+    [
+     "Rent",
+     "$",
+     "100",
+     "$",
+     "1,200"
+    ],
+    [
+     "Telephone",
+     "",
+     "100",
+     "",
+     "1,200"
+    ],
+    [
+     "Utilities",
+     "",
+     "100",
+     "",
+     "1,200"
+    ],
+    [
+     "Office Expense",
+     "",
+     "100",
+     "",
+     "1,200"
+    ],
+    [
+     "",
+     "$",
+     "400",
+     "$",
+     "4,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 778,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED ENTITIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "The Company has a payable to Morris Business Development Company and Morris & Associates, Inc., two parties related through a common controlling shareholder, amounting to $7,209 as of March 31, 2011 and March 31, 2010, respectively. The amount is interest free, unsecured and due on demand.\nThe Company utilizes office space, telephone and utilities provided by Apple Realty, Inc. at estimated fair market values, as follows:",
+   "prose_after": "The Company has a month-to-month agreements with Apple Realty, Inc. for a total monthly fee of $400 for the above expenses.\nOn March 31, 2011 the President, George Morris, assumed certain accounts payable totaling $35,537. A capital contribution of $35,537 was recorded.\nOn March 31, 2011 the President, George Morris, assumed investors\u2019 notes payable totaling $27,000, and associated accrued interest of $23,560. A capital contribution of $50,560 was recorded.\nNOTE 6 INCOME TAXES\nNo provision was made for federal income tax for the year ended March 31, 2011 and 2010, since the Company had significant net operating loss. The net operating loss carryforwards may be used to reduce taxable income through the year 2028. The availability of the Company\u2019s net operating loss carryforwards are subject to limitation if there is a 50% or more positive change in the ownership of the Company\u2019s stock. The provision for income taxes consists of the state minimum tax imposed on corporations.\nThe net operating loss carryforward for federal and state income tax purposes of approximately $1,494,468 and $1,432,893 as of March 31, 2011 and 2010 respectively. The net operating losses will begin to expire 20 years after the latest loss in 2011, unless utilized beforehand.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 773,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "03/31/2011",
+     "",
+     "",
+     "03/31/2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset \u2013 net operating loss",
+     "$",
+     "597,787",
+     "",
+     "$",
+     "573,130",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(597,787)",
+     "",
+     "",
+     "(573,130)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "0",
+     "",
+     "$",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 808,
+    "end_line": 818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "No provision was made for federal income tax for the year ended March 31, 2011 and 2010, since the Company had significant net operating loss. The net operating loss carryforwards may be used to reduce taxable income through the year 2028. The availability of the Company\u2019s net operating loss carryforwards are subject to limitation if there is a 50% or more positive change in the ownership of the Company\u2019s stock. The provision for income taxes consists of the state minimum tax imposed on corporations.\nThe net operating loss carryforward for federal and state income tax purposes of approximately $1,494,468 and $1,432,893 as of March 31, 2011 and 2010 respectively. The net operating losses will begin to expire 20 years after the latest loss in 2011, unless utilized beforehand.\nThe Company has recorded a 100% valuation allowance for the deferred tax asset since it is \u201cmore-likely- than-not\u201d that the deferred tax assets will not be realized.\nThe components of the net deferred tax asset are summarized below:",
+   "prose_after": "The following is a reconciliation of the provision for income taxes at the U.S. federal income tax rate to the income taxes reflected in the Statement of Operations:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2011",
+     "",
+     "",
+     "March 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "Tax expense (credit) at statutory rate-federal",
+     "",
+     "(34)",
+     "%",
+     "",
+     "(34)",
+     "%"
+    ],
+    [
+     "State tax expense net of federal tax",
+     "",
+     "(6)",
+     "%",
+     "",
+     "(6)",
+     "%"
+    ],
+    [
+     "Changes in valuation allowance",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "Tax expense at actual rate",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The following is a reconciliation of the provision for income taxes at the U.S. federal income tax rate to the income taxes reflected in the Statement of Operations:",
+   "prose_after": "Income tax expense consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Current tax expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "800",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Total current",
+     "$",
+     "800",
+     "",
+     "$",
+     "800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax credit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "21,543",
+     "",
+     "$",
+     "23,905",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "3,801",
+     "",
+     "",
+     "4,218",
+     ""
+    ],
+    [
+     "Total deferred",
+     "$",
+     "25,344",
+     "",
+     "$",
+     "28,123",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(25,344)",
+     "",
+     "",
+     "(28,123)",
+     ""
+    ],
+    [
+     "Net deferred tax credit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax expense",
+     "$",
+     "800",
+     "",
+     "$",
+     "800",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Income tax expense consisted of the following:",
+   "prose_after": "NOTE 7 STOCK OPTIONS\nThe Company\u2019s 1996 stock option plan provides that incentive stock options and nonqualified stock options to purchase common stock may be granted to directors, officers, key employees, consultants, and subsidiaries with an exercise price of up to 110% of market price at the date of grant. Generally, options are exercisable one or two years from the date of grant and expire three to ten years from the date of grant.\nFor the years ended March 31, 2011, and 2010, the Company granted no options. As at March 31, 2011 there are no options outstanding.\nNOTE 8 CAPITAL\nDuring the years ended March 31, 2011 and 2010, the company did not issue any shares.\nAs of March 31, 2011 and 2010 the Company had authorized 30,000,000 preferred shares of par value $0.001, of which none were issued and outstanding. As of March 31, 2011 and 2010 the Company had authorized 100,000,000 shares of common stock of par value $0.001, of which 28,718,780 shares were issued and outstanding.\nNOTE 9 SUBSEQUENT EVENTS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Person",
+     "Positions and Officers",
+     "Since",
+     "Expires"
+    ],
+    [
+     "George Morris, 71",
+     "Chairman of the Board of Directors \u2013 President, Chief Executive Officer and Chief Financial Officer",
+     "1996",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Charles Yesson, 73",
+     "Director",
+     "2011",
+     "2011"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 912,
+    "end_line": 919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS; COMPLIANCE WITH SECTION 16(a) OF THE EXCHANGE ACT"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of the company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the company\u2019s registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit the company to provide only management\u2019s report in this annual report.\nThere has been no change in our internal control over financial reporting identified in connection with the evaluation required by Commission rules that occurred during our last fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nThere is no information that was required to be disclosed on Form 8-K during the fourth quarter of FY 2011 that was not reported.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS; COMPLIANCE WITH SECTION 16(a) OF THE EXCHANGE ACT\nInternet Infinity's directors, officers and significant employees occupying executive officer positions, their ages as of March 31, 2011, the directors' terms of office and the period each director has served are set forth in the following table:",
+   "prose_after": "GEORGE MORRIS, Ph.D. Dr. Morris has been the Chairman of the Board of Directors, principal shareholder, Vice President and Secretary of Internet Infinity since Internet Infinity went public in 1996. George Morris has also been the Chairman and Vice President of Apple Realty, Inc. doing business as Hollywood Riviera Studios since 1974 and the Chairman of the Board of Directors of L&M Media, Inc. since 1990. Dr. Morris is also the Founder and has been the President, Chairman of the Board of Directors and principal of Morris Financial, Inc., a NASD member broker-dealer firm, since its inception in 1987. He has been active in designing, negotiation and acquiring all equipment, facilities and systems for manufacturing, accounting and operations of Internet Infinity and its affiliates. Morris has produced over 20 computer training programs in video and interactive hypertext multimedia CD-ROM versions, as well as negotiating Internet Infinity's and its affiliate distribution and licensing agreements. Dr. Morris earned a Bachelor of Business Administration and Masters of Business Administration from the University of Toledo, and a Ph.D. (Doctorate) in Marketing and Finance and Educational Psychology from the University of Texas. Prior to founding Internet Infinity and its Affiliates, Dr. Morris had 20 years of academic experience as a professor of Management, Marketing, Finance and Real Estate at the University of Southern California (1969- 1971) and the California State University (1971- 1999). During this period Dr. Morris served a Department Chairman for the Management and Marketing Departments. Morris has since retired from full time teaching at the University. Dr. Morris was the West Coast Regional Director of the American Society for Training and Development, a Director of the South Bay Business Roundtable and a speaker on a number of topics relating to business, training and education. Morris has created or been directly involved in the design, writing and development of numerous Internet web sites for Internet Infinity, blank video, Greg Norman, Northwestern University, etc. He most recently taught University courses about Internet Marketing for domestic and foreign markets and Sales Force Management.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "No. of Late Reports",
+     "No. of Transactions\n\nNot Timely Reported",
+     "No. of Failures\n\nto File a\n\nRequired Report"
+    ],
+    [
+     "None",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS; COMPLIANCE WITH SECTION 16(a) OF THE EXCHANGE ACT"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Audit committee. We have no standing audit committee. Our directors perform the functions of an audit committee. Our limited operations make unnecessary a standing audit committee, particularly in view of the fact that we have only three directors at present. None of our directors is an audit committee financial expert, but the directors have access to consultants that can provide such expertise when such is needed.\nCompliance with Section 16(a) of the Securities Exchange Act.\nBased solely upon a review of Forms 3 and 4 furnished to the company under Rule 16a-3(e) of the Securities Exchange Act during its most recent fiscal year and Forms 5 furnished to the company with respect to its most recent fiscal year and any written representations received by the company from persons required to file such forms, the following persons \u2013 either officers, directors or beneficial owners of more than ten percent of any class of equity of the company registered pursuant to Section 12 of the Securities Exchange Act \u2013 failed to file on a timely basis reports required by Section 16(a) of the Securities Exchange Act during the most recent fiscal year or prior fiscal years:",
+   "prose_after": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following information concerns the compensation of the named executive officers for each of the last two completed fiscal years:\nSUMMARY COMPENSATION TABLE",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Common\n\nStock\n\nAwards",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George Morris, Chairman, CEO and CFO",
+     "FY 2010",
+     "",
+     "$0",
+     "",
+     "$0",
+     "",
+     "0",
+     "",
+     "$0"
+    ],
+    [
+     "",
+     "FY 2011",
+     "",
+     "$0",
+     "",
+     "$0",
+     "",
+     "0",
+     "",
+     "$0"
+    ],
+    [
+     "Charles Yesson, Director",
+     "FY 2011",
+     "",
+     "$0",
+     "",
+     "$0",
+     "",
+     "0",
+     "",
+     "$0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following information concerns the compensation of the named executive officers for each of the last two completed fiscal years:\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END\nThe following information concerns unexercised stock options, stock that has not vested, and equity incentive plan awards for each named officer outstanding at the end of the last fiscal year:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions (#)\n\nExercisable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Morris",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Yesson",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 983,
+    "end_line": 1000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END\nThe following information concerns unexercised stock options, stock that has not vested, and equity incentive plan awards for each named officer outstanding at the end of the last fiscal year:",
+   "prose_after": "Compensation of Directors\nThe directors of Internet Infinity received the following compensation in FY 2011 for their services as directors.\nDIRECTOR COMPENSATION",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees\n\nEarned\n\nor Paid\n\nin Cash\n\n($)",
+     "Stock\n\nAwards\n\n($)",
+     "Option\n\nAwards\n\n($)",
+     "Non-Equity\n\nIncentive\n\nPlan\n\nCompensa-\n\ntion ($)",
+     "Nonqualified\n\nDeferred\n\nCompensation\n\nEarnings ($)",
+     "All Other\n\nCompensa-\n\ntion ($)",
+     "Total\n\n($)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George Morris",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Charles Yesson",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1022
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Compensation of Directors\nThe directors of Internet Infinity received the following compensation in FY 2011 for their services as directors.\nDIRECTOR COMPENSATION",
+   "prose_after": "Directors of the company receive no compensation for their services as directors. However, Charles Yesson shall receive $250 per month commencing in June 2011.\nStock Options.\nDuring the last two fiscal years, the officers and directors of Internet Infinity have received no Stock Options and no stock options are outstanding.\nEquity Compensation Plans.\nWe have no equity compensation plans.\nSTOCK OPTIONS\nThe Company\u2019s 1996 stock option plan provides that incentive stock options and nonqualified stock options to purchase common stock may be granted to directors, officers, key employees, consultants, and subsidiaries with an exercise price of up to 110% of market price at the date of grant. Generally, options are exercisable one or two years from the date of grant and expire three to ten years from the date of grant.\nFor the years ended March 31, 2011, and 2010, the Company granted no options. As at March 31, 2011 there are no options outstanding.\nCAPITAL\nDuring the years ended March 31, 2011 and 2010, the company did not issue any shares.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address",
+     "Number of Shares",
+     "",
+     "",
+     "Percent of Outstanding Shares",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apple Realty, Inc. and",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hollywood Riviera Studios (1)",
+     "",
+     "3,034,482",
+     "",
+     "",
+     "10.6"
+    ],
+    [
+     "413 Avenue G, #1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redondo Beach, CA 90277",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George Morris, Chairman/CFO",
+     "",
+     "24,429,196",
+     "(2)",
+     "",
+     "85.1"
+    ],
+    [
+     "413 Avenue G, #1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redondo Beach, CA 90277",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "L&M Media, Inc. (1)",
+     "",
+     "14,535,714",
+     "",
+     "",
+     "50.6"
+    ],
+    [
+     "413 Ave G #1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redondo Beach, CA 90277",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as a group (1 person)",
+     "",
+     "24,429,196",
+     "",
+     "",
+     "85.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1055,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "During the years ended March 31, 2011 and 2010, the company did not issue any shares.\nAs of March 31, 2011 and 2010 the Company had authorized 30,000,000 preferred shares of par value $0.001, of which none were issued and outstanding. As of March 13, 2011 and 2010 the Company had authorized 100,000,000 shares of common stock of par value $0.001, of which 28,718,780 shares were issued and outstanding.\nSUBSEQUENT EVENTS\nEvents subsequent to March 31, 2011 have been evaluated through July 11, 2011, the date these statements were available to be issued, to determine whether they should be disclosed to keep the financial statements from being misleading. Management found no subsequent events to be disclosed.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT.\nThe table below sets forth, as of July 12, 2011 the number of shares of common stock of Internet Infinity beneficially owned by each officer and director of Internet Infinity individually and as a group, and by each owner of more than five percent of the common stock.",
+   "prose_after": "(1) The shares owned of record by Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc. are under the control of George Morris and are attributed to him.\n(2) Mr. Morris owns 6,859,000 shares of record and is attributed the shares owned by Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc., which companies are under Mr. Morris\u2019 control.\n(3) Less than 1 percent.\nChanges in Control\nThere are no arrangements which may result in a change in control of the company.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nOur company is under the control of George Morris, who controls and is thereby the beneficial owner of 85.1 percent in total of all outstanding stock of Internet Infinity, Inc. He has an economic interest in 85.1 percent of all outstanding stock of Internet Infinity, Inc. The basis of his control and of his economic interest are set forth in the following table:\nGeorge Morris\na. He owns 100 percent of Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc. that collectively own 61.2% of Internet Infinity, Inc.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1054,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary of George Morris\u2019 Interest",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Economic Interest",
+     "",
+     "Beneficial Interest",
+     ""
+    ],
+    [
+     "1.00 x .612",
+     "= .612",
+     "",
+     ".612"
+    ],
+    [
+     "1.00 x .239",
+     "= .239",
+     "",
+     ".239"
+    ],
+    [
+     "",
+     ".851",
+     "",
+     ".851"
+    ]
+   ],
+   "caption_stack": [
+    "Summary of George Morris\u2019 Interest"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1098,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) The shares owned of record by Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc. are under the control of George Morris and are attributed to him.\n(2) Mr. Morris owns 6,859,000 shares of record and is attributed the shares owned by Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc., which companies are under Mr. Morris\u2019 control.\n(3) Less than 1 percent.\nChanges in Control\nThere are no arrangements which may result in a change in control of the company.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nOur company is under the control of George Morris, who controls and is thereby the beneficial owner of 85.1 percent in total of all outstanding stock of Internet Infinity, Inc. He has an economic interest in 85.1 percent of all outstanding stock of Internet Infinity, Inc. The basis of his control and of his economic interest are set forth in the following table:\nGeorge Morris\na. He owns 100 percent of Apple Realty, Inc., Hollywood Riviera Studios and L&M Media, Inc. that collectively own 61.2% of Internet Infinity, Inc.\nb. He owns 23.9 percent of Internet Infinity, Inc.",
+   "prose_after": "ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nAudit Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for its professional services rendered for the audit of our annual financial statements and review of financial statements included in our Form 10-Q reports or other services normally provided in connection with statutory and regulatory filings or engagements for those two fiscal years:",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2010",
+     "$15,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nAudit Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for its professional services rendered for the audit of our annual financial statements and review of financial statements included in our Form 10-Q reports or other services normally provided in connection with statutory and regulatory filings or engagements for those two fiscal years:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2011",
+     "$"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1118,
+    "end_line": 1121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Audit-Related Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for assurance and related services reasonably related to the performance of the audit or review of our financial statements and not reported above under \u201cAudit Fees\u201d:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2010",
+     "$-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Audit-Related Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for assurance and related services reasonably related to the performance of the audit or review of our financial statements and not reported above under \u201cAudit Fees\u201d:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2011",
+     "$-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1128,
+    "end_line": 1131
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Tax Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for professional services rendered for tax compliance, tax advice and tax planning:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2010",
+     "$-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1134,
+    "end_line": 1137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Tax Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for professional services rendered for tax compliance, tax advice and tax planning:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2011",
+     "$-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1138,
+    "end_line": 1141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "All Other Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for products and services provided by it, other than the services reported in the above three categories:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2010",
+     "$700-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1144,
+    "end_line": 1147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "All Other Fees. Our principal independent accountant billed us, for each of the last two fiscal years, the following aggregate fees for products and services provided by it, other than the services reported in the above three categories:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended March 31, 2011",
+     "$700-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1148,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Pre-Approval of Audit and Non-Audit Services. The Audit Committee charter requires that the committee or the directors if there be no committee, pre-approve all audit, review and attest services and non-audit services before such services are engaged.\nPART IV\nITEM 15. EXHIBITS.\nThe following exhibits are filed, by incorporation by reference, as part of this Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2",
+     "-",
+     "Certificate of Ownership and Merger of Morris & Associates, Inc., a California corporation, into Internet Infinity, Inc., a Delaware corporation*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1170
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pre-Approval of Audit and Non-Audit Services. The Audit Committee charter requires that the committee or the directors if there be no committee, pre-approve all audit, review and attest services and non-audit services before such services are engaged.\nPART IV\nITEM 15. EXHIBITS.\nThe following exhibits are filed, by incorporation by reference, as part of this Form 10-K:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3",
+     "-",
+     "Articles of Incorporation of Internet Infinity, Inc.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1",
+     "-",
+     "Amended Certificate of Incorporation of Internet Infinity, Inc.*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "-",
+     "Bylaws of Internet Infinity, Inc.*"
+    ],
+    [
+     "3.4",
+     "-",
+     "Certificate of Amendment to Articles of Incorporation of Internet Infinity, Inc., a Nevada corporation++"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "10.1 - Master License and non-exclusive Distribution Agreement between Internet Infinity, Inc. and Lord & Morris Productions, Inc.*\n10.2 - Master License and Exclusive Distribution Agreement between L&M Media, Inc. and Internet Infinity, Inc.*\n10.3 - Master License and Exclusive Distribution Agreement between Hollywood Riviera Studios and Internet Infinity, Inc.*",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.4",
+     "-",
+     "Fulfillment Supply Agreement between Internet Infinity, Inc. and Ingram Book Company**"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "14",
+     "-",
+     "Code of Ethics for CEO and Senior Financial Officers+"
+    ],
+    [
+     "31.1",
+     "-",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "10.1 - Master License and non-exclusive Distribution Agreement between Internet Infinity, Inc. and Lord & Morris Productions, Inc.*\n10.2 - Master License and Exclusive Distribution Agreement between L&M Media, Inc. and Internet Infinity, Inc.*\n10.3 - Master License and Exclusive Distribution Agreement between Hollywood Riviera Studios and Internet Infinity, Inc.*",
+   "prose_after": "31.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "*Previously filed with Form 10-SB 10-13-99; Commission File No. 0-27633incorporated herein."
+    ],
+    [
+     "",
+     "**Previously filed with Amendment No. 2 to Form 10-SB 02-08-00; Commission File No. 0-27633 incorporated herein."
+    ],
+    [
+     "",
+     "+Previously filed with Form 10-KSB; Commission File No. 0-27633 incorporated herein."
+    ]
+   ],
+   "caption_stack": [
+    "*Previously filed with Form 10-SB 10-13-99; Commission File No. 0-27633incorporated herein.",
+    "**Previously filed with Amendment No. 2 to Form 10-SB 02-08-00; Commission File No. 0-27633 incorporated herein.",
+    "+Previously filed with Form 10-KSB; Commission File No. 0-27633 incorporated herein."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "31.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "prose_after": "++Previously filed with Form 8-K; Commission File No. 0-27633 incorporated herein.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INTERNET INFINITY, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 14, 2011",
+     "By:",
+     "/s/ George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTERNET INFINITY, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1213,
+    "end_line": 1221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "++Previously filed with Form 8-K; Commission File No. 0-27633 incorporated herein.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1208,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 14, 2011",
+     "By:",
+     "/s/ George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 14, 2011",
+     "By:",
+     "/s/ George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "George Morris",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer, President and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1224,
+    "end_line": 1235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1208,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 14, 2011",
+     "By:",
+     "/s/ Charles Yesson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Charles Yesson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1236,
+    "end_line": 1242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "INTERNET INFINITY, INC.\nCOMMISSION FILE NO. 0-27633\nINDEX TO EXHIBITS\nFORM 10-K\nFOR THE YEAR ENDED MARCH 31, 2011\nThe following exhibits are filed, by incorporation by reference, as part of this Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1208,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "",
+     "Description of Exhibit"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1257,
+    "end_line": 1263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "INTERNET INFINITY, INC.\nCOMMISSION FILE NO. 0-27633\nINDEX TO EXHIBITS\nFORM 10-K\nFOR THE YEAR ENDED MARCH 31, 2011\nThe following exhibits are filed, by incorporation by reference, as part of this Form 10-K:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2",
+     "-",
+     "Certificate of Ownership and Merger of Morris & Associates, Inc., a California corporation, into Internet Infinity, Inc., a Delaware corporation*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1264,
+    "end_line": 1267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3",
+     "-",
+     "Articles of Incorporation of Internet Infinity, Inc.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1268,
+    "end_line": 1271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1",
+     "-",
+     "Amended Certificate of Incorporation of Internet Infinity, Inc.*"
+    ],
+    [
+     "3.2",
+     "-",
+     "Bylaws of Internet Infinity, Inc.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1272,
+    "end_line": 1276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "3.4 - Certificate of Amendment to Articles of Incorporation of Internet Infinity, Inc., a Nevada corporation++ 10.1 - Master License and non-exclusive Distribution Agreement between Internet Infinity, Inc. and Lord & Morris Productions, Inc.*\n10.2 - Master License and Exclusive Distribution Agreement between L&M Media, Inc. and Internet Infinity, Inc.*\n10.3 - Master License and Exclusive Distribution Agreement between Hollywood Riviera Studios and Internet Infinity, Inc.*\n10.4 - Fulfillment Supply Agreement between Internet Infinity, Inc. and Ingram Book Company**",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "14",
+     "-",
+     "Code of Ethics for CEO and Senior Financial Officers+"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1285,
+    "end_line": 1288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "3.4 - Certificate of Amendment to Articles of Incorporation of Internet Infinity, Inc., a Nevada corporation++ 10.1 - Master License and non-exclusive Distribution Agreement between Internet Infinity, Inc. and Lord & Morris Productions, Inc.*\n10.2 - Master License and Exclusive Distribution Agreement between L&M Media, Inc. and Internet Infinity, Inc.*\n10.3 - Master License and Exclusive Distribution Agreement between Hollywood Riviera Studios and Internet Infinity, Inc.*\n10.4 - Fulfillment Supply Agreement between Internet Infinity, Inc. and Ingram Book Company**",
+   "prose_after": "31.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "*Previously filed with Form 10-SB 10-13-99; Commission File No. 0-27633 incorporated herein."
+    ]
+   ],
+   "caption_stack": [
+    "*Previously filed with Form 10-SB 10-13-99; Commission File No. 0-27633 incorporated herein."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1297,
+    "end_line": 1300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "31.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 - Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 - Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "**Previously filed with Amendment No. 2 to Form 10-SB 02-08-00; Commission File No. 0-27633 incorporated herein."
+    ]
+   ],
+   "caption_stack": [
+    "**Previously filed with Amendment No. 2 to Form 10-SB 02-08-00; Commission File No. 0-27633 incorporated herein."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "+Previously filed with Form 10-KSB; Commission File No. 0-27633 incorporated herein.\n++Previously filed with Form 8-K; Commission File No. 0-27633 incorporated herein.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

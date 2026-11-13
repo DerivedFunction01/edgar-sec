@@ -1,0 +1,3076 @@
+{
+ "accession": "0001104659-07-032587",
+ "cik": "0000884719",
+ "form": "10-K/A",
+ "filing_date": "2007-04-27",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a07-12565_110ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "04-3144936"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "S. SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K/A\nAmendment No. 1\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2006, or\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________.\nCommission File Number 1-11860\nFocus Enhancements, Inc.\n(Name of Issuer in its Charter)",
+   "prose_after": "1370 Dell Ave Campbell, CA 95008 (Address of Principal Executive Offices)\n(408) 866-8300 (Issuer\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of Act:\nTitle of Each Class Common Stock, $0.01 par value\nName of Exchange on which Registered Nasdaq Stock Market LLC\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes: [ ] No: [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Securities Act. Yes: [ ] No: [X]\nCheck whether the Issuer (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such other shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes: [X] No: [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name (1)",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "N. William Jasper, Jr. (2)",
+     "",
+     "59",
+     "",
+     "Chairman of the Board"
+    ],
+    [
+     "Brett A. Moyer",
+     "",
+     "49",
+     "",
+     "Director, President and Chief Executive Officer"
+    ],
+    [
+     "Carl E. Berg (2) (3)",
+     "",
+     "69",
+     "",
+     "Director"
+    ],
+    [
+     "William B. Coldrick (3)",
+     "",
+     "65",
+     "",
+     "Vice Chairman of the Board"
+    ],
+    [
+     "Michael L. D\u2019Addio (2)",
+     "",
+     "62",
+     "",
+     "Director"
+    ],
+    [
+     "Tommy Eng",
+     "",
+     "49",
+     "",
+     "Director"
+    ],
+    [
+     "Sam Runco (3)",
+     "",
+     "58",
+     "",
+     "Director"
+    ],
+    [
+     "Michael F. Conway",
+     "",
+     "43",
+     "",
+     "Senior Vice President of Strategy and Business Development"
+    ],
+    [
+     "Thomas M. Hamilton",
+     "",
+     "57",
+     "",
+     "Executive Vice President and General Manager of the Semiconductor Group"
+    ],
+    [
+     "Peter T. Mor",
+     "",
+     "57",
+     "",
+     "Senior Vice President of Engineering and Operations"
+    ],
+    [
+     "Norman Schlomka",
+     "",
+     "42",
+     "",
+     "Senior Vice President of European Operations"
+    ],
+    [
+     "Gary L. Williams",
+     "",
+     "40",
+     "",
+     "Secretary, Executive Vice President of Finance and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 89
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Securities Exchange Act of 1934, as amended, requires our directors and executive officers, and persons who own more than 10% of a registered class of our equity securities, to report to the Securities and Exchange Commission (SEC) their initial ownership and any changes in that ownership. Such persons are required by SEC regulations to furnish us with copies of all Section 16(a) forms they file.\nBased solely on our review of the copies of such forms received by us or written representations from certain reporting persons that no other reports were required, we believe that all filing requirements applicable to Focus\u2019 officers, directors, and greater than 10% beneficial owners were complied with during the year ended December 31, 2006, except for Norman Schlomka who filed two Form 4s late. The first Form 4 was to report one transaction and was filed two days late. The second Form 4 was to report two transactions and was filed one day late.\nManagement\nOur executive officers and directors as of April 16, 2007 are as follows:",
+   "prose_after": "(1) Each member of our Board of Directors generally serves for a three-year term and until their successors are elected and qualified.\n(2) Member of the Audit Committee.\n(3) Member of the Compensation Committee.\nDirectors\nN. William Jasper, Jr. has served as Chairman of our Board of Directors since December 20, 2002. Mr. Jasper became a member of our Board of Directors on March 6, 2001, in connection with our acquisition of Videonics. Mr. Jasper had previously served as a member of the Videonics Board of Directors since August 1993. Mr. Jasper is the President and Chief Executive Officer of Dolby Laboratories, Inc., (NYSE: DLB) a signal processing technology company located in San Francisco, California. He has been President since 1983 and serves on Dolby Laboratories\u2019 Board of Directors. Mr. Jasper holds a B.S. in Industrial Engineering from Stanford University and an M.B.A. from the University of California, Berkeley. Mr. Jasper\u2019s term as a director expires in 2007. See also \u201cCertain Relationships and Related Transactions.\u201d",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus (1)",
+     "",
+     "Restricted Stock Awards (2) (3)",
+     "",
+     "Stock Option Awards (2) (3)",
+     "",
+     "Non-Equity Incentive Plan Compensation (1)",
+     "",
+     "Change in Pension Value a\u2022d Nonqualified Deferred Compensation Earnings",
+     "All Other Compensation (4)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Brett A. Moyer",
+     "2006",
+     "$",
+     "324,711",
+     "$",
+     "\u2014",
+     "$",
+     "22,018",
+     "$",
+     "14,464",
+     "$",
+     "157,634",
+     "\u2014",
+     "$",
+     "9,800",
+     "$",
+     "528,627"
+    ],
+    [
+     "President & Chief",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary L. Williams",
+     "2006",
+     "$",
+     "214,186",
+     "$",
+     "\u2014",
+     "$",
+     "15,413",
+     "$",
+     "11,129",
+     "$",
+     "60,270",
+     "\u2014",
+     "$",
+     "6,363",
+     "$",
+     "307,361"
+    ],
+    [
+     "Secretary, Executive Vice",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "President of Finance and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael F. Conway",
+     "2006",
+     "$",
+     "170,670",
+     "$",
+     "\u2014",
+     "$",
+     "4,076",
+     "$",
+     "15,626",
+     "$",
+     "28,557",
+     "\u2014",
+     "$",
+     "4,871",
+     "$",
+     "223,800"
+    ],
+    [
+     "Senior Vice President of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Strategy and Business",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Development",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas M. Hamilton",
+     "2006",
+     "$",
+     "185,000",
+     "$",
+     "\u2014",
+     "$",
+     "5,707",
+     "$",
+     "28,854",
+     "$",
+     "160,843",
+     "\u2014",
+     "$",
+     "6,884",
+     "$",
+     "387,288"
+    ],
+    [
+     "Executive Vice President",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "a\u2022d General Manager,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Semiconductor Group",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter T. Mor",
+     "2006",
+     "$",
+     "208,962",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "34,390",
+     "$",
+     "24,586",
+     "\u2014",
+     "$",
+     "5,696",
+     "$",
+     "273,634"
+    ],
+    [
+     "Senior Vice President of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Engineering and Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 265,
+    "end_line": 293
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "The compensation committee will continue to review and modify our compensation practices and programs as necessary to ensure our ability to attract and retain key executives while taking into account the deductibility of compensation payments. Awards of stock options under all of the Company\u2019s Stock Plans (the 1998 Non-Qualified Stock Option Plan, 2000 Amended and Restated Incentive Plan, 2002 Amended Non-Qualified Stock Option Plan, and 2004 Amended Stock Incentive Plan) and awards of restricted stock under the 2000 and 2004 Plans are designed generally to satisfy the deductibility requirements of Section 162(m). However, the compensation committee has deemed it desirable to retain the flexibility in rewarding senior management for extraordinary contributions that cannot properly be recognized under a predetermined quantitative plan, and, therefore, bonuses to our Named Executives under the Management Bonus Plan generally will be counted against the $1 million limitation on deductible compensation, and any compensation in excess of such limitation will not be deductible by us. Neither the chief executive officer nor any other Named Executive received compensation in excess of such limitation in 2006.\nCOMPENSATION COMMITTEE REPORT\nThe compensation committee of the Company has reviewed and discussed the Compensation Discussion and Analysis required by Item 402(b) of Regulation S-K with management and, based on such review and discussions, the compensation committee recommended to the Board that the Compensation Discussion and Analysis be included in this Annual Report on Form 10-K.\nMembers of the Compensation Committee\nCarl Berg\nWilliam B. Coldrick\nSam Runco\nSummary Compensation Table\nThe following table sets forth information for the year ended December 31, 2006 regarding the compensation of the Chief Executive Officer and the Chief Financial Officer of Focus and the employees, who were, at December 31, 2006, the other three most highly compensated executive officers of Focus.",
+   "prose_after": "(1) Amounts earned under our Management Bonus Plan, which in previous years were reported in the \u201cBonus\u201d column, are now reported in the \u201cNon-Equity Incentive Plan Compensation\u201d column.\n(2) The dollar value of restricted stock awards and stock option awards set forth in these columns is equal to the compensation cost recognized during 2006 for financial statement purposes in accordance with Statement of Financial Accounting Standards No. 123R (\u201cSFAS 123R\u201d). For purposes of this table, the value excludes the impact of estimated forfeitures. This valuation method values restricted stock and stock options granted during 2006 and previous years. For a discussion of other valuation assumptions used in calculating the compensation cost see note 10 of the Notes to Consolidated Financial Statements.\n(3) Information regarding the shares of restricted stock granted to our Named Executives during 2006 is set forth in the Grants of Plan-Based Awards Table. There were no stock option awards granted to our Named executives in 2006.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 293,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Estimated Future Payouts Under Non-Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Estimated Future Payouts Under Equity",
+     "",
+     "",
+     "",
+     "",
+     "All Other Stock Awards:\nNumber of Shares of",
+     "All Other Option Awards:\nNumber of Shares",
+     "Price of Option",
+     "Grant Date Fair Value of Stock and",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Incentive Plan Awards (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Incentive Plan Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Restricted",
+     "underlying",
+     "Exercise",
+     "Option",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "",
+     "Threshold",
+     "",
+     "Target",
+     "",
+     "",
+     "Maximum",
+     "",
+     "",
+     "",
+     "Threshold",
+     "",
+     "Target",
+     "",
+     "Maximum",
+     "",
+     "Stock (3)",
+     "Options (4)",
+     "Awards",
+     "Awards (5)",
+     ""
+    ],
+    [
+     "Brett A. Moyer",
+     "",
+     "\u2022/a",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "163,013",
+     "",
+     "(2)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "February 8, 2006",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "53,729",
+     "\u2014",
+     "\u2014",
+     "$",
+     "36,536"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary L. Williams",
+     "",
+     "\u2022/a",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "75,338",
+     "",
+     "$",
+     "92,288",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "February 8, 2006",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "37,611",
+     "\u2014",
+     "\u2014",
+     "$",
+     "25,575"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael F. Conway",
+     "",
+     "\u2022/a",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "51,455",
+     "",
+     "$",
+     "62,647",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "February 8, 2006",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "26,865",
+     "\u2014",
+     "\u2014",
+     "$",
+     "18,268"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas M. Hamilton",
+     "",
+     "\u2022/a",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "74,000",
+     "",
+     "(2)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "February 8, 2006",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "37,611",
+     "\u2014",
+     "\u2014",
+     "$",
+     "25,575"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter T. Mor",
+     "",
+     "\u2022/a",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "52,500",
+     "",
+     "$",
+     "58,800",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 308,
+    "end_line": 331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(2) The dollar value of restricted stock awards and stock option awards set forth in these columns is equal to the compensation cost recognized during 2006 for financial statement purposes in accordance with Statement of Financial Accounting Standards No. 123R (\u201cSFAS 123R\u201d). For purposes of this table, the value excludes the impact of estimated forfeitures. This valuation method values restricted stock and stock options granted during 2006 and previous years. For a discussion of other valuation assumptions used in calculating the compensation cost see note 10 of the Notes to Consolidated Financial Statements.\n(3) Information regarding the shares of restricted stock granted to our Named Executives during 2006 is set forth in the Grants of Plan-Based Awards Table. There were no stock option awards granted to our Named executives in 2006.\n(4) Represents discretionary amounts contributed to the Named Executive\u2019s account under our 401(k) plan.\nGrants of Plan-Based Award\nThe table below sets forth information regarding annual cash incentive compensation, stock option grants and restricted stock grants to the Named Executives in fiscal year 2006.",
+   "prose_after": "(1) The amounts set forth in these columns reflect the annual cash incentive compensation amounts that potentially could have been earned during 2006 based upon the achievement of performance goals under our Management Bonus Plan. The amounts paid are included in the \u201cNon-Equity Incentive Plan Compensation\u201d column of the 2006 Summary Compensation Table.\n(2) A portion of Messrs. Moyer and Hamilton cash incentive compensation was based on our semiconductor group\u2019s gross margin achievement compared to plan and was not capped.\n(3) The number of shares of restricted stock granted in February 2006 under our 2004 Amended Stock Incentive Plan. These shares vest annually at the rate of 25% per year.\n(4) There were no stock option awards granted to our Named Executives in 2006.\n(5) The dollar values of restricted stock set forth in this column is equal to the aggregate grant date fair value computed in accordance with SFAS 123R. For purposes of this table, the value excludes the impact of estimated forfeitures. For a discussion of other valuation assumptions used in calculating the compensation cost see note 10 of the Notes to Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of \n\n\n\nShares\n\n\n\nUnderlying \n\n\n\nUnexercised\n\n\n\nOptions:\n\n\n\nExercisable",
+     "Number of \n\n\n\nShares\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nOptions:\n\n\n\nUnexercisable (1)",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nAwards:\n\n\n\nNumber of \n\n\n\nShares \n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nUnearned\n\n\n\nOptions",
+     "Option\n\n\n\nExercise\n\n\n\nPrice ($)",
+     "",
+     "Option\n\n\n\nExpiration\n\n\n\nDate",
+     "Number of\n\n\n\nShares\n\n\n\nthat have\n\n\n\n\u2022[ ]t\n\n\n\nVested (2)",
+     "Market\n\n\n\nValue of\n\n\n\nShares that\n\n\n\nhave not\n\n\n\nVested (3)",
+     "",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nAwards:\n\n\n\nNumber of\n\n\n\nUnearned\n\n\n\nShares\n\n\n\nthat\n\n\n\nhave not\n\n\n\nVested",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nAwards:\n\n\n\nMarket\n\n\n\nValue of\n\n\n\nUnearned\n\n\n\nShares\n\n\n\nthat\n\n\n\nhave not\n\n\n\nVested"
+    ],
+    [
+     "Brett A. Moyer",
+     "350,000",
+     "\u2014",
+     "",
+     "$",
+     "1.15",
+     "Aug 6, 2007",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "150,000",
+     "\u2014",
+     "",
+     "$",
+     "0.75",
+     "Mar 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "52,239",
+     "\u2014",
+     "",
+     "$",
+     "1.57",
+     "Jul 22, 2013",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "37,763",
+     "7,553",
+     "",
+     "$",
+     "1.38",
+     "Jun 1, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "40,000",
+     "\u2014",
+     "",
+     "$",
+     "1.01",
+     "Nov 30, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "91,229",
+     "$",
+     "142,317",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary L. Williams",
+     "25,000",
+     "\u2014",
+     "",
+     "$",
+     "1.15",
+     "Aug 6, 2007",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "5,220",
+     "\u2014",
+     "",
+     "$",
+     "2.87",
+     "Jan 30, 2008",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "14,358",
+     "\u2014",
+     "",
+     "$",
+     "1.72",
+     "Jun 24, 2008",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "43,500",
+     "\u2014",
+     "",
+     "$",
+     "0.90",
+     "Feb 17, 2009",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "8,700",
+     "\u2014",
+     "",
+     "$",
+     "1.01",
+     "Jan 5, 2010",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "100,000",
+     "\u2014",
+     "",
+     "$",
+     "0.57",
+     "Jan 2, 2011",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "36,567",
+     "\u2014",
+     "",
+     "$",
+     "1.57",
+     "Jul 22, 2013",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "41,667",
+     "8,333",
+     "",
+     "$",
+     "1.38",
+     "Jun 1, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "63,861",
+     "$",
+     "99,623",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael F. Conway",
+     "10,000",
+     "\u2014",
+     "",
+     "$",
+     "1.15",
+     "Aug 6, 2007",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "6,528",
+     "\u2014",
+     "",
+     "$",
+     "5.75",
+     "Aug 19, 2007",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2,610",
+     "\u2014",
+     "",
+     "$",
+     "2.87",
+     "Jan 30, 2008",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "5,436",
+     "\u2014",
+     "",
+     "$",
+     "1.19",
+     "Feb 4, 2010",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3,625",
+     "\u2014",
+     "",
+     "$",
+     "0.57",
+     "Jan 2, 2011",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "20,315",
+     "\u2014",
+     "",
+     "$",
+     "1.57",
+     "Jul 22, 2013",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "20,833",
+     "4,167",
+     "",
+     "$",
+     "1.38",
+     "Jun 1, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "30,556",
+     "19,444",
+     "",
+     "$",
+     "1.05",
+     "Feb 16, 2015",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "26,865",
+     "$",
+     "41,909",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas M. Hamilton",
+     "95,000",
+     "\u2014",
+     "",
+     "$",
+     "1.15",
+     "Aug 6, 2007",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "36,567",
+     "\u2014",
+     "",
+     "$",
+     "1.57",
+     "Jul 22, 2013",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "14,768",
+     "2,954",
+     "",
+     "$",
+     "1.38",
+     "Jun 1, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "50,000",
+     "\u2014",
+     "",
+     "$",
+     "1.20",
+     "Sep 10, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "100,000",
+     "\u2014",
+     "",
+     "$",
+     "1.01",
+     "Nov 30, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2014",
+     "120,000",
+     "",
+     "$",
+     "1.01",
+     "Nov 30, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "37,611",
+     "$",
+     "58,673",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter T. Mor",
+     "106,945",
+     "68,055",
+     "",
+     "$",
+     "1.05",
+     "Feb 16, 2015",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "Generally, if the participant\u2019s employment terminates prior to the completion of the specified employment or the attainment of the specified performance goals, the awards will lapse. We may provide for a pro-rated attainment of the performance criteria or a pro-rated attainment of time-based restrictions. Generally, restricted stock will not vest during a period less than one year following the date of an award unless the Compensation Committee determines otherwise. During the restriction period, the participant is entitled to vote the shares and to receive dividends, if any are declared.\nFurthermore, we can grant restricted shares to our directors in lieu of board fees. Currently, Board members do not receive cash compensation for board service.\nThe vesting of restricted stock awarded to our Named Executives in 2006 accelerates in the event of a change in control.\nOutstanding Equity Awards at December 31, 2006\nThe following table sets forth information regarding the number of shares of unexercised stock options and the number of shares and value of unvested restricted stock outstanding on December 31, 2006 for our executive officers named in the Summary Compensation Table.",
+   "prose_after": "(1) All unexercisable options were granted on June 1, 2004 and become exercisable in 36 equal monthly installments beginning on the first month following the grant date, except for Mr. Hamilton\u2019s option grant of 120,000, expiring on November 30, 2014 and Mr. Mor\u2019s grant for 175,000 expiring on February 16, 2015. Mr. Hamilton\u2019s option for 120,000 shares was made on November 30, 2004 and becomes exercisable in three equal annual installments beginning in the third year following the grant date, unless accelerated in connection with certain performance metrics. Mr. Mor\u2019s option for 175,000 shares was made on February 16, 2005 and becomes exercisable in 36 equal monthly installments beginning on the first month following the grant date.\n(2) Grants of restricted stock vest in four equal installments each year beginning on the first anniversary of the grant date.\n(3) The amounts set forth in this column equal the number of shares of restricted stock indicated multiplied by the closing price of our common stock ($1.56) on December 29, 2006.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\n\n\nShares Acquired\n\n\n\non Exercise",
+     "Value Realized\n\n\n\non Exercise (1)",
+     "",
+     "Number of\n\n\n\nShares\n\n\n\nAcquired on\n\n\n\nVesting",
+     "Value Realized\n\n\n\non Vesting (2)",
+     ""
+    ],
+    [
+     "Brett A. Moyer",
+     "170,000",
+     "$",
+     "11,475",
+     "12,500",
+     "$",
+     "8,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary L. Williams",
+     "27,250",
+     "$",
+     "29,697",
+     "8,750",
+     "$",
+     "5,775"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael F. Conway",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas M. Hamilton",
+     "125,000",
+     "$",
+     "8,438",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter T. Mor",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 463,
+    "end_line": 484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) All unexercisable options were granted on June 1, 2004 and become exercisable in 36 equal monthly installments beginning on the first month following the grant date, except for Mr. Hamilton\u2019s option grant of 120,000, expiring on November 30, 2014 and Mr. Mor\u2019s grant for 175,000 expiring on February 16, 2015. Mr. Hamilton\u2019s option for 120,000 shares was made on November 30, 2004 and becomes exercisable in three equal annual installments beginning in the third year following the grant date, unless accelerated in connection with certain performance metrics. Mr. Mor\u2019s option for 175,000 shares was made on February 16, 2005 and becomes exercisable in 36 equal monthly installments beginning on the first month following the grant date.\n(2) Grants of restricted stock vest in four equal installments each year beginning on the first anniversary of the grant date.\n(3) The amounts set forth in this column equal the number of shares of restricted stock indicated multiplied by the closing price of our common stock ($1.56) on December 29, 2006.\nOption Exercises and Stock Vested\nThe following table sets forth information regarding the number and value of stock options exercised and stock vested during 2006 for our Named Executives.",
+   "prose_after": "(1) The value realized on the exercise of stock options is based on the difference between the exercise price and the market price of our common stock on the date of exercise.\n(2) The value realized on the vesting of restricted stock awards is equal to the number of shares vesting multiplied by the market price of our common stock on the date of vesting.\nDirector Compensation\nThe following table sets forth compensation information for the year ended December 31, 2006 for each non-employee member of Focus\u2019 Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Fees Earned or\n\n\n\nPaid in Cash\n\n\n\n(1)",
+     "Stock Awards\n\n\n\n(2) (3)",
+     "",
+     "Option Awards\n\n\n\n(3)",
+     "",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation",
+     "Change in\n\n\n\nPension Value\n\n\n\na\u2022d\n\n\n\nNonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings",
+     "All Other\n\n\n\nCompensation",
+     "Total",
+     ""
+    ],
+    [
+     "Carl E. Berg",
+     "",
+     "\u2014",
+     "$",
+     "12,871",
+     "$",
+     "6,954",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "19,825"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "William B. Coldrick",
+     "",
+     "\u2014",
+     "$",
+     "12,871",
+     "$",
+     "6,954",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "19,825"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael L. D\u2019Addio",
+     "",
+     "\u2014",
+     "$",
+     "8,581",
+     "$",
+     "5,389",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "13,970"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tommy Eng",
+     "",
+     "\u2014",
+     "$",
+     "8,581",
+     "$",
+     "15,978",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "24,559"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "N. William Jasper, Jr.",
+     "",
+     "\u2014",
+     "$",
+     "12,871",
+     "$",
+     "6,954",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "19,825"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sam Runco",
+     "",
+     "\u2014",
+     "$",
+     "8,581",
+     "$",
+     "13,937",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "$",
+     "22,518"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 495,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) The value realized on the exercise of stock options is based on the difference between the exercise price and the market price of our common stock on the date of exercise.\n(2) The value realized on the vesting of restricted stock awards is equal to the number of shares vesting multiplied by the market price of our common stock on the date of vesting.\nDirector Compensation\nThe following table sets forth compensation information for the year ended December 31, 2006 for each non-employee member of Focus\u2019 Board of Directors.",
+   "prose_after": "(1) Our non-employee directors do not receive cash fees for their services, however they are reimbursed for out of pocket expenses incurred in attending board meetings. No director who is an employee receives separate compensation for services rendered as a director.\n(2) Non-employee directors are eligible to participate in our stock incentive plans. During the year ended December 31, 2006, we granted 30,000 shares of restricted stock to Messrs. Berg, Coldrick and Jasper, who each served as members of our Audit Committee, and 20,000 shares of restricted stock to Messrs. Eng, Runco and D\u2019Addio. These grants of restricted stock vest in equal annual installments over a four-year period and were issued from the 2004 Amended Stock Incentive Plan.\n(3) The amounts set forth in these columns reflects the compensation cost recognized during 2006 for financial statement purposes in accordance with Statement of Financial Accounting Standards No. 123R (\u201cSFAS 123R\u201d). For purposes of this table, the value excludes the impact of estimated forfeitures. For a discussion of other valuation assumptions used in calculating the compensation cost see note 10 of the Notes to Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 532,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Salary and\n\n\n\nBonus (1)",
+     "",
+     "Benefits (2)",
+     "",
+     "Stock and\n\n\n\nOption Awards\n\n\n\n(3)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Brett A. Moyer",
+     "$",
+     "483,659",
+     "$",
+     "15,771",
+     "$",
+     "143,677",
+     "$",
+     "643,107"
+    ],
+    [
+     "Gary L. Williams",
+     "$",
+     "275,520",
+     "$",
+     "5,761",
+     "$",
+     "101,123",
+     "$",
+     "382,404"
+    ],
+    [
+     "Michael F. Conway",
+     "$",
+     "114,316",
+     "$",
+     "2,821",
+     "$",
+     "52,576",
+     "$",
+     "169,713"
+    ],
+    [
+     "Thomas M. Hamilton",
+     "$",
+     "345,843",
+     "$",
+     "15,727",
+     "$",
+     "125,205",
+     "$",
+     "486,775"
+    ],
+    [
+     "Peter T. Mor",
+     "$",
+     "129,586",
+     "$",
+     "7,360",
+     "$",
+     "34,708",
+     "$",
+     "171,654"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 553,
+    "end_line": 566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "We maintain various stock option plans for the benefit of our officers, directors and employees. A total of 2,933,071 options and restricted stock were available for issuance under the plans as of December 31, 2006. For additional discussion of the plans and awards there under see note 10 of the Notes to Consolidated Financial Statements.\nCompensation Committee Interlocks and Insider Participation\nThe members of our Compensation Committee are Messrs. Coldrick, Berg and Runco. None of our members of our Compensation Committee presently serves or has previously served as an officer of us or our subsidiaries. For information concerning transactions with Mr. Berg, see \u201cCertain Relationships and Related Transactions\u201d.\nPotential Payments Upon Termination or Change in Control\nThe following table sets forth the potential payments to each Named Executive, assuming involuntary termination \u201cwithout cause\u201d or voluntary termination for \u201cgood reason\u201d, as defined in each Named Executive\u2019s employment agreement, or termination without cause or for good reason following a Change in Control of the Company as of December 31, 2006.",
+   "prose_after": "(1) Reflects 12 months of salary for Messrs. Moyer, Williams and Hamilton and six months of salary for Messrs. Conway and Mor. Includes incentive bonus compensation for each Named Executive earned through December 31, 2006.\n(2) Reflects continued coverage under Focus\u2019 benefits plans for those same periods as applicable to the salary payments.\n(3) Reflects the value of stock options and restricted stock awards accelerated in the event of termination without cause. The value represents (i) for options, the difference between the closing price of Focus\u2019 common stock on the last trading day of 2006 (December 29, 2006 - $1.56), and the option exercise price multiplied by the number of shares as to which vesting would have been accelerated and (ii) for restricted stock, the number of shares of restricted stock for which vesting was accelerated multiplied by the closing price of Focus\u2019 common stock on December 29, 2006 ($1.56).\nIn the event of a change in control which is not accompanied by a termination of the Named Executive\u2019s employment, the unvested stock and option awards for each Named Executive would accelerate in full and the Named Executive, other than Mr. Hamilton, would be entitled to the amounts set forth in the table above under the heading \u201cStock and Option Awards\u201d. Because all of Mr. Hamilton\u2019s unvested options do not accelerate upon a Change in Control, Mr. Hamilton would only be entitled to $59,205.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Number of Shares Beneficially Owned",
+     "Percentage of Beneficial Ownership (1)",
+     ""
+    ],
+    [
+     "Brett A. Moyer (2)",
+     "",
+     "823,582",
+     "1.0",
+     "%"
+    ],
+    [
+     "Carl E. Berg (3)",
+     "",
+     "5,751,915",
+     "7.0",
+     "%"
+    ],
+    [
+     "William B. Coldrick (4)",
+     "",
+     "267,369",
+     "*",
+     ""
+    ],
+    [
+     "Michael L. D\u2019Addio (5)",
+     "",
+     "559,932",
+     "*",
+     ""
+    ],
+    [
+     "Tommy Eng (6)",
+     "",
+     "160,000",
+     "*",
+     ""
+    ],
+    [
+     "N. William Jasper, Jr. (7)",
+     "",
+     "314,669",
+     "*",
+     ""
+    ],
+    [
+     "Sam Runco (8)",
+     "",
+     "154,445",
+     "*",
+     ""
+    ],
+    [
+     "Michael F. Conway (9)",
+     "",
+     "161,212",
+     "*",
+     ""
+    ],
+    [
+     "Thomas M. Hamilton (10)",
+     "",
+     "504,817",
+     "*",
+     ""
+    ],
+    [
+     "Peter T. Mor (11)",
+     "",
+     "153,750",
+     "*",
+     ""
+    ],
+    [
+     "Gary L. Williams (12)",
+     "",
+     "389,910",
+     "*",
+     ""
+    ],
+    [
+     "Norman Schlomka (13)",
+     "",
+     "107,769",
+     "*",
+     ""
+    ],
+    [
+     "033 Asset Management (14)",
+     "",
+     "8,253,171",
+     "10.4",
+     "%"
+    ],
+    [
+     "Ingalls & Snyder LLC (15)",
+     "",
+     "5,473,129",
+     "6.5",
+     "%"
+    ],
+    [
+     "Paul Roiff (16)",
+     "",
+     "7,028,807",
+     "9.0",
+     "%"
+    ],
+    [
+     "All executive officers and directors as a group (12 persons) (17)",
+     "",
+     "9,241,601",
+     "11.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "\u201cBeneficial ownership\u201d is a technical term broadly defined by the SEC to mean more than ownership in the usual sense. For example, you beneficially own our common stock not only if you hold it directly, but also indirectly, if you, through a relationship, contract or understanding, have, or share, the power to vote the stock, to sell the stock or have the right to acquire the stock. The percentage of beneficial ownership presented in the table includes shares issuable upon the exercise of stock options and warrants exercisable within 60 days of April 16, 2007 and shares issuable on conversion of our outstanding preferred stock. Shares of common stock issuable upon exercise of stock options and warrants exercisable within 60 days of that date or upon conversion of our preferred stock are deemed outstanding for computing the ownership percentage of the person holding such securities but are not deemed outstanding for computing the percentage of any other person. Mr. Carl Berg, a director, owns 100% of our outstanding preferred stock which is convertible into our common stock at a ratio of 1,000 shares of common stock for each share of preferred stock.",
+   "prose_after": "* Less than 1% of the outstanding common stock.\n(1) Unless otherwise indicated, each person possesses sole voting and investment power with respect to the shares.\n(2) Includes 41,563 shares of common stock held directly by Mr. Moyer. Includes 666,722 shares issuable pursuant to outstanding stock options that are exercisable at April 16, 2007, or within 60 days thereafter and 115,297 shares of restricted stock, which are not yet vested but are authorized to vote.\n(3) Includes 2,395,693 shares of common stock held directly by Mr. Berg and 3,161 shares of preferred stock held directly by Mr. Berg, which are convertible into 3,161,000 shares of our common stock. Includes 79,574 shares issuable pursuant to outstanding stock options and 48,148 shares issuable pursuant to warrants that are exercisable at April 16, 2007, or within 60 days thereafter and 67,500 shares of restricted stock, which are not yet vested but are authorized to vote. Mr. Berg owns all of our outstanding preferred stock. Mr. Berg\u2019s address is 10050 Bandley Dr., Cupertino, California 95014.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 581,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "At December 31, 2006 Plan Category",
+     "(a)\nNumber of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "(b)\nWeighted - average exercise price of outstanding options, warrants and rights",
+     "",
+     "(c)\nNumber of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))"
+    ],
+    [
+     "Equity compensation plans approved by security holders (1)",
+     "5,479,537",
+     "$",
+     "1.15",
+     "2,933,071"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "(14) Includes 857,039 shares that are issuable pursuant to warrants that are exercisable at April 16, 2007, or within 60 days thereafter. Based on a Schedule 13G/A filed on February 13, 2007 by 033 Asset Management, LLC, located at 125 High Street, Suite 1405, Boston, Massachusetts 02110. 033 Asset Management is the investment manager for (i) 033 Growth Partners I, L.P., (ii) 033 Growth Partners II, L.P., (iii) 033 Growth International Fund, Ltd., and (iv) Oyster Pond Partners, L.P. (each a \u201cFund,\u201d together, the \u201cFunds\u201d). No Fund individually owns more than 5% of our common stock according to the 13G/A.\n(15) Includes 5,473,125 shares issuable pursuant to convertible notes that are convertible at April 16, 2007. Based on a Schedule 13G filed on February 14, 2007 by Ingalls & Snyder LLC, located at 61 Broadway, New York, New York 10006. Ingalls & Snyder, LLC manages Ingalls & Snyder Value Partners, L.P. under an investment advisory contract. Ingalls & Snyder Value Partners, L.P. shares beneficial ownership of the 5,473,125 shares with Ingalls & Snyder, LLC.\n(16) Shares held by Paul Roiff, whose address is 74 A Clarendon St, Boston, MA 02116.\n(17) Includes 3,161 shares of preferred stock which are convertible into 3,161,000 shares of our common stock, 2,082,813 shares issuable pursuant to options and warrants to purchase common stock exercisable at April 16, 2007, or within 60 days thereafter and 707,981 shares of restricted stock.\nSet forth below is information concerning our existing equity compensation plans:",
+   "prose_after": "(1) Focus does not maintain any equity compensation plans that were not submitted to, and approved by, its stockholders.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nPursuant to our written Audit Committee Charter, all related party transactions must be approved or disapproved by the Audit Committee whenever the Audit Committee is informed or becomes aware of any such existing or proposed transaction. Related party transactions means transactions required to be disclosed pursuant to SEC Regulation S-K, Item 404. The Audit Committee reports to the Board all actions taken by it with respect to related party transactions. One of the members of the Audit Committee, Carl Berg, was a guarantor of certain Company obligations relating to the bank loans described below. The entire Board of Directors approved the transactions with Mr. Berg described below while Mr. Berg recused himself from the discussion and vote. In lieu of audit committee approval, with respect to the other related party transactions described below (i) stock and option grants for Mark D\u2019Addio and Michael D\u2019Addio Jr. were approved by our Compensation Committee and salary and other cash compensation for Mark D\u2019Addio and Michael D\u2019Addio Jr. was approved by our Chief Executive Officer and (ii) contracts relating to Mr. Jasper and Mr. Schlomka were assumed by us in connection with our acquisition of VCC and COMO, respectively which acquisitions were approved by our then constituted Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 657,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "2005",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "328",
+     "$",
+     "275"
+    ],
+    [
+     "Audit-related fees (2)",
+     "10",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Tax fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All other fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "338",
+     "$",
+     "277"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Deloitte & Touche LLP (\u201cDeloitte\u201d) served as our independent registered public accounting firm between May 3, 2001 and May 31, 2005. On May 31, 2005, we were notified by Deloitte that Deloitte had resigned as our independent registered public accounting firm effective as of that date. The reports of Deloitte on our financial statements for the fiscal years ended December 31, 2004 and 2003 expressed an unqualified opinion and included an explanatory paragraph regarding the substantial doubt about our ability to continue as a going concern. We appointed Burr, Pilger & Mayer LLP (\u201cBPM\u201d) as our independent registered public accounting firm on June 24, 2005.\nThe following table sets forth the aggregate audit fees and non-audit related fees that Focus incurred for services provided by BPM and Deloitte relating to the years ended December 31, 2006 and 2005. The table lists audit fees, audit-related fees and all other fees. All services rendered by BPM and Deloitte during the years ended December 31, 2006 and 2005 were furnished at customary rates and terms.",
+   "prose_after": "(1) Represents fees for professional services provided in connection with the audit of our annual financial statements and review of our quarterly financial statements, advice on accounting matters that arose during the audit and audit services provided in connection with other statutory or regulatory filings.\n(2) Represents fees for assurance services related to the review of proposed financing agreements.\nThe Audit Committee has considered the role of BPM and Deloitte in providing additional services and other non-audit services to Focus and has concluded that such services are compatible with BPM and Deloitte\u2019s independence as Focus\u2019 independent registered public accounting firm. During 2006 and 2005, the Audit Committee approved in advance all audit and non-audit services provided by BPM and Deloitte. All services rendered by our auditors are required to be pre-approved by our Audit Committee Chairman and ratified by the Audit Committee.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "3.1",
+     "Second Restated Certificate of Incorporation of Focus (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.2",
+     "Certificate of Amendment to Second Restated Certificate of Incorporation of Focus (2)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.3",
+     "Certificate of Amendment to Second Restated Certificate of Incorporation of Focus dated July 25, 1997 (3)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.4",
+     "Restated Bylaws of Focus (1)(32)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.5",
+     "Certificate of Designation \u2014 Series B Preferred Stock (4)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.6",
+     "Certificate of Amendment to Second Restated Certificate of Incorporation of Focus dated January 16, 2001 (16)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.7",
+     "Certificate of Amendment to Second Amended and Restated Certificate of Incorporation of Focus dated January 8, 2003 (16)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.8",
+     "Certificate of Amendment to Second Amended and Restated Certificate of Incorporation of Focus dated March 12, 2004 (18)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.9",
+     "Certificate of Designation \u2014 Series C Preferred Stock (18)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.10",
+     "Certificate of Amendment of the Second Restated Certificate of Incorporation of Focus dated November 17, 2006 (32)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.1",
+     "Specimen certificate for Common Stock of Focus (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.2",
+     "Form of Common Stock Purchase Warrant dated January 11, 2002 issued by Focus to five Investors (7)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.3",
+     "Common Stock Purchase Warrant dated December 27, 2001 issued by Focus to vFinance (7)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.4",
+     "Warrant issued to vFinance dated November 25, 2002 (16)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.5",
+     "Form of Warrant to Investors dated July 1, 2003 (17)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.6",
+     "Form of Common Stock Purchase Warrant issued to Investors and Placement Agent dated April 6-14, 2004 (19)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.7",
+     "Form of Common Stock Purchase Warrant issued to Investors and Private Placement Agents dated November 16-17, 2004 (21)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 744,
+    "end_line": 782
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(i) The list of consolidated financial statements and schedules set forth in the accompanying Index to Consolidated Financial Statements and Other Financial Information in Item 8 herein is incorporated herein by reference. Such consolidated financial statements and schedules are filed as part of this report.\n(ii) All financial statement schedules are omitted because the required information is not applicable, or because the information required is included in the consolidated financial statements and notes thereto.\n(3) Management Contracts or Compensatory Plans\nExhibits 10.1, 10.9, 10.16, 10.18, 10.19, 10.27, 10.35, 10.45, 10.46, 10.47, 10.48, 10.49, 10.50, 10.52, 10.53, 10.54, 10.55 and 10.58 listed in (b) below identify management contracts or compensatory plans or arrangements required to be filed as exhibits to this report, and such listing is incorporated herein by reference.\n(b) Exhibits\nThe following exhibits, required by Item 601 of Regulation S-K, are filed as a part of this Annual Report on Form 10-K or are incorporated by reference to previous filings as indicated by the footnote immediately following the exhibit. Exhibit numbers, where applicable, in the left column correspond to those of Item 601 of Regulation S-K.",
+   "prose_after": "4.8 Warrant to purchase common stock issued to Greater Bay Bank, dated November 15, 2004 (21) 4.9 Warrant to purchase common stock issued to Wall Street Communications dated June 1, 2004 (21) 4.10 Form of Common Stock Purchase Warrant issued to Investors and Private Placement Agents dated June 20-21, 2005 (23) 4.11 Form of Common Stock Purchase Warrant issued to Carl\nE. Berg, Keith L. Lippert and John W. Heilshorn dated June 28, 2005, February 22, 2005 and February 22, 2005, respectively (23) 4.12 Form of Common Stock Purchase Warrant issued to Investors and Placement Agent dated November 7, 2005 (25) 4.13 Form of Senior Secured Convertible Note issued to Investors on January 24, 2006, due January 1, 2011 (27) 4.14 Warrant to Purchase Common Stock issued to Crestline Consultancy Ltd, dated December 6, 2005 (28) 4.15 Warrant to Purchase Common Stock Issued to Greater Bay Bank N.A., dated December 6, 2005 (28) 4.16 Warrant to Purchase Common Stock issued to Marketing By Design, dated April 7, 2006 (29) 4.17 Form of Common Stock Purchase Warrant (34) 10.1 1997 Director Stock Option Plan (8) 10.2 Common Stock and Warrants Purchase Agreement with AMRO International, S.A. (5) 10.3 Common Stock and Warrant Purchase Agreement, as amended, with BNC Bach International Ltd., Inc. (6) 10.4 Form Of Registration Rights Agreement with BNC Bach International Ltd., Inc. (included as Exhibit B to the Common Stock and Warrant Purchase Agreement (6) 10.5 Agreement between Union Atlantic, L.C. and FOCUS Enhancements, Inc. confirming Reorganization Agreement to issue warrant in exchange for fee reduction (6) 10.6 Common Stock Warrant and Purchase Agreement with AMRO International, S.A. dated June 9, 2000 (5) 10.7 Promissory Note, dated October 26, 2000, from Focus Enhancements, Inc. to Carl Berg (9) 10.8 Security Agreement dated October 26, 2000, between Focus Enhancements, Inc. and Carl Berg (9) 10.9 2000 Non-Qualified Stock Option Plan (10) 10.10 Amendment No. 1 to Secured Promissory Note dated April 24, 2001 issue by Focus to Carl Berg (excludes exhibits B and C) (4) 10.11 Registration Rights Agreement dated May 1, 2001 between Focus and Carl Berg (4) 10.12 Promissory note issued to Carl Berg dated June 29, 2001 (11) 10.13 Termination Agreement between Focus and Euston dated January 11, 2002 (7) 10.14 Form of Common Stock and Warrant Purchase Agreement with four investors dated January 11, 2002 (7) 10.15 Form of Registration Rights Agreement with four investors dated January 11, 2002 (7) 10.16 1998 Non-Qualified Stock Option Plan (12) 10.17 Third Addendum to Lease dated July 6, 1994, by and between H-K Associates (Lessor) and Focus Enhancements, Inc. (Lessee) for premises at 1370 Dell Ave, Campbell, California (13) 10.18 Employment agreement between Focus Enhancements and Brett Moyer (14) 10.19 Amended 2002 Non-Qualified Stock Option Plan (15) 10.20 Common Stock Purchase Agreement with two investors dated November 25, 2002 (excludes annexes) (16) 10.21 Registration Rights Agreement with two investors dated November 25, 2002 (16) 10.22 Extension of Notes Payable between the Company and Carl Berg dated April 28, 2003 (17)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 783,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.53",
+     "Form of Executive Restricted Stock Agreement - 2000 Plan (28)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.54",
+     "Form of Executive Stock Option Agreement - 2002 Plan (28)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.55",
+     "Form of Executive Restricted Stock Agreement - 2004 Plan (28)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.56",
+     "Amendment No. 1 to Senior Secured Convertible Note Purchase Agreement by and among Focus Enhancements, Inc., and the purchasers thereto (the \u201cPurchasers\u2019), dated as of June 28, 2006. (30)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.57",
+     "Amendment No. 1 to Registration Rights Agreement and among Focus Enhancements, the Purchasers and Ingalls & Snyder LLC, dated as of June 28, 2006. (30)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.58",
+     "Amended 2004 Stock Incentive Plan (31)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.59",
+     "Fourth Amendment to Loan and Security Agreement between Venture Banking Group, a division of Greater Bay Bank N.A. and Focus Enhancements, dated December 11, 2006. (33)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.60",
+     "Form of Securities Purchase Agreement between the Company and the investor signatories thereto (Sale of 4,500,000 shares of common stock). (34)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.61",
+     "Form of Securities Purchase Agreement between the Company and the investor signatories thereto (Sale of 500,000 shares of common stock). (34)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.62",
+     "Fifth Amendment to Loan and Security Agreement between Venture Banking Group, a division of Greater Bay Bank N.A. and Focus Enhancements, dated February 21, 2007. (34)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "Code of Ethics (23)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant (35)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Burr, Pilger & Mayer LLP (35)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.2",
+     "Consent of Deloitte & Touche LLP (35)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by CEO*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by CFO*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to 18 U.S.C. Section 1350 by CEO (35)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification Pursuant to 18 U.S.C. Section 1350 by CFO (35)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 798,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "10.23 Common Stock and Warrant Purchase Agreement (excluding exhibits) with two investors dated July 1, 2003 (17) 10.24 Registration Rights Agreement with two investors dated July 1, 2003 (19) 10.25 Form of Securities Purchase Agreement (excluding exhibits) with investors dated April 5, 2004 (19) 10.26 Form of Registration Rights Agreement with investors dated April 5, 2004 (20) 10.27 2004 Stock Incentive Plan (21) 10.28 Form of Securities Purchase Agreement (excluding exhibits) with investors dated November 15, 2004 (21) 10.29 Form of Registration Rights Agreement with investors dated November 15, 2004 (21) 10.30 Loan and Security Agreement with Venture Banking Group dated November 15, 2004 (22) 10.31 Fourth Addendum to Lease dated July 6, 1994, by and between H-K Associates (Lessor) and Focus Enhancements, Inc. (Lessee) for premises at 1370 Dell Ave, Campbell, California (22) 10.32 Third amendment to Lease dated June 3, 2000, by and between Carramerica (Lessor) and Focus Enhancements, Inc. (Lessee) for premises at 22867 NW Bennett Street, Hillsboro, Oregon (22) 10.33 Form of Securities Purchase Agreement (Excluding Exhibits) with investors dated as of June 17, 2005 (23) 10.34 Form of Registration Rights Agreement with investors dated June 17, 2005 (23) 10.35 2004 Stock Incentive Plan, as Amended (24) 10.36 Form of Securities Purchase Agreement (excluding exhibits) with investors dated as of November 3, 2005 (25) 10.37 Form of Registration Rights Agreement with investors dated November 3, 2005 (25) 10.38 Form of Warrant Acquisition Agreement with placement agents and service providers (25) 10.39 Form of Third Amendment To Loan And Security Agreement between Venture Banking Group, a division of Greater Bay Bank N.A., and the Company, dated December 1, 2005. (26) 10.40 Senior Secured Convertible Note Purchase Agreement by and among Focus Enhancements, Inc., and the purchasers thereto (the \u201cPurchasers\u2019), dated as of January 24, 2006 (27) 10.41 Security Agreement by and among Focus Enhancements, the Purchasers and Ingalls & Snyder LLC, dated as of January 24, 2006 (27) 10.42 Amendment No. 1 to Intercreditor Agreement by and among Carl Berg, Venture Banking Group, a division of Greater Bay Bank, N.A. the Purchasers and Ingalls & Snyder LLC, dated as of January 24, 2006 (27) 10.43 Intercreditor Agreement by and among Carl Berg, the Purchasers and Ingalls & Snyder LLC, dated as of January 24, 2006 (27) 10.44 Registration Rights Agreement and among Focus Enhancements, the Purchasers and Ingalls & Snyder LLC, dated as of January 24, 2006 (27) 10.45 Employment agreement between Focus Enhancements and Thomas Hamilton dated October 13, 1996 (28) 10.46 Amendment to Employment agreement between Focus Enhancements and Thomas Hamilton dated February 1, 1999 (28) 10.47 Employment agreement between Focus Enhancements and Gary Williams dated May 28, 2004 (28) 10.48 Employment agreement between Focus Enhancements and Michael Conway dated March 31, 2005 (28) 10.49 Employment agreement between Focus Enhancements and Peter Mor dated April 18, 2005 (28) 10.50 Employment agreement between Focus Enhancements and Norman Schlomka dated December 28, 2005 (28) 10.51 Base Salaries of the Named Executive Officers of the Registrant (28) 10.52 Form of Executive Stock Option Agreement - 2000 Plan\n(28)",
+   "prose_after": "* Included.\n1. Filed as an exhibit to Focus\u2019 Registration Statement on Form SB-2 (No. 33-60248-B) and incorporated herein by reference.\n2. Filed as an exhibit to Focus\u2019 Form 10-QSB for the period ended September 30, 1995, and incorporated herein by reference.\n3. Filed as an exhibit to Focus\u2019 Form 10-QSB dated August 14, 1997, and incorporated herein by reference.\n4. Filed as an exhibit to Focus\u2019 Amended Registration Statement on Form SB-2 (No. 333-55178) filed on August 9, 2001 as amended, incorporated herein by reference.\n5. Filed as an exhibit to Focus\u2019 Registration Statements on Form S-3 (No. 333-81177) filed with the Commission on June 21, 1999, and incorporated herein by reference.\n6. Filed as an exhibit to Focus\u2019 Registration Statement on Form S-3 (No. 333-94621) filed with the Commission on January 13, 2000, and incorporated herein by reference.\n7. Filed as an exhibit to Focus\u2019 Amendment No. 3 to Registration Statement on Form SB-2 (No. 333-55178) filed on January 23, 2002, and incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FOCUS ENHANCEMENTS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "April 27, 2007",
+     "By:",
+     "/s/ Brett Moyer"
+    ],
+    [
+     "",
+     "",
+     "Brett Moyer, President & CEO"
+    ]
+   ],
+   "caption_stack": [
+    "FOCUS ENHANCEMENTS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 921,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "30. Filed as an exhibit to Focus\u2019 Form 8-K filed with the SEC on August 2, 2006 and incorporated herein by reference.\n31. Filed as an exhibit to Focus\u2019 Form 8-K filed with the SEC on November 21, 2006 and incorporated herein by reference.\n32. Filed as an exhibit to Focus\u2019 Registration Statement on Form S-3 filed with the SEC on December 8, 2006 (No. 333-129224) and incorporated herein by reference.\n33. Filed as an exhibit to Focus\u2019 Form 8-K filed with the SEC on December 12, 2006 and incorporated herein by reference.\n34. Filed as an exhibit to Focus\u2019 Form 8-K filed with the SEC on February 22, 2007 and incorporated herein by reference.\n35. Filed as an exhibit to Focus\u2019 Form 10-K filed with the SEC on March 30, 2007, and incorporated herein by reference.\n(c) Financial Schedules\nNot applicable\nSignatures\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Amendment No. 1 to Form 10-K/A to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

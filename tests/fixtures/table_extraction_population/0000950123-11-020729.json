@@ -1,0 +1,3888 @@
+{
+ "accession": "0000950123-11-020729",
+ "cik": "0000710752",
+ "form": "10-K",
+ "filing_date": "2011-03-01",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d79582e10vk.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Texas",
+     "75-6297143"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "Trust Division U.S. Trust, Bank of America Private Wealth Management Bank of America Plaza 17th Floor 901 Main Street Dallas, Texas (Address of principal executive offices)",
+     "75202 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-K\n(Mark One)\n[X]      ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\n[ ]      TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from          to\nCommission File Number: 1-8424\nSabine Royalty Trust\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (214) 209-2400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Name of Each Exchange"
+    ],
+    [
+     "Title of Each Class",
+     "on Which Registered"
+    ],
+    [
+     "Units of Beneficial Interest",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [
+    "Name of Each Exchange"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (214) 209-2400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15 (d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Description of the Trust",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Assets of the Trust",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Liabilities of the Trust",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Duties and Limited Powers of Trustee",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Liabilities of Trustee",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Duration of Trust",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Voting Rights of Unit Holders",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Description of Units",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Distributions of Net Income",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Transfer",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Reports to Unit Holders",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Widely Held Fixed Investment Trust Reporting Information",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Liability of Unit Holders",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Possible Divestiture of Units",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "Federal Taxation",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "State Tax Considerations",
+     "",
+     "8"
+    ],
+    [
+     "",
+     "Regulation and Prices",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "Regulation",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "Prices",
+     "",
+     "11"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "",
+     "11"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "",
+     "14"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "Title",
+     "",
+     "15"
+    ],
+    [
+     "",
+     "Reserves",
+     "",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "",
+     "24"
+    ],
+    [
+     "Item 4.",
+     "[Reserved]",
+     "",
+     "24"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "",
+     "25"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "",
+     "25"
+    ],
+    [
+     "Item 7.",
+     "Trustee\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "25"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "",
+     "30"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "",
+     "31"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "41"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "",
+     "41"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "",
+     "43"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors and Executive Officers and Corporate Governance",
+     "",
+     "43"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "",
+     "43"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "",
+     "43"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "43"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "",
+     "44"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "",
+     "44"
+    ],
+    [
+     "EX-23",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-32",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-99.1",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-99.2",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act (check one):\nLarge accelerated filer [X] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of units of beneficial interest of the registrant (based on the closing sale price on the New York Stock Exchange as of the last business day of its most recently completed second fiscal quarter) held by non-affiliates of the registrant was approximately $687 million.\nAt March 1, 2011, there were 14,579,345 units of beneficial interest outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I\nItem 1. Business.\nDESCRIPTION OF THE TRUST\nSabine Royalty Trust (the \u201cTrust\u201d) is an express trust formed under the laws of the State of Texas by the Sabine Corporation Royalty Trust Agreement (the \u201cTrust Agreement\u201d) made and entered into effective as of December 31, 1982, between Sabine Corporation, as trustor, and InterFirst Bank Dallas, N.A. (\u201cInterFirst\u201d), as trustee. The current trustee of the Trust is Bank of America, N.A. (as successor to NationsBank, N.A.) (\u201cBank of America\u201d). In accordance with the successor trustee provisions of the Trust Agreement, Bank of America, as trustee of the Trust (the \u201cTrustee\u201d), is subject to all the terms and conditions of the Trust Agreement. In 2007 the Bank of America private wealth management group officially became known as \u201cU.S. Trust, Bank of America Private Wealth Management.\u201d The legal entity that serves as Trustee of the Trust did not change, and references in this Form 10-K to U.S. Trust, Bank of America Private Wealth Management shall describe the legal entity Bank of America, N.A. The principal office of the Trust (sometimes referred to herein as the \u201cRegistrant\u201d) is located at Bank of America Plaza, 17th Floor, 901 Main Street, Dallas, Texas 75202. The telephone number of the Trust is (214) 209-2400.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 124,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Mineral and Royalty",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "Gross Acres",
+     "",
+     "Net Acres",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Florida",
+     "",
+     "5,448",
+     "",
+     "697"
+    ],
+    [
+     "Louisiana",
+     "",
+     "244,391",
+     "",
+     "23,682"
+    ],
+    [
+     "Mississippi",
+     "",
+     "75,489",
+     "",
+     "9,713"
+    ],
+    [
+     "New Mexico",
+     "",
+     "112,294",
+     "",
+     "9,141"
+    ],
+    [
+     "Oklahoma",
+     "",
+     "381,538",
+     "",
+     "67,558"
+    ],
+    [
+     "Texas",
+     "",
+     "1,273,132",
+     "",
+     "105,760"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "2,092,292",
+     "",
+     "216,551"
+    ]
+   ],
+   "caption_stack": [
+    "Mineral and Royalty"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The Trust has not received any written comments from the Securities and Exchange Commission staff regarding its periodic or current reports under the Act more than 180 days prior to December 31, 2010, which comments remain unresolved.\nItem 2. Properties.\nThe assets of the Registrant consist principally of the Royalty Properties, which constitute interests in gross production of oil, gas and other minerals free of the costs of production. The Royalty Properties consist of royalty and mineral interests, including landowner\u2019s royalties, overriding royalty interests, minerals (other than executive rights, bonuses and delay rentals), production payments and any other similar,\nnonparticipatory interest, in certain producing and proved undeveloped oil and gas properties located in Florida, Louisiana, Mississippi, New Mexico, Oklahoma and Texas. These properties are represented by approximately 5,400 tracts of land. Approximately 2,950 of the tracts are in Oklahoma, 1,750 in Texas, 330 in Louisiana, 200 in New Mexico, 150 in Mississippi and 12 in Florida.\nThe following table summarizes total developed and proved undeveloped acreage represented by the Royalty Properties at December 31, 2010.",
+   "prose_after": "Detailed information concerning the number of wells on royalty properties is not generally available to the owner of royalty interests. Consequently, the Registrant does not have information that would be disclosed by a company with oil and gas operations, such as an accurate count of the number of wells located on the Royalty Properties, the number of exploratory or development wells drilled on the Royalty Properties during the periods presented by this report, or the number of wells in process or other present activities on the Royalty Properties, and the Registrant cannot readily obtain such information.\nTitle\nThe conveyances of the Royalty Properties to the Trust covered the royalty and mineral properties located in the six states that were vested in Sabine Corporation on the effective date of the conveyances and that were subject to existing oil, gas and other mineral leases other than properties specifically excluded in the conveyances. Since Sabine Corporation may not have had available to it as a royalty owner information as to whether specific lands in which it owned a royalty interest were subject to an existing lease, minimal amounts of nonproducing royalty properties may also have been conveyed to the Trust. Sabine Corporation did not warrant title to the Royalty Properties either expressly or by implication.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Proved Developed Reserves",
+     "",
+     "",
+     "",
+     "Proved Undeveloped Reserves",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil, Condensate,",
+     "",
+     "",
+     "",
+     "Oil, Condensate,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "and NGL",
+     "",
+     "Sales Gas",
+     "",
+     "and NGL",
+     "",
+     "Sales Gas",
+     ""
+    ],
+    [
+     "State",
+     "(Mbbl)",
+     "",
+     "(MMcf)",
+     "",
+     "(Mbbl)",
+     "",
+     "(MMcf)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Florida",
+     "",
+     "29",
+     "",
+     "1",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Louisiana",
+     "",
+     "82",
+     "",
+     "444",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Mississippi",
+     "",
+     "127",
+     "",
+     "1,129",
+     "",
+     "40",
+     "",
+     "333"
+    ],
+    [
+     "New Mexico",
+     "",
+     "442",
+     "",
+     "2,594",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Oklahoma",
+     "",
+     "454",
+     "",
+     "9,357",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Texas",
+     "",
+     "4,234",
+     "",
+     "19,903",
+     "",
+     "166",
+     "",
+     "3,129"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "5,368",
+     "",
+     "33,428",
+     "",
+     "206",
+     "",
+     "3,462"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The properties appraised are royalties. Therefore, no operating expenses or capital costs are incurred. The expenses reported are primarily severance taxes and ad valorem taxes, which are based on historical tax rates furnished by Bank of America. Several properties incur additional expenses related to transportation, marketing, and/or other expenses that are charged to the royalty interests. These expenses are reported as transportation expenses. No escalation has been applied to the expenses.\nWhile the oil and gas industry may be subject to regulatory changes from time to time that could affect an industry participant\u2019s ability to recover its oil and gas reserves, we are not aware of any such governmental actions which would restrict the recovery of the January 1, 2011, estimated oil and gas volumes. The reserves estimated in this report can be produced under current regulatory guidelines.\nOur estimates of the Trust\u2019s net proved reserves, as of January 1, 2011, attributable to the reviewed properties are based on the definitions of proved reserves of the SEC and are summarized by geographic area as follows, expressed in thousands of barrels (Mbbl) and millions of cubic feet (MMcf):",
+   "prose_after": "A projection of the estimated future net revenue from the properties appraised, as of January 1, 2011, based on the aforementioned assumptions concerning prices and expenses is summarized as follows, expressed in thousands of dollars (M$):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Future Net",
+     ""
+    ],
+    [
+     "Year Ending",
+     "Revenue*",
+     ""
+    ],
+    [
+     "December 31",
+     "(M$)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "43,254"
+    ],
+    [
+     "2012",
+     "",
+     "38,442"
+    ],
+    [
+     "2013",
+     "",
+     "34,384"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subtotal",
+     "",
+     "116,080"
+    ],
+    [
+     "Remaining",
+     "",
+     "363,156"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "479,236"
+    ]
+   ],
+   "caption_stack": [
+    "Future Net"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "A projection of the estimated future net revenue from the properties appraised, as of January 1, 2011, based on the aforementioned assumptions concerning prices and expenses is summarized as follows, expressed in thousands of dollars (M$):",
+   "prose_after": "* Future income tax expenses were not taken into account in the preparation of these estimates.\nThe present worth at a discount rate of 10 percent of future net revenue, as of January 1, 2011, is estimated to be M$227,838.\nIn our opinion, the information relating to estimated proved reserves, estimated future net revenue from proved reserves, and present worth of estimated future net revenue from proved reserves of oil, condensate, natural gas liquids, and gas contained in this report has been prepared in accordance with Paragraphs 932-235-50-4, 932-235-50-6, 932-235-50-7, 932-235-50-9, 932-235-50-30, and 932-235-50-31(a), (b), and (e) of the Accounting Standards Update 932-235-50, Extractive Industries \u2014 Oil and Gas (Topic 932): Oil and Gas Reserve Estimation and Disclosures (January 2010) of the Financial Accounting Standards Board and Rules 4-10(a) (1)-(32) of Regulation S-X and Rules 302(b), 1201, 1202(a) (1), (2), (3), (4), (8), and 1203(a) of Regulation S-K of the Securities and Exchange Commission; provided, however,",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "/s/ Paul J. Szatkowski, P.E."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Paul J. Szatkowski, P.E."
+    ],
+    [
+     "[SEAL]",
+     "Senior Vice President DeGolyer and MacNaughton"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Paul J. Szatkowski, P.E."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "(i) future income tax expenses have not been taken into account in estimating the future net revenue and present worth values set forth herein and (ii) at the request of Bank of America and because of the limited availability of data, proved reserves, future net revenue therefrom, and the present worth values set forth herein for certain royalty interests accounting for approximately 23 percent of the Trust\u2019s total proved net reserves have been estimated in the aggregate by state or area rather than on a property-by-property basis using net production and revenue data and our general knowledge of producing characteristics in the geographic areas in which such interests are located.\nTo the extent the above-enumerated rules, regulations, and statements require determinations of an accounting or legal nature, we, as engineers, are necessarily unable to express an opinion as to whether the above-described information is in accordance therewith or sufficient therefor.\nDeGolyer and MacNaughton is an independent petroleum engineering consulting firm that has been providing petroleum consulting services throughout the world for over 70 years. DeGolyer and MacNaughton does not have any financial interest, including stock ownership, in the Trust. Our fees were not contingent on the results of our evaluation. This letter report has been prepared at the request of Bank of America on behalf on the Trust. DeGolyer and MacNaughton has used all assumptions, data, procedures, and methods that it considers necessary and appropriate to prepare this report.\nSubmitted,\n/s/ DeGolyer and MacNaughton\nDeGOLYER and MacNAUGHTON\nTexas Registered Engineering Firm F-716",
+   "prose_after": "CERTIFICATE of QUALIFICATION\nI, Paul J. Szatkowski, Petroleum Engineer with DeGolyer and MacNaughton, 5001 Spring Valley Road, Suite 800 East, Dallas, Texas, 75244 U.S.A., hereby certify:\n1. That I am a Senior Vice President with DeGolyer and MacNaughton, which company did prepare the letter report addressed to Bank of America dated February 22, 2011, and that I, as Senior Vice President, was responsible for the preparation of this report.\n2. That I attended Texas A&M University, and that I graduated with a Bachelor of Science degree in Petroleum Engineering in 1974; that I am a Registered Professional Engineer in the State of Texas; that I am a member of the International Society of Petroleum Engineers and the American Association of Petroleum Geologists; and that I have in excess of 36 years of experience in oil and gas reservoir studies and reserves evaluations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "/s/ Paul J. Szatkowski, P.E."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "[SEAL]",
+     "Paul J. Szatkowski, P.E.\nSenior Vice President"
+    ],
+    [
+     "",
+     "DeGolyer and MacNaughton"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Paul J. Szatkowski, P.E."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 665,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "CERTIFICATE of QUALIFICATION\nI, Paul J. Szatkowski, Petroleum Engineer with DeGolyer and MacNaughton, 5001 Spring Valley Road, Suite 800 East, Dallas, Texas, 75244 U.S.A., hereby certify:\n1. That I am a Senior Vice President with DeGolyer and MacNaughton, which company did prepare the letter report addressed to Bank of America dated February 22, 2011, and that I, as Senior Vice President, was responsible for the preparation of this report.\n2. That I attended Texas A&M University, and that I graduated with a Bachelor of Science degree in Petroleum Engineering in 1974; that I am a Registered Professional Engineer in the State of Texas; that I am a member of the International Society of Petroleum Engineers and the American Association of Petroleum Geologists; and that I have in excess of 36 years of experience in oil and gas reservoir studies and reserves evaluations.",
+   "prose_after": "There are numerous uncertainties inherent in estimating quantities of proved reserves and in projecting the future rates of production and timing of development. The preceding reserve data in the letter regarding the study represent estimates only and should not be construed to be exact. The estimated present worth of future net revenue amounts shown by the study should not be construed as the current fair market value of the estimated oil and gas reserves since a market value determination would include many additional factors.\nReserve estimates may be adjusted from time to time as more accurate information on the volume or recoverability of existing reserves becomes available. Actual reserve quantities do not change, however, except through production. The Trust continues to own only the Royalty Properties that were initially transferred to the Trust at the time of its creation and is prohibited by the Trust Agreement from acquiring additional oil and gas interests.\nThe future net revenue shown by the study has not been reduced for administrative costs and expenses of the Trust in future years. The costs and expenses of the Trust may increase in future years, depending on the amount of income from the Royalty Properties, increases in the Trustee\u2019s fees (including escrow agent fees) and expenses, accounting, engineering, legal and other professional fees, and other factors. It is expected that the costs and expenses of the Trust in 2011 will be approximately $2,475,000.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sales Price",
+     "",
+     "",
+     "",
+     "Distributions",
+     ""
+    ],
+    [
+     "2010",
+     "High",
+     "",
+     "Low",
+     "",
+     "per Unit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "50.12",
+     "$",
+     "40.65",
+     "$",
+     "0.78248"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "55.00",
+     "",
+     "42.58",
+     "",
+     "1.03861"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "54.64",
+     "",
+     "46.95",
+     "",
+     "0.97589"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "60.00",
+     "",
+     "52.90",
+     "",
+     "0.90751"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "The volatile nature of the world energy markets makes it difficult to estimate future prices of oil and gas. The prices obtained for oil and gas depend upon numerous factors, none of which is within the Trustee\u2019s control, including the domestic and foreign supply of oil and gas and the price of foreign imports, market demand, the price and availability of alternative fuels, the availability of pipeline capacity, instability in oil-producing regions and the effect of governmental regulations.\nItem 3. Legal Proceedings.\nThere are no material pending legal proceedings to which the Registrant is a party or of which any of its property is the subject.\nItem 4. [Reserved].\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nThe Units are listed and traded on the New York Stock Exchange under the symbol \u201cSBR.\u201d The following table sets forth the high and low sales prices for the Units and the aggregate amount of cash distributions paid by the Trust during the periods indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sales Price",
+     "",
+     "",
+     "",
+     "Distributions",
+     ""
+    ],
+    [
+     "2009",
+     "High",
+     "",
+     "Low",
+     "",
+     "per Unit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "45.22",
+     "$",
+     "27.10",
+     "$",
+     "0.88196"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "45.88",
+     "",
+     "35.00",
+     "",
+     "0.63011"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "45.55",
+     "",
+     "37.04",
+     "",
+     "0.71804"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "43.50",
+     "",
+     "38.43",
+     "",
+     "0.56154"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 714,
+    "end_line": 725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "At February 17, 2011, there were 14,579,345 Units outstanding and approximately 1,596 Unit holders of record.\nThe Trust does not maintain any equity compensation plans.\nThe Trust did not repurchase any Units during the period covered by this report.\nItem 6. Selected Financial Data.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31",
+     "2010",
+     "",
+     "2009",
+     "",
+     "2008",
+     "",
+     "2007",
+     "",
+     "2006",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalty Income",
+     "$",
+     "56,087,045",
+     "$",
+     "41,491,746",
+     "$",
+     "90,886,060",
+     "$",
+     "58,910,367",
+     "$",
+     "61,608,030"
+    ],
+    [
+     "Distributable Income",
+     "",
+     "53,976,491",
+     "",
+     "39,246,196",
+     "",
+     "89,008,982",
+     "",
+     "57,059,819",
+     "",
+     "59,830,843"
+    ],
+    [
+     "Distributable Income per Unit",
+     "",
+     "3.70",
+     "",
+     "2.69",
+     "",
+     "6.11",
+     "",
+     "3.91",
+     "",
+     "4.10"
+    ],
+    [
+     "Total Assets at Year End",
+     "",
+     "5,362,706",
+     "",
+     "5,523,658",
+     "",
+     "7,118,136",
+     "",
+     "6,624,000",
+     "",
+     "5,370,010"
+    ],
+    [
+     "Distributions per Unit",
+     "",
+     "3.70",
+     "",
+     "2.79",
+     "",
+     "6.04",
+     "",
+     "3.85",
+     "",
+     "4.24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 734,
+    "end_line": 744
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data."
+    },
+    "note": null
+   },
+   "prose_before": "At February 17, 2011, there were 14,579,345 Units outstanding and approximately 1,596 Unit holders of record.\nThe Trust does not maintain any equity compensation plans.\nThe Trust did not repurchase any Units during the period covered by this report.\nItem 6. Selected Financial Data.",
+   "prose_after": "Item 7. Trustee\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nLiquidity and Capital Resources\nSabine Royalty Trust (the \u201cTrust\u201d) makes monthly distributions to its Unit holders of the excess of the preceding month\u2019s revenues received over expenses incurred. Upon receipt, royalty income is invested in short-term investments until its subsequent distribution. In accordance with the Trust Agreement, the Trust\u2019s only long-term assets consist of royalty interests in producing oil and gas properties. Although the Trust is permitted to borrow funds if necessary to continue its operations, borrowings are not anticipated in the foreseeable future. Accordingly the Trust is dependent on its operations to generate excess cash flows utilized in making distributions. These operating cash flows are largely dependent on such factors as oil and gas prices and production volumes, which are influenced by many factors beyond the control of the Trust. As a royalty owner, the Trust does not have access to certain types of information that would be disclosed by a company",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Less",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "More",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "than",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "than",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "1",
+     "",
+     "1-3",
+     "",
+     "3-5",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Contractual Obligations",
+     "Total",
+     "",
+     "Year",
+     "",
+     "Years",
+     "",
+     "Years",
+     "",
+     "Years",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Debt Obligations",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Capital Lease Obligations",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Operating Lease Obligations",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Purchase Obligations",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Other Long-Term Liabilities Reflected on the Trusts Balance Sheet",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 797
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Trustee\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "In August 2008, the Trust received a refund from the State of New Mexico in the amount of $163,260. In June 2009, the Trust received a refund of $588,207 from the State of Oklahoma. These refunds represented taxes that were withheld from the proceeds of production from the Royalty Properties and remitted to the States of Oklahoma and New Mexico by purchasers. Income taxes are not payable by the Trust, but are the responsibility of the individual Unit holders. Therefore the States of Oklahoma and New Mexico refunded the withheld taxes, and the refunds were included as royalty income in the Trust\u2019s September 2008 and June 2009 distributions, respectively.\nThe Trust received a cash settlement of approximately $425,000 in June 2009. This settlement resulted from a class action civil action filed in the District Court Caddo County, Oklahoma in February 2004. The lawsuit alleged that Anadarko Petroleum Corporation failed to correctly pay royalties on gas by deducting costs associated with compression, gathering, dehydration, and processing that should not have been deducted or factored into the royalty calculation on all Oklahoma wells where Anadarko Petroleum Corporation is or was the operator, working interest owner, or lessee and relates to payment of hydrocarbons produced from those wells since 1985. The settlement was included in the Trust\u2019s June 2009 distribution.\nContractual Obligations",
+   "prose_after": "Critical Accounting Policies and Estimates\nThe Trust\u2019s financial statements reflect the selection and application of accounting policies that require the Trust to make significant estimates and assumptions. The following are some of the more critical judgement areas in the application of accounting policies that currently affect the Trust\u2019s financial condition and results of operations.\n1. Basis of Accounting\nThe financial statements of the Trust are prepared on the following basis and are not intended to present financial position and results of operations in conformity with accounting principles generally accepted in the United States of America:\n\u2022 Royalty income, net of severance and ad valorem taxes, and interest income are recognized in the month in which amounts are received by either the escrow agent or the Trust.\n\u2022 Trust expenses, consisting principally of routine general and administrative costs, include payments made during the accounting period. Expenses are accrued to the extent of amounts that become payable on the next monthly record date following the end of the accounting period. Reserves for liabilities that are contingent or uncertain in amount may also be established if considered necessary.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Oil",
+     "",
+     "Gas",
+     ""
+    ],
+    [
+     "",
+     "Per BBL",
+     "",
+     "Per Mcf",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "70.82",
+     "$",
+     "4.55"
+    ],
+    [
+     "2009",
+     "",
+     "51.38",
+     "",
+     "4.03"
+    ],
+    [
+     "2008",
+     "",
+     "97.32",
+     "",
+     "8.45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Trustee\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "In May 2009, the FASB issued guidance which establishes accounting and reporting standards for events that occur after the balance sheet date but before the financial statements are issued or are available to be issued. This guidance was effective for the Trust for the period ended June 30, 2009 and the adoption did not have an impact on the Trust\u2019s financial statements.\nOff-Balance Sheet Arrangements\nAs stipulated in the Trust Agreement, the Trust is intended to be passive in nature and the Trustee does not have any control over or any responsibility relating to the operation of the Royalty Properties. The Trustee has powers to collect and distribute proceeds received by the Trust and to pay Trust liabilities and expenses, and its actions have been limited to those activities. Therefore, the Trust has not engaged in any off-balance sheet arrangements.\nInflation\nPrices obtained for oil and gas production depend upon numerous factors that are beyond the control of the Trust, including the extent of domestic and foreign production, imports of foreign oil, market demand, domestic and worldwide economic and political conditions, storage capacity and government regulations and tax laws. Prices for both oil and gas have fluctuated between 2008 and 2010. The following table presents the weighted average prices received per year by the Trust:",
+   "prose_after": "Forward-Looking Statements\nThis Annual Report includes \u201cforward-looking statements\u201d within the meaning of Section 21E of the Securities Exchange Act of 1934, which are intended to be covered by the safe harbor created thereby. All statements other than statements of historical fact included in this Annual Report are forward-looking statements. Such statements include, without limitation, factors affecting the price of oil and natural gas contained in Item 1, \u201cBusiness,\u201d certain reserve information and other statements contained in Item 2, \u201cProperties,\u201d and certain statements regarding the Trust\u2019s financial position, industry conditions and other matters contained in this Item 7. Although the Trustee believes that the expectations reflected in such forward-looking statements are reasonable, such expectations are subject to numerous risks and uncertainties and the Trustee can give no assurance that they will prove correct. There are many factors, none of which is within the Trustee\u2019s control, that may cause such expectations not to be realized, including, among other things, factors identified in this Annual Report affecting oil and gas prices (including, without limitation, the domestic and foreign supply of oil and gas and the price of foreign imports, market demand, the price and availability of alternative fuels, the availability of pipeline capacity, instability in oil-producing regions and the effect of governmental regulations), the recoverability of reserves, general economic conditions, actions and policies of petroleum-producing nations and other changes in the domestic and international energy markets and the factors identified in Item 1A, \u201cRisk Factors\u201d.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and short-term investments",
+     "$",
+     "4,790,699",
+     "$",
+     "4,873,961"
+    ],
+    [
+     "Royalty interests in oil and gas properties less accumulated amortization of $21,823,178 (2010) and $21,745,488 (2009)",
+     "",
+     "572,007",
+     "",
+     "649,697"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "5,362,706",
+     "$",
+     "5,523,658"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Trust Corpus",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trust expenses payable",
+     "$",
+     "178,004",
+     "$",
+     "147,048"
+    ],
+    [
+     "Other payables (Note 4)",
+     "",
+     "98,430",
+     "",
+     "180,093"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "276,434",
+     "",
+     "327,141"
+    ],
+    [
+     "Trust Corpus (14,579,345 units of beneficial interest authorized and outstanding)",
+     "",
+     "5,086,272",
+     "",
+     "5,196,517"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "5,362,706",
+     "$",
+     "5,523,658"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 905,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "As described in Note 2 to the financial statements, these financial statements have been prepared on a modified cash basis of accounting which is a comprehensive basis of accounting other than accounting principles generally accepted in the United States of America.\nIn our opinion, such financial statements present fairly, in all material respects, the assets, liabilities and trust corpus of Sabine Royalty Trust at December 31, 2010 and 2009, and the distributable income and changes in trust corpus for each of the three years in the period ended December 31, 2010, on the basis of accounting described in Note 2.\nWe have also audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States), the Trust\u2019s internal control over financial reporting as of December 31, 2010, based on the criteria established in Internal Control \u2014 Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission and our report dated March 1, 2011 expressed an unqualified opinion on the Trust\u2019s internal control over financial reporting.\n/s/ DELOITTE & TOUCHE LLP\nAustin, TX March 1, 2011\nFINANCIAL STATEMENTS\nStatements of Assets, Liabilities and Trust Corpus",
+   "prose_after": "Statements of Distributable Income",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 899,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalty Income",
+     "$",
+     "56,087,045",
+     "$",
+     "41,491,746",
+     "$",
+     "90,886,060"
+    ],
+    [
+     "Interest Income",
+     "",
+     "3,733",
+     "",
+     "21,596",
+     "",
+     "293,971"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "56,090,778",
+     "",
+     "41,513,342",
+     "",
+     "91,180,031"
+    ],
+    [
+     "General and administrative expenses (Note 6)",
+     "",
+     "2,114,287",
+     "",
+     "2,267,146",
+     "",
+     "2,171,049"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributable income",
+     "$",
+     "53,976,491",
+     "$",
+     "39,246,196",
+     "$",
+     "89,008,982"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributable income per unit (Basic and Assuming Dilution) (14,579,345 units) (Notes 1,2)",
+     "$",
+     "3.70",
+     "$",
+     "2.69",
+     "$",
+     "6.11"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions per unit (Note 3)",
+     "$",
+     "3.70",
+     "$",
+     "2.79",
+     "$",
+     "6.04"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 933,
+    "end_line": 955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Distributable Income",
+   "prose_after": "Statements of Changes in Trust Corpus",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 899,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trust corpus, beginning of year",
+     "$",
+     "5,196,517",
+     "",
+     "$",
+     "6,735,265",
+     "",
+     "$",
+     "5,822,655",
+     ""
+    ],
+    [
+     "Amortization of royalty interests",
+     "",
+     "(77,690)",
+     "",
+     "",
+     "(84,547)",
+     "",
+     "",
+     "(92,887)",
+     ""
+    ],
+    [
+     "Distributable income",
+     "",
+     "53,976,491",
+     "",
+     "",
+     "39,246,196",
+     "",
+     "",
+     "89,008,982",
+     ""
+    ],
+    [
+     "Distributions to unit holders (Note 3)",
+     "",
+     "(54,009,046)",
+     "",
+     "",
+     "(40,700,397)",
+     "",
+     "",
+     "(88,003,485)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trust corpus, end of year",
+     "$",
+     "5,086,272",
+     "",
+     "$",
+     "5,196,517",
+     "",
+     "$",
+     "6,735,265",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 958,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Changes in Trust Corpus",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\n1. Trust Organization and Provisions\nSabine Royalty Trust (the \u201cTrust\u201d) was established by the Sabine Corporation Royalty Trust Agreement (the \u201cTrust Agreement\u201d), made and entered into effective as of December 31, 1982, to receive a distribution from Sabine Corporation (\u201cSabine\u201d) of royalty and mineral interests, including landowner\u2019s royalties, overriding royalty interests, minerals (other than executive rights, bonuses and delay rentals), production payments and any other similar, nonparticipatory interest, in certain producing and proved undeveloped oil and gas properties located in Florida, Louisiana, Mississippi, New Mexico, Oklahoma and Texas (the \u201cRoyalty Properties\u201d).\nCertificates evidencing units of beneficial interest (the \u201cUnits\u201d) in the Trust were mailed on December 31, 1982 to Sabine\u2019s shareholders of record on December 23, 1982, on the basis of one Unit for each share of Sabine\u2019s outstanding common stock. In May 1988, Sabine was acquired by Pacific Enterprises, a California corporation. Through a series of mergers, Sabine was merged into Pacific Enterprises Oil Company (USA) (\u201cPacific (USA)\u201d), a California corporation and a wholly owned subsidiary of Pacific Enterprises, effective January 1, 1990. This acquisition and the subsequent mergers had no effect on the Units. Pacific (USA), as successor to Sabine, has assumed by operation of law all of Sabine\u2019s rights and obligations with respect to the Trust. The Units are listed and traded on the New York Stock Exchange.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 899,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Royalty receipts in suspense pending verification of ownership interest or title",
+     "$",
+     "98,430",
+     "$",
+     "180,093"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "98,430",
+     "$",
+     "180,093"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1085,
+    "end_line": 1093
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Other Payables"
+    }
+   },
+   "prose_before": "The cash received by the Trust is primarily from purchasers of the Trust\u2019s oil and gas production and consists of gross sales of production less applicable severance taxes. In August 2008, the Trust received a refund from the State of New Mexico in the amount of $163,260. In June 2009, the Trust received a refund of $588,207 from the State of Oklahoma. These refunds represented taxes that were withheld from the proceeds of production from the Royalty Properties and remitted to the States of Oklahoma and New Mexico by purchasers. Income taxes are not payable by the Trust, but are the responsibility of the individual Unit holders. Therefore the States of Oklahoma and New Mexico refunded the withheld taxes, and the refunds were included as royalty income in the Trust\u2019s September 2008 and June 2009 distributions, respectively.\nThe Trust received a cash settlement of approximately $425,000 in June 2009. This settlement resulted from a class action civil action filed in the District Court Caddo County, Oklahoma in February 2004. The lawsuit alleged that Anadarko Petroleum Corporation failed to correctly pay royalties on gas by deducting costs associated with compression, gathering, dehydration, and processing that should not have been deducted or factored into the royalty calculation on all Oklahoma wells where Anadarko Petroleum Corporation is or was the operator, working interest owner, or lessee and relates to payment of hydrocarbons produced from those wells since 1985. The settlement was included in the Trust\u2019s June 2009 distribution.\n4. Other Payables\nOther payables consist of the following:",
+   "prose_after": "The Trustee believes that these amounts represent an ordinary operating condition of the Trust and that they will be paid or released in the normal course of business.\n5. Subsequent Events\nDistributions\nSubsequent to December 31, 2010, the Trust declared the following distributions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Distribution per",
+     ""
+    ],
+    [
+     "Notification Date",
+     "Monthly Record Date",
+     "Payment Date",
+     "Unit",
+     ""
+    ],
+    [
+     "January 5, 2011",
+     "January 18, 2011",
+     "January 31, 2011",
+     "$",
+     ".31296"
+    ],
+    [
+     "February 3, 2011",
+     "February 15, 2011",
+     "February 28, 2011",
+     "$",
+     ".26797"
+    ]
+   ],
+   "caption_stack": [
+    "Distribution per"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Trustee believes that these amounts represent an ordinary operating condition of the Trust and that they will be paid or released in the normal course of business.\n5. Subsequent Events\nDistributions\nSubsequent to December 31, 2010, the Trust declared the following distributions:",
+   "prose_after": "6. General and Administrative Expenses\nGeneral and administrative expenses for the years ended December 31, were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trustee\u2019s fee",
+     "$",
+     "320,721",
+     "$",
+     "331,519",
+     "$",
+     "331,898"
+    ],
+    [
+     "Escrow agent\u2019s fee",
+     "",
+     "962,144",
+     "",
+     "994,537",
+     "",
+     "995,680"
+    ],
+    [
+     "Professional fees",
+     "",
+     "278,557",
+     "",
+     "393,865",
+     "",
+     "385,595"
+    ],
+    [
+     "Unit holders\u2019 services fees",
+     "",
+     "336,586",
+     "",
+     "388,722",
+     "",
+     "326,439"
+    ],
+    [
+     "Other",
+     "",
+     "216,279",
+     "",
+     "158,503",
+     "",
+     "131,437"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total General and Administrative Expenses",
+     "",
+     "2,114,287",
+     "",
+     "2,267,146",
+     "",
+     "2,171,049"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "6. General and Administrative Expenses\nGeneral and administrative expenses for the years ended December 31, were as follows:",
+   "prose_after": "7. Quarterly Financial Data (Unaudited)\nThe following table sets forth the royalty income, distributable income and distributable income per Unit of the Trust for each quarter in the years ended December 31, 2010 and 2009 (in thousands, except per Unit amounts):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Royalty",
+     "",
+     "Distributable",
+     "",
+     "Distributable",
+     ""
+    ],
+    [
+     "2010",
+     "Income",
+     "",
+     "Income",
+     "",
+     "Income per Unit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "14,376",
+     "$",
+     "13,808",
+     "$",
+     "0.95"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "14,031",
+     "",
+     "13,421",
+     "",
+     "0.92"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "14,114",
+     "",
+     "13,681",
+     "",
+     "0.94"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "13,566",
+     "",
+     "13,066",
+     "",
+     "0.89"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "56,087",
+     "$",
+     "53,976",
+     "$",
+     "3.70"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "7. Quarterly Financial Data (Unaudited)\nThe following table sets forth the royalty income, distributable income and distributable income per Unit of the Trust for each quarter in the years ended December 31, 2010 and 2009 (in thousands, except per Unit amounts):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Royalty",
+     "",
+     "Distributable",
+     "",
+     "Distributable",
+     ""
+    ],
+    [
+     "2009",
+     "Income",
+     "",
+     "Income",
+     "",
+     "Income per Unit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "10,877",
+     "$",
+     "10,277",
+     "$",
+     "0.70"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "10,638",
+     "",
+     "9,949",
+     "",
+     "0.68"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "10,239",
+     "",
+     "9,784",
+     "",
+     "0.67"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "9,738",
+     "",
+     "9,236",
+     "",
+     "0.64"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "41,492",
+     "$",
+     "39,246",
+     "$",
+     "2.69"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "8. Supplemental Oil and Gas Information (Unaudited)\nReserve Quantities\nInformation regarding estimates of the proved oil and gas reserves attributable to the Trust are based on reports prepared by DeGolyer and MacNaughton, independent petroleum engineering consultants. Estimates were prepared in accordance with the guidelines established by the FASB and the Securities and Exchange Commission. Certain information required by this guidance is not presented because that information is not applicable to the Trust due to its passive nature.\nOil and gas reserve quantities (all located in the United States) are estimates based on information available at the time of their preparation. Such estimates are subject to change as additional information becomes available. Reserves actually recovered, and the timing of the production of those reserves, may differ substantially from original estimates. The following schedule presents changes in the Trust\u2019s total proved reserves (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1149,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Oil",
+     "",
+     "",
+     "Gas",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Barrels)",
+     "",
+     "",
+     "(Mcf)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2008",
+     "",
+     "6,425",
+     "",
+     "",
+     "35,815",
+     ""
+    ],
+    [
+     "Revisions of previous statements",
+     "",
+     "(168)",
+     "",
+     "",
+     "6,261",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(387)",
+     "",
+     "",
+     "(4,856)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2008",
+     "",
+     "5,870",
+     "",
+     "",
+     "37,220",
+     ""
+    ],
+    [
+     "Revisions of previous statements",
+     "",
+     "(234)",
+     "",
+     "",
+     "208",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(376)",
+     "",
+     "",
+     "(4,490)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2009",
+     "",
+     "5,260",
+     "",
+     "",
+     "32,938",
+     ""
+    ],
+    [
+     "Revisions of previous statements",
+     "",
+     "694",
+     "",
+     "",
+     "10,369",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(381)",
+     "",
+     "",
+     "(6,416)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2010",
+     "",
+     "5,573",
+     "",
+     "",
+     "36,891",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1174,
+    "end_line": 1196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "8. Supplemental Oil and Gas Information (Unaudited)\nReserve Quantities\nInformation regarding estimates of the proved oil and gas reserves attributable to the Trust are based on reports prepared by DeGolyer and MacNaughton, independent petroleum engineering consultants. Estimates were prepared in accordance with the guidelines established by the FASB and the Securities and Exchange Commission. Certain information required by this guidance is not presented because that information is not applicable to the Trust due to its passive nature.\nOil and gas reserve quantities (all located in the United States) are estimates based on information available at the time of their preparation. Such estimates are subject to change as additional information becomes available. Reserves actually recovered, and the timing of the production of those reserves, may differ substantially from original estimates. The following schedule presents changes in the Trust\u2019s total proved reserves (in thousands):",
+   "prose_after": "Estimated quantities of proved developed reserves of oil and gas as of the dates indicated were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1149,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Oil",
+     "",
+     "Gas",
+     ""
+    ],
+    [
+     "",
+     "(Barrels)",
+     "",
+     "(Mcf)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved developed reserves:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2008",
+     "",
+     "5,820",
+     "",
+     "34,437"
+    ],
+    [
+     "December 31, 2008",
+     "",
+     "5,279",
+     "",
+     "35,572"
+    ],
+    [
+     "December 31, 2009",
+     "",
+     "5,130",
+     "",
+     "31,225"
+    ],
+    [
+     "December 31, 2010",
+     "",
+     "5,368",
+     "",
+     "33,428"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "Estimated quantities of proved developed reserves of oil and gas as of the dates indicated were as follows (in thousands):",
+   "prose_after": "Disclosure of a Standardized Measure of Discounted Future Net Cash Flows\nThe following is a summary of a standardized measure (in thousands) of discounted future net cash flows related to the Trust\u2019s total proved oil and gas reserve quantities. Information presented is based upon a valuation of proved reserves by using discounted cash flows based upon average oil and gas prices ($74.84 per bbl and $4.05 per Mcf, respectively) during the 12-month period prior to the fiscal year-end, determined as an unweighted arithmetic average of the first-day-of-the-month price for each month within such period, unless prices are defined by contractual arrangements, excluding escalations based upon future conditions and severance and ad valorem taxes, if any, and economic conditions, discounted at the required rate of 10 percent. As the Trust is not subject to taxation at the trust level, no provision for income taxes has been made in the following disclosure. Trust prices may differ from posted NYMEX prices due to differences in product quality and property location. The impact of changes in current prices on reserves could vary significantly from year to year. Accordingly, the information presented below should not be viewed as an estimate of the fair market value of the Trust\u2019s oil and gas properties nor should it be viewed as indicative of any trends.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1149,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Future net cash inflows",
+     "$",
+     "479,236",
+     "",
+     "$",
+     "365,467",
+     "",
+     "$",
+     "386,350",
+     ""
+    ],
+    [
+     "Discount of future net cash flows @ 10%",
+     "",
+     "(251,398)",
+     "",
+     "",
+     "(187,755)",
+     "",
+     "",
+     "(197,150)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure of discounted future net cash inflows",
+     "$",
+     "227,838",
+     "",
+     "$",
+     "177,712",
+     "",
+     "$",
+     "189,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1219,
+    "end_line": 1229
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "The following is a summary of a standardized measure (in thousands) of discounted future net cash flows related to the Trust\u2019s total proved oil and gas reserve quantities. Information presented is based upon a valuation of proved reserves by using discounted cash flows based upon average oil and gas prices ($74.84 per bbl and $4.05 per Mcf, respectively) during the 12-month period prior to the fiscal year-end, determined as an unweighted arithmetic average of the first-day-of-the-month price for each month within such period, unless prices are defined by contractual arrangements, excluding escalations based upon future conditions and severance and ad valorem taxes, if any, and economic conditions, discounted at the required rate of 10 percent. As the Trust is not subject to taxation at the trust level, no provision for income taxes has been made in the following disclosure. Trust prices may differ from posted NYMEX prices due to differences in product quality and property location. The impact of changes in current prices on reserves could vary significantly from year to year. Accordingly, the information presented below should not be viewed as an estimate of the fair market value of the Trust\u2019s oil and gas properties nor should it be viewed as indicative of any trends.",
+   "prose_after": "The change in the standardized measure of discounted future net cash flows for the years ended December 31, 2010, 2009 and 2008 is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1213,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1252,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure of discounted future net cash flows, January 1,",
+     "$",
+     "177,712",
+     "",
+     "$",
+     "189,200",
+     "",
+     "$",
+     "322,478",
+     ""
+    ],
+    [
+     "Royalty income, net of severance and ad valorem taxes",
+     "",
+     "(56,087)",
+     "",
+     "",
+     "(41,492)",
+     "",
+     "",
+     "(90,886)",
+     ""
+    ],
+    [
+     "Changes in prices, net of related costs",
+     "",
+     "39,719",
+     "",
+     "",
+     "(12,005)",
+     "",
+     "",
+     "(103,460)",
+     ""
+    ],
+    [
+     "Revisions of previous estimates and other",
+     "",
+     "48,723",
+     "",
+     "",
+     "23,089",
+     "",
+     "",
+     "28,820",
+     ""
+    ],
+    [
+     "Accretion of discount",
+     "",
+     "17,771",
+     "",
+     "",
+     "18,920",
+     "",
+     "",
+     "32,248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure of discounted future net cash flows, December 31,",
+     "$",
+     "227,838",
+     "",
+     "$",
+     "177,712",
+     "",
+     "$",
+     "189,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1232,
+    "end_line": 1245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "The change in the standardized measure of discounted future net cash flows for the years ended December 31, 2010, 2009 and 2008 is as follows (in thousands):",
+   "prose_after": "Subsequent to year end, the price of both oil and gas continued to fluctuate, giving rise to a correlating adjustment of the respective standardized measure of discounted future net cash flows. As of February 16, 2011, NYMEX posted oil prices were approximately $74.13 per barrel, which compared to the average posted price of $79.40 per barrel, used to calculate the worth of future net revenue of the Trust\u2019s proved developed reserves, would result in a smaller standardized measure of discounted future net cash flows for oil. As of February 16, 2011, NYMEX posted gas prices were $5.47 per million British thermal units. The use of such price, as compared to the average posted price of $4.38 per million British thermal units, used to calculate the future net revenue of the Trust\u2019s proved developed reserves would result in a larger standardized measure of discounted future net cash flows for gas.\n9. Texas Franchise Tax\nTexas imposes a franchise tax at a rate of 1% on gross revenues less certain deductions, as specifically set forth in the Texas franchise tax statute. Entities subject to tax generally include trusts unless otherwise exempt,",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1213,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1252,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "113,500",
+     "$",
+     "158,000"
+    ],
+    [
+     "Audit-related fees",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "Tax fees",
+     "$",
+     "26,286",
+     "$",
+     "30,580"
+    ],
+    [
+     "All other fees",
+     "$",
+     "0",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1348,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Texas Franchise Tax"
+    }
+   },
+   "prose_before": "(a) Security Ownership of Certain Beneficial Owners. As of February 17, 2011 there were no Unit holders known to the Trustee to be beneficial owners of more than 5% of the outstanding Units.\n(b) Security Ownership of Management. The Trust has no directors or executive officers. Bank of America, N.A., the Trustee, held as of January 19, 2011 an aggregate of 294,886 Units in various fiduciary capacities, and it had shared voting and investment power with respect to 191,649 of such Units.\n(c) Changes in Control. The Trustee knows of no arrangements the operation of which may at a subsequent date result in a change in control of the Registrant.\n(d) Securities Authorized for Issuance Under Equity Compensation Plans. The Trust has no equity compensation plans.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nNot applicable.\nItem 14. Principal Accounting Fees and Services.\nFees for services performed by Deloitte & Touche LLP for the years ended December 31, 2010 and 2009 are:",
+   "prose_after": "As referenced in Item 10, above, the Trust has no audit committee, and as a result, has no audit committee pre-approval policy with respect to fees paid to Deloitte & Touche LLP.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) The following documents are filed as a part of this report:\n1. Financial Statements (included in Item 8 of this report)\nReport of Independent Registered Public Accounting Firm\nStatements of Assets, Liabilities and Trust Corpus at December 31, 2010 and 2009\nStatements of Distributable Income for Each of the Three Years in the Period Ended December 31, 2010\nStatements of Changes in Trust Corpus for Each of the Three Years in the Period Ended December 31, 2010\nNotes to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(4)(a)",
+     "*",
+     "\u2014",
+     "Sabine Corporation Royalty Trust Agreement effective as of December 31, 1982, by and between Sabine Corporation and InterFirst Bank Dallas, N.A., as trustee."
+    ],
+    [
+     "(b)",
+     "*",
+     "\u2014",
+     "Sabine Corporation Louisiana Royalty Trust Agreement effective as of December 31, 1982, by and between Sabine Corporation and Hibernia National Bank in New Orleans, as trustee, and joined in by InterFirst Bank Dallas, N.A., as trustee."
+    ],
+    [
+     "(23)",
+     "",
+     "\u2014",
+     "Consent of DeGolyer and MacNaughton."
+    ],
+    [
+     "(31)",
+     "",
+     "\u2014",
+     "Rule 13a-14(a)(15d-14(a)) Certification."
+    ],
+    [
+     "(32)",
+     "",
+     "\u2014",
+     "Certification by Bank of America, Trustee of Sabine Royalty Trust, dated March 1, 2011 and submitted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. Section 1350)."
+    ],
+    [
+     "(99.1)",
+     "",
+     "\u2014",
+     "Report dated February 15, 2011 of the Trustee containing interim tax information for each of the 12 months in the year ending December 31, 2010."
+    ],
+    [
+     "(99.2)",
+     "",
+     "\u2014",
+     "Report dated February 28, 2011 of the Statement of Fees and Expenses paid by Sabine Royalty Trust to Bank of America, N.A., as Trustee and Escrow Agent."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Texas Franchise Tax"
+    }
+   },
+   "prose_before": "(a) The following documents are filed as a part of this report:\n1. Financial Statements (included in Item 8 of this report)\nReport of Independent Registered Public Accounting Firm\nStatements of Assets, Liabilities and Trust Corpus at December 31, 2010 and 2009\nStatements of Distributable Income for Each of the Three Years in the Period Ended December 31, 2010\nStatements of Changes in Trust Corpus for Each of the Three Years in the Period Ended December 31, 2010\nNotes to Financial Statements\n2. Financial Statement Schedules\nFinancial statement schedules are omitted because of the absence of conditions under which they are required or because the required information is included in the financial statements and notes thereto.\n3. Exhibits",
+   "prose_after": "* Exhibits 4(a) and 4(b) are incorporated herein by reference to Exhibits 4(a) and 4(b), respectively, of the Registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 1993.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "BY:",
+     "BANK OF AMERICA, N.A., Trustee"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1407,
+    "end_line": 1410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Texas Franchise Tax"
+    }
+   },
+   "prose_before": "* Exhibits 4(a) and 4(b) are incorporated herein by reference to Exhibits 4(a) and 4(b), respectively, of the Registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 1993.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "REPEATING_HEADER",
+     "id": 56,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/  RON E. HOOPER"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1411,
+    "end_line": 1414
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Texas Franchise Tax"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Ron E. Hooper\nSenior Vice-President\nDate: March 1, 2011\n(The Registrant has no directors or executive officers.)\nINDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "REPEATING_HEADER",
+     "id": 56,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(4)(a)",
+     "*",
+     "\u2014",
+     "Sabine Corporation Royalty Trust Agreement effective as of December 31, 1982, by and between Sabine Corporation and InterFirst Bank Dallas, N.A., as trustee."
+    ],
+    [
+     "",
+     "(b)",
+     "*",
+     "\u2014",
+     "Sabine Corporation Louisiana Royalty Trust Agreement effective as of December 31, 1982, by and between Sabine Corporation and Hibernia National Bank in New Orleans, as trustee, and joined in by InterFirst Bank Dallas, N.A., as trustee."
+    ],
+    [
+     "",
+     "(23)",
+     "",
+     "\u2014",
+     "Consent of DeGolyer and MacNaughton."
+    ],
+    [
+     "",
+     "(31)",
+     "",
+     "\u2014",
+     "Rule 13a-14(a)(15d-14(a)) Certification."
+    ],
+    [
+     "",
+     "(32)",
+     "",
+     "\u2014",
+     "Certification by Bank of America, Trustee of Sabine Royalty Trust, dated March 1, 2011 and submitted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. Section 1350)."
+    ],
+    [
+     "",
+     "(99.1)",
+     "",
+     "\u2014",
+     "Report dated February 15, 2011 of the Trustee containing interim tax information for each of the 12 months in the year ending December 31, 2010."
+    ],
+    [
+     "",
+     "(99.2)",
+     "",
+     "\u2014",
+     "Report dated February 28, 2011, 2010 of the Statement of Fees and Expenses paid by Sabine Royalty Trust to Bank of America, N.A., as Trustee and Escrow Agent."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1427,
+    "end_line": 1444
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Texas Franchise Tax"
+    }
+   },
+   "prose_before": "Ron E. Hooper\nSenior Vice-President\nDate: March 1, 2011\n(The Registrant has no directors or executive officers.)\nINDEX TO EXHIBITS",
+   "prose_after": "* Exhibits 4(a) and 4(b) are incorporated herein by reference to Exhibits 4(a) and 4(b), respectively, of the Registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 1993.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

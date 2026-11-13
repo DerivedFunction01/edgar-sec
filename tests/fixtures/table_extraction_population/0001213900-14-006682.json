@@ -1,0 +1,1477 @@
+{
+ "accession": "0001213900-14-006682",
+ "cik": "0001134982",
+ "form": "10-Q",
+ "filing_date": "2014-09-16",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0714_preventioninsur.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\uf0a8 TRANSACTION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934"
+    ]
+   ],
+   "caption_stack": [
+    "\uf0a8 TRANSACTION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 17
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, DC 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended July 31, 2014\nOR",
+   "prose_after": "For the transition period from ________ to _________\nCommission File Number: 000-32389\nPREVENTION INSURANCE.COM\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "88-0126444"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or\n\n\n\nOrganization)",
+     "(I.R.S. Employer \n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "c/o Paragon Capital LP\n\n\n\n110 East 59th Street, 22nd Floor\n\n\n\nNew York, NY",
+     "10022"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the transition period from ________ to _________\nCommission File Number: 000-32389\nPREVENTION INSURANCE.COM\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(212) 593-1600\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former Name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \"non-accelerated filer\" and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "",
+     "Financial Statements",
+     "1"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "7"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "9"
+    ],
+    [
+     "Item 4.",
+     "",
+     "Controls and Procedures",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "",
+     "Legal Proceedings",
+     "10"
+    ],
+    [
+     "Item 1A.",
+     "",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Unregistered Sale of Equity Securities and Use of Proceeds",
+     "10"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Defaults Upon Senior Securities",
+     "10"
+    ],
+    [
+     "Item 4.",
+     "",
+     "Mine Safety Disclosures",
+     "10"
+    ],
+    [
+     "Item 5.",
+     "",
+     "Other Information",
+     "10"
+    ],
+    [
+     "Item 6.",
+     "",
+     "Exhibits",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "12"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \"non-accelerated filer\" and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of September 12, 2014, there were 2,390,081 shares of common stock, $0.0001 par value per share, outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "Part I\nItem 1. Financial Statements.\nPREVENTION INSURANCE.COM\nBALANCE SHEETS\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 31, 2014",
+     "",
+     "",
+     "April 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "7,260",
+     "",
+     "$",
+     "1,990",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "7,260",
+     "",
+     "",
+     "1,990",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "7,260",
+     "",
+     "$",
+     "1,990",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "12,299",
+     "",
+     "$",
+     "20,333",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "120,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "132,299",
+     "",
+     "",
+     "120,333",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "132,299",
+     "",
+     "",
+     "120,333",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value, authorized 10,000,000 shares, zero shares issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, authorized 100,000,000 shares; 2,390,083 shares issued and 2,390,081 shares outstanding",
+     "",
+     "239",
+     "",
+     "",
+     "239",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "4,228,717",
+     "",
+     "",
+     "4,228,717",
+     ""
+    ],
+    [
+     "Treasury stock, 2 shares, at cost",
+     "",
+     "(52,954)",
+     "",
+     "",
+     "(52,954)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(4,301,041)",
+     "",
+     "",
+     "(4,294,345)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(125,039)",
+     "",
+     "",
+     "(118,343)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "",
+     "7,260",
+     "",
+     "$",
+     "1,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Part I\nItem 1. Financial Statements.\nPREVENTION INSURANCE.COM\nBALANCE SHEETS\n(Unaudited)",
+   "prose_after": "PREVENTION INSURANCE.COM STATEMENTS OF OPERATIONS (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 153,
+     "token": "REPEATING_FOOTER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "6,696",
+     "",
+     "",
+     "7,968",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,696)",
+     "",
+     "$",
+     "(7,968)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common shares\n- basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding\n- basic and diluted",
+     "",
+     "2,390,083",
+     "",
+     "",
+     "2,390,083",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended",
+    "July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 158,
+    "end_line": 187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PREVENTION INSURANCE.COM STATEMENTS OF OPERATIONS (Unaudited)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 188,
+     "token": "REPEATING_FOOTER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PREVENTION INSURANCE.COM",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,696)",
+     "",
+     "$",
+     "(7,968)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in accounts payable",
+     "",
+     "(8,034)",
+     "",
+     "",
+     "(2,063)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(14,730)",
+     "",
+     "",
+     "(10,031)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related party advances",
+     "",
+     "20,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Repayment of related party advances",
+     "",
+     "-",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "20,000",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "5,270",
+     "",
+     "",
+     "(5,031)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "1,990",
+     "",
+     "",
+     "9,218",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "7,260",
+     "",
+     "$",
+     "4,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PREVENTION INSURANCE.COM",
+    "STATEMENTS OF CASH FLOWS",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 191,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "PREVENTION INSURANCE.COM\nNOTES TO FINANCIAL STATEMENTS\nJuly 31, 2014\n(Unaudited)\nNOTE 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION\nNature of Business\nPrevention Insurance.Com (the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada in 1975 as Vita Plus Industries, Inc. In March 1999, the Company sold its remaining inventory and changed its name to Prevention Insurance.Com. In 2005, the Company added a second line of business and had been focused on its development of its ATM machine sale operations. On December 28, 2007, the Company entered into an agreement wherein the Company had a change in control which resulted in the divestiture of the ATM division \u201cQuick Pay\u201d. The Company divested itself of the ATM machine sales operations on October 31, 2008.\nAs of July 31, 2014, the Company is a shell company as defined in Rule 12b-2 of the Exchange Act. The Company\u2019s business is to pursue a business combination through acquisition of, or merger with, an existing company. No assurances can be given that the Company will be successful in locating or negotiating with any target company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 190,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 233,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended July 31, 2014",
+     "",
+     "",
+     "Three Months Ended July 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "$",
+     "(14,730)",
+     "",
+     "$",
+     "(10,031)",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "$",
+     "5,270",
+     "",
+     "$",
+     "(5,031)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 362,
+    "end_line": 372
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "The Company\u2019s ability to continue as a going concern is dependent upon its ability to develop additional sources of capital, locate and complete a merger with another company and ultimately achieve profitable operations. No assurances can be given that the Company will be successful in locating or negotiating with any target company.\nLiquidity and Capital Resources\nAs of July 31, 2014, the Company had assets of $7,260, comprised exclusively of cash. This compares with assets of $1,990, comprised exclusively of cash, as of April 30, 2014. The Company\u2019s current liabilities as of July 31, 2014 totaled $132,999, comprised of $12,299 of accounts payable and $120,000 due to a related party. This compares with current liabilities of $120,333, comprised of $20,333 of accounts payable and $100,000 due to a related party, as of April 30, 2014. The Company can provide no assurance that it can continue to satisfy its cash requirements for at least the next twelve months.\nThe following is a summary of the Company's cash flows provided by (used in) operating, investing, and financing activities for the three months ended July 31, 2014 and 2013.",
+   "prose_after": "The Company is dependent upon the receipt of capital investment or other financing to fund its ongoing operations and to execute its business plan of seeking a combination with a private operating company. In addition, the Company is dependent upon certain related parties to provide continued funding and capital resources. If continued funding and capital resources are unavailable at reasonable terms, the Company may not be able to implement its plan of operations.\nResults of Operations\nThe Company has not conducted any active operations since the divestment of the ATM machine sales operations as of October 31, 2008. No revenue has been generated by the Company for the three months ended July 31, 2014 and 2013. It is unlikely the Company will have any revenues unless it is able to effect an acquisition or merger with an operating company, of which there can be no assurance. It is management's assertion that these circumstances may hinder the Company's ability to continue as a going concern. The Company\u2019s plan of operation for the next twelve months shall be to continue its efforts to locate suitable acquisition candidates.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "*     3.1(i)",
+     "Amended and Restated Articles of Incorporation"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "**   3.1(ii)",
+     "Certificate of Amendment of Articles of Incorporation, filed with the State of Nevada on April 27, 2011"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*     3.2",
+     "Bylaws"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*** 10.1",
+     "Demand Promissory Note issued to Paragon Capital LP on June 5, 2012"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Company\u2019s Principal Executive Officer and Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Company\u2019s Principal Executive Officer and Principal Financial pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL INSTANCE DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL TAXONOMY CALCULATION LINKBASE DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL TAXONOMY DEFINITION LINKBASE DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL TAXONOMY LABEL LINKBASE DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL TAXONOMY PRESENTATION LINKBASE DOCUMENT"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 448,
+    "end_line": 477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "As a \u201csmaller reporting company\u201d as defined by Item 10 of Regulation S-K, the Company is not required to provide information required by this Item.\nItem 2. Unregistered Sale of Equity Securities and Use of Proceeds.\nNone.\nItem 3. Defaults Upon Senior Securities.\nNone.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNone.\nItem 6. Exhibits.",
+   "prose_after": "In accordance with SEC Release 33-8238, Exhibit 32.1 is being furnished and not filed.\n* Filed as an exhibit to the Company's registration statement on Form 10-SB, as filed with the Securities and Exchange Commission on July 31, 2002 and incorporated herein by this reference.\n** Filed as an exhibit to the Company's Current Report on Form 8-K, as filed with the Securities and Exchange Commission on April 28, 2011 and incorporated herein by this reference.\n*** Filed as an exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on July 27, 2012 and incorporated herein by this reference.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: September 16, 2014",
+     "PREVENTION INSURANCE.COM"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Alan P. Donenfeld"
+    ],
+    [
+     "",
+     "Alan P. Donenfeld\n\n\n\nPresident and CEO\n\n\n\n(Principal Executive Officer, Principal Financial Officer, and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 489,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "In accordance with SEC Release 33-8238, Exhibit 32.1 is being furnished and not filed.\n* Filed as an exhibit to the Company's registration statement on Form 10-SB, as filed with the Securities and Exchange Commission on July 31, 2002 and incorporated herein by this reference.\n** Filed as an exhibit to the Company's Current Report on Form 8-K, as filed with the Securities and Exchange Commission on April 28, 2011 and incorporated herein by this reference.\n*** Filed as an exhibit to the Company\u2019s Annual Report on Form 10-K, as filed with the Securities and Exchange Commission on July 27, 2012 and incorporated herein by this reference.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

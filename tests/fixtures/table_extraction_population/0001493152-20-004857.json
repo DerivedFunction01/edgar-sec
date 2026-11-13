@@ -1,0 +1,3414 @@
+{
+ "accession": "0001493152-20-004857",
+ "cik": "0001657803",
+ "form": "10-K",
+ "filing_date": "2020-03-27",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "35-2517466"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2019\nCommission File No. 333-209497\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "L9-02, Level 9, Brem Mall,\nJalan Jambu Mawar, Off Jalan Kepong, 52000 Kuala Lumpur, Malaysia\n(Address of principal executive offices, zip code)\nTel:\n(603) 6257 0088\nFax:\n(603) 6242 7088\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nNone",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Commentss",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosure",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "5"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "6"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "7"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "8"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "8"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "10"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "14"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "15"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "15"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "16"
+    ],
+    [
+     "",
+     "Signatures",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page No.",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "On January 6, 2016, the Company issued 5,000,000 shares of its common stock at $0.001 per share for total proceeds of $5,000. In April to June 2016, the Company issued 1,300,000 shares of its common stock at $0.02 per share for total $26,000.\nOn February 28, 2018, the Board of Directors authorized a twenty for one (20:1) forward stock split for shareholders of record as of February 28, 2018 (the \u201cForward Split\u201d), to be effectuated upon the filing of our amended Articles of Incorporation. The amended Articles of Incorporation were filed with the state of Nevada on March 23, 2018. Accordingly, the Registrant\u2019s outstanding number of shares of common stock increased correspondingly from 6,300,000 to 126,000,000. The Forward Split will not have any effect on the stated par value of the Common Stock. The Forward Stock Split became effective on April 10, 2018 (the \u201cEffective Date\u201d), as announced by Financial Industry Regulatory Authority (\u201cFINRA\u201d), whereupon the shares of common stock began trading on a split adjusted basis.\nAt December 31, 2019, the end of the Registrant\u2019s most recently completed fiscal year, there were 126,000,000 shares of the Registrant\u2019s common stock, par value $0.001 per share, outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "1\nFORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K of Inbit Corp., a Nevada corporation, contains \u201cforward-looking statements,\u201d as defined in the United States Private Securities Litigation Reform Act of 1995. In some cases, you can identify forward-looking statements by terminology such as \u201cmay\u201d, \u201cwill\u201d, \u201cshould\u201d, \u201ccould\u201d, \u201cexpects\u201d, \u201cplans\u201d, \u201cintends\u201d, \u201canticipates\u201d, \u201cbelieves\u201d, \u201cestimates\u201d, \u201cpredicts\u201d, \u201cpotential\u201d or \u201ccontinue\u201d or the negative of such terms and other comparable terminology. These forward-looking statements include, without limitation, statements about our market opportunity, our strategies, competition, expected activities and expenditures as we pursue our business plan, and the adequacy of our available cash resources. Although we believe that the expectations reflected in the forward-looking statements are reasonable, we cannot guarantee future results, levels of activity, performance or achievements. Actual results may differ materially from the predictions discussed in these forward-looking statements. The economic environment within which we operate could materially affect our actual results. Additional factors that could materially affect these forward-looking statements and/or predictions include, among other things: the volatility of minerals prices, the possibility that exploration efforts will not yield economically recoverable quantities of minerals, accidents and other risks associated with mineral exploration and development operations, the risk that the Company will encounter unanticipated geological factors, the Company\u2019s need for and ability to obtain additional financing, the possibility that the Company may not be able to secure permitting and other governmental clearances necessary to carry out the Company\u2019s exploration and development plans, other factors over which we have little or no control; and other factors discussed in the Company\u2019s filings with the Securities and Exchange Commission (\u201cSEC\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 108,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet Data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents",
+     "$",
+     "458",
+     "",
+     "$",
+     "554",
+     ""
+    ],
+    [
+     "Other Receivables",
+     "$",
+     "40,000",
+     "",
+     "$",
+     "40,334",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "40,458",
+     "",
+     "$",
+     "40,888",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "237,453",
+     "",
+     "$",
+     "167,215",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Deficit",
+     "$",
+     "(196,995)",
+     "",
+     "$",
+     "(126,327)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 221,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We have not established any compensation plans under which equity securities are authorized for issuance.\nPURCHASES OF EQUITY SECURITIES BY THE REGISTRANT AND AFFILIATED PURCHASERS\nWe did not sell any of our shares of common stock or other securities during the year ended December 31, 2019.\nITEM 6. SELECTED FINANCIAL DATA\nAs a \u201csmaller reporting company,\u201d as defined in Rule 12b-2 of the Exchange Act, we are not required to provide the information called for by this Item.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nRESULTS OF OPERATIONS\nWe have generated operating revenues of $21,667 since inception and have incurred $248,038 in operating expenses from inception through December 31, 2019. We incurred net losses of $70,668 and $36,105 for the years ended December 31, 2019 and 2018, respectively. Our net loss since inception (September 30, 2014) through December 31, 2019 was $227,995. The following table provides selected financial data about our company for the years ended December 31, 2019 and 2018.",
+   "prose_after": "GOING CONCERN\nInbit Corp. is an investment holding company and currently has no operations. Our independent auditor has issued an audit opinion for Inbit Corp. which includes a statement raising substantial doubt as to our ability to continue as a going concern.\nLIQUIDITY AND CAPITAL RESOURCES\nOur cash balance at December 31, 2019 was $458 with $237,453 in outstanding liabilities. Total expenditures over the next 12 months are expected to be approximately $70,000. If we experience a shortage of funds prior to generating revenues from operations we may utilize funds from our directors, who have informally agreed to advance funds to allow us to pay for operating costs, however they have no formal commitment, arrangement or legal obligation to advance or loan funds to us. Management believes our current cash balance will not be sufficient to fund our operations for the next six months.\nOFF-BALANCE SHEET ARRANGEMENTS\nWe have no off-balance sheet arrangements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 210,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TOTAL ASIA ASSOCIATES PLT\n\n\n\n(LLP0016837-LCA & AF002128)\n\n\n\nA Firm registered with US PCAOB and Malaysian MIA\n\n\n\n \n\n\n\nC-3-1, Megan Avenue 1, 189 Off Jalan Tun Razak,\n\n\n\n50400 Kuala Lumpur, Malaysia.\n\n\n\nTel: (603) 2733 9989"
+    ]
+   ],
+   "caption_stack": [
+    "TOTAL ASIA ASSOCIATES PLT\n\n\n\n(LLP0016837-LCA & AF002128)\n\n\n\nA Firm registered with US PCAOB and Malaysian MIA\n\n\n\n \n\n\n\nC-3-1, Megan Avenue 1, 189 Off Jalan Tun Razak,\n\n\n\n50400 Kuala Lumpur, Malaysia.\n\n\n\nTel: (603) 2733 9989"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 259,
+    "end_line": 272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "LIQUIDITY AND CAPITAL RESOURCES\nOur cash balance at December 31, 2019 was $458 with $237,453 in outstanding liabilities. Total expenditures over the next 12 months are expected to be approximately $70,000. If we experience a shortage of funds prior to generating revenues from operations we may utilize funds from our directors, who have informally agreed to advance funds to allow us to pay for operating costs, however they have no formal commitment, arrangement or legal obligation to advance or loan funds to us. Management believes our current cash balance will not be sufficient to fund our operations for the next six months.\nOFF-BALANCE SHEET ARRANGEMENTS\nWe have no off-balance sheet arrangements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nAs a \u201csmaller reporting company,\u201d as defined in Rule 12b-2 of the Exchange Act, we are not required to provide the information called for by this Item.\nITEM 8. FINANCIAL STATEMENTS\nFINANCIAL STATEMENTS\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+   "prose_after": "To the Shareholders and Board of Directors of Inbit Corp.\nL9-02, Level 9, Brem Mall,\nJalan Jambu Mawar, Off Jalan Kepong,\n52000 Kuala Lumpur, Malaysia.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Inbit Corp. (A Development Stage \u201cCompany\u201d) as of December 31, 2019 and 2018, and the related statements of income, stockholders\u2019 equity, and cash flows for the year ended of December 31, 2019 and 2018, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2019 and 2018, and the results of its operations and its cash flows for the year ended December 31, 2019 and 2018, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 256,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TOTAL ASIA ASSOCIATES PLT\n\n\n\n(LLP0016837-LCA & AF002128)\n\n\n\nA Firm registered with US PCAOB and Malaysian MIA\n\n\n\n \n\n\n\nC-3-1, Megan Avenue 1, 189 Off Jalan Tun Razak,\n\n\n\n50400 Kuala Lumpur, Malaysia.\n\n\n\nTel: (603) 2733 9989"
+    ]
+   ],
+   "caption_stack": [
+    "TOTAL ASIA ASSOCIATES PLT\n\n\n\n(LLP0016837-LCA & AF002128)\n\n\n\nA Firm registered with US PCAOB and Malaysian MIA\n\n\n\n \n\n\n\nC-3-1, Megan Avenue 1, 189 Off Jalan Tun Razak,\n\n\n\n50400 Kuala Lumpur, Malaysia.\n\n\n\nTel: (603) 2733 9989"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 259,
+    "end_line": 272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "LIQUIDITY AND CAPITAL RESOURCES\nOur cash balance at December 31, 2019 was $458 with $237,453 in outstanding liabilities. Total expenditures over the next 12 months are expected to be approximately $70,000. If we experience a shortage of funds prior to generating revenues from operations we may utilize funds from our directors, who have informally agreed to advance funds to allow us to pay for operating costs, however they have no formal commitment, arrangement or legal obligation to advance or loan funds to us. Management believes our current cash balance will not be sufficient to fund our operations for the next six months.\nOFF-BALANCE SHEET ARRANGEMENTS\nWe have no off-balance sheet arrangements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nAs a \u201csmaller reporting company,\u201d as defined in Rule 12b-2 of the Exchange Act, we are not required to provide the information called for by this Item.\nITEM 8. FINANCIAL STATEMENTS\nFINANCIAL STATEMENTS\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+   "prose_after": "To the Shareholders and Board of Directors of Inbit Corp.\nL9-02, Level 9, Brem Mall,\nJalan Jambu Mawar, Off Jalan Kepong,\n52000 Kuala Lumpur, Malaysia.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Inbit Corp. (A Development Stage \u201cCompany\u201d) as of December 31, 2019 and 2018, and the related statements of income, stockholders\u2019 equity, and cash flows for the year ended of December 31, 2019 and 2018, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2019 and 2018, and the results of its operations and its cash flows for the year ended December 31, 2019 and 2018, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 256,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Total Asia Associates PLT",
+     ""
+    ],
+    [
+     "TOTAL ASIA ASSOCIATES PLT",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Kuala Lumpur, Malaysia",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "March 26, 2020",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Total Asia Associates PLT",
+    "TOTAL ASIA ASSOCIATES PLT"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 317,
+    "end_line": 326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "TOTAL ASIA ASSOCIATES PLT\n(LLP0016837-LCA & AF002128)\nA Firm registered with US PCAOB and Malaysian MIA\nC-3-1, Megan Avenue 1, 189 Off Jalan Tun Razak,\n50400 Kuala Lumpur, Malaysia.\nTel: (603) 2733 9989\n</TABLE>\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1, the Company have working capital deficiency of $196,995 and has accumulated losses of $227,995. These matters raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1 to the financial statements. These financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nWe have served as the Company\u2019s auditor since 2018.",
+   "prose_after": "BALANCE SHEET AS OF DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n(Audited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "- $ -",
+     "",
+     "",
+     "- $ -",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "458",
+     "",
+     "",
+     "554",
+     ""
+    ],
+    [
+     "Deposit",
+     "",
+     "40,000",
+     "",
+     "",
+     "40,334",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "40,458",
+     "",
+     "",
+     "40,888",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "14,181",
+     "",
+     "",
+     "10,232",
+     ""
+    ],
+    [
+     "Amount owing to directors",
+     "",
+     "46,192",
+     "",
+     "",
+     "46,192",
+     ""
+    ],
+    [
+     "Amount owing to shareholders",
+     "",
+     "175,875",
+     "",
+     "",
+     "110,791",
+     ""
+    ],
+    [
+     "Amount owing to related party",
+     "",
+     "1,205",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "237,453",
+     "",
+     "",
+     "167,215",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY/(DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 5,000,000,000 shares authorized; 126,000,000 shares issued and outstanding as at December 31, 2019 and December 31, 2018 respectively",
+     "",
+     "6,300",
+     "",
+     "",
+     "6,300",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "24,700",
+     "",
+     "",
+     "24,700",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(227,995)",
+     "",
+     "",
+     "(157,327)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(196,995)",
+     "",
+     "",
+     "(126,327)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "40,458",
+     "",
+     "",
+     "40,888",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 334,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEET AS OF DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n(Audited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except number of shares)\n(Audited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Period from",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "Year ended",
+     "",
+     "",
+     "2014 (Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "- $ -",
+     "",
+     "",
+     "- $ -",
+     "",
+     "",
+     "- $ -",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "17,167",
+     "",
+     "",
+     "21,667",
+     ""
+    ],
+    [
+     "COGS",
+     "",
+     "-",
+     "",
+     "",
+     "(13,057)",
+     "",
+     "",
+     "(13,057)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "11,433",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative expenses",
+     "",
+     "(70,668)",
+     "",
+     "",
+     "(40,215)",
+     "",
+     "",
+     "(248,038)",
+     ""
+    ],
+    [
+     "Net loss from operations",
+     "",
+     "(70,668)",
+     "",
+     "",
+     "(36,105)",
+     "",
+     "",
+     "(227,995)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(70,668)",
+     "",
+     "",
+     "(36,105)",
+     "",
+     "",
+     "(227,995)",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "",
+     "126,000,000",
+     "",
+     "",
+     "126,000,000",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Period from",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 381,
+    "end_line": 404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except number of shares)\n(Audited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n(Audited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "During",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Paid-in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Development",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Capital",
+     "",
+     "Stage",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "-$-",
+     "",
+     "-$-",
+     "",
+     "-$-",
+     "",
+     "",
+     "-$-",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2014 (Inception)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(325)",
+     "",
+     "",
+     "(325)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2014",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(325)",
+     "",
+     "",
+     "(325)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(700)",
+     "",
+     "",
+     "(700)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2015",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,025)",
+     "",
+     "",
+     "(1,025)",
+     ""
+    ],
+    [
+     "Common stock issued for cash at $0.001 per share",
+     "",
+     "5,000,000",
+     "",
+     "5,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Common stock issued for cash at $0.02 per share",
+     "",
+     "1,300,000",
+     "",
+     "1,300",
+     "",
+     "24,700",
+     "",
+     "-",
+     "",
+     "",
+     "26,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(34,479)",
+     "",
+     "",
+     "(34,479)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2016",
+     "",
+     "6,300,000",
+     "",
+     "6,300",
+     "",
+     "24,700",
+     "",
+     "(35,504)",
+     "",
+     "",
+     "(4,504)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(85,718)",
+     "",
+     "",
+     "(85,718)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "",
+     "6,300,000",
+     "",
+     "6,300",
+     "",
+     "24,700",
+     "",
+     "(121,222)",
+     "",
+     "",
+     "(90,222)",
+     ""
+    ],
+    [
+     "Common stock forward split (20:1)",
+     "",
+     "119,700,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(36,105)",
+     "",
+     "",
+     "(36,105)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "",
+     "126,000,000",
+     "",
+     "6,300",
+     "",
+     "24,700",
+     "",
+     "(157,327)",
+     "",
+     "",
+     "(126,327)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(70,668)",
+     "",
+     "",
+     "(70,668)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "126,000,000",
+     "",
+     "6,300",
+     "",
+     "24,700",
+     "",
+     "(227,995)",
+     "",
+     "",
+     "(196,995)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deficit",
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 416,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n(Audited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF CASH FLOWS FOR THE YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d)\n(Audited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Period from",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "Year ended",
+     "",
+     "",
+     "2014 (Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "- $ -",
+     "",
+     "",
+     "- $ -",
+     "",
+     "",
+     "- $ -",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(70,668)",
+     "",
+     "",
+     "(36,105)",
+     "",
+     "",
+     "(227,995)",
+     ""
+    ],
+    [
+     "Adjustments for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "350",
+     ""
+    ],
+    [
+     "  Equipment written off",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,750",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accrued liabilities",
+     "",
+     "3,897",
+     "",
+     "",
+     "(1,003)",
+     "",
+     "",
+     "14,181",
+     ""
+    ],
+    [
+     "  Current assets",
+     "",
+     "386",
+     "",
+     "",
+     "(40,334)",
+     "",
+     "",
+     "(40,000)",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(66,385)",
+     "",
+     "",
+     "(77,442)",
+     "",
+     "",
+     "(251,714)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,100)",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of loan from shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,075)",
+     ""
+    ],
+    [
+     "Repayment to related party",
+     "",
+     "",
+     "",
+     "",
+     "(78,987)",
+     "",
+     "",
+     "(156,983)",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "31,000",
+     ""
+    ],
+    [
+     "Proceeds from loan from directors",
+     "",
+     "",
+     "",
+     "",
+     "46,192",
+     "",
+     "",
+     "46,192",
+     ""
+    ],
+    [
+     "Proceeds from loan from shareholder",
+     "",
+     "65,084",
+     "",
+     "",
+     "110,791",
+     "",
+     "",
+     "176,950",
+     ""
+    ],
+    [
+     "Proceeds from related party",
+     "",
+     "1,205",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "158,188",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "66,289",
+     "",
+     "",
+     "77,996",
+     "",
+     "",
+     "254,272",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH",
+     "",
+     "(96)",
+     "",
+     "",
+     "554",
+     "",
+     "",
+     "458",
+     ""
+    ],
+    [
+     "CASH, BEGINNING OF YEAR/PERIOD",
+     "",
+     "554",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "CASH, END OF YEAR/PERIOD",
+     "",
+     "458",
+     "",
+     "",
+     "554",
+     "",
+     "",
+     "458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Period from",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 460,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF CASH FLOWS FOR THE YEARS ENDED DECEMBER 31, 2019 and 2018\n(Currency expressed in United States Dollars (\u201cUS$\u201d)\n(Audited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\n1. NATURE OF OPERATIONS\nThe Company was incorporated in the State of Nevada on September 30, 2014 and its year-end is December 31. The Company is a development stage company and is currently seeking new business opportunities.\nGoing concern\nThese financial statements have been prepared on a going concern basis. The Company has incurred losses since inception resulting in an accumulated deficit of $227,995 at December 31, 2019 and further losses are anticipated in the development of its business raising substantial doubt about the Company\u2019s ability to continue as a going concern. Its ability to continue as a going concern is dependent upon the ability of the Company to generate profitable operations in the future and/or to obtain the necessary financing to meet its obligations and repay its liabilities arising from normal business operations when they come due. Management has plans to seek additional capital through a private placement of its common stock or further director loans as needed. These financial statements do not include any adjustments relating to the recoverability and classification of recorded assets, or the amounts of and classification of liabilities that might be necessary in the event the Company cannot continue.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 510,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Loss before income tax",
+     "$",
+     "70,668",
+     "",
+     "$",
+     "36,105",
+     ""
+    ],
+    [
+     "Statutory tax rate",
+     "",
+     "34",
+     "%",
+     "",
+     "34",
+     "%"
+    ],
+    [
+     "Expected recovery of income taxes at standard rates",
+     "",
+     "24,027",
+     "",
+     "",
+     "12,276",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(24,027)",
+     "",
+     "",
+     "(12,276)",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Components of deferred tax asset:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-capital tax loss carry forwards",
+     "$",
+     "77,518",
+     "",
+     "$",
+     "53,491",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(77,518)",
+     "",
+     "",
+     "(53,491)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company has implemented all new accounting pronouncements that are in effect and that may impact its financial statements and does not believe that there are any other new accounting pronouncements that have been issued that might have a material impact on its financial position or results of operations.\n3. DUE TO DIRECTORS\nThe amounts are unsecured, bear no interest and are payable on demand.\n4. DUE TO SHAREHOLDERS\nThe amounts are unsecured, bear no interest and are payable on demand.\n5. DUE TO RELATED PARTY\nThe amounts are unsecured, bear no interest and are payable on demand.\n6. INCOME TAXES\nAs of December 31, 2019, the Company has estimated tax loss carry forwards for tax purpose of approximately $227,995. These amounts may be applied against future taxable income. Future tax benefits which may arise as a result of these losses have not been recognized in these financial statements, as their realization has not been determined to be more likely than not to occur.\nThe actual income tax provisions differ from the expected amounts calculated by applying the statutory income tax rate to the Company\u2019s loss before income taxes. The components of these differences are as follows:",
+   "prose_after": "The Company has filed income tax returns since inception in the United States. Both taxing authorities prescribe penalties for failing to file certain tax returns and supplemental disclosure. Upon filing there could be penalties on interest assessed. Such penalties vary by jurisdiction and by assessing practices and authorities. As the Company has incurred losses since inception there would be no known or anticipated exposure to penalties for income tax liability. However, certain jurisdictions may assess penalties for failing to file returns and other disclosures and for failing to file other supplemental information associated with foreign ownership, debt and equity position. Inherent uncertainties arise over tax positions taken with respect to transfer pricing, related party transactions, tax credits, tax based incentives and stock based transactions. Management has considered the likelihood and significance of possible penalties associated with its current and intended filing positions and has determined, based on their assessment, that such penalties, if any, would not be expected to be material.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 560,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions and Offices"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tan Chee Hong",
+     "51",
+     "CEO, Secretary, Chairman, Director"
+    ],
+    [
+     "Choy Cheng Choong",
+     "59",
+     "CFO, Treasurer, Director"
+    ],
+    [
+     "Loke Yeu Loong",
+     "56",
+     "President, Director"
+    ],
+    [
+     "Teo Joo Meng",
+     "59",
+     "Director"
+    ],
+    [
+     "Zadey Che Wan Bin Abdullah Fadzil",
+     "42",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "2. We plan to create a position to segregate duties consistent with control objectives and will increase our personnel resources and technical accounting expertise within the accounting function when funds are available to us. The accounting personnel is responsible for reviewing the financing activities, facilitate the approval of the financing, record the information regarding the financing, and submit SEC filing related documents to our legal counsel in order to comply with the filing requirements of SEC.\n3. We plan to prepare written policies and procedures for accounting and financial reporting to establish a formal process to close our books monthly on an accrual basis and account for all transactions, including equity and debt transactions.\nWe anticipate that these initiatives will be at least partially, if not fully, implemented by the end of fiscal year 2019.\nCHANGES IN INTERNAL CONTROL OVER FINANCIAL REPORTING.\nThere were no changes in the Company\u2019s internal control over financial reporting for the year ended December 31, 2019 that have materially affected, or that are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nOur executive officer\u2019s and director\u2019s and their respective age\u2019s as of the date of this annual report on March 20, 2020 are as follows:",
+   "prose_after": "The executive officers and directors named above will serve until the next annual meeting of the stockholders or until their respective resignation or removal from office. Thereafter, directors are anticipated to be elected for one-year term at the annual stockholders\u2019 meeting. Officers will hold their positions at the pleasure of the Board of Directors, absent any employment agreement, of which none currently exists or is contemplated.\nSet forth below is a brief description of the background and business experience of our executive officers and directors.\nTan Chee Hong - Chief Executive Officer, Secretary, Chairman of the Board, Director\nMr. Tan Chee Hong graduated from University of Science Malaysia with a Bachelor of Science degree in Business Management. In addition, he obtained his MBA from University of Portsmouth, UK in 1998. He is a Secretary General in Malaysia Bird\u2019s Nest Upstream and Downstream Industry Association. Also, he is the advisor for Youth Entrepreneurs Society, the University Nottingham Malaysia.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Option",
+     "",
+     "Non-Equity Incentive Plan",
+     "",
+     "Non-qualified Deferred",
+     "",
+     "All Other",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal",
+     "",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Awards",
+     "",
+     "Awards",
+     "",
+     "Compensation",
+     "",
+     "Compensation",
+     "",
+     "Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Position",
+     "Year",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tan Chee Hong (1)",
+     "",
+     "2019",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Choy Cheng Choong (2)",
+     "",
+     "2019",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loke Yeu Loong (3)",
+     "",
+     "2019",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Teo Joo Meng (4)",
+     "",
+     "2019",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zadey Che Wan Bin Abdullah Fadzil (5)",
+     "",
+     "2019",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "All of these filing requirements were satisfied by the Company\u2019s Officers, Directors, and ten-percent holders.\nIn making these statements, we have relied on the written representation of our Directors and Officers or copies of the reports that they have filed with the Commission.\nCODE OF ETHICS\nThe Company has adopted a code of ethics that applies to its principal executive officers, principal financial officer, principal accounting officer or controller, or persons performing similar functions.\nITEM 11. EXECUTIVE COMPENSATION\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our Chief Executive Officer and all other executive officers (collectively, the \u201cNamed Executive Officers\u201d) in the fiscal years ended December 31, 2019:\nSUMMARY COMPENSATION TABLE\nThe table below summarizes all compensation awarded to, earned by, or paid to our former Officers for all services rendered in all capacities to us as of the year ended December 31, for the fiscal year ended as indicated.",
+   "prose_after": "(1) CEO, Secretary, Chairman, Director\n(2) CFO, Treasurer, Director\n(3) President, Director\n(4) Director\n(5) Director\nNone of our directors have received monetary compensation since our inception to the date of this Annual Report on Form 10-K. We currently do not pay any compensation to our directors serving on our board of directors.\nSTOCK OPTION GRANTS\nWe have not granted any stock options to the executive officers since our inception. Upon the further development of our business, we will likely grant options to directors and officers consistent with industry standards.\nEMPLOYMENT AGREEMENTS\nThe Company is not a party to any employment agreement and has no compensation agreement with any of its officers and directors.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 787,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Name and Address",
+     "Number of Shares",
+     "",
+     "",
+     "Percent of",
+     "",
+     ""
+    ],
+    [
+     "Title of Class",
+     "of Beneficial Owner",
+     "Owned Beneficially",
+     "",
+     "",
+     "Class Owned",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Tan Chee Hong",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CEO, Secretary, Chairman and Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "229-A Kg Lapan, Bacang, 75200 Melaka,",
+     "",
+     "12,795,699",
+     "",
+     "",
+     "10.1",
+     "%"
+    ],
+    [
+     "",
+     "Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Choy Cheng Choong",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CFO, Treasurer and Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "26,Jalan Sri Hartamas 12, Sri Hartamas, 50480",
+     "",
+     "10,903,226",
+     "",
+     "",
+     "8.6",
+     "%"
+    ],
+    [
+     "",
+     "Kuala Lumpur, Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Loke Yeu Loong",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "President and Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "No. 15 Jalan l/l42, Taman Orkid Desa, 56000",
+     "",
+     "17,000,000",
+     "(1)",
+     "",
+     "13.5",
+     "%"
+    ],
+    [
+     "",
+     "Kuala Lumpur, Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Teo Joo Meng",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Director",
+     "",
+     "4,301,075",
+     "",
+     "",
+     "3.4",
+     "%"
+    ],
+    [
+     "",
+     "1, Jalan Kuning Muda 6, Taman Pelangi, 80400",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Johor Bahru, Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Zadey Che Wan Bin Abdullah Fadzil",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Director",
+     "",
+     "23,000,000",
+     "(2)",
+     "",
+     "18.2",
+     "%"
+    ],
+    [
+     "",
+     "1, Lorong Bayu Nyaman A, Country Heights,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "43000 Kajang, Selangor, Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "Fatimah Binti Abdillah",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Istana Al-Muktafi Billah, 20400 Kuala",
+     "",
+     "10,000,000",
+     "",
+     "",
+     "7.9",
+     "%"
+    ],
+    [
+     "",
+     "Terengganu, Malaysia",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 795,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(ii) each officer and director of our Company; and (iii) all officers and directors as a group. Information relating to beneficial ownership of common stock by our principal shareholders and management is based upon information furnished by each person using \u201cbeneficial ownership\u201d concepts under the rules of the Securities and Exchange Commission. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the Securities and Exchange Commission rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power.\nThe percentages below are calculated based on 126,000,000 shares of our common stock issued and outstanding as of December 31, 2019. We do not have any outstanding warrant, options or other securities exercisable for or convertible into shares of our common stock.",
+   "prose_after": "l) Mr. Loke Yeu Loong\u2019s 17,000,000 shares held in the name of Grade Competence Sdn Bhd, an entity beneficially owned and controlled by Mr. Loke Yeu Loong and his wife, Liau Kuan Mee.\n2) Zadey Che Wan Bin Abdullah Fadzil\u2019s 23,000,000 shares include 3,000,000 held in his own name, and an additional 10,000,000 shares held in the name of his father, Abdullah Fadzil Bin Che Wan, who lives in the same household, and an additional 10,000,000 shares held in the name of Abdullah Fadzil Che Wan Holdings Sdn Bhd, an entity beneficially owned and controlled by Mr. Abdullah Fadzil Bin Che Wan and his wives.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nNone.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nFor the year ended December 31, 2019 the total fees charged to the Company for audit services, including quarterly reviews were $9,512 (2018: $10,000), for audit-related services were $0 (2018: $0) and for tax services and other services were $675 (2018:$500) and $0 (2018: $0), respectively.\nPART IV",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 787,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Bylaws*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS **",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH **",
+     "",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL **",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF **",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB **",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE **",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "2) Zadey Che Wan Bin Abdullah Fadzil\u2019s 23,000,000 shares include 3,000,000 held in his own name, and an additional 10,000,000 shares held in the name of his father, Abdullah Fadzil Bin Che Wan, who lives in the same household, and an additional 10,000,000 shares held in the name of Abdullah Fadzil Che Wan Holdings Sdn Bhd, an entity beneficially owned and controlled by Mr. Abdullah Fadzil Bin Che Wan and his wives.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nNone.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nFor the year ended December 31, 2019 the total fees charged to the Company for audit services, including quarterly reviews were $9,512 (2018: $10,000), for audit-related services were $0 (2018: $0) and for tax services and other services were $675 (2018:$500) and $0 (2018: $0), respectively.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULE\n(a) The following Exhibits, as required by Item 601 of Regulation SK, are attached or incorporated by reference, as stated below.",
+   "prose_after": "* Incorporated by reference to the Registrant\u2019s Form S-1 (File No. 333-209497), filed with the Commission on February 11, 2016.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INBIT CORP.",
+     ""
+    ],
+    [
+     "",
+     "(Name of Registrant)",
+     ""
+    ],
+    [
+     "Date: March 26, 2020",
+     "By:",
+     "/s/ TAN CHEE HONG"
+    ],
+    [
+     "",
+     "Name:",
+     "TAN CHEE HONG"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer and Chairman"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 26, 2020",
+     "By:",
+     "/s/ CHOY CHENG CHOONG"
+    ],
+    [
+     "",
+     "Name:",
+     "CHOY CHENG CHOONG"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer and Treasurer"
+    ]
+   ],
+   "caption_stack": [
+    "INBIT CORP.",
+    "(Name of Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Incorporated by reference to the Registrant\u2019s Form S-1 (File No. 333-209497), filed with the Commission on February 11, 2016.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Bylaws*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS **",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH **",
+     "",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL **",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF **",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB **",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE **",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "* Incorporated by reference to the Registrant\u2019s Form S-1 (file no. 333-209497), filed with the Commission on February 11, 2016.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

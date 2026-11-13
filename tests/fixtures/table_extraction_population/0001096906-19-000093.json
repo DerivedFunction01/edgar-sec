@@ -1,0 +1,3645 @@
+{
+ "accession": "0001096906-19-000093",
+ "cik": "0001131903",
+ "form": "10-K",
+ "filing_date": "2019-03-13",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "spectral.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "51-0520296"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "701 Fifth Avenue, Suite 4200, Seattle, Washington",
+     "98104"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the year ended December 31, 2018\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to _________\nCommission File No. 0-50274\nSpectral Capital Corporation\n(Name of small business issuer in its charter)",
+   "prose_after": "Issuer\u2019s telephone number: (206) 262-7820\nSecurities registered under Section 12(b) of the Exchange Act:\nNone\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, $0.0001 par value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [X] Yes [ ] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FORWARD LOOKING STATEMENTS",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business.",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2",
+     "Description of Property.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings.",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4.",
+     "Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "Market for Common Equity and Related Stockholder Matters.",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 7",
+     "Management\u2019s Discussion and Analysis or Plan of Operation.",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements.",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9",
+     "Changes In and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9A",
+     "Controls and Procedures.",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9B",
+     "Other Information.",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "Directors, Executive Officers, Promoters and Control Persons and Corporate Governance; Compliance With Section 16(a) of the Exchange Act.",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation.",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 14",
+     "Principal Accountant Fees and Services.",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "Exhibits",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "34"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging Growth Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nAs of February 28, 2019, there are issued and outstanding only common equity shares in the amount of 117,857,623 shares, par value $0.0001, of which there is only a single class. There are 5,000,000 preferred shares authorized and none issued and outstanding.\nAs of June 30, 2018, the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the last reported sales price of such common equity was approximately $471,375.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Form 10-K, press releases and certain information provided periodically in writing or verbally by our officers or our agents contain statements which constitute forward-looking statements. The words \u201cmay\u201d, \u201cwould\u201d, \u201ccould\u201d, \u201cwill\u201d, \u201cexpect\u201d, \u201cestimate\u201d, \u201canticipate\u201d, \u201cbelieve\u201d, \u201cintend\u201d, \u201cplan\u201d, \u201cgoal\u201d, and similar expressions and variations thereof are intended to specifically identify forward-looking statements. These statements appear in a number of places in this Form 10-K and include all statements that are not statements of historical fact regarding the intent, belief or current expectations of us, our directors or our officers, with respect to, among other things: (i) our liquidity and capital resources; (ii) our financing opportunities and plans; (iii) our ability to generate revenues; (iv) competition in our business segments; (v) market and other trends affecting our future financial condition or results of operations; (vi) our growth strategy and operating strategy; (vii) the declaration and/or payment of dividends; and (viii) any statements regarding any reserves, potential reserves, potential mineral yield or extraction costs with respect to our mining properties.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "Monitr leverages cloud computing, big data and software to analyze the financial markets to discover those stocks that are trending now. Thousands of companies, news stories, blogs and opinion pieces are analyzed daily to uncover the trends and displayed in an accessible and easy-to-use web based interface for investors and traders."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Many investors use only a few sources to become informed of market conditions, Monitr provides investors with access to thousands of sources."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is offered for all types of investors"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is independent and not being paid to promote stocks"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is simple to use and removes a lot of guess work for new and seasoned investors"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "DESCRIPTION OF BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "Noot is a mobile technology company that has created \u201cNoot\u201d which utilizes proprietary search engine technology for mobile devices. Noot helps people easily find news, social media, photos and video that match their interests. The technology actually learns what users like and improves its results over time, providing very personalized information for the user. A key benefit of Noot is that the search engine continues to work even when the user is not actively searching and will discover new and relevant items without prompting, providing more enhanced and personalized information the next time the user searches for that topic. While Noot is no longer a working mobile application, as we have determined that the revenue potential did not meet our expectations, we are seeking alternative business opportunities to utilize the technology.\nMonitr, launched in late 2014, is a technology and financial data services company. In September 2015, Monitr launched a significant update to its technology that makes it easy for the new or non-professional investor to find the stocks that are trending up in price at the moment.",
+   "prose_after": "Monitr specializes in the analysis of news and opinion to determine the aggregate sentiment and trends of equities, commodities and currencies across world markets. In a change to its business model, Monitr no longer offers these services direct to individual customers for monthly or annual fees. Instead it has focused on sourcing its services to professional trading organizations that want access to Monitr\u00b4s trend detecting software.\nOn September 30, 2015 one of Spectral\u00b4s portfolio companies, Kontexto, ceased operations and is no longer in business.\nCompetition\nWe compete with a wide variety of parties in connection with our efforts to: (i) attract users to our various Analytics, Search & Software portfolio companies and the ones we intend to develop; (ii) develop, market and distribute our current and anticipated B2C (\u201cBusiness to Consumer\u201d) and B2B (\u201cBusiness to Business\u201d) software applications (\u201cApplications or Apps\u201d) as developed by our portfolio companies; (iii) attract third parties to distribute our Applications and related technology; and (iv) attract advertisers. In the case of our anticipated search services generally, our competitors include Google, Yahoo!, Facebook, Amazon and other destination search websites and search centric portals (some of which provide a broad range of content and services and/or link to various desktop applications), third party toolbar, convenience search and applications providers, other search technology and convenience service providers (including internet access providers, social media platforms, online advertising networks, traditional media companies and companies that provide online content). When we market our portfolio search and analytics services, we compete against a variety of established players and new entrants.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "High*",
+     "",
+     "Low*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended 2017\n\nQuarter ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31, 2017",
+     "$",
+     "0.01",
+     "$",
+     "0.006"
+    ],
+    [
+     "June 30, 2017",
+     "$",
+     "0.01",
+     "$",
+     "0.006"
+    ],
+    [
+     "September 30, 2017",
+     "$",
+     "0.01",
+     "$",
+     "0.0025"
+    ],
+    [
+     "December 31, 2017",
+     "$",
+     "0.005",
+     "$",
+     "0.0022"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 339,
+    "end_line": 351
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this annual report on Form 10-K for the year ended December 31, 2018, there were no pending material legal proceedings to which we were a party and we are not aware that any were contemplated. There can be no assurance, however, that we will not be made a party to litigation in the future. Any finding of liability imposed against us is likely to have an adverse effect on our business, our financial condition, including liquidity and profitability, and our results of operations\nITEM 4. MINE SAFETY DISCLOSURES.\nN/A.\nPART II\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS.\nOur common stock is quoted on the Pink Sheets, under the symbol \u201cFCCN\u201d.\nThe following table sets forth the high and low bid prices for our common stock as reported each quarterly period within the last seven years on the OTC Bulletin Board, and as obtained from investopedia.com. The high and low prices reflect inter-dealer prices, without retail mark-up, markdown or commission and may not necessarily represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended 2018\n\nQuarter ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31, 2018",
+     "$",
+     "0.0044",
+     "$",
+     "0.0023"
+    ],
+    [
+     "June 30, 2018",
+     "$",
+     "0.0072",
+     "$",
+     "0.0025"
+    ],
+    [
+     "September 30, 2018",
+     "$",
+     "0.005",
+     "$",
+     "0.0026"
+    ],
+    [
+     "December 31, 2018",
+     "$",
+     "0.006",
+     "$",
+     "0.0023"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended 2018\n\nQuarter ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 352,
+    "end_line": 361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "STOCKHOLDERS\nAs of January 1, 2019, there were approximately 90 holders of record of our common shares.\nDIVIDENDS\nFrom our inception we have never declared or paid any cash dividends on shares of our common stock and we do not anticipate declaring or paying any cash dividends in the foreseeable future. The decision to declare any future cash dividends will depend upon our results of operations, financial condition, current and anticipated cash needs, contractual restrictions, restrictions imposed by applicable law and other factors that our board of directors deem relevant. Although it is our intention to utilize all available funds for the development of our business, no restrictions are in place that would limit our ability to pay dividends. The payment of any future cash dividends will be at the sole discretion of our board of directors.\nRECENT SALES OF UNREGISTERED SECURITIES\nNone.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION.\nThe following discussion and analysis of our financial condition, results of operations and liquidity should be read in conjunction with our consolidated financial statements for the years ended December 31, 2018 and 2017 and the related notes appearing elsewhere in this annual report. Our consolidated financial statements have been prepared in accordance with generally accepted accounting principles.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "Monitr leverages cloud computing, big data and software to analyze the financial markets to discover those stocks that are trending now. Thousands of companies, news stories, blogs and opinion pieces are analyzed daily to uncover the trends and displayed in an accessible and easy-to-use web based interface for investors and traders."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Many investors use only a few sources to become informed of market conditions, Monitr provides investors with access to thousands of sources."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is offered for all types of investors"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is independent and not being paid to promote stocks"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Monitr is simple to use and removes a lot of guess work for new and seasoned investors"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "Noot is a mobile technology company that has created \u201cNoot\u201d which utilizes proprietary search engine technology for mobile devices. The technology actually learns what users like and improves its results over time, providing very personalized information for the user. A key benefit of Noot is that the search engine continues to work even when the user is not actively searching and will discover new and relevant items without prompting, providing more enhanced and personalized information the next time the user searches for that topic. While Noot is no longer a working mobile application, as we have determined that the revenue potential did not meet our expectations, we are seeking alternative business opportunities to utilize the technology.\nMonitr, launched in late 2014, is a technology and financial data services company. In September 2015, Monitr launched a significant update to its technology that makes it easy for the new or non-professional investor to find the stocks that are trending up in price at the moment.",
+   "prose_after": "Monitr specializes in the analysis of news and opinion to determine the aggregate sentiment and trends of equities, commodities and currencies across world markets. In a change to its business model, Monitr no longer offers these services direct to individual customers for monthly or annual fees. Instead it has focused on sourcing its services to professional trading organizations that want access to Monitr\u00b4s trend detecting software.\nOn September 30, 2015, one of Spectral\u00b4s portfolio companies, Kontexto, ceased operations and is no longer in business.\nSpectral's twelve-month plan includes the following goals/targets:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "Complete one or more private equity placements to provide funding for developing of our current technologies and the acquisition of additional portfolio companies;"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Upgrade and add features to Monitr\u00b4s trend detecting software,"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Solicit sales from larger financial institutions for Monitr\u00b4s customized analysis, real time data services and other API features;"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "Upgrade the current technology and determine business development opportunities for Noot\u00b4s search technology."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "Monitr specializes in the analysis of news and opinion to determine the aggregate sentiment and trends of equities, commodities and currencies across world markets. In a change to its business model, Monitr no longer offers these services direct to individual customers for monthly or annual fees. Instead it has focused on sourcing its services to professional trading organizations that want access to Monitr\u00b4s trend detecting software.\nOn September 30, 2015, one of Spectral\u00b4s portfolio companies, Kontexto, ceased operations and is no longer in business.\nSpectral's twelve-month plan includes the following goals/targets:",
+   "prose_after": "RESULTS OF OPERATIONS FOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017\nRevenues\nWe are currently engaged in a technology development business and have exited natural resources. To date we have not recognized any revenues.\nOperating Expenses\nOperating expenses decreased $11,645, from $190,004 for the year ended December 31, 2017 to $178,359 for the year ended December 31, 2018. The decrease is due to the limited amount of capital available to the Company, thus, expenditures consists of costs related to keeping the Company current in their SEC reporting requirements.\nLIQUIDITY AND CAPITAL RESOURCES\nAs of December 31, 2018, we had $658 of cash on hand. We intend to fund operations through the use of cash on hand and through additional advances from our chief executive officer and through debt and equity financings until sufficient cash flows from operations can be achieved.\nNet cash used in operating activities decreased $3,179, from $31,605 for the year ended December 31, 2017 to $28,426 for the year ended December 31, 2018. This decrease was primarily related to the Company having limited operations, due to the cash flow limitations.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2018 and 2017",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2018 and 2017",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Stockholders\u2019 Deficit for the years ended December 31, 2018 and 2017",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2018 and 2017",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "19"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "We believe that our current financial resources are not sufficient to meet our working capital requirements over the next year. Additional funding will be necessary in order to expand portfolio operations and to reach our goals. Currently, the Company does not have any commitments or assurances for additional capital nor can the Company provide assurance that such financing will be available to it on favorable terms, or at all. If, after utilizing the existing sources of capital available to the Company, further capital needs are identified and the Company is not successful in obtaining the financing, it may be forced to curtail its existing or planned future operations. In addition, if necessary, we will decrease expenses and redirect our efforts towards a sale of one of more of our assets should funding become inadequate.\nOur short-term prospects are promising given our success to date in securing the two portfolio companies, Noot and Monitr. We believe we will experience significant operational and financial growth from these and other portfolio companies during the next 12 months. However, we need significant capital to implement our plan.\nTABLE OF CONTENTS\nDECEMBER 31, 2018 AND 2017",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the shareholders and the board of directors of Spectral Capital Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Spectral Capital Corporation (the \"Company\") as of December 31, 2018 and 2017, the related statement of operations, stockholders' deficit, and cash flows for the years then ended, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2018 and 2017, and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 492,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "658",
+     "",
+     "$",
+     "692",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "658",
+     "",
+     "",
+     "692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "658",
+     "",
+     "$",
+     "692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "779",
+     "",
+     "$",
+     "779",
+     ""
+    ],
+    [
+     "Related party advances and accruals",
+     "",
+     "742,834",
+     "",
+     "",
+     "564,509",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "743,613",
+     "",
+     "",
+     "565,288",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "743,613",
+     "",
+     "",
+     "565,288",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.0001, 5,000,000 shares authorized, no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, par value $0.0001, 500,000,000 shares authorized, 117,857,623 shares issued and outstanding as of December 31, 2018 and 2017",
+     "",
+     "11,786",
+     "",
+     "",
+     "11,786",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "27,787,681",
+     "",
+     "",
+     "27,787,681",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(28,322,469)",
+     "",
+     "",
+     "(28,144,934)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(523,002)",
+     "",
+     "",
+     "(345,467)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "(219,953)",
+     "",
+     "",
+     "(219,129)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(742,955)",
+     "",
+     "",
+     "(564,596)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "$",
+     "658",
+     "",
+     "$",
+     "692",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 531,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nSubstantial Doubt about the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company\u2019s significant operating losses raise substantial doubt about its ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s BF Borgers CPA PC\nBF Borgers CPA PC\nWe have served as the Company's auditor since 2017\nLakewood, CO\nMarch 11, 2019\nCONSOLIDATED BALANCE SHEETS\nAS OF DECEMBER 31, 2018 AND 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 525,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "28,426",
+     "",
+     "",
+     "38,889",
+     ""
+    ],
+    [
+     "Wages and benefits",
+     "",
+     "149,933",
+     "",
+     "",
+     "151,115",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "178,359",
+     "",
+     "",
+     "190,004",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(178,359)",
+     "",
+     "",
+     "(190,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations and before non-controlling interest and provision for income taxes",
+     "",
+     "(178,359)",
+     "",
+     "",
+     "(190,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before non-controlling interest",
+     "",
+     "(178,359)",
+     "",
+     "",
+     "(190,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss attributable to non-controlling interest",
+     "",
+     "824",
+     "",
+     "",
+     "403",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Spectral Capital Corporation",
+     "$",
+     "(177,535)",
+     "",
+     "$",
+     "(189,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per common share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Weighted average shares - basic and diluted",
+     "",
+     "117,857,623",
+     "",
+     "",
+     "117,857,623",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 572,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 614,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Additional\n\nPaid-in\n\nCapital",
+     "",
+     "Non-Controlling\n\nInterest",
+     "",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "Shareholders'\n\nDeficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2016",
+     "",
+     "117,857,623",
+     "$",
+     "11,786",
+     "$",
+     "27,445,400",
+     "$",
+     "(218,726)",
+     "",
+     "$",
+     "(27,955,333)",
+     "",
+     "$",
+     "(716,873)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(403)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(403)",
+     ""
+    ],
+    [
+     "Related party advances and accruals relieved through contribution to additional paid-in capital",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "342,281",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "342,281",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(189,601)",
+     "",
+     "",
+     "(189,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2017",
+     "",
+     "117,857,623",
+     "",
+     "11,786",
+     "",
+     "27,787,681",
+     "",
+     "(219,129)",
+     "",
+     "",
+     "(28,144,934)",
+     "",
+     "",
+     "(564,596)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(824)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(824)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(177,535)",
+     "",
+     "",
+     "(177,535)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "",
+     "117,857,623",
+     "$",
+     "11,786",
+     "$",
+     "27,787,681",
+     "$",
+     "(219,953)",
+     "",
+     "$",
+     "(28,322,469)",
+     "",
+     "$",
+     "(742,955)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 651,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Spectral Capital Corporation",
+     "$",
+     "(177,535)",
+     "",
+     "$",
+     "(189,601)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "(824)",
+     "",
+     "",
+     "(403)",
+     ""
+    ],
+    [
+     "Due to related parties - accrued salary",
+     "",
+     "149,933",
+     "",
+     "",
+     "151,115",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaids and other assets",
+     "",
+     "-",
+     "",
+     "",
+     "9,168",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "-",
+     "",
+     "",
+     "(1,884)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(28,426)",
+     "",
+     "",
+     "(31,605)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related party advances",
+     "",
+     "28,392",
+     "",
+     "",
+     "31,075",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "28,392",
+     "",
+     "",
+     "31,075",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in cash and cash equivalents",
+     "",
+     "(34)",
+     "",
+     "",
+     "(530)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "692",
+     "",
+     "",
+     "1,222",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "658",
+     "",
+     "$",
+     "692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Relief of related party advances and accruals treated as a capital contribution to additional paid-in capital",
+     "$",
+     "-",
+     "",
+     "$",
+     "342,281",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 659,
+    "end_line": 695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2018 AND 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 NATURE OF OPERATIONS\nSpectral Capital Corporation (the \"Company\" or \"Spectral\") was incorporated on September 13, 2000 under the laws of the State of Nevada. The Company was formerly in the business of developing internet search engine technology. In December 2012, Spectral changed its corporate focus from the natural resource sector and back to information technology. The Company focuses on acquiring and developing information technology.\nSpectral is focused on the identification, acquisition, development, financing of technology that has the potential to transform existing industries. The Company looks for technology that can be protected through patents or laws regarding trade secrets. Spectral has acquired significant stakes in two technology companies currently and actively works with management to drive these companies toward increasing market penetration in their particular verticals. Spectral intends to own, in full or in part, technology companies whose founders and key management can take advantage of the deep networks and experience in technology development embodied in Spectral management.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 653,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 697,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1 -",
+     "Observable inputs that reflect quoted prices (unadjusted) for identical assets or liabilities in active markets."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2 -",
+     "Include other inputs that are directly or indirectly observable in the marketplace."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3 -",
+     "Unobservable inputs which are supported by little or no market activity."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 760,
+    "end_line": 767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company will recognize revenues in accordance with Accounting Standards Codification (\u201cASC\u201d) 606, \u201cRevenue from contracts with customers\u201d. Revenues will be recognized when control of the promised goods or services is transferred to our customers, in an amount that reflects the consideration we expect to be entitled to in exchange for those goods or services.\nFair Value of Financial Instruments\nFair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants as of the measurement date. Applicable accounting guidance provides an established hierarchy for inputs used in measuring fair value that maximizes the use of observable inputs and minimizes the use of unobservable inputs by requiring that the most observable inputs be used when available. Observable inputs are inputs that market participants would use in valuing the asset or liability and are developed based on market data obtained from sources independent of the Company. Unobservable inputs are inputs that reflect the Company\u2019s assumptions about the factors that market participants would use in valuing the asset or liability. There are three levels of inputs that may be used to measure fair value:",
+   "prose_after": "The fair value hierarchy also requires an entity to maximize the use of observable inputs and minimize the use of unobservable inputs when measuring fair value. As of December 31, 2018 and 2017, the Company does not have any assets or liabilities which would be considered Level 2 or 3.\nThe Company\u2019s financial instruments primarily consist of cash and cash equivalents, accounts payable and amounts payable to related parties. The carrying amount of these financial instruments approximates fair value due either to length of maturity or interest rates that approximate prevailing market rates unless otherwise disclosed in these consolidated financial statements.\nIncome Taxes\nThe Company follows ASC 740, Income Taxes for recording the provision for income taxes. The asset and liability approach is used to recognize deferred tax assets and liabilities for the expected future tax consequences of temporary differences between the carrying amounts and the tax bases of assets and liabilities. Tax law and rate changes are reflected in income in the period such changes are enacted. The Company records a valuation allowance to reduce deferred tax assets to the amount that is more likely than not to be realized. The Company includes interest and penalties related to income taxes, including unrecognized tax benefits, within the income tax provision.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Non-Controlling",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2017",
+     "$",
+     "(219,129)",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest",
+     "",
+     "(824)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "$",
+     "(219,953)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Non-Controlling",
+    "Interest"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Basic loss per share is calculated by dividing the Company\u2019s net loss applicable to common shareholders by the weighted average number of common shares during the period. Diluted earnings per share is calculated by dividing the Company\u2019s net income available to common shareholders by the diluted weighted average number of shares outstanding during the year. The diluted weighted average number of shares outstanding is the basic weighted number of shares adjusted for any potentially dilutive debt or equity. Common share equivalents totaling 13,000,000 were outstanding at December 31, 2018 and 2017, respectively, representing outstanding warrants and options, and were not included in the computation of diluted earnings per share for the years ended December 31, 2018 and 2017, as their effect would have been anti-dilutive.\nNon-Controlling Interests\nNon-controlling interests disclosed within the consolidated statement of operations represent the minority ownership's 40% share of net losses of Noot Holdings, Inc. and Monitr Holdings, Inc incurred during the years ended December 31, 2018 and 2017. The following table sets forth the changes in non-controlling interest for the years ended December 31, 2018 and 2017:",
+   "prose_after": "Foreign Currency\nThe Company's functional currency is the United States Dollar. Transaction gains or losses related to balances denominated in a currency other than the functional currency are recognized in the consolidated statements of operations.\nRecent Accounting Pronouncements\nIn May 2014, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update (\u201cASU\u201d) No. 2014-09 \u201cRevenue from Contracts with Customers\u201d (Topic 606). Under this guidance, revenue is recognized when promised goods or services are transferred to customers in an amount that reflects the consideration that is expected to be received for those goods or services. The updated standard will replace most existing revenue recognition guidance under U.S. GAAP when it becomes effective and permits the use of either the retrospective or cumulative effect transition method. Early adoption is not permitted. The updated standard will be effective for the Company beginning January 1, 2018. The adoption of this standard did not have an impact on its consolidated financial statements and related disclosures.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Stock Options",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Weighted\n\nAverage\n\nLife\n\nRemaining",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2016",
+     "",
+     "",
+     "13,000,000",
+     "$",
+     "0.70",
+     "",
+     "4.80"
+    ],
+    [
+     "",
+     ".",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2017",
+     "",
+     "",
+     "13,000,000",
+     "",
+     "0.70",
+     "",
+     "3.80"
+    ],
+    [
+     "Issued",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2018",
+     "",
+     "",
+     "13,000,000",
+     "$",
+     "0.70",
+     "",
+     "2.80"
+    ],
+    [
+     "Vested, December 31, 2018",
+     "",
+     "",
+     "13,000,000",
+     "$",
+     "0.70",
+     "",
+     "2.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 875
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 STOCKHOLDERS' DEFICIT"
+    }
+   },
+   "prose_before": "The Company accounts for employee stock-based compensation in accordance with the guidance of FASB ASC Topic 718, Compensation \u2013 Stock Compensation which requires all share-based payments to employees, including grants of employee stock options, to be recognized in the financial statements based on their fair values.\nThe Company has adopted a stock option and award plan to attract, retain and motivate its directors, officers, employees, consultants and advisors. Options provide the opportunity to acquire a proprietary interest in the Company and to benefit from its growth. Vesting terms and conditions are determined by the Board of Directors at the time of the grant. The Plan provides for the issuance of up to 15,000,000 common shares for employees, consultants, directors, and advisors.\nOn February 6, 2012, the Company granted 7,500,000 options to two employees. Stock-based compensation is being recognized over the two year vesting period. The options were valued at $3,408,750 using the Black-Scholes Option Pricing Model for which has been previously expensed.\nSummary of Stock Options\nA summary of changes in stock options during the years ended December 31, 2018 and 2017 is as follows:",
+   "prose_after": "NOTE 5 \u2013 INCOME TAXES\nAs of December 31, 2018, the Company had net operating loss carry forwards of approximately $13,900,000 that may be available to reduce future years\u2019 taxable income through 2037. Future tax benefits which may arise as a result of these losses have not been recognized in these consolidated financial statements, as their realization is determined not likely to occur and accordingly, the Company has recorded a valuation allowance for the deferred tax asset relating to these tax loss carry-forwards. The difference between the Company's tax rate and the statutory rate is due to a full valuation allowance.\nThe provision for Federal income tax consists of the following:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax benefit attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operations",
+     "$",
+     "37,282",
+     "",
+     "$",
+     "39,816",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(37,282)",
+     "",
+     "",
+     "(39,816)",
+     ""
+    ],
+    [
+     "Net provision of income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "NOTE 5 \u2013 INCOME TAXES\nAs of December 31, 2018, the Company had net operating loss carry forwards of approximately $13,900,000 that may be available to reduce future years\u2019 taxable income through 2037. Future tax benefits which may arise as a result of these losses have not been recognized in these consolidated financial statements, as their realization is determined not likely to occur and accordingly, the Company has recorded a valuation allowance for the deferred tax asset relating to these tax loss carry-forwards. The difference between the Company's tax rate and the statutory rate is due to a full valuation allowance.\nThe provision for Federal income tax consists of the following:",
+   "prose_after": "The cumulative tax effect at the expected rate of 21% of significant items comprising our net deferred tax amount is as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 920,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "4,762,608",
+     "",
+     "$",
+     "4,725,326",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(4,762,608)",
+     "",
+     "",
+     "(4,725,326)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 897,
+    "end_line": 908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The cumulative tax effect at the expected rate of 21% of significant items comprising our net deferred tax amount is as follows:",
+   "prose_after": "Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards for federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur net operating loss carry forwards may be limited as to use in future years. The Company is subject to routine audits by taxing jurisdictions; however, there are currently no audits for any tax periods in progress. The Company believes they are no longer subject to income tax examinations for years prior to 2012.\nIn December 2017, a law commonly known as the Tax Cuts and Jobs Act (\u201cTCJA\u201d) was enacted in the United States. Among other things, the TCJA reduces the U.S. corporate income tax rate to 21 percent and implements a new system of taxation for non-U.S. earnings, including by imposing a one-time tax on the deemed repatriation of undistributed earnings of non-U.S. subsidiaries. The Company is currently evaluating the effects of the TCJA, including the one-time deemed repatriation tax and the remeasurement of our deferred tax assets and liabilities.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 920,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Jenifer Osterwalder",
+     "54",
+     "Chief Executive Officer, President and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen Spalding",
+     "72",
+     "Interim Chief Financial and Accounting Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS, CONTROL PERSONS AND CORPORATE GOVERNANCE; COMPLIANCE WITH SECTION 16(A) OF THE EXCHANGE ACT."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Management assessed the effectiveness of our internal control over financial reporting as of December 31, 2018, utilizing the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission as published in \"Internal Control over Financial Reporting \u2013 Guidance for Smaller Public Companies.\" Based on the assessment by management, we determined that our internal control over financial reporting was ineffective as of December 31, 2018.\nChanges in Internal Control of Financial Reporting\nDuring the year ended there were no changes in our internal control over financial reporting that have materially affected, or are reasonably likely to affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS, CONTROL PERSONS AND CORPORATE GOVERNANCE; COMPLIANCE WITH SECTION 16(A) OF THE EXCHANGE ACT.\nThe following table sets forth our directors and executive officers and their ages as of the year ended December 31, 2018:",
+   "prose_after": "Jenifer Osterwalder - Chief Executive Officer, President, and Director\nJenifer Osterwalder has served as our Chief Executive Officer, Principal Accounting Officer, President, Treasurer, Secretary and as a director since March 7, 2005. Previously, from January 2005 to March 2005, Ms. Osterwalder served as President, Chief Executive Officer, Treasurer, Secretary and as a director FUSA Technology Investments Corp. From January 2000 to January 2005 she served as a consultant investment banker to Five Seas Securities, Ltd., a securities firm in British Columbia, Canada. From August 2004 to December 2004 Ms. Osterwalder served as a consultant Manger to International Conference Services, Ltd., a conference and destination management firm in British Columbia, Canada. From January 2003 to December 2003, she served as a consultant Investment Liaison and Marketing Director for Terrikon Corporation, in British Columbia, Canada. Ms. Osterwalder received her Bachelor of Science in Business Administration in marketing and logistics from Ohio State University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "any bankruptcy petition filed by or against any business of which such person was an executive officer either at the time of the bankruptcy or within two years prior to that time;"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "any conviction in a criminal proceeding or being subject to a pending criminal proceeding (excluding traffic violations and other minor offenses);"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "being subject to any order, judgment, or decree, not subsequently reversed, suspended or vacated, of any court of competent jurisdiction, permanently or temporarily enjoining, barring, suspending or otherwise limiting his involvement in any type of business, securities or banking activities; and"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "being found by a court of competent jurisdiction (in a civil action), the Securities and Exchange Commission or the Commodity Futures Trading Commission to have violated a federal or state securities or commodities law, and the judgment has not been reversed, suspended, or vacated."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS, CONTROL PERSONS AND CORPORATE GOVERNANCE; COMPLIANCE WITH SECTION 16(A) OF THE EXCHANGE ACT."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Mr. Spalding has been an independent management and financial consultant based in Mill Valley, California since March 2008. In the course of his management and financial consulting business, Mr. Spalding serves on numerous boards and is an advisor and interim officer for numerous companies, which include Paxton Energy Incorporated, Cytta Corporation and Verde Resources, Inc. Mr. Spalding is also formerly CEO, Vigilant Privacy Corporation, a private Nevada corporation that was based in Pleasanton, California, from 2003 to March, 2008 where he procured the firms angel round of financing and lead the organization while the company's product was transformed from a desktop product to an enterprise security solution. Previously he was a Partner, Deloitte & Touche LLP, from 1997 - 2003, responsible for their IDI Practice (Implementation, Development and Integration) Division. He was formerly a partner at KPMG Peat Marwick LLP from 1995 - 1997, involved in Strategic Services, Enabling Technology Practice. Mr. Spalding is currently Assistant Professor, San Francisco State University, Business Systems Management and Control, Course Number 507 (Senior/Graduate Level), present. He has an MBA, in Quantitative Analysis, University of Arizona, 1974. He also has a B.S., Finance and Management, Eastern Illinois University, 1973, a B.S., Physics (solid state), Eastern Illinois University, 1969 and a B.S., Mathematics, Eastern Illinois University, 1969.\nFAMILY RELATIONSHIPS\nThere are no family relationships, by blood or marriage, among any of our directors or executive officers.\nINVOLVEMENT IN CERTAIN LEGAL PROCEEDINGS\nDuring the past five years, none of our directors, executive officers and control persons have been involved in any of the following events:",
+   "prose_after": "BOARD OF DIRECTORS COMMITTEES\nAs of the date of this annual report on Form 10-K for the year ended December 31, 2018, we have no standing committees and our entire board of directors serves as our audit, compensation and nominating committees. Our board of directors has determined that Stephen Spalding, a member of our board, qualifies as an audit committee financial expert. However, we intend to appoint an audit, a compensation and a nominating committee of our board of directors.\nAs of the date of this annual report on Form 10-K for the year ended December 31, 2018, there have been no material changes to the procedures by which our security holders may recommend nominees to our board of directors.\nCODE OF ETHICS\nAs of the date of this annual report on Form 10-K for the year ended December 31, 2018, we have not yet adopted a code of ethics for our principal executive officer, principal financial officer or principal accounting officer. We are, however, in the process of drafting such a code of ethics and, upon adoption, it we will provide a copy of our code of ethics, without charge, to any person who so requests a copy, in writing, at: Spectral Capital Corporation., 701 Fifth Avenue, Suite 4200, Seattle, Washington 98104.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nLate Reports",
+     "",
+     "Number of\n\nTransactions Not\n\nTimely Reported",
+     "",
+     "Failure\n\nto File",
+     ""
+    ],
+    [
+     "Jenifer Osterwalder",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen Spalding",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1026,
+    "end_line": 1037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS, CONTROL PERSONS AND CORPORATE GOVERNANCE; COMPLIANCE WITH SECTION 16(A) OF THE EXCHANGE ACT."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As of the date of this annual report on Form 10-K for the year ended December 31, 2018, we have not yet adopted a code of ethics for our principal executive officer, principal financial officer or principal accounting officer. We are, however, in the process of drafting such a code of ethics and, upon adoption, it we will provide a copy of our code of ethics, without charge, to any person who so requests a copy, in writing, at: Spectral Capital Corporation., 701 Fifth Avenue, Suite 4200, Seattle, Washington 98104.\nCOMPLIANCE WITH SECTION 16(A)\nSection 16(a) of the Exchange Act requires our directors and executive officers, and persons who own more than ten percent of a registered class of our equity securities, to file with the SEC initial reports of ownership and reports of changes in ownership of our common stock and other equity securities of ours. Officers, directors and greater than ten percent stockholders are required by the SEC\u2019s regulations to furnish us with copies of all Section 16(a) forms they filed.\nThe following table sets for the compliance reporting under Section 16(a) during the last year.",
+   "prose_after": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth the total compensation awarded to, earned by, or paid to our Chief Executive Officer during each of the last two completed years. No other individuals are employed by us or have earned a total annual salary and bonus in excess of $100,000 during any of the last two completed years.\nSUMMARY COMPENSATION TABLE",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards**",
+     "",
+     "Non-Equity Incentive Plan Compensation",
+     "",
+     "Nonqualified Deferred Compensation Earnings",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Jenifer Osterwalder",
+     "2018",
+     "$",
+     "149,933",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "149,933"
+    ],
+    [
+     "Chief Executive Officer*",
+     "2017",
+     "$",
+     "151,115",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "151,115"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1045,
+    "end_line": 1052
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth the total compensation awarded to, earned by, or paid to our Chief Executive Officer during each of the last two completed years. No other individuals are employed by us or have earned a total annual salary and bonus in excess of $100,000 during any of the last two completed years.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "EMPLOYMENT AGREEMENTS\nOur President and CEO, Ms. Osterwalder, does not currently have an employment agreement, however, the Company has agreed to pay Ms. Osterwalder 12,350 CHF a month for her services. As of December 31, 2018 and 2017, amounts due to Ms. Osterwalder for accrued compensation were $617,765 and $467,832, respectively.\nAs of the date of this annual report on Form 10-K for the year ended December 31, 2018, we have no other employment agreements in place with any of our other executive officers, directors or employees.\nOUTSTANDING EQUITY AWARDS AT YEAR END\nThere were 13,000,000 outstanding option equity awards at our year end, 6,000,000 held by our President and Chief Executive Officer, Jenifer Osterwalder, 3,500,000 held by director Stephen Spalding and 1,000,000 held by members of our advisory board and 2,500,000 held by service providers and others.\nCOMPENSATION OF DIRECTORS\nPursuant to authority granted under our Article II, Section 2.16 of our bylaws, directors are entitled to such compensation as our board of directors shall from time to time determine. The following table sets forth the compensation of our directors for the year ended December 31, 2018:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DIRECTOR COMPENSATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Fees Earned\n\nor Paid\n\nin Cash",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards",
+     "",
+     "Non-Equity\n\nIncentive Plan\n\nCompensation",
+     "",
+     "Non-\n\nQualified Deferred Compensation\n\nEarnings",
+     "",
+     "All Other\n\nCompensation",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Stephen Spalding*",
+     "",
+     "$",
+     "0",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "DIRECTOR COMPENSATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1078
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our President and CEO, Ms. Osterwalder, does not currently have an employment agreement, however, the Company has agreed to pay Ms. Osterwalder 12,350 CHF a month for her services. As of December 31, 2018 and 2017, amounts due to Ms. Osterwalder for accrued compensation were $617,765 and $467,832, respectively.\nAs of the date of this annual report on Form 10-K for the year ended December 31, 2018, we have no other employment agreements in place with any of our other executive officers, directors or employees.\nOUTSTANDING EQUITY AWARDS AT YEAR END\nThere were 13,000,000 outstanding option equity awards at our year end, 6,000,000 held by our President and Chief Executive Officer, Jenifer Osterwalder, 3,500,000 held by director Stephen Spalding and 1,000,000 held by members of our advisory board and 2,500,000 held by service providers and others.\nCOMPENSATION OF DIRECTORS\nPursuant to authority granted under our Article II, Section 2.16 of our bylaws, directors are entitled to such compensation as our board of directors shall from time to time determine. The following table sets forth the compensation of our directors for the year ended December 31, 2018:",
+   "prose_after": "*Mr. Spalding was granted options to purchase 1,000,000 shares of our common stock at an exercise price of $1.00, with five year vesting that vests annually on the 12 month anniversary of his service as director, which means that 1,000,000 of his option shares are currently exercisable. In 2012, he was also awarded options to purchase 2,500,000 shares of common stock at $0.61 per share in February 2012 of which are 100% vested as of December 31, 2018.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSECURITIES AUTHORIZED FOR ISSUANCE UNDER EQUITY COMPENSATION PLANS\nThe following table sets forth information with respect to compensation plans under which our equity securities are authorized for issuance as of the end of the year ended December 31, 2018:\nEQUITY COMPENSATION PLAN INFORMATION",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights\n\n\n\n(a)",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights\n\n\n\n(b)",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))\n\n\n\n(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "13,000,000",
+     "$",
+     "0.70",
+     "",
+     "2,000,000"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1090,
+    "end_line": 1104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "*Mr. Spalding was granted options to purchase 1,000,000 shares of our common stock at an exercise price of $1.00, with five year vesting that vests annually on the 12 month anniversary of his service as director, which means that 1,000,000 of his option shares are currently exercisable. In 2012, he was also awarded options to purchase 2,500,000 shares of common stock at $0.61 per share in February 2012 of which are 100% vested as of December 31, 2018.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSECURITIES AUTHORIZED FOR ISSUANCE UNDER EQUITY COMPENSATION PLANS\nThe following table sets forth information with respect to compensation plans under which our equity securities are authorized for issuance as of the end of the year ended December 31, 2018:\nEQUITY COMPENSATION PLAN INFORMATION",
+   "prose_after": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information regarding the beneficial ownership of our common stock as of January 1, 2019. The information in these tables provides ownership information for:",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "each person known by us to be the beneficial owner of more than a 5% of our common stock"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "each of our directors and executive officers; and"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2610",
+     "all of our directors and executive officers as a group."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information regarding the beneficial ownership of our common stock as of January 1, 2019. The information in these tables provides ownership information for:",
+   "prose_after": "Beneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to our common stock and those rights to acquire additional shares within sixty days. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares of common stock indicated as beneficially owned by them, except to the extent such power may be shared with a spouse. In computing the number of shares beneficially owned by a person and the percentage of ownership of that person, shares of common stock subject to options and/or warrants held by that person that are currently exercisable, as appropriate, or will become exercisable within sixty (60) days of the reporting date are deemed outstanding, even if they have not actually been exercised. Those shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person. The address of each person listed is care of Spectral Capital Corporation., 701 Fifth Avenue, Suite 4200, Seattle, Washington, 98104.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Amount and\n\nNature of\n\nOwnership",
+     "",
+     "Percent of\n\nClass*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jenifer Osterwalder (1)",
+     "",
+     "6,013,934",
+     "",
+     "4.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen Spalding (2)",
+     "",
+     "3,500,000",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All officers, directors, and 5% or greater shareholders as a group (2 persons)",
+     "",
+     "9,513,934",
+     "",
+     "7.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1120,
+    "end_line": 1134
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Beneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to our common stock and those rights to acquire additional shares within sixty days. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares of common stock indicated as beneficially owned by them, except to the extent such power may be shared with a spouse. In computing the number of shares beneficially owned by a person and the percentage of ownership of that person, shares of common stock subject to options and/or warrants held by that person that are currently exercisable, as appropriate, or will become exercisable within sixty (60) days of the reporting date are deemed outstanding, even if they have not actually been exercised. Those shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person. The address of each person listed is care of Spectral Capital Corporation., 701 Fifth Avenue, Suite 4200, Seattle, Washington, 98104.",
+   "prose_after": "(1) Consists of 13,934 shares owned directly and immediately exercisable options to purchase 1,000,000 common shares at an exercise price of $1.00 per share and 5,000,000 options to purchase common stock at $0.61 per share.\n(2) Includes options to purchase 1,000,000 shares of common stock at $1.00 per share, and options to purchase 2,500,000 shares of common stock at $0.61 per share.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE.\nRelated Party Transactions\nAkoranga, AG\nAt December 31, 2018 and 2017, $0 and $0, respectively, was owed to Akoranga AG, a Swiss Company owned by the CEO of Spectral. Akoranga was formed to facilitate the Company\u2019s business in Europe. In connection with the facilitation of the Company's operations which includes making payments on the Company's obligations, Akoranga charges the Company a 10% fee on all transactions processed by Akoranga on behalf of the Company. The Company ceased using Akoranga services in August 2014. The advances do not incur interest and are payable upon demand. As of December 31, 2017, all loans with Akoranga have been forgiven. The forgiveness was treated as a capital contribution to additional paid-in capital as the Company's CEO also controls the operations of Akoranga.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "23,600",
+     "$",
+     "23,600"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All other fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "23,600",
+     "$",
+     "23,600"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1161,
+    "end_line": 1172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Through August 2014, Akoranga charged the Company 12,350 CHF per month for the Company's CEO, Jenifer Osterwalder, for services related to the Company. Starting in September 2014, these amounts were the responsibility of the Company. Total amounts expended in the Company's consolidated financial statements in connection with the CEO's services was $149,933 and $151,115 for the years ended December 31, 2018 and 2017, respectively. As of December 31, 2018 and 2017, amounts due to the CEO related to accrued salaries were $617,765 and $467,832, respectively.\nCommencing in September 2014, from time to time due to the limited cash flow available, the Company's CEO pays certain operating expenditures on behalf of the Company. These advances are bear no interest and are due on demand. As of December 31, 2018 and 2017, the Company's CEO was due $125,069 and $96,354 in connection with these advances, respectively.\nIndependent Directors\nThe Board of Directors has determined that director Stephen Spalding is an independent director under standards established by the Securities and Exchange Commission.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nThe following table sets forth the aggregate amount of various professional fees billed by our principal accountants with respect to our last two years:",
+   "prose_after": "ITEM 15. EXHIBITS.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(i)(1)",
+     "Articles of Incorporation of Spectral Capital Corporation, dated September 13, 2000, incorporated by reference to Exhibit 3(a) on Form 10-SB filed May 1, 2003."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(i)(2)",
+     "Certificate of Amendment to Articles of Incorporation of Spectral Capital Corporation, dated June 17, 2007, incorporated by reference to Exhibit 2.1 on Form 8-K filed July 7, 2004."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(ii)",
+     "By-laws of Spectral Capital Corporation, dated September 14, 2000, incorporated by reference to Exhibit 3(b) on Form 10-SB filed May 1, 2003."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Spectral Capital Corporation Chief Executive Officer, Jenifer Osterwalder, required by Rule 13a-14(a) or Rule 15d-14(a), dated March 31, 2014. FILED HEREWITH"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Spectral Capital Corporation Chief Financial Officer, Stephen Spalding, required by Rule 13a-14(a) or Rule 15d-14(a), dated March 31, 2014. FILED HEREWITH"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Spectral Capital Corporation Chief Executive Officer, Jenifer Osterwalder, required by Rule 13a-14(b) or Rule 15d-14(b) and Section 1350 of Chapter 63 of Title 18 of the United States Code (18 U.S.C. 1350), dated March 31, 2014. FILED HEREWITH."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Spectral Capital Corporation Chief Financial Officer, Stephen Spalding, required by Rule 13a-14(b) or Rule 15d-14(b) and Section 1350 of Chapter 63 of Title 18 of the United States Code (18 U.S.C. 1350), dated March 31, 2014. FILED HEREWITH."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 15. EXHIBITS.",
+   "prose_after": "Signatures\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 11, 2019",
+     "SPECTRAL CAPITAL CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Jenifer Osterwalder"
+    ],
+    [
+     "",
+     "",
+     "Jenifer Osterwalder"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer\n\n \n\n/s/ Stephen Spalding\n\nStephen Spalding\n\nChief Financial and Accounting Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1203,
+    "end_line": 1216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Signatures\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

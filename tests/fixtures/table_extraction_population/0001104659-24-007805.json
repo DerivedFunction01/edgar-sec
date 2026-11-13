@@ -1,0 +1,2667 @@
+{
+ "accession": "0001104659-24-007805",
+ "cik": "0000836690",
+ "form": "10-K/A",
+ "filing_date": "2024-01-29",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tm244196d1_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pennsylvania (State or other jurisdiction of incorporation)",
+     "23-2507402 (IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "720 Pennsylvania Drive, Exton, Pennsylvania (Address of principal executive offices)",
+     "19341 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended September 30, 2023\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to .\nCommission File No. 001-41503\nINNOVATIVE SOLUTIONS AND SUPPORT, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(610) 646-9800 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class:",
+     "Trading symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock par value $.001 per share",
+     "ISSC",
+     "Nasdaq Stock Market, LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 35,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(610) 646-9800 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part III",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Item 10. Directors, executive officers and corporate governance.",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "BOARD OF DIRECTORS",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "EXECUTIVE OFFICERS",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "RELATIONSHIPS AND ARRANGEMENTS",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "CORPORATE GOVERNANCE",
+     "5"
+    ],
+    [
+     "",
+     "Item 11. Executive compensation.",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "GENERAL EXECUTIVE COMPENSATION POLICIES",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "EMPLOYMENT AGREEMENTS",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "SUMMARY COMPENSATION TABLE",
+     "12"
+    ],
+    [
+     "",
+     "",
+     "GRANTS OF PLAN-BASED AWARDS",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "OPTION EXERCISES AND STOCK VESTED",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "POTENTIAL PAYMENTS UPON TERMINATION OR CHANGE IN CONTROL",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "PAY VERSUS PERFORMANCE",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "ADJUSTMENTS MADE TO DETERMINE COMPENSATION ACTUALLY PAID",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "DIRECTOR COMPENSATION",
+     "18"
+    ],
+    [
+     "",
+     "Item 12. Security ownership of certain beneficial owners and management and related stockholder matters.",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "",
+     "SECURITY OWNERSHIP OF PRINCIPAL SHAREHOLDERS",
+     "20"
+    ],
+    [
+     "",
+     "",
+     "SECURITY OWNERSHIP OF MANAGEMENT",
+     "20"
+    ],
+    [
+     "",
+     "",
+     "EQUITY COMPENSATION PLAN INFORMATION",
+     "21"
+    ],
+    [
+     "",
+     "Item 13. Certain relationships and related transactions and director independence.",
+     "",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "RELATED PARTY TRANSACTIONS",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "DIRECTOR INDEPENDENCE",
+     "22"
+    ],
+    [
+     "",
+     "Item 14. Principal accounting fees and services.",
+     "",
+     "22"
+    ],
+    [
+     "Part IV",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "",
+     "Item 15. Exhibits and Financial Statement Schedules.",
+     "",
+     "24"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Innovative Solutions and Support, Inc. is filing this Amendment No. 1 on Form 10-K/A (this \u201cAmendment No. 1\u201d) to our Annual Report on Form 10-K for the fiscal year ended September 30, 2023 (the \u201cForm 10-K\u201d), which was filed with the U.S. Securities and Exchange Commission (the \u201cSEC\u201d) on January 12, 2024, to provide the information required by Part III of Form 10-K. This information was previously omitted from the Form 10-K in reliance on General Instruction G(3) to Form 10-K, which permits the information in Part III to be incorporated in the Form 10-K by reference from our definitive proxy statement (such definitive proxy statement, when filed, the \u201cProxy Statement\u201d) if such Proxy Statement is filed no later than 120 days after end of our fiscal year. We are filing this Amendment No. 1 to include Part III information in our Form 10-K because we do not expect to file the Proxy Statement within 120 days after the end of the fiscal year covered by the Form 10-K. This Amendment No. 1 amends and restates in their entirety Items 10, 11, 12, 13 and 14 of Part III of the Form 10-K. In addition, as required by Rule 12b-15 under the Securities Exchange Act of 1934, as amended, currently dated certifications pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 are filed hereto as Exhibit 31.3 and Exhibit 31.4, respectively, under Item 15 of Part IV.\nNo other changes have been made to the Form 10-K other than those described above. This Amendment No. 1 does not reflect subsequent events occurring after the original filing date of the Form 10-K or modify or update in any way the financial statements, consents or any other items or disclosures made in the Form 10-K in any way other than as required to reflect the amendments discussed above. Accordingly, this Amendment No. 1 should be read in conjunction with the Form 10-K and the Company\u2019s other filings with the SEC subsequent to the filing of the Form 10-K.\nReferences in this Amendment No. 1 to the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d refer to Innovative Solutions and Support, Inc. unless the context clearly requires otherwise.\nTABLE OF CONTENTS",
+   "prose_after": "PART III\nItem 10. Directors, executive officers and corporate governance.\nBOARD OF DIRECTORS\nAs of the date of this Amendment No. 1, our directors are as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Director",
+     "Current",
+     ""
+    ],
+    [
+     "Name",
+     "Age",
+     "Since",
+     "Term Expires",
+     "Positions with the Company"
+    ],
+    [
+     "Shahram Askarpour",
+     "66",
+     "2022",
+     "2024",
+     "Director, Chief Executive Officer"
+    ],
+    [
+     "Glen R. Bressner",
+     "63",
+     "1999",
+     "2024",
+     "Director, Chairman of the Board"
+    ],
+    [
+     "Roger A. Carolin",
+     "68",
+     "2016",
+     "2024",
+     "Director"
+    ],
+    [
+     "Stephen L. Belland",
+     "66",
+     "2022",
+     "2024",
+     "Director"
+    ],
+    [
+     "Parizad Olver (Parchi)",
+     "44",
+     "2022",
+     "2024",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 127,
+    "end_line": 137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, executive officers and corporate governance."
+    },
+    "note": null
+   },
+   "prose_before": "PART III\nItem 10. Directors, executive officers and corporate governance.\nBOARD OF DIRECTORS\nAs of the date of this Amendment No. 1, our directors are as follows:",
+   "prose_after": "Directors\nShahram Askarpour. Dr. Askarpour joined the Company as Vice President of Engineering in 2003, was promoted to President in March 2012, and was appointed as the Company\u2019s Chief Executive Officer, and joined the Company\u2019s Board, in January 2022. Dr. Askarpour has more than 40 years of aerospace industry experience in managerial and technical positions. Prior to joining the Company, he was employed by Smiths Aerospace (a division of Smiths Group plc), Instrumentation Technology, and Marconi Avionics. He holds a number of key patents in the aviation field. Dr. Askarpour received his engineering education in the United Kingdom, and received an undergraduate degree in Electrical Engineering from Middlesex University, a post graduate Certificate of Advanced Study in Systems Engineering, and a PhD in Automatic Control from Brunel University London. He was awarded the title of Associate Research Fellow for three consecutive years by Brunel University and has published numerous papers in leading international, peer reviewed journals. In addition, he has completed management courses at Carnegie Mellon University and finance courses at the Wharton School of the University of Pennsylvania.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "Position with the Company"
+    ],
+    [
+     "Shahram Askarpour",
+     "66",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "Relland Winand",
+     "69",
+     "",
+     "Interim Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, executive officers and corporate governance."
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Belland has over 37 years of experience in the Aerospace and Defense Industry. Mr. Belland provides the board with familiarity with IS&S product lines and operations. He has also developed numerous successful plans for market strategy, product development, brand management, business optimization, acquisition strategy, as well as team building strategy. Some key successes included developing and capturing over 15 new aircraft cockpit positions, as well as positioning his corporation for becoming a leader in business jet cabin electronics. In addition, Mr. Belland has advised on over 500 M&A transactions and joint ventures, including being published in Corporate Executive Board materials. Mr. Belland applies his experience and expertise to IS&S in his service on the Compensation Committee (as Chairman), the Investment Committee, and the Audit Committee. Mr. Belland is also a private pilot and a member of various industry organizations, such as the National Business Aviation Association.\nMs. Olver brings over two decades of experience in financial markets and investing across special situations and aerospace related assets. She has a background in aviation, as well as experience with special mission operations which will strengthen the Board. Ms. Olver\u2019s expertise is applicable to her service on the Nominating and Governance Committee.\nEXECUTIVE OFFICERS\nCertain other information relating to the Executive Officers of the Company appears in Item 4A to Part I of the Form 10-K under the heading \u201cExecutive Officers of the Registrant\u201d and is incorporated herein by reference.\nSet forth below is a table identifying the Company\u2019s current executive officers who are not identified in the tables above. Biographical information for Dr. Askarpour is set forth above.",
+   "prose_after": "Relland Winand. Mr. Winand previously served the Company as Chief Financial Officer from December 2014 until his retirement in July 2022, after serving as the Company\u2019s Controller from September 2014 to December 2014. Previously, Mr. Winand has served in a number of executive financial capacities with public companies, including Chief Financial Officer of ECC International, Corp, a manufacturer of computer controlled maintenance simulators primarily for the Department of Defense and Vice President Finance and Administration of Traffic.com, Inc., a leading provider of accurate, real-time traffic information in the United States. Immediately prior to joining Innovative Solutions and Support, Inc., Mr. Winand was Chief Financial Officer of Orbit/FR, Inc., an international developer and manufacturer of sophisticated microwave test and measurement systems for aerospace/defense, wireless, satellite, and automotive industries, from 2008 to 2013. From January 2014 until September 2014, Mr. Winand served as a consultant for Solomon Edwards Group LLC. He has over 30 years\u2019 experience in financial management and reporting for both public domestic and international manufacturing companies. Mr. Winand received a B.S. in Accounting from Drexel University and an M.B.A. in Finance from Widener University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 172,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 198,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Named Executive Officer",
+     "Annual Bonus Opportunity as a % of Base Salary",
+     "",
+     ""
+    ],
+    [
+     "Shahram Askarpour",
+     "",
+     "75",
+     "%"
+    ],
+    [
+     "Michael Linacre",
+     "",
+     "40",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Company pays base salaries to named executive officers because the Company believes that base salaries are essential to recruiting and retaining qualified executives. In addition, base salaries create an incentive for named executive officers to make meaningful contributions to the Company\u2019s success because they are subject to increase based on the executive\u2019s performance. The Compensation Committee sets the initial base salary level upon the hire or promotion of a named executive officer. Base salary levels are determined initially based on the named executive officer\u2019s previous experience and employment, and the named executive officer\u2019s expected duties and responsibilities with respect to the Company and considering market data provided by the Company's independent compensation consultant. Thereafter, the Compensation Committee may increase a named executive officer\u2019s base salary each year based on the results of the named executive officer\u2019s annual review (which is conducted by the Chief Executive Officer for each of the other named executive officers and by the Compensation Committee for the Chief Executive Officer), and based on the Compensation Committee\u2019s subjective assessment of the Company\u2019s overall performance during the preceding year.\nAnnual Bonus\nThe Compensation Committee retains discretion to grant bonus compensation to the named executive officers and other employees of the Company. From time to time, the Company may award discretionary annual bonuses to the named executive officers and may agree, in hiring or promoting a named executive officer, to a target bonus opportunity, expressed as a percentage of base salary, in any case, to be paid only if the Company determines that the Company has attained its financial performance goals or other objectives.\nThe named executive officers\u2019 2023 target annual bonus opportunities were as follows:",
+   "prose_after": "66% of the potential annual incentive opportunity was based on the achievement of financial performance targets and the remaining portion of the annual incentive was based on a qualitative assessment of performance. In 2023, the Company chose Revenue and Operating Income as its financial performance metrics. In the case of Dr. Askarpour, the qualitative assessment took into account organic growth, progress on mergers and acquisitions, progress on autonomous flight initiatives, increased strategic partnerships and investor relations activities. In the case of Mr. Linacre, the qualitative assessment considered investor relations activities, quality of financial accounting, mergers and acquisitions support, and progress toward additional financing.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Performance Measures",
+     "Target\n\n\n\n100%",
+     "",
+     "Maximum\n\n\n\n150%",
+     "",
+     "Weight\n\n\n\n(%)",
+     "",
+     ""
+    ],
+    [
+     "Revenue ($)",
+     "$",
+     "27,748,000",
+     "$",
+     "41,622,000",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Operating Income ($)",
+     "$",
+     "4,353,193",
+     "$",
+     "6,529,789",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Qualitative",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "33",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 292,
+    "end_line": 301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "66% of the potential annual incentive opportunity was based on the achievement of financial performance targets and the remaining portion of the annual incentive was based on a qualitative assessment of performance. In 2023, the Company chose Revenue and Operating Income as its financial performance metrics. In the case of Dr. Askarpour, the qualitative assessment took into account organic growth, progress on mergers and acquisitions, progress on autonomous flight initiatives, increased strategic partnerships and investor relations activities. In the case of Mr. Linacre, the qualitative assessment considered investor relations activities, quality of financial accounting, mergers and acquisitions support, and progress toward additional financing.",
+   "prose_after": "In 2023, the Company achieved $29,361,916 in adjusted revenue and $6,964,804 in adjusted operating income, and the Compensation Committee determined that each of Dr. Askarpour and Mr. Linacre achieved their qualitative goals at 100%. As a result, the Compensation Committee approved annual incentive bonuses of $355,816 and $118,605 for Dr. Askarpour and Mr. Linacre, respectively.\nThe 2023 annual cash incentives were paid to Dr. Askarpour on November 12, 2023 and to Mr. Linacre on December 12, 2023. The payments are listed as 2023 compensation in the Summary Compensation Table in the column labeled \u201cNon-Equity Incentive Plan Compensation.\u201d\nEquity-based Compensation\nThe Company awards equity-based compensation to named executive officers in order to provide a link between the long-term results achieved for its shareholders and the rewards provided to named executive officers, thereby ensuring that such officers have a continuing stake in the Company\u2019s long-term success (see the section titled \u201cEquity Compensation Plan Information\u201d below). Such awards are made at the discretion of the Compensation Committee and are not timed or coordinated with the release of material, non-public information.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Position",
+     "Minimum Ownership of Common Stock (as multiple of base salary)"
+    ],
+    [
+     "CEO",
+     "3x"
+    ],
+    [
+     "Other Section 16 Officers",
+     "1x"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 369,
+    "end_line": 375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 a change in the composition of the Board during any 2-year period such that the individuals who at the beginning of such period constituted the Board cease to constitute a majority of the Board;\n\u00b7 the consummation of a merger or consolidation involving the Company, if the shareholders of the Company, immediately before such merger or consolidation, do not own, directly or indirectly, immediately following such merger or consolidation, at least seventy-five percent (75%) of the combined voting power of the outstanding voting securities of the corporation resulting from such merger or consolidation; or\n\u00b7 a complete liquidation or dissolution of the Company or a sale or other disposition of all or substantially all of the assets of the Company.\nStock Ownership/Retention Requirements\nThe Company has adopted a Stock Ownership and Retention Policy that applies to its Section 16 officers. We believe that the Stock Ownership and Retention Policy aligns the interests of our management team, directors and shareholders.\nThe ownership requirement for our CEO and our executive officers is calculated as a multiple of base salary, as noted below:",
+   "prose_after": "Compliance with the minimum share ownership requirement is determined annually as of December 31 each year and commenced December 31, 2023. Individuals who have not yet attained the minimum share ownership requirement must retain 50% of his or her shares acquired upon the (i) vesting of restricted stock or restricted stock units, (ii) if applicable, the exercise of options, reduced by shares retained or tendered to cover taxes or the exercise price of options.\nQualifying shares that count toward the ownership requirement include:\n\u00b7 Shares owned outright (including shares held through an IRA, 401(k) account, spouse or dependent children, or shares held in trust for the benefit of the owner, his or her spouse, or his or her dependent children);\n\u00b7 Shares underlying equity awards that are deferred shares;\n\u00b7 Shares underlying vested options.\nTax and Accounting Considerations\nThe Company considers tax and accounting implications in determining all elements of its executive compensation program. Section 162(m) of the Code generally denies a federal income tax deduction for compensation exceeding $1,000,000 paid in a taxable year to the Chief Executive Officer, the Chief Financial Officer or any of the three highest compensated officers (other than the Chief Executive Officer and Chief Financial Officer). The Compensation Committee considers the impact of this deductibility limitation on the compensation that it intends to award, and may pay compensation that is not deductible if it determines that doing so is in the best interest of the Company and consistent with the Company\u2019s executive compensation program.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 351,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Non-Equity Incentive Plan Compensation",
+     "",
+     "Option Awards",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$(2)",
+     "",
+     "$(2)",
+     "",
+     "",
+     "$(1)",
+     "",
+     "$"
+    ],
+    [
+     "Shahram Askarpour",
+     "2023",
+     "",
+     "400,000",
+     "",
+     "-",
+     "",
+     "355,816",
+     "",
+     "852,000",
+     "",
+     "819,000",
+     "",
+     "",
+     "12,592",
+     "",
+     "2,439,408"
+    ],
+    [
+     "Chief Executive Officer",
+     "2022",
+     "",
+     "369,616",
+     "",
+     "300,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "6,585",
+     "",
+     "676,201"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "300,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "5,700",
+     "",
+     "305,700"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Linacre",
+     "2023",
+     "",
+     "233,770",
+     "",
+     "-",
+     "",
+     "118,605",
+     "",
+     "111,264",
+     "",
+     "49,994",
+     "",
+     "",
+     "162,491",
+     "",
+     "676,124"
+    ],
+    [
+     "Former Chief Financial Officer",
+     "2022",
+     "",
+     "53,077",
+     "",
+     "25,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "49,997",
+     "(3)",
+     "",
+     "-",
+     "",
+     "128,074"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Company considers tax and accounting implications in determining all elements of its executive compensation program. Section 162(m) of the Code generally denies a federal income tax deduction for compensation exceeding $1,000,000 paid in a taxable year to the Chief Executive Officer, the Chief Financial Officer or any of the three highest compensated officers (other than the Chief Executive Officer and Chief Financial Officer). The Compensation Committee considers the impact of this deductibility limitation on the compensation that it intends to award, and may pay compensation that is not deductible if it determines that doing so is in the best interest of the Company and consistent with the Company\u2019s executive compensation program.\nThe Compensation Committee considers the impact of various forms of compensation on the Company\u2019s financial results. In particular, the Compensation Committee considers the potential impact on current and future financial results of all equity compensation that it approves.\nSUMMARY COMPENSATION TABLE\nThis Summary Compensation Table provides information on the total compensation earned by each named executive officer for fiscal years ended September 30, 2023, 2022 and 2021.",
+   "prose_after": "1. The amounts set forth in this column represent (i) for Dr. Askarpour, contributions to the his Savings Plan account for the applicable fiscal year, and (ii) for Mr. Linacre, $154,761 in relocation benefits and $7,730 in contributions to his Savings Plan account for the applicable fiscal year.\n2. These amounts represent the aggregate grant date fair value determined in accordance with the valuation guidelines of ASC Topic 718 \u201cStock Compensation\u201d with respect to the options granted to the named executive officers in the applicable year. See also Note 3, under the heading \u201cShare-Based Compensation,\u201d in the Company\u2019s audited financial statements as filed in the Annual Report. The values do not correspond to the actual value that will be recognized by the named executive officers at the time such awards vest.\n3. This award was inadvertently excluded from the Company\u2019s 2022 proxy statement; however, the details of the award have been previously disclosed on Form 4.\nGRANTS OF PLAN-BASED AWARDS",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Estimated Future Payouts under Non-Equity Incentive Plan Awards",
+     "",
+     "",
+     "",
+     "",
+     "All other stock awards:",
+     "",
+     "All other option awards:",
+     "",
+     "Exercise",
+     "Grant date fair value of"
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "Threshold ($)",
+     "Target ($)",
+     "",
+     "Maximum ($)",
+     "",
+     "Number of shares of stock or units (#)",
+     "",
+     "Number of securities underlying options (#)",
+     "",
+     "price of option awards ($/Sh)",
+     "stock and option awards ($)\n(1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shahram Askarpour",
+     "",
+     "-",
+     "",
+     "300,000",
+     "",
+     "450,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1/11/2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "",
+     "819,000"
+    ],
+    [
+     "",
+     "1/11/2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "200,000",
+     "8.19",
+     "852,000"
+    ],
+    [
+     "Michael Linacre",
+     "",
+     "-",
+     "",
+     "100,000",
+     "",
+     "150,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1/11/2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12,210",
+     "8.19",
+     "54,945"
+    ],
+    [
+     "",
+     "8/21/2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12,164",
+     "8.22",
+     "56,319"
+    ],
+    [
+     "",
+     "8/21/2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6,082",
+     "",
+     "",
+     "",
+     "49,994"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 422,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "1. The amounts set forth in this column represent (i) for Dr. Askarpour, contributions to the his Savings Plan account for the applicable fiscal year, and (ii) for Mr. Linacre, $154,761 in relocation benefits and $7,730 in contributions to his Savings Plan account for the applicable fiscal year.\n2. These amounts represent the aggregate grant date fair value determined in accordance with the valuation guidelines of ASC Topic 718 \u201cStock Compensation\u201d with respect to the options granted to the named executive officers in the applicable year. See also Note 3, under the heading \u201cShare-Based Compensation,\u201d in the Company\u2019s audited financial statements as filed in the Annual Report. The values do not correspond to the actual value that will be recognized by the named executive officers at the time such awards vest.\n3. This award was inadvertently excluded from the Company\u2019s 2022 proxy statement; however, the details of the award have been previously disclosed on Form 4.\nGRANTS OF PLAN-BASED AWARDS\nThe following table sets forth information about non-equity and equity awards granted to the named executive officers in the fiscal year ended September 30, 2023.",
+   "prose_after": "1. The amounts included in this column are the dollar amounts representing the grant date fair value of each restricted stock unit or option share, as applicable, calculated in accordance with FASB ASC Topic 817, and do not represent the actual value that may be recognized by the named executive officers upon vesting of restricted stock units or options.\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END\nThe following table provides outstanding equity awards for the named executive officers as of the end of fiscal year 2023:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of securities underlying unexercised options (#) exercisable",
+     "",
+     "",
+     "Number of securities underlying unexercised options (#) unexercisable",
+     "",
+     "",
+     "Option exercise price ($)",
+     "",
+     "Option expiration date",
+     "",
+     "",
+     "Number of shares or units of stock that have not vested (#)",
+     "",
+     "",
+     "Market value of shares or units of stock that have not vested ($)",
+     ""
+    ],
+    [
+     "Shahram Askarpour",
+     "",
+     "150,000",
+     "(1)",
+     "",
+     "50,000",
+     "",
+     "",
+     "8.19",
+     "",
+     "1/11/2033",
+     "",
+     "",
+     "62,500",
+     "(2)",
+     "",
+     "475,000"
+    ],
+    [
+     "Michael Linacre",
+     "",
+     "-",
+     "",
+     "",
+     "12,210",
+     "(3)",
+     "",
+     "8.19",
+     "",
+     "1/11/2033",
+     "",
+     "",
+     "6,082",
+     "(4)",
+     "",
+     "46,223"
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "12,164",
+     "(4)",
+     "",
+     "8.22",
+     "",
+     "8/21/2033",
+     "",
+     "",
+     "5,915",
+     "(5)",
+     "",
+     "44,954"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "1. The amounts included in this column are the dollar amounts representing the grant date fair value of each restricted stock unit or option share, as applicable, calculated in accordance with FASB ASC Topic 817, and do not represent the actual value that may be recognized by the named executive officers upon vesting of restricted stock units or options.\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END\nThe following table provides outstanding equity awards for the named executive officers as of the end of fiscal year 2023:",
+   "prose_after": "1. The award becomes vested according to the following schedule: 50% at the date of grant, and the remaining 50% on a quarterly basis, becoming fully vested on the first anniversary of the date of grant.\n2. The award becomes vested according to the following schedule: 25% at the date of grant, and the remaining 75% on a quarterly basis, becoming fully vested on the third anniversary of the date of grant.\n3. The award becomes vested according to the following schedule: 1/16th on each anniversary of the date of grant, becoming fully vested on the fourth anniversary of the date of grant.\n4. The award becomes vested according to the following schedule: 25% on each anniversary of the date of grant, becoming fully vested on the fourth anniversary of the date of grant.\n5. The award becomes vested according to the following schedule: 25% on the first anniversary of the date of grant, and the remaining 75% on a quarterly basis, becoming fully vested on the fourth anniversary of the date of grant.\nOPTION EXERCISES AND STOCK VESTED",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Value",
+     "",
+     "Number of",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "Realized on",
+     "",
+     "Shares",
+     "",
+     "Realized on",
+     ""
+    ],
+    [
+     "",
+     "Shares Acquired",
+     "",
+     "Exercise",
+     "",
+     "Acquired on",
+     "",
+     "Vesting",
+     ""
+    ],
+    [
+     "Name",
+     "on Exercise",
+     "",
+     "$",
+     "",
+     "Vesting",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Shahram Askarpour",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "37,500",
+     "",
+     "297,000"
+    ],
+    [
+     "Michael Linacre",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,972",
+     "",
+     "15,184"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "2. The award becomes vested according to the following schedule: 25% at the date of grant, and the remaining 75% on a quarterly basis, becoming fully vested on the third anniversary of the date of grant.\n3. The award becomes vested according to the following schedule: 1/16th on each anniversary of the date of grant, becoming fully vested on the fourth anniversary of the date of grant.\n4. The award becomes vested according to the following schedule: 25% on each anniversary of the date of grant, becoming fully vested on the fourth anniversary of the date of grant.\n5. The award becomes vested according to the following schedule: 25% on the first anniversary of the date of grant, and the remaining 75% on a quarterly basis, becoming fully vested on the fourth anniversary of the date of grant.\nOPTION EXERCISES AND STOCK VESTED\nThe following table provides information on the value of stock options that were exercised and stock awards that vested during the fiscal year ended\nSeptember 30, 2023 for each of our named executive officers:",
+   "prose_after": "POTENTIAL PAYMENTS UPON TERMINATION OR CHANGE IN CONTROL\nDr. Askarpour\u2019s amended and restated employment agreement provides that if his employment is terminated by the Company without \u201ccause\u201d or by Dr. Askarpour for \u201cgood reason,\u201d then, subject to his execution and non-revocation of a release of claims in favor of the Company, the Company will continue to pay Dr. Askarpour his base salary at the rate then in effect for a period of twelve (12) months following his termination date, during which period the Company will also pay Dr. Askarpour\u2019s COBRA premiums. If Dr. Askarpour\u2019s employment were terminated by the Company without \u201ccause\u201d or for \u201cgood reason\u201d on September 30, 2023, the total amounts payable to Dr. Askarpour would be $429,126. For purposes of Dr. Askarpour\u2019s employment agreement, \u201ccause\u201d generally means (a) the commission by or conviction of Dr. Askarpour, or plea of guilty or nolo contendere to, a felony or any crime involving dishonesty, disloyalty, or moral turpitude; (b) Dr. Askarpour\u2019s willful misconduct or willful failure substantially to perform the duties of his position or his willful refusal to comply with the lawful directives of the Board; (c) a breach by Dr. Askarpour of his employment agreement or any written policies of the Company applicable to Dr. Askarpour; (d) any act or omission by Dr. Askarpour constituting dishonesty, fraud or embezzlement, or an intentional violation of Dr. Askarpour\u2019s duty of loyalty to the Company under law; (e) Dr. Askarpour\u2019s gross negligence in the performance of his duties; or (f) Dr. Askarpour\u2019s poor job performance or other improper conduct not otherwise described above, except that cause shall not exist based solely on clauses",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 484,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PAY VERSUS PERFORMANCE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year",
+     "Summary Compensation Table Total for PEO(1)",
+     "",
+     "Compensation Actually Paid to PEO(1),(2),(3)",
+     "",
+     "Average Summary Compensation Table Total for Non-PEO NEOs(1)",
+     "",
+     "Average Compensation Actually Paid to Non-PEO NEOs(1),(2),(3)",
+     "",
+     "Value of Initial Fixed $100 Investment Based on TSR(4)",
+     "",
+     "Net Income ($MM)",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "2,439,408",
+     "$",
+     "2,394,368",
+     "$",
+     "676,259",
+     "$",
+     "661,666",
+     "$",
+     "124.64",
+     "$",
+     "6.02"
+    ],
+    [
+     "2022",
+     "$",
+     "676,201",
+     "$",
+     "676,201",
+     "$",
+     "188,028",
+     "$",
+     "206,087",
+     "$",
+     "122.93",
+     "$",
+     "5.52"
+    ]
+   ],
+   "caption_stack": [
+    "PAY VERSUS PERFORMANCE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "(c) Mr. Linacre\u2019s willful and persistent neglect of his duties and responsibilities; (d) Mr. Linacre\u2019s failure or refusal to carry out the lawful directives of the Board; (e) Mr. Linacre\u2019s diverting any business opportunity of the Company or its affiliates for his own personal gain; (f) Mr. Linacre\u2019s omission of or misrepresentation of a significant fact on his employment application or resume; or (g) Mr. Linacre\u2019s misuse of alcohol or drugs affecting his work performance. See the section titled \u201cCompensation Discussion and Analysis\u201d for additional information.\nAs previously disclosed, Mr. Linacre resigned from his position as Chief Financial Officer effective November 8, 2023. He did not receive any payments in connection with his termination of employment.\nThe Company\u2019s Compensation Committee has the authority to accelerate the vesting of Company stock options granted to named executive officers under the 2019 Plan upon a change in control of the Company. See the section titled \u201cCompensation Discussion and Analysis\u201d for additional information.\nPAY VERSUS PERFORMANCE\nIn accordance with rules adopted by the Securities and Exchange Commission pursuant to the Dodd-Frank Wall Street Reform and Consumer Protection Act of 2010, we provide the following disclosure regarding executive compensation and Company performance for the fiscal years listed below. The Compensation Committee did not consider the pay versus performance disclosure below in making its pay decisions for any of the fiscal years shown.",
+   "prose_after": "1. The Principal Executive Officer (\u201cPEO\u201d) in 2022 and 2023 is Shahram Askarpour. The Non-PEO NEOs for whom the average compensation is presented in this table for 2022 are Michael Linacre, Geoffrey S.M. Hedrick and Relland Winand, and for 2023 is Michael Linacre.\n2. The amounts shown as Compensation Actually Paid have been calculated in accordance with Item 402(v) of Regulation S-K and do not reflect compensation actually realized or received by the Company\u2019s NEOs. These amounts reflect total compensation as set forth in the Summary Compensation Table for each year, adjusted as described in footnote 3 below.\n3. Compensation Actually Paid reflects the exclusions and inclusions for the PEO and NEOs set forth below. Amounts excluded, which are set forth in the Exclusion of Stock Awards columns below, represent the Stock Awards amounts from the applicable Summary Compensation Table. Amounts included in the Inclusion of Equity Values column below are the aggregate of the following components, as applicable: the fair value as of the end of the fiscal year of unvested equity awards granted in that year; the change in fair value during the year of equity awards granted in prior years that remained outstanding and unvested at the end of the year; and the change in fair value during the year through the vesting date of equity awards granted in prior years that vested during that year, less the fair value at the end of the prior year of awards granted prior to the year that failed to meet applicable vesting conditions during the year. Equity values are calculated in accordance with FASB ASC Topic 718.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Summary Compensation Table Total",
+     "PEO",
+     "$",
+     "2,439,408",
+     "",
+     "$",
+     "676,201"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "676,259",
+     "",
+     "$",
+     "188,028"
+    ],
+    [
+     "Deduction for amounts reported under the \u201cStock Awards\u201d and \u201cOption Awards\u201d columns in the Summary Compensation Table",
+     "PEO",
+     "$",
+     "1,671,000",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "161,258",
+     "",
+     "$",
+     "49,997"
+    ],
+    [
+     "Fair value as of the end of the covered year of awards granted during year that remain unvested as of year-end",
+     "PEO",
+     "$",
+     "689,560",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "154,923",
+     "",
+     "$",
+     "68,056"
+    ],
+    [
+     "Increase/Deduction for change in fair value from prior year-end to current year-end of awards granted prior to that year that were outstanding and unvested as of year-end",
+     "PEO",
+     "",
+     "--",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "(6,092)",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "Increase for fair value as of the vesting dates for awards granted during year that vest during the year",
+     "PEO",
+     "$",
+     "936,400",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "--",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "Increase/Deduction for change in fair value from prior year-end to vesting date of awards granted prior to that year that vested during year",
+     "PEO",
+     "",
+     "--",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "(2,030)",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "Deduction for fair value of awards granted prior to year that were forfeited during year",
+     "PEO",
+     "",
+     "--",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "",
+     "--",
+     "",
+     "",
+     "--"
+    ],
+    [
+     "Compensation Actually Paid",
+     "PEO",
+     "$",
+     "2,394,368",
+     "",
+     "$",
+     "676,201"
+    ],
+    [
+     "",
+     "Average Non-PEO NEOs",
+     "$",
+     "661,666",
+     "",
+     "$",
+     "206,087"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 519,
+    "end_line": 541
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "3. Compensation Actually Paid reflects the exclusions and inclusions for the PEO and NEOs set forth below. Amounts excluded, which are set forth in the Exclusion of Stock Awards columns below, represent the Stock Awards amounts from the applicable Summary Compensation Table. Amounts included in the Inclusion of Equity Values column below are the aggregate of the following components, as applicable: the fair value as of the end of the fiscal year of unvested equity awards granted in that year; the change in fair value during the year of equity awards granted in prior years that remained outstanding and unvested at the end of the year; and the change in fair value during the year through the vesting date of equity awards granted in prior years that vested during that year, less the fair value at the end of the prior year of awards granted prior to the year that failed to meet applicable vesting conditions during the year. Equity values are calculated in accordance with FASB ASC Topic 718.\n4. Dollar values assume $100 was invested in the Company for the cumulative period from September 30, 2021 to September 30, 2023, and reinvestment of the pre-tax value of dividends paid. Historical stock performance is not necessarily indicative of future stock performance.\nADJUSTMENTS MADE TO DETERMINE COMPENSATION ACTUALLY PAID",
+   "prose_after": "Description of Relationship Between NEO Compensation Actually Paid and Total Shareholder Return (\u201cTSR\u201d)\nThe following chart sets forth the relationship between Compensation Actually Paid to our PEO, the average of Compensation Actually Paid to our other NEOs, and the Company\u2019s cumulative TSR over the fiscal two-year period from 2022 through 2023.\nDescription of Relationship Between NEO Compensation Actually Paid and Net Income\nThe following chart sets forth the relationship between Compensation Actually Paid to our PEO, the average of Compensation Actually Paid to our other NEOs, and our net income during fiscal 2022 through 2023.\nDIRECTOR COMPENSATION\nCompensation of Directors\nThe Company\u2019s compensation program for non-employee directors for 2023 consisted of three elements of compensation: meeting fees, restricted stock or restricted stock unit awards, and an annual retainer. All cash fees were paid quarterly in arrears. Each non-employee director was entitled to a fee of $1,500 for each Board meeting attended and $1,500 for each committee meeting that is not held on the same day as a Board meeting. The Chairman of the Board received $35,000 per year in addition to the meeting fees and restricted stock or restricted stock awards. Mr. Bressner served as Chairman of the Audit Committee until June 2023 and received $3,000 per quarter. Mr. Carolin became Chairman of the Audit Committee in June 2023 and received $3,000 per quarter in addition to the meeting fees and restricted stock or restricted stock unit awards. The Chairman of the Compensation Committee received $5,000 per year in addition to the meeting fees and restricted stock or restricted stock unit awards. Each non-employee director, including the Chairman of the Board, was also paid an annual retainer of $25,000.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change in",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Pension Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "and",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fees Earned",
+     "",
+     "",
+     "",
+     "",
+     "Non-Equity",
+     "Non-qualified",
+     "",
+     ""
+    ],
+    [
+     "",
+     "or Paid in",
+     "",
+     "Stock",
+     "",
+     "Option",
+     "Incentive Plan",
+     "Deferred",
+     "All Other",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "Awards",
+     "",
+     "Awards",
+     "Compensation",
+     "Compensation",
+     "Compensation",
+     "Total"
+    ],
+    [
+     "Name",
+     "$ (1)",
+     "",
+     "$ (2)",
+     "",
+     "$",
+     "$",
+     "Earnings",
+     "$",
+     "$"
+    ],
+    [
+     "Glen R. Bressner",
+     "",
+     "82,241",
+     "",
+     "64,109",
+     "-",
+     "-",
+     "-",
+     "-",
+     "146,350"
+    ],
+    [
+     "Winston J. Churchill(3)",
+     "",
+     "43,250",
+     "",
+     "14,110",
+     "-",
+     "-",
+     "-",
+     "-",
+     "57,360"
+    ],
+    [
+     "Roger A. Carolin",
+     "",
+     "73,750",
+     "",
+     "64,109",
+     "-",
+     "-",
+     "-",
+     "",
+     "137,859"
+    ],
+    [
+     "Stephen L. Belland",
+     "",
+     "53,667",
+     "",
+     "64,109",
+     "",
+     "-",
+     "-",
+     "-",
+     "117,776"
+    ],
+    [
+     "Parizad Olver (Parchi)",
+     "",
+     "47,500",
+     "",
+     "64,109",
+     "",
+     "-",
+     "-",
+     "-",
+     "111,609"
+    ]
+   ],
+   "caption_stack": [
+    "Change in",
+    "Pension Value",
+    "and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Company also makes annual awards of restricted stock or restricted stock units, with each such unit representing a contingent right to receive one share of common stock upon vesting, to non-employee directors under the 2019 Plan. The target value of such annual awards was $50,000 for each non-employee director for 2023. The number of shares underlying such annual awards are calculated based upon the price of the Company\u2019s common stock at the close of business on the date of the Company\u2019s annual meeting and such shares vest on the first anniversary of the date of grant. A director who resigns during the course of the year will vest in and receive a pro rata portion of the shares that he or she otherwise would have vested (in the case of restricted stock) or received (in the case of restricted stock units) had no such resignation occurred, based on the number of days served during the applicable calendar year.\nWith respect to the fiscal year ended September 30, 2023, the Company\u2019s common stock closed at a price of $8.10 per share on January 3, 2023. Because the Company transitioned from a calendar year grant period to a one-year grant period beginning at each annual meeting, each non-employee director received (i) a grant of 1,742 restricted stock units on January 3, 2023 vesting 100 days following the date of grant, and (ii) a grant of 6,868 restricted stock units on April 13, 2023 vesting one year following the date of grant.\nIn addition, all directors are reimbursed for reasonable travel and lodging expenses actually incurred in connection with required attendance at Board and committee meetings.\nDirector Compensation Table\nThe following table provides information on the total compensation earned by each non-employee director of the Company for the fiscal year ended September 30, 2023:",
+   "prose_after": "1. The amounts reported in this column include fees paid for attendance of Board and Board committee meetings and annual retainer for each non-employee director for the year ended September 30, 2023.\n2. The amounts reported in this column represent the grant date fair value, computed based on the compensation cost recognized for financial reporting purposes by the Company in accordance with the valuation guidelines of Accounting Standards Codification (\u201cASC\u201d) 505-50, \u201cEquity-Based Payments to Non-Employees\u201d and ASC 718 \u201cCompensation\u2014Stock Compensation\u201d with respect to the stock awards granted to each non-employee director during the fiscal year ended September 30, 2023. See also Note 3, under the heading \u201cShare-Based Compensation,\u201d to the Company\u2019s audited financial statements as filed in the Annual Report, which sets forth the material assumptions used in determining the compensation cost to the Company with respect to such awards. In addition, as of the close of the fiscal year ended September 30, 2023, none of the non-employee directors held outstanding options to purchase stock of the Company.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner",
+     "Number of Shares",
+     "",
+     "Percent of Class (1)",
+     "",
+     ""
+    ],
+    [
+     "Estate of Geoffrey S. M. Hedrick (2)",
+     "",
+     "1,673,155",
+     "",
+     "9.6",
+     "%"
+    ],
+    [
+     "Christopher Harborne (3)",
+     "",
+     "2,506,322",
+     "",
+     "14.4",
+     "%"
+    ],
+    [
+     "Wealth Trust Axiom, LLC (4)",
+     "",
+     "1,157,040",
+     "",
+     "6.6",
+     "%"
+    ],
+    [
+     "Norman H. Pessin (5)",
+     "",
+     "861,825",
+     "",
+     "4.9",
+     "%"
+    ],
+    [
+     "Central Square Management LLC (6)",
+     "",
+     "875,417",
+     "",
+     "5.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 599,
+    "end_line": 610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security ownership of certain beneficial owners and management and related stockholder matters."
+    },
+    "note": null
+   },
+   "prose_before": "2. The amounts reported in this column represent the grant date fair value, computed based on the compensation cost recognized for financial reporting purposes by the Company in accordance with the valuation guidelines of Accounting Standards Codification (\u201cASC\u201d) 505-50, \u201cEquity-Based Payments to Non-Employees\u201d and ASC 718 \u201cCompensation\u2014Stock Compensation\u201d with respect to the stock awards granted to each non-employee director during the fiscal year ended September 30, 2023. See also Note 3, under the heading \u201cShare-Based Compensation,\u201d to the Company\u2019s audited financial statements as filed in the Annual Report, which sets forth the material assumptions used in determining the compensation cost to the Company with respect to such awards. In addition, as of the close of the fiscal year ended September 30, 2023, none of the non-employee directors held outstanding options to purchase stock of the Company.\n3. Mr. Churchill was a member of the Board until April 13, 2023.\nItem 12. Security ownership of certain beneficial owners and management and related stockholder matters.\nSECURITY OWNERSHIP OF PRINCIPAL SHAREHOLDERS\nThe following table sets forth certain information with respect to the beneficial ownership, as of January 12, 2024, of each person whom the Company knew to be the beneficial owner of more than 5% of its common stock. To the knowledge of the Company, each of the shareholders named below has sole power to vote or direct the vote of such shares of common stock or the sole investment power with respect to such shares of common stock, unless otherwise indicated. The information provided in the table is based on the Company\u2019s records, information filed with the SEC and information provided to the Company.",
+   "prose_after": "1. As used in this table, beneficial ownership means the sole or shared power to vote or direct the voting of a security, or the sole or shared investment power with respect to a security (i.e., the power to dispose, or direct the disposition, of a security). A person is deemed as of any date to have beneficial ownership of any security that such person has the right to acquire within 60 days after such date. Percentage ownership is based upon 17,459,983 of common stock outstanding as of January 12, 2023.\n2. Based solely on the Schedule 13D/A filed on August 11, 2023 filed by the Estate of Geoffrey\nS. M. Hedrick (the \u201cEstate\u201d) and Christopher Scott Ginieczki, as Personal Representative of the Estate of Geoffrey S.\nM. Hedrick (\u201cMr. Ginieczki\u201d). According to the Schedule 13D/A, this amount includes 1,652,207 shares of common stock owned by the Estate and 20,948 shares of common stock owned by the Ginieczki Family Trust, of which Mr. Ginieczki is a co-trustee. According to the Schedule 13D/A, the Estate has shared voting and dispositive power as to 1,652,207 shares of common stock and Mr. Ginieczki has shared voting and dispositive power as to 1, 673,155 shares of common stock. The address for the Estate is c/o Innovative Solutions and Support, Inc., Attn: Christopher Scott Ginieczki, Personal Representative of Estate, 720 Pennsylvania Drive, Exton, PA 19341. Mr. Ginieczki\u2019s address is 2788 San Tomas Expressway, Santa Clara, CA 95051.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner",
+     "Number of Shares",
+     "Percent of Class (1)"
+    ],
+    [
+     "Shahram Askarpour",
+     "442,458",
+     "2.5%"
+    ],
+    [
+     "Michael Linacre",
+     "2,465",
+     "*"
+    ],
+    [
+     "Glen R. Bressner",
+     "85,089",
+     "*"
+    ],
+    [
+     "Roger A. Carolin",
+     "45,922",
+     "*"
+    ],
+    [
+     "Stephen L Belland",
+     "5,293",
+     "*"
+    ],
+    [
+     "Parizad Olver",
+     "4,938",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "All current executive officers and directors as a group (6 persons)",
+     "586,165",
+     "3.3%"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 630,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security ownership of certain beneficial owners and management and related stockholder matters."
+    },
+    "note": null
+   },
+   "prose_before": "5. Based solely on Schedule 13D/A filed on September 12, 2022. Norman H. Pessin\u2019s address is 400 East 51st, PH 31, New York, NY 10022.\n6. Based solely on Schedule 13G/A filed on September 10, 2014. Central Square Management LLC\u2019s address is 1813 N. Mill Street, Suite F, Naperville, IL 60563.\nSECURITY OWNERSHIP OF MANAGEMENT\nThe following table sets forth certain information with respect to the beneficial ownership, as of January 12, 2024, of\n(i) each director, (ii) the chief executive officer, the chief financial officer and the Company\u2019s other executive officers during the fiscal year ended September 30, 2023, and (iii) all the current directors and executive officers as a group. Unless otherwise indicated, each of the shareholders named below has sole voting and investment power with respect to such shares, and the address of each of the shareholders named below is c/o Innovative Solutions and Support, Inc., 720 Pennsylvania Drive, Exton, Pennsylvania 19341. The information provided in the table is based on the Company\u2019s records, information filed with the SEC, and information provided to the Company.",
+   "prose_after": "* Less than 1%.\n1. As used in this table, beneficial ownership means the sole or shared power to vote or direct the voting of a security, or the sole or shared investment power with respect to a security (i.e., the power to dispose, or direct the disposition, of a security). A person is deemed as of any date to have beneficial ownership of any security that such person has the right to acquire within 60 days after such date. Percentage ownership is based upon 17,453,983 shares of common stock outstanding as of January 12, 2024.\nEQUITY COMPENSATION PLAN INFORMATION\nThe following table provides information about Company common stock that may be issued upon the exercise of options and pursuant to other awards under all of the Company\u2019s existing equity compensation plans and arrangements as of September 30, 2023, including the 2019 Plan.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of securities"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "remaining available for"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "future issuance under"
+    ],
+    [
+     "",
+     "Number of securities",
+     "",
+     "Weighted-average",
+     "",
+     "equity compensation"
+    ],
+    [
+     "",
+     "to be issued upon exercise",
+     "",
+     "exercise price of",
+     "",
+     "plans (excluding"
+    ],
+    [
+     "",
+     "of outstanding options,",
+     "",
+     "outstanding options,",
+     "",
+     "securities reflected in the"
+    ],
+    [
+     "Plan Category",
+     "warrants, and rights",
+     "",
+     "warrants, and rights",
+     "",
+     "first column)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "326,342",
+     "$",
+     "8.19",
+     "262,187"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "326,342",
+     "$",
+     "8.19",
+     "262,187"
+    ]
+   ],
+   "caption_stack": [
+    "Number of securities",
+    "remaining available for",
+    "future issuance under"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security ownership of certain beneficial owners and management and related stockholder matters."
+    },
+    "note": null
+   },
+   "prose_before": "* Less than 1%.\n1. As used in this table, beneficial ownership means the sole or shared power to vote or direct the voting of a security, or the sole or shared investment power with respect to a security (i.e., the power to dispose, or direct the disposition, of a security). A person is deemed as of any date to have beneficial ownership of any security that such person has the right to acquire within 60 days after such date. Percentage ownership is based upon 17,453,983 shares of common stock outstanding as of January 12, 2024.\nEQUITY COMPENSATION PLAN INFORMATION\nThe following table provides information about Company common stock that may be issued upon the exercise of options and pursuant to other awards under all of the Company\u2019s existing equity compensation plans and arrangements as of September 30, 2023, including the 2019 Plan.",
+   "prose_after": "In the fiscal years ended September 30, 2023, 2022 and 2021, awards were granted to the Company\u2019s non-employee directors under the Company\u2019s then-existing equity compensation plans and arrangements with respect to 36,182, 19,047 and 27,488 shares, respectively.\n2019 Stock-Based Incentive Compensation Plan\nThe 2019 Plan was approved by the Company\u2019s shareholders at the Company\u2019s Annual Meeting of Shareholders held on April 2, 2019. The 2019 Plan authorizes the grant of stock appreciation rights, restricted stock, options and other equity-based awards. Options granted under the 2019 Plan may be either \u201cincentive stock options\u201d as defined in Section 422 of the U.S. Internal Revenue Code of 1986, as amended (the \u201cCode\u201d), or nonqualified stock options, as determined by the Compensation Committee.\nSubject to an adjustment necessary upon a stock dividend, recapitalization, forward split or reverse split, reorganization, merger, consolidation, spin-off, combination, repurchase or share exchange, extraordinary or unusual cash distribution, or similar corporate transaction or event, the maximum number of shares of common stock available for awards under the 2019 Plan is 750,000, plus 139,691 shares of common stock that were authorized but unissued under the Company\u2019s 2009 Stock-Based Incentive Compensation Plan as of the effective date of the 2019 Plan (i.e., April 2, 2019), all of which may be issued pursuant to awards of incentive stock options. As of September 30, 2023, there were 262,187 shares of common stock available for awards under the 2019 Plan.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 680,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Grant Thornton",
+     "",
+     "Grant Thornton",
+     ""
+    ],
+    [
+     "",
+     "FY 2023",
+     "",
+     "FY 2022",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "636,908",
+     "$",
+     "394,275"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "115,500",
+     "",
+     "15,750"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "752,408",
+     "$",
+     "410,025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal accounting fees and services."
+    },
+    "note": null
+   },
+   "prose_before": "The Board has affirmatively determined, in its business judgment, that the following directors are independent directors within the meaning of the applicable Nasdaq listing standards: Glen R. Bressner, Winston J. Churchill (for the period during which he served as a member of the Board during fiscal year 2023), Roger A. Carolin, Stephen L. Belland, and Parizad Olver (Parchi). All members of our Audit Committee, Nominating and Corporate Governance Committee, and Compensation Committee are currently independent (as currently set forth in Rule 5605 of the Nasdaq listing rules). On January 28, 2024, the Board of Directors determined that Ms. Olver did not meet the heightened independence requirements for service on the Audit Committee as required by the rules and regulations of the SEC and, as a result, the listing standards of Nasdaq applicable to audit committee members due to the payment in November 2023 of $72,990 to a company in which Ms. Olver is the managing partner and has an ownership interest for services provided in connection with the sale of the Company\u2019s 2008 Super King Air B200GT SN BY-50. Upon making this determination, the Board of Directors removed Ms. Olver from the Audit Committee and appointed Mr. Belland to take her place. In determining the independence of our directors, our Board considered all transactions in which we and any director had any interest, including the aforementioned fee for consulting services paid to a company in which Ms. Parchi is the managing partner and has an ownership interest.\nItem 14. Principal accounting fees and services.\nPrincipal Accountant Fees and Services\nServices provided by Grant Thornton for the fiscal years ended September 30, 2023 and 2022 have included audits of the annual consolidated financial statements of the Company, audits of the effectiveness of internal controls over financial reporting as required by the Sarbanes-Oxley Act of 2002, as amended (\u201cSarbanes-Oxley\u201d), and other services related to filings made with the SEC. The aggregate fees billed by Grant Thornton in connection with services rendered during the fiscal years ended September 30, 2023 and 2023, respectively, were:",
+   "prose_after": "Audit Fees\nAudit fees for fiscal years 2023 and 2022 were for professional services rendered for the audit of the Company\u2019s annual consolidated financial statements, auditing the effectiveness of the Company\u2019s internal controls over financial reporting, review of the interim consolidated financial statements included in quarterly reports, and services that are normally provided by Grant Thornton in connection with statutory and regulatory filings or engagements.\nAudit Related Fees\nAudit-related fees were paid to Grant Thornton during fiscal year 2023 for services related to the audit of the required historical financial statements of certain assets acquired from Honeywell International, Inc. during fiscal year 2023. Audit-related fees were paid to Grant Thornton during fiscal year 2022 for services provided in the filing of the Company\u2019s Registration Statement on Form S-3.\nTax-Related Fees\nNo tax-related fees were paid to Grant Thornton during fiscal years 2023 or 2022.\nAll Other Fees\nNo other fees were incurred in connection with services provided by Grant Thornton during fiscal years 2023 or 2022.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 680,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Title"
+    ],
+    [
+     "2.1",
+     "Asset Purchase and License Agreement, dated June 30, 2023, by and between IS&S and Honeywell International Inc. (1)*"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of IS&S. (2)"
+    ],
+    [
+     "3.2",
+     "Articles of Amendment, filed April 17, 2023, to the Articles of Incorporation of IS&S (3)"
+    ],
+    [
+     "3.3",
+     "Amended and Restated Bylaws of IS&S (4)"
+    ],
+    [
+     "4.1",
+     "Description of Capital Stock(12)"
+    ],
+    [
+     "4.2",
+     "Rights Agreement, dated September 12, 2022, between IS&S and Broadridge Corporate Issuer Solutions, Inc. (5)"
+    ],
+    [
+     "4.3",
+     "Amendment to Rights Agreement, dated September 1, 2023, between IS&S and Broadridge Corporate Issuer Solutions, Inc. (6)"
+    ],
+    [
+     "10.1",
+     "Employment Agreement, dated February 14, 2012, between IS&S and Shahram Askarpour (7)**"
+    ],
+    [
+     "10.2",
+     "IS&S 2019 Stock-Based Incentive Compensation Plan (8)**"
+    ],
+    [
+     "10.3",
+     "Offer Letter from IS&S to Relland Winand, dated November 8, 2023 (9)**"
+    ],
+    [
+     "10.4",
+     "Amendment to Loan Documents, dated June 28, 2023, by and among Innovative Solutions and Support, Inc., Innovative Solutions and Support, LLC, and PNC Bank, National Association (1)*"
+    ],
+    [
+     "10.5",
+     "Term Note, executed June 28, 2023, by Innovative Solutions and Support, Inc. and Innovative Solutions and Support, LLC (1)*"
+    ],
+    [
+     "10.6",
+     "Revolving Line of Credit Note, executed May 11, 2023, by Innovative Solutions and Support, Inc. and Innovative Solutions and Support, LLC (1)*"
+    ],
+    [
+     "10.7",
+     "Amendment to Loan Documents, dated December 19, 2023, by and among Innovative Solutions and Support, Inc., Innovative Solutions and Support, LLC, and PNC Bank, National Association (10)*"
+    ],
+    [
+     "10.8",
+     "Amended and Restated Revolving Line of Credit, dated December 19, 2023, executed by Innovative Solutions and Support, Inc. and Innovative Solutions and Support, LLC (10)*"
+    ],
+    [
+     "10.9",
+     "Amended and Restated Line of Credit and Investment Sweep Rider, dated December 19, 2023, by and among Innovative Solutions and Support, Inc., Innovative Solutions and Support, LLC, and PNC Bank, National Association (10)*"
+    ],
+    [
+     "10.10",
+     "Sales Agreement, dated September 22, 2023, by and between Innovative Solutions and Support, Inc. and Stifel, Nicolaus & Company, Incorporated (11)"
+    ],
+    [
+     "21",
+     "Subsidiaries of IS&S.(12)"
+    ],
+    [
+     "23.1",
+     "Consent of Grant Thornton LLP(12)"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a). (12)"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer Pursuant to Rule 13a-14(a). (12)"
+    ],
+    [
+     "31.3",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) (filed herewith)"
+    ],
+    [
+     "31.4",
+     "Certification of Chief Financial Officer Pursuant to Rule 13a-14(a) (filed herewith)"
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.(12)"
+    ],
+    [
+     "97",
+     "Clawback Policy(12)"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document(12)"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document(12)"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document(12)"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document(12)"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document(12)"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document(12)"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document contained in Exhibit 101(12)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Financial Statement Schedules"
+    }
+   },
+   "prose_before": "Pursuant to the adoption of the Audit Committee Charter (as revised), the Board has adopted a policy which prohibits the Company from entering into non-audit related consulting agreements for financial information systems design and implementation, for certain other services considered to have an impact on independence, and for all other services prohibited by Sarbanes-Oxley and SEC regulations. The policy also contains procedures requiring Audit Committee pre-approval of all audit and permitted non-audit services provided by the Company\u2019s independent registered public accounting firm.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a) The following documents are filed as part of the Form 10-K:\n1. Financial Statements\nSee index to Financial Statements at Item 8 of the Form 10-K.\n2. Financial Statement Schedules\nSchedules have been omitted because they are not applicable or are not required or the information required to be set forth therein is included in the financial statements or notes thereto.\n(b) The following exhibits are filed as part of, or incorporated by reference into the Form 10-K:",
+   "prose_after": "*Schedules and exhibits have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The Company will furnish supplementally a copy of any omitted schedule or exhibit to the SEC upon request.\n**Denotes compensatory plan or arrangement.\n(1) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on July 7, 2023.\n(2) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on September 19, 2007.\n(3) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on April 18, 2023\n(4) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on May 1, 2018.\n(5) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on September 12, 2022.\n(6) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on September 1, 2023\n(7) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on April 2, 2012.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INNOVATIVE SOLUTIONS AND SUPPORT, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Shahram Askarpour"
+    ],
+    [
+     "",
+     "",
+     "Shahram Askarpour"
+    ],
+    [
+     "",
+     "",
+     "Director & Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE SOLUTIONS AND SUPPORT, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 825
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Financial Statement Schedules"
+    }
+   },
+   "prose_before": "(6) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on September 1, 2023\n(7) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on April 2, 2012.\n(8) Incorporated by reference from the Registrant\u2019s Proxy Statement filed with the SEC on January 28, 2019.\n(9) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on November 14, 2023.\n(10) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 22, 2023.\n(11) Incorporated by reference from the Registrant\u2019s Current Report on Form 8-K filed with the SEC on September 22, 2023.\n(12) Incorporated by reference from the Form 10-K filed with the SEC on January 12, 2024, which is being amended hereby.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Dated: January 29, 2024",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

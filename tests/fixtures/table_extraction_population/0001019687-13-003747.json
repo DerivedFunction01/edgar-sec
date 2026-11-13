@@ -1,0 +1,5000 @@
+{
+ "accession": "0001019687-13-003747",
+ "cik": "0000867840",
+ "form": "10-K",
+ "filing_date": "2013-09-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "precision_10k-063013.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Massachusetts",
+     "04-2795294"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2013\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number 001-10647\nPRECISION OPTICS CORPORATION, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "22 East Broadway\nGardner, Massachusetts 01440\n(Address of principal executive offices) (Zip Code)\n(978) 630-1800\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, $0.01 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties",
+     "7"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures (Not applicable.)",
+     "8"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Selected Financial Data",
+     "9"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "13"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "14"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "31"
+    ],
+    [
+     "",
+     "Item 9A.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "33"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation",
+     "35"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "38"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "42"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "44"
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "45"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                            Accelerated filer [ ]\nNon-accelerated filer [ ] (Do not check if a smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nThe aggregate market value of the voting and non-voting common stock held by non-affiliates of the registrant on December 31, 2012 was approximately $1,095,875.25 based on a total of 1,289,265 shares of the registrant\u2019s common stock held by non-affiliates on December 31, 2012, at the closing price of $0.85 per share as reported on the OTCQB market.\nThe number of shares of outstanding common stock of the registrant as of September 13, 2013 was 4,455,134.\nDOCUMENTS INCORPORATED BY REFERENCE: None.\nPRECISION OPTICS CORPORATION, INC.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I\nThis Annual Report contains forward-looking statements as defined under the federal securities laws. All statements other than statements of historical facts included in this Annual Report on Form 10-K regarding our financial performance, business strategy and plans and objectives of management for future operations and any other future events are forward-looking statements and based on our beliefs and assumptions. Words such as \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201cmight,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cplan,\u201d and other similar words are one way to identify such forward-looking statements. Actual results could vary materially from these forward-looking statements. Such statements reflect our current view with respect to future events and are subject to certain risks, uncertainties, and assumptions including, without limitation, those risks and uncertainties contained in the Risk Factors section of this Annual Report on Form 10-K and our other filings made with the SEC. Although we believe that our expectations are reasonable, we can give no assurance that such expectations will prove to be correct. Based upon changing conditions, any one or more of these events described herein as anticipated, believed, estimated, expected or intended may not occur. All prior and subsequent written and oral forward-looking statements attributable to our Company or persons acting on our behalf are expressly qualified in their entirety by this cautionary statement. We do not intend to update any of the forward-looking statements after the date of this Annual Report to conform these statements to actual results or to changes in our expectations, except as required by law.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "54",
+     "%",
+     "",
+     "22",
+     "%"
+    ],
+    [
+     "Customer B",
+     "",
+     "13",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "All others",
+     "",
+     "33",
+     "",
+     "",
+     "44",
+     ""
+    ],
+    [
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 183,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "In July 2011, we entered into an asset purchase agreement with Intuitive Surgical Operations, Inc., in which we received $2.5 million in connection with the sale of certain intellectual property. Pursuant to the agreement, we agreed to assign to Intuitive Surgical all of our currently issued and non-expired patents and pending patent applications, and in return, Intuitive Surgical agreed to grant to us a royalty-free, worldwide license to these patents in fields outside of medical robotics.\nWe intend to continue to innovate and extend our technological capabilities in the areas of 3-D endoscopy Microprecision\u2122 optics and micro medical cameras and to aggressively pursue patent protection for such developments.\nEmployees\nAs of June 30, 2013, we had 32 employees, 27 of which were full-time employees. There were 18 employees in manufacturing, 5 in engineering/research and development, 1 in sales and marketing and 8 in finance and administration. We are not a party to any collective bargaining agreements. We believe our relations with our employees are good.\nCustomers\nRevenues from our largest customers, as a percentage of total revenues, for fiscal years 2013 and 2012 were as follows:",
+   "prose_after": "No other customer accounted for more than 10% of our revenues in fiscal years 2013 and 2012. At June 30, 2013, receivables from our three largest customers were 26%, 24% and 12%, respectively, of total accounts receivable.\nEnvironmental Matters\nOur operations are subject to a variety of federal, state and local laws and regulations relating to the discharge of materials into the environment or otherwise relative to the protection of the environment. From time to time, we use a small amount of hazardous materials in our operations. We believe that we currently comply with all applicable environmental laws and regulations and intend to do our best efforts to remain in compliance.\nGovernment Regulations\nDomestic Regulation. We currently develop, manufacture and sell several medical products, the marketing of which is subject to governmental regulation in the United States. Medical devices are regulated in the United States by the Food and Drug Administration, or FDA, and, in some cases, by certain state agencies. The FDA regulates the research, testing, manufacture, safety, effectiveness, labeling, promotion and distribution of medical devices in the United States. Generally, medical devices require clearance or approval prior to commercial distribution. Additionally, certain material changes to, and changes in intended use of, medical devices also are subject to FDA review and clearance or approval. Non-compliance with applicable requirements can result in failure of the FDA to grant pre-market clearance or approval, withdrawal or suspension of approval, suspension of production, or the imposition of various other penalties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "For the Fiscal Year Ended June 30, 2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter ended September 30, 2011",
+     "$",
+     "1.35",
+     "$",
+     "1.25"
+    ],
+    [
+     "Second Quarter ended December 31, 2011",
+     "$",
+     "1.45",
+     "$",
+     "1.25"
+    ],
+    [
+     "Third Quarter ended March 31, 2012",
+     "$",
+     "1.45",
+     "$",
+     "0.13"
+    ],
+    [
+     "Fourth Quarter ended June 30, 2012",
+     "$",
+     "2.01",
+     "$",
+     "1.10"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Fiscal Year Ended June 30, 2013",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter ended September 30, 2012",
+     "$",
+     "1.50",
+     "$",
+     "0.85"
+    ],
+    [
+     "Second Quarter ended December 31, 2012",
+     "$",
+     "1.19",
+     "$",
+     "0.80"
+    ],
+    [
+     "Third Quarter ended March 31, 2013",
+     "$",
+     "0.90",
+     "$",
+     "0.44"
+    ],
+    [
+     "Fourth Quarter ended June 30, 2013",
+     "$",
+     "0.86",
+     "$",
+     "0.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Fiscal Year Ended June 30, 2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter ended September 30, 2013 (through September 15, 2013)",
+     "$",
+     "1.09",
+     "$",
+     "0.33"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 353,
+    "end_line": 371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Our Company, on occasion, may also be involved in other legal matters arising in the ordinary course of our business. While management believes that such matters are currently insignificant, matters arising in the ordinary course of business for which we are or could become involved in litigation may have a material adverse effect on our business, financial condition or results of operations. We are not aware of any pending or threatened litigation against us or our officers and directors in their capacity as such that could have a material impact on our operations or finances, other than as set forth above.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nOur common stock (OTCQB: PEYE) is quoted on OTCQB, the OTC market tier for companies that report to the SEC. Our common stock was quoted on the OTCBB until February 23, 2011. The following table sets forth the high and low bid prices for our common stock for each quarter during the last two fiscal years as quoted on OTCQB. Such OTC market quotations reflect inter-dealer prices, without retail markup, markdown or commissions and may not necessarily represent actual transactions.",
+   "prose_after": "Holders\nAs of September 15, 2013, we had approximately 100 holders of record of our common stock. Holders of record include nominees who may hold shares on behalf of multiple owners.\nDividends\nWe have not declared any dividends during the last two fiscal years. At present, we intend to retain our earnings, if any, to finance research and development and expansion of our business.\nRecent Sales of Unregistered Securities; Use of Proceeds from Registered Securities\nWe did not issue any unregistered equity securities during the quarter ended June 30, 2013.\nSecurities Authorized for Issuance under Equity Compensation Plans\nThe following table summarizes information about our equity compensation plans as of June 30, 2013.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 332,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "192,287",
+     "$",
+     "8.05",
+     "",
+     "36,198"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "207,800",
+     "$",
+     "1.20",
+     "",
+     "117,200"
+    ],
+    [
+     "Total",
+     "",
+     "400,087",
+     "$",
+     "4.49",
+     "",
+     "153,398"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 401
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Holders\nAs of September 15, 2013, we had approximately 100 holders of record of our common stock. Holders of record include nominees who may hold shares on behalf of multiple owners.\nDividends\nWe have not declared any dividends during the last two fiscal years. At present, we intend to retain our earnings, if any, to finance research and development and expansion of our business.\nRecent Sales of Unregistered Securities; Use of Proceeds from Registered Securities\nWe did not issue any unregistered equity securities during the quarter ended June 30, 2013.\nSecurities Authorized for Issuance under Equity Compensation Plans\nThe following table summarizes information about our equity compensation plans as of June 30, 2013.",
+   "prose_after": "2006 Equity Incentive Plan\nOn November 28, 2006, our stockholders approved the Precision Optics Corporation, Inc. 2006 Equity Incentive Plan (the \u201c2006 Plan\u201d), which succeeded the Precision Optics Corporation, Inc. Amended and Restated 1997 Equity Incentive Plan (the \u201c1997 Plan\u201d). No further awards have been or will be granted under the 1997 Plan. The 2006 Plan allows for the grant of stock options to selected employees, directors and other persons who provide services to us or our affiliates.\n2011 Equity Incentive Plan\nThe Precision Optics Corporation, Inc. 2011 Equity Incentive Plan (the \u201c2011 Plan\u201d) was adopted by our Board of Directors on October 13, 2011. The 2011 Plan allows for the grant of stock options to selected employees, directors and other persons who provide services to us or our affiliates.\nITEM 6. SELECTED FINANCIAL DATA.\nAs a smaller reporting company as defined by Rule 12b-2 of the Exchange Act and in Item 10(f)(1) of Regulation S-K, we are electing scaled disclosure reporting obligations and therefore are not required to provide the information requested by this Item.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "54",
+     "%",
+     "",
+     "22",
+     "%"
+    ],
+    [
+     "Customer B",
+     "",
+     "13",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "All others",
+     "",
+     "33",
+     "",
+     "",
+     "44",
+     ""
+    ],
+    [
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our critical accounting policies are included in the Notes to our Financial Statements contained in this Annual Report on Form 10-K.\nResults of Operations for the Fiscal Year Ended June 30, 2013 Compared to the Fiscal Year Ended June 30, 2012\nTotal revenues for fiscal year 2013 were $2,519,743, an increase of $367,347, or 17.1%, from revenues for fiscal year 2012 of $2,152,396. The increase in revenues for fiscal year 2013 as compared to the prior year was due to higher unit volume sales of micro optics and higher unit volume sales of the advanced surgical visualization system used in spinal surgery, partially offset by lower unit volume sales of endoscopes and couplers. The increase in unit volume sales of micro optics and of the advanced surgical visualization system used in spinal surgery was accompanied by decreases in average product sales prices of those products, totaling approximately $22,000.\nRevenues from our largest customers, as a percentage of total revenues, were as follows:",
+   "prose_after": "No other customer accounted for more than 10% of our revenues in fiscal years 2013 and 2012.\nGross profit for fiscal year 2013 of $654,428 reflected an increase of $97,022 as compared to gross profit for fiscal year 2012 of $557,406. Gross profit as a percentage of revenues for fiscal year 2013 was 26.0% and remained relatively flat as compared to gross profit as a percentage of revenues for fiscal year 2012 of 25.9%. The slight increase in our gross profit percentage was due primarily to higher overall unit sales volume, partially offset by less favorable product mix and certain nonrecurring manufacturing startup expenses related to the introduction of new products.\nResearch and development expenses, net were $630,294 for fiscal year 2013 as compared to $664,696 for fiscal year 2012. The decrease of $34,402, or 5.2%, for fiscal year 2013 as compared to the prior year was due primarily to lower spending on R&D related efforts. Research and development expenses depend on our assessment of new product opportunities and available resources. Research and development expenses were net of reimbursement from customers of related costs of $87,496 during fiscal year 2013 and $80,023 during fiscal year 2012.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "Thereafter",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Operating Leases",
+     "$",
+     "40,557",
+     "$",
+     "6,330",
+     "$",
+     "\u2013",
+     "$",
+     "46,887"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 499
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We have sustained recurring net operating losses for several years. During the year ended June 30, 2013, we incurred a net loss from operations of $1,232,509 and used cash in operations of $1,293,392, a $292,123 improvement from the cash used in operating activities of $1,585,515 during the previous fiscal year. For the quarter ended June 30, 2013, cash used in operating activities was $236,185, a $107,354 improvement from the cash used in operating activities of $343,539 recorded for the previous quarter ended March 31, 2013. As of June 30, 2013, cash and cash equivalents were $1,034,587, accounts receivable were $278,700, and current liabilities were $592,886.\nCapital equipment expenditures during fiscal year 2013 and 2012 were $3,550 and $0, respectively. Future capital equipment expenditures will be dependent upon future sales and success of on-going research and development efforts.\nContractual cash commitments for the fiscal years subsequent to June 30, 2013 are summarized as follows:",
+   "prose_after": "As of June 30, 2013, we had contractual cash commitments related to open purchase orders for fiscal year 2014 of approximately $163,000.\nTrends and Uncertainties That May Affect Future Results\nDuring fiscal year 2010 after implementing a number of changes to reduce cash usage and increase sales and profitability, our cash flow was positive for the first time in many years. In fiscal year 2011, the major focus of our senior management shifted to finding a long-term solution to our obligations under the 10% Senior Secured Convertible Notes (the \u201cNotes\u201d) issued on June 25, 2008, which initially became due just before the beginning of fiscal year 2011. While we continued to work during fiscal year 2011 to advance product development and sales and marketing efforts, the requirement to find a solution for the Notes while simultaneously continuing operations of our Company with limited capital resources resulted in an overall reduction in sales volume and delay of business plans. With the consummation of an asset purchase agreement with Intuitive Surgical Operations, Inc. in July 2011, we received sufficient cash to retire the Notes, and to provide working capital for our Company. On September 28, 2012, we received $2.5 million in connection with our completion of an offering of stock and warrants, and we anticipate the proceeds will be used for working capital purposes and for the development of new products. With the fiscal year 2013 year-over-year increase in sales of 17.1%, we are beginning to see the effect of management\u2019s renewed focus on operations.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at June 30, 2013 and 2012",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended June 30, 2013 and 2012",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity for the Years Ended June 30, 2013 and 2012",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended June 30, 2013 and 2012",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "20"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "For fiscal year 2013, revenues from our largest customer were 54% of total sales, as compared to 22% of total sales for the same period in the prior year. The concentration of sales to certain significant customers may fluctuate depending on factors such as the magnitude and the timing of receipt and fulfillment of customer orders, and may vary significantly from period to period. However, we believe that the introduction of new products with new customers, including those discussed above, will reduce the influence of any one customer on sales in any specific period.\nOff-Balance Sheet Arrangements\nWe currently have no off-balance sheet arrangements that have or are reasonably likely to have a current or future material effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nAs a smaller reporting company as defined by Rule 12b-2 of the Exchange Act and in Item 10(f)(1) of Regulation S-K, we are electing scaled disclosure reporting obligations and therefore are not required to provide the information requested by this Item.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nIndex to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Shareholders of\nPrecision Optics Corporation, Inc.:\nWe have audited the accompanying consolidated balance sheets of Precision Optics Corporation, Inc. and subsidiaries (the Company) as of June 30, 2013 and 2012 and the related consolidated statements of operations, stockholders\u2019 equity and cash flows for the years then ended. These consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal controls over financial reporting. An audit includes consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "1,034,587",
+     "",
+     "$",
+     "145,923",
+     ""
+    ],
+    [
+     "    Accounts receivable (net of allowance for doubtful accounts of $15,000 in 2013 and $11,446 in 2012)",
+     "",
+     "278,700",
+     "",
+     "",
+     "341,900",
+     ""
+    ],
+    [
+     "  Inventories",
+     "",
+     "896,173",
+     "",
+     "",
+     "682,900",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "61,567",
+     "",
+     "",
+     "33,719",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "2,271,027",
+     "",
+     "",
+     "1,204,442",
+     ""
+    ],
+    [
+     "Fixed Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Machinery and equipment",
+     "",
+     "2,367,029",
+     "",
+     "",
+     "2,355,968",
+     ""
+    ],
+    [
+     "  Leasehold improvements",
+     "",
+     "553,596",
+     "",
+     "",
+     "553,596",
+     ""
+    ],
+    [
+     "  Furniture and fixtures",
+     "",
+     "148,303",
+     "",
+     "",
+     "148,303",
+     ""
+    ],
+    [
+     "  Vehicles",
+     "",
+     "19,674",
+     "",
+     "",
+     "19,674",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,088,602",
+     "",
+     "",
+     "3,077,541",
+     ""
+    ],
+    [
+     "  Less\u2014Accumulated depreciation and amortization",
+     "",
+     "3,056,554",
+     "",
+     "",
+     "3,035,584",
+     ""
+    ],
+    [
+     "Net fixed assets",
+     "",
+     "32,048",
+     "",
+     "",
+     "41,957",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,303,075",
+     "",
+     "$",
+     "1,246,399",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  10% senior secured convertible notes",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "51,250",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "289,255",
+     "",
+     "",
+     "410,316",
+     ""
+    ],
+    [
+     "  Customer advances",
+     "",
+     "38,044",
+     "",
+     "",
+     "6,387",
+     ""
+    ],
+    [
+     "  Accrued employee compensation",
+     "",
+     "151,915",
+     "",
+     "",
+     "171,205",
+     ""
+    ],
+    [
+     "  Accrued professional services",
+     "",
+     "70,000",
+     "",
+     "",
+     "62,000",
+     ""
+    ],
+    [
+     "  Accrued warranty expense",
+     "",
+     "25,000",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "  Other accrued liabilities",
+     "",
+     "18,672",
+     "",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "592,886",
+     "",
+     "",
+     "727,070",
+     ""
+    ],
+    [
+     "Commitments (Note 3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.01 par value: 50,000,000 shares authorized; 4,455,134 and 1,251,339 shares issued and outstanding at June 30, 2013 and June 30, 2012, respectively",
+     "",
+     "44,551",
+     "",
+     "",
+     "12,513",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "41,955,717",
+     "",
+     "",
+     "39,009,215",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(40,290,079)",
+     "",
+     "",
+     "(38,502,399)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "1,710,189",
+     "",
+     "",
+     "519,329",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,303,075",
+     "",
+     "$",
+     "1,246,399",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal controls over financial reporting. An audit includes consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the consolidated financial position of Precision Optics Corporation, Inc. and subsidiaries as of June 30, 2013 and 2012 and the results of their operations and their cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\n/s/ Stowe & Degon LLC\nWestborough, Massachusetts\nSeptember 23, 2013\nConsolidated Balance Sheets at June 30, 2013 and 2012",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\nfor the Years Ended June 30, 2013 and 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 631,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "2,519,743",
+     "",
+     "$",
+     "2,152,396",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "1,865,315",
+     "",
+     "",
+     "1,594,990",
+     ""
+    ],
+    [
+     "  Gross profit",
+     "",
+     "654,428",
+     "",
+     "",
+     "557,406",
+     ""
+    ],
+    [
+     "Research and Development Expenses, net",
+     "",
+     "630,294",
+     "",
+     "",
+     "664,696",
+     ""
+    ],
+    [
+     "Selling, General and Administrative Expenses",
+     "",
+     "1,261,141",
+     "",
+     "",
+     "1,187,665",
+     ""
+    ],
+    [
+     "Gain on Sale of Assets",
+     "",
+     "(4,498)",
+     "",
+     "",
+     "(10,226)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,886,937",
+     "",
+     "",
+     "1,842,135",
+     ""
+    ],
+    [
+     "  Operating loss",
+     "",
+     "(1,232,509)",
+     "",
+     "",
+     "(1,284,729)",
+     ""
+    ],
+    [
+     "Gain on Sale of Patents",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,276,286",
+     ""
+    ],
+    [
+     "Non-cash provision for Claims for Liquidated Damages",
+     "",
+     "(629,000)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "76,149",
+     "",
+     "",
+     "535",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(1,408)",
+     "",
+     "",
+     "(30,208)",
+     ""
+    ],
+    [
+     "  Income (Loss) before provision for income taxes",
+     "",
+     "(1,786,768)",
+     "",
+     "",
+     "961,884",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "912",
+     "",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "  Net Income (loss)",
+     "$",
+     "(1,787,680)",
+     "",
+     "$",
+     "960,972",
+     ""
+    ],
+    [
+     "Income (Loss) Per Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.51)",
+     "",
+     "$",
+     "0.83",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.51)",
+     "",
+     "$",
+     "0.78",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Common Shares Outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "",
+     "3,521,387",
+     "",
+     "",
+     "1,163,775",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "3,521,387",
+     "",
+     "",
+     "1,275,938",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 637,
+    "end_line": 674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\nfor the Years Ended June 30, 2013 and 2012",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\nfor the Years Ended June 30, 2013 and 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 631,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders\u2019 Equity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Balance, July 1, 2011",
+     "",
+     "971,013",
+     "$",
+     "9,710",
+     "$",
+     "38,259,029",
+     "$",
+     "(39,463,371)",
+     "",
+     "$",
+     "(1,194,632)",
+     ""
+    ],
+    [
+     "  Restricted stock issued to officers and directors",
+     "",
+     "245,326",
+     "",
+     "2,453",
+     "",
+     "672,192",
+     "",
+     "\u2013",
+     "",
+     "",
+     "674,645",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "35,000",
+     "",
+     "350",
+     "",
+     "77,994",
+     "",
+     "\u2013",
+     "",
+     "",
+     "78,344",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "960,972",
+     "",
+     "",
+     "960,972",
+     ""
+    ],
+    [
+     "  Balance, June 30, 2012",
+     "",
+     "1,251,339",
+     "$",
+     "12,513",
+     "$",
+     "39,009,215",
+     "$",
+     "(38,502,399)",
+     "",
+     "$",
+     "519,329",
+     ""
+    ],
+    [
+     "  Proceeds from sale of common stock and warrants",
+     "",
+     "2,777,795",
+     "",
+     "27,778",
+     "",
+     "2,163,340",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,191,118",
+     ""
+    ],
+    [
+     "  Exercise of warrants",
+     "",
+     "50,000",
+     "",
+     "500",
+     "",
+     "49,500",
+     "",
+     "\u2013",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "  Issuance of common stock to settle claims for liquidated damages",
+     "",
+     "370,000",
+     "",
+     "3,700",
+     "",
+     "625,300",
+     "",
+     "\u2013",
+     "",
+     "",
+     "629,000",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "6,000",
+     "",
+     "60",
+     "",
+     "108,362",
+     "",
+     "\u2013",
+     "",
+     "",
+     "108,422",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "(1,787,680)",
+     "",
+     "",
+     "(1,787,680)",
+     ""
+    ],
+    [
+     "  Balance, June 30, 2013",
+     "",
+     "4,455,134",
+     "$",
+     "44,551",
+     "$",
+     "41,955,717",
+     "$",
+     "(40,290,079)",
+     "",
+     "$",
+     "1,710,189",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 683,
+    "end_line": 703
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\nfor the Years Ended June 30, 2013 and 2012",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows for the\nYears Ended June 30, 2013 and 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 706,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "  Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss)",
+     "",
+     "(1,787,680)",
+     "",
+     "$",
+     "960,972",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "20,970",
+     "",
+     "",
+     "23,368",
+     ""
+    ],
+    [
+     "  Gain on sale of patents",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(2,276,286)",
+     ""
+    ],
+    [
+     "  Gain on sale of assets",
+     "",
+     "(4,498)",
+     "",
+     "",
+     "(10,226)",
+     ""
+    ],
+    [
+     "  Gain on settlement of accounts payable",
+     "",
+     "(76,149)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Provision for inventory write-down",
+     "",
+     "19,337",
+     "",
+     "",
+     "14,033",
+     ""
+    ],
+    [
+     "  Stock-based compensation expense",
+     "",
+     "108,422",
+     "",
+     "",
+     "78,344",
+     ""
+    ],
+    [
+     "  Non-cash provision for settlement of claims for liquidated damages",
+     "",
+     "629,000",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Non-cash interest expense",
+     "",
+     "1,250",
+     "",
+     "",
+     "30,208",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable, net",
+     "",
+     "63,200",
+     "",
+     "",
+     "(193,076)",
+     ""
+    ],
+    [
+     "  Inventories",
+     "",
+     "(232,610)",
+     "",
+     "",
+     "(30,648)",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "(27,848)",
+     "",
+     "",
+     "3,945",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(44,912)",
+     "",
+     "",
+     "(129,079)",
+     ""
+    ],
+    [
+     "  Customer advances",
+     "",
+     "31,657",
+     "",
+     "",
+     "(29,905)",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "6,469",
+     "",
+     "",
+     "(27,165)",
+     ""
+    ],
+    [
+     "  Net cash used in operating activities",
+     "",
+     "(1,293,392)",
+     "",
+     "",
+     "(1,585,515)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net proceeds from sale of patents",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,463,171",
+     ""
+    ],
+    [
+     "  Proceeds from sale of assets",
+     "",
+     "4,498",
+     "",
+     "",
+     "10,226",
+     ""
+    ],
+    [
+     "  Purchases of property and equipment",
+     "",
+     "(11,061)",
+     "",
+     "",
+     "(1,724)",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) investing activities",
+     "",
+     "(6,563)",
+     "",
+     "",
+     "2,471,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gross proceeds from September 2012 private placement of common stock and warrants",
+     "",
+     "2,500,015",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Private placement expenses incurred and paid",
+     "",
+     "(308,896)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Payment of principal and interest on 10% Senior Convertible Notes",
+     "",
+     "(52,500)",
+     "",
+     "",
+     "(759,791)",
+     ""
+    ],
+    [
+     "  Proceeds from exercise of warrants to purchase common stock (50,000 shares)",
+     "",
+     "50,000",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) financing activities",
+     "",
+     "2,188,619",
+     "",
+     "",
+     "(759,791)",
+     ""
+    ],
+    [
+     "  Net increase in cash and cash equivalents",
+     "",
+     "888,664",
+     "",
+     "",
+     "126,367",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents, beginning of year",
+     "",
+     "145,923",
+     "",
+     "",
+     "19,556",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents, end of year",
+     "$",
+     "1,034,587",
+     "",
+     "$",
+     "145,923",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Supplemental Disclosure of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during the year for income taxes",
+     "$",
+     "912",
+     "",
+     "$",
+     "912",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Noncash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of common stock to satisfy deferred compensation obligations (245,326 shares)",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "674,645",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 712,
+    "end_line": 767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows for the\nYears Ended June 30, 2013 and 2012",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNotes to Consolidated Financial Statements\n(1) SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\n(a) Nature of Business\nPrecision Optics Corporation, Inc. (the \u201cCompany\u201d) designs, develops, manufactures and sells specialized optical systems and components and optical thin-film coatings. The Company conducts business in one industry segment only and its customers are primarily domestic. The Company\u2019s products and services fall into two principal areas: (i) medical products for use by hospitals and physicians; and (ii) advanced optical system design and development services and products used by military and industrial customers.\n(b) Principles of Consolidation\nThe accompanying consolidated financial statements include the accounts of the Company and its two wholly-owned subsidiaries. All inter-company accounts and transactions have been eliminated in consolidation.\n(c) Revenues\nThe Company recognizes revenue when four basic criteria are met: (1) persuasive evidence of an arrangement exists; (2) delivery has occurred or services rendered; (3) the price to the buyer is fixed and determinable; and (4) collectability is reasonably assured. The Company\u2019s shipping terms are customarily FOB shipping point.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 706,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 770,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Raw material",
+     "$",
+     "302,448",
+     "$",
+     "277,392"
+    ],
+    [
+     "Work-in-progress",
+     "",
+     "392,991",
+     "",
+     "289,748"
+    ],
+    [
+     "Finished goods",
+     "",
+     "200,734",
+     "",
+     "115,760"
+    ],
+    [
+     "",
+     "$",
+     "896,173",
+     "$",
+     "682,900"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 802,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Revenues for industrial and medical products sold in the normal course of business are recognized upon shipment when delivery terms are FOB shipping point and all other revenue recognition criteria have been met. Gross shipping charges reimbursable from customers, to deliver product, are insignificant and are included in \u201cRevenues\u201d section of the Company\u2019s consolidated statement of operations, while shipping costs are classified in the \u201cselling, general and administrative expenses\u201d section of the Company\u2019s consolidated statement of operations.\n(d) Cash and Cash Equivalents\nThe Company includes in cash equivalents all highly liquid investments with original maturities of three months or less at the time of acquisition. Cash and cash equivalents of $1,034,587 and $145,923 at June 30, 2013 and 2012, respectively, consist primarily of cash at banks and money market funds. The Company maintains its cash and cash equivalents in bank deposit accounts that, at times, may exceed federally insured limits. The Company has not experienced any losses in such accounts. The Company believes it is not exposed to any significant credit risk on its cash and cash equivalents.\n(e) Inventories\nInventories are stated at the lower of cost (first-in, first-out) or market and include material, labor and manufacturing overhead. The components of inventories at June 30, 2013 and 2012 are as follows:",
+   "prose_after": "The Company provides for estimated obsolescence on unmarketable inventory based upon assumptions about future demand and market conditions. If actual demand and market conditions are less favorable than those projected by management, additional inventory write-downs may be required. Inventory, once written down, is not subsequently written back up, as these adjustments are considered permanent adjustments to the carrying value of the inventory.\nDuring fiscal year 2013, the Company recorded a pre-tax non-cash provision for slow-moving and obsolete inventories of $19,337. During fiscal year 2012, the Company recorded a pre-tax non-cash provision for slow-moving and obsolete inventories of $14,033.\n(f) Property and Equipment\nProperty and equipment are recorded at cost. Maintenance and repair items are expensed as incurred. The Company provides for depreciation and amortization by charges to operations, using the straight-line and declining-balance methods, which allocate the cost of property and equipment over the following estimated useful lives:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 770,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Asset Classification",
+     "Estimated Useful Life"
+    ],
+    [
+     "Machinery and equipment",
+     "2-7 years"
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of lease term or estimated useful life"
+    ],
+    [
+     "Furniture and fixtures",
+     "5 years"
+    ],
+    [
+     "Vehicles",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 822,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company provides for estimated obsolescence on unmarketable inventory based upon assumptions about future demand and market conditions. If actual demand and market conditions are less favorable than those projected by management, additional inventory write-downs may be required. Inventory, once written down, is not subsequently written back up, as these adjustments are considered permanent adjustments to the carrying value of the inventory.\nDuring fiscal year 2013, the Company recorded a pre-tax non-cash provision for slow-moving and obsolete inventories of $19,337. During fiscal year 2012, the Company recorded a pre-tax non-cash provision for slow-moving and obsolete inventories of $14,033.\n(f) Property and Equipment\nProperty and equipment are recorded at cost. Maintenance and repair items are expensed as incurred. The Company provides for depreciation and amortization by charges to operations, using the straight-line and declining-balance methods, which allocate the cost of property and equipment over the following estimated useful lives:",
+   "prose_after": "Depreciation expense was $20,970 and $20,269 for the years ended June 30, 2013 and 2012, respectively.\n(g) Significant Customers and Concentration of Credit Risk\nFinancial instruments that subject the Company to credit risk consist primarily of cash equivalents and trade accounts receivable. The Company places its investments with highly rated financial institutions. The Company has not experienced any losses on these investments to date. At June 30, 2013, receivables from the Company\u2019s three largest customers were 26%, 24% and 12% of the total accounts receivable. At June 30, 2012, receivables from the Company\u2019s two largest customers were 31% and 27%, of the total accounts receivable. No other customer accounted for more than 10% of the Company\u2019s receivables as of June 30, 2013 and 2012. The Company has not experienced any material losses related to accounts receivable from individual customers. The Company generally does not require collateral or other security as a condition of sale, rather it relies on credit approval, balance limitation and monitoring procedures to control credit risk of trade account financial instruments. Management believes that allowances for doubtful accounts, which are established based upon review of specific account balances and historical experience, are adequate.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "54",
+     "%",
+     "",
+     "22",
+     "%"
+    ],
+    [
+     "Customer B",
+     "",
+     "13",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "All others",
+     "",
+     "33",
+     "",
+     "",
+     "44",
+     ""
+    ],
+    [
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 840,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Financial instruments that subject the Company to credit risk consist primarily of cash equivalents and trade accounts receivable. The Company places its investments with highly rated financial institutions. The Company has not experienced any losses on these investments to date. At June 30, 2013, receivables from the Company\u2019s three largest customers were 26%, 24% and 12% of the total accounts receivable. At June 30, 2012, receivables from the Company\u2019s two largest customers were 31% and 27%, of the total accounts receivable. No other customer accounted for more than 10% of the Company\u2019s receivables as of June 30, 2013 and 2012. The Company has not experienced any material losses related to accounts receivable from individual customers. The Company generally does not require collateral or other security as a condition of sale, rather it relies on credit approval, balance limitation and monitoring procedures to control credit risk of trade account financial instruments. Management believes that allowances for doubtful accounts, which are established based upon review of specific account balances and historical experience, are adequate.\nRevenues from the Company\u2019s largest customers, as a percentage of total revenues, were as follows:",
+   "prose_after": "No other customer accounted for more than 10% of the Company\u2019s revenues in fiscal years 2013 and 2012.\n(h) Income (Loss) per Share\nBasic income (loss) per share is computed by dividing net income or net loss by the weighted average number of shares of common stock outstanding during the period. Diluted income (loss) per share is computed by dividing net income or net loss (adjusted by adding back interest expense on the Company\u2019s previously issued senior convertible notes) by the weighted average number of shares of common stock outstanding during the period, plus the number of potentially dilutive securities outstanding during the period such as stock options and warrants and shares issuable upon conversion of senior convertible notes. For the year ended June 30, 2013, the effect of such securities was antidilutive and not included in the diluted calculation because of the net loss generated in that period.\nThe following is the calculation of income (loss) per share for the years ended June 30, 2013 and 2012:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss) \u2013 Basic",
+     "$",
+     "(1,787,680)",
+     "",
+     "$",
+     "960,972"
+    ],
+    [
+     "Interest Expense on Senior Convertible Notes",
+     "",
+     "\u2013",
+     "",
+     "",
+     "30,208"
+    ],
+    [
+     "Net Income (Loss) \u2013 Diluted",
+     "$",
+     "(1,787,680)",
+     "",
+     "$",
+     "991,180"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic Weighted Average Shares Outstanding",
+     "",
+     "3,521,387",
+     "",
+     "",
+     "1,163,775"
+    ],
+    [
+     "Potentially Dilutive Securities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "112,114"
+    ],
+    [
+     "Diluted Weighted Average Shares Outstanding",
+     "",
+     "3,521,387",
+     "",
+     "",
+     "1,275,889"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) Per Share",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.51)",
+     "",
+     "$",
+     "0.83"
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.51)",
+     "",
+     "$",
+     "0.78"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 862,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "No other customer accounted for more than 10% of the Company\u2019s revenues in fiscal years 2013 and 2012.\n(h) Income (Loss) per Share\nBasic income (loss) per share is computed by dividing net income or net loss by the weighted average number of shares of common stock outstanding during the period. Diluted income (loss) per share is computed by dividing net income or net loss (adjusted by adding back interest expense on the Company\u2019s previously issued senior convertible notes) by the weighted average number of shares of common stock outstanding during the period, plus the number of potentially dilutive securities outstanding during the period such as stock options and warrants and shares issuable upon conversion of senior convertible notes. For the year ended June 30, 2013, the effect of such securities was antidilutive and not included in the diluted calculation because of the net loss generated in that period.\nThe following is the calculation of income (loss) per share for the years ended June 30, 2013 and 2012:",
+   "prose_after": "The number of shares issuable upon the exercise of outstanding stock options and warrants that were excluded from the computation as their effect was antidilutive was approximately 3,434,000 and 620,000 for the years ended June 30, 2013 and 2012, respectively.\n(i) Stock-Based Compensation\nThe measurement and recognition of all compensation costs for all stock-based awards made to employees and the Board of Directors are based upon fair value over the requisite service period for awards expected to vest. The Company estimates the fair value of share-based awards on the date of grant using the Black-Scholes option-pricing model. Stock-based compensation costs recognized for the years ended June 30, 2013 and 2012 amounted to $108,422 and $78,344, respectively.\n(j) Patents\nPatent costs are amortized using the straight-line method over the shorter of their legal or estimated useful lives, generally five to ten years. Amortization expense was $0 and $3,099 for the years ended June 30, 2013 and 2012, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "25,000",
+     "",
+     "$",
+     "25,000",
+     ""
+    ],
+    [
+     "Provision for warranty claims",
+     "",
+     "2,006",
+     "",
+     "",
+     "1,321",
+     ""
+    ],
+    [
+     "Warranty claims incurred",
+     "",
+     "(2,006)",
+     "",
+     "",
+     "(1,321)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "25,000",
+     "",
+     "$",
+     "25,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Long-lived assets and certain identifiable intangibles are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset may not be recoverable. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to future undiscounted net cash flows expected to be generated by the asset. If such assets are considered to be impaired, the impairment to be recognized is measured by the amount by which the carrying amount of the assets exceeds the fair value of the assets. Assets to be disposed of are reported at the lower of the carrying amount or fair value less costs to sell.\n(m) Warranty Costs\nThe Company does not incur future performance obligations in the normal course of business other than providing a standard one-year warranty on materials and workmanship to its customers (except in certain unusual and infrequently occurring situations where extended warranty terms beyond one year are negotiated with the customer). The Company provides for estimated warranty costs at the time product revenue is recognized. Warranty costs have been included as a component of cost of goods sold in the accompanying consolidated statements of operations. The following tables summarize warranty reserve activity for the years ended June 30, 2013 and 2012:",
+   "prose_after": "(n) Research and Development\nResearch and development expenses are charged to operations as incurred. The Company groups development and prototype costs and related reimbursements in research and development. For the years ended June 30, 2013 and 2012, research and development expense is shown net of reimbursements of $87,496 and $80,023, respectively, in the accompanying statements of operations.\n(o) Comprehensive Income\nComprehensive income or loss is defined as the change in equity of a business enterprise during a period from transactions and other events and circumstances from non-owners sources. The Company\u2019s comprehensive loss or income for the years ended June 30, 2013 and 2012 was equal to its net loss for the same periods.\n(p) Income Taxes\nIncome taxes are accounted for under the asset and liability method. Deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases and operating loss and tax credit carry-forwards. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date. In assessing the likelihood of utilization of existing deferred tax assets, management has considered historical results of operations and the current operating environment.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2013",
+     "",
+     "June 30, 2012",
+     ""
+    ],
+    [
+     "10% Senior Secured Convertible Notes issued on June 25, 2008, convertible into common stock at $1.25 per share, bearing interest at 10% per annum. Outstanding principal and accrued interest were due at maturity, September 30, 2012",
+     "$",
+     "\u2013",
+     "$",
+     "50,000"
+    ],
+    [
+     "  Accrued interest\u201410% coupon",
+     "",
+     "\u2013",
+     "",
+     "1,250"
+    ],
+    [
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "51,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In February 2013, the FASB issued ASC 2013-02, which is an update to improve the reporting of reclassifications out of accumulated other comprehensive income (\u201cAOCI\u201d). Companies are also required to present reclassifications by component when reporting changes in AOCI balances. The updated accounting guidance is effective for fiscal years, and interim periods within those years, beginning after December 15, 2012 on a prospective basis. This guidance is not expected to have a material impact on the Company\u2019s financial condition or results of operations.\n(2) 10% SENIOR SECURED CONVERTIBLE NOTES\nOn June 25, 2008, the Company entered into a purchase agreement, as amended on December 11, 2008, with institutional and other accredited investors (the \u201cInvestors\u201d) pursuant to which it sold a total of $600,000 of 10% Senior Secured Convertible Notes (the \u201cNotes\u201d). The Company repaid the outstanding principal and accrued interest respectively owed to Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. on December 15, 2011, and repaid the outstanding obligations owed to Mr. Arnold Schumsky on September 28, 2012. As of September 28, 2012, the Notes held by the Investors have been satisfied in full and the obligations thereunder have been terminated.\nThe Notes consisted of the following:",
+   "prose_after": "(3) COMMITMENTS\n(a) Related Party Transactions\nThe Company leases its main Gardner facility from a corporation owned by a member of the Company\u2019s Board of Directors. The Company is currently a tenant-at-will, paying rent of $9,000 per month. Total rent expense paid or accrued to such related party was $108,000 in each of fiscal years 2013 and 2012, and is included in the Company\u2019s accompanying consolidated statements of operations.\nThe Company made payments to a director totaling $26,606 in fiscal year 2012 for consulting services. It did not incur any such fees in fiscal year 2013.\nOn September 28, 2012, the Company closed on agreements with investors for the sale and purchase of units consisting of an aggregate of (i) 2,777,795 shares of common stock, and (ii) warrants to purchase an aggregate of 1,944,475 shares of common stock, at a per unit price of $0.90. Each unit consisted of one share of common stock and 70% warrant coverage. The warrants have an exercise price of $1.25 per share, subject to adjustment and a call provision if certain market price targets are reached, expire five years from September 28, 2012, and are exercisable in whole or in part, at any time prior to expiration. The Company received $2.5 million in gross proceeds from the offering.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 970,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Purchaser",
+     "Company Affiliation",
+     "Securities Purchased in Offering",
+     "",
+     "Unit Price",
+     "Subscription Amount"
+    ],
+    [
+     "",
+     "",
+     "Shares of Common Stock",
+     "Warrants",
+     "",
+     ""
+    ],
+    [
+     "  Forkey, Richard E.",
+     "  Director",
+     "27,778",
+     "19,445",
+     "$0.90",
+     "$25,000.20"
+    ],
+    [
+     "  Joseph N. Forkey and Heather C. Forkey JTTEN",
+     "  Chairman of the Board, Chief Executive Officer, President, and Treasurer",
+     "22,223",
+     "15,557",
+     "$0.90",
+     "$20,000.70"
+    ],
+    [
+     "  Major, Donald A.",
+     "  Executive Vice President for Corporate Development and Director",
+     "27,778",
+     "19,445",
+     "$0.90",
+     "$25,000.20"
+    ],
+    [
+     "  Miles, Richard",
+     "  Director",
+     "11,112",
+     "7,779",
+     "$0.90",
+     "$10,000.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 977,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company made payments to a director totaling $26,606 in fiscal year 2012 for consulting services. It did not incur any such fees in fiscal year 2013.\nOn September 28, 2012, the Company closed on agreements with investors for the sale and purchase of units consisting of an aggregate of (i) 2,777,795 shares of common stock, and (ii) warrants to purchase an aggregate of 1,944,475 shares of common stock, at a per unit price of $0.90. Each unit consisted of one share of common stock and 70% warrant coverage. The warrants have an exercise price of $1.25 per share, subject to adjustment and a call provision if certain market price targets are reached, expire five years from September 28, 2012, and are exercisable in whole or in part, at any time prior to expiration. The Company received $2.5 million in gross proceeds from the offering.\nCertain of the Company\u2019s directors and officers participated in the offering on the same terms as the other investors and purchased a total aggregate amount of approximately $80,000 of units in the offering, in such amounts as follows:",
+   "prose_after": "On February 12, 2013, the Company entered into a settlement agreement with one of its directors and stockholders, Joel Pitlor (the \u201cPitlor Settlement Agreement\u201d). Under the terms of the Pitlor Settlement Agreement, the Company issued 10,000 shares of common stock and warrants to purchase 10,000 shares of common stock as payment in full of any amounts due to Mr. Pitlor under the registration rights agreement the Company entered into with Mr. Pitlor, and other parties, on February 1, 2007. The warrants issued in connection with the Pitlor Settlement Agreement have an exercise price of $1.50 per share, subject to adjustment, expire three years from February 12, 2013, and are exercisable in whole or in part, at any time prior to expiration. The Company valued the securities issued to Mr. Pitlor at $17,000.\nTransactions with Stockholders Known by the Company to Own 5% or More of the Company\u2019s Common Stock\nSpecial Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P.\nOn June 25, 2008, the Company entered into a purchase agreement, as amended on December 11, 2008, with Special Situations Fund III QP, L.P., Special Situations Private Equity Fund, L.P., and other accredited investors pursuant to which it sold a total of $600,000 of 10% Senior Secured Convertible Notes, referred to as the \u201cNotes,\u201d that are convertible into a total of 480,000 shares of common stock at a conversion rate of $1.25. The Company also issued warrants to purchase a total of 316,800 shares of common stock at an exercise price of $1.75 per share, referred to as the \u201cWarrants.\u201d Interest accrued on the Notes at a rate of 10% per year and was payable in cash upon the earlier of conversion or maturity of the Notes. The original maturity of the Notes was June 25, 2010 and the original expiration date of the Warrants was June 25, 2015, subject to extension. By mutual agreement with the Company, Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. agreed to amend its Notes on December 11, 2008, June 25, 2010, July 26, 2010, September 15, 2010, October 15, 2010, November 15, 2010, November 30, 2010, December 1, 2010, December 3, 2010, December 17, 2010, January 10, 2011, January 24, 2011, February 7, 2011, February 25, 2011, March 11, 2011, March 31, 2011, April 14, 2011, April 29, 2011, May 13, 2011, June 3, 2011, June 28, 2011, July 6, 2011, July 20, 2011, July 25, 2011, July 27, 2011, August 31, 2011, September 30, 2011, and October 31, 2011 to extend the \u201cStated Maturity Date\u201d of the Notes. At the time of each of the amendments of the Notes, Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. owned over 5% of the Company\u2019s common stock. Pursuant to the terms of the settlement agreement entered into with Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. on February 12, 2013 (as discussed in further detail below), the expiration date of the Warrants held by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. was amended from June 25, 2015 to May 11, 2017. The exercise price of the Warrants may be adjusted downward in the event the Company issues shares of common stock or securities convertible into common stock at a price lower than the exercise price of the Warrants at the time of issuance. On December 15, 2011, the Company repaid Special Situations Fund III QP, L.P. a principal repayment of $275,000 and accrued interest of $95,486, for a total payment of $370,486. On December 15, 2011, the Company repaid Special Situations Private Equity Fund, L.P. a principal repayment of $275,000 and accrued interest of $95,486, for a total payment of $370,486. The Notes held by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. have been satisfied in full and the obligations thereunder have been terminated. The Company registered the shares and the shares underlying the Warrants purchased by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. in the June 2008 private placement in a registration statement that is currently effective.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 970,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2013",
+     ""
+    ],
+    [
+     "Assumptions:",
+     "",
+     ""
+    ],
+    [
+     "Option life",
+     "",
+     "5.0 years"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.25%"
+    ],
+    [
+     "Stock volatility",
+     "",
+     "479%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0"
+    ],
+    [
+     "Weighted average fair value of grants",
+     "$",
+     "0.85"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "June 30, 2013",
+    "Assumptions:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "As of June 30, 2013, the unrecognized compensation costs related to options vesting in the future is $132,933. The Company uses the Black-Scholes option-pricing model as the most appropriate method for determining the estimated fair value for the stock awards. The Black-Scholes method of valuation requires several assumptions: (1) the expected term of the stock award; (2) the expected future stock volatility over the expected term; and (3) risk-free interest rate. The expected term represents the expected period of time the Company believes the options will be outstanding based on historical information. Estimates of expected future stock price volatility are based on the historic volatility of the Company\u2019s common stock and the risk free interest rate is based on the U.S. Zero-Bond rate. The Company utilizes a forfeiture rate based on an analysis of the Company\u2019s actual experience. The fair value of options at date of grant was estimated with the following assumptions for options granted in fiscal 2013:",
+   "prose_after": "Stock Option and Other Compensation Plans:\nThe type of share-based payments currently utilized by the Company is stock options.\nThe Company has various stock option and other compensation plans for directors, officers, and employees. The Company has the following stock option plans outstanding as of June 30, 2013: the Precision Optics Corporation, Inc. 2011 Equity Incentive Plan (the \u201c2011 Plan\u201d); the Precision Optics Corporation, Inc. 2006 Equity Incentive Plan (the \u201c2006 Plan\u201d), and the Precision Optics Corporation, Inc. Amended and Restated 1997 Incentive Plan (the \u201c1997 Plan\u201d). Vesting periods under the 2011 Plan, the 2006 Plan, and the 1997 Plan are at the discretion of the Board of Directors and typically average three to five years. Options under these Plans are granted at fair market value on the date of grant and have a term of ten years from the date of grant.\nThe 2011 Plan, which provides eligible participants (certain employees, directors, consultants, etc.) the opportunity to receive a broad variety of equity based and cash awards. Options granted vest and are exercisable for periods determined by the Board of Directors, not to exceed 10 years from the date of grant. A total of 325,000 shares of common stock, including shares rolled forward from the 1997 Plan, have been reserved for issuance under the 2011 Plan. At June 30, 2013, a total of 207,800 stock options are outstanding and 117,200 shares of common stock were available for future grants under the 2011 Plan.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1013,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Contractual Life",
+     ""
+    ],
+    [
+     "Outstanding at July 1, 2011",
+     "",
+     "94,138",
+     "",
+     "$",
+     "15.97",
+     "",
+     "4.50 years"
+    ],
+    [
+     "Grants",
+     "",
+     "506,600",
+     "",
+     "",
+     "0.27-1.20",
+     "",
+     ""
+    ],
+    [
+     "Cancellations",
+     "",
+     "(208,151)",
+     "",
+     "",
+     "0.55-13.75",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2012",
+     "",
+     "392,587",
+     "",
+     "$",
+     "4.56",
+     "",
+     "8.15 years"
+    ],
+    [
+     "Grants",
+     "",
+     "9,000",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancellations",
+     "",
+     "(1,500)",
+     "",
+     "",
+     "0.55",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2013",
+     "",
+     "400,087",
+     "",
+     "$",
+     "4.49",
+     "",
+     "7.21 years"
+    ]
+   ],
+   "caption_stack": [
+    "Options Outstanding"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The 2006 Plan, which provides eligible participants (certain employees, directors, consultants, etc.) the opportunity to receive a broad variety of equity based and cash awards. Options granted vest and are exercisable for periods determined by the Board of Directors, not to exceed 10 years from the date of grant. A total of 139,898 shares of common stock, including shares rolled forward from the 1997 Plan, have been reserved for issuance under the 2006 Plan. At June 30, 2013, a total of 103,700 stock options are outstanding and 36,198 shares of common stock were available for future grants under the 2006 Plan.\nThe 1997 Plan provided eligible participants (certain employees, directors, consultants, etc.) the opportunity to receive a broad variety of equity based and cash awards. Options granted vested and were exercisable for periods determined by the Board of Directors, not to exceed 10 years from the date of grant. Options for a total of 88,587 shares of common stock were outstanding at June 30, 2013 under the 1997 Plan, as amended and restated in fiscal year 2006. Prior to the adoption of the 2006 Plan, 9,000 stock options were granted in fiscal year 2007 under the 1997 Plan. Upon the adoption of the 2006 Plan, no new awards were granted under the 1997 Plan. No shares are available for future grants under the 1997 Plan.\nThe following tables summarize stock option activity for the years ended June 30, 2013 and 2012:",
+   "prose_after": "Information related to the stock options outstanding as of June 30, 2013 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1106,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Range of Exercise Prices",
+     "",
+     "Number of Shares",
+     "",
+     "Weighted-Average Remaining Contractual Life (years)",
+     "",
+     "Weighted-Average Exercise Price",
+     "",
+     "Exercisable Number of Shares",
+     "",
+     "Exercisable Weighted-Average Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "1.20",
+     "",
+     "207,800",
+     "",
+     "8.68",
+     "$",
+     "1.20",
+     "",
+     "102,800",
+     "$",
+     "1.20"
+    ],
+    [
+     "$",
+     "0.85",
+     "",
+     "9,000",
+     "",
+     "9.52",
+     "",
+     "0.85",
+     "",
+     "9,000",
+     "",
+     "0.85"
+    ],
+    [
+     "$",
+     "0.55",
+     "",
+     "49,500",
+     "",
+     "8.62",
+     "",
+     "0.55",
+     "",
+     "34,667",
+     "",
+     "0.55"
+    ],
+    [
+     "$",
+     "0.27",
+     "",
+     "40,000",
+     "",
+     "8.04",
+     "",
+     "0.27",
+     "",
+     "26,667",
+     "",
+     "0.27"
+    ],
+    [
+     "$",
+     "1.35",
+     "",
+     "1,200",
+     "",
+     "6.41",
+     "",
+     "1.35",
+     "",
+     "1,200",
+     "",
+     "1.35"
+    ],
+    [
+     "$",
+     "1.25",
+     "",
+     "1,200",
+     "",
+     "5.41",
+     "",
+     "1.25",
+     "",
+     "1,200",
+     "",
+     "1.25"
+    ],
+    [
+     "$",
+     "6.25",
+     "",
+     "1,600",
+     "",
+     "3.42",
+     "",
+     "6.25",
+     "",
+     "1,600",
+     "",
+     "6.25"
+    ],
+    [
+     "$",
+     "7.75",
+     "",
+     "1,200",
+     "",
+     "4.41",
+     "",
+     "7.75",
+     "",
+     "1,200",
+     "",
+     "7.75"
+    ],
+    [
+     "$",
+     "11.50",
+     "",
+     "800",
+     "",
+     "2.42",
+     "",
+     "11.50",
+     "",
+     "800",
+     "",
+     "11.50"
+    ],
+    [
+     "$",
+     "13.75",
+     "",
+     "50,427",
+     "",
+     "2.86",
+     "",
+     "13.75",
+     "",
+     "50,427",
+     "",
+     "13.75"
+    ],
+    [
+     "$",
+     "20.75",
+     "",
+     "37,360",
+     "",
+     "1.96",
+     "",
+     "20.75",
+     "",
+     "37,360",
+     "",
+     "20.75"
+    ],
+    [
+     "$",
+     "0.27\u2013$20.75",
+     "",
+     "400,087",
+     "",
+     "7.20",
+     "$",
+     "4.49",
+     "",
+     "266,921",
+     "$",
+     "6.21"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1078,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Information related to the stock options outstanding as of June 30, 2013 is as follows:",
+   "prose_after": "The aggregate intrinsic value of the Company\u2019s \u201cin-the-money\u201d outstanding and exercisable options as of June 30, 2013 was $24,625 and $16,667, respectively.\n(b) Warrants\nDuring the quarter ended December 31, 2010, the Company issued warrants to purchase 100,000 shares of common stock at an exercise price of $1.00 per share to several consultants to the Company. The warrants became exercisable beginning six months after December 16, 2010 (the issue date) and expire on December 16, 2013. In December 2012, warrants for 50,000 shares were exercised, and accordingly, 50,000 shares of restricted common stock were issued.\nOn June 25, 2008, the Company entered into a Purchase Agreement, as amended on December 11, 2008, with institutional and other accredited investors pursuant to which it sold a total of $600,000 of 10% senior secured convertible notes (the \u201cNotes\u201d) that were convertible at the investor\u2019s option into a total of 480,000 shares of the Company\u2019s common stock at a conversion rate of $1.25. On March 31, 2012, the remaining investor, Arnold Schumsky, further amended his remaining Note to extend the \u201cStated Maturity Date\u201d of the principal to July 31, 2012 and to modify the Note such that all accrued and unpaid interest on the Note up to and including March 31, 2012 shall be due on or before April 13, 2012, on the condition that the Company issue to him a warrant for 5,000 shares of common stock with an exercise price of $1.20 per share and a term of three years. On April 13, 2012, the Company repaid Mr. Schumsky a payment of the accrued interest of $18,819, and such payment included all accrued and unpaid interest on the Note up to and including March 31, 2012. On May 8, 2012, the Company issued Mr. Schumsky the warrant according to the terms described in the amended Note.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1106,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense (benefit) at federal statutory rate",
+     "",
+     "(34.0)",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "Increase (decrease) in tax resulting from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State taxes, net of federal benefit",
+     "",
+     "(6.3)",
+     "",
+     "",
+     "6.3",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "30.1",
+     "",
+     "",
+     "(94.3)",
+     ""
+    ],
+    [
+     "Nondeductible items",
+     "",
+     "1.0",
+     "",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Prior-year tax adjustments",
+     "",
+     "7.5",
+     "",
+     "",
+     "48.8",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1.6",
+     "",
+     "",
+     "3.6",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "0.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1129,
+    "end_line": 1143
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In conjunction with the offering, certain anti-dilution provisions of the warrants issued in conjunction with the Company\u2019s June 25, 2008 financing transaction were triggered. As a result, the number of existing June 25, 2008 warrants increased from 318,621 to 469,831 and the related exercise price of the warrants decreased from $1.74 per share to $1.18 per share. The June 25, 2008 warrants expire on June 25, 2015.\n(5) INCOME TAXES\nThe Company has identified its federal tax return and its state tax return in Massachusetts as \u201cmajor\u201d tax jurisdictions. The periods subject to examination for its federal and state income tax returns are the years ended in 2011 and thereafter. The Company believes its income tax filing positions and deductions will be sustained on audit and it does not anticipate any adjustments that would result in a material change to its financial position. Therefore, no liabilities for uncertain income tax positions have been recorded.\nThe provision for income taxes in the accompanying consolidated statements of operations consists of the minimum statutory state income tax liability of $912 for the years ended June 30, 2013 and 2012.\nA reconciliation of the federal statutory rate to the Company\u2019s effective tax rate for the fiscal years ended June 30, 2013 and 2012 is as follows:",
+   "prose_after": "The components of deferred tax assets and liabilities at June 30, 2013 and 2012 are approximately as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1106,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "  Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net operating loss carry forwards",
+     "$",
+     "2,582,000",
+     "",
+     "$",
+     "1,913,000",
+     ""
+    ],
+    [
+     "Tax credit carry forwards",
+     "",
+     "381,000",
+     "",
+     "",
+     "362,000",
+     ""
+    ],
+    [
+     "  Reserves and accruals not yet deducted for tax purposes",
+     "",
+     "301,000",
+     "",
+     "",
+     "451,000",
+     ""
+    ],
+    [
+     "  Total deferred tax assets",
+     "",
+     "3,264,000",
+     "",
+     "",
+     "2,726,000",
+     ""
+    ],
+    [
+     "  Valuation allowance",
+     "",
+     "(3,264,000)",
+     "",
+     "",
+     "(2,726,000)",
+     ""
+    ],
+    [
+     "  Net deferred tax asset",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1147,
+    "end_line": 1161
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The components of deferred tax assets and liabilities at June 30, 2013 and 2012 are approximately as follows:",
+   "prose_after": "The Company has provided a valuation allowance to reduce the net deferred tax asset to an amount the Company believes is \u201cmore likely than not\u201d to be realized. The valuation allowance increased in fiscal 2013, as compared to the prior year, by approximately $538,000.\nAt June 30, 2013, the Company had federal and state net operating loss carry forwards of approximately $6,000,000 and $2,850,000, respectively, which will, if not used, expire at various dates from 2014 through 2032. In addition, the Company had net operating loss carry forwards from its Hong Kong operations of approximately $2,040,000, which carry forward indefinitely.\n(6) PROFIT SHARING PLAN\nThe Company has a defined contribution 401(k) profit sharing plan. Employer profit sharing and matching contributions to the plan are discretionary. No employer profit sharing or matching contributions were made to the plan in fiscal years 2013 and 2012.\n(7) SALE OF ASSETS\nIn fiscal year 2013, the Company sold equipment that was previously written off for proceeds totaling $4,498 and recorded a gain of $4,498. In fiscal year 2012, the Company sold equipment that was previously written off for proceeds totaling $10,226 and recorded a gain of $10,226. These gains are included within operating expenses in the accompanying consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) or Office(s) Held"
+    ],
+    [
+     "Joseph N. Forkey",
+     "45",
+     "Chairman of the Board of Directors, Chief Executive Officer, President and Treasurer"
+    ],
+    [
+     "Jack P. Dreimiller",
+     "65",
+     "Senior Vice President, Finance and Chief Financial Officer"
+    ],
+    [
+     "Donald A. Major",
+     "52",
+     "Executive Vice President for Corporate Development and Director"
+    ],
+    [
+     "Richard E. Forkey",
+     "73",
+     "Director and Advisor to the Chief Executive Officer"
+    ],
+    [
+     "Richard B. Miles",
+     "70",
+     "Director"
+    ],
+    [
+     "Joel R. Pitlor",
+     "70",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "To address and remediate the material weakness in internal control over financial reporting described above, beginning in the quarter ended September 30, 2009 and continuing through the year ended June 30, 2013, we implemented procedures to improve our inventory controls and documentation surrounding inventory valuation for overhead rates, and performed procedures to ensure that the pricing of inventory items was consistent with the supporting documentation. We believe that the step outlined above strengthens our internal control over financial reporting and mitigates the material weakness described above.\nWe intend to continue to remediate material weaknesses and enhance our internal controls but cannot guarantee that our efforts will result in remediation of our material weaknesses or that new issues will not be exposed in this process.\nChanges in Internal Control over Financial Reporting\nThere was no change in our internal control over financial reporting that occurred during the fourth quarter of our fiscal year covered by this Annual Report on Form 10-K that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nIdentification of Directors and Executive Officers\nSet forth below is certain information with respect to the individuals who are our directors and executive officers as of June 30, 2013.",
+   "prose_after": "Board Composition. Our Board of Directors is divided into three classes that are as nearly equal in number as possible, with each class serving for a staggered term of office. Only one class is elected each year. Each director serves a three year term and until his or her successor has been duly elected and qualified. Our Board currently consists of five directors. Our Class I director is Richard E. Forkey. Our Class II directors are Joel R. Pitlor and Donald A. Major. Our Class III directors are Joseph N. Forkey and Richard Miles.\nBiographies and Qualifications of Our Executive Officers and Directors. The biographies of our executive officers and directors and certain information regarding each director\u2019s experience, attributes, skills and/or qualifications that led to the conclusion that the individual should be serving as an executive officer and/or director of our Company are as follows:\nDr. Joseph N. Forkey\nDr. Joseph N. Forkey, son of Richard E. Forkey, has served as Chairman of our Board of Directors, Chief Executive Officer, President and Treasurer since February 8, 2011. Dr. Forkey has been a member of our Board of Directors since 2006. He served as our Executive Vice President and Chief Scientific Officer from April 2006 to February 2011, and held the position of our Chief Scientist from September 2003 to April 2006. Since joining us, he has been involved in general technical and management activities of our Company, as well as investigations of opportunities that leverage our newly developed technologies. Dr. Forkey holds B.A. degrees in Mathematics and Physics from Cornell University, and a Ph.D. in Mechanical and Aerospace Engineering from Princeton University. Prior to joining us, Dr. Forkey spent seven years at the University of Pennsylvania Medical School as a postdoctoral fellow and research staff member. Dr. Forkey is a valuable member of our Board due to his depth of scientific, operating, strategic, transactional, and senior management experience in our industry. Additionally, Dr. Forkey has held positions of increasing responsibility at our Company and holds an intimate knowledge of our Company due to his longevity in the industry and with us.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position (a)",
+     "Year June 30,\n(b)",
+     "Salary ($) (c)",
+     "Bonus ($) (d)",
+     "",
+     "Stock Awards ($) (e)",
+     "Option Awards ($) (f) (1)",
+     "",
+     "Total ($) (j)"
+    ],
+    [
+     "Joseph N. Forkey",
+     "2013",
+     "120,000",
+     "0",
+     "",
+     "0",
+     "0",
+     "",
+     "120,000"
+    ],
+    [
+     "Chairman of the Board of Directors,",
+     "2012",
+     "120,000",
+     "0",
+     "",
+     "(2)",
+     "180,000",
+     "(3)",
+     "300,000"
+    ],
+    [
+     "Chief Executive Officer,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "President and Treasurer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Richard G. Cyr",
+     "2013",
+     "129,439",
+     "1,000",
+     "(4)",
+     "0",
+     "0",
+     "",
+     "130,439"
+    ],
+    [
+     "Optical Shop Manager",
+     "2012",
+     "112,300",
+     "1,000",
+     "(4)",
+     "0",
+     "10,800",
+     "(5)",
+     "124,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1351,
+    "end_line": 1363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Major, whom formerly served as Chair of the Audit Committee and was determined by the Board to qualifies as an audit committee financial expert, no longer meets the criteria set forth in Item 407(d)(5) of Regulation S-K as he is employed by our Company as an executive officer and therefore is not \u201cindependent\u201d as independence for audit committee members is defined in the NASDAQ Listing Rules. We believe that each member of our Board is financially literate and possesses sufficient experience, both professionally and by virtue of his service on our Board, to be fully capable of discharging his duties as a member of our Board performing audit committee functions. However, the Board believes that Mr. Major\u2019s professional background and services assist the Board when additional financial expertise is warranted.\nITEM 11. EXECUTIVE COMPENSATION.\nExecutive and Director Compensation\nSummary Compensation\nThe following table sets forth all compensation for our fiscal years ended June 30, 2013 and 2012 awarded to, earned by, or paid to our Principal Executive Officer and our most highly compensated employee, both of which are referred to herein as the \u201cNamed Executive Officers.\u201d No other executive officer earned over $100,000 in the last completed fiscal year.\nSummary Compensation Table for the Fiscal Years Ended June 30, 2013 and 2012",
+   "prose_after": "(1) Represents the aggregate grant date fair value of stock option awards granted in the respective fiscal year as computed in accordance with FASB ASC Topic 718, Compensation \u2014 Stock Compensation. The fair value of each stock option award is estimated on the date of grant using the Black-Scholes option valuation model. A discussion of the assumptions used in calculating the amounts in this column may be found in Note 4(a) to our audited consolidated financial statements for the year ended June 30, 2013 set forth in this Annual Report on Form 10-K. These amounts do not represent the actual amounts paid to or realized by the Named Executive Officers during the fiscal year ended June 30, 2013 or 2012.\n(2) Based upon a compensation arrangement approved by the Board of Directors on April 15, 2008, Dr. Forkey agreed to defer a portion of his salary. On December 3, 2010, we executed a compensation agreement where we agreed to pay Dr. Forkey $29,999, representing all deferred salary due to Dr. Forkey as of the date of the agreement. On October 14, 2011, we amended the compensation agreement to extend the deadline by which we were required to issue the shares of common stock. In return for Dr. Forkey\u2019s consent to forgive the deferred salary owed to him by us, we issued him 10,909 shares of our restricted common stock in October 2011. The aggregate grant date fair value of the stock was reflected in the respective fiscal years it was earned by Dr. Forkey even though it was not received by Dr. Forkey until FY 2012.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1326,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name (a)",
+     "Number of securities underlying unexercised options exercisable (#) (b)",
+     "",
+     "Number of securities underlying unexercised options unexercisable (#) (c)",
+     "",
+     "Option exercise price ($) (e)",
+     "",
+     "Option expiration date (f)",
+     ""
+    ],
+    [
+     "  Joseph N. Forkey",
+     "",
+     "600",
+     "",
+     "0",
+     "",
+     "13.75",
+     "",
+     "05/09/2016"
+    ],
+    [
+     "",
+     "",
+     "11,208",
+     "",
+     "0",
+     "",
+     "13.75",
+     "",
+     "06/13/2015"
+    ],
+    [
+     "",
+     "",
+     "22,416",
+     "",
+     "0",
+     "",
+     "20.75",
+     "",
+     "06/13/2015"
+    ],
+    [
+     "",
+     "",
+     "50,000",
+     "",
+     "100,000 (1)",
+     "",
+     "1.20",
+     "",
+     "03/02/2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Richard G. Cyr",
+     "",
+     "10,200",
+     "",
+     "0",
+     "",
+     "13.75",
+     "",
+     "05/09/2016"
+    ],
+    [
+     "",
+     "",
+     "26,667",
+     "",
+     "13,333 (2)",
+     "",
+     "0.27",
+     "",
+     "07/14/2021"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1389,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "N. Forkey disclosed above, in place with any Named Executive Officer. We have no compensatory plan or arrangement with respect to any Named Executive Officer where such plan or arrangement will result in payments to such Named Executive Officer upon or following his resignation, or other termination of employment with us and our subsidiaries, or as a result of a change-in-control of our Company or a change in the Named Executive Officers\u2019 responsibilities following a change-in-control.\nManagement Incentive Arrangements\nOn February 9, 2012, our Board of Directors determined that Dr. Joseph N. Forkey, our Chief Executive Officer, would be eligible to receive an incentive bonus of $60,000 after we achieve positive EBITDA for two consecutive quarters, with such payment terms to be structured at a later date to make sure cash is sufficiently available.\nOutstanding Equity Awards at Fiscal Year-End Table for the Fiscal Year Ended June 30, 2013\nThe following table shows grants of options outstanding on June 30, 2013, the last day of our fiscal year, to each of the Named Executive Officers named in the Summary Compensation Table.\nOption Awards",
+   "prose_after": "(1) Options with an expiration date of March 2, 2022 vest 25,000 shares per quarter as of January 1, 2013.\n(2) Options with an expiration date of July 14, 2021 were exercisable as follows: 13,333 shares vested on October 15, 2011, 13,333 shares vested on July 15, 2012, and the remaining 13,333 shares will vest on July 15, 2013.\nProfit Sharing and 401(k) Plan\nWe have a defined contribution 401(k) profit sharing plan. Employer profit sharing and matching contributions to the plan are discretionary. No employer profit sharing contributions were made to the plan in fiscal years 2013 and 2012. No employer matching contributions were made to the plan in fiscal years 2013 and 2012.\nDirector Compensation\nThe following table sets forth cash amounts and the value of other compensation paid to our directors, but does not include the compensation of Dr. Joseph N. Forkey, our Chairman of the Board of Directors, Chief Executive Officer, President and Treasurer, as his compensation is reflected in the Summary Compensation Table. During the fiscal year ended June 30, 2013, our Board of Directors determined that Dr. Joseph N. Forkey and Mr. Richard E. Forkey were our employee directors and, therefore, would not earn any fees related to service on our Board.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Director (a)",
+     "Fees earned or paid in cash ($) (b) (1)",
+     "Option awards ($) (d) (2) (3)",
+     "All other compensation ($) (g)",
+     "Total ($) (h)"
+    ],
+    [
+     "  Richard E. Forkey (4)",
+     "0",
+     "0",
+     "4,544 (5)",
+     "4,544"
+    ],
+    [
+     "  Donald A. Major (6)",
+     "2,000 (7)",
+     "2,550",
+     "36,150 (7)",
+     "40,700"
+    ],
+    [
+     "  Richard B. Miles",
+     "1,750",
+     "2,550",
+     "0",
+     "4,300"
+    ],
+    [
+     "  Joel R. Pitlor",
+     "2,000",
+     "2,550",
+     "0",
+     "4,550"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1419,
+    "end_line": 1428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Options with an expiration date of July 14, 2021 were exercisable as follows: 13,333 shares vested on October 15, 2011, 13,333 shares vested on July 15, 2012, and the remaining 13,333 shares will vest on July 15, 2013.\nProfit Sharing and 401(k) Plan\nWe have a defined contribution 401(k) profit sharing plan. Employer profit sharing and matching contributions to the plan are discretionary. No employer profit sharing contributions were made to the plan in fiscal years 2013 and 2012. No employer matching contributions were made to the plan in fiscal years 2013 and 2012.\nDirector Compensation\nThe following table sets forth cash amounts and the value of other compensation paid to our directors, but does not include the compensation of Dr. Joseph N. Forkey, our Chairman of the Board of Directors, Chief Executive Officer, President and Treasurer, as his compensation is reflected in the Summary Compensation Table. During the fiscal year ended June 30, 2013, our Board of Directors determined that Dr. Joseph N. Forkey and Mr. Richard E. Forkey were our employee directors and, therefore, would not earn any fees related to service on our Board.\nDirector Compensation Table for the Fiscal Year Ended June 30, 2013",
+   "prose_after": "(1) Under our director compensation plan, each director receives $250 per board or committee meeting that the director attends. We also reimburse our directors for travel expenses. As our Board has determined that Dr. Joseph N. Forkey and Mr. Richard E. Forkey are employees of our Company, Dr. Forkey and Mr. Forkey do not earn any fees related to service on our Board of Directors.\n(2) Represents the aggregate grant date fair value of stock option awards granted in the respective fiscal year as computed in accordance with FASB ASC Topic 718, Compensation \u2014 Stock Compensation. The fair value of each stock option award is estimated on the date of grant using the Black-Scholes option valuation model. A discussion of the assumptions used in calculating the amounts in this column may be found in Note 4(a) to our audited consolidated financial statements for the year ended June 30, 2013 set forth in this Annual Report on Form 10-K. These amounts do not represent the actual amounts paid to or realized by the directors during the fiscal year ended June 30, 2013.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount of beneficial ownership (1)",
+     "",
+     "",
+     "Percent of",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner",
+     "Shares Owned",
+     "Shares \u2013 Rights to Acquire",
+     "Total Number",
+     "",
+     "Shares Beneficially Owned (2)"
+    ],
+    [
+     "Austin W. Marxe (3) c/o Special Situations Funds 527 Madison Avenue, Suite 2600 New York, NY 10022",
+     "1,269,213",
+     "1,208,647",
+     "2,477,860",
+     "",
+     "43.7%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David M. Greenhouse (4) c/o Special Situations Funds 527 Madison Avenue, Suite 2600 New York, NY 10022",
+     "1,269,213",
+     "1,208,443",
+     "2,477,656",
+     "",
+     "43.7%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arnold Schumsky (5)\n145 East 27th Street New York, New York 10016",
+     "130,430",
+     "112,487",
+     "242,917",
+     "",
+     "5.3%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  MHW Partners, L.P. (6)\n\n\n\n150 East 52nd Street\n\n\n\n30th Fl.\n\n\n\nNew York, New York 10022",
+     "222,223",
+     "155,557",
+     "377,780",
+     "",
+     "8.2%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DAFNA Capital Management LLC (7)\n10990 Wilshire Boulevard, Suite 1400 Los Angeles, CA 90024",
+     "388,889",
+     "272,223",
+     "661,112",
+     "",
+     "14.0%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alpha Capital Anstalt (8)\n150 Central Park South New York, New York 10019",
+     "277,778",
+     "194,445",
+     "472,223",
+     "",
+     "10.2%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1462,
+    "end_line": 1490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "The following tables set forth information regarding our common stock owned as of the close of business on September 13, 2013 by the following persons: (i) each person who is known by us to own beneficially more than 5% of our common stock, (ii) each of our directors who beneficially owns our common stock, (iii) each of our Named Executive Officers who beneficially own our common stock and (iv) all executive officers and directors, as a group, who beneficially own our common stock. The information on beneficial ownership in the table and footnotes thereto is based upon data furnished to us by, or on behalf of, the persons listed in the table.\nWe have determined beneficial ownership in accordance with the rules of the SEC. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all shares of common stock that they beneficially own, subject to applicable community property laws.\nIn computing the number of shares of common stock beneficially owned by a person and the percentage ownership of that person, we deemed outstanding shares of common stock subject to options held by that person that are currently exercisable or exercisable within 60 days after September 13, 2013. We did not deem these shares outstanding, however, for the purpose of computing the percentage ownership of any other person.\nStockholders Known by Us to Own Over 5% of Our Common Stock",
+   "prose_after": "(1) Represents shares with respect to which each beneficial owner listed has or will have, upon acquisition of such shares upon exercise or conversion of options, warrants, conversion privileges or other rights exercisable within sixty days, sole voting and investment power. Amounts listed have been adjusted, if necessary, to reflect a 1-for-25 reverse split, effective December 11, 2008. For the purposes of this table, we have not assumed the limitations on exercise set forth in certain warrants, which limit the number of shares of common stock that the holder, together with all other shares of common stock beneficially owned by such person, does not exceed 4.999% of the total outstanding shares of common stock.\n(2) As of September 13, 2013, there were 4,455,134 shares of our common stock issued and outstanding. Percentages are calculated on the basis of the amount of issued and outstanding common stock plus, for each person or group, any securities that such person or group has the right to acquire within 60 days pursuant to options, warrants, conversion privileges or other rights.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Messrs. Marxe and Greenhouse are the controlling principals of AWM Investment Company, Inc., the general partner of and investment adviser to Special Situations Cayman Fund, L.P. AWM Investment Company also serves as the general partner of MGP Advisers Limited Partnership, the general partner of Special Situations Fund III QP, L.P. Messrs. Marxe and Greenhouse are also members of MG Advisers L.L.C., the general partner of Special Situations Private Equity Fund, L.P. AWM Investment Company serves as the investment adviser to Special Situations Fund III QP and Special Situations Private Equity Fund."
+    ],
+    [
+     ""
+    ],
+    [
+     "Special Situations Cayman Fund owns 1 share of common stock. Special Situations Fund III QP owns 934,212 shares of common stock; 3,630,000 warrants to purchase 215,332 shares of common stock, expiring May 11, 2017; warrants to purchase 427,779 shares of common stock, expiring September 28, 2017; and warrants to purchase 175,000 shares of common stock, expiring February 12, 2016. Special Situations Private Equity Fund owns 335,000 shares of common stock; 3,630,000 warrants to purchase 215,332 shares of common stock, expiring May 11, 2017; and warrants to purchase 175,000 shares of common stock, expiring February 12, 2016. Messrs. Marxe and Greenhouse share the power to vote and direct the disposition of all shares of common stock owned by Special Situations Cayman Fund, Special Situations Fund III QP, and Special Situations Private Equity Fund."
+    ]
+   ],
+   "caption_stack": [
+    "Messrs. Marxe and Greenhouse are the controlling principals of AWM Investment Company, Inc., the general partner of and investment adviser to Special Situations Cayman Fund, L.P. AWM Investment Company also serves as the general partner of MGP Advisers Limited Partnership, the general partner of Special Situations Fund III QP, L.P. Messrs. Marxe and Greenhouse are also members of MG Advisers L.L.C., the general partner of Special Situations Private Equity Fund, L.P. AWM Investment Company serves as the investment adviser to Special Situations Fund III QP and Special Situations Private Equity Fund."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1496,
+    "end_line": 1508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Represents shares with respect to which each beneficial owner listed has or will have, upon acquisition of such shares upon exercise or conversion of options, warrants, conversion privileges or other rights exercisable within sixty days, sole voting and investment power. Amounts listed have been adjusted, if necessary, to reflect a 1-for-25 reverse split, effective December 11, 2008. For the purposes of this table, we have not assumed the limitations on exercise set forth in certain warrants, which limit the number of shares of common stock that the holder, together with all other shares of common stock beneficially owned by such person, does not exceed 4.999% of the total outstanding shares of common stock.\n(2) As of September 13, 2013, there were 4,455,134 shares of our common stock issued and outstanding. Percentages are calculated on the basis of the amount of issued and outstanding common stock plus, for each person or group, any securities that such person or group has the right to acquire within 60 days pursuant to options, warrants, conversion privileges or other rights.\n(3) We relied, in part, on a Schedule 13D/A jointly filed with the SEC on March 7, 2013 by Austin W. Marxe and David M. Greenhouse for this information.",
+   "prose_after": "Messrs. Marxe and Greenhouse are deemed to beneficially own a total of 1,269,213 shares of common stock; 7,260,000 warrants to purchase an aggregate of 430,664 shares of common stock, expiring May 11, 2017; warrants to purchase 427,779 shares of common stock, expiring September 28, 2017; and warrants to purchase 350,000 shares of common stock, expiring February 12, 2016. However, the aggregate number of shares of common stock into which 427,779 warrants of the total warrants held by Special Situations Fund III QP are exercisable, and which Messrs. Marxe and Greenhouse have the right to acquire beneficial ownership, is limited to the number of shares of common stock that, together with all other shares of common stock beneficially owned by Messrs. Marxe and Greenhouse, does not exceed 4.999% of the total outstanding shares of common stock. Accordingly, the 427,779 warrants expiring September 28, 2017 are not currently exercisable into common stock until the actual shares of common stock held by Messrs. Marxe and Greenhouse is less than 4.999% of the total outstanding shares of common stock. Special Situations Fund III QP may waive this 4.999% restriction with 61 days notice to us. Mr. Marxe additionally holds an additional 204 shares of common stock that may be acquired by Mr. Marxe as an individual upon the exercise of outstanding stock options.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1513,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Amount of beneficial ownership (2)",
+     "",
+     "",
+     "Percent of",
+     ""
+    ],
+    [
+     "Name and address of beneficial owner (1)",
+     "Nature of beneficial ownership",
+     "Shares Owned",
+     "Shares \u2013 Rights to Acquire",
+     "Total Number",
+     "",
+     "Shares Beneficially Owned (3)"
+    ],
+    [
+     "  Joseph N. Forkey (4)",
+     "Chairman of the Board of Directors, Chief Executive Officer, President and Treasurer",
+     "33,620",
+     "134,224",
+     "167,844",
+     "",
+     "3.7%"
+    ],
+    [
+     "  Jack P. Dreimiller (5)",
+     "Senior Vice President and Chief Financial Officer",
+     "583",
+     "10,000",
+     "10,583",
+     "",
+     "*"
+    ],
+    [
+     "  Donald A. Major (6)",
+     "Executive Vice President for Corporate Development and Director",
+     "35,778",
+     "52,445",
+     "88,223",
+     "",
+     "2.0%"
+    ],
+    [
+     "  Richard E. Forkey (7)",
+     "Advisor to the Chief Executive Officer and Director",
+     "212,993",
+     "49,333",
+     "262,326",
+     "",
+     "5.8%"
+    ],
+    [
+     "  Richard B. Miles (8)",
+     "Director",
+     "15,112",
+     "20,379",
+     "35,491",
+     "",
+     "*"
+    ],
+    [
+     "  Joel R. Pitlor (9)",
+     "Director",
+     "205,395",
+     "22,978",
+     "228,373",
+     "",
+     "5.1%"
+    ],
+    [
+     "  Richard G. Cyr (10)",
+     "Optical Shop Manager",
+     "0",
+     "40,000",
+     "40,000",
+     "",
+     "*"
+    ],
+    [
+     "All directors and executive officers as a group (7 persons)",
+     "",
+     "503,481",
+     "329,359",
+     "832,840",
+     "",
+     "17.4%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1522,
+    "end_line": 1542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(7) We relied, in part, on a Schedule 13G jointly filed with the SEC on February 14, 2013 by DAFNA Capital Management, LLC, Nathan Fischel and Fariba Ghodsian for this information. DAFNA Capital Management, LLC is a Delaware limited liability company. DAFNA Capital Management is the investment adviser of DAFNA LifeScience Market Neutral, Ltd., DAFNA LifeScience Select, Ltd., and DAFNA LifeScience, Ltd. DAFNA Capital Management, in its capacity as investment adviser to DAFNA LifeScience Market Neutral, DAFNA LifeScience Select, and DAFNA LifeScience, may be deemed to be the beneficial owner of the shares owned by DAFNA LifeScience Market Neutral, DAFNA LifeScience Select, and DAFNA LifeScience, as in its capacity as investment adviser it has the power to dispose, direct the disposition of, and vote the shares of the issuer owned by DAFNA LifeScience Market Neutral, DAFNA LifeScience Select, and DAFNA LifeScience. Nathan Fischel and Fariba Ghodsian are part-owners of DAFNA Capital Management and managing members of DAFNA Capital Management. As controlling persons of DAFNA Capital Management, Drs. Fischel and Ghodsian may each respectively be deemed to beneficially own the shares owned by DAFNA LifeScience Market Neutral, DAFNA LifeScience Select, and DAFNA LifeScience. Pursuant to Rule 13d-4, Drs. Fischel and Ghodsian disclaim beneficial ownership of the securities. DAFNA Capital Management beneficially owns 388,889 shares of common stock, in the aggregate. DAFNA Capital Management holds common stock purchase warrants exercisable into 272,223 shares of common stock, in the aggregate. DAFNA LifeScience Market Neutral owns 77,778 shares of common stock and 54,445 shares that be acquired upon the exercise of outstanding warrants. DAFNA LifeScience Select owns 200,000 shares of common stock and 140,000 shares that be acquired upon the exercise of outstanding warrants. DAFNA LifeScience owns 111,111 shares of common stock and 77,778 shares that be acquired upon the exercise of outstanding warrants. However, the aggregate number of shares of common stock into which such warrants are exercisable, and which DAFNA Capital Management has the right to acquire beneficial ownership, is limited to the number of shares of common stock that, together with all other shares of common stock beneficially owned by DAFNA Capital Management, does not exceed 4.999% of the total outstanding shares of common stock. Accordingly, such warrants are not currently exercisable into common stock until the actual shares of common stock held by DAFNA Capital Management is less than 4.999% of the total outstanding shares of common stock. DAFNA LifeScience Market Neutral, DAFNA LifeScience Select, and DAFNA LifeScience may waive this 4.999% restriction with 61 days notice to us.\n(8) Alpha Capital Anstalt beneficially owns 277,778 shares of common stock and 194,445 shares that may be acquired upon the exercise of outstanding warrants. However, the aggregate number of shares of common stock into which such warrants are exercisable, and which Alpha Capital Anstalt has the right to acquire beneficial ownership, is limited to the number of shares of common stock that, together with all other shares of common stock beneficially owned by Alpha Capital Anstalt, does not exceed 4.999% of the total outstanding shares of common stock. Accordingly, such warrants are not currently exercisable into common stock until the actual shares of common stock held by Alpha Capital Anstalt is less than 4.999% of the total outstanding shares of common stock. Alpha Capital Anstalt may waive this 4.999% restriction with 61 days notice to us.\nOfficers and Directors",
+   "prose_after": "_________________\n* Percentage of shares beneficially owned does not exceed one percent of issued and outstanding shares of stock.\n(1) Unless otherwise stated, the address of each beneficial owners listed on the table is c/o Precision Optics Corporation, Inc., 22 East Broadway, Gardner, MA 01440.\n(2) Represents shares with respect to which each beneficial owner listed has or will have, upon acquisition of such shares upon exercise or conversion of options, warrants, conversion privileges or other rights exercisable within sixty days, sole voting and investment power. Amounts listed have been adjusted, if necessary, to reflect a 1-for-25 reverse split, effective December 11, 2008.\n(3) As of September 13, 2013, we had 4,455,134 shares of our common stock issued and outstanding. Percentages are calculated on the basis of the amount of issued and outstanding common stock plus, for each person or group, any securities that such person or group has the right to acquire within 60 days of September 13, 2013 pursuant to options, warrants, conversion privileges or other rights.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1566,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Purchaser",
+     "Company Affiliation",
+     "Securities Purchased in Offering",
+     "",
+     "Unit Price",
+     "Subscription Amount"
+    ],
+    [
+     "",
+     "",
+     "Shares of Common Stock",
+     "Warrants",
+     "",
+     ""
+    ],
+    [
+     "  Forkey, Richard E.",
+     "  Director",
+     "27,778",
+     "19,445",
+     "$0.90",
+     "$25,000.20"
+    ],
+    [
+     "  Joseph N. Forkey and Heather C. Forkey JTTEN",
+     "  Chairman of the Board, Chief Executive Officer, President, and Treasurer",
+     "22,223",
+     "15,557",
+     "$0.90",
+     "$20,000.70"
+    ],
+    [
+     "  Major, Donald A.",
+     "  Executive Vice President for Corporate Development and Director",
+     "27,778",
+     "19,445",
+     "$0.90",
+     "$25,000.20"
+    ],
+    [
+     "  Miles, Richard",
+     "  Director",
+     "11,112",
+     "7,779",
+     "$0.90",
+     "$10,000.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1579,
+    "end_line": 1595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE."
+    },
+    "note": null
+   },
+   "prose_before": "We made payments to Mr. Donald Major, our Executive Vice President for Corporate Development and a member of our Board of Directors, totaling $26,606 in fiscal year 2012 for consulting services. We did not incur any such fees in fiscal year 2013.\nOn September 28, 2012, we closed on agreements with investors for the sale and purchase of units consisting of an aggregate of (i) 2,777,795 shares of our common stock, and (ii) warrants to purchase an aggregate of 1,944,475 shares of common stock, at a per unit price of $0.90. Each unit consisted of one share of common stock and 70% warrant coverage. The warrants have an exercise price of $1.25 per share, subject to adjustment and a call provision if certain market price targets are reached, expire five years from September 28, 2012, and are exercisable in whole or in part, at any time prior to expiration. We received $2.5 million in gross proceeds from the offering.\nCertain of our directors and officers participated in the offering on the same terms as the other investors and purchased a total aggregate amount of approximately $80,000 of units in the offering, in such amounts as follows:",
+   "prose_after": "On February 12, 2013, we entered into a settlement agreement with one of our directors and stockholders, Joel Pitlor (the \u201cPitlor Settlement Agreement\u201d). Under the terms of the Pitlor Settlement Agreement, we issued 10,000 shares of our common stock and warrants to purchase 10,000 shares of our common stock as payment in full of any amounts due to Mr. Pitlor under the registration rights agreement we entered into with Mr. Pitlor, and other parties, on February 1, 2007. The warrants issued in connection with the Pitlor Settlement Agreement have an exercise price of $1.50 per share, subject to adjustment, expire three years from February 12, 2013, and are exercisable in whole or in part, at any time prior to expiration. We valued the securities issued to Mr. Pitlor at $17,000.\nTransactions with Stockholders Known by Us to Own 5% or More of Our Common Stock\nSpecial Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P.\nOn June 25, 2008, we entered into a purchase agreement, as amended on December 11, 2008, with Special Situations Fund III QP, L.P., Special Situations Private Equity Fund, L.P., and other accredited investors pursuant to which we sold a total of $600,000 of 10% Senior Secured Convertible Notes, referred to as the \u201cNotes,\u201d that are convertible into a total of 480,000 shares of our common stock at a conversion rate of $1.25. We also issued warrants to purchase a total of 316,800 shares of our common stock at an exercise price of $1.75 per share, referred to as the \u201cWarrants.\u201d Interest accrued on the Notes at a rate of 10% per year and was payable in cash upon the earlier of conversion or maturity of the Notes. The original maturity of the Notes was June 25, 2010 and the original expiration date of the Warrants was June 25, 2015, subject to extension. By mutual agreement with us, Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. agreed to amend its Notes on December 11, 2008, June 25, 2010, July 26, 2010, September 15, 2010, October 15, 2010, November 15, 2010, November 30, 2010, December 1, 2010, December 3, 2010, December 17, 2010, January 10, 2011, January 24, 2011, February 7, 2011, February 25, 2011, March 11, 2011, March 31, 2011, April 14, 2011, April 29, 2011, May 13, 2011, June 3, 2011, June 28, 2011, July 6, 2011, July 20, 2011, July 25, 2011, July 27, 2011, August 31, 2011, September 30, 2011, and October 31, 2011 to extend the \u201cStated Maturity Date\u201d of the Notes. At the time of each of the amendments of the Notes, Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. owned over 5% of our common stock. Pursuant to the terms of the settlement agreement entered into with Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. on February 12, 2013 (as discussed in further detail below), the expiration date of the Warrants held by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. was amended from June 25, 2015 to May 11, 2017. The exercise price of the Warrants may be adjusted downward in the event we issue shares of common stock or securities convertible into common stock at a price lower than the exercise price of the Warrants at the time of issuance. On December 15, 2011, we repaid Special Situations Fund III QP, L.P. a principal repayment of $275,000 and accrued interest of $95,486, for a total payment of $370,486. On December 15, 2011, we repaid Special Situations Private Equity Fund, L.P. a principal repayment of $275,000 and accrued interest of $95,486, for a total payment of $370,486. The Notes held by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. have been satisfied in full and the obligations thereunder have been terminated. We registered the shares and the shares underlying the Warrants purchased by Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P. in the June 2008 private placement in a registration statement that is currently effective.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1566,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1604,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "72,000",
+     "$",
+     "72,000"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "5,935",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total Audit and Audit-Related Fees",
+     "",
+     "77,935",
+     "",
+     "72,000"
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "14,135",
+     "",
+     "14,135"
+    ],
+    [
+     "All Other Fees (4)",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "92,070",
+     "$",
+     "86,135"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1628,
+    "end_line": 1641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "On February 12, 2013, we entered into a settlement agreement with Mr. Schumsky (the \u201cSchumsky Settlement Agreement\u201d). Under the terms of the Schumsky Settlement Agreement, we issued 10,000 shares of our common stock and warrants to purchase 10,000 shares of our common stock as payment in full of any amounts due to Mr. Schumsky under the registration rights agreement we entered into with Mr. Schumsky, and other parties, on February 1, 2007 and under the registration rights agreement we entered into with Mr. Schumsky, and other parties, on June 25, 2008. The warrants issued in connection with the Schumsky Settlement Agreement have an exercise price of $1.50 per share, subject to adjustment, expire three years from February 12, 2013, and are exercisable in whole or in part, at any time prior to expiration. We valued the securities issued to Mr. Schumsky at $17,000. At the time of the transaction, Mr. Schumsky owned 5% or more of our common stock.\nDirector Independence\nDuring the fiscal year ended June 30, 2013, the Board of Directors determined that Messrs. Richard B. Miles and Joel R. Pitlor were \u201cindependent\u201d as defined under the standards of independence set forth in the NASDAQ Listing Rules and the rules under the Securities Exchange Act of 1934.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nIndependent Registered Public Accounting Firm Fees\nOur principal and sole independent registered public accounting firm for the fiscal years ending June 30, 2013 and 2012 is Stowe & Degon LLC (\u201cStowe\u201d). The following table presents fees for professional audit services and other services rendered by Stowe, for the fiscal years ended June 30, 2013 and 2012:",
+   "prose_after": "(1) Audit fees for fiscal 2013 are comprised of fees for professional services performed for the audit of our annual financial statements and review of our quarterly financial statements of $72,000, including direct out-of-pocket expenses in the amount of $1,500. Audit fees for fiscal 2012 are comprised of fees for professional services performed for the audit of our annual financial statements and review of our quarterly financial statements of $72,000, including direct out-of-pocket expenses in the amount of $1,500.\n(2) Audit-related fees are comprised of fees for assurance and related attestation services that are reasonably related to the performance of the audit of our annual financial statements, or the review thereof, and fees for due diligence services.\n(3) Tax fees for fiscal 2013 and 2012 by Stowe are comprised of fees for professional services performed with respect to corporate tax compliance, tax planning and tax advice.\n(4) We did not incur any other fees during fiscal 2013 or 2012 for products and services provided by Stowe other than those disclosed above.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Asset Purchase Agreement between the Company and Optometrics Corporation, dated January 18, 2008 (included as Exhibit 2.1 to the Form 8-K filed January 25, 2008 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Organization of Precision Optics Corporation, Inc., as amended (included as Exhibit 3.1 to the Form SB-2 filed March 16, 2007 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws of Precision Optics Corporation, Inc. (included as Exhibit 3.2 to the Form S-1 filed December 18, 2008 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Articles of Amendment to the Articles of Organization of Precision Optics Corporation, Inc., dated November 25, 2008 and effective December 11, 2008 (included as Exhibit 3.1 to the Form 8-K filed December 11, 2008 and incorporated herein by reference)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1680,
+    "end_line": 1695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "EXHIBITS"
+    }
+   },
+   "prose_before": "Report of Independent Registered Public Accounting Firm\nConsolidated Balance Sheets at June 30, 2013 and 2012\nConsolidated Statements of Operations for the years ended June 30, 2013 and 2012\nConsolidated Statements of Stockholders\u2019 Equity for the years ended June 30, 2013 and 2012\nConsolidated Statements of Cash Flows for the years ended June 30, 2013 and 2012\nNotes to Consolidated Financial Statements\n2. FINANCIAL STATEMENT SCHEDULES\nAll financial statement schedules have been omitted as they are not required, not applicable, or the required information is otherwise included.\n3. EXHIBITS\nThe exhibits listed below are filed with or incorporated by reference in this report.",
+   "prose_after": "4.1 Registration Rights Agreement by and among the Company and each investor named therein, dated February 1, 2007 (included as Exhibit 4.1 to the Form 8-K filed February 2, 2007 and incorporated herein by reference). 4.2 Form of Warrant to Purchase Shares of Common Stock (included as Exhibit 4.2 to the Form 8-K filed February 2, 2007 and incorporated herein by reference). 4.3 Registration Rights Agreement by and among the Company and each investor named therein, dated June 25, 2008 (included as Exhibit 4.1 to the Form 8-K filed June 27, 2008 and incorporated herein by reference). 4.4 Form of Warrant to Purchase Shares of Common Stock, dated June 25, 2008 (included as Exhibit 4.2 to the Form 8-K filed June 27, 2008 and incorporated herein by reference). 4.5 Form of 10% Senior Secured Convertible Note, dated June 25, 2008 (included as Exhibit 4.3 to the Form 8-K filed June 27, 2008 and incorporated herein by reference). 4.6 Form of Warrant to Purchase Shares of Common Stock, dated September 28, 2012 (included as Exhibit 4.1 to the Form 8-K filed October 2, 2012 and incorporated herein by reference). 4.7 Registration Rights Agreement by and among the Company and each investor named therein, dated September 28, 2012 (included as Exhibit 4.2 to the Form 8-K filed October 2, 2012 and incorporated herein by reference). 4.8 Warrant to Purchase Shares of Common Stock issued to Loewen, Ondaatje, McCutcheon USA LTD, dated September 28, 2012 (included as Exhibit 4.3 to the Form 8-K filed October 2, 2012 and incorporated herein by reference).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PRECISION OPTICS CORPORATION, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: September 30, 2013",
+     "By:",
+     "/s/ Joseph N. Forkey"
+    ],
+    [
+     "",
+     "",
+     "Joseph N. Forkey\n\n\n\nPresident and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: September 30, 2013",
+     "By:",
+     "/s/ Jack P. Dreimiller"
+    ],
+    [
+     "",
+     "",
+     "Jack P. Dreimiller\n\n\n\nSenior Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "PRECISION OPTICS CORPORATION, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1716,
+    "end_line": 1733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "EXHIBITS"
+    }
+   },
+   "prose_before": "10.19 Precision Optics Corporation, Inc. 2011 Deferred Compensation Plan, dated October 13, 2011 (included as Exhibit 10.3 to Form S-8 filed October 14, 2011, and incorporated herein by reference.) 10.20 Side Letter Agreement to the Compensation Agreement with Richard E. Forkey, dated October 14, 2011 (included as Exhibit 10.4 to the Form 8-K filed October 19, 2011 and incorporated herein by reference). 10.21 Side Letter Agreement to the Compensation Agreement with Joseph N. Forkey, dated October 14, 2011 (included as Exhibit 10.5 to the Form 8-K filed October 19, 2011 and incorporated herein by reference). 10.22 Side Letter Agreement to the Compensation Agreement with Joel N. Pitlor, dated October 14, 2011 (included as Exhibit 10.6 to the Form 8-K filed October 19, 2011 and incorporated herein by reference). 10.23 Endorsement to 10% Senior Secured Convertible Note by the Company, dated October 31, 2011, and accepted by Special Situations Private Equity Fund, L.P. (included as Exhibit 10.2 to the Form 8-K filed November 3, 2011 and incorporated herein by reference). 10.24 Endorsement to 10% Senior Secured Convertible Note by the Company, dated October 31, 2011, and accepted by Special Situations Fund III QP, L.P. (included as Exhibit 10.3 to the Form 8-K filed November 3, 2011 and incorporated herein by reference). 10.25 Endorsement to 10% Senior Secured Convertible Note by the Company, dated July 31, 2012, and accepted by Arnold Schumsky (included as Exhibit 10.27 to the Form 10-K filed October 15, 2012, and incorporated herein by reference.) 10.26 Endorsement to 10% Senior Secured Convertible Note by the Company, dated August 31, 2012, and accepted by Arnold Schumsky (included as Exhibit 10.28 to the Form 10-K filed October 15, 2012, and incorporated herein by reference.) 10.27 Notice of Repayment of 10% Senior Secured Convertible Note in Full by the Company, dated September 28, 2012, and accepted by Arnold Schumsky (included as Exhibit 10.29 to the Form 10-K filed October 15, 2012, and incorporated herein by reference.) 10.28 Purchase Agreement by and among the Company and each investor named therein, dated September 28, 2012 (included as Exhibit 10.1 to the Form 8-K filed October 2, 2012 and incorporated herein by reference). 10.29 Settlement Agreement by and among the Company, Special Situations Fund III QP, L.P. and Special Situations Private Equity Fund, L.P., dated February 12, 2013 (included as Exhibit 10.1 to the Form 8-K filed February 13, 2013 and incorporated herein by reference). 10.30 Settlement Agreement by and between the Company and Joel Pitlor, dated February 12, 2013 (included as Exhibit 10.2 to the Form 8-K filed February 13, 2013 and incorporated herein by reference). 10.31 Settlement Agreement by and between the Company and Arnold Schumsky, dated February 12, 2013 (included as Exhibit 10.3 to the Form 8-K filed February 13, 2013 and incorporated herein by reference). 14.1 Precision Optics Corporation, Inc. Corporate Code of Ethics and Conduct (included as Exhibit 14.1 to the Form 10-K filed September 28, 2008 and incorporated herein by reference). 21.1 Subsidiaries of the Registrant (included as Exhibit 21.1 to the Form 10-K filed September 26, 2008 and incorporated herein by reference). 23.1 Consent of Independent Registered Public Accounting Firm (filed herewith). 31.1 Certification of the Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith). 31.2 Certification of the Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith). 32.1 Certification of Officers pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (filed herewith).\n101.INS* XBRL Instance Document 101.SCH* XBRL Taxonomy Extension Schema Document 101.CAL* XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF* XBRL Taxonomy Extension Definition Linkbase Document 101.LAB* XBRL Taxonomy Extension Label Linkbase Document 101.PRE* XBRL Taxonomy Extension Presentation Linkbase Document\n* Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files on Exhibit 101 hereto are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1711,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Capacity",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joseph N. Forkey\n\n\n\nJoseph N. Forkey",
+     "Chairman of the Board, Chief Executive Officer, President, and Treasurer (Principal Executive Officer)",
+     "September 30, 2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jack P. Dreimiller\n\n\n\nJack P. Dreimiller",
+     "Senior Vice President and Chief Financial Officer (Principal Financial Officer and Principal Accounting Officer)",
+     "September 30, 2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Donald A. Major",
+     "Director",
+     "September 30, 2013"
+    ],
+    [
+     "  Donald A. Major",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard E. Forkey",
+     "Director",
+     "September 30, 2013"
+    ],
+    [
+     "  Richard E. Forkey",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard B. Miles",
+     "Director",
+     "September 30, 2013"
+    ],
+    [
+     "Richard B. Miles",
+     "",
+     ""
+    ],
+    [
+     "  /s/ Joel R. Pitlor",
+     "  Director",
+     "  September 30, 2013"
+    ],
+    [
+     "  Joel R. Pitlor",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1736,
+    "end_line": 1756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "EXHIBITS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1711,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

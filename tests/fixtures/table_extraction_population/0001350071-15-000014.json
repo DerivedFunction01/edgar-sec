@@ -1,0 +1,1391 @@
+{
+ "accession": "0001350071-15-000014",
+ "cik": "0001530185",
+ "form": "10-Q/A",
+ "filing_date": "2015-02-18",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "atvkqa.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "27-4594495"
+    ],
+    [
+     "(State or Other Jurisdiction",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of InCompany or Organization)",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q/A\n(Mark one)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended November 30, 2014\nOR\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________________to\nCommission File Number: 000-54739\nATVRockN\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1420 London Road, Suite 100, Duluth, MN",
+     "55805"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Telephone: 218-728-8553\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ] Not Applicable\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [ ]  Smaller reporting company [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "Financial Information",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "Unaudited Interim Condensed Balance Sheets",
+     "3"
+    ],
+    [
+     "",
+     "Unaudited Interim Condensed Statements of Operations",
+     "4"
+    ],
+    [
+     "",
+     "Unaudited Interim Condensed Statements of Cash Flows",
+     "5"
+    ],
+    [
+     "",
+     "Notes to the Unaudited Condensed Interim Financial Statements",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4T.",
+     "Controls and Procedures",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "Other Information",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "Legal Proceedings",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A.",
+     "Risk Factors",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3",
+     "Defaults Upon Senior Securities",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4",
+     "Submission of Matters to a Vote of Security Holders",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Other Information",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 6",
+     "Exhibits",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of February 18, 2015, the registrant\u2019s outstanding common stock consisted of 66,500,000 shares issued and outstanding, $0.001 par value. Authorized \u2013 185,000,000 common shares.\nExplanatory Note\nWe are filing this Amendment No. 1 on Form 10-Q/A for the quarter ended November 30, 2014 to amend our Form 10-Q originally filed with the U. S. Securities and Exchange Commission on January 14, 2015. We are filing this amendment for the purpose of providing updated information concerning our subsequent events as reported in our financial statements and financial disclosures.\nThis amended Form 10-Q/A-1 does not attempt to modify or update any other disclosures set forth in the original Form 10-Q except as set forth above. Additionally, this amended Form 10-Q/A-1, except as set forth above, speaks as of the filing date of the original Form 10-Q and does not update or discuss any other Company developments after the date of the original filings.\nTable of Contents\nIndex to Form 10-Q/A\nFor the Quarterly Period Ended November 30, 2014",
+   "prose_after": "2\nUnaudited Interim Condensed Balance Sheets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "November 30, 2014",
+     "May 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "ASSETS",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash and cash equivalents",
+     "",
+     "$                            -",
+     "$                           -"
+    ],
+    [
+     "",
+     "",
+     "Total current assets",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "",
+     "$                            -",
+     "$                           -"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable",
+     "",
+     "$                   1,773",
+     "$                11,773"
+    ],
+    [
+     "",
+     "Other accrued expenses",
+     "",
+     "14,500",
+     "35,000"
+    ],
+    [
+     "",
+     "Due to related party",
+     "",
+     "38,000",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Total current liabilities",
+     "54,273",
+     "46,773"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock Series B, $0.001 par value, 5,000,000 shares",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "authorized, none issued and outstanding as of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "11/30/2014 and 5/31/2014, respectively",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Convertible preferred stock Series A, $0.001 par",
+     "",
+     "1,250",
+     "1,250"
+    ],
+    [
+     "",
+     "",
+     "value, 5,000,000 shares authorized, 1,250,000",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "and 1,250,000 issued and outstanding as of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "11/30/2014 and 5/31/2014, respectively",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock Series C, $0.001 par value, 5,000,000 shares",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "authorized, none issued and outstanding as of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "11/30/2014 and 5/31/2014, respectively",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock, $0.001 par value, 185,000,000 shares",
+     "",
+     "66,500",
+     "66,500"
+    ],
+    [
+     "",
+     "",
+     "authorized, 66,500,000 and 66,500,000 issued and",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "outstanding as of 11/30/2014 and 5/31/2014,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "respectively",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Additional paid-in capital",
+     "",
+     "179,629",
+     "179,629"
+    ],
+    [
+     "",
+     "Deficit accumulated during development stage",
+     "",
+     "(301,652)",
+     "(294,152)"
+    ],
+    [
+     "",
+     "",
+     "Total stockholders' deficit",
+     "(54,273)",
+     "(46,773)"
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "$                            -",
+     "$                          -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 118,
+    "end_line": 161
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "2\nUnaudited Interim Condensed Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nUnaudited Interim Condensed Statement of Operations",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the three months ended November 30, 2014",
+     "For the three months ended November 30, 2013",
+     "For the six months ended November 30, 2014",
+     "For the six months ended November 30, 2013",
+     "From Inception (December 27, 2010) to November 30, 2014"
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "$                -",
+     "$                -",
+     "$                -",
+     "$                -",
+     "$      11,165"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "-",
+     "-",
+     "-",
+     "-",
+     "8,854"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$2,311"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Professional fees",
+     "",
+     "2,500",
+     "977",
+     "7,500",
+     "5,750",
+     "80,023"
+    ],
+    [
+     "",
+     "Depreciation",
+     "",
+     "-",
+     "178",
+     "-",
+     "356",
+     "1,775"
+    ],
+    [
+     "",
+     "General & administrative expenses",
+     "",
+     "-",
+     "200",
+     "-",
+     "304",
+     "72,611"
+    ],
+    [
+     "",
+     "Salaries",
+     "",
+     "-",
+     "-",
+     "-",
+     "-",
+     "12,000"
+    ],
+    [
+     "",
+     "",
+     "Total expenses",
+     "2,500",
+     "1,355",
+     "7,500",
+     "6,410",
+     "166,409"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "",
+     "$      (2,500)",
+     "$     (1,355)",
+     "$     (7,500)",
+     "$     (6,410)",
+     "$ (164,098)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expenses):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortization on original issue discount",
+     "",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(25)"
+    ],
+    [
+     "",
+     "Interest income (expense)",
+     "",
+     "-",
+     "(1,250)",
+     "-",
+     "(2,500)",
+     "(12,611)"
+    ],
+    [
+     "",
+     "Impairment of equipment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(12,418)"
+    ],
+    [
+     "",
+     "Beneficial conversion feature of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "convertible preferred stock",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(112,500)"
+    ],
+    [
+     "",
+     "",
+     "Total other income (expenses)",
+     "-",
+     "(1,250)",
+     "-",
+     "(2,500)",
+     "(137,554)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss applicable to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "common shareholders",
+     "",
+     "$      (2,500)",
+     "$     (2,605)",
+     "$     (7,500)",
+     "$     (8,910)",
+     "$ (301,652)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "",
+     "",
+     "$           0.00",
+     "$       (0.00)",
+     "$       (0.00)",
+     "$       (0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding - basic",
+     "",
+     "",
+     "66,500,000",
+     "66,500,000",
+     "66,500,000",
+     "66,500,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding - diluted",
+     "",
+     "",
+     "191,500,000",
+     "191,500,000",
+     "191,500,000",
+     "191,500,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 168,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nUnaudited Interim Condensed Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nUnaudited Interim Condensed Statements of Cash Flows",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the six months ended November 30, 2014",
+     "For the six months ended November 30, 2013",
+     "From Inception (December 27, 2010) to November 30, 2014"
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "$            (7,500)",
+     "$            (8,910)",
+     "$        (301,652)"
+    ],
+    [
+     "Adjustment to reconcile net loss to net cash used in",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Depreciation expense",
+     "-",
+     "356",
+     "1,775"
+    ],
+    [
+     "",
+     "",
+     "Conversion of beneficial interest",
+     "-",
+     "-",
+     "112,500"
+    ],
+    [
+     "",
+     "",
+     "Impairment of fixed assets",
+     "-",
+     "-",
+     "12,418"
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Accounts payable",
+     "(10,000)",
+     "(1,763)",
+     "1,773"
+    ],
+    [
+     "",
+     "",
+     "Accrued interest",
+     "-",
+     "2,500",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Accrued expenses",
+     "(20,500)",
+     "-",
+     "14,500"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(38,000)",
+     "(7,817)",
+     "(158,686)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from shareholder",
+     "",
+     "",
+     "38,000",
+     "",
+     "109,953"
+    ],
+    [
+     "Cash paid for purchase of fixed assets",
+     "",
+     "",
+     "-",
+     "-",
+     "(14,192)"
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "",
+     "38,000",
+     "-",
+     "95,761"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of Series A preferred stock",
+     "",
+     "",
+     "-",
+     "-",
+     "12,500"
+    ],
+    [
+     "Proceeds from issuance of Series B preferred stock",
+     "",
+     "",
+     "-",
+     "-",
+     "25"
+    ],
+    [
+     "Proceeds from capital contributions",
+     "",
+     "",
+     "-",
+     "-",
+     "400"
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "",
+     "-",
+     "-",
+     "25,000"
+    ],
+    [
+     "Proceeds from loan to related party",
+     "",
+     "",
+     "-",
+     "2,828",
+     "-"
+    ],
+    [
+     "Proceeds from long term debt (related to series B preferred stock)",
+     "",
+     "",
+     "-",
+     "-",
+     "25,000"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "-",
+     "2,828",
+     "62,925"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH",
+     "",
+     "",
+     "-",
+     "(4,989)",
+     "-"
+    ],
+    [
+     "CASH - BEGINNING OF THE PERIOD",
+     "",
+     "",
+     "-",
+     "5,000",
+     "-"
+    ],
+    [
+     "CASH - END OF THE PERIOD",
+     "",
+     "",
+     "$                      -",
+     "$                    11",
+     "$                      -"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of debt",
+     "",
+     "",
+     "-",
+     "-",
+     "46,000"
+    ],
+    [
+     "Conversion of promissory note and advances from shareholder",
+     "",
+     "",
+     "-",
+     "-",
+     "50,979"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 221,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nUnaudited Interim Condensed Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTE 1 - CONDENSED INTERIM FINANCIAL STATEMENTS\nThe accompanying financial statements have been prepared by the Company without audit. In the opinion of management, all adjustments (which include only normal recurring adjustments) necessary to present fairly the financial position, results of operations and cash flows at November 30, 2014 and for all periods presented have been made.\nCertain information and footnote disclosures normally included in financial statements prepared in accordance with accounting principles generally accepted in the United States of America have been condensed or omitted. It is suggested that these condensed financial statements be read in conjunction with the financial statements and notes thereto included in the Company's May 31, 2014 audited financial statements. The results of operations for the period ended November 30, 2014 are not necessarily indicative of the operating results for the full year.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 271,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Ref",
+     "Description of Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "See Risk Factors set forth in Part I, Item 1A of the Company's Annual Report on Form 10-K for the fiscal year ended May 31, 2014 and the discussion in Item 1, above, under \"Liquidity and Capital Resources.\"\nItem 2 - Unregistered Sales of Equity Securities and Use of Proceeds\nNo unregistered sales of shares were issued by the Registrant during the Quarter ending November 30, 2014.\nItem 3 - Defaults Upon Senior Securities\nNone.\nItem 4 - Submission of Matters to a Vote of Security Holders\nNone.\nItem 5 - Other Information\nNone.\nItem 6 - Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: February 18, 2015\nATVRockN Registrant By: /s/ Hal B. Heyer, M.D. Hal B. Heyer, M.D. Director and CEO (principal executive, financial and accounting officer)",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

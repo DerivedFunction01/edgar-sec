@@ -1,0 +1,8946 @@
+{
+ "accession": "0001683168-23-001882",
+ "cik": "0001198415",
+ "form": "10-K",
+ "filing_date": "2023-03-29",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "awin_i10k-123122.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "colorado\n\n\n\n(State or other jurisdiction of incorporation or organization)",
+     "84-1496732\n\n\n\n(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 000-53348\nALTEGRIS WINTON FUTURES FUND, L.P.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o ALTEGRIS ADVISORS, L.L.C.\n1200 Prospect Street, Suite 400\nLa Jolla, CA 92037\n(Address of principal executive offices) (zip code)\n(858) 459-7040\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Limited Partnership Interests\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "9"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "9"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "10"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "11"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "12"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "12"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "19"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "23"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "25"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "26"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "26"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "27"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "29"
+    ],
+    [
+     "",
+     "Signatures",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No\u2612\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter. 0\nNot Applicable. 0\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I\nITEM 1: BUSINESS\n(a) General Development of Business\nAltegris Winton Futures Fund, L.P. (the \u201cPartnership\u201d) is a limited partnership organized under the Colorado Uniform Limited Partnership Act in March 1999. The Partnership\u2019s business is the speculative trading and investment in international futures, options and forward markets (\u201cCommodity Interests\u201d). The Partnership commenced its trading and investment operations in November 1999.\nOn December 31, 2014, pursuant to an internal reorganization of Altegris Portfolio Management, Inc., then the general partner of the Partnership, and certain affiliated entities, Altegris Portfolio Management, Inc. (\u201cAPM\u201d) merged with and into its affiliate, Altegris Advisors, L.L.C., a Delaware limited liability company (the \u201cTransaction\u201d). By operation of law and pursuant to Paragraph 12 of the Partnership\u2019s Second Amended Agreement of Limited Partnership, effective as of April 14, 2011, as amended, Altegris Advisors, L.L.C. then became, and was admitted as, the general partner of the Partnership (the \u201cGeneral Partner\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 124,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Month Ended",
+     "Amount Redeemed",
+     ""
+    ],
+    [
+     "October 31, 2022",
+     "$",
+     "85,710"
+    ],
+    [
+     "November 30, 2022",
+     "$",
+     "218,418"
+    ],
+    [
+     "December 31, 2022",
+     "$",
+     "80,306"
+    ],
+    [
+     "Total",
+     "$",
+     "384,434"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The General Partner has sole discretion in determining what distributions, if any, the Partnership will make to its investors. To date no distributions or dividends have been paid on the Interests, and the General Partner has no present intention to make any.\n(d) Securities Authorized for Issuance under Equity Compensation Plans\nNone.\n(e) Recent Sales of Unregistered Securities; Use of Proceeds from Registered Securities\nThe Partnership did not sell any unregistered securities within the past three years which have not previously been included in the Partnership\u2019s Quarterly Reports on Form 10-Q.\n(f) Issuer Purchases of Equity Securities\nPursuant to the Limited Partnership Agreement, Limited Partners may redeem their Interests in the Partnership as of the end of any calendar month upon fifteen (15) days\u2019 written notice to the General Partner. The redemption of capital from capital accounts by Limited Partners has no impact on the value of the capital accounts of other Limited Partners.\nThe following table summarizes Limited Partner redemptions during the fourth calendar quarter of 2022:",
+   "prose_after": "ITEM 6: SELECTED FINANCIAL DATA",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 413,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Revenue:",
+     "For the Year Ended December 31, 2022",
+     "",
+     "For the Year Ended December 31, 2021",
+     "",
+     "For the Year Ended December 31, 2020",
+     "",
+     "",
+     "For the Year Ended December 31, 2019",
+     "",
+     "",
+     "For the Year Ended December 31, 2018",
+     "",
+     "",
+     "For the Year Ended December 31, 2017",
+     ""
+    ],
+    [
+     "Total net realized and unrealized gains (losses)",
+     "$",
+     "3,347,658",
+     "$",
+     "2,402,092",
+     "$",
+     "(14,550,091)",
+     "",
+     "$",
+     "2,673,076",
+     "",
+     "$",
+     "(2,193,035)",
+     "",
+     "$",
+     "14,912,353"
+    ],
+    [
+     "Interest Income",
+     "",
+     "227,692",
+     "",
+     "126",
+     "",
+     "298,451",
+     "",
+     "",
+     "2,252,803",
+     "",
+     "",
+     "2,660,453",
+     "",
+     "",
+     "1,524,072"
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fee",
+     "",
+     "221,398",
+     "",
+     "292,645",
+     "",
+     "673,925",
+     "",
+     "",
+     "1,112,335",
+     "",
+     "",
+     "1,598,989",
+     "",
+     "",
+     "2,248,002"
+    ],
+    [
+     "Advisory fee",
+     "",
+     "179,765",
+     "",
+     "241,892",
+     "",
+     "645,964",
+     "",
+     "",
+     "1,025,526",
+     "",
+     "",
+     "1,449,919",
+     "",
+     "",
+     "2,023,487"
+    ],
+    [
+     "Administrative fee",
+     "",
+     "51,465",
+     "",
+     "65,387",
+     "",
+     "130,564",
+     "",
+     "",
+     "228,982",
+     "",
+     "",
+     "330,996",
+     "",
+     "",
+     "458,380"
+    ],
+    [
+     "Service fees",
+     "",
+     "186,665",
+     "",
+     "255,023",
+     "",
+     "552,827",
+     "",
+     "",
+     "1,069,725",
+     "",
+     "",
+     "1,558,070",
+     "",
+     "",
+     "2,229,530"
+    ],
+    [
+     "Incentive fee",
+     "",
+     "102,565",
+     "",
+     "5,069",
+     "",
+     "\u2013",
+     "",
+     "",
+     "122,089",
+     "",
+     "",
+     "111,204",
+     "",
+     "",
+     "705,276"
+    ],
+    [
+     "Professional fees",
+     "",
+     "83,479",
+     "",
+     "84,105",
+     "",
+     "217,310",
+     "",
+     "",
+     "569,540",
+     "",
+     "",
+     "805,372",
+     "",
+     "",
+     "891,332"
+    ],
+    [
+     "Brokerage commissions",
+     "",
+     "289,841",
+     "",
+     "387,246",
+     "",
+     "1,027,303",
+     "",
+     "",
+     "1,624,810",
+     "",
+     "",
+     "2,290,596",
+     "",
+     "",
+     "3,197,579"
+    ],
+    [
+     "Offering expense (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "7,349",
+     "",
+     "27,789",
+     "",
+     "26,860",
+     "",
+     "",
+     "10,719",
+     "",
+     "",
+     "16,999",
+     "",
+     "",
+     "105,647"
+    ],
+    [
+     "Other expenses",
+     "",
+     "23,318",
+     "",
+     "7,547",
+     "",
+     "33,661",
+     "",
+     "",
+     "133,137",
+     "",
+     "",
+     "139,036",
+     "",
+     "",
+     "271,296"
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "2,429,505",
+     "",
+     "1,035,465",
+     "",
+     "(17,560,054)",
+     "",
+     "",
+     "(970,984)",
+     "",
+     "",
+     "(7,833,763)",
+     "",
+     "",
+     "4,305,896"
+    ],
+    [
+     "Total assets",
+     "$",
+     "17,615,950",
+     "$",
+     "20,510,384",
+     "$",
+     "38,625,784",
+     "",
+     "$",
+     "95,213,072",
+     "",
+     "$",
+     "130,732,759",
+     "",
+     "$",
+     "184,489,639"
+    ],
+    [
+     "Total Net Asset Value",
+     "$",
+     "17,415,221",
+     "$",
+     "19,579,503",
+     "$",
+     "32,495,249",
+     "",
+     "$",
+     "91,763,009",
+     "",
+     "$",
+     "126,006,040",
+     "",
+     "$",
+     "173,217,273"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 416,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 6: SELECTED FINANCIAL DATA",
+   "prose_after": "ITEM 7: MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nReference is made to \u201cItem 8. Financial Statements and Supplementary Data.\u201d The information contained therein is essential to, and should be read in conjunction with, the following analysis.\n(a) Liquidity\nThe Partnership\u2019s assets are generally held as cash or cash equivalents, which are used to margin the Partnership\u2019s futures positions and are sold to pay redemptions and expenses as needed. Other than any potential market-imposed limitations on liquidity, the Partnership\u2019s assets are highly liquid and are expected to remain so. Market-imposed limitations, when they occur, can be due to limited open interest in certain futures markets or to daily price fluctuation limits, which are inherent in the Partnership\u2019s futures trading. A portion of the Partnership\u2019s assets not used for margin and held with the Custodian are invested in liquid, high quality securities. Through December 31, 2022 the Partnership experienced no meaningful periods of illiquidity in any of the markets traded by the Advisor on behalf of the Partnership.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 413,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Average Value\n\n\n\nat Risk",
+     "",
+     "% of Average Capitalization",
+     "",
+     "Highest Value\n\n\n\nat Risk",
+     "",
+     "Lowest Value\n\n\n\nat Risk",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "$",
+     "64,283",
+     "",
+     "0.34%",
+     "$",
+     "79,193",
+     "$",
+     "57,099"
+    ],
+    [
+     "Commodities",
+     "$",
+     "72,421",
+     "",
+     "0.39%",
+     "$",
+     "118,525",
+     "$",
+     "39,289"
+    ],
+    [
+     "Currencies",
+     "$",
+     "77,397",
+     "",
+     "0.41%",
+     "$",
+     "91,631",
+     "$",
+     "52,446"
+    ],
+    [
+     "Equities",
+     "$",
+     "32,777",
+     "",
+     "0.18%",
+     "$",
+     "51,902",
+     "$",
+     "14,622"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "246,878",
+     "",
+     "*1.32%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 601
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": null
+   },
+   "prose_before": "VaR models, including the Partnership\u2019s, are continually evolving as trading portfolios become more diverse and modeling techniques and systems capabilities improve. Please note that the VaR model is used to numerically quantify market risk for historic reporting purposes only and is not utilized by the Partnership in its daily risk management activities. Please further note that VaR as described above may not be comparable to similarly titled measures used by other entities.\nBecause the business of the Partnership is the speculative trading of futures, forwards and options, the composition of the Partnership\u2019s trading portfolio can change significantly over any given time period, or even within a single trading day, which could positively or negatively materially impact market risk as measured by VaR.\nThe Partnership\u2019s Trading Value at Risk in Different Market Sectors\nThe following table indicates the average, highest and lowest amount of trading VaR associated with the Partnership\u2019s open positions by market category for the year ended December 31, 2022. During 2022, the Partnership\u2019s average capitalization was $18,719,570.",
+   "prose_after": "*Percentage total does not foot due to rounding.\nAverage, highest and lowest Value at Risk amounts relate to the quarter-end amounts during the fiscal year. Average capitalization is the average of the Partnership\u2019s capitalization at the end of each quarter during the fiscal year 2022.\nThe following table indicates the average, highest and lowest amount of trading VaR associated with the Partnership\u2019s open positions by market category for the year ended December 31, 2021. During 2021, the Partnership\u2019s average capitalization was $23,853,415.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Average Value\n\n\n\nat Risk",
+     "",
+     "% of Average Capitalization",
+     "",
+     "Highest Value\n\n\n\nat Risk",
+     "",
+     "Lowest Value\n\n\n\nat Risk",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "$",
+     "27,852",
+     "",
+     "0.12%",
+     "$",
+     "46,301",
+     "$",
+     "14,812"
+    ],
+    [
+     "Commodities",
+     "$",
+     "197,190",
+     "",
+     "0.83%",
+     "$",
+     "425,605",
+     "$",
+     "94,420"
+    ],
+    [
+     "Currencies",
+     "$",
+     "94,273",
+     "",
+     "0.40%",
+     "$",
+     "143,457",
+     "$",
+     "50,697"
+    ],
+    [
+     "Equities",
+     "$",
+     "92,921",
+     "",
+     "0.39%",
+     "$",
+     "196,724",
+     "$",
+     "48,280"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "412,236",
+     "",
+     "*1.73%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": null
+   },
+   "prose_before": "*Percentage total does not foot due to rounding.\nAverage, highest and lowest Value at Risk amounts relate to the quarter-end amounts during the fiscal year. Average capitalization is the average of the Partnership\u2019s capitalization at the end of each quarter during the fiscal year 2022.\nThe following table indicates the average, highest and lowest amount of trading VaR associated with the Partnership\u2019s open positions by market category for the year ended December 31, 2021. During 2021, the Partnership\u2019s average capitalization was $23,853,415.",
+   "prose_after": "*Percentage total does not foot due to rounding.\nAverage, highest and lowest Value at Risk amounts relate to the quarter-end amounts during the fiscal year. Average capitalization is the average of the Partnership\u2019s capitalization at the end of each quarter during the fiscal year 2021.\nThe following table indicates the average, highest and lowest amount of trading VaR associated with the Partnership\u2019s open positions by market category for the year ended December 31, 2020. During 2020, the Partnership\u2019s average capitalization was $58,065,004.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Average Value\n\n\n\nat Risk",
+     "",
+     "% of Average Capitalization",
+     "",
+     "Highest Value\n\n\n\nat Risk",
+     "",
+     "Lowest Value\n\n\n\nat Risk",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "$",
+     "271,061",
+     "",
+     "0.47%",
+     "$",
+     "538,427",
+     "$",
+     "15,750"
+    ],
+    [
+     "Commodities",
+     "$",
+     "867,005",
+     "",
+     "1.49%",
+     "$",
+     "1,736,355",
+     "$",
+     "3,356"
+    ],
+    [
+     "Currencies",
+     "$",
+     "216,337",
+     "",
+     "0.37%",
+     "$",
+     "325,220",
+     "$",
+     "79,320"
+    ],
+    [
+     "Equities",
+     "$",
+     "360,833",
+     "",
+     "0.62%",
+     "$",
+     "859,512",
+     "$",
+     "1,048"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,715,287",
+     "",
+     "*2.95%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 633,
+    "end_line": 650
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": null
+   },
+   "prose_before": "*Percentage total does not foot due to rounding.\nAverage, highest and lowest Value at Risk amounts relate to the quarter-end amounts during the fiscal year. Average capitalization is the average of the Partnership\u2019s capitalization at the end of each quarter during the fiscal year 2021.\nThe following table indicates the average, highest and lowest amount of trading VaR associated with the Partnership\u2019s open positions by market category for the year ended December 31, 2020. During 2020, the Partnership\u2019s average capitalization was $58,065,004.",
+   "prose_after": "*Percentage total does not foot due to rounding.\nAverage, highest and lowest Value at Risk amounts relate to the quarter-end amounts during the fiscal year. Average capitalization is the average of the Partnership\u2019s capitalization at the end of each quarter during the fiscal year 2020.\nMaterial Limitations of Value at Risk as an Assessment of Market Risk\nThe following limitations of VaR as an assessment of market risk should be noted:\n1) Past changes in market risk factors will not always result in accurate predictions of the distributions and correlations of future market movements;\n2) Changes in portfolio value caused by market movements may differ from those of the VaR model;\n3) VaR results reflect past trading positions while future risk depends on future positions;\n4) VaR using a one day time horizon that is then expanded to four days does not fully capture the market risk of positions that cannot be liquidated or hedged within the time period; and\n5) The historical market risk factor data for VaR estimation may provide only limited insight into losses that could be incurred under certain unusual market movements.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fourth Quarter",
+     "",
+     "",
+     "Third Quarter",
+     "",
+     "Second Quarter",
+     "",
+     "First Quarter",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2022",
+     "",
+     "2022",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Interest Income:",
+     "$",
+     "136,097",
+     "",
+     "$",
+     "71,382",
+     "$",
+     "20,213",
+     "$",
+     "0"
+    ],
+    [
+     "Net realized and unrealized gains (losses):",
+     "",
+     "(840,563)",
+     "",
+     "",
+     "463,942",
+     "",
+     "993,693",
+     "",
+     "2,440,745"
+    ],
+    [
+     "Expenses:",
+     "",
+     "169,751",
+     "",
+     "",
+     "265,401",
+     "",
+     "210,922",
+     "",
+     "209,930"
+    ],
+    [
+     "Net Income (Loss):",
+     "",
+     "(874,217)",
+     "",
+     "",
+     "269,923",
+     "",
+     "802,984",
+     "",
+     "2,230,815"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     "",
+     "2021",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Interest Income:",
+     "$",
+     "43",
+     "",
+     "$",
+     "34",
+     "$",
+     "36",
+     "$",
+     "13"
+    ],
+    [
+     "Net realized and unrealized gains (losses):",
+     "",
+     "(727,769)",
+     "",
+     "",
+     "245,360",
+     "",
+     "1,197,156",
+     "",
+     "1,300,099"
+    ],
+    [
+     "Expenses:",
+     "",
+     "189,807",
+     "",
+     "",
+     "243,442",
+     "",
+     "264,202",
+     "",
+     "282,056"
+    ],
+    [
+     "Net Income (Loss):",
+     "",
+     "(917,443)",
+     "",
+     "",
+     "1,952",
+     "",
+     "932,900",
+     "",
+     "1,018,056"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Each day, Winton\u2019s trading systems sets volatility parameters (known as the \u201cinstantaneous forecast standard deviation\u201d) for each position held in the portfolio. The purpose of these parameters is to estimate the likely size of a market shift (whether up or down), in much the same way as the futures exchanges estimate the likely market shift when deciding how to set the initial margin for a future or the daily price limits for a market. The primary determinant of the daily volatility parameters is the amount of leverage or level of gearing used by the Program. The derivatives positions\u2019 leverage or gearing may be measured in terms of the Program\u2019s margin-to-equity ratio in respect of its derivatives positions. This ratio is calculated by dividing the amount of margin posted with the futures commission merchant by the value of the portfolio. The Program\u2019s long-term annualized volatility target is currently approximately 10%. However, it should be noted that the Program\u2019s instantaneous forecast standard deviation (defined as the instantaneous risk Winton expects within the 24 hours following that particular instant) may vary outside these limits. In order to target a given level of long-term risk the instantaneous risk is allowed to fluctuate within a range around the long-term risk target. In order to achieve the long-term risk target the correlation between different markets is estimated by the Program, and is employed in the calculation of the overall level of gearing which is regularly reset, typically on a daily basis. Additionally, from time to time, the long-term standard deviation (defined as the long-term average risk that Winton expects over a number of months) may also be above or below these limits, thereby having an impact upon the level of gearing used by the Program. For example, in the event that exceptional market conditions arise, such as the threat of closure of an exchange or other loss of liquidity, it may be determined to operate the Program at a lower level of gearing.\nITEM 8: FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nFinancial statements required by this item are included herewith following the Index to Financial Statements and are incorporated by reference into this Item 8.\nThe following information presented on a quarterly basis is unaudited.",
+   "prose_after": "ITEM 9: CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE\nNone.\nITEM 9A: CONTROLS AND PROCEDURES\n(a) The General Partner, with the participation of the General Partner\u2019s principal executive officer and principal financial officer, has evaluated the effectiveness of the design and operation of its disclosure controls and procedures with respect to the Partnership as of the end of the period covered by this annual report, and, based on their evaluation, has concluded that these disclosure controls and procedures are effective.\n(b) Management\u2019s Annual Report on Internal Control over Financial Reporting\nAltegris Advisors, L.L.C., the general partner of the Partnership, is responsible for the management of the Partnership. Management of the General Partner (\u201cManagement\u201d) is responsible for establishing and maintaining adequate internal control over financial reporting. The internal control over financial reporting is designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FEE CATEGORY",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "19,500",
+     "$",
+     "33,100"
+    ],
+    [
+     "Audit-Related Fees",
+     "$",
+     "7,500",
+     "$",
+     "21,900"
+    ],
+    [
+     "Tax Fees",
+     "$",
+     "22,500",
+     "$",
+     "23,000"
+    ],
+    [
+     "All Other Fees",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "TOTAL FEES",
+     "$",
+     "49,500",
+     "$",
+     "77,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "None of the General Partner, its affiliates, their respective officers, directors and employees or the immediate family members of any of the foregoing, or any entity trust or other estate in which any of the foregoing has any interest has, to date, sold any asset, directly or indirectly, to the Partnership.\nThe Partnership has no directors, officers or employees and is managed by the General Partner. The General Partner is managed by certain of its principals, none of whom is independent of the General Partner.\nITEM 14: PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following table sets forth\n(a) the fees billed to the Partnership for professional audit services provided by Deloitte & Touche LLP, the Partnership\u2019s independent registered public accountant, for the audit of the Partnership\u2019s annual financial statements for the year ended December 31, 2021 and (b) the fees expected to be billed to the Partnership for professional audit services provided by Spicer Jeffries LLP for the audit of the Partnership\u2019s annual financial statements for the year ended December 31, 2022.",
+   "prose_after": "Audit Fees and Audit-Related Fees consist of fees paid for (i) the audit of Altegris Winton Futures Fund, L.P.\u2019s annual financial statements included in the annual report on Form 10-K, and review of financial statements included in the quarterly reports on Form 10-Q and (ii) services that are normally provided by the Independent Registered Public Accountants in connection with statutory and regulatory filings of registration statements. 2021 Audit Fees and Audit-Related Fees were paid to Deloitte & Touche LLP.\nTax Fees for 2022 consist of non-audit fees paid to Fleming Fund Services for professional services rendered in connection with tax compliance and Partnership income tax return filings. Tax Fees for 2021 were paid to Fleming Fund Services.\nThe managers of the General Partner pre-approve the engagement of the Partnership\u2019s auditor for all services to be provided by the auditor.\nPART IV\nITEM 15: EXHIBITS, FINANCIAL STATEMENT SCHEDULES\nFinancial Statements\nThe financial statements and balance sheets required by this Item are included herewith, beginning after the signature page hereof, and are incorporated into this Item 15.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Designation",
+     "Description"
+    ],
+    [
+     "*3.1",
+     "Certificate of Formation of Altegris Winton Futures Fund, L.P."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "**4.1",
+     "Third Amended and Restated Agreement of Limited Partnership of Altegris Winton Futures Fund, L.P."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.1",
+     "Advisory Contract between Altegris Winton Futures Fund, L.P., Rockwell Futures Management, Inc.*** and Winton Capital Management Limited and Amendment thereto dated June 1, 2008"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.2",
+     "Introducing Broker Clearing Agreement between Fimat USA, LLC**** and Altegris Investments, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*10.3",
+     "Form of Selling Agency Agreement"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.01",
+     "Rule 13a-14(a)/15d-14(a) Certification of Principal Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.02",
+     "Rule 13a-14(a)/15d-14(a) Certification of Financial Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.01",
+     "Section 1350 Certification of Principal Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.02",
+     "Section 1350 Certification of Principal Financial Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*****101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)"
+    ],
+    [
+     "*****101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "*****101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "*****101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "*****101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "*****101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "*****104",
+     "Cover Page Interactive Data File (formatted in IXBRL, and included in exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 873,
+    "end_line": 904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Audit Fees and Audit-Related Fees consist of fees paid for (i) the audit of Altegris Winton Futures Fund, L.P.\u2019s annual financial statements included in the annual report on Form 10-K, and review of financial statements included in the quarterly reports on Form 10-Q and (ii) services that are normally provided by the Independent Registered Public Accountants in connection with statutory and regulatory filings of registration statements. 2021 Audit Fees and Audit-Related Fees were paid to Deloitte & Touche LLP.\nTax Fees for 2022 consist of non-audit fees paid to Fleming Fund Services for professional services rendered in connection with tax compliance and Partnership income tax return filings. Tax Fees for 2021 were paid to Fleming Fund Services.\nThe managers of the General Partner pre-approve the engagement of the Partnership\u2019s auditor for all services to be provided by the auditor.\nPART IV\nITEM 15: EXHIBITS, FINANCIAL STATEMENT SCHEDULES\nFinancial Statements\nThe financial statements and balance sheets required by this Item are included herewith, beginning after the signature page hereof, and are incorporated into this Item 15.\nExhibits\nThe following documents (unless otherwise indicated) are filed herewith and made part of this registration statement.",
+   "prose_after": "____________________\n* These exhibits are incorporated by reference to the exhibits of the same numbers and descriptions filed with the Partnership\u2019s Registration Statement (File No. 000-53348) filed on July 30, 2008 on Form 10-12G under the Securities Exchange Act of 1934.\n** This exhibit is incorporated by reference to the exhibit of the same number and description filed with the registrant\u2019s Annual Report on Form 10-K (File No. 000-53348) filed on March 31, 2015.\n*** Rockwell Futures Management, Inc. became Altegris Portfolio Management, Inc., which merged with and into Altegris Advisors, L.L.C.\n**** Fimat USA, LLC became Newedge USA, LLC, which merged with and into SG Americas Securities, LLC.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 860,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: March 29, 2023",
+     "Altegris WINTON FUTURES FUND, L.P.\n\n\n\n \n\n\n\nBy: ALTEGRIS ADVISORS, L.L.C."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By: /s/ Matthew C. Osborne"
+    ],
+    [
+     "",
+     "Name: Matthew C. Osborne"
+    ],
+    [
+     "",
+     "Title: Principal Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 920,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "____________________\n* These exhibits are incorporated by reference to the exhibits of the same numbers and descriptions filed with the Partnership\u2019s Registration Statement (File No. 000-53348) filed on July 30, 2008 on Form 10-12G under the Securities Exchange Act of 1934.\n** This exhibit is incorporated by reference to the exhibit of the same number and description filed with the registrant\u2019s Annual Report on Form 10-K (File No. 000-53348) filed on March 31, 2015.\n*** Rockwell Futures Management, Inc. became Altegris Portfolio Management, Inc., which merged with and into Altegris Advisors, L.L.C.\n**** Fimat USA, LLC became Newedge USA, LLC, which merged with and into SG Americas Securities, LLC.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the General Partner of the Registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title with General Partner",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Matthew C. Osborne",
+     "",
+     ""
+    ],
+    [
+     "  Matthew C. Osborne",
+     "Principal Executive, Financial & Accounting Officer",
+     "March 29, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the General Partner of the Registrant and in the capacities and on the date indicated.",
+   "prose_after": "(Being the principal executive officer, the principal financial officer and principal accounting officer, and a majority of the managers of Altegris Advisors, L.L.C.)\nFINANCIAL STATEMENTS\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGES"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Affirmation of the Commodity Pool Operator",
+     "F-1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firm PCAOB ID 349",
+     "F-2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Financial Condition",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Schedules of Investments",
+     "F-5 \u2013 F-6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Income (Loss)",
+     "F-7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Changes in Partners\u2019 Capital (Net Asset Value)",
+     "F-8 \u2013 F-9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "F-10 \u2013 F-31"
+    ]
+   ],
+   "caption_stack": [
+    "PAGES"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(Being the principal executive officer, the principal financial officer and principal accounting officer, and a majority of the managers of Altegris Advisors, L.L.C.)\nFINANCIAL STATEMENTS\nTABLE OF CONTENTS",
+   "prose_after": "AFFIRMATION OF THE COMMODITY POOL OPERATOR\nTo the Partners of\nTo the best of the knowledge and belief of the undersigned, the information contained in this Annual Report for the years ended December 31, 2022, 2021 and 2020 is accurate and complete.\n/s/ Matthew C. Osborne\nAltegris Advisors, L.L.C.\nCommodity Pool Operator for\nAltegris Winton Futures Fund, L.P.\nBy: Matthew C. Osborne, Chief Executive Officer\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nSPICER JEFFRIES LLP",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 947,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Deloitte & Touche LLP\n\n\n\n695 Town Center Drive Suite 1000\n\n\n\nCosta Mesa, CA 92626 USA\n\n\n\nTel: 714 436 7100\n\n\n\nFax: 714 436 7200\n\n\n\nwww.deloitte.com"
+    ]
+   ],
+   "caption_stack": [
+    "Deloitte & Touche LLP\n\n\n\n695 Town Center Drive Suite 1000\n\n\n\nCosta Mesa, CA 92626 USA\n\n\n\nTel: 714 436 7100\n\n\n\nFax: 714 436 7200\n\n\n\nwww.deloitte.com"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1037,
+    "end_line": 1050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinions.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and\n(2) involved our especially challenging, subjective, or complex judgments. We determined that there are no critical audit matters.\n/s/ Spice Jeffries LLP\nWe have served as the Partnership\u2019s auditor since 2022.\nDenver, Colorado\nMarch 29, 2023",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nThe General Partner and Limited Partners of Altegris Winton Futures Fund, L.P.\nOpinion on the Financial Statements\nWe have audited the accompanying statements of financial condition, including the condensed schedules of investments, of Altegris Winton Futures Fund, L.P. (the \u201cFund\u201d) as of December 31, 2021 and December 31, 2020, and the related statements of income (loss) and changes in partners\u2019 capital (net asset value) for each of the two years in the period then ended, and the related notes. In our opinion, the financial statements present fairly, in all material respects, the financial position of the Fund as of December 31, 2021 and December 31, 2020, and the results of its operations and changes in its partners\u2019 capital (net asset value) for each of the two years in the period then ended in conformity with accounting principles generally accepted in the United States of America. The related statements of income (loss) and changes in partners\u2019 capital (net asset value) for the year ended December 31, 2019 for the Fund, were audited by other auditors whose report, dated March 9, 2020, expressed an unqualified opinion on those statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Equity in commodity broker account:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash deposit with broker",
+     "$",
+     "3,651,929",
+     "$",
+     "8,189,598"
+    ],
+    [
+     "Segregated cash",
+     "",
+     "943,336",
+     "",
+     "1,233,281"
+    ],
+    [
+     "Segregated foreign currency (cost - $126,967 and $227,776)",
+     "",
+     "126,106",
+     "",
+     "228,530"
+    ],
+    [
+     "Net unrealized gain on open forward contracts",
+     "",
+     "14,480",
+     "",
+     "8,530"
+    ],
+    [
+     "Net unrealized gain on open futures contracts",
+     "",
+     "289,211",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total assets in commodity broker account",
+     "",
+     "5,025,062",
+     "",
+     "9,659,939"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment securities, at fair value (cost - $12,366,052 and $0)",
+     "",
+     "12,375,933",
+     "",
+     "\u2013"
+    ],
+    [
+     "Cash",
+     "",
+     "214,955",
+     "",
+     "10,850,445"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "17,615,950",
+     "$",
+     "20,510,384"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity in commodity broker account:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized loss on open futures contracts",
+     "$",
+     "\u2013",
+     "$",
+     "818"
+    ],
+    [
+     "Total liabilities in commodity broker account",
+     "",
+     "\u2013",
+     "",
+     "818"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemptions payable",
+     "",
+     "80,306",
+     "",
+     "766,402"
+    ],
+    [
+     "Commissions payable",
+     "",
+     "21,757",
+     "",
+     "22,889"
+    ],
+    [
+     "Management fee payable",
+     "",
+     "16,935",
+     "",
+     "19,363"
+    ],
+    [
+     "Service fees payable",
+     "",
+     "16,409",
+     "",
+     "39,403"
+    ],
+    [
+     "Advisory fee payable",
+     "",
+     "13,813",
+     "",
+     "15,781"
+    ],
+    [
+     "Administrative fee payable",
+     "",
+     "3,935",
+     "",
+     "4,476"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "47,574",
+     "",
+     "61,749"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "200,729",
+     "",
+     "930,881"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PARTNERS\u2019 CAPITAL (NET ASSET VALUE)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partner",
+     "",
+     "3,412",
+     "",
+     "3,020"
+    ],
+    [
+     "Limited Partners",
+     "",
+     "17,411,809",
+     "",
+     "19,576,483"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total partners\u2019 capital (Net Asset Value)",
+     "",
+     "17,415,221",
+     "",
+     "19,579,503"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners\u2019 capital",
+     "$",
+     "17,615,950",
+     "$",
+     "20,510,384"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1085,
+    "end_line": 1133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. Our procedures included confirmation of securities owned as of December 31, 2021, by correspondence with the custodian and brokers. We believe that our audit provides a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current-period audit of the financial statements that were communicated or required to be communicated to the audit committee and that\n(1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there are no critical audit matters.\n/s/ Deloitte & Touche LLP\nCosta Mesa, California\nMarch 29, 2022\nWe have served as the Fund\u2019s auditor since 2020.\nSTATEMENTS OF FINANCIAL CONDITION\nDECEMBER 31, 2022 AND DECEMBER 31, 2021",
+   "prose_after": "CONDENSED SCHEDULES OF INVESTMENTS\nDECEMBER 31, 2022",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1134,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Range of Expiration Dates",
+     "Number of Contracts",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "% of Partners' Capital",
+     ""
+    ],
+    [
+     "LONG FUTURES CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "Feb 23- May 23",
+     "",
+     "129",
+     "$",
+     "160,798",
+     "",
+     "",
+     "0.92 %"
+    ],
+    [
+     "Currencies",
+     "Mar-23",
+     "",
+     "15",
+     "",
+     "(2,619)",
+     "",
+     "",
+     "(0.02)%"
+    ],
+    [
+     "Energies",
+     "June 23- Dec 23",
+     "",
+     "2",
+     "",
+     "(16,006)",
+     "",
+     "",
+     "(0.09)%"
+    ],
+    [
+     "Interest Rates",
+     "Mar 23- Jun 23",
+     "",
+     "6",
+     "",
+     "412",
+     "",
+     "",
+     "0.00 %"
+    ],
+    [
+     "Metals",
+     "Jan 23- Apr 23",
+     "",
+     "22",
+     "",
+     "45,840",
+     "",
+     "",
+     "0.27 %"
+    ],
+    [
+     "Stock Indices",
+     "Jan 23- Mar 23",
+     "",
+     "27",
+     "",
+     "(34,192)",
+     "",
+     "",
+     "(0.20)%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long futures contracts",
+     "",
+     "",
+     "201",
+     "",
+     "154,233",
+     "",
+     "",
+     "0.88 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHORT FUTURES CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "Feb 23- May 23",
+     "",
+     "22",
+     "",
+     "(15,473)",
+     "",
+     "",
+     "(0.09)%"
+    ],
+    [
+     "Currencies",
+     "Mar-23",
+     "",
+     "34",
+     "",
+     "(77,390)",
+     "",
+     "",
+     "(0.44)%"
+    ],
+    [
+     "Energies",
+     "Feb 23 - Mar 23",
+     "",
+     "7",
+     "",
+     "33,180",
+     "",
+     "",
+     "0.19 %"
+    ],
+    [
+     "Interest Rates",
+     "Mar 23 - Dec 25",
+     "",
+     "188",
+     "",
+     "196,672",
+     "",
+     "",
+     "1.13 %"
+    ],
+    [
+     "Metals",
+     "Jan 23- Feb 23",
+     "",
+     "3",
+     "",
+     "(14,888)",
+     "",
+     "",
+     "(0.09)%"
+    ],
+    [
+     "Stock Indices",
+     "Jan 23 - Mar 23",
+     "",
+     "27",
+     "",
+     "12,877",
+     "",
+     "",
+     "0.08 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total short futures contracts",
+     "",
+     "",
+     "281",
+     "",
+     "134,978",
+     "",
+     "",
+     "0.78 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts",
+     "",
+     "",
+     "",
+     "$",
+     "289,211",
+     "",
+     "",
+     "1.66 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "UNREALIZED GAIN ON FORWARD CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "Jan 23 - Mar 23",
+     "",
+     "",
+     "$",
+     "21,701",
+     "",
+     "",
+     "0.12 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "UNREALIZED LOSS ON FORWARD CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "Jan 23 - Mar 23",
+     "",
+     "",
+     "",
+     "(7,221)",
+     "",
+     "",
+     "(0.04)%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total forward currency contracts",
+     "",
+     "",
+     "",
+     "$",
+     "14,480",
+     "",
+     "",
+     "0.08 %"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1140,
+    "end_line": 1181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED SCHEDULES OF INVESTMENTS\nDECEMBER 31, 2022",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1134,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INVESTMENT SECURITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Face Value",
+     "Maturity Date",
+     "Description",
+     "",
+     "Fair Value",
+     "% of Partners' Capital"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Government Securities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ 12,400,000",
+     "Jan-23",
+     "Treasury bills",
+     "$",
+     "12,375,933",
+     "71.06 %"
+    ]
+   ],
+   "caption_stack": [
+    "INVESTMENT SECURITIES"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1182,
+    "end_line": 1192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONDENSED SCHEDULES OF INVESTMENTS (continued)\nDECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1134,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Range of Expiration Dates",
+     "Number of Contracts",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "% of Partners' Capital",
+     ""
+    ],
+    [
+     "LONG FUTURES CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "Feb 22 - May 22",
+     "",
+     "88",
+     "$",
+     "(14,930)",
+     "",
+     "",
+     "(0.08)%"
+    ],
+    [
+     "Currencies",
+     "Mar-22",
+     "",
+     "45",
+     "",
+     "21,410",
+     "",
+     "",
+     "0.11 %"
+    ],
+    [
+     "Energies",
+     "Jan 22 - Dec 22",
+     "",
+     "13",
+     "",
+     "6,118",
+     "",
+     "",
+     "0.03 %"
+    ],
+    [
+     "Interest Rates",
+     "Mar 22 - Sep 22",
+     "",
+     "36",
+     "",
+     "(24,414)",
+     "",
+     "",
+     "(0.12)%"
+    ],
+    [
+     "Metals",
+     "Jan 22 - Apr 22",
+     "",
+     "35",
+     "",
+     "30,892",
+     "",
+     "",
+     "0.16 %"
+    ],
+    [
+     "Stock Indices",
+     "Jan 22 - Mar 22",
+     "",
+     "38",
+     "",
+     "71,351",
+     "",
+     "",
+     "0.36 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long futures contracts",
+     "",
+     "",
+     "255",
+     "",
+     "90,427",
+     "",
+     "",
+     "0.46 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHORT FUTURES CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "Mar 22 - May 22",
+     "",
+     "6",
+     "",
+     "(1,584)",
+     "",
+     "",
+     "(0.01)%"
+    ],
+    [
+     "Currencies",
+     "Mar-22",
+     "",
+     "123",
+     "",
+     "(32,336)",
+     "",
+     "",
+     "(0.17)%"
+    ],
+    [
+     "Energies",
+     "Feb 22 - Mar 22",
+     "",
+     "4",
+     "",
+     "940",
+     "",
+     "",
+     "0.00 %"
+    ],
+    [
+     "Interest Rates",
+     "Mar 22 - Dec 24",
+     "",
+     "155",
+     "",
+     "25,570",
+     "",
+     "",
+     "0.13 %"
+    ],
+    [
+     "Metals",
+     "Jan 22 - Mar 22",
+     "",
+     "18",
+     "",
+     "(65,450)",
+     "",
+     "",
+     "(0.32)%"
+    ],
+    [
+     "Stock Indices",
+     "Jan 22 - Mar 22",
+     "",
+     "32",
+     "",
+     "(18,385)",
+     "",
+     "",
+     "(0.09)%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total short futures contracts",
+     "",
+     "",
+     "338",
+     "",
+     "(91,245)",
+     "",
+     "",
+     "(0.46)%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts",
+     "",
+     "",
+     "",
+     "$",
+     "(818)",
+     "",
+     "",
+     "0.00 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "UNREALIZED GAIN ON FORWARD CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "Jan 22 - Mar 22",
+     "",
+     "",
+     "$",
+     "44,128",
+     "",
+     "",
+     "0.23 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "UNREALIZED LOSS ON FORWARD CONTRACTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "Jan 22 - Mar 22",
+     "",
+     "",
+     "",
+     "(35,598)",
+     "",
+     "",
+     "(0.18)%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total forward currency contracts",
+     "",
+     "",
+     "",
+     "$",
+     "8,530",
+     "",
+     "",
+     "0.05 %"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED SCHEDULES OF INVESTMENTS (continued)\nDECEMBER 31, 2021",
+   "prose_after": "STATEMENTS OF INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1241,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "TRADING GAINS (LOSSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on trading of derivatives contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized",
+     "$",
+     "3,051,811",
+     "",
+     "$",
+     "3,587,942",
+     "",
+     "$",
+     "(16,560,097)",
+     ""
+    ],
+    [
+     "Net change in unrealized",
+     "",
+     "295,979",
+     "",
+     "",
+     "(1,175,965)",
+     "",
+     "",
+     "1,919,645",
+     ""
+    ],
+    [
+     "Brokerage commissions",
+     "",
+     "(289,841)",
+     "",
+     "",
+     "(387,225)",
+     "",
+     "",
+     "(1,027,303)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net gain (loss) from trading derivatives contracts",
+     "",
+     "3,057,949",
+     "",
+     "",
+     "2,024,752",
+     "",
+     "",
+     "(15,667,755)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on trading of securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in unrealized",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(1,464)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from trading securities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(1,464)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on trading of foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized",
+     "",
+     "1,483",
+     "",
+     "",
+     "11,433",
+     "",
+     "",
+     "95,447",
+     ""
+    ],
+    [
+     "Net change in unrealized",
+     "",
+     "(1,615)",
+     "",
+     "",
+     "(21,339)",
+     "",
+     "",
+     "(3,622)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net gain (loss) from trading foreign currency",
+     "",
+     "(132)",
+     "",
+     "",
+     "(9,906)",
+     "",
+     "",
+     "91,825",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total trading gains (losses)",
+     "",
+     "3,057,817",
+     "",
+     "",
+     "2,014,846",
+     "",
+     "",
+     "(15,577,394)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INVESTMENT LOSS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "227,692",
+     "",
+     "",
+     "126",
+     "",
+     "",
+     "298,451",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fee",
+     "",
+     "221,398",
+     "",
+     "",
+     "292,695",
+     "",
+     "",
+     "673,925",
+     ""
+    ],
+    [
+     "Service fee",
+     "",
+     "186,665",
+     "",
+     "",
+     "250,299",
+     "",
+     "",
+     "552,827",
+     ""
+    ],
+    [
+     "Advisory fee",
+     "",
+     "179,765",
+     "",
+     "",
+     "241,892",
+     "",
+     "",
+     "645,964",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "83,479",
+     "",
+     "",
+     "84,105",
+     "",
+     "",
+     "217,310",
+     ""
+    ],
+    [
+     "Administrative fee",
+     "",
+     "51,465",
+     "",
+     "",
+     "65,387",
+     "",
+     "",
+     "130,564",
+     ""
+    ],
+    [
+     "Incentive fee",
+     "",
+     "102,565",
+     "",
+     "",
+     "5,069",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "7,349",
+     "",
+     "",
+     "27,789",
+     "",
+     "",
+     "26,860",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "23,318",
+     "",
+     "",
+     "12,271",
+     "",
+     "",
+     "33,661",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "856,004",
+     "",
+     "",
+     "979,507",
+     "",
+     "",
+     "2,281,111",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(628,312)",
+     "",
+     "",
+     "(979,381)",
+     "",
+     "",
+     "(1,982,660)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "$",
+     "2,429,505",
+     "",
+     "$",
+     "1,035,465",
+     "",
+     "$",
+     "(17,560,054)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF INCOME (LOSS)",
+   "prose_after": "STATEMENTS OF CHANGES IN PARTNERS' CAPITAL (NET ASSET VALUE)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Limited Partners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Original",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "Special",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Institutional",
+     "",
+     "",
+     "General",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "Partner",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2019",
+     "$",
+     "5,337,690",
+     "",
+     "$",
+     "222,495",
+     "",
+     "$",
+     "18,671,824",
+     "",
+     "$",
+     "37,192,540",
+     "",
+     "$",
+     "18,212,829",
+     "",
+     "$",
+     "12,122,005",
+     "",
+     "$",
+     "3,626",
+     "",
+     "$",
+     "91,763,009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital additions",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "310,400",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "21,787",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "332,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital withdrawals",
+     "",
+     "(1,648,232)",
+     "",
+     "",
+     "(29,991)",
+     "",
+     "",
+     "(14,605,077)",
+     "",
+     "",
+     "(14,009,962)",
+     "",
+     "",
+     "(7,402,596)",
+     "",
+     "",
+     "(4,344,035)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(42,039,893)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "From operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(95,013)",
+     "",
+     "",
+     "(2,967)",
+     "",
+     "",
+     "(220,123)",
+     "",
+     "",
+     "(1,151,889)",
+     "",
+     "",
+     "(340,872)",
+     "",
+     "",
+     "(171,712)",
+     "",
+     "",
+     "(84)",
+     "",
+     "",
+     "(1,982,660)",
+     ""
+    ],
+    [
+     "Net realized loss from investments (net of brokerage commissions)",
+     "",
+     "(934,288)",
+     "",
+     "",
+     "(38,641)",
+     "",
+     "",
+     "(4,219,826)",
+     "",
+     "",
+     "(6,605,892)",
+     "",
+     "",
+     "(3,276,005)",
+     "",
+     "",
+     "(2,416,575)",
+     "",
+     "",
+     "(726)",
+     "",
+     "",
+     "(17,491,953)",
+     ""
+    ],
+    [
+     "Net change in unrealized gain from investments",
+     "",
+     "116,996",
+     "",
+     "",
+     "5,094",
+     "",
+     "",
+     "373,202",
+     "",
+     "",
+     "710,434",
+     "",
+     "",
+     "389,359",
+     "",
+     "",
+     "319,357",
+     "",
+     "",
+     "117",
+     "",
+     "",
+     "1,914,559",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2020",
+     "",
+     "(912,305)",
+     "",
+     "",
+     "(36,514)",
+     "",
+     "",
+     "(4,066,747)",
+     "",
+     "",
+     "(7,047,347)",
+     "",
+     "",
+     "(3,227,518)",
+     "",
+     "",
+     "(2,268,930)",
+     "",
+     "",
+     "(693)",
+     "",
+     "",
+     "(17,560,054)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2020",
+     "$",
+     "2,777,153",
+     "",
+     "$",
+     "155,990",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "16,445,631",
+     "",
+     "$",
+     "7,582,715",
+     "",
+     "$",
+     "5,530,827",
+     "",
+     "$",
+     "2,933",
+     "",
+     "$",
+     "32,495,249",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2020",
+     "$",
+     "2,777,153",
+     "",
+     "$",
+     "155,990",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "16,445,631",
+     "",
+     "$",
+     "7,582,715",
+     "",
+     "$",
+     "5,530,827",
+     "",
+     "$",
+     "2,933",
+     "",
+     "$",
+     "32,495,249",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transfers",
+     "",
+     "(1,057,136)",
+     "",
+     "",
+     "1,057,136",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(1,680,816)",
+     "",
+     "",
+     "1,680,816",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital withdrawals",
+     "",
+     "(610,189)",
+     "",
+     "",
+     "(344,258)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(5,171,193)",
+     "",
+     "",
+     "(3,534,578)",
+     "",
+     "",
+     "(4,290,993)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(13,951,211)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "From operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(43,421)",
+     "",
+     "",
+     "(19,920)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(617,375)",
+     "",
+     "",
+     "(220,352)",
+     "",
+     "",
+     "(78,214)",
+     "",
+     "",
+     "(99)",
+     "",
+     "",
+     "(979,381)",
+     ""
+    ],
+    [
+     "Net realized gain from investments (net of brokerage commissions)",
+     "",
+     "238,969",
+     "",
+     "",
+     "49,639",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1,585,100",
+     "",
+     "",
+     "809,463",
+     "",
+     "",
+     "528,663",
+     "",
+     "",
+     "316",
+     "",
+     "",
+     "3,212,150",
+     ""
+    ],
+    [
+     "Net change in unrealized loss from investments",
+     "",
+     "(102,237)",
+     "",
+     "",
+     "(12,605)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(619,835)",
+     "",
+     "",
+     "(258,841)",
+     "",
+     "",
+     "(203,656)",
+     "",
+     "",
+     "(130)",
+     "",
+     "",
+     "(1,197,304)",
+     ""
+    ],
+    [
+     "Net income for the year ended December 31, 2021",
+     "",
+     "93,311",
+     "",
+     "",
+     "17,114",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "347,890",
+     "",
+     "",
+     "330,270",
+     "",
+     "",
+     "246,793",
+     "",
+     "",
+     "87",
+     "",
+     "",
+     "1,035,465",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2021",
+     "$",
+     "1,203,139",
+     "",
+     "$",
+     "885,982",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "9,941,512",
+     "",
+     "$",
+     "6,059,223",
+     "",
+     "$",
+     "1,486,627",
+     "",
+     "$",
+     "3,020",
+     "",
+     "$",
+     "19,579,503",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Limited Partners"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1310,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF CHANGES IN PARTNERS' CAPITAL (NET ASSET VALUE)",
+   "prose_after": "STATEMENTS OF CHANGES IN PARTNERS' CAPITAL (NET ASSET VALUE) (continued)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1308,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Limited Partners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Original",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "Special",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Institutional",
+     "",
+     "",
+     "General",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "Partner",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2021",
+     "$",
+     "1,203,139",
+     "",
+     "$",
+     "885,982",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "9,941,512",
+     "",
+     "$",
+     "6,059,223",
+     "",
+     "$",
+     "1,486,627",
+     "",
+     "$",
+     "3,020",
+     "",
+     "$",
+     "19,579,503",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transfers",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(163,609)",
+     "",
+     "",
+     "163,609",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital withdrawals",
+     "",
+     "(389,804)",
+     "",
+     "",
+     "(219,255)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(3,043,064)",
+     "",
+     "",
+     "(727,118)",
+     "",
+     "",
+     "(214,546)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(4,593,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "From operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(29,654)",
+     "",
+     "",
+     "(15,221)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(394,781)",
+     "",
+     "",
+     "(162,495)",
+     "",
+     "",
+     "(26,073)",
+     "",
+     "",
+     "(88)",
+     "",
+     "",
+     "(628,312)",
+     ""
+    ],
+    [
+     "Net realized gain from investments (net of brokerage commissions)",
+     "",
+     "168,197",
+     "",
+     "",
+     "122,580",
+     "",
+     "",
+     "\u2013",
+     "",
+     "1,345,529",
+     "",
+     "",
+     "918,764",
+     "",
+     "",
+     "207,926",
+     "",
+     "",
+     "457",
+     "",
+     "",
+     "2,763,453",
+     ""
+    ],
+    [
+     "Net change in unrealized gain from investments",
+     "",
+     "21,904",
+     "",
+     "",
+     "10,832",
+     "",
+     "",
+     "\u2013",
+     "",
+     "182,675",
+     "",
+     "",
+     "56,789",
+     "",
+     "",
+     "22,141",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "294,364",
+     ""
+    ],
+    [
+     "Net income for the year ended December 31, 2022",
+     "",
+     "160,447",
+     "",
+     "",
+     "118,191",
+     "",
+     "",
+     "\u2013",
+     "",
+     "1,133,423",
+     "",
+     "",
+     "813,058",
+     "",
+     "",
+     "203,994",
+     "",
+     "",
+     "392",
+     "",
+     "",
+     "2,429,505",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2022",
+     "$",
+     "973,782",
+     "",
+     "$",
+     "784,918",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "7,868,262",
+     "",
+     "$",
+     "6,308,772",
+     "",
+     "$",
+     "1,476,075",
+     "",
+     "$",
+     "3,412",
+     "",
+     "$",
+     "17,415,221",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Limited Partners"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1359,
+    "end_line": 1383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF CHANGES IN PARTNERS' CAPITAL (NET ASSET VALUE) (continued)",
+   "prose_after": "See accompanying notes\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1 - ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES\nA. General Description of the Partnership\nAltegris Winton Futures Fund, L.P. (the \u201cPartnership\u201d) was organized as a Colorado limited partnership in March 1999, and will continue until December 31, 2035, unless sooner terminated as provided for in the Agreement of Limited Partnership (the \u201cAgreement\u201d), as amended and restated from time to time. The Partnership's general partner is Altegris Advisors, L.L.C. (the \u201cGeneral Partner\u201d). The General Partner has the overall responsibility for the management, operation and administration of the Partnership, including the selection of its commodity trading adviser. The Partnership's trading activities are conducted pursuant to an advisor contract with Winton Capital Management Limited (the \"Advisor\"). The Partnership speculatively trades commodity futures contracts, options on futures contracts, forward contracts and other commodity interests. The objective of the Partnership\u2019s business is appreciation of its assets. The Partnership is subject to the regulations of the Commodity Futures Trading Commission (the \u201cCFTC\u201d), an agency of the United States (\u201cU.S.\u201d) government that regulates most aspects of the commodity futures industry; rules of the National Futures Association, an industry self-regulatory organization; and the requirements of commodity exchanges and futures commission merchants (brokers) through which the Partnership trades.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1357,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1385,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of assets and liabilities measured at fair value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Balance as of",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2022",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures contracts (1)",
+     "$",
+     "513,674",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "513,674",
+     ""
+    ],
+    [
+     "Forward currency contracts (1)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "21,701",
+     "",
+     "",
+     "\u2013",
+     "",
+     "21,701",
+     ""
+    ],
+    [
+     "US Government securities",
+     "",
+     "12,375,933",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "12,375,933",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "12,889,607",
+     "",
+     "$",
+     "21,701",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "12,911,308",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures contracts (1)",
+     "$",
+     "(224,463)",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "(224,463)",
+     ""
+    ],
+    [
+     "Forward currency contracts (1)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(7,221)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(7,221)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(224,463)",
+     "",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "(231,684)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of assets and liabilities measured at fair value",
+    "Balance as of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The fair value of corporate notes is determined using recently executed transactions, market price quotations (where observable), notes spreads or credit default swap spreads. The spread data used are for the same maturity as that of the notes. If the spread data does not reference the issuer, data that references a comparable issuer is used. When observable price quotations are not available, fair value is determined based on cash flow models with yield curves, bond, or single-name credit default swap spreads and recovery rates based on collateral values as key inputs. These valuation methods represent both a market and income approach to fair value measurement. Corporate notes are categorized in Level 2 of the fair value hierarchy; however, in instances where significant inputs are unobservable, they are categorized in Level 3 of the hierarchy. As of December 31, 2022 and 2021, the Partnership did not hold corporate notes.\nThe fair value of certificates of deposit is determined based on a constant maturity curve for comparable instruments denominated in USD. This valuation method represents both a market and income approach to fair value measurement. Certificates of deposit are categorized in Level 2 of the fair value hierarchy.\nC. Fair Value (continued)\nThe inputs or methodology used for valuing securities are not necessarily an indication of the risk associated with investing in those securities.\nThere were no changes to the Partnership\u2019s valuation methodology during the years ended December 31, 2022 and 2021.\nThe following table presents information about the Partnership\u2019s assets and liabilities measured at fair value as December 31, 2022 and 2021:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1493,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Balance as of",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures contracts (1)",
+     "$",
+     "284,885",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "284,885",
+     ""
+    ],
+    [
+     "Forward currency contracts (1)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "44,128",
+     "",
+     "",
+     "\u2013",
+     "",
+     "44,128",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "284,885",
+     "",
+     "$",
+     "44,128",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "329,013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures contracts (1)",
+     "$",
+     "(285,703)",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "(285,703)",
+     ""
+    ],
+    [
+     "Forward currency contracts (1)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(35,598)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(35,598)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(285,703)",
+     "",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "(321,301)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Balance as of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1468,
+    "end_line": 1489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) See Note 7. \u201cFinancial Derivative Instruments\u201d for the fair value in each type of contracts within this category.\nFor the years ended December 31, 2022 and 2021, there were no Level 3 securities.\nD. Investment Transactions and Investment Income\nSecurity transactions are recorded on the trade date for financial reporting purposes. Realized gains and losses from security transactions are determined using the specific identification cost method. Change in net unrealized gain or loss from the preceding period is reported in the Statements of Income (Loss). Brokerage commissions and other trading fees are reflected as an adjustment to cost or proceeds at the time of the transaction. Interest income is recorded on an accrual basis.\nGains or losses on futures contracts, options on futures contracts and forward currency contracts are realized when contracts are closed. Net unrealized gains or losses on open contracts (the difference between contract trade price and quoted market price) are reflected in the Statements of Financial Condition. Any change in net unrealized gain or loss from the preceding period is reported in the Statements of Income (Loss). Brokerage commissions on futures and options on futures contracts include other trading fees and are recognized as trading gains and losses.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1493,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fees paid to Altegris Investments and Altegris Futures",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended",
+     "",
+     "Year ended",
+     "",
+     "Year ended",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Altegris Clearing Solutions - Brokerage Commission fees",
+     "$",
+     "251,245",
+     "$",
+     "322,021",
+     "$",
+     "845,978"
+    ],
+    [
+     "AlphaMax - Service fees",
+     "",
+     "181",
+     "",
+     "182",
+     "",
+     "89,649"
+    ],
+    [
+     "Total",
+     "$",
+     "251,426",
+     "$",
+     "322,203",
+     "$",
+     "935,627"
+    ]
+   ],
+   "caption_stack": [
+    "Fees paid to Altegris Investments and Altegris Futures"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1597,
+    "end_line": 1609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "AlphaMax has entered into a selling agreement with the Partnership whereby it receives 2% per annum as continuing compensation for Class A Interests sold by AlphaMax that are outstanding at month end. The Partnership\u2019s introducing broker receives a portion of the commodity brokerage commissions paid by the Partnership to the Clearing Broker and interest income retained by the Clearing Broker. Additionally, the Partnership pays to its clearing brokers and its introducing broker, at a minimum, brokerage charges at a flat rate of 0.125% (1.5% annually) of the Partnership\u2019s management fee net asset value. Brokerage charges may exceed the flat rate described above, depending on commission and trading volume levels, which may vary.\nNOTE 3 - RELATED PARTY TRANSACTIONS (CONTINUED)\nC. AlphaMax Distributors, L.L.C. and Altegris Clearing Solutions, L.L.C. (continued)\nAt December 31, 2022 and 2021, the Partnership had commissions and brokerage fees payable to its introducing broker of $18,865 and $19,331, respectively, and service fees payable to AlphaMax of $0 and $18, respectively. These amounts are included in commissions payable and service fees payable on the Statements of Financial Condition, respectively. The amounts shown on the Statements of Financial Condition include fees payable to non-related parties.\nThe following tables show the fees paid to AlphaMax and Altegris Clearing Solutions for the years ended December 31, 2022, 2021 and 2020:",
+   "prose_after": "The amounts above are included in Brokerage Commissions and Service Fees on the Statements of Income (Loss), respectively. The amounts shown on the Statements of Income (Loss) include fees paid to non-related parties.\nNOTE 4 - ADVISORY CONTRACT\nThe Partnership's trading activities are conducted pursuant to an advisory contract with Winton Capital Management, Ltd. (\u201cAdvisor\u201d). The Partnership pays the Advisor a quarterly incentive fee of 20% of the trading profits (as defined in the Agreement). However, the quarterly incentive fee is payable only on cumulative profits achieved from commodity trading (as defined in the Agreement), calculated separately for each partner\u2019s interest (as defined in the Agreement). The incentive fee is accrued on a monthly basis and paid quarterly. Total incentive fees earned by the Advisor for the years ended December 31, 2022, 2021 and 2020 are shown on the Statements of Income (Loss).\nNOTE 4 - ADVISORY CONTRACT (CONTINUED)\nInterest holders will be assessed a monthly advisory fee paid to the Advisor of 0.083% of the management fee net asset value of each holder\u2019s month-end capital account balance (1.00% annually), with the exception of Original Class A Interests. In addition, the General Partner has assigned a portion of its management fees earned to the Advisor. For the years ended December 31, 2022, 2021 and 2020, advisory fees for Class A were $90,607, $126,327 and $261,741, respectively, advisory fee for Class B Interests were $65,349, $71,814 and $133,911, respectively, advisory fee for Original Class B Interests were $8,731, $7,945 and $1,712, respectively, advisory fee for Special Interests were $0, $0 and $150,205, respectively, and advisory fee for Institutional Interests were $15,078, $35,806 and $98,395, respectively. General Partner\u2019s Interest and Original Class A Interests did not get charged the advisory fee.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1587,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1615,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of derivative contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Assets",
+     "",
+     "Liability",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of",
+     "Derivatives",
+     "",
+     "Derivatives",
+     "",
+     "",
+     "Net",
+     "",
+     ""
+    ],
+    [
+     "Derivatives Contracts",
+     "Fair Value",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "$",
+     "179,097",
+     "$",
+     "(33,772)",
+     "",
+     "$",
+     "145,325",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "6,043",
+     "",
+     "(86,052)",
+     "",
+     "",
+     "(80,009)",
+     ""
+    ],
+    [
+     "Energies",
+     "",
+     "44,450",
+     "",
+     "(27,276)",
+     "",
+     "",
+     "17,174",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "204,350",
+     "",
+     "(7,266)",
+     "",
+     "",
+     "197,084",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "59,119",
+     "",
+     "(28,167)",
+     "",
+     "",
+     "30,952",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "20,615",
+     "",
+     "(41,930)",
+     "",
+     "",
+     "(21,315)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Futures Contracts",
+     "$",
+     "513,674",
+     "$",
+     "(224,463)",
+     "",
+     "$",
+     "289,211",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Currency Contracts",
+     "$",
+     "21,701",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "14,480",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Gross Fair Value of Derivatives Contracts",
+     "$",
+     "535,375",
+     "$",
+     "(231,684)",
+     "",
+     "$",
+     "303,691",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fair value of derivative contracts",
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1638,
+    "end_line": 1666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "The Partnership engages in the speculative trading of futures contracts and forward currency contracts for the purpose of achieving capital appreciation. None of the Partnership\u2019s derivative instruments are designated as hedging instruments, as defined in the Derivatives and Hedging Topic of the Accounting Standards Codification (\u201cASC\u201d), nor are they used for other risk management purposes. The Advisor and General Partner actively assess, manage and monitor risk exposure on derivatives on a contract basis, a sector basis (e.g., interest rate derivatives, agricultural derivatives, etc.), and on an overall basis in accordance with established risk parameters. Due to the speculative nature of the Partnership\u2019s derivative trading activity, the Partnership is subject to the risk of substantial losses from derivatives trading.\nThe following presents the fair value of derivatives contracts at December 31, 2022 and 2021. The fair value of derivatives contracts is presented as an asset if in a gain position and a liability if in a loss position. Fair value is presented on a gross basis in the table below even though the futures and forward contracts qualify for net presentation in the Statements of Financial Condition.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1630,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1666,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Assets",
+     "",
+     "Liability",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of",
+     "Derivatives",
+     "",
+     "Derivatives",
+     "",
+     "",
+     "Net",
+     "",
+     ""
+    ],
+    [
+     "Derivatives Contracts",
+     "Fair Value",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "$",
+     "30,802",
+     "$",
+     "(47,316)",
+     "",
+     "$",
+     "(16,514)",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "66,806",
+     "",
+     "(77,732)",
+     "",
+     "",
+     "(10,926)",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "17,528",
+     "",
+     "(10,470)",
+     "",
+     "",
+     "7,058",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "33,105",
+     "",
+     "(31,949)",
+     "",
+     "",
+     "1,156",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "62,636",
+     "",
+     "(97,194)",
+     "",
+     "",
+     "(34,558)",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "74,008",
+     "",
+     "(21,042)",
+     "",
+     "",
+     "52,966",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Futures Contracts",
+     "$",
+     "284,885",
+     "$",
+     "(285,703)",
+     "",
+     "$",
+     "(818)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Currency Contracts",
+     "$",
+     "44,128",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "8,530",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Gross Fair Value of Derivatives Contracts",
+     "$",
+     "329,013",
+     "$",
+     "(321,301)",
+     "",
+     "$",
+     "7,712",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1668,
+    "end_line": 1695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following presents the trading results of the Partnership\u2019s derivative trading and information related to the volume of the Partnership\u2019s derivative activity for the years ended December 31, 2022, 2021 and 2020.\nThe below captions of \u201cRealized\u201d and \u201cChange in Unrealized\u201d correspond to the captions in the Statements of Income (Loss) for gain (loss) on trading of derivatives contracts.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1666,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1695,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of realized and unrealized gain (loss) on derivatives",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of Derivatives Contracts",
+     "Realized",
+     "",
+     "",
+     "Change in Unrealized",
+     "",
+     "",
+     "Number of Average Notional Value of Contracts",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "$",
+     "35,442",
+     "",
+     "$",
+     "161,839",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "1,176,414",
+     "",
+     "",
+     "(69,083)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Energies",
+     "",
+     "879,081",
+     "",
+     "",
+     "10,116",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "1,414,280",
+     "",
+     "",
+     "195,928",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "140,257",
+     "",
+     "",
+     "65,510",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "(495,282)",
+     "",
+     "",
+     "(74,281)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Futures Contracts",
+     "$",
+     "3,150,192",
+     "",
+     "$",
+     "290,029",
+     "",
+     "$",
+     "42,530,145",
+     "(1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Currency Contracts",
+     "$",
+     "(98,381)",
+     "",
+     "$",
+     "5,950",
+     "",
+     "$",
+     "4,398,771",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Gain from Derivatives Contracts",
+     "$",
+     "3,051,811",
+     "",
+     "$",
+     "295,979",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of realized and unrealized gain (loss) on derivatives",
+    "Year Ended December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1701,
+    "end_line": 1725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "The following presents the trading results of the Partnership\u2019s derivative trading and information related to the volume of the Partnership\u2019s derivative activity for the years ended December 31, 2022, 2021 and 2020.\nThe below captions of \u201cRealized\u201d and \u201cChange in Unrealized\u201d correspond to the captions in the Statements of Income (Loss) for gain (loss) on trading of derivatives contracts.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1695,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1749,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of Derivatives Contracts",
+     "Realized",
+     "",
+     "",
+     "Change in Unrealized",
+     "",
+     "",
+     "Number of Average Notional Value of Contracts",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "$",
+     "1,426,339",
+     "",
+     "$",
+     "(349,582)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "264,845",
+     "",
+     "",
+     "(141,651)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Energies",
+     "",
+     "1,409,280",
+     "",
+     "",
+     "(50,116)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "(1,048,470)",
+     "",
+     "",
+     "(76,327)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "486,869",
+     "",
+     "",
+     "(381,615)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "1,052,890",
+     "",
+     "",
+     "(125,821)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Futures Contracts",
+     "$",
+     "3,591,753",
+     "",
+     "$",
+     "(1,125,112)",
+     "",
+     "$",
+     "66,363,208",
+     "(1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Currency Contracts",
+     "$",
+     "(3,811)",
+     "",
+     "$",
+     "(50,853)",
+     "",
+     "$",
+     "7,666,999",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Gain (loss) from Derivatives Contracts",
+     "$",
+     "3,587,942",
+     "",
+     "$",
+     "(1,175,965)",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1726,
+    "end_line": 1749
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1695,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1749,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of Derivatives Contracts",
+     "Realized",
+     "",
+     "",
+     "Change in Unrealized",
+     "",
+     "",
+     "Number of Average Notional Value of Contracts",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agriculture",
+     "$",
+     "(855,378)",
+     "",
+     "$",
+     "888,676",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "(2,671,918)",
+     "",
+     "",
+     "403,061",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Energies",
+     "",
+     "(2,686,187)",
+     "",
+     "",
+     "(386,310)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "736,525",
+     "",
+     "",
+     "710,379",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "(3,620,875)",
+     "",
+     "",
+     "400,055",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "(6,633,752)",
+     "",
+     "",
+     "(16,521)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Futures Contracts",
+     "$",
+     "(15,731,585)",
+     "",
+     "$",
+     "1,999,340",
+     "",
+     "$",
+     "406,290,821",
+     "(1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Currency Contracts",
+     "$",
+     "(828,512)",
+     "",
+     "$",
+     "(79,695)",
+     "",
+     "$",
+     "29,445,986",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Gain (loss) from Derivatives Contracts",
+     "$",
+     "(16,560,097)",
+     "",
+     "$",
+     "1,919,645",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1751,
+    "end_line": 1774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "1) The average notional value of futures contracts are representative of the Partnership\u2019s volume of derivative activity for futures contracts during the respective years.\n2) The average notional value of forward currency contracts are representative of the Partnership\u2019s volume of derivative activity for forward currency contracts during the respective years.\nWith respect to futures contracts and options on futures contracts, the Partnership has entered into an agreement with the Clearing Broker which grants the Clearing Broker the right to offset recognized derivative assets and derivative liabilities if certain conditions exist, which would require the Clearing Broker to liquidate the Partnership\u2019s positions. These events include the following: (i) the Clearing Broker is directed or required by a regulatory or self-regulatory organization, (ii) the Clearing Broker determines, at its discretion, that the risk in the Partnership\u2019s account must be reduced for protection of the Clearing Broker, (iii) upon the Partnership\u2019s breach or failure to perform on its contractual agreements with the Clearing Broker, (iv) upon the commencement of bankruptcy, insolvency or similar proceeding for the protection of creditors against the Partnership, or (v) upon the dissolution, winding-up, liquidation or merger of the Partnership.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1749,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Offsetting the Financial Assets and Derivative Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Gross Amounts Not Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Gross Amounts of Recognized Assets",
+     "",
+     "Gross Amounts Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "Net Amounts of Assets Presented in the Statements of Financial Condition",
+     "",
+     "Financial Instruments",
+     "",
+     "Cash Collateral Received (1)",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "$",
+     "21,701",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "14,480",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "14,480"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "21,701",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "14,480",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "14,480"
+    ]
+   ],
+   "caption_stack": [
+    "Offsetting the Financial Assets and Derivative Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1785,
+    "end_line": 1808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "With respect to futures contracts and options on futures contracts, the Partnership has entered into an agreement with the Clearing Broker which grants the Clearing Broker the right to offset recognized derivative assets and derivative liabilities if certain conditions exist, which would require the Clearing Broker to liquidate the Partnership\u2019s positions. These events include the following: (i) the Clearing Broker is directed or required by a regulatory or self-regulatory organization, (ii) the Clearing Broker determines, at its discretion, that the risk in the Partnership\u2019s account must be reduced for protection of the Clearing Broker, (iii) upon the Partnership\u2019s breach or failure to perform on its contractual agreements with the Clearing Broker, (iv) upon the commencement of bankruptcy, insolvency or similar proceeding for the protection of creditors against the Partnership, or (v) upon the dissolution, winding-up, liquidation or merger of the Partnership.\nWith respect to foreign currency forward contracts, the Partnership has entered into an agreement with the Clearing Broker, whereby the party having the greater obligation (either the Partnership or the Clearing Broker) shall deliver to the other party at the settlement date the net amount of recognized derivative assets and liabilities.\nThe following table summarizes the disclosure requirements for offsetting assets and liabilities:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Offsetting the Financial Liabilities and Derivative Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Gross Amounts Not Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Gross Amounts of Recognized Liabilities",
+     "",
+     "Gross Amounts Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "Net Amounts of Liabilities Presented in the Statements of Financial Condition",
+     "",
+     "Financial Instruments",
+     "",
+     "Cash Collateral Pledged (1)",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "$",
+     "7,221",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "7,221",
+     "$",
+     "(7,221)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Offsetting the Financial Liabilities and Derivative Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1809,
+    "end_line": 1833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1781,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Offsetting the Financial Assets and Derivative Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Gross Amounts Not Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Gross Amounts of Recognized Assets",
+     "",
+     "Gross Amounts Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "Net Amounts of Assets Presented in the Statements of Financial Condition",
+     "",
+     "Financial Instruments",
+     "",
+     "Cash Collateral Received (1)",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "$",
+     "44,128",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "8,530",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "8,530"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "44,128",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "8,530",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "8,530"
+    ]
+   ],
+   "caption_stack": [
+    "Offsetting the Financial Assets and Derivative Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1835,
+    "end_line": 1858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Offsetting the Financial Liabilities and Derivative Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Gross Amounts Not Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Gross Amounts of Recognized Liabilities",
+     "",
+     "Gross Amounts Offset in the Statements of Financial Condition",
+     "",
+     "",
+     "Net Amounts of Liabilities Presented in the Statements of Financial Condition",
+     "",
+     "Financial Instruments",
+     "",
+     "Cash Collateral Pledged (1)",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "$",
+     "35,598",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "35,598",
+     "$",
+     "(35,598)",
+     "",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Offsetting the Financial Liabilities and Derivative Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1859,
+    "end_line": 1883
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FINANCIAL DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) The Partnership posted additional collateral of $108,370 as of December 31, 2022 and $540,943 for December 31, 2021 with the Clearing Broker. The Partnership may post collateral due to a variety of factors that may include, without limitation, initial margin or other requirements that are based on notional amounts which may exceed the fair value of the derivative contract.\nNOTE 8 - FINANCIAL INSTRUMENTS, OFF-BALANCE SHEET RISKS AND UNCERTAINTIES\nThe Partnership participates in the speculative trading of commodity futures contracts and forward currency contracts, substantially all of which are subject to margin requirements. The minimum amount of margin required for each contract is set from time to time in response to various market factors by the respective exchanges and interbank market makers. Further for futures contracts and options on futures contracts, the Clearing Broker has the right to require margin in excess of the minimum exchange requirement. Risk arises from changes in the value of these contracts (market risk) and the potential inability of brokers or interbank market makers to perform under the terms of their contracts (credit risk).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Financial highlights of the Partnership",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Original",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Institutional",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return for Limited Partners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Return prior to incentive fees",
+     "",
+     "13.70",
+     "%",
+     "",
+     "14.69",
+     "%",
+     "",
+     "11.72",
+     "%",
+     "",
+     "13.75",
+     "%",
+     "",
+     "14.69",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "(0.65)",
+     "%",
+     "",
+     "(0.71)",
+     "%",
+     "",
+     "(0.58)",
+     "%",
+     "",
+     "(0.63)",
+     "%",
+     "",
+     "(0.72)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return after incentive fees",
+     "",
+     "13.05",
+     "%",
+     "",
+     "13.98",
+     "%",
+     "",
+     "11.14",
+     "%",
+     "",
+     "13.12",
+     "%",
+     "",
+     "13.97",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio to average net asset value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses prior to incentive fees",
+     "",
+     "3.22",
+     "%",
+     "",
+     "2.34",
+     "%",
+     "",
+     "5.00",
+     "%",
+     "",
+     "3.17",
+     "%",
+     "",
+     "2.34",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "0.55",
+     "%",
+     "",
+     "0.61",
+     "%",
+     "",
+     "0.50",
+     "%",
+     "",
+     "0.55",
+     "%",
+     "",
+     "0.62",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "3.77",
+     "%",
+     "",
+     "2.95",
+     "%",
+     "",
+     "5.50",
+     "%",
+     "",
+     "3.72",
+     "%",
+     "",
+     "2.96",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment (loss) (1)",
+     "",
+     "(2.05)",
+     "%",
+     "",
+     "(1.13)",
+     "%",
+     "",
+     "(3.86)",
+     "%",
+     "",
+     "(1.93)",
+     "%",
+     "",
+     "(1.11)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Financial highlights of the Partnership",
+    "Year ended December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1906,
+    "end_line": 1933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FINANCIAL HIGHLIGHTS"
+    }
+   },
+   "prose_before": "The Partnership has a substantial portion of its assets on deposit with the Custodian in U.S. government agency bonds and notes and corporate notes. Risks arise from investments in bonds and notes due to possible illiquidity and the potential for default by the issuer or counterparty. Such instruments are also sensitive to changes in interest rates and economic conditions.\nNOTE 9 - INDEMNIFICATIONS\nIn the normal course of business, the Partnership enters into contracts and agreements that contain a variety of representations and warranties and which provide general indemnifications. The Partnership\u2019s maximum exposure under these arrangements is unknown, as this would involve future claims that may be made against the Partnership that have not yet occurred. The Partnership expects the risk of any future obligation under these indemnifications to be remote.\nNOTE 10 - FINANCIAL HIGHLIGHTS\nThe following information presents the financial highlights of the Partnership for the years ended December 31, 2022, 2021 and 2020. This information has been derived from information presented in the financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1900,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Original",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Institutional",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return for Limited Partners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Return prior to incentive fees",
+     "",
+     "3.36",
+     "%",
+     "",
+     "3.98",
+     "%",
+     "",
+     "1.29",
+     "%",
+     "",
+     "3.13",
+     "%",
+     "",
+     "3.98",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.04)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return after incentive fees",
+     "",
+     "3.36",
+     "%",
+     "",
+     "3.98",
+     "%",
+     "",
+     "1.25",
+     "%",
+     "",
+     "3.13",
+     "%",
+     "",
+     "3.98",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio to average net asset value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses prior to incentive fees",
+     "",
+     "2.67",
+     "%",
+     "",
+     "2.30",
+     "%",
+     "",
+     "4.85",
+     "%",
+     "",
+     "3.07",
+     "%",
+     "",
+     "2.23",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.04",
+     "%",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2.67",
+     "%",
+     "",
+     "2.30",
+     "%",
+     "",
+     "4.89",
+     "%",
+     "",
+     "3.07",
+     "%",
+     "",
+     "2.23",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment (loss) (1)",
+     "",
+     "(2.67)",
+     "%",
+     "",
+     "(2.30)",
+     "%",
+     "",
+     "(4.89)",
+     "%",
+     "",
+     "(3.07)",
+     "%",
+     "",
+     "(2.23)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1934,
+    "end_line": 1960
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FINANCIAL HIGHLIGHTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Total return and the ratios to average net asset value are calculated for each class of Limited Partners\u2019 capital taken as a whole. An individual Limited Partner\u2019s total return and ratios may vary from the above returns and ratios due to the timing of their contributions and withdrawals and differing fee structures.\n(1) Excludes incentive fee.\nNOTE 10 - FINANCIAL HIGHLIGHTS (CONTINUED)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1900,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Original",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "Special",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Institutional",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Interests",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return for Limited Partners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Return prior to incentive fees",
+     "",
+     "(18.91)",
+     "%",
+     "",
+     "(18.37)",
+     "%",
+     "",
+     "(21.78)",
+     "%",
+     "",
+     "",
+     "(20.57)",
+     "%",
+     "",
+     "(19.05)",
+     "%",
+     "",
+     "(18.37)",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return after incentive fees",
+     "",
+     "(18.91)",
+     "%",
+     "",
+     "(18.37)",
+     "%",
+     "",
+     "(21.78)",
+     "%",
+     "",
+     "",
+     "(20.57)",
+     "%",
+     "",
+     "(19.05)",
+     "%",
+     "",
+     "(18.37)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio to average net asset value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses prior to incentive fees",
+     "",
+     "2.98",
+     "%",
+     "",
+     "2.16",
+     "%",
+     "",
+     "1.90",
+     "%",
+     "(2)",
+     "",
+     "5.04",
+     "%",
+     "",
+     "3.05",
+     "%",
+     "",
+     "2.20",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "(2)",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2.98",
+     "%",
+     "",
+     "2.16",
+     "%",
+     "",
+     "1.90",
+     "%",
+     "(2)",
+     "",
+     "5.04",
+     "%",
+     "",
+     "3.05",
+     "%",
+     "",
+     "2.20",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment (loss) (1)",
+     "",
+     "(2.48)",
+     "%",
+     "",
+     "(1.74)",
+     "%",
+     "",
+     "(1.48)",
+     "%",
+     "(2)",
+     "",
+     "(4.52)",
+     "%",
+     "",
+     "(2.59)",
+     "%",
+     "",
+     "(1.78)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1968,
+    "end_line": 1994
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FINANCIAL HIGHLIGHTS"
+    }
+   },
+   "prose_before": "Total return and the ratios to average net asset value are calculated for each class of Limited Partners\u2019 capital taken as a whole. An individual Limited Partner\u2019s total return and ratios may vary from the above returns and ratios due to the timing of their contributions and withdrawals and differing fee structures.\n(1) Excludes incentive fee.\nNOTE 10 - FINANCIAL HIGHLIGHTS (CONTINUED)",
+   "prose_after": "Total return and the ratios to average net asset value are calculated for each class of Limited Partners\u2019 capital taken as a whole. An individual Limited Partner\u2019s total return and ratios may vary from the above returns and ratios due to the timing of their contributions and withdrawals and differing fee structures.\n(1) Excludes incentive fee.\n(2) For the period January 1, 2020 to November 30, 2020. Ratios have been annualized.\nNOTE 11 - SUBSEQUENT EVENTS\nManagement of the Partnership evaluated subsequent events through the date these financial statements were issued, and concluded that no events subsequent to December 31, 2022 have occurred that would require recognition or disclosure, except as noted below.\nFrom January 1, 2023 through March 29, 2023, the Partnership had $0 subscriptions and had redemptions of $1,508,307.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1999,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

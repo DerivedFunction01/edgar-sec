@@ -1,0 +1,6853 @@
+{
+ "accession": "0001694028-24-000006",
+ "cik": "0001694028",
+ "form": "10-K",
+ "filing_date": "2024-02-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "lbrt-20231231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Liberty Energy Inc.",
+     "",
+     ""
+    ],
+    [
+     "(Exact Name of Registrant as Specified in its Charter)",
+     "",
+     ""
+    ],
+    [
+     "Delaware",
+     "",
+     "81-4891595"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "950 17th Street, Suite 2400 Denver, Colorado",
+     "",
+     "80202"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     "(303) 515-2800",
+     ""
+    ],
+    [
+     "(Registrant\u2019s Telephone Number, Including Area Code)",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "Trading symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A Common Stock, par value $0.01",
+     "LBRT",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [
+    "Liberty Energy Inc.",
+    "(Exact Name of Registrant as Specified in its Charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended December 31, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 001-38081",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [X] Yes [ ] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this Chapter) during the presiding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "27"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "27"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "28"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "28"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "28"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "28"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "33"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure about Market Risk",
+     "44"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "44"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "44"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "45"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "45"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "46"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "46"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "46"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "46"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "46"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "47"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "48"
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "52"
+    ]
+   ],
+   "caption_stack": [
+    "Page No.",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 100
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of June 30, 2023, the last business day of the registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of voting and non-voting common stock held by non-affiliates of the registrant was approximately $2.2 billion, determined using the per share closing price on the New York Stock Exchange on that date of $13.37. Shares of common stock held by each director and executive officer (and their respective affiliates) and each person who owns 10 percent or more of the outstanding common stock or who is otherwise believed by the registrant to be in a control position have been excluded. This determination of affiliate status is not necessarily a conclusive determination for other purposes.\nAt February 5, 2024 the Registrant had 166,682,012 shares of Class A Common Stock and 0 shares of Class B Common Stock outstanding.\nDocuments Incorporated by Reference: Part III of this Annual Report on Form 10-K incorporates certain information by reference from the registrant\u2019s proxy statement for the 2024 annual meeting of stockholders to be filed no later than 120 days after the end of the registrant\u2019s fiscal year.\nTABLE OF CONTENTS",
+   "prose_after": "i\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (\u201cAnnual Report\u201d) and certain other communications made by us contain forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange of 1934, as amended (the \u201cExchange Act\u201d), including among others, expected performance, future operating results, oil and natural gas demand and prices and the outlook for the oil and gas industry, future global economic conditions, the impact of global conflicts, improvements in operating procedures and technology, our business strategy and the business strategies of our customers, in addition to other estimates, and beliefs. For this purpose, any statement that is not a statement of historical fact should be considered a forward-looking statement. We may use the words \u201cestimate,\u201d \u201coutlook,\u201d \u201cproject,\u201d \u201cforecast,\u201d \u201cposition,\u201d \u201cpotential,\u201d \u201clikely,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cassume,\u201d \u201cplan,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cachievable,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201ccontinue,\u201d \u201cshould,\u201d \u201ccould\u201d and similar expressions to help identify forward-looking statements. However, the absence of these words does not mean that the statements are not forward-looking. We cannot assure you that our assumptions and expectations will prove to be correct. Important factors could cause our actual results to differ materially from those indicated or implied by forward-looking statements, including but not limited to the risks described in this Annual Report and other filings that we make with the U.S. Securities Exchange Commission (the \u201cSEC\u201d). We undertake no intention or obligation to update or revise any forward-looking statements, except as required by law, whether as a result of new information, future events or otherwise and readers should not rely on the forward-looking statements as representing the Company\u2019s views as of any date subsequent to the date of the filing of this Annual Report. These forward-looking statements are based on management\u2019s current belief, based on currently available information, as to the outcome and timing of future events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "District Facility Location",
+     "Size",
+     "Leased or Owned"
+    ],
+    [
+     "Midland, TX",
+     "90,000 sq. ft on 35 acres",
+     "Owned"
+    ],
+    [
+     "Midland, TX",
+     "70,000 sq. ft on 12 acres",
+     "Owned"
+    ],
+    [
+     "Odessa, TX",
+     "77,500 sq. ft on 48 acres",
+     "Owned"
+    ],
+    [
+     "Cibolo, TX",
+     "90,000 sq. ft on 34 acres",
+     "Owned"
+    ],
+    [
+     "Kermit, TX",
+     "5,000 acres",
+     "Owned"
+    ],
+    [
+     "Monahans, TX",
+     "3,200 acres",
+     "Owned"
+    ],
+    [
+     "Magnolia, TX",
+     "63,350 sq. ft.",
+     "Leased (through May 31, 2031)"
+    ],
+    [
+     "Magnolia, TX",
+     "11,680 sq. ft",
+     "Leased (through February 28, 2025)"
+    ],
+    [
+     "Gainesville, TX",
+     "170,000 sq. ft.",
+     "Leased (through May 31, 2024)"
+    ],
+    [
+     "Shreveport, LA",
+     "215,000 sq ft. on 45 acres",
+     "Owned"
+    ],
+    [
+     "Cheyenne, WY",
+     "115,000 sq. ft on 60 acres",
+     "Owned"
+    ],
+    [
+     "Gillette, WY",
+     "32,757 sq. ft on 15 acres",
+     "Leased (through December 31, 2034)"
+    ],
+    [
+     "Henderson, CO",
+     "50,000 sq. ft on 13 acres",
+     "Leased (through December 31, 2034)"
+    ],
+    [
+     "Henderson, CO",
+     "96,582 sq. ft on 12 acres",
+     "Owned"
+    ],
+    [
+     "Williston, ND",
+     "55,000 sq. ft on 50 acres",
+     "Owned"
+    ],
+    [
+     "Vernal, UT",
+     "30,901 sq. ft on 10 acres",
+     "Leased (through September 30, 2025)"
+    ],
+    [
+     "Farmington, NM",
+     "34,000 sq. ft on 30 acres",
+     "Owned"
+    ],
+    [
+     "Farmington, NM",
+     "23,000 sq. ft on 9 acres",
+     "Owned"
+    ],
+    [
+     "El Reno, OK",
+     "80,000 sq. ft on 33 acres",
+     "Owned"
+    ],
+    [
+     "Red Deer, AB",
+     "170,000 sq. ft on 42 acres",
+     "Owned"
+    ],
+    [
+     "Grand Prairie, AB",
+     "135,000 sq. ft on 40 acres",
+     "Owned"
+    ],
+    [
+     "Huallen, AB",
+     "80 acres",
+     "Owned"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 291,
+    "end_line": 317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "The Federal government in Canada shares certain jurisdiction with the provinces over certain environmental matters. Federal legislation potentially applicable to our Canadian operations includes legislation focused on regulating greenhouse gases (the Greenhouse Gas Pollution Pricing Act, SC 2018, c 12, s 186), legislation aimed at protecting wildlife (the Species at Risk Act, SC 2002, c 29, Fisheries Act, RSC 1985, c F-14, and Migratory Birds Convention Act, 1994, SC 1994, c 22), and legislation governing the transportation of potentially dangerous substances and prevention of pollution (the Transportation of Dangerous Goods Act, 1992, SC 1992, c 34 and Canadian Environmental Protection Act, 1999, SC 1999, c 33).\nEnvironmental assessment of major projects in Canada is shared between the federal and provincial governments. In October 2023 the Supreme Court of Canada ruled that Canada\u2019s Impact Assessment Act, SC 2019, c 28, s1, which governs approvals for federally regulated projects, is largely unconstitutional (Reference re Impact Assessment Act, 2023 SCC 23). The federal government is currently amending its environmental impact assessment legislation in response to the decision.\nProperties\nProperties\nOur corporate headquarters are located at 950 17th Street, Suite 2400, Denver, Colorado 80202. We lease our general office space at our corporate headquarters. The lease expires in December 2027. We currently own or lease the following additional principal properties:",
+   "prose_after": "We also lease several smaller facilities, which leases generally have terms of one to six years. We believe that our existing facilities are adequate for our operations and their locations allow us to efficiently serve our customers. We do not believe that any single facility is material to our operations and, if necessary, we could readily obtain a replacement facility.\nMarketing and Customers\nWe have developed long-term partnerships with our customers through a continuous dialogue focused on their production economics. Further, we have a proven track record of executing our customers\u2019 plans and delivering on time and in line with expected costs. Our customer base includes a broad range of integrated and independent E&P companies, including some of the largest E&P companies in our areas of operation. Our technological innovations, customer-tailored approach and track record of consistently providing high-quality, safe and reliable service has allowed us to develop long-term customer partnerships, which we believe makes us the service provider of choice for many of our customers.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Total number of shares purchased",
+     "Average price paid per share (2)",
+     "Total number of shares purchased as part of publicly announced plans or programs (1)",
+     "Approximate dollar value of shares that may yet be purchased under the plans or programs (1)"
+    ],
+    [
+     "October 1, 2023 - October 31, 2023",
+     "351,632",
+     "19.91",
+     "351,632",
+     "203,968,909"
+    ],
+    [
+     "November 1, 2023 - November 30, 2023",
+     "1,161,489",
+     "19.45",
+     "1,161,489",
+     "181,379,741"
+    ],
+    [
+     "December 1, 2023 - December 31, 2023",
+     "518,615",
+     "18.22",
+     "518,615",
+     "171,930,956"
+    ],
+    [
+     "Total",
+     "2,031,736",
+     "19.21",
+     "2,031,736",
+     "171,930,956"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "On July 25, 2022, the Board authorized and the Company announced a share repurchase program that allowed the Company to repurchase up to $250.0 million of the Company\u2019s Class A Common Stock beginning immediately and continuing through and including July 31, 2024. On January 24, 2023, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $500.0 million. Furthermore, on January 23, 2024, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $750.0 million and extended the authorization through July 31, 2026. The shares may be repurchased from time to time in open market or privately negotiated transactions or by other means in accordance with applicable state and federal securities laws. The timing, as well as the number and value of shares repurchased under the program, will be determined by the Company at its discretion and will depend on a variety of factors, including management\u2019s assessment of the intrinsic value of the Company\u2019s Class A Common Stock, the market price of the Company\u2019s Class A Common Stock, general market and economic conditions, available liquidity, compliance with the Company\u2019s debt and other agreements, applicable legal requirements, and other considerations. The exact number of shares to be repurchased by the Company is not guaranteed, and the program may be suspended, modified, or discontinued at any time without prior notice. The Company expects to fund any repurchases by using cash on hand, borrowings under the ABL Facility and expected free cash flow to be generated through the duration of the share repurchase program.\nDuring the year ended December 31, 2023, the Company repurchased and retired 13,705,622 shares of Class A Common Stock for $203.1 million or $14.82 average price per share including commissions, under the share repurchase program.\nAs of December 31, 2023, $171.9 million remained authorized for future repurchases of Class A Common Stock under the share repurchase program and $417.5 million as of February 5, 2024, following the authorization increase.\nThe following sets forth information with respect to our repurchases of shares of Class A Common Stock during the three months ended December 31, 2023:",
+   "prose_after": "(1) On July 25, 2022, the Board authorized and the Company announced a share repurchase program that allowed the Company to repurchase up to $250.0 million of the Company\u2019s Class A Common Stock beginning immediately and continuing through and including July 31, 2024. On January 24, 2023, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $500.0 million. Furthermore, on January 23, 2024, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $750.0 million and extended the authorization through July 31, 2026. The shares may be repurchased from time to time in open market or privately negotiated transactions or by other means in accordance with applicable state and federal securities laws.\n(2) The average price paid per share of $19.21 was calculated excluding commissions.\nStock Performance Graph",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Liberty Energy Inc.",
+     "$",
+     "100.00",
+     "$",
+     "87.20",
+     "$",
+     "82.35",
+     "$",
+     "77.48",
+     "$",
+     "128.28",
+     "$",
+     "147.43"
+    ],
+    [
+     "Standard & Poor\u2019s 500 \u00ae Index",
+     "100.00",
+     "",
+     "131.49",
+     "",
+     "155.68",
+     "",
+     "200.37",
+     "",
+     "164.08",
+     "",
+     "207.21",
+     ""
+    ],
+    [
+     "Philadelphia Oil Service Index",
+     "100.00",
+     "",
+     "99.44",
+     "",
+     "57.60",
+     "",
+     "69.54",
+     "",
+     "112.31",
+     "",
+     "114.47",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 792,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "(2) The average price paid per share of $19.21 was calculated excluding commissions.\nStock Performance Graph\nThe following graph and table compares the cumulative total return on our Class A Common Stock with the cumulative total return on the Standard & Poor\u2019s 500 \u00ae Index and the Philadelphia Oil Service Index, since December 31, 2018 and each annual period thereafter through December 31, 2023. The graph assumes that $100 was invested in our Class A Common Stock in each index on December 31, 2018 and that any dividends were reinvested on the last day of the month in which they were paid. The cumulative total return set forth is not necessarily indicative of future performance.\nThe following graph and related information shall not be deemed \u201csoliciting material\u201d or to be \u201cfiled\u201d with the SEC, nor shall such information be incorporated by reference into any future filing under the Securities Act or the Exchange Act, except to the extent that we specifically incorporate it by reference into such filing.",
+   "prose_after": "Item 6. [Reserved]\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with our audited consolidated financial statements and related notes appearing elsewhere in this Annual Report. The following discussion contains \u201cforward-looking statements\u201d that reflect our future plans, estimates, beliefs and expected performance. Our actual results may differ materially from those anticipated in these forward-looking statements as a result of a variety of risks and uncertainties, including those described in this Annual Report under \u201cCautionary Note Regarding Forward-Looking Statements\u201d and \u201cItem 1A. Risk Factors.\u201d Except as required by law, we assume no obligation to update any of these forward-looking statements. This section of this Annual Report generally discusses 2023 and 2022 items and year-to-year comparisons between 2023 and 2022. For discussion of year ended December 31, 2021, as well as the year ended 2022 compared to the year ended December 31, 2021, refer to Part II, Item 7\u2014 Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations of our 2022 Annual Report.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "2023",
+     "",
+     "2022",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "4,747,928",
+     "$",
+     "4,149,228",
+     "$",
+     "598,700"
+    ],
+    [
+     "Cost of services, excluding depreciation, depletion, and amortization shown separately",
+     "3,349,370",
+     "",
+     "3,149,036",
+     "",
+     "200,334",
+     ""
+    ],
+    [
+     "General and administrative",
+     "221,406",
+     "",
+     "180,040",
+     "",
+     "41,366",
+     ""
+    ],
+    [
+     "Transaction, severance, and other costs",
+     "2,053",
+     "",
+     "5,837",
+     "",
+     "(3,784)",
+     ""
+    ],
+    [
+     "Depreciation, depletion, and amortization",
+     "421,514",
+     "",
+     "323,028",
+     "",
+     "98,486",
+     ""
+    ],
+    [
+     "Gain on disposal of assets, net",
+     "(6,994)",
+     "",
+     "(4,603)",
+     "",
+     "(2,391)",
+     ""
+    ],
+    [
+     "Operating income",
+     "760,579",
+     "",
+     "495,890",
+     "",
+     "264,689",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "25,689",
+     "",
+     "96,381",
+     "",
+     "(70,692)",
+     ""
+    ],
+    [
+     "Net income before income taxes",
+     "734,890",
+     "",
+     "399,509",
+     "",
+     "335,381",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "178,482",
+     "",
+     "(793)",
+     "",
+     "179,275",
+     ""
+    ],
+    [
+     "Net income",
+     "556,408",
+     "",
+     "400,302",
+     "",
+     "156,106",
+     ""
+    ],
+    [
+     "Less: Net income attributable to non-controlling interests",
+     "91",
+     "",
+     "700",
+     "",
+     "(609)",
+     ""
+    ],
+    [
+     "Net income attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "556,317",
+     "$",
+     "399,602",
+     "$",
+     "156,715"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We view EBITDA and Adjusted EBITDA as important indicators of performance. We define EBITDA as net income before interest, income taxes, and depreciation, depletion, and amortization. We define Adjusted EBITDA as EBITDA adjusted to eliminate the effects of items such as non-cash stock-based compensation, new fleet or new basin start-up costs, fleet lay-down costs, costs of asset acquisitions, gain or loss on the disposal of assets, provision for credit losses, transaction, severance, and other costs, the gain or loss on remeasurement of liability under our tax receivable agreements, the gain or loss on investments, and other non-recurring expenses that management does not consider in assessing ongoing performance. See \u201cComparison of Non-GAAP Financial Measures\u201d for more information and a reconciliation of EBITDA and Adjusted EBITDA to net income, the most comparable financial measures calculated and presented in accordance with GAAP.\nResults of Operations\nYear Ended December 31, 2023, Compared to Year Ended December 31, 2022",
+   "prose_after": "Revenue\nOur revenue increased $598.7 million, or 14%, to $4.7 billion for the year ended December 31, 2023 compared to $4.1 billion for the year ended December 31, 2022. The increase in revenue was primarily attributable to higher service pricing, the reactivation of several fleets not fully reflected in the prior year, and an activity-driven increase in fleet efficiency commensurate with consistent demand for hydraulic fracturing services.\nCost of Services\nCost of services (excluding depreciation, depletion, and amortization) increased $200.3 million, or 6%, to $3.3 billion for the year ended December 31, 2023 compared to $3.1 billion for the year ended December 31, 2022. The increase in expense was primarily related to increases in materials and parts consumption and higher labor costs related to reactivated fleets and higher fleet efficiency during the year ended December 31, 2023.\nGeneral and Administrative\nGeneral and administrative expenses increased $41.4 million, or 23%, to $221.4 million for the year ended December 31, 2023 compared to $180.0 million for the year ended December 31, 2022 primarily related to increases from labor cost inflation, various corporate costs related to increased levels of activity, and increased share-based compensation expense related to Company performance.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "2023",
+     "",
+     "2022",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "556,408",
+     "$",
+     "400,302",
+     "$",
+     "156,106"
+    ],
+    [
+     "Depreciation, depletion, and amortization",
+     "421,514",
+     "",
+     "323,028",
+     "",
+     "98,486",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "27,506",
+     "",
+     "22,715",
+     "",
+     "4,791",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "178,482",
+     "",
+     "(793)",
+     "",
+     "179,275",
+     ""
+    ],
+    [
+     "EBITDA",
+     "$",
+     "1,183,910",
+     "$",
+     "745,252",
+     "$",
+     "438,658"
+    ],
+    [
+     "Stock-based compensation expense",
+     "33,026",
+     "",
+     "23,108",
+     "",
+     "9,918",
+     ""
+    ],
+    [
+     "Fleet start-up and lay-down costs",
+     "2,082",
+     "",
+     "17,007",
+     "",
+     "(14,925)",
+     ""
+    ],
+    [
+     "Transaction, severance, and other costs",
+     "2,053",
+     "",
+     "5,837",
+     "",
+     "(3,784)",
+     ""
+    ],
+    [
+     "Gain on disposal of assets, net",
+     "(6,994)",
+     "",
+     "(4,603)",
+     "",
+     "(2,391)",
+     ""
+    ],
+    [
+     "Provision for credit losses",
+     "808",
+     "",
+     "\u2014",
+     "",
+     "808",
+     ""
+    ],
+    [
+     "(Gain) loss on remeasurement of liability under tax receivable agreements",
+     "(1,817)",
+     "",
+     "76,191",
+     "",
+     "(78,008)",
+     ""
+    ],
+    [
+     "Gain on investments",
+     "\u2014",
+     "",
+     "(2,525)",
+     "",
+     "2,525",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "1,213,068",
+     "$",
+     "860,267",
+     "$",
+     "352,801"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 974,
+    "end_line": 997
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "EBITDA and Adjusted EBITDA are not financial measures presented in accordance with GAAP. We believe that the presentation of these non-GAAP financial measures will provide useful information to investors in assessing our financial performance and results of operations. Net income is the GAAP measure most directly comparable to EBITDA and Adjusted EBITDA. Our non-GAAP financial measures should not be considered as alternatives to the most directly comparable GAAP financial measure. Each of these non-GAAP financial measures has important limitations as an analytical tool due to exclusion of some but not all items that affect the most directly comparable GAAP financial measures. You should not consider EBITDA or Adjusted EBITDA in isolation or as substitutes for an analysis of our results as reported under GAAP. Because EBITDA and Adjusted EBITDA may be defined differently by other companies in our industry, our definitions of these non-GAAP financial measures may not be comparable to similarly titled measures of other companies, thereby diminishing their utility.\nThe following tables present a reconciliation of EBITDA and Adjusted EBITDA to our net income, which is the most directly comparable GAAP financial measure for the periods presented:\nYear Ended December 31, 2023, Compared to Year Ended December 31, 2022: EBITDA and Adjusted EBITDA",
+   "prose_after": "EBITDA was $1.2 billion for the year ended December 31, 2023 compared to $745.3 million for the year ended December 31, 2022. Adjusted EBITDA was $1.2 billion for the year ended December 31, 2023 compared to $860.3 million for the year ended December 31, 2022. The increases in EBITDA and Adjusted EBITDA primarily resulted from increased activity levels in 2023 as described above under the captions Revenue, Cost of Services, and General and Administrative Expenses for the Year Ended December 31, 2023, Compared to Year Ended December 31, 2022.\nLiquidity and Capital Resources\nOverview\nOur primary sources of liquidity consist of cash flows from operations and borrowings under our ABL Facility. We expect to fund operations and organic growth with these sources. We monitor the availability and cost of capital resources such as equity and debt financings that could be leveraged for current or future financial obligations including those related to acquisitions, capital expenditures, working capital, and other liquidity requirements. We may incur additional indebtedness or issue equity in order to meet our capital expenditure activities and liquidity requirements, as well as to fund growth opportunities that we pursue, including via acquisition. Our primary uses of capital have been capital expenditures to support organic growth and funding ongoing operations, including maintenance and fleet upgrades, as well as the repurchases of, and dividends on, shares of our Class A Common Stock.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1006,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "2023",
+     "",
+     "2022",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "1,014,583",
+     "$",
+     "530,364",
+     "$",
+     "484,219"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(672,328)",
+     "",
+     "(450,656)",
+     "",
+     "(221,672)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(349,315)",
+     "",
+     "(55,770)",
+     "",
+     "(293,545)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1031,
+    "end_line": 1041
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Under our share repurchase program, the Company was initially authorized to repurchase up to $250.0 million of outstanding Class A Common Stock through and including July 31, 2024. On January 24, 2023, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $500.0 million. Furthermore, on January 23, 2024, the Board authorized and the Company announced an increase to the share repurchase program that increased the Company\u2019s cumulative repurchase authorization to $750.0 million and extended the authorization through July 31, 2026. Shares may be repurchased from time to time for cash in the open market transactions, through block trades, in privately negotiated transactions, through derivative transactions or by other means in accordance with applicable federal securities laws. The timing and the amount of repurchases will be determined by the Company at its discretion based on an evaluation of market conditions, capital allocation alternatives and other factors. The share repurchase program does not require us to purchase any dollar amount or number of shares of our Class A Common Stock and may be modified, suspended, extended or terminated at any time without prior notice. The Company expects to fund any repurchases by using cash on hand, borrowings under its revolving credit facility and expected free cash flow to be generated through the duration of the share repurchase program. During the year ended December 31, 2023, the Company repurchased and retired shares of Class A Common Stock for $203.1 million, under the share repurchase program.\nCash Flows\nThe following table summarizes our cash flows for the periods indicated:",
+   "prose_after": "Analysis of Cash Flow Changes Between the Years Ended December 31, 2023 and December 31, 2022\nOperating Activities. Net cash provided by operating activities was $1.0 billion for the year ended December 31, 2023, compared to $530.4 million for the year ended December 31, 2022. The $484.2 million increase in cash from operating activities is primarily attributable to a $598.7 million increase in revenues, offset by a $280.7 million increase in cash operating expenses, interest expense, net, and income tax, and a $111.7 million decrease in cash from changes in working capital for the year ended December 31, 2023, compared to a $277.9 million decrease in cash from changes in working capital for the year ended December 31, 2022.\nInvesting Activities. Net cash used in investing activities was $672.3 million for the year ended December 31, 2023, compared to $450.7 million for the year ended December 31, 2022. Cash used in investing activities was higher during the year ended December 31, 2023, compared to the year ended December 31, 2022 as the Company continued to invest in equipment, including the new digiTechnologiesSM suite, to support increased customer demand in next generation equipment and technology. Additionally, during the year ended December 31, 2023, the Company acquired Siren for $75.7 million in cash, net of cash received and normal post-closing matters, refer to Note 3\u2014Acquisitions to the consolidated financial statements in Part II, Item 8 of this Annual Report for additional information related to the Siren Acquisition.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1050,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Master Reorganization Agreement, dated as of January 11, 2018, by and among Liberty Oilfield Services Inc., Liberty Oilfield Services Holdings LLC, Liberty Oilfield Services New HoldCo LLC, and the other parties named therein (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "Master Transaction Agreement, dated as of August 31, 2020, by and among Schlumberger Technology Corporation, Schlumberger Canada Limited, Liberty Oilfield Services Holdings LLC, Liberty Canada Operations Inc. and Liberty Oilfield Services Inc. (10)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of Liberty Oilfield Services Inc. (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Amended and Restated Certificate of Incorporation (13)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Second Amended and Restated Bylaws of Liberty Energy Inc., as amended effective January 24, 2023 (17)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Description of the Registrant\u2019s Securities Registered pursuant to Section 12 of the Securities Exchange Act of 1934. *"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Second Amended and Restated Limited Liability Company Operating Agreement of Liberty Oilfield Services New HoldCo LLC (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Joinder Agreement to Second Amended and Restated Limited Liability Company Operating Agreement of Liberty Oilfield Services New HoldCo LLC (12)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Tax Receivable Agreement, dated January 17, 2018, by and among Liberty Oilfield Services Inc., R/C Energy IV Direct Partnership, L.P., and R/C Energy IV Direct Partnership, L.P., as agent (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Tax Receivable Agreement, dated January 17, 2018, by and among Liberty Oilfield Services Inc., and the other parties named therein (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Agent Designation Amendment to the Tax Receivable Agreement, dated as of February 22, 2022, by and among Liberty Oilfield Services Inc. and R/C Energy IV Direct Partnership, L.P. (15)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Liberty Oilfield Services Inc. Long Term Incentive Plan (2)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Credit Agreement, dated September 19, 2017, by and among Wells Fargo Bank, National Association, as Administrative Agent, Wells Fargo Bank, National Association, JPMorgan Chase Bank, N.A. and Citibank, N.A., as Joint Lead Arrangers, Wells Fargo Bank, National Association, as Book Runner, JPMorgan Chase Bank, N.A. and Citibank, N.A., as Syndication Agents, the lender parties thereto, Liberty Oilfield Services Holdings LLC, as Parent and Liberty Oilfield Services LLC and LOS Acquisition Co I LLC, each as a Borrower (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Amendment and Parent Joinder to Credit Agreement, dated January 17, 2018, by and among Liberty Oilfield Services Holdings LLC, Liberty Oilfield Services LLC, LOS Acquisition Co I LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New Holdco LLC, Wells Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "Second Amendment and Parent Joinder to Credit Agreement, dated March 21, 2018, by and among Liberty Oilfield Services LLC, LOS Acquisition Co I LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, Wells Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "Third Amendment to Credit Agreement, dated May 29, 2020, by and among Liberty Oilfield Services LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, and Wells Fargo Bank, National Association as Administrative Agent, and the lenders signatory thereto (8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Fourth Amendment to Credit Agreement, dated August 12, 2020, by and among Liberty Oilfield Services LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, Wells Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto (9)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "Consent and Fifth Amendment to Credit Agreement, dated December 29, 2020, by and among Liberty Oilfield Services LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, LOS Cibolo RE Investments, LLC, LOS Odessa RE Investments, LLC, ST9 Gas and Oil LLC, Wells Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto (11)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "PART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) Financial Statements and Financial Statement Schedules\nRefer to Index to Financial Statements on page 53.\nAll schedules are omitted as information required is inapplicable or the information is presented in the consolidated financial statements and the related notes.\n(b) Exhibits\nThe documents listed in the Index to Exhibits are filed, furnished or incorporated by reference as part of this Annual Report, and such Index to Exhibits are incorporated herein by reference.\nItem 16. Form 10-K Summary\nNone.\nINDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1212,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "10.13",
+     "",
+     "Sixth Amendment to Credit Agreement and Second Amendment to Guaranty and Security Agreement, dated October 22, 2021, by and among Liberty Oilfield Services LLC, Liberty Oilfield Services Inc., Liberty Oilfield Services New HoldCo LLC, R/C IV Non-U.S. LOS Corp, LOS Solar Acquisition LLC, Freedom Proppant LLC, LOS Kermit LLC, LOS Cibolo RE Investments, LLC, LOS Odessa RE Investments, LLC, ST9 Gas and Oil LLC, Wells Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto (12)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "",
+     "Increase Joinder and Seventh Amendment to Credit Agreement, dated July 18, 2022, by and among Liberty Oilfield Services LLC, Liberty Energy Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, Freedom Proppant LLC, LOS Kermit LLC, LOS Leasing Company LLC, LOS Cibolo RE Investments, LLC, LOS Odessa RE Investments, LLC, Proppant Express Solutions, LLC, ST9 Gas and Oil LLC, Well Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto. (14)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "",
+     "Eighth Amendment to Credit Agreement, dated January 23, 2023, by and among Liberty Oilfield Services LLC, Liberty Energy Inc., Liberty Oilfield Services New Holdco LLC, R/C IV Non-U.S. LOS Corp, Freedom Proppant LLC, LOS Kermit LLC, LOS Leasing Company LLC, LOS Cibolo RE Investments, LLC, LOS Odessa RE Investments, LLC, Proppant Express Solutions, LLC, ST9 Gas and Oil LLC, Well Fargo Bank, National Association, as Administrative Agent, and the lenders signatory thereto. (17)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "",
+     "Joinder Agreement, dated December 31, 2021, by and among LOS Leasing Company LLC and Wells Fargo Bank, National Association, as Administrative Agent (16)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "",
+     "Liberty Oilfield Services 401(k) Savings Plan (11)\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "",
+     "Form of Restricted Stock Unit Grant Notice and Restricted Stock Unit Award Agreement under the Long Term Incentive Plan (4)\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "",
+     "Form of Restricted Stock Unit Grant Notice under the Long Term Incentive Plan (11)\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "",
+     "Form of Performance Restricted Stock Unit Grant Notice and Performance Restricted Stock Unit Agreement under the Liberty Oilfield Services Inc. Long Term Incentive Plan (5)\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "",
+     "Form of Change in Control Agreement (6)\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "",
+     "Form of Indemnification Agreement between the Company and each of its Directors and Executive Officers (8)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "19.1",
+     "",
+     "Insider Trading Policy *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "",
+     "List of subsidiaries of Liberty Energy Inc. *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "",
+     "Consent of Deloitte & Touche LLP *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "95",
+     "",
+     "Mine Safety Disclosure *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "97",
+     "",
+     "Compensation Recovery Policy *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document *"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1)",
+     "Incorporated by reference to the exhibits to the registrant\u2019s Registration Statement on Form S-1, as amended (SEC File 333-216050).",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1271,
+    "end_line": 1335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(2) Incorporated by reference to the exhibits to the registrant\u2019s Current Report on Form 8-K, filed on January 18, 2018.\n(3) Incorporated by reference to the exhibits to the registrant\u2019s Annual Report on Form 10-K, filed on March 23, 2018.\n(4) Incorporated by reference to the exhibits to the registrant\u2019s Quarterly Report on Form 10-Q, filed on May 10, 2018.\n(5) Incorporated by reference to the exhibits to the registrant\u2019s Quarterly Report on Form 10-Q, filed on May 3, 2019.\n(6) Incorporated by reference to the exhibits to the registrant\u2019s Current Report on Form 8-K, filed on August 30, 2019.\n(7) Incorporated by reference to the exhibits to the registrant\u2019s Annual Report on Form 10-K, filed on February 27, 2020.\n(8) Incorporated by reference to the exhibits to the registrant\u2019s Current Report on Form 8-K, filed on June 3, 2020.\n(9) Incorporated by reference to the exhibits to the registrant\u2019s Quarterly Report on Form 10-Q, filed on October 30, 2020.\n(10) Incorporated by reference to the exhibits to the registrant\u2019s Current Report on Form 8-K, filed on September 1, 2020.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "LIBERTY ENERGY INC.\n\n/s/ Christopher A. Wright"
+    ],
+    [
+     "Date:",
+     "February 8, 2024",
+     "By:",
+     "Christopher A. Wright Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "LIBERTY ENERGY INC.\n\n/s/ Christopher A. Wright"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1360,
+    "end_line": 1367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "(12) Incorporated by reference to the exhibits to the registrant\u2019s Quarterly Report on Form 10-Q, filed on October 28, 2021.\n(13) Incorporated by reference to the registrant\u2019s Current Report on Form 8-K, filed on April 21, 2022.\n(14) Incorporated by reference to the registrant\u2019s Current Report on Form 8-K, filed on July 22, 2022.\n(15) Incorporated by reference to the exhibits to the registrant\u2019s Quarterly Report on Form 10-Q, filed on April 25, 2022.\n(16) Incorporated by reference to the exhibits to the registrant\u2019s Annual Report on Form 10-K, filed on February 22, 2022.\n(17) Incorporated by reference to the exhibits to the registrant\u2019s Current Report on Form 8-K, filed on January 26, 2023.\n* Filed herewith.\n** Furnished herewith. \u2020 Denotes a management contract or compensatory plan or arrangement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1417,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Christopher A. Wright",
+     "Chief Executive Officer and Director (Principal Executive Officer)",
+     "February 8, 2024"
+    ],
+    [
+     "Christopher A. Wright",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Stock",
+     "Chief Financial Officer (Principal Financial Officer)",
+     "February 8, 2024"
+    ],
+    [
+     "Michael Stock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ryan T. Gosney",
+     "Chief Accounting Officer",
+     "February 8, 2024"
+    ],
+    [
+     "Ryan T. Gosney",
+     "(Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Simon Ayat",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Simon Ayat",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ken Babcock",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Ken Babcock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Peter A. Dea",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Peter A. Dea",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William F. Kimble",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "William F. Kimble",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ James R. McDonald",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "James R. McDonald",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Gale A. Norton",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Gale A. Norton",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Audrey Robertson",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Audrey Robertson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Cary D. Steinbeck",
+     "Director",
+     "February 8, 2024"
+    ],
+    [
+     "Cary D. Steinbeck",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1370,
+    "end_line": 1416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Index to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1417,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Liberty Energy Inc.",
+     ""
+    ],
+    [
+     "Management\u2019s Report on Internal Control Over Financial Reporting",
+     "F-1"
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firm (PCAOB ID No. 34)",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2023, 2022, and 2021",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Income (Loss) for the Years Ended December 31, 2023, 2022, and 2021",
+     "F-7"
+    ],
+    [
+     "Consolidated Statements of Changes in Equity for the Years Ended December 31, 2023 and 2022",
+     "F-8"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2023, 2022, and 2021",
+     "F-9"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-11"
+    ]
+   ],
+   "caption_stack": [
+    "Liberty Energy Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1419,
+    "end_line": 1430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Index to Financial Statements",
+   "prose_after": "MANAGEMENT\u2019S REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING\nThe management of Liberty Energy Inc. is responsible for establishing and maintaining adequate internal control over financial reporting as defined in Rules 13a-15(f) and 15d-15(f) of the Securities Exchange Act.\nInternal control over financial reporting, no matter how well designed, has inherent limitations. Therefore, a system of internal control over financial reporting can provide only reasonable assurance and may not prevent or detect misstatements. Further, because of changes in conditions, effectiveness of internal controls over financial reporting may vary over time.\nUnder the supervision of, and with the participation of our management, including our principal executive officer and principal financial officer, we conducted an evaluation of the effectiveness of our internal control over financial reporting as of December 31, 2023 based on the framework and criteria established in Internal Control-Integrated Framework (2013), issued by the Committee of Sponsoring Organizations of the Treadway Commission.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1417,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1431,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "36,784",
+     "$",
+     "43,676"
+    ],
+    [
+     "Accounts receivable, net of allowances for credit losses of $939 and $884, respectively",
+     "381,185",
+     "",
+     "410,308",
+     ""
+    ],
+    [
+     "Accounts receivable\u2014related party",
+     "17,345",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unbilled revenue (including amounts from related parties of $13,379 and $13,854, respectively)",
+     "188,940",
+     "",
+     "175,704",
+     ""
+    ],
+    [
+     "Inventories",
+     "205,865",
+     "",
+     "214,454",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "124,135",
+     "",
+     "112,531",
+     ""
+    ],
+    [
+     "Total current assets",
+     "954,254",
+     "",
+     "956,673",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "1,645,368",
+     "",
+     "1,362,364",
+     ""
+    ],
+    [
+     "Finance lease right-of-use assets",
+     "182,319",
+     "",
+     "41,771",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "92,640",
+     "",
+     "97,232",
+     ""
+    ],
+    [
+     "Other assets (including amounts from related parties of $14,785 and $11,799, respectively)",
+     "158,976",
+     "",
+     "105,300",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "\u2014",
+     "",
+     "12,592",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,033,557",
+     "$",
+     "2,575,932"
+    ],
+    [
+     "Liabilities and Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable (including payables to related parties of $0 and $2,629, respectively)",
+     "$",
+     "293,733",
+     "$",
+     "326,818"
+    ],
+    [
+     "Accrued liabilities (including amounts due to related parties of $0 and $730, respectively)",
+     "261,066",
+     "",
+     "280,678",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "12,060",
+     "",
+     "2,294",
+     ""
+    ],
+    [
+     "Current portion of payable pursuant to tax receivable agreements",
+     "5,170",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Current portion of long-term debt, net of discount of $0 and $730, respectively",
+     "\u2014",
+     "",
+     "1,020",
+     ""
+    ],
+    [
+     "Current portion of finance lease liabilities",
+     "39,867",
+     "",
+     "11,393",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "27,528",
+     "",
+     "27,294",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "639,424",
+     "",
+     "649,497",
+     ""
+    ],
+    [
+     "Long-term debt, net of discount of $0 and $540, respectively, less current portion",
+     "140,000",
+     "",
+     "217,426",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "102,340",
+     "",
+     "1,044",
+     ""
+    ],
+    [
+     "Payable pursuant to tax receivable agreements",
+     "112,471",
+     "",
+     "118,874",
+     ""
+    ],
+    [
+     "Noncurrent portion of finance lease liabilities",
+     "133,654",
+     "",
+     "22,490",
+     ""
+    ],
+    [
+     "Noncurrent portion of operating lease liabilities",
+     "64,260",
+     "",
+     "69,295",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,192,149",
+     "",
+     "1,078,626",
+     ""
+    ],
+    [
+     "Commitments & contingencies (Note 15)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.01 par value, 10,000 shares authorized and none issued and outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common Stock:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A, $0.01 par value, 400,000,000 shares authorized and 166,610,199 issued and outstanding as of December 31, 2023 and 178,753,125 issued and outstanding as of December 31, 2022",
+     "1,666",
+     "",
+     "1,788",
+     ""
+    ],
+    [
+     "Class B, $0.01 par value, 400,000,000 shares authorized and none issued and outstanding as of December 31, 2023 and 250,222 issued and outstanding as of December 31, 2022",
+     "\u2014",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "1,093,498",
+     "",
+     "1,266,097",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "752,328",
+     "",
+     "234,525",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(6,084)",
+     "",
+     "(7,396)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "1,841,408",
+     "",
+     "1,495,017",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "\u2014",
+     "",
+     "2,289",
+     ""
+    ],
+    [
+     "Total equity",
+     "1,841,408",
+     "",
+     "1,497,306",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "3,033,557",
+     "$",
+     "2,575,932"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1534,
+    "end_line": 1596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "A company\u2019s internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles. A company\u2019s internal control over financial reporting includes those policies and procedures that (1) pertain to the maintenance of records that, in reasonable detail, accurately and fairly reflect the transactions and dispositions of the assets of the company; (2) provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with generally accepted accounting principles, and that receipts and expenditures of the company are being made only in accordance with authorizations of management and directors of the company; and (3) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company\u2019s assets that could have a material effect on the financial statements.\nBecause of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.\n/s/ DELOITTE & TOUCHE LLP\nDenver, Colorado\nFebruary 8, 2024\nConsolidated Balance Sheets\nAs of December 31, 2023 and 2022\n(Dollars in thousands, except share data)",
+   "prose_after": "Consolidated Statements of Operations\nFor the Years Ended December 31, 2023, 2022, and 2021\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "4,533,048",
+     "$",
+     "4,000,780",
+     "$",
+     "2,447,140"
+    ],
+    [
+     "Revenue\u2014related parties",
+     "214,880",
+     "",
+     "148,448",
+     "",
+     "23,642",
+     ""
+    ],
+    [
+     "Total revenue",
+     "4,747,928",
+     "",
+     "4,149,228",
+     "",
+     "2,470,782",
+     ""
+    ],
+    [
+     "Operating costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services (exclusive of depreciation, depletion, and amortization shown separately below)",
+     "3,349,370",
+     "",
+     "3,149,036",
+     "",
+     "2,249,926",
+     ""
+    ],
+    [
+     "General and administrative",
+     "221,406",
+     "",
+     "180,040",
+     "",
+     "123,406",
+     ""
+    ],
+    [
+     "Transaction, severance, and other costs",
+     "2,053",
+     "",
+     "5,837",
+     "",
+     "15,138",
+     ""
+    ],
+    [
+     "Depreciation, depletion, and amortization",
+     "421,514",
+     "",
+     "323,028",
+     "",
+     "262,757",
+     ""
+    ],
+    [
+     "(Gain) loss on disposal of assets, net",
+     "(6,994)",
+     "",
+     "(4,603)",
+     "",
+     "779",
+     ""
+    ],
+    [
+     "Total operating costs and expenses",
+     "3,987,349",
+     "",
+     "3,653,338",
+     "",
+     "2,652,006",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "760,579",
+     "",
+     "495,890",
+     "",
+     "(181,224)",
+     ""
+    ],
+    [
+     "Other expense (income):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Gain) loss on remeasurement of liability under tax receivable agreements",
+     "(1,817)",
+     "",
+     "76,191",
+     "",
+     "(19,039)",
+     ""
+    ],
+    [
+     "Gain on investments",
+     "\u2014",
+     "",
+     "(2,525)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest income\u2014related party",
+     "(1,987)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "29,493",
+     "",
+     "22,715",
+     "",
+     "15,603",
+     ""
+    ],
+    [
+     "Total other expense (income), net",
+     "25,689",
+     "",
+     "96,381",
+     "",
+     "(3,436)",
+     ""
+    ],
+    [
+     "Net income (loss) before income taxes",
+     "734,890",
+     "",
+     "399,509",
+     "",
+     "(177,788)",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "178,482",
+     "",
+     "(793)",
+     "",
+     "9,216",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "556,408",
+     "",
+     "400,302",
+     "",
+     "(187,004)",
+     ""
+    ],
+    [
+     "Less: Net income (loss) attributable to non-controlling interests",
+     "91",
+     "",
+     "700",
+     "",
+     "(7,760)",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "556,317",
+     "$",
+     "399,602",
+     "$",
+     "(179,244)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to Liberty Energy Inc. stockholders per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "3.24",
+     "$",
+     "2.17",
+     "$",
+     "(1.03)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "3.15",
+     "$",
+     "2.11",
+     "$",
+     "(1.03)"
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "171,845",
+     "",
+     "184,334",
+     "",
+     "174,019",
+     ""
+    ],
+    [
+     "Diluted",
+     "176,360",
+     "",
+     "189,349",
+     "",
+     "174,019",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1604,
+    "end_line": 1646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations\nFor the Years Ended December 31, 2023, 2022, and 2021\n(In thousands, except per share data)",
+   "prose_after": "Consolidated Statements of Comprehensive Income (Loss)\nFor the Years Ended December 31, 2023, 2022, and 2021\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "556,408",
+     "$",
+     "400,302",
+     "$",
+     "(187,004)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "1,313",
+     "",
+     "(7,097)",
+     "",
+     "(102)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "$",
+     "557,721",
+     "$",
+     "393,205",
+     "$",
+     "(187,106)"
+    ],
+    [
+     "Comprehensive income (loss) attributable to non-controlling interest",
+     "92",
+     "",
+     "693",
+     "",
+     "(7,556)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to Liberty Energy Inc.",
+     "$",
+     "557,629",
+     "$",
+     "392,512",
+     "$",
+     "(179,550)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1655,
+    "end_line": 1668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Comprehensive Income (Loss)\nFor the Years Ended December 31, 2023, 2022, and 2021\n(In thousands)",
+   "prose_after": "Consolidated Statements of Changes in Equity\nFor the Years Ended December 31, 2023 and 2022\n(In thousands, except per share and per unit data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": null,
+     "page_number": 6
+    },
+    "after": {
+     "line": 1669,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares of Class A Common Stock",
+     "Shares of Class B Common Stock",
+     "Class A Common Stock, Par Value",
+     "",
+     "Class B Common Stock, Par Value",
+     "",
+     "Additional Paid in Capital",
+     "",
+     "Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Total Stockholders\u2019 equity",
+     "",
+     "Non-controlling Interest",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "Balance\u2014December 31, 2022",
+     "178,753",
+     "250",
+     "$",
+     "1,788",
+     "$",
+     "3",
+     "$",
+     "1,266,097",
+     "$",
+     "234,525",
+     "$",
+     "(7,396)",
+     "$",
+     "1,495,017",
+     "$",
+     "2,289",
+     "$",
+     "1,497,306"
+    ],
+    [
+     "Exchange of Class B Common Stock for Class A Common Stock",
+     "250",
+     "(250)",
+     "3",
+     "",
+     "(3)",
+     "",
+     "2,360",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,360",
+     "",
+     "(2,360)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Offering Costs",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(223)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(223)",
+     "",
+     "\u2014",
+     "",
+     "(223)",
+     ""
+    ],
+    [
+     "Deferred tax and tax receivable agreements impact of Liberty LLC merger into the Company",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6,681",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6,681",
+     "",
+     "\u2014",
+     "",
+     "6,681",
+     ""
+    ],
+    [
+     "$0.22/share of Class A Common Stock dividend",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(38,514)",
+     "",
+     "\u2014",
+     "",
+     "(38,514)",
+     "",
+     "\u2014",
+     "",
+     "(38,514)",
+     ""
+    ],
+    [
+     "Share repurchases",
+     "(13,706)",
+     "\u2014",
+     "(137)",
+     "",
+     "\u2014",
+     "",
+     "(202,940)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(203,077)",
+     "",
+     "(23)",
+     "",
+     "(203,100)",
+     ""
+    ],
+    [
+     "Excise tax on share repurchases",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,855)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,855)",
+     "",
+     "\u2014",
+     "",
+     "(1,855)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "33,023",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "33,023",
+     "",
+     "3",
+     "",
+     "33,026",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "1,313",
+     "\u2014",
+     "12",
+     "",
+     "\u2014",
+     "",
+     "(11)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1",
+     "",
+     "(1)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax withheld on vesting of restricted stock units",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,634)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,634)",
+     "",
+     "\u2014",
+     "",
+     "(9,634)",
+     ""
+    ],
+    [
+     "Currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,312",
+     "",
+     "1,312",
+     "",
+     "1",
+     "",
+     "1,313",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "556,317",
+     "",
+     "\u2014",
+     "",
+     "556,317",
+     "",
+     "91",
+     "",
+     "556,408",
+     ""
+    ],
+    [
+     "Balance\u2014December 31, 2023",
+     "166,610",
+     "\u2014",
+     "$",
+     "1,666",
+     "$",
+     "\u2014",
+     "$",
+     "1,093,498",
+     "$",
+     "752,328",
+     "$",
+     "(6,084)",
+     "$",
+     "1,841,408",
+     "$",
+     "\u2014",
+     "$",
+     "1,841,408"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1676,
+    "end_line": 1702
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Changes in Equity\nFor the Years Ended December 31, 2023 and 2022\n(In thousands, except per share and per unit data)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1669,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": null,
+     "page_number": 7
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": null,
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares of Class A Common Stock",
+     "Shares of Class B Common Stock",
+     "Class A Common Stock, Par Value",
+     "",
+     "Class B Common Stock, Par Value",
+     "",
+     "Additional Paid in Capital",
+     "",
+     "(Accumulated Deficit) Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Total Stockholders\u2019 equity",
+     "",
+     "Non-controlling Interest",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "Balance - December 31, 2021",
+     "183,385",
+     "2,632",
+     "$",
+     "1,834",
+     "$",
+     "26",
+     "$",
+     "1,367,642",
+     "$",
+     "(155,954)",
+     "$",
+     "(306)",
+     "$",
+     "1,213,242",
+     "$",
+     "17,197",
+     "$",
+     "1,230,439"
+    ],
+    [
+     "Exchange of Class B Common Stock for Class A Common Stock",
+     "2,382",
+     "(2,382)",
+     "23",
+     "",
+     "(23)",
+     "",
+     "16,495",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,495",
+     "",
+     "(16,495)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Offering Costs",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(79)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(79)",
+     "",
+     "\u2014",
+     "",
+     "(79)",
+     ""
+    ],
+    [
+     "Effect of exchange on deferred tax asset, net of liability under tax receivable agreements",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,757",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,757",
+     "",
+     "\u2014",
+     "",
+     "3,757",
+     ""
+    ],
+    [
+     "Deferred tax impact of ownership changes from issuance of Class A Common Stock",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,879)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(9,879)",
+     "",
+     "\u2014",
+     "",
+     "(9,879)",
+     ""
+    ],
+    [
+     "$0.05/share of Class A Common Stock dividend",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,123)",
+     "",
+     "\u2014",
+     "",
+     "(9,123)",
+     "",
+     "\u2014",
+     "",
+     "(9,123)",
+     ""
+    ],
+    [
+     "$0.05/unit distributions to non-controlling unitholders",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(13)",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Other distributions and advance payments to non-controlling interest unitholders",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "920",
+     "",
+     "920",
+     ""
+    ],
+    [
+     "Share repurchases",
+     "(8,186)",
+     "\u2014",
+     "(81)",
+     "",
+     "\u2014",
+     "",
+     "(125,134)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(125,215)",
+     "",
+     "(98)",
+     "",
+     "(125,313)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "23,003",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "23,003",
+     "",
+     "105",
+     "",
+     "23,108",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "1,172",
+     "\u2014",
+     "12",
+     "",
+     "\u2014",
+     "",
+     "8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20",
+     "",
+     "(20)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax withheld on vesting of restricted stock units",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(9,716)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(9,716)",
+     "",
+     "",
+     "",
+     "(9,716)",
+     ""
+    ],
+    [
+     "Currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,090)",
+     "",
+     "(7,090)",
+     "",
+     "(7)",
+     "",
+     "(7,097)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "399,602",
+     "",
+     "\u2014",
+     "",
+     "399,602",
+     "",
+     "700",
+     "",
+     "400,302",
+     ""
+    ],
+    [
+     "Balance - December 31, 2022",
+     "178,753",
+     "250",
+     "$",
+     "1,788",
+     "$",
+     "3",
+     "$",
+     "1,266,097",
+     "$",
+     "234,525",
+     "$",
+     "(7,396)",
+     "$",
+     "1,495,017",
+     "$",
+     "2,289",
+     "$",
+     "1,497,306"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1703,
+    "end_line": 1737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Consolidated Statements of Cash Flows\nFor the Years Ended December 31, 2023, 2022, and 2021\n(Dollars in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1669,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": null,
+     "page_number": 7
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": null,
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "556,408",
+     "$",
+     "400,302",
+     "$",
+     "(187,004)"
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, depletion, and amortization",
+     "421,514",
+     "",
+     "323,028",
+     "",
+     "262,757",
+     ""
+    ],
+    [
+     "(Gain) loss on disposal of assets, net",
+     "(6,994)",
+     "",
+     "(4,603)",
+     "",
+     "779",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "33,026",
+     "",
+     "23,108",
+     "",
+     "19,946",
+     ""
+    ],
+    [
+     "Deferred income tax expense (benefit)",
+     "120,312",
+     "",
+     "(12,472)",
+     "",
+     "5,079",
+     ""
+    ],
+    [
+     "(Gain) loss on remeasurement of liability under tax receivable agreements",
+     "(1,817)",
+     "",
+     "76,191",
+     "",
+     "(19,039)",
+     ""
+    ],
+    [
+     "Other non-cash items, net",
+     "7,111",
+     "",
+     "5,461",
+     "",
+     "6,605",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable and unbilled revenue",
+     "19,612",
+     "",
+     "(166,605)",
+     "",
+     "(90,142)",
+     ""
+    ],
+    [
+     "Accounts receivable and unbilled revenue\u2014related party",
+     "(19,855)",
+     "",
+     "(25,522)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Inventories",
+     "(114)",
+     "",
+     "(84,989)",
+     "",
+     "(24,612)",
+     ""
+    ],
+    [
+     "Other assets",
+     "(66,182)",
+     "",
+     "(56,161)",
+     "",
+     "(30,955)",
+     ""
+    ],
+    [
+     "Prepaid and other current assets\u2014related party",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,708",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "(45,133)",
+     "",
+     "57,203",
+     "",
+     "164,036",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities\u2014related party",
+     "\u2014",
+     "",
+     "(1,864)",
+     "",
+     "3,874",
+     ""
+    ],
+    [
+     "Initial payment of operating lease liability",
+     "(3,305)",
+     "",
+     "(2,713)",
+     "",
+     "(565)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "1,014,583",
+     "",
+     "530,364",
+     "",
+     "135,467",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment and construction in-progress",
+     "(603,298)",
+     "",
+     "(451,905)",
+     "",
+     "(198,794)",
+     ""
+    ],
+    [
+     "Investment in sand logistics",
+     "\u2014",
+     "",
+     "(7,415)",
+     "",
+     "(13,106)",
+     ""
+    ],
+    [
+     "Investment in Tamboran Resources Ltd. and Oklo Inc. (2023) and Fervo Energy Company and Natron Energy, Inc. (2022)",
+     "(20,283)",
+     "",
+     "(15,000)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Acquisition of Siren Energy, net of cash received",
+     "(75,656)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sales of assets",
+     "26,909",
+     "",
+     "23,664",
+     "",
+     "25,406",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(672,328)",
+     "",
+     "(450,656)",
+     "",
+     "(186,494)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from borrowings on line-of-credit",
+     "1,153,000",
+     "",
+     "713,000",
+     "",
+     "274,000",
+     ""
+    ],
+    [
+     "Repayments of borrowings on line-of-credit",
+     "(1,128,000)",
+     "",
+     "(616,000)",
+     "",
+     "(256,000)",
+     ""
+    ],
+    [
+     "Repayments of borrowings on term loan",
+     "(104,716)",
+     "",
+     "(1,750)",
+     "",
+     "(1,750)",
+     ""
+    ],
+    [
+     "Payments on finance lease obligations",
+     "(17,392)",
+     "",
+     "(6,947)",
+     "",
+     "(7,363)",
+     ""
+    ],
+    [
+     "Class A Common Stock dividends and dividend equivalents upon restricted stock vesting",
+     "(37,684)",
+     "",
+     "(9,164)",
+     "",
+     "(168)",
+     ""
+    ],
+    [
+     "Per unit distributions to non-controlling interest unitholders",
+     "\u2014",
+     "",
+     "(13)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other distributions and advance payments to non-controlling interest unitholders",
+     "\u2014",
+     "",
+     "920",
+     "",
+     "1,372",
+     ""
+    ],
+    [
+     "Share repurchases",
+     "(203,100)",
+     "",
+     "(125,313)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax withholding on restricted stock units",
+     "(9,634)",
+     "",
+     "(9,716)",
+     "",
+     "(3,585)",
+     ""
+    ],
+    [
+     "Payment of equity issuance costs",
+     "(223)",
+     "",
+     "(79)",
+     "",
+     "(1,330)",
+     ""
+    ],
+    [
+     "Payments of debt issuance costs",
+     "(1,566)",
+     "",
+     "(708)",
+     "",
+     "(3,120)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(349,315)",
+     "",
+     "(55,770)",
+     "",
+     "2,056",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "(7,060)",
+     "",
+     "23,938",
+     "",
+     "(48,971)",
+     ""
+    ],
+    [
+     "Translation effect on cash",
+     "168",
+     "",
+     "(260)",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014beginning of period",
+     "43,676",
+     "",
+     "19,998",
+     "",
+     "68,978",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014end of period",
+     "$",
+     "36,784",
+     "$",
+     "43,676",
+     "$",
+     "19,998"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1745,
+    "end_line": 1800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows\nFor the Years Ended December 31, 2023, 2022, and 2021\n(Dollars in thousands)",
+   "prose_after": "Consolidated Statements of Cash Flows (cont.)\nFor the Years Ended December 31, 2023, 2022, and 2021\n(Dollars in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": null,
+     "page_number": 8
+    },
+    "after": {
+     "line": 1800,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash paid (received) for income taxes",
+     "$",
+     "66,685",
+     "$",
+     "10,744",
+     "$",
+     "(9,481)"
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "26,651",
+     "$",
+     "20,310",
+     "$",
+     "13,268"
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures included in accounts payable and accrued liabilities",
+     "$",
+     "99,165",
+     "$",
+     "107,514",
+     "$",
+     "57,475"
+    ],
+    [
+     "Capital expenditures reclassified from prepaid and other current assets",
+     "$",
+     "50,313",
+     "$",
+     "14,922",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Equity issued in exchange for assets and liabilities",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "91,089"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1807,
+    "end_line": 1821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows (cont.)\nFor the Years Ended December 31, 2023, 2022, and 2021\n(Dollars in thousands)",
+   "prose_after": "Note 1\u2014Organization and Basis of Presentation\nOrganization\nLiberty Energy Inc., formerly known as Liberty Oilfield Services Inc. (the \u201cCompany\u201d), was incorporated as a Delaware corporation on December 21, 2016, to become a holding corporation for Liberty Oilfield Services New HoldCo LLC (\u201cLiberty LLC\u201d) and its subsidiaries upon completion of a corporate reorganization (the \u201cCorporate Reorganization\u201d) and planned initial public offering of the Company (\u201cIPO\u201d). On April 19, 2022, the stockholders of the Company approved an amendment to the Company\u2019s Amended and Restated Certificate of Incorporation for the purpose of changing the Company\u2019s name from \u201cLiberty Oilfield Services Inc.\u201d to \u201cLiberty Energy Inc.\u201d and thereafter, the Company filed with the Secretary of State of the State of Delaware a Certificate of Amendment to the Company\u2019s Amended and Restated Certificate of Incorporation to reflect the new name, effective April 25, 2022.\nEffective January 31, 2023, Liberty LLC was merged into the Company, with the Company surviving the merger (the \u201cMerger\u201d). In connection with the Merger, all outstanding shares of the Company\u2019s Class B Common Stock, par value $0.01 per share (the \u201cClass B Common Stock\u201d), were redeemed and exchanged for an equal number of shares of the Company\u2019s Class A Common Stock, par value $0.01 per share (the \u201cClass A Common Stock\u201d). The Company did not make any distributions or receive any proceeds in connection with this exchange. The Merger did not have a significant impact on the Company\u2019s consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1800,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1822,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": null,
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Total Purchase Consideration:",
+     "",
+     ""
+    ],
+    [
+     "Consideration",
+     "$",
+     "103,023"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "53"
+    ],
+    [
+     "Accounts receivable and unbilled revenue",
+     "4,089",
+     ""
+    ],
+    [
+     "Inventory",
+     "8",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "1,722",
+     ""
+    ],
+    [
+     "Property and equipment (1)",
+     "94,137",
+     ""
+    ],
+    [
+     "Intangible assets (included in other assets in the accompanying consolidated balance sheet as of December 31, 2021) (2)",
+     "7,100",
+     ""
+    ],
+    [
+     "Total identifiable assets acquired",
+     "107,109",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "2,152",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "1,934",
+     ""
+    ],
+    [
+     "Total liabilities assumed",
+     "4,086",
+     ""
+    ],
+    [
+     "Total purchase consideration",
+     "$",
+     "103,023"
+    ]
+   ],
+   "caption_stack": [
+    "($ in thousands)",
+    "Total Purchase Consideration:"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 1986,
+    "end_line": 2007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014Acquisitions"
+    }
+   },
+   "prose_before": "The Company accounted for the PropX Acquisition using the acquisition method of accounting. The aggregate purchase price noted above was allocated to the major categories of assets acquired and liabilities assumed based upon their estimated fair value at the date of the acquisition. The estimated fair values of certain assets and liabilities require significant judgments and estimates. The majority of the measurements of assets acquired and liabilities assumed, are based on inputs that are not observable in the market and thus represent Level 3 inputs.\nIn accordance with ASC Topic 805, an acquirer is allowed a period, referred to as the measurement period, in which to complete its accounting for the transaction. Such measurement period ends at the earliest date that the acquirer a) receives the information necessary or b) determines that it cannot obtain further information, and such period may not exceed one year. As the PropX Acquisition closed on October 26, 2021 the Company completed the purchase price allocation, particularly as it relates to current assets and current liabilities, during the year ended December 31, 2022.\nThe following table summarizes the fair value of the consideration transferred in the PropX Acquisition and the allocation of the purchase price to the fair value of the assets acquired and liabilities assumed as of October 26, 2021, the date of the closing of the PropX Acquisition:",
+   "prose_after": "(1) Useful lives average of 10 years, see Note 5\u2014Property and Equipment\n(2) Definite lived intangibles with an amortization period ranging from seven to 10 years\nTransaction costs, costs associated with issuing additional equity and integration costs were recognized separately from the acquisition of assets and assumptions of liabilities in the PropX Acquisition. Transaction costs consist of legal and professional fees. Integration costs consist of expenses incurred to integrate PropX\u2019s operations, aligning accounting processes and procedures, and integrating its enterprise resource planning system with those of the Company. Merger and integration costs are expensed as incurred, and equity offering costs were recorded as a reduction to additional paid in capital.\nThe Company\u2019s consolidated statements of operations for the year ended December 31, 2021 includes 66 days of PropX operations as the PropX Acquisition closed on October 26, 2021. The Company does not present pro forma financial information for the periods prior to the PropX Acquisition as such information, after elimination of PropX\u2019s historical transactions with the Company, is not materially different than the results presented in the accompanying Consolidated Statements of Operations for year ended December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1984,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Proppants",
+     "$",
+     "17,124",
+     "$",
+     "31,350"
+    ],
+    [
+     "Chemicals",
+     "16,896",
+     "",
+     "32,392",
+     ""
+    ],
+    [
+     "Maintenance parts and other",
+     "171,845",
+     "",
+     "150,712",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "205,865",
+     "$",
+     "214,454"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2019,
+    "end_line": 2030
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Inventories"
+    }
+   },
+   "prose_before": "Transaction costs, costs associated with issuing additional equity and integration costs were recognized separately from the acquisition of assets and assumptions of liabilities in the PropX Acquisition. Transaction costs consist of legal and professional fees. Integration costs consist of expenses incurred to integrate PropX\u2019s operations, aligning accounting processes and procedures, and integrating its enterprise resource planning system with those of the Company. Merger and integration costs are expensed as incurred, and equity offering costs were recorded as a reduction to additional paid in capital.\nThe Company\u2019s consolidated statements of operations for the year ended December 31, 2021 includes 66 days of PropX operations as the PropX Acquisition closed on October 26, 2021. The Company does not present pro forma financial information for the periods prior to the PropX Acquisition as such information, after elimination of PropX\u2019s historical transactions with the Company, is not materially different than the results presented in the accompanying Consolidated Statements of Operations for year ended December 31, 2021.\nNote 4\u2014Inventories\nInventories consist of the following:",
+   "prose_after": "During the year ended December 31, 2023, the lower of cost or net realizable value analysis resulted in the Company recording a write-down to the inventory carrying value of $5.8 million. During the year ended December 31, 2022, the lower of cost or net realizable value analysis resulted in the Company recording a write-down to the inventory carrying value of $1.7 million. Both are included as a component in cost of services in the consolidated statements of operations. The Company did not record any write-down to the inventory carrying value during the year ended December 31, 2021.\nNote 5\u2014Property and Equipment\nProperty and equipment consist of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1984,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Estimated useful lives (in years)",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "N/A",
+     "$",
+     "29,384",
+     "$",
+     "29,276"
+    ],
+    [
+     "Field services equipment",
+     "2-10",
+     "2,520,336",
+     "",
+     "1,925,848",
+     ""
+    ],
+    [
+     "Vehicles",
+     "4-7",
+     "63,423",
+     "",
+     "62,683",
+     ""
+    ],
+    [
+     "Lease equipment",
+     "10",
+     "138,781",
+     "",
+     "106,087",
+     ""
+    ],
+    [
+     "Buildings and facilities",
+     "5-30",
+     "149,876",
+     "",
+     "135,281",
+     ""
+    ],
+    [
+     "Mineral reserves",
+     ">25",
+     "76,823",
+     "",
+     "76,823",
+     ""
+    ],
+    [
+     "Office equipment and furniture",
+     "2-7",
+     "11,836",
+     "",
+     "9,504",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,990,459",
+     "",
+     "2,345,502",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and depletion",
+     "",
+     "(1,501,685)",
+     "",
+     "(1,141,656)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,488,774",
+     "",
+     "1,203,846",
+     ""
+    ],
+    [
+     "Construction in-progress",
+     "N/A",
+     "156,594",
+     "",
+     "158,518",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "$",
+     "1,645,368",
+     "$",
+     "1,362,364"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2037,
+    "end_line": 2059
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Property and Equipment"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2023, the lower of cost or net realizable value analysis resulted in the Company recording a write-down to the inventory carrying value of $5.8 million. During the year ended December 31, 2022, the lower of cost or net realizable value analysis resulted in the Company recording a write-down to the inventory carrying value of $1.7 million. Both are included as a component in cost of services in the consolidated statements of operations. The Company did not record any write-down to the inventory carrying value during the year ended December 31, 2021.\nNote 5\u2014Property and Equipment\nProperty and equipment consist of the following:",
+   "prose_after": "Depreciation expense for the years ended December 31, 2023, 2022, and 2021 was $387.8 million, $302.3 million, and $243.0 million, respectively. Depletion expense for the years ended December 31, 2023, 2022, and 2021 was $1.1 million, $1.2 million, and $1.2 million, respectively.\nAs of December 31, 2023 and December 31, 2022, the Company concluded that no triggering events that could indicate possible impairment of property and equipment had occurred, other than related to the assets held for sale discussed below.\nAs of December 31, 2023, the Company classified $0.7 million of land and $0.8 million of buildings, net of accumulated depreciation, of one property that it intends to sell within the next year, and that meets the held for sale criteria, to assets held for sale, included in prepaid and other current assets in the accompanying consolidated balance sheet. The Company estimates that the carrying value of the assets is equal to the fair value less the estimated costs to sell, net of write-downs taken in the prior period, and therefore no gain or loss was recorded during the year ended December 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Finance lease cost:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of right-of-use assets",
+     "$",
+     "19,040",
+     "$",
+     "5,827"
+    ],
+    [
+     "Interest on lease liabilities",
+     "6,060",
+     "",
+     "1,707",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "40,275",
+     "",
+     "43,214",
+     ""
+    ],
+    [
+     "Variable lease cost",
+     "5,116",
+     "",
+     "4,801",
+     ""
+    ],
+    [
+     "Short-term lease cost",
+     "7,717",
+     "",
+     "6,931",
+     ""
+    ],
+    [
+     "Total lease cost, net",
+     "$",
+     "78,208",
+     "$",
+     "62,480"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2080,
+    "end_line": 2093
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "One of the properties classified as held for sale as of December 31, 2022, was sold during the year ended December 31, 2023, resulting in a nominal loss included as a component of (gain) loss on disposal of assets, net in the accompanying consolidated statements of income.\nNote 6\u2014Leases\nLessee Arrangements\nThe Company has operating and finance leases primarily for vehicles, equipment, railcars, office space, and facilities. The terms and conditions for these leases vary by the type of underlying asset.\nCertain leases include variable lease payments for items such as property taxes, insurance, maintenance, and other operating expenses associated with leased assets. Payments that vary based on an index or rate are included in the measurement of lease assets and liabilities at the rate as of the commencement date. All other variable lease payments are excluded from the measurement of lease assets and liabilities, and are recognized in the period in which the obligation for those payments is incurred.\nThe components of lease expense for the years ended as of December 31, 2023, and 2022 were as follows:",
+   "prose_after": "Supplemental cash flow and other information related to leases for the years ended December 31, 2023 and 2022 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in measurement of liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "$",
+     "41,143",
+     "$",
+     "42,108"
+    ],
+    [
+     "Finance leases",
+     "23,463",
+     "",
+     "10,889",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "31,449",
+     "",
+     "25,862",
+     ""
+    ],
+    [
+     "Finance leases",
+     "160,546",
+     "",
+     "25,888",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2095,
+    "end_line": 2105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "Supplemental cash flow and other information related to leases for the years ended December 31, 2023 and 2022 were as follows:",
+   "prose_after": "During the year ended December 31, 2023, the Company did not amend any operating leases. During the year ended December 31, 2022, the Company amended certain operating leases, the change in terms of which caused the leases to be reclassified to finance leases. In connection with the amendments, the Company recognized finance lease right-of-use assets of $3.5 million and liabilities of $3.5 million. Additionally, the Company wrote-off operating lease right-of-use assets of $0.2 million and liabilities of $0.1 million. There was no gain or loss recognized as a result of these amendments.\nLease terms and discount rates as of December 31, 2023 and 2022 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "4.3 years",
+     "",
+     "4.8 years",
+     ""
+    ],
+    [
+     "Finance leases",
+     "3.3 years",
+     "",
+     "3.1 years",
+     ""
+    ],
+    [
+     "Weighted-average discount rate:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "6.0",
+     "%",
+     "4.6",
+     "%"
+    ],
+    [
+     "Finance leases",
+     "8.0",
+     "%",
+     "8.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2109,
+    "end_line": 2119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2023, the Company did not amend any operating leases. During the year ended December 31, 2022, the Company amended certain operating leases, the change in terms of which caused the leases to be reclassified to finance leases. In connection with the amendments, the Company recognized finance lease right-of-use assets of $3.5 million and liabilities of $3.5 million. Additionally, the Company wrote-off operating lease right-of-use assets of $0.2 million and liabilities of $0.1 million. There was no gain or loss recognized as a result of these amendments.\nLease terms and discount rates as of December 31, 2023 and 2022 were as follows:",
+   "prose_after": "Future minimum lease commitments as of December 31, 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "Finance",
+     "",
+     "Operating",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "51,059",
+     "$",
+     "31,490"
+    ],
+    [
+     "2025",
+     "51,103",
+     "",
+     "29,520",
+     ""
+    ],
+    [
+     "2026",
+     "53,139",
+     "",
+     "18,718",
+     ""
+    ],
+    [
+     "2027",
+     "27,545",
+     "",
+     "8,677",
+     ""
+    ],
+    [
+     "2028",
+     "19,816",
+     "",
+     "2,485",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     "",
+     "12,569",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "202,662",
+     "",
+     "103,459",
+     ""
+    ],
+    [
+     "Less imputed interest",
+     "29,141",
+     "",
+     "11,671",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "173,521",
+     "$",
+     "91,788"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2121,
+    "end_line": 2137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "Future minimum lease commitments as of December 31, 2023 are as follows:",
+   "prose_after": "The Company\u2019s vehicle leases typically include a residual value guarantee. For the Company\u2019s vehicle leases classified as operating leases, the total residual value guaranteed as of December 31, 2023 is $14.6 million; the payment is not probable and\ntherefore has not been included in the measurement of the lease liability and right-of-use asset. For vehicle leases that are classified as finance leases, the Company includes the residual value guarantee, estimated in the lease agreement, in the financing lease liability.\nLessor Arrangements\nThe Company leases dry and wet sand containers and conveyor belts to customers through operating leases, where the lessor for tax purposes is considered to be the owner of the equipment during the term of the lease. The lease agreements do not include options for the lessee to purchase the underlying asset at the end of the lease term for either a stated fixed price or fair market value. However, some of the leases contain a termination clause in which the customer can cancel the contract. The leases can be subject to variable lease payments if the customer requests more units than what is agreed upon in the lease. The Company does not record any lease assets or liabilities related to these variable items.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Equipment leased to others - at original cost",
+     "$",
+     "138,781",
+     "$",
+     "106,087"
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "(25,819)",
+     "",
+     "(11,408)",
+     ""
+    ],
+    [
+     "Equipment leased to others - net",
+     "$",
+     "112,962",
+     "$",
+     "94,679"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2149,
+    "end_line": 2158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "therefore has not been included in the measurement of the lease liability and right-of-use asset. For vehicle leases that are classified as finance leases, the Company includes the residual value guarantee, estimated in the lease agreement, in the financing lease liability.\nLessor Arrangements\nThe Company leases dry and wet sand containers and conveyor belts to customers through operating leases, where the lessor for tax purposes is considered to be the owner of the equipment during the term of the lease. The lease agreements do not include options for the lessee to purchase the underlying asset at the end of the lease term for either a stated fixed price or fair market value. However, some of the leases contain a termination clause in which the customer can cancel the contract. The leases can be subject to variable lease payments if the customer requests more units than what is agreed upon in the lease. The Company does not record any lease assets or liabilities related to these variable items.\nThe carrying amount of equipment leased to others, included in property, plant and equipment, under operating leases as of December 31, 2023 and 2022 were as follows:",
+   "prose_after": "Future payments receivable for operating leases as of December 31, 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2190,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "9,893"
+    ],
+    [
+     "2025",
+     "5,412",
+     ""
+    ],
+    [
+     "2026",
+     "1,919",
+     ""
+    ],
+    [
+     "2027",
+     "\u2014",
+     ""
+    ],
+    [
+     "2028",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "17,224"
+    ]
+   ],
+   "caption_stack": [
+    "($ in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 2161,
+    "end_line": 2174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "Future payments receivable for operating leases as of December 31, 2023 are as follows:",
+   "prose_after": "Revenues from operating leases for the years ended December 31, 2023 and 2022 were $36.6 million and $25.5 million, respectively.\nNote 7\u2014Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2190,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Accrued vendor invoices",
+     "$",
+     "99,620",
+     "$",
+     "119,801"
+    ],
+    [
+     "Operations accruals",
+     "61,150",
+     "",
+     "72,348",
+     ""
+    ],
+    [
+     "Accrued benefits and other",
+     "100,296",
+     "",
+     "88,529",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "261,066",
+     "$",
+     "280,678"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2180,
+    "end_line": 2190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Accrued Liabilities"
+    }
+   },
+   "prose_before": "Revenues from operating leases for the years ended December 31, 2023 and 2022 were $36.6 million and $25.5 million, respectively.\nNote 7\u2014Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "prose_after": "Note 8\u2014Debt\nDebt consists of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2139,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2190,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Term Loan Outstanding",
+     "$",
+     "\u2014",
+     "$",
+     "104,716"
+    ],
+    [
+     "Revolving Line of Credit",
+     "140,000",
+     "",
+     "115,000",
+     ""
+    ],
+    [
+     "Deferred financing costs and original issue discount",
+     "\u2014",
+     "",
+     "(1,270)",
+     ""
+    ],
+    [
+     "Total debt, net of deferred financing costs and original issue discount",
+     "$",
+     "140,000",
+     "$",
+     "218,446"
+    ],
+    [
+     "Current portion of long-term debt, net of discount",
+     "$",
+     "\u2014",
+     "$",
+     "1,020"
+    ],
+    [
+     "Long-term debt, net of discount and current portion",
+     "140,000",
+     "",
+     "217,426",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "140,000",
+     "$",
+     "218,446"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2195,
+    "end_line": 2211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "Note 8\u2014Debt\nDebt consists of the following:",
+   "prose_after": "On September 19, 2017, the Company entered into two credit agreements, (i) a revolving line of credit up to $250.0 million, subsequently increased to $525.0 million, see below, (the \u201cABL Facility\u201d) and (ii) a $175.0 million term loan (the \u201cTerm Loan Facility\u201d, and together with the ABL Facility the \u201cCredit Facilities\u201d).\nEffective January 23, 2023, the Company entered into an Eighth Amendment to the ABL Facility (the \u201cEighth ABL Amendment\u201d). The Eighth ABL Amendment amends certain terms, provisions and covenants of the ABL Facility, including, among other things: (i) increasing the maximum revolver amount from $425.0 million to $525.0 million (the \u201cUpsized Revolver\u201d); (ii) increasing the amount of the accordion feature from $75.0 million to $100.0 million; (iii) extending the maturity date from October 22, 2026 to January 23, 2028; (iv) modifying the dollar amounts of various credit facility triggers and tests proportionally to the Upsized Revolver; (v) permitting repayment under the Term Loan Facility prior to February 10, 2023; and (vi) increasing certain indebtedness, intercompany advance, and investment baskets. The Eighth ABL Amendment included an agreement from the Wells Fargo Bank, National Association, as administrative agent, to release its second priority liens and security interests on all collateral that served as first priority collateral under the Term Loan Facility, which was completed during the three months ended June 30, 2023.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2190,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2231,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "($ in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Years Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "\u2014"
+    ],
+    [
+     "2025",
+     "\u2014",
+     ""
+    ],
+    [
+     "2026",
+     "\u2014",
+     ""
+    ],
+    [
+     "2027",
+     "\u2014",
+     ""
+    ],
+    [
+     "2028",
+     "140,000",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "140,000"
+    ]
+   ],
+   "caption_stack": [
+    "($ in thousands)",
+    "Years Ending December 31,"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 2238,
+    "end_line": 2250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "Under the terms of the ABL Facility, up to $525.0 million may be borrowed, subject to certain borrowing base limitations based on a percentage of eligible accounts receivable and inventory. As of December 31, 2023, the borrowing base was calculated to be $420.3 million, and the Company had $140.0 million outstanding in addition to letters of credit in the amount of $2.6 million, with $277.7 million of remaining availability. Borrowings under the ABL Facility bear interest at Secured Overnight Financing Rate (\u201cSOFR\u201d) or a base rate, plus an applicable SOFR margin of 1.5% to 2.0% or base rate margin of 0.5% to 1.0%, as described in the ABL Facility credit agreement (the \u201cABL Facility credit agreement\u201d). Additionally, borrowings as of December 31, 2023 incurred interest at a weighted average rate of 7.6%. The average monthly unused commitment is subject to an unused commitment fee of 0.25% to 0.375%. Interest and fees are payable in arrears at the end of each month, or, in the case of SOFR loans, at the end of each interest period. The ABL Facility matures on January 23, 2028. Borrowings under the ABL Facility are collateralized by accounts receivable and inventory, and further secured by the Company, as parent guarantor.\nThe ABL Facility includes certain non-financial covenants, including but not limited to restrictions on incurring additional debt and certain distributions. Moreover, the ability of the Company to incur additional debt and to make distributions is dependent on maintaining a maximum leverage ratio.\nThe ABL Facility is not subject to financial covenants unless liquidity, as defined in the ABL Facility credit agreement, drops below a specific level. The Company is required to maintain a minimum fixed charge coverage ratio, as defined in the\nABL Facility credit agreement, of 1.0 to 1.0 for each period if excess availability is less than 10% of the borrowing base or $52.5 million, whichever is greater.\nThe Company was in compliance with these covenants as of December 31, 2023.\nMaturities of debt are as follows:",
+   "prose_after": "Note 9\u2014Fair Value Measurements and Financial Instruments\nThe fair values of the Company\u2019s assets and liabilities represent the amounts that would be received to sell those assets or that would be paid to transfer those liabilities in an orderly transaction on the reporting date. These fair value measurements maximize the use of observable inputs. However, in situations where there is little, if any, market activity for the asset or liability on the measurement date, the fair value measurement reflects the Company\u2019s own judgments about the assumptions that market participants would use in pricing the asset or liability. The Company discloses the fair values of its assets and liabilities according to the quality of valuation inputs under the following hierarchy:\n\u2022Level 1 Inputs: Quoted prices (unadjusted) in an active market for identical assets or liabilities.\n\u2022Level 2 Inputs: Inputs other than quoted prices that are directly or indirectly observable.\n\u2022Level 3 Inputs: Unobservable inputs that are significant to the fair value of assets or liabilities.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2231,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2276,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Allowance for credit losses, beginning of year",
+     "$",
+     "884",
+     "$",
+     "884",
+     "$",
+     "773"
+    ],
+    [
+     "Credit losses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current period provision",
+     "808",
+     "",
+     "\u2014",
+     "",
+     "745",
+     ""
+    ],
+    [
+     "Amounts written off, net of recoveries",
+     "(753)",
+     "",
+     "\u2014",
+     "",
+     "(634)",
+     ""
+    ],
+    [
+     "Allowance for credit losses, end of year",
+     "$",
+     "939",
+     "$",
+     "884",
+     "$",
+     "884"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2308,
+    "end_line": 2319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014Fair Value Measurements and Financial Instruments"
+    }
+   },
+   "prose_before": "As of December 31, 2023, the Company had $0.9 million in allowance for credit losses and recorded a provision related to certain customers\u2019 expected inability to pay. As of December 31, 2022, the Company had $0.9 million in allowance for credit losses. As of December 31, 2021, the Company had $0.9 million in allowance for credit losses and recorded a provision related to two entities inability to pay.\nThe Company applies historic loss factors to its receivable portfolio segments that are not expected to be further impacted by current economic developments, and an additional economic conditions factor to portfolio segments anticipated to experience greater losses in the current economic environment. While the Company has not experienced significant credit losses in the past and has not seen material changes to the payment patterns of its customers, the Company cannot predict with any certainty the degree to which unforeseen events may affect the ability of its customers to timely pay receivables when due.\nAccordingly, in future periods, the Company may revise its estimates of expected credit losses.",
+   "prose_after": "Note 10\u2014Equity\nPreferred Stock\nAs of December 31, 2023 and 2022, the Company had 10,000 shares of preferred stock authorized, par value $0.01, with none issued and outstanding. If issued, each class or series of preferred stock will cover the number of shares and will have the powers, preferences, rights, qualifications, limitations and restrictions determined by the Company\u2019s board of directors, which may include, among others, dividend rights, liquidation preferences, voting rights, conversion rights, preemptive rights and redemption rights. Except as provided by law or in a preferred stock designation, the holders of preferred stock will not be entitled to vote at or receive notice of any meeting of shareholders.\nClass A Common Stock\nThe Company had a total of 166,610,199 and 178,753,125 shares of Class A Common Stock outstanding as of December 31, 2023 and 2022, respectively, none of which were restricted. Holders of Class A Common Stock are entitled to one vote per share on all matters to be voted upon by the stockholders and are entitled to ratably receive dividends when and if declared by the Company\u2019s board of directors.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2305,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2352,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Units",
+     "Weighted Average Grant Date Fair Value per Unit",
+     ""
+    ],
+    [
+     "Non-vested as of December 31, 2022",
+     "2,985,727",
+     "$",
+     "12.15"
+    ],
+    [
+     "Granted",
+     "1,599,151",
+     "14.93",
+     ""
+    ],
+    [
+     "Vested",
+     "(1,466,822)",
+     "11.56",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(132,838)",
+     "12.84",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "2,985,218",
+     "$",
+     "13.90"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2341,
+    "end_line": 2352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Equity"
+    }
+   },
+   "prose_before": "On January 11, 2018, the Company adopted the Long Term Incentive Plan (\u201cLTIP\u201d) to incentivize employees, officers, directors and other service providers of the Company and its affiliates. The LTIP provides for the grant, from time to time, at the discretion of the Company\u2019s board of directors or a committee thereof, of stock options, stock appreciation rights, restricted stock, restricted stock units, stock awards, dividend equivalents, other stock-based awards, cash awards, substitute awards and performance awards. Subject to adjustment in the event of certain transaction or changes of capitalization in accordance with the LTIP, 12,908,734 shares of Class A Common Stock were initially reserved for issuance pursuant to awards under the LTIP. Class A Common Stock subject to an award that expires or is canceled, forfeited, exchanged, settled in cash or otherwise terminated without delivery of shares and shares withheld to pay the exercise price of, or to satisfy the withholding obligations with respect to, an award will again be available for delivery pursuant to other awards under the LTIP.\nRestricted Stock Units\nRestricted stock units (\u201cRSUs\u201d) granted pursuant to the LTIP, if they vest, will be settled in shares of the Company\u2019s Class A Common Stock. RSUs were granted with vesting terms up to three years. Changes in non-vested RSUs outstanding under the LTIP during the year ended December 31, 2023 were as follows:",
+   "prose_after": "Performance Restricted Stock Units\nPerformance restricted stock units (\u201cPSUs\u201d) granted pursuant to the LTIP, if they vest, will be settled in shares of the Company\u2019s Class A Common Stock. PSUs were granted with a three-year cliff vesting schedule, subject to a performance target compared to an index of competitors\u2019 results over the three-year period as designated in the award. The Company records compensation expense based on the Company\u2019s best estimate of the number of PSUs that will vest at the end of the performance period. If such performance targets are not met, or are not expected to be met, no compensation expense is recognized and any recognized compensation expense is reversed. Changes in non-vested PSUs outstanding under the LTIP during the year ended December 31, 2023 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2305,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2352,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Units",
+     "Weighted Average Grant Date Fair Value per Unit",
+     ""
+    ],
+    [
+     "Non-vested as of December 31, 2022",
+     "1,390,588",
+     "$",
+     "11.87"
+    ],
+    [
+     "Granted",
+     "341,928",
+     "15.64",
+     ""
+    ],
+    [
+     "Vested",
+     "(392,948)",
+     "9.62",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "1,339,568",
+     "$",
+     "13.49"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2357,
+    "end_line": 2368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Equity"
+    }
+   },
+   "prose_before": "Performance Restricted Stock Units\nPerformance restricted stock units (\u201cPSUs\u201d) granted pursuant to the LTIP, if they vest, will be settled in shares of the Company\u2019s Class A Common Stock. PSUs were granted with a three-year cliff vesting schedule, subject to a performance target compared to an index of competitors\u2019 results over the three-year period as designated in the award. The Company records compensation expense based on the Company\u2019s best estimate of the number of PSUs that will vest at the end of the performance period. If such performance targets are not met, or are not expected to be met, no compensation expense is recognized and any recognized compensation expense is reversed. Changes in non-vested PSUs outstanding under the LTIP during the year ended December 31, 2023 were as follows:",
+   "prose_after": "Stock-based compensation is included in cost of services and general and administrative expenses in the Company\u2019s consolidated statements of operations. The Company recognized stock-based compensation expense of $33.0 million, $23.1 million, and $19.9 million for the years ended December 31, 2023, 2022, and 2021, respectively. There was approximately $33.9 million of unrecognized compensation expense relating to outstanding RSUs and PSUs as of December 31, 2023. The unrecognized compensation expense will be recognized on a straight-line basis over the weighted average remaining vesting period of two years.\nDividends\nOn October 18, 2022, the Company\u2019s Board of Directors (the \u201cBoard\u201d) reinstated quarterly dividends after they were suspended on April 2, 2020.\nThe Company paid cash dividends of $0.05 per share of Class A Common Stock on March 20, 2023, June 20, 2023, and September 20, 2023 to stockholders of record as of March 6, 2023, June 6, 2023, and September 6, 2023, respectively. Additionally, the Company paid cash dividends of $0.07 per share of Class A Common Stock on December 20, 2023 to stockholders of record as of December 6, 2023. During the year ended December 31, 2023, dividend payments totaled $37.5 million.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2352,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2380,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(In thousands, except per share data)",
+     "Year Ended December 31, 2023",
+     "",
+     "Year Ended December 31, 2022",
+     ""
+    ],
+    [
+     "Basic Net Income Per Share",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "556,317",
+     "$",
+     "399,602"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average common shares outstanding",
+     "171,845",
+     "",
+     "184,334",
+     ""
+    ],
+    [
+     "Basic net income per share attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "3.24",
+     "$",
+     "2.17"
+    ],
+    [
+     "Diluted Net Income Per Share",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "556,317",
+     "$",
+     "399,602"
+    ],
+    [
+     "Effect of exchange of the shares of Class B Common Stock for shares of Class A Common Stock",
+     "73",
+     "",
+     "716",
+     ""
+    ],
+    [
+     "Diluted net income attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "556,390",
+     "$",
+     "400,318"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average shares outstanding",
+     "171,845",
+     "",
+     "184,334",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted stock units",
+     "4,494",
+     "",
+     "4,262",
+     ""
+    ],
+    [
+     "Class B Common Stock",
+     "21",
+     "",
+     "753",
+     ""
+    ],
+    [
+     "Diluted weighted average shares outstanding",
+     "176,360",
+     "",
+     "189,349",
+     ""
+    ],
+    [
+     "Diluted net income per share attributable to Liberty Energy Inc. stockholders",
+     "$",
+     "3.15",
+     "$",
+     "2.11"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2404,
+    "end_line": 2434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014Net Income per Share"
+    }
+   },
+   "prose_before": "The Company accounts for the purchase price of repurchased common shares in excess of par value ($0.01 per share of Class A Common Stock) as a reduction of additional paid-in capital, and will continue to do so until additional paid-in capital is reduced to zero. Thereafter, any excess purchase price will be recorded as a reduction to retained earnings.\nAs enacted by the Inflation Reduction Act of 2022 (\u201cIRA\u201d), the Company accrued stock repurchase excise tax of $1.9 million for the year ended December 31, 2023.\nNote 11\u2014Net Income per Share\nBasic net income per share measures the performance of an entity over the reporting period. Diluted net income per share measures the performance of an entity over the reporting period while giving effect to all potentially dilutive common shares that were outstanding during the period. The Company uses the \u201cif-converted\u201d method to determine the potential dilutive effect of its Class B Common Stock and the treasury stock method to determine the potential dilutive effect of outstanding RSUs and PSUs.\nThe following table reflects the allocation of net income to common stockholders and net income per share computations for the periods indicated based on a weighted average number of shares of Class A Common Stock and Class B Common Stock outstanding:",
+   "prose_after": "Note 12\u2014Income Taxes\nThe Company is a corporation and is subject to taxation in the United States, Canada and various state, local and provincial jurisdictions. Historically, Liberty LLC was treated as a partnership, and its income was passed through to its owners for income tax purposes. Liberty LLC\u2019s members, including the Company, were liable for federal, state and local income taxes based on their share of Liberty LLC\u2019s pass-through taxable income.\nEffective January 31, 2023, the Company adopted a plan of merger, pursuant to which Liberty LLC merged into the Company, ceasing the existence of Liberty LLC, with the Company remaining as the surviving entity. Liberty LLC filed a final tax return during the 2023 calendar year.\nAs of December 31, 2023, tax reporting by the Company for the years ended December 31, 2020, 2021, 2022, and the short period ended January 31, 2023 are subject to examination by the tax authorities. With few exceptions, as of December 31, 2023, the Company is no longer subject to U.S. federal, state or local examinations by tax authorities for tax years ended before December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2401,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "668,338",
+     "$",
+     "375,758",
+     "$",
+     "(191,774)"
+    ],
+    [
+     "Foreign",
+     "66,552",
+     "",
+     "23,751",
+     "",
+     "13,986",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "734,890",
+     "$",
+     "399,509",
+     "$",
+     "(177,788)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2446,
+    "end_line": 2456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "The Company is a corporation and is subject to taxation in the United States, Canada and various state, local and provincial jurisdictions. Historically, Liberty LLC was treated as a partnership, and its income was passed through to its owners for income tax purposes. Liberty LLC\u2019s members, including the Company, were liable for federal, state and local income taxes based on their share of Liberty LLC\u2019s pass-through taxable income.\nEffective January 31, 2023, the Company adopted a plan of merger, pursuant to which Liberty LLC merged into the Company, ceasing the existence of Liberty LLC, with the Company remaining as the surviving entity. Liberty LLC filed a final tax return during the 2023 calendar year.\nAs of December 31, 2023, tax reporting by the Company for the years ended December 31, 2020, 2021, 2022, and the short period ended January 31, 2023 are subject to examination by the tax authorities. With few exceptions, as of December 31, 2023, the Company is no longer subject to U.S. federal, state or local examinations by tax authorities for tax years ended before December 31, 2019.\nThe components of the Company\u2019s income (loss) from continuing operations before income taxes on which the provision for income taxes was computed consisted of the following:",
+   "prose_after": "The components of the provision for incomes taxes from continuing operations are summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "36,319",
+     "$",
+     "4,679",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State",
+     "4,662",
+     "",
+     "2,579",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Foreign",
+     "17,189",
+     "",
+     "4,421",
+     "",
+     "4,108",
+     ""
+    ],
+    [
+     "Total Current",
+     "$",
+     "58,170",
+     "$",
+     "11,679",
+     "$",
+     "4,137"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "109,399",
+     "$",
+     "(12,967)",
+     "$",
+     "6,125"
+    ],
+    [
+     "State",
+     "11,913",
+     "",
+     "(1,182)",
+     "",
+     "(439)",
+     ""
+    ],
+    [
+     "Foreign",
+     "(1,000)",
+     "",
+     "1,677",
+     "",
+     "(607)",
+     ""
+    ],
+    [
+     "Total Deferred",
+     "$",
+     "120,312",
+     "$",
+     "(12,472)",
+     "$",
+     "5,079"
+    ],
+    [
+     "Income tax expense (benefit)",
+     "$",
+     "178,482",
+     "$",
+     "(793)",
+     "$",
+     "9,216"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2458,
+    "end_line": 2480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "The components of the provision for incomes taxes from continuing operations are summarized as follows:",
+   "prose_after": "Income tax expense (benefit) attributable to net income (loss) before income taxes differed from the amounts computed by applying the statutory U.S. federal income tax rate of 21.0% to pre-tax income as a result of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Computed tax expense (benefit) at the statutory rate",
+     "$",
+     "154,327",
+     "$",
+     "83,897",
+     "$",
+     "(37,336)"
+    ],
+    [
+     "Increase (decrease) in tax expense resulting from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State and local income tax expense (benefit), net",
+     "15,745",
+     "",
+     "10,224",
+     "",
+     "(5,204)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "(19)",
+     "",
+     "(151)",
+     "",
+     "1,565",
+     ""
+    ],
+    [
+     "Effect of foreign tax rates",
+     "1,818",
+     "",
+     "697",
+     "",
+     "478",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "(239)",
+     "",
+     "(2,724)",
+     "",
+     "(535)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "\u2014",
+     "",
+     "(91,336)",
+     "",
+     "50,111",
+     ""
+    ],
+    [
+     "Other TRA adjustment",
+     "(248)",
+     "",
+     "(2,763)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Nondeductible executive compensation",
+     "6,514",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "U.S. impact of foreign earnings",
+     "\u2014",
+     "",
+     "315",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, net",
+     "584",
+     "",
+     "1,048",
+     "",
+     "137",
+     ""
+    ],
+    [
+     "Total income tax expense (benefit)",
+     "$",
+     "178,482",
+     "$",
+     "(793)",
+     "$",
+     "9,216"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2482,
+    "end_line": 2501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "Income tax expense (benefit) attributable to net income (loss) before income taxes differed from the amounts computed by applying the statutory U.S. federal income tax rate of 21.0% to pre-tax income as a result of the following:",
+   "prose_after": "The effective tax rate for the years ended December 31, 2023, 2022, and 2021 was 24.3%, (0.2)%, and (5.2)%, respectively.\nThe Company\u2019s effective tax rate is greater than the statutory federal income tax rate of 21.0% due to the Company\u2019s Canadian operations, state income taxes in the states the Company operates, as well as nondeductible executive compensation.\nThe tax effects of temporary differences that give rise to significant portions of the deferred tax assets and deferred tax liabilities are presented below:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "($ in thousands)",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal net operating losses",
+     "$",
+     "\u2014",
+     "$",
+     "25,570"
+    ],
+    [
+     "State net operating losses",
+     "1,286",
+     "",
+     "5,762",
+     ""
+    ],
+    [
+     "Realized tax benefit - TRAs",
+     "87,260",
+     "",
+     "99,153",
+     ""
+    ],
+    [
+     "Intangibles",
+     "22,825",
+     "",
+     "576",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "51,504",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "\u2014",
+     "",
+     "4,638",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "4,279",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Inventory",
+     "3,361",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "5,133",
+     "",
+     "450",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "175,648",
+     "",
+     "136,149",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "175,648",
+     "",
+     "136,149",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in Liberty LLC",
+     "$",
+     "\u2014",
+     "$",
+     "(121,861)"
+    ],
+    [
+     "Property and equipment",
+     "(221,337)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Lease assets",
+     "(55,801)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "(850)",
+     "",
+     "(2,740)",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "(277,988)",
+     "",
+     "(124,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax (liability) asset",
+     "$",
+     "(102,340)",
+     "$",
+     "11,548"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2508,
+    "end_line": 2539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "The effective tax rate for the years ended December 31, 2023, 2022, and 2021 was 24.3%, (0.2)%, and (5.2)%, respectively.\nThe Company\u2019s effective tax rate is greater than the statutory federal income tax rate of 21.0% due to the Company\u2019s Canadian operations, state income taxes in the states the Company operates, as well as nondeductible executive compensation.\nThe tax effects of temporary differences that give rise to significant portions of the deferred tax assets and deferred tax liabilities are presented below:",
+   "prose_after": "During the year ended December 31, 2023, the Company adopted a plan of merger, pursuant to which Liberty LLC merged into the Company, ceasing the existence of Liberty LLC with the Company remaining as the surviving entity. As a result of this change, the Company no longer has a deferred tax liability for the difference between the book value and the tax value of the Company\u2019s investment in Liberty LLC and the associated net deferred tax liability balances have been allocated to the deferred tax asset and liability line items above. Significant deferred tax assets include the step up in basis of depreciable assets under Section 754 (\u201cSection 754\u201d) of the Internal Revenue Code of 1986, as amended and deferred tax liabilities related to property and equipment.\nAs of December 31, 2023, the Company has utilized all U.S. federal net operating loss carryforwards and has $1.3 million state net operating loss carryforwards that will not expire in the foreseeable future.\nThe Company may distribute cash from foreign subsidiaries to its U.S. parent as business needs arise. The Company has not provided for deferred income taxes on the undistributed earnings from certain foreign subsidiaries earnings as such earnings are considered to be indefinitely reinvested. If such earnings were to be distributed, any income and/or withholding tax would not be significant.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2551,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "($ in thousands)",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "143,884"
+    ],
+    [
+     "2025",
+     "12,960",
+     ""
+    ],
+    [
+     "2026",
+     "\u2014",
+     ""
+    ],
+    [
+     "2027",
+     "\u2014",
+     ""
+    ],
+    [
+     "2028",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "156,844"
+    ]
+   ],
+   "caption_stack": [
+    "($ in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 2616,
+    "end_line": 2628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014Commitments & Contingencies"
+    }
+   },
+   "prose_before": "R/C IV Liberty Big Box Holdings, L.P., a Riverstone Holdings LLC (\u201cRiverstone\u201d) fund and a former significant stockholder of the Company, held a greater than 10% equity interest in PropX. Christopher Wright, the Chief Executive Officer, Michael Stock, the Chief Financial Officer and Ron Gusek, the President of the Company, held a less than 5% equity interest in PropX through Big Box Proppant Investments LLC. Cary Steinbeck, a director of the Company, served on the PropX board of directors and held a less than 5% indirect equity interest in PropX. In addition, Brett Staffieri, a Riverstone appointed director, served on the board of the directors of the Company until June 15, 2021 and on the PropX board of directors until the acquisition date. The PropX Acquisition was reviewed and approved by the disinterested members of the Board and pursuant to the Company\u2019s related party transactions policy.\nNote 15\u2014Commitments & Contingencies\nPurchase Commitments (tons are not in thousands)\nThe Company enters into purchase and supply agreements to secure supply and pricing of proppants, transload, and equipment. As of December 31, 2023 and 2022, the agreements provide pricing and committed supply sources for the Company to purchase 1,854,000 tons and 2,915,172 tons, respectively, of proppant through December 31, 2025. Amounts below also include commitments to pay for transport fees on minimum amounts of proppants. Additionally, related proppant transload service commitments run through 2024.\nFuture proppant, transload, and equipment commitments are as follows:",
+   "prose_after": "Certain supply agreements contain a clause whereby in the event that the Company fails to purchase minimum volumes, as defined in the agreement, during a specific time period, a shortfall fee may apply. In circumstances where the Company does not make the minimum purchase required under the contract, the Company and its suppliers have a history of amending such minimum purchase contractual terms and in rare cases does the Company incur shortfall fees. If the Company were unable to make any of the minimum purchases and the Company and its suppliers cannot come to an agreement to avoid such fees, the Company could incur shortfall fees in the amounts of $25.2 million and $5.4 million for the years ended December 31, 2024 and December 31, 2025, respectively. Based on forecasted levels of activity, the Company does not currently expect to incur significant shortfall fees.\nIncluded in the commitments for the year ending December 31, 2023 are $3.2 million of payments expected to be made in the first quarter of 2024 for the use of certain light duty trucks, heavy tractors, and field equipment used to various degrees in frac and wireline operations. The Company is in negotiations with the third-party owner of such equipment to lease or purchase some or all of such aforementioned vehicles and equipment, subject to agreement on terms and conditions. No gain or loss is expected upon consummation of any such agreement.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2597,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2636,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

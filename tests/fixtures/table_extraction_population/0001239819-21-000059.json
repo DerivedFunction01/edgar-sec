@@ -1,0 +1,5117 @@
+{
+ "accession": "0001239819-21-000059",
+ "cik": "0001239819",
+ "form": "10-Q",
+ "filing_date": "2021-05-17",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "luna-20210331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "54-1560050"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "_____________________________________\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCOMMISSION FILE NUMBER 000-52008\nLUNA INNOVATIONS INCORPORATED\n(Exact name of registrant as specified in its charter)\n_____________________________________",
+   "prose_after": "301 First Street SW, Suite 200\nRoanoke, VA 24011\n(Address of Principal Executive Offices)\n(540) 769-8400\n(Registrant\u2019s Telephone Number, Including Area Code)\n_____________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     "LUNA",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 55
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "301 First Street SW, Suite 200\nRoanoke, VA 24011\n(Address of Principal Executive Offices)\n(540) 769-8400\n(Registrant\u2019s Telephone Number, Including Area Code)\n_____________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [ ] Yes [X] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     "4"
+    ],
+    [
+     "ITEM 1.",
+     "FINANCIAL STATEMENTS",
+     "4"
+    ],
+    [
+     "ITEM 2.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "23"
+    ],
+    [
+     "ITEM 3.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "30"
+    ],
+    [
+     "ITEM 4.",
+     "CONTROLS AND PROCEDURES",
+     "31"
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     "32"
+    ],
+    [
+     "ITEM 1.",
+     "LEGAL PROCEEDINGS",
+     "32"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "32"
+    ],
+    [
+     "ITEM 2.",
+     "UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+     "51"
+    ],
+    [
+     "ITEM 3.",
+     "DEFAULTS UPON SENIOR SECURITIES",
+     "51"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "51"
+    ],
+    [
+     "ITEM 5.",
+     "OTHER INFORMATION",
+     "51"
+    ],
+    [
+     "ITEM 6.",
+     "EXHIBITS",
+     "52"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [ ]\nNon-accelerated filer [X] Smaller reporting company [X]\nEmerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: As of May 13, 2021, there were 31,418,971 shares of the registrant\u2019s common stock outstanding.\nQUARTERLY REPORT ON FORM 10-Q\nFOR THE QUARTER ENDED MARCH 31, 2021\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nConsolidated Balance Sheets\n(in thousands, except share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 99,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "11,794",
+     "$",
+     "15,366"
+    ],
+    [
+     "Accounts receivable, net",
+     "23,697",
+     "",
+     "24,951",
+     ""
+    ],
+    [
+     "Contract assets",
+     "8,328",
+     "",
+     "7,046",
+     ""
+    ],
+    [
+     "Inventory",
+     "25,550",
+     "",
+     "23,597",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "5,388",
+     "",
+     "4,509",
+     ""
+    ],
+    [
+     "Total current assets",
+     "74,757",
+     "",
+     "75,469",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "3,329",
+     "",
+     "3,308",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "19,642",
+     "",
+     "20,109",
+     ""
+    ],
+    [
+     "Goodwill",
+     "18,309",
+     "",
+     "18,121",
+     ""
+    ],
+    [
+     "Long-term contract assets",
+     "\u2014",
+     "",
+     "471",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "10,820",
+     "",
+     "11,281",
+     ""
+    ],
+    [
+     "Finance lease right-of-use asset",
+     "232",
+     "",
+     "244",
+     ""
+    ],
+    [
+     "Other assets",
+     "118",
+     "",
+     "39",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "1,699",
+     "",
+     "1,960",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "128,906",
+     "$",
+     "131,002"
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt obligations",
+     "$",
+     "4,167",
+     "$",
+     "4,167"
+    ],
+    [
+     "Accounts payable",
+     "4,108",
+     "",
+     "4,393",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "10,732",
+     "",
+     "12,159",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "6,228",
+     "",
+     "7,095",
+     ""
+    ],
+    [
+     "Current portion of operating lease liability",
+     "2,195",
+     "",
+     "2,223",
+     ""
+    ],
+    [
+     "Current portion of finance lease liability",
+     "48",
+     "",
+     "48",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "27,478",
+     "",
+     "30,085",
+     ""
+    ],
+    [
+     "Long-term debt obligations",
+     "14,781",
+     "",
+     "15,817",
+     ""
+    ],
+    [
+     "Long-term portion of operating lease liability",
+     "9,702",
+     "",
+     "10,248",
+     ""
+    ],
+    [
+     "Long-term portion of operating lease liability",
+     "184",
+     "",
+     "196",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "214",
+     "",
+     "214",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "52,359",
+     "",
+     "56,560",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 12)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001, 100,000,000 shares authorized, 33,113,774 and 32,724,512 shares issued, 31,392,989 and 31,024,537 shares outstanding at March 31, 2021 and December 31, 2020, respectively",
+     "33",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "Treasury stock at cost, 1,720,785 and 1,699,975 shares at March 31, 2021 and December 31, 2020, respectively",
+     "(4,991)",
+     "",
+     "(4,789)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "93,905",
+     "",
+     "92,403",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(13,275)",
+     "",
+     "(12,957)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income/(loss)",
+     "875",
+     "",
+     "(248)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "76,547",
+     "",
+     "74,442",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "128,906",
+     "$",
+     "131,002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 110,
+    "end_line": 167
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nConsolidated Balance Sheets\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Operations (Unaudited)\n(in thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 104,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lightwave",
+     "$",
+     "20,997",
+     "$",
+     "11,554"
+    ],
+    [
+     "Luna Labs",
+     "5,302",
+     "",
+     "5,587",
+     ""
+    ],
+    [
+     "  Total revenues",
+     "26,299",
+     "",
+     "17,141",
+     ""
+    ],
+    [
+     "Cost of revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lightwave",
+     "8,771",
+     "",
+     "4,885",
+     ""
+    ],
+    [
+     "Luna Labs",
+     "4,099",
+     "",
+     "3,892",
+     ""
+    ],
+    [
+     "  Total cost of revenues",
+     "12,870",
+     "",
+     "8,777",
+     ""
+    ],
+    [
+     "Gross profit",
+     "13,429",
+     "",
+     "8,364",
+     ""
+    ],
+    [
+     "Operating expense:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "11,290",
+     "",
+     "6,377",
+     ""
+    ],
+    [
+     "Research, development and engineering",
+     "2,933",
+     "",
+     "1,597",
+     ""
+    ],
+    [
+     "  Total operating expense",
+     "14,223",
+     "",
+     "7,974",
+     ""
+    ],
+    [
+     "Operating (loss)/income",
+     "(794)",
+     "",
+     "390",
+     ""
+    ],
+    [
+     "Other income/(expense):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment income",
+     "\u2014",
+     "",
+     "59",
+     ""
+    ],
+    [
+     "Other income",
+     "\u2014",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(143)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other (expense)/income",
+     "(143)",
+     "",
+     "68",
+     ""
+    ],
+    [
+     "(Loss)/income from continuing operations before income taxes",
+     "(937)",
+     "",
+     "458",
+     ""
+    ],
+    [
+     "Income tax (benefit)/expense",
+     "(619)",
+     "",
+     "138",
+     ""
+    ],
+    [
+     "Net (loss)/income from continuing operations",
+     "(318)",
+     "",
+     "320",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of income tax of $464",
+     "\u2014",
+     "",
+     "(1,436)",
+     ""
+    ],
+    [
+     "Net loss",
+     "(318)",
+     "",
+     "(1,116)",
+     ""
+    ],
+    [
+     "Net (loss)/income per share from continuing operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.01)",
+     "$",
+     "0.01"
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.01)",
+     "$",
+     "0.01"
+    ],
+    [
+     "Net loss per share from discontinued operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "\u2014",
+     "$",
+     "(0.05)"
+    ],
+    [
+     "  Diluted",
+     "$",
+     "\u2014",
+     "$",
+     "(0.04)"
+    ],
+    [
+     "Net loss per share attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Basic",
+     "$",
+     "(0.01)",
+     "$",
+     "(0.04)"
+    ],
+    [
+     "    Diluted",
+     "$",
+     "(0.01)",
+     "$",
+     "(0.03)"
+    ],
+    [
+     "Weighted average shares:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Basic",
+     "31,350,629",
+     "",
+     "30,380,345",
+     ""
+    ],
+    [
+     "    Diluted",
+     "33,353,456",
+     "",
+     "32,549,487",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Operations (Unaudited)\n(in thousands, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Comprehensive Income/(Loss)\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 242,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(318)",
+     "$",
+     "(1,116)"
+    ],
+    [
+     "Other comprehensive income",
+     "1,123",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other comprehensive income/(loss)",
+     "$",
+     "805",
+     "$",
+     "(1,116)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 248,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Comprehensive Income/(Loss)\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Changes in Stockholders' Equity\n(in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 242,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive (Loss) Income",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "$",
+     "",
+     "Shares",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "31,024,537",
+     "$",
+     "33",
+     "1,699,975",
+     "$",
+     "(4,789)",
+     "$",
+     "92,403",
+     "$",
+     "(12,957)",
+     "$",
+     "(248)",
+     "$",
+     "74,442"
+    ],
+    [
+     "Exercise of stock options",
+     "314,697",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "845",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "845",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "74,565",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "657",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "657",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "(20,810)",
+     "\u2014",
+     "",
+     "20,810",
+     "(202)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(202)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(318)",
+     "",
+     "\u2014",
+     "",
+     "(318)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,123",
+     "",
+     "1,123",
+     ""
+    ],
+    [
+     "Balance at March 31, 2021",
+     "31,392,989",
+     "$",
+     "33",
+     "1,720,785",
+     "$",
+     "(4,991)",
+     "$",
+     "93,905",
+     "$",
+     "(13,275)",
+     "$",
+     "875",
+     "$",
+     "76,547"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 268,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Changes in Stockholders' Equity\n(in thousands, except share data)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive Income",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "$",
+     "",
+     "Shares",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "30,149,105",
+     "$",
+     "32",
+     "1,639,791",
+     "$",
+     "(4,337)",
+     "$",
+     "88,022",
+     "$",
+     "(16,248)",
+     "\u2014",
+     "",
+     "$",
+     "67,469"
+    ],
+    [
+     "Exercise of stock options",
+     "316,504",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,198",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,198",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "55,668",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "502",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "502",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,116)",
+     "",
+     "\u2014",
+     "",
+     "(1,116)",
+     ""
+    ],
+    [
+     "Forfeitures of restricted stock",
+     "(34,700)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(276)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(276)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2020",
+     "30,486,577",
+     "$",
+     "32",
+     "1,639,791",
+     "$",
+     "(4,337)",
+     "$",
+     "89,446",
+     "$",
+     "(17,364)",
+     "$",
+     "\u2014",
+     "$",
+     "67,777"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 288,
+    "end_line": 305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows (Unaudited)\n(in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(318)",
+     "$",
+     "(1,116)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "1,231",
+     "",
+     "679",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "657",
+     "",
+     "226",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "\u2014",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "\u2014",
+     "",
+     "1,436",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "262",
+     "",
+     "(127)",
+     ""
+    ],
+    [
+     "Change in assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "1,439",
+     "",
+     "737",
+     ""
+    ],
+    [
+     "Contract assets",
+     "(729)",
+     "",
+     "111",
+     ""
+    ],
+    [
+     "Inventory",
+     "(1,617)",
+     "",
+     "(897)",
+     ""
+    ],
+    [
+     "Other current assets",
+     "(847)",
+     "",
+     "(287)",
+     ""
+    ],
+    [
+     "Other long term assets",
+     "(80)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "(1,939)",
+     "",
+     "(760)",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "(992)",
+     "",
+     "(318)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(2,933)",
+     "",
+     "(302)",
+     ""
+    ],
+    [
+     "Cash flows (used in)/provided by investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property and equipment",
+     "(361)",
+     "",
+     "(74)",
+     ""
+    ],
+    [
+     "Intangible property costs",
+     "(48)",
+     "",
+     "(91)",
+     ""
+    ],
+    [
+     "Proceeds from sale of discontinued operations",
+     "\u2014",
+     "",
+     "600",
+     ""
+    ],
+    [
+     "Net cash (used in)/provided by investing activities",
+     "(409)",
+     "",
+     "435",
+     ""
+    ],
+    [
+     "Cash flows (used in)/provided by financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments on finance lease obligations",
+     "(12)",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Payments of debt obligations",
+     "(1,036)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "(202)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from the exercise of options and warrants",
+     "845",
+     "",
+     "1,198",
+     ""
+    ],
+    [
+     "Net cash (used in)/provided by financing activities",
+     "(405)",
+     "",
+     "1,185",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "175",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net (decrease)/increase in cash and cash equivalents",
+     "(3,572)",
+     "",
+     "1,318",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014beginning of period",
+     "15,366",
+     "",
+     "25,006",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014end of period",
+     "$",
+     "11,794",
+     "$",
+     "26,324"
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "125",
+     "$",
+     "1"
+    ],
+    [
+     "Cash received for income tax refund, net",
+     "$",
+     "87",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 314,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows (Unaudited)\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nNotes to Unaudited Consolidated Financial Statements\n1. Basis of Presentation and Significant Accounting Policies\nNature of Operations\nLuna Innovations Incorporated (\u201cwe,\u201d \u201cLuna Innovations\u201d or the \u201cCompany\u201d), headquartered in Roanoke, Virginia, was incorporated in the Commonwealth of Virginia in 1990 and reincorporated in the State of Delaware in April 2003.\nWe are a leader in advanced optical technology, providing high performance fiber optic test, measurement and control products for the telecommunications and photonics industries, and distributed fiber optic sensing solutions that measure, or \"sense\" the structures for industries ranging from aerospace, automotive, oil and gas, security and infrastructure. Our communications test and control products help customers test their fiber optic networks and assemblies with speed and precision in both lab and production environments, accelerating the development of fiber optic products and assuring accurate testing of optical components like photonic integrated circuits (\"PICs\") and coherent receivers, which are both critical elements of meeting the world\u2019s exponentially growing demand for bandwidth. Our distributed fiber optic sensing products help designers and manufacturers more efficiently develop new and innovative products by measuring stress, strain, and temperature at a high resolution for new designs or manufacturing processes. In addition, our distributed fiber optic sensing products ensure the safety and structural integrity or operational health of critical assets in the field, by monitoring stress, strain, and vibration in large civil and industrial infrastructure such as bridges, roads, pipelines and borders.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 367,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "5,553"
+    ],
+    [
+     "Contract assets",
+     "2,823",
+     ""
+    ],
+    [
+     "Inventory",
+     "11,483",
+     ""
+    ],
+    [
+     "Other current assets",
+     "1,026",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "1,247",
+     ""
+    ],
+    [
+     "Identifiable intangible assets",
+     "11,263",
+     ""
+    ],
+    [
+     "Goodwill",
+     "7,619",
+     ""
+    ],
+    [
+     "Right of use assets",
+     "2,082",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "22",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "(4,089)",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "(3,259)",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "(747)",
+     ""
+    ],
+    [
+     "Long-term operating lease liability",
+     "(1,335)",
+     ""
+    ],
+    [
+     "Total purchase consideration",
+     "$",
+     "33,688"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 450,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business Acquisitions"
+    }
+   },
+   "prose_before": "On October 29, 2020, we acquired New Ridge Technologies, a small company that develops and manufactures fiber optic test and measurement equipment and advanced fiber optic subsystems primarily for telecommunication and radio-over-fiber applications. New Ridge's acquired operations will be integrated into, and reported as a part of, our Lightwave segment. This acquisition supports our growth strategy in the communications test arena. The total consideration was $0.6 million which consisted of $0.4 million paid at closing and $0.2 million of contingent consideration related to an earn-out provision. We recorded $0.02 million of goodwill upon the completion of the purchase consideration allocation. Depending on the achievement of certain metrics during the two years following closing, we may pay the seller up to $0.2 million in contingent consideration related to the earn-out provision.\nThese acquisitions have been accounted for under the acquisition method of accounting in accordance with ASC 805 - Business Combinations. Under ASC 805, the total estimated purchase consideration is allocated to the acquired tangible and intangible assets and assumed liabilities based on their estimated fair values as of the acquisition date. Any excess of the fair value of the acquisition consideration over the identifiable assets acquired and liabilities assumed is recognized as goodwill.\nThe following table summarizes the allocation of the purchase consideration of the OptaSense acquisition (excluding cash of $5.2 million):",
+   "prose_after": "The identifiable intangible assets and their estimated useful lives were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 447,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Estimated",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Useful Life",
+     "OptaSense",
+     ""
+    ],
+    [
+     "Developed technology",
+     "10 years",
+     "$",
+     "7,379"
+    ],
+    [
+     "Trade names and trademarks",
+     "15 years",
+     "2,580",
+     ""
+    ],
+    [
+     "Backlog",
+     "3 years",
+     "699",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "5 years",
+     "605",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "11,263"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 472,
+    "end_line": 485
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business Acquisitions"
+    }
+   },
+   "prose_before": "The identifiable intangible assets and their estimated useful lives were as follows:",
+   "prose_after": "OptaSense's developed technology primarily consists of its DAS product solutions that deliver superior measurements for a wide range of applications from advanced industrial monitoring through high performance geophysical measurements. The developed technologies were valued using the \"multi-period excess earnings\" method, under the income approach. The multi-period excess earnings method reflects the present value of the projected cash flows that are expected by the developed technologies less charges representing the contribution of other assets to those cash flows. A discount rate of 17.5% was used to discount the cash flows to the present value.\nTrade names and trademarks are considered a type of guarantee of a certain level of recognizability, quality or performance represented by the OptaSense brand. Trade names and trademarks were valued using the \"relief from royalty\" method under the income approach. This method is based on the assumption that in lieu of ownership, a market participant would be willing to pay a royalty in order to exploit the related benefits of these assets. A discount rate of 17.5% was used to discount the cash flows to the present value.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 447,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the three months ended",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "24,866"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "760"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended",
+    "March 31, 2020",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 503,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business Acquisitions"
+    }
+   },
+   "prose_before": "Goodwill represents the excess of consideration transferred over the net of the acquisition date fair values of the assets acquired and the liabilities assumed in connection with the acquisition. Goodwill generated from our business acquisitions was primarily attributable to expected synergies from future customer and sales growth.\nPro forma consolidated results of operations\nThe following unaudited pro forma financial information presents combined results of operations for the period presented as if the acquisition of OptaSense had been completed on January 1, 2019. The pro forma information includes adjustments to amortization expense for the intangible assets acquired and interest expense for the additional debt used to partially fund the acquisition price.\nThe pro forma data are for informational purposes only and are not necessarily indicative of the consolidated results of operations or the combined business had the acquisition of OptaSense occurred on January 1, 2019, or the results of future operations of the combined business. For instance, planned or expected operational synergies following the acquisition are not reflected in the pro forma information. Consequently, actual results will differ from the unaudited pro forma information presented below.",
+   "prose_after": "3. Intangible assets, net\nIntangible assets, net at March 31, 2021 and December 31, 2020 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent costs",
+     "$",
+     "5,780",
+     "$",
+     "5,702"
+    ],
+    [
+     "Developed technology",
+     "17,559",
+     "",
+     "17,344",
+     ""
+    ],
+    [
+     "In-process research & development",
+     "1,580",
+     "",
+     "1,580",
+     ""
+    ],
+    [
+     "Customer base",
+     "1,302",
+     "",
+     "1,302",
+     ""
+    ],
+    [
+     "Trade names",
+     "3,122",
+     "",
+     "3,122",
+     ""
+    ],
+    [
+     "Backlog",
+     "696",
+     "",
+     "696",
+     ""
+    ],
+    [
+     "",
+     "30,039",
+     "",
+     "29,746",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "(10,397)",
+     "",
+     "(9,637)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "19,642",
+     "$",
+     "20,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Intangible assets, net"
+    }
+   },
+   "prose_before": "3. Intangible assets, net\nIntangible assets, net at March 31, 2021 and December 31, 2020 consisted of the following:",
+   "prose_after": "Amortization expense for the three months ended March 31, 2021 was $0.8 million. Estimated aggregate amortization, based on the net value of intangible assets at March 31, 2021, for each of the next five years and beyond is as follows (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2021 - remaining 9 months",
+     "$",
+     "2,545"
+    ],
+    [
+     "2022",
+     "2,906",
+     ""
+    ],
+    [
+     "2023",
+     "2,807",
+     ""
+    ],
+    [
+     "2024",
+     "2,316",
+     ""
+    ],
+    [
+     "2025",
+     "2,293",
+     ""
+    ],
+    [
+     "2026 & beyond",
+     "6,775",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "19,642"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 542,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Intangible assets, net"
+    }
+   },
+   "prose_before": "Amortization expense for the three months ended March 31, 2021 was $0.8 million. Estimated aggregate amortization, based on the net value of intangible assets at March 31, 2021, for each of the next five years and beyond is as follows (amounts in thousands):",
+   "prose_after": "4.Goodwill\nGoodwill was $18.3 million and $18.1 million at March 31, 2021 and December 31, 2020, respectively, and has been allocated to the Lightwave segment. The change in goodwill during the three months ended March 31, 2021 related to foreign currency translation.\n5.Inventory\nInventory consists of finished goods, work-in-process and raw materials valued at the lower of cost (determined on the first-in, first-out basis) or net realizable value.\nComponents of inventory were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "10,382",
+     "$",
+     "11,547"
+    ],
+    [
+     "Work-in-process",
+     "2,536",
+     "",
+     "1,425",
+     ""
+    ],
+    [
+     "Raw materials",
+     "12,632",
+     "",
+     "10,625",
+     ""
+    ],
+    [
+     "  Total inventory",
+     "$",
+     "25,550",
+     "$",
+     "23,597"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 577
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Intangible assets, net"
+    }
+   },
+   "prose_before": "4.Goodwill\nGoodwill was $18.3 million and $18.1 million at March 31, 2021 and December 31, 2020, respectively, and has been allocated to the Lightwave segment. The change in goodwill during the three months ended March 31, 2021 related to foreign currency translation.\n5.Inventory\nInventory consists of finished goods, work-in-process and raw materials valued at the lower of cost (determined on the first-in, first-out basis) or net realizable value.\nComponents of inventory were as follows:",
+   "prose_after": "6. Accrued Liabilities\nAccrued liabilities at March 31, 2021 and December 31, 2020 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "$",
+     "8,309",
+     "$",
+     "9,103"
+    ],
+    [
+     "  Contingent consideration",
+     "225",
+     "",
+     "225",
+     ""
+    ],
+    [
+     "Accrued professional fees",
+     "679",
+     "",
+     "825",
+     ""
+    ],
+    [
+     "Accrued income tax",
+     "112",
+     "",
+     "281",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "24",
+     "",
+     "42",
+     ""
+    ],
+    [
+     "Accrued royalties",
+     "454",
+     "",
+     "456",
+     ""
+    ],
+    [
+     "Accrued liabilities - other",
+     "929",
+     "",
+     "1,227",
+     ""
+    ],
+    [
+     "    Total accrued liabilities",
+     "$",
+     "10,732",
+     "$",
+     "12,159"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 582,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "6. Accrued Liabilities\nAccrued liabilities at March 31, 2021 and December 31, 2020 consisted of the following:",
+   "prose_after": "7.Debt\nLong-term debt consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands)",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Term Loan (net of debt issuance costs of $61 and $66, 2.48% and 2.48% at March 31, 2021 and December 31, 2020, respectively)",
+     "$",
+     "11,398",
+     "$",
+     "12,434"
+    ],
+    [
+     "Revolving Loan (2.48% at March 31, 2021 and December 31, 2020)",
+     "7,550",
+     "",
+     "7,550",
+     ""
+    ],
+    [
+     "",
+     "18,948",
+     "",
+     "19,984",
+     ""
+    ],
+    [
+     "Less: Current portion of long-term debt obligations",
+     "(4,167)",
+     "",
+     "(4,167)",
+     ""
+    ],
+    [
+     "Long-term debt obligations",
+     "$",
+     "14,781",
+     "$",
+     "15,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "7.Debt\nLong-term debt consisted of the following:",
+   "prose_after": "PNC Bank Facility\nOn December 1, 2020 (the \u201cEffective Date\u201d), we entered into a Loan Agreement (the \u201cLoan Agreement\u201d) with PNC Bank, National Association, as lender (the \u201cLender\u201d) and our domestic subsidiaries as guarantors. The Loan Agreement provides a $12.5 million term loan facility (the \u201cTerm Loan\u201d) and a $15.0 million revolving credit facility (the \u201cRevolving Line\u201d), which includes a $3.0 million letter of credit sublimit. On the Effective Date, we borrowed the full amount of the Term Loan from the Lender pursuant to a term note (the \u201cTerm Note\u201d) and a $7.6 million revolving loan (the \u201cRevolving Loan\u201d) pursuant to a revolving line of credit note (the \u201cRevolving Line of Credit Note\u201d). We may repay and reborrow advances under the Revolving Line from time to time pursuant to the Revolving Line of Credit Note.\nThe Term Loan matures on December 1, 2023. The Term Loan is due and payable in 12 equal quarterly payments of principal and interest. The Term Loan bears interest at a floating per annum rate equal to the sum of (a) LIBOR plus (b) a margin ranging from 1.75% to 2.25% depending on the Net Leverage Ratio (as defined in the Loan Agreement). We may prepay the Term Loan without penalty or premium.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2021 - remaining 9 months",
+     "$",
+     "3,125"
+    ],
+    [
+     "2022",
+     "4,167",
+     ""
+    ],
+    [
+     "2023",
+     "11,656",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "18,948"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 633,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "The Loan Agreement includes a number of affirmative and restrictive covenants applicable to us and our subsidiaries, including, among others, financial covenants regarding minimum net leverage and fixed charge coverage, affirmative covenants regarding delivery of financial statements, payment of taxes, and maintenance of government compliance, and restrictive covenants regarding dispositions of property, acquisitions, incurrence of additional indebtedness or liens, investments and transactions with affiliates. We are also restricted from paying dividends or making other distributions or payments on our capital stock, subject to limited exceptions. We were in compliance with these covenants as of March 31, 2021.\nUpon the occurrence of certain events, including failure to satisfy our payment obligations under the Loan Agreement, failure to adhere to the financial covenants, the breach of certain of our other covenants under the Loan Agreement, cross defaults to other indebtedness or material agreements, judgment defaults and defaults related to failure to maintain governmental approvals, the Lender will have the right, among other remedies, to declare all principal and interest immediately due and payable, and to exercise secured party remedies.\nMaturities on debt are as follows (in thousands):",
+   "prose_after": "Interest expense, net for the three months ended March 31, 2021 and 2020 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Interest expense on Term Loan",
+     "$",
+     "76",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest expense on Revolving Line",
+     "30",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "11",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other interest expense",
+     "26",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest income",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total interest expense, net",
+     "$",
+     "143",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Interest expense, net for the three months ended March 31, 2021 and 2020 consisted of the following:",
+   "prose_after": "8.Leases\nWe recognize right-of-use (\"ROU\") assets and lease liabilities on the balance sheet for those leases classified as operating or finance leases with terms greater than twelve months.\nWe have operating leases for our facilities, which have remaining terms ranging from 1 to 10 years. Most of our leases do not have an option to extend the lease period beyond the stated term unless the new term is agreed to by both parties. They also do not have an early termination clause included. Our operating lease agreements do not contain any material restrictive covenants. Some of our operating lease agreements contain variable payment provisions that provide for rental increases based on consumer price indices. The change in rent expense resulting from changes in these indices are included within variable rent.\nWe also have finance leases for equipment which have remaining terms ranging from 1 to 3 years. These lease agreements are for general office equipment with a 5-year useful life. These lease agreements do not have an option to extend the lease beyond the stated terms nor do they have an early termination clause. These lease agreements do not have any variable payment provisions included. The finance lease costs consist of interest expense and amortization, and are included primarily in selling, general and administrative expense in our consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Operating lease costs",
+     "$",
+     "709",
+     "$",
+     "412"
+    ],
+    [
+     "Variable rent costs",
+     "(29)",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "  Total rent expense",
+     "$",
+     "680",
+     "$",
+     "373"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "We also have finance leases for equipment which have remaining terms ranging from 1 to 3 years. These lease agreements are for general office equipment with a 5-year useful life. These lease agreements do not have an option to extend the lease beyond the stated terms nor do they have an early termination clause. These lease agreements do not have any variable payment provisions included. The finance lease costs consist of interest expense and amortization, and are included primarily in selling, general and administrative expense in our consolidated statements of operations.\nThe discount rate for both our operating and finance leases was not readily determinable in the specific lease agreements. As a result, our incremental borrowing rate was used as the discount rate when establishing the ROU assets and corresponding lease liabilities. As of March 31, 2021, we had no operating or finance leases that have not yet commenced.\nRent expense is recognized on a straight-line basis over the life of the lease. Rent expense consists of the following:",
+   "prose_after": "Future minimum lease payments under non-cancelable operating and finance leases were as follows as of March 31, 2021 (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Leases",
+     "",
+     "Finance Leases",
+     ""
+    ],
+    [
+     "Year Ending December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021 - remaining 9 months",
+     "$",
+     "2,374",
+     "$",
+     "39"
+    ],
+    [
+     "2022",
+     "2,614",
+     "",
+     "53",
+     ""
+    ],
+    [
+     "2023",
+     "2,351",
+     "",
+     "53",
+     ""
+    ],
+    [
+     "2024",
+     "1,880",
+     "",
+     "53",
+     ""
+    ],
+    [
+     "2025",
+     "1,196",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "2026 and beyond",
+     "3,882",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Total future minimum lease payments",
+     "14,297",
+     "",
+     "245",
+     ""
+    ],
+    [
+     "  Less: interest",
+     "2,400",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "    Total lease liabilities",
+     "$",
+     "11,897",
+     "$",
+     "232"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current lease liability",
+     "$",
+     "2,195",
+     "$",
+     "48"
+    ],
+    [
+     "Long-term lease liability",
+     "9,702",
+     "",
+     "184",
+     ""
+    ],
+    [
+     "  Total lease liabilities",
+     "$",
+     "11,897",
+     "$",
+     "232"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Future minimum lease payments under non-cancelable operating and finance leases were as follows as of March 31, 2021 (amounts in thousands):",
+   "prose_after": "Other information related to leases is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 741,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except weighted-average data)",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Finance lease cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of right-of-use assets",
+     "$",
+     "14",
+     "",
+     "$",
+     "14",
+     ""
+    ],
+    [
+     "  Interest on lease liabilities",
+     "1",
+     "",
+     "",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Total finance lease cost",
+     "$",
+     "15",
+     "",
+     "$",
+     "15",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating cash flows from operating leases",
+     "$",
+     "709",
+     "",
+     "$",
+     "378",
+     ""
+    ],
+    [
+     "  Finance cash flows from finance leases",
+     "$",
+     "12",
+     "",
+     "$",
+     "13",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new finance lease liabilities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term (years) - operating leases",
+     "6.2",
+     "",
+     "",
+     "3.7",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term (years) - finance leases",
+     "4.7",
+     "",
+     "",
+     "1.9",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average discount rate - operating leases",
+     "6",
+     "",
+     "%",
+     "7",
+     "",
+     "%"
+    ],
+    [
+     "Weighted-average discount rate - finance leases",
+     "2",
+     "",
+     "%",
+     "7",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 717,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Other information related to leases is as follows:",
+   "prose_after": "9.Capital Stock and Share-Based Compensation\nStock Options\nDuring the three months ended March 31, 2021, we granted options to purchase 80,735 shares of our common stock. The general terms of the stock options are similar to awards previously granted by us.\nThe fair values of stock options granted were estimated using the following weighted-average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 741,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2021",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "0.98",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "55.22",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "7",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "9.Capital Stock and Share-Based Compensation\nStock Options\nDuring the three months ended March 31, 2021, we granted options to purchase 80,735 shares of our common stock. The general terms of the stock options are similar to awards previously granted by us.\nThe fair values of stock options granted were estimated using the following weighted-average assumptions:",
+   "prose_after": "The weighted average fair value of stock options granted during the three months ended March 31, 2021 was $5.24 per share. The fair value of each stock option was determined using the Black-Scholes model.\nFor each of the three months ended March 31, 2021 and 2020 we recognized $0.3 million in share-based compensation expense related to stock options, which is included in our selling, general and administrative expense in the accompanying consolidated interim financial statements. We expect to recognize $2.2 million in share-based compensation expense over the weighted-average remaining service period of 2.2 years for stock options outstanding as of March 31, 2021.\nRestricted Stock Units\nDuring the three months ended March 31, 2021, we granted 79,250 time-based restricted stock units (\"RSUs\"). The general terms of the RSUs are similar to awards previously granted by us.\nThe weighted average fair value of the time-based RSUs granted during the three months ended March 31, 2021 was $11.40 per share. The fair value of each RSU was determined based on the market price of our stock on the date of grant.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 741,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Lightwave",
+     "",
+     "Luna Labs",
+     "",
+     "Total",
+     "",
+     "Lightwave",
+     "",
+     "Luna Labs",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue by Geographic Location",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "United States",
+     "$",
+     "10,579",
+     "$",
+     "5,263",
+     "$",
+     "15,842",
+     "$",
+     "5,852",
+     "$",
+     "5,587",
+     "$",
+     "11,439"
+    ],
+    [
+     "",
+     "Asia",
+     "3,672",
+     "",
+     "\u2014",
+     "",
+     "3,672",
+     "",
+     "3,756",
+     "",
+     "\u2014",
+     "",
+     "3,756",
+     ""
+    ],
+    [
+     "",
+     "Europe",
+     "3,977",
+     "",
+     "27",
+     "",
+     "4,004",
+     "",
+     "1,713",
+     "",
+     "\u2014",
+     "",
+     "1,713",
+     ""
+    ],
+    [
+     "",
+     "Canada, Central and South America",
+     "2,769",
+     "",
+     "12",
+     "",
+     "2,781",
+     "",
+     "206",
+     "",
+     "\u2014",
+     "",
+     "206",
+     ""
+    ],
+    [
+     "",
+     "All Others",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "27",
+     "",
+     "\u2014",
+     "",
+     "27",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "20,997",
+     "$",
+     "5,302",
+     "$",
+     "26,299",
+     "$",
+     "11,554",
+     "$",
+     "5,587",
+     "$",
+     "17,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue by Major Customer Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Sales to the U.S. government",
+     "$",
+     "2,414",
+     "$",
+     "4,927",
+     "$",
+     "7,341",
+     "$",
+     "1,825",
+     "$",
+     "5,011",
+     "$",
+     "6,836"
+    ],
+    [
+     "",
+     "U.S. direct commercial sales and other",
+     "8,165",
+     "",
+     "337",
+     "",
+     "8,502",
+     "",
+     "4,027",
+     "",
+     "576",
+     "",
+     "4,603",
+     ""
+    ],
+    [
+     "",
+     "Foreign commercial sales & other",
+     "10,418",
+     "",
+     "38",
+     "",
+     "10,456",
+     "",
+     "5,702",
+     "",
+     "\u2014",
+     "",
+     "5,702",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "20,997",
+     "$",
+     "5,302",
+     "$",
+     "26,299",
+     "$",
+     "11,554",
+     "$",
+     "5,587",
+     "$",
+     "17,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue by Contract Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fixed-price contracts",
+     "$",
+     "20,405",
+     "$",
+     "3,232",
+     "$",
+     "23,637",
+     "$",
+     "11,554",
+     "$",
+     "2,540",
+     "$",
+     "14,094"
+    ],
+    [
+     "",
+     "Cost-type contracts",
+     "592",
+     "",
+     "2,070",
+     "",
+     "2,662",
+     "",
+     "\u2014",
+     "",
+     "3,047",
+     "",
+     "3,047",
+     ""
+    ],
+    [
+     "",
+     "  Total",
+     "$",
+     "20,997",
+     "$",
+     "5,302",
+     "$",
+     "26,299",
+     "$",
+     "11,554",
+     "$",
+     "5,587",
+     "$",
+     "17,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue by Timing of Recognition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Goods transferred at a point in time",
+     "$",
+     "16,839",
+     "$",
+     "310",
+     "$",
+     "17,149",
+     "$",
+     "9,761",
+     "$",
+     "480",
+     "$",
+     "10,241"
+    ],
+    [
+     "",
+     "Goods/services transferred over time",
+     "4,158",
+     "",
+     "4,992",
+     "",
+     "9,150",
+     "",
+     "1,793",
+     "",
+     "5,107",
+     "",
+     "6,900",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "20,997",
+     "$",
+     "5,302",
+     "$",
+     "26,299",
+     "$",
+     "11,554",
+     "$",
+     "5,587",
+     "$",
+     "17,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue by Major Products/Services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Technology development",
+     "$",
+     "2,140",
+     "$",
+     "4,992",
+     "$",
+     "7,132",
+     "$",
+     "1,708",
+     "$",
+     "5,107",
+     "$",
+     "6,815"
+    ],
+    [
+     "",
+     "Test, measurement and sensing systems",
+     "18,519",
+     "",
+     "\u2014",
+     "",
+     "18,519",
+     "",
+     "9,761",
+     "",
+     "\u2014",
+     "",
+     "9,761",
+     ""
+    ],
+    [
+     "",
+     "Other",
+     "338",
+     "",
+     "310",
+     "",
+     "648",
+     "",
+     "85",
+     "",
+     "480",
+     "",
+     "565",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "20,997",
+     "$",
+     "5,302",
+     "$",
+     "26,299",
+     "$",
+     "11,554",
+     "$",
+     "5,587",
+     "$",
+     "17,141"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 787,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "uncertainty of our revenue and cash flows are affected by economic factors. We disaggregate revenue on the basis of where the physical goods are shipped. We also classify revenue by the customer type of entity for which it does business, which is an indicator of the diversity of our client base. We attribute revenues generated from being a subcontractor to a commercial company as government revenue when the ultimate client is a government agency or department. Disaggregation by contract mix provides insight in terms of the degree of performance risk that we have assumed. Fixed-price contracts are considered to provide the highest amount of performance risk as we are required to deliver a scope of work or level of effort for a negotiated fixed price. Cost-based contracts are considered to provide the lowest amount of performance risk since we are generally reimbursed for all contract costs incurred in performance of contract deliverables with only the amount of incentive or award fees (if applicable) dependent on the achievement of negotiated performance requirements. By classifying revenue by major product and service, we attribute revenue from a client to the major product or service that we believe to be the client's primary market.\nThe details are listed in the table below for the three months ended March 31, 2021 and 2020:",
+   "prose_after": "Contract Balances\nOur contract assets consist of unbilled amounts for technology development contracts as well as custom product contracts. Also included in contract assets are royalty revenue and carrying amounts of right of return inventory. Long-term contract assets include the fee withholding on cost reimbursable contracts that will not be billed within a year. Contract liabilities include excess billings, subcontractor accruals, warranty expense, extended warranty revenue, right of return refund, and customer deposits. For the three months ended March 31, 2021, net contract assets/(liabilities) increased $1.7 million, due primarily to an increase in our Fixed-Price contracts that have not yet reached milestones as designated in their respective contracts but for which revenue has been recognized. The increase is also attributable to subcontractor work that has been performed but not yet invoiced.\nThe following table shows the components of our contract balances as of March 31, 2021 and December 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Contract assets",
+     "$",
+     "8,328",
+     "$",
+     "7,517"
+    ],
+    [
+     "Contract liabilities",
+     "6,228",
+     "",
+     "7,095",
+     ""
+    ],
+    [
+     "  Net contract assets",
+     "$",
+     "2,100",
+     "$",
+     "422"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 863,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Our contract assets consist of unbilled amounts for technology development contracts as well as custom product contracts. Also included in contract assets are royalty revenue and carrying amounts of right of return inventory. Long-term contract assets include the fee withholding on cost reimbursable contracts that will not be billed within a year. Contract liabilities include excess billings, subcontractor accruals, warranty expense, extended warranty revenue, right of return refund, and customer deposits. For the three months ended March 31, 2021, net contract assets/(liabilities) increased $1.7 million, due primarily to an increase in our Fixed-Price contracts that have not yet reached milestones as designated in their respective contracts but for which revenue has been recognized. The increase is also attributable to subcontractor work that has been performed but not yet invoiced.\nThe following table shows the components of our contract balances as of March 31, 2021 and December 31, 2020:",
+   "prose_after": "Performance Obligations\nUnfulfilled performance obligations represent amounts expected to be earned on executed contracts. Indefinite delivery and quantity contracts and unexercised options are not reported in total unfulfilled performance obligations. Unfulfilled performance obligations include funded obligations, which is the amount for which money has been directly authorized by the U.S. government and for which a purchase order has been received by a commercial customer, and unfunded obligations represent firm orders for which funding has not yet been appropriated. The approximate value of our Lightwave segment's unfulfilled performance obligations was $36.1 million at March 31, 2021. We expect to satisfy 65% of the performance obligations in 2021, 29% in 2022 and the remainder by 2025. The approximate value of our Luna Labs segment's unfulfilled performance obligations was $19.4 million at March 31, 2021. We expect to satisfy 59% of the performance obligations in 2021, 36% in 2022 and the remainder by 2023.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lightwave",
+     "$",
+     "20,997",
+     "$",
+     "11,554"
+    ],
+    [
+     "  Luna Labs",
+     "5,302",
+     "",
+     "5,587",
+     ""
+    ],
+    [
+     "    Total revenues",
+     "$",
+     "26,299",
+     "$",
+     "17,141"
+    ],
+    [
+     "  Lightwave operating loss",
+     "$",
+     "(309)",
+     "$",
+     "(22)"
+    ],
+    [
+     "  Luna Labs operating (loss)/income",
+     "(485)",
+     "",
+     "412",
+     ""
+    ],
+    [
+     "    Total operating (loss)/income",
+     "$",
+     "(794)",
+     "$",
+     "390"
+    ],
+    [
+     "Depreciation, Lightwave",
+     "$",
+     "354",
+     "$",
+     "200"
+    ],
+    [
+     "Depreciation, Luna Labs",
+     "$",
+     "34",
+     "$",
+     "47"
+    ],
+    [
+     "Amortization, Lightwave",
+     "$",
+     "826",
+     "$",
+     "405"
+    ],
+    [
+     "Amortization, Luna Labs",
+     "$",
+     "17",
+     "$",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 911
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "We have two operating and reportable segments: Lightwave and Luna Labs.\nThe Lightwave segment develops, manufactures and markets distributed fiber optic sensing products and fiber optic communications test and control products. The Luna Labs segment performs applied research principally in the areas of sensing and instrumentation, advanced materials and health sciences.\nThrough March 31, 2021, our Chief Executive Officer and his direct reports (collectively represented our chief operating decision maker, or CODM), evaluated segment performance based primarily on revenues and operating income or loss. The accounting policies of our segments are the same as those described in the summary of significant accounting policies (see Note 1 to our Financial Statements, \u201cOrganization and Summary of Significant Accounting Policies,\u201d presented in our Annual Report on Form 10-K as filed with the SEC on March 12, 2021).\nThe table below presents revenues and operating income/(loss) for reportable segments:",
+   "prose_after": "The table below presents assets for reportable segments:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total segment assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lightwave",
+     "$",
+     "111,434",
+     "$",
+     "110,446"
+    ],
+    [
+     "Luna Labs",
+     "17,472",
+     "",
+     "20,556",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "128,906",
+     "$",
+     "131,002"
+    ],
+    [
+     "Property plant and equipment, and intangible assets, Lightwave",
+     "$",
+     "40,561",
+     "$",
+     "40,995"
+    ],
+    [
+     "Property plant and equipment, and intangible assets, Luna Labs",
+     "$",
+     "719",
+     "$",
+     "543"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "The table below presents assets for reportable segments:",
+   "prose_after": "The U.S. government accounted for 28% and 40% of total consolidated revenues for the three months ended March 31, 2021 and 2020, respectively.\nInternational revenues (customers outside the United States) accounted for 40% and 33% of total consolidated revenues for the three months ended March 31, 2021 and 2020, respectively. Customers in China represented 11% of total revenues for the three months ended March 31, 2020, while no other single country, outside of the United States, represented more than 10% of total revenues for the three months ended March 31, 2021 and 2020.\n12.Commitments and Contingencies\nWe are from time to time involved in certain legal proceedings in the ordinary course of conducting our business. While the ultimate liability pursuant to these actions cannot currently be determined, we believe it is not reasonably possible that these legal proceedings will have a material adverse effect on our financial position or results of operations.\nIn December 2018, we received a notice of claim (the \"Claim\") from Macom Technology Solutions, Inc. (\"Macom\"), who acquired our HSOR business in August 2017 pursuant to an asset purchase agreement. Under the asset purchase agreement, we agreed to indemnify Macom for certain matters, including, among other things, the collection of accounts receivable from certain major customers, and placed $4.0 million of the purchase price into an escrow account for the potential settlement of any valid indemnity claims. As of December 31, 2019, $1.5 million of the escrow had been received with $2.5 million remaining in escrow pending resolution of the dispute. In March 2020, we settled the dispute resulting in us receiving $0.6 million and Macom receiving $1.9 million. For the three months ended March 31, 2020, we have recorded a loss from discontinued operations of $1.4 million, net of income tax benefit, to reflect the settlement of the dispute.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ Difference",
+     "",
+     "% Difference",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lightwave",
+     "$",
+     "20,997",
+     "$",
+     "11,554",
+     "$",
+     "9,443",
+     "82",
+     "%"
+    ],
+    [
+     "  Luna Labs",
+     "5,302",
+     "",
+     "5,587",
+     "",
+     "(285)",
+     "",
+     "(5)",
+     "%"
+    ],
+    [
+     "    Total revenues",
+     "$",
+     "26,299",
+     "$",
+     "17,141",
+     "$",
+     "9,158",
+     "53",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1026,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "The COVID-19 pandemic has resulted and is expected to continue to result in a slowdown of economic activity that is likely to interrupt business operations across the globe. Estimates and assumptions about future events and their effects cannot be determined with certainty and therefore require the exercise of judgment. As of the date of issuance of our financial statements included in this report, we are not aware of any specific event or circumstance that would require us to update our estimates, assumptions and judgments or revise the reported amounts of assets and liabilities or the disclosure of contingent assets and liabilities. These estimates, however, may change as new events occur and additional information is obtained, and are recognized in the financial statements as soon as they become known.\nOur critical accounting policies are described in the Management\u2019s Discussion and Analysis section and the notes to our audited consolidated financial statements previously included in our Annual Report on Form 10-K for the year ended December 31, 2020, as filed with the Securities and Exchange Commission (\"SEC\") on March 12, 2021.\nResults of Operations\nThree Months Ended March 31, 2021 Compared to Three Months Ended March 31, 2020\nRevenues",
+   "prose_after": "Lightwave segment revenues for the three months ended March 31, 2021 increased $9.4 million, or 82%, to $21.0 million compared to $11.6 million for the three months ended March 31, 2020. The vast majority of the increase in revenues for the three months ended March 31, 2021, compared to the three months ended March 31, 2020, was due to the revenues from OptaSense which was acquired on December 3, 2020. Excluding OptaSense, we also experienced growth in sales of our sensing and communications testing products. Revenues from our Luna Labs segment for the three months ended March 31, 2021 decreased $0.3 million, or 5%, to $5.3 million compared to $5.6 million for the three months ended March 31, 2020.\nCost of Revenues and Gross Profit",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ Difference",
+     "",
+     "% Difference",
+     ""
+    ],
+    [
+     "Cost of revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lightwave",
+     "$",
+     "8,771",
+     "$",
+     "4,885",
+     "$",
+     "3,886",
+     "80",
+     "%"
+    ],
+    [
+     "  Luna Labs",
+     "4,099",
+     "",
+     "3,892",
+     "",
+     "207",
+     "",
+     "5",
+     "%"
+    ],
+    [
+     "    Total cost of revenues",
+     "12,870",
+     "",
+     "8,777",
+     "",
+     "4,093",
+     "",
+     "47",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "13,429",
+     "$",
+     "8,364",
+     "$",
+     "5,065",
+     "61",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1044,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Lightwave segment revenues for the three months ended March 31, 2021 increased $9.4 million, or 82%, to $21.0 million compared to $11.6 million for the three months ended March 31, 2020. The vast majority of the increase in revenues for the three months ended March 31, 2021, compared to the three months ended March 31, 2020, was due to the revenues from OptaSense which was acquired on December 3, 2020. Excluding OptaSense, we also experienced growth in sales of our sensing and communications testing products. Revenues from our Luna Labs segment for the three months ended March 31, 2021 decreased $0.3 million, or 5%, to $5.3 million compared to $5.6 million for the three months ended March 31, 2020.\nCost of Revenues and Gross Profit",
+   "prose_after": "The cost of revenues for the Lightwave segment increased by $3.9 million, or 80%, to $8.8 million for the three months ended March 31, 2021, compared to $4.9 million for the three months ended March 31, 2020. This increase in cost of revenues resulted from the OptaSense business and higher sales volume in our sensing and communications testing products. The cost of revenues for the Luna Labs segment for the three months ended March 31, 2021 increased $0.2 million, or 5%, to $4.1 million compared to $3.9 million for the three months ended March 31, 2020.\nOur overall gross margin increased to 51% for the three months ended March 31, 2021, compared to 49% for the three months ended March 31, 2020, primarily as a result of a higher mix of sales from our Lightwave segment.\nOperating Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ Difference",
+     "",
+     "% Difference",
+     ""
+    ],
+    [
+     "Operating expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "$",
+     "11,290",
+     "$",
+     "6,377",
+     "$",
+     "4,913",
+     "77",
+     "%"
+    ],
+    [
+     "Research, development and engineering",
+     "2,933",
+     "",
+     "1,597",
+     "",
+     "1,336",
+     "",
+     "84",
+     "%"
+    ],
+    [
+     "  Total operating expense",
+     "$",
+     "14,223",
+     "$",
+     "7,974",
+     "$",
+     "6,249",
+     "78",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "The cost of revenues for the Lightwave segment increased by $3.9 million, or 80%, to $8.8 million for the three months ended March 31, 2021, compared to $4.9 million for the three months ended March 31, 2020. This increase in cost of revenues resulted from the OptaSense business and higher sales volume in our sensing and communications testing products. The cost of revenues for the Luna Labs segment for the three months ended March 31, 2021 increased $0.2 million, or 5%, to $4.1 million compared to $3.9 million for the three months ended March 31, 2020.\nOur overall gross margin increased to 51% for the three months ended March 31, 2021, compared to 49% for the three months ended March 31, 2020, primarily as a result of a higher mix of sales from our Lightwave segment.\nOperating Expense",
+   "prose_after": "Our selling, general and administrative expense increased $4.9 million, or 77%, to $11.3 million for the three months ended March 31, 2021, compared to $6.4 million for the three months ended March 31, 2020. Selling, general and administrative expense increased primarily due to the acquired OptaSense operations and integration costs.\nResearch, development and engineering expense increased $1.3 million, or 84%, to $2.9 million for the three months ended March 31, 2021, compared to $1.6 million for the three months ended March 31, 2020. Research, development and engineering expense increased primarily due to the acquired OptaSense operations.\n(Loss)/Income from Continuing Operations Before Income Tax\nDuring the three months ended March 31, 2021, we recognized a loss from continuing operations before income taxes of $0.9 million compared to income from continuing operations before income taxes of $0.5 million for the three months ended March 31, 2020.\nIncome Tax (Benefit)/Expense\nFor the three months ended March 31, 2021, we recognized an income tax benefit from continuing operations of $0.6 million, compared to an income tax expense from continuing operations of $0.1 million for the three months ended March 31, 2020, respectively. The income tax benefit for the three months ended March 31, 2021 is primarily related to the pre-tax loss for the quarter and deductions on vested RSUs and stock option exercises.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ Difference",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(2,933)",
+     "$",
+     "(302)",
+     "$",
+     "(2,631)"
+    ],
+    [
+     "Net cash (used in)/provided by investing activities",
+     "(409)",
+     "",
+     "435",
+     "",
+     "(844)",
+     ""
+    ],
+    [
+     "Net cash (used in)/provided by financing activities",
+     "(405)",
+     "",
+     "1,185",
+     "",
+     "(1,590)",
+     ""
+    ],
+    [
+     "Net (decrease)/increase in cash and cash equivalents",
+     "$",
+     "(3,747)",
+     "$",
+     "1,318",
+     "$",
+     "(5,065)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1111,
+    "end_line": 1123
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "We believe that our cash and cash equivalents as of March 31, 2021 in addition to amounts available to us under our Revolving Line will provide adequate liquidity for us to meet our working capital needs over the next twelve months from the date of issuance of the consolidated financial statements included elsewhere in this Quarterly Report on Form 10-Q. Additionally, we believe that should we have the need for increased capital spending to support our planned growth, we will be able to fund such growth through either third-party financing on competitive market terms or through our available cash. However, these estimates are based on assumptions that may prove to be incorrect, including as a result of the ongoing COVID-19 pandemic and its potential impacts on our business. If we require additional capital beyond our current balances of cash and cash equivalents and borrowing capacity under the Revolving Line described above, this additional capital may not be available when needed, on reasonable terms, or at all. Moreover, our ability to raise additional capital may be adversely impacted by potential worsening global economic conditions and the recent disruptions to and volatility in the credit and financial markets in the United States and worldwide resulting from the ongoing COVID-19 pandemic.\nDiscussion of Cash Flows",
+   "prose_after": "During the first three months of 2021, the $2.9 million of net cash used in operating activities consisted of our net loss of $0.3 million, which included non-cash charges for depreciation and amortization of $1.2 million, share-based compensation of $0.7 million, and deferred tax asset of $0.3 million offset by a net cash outflow of $4.8 million from changes in working capital. The changes in working capital include a decrease in accounts payable and accrued expenses of $1.9 million, a decrease in contract liabilities of $1.0 million, a decrease in accounts receivable of $1.4 million, an increase in inventory of $1.6 million, an increase in other current assets of $0.8 million, and an increase in contract assets of $0.7 million.\nDuring the first three months of 2020, the $0.3 million of net cash used in operating activities consisted of our net loss of $1.1 million, which included non-cash charges for depreciation and amortization of $0.7 million, share-based compensation of $0.2 million, a net cash outflow of $1.4 million from changes in working capital all partially reduced by a net loss from discontinued operations of $1.4 million. The changes in working capital include a decrease in accounts payable and accrued expenses of accounts receivable of $0.8 million, a decrease in contract liabilities of $0.3 million and an increase in inventory of $0.9 million, all partially offset by a decrease in accounts receivable of $0.7 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1108,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1136,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Total Number of",
+     "Approximate Dollar",
+     ""
+    ],
+    [
+     "",
+     "Shares Purchased as",
+     "",
+     "",
+     "",
+     "Value of Shares that",
+     ""
+    ],
+    [
+     "",
+     "Total Number of Shares",
+     "Average Price Paid per",
+     "",
+     "Part of a Publicly",
+     "May Yet be Purchased",
+     ""
+    ],
+    [
+     "Period",
+     "Purchased",
+     "Share",
+     "",
+     "Announced Program",
+     "Under the Program",
+     ""
+    ],
+    [
+     "1/1/2021 - 1/31/2021",
+     "20,810 (1)",
+     "$",
+     "9.72",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1678,
+    "end_line": 1687
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Any failure to maintain internal control over financial reporting could severely inhibit our ability to accurately report our financial condition or results of operations. If we are unable to conclude that our internal control over financial reporting is effective, we could lose investor confidence in the accuracy and completeness of our financial reports, the market price of our common stock could decline, and we could be subject to sanctions or investigations by the Nasdaq Stock Market, the SEC or other regulatory authorities. Failure to remedy any material weakness in our internal control over financial reporting, or to implement or maintain other effective control systems required of public companies, could also restrict our future access to the capital markets.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\n(a) Unregistered Sales of Equity Securities during the Three Months Ended March 31, 2021\nNot applicable.\n(b) Use of Proceeds from Sale of Registered Equity Securities\nNot applicable.\n(c) Purchases of Equity Securities by the Registrant\nThe following table summarizes repurchases of our common stock during January 2021. There were no purchases during February 2021 or March 2021.",
+   "prose_after": "(1) These shares of common stock were repurchased from employees to satisfy tax withholding obligations triggered upon vesting of restricted stock awards.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNot applicable.\nITEM 6. EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1663,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amendment to Amended and Restated Bylaws (incorporated by reference to Exhibit 3.1 to the Registrant's Current Report on Form 8-K (File No. 000-52008) filed with the Commission on March 4, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following materials from the Registrant\u2019s Quarterly Report on Form 10-Q for the three months ended March 31, 2021, formatted in inline XBRL (eXtensible Business Reporting Language): (i) Consolidated Balance Sheets at March 31, 2021 and December 31, 2020, (ii) Consolidated Statements of Operations for the three ended March 31, 2021 and 2020, (iii) Consolidated Statements of Cash Flows for the three months ended March 31, 2021 and 2020 and (iv) Notes to Unaudited Consolidated Financial Statements."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1705,
+    "end_line": 1729
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "(1) These shares of common stock were repurchased from employees to satisfy tax withholding obligations triggered upon vesting of restricted stock awards.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNot applicable.\nITEM 6. EXHIBITS",
+   "prose_after": "* These certifications are being furnished solely to accompany this quarterly report pursuant to 18 U.S.C. Section 1350 and are not being filed for purposes of Section 18 of the Securities Exchange Act of 1934 and are not to be incorporated by reference into any filing of the registrant, whether made before or after the date hereof, regardless of any general incorporation language in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1702,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1732,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Luna Innovations Incorporated",
+     ""
+    ],
+    [
+     "Date:",
+     "May 17, 2021",
+     "By:",
+     "/s/ Eugene J. Nestro"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Eugene J. Nestro"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Luna Innovations Incorporated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1737,
+    "end_line": 1744
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "* These certifications are being furnished solely to accompany this quarterly report pursuant to 18 U.S.C. Section 1350 and are not being filed for purposes of Section 18 of the Securities Exchange Act of 1934 and are not to be incorporated by reference into any filing of the registrant, whether made before or after the date hereof, regardless of any general incorporation language in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1732,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1745,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

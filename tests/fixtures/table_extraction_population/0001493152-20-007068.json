@@ -1,0 +1,3481 @@
+{
+ "accession": "0001493152-20-007068",
+ "cik": "0001351573",
+ "form": "10-Q/A",
+ "filing_date": "2020-04-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-qa.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[X]",
+     "QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-Q/A #1\n(Mark One)",
+   "prose_after": "For the quarterly period ended September 30, 2019",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 34,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2401
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[  ]",
+     "TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE EXCHANGE ACT"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 19
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the quarterly period ended September 30, 2019",
+   "prose_after": "For the transition period from __________ to ___________\nCommission file number: 333-212055\nPURE HARVEST CANNABIS GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 34,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2401
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "36-4752858"
+    ],
+    [
+     "(State of Incorporation)",
+     "(IRS Employer ID Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the transition period from __________ to ___________\nCommission file number: 333-212055\nPURE HARVEST CANNABIS GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "E. 2nd Avenue, Suite 600\nDenver, CO 80206\n(Address of principal executive offices)\n(800) 560-5148\n(Registrant\u2019s Telephone number)\n929 Colorado Ave.\nSanta Monica, CA 90401\n(Former Address and phone number of principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 34,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2401
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 59
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "E. 2nd Avenue, Suite 600\nDenver, CO 80206\n(Address of principal executive offices)\n(800) 560-5148\n(Registrant\u2019s Telephone number)\n929 Colorado Ave.\nSanta Monica, CA 90401\n(Former Address and phone number of principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and\n(2) has been subject to the filing requirements for the past 90 days.\n<TABLE>\nYes  [X]  No  [ ]\n</TABLE>\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 for Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\n<TABLE>\nYes  [X]  No  [ ]\n</TABLE>\nIndicate by check mark whether the registrant is a large accelerated file, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 34,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2401
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yes",
+     "[X]",
+     "",
+     "No",
+     "[  ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yes",
+     "[X]",
+     "",
+     "No",
+     "[  ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large accelerated filer",
+     "[  ]",
+     "Accelerated filer",
+     "[  ]"
+    ],
+    [
+     "Non-accelerated filer",
+     "[X]",
+     "Smaller reporting company",
+     "[X]"
+    ],
+    [
+     "Emerging growth company",
+     "[X]",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and\n(2) has been subject to the filing requirements for the past 90 days.\n<TABLE>\nYes  [X]  No  [ ]\n</TABLE>\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 for Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\n<TABLE>\nYes  [X]  No  [ ]\n</TABLE>\nIndicate by check mark whether the registrant is a large accelerated file, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "prose_after": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n<TABLE>\nYes  [ ]  No  [X]\n</TABLE>\nAs of November 26, 2019 there were 32,203,330 outstanding shares of the registrant\u2019s common stock.\nEXPLANATORY NOTE ON AMENDMENT\nThis Amendment No. 1 to Form 10-Q (\u201cAmendment\u201d) amends the Quarterly Report for the three and nine months ended September 30, 2019 originally filed on August 23, 2019.\nOn April 8, 2020, management of Pure Harvest Cannabis Group, Inc. (the \u201cCompany\u201d) that previously filed consolidated financial statements as of September 30, 2019 and for the three and nine months ended September 30, 2019 required restatement. In May 2019, the Company leased a property which the Company intends to use as a marijuana retail dispensary. The initial term of the lease is for a period of three years. The Company has an option to purchase the property at prices ranging between $1,400,000 and $1,600,000 at various dates prior to May 1, 2022. The Company issued the landlord 400,000 shares of its post-split common stock in consideration for the option to purchase the property.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 34,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2401
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Yes",
+     "[  ]",
+     "",
+     "No",
+     "[X]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "61,538",
+     "",
+     "$",
+     "22,501",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "4,382",
+     "",
+     "",
+     "22,802",
+     ""
+    ],
+    [
+     "    Less: allowance for doubtfull accounts",
+     "",
+     "(3,711)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "89,150",
+     "",
+     "",
+     "63,940",
+     ""
+    ],
+    [
+     "  Deferred rent",
+     "",
+     "93,333",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "244,691",
+     "",
+     "",
+     "109,243",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Machinery & equipment",
+     "",
+     "305,165",
+     "",
+     "",
+     "305,165",
+     ""
+    ],
+    [
+     "  Accumulated depreciation",
+     "",
+     "(284,090)",
+     "",
+     "",
+     "(274,615)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "21,075",
+     "",
+     "",
+     "30,550",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deferred rent, net of current portion",
+     "",
+     "147,778",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Right of use asset",
+     "",
+     "200,207",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes receivable",
+     "",
+     "33,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "263,450",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "644,435",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "910,201",
+     "",
+     "$",
+     "139,793",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "232,251",
+     "",
+     "$",
+     "104,329",
+     ""
+    ],
+    [
+     "  Payable on acquisition",
+     "",
+     "50,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accrued expense",
+     "",
+     "75,131",
+     "",
+     "",
+     "36,000",
+     ""
+    ],
+    [
+     "  Royalty payable",
+     "",
+     "706",
+     "",
+     "",
+     "194",
+     ""
+    ],
+    [
+     "  Due to related parties",
+     "",
+     "196,918",
+     "",
+     "",
+     "19,889",
+     ""
+    ],
+    [
+     "  Loans",
+     "",
+     "117,000",
+     "",
+     "",
+     "117,000",
+     ""
+    ],
+    [
+     "  Common stock to be issued",
+     "",
+     "482,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "1,154,506",
+     "",
+     "",
+     "277,412",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Right of use liability",
+     "",
+     "140,076",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,294,582",
+     "",
+     "",
+     "277,412",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.01 par value; 25,000,000 shares authorized; no shares issued and outstanding at September 30, 2019 and December 31, 2018",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common Stock, $.01 Par Value; 100,000,000 shares authorized; 32,603,330 and 31,523,330 shares issued and outstanding at September 30, 2019 and December 31, 2018 respectively",
+     "",
+     "326,034",
+     "",
+     "",
+     "315,234",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "589,861",
+     "",
+     "",
+     "(201,539)",
+     ""
+    ],
+    [
+     "  Retained deficit",
+     "",
+     "(1,300,276)",
+     "",
+     "",
+     "(251,314)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(384,381)",
+     "",
+     "",
+     "(137,619)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "910,201",
+     "",
+     "$",
+     "139,793",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 168
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "On April 8, 2020, management of Pure Harvest Cannabis Group, Inc. (the \u201cCompany\u201d) that previously filed consolidated financial statements as of September 30, 2019 and for the three and nine months ended September 30, 2019 required restatement. In May 2019, the Company leased a property which the Company intends to use as a marijuana retail dispensary. The initial term of the lease is for a period of three years. The Company has an option to purchase the property at prices ranging between $1,400,000 and $1,600,000 at various dates prior to May 1, 2022. The Company issued the landlord 400,000 shares of its post-split common stock in consideration for the option to purchase the property.\nAt inception of the lease on May 1, 2019, the Company should have recorded a \u201cright of use\u201d asset and liability due to the Company adopting Accounting Standards Codification 842- Leases on January 1, 2019. In addition, the 400,000 shares issued for the option to purchase the property should have been recorded as deferred rent and amortized to rent expense using the straight-line method over the term of the lease.\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Operations\nFor The Three and Nine Months Ended September 30, 2019 and 2018",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalty income",
+     "$",
+     "14,297",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "33,723",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs of sales",
+     "",
+     "4,781",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "13,681",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gross margin",
+     "",
+     "9,515",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "20,041",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Advertising and promotion",
+     "",
+     "5,325",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "28,700",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative expenses (including stock-based compensation of $323,000 and $0, respectively)",
+     "",
+     "246,251",
+     "",
+     "",
+     "46,169",
+     "",
+     "",
+     "992,666",
+     "",
+     "",
+     "46,169",
+     ""
+    ],
+    [
+     "  Travel and entertainment",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "38,163",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation expense",
+     "",
+     "3,158",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "9,475",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total costs and expenses",
+     "",
+     "254,734",
+     "",
+     "",
+     "46,169",
+     "",
+     "",
+     "1,069,003",
+     "",
+     "",
+     "46,169",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(245,219)",
+     "",
+     "$",
+     "(46,169)",
+     "",
+     "$",
+     "(1,048,962)",
+     "",
+     "$",
+     "(46,169)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number of common shares outstanding",
+     "",
+     "32,308,381",
+     "",
+     "",
+     "17,906,016",
+     "",
+     "",
+     "32,308,381",
+     "",
+     "",
+     "17,906,016",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 177,
+    "end_line": 209
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Operations\nFor The Three and Nine Months Ended September 30, 2019 and 2018",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Cash Flows\nFor The Nine Months Ended September 30, 2019 and 2018",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 212,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(1,048,962)",
+     "",
+     "$",
+     "(46,169)",
+     ""
+    ],
+    [
+     "  Adjustment to reconcile net loss from operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation",
+     "",
+     "9,475",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Stock-based compensation",
+     "",
+     "323,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Acquisition of assets for stock",
+     "",
+     "199,200",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Changes in Operating Assets and Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts Receivable",
+     "",
+     "18,420",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Allowance for doubtfull accounts",
+     "",
+     "3,711",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "(25,210)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Deferred rent",
+     "",
+     "38,889",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Goodwill",
+     "",
+     "(263,450)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accounts payable",
+     "",
+     "127,922",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "    Payable on acquisition",
+     "",
+     "50,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued expenses",
+     "",
+     "(36,000)",
+     "",
+     "",
+     "36,000",
+     ""
+    ],
+    [
+     "    Royalty payable",
+     "",
+     "512",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Due to related parties",
+     "",
+     "188,388",
+     "",
+     "",
+     "8,542",
+     ""
+    ],
+    [
+     "    Right of use asset and liability",
+     "",
+     "15,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash provided (used) by operating activities",
+     "",
+     "(399,105)",
+     "",
+     "",
+     "(1,127)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Earnest money deposit on lease",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Notes receivable",
+     "",
+     "(33,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash used by investing activities",
+     "",
+     "(33,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Advances from related parties",
+     "",
+     "(11,358)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from issuance of common stock to be issued",
+     "",
+     "482,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash provided by financing activities",
+     "",
+     "471,142",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "39,037",
+     "",
+     "",
+     "(1,127)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "22,501",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash end of period",
+     "$",
+     "61,538",
+     "",
+     "$",
+     "(1,127)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for option to purchase property",
+     "$",
+     "280,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 218,
+    "end_line": 275
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Cash Flows\nFor The Nine Months Ended September 30, 2019 and 2018",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFOR THE NINE MONTHS ENDED SEPTEMBER 30, 2018 AND 2019\nUnaudited",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 212,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional\n\n\n\nPaid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total\n\n\n\nStockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "",
+     "17,906,016",
+     "",
+     "179,060",
+     "$",
+     "(179,035)",
+     "",
+     "$",
+     "(205,145)",
+     "",
+     "$",
+     "(205,120)",
+     ""
+    ],
+    [
+     "  Net loss for nine months ended June 30, 2018",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance, September 30, 2018",
+     "",
+     "17,906,016",
+     "",
+     "179,060",
+     "$",
+     "(179,035)",
+     "",
+     "$",
+     "(205,145)",
+     "",
+     "$",
+     "(205,120)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "",
+     "31,523,330",
+     "$",
+     "315,234",
+     "$",
+     "(201,539)",
+     "",
+     "$",
+     "(251,314)",
+     "",
+     "$",
+     "(137,619)",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "280,000",
+     "",
+     "2,800",
+     "",
+     "320,200",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "323,000",
+     ""
+    ],
+    [
+     "  Stock issued for option to purchase property",
+     "",
+     "400,000",
+     "",
+     "4,000",
+     "",
+     "276,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "280,000",
+     ""
+    ],
+    [
+     "  Issuance of stock for acquisition",
+     "",
+     "400,000",
+     "",
+     "4,000",
+     "",
+     "195,200",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "199,200",
+     ""
+    ],
+    [
+     "  Net loss for nine months ended September 30, 2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,048,962)",
+     "",
+     "",
+     "(1,048,962)",
+     ""
+    ],
+    [
+     "Balance, September 30, 2019 (as restated)",
+     "",
+     "32,603,330",
+     "$",
+     "326,034",
+     "$",
+     "589,861",
+     "",
+     "$",
+     "(1,300,276)",
+     "",
+     "$",
+     "(384,381)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 286,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFOR THE NINE MONTHS ENDED SEPTEMBER 30, 2018 AND 2019\nUnaudited",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\n(Formerly The Pocket Shot Company)\nNotes to Consolidated Financial Statements\nSeptember 30, 2019\n(Unaudited)\nNOTE 1 \u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS\nThe Company was formed as a Colorado corporation in April 2004.\nOn December 31, 2018 the Company acquired all of the outstanding common stock of Pure Harvest Cannabis Producers, Inc., (\u201cPHCP\u201d) in exchange for 17,906,016 (post-split) shares of the Company\u2019s common stock. The transaction was accounted for as a reverse acquisition. The accompanying consolidated financial statements are those of PHCP prior to December 31, 2018 and exclude the financial position, results of operations, cash flows and stockholders\u2019 equity of the Pocket Shot Company prior to December 31, 2018. See \u201cReverse Acquisition\u201d below for additional information.\nAs a result of the acquisition of PHCP, the Company\u2019s new business involves the acquisitions and operations of licensed marijuana cultivation facilities, manufacturing facilities and dispensaries.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 311,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "22,501"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "22,802"
+    ],
+    [
+     "Inventory",
+     "",
+     "63,940"
+    ],
+    [
+     "Machinery & equipment",
+     "",
+     "30,550"
+    ],
+    [
+     "  Total Assets",
+     "$",
+     "139,793"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and other current liabilities",
+     "$",
+     "14,765"
+    ],
+    [
+     "Due to related parties",
+     "",
+     "11,358"
+    ],
+    [
+     "  Total Liabilities",
+     "$",
+     "26,123"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets Acquired",
+     "$",
+     "116,670"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 354,
+    "end_line": 372
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "The transaction was accounted for as a reverse acquisition since: (i) the shareholders of PHCP owned the majority of the outstanding common stock of the Company after the share exchange; (ii) a majority of the directors of the Company are also directors of PHCP; and (iii) the old officers of the Company were replaced with officers designated by PHCP. Effective December 31, 2018, the Company\u2019s stockholders\u2019 equity was retroactively recapitalized as that of PHCP, while the stockholders\u2019 equity of the Company was recorded as being acquired in the reverse acquisition. The Company and PHCP remain separate legal entities (with the Company as the parent of PHCP). The accompanying consolidated financial statements are those of PHCP prior to December 31, 2018 and exclude the financial position, results of operations, cash flows and stockholders\u2019 equity of The Pocket Shot Company prior to December 31, 2018.\nAll references to common stock, share and per share amounts have been retroactively restated to reflect as if the transaction had taken place as of the beginning of the earliest period presented.\nThe Company\u2019s assets and liabilities pre- reverse acquisition:\nNet Assets Acquired:",
+   "prose_after": "The following summarized unaudited consolidated pro forma information shows the results of operations of the Company had the reverse acquisition occurred on January 1, 2017:\nPro-forma:",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "105,869",
+     "",
+     "$",
+     "87,663",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(103,460)",
+     "",
+     "$",
+     "(284,532)",
+     ""
+    ],
+    [
+     "Net loss per common share \u2013 basic and diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(1.81)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 377,
+    "end_line": 385
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "The following summarized unaudited consolidated pro forma information shows the results of operations of the Company had the reverse acquisition occurred on January 1, 2017:\nPro-forma:",
+   "prose_after": "The summarized consolidated pro forma results are not necessarily indicative of results which would have occurred if the reverse acquisition had been in effect for the periods presented. Further, the summarized unaudited consolidated pro forma results are not intended to be a projection of future results.\nRestatement\nOn April 8, 2020, management of Pure Harvest Cannabis Group, Inc. (the \u201cCompany\u201d) that previously filed consolidated financial statements as of September 30, 2019 and for the three and nine months ended September 30, 2019 required restatement. In May 2019, the Company leased a property which the Company intends to use as a marijuana retail dispensary. The initial term of the lease is for a period of three years. The Company has an option to purchase the property at prices ranging between $1,400,000 and $1,600,000 at various dates prior to May 1, 2022. The Company issued the landlord 400,000 shares of its post-split common stock in consideration for the option to purchase the property.",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as reported)",
+     "",
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "$",
+     "-",
+     "",
+     "$",
+     "93,333",
+     "",
+     "$",
+     "93,333",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "-",
+     "",
+     "",
+     "244,691",
+     "",
+     "",
+     "93,333",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent, net of current portion",
+     "",
+     "-",
+     "",
+     "",
+     "147,778",
+     "",
+     "",
+     "147,778",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "-",
+     "",
+     "",
+     "200,207",
+     "",
+     "",
+     "200,207",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "468,882",
+     "",
+     "$",
+     "910,201",
+     "",
+     "$",
+     "441,318",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued Liabilities",
+     "$",
+     "-",
+     "",
+     "$",
+     "75,131",
+     "",
+     "$",
+     "75,131",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "1,154,506",
+     "",
+     "",
+     "1,154,506",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of Use Liabilities, net of Current Portion",
+     "",
+     "-",
+     "",
+     "",
+     "140,076",
+     "",
+     "",
+     "140,076",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "1,079,375",
+     "",
+     "",
+     "1,294,582",
+     "",
+     "",
+     "215,207",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "322,034",
+     "",
+     "",
+     "326,034",
+     "",
+     "",
+     "4,000",
+     ""
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "313,861",
+     "",
+     "",
+     "589,861",
+     "",
+     "",
+     "276,000",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(1,246,387)",
+     "",
+     "",
+     "(1,300,276)",
+     "",
+     "",
+     "(53,889)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(610,492)",
+     "",
+     "",
+     "(384,381)",
+     "",
+     "",
+     "226,111",
+     ""
+    ],
+    [
+     "Total Liabilites and Stockholders\u2019 Deficit",
+     "$",
+     "468,882",
+     "",
+     "$",
+     "910,201",
+     "",
+     "$",
+     "441,318",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 431
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "On April 8, 2020, management of Pure Harvest Cannabis Group, Inc. (the \u201cCompany\u201d) that previously filed consolidated financial statements as of September 30, 2019 and for the three and nine months ended September 30, 2019 required restatement. In May 2019, the Company leased a property which the Company intends to use as a marijuana retail dispensary. The initial term of the lease is for a period of three years. The Company has an option to purchase the property at prices ranging between $1,400,000 and $1,600,000 at various dates prior to May 1, 2022. The Company issued the landlord 400,000 shares of its post-split common stock in consideration for the option to purchase the property.\nAt inception of the lease on May 1, 2019, the Company should have recorded a \u201cright of use\u201d asset and liability due to the Company adopting Accounting Standards Codification 842- Leases on January 1, 2019. In addition, the 400,000 shares issued for the option to purchase the property should have been recorded as deferred rent and amortized to rent expense using the straight-line method over the term of the lease.\nThe following is the impact of the restatement on the consolidated balance sheet as of September 30, 2019:",
+   "prose_after": "The following is the impact of the restatement on the consolidated statements of operations for the three and nine months ended September 30, 2019:",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as reported)",
+     "",
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "$",
+     "213,917",
+     "",
+     "$",
+     "246,251",
+     "",
+     "$",
+     "32,333",
+     ""
+    ],
+    [
+     "Total Costs and Expenses",
+     "",
+     "222,401",
+     "",
+     "",
+     "254,734",
+     "",
+     "",
+     "32,333",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(212,885)",
+     "",
+     "$",
+     "(245,219)",
+     "",
+     "$",
+     "(32,333)",
+     ""
+    ],
+    [
+     "Basic and Diluted Net Loss per Common Share",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "The following is the impact of the restatement on the consolidated statements of operations for the three and nine months ended September 30, 2019:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as reported)",
+     "",
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "$",
+     "938,777",
+     "",
+     "$",
+     "992,666",
+     "",
+     "$",
+     "53,889",
+     ""
+    ],
+    [
+     "Total Costs and Expenses",
+     "",
+     "1,015,115",
+     "",
+     "",
+     "1,069,003",
+     "",
+     "",
+     "53,889",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(995,073)",
+     "",
+     "$",
+     "(1,048,962)",
+     "",
+     "$",
+     "(53,889)",
+     ""
+    ],
+    [
+     "Basic and Diluted Net Loss per Common Share",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 449,
+    "end_line": 463
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following is the impact of the restatement on the consolidated statement of cash flows for the nine months ended September 30, 2019:",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(as reported)",
+     "",
+     "",
+     "(as restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(995,073)",
+     "",
+     "$",
+     "(1,048,962)",
+     "",
+     "$",
+     "(53,889)",
+     ""
+    ],
+    [
+     "Deferred Rent",
+     "",
+     "-",
+     "",
+     "",
+     "38,889",
+     "",
+     "",
+     "38,889",
+     ""
+    ],
+    [
+     "Right of Use Asset and Liability",
+     "",
+     "-",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "$",
+     "(399,105)",
+     "",
+     "$",
+     "(399,105)",
+     "",
+     "$",
+     "(0)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash Investing and Financing Actity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common Stock Issued in Connection with Operating Lease",
+     "$",
+     "-",
+     "",
+     "$",
+     "280,000",
+     "",
+     "$",
+     "280,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 467,
+    "end_line": 484
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS"
+    }
+   },
+   "prose_before": "The following is the impact of the restatement on the consolidated statement of cash flows for the nine months ended September 30, 2019:",
+   "prose_after": "See Note 5 for additional information.\nNOTE 2 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThese financial statements are presented in United States dollars and have been prepared in accordance with United States generally accepted accounting principles.\nIn the opinion of management, the accompanying unaudited condensed financial statements contain all accruals and adjustments (each of which is of a normal recurring nature) necessary for a fair presentation of the Company\u2019s financial position as of September 30, 2019 and the results of its operations for the nine months then ended. The condensed balance sheet as of December 31, 2018 is derived from the December 31, 2018 audited financial statements. Significant accounting policies have been consistently applied in the interim financial statements. The results of operations for the nine months ended September 30, 2019 are not necessarily indicative of the results to be expected for the entire year.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern, however, the above conditions raise substantial doubt about the Company\u2019s ability to do so. The financial statements do not include any adjustment to reflect the possible future effect on the recoverability and classification of assets or the amounts and classifications of liabilities that may result should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "(15,000)",
+     ""
+    ],
+    [
+     "Payable on Acquisition",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "(4,000)",
+     ""
+    ],
+    [
+     "APIC",
+     "",
+     "(195,200)",
+     ""
+    ],
+    [
+     "Cash (Acquired)",
+     "",
+     "750",
+     ""
+    ],
+    [
+     "AR",
+     "",
+     "3,711",
+     ""
+    ],
+    [
+     "AR Allowance",
+     "",
+     "(3,711)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "263,450",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 ACQUISITION"
+    }
+   },
+   "prose_before": "In May 2019, the Company entered into a lease agreement for the property referred to above. The Company intends to use this property for a marijuana retail store. The initial term of the lease is for a period of three years. The Company has an option to purchase the property at prices ranging between $1,400,000 and $1,600,000 at various dates prior to May 1, 2022. The Company issued the landlord 400,000 shares of its post-split common stock in consideration for the option to purchase the property for which was recorded as deferred rent and is being amortized to rent expense using the straight line method over the term of the lease. At inception of the lease, the Company recorded a right of use asset and liability. The Company used an effective borrowing rate of 10 percent within the calculation. See Note 1 for additional information.\nNOTE 10 \u2013 ACQUISITION\nOn September 6, 2019 the Company acquired all of the outstanding membership interests in Prolific Nutrition, LLC and Gratus Living, LLC (collectively \u201cProlific Nutrition\u201d) for 400,000 shares of the Company\u2019s restricted common stock.\nProlific Nutrition and Gratus Living are Colorado-based hemp/CBD companies that have developed and now market a line of CBD products direct to consumers. Prolific Nutrition and Gratus Living currently offer CBD oil tincture, CBD oil gummies, CBD oil capsules, CBD oil lotion, hemp oil and lip balm. Prolific Nutrition and Gratus Living have also developed and now market hemp extract dietary supplements, hemp extract capsules for pain and hemp extract pet treats for dogs and cats.\nWe accounted for the transaction as follows:",
+   "prose_after": "NOTE 11 \u2013 SUBSEQUENT EVENTS\nThe Company has evaluated subsequent events through the filing date of these consolidated financial statements and has disclosed that there are no other events that are material to the financial statements to be disclosed.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nOn December 31, 2018 Pure Harvest Cannabis Producers, Inc. (\u201cPHC\u201d) was acquired by the Company. At the time of the acquisition, the Company had 13,617,314 (post-split) outstanding shares of common stock. The Company issued 17,906,016 (post-split) shares of its common stock, as well as warrants to purchase an additional 17,906,016 (post-split) shares of the Company\u2019s common stock to the shareholders of PHC in exchange for all of the outstanding shares of PHC. The warrants issued to the former shareholders of PHC allow the holder to acquire one share of the Company\u2019s common stock at a price of $4.00 per share at any time on or before December 31, 2021. PHC is now a wholly owned subsidiary of the Company.",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Increase (I) or",
+     ""
+    ],
+    [
+     "Item",
+     "Decrease (D)",
+     "Reason"
+    ],
+    [
+     "Operating Expenses",
+     "I",
+     "Increase was primarily due to (i) salary expenses, as well as legal and accounting services as the Company commenced its new business and (ii) stock based compensation."
+    ]
+   ],
+   "caption_stack": [
+    "Increase (I) or"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 711,
+    "end_line": 718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Prolific Nutrition and Gratus Living are Colorado-based hemp/CBD companies that have developed and now market a line of CBD products direct to consumers. Prolific Nutrition and Gratus Living currently offer CBD oil tincture, CBD oil gummies, CBD oil capsules, CBD oil lotion, hemp oil and lip balm. Prolific Nutrition and Gratus Living have also developed and now market hemp extract dietary supplements, hemp extract capsules for pain and hemp extract pet treats for dogs and cats.\nIn May 2019 the Company entered into a lease agreement for a property in Colorado intended to be used in a planned retail store front. The initial term of the lease is for a period of three years and the Company has approved a commitment fee of 400,000 shares of common stock as part of the agreement.\nAs of November 20, 2019, the Company had not acquired any dispensaries, cultivation facilities or any other entities and did not have any definitive agreements relating to any acquisition.\nThe Company will continue to collect royalties for licensing the Company\u2019s patent and trademarks in connection with the manufacturing and sale of the Pocket Shot branded specialty alcohol beverage pouches.\nResults of Operations\nMaterial changes in the line items in the Company\u2019s Statement of Operations for the three and nine months ended September 30, 2019 as compared to the same period last year, are discussed below:",
+   "prose_after": "Capital Resources and Liquidity\nThe Company\u2019s sources and (uses) of cash for the nine months ended September 30, 2019 and 2018 are shown below:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operations",
+     "$",
+     "(399,105)",
+     "",
+     "$",
+     "(1,127)",
+     ""
+    ],
+    [
+     "Repayment of loans",
+     "",
+     "(33,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repayment of advances from related parties",
+     "",
+     "(11,358)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Sale of common stock",
+     "",
+     "482,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 724,
+    "end_line": 733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Capital Resources and Liquidity\nThe Company\u2019s sources and (uses) of cash for the nine months ended September 30, 2019 and 2018 are shown below:",
+   "prose_after": "The Company does not know of any trends, demands, commitments, events or uncertainties that will result in, or that are reasonable likely to result in, the Company\u2019s liquidity increasing or decreasing in any material way.\nThe Company may sell additional shares of common stock and/or other securities to raise capital for its operations. There is no assurance that the Company will be successful in raising any additional capital.\nOff Balance Sheet Arrangements\nAs of September 30, 2019, the Company did not have any off balance sheet arrangements.\nCritical Accounting Policies and Estimates\nSee Note 2 to the September 30, 2019 financial statements included as part of this report for a description of the Company\u2019s critical accounting policies and estimates.\nITEM 4. CONTROLS AND PROCEDURES\nDisclosure Controls and Procedures\nWe maintain a set of disclosure controls and procedures designed to ensure that information required to be disclosed by us in the reports filed under the Securities Exchange Act of 1934, is recorded, processed, summarized and reported within the time periods specified by the Commission\u2019s rules and forms. Disclosure controls are also designed with the objective of ensuring that this information is accumulated and communicated to our management, including our chief executive officer and chief financial officer, as appropriate, to allow timely decisions regarding required disclosure. We evaluated the effectiveness of our disclosure controls and procedures (as defined in Rule 13a-15(e) under the Securities Exchange Act, as amended) as of the end of the period covered by this report. As a result of this evaluation, management concluded that our disclosure controls and procedures were not effective as of September 30, 2019 due to the following material weakness:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation (1)"
+    ],
+    [
+     "3.2",
+     "",
+     "Amended Articles of Incorporation (1)"
+    ],
+    [
+     "3.3",
+     "",
+     "Bylaws (1)"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 775
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We maintain a set of disclosure controls and procedures designed to ensure that information required to be disclosed by us in the reports filed under the Securities Exchange Act of 1934, is recorded, processed, summarized and reported within the time periods specified by the Commission\u2019s rules and forms. Disclosure controls are also designed with the objective of ensuring that this information is accumulated and communicated to our management, including our chief executive officer and chief financial officer, as appropriate, to allow timely decisions regarding required disclosure. We evaluated the effectiveness of our disclosure controls and procedures (as defined in Rule 13a-15(e) under the Securities Exchange Act, as amended) as of the end of the period covered by this report. As a result of this evaluation, management concluded that our disclosure controls and procedures were not effective as of September 30, 2019 due to the following material weakness:\n\u25cf Lack of appropriate segregation of duties,\n\u25cf Lack of control procedures that include multiple levels of supervision and review, and\n\u25cf An overreliance upon independent financial reporting consultants for review of critical accounting areas and disclosures and material, nonstandard transactions.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting that occurred during the quarter ended September 30, 2019 that materially affect, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 6. EXHIBITS",
+   "prose_after": "(1) Incorporated by reference to the same exhibit filed with the Company\u2019s annual report on Form 10-K for the year ended December 31, 2018\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the Registrant has caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized on the 24th day of April 2020.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PURE HARVEST CANNABIS GROUP, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Matthew Gregarek"
+    ],
+    [
+     "",
+     "Matthew Gregarek"
+    ],
+    [
+     "",
+     "Principal Executive and Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "PURE HARVEST CANNABIS GROUP, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 783,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Incorporated by reference to the same exhibit filed with the Company\u2019s annual report on Form 10-K for the year ended December 31, 2018\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the Registrant has caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized on the 24th day of April 2020.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 792,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

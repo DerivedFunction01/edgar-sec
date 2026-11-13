@@ -1,0 +1,3543 @@
+{
+ "accession": "0001437749-23-022117",
+ "cik": "0001278680",
+ "form": "10-Q",
+ "filing_date": "2023-08-04",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "iau20230630_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the quarterly period ended June 30, 2023"
+    ]
+   ],
+   "caption_stack": [
+    "For the quarterly period ended June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 9,
+    "end_line": 12
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "or or\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-32418\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 17,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "81-6124036"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "or or\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-32418\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 35,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "c/o iShares Delaware Trust Sponsor LLC 400 Howard Street San Francisco, California 94105 Attn: Product Management Team iShares Product Research & Development\n(Address of principal executive offices)(Zip Code)\n(415) 670-2000\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 35,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Shares",
+     "IAU",
+     "NYSE Arca, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o iShares Delaware Trust Sponsor LLC 400 Howard Street San Francisco, California 94105 Attn: Product Management Team iShares Product Research & Development\n(Address of principal executive offices)(Zip Code)\n(415) 670-2000\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 39,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (Unaudited)",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Assets and Liabilities at June 30, 2023 and December 31, 2022",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Operations for the three and six months ended June 30, 2023 and 2022",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Changes in Net Assets for the three and six months ended June 30, 2023 and 2022",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Cash Flows for the six months ended June 30, 2023 and 2022",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Schedules of Investments at June 30, 2023 and December 31, 2022",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "15"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 110
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [X]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [ ]  Emerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of July 31, 2023, the Registrant had 753,850,000 Shares outstanding.\nTable of Contents",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nStatements of Assets and Liabilities (Unaudited)\nAt June 30, 2023 and December 31, 2022",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in gold bullion, at fair value(a)",
+     "$",
+     "27,588,399,386",
+     "$",
+     "26,160,403,750"
+    ],
+    [
+     "Total Assets",
+     "",
+     "27,588,399,386",
+     "",
+     "26,160,403,750"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor\u2019s fees payable",
+     "",
+     "5,826,405",
+     "",
+     "5,511,616"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "5,826,405",
+     "",
+     "5,511,616"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingent liabilities (Note 6)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets",
+     "$",
+     "27,582,572,981",
+     "$",
+     "26,154,892,134"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and outstanding(b)",
+     "",
+     "761,250,000",
+     "",
+     "760,700,000"
+    ],
+    [
+     "Net asset value per Share (Note 2C)",
+     "$",
+     "36.23",
+     "$",
+     "34.38"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 122,
+    "end_line": 146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nStatements of Assets and Liabilities (Unaudited)\nAt June 30, 2023 and December 31, 2022",
+   "prose_after": "(a) Cost of investment in gold bullion: $22,523,345,572 and $22,205,551,004, respectively.\n(b) No par value, unlimited amount authorized.\nStatements of Operations (Unaudited)\nFor the three and six months ended June 30, 2023 and 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 116,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor\u2019s fees",
+     "$",
+     "17,920,847",
+     "",
+     "$",
+     "19,449,872",
+     "",
+     "$",
+     "34,626,154",
+     "",
+     "$",
+     "37,956,883",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "17,920,847",
+     "",
+     "",
+     "19,449,872",
+     "",
+     "",
+     "34,626,154",
+     "",
+     "",
+     "37,956,883",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(17,920,847)",
+     "",
+     "",
+     "(19,449,872)",
+     "",
+     "",
+     "(34,626,154)",
+     "",
+     "",
+     "(37,956,883)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Realized and Unrealized Gain (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gold bullion sold to pay expenses",
+     "",
+     "3,850,859",
+     "",
+     "",
+     "3,706,730",
+     "",
+     "",
+     "6,752,026",
+     "",
+     "",
+     "6,923,156",
+     ""
+    ],
+    [
+     "Gold bullion distributed for the redemption of Shares",
+     "",
+     "107,908,447",
+     "",
+     "",
+     "193,207,788",
+     "",
+     "",
+     "261,395,376",
+     "",
+     "",
+     "252,205,682",
+     ""
+    ],
+    [
+     "Net realized gain",
+     "",
+     "111,759,306",
+     "",
+     "",
+     "196,914,518",
+     "",
+     "",
+     "268,147,402",
+     "",
+     "",
+     "259,128,838",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "(1,104,430,686)",
+     "",
+     "",
+     "(2,284,892,586)",
+     "",
+     "",
+     "1,110,201,068",
+     "",
+     "",
+     "(403,151,571)",
+     ""
+    ],
+    [
+     "Net realized and unrealized gain (loss)",
+     "",
+     "(992,671,380)",
+     "",
+     "",
+     "(2,087,978,068)",
+     "",
+     "",
+     "1,378,348,470",
+     "",
+     "",
+     "(144,022,733)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "(1,010,592,227)",
+     "",
+     "$",
+     "(2,107,427,940)",
+     "",
+     "$",
+     "1,343,722,316",
+     "",
+     "$",
+     "(181,979,616)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets per Share(a)",
+     "$",
+     "(1.32)",
+     "",
+     "$",
+     "(2.41)",
+     "",
+     "$",
+     "1.76",
+     "",
+     "$",
+     "(0.21)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 156,
+    "end_line": 186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(a) Cost of investment in gold bullion: $22,523,345,572 and $22,205,551,004, respectively.\n(b) No par value, unlimited amount authorized.\nStatements of Operations (Unaudited)\nFor the three and six months ended June 30, 2023 and 2022",
+   "prose_after": "(a) Net increase (decrease) in net assets per Share based on average shares outstanding during the period.\nStatements of Changes in Net Assets (Unaudited)\nFor the three and six months ended June 30, 2023",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 150,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": null,
+     "page_number": 1
+    },
+    "after": {
+     "line": 186,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at December 31, 2022",
+     "$",
+     "26,154,892,134",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(16,705,307)",
+     ""
+    ],
+    [
+     "Net realized gain",
+     "",
+     "156,388,096",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "2,214,631,754",
+     ""
+    ],
+    [
+     "Net increase in net assets resulting from operations",
+     "",
+     "2,354,314,543",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Share Transactions:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributions for Shares issued",
+     "",
+     "683,354,142",
+     ""
+    ],
+    [
+     "Distributions for Shares redeemed",
+     "",
+     "(915,659,307)",
+     ""
+    ],
+    [
+     "Net decrease in net assets from capital share transactions",
+     "",
+     "(232,305,165)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in net assets",
+     "",
+     "2,122,009,378",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at March 31, 2023",
+     "$",
+     "28,276,901,512",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(17,920,847)",
+     ""
+    ],
+    [
+     "Net realized gain",
+     "",
+     "111,759,306",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "(1,104,430,686)",
+     ""
+    ],
+    [
+     "Net decrease in net assets resulting from operations",
+     "",
+     "(1,010,592,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Share Transactions:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributions for Shares issued",
+     "",
+     "852,839,106",
+     ""
+    ],
+    [
+     "Distributions for Shares redeemed",
+     "",
+     "(536,575,410)",
+     ""
+    ],
+    [
+     "Net increase in net assets from capital share transactions",
+     "",
+     "316,263,696",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in net assets",
+     "",
+     "(694,328,531)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at June 30, 2023",
+     "$",
+     "27,582,572,981",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and redeemed",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued",
+     "",
+     "41,100,000",
+     ""
+    ],
+    [
+     "Shares redeemed",
+     "",
+     "(40,550,000)",
+     ""
+    ],
+    [
+     "Net increase in Shares issued and outstanding",
+     "",
+     "550,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 195,
+    "end_line": 250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(a) Net increase (decrease) in net assets per Share based on average shares outstanding during the period.\nStatements of Changes in Net Assets (Unaudited)\nFor the three and six months ended June 30, 2023",
+   "prose_after": "Statements of Changes in Net Assets (Unaudited)\nFor the three and six months ended June 30, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 189,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 251,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at December 31, 2021",
+     "$",
+     "28,723,023,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(18,507,011)",
+     ""
+    ],
+    [
+     "Net realized gain",
+     "",
+     "62,214,320",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "1,881,741,015",
+     ""
+    ],
+    [
+     "Net increase in net assets resulting from operations",
+     "",
+     "1,925,448,324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Share Transactions:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributions for Shares issued",
+     "",
+     "1,934,507,346",
+     ""
+    ],
+    [
+     "Distributions for Shares redeemed",
+     "",
+     "(333,921,344)",
+     ""
+    ],
+    [
+     "Net increase in net assets from capital share transactions",
+     "",
+     "1,600,586,002",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in net assets",
+     "",
+     "3,526,034,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at March 31, 2022",
+     "$",
+     "32,249,057,963",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operations:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss",
+     "",
+     "(19,449,872)",
+     ""
+    ],
+    [
+     "Net realized gain",
+     "",
+     "196,914,518",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "(2,284,892,586)",
+     ""
+    ],
+    [
+     "Net decrease in net assets resulting from operations",
+     "",
+     "(2,107,427,940)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Share Transactions:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributions for Shares issued",
+     "",
+     "782,395,238",
+     ""
+    ],
+    [
+     "Distributions for Shares redeemed",
+     "",
+     "(1,127,722,686)",
+     ""
+    ],
+    [
+     "Net decrease in net assets from capital share transactions",
+     "",
+     "(345,327,448)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in net assets",
+     "",
+     "(2,452,755,388)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets at June 30, 2022",
+     "$",
+     "29,796,302,575",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and redeemed",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued",
+     "",
+     "75,200,000",
+     ""
+    ],
+    [
+     "Shares redeemed",
+     "",
+     "(41,650,000)",
+     ""
+    ],
+    [
+     "Net increase in Shares issued and outstanding",
+     "",
+     "33,550,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 257,
+    "end_line": 312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Changes in Net Assets (Unaudited)\nFor the three and six months ended June 30, 2022",
+   "prose_after": "Statements of Cash Flows (Unaudited)\nFor the six months ended June 30, 2023 and 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 251,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 313,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from gold bullion sold to pay expenses",
+     "$",
+     "34,311,365",
+     "",
+     "$",
+     "37,736,285",
+     ""
+    ],
+    [
+     "Expenses \u2013 Sponsor\u2019s fees paid",
+     "",
+     "(34,311,365)",
+     "",
+     "",
+     "(37,736,285)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reconciliation of Net Increase (Decrease) in Net Assets Resulting from Operations to Net Cash Provided by (Used in) Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "1,343,722,316",
+     "",
+     "$",
+     "(181,979,616)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net increase (decrease) in net assets resulting from operations to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from gold bullion sold to pay expenses",
+     "",
+     "34,311,365",
+     "",
+     "",
+     "37,736,285",
+     ""
+    ],
+    [
+     "Net realized (gain) loss",
+     "",
+     "(268,147,402)",
+     "",
+     "",
+     "(259,128,838)",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "(1,110,201,068)",
+     "",
+     "",
+     "403,151,571",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor\u2019s fees payable",
+     "",
+     "314,789",
+     "",
+     "",
+     "220,598",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gold bullion contributed for Shares issued",
+     "$",
+     "1,536,193,248",
+     "",
+     "$",
+     "2,716,902,584",
+     ""
+    ],
+    [
+     "Gold bullion distributed for Shares redeemed",
+     "$",
+     "(1,452,234,717)",
+     "",
+     "$",
+     "(1,461,644,030)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 319,
+    "end_line": 353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Statements of Cash Flows (Unaudited)\nFor the six months ended June 30, 2023 and 2022",
+   "prose_after": "Schedules of Investments (Unaudited)\nAt June 30, 2023 and December 31, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 313,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "June 30, 2023"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 360,
+    "end_line": 363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Schedules of Investments (Unaudited)\nAt June 30, 2023 and December 31, 2022",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 394,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Ounces",
+     "",
+     "Cost",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "Gold bullion",
+     "",
+     "14,427,193",
+     "$",
+     "22,523,345,572",
+     "$",
+     "27,588,399,386",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Investments \u2014 100.02%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "27,588,399,386",
+     ""
+    ],
+    [
+     "Less Liabilities \u2014 (0.02)%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,826,405)",
+     ""
+    ],
+    [
+     "Net Assets \u2014 100.00%",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "27,582,572,981",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 364,
+    "end_line": 376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 394,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2022"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 377,
+    "end_line": 380
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 394,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Ounces",
+     "",
+     "Cost",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "Gold bullion",
+     "",
+     "14,434,521",
+     "$",
+     "22,205,551,004",
+     "$",
+     "26,160,403,750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Investments \u2014 100.02%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "26,160,403,750",
+     ""
+    ],
+    [
+     "Less Liabilities \u2014 (0.02)%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,511,616)",
+     ""
+    ],
+    [
+     "Net Assets \u2014 100.00%",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "26,154,892,134",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 381,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Notes to Financial Statements (Unaudited)\nJune 30, 2023\n1 - Organization\nThe iShares Gold Trust (the \u201cTrust\u201d) was organized on January 21, 2005 as a New York trust. The trustee is The Bank of New York Mellon (the \u201cTrustee\u201d), which is responsible for the day-to-day administration of the Trust. The Trust\u2019s sponsor is iShares Delaware Trust Sponsor LLC, a Delaware limited liability company (the \u201cSponsor\u201d). The Trust is governed by the provisions of the Fifth Amended and Restated Depositary Trust Agreement (the \u201cTrust Agreement\u201d) executed by the Trustee and the Sponsor as of January 31, 2022. The Trust issues units of beneficial interest (\u201cShares\u201d) representing fractional undivided beneficial interests in its net assets.\nThe Trust seeks to reflect generally the performance of the price of gold. The Trust seeks to reflect such performance before payment of the Trust\u2019s expenses and liabilities. The Trust is designed to provide a vehicle for investors to make an investment similar to an investment in gold.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 394,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Three Months Ended June 30, 2023",
+     "Ounces",
+     "",
+     "",
+     "Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Realized Gain (Loss)",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "",
+     "14,286,334",
+     "",
+     "$",
+     "22,113,171,288",
+     "",
+     "$",
+     "28,282,655,788",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Gold bullion contributed",
+     "",
+     "424,647",
+     "",
+     "",
+     "852,839,106",
+     "",
+     "",
+     "852,839,106",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gold bullion distributed",
+     "",
+     "(274,793)",
+     "",
+     "",
+     "(428,666,963)",
+     "",
+     "",
+     "(536,575,410)",
+     "",
+     "",
+     "107,908,447"
+    ],
+    [
+     "Gold bullion sold to pay expenses",
+     "",
+     "(8,995)",
+     "",
+     "",
+     "(13,997,859)",
+     "",
+     "",
+     "(17,848,718)",
+     "",
+     "",
+     "3,850,859"
+    ],
+    [
+     "Net realized gain",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "111,759,306",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,104,430,686)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Ending balance",
+     "",
+     "14,427,193",
+     "",
+     "$",
+     "22,523,345,572",
+     "",
+     "$",
+     "27,588,399,386",
+     "",
+     "$",
+     "111,759,306"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 444
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Fair value of the gold bullion held by the Trust is based on that day\u2019s London Bullion Market Association (\u201cLBMA\u201d) Gold Price PM. \u201cLBMA Gold Price PM\u201d is the price per fine troy ounce of gold, stated in U.S. dollars, determined by ICE Benchmark Administration (\u201cIBA\u201d) following an electronic auction consisting of one or more 30-second rounds starting at 3:00 p.m. (London time), on each day that the London gold market is open for business and published shortly thereafter. If there is no LBMA Gold Price PM on any day, the Trustee is authorized to use the most recently announced price of gold determined in an electronic auction hosted by IBA that begins at 10:30 a.m. (London time) (\u201cLBMA Gold Price AM\u201d) unless the Trustee, in consultation with the Sponsor, determines that such price is inappropriate as a basis for evaluation.\nGain or loss on sales of gold bullion is calculated on a trade date basis using the average cost method.\nThe following tables summarize activity in gold bullion for the three months ended June 30, 2023 and 2022:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Three Months Ended June 30, 2022",
+     "Ounces",
+     "",
+     "",
+     "Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Realized Gain (loss)",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "",
+     "16,608,310",
+     "",
+     "$",
+     "25,367,951,331",
+     "",
+     "$",
+     "32,255,828,173",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Gold bullion contributed",
+     "",
+     "413,312",
+     "",
+     "",
+     "782,395,238",
+     "",
+     "",
+     "782,395,238",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gold bullion distributed",
+     "",
+     "(608,940)",
+     "",
+     "",
+     "(934,514,898)",
+     "",
+     "",
+     "(1,127,722,686)",
+     "",
+     "",
+     "193,207,788"
+    ],
+    [
+     "Gold bullion sold to pay expenses",
+     "",
+     "(10,618)",
+     "",
+     "",
+     "(16,267,696)",
+     "",
+     "",
+     "(19,974,426)",
+     "",
+     "",
+     "3,706,730"
+    ],
+    [
+     "Net realized gain",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "196,914,518",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,284,892,586)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Ending balance",
+     "",
+     "16,402,064",
+     "",
+     "$",
+     "25,199,563,975",
+     "",
+     "$",
+     "29,802,548,231",
+     "",
+     "$",
+     "196,914,518"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The following tables summarize activity in gold bullion for the six months ended June 30, 2023 and 2022:\n<TABLE>\nRealized Gain\nSix Months Ended June 30, 2023                           Ounces                    Cost         Fair Value             (Loss)\n--------------------------------------------------  ----------------  -----------------  -----------------  -----------------\nBeginning balance                                         14,434,521   $ 22,205,551,004   $ 26,160,403,750                $ \u2014\nGold bullion contributed                                     779,292      1,536,193,248      1,536,193,248                  \u2014\nGold bullion distributed                                   (768,826)    (1,190,839,341)    (1,452,234,717)        261,395,376\nGold bullion sold to pay expenses                           (17,794)       (27,559,339)       (34,311,365)          6,752,026\nNet realized gain                                                  \u2014                  \u2014        268,147,402                  \u2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Six Months Ended June 30, 2023",
+     "Ounces",
+     "",
+     "",
+     "Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Realized Gain (Loss)",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "",
+     "14,434,521",
+     "",
+     "$",
+     "22,205,551,004",
+     "",
+     "$",
+     "26,160,403,750",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Gold bullion contributed",
+     "",
+     "779,292",
+     "",
+     "",
+     "1,536,193,248",
+     "",
+     "",
+     "1,536,193,248",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gold bullion distributed",
+     "",
+     "(768,826)",
+     "",
+     "",
+     "(1,190,839,341)",
+     "",
+     "",
+     "(1,452,234,717)",
+     "",
+     "",
+     "261,395,376"
+    ],
+    [
+     "Gold bullion sold to pay expenses",
+     "",
+     "(17,794)",
+     "",
+     "",
+     "(27,559,339)",
+     "",
+     "",
+     "(34,311,365)",
+     "",
+     "",
+     "6,752,026"
+    ],
+    [
+     "Net realized gain",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "268,147,402",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,110,201,068",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Ending balance",
+     "",
+     "14,427,193",
+     "",
+     "$",
+     "22,523,345,572",
+     "",
+     "$",
+     "27,588,399,386",
+     "",
+     "$",
+     "268,147,402"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Six Months Ended June 30, 2022",
+     "Ounces",
+     "",
+     "",
+     "Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Realized\n\n\n\nGain (Loss)",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "",
+     "15,784,325",
+     "",
+     "$",
+     "23,722,912,868",
+     "",
+     "$",
+     "28,729,048,695",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Gold bullion contributed",
+     "",
+     "1,429,491",
+     "",
+     "",
+     "2,716,902,584",
+     "",
+     "",
+     "2,716,902,584",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gold bullion distributed",
+     "",
+     "(791,486)",
+     "",
+     "",
+     "(1,209,438,348)",
+     "",
+     "",
+     "(1,461,644,030)",
+     "",
+     "",
+     "252,205,682"
+    ],
+    [
+     "Gold bullion sold to pay expenses",
+     "",
+     "(20,266)",
+     "",
+     "",
+     "(30,813,129)",
+     "",
+     "",
+     "(37,736,285)",
+     "",
+     "",
+     "6,923,156"
+    ],
+    [
+     "Net realized gain",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "259,128,838",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net change in unrealized appreciation/depreciation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(403,151,571)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Ending balance",
+     "",
+     "16,402,064",
+     "",
+     "$",
+     "25,199,563,975",
+     "",
+     "$",
+     "29,802,548,231",
+     "",
+     "$",
+     "259,128,838"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Gold bullion contributed                                     779,292      1,536,193,248      1,536,193,248                  \u2014\nGold bullion distributed                                   (768,826)    (1,190,839,341)    (1,452,234,717)        261,395,376\nGold bullion sold to pay expenses                           (17,794)       (27,559,339)       (34,311,365)          6,752,026\nNet realized gain                                                  \u2014                  \u2014        268,147,402                  \u2014\nNet change in unrealized appreciation/depreciation                 \u2014                  \u2014      1,110,201,068                  \u2014\n-------------  -----------------  -----------------  -----------------\nEnding balance                                            14,427,193   $ 22,523,345,572   $ 27,588,399,386      $ 268,147,402\n=============  =================  =================  =================\n</TABLE>",
+   "prose_after": "C. Calculation of Net Asset Value\nOn each business day, as soon as practicable after 4:00 p.m. (New York time), the net asset value of the Trust is obtained by subtracting all accrued fees, expenses and other liabilities of the Trust from the fair value of the gold and other assets held by the Trust. The Trustee computes the net asset value per Share by dividing the net asset value of the Trust by the number of Shares outstanding on the date the computation is made.\nD. Offering of the Shares\nTrust Shares are issued and redeemed continuously in aggregations of 50,000 Shares in exchange for gold bullion rather than cash. Individual investors cannot purchase or redeem Shares in direct transactions with the Trust. The Trust only transacts with registered broker-dealers that are eligible to settle securities transactions through the book-entry facilities of the Depository Trust Company and that have entered into a contractual arrangement with the Trustee and the Sponsor governing, among other matters, the creation and redemption of Shares (such broker-dealers, the \u201cAuthorized Participants\u201d). Holders of Shares of the Trust may redeem their Shares at any time acting through an Authorized Participant and in the prescribed aggregations of 50,000 Shares\u037e provided, that redemptions of Shares may be suspended during any period while regular trading on NYSE Arca, Inc. (\u201cNYSE Arca\u201d) is suspended or restricted, or in which an emergency exists as a result of which delivery, disposal or evaluation of gold is not reasonably practicable.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 507,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per Share, beginning of period",
+     "$",
+     "37.53",
+     "",
+     "$",
+     "36.92",
+     "",
+     "$",
+     "34.38",
+     "",
+     "$",
+     "34.62",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss(a)",
+     "",
+     "(0.02)",
+     "",
+     "",
+     "(0.02)",
+     "",
+     "",
+     "(0.05)",
+     "",
+     "",
+     "(0.04)",
+     ""
+    ],
+    [
+     "Net realized and unrealized gain (loss)(b)",
+     "",
+     "(1.28)",
+     "",
+     "",
+     "(2.39)",
+     "",
+     "",
+     "1.90",
+     "",
+     "",
+     "(0.07)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets from operations",
+     "",
+     "(1.30)",
+     "",
+     "",
+     "(2.41)",
+     "",
+     "",
+     "1.85",
+     "",
+     "",
+     "(0.11)",
+     ""
+    ],
+    [
+     "Net asset value per Share, end of period",
+     "$",
+     "36.23",
+     "",
+     "$",
+     "34.51",
+     "",
+     "$",
+     "36.23",
+     "",
+     "$",
+     "34.51",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return, at net asset value(c)(d)",
+     "",
+     "(3.46)",
+     "%",
+     "",
+     "(6.53)",
+     "%",
+     "",
+     "5.38",
+     "%",
+     "",
+     "(0.32)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio to average net assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss(e)",
+     "",
+     "(0.25)",
+     "%",
+     "",
+     "(0.25)",
+     "%",
+     "",
+     "(0.25)",
+     "%",
+     "",
+     "(0.25)",
+     "%"
+    ],
+    [
+     "Expenses(e)",
+     "",
+     "0.25",
+     "%",
+     "",
+     "0.25",
+     "%",
+     "",
+     "0.25",
+     "%",
+     "",
+     "0.25",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1 \u2212",
+     "Unadjusted quoted prices in active markets for identical assets or liabilities\u037e"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(c) Based on the change in net asset value of a Share during the period.\n(d) Percentage is not annualized.\n(e) Percentage is annualized.\n9 - Investment Valuation\nU.S. GAAP defines fair value as the price the Trust would receive to sell an asset or pay to transfer a liability in an orderly transaction between market participants at the measurement date. The Trust\u2019s policy is to value its investment at fair value.\nVarious inputs are used in determining the fair value of assets and liabilities. Inputs may be based on independent market data (\u201cobservable inputs\u201d) or they may be internally developed (\u201cunobservable inputs\u201d). These inputs are categorized into a disclosure hierarchy consisting of three broad levels for financial reporting purposes. The level of a value determined for an asset or liability within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement in its entirety. The three levels of the fair value hierarchy are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 2 \u2212",
+     "Inputs other than quoted prices included within Level 1 that are observable for the asset or liability either directly or indirectly, including quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not considered to be active, inputs other than quoted prices that are observable for the asset or liability, and inputs that are derived principally from or corroborated by observable market data by correlation or other means\u037e and"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 590
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3 \u2212",
+     "Unobservable inputs that are unobservable for the asset or liability, including the Trust\u2019s assumptions used in determining the fair value of investments."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "At June 30, 2023 and December 31, 2022, the value of the gold bullion held by the Trust is categorized as Level 1.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThis information should be read in conjunction with the financial statements and notes to financial statements included in Item 1 of Part I of this Form 10\u2011Q. The discussion and analysis that follows may contain statements that relate to future events or future performance. In some cases, such forward-looking statements can be identified by terminology such as \u201cmay,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cpotential\u201d or the negative of these terms or other comparable terminology. These statements are only predictions. Actual events or results may differ materially. These statements are based upon certain assumptions and analyses made by the Sponsor on the basis of its perception of historical trends, current conditions and expected future developments, as well as other factors it believes are appropriate in the circumstances. Whether or not actual results and developments will conform to the Sponsor\u2019s expectations and predictions, however, is subject to a number of risks and uncertainties, including the special considerations discussed below, general economic, market and business conditions, changes in laws or regulations, including those concerning taxes, made by governmental authorities or regulatory bodies, and other world economic and political developments. Although the Sponsor does not make forward-looking statements unless it believes it has a reasonable basis for doing so, the Sponsor cannot guarantee their accuracy. Except as required by applicable disclosure laws, neither the Trust nor the Sponsor is under a duty to update any of the forward-looking statements to conform such statements to actual results or to a change in the Sponsor\u2019s expectations or predictions.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Redeemed",
+     "",
+     "Average Ounces of Gold Paid Per Share",
+     ""
+    ],
+    [
+     "04/01/23 to 04/30/23",
+     "",
+     "1,200,000",
+     "$",
+     "0.0190"
+    ],
+    [
+     "05/01/23 to 05/31/23",
+     "",
+     "2,500,000",
+     "",
+     "0.0190"
+    ],
+    [
+     "06/01/23 to 06/30/23",
+     "",
+     "10,800,000",
+     "",
+     "0.0189"
+    ],
+    [
+     "Total",
+     "",
+     "14,500,000",
+     "$",
+     "0.0190"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": null
+   },
+   "prose_before": "There were no changes in the Trust\u2019s internal control over financial reporting that occurred during the period covered by this report that have materially affected, or are reasonably likely to materially affect, the Trust\u2019s internal control over financial reporting.\nPART II \u2013 OTHER INFORMATION\nItem 1. Legal Proceedings.\nNone.\nItem 1A. Risk Factors\nThere have been no material changes to the Risk Factors last reported under Part I, Item 1A of the registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 2022, filed with the Securities and Exchange Commission on February 23, 2023.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\na) None.\nb) Not applicable.\nc) 14,500,000 Shares (290 Baskets) were redeemed during the quarter ended June 30, 2023.",
+   "prose_after": "Item 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNot applicable.\nItem 6. Exhibits\n<TABLE>\nExhibit No.  Description\n-----------  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "4.1",
+     "Fifth Amended and Restated Depositary Trust Agreement is incorporated by reference to Exhibit 4.1 of the Current Report on Form 8-K filed by the Registrant on January 31, 2022"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Standard Terms for Authorized Participant Agreements is incorporated by reference to Exhibit 4.2 of the Current Report on Form 8-K filed by the Registrant on December 22, 2016"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Second Amended and Restated Custodian Agreement between The Bank of New York Mellon and JPMorgan Chase Bank N.A., London branch is incorporated by reference to Exhibit 10.1 of the Current Report on Form 8-K filed by the Registrant on December 22, 2016"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Amendment Agreement to Second Amended and Restated Custodian Agreement between The Bank of New York Mellon and JPMorgan Chase Bank N.A., London branch is incorporated by reference to Exhibit 10.2 to the Quarterly Report on Form 10-Q filed by the Registrant on August 5, 2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Sub-license Agreement is incorporated by reference to Exhibit 10.2 of the Amendment No. 1 to Annual Report on Form 10-K filed by the Registrant on November 12, 2008"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by Principal Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification by Principal Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification by Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes\u2011Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification by Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes\u2011Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File included as Exhibit 101 (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:",
+     "August 4, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "101.DEF    Inline XBRL Taxonomy Extension Definition Linkbase Document\n101.LAB    Inline XBRL Taxonomy Extension Label Linkbase Document\n101.PRE    Inline XBRL Taxonomy Extension Presentation Linkbase Document\n104      Cover Page Interactive Data File included as Exhibit 101 (embedded within the Inline XBRL document)\n</TABLE>\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned in the capacities* indicated thereunto duly authorized.\niShares Delaware Trust Sponsor LLC, Sponsor of the iShares Gold Trust (registrant)\n/s/ Shannon Ghia\nShannon Ghia Director, President and Chief Executive Officer (Principal executive officer)",
+   "prose_after": "/s/ Bryan Bowers\nBryan Bowers Director and Chief Financial Officer (Principal financial and accounting officer)\n<TABLE>\nDate:  August 4, 2023\n</TABLE>\n* The registrant is a trust and the persons are signing in their respective capacities as officers of iShares Delaware Trust Sponsor LLC, the Sponsor of the registrant.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 766,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:",
+     "August 4, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "101.DEF    Inline XBRL Taxonomy Extension Definition Linkbase Document\n101.LAB    Inline XBRL Taxonomy Extension Label Linkbase Document\n101.PRE    Inline XBRL Taxonomy Extension Presentation Linkbase Document\n104      Cover Page Interactive Data File included as Exhibit 101 (embedded within the Inline XBRL document)\n</TABLE>\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned in the capacities* indicated thereunto duly authorized.\niShares Delaware Trust Sponsor LLC, Sponsor of the iShares Gold Trust (registrant)\n/s/ Shannon Ghia\nShannon Ghia Director, President and Chief Executive Officer (Principal executive officer)",
+   "prose_after": "/s/ Bryan Bowers\nBryan Bowers Director and Chief Financial Officer (Principal financial and accounting officer)\n<TABLE>\nDate:  August 4, 2023\n</TABLE>\n* The registrant is a trust and the persons are signing in their respective capacities as officers of iShares Delaware Trust Sponsor LLC, the Sponsor of the registrant.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 766,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

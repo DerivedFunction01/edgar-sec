@@ -1,0 +1,2128 @@
+{
+ "accession": "0001477932-26-002908",
+ "cik": "0001854816",
+ "form": "10-K",
+ "filing_date": "2026-05-11",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "minr_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "1000",
+     "98-1588963"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\nIncorporation or Organization)",
+     "(Primary Standard Industrial\n\nClassification Number)",
+     "(IRS Employer\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended FEBRUARY 28, 2026\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCOMMISSION FILE NO. 333-255403\nMINERVA GOLD INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "Room 1503, Building 3, Xinshijihaoyuan,\nJiankang West Road, Qingjiangpu District,\nHuaian City, Jiangsu Province, China\n(Address of principal executive offices and zip code)\n+86 152614212229\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business",
+     "3"
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "ITEM 1B",
+     "Unresolved Staff Comments",
+     "4"
+    ],
+    [
+     "ITEM 1C",
+     "Cybersecurity",
+     "4"
+    ],
+    [
+     "ITEM 2",
+     "Properties",
+     "4"
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "ITEM 4",
+     "Mine Safety Disclosures",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Market for Common Equity and Related Stockholder Matters",
+     "5"
+    ],
+    [
+     "ITEM 6",
+     "Selected Financial Data",
+     "5"
+    ],
+    [
+     "ITEM 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "5"
+    ],
+    [
+     "ITEM 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "7"
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements and Supplementary Data",
+     "8"
+    ],
+    [
+     "ITEM 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "9"
+    ],
+    [
+     "ITEM 9A",
+     "Controls and Procedures",
+     "9"
+    ],
+    [
+     "ITEM 9B",
+     "Other Information",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "Directors, Executive Officers, Promoters and Control Persons of the Company",
+     "10"
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation",
+     "11"
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "11"
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships, Related Transactions",
+     "12"
+    ],
+    [
+     "ITEM 14",
+     "Principal Accountant Fees and Services",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits and Financial Statement Schedules",
+     "14"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Smaller reporting company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. YES [ ] NO [X]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. YES [ ] NO [X]\nIndicate by checkmark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of May 8, 2026, the registrant had 6,570,000 shares of common stock issued and outstanding. No market value has been computed based upon the fact that no active trading market has been established as of May 8, 2026.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nITEM 1. DESCRIPTION OF BUSINESS\nFORWARD-LOOKING STATEMENTS\nThis Annual Report contains forward-looking statements. These statements relate to future events or our future financial performance. These statements often can be identified by the use of terms such as \"may,\" \"will,\" \"expect,\" \"believe,\" \"anticipate,\" \"estimate,\" \"approximate\" or \"continue,\" or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management's best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Balance Sheets as of February 28, 2026, and February 28, 2025",
+     "F-2"
+    ],
+    [
+     "Statements of Operations for the years ended February 28, 2026, and February 28, 2025",
+     "F-3"
+    ],
+    [
+     "Statement of Changes in Stockholders\u2019 Equity for the years ended February 28, 2026, and February 28, 2025",
+     "F-4"
+    ],
+    [
+     "Statements of Cash Flows for the years ended February 28, 2026, and February 28, 2025",
+     "F-5"
+    ],
+    [
+     "Notes to the Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Existing working capital, further advances and debt instruments, and anticipated cash flow are expected to be adequate to fund our operations over the next six months. We have no lines of credit or other bank financing arrangements. Generally, we have financed operations to date through the proceeds of the private placement of equity and debt instruments. In connection with our business plan, management anticipates additional increases in operating expenses and capital expenditures relating to: (i) developmental expenses associated with a start-up business and (ii) marketing expenses. We intend to finance these expenses with further issuances of securities, and debt issuances. Thereafter, we expect we will need to raise additional capital and generate revenues to meet long-term operating requirements. Additional issuances of equity or convertible debt securities will result in dilution to our current shareholders. Further, such securities might have rights, preferences or privileges senior to our common stock. Additional financing may not be available upon acceptable terms, or at all. If adequate funds are not available or are not available on acceptable terms, we may not be able to take advantage of prospective new business endeavors or opportunities, which could significantly and materially restrict our business operations.\nMaterial Commitments\nAs of the date of this Annual Report, we do not have any material commitments.\nOff-Balance Sheet Arrangements\nAs of the date of this Annual Report, we do not have any off balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that are material to investors.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nNot applicable.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of Minerva Gold, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Minerva Gold, Inc. (\u201cthe Company\u201d) as of February 28, 2026 and 2025, and the related statements of operations, changes in stockholders\u2019 equity, and cash flows for each of the years in the two-year period ended February 28, 2026, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of February 28, 2026, and 2025 and the results of its operations and its cash flows for each of the years in the two-year period ended February 28, 2026, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has not yet established an ongoing source of revenue sufficient to cover its operating costs and has accumulated losses from inception. These factors, among others, raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fruci & Associates II, PLLC \u2013 PCAOB ID #05525\n\nWe have served as the Company\u2019s auditor since 2022.\n\n \n\nSpokane, Washington",
+     ""
+    ],
+    [
+     "May 8, 2026",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fruci & Associates II, PLLC \u2013 PCAOB ID #05525\n\nWe have served as the Company\u2019s auditor since 2022.\n\n \n\nSpokane, Washington",
+    "May 8, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 287,
+    "end_line": 295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there were no critical audit matters.",
+   "prose_after": "BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FEBRUARY 28, 2026",
+     "",
+     "",
+     "FEBRUARY 28, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash & cash equivalents",
+     "$",
+     "7,077",
+     "",
+     "$",
+     "17,180",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "414",
+     "",
+     "",
+     "6,500",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "7,491",
+     "",
+     "",
+     "23,680",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "",
+     "2,625",
+     "",
+     "",
+     "3,325",
+     ""
+    ],
+    [
+     "Total non-current assets",
+     "",
+     "2,625",
+     "",
+     "",
+     "3,325",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "10,116",
+     "",
+     "$",
+     "27,005",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "$",
+     "4,500",
+     "",
+     "$",
+     "12,000",
+     ""
+    ],
+    [
+     "Loans from related parties",
+     "",
+     "55,780",
+     "",
+     "",
+     "55,780",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "60,280",
+     "",
+     "",
+     "67,780",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "60,280",
+     "",
+     "",
+     "67,780",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 75,000,000 shares authorized; 6,570,000 shares issued and outstanding",
+     "",
+     "6,570",
+     "",
+     "",
+     "6,570",
+     ""
+    ],
+    [
+     "Additional Paid-In-Capital",
+     "",
+     "29,830",
+     "",
+     "",
+     "29,830",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(86,564)",
+     "",
+     "",
+     "(77,175)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 equity (deficit)",
+     "",
+     "(50,164)",
+     "",
+     "",
+     "(40,775)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "10,116",
+     "",
+     "$",
+     "27,005",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 301,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 343,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED\n\nFEBRUARY 28, 2026",
+     "",
+     "",
+     "YEAR ENDED FEBRUARY 28, 2025",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "33,500",
+     "",
+     "$",
+     "26,000",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "42,889",
+     "",
+     "",
+     "33,123",
+     ""
+    ],
+    [
+     "Total Operation expenses",
+     "",
+     "42,889",
+     "",
+     "",
+     "33,123",
+     ""
+    ],
+    [
+     "Income (Loss) before provision for income taxes",
+     "",
+     "(9,389)",
+     "",
+     "",
+     "(7,123)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(9,389)",
+     "",
+     "$",
+     "(7,123)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Common Shares Outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "",
+     "6,570,000",
+     "",
+     "",
+     "6,570,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 349,
+    "end_line": 376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED FEBRUARY 28, 2026 AND FEBRUARY 28, 2025",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nCommon\n\nShares",
+     "",
+     "Amount",
+     "",
+     "Additional\n\nPaid-In-Capital",
+     "",
+     "Deficit\n\naccumulated",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances as of February 29, 2024",
+     "",
+     "6,570,000",
+     "$",
+     "6,570",
+     "$",
+     "29,830",
+     "$",
+     "(70,052)",
+     "",
+     "$",
+     "(33,652)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(7,123)",
+     "",
+     "",
+     "(7,123)",
+     ""
+    ],
+    [
+     "Balances as of February 28, 2025",
+     "",
+     "6,570,000",
+     "$",
+     "6,570",
+     "$",
+     "29,830",
+     "$",
+     "(77,175)",
+     "",
+     "$",
+     "(40,775)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(9,389)",
+     "",
+     "",
+     "(9,389)",
+     ""
+    ],
+    [
+     "Balances as of February 28, 2026",
+     "",
+     "6,570,000",
+     "$",
+     "6,570",
+     "$",
+     "29,830",
+     "$",
+     "(86,564)",
+     "",
+     "$",
+     "(50,164)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED FEBRUARY 28, 2026 AND FEBRUARY 28, 2025",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 384,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED FEBRUARY 28, 2026",
+     "",
+     "",
+     "YEAR ENDED FEBRUARY 28, 2025",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(9,389)",
+     "",
+     "$",
+     "(7,123)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "700",
+     "",
+     "",
+     "233",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "6,086",
+     "",
+     "",
+     "(6,500)",
+     ""
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "(7,500)",
+     "",
+     "",
+     "12,000",
+     ""
+    ],
+    [
+     "Net cash used by Operating activities",
+     "",
+     "(10,103)",
+     "",
+     "",
+     "(1,390)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of fixed assets",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds of loan from shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "22,070",
+     ""
+    ],
+    [
+     "Net cash provided by Financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "22,070",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash and equivalents",
+     "",
+     "(10,103)",
+     "",
+     "",
+     "17,180",
+     ""
+    ],
+    [
+     "Cash and equivalents at beginning of the period",
+     "",
+     "17,180",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and equivalents at end of the period",
+     "$",
+     "7,077",
+     "",
+     "$",
+     "17,180",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO THE AUDITED FINANCIAL STATEMENTS\nFOR THE YEAR ENDED FEBRUARY 28, 2026\nNOTE 1 - ORGANIZATION AND BUSINESS\nMINERVA GOLD INC. (the \u201cCompany\u201d) is a corporation established under the corporation laws in the State of Nevada on February 24, 2021, with an authorized capital of 75,000,000 common shares with a par value of $0.001. The Company's fiscal year-end is February 28. Minerva Gold Inc. (the \"Company\") is a junior mineral exploration company engaged in the identification, acquisition, and exploration of precious metals in Kazakhstan. As part of its strategic growth initiatives, the Company has expanded its business operations to include a new segment focused on design services. This addition aligns with the Company\u2019s long-term vision to diversify its offerings and better position itself to meet the evolving needs of potential clients.\nNOTE 2 - GOING CONCERN\nThe Company\u2019s financial statements as of February 28, 2026, have been prepared using generally accepted accounting principles in the United States of America applicable to a going concern, which contemplates the realization of assets and liquidation of liabilities in the normal course of business. The Company has not yet established an ongoing source of revenues sufficient to cover its operating costs and allow it to continue as a going concern. The Company has accumulated loss from inception (February 24, 2021) to February 28, 2026, of $86,564. These factors among others raise substantial doubt about the ability of the company to continue as a going concern for a reasonable period of time.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the\n\nYear Ended\n\nFebruary 28,\n\n2026",
+     "",
+     "For the\n\nYear Ended\n\nFebruary 28,\n\n2025",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "42,889",
+     "$",
+     "33,123"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "ASC Topic 280, Segment Reporting, establishes standards for companies to report, in their unaudited condensed financial statements, information about operating segments, products, services, geographic areas, and major customers. Operating segments are defined as components of an enterprise that engage in business activities from which it may recognize revenues and incur expenses, and for which separate financial information is available that is regularly evaluated by the Company\u2019s chief operating decision maker, or group, in deciding how to allocate resources and assess performance.\nThe Company\u2019s chief operating decision maker (\u201cCODM\u201d) has been identified as the Chief Executive Officer, who reviews the assets, operating results, and financial metrics for the Company as a whole to make decisions about allocating resources and assessing financial performance. Accordingly, management has determined that there is only one reportable segment.\nThe CODM assesses performance for the single segment and decides how to allocate resources based on net income or loss that also is reported on the statement of operations as net income or loss. The measure of segment assets is reported on the balance sheet as total assets. When evaluating the Company\u2019s performance and making key decisions regarding resource allocation, the CODM reviews several key metrics included in net income or loss and total assets, which include the following:",
+   "prose_after": "The key measures of segment profit or loss reviewed by the CODM are general and administrative expenses. General and administrative expenses are reviewed and monitored by the CODM to manage and forecast cash to ensure enough capital is available to assure that the Company is able to continue its operations. The CODM also reviews general and administrative expenses to manage, maintain and enforce all contractual agreements to ensure costs are aligned with all agreements and budget. All other segment items included in net income or loss are reported on the statements of operations and described within their respective disclosures.\nUse of Estimates and Assumptions\nThe preparation of financial statements in conformity with generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit at U.S. statutory rate",
+     "$",
+     "(18,178)",
+     "",
+     "$",
+     "(16,207)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "18,178",
+     "",
+     "",
+     "16,207",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "In support of the Company\u2019s efforts and cash requirements, it may rely on advances from related parties until such time that the Company can support its operations or attains adequate financing through sales of its equity or traditional debt financing. There is no formal written commitment for continued support by officers, directors, or shareholders. Amounts represent advances or amounts paid in satisfaction of liabilities. The advances are considered temporary in nature and have not been formalized by a promissory note.\nSince February 24, 2021 (Inception) through February 28, 2026, the Company\u2019s sole officer and director loaned the Company $55,780 to pay for incorporation costs and general and administrative expenses. As of February 28, 2026, the amount outstanding was $55,780. The loan is non-interest bearing, due upon demand and unsecured.\nNOTE 6 - COMMITMENTS AND CONTINGENCIES\nAs of the date of this Annual Report, the Company does not have any material commitments and is not aware of any contingent liabilities, legal disputes, or other obligations that could impact the Company's financial position and that should be reflected in the financial statements.\nNOTE 7 - INCOME TAXES\nThe reconciliation of income tax benefit at the U.S. statutory rate of 21% for the periods ended February 28, 2026, and February 28, 2025, the company\u2019s effective tax rate is as follows:",
+   "prose_after": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets at February 28, 2026 and February 28, 2025 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "",
+     "18,178",
+     "",
+     "",
+     "16,207",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(18,178)",
+     "",
+     "",
+     "(16,207)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets at February 28, 2026 and February 28, 2025 is as follows:",
+   "prose_after": "As of February 28, 2026, the Company has approximately $86,564 of net operating loss (\"NOL\") carryforwards available to offset future taxable income, if any. These NOLs begin to expire in fiscal year 2046. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. This assessment is based on projections of future taxable income, the scheduled reversal of temporary differences, and potential tax planning strategies. Based on this analysis, management has determined that it is more likely than not that the deferred tax assets will not be realized, and therefore a full valuation allowance has been recorded against the deferred tax assets for all periods presented. The valuation allowance increased by $1,496 during the year ended February 28, 2026, primarily due to the increase in net operating loss carryforwards generated during the period.\nNOTE 8 - SUBSEQUENT EVENTS\nExcept as set forth below, the Company has evaluated subsequent events from February 28, 2026, to the date the financial statements were issued and has determined that there are no items to disclose.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Zhang Chengcheng",
+     "36",
+     "Director, President, Chief Executive Officer, Chief Financial Officer, Treasurer and Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS OF THE COMPANY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "An evaluation was conducted under the supervision and with the participation of our management of the effectiveness of the design and operation of our disclosure controls and procedures as of February 28, 2026, based on the framework set forth in Internal Control-Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission of 2013 (COSO). Based on that evaluation, our management concluded that our disclosure controls and procedures were not effective as of such date to ensure that information required to be disclosed in the reports that we file or submit under the Exchange Act, is recorded, processed, summarized and reported within the time periods specified in SEC rules and forms. This conclusion was based on the identification of material weaknesses in our internal control over financial reporting. Specifically, the Company lacks a sufficient system of overall internal controls over financial reporting. These material weaknesses include the absence of effective policies and procedures to provide adequate, independent oversight over financial reporting, deficiencies in the timely preparation and review of accounting records, and a lack of segregation of duties. These control deficiencies represent material weaknesses because they create a reasonable possibility that a material misstatement of the financial statements would not be prevented or detected on a timely basis.\nSuch officer also confirmed that there was no change in our internal control over financial reporting during the year February 28, 2026, that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS OF THE COMPANY\nThe name, age and titles of our Sole Executive Officer and Director are set forth in the table below.",
+   "prose_after": "Certain information regarding the background of Mr. Zhang is set forth below.\nZhang Chengcheng has served as CEO of Taizhou Sentian Sanitary Ware Co., Ltd., a Taizhou, China-based manufacturer of sanitary ware / bathroom fixtures, since 2023. From 2014 t0 2016, Mr. Zhang served as Quality Control Inspector for Cougar Shoes, Jiangsu (China) Office. From 2016 to 2023, he served on behalf of Dongguan Hanghua Footwear Co., Ltd. as Head of Brand Development for Partner-Company Jia Kuang Trading Co., Ltd., Huaian, China. Mr. Zhang earned a Bachelor\u2019s Degree in Electrical Engineering from the University of Duisburg-Essen, Duisburg, Germany.\nDuring the past ten years, Mr. Zhang has not been the subject to any of the following events:\n1. Any bankruptcy petition filed by or against any business of which they were a general partner or executive officer either at the time of the bankruptcy or within two years prior to that time.\n2. Any conviction in a criminal proceeding or being subject to a pending criminal proceeding.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 637,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year\n\nEnded\n\n2/28",
+     "Salary ($)",
+     "Bonus ($)",
+     "Stock Awards ($)",
+     "Option Awards ($)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "All Other Compensation ($)",
+     "Total ($)"
+    ],
+    [
+     "Zhang Chengcheng(1)\n\nPresident, CEO, CFO, Secretary and Director",
+     "2026",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2025",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aftandil Aibekov\n\nFormer President, CEO, CFO and Director",
+     "2026",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2025",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our directors are appointed to hold office until the next annual meeting of our shareholders or until their respective successor is elected and qualified, or until they resign or are removed in accordance with the provisions of the Nevada Revised Statutes. Our officers are appointed by our Board of Directors and hold office until removed by the Board or until their resignations.\nDirector Independence\nOur Board of Directors is currently composed of one member, Zhang Chengcheng. Mr. Zhang does not qualify as independent. Our board of directors has not made a subjective determination as to each director that no relationships exist which, in the opinion of our board of directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director had our Board of Directors made these determinations, our board of directors would have reviewed and discussed information provided by the directors and us with regard to each director\u2019s business and personal activities and relationships as they may relate to us and our management.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table sets forth certain information about compensation paid, earned or accrued for services by our Executive Officer for the fiscal years ended February 28, 2026 and 2025:\nSummary Compensation Table",
+   "prose_after": "(1) Mr. Zhang did not become an officer of the Company until April 10, 2026.\nThere is no current employment agreement between the Company and its sole officer.\nThere are no annuity, pension or retirement benefits proposed to be paid to the officer or directors or employees in the event of retirement at normal retirement date pursuant to any presently existing plan provided or contributed to by the company or any of its subsidiaries, if any.\nChange in Control Arrangements\nAs of February 28, 2026, and as of the date of this Annual Report, we had no pension plans or compensatory plans or other arrangements which provide compensation in the event of a termination of employment or a change in our control.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth, as of the date of this Annual Report, the shareholdings of (1) each person owning beneficially 5% or more of the Company\u2019s outstanding common stock; (2) each executive officer of the Company, and (3) all officers and directors as a group. Unless otherwise indicated, each owner has sole voting and investment power over his securities. Information relating to beneficial ownership of securities by our principal shareholders and management is based upon information furnished by each person using beneficial ownership\u2019 concepts under the rules of the SEC. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the SEC rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power. Except as disclosed herein, we do not have any outstanding options or other securities exercisable for or convertible into shares of our common stock. Unless otherwise indicated, the address of each person listed is c/o Minerva Gold Inc., Room 1503, Building 3, Xinshijihaoyuan, Jiankang West Road, Qingjiangpu District, Huaian City, Jiangsu Province, China.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Title of Class",
+     "Beneficial Ownership",
+     "",
+     "Percent of Class(1)",
+     "",
+     ""
+    ],
+    [
+     "Zhang Chengcheng(2)",
+     "Common Stock",
+     "",
+     "5,000,000",
+     "",
+     "76.10",
+     "%"
+    ],
+    [
+     "All Officers and Directors as a Group (1 person)",
+     "Common Stock",
+     "",
+     "5,000,000",
+     "",
+     "76.10",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 721,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table sets forth, as of the date of this Annual Report, the shareholdings of (1) each person owning beneficially 5% or more of the Company\u2019s outstanding common stock; (2) each executive officer of the Company, and (3) all officers and directors as a group. Unless otherwise indicated, each owner has sole voting and investment power over his securities. Information relating to beneficial ownership of securities by our principal shareholders and management is based upon information furnished by each person using beneficial ownership\u2019 concepts under the rules of the SEC. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the SEC rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power. Except as disclosed herein, we do not have any outstanding options or other securities exercisable for or convertible into shares of our common stock. Unless otherwise indicated, the address of each person listed is c/o Minerva Gold Inc., Room 1503, Building 3, Xinshijihaoyuan, Jiankang West Road, Qingjiangpu District, Huaian City, Jiangsu Province, China.",
+   "prose_after": "(1) Based on 6,570,000 shares outstanding, as of the date of this Annual Report.\n(2) Sole Officer and Director.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nLoans by Director\nDuring the period from February 24, 2021 (inception), to February 28, 2026, our then-sole officer, Aftandil Aibekov, loaned $55,780 to the Company. This loan is non-interest bearing, due upon demand and unsecured.\nChange in Control\nEffective April 10, 2025, there occurred a change in control of the Company. On such date, pursuant to a stock purchase agreement (the \u201cChange-in-Control Agreement\u201d), Zhang Chengcheng acquired 5,000,000 shares of the Company\u2019s common stock (the \u201cControl Shares\u201d) from Aftandil Aibekov. The Control Shares represent approximately 76.10% of the outstanding shares of the Company\u2019s common stock and constitute voting control of the Company. The total consideration paid by Mr. Zhang for the Control Shares was $264,600 in cash at the closing.\nIn conjunction with the Change-in-Control Agreement, on April 10, 2026, Aftandil Aibekov resigned as President, Chief Executive Officer, Treasurer, Secretary and a Director of the Company, Meltem Alieva resigned as a Director of the Company and Zhang Chengcheng was appointed as the Sole Director, President, Chief Executive Officer, Treasurer and Secretary of the Company.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 754,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "FEBRUARY 28, 2026",
+     "",
+     "FEBRUARY 28, 2025",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "22,000",
+     "$",
+     "18,287"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "$",
+     "22,000",
+     "$",
+     "18,287"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 756,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On April 10, 2026, the Company entered into a Letter of Intent (the \u201cLetter of Intent\u201d) to acquire Taizhou Sentian Sanitary Ware Co., Ltd. (\u201cTaizhou Sentian\u201d), a company owned by the Company\u2019s Sole Officer and Director, Zhang Chengcheng. The Letter of Intent contemplates that the Company would issue a combination of common stock and a new series of preferred stock (the rights and preferences of which are to be determined) in the acquisition. The definitive agreement is expected to be completed by approximately May 31, 2026, following the completion of certain administrative actions required by applicable Chinese law, with a closing to occur shortly thereafter.\nTaizhou Sentian was founded in 2008 and is based in Taizhou, Zhejiang Province, China (Yangtze River Delta), within a few miles of Taizhou Luqiao Airport and high-speed rail access and port access. Taizhou Sentian manufactures sanitary ware / bathroom fixtures, including shower panels, simple shower enclosures, garden/outdoor showers, faucets and shower columns. Taizhou Sentian conducts its operations in approximately 12,000 sq. meters of leased building space and employs approximately 100 staff. Taizhou Sentian website is located at cnsentian.com.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe aggregate fees billed for professional services rendered by our auditor Fruci & Associates II, PLLC for the audit and review of our financial statements for the fiscal years ended February 28, 2026, and February 28, 2025, amounted to $22,000 and $18,827, respectively.",
+   "prose_after": "Audit fees represent fees for professional services rendered by our principal accountants for the audit of our annual financial statements and review of the financial statements included in our Forms 10-Q or services that are normally provided by our principal accountants in connection with statutory and regulatory filings or engagements.\nAudit-related fees represent professional services rendered for assurance and related services by the accounting firm that are reasonably related to the performance of the audit or review of our financial statements that are not reported under audit fees.\nTax fees represent professional services rendered by the accounting firm for tax compliance, tax advice, and tax planning.\nAll other fees represent fees billed for products and services provided by the accounting firm, other than the services reported for the other three categories.\nPART IV\nITEM 15. EXHIBITS\nThe following exhibits are filed as part of this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 754,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Securities Exchange Act of 1934 Rule 13a-14(a) or 15d-14(a)"
+    ],
+    [
+     "32.1",
+     "Certifications pursuant to Securities Exchange Act of 1934 Rule 13a-14(b) or 15d-14(b) and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes- Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 786,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Audit fees represent fees for professional services rendered by our principal accountants for the audit of our annual financial statements and review of the financial statements included in our Forms 10-Q or services that are normally provided by our principal accountants in connection with statutory and regulatory filings or engagements.\nAudit-related fees represent professional services rendered for assurance and related services by the accounting firm that are reasonably related to the performance of the audit or review of our financial statements that are not reported under audit fees.\nTax fees represent professional services rendered by the accounting firm for tax compliance, tax advice, and tax planning.\nAll other fees represent fees billed for products and services provided by the accounting firm, other than the services reported for the other three categories.\nPART IV\nITEM 15. EXHIBITS\nThe following exhibits are filed as part of this Annual Report.",
+   "prose_after": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MINERVA GOLD INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: May 8, 2026",
+     "By:",
+     "/s/ Zhang Chengcheng"
+    ],
+    [
+     "",
+     "",
+     "Zhang Chengcheng\n\nChief Executive Officer\n\nand Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "MINERVA GOLD INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

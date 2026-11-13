@@ -1,0 +1,376 @@
+{
+ "accession": "0001017386-14-000085",
+ "cik": "0001547015",
+ "form": "10-K/A",
+ "filing_date": "2014-04-24",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "usdadi_2013dec31-10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "California",
+     "",
+     "45-2725352"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 20
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A\nANNUAL REPORT PURSUANT TO SECTIONS 13 OR 15 (d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2013\nCommission file number: 001-35821\nUS-DADI FERTILIZER INDUSTRY INTERNATIONAL, INC. (Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "699 Serramonte Blvd. Ste 212\nDaly City, CA 94015\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: (650) 530-0699\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to section 12(g) of the Act:\nCommon Stock, $0.001 par value (Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "3"
+    ]
+   ],
+   "caption_stack": [
+    "PART IV"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 81
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As used in this amended report, the \u201cCompany\u201d or \u201cUs\u201d or \u201cWe\u201d or \u201cOur\u201d refer to US-DADI FERTILIZER INDUSTRY INTERNATIONAL, INC., a California corporation, unless the context otherwise requires.\nEXPLANATORY NOTE\nThe purpose of this Amendment (the \u201cAmendment\u201d) to our Form 10-K for the Annual Period Ended December 31, 2013 (the \u201cForm 10-K\u201d), as filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on April 17, 2014, is solely to revise the Shell Company status check box on the first page above\nThis Amendment makes no other changes to the Form 10-K as filed with the SEC on April 17, 2014 and no attempt has been made in this Amendment to modify or update the other disclosures presented in the Form 10-K.\nThis Amendment does not reflect subsequent events occurring after the original filing of the Form 10-K (i.e., those events occurring after April 17, 2014) or modify or update in any way those disclosures that may be affected by subsequent events.\nAccordingly, this Amendment should be read in conjunction with the Form 10-K and our other filings with the SEC.\nUS-DADI FERTILIZER INDUSTRY INTERNATIONAL, INC.\nForm 10-K/A Annual Report Table of Contents",
+   "prose_after": "PART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this Report:\n3. Exhibits Incorporated by Reference",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNo.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Chief Executive Officer Certification pursuant to section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Chief Financial Officer Certification pursuant to section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Chief Executive and Financial Officer Certification pursuant to section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits Incorporated by Reference"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits Incorporated by Reference"
+    }
+   },
+   "prose_before": "PART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this Report:\n3. Exhibits Incorporated by Reference",
+   "prose_after": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act of 1934, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "US-DADI FERTILIZER INDUSTRY INTERNATIONAL, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 22, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ SHUXIA WANG"
+    ],
+    [
+     "",
+     "SHUXIA WANG, Secretary",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "US-DADI FERTILIZER INDUSTRY INTERNATIONAL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits Incorporated by Reference"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits Incorporated by Reference"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act of 1934, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 22, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ HAITAO LIU"
+    ],
+    [
+     "",
+     "HAITAO LIU, President, CEO",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Date: April 22, 2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 123,
+    "end_line": 129
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits Incorporated by Reference"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits Incorporated by Reference"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

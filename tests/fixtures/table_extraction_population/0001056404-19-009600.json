@@ -1,0 +1,63 @@
+{
+ "accession": "0001056404-19-009600",
+ "cik": "0001719195",
+ "form": "10-K/A",
+ "filing_date": "2019-10-28",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ubs17c05_10ka-2018.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York (State or other jurisdiction of incorporation or organization of\n\n\n\nthe issuing entity)",
+     "38-4046743 38-4046744 38-7187347\n\n\n\n(I.R.S. Employer\n\n\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 74
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001542256\nNatixis Real Estate Capital LLC\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001238163\nSoci\u00e9t\u00e9 G\u00e9n\u00e9rale\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001592182\nRialto Mortgage Finance, LLC\n(exact name of the sponsor as specified in its charter)",
+   "prose_after": "c/o Wells Fargo Bank, National Association\nas Certificate Administrator\n9062 Old Annapolis Road\nColumbia, MD\n(Address of principal executive offices of the issuing entity)\n21045\n(Zip Code)\nRegistrant\u2019s telephone number, including area code:\n(212) 713-2000\nSecurities registered pursuant to Section 12(b) of the Act: None.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

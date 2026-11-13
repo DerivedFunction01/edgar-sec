@@ -1,0 +1,6058 @@
+{
+ "accession": "0000950170-25-027758",
+ "cik": "0001653087",
+ "form": "10-K",
+ "filing_date": "2025-02-26",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "alec-20241231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "001-38792",
+     "82-2933343"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(Commission File Number)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2024\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM TO\nCommission File Number 001-38792\nAlector, Inc.\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "131 Oyster Point Blvd, Suite 600\nSouth San Francisco, California 94080\n(Address of principal executive offices, including zip code)\n(415) 231-5660 (Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock",
+     "ALEC",
+     "The Nasdaq Stock Market LLC\n\n(The Nasdaq Global Select Market)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 51
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "131 Oyster Point Blvd, Suite 600\nSouth San Francisco, California 94080\n(Address of principal executive offices, including zip code)\n(415) 231-5660 (Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "44"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "100"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "100"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "101"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "101"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "101"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "102"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "103"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "103"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "111"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "113"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "137"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "137"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "138"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "138"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "139"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "139"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "139"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "139"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "139"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "140"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "140"
+    ],
+    [
+     "",
+     "Signatures",
+     "143"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 123
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the common stock held by non-affiliates of the registrant as of June 30, 2024 (the last business day of the registrant\u2019s most recently completed second fiscal quarter) was approximately $311.2 million, based on the closing price of the registrant\u2019s common stock, as reported by the Nasdaq Global Select Market on June 30, 2024 of $4.54 per share.\nThe number of shares of the registrant\u2019s Common Stock outstanding as of February 21, 2025 was 99,085,888.\nPortions of the registrant\u2019s Definitive Proxy Statement relating to the registrant\u2019s 2025 Annual Meeting of Stockholders are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. Such Definitive Proxy Statement will be filed with the Securities and Exchange Commission within 120 days after the end of the registrant\u2019s 2024 fiscal year ended December 31, 2024.\nAnnual Report on Form 10-K\nTABLE OF CONTENTS",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements. All statements other than statements of historical facts contained in this Annual Report, including statements regarding our future results of operations and financial position, business strategy, product candidates, planned preclinical studies and clinical trials, results of clinical trials, research and development costs, regulatory approvals, timing and likelihood of success, as well as plans and objectives of management for future operations, are forward-looking statements. These statements involve known and unknown risks, uncertainties, and other important factors that are in some cases beyond our control and may cause our actual results, performance, or achievements to be materially different from any future results, performance, or achievements expressed or implied by the forward-looking statements.\nIn some cases, you can identify forward-looking statements by terms such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cwould,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201canticipate,\u201d \u201ccould,\u201d \u201cintend,\u201d \u201ctarget,\u201d \u201cproject,\u201d \u201ccontemplate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cpotential,\u201d or \u201ccontinue\u201d or the negative of these terms or other similar expressions. Forward-looking statements contained in this report include, but are not limited to, statements about:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Affiliated Entity"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Adam Boxer, M.D., Ph.D.",
+     "Department of Neurology at University of California, San Francisco"
+    ],
+    [
+     "Stephen L. Hauser, M.D.",
+     "Department of Neurology at University of California, San Francisco"
+    ],
+    [
+     "Michael Heneka, M.D.",
+     "Luxembourg Centre for Systems Biomedicine at University of Luxembourg"
+    ],
+    [
+     "Peter Heutink",
+     "Professor of Functional Genomics of Aging and Neurodegeneration at the Faculty of Medical Sciences of the University of Groningen, The Netherlands"
+    ],
+    [
+     "Martin Kampmann, Ph.D.",
+     "Department of Biochemistry and Biophysics, University of California, San Francisco Weill Institute for Neurosciences"
+    ],
+    [
+     "Richard Scheller, Ph.D.",
+     "National Academy of Sciences and National Institute of Medicine"
+    ],
+    [
+     "Thomas C. S\u00fcdhof, M.D., Ph.D.",
+     "Departments of Molecular and Cellular Physiology and Neurosurgery at Stanford University"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "products for which their national health insurance systems provide reimbursement and to control the prices of medicinal products for human use. A member state may approve a specific price for the medicinal product or it may instead adopt a system of direct or indirect controls on the profitability of the company placing the medicinal product on the market. There can be no assurance that any country that has price controls or reimbursement limitations for pharmaceutical products will allow favorable reimbursement and pricing arrangements for any of our products. Historically, products launched in the European Union do not follow price structures of the United States and generally prices tend to be significantly lower.\nScientific Advisory Board\nWe have assembled a highly qualified scientific advisory board comprised of advisors who have, collectively, deep expertise in neurodegenerative diseases, genomics, protein engineering, drug development, and drug discovery as well as translational medicine. Our scientists work in collaboration with these advisors to identify new disease targets, develop a biomarker strategy, and accelerate discovery and development.",
+   "prose_after": "Human Capital Resources\nOur human capital resources are a key factor in our ability to achieve our mission. We believe that our future success depends, in part, on our ability to continue to identify, recruit, retain, incentivize, and integrate our employees, advisors, and consultants.\nEmployee Profile\nAs of December 31, 2024, we had 238 full-time employees, 76% of whom were engaged in research and development activities. The workforce has subsequently been reduced as we have initiated the reduction-in-force of approximately 17% that was announced in November 2024. The majority of our employees work out of our headquarters location in South San Francisco; and the remainder of our team members work remotely. None of our employees are represented by a labor union or party to a collective bargaining agreement.\nDiversity and Inclusion\nOur employees represent a broad range of backgrounds and bring a wide array of perspectives and experiences to the company. We are committed to building an open, diverse, and inclusive environment for everyone, as we believe this fosters greater innovation and furthers our mission. We have made efforts to ensure that our job postings, hiring process, and people programs are unbiased and are fair and equitable to all. As of December 31, 2024, approximately 59% of our workforce, 60% of Research & Development, and 55% of people managers were female. As of December 31, 2024, ethnic or racial minorities represented approximately 53% of our workforce, 56% of Research & Development, and 40% of our people managers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 847,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dollar",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Collaboration revenue\n\n",
+     "$",
+     "100,558\n\n",
+     "",
+     "$",
+     "97,062\n\n",
+     "",
+     "$",
+     "3,496\n\n",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "",
+     "185,940\n\n",
+     "",
+     "",
+     "192,115\n\n",
+     "",
+     "",
+     "(6,175)",
+     ""
+    ],
+    [
+     "General and administrative\n\n",
+     "",
+     "59,615\n\n",
+     "",
+     "",
+     "56,687\n\n",
+     "",
+     "",
+     "2,928\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "245,555\n\n",
+     "",
+     "",
+     "248,802\n\n",
+     "",
+     "",
+     "(3,247)",
+     ""
+    ],
+    [
+     "Loss from operations\n\n",
+     "",
+     "(144,997)",
+     "",
+     "",
+     "(151,740)",
+     "",
+     "",
+     "6,743\n\n",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "26,076\n\n",
+     "",
+     "",
+     "26,561\n\n",
+     "",
+     "",
+     "(485)",
+     ""
+    ],
+    [
+     "Loss before income taxes\n\n",
+     "",
+     "(118,921)",
+     "",
+     "",
+     "(125,179)",
+     "",
+     "",
+     "6,258\n\n",
+     ""
+    ],
+    [
+     "Income tax expense\n\n",
+     "",
+     "128\n\n",
+     "",
+     "",
+     "5,212\n\n",
+     "",
+     "",
+     "(5,084)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(119,049)",
+     "",
+     "$",
+     "(130,391)",
+     "",
+     "$",
+     "11,342\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2340,
+    "end_line": 2371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "General and administrative expenses consist primarily of personnel-related costs, including stock-based compensation, for our personnel in executive, legal, finance and accounting, information technology, human resources, and other administrative functions. General and administrative expenses also include legal fees relating to intellectual property and corporate matters, professional fees paid for accounting, auditing, consulting, and tax services, insurance costs, and facility costs not otherwise included in research and development expenses.\nOther Income, Net\nOther income, net consists primarily of interest earned on our cash equivalents and marketable securities.\nIncome Tax Expense\nIncome tax expense consists of federal and state income tax provisions.\nResults of Operations\nThe following table sets forth selected consolidated statements of operations data for the fiscal years indicated and the percentage change in such data from year to year. These historical operating results may not be indicative of the results for any future period. A discussion of our results of operations for the comparison of the years ended December 31, 2023 and 2022 can be found on page 103 of our Annual Report on Form 10-K for the fiscal year ended December 31, 2023 filed with the SEC on February 27, 2024.\nComparison of the Years Ended December 31, 2024 and 2023",
+   "prose_after": "Revenue\nCollaboration revenue was $100.6 million for the year ended December 31, 2024, compared to $97.1 million for the year ended December 31, 2023. The increase of $3.5 million was mainly due to a $15.9 million increase in revenue recognized for the AL002 program and a $9.8 million increase in revenue recognized for the latozinemab programs, offset by a $22.2 million decrease in revenue recognized for the AL101 programs. Revenues are recognized as the program costs are incurred by measuring actual costs incurred to date compared to the overall total expected costs to satisfy the performance obligation.\nResearch and Development Expenses\nResearch and development expenses were $185.9 million for the year ended December 31, 2024, compared to $192.1 million for the year ended December 31, 2023. The decrease of $6.2 million was mainly due to the Company\u2019s strategy to prioritize selected programs.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2325,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 105
+    },
+    "after": {
+     "line": 2376,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 106
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "Dollar",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Direct research and development expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Latozinemab\n\n",
+     "$",
+     "13,909\n\n",
+     "$",
+     "14,511\n\n",
+     "$",
+     "(602)",
+     ""
+    ],
+    [
+     "AL101\n\n",
+     "",
+     "4,656\n\n",
+     "",
+     "4,403\n\n",
+     "",
+     "253\n\n",
+     ""
+    ],
+    [
+     "AL002\n\n",
+     "",
+     "50,222\n\n",
+     "",
+     "51,490\n\n",
+     "",
+     "(1,268)",
+     ""
+    ],
+    [
+     "Other programs\n\n",
+     "",
+     "16,908\n\n",
+     "",
+     "21,096\n\n",
+     "",
+     "(4,188)",
+     ""
+    ],
+    [
+     "Indirect research and development expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Personnel related (including stock-based\n   compensation)\n\n",
+     "",
+     "75,909\n\n",
+     "",
+     "76,956\n\n",
+     "",
+     "(1,047)",
+     ""
+    ],
+    [
+     "Facilities and other unallocated research and\n   development expenses\n\n",
+     "",
+     "24,336\n\n",
+     "",
+     "23,659\n\n",
+     "",
+     "677\n\n",
+     ""
+    ],
+    [
+     "Total research and development expenses\n\n",
+     "$",
+     "185,940\n\n",
+     "$",
+     "192,115\n\n",
+     "$",
+     "(6,175)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2381,
+    "end_line": 2408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Revenue\nCollaboration revenue was $100.6 million for the year ended December 31, 2024, compared to $97.1 million for the year ended December 31, 2023. The increase of $3.5 million was mainly due to a $15.9 million increase in revenue recognized for the AL002 program and a $9.8 million increase in revenue recognized for the latozinemab programs, offset by a $22.2 million decrease in revenue recognized for the AL101 programs. Revenues are recognized as the program costs are incurred by measuring actual costs incurred to date compared to the overall total expected costs to satisfy the performance obligation.\nResearch and Development Expenses\nResearch and development expenses were $185.9 million for the year ended December 31, 2024, compared to $192.1 million for the year ended December 31, 2023. The decrease of $6.2 million was mainly due to the Company\u2019s strategy to prioritize selected programs.",
+   "prose_after": "General and Administrative Expenses\nGeneral and administrative expenses were $59.6 million for the year ended December 31, 2024, compared to $56.7 million for the year ended December 31, 2023. The increase of $2.9 million was mainly due to the impairment of the right-of-use asset and the leasehold improvements as we approved a plan to transition operations from our laboratory and office space in Newark, California to our South San Francisco headquarters.\nOther Income, Net\nOther income, net was $26.1 million for the year ended December 31, 2024, compared to $26.6 million for the year ended December 31, 2023. The decrease of $0.5 million was due to lower interest income from a reduction in marketable securities used to fund our operations.\nIncome Tax Expense\nIncome tax expense was $0.1 million for the year ended December 31, 2024, compared to $5.2 million for the year ended December 31, 2023. The decrease was due to the full recognition of GSK revenue for tax purposes in 2023.\nLiquidity and Capital Resources",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2376,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 106
+    },
+    "after": {
+     "line": 2431,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 107
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities\n\n",
+     "$",
+     "(229,905)",
+     "",
+     "$",
+     "(184,162)",
+     "",
+     "$",
+     "(20,329)",
+     ""
+    ],
+    [
+     "Cash provided by (used in) investing activities\n\n",
+     "",
+     "107,131\n\n",
+     "",
+     "",
+     "101,918\n\n",
+     "",
+     "",
+     "(159,014)",
+     ""
+    ],
+    [
+     "Cash provided by financing activities\n\n",
+     "",
+     "81,540\n\n",
+     "",
+     "",
+     "2,550\n\n",
+     "",
+     "",
+     "4,514\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2473,
+    "end_line": 2485
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022negotiating favorable terms in any collaboration, licensing, or other arrangements into which we may enter and performing our obligations in such collaborations;\n\u2022the timing and amount of milestone and other payments we may receive under our collaboration arrangements;\n\u2022the costs and timing of regulatory approvals;\n\u2022our eventual commercialization plans for our product candidates;\n\u2022the effects of inflationary pressures; and\n\u2022the costs involved in prosecuting, defending, and enforcing patent claims and other intellectual property claims.\nA change in the outcome of any of these or other variables with respect to the development of any of our product candidates could significantly change the costs and timing associated with the development of that product candidate. Furthermore, our operating plans may change in the future, and we may need additional funds to meet operational needs and capital requirements associated with such operating plans.\nCash Flows\nThe following table summarizes our cash flows for the periods indicated (in thousands):",
+   "prose_after": "Operating Activities\nFor the year ended December 31, 2024, cash used in operating activities was $230.0 million. This was mainly due to the net loss of $119.0 million. We also had a decrease in deferred revenue of $100.6 million and a decrease in refund liability of $46.0 million. This was offset by a non-cash charge of $39.5 million for stock-based compensation.\nFor the year ended December 31, 2023, cash used in operating activities was $184.2 million. This was mainly due to the net loss of $130.4 million. We also had a decrease in deferred revenue of $66.8 million and a decrease in refund liability of $24.5 million. This was offset by a non-cash charge of $42.8 million for stock-based compensation.\nFor the year ended December 31, 2022, cash used in operating activities was $20.3 million. This was due to the net loss of $133.3 million offset by an increase in deferred revenue of $66.4 million from the $200 million upfront payment received less revenue recognized. In addition, we had non-cash charges of $46.1 million for stock-based compensation.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2464,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 108
+    },
+    "after": {
+     "line": 2508,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 109
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Audited Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID: 42)",
+     "113"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "115"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss",
+     "116"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "117"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "118"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "119"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Audited Consolidated Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2570,
+    "end_line": 2580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "are currently insured by the Federal Deposit Insurance Corporation (FDIC) up to a maximum of $250,000. As of December 31, 2024, approximately $1.1 million exceeded the FDIC limit, and the significant majority of the Company\u2019s operating cash is held at JPMorgan Chase & Co.\nForeign Currency Risk\nOur expenses are generally denominated in U.S. dollars. However, we have entered into a limited number of contracts with vendors for research and development services with payments denominated in foreign currencies, including the Euro. We are subject to foreign currency transaction gains or losses on our contracts denominated in foreign currencies. To date, foreign currency transaction gains and losses have not been material to our financial statements, and we have not had a formal hedging program with respect to foreign currency. A 10% increase or decrease in current exchange rates would not have a material effect on our financial results.\nItem 8. Financial Statements and Supplementary Data.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Stockholders and the Board of Directors of Alector, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Alector, Inc. (the Company) as of December 31, 2024 and 2023, the related consolidated statements of operations and comprehensive loss, stockholders\u2019 equity and cash flows for each of the three years in the period ended December 31, 2024, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2024 and 2023, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2024, in conformity with U.S. generally accepted accounting principles.\nWe also have audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the Company\u2019s internal control over financial reporting as of December 31, 2024, based on criteria established in Internal Control-Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission (2013 framework), and our report dated February 26, 2025 expressed an unqualified opinion thereon.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2566,
+     "token": "REPEATING_HEADER",
+     "id": 115,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2601,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 113
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description of the Matter",
+     "The Company recorded collaboration revenue of $100.6 million for the year ended December 31, 2024. As described in Note 2, collaboration revenue is recognized by measuring the progress toward complete satisfaction of the performance obligations using an input measure. In order to recognize collaboration revenue over the research and development period, the Company measures actual costs incurred to date compared to the overall total expected costs to satisfy the performance obligations. Revenues are recognized as the program costs are incurred.\n\nAuditing collaboration revenue was challenging as it involves assessing highly judgmental estimates with respect to the Company\u2019s determination of the total expected costs to satisfy the performance obligations."
+    ],
+    [
+     "How We Addressed the Matter in Our Audit",
+     "We obtained an understanding, evaluated the design and tested the operating effectiveness of internal controls that address the identified risks related to the Company\u2019s process used to determine total expected costs to satisfy the performance obligations, including management\u2019s controls over updates to the budget for the relevant research and development programs.\n\nTo test collaboration revenue, our audit procedures included, among others, obtaining an understanding of the Company\u2019s estimated costs to satisfy the performance obligations, as well as assessing management\u2019s updates to the budget for the relevant research and development programs. We also tested a sample of expenses recorded to the development program, evaluated the historical accuracy of management\u2019s budget estimates for the relevant research and development programs, and inquired of Company personnel directly involved with supervising the development programs."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2606,
+    "end_line": 2625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matter\nThe critical audit matter communicated below is a matter arising from the current period audit of the financial statements that was communicated or required to be communicated to the audit committee and that: (1) relates to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging,\nsubjective or complex judgments. The communication of the critical audit matter does not alter in any way our opinion on the consolidated financial statements, taken as a whole, and we are not, by communicating the critical audit matter below, providing a separate opinion on the critical audit matter or on the account or disclosure to which it relates.\nRevenue Recognition",
+   "prose_after": "/s/ Ernst & Young LLP\nWe have served as the Company\u2019s auditor since 2017.\nSan Mateo, California\nFebruary 26, 2025\nConsolidated Balance Sheets\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2601,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 113
+    },
+    "after": {
+     "line": 2634,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 114
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\n\n",
+     "$",
+     "33,021\n\n",
+     "",
+     "$",
+     "74,555\n\n",
+     ""
+    ],
+    [
+     "Marketable securities\n\n",
+     "",
+     "380,376\n\n",
+     "",
+     "",
+     "474,306\n\n",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets\n\n",
+     "",
+     "11,420\n\n",
+     "",
+     "",
+     "16,946\n\n",
+     ""
+    ],
+    [
+     "Total current assets\n\n",
+     "",
+     "424,817\n\n",
+     "",
+     "",
+     "565,807\n\n",
+     ""
+    ],
+    [
+     "Property and equipment, net\n\n",
+     "",
+     "17,145\n\n",
+     "",
+     "",
+     "21,861\n\n",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets\n\n",
+     "",
+     "19,951\n\n",
+     "",
+     "",
+     "25,195\n\n",
+     ""
+    ],
+    [
+     "Restricted cash\n\n",
+     "",
+     "1,846\n\n",
+     "",
+     "",
+     "1,546\n\n",
+     ""
+    ],
+    [
+     "Other assets\n\n",
+     "",
+     "4,544\n\n",
+     "",
+     "",
+     "7,418\n\n",
+     ""
+    ],
+    [
+     "Total assets\n\n",
+     "$",
+     "468,303\n\n",
+     "",
+     "$",
+     "621,827\n\n",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable\n\n",
+     "$",
+     "2,215\n\n",
+     "",
+     "$",
+     "3,775\n\n",
+     ""
+    ],
+    [
+     "Accrued clinical supply costs\n\n",
+     "",
+     "6,989\n\n",
+     "",
+     "",
+     "5,215\n\n",
+     ""
+    ],
+    [
+     "Accrued liabilities\n\n",
+     "",
+     "28,890\n\n",
+     "",
+     "",
+     "30,378\n\n",
+     ""
+    ],
+    [
+     "Deferred revenue, current portion\n\n",
+     "",
+     "23,663\n\n",
+     "",
+     "",
+     "82,975\n\n",
+     ""
+    ],
+    [
+     "Payable to collaboration partner\n\n",
+     "",
+     "5,914\n\n",
+     "",
+     "",
+     "7,703\n\n",
+     ""
+    ],
+    [
+     "Refund liability to collaboration partner, current portion\n\n",
+     "",
+     "48,634\n\n",
+     "",
+     "",
+     "39,440\n\n",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current portion\n\n",
+     "",
+     "8,754\n\n",
+     "",
+     "",
+     "8,462\n\n",
+     ""
+    ],
+    [
+     "Total current liabilities\n\n",
+     "",
+     "125,059\n\n",
+     "",
+     "",
+     "177,948\n\n",
+     ""
+    ],
+    [
+     "Deferred revenue, long-term portion\n\n",
+     "",
+     "172,169\n\n",
+     "",
+     "",
+     "210,845\n\n",
+     ""
+    ],
+    [
+     "Long-term debt\n\n",
+     "",
+     "9,389\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Refund liability to collaboration partner, long-term portion\n\n",
+     "",
+     "9,276\n\n",
+     "",
+     "",
+     "67,047\n\n",
+     ""
+    ],
+    [
+     "Operating lease liabilities, long-term portion\n\n",
+     "",
+     "24,376\n\n",
+     "",
+     "",
+     "30,456\n\n",
+     ""
+    ],
+    [
+     "Other long-term liabilities\n\n",
+     "",
+     "1,234\n\n",
+     "",
+     "",
+     "1,373\n\n",
+     ""
+    ],
+    [
+     "Total liabilities\n\n",
+     "",
+     "341,503\n\n",
+     "",
+     "",
+     "487,669\n\n",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 200,000,000 shares authorized; \n    99,085,888 and 84,879,693 shares issued and outstanding as of\n    December 31, 2024 and December 31, 2023, respectively\n\n",
+     "",
+     "9\n\n",
+     "",
+     "",
+     "8\n\n",
+     ""
+    ],
+    [
+     "Additional paid-in capital\n\n",
+     "",
+     "955,657\n\n",
+     "",
+     "",
+     "844,044\n\n",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income\n\n",
+     "",
+     "261\n\n",
+     "",
+     "",
+     "184\n\n",
+     ""
+    ],
+    [
+     "Accumulated deficit\n\n",
+     "",
+     "(829,127)",
+     "",
+     "",
+     "(710,078)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity\n\n",
+     "",
+     "126,800\n\n",
+     "",
+     "",
+     "134,158\n\n",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity\n\n",
+     "$",
+     "468,303\n\n",
+     "",
+     "$",
+     "621,827\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2640,
+    "end_line": 2721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "/s/ Ernst & Young LLP\nWe have served as the Company\u2019s auditor since 2017.\nSan Mateo, California\nFebruary 26, 2025\nConsolidated Balance Sheets\n(In thousands, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive Loss\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2634,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 114
+    },
+    "after": {
+     "line": 2724,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 115
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Collaboration revenue\n\n",
+     "$",
+     "100,558\n\n",
+     "",
+     "$",
+     "97,062\n\n",
+     "",
+     "$",
+     "133,617\n\n",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "",
+     "185,940\n\n",
+     "",
+     "",
+     "192,115\n\n",
+     "",
+     "",
+     "210,418\n\n",
+     ""
+    ],
+    [
+     "General and administrative\n\n",
+     "",
+     "59,615\n\n",
+     "",
+     "",
+     "56,687\n\n",
+     "",
+     "",
+     "61,033\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "245,555\n\n",
+     "",
+     "",
+     "248,802\n\n",
+     "",
+     "",
+     "271,451\n\n",
+     ""
+    ],
+    [
+     "Loss from operations\n\n",
+     "",
+     "(144,997)",
+     "",
+     "",
+     "(151,740)",
+     "",
+     "",
+     "(137,834)",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "26,076\n\n",
+     "",
+     "",
+     "26,561\n\n",
+     "",
+     "",
+     "7,778\n\n",
+     ""
+    ],
+    [
+     "Loss before income taxes\n\n",
+     "",
+     "(118,921)",
+     "",
+     "",
+     "(125,179)",
+     "",
+     "",
+     "(130,056)",
+     ""
+    ],
+    [
+     "Income tax expense\n\n",
+     "",
+     "128\n\n",
+     "",
+     "",
+     "5,212\n\n",
+     "",
+     "",
+     "3,254\n\n",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "(119,049)",
+     "",
+     "",
+     "(130,391)",
+     "",
+     "",
+     "(133,310)",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on marketable securities\n\n",
+     "",
+     "77\n\n",
+     "",
+     "",
+     "4,759\n\n",
+     "",
+     "",
+     "(3,632)",
+     ""
+    ],
+    [
+     "Comprehensive loss\n\n",
+     "$",
+     "(118,972)",
+     "",
+     "$",
+     "(125,632)",
+     "",
+     "$",
+     "(136,942)",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted\n\n",
+     "$",
+     "(1.23)",
+     "",
+     "$",
+     "(1.56)",
+     "",
+     "$",
+     "(1.62)",
+     ""
+    ],
+    [
+     "Shares used in computing net loss per share, basic and diluted\n\n",
+     "",
+     "96,588,177\n\n",
+     "",
+     "",
+     "83,733,730\n\n",
+     "",
+     "",
+     "82,467,587\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2730,
+    "end_line": 2771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive Loss\n(In thousands, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2724,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 115
+    },
+    "after": {
+     "line": 2774,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 116
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Comprehensive Income (Loss)",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders\u2019 Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2014 December 31, 2021\n\n",
+     "",
+     "81,986,192\n\n",
+     "$",
+     "8\n\n",
+     "$",
+     "748,036\n\n",
+     "$",
+     "(943)",
+     "",
+     "$",
+     "(446,377)",
+     "",
+     "$",
+     "300,724\n\n",
+     ""
+    ],
+    [
+     "Exercise of stock options\n\n",
+     "",
+     "298,238\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "3,059\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "3,059\n\n",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units\n\n",
+     "",
+     "414,578\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Purchase of common stock\n  under employee stock purchase\n  plan\n\n",
+     "",
+     "196,710\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,455\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,455\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "46,146\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "46,146\n\n",
+     ""
+    ],
+    [
+     "Unrealized loss on marketable\n   securities\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "(3,632)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(3,632)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(133,310)",
+     "",
+     "",
+     "(133,310)",
+     ""
+    ],
+    [
+     "Balance \u2014 December 31, 2022\n\n",
+     "",
+     "82,895,718\n\n",
+     "",
+     "8\n\n",
+     "",
+     "798,696\n\n",
+     "",
+     "(4,575)",
+     "",
+     "",
+     "(579,687)",
+     "",
+     "",
+     "214,442\n\n",
+     ""
+    ],
+    [
+     "Exercise of stock options\n\n",
+     "",
+     "132,191\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,079\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,079\n\n",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units\n\n",
+     "",
+     "1,584,449\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Purchase of common stock\n  under employee stock purchase\n  plan\n\n",
+     "",
+     "267,335\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,471\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,471\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "42,798\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "42,798\n\n",
+     ""
+    ],
+    [
+     "Unrealized gain on marketable\n   securities\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "4,759\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "4,759\n\n",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(130,391)",
+     "",
+     "",
+     "(130,391)",
+     ""
+    ],
+    [
+     "Balance \u2014 December 31, 2023\n\n",
+     "",
+     "84,879,693\n\n",
+     "$",
+     "8\n\n",
+     "$",
+     "844,044\n\n",
+     "$",
+     "184\n\n",
+     "",
+     "$",
+     "(710,078)",
+     "",
+     "$",
+     "134,158\n\n",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units\n\n",
+     "",
+     "3,001,132\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon\n  public offering, net of issuance\n  costs of $3,892\n\n",
+     "",
+     "10,869,566\n\n",
+     "",
+     "1\n\n",
+     "",
+     "71,107\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "71,108\n\n",
+     ""
+    ],
+    [
+     "Purchase of common stock\n  under employee stock purchase\n  plan\n\n",
+     "",
+     "335,497\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "1,043\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,043\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "39,463\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "39,463\n\n",
+     ""
+    ],
+    [
+     "Unrealized gain on marketable\n  securities\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "77\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "77\n\n",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(119,049)",
+     "",
+     "",
+     "(119,049)",
+     ""
+    ],
+    [
+     "Balance \u2014 December 31, 2024\n\n",
+     "",
+     "99,085,888\n\n",
+     "$",
+     "9\n\n",
+     "$",
+     "955,657\n\n",
+     "$",
+     "261\n\n",
+     "",
+     "$",
+     "(829,127)",
+     "",
+     "$",
+     "126,800\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2780,
+    "end_line": 2847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\n(In thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2774,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 116
+    },
+    "after": {
+     "line": 2850,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "arabic",
+     "page_number": 117
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(119,049)",
+     "",
+     "$",
+     "(130,391)",
+     "",
+     "$",
+     "(133,310)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating    activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "5,407\n\n",
+     "",
+     "",
+     "5,725\n\n",
+     "",
+     "",
+     "5,714\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "39,463\n\n",
+     "",
+     "",
+     "42,798\n\n",
+     "",
+     "",
+     "46,146\n\n",
+     ""
+    ],
+    [
+     "Amortization of premiums and accretion of discounts on\n    marketable securities\n\n",
+     "",
+     "(14,379)",
+     "",
+     "",
+     "(15,318)",
+     "",
+     "",
+     "(1,163)",
+     ""
+    ],
+    [
+     "Amortization of right-of-use assets\n\n",
+     "",
+     "3,434\n\n",
+     "",
+     "",
+     "3,123\n\n",
+     "",
+     "",
+     "2,758\n\n",
+     ""
+    ],
+    [
+     "Impairment loss of right-of-use assets and leasehold \n    improvements\n\n",
+     "",
+     "2,205\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Loss from disposal of fixed assets\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "48\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivable from collaboration partner\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "2,587\n\n",
+     "",
+     "",
+     "4,804\n\n",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets\n\n",
+     "",
+     "5,526\n\n",
+     "",
+     "",
+     "(5,949)",
+     "",
+     "",
+     "(3,926)",
+     ""
+    ],
+    [
+     "Other assets\n\n",
+     "",
+     "2,874\n\n",
+     "",
+     "",
+     "(1,009)",
+     "",
+     "",
+     "(835)",
+     ""
+    ],
+    [
+     "Accounts payable\n\n",
+     "",
+     "(1,441)",
+     "",
+     "",
+     "(377)",
+     "",
+     "",
+     "(572)",
+     ""
+    ],
+    [
+     "Accrued liabilities and accrued clinical supply costs\n\n",
+     "",
+     "340\n\n",
+     "",
+     "",
+     "2,546\n\n",
+     "",
+     "",
+     "(2,655)",
+     ""
+    ],
+    [
+     "Payable to collaboration partner\n\n",
+     "",
+     "(1,789)",
+     "",
+     "",
+     "7,703\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Deferred revenue\n\n",
+     "",
+     "(100,558)",
+     "",
+     "",
+     "(66,782)",
+     "",
+     "",
+     "66,383\n\n",
+     ""
+    ],
+    [
+     "Refund liability to collaboration partner\n\n",
+     "",
+     "(46,007)",
+     "",
+     "",
+     "(24,512)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Lease liabilities\n\n",
+     "",
+     "(5,792)",
+     "",
+     "",
+     "(4,968)",
+     "",
+     "",
+     "(4,274)",
+     ""
+    ],
+    [
+     "Other long-term liabilities\n\n",
+     "",
+     "(139)",
+     "",
+     "",
+     "614\n\n",
+     "",
+     "",
+     "601\n\n",
+     ""
+    ],
+    [
+     "Net cash used in operating activities\n\n",
+     "",
+     "(229,905)",
+     "",
+     "",
+     "(184,162)",
+     "",
+     "",
+     "(20,329)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment\n\n",
+     "",
+     "(1,255)",
+     "",
+     "",
+     "(2,381)",
+     "",
+     "",
+     "(4,117)",
+     ""
+    ],
+    [
+     "Purchase of marketable securities\n\n",
+     "",
+     "(467,741)",
+     "",
+     "",
+     "(551,729)",
+     "",
+     "",
+     "(556,898)",
+     ""
+    ],
+    [
+     "Maturities of marketable securities\n\n",
+     "",
+     "573,559\n\n",
+     "",
+     "",
+     "652,523\n\n",
+     "",
+     "",
+     "402,001\n\n",
+     ""
+    ],
+    [
+     "Sale of marketable securities\n\n",
+     "",
+     "2,568\n\n",
+     "",
+     "",
+     "3,505\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities\n\n",
+     "",
+     "107,131\n\n",
+     "",
+     "",
+     "101,918\n\n",
+     "",
+     "",
+     "(159,014)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the exercise of options to purchase\n    common stock\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,079\n\n",
+     "",
+     "",
+     "3,059\n\n",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock from employee \n   stock purchase plan\n\n",
+     "",
+     "1,043\n\n",
+     "",
+     "",
+     "1,471\n\n",
+     "",
+     "",
+     "1,455\n\n",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock upon public \n  offering, net of issuance costs\n\n",
+     "",
+     "71,108\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Proceeds from debt financing, net of discount and issuance \n    costs\n\n",
+     "",
+     "9,389\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities\n\n",
+     "",
+     "81,540\n\n",
+     "",
+     "",
+     "2,550\n\n",
+     "",
+     "",
+     "4,514\n\n",
+     ""
+    ],
+    [
+     "Net decrease in cash, cash equivalents, and restricted cash\n\n",
+     "",
+     "(41,234)",
+     "",
+     "",
+     "(79,694)",
+     "",
+     "",
+     "(174,829)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash at beginning of period\n\n",
+     "",
+     "76,101\n\n",
+     "",
+     "",
+     "155,795\n\n",
+     "",
+     "",
+     "330,624\n\n",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash at end of period\n\n",
+     "",
+     "34,867\n\n",
+     "",
+     "$",
+     "76,101\n\n",
+     "",
+     "$",
+     "155,795\n\n",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment purchases included in accounts\n   payable and accrued liabilities\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "172\n\n",
+     "",
+     "$",
+     "493\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2856,
+    "end_line": 2948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1.The Company and Liquidity\nAlector, Inc. (Alector or the Company) is a Delaware corporation headquartered in South San Francisco, California. Alector is a late-stage clinical biotechnology company focused on developing therapies to counteract the devastating progression of neurodegeneration.\nPublic Offering\nOn January 19, 2024, the Company completed a public offering through selling and issuing 10,869,566 shares of common stock at a price per share of $6.57, resulting in aggregate net proceeds of $71.1 million, after deducting underwriting discounts and commissions and offering costs.\n2.Summary of Significant Accounting Policies\nBasis of Presentation\nThe consolidated financial statements have been prepared in conformity with generally accepted accounting principles in the United States (GAAP) as defined by the Financial Accounting Standards Board (FASB). The consolidated financial statements include the accounts of Alector, Inc. and its wholly owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2850,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "arabic",
+     "page_number": 117
+    },
+    "after": {
+     "line": 2951,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": 118
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\n\n",
+     "$",
+     "33,021\n\n",
+     "$",
+     "74,555\n\n"
+    ],
+    [
+     "Restricted cash\n\n",
+     "",
+     "1,846\n\n",
+     "",
+     "1,546\n\n"
+    ],
+    [
+     "Total cash, cash equivalents, and restricted cash\n\n",
+     "$",
+     "34,867\n\n",
+     "$",
+     "76,101\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2982,
+    "end_line": 2997
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Financial instruments that potentially subject the Company to significant concentrations of credit risk consist primarily of cash, cash equivalents, and short-term marketable securities. Cash and cash equivalents are deposited in checking and sweep accounts at financial institutions. Such deposits may, at times, exceed federally insured limits.\nCash, Cash Equivalents, and Restricted Cash\nThe Company considers all highly liquid investments with original maturities of three months or less at the date of purchase to be cash and cash equivalents. Cash equivalents, which consist of amounts invested in money market funds, are stated at fair value.\nRestricted cash of $1.5 million relates to a letter of credit established for a lease entered into in June 2018. Restricted cash of $0.3 million was held as collateral to secure the use of corporate cards under a cash pledge agreement entered into in December 2024.\nThe following table provides a reconciliation of cash, cash equivalents, and restricted cash reported within the consolidated balance sheets that sum to the total of the same amounts shown in the consolidated statements of cash flows:",
+   "prose_after": "Marketable Securities\nAll marketable securities have been classified as \u201cavailable-for-sale\u201d and are carried at fair value, based upon quoted market prices. The Company considers its available-for-sale portfolio as available for use in current operations. Accordingly, the Company may classify certain investments as short-term marketable securities, even though the stated maturity date may be one year or more beyond the current balance sheet date. For available-for-sale debt securities, unrealized gains or losses, net of any related tax effects, are excluded from earnings and are included in other comprehensive income and reported as a separate component of stockholders\u2019 equity until realized. The Company assesses available-for-sale debt securities on a quarterly basis to see if any unrealized loss is due to credit-related factors. Factors considered in determining whether an impairment is credit-related include the extent to which the investment\u2019s fair value is less than its cost basis, declines in published credit ratings, changes in interest rates, and any other adverse factors related to the security. If it is determined that a credit-related impairment exists, the Company will measure the credit loss based on a discounted cash flows model. Credit-related impairments on available-for-sale debt securities are recognized as an allowance for credit losses with a corresponding adjustment to other income, net in the Company\u2019s consolidated statement of operations. The unrealized loss position that is not credit-related is recorded, net of any related tax effects, in other comprehensive income until realized. There were no credit-related losses recognized for the periods presented.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2951,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": 118
+    },
+    "after": {
+     "line": 2998,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "arabic",
+     "page_number": 119
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Collaboration revenue\n\n",
+     "$",
+     "100.6\n\n",
+     "",
+     "$",
+     "97.1\n\n",
+     "",
+     "$",
+     "133.6\n\n",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation and benefits\n\n",
+     "",
+     "73.2\n\n",
+     "",
+     "",
+     "72.8\n\n",
+     "",
+     "",
+     "69.1\n\n",
+     ""
+    ],
+    [
+     "Lab expenses and outside research services\n\n",
+     "",
+     "14.8\n\n",
+     "",
+     "",
+     "11.6\n\n",
+     "",
+     "",
+     "19.8\n\n",
+     ""
+    ],
+    [
+     "Clinical supply costs\n\n",
+     "",
+     "22.5\n\n",
+     "",
+     "",
+     "26.4\n\n",
+     "",
+     "",
+     "29.4\n\n",
+     ""
+    ],
+    [
+     "Clinical trials\n\n",
+     "",
+     "58.6\n\n",
+     "",
+     "",
+     "62.3\n\n",
+     "",
+     "",
+     "59.2\n\n",
+     ""
+    ],
+    [
+     "Support functions\n\n",
+     "",
+     "32.2\n\n",
+     "",
+     "",
+     "31.2\n\n",
+     "",
+     "",
+     "36.6\n\n",
+     ""
+    ],
+    [
+     "Other segment expenses(a)\n\n",
+     "",
+     "44.3\n\n",
+     "",
+     "",
+     "44.5\n\n",
+     "",
+     "",
+     "57.4\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "245.6\n\n",
+     "",
+     "",
+     "248.8\n\n",
+     "",
+     "",
+     "271.5\n\n",
+     ""
+    ],
+    [
+     "Loss from operations\n\n",
+     "",
+     "(145.0)",
+     "",
+     "",
+     "(151.7)",
+     "",
+     "",
+     "(137.9)",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "26.1\n\n",
+     "",
+     "",
+     "26.6\n\n",
+     "",
+     "",
+     "7.8\n\n",
+     ""
+    ],
+    [
+     "Segment and consolidated loss before income taxes\n\n",
+     "$",
+     "(118.9)",
+     "",
+     "$",
+     "(125.1)",
+     "",
+     "$",
+     "(130.1)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3084,
+    "end_line": 3116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has a qualified contributory savings plan under Section 401(k) of the Internal Revenue Code (the Code) covering substantially all U.S. employees of Alector. The 401(k) plan is designed to provide tax-deferred retirement benefits in accordance with the provisions of Section 401(k) of the Code. Eligible employees may defer up to 100% of their eligible compensation up to the annual maximum as determined by the Internal Revenue Service. The Company\u2019s contributions to the plan are discretionary. For the years ended December 31, 2024, 2023, and 2022, the Company made matching contributions of $1.1 million, $1.1 million, and $1.2 million, respectively.\nLong-term debt\nLong-term debt is initially recognized at cost and presented net of original issue discount and debt issuance costs on the consolidated balance sheets. Amortization of debt discount and debt issuance costs is recognized as interest expense over the period of the debt, using the effective interest rate method.\nSegments\nThe Company operates in one segment. The Company\u2019s chief operating decision maker (CODM), its Chief Executive Officer, manages the Company\u2019s operations on a consolidated basis for purposes of allocating resources. When evaluating the Company\u2019s financial performance, the CODM reviews total revenues, total expenses and expenses by function.\nThe table below is a summary of the segment profit or loss, including significant segment expenses (in millions):",
+   "prose_after": "(a) Other segment expenses include consultants & contractor expense, contra-R&D expense for GSK collaboration, depreciation expense, impairment loss, restructuring expense, and stock-based compensation expense.\nRecent Accounting Pronouncements\nIn December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures, which expands disclosures in an entity\u2019s income tax rate reconciliation table and disclosures regarding cash taxes paid both in the U.S. and foreign jurisdictions. The update will be effective for annual periods beginning after December 15, 2024. The Company is currently evaluating the impact that this guidance will have on the Company\u2019s consolidated financial statements and disclosures.\n3.Fair Value Measurements\nThe following tables summarize the Company\u2019s financial assets measured at fair value on a recurring basis by level within the fair value hierarchy:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3067,
+     "token": "PAGE_BREAK",
+     "id": 125,
+     "namespace": "arabic",
+     "page_number": 122
+    },
+    "after": {
+     "line": 3123,
+     "token": "PAGE_BREAK",
+     "id": 126,
+     "namespace": "arabic",
+     "page_number": 123
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value Hierarchy",
+     "Amortized Cost",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses",
+     "",
+     "",
+     "Fair Market Value",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds\n\n",
+     "Level 1\n\n",
+     "$",
+     "31,310\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "31,310\n\n"
+    ],
+    [
+     "U.S. government treasury securities\n\n",
+     "Level 1\n\n",
+     "",
+     "72,360\n\n",
+     "",
+     "38\n\n",
+     "",
+     "(38)",
+     "",
+     "",
+     "72,360\n\n"
+    ],
+    [
+     "Certificates of deposit\n\n",
+     "Level 2\n\n",
+     "",
+     "15,955\n\n",
+     "",
+     "4\n\n",
+     "",
+     "(1)",
+     "",
+     "",
+     "15,958\n\n"
+    ],
+    [
+     "Commercial paper\n\n",
+     "Level 2\n\n",
+     "",
+     "81,744\n\n",
+     "",
+     "51\n\n",
+     "",
+     "(15)",
+     "",
+     "",
+     "81,780\n\n"
+    ],
+    [
+     "Corporate bonds\n\n",
+     "Level 2\n\n",
+     "",
+     "210,056\n\n",
+     "",
+     "301\n\n",
+     "",
+     "(79)",
+     "",
+     "",
+     "210,278\n\n"
+    ],
+    [
+     "Total cash equivalents and marketable securities\n\n",
+     " ",
+     "$",
+     "411,425\n\n",
+     "$",
+     "394\n\n",
+     "$",
+     "(133)",
+     "",
+     "$",
+     "411,686\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value Hierarchy",
+     "Amortized Cost",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses",
+     "",
+     "",
+     "Fair Market Value",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds\n\n",
+     "Level 1\n\n",
+     "$",
+     "67,101\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "67,101\n\n"
+    ],
+    [
+     "U.S. government treasury securities\n\n",
+     "Level 1\n\n",
+     "",
+     "178,232\n\n",
+     "",
+     "86\n\n",
+     "",
+     "(112)",
+     "",
+     "$",
+     "178,206\n\n"
+    ],
+    [
+     "Certificates of deposit\n\n",
+     "Level 2\n\n",
+     "",
+     "29,086\n\n",
+     "",
+     "63\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "$",
+     "29,149\n\n"
+    ],
+    [
+     "Commercial paper\n\n",
+     "Level 2\n\n",
+     "",
+     "140,082\n\n",
+     "",
+     "85\n\n",
+     "",
+     "(34)",
+     "",
+     "",
+     "140,133\n\n"
+    ],
+    [
+     "Corporate bonds\n\n",
+     "Level 2\n\n",
+     "",
+     "129,474\n\n",
+     "",
+     "173\n\n",
+     "",
+     "(78)",
+     "",
+     "",
+     "129,569\n\n"
+    ],
+    [
+     "Total cash equivalents and marketable securities\n\n",
+     " ",
+     "$",
+     "543,975\n\n",
+     "$",
+     "407\n\n",
+     "$",
+     "(224)",
+     "",
+     "$",
+     "544,158\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3128,
+    "end_line": 3171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "(a) Other segment expenses include consultants & contractor expense, contra-R&D expense for GSK collaboration, depreciation expense, impairment loss, restructuring expense, and stock-based compensation expense.\nRecent Accounting Pronouncements\nIn December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures, which expands disclosures in an entity\u2019s income tax rate reconciliation table and disclosures regarding cash taxes paid both in the U.S. and foreign jurisdictions. The update will be effective for annual periods beginning after December 15, 2024. The Company is currently evaluating the impact that this guidance will have on the Company\u2019s consolidated financial statements and disclosures.\n3.Fair Value Measurements\nThe following tables summarize the Company\u2019s financial assets measured at fair value on a recurring basis by level within the fair value hierarchy:",
+   "prose_after": "The Company\u2019s Level 2 securities are valued using third-party pricing sources. The pricing services utilize industry standard valuation models for which all significant inputs are observable. The Company classifies marketable securities available to fund current operations as current assets. As of December 31, 2024, the remaining contractual maturities of $364.8 million of investments were less than one year and $46.9 million of investment were after one year through two years. The Company does not intend to sell the investments that are currently in an unrealized loss position, and it is highly unlikely that the Company will be required to sell the investments before recovery of their amortized cost basis, which may be at maturity. For the years ended December 31, 2024 and 2023, the Company sold marketable securities for the total proceeds of $2.6 million and $3.5 million for immaterial realized losses or gains based on the specific identification method. The Company did not sell any marketable securities for the year ended December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3123,
+     "token": "PAGE_BREAK",
+     "id": 126,
+     "namespace": "arabic",
+     "page_number": 123
+    },
+    "after": {
+     "line": 3174,
+     "token": "PAGE_BREAK",
+     "id": 127,
+     "namespace": "arabic",
+     "page_number": 124
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment\n\n",
+     "$",
+     "2,407\n\n",
+     "",
+     "$",
+     "2,372\n\n",
+     ""
+    ],
+    [
+     "Furniture and fixtures\n\n",
+     "",
+     "2,439\n\n",
+     "",
+     "",
+     "2,430\n\n",
+     ""
+    ],
+    [
+     "Lab equipment\n\n",
+     "",
+     "18,884\n\n",
+     "",
+     "",
+     "18,493\n\n",
+     ""
+    ],
+    [
+     "Leasehold improvements\n\n",
+     "",
+     "26,357\n\n",
+     "",
+     "",
+     "26,616\n\n",
+     ""
+    ],
+    [
+     "      Property and equipment, gross\n\n",
+     "",
+     "50,087\n\n",
+     "",
+     "",
+     "49,911\n\n",
+     ""
+    ],
+    [
+     "  Less accumulated depreciation and amortization\n\n",
+     "",
+     "(32,942)",
+     "",
+     "",
+     "(28,050)",
+     ""
+    ],
+    [
+     "    Total property and equipment, net\n\n",
+     "$",
+     "17,145\n\n",
+     "",
+     "$",
+     "21,861\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3240,
+    "end_line": 3264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "The transaction price as of December 31, 2024 included fixed consideration consisting of the upfront payments of $205.0 million, the $17.8 million LTE milestone payment, and the $12.5 million payment for enrollment of additional patients.\nCollaboration revenue under the AbbVie Agreement during the years ended December 31, 2024 was $46.4 million, all of which was included in deferred revenue at the beginning of the period. Collaboration revenue under the AbbVie Agreement during the years ended December 31, 2023 and 2022 was $30.5 million and $70.7 million, respectively. Collaboration revenue under the AbbVie Agreement was fully recognized as of\nDecember 31, 2024. The deferred revenue related to the AbbVie Agreement was $46.4 million as of December 31, 2023. The performance obligation was satisfied in December 2024, and all remaining deferred revenue has been recognized. In January 2025, AbbVie decided to terminate the TREM2 collaboration program, under which AL002 was being developed, which resulted in termination of the AbbVie Agreement.\n6. Balance Sheet Components\nProperty and Equipment, Net\nProperty and equipment, net consists of the following:",
+   "prose_after": "Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3231,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "arabic",
+     "page_number": 127
+    },
+    "after": {
+     "line": 3295,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 128
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued employee compensation\n\n",
+     "$",
+     "18,213\n\n",
+     "$",
+     "15,297\n\n"
+    ],
+    [
+     "Accrued research and development costs\n\n",
+     "",
+     "8,977\n\n",
+     "",
+     "13,539\n\n"
+    ],
+    [
+     "Accrued professional services\n\n",
+     "",
+     "1,218\n\n",
+     "",
+     "1,119\n\n"
+    ],
+    [
+     "Other\n\n",
+     "",
+     "482\n\n",
+     "",
+     "423\n\n"
+    ],
+    [
+     "Total accrued liabilities\n\n",
+     "$",
+     "28,890\n\n",
+     "$",
+     "30,378\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3269,
+    "end_line": 3288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "prose_after": "7. Leases\nIn June 2018, the Company signed a lease agreement to lease approximately 105,000 square feet in office and laboratory space in South San Francisco which serves as the Company\u2019s headquarters (the Headquarters). The lease expires in 2029 with an option to renew for a period of ten years. The landlord paid for $15.7 million of tenant improvements. In connection with the lease, the Company entered into a letter of credit arrangement in the amount of $1.5 million as collateral for the lease, which is classified as restricted cash on the consolidated balance sheets. In October 2020, the Company signed a lease agreement to lease approximately 18,700 square feet of office and laboratory space in Newark, California. The lease term ends on February 6, 2028 with an option to extend for an additional five years. The landlord is obligated to pay for up to $0.4 million of tenant improvements. The measurement of the lease liabilities for the leases excludes the options to extend the term of the lease as such extensions are not reasonably certain to occur. Variable lease costs for all of the Company\u2019s leases consist of operating expenses for the spaces.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3231,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "arabic",
+     "page_number": 127
+    },
+    "after": {
+     "line": 3295,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 128
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost\n\n",
+     "$",
+     "6,494\n\n",
+     "",
+     "$",
+     "6,626\n\n",
+     "",
+     "$",
+     "6,638\n\n",
+     ""
+    ],
+    [
+     "Variable lease cost\n\n",
+     "",
+     "3,410\n\n",
+     "",
+     "",
+     "3,149\n\n",
+     "",
+     "",
+     "2,785\n\n",
+     ""
+    ],
+    [
+     "Sublease income and reimbursement of variable lease cost\n\n",
+     "",
+     "(2,444)",
+     "",
+     "",
+     "(2,482)",
+     "",
+     "",
+     "(1,872)",
+     ""
+    ],
+    [
+     "  Total\n\n",
+     "$",
+     "7,460\n\n",
+     "",
+     "$",
+     "7,293\n\n",
+     "",
+     "$",
+     "7,551\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3304,
+    "end_line": 3321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "In November 2021, the Company entered into an agreement to sublease approximately 7,100 square feet of the Headquarters, which was amended in May 2022 to include an additional space of 13,150 square feet. The 7,100 square feet of space subleased expired in December 2022 and the additional space of 13,150 expired in\nNovember 2023. In October 2023, the Company entered into a second amendment to sublease approximately 13,250 square feet of the Headquarters. This sublease expired in November 2024.\nIn February 2023, the Company entered into an agreement to sublease approximately 9,300 square feet of the Headquarters. This sublease will expire in July 2025. The sublessee pays its proportionate share of operating expenses for the space.\nIn August 2024, the Company approved a plan to transition operations from its laboratory and office space in Newark, California to its South San Francisco headquarters. The Company's intention is to sublease the Newark facility. The Company recorded an impairment charge of $2.2 million in general and administrative expenses to write-down the right-of-use asset and the leasehold improvements for the year ended December 31, 2024.\nThe components of lease expense were as follows:",
+   "prose_after": "As of December 31, 2024, the weighted-average remaining lease term for operating leases was 4.2 years and the weighted-average discount rate was 8.6%. Cash paid for amounts included in the measurement of lease liabilities for the year ended December 31, 2024, 2023, and 2022 was $8.7 million, $8.4 million, and $8.2 million, respectively, was included in net cash used in operating activities in our consolidated statements of cash flows.\nThe following are the lease payments owed under the Company\u2019s operating leases as of December 31, 2024:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3295,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 128
+    },
+    "after": {
+     "line": 3368,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "arabic",
+     "page_number": 129
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "2025\n\n",
+     "$",
+     "9,161\n\n",
+     ""
+    ],
+    [
+     "2026\n\n",
+     "",
+     "9,477\n\n",
+     ""
+    ],
+    [
+     "2027\n\n",
+     "",
+     "9,804\n\n",
+     ""
+    ],
+    [
+     "2028\n\n",
+     "",
+     "8,969\n\n",
+     ""
+    ],
+    [
+     "2029\n\n",
+     "",
+     "2,209\n\n",
+     ""
+    ],
+    [
+     "Total undiscounted lease payments\n\n",
+     "",
+     "39,620\n\n",
+     ""
+    ],
+    [
+     "Less: Present value adjustment\n\n",
+     "",
+     "(6,490)",
+     ""
+    ],
+    [
+     "Total lease liability\n\n",
+     "$",
+     "33,130\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 3326,
+    "end_line": 3349
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "As of December 31, 2024, the weighted-average remaining lease term for operating leases was 4.2 years and the weighted-average discount rate was 8.6%. Cash paid for amounts included in the measurement of lease liabilities for the year ended December 31, 2024, 2023, and 2022 was $8.7 million, $8.4 million, and $8.2 million, respectively, was included in net cash used in operating activities in our consolidated statements of cash flows.\nThe following are the lease payments owed under the Company\u2019s operating leases as of December 31, 2024:",
+   "prose_after": "8. Stock-based Compensation\nThe Company recognized stock-based compensation as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3295,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 128
+    },
+    "after": {
+     "line": 3368,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "arabic",
+     "page_number": 129
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "$",
+     "19,836\n\n",
+     "$",
+     "22,407\n\n",
+     "$",
+     "24,895\n\n"
+    ],
+    [
+     "General and administrative\n\n",
+     "",
+     "19,627\n\n",
+     "",
+     "20,391\n\n",
+     "",
+     "21,251\n\n"
+    ],
+    [
+     "Total stock-based compensation\n\n",
+     "$",
+     "39,463\n\n",
+     "$",
+     "42,798\n\n",
+     "$",
+     "46,146\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3354,
+    "end_line": 3367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "8. Stock-based Compensation\nThe Company recognized stock-based compensation as follows (in thousands):",
+   "prose_after": "Determination of Fair Value\nThe estimated grant-date fair value of all the Company\u2019s options to purchase common stock was calculated using the Black-Scholes option pricing model, based on the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3295,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 128
+    },
+    "after": {
+     "line": 3368,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "arabic",
+     "page_number": 129
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "2023",
+     "2022"
+    ],
+    [
+     "Expected term (in years)",
+     "6.0",
+     "5.3 \u2013 6.0",
+     "5.3 \u2013 6.1"
+    ],
+    [
+     "Expected volatility",
+     "81%",
+     "79% \u2013 80%",
+     "79% \u2013 80%"
+    ],
+    [
+     "Risk free interest rate",
+     "4.3%",
+     "3.5% \u2013 4.6%",
+     "1.5% \u2013 4.3%"
+    ],
+    [
+     "Dividend yield",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3373,
+    "end_line": 3384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "Determination of Fair Value\nThe estimated grant-date fair value of all the Company\u2019s options to purchase common stock was calculated using the Black-Scholes option pricing model, based on the following assumptions:",
+   "prose_after": "The fair value of each stock option was determined by the Company using the methods and assumptions discussed below. Each of these inputs is subjective and generally requires judgment and estimation by management.\nExpected Term\u2014The expected term represents the period that stock-based awards are expected to be outstanding. The expected term was derived by using the simplified method which uses the midpoint between the average vesting term and the contractual expiration period of the stock-based award.\nExpected Volatility\u2014The Company has limited information on the volatility of stock options as the shares were not actively traded on any public markets prior to February 7, 2019. The expected volatility was derived from the historical stock volatilities of comparable peer public companies within its industry. Those companies were considered to be comparable to the Company\u2019s business over a period equivalent to the expected term of the stock-based awards. In 2020, the Company began giving weight to in its own historical volatility in the determination of expected volatility.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3368,
+     "token": "PAGE_BREAK",
+     "id": 132,
+     "namespace": "arabic",
+     "page_number": 129
+    },
+    "after": {
+     "line": 3401,
+     "token": "PAGE_BREAK",
+     "id": 133,
+     "namespace": "arabic",
+     "page_number": 130
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "",
+     "Weighted Average Exercise Price Per Share",
+     "",
+     "Weighted Average Remaining Contractual Term",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(In years)",
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2022\n\n",
+     "",
+     "13,713,272\n\n",
+     "",
+     "$",
+     "14.62\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "572,538\n\n",
+     "",
+     "",
+     "6.98\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Exercised\n\n",
+     "",
+     "(132,192)",
+     "",
+     "",
+     "8.16\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(2,057,381)",
+     "",
+     "",
+     "14.21\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2023\n\n",
+     "",
+     "12,096,237\n\n",
+     "",
+     "",
+     "14.40\n\n",
+     "   ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "38,840\n\n",
+     "",
+     "",
+     "6.20\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Exercised\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(1,411,396)",
+     "",
+     "",
+     "15.41\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2024\n\n",
+     "",
+     "10,723,681\n\n",
+     "",
+     "$",
+     "14.24\n\n",
+     "",
+     "5.7\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "Exercisable as of December 31, 2024\n\n",
+     "",
+     "9,085,867\n\n",
+     "",
+     "$",
+     "14.50\n\n",
+     "",
+     "5.4\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "Vested and expected to vest as of December 31,\n   2024\n\n",
+     "",
+     "10,723,681\n\n",
+     "",
+     "$",
+     "14.24\n\n",
+     "",
+     "5.7\n\n",
+     "$",
+     "\u2014\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3406,
+    "end_line": 3440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "On February 6, 2019, the Company adopted the 2019 Equity Incentive Plan (2019 Plan) under which the Board may issue incentive stock options, nonstatutory stock options, restricted stock, restricted stock units, stock appreciation rights, performance units, and performance shares to the Company\u2019s employees, directors, and consultants. The Company\u2019s 2017 Stock Option and Grant Plan (2017 Plan) was terminated; however, shares subject to outstanding awards granted under it will continue to be governed by the 2017 Plan. Shares reserved for issuance but not issued pursuant to, or not subject to, awards granted under the 2017 Plan were added to the available shares in the 2019 Plan. Shares subject to awards granted under the 2017 Plan that are repurchased by, or forfeited to, the Company will also be reserved for issuance under the 2019 Plan. The board of directors, or a committee appointed by the board of directors, has the authority to determine to whom options or shares will be granted, the number of shares, the term, and the exercise price. Under the 2019 Plan, if an individual owns stock representing 10% or more of the outstanding shares, then for the individual\u2019s incentive stock options, the exercise price of each share shall be at least 110% of the fair market value and the term of the award shall not exceed five years. All other options granted under the 2019 Plan must have an exercise price at least equal to the fair market value on the date of grant and have a term not to exceed ten years. The stock options generally vest over a four-year period with one forty-eighth of the shares vesting each month or over a four-year period with 25% vesting at the one-year cliff and monthly thereafter. The RSUs generally vest over a period of three years with one-twelfth of the shares vesting quarterly.\nOn January 1, 2024, 4,243,984 shares were automatically added to the shares reserved for issuance under the 2019 Plan in accordance with the terms of the 2019 Plan. As of December 31, 2024, the Company had reserved 24,364,669 shares of common stock under the 2019 Plan, of which 6,781,827 shares were available for issuance of future awards.\nOn January 1, 2022, the Company adopted the 2022 Inducement Plan (Inducement Plan) and reserved 1,630,000 shares for issuance under the Inducement Plan for the grant of equity-based awards to individuals who were not previously employees or non-employee directors of the Company. On September 22, 2022, the Company increased the number of shares available for issuance under the 2022 Inducement Plan to a total of 3,300,000 shares. As of December 31, 2024, 1,547,349 shares were available for issuance of future awards under the Inducement Plan.\nOption activity is shown below:",
+   "prose_after": "For each in-the-money stock option, the aggregate intrinsic value is calculated as the number of shares underlying the stock option multiplied by the difference between the per share exercise price of the stock option and the fair market value of the Company\u2019s common stock on the relevant date. The aggregate intrinsic value of options exercised was zero, less than $0.1 million, and $1.2 million for the years ended December 31, 2024, 2023, and 2022, respectively. The weighted-average grant-date fair value per share of options granted was $4.45, $4.93, and $8.42, for the years ended December 31, 2024, 2023, and 2022, respectively. As of December 31, 2024, total unrecognized stock-based compensation related to unvested stock options was $13.8 million, which the Company expects to recognize over a remaining weighted-average period of 1.5 years.\nRestricted Stock Unit Activity\nActivity for the RSUs is shown below. In May 2021 and January 2022, the Company issued RSUs with market conditions to certain executives, which are also included in the table below. The RSUs with market conditions are earned based on stock price performance and continued service by the employee. The RSUs with market conditions trigger vesting upon the Company\u2019s stock price attaining a specified level over a specified period of time. The shares then vest quarterly over one year after attainment. The Company used a Monte Carlo simulation model to determine the fair value of the awards at the grant date. The Monte Carlo model uses the fair value inputs on the grant date to run simulations and take an average of possible outcomes. The total grant date fair value of the RSUs with market condition was $6.6 million to be amortized over an estimated weighted average service period of 2.1 years. Compensation expense related to awards with market-based conditions is recognized regardless of whether the market condition is ultimately satisfied if the related service has been provided.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3401,
+     "token": "PAGE_BREAK",
+     "id": 133,
+     "namespace": "arabic",
+     "page_number": 130
+    },
+    "after": {
+     "line": 3447,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "arabic",
+     "page_number": 131
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average Grant Date Fair Value per Share",
+     ""
+    ],
+    [
+     "Unvested restricted stock units as of December 31, 2022\n\n",
+     "",
+     "3,044,618\n\n",
+     "",
+     "$",
+     "11.68\n\n"
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "5,142,444\n\n",
+     "",
+     "",
+     "6.62\n\n"
+    ],
+    [
+     "Vested\n\n",
+     "",
+     "(1,584,448)",
+     "",
+     "",
+     "10.41\n\n"
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(510,513)",
+     "",
+     "",
+     "10.03\n\n"
+    ],
+    [
+     "Unvested restricted stock units as of December 31, 2023\n\n",
+     "",
+     "6,092,101\n\n",
+     "",
+     "",
+     "7.78\n\n"
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "5,905,124\n\n",
+     "",
+     "",
+     "4.69\n\n"
+    ],
+    [
+     "Vested\n\n",
+     "",
+     "(3,001,132)",
+     "",
+     "",
+     "7.48\n\n"
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(631,030)",
+     "",
+     "",
+     "7.06\n\n"
+    ],
+    [
+     "Unvested restricted stock units as of\nDecember 31, 2024\n\n",
+     "",
+     "8,365,063\n\n",
+     "",
+     "$",
+     "5.76\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3448,
+    "end_line": 3475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "Activity for the RSUs is shown below. In May 2021 and January 2022, the Company issued RSUs with market conditions to certain executives, which are also included in the table below. The RSUs with market conditions are earned based on stock price performance and continued service by the employee. The RSUs with market conditions trigger vesting upon the Company\u2019s stock price attaining a specified level over a specified period of time. The shares then vest quarterly over one year after attainment. The Company used a Monte Carlo simulation model to determine the fair value of the awards at the grant date. The Monte Carlo model uses the fair value inputs on the grant date to run simulations and take an average of possible outcomes. The total grant date fair value of the RSUs with market condition was $6.6 million to be amortized over an estimated weighted average service period of 2.1 years. Compensation expense related to awards with market-based conditions is recognized regardless of whether the market condition is ultimately satisfied if the related service has been provided.",
+   "prose_after": "As of December 31, 2024, total unrecognized stock-based compensation related to unvested RSUs issued to employees was $42.2 million, which the Company expects to recognize over a remaining weighted-average period of 2.2 years.\n2019 Employee Stock Purchase Plan\nThe 2019 Employee Stock Purchase Plan (2019 ESPP) enables eligible employees of the Company to purchase shares of common stock at a discount. Each offering period is approximately six months long beginning on the first trading day on or after June 1 and December 1 each year. ESPP participants purchase shares of common stock at a price per share equal to 85% of the lesser of (1) the fair market value per share of the common stock on the first trading day of the offering period or (2) the fair market value of the common stock on the purchase date. On January 1, 2024, 591,397 shares were added to the shares reserved for issuance under the 2019 ESPP pursuant to the annual automatic increase. As of December 31, 2024, there was $0.1 million in unrecognized compensation expense related to the 2019 ESPP expected to be recognized over five months.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3447,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "arabic",
+     "page_number": 131
+    },
+    "after": {
+     "line": 3502,
+     "token": "PAGE_BREAK",
+     "id": 135,
+     "namespace": "arabic",
+     "page_number": 132
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "4,178\n\n",
+     "$",
+     "2,209\n\n"
+    ],
+    [
+     "State\n\n",
+     "",
+     "128\n\n",
+     "",
+     "1,034\n\n",
+     "",
+     "1,045\n\n"
+    ],
+    [
+     "  Income tax provision\n\n",
+     "$",
+     "128\n\n",
+     "$",
+     "5,212\n\n",
+     "$",
+     "3,254\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3486,
+    "end_line": 3501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The 2019 Employee Stock Purchase Plan (2019 ESPP) enables eligible employees of the Company to purchase shares of common stock at a discount. Each offering period is approximately six months long beginning on the first trading day on or after June 1 and December 1 each year. ESPP participants purchase shares of common stock at a price per share equal to 85% of the lesser of (1) the fair market value per share of the common stock on the first trading day of the offering period or (2) the fair market value of the common stock on the purchase date. On January 1, 2024, 591,397 shares were added to the shares reserved for issuance under the 2019 ESPP pursuant to the annual automatic increase. As of December 31, 2024, there was $0.1 million in unrecognized compensation expense related to the 2019 ESPP expected to be recognized over five months.\n9. Income Taxes\nThe federal and state income tax provision for the year ended December 31, 2024, 2023 and 2022 are summarized as follows (in thousands):",
+   "prose_after": "A reconciliation of the federal statutory rate to the Company\u2019s effective tax rate is as follows for the years ended December 31, 2024, 2023, and 2022 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3447,
+     "token": "PAGE_BREAK",
+     "id": 134,
+     "namespace": "arabic",
+     "page_number": 131
+    },
+    "after": {
+     "line": 3502,
+     "token": "PAGE_BREAK",
+     "id": 135,
+     "namespace": "arabic",
+     "page_number": 132
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit at federal statutory rate\n\n",
+     "$",
+     "(24,979)",
+     "",
+     "$",
+     "(26,188)",
+     "",
+     "$",
+     "(27,205)",
+     ""
+    ],
+    [
+     "State income taxes\n\n",
+     "",
+     "(1,680)",
+     "",
+     "",
+     "(431)",
+     "",
+     "",
+     "(344)",
+     ""
+    ],
+    [
+     "Tax credits, net of uncertain tax positions\n\n",
+     "",
+     "(8,182)",
+     "",
+     "",
+     "(14,460)",
+     "",
+     "",
+     "(15,138)",
+     ""
+    ],
+    [
+     "Uncertain tax positions\n\n",
+     "",
+     "179\n\n",
+     "",
+     "",
+     "612\n\n",
+     "",
+     "",
+     "2,687\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "5,372\n\n",
+     "",
+     "",
+     "4,842\n\n",
+     "",
+     "",
+     "4,919\n\n",
+     ""
+    ],
+    [
+     "Change in valuation allowance\n\n",
+     "",
+     "28,846\n\n",
+     "",
+     "",
+     "40,661\n\n",
+     "",
+     "",
+     "38,421\n\n",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "572\n\n",
+     "",
+     "",
+     "176\n\n",
+     "",
+     "",
+     "(86)",
+     ""
+    ],
+    [
+     "Income tax provision\n\n",
+     "$",
+     "128\n\n",
+     "",
+     "$",
+     "5,212\n\n",
+     "",
+     "$",
+     "3,254\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3505,
+    "end_line": 3528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "A reconciliation of the federal statutory rate to the Company\u2019s effective tax rate is as follows for the years ended December 31, 2024, 2023, and 2022 (in thousands):",
+   "prose_after": "The tax effects of temporary differences that give rise to significant components of the Company\u2019s deferred tax assets and liabilities consist of (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3502,
+     "token": "PAGE_BREAK",
+     "id": 135,
+     "namespace": "arabic",
+     "page_number": 132
+    },
+    "after": {
+     "line": 3581,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": "arabic",
+     "page_number": 133
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss\n\n",
+     "$",
+     "36,843\n\n",
+     "",
+     "$",
+     "12,448\n\n",
+     ""
+    ],
+    [
+     "Accrued bonus\n\n",
+     "",
+     "2,465\n\n",
+     "",
+     "",
+     "931\n\n",
+     ""
+    ],
+    [
+     "Tax credits\n\n",
+     "",
+     "34,373\n\n",
+     "",
+     "",
+     "26,682\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "15,456\n\n",
+     "",
+     "",
+     "15,311\n\n",
+     ""
+    ],
+    [
+     "Deferred revenue\n\n",
+     "",
+     "46,085\n\n",
+     "",
+     "",
+     "63,004\n\n",
+     ""
+    ],
+    [
+     "Lease liability\n\n",
+     "",
+     "7,796\n\n",
+     "",
+     "",
+     "9,030\n\n",
+     ""
+    ],
+    [
+     "Section 174 R&D capitalization\n\n",
+     "",
+     "81,291\n\n",
+     "",
+     "",
+     "62,305\n\n",
+     ""
+    ],
+    [
+     "Refund liability\n\n",
+     "",
+     "13,628\n\n",
+     "",
+     "",
+     "24,707\n\n",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "1,619\n\n",
+     "",
+     "",
+     "521\n\n",
+     ""
+    ],
+    [
+     "Gross deferred tax assets\n\n",
+     "",
+     "239,556\n\n",
+     "",
+     "",
+     "214,939\n\n",
+     ""
+    ],
+    [
+     "Less valuation allowance\n\n",
+     "",
+     "(231,296)",
+     "",
+     "",
+     "(204,550)",
+     ""
+    ],
+    [
+     "Total deferred tax assets\n\n",
+     "$",
+     "8,260\n\n",
+     "",
+     "$",
+     "10,389\n\n",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "$",
+     "(3,565)",
+     "",
+     "$",
+     "(4,544)",
+     ""
+    ],
+    [
+     "Right-of-use assets\n\n",
+     "",
+     "(4,695)",
+     "",
+     "",
+     "(5,845)",
+     ""
+    ],
+    [
+     "Gross deferred tax liabilities\n\n",
+     "",
+     "(8,260)",
+     "",
+     "",
+     "(10,389)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3531,
+    "end_line": 3576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant components of the Company\u2019s deferred tax assets and liabilities consist of (in thousands):",
+   "prose_after": "In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred assets will be realized. The ultimate realization of the deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Evaluating the need for a valuation allowance for deferred tax assets often requires judgment and analysis of all the positive and negative evidence available, including cumulative losses in recent years and projected future taxable income, to determine whether all or some portion of the deferred tax assets will not be realized. As of December 31, 2024, the Company has utilized a full valuation allowance to offset the net deferred tax assets as the Company believes it is not more likely than not that the net deferred tax assets will be fully realizable. The valuation allowance for deferred tax assets increased by $26.7 million during the year ended December 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3502,
+     "token": "PAGE_BREAK",
+     "id": 135,
+     "namespace": "arabic",
+     "page_number": 132
+    },
+    "after": {
+     "line": 3581,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": "arabic",
+     "page_number": 133
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of December 31, 2022\n\n",
+     "$",
+     "15,138\n\n",
+     ""
+    ],
+    [
+     "Decreases related to tax positions taken during the\n   prior year\n\n",
+     "",
+     "(594)",
+     ""
+    ],
+    [
+     "Increase related to tax positions taken during the\n   prior year\n\n",
+     "$",
+     "2,588\n\n",
+     ""
+    ],
+    [
+     "Increases related to tax positions taken during the\n   current year\n\n",
+     "",
+     "3,072\n\n",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2023\n\n",
+     "",
+     "20,204\n\n",
+     ""
+    ],
+    [
+     "Increase related to tax positions taken during the\n   prior year\n\n",
+     "",
+     "11\n\n",
+     ""
+    ],
+    [
+     "Increases related to tax positions taken during the\n   current year\n\n",
+     "",
+     "2,710\n\n",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2024\n\n",
+     "$",
+     "22,925\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3588,
+    "end_line": 3614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Generally, utilization of the NOL carryforwards and credits may be subject to an annual limitation due to the ownership change limitations provided by Section 382, which provides for limitations on NOL carryforwards and certain built-in losses following ownership changes, and Section 383, which provides for special limitations on certain excess credits, etc., of the Code, and similar state provisions. Accordingly, the Company\u2019s ability to utilize NOL carryforwards may be limited as the result of such an \u201cownership change.\u201d The carryforwards could be subject to an annual limitation, resulting in a reduction in the gross deferred tax assets before considering the valuation allowance. Further, a portion of the carryforwards may expire before being applied to reduce future earnings. The Company is not aware of any changes in ownership that would result in material limitations under Section 382 at this time.\nThe following table summarizes the activity related to the Company\u2019s unrecognized tax benefits for the years ended December 31, 2024, 2023, and 2022 (in thousands):",
+   "prose_after": "If the unrecognized tax benefits for uncertain tax positions as of December 31, 2024, is recognized, there will be no impact to the effective tax rate as the tax benefit would increase the net deferred tax assets, which is currently offset with a full valuation allowance. The Company\u2019s policy is to include interest and penalties related to unrecognized tax benefits, if any, within the provision for taxes in the consolidated statements of operations. The Company accrued interest and penalties of $0.2 million for the year ended December 31, 2024 and of $0.2 million for the year ended December 31, 2023. The Company does not have any tax positions for which it is reasonably possible that the total amount of gross unrecognized tax benefits will significantly change within 12 months of December 31, 2024.\nThe Company recognizes the tax benefit of an uncertain tax position only if it is more likely than not that the position is sustainable upon examination by the taxing authority, based on the technical merits. During the years ended December 31, 2024 and 2023, the Company recorded an uncertain tax position of $2.7 million and $5.1 million, respectively. The income tax provision for the years ended December 31, 2024 included changes to reserves related to prior year uncertain tax provisions of an increase of less than $0.1 million and decrease of zero. The income tax provision for the years ended December 31, 2023, included changes to reserves related to prior year uncertain tax provisions of an increase of $2.6 million and decrease of $0.6 million. The Company\u2019s income tax returns generally remain subject to examination by federal and most state tax authorities. The Company is currently not subject to any income tax audits by federal or state taxing authorities. The statute of limitations for tax liabilities for all years remains open.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3581,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": "arabic",
+     "page_number": 133
+    },
+    "after": {
+     "line": 3623,
+     "token": "PAGE_BREAK",
+     "id": 137,
+     "namespace": "arabic",
+     "page_number": 134
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Maturity",
+     ""
+    ],
+    [
+     "2025\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "2026\n\n",
+     "",
+     "365,914\n\n"
+    ],
+    [
+     "2027\n\n",
+     "",
+     "4,596,616\n\n"
+    ],
+    [
+     "2028\n\n",
+     "",
+     "5,037,470\n\n"
+    ],
+    [
+     "Total Principal repayments\n\n",
+     "$",
+     "10,000,000\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Maturity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3635,
+    "end_line": 3651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "The Loan Agreement contains customary affirmative and negative covenants, including covenants limiting the ability of the Company and their subsidiaries to, among other things, dispose of assets, enter into certain licensing arrangements, effect certain mergers, incur debt, grant liens, pay dividends and distributions on their capital stock, make investments and acquisitions, and enter into transactions with affiliates, in each case subject to customary exceptions for a loan facility of this size and type. The Loan Agreement also includes customary events of default, including, among others, payment defaults, material misrepresentations, breaches of covenants following any applicable cure period, cross defaults with certain other indebtedness or material agreements, bankruptcy and insolvency events, judgment defaults and the occurrence of certain events that could reasonably be expected to have a \u201cmaterial adverse effect.\u201d The occurrence of an event of default could result in the acceleration of the Company\u2019s obligations under the Loan Agreement, the termination of the Lenders\u2019 commitments, a 5% increase in the applicable rate of interest and the exercise by Agent of other rights and remedies provided for under the Loan Agreement.\nOn November 14, 2024, the Company drew down $10 million from the initial tranche and received proceeds of approximately $9.6 million after charges payable to Hercules Capital. The Company incurred $0.4 million in debt issuance costs in relation to the initial draw. As of December 31, 2024, the face value of the outstanding balance of the Term Loan was $10 million, less unamortized discount and unaccreted value of the End of Term Charge of $0.6 million based on the imputed interest rate of 12.2%. The fair value of the Term Loan as of December 31, 2024 is a Level 3 measurement considered to approximate its carrying value of $9.4 million due to the short period of time since the Term Loan was entered into and the interest rates upon which the terms of the Term Loan were based, notably the Prime Rate, have not changed significantly since the Term Loan was drawn.\nThe aggregate maturity of the term loan for the next four years from December 31, 2024 is as follows:",
+   "prose_after": "11. Net Loss Per Share\nThe following outstanding potentially dilutive shares have been excluded from the calculation of diluted net loss per share for the periods presented due to their anti-dilutive effect:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3632,
+     "token": "PAGE_BREAK",
+     "id": 138,
+     "namespace": "arabic",
+     "page_number": 135
+    },
+    "after": {
+     "line": 3678,
+     "token": "PAGE_BREAK",
+     "id": 139,
+     "namespace": "arabic",
+     "page_number": 136
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Restricted stock subject to future vesting\n\n",
+     "",
+     "8,365,063\n\n",
+     "",
+     "6,092,101\n\n",
+     "",
+     "3,044,618\n\n"
+    ],
+    [
+     "Options to purchase common stock\n\n",
+     "",
+     "10,723,681\n\n",
+     "",
+     "12,096,237\n\n",
+     "",
+     "13,713,272\n\n"
+    ],
+    [
+     "Shares committed under 2019 ESPP\n\n",
+     "",
+     "146,316\n\n",
+     "",
+     "160,356\n\n",
+     "",
+     "167,133\n\n"
+    ],
+    [
+     "Total\n\n",
+     "",
+     "19,235,060\n\n",
+     "",
+     "18,348,694\n\n",
+     "",
+     "16,925,023\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3656,
+    "end_line": 3671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Net Loss Per Share"
+    }
+   },
+   "prose_before": "11. Net Loss Per Share\nThe following outstanding potentially dilutive shares have been excluded from the calculation of diluted net loss per share for the periods presented due to their anti-dilutive effect:",
+   "prose_after": "12. Restructuring\nOn March 28, 2023, the Company committed to a plan to reduce its workforce by approximately 11% to better align the Company\u2019s resources with its previously announced strategic prioritization of its late-stage progranulin and TREM2 immuno-neurology programs. The Company initiated a reduction in force impacting approximately 30 employees across the organization effective March 29, 2023. For the year ended December 31, 2023, the Company incurred restructuring costs of approximately $1.7 million, primarily consisting of one-time charges related to the reduction in force, including personnel expenses such as salaries, one-time severance payments, and other benefits, which were included in operating expenses. All cash payments related to these expenses were paid out by early 2024.\nOn November 25, 2024, the Company committed to a plan to reduce its workforce by approximately 17% in order to align resources with the Company's strategic priorities. Based upon the results of the Company's INVOKE-2 Phase 2 clinical trial evaluating the safety and efficacy of AL002 in early Alzheimer\u2019s disease, the Company is stopping the long term extension of the INVOKE-2 study. The Company initiated a reduction in force impacting approximately 41 employees across the organization. For the year ended December 31, 2024, the Company expects to incur restructuring costs of approximately $3.9 million, primarily consisting of one-time charges related to the reduction in force, including personnel expenses such as salaries, one-time severance payments, and other benefits, which were included in operating expenses. Cash payments related to these expenses will be paid out and the reduction in force is expected to be completed during the first half of 2025. Accrued liabilities associated with restructuring costs were $3.9 million as of December 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3632,
+     "token": "PAGE_BREAK",
+     "id": 138,
+     "namespace": "arabic",
+     "page_number": 135
+    },
+    "after": {
+     "line": 3678,
+     "token": "PAGE_BREAK",
+     "id": 139,
+     "namespace": "arabic",
+     "page_number": 136
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "Exhibit Title",
+     "Form",
+     "File No.",
+     "Exhibit",
+     "Filing\n\nDate",
+     "Filed\n\nHerewith"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Registrant.",
+     "8-K",
+     "001-38792",
+     "3.1",
+     "2/11/2019",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Registrant.",
+     "8-K",
+     "001-38792",
+     "3.1",
+     "6/15/2023",
+     ""
+    ],
+    [
+     "4.2",
+     "Specimen common stock certificate of the Registrant",
+     "S-1",
+     "333-229152",
+     "4.2",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "4.3",
+     "Description of securities of the Registrant.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "10.1+",
+     "Form of Indemnification Agreement between the Registrant and each of its directors and executive officers.",
+     "S-1",
+     "333-229152",
+     "10.1",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.2+",
+     "2017 Stock Option and Grant Plan as amended and forms of agreement thereunder.",
+     "S-1",
+     "333-229152",
+     "10.2",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.3+",
+     "2019 Equity Incentive Plan and forms of agreements thereunder.",
+     "10-K",
+     "001-38792",
+     "10.3",
+     "2/27/2024",
+     ""
+    ],
+    [
+     "10.4+",
+     "2019 Employee Stock Purchase Plan and form of agreement thereunder.",
+     "10-K",
+     "001-38792",
+     "10.4",
+     "2/27/2024",
+     ""
+    ],
+    [
+     "10.5+",
+     "2022 Inducement Equity Incentive Plan, as amended, and forms of agreement thereunder.",
+     "8-K",
+     "333-229152",
+     "10.1",
+     "1//3/2022",
+     ""
+    ],
+    [
+     "10.6+",
+     "Confirmatory Offer Letter between the Registrant and Arnon Rosenthal, Ph.D.",
+     "S-1/A",
+     "333-229152",
+     "10.5",
+     "1/29/2019",
+     ""
+    ],
+    [
+     "10.7+",
+     "Offer Letter dated November 30, 2021 by and between Alector, LLC and Saraswati (Sara) Kenkare-Mitra, Ph.D.",
+     "10-K",
+     "001-38792",
+     "10.18",
+     "2/24/2022",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3792,
+    "end_line": 3823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "(a)The following documents are filed as part of this report:\n(1)Financial Statements\nThe consolidated financial statements of Alector, Inc. are filed as part of this report on Form 10-K under Item 8. Financial Statements and Supplementary Data.\n(2)Financial Statement Schedules\nAll other schedules have been omitted because they are not required, not inapplicable, or the required information is included in the consolidated financial statements or notes thereto.\n(3)Exhibits\nThe documents listed in the Exhibit Index are incorporated by reference or are filed with this report, in each case as indicated herein (numbered in accordance with Item 601 of Regulation S-K).\nItem 16. Form 10-K Summary\nNone.\nExhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3767,
+     "token": "PAGE_BREAK",
+     "id": 142,
+     "namespace": "arabic",
+     "page_number": 139
+    },
+    "after": {
+     "line": 3824,
+     "token": "PAGE_BREAK",
+     "id": 143,
+     "namespace": "arabic",
+     "page_number": 140
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10-8+",
+     "Offer Letter dated February 4, 2022 by and between Alector, LLC and Marc Grasso, M.D.",
+     "10-K",
+     "001-38792",
+     "10.19",
+     "2/24/2022",
+     ""
+    ],
+    [
+     "10.9+",
+     "Offer Letter dated January 31, 2022 by and between Alector, LLC and Gary Romano, M.D., Ph.D.",
+     "8-K",
+     "001-38792",
+     "10.1",
+     "3/29/2022",
+     ""
+    ],
+    [
+     "10.10+",
+     "Executive Incentive Compensation Plan.",
+     "S-1",
+     "333-229152",
+     "10.10",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.11+",
+     "Outside Director Compensation Policy.",
+     "10-Q",
+     "001-38792",
+     "10.2",
+     "5/8/2024",
+     ""
+    ],
+    [
+     "10.12+",
+     "Form of Change in Control and Severance Agreement between the Registrant and certain of its executive officers.",
+     "S-1",
+     "333-229152",
+     "10.12",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.13",
+     "Lease between the Registrant and HCP Oyster Point III, LLC, dated June 27, 2018.",
+     "S-1",
+     "333-229152",
+     "10.14",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.14#",
+     "Third Amended and Restated Collaboration Agreement between the Registrant and Adimab, dated September 19, 2016, as amended.",
+     "S-1",
+     "333-229152",
+     "10.15",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.15#",
+     "Co-Development and Option Agreement between the Registrant and AbbVie Biotechnology, Ltd., dated October 16, 2017.",
+     "S-1",
+     "333-229152",
+     "10.16",
+     "1/7/2019",
+     ""
+    ],
+    [
+     "10.16#",
+     "Collaboration and License Agreement, dated July 1, 2021, by and between Glaxo Wellcome UK Limited and Alector, Inc.",
+     "10-Q",
+     "001-38792",
+     "10.19",
+     "8/3/2021",
+     ""
+    ],
+    [
+     "10.17#",
+     "Letter Agreement Amending the 2021 Collaboration and License Agreement between the Registrant and Glaxo Wellcome UK Ltd. dated May 19, 2023.",
+     "10-Q",
+     "001-38792",
+     "10.1",
+     "8/3/2023",
+     ""
+    ],
+    [
+     "10.18#",
+     "Amendment Number One to Co-Development and Option Agreement between the Registrant and AbbVie Biotechnology Ltd., effective February 13, 2023.",
+     "10-Q",
+     "001-38792",
+     "10.1",
+     "5/4/2023",
+     ""
+    ],
+    [
+     "10.19\u0394",
+     "Sales Agreement, dated November 7, 2023, by and between Alector, Inc., and Cowen and Company, LLC",
+     "8-K",
+     "001-38792",
+     "1.1",
+     "11/7/2023",
+     ""
+    ],
+    [
+     "10.20#",
+     "Letter Agreement Amending the 2021 Collaboration and License Agreement between the Registrant and Glaxo Wellcome UK Ltd. dated March 11, 2024.",
+     "10-Q",
+     "001-38792",
+     "10.1",
+     "5/8/2024",
+     ""
+    ],
+    [
+     "10.21#",
+     "Loan and Security Agreement, dated as of November 14, 2024, among the Registrant and Alector LLC, as co-borrowers, the banks and financial institutions from time to time party thereto, and Hercules Capital, Inc., as administrative agent and collateral agent",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "10.22#",
+     "First Amendment to Loan and Security Agreement, dated December 12, 2024, by and among Alector Inc., Alector LLC, certain banks and other financial institutions, and Hercules Capital, Inc., as administrative agent and collateral agent",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "19",
+     "Alector Inc. Insider Trading Policy",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "21.1",
+     "List of subsidiaries of Registrant.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3825,
+    "end_line": 3867
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3824,
+     "token": "PAGE_BREAK",
+     "id": 143,
+     "namespace": "arabic",
+     "page_number": 140
+    },
+    "after": {
+     "line": 3868,
+     "token": "PAGE_BREAK",
+     "id": 144,
+     "namespace": "arabic",
+     "page_number": 141
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "24.1",
+     "Power of Attorney (included on the signature page to this Annual Report on Form 10-K).",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "97\u0394",
+     "Compensation Recovery Policy",
+     "10-K",
+     "001-38792",
+     "97",
+     "2/27/2024",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema With Embedded Linkbase Documents",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3869,
+    "end_line": 3896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "+ Indicates management contract or compensatory plan.\n# Portions of this exhibit (indicated by asterisks) have been omitted in accordance with the rules of the Securities and Exchange Commission.\n\u0394 Certain schedules and exhibits to this exhibit have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted exhibit or schedule will be furnished to the SEC or its staff upon request.\n* The certifications attached as Exhibits 32.1 and 32.2 that accompany this Annual Report on Form 10-K are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of the Registrant under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Annual Report on Form 10-K, irrespective of any general incorporation language contained in such filing.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3868,
+     "token": "PAGE_BREAK",
+     "id": 144,
+     "namespace": "arabic",
+     "page_number": 141
+    },
+    "after": {
+     "line": 3905,
+     "token": "PAGE_BREAK",
+     "id": 145,
+     "namespace": "arabic",
+     "page_number": 142
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ALECTOR, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: February 26, 2025",
+     "By:",
+     "/s/ Arnon Rosenthal"
+    ],
+    [
+     "",
+     "",
+     "Arnon Rosenthal, Ph.D."
+    ],
+    [
+     "",
+     "",
+     "Co-founder and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ALECTOR, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3910,
+    "end_line": 3918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "# Portions of this exhibit (indicated by asterisks) have been omitted in accordance with the rules of the Securities and Exchange Commission.\n\u0394 Certain schedules and exhibits to this exhibit have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted exhibit or schedule will be furnished to the SEC or its staff upon request.\n* The certifications attached as Exhibits 32.1 and 32.2 that accompany this Annual Report on Form 10-K are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of the Registrant under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Annual Report on Form 10-K, irrespective of any general incorporation language contained in such filing.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Arnon Rosenthal, Ph.D., Sara Kenkare-Mitra, Ph.D., and Marc Grasso, M.D. as his or her true and lawful attorneys-in-fact and agents, with full power of substitution and substitution, for him or her and in his or her name, place, and stead, in any and all capacities (including his capacity as a director and/or officer of Alector, Inc.) to sign any or all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and all other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as they, he or she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact and agents or any of them, or their, his, or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3905,
+     "token": "PAGE_BREAK",
+     "id": 145,
+     "namespace": "arabic",
+     "page_number": 142
+    },
+    "after": {
+     "line": 3966,
+     "token": "PAGE_BREAK",
+     "id": 146,
+     "namespace": "arabic",
+     "page_number": 143
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Arnon Rosenthal\n\n\n\nArnon Rosenthal, Ph.D.",
+     "Co-founder, Chief Executive Officer, and Director (Principal Executive Officer)",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marc Grasso\n\n\n\nMarc Grasso, M.D.",
+     "Chief Financial Officer\n\n(Principal Financial and Accounting Officer)",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lou J. Lavigne, Jr.\n\n\n\nLouis J. Lavigne, Jr.",
+     "Chairperson of the Board",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Elizabeth Garofalo\n\n\n\nElizabeth Garofalo, M.D.",
+     "Director",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paula Hammond\n\n\n\nPaula Hammond, Ph.D.",
+     "Director",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mark Altmeyer\n\n\n\nMark Altmeyer",
+     "Director",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard Scheller\n\n\n\nRichard Scheller, Ph.D.",
+     "Director",
+     "February 26, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3925,
+    "end_line": 3965
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Arnon Rosenthal, Ph.D., Sara Kenkare-Mitra, Ph.D., and Marc Grasso, M.D. as his or her true and lawful attorneys-in-fact and agents, with full power of substitution and substitution, for him or her and in his or her name, place, and stead, in any and all capacities (including his capacity as a director and/or officer of Alector, Inc.) to sign any or all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and all other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as they, he or she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact and agents or any of them, or their, his, or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3905,
+     "token": "PAGE_BREAK",
+     "id": 145,
+     "namespace": "arabic",
+     "page_number": 142
+    },
+    "after": {
+     "line": 3966,
+     "token": "PAGE_BREAK",
+     "id": 146,
+     "namespace": "arabic",
+     "page_number": 143
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ David Wehner\n\n\n\nDavid Wehner",
+     "Director",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kristine Yaffe\n\n\n\nKristine Yaffe, M.D.",
+     "Director",
+     "February 26, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Errol De Souza\n\n\n\nErrol De Souza, Ph.D.",
+     "Director",
+     "February 26, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3967,
+    "end_line": 3983
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3966,
+     "token": "PAGE_BREAK",
+     "id": 146,
+     "namespace": "arabic",
+     "page_number": 143
+    },
+    "after": {
+     "line": 3984,
+     "token": "PAGE_BREAK",
+     "id": 147,
+     "namespace": "arabic",
+     "page_number": 144
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

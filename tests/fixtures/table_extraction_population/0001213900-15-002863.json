@@ -1,0 +1,3247 @@
+{
+ "accession": "0001213900-15-002863",
+ "cik": "0001579717",
+ "form": "10-Q",
+ "filing_date": "2015-04-20",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0215_perkinternational.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "46-2622704"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-Q\n[X] Quarterly Report pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the quarterly period ended February 28, 2015\n[ ] Transition Report pursuant to 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from __________ to __________\nCommission File Number: 333-189540\nPerk International Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "5401 Eglinton Avenue West Suite 205\n\n\n\nToronto, Ontario Canada M9C 5K6"
+    ],
+    [
+     "(Address of principal executive offices)"
+    ]
+   ],
+   "caption_stack": [
+    "5401 Eglinton Avenue West Suite 205\n\n\n\nToronto, Ontario Canada M9C 5K6",
+    "(Address of principal executive offices)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "647-966-5156 (Registrant\u2019s telephone number) _______________________________________________________________ (Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days [ ] Yes [X] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1:",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "Item 2:",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "4"
+    ],
+    [
+     "Item 3:",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "8"
+    ],
+    [
+     "Item 4:",
+     "Controls and Procedures",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1:",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 1A:",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 2:",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "9"
+    ],
+    [
+     "Item 3:",
+     "Defaults Upon Senior Securities",
+     "9"
+    ],
+    [
+     "Item 4:",
+     "Mine Safety Disclosure",
+     "9"
+    ],
+    [
+     "Item 5:",
+     "Other Information",
+     "9"
+    ],
+    [
+     "Item 6:",
+     "Exhibits",
+     "9"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 51,
+    "end_line": 72
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days [ ] Yes [X] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\n[ ] Large accelerated filer  [ ] Accelerated filer\n[ ] Non-accelerated filer    [X] Smaller reporting company\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nState the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: 100,199,798 common shares as of April 17, 2015\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nOur financial statements included in this Form 10-Q are as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "F-1",
+     "Interim Consolidated Balance Sheets as of February 28, 2015 and May 31, 2014;"
+    ],
+    [
+     "F-2",
+     "Interim Consolidated Statements of Operations for the three and nine months ended February 28, 2015 and 2014 (unaudited);"
+    ],
+    [
+     "F-3",
+     "Interim Consolidated Statements of Cash Flows for the nine months ended February 28, 2015 and 2014 (unaudited)"
+    ],
+    [
+     "F-4",
+     "Interim statement of changes in Stockholders\u2019 Deficiency for the nine months ended February 28, 2015 and year ended May 31, 2014"
+    ],
+    [
+     "F-5",
+     "Notes to Interim Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nOur financial statements included in this Form 10-Q are as follows:",
+   "prose_after": "These Interim financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America for interim financial information and the SEC instructions to Form 10-Q. In the opinion of management, all adjustments considered necessary for a fair presentation have been included. Operating results for the interim period ended February 28, 2015 are not necessarily indicative of the results that can be expected for the full year.\nINTERIM CONSOLIDATED BALANCE SHEETS\nAS AT FEBRUARY 28, 2015 AND MAY 31, 2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "February 28, 2015",
+     "",
+     "",
+     "May 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "34,089",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "76,343",
+     "",
+     "",
+     "155,141",
+     ""
+    ],
+    [
+     "Total current  assets",
+     "",
+     "76,343",
+     "",
+     "",
+     "189,230",
+     ""
+    ],
+    [
+     "Property and equipment (Note 8)",
+     "",
+     "37,378",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "113,721",
+     "",
+     "$",
+     "189,230",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "327,813",
+     "",
+     "$",
+     "202,889",
+     ""
+    ],
+    [
+     "Bank indebtedness",
+     "",
+     "5,408",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Customer deposit",
+     "",
+     "-",
+     "",
+     "",
+     "92,234",
+     ""
+    ],
+    [
+     "Current portion of term loan (Note 9)",
+     "",
+     "2,776",
+     "",
+     "",
+     "3,202",
+     ""
+    ],
+    [
+     "Due to non-related parties (Note 10)",
+     "",
+     "60,492",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Due to related party (Note 4)",
+     "",
+     "22,790",
+     "",
+     "",
+     "21,181",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "419,279",
+     "",
+     "",
+     "319,506",
+     ""
+    ],
+    [
+     "Term loan (Note 9)",
+     "",
+     "8,000",
+     "",
+     "",
+     "11,597",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "427,279",
+     "",
+     "",
+     "331,103",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficiency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $.0001 par value, 250,000,000 shares authorized, 100,199,798 and 200 shares issued and outstanding at February 28, 2015 and May 31, 2014, respectively",
+     "",
+     "10,020",
+     "",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "9,993",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock warrants",
+     "",
+     "6,115",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deficit",
+     "",
+     "(376,778)",
+     "",
+     "",
+     "(142,572)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "37,092",
+     "",
+     "",
+     "499",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficiency",
+     "",
+     "(313,558)",
+     "",
+     "",
+     "(141,873)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIENCY",
+     "$",
+     "113,721",
+     "",
+     "$",
+     "189,230",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "These Interim financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America for interim financial information and the SEC instructions to Form 10-Q. In the opinion of management, all adjustments considered necessary for a fair presentation have been included. Operating results for the interim period ended February 28, 2015 are not necessarily indicative of the results that can be expected for the full year.\nINTERIM CONSOLIDATED BALANCE SHEETS\nAS AT FEBRUARY 28, 2015 AND MAY 31, 2014",
+   "prose_after": "See accompanying notes to interim consolidated financial statements.\nINTERIM CONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE AND NINE MONTHS ENDED FEBRUARY 28, 2015 AND 2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 97,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended February 28, 2015",
+     "",
+     "",
+     "Three months ended February 28, 2014",
+     "",
+     "",
+     "Nine months ended February 28, 2015",
+     "",
+     "",
+     "Nine months ended February 28, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "",
+     "5,210",
+     "",
+     "",
+     "23,263",
+     "",
+     "",
+     "272,164",
+     "",
+     "",
+     "141,447",
+     ""
+    ],
+    [
+     "Services",
+     "",
+     "39,794",
+     "",
+     "",
+     "16,569",
+     "",
+     "",
+     "116,799",
+     "",
+     "",
+     "91,461",
+     ""
+    ],
+    [
+     "",
+     "",
+     "45,004",
+     "",
+     "",
+     "39,832",
+     "",
+     "",
+     "388,963",
+     "",
+     "",
+     "232,908",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "",
+     "10,724",
+     "",
+     "",
+     "7,571",
+     "",
+     "",
+     "145,637",
+     "",
+     "",
+     "116,717",
+     ""
+    ],
+    [
+     "Services",
+     "",
+     "24,652",
+     "",
+     "",
+     "14,707",
+     "",
+     "",
+     "68,732",
+     "",
+     "",
+     "65,976",
+     ""
+    ],
+    [
+     "",
+     "",
+     "35,376",
+     "",
+     "",
+     "22,275",
+     "",
+     "",
+     "214,369",
+     "",
+     "",
+     "182,693",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "9,628",
+     "",
+     "",
+     "17,557",
+     "",
+     "",
+     "174,594",
+     "",
+     "",
+     "50,215",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting and professional",
+     "",
+     "114,709",
+     "",
+     "",
+     "18,591",
+     "",
+     "",
+     "265,405",
+     "",
+     "",
+     "128,795",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "23,672",
+     "",
+     "",
+     "25,873",
+     "",
+     "",
+     "81,765",
+     "",
+     "",
+     "55,774",
+     ""
+    ],
+    [
+     "Impairment of property and equipment",
+     "",
+     "39,101",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,101",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "6,511",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,601",
+     "",
+     "",
+     "1,233",
+     ""
+    ],
+    [
+     "",
+     "",
+     "183,993",
+     "",
+     "",
+     "44,464",
+     "",
+     "",
+     "392,872",
+     "",
+     "",
+     "185,802",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(174,365)",
+     "",
+     "",
+     "(26,907)",
+     "",
+     "",
+     "(218,278)",
+     "",
+     "",
+     "(135,587)",
+     ""
+    ],
+    [
+     "Gain on disposition of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,925",
+     ""
+    ],
+    [
+     "Gain on forgiveness of debt",
+     "",
+     "22,985",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "22,985",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "",
+     "(151,380)",
+     "",
+     "",
+     "(26,907)",
+     "",
+     "",
+     "(195,293)",
+     "",
+     "",
+     "(125,662)",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(151,380)",
+     "",
+     "",
+     "(26,907)",
+     "",
+     "",
+     "(195,293)",
+     "",
+     "",
+     "(125,662)",
+     ""
+    ],
+    [
+     "Foreign exchange translation adjustment",
+     "",
+     "27,519",
+     "",
+     "",
+     "(1,771)",
+     "",
+     "",
+     "36,593",
+     "",
+     "",
+     "(113)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(123,861)",
+     "",
+     "$",
+     "(28,678)",
+     "",
+     "$",
+     "(158,700)",
+     "",
+     "$",
+     "(125,775)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.0017)",
+     "",
+     "$",
+     "(0.0004)",
+     "",
+     "$",
+     "(0.0026)",
+     "",
+     "$",
+     "(0.0018)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES OUTSTANDING:\nBASIC AND DILUTED",
+     "",
+     "87,419,143",
+     "",
+     "",
+     "70,000,000",
+     "",
+     "",
+     "75,742,575",
+     "",
+     "",
+     "70,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 154,
+    "end_line": 203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to interim consolidated financial statements.\nINTERIM CONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE AND NINE MONTHS ENDED FEBRUARY 28, 2015 AND 2014",
+   "prose_after": "See accompanying notes to the interim consolidated financial statements.\nSTATEMENTS OF INTERIM CONSOLIDATED CASH FLOWS FOR THE NINE MONTHS ENDED FEBRUARY 28, 2015 AND 2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 152,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 205,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended February 28, 2015",
+     "",
+     "",
+     "Nine months ended February 28, 2014",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "$",
+     "(195,293)",
+     "",
+     "$",
+     "(125,662)",
+     ""
+    ],
+    [
+     "Adjustment to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "6,601",
+     "",
+     "",
+     "1,233",
+     ""
+    ],
+    [
+     "Impairment of property and equipment",
+     "",
+     "39,101",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on forgiveness of debt",
+     "",
+     "(22,985)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on disposition of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(9,925)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in accounts receivable*",
+     "",
+     "(20,474)",
+     "",
+     "",
+     "20,832",
+     ""
+    ],
+    [
+     "Increase decrease in customer deposit",
+     "",
+     "(88,066)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable and accrued expenses",
+     "",
+     "165,716",
+     "",
+     "",
+     "58,387",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(115,400)",
+     "",
+     "",
+     "(55,135)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Insurance proceeds on write off of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "45,934",
+     ""
+    ],
+    [
+     "Repayment of lease for purchase of vehicle",
+     "",
+     "-",
+     "",
+     "",
+     "(42,435)",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(2,103)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash Provided by (Used in) Investing Activities*",
+     "",
+     "(2,103)",
+     "",
+     "",
+     "3,499",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in bank indebtedness",
+     "",
+     "5,954",
+     "",
+     "",
+     "5,431",
+     ""
+    ],
+    [
+     "Exercise of stock warrants",
+     "",
+     "10,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advances from non-related parties",
+     "",
+     "66,607",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advances (Repayment) of term loan",
+     "",
+     "(2,265)",
+     "",
+     "",
+     "15,440",
+     ""
+    ],
+    [
+     "Advances from related parties",
+     "",
+     "4,871",
+     "",
+     "",
+     "19,407",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "85,167",
+     "",
+     "",
+     "40,278",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effects of foreign currency exchange rate changes",
+     "",
+     "(1,753)",
+     "",
+     "",
+     "(1,515)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Decrease) in Cash",
+     "",
+     "(34,089)",
+     "",
+     "",
+     "(12,873)",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "34,089",
+     "",
+     "",
+     "12,873",
+     ""
+    ],
+    [
+     "Cash end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "6,036",
+     "",
+     "$",
+     "3,106",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 211,
+    "end_line": 260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the interim consolidated financial statements.\nSTATEMENTS OF INTERIM CONSOLIDATED CASH FLOWS FOR THE NINE MONTHS ENDED FEBRUARY 28, 2015 AND 2014",
+   "prose_after": "* Excludes the acquisition of capital equipment for $76,782 (CAD $96,000) on settlement of accounts receivable.\nSee accompanying notes to the interim consolidated financial statements.\nINTERIM CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIENCY\nFOR THE NINE MONTH PERIOD ENDED FEBRUARY 28, 2015 AND YEAR ENDED MAY 31, 2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 264,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "of",
+     "",
+     "",
+     "",
+     "Paid",
+     "",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "Capital",
+     "",
+     "In",
+     "",
+     "Stock",
+     "",
+     "(Accumulated",
+     "",
+     "",
+     "Income",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "shares",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "Warrants",
+     "",
+     "Deficit)",
+     "",
+     "",
+     "(Loss)",
+     "",
+     "",
+     "(Deficiency)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Balance as at May 31, 2013",
+     "",
+     "200",
+     "",
+     "200",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "31,798",
+     "",
+     "",
+     "(1,031)",
+     "",
+     "",
+     "30,967",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(174,370)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(174,370)",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,530",
+     "",
+     "",
+     "1,530",
+     ""
+    ],
+    [
+     "Balance as at May 31, 2014 (audited)",
+     "",
+     "200",
+     "",
+     "200",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(142,572)",
+     "",
+     "",
+     "499",
+     "",
+     "",
+     "(141,873)",
+     ""
+    ],
+    [
+     "Effect of reverse acquisition, January 8, 2015",
+     "",
+     "100,132,932",
+     "",
+     "9,813",
+     "",
+     "",
+     "",
+     "6,115",
+     "",
+     "(38,913)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(22,985)",
+     ""
+    ],
+    [
+     "Exercise of stock warrants",
+     "",
+     "66,666",
+     "",
+     "7",
+     "",
+     "9,993",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Net income (loss) for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(195,293)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(195,293)",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "36,593",
+     "",
+     "",
+     "36,593",
+     ""
+    ],
+    [
+     "Balance as at February 28, 2015 (unaudited)",
+     "",
+     "100,199,798",
+     "",
+     "10,020",
+     "",
+     "9,993",
+     "",
+     "6,115",
+     "",
+     "(376,778)",
+     "",
+     "",
+     "37,092",
+     "",
+     "",
+     "(313,558)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 272,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "* Excludes the acquisition of capital equipment for $76,782 (CAD $96,000) on settlement of accounts receivable.\nSee accompanying notes to the interim consolidated financial statements.\nINTERIM CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIENCY\nFOR THE NINE MONTH PERIOD ENDED FEBRUARY 28, 2015 AND YEAR ENDED MAY 31, 2014",
+   "prose_after": "See accompanying notes to the interim consolidated financial statements.\nNOTE 1 \u2013 NATURE OF OPERATIONS\nOrganization and Description of Business\nPerk International Inc. (\u201cthe Company\u201d or \u201cPerk\u201d) was incorporated under the laws of the State of Nevada on April 10, 2013. Our corporate headquarters are located at 5401, Eglinton Avenue West, Suite 205 Toronto, Ontario, Canada M9C 5K6.\nBasis of Presentation\nThe accompanying unaudited interim consolidated financial statements of Perk International Inc. have been prepared in accordance with accounting principles in the United States of America and the rules of the Securities and Exchange Commission (\u201cSEC\u201d), and should be read in conjunction with the audited financial statements and notes thereto contained in the Company\u2019s Form 10-K filed with the SEC. The accompanying unaudited interim consolidated financial statements do not include all information and footnotes necessary for a fair presentation of financial position, results of operations and cash flows in conformity with U.S. generally accepted accounting principles; however, such information reflects all adjustments (consisting solely of normal recurring adjustments), which are, in the opinion of management, necessary for a fair statement of the results for the interim periods.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 270,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 294,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Shares:",
+     "Held By:"
+    ],
+    [
+     "70,000,000",
+     "Tech 9 Shareholders"
+    ],
+    [
+     "30,133,132",
+     "Existing Company Shareholders"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 333,
+    "end_line": 339
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVERSE MERGER TRANSACTION AND ACCOUNTING"
+    }
+   },
+   "prose_before": "The transaction has been accounted for as a reverse merger, with Tech9 shareholders acquiring approximately 53.80% of the outstanding shares on a fully diluted basis of Registrant\u2019s common stock immediately after the closing of the transactions contemplated herein, and also on the basis that Tech9\u2019s senior management became the senior management of the merged entity and there is a change of control of the Company. In accordance with Accounting Standards Codification (\u201cASC\u201d) 805-10-40, Business Combinations; Reverse Acquisitions, Tech9 was the acquiring entity for accounting purposes. While the transaction is accounted for using the purchase method of accounting, in substance the transaction was a recapitalization of the Tech9\u2019s capital structure.\nThe Exchange is being accounted for as a reverse acquisition and recapitalization. Tech 9 is the acquirer for accounting purposes and the Company is the issuer. Accordingly, Tech 9\u2019s historical financial statements for periods prior to the acquisition become those of the acquirer retroactively restated for the equivalent number of shares received in the Exchange. The accumulated deficit of Tech 9 is carried forward after the acquisition. Operations prior to the Exchange are those of Tech 9. Earnings per share for the period prior to the Exchange are restated to reflect the equivalent number of shares outstanding.\nThere were 75,133,132 shares of the Company\u2019s common stock outstanding before giving effect to the stock issuances in the Exchange. Immediately following the Exchange, the Company\u2019s majority shareholders cancelled their collective 45,000,000 shares. Following these transactions, there were 100,133,132 shares outstanding, including:",
+   "prose_after": "The Company intends to carry on the business of Tech 9, as its primary line of business. The Company has relocated its principal executive offices to 5401 Eglinton Avenue West, Suite 205 Toronto, Ontario M9C 5K6. As a result of the Agreement, the Company is no longer pursuing the former business plan. Under the direction of our newly appointed officers and directors, as set forth below, the Company is pursuing the business of deploying, installing and managing \u201cDOOH\u201d (digital out of home) networks that are designed for retail healthcare, automotive, institutional, financial and high traffic C-stores (convenience stores) newsstands and retail locations.\nNOTE 3 - GOING CONCERN\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. This contemplates that assets will be realized and liabilities and commitments satisfied in the normal course of business. The Company has limited operating history and has an accumulated deficit of $376,778 as of February 28, 2015. This raises substantial doubt as to the Company\u2019s continuance as a going concern, which is dependent upon its ability to obtain adequate financing and to reach profitable cash flow from operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 317,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number",
+     "",
+     "",
+     "",
+     "Additional",
+     ""
+    ],
+    [
+     "",
+     "of",
+     "",
+     "",
+     "",
+     "Paid",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "Capital",
+     "",
+     "In",
+     ""
+    ],
+    [
+     "",
+     "shares",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as at May 31, 2013",
+     "",
+     "200",
+     "",
+     "200",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as at May 31, 2014 (audited)",
+     "",
+     "200",
+     "",
+     "200",
+     "",
+     ""
+    ],
+    [
+     "Effect of reverse acquisition, January 8, 2015 (i)",
+     "",
+     "100,132,932",
+     "",
+     "9,813",
+     "",
+     ""
+    ],
+    [
+     "Exercise of stock warrants (ii)",
+     "",
+     "66,666",
+     "",
+     "7",
+     "",
+     "9,993"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as at February 28, 2015",
+     "",
+     "100,199,798,",
+     "",
+     "10,020",
+     "",
+     "9,993"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 CAPITAL STOCK"
+    }
+   },
+   "prose_before": "The Company manages its capital structure and makes adjustments to it, based on the funds available to the Company, in order to maintain its daily operations. The Board of Directors does not establish quantitative return on capital criteria for management, but rather relies on the expertise of the Company's management to sustain the future development of the business.\nThe Company manages its capital structure and makes adjustments to it in light of changes in economic conditions and the risk characteristics of the underlying assets. In order to procure materials and pay for administrative costs, the Company will generate sales, spend its existing working capital on need basis and raise additional unsecured loan amounts as needed.\nManagement reviews its capital management approach on an ongoing basis and believes that this approach, given the foregoing paragraph and the relative size of the Company, is reasonable.\nNOTE 7 \u2013 CAPITAL STOCK\nAuthorized:\nCommon Stock: The Company has 250,000,000 shares of $0.0001 par value\nIssued and outstanding:",
+   "prose_after": "(i) On January 8, 2015, Perk International, Inc., a Nevada corporation (the \u201cCompany\u201d), entered into a Share Exchange Agreement (the \u201cExchange Agreement\u201d) with Tech 9 Inc., a privately held company incorporated under the laws of the Province of Ontario (\u201cTech 9\u201d), and the shareholders of Tech 9. In accordance with the terms of the Exchange Agreement, at the closing an aggregate of 70,000,000 shares of the Company\u2019s common stock were issued to the holders of Tech 9\u2019s common stock in exchange for their shares of Tech 9.\nImmediately subsequent to the Exchange, the Company entered into an Agreement of Conveyance, Transfer and Assignment of Assets and Assumption of Obligations (the \u201cConveyance Agreement\u201d) with the prior officers and directors. Pursuant to the Conveyance Agreement, the Company transferred all assets and business operations associated with the daily deals/coupons business to its prior officers and directors. In exchange, they agreed to cancel their collective 45,000,000 shares in the company and to assume and cancel all liabilities relating to our former business.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 376,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 413,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     ""
+    ],
+    [
+     "April 10, 2013, Inception",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cancelled or Expired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "May 31, 2013",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "30,000,000",
+     "",
+     "",
+     "0.15",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(66,666)",
+     "",
+     "",
+     "(0.15)",
+     ""
+    ],
+    [
+     "Cancelled or Expired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "May 31, 2014",
+     "",
+     "29,933,334",
+     "",
+     "$",
+     "0.15",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(136,665)",
+     "",
+     "",
+     "(0.15)",
+     ""
+    ],
+    [
+     "Cancelled or Expired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "February 28, 2015",
+     "",
+     "29,796,669",
+     "",
+     "$",
+     "0.15",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 435,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 CAPITAL STOCK"
+    }
+   },
+   "prose_before": "On April 3, 2014 the exercise price for all the outstanding warrants was revised from $0.25 to $0.15 per share. The warrants were revalued on that date and the change in value was trivial and deemed immaterial so no adjustment was recorded.\nDuring the year ended May 31, 2014, 66,666 warrants were exercised at $0.15 per share, resulting in 66,666 shares of common stock being issued for $10,000 in cash.\nDuring the fiscal quarter ended August 31, 2014, 46,666 warrants were exercised at $0.15 per share, resulting in 46,666 shares of common stock being issued for $7,000 in cash.\nDuring the fiscal quarter ended November 30, 2014, 23,333 warrants were exercised at $0.15 per share, resulting in 23,333 shares of common stock being issued for $3,000 in cash and a receivable of $500.\nDuring the fiscal quarter ended February 28, 2015, 66,666 warrants were exercised at $0.15 per share, resulting in 66,666 shares of common stock being issued for $10,000 in cash.\nThere are 29,796,669 stock warrants remaining as of February 28, 2015. The remaining warrants will expire on September 30, 2017.\nThe following table presents warrant activity since inception:",
+   "prose_after": "NOTE 8 \u2013 PLANT AND EQUIPMENT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 413,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Net",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Carrying",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "",
+     "Amortization",
+     "",
+     "Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "$",
+     "78,885",
+     "",
+     "$",
+     "5,995",
+     "$",
+     "72,890",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "78,885",
+     "",
+     "",
+     "5,995",
+     "",
+     "72,890",
+     ""
+    ],
+    [
+     "Less: Impairment adjustment",
+     "",
+     "(35,512)",
+     "",
+     "",
+     "",
+     "",
+     "(35,512)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "43,373",
+     "",
+     "$",
+     "5,995",
+     "$",
+     "37,378",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Net"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 462,
+    "end_line": 477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "NOTE 8 \u2013 PLANT AND EQUIPMENT",
+   "prose_after": "The Company did not own any property and equipment as of May 31, 2014.\nNOTE 9 \u2013 TERM LOAN\nOn July 24, 2013 the Company obtained a term loan for an amount of CAD $18,800 repayable in 59 monthly installments of CAD $367.63 including interest and principal and bears interest at 6.5% per annum (prime plus 3.5% per annum). The loan is secured by a personal guarantee of a director. The current and non-current portion of the term loan as at February 28, 2015 is $2,776 ($3,202 \u2013 2014) and $8,000 ($11,597 \u2013 2014) respectively.\nNOTE 10- DUE TO NON- RELATED PARTIES\n$39,991 (CAD $50,000): The Company took a loan from a non related party for $ 39,991 (CAD $50,000) during the quarter ended February 28, 2015. This loan has a collateral security on the stock of the Company, carries an annual interest rate of 12% and is repayable in 90 days.\n$20,501 (CAD $25,633): The Company took a loan from a non related party for $27,993 (CAD $35,000) during the quarter ended February 28, 2015. This loan is unsecured, carries an annual interest rate of 56.855% with a term of 6 months and requires repayment of CAD $319 every business day.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 460,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "February 28, 2015",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets/Liabilities",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Accounts Receivable",
+     "$",
+     "76,343",
+     "$",
+     "76,343"
+    ],
+    [
+     "Due to related party",
+     "$",
+     "22,790",
+     "$",
+     "22,790"
+    ],
+    [
+     "Due to non-related party",
+     "$",
+     "60,492",
+     "$",
+     "60,492"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "327,813",
+     "$",
+     "327,813"
+    ],
+    [
+     "Bank indebtness",
+     "$",
+     "5,408",
+     "$",
+     "5,408"
+    ]
+   ],
+   "caption_stack": [
+    "February 28, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "On January 8, 2015, Perk International, Inc., a Nevada corporation (the \u201cCompany\u201d), entered into a Share Exchange Agreement (the \u201cExchange Agreement\u201d) with Tech 9 Inc., a privately held company incorporated under the laws of the Province of Ontario (\u201cTech 9\u201d), and the shareholders of Tech 9. In accordance with the terms of the Exchange Agreement, at the closing an aggregate of 70,000,000 shares of the Company\u2019s common stock were issued to the holders of Tech 9\u2019s common stock in exchange for their shares of Tech 9. Immediately subsequent to the Exchange, the Company entered into an Agreement of Conveyance, Transfer and Assignment of Assets and Assumption of Obligations (the \u201cConveyance Agreement\u201d) with the prior officers and directors. Pursuant to the Conveyance Agreement, the Company transferred all assets and business operations associated with the daily deals/coupons business to its prior officers and directors. In exchange, they agreed to cancel their collective 45,000,000 shares in the company and to assume and cancel all liabilities relating to our former business. The liabilities assumed by the prior officers and directors amounts to $22,985 which if not discharged, may result in a potential liability on the Company.\nNOTE 12- FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS\nThe fair value of a financial instrument is the estimated amount that the Company would receive or pay to settle the financial assets and financial liabilities as at the balance sheet date. The book value of accounts receivable, accounts payable and accrued liabilities, and due to related party approximate fair values at the balance sheet dates.\nAll financial instruments except for cash are classified as level 3. Cash is classified as level 1.",
+   "prose_after": "NOTE 12- FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS-Cont\u2019d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets/Liabilities",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "34,089",
+     "$",
+     "34,089"
+    ],
+    [
+     "Accounts Receivable",
+     "$",
+     "155,141",
+     "$",
+     "155,141"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "202,889",
+     "$",
+     "202,889"
+    ],
+    [
+     "Income tax payable",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Customer deposit",
+     "$",
+     "92,234",
+     "$",
+     "92,234"
+    ],
+    [
+     "Due to related parties",
+     "$",
+     "21,181",
+     "$",
+     "21,181"
+    ]
+   ],
+   "caption_stack": [
+    "May 31, 2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "NOTE 12- FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS-Cont\u2019d",
+   "prose_after": "Interest rate risk\nThe Company\u2019s exposure to interest rate fluctuations is not significant.\nCredit risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist principally of accounts receivable. The Company is not exposed to material losses on its accounts receivable and future revenues. The Company mitigates its credit risk by performing credit checks on new customers before extending credit.\nLiquidity risk\nThe Company\u2019s exposure to liquidity risk is dependent on the collection of accounts receivable and the ability to raise funds to meet purchase commitments and to sustain operations. The company controls its liquidity risk by managing working capital and cash flows.\nForeign currency risk\nThe Company is exposed to foreign currency risk as substantially all of the Company\u2019s cash is denominated in Canadian Dollars being the Company\u2019s functional currency. This risk is partially mitigated by the fact that all costs associated with running of the Company are incurred in Canadian Dollars.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended February 28, 2015",
+     "",
+     "Three Months Ended February 28, 2014",
+     "",
+     "Nine Months Ended February 28, 2015",
+     "",
+     "Nine Months Ended February 28, 2014",
+     ""
+    ],
+    [
+     "Sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Products",
+     "$",
+     "5,210",
+     "$",
+     "23,263",
+     "$",
+     "272,164",
+     "$",
+     "141,447"
+    ],
+    [
+     "  Services",
+     "$",
+     "39,794",
+     "$",
+     "16,569",
+     "$",
+     "116,799",
+     "$",
+     "91,461"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Products",
+     "$",
+     "10,724",
+     "$",
+     "7,571",
+     "$",
+     "145,637",
+     "$",
+     "116,717"
+    ],
+    [
+     "  Services",
+     "$",
+     "24,652",
+     "$",
+     "14,707",
+     "$",
+     "68,732",
+     "$",
+     "65,976"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "9,628",
+     "$",
+     "17,557",
+     "$",
+     "174,594",
+     "$",
+     "50,215"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "Immediately subsequent to the Exchange, we entered into an Agreement of Conveyance, Transfer and Assignment of Assets and Assumption of Obligations (the \u201cConveyance Agreement\u201d) with our prior officers and directors, Messrs. Andrew Gaudet and Leon Golden. Pursuant to the Conveyance Agreement, we transferred all assets and business operations associated with our daily deals/coupons business to Messrs. Gaudet and Golden. In exchange, Messrs. Gaudet and Golden agreed to cancel their collective 45,000,000 shares in our company and to assume and cancel all liabilities relating to our former business.\nAs a result of these transactions, we are no longer pursuing our former business plan. Under the direction of our newly appointed officers and directors, as set forth below, we are in the business of deploying, installing and managing \u201cDOOH\u201d (digital out of home) networks that are designed for retail healthcare, automotive, institutional, financial and high traffic C-stores (convenience stores) newsstands and retail locations. The term \u201cDOOH\u201d (digital out of home) represents any TV or digital billboard situated outside the home for the purpose of streaming live or static content, advertising messages or sponsored information. These TV\u2019s or billboards are found in washrooms, gas stations, retail, restaurants, theatres, taxis and a host of other high traffic locations.\nResults of Operation for the three and nine months ended February 28, 2015 and 2014\nRevenues",
+   "prose_after": "During the three months ended February 28, 2015, product sales were at $5,210 as compared to $23,263 for the same period ended February 28, 2014. Our product sales were $272,164 for the nine months ended February 28, 2015 as compared with $141,447 for the same period ended February 28, 2014. Product sales declined in the quarter ended 2015 as compared with the same period ended 2014, despite the increase in product sales for the nine months ended 2015 over the same period ended 2014. We are experiencing a downward trend in our product sales and expect this to continue into 2015. There is major competition in the hardware segment thus lowering margins significantly. Customers are purchasing TVs and media players from our competitors that are offering favorable prices to our products. When bidding and quoting on larger contracts hardware is the loss leader as hardware pricing is lower margin today based on declining pricing and lower end hardware hitting the market from China.\nConversely, our service revenue increased in the quarter ended 2015 as compared with the same period ended 2014. During the three months ended February 28, 2015, service sales were at $39,794 as compared to $16,569 for the same period ended February 28, 2014. We are continuing to expand our management fee model in tandem with turnkey network sales as the management fee has lower overhead to operate. We believe it is a major growth area for us and we believe our services will be the primary revenue source going forward. We also believe the lower cost of sales for services will provide us higher gross profit margins going forward. We are focusing on rolling out larger networks that can take months to complete based on locations, logistics and physical start dates for network activation. We are hopeful that our service end will generate more revenue in 2015 as we are able to expand into new territories.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended February 28, 2015",
+     "",
+     "",
+     "Three Months Ended February 28, 2014",
+     "",
+     "",
+     "Nine Months Ended February 28, 2015",
+     "",
+     "",
+     "Nine Months Ended February 28, 2015",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Consulting and professional",
+     "$",
+     "114,709",
+     "",
+     "$",
+     "18,591",
+     "",
+     "$",
+     "265,405",
+     "",
+     "$",
+     "128,795",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "$",
+     "23,672",
+     "",
+     "$",
+     "25,873",
+     "",
+     "$",
+     "81,765",
+     "",
+     "$",
+     "55,774",
+     ""
+    ],
+    [
+     "  Impairment of Property and Equipment",
+     "$",
+     "39,101",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "39,101",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "$",
+     "6,511",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "6,601",
+     "",
+     "$",
+     "1,233",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating profit (loss)",
+     "($",
+     "174,365",
+     ")",
+     "($",
+     "26,907",
+     ")",
+     "($",
+     "218,278",
+     ")",
+     "($",
+     "135,587",
+     ")"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "Since inception we have been reliant on major customers for a substantial portion of our revenues. As we grow, however, we are less and less reliant on these major customers. From our inception, we had a major client that presented viable business operations for our company. We took on this major contract and focused on the project unit completed. The \u201cadmerge deal\u201d in 2013 represented the majority of our revenue.\nUnder the admerge deal, the management fees that we invoice monthly were based on live functioning systems. Admerge was halted as a result of their software being turned off by its supplier for failure to pay for services. Once that occurred we were not managing the screens as they were not operational. Our management revenue is based on ensuring the performance and functionality of the third party software being utilized along with content creation and uploading to the specific network. We also control the system on-off features and maintenance through a remote management platform.\nAdmerge owed us CAD$96,000 and we accepted computer equipment to settle this debt.\nExpenses",
+   "prose_after": "We incurred an operating loss of $174,365 and $218,278 for the three and nine months ended February 28, 2015, respectively, as compared to an operating loss of $26,907 and $135,587 for the same periods ended 2014, respectively. For the three and nine months ended February 28, 2015, we incurred substantially more consulting and professional fees than in the same periods ended February 28, 2014. This is due to increased accounting, audit and legal fees in connection with going public. We also experienced increased operating expenses in the three and nine months ended February 28, 2015 due to the impairment of computer equipment, where we had no such equipment to impair for the same periods ended February 28, 2014.\nNet Loss\nWe had a net loss of $151,380 for the three months ended February 28, 2015, as compared with a net loss of $26,907 for the three months ended February 28, 2014.\nWe had a net loss of $195,293 for the nine months ended February 28, 2015, as compared with a net loss of $125,662 for the nine months ended February 28, 2014.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101**",
+     "The following materials from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended February 28, 2015 formatted in Extensible Business Reporting Language (XBRL)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 765,
+    "end_line": 775
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "During the fiscal quarter ended February 28, 2015, 66,666 warrants were exercised at $0.15 per share, resulting in 66,666 shares of common stock being issued for $10,000 in cash.\nThe above issuances were exempt pursuant to Section 4(a)(2) of the Securities Act of 1933, as amended, Regulation D promulgated thereunder, and Regulation S of the Securities Act. For offshore issuances, each purchaser represented to us that the purchaser was a Non-US Person as defined in Regulation S. We did not engage in a distribution of this offering in the United States. Each purchaser represented their intention to acquire the securities for investment only and not with a view toward distribution. All purchasers were given adequate access to sufficient information about us to make an informed investment decision. None of the securities were sold through an underwriter and accordingly, there were no underwriting discounts or commissions involved.\nItem 3. Defaults upon Senior Securities\nNone\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone\nItem 6. Exhibits",
+   "prose_after": "** Provided herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Perk International Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "April 20, 2015",
+     "By:",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Robert Oswald"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "President, Chief Executive Officer and Director"
+    ]
+   ],
+   "caption_stack": [
+    "Perk International Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 783,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "FAIR VALUE OF FINANCIAL INSTRUMENTS AND RISK FACTORS"
+    }
+   },
+   "prose_before": "** Provided herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 792,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,417 @@
+{
+ "accession": "0001888524-26-006591",
+ "cik": "0001972920",
+ "form": "10-K",
+ "filing_date": "2026-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bmo23c05_10k-2025.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York (State or other jurisdiction of incorporation or organization)",
+     "37-2078925 38-4258192 38-4258193\n\n\n\n(I.R.S. Employer Identification Numbers)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 84,
+    "end_line": 89
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001548405\nStarwood Mortgage Capital LLC\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001541294\nGerman American Capital Corporation\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001685185\nUBS AG\n(exact name of the sponsor as specified in its charter)",
+   "prose_after": "c/o Computershare Trust Company, N.A.\n9062 Old Annapolis Road\nColumbia, MD\n(Address of principal executive offices)\n21045\n(Zip Code)\nTelephone number, including area code:\n(667) 786\u20111992\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 108,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o Computershare Trust Company, N.A.\n9062 Old Annapolis Road\nColumbia, MD\n(Address of principal executive offices)\n21045\n(Zip Code)\nTelephone number, including area code:\n(667) 786\u20111992\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNONE.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments."
+    ],
+    [
+     "",
+     "None."
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity.\n\n\n\nOmitted."
+    ],
+    [
+     "Item 2.",
+     "Properties."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures."
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 191,
+    "end_line": 209
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Pursuant to Instruction 3 to Item 1122 of Regulation AB, the report on assessment of compliance with servicing criteria and attestation report on assessment of compliance with servicing criteria of"
+    }
+   },
+   "prose_before": "7. This report on Form 10-K does not include the servicer compliance statements of (i) Argentic Services Company LP, as Pacific Design Center special servicer for Pacific Design Center mortgage loan under the Benchmark 2023-B38 PSA and (ii) Situs Holdings, LLC, as special servicer for the Oak Street NLP Fund Portfolio mortgage loan under the OAKST 2023-NLP TSA, because each of Argentic Services Company LP and Situs Holdings, LLC is an unaffiliated party that services less than 10% of the pool assets of the issuing entity, and therefore is not a servicer that meets the criteria in Item 1108(a)(2)(i) through (iii) of Regulation AB. This annual report on Form 10-K does not include the servicer compliance statements of (i) Computershare Trust Company, National Association as certificate administrator under the 3650R 2022-PF2 PSA, the Benchmark 2023-B38 PSA, Benchmark 2023-V2 PSA, the BBCMS 2023-C21 PSA and the OAKST 2023-NLP TSA, because the certificate administrator under each such pooling and servicing agreement or trust and servicing agreement, as applicable, is not a servicer that meets the criteria in Item 1108(a)(2)(i) through (iii) of Regulation AB with respect to the issuing entity.",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 9B.",
+     "Other Information."
+    ],
+    [
+     "",
+     "None."
+    ],
+    [
+     "Item 9C.",
+     "Disclosure regarding Foreign Jurisdictions that Prevent Inspections."
+    ],
+    [
+     "",
+     "Not applicable."
+    ]
+   ],
+   "caption_stack": [
+    "PART II"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 210,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Mine Safety Disclosures."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Pursuant to Instruction 3 to Item 1122 of Regulation AB, the report on assessment of compliance with servicing criteria and attestation report on assessment of compliance with servicing criteria of"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence."
+    ],
+    [
+     "",
+     "Omitted."
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services."
+    ],
+    [
+     "",
+     "Omitted."
+    ]
+   ],
+   "caption_stack": [
+    "PART III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 233,
+    "end_line": 247
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9C",
+     "title": "Disclosure regarding Foreign Jurisdictions that Prevent Inspections."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Pursuant to Instruction 3 to Item 1122 of Regulation AB, the report on assessment of compliance with servicing criteria and attestation report on assessment of compliance with servicing criteria of"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ADDITIONAL DISCLOSURE ITEMS FOR REGULATION AB\nItem 1112(b) of Regulation AB, Significant Obligor Financial Information.\nWith respect to the pool assets for BMO 2023-C5 Mortgage Trust, there are no significant obligors within the meaning of Item 1101(k) of Regulation AB.\nItem 1114(b)(2) of Regulation AB, Significant Enhancement Provider Financial Information.\nNo entity or group of affiliated entities provides any external credit enhancement, uses any derivative instruments or other support for the certificates within this transaction.\nItem 1115(b) of Regulation AB, Certain Derivatives Instruments (Financial Information).\nNo entity or group of affiliated entities provides any external credit enhancement, uses any derivative instruments or other support for the certificates within this transaction.\nItem 1117 of Regulation AB, Legal Proceedings.\nThe registrant knows of no legal proceeding pending against the sponsors, depositor, trustee, issuing entity, servicer contemplated by Item 1108(a)(3) of Regulation AB, originator contemplated by Item 1110(b) of Regulation AB, or other party contemplated by Item 1100(d)(1) of Regulation AB, or of which any property of the foregoing is the subject, that is material to security holders.",
+   "structured_location": {
+    "item": "ITEM 9C",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

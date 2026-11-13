@@ -1,0 +1,2238 @@
+{
+ "accession": "0001047469-15-001200",
+ "cik": "0000008818",
+ "form": "10-K",
+ "filing_date": "2015-02-25",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a2223154z10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "95-1492269"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "207 Goode Avenue Glendale, California (Address of Principal Executive Offices)",
+     "91203 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Use these links to rapidly review the document AVERY DENNISON CORPORATION INDEX TO FINANCIAL STATEMENTS AND FINANCIAL STATEMENT SCHEDULE\n2014 10-K\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION WASHINGTON, DC 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended January 3, 2015\nCommission file number 1-7685\nAVERY DENNISON CORPORATION (Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "Registrant's telephone number, including area code:\n(626) 304-2000\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, $1 par value",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant's telephone number, including area code:\n(626) 304-2000\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Not applicable.\nIndicate by a check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [X] No [ ]\nIndicate by a check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Document",
+     "Incorporated by reference into:"
+    ],
+    [
+     "Portions of Annual Report to Shareholders for fiscal year ended January 3, 2015",
+     "Parts I, II"
+    ],
+    [
+     "Portions of Definitive Proxy Statement for Annual Meeting of Stockholders to be held on April 23, 2015",
+     "Parts III, IV"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 64
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [X]  Accelerated filer [ ]                   Non-accelerated filer [ ] (do not check if a smaller reporting company)  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of voting and non-voting common equity held by non-affiliates as of June 28, 2014, the last business day of the registrant's most recently completed second fiscal quarter, was $4,822,071,471.\nNumber of shares of common stock, $1 par value, outstanding as of January 31, 2015, the end of the registrant's most recent fiscal month: 90,494,421.\nThe following documents are incorporated by reference into the Parts of this Form 10-K below indicated:",
+   "prose_after": "AVERY DENNISON CORPORATION\nFISCAL YEAR 2014 ANNUAL REPORT ON FORM 10-K\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "15"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "16"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "17"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "18"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "18"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "19"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "19"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "19"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "19"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "19"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "20"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, and Corporate Governance",
+     "21"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "23"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "23"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "23"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "23"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "24"
+    ],
+    [
+     "Signatures",
+     "",
+     "25"
+    ],
+    [
+     "Power of Attorney",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "AVERY DENNISON CORPORATION\nFISCAL YEAR 2014 ANNUAL REPORT ON FORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. BUSINESS\nCompany Background\nAvery Dennison Corporation (\"Avery Dennison,\" the \"Company,\" \"Registrant,\" or \"Issuer,\" which may be referred to as \"we\" or \"us\") was incorporated in Delaware in 1977 as Avery International Corporation, the successor corporation to a California corporation of the same name that had been incorporated in 1946. In 1990, we merged one of our subsidiaries into Dennison Manufacturing Company (\"Dennison\"), as a result of which Dennison became our wholly-owned subsidiary and in connection with which our name was changed to Avery Dennison Corporation. You can learn more about us by visiting our website at www.averydennison.com. Our website address provided in this Form 10-K is not intended to function as a hyperlink and the information on our website is not, nor should it be considered, part of this report or incorporated by reference in this report.\nBusiness Overview and Reportable Segments\nOur businesses include the production of pressure-sensitive materials and a variety of tickets, tags, labels and other converted products. Some pressure-sensitive materials are sold to label printers and converters that \"convert\" the materials into labels and other products through embossing, printing, stamping and die-cutting. Some are sold by us in converted form as tapes and reflective sheeting. We also manufacture and sell a variety of other converted products and items not involving pressure-sensitive components, such as fasteners, tickets, tags, radio-frequency identification (\"RFID\") inlays and tags, and imprinting equipment and related services, which we market to retailers and apparel manufacturers and brand owners.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Domestic",
+     "Peachtree City, Georgia; Fort Wayne, Greenfield, and Lowell, Indiana; Fairport Harbor, Mentor, and Painesville, Ohio; and Quakertown, Pennsylvania"
+    ],
+    [
+     "Foreign",
+     "Turnhout, Belgium; Vinhedo, Brazil; Kunshan, China; Champ-sur-Drac, France; Gotha and Schwelm, Germany; Rodange, Luxembourg; and Cramlington, United Kingdom"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 438,
+    "end_line": 442
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES"
+    },
+    "note": null
+   },
+   "prose_before": "During 2010, the Patient Protection and Affordable Care Act and the Health Care and Education Reconciliation Act of 2010 were signed into law in the U.S. Certain of the provisions that could most significantly increase our healthcare costs in the near term include the removal of annual plan limits, the changes in rules regarding eligibility for dependents and the mandate that health plans cover 100% of preventative care. In addition, our healthcare costs could increase if we are required to cover more employees than we do currently or pay penalty amounts in the event that employees do not elect our offered coverage. The complexities and ramifications of the new legislation are significant, and have begun being implemented through a phased approach that is expected to conclude in 2018. At this time, the effects of health care reform and the resulting impact on our operations are not fully known. Changes to our healthcare cost structure could have a material adverse effect on our business.\nItem 1B. UNRESOLVED STAFF COMMENTS\nNone.\nItem 2. PROPERTIES\nAs of January 3, 2015, we operated approximately 35 principal manufacturing facilities in excess of 100,000 square feet. The locations of these principal facilities and the reportable segments or businesses for which they presently are used are as follows:\nPressure-sensitive Materials Segment",
+   "prose_after": "Retail Branding and Information Solutions Segment",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Domestic",
+     "Greensboro and Lenoir, North Carolina; and Miamisburg, Ohio"
+    ],
+    [
+     "Foreign",
+     "Nansha, Panyu, and Suzhou, China; Sprockhovel, Germany; and Ancarano, Italy"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 445,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES"
+    },
+    "note": null
+   },
+   "prose_before": "Retail Branding and Information Solutions Segment",
+   "prose_after": "In addition to the principal manufacturing facilities described above, our other principal facilities include our corporate headquarters in Glendale, California, and our divisional offices located in Westborough, Massachusetts; Mentor, Ohio; Kunshan, China; and Oegstgeest, the Netherlands.\nWe own all of the principal properties identified above, except for the following facilities, which are leased: Vinhedo, Brazil; Glendale, California; Panyu, China; Sprockhovel, Germany; Rodange, Luxembourg; Westborough, Massachusetts; Greensboro, North Carolina; Mentor, Ohio; and Oegstgeest, The Netherlands.\nWe consider all our properties, whether owned or leased, suitable and adequate for our present needs. We generally expand production capacity as needed to meet increased demand. Owned buildings and plant equipment are insured against major losses from fire and other usual business risks, subject to deductibles. We are not aware of any material defects in title to, or significant encumbrances on, our properties, except for certain mortgage liens.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period(1)",
+     "Total number of shares purchased(2)",
+     "Average price paid per share",
+     "Total number of shares purchased as part of publicly announced plans(2)(3)",
+     "Approximate dollar value of shares that may yet be purchased under the plans(4)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 28, 2014 \u2013 October 25, 2014",
+     "1,324",
+     "$43.40",
+     "1,324",
+     ""
+    ],
+    [
+     "October 26, 2014 \u2013 November 29, 2014",
+     "741",
+     "46.72",
+     "741",
+     ""
+    ],
+    [
+     "November 30, 2014 \u2013 January 3, 2015",
+     "324",
+     "50.22",
+     "324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "2,389",
+     "$45.35",
+     "2,389",
+     "$599.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "In addition, we are involved in various lawsuits, claims, inquiries, and other regulatory and compliance matters, most of which are routine to the nature of our business. We have accrued liabilities for matters where it is probable that a loss will be incurred and the amount of loss can be reasonably estimated. Because of the uncertainties associated with claims resolution and litigation, future expenses to resolve these matters could be higher than the liabilities we have accrued; however, we are unable to reasonably estimate a range of potential expenses. If information were to become available that allowed us to reasonably estimate the range of potential expenses in an amount higher or lower than what we have accrued, we would adjust our accrued liabilities accordingly. Additional lawsuits, claims, inquiries, and other regulatory and compliance matters could arise in the future. The range of expenses for resolving any future matters will be assessed as they arise; until then, a range of potential expenses for such resolution cannot be determined. Based upon current information, we believe that the impact of the resolution of these matters would not be, individually or in the aggregate, material to our financial position, results of operations or cash flows.\nSee also Note 8, \"Contingencies,\" in the Notes to Consolidated Financial Statements of our 2014 Annual Report, which is incorporated herein by reference.\nItem 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nItem 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\n(a) The information called for by Item 201 of Regulation S-K appears under \"Corporate Information \u2014 Stock and Dividend Data\" in our 2014 Annual Report and is incorporated herein by reference. We did not sell any unregistered securities during the fourth quarter of 2014.\n(b) Not applicable.\n(c) Repurchases of Equity Securities by Issuer\nRepurchases by us or our \"affiliated purchasers\" (as defined in Rule 10b-18(a)(3) of the Exchange Act) of registered equity securities in the three fiscal months of the fourth quarter of 2014 are listed in the following table.",
+   "prose_after": "(1) The periods shown are our fiscal periods during the fourteen-week quarter ended January 3, 2015.\n(2) Shares in thousands.\n(3) On July 25, 2013, our Board of Directors authorized the repurchase of shares of our common stock in the aggregate amount of up to $400 million (exclusive of any fees, commissions or other expenses related to such purchases), in addition to any outstanding shares authorized under any previous Board authorization. This authorization will remain in effect until the shares authorized thereby have been repurchased. On December 4, 2014, our Board of Directors authorized the repurchase of shares of our common stock in the aggregate amount of up to $500 million (exclusive of any fees, commissions or other expenses related to such purchases), in addition to any outstanding shares authorized under any previous Board authorization. This authorization will remain in effect until the shares authorized thereby have been repurchased.\n(4) Dollars in millions.\nRepurchased shares may be reissued under our stock option and incentive plan or used for other corporate purposes.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Served as Executive Officer since",
+     "Former Positions within Past Five Years / Prior Offices with Avery Dennison",
+     ""
+    ],
+    [
+     "Dean A. Scarborough",
+     "59",
+     "August 1997",
+     "2010-2014",
+     "Chairman, President and Chief"
+    ],
+    [
+     "Chairman and",
+     "",
+     "",
+     "",
+     "Executive Officer"
+    ],
+    [
+     "Chief Executive Officer",
+     "",
+     "",
+     "2005-2010",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2000-2005",
+     "President and Chief Operating Officer"
+    ],
+    [
+     "Mitchell R. Butier",
+     "43",
+     "March 2007",
+     "2010-2014",
+     "Senior Vice President and Chief"
+    ],
+    [
+     "President, Chief Operating",
+     "",
+     "",
+     "",
+     "Financial Officer"
+    ],
+    [
+     "Officer and",
+     "",
+     "",
+     "2007-2010",
+     "Vice President, Controller and Chief"
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "",
+     "",
+     "Accounting Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2004-2006",
+     "Vice President, Finance, Retail Branding and Information Solutions"
+    ],
+    [
+     "Lori J. Bondar",
+     "54",
+     "June 2010",
+     "2008-2010",
+     "Vice President, Controller"
+    ],
+    [
+     "Vice President, Controller",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and Chief Accounting Officer",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anne Hill",
+     "55",
+     "May 2007",
+     "2007-2011",
+     "Senior Vice President and"
+    ],
+    [
+     "Senior Vice President and Chief Human Resources and Communications Officer",
+     "",
+     "",
+     "",
+     "Chief Human Resources Officer"
+    ],
+    [
+     "Susan C. Miller",
+     "55",
+     "March 2008",
+     "2008-2009",
+     "Senior Vice President and General Counsel"
+    ],
+    [
+     "Senior Vice President,",
+     "",
+     "",
+     "2007-2008",
+     "Vice President and General Counsel"
+    ],
+    [
+     "General Counsel and Secretary",
+     "",
+     "",
+     "1998-2006",
+     "Assistant General Counsel"
+    ],
+    [
+     "R. Shawn Neville",
+     "52",
+     "June 2009",
+     "2008-2009",
+     "Chief Executive Officer, Boathouse Sports"
+    ],
+    [
+     "President, Retail Branding and Information Solutions",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "We have adopted a Code of Ethics for the Chief Executive Officer and Senior Financial Officers (the \"Code\"), which applies to our Chief Executive Officer, Chief Financial Officer, and Controller/Chief Accounting Officer. The Code is available on our investor website at www.investors.averydennison.com. We will satisfy disclosure requirements under Item 5.05 of Form 8-K regarding any amendment to, or waiver of, any provision of the Code that applies to these officers disclosing the nature of such amendment or waiver on our website or in a current report on Form 8-K. Our Code of Conduct, which applies to our directors, officers and employees, is also available on our investor website. Our website address is not intended to function as a hyperlink, and the contents of the website are not a part of this Form 10-K, nor are they incorporated herein by reference.\nThe information called for by this Item concerning our audit committee is incorporated by reference from our 2015 Proxy Statement.\nEXECUTIVE OFFICERS OF AVERY DENNISON(1)",
+   "prose_after": "(1) Officers are generally elected on the date of our annual stockholder meeting to serve a one-year term and until their successors are duly elected and qualified.\nItem 11. EXECUTIVE COMPENSATION\nThe information called for by this Item is incorporated by reference from our 2015 Proxy Statement.\nItem 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe information called for by this Item is incorporated by reference from our 2015 Proxy Statement.\nItem 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nThe information called for by this Item is incorporated by reference from our 2015 Proxy Statement.\nItem 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe information called for by this Item is incorporated by reference from our 2015 Proxy Statement.\nPART IV",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "AVERY DENNISON CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/",
+     "Mitchell R. Butier"
+    ],
+    [
+     "",
+     "Mitchell R. Butier President, Chief Operating Officer and Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "AVERY DENNISON CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(1) (2) Financial statements and financial statement schedule filed as part of this report are listed on the accompanying Index to Financial Statements and Financial Statement Schedule.\n(3) Exhibits filed as a part of this report are listed on the accompanying Exhibit Index. Each management contract or compensatory plan or arrangement required to be filed as an exhibit to this Form 10-K is identified as such on the Exhibit Index and incorporated herein by reference.\n(b) The Exhibits required to be filed by Item 601 of Regulation S-K are set forth on the accompanying Exhibit Index and incorporated herein by reference.\n(c) The financial statement schedules required by Regulation S-X, which are excluded from our 2014 Annual Report by Rule 14a-3(b)(1) and are required to be filed in this report, are set forth on the accompanying Index to Financial Statements and Financial Statement Schedule and incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Dated: February 25, 2015\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and as of the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Dean A. Scarborough\n\n        Dean A. Scarborough",
+     "Chairman and Chief Executive Officer",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Mitchell R. Butier\n\n        Mitchell R. Butier",
+     "President, Chief Operating Officer and Chief Financial Officer (Principal Financial Officer)",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Lori J. Bondar\n\n        Lori J. Bondar",
+     "Vice President, Controller, and Chief Accounting Officer (Principal Accounting Officer)",
+     "February 25, 2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Dated: February 25, 2015\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and as of the dates indicated.",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below does hereby constitute and appoint Mitchell R. Butier and Susan C. Miller, and each of them, with full power of substitution, his or her true and lawful attorney-in-fact to act for him or her in any and all capacities, to sign this Annual Report on Form 10-K and any or all amendments or supplements thereto, and to file each of the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in order to effectuate the same as fully, to all intents and purposes, as he or she could do in person, hereby ratifying and confirming all that said attorneys-in-fact or substitutes, or any of them, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and as of the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Bradley A. Alford\n\n        Bradley A. Alford",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Anthony K. Anderson\n\n        Anthony K. Anderson",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Peter K. Barker\n\n        Peter K. Barker",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Rolf L. B\u00f6rjesson\n\n        Rolf L. B\u00f6rjesson",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Ken C. Hicks\n\n        Ken C. Hicks",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    David E. I. Pyott\n\n        David E. I. Pyott",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Patrick T. Siewert\n\n        Patrick T. Siewert",
+     "Director",
+     "February 25, 2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below does hereby constitute and appoint Mitchell R. Butier and Susan C. Miller, and each of them, with full power of substitution, his or her true and lawful attorney-in-fact to act for him or her in any and all capacities, to sign this Annual Report on Form 10-K and any or all amendments or supplements thereto, and to file each of the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in order to effectuate the same as fully, to all intents and purposes, as he or she could do in person, hereby ratifying and confirming all that said attorneys-in-fact or substitutes, or any of them, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and as of the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Julia A. Stewart\n\n        Julia A. Stewart",
+     "Director",
+     "February 25, 2015"
+    ],
+    [
+     "/s/    Martha N. Sullivan\n\n        Martha N. Sullivan",
+     "Director",
+     "February 25, 2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 711,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "AVERY DENNISON CORPORATION INDEX TO FINANCIAL STATEMENTS AND FINANCIAL STATEMENT SCHEDULE\nData incorporated by reference from the attached portions of the 2014 Annual Report to Shareholders of Avery Dennison Corporation:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "Consolidated Financial Statements:"
+    ],
+    [
+     "Consolidated Balance Sheets as of January 3, 2015 and December 28, 2013"
+    ],
+    [
+     "Consolidated Statements of Income for 2014, 2013 and 2012"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Income for 2014, 2013 and 2012"
+    ],
+    [
+     "Consolidated Statements of Shareholders' Equity for 2014, 2013 and 2012"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for 2014, 2013 and 2012"
+    ],
+    [
+     "Notes to Consolidated Financial Statements"
+    ],
+    [
+     "Statement of Management Responsibility for Financial Statements and Management's Report on Internal Control Over Financial Reporting"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm"
+    ]
+   ],
+   "caption_stack": [
+    "Consolidated Financial Statements:",
+    "Consolidated Balance Sheets as of January 3, 2015 and December 28, 2013",
+    "Consolidated Statements of Income for 2014, 2013 and 2012",
+    "Consolidated Statements of Comprehensive Income for 2014, 2013 and 2012",
+    "Consolidated Statements of Shareholders' Equity for 2014, 2013 and 2012",
+    "Consolidated Statements of Cash Flows for 2014, 2013 and 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 731,
+    "end_line": 742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "AVERY DENNISON CORPORATION INDEX TO FINANCIAL STATEMENTS AND FINANCIAL STATEMENT SCHEDULE\nData incorporated by reference from the attached portions of the 2014 Annual Report to Shareholders of Avery Dennison Corporation:",
+   "prose_after": "Except for the Consolidated Financial Statements, Statement of Management Responsibility for Financial Statements and Management's Report on Internal Control Over Financial Reporting and the Report of Independent Registered Public Accounting Firm listed above, and certain information referred to in Items 1, 5, 6, 7, and 7A of this report that is expressly incorporated herein by reference, our 2014 Annual Report to Shareholders is not to be deemed \"filed\" as part of this report.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "S",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Data submitted herewith:",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm on Financial Statement Schedule",
+     "S-2"
+    ],
+    [
+     "Schedule II \u2014 Valuation and Qualifying Accounts and Reserves",
+     "S-3"
+    ],
+    [
+     "Consent of Independent Registered Public Accounting Firm",
+     "S-4"
+    ]
+   ],
+   "caption_stack": [
+    "Data submitted herewith:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 745,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Except for the Consolidated Financial Statements, Statement of Management Responsibility for Financial Statements and Management's Report on Internal Control Over Financial Reporting and the Report of Independent Registered Public Accounting Firm listed above, and certain information referred to in Items 1, 5, 6, 7, and 7A of this report that is expressly incorporated herein by reference, our 2014 Annual Report to Shareholders is not to be deemed \"filed\" as part of this report.",
+   "prose_after": "All other schedules are omitted since the required information is not present or is not present in amounts sufficient to require submission of the schedule, or because the information required is included in the consolidated financial statements and notes thereto.\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM ON FINANCIAL STATEMENT SCHEDULE\nTo the Board of Directors of Avery Dennison Corporation:\nOur audits of the consolidated financial statements and of the effectiveness of internal control over financial reporting referred to in our report dated February 25, 2015 appearing in the 2014 Annual Report to Shareholders of Avery Dennison Corporation (which report and consolidated financial statements are incorporated by reference in this Annual Report on Form 10-K) also included an audit of the financial statement schedule listed in Item 15(a)(2) of this Form 10-K. In our opinion, this financial statement schedule presents fairly, in all material respects, the information set forth therein when read in conjunction with the related consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "S",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance at Beginning of Year",
+     "",
+     "Net Additions Charged to Costs and Expenses",
+     "",
+     "Deductions From Reserves(a)",
+     "",
+     "",
+     "Balance at End of Year",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "21.4",
+     "$",
+     "6.3",
+     "$",
+     "(6.9)",
+     "",
+     "$",
+     "20.8"
+    ],
+    [
+     "Allowance for sales returns",
+     "",
+     "10.2",
+     "",
+     "14.4",
+     "",
+     "(14.9)",
+     "",
+     "",
+     "9.7"
+    ],
+    [
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "31.1",
+     "",
+     "5.1",
+     "",
+     "(14.8)",
+     "",
+     "",
+     "21.4"
+    ],
+    [
+     "Allowance for sales returns",
+     "",
+     "13.7",
+     "",
+     "11.2",
+     "",
+     "(14.7)",
+     "",
+     "",
+     "10.2"
+    ],
+    [
+     "2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "34.0",
+     "",
+     "3.4",
+     "",
+     "(6.3)",
+     "",
+     "",
+     "31.1"
+    ],
+    [
+     "Allowance for sales returns",
+     "",
+     "9.3",
+     "",
+     "14.5",
+     "",
+     "(10.1)",
+     "",
+     "",
+     "13.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "2.1",
+     "Purchase Agreement, dated as of January 29, 2013, by and among CCL Industries, Inc. (\"CCL\"), a corporation organized under the laws of Canada, those subsidiaries of CCL to be designated pursuant to Section 5.8 thereof, Registrant, and those subsidiaries of Registrant listed in Annex A thereof",
+     "2.1",
+     "Current Report on Form 8-K, filed January 30, 2013"
+    ],
+    [
+     "2.2",
+     "Amendment to Purchase Agreement, dated as of July 1, 2013, by and between Registrant and CCL",
+     "2.1",
+     "Current Report on Form 8-K, filed July 1, 2013"
+    ],
+    [
+     "3.1(i)",
+     "Amended and Restated Certificate of Incorporation, as filed on April 28, 2011 with the Office of Delaware Secretary of State",
+     "3.1",
+     "Current Report on Form 8-K, filed April 28, 2011"
+    ],
+    [
+     "3.1(ii)",
+     "Amended and Restated Bylaws, dated as of December 5, 2013",
+     "3.2",
+     "Current Report on Form 8-K, filed December 6, 2013"
+    ],
+    [
+     "4.1",
+     "Indenture, dated as of March 15, 1991, between Registrant and Security Pacific National Bank, as Trustee (the \"1991 Indenture\")",
+     "4.1",
+     "Registration Statement on Form S-3 (File No. 33-39491), filed March 19, 1991"
+    ],
+    [
+     "4.2",
+     "First Supplemental Indenture, dated as of March 16, 1993, between Registrant and BankAmerica National Trust Company, as successor Trustee (the \"Supplemental Indenture\")",
+     "4.4",
+     "Registration Statement on Form S-3 (File No. 33-59642), filed March 17, 1993"
+    ],
+    [
+     "4.3",
+     "Officers' Certificate establishing a series of Securities entitled \"Medium-Term Notes, Series C\" under the 1991 Indenture, as amended by the Supplemental Indenture",
+     "4.1",
+     "Current Report on Form 8-K, filed May 12, 1995"
+    ],
+    [
+     "4.4",
+     "Officers' Certificate establishing a series of Securities entitled \"Medium-Term Notes, Series D\" under the 1991 Indenture, as amended by the Supplemental Indenture",
+     "4.1",
+     "Current Report on Form 8-K, filed December 16, 1996"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 797,
+    "end_line": 823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "CONSENT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nWe hereby consent to the incorporation by reference in the Registration Statements on Form S-3 (File Nos. 333-191228 and 333-169954) and Form S-8 (File Nos. 33-54411, 33-58921, 33-63979, 333-38707, 333-38709, 333-107370, 333-107371, 333-107372, 333-109814, 333-124495, 333-143897, 333-152508, 333-166832, 333-166836, 333-166837, 333-181221, and 333-197631) of Avery Dennison Corporation of our report dated February 25, 2015 relating to the financial statements and the effectiveness of internal control over financial reporting, which appears in the Annual Report to Shareholders, which is incorporated in this Annual Report on Form 10-K. We also consent to the incorporation by reference of our report dated February 25, 2015 relating to the financial statement schedule, which appears in this Form 10-K.\n/s/ PRICEWATERHOUSECOOPERS LLP PricewaterhouseCoopers LLP\nLos Angeles, California February 25, 2015\nAVERY DENNISON CORPORATION EXHIBIT INDEX For the Year Ended January 3, 2015",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "S",
+     "page_number": 4
+    },
+    "after": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "4.5",
+     "Indenture, dated as of July 3, 2001, between Registrant and Chase Manhattan Bank and Trust Company, National Association, as trustee (\"2001 Indenture\")",
+     "4.1",
+     "Registration Statement on Form S-3 (File No. 333-64558), filed July 3, 2001"
+    ],
+    [
+     "4.6",
+     "Officers' Certificate establishing two series of Securities entitled \"4.875% Notes due 2013\" and \"6.000% Notes due 2033\" under the 2001 Indenture",
+     "4.2",
+     "Current Report on Form 8-K, filed January 16, 2003"
+    ],
+    [
+     "4.7",
+     "6.000% Notes Due 2033",
+     "4.4",
+     "Current Report on Form 8-K, filed January 16, 2003"
+    ],
+    [
+     "4.8",
+     "Indenture, dated as of September 25, 2007, among Avery Dennison Office Products Company (\"ADOPC\"), Registrant and The Bank of New York Trust Company, N.A., as Trustee (\"Bank of NY\")",
+     "99.1",
+     "Current Report on Form 8-K, filed October 1, 2007"
+    ],
+    [
+     "4.9",
+     "6.625% Guaranteed Notes due 2017",
+     "99.1",
+     "Current Report on Form 8-K, filed October 1, 2007"
+    ],
+    [
+     "4.10",
+     "Indenture, dated as of November 20, 2007, between Registrant and Bank of NY",
+     "4.2",
+     "Current Report on Form 8-K, filed November 20, 2007"
+    ],
+    [
+     "4.11",
+     "First Supplemental Indenture, dated as of November 20, 2007, between Registrant and Bank of NY",
+     "4.3",
+     "Current Report on Form 8-K, filed November 20, 2007"
+    ],
+    [
+     "4.12",
+     "Second Supplemental Indenture, dated as of April 13, 2010, between Registrant and Bank of NY",
+     "4.2",
+     "Current Report on Form 8-K, filed April 13, 2010"
+    ],
+    [
+     "4.13",
+     "Form of 5.375% Senior Notes due 2020",
+     "4.3",
+     "Current Report on Form 8-K, filed April 13, 2010"
+    ],
+    [
+     "4.14",
+     "Third Supplemental Indenture, dated as of April 8, 2013, between Registrant and Bank of NY",
+     "4.2",
+     "Current Report on Form 8-K, filed April 8, 2013"
+    ],
+    [
+     "4.15",
+     "Form of 3.35% Senior Notes due 2023",
+     "4.3",
+     "Current Report on Form 8-K, filed April 8, 2013"
+    ],
+    [
+     "10.1",
+     "Amended and Restated Credit Agreement, dated as of February 8, 2008, among ADOPC, Registrant, Bank of America, N.A. and Banc of America Securities LLC and JP Morgan Securities Inc (\"ADOPC Credit Agreement\")",
+     "10.1",
+     "Quarterly Report on Form 10-Q, filed August 7, 2008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "roman",
+     "page_number": 1
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "roman",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "10.2",
+     "Second Amendment, dated as of January 23, 2009, to ADOPC Credit Agreement",
+     "99.4",
+     "Current Report on Form 8-K, filed January 27, 2009"
+    ],
+    [
+     "10.3",
+     "Third Amended and Restated Credit Agreement, dated as of October 3, 2014, by and among Registrant, Bank of America, N.A., Citibank, N.A. and JPMorgan Chase Bank, N.A. and the other lenders party thereto",
+     "10.1",
+     "Current Report on Form 8-K, filed October 3, 2014"
+    ],
+    [
+     "10.4*",
+     "Deferred Compensation Plan for Directors",
+     "10.3",
+     "1981 Annual Report on Form 10-K, filed February 29, 1982"
+    ],
+    [
+     "10.5*",
+     "Executive Group Life Insurance Plan",
+     "10.9",
+     "1982 Annual Report on Form 10-K, filed February 25, 1983"
+    ],
+    [
+     "10.6*",
+     "Amended and Restated Supplemental Executive Retirement Plan (\"SERP\")",
+     "10.11.1",
+     "Quarterly Report on Form 10-Q, filed August 12, 2009"
+    ],
+    [
+     "10.7*",
+     "Letter of Grant to D.A. Scarborough under SERP",
+     "10.11.2.1",
+     "Quarterly Report on Form 10-Q, filed August 12, 2009"
+    ],
+    [
+     "10.8*",
+     "Letter Agreement with D.A. Scarborough regarding SERP benefits",
+     "10.11.2.1",
+     "Current Report on Form 8-K, filed December 15, 2010"
+    ],
+    [
+     "10.9*",
+     "Complete Restatement and Amendment of Executive Deferred Compensation Plan",
+     "10.12",
+     "1994 Annual Report on Form 10-K, filed March 30, 1995"
+    ],
+    [
+     "10.10*",
+     "Amended and Restated Retirement Plan for Directors",
+     "10.13.1",
+     "2002 Annual Report on Form 10-K, filed March 28, 2003"
+    ],
+    [
+     "10.11*",
+     "Amended and Restated Director Equity Plan (\"Director Plan\")",
+     "10.15.1",
+     "Current Report on Form 8-K, filed December 11, 2008"
+    ],
+    [
+     "10.12*",
+     "Form of Non-Employee Director Stock Option Agreement under Director Plan",
+     "10.15.1",
+     "2003 Annual Report on Form 10-K, filed March 11, 2004"
+    ],
+    [
+     "10.13*",
+     "Complete Restatement and Amendment of Executive Variable Deferred Compensation Plan (\"EVDCP\")",
+     "10.16",
+     "1994 Annual Report on Form 10-K, filed March 30, 1995"
+    ],
+    [
+     "10.14*",
+     "Amendment No. 1 to EVDCP",
+     "10.16.1",
+     "1999 Annual Report on Form 10-K, filed March 30, 2000"
+    ],
+    [
+     "10.15*",
+     "Complete Restatement and Amendment of Directors Deferred Compensation Plan",
+     "10.17",
+     "1994 Annual Report on Form 10-K, filed March 30, 1995"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 858,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "roman",
+     "page_number": 2
+    },
+    "after": {
+     "line": 881,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "roman",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "10.16*",
+     "Complete Restatement and Amendment of Directors Variable Deferred Compensation Plan (\"DVDCP\")",
+     "10.18",
+     "1994 Annual Report on Form 10-K, filed March 30, 1995"
+    ],
+    [
+     "10.17*",
+     "Amendment No. 1 to DVDCP",
+     "10.18.1",
+     "1999 Annual Report on Form 10-K, filed March 30, 2000"
+    ],
+    [
+     "10.18*",
+     "Amended and Restated 2005 Directors Variable Deferred Compensation Plan",
+     "10.18.2",
+     "Quarterly Report on Form 10-Q, filed May 10, 2011"
+    ],
+    [
+     "10.19*",
+     "Amended and Restated Stock Option and Incentive Plan (\"Equity Plan\")",
+     "A",
+     "2012 Proxy Statement on Schedule 14A, filed March 9, 2012"
+    ],
+    [
+     "10.20*\u2020",
+     "First Amendment to Equity Plan",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "10.21*",
+     "Forms of NQSO Agreement under Equity Plan",
+     "10.19.5",
+     "2007 Annual Report on Form 10-K, filed February 27, 2008"
+    ],
+    [
+     "10.22*",
+     "Forms of Equity Awards under Equity Plan",
+     "10.19.6",
+     "Current Report on Form 8-K, filed April 30, 2008"
+    ],
+    [
+     "10.23*",
+     "Forms of Equity Agreements under Equity Plan",
+     "10.10.19.9",
+     "Current Report on Form 8-K, filed December 11, 2008"
+    ],
+    [
+     "10.24*",
+     "Additional Forms of Equity Agreements under Equity Plan",
+     "10.19.10",
+     "Current Report on Form 8-K/A, filed December 11, 2008"
+    ],
+    [
+     "10.25*",
+     "Senior Executive Annual Incentive Plan",
+     "A",
+     "2014 Proxy Statement on Schedule 14A, filed March 7, 2014"
+    ],
+    [
+     "10.26*\u2020",
+     "Annual Incentive Plan",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "10.27*",
+     "Complete Restatement and Amendment of Executive Deferred Retirement Plan (\"EDRP\")",
+     "10.28",
+     "1994 Annual Report on Form 10-K, filed March 30, 1995"
+    ],
+    [
+     "10.28*",
+     "Amendment No. 1 to EDRP",
+     "10.28.1",
+     "1999 Annual Report on Form 10-K, filed March 30, 2000"
+    ],
+    [
+     "10.29*",
+     "Amendment No. 2 to EDRP",
+     "10.28.2",
+     "2001 Annual Report on Form 10-K, filed March 4, 2002"
+    ],
+    [
+     "10.30*",
+     "Executive Variable Deferred Retirement Plan, amended and restated (\"EVDRP\")",
+     "10.31.5",
+     "2003 Annual Report on Form 10-K, filed March 11, 2004"
+    ],
+    [
+     "10.31*",
+     "2004 EVDRP",
+     "4.1",
+     "Registration Statement on Form S-8 (File No. 333-109814), filed October 20, 2003"
+    ],
+    [
+     "10.32*",
+     "2005 EVDRP, amended and restated",
+     "10.1",
+     "Quarterly Report on Form 10-Q, filed May 7, 2013"
+    ],
+    [
+     "10.33*",
+     "Benefit Restoration Plan, amended and restated (\"BRP\")",
+     "10.32.1",
+     "Current Report on Form 8-K/A, filed December 11, 2008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 911
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 881,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "roman",
+     "page_number": 3
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "roman",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "10.34*",
+     "First Amendment to BRP",
+     "10.32.1",
+     "2010 Annual Report on Form 10-K, filed February 28, 2011"
+    ],
+    [
+     "10.35*",
+     "Amended and Restated Capital Accumulation Plan (\"CAP\")",
+     "10.34",
+     "1999 Annual Report on Form 10-K, filed March 30, 2000"
+    ],
+    [
+     "10.36*",
+     "Amendment No. 1 to CAP",
+     "10.34.2",
+     "1999 Annual Report on Form 10-K, filed March 30, 2000"
+    ],
+    [
+     "10.37*",
+     "Key Executive Change of Control Severance Plan",
+     "10.35",
+     "Quarterly Report on Form 10-Q, filed May 10, 2011"
+    ],
+    [
+     "10.38*",
+     "Executive Severance Plan",
+     "10.36",
+     "Quarterly Report on Form 10-Q, filed May 10, 2011"
+    ],
+    [
+     "10.39*",
+     "Long-Term Incentive Unit Plan",
+     "10.43",
+     "2012 Annual Report on Form 10-K, filed February 27, 2013"
+    ],
+    [
+     "10.40*",
+     "Form of Restricted Stock Unit Agreement",
+     "10.38",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.41*",
+     "Form of Performance Unit Agreement",
+     "10.39",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.42*",
+     "Form of Market-Leveraged Stock Unit Agreement",
+     "10.40",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.43*",
+     "Form of Long-Term Incentive Unit Agreement",
+     "10.41",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.44*",
+     "Form of Performance Long-Term Incentive Unit Agreement",
+     "10.42",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.45*",
+     "Form of Director Restricted Stock Unit Agreement",
+     "10.43",
+     "2013 Annual Report on Form 10-K, filed February 26, 2014"
+    ],
+    [
+     "10.46*\u2020",
+     "Offer Letter to Anne Bramman",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "12\u2020",
+     "Computation of Ratio of Earnings to Fixed Charges",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "13\u2020",
+     "Portions of Annual Report to Shareholders for fiscal year ended January 3, 2015",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "21\u2020",
+     "List of Subsidiaries",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "23\u2020",
+     "Consent of PricewaterhouseCoopers LLP, Independent Registered Public Accounting Firm (see page S-4)",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "24\u2020",
+     "Power of Attorney (see Signatures \u2014 Power of Attorney)",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "roman",
+     "page_number": 4
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "roman",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Name",
+     "Originally Filed as Exhibit No.",
+     "Filing(1)"
+    ],
+    [
+     "31.1\u2020",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "31.2\u2020",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "32.1\u2020",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "32.2\u2020",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101INS",
+     "XBRL Instance Filing",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101SCH",
+     "XBRL Extension Schema Filing",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101CAL",
+     "XBRL Extension Calculation Linkbase Filing",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101LAB",
+     "XBRL Extension Label Linkbase Filing",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101PRE",
+     "XBRL Extension Presentation Linkbase Filing",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "101DEF",
+     "XBRL Extension Definition Linkbase Filing",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 965
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Unless otherwise noted, the File Number for all filings is File No. 1-7685.\n* Management contract or compensatory plan or arrangement required to be filed as an exhibit to this Form 10-K pursuant to Item 15(b) of Form 10-K.\n\u2020\nFiled herewith.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "roman",
+     "page_number": 5
+    },
+    "after": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

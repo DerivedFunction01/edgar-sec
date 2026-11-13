@@ -1,0 +1,3815 @@
+{
+ "accession": "0001558370-20-013247",
+ "cik": "0001621443",
+ "form": "10-Q",
+ "filing_date": "2020-11-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "zyne-20200930x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware (State or other jurisdiction of incorporation or organization)",
+     "26-0389433 (I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "80 W. Lancaster Avenue, Suite 300 Devon, PA (Address of principal executive offices)",
+     "19333 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2020\nOR\n\u25fb TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-37526\nZynerba Pharmaceuticals, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(484) 581-7505 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class:",
+     "Trading Symbol",
+     "Name of each exchange on which registered:"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     "ZYNE",
+     "The Nasdaq Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(484) 581-7505 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes \u25fb No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes \u25fb No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I\u2014FINANCIAL INFORMATION",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Consolidated Financial Statements (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of September 30, 2020 and December 31, 2019 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the Three and Nine Months Ended September 30, 2020 and 2019 (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Equity for the Nine Months Ended September 30, 2020 and 2019 (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Nine Months Ended September 30, 2020 and 2019 (Unaudited)",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited Consolidated Financial Statements",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II\u2014OTHER INFORMATION",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "31"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 57,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer \u25fb      Accelerated filer [X]\nSmaller reporting company [X]\nNon-accelerated filer \u25fb    Emerging growth company [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u25fb No [X]\nAs of November 5, 2020, the registrant had 29,439,175 shares of Common Stock, $0.001 par value per share, outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nStatements made in this Quarterly Report that are not statements of historical or current facts, such as those under the heading \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d are \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. Forward-looking statements discuss our current expectations and projections relating to our financial condition, results of operations, plans, objectives, future performance and business. These statements may be preceded by, followed by or include the words \u201caim,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cforecast,\u201d \u201cintend,\u201d \u201coutlook,\u201d \u201cplan,\u201d \u201cpotential,\u201d \u201cproject,\u201d \u201cprojection,\u201d \u201cseek,\u201d \u201cmay,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccan,\u201d \u201ccan have,\u201d \u201clikely,\u201d the negatives thereof and other words and terms of similar meaning.\nForward-looking statements are inherently subject to risks, uncertainties and assumptions; they are not guarantees of performance. You should not place undue reliance on these statements. We have based these forward-looking statements on our current expectations and projections about future events. Although we believe that our assumptions made in connection with the forward-looking statements are reasonable, we cannot assure you that the assumptions and expectations will prove to be correct.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "64,311,205",
+     "$",
+     "70,063,242"
+    ],
+    [
+     "Incentive and tax receivables",
+     "",
+     "6,533,079",
+     "",
+     "14,613,969"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "3,913,112",
+     "",
+     "2,378,812"
+    ],
+    [
+     "Total current assets",
+     "",
+     "74,757,396",
+     "",
+     "87,056,023"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "596,512",
+     "",
+     "362,724"
+    ],
+    [
+     "Incentive and tax receivables",
+     "",
+     "1,684,616",
+     "",
+     "\u2014"
+    ],
+    [
+     "Right-of-use assets",
+     "",
+     "166,889",
+     "",
+     "345,849"
+    ],
+    [
+     "Total assets",
+     "$",
+     "77,205,413",
+     "$",
+     "87,764,596"
+    ],
+    [
+     "Liabilities and Stockholders' Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "3,404,129",
+     "$",
+     "4,740,981"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "6,987,653",
+     "",
+     "7,073,506"
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "174,073",
+     "",
+     "243,677"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "10,565,855",
+     "",
+     "12,058,164"
+    ],
+    [
+     "Lease liabilities, long-term",
+     "",
+     "\u2014",
+     "",
+     "109,689"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "10,565,855",
+     "",
+     "12,167,853"
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value; 10,000,000 shares authorized; no shares issued or outstanding",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $0.001 par value; 200,000,000 shares authorized; 29,449,175 shares issued and outstanding at September 30, 2020 and 23,211,391 shares issued and outstanding at December 31, 2019",
+     "",
+     "29,449",
+     "",
+     "23,211"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "259,164,854",
+     "",
+     "226,409,156"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(192,554,745)",
+     "",
+     "(150,835,624)"
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "66,639,558",
+     "",
+     "75,596,743"
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "77,205,413",
+     "$",
+     "87,764,596"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 142,
+    "end_line": 183
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf the extent to which health epidemics and other outbreaks of communicable diseases, including the ongoing COVID-19 pandemic, could disrupt our operations or materially and adversely affect our business and financial conditions; and\n\u25cf the other risks, uncertainties and factors discussed in our Annual Report on Form 10-K for the fiscal year ended December 31, 2019, or our 2019 Annual Report and our Quarterly Report on Form 10-Q for the quarters ended June 30, 2020 and March 31, 2020, or our 2020 Quarterly Reports, under the caption \u201cItem 1A. Risk Factors\u201d.\nIn light of these risks and uncertainties, expected results or other anticipated events or circumstances discussed in this Form 10-Q (including the exhibits hereto) might not occur. We undertake no obligation, and specifically decline any obligation, to publicly update or revise any forward-looking statements, even if experience or future developments make it clear that projected results expressed or implied in such statements will not be realized, except as may be required by law.\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Consolidated Financial Statements (Unaudited)\nZYNERBA PHARMACEUTICALS, INC. CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 140,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 184,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "5,805,948",
+     "$",
+     "(1,604,399)",
+     "$",
+     "30,038,582",
+     "$",
+     "12,926,096"
+    ],
+    [
+     "General and administrative",
+     "",
+     "3,425,831",
+     "",
+     "3,530,617",
+     "",
+     "11,834,434",
+     "",
+     "9,977,550"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "9,231,779",
+     "",
+     "1,926,218",
+     "",
+     "41,873,016",
+     "",
+     "22,903,646"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(9,231,779)",
+     "",
+     "(1,926,218)",
+     "",
+     "(41,873,016)",
+     "",
+     "(22,903,646)"
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "10,781",
+     "",
+     "436,846",
+     "",
+     "239,066",
+     "",
+     "1,226,998"
+    ],
+    [
+     "Foreign exchange gain (loss)",
+     "",
+     "172,467",
+     "",
+     "(457,018)",
+     "",
+     "(85,171)",
+     "",
+     "(551,944)"
+    ],
+    [
+     "Total other income",
+     "",
+     "183,248",
+     "",
+     "(20,172)",
+     "",
+     "153,895",
+     "",
+     "675,054"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,048,531)",
+     "$",
+     "(1,946,390)",
+     "$",
+     "(41,719,121)",
+     "$",
+     "(22,228,592)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share basic and diluted",
+     "$",
+     "(0.31)",
+     "$",
+     "(0.08)",
+     "$",
+     "(1.59)",
+     "$",
+     "(1.03)"
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "29,243,375",
+     "",
+     "23,186,410",
+     "",
+     "26,258,626",
+     "",
+     "21,598,764"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 192,
+    "end_line": 218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 190,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 219,
+     "token": "REPEATING_FOOTER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "stockholders'",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "paid-in capital",
+     "",
+     "deficit",
+     "",
+     "equity",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "23,211,391",
+     "$",
+     "23,211",
+     "$",
+     "226,409,156",
+     "$",
+     "(150,835,624)",
+     "$",
+     "75,596,743"
+    ],
+    [
+     "Issuance of common stock, net of issuance costs",
+     "356,000",
+     "",
+     "356",
+     "",
+     "1,581,694",
+     "",
+     "\u2014",
+     "",
+     "1,582,050"
+    ],
+    [
+     "Issuance of restricted stock",
+     "5,000",
+     "",
+     "5",
+     "",
+     "(5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,323,352",
+     "",
+     "\u2014",
+     "",
+     "1,323,352"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(12,337,829)",
+     "",
+     "(12,337,829)"
+    ],
+    [
+     "Balance at March 31, 2020",
+     "23,572,391",
+     "",
+     "23,572",
+     "",
+     "229,314,197",
+     "",
+     "(163,173,453)",
+     "",
+     "66,164,316"
+    ],
+    [
+     "Issuance of common stock, net of issuance costs",
+     "5,682,784",
+     "",
+     "5,683",
+     "",
+     "27,240,793",
+     "",
+     "\u2014",
+     "",
+     "27,246,476"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,347,433",
+     "",
+     "\u2014",
+     "",
+     "1,347,433"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(20,332,761)",
+     "",
+     "(20,332,761)"
+    ],
+    [
+     "Balance at June 30, 2020",
+     "29,255,175",
+     "",
+     "29,255",
+     "",
+     "257,902,423",
+     "",
+     "(183,506,214)",
+     "",
+     "74,425,464"
+    ],
+    [
+     "Issuance of restricted stock",
+     "194,000",
+     "",
+     "194",
+     "",
+     "(194)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,262,625",
+     "",
+     "\u2014",
+     "",
+     "1,262,625"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,048,531)",
+     "",
+     "(9,048,531)"
+    ],
+    [
+     "Balance at September 30, 2020",
+     "29,449,175",
+     "$",
+     "29,449",
+     "$",
+     "259,164,854",
+     "$",
+     "(192,554,745)",
+     "$",
+     "66,639,558"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30, 2020",
+    "Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 227,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 225,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 285,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "stockholders'",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "paid-in capital",
+     "",
+     "deficit",
+     "",
+     "equity",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "17,626,873",
+     "$",
+     "17,627",
+     "$",
+     "175,476,075",
+     "$",
+     "(117,892,041)",
+     "$",
+     "57,601,661"
+    ],
+    [
+     "Issuance of common stock, net of issuance costs",
+     "3,439,523",
+     "",
+     "3,439",
+     "",
+     "18,076,359",
+     "",
+     "\u2014",
+     "",
+     "18,079,798"
+    ],
+    [
+     "Issuance of restricted stock",
+     "8,600",
+     "",
+     "9",
+     "",
+     "(9)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,496,292",
+     "",
+     "\u2014",
+     "",
+     "1,496,292"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,147,017)",
+     "",
+     "(9,147,017)"
+    ],
+    [
+     "Balance at March 31, 2019",
+     "21,074,996",
+     "",
+     "21,075",
+     "",
+     "195,048,717",
+     "",
+     "(127,039,058)",
+     "",
+     "68,030,734"
+    ],
+    [
+     "Issuance of common stock, net of issuance costs",
+     "2,082,031",
+     "",
+     "2,082",
+     "",
+     "27,014,371",
+     "",
+     "\u2014",
+     "",
+     "27,016,453"
+    ],
+    [
+     "Exercise of stock options",
+     "40,983",
+     "",
+     "41",
+     "",
+     "189,659",
+     "",
+     "\u2014",
+     "",
+     "189,700"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,481,705",
+     "",
+     "\u2014",
+     "",
+     "1,481,705"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,135,185)",
+     "",
+     "(11,135,185)"
+    ],
+    [
+     "Balance at June 30, 2019",
+     "23,198,010",
+     "",
+     "23,198",
+     "",
+     "223,734,452",
+     "",
+     "(138,174,243)",
+     "",
+     "85,583,407"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,376,225",
+     "",
+     "\u2014",
+     "",
+     "1,376,225"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,946,390)",
+     "",
+     "(1,946,390)"
+    ],
+    [
+     "Balance at September 30, 2019",
+     "23,198,010",
+     "$",
+     "23,198",
+     "$",
+     "225,110,677",
+     "$",
+     "(140,120,633)",
+     "$",
+     "85,013,242"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30, 2019",
+    "Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 256,
+    "end_line": 284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 225,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 285,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(41,719,121)",
+     "$",
+     "(22,228,592)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "147,253",
+     "",
+     "98,207"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "3,933,410",
+     "",
+     "4,354,222"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Incentive and tax receivables",
+     "",
+     "6,396,274",
+     "",
+     "(10,002,361)"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(1,727,805)",
+     "",
+     "1,046,133"
+    ],
+    [
+     "Right-of-use assets",
+     "",
+     "(333)",
+     "",
+     "(5,723)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(1,270,587)",
+     "",
+     "(1,163,454)"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(86,366)",
+     "",
+     "548,454"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(34,327,275)",
+     "",
+     "(27,353,114)"
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(383,223)",
+     "",
+     "(81,051)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(383,223)",
+     "",
+     "(81,051)"
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the issuance of common stock",
+     "",
+     "29,766,385",
+     "",
+     "46,813,364"
+    ],
+    [
+     "Payment of financing fees and expenses",
+     "",
+     "(807,924)",
+     "",
+     "(1,785,142)"
+    ],
+    [
+     "Proceeds from the exercise of stock options",
+     "",
+     "\u2014",
+     "",
+     "189,700"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "28,958,461",
+     "",
+     "45,217,922"
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(5,752,037)",
+     "",
+     "17,783,757"
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "70,063,242",
+     "",
+     "59,763,773"
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "64,311,205",
+     "$",
+     "77,547,530"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred financing costs included in accounts payable and accrued expenses at end of period",
+     "$",
+     "\u2014",
+     "$",
+     "62,357"
+    ],
+    [
+     "Property and equipment acquired but unpaid at end of period",
+     "$",
+     "13,418",
+     "$",
+     "15,594"
+    ],
+    [
+     "Reclassification of deferred rent liability to right-of-use assets upon adoption of ASC 842",
+     "$",
+     "\u2014",
+     "$",
+     "12,824"
+    ],
+    [
+     "Right-of-use assets and lease liability recorded upon adoption of ASC 842",
+     "$",
+     "\u2014",
+     "$",
+     "325,683"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 293,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to unaudited consolidated financial statements\nZYNERBA PHARMACEUTICALS, NC.\nNOTES TO UNAUDITED CONSOLIDATED FINANCIAL STATEMENTS\n(1) Nature of Business and Liquidity\nZynerba Pharmaceuticals, Inc., together with its subsidiary, Zynerba Pharmaceuticals Pty Ltd (\u201cZynerba\u201d, the \u201cCompany\u201d, \u201cwe\u201d), is a clinical stage specialty pharmaceutical company focused on the development of pharmaceutically-produced transdermal cannabinoid therapies for rare and near-rare neuropsychiatric disorders, including Fragile X syndrome, autism spectrum disorder, 22q11.2 deletion syndrome, and individual syndromes from a heterogeneous group of rare and ultra-rare epilepsies known as developmental and epileptic encephalopathies.\nThe Company has incurred losses and negative cash flows from operations since inception and has an accumulated deficit of $192.6 million as of September 30, 2020. The Company anticipates incurring additional losses until such time, if ever, that it can generate significant revenue from its product candidates currently in development. The Company's primary source of liquidity has been the issuance of equity securities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 291,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Research and development incentive (non-AOF) for the period 1/1/18 - 12/31/18",
+     "$",
+     "3,178,601",
+     "$",
+     "3,126,750"
+    ],
+    [
+     "Research and development incentive (non-AOF) for the period 1/1/19 - 12/31/19",
+     "",
+     "2,961,731",
+     "",
+     "2,913,417"
+    ],
+    [
+     "Research and development incentive (AOF) for the period 1/1/18 - 12/31/19",
+     "",
+     "8,393,335",
+     "",
+     "8,256,416"
+    ],
+    [
+     "Goods and services tax",
+     "",
+     "392,747",
+     "",
+     "317,386"
+    ],
+    [
+     "Total incentive and tax receivables before reserve for AOF",
+     "$",
+     "14,926,414",
+     "$",
+     "14,613,969"
+    ],
+    [
+     "Reserve for research and development incentive (AOF) for the period 1/1/18 - 12/31/19",
+     "",
+     "(8,393,335)",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total incentive and tax receivables - current assets",
+     "$",
+     "6,533,079",
+     "$",
+     "14,613,969"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "The Company evaluates its eligibility under tax incentive programs as of each balance sheet date based on the most current and relevant data available. If the Company is deemed to be ineligible or unable to receive the Australian research and development tax credit, or the Australian government significantly reduces or eliminates the tax credit, the actual cash refund the Company receives may materially differ from its estimates. In June 2020, the ATO informed the Company that it may not qualify for the AOF program based on their interpretation of certain eligibility requirements. Although the Company continues to believe that it complies with the relevant conditions of the AOF program that were in place when the Company received its original approval from AusIndustry, the Company determined it was no longer probable that the AOF claim would be received. As a result, during the three months ended June 30, 2020, the Company recorded a full reserve against the AOF receivable.\nIn addition, the Subsidiary incurs Goods and Services Tax (\u201cGST\u201d) on services provided by Australian vendors. As an Australian entity, the Subsidiary is entitled to a refund of the GST paid. The Company\u2019s estimate of the amount of cash refund it expects to receive related to GST incurred is included in \u201cIncentive and tax receivables\u201d in the accompanying consolidated balance sheets. As of September 30, 2020, incentive and tax receivables included $0.4 million for refundable GST on expenses incurred with Australian vendors during the three months ended September 30, 2020.\nCurrent incentive and tax receivables consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "prose_after": "As of September 30, 2020, the Company\u2019s estimate of the amount of cash refund it expects to receive in 2020 for 2019 and 2018 eligible spending as part of this incentive program was $6.1 million and was recorded as a current asset. The Company\u2019s estimate of the amount of cash refund it expects to receive in 2021 for 2020 eligible spending through September 30, 2020 was $1.7 million and was recorded as a non-current asset.\nd. Research and Development\nResearch and development costs are expensed as incurred and are primarily comprised of external research and development expenses incurred under arrangements with third parties, such as contract research organizations, contract manufacturing organizations, consultants and employee-related expenses including salaries and benefits. At the end of each reporting period, the Company compares the payments made to each service provider to the estimated progress towards completion of the related project. Factors that the Company considers in preparing these estimates include the number of patients enrolled in studies, milestones achieved and other criteria related to the efforts of its vendors. These estimates will be subject to change as additional information becomes available. Depending on the timing of payments to vendors and estimated services provided, the Company will record net prepaid or accrued expenses related to these costs. Research and development expenses are recorded net of expected refunds of eligible research and development costs paid pursuant to the Australian research and development tax incentive program and GST incurred on services provided by Australian vendors.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Research and development expenses - before R&D incentive",
+     "$",
+     "6,177,830",
+     "$",
+     "7,381,241",
+     "$",
+     "23,526,911",
+     "$",
+     "23,380,269"
+    ],
+    [
+     "Research and development incentive (non-AOF)",
+     "",
+     "(371,882)",
+     "",
+     "(715,631)",
+     "",
+     "(1,596,024)",
+     "",
+     "(2,184,164)"
+    ],
+    [
+     "Research and development expenses (before impact of AOF)",
+     "",
+     "5,805,948",
+     "",
+     "6,665,610",
+     "",
+     "21,930,887",
+     "",
+     "21,196,105"
+    ],
+    [
+     "AOF - cumulative change in estimate for the period 1/1/18 through 12/31/19",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)"
+    ],
+    [
+     "Amounts reserved against AOF refund",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,107,695",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "5,805,948",
+     "$",
+     "(1,604,399)",
+     "$",
+     "30,038,582",
+     "$",
+     "12,926,096"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 414,
+    "end_line": 429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "Research and development costs are expensed as incurred and are primarily comprised of external research and development expenses incurred under arrangements with third parties, such as contract research organizations, contract manufacturing organizations, consultants and employee-related expenses including salaries and benefits. At the end of each reporting period, the Company compares the payments made to each service provider to the estimated progress towards completion of the related project. Factors that the Company considers in preparing these estimates include the number of patients enrolled in studies, milestones achieved and other criteria related to the efforts of its vendors. These estimates will be subject to change as additional information becomes available. Depending on the timing of payments to vendors and estimated services provided, the Company will record net prepaid or accrued expenses related to these costs. Research and development expenses are recorded net of expected refunds of eligible research and development costs paid pursuant to the Australian research and development tax incentive program and GST incurred on services provided by Australian vendors.\nThe following table summarizes research and development expenses for the three and nine months ended September 30, 2020 and 2019:",
+   "prose_after": "e. Net Loss Per Share\nBasic net loss per share is determined using the weighted average number of shares of common stock outstanding during each period. Diluted net income per share includes the effect, if any, from the potential exercise or conversion of securities, such as restricted stock and stock options, which would result in the issuance of incremental shares of common stock. Basic and dilutive computations of net loss per share are the same in periods in which a net loss exists as the dilutive effects of restricted stock and stock options would be anti-dilutive.\nThe following potentially dilutive securities outstanding as of September 30, 2020 and 2019 have been excluded from the computation of diluted weighted average shares outstanding, as their effects on net loss per share for the periods presented would be anti-dilutive:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Stock options",
+     "4,710,201",
+     "3,990,623"
+    ],
+    [
+     "Unvested restricted stock",
+     "205,800",
+     "11,600"
+    ],
+    [
+     "",
+     "4,916,001",
+     "4,002,223"
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "e. Net Loss Per Share\nBasic net loss per share is determined using the weighted average number of shares of common stock outstanding during each period. Diluted net income per share includes the effect, if any, from the potential exercise or conversion of securities, such as restricted stock and stock options, which would result in the issuance of incremental shares of common stock. Basic and dilutive computations of net loss per share are the same in periods in which a net loss exists as the dilutive effects of restricted stock and stock options would be anti-dilutive.\nThe following potentially dilutive securities outstanding as of September 30, 2020 and 2019 have been excluded from the computation of diluted weighted average shares outstanding, as their effects on net loss per share for the periods presented would be anti-dilutive:",
+   "prose_after": "f. Recently Adopted Accounting Pronouncements\nIn 2016, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update (\u201cASU\u201d) No. 2016-02, Leases (Topic 842), Accounting Standards Codification 842 (\u201cASC 842\u201d), which amends a number of aspects of lease accounting and requires entities to recognize right-of-use assets and lease liabilities on the balance sheet for leases with lease terms of more than 12 months. ASC 842 became effective on January 1, 2019. In July 2018, the FASB issued ASU No. 2018-11, Leases (Topic 842): Targeted Improvements (\u201cASU 2018-11\u201d), which offered a transition option to entities adopting ASC 842. Under ASU 2018-11, entities could elect to apply ASC 842 using a modified-retrospective adoption approach resulting in a cumulative effect adjustment, if any, to retained earnings at the beginning of the year in which the new lease standard is adopted, rather than adjustments to the earliest comparative period presented in their financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurement",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying amount",
+     "",
+     "as of September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "as of September 30, 2020",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Cash equivalents (money market accounts)",
+     "$",
+     "64,013,545",
+     "$",
+     "64,013,545",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "$",
+     "64,013,545",
+     "$",
+     "64,013,545",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurement"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 470,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "Codification 820 (\u201cASC 820\u201d), Fair Value Measurements and Disclosures. ASC 820 defines fair value as the price that would be received to sell an asset or paid to transfer a liability (the exit price) in an orderly transaction between market participants at the measurement date. The guidance in ASC 820 outlines a valuation framework and creates a fair value hierarchy that serves to increase the consistency and comparability of fair value measurements and the related disclosures. In determining fair value, the Company maximizes the use of quoted prices and observable inputs. Observable inputs are inputs that market participants would use in pricing the asset or liability based on market data obtained from independent sources. The fair value hierarchy is broken down into three levels based on the source of inputs as follows:\nLevel 1 \u2014 Valuations based on unadjusted quoted prices in active markets for identical assets or liabilities.\nLevel 2 \u2014 Valuations based on observable inputs and quoted prices in active markets for similar assets and liabilities.\nLevel 3 \u2014 Valuations based on unobservable inputs and models that are supported by little or no market activity.\nIn accordance with the fair value hierarchy described above, the following table sets forth the Company's financial assets measured at fair value on a recurring basis as of September 30, 2020 and December 31, 2019:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurement",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying amount",
+     "",
+     "as of December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "as of December 31, 2019",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Cash equivalents (money market accounts)",
+     "$",
+     "69,686,350",
+     "$",
+     "69,686,350",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "$",
+     "69,686,350",
+     "$",
+     "69,686,350",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurement"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 483,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(4) Prepaid Expenses and Other Current Assets\nPrepaid expenses and other current assets consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Prepaid development expenses",
+     "$",
+     "1,332,887",
+     "$",
+     "957,814"
+    ],
+    [
+     "Prepaid insurance",
+     "",
+     "2,312,693",
+     "",
+     "841,858"
+    ],
+    [
+     "Deferred financing costs",
+     "",
+     "\u2014",
+     "",
+     "193,505"
+    ],
+    [
+     "Other current assets",
+     "",
+     "267,532",
+     "",
+     "385,635"
+    ],
+    [
+     "Total prepaid expenses and other current assets",
+     "$",
+     "3,913,112",
+     "$",
+     "2,378,812"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 513
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "(4) Prepaid Expenses and Other Current Assets\nPrepaid expenses and other current assets consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "prose_after": "(5) Property and Equipment\nProperty and equipment consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "useful life",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "(in years)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Equipment",
+     "2-5",
+     "$",
+     "674,234",
+     "$",
+     "263,829"
+    ],
+    [
+     "Computer equipment",
+     "3-5",
+     "",
+     "30,319",
+     "",
+     "30,319"
+    ],
+    [
+     "Furniture and fixtures",
+     "3-5",
+     "",
+     "311,355",
+     "",
+     "311,355"
+    ],
+    [
+     "Leasehold improvements",
+     "various",
+     "",
+     "68,881",
+     "",
+     "68,881"
+    ],
+    [
+     "Construction in process",
+     "",
+     "",
+     "49,409",
+     "",
+     "78,773"
+    ],
+    [
+     "Total cost",
+     "",
+     "",
+     "1,134,198",
+     "",
+     "753,157"
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "",
+     "(537,686)",
+     "",
+     "(390,433)"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "$",
+     "596,512",
+     "$",
+     "362,724"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Property and Equipment\nProperty and equipment consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "prose_after": "Depreciation expense was $57,790 and $36,027 for the three months ended September 30, 2020 and 2019, respectively, and $147,253 and $98,207 for the nine months ended September 30, 2020 and 2019, respectively.\n(6) Accrued Expenses\nAccrued expenses consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "$",
+     "1,892,084",
+     "$",
+     "2,340,533"
+    ],
+    [
+     "Accrued research and development",
+     "",
+     "4,642,490",
+     "",
+     "4,343,322"
+    ],
+    [
+     "Other",
+     "",
+     "453,079",
+     "",
+     "389,651"
+    ],
+    [
+     "Total accrued expenses",
+     "$",
+     "6,987,653",
+     "$",
+     "7,073,506"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 544,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "Depreciation expense was $57,790 and $36,027 for the three months ended September 30, 2020 and 2019, respectively, and $147,253 and $98,207 for the nine months ended September 30, 2020 and 2019, respectively.\n(6) Accrued Expenses\nAccrued expenses consisted of the following as of September 30, 2020 and December 31, 2019:",
+   "prose_after": "(7) Common Stock\nIn August 2019, the Company entered into the 2019 Sales Agreement with the Agents pursuant to which the Company may sell, from time to time, up to $75.0 million of its common stock. In 2019, the Company sold and issued 13,381 shares of its common stock in the open market at a weighted-average selling price of $7.00 per share, for gross and net proceeds of $0.1 million. In the first quarter of 2020, the Company sold and issued 356,000 shares of its common stock in the open market at a weighted-average selling price of $5.10 per share, for gross proceeds of $1.8 million and net proceeds, after deducting commissions and offering expenses, of $1.6 million. In the second quarter of 2020, the Company sold and issued 5,682,784 shares of its common stock in the open market at a weighted-average selling price of $4.92 per share, for gross proceeds of $27.9 million and net proceeds, after deducting commissions and offering expenses, of $27.2 million. The Company did not sell and issue any shares of its common stock pursuant to the 2019 Sales Agreement during the third quarter of 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stock Option Grants",
+     "",
+     "",
+     "",
+     "Restricted stock awards",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "",
+     "2019"
+    ],
+    [
+     "Research and development",
+     "$",
+     "1,548,971",
+     "$",
+     "1,893,441",
+     "$",
+     "41,314",
+     "$",
+     "22,137",
+     "$",
+     "1,590,285",
+     "$",
+     "1,915,578"
+    ],
+    [
+     "General and administrative",
+     "",
+     "2,331,520",
+     "",
+     "2,438,644",
+     "",
+     "11,605",
+     "",
+     "\u2014",
+     "",
+     "2,343,125",
+     "",
+     "2,438,644"
+    ],
+    [
+     "",
+     "$",
+     "3,880,491",
+     "$",
+     "4,332,085",
+     "$",
+     "52,919",
+     "$",
+     "22,137",
+     "$",
+     "3,933,410",
+     "$",
+     "4,354,222"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 591
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "Stock-based compensation expense for these performance-based grants are recorded when management estimates that the vesting of these shares is probable based on the status of the Company\u2019s research and development programs and other relevant factors. For the nine months ended September 30, 2020, none of the performance-based metrics were deemed probable of achievement. Any change in these estimates will result in a cumulative adjustment in the period in which the estimate is changed, so that as of the end of a period, the cumulative compensation expense recognized for an award or grant equals the amount that would be recognized on a straight-line basis as if the current estimates had been utilized since the beginning of the service period. As of September 30, 2020, the aggregate estimated grant date fair values of options and restricted stock awards for which the satisfaction of the related-performance conditions have not been deemed probable were $663,484 and $24,850, respectively.\nIn September 2020, the Company granted 194,000 restricted stock awards that contain both performance-based and service-based conditions. These awards vest on the earlier of: (a) meeting the performance condition or (b) service provided for one-year from the grant date. Awards with both performance and service conditions are being expensed over the service period, with an acceleration of the remaining compensation expense, if the performance-based criteria is met before the end of the service condition.\nFor the nine months ended September 30, 2020 and 2019, the Company recorded stock-based compensation expense related to its stock option grants and restricted stock awards, as follows:",
+   "prose_after": "The following table summarizes the stock option activity for the nine months ended September 30, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Weighted-",
+     "",
+     "Weighted-",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "Average",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "Exercise",
+     "",
+     "Contractual",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "",
+     "of Shares",
+     "Price",
+     "",
+     "Life (in Years)",
+     "Value",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2019",
+     "3,988,716",
+     "$",
+     "10.83",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "840,480",
+     "",
+     "5.09",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(118,995)",
+     "",
+     "12.90",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of September 30, 2020",
+     "4,710,201",
+     "",
+     "9.75",
+     "7.01",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable as of September 30, 2020",
+     "2,943,333",
+     "",
+     "11.47",
+     "6.06",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested and expected to vest as of September 30, 2020",
+     "4,626,921",
+     "$",
+     "9.72",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 594,
+    "end_line": 611
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "The following table summarizes the stock option activity for the nine months ended September 30, 2020:",
+   "prose_after": "The weighted-average grant date fair values of options granted during the nine months ended September 30, 2020 and 2019 were $3.58 and $4.19, respectively.\nThe fair values of stock options granted were calculated using the Black-Scholes option pricing model with the following weighted-average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Weighted-average risk-free interest rate",
+     "1.27%",
+     "2.38%"
+    ],
+    [
+     "Expected term of options (in years)",
+     "6.18",
+     "6.16"
+    ],
+    [
+     "Expected stock price volatility",
+     "82.00%",
+     "80.00%"
+    ],
+    [
+     "Expected dividend yield",
+     "0%",
+     "0%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 626
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "The weighted-average grant date fair values of options granted during the nine months ended September 30, 2020 and 2019 were $3.58 and $4.19, respectively.\nThe fair values of stock options granted were calculated using the Black-Scholes option pricing model with the following weighted-average assumptions:",
+   "prose_after": "As of September 30, 2020, excluding performance-based stock options that have not been deemed probable, there was $6.5 million of unrecognized stock-based compensation expense related to stock options, which is expected to be recognized over a weighted-average period of 2.25 years.\nThe following table summarizes the restricted stock award activity under the 2014 Plan for the nine months ended September 30, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Unvested as of December 31, 2019",
+     "8,600",
+     "$",
+     "4.42"
+    ],
+    [
+     "Granted",
+     "199,000",
+     "",
+     "3.58"
+    ],
+    [
+     "Vested",
+     "(1,800)",
+     "",
+     "3.65"
+    ],
+    [
+     "Unvested as of September 30, 2020",
+     "205,800",
+     "$",
+     "3.62"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average",
+    "Grant Date"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "As of September 30, 2020, excluding performance-based stock options that have not been deemed probable, there was $6.5 million of unrecognized stock-based compensation expense related to stock options, which is expected to be recognized over a weighted-average period of 2.25 years.\nThe following table summarizes the restricted stock award activity under the 2014 Plan for the nine months ended September 30, 2020:",
+   "prose_after": "As of September 30, 2020, excluding performance-based restricted stock awards that have not been deemed probable, there was $667,385 of unrecognized stock-based compensation expense related to unvested restricted stock awards, which is expected to be recognized over a weighted-average period of 0.95 years. The Company expects that all 200,800 of the unvested, non-performance based, restricted stock awards will vest.\n(9) Operating Lease Obligations\nThe Company adopted ASC 842 prospectively using the modified-retrospective method and elected the package of transition practical expedients that does not require reassessment of: (1) whether any existing or expired contracts are or contain leases, (2) lease classification and (3) initial direct costs. In addition, the Company has elected other available practical expedients to not separate lease and nonlease components, which consist principally of common area maintenance charges, and to exclude leases with an initial term of 12 months or less.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "Year ended:",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "December 31, 2020",
+     "$",
+     "66,903",
+     "$",
+     "259,864"
+    ],
+    [
+     "December 31, 2021",
+     "",
+     "111,506",
+     "",
+     "111,506"
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "178,409",
+     "",
+     "371,370"
+    ],
+    [
+     "Less: imputed lease interest",
+     "",
+     "(4,336)",
+     "",
+     "(18,004)"
+    ],
+    [
+     "Total lease liabilities",
+     "$",
+     "174,073",
+     "$",
+     "353,366"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 663,
+    "end_line": 676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "The Company leases its headquarters where it occupies 10,877 square feet of office space. On November 11, 2019, the Company extended its original five-year lease for one additional year until May 31, 2021. The Company\u2019s lease contains variable lease costs that do not depend on a rate or index and consist primarily of common area maintenance, taxes, and insurance charges. As the implicit rate was not readily determinable for the Company\u2019s lease, the Company used an estimated incremental borrowing rate, or discount rate, to determine the initial present value of the lease payments. The discount rate for the lease was calculated using a synthetic credit rating model.\nAs of January 1, 2019, the Company recognized a lease liability of $325,683 and a right-of-use asset of $312,859, which was recorded net of a pre-existing deferred rent liability of $12,824. As of November 11, 2019, the effective date of the lease modification, the Company remeasured the lease liability for the remaining portion of the lease and adjusted the lease liability to $392,822 and right-of-use assets to $386,609, which was recorded net of a deferred rent liability of $6,213. As of September 30, 2020, the Company\u2019s right-of-use asset, net of amortization, was $166,889.\nOther operating lease information as of September 30, 2020:\nWeighted-average remaining lease term - operating leases 0.7 years Weighted-average discount rate - operating leases 6.6 %\nThe following is a maturity analysis of the annual undiscounted cash flows of the operating lease liabilities as of September 30, 2020:",
+   "prose_after": "Lease expense for the nine months ended September 30, 2020 and 2019 was comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "lease_maturity",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "2019"
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "192,628",
+     "$",
+     "178,773"
+    ],
+    [
+     "Variable lease expense",
+     "",
+     "44,023",
+     "",
+     "44,023"
+    ],
+    [
+     "Total lease expense",
+     "$",
+     "236,651",
+     "$",
+     "222,796"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 679,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements (Unaudited)                                                                            5"
+    },
+    "note": null
+   },
+   "prose_before": "Lease expense for the nine months ended September 30, 2020 and 2019 was comprised of the following:",
+   "prose_after": "Cash payments related to operating leases were $192,961 and $184,496 for the nine months ended September 30, 2020 and 2019, respectively.\nItem 2. Management's Discussion and Analysis of Financial Condition and Results of Operations\nYou should read the following discussion and analysis of our financial condition and results of operations together with our unaudited interim consolidated financial statements and related notes appearing elsewhere in this Quarterly Report and the audited consolidated financial statements and notes thereto for the year ended December 31, 2019 and the related Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations, both of which are contained in our 2019 Annual Report. The following discussion contains forward-looking statements that involve risks, uncertainties and assumptions. Our actual results and the timing of certain events could differ materially from those anticipated in these forward-looking statements as a result of many factors. We discuss factors that we believe could cause or contribute to these differences below and elsewhere in this Quarterly Report, including those set forth under \u201cCautionary Note Regarding Forward-looking Statements\u201d and \u201cRisk Factors\u201d in this Quarterly Report and our 2019 Annual Report.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Research and development expenses - before R&D incentive",
+     "$",
+     "6,177,830",
+     "$",
+     "7,381,241",
+     "$",
+     "23,526,911",
+     "$",
+     "23,380,269"
+    ],
+    [
+     "Research and development incentive (non-AOF)",
+     "",
+     "(371,882)",
+     "",
+     "(715,631)",
+     "",
+     "(1,596,024)",
+     "",
+     "(2,184,164)"
+    ],
+    [
+     "Research and development expenses (before impact of AOF)",
+     "",
+     "5,805,948",
+     "",
+     "6,665,610",
+     "",
+     "21,930,887",
+     "",
+     "21,196,105"
+    ],
+    [
+     "AOF - cumulative change in estimate for the period 1/1/18 through 12/31/19",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)"
+    ],
+    [
+     "Amounts reserved against AOF refund",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,107,695",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "5,805,948",
+     "$",
+     "(1,604,399)",
+     "$",
+     "30,038,582",
+     "$",
+     "12,926,096"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 764,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We evaluate the Subsidiary\u2019s eligibility under tax incentive programs as of each balance sheet date based on the most current and relevant data available. If the Subsidiary is deemed to be ineligible or unable to receive the Australian research and development tax credit, or the Australian government significantly reduces or eliminates the tax credit, the actual cash refund we receive may materially differ from our estimates. In June 2020, the ATO informed us that we may not qualify for the AOF program based on their interpretation of certain eligibility requirements. Although we continue to believe that we comply with the relevant conditions of the AOF program that were in place when we received our original approval from AusIndustry, we have determined it is no longer probable that the AOF claim will be received. As a result, during the three months ended June 30, 2020, we recorded a full reserve against the AOF receivable.\nThe following table summarizes research and development expenses for the three and nine months ended September 30, 2020 and 2019:",
+   "prose_after": "Excluding the 2020 and 2019 change in research and development expenses related to the AOF, we expect research and development expenses to slightly increase in 2020 as compared to 2019 as we continue to advance our clinical trials for Zygel. These expenditures are subject to numerous uncertainties regarding timing and cost to completion. Completion of our preclinical development and clinical trials may take several years or more and the length of time generally varies according to the type, complexity, novelty and intended use of a product candidate. The cost of clinical trials may vary significantly over the life of a project as a result of differences arising during clinical development, including, among others:\n\u25cf the number of sites included in the clinical trials;\n\u25cf the length of time required to enroll suitable patients;\n\u25cf the size of patient populations participating in the clinical trials;\n\u25cf the duration of patient follow-ups;\n\u25cf the development stage of the product candidates; and\n\u25cf the efficacy and safety profile of the product candidates.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "2019"
+    ],
+    [
+     "Research and development expenses (before impact of AOF)",
+     "$",
+     "5,805,948",
+     "$",
+     "6,665,610"
+    ],
+    [
+     "AOF - cumulative change in estimate for the period 1/1/18 through 12/31/19",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "5,805,948",
+     "$",
+     "(1,604,399)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Our management\u2019s discussion and analysis of our financial condition and results of operations is based on our consolidated financial statements, which have been prepared in accordance with U.S. generally accepted accounting principles, or GAAP. The preparation of these financial statements requires us to make estimates and judgments that affect the reported amounts of assets and liabilities, disclosure of contingent assets and liabilities at the date of the financial statements, and the reported amounts of revenues and expenses during the reported period. In accordance with GAAP, we base our estimates on historical experience, known trends and events and various other factors that we believe to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying amounts of assets and liabilities that are not readily apparent from other sources. Actual results may differ from these estimates under different assumptions or conditions.\nWe define our critical accounting policies as those that require us to make subjective estimates and judgments about matters that are uncertain and are likely to have a material impact on our financial condition and results of operations as well as the specific manner in which we apply those principles. Critical accounting estimates and the accounting policies critical to the process of making significant judgments and estimates in the preparation of our consolidated financial statements are discussed in our 2019 Annual Report under Part II, Item 7, \u201cCritical Accounting Policies and Use of Estimates.\u201d During the nine months ended September 30, 2020, there have been no material changes to the critical accounting estimates or critical accounting policies discussed in our 2019 Annual Report.\nResults of Operations\nComparison of the Three Months Ended September 30, 2020 and 2019\nResearch and Development Expenses",
+   "prose_after": "Excluding the $8.3 million reduction in research and development expenses recorded during the three months ended September 30, 2019 for amounts expected to be received through the AOF for the period from January 1, 2018 through September 30, 2019, research and development expenses decreased by $0.9 million, or 13%, to $5.8 million for the three months ended September 30, 2020 from $6.7 million for the three months ended September 30, 2019. The decrease was primarily related to decreased clinical trial and manufacturing costs associated with our Zygel program; partially offset by a reduction in the non-AOF Australian research and development incentive.\nGeneral and Administrative Expenses\nGeneral and administrative expenses decreased by $0.1 million, or 3%, to $3.4 million for the three months ended September 30, 2020 from $3.5 million for the three months ended September 30, 2019. The decrease was primarily related to decreases in pre-commercialization expense for our product candidates partially offset by an increase in directors and officers liability insurance.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Research and development expenses (before impact of AOF)",
+     "$",
+     "21,930,887",
+     "$",
+     "21,196,105"
+    ],
+    [
+     "AOF - cumulative change in estimate for the period 1/1/18 through 12/31/19",
+     "",
+     "\u2014",
+     "",
+     "(8,270,009)"
+    ],
+    [
+     "Amounts reserved against AOF refund",
+     "",
+     "8,107,695",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "30,038,582",
+     "$",
+     "12,926,096"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 848,
+    "end_line": 860
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "General and administrative expenses decreased by $0.1 million, or 3%, to $3.4 million for the three months ended September 30, 2020 from $3.5 million for the three months ended September 30, 2019. The decrease was primarily related to decreases in pre-commercialization expense for our product candidates partially offset by an increase in directors and officers liability insurance.\nOther Income (Expense)\nDuring the three months ended September 30, 2020 and 2019, we recognized $10,781 and $0.4 million, respectively, in interest income. The decrease in interest income was primarily related to lower average interest rates earned on our investments. During the three months ended September 30, 2020 and 2019, we recognized a foreign currency gain of $0.2 million and a foreign currency loss of $0.5 million, respectively. Foreign currency gains and losses are due primarily to the remeasurement of the Subsidiary\u2019s assets and liabilities, which are denominated in the local currency to the Subsidiary\u2019s functional currency, which is the U.S. dollar.\nComparison of the Nine Months Ended September 30, 2020 and 2019\nResearch and Development Expenses",
+   "prose_after": "Excluding AOF activity for the nine months ended September 30, 2020 and 2019, research and development expenses increased by $0.7 million, or 3%, to $21.9 million for the nine months ended September 30, 2020 from $21.2 million for the nine months ended September 30, 2019. The increase was primarily related to increased clinical trial costs associated with our Zygel program, an increase in employee-related costs and a reduction in the non-AOF Australian research and development incentive; partially offset by decreases in manufacturing costs related to our Zygel program and stock-based compensation expense.\nGeneral and Administrative Expenses\nGeneral and administrative expenses increased by $1.9 million, or 19%, to $11.8 million for the nine months ended September 30, 2020 from $10.0 million for the nine months ended September 30, 2019. The increase was primarily related to increases in pre-commercialization expense for our product candidates, directors and officers liability insurance, legal fees and higher employee-related costs, including recruiting costs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Statement of Cash Flows Data:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total net cash (used in) provided by:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(34,327,275)",
+     "$",
+     "(27,353,114)"
+    ],
+    [
+     "Investing activities",
+     "",
+     "(383,223)",
+     "",
+     "(81,051)"
+    ],
+    [
+     "Financing activities",
+     "",
+     "28,958,461",
+     "",
+     "45,217,922"
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "$",
+     "(5,752,037)",
+     "$",
+     "17,783,757"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf the extent to which health epidemics and other outbreaks of communicable diseases, including the ongoing COVID-19 pandemic, could disrupt our operations or materially and adversely affect our business and financial conditions; and\n\u25cf the timing and outcome of the ATO\u2019s review regarding our eligibility to receive tax credits related to the AOF.\nTo the extent that our capital resources are insufficient to meet our future operating and capital requirements, we will need to finance our cash needs through public or private equity offerings, debt financings, collaboration and licensing arrangements or other financing alternatives. We have no committed external sources of funds. Additional equity or debt financing or collaboration and licensing arrangements may not be available on acceptable terms, if at all.\nIf we raise additional funds by issuing equity securities, our stockholders will experience dilution.\nCash Flows\nThe following table summarizes our cash flows from operating, investing and financing activities for the nine months ended September 30, 2020 and 2019.",
+   "prose_after": "Operating Activities\nFor the nine months ended September 30, 2020, cash used in operating activities was $34.3 million compared to $27.4 million for the nine months ended September 30, 2019. The increase from the comparable 2019 period was primarily the result of increased prepaid expenses, increased general and administrative expenses and an increase in research and development expenses related to clinical trial costs of our Zygel program.\nExcluding any cash that may be received from the July 2019 AOF application, we expect cash used in operating activities to increase in 2020 as compared to 2019, as we continue to advance our clinical trials for Zygel.\nInvesting Activities\nFor the nine months ended September 30, 2019, cash used in investing activities represented the cost of expenditures made for manufacturing equipment.\nFinancing Activities\nCash provided by financing activities for the nine months ended September 30, 2020 consisted of $29.0 million in net proceeds from sales of our shares of common stock under the 2019 Sales Agreement. Cash provided by financing activities for the nine months ended September 30, 2019 consisted primarily of $45.0 million in net proceeds from sales of our shares of common stock under the 2017 Sales Agreement.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit"
+    ],
+    [
+     "31.1\n\n",
+     "Certification of Chief Executive Officer pursuant to Rules 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)."
+    ],
+    [
+     "31.2\n\n",
+     "Certification of Chief Financial Officer pursuant to Rules 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)."
+    ],
+    [
+     "32.1\n\n",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith)."
+    ],
+    [
+     "32.2\n\n",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith)."
+    ],
+    [
+     "101 INS",
+     "Inline XBRL Document (filed herewith)."
+    ],
+    [
+     "101 SCH",
+     "Inline XBRL Taxonomy Extension Schema (filed herewith)."
+    ],
+    [
+     "101 CAL",
+     "Inline XBRL Taxonomy Extension Schema Calculation Linkbase (filed herewith)."
+    ],
+    [
+     "101 DEF",
+     "Inline XBRL Taxonomy Extension Schema Definition Linkbase (filed herewith)."
+    ],
+    [
+     "101 LAB",
+     "Inline XBRL Taxonomy Extension Schema Label Linkbase (filed herewith)."
+    ],
+    [
+     "101 PRE",
+     "Inline XBRL Taxonomy Extension Schema Presentation Linkbase (filed herewith)."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1040,
+    "end_line": 1061
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "We did not purchase any of our registered equity securities during the period covered by this Quarterly Report on Form 10-Q.\nItem 3. Defaults Upon Senior Securities.\nNone.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNot applicable.\nItem 6. Exhibits.\nThe following exhibits are being filed herewith:\nEXHIBIT INDEX",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1033,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ZYNERBA PHARMACEUTICALS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 9, 2020",
+     "By:",
+     "/s/ ARMANDO ANIDO"
+    ],
+    [
+     "",
+     "",
+     "Armando Anido"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal executive officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 9, 2020",
+     "By:",
+     "/s/ JAMES E. FICKENSCHER"
+    ],
+    [
+     "",
+     "",
+     "James E. Fickenscher"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "ZYNERBA PHARMACEUTICALS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1083,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

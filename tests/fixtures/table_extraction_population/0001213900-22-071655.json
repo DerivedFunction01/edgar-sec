@@ -1,0 +1,4624 @@
+{
+ "accession": "0001213900-22-071655",
+ "cik": "0001424657",
+ "form": "10-Q",
+ "filing_date": "2022-11-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0922_cuentasinc.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "20-3537265"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, DC 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE THREE MONTH PERIOD ENDED: SEPTEMBER 30, 2022\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to ______________\nCommission File Number: 001-39973\nCUENTAS, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "235 Lincoln Rd., Suite 210, Miami Beach, FL 33139\n(Address of principal executive offices)\n800-611-3622\n(Registrant\u2019s telephone number)\nSecurities registered under Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "CUEN",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants, each exercisable for one share of Common Stock",
+     "CUENW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "235 Lincoln Rd., Suite 210, Miami Beach, FL 33139\n(Address of principal executive offices)\n800-611-3622\n(Registrant\u2019s telephone number)\nSecurities registered under Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of September 30, 2022 (Unaudited) and December 31, 2021",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the nine and three-months ended September 30, 2022 and 2021 (Unaudited)",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of changes in the Shareholders\u2019 Equity for the nine and three-months ended September 30, 2022 and 2021 (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the nine-months ended September 30, 2022 and 2021 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     "6-17"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common equity, as of the latest practicable date: As of November 14 2022, the issuer had 16,720,690 shares of its common stock issued and outstanding.\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nAS OF september 30, 2022\nTABLE OF CONTENTS",
+   "prose_after": "i\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(U.S. dollars in thousands except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 94,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Audited",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "2,108",
+     "",
+     "",
+     "6,607",
+     ""
+    ],
+    [
+     "Accounts Receivables, net",
+     "",
+     "264",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "57",
+     "",
+     "",
+     "162",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "2,429",
+     "",
+     "",
+     "6,780",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "9",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Investment in unconsolidated Entities",
+     "",
+     "892",
+     "",
+     "",
+     "38",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "4,080",
+     "",
+     "",
+     "5,438",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "7,410",
+     "",
+     "",
+     "12,258",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade payable",
+     "",
+     "1,216",
+     "",
+     "",
+     "810",
+     ""
+    ],
+    [
+     "Other accounts liabilities",
+     "",
+     "990",
+     "",
+     "",
+     "1,126",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "407",
+     "",
+     "",
+     "683",
+     ""
+    ],
+    [
+     "Notes and Loan payable",
+     "",
+     "106",
+     "",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "Stock based liabilities",
+     "",
+     "1",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,720",
+     "",
+     "",
+     "2,719",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other long-term loans",
+     "",
+     "89",
+     "",
+     "",
+     "89",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "2,809",
+     "",
+     "",
+     "2,808",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, authorized 360,000,000 shares, $0.001 par value; 16,720,690 issued and outstanding as of September 30, 2022 and 14,965,690 December 31, 2021, respectively",
+     "",
+     "17",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "51,888",
+     "",
+     "",
+     "47,654",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(47,304)",
+     "",
+     "",
+     "(38,219)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "4,601",
+     "",
+     "",
+     "9,450",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "7,410",
+     "",
+     "",
+     "12,258",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 100,
+    "end_line": 149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "i\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(U.S. dollars in thousands except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS (Unaudited)\n(U.S. dollars in thousands except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 94,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "",
+     "1,143",
+     "",
+     "",
+     "109",
+     "",
+     "",
+     "2,207",
+     "",
+     "",
+     "489",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST OF REVENUE",
+     "",
+     "1,027",
+     "",
+     "",
+     "91",
+     "",
+     "",
+     "1,902",
+     "",
+     "",
+     "361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS PROFIT (LOSS)",
+     "",
+     "116",
+     "",
+     "",
+     "18",
+     "",
+     "",
+     "305",
+     "",
+     "",
+     "128",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of Intangible assets",
+     "",
+     "453",
+     "",
+     "",
+     "452",
+     "",
+     "",
+     "1,358",
+     "",
+     "",
+     "1,357",
+     ""
+    ],
+    [
+     "Selling, General and Administrative",
+     "",
+     "1,929",
+     "",
+     "",
+     "1,976",
+     "",
+     "",
+     "7,962",
+     "",
+     "",
+     "4,787",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "2,382",
+     "",
+     "",
+     "2,428",
+     "",
+     "",
+     "9,320",
+     "",
+     "",
+     "6,144",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "(2,266)",
+     "",
+     "",
+     "(2,410)",
+     "",
+     "",
+     "(9,015)",
+     "",
+     "",
+     "(6,016)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (expenses)",
+     "",
+     "-",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(32)",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "1",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(3)",
+     "",
+     "",
+     "(173)",
+     ""
+    ],
+    [
+     "Gain from Change in fair value of stock-based liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "6",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "105",
+     ""
+    ],
+    [
+     "TOTAL OTHER EXPENSES",
+     "",
+     "1",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "(34)",
+     "",
+     "",
+     "(66)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE EQUITY LOSSES",
+     "",
+     "(2,265)",
+     "",
+     "",
+     "(2,406)",
+     "",
+     "",
+     "(9,049)",
+     "",
+     "",
+     "(6,082)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity losses in non-consolidated entity",
+     "",
+     "(10)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(36)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "(2,275)",
+     "",
+     "",
+     "(2,406)",
+     "",
+     "",
+     "(9,085)",
+     "",
+     "",
+     "(6,082)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per basic and diluted share",
+     "",
+     "(0.14)",
+     "",
+     "",
+     "(0.16)",
+     "",
+     "",
+     "(0.59)",
+     "",
+     "",
+     "(0.45)",
+     ""
+    ],
+    [
+     "Weighted average number of basic and diluted common shares outstanding",
+     "",
+     "16,037,103",
+     "",
+     "",
+     "14,896,717",
+     "",
+     "",
+     "15,352,807",
+     "",
+     "",
+     "13,564,928",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 158,
+    "end_line": 204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS (Unaudited)\n(U.S. dollars in thousands except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\nSTATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 EQUITY\n(Unaudited)\n(U.S. dollars in thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2022",
+     "",
+     "14,965,690",
+     "",
+     "15",
+     "",
+     "47,654",
+     "",
+     "(38,219)",
+     "",
+     "",
+     "9,450",
+     ""
+    ],
+    [
+     "Issuance of Shares of Common Stock, net of issuance expenses **",
+     "",
+     "1,655,000",
+     "",
+     "2",
+     "",
+     "2,686",
+     "",
+     "-",
+     "",
+     "",
+     "2,688",
+     ""
+    ],
+    [
+     "Shares issued for services and for employees",
+     "",
+     "100,000",
+     "",
+     "-",
+     "",
+     "1,548",
+     "",
+     "-",
+     "",
+     "",
+     "1,548",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(9,085)",
+     "",
+     "",
+     "(9,085)",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2022",
+     "",
+     "16,720,690",
+     "$",
+     "17",
+     "$",
+     "51,888",
+     "$",
+     "(47,304)",
+     "",
+     "$",
+     "4,601",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 215,
+    "end_line": 230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\nSTATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 EQUITY\n(Unaudited)\n(U.S. dollars in thousands, except share and per share data)",
+   "prose_after": "* Less than $1.\n** Issuance expenses totaled to $312",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of July 1, 2022",
+     "",
+     "15,065,690",
+     "",
+     "15",
+     "",
+     "48,858",
+     "",
+     "(45,029)",
+     "",
+     "",
+     "3,844",
+     ""
+    ],
+    [
+     "Issuance of Shares of Common Stock, net of issuance expenses **",
+     "",
+     "1,655,000",
+     "",
+     "2",
+     "",
+     "2,686",
+     "",
+     "-",
+     "",
+     "",
+     "2,688",
+     ""
+    ],
+    [
+     "Shares issued for services and for employees",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "344",
+     "",
+     "-",
+     "",
+     "",
+     "344",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,275)",
+     "",
+     "",
+     "(2,275)",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2022",
+     "",
+     "16,720,690",
+     "$",
+     "17",
+     "$",
+     "51,888",
+     "$",
+     "(47,304)",
+     "",
+     "$",
+     "4,601",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 234,
+    "end_line": 249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\n** Issuance expenses totaled to $312",
+   "prose_after": "* Less than $1.\n** Issuance expenses totaled to $312",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2021",
+     "",
+     "10,590,491",
+     "",
+     "",
+     "11",
+     "",
+     "28,411",
+     "",
+     "(27,491)",
+     "",
+     "",
+     "931",
+     ""
+    ],
+    [
+     "Issuance of Shares of Common Stock, net of issuance expenses **",
+     "",
+     "2,790,697",
+     "",
+     "",
+     "3",
+     "",
+     "10,611",
+     "",
+     "-",
+     "",
+     "",
+     "10,614",
+     ""
+    ],
+    [
+     "Issuance of Warrants",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "4",
+     "",
+     "-",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Shares issued for services and for employees",
+     "",
+     "143,334",
+     "",
+     "",
+     "*",
+     "",
+     "579",
+     "",
+     "-",
+     "",
+     "",
+     "579",
+     ""
+    ],
+    [
+     "Shares issued due to exercise of Warrants, net of issuance expenses ***",
+     "",
+     "1,454,443",
+     "",
+     "",
+     "1",
+     "",
+     "5,764",
+     "",
+     "-",
+     "",
+     "",
+     "5,765",
+     ""
+    ],
+    [
+     "Shares issued due to conversion of Convertible Note",
+     "",
+     "30,233",
+     "",
+     "",
+     "*",
+     "",
+     "81",
+     "",
+     "-",
+     "",
+     "",
+     "81",
+     ""
+    ],
+    [
+     "Return of Commitment Shares",
+     "",
+     "(43,525)",
+     "",
+     "",
+     "*",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Roundup Differences due to Reverse Split",
+     "",
+     "17",
+     "",
+     "",
+     "*",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(6,082)",
+     "",
+     "",
+     "(6,082)",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2021",
+     "",
+     "14,965,690",
+     "",
+     "$",
+     "15",
+     "$",
+     "45,450",
+     "$",
+     "(33,573)",
+     "",
+     "$",
+     "11,892",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\n** Issuance expenses totaled to $312",
+   "prose_after": "* Less than $1.\n** Issuance expenses totaled to $1,386\n*** Issuance expenses totaled to $499",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of July 1, 2021",
+     "",
+     "13,739,747",
+     "",
+     "14",
+     "",
+     "40,635",
+     "",
+     "(31,167)",
+     "",
+     "",
+     "9,482",
+     ""
+    ],
+    [
+     "Shares issued for services and for employees",
+     "",
+     "70,000",
+     "",
+     "*",
+     "",
+     "255",
+     "",
+     "-",
+     "",
+     "",
+     "255",
+     ""
+    ],
+    [
+     "Shares issued due to exercise of Warrants, net of issuance expenses **",
+     "",
+     "1,153,000",
+     "",
+     "1",
+     "",
+     "4,560",
+     "",
+     "-",
+     "",
+     "",
+     "4,561",
+     ""
+    ],
+    [
+     "Shares issued due to conversion of Convertible Note",
+     "",
+     "2,943",
+     "",
+     "*",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,406)",
+     "",
+     "",
+     "(2,406)",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2021",
+     "",
+     "14,965,690",
+     "$",
+     "15",
+     "$",
+     "45,450",
+     "$",
+     "(33,573)",
+     "",
+     "$",
+     "11,892",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 281,
+    "end_line": 297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\n** Issuance expenses totaled to $1,386\n*** Issuance expenses totaled to $499",
+   "prose_after": "* Less than $1.\n** Issuance expenses totaled to $396\nThe accompanying notes are an integral part of these consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited)\n(U.S. dollars in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before non-controlling interest",
+     "",
+     "(9,085)",
+     "",
+     "",
+     "(6,082)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation and shares issued for services",
+     "",
+     "1,548",
+     "",
+     "",
+     "541",
+     ""
+    ],
+    [
+     "Equity losses in non-consolidated entity",
+     "",
+     "36",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on fair value of marketable securities",
+     "",
+     "-",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Interest on loans",
+     "",
+     "9",
+     "",
+     "",
+     "89",
+     ""
+    ],
+    [
+     "Gain from change in on fair value of stock-based liabilities",
+     "",
+     "(2)",
+     "",
+     "",
+     "(56)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "1,358",
+     "",
+     "",
+     "1,357",
+     ""
+    ],
+    [
+     "Changes in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(486)",
+     "",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "105",
+     "",
+     "",
+     "(299)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "406",
+     "",
+     "",
+     "(1,567)",
+     ""
+    ],
+    [
+     "Other Accounts payable",
+     "",
+     "(136)",
+     "",
+     "",
+     "(1,262)",
+     ""
+    ],
+    [
+     "Related parties, net",
+     "",
+     "-",
+     "",
+     "",
+     "44",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(276)",
+     "",
+     "",
+     "18",
+     ""
+    ],
+    [
+     "Net Cash Used by Operating Activities",
+     "",
+     "(6,523)",
+     "",
+     "",
+     "(7,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing  Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Intangible Asset",
+     "",
+     "-",
+     "",
+     "",
+     "(47)",
+     ""
+    ],
+    [
+     "Investment in non-consolidated entity in non-consolidated entity",
+     "",
+     "(657)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(7)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash used for Investing Activities",
+     "",
+     "(664)",
+     "",
+     "",
+     "(47)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Related party, net",
+     "",
+     "-",
+     "",
+     "",
+     "(355)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock due to exercise of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "6,264",
+     ""
+    ],
+    [
+     "Repayment of loans",
+     "",
+     "-",
+     "",
+     "",
+     "(730)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock, net of issuance expense",
+     "",
+     "2,688",
+     "",
+     "",
+     "10,614",
+     ""
+    ],
+    [
+     "Proceeds from issuance of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "2,688",
+     "",
+     "",
+     "15,797",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (decrease) in Cash",
+     "",
+     "(4,499)",
+     "",
+     "",
+     "8,523",
+     ""
+    ],
+    [
+     "Cash at Beginning of Period",
+     "",
+     "6,607",
+     "",
+     "",
+     "227",
+     ""
+    ],
+    [
+     "Cash at End of Period",
+     "",
+     "2,108",
+     "",
+     "",
+     "8,750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for conversion of convertible note principal",
+     "",
+     "-",
+     "",
+     "",
+     "81",
+     ""
+    ],
+    [
+     "Investment in non-consolidated entity in non-consolidated entity against accounts receivables",
+     "",
+     "233",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance fee with connection to issuance of common stock due to exercise of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "499",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 310,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\n** Issuance expenses totaled to $396\nThe accompanying notes are an integral part of these consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited)\n(U.S. dollars in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\nNOTE 1 \u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS\nCuentas, Inc. (the \u201cCompany\u201d) together with its subsidiaries, is focused on financial technology (\u201cFINTECH\u201d) services, delivering mobile financial services, prepaid debit and digital content services to unbanked, underbanked and underserved communities. The Company derives its revenue from GPR \u201cDebit\u201d Card fees and the sales of prepaid products and services including third party digital content, gift cards, remittances, mobile phone topups and other digital services. Additionally, The Company has an agreement with Interactive Communications International, Inc. (\u201cInComm\u201d) a leading processor of general purpose reloadable (\u201cGPR\u201d) debit cards, to market and distribute a line of prepaid digital content and gift cards targeted towards the Latin American market. Cuentas is able to purchase InComm's prepaid digital content and gift cards at a discount and resell these same products in real time through its mobile app and through the Cuentas SDI network of over 31,000 bodegas. Cuentas is able to offer these digital products to the public through its mobile app and the Cuentas SDI distribution network, many at discounted prices, while making a small profit margin which varies from product to product. The prepaid digital content and gift cards include Amazon Cash, XBox, PlayStation, Nintendo, Karma Koin, Transit System Loads & Reloads (LA TAP, NY Transit, Grand Rapids, CT GO and more coming in 2023), Burger King, Cabela's, Bass Pro Shops, AT&T, Verizon, Mango Mobile, Black Wireless and many more prepaid wireless carriers in the US and in foreign countries. Cuentas accountholders can also send up to $500 anywhere in the world that WesternUnion operates at a discounted rate.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Deferred Revenue",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "$",
+     "683",
+     ""
+    ],
+    [
+     "Change in deferred revenue",
+     "",
+     "(276)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2022",
+     "$",
+     "407",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deferred Revenue"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 421,
+    "end_line": 430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "Principles of Consolidation\nThe consolidated financial statements are prepared in accordance with US GAAP. The consolidated financial statements of the Company include the Company and its wholly owned and majority-owned subsidiaries. All inter-company balances and transactions have been eliminated.\nUse of Estimates\nThe preparation of unaudited condensed consolidated financial statements in conformity with accounting principles generally accepted in the United States requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, certain revenues and expenses, and disclosure of contingent assets and liabilities as of the date of the financial statements. Actual results could differ from those estimates.\nDeferred Revenue\nDeferred revenue is comprised mainly of unearned revenue related to prepayments from retail consumers for telecommunications minutes. The following table represents the changes in deferred revenue for the nine months ended September 30, 2022:",
+   "prose_after": "Revenue allocated to remaining performance obligations represent contracted revenue that has not yet been recognized (\u201ccontracted not recognized\u201d). Contracted not recognized revenue was $407 as of September 30, 2022, of which the Company expects to recognize 100% of the revenue over the next 12 months.\nDerivative and Fair Value of Financial Instruments\nFair value accounting requires bifurcation of embedded derivative instruments such as conversion features in convertible debt or equity instruments and measurement of their fair value for accounting purposes. In assessing the convertible debt instruments, management determines if the convertible debt host instrument is conventional convertible debt and further if there is a beneficial conversion feature requiring measurement. If the instrument is not considered conventional convertible debt under ASC 470, the Company will continue its evaluation process of these instruments as derivative financial instruments under ASC 815.\nOnce determined, derivative liabilities are adjusted to reflect fair value at each reporting period end, with any increase or decrease in the fair value being recorded in results of operations as an adjustment to fair value of derivatives.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance as of September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based liabilities",
+     "",
+     "1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1"
+    ]
+   ],
+   "caption_stack": [
+    "Balance as of September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 457,
+    "end_line": 469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "Level 2: Quoted prices for similar assets or liabilities in active markets; quoted prices for identical or similar assets or liabilities in markets that are not active; inputs other than quoted prices that are observable for the asset or liability; and inputs that are derived principally from or corroborated by observable market data for substantially the full term of the assets or liabilities; and\nLevel 3: Unobservable inputs for the asset or liability that are supported by little or no market activity, and that are significant to the fair values.\nFair value measurements are required to be disclosed by the Level within the fair value hierarchy in which the fair value measurements in their entirety fall. Fair value measurements using significant unobservable inputs (in Level 3 measurements) are subject to expanded disclosure requirements including a reconciliation of the beginning and ending balances, separately presenting changes during the period attributable to the following: (i) total gains or losses for the period (realized and unrealized), segregating those gains or losses included in earnings, and a description of where those gains or losses included in earning are reported in the statement of income.\nThe Company\u2019s financial assets and liabilities that are measured at fair value on a recurring basis by level within the fair value hierarchy are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance as of December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based liabilities",
+     "",
+     "3",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "3",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3"
+    ]
+   ],
+   "caption_stack": [
+    "Balance as of December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 470,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Recently Issued Accounting Standards\nNew pronouncements issued but not effective as of September 30, 2022 are not expected to have a material impact on the Company\u2019s consolidated financial statements.\nOther accounting standards that have been issued or proposed by the FASB or other standards-setting bodies that do not require adoption until a future date are not expected to have a material impact on our financial statements upon adoption.\nNOTE 3 \u2013 STOCK OPTIONS\nThe following table summarizes all stock option activity for the nine months ended September 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Weighted- Average Exercise Price Per Share",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2021",
+     "",
+     "1,585,200",
+     "",
+     "$",
+     "3.69"
+    ],
+    [
+     "Granted",
+     "",
+     "400,000",
+     "",
+     "",
+     "2.80"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(215,000)",
+     "",
+     "",
+     "2.80"
+    ],
+    [
+     "Outstanding, September 30, 2022",
+     "",
+     "1,770,200",
+     "",
+     "$",
+     "3.44"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 495,
+    "end_line": 505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "Recently Issued Accounting Standards\nNew pronouncements issued but not effective as of September 30, 2022 are not expected to have a material impact on the Company\u2019s consolidated financial statements.\nOther accounting standards that have been issued or proposed by the FASB or other standards-setting bodies that do not require adoption until a future date are not expected to have a material impact on our financial statements upon adoption.\nNOTE 3 \u2013 STOCK OPTIONS\nThe following table summarizes all stock option activity for the nine months ended September 30, 2022:",
+   "prose_after": "The following table discloses information regarding outstanding and exercisable options at September 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise Prices",
+     "",
+     "Number of Option Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Life (Years)",
+     "",
+     "Number of Option Shares",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "14.35",
+     "",
+     "79,200",
+     "$",
+     "14.35",
+     "",
+     "0.49",
+     "",
+     "79,200",
+     "$",
+     "14.35"
+    ],
+    [
+     "",
+     "7.50",
+     "",
+     "36,000",
+     "",
+     "7.50",
+     "",
+     "0.961",
+     "",
+     "36,000",
+     "",
+     "7.50"
+    ],
+    [
+     "",
+     "5.23",
+     "",
+     "20,000",
+     "",
+     "5.23",
+     "",
+     "1.49",
+     "",
+     "20,000",
+     "",
+     "5.23"
+    ],
+    [
+     "",
+     "2.80",
+     "",
+     "1,635,000",
+     "",
+     "2.80",
+     "",
+     "9.13",
+     "",
+     "1,010,000",
+     "",
+     "2.80"
+    ],
+    [
+     "",
+     "",
+     "",
+     "1,770,200",
+     "$",
+     "3.44",
+     "",
+     "8.50",
+     "",
+     "1,145,200",
+     "$",
+     "3.79"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "The following table discloses information regarding outstanding and exercisable options at September 30, 2022:",
+   "prose_after": "On August 19, 2022, the Board of Directors approved the immediate acceleration of the vesting of 160,000 options previously issued under the Stock Option Plan TP Jeffery D. Johnson that will be exercisable for a period of three years after his resignation.\nOn May 17, 2022, the Company issued 200,000 options to its two members of the board of the Directors of the Company. The options carry an exercise price of $2.80 per share. half of the options vested on May17, 2022 and the balance shall vest on the first anniversary of grant date, so long as they engaged by the Company on that date. The Options are exercisable until May 17, 2032. The Company has estimated the fair value of such options at a value of $134 at the date of issuance using the Black-Scholes option pricing model using the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common stock price",
+     "0.67",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "2.98",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "10",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "480",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "On August 19, 2022, the Board of Directors approved the immediate acceleration of the vesting of 160,000 options previously issued under the Stock Option Plan TP Jeffery D. Johnson that will be exercisable for a period of three years after his resignation.\nOn May 17, 2022, the Company issued 200,000 options to its two members of the board of the Directors of the Company. The options carry an exercise price of $2.80 per share. half of the options vested on May17, 2022 and the balance shall vest on the first anniversary of grant date, so long as they engaged by the Company on that date. The Options are exercisable until May 17, 2032. The Company has estimated the fair value of such options at a value of $134 at the date of issuance using the Black-Scholes option pricing model using the following assumptions:",
+   "prose_after": "On February1, 2022, the Company issued 200,000 options to its Chief Operating Officer of the Company. The options carry an exercise price of $2.80 per share. Fifty Thousand (50,000) of the options vested on February1, 2022. The option shall vest on the first, second and third anniversary of grant date, so long as its Chief Operating Officer is employed by the Company on that date. The Options are exercisable until January 31, 2032. The Company has estimated the fair value of such options at a value of $213 at the date of issuance using the Black-Scholes option pricing model using the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common stock price",
+     "1.07",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "1.79",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "10",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "197",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "On February1, 2022, the Company issued 200,000 options to its Chief Operating Officer of the Company. The options carry an exercise price of $2.80 per share. Fifty Thousand (50,000) of the options vested on February1, 2022. The option shall vest on the first, second and third anniversary of grant date, so long as its Chief Operating Officer is employed by the Company on that date. The Options are exercisable until January 31, 2032. The Company has estimated the fair value of such options at a value of $213 at the date of issuance using the Black-Scholes option pricing model using the following assumptions:",
+   "prose_after": "The following table discloses information regarding outstanding and exercisable options at December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise Prices",
+     "",
+     "Number of Option Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Life (Years)",
+     "",
+     "Number of Option Shares",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "14.35",
+     "",
+     "79,200",
+     "$",
+     "14.35",
+     "",
+     "1.24",
+     "",
+     "79,200",
+     "$",
+     "14.35"
+    ],
+    [
+     "",
+     "7.50",
+     "",
+     "36,000",
+     "",
+     "7.50",
+     "",
+     "1.71",
+     "",
+     "36,000",
+     "",
+     "7.50"
+    ],
+    [
+     "",
+     "5.23",
+     "",
+     "20,000",
+     "",
+     "5.23",
+     "",
+     "2.24",
+     "",
+     "20,000",
+     "",
+     "5.23"
+    ],
+    [
+     "",
+     "2.80",
+     "",
+     "1,450,000",
+     "",
+     "2.80",
+     "",
+     "9.84",
+     "",
+     "785,000",
+     "",
+     "2.80"
+    ],
+    [
+     "",
+     "",
+     "",
+     "1,585,200",
+     "$",
+     "3.69",
+     "",
+     "9.13",
+     "",
+     "920,200",
+     "$",
+     "4.24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "The following table discloses information regarding outstanding and exercisable options at December 31, 2021:",
+   "prose_after": "NOTE 5 \u2013 RELATED PARTY TRANSACTIONS\nRelated party balances as of September 30, 2022 and December 31, 2021 consisted of the following:\nRelated party payables",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(a) Due to Cima Telecom Inc.",
+     "$",
+     "-",
+     "",
+     "417"
+    ],
+    [
+     "Total Due to related parties",
+     "$",
+     "-",
+     "$",
+     "417"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 570,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "NOTE 5 \u2013 RELATED PARTY TRANSACTIONS\nRelated party balances as of September 30, 2022 and December 31, 2021 consisted of the following:\nRelated party payables",
+   "prose_after": "(a) Composed from annual fees in the amount for the maintenance and support services in accordance with the software maintenance agreement for the second calendar year from the Effective Date and other software development services.\nRelated party transactions",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "9 months ends at September 30, 2022",
+     "",
+     "9 months ends at September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carol Pepper (b)",
+     "",
+     "80",
+     "",
+     "-"
+    ],
+    [
+     "Cima Telecom Inc. (a)",
+     "$",
+     "942",
+     "",
+     "552"
+    ],
+    [
+     "",
+     "$",
+     "40",
+     "$",
+     "552"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "(a) Composed from annual fees in the amount for the maintenance and support services in accordance with the software maintenance agreement for the second calendar year from the Effective Date and other software development services.\nRelated party transactions",
+   "prose_after": "(a) Composed of periodic fees in the amount of $700 thousand for the maintenance and support services in accordance with the software maintenance agreement and the a Settlement Agreement and General Release dated August 2, 2022 and the and $375 for the first half of the second calendar year from the effective date of the agreement, $242 thousand for software development services during the first nine months of 2022 and 147$ thousand for software development services during the nine months of 2021 and $30 thousand for the consulting services for the first quarter of 2021. Refer to note 6.\n(b) Composed of consulting fee for the first half of 2022 in additional to the directorship fees.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "3 months ends at September 30, 2022",
+     "",
+     "3 months ends at September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cima Telecom Inc. (a)",
+     "$",
+     "383",
+     "",
+     "260"
+    ],
+    [
+     "",
+     "$",
+     "383",
+     "$",
+     "260"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "(a) Composed of periodic fees in the amount of $700 thousand for the maintenance and support services in accordance with the software maintenance agreement and the a Settlement Agreement and General Release dated August 2, 2022 and the and $375 for the first half of the second calendar year from the effective date of the agreement, $242 thousand for software development services during the first nine months of 2022 and 147$ thousand for software development services during the nine months of 2021 and $30 thousand for the consulting services for the first quarter of 2021. Refer to note 6.\n(b) Composed of consulting fee for the first half of 2022 in additional to the directorship fees.",
+   "prose_after": "(a) Composed of fees in the amount of $383 thousand for the maintenance and support services in accordance with the software maintenance agreement and the Settlement Agreement and General Release dated August 2, 2022 and $125 for the third quarter of the second calendar year from the effective date of the agreement, 135$ thousand for software development services during the third quarter of 2021. Please refer to note 6.\nEmployment Agreements\nOn August 18, 2022, Jeffery D. Johnson signed a Separation of Employment Agreement between himself and the Company and resigned as the chief executive officer of the Company effective immediately. On August 19, 2022, the Board of Directors approved the Separation and General Release Agreement, approved the immediate acceleration of the vesting of 160,000 options previously issued to him under the Stock Option Plan that will be exercisable for a period of three years after the resignation and noted that the separation was cordial and positive. Mr. Johnson received a onetime Separation Payment of $100, and the Company will pay all costs for COBRA (health insurance) benefits through the end of calendar year 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "484",
+     "$",
+     "440"
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "1,723",
+     "",
+     "49"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "2,207",
+     "$",
+     "489"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SEGMENTS OF OPERATIONS"
+    }
+   },
+   "prose_before": "On May 25, 2022, the Company received a notice of default from CIMA Telecom, Inc. (\u201cCIMA\u201d) related to that certain Platform Exclusive License Agreement, maintenance, and related agreements by and among Cuentas, CIMA, Knetik, Inc., and Auris, LLC. The notice provides that Cuentas has failed to pay $700,000 of maintenance and pass-through fees that CIMA alleges are owed under the License Agreement and also afforded Cuentas the required sixty-day period (through July 24, 2022) to cure the default as provided under the License Agreement.. On August 2, 2022, the Company and CIMA, along with two of CIMA\u2019s wholly-owned subsidiaries, Knetik, Inc. and Auris, LLCexecuted a Settlement Agreement and General Release which resolves the issues related to the July 8, 2022 notice of default from CIMA related to that certain Platform Exclusive License Agreement, maintenance, and related agreements by and among Cuentas, CIMA, Knetik, Inc., and Auris, LLC. The Parties executed Mutual General Releases and the settlement terms are as follows: In exchange for the consideration provided in the Settlement Agreement, (1) the Company paid CIMA $350,000.00 on August 2, 2022 and (2) on or before 5:00 p.m New York City time, on August 15, 2022, Cuentas will pay CIMA the balance of the Unpaid Fees ($420,239.78) by wire transfer (3) Cuentas will a period of 30 days from execution date, the exclusive right to facilitate a third party (including to current shareholders and directors of Cuentas) purchase (without markup or broker fee) of, all of the shares of Cuentas held by CIMA at the higher of: (i) the average per share trading price for the three day average before notice in writing is provided by Cuentas of the intent to purchase CIMA\u2019s Cuentas shares, or (ii) the minimum price of $0.50 per share on or before 5:00 p.m. New York City time, on August 31, 2022 pursuant to a purchase agreement delivered by and acceptable to CIMA without any changes thereto (provided, that CIMA shall not be required to provide any representations or warranties other than fundamental warranties related to (a) organization and good standing, (b) power and authority to undertake the transaction and (c) ownership of such shares, and ordinary representations and warranties that the Cuentas shares are being transferred free and clear of any liens, claims, or encumbrances); and (iv) on or before 5:00 p.m. New York City time, on August 2, 2022, Cuentas shall, and shall cause (x) Dinar Zuz, LLC, (y) Michael De Prado and (z) Arik Maimon to provide signed waiver letters, expressly waiving any right of first refusal and co-sale rights granted in their favor under that certain letter agreement, dated December 31, 2019, by and among CIMA, Dinar Zuz, LLC, Michael Del Prado and Arik Maimon, and (y) CIMA agrees: (i) to restore immediately Cuentas\u2019 access to the Platform upon receipt of the $350,000.00 payment ; (ii) to provide Cuentas with a limited license to utilize the Platform the terms of which are detailed specifically in Section 6 of the agreement, and to use reasonable efforts, subject to Cuentas\u2019 compliance hereto, to provide Cuentas\u2019 customer data to Cuentas through the end of the limited license term described below in Section 6 of the agreement; (iii) deliver to Cuentas the Source Code (as that term is defined in paragraph 1.18 of the License Agreement) relating to Out-Of-Scope Services, and as further detailed in Section 6 of the agreement; (iv) not enforce its rights under the Side Letter (as that term is defined in the paragraph 1.1 of the Purchase Agreement) through and including August 31, 2022, and (v) shall not transfer, sell, or encumber its Cuentas shares through and including August 31, 2022, except as permitted herein. Cuentas acknowledges and agrees that the amount of Unpaid Fees ($770,239.78) is valid and outstanding, and waives any right to dispute them. If Cuentas fails to comply with any term of this Settlement Agreement, in addition to the Stipulated Judgment described in Section 5 of the agreement, the limited license set forth in Section 6 and any of CIMA\u2019s obligations under this Settlement Agreement shall become null and CIMA shall have the right to shut off Cuentas access to the Platform without notice. The Settlement Agreement also provides for mutual general releases by Cuentas for the benefit of CIMA and by CIMA for the benefit of Cuentas of all claims other than claims relating to a breach of the Settlement Agreement. The settlement agreement by its terms in effect terminates the obligations under the license agreement, dated December 31, 2019 by and between Cuentas and CIMA. The Company did not exercise its exclusive right to facilitate a third party purchase of, all of the shares of Cuentas held by CIMA.\nOn April 1, 2021 the Company executed a lease for office space effective April 1, 2021. The lease requires monthly rental payments of $7.\nNOTE 7 \u2013 SEGMENTS OF OPERATIONS\nThe Company reports segment information based on the \u201cmanagement\u201d approach. The management approach designates the internal reporting used by management for making decisions and assessing performance as the source of the Company\u2019s reportable operating segments. The Company manages its business primarily on a product basis. The accounting policies of the various segments are the same as those described in Note 2, \u201cSummary of Significant Accounting Policies.\u201d The Company evaluates the performance of its reportable operating segments based on net sales and gross profit.\nRevenue by product for the nine months ended September 30, 2022, and the nine months ended September 30, 2021 are as follows:",
+   "prose_after": "Gross profit (loss) by product for the nine months ended September 30, 2022, and the nine months ended September 30, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "297",
+     "$",
+     "183",
+     ""
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "8",
+     "",
+     "(55)",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "305",
+     "$",
+     "128",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SEGMENTS OF OPERATIONS"
+    }
+   },
+   "prose_before": "Gross profit (loss) by product for the nine months ended September 30, 2022, and the nine months ended September 30, 2021 are as follows:",
+   "prose_after": "Revenue by product for the three months ended September 30, 2022, and the three months ended September 30, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "166",
+     "$",
+     "87"
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "977",
+     "",
+     "22"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "1,143",
+     "$",
+     "109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 680,
+    "end_line": 691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SEGMENTS OF OPERATIONS"
+    }
+   },
+   "prose_before": "Revenue by product for the three months ended September 30, 2022, and the three months ended September 30, 2021 are as follows:",
+   "prose_after": "Gross profit (loss) by product for the three months ended September 30, 2022, and the three months ended September 30, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "97",
+     "$",
+     "34",
+     ""
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "19",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "116",
+     "$",
+     "18",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SEGMENTS OF OPERATIONS"
+    }
+   },
+   "prose_before": "Gross profit (loss) by product for the three months ended September 30, 2022, and the three months ended September 30, 2021 are as follows:",
+   "prose_after": "Long lived assets by product for September 30, 2022 and December 31, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "4,050",
+     "",
+     "5,400"
+    ],
+    [
+     "Total Long lived assets by product",
+     "$",
+     "4,050",
+     "$",
+     "5,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SEGMENTS OF OPERATIONS"
+    }
+   },
+   "prose_before": "Long lived assets by product for September 30, 2022 and December 31, 2021 are as follows:",
+   "prose_after": "NOTE 8 \u2013 STOCKHOLDERS\u2019 EQUITY\nOn August 4, 2022, the Company, entered into a Securities Purchase Agreement with an institutional investor pursuant to which the Purchaser agreed to purchase, and the Company agreed to issue and sell to the Purchaser in a private placement, an aggregate of 1,655,000 shares of the Company\u2019s common stock, $0.001 par value, pre-funded warrants to purchase up to 2,569,044 shares of Common and warrants to purchase up to 4,224,044 shares of Common Stock. The purchase price per Share and associated Common Stock Warrant was $0.71022 and the purchase price per Pre Funded Warrant and associated Common Stock Warrant was $0.71012. Each Common Stock Warrant entitles the holder to purchase one share of Common Stock at an exercise price of $0.59 per share. Each Pre Funded Warrant entitles the holder to purchase one share of Common Stock at an exercise price of $0.0001 per share. The Common Stock Warrants are exercisable for a period of five years and nine months commencing on the issuance date and the Pre Funded Warrants are exercisable until exercised. The Warrants also contain customary beneficial ownership limitations that may be waived at the option of each holder upon 61 days\u2019 notice to the Company. The Private Placement closed on August 8, 2022. The gross proceeds to the Company, before deducting placement agent fees and other offering expenses, were approximately $3.0 million and the net proceeds to the Company, after deducting placement agent fees and other offering expenses, were approximately $2.7 million . On August 4, 2022, in connection with the Private Placement, the Company entered into a registration rights with the Purchaser, pursuant to which the Company agreed to file a registration statement with the Securities and Exchange Commission (the \u201cSEC\u201d) to register for resale the Shares and any shares of the Company\u2019s common stock issuable upon exercise of the Warrants within 30 days of the signing of the Registration Rights Agreement, with such registration statement becoming effective within 60 days after the signing of the Registration Rights Agreement, subject to adjustment in the event of a review by the SEC. The Company is subject to customary penalties and liquidated damages in the event it does not meet certain filing requirements and deadlines set forth in the Registration Rights Agreement. The registration statement was declared effective on September 22, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "484",
+     "$",
+     "440"
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "1,723",
+     "",
+     "49"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "2,207",
+     "$",
+     "489"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 786,
+    "end_line": 797
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. The Fintech industry has had to adapt to the COVID pandemic with resulting challenges due to changes in the labor market, supply chains, inflation, increasing interest rates and the stock market uncertainty. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Cuentas, we push the boundaries of what is possible through a broad range of research and development activities that seek to anticipate the changing demands of customers, industry trends and competitive forces. Society has seen a major shift towards cashless transactions and acceptance of digital currency for normal day to day transactions and services. Cuentas is currently offering digital reloads for several mass transit agencies in the USA and expects to increase that segment significantly as people continue to return to normal work commutes. Discounted digital offerings are also expected to increase in popularity as the public leans towards digital, touchless transactions and Cuentas is strategically aligned and interconnected with one of the largest digital gift card providers in the USA. Sports arenas are once again full and Cuentas has aligned itself with MASL, a new indoor soccer league starting in November 2022, which we believe has tremendous potential as the upcoming World Cup competition will stimulate interest in professional soccer leagues.\nRESULTS OF OPERATIONS\nComparison of the nine months ended September 30, 2022 to the nine months ended September 30, 2021\nRevenue\nThe Company generates revenues through the sale and distribution of prepaid telecom minutes, digital products and other related telecom services. The Company also generated sales from its Fintech products and services commencing in the third quarter of 2020. Revenues during the nine months ended September 30, 2022 totaled $ 2,207,000 compared to $489,000 for the nine months ended September 30, 2021. The increase in our sales of digital products and General-Purpose Reloadable Cards is mainly due to increase in the sales of our digital telecom products due to online and other marketing initiatives.\nRevenue by product for the nine months ended September 30, 2022, and the nine months ended September 30, 2022 are as follows:",
+   "prose_after": "Costs of Revenue and Gross profit\nCost of revenues during the nine months ended September 30, 2022 totaled $1,902,000 compared to $361,000 for the nine months ended September 30, 2021.\nCost of revenue consists of the purchase of wholesale minutes for resale, related telecom platform costs and purchase of digital products in the amount of $187,000 during the nine months ended September 30, 2022 and $257,000 during the nine months ended September 30, 2021.\nCost of revenue also consists of costs related to the sale of the Company\u2019s Digital products and GPR Cards in the amount of $1,715,000 during the nine months ended September 30, 2022 and $104,000 during the nine months ended September 30, 2021.\nGross profit (loss) by product lines for nine months ended September 30, 2022, and 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 775,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "297",
+     "$",
+     "183",
+     ""
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "8",
+     "",
+     "(55)",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "305",
+     "$",
+     "128",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 808,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Costs of Revenue and Gross profit\nCost of revenues during the nine months ended September 30, 2022 totaled $1,902,000 compared to $361,000 for the nine months ended September 30, 2021.\nCost of revenue consists of the purchase of wholesale minutes for resale, related telecom platform costs and purchase of digital products in the amount of $187,000 during the nine months ended September 30, 2022 and $257,000 during the nine months ended September 30, 2021.\nCost of revenue also consists of costs related to the sale of the Company\u2019s Digital products and GPR Cards in the amount of $1,715,000 during the nine months ended September 30, 2022 and $104,000 during the nine months ended September 30, 2021.\nGross profit (loss) by product lines for nine months ended September 30, 2022, and 2021 are as follows:",
+   "prose_after": "Gross margin for the nine months ended September 30, 2022 was 14% consisting of 62% margin for the telecommunications and less than 1% margin for the digital product and general purpose reloadable cards. The gross loss for the sale of digital product and general-purpose reloadable cards in 2021stemmed from the lower margins of the digital products since the sales derived from the sale of digital products has minimal gross margins.\nOperating Expenses\nOperating expenses consist of selling, general and administrative Expenses and amortization of Intangible assets as discussed below and totaled $9,320,000 during the nine months ended September 30, 2022, compared to $6,144,000 during the nine months ended September 30, 2021 representing a net increase of $3,176,000.\nSelling, General and Administrative Expenses\nSelling, general and administrative expenses totaled $7,962,000 during the nine months ended September 30, 2022 compared to $4,787,000 during the nine months ended September 30, 2021, representing a net increase of $3,175,000. Included in in the Selling, general and administrative expenses, Stock-based compensation amounted to $1,438,000 and shares issued for services expenses amounted to $110,000 during the nine months ended September 30, 2022 compared to $541,000 during the nine months ended September 30, 2021. This increase was mainly due to issuance of 1,550,000 stock options to directors and officers of the Company in the 2021 and 400,000 stock options to officer and directors of the Company in the 2022. Such options can be exercised until 2032. The increase in the other operating expenses is mainly due to an increase in the agreed maintenance and support services in accordance with the software maintenance agreement with CIMA and settlement agreement in the amount to $942,000 during the nine months ended September 30, 2022 due to the settlement agreement with CIMA, increase in the agreed payments in accordance with the processing service agreement with Incomm in the amount of $185,000 to $625,000 during the nine months ended September 30, 2022, increase in our compensation and director fees in the approximate amount of $270,000 to $1,334,000 and increase of approximately of $1,090,000 in our selling and marketing expenses during the nine months ended September 30, 2022.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 775,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "166",
+     "$",
+     "87"
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "977",
+     "",
+     "22"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "1,143",
+     "$",
+     "109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "We incurred a net loss of $9,085,000 for the nine months ended September 30,2022 as compared to a net loss of 6,082,000 for the nine months ended September 30, 2021 due to the increase in selling and general administrative expenses as described above.\nComparison of the three months ended September 30, 2022 to the three months ended September 30, 2021\nRevenue\nThe Company generates revenues through the sale and distribution of prepaid telecom minutes, digital products and other related telecom services. The Company also generated sales from its Fintech products and services commencing in the third quarter of 2020. Revenues during the three months ended September 30, 2022 totaled $1,143,000 compared to $109,000 for the three months ended September 30, 2021. The increase in our sales of digital products and General-Purpose Reloadable Cards is mainly due to increase in the sales of our digital telecom product due to online and other marketing initiatives.\nRevenue by product for the three months ended September 30, 2022, and the three months ended September 30, 2021 are as follows:",
+   "prose_after": "Costs of Revenue and Gross profit\nCost of revenues during the three months ended September 30, 2022 totaled $1,027,000 compared to $91,000 for the three months ended September 30, 2021.\nCost of revenue consists of the purchase of wholesale minutes for resale, related telecom platform costs and purchase of digital products in the amount of $ 69,000 during the three months ended September 30, 2022 and $53,000 during the three months ended September 30, 2021.\nCost of revenue also consists of costs related to the sale of the Company\u2019s GPR Card in the amount of $958,000 during the three months ended September 30, 2022 and $38,000 during the three months ended September 30, 2021.\nGross profit (loss) by product lines for three months ended September 30, 2022 and 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "September 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Telecommunications",
+     "$",
+     "97",
+     "$",
+     "34",
+     ""
+    ],
+    [
+     "Digital products and General Purpose Reloadable Cards",
+     "",
+     "19",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "116",
+     "$",
+     "18",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 875,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Costs of Revenue and Gross profit\nCost of revenues during the three months ended September 30, 2022 totaled $1,027,000 compared to $91,000 for the three months ended September 30, 2021.\nCost of revenue consists of the purchase of wholesale minutes for resale, related telecom platform costs and purchase of digital products in the amount of $ 69,000 during the three months ended September 30, 2022 and $53,000 during the three months ended September 30, 2021.\nCost of revenue also consists of costs related to the sale of the Company\u2019s GPR Card in the amount of $958,000 during the three months ended September 30, 2022 and $38,000 during the three months ended September 30, 2021.\nGross profit (loss) by product lines for three months ended September 30, 2022 and 2021 are as follows:",
+   "prose_after": "Gross margin for the three months ended September 30, 2022, was 10% consisting of 58% margin for the telecommunications and 2% margin for the digital product and general-purpose reloadable cards. The gross loss for the sale of digital product and general-purpose reloadable cards in 2021stemmed from the lower margins of the digital products since the sales derived from the sale of digital products has minimal gross margins. The gross loss for the sale of digital product and general-purpose reloadable cards in 2021stemmed from the lower margins of the digital products since the sales derived from the sale of digital products has minimal gross margins.\nOperating Expenses\nOperating expenses consist of selling, general and administrative Expenses and amortization of Intangible assets as discussed below and totaled $2,382,000 during the three months ended September 30 2022, compared to $2,428,000 during the three months ended September 30, 2021 representing a net decrease of $46,000.\nSelling, General and Administrative Expenses",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "  Description",
+     "Location"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Separation Agreement, dated as of August 18, 2022, by and between Cuentas, Inc. and Jeffery D. Johnson",
+     "Form 8-K filed at August 24, 2022"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10. 2",
+     "SOFTWARE LICENSING AND TRANSACTION SHARING AGREEMENT -REDACTED",
+     "Form 8-K filed at August 26, 2022"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "INDEPENDENT SALES ORGANIZATION PROCESSING AGREEMENT - REDACTED",
+     "Form 8-K filed at August 26, 2022"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Marketing Agreement",
+     "filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document.",
+     "Filed herewith"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document.",
+     "Filed herewith"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document.",
+     "Filed herewith"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document.",
+     "Filed herewith"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document.",
+     "Filed herewith"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document.",
+     "Filed herewith"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101).",
+     "Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "D. Johnson signed a Separation of Employment Agreement between himself and the Company and resigned as the chief executive officer of the Company effective immediately. On August 19, 2022, the Board of Directors approved the Separation and General Release Agreement, approved the immediate acceleration of the vesting of 160,000 options previously issued under the Stock Option Plan that will be exercisable for a period of three years after the resignation and noted that the separation was cordial and positive. Mr. Johnson received a onetime Separation Payment of $100,000 and the Company will pay all costs for COBRA (health insurance) benefits through the end of calendar year 2022.\nOn September 30, 2022, Anthony H. Meadows resigned as chief operating officer of the \u201cCompany. The Company is negotiating a settlement agreement with Mr. Meadows and may enter into a consulting agreement with Mr. Meadows to complete certain projects that Mr. Meadows was working on prior to his resignation.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cuentas, Inc.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 14, 2022",
+     "By:",
+     "/s/ Shalom Arik Maimon"
+    ],
+    [
+     "",
+     "",
+     "Interim Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Ran Daniel"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Cuentas, Inc.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

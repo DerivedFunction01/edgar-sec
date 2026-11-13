@@ -1,0 +1,3558 @@
+{
+ "accession": "0001104659-22-041792",
+ "cik": "0001872356",
+ "form": "10-K",
+ "filing_date": "2022-04-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "aerc-20211231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "45-3213164"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________to________\nCommission File No. 001-41096\nAeroClean Technologies, Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "10455 Riverside Dr.\nPalm Beach Gardens, FL 33410\n(Address, including zip code, of principal executive offices)\nRegistrant\u2019s telephone number, including area code: 833-652-5326\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, $0.01 Par Value",
+     "AERC",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "10455 Riverside Dr.\nPalm Beach Gardens, FL 33410\n(Address, including zip code, of principal executive offices)\nRegistrant\u2019s telephone number, including area code: 833-652-5326\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act of 1933. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Securities Exchange Act of 1934. Yes [ ] No [X]\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "14"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "28"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "28"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "28"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "31"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "31"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "35"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "35"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "35"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "35"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "36"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "36"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "37"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "37"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "37"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "37"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibit and Financial Statement Schedules",
+     "38"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the Registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe Registrant did not have a public float on the last business day of its most recently completed second fiscal quarter because there was no public market for the Registrant\u2019s common equity as of such date.\nThe Registrant has one class of common stock, $0.01 par value per share, of which 13,877,636 shares were outstanding as of March 28, 2022.\nDOCUMENTS INCORPORATED BY REFERENCE\nInformation required by Part III (Items 10, 11, 12, 13 and 14) of this Form 10-K is incorporated by reference to portions of the Registrant\u2019s definitive proxy statement for the 2022 Annual Meeting of Stockholders, which will be filed with the Securities and Exchange Commission no later than 120 days after the end of the Registrant\u2019s fiscal year covered by this report.\nAEROLEAN TECHNOLOGIES, INC.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "2\nCAUTIONARY STATEMENT CONCERNING FORWARD-LOOKING STATEMENTS\nThe Private Securities Litigation Reform Act of 1995 provides a \u201csafe harbor\u201d for forward-looking statements to encourage companies to provide prospective information to investors. This Annual Report on Form 10-K (this \u201cAnnual Report\u201d) includes forward-looking statements that reflect our current expectations and projections about our future results, performance and prospects. Forward-looking statements include all statements that are not historical in nature or are not current facts. When used in this Annual Report, the words \u201cbelieve,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201cproject,\u201d \u201cintend,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cpotential,\u201d \u201ccontinue,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201clikely,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwill\u201d, \u201ctarget\u201d or the negative of these terms or similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain such identifying words. These forward-looking statements are based on our current expectations and assumptions about future events and are based on currently available information as to the outcome and timing of future events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Product revenues",
+     "",
+     "$",
+     "616,511",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "616,511"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "338,896",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "338,896"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "277,615",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "277,615"
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "",
+     "4,327,998",
+     "",
+     "",
+     "1,131,385",
+     "",
+     "",
+     "3,196,613"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "4,193,362",
+     "",
+     "",
+     "2,191,696",
+     "",
+     "",
+     "2,001,666"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "8,521,360",
+     "",
+     "",
+     "3,323,081",
+     "",
+     "",
+     "5,198,279"
+    ],
+    [
+     "Loss before income tax benefit",
+     "",
+     "",
+     "(8,243,745)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(8,243,745)"
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "",
+     "320,138",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "320,138"
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(7,923,607)",
+     "",
+     "$",
+     "(3,323,081)",
+     "",
+     "$",
+     "(4,600,526)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 755
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We continue to monitor the outbreak of COVID-19 and its variants, including the most recent Omicron variant, which continue to spread throughout the world and adversely impact global commercial activity and contribute to significant declines and volatility in financial markets. Our on-going research and development activities, including development of product prototypes and manufacturing activities, are all conducted in the United States, and as a result, we have been able to mitigate the adverse impact of the COVID-19 pandemic on our global supply chain. During the year ended December 31, 2021, we have not experienced any significant adverse impact on our operations as a result of the COVID-19 pandemic. However, across many industries, including our own, COVID-19 - among other factors - has negatively impacted personnel and operations at third-party manufacturing and component part supplier facilities in the United States and around the word. These disruptions have adversely impacted the availability and cost of raw materials and component parts. For example, various electronic components and semi-conductor chips have become increasingly difficult to source, and when available, may be subject to substantially longer lead times and higher costs than historically applicable. While we have achieved improvements in manufacturing output since the commercial launch of P\u016brgo in late Q3 2021, the ongoing global logistics and supply chain bottlenecks and shortages have increased lead times for electronics, semi-conductors, chips, and even recently-in-stock and short lead time items. The team has taken action to minimize the impact of these supply chain and logistics disruptions to ongoing production, and we expect these challenges will resolve towards the end of the first half of 2022.\nWe continue to actively monitor the situation and may take further actions that impact operations as may be required by federal, state or local authorities or that we determine is in the best interests of our employees, customers, suppliers and stockholders. As of the date of this Annual Report, the pandemic presents uncertainty and risk as we cannot reasonably determine or predict the nature, duration or scope of the overall impact the COVID-19 pandemic will have on our business, results of operations, liquidity or capital resources.\nResults of Operations\nThe following table summarizes our results of operations for the periods indicated:",
+   "prose_after": "Revenue and Cost of Sales\nThe Company began the production and sale of its first commercial product, P\u016brgo, in July 2021, generating $616,511 in product revenues for the year ended December 31, 2021 (of which amount $80,000 was generated from sales to certain of the Company\u2019s directors and shareholders). The Company did not have any revenue in the year ended December 31, 2020. Cost of sales increased in conjunction with the increase in revenues.\nOperating Expenses\nSelling General and Administrative Expenses\nSelling, general and administrative expenses consist primarily of costs related to our employees, independent contractors and consultants. Other significant selling, general and administrative expenses include accounting and legal services and expenses associated with obtaining and maintaining patents as well as marketing and advertising services and expenses associated with establishing our brand and developing our website, marketing materials and call center.\nFor the years ended December 31, 2021 and 2020, we incurred $4,327,998 and $1,131,385, respectively, of selling, general and administrative expenses. We attribute the increase of $3,196,613 primarily to a greater level of business activities being conducted in the year ended December 31, 2021 as compared to the same period in 2020, including costs related to the hiring of additional personnel (an increase of approximately $800,000), increased fees for outside consultants (an increase of approximately $1,000,000), stock-based compensation of approximately $260,000, rent expense (an increase of approximately $400,000) and professional fees and insurance (an increase of approximately $400,000).",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation (incorporated by reference to Exhibit 4.1 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261395), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "3.2",
+     "Bylaws (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261395), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "4.1",
+     "Form of Common Stock Certificate (incorporated by reference to Exhibit 3.1 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "4.2",
+     "Form of Share Purchase Option (incorporated by reference to Exhibit 3.2 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "4.3",
+     "Form of Registration Rights Agreement (incorporated by reference to Exhibit 3.2 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "4.4",
+     "Form of Restricted Stock Unit Agreement (Directors) (incorporated by reference to Exhibit 6.10 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "4.5",
+     "Form of Restricted Stock Unit Agreement (incorporated by reference to Exhibit 6.11 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "4.6*",
+     "Description of securities registered under Section 12 of the Securities Exchange Act of 1934."
+    ],
+    [
+     "10.1\u2020",
+     "AeroClean Technologies, Inc. 2021 Incentive Award Plan (incorporated by reference to Exhibit 99.1 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261396), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "10.2\u2020",
+     "AeroClean Technologies, Inc. Employee Stock Purchase Plan (incorporated by reference to Exhibit 99.2 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261396), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "10.3\u2020",
+     "AeroClean Technologies, Inc. Non-Employee Directors Stock and Deferred Compensation Plan (incorporated by reference to Exhibit 99.3 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261396), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "10.4\u2020",
+     "AeroClean Technologies, Inc. 2021 Deferred Compensation Plan (incorporated by reference to Exhibit 99.3 to the Company\u2019s Registration Statement on Form S-8 (File No. 333-261395), filed with the SEC on November 29, 2021)."
+    ],
+    [
+     "10.5\u2020",
+     "Consultant Agreement, dated as of May 1, 2020, between CleanCo Bioscience Group LLC and Jason DiBona (incorporated by reference to Exhibit 6.2 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "10.6\u2020",
+     "Executive Employment Agreement, dated as of November 1, 2020, between AeroClean Technologies, LLC and Jason DiBona (incorporated by reference to Exhibit 6.3 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Item 14. Principal Accountant Fees and Services\nThe information required by this Item 14 is incorporated by reference to the applicable information in our Proxy Statement for the 2022 Annual Meeting of Stockholders, to be filed with the SEC within 120 days of the fiscal year ended December 31, 2021.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\nDocuments filed as part of this report:\nArticle I.Financial Statements. See Index to Consolidated Financial Statements, which appears on page F-1 hereof. The consolidated financial statements listed in the accompanying Index to Consolidated Financial Statements are filed herewith in response to this Item.\nArticle II.Financial Statement Schedules. All other schedules have been omitted because the required information is not applicable or the information is included in the consolidated financial statements or the notes thereto.\nArticle III.Exhibits. The exhibits listed on the accompanying Index to Exhibits are filed as part of this Annual Report.\nINDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 891,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 937,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.6.1\u2020",
+     "Amendment to Executive Employment Agreement, dated as of May 1, 2021, by and between AeroClean Technologies, LLC and Jason DiBona (incorporated by reference to Exhibit 6.3.1 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "10.7\u2020",
+     "Confidentiality, Non-Competition, Non-Solicitation and Inventions Assignment Agreement, dated as of November 1, 2020, by and between AeroClean Technologies, LLC and Jason DiBona (incorporated by reference to Exhibit 6.4 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "10.8\u2020",
+     "Executive Employment Agreement, dated as of November 1, 2020, between AeroClean Technologies, LLC and Ryan Tyler (incorporated by reference to Exhibit 6.5 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "10.8.1\u2020",
+     "Amendment to Executive Employment Agreement, dated as of May 1, 2021, by and between AeroClean Technologies, LLC and Ryan Tyler (incorporated by reference to Exhibit 6.5.1 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "10.9\u2020",
+     "Confidentiality, Non-Competition, Non-Solicitation and Inventions Assignment Agreement, dated as of November 1, 2020, by and between AeroClean Technologies, LLC and Ryan Tyler (incorporated by reference to Exhibit 6.6 to the Company\u2019s Offering Statement (File No. 024-11650), filed with the SEC on September 21, 2021, as amended)."
+    ],
+    [
+     "21.1*",
+     "List of Subsidiaries."
+    ],
+    [
+     "23.1*",
+     "Consent of Citrin Cooperman & Company, LLP."
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer, pursuant to Rules 13a-14(a) and15d-13(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer, pursuant to Rules 13a-14(a) and15d-13(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 938,
+    "end_line": 963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "*Filed herewith\n**Furnished herewith\n\u2020Management contract or compensatory plan or arrangement\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: April 1, 2022",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 937,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 974,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AEROCLEAN TECHNOLOGIES, INC.",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Jason DiBona"
+    ],
+    [
+     "",
+     "Name:",
+     "Jason DiBona"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "AEROCLEAN TECHNOLOGIES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 981,
+    "end_line": 988
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "*Filed herewith\n**Furnished herewith\n\u2020Management contract or compensatory plan or arrangement\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: April 1, 2022",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of AeroClean Technologies, Inc. and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 974,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Jason DiBona",
+     "Chief Executive Officer (Principal Executive Officer)",
+     "April 1, 2022"
+    ],
+    [
+     "Jason DiBona",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ryan Tyler",
+     "Chief Financial Officer (Principal Financial Officer)",
+     "April 1, 2022"
+    ],
+    [
+     "Ryan Tyler",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Amin J. Khoury",
+     "Chairman of the Board",
+     "April 1, 2022"
+    ],
+    [
+     "Amin J. Khoury, PhD (Hon)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Helfet",
+     "Director",
+     "April 1, 2022"
+    ],
+    [
+     "David Helfet, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Senft",
+     "Director",
+     "April 1, 2022"
+    ],
+    [
+     "Michael Senft",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Thomas P. McCaffrey",
+     "Director",
+     "April 1, 2022"
+    ],
+    [
+     "Thomas P. McCaffrey",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Heather Floyd",
+     "Director",
+     "April 1, 2022"
+    ],
+    [
+     "Heather Floyd",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 991,
+    "end_line": 1022
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of AeroClean Technologies, Inc. and in the capacities and on the dates indicated:",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS\nAudited Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 974,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Number"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 2468)",
+     "F-2"
+    ],
+    [
+     "Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Statements of Changes in Members\u2019/Stockholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to the Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1028,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS\nAudited Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Stockholders and the Board of Directors of AeroClean Technologies, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of AeroClean Technologies, Inc. (the \u201cCompany\u201d) as of December 31, 2021 and 2020, and the related statements of operations, changes in members\u2019 equity/stockholders\u2019 equity and cash flows for each of the years in the two-year period ended December 31, 2021, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021 and 2020, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "19,629,649",
+     "",
+     "$",
+     "2,333,117"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "177,064",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "",
+     "1,124,998",
+     "",
+     "",
+     "304,836"
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "100,543"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "645,942",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "21,577,653",
+     "",
+     "",
+     "2,738,496"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "2,123,428",
+     "",
+     "",
+     "454,679"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "21,667",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "23,722,748",
+     "",
+     "$",
+     "3,193,175"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND MEMBERS\u2019/STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "927,194",
+     "",
+     "$",
+     "332,072"
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "",
+     "583,885",
+     "",
+     "",
+     "333,236"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "1,511,079",
+     "",
+     "",
+     "665,308"
+    ],
+    [
+     "Long-term liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "",
+     "",
+     "501,254",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "2,012,333",
+     "",
+     "",
+     "665,308"
+    ],
+    [
+     "Commitments and contingencies (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Members\u2019 equity",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,527,867"
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preference Shares, $0.01 par value; 11,000,000 shares authorized; none issued and outstanding",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $0.01 par value per share; 110,000,000 shares authorized; 13,877,636 issued and outstanding as of December 31, 2021",
+     "",
+     "",
+     "138,776",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "23,319,499",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(1,747,860)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total members\u2019/stockholders\u2019 equity",
+     "",
+     "",
+     "21,710,415",
+     "",
+     "",
+     "2,527,867"
+    ],
+    [
+     "Total liabilities and members\u2019/stockholders equity",
+     "",
+     "$",
+     "23,722,748",
+     "",
+     "$",
+     "3,193,175"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1066,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ CITRIN COOPERMAN & COMPANY, LLP\nWe have served as the Company's auditor since 2020.\nNew York, New York\nApril 1, 2022\nBALANCE SHEETS",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Product revenues",
+     "",
+     "$",
+     "616,511",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "338,896",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "277,615",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "",
+     "4,327,998",
+     "",
+     "",
+     "1,131,385"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "4,193,362",
+     "",
+     "",
+     "2,191,696"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "8,521,360",
+     "",
+     "",
+     "3,323,081"
+    ],
+    [
+     "Loss before income tax benefit",
+     "",
+     "",
+     "(8,243,745)",
+     "",
+     "",
+     "(3,323,081)"
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "",
+     "320,138",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(7,923,607)",
+     "",
+     "$",
+     "(3,323,081)"
+    ],
+    [
+     "Net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "$",
+     "(0.74)",
+     "",
+     "$",
+     "(1.02)"
+    ],
+    [
+     "Weighted-average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "",
+     "10,675,765",
+     "",
+     "",
+     "3,250,980"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1115,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENTS OF CHANGES IN MEMBERS\u2019/STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2021 AND 2020:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Members\u2019/",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Units",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Stockholders' Equity",
+     ""
+    ],
+    [
+     "Balance, January 1, 2020",
+     "",
+     "2,000,000",
+     "",
+     "$",
+     "4,669,696",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(4,900,326)",
+     "",
+     "$",
+     "(230,630)"
+    ],
+    [
+     "Issuance of equity units",
+     "",
+     "6,081,578",
+     "",
+     "",
+     "6,081,578",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,081,578"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,323,081)",
+     "",
+     "",
+     "(3,323,081)"
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "8,081,578",
+     "",
+     "$",
+     "10,751,274",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(8,223,407)",
+     "",
+     "$",
+     "2,527,867"
+    ],
+    [
+     "Reclassification of accumulated deficit",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "(8,223,407)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "8,223,407",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Issuance of equity units",
+     "",
+     "5,073,056",
+     "",
+     "",
+     "5,073,056",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,073,056"
+    ],
+    [
+     "Initial public offering of common stock, net of underwriting discounts, commissions and issuance costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,514,000",
+     "",
+     "",
+     "25,140",
+     "",
+     "",
+     "21,641,265",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,666,404"
+    ],
+    [
+     "Corporate conversion",
+     "",
+     "(13,428,948)",
+     "",
+     "",
+     "(1,528,222)",
+     "",
+     "11,363,636",
+     "",
+     "",
+     "113,636",
+     "",
+     "",
+     "1,414,586",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "274,314",
+     "",
+     "",
+     "924,438",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "263,648",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,188,087"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,997,139)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(926,468)",
+     "",
+     "",
+     "(7,923,607)"
+    ],
+    [
+     "Corporate conversion tax-effect",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(821,392)",
+     "",
+     "",
+     "(821,392)"
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "13,877,636",
+     "",
+     "",
+     "138,776",
+     "",
+     "$",
+     "23,319,499",
+     "",
+     "$",
+     "(1,747,860)",
+     "",
+     "$",
+     "21,710,415"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1150,
+    "end_line": 1173
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENTS OF CHANGES IN MEMBERS\u2019/STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2021 AND 2020:",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(7,923,607)",
+     "",
+     "$",
+     "(3,323,081)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash flows used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax benefit",
+     "",
+     "",
+     "(320,138)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "79,646",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Equity-based compensation",
+     "",
+     "",
+     "1,188,086",
+     "",
+     "",
+     "62,359"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "(177,064)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "(645,942)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other current and non-current assets",
+     "",
+     "",
+     "(841,836)",
+     "",
+     "",
+     "(304,836)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "595,119",
+     "",
+     "",
+     "187,346"
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "",
+     "250,649",
+     "",
+     "",
+     "333,236"
+    ],
+    [
+     "Due to related parties",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,000)"
+    ],
+    [
+     "Net cash flows used in operating activities",
+     "",
+     "",
+     "(7,795,087)",
+     "",
+     "",
+     "(3,069,976)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "",
+     "(1,748,392)",
+     "",
+     "",
+     "(454,679)"
+    ],
+    [
+     "Net cash flows used in investing activities",
+     "",
+     "",
+     "(1,748,392)",
+     "",
+     "",
+     "(454,679)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of equity units",
+     "",
+     "",
+     "5,173,599",
+     "",
+     "",
+     "5,856,976"
+    ],
+    [
+     "Proceeds from issuance of common stock from initial public offering",
+     "",
+     "",
+     "25,140,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payment of issuance costs",
+     "",
+     "",
+     "(3,473,588)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from loan from related party",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Repayment of loan from related party",
+     "",
+     "",
+     "(1,000,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash flows provided by financing activities",
+     "",
+     "",
+     "26,840,011",
+     "",
+     "",
+     "5,856,976"
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "",
+     "17,296,532",
+     "",
+     "",
+     "2,332,321"
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "",
+     "2,333,117",
+     "",
+     "",
+     "796"
+    ],
+    [
+     "Cash, end of period",
+     "",
+     "$",
+     "19,629,649",
+     "",
+     "$",
+     "2,333,117"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "",
+     "$",
+     "7,465",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of non-cash activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "100,543"
+    ],
+    [
+     "Equity units issued to related party",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "61,700"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1179,
+    "end_line": 1231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to the financial statements.\nNOTES TO THE FINANCIAL STATEMENTS\n1.Description of Business\nDescription of Business\nAeroClean Technologies, Inc. (\u201cAeroClean\u201d or the \u201cCompany\u201d) was initially formed as CleanCo Bioscience Group LLC (\u201cCBG\u201d) in the State of Florida on September 2, 2011. Subsequent to its formation, CBG established a team of scientists, engineers and medical experts to provide solutions for the challenges posed by harmful airborne pathogens and resultant hospital acquired infections. On September 15, 2020, CBG converted into AeroClean Technologies, LLC as a Delaware limited liability company and is headquartered in Palm Beach Gardens, Florida. On November 23, 2021, AeroClean Technologies, LLC incorporated in the state of Delaware as AeroClean Technologies, Inc. See Note 3, Public Offering for a discussion of the Company\u2019s recent initial public offering (the \u201cPublic Offering\u201d). AeroClean is an interior space air purification technology company with an immediate objective of initiating full-scale commercialization of its high-performance interior air sterilization and disinfection products for the eradication of coronavirus and other harmful airborne pathogens. AeroClean was established to develop technology-driven, medical-grade air purification solutions for hospitals and other healthcare settings.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1233,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 2",
+     "Valuations based on observable inputs other than quoted prices included in Level 1, such as quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets and liabilities in markets that are not active, or other inputs observable or that can be corroborated by observable market data."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1325,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The Company accounts for share-based payments to employees and non-employees in accordance with the provisions of FASB ASC 718, Compensation \u2014 Stock Compensation (\u201cASC 718\u201d). Under ASC 718, the Company measures the share-based compensation cost on the date of grant, based on the fair value of the award, and expense is recognized over the requisite service period. Compensation cost recognized during the year ended December 31, 2021 related to the issuance of Class A Units and grants of restricted stock units.\nFair Value Measurements\nCertain assets and liabilities are carried at fair value in accordance with U.S. GAAP. Fair value is defined as the price that would be received to sell an asset or paid to transfer a liability in the principal or most advantageous market in an orderly transaction between market participants at the measurement date. A three-tier fair value hierarchy that prioritizes the inputs used in the valuation methodologies, is as follows:\nLevel 1Valuations based on quoted prices for identical assets and liabilities in active markets.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3",
+     "Valuations based on unobservable inputs reflecting the Company\u2019s own assumptions, consistent with reasonably available assumptions made by other market participants. These valuations require significant judgment."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1329,
+    "end_line": 1333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "At December 31, 2021 and 2020, the carrying amounts of the Company\u2019s financial instruments, including cash, prepaid expenses and other current assets, accounts payable and accrued liabilities approximated their respective fair value due to the short-term nature of these instruments.\nOperating Segment\nThe Company operates in one segment. All of the Company\u2019s assets are in the United States of America.\nConcentrations of Credit Risk\nThe Company maintains its cash at a major financial institution with high credit quality, and at times, the balance in its cash deposits may exceed the Federal Deposit Insurance Corporation limits of $250,000. The Company has not experienced and does not anticipate any losses on deposits with commercial banks and financial institutions that exceed federally insured limits.\nThe Company\u2019s suppliers and vendors include engineering firms and consultants, research and development companies, testing laboratories, contract manufacturers and other suppliers required to design, test and manufacture its products. The Company obtains some of its services from a limited group of vendors; however, the Company has neither experienced any significant disruptions nor expects any significant disruptions to its operations due to supplier concentration. The Company\u2019s largest supplier accounted for 13% and 12% of total expenditures for the years ended December 31, 2021 and 2020, respectively, while its second largest supplier accounted for 11% and 33% of total expenditures for the years ended December 31, 2021 and 2020, respectively.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "$",
+     "475,767",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Finished goods",
+     "",
+     "",
+     "170,175",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total inventories",
+     "",
+     "$",
+     "645,942",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1374,
+    "end_line": 1384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "On November 29, 2021, the Company completed the Public Offering of 2,514,000 shares of its common stock, which included the partial exercise of the underwriters\u2019 overallotment option, at a public offering price of $10.00 per share for aggregate gross proceeds of $25,140,000 and net proceeds of approximately $21,640,000 after deducting underwriting fees of approximately $2,200,000 and other offering costs of approximately $1,300,000.The Company issued a purchase option to the underwriters (\u201cUPO\u201d) exercisable within five years of the Public Offering for 5.0% of the shares of common stock issued, or 125,700 shares of common stock, at an exercise price of $12.50 per share. The Company\u2019s common stock is listed on The Nasdaq Capital Market under the symbol \u201cAERC.\u201d In connection with the Public Offering, on November 23, 2021, the Company converted from a Delaware limited liability company into a Delaware corporation (the \u201cCorporate Conversion\u201d) and changed its name to AeroClean Technologies, Inc. In connection with the Corporate Conversion, the outstanding member units of 13,428,948 were converted into 11,363,636 shares of common stock at a conversion ratio of 0.8462. The Corporate Conversion has been adjusted retroactively for the purposes of calculating basis and diluted earnings per share. The Company\u2019s certificate of incorporation authorizes 110,000,000 shares of common stock and 11,000,000 of shares preferred stock.\n4.Prepaid Expenses and Other Current Assets\nPrepaid expenses and other current assets consist primarily of prepaid insurance premiums and amounts paid to suppliers and vendors for inventories and retainers for engineering, product development, testing and other services to be performed. Prepaid expenses and other current assets were $1,124,988 and $304,836 at December 31, 2021 and December 31, 2020, respectively.\n5. Inventories\nInventory consists of the following:",
+   "prose_after": "6.Property and Equipment\nProperty and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Useful Life",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Years)",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "Lesser of useful life or lease term",
+     "",
+     "$",
+     "847,217",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Machinery and tooling",
+     "",
+     "7",
+     "",
+     "",
+     "1,123,391",
+     "",
+     "",
+     "454,679"
+    ],
+    [
+     "Furniture and equipment",
+     "",
+     "3 - 10",
+     "",
+     "",
+     "232,466",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,203,074",
+     "",
+     "",
+     "454,679"
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "",
+     "",
+     "",
+     "79,646",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "2,123,428",
+     "",
+     "$",
+     "454,679"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1389,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "6.Property and Equipment\nProperty and equipment consisted of the following:",
+   "prose_after": "Property and equipment are stated at cost and depreciated generally under the straight-line method over their estimated useful lives (or the lesser of the term of the lease for leasehold improvements, as appropriate), except for tooling, which is depreciated utilizing the units-of-production method. Depreciation expense was $79,646 for the year ended December 31, 2021. There was no depreciation expense for the year ended December 31, 2020.\n7. Accrued Expenses and Other Current Liabilities\nAccrued expenses and other current liabilities consisted of the following as of:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Accrued wages and bonus",
+     "",
+     "$",
+     "408,418",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "35,708",
+     "",
+     "",
+     "271,800"
+    ],
+    [
+     "Professional and consulting fees",
+     "",
+     "",
+     "13,120",
+     "",
+     "",
+     "33,345"
+    ],
+    [
+     "Legal fees",
+     "",
+     "",
+     "29,512",
+     "",
+     "",
+     "10,000"
+    ],
+    [
+     "Customer advance deposits",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,000"
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "",
+     "97,127",
+     "",
+     "",
+     "12,091"
+    ],
+    [
+     "Total accrued expenses and other current liabilities",
+     "",
+     "$",
+     "583,885",
+     "",
+     "$",
+     "333,236"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1410,
+    "end_line": 1424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "Property and equipment are stated at cost and depreciated generally under the straight-line method over their estimated useful lives (or the lesser of the term of the lease for leasehold improvements, as appropriate), except for tooling, which is depreciated utilizing the units-of-production method. Depreciation expense was $79,646 for the year ended December 31, 2021. There was no depreciation expense for the year ended December 31, 2020.\n7. Accrued Expenses and Other Current Liabilities\nAccrued expenses and other current liabilities consisted of the following as of:",
+   "prose_after": "8. Commitments and Contingencies\nLease Commitments \u2013 On February 1, 2021, the Company entered into a lease with Gardens Bio Science Partners, LLC, an entity under common control of the Company\u2019s co-founder and Chairman of the Board. The leased premises consist of 20,000 square feet of office and warehouse space and has a lease term of 10 years at an annual base rent of $260,000 subject to escalation of 2.5% on an annual basis. The approximate future minimum lease payments under our noncancelable operating lease are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "$",
+     "266,500"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "273,163"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "279,992"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "286,991"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "294,166"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "1,273,734"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "2,674,546"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1429,
+    "end_line": 1442
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "8. Commitments and Contingencies\nLease Commitments \u2013 On February 1, 2021, the Company entered into a lease with Gardens Bio Science Partners, LLC, an entity under common control of the Company\u2019s co-founder and Chairman of the Board. The leased premises consist of 20,000 square feet of office and warehouse space and has a lease term of 10 years at an annual base rent of $260,000 subject to escalation of 2.5% on an annual basis. The approximate future minimum lease payments under our noncancelable operating lease are as follows:",
+   "prose_after": "Legal Proceedings \u2013 The Company is not a party to any litigation and does not have contingency reserves established for any litigation liabilities.\nIndemnities, Commitments and Guarantees \u2013 Effective November 1, 2020, the Company executed employment agreements with two key members of management that will continue until terminated by either party. In the event of termination without cause, the Company is obligated to pay the executive their base salary for a period of six months. Further, in the event of termination without cause or resignation for good reason, or a change of control, each as defined in the agreements, within twelve months of such termination or resignation, each of the executives is entitled to accelerated vesting of any outstanding time-based equity awards. The employment agreements provide for a base salary and a discretionary annual bonus to be determined at the sole discretion of the Company\u2019s Board of Managers, for periods prior to the Corporate Conversion, and the Company\u2019s Board of Directors (in either case, the \u201cBoard\u201d), for periods following the Corporate Conversion. The Company\u2019s employment agreements generally provide for certain protections in the event of a change of control. These protections generally include the payment of severance under certain circumstances in the event of a change of control. On May 1, 2021, the employment agreements were amended to provide for the eligibility of each executive to receive restricted stock units upon the conversion of the Company to a Delaware corporation. See Note 3, Public Offering. Accordingly, the executives were granted an aggregate of 443,269 restricted stock units contemporaneously with the Public Offering. The Company also had agreements in place with independent contractors whereby the Company was required to compensate the independent contractors fifty percent in cash and fifty percent in equity. The equity consideration was contingent upon future events, including the conversion to a Delaware corporation and a new round of equity financing from third party sources, which were not deemed to be probable at December 31, 2020. Subsequent to December 31, 2020, these agreements were amended so that the compensation will be in cash only for services provided subsequent to March 31, 2021. Effective April 1, 2021, the contractors were issued Class A Units to compensate them for the fifty percent equity portion of their consideration earned. See Note 9, Stockholders\u2019 Equity.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding January 1, 2021",
+     "",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "626,268"
+    ],
+    [
+     "Vested",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding January 1, 2021",
+     "",
+     "626,268"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1487,
+    "end_line": 1496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "The Company maintains an LTIP under which the Company\u2019s Compensation Committee has the authority to grant stock options; stock appreciation rights; restricted stock; restricted stock units; performance stock, performance units; and other forms of equity-based or equity-related awards.\nDuring the year ended December 31, 2021, the Company granted restricted stock to members of the Company\u2019s Board of Directors and certain members of management. Restricted stock grants vest over periods ranging from two to three years and are granted at the discretion of the Compensation Committee of the Company\u2019s Board of Directors. Compensation cost is generally recorded on a straight\u2011line basis over the vesting term of the shares based on the grant date value using the closing trading price.\nStock-based compensation expense of $263,648 was recorded in selling, general and administrative expense for the year ended December 31, 2021. Unrecognized compensation cost related to restricted stock awards made by the Company was $5,999,032 at December 31, 2021, which is expected to be recognized over the weighted average remaining life of 2.35 years at the grant date fair value of $10.00 per share.\nThe following is the restricted stock unit activity for the year ended December 31, 2021:",
+   "prose_after": "Members\u2019 Units\nPrior to the completion of the Public Offering (See Note 3, Public Offering), the Board was authorized to issue Class A Units (\u201cUnits\u201d), which entitled unitholders to allocations of profits and losses and other items and distributions of cash and other property as was set forth in the Company\u2019s operating agreement, as amended. The Board had the right at any time and from time to time to authorize and cause the Company to create and/or issue equity securities to any person, in which event, all units of a class, group or series would have been diluted in an equal manner as to the other units of such class, group or series, and the Board had the power to amend the operating agreement to allow for such additional issuances and dilution and to make any such other amendments necessary or desirable to reflect such issuances. The holder of each Unit had the right to one vote per Unit on all matters to be voted on by the Members.\nAt December 31, 2020, the Company recorded a subscription receivable for $100,543 relating to the purchase of Units in December 2020 for which cash was received in February of 2021.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1476,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "",
+     "$",
+     "(7,923,607)",
+     "",
+     "$",
+     "(3,323,081)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average common shares",
+     "",
+     "",
+     "10,675,765",
+     "",
+     "",
+     "3,250,980"
+    ],
+    [
+     "Diluted weighted average common shares",
+     "",
+     "",
+     "10,675,765",
+     "",
+     "",
+     "3,250,980"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net (loss) earnings per common share",
+     "",
+     "$",
+     "(0.74)",
+     "",
+     "$",
+     "(1.02)"
+    ],
+    [
+     "Diluted net (loss) earnings per common share",
+     "",
+     "$",
+     "(0.74)",
+     "",
+     "$",
+     "(1.02)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1517,
+    "end_line": 1536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Loss Per Common Share"
+    }
+   },
+   "prose_before": "Equity-based compensation expense of $924,438 related to these issuances was recognized and is included in selling, general and administrative expenses in the Company\u2019s statement of operations for the year ended December 31, 2021. The fair value of $3.37 for each Unit was determined utilizing the income-based approach, which relies on the discounted cash flow method and considers future cash flows discounted at an appropriate discount rate, or weighted average cost of capital. The discounted cash flow method is affected by assumptions regarding complex and subjective variables, including future levels of revenue growth, operating margins and working capital needs as well as the weighted average cost of capital, which was determined by evaluating the rates of return required for other companies of a similar size and stage of development.\n11. Loss Per Common Share\nBasic net loss per common share is computed using the weighted average common shares outstanding during the year. Diluted net loss per common share reflects the potential dilution from assumed conversion of all dilutive securities such as unvested restricted stock units and UPO using the treasury stock method. When the effects of the outstanding restricted stock units and UPO are anti-dilutive, they are not included in the calculation of diluted net loss per common share.\nThe following table sets forth the computation of basic and diluted net loss per share for the years ended December 31, 2021 and 2020:",
+   "prose_after": "12. Income Taxes\nIncome tax benefit consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1559,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Current Expense:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Benefit:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "266,278"
+    ],
+    [
+     "State",
+     "",
+     "",
+     "53,860"
+    ],
+    [
+     "",
+     "",
+     "",
+     "320,138"
+    ],
+    [
+     "Total Income Tax Benefit",
+     "",
+     "$",
+     "320,138"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021",
+    "Current Expense:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1541,
+    "end_line": 1559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "12. Income Taxes\nIncome tax benefit consisted of the following:",
+   "prose_after": "The significant components of the Company\u2019s deferred tax assets and liabilities at December 31, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1559,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Federal Net Operating Loss",
+     "",
+     "$",
+     "205,018"
+    ],
+    [
+     "State Net Operating Loss",
+     "",
+     "",
+     "42,419"
+    ],
+    [
+     "Capitalized Costs",
+     "",
+     "",
+     "(536,567)"
+    ],
+    [
+     "Tax credits",
+     "",
+     "",
+     "5,968"
+    ],
+    [
+     "Stock Compensation",
+     "",
+     "",
+     "66,822"
+    ],
+    [
+     "Accrued Expenses and Other",
+     "",
+     "",
+     "(284,914)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total gross deferred tax assets/(liabilities)",
+     "",
+     "",
+     "(501,254)"
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net deferred tax assets/(liabilities)",
+     "",
+     "",
+     "(501,254)"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1562,
+    "end_line": 1579
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The significant components of the Company\u2019s deferred tax assets and liabilities at December 31, 2021 are as follows:",
+   "prose_after": "The income tax benefit for the years ended December 31, 2021 differed from the amounts computed by applying the U.S. federal income tax rate of 21% to loss before tax benefit as a result of non-deductible expenses, tax credits generated, and utilization of net operating loss carryforwards. Since the Company is in a deferred tax liability position, a valuation allowance is not required.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1559,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1605,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Federal Statutory Rate",
+     "",
+     "$",
+     "(261,788)"
+    ],
+    [
+     "Permanent Differences",
+     "",
+     "",
+     "1,253"
+    ],
+    [
+     "Research and Development",
+     "",
+     "",
+     "(5,968)"
+    ],
+    [
+     "State Income Tax",
+     "",
+     "",
+     "(53,860)"
+    ],
+    [
+     "Change in tax status",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective Tax",
+     "",
+     "",
+     "(320,363)"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The income tax benefit for the years ended December 31, 2021 differed from the amounts computed by applying the U.S. federal income tax rate of 21% to loss before tax benefit as a result of non-deductible expenses, tax credits generated, and utilization of net operating loss carryforwards. Since the Company is in a deferred tax liability position, a valuation allowance is not required.",
+   "prose_after": "At December 31, 2021, the Company had available operating loss carryforwards of approximately $976,277 for federal income tax purposes, all of which was generated after 2017 and can be carried forward indefinitely under the Tax Cuts and Jobs Act. At December 31, 2021, the Company had approximately $5,968 of federal Research and Development (R&D) tax credit carry-forwards. If not utilized, the federal R&D credits will begin to expire in 2041.\nAt December 31, 2021, the Company had available operating loss carryforwards for state tax purposes of approximately $976,277 which were generated during 2021 that do not expire.\nSections 382 and 383 of the Internal Revenue Code, and similar state regulations, contain provisions that may limit the NOL carryforwards available to be used to offset income in any given year upon the occurrence of certain events, including changes in the ownership interests of significant stockholders. In the event of a cumulative change in ownership in excess of 50% over a three-year period, the amount of the NOL carryforwards that the Company may utilize in any one year may be limited. Although the Company has not undertaken a formal analysis, it is unlikely that such an ownership change occurred during 2021.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1559,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1605,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  }
+ ]
+}

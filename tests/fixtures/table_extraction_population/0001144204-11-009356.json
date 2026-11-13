@@ -1,0 +1,4092 @@
+{
+ "accession": "0001144204-11-009356",
+ "cik": "0001278363",
+ "form": "10-Q",
+ "filing_date": "2011-02-16",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v211459_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "68-0566295"
+    ],
+    [
+     "(State of incorporation)",
+     "(IRS Employer ID Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, DC 20549\nFORM 10-Q\n(Mark one)\n[X]  QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended December 31, 2010\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to _____________\nCommission File Number: 000-50586\nMARKETING WORLDWIDE CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2212 GRAND COMMERCE DR.\nHOWELL, MICHIGAN 48855\n(Address of principal executive offices)\n631-444- 8090\n(Registrant's telephone number, including area code)\nNOT APPLICABLE\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 5,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 36,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1 - FINANCIAL STATEMENTS",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets as of December 31, 2010 (unaudited) and September 30, 2010",
+     "F-1"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the three months ended December 31, 2010 and 2009 (unaudited)",
+     "F-2"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the three months ended December 31, 2010 and 2009 (unaudited)",
+     "F-3"
+    ],
+    [
+     "Notes to unaudited Condensed Consolidated Financial Statements (unaudited)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2 - MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3 - QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4T - CONTROLS AND PROCEDURES",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1 - LEGAL PROCEEDINGS",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A \u2013 RISK FACTORS",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2 \u2013 UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3 - DEFAULTS UPON SENIOR SECURITIES",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 5 - OTHER INFORMATION",
+     "11"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 6 - EXHIBITS",
+     "11"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "13"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer               [ ]  Accelerated filer  [ ]\nNon-accelerated filer                 [ ]  Smaller reporting company [X]\n(Do not check if a smaller reporting\ncompany)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nIndicate the number of shares outstanding of each of the issuer's classes of common stock, as of the latest practicable date, February 11, 2011: 37,202,199\nForm 10-Q for the Quarter ended December 31, 2010\nTable of Contents",
+   "prose_after": "MARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "33,056",
+     "",
+     "$",
+     "3,847",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "183,069",
+     "",
+     "",
+     "315,919",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "",
+     "148,122",
+     "",
+     "",
+     "144,400",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "-",
+     "",
+     "",
+     "9,328",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "364,247",
+     "",
+     "",
+     "473,494",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "1,249,423",
+     "",
+     "",
+     "2,112,457",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized finance costs, net",
+     "",
+     "172,112",
+     "",
+     "",
+     "205,457",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "",
+     "-",
+     "",
+     "",
+     "19,400",
+     ""
+    ],
+    [
+     "Total other assets",
+     "",
+     "172,112",
+     "",
+     "",
+     "224,857",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,785,782",
+     "",
+     "$",
+     "2,810,808",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance Company line of credit",
+     "$",
+     "106,583",
+     "",
+     "$",
+     "209,986",
+     ""
+    ],
+    [
+     "Notes payable, current portion",
+     "",
+     "1,124,660",
+     "",
+     "",
+     "1,863,961",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,286,621",
+     "",
+     "",
+     "1,302,177",
+     ""
+    ],
+    [
+     "Warranty liability",
+     "",
+     "95,000",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "999,505",
+     "",
+     "",
+     "883,396",
+     ""
+    ],
+    [
+     "Current liabilities of discontinued operations",
+     "",
+     "492,006",
+     "",
+     "",
+     "492,006",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "4,104,375",
+     "",
+     "",
+     "4,846,526",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "414,343",
+     "",
+     "",
+     "1,186,670",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "4,518,718",
+     "",
+     "",
+     "6,033,196",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Temporary equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A convertible preferred stock, $0.001 par value; 3,500,000 shares issued and outstanding",
+     "",
+     "3,499,950",
+     "",
+     "",
+     "3,499,950",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Permanent equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficiency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series B convertible preferred stock, $0.001 par value, 10,000,000 authorized; 1,192,308 shares issued and outstanding as of December 31, 2010 and September 30, 2010",
+     "",
+     "1,192",
+     "",
+     "",
+     "1,192",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 100,000,000 shares authorized; 31,510,591 and 29,510,091 shares issued and outstanding as of December 31, 2010 and September 30, 2010, respectively",
+     "",
+     "31,510",
+     "",
+     "",
+     "29,510",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "8,284,859",
+     "",
+     "",
+     "8,244,894",
+     ""
+    ],
+    [
+     "Deficit",
+     "",
+     "(13,945,974)",
+     "",
+     "",
+     "(14,358,814)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(148,873)",
+     "",
+     "",
+     "(148,873)",
+     ""
+    ],
+    [
+     "Total Marketing Worldwide Corporation stockholders' deficiency",
+     "",
+     "(5,777,286)",
+     "",
+     "",
+     "(6,232,090)",
+     ""
+    ],
+    [
+     "Non controlling interest",
+     "",
+     "(455,600)",
+     "",
+     "",
+     "(490,248)",
+     ""
+    ],
+    [
+     "Total stockholders' deficiency",
+     "",
+     "(6,232,886)",
+     "",
+     "",
+     "(6,722,338)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficiency",
+     "$",
+     "1,785,782",
+     "",
+     "$",
+     "2,810,808",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 103,
+    "end_line": 174
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "MARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See the accompanying notes to the unaudited condensed consolidated financial statements\nMARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "594,509",
+     "",
+     "$",
+     "1,192,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "450,485",
+     "",
+     "",
+     "830,418",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "144,024",
+     "",
+     "",
+     "361,748",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "327,226",
+     "",
+     "",
+     "773,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(183,202)",
+     "",
+     "",
+     "(411,647)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on change in fair value of derivative liability",
+     "",
+     "772,327",
+     "",
+     "",
+     "(3,660,957)",
+     ""
+    ],
+    [
+     "Financing expenses",
+     "",
+     "(70,808)",
+     "",
+     "",
+     "(114,558)",
+     ""
+    ],
+    [
+     "Loss on disposal of assets",
+     "",
+     "-",
+     "",
+     "",
+     "(7,567)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "7,921",
+     "",
+     "",
+     "17,754",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) from continuing operations",
+     "",
+     "526,238",
+     "",
+     "",
+     "(4,176,975)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "(112,138)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "526,238",
+     "",
+     "",
+     "(4,289,113)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income attributable to Non-controlling interest",
+     "",
+     "34,648",
+     "",
+     "",
+     "19,460",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) attributable to Company",
+     "",
+     "491,590",
+     "",
+     "",
+     "(4,308,573)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock dividend",
+     "",
+     "(78,750)",
+     "",
+     "",
+     "(78,750)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS) AVAILABLE TO COMMON STOCKHOLDERS",
+     "$",
+     "412,840",
+     "",
+     "$",
+     "(4,387,323)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) per common share, basic and diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations",
+     "$",
+     "0.01",
+     "",
+     "$",
+     "(0.23)",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "-",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "0.01",
+     "",
+     "$",
+     "(0.24)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "31,205,743",
+     "",
+     "",
+     "18,358,352",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "526,238",
+     "",
+     "$",
+     "(4,289,113)",
+     ""
+    ],
+    [
+     "Foreign currency translation, income",
+     "",
+     "-",
+     "",
+     "",
+     "27,456",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to the Company",
+     "",
+     "526,238",
+     "",
+     "",
+     "(4,210,657)",
+     ""
+    ],
+    [
+     "Comprehensive income attributable to non controlling interest",
+     "",
+     "(34,648)",
+     "",
+     "",
+     "(19,460)",
+     ""
+    ],
+    [
+     "Comprehensive income ( loss) attributable to Marketing Worldwide Corporation",
+     "$",
+     "491,590",
+     "",
+     "$",
+     "(4,230,117)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 183,
+    "end_line": 248
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the unaudited condensed consolidated financial statements\nMARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(unaudited)",
+   "prose_after": "See the accompanying notes to the unaudited condensed consolidated financial statements\nMARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nTHREE MONTHS ENDED DECEMBER 30, 2010 AND 2009\n(unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to continuing operations",
+     "$",
+     "526,238",
+     "",
+     "$",
+     "(4,176,975)",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "(112,138)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "526,238",
+     "",
+     "",
+     "(4,289,113)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to cash (provided by) operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "65,868",
+     "",
+     "",
+     "85,827",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "",
+     "33,345",
+     "",
+     "",
+     "33,345",
+     ""
+    ],
+    [
+     "Loss on disposal of assets, net",
+     "",
+     "",
+     "",
+     "",
+     "7,567",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "(772,327)",
+     "",
+     "",
+     "3,660,957",
+     ""
+    ],
+    [
+     "Fair value of vested employee options",
+     "",
+     "1,965",
+     "",
+     "",
+     "1,965",
+     ""
+    ],
+    [
+     "Common stock issued for services rendered",
+     "",
+     "40,000",
+     "",
+     "",
+     "12,000",
+     ""
+    ],
+    [
+     "Interest in non controlling entity",
+     "",
+     "-",
+     "",
+     "",
+     "(38,250)",
+     ""
+    ],
+    [
+     "(Increase) decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "132,850",
+     "",
+     "",
+     "243,305",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(3,722)",
+     "",
+     "",
+     "55,061",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "9,328",
+     "",
+     "",
+     "(255)",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "19,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase (decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "45,141",
+     "",
+     "",
+     "371,954",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "37,359",
+     "",
+     "",
+     "(49,374)",
+     ""
+    ],
+    [
+     "Cash provided by continuing operating activities",
+     "",
+     "135,445",
+     "",
+     "",
+     "94,989",
+     ""
+    ],
+    [
+     "Cash provided discontinued operating operations",
+     "",
+     "-",
+     "",
+     "",
+     "139,416",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities:",
+     "",
+     "135,445",
+     "",
+     "",
+     "234,405",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment, continuing operations",
+     "",
+     "(2,834)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayments of lines of credit",
+     "",
+     "(103,403)",
+     "",
+     "",
+     "(110,763)",
+     ""
+    ],
+    [
+     "Repayments of notes payable and capital leases",
+     "",
+     "-",
+     "",
+     "",
+     "(24,827)",
+     ""
+    ],
+    [
+     "Cash used in continuing financing activities",
+     "",
+     "(103,403)",
+     "",
+     "",
+     "(135,590)",
+     ""
+    ],
+    [
+     "Cash used in discontinued financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "(18,608)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(103,403)",
+     "",
+     "",
+     "(154,198)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of currency rate change on cash:",
+     "",
+     "-",
+     "",
+     "",
+     "27,456",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "29,209",
+     "",
+     "",
+     "107,663",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "3,847",
+     "",
+     "",
+     "114,482",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "33,056",
+     "",
+     "$",
+     "222,145",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during year for interest",
+     "$",
+     "70,808",
+     "",
+     "$",
+     "87,173",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH TRANSACTIONS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued in settlement of debt",
+     "$",
+     "-",
+     "",
+     "$",
+     "78,950",
+     ""
+    ],
+    [
+     "Settlement of debt via sale of property",
+     "$",
+     "739,301",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable settled via sale of property",
+     "$",
+     "60,699",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dividends declared",
+     "$",
+     "78,750",
+     "",
+     "$",
+     "78,750",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 259,
+    "end_line": 328
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the unaudited condensed consolidated financial statements\nMARKETING WORLDWIDE CORPORATION\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nTHREE MONTHS ENDED DECEMBER 30, 2010 AND 2009\n(unaudited)",
+   "prose_after": "See the accompanying notes to the unaudited condensed consolidated financial statements\nNOTE A \u2013 NATURE OF OPERATIONS AND BASIS OF PRESENTATION\nNature of Operations\nMarketing Worldwide Corporation (the \"Company\"), was incorporated under the laws of the State of Delaware in July 2003. The Company is engaged in North America through its wholly-owned subsidiaries, Marketing Worldwide LLC (\"MWW\"), and Colortek, Inc. (\u201cCT\u201d) in the design, manufacturing, painting and distribution of automotive accessories for motor vehicles in the automotive aftermarket industry and provides design services for large automobile manufacturers. The Company has a wholly owned subsidiary in Germany, Modelworxx, GmbH, which, in February, 2010, filed insolvency in the German courts. The Company has reclassified fiscal year ended September 30, 2009 to reflect this as discontinued operations.\nBasis of presentation\nThe accompanying unaudited condensed consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America for interim financial information and with the instructions to Form 10-Q. Accordingly, they do not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 330,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible debt",
+     "",
+     "312,500",
+     "",
+     "-"
+    ],
+    [
+     "Conversion of Series A preferred stock",
+     "",
+     "22,616,981",
+     "",
+     "20,588,235"
+    ],
+    [
+     "Warrants",
+     "",
+     "100,000",
+     "",
+     "100,000"
+    ],
+    [
+     "Options",
+     "",
+     "1,590,000",
+     "",
+     "1,660,000"
+    ],
+    [
+     "Totals",
+     "",
+     "24,619,481",
+     "",
+     "22,348,235"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 357,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "In the opinion of management, all adjustments consisting of normal recurring accruals considered necessary for a fair presentation have been included. Accordingly, the results from operations for the three month period ended December 31, 2010, are not necessarily indicative of the results that may be expected for the year ending September 30, 2011. The unaudited condensed consolidated financial statements should be read in conjunction with the September 30, 2010 financial statements and footnotes thereto included in the Company's SEC Form 10-K. The Company has evaluated and included subsequent events through the filing date of this Form 10-Q.\nThe unaudited condensed consolidated financial statements include the accounts of the Company and its wholly-owned subsidiaries and Variable Interest Entity (\u201cVIE\u201d). All significant inter-company transactions and balances, including those involving the VIE, have been eliminated in consolidation.\nNOTE B \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nNet income (loss) per share\nBasic and diluted loss per common share is based upon the weighted average number of common shares outstanding during the fiscal year computed under the provisions of Accounting Standards Codification subtopic 260-10, Earnings per Share (\u201cASC 260-10\u201d). All primary dilutive common shares have been excluded since the inclusion would be anti-dilutive.\nNOTE B \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (continued)\nSuch shares consist of the following at December 31, 2010 and 2009:",
+   "prose_after": "Foreign currency\nThe functional currency of the Company is the U. S. dollar. When a transaction is executed in a foreign currency, it is re-measured into U. S. dollars based on appropriate rates of exchange in effect at the time of the transaction. At each balance sheet date, recorded balances that are denominated in a currency other than the functional currency of the Companies are adjusted to reflect the current exchange rate. The related translation adjustments which were not material during the three months ending December 31, 2010 are included in other comprehensive income. The resulting foreign currency transactions gains (losses), which were not material, are included in selling, general and administration expenses in the accompanying consolidated statements of operations.\nFair value of financial instruments\nCash, accounts receivable, accounts payable and accrued expenses approximates fair value because of their short-term nature. The fair value of notes payable and short-term debt is estimated to approximate fair market value based on the current rates available to companies such as MWW.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 351,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "September 30,\n\n2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Work in process",
+     "$",
+     "77,278",
+     "$",
+     "65,866"
+    ],
+    [
+     "Finished goods",
+     "",
+     "70,844",
+     "",
+     "78,534"
+    ],
+    [
+     "Totals",
+     "$",
+     "148,122",
+     "$",
+     "144,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 431,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The Company's existence is dependent upon management's ability to raise additional financing and develop profitable operations. Additional financing transactions may include the issuance of equity or debt securities, obtaining credit facilities, or other financing mechanisms. However, the trading price of our common stock and the downturn in the U.S. stock and debt markets could make it more difficult to obtain financing through the issuance of equity or debt securities. Further, if we issue additional equity or debt securities, stockholders may experience additional dilution or the new equity securities may have rights, preferences or privileges senior to those of existing holders of our common stock. If additional financing is not available or is not available on acceptable terms, we will have to curtail our operations.\nThe above factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. The consolidated financial statements do not include any adjustments relating to the recoverability of the recorded assets or the classification of the liabilities that might be necessary should the Company be unable to continue as a going concern.\nAlthough the Company has reduced cash required for future operations by reducing operating costs and reducing staff levels, there exists a large balance of debt from prior periods that still must be paid. The Company continues working to manage its current liabilities while it continues to make changes in operations to improve its cash flow and liquidity position.\nNOTE D \u2013 INVENTORIES\nInventories\nThe inventories at December 31, 2010 and September 30, 2010 are as follows:",
+   "prose_after": "NOTE E - COMMITMENTS AND CONTINGENCIES\nRelated party lease obligations and transactions\nOn March 5, 2004, MWW and MWWLLC entered into a five year real property lease, beginning on January 1, 2005, with a related party (JCMD Properties LLC: See Note K) for use of warehouse and general offices located in the city of Howell, Michigan. The lease was terminated at the time the real estate was sold to an unrelated party on November 30, 2010. The buyer of the property was known to the sellers, and the buyer\u2019s Chief Financial Officer is the former wife of one of the partners of JCMD.\nThe Company entered into a three (3) year lease with the buyer of the property described above. The general terms of the lease calls for monthly payments beginning December 1, 2010 of $6,667 for the first year($80,000 annually); $7,083 per month for the second year ($85,000 annually); $7,417 per month($89,000 annually) for the third, or final, year of the lease, or an aggregate of $254,000. The Company is responsible for all property taxes, maintenance and utilities associated with the property.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "September 30, 2010",
+     ""
+    ],
+    [
+     "JCMD Mortgage loan payable in monthly principal installments plus interest. Note secured by first deed of trust on real property and improvements located in Howell, MI. In addition to the Company the JCMD General Partners personally guarantee the loan.",
+     "$",
+     "-",
+     "$",
+     "669,352"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JCMD Mortgage loan payable in 240 monthly principal installments plus interest. The loan was secured by a second deed of trust on real property and improvements located in Howell, MI. In addition to the Company the JCMD General Partners personally guarantee the loan The note is in default. (*)",
+     "",
+     "489,755",
+     "",
+     "538,800"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage loan payable in monthly principal installments of approximately $5,961 with a fixed interest rate of 6.75% per annum.  Note based on a 20 year amortization. Note is secured by first priority security interest in the business property of Colortek, Inc, the Company's wholly owned subsidiary. The note is currently in default. (**)",
+     "",
+     "608,621",
+     "",
+     "620,595"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "26,284",
+     "",
+     "35,214"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,124,660",
+     "",
+     "1,863,961"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "1,124,660",
+     "",
+     "1,863,961"
+    ],
+    [
+     "Long term portion",
+     "$",
+     "-0-",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 514
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Under the arrangement, Summit typically advances to the Company 75% of the total amount of accounts receivable factored. Summit retains 25% of the outstanding factored accounts receivable as a reserve, which it holds until the customer pays the factored invoice to Summit. The cost of funds for the accounts receivable portion of the borrowings with Summit includes: (a) a collateral management fee of 0.65% of the face amount of factored accounts receivable for each period of fifteen days, or portion thereof, that the factored accounts receivable remains outstanding until payment in full is applied and (b) interest charged at the Wall Street Journal prime rate plus 1% divided by 360. The Summit default rate is the Wall Street Journal prime rate plus 10%. The Company may be obligated to purchase the receivable back from Summit at the end of 90 days.\nUnder the terms of the recourse provision, the Company is required to repurchase factored receivables if they are not paid in full or are deemed no longer acceptable. Accordingly, the Company has accounted for the financing agreement as a secured borrowing arrangement and not a sale of financial assets.\nAs of December 31, 2010, the advance balance due to Summit was $106,583 The interest rate at December 31, 2010 was 4.25%.\nNOTE G - NOTES PAYABLE\nAt December 31, 2010 and September 30, 2010, notes payable consists of the following:",
+   "prose_after": "NOTE G - NOTES PAYABLE (continued)\n(*) In accordance with the Forbearance Agreement, the secured lender of the JCMD Mortgage Loans increased the interest rate on unpaid balances to bear interest at a floating rate of two and quarter percent (2.25%) in excess of the Bank\u2019s Prime Rate, and upon default shall bear interest at a rate of five and one quarter percent (5.25%) in excess of the Bank\u2019s Prime Rate. On November 30, 2010, the real estate securing the mortgage loan payable was sold and the first deed of trust was fully retired. The proceeds from the sale of real estate did not retire the balance of the loan secured by the second deed of trust. There is a shortfall of approximately $490,000 that will continue to be carried as a liability until such time it is retired. The sale of real estate for $800,000 was less than the carrying value of $1,210,000, resulted in the Company recording an impairment charge of approximately $410,000 for the year ended September 30, 2010.\n(**) In accordance with the mortgage loan agreement, the Company is currently in default of certain loan covenants.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "September 30,\n\n2010",
+     ""
+    ],
+    [
+     "Preferred dividends payable",
+     "$",
+     "551,250",
+     "$",
+     "472,500"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "125,700",
+     "",
+     "112,200"
+    ],
+    [
+     "Interest",
+     "",
+     "159,277",
+     "",
+     "163,202"
+    ],
+    [
+     "Payroll and other",
+     "",
+     "163,278",
+     "",
+     "135,494"
+    ],
+    [
+     "Totals",
+     "$",
+     "999,505",
+     "$",
+     "883,396"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 539
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(*) In accordance with the Forbearance Agreement, the secured lender of the JCMD Mortgage Loans increased the interest rate on unpaid balances to bear interest at a floating rate of two and quarter percent (2.25%) in excess of the Bank\u2019s Prime Rate, and upon default shall bear interest at a rate of five and one quarter percent (5.25%) in excess of the Bank\u2019s Prime Rate. On November 30, 2010, the real estate securing the mortgage loan payable was sold and the first deed of trust was fully retired. The proceeds from the sale of real estate did not retire the balance of the loan secured by the second deed of trust. There is a shortfall of approximately $490,000 that will continue to be carried as a liability until such time it is retired. The sale of real estate for $800,000 was less than the carrying value of $1,210,000, resulted in the Company recording an impairment charge of approximately $410,000 for the year ended September 30, 2010.\n(**) In accordance with the mortgage loan agreement, the Company is currently in default of certain loan covenants.\nNOTE H \u2013 OTHER CURRENT LIABILITIES\nOther current liabilities consist of the following at December 31, 2010 and September 30, 2010:",
+   "prose_after": "NOTE I - CAPITAL STOCK\nThe Company is authorized to issue 110,000,000 shares of stock consisting of 100,000,000 shares of common stock and 10,000,000 shares of Preferred stock, both at par value of $.001\nThe Board of Directors of the Company has the right to establish the pertaining terms of the issuance of shares of preferred stock, such as dividend rates, liquidation preferences, voting rights and conversion options .\nSeries A Preferred stock\nPayment of Dividends: Commencing on the date of issuance of the Series A Preferred Stock, the holders of record of shares of Series A Preferred Stock shall be entitled to receive, out of any assets at the time legally available therefore and as declared by the Board of Directors, dividends at the rate of nine percent (9%) of the stated Liquidation Preference Amount (see below) per share per annum payable quarterly.\nIn accordance with Accounting Standards Codification subtopic 470-20, Debt, Debt with Conversions and Other Options (\u201cASC 470-20\u201d), the Company recognized an imbedded beneficial conversion feature present in the Convertible Series A Preferred Stock. The Company allocated a portion of the proceeds equal to the fair value of that feature to additional paid-in capital. The Company recognized and measured an aggregate of $3,500,000 of the proceeds, which is equal to the intrinsic value of the imbedded beneficial conversion feature to additional paid-in capital and a charge as preferred stock dividend. The fair value of the imbedded beneficial conversion feature was determined using the Black-Scholes Option Pricing Model which approximates the fair value measured using the Binomial Lattice Model with the following assumptions: Dividend yield: $-0-; Volatility: 146.64%, risk free rate: 4.55%.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "Date of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "issuance",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imbedded Conversion Feature:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "0.42",
+     "%",
+     "",
+     "0.42",
+     "%",
+     "",
+     "4.55",
+     "%"
+    ],
+    [
+     "Annual rate of dividends",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "372.13",
+     "%",
+     "",
+     "336.73",
+     "%",
+     "",
+     "146.64",
+     "%"
+    ],
+    [
+     "Weighted Average life (years)",
+     "",
+     "1.31",
+     "",
+     "",
+     "1.56",
+     "",
+     "",
+     "5.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value",
+     "$",
+     "414,343",
+     "",
+     "$",
+     "1,186,670",
+     "",
+     "$",
+     "4,554,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 574
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "In June 2008, the FASB finalized ACS 815, \u201cDetermining Whether an Instrument (or Embedded Feature) is indexed to an Entity\u2019s Own Stock.\u201d Under ASC 815, instruments which do not have fixed settlement provisions are deemed to be derivative instruments. The Company has determined that it needs to account for these imbedded beneficial conversion feature issued to investors in 2007 for its Series A Convertible Preferred Stock, as derivative liabilities, and apply the provisions of ASC 815. The instruments have a ratchet provision (that adjusts the exercise price in the event of a subsequent offering of equity at a lower exercise price). As a result, the ratchet provision has been accounted for as derivative liabilities, in accordance with ASC 815. ASC 815, \u201cAccounting for Derivative Instruments and Hedging Activities\u201d (\u201cASC 815\u201d) requires that the fair value of these liabilities be re-measured at the end of every reporting period with the change in fair value reported in the consolidated statement of operations.\nThe fair value of the embedded conversion features were measured using the Black-Scholes option pricing model which approximates the fair value measured using the Binomial Lattice Model and the following assumptions:",
+   "prose_after": "The risk-free interest rate was based on rates established by the Federal Reserve. The Company based expected volatility on the historical volatility for its common stock. The expected life of the embedded conversion features was based on their full term. The expected dividend yield was based upon the fact that the Company has not historically paid dividends, and does not expect to pay dividends in the future.\nASC 815 was implemented in the first quarter of Fiscal 2010 and is reported as the cumulative effect of a change in accounting principles. At October 1, 2009, the cumulative effect on the embedded conversion feature was recorded as decrease in accumulated deficit of $1,971,115. As of December 31, 2010, derivative liability associated with the embedded conversion features, was revalued, the $772,327 decrease in the derivative liability is included as an increase of a gain on change of fair value of derivative liabilities in the Company\u2019s consolidated statement of operations for the three month period ended December 31, 2010.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Options Outstanding",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Weighted Average",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exercise",
+     "Number",
+     "",
+     "Remaining Contractual",
+     "",
+     "Exercise",
+     "",
+     "Number",
+     ""
+    ],
+    [
+     "",
+     "Price",
+     "Outstanding",
+     "",
+     "Life (Years)",
+     "",
+     "Price",
+     "",
+     "Exercisable",
+     ""
+    ],
+    [
+     "$",
+     "0.30",
+     "",
+     "490,000",
+     "",
+     "6.65",
+     "$",
+     "0.30",
+     "",
+     "490,000"
+    ],
+    [
+     "$",
+     "0.30",
+     "",
+     "100,000",
+     "",
+     ".67",
+     "$",
+     "0.30",
+     "",
+     "100,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "590,000",
+     "",
+     "3.66",
+     "$",
+     "0.30",
+     "",
+     "590,000"
+    ]
+   ],
+   "caption_stack": [
+    "Options Exercisable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 599,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "ASC 815 was implemented in the first quarter of Fiscal 2010 and is reported as the cumulative effect of a change in accounting principles. At October 1, 2009, the cumulative effect on the embedded conversion feature was recorded as decrease in accumulated deficit of $1,971,115. As of December 31, 2010, derivative liability associated with the embedded conversion features, was revalued, the $772,327 decrease in the derivative liability is included as an increase of a gain on change of fair value of derivative liabilities in the Company\u2019s consolidated statement of operations for the three month period ended December 31, 2010.\nNOTE I - CAPITAL STOCK (continued)\nSeries B Preferred stock\nAs of December 31, 2010, the Company has 1,192,308 shares of Series B Preferred Stock outstanding.\nCommon stock\nOn October 25, 2010, the Company issued 2,000,000 shares of common stock in exchange for services valued at $40,000. These shares were valued at $0.02 per share, which was the trading price on October 25, 2010.\nNOTE J - STOCK OPTIONS\nEmployee Stock Options\nThe Company granted no employee options during the three month period ended December 31, 2010. The Company recorded the fair value of the vested portion of issued employee options of $1,965 for the three month periods ended December 31, 2010 and 2009, respectively.\nThe following table summarizes the changes in options outstanding and the related prices for the shares of the Company's common stock issued to employees of the Company as of December 31, 2010:",
+   "prose_after": "During the three month period ended December 31, 2010 and 2009, there were no Employee Stock Options either granted or expired or cancelled. In addition, as of December 31, 2010, the Company has no remaining unamortized stock compensation costs relating to the 590,000 previously issued Employee Stock Options.\nTransactions involving options issued to employees are summarized as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Weighted Average\n\nExercise",
+     ""
+    ],
+    [
+     "",
+     "Weighted Average\n\nNumber of Options",
+     "Price per\n\nShare",
+     ""
+    ],
+    [
+     "Outstanding, September 30, 2010",
+     "590,000",
+     "$",
+     ".30"
+    ],
+    [
+     "Granted",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canceled or expired",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2010",
+     "590,000",
+     "",
+     ".30"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted Average\n\nExercise"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 635
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "During the three month period ended December 31, 2010 and 2009, there were no Employee Stock Options either granted or expired or cancelled. In addition, as of December 31, 2010, the Company has no remaining unamortized stock compensation costs relating to the 590,000 previously issued Employee Stock Options.\nTransactions involving options issued to employees are summarized as follows:",
+   "prose_after": "Non employee options\nThe following table summarizes the changes in options outstanding and the related prices for the shares of the Company's common stock issued to non- employees of the Company as of December 31, 2010:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average\n\nRemaining",
+     "",
+     "Weighted\n\nAverage",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number",
+     "",
+     "Contractual",
+     "",
+     "Exercise",
+     "",
+     "Number",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "",
+     "Outstanding",
+     "",
+     "Life (Years)",
+     "",
+     "Price",
+     "",
+     "Exercisable",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.10",
+     "",
+     "1,000,000",
+     "",
+     ".00",
+     "$",
+     "0.10",
+     "",
+     "1,000,000",
+     "$",
+     "0.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 640,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non employee options\nThe following table summarizes the changes in options outstanding and the related prices for the shares of the Company's common stock issued to non- employees of the Company as of December 31, 2010:",
+   "prose_after": "NOTE J - STOCK OPTIONS (continued)\nTransactions involving options issued to non-employees are summarized as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Weighted Average\n\nNumber of Options",
+     "",
+     "Weighted Average\n\nExcercise\n\nPrice per\n\nShare",
+     ""
+    ],
+    [
+     "Outstanding, September 30, 2010",
+     "",
+     "1,000,000",
+     "$",
+     "0.10"
+    ],
+    [
+     "Granted / Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canceled or expired",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2010",
+     "",
+     "1,000,000",
+     "$",
+     "0.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 674
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "NOTE J - STOCK OPTIONS (continued)\nTransactions involving options issued to non-employees are summarized as follows:",
+   "prose_after": "There was no intrinsic value of the options as the market value of the stock was $0.02, which is less than the option price.\nWarrants\nThe following table summarizes the changes in warrants outstanding and the related prices for the shares of the Company's common stock issued to non-employees of the Company as of December 31, 2010:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Warrants Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Warrants Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average\n\nRemaining",
+     "",
+     "Weighted\n\nAverage",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number",
+     "",
+     "Contractual",
+     "",
+     "Exercise",
+     "",
+     "Number",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "",
+     "Outstanding",
+     "",
+     "Life (Years)",
+     "",
+     "Price",
+     "",
+     "Exercisable",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.30",
+     "",
+     "100,000",
+     "",
+     "0.75",
+     "$",
+     "0.30",
+     "",
+     "100,000",
+     "$",
+     "0.30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "There was no intrinsic value of the options as the market value of the stock was $0.02, which is less than the option price.\nWarrants\nThe following table summarizes the changes in warrants outstanding and the related prices for the shares of the Company's common stock issued to non-employees of the Company as of December 31, 2010:",
+   "prose_after": "Transactions involving warrants are summarized as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Weighted Average\n\nNumber of Shares",
+     "",
+     "Price per\n\nShare",
+     ""
+    ],
+    [
+     "Outstanding, September  30, 2010",
+     "",
+     "100,000",
+     "",
+     "0.30"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canceled or expired",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2010",
+     "",
+     "100,000",
+     "$",
+     "0.30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 709
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Transactions involving warrants are summarized as follows:",
+   "prose_after": "NOTE K - CONSOLIDATION OF VARIABLE INTEREST ENTITIES\nOn June 6, 2005 and August 8, 2005, JCMD Properties LLC, an entity controlled by the Company's former Chief Executive and Chief Operating officers respectively (\"JCMD\"), entered into a Secured Loan Agreement with a financial institution, in connection with the financing of real property and improvements (\"property\"). This agreement is guaranteed by the Company.\nNOTE K - CONSOLIDATION OF VARIABLE INTEREST ENTITIES (continued)\nThe property was leased to the Company under a long term operating lease beginning on January 1, 2005. Under the loan agreements, JCMD is obligated to make periodic payments of principal repayments and interest. The Company has no equity interest in JCMD or the property.\nBased on the terms of the lending agreement, the Company determined that JCMD was a variable interest entity (\"VIE\") and the Company was the primary beneficiary under ASC 810-10 since JCMD did not have sufficient equity at risk for the entity to finance its activities.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "",
+     "September 30,\n\n2010",
+     "",
+     ""
+    ],
+    [
+     "ASSETS (JCMD)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "-",
+     "",
+     "$",
+     "755",
+     ""
+    ],
+    [
+     "Accounts receivable, prepaid expenses and other current assets",
+     "",
+     "193,433",
+     "",
+     "",
+     "150,400",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "193,433",
+     "",
+     "",
+     "151,155",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "-",
+     "",
+     "",
+     "800,000",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "193,433",
+     "",
+     "",
+     "951,155",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long term debt",
+     "",
+     "489,755",
+     "",
+     "",
+     "1,208,152",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "159,277",
+     "",
+     "",
+     "233,251",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "649,032",
+     "",
+     "",
+     "1,441,403",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "649,032",
+     "",
+     "",
+     "1,441,403",
+     ""
+    ],
+    [
+     "Net assets",
+     "$",
+     "(455,599)",
+     "",
+     "$",
+     "(490,248)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 725,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Based on the terms of the lending agreement, the Company determined that JCMD was a variable interest entity (\"VIE\") and the Company was the primary beneficiary under ASC 810-10 since JCMD did not have sufficient equity at risk for the entity to finance its activities.\nASC 810-10 requires that an enterprise consolidate a VIE if that enterprise has a variable interest that will absorb a majority of the entity's expected losses if they occur. Accordingly, the Company adopted FIN No. 46 and consolidated JCMD as a VIE, regardless of the Company not having an equity interest in JCMD. Since JCMD is owned by two of the former principals of MWW, MWW has guaranteed the indebtedness of JCMD for the real estate occupied by MWW, and the two principals of JCMD do not have the ability to repay the loan, the Company, in accordance with ASC 810-10 has consolidated the activities of JCMD into the presented financial statements.\nIncluded in the Company's consolidated balance sheets at December 31, 2010 and September 30, 2010 are the following net assets of JCMD:",
+   "prose_after": "NOTE K - CONSOLIDATION OF VARIABLE INTEREST ENTITIES (continued)\nConsolidated results of operations include the following for the three months ended December 31, 2010 and 2009:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "",
+     "December 31,\n\n2009",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "34,000",
+     "",
+     "$",
+     "51,000"
+    ],
+    [
+     "Cost and expenses - real estate: Operating expenses, net",
+     "",
+     "9,766",
+     "",
+     "",
+     "2,763"
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "8,000"
+    ],
+    [
+     "Interest, net",
+     "",
+     "(10,414",
+     "",
+     "",
+     "20,777"
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "(648)",
+     "",
+     "",
+     "31,540"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income-Real estate",
+     "$",
+     "34,649",
+     "",
+     "$",
+     "19,460"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 774
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "NOTE K - CONSOLIDATION OF VARIABLE INTEREST ENTITIES (continued)\nConsolidated results of operations include the following for the three months ended December 31, 2010 and 2009:",
+   "prose_after": "The Variable Interest Entity owned by JCMD and included in these consolidated financial statements sold the only asset it owned, which was real estate that was under a lease with the Company, for $800,000 on November 30, 2010. This sale resulted in a net loss of approximately $400,000 and left a remaining liability to the Small Business Administration of approximately $500,000 which is guaranteed by the Company. This loss was recorded as an impairment loss in the September 30, 2010 financial statements.\nNOTE L - FAIR VALUE OF FINANCIAL INSTRUMENTS\nASC 825-10 defines fair value as the price that would be received from selling an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. When determining the fair value measurements for assets and liabilities required or permitted to be recorded at fair value, the Company considers the principal or most advantageous market in which it would transact and considers assumptions that market participants would use when pricing the asset or liability, such as inherent risk, transfer restrictions, and risk of nonperformance. ASC 825-10 establishes a fair value hierarchy that requires an entity to maximize the use of observable inputs and minimize the use of unobservable inputs when measuring fair value. ASC 825-10 establishes three levels of inputs that may be used to measure fair value:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurements at December 31, 2010 using:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "Quoted Prices\n\nin Active\n\nMarkets for\n\nIdentical\n\nAssets\n\n(Level 1)",
+     "",
+     "Significant\n\nOther\n\nObservable\n\nInputs (Level 2)",
+     "",
+     "Significant\n\nUnobservable\n\nInputs\n\n(Level 3)",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "$",
+     "414,343",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "414,343"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at December 31, 2010 using:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 815
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Level 2 - Observable inputs other than Level 1 prices such as quoted prices for similar assets or liabilities; quoted prices in markets with insufficient volume or infrequent transactions (less active markets); or model-derived valuations in which all significant inputs are observable or can be derived principally from or corroborated by observable market data for substantially the full term of the assets or liabilities.\nLevel 3 - Unobservable inputs to the valuation methodology that are significant to the measurement of fair value of assets or liabilities.\nTo the extent that valuation is based on models or inputs that are less observable or unobservable in the market, the\nNOTE L - FAIR VALUE OF FINANCIAL INSTRUMENTS(continued)\ndetermination of fair value requires more judgment. In certain cases, the inputs used to measure fair value may fall into different levels of the fair value hierarchy. In such cases, for disclosure purposes, the level in the fair value hierarchy within which the fair value measurement is disclosed is determined based on the lowest level input that is significant to the fair value measurement.\nItems recorded or measured at fair value on a recurring basis in the accompanying unaudited condensed consolidated financial statements consisted of the following items as of December 31, 2010:",
+   "prose_after": "The derivative liability is measured at fair value using quoted market prices and estimated volatility factors based on historical prices for the Company\u2019s common stock and is classified within Level 3 of the valuation hierarchy.\nThe following table provides a summary of changes in fair value of the Company\u2019s Level 3 financial liabilities as of December 31, 2010:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Derivative\n\nLiability",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 1, 2010",
+     "$",
+     "1,186,670",
+     ""
+    ],
+    [
+     "Change in fair value at December 31, 2010",
+     "",
+     "(772,327)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2010",
+     "$",
+     "414,343",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Derivative\n\nLiability"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The derivative liability is measured at fair value using quoted market prices and estimated volatility factors based on historical prices for the Company\u2019s common stock and is classified within Level 3 of the valuation hierarchy.\nThe following table provides a summary of changes in fair value of the Company\u2019s Level 3 financial liabilities as of December 31, 2010:",
+   "prose_after": "Level 3 Liabilities comprised of our bifurcated reset provision contained within our Series A stock and the fair value of issued reset provisions.\nNOTE M \u2013 DISCONTINUED OPERATIONS\nOn February 25, 2010, the Company discontinued operations of its wholly owned subsidiary; MW Global Limited which owns 100% of the outstanding ownership and economic interest in Modelworxx GmbH. The financial results of MW Global are presented separately in the unaudited condensed consolidated statements of operations as discontinued operations for all periods presented. The assets and liabilities of this business are reflected as assets and liabilities from discontinued operations in the consolidated balance sheets for all prior periods.\nNOTE M \u2013 DISCONTINUED OPERATIONS (continued)\nThe assets and liabilities of the discontinued operations as of December 31, 2010 and September 30, 2010 were as follows:\nAssets:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "September 30,\n\n2010",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Inventories",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total current assets",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Other assets of discontinued operations",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Assets of discontinued operations",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "492,006",
+     "$",
+     "492,006"
+    ],
+    [
+     "Line of credit",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Liabilities of discontinued operations",
+     "$",
+     "492,006",
+     "$",
+     "492,006"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 846,
+    "end_line": 868
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Level 3 Liabilities comprised of our bifurcated reset provision contained within our Series A stock and the fair value of issued reset provisions.\nNOTE M \u2013 DISCONTINUED OPERATIONS\nOn February 25, 2010, the Company discontinued operations of its wholly owned subsidiary; MW Global Limited which owns 100% of the outstanding ownership and economic interest in Modelworxx GmbH. The financial results of MW Global are presented separately in the unaudited condensed consolidated statements of operations as discontinued operations for all periods presented. The assets and liabilities of this business are reflected as assets and liabilities from discontinued operations in the consolidated balance sheets for all prior periods.\nNOTE M \u2013 DISCONTINUED OPERATIONS (continued)\nThe assets and liabilities of the discontinued operations as of December 31, 2010 and September 30, 2010 were as follows:\nAssets:",
+   "prose_after": "The Results of Operations for the three month periods ended December 31, 2010 and 2009 are as follows:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "December 31,\n\n2009",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "-",
+     "$",
+     "316,110",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "-",
+     "",
+     "266,556",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "-",
+     "",
+     "49,554",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Costs:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "-",
+     "",
+     "153,543",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "11,639",
+     ""
+    ],
+    [
+     "Total operating costs",
+     "",
+     "-",
+     "",
+     "165,182",
+     ""
+    ],
+    [
+     "Net loss from operations",
+     "",
+     "-",
+     "",
+     "(115,628)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "-",
+     "",
+     "4,126",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "",
+     "$",
+     "(112,138)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 894
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The Results of Operations for the three month periods ended December 31, 2010 and 2009 are as follows:",
+   "prose_after": "NOTE N - SUBSEQUENT EVENTS\nSubsequent events have been evaluated through the date the financial statements were issued. All appropriate subsequent event disclosures, if any have been made in notes to our Consolidated Financial Statements.\nOn January 11, 2011, the Board of Directors of the Company authorized the following issuances of common stock .\n93,750 shares at $0.08 per share (valued at $7,500) to Aegis Capital Corp for investment banking services.\nNOTE N - SUBSEQUENT EVENTS (continued)\n365,853 shares at $0.0205 per share (valued at $7,500) to Aegis Capital Corp for investment banking services.\n94,505 shares at $0.02 per share (valued at $1,890) to Southridge Partners, II, LP for investment banking services.\n5,137,500 shares at various prices per share (valued at $472,500, or $0.092 per share) to Vision Capital in lieu of cash dividends, which were accrued as of September 30, 2010.\nITEM 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nTHIS REPORT ON FORM 10-Q CONTAINS FORWARD-LOOKING STATEMENTS. FORWARD-LOOKING STATEMENTS IN THIS REPORT ARE INDICATED BY WORDS SUCH AS \"ANTICIPATES,\" \"EXPECTS,\" \"BELIEVES,\" \"INTENDS,\" \"PLANS,\" \"ESTIMATES,\" \"PROJECTS\" AND SIMILAR EXPRESSIONS. THESE STATEMENTS REPRESENT OUR EXPECTATIONS BASED ON CURRENT INFORMATION AND ASSUMPTIONS. FORWARD-LOOKING STATEMENTS ARE INHERENTLY SUBJECT TO RISKS AND UNCERTAINTIES. OUR ACTUAL RESULTS COULD DIFFER MATERIALLY FROM THOSE WHICH ARE ANTICIPATED OR PROJECTED AS A RESULT OF CERTAIN RISKS AND UNCERTAINTIES, INCLUDING, BUT NOT LIMITED TO A NUMBER OF FACTORS, SUCH AS ECONOMIC AND MARKET CONDITIONS; THE PERFORMANCE OF THE AUTOMOTIVE AFTERMARKET SECTOR; CHANGES IN BUSINESS RELATIONSHIPS WITH OUR MAJOR CUSTOMERS AND IN THE TIMING, SIZE AND CONTINUATION OF OUR CUSTOMERS' PROGRAMS; THE ABILITY OF OUR CUSTOMERS TO ACHIEVE THEIR PROJECTED SALES; COMPETITIVE PRODUCT AND PRICING PRESSURES; INCREASES IN PRODUCTION OR MATERIAL COSTS THAT CANNOT BE RECOUPED IN PRODUCT PRICING; SUCCESSFUL INTEGRATION OF ACQUIRED BUSINESSES; PRODUCT LIABILITY, AS WELL AS OTHER RISKS AND UNCERTAINTIES, SUCH AS THOSE DESCRIBED",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[ ]",
+     "Accounting for variable interest entities"
+    ],
+    [
+     "[ ]",
+     "Revenue recognition"
+    ],
+    [
+     "[ ]",
+     "Inventories"
+    ],
+    [
+     "[ ]",
+     "Allowance for doubtful accounts"
+    ],
+    [
+     "[ ]",
+     "Stock based compensation"
+    ],
+    [
+     "[ ]",
+     "Derivative liability"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1070,
+    "end_line": 1078
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The Company's existence is dependent upon management's ability to raise additional financing and develop profitable operations. Additional financing transactions may include the issuance of equity or debt securities, obtaining credit facilities, or other financing mechanisms. However, the trading price of our common stock and the downturn in the U.S. stock and debt markets could make it more difficult to obtain financing through the issuance of equity or debt securities. Further, if we issue additional equity or debt securities, stockholders may experience additional dilution or the new equity securities may have rights, preferences or privileges senior to those of existing holders of our common stock. If additional financing is not available or is not available on acceptable terms, we will have to curtail our operations.\nCRITICAL ACCOUNTING POLICIES\nThe preparation of our financial statements in conformity with accounting principles generally accepted in the United States requires us to make estimates and judgments that affect our reported assets, liabilities, revenues, and expenses and the disclosure of contingent assets and liabilities. We base our estimates and judgments on historical experience and on various others assumptions we believe to be reasonable under the circumstances. Future events, however, may differ markedly from our current expectations and assumptions. While there are a number of significant accounting policies affecting our consolidated financial statements; we believe the following critical accounting policies involve the most complex, difficult and subjective estimates and judgments:",
+   "prose_after": "ACCOUNTING FOR VARIABLE INTEREST ENTITIES\nAccounting Standards Codification subtopic 810-10, Consolidation (\u201cASC 810-10\u201d) discusses certain entities in which equity investors do not have the characteristics of a controlling financial interest or do not have sufficient equity risk for the entity to finance its activities without additional subordinated financial support. ASC 810-10 requires the consolidation of these entities, known as variable interest entities, by the primary beneficiary of the entity. The primary beneficiary is the entity, if any, that will absorb a majority of the entities expected losses, receive a majority of the entity\u2019s expected residual returns or both.\nPursuant to the effective date of a related party lease obligation, the Company adopted ASC 810-10. This resulted in the consolidation of one variable interest entity (VIE) of which the Company is considered the primary beneficiary. The Company\u2019s variable interest in this VIE is the result of providing certain secured debt mortgage guarantees on behalf of a limited liability company that used to lease warehouse and general offices located in the city of Howell, Michigan. On November 30, 2010, the VIE sold the property for $800,000, which was approximately $500,000 less than the outstanding indebtedness. Because the Company is a guarantor of this remaining debt, we are continuing to include the VIE in our financial statements.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1065,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MARKETING WORLDWIDE CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BY:",
+     "/s/ CHARLES PINKERTON",
+     ""
+    ],
+    [
+     "",
+     "NAME: CHARLES PINKERTON",
+     ""
+    ],
+    [
+     "",
+     "TITLE: CHIEF EXECUTIVE OFFICER",
+     ""
+    ],
+    [
+     "",
+     "Date: February 13, 2011",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "MARKETING WORLDWIDE CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "****** previously filed on September 15, 2006 as part of the Form SB-2 of Marketing Worldwide Corporation SEC File 333-123380 Accession Number 0001019687-05-002649.\n******* previously filed on December 7, 2006 as part of the Form SB-2 of Marketing Worldwide Corporation SEC File 333-123380 Accession Number 0001019687-05-003367.\n(31)(1) Certification of Chief Executive Officer pursuant to Section302 of the Sarbanes-Oxley Act of 2002.\n(31)(2) Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n(32)(1) Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, furnished under Exhibit 32 of Item 601 of Regulation S-K.\n(32)(2) Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, furnished under Exhibit 32 of Item 601 of Regulation S-K.\nSIGNATURES\nPursuant to the requirements of section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "BY:",
+     "/s/ MICHAEL WINZKOWSKI",
+     ""
+    ],
+    [
+     "",
+     "NAME: MICHAEL WINZKOWSKI",
+     ""
+    ],
+    [
+     "",
+     "TITLE: PRESIDENT, CHAIRMAN OF THE BOARD,",
+     ""
+    ],
+    [
+     "",
+     "SECRETARY AND SOLE DIRECTOR",
+     ""
+    ],
+    [
+     "",
+     "Date: February 13, 2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BY:",
+     "/s/ JAMES E. DAVIS",
+     ""
+    ],
+    [
+     "",
+     "NAME: JAMES E. DAVIS",
+     ""
+    ],
+    [
+     "",
+     "TITLE: CHIEF FINANCIAL OFFICER",
+     ""
+    ],
+    [
+     "",
+     "Date: February 13, 2011",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1259,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "BY:",
+     "/s/ CHARLES PINKERTON",
+     ""
+    ],
+    [
+     "",
+     "NAME: CHARLES PINKERTON",
+     ""
+    ],
+    [
+     "",
+     "TITLE: CHIEF EXECUTIVE OFFICER",
+     ""
+    ],
+    [
+     "",
+     "Date: February 13, 2011",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1274,
+    "end_line": 1281
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1242,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

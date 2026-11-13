@@ -1,0 +1,3790 @@
+{
+ "accession": "0001213900-25-064247",
+ "cik": "0001846235",
+ "form": "10-K",
+ "filing_date": "2025-07-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0245076-10k_inter.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-1627460"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2025\nor\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to ________________\nCommission file number: 001-40687\nINTERNATIONAL MEDIA ACQUISITION CORP. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1221 Brickell Avenue, Miami, FL",
+     "33131"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 786-432-7588\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nTitle of Class\nCommon Stock, Par Value $0.0001 Per Share\nWarrants to Purchase Shares of Common Stock\nRights to Receive Shares of Common Stock\nUnits, Consisting of One Share of Common Stock, One Warrant and One Right\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "1"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "20"
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "46"
+    ],
+    [
+     "ITEM 1C",
+     "CYBERSECURITY",
+     "46"
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "46"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "46"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "46"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED SHAREHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "47"
+    ],
+    [
+     "ITEM 6.",
+     "[RESERVED]",
+     "48"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "48"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "64"
+    ],
+    [
+     "ITEM 8.",
+     "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "64"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "64"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "64"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "65"
+    ],
+    [
+     "ITEM 9C.",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "65"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "66"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "71"
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS",
+     "71"
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "72"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "77"
+    ],
+    [
+     "PART IV",
+     "",
+     "79"
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS AND CONSOLIDATED FINANCIAL STATEMENT SCHEDULES",
+     "79"
+    ],
+    [
+     "ITEM 16.",
+     "FORM 10-K SUMMARY",
+     "82"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of September 30, 2024, the aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant was $10,466,705.\nAs of July 15, 2025, there were 6,836,594 shares of common stock, par value $0.0001 per share, issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nAnnual Report on Form 10-K for the Year Ended March 31, 2025",
+   "prose_after": "i\nCERTAIN TERMS\nReferences to \u201cthe Company,\u201d \u201cIMAQ,\u201d \u201cour,\u201d \u201cus\u201d or \u201cwe\u201d refer to International Media Acquisition Corp., a blank check company incorporated in Delaware on January 15, 2021. References to our \u201cPrior Sponsor\u201d refer to Content Creation Media LLC, a Delaware limited liability company. References to our \u201cBuyer\u201d or \u201cJC Unify\u201d refer to JC Unify Capital (Holdings) Limited, a British Virgin Islands company. References to our \u201cIPO\u201d refer to the initial public offering of International Media Acquisition Corp., which closed on August 2, 2021.\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, or the Securities Act, and Section 21E of the Securities Exchange Act of 1934, or the Exchange Act. The statements contained in this report that are not purely historical are forward-looking statements. Our forward-looking statements include, but are not limited to, statements regarding our or our management\u2019s expectations, hopes, beliefs, intentions or strategies regarding the future. In addition, any statements that refer to projections, forecasts or other characterizations of future events or circumstances, including any underlying assumptions, are forward-looking statements. The words \u201canticipates,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions may identify forward-looking statements, but the absence of these words does not mean that a statement is not forward-looking. Forward-looking statements in this report may include, for example, statements about our:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares (or Units)\nPurchased",
+     "",
+     "",
+     "Average Price Paid Per Share (or Unit)",
+     "",
+     "Total Number of Shares (or Units)\nPurchased As Part of Publicly Announced Plans or Programs",
+     "",
+     "Maximum Number (or Approximate Dollar Value) of Shares (or Units)\nThat May Yet be Purchased Under the Plans or Programs",
+     ""
+    ],
+    [
+     "1/1/25 \u2013 1/31/25",
+     "",
+     "685,836",
+     "(1)",
+     "$",
+     "11.55per share",
+     "",
+     "685,836",
+     "",
+     "--"
+    ],
+    [
+     "2/1/25 \u2013 2/29/25",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "3/1/25 \u2013 3/31/25",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 899,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We have not paid any cash dividends on our common stock to date and do not intend to pay cash dividends prior to the completion of an initial business combination. The payment of cash dividends in the future will be dependent upon our revenues and earnings, if any, capital requirements and general financial condition subsequent to completion of a business combination. The payment of any dividends subsequent to a business combination will be within the discretion of our board of directors at such time. It is the present intention of our board of directors to retain all earnings, if any, for use in our business operations and, accordingly, our board of directors does not anticipate declaring any dividends in the foreseeable future. In addition, our board of directors is not currently contemplating and does not anticipate declaring any share dividends in the foreseeable future. Further, if we incur any indebtedness, our ability to declare dividends may be limited by restrictive covenants we may agree to in connection therewith.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nNone.\nRecent Sales of Unregistered Securities\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers",
+   "prose_after": "(1) In connection with the December 2024 Annual General Meeting, the Company was required to provide its public stockholders with the right to seek redemption of their shares for a pro rata portion of the Trust Account. A total of 685,836 shares were properly redeemed.\nITEM 6. [RESERVED]\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThis Annual Report includes \u201cforward-looking statements\u201d that are not historical facts and involve risks and uncertainties that could cause actual results to differ materially from those expected and projected. All statements, other than statements of historical fact included in this Annual Report including, without limitation, statements in this \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d regarding the Company\u2019s financial position, business strategy and the plans and objectives of management for future operations, are forward-looking statements. Words such as \u201cexpect,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201cseek\u201d and variations and similar words and expressions are intended to identify such forward-looking statements. Such forward-looking statements relate to future events or future performance, but reflect management\u2019s current beliefs, based on information currently available. A number of factors could cause actual events, performance or results to differ materially from the events, performance and results discussed in the forward-looking statements. For information identifying important factors that could cause actual results to differ materially from those anticipated in the forward-looking statements, please refer to \u201cCautionary Note Regarding Forward-Looking Statements\u201d elsewhere in this Annual Report on Form 10-K. The Company\u2019s securities filings can be accessed on the EDGAR section of the SEC\u2019s website at www.sec.gov. Except as expressly required by applicable securities law, the Company disclaims any intention or obligation to update or revise any forward-looking statements whether as a result of new information, future events or otherwise.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 876,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Yu-Fang Chiu",
+     "51",
+     "Director, Chief Executive Officer and Chief Financial Officer"
+    ],
+    [
+     "Ming-Hsien Hsu",
+     "44",
+     "Independent Director"
+    ],
+    [
+     "Tao-Chou Chang",
+     "54",
+     "Independent Director"
+    ],
+    [
+     "Hsu-Kao Cheng",
+     "34",
+     "Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1306,
+    "end_line": 1314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include an attestation report of our independent registered public accounting firm due to our status as an emerging growth company under the JOBS Act.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) of the Exchange Act) during the most recent fiscal year that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth information about our directors and executive officers as of July 15, 2025.",
+   "prose_after": "Yu-Fang Chiu has served as our Chairman of the Board of Directors, Chief Executive Officer and Chief Financial Officer since March 11, 2025. Since 2022, Ms. Chiu served as President of Joint Consulting CO., LTD, where she is responsible for overseeing operations and fostering partnerships with companies. Since 2020, Ms. Chiu served as Director of Insun Enterprise Co., where she is responsible for the sales and marketing of the company. From 2007 to 2016, Ms. Chiu served as a Senior Sales Manager at Prudential Life Insurance Company of Taiwan Inc. From 2003 to 2007, Ms. Chiu served as Senior Manager at Dotcom Technology Co., LTD. From 1996 to 2002, Ms. Chiu served as Team Leader of Deloitte Touche Tohmatsu Limited. Ms. Chiu obtained her Bachelor of Business in Accounting from Tamkang University in 1996.\nHsu-Kao Cheng has served as our Director since August 2024. Mr. Cheng has served as an Assistant Professor-level Part-time Technical Expert at National Chengchi University (NCCU) since 2022. Mr. Cheng has served as the Chairman of TheMoonGroup since 2018, where he is responsible for charging of company operations in accordance with the law and is responsible for handling various organizational business. Mr. Cheng has been the Chairman of the Taipei Digital Asset Business Association since 2023. Since July 2018, Mr. Cheng has served as an entrepreneurship consultant for Taiwan\u2019s Small and Medium Enterprises Division of the Ministry of Economic Affairs. During his tenure, Mr. Cheng is responsible for assisting aspiring entrepreneurs and new business owners from 0 to 1 entrepreneurial stage to solve difficulties in their business stages. Since 2022, Mr. Cheng has served as a digital transformation expert at the Digital Transformation Institute of the Information Strategy Foundation, where he promotes the digital transformation of small and medium-sized manufacturing industries, assists in proposing new models, new products and new services, and develops digital transformation guidance guidelines. Mr. Cheng is also a part-time lecturer at the Promotion Department of the Chinese Culture University, CCU and at the Industrial Promotion Office of Mingchuan University, since July 2022 and June 2022, respectively. Mr. Cheng obtained his Master\u2019s degree in accounting and Bachelor\u2019s degree in accounting at the National Chengchi University (NCCU) in 2018 and 2012, respectively. Mr. Cheng is a United States Certified Public Accountant (CPA) and Certified Anti-Money Laundering Specialist (CAMS). Mr. Cheng\u2019s significant experience in entrepreneurship, company operations and digital transformation makes him qualified to serve as a member of our board of directors.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Number of Shares Beneficially Owned",
+     "",
+     "Percentage of Outstanding Shares",
+     "",
+     ""
+    ],
+    [
+     "Yu-Fang Chiu(2)",
+     "",
+     "4,782,675",
+     "",
+     "70.0",
+     "%"
+    ],
+    [
+     "Ming-Hsien Hsu",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Hsu-Kao Cheng",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Tao-Chou Chang",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "All current officers and directors as a group (4 individuals)",
+     "",
+     "4,782,675",
+     "",
+     "70.0",
+     "%"
+    ],
+    [
+     "JC Unify Capital (Holdings) Limited (Buyer)",
+     "",
+     "4,782,675",
+     "",
+     "70.0",
+     "%"
+    ],
+    [
+     "Content Creation Media LLC(3)",
+     "",
+     "1,514,225",
+     "",
+     "22.2",
+     "%"
+    ],
+    [
+     "Shibasish Sarkar(3)",
+     "",
+     "1,514,225",
+     "",
+     "22.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1450,
+    "end_line": 1462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "None of our officers currently serves, or in the past year has served, as a member of the compensation committee of any entity that has one or more officers serving on our board of directors.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nSECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information, as of July 15, 2025, with respect to the beneficial ownership of our voting securities by (i) each person who is known by us to be the beneficial owner of more than 5% of our issued and outstanding Common Stock, (ii) each of our officers and directors, and (iii) all of our officers and directors as a group. As of July 15, 2025, we had 6,836,594 of our shares of common stock issued and outstanding. The following table does not reflect record of beneficial ownership of any shares of common stock issuable upon conversion of the rights or exercise of the warrants, as the rights and warrants are not exercisable within 60 days.",
+   "prose_after": "(1) Unless otherwise indicated, the business address of each of the following entities or individuals is c/o International Media Acquisition Corp., 1221 Brickell Avenue, Miami, FL 33131.\n(2) Consists of shares owned by JC Unify Capital (Holdings) Limited, over which Yu-Fang Chiu has voting and dispositive power. Ms. Chiu disclaims beneficial ownership of such shares, except to the extent of any pecuniary interest therein.\n(3) Consists of shares owned by Content Creation Media LLC, over which Yu-Fang Chiu has voting power and Shibasish Sarkar has dispositive power. Ms. Chiu disclaims beneficial ownership of such shares.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nFounder Shares\nOn February 9, 2021, the Prior Sponsor paid an aggregate of $25,000 to cover certain expenses on behalf of the Company in exchange for the issuance of 5,750,000 share of common stock (the \u201cFounder Shares\u201d). The Founder Shares included an aggregate of up to 750,000 shares of common stock subject to forfeiture to the extent that the underwriters\u2019 over-allotment option was not exercised in full or in part, so that the Prior Sponsor would own, on an as-converted basis, 20% of the Company\u2019s issued and outstanding shares after the Initial Public Offering (not including the Private Units and underlying securities and assuming the Prior Sponsor did not purchase any Public Shares in the Initial Public Offering). On August 6, 2021, the underwriters\u2019 exercised the over-allotment option in full, thus these shares are no longer subject to forfeiture.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 70
+    },
+    "after": {
+     "line": 1469,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 71
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year 2025 (April 1, 2024 - March 31, 2025)",
+     "",
+     "Fiscal Year 2024 (April 1, 2023 - March 31, 2024)",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "72,170",
+     "$",
+     "25,600"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "-",
+     "",
+     "20,750"
+    ],
+    [
+     "Tax Fees(3)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees(4)",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1579,
+    "end_line": 1588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "To further minimize conflicts of interest, we have agreed not to consummate our initial business combination with an entity that is affiliated with any of our insiders, officers or directors unless we have obtained an opinion from an independent investment banking firm or another independent firm that commonly renders valuation opinions for the type of company we are seeking to acquire or an independent accounting firm that our initial business combination is fair to our company from a financial point of view. In no event will our infsiders, or any of the members of our management team be paid any finder\u2019s fee, consulting fee or other similar compensation prior to, or for any services they render in order to effectuate, the consummation of our initial business combination (regardless of the type of transaction that it is).\nDirector Independence\nNasdaq listing standards require that a majority of our board of directors be independent. For a description of the director independence, see \u201c- Part III, Item 10 - Directors, Executive Officers and Corporate Governance\u201d.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nFees\nThe fees billed by Mercurius for fiscal year 2025, and fiscal year 2024 for services rendered to the Company were as follows:",
+   "prose_after": "(1) Audit Fees. Audit fees consist of fees billed for professional services rendered by our independent registered public accounting firm for the audit of our annual financial statements and review of financial statements included in our Quarterly Reports on Form 10-Q or services that are normally provided by our independent registered public accounting firm in connection with statutory and regulatory filings or engagements.\n(2) Audit-Related Fees. Audit-related fees consist of fees billed for assurance and related services that are reasonably related to performance of the audit or review of our financial statements and are not reported under \u201cAudit Fees.\u201d These services include attest services that are not required by statute or regulation and consultation concerning financial accounting and reporting standards.\n(3) Tax Fees. Tax fees consist of fees billed for professional services rendered by our independent registered public accounting firm for tax compliance, tax advice, and tax planning.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 77
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm PCAOB ID - 3223",
+     "F-1"
+    ],
+    [
+     "Balance Sheet",
+     "F-2"
+    ],
+    [
+     "Statement of Operations",
+     "F-3"
+    ],
+    [
+     "Statement of Changes in Stockholders\u2019 Deficit",
+     "F-4"
+    ],
+    [
+     "Statement of Cash Flows",
+     "F-5"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1626,
+    "end_line": 1636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "During the fiscal year ended December 31, 2021 and the subsequent interim periods through the date of Mercurius\u2019 engagement, neither the Company nor anyone acting on its behalf consulted Mercurius regarding either (i) the application of accounting principles to a specified transaction, either completed or proposed, or the type of audit opinion that might be rendered on the Company\u2019s consolidated financial statements and neither a written report nor oral advice was provided to the Company by Mercurius that Mercurius concluded was an important factor considered by the Company in reaching a decision as to such accounting, auditing, or financial reporting issue; or (ii) any matter that was either the subject of a \u201cdisagreement\u201d (as that term is defined in Item 304(a)(1)(iv) of Regulation S-K and the related instructions) or a \u201creportable event\u201d (as that term is defined in Item 304(a)(1)(v) of Regulation S-K).\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) The following documents are filed as part of this Form 10-K:\n(1) Financial Statements:",
+   "prose_after": "Report of Independent Registered Public Accounting Firm",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1617,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 78
+    },
+    "after": {
+     "line": 1637,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 79
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "MERCURIUS & ASSOCIATES LLP"
+    ],
+    [
+     ""
+    ],
+    [
+     "+91 11 4559 6689"
+    ],
+    [
+     "info@masllp.com"
+    ],
+    [
+     "www.masllp.com"
+    ]
+   ],
+   "caption_stack": [
+    "MERCURIUS & ASSOCIATES LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1640,
+    "end_line": 1648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Report of Independent Registered Public Accounting Firm",
+   "prose_after": "To the Shareholders and Board of Directors of International Media Acquisition Corp.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of International Media Acquisition Corp., (the \u201cCompany\u201d) as of March 31, 2025 and 2024, the related statements of operations, stockholders\u2019 deficit and cash flows, for each of the two years in the period ended March 31, 2025, and the related notes (collectively referred to as the \"Financial Statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company at March 31, 2025 and 2024, and the results of its operations and its cash flows for each of the two years in the period ended March 31,2025, in conformity with U.S. generally accepted accounting principles.\nSubstantial doubt about the Company\u2019s ability to continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the Financial Statements, the Company has an accumulated deficit of $14,852,574 and $13,993,133 as of March 31, 2025, and March 31, 2024, respectively and the Company has a working capital deficit of $6,796,724 and $6,348,420 as of March 31, 2025, and March 31, 2024, respectively. Further, the Company has incurred and expects continue to incur significant professional costs to remain as a publicly traded company and to incur significant transaction costs in pursuit of the consummation of a Business Combination. These conditions raise substantial doubt about the uncertainty in the Company\u2019s ability to continue as a going concern. Management\u2019s plans regarding this uncertainty are also described in the Note 1 to the financial statements. The financial statements do not include any adjustments that might result from the outcome of this uncertainty. Our opinion is not modified with respect to this matter.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1637,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "241,548",
+     "",
+     "$",
+     "1,044",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "10,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "17,583",
+     "",
+     "",
+     "18,956",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "269,131",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "3,380,327",
+     "",
+     "",
+     "11,363,873",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "3,649,458",
+     "",
+     "$",
+     "11,393,873",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "957,626",
+     "",
+     "$",
+     "1,674,665",
+     ""
+    ],
+    [
+     "Due to Prior Sponsor",
+     "",
+     "656,913",
+     "",
+     "",
+     "656,913",
+     ""
+    ],
+    [
+     "Promissory notes- Prior Sponsor",
+     "",
+     "2,445,000",
+     "",
+     "",
+     "2,445,000",
+     ""
+    ],
+    [
+     "Promissory notes - JC Unify",
+     "",
+     "2,659,713",
+     "",
+     "",
+     "1,062,232",
+     ""
+    ],
+    [
+     "Excise tax payable",
+     "",
+     "91,920",
+     "",
+     "",
+     "113,689",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "254,683",
+     "",
+     "",
+     "425,921",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "7,065,855",
+     "",
+     "",
+     "6,378,420",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "",
+     "8,050,000",
+     "",
+     "",
+     "8,050,000",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "",
+     "18,330",
+     "",
+     "",
+     "31,079",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "15,134,185",
+     "",
+     "",
+     "14,459,499",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments (see Note 6)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption: 289,694 and 975,530, shares issued and outstanding at $11.62 and $11.20 redemption value as of March 31, 2025 and 2024, respectively",
+     "",
+     "3,367,192",
+     "",
+     "",
+     "10,926,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 5,000,000 shares authorized; none issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 500,000,000 shares authorized; 6,546,900 shares issued and outstanding (excluding 289,694 and 975,530 shares subject to possible redemption as of March 31, 2025 and 2024, respectively)",
+     "",
+     "655",
+     "",
+     "",
+     "655",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(14,852,574)",
+     "",
+     "",
+     "(13,993,133)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(14,851,919)",
+     "",
+     "",
+     "(13,992,478)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "3,649,458",
+     "",
+     "$",
+     "11,393,873",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1684,
+    "end_line": 1734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of financial statements. We believe that our audit provides a reasonable basis for our opinion.\nCritical Audit Matters\nThe Critical Audit Matter are matters arising from the current period audit of the financial statements that was communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there are no critical audit matters.\n/s/ Mercurius & Associates LLP\nWe have served as the Company\u2019s auditor since 2023.\nNew Delhi, India\nDate: July 15, 2025\nLLPIN-AAG-1471 A-94/8, Wazirpur Industrial Area New Delhi-110052, India\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1736,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "734,798",
+     "",
+     "$",
+     "1,694,608",
+     ""
+    ],
+    [
+     "Franchise tax expense",
+     "",
+     "208,353",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(943,151)",
+     "",
+     "",
+     "(1,894,608)",
+     ""
+    ],
+    [
+     "Liabilities written back",
+     "",
+     "142,306",
+     "",
+     "",
+     "314,686",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "12,749",
+     "",
+     "",
+     "(7,172)",
+     ""
+    ],
+    [
+     "Interest and dividend income on investments held in trust account",
+     "",
+     "502,745",
+     "",
+     "",
+     "990,896",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(285,351)",
+     "",
+     "",
+     "(596,198)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "122,756",
+     "",
+     "",
+     "218,289",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(408,107)",
+     "",
+     "$",
+     "(814,487)",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding, basic and diluted",
+     "",
+     "7,358,172",
+     "",
+     "",
+     "8,251,280",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.10)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1740,
+    "end_line": 1764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFor the Year Ended March 31, 2025",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1736,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "6,546,900",
+     "$",
+     "655",
+     "$",
+     "-",
+     "$",
+     "(13,993,133)",
+     "",
+     "$",
+     "(13,992,478)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(408,107)",
+     "",
+     "",
+     "(408,107)",
+     ""
+    ],
+    [
+     "Accretion of Common Stock Subject to Redemption",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(359,636)",
+     "",
+     "",
+     "(359,636)",
+     ""
+    ],
+    [
+     "Excise tax liability",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(91,698)",
+     "",
+     "",
+     "(91,698)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2025",
+     "",
+     "6,546,900",
+     "$",
+     "655",
+     "$",
+     "-",
+     "$",
+     "(14,852,574)",
+     "",
+     "$",
+     "(14,851,919)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1772,
+    "end_line": 1786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFor the Year Ended March 31, 2025",
+   "prose_after": "For the Year Ended March 31, 2024",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2023",
+     "",
+     "6,546,900",
+     "$",
+     "655",
+     "$",
+     "-",
+     "$",
+     "(11,053,210)",
+     "",
+     "$",
+     "(11,052,555)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(814,487)",
+     "",
+     "",
+     "(814,487)",
+     ""
+    ],
+    [
+     "Accretion of Common Stock Subject to Redemption",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,011,747)",
+     "",
+     "",
+     "(2,011,747)",
+     ""
+    ],
+    [
+     "Excise tax liability",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(113,689)",
+     "",
+     "",
+     "(113,689)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "6,546,900",
+     "$",
+     "655",
+     "$",
+     "-",
+     "$",
+     "(13,993,133)",
+     "",
+     "$",
+     "(13,992,478)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1789,
+    "end_line": 1803
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "For the Year Ended March 31, 2024",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(408,107)",
+     "",
+     "$",
+     "(814,487)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and dividend income on investments held in trust account",
+     "",
+     "(502,745)",
+     "",
+     "",
+     "(990,896)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "(12,749)",
+     "",
+     "",
+     "7,172",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "1,374",
+     "",
+     "",
+     "33,544",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "-",
+     "",
+     "",
+     "(10,000)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(717,039)",
+     "",
+     "",
+     "281,958",
+     ""
+    ],
+    [
+     "Excise tax paid",
+     "",
+     "(113,468)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "(171,238)",
+     "",
+     "",
+     "218,289",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,923,972)",
+     "",
+     "",
+     "(1,274,421)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash deposited in Trust Account",
+     "",
+     "(188,000)",
+     "",
+     "",
+     "(1,088,109)",
+     ""
+    ],
+    [
+     "Cash withdrawn from trust account to pay franchise tax",
+     "",
+     "754,995",
+     "",
+     "",
+     "324,668",
+     ""
+    ],
+    [
+     "Cash withdrawn from trust account in connection with redemption",
+     "",
+     "7,919,296",
+     "",
+     "",
+     "11,368,921",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "8,486,291",
+     "",
+     "",
+     "10,605,480",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from loan - JC Unify",
+     "",
+     "1,597,481",
+     "",
+     "",
+     "1,062,232",
+     ""
+    ],
+    [
+     "Proceeds from promissory note - related party",
+     "",
+     "-",
+     "",
+     "",
+     "319,459",
+     ""
+    ],
+    [
+     "Advance from Prior Sponsor",
+     "",
+     "-",
+     "",
+     "",
+     "656,913",
+     ""
+    ],
+    [
+     "Redemption of common stock",
+     "",
+     "(7,919,296)",
+     "",
+     "",
+     "(11,368,921)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(6,321,815)",
+     "",
+     "",
+     "(9,330,317)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "240,504",
+     "",
+     "",
+     "742",
+     ""
+    ],
+    [
+     "Cash - Beginning of period",
+     "",
+     "1,044",
+     "",
+     "",
+     "302",
+     ""
+    ],
+    [
+     "Cash - End of period",
+     "$",
+     "241,548",
+     "",
+     "$",
+     "1,044",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of Public Shares to redemption value",
+     "$",
+     "359,636",
+     "",
+     "$",
+     "2,011,747",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1809,
+    "end_line": 1856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nInternational Media Acquisition Corp. (\u201cIMAQ\u201d or the \u201cCompany\u201d) is a blank check company incorporated in Delaware on January 15, 2021. The Company was formed for the purpose of entering into a merger, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses (a \u201cBusiness Combination\u201d). The Company is not limited to a particular industry or geographic region for purposes of consummating a Business Combination. The Company is an early stage and emerging growth company and, as such, the Company is subject to all of the risks associated with early stage and emerging growth companies.\nAs of March 31, 2025, the Company had not commenced any operations. All activity for the period from January 15, 2021 (inception) through March 31, 2025, related to the Company\u2019s formation and initial public offering (\u201cInitial Public Offering\u201d), which is described below, and identifying a target Business Combination. The Company will not generate any operating revenues until after the completion of a Business Combination, at the earliest. The Company generates non-operating income in the form of interest and dividend income from the proceeds derived from the Initial Public Offering. The Company had selected December 31 as its fiscal year end. On August 16, 2022, the board of directors of International Media Acquisition Corp. approved a change to the Company\u2019s fiscal year end from December 31 to March 31, in accordance with the Company\u2019s Bylaws.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross proceeds",
+     "$",
+     "230,000,000",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Warrants",
+     "",
+     "(12,466,000)",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Rights",
+     "",
+     "(7,337,000)",
+     ""
+    ],
+    [
+     "Issuance costs allocated to common stock",
+     "",
+     "(13,850,689)",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "33,653,689",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption, March 31, 2022",
+     "",
+     "230,000,000",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "1,264,548",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemption",
+     "",
+     "(210,980,522)",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption, March 31, 2023",
+     "",
+     "20,284,026",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "2,011,747",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemption",
+     "",
+     "(11,368,921)",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption, March 31, 2024",
+     "$",
+     "10,926,852",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "359,636",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemption",
+     "",
+     "(7,919,296)",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption, March 31, 2025",
+     "$",
+     "3,367,192",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2071,
+    "end_line": 2104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "All of the remaining Public Shares sold as part of the Units in the Initial Public Offering contain a redemption feature which allows for the redemption of such Public Shares in connection with the Company\u2019s liquidation, if there is a stockholder vote or tender offer in connection with the Business Combination and in connection with certain amendments to the Company\u2019s Amended and Restated Certificate of Incorporation. In accordance with SEC and its staff\u2019s guidance on redeemable equity instruments, which has been codified in ASC 480-10-S99, redemption provisions not solely within the control of the Company require common stock subject to redemption to be classified outside of permanent equity. Therefore, all redeemable Public Shares have been classified outside of permanent equity.\nThe Company recognizes changes in redemption value immediately as they occur and adjusts the carrying value of redeemable common stock to equal the redemption value at the end of each reporting period. Increases or decreases in the carrying amount of redeemable common stock are affected by charges against additional paid-in capital and accumulated deficit.\nAs of March 31, 2025, the redeemable common stock reflected in the balance sheet are reconciled in the following table:",
+   "prose_after": "Offering Costs associated with the Initial Public Offering\nThe Company complies with the requirements of ASC 340-10-S99-1 and SEC Staff Accounting Bulletin Topic 5A - Expenses of Offering. Offering costs consist principally of professional and registration fees incurred through the balance sheet date that are related to the Initial Public Offering. Offering costs directly attributable to the issuance of an equity contract to be classified in equity are recorded as a reduction in equity. Offering costs for equity contracts that are classified as assets and liabilities are expensed immediately. The Company incurred offering costs amounting to $15,242,385 as a result of the Initial Public Offering (consisting of $4,600,000 of underwriting fees, $8,050,000 of deferred underwriting fees, and $2,592,385 of other offering costs). The Company recorded $13,850,689 of offering costs as a reduction of temporary equity in connection with the Public Shares. The Company recorded $1,386,770 as a reduction of permanent equity in connection with the Public Warrants, Public Rights, Private Shares and Private Rights. The Company immediately expensed $4,926 of offering costs in connection with the Private Warrants that were classified as liabilities.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(408,107)",
+     "",
+     "$",
+     "(814,487)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "7,358,172",
+     "",
+     "",
+     "8,251,280",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share of common stock",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.10)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2135,
+    "end_line": 2152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company may be subject to potential examination by federal and state taxing authorities in the areas of income taxes. These potential examinations may include questioning the timing and amount of deductions, the nexus of income among various tax jurisdictions and compliance with federal and state tax laws. The Company\u2019s management does not expect that the total amount of unrecognized tax benefits will materially change over the next twelve months.\nNet Loss Per Share of Common Stock\nNet loss per common share is computed by dividing net loss by the weighted-average number of shares of common stock outstanding during the period. As the Public Shares are considered to be redeemable at fair value, and a redemption at fair value does not amount to a distribution different than other stockholders, redeemable and non-redeemable common stock are presented as one class of stock in calculating net loss per share. The Company has not considered the effect of the warrants sold in the Initial Public Offering and private placement to purchase an aggregate of 17,847,675 shares in the calculation of diluted income per share, since the exercise of the warrants are contingent upon the occurrence of future events.\nThe following table reflects the calculation of basic and diluted net loss per common stock (in dollars, except per share amounts)",
+   "prose_after": "Concentration of Credit Risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist of a cash account in a financial institution, which, at times, may exceed the Federal Depository Insurance Coverage of $250,000. The Company has not experienced losses on this account and management believes the Company is not exposed to significant risks on such account.\nFair Value of Financial Instruments\nThe Company applies ASC 820, Fair Value Measurements (\u201cASC 820\u201d), which establishes a framework for measuring fair value and clarifies the definition of fair value within that framework. ASC 820 defines fair value as an exit price, which is the price that would be received for an asset or paid to transfer a liability in the Company\u2019s principal or most advantageous market in an orderly transaction between market participants on the measurement date. The fair value hierarchy established in ASC 820 generally requires an entity to maximize the use of observable inputs and minimize the use of unobservable inputs when measuring fair value. Observable inputs reflect the assumptions that market participants would use in pricing the asset or liability and are developed based on market data obtained from sources independent of the reporting entity. Unobservable inputs reflect the entity\u2019s own assumptions based on market data and the entity\u2019s judgments about the assumptions that market participants would use in pricing the asset or liability and are to be developed based on the best information available in the circumstances.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2132,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2174,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Amount at Fair Value",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "March 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money Market investments",
+     "$",
+     "3,380,327",
+     "$",
+     "3,380,327",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability - Private Warrants",
+     "$",
+     "18,330",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "18,330"
+    ],
+    [
+     "March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money Market investments",
+     "$",
+     "11,363,873",
+     "$",
+     "11,363,873",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability - Private Warrants",
+     "$",
+     "31,079",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "31,079"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2372,
+    "end_line": 2389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company will not issue fractional shares in connection with an exchange of rights. Fractional shares will either be rounded down to the nearest whole share or otherwise addressed in accordance with the applicable provisions of Delaware law. As a result, the holders of the rights must hold rights in multiples of 20 in order to receive shares for all of the holders\u2019 rights upon closing of a Business Combination. If the Company is unable to complete an initial Business Combination within the Second Amended Combination Period and the Company redeems the Public Shares for the funds held in the Trust Account, holders of rights will not receive any of such funds for their rights and the rights will expire worthless. As of March 31, 2025 and 2024, there were 23,000,000 Public Rights and 796,900 Private Rights outstanding.\nNOTE 9. FAIR VALUE MEASUREMENTS\nThe following tables present information about the Company\u2019s financial liabilities that are measured at fair value on a recurring basis as of March 31, 2025 and 2024 and indicate the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "The Company utilizes the Black-Scholes method to value the Private Warrants at each reporting period, with changes in fair value recognized in the statement of operations. The estimated fair value of the warrant liability is determined using Level 3 inputs. Inherent in a binomial options pricing model are assumptions related to expected share-price volatility, expected life, risk-free interest rate and dividend yield. The Company estimates the volatility of its common stock using the implied volatility of the comparable companies that matches the expected remaining life of the warrants. The risk-free interest rate is based on the U.S. Treasury zero-coupon yield curve on the grant date for a maturity similar to the expected remaining life of the warrants. The expected life of the Private Warrants is assumed to be equivalent to their remaining contractual term. The dividend rate is based on the historical rate, which the Company anticipates remaining at zero.\nThe following table provides the significant inputs to the Black-Scholes method for the fair value of the Private Warrants:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2357,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2391,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of August 2021 (Initial Measurement)",
+     "",
+     "",
+     "As of March 31, 2025",
+     "",
+     "",
+     "As of March 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Unit price",
+     "$",
+     "10.00",
+     "",
+     "$",
+     "10.00",
+     "",
+     "$",
+     "10.00",
+     ""
+    ],
+    [
+     "Common stock price",
+     "$",
+     "9.44",
+     "",
+     "$",
+     "10.54",
+     "",
+     "$",
+     "11.30",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "Term to Business Combination (years)",
+     "",
+     "1.00",
+     "",
+     "",
+     "1.00",
+     "",
+     "",
+     "1.00",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "16.0",
+     "%",
+     "",
+     "6.44",
+     "%",
+     "",
+     "5.40",
+     "%"
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "0.88",
+     "%",
+     "",
+     "4.01",
+     "%",
+     "",
+     "5.03",
+     "%"
+    ],
+    [
+     "Fair value",
+     "$",
+     "0.58",
+     "",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.04",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2394,
+    "end_line": 2406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company utilizes the Black-Scholes method to value the Private Warrants at each reporting period, with changes in fair value recognized in the statement of operations. The estimated fair value of the warrant liability is determined using Level 3 inputs. Inherent in a binomial options pricing model are assumptions related to expected share-price volatility, expected life, risk-free interest rate and dividend yield. The Company estimates the volatility of its common stock using the implied volatility of the comparable companies that matches the expected remaining life of the warrants. The risk-free interest rate is based on the U.S. Treasury zero-coupon yield curve on the grant date for a maturity similar to the expected remaining life of the warrants. The expected life of the Private Warrants is assumed to be equivalent to their remaining contractual term. The dividend rate is based on the historical rate, which the Company anticipates remaining at zero.\nThe following table provides the significant inputs to the Black-Scholes method for the fair value of the Private Warrants:",
+   "prose_after": "The following table provides a summary of the changes in the fair value of the Company\u2019s Level 3 financial instruments that are measured at fair value on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2391,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value as of January 15, 2021 (inception)",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Initial measurement as of August 2, 2021",
+     "",
+     "414,352",
+     ""
+    ],
+    [
+     "Additional warrants issued in over-allotment",
+     "",
+     "47,850",
+     ""
+    ],
+    [
+     "Fair value as of August 2, 2021",
+     "",
+     "462,202",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(199,225)",
+     ""
+    ],
+    [
+     "Fair value as of December 31, 2021",
+     "",
+     "262,977",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(119,535)",
+     ""
+    ],
+    [
+     "Fair value as of March 31, 2022",
+     "$",
+     "143,442",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(119,535)",
+     ""
+    ],
+    [
+     "Fair value as of March 31, 2023",
+     "$",
+     "23,907",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "7,172",
+     ""
+    ],
+    [
+     "Fair value as of March 31, 2024",
+     "$",
+     "31,079",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(12,749)",
+     ""
+    ],
+    [
+     "Fair value as of March 31, 2025",
+     "$",
+     "18,330",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2409,
+    "end_line": 2433
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following table provides a summary of the changes in the fair value of the Company\u2019s Level 3 financial instruments that are measured at fair value on a recurring basis:",
+   "prose_after": "Transfers to/from Levels 1, 2, and 3 are recognized at the end of the reporting period in which a change in valuation technique or methodology occurs. There were no transfers in or out of Level 3 from other levels in the fair value hierarchy for the period from April 1, 2024, through March 31, 2025.\nThe Company recognized a gain of $12,749 and loss of $7,172 related to a change in fair value of warrant liability in the accompanying of Statements Operations for the years ended March 31, 2025 and 2024, respectively.\nNOTE 10. INCOME TAX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2391,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2025",
+     "",
+     "",
+     "March 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Startup/Organization Costs",
+     "$",
+     "206,552",
+     "",
+     "$",
+     "387,896",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "$",
+     "206,552",
+     "",
+     "$",
+     "387,896",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "$",
+     "(206,552)",
+     "",
+     "",
+     "(387,896)",
+     ""
+    ],
+    [
+     "Deferred tax asset, net of allowance",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2440,
+    "end_line": 2453
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "Transfers to/from Levels 1, 2, and 3 are recognized at the end of the reporting period in which a change in valuation technique or methodology occurs. There were no transfers in or out of Level 3 from other levels in the fair value hierarchy for the period from April 1, 2024, through March 31, 2025.\nThe Company recognized a gain of $12,749 and loss of $7,172 related to a change in fair value of warrant liability in the accompanying of Statements Operations for the years ended March 31, 2025 and 2024, respectively.\nNOTE 10. INCOME TAX",
+   "prose_after": "The income tax benefit (provision) consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2391,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended March 31, 2025",
+     "",
+     "",
+     "For the year ended March 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "83,453",
+     "",
+     "",
+     "148,399",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "39,303",
+     "",
+     "",
+     "69,890",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "(154,308)",
+     "",
+     "",
+     "(289,784)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(52,244)",
+     "",
+     "",
+     "(98,113)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "206,552",
+     "",
+     "",
+     "387,896",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "122,756",
+     "",
+     "",
+     "218,289",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2456,
+    "end_line": 2471
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "The income tax benefit (provision) consists of the following:",
+   "prose_after": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. The change in the valuation allowance was $(181,344) and $(142,246) for the year ended March 31, 2025 and 2024, respectively.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate at March 31, 2025 and 2024 is as follows\uff1a",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 2507,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended March 31, 2025",
+     "",
+     "",
+     "For the year ended March 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.00",
+     "%",
+     "",
+     "21.00",
+     "%"
+    ],
+    [
+     "New Jersey statutory rate",
+     "",
+     "7.11",
+     "%",
+     "",
+     "7.11",
+     "%"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "1.26",
+     "%",
+     "",
+     "0.34",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(72.38)",
+     "%",
+     "",
+     "(65.06)",
+     "%"
+    ],
+    [
+     "Income Taxes Provision (Benefit)",
+     "",
+     "(43.02)",
+     "%",
+     "",
+     "(36.61)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2476,
+    "end_line": 2487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. The change in the valuation allowance was $(181,344) and $(142,246) for the year ended March 31, 2025 and 2024, respectively.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate at March 31, 2025 and 2024 is as follows\uff1a",
+   "prose_after": "The effective tax rate differs from the federal and state statutory rate of 21% and 9% for the year ended March 31, 2025 and 2024, due to the valuation allowance recorded on the Company\u2019s net operating losses, as well as the change in the fair value of warrant liability, change in valuation allowance and state income taxes net of federal benefit.\nThe Company files income tax returns in the U.S. federal jurisdiction and New Jersey. The Company\u2019s tax returns for the year ended March 31, 2025, March 31, 2024, March 31, 2023, and March 31, 2022, remain open and subject to examination. The Company has filed tax returns for the calendar years 2024, 2023 and 2022.\nNOTE\n11. SEGMENT INFORMATION\nASC Topic 280, \u201cSegment Reporting,\u201d establishes standards for companies to report in their financial statement information about operating segments, products, services, geographic areas, and major customers. Operating segments are defined as components of an enterprise for which separate financial information is available that is regularly evaluated by the Company\u2019s chief operating decision maker, or group, in deciding how to allocate resources and assess performance.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 2507,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Year Ended March 31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "734,798",
+     "$",
+     "1,694,608"
+    ],
+    [
+     "Interest earned on investments held in Trust Account",
+     "$",
+     "502,745",
+     "$",
+     "990,896"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Year Ended March 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2499,
+    "end_line": 2507
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "ASC Topic 280, \u201cSegment Reporting,\u201d establishes standards for companies to report in their financial statement information about operating segments, products, services, geographic areas, and major customers. Operating segments are defined as components of an enterprise for which separate financial information is available that is regularly evaluated by the Company\u2019s chief operating decision maker, or group, in deciding how to allocate resources and assess performance.\nThe Company\u2019s chief operating decision maker has been identified as the Chief Executive Officer, Chief Financial Officer and Chairman (\u201cCODM\u201d), who reviews the operating results for the Company as a whole to make decisions about allocating resources and assessing financial performance. Accordingly, management has determined that the Company only has one operating segment. When evaluating the Company\u2019s performance and making key decisions regarding resource allocation the CODM reviews key metrics, which include the following:",
+   "prose_after": "The key measures of segment profit or loss reviewed by the CODM are general and administrative expenses and interest earned on investments held in Trust Account. General and administrative expenses are reviewed and monitored by the CODM to manage and forecast cash to ensure enough capital is available to complete a business combination within the business combination period. The CODM also reviews general and administrative expenses to manage, maintain and enforce all contractual agreements to ensure costs are aligned with all agreements and budget. Interest earned on investments held in Trust Account are reviewed to measure and monitor shareholder value and determine the most effective strategy of investment with the Trust Account funds while maintaining compliance with the trust agreement.\nNOTE 12. SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the unaudited financial statements were issued. Based upon this review, other than described below, the Company did not identify any subsequent events other than noted below that would have required adjustment or disclosure in the unaudited financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2453,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 2507,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1",
+     "First Amendment to Securities Purchase Agreement, dated January 31, 2024, by and among JC Unify Capital (Holdings) Limited, Content Creation Media LLC, Shibasish Sarkar, and International Media Acquisition Corp. (incorporated by reference to Exhibit 2.1 filed with the Form 8-K filed by the Registrant on February 6, 2024)"
+    ],
+    [
+     "2.2",
+     "Merger Agreement, dated as of April 3, 2025, by and among International Media Acquisition Corp., VCI Holdings Limited, and Vietnam Biofuels Development Joint Stock Company. (incorporated by reference to Exhibit 2.1 filed with the Form 8-K filed by the Registrant on April 9, 2025)"
+    ],
+    [
+     "3.1",
+     "Certificate of Amendment, dated July 31, 2023, to Amended and Restated Certificate of Incorporation of IMAQ (incorporated by reference to Exhibit 3.1 filed with the Form 8-K filed by the Registrant on August 3, 2023)."
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment, dated January 2, 2024, to Amended and Restated Certificate of Incorporation of IMAQ (incorporated by reference to Exhibit 3.1 filed with the Form 8-K filed by the Registrant on January 8, 2024)."
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment, dated January 8, 2024, to Amended and Restated Certificate of Incorporation of IMAQ (incorporated by reference to Exhibit 3.2 filed with the Form 8-K filed by the Registrant on January 8, 2024)."
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment, dated December 31, 2024, to Amended and Restated Certificate of Incorporation of IMAQ (incorporated by reference to Exhibit 3.1 filed with the Form 8-K filed by the Registrant on December 31, 2024)."
+    ],
+    [
+     "4.1*",
+     "Description of Securities"
+    ],
+    [
+     "4.2",
+     "Warrant Agreement, dated July 28, 2021, by and between the Company and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 4.2 filed with the Form 8-K filed by the Registrant on August 2, 2021)."
+    ],
+    [
+     "4.3",
+     "Rights Agreement, dated July 28, 2021, by and between the Company and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 4.1 filed with the Form 8-K filed by the Registrant on August 2, 2021)."
+    ],
+    [
+     "10.1",
+     "Amendment to the Investment Management Trust Agreement, dated January 2, 2024, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on January 8, 2024)."
+    ],
+    [
+     "10.2",
+     "Amendment to the Investment Management Trust Agreement, dated July 31, 2023, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on August 3, 2023)"
+    ],
+    [
+     "10.3",
+     "Securities Purchase Agreement dated November 10, 2023 by and among JC Unify Capital (Holdings) Limited, Content Creation Media LLC, Shibasish Sarkar, and International Media Acquisition Corp. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on November 16, 2023)."
+    ],
+    [
+     "10.4",
+     "Termination Letter dated October 25, 2023, issued by Reliance Entertainment Studios Private Limited (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on October 31, 2023)."
+    ],
+    [
+     "10.5",
+     "Investment Management Trust Agreement, dated July 28, 2021, by and between IMAQ and Continental Stock Transfer & Trust Company. (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on August 2, 2021)."
+    ],
+    [
+     "10.6",
+     "Promissory Note A, dated January 31, 2024, issued to JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 2.2 filed with the Form 8-K filed by the Registrant on February 6, 2024)."
+    ],
+    [
+     "10.7",
+     "Promissory Note B, dated February 27, 2024, issued to JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on February 28, 2024)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2584,
+    "end_line": 2619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In consideration of the Investor\u2019s execution and delivery of the Equity Line Agreement, the Company shall cause the Transfer Agent to issue common stock equal to $1,000,000 divided by the closing price of the Company\u2019s Common stock on the earlier of (i) the Business Day prior to the effectiveness of the Registration Statement and (ii) the Business Day prior to the date that the Investor delivers a written request to the Company for the Commitment Shares (provided that such request cannot be within 180 days following the Closing). For the avoidance of doubt, all of the Commitment Shares shall only be fully earned upon a successful Closing with VCI Target Company and the issuance of the Commitment Shares is contingent upon the Closing with VCI Target Company.\nThe foregoing description of the Equity Line Agreement does not purport to be complete and is qualified in its entirety by the terms and conditions of the Equity Line Agreement, a copy of which is filed as Exhibit 10.1 to the Current Report on Form 8-K filed on April 22, 2025, and incorporated by reference herein.\nExtension\nOn each of April 23, 2025, May 29, 2025, and June 26, 2025 the Company made a deposit of $2,000 to the trust account to extend the period of time the Company has to consummate an initial business combination from May 2, 2025 to August 2, 2025.\n(2) Financial Statement Schedules:\nNone.\n(3) Exhibits\nThe following exhibits are filed with this report. Exhibits which are incorporated herein by reference can be obtained from the SEC\u2019s website at sec.gov.",
+   "prose_after": "10.8 Promissory Note C, dated February 27, 2024, issued to JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on February 28, 2024). 10.9 Amendment to Promissory Note, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.10 Amendment to Promissory Note B, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.11 Amendment to Promissory Note C, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.3 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.12 Amended and Restated Promissory Note dated January 14, 2022, as amended on March 29 2022, and March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.13 Amended and Restated Promissory Note dated August 10, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.14 Amended and Restated Promissory Note dated November 18, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.3 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.15 Amended and Restated Promissory Note dated February 14, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.4 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.16 Lock-Up Agreement dated March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.5 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.17 Lock-Up Agreement dated March 13, 2025, by and among Ontogeny Capital LTD. and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.6 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.18 Joinder Agreement dated March 11, 2025, by and among JC Unify Capital (Holdings) Limited, Continental Stock Transfer & Trust Company, and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.7 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.19 Termination Agreement dated March 11, 2025, by and among International Media Acquisition Corp. and Vishwas Joshi.(incorporated by reference to Exhibit 10.8 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.20 Termination Agreement dated March 11, 2025, by and among International Media Acquisition Corp. and Shibasish Sarkar.(incorporated by reference to Exhibit 10.9 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.21 Amendment to the Investment Management Trust Agreement, dated January 2, 2024, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on August 3, 2023) 10.22 Amendment to the Investment Management Trust Agreement, dated December 31, 2024, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on January 8, 2024) 10.23 Promissory Note, dated April 20, 2025, issued to Wei-Hua Chang (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on April 22, 2025). 10.24 VCI Loan Agreement, dated as of April 20, 2025, by and among International Media Acquisition Corp., VCI Holdings Limited, and Vietnam Biofuels Development Joint Stock Company.(incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on April 22, 2025) 10.25 Common Stock Purchase Agreement, dated April 20, 2025, by and among International Media Acquisition Corp. and White Lion Capital LLC. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on April 22, 2025) 10.26 Promissory Note D, dated March 28, 2025, issued to JC Unify Capital (Holdings) Limited. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on March 28, 2025)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2575,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "F",
+     "page_number": 33
+    },
+    "after": {
+     "line": 2620,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.27",
+     "Voting and Support Agreement, dated as of April 3, 2025, by and among International Media Acquisition Corp., VCI Holdings Limited, Vietnam Biofuels Development Joint Stock Company and certain shareholders of VCI Holdings Limited. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on April 9, 2025)"
+    ],
+    [
+     "10.28",
+     "Agreement, dated as of April 3, 2025 by and among International Media Acquisition Corp., VCI Holdings Limited, Vietnam Biofuels Development Joint Stock Company and certain shareholders of VCI Holdings Limited and Vietnam Biofuels Development Joint Stock Company. (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on April 9, 2025)"
+    ],
+    [
+     "16.1",
+     "Letter from Marcum LLP regarding the change in the Registrant\u2019s certifying accountant, dated June 28, 2023 (incorporated by reference to Exhibit 16.1 filed with the Form 8-K filed by the Registrant on June 29, 2023)."
+    ],
+    [
+     "19.1*",
+     "Insider Trading Policy."
+    ],
+    [
+     "99.1",
+     "Contract Extension Letter, dated July 21, 2023 (incorporated by reference to Exhibit 99.1 filed with the Form 8-K filed by the Registrant on July 27, 2023)."
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "97.1",
+     "Claw back Policy (incorporated by reference to Exhibit 97.1 to the Annual Report on Form 10-K for the fiscal year ended March 31, 2024 filed with the Securities and Exchange Commission on August 8, 2024."
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File - the cover page interactive data file does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2624,
+    "end_line": 2649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "10.8 Promissory Note C, dated February 27, 2024, issued to JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on February 28, 2024). 10.9 Amendment to Promissory Note, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.10 Amendment to Promissory Note B, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.11 Amendment to Promissory Note C, dated June 28, 2024, by and among International Media Acquisition Corp. and JC Unify Capital (Holdings) Limited (incorporated by reference to Exhibit 10.3 filed with the Form 8-K filed by the Registrant on July 1, 2024). 10.12 Amended and Restated Promissory Note dated January 14, 2022, as amended on March 29 2022, and March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.13 Amended and Restated Promissory Note dated August 10, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.14 Amended and Restated Promissory Note dated November 18, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.3 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.15 Amended and Restated Promissory Note dated February 14, 2022, and as amended on March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.4 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.16 Lock-Up Agreement dated March 11, 2025, by and among Content Creation Media LLC and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.5 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.17 Lock-Up Agreement dated March 13, 2025, by and among Ontogeny Capital LTD. and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.6 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.18 Joinder Agreement dated March 11, 2025, by and among JC Unify Capital (Holdings) Limited, Continental Stock Transfer & Trust Company, and International Media Acquisition Corp.(incorporated by reference to Exhibit 10.7 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.19 Termination Agreement dated March 11, 2025, by and among International Media Acquisition Corp. and Vishwas Joshi.(incorporated by reference to Exhibit 10.8 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.20 Termination Agreement dated March 11, 2025, by and among International Media Acquisition Corp. and Shibasish Sarkar.(incorporated by reference to Exhibit 10.9 filed with the Form 8-K filed by the Registrant on March 14, 2025). 10.21 Amendment to the Investment Management Trust Agreement, dated January 2, 2024, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on August 3, 2023) 10.22 Amendment to the Investment Management Trust Agreement, dated December 31, 2024, by and between IMAQ and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on January 8, 2024) 10.23 Promissory Note, dated April 20, 2025, issued to Wei-Hua Chang (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on April 22, 2025). 10.24 VCI Loan Agreement, dated as of April 20, 2025, by and among International Media Acquisition Corp., VCI Holdings Limited, and Vietnam Biofuels Development Joint Stock Company.(incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on April 22, 2025) 10.25 Common Stock Purchase Agreement, dated April 20, 2025, by and among International Media Acquisition Corp. and White Lion Capital LLC. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on April 22, 2025) 10.26 Promissory Note D, dated March 28, 2025, issued to JC Unify Capital (Holdings) Limited. (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on March 28, 2025)",
+   "prose_after": "* Filed herewith.\nITEM 16. FORM 10-K SUMMARY\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2623,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 2656,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 82
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INTERNATIONAL MEDIA ACQUISITION CORP.",
+     ""
+    ],
+    [
+     "Dated: July 15, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Yu-Fang Chiu"
+    ],
+    [
+     "",
+     "Name:",
+     "Yu-Fang Chiu"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer and Chairman"
+    ]
+   ],
+   "caption_stack": [
+    "INTERNATIONAL MEDIA ACQUISITION CORP.",
+    "Dated: July 15, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2661,
+    "end_line": 2669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\nITEM 16. FORM 10-K SUMMARY\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Yu-Fang Chiu, as his or her true and lawful attorney-in-fact and agent, with full power of substitution and resubstitution, for him or her and in his or her name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the United States Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or any of them, or his or her substitutes or substitute, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2656,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 2697,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yu-Fang Chiu",
+     "Chief Executive Officer, Chief Financial Officer and Chairman",
+     "July 15, 2025"
+    ],
+    [
+     "Yu-Fang Chiu",
+     "(Principal Executive Officer and Principal Accounting and Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ming-Hsien Hsu",
+     "Director",
+     "July 15, 2025"
+    ],
+    [
+     "Ming-Hsien Hsu",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Hsu-Kao Cheng",
+     "Director",
+     "July 15, 2025"
+    ],
+    [
+     "Hsu-Kao Cheng",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tao-Chou Chang",
+     "Director",
+     "July 15, 2025"
+    ],
+    [
+     "Tao-Chou Chang",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2676,
+    "end_line": 2696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Yu-Fang Chiu, as his or her true and lawful attorney-in-fact and agent, with full power of substitution and resubstitution, for him or her and in his or her name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the United States Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or any of them, or his or her substitutes or substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2656,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 2697,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

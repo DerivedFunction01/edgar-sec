@@ -1,0 +1,361 @@
+{
+ "accession": "0001136999-06-000453",
+ "cik": "0001335517",
+ "form": "10-K",
+ "filing_date": "2006-03-30",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gecm05c3_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Delaware",
+     "",
+     "02-0666931",
+     ""
+    ],
+    [
+     "",
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer\n\nIdentification No.)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2005\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the transition period from ________to _______\nCommission file number 333-125248-01\nGE Commercial Mortgage Corporation\n(as depositor under the Pooling and Servicing Agreement, dated as of August 1, 2005, providing for the issuance of the Commercial Mortgage Pass-Through Certificates, Series 2005-C3)\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "292 Long Ridge Road, Stamford, Connecticut 06927\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code: 203-357-4000\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n<TABLE>\n[ ] Yes  [X] N [ ]\n</TABLE>\nIndicate by check mark if the registrant is not required to file pursuant to Section 13 or Section 15(d) of the Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "[ ] Yes",
+     "[X] N[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "[ ] Yes",
+     "[X] N[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "[X] Yes",
+     "[ ] N[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "[ ] Yes",
+     "[X] N[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "31",
+     "Sarbanes-Oxley Certification"
+    ],
+    [
+     "99.1",
+     "Annual Independent Accountants\u2019 Servicing Reports concerning servicing activities"
+    ],
+    [
+     "(a)",
+     "Midland Loan Services, Inc., as Servicer and Special Servicer"
+    ],
+    [
+     "(b)",
+     "GMAC Commercial Mortgage Corporation, as Master Servicer of the Loews Universal Hotel Portfolio Loan"
+    ],
+    [
+     "(c)",
+     "GEMSA Loan Services, L.P., as Servicer of the 125 West 55th Street Loan"
+    ],
+    [
+     "99.2",
+     "Reports of Management as to Compliance with Minimum Servicing Standards"
+    ],
+    [
+     "(a)",
+     "Midland Loan Services, Inc., as Servicer and Special Servicer"
+    ],
+    [
+     "(b)",
+     "GMAC Commercial Mortgage Corporation, as Master Servicer of the Loews Universal Hotel Portfolio Loan"
+    ],
+    [
+     "(c)",
+     "GEMSA Loan Services, L.P., as Servicer of the 125 West 55th Street Loan"
+    ],
+    [
+     "99.3",
+     "Annual Statements of Compliance under the Pooling and Servicing Agreements"
+    ],
+    [
+     "(a)",
+     "Midland Loan Services, Inc., as Servicer and Special Servicer"
+    ],
+    [
+     "(b)",
+     "GMAC Commercial Mortgage Corporation, as Master Servicer of the Loews Universal Hotel Portfolio Loan under the pooling and servicing agreement for the J.P. Morgan Chase Commercial Mortgage Securities Corp., Commercial Mortgage Pass-Through Certificates, Series 2005-CIBC12"
+    ],
+    [
+     "(c)",
+     "GEMSA Loan Services, L.P., as Servicer of the 125 West 55th Street Loan under the pooling and servicing agreement for the GE Commercial Mortgage Corporation, Commercial Mortgage Pass-Through Certificates, Series 2005-C2"
+    ],
+    [
+     "99.4",
+     "Aggregate Statement of Principal and Interest Distributions to Certificateholders"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 173,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nNot applicable.\nItem 13. Certain Relationships and Related Transactions.\nNot applicable.\nItem 14. Principal Accounting Fees and Services.\nNot applicable.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Exhibits\nEXHIBIT INDEX",
+   "prose_after": "(b) The exhibits required to be filed by Registrant pursuant to Item 601 of Regulation S-K are listed in the Exhibit Index under (a) above.\n(c) Not applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nGE Commercial Mortgage Corporation, as depositor\n(Registrant)\nBy: /s/ Daniel J. Smith\nDaniel\nJ. Smith\nPresident and Chief Executive Officer",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

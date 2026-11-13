@@ -1,0 +1,2093 @@
+{
+ "accession": "0000950170-25-040572",
+ "cik": "0001763415",
+ "form": "10-K",
+ "filing_date": "2025-03-18",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bitb-20241231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n(State or other jurisdiction of incorporation or organization)",
+     "83-6613214\n\n(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] Annual report pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nfor the fiscal year ended December 31, 2024\nor\n[ ] Transition report pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934 for the transition period from _____________ to _____________.\nCommission file number: 001-41902\nBITWISE BITCOIN ETF\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o Bitwise Investment Advisers, LLC\n250 Montgomery Street, Suite 200\nSan Francisco, California 94104\n(Address of principal executive offices) (Zip Code)\n(415) 707-3663\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Bitwise Bitcoin ETF Shares",
+     "BITB",
+     "NYSE Arca, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o Bitwise Investment Advisers, LLC\n250 Montgomery Street, Suite 200\nSan Francisco, California 94104\n(Address of principal executive offices) (Zip Code)\n(415) 707-3663\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well\u2011known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S\u2011T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such\nfiles). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non\u2011accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b\u20112 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I.",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "20"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "70"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "70"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "71"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "71"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "71"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II.",
+     "",
+     "72"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "72"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "74"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "75"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "78"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "79"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "93"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "93"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "93"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Jurisdictions that Prevent Inspections",
+     "94"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III.",
+     "",
+     "95"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "95"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "97"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "98"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "98"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "100"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV.",
+     "",
+     "101"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "101"
+    ],
+    [
+     "Item 16.",
+     "Form 10\u2011K Summary",
+     "102"
+    ],
+    [
+     "",
+     "Glossary of Defined Terms",
+     "103"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 122,
+    "end_line": 162
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "All the forward-looking statements made in this Annual Report are qualified by these cautionary statements, and there can be no assurance that the actual results or developments the Sponsor anticipates will be realized or, even if substantially realized, that they will result in the expected consequences to, or have the expected effects on, the Trust\u2019s operations or the value of the Shares.\nShould one or more of these risks discussed in the section entitled \u201cRisk Factors\u201d under Item 1A \u2013 Risk Factors of this Annual Report or other uncertainties materialize, or should underlying assumptions prove incorrect, actual outcomes may vary materially from those described in forward-looking statements. Forward-looking statements are made based on the Sponsor\u2019s beliefs, estimates and opinions on the date the statements are made, and neither the Trust nor the Sponsor is under a duty to update any of the forward-looking statements to conform such statements to actual results or to reflect a change in the Sponsor\u2019s expectations or predictions, other than as required by applicable laws. Investors are therefore cautioned against relying on forward-looking statements.\nTable of Contents",
+   "prose_after": "Part I.\nItem 1. Business.\nSummary\nBitwise Bitcoin ETF (the \u201cTrust\u201d) is a Delaware statutory trust formed on August 29, 2019. The Trust continuously issues common shares (\u201cShares\u201d), representing units of undivided beneficial interest in and ownership of the Trust. The Shares are listed on the NYSE Arca Inc. (the \u201cExchange\u201d) under the ticker symbol \u201cBITB.\u201d The Trust commenced operations on January 10, 2024 and commenced trading on the Exchange on January 11, 2024.\nThe Trust\u2019s investment objective is to seek to provide shareholders of the Trust (\u201cShareholders\u201d) with exposure to the value of bitcoin held by the Trust that is reflective of the actual bitcoin market in which investors can purchase or sell bitcoin, less the expenses of the Trust\u2019s operations and other liabilities. In seeking to achieve its investment objective, the Trust holds bitcoin and establishes its net asset value (the \u201cNAV\u201d) by reference to the CME CF Bitcoin Reference Rate - New York Variant (\u201cBRRNY\u201d). The BRRNY was designed to provide a daily, 4:00 p.m. New York time reference rate of the U.S. dollar price of one bitcoin and is calculated by CF Benchmarks Ltd. (the \u201cBenchmark Provider\u201d) based on an aggregation of executed trade flow of major bitcoin trading platforms (the \u201cConstituent Platforms\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 162,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Trust",
+     "Commencement of Trading",
+     "Ticker Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Bitwise Bitcoin ETF",
+     "January 11, 2024",
+     "BITB",
+     "NYSE Arca"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1576,
+    "end_line": 1581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Item 2. Properties.\nNot applicable.\nItem 3. Legal Proceedings.\nNone.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nPart II.\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nMarket Information\nThe Shares of the Trust that have commenced investment operations are listed in the accompanying table. The dates the Shares of the Trust began trading, their symbols and their primary listing exchange are indicated below:",
+   "prose_after": "Holders\nAs of December 31, 2024, there was one holder of record of the Trust. This includes Cede & Co. as nominee for DTC for the Shares traded on the Exchange, but not its direct participants. Therefore, this number does not include the individual holders who have bought Shares on the Exchange or transferred their eligible Shares to their brokerage accounts. Because all of the Trust's Shares are currently held by brokers and other institutions on behalf of Shareholders, the Trust is unable to estimate the total number of Shareholders represented by the record holder.\nDividends\nThe Trust made no distributions to Shareholders during the period ended December 31, 2024. The Trust has no obligation to make periodic distributions to Shareholders.\nStock Price Performance Graph\nThe following stock performance graph illustrates a comparison from January 11, 2024 (the date the Trust's Shares commenced trading on the Exchange) through December 31, 2024, of the total cumulative stockholder return on the Trust's Shares, the NAV, the price of bitcoin as determined by the BRRNY, and the S&P 500. The graph assumes an initial investment of $100 on January 11, 2024 at the opening trading price of $25.00 per share, and that all dividends were reinvested, although dividends have not been declared on the Trust's Shares. The comparisons in the graph are required by the SEC and are not intended to forecast or be indicative of possible future performance of the Trust's Shares.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 1594,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Shares Redeemed",
+     "",
+     "Average Price Per Share",
+     ""
+    ],
+    [
+     "October 1, 2024 \u2013 October 31, 2024\n\n",
+     "",
+     "4,520,000\n\n",
+     "$",
+     "35.47\n\n"
+    ],
+    [
+     "November 1, 2024 \u2013 November 30, 2024\n\n",
+     "",
+     "12,880,000\n\n",
+     "$",
+     "45.80\n\n"
+    ],
+    [
+     "December 1, 2024 \u2013 December 31, 2024\n\n",
+     "",
+     "5,190,000\n\n",
+     "$",
+     "53.10\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1610,
+    "end_line": 1620
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Prior to the commencement of operations on January 10, 2024, on November 9, 2023, BAM purchased 4 Shares at a per-Share price of $50.00 for $200 in a transaction exempt from registration under Section 4(a)(2) of the 1933 Act (the \u201cSeed Shares\u201d). Delivery of the Seed Shares was made on November 9, 2023. On January 5, 2024, Bitwise Investment Manager, LLC (\u201cBIM\u201d), an affiliate of the Sponsor, purchased 10,010 Shares of the Trust at a per-Share price of $50.00 for $500,500. On January 10, 2024, BAM redeemed the entirety of its 4 Seed Shares for $200 and BIM redeemed the entirety of its 10,010 Shares for $500,500. Following the redemptions, on January 10, 2024, the Trust formally revised its NAV per-share from $50.00 per-share to $25.00 per-share. Additionally, on January 10, 2024, BIM purchased the initial 100,000 Shares of the Trust (the \u201cSeed Baskets\u201d) for $2,500,000, at $25.00 per-share. BIM acted as a statutory underwriter in connection with the initial purchase of the Seed Baskets. On January 11, 2024, BIM sold all of its 100,000 Shares of the Trust for cash.\nPurchases of Equity Securities by the Issuers and Affiliated Purchaser\nThe Trust does not purchase Shares directly from its Shareholders. In connection with its redemption of Baskets held by Authorized Participants, the Trust redeemed 2,259 Baskets (comprising 22,590,000 Shares) during the fourth quarter of the year ended December 31, 2024. The following table summarizes the redemptions by Authorized Participants during the period:",
+   "prose_after": "Item 6. [Reserved].\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThe following discussion and analysis of the Trust's financial condition and results of operations should be read together with, and is qualified in its entirety by reference to, the Trust's audited financial statements and related notes included elsewhere in this Annual Report, which have been prepared in accordance with generally accepted accounting principles in the United States (\u201cU.S. GAAP\u201d). The following discussion may contain forward-looking statements based on assumptions the Trust believes to be reasonable. The Trust's actual results could differ materially from those discussed in these forward-looking statements. See \u201cStatement Regarding Forward-Looking Statements\u201d above.\nYou should not place undue reliance on any forward-looking statements. Except as expressly required by the Federal securities laws, the Trust and the Sponsor undertake no obligation to publicly update or revise any forward-looking statements or the risks, uncertainties or other factors described in this Annual Report, as a result of new information, future events or changed circumstances or for any other reason after the date of this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1609,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 1623,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 185)",
+     "80"
+    ],
+    [
+     "Statements of Assets and Liabilities as of December 31, 2024",
+     "81"
+    ],
+    [
+     "Schedule of Investment as of December 31, 2024",
+     "82"
+    ],
+    [
+     "Statement of Operations For the Period from January 10, 2024 (Commencement of Operations) to December 31, 2024",
+     "83"
+    ],
+    [
+     "Statement of Changes in Net Assets For the Period from January 10, 2024 (Commencement of Operations) to December 31, 2024",
+     "84"
+    ],
+    [
+     "Statement of Cash Flows For the Period from January 10, 2024 (Commencement of Operations) to December 31, 2024",
+     "85"
+    ],
+    [
+     "Notes to Financial Statements",
+     "86"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1704,
+    "end_line": 1715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Trust is an investment company for U.S. GAAP purposes and follows accounting and reporting guidance in accordance with the FASB ASC Topic 946, Financial Services \u2013 Investment Companies. The Trust uses fair value as its method of accounting for bitcoin in accordance with its classification as an investment company for accounting purposes. The Trust is not a registered investment company under the Investment Company Act of 1940. U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts in the financial statements and accompanying notes. Actual results could differ from those estimates and these differences could be material.\nPlease refer to Note 2 to the financial statements included in this Annual Report for further discussion of the Trust\u2019s accounting policies.\nItem 7A. Quantitative and Qualitative Disclosure About Market Risk.\nThe Trust Agreement does not authorize the Trust to borrow for payment of the Trust\u2019s ordinary expenses. The Trust does not engage in transactions in foreign currencies which could expose the Trust or holders of Shares to any foreign currency related market risk. The Trust does not invest in derivative financial instruments and has no foreign operations or long-term debt instruments.\nItem 8. Financial Statements and Supplementary Data.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Shareholders and the Sponsor Bitwise Bitcoin ETF:\nOpinion on the Financial Statements\nWe have audited the accompanying statements of assets and liabilities of Bitwise Bitcoin ETF (the Trust) as of December 31, 2024 and 2023, including the schedule of investment as of December 31, 2024, the related statements of operations, changes in net assets and cash flows for the period January 10, 2024 (commencement of operations) through December 31, 2024, and the related notes, (collectively, the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Trust as of December 31, 2024 and 2023, and the results of its operations, the changes in its net assets and its cash flows for the period January 10, 2024 (commencement of operations) through December 31, 2024, in conformity with U.S. generally accepted accounting principles.\nBasis for Opinion\nThese financial statements are the responsibility of the Trust\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Trust in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1699,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 78
+    },
+    "after": {
+     "line": 1716,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 79
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "December 31, 2023*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in bitcoin, at fair value (cost $2,122,874)\n\n",
+     "$",
+     "3,762,723\n\n",
+     "$",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "Receivable for creations\n\n",
+     "",
+     "8,676\n\n",
+     "",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "Cash\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "0\n\n",
+     "(1)\n\n"
+    ],
+    [
+     "Total assets\n\n",
+     "",
+     "3,771,399\n\n",
+     "",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bitcoin purchased payable\n\n",
+     "",
+     "8,676\n\n",
+     "",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "Sponsor Fee payable\n\n",
+     "",
+     "684\n\n",
+     "",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "Total liabilities\n\n",
+     "",
+     "9,360\n\n",
+     "",
+     "\u2014\n\n",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets\n\n",
+     "$",
+     "3,762,039\n\n",
+     "$",
+     "0\n\n",
+     "(1)\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and outstanding, no par value, unlimited amount authorized\n\n",
+     "",
+     "73,980,000\n\n",
+     "4\n\n",
+     "",
+     "(2)\n\n"
+    ],
+    [
+     "Principal market NAV per share\n\n",
+     "$",
+     "50.85\n\n",
+     "$",
+     "50.00\n\n",
+     "(2)\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1745,
+    "end_line": 1783
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Trust is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Trust\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ KPMG LLP\nWe have served as the Trust\u2019s auditor since 2023.\nNew York, New York March 17, 2025\nStatements of Assets and Liabilities\n(Amounts in thousands, except Share and per-share amounts)",
+   "prose_after": "* As of December 31, 2023, the Trust held initial seed capital amounting to $200 in cash.\n(1) Amount represents less than $500.\n(2) Prior to commencement of operations on January 10, 2024, Bitwise Asset Management, Inc. (\"BAM\"), the parent company of the Sponsor, redeemed the initial seed capital of 4 shares for $200.\nThe accompanying notes are an integral part of these financial statements\nSchedule of Investment\n(Amounts in thousands, except quantity of bitcoin and percentages)\nDecember 31, 2024*",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1739,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quantity",
+     "",
+     "",
+     "",
+     "Percentage of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "of bitcoin",
+     "",
+     "Cost",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Net Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in bitcoin^\n\n",
+     "",
+     "40,289.1335\n\n",
+     "$",
+     "2,122,874\n\n",
+     "$",
+     "3,762,723\n\n",
+     "",
+     "",
+     "100.02\n\n",
+     "",
+     "%\n\n"
+    ],
+    [
+     "Total Investment\n\n",
+     " ",
+     "",
+     "$",
+     "2,122,874\n\n",
+     "",
+     "3,762,723\n\n",
+     "",
+     "",
+     "100.02\n\n",
+     "",
+     " "
+    ],
+    [
+     "Liabilities in excess of other assets\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(684)",
+     "",
+     "",
+     "(0.02)",
+     "",
+     " "
+    ],
+    [
+     "Net Assets\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "$",
+     "3,762,039\n\n",
+     "",
+     "",
+     "100.00\n\n",
+     "",
+     "%\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "* As of December 31, 2023, the Trust held initial seed capital amounting to $200 in cash.\n(1) Amount represents less than $500.\n(2) Prior to commencement of operations on January 10, 2024, Bitwise Asset Management, Inc. (\"BAM\"), the parent company of the Sponsor, redeemed the initial seed capital of 4 shares for $200.\nThe accompanying notes are an integral part of these financial statements\nSchedule of Investment\n(Amounts in thousands, except quantity of bitcoin and percentages)\nDecember 31, 2024*",
+   "prose_after": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\n^ Crypto assets do not have a singular country or geographic region, therefore country information is omitted.\nThe accompanying notes are an integral part of these financial statements\nStatement of Operations\n(Amounts in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 82
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period January 10, 2024 (commencement of operations) through December 31, 2024*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment income",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment income\n\n",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor Fee\n\n",
+     "",
+     "4,577\n\n",
+     ""
+    ],
+    [
+     "Total Expenses\n\n",
+     "",
+     "4,577\n\n",
+     ""
+    ],
+    [
+     "Less: Waivers and Reimbursement\n\n",
+     "",
+     "(906)",
+     ""
+    ],
+    [
+     "Net Expenses\n\n",
+     "",
+     "3,671\n\n",
+     ""
+    ],
+    [
+     "Net investment loss\n\n",
+     "",
+     "(3,671)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized and unrealized gain (loss)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin transferred to pay Sponsor Fee\n\n",
+     "",
+     "1,288\n\n",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin sold for redemptions\n\n",
+     "",
+     "(50,869)",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation (depreciation) on investment in bitcoin\n\n",
+     "",
+     "1,639,849\n\n",
+     ""
+    ],
+    [
+     "Net realized and unrealized gain (loss)\n\n",
+     "",
+     "1,590,268\n\n",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations\n\n",
+     "$",
+     "1,586,597\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the period January 10, 2024 (commencement of operations) through December 31, 2024*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1830,
+    "end_line": 1870
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\n^ Crypto assets do not have a singular country or geographic region, therefore country information is omitted.\nThe accompanying notes are an integral part of these financial statements\nStatement of Operations\n(Amounts in thousands)",
+   "prose_after": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\nThe accompanying notes are an integral part of these financial statements\nStatement of Changes in Net Assets\n(Amounts in thousands, except change in Shares issued and redeemed)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period January 10, 2024 (commencement of operations) through December 31, 2024*",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in net assets resulting from operations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss\n\n",
+     "$",
+     "(3,671)",
+     "",
+     " "
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin transferred to pay Sponsor Fee\n\n",
+     "",
+     "1,288\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin sold for redemptions\n\n",
+     "",
+     "(50,869)",
+     "",
+     " "
+    ],
+    [
+     "Net change in unrealized appreciation (depreciation)\n\n",
+     "",
+     "1,639,849\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations\n\n",
+     "",
+     "1,586,597\n\n",
+     "",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in net assets from capital share transactions",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Creations for Shares issued\n\n",
+     "",
+     "3,902,520\n\n",
+     "",
+     " "
+    ],
+    [
+     "Redemptions for Shares redeemed\n\n",
+     "",
+     "(1,727,078)",
+     "",
+     " "
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from capital share transactions\n\n",
+     "",
+     "2,175,442\n\n",
+     "",
+     " "
+    ],
+    [
+     "Total increase (decrease) in net assets from operations and capital share transactions\n\n",
+     "",
+     "3,762,039\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period\n\n",
+     "",
+     "0\n\n",
+     "",
+     "(1)\n\n"
+    ],
+    [
+     "End of period\n\n",
+     "$",
+     "3,762,039\n\n",
+     "",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and redeemed",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued\n\n",
+     "",
+     "117,270,000\n\n",
+     "",
+     " "
+    ],
+    [
+     "Shares redeemed\n\n",
+     "",
+     "(43,290,000)",
+     "",
+     " "
+    ],
+    [
+     "Net increase (decrease) in Shares issued and outstanding\n\n",
+     "",
+     "73,980,000\n\n",
+     "",
+     " "
+    ]
+   ],
+   "caption_stack": [
+    "For the period January 10, 2024 (commencement of operations) through December 31, 2024*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1881,
+    "end_line": 1930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\nThe accompanying notes are an integral part of these financial statements\nStatement of Changes in Net Assets\n(Amounts in thousands, except change in Shares issued and redeemed)",
+   "prose_after": "* No comparative financial statements have been provided as the Trust\u2019s operations commenced on January 10, 2024.\n(1) Prior to commencement of operations on January 10, 2024, BAM redeemed the initial seed capital of 4 shares for $200.00, Bitwise Investment Manager, LLC, an affiliate of the Sponsor, purchased 10,010 Shares of the Trust for $500,500 and then subsequently redeemed those shares and the Trust formally revised its NAV per-share from $50.00 per-share to $25.00 per-share.\nThe accompanying notes are an integral part of these financial statements\nStatement of Cash Flows\n(Amounts in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 1937,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 84
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period January 10, 2024 (commencement of operations) through December 31, 2024*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow from operating activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations\n\n",
+     "$",
+     "1,586,597\n\n",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net increase in net assets resulting from operations to net    cash provided by (used in) operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of bitcoin\n\n",
+     "",
+     "(3,700,640)",
+     ""
+    ],
+    [
+     "Proceeds from bitcoin sold\n\n",
+     "",
+     "1,533,874\n\n",
+     ""
+    ],
+    [
+     "Transfer of bitcoin to pay for Sponsor Fee\n\n",
+     "",
+     "2,987\n\n",
+     ""
+    ],
+    [
+     "Net realized (gain) loss from investment in bitcoin transferred to pay Sponsor Fee\n\n",
+     "",
+     "(1,288)",
+     ""
+    ],
+    [
+     "Net realized (gain) loss from investment in bitcoin sold for redemptions\n\n",
+     "",
+     "50,869\n\n",
+     ""
+    ],
+    [
+     "Net change in unrealized (appreciation) on investment in bitcoin\n\n",
+     "",
+     "(1,639,849)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Sponsor Fee payable\n\n",
+     "",
+     "684\n\n",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities\n\n",
+     "",
+     "(2,166,766)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow from financing activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Creations for Shares issued\n\n",
+     "",
+     "3,893,844\n\n",
+     ""
+    ],
+    [
+     "Redemptions for Shares redeemed\n\n",
+     "",
+     "(1,727,078)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities\n\n",
+     "",
+     "2,166,766\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash\n\n",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Cash, beginning of period (1)\n\n",
+     "",
+     "0\n\n",
+     ""
+    ],
+    [
+     "Cash, end of period\n\n",
+     "$",
+     "\u2014\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the period January 10, 2024 (commencement of operations) through December 31, 2024*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1943,
+    "end_line": 1991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "* No comparative financial statements have been provided as the Trust\u2019s operations commenced on January 10, 2024.\n(1) Prior to commencement of operations on January 10, 2024, BAM redeemed the initial seed capital of 4 shares for $200.00, Bitwise Investment Manager, LLC, an affiliate of the Sponsor, purchased 10,010 Shares of the Trust for $500,500 and then subsequently redeemed those shares and the Trust formally revised its NAV per-share from $50.00 per-share to $25.00 per-share.\nThe accompanying notes are an integral part of these financial statements\nStatement of Cash Flows\n(Amounts in thousands)",
+   "prose_after": "* No comparative financial statements have been provided as the Trust\u2019s operations commenced on January 10, 2024.\n(1) Prior to commencement of operations on January 10, 2024, BAM redeemed the initial seed capital of 4 shares for $200.\nThe accompanying notes are an integral part of these financial statements\nNotes to Financial Statements\nDecember 31, 2024\n1. Organization\nBitwise Bitcoin ETF (the \u201cTrust\u201d), formerly Bitwise Bitcoin ETP Trust, is an investment trust organized on August 29, 2019, under Delaware law pursuant to a Declaration of Trust and Trust Agreement (the \u201cTrust Agreement\u201d). The Trust\u2019s investment objective is to seek to provide exposure to the value of bitcoin held by the Trust, less the expenses of the Trust\u2019s operations, generally just the sponsor\u2019s management fee. In seeking to achieve its investment objective, the Trust\u2019s sole asset is bitcoin. The Trust is an Exchange Traded Product (\u201cETP\u201d) that issues common shares of beneficial interest (\u201cShares\u201d) that are listed on the NYSE Arca, Inc. (the \u201cExchange\u201d) under the ticker symbol \u201cBITB,\u201d providing investors with an efficient means to obtain market exposure to the price of bitcoin.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1937,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 84
+    },
+    "after": {
+     "line": 1998,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 85
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in bitcoin, at fair value\n\n",
+     "$",
+     "3,762,723\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "3,762,723\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2064,
+    "end_line": 2072
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Level 2: Inputs other than quoted prices included within Level 1 that are observable for the asset or liability either directly or indirectly, including quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not considered to be active, inputs other than quoted prices that are observable for the asset or liability, and inputs that are derived principally from or corroborated by observable market data by correlation or other means; and\nLevel 3: Unobservable inputs, including the Trust's assumptions used in determining the fair value of investments, where there is little or no market activity for the asset or liability at the measurement date.\nThe cost basis of the investment in bitcoin recorded by the Trust for financial reporting purposes is the fair value of bitcoin at the time of transfer. The cost basis recorded by the Trust may differ from proceeds collected by the Authorized Participant from the sale of the corresponding Shares to investors.\nGiven that bitcoin is actively traded and valuation adjustments are not applied, they are categorized in Level 1 of the fair value hierarchy. The following summarizes the Trust\u2019s assets accounted for at fair value at December 31, 2024* (amounts in thousands):",
+   "prose_after": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\nCalculation of Net Asset Value (NAV) and NAV Per-Share\nOn each business day, as soon as practicable after 4:00 p.m. ET, the NAV of the Trust is obtained by subtracting all accrued fees and other liabilities of the Trust from the fair value of the bitcoin and other assets held by the Trust. The Bank of New York Mellon (the \u201cAdministrator\u201d) computes the NAV per-share by dividing the NAV of the Trust by the number of Shares outstanding on the date the computation is made.\nIncome Taxes\nThe Trust is classified as a \u201cgrantor trust\u201d for U.S. federal income tax purposes. As a result, the Trust itself is not subject to U.S. federal income tax. Instead, the Trust\u2019s income and expenses \u201cflow through\u201d to the shareholders, and the Administrator reports the Trust\u2019s income, gains, losses, and deductions to the Internal Revenue Service on that basis. The Sponsor has analyzed applicable tax laws and regulations and their application to the Trust, and does not believe that there are any uncertain tax positions that require recognition of a tax liability as of December 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quantity of bitcoin",
+     "",
+     "",
+     "Fair Value (amounts in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance as of January 10, 2024 (commencement of operations)\n\n",
+     "",
+     "0.0000\n\n",
+     "",
+     "$",
+     "0\n\n",
+     ""
+    ],
+    [
+     "Purchases\n\n",
+     "",
+     "61,192.0644\n\n",
+     "",
+     "",
+     "3,709,316\n\n",
+     ""
+    ],
+    [
+     "Sales for the redemption of Shares\n\n",
+     "",
+     "(20,859.6407)",
+     "",
+     "",
+     "(1,533,874)",
+     ""
+    ],
+    [
+     "Bitcoin transferred for Sponsor Fee\n\n",
+     "",
+     "(43.2902)",
+     "",
+     "",
+     "(2,987)",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin transferred to pay Sponsor Fee\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,288\n\n",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investment in bitcoin sold for redemptions\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(50,869)",
+     ""
+    ],
+    [
+     "Change in unrealized appreciation (depreciation) on investment in bitcoin\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,639,849\n\n",
+     ""
+    ],
+    [
+     "Ending balance as of December 31, 2024*\n\n",
+     "",
+     "40,289.1335\n\n",
+     "",
+     "$",
+     "3,762,723\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2098,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value of bitcoin"
+    }
+   },
+   "prose_before": "examination by the relevant income taxing authority. As of December 31, 2024, all tax years since inception remain open for examination. There were no examinations in progress at period end.\nOrganizational and Offering Costs\nThe costs of the Trust\u2019s organization and the initial offering of the Shares are borne directly by the Sponsor. The Trust is not obligated to reimburse the Sponsor\n3. Fair Value of bitcoin\nAs of December 31, 2024, the Trust held a net closing balance of 40,289.1335 bitcoin with a total market value of $3,776,314,581 based on the CME CF Bitcoin Reference Rate - New York Variant (\"BRRNY\") price of $93,730.35, used to determine the Trust's NAV. The total market value of the Trust's bitcoin held was $3,762,723,445 based on the price of a bitcoin (Lukka Prime Rate) in the principal market (Crypto.com) of $93,393.01, used to determine the Trust's Principal Market NAV.\nThe following represents the changes in quantity of bitcoin and the respective fair value for the period from January 10, 2024 to December 31, 2024:",
+   "prose_after": "* No comparative period presented as the Trust commenced operations on January 10, 2024.\n4. Related Party Transactions and Agreements\nThe Trust pays the Sponsor Fee of 0.20% per annum of the Trust\u2019s bitcoin holdings. For the six-month period commencing on January 11, 2024, the day the Shares are initially listed on the Exchange, the Sponsor waived the entire Sponsor Fee on the first $1 billion of Trust assets through July 10, 2024.\nThe Sponsor Fee is paid by the Trust to the Sponsor as compensation for services performed under the Trust Agreement and Sponsor Agreement. After the period during which all or a portion of the Sponsor Fee was waived, the Sponsor Fee has been accruing daily, since July 11, 2024, and is payable in bitcoin monthly in arrears. The Administrator calculates the Sponsor Fee on a daily basis by applying a 0.20% annualized rate to the Trust\u2019s total bitcoin holdings, and the amount of bitcoin payable in respect of each daily accrual shall be determined by reference to the BRRNY. The NAV of the Trust is reduced each day by the amount of the Sponsor Fee calculated each day. On the last day of each month, an amount of bitcoin will be transferred from the Trust Bitcoin Account to the Sponsor Bitcoin Account equal to the sum of all daily Sponsor Fees accrued for the month in U.S. dollars divided by the BRRNY on the last day of the month. The Trust is not responsible for paying any fees or costs associated with the transfer of bitcoin to the Sponsor. In exchange for the Sponsor Fee, the Sponsor has agreed to assume and pay the normal operating expenses of the Trust, which include the Trustee\u2019s monthly fee and out-of-pocket expenses, the fees of the Trust\u2019s regular service providers (Cash Custodian, Bitcoin Custodian, Prime Execution Agent, Marketing Agent, Transfer Agent and Administrator), exchange listing fees, tax reporting fees, SEC registration fees, printing and mailing costs, audit fees and up to $500,000 per annum in ordinary legal fees and expenses. The Sponsor may determine in its sole discretion to assume legal fees and expenses of the Trust in excess of $500,000 per annum. The Sponsor also agreed to pay the costs of the Trust\u2019s organization.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 88
+    },
+    "after": {
+     "line": 2131,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 89
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "fair_value",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period January 10, 2024 (commencement of operations) through December 31, 2024*",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per-share, beginning of period\n\n",
+     "$",
+     "25.00\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net investment loss 1\n\n",
+     "",
+     "(0.06)",
+     "",
+     " "
+    ],
+    [
+     "Net realized and change in unrealized on investment in bitcoin 2\n\n",
+     "",
+     "25.91\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net change in net assets from operations\n\n",
+     "",
+     "25.85\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net asset value per-share, end of period\n\n",
+     "$",
+     "50.85\n\n",
+     "",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return, at net asset value 2\n\n",
+     "",
+     "103.40\n\n",
+     "",
+     "%\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratios to average net assets 3",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment loss\n\n",
+     "",
+     "(0.16)",
+     "",
+     "%\n\n"
+    ],
+    [
+     "Gross expenses\n\n",
+     "",
+     "0.20\n\n",
+     "",
+     "%\n\n"
+    ],
+    [
+     "Net expenses\n\n",
+     "",
+     "0.16\n\n",
+     "",
+     "%\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "For the period January 10, 2024 (commencement of operations) through December 31, 2024*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2159,
+    "end_line": 2188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "Substantially all the Trust\u2019s assets are holdings of bitcoin, which creates a concentration risk associated with fluctuations in the price of bitcoin. Accordingly, a decline in the price of bitcoin will have an adverse effect on the value of the Shares of the Trust. The trading prices of bitcoin have experienced extreme volatility in recent periods and may continue to fluctuate significantly. Extreme volatility in the future, including substantial, sustained, or rapid declines in the trading prices of bitcoin, could have a material adverse effect on the value of the Shares and the Shares could lose all or substantially all of their value. Factors adversely impacting the value of bitcoin and the Shares may include an increase in the global bitcoin supply or a decrease in global bitcoin demand; market conditions of, and overall sentiment towards, the crypto assets and blockchain technology industry; trading activity on crypto asset exchanges, which, in many cases, are largely unregulated or may be subject to manipulation; the adoption of bitcoin as a medium of exchange, store-of-value or other consumptive asset and the maintenance and development of the open-source software protocol of the bitcoin network, and their ability to meet user\ndemands; manipulative trading activity on crypto asset exchanges, which, in many cases, are largely unregulated; and forks in the bitcoin network, among other things.\nCoinbase Custody Trust Company, LLC serves as the Trust\u2019s custodian for bitcoin for which qualified custody is available (the \u201cBitcoin Custodian\u201d). The Bitcoin Custodian is subject to change in the sole discretion of the Sponsor. At December 31, 2024, bitcoin with a market value of $3,754,078,608 was held by the Bitcoin Custodian. No comparative period presented as the Trust commenced operations on January 10, 2024.\n7. Financial Highlights\nPer-share Performance (for a Share outstanding throughout the periods presented)",
+   "prose_after": "* No comparative financial statements have been presented as the Trust's operations commenced on January 10, 2024.\n1.Calculated using average Shares outstanding.\n2.Total return is calculated based on the change in Principal Market NAV during the reporting period. An individual shareholder\u2019s total return and ratios may vary from the above total return and ratios based on the timing of share transactions from the Trust.\n3.Annualized.\n8. Operating Segments\nIn this reporting period, the Trust adopted FASB Accounting Standards Update 2023-07, Segment Reporting (Topic 280) - Improvements to Reportable Segment Disclosures (\u201cASU 2023-07\u201d). Adoption of the new standard impacted financial statement disclosures only and did not affect the Trust\u2019s financial position or the results of its operations. An operating segment is defined in Topic 280 as a component of a public entity that engages in business activities from which it may recognize revenues and incur expenses, has operating results that are regularly reviewed by the public entity\u2019s Chief Operating Decision Maker (\u201cCODM\u201d) to make decisions about resources to be allocated to the segment and assess its performance, and has discrete financial information available. Selective members of the Executive Management Committee and other senior personnel of the Trust\u2019s Sponsor, acts as the Trust\u2019s CODM. The Trust represents a single operating segment, as the CODM monitors the operating results of the Trust as a whole and the Trust\u2019s long-term strategic asset allocation is pre-determined in accordance with the terms of its Trust agreement, based on a defined investment strategy which is executed by the Sponsor. The financial information in the form of the Trust\u2019s assets, total returns, expense ratios and changes in net assets (i.e., changes in net assets resulting from operations, creations and redemptions), which are used by the CODM to assess the segment\u2019s performance versus the Trust\u2019s comparative benchmarks and to make resource allocation decisions for the Trust\u2019s single segment, is consistent with that presented within the Trust\u2019s financial statements. Segment assets are reflected on the",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2150,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 90
+    },
+    "after": {
+     "line": 2201,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 91
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period ended December 31, 2024*",
+     "",
+     "Period ended December 31, 2023**",
+     ""
+    ],
+    [
+     "Audit Fees\n\n",
+     "$",
+     "275,000\n\n",
+     "$",
+     "55,000\n\n"
+    ],
+    [
+     "Audit-Related Fees\n\n",
+     "$",
+     "28,500\n\n",
+     "$",
+     "9,500\n\n"
+    ],
+    [
+     "Tax Fees\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "All Other Fees\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "Combined Trust:\n\n",
+     "$",
+     "303,500\n\n",
+     "$",
+     "64,500\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2390,
+    "end_line": 2404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Sponsor has adopted policies and procedures that identify the conflicts of interest associated with such trading of bitcoin, bitcoin futures and related contracts or other bitcoin-linked derivatives. These policies are intended to prevent conflicts of interest occurring where the Sponsor or their principals, officers, directors or employees could give preferential treatment to their own accounts or trade their own accounts ahead of or against the Trust. Pursuant to these policies, all principals, officers, directors and employees of the Sponsor, and their family members, must receive prior written clearance from the Sponsor\u2019s chief compliance officer before entering into a transaction in bitcoin, bitcoin futures or any other bitcoin-linked derivative equal if such transaction exceeds $4,999 in current market value. To the extent any such transaction constitutes a purchase of bitcoin, bitcoin futures or other bitcoin-linked derivative exceeds $4,999 in current market value, the policies require that such bitcoin, bitcoin futures or bitcoin-linked derivative must be held for 60 days before it can be traded or sold.\nResolution of Conflicts Procedures\nThe Trust Agreement provides that whenever a conflict of interest exists between the Sponsor or any of its affiliates, on the one hand, and the Trust or any Shareholders or any other person, on the other hand, the Sponsor will resolve such conflict of interest considering the relative interest of each party (including its own interest) and the benefits and burdens relating to such interests, any customary or accepted industry practices, and any applicable accepted accounting practices or principles.\nDirector Independence\nAs a statutory trust, the Trust does not have a board of directors.\nItem 14. Principal Accounting Fees and Services.\n(1)to (4). Fees for services performed by KPMG LLP (\u201cKPMG\u201d) for the periods ended December 31, 2024 and 2023 were as follows:",
+   "prose_after": "* Audit fees for the period ended December 31, 2024, are fees paid to KPMG for professional services for the audit of the Trust\u2019s annual financial statements included in the Annual Report on Form 10-K and review of financial statements included in the quarterly reports on Form 10-Q, and for services that are normally provided by the accountants in connection with regulatory filings or engagements. Audit related fees were related to audit consent letters for additional SEC filings for the Trust.\n** Audit fees for the period ended December 31, 2023, consist of contractual fees payable to KPMG for the audit of the Trust\u2019s November 10, 2023 financial statements included in the Trust\u2019s Registration Statement on Form S-1 (Registration No. 333-260235), which was declared effective by the SEC on January 10, 2024 under the 1933 Act, for the December 31, 2023 annual financial statements included in the Annual Report on Form 10-K for the period ended December 31, 2023. Audit related fees were related to audit consent letters for additional SEC filings for the Trust.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2385,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 99
+    },
+    "after": {
+     "line": 2411,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 100
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description of Document"
+    ],
+    [
+     "3.1",
+     "First Amended and Restated Declaration of Trust and Trust Agreement(2)"
+    ],
+    [
+     "3.2",
+     "Certificate of Trust(2)"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to Certificate of Trust(2)"
+    ],
+    [
+     "3.4",
+     "State of Delaware Certificate of Amendment to Certificate of Trust(2)"
+    ],
+    [
+     "4.1",
+     "Description of Registrant's Securities"
+    ],
+    [
+     "10.1",
+     "Sponsor Agreement(3)"
+    ],
+    [
+     "10.2",
+     "Form of Authorized Participant Agreement(1)"
+    ],
+    [
+     "10.3",
+     "Marketing Agreement(1)"
+    ],
+    [
+     "10.4",
+     "Prime Execution Agreement (with Bitcoin Custody Agreement included as an exhibit thereto)(4)"
+    ],
+    [
+     "10.5",
+     "Cash Custody Agreement(1)"
+    ],
+    [
+     "10.6",
+     "Fund Administration and Accounting Agreement(1)"
+    ],
+    [
+     "10.7",
+     "Transfer Agency and Services Agreement(1)"
+    ],
+    [
+     "10.8",
+     "Trade Financing Agreement(3)"
+    ],
+    [
+     "10.9",
+     "Asset Purchase and Contribution Agreement (5)"
+    ],
+    [
+     "19.1",
+     "Insider Trading Policy(6)"
+    ],
+    [
+     "31.1",
+     "Certification by Principal Executive Officer of the Trust Pursuant to Rule 13a\u201114(a) under the Securities Exchange Act of 1934(6)"
+    ],
+    [
+     "31.2",
+     "Certification by Principal Financial Officer of the Trust Pursuant to Rule 13a\u201114(a) under the Securities Exchange Act of 1934(6)"
+    ],
+    [
+     "32.1",
+     "Certification by Principal Executive Officer of the Trust Pursuant to 18 U.S.C. Section 1350, As Adopted Pursuant to Section 906 of the Sarbanes\u2011Oxley Act of 2002(6)(8)"
+    ],
+    [
+     "32.2",
+     "Certification by Principal Financial Officer of the Trust Pursuant to 18 U.S.C. Section 1350, As Adopted Pursuant to Section 906 of the Sarbanes\u2011Oxley Act of 2002(6)(8)"
+    ],
+    [
+     "97.1",
+     "Recovery Policy for Erroneously Awarded Incentive-Based Compensation"
+    ],
+    [
+     "101.INS(6)",
+     "Inline XBRL Instance Document the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "101.SCH(6)",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File included as Exhibit 101 (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2422,
+    "end_line": 2451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "** Audit fees for the period ended December 31, 2023, consist of contractual fees payable to KPMG for the audit of the Trust\u2019s November 10, 2023 financial statements included in the Trust\u2019s Registration Statement on Form S-1 (Registration No. 333-260235), which was declared effective by the SEC on January 10, 2024 under the 1933 Act, for the December 31, 2023 annual financial statements included in the Annual Report on Form 10-K for the period ended December 31, 2023. Audit related fees were related to audit consent letters for additional SEC filings for the Trust.\n(5)The Trust has no board of directors, and as a result, has no audit committee or pre-approval policy with respect to fees paid to its principal accounting firm. The Sponsor approved all of the services provided by KPMG described above. The Sponsor pre-approves all audit and permissible non-audit services of the Trust\u2019s independent registered public accounting firm, including all engagement fees and terms.\nPart IV.\nItem 15. Exhibits and Financial Statement Schedules.\n(1)For a list of the financial statements included herein, see Index to the Financial Statements on page 79 of this Annual Report on Form 10-K, incorporated into this Item by reference.\n(2)Financial statement schedules have been omitted because they are either not required or not applicable or the information is included in the financial statements or the notes thereto.\n(3)Exhibits:",
+   "prose_after": "(1)Incorporated by reference to the Trust\u2019s Amendment No. 2 to Registration Statement on Form S-1 (File No. 333-260235), filed on December 4, 2023.\n(2)Incorporated by reference to the Trust\u2019s Amendment No. 3 to Registration Statement on Form S-1 (File No. 333-260235), filed on December 29, 2023.\n(3)Incorporated by reference to the Trust\u2019s Amendment No. 4 to Registration Statement on Form S-1 (File No. 333-260235), filed on January 8, 2024.\n(4)Incorporated by reference to the Trust\u2019s Post-Effective Amendment No. 1 to Registration Statement on Form S-1 (File No. 333-260235), filed on January 10, 2024.\n(5)Incorporated by reference to the Trust\u2019s Registration Statement on Form S-1 (File No. 333-282553), filed on October 8, 2024.\n(6)Filed herewith.\n(7)Incorporated by reference to the Trust\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2023 (File No. 001-41902), filed on March 27, 2024.\n(8)These exhibits are furnished with this Annual Report on Form 10-K and are not deemed filed with the SEC and are not incorporated by reference in any filing of Bitwise Bitcoin ETF under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date hereof and irrespective of any general incorporation language contained in such filings.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2411,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 100
+    },
+    "after": {
+     "line": 2454,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 101
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

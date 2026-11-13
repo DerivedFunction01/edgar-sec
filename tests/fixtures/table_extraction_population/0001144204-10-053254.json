@@ -1,0 +1,2238 @@
+{
+ "accession": "0001144204-10-053254",
+ "cik": "0001441066",
+ "form": "10-K",
+ "filing_date": "2010-10-12",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v198705_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "26-2718129"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: June 30, 2010\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission File No.: 000-53544\nQUALITY ALLIANCE GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "13406 Sir Britton Court, Chesterfield, Virginia 28832\n(Address of principal executive offices)\n(804) 608-0208\nIssuer\u2019s telephone number\nSecurities registered under Section 12(b) of the Exchange Act:\nNone\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, par value $0.0001 per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FORWARD-LOOKING STATEMENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Description of Business",
+     "2"
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "7"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments.",
+     "14"
+    ],
+    [
+     "Item 2. Properties.",
+     "14"
+    ],
+    [
+     "Item 3. Legal Proceedings.",
+     "14"
+    ],
+    [
+     "Item 4. Removed and Reserved.",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "14"
+    ],
+    [
+     "Item 6. Selected Financial Data.",
+     "15"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "15"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk.",
+     "17"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data.",
+     "17"
+    ],
+    [
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "18"
+    ],
+    [
+     "Item 9A. Controls and Procedures.",
+     "18"
+    ],
+    [
+     "Item 9B. Other Information.",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance.",
+     "19"
+    ],
+    [
+     "Item 11. Executive Compensation.",
+     "20"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "20"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence.",
+     "21"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services.",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules.",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL STATEMENT INDEX",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "FORWARD-LOOKING STATEMENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 135
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "State the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter. $0\nAPPLICABLE ONLY TO REGISTRANTS INVOLVED IN BANKRUPTCY\nPROCEEDINGS DURING THE PRECEDING FIVE YEARS:\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court.\n[ ] Yes [ ] No\n(APPLICABLE ONLY TO CORPORATE REGISTRANTS)\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date. At October 11, 2010 there were 1,000,000 shares of common stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K and the documents incorporated by reference into the Annual Report on Form 10-K include forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934. These forward-looking statements can be identified by the use of forward-looking terminology, including the words \u201cbelieves,\u201d \u201cestimates,\u201d \u201canticipates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cpotential,\u201d \u201ccontinue,\u201d or \u201cshould,\u201d or, in each case, their negative or other variations or comparable terminology. Such statements include, but are not limited to, any statements relating to our ability to consummate any acquisition or other business combination and any other statements that are not statements of current or historical facts. These statements are based on management\u2019s current expectations, but actual results may differ materially due to various factors, including, but not limited to, our being a development stage company with no operating history; our lack of funding; the inexperience of our management with respect to our business plan; our potential inability to consummate a business combination with an operating company that is generating revenues; the possibility that our company may never generate revenues; unknown risks that may attend to a business with which we consummate a business combination; our personnel allocating his time to other businesses and potentially having conflicts of interest with our business; the ownership of our securities being concentrated, and those other risks and uncertainties detailed herein and in the Company\u2019s filings with the Securities and Exchange Commission.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Balance Sheets as of June 30, 2010 and 2009",
+     "F-2"
+    ],
+    [
+     "Statements of Operations for the years ended June 30, 2010 and 2009 and the period from May 7, 2008 (date of inception) to June 30, 2010",
+     "F-3"
+    ],
+    [
+     "Statement of Stockholder\u2019s Deficit as of June 30, 2010",
+     "F-4"
+    ],
+    [
+     "Statements of Cash Flows for the years ended June 30, 2010 and 2009 and the period from May 7, 2008 (date of inception) to June 30, 2010",
+     "F-5"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Since our inception, we have not generated any revenues. We reported a net loss for the year ended June 30, 2010 of $10,403 and a have suffered a net loss since inception of $27,039. The Company has used cash in operations of $22,272 since its inception, consisting primarily of professional fees, and has a negative working capital of $26,939 at June 30, 2010.\nWe do not expect to engage in any substantive activities unless and until such time as we enter into a Business Combination with a Target Business, if ever. We cannot provide investors with any assessment as to the nature of a Target Business\u2019s operations or speculate as to the status of its products or operations, whether at the time of the Business Combination it will be generating revenues or its future prospects.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nThe information to be furnished under this Item 7A is not required of smaller reporting companies.\nItem 8. Financial Statements and Supplementary Data.\nFINANCIAL STATEMENT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Silberstein Ungar, PLLC CPAs and Business Advisors"
+    ],
+    [
+     "Phone (248) 203-0080\n\nFax (248) 281-0940\n\n30600 Telegraph Road, Suite 2175\n\nBingham Farms, MI 48025-4586\n\nwww.sucpas.com"
+    ]
+   ],
+   "caption_stack": [
+    "Silberstein Ungar, PLLC CPAs and Business Advisors",
+    "Phone (248) 203-0080\n\nFax (248) 281-0940\n\n30600 Telegraph Road, Suite 2175\n\nBingham Farms, MI 48025-4586\n\nwww.sucpas.com"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors of\nQuality Alliance Group, Inc.\nChesterfield, VA\nWe have audited the accompanying balance sheets of Quality Alliance Group, Inc. as of June 30, 2010 and 2009, and the related statements of operations, stockholder\u2019s deficit, and cash flows for the years then ended and for the period from May 7, 2008 (date of inception) through June 30, 2010. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company has determined that it is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 549,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and equivalents",
+     "$",
+     "5",
+     "",
+     "$",
+     "265",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "5",
+     "",
+     "$",
+     "265",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDER\u2019S DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and interest",
+     "$",
+     "4,767",
+     "",
+     "$",
+     "3,362",
+     ""
+    ],
+    [
+     "Note payable \u2013 related party",
+     "",
+     "22,177",
+     "",
+     "",
+     "13,439",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "26,944",
+     "",
+     "",
+     "16,801",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $.0001 par value, 100,000,000 shares authorized, 1,000,000 shares issued and outstanding",
+     "",
+     "100",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(27,039)",
+     "",
+     "",
+     "(16,636)",
+     ""
+    ],
+    [
+     "Total stockholder\u2019s deficit",
+     "",
+     "(26,939)",
+     "",
+     "",
+     "(16,536)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDER\u2019S DEFICIT",
+     "$",
+     "5",
+     "",
+     "$",
+     "265",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Quality Alliance Group, Inc. as of June 30, 2010 and 2009, and the results of its operations and cash flows for the years then ended and the period from May 7, 2008 (date of inception) through June 30, 2010, in conformity with U.S. generally accepted accounting principles.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 6 to the financial statements, the Company has negative working capital, has incurred operating losses since inception, and has not received any revenue from sales of products or services, and has incurred losses from operations. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans with regard to these matters are described in Note 6. The accompanying financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Silberstein Ungar, PLLC\nSilberstein Ungar, PLLC\nBingham Farms, Michigan\nSeptember 27, 2010\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nBALANCE SHEETS\nAS OF JUNE 30, 2010 AND 2009",
+   "prose_after": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED JUNE 30, 2010 AND 2009\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\nJune 30, 2010",
+     "",
+     "",
+     "Year ended\n\nJune 30, 2009",
+     "",
+     "",
+     "Period from May\n\n7, 2008\n\n(Inception) to\n\nJune 30, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "8,998",
+     "",
+     "",
+     "6,755",
+     "",
+     "",
+     "24,753",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "1,405",
+     "",
+     "",
+     "852",
+     "",
+     "",
+     "2,286",
+     ""
+    ],
+    [
+     "TOTAL EXPENSES",
+     "",
+     "10,403",
+     "",
+     "",
+     "7,607",
+     "",
+     "",
+     "27,039",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(10,403)",
+     "",
+     "$",
+     "(7,607)",
+     "",
+     "$",
+     "(27,039)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES OUTSTANDING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 640,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED JUNE 30, 2010 AND 2009\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "prose_after": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENT OF STOCKHOLDER\u2019S DEFICIT\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional\n\npaid-in",
+     "",
+     "Deficit\n\naccumulated\n\nduring the\n\ndevelopment",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "stage",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash @ $.0001",
+     "",
+     "1,000,000",
+     "$",
+     "100",
+     "$",
+     "-0-",
+     "$",
+     "-",
+     "",
+     "$",
+     "100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period ended June 30, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(9,029)",
+     "",
+     "",
+     "(9,029)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2008",
+     "",
+     "1,000,000",
+     "",
+     "100",
+     "",
+     "-0-",
+     "",
+     "(9,029)",
+     "",
+     "",
+     "(8,929)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended June 30, 2009",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(7,607)",
+     "",
+     "",
+     "(7,607)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2009",
+     "",
+     "1,000,000",
+     "",
+     "100",
+     "",
+     "-0-",
+     "",
+     "(16,636)",
+     "",
+     "",
+     "(16,536)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended June 30, 2010",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,403)",
+     "",
+     "",
+     "(10,403)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2010",
+     "",
+     "1,000,000",
+     "$",
+     "100",
+     "$",
+     "-0-",
+     "$",
+     "(27,039)",
+     "",
+     "$",
+     "(26,939)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENT OF STOCKHOLDER\u2019S DEFICIT\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "prose_after": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED JUNE 30, 2010 AND 2009\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\nJune 30, 2010",
+     "",
+     "",
+     "Year ended\n\nJune 30, 2009",
+     "",
+     "",
+     "Period from\n\nMay 7, 2008\n\n(Inception) t[ ]\n\nJune 30, 2010",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "$",
+     "(10,403)",
+     "",
+     "$",
+     "(7,607)",
+     "",
+     "$",
+     "(27,039)",
+     ""
+    ],
+    [
+     "Change in non-cash working capital items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in accrued expenses and interest",
+     "",
+     "1,405",
+     "",
+     "",
+     "833",
+     "",
+     "",
+     "4,767",
+     ""
+    ],
+    [
+     "NET CASH (USED IN) OPERATING ACTIVITIES",
+     "",
+     "(8,998)",
+     "",
+     "",
+     "(6,774)",
+     "",
+     "",
+     "(22,272)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from note payable",
+     "",
+     "8,738",
+     "",
+     "",
+     "6,939",
+     "",
+     "",
+     "22,177",
+     ""
+    ],
+    [
+     "Proceeds from sales of common stock",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "8,738",
+     "",
+     "",
+     "6,939",
+     "",
+     "",
+     "22,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "(260)",
+     "",
+     "",
+     "165",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, BEGINNING OF PERIOD",
+     "",
+     "265",
+     "",
+     "",
+     "100",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "CASH, END OF PERIOD",
+     "$",
+     "5",
+     "",
+     "$",
+     "265",
+     "",
+     "$",
+     "5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-0-",
+     "",
+     "$",
+     "-0-",
+     "",
+     "$",
+     "-0-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-0-",
+     "",
+     "$",
+     "-0-",
+     "",
+     "$",
+     "-0-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 724,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED JUNE 30, 2010 AND 2009\nFOR THE PERIOD FROM MAY 7, 2008 (INCEPTION) TO JUNE 30, 2010",
+   "prose_after": "See accompanying notes to financial statements.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nNOTES TO THE FINANCIAL STATEMENTS\nJUNE 30, 2010\nNOTE 1 \u2013 SUMMARY OF ACCOUNTING POLICIES\nNature of Business\nQuality Alliance Group, Inc. is a development stage company and was incorporated in Nevada on May 7, 2008. The Company\u2019s objective is to acquire or merge with a target business or company in a business combination.\nDevelopment Stage Company\nThe accompanying financial statements have been prepared in accordance with generally accepted accounting principles related to development-stage companies. A development-stage company is one in which planned principal operations have not commenced or if its operations have commenced, there has been no significant revenues there from.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 763,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Accrued audit fees",
+     "$",
+     "2,500",
+     "$",
+     "2,500"
+    ],
+    [
+     "Accrued interest \u2013 related party",
+     "",
+     "2,267",
+     "",
+     "862"
+    ],
+    [
+     "Total accrued expenses and interest",
+     "$",
+     "4,767",
+     "$",
+     "3,362"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 836,
+    "end_line": 845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 ACCRUED EXPENSES AND INTEREST"
+    }
+   },
+   "prose_before": "Stock-based compensation is accounted for at fair value in accordance with SFAS No. 123 and 123 (R) (ASC 718). To date, the Company has not adopted a stock option plan and has not granted any stock options. As of June 30, 2010, the Company has not issued any stock-based payments to its employees.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nNOTES TO THE FINANCIAL STATEMENTS\nJUNE 30, 2010\nNOTE 1 \u2013 SUMMARY OF ACCOUNTING POLICIES (CONTINUED)\nRecent Accounting Pronouncements\nThe Company does not expect the adoption of recently issued accounting pronouncements to have a significant impact on the Company\u2019s results of operations, financial position or cash flow.\nNOTE 2 \u2013 ACCRUED EXPENSES AND INTEREST\nAccrued expenses and interest consisted of the following at June 30, 2010 and 2009:",
+   "prose_after": "The accrued interest \u2013 related party is owed to Ray Cene Investments,\nLLC. See Note 3.\nNOTE 3 \u2013 NOTE PAYABLE \u2013 RELATED PARTY\nThe Company received a $6,500 note payable from Ray Cene Investments, LLC on June 11, 2008. The Company also signed an additional $3,500 note payable on June 18, 2008 and received the funds on July 15, 2008. Additionally, the Company was loaned funds during the year ended June 30, 2009 totaling $3,439.\nDuring the year ended June 30, 2010 the Company received additional loans to fund operations in the amounts of $4,742, $2,457 and $1,539. All notes are due on demand and bear 8% interest. Ray Cene Investments, LLC is the owner of 100% of the outstanding common stock of the Company. The total note payable at June 30, 2010 and 2009 to Ray Cene Investments, LLC was $22,177 and $13,439, respectively.\nNOTE 4 \u2013 COMMITMENTS AND CONTINGENCIES\nQuality Alliance neither owns nor leases any real or personal property. An officer has provided office services without charge. There is no obligation for the officer to continue this arrangement. Such costs are immaterial to the financial statements and accordingly are not reflected herein. The officers and directors are involved in other business activities and most likely will become involved in other business activities in the future.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Refundable Federal income tax attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Operations",
+     "$",
+     "3,537",
+     "",
+     "$",
+     "2,586",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(3,537)",
+     "",
+     "",
+     "(2,586)",
+     ""
+    ],
+    [
+     "Net provision for Federal income taxes",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 873,
+    "end_line": 883
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "NOTE 4 \u2013 COMMITMENTS AND CONTINGENCIES\nQuality Alliance neither owns nor leases any real or personal property. An officer has provided office services without charge. There is no obligation for the officer to continue this arrangement. Such costs are immaterial to the financial statements and accordingly are not reflected herein. The officers and directors are involved in other business activities and most likely will become involved in other business activities in the future.\nQUALITY ALLIANCE GROUP, INC.\n(A DEVELOPMENT STAGE COMPANY)\nNOTES TO THE FINANCIAL STATEMENTS\nJUNE 30, 2010\nNOTE 5 \u2013 INCOME TAXES\nFor the period ended June 30, 2010, the Company has incurred net losses of approximately $10,400 and, therefore, has no tax liability. The net deferred tax asset generated by the loss carry-forward has been fully reserved. The cumulative net operating loss carry-forward is approximately $27,000 at June 30, 2010, and will expire beginning in the year 2028.\nThe provision for Federal income tax consists of the following:",
+   "prose_after": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$",
+     "9,193",
+     "",
+     "$",
+     "5,656",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(9,193)",
+     "",
+     "",
+     "(5,656)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 886,
+    "end_line": 896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows:",
+   "prose_after": "Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards of $27,039 for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur net operating loss carry forwards may be limited as to use in future years.\nNOTE 6 \u2013 LIQUIDITY AND GOING CONCERN\nQuality Alliance Group has negative working capital, has operating losses since inception, and has not yet received revenues from sales of products or services. These factors create substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include any adjustment that might be necessary if the Company is unable to continue as a going concern.\nThe ability of the Company to continue as a going concern is dependent on the Company generating cash from the sale of its common stock and/or obtaining debt financing and attaining future profitable operations. Management\u2019s plans include selling its equity securities and obtaining debt financing to fund its capital requirement and ongoing operations; however, there can be no assurance the Company will be successful in these efforts.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title"
+    ],
+    [
+     "Adam S. Wimmer",
+     "32",
+     "President and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Management assessed the effectiveness of our internal control over financial reporting as of the end of the period covered by this report using the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission in Internal Control\u2014Integrated Framework. Based on this evaluation, management concluded that, as of June 20, 2010, the Company\u2019s internal control over financial reporting was effective.\nThis Annual Report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit the Company to provide only management\u2019s report in this Annual Report\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the quarter ended June 30, 2010 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nThe following table lists our officers and directors as of the date of this Registration Statement:",
+   "prose_after": "Adam S. Wimmer has been a member of the board of directors and the President of the Company since its inception. Since August 2003, Mr. Wimmer has been a sales associate for Biomet, Inc., a designer and manufacturer of products for the orthopedic, sports medicine, biologic and dental markets. During 2002 and 2003, he was an insurance agent for Nationwide Insurance in Roanoke, Virginia.\nThe term of office of our director expires at the Company's annual meeting of stockholders or until his successor is duly elected and qualified. Our director is not compensated for serving as such. Officers serve at the discretion of the Board of Directors.\nSection 16 Compliance\nSection 16(a) of the Exchange requires officers, directors and persons who own more than 10% of a registered class of our equity securities of a company that has a class of common stock registered under the Exchange Act to file reports of ownership and changes in ownership with the Securities and Exchange Commission and to furnish us with copies of all forms filed pursuant to Section 16(a).",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address\n\nOf Beneficial Owner (1)",
+     "Amount of\n\nBeneficial Ownership",
+     "",
+     "Percent of Outstanding\n\nShares of Class Owned (2)",
+     "",
+     ""
+    ],
+    [
+     "Adam Wimmer",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     ""
+    ],
+    [
+     "Ray Cene Investments, LLC (3)",
+     "",
+     "1,000,000",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "All officers and directors as a group (1 person)",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 989,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company does not have a compensation committee. Given the nature of the Company\u2019s business, its limited stockholder base and the current composition of management, the board of directors does not believe that the Company requires a compensation committee at this time. The board of directors takes the position that management of a Target Business will take such action to establish and seat a compensation committee that will be suitable for its operations at such time as the Company consummates a Business Combination, if ever.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe table below sets forth, as of October 11, 2010, the number of shares of common stock owned of record and beneficially by our sole officer and director and the holder of more than 10% of number the outstanding shares of our common stock.\nThe applicable percentage of ownership is based on 1,000,000 shares outstanding. As of the date of this Report, there were no securities outstanding convertible into or exercisable for shares of common stock.",
+   "prose_after": "(1) The address for each of the persons named in the table above is c/o the Company.\n(2) Based on 1,000,000 shares outstanding as of the date of this Report.\n(3) The outstanding interests of Ray Cene Investments, LLC (\"Ray Cene\") are owned as follows: Elizabeth Wimmer, Adam Wimmer's wife, owns 25%; Lyle Wimmer, Adam Wimmer's father, owns 40% and NSV, Inc., which is wholly owned by Steven Chandler, owns 35%. Pam McClanahan serves as the manager of Ray Cene and all company actions (including as to voting and dispositive power over the shares of Company stock owned by Ray Cene) are taken by the affirmative vote of the holders of a majority of the outstanding interests. Adam Wimmer disclaims beneficial ownership of any interest in the shares of common stock owned by Ray Cene.\nCompensation Plans.\nWe have not adopted any compensation plans for the benefit of our employees, representatives or consultants. The Company does not have outstanding any options, warrants or other rights outstanding that entitle anyone to acquire shares of capital stock.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 970,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1004,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm"
+    ],
+    [
+     "Balance Sheets as of June 30, 2010 and 2009"
+    ],
+    [
+     "Statements of Operations for the Periods Ended June 30, 2010 and 2009 and the Period from May 7, 2008 (date of inception) to June 30, 2009"
+    ],
+    [
+     "Statement of Stockholder\u2019s Deficit as of June 30, 2010"
+    ],
+    [
+     "Statements of Cash Flows for the Periods Ended June 30, 2010 and 2009 and the Period from May 7, 2008 (date of inception) to June 30, 2009"
+    ],
+    [
+     "Notes to Financial Statements"
+    ]
+   ],
+   "caption_stack": [
+    "Report of Independent Registered Public Accounting Firm",
+    "Balance Sheets as of June 30, 2010 and 2009",
+    "Statements of Operations for the Periods Ended June 30, 2010 and 2009 and the Period from May 7, 2008 (date of inception) to June 30, 2009",
+    "Statement of Stockholder\u2019s Deficit as of June 30, 2010",
+    "Statements of Cash Flows for the Periods Ended June 30, 2010 and 2009 and the Period from May 7, 2008 (date of inception) to June 30, 2009",
+    "Notes to Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1055
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "TAX FEES. The aggregate fees billed by Silberstein Ungar PLLC for tax-related services rendered for the Company for the last fiscal year were $0. .\nALL OTHER FEES. The aggregate fees billed for services rendered to the Company by Silberstein Ungar PLLC, other than the for the audit services referenced above.\nPRE-APPROVAL POLICY. The Company has not established an audit committee nor adopted an audit committee charter. Rather, it is the responsibility of the entire board of directors to serve the functions of an audit committee and to pre-approve all audit and permitted non-audit services to be performed by the independent auditors, such approval to take place in advance of such services when required by law, regulation, or rule, subject to the de minimus exceptions for non-audit services described in Section 10A(i)(1)(B) of the Exchange Act that are approved by the board prior to completion of the audit.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Financial Statements\nThe following financial statements are filed as part of this report:",
+   "prose_after": "(b) Exhibits.\nThe following are filed as exhibits to this report:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description",
+     "Location\n\nReference"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation.",
+     "1"
+    ],
+    [
+     "3.2",
+     "By-laws.",
+     "1"
+    ],
+    [
+     "10.1",
+     "Form of demand promissory note in the principal amount of $6,500 dated June 11, 2008 executed by the registrant in favor of Rey Cene Investments LLC.",
+     "1"
+    ],
+    [
+     "10.2",
+     "Form of demand promissory note in the principal amount of $3,500 dated June 18, 2008 executed by the registrant in favor of Rey Cene Investments LLC.",
+     "2"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Accountant",
+     "2"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Rule 13a-14 and Rule 15d 14(a), promulgated under the Securities and Exchange Act of 1934, as Amended.",
+     "2"
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1060,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(b) Exhibits.\nThe following are filed as exhibits to this report:",
+   "prose_after": "1. Incorporated by reference to the Company\u2019s Registration Statement on Form 10 as filed with the SEC on January 5, 2009.\n2. Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on October 11, 2010.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "QUALITY ALLIANCE GROUP, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Adam S. Wimmer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Adam S. Wimmer, President",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "QUALITY ALLIANCE GROUP, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1087,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "1. Incorporated by reference to the Company\u2019s Registration Statement on Form 10 as filed with the SEC on January 5, 2009.\n2. Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on October 11, 2010.",
+   "prose_after": "In accordance with the Exchange Act, as amended, this report has been signed below by the following person on behalf of the registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Adam S. Wimmer",
+     "President, Principal Executive Officer, Principal Financial",
+     "October 11, 2010"
+    ],
+    [
+     "Adam S. Wimmer",
+     "Officer, Principal Accounting Officer and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1097,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, as amended, this report has been signed below by the following person on behalf of the registrant and in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

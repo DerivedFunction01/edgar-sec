@@ -1,0 +1,4230 @@
+{
+ "accession": "0001144204-10-000611",
+ "cik": "0001377889",
+ "form": "10-K",
+ "filing_date": "2010-01-06",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v170601_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "76-0836770"
+    ],
+    [
+     "State or other jurisdiction of\n\nincorporation or organization",
+     "",
+     "I.R.S. Employer Identification\n\nNo."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: September 30, 2009\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission File No. 000-52288\nTIA IV, INC. Name of Small Business Issuer in its Charter",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1761 Victory Blvd.,",
+     "",
+     "10314"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Issuer\u2019s telephone number: (718) 442-6272\nSecurities registered under Section 12(b) of the Exchange Act:\nNone\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, par value $0.0001 per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "9"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "9"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "9"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "10"
+    ],
+    [
+     "Item 7.",
+     "Management Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "14"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "14"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "15"
+    ],
+    [
+     "Item 9A(T)",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, Corporate Governance",
+     "16"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "19"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "20"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "20"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting and non-voting common equity held by non-affiliates of Tia IV, Inc. (consisting solely of 21,636,483 shares of common stock, $0.0001 par value) was approximately $2,164 based on the par value of such common stock ($000.1) as of September 30, 2009.\nAPPLICABLE ONLY TO REGISTRANTS INVOLVED IN BANKRUPTCY\nPROCEEDINGS DURING THE PRECEDING FIVE YEARS:\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Not Applicable\n(APPLICABLE ONLY TO CORPORATE REGISTRANTS)\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date.At December 31, 2009 there were 165,186,483 shares of common stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone, except for the following (i) 8K/A filed on October 27, 2009 as relates to Securities Purchase Agreement; (ii) 8K/A filed on October 16, 2009 as relates to Change of Certifying Accountant; and (iii) 8K/A filed December 22, 2009 as relates to Unregistered Sales of Equity Securities.\nTable of Contents",
+   "prose_after": "PART I\nForward-Looking Statements\nThis annual report on Form 10-K, any press releases and any information provided periodically in writing or verbally by our officers or our agents contain statements which constitute forward-looking statements. The words \u201cmay\u201d, \u201cwould\u201d, \u201ccould\u201d, \u201cwill\u201d, \u201cexpect\u201d, \u201cestimate\u201d, \u201canticipate\u201d, \u201cbelieve\u201d, \u201cintend\u201d, \u201cplan\u201d, \u201cgoal\u201d, and similar expressions and variations thereof are intended to specifically identify forward-looking statements. These statements appear in a number of places in this Form 10-K and include all statements that are not statements of historical fact regarding the intent, belief or current expectations of us, our directors or our officers, with respect to, among other things: (i) our liquidity and capital resources; (ii) our financing opportunities and plans; (iii) our ability to generate revenues; (iv) market and other trends affecting our future financial condition or plan of operation; and\n(v) our growth and operating strategy.\nInvestors and prospective investors are cautioned that any such forward-looking statements are not guarantees of future performance and involve risks and uncertainties, and that actual results may differ materially from those projected in the forward-looking statements as a result of various factors. The factors that might cause such differences include, among others, those set forth in Part II, Item 7 of this annual report on Form 10-K, entitled \u201cManagement\u2019s Discussion and Analysis or Plan of Operation\u201d, and including, without limitation, the \u201cRisk Factors\u201d beginning on page 5 of this annual report. Except as required by law, we undertake no obligation to update any of the forward-looking statements in this Form 10-K after the date of this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL STATEMENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet as of September 30, 2009 and September 30, 2008",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2009 and 2008 and for the 3 month periods ended September 30, 2009 and 2008",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficiency for the period from August 17, 2006 (Date of Inception) to September 30, 2009",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2009 and 2008",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO FINANCIAL STATEMENTS",
+     "F-6 to F-13"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 417,
+    "end_line": 435
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "In May 2008, the FASB issued SFAS No. 163, \u201cAccounting for Financial Guarantee Insurance Contracts \u2014 An interpretation of FASB Statement No. 60.\u201d SFAS No. 163 requires that an insurance enterprise recognize a claim liability prior to an event of default when there is evidence that credit deterioration has occurred in an insured financial obligation. It also clarifies how Statement No. 60 applies to financial guarantee insurance contracts, including the recognition and measurement to be used to account for premium revenue and claim liabilities, and requires expanded disclosures about financial guarantee insurance contracts. It is effective for financial statements issued for fiscal years beginning after December 15, 2008, except for some disclosures about the insurance enterprise\u2019s risk-management activities. SFAS No. 163 requires that disclosures about the risk-management activities of the insurance enterprise be effective for the first period beginning after issuance. Except for those disclosures, earlier application is not permitted. The adoption of this statement is not expected to have a material effect on the Company\u2019s financial statements.\nOn October, 2008, the FASB issued Staff Position No. 157-3, \u201cDetermining the Fair Value of a Financial Asset When Market for that Asset is not Active\u201d, Effective upon issuance, including prior periods for which financial statements have not been issued. The Company is currently evaluating the effect that the adoption of FSP of 157-3 will have on its results of operations and financial condition, but does not expect it to have a material impact.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nPursuant to Item 305(e) of Regulation S-K (\u00a7 229.305(e)), the Company is not required to provide the information required by this Item as it is a \u201csmaller reporting company,\u201d as defined by Rule 229.10(f)(1).\nITEM 8. FINANCIAL STATEMENTS.\nINDEX TO FINANCIAL STATEMENTS\nTIA IV, INC.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors\nTIA IV, Inc.\nI have audited the accompanying balance sheets of TIA IV, Inc. (\u201cThe Company\u201d) as of September 30, 2009, and the related statements of income, stockholders\u2019 equity and comprehensive income, and cash flows for the years ended September 30, 2009 and 2008. These financial statements are the responsibility of the company\u2019s management. My responsibility is to express an opinion on these financial statements based on my audits.\nI conducted my audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that I plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. My audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, I express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. I believe that my audits provide a reasonable basis for my opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TIA IV, INC."
+    ],
+    [
+     "BALANCE SHEET"
+    ],
+    [
+     "FOR THE YEARS ENDED SEPTEMBER 30, 2009 AND 2008"
+    ]
+   ],
+   "caption_stack": [
+    "TIA IV, INC.",
+    "BALANCE SHEET",
+    "FOR THE YEARS ENDED SEPTEMBER 30, 2009 AND 2008"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 458,
+    "end_line": 463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "In my opinion, the financial statements referred to above present fairly, in all material respects, the financial position of TIA IV, Inc. as of September 30, 2009, and the results of its operations and its cash flows for the years ended September 30, 2009 and 2008 in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As more fully described in Note 2, the Company has incurred a deficit accumulated during the development stage of $55,009 and cash flows used in operating activities of $41,164 during the development stage. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans regarding those matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nTraci J. Anderson, CPA\nHuntersville, NC\nDecember 18, 2009",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year\n\nEnded September\n\n30, 2009",
+     "",
+     "",
+     "For the Year\n\nEnded September\n\n30, 2008",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH",
+     "$",
+     "11,112",
+     "",
+     "$",
+     "1,093",
+     ""
+    ],
+    [
+     "ACCOUNTS RECEIVABLE",
+     "",
+     "6,779",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "PREPAID EXPENSES",
+     "",
+     "94,485",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "112,376",
+     "",
+     "",
+     "1,093",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT,  NET",
+     "",
+     "7,865",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "SECURITY DEPOSIT",
+     "",
+     "3,610",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "DEFERRED FINANCING COSTS, NET",
+     "",
+     "5,572",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL OTHER ASSETS",
+     "",
+     "17,047",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "129,423",
+     "",
+     "$",
+     "1,093",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ACCOUNTS PAYABLE",
+     "",
+     "10,750",
+     "",
+     "",
+     "11,298",
+     ""
+    ],
+    [
+     "ACCRUED EXPENSES",
+     "",
+     "189,507",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "NOTE PAYABLE - RELATED PARTY",
+     "",
+     "7,000",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "LOANS PAYABLE - STOCKHOLDERS",
+     "",
+     "23,208",
+     "",
+     "",
+     "18,208",
+     ""
+    ],
+    [
+     "LOAN PAYABLE - OTHERS",
+     "",
+     "10,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "UNEARNED REVENUES",
+     "",
+     "216,948",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "457,413",
+     "",
+     "",
+     "39,506",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Perferred stock, $.0001 par value; 10,000,000 shares authorized -0-issued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.0001 par value; 250,000,000 shares authorized, 157,686,483 and 16,390,628 shares issued and outstanding at Sept. 30, 2009 and 2008",
+     "",
+     "15,767",
+     "",
+     "",
+     "1,639",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "89,423",
+     "",
+     "",
+     "14957",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(433,180)",
+     "",
+     "",
+     "(55,009)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS' DEFICIENCY",
+     "",
+     "(327,990)",
+     "",
+     "",
+     "(38,413)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "$",
+     "129,423",
+     "",
+     "$",
+     "1,093",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 464,
+    "end_line": 509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements\nTIA IV, INC.\nSTATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year Ended September 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "MITIGATION REVENUE",
+     "$",
+     "85,395",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "146,738",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "DEBT NEGOTIATION REVENUE",
+     "",
+     "4,520",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "12,275",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL REVENUES",
+     "",
+     "89,915",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "159,013",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "DIRECT COSTS",
+     "",
+     "(36,526)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(71,697)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "GROSS PROFIT",
+     "",
+     "53,389",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "87,316",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OFFICE EXPENSES",
+     "",
+     "(53,404)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(108,640)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "RENT EXPENSE",
+     "",
+     "(13,200)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(20,150)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "ADVERTISING EXPENSE",
+     "",
+     "(23,984)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(61,334)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "BANK SERVICE CHARGES",
+     "",
+     "(391)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(1,277)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TRAVEL & ENTERTAINMENT EXPENSES",
+     "",
+     "(1,032)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(3,301)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "CONSULTING EXPENSES",
+     "",
+     "(2,400)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(9,443)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "VEHICLE EXPENSES",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(357)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "REPAIRS AND MAINTENANCE",
+     "",
+     "(8,209)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(10,523)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "UTILITIES",
+     "",
+     "(1,556)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(4,039)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TELEPHONE",
+     "",
+     "(2,428)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(8,940)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "ASSOCIATION DUES",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(430)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "MANAGEMENT FEES",
+     "",
+     "(134,400)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(162,500)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "ACCOUNTING FEES",
+     "",
+     "(45,431)",
+     "",
+     "",
+     "(4,053)",
+     "",
+     "",
+     "(50,649)",
+     "",
+     "",
+     "(15,000)",
+     ""
+    ],
+    [
+     "LEGAL FEES",
+     "",
+     "(1,320)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(5,619)",
+     "",
+     "",
+     "(3,309)",
+     ""
+    ],
+    [
+     "OTHER FORMATION COSTS",
+     "",
+     "0",
+     "",
+     "",
+     "(3,034)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(5,726)",
+     ""
+    ],
+    [
+     "SELLING, GENERAL & ADMINISTRATIVE EXPENSES",
+     "",
+     "(287,757)",
+     "",
+     "",
+     "(7,087)",
+     "",
+     "",
+     "(447,202)",
+     "",
+     "",
+     "(24,035)",
+     ""
+    ],
+    [
+     "DEPRECIATION EXPENSE",
+     "",
+     "(422)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,305)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL EXPENSES",
+     "",
+     "(288,178)",
+     "",
+     "",
+     "(7,087)",
+     "",
+     "",
+     "(448,507)",
+     "",
+     "",
+     "(24,035)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS FROM OPERATIONS",
+     "",
+     "(234,789)",
+     "",
+     "",
+     "(7,087)",
+     "",
+     "",
+     "(361,191)",
+     "",
+     "",
+     "(24,035)",
+     ""
+    ],
+    [
+     "OTHER INCOME/(EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INTEREST EXPENSE",
+     "",
+     "(3,089)",
+     "",
+     "",
+     "(415)",
+     "",
+     "",
+     "(16,980)",
+     "",
+     "",
+     "(1,507)",
+     ""
+    ],
+    [
+     "NET OTHER INCOME (EXPENSE)",
+     "",
+     "(3,089)",
+     "",
+     "",
+     "(415)",
+     "",
+     "",
+     "(16,980)",
+     "",
+     "",
+     "(1,507)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(237,878)",
+     "",
+     "$",
+     "(7,502)",
+     "",
+     "$",
+     "(378,171)",
+     "",
+     "$",
+     "(25,542)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OUTSTANDING-BASIC AND DILUTED",
+     "",
+     "90,562,092",
+     "",
+     "",
+     "2,766,138",
+     "",
+     "",
+     "90,562,092",
+     "",
+     "",
+     "2,766,138",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE-BASIC AND DILUTED",
+     "$",
+     "(0.0026)",
+     "",
+     "$",
+     "(0.0027)",
+     "",
+     "$",
+     "(0.0042)",
+     "",
+     "$",
+     "(0.0009)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 516,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Financial Statements\nTIA IV, INC.\nSTATEMENT OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements\nTIA IV, INC.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIENCY\nFOR THE PERIOD FROM AUGUST 17, 2006 (DATE OF INCEPTION) TO SEPTEMBER 30, 2009",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common\n\nStock",
+     "",
+     "Shares\n\nAmount",
+     "",
+     "Additional\n\nPaid in\n\nCapital",
+     "",
+     "Deficit\n\nAccumulated\n\nDuring the\n\nDevelopment\n\nStage",
+     "",
+     "",
+     "Deficit\n\nAccumulated\n\nDuring\n\nOperations",
+     "",
+     "",
+     "Total\n\nStockholders'\n\nDeficiency",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued on August 28, 2006 at $0.0001 per share",
+     "",
+     "1,000,000",
+     "$",
+     "100",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss for the Period ended September 30, 2006",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(365)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(365)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2006",
+     "",
+     "1,000,000",
+     "",
+     "100",
+     "",
+     "-",
+     "",
+     "(365)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(265)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "932",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "932",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss for the Year ended September 30, 2007",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(29,102)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(29,102)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2007",
+     "",
+     "1,000,000",
+     "",
+     "100",
+     "",
+     "932",
+     "",
+     "(29,467)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(28,435)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued on August 20, 2008 at $0.0001 per share",
+     "",
+     "13,500,000",
+     "",
+     "1,350",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,350",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued in connection with separation agreement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "on August 20, 2008 at $0.0001 per share",
+     "",
+     "1,500,000",
+     "",
+     "150",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "150",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued on August 20, 2008 at $0.03 per share",
+     "",
+     "386,628",
+     "",
+     "39",
+     "",
+     "11,560",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "11,599",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued on August 20, 2008 at $0.25 per share",
+     "",
+     "4,000",
+     "",
+     "-",
+     "",
+     "1,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,465",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,465",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss for the Year ended September 30, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(25,542)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(25,542)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 1, 2008",
+     "",
+     "16,390,628",
+     "$",
+     "1,639",
+     "$",
+     "14,957",
+     "$",
+     "(55,009)",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "(38,413)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Sold & Issued at $0.030 per share",
+     "",
+     "93,330",
+     "",
+     "9",
+     "",
+     "2,791",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued for services at $0.030 per share",
+     "",
+     "183,025",
+     "",
+     "18",
+     "",
+     "5,473",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,491",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued as per note payable at $0.030 per share",
+     "",
+     "540,000",
+     "",
+     "54",
+     "",
+     "16,146",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "16,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued for creation of website at $0.030 per share",
+     "",
+     "50,000",
+     "",
+     "5",
+     "",
+     "1,495",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "427",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "427",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the quarter ended December 31, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(56,712)",
+     "",
+     "",
+     "(56,712)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2008",
+     "",
+     "17,256,983",
+     "$",
+     "1,725",
+     "$",
+     "41,289",
+     "$",
+     "(55,009)",
+     "",
+     "$",
+     "(56,712)",
+     "",
+     "$",
+     "(68,707)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued at $0.030 per share",
+     "",
+     "135,500",
+     "",
+     "14",
+     "",
+     "4,052",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,066",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "448",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "448",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the quarter ended March 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(52,230)",
+     "",
+     "",
+     "(52,230)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2009",
+     "",
+     "17,392,483",
+     "",
+     "1,739",
+     "",
+     "45,789",
+     "",
+     "(55,009)",
+     "",
+     "",
+     "(108,942)",
+     "",
+     "",
+     "(116,423)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued at $0.10 per share to Bob stein",
+     "",
+     "30,000",
+     "",
+     "3",
+     "",
+     "2,997",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "374",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "374",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the quarter ended June 30, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(31,351)",
+     "",
+     "",
+     "(31,351)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "17,422,483",
+     "",
+     "1,742",
+     "",
+     "49,160",
+     "",
+     "(55,009)",
+     "",
+     "",
+     "(140,293)",
+     "",
+     "",
+     "(144,400)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Issued as Compensation",
+     "",
+     "125,231,000",
+     "",
+     "12,523",
+     "",
+     "23,077",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "35,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Shares Sold and Issued",
+     "",
+     "15,033,000",
+     "",
+     "1,503",
+     "",
+     "16,797",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "18,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interest on loans from stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "389",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "389",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the quarter ended September 30, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(237,878)",
+     "",
+     "",
+     "(237,878)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "157,686,483",
+     "",
+     "15,769",
+     "",
+     "89,423",
+     "",
+     "(55,009)",
+     "",
+     "",
+     "(378,171)",
+     "",
+     "",
+     "(327,989)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 573,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Financial Statements\nTIA IV, INC.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIENCY\nFOR THE PERIOD FROM AUGUST 17, 2006 (DATE OF INCEPTION) TO SEPTEMBER 30, 2009",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nTIA IV, INC.\nSTATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\nSeptember 30, 2009",
+     "",
+     "",
+     "For the Year Ended\n\nSeptember 30, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(378,171)",
+     "",
+     "$",
+     "(25,542)",
+     ""
+    ],
+    [
+     "Adjustment to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation Expense",
+     "",
+     "1,305",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Amortization of Financing Costs",
+     "",
+     "10,628",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Imputed Interest Costs",
+     "",
+     "1,638",
+     "",
+     "",
+     "1,465",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "48,156",
+     "",
+     "",
+     "150",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in Accounts Receivable",
+     "",
+     "(6,779)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Increase in Prepaid Expenses",
+     "",
+     "(94,485)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Increase in Security Deposits",
+     "",
+     "(3,610)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Accounts Payable",
+     "",
+     "(548)",
+     "",
+     "",
+     "6,963",
+     ""
+    ],
+    [
+     "Increase in Accrued Expenses",
+     "",
+     "189,507",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Increase in Unearned Revenues",
+     "",
+     "216,948",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(15,411)",
+     "",
+     "",
+     "(16,964)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Property and Equipment",
+     "",
+     "(7,670)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(7,670)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the sale of common stock",
+     "",
+     "21,100",
+     "",
+     "",
+     "13,949",
+     ""
+    ],
+    [
+     "Proceeds from Note Payable related party",
+     "",
+     "27,000",
+     "",
+     "",
+     "4,087",
+     ""
+    ],
+    [
+     "Repayment of Note Payable - Related Party",
+     "",
+     "(20,000)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Proceeds from Loan Payable - Related Party",
+     "",
+     "8,800",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Repayment of Loan Payable - Related Party",
+     "",
+     "(3,800)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "33,100",
+     "",
+     "",
+     "18,036",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "10,019",
+     "",
+     "",
+     "1,072",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING",
+     "",
+     "1,093",
+     "",
+     "",
+     "21",
+     ""
+    ],
+    [
+     "CASH AT END",
+     "$",
+     "11,112",
+     "",
+     "$",
+     "1,093",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 663,
+    "end_line": 708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nTIA IV, INC.\nSTATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements\nTIA IV, INC.\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1 - Organization, Business and Operations\nTia IV, Inc. (the \u201cCompany\u201d) was incorporated in Delaware on August 17, 2006, with an objective to acquire, or merge with, an operating business. On August 20, 2008 we entered into and consummated a Securities Purchase Agreement. Under the terms of the Purchase Agreement, Ralph Porretti, Jim McAlinden and Peter Ng acquired 13,500,000 common shares of the Company at $.0001 per share. Our certificate of incorporation and bi-laws will continue to be those of the Company. We will be governed by the corporate law of the State of Delaware. The Company is a financial advisory firm dedicated to assisting both homeowners and financial mortgage Institutions in preventing foreclosures, and is doing business as National Mitigation Specialists.\nThe Company, was a \"blank check\" company until August 20, 2008. The Securities and Exchange Commission (\u201cSEC\u201d) defines such a company as \u201ca development stage company\u201d that has no specific business plan or purpose, or has indicated that its business plan is to engage in a merger or acquisition with an unidentified company or companies, or other entity or person; and is issued \u2018penny stock,\u2019 as defined in Rule 3a51-1 under the Securities Exchange Act of 1934. Many states have enacted statutes, rules and regulations limiting the sale of securities of \"blank check\" companies in their respective jurisdictions. Management did not intend to undertake any efforts to cause a market to develop in its securities, either debt or equity, until the Company concluded a business combination which occurred in August 2008.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     ""
+    ],
+    [
+     "Expected Statutory Rate",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "State income tax rate, net of federal benefit",
+     "",
+     "7.1",
+     "%",
+     "",
+     "7.1",
+     "%"
+    ],
+    [
+     "City income tax rate, net of federal benefit",
+     "",
+     "8.5",
+     "%",
+     "",
+     "8.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "49.6",
+     "%",
+     "",
+     "49.6",
+     "%"
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "-49.6",
+     "%",
+     "",
+     "-49.6",
+     "%"
+    ],
+    [
+     "Net Actual Rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 745,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company utilizes the liability method of accounting for income taxes. Under the liability method, deferred income taxes are determined based on the differences between the bases of assets and liabilities for financial reporting and income tax purposes. The Company recognized a deferred tax asset of approximately $148,000 as of September 30, 2009, primarily relating to costs incurred during its first year of operation. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences become deductible. The Company considers projected future taxable income and tax planning strategies in making this assessment. At present, the Company does not have a history of income to conclude that is more likely than not that the Company will be able to realize its tax benefits; therefore, a valuation allowance of $148,000 was established for the full value of the deferred tax asset. For the year ended September 30, 2009, the valuation allowance increased by approximately $129,000. A valuation allowance will be maintained until sufficient positive evidence exists to support the reversal of any portion or all of the valuation allowance net of appropriate reserves. Should the Company be profitable in the future periods with supportable trends, the valuation allowance will be reversed accordingly.\nA reconciliation of the expected federal statutory rate of 34% to the Company\u2019s actual rate as reported for each of the periods presented is as follows:",
+   "prose_after": "Loss per Common Share\nBasic and diluted net loss per common share is computed by dividing the net loss by the weighted-average number of shares of common stock outstanding during the period.\nUse of Estimates\nThe preparation of financial statements in conformity with accounting principles generally accepted in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and reported amounts of revenue and expenses during the reporting period. Actual results could differ from those estimates.\nOn October, 2008, the FASB issued Staff Position No. 157-3, \u201cDetermining the Fair Value of a Financial Asset When Market for that Asset is not Active\u201d, Effective upon issuance, including prior periods for which financial statements have not been issued. The Company is currently evaluating the effect that the adoption of FSP of 157-3 will have on its results of operations and financial condition, but does not expect it to have a material impact.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 773,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Value allocated to deferred financing cost",
+     "$",
+     "16,200",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(10,628)",
+     ""
+    ],
+    [
+     "Deferred Financing Costs, Net",
+     "$",
+     "5,572",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 812,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Note Payable \u2013 Related Party / Deferred Financing Costs, Net"
+    }
+   },
+   "prose_before": "On October 6, 2008, the Company executed an unsecured note from the spouse of the secretary totaling $27,000. The Company is to pay $35,000, including simple interest at the rate of 28% per annum on the unpaid balance, the balance of the note that remains outstanding as of September 30, 2009 is $7,000; the Company issued 540,000 shares of common stock as stated in the Note. The stock was issued on December 23, 2008 at $0.03 per share, and recorded as a deferred financing cost in the amount of $16,200. A summary of the deferred financing costs as of September 30, 2009 and accumulated amortization is as follows:\nNOTE 5 \u2013 Loan Payable \u2013 Other\nOn March 16, 2007 the Company received a $10,000 loan from an outside party. The loan is non-interest bearing and with no stated repayment date. The Company has not recorded imputed interest on this loan.\nNOTE 6 \u2013 Note Payable \u2013 Related Party / Deferred Financing Costs, Net\nOn October 6, 2008, the Company executed an unsecured note from the spouse of the secretary totaling $27,000. The Company is to pay $35,000, including simple interest at the rate of 28% per annum on the unpaid balance, the balance of the note that remains outstanding as of September 30, 2009 is $7,000; the Company issued 540,000 shares of common stock as stated in the Note. The stock was issued on December 23, 2008 at $0.03 per share, and recorded as a deferred financing cost in the amount of $16,200. A summary of the deferred financing costs as of September 30, 2009 and accumulated amortization is as follows:",
+   "prose_after": "These deferred financing costs are being amortized over the term of the note. Amortization expense with respect to deferred financing costs amounted to $10,628, for the year ended September 30, 2009, and is included as a component of interest expenses in the accompanying statement of operations.\nNOTE 7 \u2013 Stockholders Equity\nPreferred Stock\nThe Company is authorized to issue 10,000,000 shares of preferred stock with such designations, voting and other rights and preferences as may be determined from time to time by the Board of Directors.\nCommon Stock\nDuring the Fiscal year ended September 30, 2009\n\u00b7 During the quarter ended December 31, 2008, the Company issued 773,025 shares at $0.03 per share for a total of $23,191. Of those shares, 540,000 were issued in conjunction with a note payable (see Note 6) for a total of $16,200, 50,000 were issued in exchange for setup of company website for a total of $1,500, and 183,025 were issued for services rendered for a total of $5,491 There were 93,330 shares sold at $0.03 per share for a total of $2,800",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 811,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item9B.",
+     "Other Information."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 866,
+    "end_line": 869
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "(T) CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "As of the end of the period covered by this report, the Chief Executive Officer and Principal Financial Officer evaluated the effectiveness of our disclosure controls and procedures. We evaluated and assessed the effectiveness of our internal control over financial reporting as of September 30, 2009, using criteria set forth in the Internal Control\u2014Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO). Based on the evaluation, the Certifying Officers concluded that our disclosure controls and procedures were effective to provide reasonable assurance that information required to be disclosed by us in the reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported, within the time periods specified in the applicable rules and forms, and that it is accumulated and communicated to our management, including the Certifying Officers, as appropriate to allow timely decisions regarding required disclosure.\nThe Chief Executive Officer, President and Principal Financial Officer has also concluded, based on his evaluation of our controls and procedures that as of September 30, 2009, our internal controls over financial reporting are effective and provide a reasonable assurance of achieving their objective.\nThe Chief Executive Officer and President and Principal Financial Officer has also concluded that there was no change in our internal controls over financial reporting identified in connection with the evaluation that occurred during our fourth fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.",
+   "prose_after": "None\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nExecutive Officers and Directors\nThe following table sets forth information regarding our executive officers and directors as of September 30, 2009.",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ralph Porretti",
+     "61",
+     "Director, Chief Executive Officer"
+    ],
+    [
+     "James McAlinden",
+     "60",
+     "Director, President and Chief Financial Officer"
+    ],
+    [
+     "Peter Ng",
+     "32",
+     "Director,  Secretary and Vice President of Operations"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "None\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nExecutive Officers and Directors\nThe following table sets forth information regarding our executive officers and directors as of September 30, 2009.",
+   "prose_after": "Ralph Porretti, CEO\nRalph Porretti has extensive multi-industry credentials at the senior management level in the mortgage, telecom, and real estate fields in both line management and consulting capacities. Prior to starting NMM, key management positions included:\n\u00b7 Consultant to Manhattan Mitigation, Inc. from 2/07 to 6/08\n\u00b7 Managing Partner at Verde Funding Corporation and President of its Real Estate Division 2/02 to 1/07.\n\u00b7 President and CEO of Best Telecom Installations, Inc. The Company specialized in the installation of payphone systems and counted the City of New York and AT&T as its clients 1/99 to 1/02\n\u00b7 In 1995 Ralph joined American Telecom as a manager and left l0/98.\n\u00b7 In 1984 Founded and was President of RD&J Communications, a switch based long distance carrier service with over 250 employees and gross sales of $30 million. The Company was sold in 1995 to Davel Communications, the largest payphone provider in the U.S.\nRalph is a bottom line manager with marketing, sales and interpersonal skills and a successful track record in managing startups and promoting innovation.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and principal position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards\n\n($)",
+     "",
+     "Option Awards\n\n($)",
+     "",
+     "Non-Equity\n\nIncentive\n\nPlan\n\nCompen-\n\nsation\n\n($)",
+     "",
+     "Non-\n\nqualified\n\nDeferred\n\nCompen-\n\nsation\n\nEarnings\n\n($)",
+     "",
+     "All Other\n\nCompen-\n\nsation\n\n($)",
+     "",
+     "Total\n\nCompensation\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ralph Porretti, Chief Executive Officer",
+     "2009",
+     "$",
+     "52,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "52,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James McAlinden, President and CFO",
+     "2009",
+     "$",
+     "52,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "52,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter Ng, VP Operations",
+     "2009",
+     "$",
+     "52,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "52,000"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 971
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "\u00b7 being subject to any order, judgment, or decree, not subsequently reversed, suspended or vacated, of any court of competent jurisdiction, permanently or temporarily enjoining, barring, suspending or otherwise limiting his involvement in any type of business, securities or banking activities; and\n\u00b7 being found by a court of competent jurisdiction (in a civil action), the Securities and Exchange Commission or the Commodity Futures Trading Commission to have violated a federal or state securities or commodities law, and the judgment has not been reversed, suspended, or vacated.\nAudit Committee\nAs of the date of this annual report for the fiscal year ended September, 30, 2009, we have no standing committees and our entire board of directors serves as our audit and compensation committees.\nITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth all compensation awarded, paid to or earned by our Chief Executive Officer, who was our only executive officer during the fiscal year ended September 30, 2009.",
+   "prose_after": "The following table sets forth certain information concerning unexercised options, stock that has not vested, and equity incentive plan awards for each of our named executive officers outstanding as of September 30, 2009.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding Equity Awards at Fiscal Year-End",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\nsecurities\n\nunderlying\n\nunexercised\n\noptions (#)\n\nExercisable",
+     "",
+     "Number of\n\nsecurities\n\nunderlying\n\nunexercised\n\noptions (#)\n\nUnexercisable",
+     "",
+     "Equity\n\nIncentive\n\nPlan\n\nAwards:\n\nNumber of\n\nSecurities\n\nunderlying\n\nunexercised\n\nunearned\n\noptions (#)",
+     "",
+     "Option\n\nexercise\n\nprice ($)",
+     "",
+     "Option\n\nexpiration\n\ndate",
+     "",
+     "Number\n\nof shares\n\nor units\n\nof stock\n\nthat have\n\n\u2022[ ]t\n\nvested\n\n(#)",
+     "",
+     "Market\n\nvalue of\n\nshares or\n\nunits of\n\nstock that\n\nhave not\n\nvested\n\n($)",
+     "",
+     "Equity\n\nincentive\n\nplan\n\nawards:\n\nnumber\n\n[ ]f\n\nunearned\n\nshares,\n\nunits or\n\nother\n\nrights\n\nthat have\n\n\u2022[ ]t\n\nvested\n\n(#)",
+     "",
+     "Equity\n\nincentive\n\nplan\n\nawards:\n\nMarket\n\nor payout\n\nvalue of\n\nunearned\n\nshares,\n\nunits or\n\nother\n\nrights\n\nthat have\n\n\u2022[ ]t\n\nvested\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ralph Porretti, Chief Executive Officer",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "James McAlinden, President & CFO",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Peter Ng, VP Operations",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Outstanding Equity Awards at Fiscal Year-End"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 974,
+    "end_line": 1015
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth certain information concerning unexercised options, stock that has not vested, and equity incentive plan awards for each of our named executive officers outstanding as of September 30, 2009.",
+   "prose_after": "Director Compensation\nNo salary or regular compensation is paid to our directors. Pursuant to our bylaws, our directors are eligible to be reimbursed for their actual out-of-pocket expenses incurred in attending board meetings and other director functions, as well as fixed fees and other compensation to be determined by our board of directors. No such compensation or expense reimbursements have been requested by our directors or paid to date.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth certain information regarding the beneficial ownership of our common stock as of November 30, 2009. The information in this table provides the ownership information for:\n\u00b7 each person known by us to be the beneficial owner of more than 5% of our common stock;\n\u00b7 each of our directors and executive officers; and\n\u00b7 all of our directors and executive officers as a group.\nBeneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to our common stock and those rights to acquire additional shares within sixty days. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares of common stock indicated as beneficially owned by them, except to the extent such power may be shared with a spouse. Common stock beneficially owned and percentage ownership are based on 165,186,483 shares of common stock currently outstanding and no additional shares potentially acquired within sixty days.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and address of beneficial owner (1)",
+     "Amount and nature [ ]f\n\nbeneficial ownership",
+     "",
+     "Percent of Class",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ralph Porretti",
+     "",
+     "44,366,667",
+     "",
+     "26.9",
+     "%"
+    ],
+    [
+     "James McAlinden",
+     "",
+     "46,166,666",
+     "",
+     "27.9",
+     "%"
+    ],
+    [
+     "Peter Ng",
+     "",
+     "45,516,667",
+     "",
+     "27.6",
+     "%"
+    ],
+    [
+     "JW Financial",
+     "",
+     "15,000,000",
+     "",
+     "9.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All officers and directors as a group",
+     "",
+     "136,050,000",
+     "",
+     "82.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1034,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth certain information regarding the beneficial ownership of our common stock as of November 30, 2009. The information in this table provides the ownership information for:\n\u00b7 each person known by us to be the beneficial owner of more than 5% of our common stock;\n\u00b7 each of our directors and executive officers; and\n\u00b7 all of our directors and executive officers as a group.\nBeneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to our common stock and those rights to acquire additional shares within sixty days. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares of common stock indicated as beneficially owned by them, except to the extent such power may be shared with a spouse. Common stock beneficially owned and percentage ownership are based on 165,186,483 shares of common stock currently outstanding and no additional shares potentially acquired within sixty days.",
+   "prose_after": "(1) The address of each person listed is care of Tia IV, Inc., 1761 Victory Blvd., Staten Island, NY 10314.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nWe have determined that our directors, Ralph Porretti, James McAlinden and Peter Ng are not independent based on an analysis of the standards for independence set forth in Section 121A of the American Stock Exchange Company Guide.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nThe following table sets forth the aggregate amount of various professional fees billed by our principal accountants with respect to our last two fiscal years:",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1021,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended September 30",
+     "2009",
+     "",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Marcum)",
+     "",
+     "(Anderson) (5)",
+     "",
+     "(Marcum)",
+     "",
+     "(Anderson) (5)",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "",
+     "$",
+     "10,000",
+     "$",
+     "15,000",
+     "$",
+     "-"
+    ],
+    [
+     "Audit Related Fees (2)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees (4)",
+     "",
+     "40,649",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Accounting Fees and Services",
+     "$",
+     "40,649",
+     "$",
+     "10,000",
+     "$",
+     "15,000",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1060,
+    "end_line": 1073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(1) The address of each person listed is care of Tia IV, Inc., 1761 Victory Blvd., Staten Island, NY 10314.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nWe have determined that our directors, Ralph Porretti, James McAlinden and Peter Ng are not independent based on an analysis of the standards for independence set forth in Section 121A of the American Stock Exchange Company Guide.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nThe following table sets forth the aggregate amount of various professional fees billed by our principal accountants with respect to our last two fiscal years:",
+   "prose_after": "(1) Audit Fees: These are fees for professional services for the audit of our annual financial statements, and for the review of the financial statements included in our filings on Forms 10-QSB (now 10-Q), and for services that are normally provided in connection with statutory and regulatory filings or engagements.\n(2) Audit-related Fees: These are fees for the assurances and related services reasonably related to the performance of the audit or the review of our financial statements.\n(3) Tax Fees: These are fees for professional services with respect to tax compliance, tax advice, and tax planning.\n(4) All Other Fees: These are fees for permissible work that does not fall within any of the other fee categories, i.e., Audit Fees, Audit-related Fees or Tax Fees.\n(5) All Audit Fees are approved by our board of directors. For the fiscal year ended September 30, 2008, Marcum, LLP served as our independent accountant. As previously disclosed in a current report on Form 8-K filed with the SEC on October 12, 2009,the company discharged Marcum, LLP and we appointed Traci J. Anderson CPA as our new independent accountant for the fiscal year ended September 30, 2009.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "N[ ].",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer and Director,"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Accounting Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1092,
+    "end_line": 1100
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMETN SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(2) Audit-related Fees: These are fees for the assurances and related services reasonably related to the performance of the audit or the review of our financial statements.\n(3) Tax Fees: These are fees for professional services with respect to tax compliance, tax advice, and tax planning.\n(4) All Other Fees: These are fees for permissible work that does not fall within any of the other fee categories, i.e., Audit Fees, Audit-related Fees or Tax Fees.\n(5) All Audit Fees are approved by our board of directors. For the fiscal year ended September 30, 2008, Marcum, LLP served as our independent accountant. As previously disclosed in a current report on Form 8-K filed with the SEC on October 12, 2009,the company discharged Marcum, LLP and we appointed Traci J. Anderson CPA as our new independent accountant for the fiscal year ended September 30, 2009.\nPre-Approval Policy for Audit and Non-Audit Services\nWe do not have a standing audit committee, and the full Board performs all functions of an audit committee, including the pre-approval of all audit and non-audit services before we engage an accountant.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMETN SCHEDULES.",
+   "prose_after": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:  January 5, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Tia IV, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ James McAlinden"
+    ],
+    [
+     "",
+     "",
+     "James McAlinden"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Date:  January 5, 2010",
+    "Tia IV, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1107,
+    "end_line": 1116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMETN SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1116,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

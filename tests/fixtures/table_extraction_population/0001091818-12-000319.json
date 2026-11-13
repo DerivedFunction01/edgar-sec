@@ -1,0 +1,4937 @@
+{
+ "accession": "0001091818-12-000319",
+ "cik": "0001365357",
+ "form": "10-Q",
+ "filing_date": "2012-08-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bhna0813201210q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "20-3486523"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or formation)",
+     "",
+     "(I.R.S. employer identification number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2012\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________________ to ______________________\nCommission File No. 333-134991\nBAOSHINN CORPORATION (Exact name of small business issuer as specified in its charter)",
+   "prose_after": "A-B 8/F Hart Avenue Tsimshatsui\nKowloon, Hong Kong N/A\n(Address of principal executive offices) (Zip Code)\nRegistrant's telephone number: (852) 2815-1355 _______________________________________________\nSecurities registered under Section 12(b) of the Exchange Act:\nNone.\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, $.001 par value per share\n(Title of Class)\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the issuer was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Jun 30,",
+     "",
+     "Dec 31,"
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "(Audited)"
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "1,425,861",
+     "",
+     "1,361,357"
+    ],
+    [
+     "Accounts receivable",
+     "2,311,915",
+     "",
+     "2,058,647"
+    ],
+    [
+     "    Deferred cost \u2013 note 13",
+     "2,145,209",
+     "",
+     "2,078,605"
+    ],
+    [
+     "    Restricted cash",
+     "12,893",
+     "",
+     "12,877"
+    ],
+    [
+     "Deposits, prepaid expenses and other receivables \u2013 Note 9",
+     "845,758",
+     "",
+     "986,485"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Amount due from related party \u2013 note 12",
+     "-",
+     "",
+     "4,437"
+    ],
+    [
+     "    Income tax prepaid",
+     "15,330",
+     "",
+     "15,311"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "6,756,966",
+     "",
+     "6,517,719"
+    ],
+    [
+     "Plant and equipment \u2013 Note 10",
+     "25,553",
+     "",
+     "34,789"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "6,782,519",
+     "",
+     "6,552,508"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "3,233,131",
+     "",
+     "3,080,100"
+    ],
+    [
+     "Deferred revenue \u2013 note 13",
+     "2,166,497",
+     "",
+     "2,094,307"
+    ],
+    [
+     "Other payables and accrued liabilities \u2013 Note 11",
+     "512,216",
+     "",
+     "438,019"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "5,911,844",
+     "",
+     "5,612,426"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "5,911,844",
+     "",
+     "5,612,426"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES \u2013 Note 18",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Par value : 2012 - US$0.01 (2011: US$0.01)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized: 2012 \u2013 300,000,000 common shares, 100,000,000 preferred shares",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued and outstanding: 2012 \u2013 2,140,000 shares (2011 \u2013 2,140,000)*",
+     "21,400",
+     "",
+     "21,400"
+    ],
+    [
+     "Additional paid-in capital",
+     "1,793,596",
+     "",
+     "1,793,596"
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "492",
+     "",
+     "(399)"
+    ],
+    [
+     "Accumulated deficit",
+     "(1,160,119)",
+     "",
+     "(1,078,645)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY OF THE GROUP",
+     "655,369",
+     "",
+     "735,952"
+    ],
+    [
+     "ATTRIBUTABLE TO NON-CONTROLLING INTERESTS",
+     "215,306",
+     "",
+     "204,130"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ATTRIBUTBLE TO THE GROUP",
+     "870,675",
+     "",
+     "940,082"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "6,782,519",
+     "",
+     "6,552,508"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 153,
+    "end_line": 216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1.\nFinancial Statements\nBaoshinn Corporation\nConsolidated Financial Statements\nFor the Year Ended June 30, 2012 and 2011\n(Stated in US Dollars)\nBAOSHINN CORPORATION\nCONSOLIDATED BALANCE SHEET\n(Stated in US Dollars)",
+   "prose_after": "*The number of common stocks outstanding as at Dec 31, 2011 are retrospective stated according to a result of a reverse stock split during year ended December 31, 2011.\nSee notes to consolidated financial statement.\nBAOSHINN CORPORATION\nCONSOLIDATED STATEMENT OF INCOME\n(Stated in US Dollars)",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 129,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For 3 Months",
+     "",
+     "",
+     "For 6 Months",
+     ""
+    ],
+    [
+     "",
+     "Ended June 30",
+     "",
+     "",
+     "Ended June 30",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Unaudited",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "2011",
+     "",
+     "2012",
+     "2011"
+    ],
+    [
+     "",
+     "$",
+     "$",
+     "",
+     "$",
+     "$"
+    ],
+    [
+     "Retail and Corporate revenue",
+     "9,990,931",
+     "10,063,224",
+     "",
+     "19,700,026",
+     "18,564,976"
+    ],
+    [
+     "Commission from travel booking services",
+     "12,715",
+     "24,018",
+     "",
+     "26,674",
+     "56,198"
+    ],
+    [
+     "Incentive commissions",
+     "124,296",
+     "117,603",
+     "",
+     "235,668",
+     "191,944"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "10,127,942",
+     "10,204,845",
+     "",
+     "19,962,368",
+     "18,813,118"
+    ],
+    [
+     "Cost of sales",
+     "(9,803,430)",
+     "(9,832,398)",
+     "",
+     "(19,335,144)",
+     "(18,091,761)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "324,512",
+     "372,447",
+     "",
+     "627,224",
+     "721,357"
+    ],
+    [
+     "Other operating income - Note 5",
+     "9,363",
+     "9,230",
+     "",
+     "15,454",
+     "18,532"
+    ],
+    [
+     "Depreciation",
+     "(5,103)",
+     "(5,168)",
+     "",
+     "(10,321)",
+     "(10,606)"
+    ],
+    [
+     "Administrative and other operating expenses",
+     "(351,297)",
+     "(315,628)",
+     "",
+     "(706,017)",
+     "(637,399)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(22,525)",
+     "60,881",
+     "",
+     "(73,660)",
+     "91,884"
+    ],
+    [
+     "Other non-operating income - Note 6",
+     "2,356",
+     "2,304",
+     "",
+     "3,330",
+     "3,790"
+    ],
+    [
+     "Interest expenses - Note 7",
+     "(219)",
+     "0",
+     "",
+     "(235)",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(20,388)",
+     "63,185",
+     "",
+     "(70,565)",
+     "95,674"
+    ],
+    [
+     "Income taxes - Note 8",
+     "0",
+     "0",
+     "",
+     "0",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "(20,388)",
+     "63,185",
+     "",
+     "(70,565)",
+     "95,674"
+    ],
+    [
+     "Non-controlling interest",
+     "(11,287)",
+     "(10,270)",
+     "",
+     "(10,909)",
+     "(14,298)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Profit/(loss) attributable to the Company",
+     "(31,675)",
+     "52,915",
+     "",
+     "(81,474)",
+     "81,376"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock - Note 4",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Basic",
+     "(1.48) cents",
+     "2.47 cents",
+     "",
+     "(3.81) cents",
+     "3.80 cents"
+    ],
+    [
+     "- Diluted",
+     "(1.48) cents",
+     "2.47 cents",
+     "",
+     "(3.81) cents",
+     "3.80 ents"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common stock - Note 4",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Basic",
+     "2,140,000",
+     "2,140,000*",
+     "",
+     "2,140,000",
+     "2,140,000*"
+    ],
+    [
+     "- Diluted",
+     "2,140,000",
+     "2,140,000*",
+     "",
+     "2,140,000",
+     "2,140,000*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 228,
+    "end_line": 278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "*The number of common stocks outstanding as at Dec 31, 2011 are retrospective stated according to a result of a reverse stock split during year ended December 31, 2011.\nSee notes to consolidated financial statement.\nBAOSHINN CORPORATION\nCONSOLIDATED STATEMENT OF INCOME\n(Stated in US Dollars)",
+   "prose_after": "*As the number of common shares outstanding decreases as a result of a reverse stock split during year ended December 31, 2011, the computations of basic and diluted EPS shall be adjusted retroactively for all periods presented to reflect that change in capital structure.\nSee notes to consolidated financial statements\nBAOSHINN CORPORATION\nCONSOLIDATED STATEMENT OF CASH FLOWS\n(Stated in US Dollars)",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 223,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended\n\n\n\n30 Jun, 2012",
+     "",
+     "Six Months Ended\n\n\n\n30 Jun, 2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss)/Income",
+     "(81,474)",
+     "",
+     "81,376",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash flows provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "10,321",
+     "",
+     "10,606",
+     "",
+     ""
+    ],
+    [
+     "  Non-controlling interest",
+     "10,909",
+     "",
+     "14,298",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(253,268)",
+     "",
+     "(635,881)",
+     "",
+     ""
+    ],
+    [
+     "    Deferred cost",
+     "(66,604)",
+     "",
+     "(241,809)",
+     "",
+     ""
+    ],
+    [
+     "Deposits, prepaid expenses and other receivables",
+     "140,727",
+     "",
+     "(109,248)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "153,031",
+     "",
+     "530,465",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "72,190",
+     "",
+     "235,342",
+     "",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "74,197",
+     "",
+     "166,672",
+     "",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "-\n\n\n\n-",
+     "",
+     "(1,963)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash flows generated from operating activities",
+     "60,029",
+     "",
+     "49,858",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activity",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of plant and equipment",
+     "(1,208)",
+     "",
+     "(3,987)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash flows (used in) investing activity",
+     "(1,208)",
+     "",
+     "(3,987)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amounts due from related parties",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Amounts due to related parties",
+     "-",
+     "",
+     "(300)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash flows generated from / (used in) financing activities",
+     "-",
+     "",
+     "(300)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "58,821",
+     "",
+     "45,571",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign currency translation on cash and cash equivalents",
+     "5,683",
+     "",
+     "(777)",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - beginning of year",
+     "1,361,357",
+     "",
+     "547,485",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - end of year",
+     "1,425,861",
+     "",
+     "592,279",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures for cash flow information :",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for :",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "(235)",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 291,
+    "end_line": 345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "*As the number of common shares outstanding decreases as a result of a reverse stock split during year ended December 31, 2011, the computations of basic and diluted EPS shall be adjusted retroactively for all periods presented to reflect that change in capital structure.\nSee notes to consolidated financial statements\nBAOSHINN CORPORATION\nCONSOLIDATED STATEMENT OF CASH FLOWS\n(Stated in US Dollars)",
+   "prose_after": "See notes to consolidated financial statements.\nBAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nCorporation information\nBaoshinn Corporation (the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada on September 9, 2005, under the name of JML Holdings, Inc.\nOn May 10, 2002, Bao Shinn International Express Limited (\u201cBSIE\u201d), a privately-held corporation, was incorporated in Hong Kong.\nOn March 31, 2006, the Company consummated a merger (the \u201cmerger\u201d) with BSIE by issuing 16,500,000 shares in the share exchange transaction for 100% of the issued and outstanding shares of BSIE common stock. As a result of the share exchange transaction, BSIE became our wholly-owned subsidiary.\nBao Shinn Holidays Limited (\u201cBSHL\u201d) was incorporated on July 16, 2008 with 3,000,000 ordinary shares issued and paid at $0.128 per share. At the same day, BSIE owns 55% of BSHL.\nDuring the year ended March 31, 2009, Baoshinn Corporation and its subsidiaries (collectively referred to as the Group) issued 2,400,000 restricted common shares of $0.001 per share at a value of $0.3 per share with a net proceeds of approximately $624,000 and redeemed 2,500,000 restricted common shares and these shares are classified as not issued and outstanding.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Furniture and fixtures",
+     "20% - 50%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Office equipment",
+     "20%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 448,
+    "end_line": 452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Accounts receivable are stated at original amount less allowance made for doubtful receivables, if any, based on a review of all outstanding amounts at the year end. An allowance is also made when there is objective evidence that the Group will not be able to collect all amounts due according to original terms of receivables. Bad debts are written off when identified. The Group extends unsecured credit to customers in the normal course of business and believes all accounts receivable in excess of the allowances for doubtful receivables to be fully collectible. The Group does not accrue interest on trade accounts receivable.\nThe Group has a credit policy in place and the exposure to credit risk is monitored on an ongoing basis credit evaluations are performed on all customers requiring credit over a certain amount.\nPlant and equipment\nPlant and equipment are stated at cost less accumulated depreciation. Cost represents the purchase price of the asset and other costs incurred to bring the asset into its existing use. Maintenance, repairs and betterments, including replacement of minor items, are charged to expense; major additions to physical properties are capitalized.\nDepreciation of plant and equipment is provided using the straight-line method over their estimated useful lives at the following annual rates :-",
+   "prose_after": "Property and equipment are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset may not be recoverable. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to estimated undiscounted future cash flows expected to be generated by the asset. If the carrying amount of an asset exceeds its estimated future cash flows, an impairment charge is recognized by the amount by which the carrying amount of the asset exceeds the fair value of the asset. Assets to be disposed of are separately presented in the balance sheet and reported at the lower of the carrying amount or fair value less costs to sell, and are no longer depreciated.\nRevenue recognition\nThe Group recognizes revenue when it is earned and realizable based on the following criteria: persuasive evidence that an arrangement exists, services have been rendered, the price is fixed or determinable and collectibility is reasonably assured.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For 3 months ended 30/06",
+     "",
+     "",
+     "For 6 months ended 30/06",
+     ""
+    ],
+    [
+     "2012",
+     "2011",
+     "",
+     "2012",
+     "2011"
+    ],
+    [
+     "  $",
+     "$",
+     "",
+     "$",
+     "$"
+    ],
+    [
+     "0",
+     "649",
+     "",
+     "6,702",
+     "3,216"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 513,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The Group earns an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to the Group subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis because such commissions are usually paid in arrears and the Group can reasonably estimate such commissions. The Group presents revenues from such transactions on a net basis in the statements of operations, as the Group acts as an agent, does not assume any inventory risk, and has no obligations for cancelled airline ticket reservations.\nDeferred revenue\nThe Group records deferred revenue when it receives payments in advance of the completion of delivery of travel services. Hence, revenue from retail and corporate travel service is deferred. Upon completion of delivery of travel services, the Group recognized this as sales in the consolidated statement of operations.\nDeferred cost\nThe Group adopted an identical policy on retail and corporate service. The Group records deferred cost when it pays in advance of the completion of delivery of travel services and consistently with deferred revenue. Upon completion of delivery of travel services, deferred cost is charged to cost of sales in the consolidated statement of operations.\nAdvertising expenses\nAdvertising expenses are charged to expense as incurred.",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\n4.\nSummary of significant accounting policies (Continued)\nThe Group receives referral fee from travel product providers for booking travel services through the Group. The itinerary and product price are generally fixed by the travel product providers and the Group books the travel services on behalf of the customers. Referral fees from travel booking services rendered are recognized as commissions after the services are rendered and collections are reasonably assured. The Group presents revenues from such transactions on a net basis in the consolidated statements of operations, as the Group acts as an agent, does not assume any inventory and credit risks, has no obligations for cancelled airline or hotel ticket reservations, and does not have latitude in determining the service prices.\nIncentive commission from travel suppliers\nThe Group earns an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to the Group subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis because such commissions are usually paid in arrears and the Group can reasonably estimate such commissions. The Group presents revenues from such transactions on a net basis in the statements of operations, as the Group acts as an agent, does not assume any inventory risk, and has no obligations for cancelled airline ticket reservations.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For 3 months ended 30/06",
+     "",
+     "",
+     "For 6 months ended 30/06",
+     ""
+    ],
+    [
+     "2012",
+     "2011",
+     "",
+     "2012",
+     "2011"
+    ],
+    [
+     "  $",
+     "$",
+     "",
+     "$",
+     "$"
+    ],
+    [
+     "0",
+     "649",
+     "",
+     "6,702",
+     "3,216"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 513,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The Group earns an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to the Group subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis because such commissions are usually paid in arrears and the Group can reasonably estimate such commissions. The Group presents revenues from such transactions on a net basis in the statements of operations, as the Group acts as an agent, does not assume any inventory risk, and has no obligations for cancelled airline ticket reservations.\nDeferred revenue\nThe Group records deferred revenue when it receives payments in advance of the completion of delivery of travel services. Hence, revenue from retail and corporate travel service is deferred. Upon completion of delivery of travel services, the Group recognized this as sales in the consolidated statement of operations.\nDeferred cost\nThe Group adopted an identical policy on retail and corporate service. The Group records deferred cost when it pays in advance of the completion of delivery of travel services and consistently with deferred revenue. Upon completion of delivery of travel services, deferred cost is charged to cost of sales in the consolidated statement of operations.\nAdvertising expenses\nAdvertising expenses are charged to expense as incurred.",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\n4.\nSummary of significant accounting policies (Continued)\nThe Group receives referral fee from travel product providers for booking travel services through the Group. The itinerary and product price are generally fixed by the travel product providers and the Group books the travel services on behalf of the customers. Referral fees from travel booking services rendered are recognized as commissions after the services are rendered and collections are reasonably assured. The Group presents revenues from such transactions on a net basis in the consolidated statements of operations, as the Group acts as an agent, does not assume any inventory and credit risks, has no obligations for cancelled airline or hotel ticket reservations, and does not have latitude in determining the service prices.\nIncentive commission from travel suppliers\nThe Group earns an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to the Group subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis because such commissions are usually paid in arrears and the Group can reasonably estimate such commissions. The Group presents revenues from such transactions on a net basis in the statements of operations, as the Group acts as an agent, does not assume any inventory risk, and has no obligations for cancelled airline ticket reservations.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "  Six Months\n\n\n\n  Ended",
+     "",
+     "  Six Months\n\n\n\nEnded"
+    ],
+    [
+     "",
+     "",
+     "Jun 30, 2012",
+     "",
+     "Jun 30, 2011"
+    ],
+    [
+     "Year end HK$ : US$ exchange rate",
+     "",
+     "7.756",
+     "",
+     "7.782"
+    ],
+    [
+     "Average yearly HK$ : US$ exchange rate",
+     "",
+     "7.759",
+     "",
+     "7.783"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The functional currency of the Group is Hong Kong dollars (\u201cHK$\u201d). The Group maintains its financial statements in the functional currency. Monetary assets and liabilities denominated in currencies other than the functional currency are translated into the functional currency at rates of exchange prevailing at the balance sheet dates. Transactions denominated in currencies other than the functional currency are translated into the functional currency at the exchanges rates prevailing at the dates of the transaction. Exchange gains or losses arising from foreign currency transactions are included in the determination of net income for the respective periods.\nFor financial reporting purposes, the financial statements of the Group which are prepared using the functional currency have been translated into United States dollars. Assets and liabilities are translated at the exchange rates at the balance sheet dates and revenue and expenses are translated at the average exchange rates and stockholders\u2019 equity is translated at historical exchange rates. Any translation adjustments resulting are not included in determining net income but are included in foreign exchange adjustment to other comprehensive income, a component of stockholders\u2019 equity.",
+   "prose_after": "Fair value of financial instruments\nThe carrying values of the Group\u2019s financial instruments, including cash and cash equivalents, trade and other receivables, deposits, trade and other payables approximate their fair values due to the short-term maturity of such instruments. The carrying amounts of borrowings approximate their fair values because the applicable interest rates approximate current market rates.\nBasic and diluted earnings per share\nThe Group computes earnings per share (\u201cEPS\u2019) in accordance with FASB Accounting Standard Codification Topic 260 (ASC 260) \u201cEarnings Per Share\u201d, and SEC Staff Accounting Bulletin No. 98 (\u201cSAB 98\u201d). ASC 260 requires companies with complex capital structures to present basic and diluted EPS. Basic EPS is measured as the income or loss available to common shareholders divided by the weighted average common shares outstanding for the period. Diluted EPS is similar to basic EPS but presents the dilutive effect on a per share basis of potential common shares (e.g., convertible securities, options, and warrants) as if they had been converted at the beginning of the periods presented, or issuance date, if later. Potential common shares that have an anti-dilutive effect (i.e., those that increase income per share or decrease loss per share) are excluded from the calculation of diluted EPS.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For 3 months ended June 30",
+     "",
+     "",
+     "",
+     "",
+     "For 6 months ended June 30",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "Numerator for basic and diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "earnings per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss)/Income\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026",
+     "(31,675)",
+     "",
+     "52,915",
+     "",
+     "",
+     "",
+     "(81,474)",
+     "",
+     "81,376"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The Group computes earnings per share (\u201cEPS\u2019) in accordance with FASB Accounting Standard Codification Topic 260 (ASC 260) \u201cEarnings Per Share\u201d, and SEC Staff Accounting Bulletin No. 98 (\u201cSAB 98\u201d). ASC 260 requires companies with complex capital structures to present basic and diluted EPS. Basic EPS is measured as the income or loss available to common shareholders divided by the weighted average common shares outstanding for the period. Diluted EPS is similar to basic EPS but presents the dilutive effect on a per share basis of potential common shares (e.g., convertible securities, options, and warrants) as if they had been converted at the beginning of the periods presented, or issuance date, if later. Potential common shares that have an anti-dilutive effect (i.e., those that increase income per share or decrease loss per share) are excluded from the calculation of diluted EPS.\nThe calculation of diluted weighted average common shares outstanding for six months ended June 30, 2012 is based on the estimate fair value of the Group\u2019s common stock during such periods applied to options using the treasury stock method to determine if they are dilutive.\nEffective on October 19, 2011, each of ten (10) shares of the Company\u2019s Common Stock, par value $.001 per share, issued and outstanding immediately prior to the Effective Time, the \u201cOld Common Stock\u201d shall automatically and without any action on the part of the holder thereof, be reclassified as and changed into one (1) share of the Company\u2019s outstanding Common Stock, the \u201cNew Common Stock\u201d\nThe following tables are a reconciliation of the weighted average shares used in the computation of basic and diluted earnings per share for the periods presented:",
+   "prose_after": "Denominator:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Basic weighted average shares\u2026\u2026\u2026\u2026\u2026..",
+     "2,140,000",
+     "",
+     "  2,140,000*",
+     "",
+     "2,140,000",
+     "",
+     "2,140,000"
+    ],
+    [
+     "Effect of dilutive securities\u2026\u2026\u2026\u2026\u2026\u2026\u2026.",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Diluted weighted average shares\u2026\u2026\u2026\u2026..",
+     "2,140,000",
+     "",
+     "  2,140,000 *",
+     "",
+     "2,140,000",
+     "",
+     "  2,140,000*"
+    ],
+    [
+     "Basic earnings per share: \u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026",
+     "  (1.48) cents",
+     "",
+     "  2.47cents",
+     "",
+     "  (3.81)cents",
+     "",
+     "  3.80cents"
+    ],
+    [
+     "Diluted earnings per share: \u2026\u2026\u2026\u2026\u2026\u2026\u2026",
+     "  (1.48) cents",
+     "",
+     "  2.47 cents",
+     "",
+     "  (3.81)cents",
+     "",
+     "  3.74 cents"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Denominator:",
+   "prose_after": "*All the stock options expired on June 30, 2011 without being exercised, therefore basic earnings per share are equal to diluted earnings per share.\nBAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\n4. Summary of significant accounting policies (Continued)\nStock-Based Compensation\nFinancial Accounting Standards Board (FASB) Accounting Standards Codification (ASC) Topic 718, Share- Compensation (formerly, FASB Statement 123R), the Group measures the cost of employee services received in exchange for an award of equity instruments based on the grant-date fair value of the award and recognizes the costs over the period the employee is required to provide service in exchange for the award, which generally is the vesting period.\nDuring six months ended June 30, 2012 and 2011, the Group did not record stock-based compensation expense.\nRelated parties transactions\nA related party is generally defined as (i) any person that holds 10% or more of The Group\u2019s securities and their immediate families, (ii) the Group\u2019s management, (iii) someone that directly or indirectly controls, is controlled by or is under common control with the Group, or (iv) anyone who can significantly influence the financial and operating decisions of the Group. A transaction is considered to be a related party transaction when there is a transfer of resources or obligations between related parties.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For 3 months ended June 30",
+     "",
+     "",
+     "",
+     "For 6 months ended June 30",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "In December 2011, the FASB issued ASU 2011-11, \u201cDisclosures about Offsetting Assets and Liabilities\u201d. Entities are required to disclose both gross information and net information about both instruments and transactions eligible for offset in the balance sheet and instruments and transactions subject to an agreement similar to a master netting arrangement. This scope would include derivatives, sale and repurchase agreements and reverse sale and repurchase agreements, and securities borrowing and securities lending arrangements. The objective of this disclosure is to facilitate comparison between those entities that prepare their financial statements on the basis of U.S. GAAP and those entities that prepare their financial statements on the basis of IFRS. The amendments are effective for annual reporting periods beginning on or after January 1, 2013. An entity would be required to provide the disclosures required by those amendments retrospectively for all comparative periods presented. This ASU will not impact our results of operations.\nOther operating income",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GDS commission income",
+     "4,485",
+     "",
+     "",
+     "141",
+     "",
+     "",
+     "",
+     "",
+     "5,698",
+     "",
+     "",
+     "527",
+     "",
+     ""
+    ],
+    [
+     "Management service income",
+     "4,878",
+     "",
+     "",
+     "9,089",
+     "",
+     "",
+     "",
+     "",
+     "9,756",
+     "",
+     "",
+     "18,005",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "9,363",
+     "",
+     "",
+     "",
+     "9,230",
+     "",
+     "",
+     "",
+     "15,454",
+     "",
+     "",
+     "",
+     "18,532"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 687,
+    "end_line": 694
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Other non-operating income",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For 3 months ended June 30",
+     "",
+     "",
+     "For 6 months ended June 30",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "2011",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "$",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Gain on exchange",
+     "935",
+     "102",
+     "",
+     "",
+     "1,281",
+     "",
+     "(179)",
+     ""
+    ],
+    [
+     "Interest income",
+     "4",
+     "2",
+     "",
+     "",
+     "23",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sundry income",
+     "1,417",
+     "",
+     "2,200",
+     "",
+     "2,026",
+     "",
+     "",
+     "3,959"
+    ],
+    [
+     "",
+     "2,356",
+     "",
+     "2,304",
+     "",
+     "3,330",
+     "",
+     "3,790",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Other non-operating income",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nInterest expenses",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For 3 months ended June 30",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For 6 months ended June 30",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$"
+    ],
+    [
+     "Interest expense",
+     "(219)",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(235)",
+     "",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 726,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nInterest expenses",
+   "prose_after": "Income taxes\nThe Company and its subsidiaries file separate income tax returns.\nThe Company is incorporated in the United States, and is subject to United States federal and state income taxes. The Company did not generate taxable income in the United States in 2012 and 2011.\nThe subsidiaries are incorporated in Hong Kong, and are subject to Hong Kong Profits Tax at 16.5% for the six months ended June 30, 2012 and 2011.\nProvision for Hong Kong profits tax has been made for the year presented as the subsidiaries have assessable profits during the year.\n9 . Deposits, prepaid expenses and other receivables",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "June 30",
+     "",
+     "December 31"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Security deposits to suppliers [1]",
+     "",
+     "761,942",
+     "",
+     "935,906"
+    ],
+    [
+     "",
+     "Prepayments and other receivables",
+     "",
+     "50,713",
+     "",
+     "17,240"
+    ],
+    [
+     "",
+     "Utility, rental and other deposits",
+     "",
+     "33,103",
+     "",
+     "33,339"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "845,758",
+     "",
+     "986,485"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 749,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Income taxes\nThe Company and its subsidiaries file separate income tax returns.\nThe Company is incorporated in the United States, and is subject to United States federal and state income taxes. The Company did not generate taxable income in the United States in 2012 and 2011.\nThe subsidiaries are incorporated in Hong Kong, and are subject to Hong Kong Profits Tax at 16.5% for the six months ended June 30, 2012 and 2011.\nProvision for Hong Kong profits tax has been made for the year presented as the subsidiaries have assessable profits during the year.\n9 . Deposits, prepaid expenses and other receivables",
+   "prose_after": "[1] Represents a deposit with the airline companies to allow the Group to issue an agreed upon amount of air tickets per month.\n10. Plant and equipment",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "June 30",
+     "December 31"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "$"
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Furniture and fixtures",
+     "",
+     "",
+     "53,393",
+     "53,324"
+    ],
+    [
+     "",
+     "Office equipment",
+     "",
+     "",
+     "74,468",
+     "73,329"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "127,861",
+     "126,653"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accumulated depreciation",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Furniture and fixtures",
+     "",
+     "",
+     "42,021",
+     "37,162"
+    ],
+    [
+     "",
+     "Office equipment",
+     "",
+     "",
+     "60,287",
+     "54,702"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "102,308",
+     "91,864"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Furniture and fixtures",
+     "",
+     "",
+     "11,372",
+     "16,162"
+    ],
+    [
+     "",
+     "Office equipment",
+     "",
+     "",
+     "14,181",
+     "18,627"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "25,553",
+     "34,789"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "[1] Represents a deposit with the airline companies to allow the Group to issue an agreed upon amount of air tickets per month.\n10. Plant and equipment",
+   "prose_after": "Depreciation expenses for the six months ended June 30, 2012 are $10,321 (Six months ended June 30, 2011: $5,168).\nOther payables and accrued liabilities",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Jun 30",
+     "",
+     "Dec 31"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Sale deposits received",
+     "",
+     "",
+     "272,742",
+     "",
+     "223,930"
+    ],
+    [
+     "",
+     "Accrued expenses",
+     "",
+     "",
+     "147,175",
+     "",
+     "136,983"
+    ],
+    [
+     "",
+     "Other payables",
+     "",
+     "",
+     "92,299",
+     "",
+     "77,106"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "512,216",
+     "",
+     "438,019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Depreciation expenses for the six months ended June 30, 2012 are $10,321 (Six months ended June 30, 2011: $5,168).\nOther payables and accrued liabilities",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nAmount due from related party\nAmount due from related party are as follows:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "June 30",
+     "",
+     "December 31"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount due from related party",
+     "",
+     "",
+     "-",
+     "",
+     "4,437"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 841
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nAmount due from related party\nAmount due from related party are as follows:",
+   "prose_after": "At June 30, 2012 and December 31, 2011, the amount due from/(to) related party, represent advances from a shareholder of the Group, are interest free, unsecured and have no fixed repayment terms.\nDeferred cost and revenue\nCost and revenue is deferred when the Group paid and received payment in advance of the completion of delivery of travel services respectively as at the year end.\nStock options\nThe Group has stock options plans that allow it to grant options to its key employees. Over the course of employment, The Group issues vested or non-vested stock options to an employee which is struck at US$0.35 per share.\nFor non-vested stock options, the options have a maximum term of three years up to March 31, 2011. For vested stock options, the exercise period of the options commenced on March 31, 2008 and will expire on March 31, 2011, subject to that maximum of 30% of options to be exercised up to March 31, 2009, maximum of 60% of options to be exercised up to March 31, 2010 and the 100% of options to be exercised up to March 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "average"
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "average",
+     "",
+     "remaining"
+    ],
+    [
+     "",
+     "options",
+     "",
+     "exercise price",
+     "",
+     "life"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of December 31, 2009",
+     "230,000",
+     "",
+     "0.35",
+     "",
+     "1.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable during the year",
+     "100,000",
+     "",
+     "0.35",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of December 31, 2010",
+     "330,000",
+     "",
+     "0.35",
+     "",
+     "0.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable during the year",
+     "-",
+     "",
+     "0.35",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired during the year",
+     "(330,000)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of December 31, 2011",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of June 30, 2012",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 864,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "For non-vested stock options, the options have a maximum term of three years up to March 31, 2011. For vested stock options, the exercise period of the options commenced on March 31, 2008 and will expire on March 31, 2011, subject to that maximum of 30% of options to be exercised up to March 31, 2009, maximum of 60% of options to be exercised up to March 31, 2010 and the 100% of options to be exercised up to March 31, 2011.\nIn the year ended March 31, 2008, a total of 300,000 and 80,000 of vested and non-vested options respectively were granted to key employees of The Group at a price of $0.35 per share, exercisable for a term of three years which vest immediately under the vesting conditions.\n14. Stock options (Continued)\nThe fair value of these options at the date of grant was estimated to be $0.1533 and $0.1125 for vested and non-vested options per unit respectively using the Black-Scholes option pricing model with the following weighted average assumptions: expected life of three years; risk-free interest rate of 3.07%; expected dividend yield of 0% and an expected volatility of 47.77%. The stock-based compensation expense recorded in the year ended December 31, 2010 was $15,333 which was charged to the consolidated statement of operations and credited to contribute surplus.",
+   "prose_after": "Concentration of credit\nA substantial percentage of the Group's sales are made to the following customers. Details of the customers accounting for 10% or more of total net revenue are as follows:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 850,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months ended",
+     "",
+     "Six Months\n\n\n\nended"
+    ],
+    [
+     "",
+     "June 30, 2012",
+     "",
+     "June 30, 2011"
+    ],
+    [
+     "Company A",
+     "19%",
+     "",
+     "23%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Concentration of credit\nA substantial percentage of the Group's sales are made to the following customers. Details of the customers accounting for 10% or more of total net revenue are as follows:",
+   "prose_after": "Details of the accounts receivable from the one customer with the largest receivable balances are as follows:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Percentage of account receivable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011"
+    ],
+    [
+     "Company A",
+     "14%",
+     "",
+     "",
+     "20%"
+    ]
+   ],
+   "caption_stack": [
+    "Percentage of account receivable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Details of the accounts receivable from the one customer with the largest receivable balances are as follows:",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nPension plans\nThe Group participates in a defined contribution pension scheme under the Mandatory Provident Fund Schemes Ordinance \u201cMPF Scheme\u201d for all its eligible employees in Hong Kong.\nThe MPF Scheme is available to all employees aged 18 to 64 with at least 60 days of service in the employment in Hong Kong. Contributions are made by the Group\u2019s subsidiary operating in Hong Kong at 5% of the participants\u2019 relevant income with a ceiling of HK$20,000. The participants are entitled to 100% of the Group\u2019s contributions together with accrued returns irrespective of their length of service with the Group, but the benefits are required by law to be preserved until the retirement age of 65. The only obligation of the Group with respect to MPF Scheme is to make the required contributions under the plan.\nThe assets of the schemes are controlled by trustees and held separately from those of the Group. Total pension cost was $15,126 during six months ended June 30, 2012 (Six months ended June 30, 2011: $15,865).",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Fair Value Measurements at reporting date using",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "June 30, 2012",
+     "",
+     "Quoted Price in active Markets for identical assets\n\n\n\n(level 1)",
+     "",
+     "Significant Other Observable Inputs\n\n\n\n(Level 2)",
+     "",
+     "Significant Other Unobservable Inputs\n\n\n\n(Level 3)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "12,893",
+     "",
+     "12,893",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "1,425,861",
+     "",
+     "1,425,861",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at reporting date using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "ASC 820 also provides guidance for determining the fair value of a financial asset when the market for that asset is not active, and for determining fair value when the volume and level of activity for an asset or liability have significantly decreased and includes guidance on identifying circumstances that indicate when a transaction is not orderly.\nThe effective date for certain aspects of ASC 820 was deferred and are currently being evaluated by The Group. Areas impacted by the deferral relate to nonfinancial assets and liabilities that are measured at fair value, but are recognized or disclosed at fair value on a nonrecurring basis. The effects of these remaining aspects of ASC 820 are to be applied by the Group to fair value measurements prospectively beginning November 1, 2010. The adoption of the remaining aspects of ASC 820 is not expected to have a material impact on its financial condition or results of operations.\nFair Value Measurements (Continued)\nThe following table details the fair value measurements of assets and liabilities within the three levels of the fair value hierarchy at June 30, 2012 and December 31, 2011:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 945,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Fair Value Measurements at reporting date using",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2011",
+     "",
+     "Quoted Price in active Markets for identical assets\n\n\n\n(level 1)",
+     "",
+     "Significant Other Observable Inputs\n\n\n\n(Level 2)",
+     "",
+     "Significant Other Unobservable Inputs\n\n\n\n(Level 3)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "12,877",
+     "",
+     "12,877",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "1,361,357",
+     "",
+     "1,361,357",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at reporting date using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Commitments and contingencies\nOperating leases commitments\nThe Group leases office premises under various non-cancelable operating lease agreements that expire at various dates through years 2011 to 2012, with an option to renew the lease. All leases are on a fixed repayment basis. None of the leases includes contingent rentals. Minimum future commitments under these agreements payable as of June 30, 2012 are as follows:-",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 945,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "June 30",
+     "",
+     "",
+     "",
+     "$"
+    ],
+    [
+     "2012",
+     "",
+     "",
+     "",
+     "85,818"
+    ],
+    [
+     "2013",
+     "",
+     "",
+     "",
+     "69,391"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "155,209"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 994
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Commitments and contingencies\nOperating leases commitments\nThe Group leases office premises under various non-cancelable operating lease agreements that expire at various dates through years 2011 to 2012, with an option to renew the lease. All leases are on a fixed repayment basis. None of the leases includes contingent rentals. Minimum future commitments under these agreements payable as of June 30, 2012 are as follows:-",
+   "prose_after": "Rental expenses for the six months ended June 30, 2012 were $51,993 (Six months June 30, 2011: $48,352).\nBAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nRelated party transactions\nIn the ordinary course of business, BSIE, our wholly-owned subsidiary, purchases and sells air tickets and tour packages from/to Bao Shinn Express Company Limited (\u201cBSEL\u201d). BSEL holds 38.6% of Baoshinn Corporation\u2019s outstanding common stock. The consolidated income statement for the periods presented includes the following related party transactions.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 997,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Related party",
+     "Nature of relationship and control",
+     "Description of transactions",
+     "For\n\n\n\n3 Months ended June 30",
+     "",
+     "For\n\n\n\n6 Months ended June 30",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2012",
+     "2011",
+     "2012",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(unaudited)",
+     "(unaudited)",
+     "(unaudited)",
+     "(unaudited)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "$",
+     "$",
+     "$"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bao Shinn Express Company Limited",
+     "Shareholder\n\n\n\n38.6%",
+     "Sales of air tickets and tour packages",
+     "(82,881)",
+     "(45,445)",
+     "(166,751)",
+     "(99,997)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Management service income",
+     "(4,878)",
+     "(9,089)",
+     "(9,756)",
+     "(18,005)"
+    ],
+    [
+     "",
+     "",
+     "Management service fee",
+     "23,199",
+     "-",
+     "46,398",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Purchase of air tickets and tour packages",
+     "16,452",
+     "9,546",
+     "23,379",
+     "31,169"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Rental expenses for the six months ended June 30, 2012 were $51,993 (Six months June 30, 2011: $48,352).\nBAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nRelated party transactions\nIn the ordinary course of business, BSIE, our wholly-owned subsidiary, purchases and sells air tickets and tour packages from/to Bao Shinn Express Company Limited (\u201cBSEL\u201d). BSEL holds 38.6% of Baoshinn Corporation\u2019s outstanding common stock. The consolidated income statement for the periods presented includes the following related party transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HK Airlines Holidays travel Company Limited\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nH.C. Patterson and Company Ltd.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrand Power Express International Ltd",
+     "Bao Shinn Express Co Ltd has controlling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBao Shinn Express Co Ltd has Controlling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChiu Tong, Ricky is the connected person",
+     "Account receivable\n\n\n\n\n\n\n\nAccount payable\n\n\n\n\n\n\n\nSales\n\n\n\nPurchase\n\n\n\nInterest paid\n\n\n\nAccount receivable\n\n\n\nAccount payable\n\n\n\n\n\n\n\nPurchase\n\n\n\nSales\n\n\n\nInterest paid\n\n\n\nAccount payable\n\n\n\nAccount receivable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales",
+     "1,917\n\n\n\n\n\n\n\n\n\n\n\n(6,076)\n\n\n\n\n\n\n\n\n\n\n\n(295,916)\n\n\n\n0\n\n\n\n88\n\n\n\n\n\n\n\n40,924\n\n\n\n\n\n\n\n(2,118)\n\n\n\n\n\n\n\n40,690\n\n\n\n(2,639)\n\n\n\n28\n\n\n\n\n\n\n\n(2,609)\n\n\n\n\n\n\n\n14,580\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n       \n\n\n\n0",
+     "-\n\n\n\n\n\n\n\n\n\n\n\n-\n\n\n\n\n\n\n\n\n\n\n\n(300,198)\n\n\n\n0\n\n\n\n-\n\n\n\n\n\n\n\n101,417\n\n\n\n\n\n\n\n(57,879)\n\n\n\n\n\n\n\n12,220\n\n\n\n(4,824)\n\n\n\n0\n\n\n\n\n\n\n\n(35,155)\n\n\n\n\n\n\n\n618",
+     "1,917\n\n\n\n\n\n\n\n\n\n\n\n(6,076)\n\n\n\n\n\n\n\n\n\n\n\n(511,201)\n\n\n\n0\n\n\n\n88\n\n\n\n\n\n\n\n40,924\n\n\n\n\n\n\n\n(2,118)\n\n\n\n\n\n\n\n54,194\n\n\n\n(74,966)\n\n\n\n28\n\n\n\n\n\n\n\n(2,609)\n\n\n\n\n\n\n\n14,580\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n0",
+     "-\n\n\n\n\n\n\n\n\n\n\n\n-\n\n\n\n\n\n\n\n\n\n\n\n(475,869)\n\n\n\n0\n\n\n\n-\n\n\n\n\n\n\n\n101,417\n\n\n\n\n\n\n\n(57,879)\n\n\n\n\n\n\n\n18,308\n\n\n\n(19,365)\n\n\n\n0\n\n\n\n\n\n\n\n(35,155)\n\n\n\n\n\n\n\n618\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(2,017)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1028,
+    "end_line": 1065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "BAOSHINN CORPORATION\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Stated in US Dollars)\nSegment Information\nFASB Accounting Standard Codification Topic 280 (ASC 280) \u201cSegment Reporting\u201d (Formerly known as SFAS No.131, Disclosures about Segments of an Enterprise and Related Information), establishes standards for reporting information about operating segments in financial statements. Operating segments are defined as components of an enterprise about which separate financial information is available that is evaluated regularly by the chief operating decision maker, or decision making group, in deciding how to allocate resources and in assessing performance.\nFor management purposes, the Group is regarded as a single segment, being engaged in the provision of travel agent services. These principal activities and geographical market are substantially based in Hong Kong and the Mainland China. Accordingly, no geographical segment information is presented.\nSubsequent Events\nThe Company has evaluated all other subsequent events as of August 8, 2012 and determined that there were no other subsequent events or transactions that require recognition or disclosures in the financial statements.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1066,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months Ended\n\n\n\nJune 30, 2012",
+     "",
+     "Three months Ended\n\n\n\nJune 30, 2011",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail and Corporate revenue",
+     "9,990,931",
+     "",
+     "10,063,224",
+     ""
+    ],
+    [
+     "Referral Commission from travel booking services",
+     "12,715",
+     "",
+     "24,018",
+     ""
+    ],
+    [
+     "Incentive commissions",
+     "124,296",
+     "",
+     "117,603",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "10,127,942",
+     "",
+     "10,204,845",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "(9,803,430)",
+     "",
+     "(9,832,398)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "324,512",
+     "",
+     "372,447",
+     ""
+    ],
+    [
+     "Other operating income",
+     "9,363",
+     "",
+     "9,230",
+     ""
+    ],
+    [
+     "Depreciation",
+     "(5,103)",
+     "",
+     "(5,168)",
+     ""
+    ],
+    [
+     "Administrative and other operating expenses",
+     "(351,297)",
+     "",
+     "(315,628)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income/(Loss) from operations",
+     "(22,525)",
+     "",
+     "60,881",
+     ""
+    ],
+    [
+     "Other non-operating income - Note 6",
+     "2,356",
+     "",
+     "2,304",
+     ""
+    ],
+    [
+     "Interest expenses \u2013 Note 7",
+     "(219)",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income/(Loss) before income taxes",
+     "(20,388)",
+     "",
+     "63,185",
+     ""
+    ],
+    [
+     "Income taxes - Note 8",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income/(Loss)",
+     "(20,388)",
+     "",
+     "63,185",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "(11,287)",
+     "",
+     "(10,270)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income/(Loss) attributable to The Group",
+     "(31,675)",
+     "",
+     "52,915",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1158,
+    "end_line": 1196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "In 2011, the earthquake, Tsunami and nuclear power station failure in Japan resulted in major airlines in Hong Kong temporarily cancelling all the flights to Japan. Our business and operating results were adversely affected in all these cases.\nMajor Factors Affecting the Our Business\nOur main business comes from retail and corporate travelers. We are vulnerable to all the above general factors affecting the travel industry. In particular, we are more sensitive to the disruption in the South East Asia region including the Philippines, Thailand, Indonesia, Malaysia, and Taiwan.\nOur biggest travel destination market is Thailand, and in 2010 it had a politically volatile year, with marches and demonstrations disrupting tourist travel. The Hong Kong government issued several travel advisories for Thailand (Bangkok in particular) which caused a decline in ticket sales. The political situation in Thailand had stabilized by the end of the year.\nResult of Operations for the three months ended June 30, 2012 compared to the three months ended June 30, 2011\nThe following table sets forth a summary of our consolidated statements of operations for the periods indicated.",
+   "prose_after": "Revenues\nRevenues Composition and Sources of Revenue Growth\nIn the past 3 months, our total revenues decreased from US$ 10.2 million for the three months ended June 30, 2011 to US$ 10.1 million for the three months ended June 30, 2012, representing a decrease rate of 0.8%.\nThe table below sets forth the revenues from our principal lines of business as a percentage of our revenues for the periods indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1223,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended\n\n\n\nJune 30, 2012",
+     "",
+     "Three months ended June 30, 2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "%",
+     "        %",
+     "",
+     ""
+    ],
+    [
+     "Retail and Corporate revenue",
+     "98.7%",
+     "98.6%",
+     "",
+     ""
+    ],
+    [
+     "Commission from travel booking services",
+     "0.1%",
+     "0.1%",
+     "",
+     ""
+    ],
+    [
+     "Incentive commissions",
+     "1.2%",
+     "1.2%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "100%",
+     "100%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1205,
+    "end_line": 1222
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Revenues\nRevenues Composition and Sources of Revenue Growth\nIn the past 3 months, our total revenues decreased from US$ 10.2 million for the three months ended June 30, 2011 to US$ 10.1 million for the three months ended June 30, 2012, representing a decrease rate of 0.8%.\nThe table below sets forth the revenues from our principal lines of business as a percentage of our revenues for the periods indicated.",
+   "prose_after": "We generate our revenues primarily from retail and corporate business. Our primary source of growth comes mainly from the growth in the retail and corporate business. We are not relying on referral commission and incentive commissions as our primary source of revenue as those sources of revenue only represent a fraction of our revenue. We also refer our clients to other travel product providers when we cannot provide needed services to our clients. We see referrals as an added value in terms of widening our client base. We also do not rely on airline incentive commissions due to the fact that the airlines are cutting back commissions through the use of the online booking technologies prevailing for the past ten years. As a result of these factors, airlines are more and more reluctant to pay commissions to travel agencies. However, our relationships with the airlines are very important, because they allow us to obtain better wholesale pricing.\nRetail and Corporate Revenue\nWe recognize revenues from retail and corporate travel services when our travel services are completely delivered. We present revenue from such transactions on a gross basis in the consolidated statements of comprehensive income, because we act as a principal, we assume inventory and credit risks, and we have the primary obligation to the airlines or hotels for cancelled air tickets, packaged tour products or hotel reservations. We also have discretion in determining the service prices. We make alterations to the product by combining air ticket and hotel accommodations with local car transportation and other ancillary services to make it a holiday package or business travel solution for customers.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1223,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended\n\n\n\nJune 30, 2012",
+     "",
+     "Three months ended\n\n\n\nJune 30, 2011",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "10,127,942",
+     "",
+     "",
+     "10,204,845",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "(9,803,430)",
+     "96.8%",
+     "",
+     "(9,832,398)",
+     "",
+     "96.3%",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "324,512",
+     "3.2%",
+     "",
+     "372,447",
+     "",
+     "",
+     "3.7%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1253,
+    "end_line": 1265
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "We earn an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to us subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis because such commissions are usually paid in arrears and we can reasonably estimate such commissions. Our statement of operations presents revenues from such transactions on a net basis, because we act as an agent, we do not assume any inventory risk, and we have no obligation for cancelled airline tickets.\nCost of Sales and Gross Profit\nCosts of sales are costs directly attributable to rendering our revenues, which consist primarily of payments for travel costs to airlines and suppliers. Cost of sales accounted for 96.8% of our revenue in the three months ended June 30, 2012 and 96.3% of our revenues in the three months ended June 30, 2011.\nThe table below sets forth the cost of sales as a percentage of revenue for the periods indicated.",
+   "prose_after": "Increase in Cost of Sales\nOur cost of sales increased from 96.3% in the three months ending June 30, 2011 to 96.8% in the three months ending June 30, 2012. A large part of the increase in the cost of sales is directly related to the increase in the fuel surcharge that the airlines levy. This surcharge is dependent upon the price of jet fuel, which is affected by the price of oil. We in turn pass this surcharge onto our clients.\nDecrease in gross profit margin\nOur gross profit margin rate decreased from 3.7% in the three months ending June 30, 2011, to 3.2% in the three months ending June 30, 2012. The fuel surcharges lead to an increase in air ticket price, however the gross profit per ticket stays the same, consequently the gross profit margin rate decreases.\nFuel surcharges are announced at the end of each month. In our experience however, we find that the prices tend to be sticky on the upside, as the airlines try to protect themselves from the volatile price swings that the commodities markets have experienced. We anticipate these fuel surcharges will remain high for the time being, with the airlines preferring to offer discounts as a way to incentivize consumers to travel, rather than decreasing the surcharge.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended\n\n\n\nJune 30, 2012",
+     "% of Revenue",
+     "Three months ended June 30, 2011",
+     "% of Revenue"
+    ],
+    [
+     "Salaries, commissions, allowances",
+     "$237,113",
+     "2.3%",
+     "$224,562",
+     "2.2%"
+    ],
+    [
+     "Legal & Professional fees",
+     "7,733",
+     "0.1%",
+     "5,980",
+     "0.1%"
+    ],
+    [
+     "Office Rental",
+     "25,996",
+     "0.3%",
+     "24,198",
+     "0.2%"
+    ],
+    [
+     "Other operating expenses",
+     "80,455",
+     "0.8%",
+     "60,888",
+     "0.6%"
+    ],
+    [
+     "",
+     "$351,297",
+     "3.5%",
+     "$315,628",
+     "3.1%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1284,
+    "end_line": 1296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Fuel surcharges are announced at the end of each month. In our experience however, we find that the prices tend to be sticky on the upside, as the airlines try to protect themselves from the volatile price swings that the commodities markets have experienced. We anticipate these fuel surcharges will remain high for the time being, with the airlines preferring to offer discounts as a way to incentivize consumers to travel, rather than decreasing the surcharge.\nOperating Expenses\nOverview\nTotal operating expenses for the three months ended June 30, 2012 were $351.297 or 3.5% of revenues, while the operating expenses for three months ended June 30, 2011 were $315,628 or 3.1% of revenues. Our operating expenses increased slightly regardless of the high inflation in Hong Kong. This is mainly attributed to our cost reduction strategy we started implementing in 2007.\nThe table below sets forth the main category of our expenses both in dollar amount and as a percentage of total revenue with the periods indicated:",
+   "prose_after": "Salaries, Commissions and Allowances\nSalaries, commissions and allowances for the three months ended June 30, 2011 were $224,562, while the salaries, commissions and allowances for the three months ended June 301, 2012 were $237,113, salaries, commissions and allowances in the current period were consistent for the same period last year.\nLegal and Professional Fees\nLegal and professional fees for the three months ended June 30, 2012 were $7,733 or 0.1% of revenues, while the legal and professional fees for the three months ended June 30, 2011 were $5,980 or 0.1% of revenues. Legal and professional fees in the three months ended June 30, 2012 were slightly higher compared to the three months ended June 30, 2011, mainly due to additional costs related to the electronic SEC filing requirement.\nOffice Rental\nOffice rental for the three months ended June 30, 2012 was $25,996 or 0.3% of revenues, while the office rental for the three months ended June 30, 2011 were $24,198 or 0.2% of revenues. Office rental expenses in the current period were consistent to the same period last year.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months Ended",
+     "",
+     "Three months     Ended"
+    ],
+    [
+     "",
+     "",
+     "June 30, 2012",
+     "",
+     "June 30, 2011"
+    ],
+    [
+     "",
+     "",
+     "audited",
+     "",
+     "audited"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GDS commission income",
+     "",
+     "4,485",
+     "",
+     "141"
+    ],
+    [
+     "Management service income",
+     "",
+     "4,878",
+     "",
+     "9,089"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "9,363",
+     "",
+     "9,230"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1317,
+    "end_line": 1330
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Legal and professional fees for the three months ended June 30, 2012 were $7,733 or 0.1% of revenues, while the legal and professional fees for the three months ended June 30, 2011 were $5,980 or 0.1% of revenues. Legal and professional fees in the three months ended June 30, 2012 were slightly higher compared to the three months ended June 30, 2011, mainly due to additional costs related to the electronic SEC filing requirement.\nOffice Rental\nOffice rental for the three months ended June 30, 2012 was $25,996 or 0.3% of revenues, while the office rental for the three months ended June 30, 2011 were $24,198 or 0.2% of revenues. Office rental expenses in the current period were consistent to the same period last year.\nOther General and Administration Expenses\nOther expenses for the three months ended June 30, 2012 were $80,455 or 0.8% of revenues, while the other expenses for the three months ended June 30, 2011 were $60,888 or 0.6% of revenues. The increase in other expenses in the current period is mainly due to an increase in the management fee.\nOther operating income",
+   "prose_after": "Commission Income\nCommission income for the three months ended June 30, 2012 was $4,485 compared to $141 for the three months ended June 30, 2011. During the three months ended June 30, 2012, we increased the number of tickets booked through a lower percentage commission booking system, which resulted in lower total commissions.\nCommission income is received from the Global Distribution Systems Supplier (GDS), which is the booking system that links airlines, IATA and travel agencies. GDS acts as an information medium between the airlines and travel agencies. Travel consultants check seat availability and fare conditions, and make reservations through GDS. GDS also links airline and travel agencies through IATA\u2019s Bill and Settling Plans (BSP). Once the ticket is issued from IATA through the GDS system, travel agencies will settle the payment with airlines through IATA\u2018s fortnightly BSP Payment.\nEach GDS system has a different layout, and different user manual and commands. Airlines can choose to link with one or a few GDS systems. We currently have 4 GDS\u2018s installed; they are \u201cAmadeus\u201d, \u201cWorldspan\u201d, \u201cTravelsky\u201d and \u201cAbacus\u201d. A GDS will normally provide equipment and install their system onsite for a travel agency. The travel agency must generally sign an agreement with each GDS supplier which details the usage and reward scheme. Some GDS suppliers require travel agencies to maintain a minimum usage volume, otherwise the travel agency will have to pay fees for the equipment. GDS suppliers also encourage travel agencies to book tickets through their system by rewarding travel agencies on the number of tickets booked in a certain period of time.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months Ended\n\n\n\nJune 30, 2012",
+     "",
+     "Six months Ended\n\n\n\nJune 30, 2011",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail and Corporate revenue",
+     "19,700,026",
+     "",
+     "18,564,976",
+     ""
+    ],
+    [
+     "Referral Commission from travel booking services",
+     "26,674",
+     "",
+     "56,198",
+     ""
+    ],
+    [
+     "Incentive commissions",
+     "235,668",
+     "",
+     "191,944",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "19,962,368",
+     "",
+     "18,813,118",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "(19,335,144)",
+     "",
+     "(18,091,761)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "627,224",
+     "",
+     "721,357",
+     ""
+    ],
+    [
+     "Other operating income",
+     "15,454",
+     "",
+     "18,532",
+     ""
+    ],
+    [
+     "Depreciation",
+     "(10,321)",
+     "",
+     "(10,606)",
+     ""
+    ],
+    [
+     "Administrative and other operating expenses",
+     "(706,017)",
+     "",
+     "(637,399)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income/(Loss) from operations",
+     "(73,660)",
+     "",
+     "91,884",
+     ""
+    ],
+    [
+     "Other non-operating income - Note 6",
+     "3,330",
+     "",
+     "3,790",
+     ""
+    ],
+    [
+     "Interest expenses \u2013 Note 7",
+     "(235)",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income/(Loss) before income taxes",
+     "(70,565)",
+     "",
+     "95,674",
+     ""
+    ],
+    [
+     "Income taxes - Note 8",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income/(Loss)",
+     "(70,565)",
+     "",
+     "95,674",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "(10,909)",
+     "",
+     "(14,298)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income/(Loss) attributable to The Group",
+     "(81,474)",
+     "",
+     "81,376",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1369,
+    "end_line": 1407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "The exchange gain was $935 for the three months ended June 30, 2012 compared to the exchange gain $102 in the three months ended June 30, 2011. This was attributable to the fluctuation of the global foreign currency market. We are not exposed to material foreign exchange currency risk. We pay overseas suppliers in their currency, and charge its customers in HK$, with the exchange rate determined at the point of invoicing. The exchange gain or loss reflected the timing difference between payments to suppliers and the invoice to clients. We recognize the gain or loss as \u201cnon-operational income or expense\u201d, as this is not from operations.\nInterest Income\nThis interest was earned from bank savings and fixed deposit accounts. Interest income was $4 for the three months ended June 30, 2012, compared to $2 for the three months ended June 30, 2011. This reflected a very low bank interest rate prevailing for the past few years since the 2008 financial crisis.\nNet Income\nOur net loss was $31,675 for the three months ended June 30, 2012, compared to a net income of $52,915 for the three months ended June 30, 2011. The decrease in net income for the three months ended June 30, 2012 compared to the same period last year was mainly due to a lower gross profit margin as a result of high fuel surcharges from airlines, and higher competition in the travel market as a result of the recovery of the Hong Kong economy.\nResult of Operations for the six months ended June 30, 2012 compare to the six months ended June 30, 2011\nThe following table sets forth a summary of our consolidated statements of operations for the periods indicated",
+   "prose_after": "Revenues\nRevenues Composition and Sources of Revenue Growth\nWe have revenue growth in the past 6 months. Our total revenues grew from US$ 18.8 million in the six months ended June 30, 2011 to US$ 19.9 million in the six months ended June 30, 2012, representing a growth rate of 6.1%.\nThe table below sets forth the revenues from our principal lines of business as a percentage of our revenues for the periods indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\n\n\nJune 30, 2012",
+     "Six months ended June 30, 2011"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "%",
+     "  %"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail and Corporate revenue",
+     "98.7%",
+     "98.7%"
+    ],
+    [
+     "Commission from travel booking services",
+     "0.1%",
+     "0.3%"
+    ],
+    [
+     "Incentive commissions",
+     "1.2%",
+     "1.0%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "100%",
+     "100%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1416,
+    "end_line": 1431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Revenues\nRevenues Composition and Sources of Revenue Growth\nWe have revenue growth in the past 6 months. Our total revenues grew from US$ 18.8 million in the six months ended June 30, 2011 to US$ 19.9 million in the six months ended June 30, 2012, representing a growth rate of 6.1%.\nThe table below sets forth the revenues from our principal lines of business as a percentage of our revenues for the periods indicated.",
+   "prose_after": "We generate our revenues primarily from retail and corporate business. Our primary source of growth comes mainly from the growth in the retail and corporate business. We are not relying on referral commissions and incentive commissions as our source of revenue as it only represents a fraction of our revenue. We refer our clients to other travel product providers when we cannot provide services to our clients. We see referrals as an added value service in terms of widening our client base. We also do not rely on airline incentive commissions, as the airlines are cutting back commissions with the online booking technologies prevailing for the past ten years. Airlines are more and more reluctant to give away commissions to travel agencies. Instead we value our relationships with the airlines to get better wholesale pricing.\nRetail and Corporate Revenue\nWe recognize revenues from retail and corporate travel services when our travel services are completely delivered. We present revenue from such transactions on a gross basis in the consolidated statements of comprehensive income, since we act as a principal by assumeing inventory and credit risks. We also have the primary obligation to the airlines or hotels for cancelled airline tickets, packaged tour products or hotel reservations. In addition, we have discretion in determining the service prices. We change the product by combining the airline ticket and hotel accommodations with local car transportation and other ancillary services to make it a holiday package or business travel solution for customers.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\n\n\nJune 30, 2012",
+     "",
+     "Six months ended\n\n\n\nJune 30, 2011",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "19,962,368",
+     "",
+     "",
+     "18,813,118",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "(19,335,144)",
+     "96.9%",
+     "",
+     "(18,091,761)",
+     "",
+     "96.2%",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "627,224",
+     "3.1%",
+     "",
+     "721,357",
+     "",
+     "",
+     "3.8%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1462,
+    "end_line": 1474
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "We earn an incentive commission from many travel suppliers. Contracts with certain travel suppliers contain discretionary escalating commissions that are paid to us subject to achieving specific performance targets. Such discretionary escalating commissions are recognized on an accrual basis, because such commissions are usually paid in arrears and we can reasonably estimate the amount of the commissions. Our statement of operations presents revenues from such transactions on a net basis, because we act as an agent, we do not assume any inventory risk, and we have no obligation for cancelled airline tickets.\nCost of Sales and Gross Profit\nCosts of sales are costs directly attributable to rendering our services, which consist primarily of payments for travel costs to airlines and suppliers. Cost of sales accounted for 96.9% of our revenue in the six months ended June 30, 2012 and 96.2% of our revenues in the six months ended June 30, 2011.\nThe table below sets forth the cost of sales as a percentage of revenue for the periods indicated.",
+   "prose_after": "Increase in Cost of Sales\nOur cost of sales increased from 96.2% in the six months ended June 30, 2011 to 96.9% in the six months ended June 30, 2012. A large part of the increase in the cost of sales is directly related to the increase in the fuel surcharge that the airlines levy. This surcharge is dependent upon the price of jet fuel, which is affected by the price of oil. We in turn pass this surcharge on to our clients.\nDecrease in gross profit margin\nOur gross profit margin rate decreased from 3.8% in the six months ended June 30, 2011, to 3.1% in the six months ended June 30, 2012. The fuel surcharges lead to an increase in airline ticket prices, however, the gross profit per ticket stays the same, consequently the gross profit margin rate decreases.\nFuel surcharges are announced at the end of each month. However, in our experience, we find that the prices tend to be sticky on the upside, as the airlines try to protect themselves from the volatile price swings that the commodities markets have experienced. We anticipate these fuel surcharges will remain high for the time being, with the airlines preferring to offer discounts as a way to incentivize consumers to travel, rather than decreasing the surcharge.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30, 2012",
+     "% of Revenue",
+     "Six months ended June 30, 2011",
+     "% of Revenue"
+    ],
+    [
+     "Salaries, commissions, allowances",
+     "$464,066",
+     "2.3%",
+     "$449,637",
+     "2.4%"
+    ],
+    [
+     "Legal & Professional fees",
+     "15,466",
+     "0.1%",
+     "11,756",
+     "0.1%"
+    ],
+    [
+     "Office Rental",
+     "51,993",
+     "0.2%",
+     "48,352",
+     "0.2%"
+    ],
+    [
+     "Other operating expenses",
+     "174,492",
+     "0.9%",
+     "127,654",
+     "0.7%"
+    ],
+    [
+     "",
+     "$706,017",
+     "3.5%",
+     "$637,399",
+     "3.4%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Fuel surcharges are announced at the end of each month. However, in our experience, we find that the prices tend to be sticky on the upside, as the airlines try to protect themselves from the volatile price swings that the commodities markets have experienced. We anticipate these fuel surcharges will remain high for the time being, with the airlines preferring to offer discounts as a way to incentivize consumers to travel, rather than decreasing the surcharge.\nOperating Expenses\nOverview\nTotal operating expenses for the six months ended June 30, 2012 were $706,017 or 3.5% of revenues, while the operating expenses for the six months ended June 30, 2011 were $637,399 or 3.4% of revenues. Our operating expenses increased slightly regardless of the high inflation in Hong Kong. This is mainly attributed to our cost reduction strategy we have started implementing since 2007.\nThe table below sets forth the main category of our expenses both in dollar amounts and as a percentage of total revenues for the periods indicated:",
+   "prose_after": "Salaries, Commissions and Allowances\nSalaries, commissions and allowances for the six months ended June 30, 2011 were $449,637, while the salaries, commissions and allowances for the six months ended June 30, 2012 were $464,066, salaries, commissions and allowances in the current period were consistent to the same period last year.\nLegal and Professional Fees\nLegal and professional fees for the six months ended June 30, 2012 were $15,466 or 0.1% of revenues, while the legal and professional fees for the six months ended June 30, 2011 were $11,756 or 0.1% of revenues. Legal and professional fees in the six months ended June 30, 2012 were slightly higher compared to the six months ended June 30, 2011, mainly due to additional costs related to electronic SEC filing requirements.\nOffice Rental\nOffice rental for the six months ended June 30, 2012 was $51,993 or 0.2% of revenues, while the office rental for the six months ended June 30, 2011 was $48,352 or 0.2% of revenues. Office rental expenses in the current period were consistent with the same period last year.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Six months \n\n\n\nEnded",
+     "",
+     "Six months     \n\n\n\nEnded"
+    ],
+    [
+     "",
+     "",
+     "June 30, 2012",
+     "",
+     "June 30, 2011"
+    ],
+    [
+     "",
+     "",
+     "audited",
+     "",
+     "audited"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GDS commission income",
+     "",
+     "5,698",
+     "",
+     "527"
+    ],
+    [
+     "Management service income",
+     "",
+     "9,756",
+     "",
+     "18,005"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "15,454",
+     "",
+     "18,532"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1524,
+    "end_line": 1539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Plant and equipment"
+    }
+   },
+   "prose_before": "Legal and professional fees for the six months ended June 30, 2012 were $15,466 or 0.1% of revenues, while the legal and professional fees for the six months ended June 30, 2011 were $11,756 or 0.1% of revenues. Legal and professional fees in the six months ended June 30, 2012 were slightly higher compared to the six months ended June 30, 2011, mainly due to additional costs related to electronic SEC filing requirements.\nOffice Rental\nOffice rental for the six months ended June 30, 2012 was $51,993 or 0.2% of revenues, while the office rental for the six months ended June 30, 2011 was $48,352 or 0.2% of revenues. Office rental expenses in the current period were consistent with the same period last year.\nOther General and Administration Expenses\nOther expenses for the six months ended June 30, 2012 were $174,492 or 0.9% of revenues, while the other expenses for the six months ended June 30, 2011 were $127,654 or 0.7% of revenues. The increase in the expenses in the current period is mainly due to an increase in the management fee.\nOther operating income",
+   "prose_after": "Commission Income\nCommission income for the six months ended June 30, 2012 was $5,698 compared to $527 for the six months ended June 30, 2011. During the six months ended June 30, 2012, we increased the number of tickets booked through a lower percentage commission booking system, which resulted in a lower amount of commissions.\nWe received commission income from the Global Distribution Systems Supplier (GDS), which is the booking system that links airlines, IATA and travel agencies. GDS acts as an information medium between the airlines and travel agencies. Travel consultants check seat availability and fare conditions, and make reservations through GDS. GDS also links airline and travel agencies through IATA\u2019s Bill and Settling Plans (BSP). Once the ticket is issued from IATA through the GDS system, travel agencies will settle the payment with airlines through IATA\u2018s fortnightly BSP Payment.\nEach GDS system has a different layout, user manual, and command. Airlines can choose to link with one or a few GDS. We currently have installed \u201cAmadeus\u201d, \u201cWorldspan\u201d, \u201cTravelsky\u201d and \u201cAbacus\u201d. A GDS will normally provide equipment and install their system onsite for a travel agency. The travel agency must generally sign an agreement with each GDS supplier which details the usage and reward scheme. Some GDS suppliers require travel agencies to maintain a minimum usage volume, otherwise the travel agency will have to pay fees for the equipment. GDS suppliers also encourage travel agencies to book tickets through their system by rewarding travel agencies on the number of tickets booked in a certain period of time.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1521,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1560,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2894 @@
+{
+ "accession": "0001477932-18-001900",
+ "cik": "0001556226",
+ "form": "10-Q",
+ "filing_date": "2018-04-17",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "curm_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "99-0375741"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: June 30, 2017\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to _____________\nCommission file number: 000-55346\nC\u00dcR MEDIA, INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "136 New London Turnpike\n\n\n\nGlastonbury, CT 06033"
+    ],
+    [
+     "(Address of principal executive offices)"
+    ],
+    [
+     ""
+    ],
+    [
+     "(860) 633-5565"
+    ],
+    [
+     "(Registrant\u2019s telephone number, including area code)"
+    ],
+    [
+     ""
+    ],
+    [
+     "N/A"
+    ],
+    [
+     "(Former name, former address and former fiscal year, if changed since last report)"
+    ]
+   ],
+   "caption_stack": [
+    "136 New London Turnpike\n\n\n\nGlastonbury, CT 06033",
+    "(Address of principal executive offices)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "49"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer           [ ]           Accelerated filer          [ ]\nNon-accelerated filer             [ ]           Smaller reporting company  [X]\n(Do not check if a smaller reporting company)   Emerging Growth Company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of both June 30, 2017 and April 17, 2018, there were 2,526,663 shares of the registrant\u2019s common stock, par value $0.0001 per share (\u201cCommon Stock\u201d), outstanding, 20,174 of which had not yet been issued.\nC\u00dcR MEDIA, INC.\nFORM 10-Q\nFOR THE QUARTERLY PERIOD ENDED JUNE 30, 2017\nTABLE OF CONTENTS",
+   "prose_after": "2\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nExcept for historical information, this report contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). Such forward-looking statements include, among others, those statements including the words \u201cbelieves\u201d, \u201canticipates\u201d, \u201cexpects\u201d, \u201cintends\u201d, \u201cestimates\u201d, \u201cplans\u201d and words of similar import. Such forward-looking statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements, or industry results, to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements.\nForward-looking statements are based on our current expectations and assumptions regarding our business, potential target businesses, the economy and other future conditions. Because forward-looking statements relate to the future, by their nature, they are subject to inherent uncertainties, risks and changes in circumstances that are difficult to predict. Our actual results may differ materially from those contemplated by the forward-looking statements. We caution you therefore that you should not rely on any of these forward-looking statements as statements of historical fact or as guarantees or assurances of future performance. Important factors that could cause actual results to differ materially from those in the forward-looking statements include changes in local, regional, national or global political, economic, business, competitive, market (supply and demand) and regulatory conditions and the following:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Condensed Consolidated Balance Sheets as of June 30, 2017 and December 31, 2016 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the three and six months ended June 30, 2017 and 2016 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the six months ended June 30, 2017 and 2016 (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Unaudited Condensed Consolidated Financial Statements",
+     "8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 136,
+    "end_line": 147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "All references in this Quarterly Report to the \u201cCompany\u201d, \u201cC\u00dcR Media\u201d, \u201cwe\u201d, \u201cus\u201d, or \u201cour\u201d, are to C\u00dcR Media, Inc., and its consolidated subsidiary, C\u00dcR Media, LLC.\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nThe accompanying unaudited financial statements have been prepared in accordance with accounting principles generally accepted in the United States and the rules of the SEC, and should be read in conjunction with the audited financial statements and notes thereto contained in our Annual Report, as updated in subsequent filings we have made with the SEC. In the opinion of management, all adjustments, consisting of normal recurring adjustments, necessary for a fair presentation of financial position and the results of operations for the periods presented have been reflected herein. The results of operations for the periods presented are not necessarily indicative of the results to be expected for the full year.\nCONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nTABLE OF CONTENTS",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 130,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n\n\n2017",
+     "",
+     "",
+     "December 31,\n\n\n\n2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "3,681",
+     "",
+     "$",
+     "1,508",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "3,681",
+     "",
+     "",
+     "1,508",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "3,676",
+     "",
+     "",
+     "6,541",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "7,357",
+     "",
+     "$",
+     "8,049",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "4,001,277",
+     "",
+     "$",
+     "3,710,172",
+     ""
+    ],
+    [
+     "Accrued liabilities and other current liabilities",
+     "",
+     "2,447,550",
+     "",
+     "",
+     "2,115,273",
+     ""
+    ],
+    [
+     "Note payable, short-term",
+     "",
+     "33,550",
+     "",
+     "",
+     "33,550",
+     ""
+    ],
+    [
+     "Secured convertible promissory notes, net",
+     "",
+     "2,514,880",
+     "",
+     "",
+     "2,514,880",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "",
+     "2,037,256",
+     "",
+     "",
+     "292,589",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "11,034,513",
+     "",
+     "",
+     "8,666,464",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unsecured convertible promissory notes, net",
+     "",
+     "691,728",
+     "",
+     "",
+     "488,324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LONG TERM LIABILITIES",
+     "",
+     "691,728",
+     "",
+     "",
+     "488,324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "11,726,241",
+     "",
+     "",
+     "9,154,788",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock (.0001 par value, 10,000,000 shares authorized, none issued or outstanding as of June 30, 2017 or December 31, 2016)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common Stock (.0001 par value, 300,000,000 shares authorized, 2,526,663 issued at June 30, 2017 and December 31, 2016, and 2,550,998 outstanding at June 30, 2017 and December 31, 2016, respectively)",
+     "",
+     "253",
+     "",
+     "",
+     "253",
+     ""
+    ],
+    [
+     "Additional Paid-In-Capital",
+     "",
+     "11,935,233",
+     "",
+     "",
+     "11,922,288",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(23,654,370)",
+     "",
+     "",
+     "(21,069,280)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "(11,718,884)",
+     "",
+     "",
+     "(9,146,739)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIENCY",
+     "$",
+     "7,357",
+     "",
+     "$",
+     "8,049",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 156,
+    "end_line": 208
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 209,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months\n\n\n\nEnded June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months\n\n\n\nEnded June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "-",
+     "",
+     "$",
+     "723",
+     "",
+     "$",
+     "292",
+     "",
+     "$",
+     "723",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "38,444",
+     "",
+     "",
+     "1,223,466",
+     "",
+     "",
+     "80,656",
+     "",
+     "",
+     "2,889,067",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "127,914",
+     "",
+     "",
+     "1,408,924",
+     "",
+     "",
+     "237,081",
+     "",
+     "",
+     "1,934,006",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "71,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "147,966",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,063",
+     "",
+     "",
+     "4,939",
+     "",
+     "",
+     "2,865",
+     "",
+     "",
+     "10,063",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "167,421",
+     "",
+     "",
+     "2,708,329",
+     "",
+     "",
+     "320,602",
+     "",
+     "",
+     "4,981,102",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "`",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(263,719)",
+     "",
+     "",
+     "(1,279,074)",
+     "",
+     "",
+     "(522,889)",
+     "",
+     "",
+     "(1,409,788)",
+     ""
+    ],
+    [
+     "Interest income",
+     "-",
+     "",
+     "",
+     "",
+     "118",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "122",
+     ""
+    ],
+    [
+     "Loss on disposal of assets",
+     "",
+     "-",
+     "",
+     "",
+     "(717)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(717)",
+     ""
+    ],
+    [
+     "Loss on issuance of convertible debt",
+     "",
+     "-",
+     "",
+     "",
+     "(120,266)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(120,266)",
+     ""
+    ],
+    [
+     "Gain on debt relief",
+     "",
+     "35",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,776",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "(1,518,438)",
+     "",
+     "",
+     "(855,587)",
+     "",
+     "",
+     "(1,744,667)",
+     "",
+     "",
+     "541,677",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSE)",
+     "",
+     "(1,782,122)",
+     "",
+     "",
+     "(2,255,526)",
+     "",
+     "",
+     "(2,264,780)",
+     "",
+     "",
+     "(988,972)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(1,949,543)",
+     "",
+     "$",
+     "(4,963,132)",
+     "",
+     "$",
+     "(2,585,090)",
+     "",
+     "$",
+     "(5,969,351)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.76)",
+     "",
+     "$",
+     "(1.97)",
+     "",
+     "$",
+     "(1.01)",
+     "",
+     "$",
+     "(2.40)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding basic and diluted",
+     "",
+     "2,550,998",
+     "",
+     "",
+     "2,518,328",
+     "",
+     "",
+     "2,550,998",
+     "",
+     "",
+     "2,491,351",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 219,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 217,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 260,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(2,585,090)",
+     "",
+     "$",
+     "(5,969,351)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2,865",
+     "",
+     "",
+     "10,063",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "-",
+     "",
+     "",
+     "147,966",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "203,404",
+     "",
+     "",
+     "1,220,931",
+     ""
+    ],
+    [
+     "Share based consulting services",
+     "",
+     "12,945",
+     "",
+     "",
+     "118,347",
+     ""
+    ],
+    [
+     "Non-cash label warrant expense",
+     "",
+     "",
+     "",
+     "",
+     "232,998",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "1,744,667",
+     "",
+     "",
+     "(541,677)",
+     ""
+    ],
+    [
+     "Loss on issuance of convertible debt",
+     "",
+     "",
+     "",
+     "",
+     "120,266",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "-",
+     "",
+     "",
+     "(2,200)",
+     ""
+    ],
+    [
+     "Disposal of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "1,423",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "291,105",
+     "",
+     "",
+     "771,788",
+     ""
+    ],
+    [
+     "Accrued liabilities and other current liabilities",
+     "",
+     "332,276",
+     "",
+     "",
+     "1,388,689",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "2,172",
+     "",
+     "",
+     "(2,500,757)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of note payable",
+     "",
+     "-",
+     "",
+     "",
+     "(5,833)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of convertible secured promissory notes",
+     "",
+     "-",
+     "",
+     "",
+     "2,506,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "2,500,167",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH",
+     "",
+     "2,172",
+     "",
+     "",
+     "(590)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, BEGINNING OF PERIOD",
+     "",
+     "1,508",
+     "",
+     "",
+     "734",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, END OF THE PERIOD",
+     "$",
+     "3,681",
+     "",
+     "$",
+     "144",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 270,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "For the Six Months Ended June 30, 2017 and 2016\nNote 1 \u2013 Summary of Business and Basis of Presentation\nOrganization and Business\nC\u00dcR Media, Inc. (the \u201cCompany\u201d) was formed in the State of Delaware as Duane Street Corp. on November 17, 2011, to manufacture and market baby products. Prior to the Contribution (as defined below), the Company\u2019s board of directors determined to discontinue operations in this area and to seek a new business opportunity.\nC\u00dcR Media, LLC (formerly known as Raditaz, LLC) (\u201cRaditaz\u201d) was formed in the State of Connecticut on February 15, 2008. On January 28, 2014, the members of Raditaz contributed their Raditaz membership interests (the \u201cContribution\u201d) to the Company in exchange for approximately 769,231 shares of the Company\u2019s common stock, $0.0001 par value per share (\u201cCommon Stock\u201d), which resulted in Raditaz being a wholly owned subsidiary of the Company. Each membership interest of Raditaz, at the time of the Contribution was automatically converted into shares of the Company\u2019s Common Stock, with the result that the 39,249,885 membership interests outstanding immediately prior to the Contribution were converted into approximately 769,231 shares of the Company\u2019s Common Stock outstanding immediately thereafter. The Contribution was considered to be a recapitalization of the Company, which had been retrospectively applied for all periods presented.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 268,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 309,
+     "token": "REPEATING_FOOTER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months\n\n\n\nEnded\n\n\n\nJune 30,\n\n\n\n2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at the beginning of year",
+     "$",
+     "292,589"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of the conversion features on unsecured convertible notes",
+     "",
+     "327,222"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of the conversion features on secured convertible notes",
+     "",
+     "1,417,445"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at the end of the period",
+     "$",
+     "2,037,256"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months\n\n\n\nEnded\n\n\n\nJune 30,\n\n\n\n2017"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 455,
+    "end_line": 475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Derivative Liabilities"
+    }
+   },
+   "prose_before": "The PPO Warrants, Broker Warrants and Warrant Agent Warrants described in Note 7 qualified for derivative classification upon issuance due to the price protection provisions on the exercise price. The initial fair value of these liabilities was recorded as an increase to derivative liabilities and a decrease in additional paid in capital as the warrants were issued in connection with the closings under the private placement offerings. The embedded conversion feature of the Unsecured Notes and the Secured Notes described in Note 4 also qualify for derivative classification. The initial fair value of these liabilities was recorded as an increase to derivative liabilities with a corresponding debt discount. The fair value of these liabilities will be re-measured at the end of every reporting period and the change in fair value will be reported in the statement of operations as a gain or loss on derivative financial instruments included in other income or expenses.\nCertain securities the Company issued in the private placement offering it conducted in 2014 (the \u201c2014 PPO\u201d) had price-based anti-dilution protection, if, within twenty-four (24) months after the final closing of the 2014 PPO, March 28, 2016, the Company issued additional shares of Common Stock or Common Stock equivalents (subject to customary exceptions) for a consideration per share less than $13.00. Of the 744,756 original PPO warrants issued in the 2014 PPO (the \u201cPPO Warrants\u201d), 133,739 still remained with these priced-based anti-dilution rights. As of March 28, 2016, the price-based anti-dilution protection provisions expired. The Company re-measured the fair value of the warrants at March 28, 2016 and reclassified them to equity.\nThe table below sets forth a summary of changes in the fair value of the Company\u2019s Level 3 financial liabilities for the period ended June 30, 2017.",
+   "prose_after": "For the Six Months Ended June 30, 2017 and 2016\nThe Company uses Level 3 inputs for its valuation methodology for the derivative liabilities as their fair values were determined using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s Common Stock, volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. The expected stock price volatility for the Company\u2019s derivatives is based on the historical volatility since the date of the Company\u2019s 2014 PPO. As required, these are classified based on the lowest level of input that is significant to the fair value measurement.\nThe weighted average per-share fair value of each Common Stock warrant derivative liability of $1.91 was determined on March 28, 2016, respectively using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 439,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Expected\n\n\n\nVolatility",
+     "",
+     "",
+     "Risk-free\n\n\n\nInterest Rate",
+     "",
+     "",
+     "Expected\n\n\n\nDividend Yield",
+     "",
+     "",
+     "Expected Life\n\n\n\n(in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "At March 28, 2016",
+     "",
+     "158.84",
+     "%",
+     "",
+     "1.37",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "3.21"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Derivative Liabilities"
+    }
+   },
+   "prose_before": "For the Six Months Ended June 30, 2017 and 2016\nThe Company uses Level 3 inputs for its valuation methodology for the derivative liabilities as their fair values were determined using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s Common Stock, volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. The expected stock price volatility for the Company\u2019s derivatives is based on the historical volatility since the date of the Company\u2019s 2014 PPO. As required, these are classified based on the lowest level of input that is significant to the fair value measurement.\nThe weighted average per-share fair value of each Common Stock warrant derivative liability of $1.91 was determined on March 28, 2016, respectively using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "prose_after": "The weighted average per-share fair value of the derivative liabilities associated with the embedded conversion features on the Unsecured Notes of $4.66, $0.16 and $1.17 determined January 14, 2016, December 31, 2016 and June 30, 2017, respectively, using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 482,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Expected\n\n\n\nVolatility",
+     "",
+     "",
+     "Risk-free\n\n\n\nInterest Rate",
+     "",
+     "",
+     "Expected\n\n\n\nDividend Yield",
+     "",
+     "",
+     "Expected Life\n\n\n\n(in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance on January 14, 2016",
+     "",
+     "114.48",
+     "%",
+     "",
+     "1.52",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "December 31, 2016",
+     "",
+     "176.74",
+     "%",
+     "",
+     "1.93",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "3.89"
+    ],
+    [
+     "June 30, 2017",
+     "",
+     "175.82",
+     "%",
+     "",
+     "1.89",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "3.39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Derivative Liabilities"
+    }
+   },
+   "prose_before": "The weighted average per-share fair value of the derivative liabilities associated with the embedded conversion features on the Unsecured Notes of $4.66, $0.16 and $1.17 determined January 14, 2016, December 31, 2016 and June 30, 2017, respectively, using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "prose_after": "The weighted average per-share fair value of the derivative liabilities associated with the embedded conversion features on the Secured Notes of $1.62, $2.69, $2.80, $2.07, $1.47, $0.19 and $1.32 determined at April 12. 2016, April 15, 2016, May 26, 2016, June 7, 2016, July 20, 2016, December 31, 2016 and June 30, 2017, respectively using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 482,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Expected\n\n\n\nVolatility",
+     "",
+     "",
+     "Risk-free\n\n\n\nInterest Rate",
+     "",
+     "",
+     "Expected\n\n\n\nDividend Yield",
+     "",
+     "",
+     "Expected Life\n\n\n\n(in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance on April 12, 2016",
+     "",
+     "159.81",
+     "%",
+     "",
+     "1.22",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "Issuance on April 15, 2016",
+     "",
+     "161.16",
+     "%",
+     "",
+     "1.22",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "Issuance on May 26, 2016",
+     "",
+     "165.03",
+     "%",
+     "",
+     "1.35",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "Issuance on June 7, 2016",
+     "",
+     "165.72",
+     "%",
+     "",
+     "1.23",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "Issuance on July 20, 2016",
+     "",
+     "166.24",
+     "%",
+     "",
+     "1.15",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ],
+    [
+     "December 31, 2016",
+     "",
+     "176.74",
+     "%",
+     "",
+     "1.93",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "4.31"
+    ],
+    [
+     "June 30, 2017",
+     "",
+     "175.82",
+     "%",
+     "",
+     "1.89",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "3.82"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 512,
+    "end_line": 526
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Derivative Liabilities"
+    }
+   },
+   "prose_before": "The weighted average per-share fair value of the derivative liabilities associated with the embedded conversion features on the Secured Notes of $1.62, $2.69, $2.80, $2.07, $1.47, $0.19 and $1.32 determined at April 12. 2016, April 15, 2016, May 26, 2016, June 7, 2016, July 20, 2016, December 31, 2016 and June 30, 2017, respectively using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "prose_after": "For the Six Months Ended June 30, 2017 and 2016\nNote 6 \u2013 Common Stock\nOn May 26, 2015, the Company\u2019s board of directors approved and authorized the Company to effect a reverse stock split (the \u201cReverse Stock Split\u201d) at a ratio of not less than 1-for-5 and not more than 1-for-15 (the \u201cReverse Split Ratio\u201d). On February 9, 2016, the Company filed a certificate of amendment (\u201cCertificate of Amendment\u201d) to its Amended and Restated Certificate of Incorporation with the Secretary of State of the State of Delaware, pursuant to which, effective as of February 16, 2016, the Company effected the Reverse Stock Split at a rate of 1-for-13. Throughout this report, the reverse split was retroactively applied to all periods presented.\nNote 7 - Common Stock Warrants\nAs discussed in Note 5, certain securities the Company issued in the 2014 PPO had price-based anti-dilution protection, if, within twenty-four (24) months after the final closing of the 2014 PPO, which occurred on March 28, 2016, the Company issued additional shares of Common Stock or common stock equivalents (subject to customary exceptions) for a consideration per share less than $13.00. Of the 744,756 original PPO Warrants, 133,739 still remained with these priced-based anti-dilution rights. Upon consummation of the Offer to Amend and Exercise the PPO Warrants, and the issuance of the Warrant Agent Warrants to the Warrant Agent, the anti-dilution provisions were triggered and the non-participating warrant holders received, or are entitled to receive (i) a reduction in the price of their PPO Warrants from $26.00 per share to $23.01 per share, (ii) an aggregate of 17,180 additional shares of Common Stock, and (iii) and aggregate of 17,180 additional warrants to purchase shares of Common Stock of the Company at an exercise price of $23.01 per share.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 482,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock\n\n\n\nWarrants Outstanding",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Warrants Outstanding",
+     "",
+     "Weighted-\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2016",
+     "",
+     "622,576",
+     "$",
+     "14.66"
+    ],
+    [
+     "Granted",
+     "",
+     "40,000",
+     "",
+     "1.00"
+    ],
+    [
+     "Cancelled/Forfeited",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance as of June 30, 2017",
+     "",
+     "662,576",
+     "$",
+     "13.83"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock\n\n\n\nWarrants Outstanding"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 551,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Common Stock Warrants"
+    }
+   },
+   "prose_before": "On January 12, 2016, the Company warrants to certain content providers (\u201cContent Provider Warrants\u201d) to purchase an aggregate of 215,279 shares (the \u201cContent Provider Warrant Shares\u201d) of the Company\u2019s Common Stock, at a weighted average exercise price of $6.41 per share. The Content Provider Warrants have a weighted average contractual term of 6.45 years. The exercise price and number of Content Provider Warrant Shares are subject to adjustment for any stock dividend, stock split, stock combination, recapitalization, reclassification, reorganization or other similar event.\nOn January 8, 2017, the Company entered into an employment agreement with an investor relations analyst, pursuant to which he agreed to provide the Company with certain investor relations services. In consideration for such services, the Company issued the investor relations analyst a 5-year warrant to purchase 40,000 shares of the Company\u2019s Common Stock at an exercise price of $1.00 per share.\nCommon Stock warrant activity during the six months ended June 30, 2017 was as follows:",
+   "prose_after": "For the Six Months Ended June 30, 2017 and 2016\nThe Company uses Level 3 inputs for its valuation methodology for the warrants issued, as their fair values were determined using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s Common Stock, volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. The weighted average per-share fair value of each Common Stock warrant that qualified to be recorded as permanent equity of $4.49 was determined on the date of grant using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 533,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Expected\n\n\n\nVolatility",
+     "",
+     "",
+     "Risk-free\n\n\n\nInterest Rate",
+     "",
+     "",
+     "Expected\n\n\n\nDividend Yield",
+     "",
+     "",
+     "Expected Life\n\n\n\n(in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance on January 12, 2016",
+     "",
+     "114.03",
+     "%",
+     "",
+     "1.79",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "6.45"
+    ],
+    [
+     "Issuance on January 8, 2017",
+     "",
+     "177.06",
+     "%",
+     "",
+     "1.89",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Common Stock Warrants"
+    }
+   },
+   "prose_before": "For the Six Months Ended June 30, 2017 and 2016\nThe Company uses Level 3 inputs for its valuation methodology for the warrants issued, as their fair values were determined using the Black-Scholes option pricing model based on various assumptions. The model incorporates the price of a share of the Company\u2019s Common Stock, volatility, risk free rate, dividend rate and estimated life. Significant changes in any of these inputs in isolation would result in a significant change in the fair value measurement. The weighted average per-share fair value of each Common Stock warrant that qualified to be recorded as permanent equity of $4.49 was determined on the date of grant using the Black-Scholes pricing model using the following weighted average assumptions:",
+   "prose_after": "Note 8 \u2013 Equity Incentive Awards\nStock Compensation Plans\nIn November 2008, the Company\u2019s board of directors adopted the 2008 Restricted Stock Plan, as amended (the \u201c2008 Plan\u201d). The 2008 Plan provided for the issuance of restricted common shares (\u201coptions\u201d).\nUnder the 2008 Plan, the Company determined various terms and conditions of awards including option expiration dates (no more than ten years from the date of grant), vesting terms (generally over a four-year period), exercise price, and payment terms.\nCertain of the Company\u2019s option grants included a right to repurchase a terminated individual\u2019s options at a repurchase price equal to the lower of the exercise price or the fair value of the restricted common stock at the termination date, during the eighteen (18) months following the termination of an individual\u2019s service with the Company, for any reason.\nUpon closing of the Contribution, discussed in Note 1, the Board adopted, and the stockholders approved, the 2014 Equity Incentive Plan (the \u201c2014 Plan\u201d) which provides for the issuance of equity awards of up to 307,693 shares of Common Stock to officers, key employees, consultants and directors. Upon effectiveness of the Contribution, 500,000 options outstanding under the 2008 Plan were exchanged for an aggregate of (i) approximately 102,681 non-statutory stock options to purchase shares of the Company\u2019s Common Stock at an average exercise price of approximately $2.86 per share, and (ii) approximately 24,335 restricted stock awards (of which approximately 17,068 were fully vested and represented approximately 17,068 issued and outstanding shares of the Company\u2019s Common Stock).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "REPEATING_HEADER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Outstanding Options",
+     "",
+     "Weighted-\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice",
+     "",
+     "Weighted-\n\n\n\nAverage\n\n\n\nRemaining Contractual\n\n\n\nTerm",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2017",
+     "",
+     "269,107",
+     "$",
+     "7.32",
+     "",
+     "0.0"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Forfeited",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Balance as of June 30, 2017",
+     "",
+     "269,107",
+     "$",
+     "7.32",
+     "",
+     "0.0"
+    ],
+    [
+     "Exercisable June 30, 2017",
+     "",
+     "269,107",
+     "$",
+     "7.32",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Options Outstanding"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Equity Incentive Awards"
+    }
+   },
+   "prose_before": "Upon closing of the Contribution, discussed in Note 1, the Board adopted, and the stockholders approved, the 2014 Equity Incentive Plan (the \u201c2014 Plan\u201d) which provides for the issuance of equity awards of up to 307,693 shares of Common Stock to officers, key employees, consultants and directors. Upon effectiveness of the Contribution, 500,000 options outstanding under the 2008 Plan were exchanged for an aggregate of (i) approximately 102,681 non-statutory stock options to purchase shares of the Company\u2019s Common Stock at an average exercise price of approximately $2.86 per share, and (ii) approximately 24,335 restricted stock awards (of which approximately 17,068 were fully vested and represented approximately 17,068 issued and outstanding shares of the Company\u2019s Common Stock).\nOn September 25, 2015, the Company\u2019s board of directors adopted the 2015 Equity Incentive Plan (the \u201c2015 Plan\u201d) to provide the Company with flexibility in its ability to motivate, attract, and retain the services of members of the board of directors, key employees and consultants. The 2015 Plan provides for the issuance of equity awards of up to 307,693 shares of Common Stock. The 2015 Plan was amended on September 23, 2016 to make certain clarifications with respect to the grant of incentive stock options under the 2015 Plan.\nFor the Six Months Ended June 30, 2017 and 2016\nStock Options\nOption activity during the six months ended June 30, 2017 was as follows:",
+   "prose_after": "Stock-based Compensation Expense\nAs of June 30 2017, total compensation cost related to stock options granted, but not yet recognized, was $0 given that the Company laid off its entire workforce in August 2016. Upon termination, the Company\u2019s option agreements do not provide for accelerated vesting of unvested options. However, vested options remain outstanding at the time of termination. Stock-based compensation expenses related to all employee and non-employee stock-based awards for the three months ended June 30, 2017 and 2016 were $0 and $76,966, respectively.\nRestricted Stock Awards\nThe Company issued restricted stock awards with respect to 24,335 underlying shares under the 2008 Plan. The restricted stock awards vested over a term of four years with 25% per year. As of December 31, 2016 and June 30, 2017, 24,335 restricted common shares were outstanding but not yet issued under these awards. The Company is obligated to issue these awards upon request by the holder of the award. During each of the three month periods ended June 30, 2017 and 2016, the Company recorded stock based compensation of $0. As of June 30, 2017, there was no unrecognized stock based compensation expense related to restricted stock awards granted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 614,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 657,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Six Months Ended June 30,",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "",
+     "6,257,500",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "",
+     "16,585,000",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2019",
+     "",
+     "18,950,000",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "",
+     "7,137,500",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Prior to the Initial Closing of the Preferred Stock Unit Offering, and as a condition thereto, Holdings renegotiated the content licensing agreements (\u201cNew Music Label Agreements\u201d). Upon consummation of the Initial Closing of the Preferred Stock Unit Offering, Holdings paid Label Advances due to the Music Labels pursuant to the New Music Label Agreements in the aggregate amount of $2,500,000. The Company joined one of the New Music Label Agreements, while the other New Music Label Agreements provide Holdings with the right to sublicense its rights under such agreement to the Company. The New Music Label Agreements enable the Company to digitally distribute sound recordings and related materials owned or controlled by the Music Labels in connection with the Company\u2019s Internet music service, C\u00dcR Music. The New Music Label Agreements released the Company of prior obligations under the original Music Label Agreements. At the current time, the Company does not have a contract with Holdings that requires payment for sublicenses and access to the sound recordings and related materials.\nThe Company and Holdings are required to pay certain minimum content fees over the term of the Content Agreements with Content Providers as follows: $15,100,000 in the first year of the agreements, $24,500,000 in the second year of the agreements, and $18,400,000 in the third year of the agreements.\nMinimum payments related to the previously described contracts is summarized as follows:",
+   "prose_after": "_____________\n* Additional contract terms include per subscriber, stream or percentage of revenue charges.\nNote 10 \u2013 Legal Proceedings\nThe Company defaulted under its Master Multiple Services Agreement (the \u201cDigitas Agreement\u201d) with Digitas, Inc., a Massachusetts corporation (\u201cDigitas\u201d), as a result of the Company\u2019s failure to pay Digitas past due balances for the services Digitas provided under the Digitas Agreement. Digitas filed a claim against the Company for damages in the aggregate amount of $650,000 (the \u201cClaimed Amount\u201d), together with pre-judgment interest, post-judgment interest, costs, and attorneys\u2019 fees. As discussed in Note 12, a settlement agreement and mutual release was entered into on November 15, 2017.\nFor the Six Months Ended June 30, 2017 and 2016\nCertain of the Company\u2019s former employees filed outstanding claims against the Company for payment of unpaid wages totaling $50,000, which are accrued and remain outstanding. The Company has agreed to settlements on other employee claims totaling $237,343, which also are accrued and remain outstanding.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 697,
+     "token": "REPEATING_HEADER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "SEC\n\n\n\nReport\n\n\n\nReference\n\n\n\nNo.",
+     "Description"
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Principal Executive Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of Principal Financial Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "*",
+     "Certifications of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "*",
+     "Certifications of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "*",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "*",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "*",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "*",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1302,
+    "end_line": 1326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u00b7 should not in all instances be treated as categorical statements of fact, but rather as a way of allocating the risk to one of the parties if those statements prove to be inaccurate;\n\u00b7 have been qualified by disclosures that were made to the other party in connection with the negotiation of the applicable agreement, which disclosures are not necessarily reflected in the agreement;\n\u00b7 may apply standards of materiality in a way that is different from what may be viewed as material to you or other investors; and\n\u00b7 were made only as of the date of the applicable agreement or such other date or dates as may be specified in the agreement and are subject to more recent developments.\nAccordingly, these representations and warranties may not describe the actual state of affairs as of the date they were made or at any other time. Additional information about the Company may be found elsewhere in this Form 10-Q and the Company\u2019s other public filings, which are available without charge through the SEC\u2019s website at http://www.sec.gov.\nThe following exhibits are included as part of this report:",
+   "prose_after": "_______\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1329,
+     "token": "REPEATING_FOOTER",
+     "id": 92,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "C\u00dcR MEDIA, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: April 17, 2018",
+     "By:",
+     "/s/ Thomas Brophy"
+    ],
+    [
+     "",
+     "Name:",
+     "Thomas Brophy"
+    ],
+    [
+     "",
+     "Title:",
+     "President and Chief Executive Officer\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: April 17, 2018",
+     "By:",
+     "/s/ Kelly Sardo"
+    ],
+    [
+     "",
+     "Name:",
+     "Kelly Sardo"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer, Secretary and Treasurer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "C\u00dcR MEDIA, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1337,
+    "end_line": 1353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "_______\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "SEC\n\n\n\nReport\n\n\n\nReference\n\n\n\nNo.",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Principal Executive Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of Principal Financial Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "*",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "*",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "*",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "*",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "*",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "*",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1358,
+    "end_line": 1383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "________",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1386,
+     "token": "REPEATING_FOOTER",
+     "id": 95,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

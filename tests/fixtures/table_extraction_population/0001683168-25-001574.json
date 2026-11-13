@@ -1,0 +1,2578 @@
+{
+ "accession": "0001683168-25-001574",
+ "cik": "0001059689",
+ "form": "10-K",
+ "filing_date": "2025-03-13",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "brightrock_10k-12312004.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "65-0794980"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "6615, #428 Grand Avenue",
+     ""
+    ],
+    [
+     "Gurnee, Illinois",
+     "60031"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2004\nCommission file number: 000-27509\n(F/K/A GO CALL INC.)\n(Exact name of Company as specified in its charter)",
+   "prose_after": "1-866-600-5444\n(Company\u2019s telephone number, including area code)\nGO CALL, INC.\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1-866-600-5444\n(Company\u2019s telephone number, including area code)\nGO CALL, INC.\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Exchange Act:\nNone\nIndicate by check mark if the Company is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Company is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the Company has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Company was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "6"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "6"
+    ],
+    [
+     "Item 5",
+     "Market for Company\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "7"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "7"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "7"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "9"
+    ],
+    [
+     "Item 8",
+     "Financial Statements",
+     "F-1"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "10"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "10"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "12"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "14"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "14"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "15"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits and Financial Statement Schedules",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7229.405 of this chapter) is not contained herein, and will not be contained, to the best of Company\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nFor complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act [ ]\nIndicate by check mark whether the Company is a shell company (as defined in Rule 12b-2 of the Act). Yes [X] No [ ]\nThe aggregate market value of voting stock held by non-affiliates of the Company as of the last business day of the Company\u2019s most recently complete second fiscal quarter was $-0- (computed by reference to the closing price of a share of the Company\u2019s common stock on that date as reported).\nAs of December 31, 2004, there were 28,679,120 shares of the issuer\u2019s common stock were issued and outstanding.\nDocuments Incorporated By Reference: None\nTABLE OF CONTENTS",
+   "prose_after": "i\nEXPLANATORY NOTE\nGo Call Inc. (the \u201cCompany\u201d) has not been able to have an independent registered public accountant audit of the Company\u2019s consolidated financial statements for the fiscal year ended December 31, 2004. As described herein, on September 30, 2000, the Company ceased filing their reporting obligations and the Company then ceased operations on December 31, 2000. As a result, accounting records for the Company for the fiscal year ended December 31, 2004, are not available and could not be audited. This report is therefore deficient because the annual financial statements contained in this report for the fiscal year ended December 31, 2004, have not been audited by an independent registered public accountant as required by Rule 10-01(d) of Regulation S-X.\nii\nPART I\nItem 1. Business.\nAs used in this Annual Report on Form 10-K (this \u201cReport\u201d), references to the \u201cCompany,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cour\u201d or \u201cus\u201d refer to. f/k/a, Go Call Inc. unless the context otherwise indicates.\nForward-Looking Statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consolidated Balance Sheets as of December 31, 2004 and December 31, 2003",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations as of December 31, 2004 and December 31, 2003",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit as of December 31, 2004 and December 31, 2003",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows as of December 31, 2004 and December 31, 2003",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 357,
+    "end_line": 368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The preparation of financial statements in conformity with United States generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. The Company regularly evaluates estimates and assumptions related to deferred income tax asset valuation allowances. The Company bases its estimates and assumptions on current facts, historical experience and various other factors that it believes to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities and the accrual of costs and expenses that are not readily apparent from other sources. The actual results experienced by the Company may differ materially and adversely from the Company\u2019s estimates. To the extent there are material differences between the estimates and the actual results, future results of operations will be affected.\nRecent Accounting Pronouncements\nThere are no recent accounting pronouncements that impact the Company\u2019s operations.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nAs a \u201csmaller reporting company\u201d we are not required to provide this information.\nItem 8 Financial Statements",
+   "prose_after": "BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2004",
+     "",
+     "",
+     "2003",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Total Current Assets",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Fixed Assets-at cost, net",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Notes Receivable",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Investment in Global Indexus",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Total other assets",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts Payable and Accrued Liabilities",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock; authorized 2,000,000; 46,700 shares at $0.001 par value\n\n\n\nAs of December 31, 2004 and 46,700 as of December 31, 2003",
+     "",
+     "47",
+     "",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "  Common stock; authorized 100,000,000; 28,679,120 shares at $0.001 par value\n\n\n\nAs of December 31, 2004 and December 31, 2003",
+     "",
+     "28,679",
+     "",
+     "",
+     "28,679",
+     ""
+    ],
+    [
+     "  Additional Paid in Capital",
+     "",
+     "9,901,931",
+     "",
+     "",
+     "9,901,931",
+     ""
+    ],
+    [
+     "  Fair value of options",
+     "",
+     "236,548",
+     "",
+     "",
+     "236,548",
+     ""
+    ],
+    [
+     "  Common stock to be issued-from subscriptions",
+     "",
+     "(356,681)",
+     "",
+     "",
+     "(356,681)",
+     ""
+    ],
+    [
+     "  Accumulated Deficit",
+     "",
+     "(9,810,524)",
+     "",
+     "",
+     "(9,810,524)",
+     ""
+    ],
+    [
+     "  Total stockholders' deficit",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 373,
+    "end_line": 417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF OPERATIONS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 419,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2004",
+     "",
+     "Year Ended December 31, 2003",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Wagering revenue, net of payouts",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "  Gross revenues",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Cost to produce revenues",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Gross profit/loss",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Depreciation",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Loss from Operations",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss on extinguishment of current assets",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Loss on extinguishment of property and equipment",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Loss on extinguishment of other assets",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Gain on extinguishment of current liabilities",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Loss in Sevada Holdings Limited",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Preferred dividends",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Bank charges and Interest Expense",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Total other income (expense)",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss for the period",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "Net loss per share:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic and diluted",
+     "$",
+     "0.00",
+     "$",
+     "0.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic and diluted",
+     "",
+     "28,679,120",
+     "",
+     "28,679,120"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 425,
+    "end_line": 466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF OPERATIONS\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CHANGES IN SHAREHOLDERS' EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 419,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity/",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 1999",
+     "",
+     "185,439",
+     "",
+     "$",
+     "186",
+     "",
+     "",
+     "22,741,909",
+     "$",
+     "22,741",
+     "$",
+     "8,851,468",
+     "",
+     "$",
+     "(5,872,676)",
+     "",
+     "$",
+     "2,884,298",
+     ""
+    ],
+    [
+     "Preferred Stock issued for cash",
+     "",
+     "46,700",
+     "",
+     "",
+     "47",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "269,712",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "269,759",
+     ""
+    ],
+    [
+     "Common Stock issued for cash",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,805,117",
+     "",
+     "2,805",
+     "",
+     "450,792",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "453,597",
+     ""
+    ],
+    [
+     "  Common Stock issued on conversion of Preferred stock",
+     "",
+     "(185,439)",
+     "",
+     "",
+     "(186)",
+     "",
+     "",
+     "2,897,484",
+     "",
+     "2,898",
+     "",
+     "(2,712)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(2,712)",
+     ""
+    ],
+    [
+     "Options exercised for cash",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "1,100",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1,100",
+     ""
+    ],
+    [
+     "Beneficial Conversion feature",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "198,900",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "198,900",
+     ""
+    ],
+    [
+     "Shares issued for Services",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "234,610",
+     "",
+     "235",
+     "",
+     "132,671",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "132,906",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(3,937,848)",
+     "",
+     "",
+     "(3,937,848)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2000",
+     "",
+     "46,700",
+     "",
+     "$",
+     "47",
+     "",
+     "",
+     "28,679,120",
+     "$",
+     "28,679",
+     "$",
+     "9,901,931",
+     "",
+     "$",
+     "(9,810,524)",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Balance, December 31, 2001",
+     "",
+     "46,700",
+     "",
+     "$",
+     "47",
+     "",
+     "",
+     "28,679,120",
+     "$",
+     "28,679",
+     "$",
+     "9,901,931",
+     "",
+     "$",
+     "(9,810,524)",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Balance, December 31, 2002",
+     "",
+     "46,700",
+     "",
+     "$",
+     "47",
+     "",
+     "",
+     "28,679,120",
+     "$",
+     "28,679",
+     "$",
+     "9,901,931",
+     "",
+     "$",
+     "(9,810,524)",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Balance, December 31, 2003",
+     "",
+     "46,700",
+     "",
+     "$",
+     "47",
+     "",
+     "",
+     "28,679,120",
+     "$",
+     "28,679",
+     "$",
+     "9,901,931",
+     "",
+     "$",
+     "(9,810,524)",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Balance, December 31, 2004",
+     "",
+     "46,700",
+     "",
+     "$",
+     "47",
+     "",
+     "",
+     "28,679,120",
+     "$",
+     "28,679",
+     "$",
+     "9,901,931",
+     "",
+     "$",
+     "(9,810,524)",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 472,
+    "end_line": 513
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CHANGES IN SHAREHOLDERS' EQUITY (DEFICIT)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\n\n\nDecember 31, 2004",
+     "",
+     "Year Ended\n\n\n\nDecember 31, 2003",
+     ""
+    ],
+    [
+     "Cash flow from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Accounts Payable",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net Cash (Used) in Operating activities",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from the issuance of common stock",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Proceeds from the issuance of preferred stock",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Payments on notes payable-related party",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "  Proceeds from note payable-related party",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in cash during the period",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during the period",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "  Taxes",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial Conversion Feature",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nNOTES TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2004 AND 2003\nNOTE 1 \u2013 ORGANIZATION AND DESCRIPTION OF BUSINESS\nBrightrock Gold Corporation) (the \"Company\"), was originally incorporated on March 1, 1994 as Omni Advantage, in the State of Louisiana. In 1998 the issuer changed its name from Omni Advantage Inc. to Go Call Inc. In October 2002 the Issuer changed its name from Go Call Inc. to Medical Institutional Services Corp. In December 2009, the Issuer changed its name from Medical Institutional Services Corp. to National Pharmaceuticals Corp. In July of 2012 the Issuer changed its name from National Pharmaceuticals Corp. to Ghana Gold Corp. In November 2013 the Company changed its name from Ghana Gold Corp to Brightrock Gold Corporation.\nTo the best of our knowledge, the Company, under the name of Go Call, Inc. ceased filing their reporting obligations and ceased operations in December of 2000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position Held with the Company",
+     "Age",
+     "Date First Elected of Appointed"
+    ],
+    [
+     "Mahmood (Mac) J. Shahsavar",
+     "Chairman, CEO, Director",
+     "68",
+     "May 10, 2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Linda MacDonald",
+     "Secretary, Treasurer, Director",
+     "65",
+     "May 10, 2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aarya Shahsavar",
+     "Director",
+     "31",
+     "July 24, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 672,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the Company's registered public accounting firm pursuant to the exemption provided to issuers that are not \"large accelerated filers\" nor \"accelerated filers\" under the Dodd-Frank Wall Street Reform and Consumer Protection Act.\nChanges in Internal Control Over Financial Reporting\nThere have been no changes in our internal control over financial reporting that occurred during our last fiscal year that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nAll Directors of the Company hold office until the next annual meeting of the security holders or until their successors have been elected and qualified. The officers of the Company are appointed by the Board of Directors and hold office until their death, resignation or removal from office. The Directors and Executive Officers, their ages, positions held, and duration as such, are as follows:\nName Position Held with the Company Age Date First Elected or Appointed",
+   "prose_after": "Business Experience\nThe following is a brief account of the education and business experience during at least the past five years of each current Director, Executive Officer and key employee of the Company, indicating the person\u2019s principal occupation during that period, and the name and principal business of the organization in which such occupation and employment were carried out.\nMahmood (Mac) J. Shahsavar P. Eng.\nMahmood (Mac) J. Shahsavar holds a degree in Engineering from the University of Saskatchewan, and currently holds several positions in both private and public companies and has extensive business and public company experience. A summary of Mr. Shahsavar\u2019s positions are as follows: Chairman and CEO of Brightrock Gold Corporation, Chairman and CEO of Xtra Energy Corporation, Chairman and CEO of Xcana Petroleum Corporation, CEO of National Health Care Manufacturing. CEO of Elite Auto Group. and Non-executive Chairman and Director of Innocorps Research Corporation.\nLinda MacDonald",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and address of Beneficial Owner",
+     "Preferred Stock",
+     "",
+     "Common Stock",
+     "",
+     "Beneficial ownership",
+     "",
+     "Percentage of Class",
+     ""
+    ],
+    [
+     "Mahmood (Mac) J. Shahsavar\n\n\n\n6615, #428 Grand Avenue\n\n\n\nGurnee, Illinois 60031",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0%"
+    ],
+    [
+     "Linda MacDonald\n\n\n\n6615, #428 Grand Avenue\n\n\n\nGurnee, Illinois 60031",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0%"
+    ],
+    [
+     "Aarya Shahsavar\n\n\n\n6615, #428 Grand Avenue\n\n\n\nGurnee, Illinois 60031",
+     "",
+     "50,000",
+     "",
+     "0",
+     "",
+     "50,000",
+     "",
+     "4.31% (1)"
+    ],
+    [
+     "Officers and Directors as a Group",
+     "",
+     "50,000",
+     "",
+     "0",
+     "",
+     "50,000",
+     "",
+     "4.31% (1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% or Greater Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shayla Investments LLC (1) (2)\n\n\n\nMahmood (Mac) j. Shahsavar Principal\n\n\n\n1765 Sargent Ave. Suite 100B,\n\n\n\nWinnipeg MB Canada",
+     "",
+     "1,000,000",
+     "",
+     "19,504,500",
+     "",
+     "1,000,000",
+     "",
+     "86.2% (1)\n\n\n\n5.84% (2)"
+    ],
+    [
+     "RedBeryl Mining Company\n\n\n\n10403 Treaty Court,\n\n\n\nSpotsylnania VA. 22553",
+     "",
+     "0",
+     "",
+     "31,000,000",
+     "",
+     "31,000,000",
+     "",
+     "9.28% (2)"
+    ],
+    [
+     "Open-I Investments\n\n\n\nMahmood (Mac) j. Shahsavar Principal\n\n\n\n123 BARRACK RD\n\n\n\nBELIZE CITY Belize",
+     "",
+     "",
+     "",
+     "32,000,000",
+     "",
+     "32,000,000",
+     "",
+     "9.58% (2)"
+    ],
+    [
+     "Floating Rock Entertainment Inc.\n\n\n\nMahmood (Mac) j. Shahsavar Principal\n\n\n\nPO BOX 170 CHURCHILL BLDG FRONT ST\n\n\n\nGRAND TURK\n\n\n\nTurks and Caicos Islands",
+     "",
+     "",
+     "",
+     "30,000,000",
+     "",
+     "30,000,000",
+     "",
+     "8.99% (2)"
+    ],
+    [
+     "Guarda Investment Group Limited\n\n\n\nMahmood (Mac) j. Shahsavar Principal\n\n\n\nRM 1202 CAPITAL CTR 5-19 JARDINES BAZAAR\n\n\n\nCAUSEWAY BAY\n\n\n\nHong Kong",
+     "",
+     "",
+     "",
+     "90,000,000",
+     "",
+     "90,000,000",
+     "",
+     "26.97% (2)"
+    ],
+    [
+     "Janice Shahsavar\n\n\n\n10 CASA RIO BAY\n\n\n\nSASKATOON, SK S7T 1B5\n\n\n\nCanada",
+     "",
+     "",
+     "",
+     "20,000,000",
+     "",
+     "20,000,000",
+     "",
+     "6.00% (2)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 784,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Under Rule 13d-3, a beneficial owner of a security includes any person who, directly or indirectly, through any contract, arrangement, understanding, relationship, or otherwise has or shares: (i) voting power, which includes the power to vote, or to direct the voting of shares; and (ii) investment power, which includes the power to dispose or direct the disposition of shares. Certain shares may be deemed to be beneficially owned by more than one person (if, for example, persons share the power to vote or the power to dispose of the shares). In addition, shares are deemed to be beneficially owned by a person if the person has the right to acquire the shares (for example, upon exercise of an option) within 60 days of the date as of which the information is provided. In computing the percentage ownership of any person, the amount of shares outstanding is deemed to include the amount of shares beneficially owned by such person (and only such person) by reason of these acquisition rights. As a result, the percentage of outstanding shares of any person as shown in this table does not necessarily reflect the person\u2019s actual ownership or voting power with respect to the number of shares of Common Stock actually outstanding on December 31, 2004. As of March 11, 2025, there were 333,698,000 shares of our Company\u2019s Common Stock issued and outstanding and 1,160,500 of Our Company\u2019s Preferred Stock Outstanding.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(1) Percentages are calculated based on shares of the Company\u2019s Preferred Stock issued and outstanding on March 11, 2025."
+    ],
+    [
+     "",
+     "(2) Percentages are calculated based on shares of the Company\u2019s Common Stock issued and outstanding on March 11, 2025."
+    ]
+   ],
+   "caption_stack": [
+    "(1) Percentages are calculated based on shares of the Company\u2019s Preferred Stock issued and outstanding on March 11, 2025.",
+    "(2) Percentages are calculated based on shares of the Company\u2019s Common Stock issued and outstanding on March 11, 2025."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Item 13. Certain Relationships and Related Transactions, and Director Independence.\nDirector Independence\nThe Company does not have a separately designated nominating committee of our Board of Directors. None of our directors is deemed to be independent, as such term is defined in the listing standards of The Nasdaq Stock Market, Inc. (\u201cNasdaq\u201d).\nItem 14. Principal Accounting Fees and Services.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n\n\n2004",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "0"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "December 31,\n\n\n\n2004"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 866,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Item 13. Certain Relationships and Related Transactions, and Director Independence.\nDirector Independence\nThe Company does not have a separately designated nominating committee of our Board of Directors. None of our directors is deemed to be independent, as such term is defined in the listing standards of The Nasdaq Stock Market, Inc. (\u201cNasdaq\u201d).\nItem 14. Principal Accounting Fees and Services.",
+   "prose_after": "Our Board of Directors pre-approves all services provided by our independent auditors. All of the above services and fees were reviewed and approved by the Board of Directors either before or after the respective services were rendered.\nOur Board of Directors has considered the nature and amount of fees billed by our independent auditors and believes that the provision of services for activities unrelated to the audit is compatible with maintaining our independent auditors\u2019 independence.\nPART IV\nItem 15. Exhibits. Financial Statement Schedules. Exhibits",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "31.1 *",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2 *",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1 *",
+     "Rule 1350 Certifications of Chief Executive Officer and Chief Financial Officer."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 888,
+    "end_line": 897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits. Financial Statement Schedules. Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our Board of Directors pre-approves all services provided by our independent auditors. All of the above services and fees were reviewed and approved by the Board of Directors either before or after the respective services were rendered.\nOur Board of Directors has considered the nature and amount of fees billed by our independent auditors and believes that the provision of services for activities unrelated to the audit is compatible with maintaining our independent auditors\u2019 independence.\nPART IV\nItem 15. Exhibits. Financial Statement Schedules. Exhibits",
+   "prose_after": "* Filed herewith.\n(Signatures on Following Page)\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereto duly authorized.\n(F/K/A GO CALL INC.)\n(Registrant)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: March 11, 2025",
+     "By:",
+     "Mahmood (Mac) J. Shahsavar\n\n\n\nMahmood (Mac) J. Shahsavar,\n\n\n\nChairman, Chief Executive Officer, Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 920
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits. Financial Statement Schedules. Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n(Signatures on Following Page)\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereto duly authorized.\n(F/K/A GO CALL INC.)\n(Registrant)",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: March 11, 2025",
+     "By:",
+     "/s/ Mahmood (Mac) J. Shahsavar\n\n\n\nMahmood (Mac) J. Shahsavar,\n\n\n\nChairman, Chief Executive Officer, Chief Financial Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 11, 2025",
+     "By:",
+     "/s/ Linda Macdonald"
+    ],
+    [
+     "",
+     "",
+     "Linda MacDonald\n\n\n\nSecretary, Treasurer, and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 923,
+    "end_line": 935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits. Financial Statement Schedules. Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: March 11, 2025",
+     "By:",
+     "/s/ Aarya Shahsavar"
+    ],
+    [
+     "",
+     "",
+     "Aarya Shahsavar\n\n\n\nDirector"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits. Financial Statement Schedules. Exhibits"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

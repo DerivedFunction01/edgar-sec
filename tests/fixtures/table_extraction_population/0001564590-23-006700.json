@@ -1,0 +1,2349 @@
+{
+ "accession": "0001564590-23-006700",
+ "cik": "0001224133",
+ "form": "10-K/A",
+ "filing_date": "2023-05-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "mchx-10ka_20221231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "35-2194038"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)\n\n\n\n1200 5th Ave, Suite 1300\n\n\n\nSeattle, WA\n\n\n\n(Address of Principal Executive Offices)",
+     "(I.R.S Employer\n\n\n\nIdentification No.)\n\n\n\n \n\n\n\n98101\n\n\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to .\nCommission File Number 000-50658\nMarchex, Inc.\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (206) 331-3300\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Exchange on Which Registered"
+    ],
+    [
+     "Class B Common Stock, $0.01 par value per share",
+     "The NASDAQ Stock Market LLC\n\n\n\n(NASDAQ Global Select Market)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (206) 331-3300\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "0"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+     "16"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 90,
+    "end_line": 109
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Marchex, Inc. (the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d or \u201cMarchex\u201d) is filing this Amendment No. 1 on Form 10-K/A (this \u201cAmendment\u201d) to amend our Annual Report on Form 10-K for the fiscal year ended December 31, 2022 (the \u201cForm 10-K\u201d), as originally filed with the United States Securities and Exchange Commission (the \u201cSEC\u201d) on March 31, 2023. The purpose of this Amendment is to include Part III information which was to be incorporated by reference from our definitive proxy statement for our 2023 Annual Meeting of Stockholders. This information was previously omitted from the 10-K in reliance on General Instruction G(3) to Form 10-K, which permits the Part III information to be incorporated in our Form 10-K by reference from our definitive proxy statement if such statement is filed no later than 120 days after our fiscal year-end. We are filing this Amendment to include Part III information in our Form 10-K because a definitive proxy statement containing such information will not be filed by the Company within 120 days after the end of the fiscal year covered by our Form 10-K. The reference on the cover to the Form 10-K to the incorporation by reference to portions of our definitive proxy statement into Part III of the Form 10-K is hereby deleted.\nIn accordance with Rule 12b-15 under the United States Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), the cover page to the Form 10-K, Part III, Items 10 through 14 of our Form 10-K are hereby amended and restated in their entirety. In addition, a new certification of our principal executive officer and principal financial officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 is attached dated as of the filing date of this Amendment. This Amendment does not amend or otherwise update any other information in our 10-K. Accordingly, this Amendment should be read in conjunction with our Form 10-K and with our filings with the SEC subsequent to our Form 10-K.\nTABLE OF CONTENTS",
+   "prose_after": "In Marchex\u2019s filings with the SEC, information is sometimes \"incorporated by reference.\" This means that we refer you to information previously filed with the SEC that should be considered as part of the particular filing. In addition, this Amendment includes a website address. This website address is intended to provide inactive, textual references only. The information on this website is not part of this Amendment.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDirectors\nThe Board of Directors currently consists of five (5) individuals. Directors are elected to hold office until the next annual meeting of stockholders and until their respective successors have been elected and qualified. The names and the respective ages of our directors are set forth below:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 111,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Director Since"
+    ],
+    [
+     "Mike Arends",
+     "53",
+     "Vice Chairman",
+     "February 2023"
+    ],
+    [
+     "Dennis Cline (1)(2)(3)",
+     "62",
+     "Director",
+     "May 2003"
+    ],
+    [
+     "Donald Cogsville (1)(2)(3)",
+     "57",
+     "Director",
+     "April 2019"
+    ],
+    [
+     "Russell C. Horowitz",
+     "56",
+     "Chairman",
+     "August 2017"
+    ],
+    [
+     "M. Wayne Wisehart (1)(2)(3)",
+     "77",
+     "Director",
+     "November 2008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 120,
+    "end_line": 130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "In Marchex\u2019s filings with the SEC, information is sometimes \"incorporated by reference.\" This means that we refer you to information previously filed with the SEC that should be considered as part of the particular filing. In addition, this Amendment includes a website address. This website address is intended to provide inactive, textual references only. The information on this website is not part of this Amendment.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDirectors\nThe Board of Directors currently consists of five (5) individuals. Directors are elected to hold office until the next annual meeting of stockholders and until their respective successors have been elected and qualified. The names and the respective ages of our directors are set forth below:",
+   "prose_after": "(1) Member of the Audit Committee.\n(2) Member of the Nominating and Governance Committee.\n(3) Member of the Compensation Committee\nSet forth below is a description of the business experience of each current director, including a discussion of the specific experience, qualifications, attributes and skills that led our Board of Directors to conclude that those individuals should serve as our directors.\nMichael Arends. Mr. Arends serves as our Vice Chairman since February 2023. Mr. Arends served as our Co-CEO, including previously as a member of the Office of the CEO from October 2016 to February 2023, and served as our Chief Financial Officer from May 2003 through April 2021. Prior to joining Marchex, Mr. Arends held various positions at KPMG since 1992, most recently as a Partner in KPMG\u2019s Pacific Northwest Information, Communications and Entertainment assurance practice. Mr. Arends is a Certified Public Accountant and a Chartered Accountant and received a Bachelor of Commerce degree from the University of Alberta. Mr. Arends brings historic knowledge and continuity together with extensive operational, finance, accounting, and transactional experience to the board.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 111,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 147,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Edwin Miller",
+     "53",
+     "CEO"
+    ],
+    [
+     "Ryan Polley",
+     "51",
+     "President and Chief Operating Officer"
+    ],
+    [
+     "Troy Hartless",
+     "52",
+     "Chief Revenue Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 156,
+    "end_line": 164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "M. Wayne Wisehart. Mr. Wisehart has served as a member of our Board of Directors since November 2008. From February 2010 to November 2010, Mr. Wisehart served as Chief Financial Officer for All Star Directories, a publisher of online and career school directories. Mr. Wisehart previously served as the Chief Financial Officer of aQuantive, Inc. (formerly Avenue A Media, Inc.), a leading global digital marketing company, which was acquired by Microsoft in August 2007. Prior to aQuantive, Mr. Wisehart served as Chief Financial Officer of Western Wireless Corporation, a cellular phone service provider, which was acquired by Alltel in August 2005. Mr. Wisehart also served as the Chief Financial Officer from 2000 to 2002 of iNNERHOST, Inc., a Web hosting service\u2019s company, as President and Chief Executive Officer from 1999 to 2000 of TeleDirect International Inc., a company that provide customer interaction systems, and as the President and Chief Executive Officer from 1997 to 1998 of Price Communications Wireless. Mr. Wisehart also serves on the Board of Directors of Centri Technology, Inc. Mr. Wisehart received a B.S. degree in Business from the University of Missouri-St. Louis. Mr. Wisehart brings extensive financial and accounting expertise to the board.\nExecutive Officers\nOur current executive officers, their positions with the Company and their respective ages, are as follows:",
+   "prose_after": "Biographical information for our executive officer is set forth below.\nEdwin Miller. Mr. Miller has served as our CEO since February 2023. Prior to joining Marchex, Mr. Miller served as an Operating Executive with Gemspring Capital since May 2021, President, CEO and Director of The Interest Group from January through December 2020, and President, CEO and Director of Astreya Partners from 2014 to 2019. Mr. Miller received a Bachelor of Science, Management, and a MBA in Business, Finance, and International Affairs from The George Washington University School of Business.\nRyan Polley. Mr. Polley has served as our President since February 2023 and as our Chief Operating Officer since August 2021 and served as our Chief Product and Strategy Officer from March 2020 through August 2021. Prior to joining Marchex, Mr. Polley was the Chief Product Officer for Kargo Global, Inc., a position he held since 2017. Prior to Kargo, Polley was the Senior Vice President of Product Management and Strategy at the Rubicon Project. Mr. Polley received a Bachelor of Arts, International Studies from the University of Washington.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 147,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\n\n\nPrincipal\n\n\n\nPosition",
+     "Year",
+     "Salary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock Awards\n\n\n\n($) (2)",
+     "Option\n\n\n\nAwards\n\n\n\n($) (3)",
+     "Non-equity\n\n\n\ncompensation ($)",
+     "All Other\n\n\n\nCompensation\n\n\n\n($) (4)",
+     "",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Michael Arends",
+     "2022",
+     "297,500",
+     "\u2014",
+     "387,360",
+     "204,000",
+     "279,836",
+     "12,353",
+     "1,181,049",
+     ""
+    ],
+    [
+     "Former Co-CEO",
+     "2021",
+     "297,500",
+     "\u2014",
+     "343,340",
+     "168,560",
+     "489,621",
+     "11,250",
+     "1,310,271",
+     ""
+    ],
+    [
+     "Russell C. Horowitz (5)",
+     "2022",
+     "255,000",
+     "\u2014",
+     "271,080",
+     "145,390",
+     "217,547",
+     "",
+     "889,017",
+     ""
+    ],
+    [
+     "Chairman and Former Co-CEO",
+     "2021",
+     "255,000",
+     "\u2014",
+     "249,160",
+     "129,630",
+     "380,219",
+     "",
+     "1,014,009",
+     ""
+    ],
+    [
+     "Ryan Polley",
+     "2022",
+     "350,000",
+     "172,779",
+     "127,500",
+     "60,500",
+     "\u2014",
+     "",
+     "710,779",
+     ""
+    ],
+    [
+     "Chief Operating Officer",
+     "2021",
+     "312,993",
+     "175,326",
+     "40,200",
+     "113,400",
+     "\u2014",
+     "",
+     "641,920",
+     ""
+    ],
+    [
+     "John Roswech",
+     "2022",
+     "400,000",
+     "214,733",
+     "127,500",
+     "60,500",
+     "\u2014",
+     "",
+     "802,733",
+     ""
+    ],
+    [
+     "Former Chief Revenue Officer",
+     "2021",
+     "400,000",
+     "250,000",
+     "70,350",
+     "34,300",
+     "\u2014",
+     "",
+     "754,650",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 302,
+    "end_line": 318
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "We believe our compensation policies and practices do not promote imprudent risk taking. In this regard, we note the following: (i) our annual incentive compensation is based on balanced performance metrics that promote disciplined progress towards longer-term Company goals; (ii) we do not offer short-term incentives that might drive high-risk investments at the expense of long-term Company value; and (iii) our compensation programs are weighted towards offering long-term incentives that reward sustainable performance, especially when considering our executive share ownership. Accordingly, we believe that our compensation policies and practices do not create risks that are reasonably likely to have a material adverse effect on the Company.\nCompensation Committee Interlocks and Insider Participation\nNone of the members of the Compensation Committee during 2022, are or have been an officer or employee of the Company. No member of the Compensation Committee had any relationship with the Company requiring disclosure under Item 404 of Regulation S-K. During fiscal year 2022, none of the Company\u2019s executive officers served on the Compensation Committee (or its equivalent) or Board of Directors of another entity any of whose executive officers served on the Company\u2019s Compensation Committee or Board of Directors.\nSummary Compensation Table (1)\nThe following table sets forth information concerning the compensation earned during the fiscal years ended December 31, 2021 and 2022, as applicable, by our NEOs:",
+   "prose_after": "(1) Includes only those columns relating to compensation awarded to, earned by or paid to the NEOs in 2021 and 2022.\n(2) These amounts do not reflect whether the NEO has actually realized or will realize a financial benefit from the awards (such as by vesting of a restricted stock award). Amounts represent the aggregate grant date fair value of restricted stock each year computed in accordance with ASC 718, excluding the effect of forfeitures. For a more detailed discussion on the valuation model and assumptions used to calculate the fair value of each stock award, refer to Note 6 to the Consolidated Financial Statements contained in our 2022 Annual Report on Form 10-K filed on March 31, 2023.\n(3) These amounts do not reflect whether the NEO has actually realized or will realize a financial benefit from the awards (such as by exercising stock options). Amounts represent the aggregate grant date fair value of option awards each year computed in accordance with ASC 718, excluding the effect of forfeitures. The fair value of the shares underlying the option awards that vest based on time is estimated using the Black-Scholes option pricing model. For a more detailed discussion on the valuation model and assumptions used to calculate the fair value of each stock award, refer to Note 6 to the Consolidated Financial Statements contained in our 2022 Annual Report on Form 10-K filed on March 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nOptions\n\n\n\nExercisable\n\n\n\n(#)",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nOptions\n\n\n\nUnexercisable (#)",
+     "",
+     "Option\n\n\n\nExercise\n\n\n\nPrice\n\n\n\n($)",
+     "",
+     "Option\n\n\n\nExpiration\n\n\n\nDate",
+     "",
+     "",
+     "Number of\n\n\n\nShares or\n\n\n\nUnits of Stock\n\n\n\nThat Have Not\n\n\n\nVested\n\n\n\n(#)",
+     "",
+     "Market Value of\n\n\n\nShares or Units of\n\n\n\nStock That Have\n\n\n\nNot Vested(2)\n\n\n\n($)",
+     ""
+    ],
+    [
+     "Michael Arends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted Stock",
+     "4/17/2019",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     "8,500",
+     "",
+     "21,080"
+    ],
+    [
+     "Stock Options",
+     "12/31/2020",
+     "(5)",
+     "",
+     "97,500",
+     "",
+     "97,500",
+     "",
+     "1.96",
+     "12/31/2030",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/31/2020",
+     "(5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "97,500",
+     "",
+     "483,600"
+    ],
+    [
+     "Stock Options",
+     "1/4/2021",
+     "(7)",
+     "",
+     "20,125",
+     "",
+     "25,875",
+     "",
+     "2.02",
+     "",
+     "1/4/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/4/2021",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "34,500",
+     "",
+     "69,690"
+    ],
+    [
+     "Stock Options",
+     "12/30/2021",
+     "(8)",
+     "",
+     "24,500",
+     "",
+     "73,500",
+     "",
+     "2.57",
+     "",
+     "12/30/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/30/2021",
+     "(8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "73,500",
+     "",
+     "188,895"
+    ],
+    [
+     "Stock Options",
+     "1/3/2022",
+     "(7)",
+     "",
+     "\u2014",
+     "",
+     "59,000",
+     "",
+     "2.56",
+     "",
+     "1/4/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/3/2022",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "59,000",
+     "",
+     "151,040"
+    ],
+    [
+     "Stock Options",
+     "12/30/2022",
+     "(9)",
+     "",
+     "\u2014",
+     "",
+     "149,000",
+     "",
+     "1.60",
+     "",
+     "12/30/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/30/2022",
+     "(9)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "149,000",
+     "",
+     "238,400"
+    ],
+    [
+     "Russell C. Horowitz",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Options",
+     "12/31/2020",
+     "(5)",
+     "",
+     "95,000",
+     "",
+     "95,000",
+     "",
+     "1.96",
+     "12/31/2030",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/31/2020",
+     "(5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "95,000",
+     "",
+     "186,200"
+    ],
+    [
+     "Stock Options",
+     "1/4/2021",
+     "(7)",
+     "",
+     "20,125",
+     "",
+     "25,875",
+     "",
+     "2.02",
+     "",
+     "1/4/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/4/2021",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "30,750",
+     "",
+     "62,115"
+    ],
+    [
+     "Stock Options",
+     "10/1/2021",
+     "(4)",
+     "",
+     "10,000",
+     "",
+     "10,000",
+     "",
+     "3.02",
+     "",
+     "10/1/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "10/1/2021",
+     "(4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,500",
+     "",
+     "22,650"
+    ],
+    [
+     "Stock Options",
+     "12/30/2021",
+     "(8)",
+     "",
+     "11,875",
+     "",
+     "35,625",
+     "",
+     "2.57",
+     "",
+     "12/30/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/30/2021",
+     "(8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "35,625",
+     "",
+     "91,556"
+    ],
+    [
+     "Stock Options",
+     "1/3/2022",
+     "(7)",
+     "",
+     "\u2014",
+     "",
+     "51,000",
+     "",
+     "2.56",
+     "",
+     "1/4/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/3/2022",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "51,000",
+     "",
+     "130,560"
+    ],
+    [
+     "Stock Options",
+     "9/29/2022",
+     "(4)",
+     "",
+     "\u2014",
+     "",
+     "20,000",
+     "",
+     "1.78",
+     "",
+     "10/1/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "9/29/2022",
+     "(4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,000",
+     "",
+     "26,700"
+    ],
+    [
+     "Stock Options",
+     "12/30/2022",
+     "(9)",
+     "",
+     "\u2014",
+     "",
+     "72,000",
+     "",
+     "1.60",
+     "",
+     "12/30/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/30/2022",
+     "(9)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "72,000",
+     "",
+     "115,200"
+    ],
+    [
+     "Ryan Polley",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Options",
+     "3/2/2020",
+     "(7)",
+     "",
+     "85,938",
+     "",
+     "39,062",
+     "",
+     "2.66",
+     "3/2/2030",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "3/2/2020",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "62,500",
+     "",
+     "166,250"
+    ],
+    [
+     "Stock Options",
+     "1/4/2021",
+     "(7)",
+     "",
+     "8,750",
+     "",
+     "11,250",
+     "",
+     "2.02",
+     "",
+     "1/4/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/4/2021",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,000",
+     "",
+     "30,300"
+    ],
+    [
+     "Stock Options",
+     "8/13/2021",
+     "(3)",
+     "",
+     "29,688",
+     "",
+     "65,313",
+     "",
+     "3.00",
+     "",
+     "8/13/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock Options",
+     "1/3/2022",
+     "(7)",
+     "",
+     "\u2014",
+     "",
+     "50,000",
+     "",
+     "2.56",
+     "",
+     "1/4/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/3/2022",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     "",
+     "128,000"
+    ],
+    [
+     "John Roswech",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Options",
+     "12/16/2019",
+     "(7)",
+     "",
+     "137,500",
+     "",
+     "62,500",
+     "",
+     "3.60",
+     "12/16/2029",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "12/16/2019",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     "",
+     "124,000"
+    ],
+    [
+     "Stock Options",
+     "1/4/2021",
+     "(7)",
+     "",
+     "9,406",
+     "",
+     "25,594",
+     "",
+     "2.02",
+     "",
+     "1/4/2031",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/4/2021",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "26,250",
+     "",
+     "53,025"
+    ],
+    [
+     "Stock Options",
+     "1/3/2022",
+     "(7)",
+     "",
+     "\u2014",
+     "",
+     "50,000",
+     "",
+     "2.56",
+     "",
+     "1/4/2032",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Restricted Stock",
+     "1/3/2022",
+     "(3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     "",
+     "128,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 334,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(4) Unless otherwise noted, the total of all perquisites and personal benefits of each NEO falls below the reportable amount for disclosure within this table. Mr. Arends\u2019 amounts in 2021 and 2022 exceeded the reportable amount and includes the Company\u2019s 401K matching contribution and auto allowance.\n(5) In September 2022 and October 2021, Mr. Horowitz received an annual director restricted stock grant of 15,000 shares and 20,000 options under Marchex\u2019s 2021 and 2012 Stock Incentive Plan, respectively, with fifty (50%) percent of such shares of restricted stock and options vesting on the first and second annual anniversary of the grant date, respectively, and with vesting in full in the event of a Change in Control.\nOutstanding Equity Awards at 2022 Fiscal Year-End (1)\nThe following table sets forth certain information with respect to the value of all unexercised options and unvested stock awards previously awarded to our NEOs as of December 31, 2022. Certain option and stock awards provide for accelerated vesting, in certain circumstances. For more information on these acceleration provisions, please refer to Potential Payments upon Termination or Change in Control at page 9.",
+   "prose_after": "(1) Includes only those columns for which there are outstanding equity awards at December 31, 2022. All other columns have been omitted.\n(2) The market value of unvested stock awards is calculated by multiplying the number of unvested stock awards held by the applicable NEO by the closing price of $2.48 per share of our Class B common stock on the NASDAQ Global Select Market on December 31, 2022.\n(3) The shares of restricted stock vest at the rate of 25% on each of the first, second, third, and fourth anniversaries, respectively, of the grant date.\n(4) The annual director grant of option and shares of restricted stock vest 50% on the first and second anniversary of the grant date assuming continued service as Executive Director on the vesting date.\n(5) The options and shares of restricted stock vest on the fifth annual anniversary of the grant date with accelerated vesting as follows: (a) 50% of such options and shares of restricted stock vest upon attainment of specified revenue, adjusted OIBA or share price targets at the later of eighteen (18) months or performance attainment (2021 revenue (or trailing twelve (12) months revenue) exceeding 120% of 2020 level, 2021 adjusted OIBA (or trailing twelve (12) months adjusted OIBA) exceeding specified multiples of 2020 level, or the Class B common stock share price for twenty (20) consecutive trading days exceeding 150% of the initial 2020 consecutive trading day average), and (b) such remaining unvested options and shares of restricted stock vest upon attainment of specified revenue, adjusted OIBA or share price targets at the later of thirty (30) months or performance attainment (trailing twelve (12) month revenue.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 400,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned\n\n\n\nor Paid\n\n\n\nin Cash\n\n\n\n($)",
+     "",
+     "Stock\n\n\n\nAwards(2)\n\n\n\n($)",
+     "",
+     "Option Awards\n\n\n\n($)",
+     "",
+     "Total\n\n\n\n($)",
+     ""
+    ],
+    [
+     "Dennis Cline",
+     "",
+     "30,000",
+     "",
+     "26,700",
+     "",
+     "35,600",
+     "",
+     "92,300"
+    ],
+    [
+     "Donald Cogsville",
+     "",
+     "30,000",
+     "",
+     "26,700",
+     "",
+     "35,600",
+     "",
+     "92,300"
+    ],
+    [
+     "M. Wayne Wisehart",
+     "",
+     "30,000",
+     "",
+     "26,700",
+     "",
+     "35,600",
+     "",
+     "92,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 454
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "We have entered into a retention agreement with Mr. Arends that provides that in the event of a Change in Control, he would be entitled to a lump sum payment equal to two times the amount calculated by adding (1) his annual salary at that time plus (2) the greater of (a) any bonus he earned with respect to the prior fiscal year, or (b) his pro rata portion of the aggregate bonus pool under our Incentive Plan for the current year assuming achievement under the Incentive Plan of the maximum performance targets for such year. With respect to Mr. Arends, if within twelve (12) months following a Change in Control: (1) the Company shall terminate his employment with the Company without cause, or (2) he shall voluntarily terminate such employment for Good Reason, the Company shall provide reimbursement of health care premiums for him and his dependents, for a period of eighteen (18) months from the date of his termination, to the extent that he is eligible for and elects continuation coverage under COBRA (provided that such reimbursement shall terminate upon commencement of new employment by an employer that offers health care coverage to its employees). In consideration for the Company\u2019s willingness to enter into an amended and restated employment agreement with Mr. Arends, he relinquished the excise tax gross-up provision which was contained in the retention agreement.\nCompensation of Directors\nThe Compensation Committee is responsible for periodically reviewing and recommending to the Board of Directors the compensation of our independent directors. The following table summarizes compensation earned during 2022 by each of our directors, except Mr. Horowitz, who served as our Executive Director since August 21, 2017 and as our Chairman since April 9, 2019 and whose compensation is reflected in the Summary Compensation Table:\n2022 Director Compensation (1)",
+   "prose_after": "(1) Includes only those columns relating to compensation awarded to, earned by, or paid to non-employee directors for their services.\n(2) The amounts in the stock awards column reflect the aggregate grant fair value of stock awards granted to directors in 2022 in accordance with ASC Topic 718. These amounts do not reflect whether the director has actually realized or will realize a financial benefit from the awards (such as by vesting in a restricted stock).\nThe aggregate number of equity awards outstanding as of December 31, 2022 were:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Stock Awards\n\n\n\n(#)",
+     "",
+     "Option Awards (#)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Dennis Cline",
+     "",
+     "75,000",
+     "",
+     "95,000",
+     "",
+     "170,000"
+    ],
+    [
+     "Donald Cogsville",
+     "",
+     "75,000",
+     "",
+     "95,000",
+     "",
+     "170,000"
+    ],
+    [
+     "M. Wayne Wisehart",
+     "",
+     "75,000",
+     "",
+     "95,000",
+     "",
+     "170,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 461,
+    "end_line": 472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes only those columns relating to compensation awarded to, earned by, or paid to non-employee directors for their services.\n(2) The amounts in the stock awards column reflect the aggregate grant fair value of stock awards granted to directors in 2022 in accordance with ASC Topic 718. These amounts do not reflect whether the director has actually realized or will realize a financial benefit from the awards (such as by vesting in a restricted stock).\nThe aggregate number of equity awards outstanding as of December 31, 2022 were:",
+   "prose_after": "In September 2022, based upon the elections of the individual directors at our 2022 annual meeting of stockholders and in accordance with Marchex\u2019s previously announced director compensation policy: (i) the Company granted (i) 15,000 restricted shares of Class B common stock at a purchase price of $.01 per share; and (ii) 20,000 options at an exercise price of $1.78 per share, the exercise price being the closing price of the Company\u2019s stock price on September 29, 2022, in each case under Marchex\u2019s 2021 Stock Incentive Plan to each of Marchex\u2019s directors as compensation for their annual board service. Fifty percent (50%) of such shares of restricted stock and options shall vest on the first and second annual anniversary of the grant date, respectively, and with vesting in full upon a Change in Control in each case assuming continued service on Marchex\u2019s Board of Directors for such period. In addition, Marchex agreed to pay $7,500 in cash per quarter for each independent directors\u2019 annual director service.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Beneficially Owned",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% Total",
+     ""
+    ],
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "Voting",
+     ""
+    ],
+    [
+     "Name and, as appropriate, Address of Beneficial Owner",
+     "Shares",
+     "",
+     "%",
+     "",
+     "Shares",
+     "",
+     "%",
+     "",
+     "Power (1)",
+     ""
+    ],
+    [
+     "5% Security Holders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Edenbrook Capital, LLC (2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14,534,930",
+     "",
+     "37.7",
+     "",
+     "9.4"
+    ],
+    [
+     "116 Radio Circle",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mount Kisco, NY 10549",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Koller Capital LLC (3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,363453",
+     "",
+     "8.7",
+     "",
+     "2.2"
+    ],
+    [
+     "1343 Main Street, Suite 413",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sarasota, FL 34236",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "B. Riley Financial, Inc. (4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,816,399",
+     "",
+     "7.3",
+     "",
+     "1.8"
+    ],
+    [
+     "11100 Santa Monica Blvd., Suite 800",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA 90025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Named Executive Officers and Directors:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Arends (5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,566,042",
+     "",
+     "4.1",
+     "1.0",
+     ""
+    ],
+    [
+     "Dennis Cline (6)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "215,260",
+     "*",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Donald Cogsville(7)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "140,623",
+     "*",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Troy Hartless(8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "*",
+     "",
+     "*"
+    ],
+    [
+     "Russell C. Horowitz (9)",
+     "",
+     "4,660,927",
+     "",
+     "100.0",
+     "",
+     "1,109,356",
+     "",
+     "2.4",
+     "",
+     "75.8"
+    ],
+    [
+     "Edwin Miller(10)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "*",
+     "",
+     "*"
+    ],
+    [
+     "Ryan Polley (11)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "415,000",
+     "",
+     "*",
+     "",
+     "*"
+    ],
+    [
+     "M. Wayne Wisehart (12)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "371,145",
+     "*",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (8 persons) (13)",
+     "",
+     "4,660,927",
+     "",
+     "100.0",
+     "",
+     "3,817,425",
+     "",
+     "9.9",
+     "",
+     "77.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 490,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 each of our directors and nominees for director;\n\u2022 each of our executive officers listed in the \u201cSummary Compensation Table\u201d (\u201cNEOs\u201d); and\n\u2022 all of our directors, nominees for director and executive officers as a group.\nPercentage of beneficial ownership is based on 4,660,927 shares of our Class A common stock and 38,583,784 shares of our Class B common stock outstanding as of April 24, 2023. In computing the number of shares beneficially owned by a person and the percentage ownership of that person, shares of common stock subject to options or restricted stock units held by that person that are currently exercisable or exercisable or issuable upon vesting within 60 days of April 24, 2023, are deemed outstanding. These shares are not, however, deemed outstanding for the purposes of computing the percentage ownership of any other person. Except as otherwise noted below, the address for each beneficial owner listed below is c/o Marchex, Inc., 1200 5th Ave., Suite 1200, Seattle, Washington 98101.",
+   "prose_after": "Except as indicated in the footnotes below and except as subject to community property laws where applicable, the persons named in the table above have sole voting and investment power with respect to all shares of common stock shown as beneficially owned by them.\n* Beneficial ownership or total voting power, as the case may be, representing less than one percent.\n(1) Percentage of voting power represents voting power with respect to shares of our Class A common stock and Class B common stock, as a single class. Each holder of Class A common stock shall be entitled to 25 votes per share of Class A common stock and each holder of Class B common stock shall be entitled to 1 vote per share of Class B common stock on all matters submitted to a vote of stockholders, except as may otherwise be required by law. The Class A common stock is convertible at any time by the holder into shares of Class B common stock on a share-for-share basis.\n(2) Based on the most recently available Form 4 filed with the SEC on June 23, 2022 by Edenbrook Capital, LLC (\u201cEdenbrook\u201d); Jonathan Brolin (\u201cBrolin\u201d), an individual; and Edenbrook Long Only Value Fund, LP (\u201cEdenbrook Fund\u201d). Edenbrook and Brolin report beneficial ownership and shared voting and dispositive power of 14,534,930 shares of our Class B common stock. Edenbrook Long Only Value Fund, LP reports beneficial ownership of 13,212,592 shares of our Class B common stock.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of\n\n\n\nshares to be\n\n\n\nissued upon\n\n\n\nexercise of\n\n\n\noutstanding\n\n\n\noptions,\n\n\n\nwarrants\n\n\n\nand rights\n\n\n\n(#)\n\n\n\n(a)",
+     "",
+     "",
+     "Weighted\n\n\n\naverage\n\n\n\nexercise price\n\n\n\nof outstanding\n\n\n\noptions,\n\n\n\nwarrants\n\n\n\nand rights\n\n\n\n($)\n\n\n\n(b)",
+     "",
+     "",
+     "Number of\n\n\n\nshares remaining\n\n\n\navailable for\n\n\n\nfuture issuance\n\n\n\nunder equity\n\n\n\ncompensation\n\n\n\nplans (excluding\n\n\n\nshares reflected\n\n\n\nin column (a)\n\n\n\n(#)\n\n\n\n(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2003 amended and restated stock incentive plan, as amended (1)",
+     "",
+     "23,638",
+     "",
+     "",
+     "4.40",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "2012 stock incentive plan (2)",
+     "",
+     "4,133,728",
+     "",
+     "",
+     "3.26",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "2014 employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "41,982"
+    ],
+    [
+     "2021 stock incentive plan(3)",
+     "",
+     "1,372,500",
+     "(4)",
+     "",
+     "2.04",
+     "(5)",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "5,433,419",
+     "",
+     "",
+     "2.49",
+     "(5)",
+     "",
+     "41,982"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 593,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "2014 Employee Stock Purchase Plan. Our 2014 employee stock purchase plan was adopted by our Board of Directors and approved by our stockholders on May 3, 2013 (the \u201c2014 Employee Stock Purchase Plan\u201d). The 2014 Employee Stock Purchase Plan is intended to qualify under Section 423 of the Internal Revenue Code and permits eligible employees to purchase our Class B common stock for amounts up to 15% of their compensation in purchase periods under the plan. Under the 2014 Employee Stock Purchase Plan, no employee will be permitted to purchase stock worth more than $25,000 in any calendar year, valued as of the first day of each purchase period. We have authorized an aggregate of 225,000 shares of our Class B common stock for issuance under the 2014 Employee Stock Purchase Plan to participating employees. The 2014 Employee Stock Purchase Plan provides for purchase periods which shall be determined by the Board of Directors and the purchase price of shares of Class B common stock available under the purchase plan shall be equal to 95% of the closing price of the shares of Class B common stock on the last business day of each purchase period.\nEquity Compensation Plan Information\nThe following table sets forth certain information regarding our Class B common stock that may be issued upon exercise of options, warrants and other rights under all of our existing equity compensation plans as of December 31, 2022:",
+   "prose_after": "The weighted-average exercise price in column (b) is calculated based on outstanding stock options. It does not take into account shares issuable upon vesting of outstanding restricted stock units, which have no exercise price.\n(1) After December 31, 2012, no awards were made under the 2003 Stock Plan. Consists of stock options to purchase shares of our Class B common stock.\n(2) After December 31, 2021, no awards were made under the 2012 Stock Plan. Consists of stock options to purchase shares of our Class B common stock.\n(3) We have reserved 6,056,291 shares of Class B common stock for issuance under our 2021 Stock Plan, which includes an increase of 1,294,725 shares to the authorized number of shares available under the plan, which occurred on January 1, 2022.\n(4) Consists of stock options to purchase 739,000 shares of Class B common stock and restricted stock units representing the right to purchase 633,500 shares of our Class B common stock.\n(5) Calculated exclusive of outstanding restricted stock units.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "2021",
+     "",
+     "2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Moss Adams",
+     "",
+     "Moss Adams",
+     "",
+     "",
+     "RSM"
+    ],
+    [
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "",
+     "($)"
+    ],
+    [
+     "Audit Fees (1)",
+     "",
+     "465,000",
+     "",
+     "159,995",
+     "",
+     "204,750"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "\u2014",
+     "",
+     "49,875",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total All Fees",
+     "",
+     "465,000",
+     "",
+     "209,870",
+     "",
+     "204,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 659,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "Our Audit Committee is responsible under its charter for reviewing and approving in advance any proposed related party transactions which would require disclosure under Item 404(a) of Regulation S-K and reporting to the Board of Directors on any approved transactions. The Audit Committee is responsible for ensuring that such relationships are on terms commensurate with those that would be extended to an unrelated third party.\nBoard Independence\nThe Board of Directors determined that, other than Mr. Horowitz and Mr. Arends, each of the members of the board is an independent director in accordance with NASDAQ listing standards.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe Company\u2019s independent registered public accounting firm is RSM US LLP (\u201cRSM\u201d), Seattle, WA, PCAOB ID: 49.\nOn November 11, 2022, the Audit Committee approved the selection of RSM to serve as Marchex\u2019s independent registered public accounting firm. Moss Adams LLP (\u201cMoss Adams\u201d) served as Marchex\u2019s independent registered public accounting firm for the fiscal year ended December 31, 2021 and through November 11, 2022.\nAccounting Fees and Services\nDuring fiscal years 2021 and 2022, Moss Adams and RSM provided professional services in the following categories and amounts:",
+   "prose_after": "(1) Audit Fees consist of professional services rendered for the audit of Marchex\u2019s fiscal year consolidated financial statements and effectiveness of the internal control over financial reporting, interim review of the condensed consolidated financial statements included in the quarterly reports, and consent and review of registration statements.\n(2) Audit-Related Fees consist of professional services rendered for assurance and related services.\n(3) Tax fees consist of fees for professional services for tax return preparation and consultation on matters related to, state and local tax considerations and tax credits.\nThe Audit Committee has considered whether the provision of non-audit services is compatible with maintaining the independence of Moss Adams and the Audit Committee has concluded that it is.\nThe Audit Committee pre-approved 100% of the 2021 and the 2022 services and fees above pursuant to the pre-approval policy described below.\nPolicy on Pre-Approval by Audit Committee of Services Performed by Independent Registered Public Accounting Firm",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u202031.1",
+     "Certification of Principal Executive Officer pursuant to Rule 13a-14(a)/15d-14(a) as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "\u202031.2",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14(a)/15d-14(a) as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 698,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "The Audit Committee pre-approved 100% of the 2021 and the 2022 services and fees above pursuant to the pre-approval policy described below.\nPolicy on Pre-Approval by Audit Committee of Services Performed by Independent Registered Public Accounting Firm\nThe policy of the Audit Committee is to pre-approve all audit and permissible non-audit services to be performed by the independent registered public accounting firm during the fiscal year. The Audit Committee pre-approves services by authorizing specific projects within the categories outlined above, subject to the budget for each category. The Audit Committee\u2019s charter delegates to its Chairman the authority to address any requests for pre-approval of services between Audit Committee meetings, and the Chairman must report any pre-approval decisions to the Audit Committee at its next scheduled meeting.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\n3. Exhibits\nThe exhibits listed in the exhibit index of the Form 10-K and the exhibits listed in the exhibit index of this Amendment are filed with, or incorporated by reference in, this report.\nEXHIBIT INDEX",
+   "prose_after": "\u2020Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MARCHEX, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/S/    MICHAEL A. ARENDS"
+    ],
+    [
+     "",
+     "Michael A. Arends\n\n\n\nVice Chairman\n\n\n\n(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "MARCHEX, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 714,
+    "end_line": 725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "\u2020Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: May 1, 2023",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

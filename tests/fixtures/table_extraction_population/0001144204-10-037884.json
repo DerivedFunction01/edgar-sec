@@ -1,0 +1,7482 @@
+{
+ "accession": "0001144204-10-037884",
+ "cik": "0000923601",
+ "form": "10-K",
+ "filing_date": "2010-07-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v190547_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "95-3795478"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark one)\n[ ]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________ to ___________\nCommission file number 000-24968\nTHE SINGING MACHINE COMPANY, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "6601 LYONS ROAD, BUILDING A-7, COCONUT CREEK, FL 33073\n(Address of principal executive offices)\n(954) 596-1000\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\n(Name of each exchange on which registered)\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, $.01 Par Value Per Share\nIndicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [ ]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "15"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "15"
+    ],
+    [
+     "Item 4.",
+     "[Removed and Reserved]",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "16"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "17"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "23"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "23"
+    ],
+    [
+     "Item 9A(T).",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "25"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "27"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "30"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "32"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "34"
+    ],
+    [
+     "",
+     "Signatures",
+     "36"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act) Yes [ ] No [ ]\nAs of September 30, 2009, the aggregate market value of the issued and outstanding common stock held by non-affiliates of the registrant, based upon the closing price of the common stock as quoted on the Over the Counter Bulletin Board of $0.05 was approximately $681,224.70 (based on 13,624,494 shares outstanding to non-affiliates). For purposes of the above statement only, all directors, executive officers and 10% shareholders are assumed to be affiliates. This determination of affiliate status is not necessarily a conclusive determination for any other purpose.\nNumber of shares of common stock outstanding as of July 1, 2010 was 37,585,794.\nDOCUMENTS INCORPORATED BY REFERENCE \u2013 None\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nINDEX TO ANNUAL REPORT ON FORM 10-K\nFOR THE FISCAL YEAR ENDED MARCH 31, 2010",
+   "prose_after": "DISCLOSURE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (the \u201cAnnual Report\u201d) contains \u2018\u2018forward-looking statements\u2019\u2019 that represent our beliefs, projections and predictions about future events within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. All statements other than statements of historical fact are \u2018\u2018forward-looking statements\u2019\u2019, including any projections of earnings, revenue or other financial items, any statements of the plans, strategies and objectives of management for future operations, any statements concerning proposed new projects or other developments, any statements regarding future economic conditions or performance, any statements of management\u2019s beliefs, goals, strategies, intentions and objectives, and any statements of assumptions underlying any of the foregoing. Words such as \u2018\u2018may\u2019\u2019, \u2018\u2018will\u2019\u2019, \u2018\u2018should\u2019\u2019, \u2018\u2018could\u2019\u2019, \u2018\u2018would\u2019\u2019, \u2018\u2018predicts\u2019\u2019, \u2018\u2018potential\u2019\u2019, \u2018\u2018continue\u2019\u2019, \u2018\u2018expects\u2019\u2019, \u2018\u2018anticipates\u2019\u2019, \u2018\u2018future\u2019\u2019, \u2018\u2018intends\u2019\u2019, \u2018\u2018plans\u2019\u2019, \u2018\u2018believes\u2019\u2019, \u2018\u2018estimates\u2019\u2019 and similar expressions, as well as statements in the future tense, identify forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TOTAL LICENSE SALES\n\nAS A PERCENTAGE OF NET SALES\n\nFOR THE FISCAL YEAR ENDED\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bratz",
+     "",
+     "2.3",
+     "%",
+     "",
+     "6.2",
+     "%",
+     "",
+     "15.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "TOTAL LICENSE SALES\n\nAS A PERCENTAGE OF NET SALES\n\nFOR THE FISCAL YEAR ENDED\n\nMarch 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Returns of electronic hardware and music products by our customers generally occur after approval involving quality defects, damaged goods or goods shipped in error. Our policy is to give credit to our customers for the returns in conjunction with the receipt of new replacement purchase orders. Recently the increasingly competitive environment and declining economic conditions has forced the Company to extend more liberal return authorizations as a marketing tool to extend, prolong or develop deeper business relationships with key customers. Our total returns represented 12.3%, 9.4%, and 8.6% of our net sales in fiscal 2010, 2009, and 2008, respectively.\nLICENSE AGREEMENTS\nOn May 10, 2006, we entered into a two-year license agreement with MGA Entertainment, Inc. to produce and distribute a variety of karaoke products based on MGA's BRATZ\u2122 franchise, one of the world's leading toy lines and girls' lifestyle brands, in North America, Europe and Australia. These karaoke products include a TFT DVD karaoke system, sing-a-long cassette players, deluxe microphones, electronic keyboards, and an electronic drum.\nOn November 21, 2006, we entered into a three-year license agreement with MGA Entertainment, Inc. to produce and distribute a variety of consumer electronic products based on MGA's BRATZ\u2122 franchise. These consumer electronic products include boom boxes, clock radios, and portable DVDs. The license agreement contains a minimum guarantee payment term.",
+   "prose_after": "Both licensing agreements expired on December 31, 2009. As of March 31, 2010 the total amount due to MGA Entertainment, Inc. was $304,216. This amount includes $62,216 of additional royalties due in excess of guaranteed minimum advances on the karaoke products licensing agreement. In addition the Company owes MGA Entertainment, Inc. $242,000 for guaranteed minimum advances on the consumer electronic agreement due by December 31, 2008. The amounts due have not been paid due to litigation between Mattel Inc. and MGA Entertainment Inc. wherein Mattel has legally challenged MGA\u2019s trademark rights to the BRATZ\u2122 franchise. Additional information regarding MGA is referenced in Item 3 Legal Matters.\nDISTRIBUTION\nWe distribute hardware products to retailers and wholesale distributors through two methods: shipment of products from inventory held at our warehouse facilities in California (domestic sales), shipments directly through our Macau subsidiary, and manufacturers in China of products (direct sales). Domestic sales, which account for substantially all of our music sales, are made to customers located throughout North America from consignment inventories maintained at our distributor warehouse facilities. In the fiscal year ended March 31, 2010, approximately 83% of our sales were sales from our domestic warehouses (\"Domestic Sales\") and 17% were sales shipped directly from China (\"Direct Sales\").",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 274,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "our ability to execute our business plan;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "Our internal controls over financial reporting have weaknesses and conditions that need to be addressed, the disclosure of which may have an adverse impact on the price of our common stock. We are required to establish and maintain appropriate internal controls over financial reporting. Failure to establish those controls, or any failure of those controls once established, could adversely impact our public disclosures regarding our business, financial condition or results of operations. In addition, our management\u2019s assessment of internal controls over financial reporting have identified weaknesses and conditions that need to be addressed in our internal controls over financial reporting or other matters that may raise concerns for investors. The material weaknesses were primarily due to the following: (i) lack of formal procedure to evaluate lower of cost or market of slow-moving inventory; and (ii) lack of formalized financial closing procedures which has hindered scheduled closing in a timely manner, resulting in the Company\u2019s accounting department receiving supplemental information regarding certain items which require adjustment after the initial closing has taken place. Any actual or perceived weaknesses and conditions that need to be addressed in our internal controls over financial reporting, disclosure of our management\u2019s assessment of our internal controls over financial reporting or disclosure of our public accounting firm\u2019s attestation to or report on management\u2019s assessment of the Company\u2019s internal controls over financial reporting may have an adverse impact on the price of our common stock.\nTHE MARKET PRICE OF OUR COMMON STOCK MAY BE ADVERSELY AFFECTED BY SEVERAL FACTORS.\nThe market price of our common stock could fluctuate significantly in response to various factors and events, including:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "operating results below expectations;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 497,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "loss of any strategic relationship;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "industry developments;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 505,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "economic and other external factors; and"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 512
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "period-to-period fluctuations in its financial results."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 513,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "In addition, the securities markets have from time to time experienced significant price and volume fluctuations that are unrelated to the operating performance of particular companies. These market fluctuations may also materially and adversely affect the market price of our common stock.\nWE HAVE NOT PAID CASH DIVIDENDS IN THE PAST AND DO NOT EXPECT TO PAY CASH DIVIDENDS IN THE FUTURE. ANY RETURN ON INVESTMENT MAY BE LIMITED TO THE VALUE OF OUR STOCK.\nWe have never paid cash dividends on our stock and do not anticipate paying cash dividends on our stock in the foreseeable future. The payment of cash dividends on our stock will depend on our earnings, financial condition and other business and economic factors affecting us at such time as the board of directors may consider relevant. If we do not pay cash dividends, our stock may be less valuable because a return on your investment will only occur if our stock price appreciates.\nITEM 1B. UNRESOLVED STAFF COMMENTS\nNone.\nITEM 2. PROPERTIES\nOur corporate headquarters are located in Coconut Creek, Florida where we lease approximately 8,000 square feet office and warehouse facility. The lease expires on May 31, 2011. The annual rental expense is $89,464.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FISCAL PERIOD",
+     "HIGH",
+     "",
+     "L[ ]W",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal 2010:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter  (April 1 - June 30, 2009)",
+     "$",
+     "0.14",
+     "$",
+     "0.07"
+    ],
+    [
+     "Second quarter  (July 1 - September 30, 2009)",
+     "",
+     "0.08",
+     "",
+     "0.03"
+    ],
+    [
+     "Third quarter  (October 1 - December 31, 2009)",
+     "",
+     "0.19",
+     "",
+     "0.03"
+    ],
+    [
+     "Fourth quarter  (January 1 - March 31, 2010)",
+     "",
+     "0.05",
+     "",
+     "0.03"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal 2009:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter  (April 1 - June 30, 2008)",
+     "$",
+     "0.32",
+     "$",
+     "0.20"
+    ],
+    [
+     "Second quarter  (July 1 - September 30, 2008)",
+     "",
+     "0.23",
+     "",
+     "0.12"
+    ],
+    [
+     "Third quarter  (October 1 - December 31, 2008)",
+     "",
+     "0.18",
+     "",
+     "0.07"
+    ],
+    [
+     "Fourth quarter  (January 1 - March 31, 2009)",
+     "",
+     "0.17",
+     "",
+     "0.08"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has responded to the above captioned case and has removed the case to federal court, case no. CV 10-03761 DOC (RNBX). Based upon legal opinion from outside Counsel, the Company believes it has defenses to the claims raised by MGA. However, at the time of this filing, the case is still in early stages of litigation and the outcome is unknown. The Company is also contemplating pursuit of counter-claims against MGA.\nITEM 4. [REMOVED AND RESERVED]\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock traded on the NYSE Amex Equities (\u201cAMEX\u201d) under the symbol \"SMD\" however the Company was de-listed from this exchange on July 6, 2009. The Company has traded on the Over the Counter Bulletin Board (\u201cOTCBB\u201d) under the symbol \u201cSMDM.OB\u201d since July, 7, 2009. See Note 9 to the Financial Statements for additional information. Set forth below is the range of high and low sales prices for our common stock when traded on the AMEX, and the high and low bid prices for our common stock when traded on the OTCBB during Fiscal 2010 and Fiscal 2009.",
+   "prose_after": "As of July 1, 2010, based upon information received from our transfer agent, there were approximately 356 record holders of our outstanding common stock. This number does not include:\n\u2022 any beneficial owners of common stock whose shares are held in the names of various dealers, clearing agencies, banks, brokers and other fiduciaries, or\n\u2022 broker-dealers or other participants who hold or clear shares directly or indirectly through the Depository Trust Company, or its nominee, Cede & Co.\nDIVIDENDS\nWe have never declared or paid cash dividends on our common stock and our Board of Directors intends to continue its policy for the foreseeable future. Future dividend policy will depend upon our earnings, financial condition, contractual restrictions and other factors considered relevant by our Board of Directors and will be subject to limitations imposed under Delaware law.\nEQUITY COMPENSATION PLAN INFORMATION\nThe following table summarizes our equity compensation plan information as of March 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "WEIGHTED-AVERAGE",
+     "",
+     "NUMBER OF SECURITIES",
+     ""
+    ],
+    [
+     "",
+     "NUMBER OF SECURITIES",
+     "",
+     "EXERCISE PRICE OF",
+     "",
+     "REMAINING AVAILABLE FOR FUTURE",
+     ""
+    ],
+    [
+     "ISSUANCE UNDER EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "TO BE ISSUED UPON",
+     "",
+     "OUTSTANDING",
+     "",
+     "COMPENSATION PLANS",
+     ""
+    ],
+    [
+     "",
+     "EXERCISE OF OUTSTANDING",
+     "",
+     "OPTIONS, WARRANTS",
+     "",
+     "(EXCLUDING SECURITIES IN",
+     ""
+    ],
+    [
+     "PLAN CATEGORY",
+     "OPTIONS, WARRANTS AND RIGHTS",
+     "",
+     "AND RIGHTS",
+     "",
+     "COLUMN (A))",
+     ""
+    ],
+    [
+     "Equity Compensation Plans approved by Security Holders",
+     "",
+     "646,710",
+     "$",
+     ".56",
+     "",
+     "1,213,825"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity Compensation Plans Not approved by Security Holders",
+     "",
+     "0",
+     "$",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 586,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "As of July 1, 2010, based upon information received from our transfer agent, there were approximately 356 record holders of our outstanding common stock. This number does not include:\n\u2022 any beneficial owners of common stock whose shares are held in the names of various dealers, clearing agencies, banks, brokers and other fiduciaries, or\n\u2022 broker-dealers or other participants who hold or clear shares directly or indirectly through the Depository Trust Company, or its nominee, Cede & Co.\nDIVIDENDS\nWe have never declared or paid cash dividends on our common stock and our Board of Directors intends to continue its policy for the foreseeable future. Future dividend policy will depend upon our earnings, financial condition, contractual restrictions and other factors considered relevant by our Board of Directors and will be subject to limitations imposed under Delaware law.\nEQUITY COMPENSATION PLAN INFORMATION\nThe following table summarizes our equity compensation plan information as of March 31, 2010:",
+   "prose_after": "RECENT SALES OF UNREGISTERED SECURITIES\nOn September 25, 2009 the Company issued 136,362 shares of common stock to our Board of Directors at $0.11 per share, pursuant to our annual director compensation plan.\nAll of the above issuances and sales were deemed to be exempt under Rule 506 of Regulation D and/or Section 4(2) of the Securities Act. No advertising or general solicitation was employed in offering the securities. The offerings and sales were made to a limited number of persons, all of whom were accredited investors, business associates of the Singing Machine or executive officers of the Singing Machine, and transfer was restricted by the Singing Machine in accordance with the requirement of the Securities Act. In addition to representations by the above-reference persons, we have made independent determinations that all of the above-referenced persons were accredited or sophisticated investors, and that they were capable of analyzing the merits and risks of their investment, and that they understood the speculative nature of their investment. Furthermore, all of the above-referenced persons were provided with access to our Securities and Exchange Commission filings.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "2006",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "21,277,370",
+     "",
+     "$",
+     "31,780,709",
+     "",
+     "$",
+     "34,067,871",
+     "",
+     "$",
+     "26,732,144",
+     "",
+     "$",
+     "32,305,560",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "$",
+     "(3,050,807)",
+     "",
+     "$",
+     "(2,154,563)",
+     "",
+     "$",
+     "1,712",
+     "",
+     "$",
+     "(1,714,988)",
+     "",
+     "$",
+     "(1,905,250)",
+     ""
+    ],
+    [
+     "Income tax benefit (expense)",
+     "$",
+     "-",
+     "",
+     "$",
+     "(36,652)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,453,576",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(3,050,807)",
+     "",
+     "$",
+     "(2,191,215)",
+     "",
+     "$",
+     "1,712",
+     "",
+     "$",
+     "738,588",
+     "",
+     "$",
+     "(1,905,250)",
+     ""
+    ],
+    [
+     "Balance Sheet:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Working capital",
+     "$",
+     "(1,344,634)",
+     "",
+     "$",
+     "1,535,498",
+     "",
+     "$",
+     "3,300,422",
+     "",
+     "$",
+     "2,394,796",
+     "",
+     "$",
+     "(4,274,100)",
+     ""
+    ],
+    [
+     "Current ratio",
+     "",
+     "78",
+     "%",
+     "",
+     "127",
+     "%",
+     "",
+     "204",
+     "%",
+     "",
+     "187",
+     "%",
+     "",
+     "48",
+     "%"
+    ],
+    [
+     "Property, plant and equipment, net",
+     "$",
+     "736,966",
+     "",
+     "$",
+     "886,770",
+     "",
+     "$",
+     "598,280",
+     "",
+     "$",
+     "446,510",
+     "",
+     "$",
+     "513,615",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "5,689,478",
+     "",
+     "$",
+     "8,325,724",
+     "",
+     "$",
+     "7,236,167",
+     "",
+     "$",
+     "5,657,800",
+     "",
+     "$",
+     "4,524,267",
+     ""
+    ],
+    [
+     "Shareholders' equity",
+     "$",
+     "(447,571)",
+     "",
+     "$",
+     "2,578,897",
+     "",
+     "$",
+     "4,068,064",
+     "",
+     "$",
+     "2,897,359",
+     "",
+     "$",
+     "(3,661,798)",
+     ""
+    ],
+    [
+     "Per Share Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) per common share \u2013 basic",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "0.000",
+     "",
+     "$",
+     "0.04",
+     "",
+     "$",
+     "(0.19)",
+     ""
+    ],
+    [
+     "Income (loss) per common share \u2013 diluted",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "0.000",
+     "",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "(0.19)",
+     ""
+    ],
+    [
+     "Cash dividends paid",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "All of the above issuances and sales were deemed to be exempt under Rule 506 of Regulation D and/or Section 4(2) of the Securities Act. No advertising or general solicitation was employed in offering the securities. The offerings and sales were made to a limited number of persons, all of whom were accredited investors, business associates of the Singing Machine or executive officers of the Singing Machine, and transfer was restricted by the Singing Machine in accordance with the requirement of the Securities Act. In addition to representations by the above-reference persons, we have made independent determinations that all of the above-referenced persons were accredited or sophisticated investors, and that they were capable of analyzing the merits and risks of their investment, and that they understood the speculative nature of their investment. Furthermore, all of the above-referenced persons were provided with access to our Securities and Exchange Commission filings.\nPURCHASES OF EQUITY SECURITIES BY THE ISSUER AND AFFILIATED PURCHASERS\nNone.\nITEM 6. SELECTED FINANCIAL DATA\nThe following selected consolidated financial data should be read in conjunction with our consolidated financial statements and related notes and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d included elsewhere in this Annual Report on Form 10-K. The statements of operations data for the years ended March 31, 2010, 2009, and 2008 and the balance sheet data at March 31, 2010 and 2009 are derived from our audited financial statements which are included elsewhere in this Form 10-K. The statement of operations data for the year ended March 31, 2007 and 2006 and the balance sheet data at March 31, 2008, 2007 and 2006 are derived from our audited financial statements which are not included in this Form 10-K. The historical results are not necessarily indicative of results to be expected for future periods.",
+   "prose_after": "ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion should be read in conjunction with the Financial Statements and Notes filed herewith. Our fiscal year ends March 31. This document contains certain forward-looking statements regarding anticipated trends in our financial condition and results of operations and our business strategy. (See Part I, Item 1A, \"Risk Factors \"). These forward-looking statements are based largely on our current expectations and are subject to a number of risks and uncertainties. Actual results could differ materially from these forward-looking statements. Important factors to consider in evaluating such forward-looking statements include (i) changes in external factors or in our internal budgeting process which might impact trends in our results of operations; (ii) unanticipated working capital or other cash requirements; (iii) changes in our business strategy or an inability to execute our strategy due to unanticipated changes in the industries in which we operate; and (iv) various competitive market factors that may prevent us from competing successfully in the marketplace.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "81.3",
+     "%",
+     "",
+     "81.3",
+     "%",
+     "",
+     "77.5",
+     "%"
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "32.6",
+     "%",
+     "",
+     "25.1",
+     "%",
+     "",
+     "22.1",
+     "%"
+    ],
+    [
+     "Operating (Loss) Income",
+     "",
+     "-13.9",
+     "%",
+     "",
+     "-6.4",
+     "%",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "Other (Expenses), Income, net",
+     "",
+     "-0.4",
+     "%",
+     "",
+     "-0.4",
+     "%",
+     "",
+     "-0.5",
+     "%"
+    ],
+    [
+     "(Loss) Income before Taxes",
+     "",
+     "-14.3",
+     "%",
+     "",
+     "-6.8",
+     "%",
+     "",
+     "0.1",
+     "%"
+    ],
+    [
+     "(Provision) Benefit for Income Taxes",
+     "",
+     "0.0",
+     "%",
+     "",
+     "-0.1",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Net (Loss) Income",
+     "",
+     "-14.3",
+     "%",
+     "",
+     "-6.9",
+     "%",
+     "",
+     "0.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We believe that our efforts to meet our goals in Fiscal 2010 were adversely affected by the decline in worldwide economic conditions. More specifically, we experienced continued increase in competitive pricing pressures, lack of stability and confidence in the retail market, and substantial decrease in direct import of goods due to significant decreases in both foreign and domestic business. During Fiscal 2010, our revenue and gross profit decreased by 33% and total operating expenses decreased by 13.0%. We experienced revenue declines across all of our market segments. The most significant drop was in our direct import business which decreased 78.7% due to declining consumer sentiment toward worldwide economic conditions. Foreign sales decreased by 50.9% due to excess inventories from prior year purchases at our major European customers. We reduced our operating expenses however the decrease was not totally commensurate with the decrease in sales.\nIn June 2010, and subsequent to our fiscal year end, the Company was notified by DBS Bank that our credit and factoring facilities totaling $13.0M were being withdrawn effective upon receipt of amounts due on both factoring and accounts payable financing facilities. The Company is actively pursuing replacement financing facilities. Our parent company, The Starlight Group, has committed to providing bridge financing until new facilities have been found.\nDue to our net loss and reduced shareholders\u2019 equity in Fiscal 2010, we no longer met the minimum criteria to trade on the NYSE Amex Equities (\u201cAMEX\u201d). As a result the Company was de-listed from the AMEX effective July 6, 2009. The Company began trading on the Over the Counter Bulletin Board (\u201cOTCBB\u201d) under the symbol \u201cSMDM.OB\u201d beginning July, 7, 2009.\nRESULTS OF OPERATIONS\nThe following table sets forth, for the periods indicated, certain income and expense items expressed as a percentage of the Company's total revenues:",
+   "prose_after": "FISCAL YEAR ENDED MARCH 31, 2010 COMPARED WITH FISCAL YEAR ENDED MARCH 31, 2009\nNET SALES\nNet sales for Fiscal 2010 were approximately $21.3 million. This represents a decrease of approximately $10.5 million as compared to approximately $31.8 million in the fiscal year ended March 31, 2009 (\u201cFiscal 2009\u201d). The decrease in net sales was primarily due to a $10.6 million decrease in direct import sales to domestic customers. We believe this reduction is primarily due to continuing concern over the worldwide decline in economic conditions as \u201cbig-box\u201d retail stores were very late in committing to purchases and dramatically cut their purchases for karaoke equipment. While the company did experience a slight increase in domestic shipments from our California facility of $2.9 million to accommodate late season demand, this increase was offset by a decrease in sales to foreign customers of $2.8 million where excess inventory of equipment purchased in the prior fiscal year adversely influenced sales in this market segment.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary Atkinson",
+     "28",
+     "Interim CEO and General Counsel",
+     ""
+    ],
+    [
+     "Bernardo Melo",
+     "33",
+     "VP Global Sales and Marketing",
+     ""
+    ],
+    [
+     "Lionel Marquis",
+     "57",
+     "Principal Accounting Officer",
+     ""
+    ],
+    [
+     "Carol Lau",
+     "61",
+     "Interim CFO and Chairwoman",
+     ""
+    ],
+    [
+     "Harvey Judkowitz",
+     "65",
+     "Director",
+     ""
+    ],
+    [
+     "Bernard Appel",
+     "78",
+     "Director",
+     ""
+    ],
+    [
+     "Stewart A. Merkin",
+     "67",
+     "Director",
+     ""
+    ],
+    [
+     "Peter Hon",
+     "69",
+     "Director",
+     ""
+    ],
+    [
+     "Yat Tung Lau",
+     "31",
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 920,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "There were no other changes in the Company\u2019s internal controls over financial reporting during the quarter ended March 31, 2010, that materially affected, or were reasonably likely to materially affect, the Company\u2019s internal control over financial reporting, other than the remediation measures described above.\nThis Annual Report does not include an attestation report of the Company\u2019s independent registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s independent registered public accounting firm pursuant to temporary rules of the SEC that permit the Company to provide only management\u2019s report in this Annual Report.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth certain information with respect to our executive officers, directors and significant employees as of June 15, 2010.\nFor Fiscal Year Ended March 31, 2010",
+   "prose_after": "Directors are elected or appointed to serve until the next annual meeting and until their successors are elected and qualified. Officers are appointed to serve for one year until the meeting of the Board of Directors following the annual meeting of stockholders and until their successors have been elected and qualified. Any officer elected or appointed by the Board or appointed by an executive officer or by a committee may be removed by the Board either with or without cause, and in the case of an officer appointed by an executive officer or by a committee, by the officer or committee that appointed him or by the president.\nThe following information sets forth the backgrounds and business experience of our directors and executive officers and has been provided to us by each respective individual:\nGary Atkinson joined the Company in January 2008 and served as General Counsel and Corporate Secretary. For the past two years, Mr. Atkinson has worked closely with all departments within the Company, including Operations, Finance, Sales, and the China production side. In November 2009, Mr. Atkinson was appointed as Interim Chief Executive Officer. Mr. Atkinson is a licensed attorney in the State of Florida and Georgia. He graduated from the University of Rochester with a Bachelors Degree in Economics and has been awarded a dual-degree J.D./M.B.A. from Case Western Reserve University School of Law and Weatherhead School of Management.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards",
+     "",
+     "Non-Equity\n\nIncentive Plan\n\nComp",
+     "",
+     "Non-Qualified Deferred\n\nCompensation Earnings",
+     "",
+     "Other Comp",
+     "",
+     "TOTAL COMP",
+     ""
+    ],
+    [
+     "Gary Atkinson (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interim Chief Executive Officer",
+     "2010",
+     "$",
+     "82,361.73",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "82,361.73"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anton Handal (2)",
+     "2010",
+     "$",
+     "0.00",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "0.00"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "2009",
+     "$",
+     "0.00",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "11,744.00",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "11,744.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carol Lau",
+     "2010",
+     "$",
+     "0.00",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "0.00"
+    ],
+    [
+     "Chief Financial Officer",
+     "2009",
+     "$",
+     "0.00",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bernardo Melo",
+     "2010",
+     "$",
+     "138,702.68",
+     "$",
+     "10,000.00",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "148,702.68"
+    ],
+    [
+     "VP Global Sales & Marketing",
+     "2009",
+     "$",
+     "130,000.00",
+     "",
+     "29,515.95",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "3,662.50",
+     "$",
+     "163,178.45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act requires our officers, directors, and persons who own more than ten percent of a registered class of our equity securities to file reports of securities ownership and changes in such ownership with the SEC. Officers, directors, and greater-than-ten-percent stockholders are required by SEC regulations to furnish us with copies of all Section 16(a) forms that they file.\nBased solely upon a review of Forms 3, Forms 4, and Forms 5 furnished to us pursuant to Rule 16a-3 under the Exchange Act, we believe that all such forms required to be filed pursuant to Section 16(a) of the Exchange Act during the year ended March 31, 2010 were timely filed, as necessary, by the officers, directors, and security holders required to file such forms.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table provides certain summary information concerning compensation awarded to, earned by or paid to our Chief Executive Officer and other named executive officers of our Company (collectively, the \u201cnamed executive officers\u201d) for Fiscal 2010.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "(1) Mr. Atkinson was appointed as Interim Chief Executive Officer on November 1, 2009, however his salary reported in the above table is for the full Fiscal year 2010.\n(2) Mr. Handal resigned as Chief Financial Officer, effective November 1, 2009. He did not receive a salary during Fiscal 2010. However he had an option to purchase warrants held by koncepts International Limited which expired on July 1, 2009. Upon payment of $5,000, Mr. Handal had the option to purchase 750,000 stock warrants in the Company with an exercise price of $0.35 per share, exercisable at any time. Mr. Handal was also awarded 300,000 stock options on October 3, 2008, with an exercise price of $0.14 per share, which were not exercisable until October 3, 2009. The fair value of the option award has been calculated in accordance with FASB ASC 718-20. Those options expired January 31, 2010.\nNARRATIVE DISCLOSURE TO SUMMARY COMPENSATION TABLE\nAnton Handal resigned as Chief Executive Officer of the Company on November 1, 2009. Gary Atkinson was appointed as Interim Chief Executive Officer effective the same date. Mr. Atkinson does not have an employment contract with the Company and has an annual salary of $86,000. Mr. Atkinson\u2019s reported salary amount for Fiscal 2010, as shown in the table above, is less than his salary due to a Company-wide temporary 10% pay reduction imposed during Fiscal 2010.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name a\u2022d Principal Position",
+     "Number [ ]f\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions (#)\n\nExercisable",
+     "",
+     "Number [ ]f\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions (#)\n\nUnexercisable",
+     "",
+     "Equity Incentive\n\nPlan Awards:\n\nNumber [ ]f\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nUnearned Options\n\n(#)",
+     "",
+     "Option\n\nExercise\n\nPrice ($)",
+     "",
+     "Option\n\nExpiration\n\nDate",
+     "Number [ ]f\n\nShares [ ][ ]\n\nUnits [ ]f\n\nStock That\n\nHave N[ ]t\n\nVested (#)",
+     "",
+     "Market\n\nValue [ ]f\n\nShares [ ][ ]\n\nUnits [ ]f\n\nStock That\n\nHave N[ ]t\n\nVested ($)",
+     "",
+     "Equity\n\nIncentive Plan\n\nAwards:\n\nNumber [ ]f\n\nUnearned\n\nShares, Units [ ][ ]\n\nOther Rights\n\nThat Have N[ ]t\n\nVested (#)",
+     "",
+     "Equity Incentive\n\nPlan Awards:\n\nMarket [ ][ ]\n\nPayout Value [ ]f\n\nUnearned\n\nShares, Units [ ][ ]\n\nOther Rights\n\nThat Have N[ ]t\n\nVested ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bernardo Melo",
+     "",
+     "4,000",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "1.97",
+     "12/19/2013",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "6,500",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "1.54",
+     "2/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "20,000",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "0.6",
+     "5/8/2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "30,000",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "0.33",
+     "4/9/2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "60,500",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "NARRATIVE DISCLOSURE TO SUMMARY COMPENSATION TABLE\nAnton Handal resigned as Chief Executive Officer of the Company on November 1, 2009. Gary Atkinson was appointed as Interim Chief Executive Officer effective the same date. Mr. Atkinson does not have an employment contract with the Company and has an annual salary of $86,000. Mr. Atkinson\u2019s reported salary amount for Fiscal 2010, as shown in the table above, is less than his salary due to a Company-wide temporary 10% pay reduction imposed during Fiscal 2010.\nAs of July 1, 2010, the Company did not have any employment contracts with any of its employees nor separation or consulting agreements with any individuals or entities.\nOPTION GRANTS IN FISCAL 2010\nNo grants of stock option awards were made to our named executive officers during Fiscal 2010.\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END\nThe following table sets forth information with respect to grants of options to purchase our common stock under our Year 2001 Stock Option Plan to the named executive officers during Fiscal 2010:",
+   "prose_after": "The following table sets forth with respect to the named director, compensation information inclusive of equity awards and payments made in Fiscal 2010. All option awards were granted from our Year 2001 Stock Option Plan.\nDIRECTOR COMPENSATION",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or\n\nPaid in Cash",
+     "",
+     "Stock Awards (1)",
+     "",
+     "Option Awards\n\n(2)",
+     "",
+     "Non-Equity\n\nIncentive Plan\n\nCompensation ($)",
+     "",
+     "Nonqualified\n\nDeferred\n\nCompensation\n\nEarnings",
+     "",
+     "All Other\n\nCompensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bernard Appel",
+     "$",
+     "8,800",
+     "$",
+     "2,500",
+     "$",
+     "492",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "11,792"
+    ],
+    [
+     "Peter Hon",
+     "$",
+     "400",
+     "$",
+     "2,500",
+     "$",
+     "0",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "2,900"
+    ],
+    [
+     "Harvey Judkowitz",
+     "$",
+     "8,600",
+     "$",
+     "2,500",
+     "$",
+     "492",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "11,592"
+    ],
+    [
+     "Carol Lau",
+     "$",
+     "8,800",
+     "$",
+     "2,500",
+     "$",
+     "0",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "11,300"
+    ],
+    [
+     "Yat Tung Lau",
+     "$",
+     "0",
+     "$",
+     "2,500",
+     "$",
+     "0",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "2,500"
+    ],
+    [
+     "Stewart Merkin",
+     "$",
+     "8,800",
+     "$",
+     "2,500",
+     "$",
+     "492",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "11,792"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1095,
+    "end_line": 1112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth with respect to the named director, compensation information inclusive of equity awards and payments made in Fiscal 2010. All option awards were granted from our Year 2001 Stock Option Plan.\nDIRECTOR COMPENSATION",
+   "prose_after": "Refer to Note 1 \u201cStock Based Compensation\u201d in the Notes to the Consolidated Financial Statements included elsewhere in this Annual Report for the relevant assumptions used to determine the valuation of our option awards.\n(1) As of March 31, 2010 the aggregate number of stock awards held by Messrs. Appel, Merkin, and Judkowitz is 42,305, 39,958, and 52,305, respectively. The aggregate stock awards held by Messrs. Hon, Yat Tung Lau and Ms. Lau are 74,311.\n(2) As of March 31, 2010 the aggregate number of Company stock options held by Messrs. Appel and Judkowitz is 140,000. Mr. Merkin holds 120,000 options and Messrs. Hon, Yat Tung Lau, and Ms. Lau each hold 40,000 options.\nDuring Fiscal 2010, our compensation package for our non-employee directors consisted of grants of stock options, cash payments, stock issuances and reimbursement of costs and expenses associated with attending our board meetings. Our six non-employee directors during Fiscal 2010 were Messrs. Appel, Judkowitz, Hon, Yat Tung Lau and Merkin and Ms. Carol Lau.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1141,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Amount and Nature of\n\nCertain Beneficial\n\nOwnership of\n\nCommon Stock",
+     "",
+     "",
+     "Percentage of\n\noutstanding\n\nshares of\n\ncommon stock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Security Ownership of Management:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary Atkinson",
+     "",
+     "7,753",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Anton Handal (1)",
+     "",
+     "-",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Lionel Marquis",
+     "",
+     "-",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Bernardo Melo (2)",
+     "",
+     "60,500",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Bernard Appel (3)",
+     "",
+     "162,305",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Harvey Judkowitz (3)",
+     "",
+     "172,305",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Carol Lau (3)",
+     "",
+     "68,857",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Yat Tung Lau (3)",
+     "",
+     "68,857",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Peter Hon (3)",
+     "",
+     "68,857",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Stewart Merkin (3)",
+     "",
+     "139,958",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Officers & Directors as a Group (9 persons)",
+     "",
+     "749,392",
+     "",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Security Ownership of Certain Beneficial Owners:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "koncepts International Ltd. (4)",
+     "",
+     "19,932,679",
+     "",
+     "",
+     "51.3",
+     "%"
+    ],
+    [
+     "Arts Electronics Ltd. (5)",
+     "",
+     "3,745,917",
+     "",
+     "",
+     "10.0",
+     "%"
+    ],
+    [
+     "Gentle Boss Investments Ltd (6)",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "5.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "* Less than 1%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Shares of Common Stock as of June 15, 2010",
+     "",
+     "37,585,794",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Options Exercisable within 60 days of June 15,2010",
+     "",
+     "1,836,710",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "39,422,504",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "As used herein, the term beneficial ownership with respect to a security is defined by Rule 13d-3 under the Securities Exchange Act of 1934 as consisting of sole or shared voting power (including the power to vote or direct the vote) and/or sole or shared investment power (including the power to dispose or direct the disposition of) with respect to the security through any contract, arrangement, understanding, relationship or otherwise, including a right to acquire such power(s) during the next 60 days. Unless otherwise noted below, and subject to applicable property laws, to our knowledge each person has sole investment and sole voting power over the shares shown as beneficially owned by them. Unless otherwise noted, the principal address of each of the directors and officers listed below is c/o The Singing Machine Company, Inc., 6601 Lyons Road,, Building A-7, Coconut Creek, FL 33073.\nSecurity Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nAs of June 15, 2010",
+   "prose_after": "(1) Includes stock options to purchase 60,500 shares of common stock, which is exercisable within 60 days of the record date.\n(2) Includes as to the person indicated, the following outstanding stock options to purchase shares of the Company\u2019s Common Stock issued under the 1994 and 2001 Stock Option Plans, which will be vested and exercisable within 60 days of the record date: 120,000 options held by Bernie Appel; 120,000 options held by Harvey Judkowitz, 100,000 held by Stewart Merkin, and 40,000 held by each of Carol Lau, Peter Hon, and Yat-Tung Lau.\n(3) Includes a common stock purchase warrant to purchase 1,250,000 shares of common stock, which is exercisable within 60 days of the record date. The address for koncepts International Limited is 5/F Shing Dao Industrial Bldg, 232 Aberdeen Main Road, Aberdeen China.\n(4) The address for Arts Electronics Ltd. is Room 101, Fo Tan Ind CTR 1/F, 26-28 Au Pui Wan, Fo Tan, Shatin N.T. Hong Kong.\n(5) The address for Gentle Boss Investments Ltd. is Unit 6, 9/F, Tower B, 55 Hoi Yuen Road, Kwun Tong, Kowloon Hong Kong.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1171,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "Fiscal 2010",
+     "",
+     "Fiscal 2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "132,147",
+     "$",
+     "134,950"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "15,000",
+     "",
+     "11,000"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "1,000",
+     "",
+     "1,954"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fees",
+     "$",
+     "148,147",
+     "$",
+     "147,904"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1264,
+    "end_line": 1276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "We believe that the terms of all of the above transactions are commercially reasonable and no less favorable to us than we could have obtained from an unaffiliated third party on an arm\u2019s length basis. Our policy requires that all related parties recuse themselves from negotiating and voting on behalf of our company in connection with related party transactions. While we do not maintain a written policy with respect to related party transactions, our board of directors routinely reviews potential transactions with those parties we have identified as related parties prior to the consummation of the transaction. Each transaction is reviewed to determine that a related party transaction is entered into by us with the related party on an \u201carms length\u201d basis, or pursuant to normal competitive negotiation. We also generally require that all related parties recuse themselves from negotiating and voting on behalf of the Company in connection with related party transactions.\nCORPORATE GOVERNANCE\nBoard Determination of Independence\nThe Board has determined that Messrs. Judkowitz, Merkin and Appel are \"independent directors\" within the meaning of the listing standards of the American Stock Exchange. The audit committee recommends the engagement of independent auditors to the board, initiates and oversees investigations into matters relating to audit functions, reviews the plans and results of audits with our independent auditors, reviews our internal accounting controls, and approves services to be performed by our independent auditors.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following is a summary of the fees billed to the Singing Machine by Mallah Furman, Certified Public Accountants for professional services rendered for Fiscal 2010 and Fiscal 2009:",
+   "prose_after": "Audit Fees - Consists of fees billed for professional services rendered for the audit of the Singing Machine's consolidated financial statements and review of the interim consolidated financial statements included in quarterly reports and services that were provided by Mallah Furman, Certified Public Accountants (formerly Berkovits & Co, LLP) in connection with statutory and regulatory filings or engagements\nTax Fees\n- Consists of fees billed for professional services for tax compliance, tax advice and tax planning. These services include assistance regarding federal, state and international tax compliance, tax audit defense, customs and duties, mergers and acquisitions, and international tax planning.\nAll Other Fees - Consists of fees for products and services other than the services reported above.\nOut of the total Fiscal 2010 and Fiscal 2009 audit and other fees, $127,890 and $134,950 were billed by Mallah Furman, Certified Public Accountants respectively.\nPOLICY ON AUDIT COMMITTEE PRE-APPROVAL OF AUDIT AND PERMISSIBLE NON-AUDIT SERVICES OF INDEPENDENT AUDITORS",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1312,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "PART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\n(a) 1. The following financial statements for The Singing Machine Company, Inc. and Subsidiaries are filed as a part of this report:\nConsolidated Balance Sheets\u2014 March 31, 2010 and 2009\nConsolidated Statements of Operations\u2014Years ended March 31, 2010, 2009 and 2008.\nConsolidated Statements of Shareholders' (deficit) Equity\u2014Years ended March 31, 2010, 2009 and 2008.\nConsolidated Statements of Cash Flows\u2014Years ended March 31, 2010, 2009 and 2008.\n2. Notes to Consolidated Financial Statements\nSchedules are omitted because of the absence of conditions under which they are required or because the information is included in the financial statements or notes thereto.\n(b) Exhibits.",
+   "prose_after": "3.1 Certificate of Incorporation of the Singing Machine filed with the Delaware Secretary of State on February 15, 1994 and amendments through April 15, 1999 (incorporated by reference to Exhibit 3.1 in the Singing Machine's registration statement on Form SB-2 filed with the SEC on March 7, 2000).\n3.2 Certificate of Amendment of the Singing Machine filed with the Delaware Secretary of State on September 29, 2000 (incorporated by reference to Exhibit 3.1 in the Singing Machine's Quarterly Report on Form 10-QSB for the period ended September 30, 1999 filed with the SEC on November 14, 2000).\n3.3 Certificates of Correction filed with the Delaware Secretary of State on March 29 and 30, 2001 correcting the Amendment to our Certificate of Incorporation dated April 20, 1998 (incorporated by reference to Exhibit 3.11 in the Singing Machine's registration statement on Form SB-2 filed with the SEC on April 11, 2000).\n3.4 Amended By-Laws of the Singing Machine Singing Machine (incorporated by reference to Exhibit 3.14 in the Singing Machine's Annual Report on Form 10-KSB for the year ended March 31, 2001 filed with the SEC on June 29, 2001).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1338,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: July 14, 2010",
+     "By:",
+     "/s/ Gary Atkinson"
+    ],
+    [
+     "",
+     "",
+     "Gary Atkinson"
+    ],
+    [
+     "",
+     "",
+     "Interim Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1389,
+    "end_line": 1395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "10.20 Licensing Agreement dated November 21, 2006 by and among The Singing Machine Company, Inc. and MGA Entertainment, Inc. (incorporated by reference to the Singing Machine\u2019s Annual Report on Form 10-K filed with the SEC on July 7, 2009)\n31.1 Certification of Gary Atkinson, Interim Chief Executive Officer, pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended.*\n31.2 Certification of Carol Lau, Chief Financial Officer, pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended.*\n32.1 Certifying Statement of the Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act.*\n32.2 Certifying Statement of the Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act.*\n* Filed herewith\n+ Compensatory plan or arrangement.\nSIGNATURES\nIn accordance with the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, The Singing Machine Company, Inc. has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nTHE SINGING MACHINE COMPANY, INC.",
+   "prose_after": "In accordance with the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of The Singing Machine Company, Inc. and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1430,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SIGNATURE",
+     "CAPACITY",
+     "DATE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Gary Atkinson",
+     "Interim Chief Executive Officer",
+     "July 14, 2010"
+    ],
+    [
+     "Gary Atkinson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Carol Lau",
+     "Chief Financial Officer",
+     "July 14, 2010"
+    ],
+    [
+     "Carol Lau",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BERNARD APPEL",
+     "Director",
+     "July 14, 2010"
+    ],
+    [
+     "Bernard Appel",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "HARVEY JUDKOWITZ",
+     "Director",
+     "July 14, 2010"
+    ],
+    [
+     "Harvey Judkowitz",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "STEWART MERKIN",
+     "Director",
+     "July 14, 2010"
+    ],
+    [
+     "Stewart Merkin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "YAT TUNG LAU",
+     "Director",
+     "July 14, 2010"
+    ],
+    [
+     "Yat Tung Lau",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PETER HON",
+     "Director",
+     "July 14, 2010"
+    ],
+    [
+     "Peter Hon",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1398,
+    "end_line": 1430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of The Singing Machine Company, Inc. and in the capacities and on the dates indicated.",
+   "prose_after": "THE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nFINANCIAL STATEMENTS\nINDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1430,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Reports of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Shareholders' Equity (Deficit)",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1439,
+    "end_line": 1447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "THE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nFINANCIAL STATEMENTS\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Shareholders of\nThe Singing Machine Company, Inc. and Subsidiaries\nWe have audited the accompanying consolidated balance sheets of The Singing Machine Company, Inc. and Subsidiaries (the \u201cCompany\u201d) as of March 31, 2010 and 2009, and the related consolidated statements of operations, shareholders\u2019 equity, and cash flows for each of the years in the three year period ended March 31, 2010. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "March 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "865,777",
+     "",
+     "$",
+     "957,163",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowances of $185,407 and $261,980, respectively",
+     "",
+     "983,791",
+     "",
+     "",
+     "972,345",
+     ""
+    ],
+    [
+     "Due from factor",
+     "",
+     "14,987",
+     "",
+     "",
+     "73,854",
+     ""
+    ],
+    [
+     "Inventories,net",
+     "",
+     "2,804,848",
+     "",
+     "",
+     "4,729,667",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "118,465",
+     "",
+     "",
+     "526,563",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "4,787,868",
+     "",
+     "",
+     "7,259,592",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "736,966",
+     "",
+     "",
+     "886,770",
+     ""
+    ],
+    [
+     "Other Non-Current Assets",
+     "",
+     "164,644",
+     "",
+     "",
+     "179,362",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "5,689,478",
+     "",
+     "$",
+     "8,325,724",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders' (Deficit) Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "895,713",
+     "",
+     "$",
+     "2,588,769",
+     ""
+    ],
+    [
+     "Due to related parties - net",
+     "",
+     "3,033,801",
+     "",
+     "",
+     "1,498,391",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "227,257",
+     "",
+     "",
+     "422,260",
+     ""
+    ],
+    [
+     "Short-term loan - bank",
+     "",
+     "1,091,828",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current portion of long-term financing obligation",
+     "",
+     "18,186",
+     "",
+     "",
+     "18,186",
+     ""
+    ],
+    [
+     "Customer credits on account",
+     "",
+     "742,009",
+     "",
+     "",
+     "908,449",
+     ""
+    ],
+    [
+     "Deferred gross profit on estimated returns",
+     "",
+     "123,708",
+     "",
+     "",
+     "288,039",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "6,132,502",
+     "",
+     "",
+     "5,724,094",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term financing obligation, less current portion",
+     "",
+     "4,547",
+     "",
+     "",
+     "22,733",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "6,137,049",
+     "",
+     "",
+     "5,746,827",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' (Deficit) Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $1.00 par value; 1,000,000 shares authorized, no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, Class A, $.01 par value;  100,000 shares authorized; no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value;  100,000,000 shares authorized; 37,585,794 and 37,449,432 shares issued and outstanding",
+     "",
+     "375,857",
+     "",
+     "",
+     "374,494",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "19,098,726",
+     "",
+     "",
+     "19,075,750",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(19,922,154)",
+     "",
+     "",
+     "(16,871,347)",
+     ""
+    ],
+    [
+     "Total Shareholders' (Deficit) Equity",
+     "",
+     "(447,571)",
+     "",
+     "",
+     "2,578,897",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholders' (Deficit) Equity",
+     "$",
+     "5,689,478",
+     "",
+     "$",
+     "8,325,724",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1472,
+    "end_line": 1520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of the Company as of March 31, 2010 and 2009, and the results of its operations and its cash flows for each of the years in the three year period ended March 31, 2010, in conformity with accounting principles generally accepted in the United States of America.\nWe have also audited Schedule II of the Company for the years ended March 31, 2010, 2009, 2008. In our opinion, this schedule, when considered in relation to the basic consolidated financial statements taken as a whole, presents fairly, in all material respects, the information therein.\n/s/ Mallah Furman\nFort Lauderdale, Florida\nJune 23, 2010\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1467,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "March 31, 2009",
+     "",
+     "",
+     "March 30, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "21,277,370",
+     "",
+     "$",
+     "31,780,709",
+     "",
+     "$",
+     "34,067,871",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "17,291,011",
+     "",
+     "",
+     "25,836,586",
+     "",
+     "",
+     "26,389,070",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "3,986,359",
+     "",
+     "",
+     "5,944,123",
+     "",
+     "",
+     "7,678,801",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "",
+     "3,114,552",
+     "",
+     "",
+     "3,160,950",
+     "",
+     "",
+     "2,931,416",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "3,388,203",
+     "",
+     "",
+     "4,346,627",
+     "",
+     "",
+     "4,279,728",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "439,432",
+     "",
+     "",
+     "459,354",
+     "",
+     "",
+     "311,273",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "6,942,187",
+     "",
+     "",
+     "7,966,931",
+     "",
+     "",
+     "7,522,417",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income from Operations",
+     "",
+     "(2,955,828)",
+     "",
+     "",
+     "(2,022,808)",
+     "",
+     "",
+     "156,384",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on sale of subsidiary and other assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(27,654)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(94,979)",
+     "",
+     "",
+     "(131,755)",
+     "",
+     "",
+     "(127,018)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Other Expenses",
+     "",
+     "(94,979)",
+     "",
+     "",
+     "(131,755)",
+     "",
+     "",
+     "(154,672)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income before provision for income taxes",
+     "",
+     "(3,050,807)",
+     "",
+     "",
+     "(2,154,563)",
+     "",
+     "",
+     "1,712",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for  income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "(36,652)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(3,050,807)",
+     "",
+     "$",
+     "(2,191,215)",
+     "",
+     "$",
+     "1,712",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income per Common Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.081)",
+     "",
+     "$",
+     "(0.067)",
+     "",
+     "$",
+     "0.000",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "(0.081)",
+     "",
+     "$",
+     "(0.067)",
+     "",
+     "$",
+     "0.000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Common and Common Equivalent Shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "37,519,668",
+     "",
+     "",
+     "32,712,191",
+     "",
+     "",
+     "29,925,952",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "37,519,668",
+     "",
+     "",
+     "32,712,191",
+     "",
+     "",
+     "30,910,424",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1527,
+    "end_line": 1575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1577,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "March 31, 2009",
+     "",
+     "",
+     "March 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(3,050,807)",
+     "",
+     "$",
+     "(2,191,215)",
+     "",
+     "$",
+     "1,712",
+     ""
+    ],
+    [
+     "Adjustments to reconcile (net loss) net income to net cash and cash equivalents used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "439,432",
+     "",
+     "",
+     "459,354",
+     "",
+     "",
+     "311,273",
+     ""
+    ],
+    [
+     "Change in inventory reserve",
+     "",
+     "(396,319)",
+     "",
+     "",
+     "247,404",
+     "",
+     "",
+     "131,154",
+     ""
+    ],
+    [
+     "Change in allowance for bad debts",
+     "",
+     "(76,573)",
+     "",
+     "",
+     "141,081",
+     "",
+     "",
+     "17,284",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "24,339",
+     "",
+     "",
+     "32,826",
+     "",
+     "",
+     "38,112",
+     ""
+    ],
+    [
+     "Deferred gross profit on estimated sales returns",
+     "",
+     "(164,331)",
+     "",
+     "",
+     "70,227",
+     "",
+     "",
+     "4,094",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) Decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "244,671",
+     "",
+     "",
+     "49,182",
+     "",
+     "",
+     "(924,634)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "2,321,139",
+     "",
+     "",
+     "(1,462,087)",
+     "",
+     "",
+     "(1,366,055)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "408,098",
+     "",
+     "",
+     "(114,011)",
+     "",
+     "",
+     "109,339",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "",
+     "14,718",
+     "",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "(113,308)",
+     ""
+    ],
+    [
+     "Increase (Decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(1,693,056)",
+     "",
+     "",
+     "1,670,341",
+     "",
+     "",
+     "441,906",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "1,535,410",
+     "",
+     "",
+     "1,992,407",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(195,003)",
+     "",
+     "",
+     "12,845",
+     "",
+     "",
+     "(215,579)",
+     ""
+    ],
+    [
+     "Customer credits on account",
+     "",
+     "(166,440)",
+     "",
+     "",
+     "129,456",
+     "",
+     "",
+     "184,824",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "(754,722)",
+     "",
+     "",
+     "1,027,810",
+     "",
+     "",
+     "(1,379,878)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(291,276)",
+     "",
+     "",
+     "(747,844)",
+     "",
+     "",
+     "(490,697)",
+     ""
+    ],
+    [
+     "Proceeds from disposal of property and equipment",
+     "",
+     "1,648",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "27,654",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(289,628)",
+     "",
+     "",
+     "(747,844)",
+     "",
+     "",
+     "(463,043)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings from (retention by) factor, net",
+     "",
+     "58,867",
+     "",
+     "",
+     "57,597",
+     "",
+     "",
+     "(21,460)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "630,881",
+     ""
+    ],
+    [
+     "Net proceeds from short-term bank obligation",
+     "",
+     "1,091,828",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Payments) proceeds persuant to factoring facility",
+     "",
+     "(179,545)",
+     "",
+     "",
+     "799,113",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net (payments on) proceeds from long-term financing obligation",
+     "",
+     "(18,186)",
+     "",
+     "",
+     "40,919",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net (payments to) advances from related parties",
+     "",
+     "-",
+     "",
+     "",
+     "(668,248)",
+     "",
+     "",
+     "492,416",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "952,964",
+     "",
+     "",
+     "229,381",
+     "",
+     "",
+     "1,101,837",
+     ""
+    ],
+    [
+     "Change in cash and cash equivalents",
+     "",
+     "(91,386)",
+     "",
+     "",
+     "509,347",
+     "",
+     "",
+     "(741,084)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "957,163",
+     "",
+     "",
+     "447,816",
+     "",
+     "",
+     "1,188,900",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "865,777",
+     "",
+     "$",
+     "957,163",
+     "",
+     "$",
+     "447,816",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for Interest",
+     "$",
+     "94,979",
+     "",
+     "$",
+     "136,826",
+     "",
+     "$",
+     "78,898",
+     ""
+    ],
+    [
+     "Cash (refunded) paid for Income Taxes",
+     "$",
+     "(23,520)",
+     "",
+     "$",
+     "60,322",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Non-Cash Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of trade payable to equity",
+     "$",
+     "-",
+     "",
+     "$",
+     "669,222",
+     "",
+     "$",
+     "500,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 (DEFICIT) EQUITY",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1577,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "in Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2007",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "27,286,199",
+     "$",
+     "272,862",
+     "$",
+     "17,306,342",
+     "$",
+     "(14,681,844)",
+     "",
+     "$",
+     "2,897,360",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,712",
+     "",
+     "",
+     "1,712",
+     ""
+    ],
+    [
+     "Employee compensation-stock option",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "24,010",
+     "",
+     "-",
+     "",
+     "",
+     "24,010",
+     ""
+    ],
+    [
+     "Exercise of employee stock options",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "147,515",
+     "",
+     "1,475",
+     "",
+     "46,905",
+     "",
+     "-",
+     "",
+     "",
+     "48,380",
+     ""
+    ],
+    [
+     "Director Fees",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,162",
+     "",
+     "152",
+     "",
+     "13,950",
+     "",
+     "-",
+     "",
+     "",
+     "14,102",
+     ""
+    ],
+    [
+     "Issuances of common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,309,524",
+     "",
+     "43,095",
+     "",
+     "1,039,405",
+     "",
+     "-",
+     "",
+     "",
+     "1,082,500",
+     ""
+    ],
+    [
+     "Balance at March 31, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "31,758,400",
+     "",
+     "317,584",
+     "",
+     "18,430,612",
+     "",
+     "(14,680,132)",
+     "",
+     "",
+     "4,068,064",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,191,215)",
+     "",
+     "",
+     "(2,191,215)",
+     ""
+    ],
+    [
+     "Employee compensation-stock option",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "17,825",
+     "",
+     "-",
+     "",
+     "",
+     "17,825",
+     ""
+    ],
+    [
+     "Director Fees",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "33,336",
+     "",
+     "333",
+     "",
+     "14,668",
+     "",
+     "-",
+     "",
+     "",
+     "15,001",
+     ""
+    ],
+    [
+     "Issuances of common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,657,696",
+     "",
+     "56,577",
+     "",
+     "612,645",
+     "",
+     "-",
+     "",
+     "",
+     "669,222",
+     ""
+    ],
+    [
+     "Balance at March 31, 2009",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "37,449,432",
+     "",
+     "374,494",
+     "",
+     "19,075,750",
+     "",
+     "(16,871,347)",
+     "",
+     "",
+     "2,578,897",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,050,807)",
+     "",
+     "",
+     "(3,050,807)",
+     ""
+    ],
+    [
+     "Employee compensation-stock option",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "9,339",
+     "",
+     "",
+     "",
+     "",
+     "9,339",
+     ""
+    ],
+    [
+     "Director Fees",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "136,362",
+     "",
+     "1,363",
+     "",
+     "13,637",
+     "",
+     "",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Balance at March 31, 2010",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "37,585,794",
+     "$",
+     "375,857",
+     "$",
+     "19,098,726",
+     "$",
+     "(19,922,154)",
+     "",
+     "$",
+     "(447,571)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 (DEFICIT) EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nTHE SINGING MACHINE COMPANY, INC AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 - BASIS OF PRESENTATION\nOVERVIEW\nThe Singing Machine Company, Inc., a Delaware corporation (the \"Company,\" \u201cSMC\u201d, \"The Singing Machine\", \u201cwe\u201d or \u201cus\u201d), and wholly-owned subsidiaries SMC (Comercial Offshore De Macau) Limitada (\u201cMacau Subsidiary\u201d), SMC Logistics, Inc. (\u201cSMC-L\u201d), SMC-Music, Inc.(\u201cSMC-M\u201d), and Singing Machine Holdings Ltd. (a B.V.I. company) are primarily engaged in the development, marketing, and sale of consumer karaoke audio equipment, accessories, musical instruments and musical recordings. The products are sold directly to distributors and retail customers.\nThe Company does business with a major supplier, koncepts International Limited (\u201ckoncepts\u201d). koncepts is a major stockholder of the Company, owning approximately 52% of our shares of common stock outstanding. koncepts is an indirect wholly-owned subsidiary of Starlight International Holdings Limited (\u201cStarlight International\u201d), a company whose principal activities include designing, manufacturing and selling electronic products through its various subsidiaries. Starlight International\u2019s products include television sets, consumer karaoke audio equipment and DVD products. We do business with a number of entities that are indirectly wholly-owned or majority owned subsidiaries of Starlight International, including Starlight Marketing Limited, Cosmo Communications Corporation (\u201cCosmo\u201d), Starlite Consumer Electronics (USA), Inc., and Starlight Marketing Macao Commercial Offshore Limited, among others (Starlight International and its subsidiaries collectively referred to herein as the \u201cStarlight Group\u201d or \u201cStarlight\u201d).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished Goods",
+     "$",
+     "3,153,917",
+     "",
+     "$",
+     "5,475,056",
+     ""
+    ],
+    [
+     "Less: Inventory Reserve",
+     "",
+     "(349,069)",
+     "",
+     "",
+     "(745,389)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Inventories",
+     "$",
+     "2,804,848",
+     "",
+     "$",
+     "4,729,667",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1808,
+    "end_line": 1820
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "Beginning with the quarter ended June 30, 2009 we adopted the provisions of FASB ASC 855, Subsequent Events (\u201cASC 855\u201d). The purpose of ASC 855 is to establish a general standard of accounting for the disclosure of events that occur after the balance sheet date but before financial statements are issued or are available to be issued. The statement outlines the following:\n\u00b7 The period after the balance sheet date during which management of a reporting entity should evaluate events or transactions that may occur for potential recognition or disclosure in the financial statements\n\u00b7 The circumstances under which an entity should recognize events or transactions occurring after the balance sheet date in its financial statements\n\u00b7 The disclosures that an entity should make about events or transactions that occurred after the balance sheet date.\nThe adoption of ASC 855 did not have a\u2022y impact on our consolidated financial statements.\nNOTE 3 - INVENTORIES\nInventories are comprised of the following components:",
+   "prose_after": "Inventory consigned to a distribution center at March 31, 2010 and March 31, 2009 was $353,557 and $352,214, respectively.\nNOTE 4 - ACCOUNTS RECEIVABLE FACTORING AGREEMENT\nOn June 8, 2010 and subsequent to our fiscal year end, the Company was notified by DBS Bank that our credit and factoring facilities totaling $13.0M were being withdrawn effective upon receipt of amounts due on both factoring and accounts payable financing facilities. As of the financial statement date of issue, the Company had an outstanding balance of approximately $232,224 in short term borrowings against the accounts payable financing facility and $0 amount due under the accounts receivable factoring facility. Our parent company, The Starlight Group, has committed to provide bridge financing until the Company secures a new financing facility.\nThe factoring facility was established on August 28, 2008, pursuant to a three-party Banking Facility agreement between the Company\u2019s wholly owned subsidiary SMC (Commercial Offshore De Macau) Limitada (\u201cBorrower\u201d), DBS Bank (Hong Kong) Limited (\u201cLender\u201d) and Branch Banking and Trust Company (\u201cBB&T\u201d or \u201cFactor\u201d). The agreement was comprised of three facilities including a maximum of $7.0 million on 80% of qualified accounts receivable, a maximum letter of credit facility of $4.0 million for accounts payable financing and a maximum of $2.0 million for the negotiation of export bills under letter of credit.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "USEFUL",
+     "",
+     "MARCH 31,",
+     "",
+     "",
+     "MARCH 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "LIFE",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer and office equipment",
+     "5 years",
+     "",
+     "$",
+     "660,948",
+     "",
+     "$",
+     "652,235",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "5-7 years",
+     "",
+     "",
+     "217,875",
+     "",
+     "",
+     "220,315",
+     ""
+    ],
+    [
+     "Leasehold improvement",
+     "*",
+     "",
+     "",
+     "151,503",
+     "",
+     "",
+     "153,993",
+     ""
+    ],
+    [
+     "Warehouse equipment",
+     "7 years",
+     "",
+     "",
+     "101,521",
+     "",
+     "",
+     "86,599",
+     ""
+    ],
+    [
+     "Molds and tooling",
+     "3-5 years",
+     "",
+     "",
+     "1,820,106",
+     "",
+     "",
+     "1,552,465",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2,951,953",
+     "",
+     "",
+     "2,665,607",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "",
+     "",
+     "(2,214,987)",
+     "",
+     "",
+     "(1,778,837)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "736,966",
+     "",
+     "$",
+     "886,770",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1835,
+    "end_line": 1859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Under the factor agreement, the Factor assumed credit risk on approved accounts (factor risk accounts). For non-approved accounts, the Company assumed the credit risk (client risk accounts). The factoring fees were .675% of the gross invoice for both client risk (recourse) and factor risk (non-recourse) accounts. As of March 31, 2010 there was a total of $1,462,525 of open accounts receivable assigned to the Factor. The Company assumed credit risk (recourse) in the amount of $83,276. Credit risk on the remaining factor assigned receivables in the amount of $1,379,249 was assumed by the Factor (non-recourse). As of March 31, 2010 and 2009 there were outstanding amounts due from BB&T of $14,987 and $73,854 respectively. These amounts represent excess of customer payments received by BB&T that had yet to be transferred to DBS bank. As of March 31, 2010 and 2009 the outstanding amount under the factoring facility with DBS Bank was $619,567 and $799,112 respectively. This amount represents advances made by the Bank on non-recourse receivables and have been offset against accounts receivable in the accompanying consolidated balance sheet.\nNOTE 5 - PROPERTY AND EQUIPMENT\nA summary of property and equipment is as follows:",
+   "prose_after": "* Shorter of remaining term of lease or useful life\nDepreciation and amortization for fiscal years ended 2010, 2009, and 2008 was $439,432, $459,354, and $311,273, respectively.\nNOTE 6 \u2013 DUE TO RELATED PARTIES, NET\nAs of March 31, 2010 the Company had $3,033,801 due to related parties consisting primarily of trade payables for karaoke hardware to Starlight Marketing Macao Commercial Offshore Ltd in the amount of $2,441,055, trade payables for consumer electronic product of $440,608 due to Cosmo, and $431,653 due to Starlight R&D, LTD for tooling and tooling modifications. These amounts were offset by net trade receivables of $279,515 from other Starlight Group affiliates.\nAs of March 31, 2009 the Company had $1,498,391 due to related parties consisting primarily of trade payables for karaoke hardware to Starlight Marketing Macao Commercial Offshore Ltd in the amount of $1,580,601, offset by net accounts receivable of $61,060 from other Starlight Group affiliates and trade receivables of $21,150 from Cosmo.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Amount",
+     "D\u25cbe Date",
+     "Interest Rate",
+     "",
+     ""
+    ],
+    [
+     "$         290,629",
+     "28-Apr-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$         102,181",
+     "4-May-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$         232,224",
+     "10-May-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$           25,914",
+     "13-May-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$           74,131",
+     "13-May-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$           37,908",
+     "9-Jun-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$         232,224",
+     "24-Jun-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$           96,617",
+     "27-May-10",
+     "",
+     "1.75",
+     "%"
+    ],
+    [
+     "$      1,091,828",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1880,
+    "end_line": 1895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FINANCING"
+    }
+   },
+   "prose_before": "As of March 31, 2009 the Company had $1,498,391 due to related parties consisting primarily of trade payables for karaoke hardware to Starlight Marketing Macao Commercial Offshore Ltd in the amount of $1,580,601, offset by net accounts receivable of $61,060 from other Starlight Group affiliates and trade receivables of $21,150 from Cosmo.\n.\nNOTE 7 - CUSTOMER CREDITS ON ACCOUNT\nCustomer credits on account represent customers that have received credits in excess of their accounts receivable balance. These balances were reclassified for financial statement purposes as current liabilities until paid or applied to future purchases.\nNOTE 8 \u2013 FINANCING\nAs of March 31, 2010 and March 31, 2009 the Company owed DBS Bank $1,091,828 and $0 respectively pursuant to an accounts payable financing facility. The proceeds were used to pay China manufacturing vendors. The accounts payable facility loans are secured with corporate guarantees from the Company as well as a guarantee from Starlight and bear interest at 1.75%. The amounts are due to DBS Bank as follows:",
+   "prose_after": "This accounts payable financing facility is pursuant to a three-party Banking Facility agreement between the Macau Subsidiary (\u201cBorrower\u201d), DBS Bank (Hong Kong) Limited (\u201cLender\u201d) and BB&T (\u201cFactor\u201d) executed on August 28,2008. The agreement provided for credit facilities to a maximum of $13.0 million consisting of the following:\n\u00b7 Maximum of $7.0 million on 80% of qualified accounts receivable.\n\u00b7 Maximum letter of credit facility of $4.0 million for accounts payable financing.\n\u00b7 Maximum $2.0 million negotiation of export bills under letter of credit.\nInterest on letter of credit facilities and discounting charges on accounts receivable advances will be charged at a rate of 1.5% per annum over LIBOR (London Interbank Offered Rate). The credit facility is secured with corporate guarantees from the Company as well as a $2.0 million guarantee from Starlight International Holdings Limited, a related party. This agreement replaced a previous four-party agreement between the Company, Starlight Marketing Limited (a related party), Standard Chartered Bank (Hong Kong), Limited and CIT.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1907,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Property Leases",
+     "",
+     "Equipment Leases",
+     ""
+    ],
+    [
+     "For period ending",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2011",
+     "$",
+     "732,616",
+     "$",
+     "5,717"
+    ],
+    [
+     "2012",
+     "",
+     "675,460",
+     "",
+     "-"
+    ],
+    [
+     "2013",
+     "",
+     "671,044",
+     "",
+     "-"
+    ],
+    [
+     "2014",
+     "",
+     "57,384",
+     "",
+     "-"
+    ],
+    [
+     "2015 and beyond",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "2,136,504",
+     "$",
+     "5,717"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1946,
+    "end_line": 1960
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "\u00b7 The 1120- F tax liability was recorded under the taxpayer identification number belonging to ISMC and not the Company\u2019s taxpayer identification number\n\u00b7 The IRS would be barred from recovery since it failed to assess or issue a notice of levy within the three year statute of limitations\nBased on the conclusion reached in the legal memorandum, management does not believe that the Company will have any further liability with regards to this issue.\nLEASES\nThe Company has entered into various operating lease agreements for office and warehouse facilities in Coconut Creek, Florida, City of Industry, California and Macau. The leases expire at varying dates. Rent expense for the years ended March 31, 2010, 2009 and 2008 was $864,523, $961,226and $201,270, respectively.\nIn addition, the Company maintains various warehouse equipment and computer equipment operating leases.\nFuture minimum lease payments under property and equipment leases with terms exceeding one year as of March 31, 2010 are as follows:",
+   "prose_after": "The above property lease payments are gross payments which are not net of supplemental sublease fees we receive. During fiscal years 2010, 2009 and 2008 the Company received fees of approximately $45,000, $45,000 and $543,000 respectively, for sublease of warehouse space and warehousing services provided to affiliated entities out of its California warehouse.\nSuch fees have been offset against rent expense in the consolidated statements of operations.\nNOTE 10 - SHAREHOLDERS\u2019 EQUITY\nCOMMON STOCK ISSUANCES\nDuring the years ended March 31, 2010, 2009, and 2008, the Company issued the following common stock shares:\n2010:\nOn September 25, 2009 the Company issued 136,362 shares of its common stock to our Board of Directors at $.11 per share, pursuant to our annual director compensation plan.\n2009:\nDuring the fiscal year ended March 31, 2009 the Company issued 5,691,032 shares of its common stock.\nOn March 25, 2009, the Company issued 2,267,220 shares of common stock to Arts Electronics, Ltd for $226,722 ($0.10 per share) to offset a trade payable.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1941,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1996,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal 2010",
+     "",
+     "",
+     "",
+     "",
+     "Fiscal 2009",
+     "",
+     "",
+     "",
+     "",
+     "Fiscal 2008",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number [ ]f Options",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     "",
+     "Number [ ]f\n\nOptions",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Number [ ]f\n\nOptions",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "Stock Options:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "",
+     "1,133,215",
+     "",
+     "$",
+     "0.64",
+     "",
+     "1,247,815",
+     "",
+     "$",
+     "1.25",
+     "",
+     "1,382,890",
+     "",
+     "$",
+     "1.26"
+    ],
+    [
+     "Granted",
+     "",
+     "60,000",
+     "",
+     "$",
+     "0.11",
+     "",
+     "420,000",
+     "",
+     "$",
+     "0.13",
+     "",
+     "120,000",
+     "",
+     "$",
+     "0.45"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(147,515)",
+     "",
+     "$",
+     "0.33"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(546,505)",
+     "",
+     "$",
+     "0.53",
+     "",
+     "(534,600)",
+     "",
+     "$",
+     "1.90",
+     "",
+     "(107,560)",
+     "",
+     "$",
+     "1.27"
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "646,710",
+     "",
+     "$",
+     "0.56",
+     "",
+     "1,133,215",
+     "",
+     "$",
+     "0.58",
+     "",
+     "1,247,815",
+     "",
+     "$",
+     "1.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at end of period",
+     "",
+     "586,710",
+     "",
+     "$",
+     "0.62",
+     "",
+     "709,965",
+     "",
+     "$",
+     "0.83",
+     "",
+     "1,029,296",
+     "",
+     "$",
+     "1.44"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2009,
+    "end_line": 2031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "On June 1, 2001, the Board of Directors approved the 2001 Stock Option Plan (`Plan\"), which replaced the 1994 Stock Option Plan, as amended, (the \"1994 Plan\"). The Plan was developed to provide a means whereby directors and selected employees, officers, consultants, and advisors of the Company may be granted incentive or non-qualified stock options to purchase common stock of the Company. As of March 31, 2010, the Plan is authorized to grant options up to an aggregate of 1,950,000 shares of the Company's common stock and up to 300,000 shares for any one individual grant in any fiscal year. As of March 31, 2010, the Company had 870,775 options available to be granted under the 2001 Plan. As of March 31, 2010, the Company had 343,050 options available to be granted under the 1994 Plan.\nThe Company adopted ASC 713-10 for the reporting periods ending after June 15, 2005 and thereafter has recognized the fair value of the stock option as part of the selling, general and administration expense. Accordingly, no compensation cost has been recognized for options issued under the Plan in periods prior to June 15, 2005. A summary of stock option activity for each of the years presented is summarized below.",
+   "prose_after": "The following table summarizes information about employee stock options outstanding at March 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1996,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Range [ ]f Exercise Price",
+     "Number Outstanding at March\n\n31, 2010",
+     "",
+     "Weighted Average Remaining\n\nContractural Life",
+     "",
+     "Weighted Average\n\nExercise Price",
+     "",
+     "Number Exercisable at March\n\n31, 2010",
+     "",
+     "Weighted Average\n\nExercise Price",
+     ""
+    ],
+    [
+     "$.03 - $.77",
+     "",
+     "589,000",
+     "",
+     "6.87",
+     "$",
+     "0.41",
+     "",
+     "529,000",
+     "$",
+     "0.45"
+    ],
+    [
+     "$.93 - $9.00",
+     "",
+     "57,710",
+     "",
+     "4.02",
+     "$",
+     "2.11",
+     "",
+     "57,710",
+     "$",
+     "2.11"
+    ],
+    [
+     "",
+     "",
+     "646,710",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "586,710",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2034,
+    "end_line": 2044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "The following table summarizes information about employee stock options outstanding at March 31, 2010:",
+   "prose_after": "Prior to April 1, 2005, in accordance with ASC 713-10, for options issued to employees, the Company applied the intrinsic value method.\nSTOCK WARRANTS\nAs of March 31, 2010, the Company had a total of 1,250,000 stock purchase warrants outstanding. The exercise price of these warrants is $0.35 with an expiration date of July 26, 2010.\nNOTE 11 - INCOME TAXES\nThe Company files separate tax returns in the United States and in Macau. The Macau Subsidiary has received approval from the Macau government to operate its business as a Macau Offshore Company (MOC), and is exempt from the Macau income tax. For the fiscal years ended March 31, 2010, 2009 and 2008, the Macau Subsidiary recorded no tax provision. The Company has now exhausted its ability to carry back any further losses and therefore will only be able to recognize tax benefits to the extent that it has future taxable income.\nDue to the change of control of the Company, the net operating loss carry over is subject to the IRS Section 382 limitation. As of March 31, 2010, 2009 and 2008, The Singing Machine had net deferred tax assets of approximately $4.1 million, $3.1 million, and $2.5 million, respectively, against which the Company recorded valuation allowances totaling approximately $4.1 million, $3.1 million, and $2.5 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1996,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Federal",
+     "$",
+     "(999,213)",
+     "",
+     "$",
+     "(878,241)",
+     "",
+     "$",
+     "9,181",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(96,851)",
+     "",
+     "",
+     "(77,918)",
+     "",
+     "",
+     "944",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "1,096,064",
+     "",
+     "",
+     "992,811",
+     "",
+     "",
+     "(10,125)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "36,652",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2059,
+    "end_line": 2071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company files separate tax returns in the United States and in Macau. The Macau Subsidiary has received approval from the Macau government to operate its business as a Macau Offshore Company (MOC), and is exempt from the Macau income tax. For the fiscal years ended March 31, 2010, 2009 and 2008, the Macau Subsidiary recorded no tax provision. The Company has now exhausted its ability to carry back any further losses and therefore will only be able to recognize tax benefits to the extent that it has future taxable income.\nDue to the change of control of the Company, the net operating loss carry over is subject to the IRS Section 382 limitation. As of March 31, 2010, 2009 and 2008, The Singing Machine had net deferred tax assets of approximately $4.1 million, $3.1 million, and $2.5 million, respectively, against which the Company recorded valuation allowances totaling approximately $4.1 million, $3.1 million, and $2.5 million, respectively.\nThe income tax expense (benefit) for federal, foreign, and state income taxes in the consolidated statement of operations consisted of the following components for 2010, 2009, and 2008:",
+   "prose_after": "The United States and foreign components of income (loss) before income taxes are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "(2,938,861)",
+     "",
+     "$",
+     "(2,583,061)",
+     "",
+     "$",
+     "27,002",
+     ""
+    ],
+    [
+     "Foreign",
+     "",
+     "(111,226)",
+     "",
+     "",
+     "428,498",
+     "",
+     "",
+     "(25,290)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(3,050,087)",
+     "",
+     "$",
+     "(2,154,563)",
+     "",
+     "$",
+     "1,712",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2074,
+    "end_line": 2084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The United States and foreign components of income (loss) before income taxes are as follows:",
+   "prose_after": "The actual tax expense differs from the \"expected\" tax expense for the years ended March 31, 2010, 2009, and 2008 (computed by applying the U.S. Federal Corporate tax rate of 34 percent to income before taxes) as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected tax (benefit) expense",
+     "$",
+     "(1,037,030)",
+     "",
+     "$",
+     "(732,551)",
+     "",
+     "$",
+     "582",
+     ""
+    ],
+    [
+     "State income taxes, net of Federal income tax benefit",
+     "",
+     "(96,852)",
+     "",
+     "",
+     "(77,919)",
+     "",
+     "",
+     "943",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "3,430",
+     "",
+     "",
+     "6,447",
+     "",
+     "",
+     "5,829",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "983,094",
+     "",
+     "",
+     "652,738",
+     "",
+     "",
+     "(194,062)",
+     ""
+    ],
+    [
+     "Tax rate differential on foreign earnings",
+     "",
+     "37,817",
+     "",
+     "",
+     "(145,689)",
+     "",
+     "",
+     "8,600",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "109,541",
+     "",
+     "",
+     "333,627",
+     "",
+     "",
+     "178,108",
+     ""
+    ],
+    [
+     "Actual tax (benefit) expense",
+     "",
+     "-",
+     "",
+     "$",
+     "36,652",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2087,
+    "end_line": 2101
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The actual tax expense differs from the \"expected\" tax expense for the years ended March 31, 2010, 2009, and 2008 (computed by applying the U.S. Federal Corporate tax rate of 34 percent to income before taxes) as follows:",
+   "prose_after": "The tax effects of temporary differences that give rise to significant portions of deferred tax assets and liabilities are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal net operating loss carryforward",
+     "",
+     "2,822,902",
+     "",
+     "",
+     "1,616,816",
+     "",
+     "$",
+     "1,490,139",
+     ""
+    ],
+    [
+     "State net operating loss carryforward",
+     "",
+     "606,284",
+     "",
+     "",
+     "509,378",
+     "",
+     "",
+     "518,077",
+     ""
+    ],
+    [
+     "AMT credit carryforward",
+     "",
+     "70,090",
+     "",
+     "",
+     "70,090",
+     "",
+     "",
+     "70,090",
+     ""
+    ],
+    [
+     "Inventory differences",
+     "",
+     "263,103",
+     "",
+     "",
+     "445,109",
+     "",
+     "",
+     "169,382",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "63,038",
+     "",
+     "",
+     "89,073",
+     "",
+     "",
+     "41,105",
+     ""
+    ],
+    [
+     "Reserve for sales returns",
+     "",
+     "42,061",
+     "",
+     "",
+     "97,933",
+     "",
+     "",
+     "74,056",
+     ""
+    ],
+    [
+     "Charitable contributions",
+     "",
+     "60,700",
+     "",
+     "",
+     "60,700",
+     "",
+     "",
+     "60,700",
+     ""
+    ],
+    [
+     "Accrued Vacation",
+     "",
+     "12,385",
+     "",
+     "",
+     "12,568",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "149,478",
+     "",
+     "",
+     "197,614",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of reorganization intangible",
+     "",
+     "22,993",
+     "",
+     "",
+     "30,658",
+     "",
+     "",
+     "53,652",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "4,113,034",
+     "",
+     "",
+     "3,129,940",
+     "",
+     "",
+     "2,477,201",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets before valuation allowance",
+     "",
+     "4,113,034",
+     "",
+     "",
+     "3,129,940",
+     "",
+     "",
+     "2,477,201",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(4,113,034)",
+     "",
+     "",
+     "(3,129,940)",
+     "",
+     "",
+     "(2,477,201)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2104,
+    "end_line": 2128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant portions of deferred tax assets and liabilities are as follows:",
+   "prose_after": "At March 31, 2010, the Company has federal tax net operating loss carry forwards in the amount of approximately $8.3 million, which expire beginning in the year 2023. In addition, state tax net operating loss carry forwards in the amount of approximately $6.4 million expire beginning in 2013. The Company is no longer subject to income tax examinations for fiscal years before 2007.\nNOTE 12 - SEGMENT INFORMATION\nThe Company operates in one segment and maintains its records accordingly. The majority of sales to customers outside of the United States are made by the Macau Subsidiary and Hong Kong Subsidiary, until its date of sale. Sales by geographic region for the period presented are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2159,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FOR THE FISCAL YEARS ENDED",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "North America",
+     "$",
+     "18,512,225",
+     "$",
+     "26,154,402",
+     "$",
+     "27,085,841"
+    ],
+    [
+     "Europe",
+     "",
+     "2,740,842",
+     "",
+     "4,813,309",
+     "",
+     "6,314,126"
+    ],
+    [
+     "Others",
+     "",
+     "24,303",
+     "",
+     "812,998",
+     "",
+     "667,904"
+    ],
+    [
+     "",
+     "$",
+     "21,277,370",
+     "$",
+     "31,780,709",
+     "$",
+     "34,067,871"
+    ]
+   ],
+   "caption_stack": [
+    "FOR THE FISCAL YEARS ENDED",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2135,
+    "end_line": 2149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "At March 31, 2010, the Company has federal tax net operating loss carry forwards in the amount of approximately $8.3 million, which expire beginning in the year 2023. In addition, state tax net operating loss carry forwards in the amount of approximately $6.4 million expire beginning in 2013. The Company is no longer subject to income tax examinations for fiscal years before 2007.\nNOTE 12 - SEGMENT INFORMATION\nThe Company operates in one segment and maintains its records accordingly. The majority of sales to customers outside of the United States are made by the Macau Subsidiary and Hong Kong Subsidiary, until its date of sale. Sales by geographic region for the period presented are as follows:",
+   "prose_after": "The geographic area of sales is based primarily on the location where the product is delivered.\nNOTE 13 - EMPLOYEE BENEFIT PLANS\nThe Company has a 401(k) plan for its employees to which the Company makes contributions at rates dependent on the level of each employee's contributions. Contributions made by the Company are limited to the maximum allowable for federal income tax purposes. The amounts charged to operations for contributions to this plan and administrative costs during the years ended March 31, 2010, 2009, and 2008 totaled $15,749, $17,825 and $21,674, respectively. The amounts are included as a component of general and administrative expense in the accompanying Consolidated Statements of Operations. The Company does not provide any post employment benefits to retirees.\nNOTE 14 - CONCENTRATIONS OF CREDIT RISK, CUSTOMERS, AND SUPPLIERS\nThe Company derives a majority of its revenues from retailers of products in the United States. Financial instruments, which potentially subject the Company to concentrations of credit risk, consist of accounts receivable. The Company's allowance for doubtful accounts is based upon management's estimates and historical experience and reflects the fact that accounts receivable are concentrated with several large customers whose credit worthiness have been evaluated by management. At March 31, 2010, 57% of accounts receivable were due from two customers in North America. Accounts receivable from customers that individually owed over 10% of total accounts receivable was 42% and 15% at March 31, 2010. Accounts receivable from customers that individually owed over 10% of total accounts receivable was 55% 15% and 11% at March 31, 2009. The Company performs ongoing credit evaluations of its customers.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2159,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sales",
+     "",
+     "Gross Profit",
+     "",
+     "",
+     "Net Earnings (Loss)",
+     "",
+     "",
+     "Basic\n\nEarnings\n\n(Loss)\n\nPer Share",
+     "",
+     "",
+     "Diluted Earnings (Loss)\nPer Share",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "814",
+     "$",
+     "(286)",
+     "",
+     "$",
+     "(1,553)",
+     "",
+     "$",
+     "(0.04)",
+     "",
+     "$",
+     "(0.04)",
+     ""
+    ],
+    [
+     "Second quarter",
+     "",
+     "6,991",
+     "",
+     "1,384",
+     "",
+     "",
+     "(313)",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Third quarter",
+     "",
+     "11,976",
+     "",
+     "2,994",
+     "",
+     "",
+     "247",
+     "",
+     "",
+     "0.01",
+     "",
+     "",
+     "0.01",
+     ""
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "1,496",
+     "",
+     "(196)",
+     "",
+     "",
+     "4,670",
+     "",
+     "",
+     "(0.04)",
+     "",
+     "",
+     "(0.04)",
+     ""
+    ],
+    [
+     "Fiscal Year 2009",
+     "$",
+     "21,277",
+     "$",
+     "3,896",
+     "",
+     "$",
+     "3,051",
+     "",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "1,770",
+     "$",
+     "203",
+     "",
+     "$",
+     "(1,050)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Second quarter",
+     "",
+     "12,616",
+     "",
+     "2,021",
+     "",
+     "",
+     "103",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Third quarter",
+     "",
+     "16,612",
+     "",
+     "3,772",
+     "",
+     "",
+     "464",
+     "",
+     "",
+     "0.01",
+     "",
+     "",
+     "0.01",
+     ""
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "783",
+     "",
+     "(52)",
+     "",
+     "",
+     "(1,708)",
+     "",
+     "",
+     "(0.03)",
+     "",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Fiscal Year 2009",
+     "$",
+     "31,781",
+     "$",
+     "5,944",
+     "",
+     "$",
+     "(2,191)",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.07)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "2,446",
+     "$",
+     "339",
+     "",
+     "$",
+     "(852)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Second quarter",
+     "",
+     "16,108",
+     "",
+     "3,193",
+     "",
+     "",
+     "1,054",
+     "",
+     "",
+     "0.04",
+     "",
+     "",
+     "0.03",
+     ""
+    ],
+    [
+     "Third quarter",
+     "",
+     "13,784",
+     "",
+     "3,747",
+     "",
+     "",
+     "767",
+     "",
+     "",
+     "0.03",
+     "",
+     "",
+     "0.03",
+     ""
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "1,730",
+     "",
+     "400",
+     "",
+     "",
+     "(967)",
+     "",
+     "",
+     "(0.03)",
+     "",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Fiscal Year 2008",
+     "$",
+     "34,068",
+     "$",
+     "7,679",
+     "",
+     "$",
+     "2",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance at",
+     "",
+     "",
+     "Charged to",
+     "",
+     "",
+     "",
+     "",
+     "Credited to",
+     "",
+     "",
+     "Balance at",
+     ""
+    ],
+    [
+     "",
+     "Beginning of",
+     "",
+     "",
+     "Costs and",
+     "",
+     "Reduction to Allowance",
+     "",
+     "",
+     "Costs and",
+     "",
+     "",
+     "End of",
+     ""
+    ],
+    [
+     "Description",
+     "Period",
+     "",
+     "",
+     "Expenses",
+     "",
+     "for Write off",
+     "",
+     "",
+     "Expenses",
+     "",
+     "",
+     "Period",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended March 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from assets to which they apply:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "$",
+     "261,980",
+     "$",
+     "59,085",
+     "$",
+     "(135,658)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "185,407"
+    ],
+    [
+     "Deferred tax valuation allowance",
+     "",
+     "$",
+     "3,129,940",
+     "$",
+     "983,094",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "4,113,034"
+    ],
+    [
+     "Inventory reserve",
+     "",
+     "$",
+     "745,388",
+     "$",
+     "376,855",
+     "$",
+     "(773,174)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "349,069"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended March 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from assets to which they apply:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "$",
+     "120,899",
+     "$",
+     "197,178",
+     "$",
+     "(70,058)",
+     "",
+     "$",
+     "13,961",
+     "",
+     "$",
+     "261,980"
+    ],
+    [
+     "Deferred tax valuation allowance",
+     "",
+     "$",
+     "2,477,202",
+     "$",
+     "689,390",
+     "$",
+     "(36,652)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,129,940"
+    ],
+    [
+     "Inventory reserve",
+     "",
+     "$",
+     "497,984",
+     "$",
+     "700,709",
+     "$",
+     "(316,734)",
+     "",
+     "$",
+     "(136,571)",
+     "",
+     "$",
+     "745,388"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended March 31, 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from assets to which they apply:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "$",
+     "61,824",
+     "$",
+     "112,390",
+     "$",
+     "(53,315)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "120,899"
+    ],
+    [
+     "Deferred tax valuation allowance",
+     "",
+     "$",
+     "2,671,264",
+     "$",
+     "123,910",
+     "$",
+     "-",
+     "",
+     "$",
+     "(317,972)",
+     "",
+     "$",
+     "2,477,202"
+    ],
+    [
+     "Inventory reserve",
+     "",
+     "$",
+     "198,848",
+     "$",
+     "382,048",
+     "$",
+     "-",
+     "",
+     "$",
+     "(82,911)",
+     "",
+     "$",
+     "497,984"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2251,
+    "end_line": 2276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On June 8, 2010 the Company was notified by DBS Bank (\u201cDBS\u201d) that our credit and factoring facilities totaling $13.0M were being withdrawn effective upon receipt of amounts due on both factoring and accounts payable financing facilities. As of issuing date of the financial statements, the Company had an outstanding balance due of approximately $232,224 in short term borrowings against the accounts payable financing facility and $0 amount due under the accounts receivable factoring facility. As of the date of this filing, the Company was in default of the outstanding balance due to DBS in the amount of $232,224 which was due on June 24, 2010. The Company proposed a payment plan wherein DBS would use the proceeds from the factored receivables remaining with DBS to apply against the remaining balance when these receivables are collected. As the amount due on the factoring facility is $0 and the uncollected factored receivables remaining with DBS exceed the amount of outstanding debt, DBS has agreed to accept the Company\u2019s payment plan. As of the filing date, this debt to DBS has been paid in full.\nWe evaluated the effects of all subsequent events from the end of the fiscal year ended March 31, 2010 through July 14, 2010, the date we filed our financial statements with the U.S. Securities and Exchange Commission (\"SEC\"). Except as noted, there are no additional events requiring disclosure as per FASB ASC 855, Subsequent Events (\u201cASC 855\u201d).\nSUPPLEMENTAL DATA\nSCHEDULE II",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2246,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2276,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,3765 @@
+{
+ "accession": "0001077048-14-000080",
+ "cik": "0001558432",
+ "form": "10-K",
+ "filing_date": "2014-04-15",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "capp10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "46-0684479"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2013\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number 000-54905\nCAPSTONE FINANCIAL GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2600 Michelson Dr., Suite 700\nIrvine, California 92612\n(Address of principal executive offices) (Zip Code)\n(866) 798-4478\n(Registrant's telephone number, including area code)\nCopies of Communications to:\nStoecklein Law Group, LLP\n401 West A Street\nSuite 1150\nSan Diego, CA 92101",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "11"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "12"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "12"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "13"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "17"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "17"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "17"
+    ],
+    [
+     "Item 9A (T)",
+     "Controls and Procedures",
+     "17"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "18"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "21"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "22"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "22"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 121
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant a large accelerated filer, an accelerated filer, a non-accelerated filer, or a small reporting company. See the definitions of \"large accelerated filer,\" \"accelerated filer\" and \"small reporting company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]                                              Accelerated filer  [ ]\nNon-accelerated filer  [ ] (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of June 30, 2013 (the last business day of the registrant's most recently completed second fiscal quarter) was $1,465,596.30 based on a share value of $0.10.\nThe number of shares of Common Stock, $0.001 par value, outstanding on April 15, 2014 was 93,514,237 shares.\nDOCUMENTS INCORPORATED BY REFERENCE: None.\nFOR THE FISCAL YEAR ENDED DECEMBER 31, 2013\nIndex to Report on Form 10-K",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements and involves risks and uncertainties that could materially affect expected results of operations, liquidity, cash flows, and business prospects. These statements include, among other things, statements regarding:\n\u00b7 our ability to diversify our operations;\n\u00b7 inability to raise additional financing for working capital;\n\u00b7 the fact that our accounting policies and methods are fundamental to how we report our financial condition and results of operations, and they may require our management to make estimates about matters that are inherently uncertain;\n\u00b7 our ability to attract key personnel;\n\u00b7 our ability to operate profitably;\n\u00b7 deterioration in general or regional economic conditions;\n\u00b7 adverse state or federal legislation or regulation that increases the costs of compliance, or adverse findings by a regulator with respect to existing operations;\n\u00b7 changes in U.S. GAAP or in the legal, regulatory and legislative environments in the markets in which we operate;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 121,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Period Ending\n\nDecember 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "PRICES",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "High",
+     "",
+     "L[ ]w"
+    ],
+    [
+     "1st Quarter",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "2nd Quarter",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "3rd Quarter",
+     "$",
+     "1.55",
+     "$",
+     "0.08"
+    ],
+    [
+     "4th Quarter",
+     "$",
+     "6.43",
+     "$",
+     "3.57"
+    ]
+   ],
+   "caption_stack": [
+    "Period Ending\n\nDecember 31, 2013",
+    "PRICES"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND SMALL BUSINESS ISSUER PURCHASE OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We currently maintain an executive office at 2600 Michelson Dr., Suite 700, Irvine, CA 92612. As of December 31, 2013, we had no monthly rent, nor did we accrue any expense for monthly rent. The office space is currently provided at no cost from an officer and director of the Company.\nITEM 3. LEGAL PROCEEDINGS\nWe are not a party to any material legal proceedings.\nPART II\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND SMALL BUSINESS ISSUER PURCHASE OF EQUITY SECURITIES\nMarket Information\nOur common stock is traded in the OTC Markets QB (OTCQB), under the symbol \u201cCAPP\u201d. We have been eligible to participate in the OTCQB since April 8, 2013 and from that time until the third quarter of 2013 our common stock was traded on a very sporadic basis. The following table lists the available quotations for the average high and low prices for each quarter within the last fiscal year ending December 31, 2013.\nThe following table sets forth, the average high and low prices for our common stock as reported by Yahoo Finance. These quotations reflect inter-dealer prices, without retail mark-up, markdown or commission, and may not necessarily represent actual transactions.",
+   "prose_after": "Holders of Common Stock\nAs of April 14, 2014, we had approximately 60 stockholders of record of the 93,514,237 shares outstanding. The closing bid stock price on April 14, 2014 was $4.00.\nDividends\nAny decisions regarding dividends will be made by our board of directors. We currently intend to retain and use any future earnings for the development and expansion of our business and do not anticipate paying any cash dividends in the foreseeable future. Our board of directors has complete discretion on whether to pay dividends. Even if our board of directors decides to pay dividends, the form, frequency and amount will depend upon our future operations and earnings, capital requirements and surplus, general financial condition, contractual restrictions and other factors that the board of directors may deem relevant.\nRecent Sales of Unregistered Securities\nStock Issuances pursuant to Subscription Agreements\nDuring the fourth quarter ended December 31, 2013, we sold 1,355,000 shares of common stock to a total of 20 accredited investors for a total purchase price of $1,084,000, all of which was paid in cash.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(150,744)",
+     "",
+     "$",
+     "(42,860)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "$",
+     "(1,572,136)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "1,716,740",
+     "",
+     "$",
+     "49,000",
+     ""
+    ],
+    [
+     "Net increase/(decrease) in Cash",
+     "$",
+     "(6,140)",
+     "",
+     "$",
+     "6,140",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "$",
+     "6,140",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "-",
+     "",
+     "$",
+     "6,140",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "On September 13, 2013, we executed a revolving credit line receivable with an entity owned and controlled by an officer, director and shareholder for up to $500,000. In October 2013, the amount was increased for up to $2,000,000. The unsecured line of credit bears interest at 2% per annum with principal and interest due on September 13, 2015. As of December 31, 2013, an amount of $1,472,136 was loaned to the related party with a remaining balance of $527,864 available. As of December 31, 2013, the balance of accrued interest was $6,542.\nEven though we have begun to generate revenues, we can make no assurances and therefore we may incur operating losses in the next twelve months. Our limited operating history makes predictions of future operating results difficult to ascertain. In the future we anticipate obtaining additional financing to fund operations through common stock offerings, to the extent available, or to obtain additional financing to the extent necessary to augment our working capital.\nThe following table provides detailed information about our net cash flow for all financial statement periods presented in this Annual Report. To date, we have financed a majority of our operations through the issuance of stock and borrowings.\nThe following table sets forth a summary of our cash flows for the periods indicated:",
+   "prose_after": "Operating activities\nNet cash used in operating activities was $150,744 for the year ended December 31, 2013, as compared to $42,860 used in operating activities for the same period in 2012. The increase in net cash used in operating activities was primarily due to an increase in professional fees as a result of increased legal work.\nInvesting activities\nNet cash used in investing activities was $1,572,136 for the period ended December 31, 2013, as compared to $0 used in investing activities for the same period in 2012. The increase is related to the revolving line of credit receivable with a related party.\nFinancing activities\nNet cash provided by financing activities for the year ended December 31, 2013 was $1,716,740, as compared to $49,000 for the same period of 2012. The increase of net cash provided by financing activities was mainly attributable to capital raised through the sale of common stock and capital provided through a revolving credit grid note.\nAs of December 31, 2013, we continue to use traditional and/or debt financing to provide the capital we need to run the business.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Term\n\nCommencing"
+    ],
+    [
+     "Darin R. Pastor",
+     "42",
+     "Chief Executive Officer, Secretary, Treasurer & Director",
+     "August 26, 2013"
+    ],
+    [
+     "George L. Schneider",
+     "59",
+     "President, Chief Investment Officer and Director",
+     "August 26, 2013"
+    ],
+    [
+     "Halford W. Johnson",
+     "50",
+     "Chief Financial Officer",
+     "September 25, 2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 534,
+    "end_line": 543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to the temporary rules of the Securities and Exchange Commission that permit the company to provide only management\u2019s report in this annual report.\nChanges in Internal Control Over Financial Reporting\nThere were no changes in our internal control over financial reporting that occurred during our most recent fiscal quarter that have materially affected, or reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe members of our board of directors serve for one year terms and are elected at the next annual meeting of stockholders, or until their successors have been elected. The officers serve at the pleasure of the board of directors.",
+   "prose_after": "Darin Pastor, Age 42, CEO, Secretary, Treasurer, and Chairman - Director of Capstone Financial Group, Inc. since August 2013. Since September 2012, Mr. Pastor has been the Chief Executive Officer of Capstone Affluent Strategies, Inc., an exclusive independent wealth management firm in Irvine, California. As CEO, he is responsible for overseeing all aspects of the wealth management product, service and sales delivery in an expansion or start up region. From June 2011 to September 2012, Mr. Pastor was the Managing Director of Prudential Insurance Company of America where during that time he was named the #1 Managing Director in the nation. From August 2010 to June 2011, Mr. Pastor was the Territory Sales Manager for Colonial Life. From September 2006 to August 2010, Mr. Pastor was the Senior Vice President and the Senior Investment Manager for Chase Investment Services, where he was ranked as the top-selling Senior Investment Manager in the nation during his tenure at JPMorgan Chase & Co. At Chase, he and his team managed $2.6 billion in client assets. From 1996 to 2004, he was the owner of American Mortgage Affiliates where he opened several retail financial center locations throughout New York before selling the company. From 1989 to 1996, he was a Division Manager and owner of Pepsi-Cola Buffalo Bottling Corp. Pastor is a graduate of the University of Liverpool\u2019s MBA program. He holds FINRA Series 6, 7, 24, 51, 63, and 66 registrations as well as life, health insurance and property and casualty insurance licenses. Mr. Pastor is currently a candidate to obtain his Master of Laws in International Banking and Finance and has been accepted to the Harvard Business School\u2019s Advanced Marketing Program and will receive Alumni status upon the program\u2019s completion.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 545,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and address of Beneficial Owner(1)",
+     "Amount of\n\nBeneficial Ownership",
+     "Percent of Class"
+    ],
+    [
+     "Common",
+     "Darin R. Pastor, CEO, Sec/Treas and Director",
+     "69,702,777",
+     "74.5%"
+    ],
+    [
+     "Common",
+     "George L. Schneider, President and Director",
+     "9,036,000",
+     "9.6%"
+    ],
+    [
+     "Common",
+     "Halford W. Johnson, Chief Financial Officer",
+     "119,497",
+     "0.1%"
+    ],
+    [
+     "",
+     "All Beneficial Owners as a Group",
+     "78,858,274",
+     "84.3%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 634,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth information, to the best of our knowledge, about the beneficial ownership of our common stock on April 14, 2014, 2014 relating to the beneficial ownership of our common stock by those persons known to beneficially own more than 5% of our capital stock and by our directors and executive officers. The percentage of beneficial ownership for the following table is based on 93,514,237 shares of common stock outstanding.\nBeneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and does not necessarily indicate beneficial ownership for any other purpose. Under these rules, beneficial ownership includes those shares of common stock over which the stockholder has sole or shared voting or investment power. It also includes shares of common stock that the stockholder has a right to acquire within 60 days after April 14, 2014 pursuant to options, warrants, conversion privileges or other right. The percentage ownership of the outstanding common stock, however, is based on the assumption, expressly required by the rules of the Securities and Exchange Commission, that only the person or entity whose ownership is being reported has converted options or warrants into shares of our common stock.\nSecurity Ownership of Certain Beneficial Owners and Management",
+   "prose_after": "(1) As used in this table, \u201cbeneficial ownership\u201d means the sole or united power to vote, or to direct the voting of, a security, or the sole or united investment power with respect to a security (i.e., the power to dispose of, or to direct the disposition of, a security). Each Parties\u2019 address is in care of the Company at 2600 Michelson Dr., Suite 700, Irvine CA 92612.\nChanges in Control\nThere are no arrangements, known to the Company, including any pledge by any person of securities of the Company, the operation of which may at a subsequent date result in a change in control of the Company.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPNDENCE\nTransactions with Related Persons\nOn July 12, 2012, we executed a promissory note with a related party for $10,000. The unsecured loan bears interest at 6% per annum with principal and interest due on July 13, 2015. During the year ended December 31, 2013, related party loaned an additional $3,500 to the Company with the same terms as the previous promissory note for $10,000. During the year ended December 31, 2013, the related party forgave the entire balance of principal of $13,500 and accrued interest of $702. As of December 31, 2013, the balance of accrued interest was $0.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 657,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended\n\nDecember 31, 2013",
+     "Fiscal Year Ended\n\nDecember 31, 2012"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$  13,000",
+     "$  4,500"
+    ],
+    [
+     "Audit-Related Fees",
+     "-",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "-",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "-",
+     "-"
+    ],
+    [
+     "Total",
+     "$  13,000",
+     "$  4,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "As a result of the Stock Purchase Agreements mentioned above, on September 6, 2013, Mr. Darin Pastor and Mr. George Schneider obtained control of the Company by acquiring direct beneficial control of 4,000,000 pre-split shares of common stock or 88.6%.\nDirector Independence\nWe currently do not have any independent directors, as the term \u201cindependent\u201d is defined in Section 803A of the NYSE Amex LLC Company Guide. Since the Over the Counter Bulletin Board (\u201cOTCBB\u201d) does not have rules regarding director independence, the Board makes its determination as to director independence based on the definition of \u201cindependence\u201d as defined under the rules of the New York Stock Exchange (\u201cNYSE\u201d) and American Stock Exchange (\u201cAmex\u201d).\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nAUDIT FEES\nAudit and Non-Audit Fees\nThe following table sets forth the fees paid or accrued by us for the audit and other services provided by De Joya Griffith, LLC for the audit of our annual financial statements for the year ended December 31, 2012 and by Seale & Beers, CPAs for the audit of our annual financial statements for the year ended December 31, 2013:",
+   "prose_after": "Audit Fees: This category represents fees for professional services provided in connection with the audit of our financial statements and review of our quarterly financial statements.\n(2) AUDIT-RELATED FEES\nNone.\n(3) TAX FEES\nSee table above.\n(4) ALL OTHER FEES\nNone.\n(5) AUDIT COMMITTEE POLICIES AND PROCEDURES\nWe do not have an audit committee.\n(6) If greater than 50 percent, disclose the percentage of hours expended on the principal accountant's engagement to audit the registrant's financial statements for the most recent fiscal year that were attributed to work performed by persons other than the principal accountant's full-time, permanent employees.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Incorporated by reference",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit\n\nNumber",
+     "",
+     "",
+     "Exhibit Description",
+     "Filed\n\nherewith",
+     "Form",
+     "Period\n\nending",
+     "Exhibit",
+     "Filing date"
+    ],
+    [
+     "31.1",
+     "",
+     "",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act \u2013 CEO",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act \u2013 CFO",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act \u2013 CEO",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act - CFO",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS**",
+     "",
+     "",
+     "XBRL Instance Document",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCG**",
+     "",
+     "",
+     "XBRL Taxonomy Extension Schema",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL**",
+     "",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB**",
+     "",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE**",
+     "",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase",
+     "[X]",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "**",
+     "XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by reference"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 741,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(5) AUDIT COMMITTEE POLICIES AND PROCEDURES\nWe do not have an audit committee.\n(6) If greater than 50 percent, disclose the percentage of hours expended on the principal accountant's engagement to audit the registrant's financial statements for the most recent fiscal year that were attributed to work performed by persons other than the principal accountant's full-time, permanent employees.\nNot applicable.\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\n(a) We have filed the following documents as part of this Annual Report on Form 10-K:\n1. The financial statements listed in the \"Index to Financial Statements\" on page 30 are filed as part of this report.\n2. Financial statement schedules are omitted because they are not applicable or the required information is shown in the financial statements or notes thereto.\n3. Exhibits included or incorporated herein: See index to Exhibits.\nExhibit Index",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nBy: /S/ Darin R. Pastor\nDarin R. Pastor, President\nDate: April 15, 2014\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 738,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 763,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/ Darin R. Pastor",
+     "Chairman of the Board of Directors,",
+     "April 15, 2014"
+    ],
+    [
+     "Darin R. Pastor",
+     "Chief Executive Officer (Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "and Principal Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nBy: /S/ Darin R. Pastor\nDarin R. Pastor, President\nDate: April 15, 2014\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2013 AND 2012",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 770,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 789,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGES"
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF STOCKHOLDERS' DEFICIT",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO FINANCIAL STATEMENTS",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "PAGES"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 797,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2013 AND 2012",
+   "prose_after": "SEALE AND BEERS, CPAs\nPCAOB & CPAB REGISTERED AUDITORS\nwww.sealebeers.com\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of Capstone Financial Group, Inc.\nWe have audited the accompanying balance sheets of Capstone Financial Group, Inc. as of December 31, 2013 and the related statements of income, stockholders\u2019 equity (deficit), and cash flows for the one year period ended December 31, 2013. Capstone Financial Group Inc.\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits. . The balance sheet as of December 31, 2012, and the related statements of operations, changes in stockholders\u2019 deficit and cash flows for the period ended December 31, 2012 were audited by other auditors whose report dated March 21, 2013 on those statements included an explanatory paragraph describing conditions that raised substantial doubt about the Company\u2019s ability to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAPSTONE FINANCIAL GROUP, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(FORMERLY CREATIVE APP SOLUTIONS, INC.)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "6,140",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "10,364",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "10,364",
+     "",
+     "",
+     "6,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Line of credit receivable - related party",
+     "",
+     "1,472,136",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accrued interest receivable - related party",
+     "",
+     "6,542",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,589,042",
+     "",
+     "$",
+     "6,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "8,482",
+     "",
+     "$",
+     "300",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "8,482",
+     "",
+     "",
+     "300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "-",
+     "",
+     "",
+     "501",
+     ""
+    ],
+    [
+     "Accrued interest payable - related party",
+     "",
+     "1,637",
+     "",
+     "",
+     "283",
+     ""
+    ],
+    [
+     "Line of credit payable",
+     "",
+     "-",
+     "",
+     "",
+     "35,000",
+     ""
+    ],
+    [
+     "Line of credit payable - related party",
+     "",
+     "320,240",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable - related party",
+     "",
+     "-",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Total long term liabilities",
+     "",
+     "321,877",
+     "",
+     "",
+     "45,784",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "330,359",
+     "",
+     "",
+     "46,084",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value, 10,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, no and no shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as of December 31, 2013 and 2012, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 2,000,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, 93,025,000 and 80,200,000 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as of December 31, 2013 and 2012, respectively",
+     "",
+     "93,025",
+     "",
+     "",
+     "80,200",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "1,353,677",
+     "",
+     "",
+     "(75,700)",
+     ""
+    ],
+    [
+     "Deficit accumulated during development stage",
+     "",
+     "(188,019)",
+     "",
+     "",
+     "(44,444)",
+     ""
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "",
+     "1,258,683",
+     "",
+     "",
+     "(39,944)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity (deficit)",
+     "$",
+     "1,589,042",
+     "",
+     "$",
+     "6,140",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CAPSTONE FINANCIAL GROUP, INC.",
+    "(FORMERLY CREATIVE APP SOLUTIONS, INC.)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 845,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Capstone Financial Group, Inc. as of December 31, 2013, and the related statements of income, stockholders\u2019 equity (deficit), and cash flows for the one year period ended December 31, 2013, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, has incurred recurring losses and recurring negative cash flow from operating activities, and has an accumulated deficit which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans concerning these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Seale and Beers, CPAs\nSeale and Beers, CPAs\nLas Vegas, Nevada\nApril 15, 2014\n50 S. Jones Blvd, Suite 201 - Las Vegas, NV 89107 Phone: (888)727-8251 Fax: (888)782-2351",
+   "prose_after": "See accompanying notes to financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAPSTONE FINANCIAL GROUP, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(FORMERLY CREATIVE APP SOLUTIONS, INC.)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the",
+     "",
+     "",
+     "Inception",
+     "",
+     ""
+    ],
+    [
+     "",
+     "year",
+     "",
+     "",
+     "(July 10, 2012)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ended",
+     "",
+     "",
+     "t[ ]",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "164,593",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "25,182",
+     "",
+     "",
+     "684",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "268,809",
+     "",
+     "",
+     "42,976",
+     ""
+    ],
+    [
+     "Professional fee - related party",
+     "",
+     "15,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "309,691",
+     "",
+     "",
+     "43,660",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income - related party",
+     "",
+     "6,542",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(2,963)",
+     "",
+     "",
+     "(501)",
+     ""
+    ],
+    [
+     "Interest expense - related party",
+     "",
+     "(2,056)",
+     "",
+     "",
+     "(283)",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "1,523",
+     "",
+     "",
+     "(784)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(143,575)",
+     "",
+     "$",
+     "(44,444)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares outstanding - basic",
+     "",
+     "80,180,488",
+     "",
+     "",
+     "79,732,571",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CAPSTONE FINANCIAL GROUP, INC.",
+    "(FORMERLY CREATIVE APP SOLUTIONS, INC.)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.",
+   "prose_after": "See accompanying notes to financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 913,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAPSTONE FINANCIAL GROUP, INC.\n\n(FORMERLY CREATIVE APP SOLUTIONS, INC.)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid",
+     "",
+     "",
+     "During",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Shares",
+     "",
+     "",
+     "",
+     "Common Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "I\u2022",
+     "",
+     "",
+     "Development",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stage",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Inception, (July 10, 2012)",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 11, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "80,000,000",
+     "",
+     "",
+     "80,000",
+     "",
+     "",
+     "(76,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,000.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 19, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "200,000",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "300",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(44,444)",
+     "",
+     "",
+     "(44,444)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2012",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "80,200,000",
+     "",
+     "",
+     "80,200",
+     "",
+     "",
+     "(75,700)",
+     "",
+     "",
+     "(44,444)",
+     "",
+     "",
+     "(39,944)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "February 25, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "10,000,000",
+     "",
+     "",
+     "10,000",
+     "",
+     "",
+     "40,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "April 16, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "4,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 6, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancellation of common stock for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,000,000)",
+     "",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "(4,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 26, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of debt with related party",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "14,202",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "14,202",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 30, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,470,000",
+     "",
+     "",
+     "1,470",
+     "",
+     "",
+     "292,530",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "294,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,355,000",
+     "",
+     "",
+     "1,355",
+     "",
+     "",
+     "1,082,645",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,084,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(143,575)",
+     "",
+     "",
+     "(143,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2013",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "93,025,000",
+     "",
+     "$",
+     "93,025",
+     "",
+     "$",
+     "1,353,677",
+     "",
+     "$",
+     "(188,019)",
+     "",
+     "$",
+     "1,258,683",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CAPSTONE FINANCIAL GROUP, INC.\n\n(FORMERLY CREATIVE APP SOLUTIONS, INC.)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 1018
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.",
+   "prose_after": "See accompanying notes to financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 963,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAPSTONE FINANCIAL GROUP, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(FORMERLY CREATIVE APP SOLUTIONS, INC.)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the",
+     "",
+     "",
+     "Inception",
+     "",
+     ""
+    ],
+    [
+     "",
+     "year",
+     "",
+     "",
+     "(July 10, 2012)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ended",
+     "",
+     "",
+     "t[ ]",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(143,575)",
+     "",
+     "$",
+     "(44,444)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "-",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) in accounts receivable",
+     "",
+     "(10,364)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Increase) in accrued interest receivable - related party",
+     "",
+     "(6,542)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in accounts payable",
+     "",
+     "8,182",
+     "",
+     "",
+     "300",
+     ""
+    ],
+    [
+     "(Decrease) in accrued interest payable",
+     "",
+     "(501)",
+     "",
+     "",
+     "501",
+     ""
+    ],
+    [
+     "Increase in accrued interest payable - related party",
+     "",
+     "2,056",
+     "",
+     "",
+     "283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(150,744)",
+     "",
+     "",
+     "(42,860)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments for line of credit receivable - related party",
+     "",
+     "(1,472,136)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,572,136)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from line of credit payable",
+     "",
+     "381,740",
+     "",
+     "",
+     "35,000",
+     ""
+    ],
+    [
+     "Repayments on line of credit payable",
+     "",
+     "(96,500)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - related party",
+     "",
+     "3,500",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock, net of offering costs",
+     "",
+     "1,428,000",
+     "",
+     "",
+     "4,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,716,740",
+     "",
+     "",
+     "49,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "",
+     "(6,140)",
+     "",
+     "",
+     "6,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "6,140",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "-",
+     "",
+     "$",
+     "6,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "$",
+     "-",
+     "",
+     "$",
+     "500",
+     ""
+    ],
+    [
+     "Forgiveness of debt - related party",
+     "$",
+     "14,202",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CAPSTONE FINANCIAL GROUP, INC.",
+    "(FORMERLY CREATIVE APP SOLUTIONS, INC.)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements.",
+   "prose_after": "See accompanying notes to financial statements.\n(FORMERLY CREATIVE APP SOLUTIONS, INC.)\nNOTES TO FINANCIAL STATEMENTS\n(AUDITED)\nNOTE 1 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nOrganization\nThe Company was incorporated on July 10, 2012 (Date of Inception) under the laws of the State of Nevada, as Creative App Solutions, Inc. On August 23, 2013, the Company amended its articles of incorporation and changed their name to Capstone Financial Group, Inc.\nDuring the period of inception (July 10, 2012) through December 31, 2012, the Company had not commenced significant operations and, in accordance with ASC Topic 915, the Company was considered a development stage company. During the year ended December 31, 2013, the Company exited the development stage.\nNature of operations\nThe Company will design and sell mobile application for the Apple and Android platforms. During the year ended December 31, 2013 the Company changed its business plan and plans to offer financial services and consulting to businesses and they rely heavily on an officer, director and shareholder who hold the proper licenses in order to conduct business.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1094,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "65,632",
+     "",
+     "$",
+     "15,380",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "65,632",
+     "",
+     "",
+     "15,380",
+     ""
+    ],
+    [
+     "Less: Valuation allowance",
+     "",
+     "(65,632)",
+     "",
+     "",
+     "(15,380)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1252,
+    "end_line": 1267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "On July 12, 2012, the Company executed a promissory note with a related party for $10,000. The unsecured loan bears interest at 6% per annum with principal and interest due on July 13, 2015. During the year ended December 31, 2013, related party loaned an additional $3,500 to the Company with the same terms as the previous promissory note for $10,000. During the year ended December 31, 2013, the related party forgave the entire balance of principal of $13,500 and accrued interest of $702. As of December 31, 2013, the balance of accrued interest was $0.\nInterest expense \u2013 related party for notes payable \u2013 related party for the year ended December 31, 2013 and for the period from inception (July 10, 2012) through December 31, 2012 was $419 and $283, respectively.\nNOTE 7 \u2013 INCOME TAXES\nAt December 31, 2013 and 2012, the Company had a federal operating loss carryforward of $187,519 and $43,944, respectively, which begins to expire in 2032.\nComponents of net deferred tax assets, including a valuation allowance, are as follows at December 31, 2013 and 2012:",
+   "prose_after": "The valuation allowance for deferred tax assets as of December 31, 2013 and 2012 was $65,632 and $15,380, respectively, which will begin to expire in 2032. In assessing the recovery of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income in the periods in which those temporary differences become deductible. Management considers the scheduled reversals of future deferred tax assets, projected future taxable income, and tax planning strategies in making this assessment. As a result, management determined it was more likely than not the deferred tax assets would not be realized as of December 31, 2013 and 2012 and maintained a full valuation allowance.\nReconciliation between the statutory rate and the effective tax rate is as follows at December 31, 2013 and 2012:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory rate",
+     "",
+     "(35.0)",
+     "%",
+     "",
+     "(35.0)",
+     "%"
+    ],
+    [
+     "State taxes, net of federal benefit",
+     "",
+     "(0.00)",
+     "%",
+     "",
+     "(0.00)",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "35.0",
+     "%",
+     "",
+     "35.0",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1272,
+    "end_line": 1285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The valuation allowance for deferred tax assets as of December 31, 2013 and 2012 was $65,632 and $15,380, respectively, which will begin to expire in 2032. In assessing the recovery of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income in the periods in which those temporary differences become deductible. Management considers the scheduled reversals of future deferred tax assets, projected future taxable income, and tax planning strategies in making this assessment. As a result, management determined it was more likely than not the deferred tax assets would not be realized as of December 31, 2013 and 2012 and maintained a full valuation allowance.\nReconciliation between the statutory rate and the effective tax rate is as follows at December 31, 2013 and 2012:",
+   "prose_after": "NOTE 8 \u2013 STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nThe Company is authorized to issue 2,000,000,000 shares of its $0.001 par value common stock and 10,000,000 shares of its $0.001 par value preferred stock.\nOn September 6, 2013, the Company effected a 20-for-1 forward stock split of its $0.001 par value common stock and increased its authorized common stock to 2,000,000,000 shares.\n(FORMERLY CREATIVE APP SOLUTIONS, INC.)\nNOTES TO FINANCIAL STATEMENTS\n(AUDITED)\nAll shares and per share amounts have been retroactively restated to reflect the split discussed above.\nCommon stock\nOn July 11, 2012, the Company issued an officer and director of the Company 4,000,000 shares of its $0.001 par value common stock at a price of $0.001 per share for cash of $4,000.\nOn July 19, 2012, the Company issued 10,000 shares of common stock at a price of $0.05 per share for legal services valued at $500. The Company valued the shares at the fair value of the services rendered.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

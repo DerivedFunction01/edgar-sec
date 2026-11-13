@@ -1,0 +1,6697 @@
+{
+ "accession": "0001493152-26-011885",
+ "cik": "0001947244",
+ "form": "10-K",
+ "filing_date": "2026-03-20",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "37-1792147"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation of organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________to _______\nCommission File Number: 001-41690\nU.S. GOLDMINING INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1188 West Georgia Street, Suite 1830, Vancouver, BC, Canada",
+     "V6E 4A2"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(604) 388-9788",
+     ""
+    ],
+    [
+     "",
+     "(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(604) 388-9788",
+    "(Registrant\u2019s telephone number, including area code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "USGO",
+     "The Nasdaq Capital Market"
+    ],
+    [
+     "Warrants, each warrant exercisable for one share of Common Stock at an exercise price of $13.00",
+     "USGOW",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1C.",
+     "Cybersecurity",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings",
+     "36"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "36"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "37"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "37"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 6.",
+     "[Reserved]",
+     "37"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "38"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 9A.",
+     "Controls and Procedures",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other Information",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "47"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "48"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "49"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "49"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 16.",
+     "Form 10-K Summary",
+     "49"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 151
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant on June 30, 2025, based on a closing price per share of $8.20 was $20,587,453.\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: 13,322,293 shares of common stock, par value $0.001 per share, outstanding as of March 20, 2026.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the registrant\u2019s proxy statement relating to the registrant\u2019s 2026 annual meeting of stockholders are incorporated by reference in Part III of this Annual Report on Form 10-K. The proxy statement will be filed with the Securities and Exchange Commission no later than 120 days after the conclusion of the registrant\u2019s fiscal year ended December 31, 2025. If such proxy statement is not filed on or before such date, the information called for by Part III will be filed as part of an amendment to this Annual Report on Form 10-K on or before such date.\nTABLE OF CONTENTS",
+   "prose_after": "2\nBASIS OF PRESENTATION\nUnless otherwise indicated, references in this Annual Report on Form 10-K (the \u201cAnnual Report\u201d) to \u201cU.S. GoldMining\u201d, the \u201cCompany\u201d, \u201cwe\u201d, \u201cus\u201d and \u201cour\u201d refer to U.S. GoldMining Inc., a Nevada corporation.\nWe express all amounts in this Annual Report in U.S. dollars, except where otherwise indicated. References to \u201c$\u201d and \u201cUS$\u201d are to U.S. dollars and references to \u201cC$\u201d are to Canadian dollars.\nWe have made rounding adjustments to some of the figures included in this Annual Report. Accordingly, numerical figures shown as totals in some tables may not be an arithmetic aggregation of the figures that preceded them.\nMARKET, INDUSTRY AND OTHER DATA\nUnless otherwise indicated, information contained in this Annual Report concerning our industry and the market in which we operate, including our market position, market opportunity and market size, is based on information from various sources such as industry publications, on assumptions that we have made based on such data and other similar sources and on our knowledge of the markets for our products. These data involve a number of assumptions and limitations. We have not independently verified any third-party information.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Abbreviation",
+     "Meaning",
+     "Abbreviation",
+     "Meaning"
+    ],
+    [
+     "\u201cAg\u201d",
+     "silver",
+     "\u201cCu\u201d",
+     "copper"
+    ],
+    [
+     "\u201cAu\u201d",
+     "gold",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 172,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Unless otherwise indicated, information contained in this Annual Report concerning our industry and the market in which we operate, including our market position, market opportunity and market size, is based on information from various sources such as industry publications, on assumptions that we have made based on such data and other similar sources and on our knowledge of the markets for our products. These data involve a number of assumptions and limitations. We have not independently verified any third-party information.\nIn addition, projections, assumptions and estimates of our future performance and the future performance of the industry in which we operate is necessarily subject to a high degree of uncertainty and risk due to a variety of factors, including those described in the sections entitled \u201cItem 1A. Risk Factors\u201d, \u201cItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations - Cautionary Note Regarding Forward-Looking Statements\u201d, and elsewhere herein. These and other factors could cause results to differ materially from those expressed in the estimates made by the independent parties and by us.\nGLOSSARY OF ABBREVIATIONS AND TECHNICAL TERMS\nIn this Annual Report, the following abbreviations are used to express elements:",
+   "prose_after": "In this Annual Report, the following abbreviations are used to express units of measurement:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Abbreviation",
+     "Meaning",
+     "Abbreviation",
+     "Meaning"
+    ],
+    [
+     "\u201cg/t\u201d",
+     "grams per metric tonne",
+     "\u201cMa\u201d",
+     "million years"
+    ],
+    [
+     "\u201ckm\u201d",
+     "kilometers",
+     "\u201cmasl\u201d",
+     "meters above sea level"
+    ],
+    [
+     "\u201ckm (2)\u201d",
+     "square kilometers",
+     "\u201cmlbs\u201d",
+     "million pounds"
+    ],
+    [
+     "\u201ckoz\u201d",
+     "thousand troy ounces",
+     "\u201coz\u201d",
+     "troy ounces, with each troy ounce being equal to 31.1034768 grams"
+    ],
+    [
+     "\u201cm\u201d",
+     "meters",
+     "\u201cwmt\u201d",
+     "wet metric tonnes"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 190
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "In this Annual Report, the following abbreviations are used to express units of measurement:",
+   "prose_after": "This Annual Report utilizes the following defined terms:\n\u201cIndicated Mineral Resource\u201d or \u201cIndicated Resource\u201d under S-K 1300, is that part of a Mineral Resource for which quantity and grade or quality are estimated on the basis of adequate geological evidence and sampling. The level of geological certainty associated with an Indicated Mineral Resource is sufficient to allow a qualified person to apply modifying factors in sufficient detail to support mine planning and evaluation of the economic viability of the deposit. Because an Indicated Mineral Resource has a lower level of confidence than the level of confidence of a Measured Mineral Resource, an Indicated Mineral Resource may only be converted to a Probable Mineral Reserve. Under NI 43-101, it means that part of a Mineral Resource for which quantity and quality, grade or quality, densities, shape and physical characteristics, can be estimated with a level of confidence sufficient to allow the appropriate application of technical and economic parameters, to support mine planning and evaluation of the economic viability of the deposit. The estimate is based on detailed and reliable exploration and testing information gathered through appropriate techniques from locations such as outcrops, trenches, pits, workings and drill holes that are spaced closely enough for geological and grade continuity to be reasonably assumed.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Figure 1",
+     "Whistler Project in relation to Anchorage and the proposed West Susitna Access Road."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 637,
+    "end_line": 640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "As of the date hereof, the Whistler Project comprises 377 State of Alaska mining claims covering an aggregate area of approximately 217.5 km2. The center of the property is located at 152.566\u00b0 longitude west and 61.983\u00b0 latitude north. The Whistler Project is located in the drainage of the Skwentna River. Elevation varies from about 400 masl in the valley floors to over 5,000 masl in the highest peaks.\nAn all-season camp facility exists near the confluence of Portage Creek and the Skwentna River, approximately 15 km southeast of the Rainy Pass Hunting Lodge. The camp is serviced with a 1,000 m gravel airstrip for wheel-based aircraft. The camp is equipped with kitchen and messing facility, ablutions facility, accommodations for up to 24 personnel, a maintenance workshop, water well and potable water filtration system, septic field system, diesel generators, office and core logging and sampling facility and a satellite communications link, tent structures on wooden floors, and several wood-framed buildings.\nThe following map sets forth the location of the Whistler Project and shows the proposed alignment of the West Susitna Access Road.",
+   "prose_after": "Royalties and Encumbrances\nWe acquired rights to the Whistler Project and certain related assets in August 2015 for a total cost of approximately $1.32 million pursuant to an asset purchase agreement dated July 20, 2015, by and among us, GoldMining, Kiska and Geoinformatics. Pursuant to such agreement, we acquired rights and assumed obligations under several related underlying agreements. The related underlying agreements on the Whistler Project are listed below:\n1. 2.75% net smelter return (\u201cNSR\u201d) over all 377 claims and extending outside the current claims over an Area of Interest defined by the maximum historical extent of claims held on the Whistler Project to Osisko Mining (USA) Inc. (\u201cOM\u201d) pursuant to an Amended and Restated Net Smelter Returns Royalty Deed dated December 16, 2014, granted by Geoinformatics (as assumed by us on August 5, 2015) in favour of MF2 LLC (as assumed by OM). Gold Royalty U.S. Corp. holds a right to buy down the royalty percentage from 2.75% to 2.0% upon payment to OM of a one-time payment of $5,000,000. The royalty was subsequently assigned to Nevada Select Royalty, Inc. (a subsidiary of Gold Royalty Corp.).",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 653,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Cutoff",
+     "",
+     "ROM tonnage",
+     "",
+     "In situ Grades",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "In situ Metal",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class",
+     "Deposit",
+     "($/t)",
+     "",
+     "(ktonnes)",
+     "",
+     "NSR ($/t)",
+     "",
+     "AuEq (g/t)",
+     "",
+     "Au (g/t)",
+     "",
+     "Cu\n\n\n\n(%)",
+     "",
+     "Ag (g/t)",
+     "",
+     "AuEq (Koz)",
+     "",
+     "Au (koz)",
+     "",
+     "Cu\n\n\n\n(klbs)",
+     "",
+     "Ag\n\n\n\n(koz)",
+     ""
+    ],
+    [
+     "Indicated",
+     "Whistler",
+     "$",
+     "13.40",
+     "",
+     "284,203",
+     "",
+     "38.74",
+     "",
+     "0.562",
+     "",
+     "0.409",
+     "",
+     "0.154",
+     "",
+     "1.7",
+     "",
+     "5,132",
+     "",
+     "3,740",
+     "",
+     "964,275",
+     "",
+     "15,808"
+    ],
+    [
+     "",
+     "Raintree-Pit",
+     "",
+     "",
+     "",
+     "10,332",
+     "",
+     "35.63",
+     "",
+     "0.517",
+     "",
+     "0.420",
+     "",
+     "0.076",
+     "",
+     "4.8",
+     "",
+     "156",
+     "",
+     "128",
+     "",
+     "15,356",
+     "",
+     "1,321"
+    ],
+    [
+     "",
+     "Indicated Open Pit",
+     "",
+     "",
+     "",
+     "294,535",
+     "",
+     "38.63",
+     "",
+     "0.560",
+     "",
+     "0.410",
+     "",
+     "0.151",
+     "",
+     "1.8",
+     "",
+     "5,287",
+     "",
+     "3,868",
+     "",
+     "979,631",
+     "",
+     "17,129"
+    ],
+    [
+     "",
+     "Raintree-UG",
+     "$",
+     "40 shell",
+     "",
+     "4,619",
+     "",
+     "58.81",
+     "",
+     "0.853",
+     "",
+     "0.713",
+     "",
+     "0.118",
+     "",
+     "5.4",
+     "",
+     "127",
+     "",
+     "106",
+     "",
+     "12,036",
+     "",
+     "795"
+    ],
+    [
+     "",
+     "Total Indicated",
+     "",
+     "varies",
+     "",
+     "299,154",
+     "",
+     "38.94",
+     "",
+     "0.565",
+     "",
+     "0.414",
+     "",
+     "0.151",
+     "",
+     "1.9",
+     "",
+     "5,414",
+     "",
+     "3,973",
+     "",
+     "991,667",
+     "",
+     "17,924"
+    ],
+    [
+     "Inferred",
+     "Whistler",
+     "$",
+     "13.40",
+     "",
+     "4,967",
+     "",
+     "38.37",
+     "",
+     "0.556",
+     "",
+     "0.433",
+     "",
+     "0.115",
+     "",
+     "1.2",
+     "",
+     "89",
+     "",
+     "69",
+     "",
+     "12,549",
+     "",
+     "192"
+    ],
+    [
+     "",
+     "Island Mountain",
+     "",
+     "",
+     "",
+     "187,283",
+     "",
+     "29.04",
+     "",
+     "0.421",
+     "",
+     "0.376",
+     "",
+     "0.043",
+     "",
+     "0.9",
+     "",
+     "2,535",
+     "",
+     "2,263",
+     "",
+     "178,368",
+     "",
+     "5,299"
+    ],
+    [
+     "",
+     "Raintree-Pit",
+     "",
+     "",
+     "",
+     "18,780",
+     "",
+     "37.83",
+     "",
+     "0.548",
+     "",
+     "0.471",
+     "",
+     "0.057",
+     "",
+     "4.3",
+     "",
+     "289",
+     "",
+     "252",
+     "",
+     "19,475",
+     "",
+     "1,927"
+    ],
+    [
+     "",
+     "Inferred Open Pit",
+     "",
+     "",
+     "",
+     "211,030",
+     "",
+     "30.04",
+     "",
+     "0.436",
+     "",
+     "0.386",
+     "",
+     "0.046",
+     "",
+     "1.2",
+     "",
+     "2,913",
+     "",
+     "2,584",
+     "",
+     "210,392",
+     "",
+     "7,418"
+    ],
+    [
+     "",
+     "Raintree-UG",
+     "$",
+     "40 shell",
+     "",
+     "79,717",
+     "",
+     "55.32",
+     "",
+     "0.802",
+     "",
+     "0.692",
+     "",
+     "0.102",
+     "",
+     "2.7",
+     "",
+     "2,055",
+     "",
+     "1,773",
+     "",
+     "179,964",
+     "",
+     "6,843"
+    ],
+    [
+     "",
+     "Total Inferred",
+     "",
+     "varies",
+     "",
+     "290,747",
+     "",
+     "36.97",
+     "",
+     "0.536",
+     "",
+     "0.470",
+     "",
+     "0.062",
+     "",
+     "1.6",
+     "",
+     "4,969",
+     "",
+     "4,357",
+     "",
+     "390,355",
+     "",
+     "14,261"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 767,
+    "end_line": 794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "These Mineral Resource estimates include Inferred Mineral Resources that are considered too speculative geologically to have economic considerations applied to them that would enable them to be categorized as Mineral Reserves. Mineral Resources that are not Mineral Reserves do not have demonstrated economic viability.\nThe QP is of the opinion that issues relating to all relevant technical and economic factors likely to influence the prospect of economic extraction can be resolved with further work. These factors may include environmental permitting, infrastructure, sociopolitical, marketing, or other relevant factors.\nThe following table sets forth the Mineral Resource estimates detailed in the S-K 1300 Report, with an effective date of March 2, 2026.\nAs a point of reference, the in-situ gold, copper and silver mineralization are inventoried and reported by intended mining method (open pit or underground mining method).\nTable 1: Mineral Resource Estimate for the Whistler Project (Effective date: March 2, 2026)",
+   "prose_after": "Notes:\n1. Mineral Resources are not Mineral Reserves and do not have demonstrated economic viability. There is no certainty that all or any part of the Mineral Resources will be converted into Mineral Reserves.\n2. The Mineral Resource for the Whistler, Island Mountain, and the upper portions of the Raintree West Deposits have been confined by an open pit with \u201creasonable prospects of eventual economic extraction\u201d using the following assumptions:\n\u25cf metal prices of $2,750/oz Au, $4.35/lb Cu and $30/oz Ag;\n\u25cf payable metal of 94.8% payable for Au, and 96.5% payable for Cu, 88.2% payable for Ag;\n\u25cf refining costs for Au of $7.50/oz, for Ag of $1.00/oz and for Cu of $0.065/lb;\n\u25cf offsite costs of $165.65/t;\n\u25cf royalty of 3% NSR;\n\u25cf pit slopes of 50 degrees;\n\u25cf mining cost of $2.75/t for waste and mineralized material; and",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Whistler Project Mineral Resource estimate",
+     "Classification",
+     "ktonnes",
+     "",
+     "",
+     "NSR (US$/t)",
+     "",
+     "",
+     "AuEq (g/t)",
+     "",
+     "",
+     "Au (g/t)",
+     "",
+     "",
+     "Cu (%)",
+     "",
+     "",
+     "Ag (g/t)",
+     "",
+     "",
+     "AuEq (Moz)",
+     "",
+     "",
+     "Au (Moz)",
+     "",
+     "",
+     "Cu (klbs)",
+     "",
+     "",
+     "Ag (Moz)",
+     "",
+     ""
+    ],
+    [
+     "ALL DEPOSITS 2026 Mineral Resource estimate",
+     "INDICATED",
+     "",
+     "299,154",
+     "",
+     "",
+     "38.94",
+     "",
+     "",
+     "0.56",
+     "",
+     "",
+     "0.41",
+     "",
+     "",
+     "0.15",
+     "",
+     "",
+     "1.88",
+     "",
+     "",
+     "5.41",
+     "",
+     "",
+     "3.97",
+     "",
+     "",
+     "991.67",
+     "",
+     "",
+     "17.92",
+     ""
+    ],
+    [
+     "",
+     "INFERRED",
+     "",
+     "290,747",
+     "",
+     "",
+     "36.97",
+     "",
+     "",
+     "0.536",
+     "",
+     "",
+     "0.470",
+     "",
+     "",
+     "0.062",
+     "",
+     "",
+     "1.55",
+     "",
+     "",
+     "4.97",
+     "",
+     "",
+     "4.36",
+     "",
+     "",
+     "390.36",
+     "",
+     "",
+     "14.26",
+     ""
+    ],
+    [
+     "ALL DEPOSITS 2024 Mineral Resource estimate",
+     "INDICATED",
+     "",
+     "294.47",
+     "",
+     "",
+     "22.91",
+     "",
+     "",
+     "0.685",
+     "",
+     "",
+     "0.415",
+     "",
+     "",
+     "0.158",
+     "",
+     "",
+     "2.01",
+     "",
+     "",
+     "6.48",
+     "",
+     "",
+     "3.93",
+     "",
+     "",
+     "1,023.71",
+     "",
+     "",
+     "18.99",
+     ""
+    ],
+    [
+     "",
+     "INFERRED",
+     "",
+     "198.24",
+     "",
+     "",
+     "21.82",
+     "",
+     "",
+     "0.652",
+     "",
+     "",
+     "0.519",
+     "",
+     "",
+     "0.073",
+     "",
+     "",
+     "1.81",
+     "",
+     "",
+     "4.16",
+     "",
+     "",
+     "3.31",
+     "",
+     "",
+     "316.92",
+     "",
+     "",
+     "11.52",
+     ""
+    ],
+    [
+     "% DIFFERENCE\n\n\n\n2026 vs 2024 Mineral Resource estimate",
+     "INDICATED",
+     "",
+     "1.6",
+     "%",
+     "",
+     "70.0",
+     "%",
+     "",
+     "-17.6",
+     "%",
+     "",
+     "-0.3",
+     "%",
+     "",
+     "-4.5",
+     "%",
+     "",
+     "-5.7",
+     "%",
+     "",
+     "-16.5",
+     "%",
+     "",
+     "1.0",
+     "%",
+     "",
+     "-3.1",
+     "%",
+     "",
+     "-5.6",
+     "%"
+    ],
+    [
+     "",
+     "INFERRED",
+     "",
+     "46.7",
+     "%",
+     "",
+     "69.4",
+     "%",
+     "",
+     "-17.8",
+     "%",
+     "",
+     "-9.6",
+     "%",
+     "",
+     "-15.1",
+     "%",
+     "",
+     "-11.6",
+     "%",
+     "",
+     "19.5",
+     "%",
+     "",
+     "31.6",
+     "%",
+     "",
+     "23.2",
+     "%",
+     "",
+     "23.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "9. Abbreviations used above: $/t = USD$ per tonne; ktonnes = \u2018000 tonnes; NSR = Net Smelter Royalty; AuEq = gold equivalent grade; g/t = grammes per tonne; koz = \u2018000 ounces; klbs = \u2018000 pounds.\nComparison to the Previous Resource Estimate\nThe table below compares the current resource estimate to the previous, 2024 resource estimate, which was also the current resource as of the end of the fiscal year ended December 31, 2025. Changes to the resource are due to drilling at Whistler in 2024, as well as updates to the recoveries, smelter terms, mining and processing costs, cutoff grade and metal prices. The increase in metal prices increased the NSR while the relative increase in gold price compared to copper and silver causes the decrease in AuEq value for the 2026 estimate.\nTable 2: Comparison of 2026 Mineral Resource estimate for the Whistler Project (Effective date: March 2, 2026) against the 2024 Mineral Resource estimate (Effective date: September 12, 2024; current mineral resource at the end of the fiscal year ended December 31, 2025).",
+   "prose_after": "Notes:\nSee Table 1-1 for notes on 2026 Mineral Resource estimate.\n2024 Mineral Resource estimate Notes:\n1. Mineral Resources are not Mineral Reserves and do not have demonstrated economic viability. There is no certainty that all or any part of the Mineral Resources will be converted into Mineral Reserves.\n2. The Mineral Resource for the Whistler, Island Mountain, and the upper portions of the Raintree West deposits have been confined by an open pit with \u201creasonable prospects of economic extraction\u201d using the following assumptions:\n\u25cf Metal prices of US$1,850/oz Au, US$4.00/lb Cu and US$23/oz Ag;\n\u25cf Payable metal of 95% payable for Au and Ag, and 96.5% payable for Cu\n\u25cf Refining costs for Au of US$12.45/wmt, for Ag of US$3.47/wmt and for Cu of US$25.35/wmt.\n\u25cf Offsite costs for Au of US$77.50/wmt, for Ag of US$3.50/wmt and for Cu of US$55.00/wmt.\n\u25cf Royalty of 3% NSR;",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Table 3:",
+     "Whistler Plan ROM Production Results"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 879,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The purpose of the S-K 1300 Report is to report the technical and economic results and updated Mineral Resource estimate for the Project. The S-K 1300 Report was prepared to support the press release titled \u201cU.S. GoldMining Announces Positive Preliminary Economic Assessment for Whistler Gold-Copper Project, Alaska\u201d dated March 2, 2026.\nThe Whistler Deposit is amenable to conventional drill, blast, load, and haul open-pit mining methods. Open pit mine designs, a mine production schedule, and mine capital and operating costs have been developed for the Whistler Deposit at a scoping level of engineering. The Raintree West and Island Mountain deposit resources are not included in this mine plan.\nThe open pit is designed for approximately 14.6 years of operations, inclusive of one year of pre-production mining, and one year of low-grade stockpile rehandling to the mill after the open pit is exhausted. The Run-of-Mine (\u201cROM\u201d) production contained within the designed open pit, summarized in Table 3 with a 0.19 g/t gold equivalent cutoff grade (NSR:$13.40/t), forms the basis of the Whistler Mine Plan. These contents are a subset of the Indicated Mineral Resource estimate described above; Inferred Mineral Resources have been treated as waste.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pit Content",
+     "Parameter"
+    ],
+    [
+     "Mill Feed",
+     "211 Mt"
+    ],
+    [
+     "Average Gold Grade",
+     "0.44 g/t"
+    ],
+    [
+     "Average Copper Grade",
+     "0.16%"
+    ],
+    [
+     "Average Silver Grade",
+     "1.8 g/t"
+    ],
+    [
+     "Waste Material",
+     "465 Mt"
+    ],
+    [
+     "Strip Ratio",
+     "2.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Mill feed quantities and grades include estimates of mining dilution and recovery based on 20 x 20 x 10 m selective block sizes and an additional 3% dilution applied to account for waste edge contracts on the outer edges of the mineralization. This dilution is balanced with an estimated 97% mining recovery.\nThe crusher will be fed with material from the pit and stockpile at an average feed rate of 40,000 tonnes per day (t/d).\nThe open pit is split into four phases, targeting highest to lowest economic value between the pushbacks. The first phase will commence near the center of the deposit, where the highest grade of mineralized material and lowest strip ratio will be encountered and the remaining phases targeting progressively higher strip ratios and lower grades.\nMill feed will be sent to the crusher directly north of the open pit, or to the low-grade stockpile next the crusher. This low-grade facility will be reclaimed to the crusher/mill during and at the end of the mine life.\nPreliminary estimates indicate that 55% of the pit waste rock is potentially acid-generating (\u201cPAG\u201d). Another 12% of pit waste rock is undefined and PAG overburden. These PAG quantities will be stored sub aqueously within the co-disposal storage facility (\u201cCDSF\u201d).",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Table 4:",
+     "Capital Cost Summary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The capital and operating costs described in this Initial Assessment are based on open pit mining operations for the Whistler gold-copper project. The process plant is designed to treat 40,000 t/d of mineralized material, or 14.6 Mt/a, over a mine life of 14.6 years.\nThe capital cost estimate was developed in Q4 2025 to target a level of accuracy of -30% to +50%, which aligns with an Association for the Advancement of Cost Engineering International (\u201cAACE International\u201d) Class 5 level estimate. The estimate includes mining, processing, on-site infrastructure, off-site infrastructure, project indirects, project delivery, owners\u2019 costs, and provisions. The total initial capital costs for the Project are estimated at US$1,278.6 million, including US$56.3 million of capitalized operating costs, and US$213.3 million of contingency. The life of mine (\u201cLOM\u201d) sustaining costs are estimated at US$381.1 million, while the closure costs are estimated at US$98.7 million. The capital cost summary is presented in Table 4.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WBS",
+     "Description",
+     "Capital Cost (US$M)",
+     "",
+     "Sustaining Cost (US$M)",
+     "",
+     "Total Cost (US$M)",
+     ""
+    ],
+    [
+     "1000",
+     "Mining",
+     "",
+     "39.7",
+     "",
+     "319.0",
+     "",
+     "358.7"
+    ],
+    [
+     "2000",
+     "Crushing and Conveyance",
+     "",
+     "120.4",
+     "",
+     "-",
+     "",
+     "120.4"
+    ],
+    [
+     "3000",
+     "Process plant",
+     "",
+     "354.8",
+     "",
+     "-",
+     "",
+     "354.8"
+    ],
+    [
+     "4000",
+     "On-site Infrastructure",
+     "",
+     "187.6",
+     "",
+     "14.2",
+     "",
+     "201.8"
+    ],
+    [
+     "5000",
+     "Off-site Infrastructure",
+     "",
+     "72.6",
+     "",
+     "35.7",
+     "",
+     "108.3"
+    ],
+    [
+     "",
+     "Total Direct Costs",
+     "",
+     "775.1",
+     "",
+     "368.9",
+     "",
+     "1144.0"
+    ],
+    [
+     "6000",
+     "Project Preliminaries",
+     "",
+     "80.5",
+     "",
+     "1.6",
+     "",
+     "82.1"
+    ],
+    [
+     "7000",
+     "Project Delivery",
+     "",
+     "122.1",
+     "",
+     "-",
+     "",
+     "122.1"
+    ],
+    [
+     "8000",
+     "Owner\u2019s Costs",
+     "",
+     "31.3",
+     "",
+     "-",
+     "",
+     "31.3"
+    ],
+    [
+     "",
+     "Total Indirect Costs",
+     "",
+     "233.9",
+     "",
+     "1.6",
+     "",
+     "235.5"
+    ],
+    [
+     "",
+     "Total Direct + Indirect Costs",
+     "",
+     "1,009.0",
+     "",
+     "370.5",
+     "",
+     "1,377.9"
+    ],
+    [
+     "",
+     "Contingency",
+     "",
+     "213.3",
+     "",
+     "10.6",
+     "",
+     "223.9"
+    ],
+    [
+     "",
+     "Subtotal Capital Cost",
+     "",
+     "1,222.3",
+     "",
+     "381.1",
+     "",
+     "1,603.4"
+    ],
+    [
+     "",
+     "Capitalized Opex",
+     "",
+     "56.3",
+     "",
+     "-",
+     "",
+     "56.3"
+    ],
+    [
+     "",
+     "Closure Costs",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "98.7"
+    ],
+    [
+     "",
+     "Total Capital Cost",
+     "",
+     "1,278.6",
+     "",
+     "381.1",
+     "",
+     "1,758.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 941,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Notes: Totals may not match due to rounding.\nThe capital cost estimate is based on budgetary quotations for equipment from recent advanced studies and execution projects, supplemented with Ausenco\u2019s in-house database, and informed by Ausenco\u2019s experience from similar operations in North America.\nThe following data were used as the basis of estimate: Mining schedules; PEA-level engineering design by Ausenco, including but not limited to design criteria, equipment lists, and material take-offs; Budgetary equipment quotes from similar recently completed advanced studies and execution projects; and additional data such as Lang factors and indirect costs from similar recently completed studies and projects.\nThe estimate also adhered to these parameters: No allowance was made for exchange rate fluctuations; No escalation was added to the final estimate; and no growth allowance was included.\nThe total operating costs for the Project are estimated at US$20.82/t or US$4,399.8 million over the 14.6-year mine life. These operating costs do not include pre-production operating costs. The operating cost estimate was developed in Q4 2025 to target a level of accuracy of -30% to +50%, which aligns with an AACE International Class 5 level estimate. A summary of operating costs is presented in Table 5.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Table 5:",
+     "Operating Cost Summary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 974,
+    "end_line": 977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The following data were used as the basis of estimate: Mining schedules; PEA-level engineering design by Ausenco, including but not limited to design criteria, equipment lists, and material take-offs; Budgetary equipment quotes from similar recently completed advanced studies and execution projects; and additional data such as Lang factors and indirect costs from similar recently completed studies and projects.\nThe estimate also adhered to these parameters: No allowance was made for exchange rate fluctuations; No escalation was added to the final estimate; and no growth allowance was included.\nThe total operating costs for the Project are estimated at US$20.82/t or US$4,399.8 million over the 14.6-year mine life. These operating costs do not include pre-production operating costs. The operating cost estimate was developed in Q4 2025 to target a level of accuracy of -30% to +50%, which aligns with an AACE International Class 5 level estimate. A summary of operating costs is presented in Table 5.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cost Area",
+     "LOM Total (US$M)",
+     "",
+     "US$/t milled",
+     "",
+     "% of Total",
+     ""
+    ],
+    [
+     "Mining",
+     "",
+     "1,676.7",
+     "",
+     "7.93",
+     "",
+     "43.9"
+    ],
+    [
+     "Process",
+     "",
+     "2,325.8",
+     "",
+     "11.00",
+     "",
+     "47.9"
+    ],
+    [
+     "G&A",
+     "",
+     "216.1",
+     "",
+     "1.02",
+     "",
+     "4.5"
+    ],
+    [
+     "G&A (Other) - Road Toll and Maintenance",
+     "",
+     "181.2",
+     "",
+     "0.86",
+     "",
+     "3.7"
+    ],
+    [
+     "Total",
+     "",
+     "4,399.8",
+     "",
+     "20.82",
+     "",
+     "100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 978,
+    "end_line": 988
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Note: Totals may not match due to rounding.\nMine operating costs are built up from first principles assuming an owner managed and operated scenario.\nThe following was used to determine the project\u2019s LOM process operating costs in agreement with the cost definition and estimate methodologies outlined below. This basis considers the development of a process plant designed to treat 40,000 t/d of mineralized material. Process unit operations were benchmarked against similar or comparable processing plants to ensure accuracy of cost estimates. Detail for aassumptions made in developing the process operating cost estimate are listed in the S-K 1300 Report.\nThe following is a summary of the economic analysis included in the Initial Assessment set out in the S-K 1300 Report and should be read in conjunction with the more detailed information contained in the S-K 1300 Report. The economic analysis is based on 100% Indicated Mineral Resources and 0% Inferred Mineral Resources. The capital and operating cost estimates were developed in Q4 2025 to target a level of accuracy of -30% to +50%, which aligns with an AACE International Class 5 level estimate. The capital cost estimate includes a 21% contingency on the initial capital costs. The initial assessment has been evaluated using a discounted cashflow analysis. Cash inflow consists of annual revenue projections for the Project. Cash outflows such as capital costs, operating costs, taxes, and royalties are subtracted from the inflows to arrive at the annual cashflow projections.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 973,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Selected operating results",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(6,991,064)",
+     "",
+     "$",
+     "(8,487,081)",
+     "",
+     "$",
+     "1,496,017",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(7,117,836)",
+     "",
+     "",
+     "(8,893,070)",
+     "",
+     "",
+     "1,775,234",
+     ""
+    ],
+    [
+     "Exploration expenses",
+     "",
+     "3,048,551",
+     "",
+     "",
+     "5,802,549",
+     "",
+     "",
+     "(2,753,998)",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "3,904,103",
+     "",
+     "",
+     "2,946,723",
+     "",
+     "",
+     "957,380",
+     ""
+    ],
+    [
+     "Depreciation",
+     "$",
+     "145,125",
+     "",
+     "$",
+     "125,593",
+     "",
+     "$",
+     "19,532",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1140,
+    "end_line": 1153
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "On May 15, 2024, we entered into an At-the-Market Offering Agreement (the \u201cSales Agreement\u201d) with a lead agent and co-agents providing for an at-the-market equity sales program (the \u201cATM Program\u201d). The ATM Program initially allowed us to sell newly issued shares of our Common Stock having an aggregate offering price of up to $5.5 million from time to time through the sales agents subject to the terms thereof. Subsequently, the ATM Program was amended on September 30, 2025 and December 12, 2025 to increase such amount by $7.6 million and $6.1 million, respectively.\nSales under the ATM Program may be made directly or through the facilities of the NASDAQ or other active trading market in the United States. A fixed cash commission rate of 2.5% on the gross sales price per share of Common Stock sold under the ATM Program is payable to the agents in connection with any such sales.\nDuring the years ended December 31, 2025, and 2024, we sold 831,574 and 55,576 shares of common stock, respectively, under the ATM Program for respective gross proceeds in each year of $9,553,620 and $603,235. Aggregate commissions paid to the agents under the ATM Program were $257,096 and $17,513 during the years ended December 31, 2025, and 2024, respectively.\nResults of Operations\nYear ended December 31, 2025, compared to year ended December 31, 2024",
+   "prose_after": "In 2025, we recorded a net loss of $6.99 million (or $0.55 per share), compared to $8.49 million (or $0.68 per share) in 2024. The decrease was primarily due to lower exploration expenses as a result of reduced program scope in 2025, partially offset by increased general and administrative expenses, primarily attributable to higher consulting, corporate development and investor relations expenses.\nWe had exploration expenses of $3.05 million, compared to $5.80 million in 2024. In 2025, exploration expenses primarily consisted of:\n(i) third-party consulting fees of $1.08 million, compared to $1.29 million in 2024. Such expenses were primarily for metallurgical testwork, the proposed PEA, and the planning and management of our exploration activities at the Whistler Project for the 2025 Exploration Program. In addition, consulting fees to third parties to conduct regulator, community and other stakeholder engagements;\n(ii) drilling and associated costs of $1.00 million, compared to $2.33 million in 2024. Such expenses were primarily for the 2025 Exploration Program The decrease primarily results from differences in the scope and technical focus of the drilling programs between the 2025 and 2024 field seasons;",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As at December 31, 2025",
+     "",
+     "As at December 31, 2024",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "7,377,562",
+     "$",
+     "3,880,747"
+    ],
+    [
+     "Working capital(1)",
+     "",
+     "7,026,285",
+     "",
+     "3,697,987"
+    ],
+    [
+     "Total assets",
+     "",
+     "8,445,682",
+     "",
+     "5,149,151"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "558,819",
+     "",
+     "420,241"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "223,821",
+     "",
+     "185,251"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "123,914",
+     "",
+     "28,983"
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "277,753",
+     "",
+     "283,775"
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "$",
+     "7,609,110",
+     "$",
+     "4,445,135"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1179,
+    "end_line": 1192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "(iii) professional fees of $0.53 million, compared to $0.69 million in 2024. Comparatively, the higher professional fees in 2024 were primarily attributable to legal and accounting fees associated with the filing of a registration statement and the implementation of the ATM Program in May 2024;\n(iv) management fees, salaries and benefits of $0.42 million, compared to $0.38 million in 2024;\n(v) office administrative and insurance expenses of $0.42 million, compared to $0.47 million in 2024; and\n(vi) filing, listing, dues and subscriptions expenses of $0.14 million, compared to $0.14 million in 2024.\nDepreciation expenses were $0.15 million in 2025, compared to $0.13 million in 2024.\nIn 2025, our loss from operations was $7.12 million compared to $8.89 million in 2024. The decrease primarily resulted from the decrease in costs associated with the 2025 Exploration Program compared to the 2024 program, partially offset by the increase in general and administrative expenses.\nLiquidity and Capital Resources",
+   "prose_after": "(1) Working capital is the difference between the total current assets and total current liabilities.\nAs of December 31, 2025, we had cash and cash equivalents of $7.38 million (December 31, 2024: $3.88 million). The increase in cash and cash equivalents was primarily attributable to net proceeds from sales under the ATM Program. As of December 31, 2025, we had total working capital of $7.03 million, compared to $3.70 million at the end of 2024.\nAs of December 31, 2025, we had current liabilities of $0.56 million compared to $0.42 million as of December 31, 2024. Current liabilities as of December 31, 2025 primarily included: (i) accounts payable of $0.22 million, compared to $0.19 million as of December 31, 2024; (ii) accrued liabilities of $0.12 million, compared to $0.03 million as of December 31, 2024, with the increase in accounts payable and accrued liabilities primarily being due to timing of payments and legal expenses associated with the ATM Program; and (iii) other payables of $0.18 million, which consisted of withholding tax payables (December 31, 2024: $0.18 million).",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation. Filed as Exhibit 3.1 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "3.2",
+     "",
+     "Amendment No. 1 to Articles of Incorporation. Filed as Exhibit 3.2 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "3.3",
+     "",
+     "Bylaws. Filed as Exhibit 3.3 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "4.1",
+     "",
+     "Specimen common stock certificate. Filed as Exhibit 4.1 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "4.2",
+     "",
+     "Form of Warrant. Filed as Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "4.3",
+     "",
+     "Warrant Agency Agreement between the Company and Continental Stock Transfer & Trust Company dated March 9, 2023. Filed as Exhibit 4.3 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "4.4",
+     "",
+     "Description of Securities. Filed as Exhibit 4.4 to the Company\u2019s Annual Report on Form 10-K (File 001-41690) for the fiscal year ended December 31, 2024, and incorporated by reference herein."
+    ],
+    [
+     "10.1#",
+     "",
+     "Employment Agreement of Tim Smith dated February 20, 2025, by and between US GoldMining Canada Inc. and Tim Smith. Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 21, 2025, and incorporated by reference herein."
+    ],
+    [
+     "10.2#",
+     "",
+     "Legacy Incentive Plan. Filed as Exhibit 10.4 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.3#",
+     "",
+     "2023 Incentive Plan. Filed as Exhibit 10.3 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.4#",
+     "",
+     "Form of Indemnification Agreement for Directors and Officers. Filed as Exhibit 10.5 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.5#",
+     "",
+     "Form of Legacy Incentive Plan Restricted Stock Award Agreement. Filed as Exhibit 10.7 to the Company\u2019s Registration Statement on Form S-1, as amended (File No. 333-269693), originally filed with the SEC on February 10, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.7",
+     "",
+     "At the Market Offering Agreement dated May 15, 2024 by and between Company and H.C. Wainwright & Co., LLC as representative of the several agents party thereto. Filed as Exhibit 1.2 to the Company\u2019s registration statement on Form S-3, as amended (File No. 333-279435), originally filed with the SEC on May 15, 2024, and incorporated by reference herein."
+    ],
+    [
+     "10.8#",
+     "",
+     "Employment Agreement dated February 20, 2025, by and between US GoldMining Canada Inc. and Tyler Wong. Filed as Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 21, 2025, and incorporated by reference herein."
+    ],
+    [
+     "10.9#",
+     "",
+     "Form of 2023 Incentive Plan Incentive Stock Option Award Agreement. Filed as Exhibit 10.8 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.10#",
+     "",
+     "Form of Amendment to Restricted Stock Award Agreement pursuant to the Legacy Incentive Plan. Filed as Exhibit 10.9 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "10.11#",
+     "",
+     "Form of 2023 Incentive Plan Restricted Stock Unit Award Agreement. Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 26, 2024, and incorporated by reference herein."
+    ],
+    [
+     "14.1",
+     "",
+     "Code of Business Conduct and Ethics. Filed as Exhibit 14.1 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "19.1",
+     "",
+     "Insider Trading Policy. Filed as Exhibit 14.2 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "21.1",
+     "",
+     "List of Significant Subsidiaries. Filed as Exhibit 21.1 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "23.1*",
+     "",
+     "Consent of Tim Smith."
+    ],
+    [
+     "23.2*",
+     "",
+     "Consent of Sue Bird."
+    ],
+    [
+     "23.3*",
+     "",
+     "Consent of Steven Klohn."
+    ],
+    [
+     "23.4*",
+     "",
+     "Consent of Deloitte LLP."
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 of the Principal Executive Officer."
+    ],
+    [
+     "31.2*",
+     "",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 of the Principal Financial Officer."
+    ],
+    [
+     "32.1**",
+     "",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 of the Principal Executive Officer."
+    ],
+    [
+     "32.2**",
+     "",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 of the Principal Financial Officer."
+    ],
+    [
+     "96.1",
+     "",
+     "Whistler Gold-Copper Project, S-K 1300 Technical Report Summary and Initial Assessment with Economic Analysis, Alaska, United States of America. Filed as Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on March 19, 2026, and incorporated herein by reference."
+    ],
+    [
+     "97.1",
+     "",
+     "Clawback Policy. Filed as Exhibit 97.1 to the Company\u2019s Annual Report on Form 10-K for the fiscal year ended November 30, 2023, and incorporated by reference herein."
+    ],
+    [
+     "101.INS*",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "",
+     "Inline XBRL Taxonomy Extension Definitions Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104*",
+     "",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1396,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The information called for by this item is incorporated herein by reference to our definitive proxy statement relating to our 2026 Annual Meeting of Stockholders, which will be filed with the SEC. If such proxy statement is not filed on or before April 30, 2026, the information called for by this item will be filed as part of an amendment to this Annual Report on Form 10-K on or before such date.\nItem 14. Principal Accountant Fees and Services\nThe information called for by this item is incorporated herein by reference to our definitive proxy statement relating to our 2026 Annual Meeting of Stockholders, which will be filed with the SEC. If such proxy statement is not filed on or before April 30, 2026, the information called for by this item will be filed as part of an amendment to this Annual Report on Form 10-K on or before such date.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) The following documents are filed as part of this Annual Report.\n(1) Financial Statements Report of Independent Registered Public Accounting Firm (PCAOB ID No. 1208) Consolidated Balance Sheets Consolidated Statements of Operations and Comprehensive Loss Consolidated Statements of Cash Flows Consolidated Statements of Stockholders\u2019 Equity Notes to the Consolidated Financial Statements\n(2) Financial Statement Schedules\n[None]\n(3) Exhibits",
+   "prose_after": "* Filed herewith\n** Furnished herewith\n# Management contract or compensatory plan or arrangement\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1381,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1471,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "U.S. GOLDMINING INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 20, 2026",
+     "By:",
+     "/s/ Tim Smith"
+    ],
+    [
+     "",
+     "Name:",
+     "Tim Smith"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer and President"
+    ]
+   ],
+   "caption_stack": [
+    "U.S. GOLDMINING INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1476,
+    "end_line": 1484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith\n** Furnished herewith\n# Management contract or compensatory plan or arrangement\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1471,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tim Smith",
+     "Chief Executive Officer and President",
+     "March 20, 2026"
+    ],
+    [
+     "Tim Smith",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tyler Wong",
+     "Chief Financial Officer, Secretary and Treasurer",
+     "March 20, 2026"
+    ],
+    [
+     "Tyler Wong",
+     "(Principal Financial Officer and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alastair Still",
+     "Chairman of the Board",
+     "March 20, 2026"
+    ],
+    [
+     "Alastair Still",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Garnet Dawson",
+     "Director",
+     "March 20, 2026"
+    ],
+    [
+     "Garnet Dawson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ross Sherlock",
+     "Director",
+     "March 20, 2026"
+    ],
+    [
+     "Ross Sherlock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lisa Wade",
+     "Director",
+     "March 20, 2026"
+    ],
+    [
+     "Lisa Wade",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Laura Schmidt",
+     "Director",
+     "March 20, 2026"
+    ],
+    [
+     "Laura Schmidt",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Aleksandra Bukacheva",
+     "Director",
+     "March 20, 2026"
+    ],
+    [
+     "Aleksandra Bukacheva",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1487,
+    "end_line": 1523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "CONSOLIDATED FINANCIAL STATEMENTS\nAs of and for the year ended December 31, 2025 and 2024",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1471,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID No. 1208)",
+     "",
+     "F-2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "",
+     "F-3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss",
+     "",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "",
+     "F-5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "",
+     "F-6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1530,
+    "end_line": 1543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED FINANCIAL STATEMENTS\nAs of and for the year ended December 31, 2025 and 2024",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the stockholders and the Board of Directors of U.S. GoldMining Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of U.S. GoldMining Inc. and subsidiaries (the \u201cCompany\u201d) as of December 31, 2025 and 2024, the related consolidated statements of operations and comprehensive loss, stockholders\u2019 equity and cash flows for each of the two years in the period ended December 31, 2025, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2025 and 2024 and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2025, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1543,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Notes",
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "3",
+     "$",
+     "7,377,562",
+     "",
+     "$",
+     "3,880,747",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "3",
+     "",
+     "43,235",
+     "",
+     "",
+     "86,261",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "",
+     "",
+     "56,024",
+     "",
+     "",
+     "7,419",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "",
+     "28,644",
+     "",
+     "",
+     "34,858",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "4",
+     "",
+     "79,639",
+     "",
+     "",
+     "108,943",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "",
+     "7,585,104",
+     "",
+     "",
+     "4,118,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exploration and evaluation assets",
+     "",
+     "",
+     "",
+     "31,392",
+     "",
+     "",
+     "31,392",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets, net",
+     "",
+     "",
+     "",
+     "86,224",
+     "",
+     "",
+     "111,444",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "5",
+     "",
+     "742,962",
+     "",
+     "",
+     "888,087",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "",
+     "$",
+     "8,445,682",
+     "",
+     "$",
+     "5,149,151",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "$",
+     "223,821",
+     "",
+     "$",
+     "185,251",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "",
+     "123,914",
+     "",
+     "",
+     "28,983",
+     ""
+    ],
+    [
+     "Current portion of lease liabilities",
+     "",
+     "6",
+     "",
+     "30,221",
+     "",
+     "",
+     "25,144",
+     ""
+    ],
+    [
+     "Other payables",
+     "",
+     "7",
+     "",
+     "180,863",
+     "",
+     "",
+     "180,863",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "",
+     "558,819",
+     "",
+     "",
+     "420,241",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "6",
+     "",
+     "58,171",
+     "",
+     "",
+     "84,250",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "",
+     "8",
+     "",
+     "219,582",
+     "",
+     "",
+     "199,525",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "",
+     "836,572",
+     "",
+     "",
+     "704,016",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock $0.001 par value: 300,000,000 shares authorized as at December 31, 2025 and December 31, 2024; 13,308,985, 12,456,815 shares issued and outstanding as at December 31, 2025 and December 31, 2024",
+     "",
+     "11",
+     "",
+     "13,309",
+     "",
+     "",
+     "12,457",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "",
+     "37,784,883",
+     "",
+     "",
+     "27,630,696",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "",
+     "(30,189,082)",
+     "",
+     "",
+     "(23,198,018)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "7,609,110",
+     "",
+     "",
+     "4,445,135",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "$",
+     "8,445,682",
+     "",
+     "$",
+     "5,149,151",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1574,
+    "end_line": 1621
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Deloitte LLP\nChartered Professional Accountants\nVancouver, Canada\nMarch 19, 2026\nWe have served as the Company\u2019s auditor since 2023.\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1572,
+     "token": "REPEATING_HEADER",
+     "id": 53,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1623,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exploration expenses",
+     "",
+     "9",
+     "$",
+     "3,048,551",
+     "",
+     "$",
+     "5,802,549",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "10",
+     "",
+     "3,904,103",
+     "",
+     "",
+     "2,946,723",
+     ""
+    ],
+    [
+     "Accretion",
+     "",
+     "8",
+     "",
+     "20,057",
+     "",
+     "",
+     "18,205",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "5",
+     "",
+     "145,125",
+     "",
+     "",
+     "125,593",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "",
+     "7,117,836",
+     "",
+     "",
+     "8,893,070",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "",
+     "(7,117,836)",
+     "",
+     "",
+     "(8,893,070)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "",
+     "146,103",
+     "",
+     "",
+     "401,591",
+     ""
+    ],
+    [
+     "Foreign exchange (loss) income",
+     "",
+     "",
+     "",
+     "(15,252)",
+     "",
+     "",
+     "9,365",
+     ""
+    ],
+    [
+     "Net loss for the year before tax",
+     "",
+     "",
+     "$",
+     "(6,986,985)",
+     "",
+     "$",
+     "(8,482,114)",
+     ""
+    ],
+    [
+     "Current income tax expense",
+     "",
+     "",
+     "",
+     "(4,079)",
+     "",
+     "",
+     "(4,967)",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "$",
+     "(6,991,064)",
+     "",
+     "$",
+     "(8,487,081)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "12",
+     "$",
+     "(0.55)",
+     "",
+     "$",
+     "(0.68)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "",
+     "",
+     "12,719,740",
+     "",
+     "",
+     "12,407,646",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1629,
+    "end_line": 1662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1627,
+     "token": "REPEATING_HEADER",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(6,991,064)",
+     "",
+     "$",
+     "(8,487,081)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion",
+     "",
+     "20,057",
+     "",
+     "",
+     "18,205",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "145,125",
+     "",
+     "",
+     "125,593",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "858,515",
+     "",
+     "",
+     "331,896",
+     ""
+    ],
+    [
+     "Non-cash lease expenses",
+     "",
+     "40,641",
+     "",
+     "",
+     "25,876",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "6,214",
+     "",
+     "",
+     "(7,609)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "29,304",
+     "",
+     "",
+     "188,264",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "(48,605)",
+     "",
+     "",
+     "145,297",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "38,570",
+     "",
+     "",
+     "66,641",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "94,931",
+     "",
+     "",
+     "(120,829)",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "(36,423)",
+     "",
+     "",
+     "(33,846)",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "-",
+     "",
+     "",
+     "(5,036)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(5,842,735)",
+     "",
+     "",
+     "(7,752,629)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(171,836)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "(171,836)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from At-The-Market offering, net of issuance costs",
+     "",
+     "9,296,524",
+     "",
+     "",
+     "585,722",
+     ""
+    ],
+    [
+     "Proceeds from common shares issued for warrant exercise",
+     "",
+     "-",
+     "",
+     "",
+     "3,900",
+     ""
+    ],
+    [
+     "Capital contributions from GoldMining",
+     "",
+     "-",
+     "",
+     "",
+     "10,202",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "9,296,524",
+     "",
+     "",
+     "599,824",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash, cash equivalents and restricted cash",
+     "",
+     "3,453,789",
+     "",
+     "",
+     "(7,324,641)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of year",
+     "",
+     "3,967,008",
+     "",
+     "",
+     "11,291,649",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of year",
+     "$",
+     "7,420,797",
+     "",
+     "$",
+     "3,967,008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of stock-based compensation expenses from GoldMining",
+     "$",
+     "-",
+     "",
+     "$",
+     "13,675",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1670,
+    "end_line": 1719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1668,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1721,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Note",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "",
+     "",
+     "12,398,709",
+     "$",
+     "12,399",
+     "$",
+     "26,699,034",
+     "",
+     "$",
+     "(14,710,937)",
+     "",
+     "$",
+     "12,000,496",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued under At-The-Market offering",
+     "",
+     "11.1",
+     "",
+     "55,576",
+     "",
+     "55",
+     "",
+     "603,180",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "603,235",
+     ""
+    ],
+    [
+     "Issuance costs for At-The-Market offering",
+     "",
+     "11.1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(17,513)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(17,513)",
+     ""
+    ],
+    [
+     "Issued upon exercise of stock options",
+     "",
+     "11.5",
+     "",
+     "2,230",
+     "",
+     "2",
+     "",
+     "(2)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issued upon exercise of warrants",
+     "",
+     "",
+     "",
+     "300",
+     "",
+     "1",
+     "",
+     "3,899",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,900",
+     ""
+    ],
+    [
+     "Capital contributions from GoldMining",
+     "",
+     "16",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "10,202",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,202",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocated from GoldMining",
+     "",
+     "16",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "13,675",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "13,675",
+     ""
+    ],
+    [
+     "Amortization of stock-based compensation",
+     "",
+     "11.3, 11.5, 11.6",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "318,221",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "318,221",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(8,487,081)",
+     "",
+     "",
+     "(8,487,081)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024",
+     "",
+     "",
+     "",
+     "12,456,815",
+     "",
+     "12,457",
+     "",
+     "27,630,696",
+     "",
+     "",
+     "(23,198,018)",
+     "",
+     "",
+     "4,445,135",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued under At-The-Market offering",
+     "",
+     "11.1",
+     "",
+     "831,574",
+     "",
+     "831",
+     "",
+     "9,552,789",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,553,620",
+     ""
+    ],
+    [
+     "Issuance costs for At-The-Market offering",
+     "",
+     "11.1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(257,096)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(257,096)",
+     ""
+    ],
+    [
+     "Issued upon vesting of restricted stock units",
+     "",
+     "11.6",
+     "",
+     "15,700",
+     "",
+     "16",
+     "",
+     "(16)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issued upon exercise of stock options",
+     "",
+     "11.5",
+     "",
+     "4,896",
+     "",
+     "5",
+     "",
+     "(5)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of stock-based compensation",
+     "",
+     "11.3, 11.5, 11.6",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "858,515",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "858,515",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(6,991,064)",
+     "",
+     "",
+     "(6,991,064)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2025",
+     "",
+     "",
+     "",
+     "13,308,985",
+     "$",
+     "13,309",
+     "$",
+     "37,784,883",
+     "",
+     "$",
+     "(30,189,082)",
+     "",
+     "$",
+     "7,609,110",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1727,
+    "end_line": 1760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNote 1: Business\nU.S. GoldMining Inc. (the \u201cCompany\u201d) was incorporated under the laws of the State of Alaska as \u201cBRI Alaska Corp.\u201d on June 30, 2015. On September 8, 2022, the Company redomiciled from Alaska to Nevada and changed its name to \u201cU.S. GoldMining Inc.\u201d. The Company is a subsidiary of GoldMining Inc. (\u201cGoldMining\u201d), a mineral exploration and development company organized under the laws of Canada listed on the Toronto Stock Exchange and NYSE American. On April 24, 2023, the Company completed its initial public offering (the \u201cIPO\u201d) and its common stock and common stock purchase warrants are listed on the Nasdaq Capital Market under the symbols \u201cUSGO\u201d and \u201cUSGOW\u201d, respectively. After the IPO, GoldMining continued to own a controlling interest in the Company of 9,622,491 shares of common stock and common stock purchase warrants to purchase up to 122,490 shares of common stock, representing approximately 79.3% of the outstanding shares of the Company at that time. As of December 31, 2025, GoldMining owned 74.2% of the Company.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1725,
+     "token": "REPEATING_HEADER",
+     "id": 59,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1762,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Camp Structures",
+     "10 years"
+    ],
+    [
+     "Exploration equipment",
+     "5 years"
+    ],
+    [
+     "Vehicles and Hauling equipment",
+     "5 years"
+    ],
+    [
+     "Computer hardware",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1811,
+    "end_line": 1817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Management has determined that the Company operates and reports in one segment, which focuses on the exploration and development of mineral properties. Our operating segment is reported in a manner consistent with the internal reporting provided to the chief operating decision maker (\u201cCODM\u201d) who is identified as our Chief Executive Officer. The majority of our non-current assets are located in Alaska, USA and with the remaining located in Vancouver, Canada. The CODM manages operations on a consolidated basis and regularly reviews operating expenses as the primary measure for assessing the Company\u2019s performance and allocating resources. Performance and capital allocation decisions are made at the Company level and based on based on our single operating segment for which the key measure is U.S. GAAP operating expenses and aligned with the consolidated statement of operations and comprehensive loss.\nCash and Cash Equivalents and Restricted Cash\nCash and cash equivalents consist of all cash balances and highly liquid investments with a remaining maturity of three months or less when purchased and are carried at cost. The Company\u2019s cash is held in Canada and the United States with large, reputable financial institutions and considers risk of unexpected loss to be unlikely.\nRestricted cash includes cash that has been pledged for credit facilities which are not available for immediate disbursement.\nProperty and Equipment\nProperty and equipment is stated at cost, less accumulated depreciation. Property and equipment is recorded at cost and depreciated using the straight-line method over the following estimated useful lives:\nSchedule of Estimated Useful Lives of Equipment",
+   "prose_after": "Expenditures incurred to replace a component of an item of property and equipment that is accounted for separately, including major inspection and overhaul expenditures are capitalized if the recognition criteria are satisfied. All other repair and maintenance costs are recognized in the statements of operations as incurred.\nImpairment of Long-lived Assets\nThe Company\u2019s long-lived assets consist of exploration and evaluation assets and property and equipment. Management continually evaluates whether events or changes in circumstances might indicate that the remaining estimated useful life of long-lived assets may warrant revision, or that the remaining balance may not be recoverable. When factors indicate that long-lived assets should be evaluated for possible impairment, recoverability of long-lived assets is measured by comparing the carrying amount of an asset (asset group) to the estimated undiscounted future cash flows expected to be generated by the asset (asset group). If the carrying amount of an asset (asset group) exceeds its estimated undiscounted future cash flows, an impairment charge is recognized by the amount by which the carrying amount of the asset exceeds its fair value. Determination of the fair value would be based on generally accepted valuation methodologies, as deemed appropriate. The adjusted carrying amount of the long-lived asset shall be its new cost basis. For a depreciable long-lived asset, the new cost basis shall be depreciated (amortized) over the remaining useful life of that asset. Reversal of previously recorded impairment losses are prohibited.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1787,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1817,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Cash and cash equivalents consist of:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at bank",
+     "$",
+     "577,562",
+     "$",
+     "580,747"
+    ],
+    [
+     "Term deposits",
+     "",
+     "6,800,000",
+     "",
+     "3,300,000"
+    ],
+    [
+     "Total",
+     "$",
+     "7,377,562",
+     "$",
+     "3,880,747"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1916,
+    "end_line": 1926
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Cash and Cash Equivalents and Restricted Cash"
+    }
+   },
+   "prose_before": "In December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures. The ASU expands public entities\u2019 income tax disclosures by requiring disaggregated information about a reporting entity\u2019s effective tax rate reconciliation as well as information on income taxes paid. The standard is intended to benefit investors by providing more detailed income tax disclosures that would be useful in making capital allocation decisions. The Company adopted this standard prospectively as of January 1, 2025 and the adoption did not have a material impact on the Company\u2019s consolidated financial statements or income tax notes as presented in Note 15.\nRecently Issued Accounting Pronouncements\nIn November 2024, the FASB issued ASU-2024-03, Income Statement- Reporting Comprehensive Income- Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. This ASU requires public entities to disclose specified information about certain costs and expenses at each interim and annual reporting period, which includes amounts for inventory purchases, employee compensation, depreciation, intangible asset amortization, and expenses related to oil and gas activities. This ASU will be effective for fiscal years beginning after December 15, 2026, and interim periods beginning after December 15, 2027, with early adoption permitted. The Company is currently evaluating the impact of adopting this ASU on its consolidated financial statements and related disclosures.\nNote 3: Cash and Cash Equivalents and Restricted Cash\nSchedule of Cash and Cash Equivalents",
+   "prose_after": "Schedule of Cash, Cash Equivalents and Restricted Cash",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "7,377,562",
+     "$",
+     "3,880,747"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "43,235",
+     "",
+     "86,261"
+    ],
+    [
+     "Total cash, cash equivalents and restricted cash",
+     "$",
+     "7,420,797",
+     "$",
+     "3,967,008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1929,
+    "end_line": 1938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Cash and Cash Equivalents and Restricted Cash"
+    }
+   },
+   "prose_before": "Schedule of Cash, Cash Equivalents and Restricted Cash",
+   "prose_after": "Restricted cash relates to term deposits held by the bank as security for corporate credit cards.\nNote 4: Prepaid Expenses\nPrepaid expenses consist of the following:\nSchedule of Prepaid Expenses",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Prepaid insurance",
+     "$",
+     "44,614",
+     "$",
+     "93,552"
+    ],
+    [
+     "Prepaid corporate development expenses",
+     "",
+     "24,464",
+     "",
+     "8,972"
+    ],
+    [
+     "Other prepaid expenses",
+     "",
+     "10,561",
+     "",
+     "6,419"
+    ],
+    [
+     "Total",
+     "$",
+     "79,639",
+     "$",
+     "108,943"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1947,
+    "end_line": 1957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Prepaid Expenses"
+    }
+   },
+   "prose_before": "Restricted cash relates to term deposits held by the bank as security for corporate credit cards.\nNote 4: Prepaid Expenses\nPrepaid expenses consist of the following:\nSchedule of Prepaid Expenses",
+   "prose_after": "Note 5: Property and Equipment\nProperty and equipment consist of the following:\nSchedule of Property and Equipment",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Accumulated Depreciation",
+     "",
+     "",
+     "Net Book Value",
+     "",
+     "Cost",
+     "",
+     "Accumulated Depreciation",
+     "",
+     "",
+     "Net Book Value",
+     ""
+    ],
+    [
+     "Camp structures",
+     "$",
+     "767,706",
+     "$",
+     "(187,117)",
+     "",
+     "$",
+     "580,589",
+     "$",
+     "767,706",
+     "$",
+     "(110,347)",
+     "",
+     "$",
+     "657,359"
+    ],
+    [
+     "Vehicles and hauling equipment",
+     "",
+     "174,508",
+     "",
+     "(79,989)",
+     "",
+     "",
+     "94,519",
+     "",
+     "174,508",
+     "",
+     "(34,120)",
+     "",
+     "",
+     "140,388"
+    ],
+    [
+     "Exploration equipment",
+     "",
+     "108,137",
+     "",
+     "(41,287)",
+     "",
+     "",
+     "66,850",
+     "",
+     "108,137",
+     "",
+     "(19,659)",
+     "",
+     "",
+     "88,478"
+    ],
+    [
+     "Computer hardware",
+     "",
+     "2,574",
+     "",
+     "(1,570)",
+     "",
+     "",
+     "1,004",
+     "",
+     "2,574",
+     "",
+     "(712)",
+     "",
+     "",
+     "1,862"
+    ],
+    [
+     "",
+     "$",
+     "1,052,925",
+     "$",
+     "(309,963)",
+     "",
+     "$",
+     "742,962",
+     "$",
+     "1,052,925",
+     "$",
+     "(164,838)",
+     "",
+     "$",
+     "888,087"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1964,
+    "end_line": 1978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Note 5: Property and Equipment\nProperty and equipment consist of the following:\nSchedule of Property and Equipment",
+   "prose_after": "Note 6: Leases\nIn November 2023, US GoldMining Canada Inc. entered into an agreement to lease a portion of an office premises in Vancouver, British Columbia with a term of 4.88 years. As of December 31, 2025, the remaining lease term was 2.75 years and the incremental borrowing rate was 11.34%.\nMinimum future lease payments under operating lease with terms longer than one year are as follows:\nSchedule of Operating Lease Payments",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal 2026",
+     "",
+     "37,943",
+     ""
+    ],
+    [
+     "Fiscal 2027",
+     "",
+     "37,943",
+     ""
+    ],
+    [
+     "Fiscal 2028",
+     "",
+     "25,295",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "",
+     "101,181",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "(12,789)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "88,392",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of lease liabilities",
+     "$",
+     "30,221",
+     ""
+    ],
+    [
+     "Non-current portion of lease liabilities",
+     "$",
+     "58,171",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1988,
+    "end_line": 2003
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Note 6: Leases\nIn November 2023, US GoldMining Canada Inc. entered into an agreement to lease a portion of an office premises in Vancouver, British Columbia with a term of 4.88 years. As of December 31, 2025, the remaining lease term was 2.75 years and the incremental borrowing rate was 11.34%.\nMinimum future lease payments under operating lease with terms longer than one year are as follows:\nSchedule of Operating Lease Payments",
+   "prose_after": "During the years ended December 31, 2025, and 2024, total lease expenses include the following components:\nSchedule of Total lease Payments",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "lease_maturity",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Operating Leases",
+     "$",
+     "35,235",
+     "$",
+     "35,975"
+    ],
+    [
+     "Short-term Leases",
+     "",
+     "7,279",
+     "",
+     "5,400"
+    ],
+    [
+     "Total Lease Expenses",
+     "$",
+     "42,514",
+     "$",
+     "41,375"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2008,
+    "end_line": 2019
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "During the years ended December 31, 2025, and 2024, total lease expenses include the following components:\nSchedule of Total lease Payments",
+   "prose_after": "Note 7: Other Payables\nAs of December 31, 2025, other payables included withholding taxes payable of $180,863 ($180,863 as of December 31, 2024).\nNote 8: Asset Retirement Obligations (the \u201cARO\u201d)\nThe Whistler Project\u2019s exploration activities are subject to the State of Alaska\u2019s laws and regulations governing the protection of the environment. The Whistler Project ARO is valued under the following assumptions:\nSchedule of Asset Retirement Obligations Value Assumptions",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Undiscounted amount of estimated cash flows",
+     "$",
+     "385,600",
+     "",
+     "$",
+     "385,600",
+     ""
+    ],
+    [
+     "Life expectancy (years)",
+     "",
+     "8",
+     "",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Inflation rate",
+     "",
+     "2.00",
+     "%",
+     "",
+     "2.00",
+     "%"
+    ],
+    [
+     "Discount rate",
+     "",
+     "9.32% to 11.40",
+     "%",
+     "",
+     "9.32% to 11.40",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2030,
+    "end_line": 2038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Asset Retirement Obligations (the \u201cARO\u201d)"
+    }
+   },
+   "prose_before": "Note 7: Other Payables\nAs of December 31, 2025, other payables included withholding taxes payable of $180,863 ($180,863 as of December 31, 2024).\nNote 8: Asset Retirement Obligations (the \u201cARO\u201d)\nThe Whistler Project\u2019s exploration activities are subject to the State of Alaska\u2019s laws and regulations governing the protection of the environment. The Whistler Project ARO is valued under the following assumptions:\nSchedule of Asset Retirement Obligations Value Assumptions",
+   "prose_after": "The following table summarizes the movements of the Company\u2019s ARO:\nSchedule of Asset Retirement Obligations",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Balance, beginning of year",
+     "$",
+     "199,525",
+     "$",
+     "181,320"
+    ],
+    [
+     "Accretion",
+     "",
+     "20,057",
+     "",
+     "18,205"
+    ],
+    [
+     "Balance, end of year",
+     "$",
+     "219,582",
+     "$",
+     "199,525"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2044,
+    "end_line": 2053
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Asset Retirement Obligations (the \u201cARO\u201d)"
+    }
+   },
+   "prose_before": "The following table summarizes the movements of the Company\u2019s ARO:\nSchedule of Asset Retirement Obligations",
+   "prose_after": "Note 9: Exploration Expenses\nThe following table presents costs incurred for exploration activities for the years ended December 31, 2025, and 2024:\nSchedule of Costs Incurred For Exploration Activities",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2097,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Consulting fees",
+     "$",
+     "1,084,958",
+     "$",
+     "1,287,697"
+    ],
+    [
+     "Drilling and associated costs",
+     "",
+     "1,003,188",
+     "",
+     "2,339,526"
+    ],
+    [
+     "Camp and field support expenses",
+     "",
+     "655,710",
+     "",
+     "1,269,067"
+    ],
+    [
+     "Transportation, travel and other exploration expenses",
+     "",
+     "304,695",
+     "",
+     "906,259"
+    ],
+    [
+     "Total",
+     "$",
+     "3,048,551",
+     "$",
+     "5,802,549"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2060,
+    "end_line": 2073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Exploration Expenses"
+    }
+   },
+   "prose_before": "Note 9: Exploration Expenses\nThe following table presents costs incurred for exploration activities for the years ended December 31, 2025, and 2024:\nSchedule of Costs Incurred For Exploration Activities",
+   "prose_after": "Note 10: General and Administrative Expenses\nThe following table presents general and administrative expenses for the years ended December 31, 2025, and 2024:\nSchedule of General and Administrative Expenses",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2097,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Office, consulting, investor relations, insurance and travel(1)",
+     "$",
+     "1,943,101",
+     "$",
+     "1,400,666"
+    ],
+    [
+     "Stock-based compensation(2)",
+     "",
+     "858,515",
+     "",
+     "331,896"
+    ],
+    [
+     "Professional fees",
+     "",
+     "533,435",
+     "",
+     "689,400"
+    ],
+    [
+     "Management fees, salaries and benefits(2)",
+     "",
+     "424,512",
+     "",
+     "382,935"
+    ],
+    [
+     "Filing, listing, dues and subscriptions",
+     "",
+     "144,540",
+     "",
+     "141,826"
+    ],
+    [
+     "Total",
+     "$",
+     "3,904,103",
+     "$",
+     "2,946,723"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2080,
+    "end_line": 2094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "General and Administrative Expenses"
+    }
+   },
+   "prose_before": "Note 10: General and Administrative Expenses\nThe following table presents general and administrative expenses for the years ended December 31, 2025, and 2024:\nSchedule of General and Administrative Expenses",
+   "prose_after": "(1) Office, consulting, investor relations, insurance and travel expenses include costs for Blender Media Inc. (\u201cBlender\u201d), a company controlled by a direct family member of a co-chairman and director of GoldMining (Note 16).\n(2) During the year ended December 31, 2024, stock-based compensation and management fees, salaries and benefits include costs allocated from GoldMining (Note 16).\nNote 11: Capital Stock\n11.1 Equity Financing\nATM Program\nOn May 15, 2024, the Company filed a shelf registration statement on Form S-3 with the SEC, covering the offering, issuance and sale of up to $40 million of a variety of securities including the Company\u2019s common stock, preferred stock, warrants and/or units. Additionally, the Company entered into an At The Market Offering Agreement (the \u201cSales Agreement\u201d) with a lead agent and co-agents providing for an at-the-market equity sales program (the \u201cATM Program\u201d). Pursuant to the ATM Program, the Company could originally sell shares of its common stock having an aggregate offering price of up to $5.5 million from time to time through the sales agents subject to the terms of the Sales Agreement. Sales under the ATM Program may be made directly or through the facilities of the NASDAQ or other active trading market in the United States. A fixed cash commission rate of 2.5% on the gross sales price per share of common stock sold under the ATM Program is payable to the agents in connection with any such sales.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2097,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Risk Free Interest Rate",
+     "",
+     "3.52",
+     "%",
+     "",
+     "4.38",
+     "%"
+    ],
+    [
+     "Expected Life in Years",
+     "",
+     "3.00",
+     "",
+     "",
+     "3.00",
+     ""
+    ],
+    [
+     "Expected Volatility(1)",
+     "",
+     "56.32",
+     "%",
+     "",
+     "55.23",
+     "%"
+    ],
+    [
+     "Expected Dividend Yield",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Estimated forfeiture rate",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2153,
+    "end_line": 2165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Capital Stock"
+    }
+   },
+   "prose_before": "On February 6, 2023, the Company adopted a long term incentive plan (\u201c2023 Incentive Plan\u201d). The purpose of the 2023 Incentive Plan is to provide an incentive for employees, directors and certain consultants and advisors of the Company or its subsidiaries to remain in the service of the Company or its subsidiaries. The 2023 Incentive Plan provides for the grant of non-qualified stock options, incentive stock options, stock appreciation rights, restricted stock units, performance awards, restricted stock awards and other cash and equity-based awards. The aggregate number shares of common stock issuable under the 2023 Incentive Plan in respect of awards shall not exceed 10% of the common stock issued and outstanding.\nThe stock options are exercisable for a period of five years from the date of grant and will vest as follows: (a) 25% on the grant date; and (b) 25% on each of the dates that are six, twelve and eighteen months thereafter. The following table presents, on a weighted-average basis, the assumptions used in the Black-Scholes option-pricing model to determine the grant date fair value of stock options granted:\nSchedule of Weighted Average Basis Assumption Used in the Black-Scholes Option Pricing Model",
+   "prose_after": "(1) As there is limited trading history of the Company\u2019s shares of common stock prior to the date of grant, the expected volatility is based on the historical share price volatility of a group of comparable companies in the sector the Company operates over a period similar to the expected life of the stock options.\nThe following table summarizes the Company\u2019s stock option activity:\nSchedule of Stock Option Activity",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2143,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Stock Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "82,500",
+     "",
+     "$",
+     "10.00"
+    ],
+    [
+     "Granted",
+     "",
+     "246,550",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Exercised",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Balance at December 31, 2024",
+     "",
+     "316,050",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Granted",
+     "",
+     "145,500",
+     "",
+     "",
+     "9.40"
+    ],
+    [
+     "Exercised",
+     "",
+     "(23,750)",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(12,500)",
+     "",
+     "",
+     "10.00"
+    ],
+    [
+     "Balance at December 31, 2025",
+     "",
+     "425,300",
+     "",
+     "$",
+     "9.79"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2172,
+    "end_line": 2189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Capital Stock"
+    }
+   },
+   "prose_before": "(1) As there is limited trading history of the Company\u2019s shares of common stock prior to the date of grant, the expected volatility is based on the historical share price volatility of a group of comparable companies in the sector the Company operates over a period similar to the expected life of the stock options.\nThe following table summarizes the Company\u2019s stock option activity:\nSchedule of Stock Option Activity",
+   "prose_after": "As of December 31, 2025, the aggregate intrinsic value under the provisions of ASC 718 of all outstanding stock options was $nil. The unrecognized share-based compensation expense related to the unvested portion of stock options totaled $429,349 to be recognized over the next 1.08 years.\nDuring the year ended December 31, 2025, the Company recognized stock-based compensation expense of $454,503 ($300,909 for the year ended December 31, 2024) related to stock options.\n11.6 Restricted Stock Units\nThe Company\u2019s RSUs vest in four equal annual instalments of 25% each on the three-, six-, nine-, and twelve-month anniversaries of the grant date, subject to the recipient\u2019s continued service with the Company. The compensation expense is calculated based on the fair value of each RSU as determined by the closing value of the Company\u2019s common stock at the date of the grant. The Company recognizes compensation expense over the vesting period of the RSUs.\nThe following table summarizes the Company\u2019s RSUs activity:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2143,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of RSUs",
+     "",
+     "",
+     "Weighted Average Grant-Date Fair Value",
+     ""
+    ],
+    [
+     "Balance as at December 31, 2024",
+     "",
+     "15,050",
+     "",
+     "$",
+     "8.32"
+    ],
+    [
+     "Granted",
+     "",
+     "21,200",
+     "",
+     "",
+     "9.36"
+    ],
+    [
+     "Vested",
+     "",
+     "(15,700)",
+     "",
+     "",
+     "8.71"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(600)",
+     "",
+     "",
+     "8.32"
+    ],
+    [
+     "Balance at December 31, 2025",
+     "",
+     "19,950",
+     "",
+     "$",
+     "9.12"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2203,
+    "end_line": 2215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Capital Stock"
+    }
+   },
+   "prose_before": "As of December 31, 2025, the aggregate intrinsic value under the provisions of ASC 718 of all outstanding stock options was $nil. The unrecognized share-based compensation expense related to the unvested portion of stock options totaled $429,349 to be recognized over the next 1.08 years.\nDuring the year ended December 31, 2025, the Company recognized stock-based compensation expense of $454,503 ($300,909 for the year ended December 31, 2024) related to stock options.\n11.6 Restricted Stock Units\nThe Company\u2019s RSUs vest in four equal annual instalments of 25% each on the three-, six-, nine-, and twelve-month anniversaries of the grant date, subject to the recipient\u2019s continued service with the Company. The compensation expense is calculated based on the fair value of each RSU as determined by the closing value of the Company\u2019s common stock at the date of the grant. The Company recognizes compensation expense over the vesting period of the RSUs.\nThe following table summarizes the Company\u2019s RSUs activity:\nSchedule of RSUs Activity",
+   "prose_after": "During the year ended December 31, 2025, the Company recognized stock-based compensation expenses of $153,687 ($7,918 for the year ended December 31, 2024) related to the RSUs.\nNote 12: Net Loss Per Share\nThe following table provides reconciliation of net loss per share of common stock:\nSchedule of Reconciliation of Net Loss Per Share of Common Stock",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2243,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(6,991,064)",
+     "",
+     "$",
+     "(8,487,081)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares, basic and diluted",
+     "",
+     "12,719,740",
+     "",
+     "",
+     "12,407,646",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.55)",
+     "",
+     "$",
+     "(0.68)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2224,
+    "end_line": 2239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Net Loss Per Share"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2025, the Company recognized stock-based compensation expenses of $153,687 ($7,918 for the year ended December 31, 2024) related to the RSUs.\nNote 12: Net Loss Per Share\nThe following table provides reconciliation of net loss per share of common stock:\nSchedule of Reconciliation of Net Loss Per Share of Common Stock",
+   "prose_after": "The basic and diluted net loss per share is the same as the Company is in a net loss position.\nThe Company\u2019s potentially dilutive securities, including stock options (stock options to purchase 425,300 shares of common stock outstanding as of December 31, 2025; stock options to purchase 316,050 shares of common stock as of December 31, 2024), RSUs (19,950 RSUs outstanding as of December 31, 2025; 15,050 RSUs outstanding as of December 31, 2024) and warrants (warrants to purchase 1,740,992 shares of common stock outstanding as of December 31, 2025, and 2024), have been excluded from the computation of diluted net loss per share as the effect would be to reduce the net loss per share. Therefore, the weighted-average number of shares of common stock outstanding used to calculate both basic and diluted net loss per share attributable to common stockholders is the same.\nNote 13: Financial Instruments\nFinancial Risk Management Objectives and Policies\nThe financial risks arising from the Company\u2019s operations are credit risk, liquidity risk and currency risk. These risks arise from the normal course of operations and all transactions undertaken are to support the Company\u2019s ability to continue as a going concern. The risks associated with these financial instruments and the policies on how the Company mitigates these risks are set out below. Management manages and monitors these exposures to ensure appropriate measures are implemented in a timely and effective manner.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2243,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "(6,993,394)",
+     "",
+     "$",
+     "(8,510,759)",
+     ""
+    ],
+    [
+     "Canada",
+     "",
+     "6,409",
+     "",
+     "",
+     "28,645",
+     ""
+    ],
+    [
+     "Net loss for the year before tax",
+     "$",
+     "(6,986,985)",
+     "",
+     "$",
+     "(8,482,114)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2289,
+    "end_line": 2300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "1. 2.75% net smelter return (\u201cNSR\u201d) over all 377 claims and extending outside the current claims over an Area of Interest defined by the maximum historical extent of claims held on the Whistler Project to Osisko Mining (USA) Inc. (\u201cOM\u201d) pursuant to an Amended and Restated Net Smelter Returns Royalty Deed dated December 16, 2014, granted by Geoinformatics Alaska Exploration Inc. (as assumed by the Company on August 5, 2015) in favour of MF2 LLC (as assumed by OM). Gold Royalty U.S. Corp. holds a right to buy down the royalty percentage from 2.75% to 2.0% upon payment to OM of a one-time payment of $5,000,000. The royalty was subsequently assigned to Nevada Select Royalty, Inc. (a subsidiary of Gold Royalty Corp.).\n2. 2.0% net proceeds royalty interest over an Area of Interest specified by standard township sub-division overlying the Whistler Deposit and Raintree West deposit to Sandstorm Gold Ltd. pursuant to an agreement dated October 1, 1999, between the Company (the ultimate successor-in-interest to Kent Turner, Jr.) and Sandstorm Gold Ltd. (the ultimate successor-in interest to Cominco American Incorporated). In October 2025, following the acquisition of Sandstorm Gold Ltd. by Royal Gold, Inc., the interest was transferred to RG Royalties, a wholly owned subsidiary of Royal Gold, Inc.\n3. 1.0% NSR over the Whistler Project to Gold Royalty U.S. Corp. pursuant to a Net Smelter Returns Royalty Agreement dated January 11, 2021, between the Company and Gold Royalty U.S. Corp.\nNote 15: Income Tax\nIncome (loss) from continuing operations before income taxes, disaggregated by tax jurisdiction, is as follows:\nSchedule of Income (loss) from continuing operations before income taxes",
+   "prose_after": "Income tax expense (benefit), disaggregated by tax jurisdiction, is as follows:\nSchedule of Income Tax Expense (benefit)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2281,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "United States- Federal",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "United States- State",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canada",
+     "",
+     "4,079",
+     "",
+     "4,967"
+    ],
+    [
+     "income tax expense",
+     "$",
+     "4,079",
+     "$",
+     "4,967"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2305,
+    "end_line": 2317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "Income tax expense (benefit), disaggregated by tax jurisdiction, is as follows:\nSchedule of Income Tax Expense (benefit)",
+   "prose_after": "A reconciliation of the provision for income taxes computed at the combined federal and state statutory rate to the provision for income taxes as shown in the statements of operations for the years ended December 31, 2025 and 2024 is as follows:\nSchedule of Effective Tax Rate",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2281,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year before tax",
+     "$",
+     "(6,986,985)",
+     "",
+     "$",
+     "(8,482,114)",
+     ""
+    ],
+    [
+     "Statutory federal income rate",
+     "",
+     "21.00",
+     "%",
+     "",
+     "21.00",
+     "%"
+    ],
+    [
+     "Recovery of income taxes at statutory rates",
+     "$",
+     "(1,467,267)",
+     "",
+     "$",
+     "(1,781,244)",
+     ""
+    ],
+    [
+     "State tax",
+     "",
+     "(519,608)",
+     "",
+     "",
+     "(632,349)",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "273,514",
+     "",
+     "",
+     "157,249",
+     ""
+    ],
+    [
+     "Adjustments to valuation allowance related to prior years",
+     "",
+     "(54,654)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "1,772,094",
+     "",
+     "",
+     "2,261,311",
+     ""
+    ],
+    [
+     "Tax expense for the year",
+     "$",
+     "4,079",
+     "",
+     "$",
+     "4,967",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2322,
+    "end_line": 2339
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "A reconciliation of the provision for income taxes computed at the combined federal and state statutory rate to the provision for income taxes as shown in the statements of operations for the years ended December 31, 2025 and 2024 is as follows:\nSchedule of Effective Tax Rate",
+   "prose_after": "Deductible temporary differences and unused tax losses for which no deferred tax assets have been recognized are attributable to the following:\nSchedule of Deferred Tax Assets",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2281,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Non-capital loss carry-forward",
+     "$",
+     "4,573,084",
+     "",
+     "$",
+     "3,367,952",
+     ""
+    ],
+    [
+     "Resource properties",
+     "",
+     "2,336,694",
+     "",
+     "",
+     "1,825,381",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "83,604",
+     "",
+     "",
+     "27,955",
+     ""
+    ],
+    [
+     "Deferred income tax assets",
+     "",
+     "6,993,382",
+     "",
+     "",
+     "5,221,288",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(6,993,382)",
+     "",
+     "",
+     "(5,221,288)",
+     ""
+    ],
+    [
+     "Deferred income tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2344,
+    "end_line": 2359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "Deductible temporary differences and unused tax losses for which no deferred tax assets have been recognized are attributable to the following:\nSchedule of Deferred Tax Assets",
+   "prose_after": "Deferred tax assets have not been recognized in the financial statements, as management does not consider it more likely than not that those assets will be realized in the near future. The Company has non-capital federal losses which may be carried forward to reduce taxable income in future years. As of December 31, 2025, the Company has non-capital losses of $16,085,418 in the United States of which $897,219 will expire between 2034 and 2037 and $15,188,199 may be carried forward indefinitely. Our U.S. federal net operating loss carryforwards expire as follows:\nSummary of Operating Loss Carryforwards",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2281,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "November 30, 2034",
+     "$",
+     "46,930"
+    ],
+    [
+     "November 30, 2035",
+     "",
+     "289,455"
+    ],
+    [
+     "November 30, 2036",
+     "",
+     "283,286"
+    ],
+    [
+     "November 30, 2037",
+     "",
+     "277,548"
+    ],
+    [
+     "Indefinite",
+     "",
+     "15,188,199"
+    ],
+    [
+     "Total",
+     "$",
+     "16,085,418"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2365,
+    "end_line": 2375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "Deferred tax assets have not been recognized in the financial statements, as management does not consider it more likely than not that those assets will be realized in the near future. The Company has non-capital federal losses which may be carried forward to reduce taxable income in future years. As of December 31, 2025, the Company has non-capital losses of $16,085,418 in the United States of which $897,219 will expire between 2034 and 2037 and $15,188,199 may be carried forward indefinitely. Our U.S. federal net operating loss carryforwards expire as follows:\nSummary of Operating Loss Carryforwards",
+   "prose_after": "Note 16: Related Party Transactions\nThe Company shares personnel, including key management personnel, office space, equipment, and various administrative services with other companies, including GoldMining. Costs incurred by GoldMining are allocated between its related subsidiaries based on an estimate of time incurred and use of services and are charged at cost. During the year ended December 31, 2025, the allocated costs from GoldMining to the Company were $nil ($23,877 for the year ended December 31, 2024). Out of the allocated costs for the year ended December 31, 2024, $13,675 were for non-cash stock-based compensation expenses. During the year ended December 31, 2024, the allocated costs from GoldMining were treated as a capital contribution, as there is no obligation or intent regarding the repayment of such amounts by the Company.\nDuring the year ended December 31, 2025, the Company incurred $5,675 in general and administrative costs ($142,140 for the year ended December 31, 2024) paid to Blender, a company whose principal is an immediate family member of a co-chairman and director of GoldMining, for information technology, corporate branding, sponsorships and advertising, media, website design, maintenance and hosting services, provided by Blender to the Company.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2391,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

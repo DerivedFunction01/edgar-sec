@@ -1,0 +1,4339 @@
+{
+ "accession": "0000950137-05-003570",
+ "cik": "0000772572",
+ "form": "10-K",
+ "filing_date": "2005-03-25",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "c93603e10vk.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the fiscal year ended January 1, 2005."
+    ]
+   ],
+   "caption_stack": [
+    "For the fiscal year ended January 1, 2005."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 13,
+    "end_line": 16
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nFOR ANNUAL AND TRANSITION REPORTS PURSUANT TO SECTIONS 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "OR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to .\nCommission file number 0-14275\nEDAC Technologies Corporation\n(Exact Name of Registrant as Specified in Its Charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 24,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wisconsin",
+     "39-1515599"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "OR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to .\nCommission file number 0-14275\nEDAC Technologies Corporation\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 26,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1806 New Britain Avenue, Farmington, Connecticut",
+     "06032"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 26,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (860) 677-2603\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Each Exchange on Which Registered"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 49,
+    "end_line": 52
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (860) 677-2603\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 56
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, $.0025 par value\n(Title of class)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ].\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is an accelerated filer (as defined in Exchange Act Rule 12b-2). Yes [ ] No [X].\nAs of July 2, 2004, the aggregate market value of the registrant\u2019s Common Stock (based upon the $1.70 closing price on that date on the OTC Bulletin Board) held by nonaffiliates (excludes shares reported as beneficially owned by directors and officers - does not constitute an admission as to affiliate status) was approximately $5,288,403.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Part of Form 10-K"
+    ],
+    [
+     "",
+     "Into Which Portions of"
+    ],
+    [
+     "DOCUMENT",
+     "Document are Incorporated"
+    ],
+    [
+     "Annual Report to Shareholders for the fiscal year ended January 1, 2005",
+     "Part II"
+    ]
+   ],
+   "caption_stack": [
+    "Part of Form 10-K",
+    "Into Which Portions of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ].\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is an accelerated filer (as defined in Exchange Act Rule 12b-2). Yes [ ] No [X].\nAs of July 2, 2004, the aggregate market value of the registrant\u2019s Common Stock (based upon the $1.70 closing price on that date on the OTC Bulletin Board) held by nonaffiliates (excludes shares reported as beneficially owned by directors and officers - does not constitute an admission as to affiliate status) was approximately $5,288,403.\nAs of February 28, 2005, there were 4,444,438 shares of Common Stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE",
+   "prose_after": "All statements other than historical statements contained in this Annual Report on Form 10-K or deemed to be contained herein due to incorporation by reference to a different document constitute \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. Without limitation, these forward looking statements include statements regarding the Company\u2019s business strategy and plans, statements about the adequacy of the Company\u2019s working capital and other financial resources, statements about the Company\u2019s bank agreements, statements about the Company\u2019s backlog, statements about the Company\u2019s actions to improve operating performance, and other statements herein that are not of a historical nature. These forward-looking statements rely on a number of assumptions concerning future events and are subject to a number of uncertainties and other factors, many of which are outside of the Company\u2019s control, that could cause actual results to differ materially from such statements. These include, but are not limited to, factors which could affect demand for the Company\u2019s products and services such as general economic conditions and economic conditions in the aerospace industry and the other industries in which the Company competes; competition from the Company\u2019s competitors; the Company\u2019s ability to reduce costs; the Company\u2019s ability to effectively use business-to-business tools on the Internet to improve operating results; the adequacy of the Company\u2019s revolving credit facility and other sources of capital. The Company disclaims any intention or obligation to update or revise any forward-looking statements, whether as a result of new information, future events or otherwise.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "Item 1. Business"
+    ],
+    [
+     "",
+     "Item 2. Properties"
+    ],
+    [
+     "",
+     "Item 3. Legal Proceedings"
+    ],
+    [
+     "",
+     "Item 4. Submission of Matters to a Vote of Security Holders"
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "Item 5. Market for Registrant\u2019s Common Equity and Related Stockholder Matters"
+    ],
+    [
+     "",
+     "Item 6. Selected Financial Data"
+    ],
+    [
+     "",
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    ],
+    [
+     "",
+     "Item 7a. Quantitative and Qualitative Disclosure About Market Risk"
+    ],
+    [
+     "",
+     "Item 8. Financial Statements and Supplementary Data"
+    ],
+    [
+     "",
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosure"
+    ],
+    [
+     "",
+     "Item 9A. Controls and Procedures"
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "Item 10. Directors and Executive Officers of the Registrant"
+    ],
+    [
+     "",
+     "Item 11. Executive Compensation"
+    ],
+    [
+     "",
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    ],
+    [
+     "",
+     "Item 13. Certain Relationships and Related Transactions"
+    ],
+    [
+     "",
+     "Item 14. Principal Accountant Fees and Services"
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "Item 15. Exhibits, Financial Statement Schedules, and Reports on Form 8-K"
+    ],
+    [
+     "SIGNATURES",
+     ""
+    ],
+    [
+     "EXHIBIT INDEX",
+     ""
+    ],
+    [
+     "2004 Annual Report to Shareholders",
+     ""
+    ],
+    [
+     "Subsidiaries",
+     ""
+    ],
+    [
+     "Consent of Carlin, Charron & Rosen, LLP",
+     ""
+    ],
+    [
+     "Consent of Deloitte & Touche LLP",
+     ""
+    ],
+    [
+     "Certification of CEO Pursuant to Rule 13a-14(a)",
+     ""
+    ],
+    [
+     "Certification of CFO Pursuant to Rule 13a-14(a)",
+     ""
+    ],
+    [
+     "Certification of CEO and CFO Pursuant to Rule 13a-14(b)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PART I",
+    "Item 1. Business",
+    "Item 2. Properties",
+    "Item 3. Legal Proceedings",
+    "Item 4. Submission of Matters to a Vote of Security Holders",
+    "PART II"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "All statements other than historical statements contained in this Annual Report on Form 10-K or deemed to be contained herein due to incorporation by reference to a different document constitute \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. Without limitation, these forward looking statements include statements regarding the Company\u2019s business strategy and plans, statements about the adequacy of the Company\u2019s working capital and other financial resources, statements about the Company\u2019s bank agreements, statements about the Company\u2019s backlog, statements about the Company\u2019s actions to improve operating performance, and other statements herein that are not of a historical nature. These forward-looking statements rely on a number of assumptions concerning future events and are subject to a number of uncertainties and other factors, many of which are outside of the Company\u2019s control, that could cause actual results to differ materially from such statements. These include, but are not limited to, factors which could affect demand for the Company\u2019s products and services such as general economic conditions and economic conditions in the aerospace industry and the other industries in which the Company competes; competition from the Company\u2019s competitors; the Company\u2019s ability to reduce costs; the Company\u2019s ability to effectively use business-to-business tools on the Internet to improve operating results; the adequacy of the Company\u2019s revolving credit facility and other sources of capital. The Company disclaims any intention or obligation to update or revise any forward-looking statements, whether as a result of new information, future events or otherwise.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. Business.\nGeneral\nThe accompanying consolidated financial statements include EDAC Technologies Corporation (\u201cWe\u201d, \u201cEDAC\u201d or the \u201cCompany\u201d) and its wholly-owned subsidiaries, Gros-Ite Industries, Inc. and Apex Machine Tool Company, Inc. We provide complete design, manufacture and service meeting the precision requirements of some of the most exacting customers in the world for tooling, fixtures, molds, jet engine components and machine spindles.\nAs a result of the restructuring commencing in the fourth quarter of 2002 and ending in the first quarter of 2003, the Company has since operated as one segment.\nProducts\nWe currently offer design and manufacturing services for a wide range of industries in areas such as special tooling, equipment and gauges, and components used in the manufacture, assembly and inspection of jet engines. We also specialize in the design and repair of precision spindles. Spindles are an integral part of numerous machine tools which are found in virtually any type of manufacturing environment. We have introduced new spindle proprietary products for the woodworking and automotive markets, and in July 2003, we entered into an exclusive worldwide licensing agreement to develop, design, manufacture and market a patented hydrostatic spindle product line.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Square",
+     "",
+     "Owned or",
+     "Principal"
+    ],
+    [
+     "Address",
+     "Feet",
+     "",
+     "Leased",
+     "Activity"
+    ],
+    [
+     "1790 New Britain Ave.",
+     "",
+     "47,000",
+     "Owned",
+     "Manufacturing"
+    ],
+    [
+     "Farmington, CT. 06032",
+     "",
+     "",
+     "(1)",
+     "Design engineering"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "services"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1798 New Britain Ave.",
+     "",
+     "20,800",
+     "Owned",
+     "Design and manufacture"
+    ],
+    [
+     "Farmington, CT. 06032",
+     "",
+     "",
+     "(1)",
+     "of spindles"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1806 New Britain Ave.",
+     "",
+     "19,200",
+     "Owned",
+     "Manufacturing"
+    ],
+    [
+     "Farmington, CT. 06032",
+     "",
+     "",
+     "(1)",
+     "Corporate offices"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 165,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "Our backlog as of January 1, 2005, was approximately $18,300,000 compared to $18,000,000 as of January 3, 2004. The increase is primarily due to increased orders for spindles, partially offset by decreased orders from aerospace customers. Backlog consists of accepted purchase orders that are cancelable by the customer without penalty, except for payment of costs incurred, and may involve delivery times that extend over periods as long as three years. We presently expect to complete approximately $12,000,000 of our January 1, 2005 backlog during the 2005 fiscal year.\nWe maintain a website with the address www.edactechnologies.com. We are not including the information contained on our website as part of, or incorporating it by reference into, this Annual Report on Form 10-K.\nEmployees\nAs of February 10, 2005, we had approximately 200 employees.\nItem 2. Properties.\nThe following table describes the location and general character of our principal plants and other materially important physical properties. The properties at 1790 and 1798 New Britain Avenue were renovated in 1997 to improve production, increase capacity and improve the appearance of both the interior and exterior. The building at 1806 New Britain Avenue was constructed in 1995 for our Aerospace operation.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 145,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Square",
+     "",
+     "Owned or",
+     "Principal"
+    ],
+    [
+     "Address",
+     "Feet",
+     "",
+     "Leased",
+     "Activity"
+    ],
+    [
+     "21 Spring Lane",
+     "",
+     "44,000",
+     "Owned",
+     "Manufacturing"
+    ],
+    [
+     "Farmington, CT 06032",
+     "",
+     "",
+     "(1)",
+     "Warehouse"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 182,
+    "end_line": 189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Property subject to mortgage securing certain corporate indebtedness.\nItem 3. Legal Proceedings.\nWe are not a party to any material pending legal proceedings.\nItem 4. Submission of Matters to a Vote of Security Holders.\nNo matters were submitted to a vote of security holders during the fourth quarter of the fiscal year ended January 1, 2005.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity and Related Stockholder Matters.\nInformation in response to this item is incorporated herein by reference to \u201cMarket Information\u201d on page 3 of our 2004 Annual Report to Shareholders.\nItem 6. Selected Financial Data.\nInformation in response to this item is incorporated herein by reference to \u201cSelected Financial Information\u201d on page 3 through 4 of our 2004 Annual Report to Shareholders.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 189,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Director",
+     "",
+     "Principal"
+    ],
+    [
+     "Name",
+     "Age",
+     "",
+     "Since",
+     "",
+     "Occupation"
+    ],
+    [
+     "Current Directors (also nominees)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "William B. Bayne, Jr. (1)",
+     "",
+     "40",
+     "",
+     "2003",
+     "President, Chief Executive Officer and founder of BBB Corporation and 23[ ]d Street Corporation (restaurant businesses)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Moses",
+     "",
+     "60",
+     "",
+     "2001",
+     "Private Investor"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dominick A. Pagano (2)",
+     "",
+     "61",
+     "",
+     "2001",
+     "President and Chief Executive Officer of the Company and President and Chief Executive Officer of Dapco Industries, Inc. (a manufacturer of ultrasonic inspection equipment for the steel and railroad industries)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen J. Raffay (3)",
+     "",
+     "77",
+     "",
+     "2000",
+     "Retired Vice-Chairman, Emhart Corporation (a manufacturer of various machinery and consumer products)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ross C. Towne (4)",
+     "",
+     "61",
+     "",
+     "2001",
+     "President and Chief Financial Officer, The"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 243,
+    "end_line": 260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors and Executive Officers of the Registrant."
+    },
+    "note": null
+   },
+   "prose_before": "The Chief Executive Officer and Chief Financial Officer of the Company evaluated the Company\u2019s disclosure controls and procedures (as defined in Exchange Act Rules 13a-14(c) and 15d-14(c)) as of January 1, 2005 and, based on this evaluation, concluded that the Company\u2019s disclosure controls and procedures are functioning in an effective manner to ensure that the information required to be disclosed by the Company in the reports that it files or submits under the Exchange Act, is recorded, processed, summarized and reported, within the time periods specified in the SEC\u2019s rules and forms.\nThere has been no change in the Company\u2019s internal control over financial reporting during the Company\u2019s fiscal year ended January 1, 2005 that has materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nPART III\nItem 10. Directors and Executive Officers of the Registrant.\nDirectors\nThe following table sets forth, as of March 10, 2005, the name, age and principal occupation of each director of the company and each nominee for director at the 2005 annual meeting.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 223,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Director",
+     "",
+     "Principal"
+    ],
+    [
+     "Name",
+     "Age",
+     "",
+     "Since",
+     "",
+     "Occupation"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Washington Source, Inc. (a custom precision sheet metal fabrication and integration company)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel C. Tracy (5)",
+     "",
+     "64",
+     "",
+     "1999",
+     "Chairman of the Board of the Company and Business Consultant"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nominee for Director",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Lebel (6)",
+     "",
+     "74",
+     "",
+     "\u2014",
+     "Retired Quality Control manager for the Company"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 262,
+    "end_line": 275
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors and Executive Officers of the Registrant."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Mr. Bayne founded BBB Corporation and 23[ ]d Street Corporation in 1988 and 1994 respectively.\n(2) Mr. Pagano became President and Chief Executive Officer of the Company in August 2002 and also serves as President and Chief Executive Officer of Dapco Industries, Inc., a company that he founded in 1972. Mr. Pagano served as Chairman of the Board of Directors of American Environmental Technologies, Inc. from 1988 until 1999. Mr. Pagano has been a director of the Company since July 2001, provided, however, that he did not serve as a director from April 2002 to October 2002.\n(3) Mr. Raffay served as a senior executive and as a director of Emhart Corporation until his retirement as Vice Chairman in 1987. Since then he has done consulting work and serves as a member of the boards of directors of a number of companies.\n(4) Mr. Towne owned Management Partners, Inc., a management consulting firm, from 1990 to 2000, specializing in business planning, organizational restructuring and operational audits. He has served as President and Chief Financial Officer of The Washington Source, Inc. since 2000.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 275,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "",
+     "Office"
+    ],
+    [
+     "Dominick A. Pagano",
+     "",
+     "61",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn L. Purple",
+     "",
+     "49",
+     "Vice President \u2013 Finance, Chief Financial Officer and Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 292,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors and Executive Officers of the Registrant."
+    },
+    "note": null
+   },
+   "prose_before": "The Audit Committee is comprised of three members of the Company\u2019s Board of Directors, Messrs. Raffay, Towne and Tracy. Because the Company\u2019s Common Stock is traded on the OTC Bulletin Board, the Company is not subject to the listing requirements of any securities exchange or The Nasdaq Stock Market regarding the composition of the Company\u2019s Audit Committee. However, each member of the Audit Committee is independent, as defined in Rule 4200(a)(15) for the listing standards of The Nasdaq Stock Market. The Board has identified Mr. Daniel Tracy as the \u201cAudit Committee Financial Expert\u201d as defined by the rules of the Securities and Exchange Commission (the \u201cCommission\u201d). The duties and responsibilities of the Audit Committee are set forth in a written Audit Committee Charter, which the Board of Directors adopted on March 14, 2001, and amended on March 3, 2003 and March 8, 2004.\nExecutive Officers\nThe following table sets forth the name, age and current positions and offices of each executive officer of the Company:",
+   "prose_after": "Mr. Pagano became President and Chief Executive Officer of the Company in August 2002 and also serves as President and Chief Executive Officer of Dapco Industries, Inc. He has served as President and Chief Executive Officer of Dapco Industries since he founded that company in 1972.\nMr. Purple joined the Company in February 1982 as Controller. He served as Controller until November 2002, when he was appointed as Vice President \u2013 Finance, Chief Financial Officer and Secretary of the Company. Mr. Purple also served as Vice President \u2013 Finance and Chief Financial Officer of the Company from 1989 through 1996.\nOfficers are elected annually by, and serve at the discretion of, the Board of Directors.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Exchange Act requires the Company\u2019s directors and executive officers, and persons who own more than 10% of a registered class of the Company\u2019s equity securities, to file with the Commission initial reports of beneficial ownership on Form 3 and reports of changes in beneficial ownership of the Company\u2019s equity securities on Forms 4 or 5. The rules promulgated by the Commission under Section 16(a) of the Exchange Act require those persons to furnish the Company with copies of all reports filed with the Commission pursuant to Section 16(a). Based solely upon a review of such forms actually furnished to the Company, and written representations of certain of the Company\u2019s directors and executive officers that no forms were required to be filed, the Company believes that during fiscal year 2004, all directors, executive officers and 10% shareholders of the Company have filed with the Commission on a timely basis all reports required to be filed under Section 16(a) of the Exchange Act.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Long Term",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Annual Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Compensation",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Annual",
+     "",
+     "Securities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Compen-",
+     "",
+     "Underlying",
+     "",
+     "All Other",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "sation",
+     "",
+     "Options",
+     "",
+     "Compensation",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "(#)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Dominick A. Pagano",
+     "",
+     "2004",
+     "",
+     "180,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,000"
+    ],
+    [
+     "President and Chief",
+     "",
+     "2003",
+     "",
+     "165,923",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,000"
+    ],
+    [
+     "Executive Officer (1)",
+     "",
+     "2002",
+     "",
+     "21,923",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "140,000",
+     "",
+     "13,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn L. Purple",
+     "",
+     "2004",
+     "",
+     "108,000",
+     "",
+     "15,186",
+     "",
+     "\u2014",
+     "",
+     "7,500",
+     "",
+     "\u2014"
+    ],
+    [
+     "Vice President and Chief",
+     "",
+     "2003",
+     "",
+     "104,981",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Financial Officer (2)",
+     "",
+     "2002",
+     "",
+     "95,365",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,000",
+     "",
+     "1,750"
+    ]
+   ],
+   "caption_stack": [
+    "Long Term"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 326,
+    "end_line": 345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act requires the Company\u2019s directors and executive officers, and persons who own more than 10% of a registered class of the Company\u2019s equity securities, to file with the Commission initial reports of beneficial ownership on Form 3 and reports of changes in beneficial ownership of the Company\u2019s equity securities on Forms 4 or 5. The rules promulgated by the Commission under Section 16(a) of the Exchange Act require those persons to furnish the Company with copies of all reports filed with the Commission pursuant to Section 16(a). Based solely upon a review of such forms actually furnished to the Company, and written representations of certain of the Company\u2019s directors and executive officers that no forms were required to be filed, the Company believes that during fiscal year 2004, all directors, executive officers and 10% shareholders of the Company have filed with the Commission on a timely basis all reports required to be filed under Section 16(a) of the Exchange Act.\nCode of Ethics\nWe have adopted a written code of ethics that applies to all of our employees, including but not limited to, our principal executive officer, principal financial officer, principal accounting officer or controller, or persons performing similar functions. A copy of our code of ethics is filed as an exhibit to our Annual Report on Form 10-K for the fiscal year ended January 3, 2004, and is also available without charge by writing to: Glenn L. Purple, Secretary, EDAC Technologies Corporation, 1806 New Britain Avenue, Farmington, Connecticut 06032.\nItem 11. Executive Compensation.\nExecutive Compensation\nSummary Compensation Information\nThe following table sets forth certain information concerning compensation for each of the last three fiscal years of the Company\u2019s Chief Executive Officer and the only other executive officer of the Company whose total salary and bonus during 2004 exceeded $100,000, (collectively, the \u201cNamed Executive Officers\u201d).\nSummary Compensation Table",
+   "prose_after": "(1) Mr. Pagano became President and Chief Executive Officer on August 13, 2002. Other compensation represents director retainer and meeting fees.\n(2) Mr. Purple became Vice-President-Finance, Chief Financial Officer and Secretary on November 19, 2002. Other compensation of represents payments to a defined contribution plan.\nOption Grants\nThe following table provides certain information regarding stock options granted to the Named Executive Officers in 2004.\nOption Grants in Last Fiscal Year",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 316,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Individual Grants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Percent of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Potential Realizable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Value at Assumed",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Securities",
+     "",
+     "Options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Annual Rates of Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Underlying",
+     "",
+     "Granted to",
+     "",
+     "Exercise",
+     "",
+     "",
+     "",
+     "Price Appreciation",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Options",
+     "",
+     "Employees in",
+     "",
+     "Price",
+     "",
+     "Expiration",
+     "",
+     "for Option Term ($) (3)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Granted (#)",
+     "",
+     "Fiscal Year (1)",
+     "",
+     "($/Sh)(2)",
+     "",
+     "Date",
+     "",
+     "5% ($)",
+     "",
+     "10% ($)",
+     ""
+    ],
+    [
+     "Glenn Purple",
+     "",
+     "2,500",
+     "",
+     "16.7",
+     "",
+     "1.10",
+     "",
+     "1/6/14",
+     "",
+     "1,729",
+     "",
+     "4,383"
+    ],
+    [
+     "Glenn Purple",
+     "",
+     "5,000",
+     "",
+     "33.3",
+     "",
+     "1.67",
+     "",
+     "12/7/14",
+     "",
+     "5,251",
+     "",
+     "13,308"
+    ]
+   ],
+   "caption_stack": [
+    "Individual Grants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 355,
+    "end_line": 370
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Mr. Pagano became President and Chief Executive Officer on August 13, 2002. Other compensation represents director retainer and meeting fees.\n(2) Mr. Purple became Vice-President-Finance, Chief Financial Officer and Secretary on November 19, 2002. Other compensation of represents payments to a defined contribution plan.\nOption Grants\nThe following table provides certain information regarding stock options granted to the Named Executive Officers in 2004.\nOption Grants in Last Fiscal Year",
+   "prose_after": "(1) Based on a total of 15,000 shares subject to options granted to employees under the Company\u2019s option plans in fiscal year 2004.\n(2) Under all of the Company\u2019s option plans, the exercise price is equal to the fair market value of the Company\u2019s Common Stock on the date of grant.\n(3) The dollar amounts under these columns represent hypothetical gains that could be achieved for options if exercised at the end of the option term. These gains are based on assumed rates of stock price appreciation of 5% and 10% compounded annually from the date options are granted, net of option exercise price. Actual gains, if any, on stock option exercises will depend on the future performance of the Company\u2019s Common Stock, the option holder\u2019s continued employment throughout the option period, and the date on which options are exercised.\nFiscal Year-End Option Values\nThe following table provides certain information regarding options held by the Named Executive Officers at January 1, 2005.\nAggregated Option Exercises in Last Fiscal Year and Fiscal Year-End Option Values",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of Securities",
+     "",
+     "",
+     "Value of Unexercised",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Underlying",
+     "",
+     "",
+     "In-the-Money",
+     ""
+    ],
+    [
+     "",
+     "Unexercised Options at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Options at",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares Acquired on",
+     "",
+     "Value",
+     "",
+     "Fiscal Year-End (#)",
+     "",
+     "",
+     "Fiscal Year End ($)(1)",
+     ""
+    ],
+    [
+     "Name",
+     "Exercise (#)",
+     "",
+     "Realized ($)",
+     "",
+     "Exercisable/Unexercisable",
+     "",
+     "",
+     "Exercisable/Unexercisable",
+     ""
+    ],
+    [
+     "Dominick A. Pagano",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "140,000/-",
+     "",
+     "$",
+     "140,000/-"
+    ],
+    [
+     "Glenn L. Purple",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,334/9,166",
+     "",
+     "$",
+     "6,962/3,066"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 381,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Based on a total of 15,000 shares subject to options granted to employees under the Company\u2019s option plans in fiscal year 2004.\n(2) Under all of the Company\u2019s option plans, the exercise price is equal to the fair market value of the Company\u2019s Common Stock on the date of grant.\n(3) The dollar amounts under these columns represent hypothetical gains that could be achieved for options if exercised at the end of the option term. These gains are based on assumed rates of stock price appreciation of 5% and 10% compounded annually from the date options are granted, net of option exercise price. Actual gains, if any, on stock option exercises will depend on the future performance of the Company\u2019s Common Stock, the option holder\u2019s continued employment throughout the option period, and the date on which options are exercised.\nFiscal Year-End Option Values\nThe following table provides certain information regarding options held by the Named Executive Officers at January 1, 2005.\nAggregated Option Exercises in Last Fiscal Year and Fiscal Year-End Option Values",
+   "prose_after": "(1) Based on the last reported sale price of the Common Stock on the OTC Bulletin Board on December 30, 2004 ($1.60), less the option exercise price.\nPension Plan\nThe Company maintains a defined benefit plan that was frozen in respect to all future benefits as of April 1, 1993. The only Named Executive Officer that will benefit under the plan is Glenn Purple. From the period 1982 to 1993, Mr. Purple had earned an estimated annual retirement benefit that will be payable upon attainment of age 65 in the amount of approximately $7,800.\nCompensation of Directors\nIn 2004, the Company paid directors of the Company a retainer of $2,500 each fiscal quarter and $1,000 for each non-telephonic Board of Directors or Committee meeting attended. The Chairman of the Board of Directors was paid an additional retainer of $1,250 each fiscal quarter and an additional $500 per non-telephonic meeting attended. Each director who serves as Chairman of a committee was paid an additional $500 for each non-telephonic meeting chaired by such director.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Percent",
+     ""
+    ],
+    [
+     "Name",
+     "Beneficially Owned",
+     "",
+     "of Class",
+     ""
+    ],
+    [
+     "William B. Bayne Jr. (1)",
+     "",
+     "443,008",
+     "",
+     "9.97"
+    ],
+    [
+     "Joseph Lebel",
+     "",
+     "131,557",
+     "",
+     "2.96"
+    ],
+    [
+     "John Moses (2)",
+     "",
+     "551,190",
+     "",
+     "12.37"
+    ],
+    [
+     "Dominick A. Pagano (3)",
+     "",
+     "341,738",
+     "",
+     "7.45"
+    ],
+    [
+     "Glenn L. Purple (4)",
+     "",
+     "41,138",
+     "",
+     "*"
+    ],
+    [
+     "Stephen J. Raffay (5)",
+     "",
+     "18,000",
+     "",
+     "*"
+    ],
+    [
+     "Ross C. Towne (6)",
+     "",
+     "91,256",
+     "",
+     "2.05"
+    ],
+    [
+     "Daniel C. Tracy (7)",
+     "",
+     "122,468",
+     "",
+     "2.72"
+    ],
+    [
+     "All Directors and Executive Officers as a group (7 persons) (8)",
+     "",
+     "1,608,798",
+     "",
+     "34.29"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 424,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth information regarding the beneficial ownership of shares of Common Stock as of February 11, 2005 by (i) each director, nominee for director and Named Executive\nOfficer, (ii) each person or entity known by the Company to beneficially own more than 5% of the outstanding shares of Common Stock and (iii) all directors and executive officers as a group.\nThe Company has determined beneficial ownership in accordance with the rules of the Commission. Unless otherwise indicated, the persons included in the table have sole voting and investment power with respect to all shares beneficially owned, except to the extent authority is shared with spouses under applicable law. Shares of Common Stock subject to options that are either currently exercisable or exercisable within 60 days of February 11, 2005 are deemed to be outstanding and to be beneficially owned by the option holder for the purpose of computing the percentage ownership of the option holder. However, these shares are not treated as outstanding for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "* Represents beneficial ownership of less than 1%.\n(1) Mr. Bayne\u2019s address is 1806 South Arlington Ridge Road, Arlington, Virginia 22202.\n(2) Includes 10,000 shares subject to stock options held by Mr. Moses. Mr. Moses\u2019 address is 3616 North Albemarle Street, Arlington, Virginia, 22207.\n(3) Includes 140,000 shares subject to stock options held by Mr. Pagano. Mr. Pagano\u2019s address is 1806 New Britain Avenue, Farmington, Connecticut 06032.\n(4) Includes 12,167 shares subject to stock options held by Mr. Purple.\n(5) Includes 10,000 shares subject to stock options held by Mr. Raffay.\n(6) Includes 10,000 shares subject to stock options held by Mr. Towne.\n(7) Includes 65,000 shares subject to stock options held by Mr. Tracy.\n(8) Includes 247,167 shares subject to stock options held by all directors and executive officers as a group.\nThe above beneficial ownership information is based upon information furnished by the specified persons and is determined in accordance with Rule 13d-3 under the Exchange Act. It is not necessarily to be construed as an admission of beneficial ownership for other purposes and may include shares as to which beneficial ownership is disclaimed.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 418,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "securities",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "remaining available",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "securities to be",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "for future issuance",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "issued upon",
+     "",
+     "",
+     "",
+     "Weighted-average",
+     "",
+     "",
+     "under equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "exercise of",
+     "",
+     "",
+     "",
+     "exercise price of",
+     "",
+     "",
+     "compensation plans",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "outstanding",
+     "",
+     "",
+     "",
+     "outstanding",
+     "",
+     "",
+     "(excluding",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "options, warrants",
+     "",
+     "",
+     "",
+     "options, warrants",
+     "",
+     "",
+     "securities reflected",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "and rights",
+     "",
+     "",
+     "",
+     "and rights",
+     "",
+     "",
+     "in column (a))",
+     "",
+     ""
+    ],
+    [
+     "Plan category",
+     "",
+     "(a)",
+     "",
+     "",
+     "",
+     "(b)",
+     "",
+     "",
+     "(c)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by security holders (1)",
+     "",
+     "",
+     "555,600",
+     "(2)",
+     "",
+     "$",
+     "1.36",
+     "",
+     "",
+     "724,500",
+     "(3)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "555,600",
+     "",
+     "",
+     "$",
+     "1.36",
+     "",
+     "",
+     "724,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Number of",
+    "securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 458,
+    "end_line": 479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "(3) Includes 140,000 shares subject to stock options held by Mr. Pagano. Mr. Pagano\u2019s address is 1806 New Britain Avenue, Farmington, Connecticut 06032.\n(4) Includes 12,167 shares subject to stock options held by Mr. Purple.\n(5) Includes 10,000 shares subject to stock options held by Mr. Raffay.\n(6) Includes 10,000 shares subject to stock options held by Mr. Towne.\n(7) Includes 65,000 shares subject to stock options held by Mr. Tracy.\n(8) Includes 247,167 shares subject to stock options held by all directors and executive officers as a group.\nThe above beneficial ownership information is based upon information furnished by the specified persons and is determined in accordance with Rule 13d-3 under the Exchange Act. It is not necessarily to be construed as an admission of beneficial ownership for other purposes and may include shares as to which beneficial ownership is disclaimed.\nThe following table sets forth certain information regarding our equity compensation plans as of January 1, 2005.\nEQUITY COMPENSATION PLAN INFORMATION",
+   "prose_after": "(1) Consists of the following equity compensation plans: the 1996 Stock Option Plan (the \u201c1996 Plan\u201d), the 1998 Stock Option Plan (the \u201c1998 Plan\u201d), the 2000 Employee Stock Option Plan (the \u201c2000 Plan\u201d) and the 2000-B Employee Stock Option Plan (the \u201c2000-B Plan\u201d) collectively (the \u201cPlans\u201d). Each of the Plans provides for the grant of stock options to any director, officer or employee of the Company or any of its subsidiaries. The 2000 Plan also provides for the grant of stock options to consultants of the Company and its subsidiaries. Each of the Plans is administered by the Compensation Committee of the Company\u2019s Board of Directors. Options are generally granted for a term of ten years. The exercise price of options granted under each of the Plans must not be less than the fair market value of the Company\u2019s common stock on the date of grant. The 1996 Plan, the 1998 Plan, the 2000 Plan and the\n2000-B Plan each provide for the issuance of up to 329,500, 330,000, 300,000 and 500,000 shares of common stock, respectively, upon the exercise of options granted under such plans.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "Fiscal 2003 fees",
+     "",
+     "Fiscal 2004 fees",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "79,145",
+     "$",
+     "74,500"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     "",
+     "14,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fees",
+     "$",
+     "79,145",
+     "$",
+     "88,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 495,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Consists of the following equity compensation plans: the 1996 Stock Option Plan (the \u201c1996 Plan\u201d), the 1998 Stock Option Plan (the \u201c1998 Plan\u201d), the 2000 Employee Stock Option Plan (the \u201c2000 Plan\u201d) and the 2000-B Employee Stock Option Plan (the \u201c2000-B Plan\u201d) collectively (the \u201cPlans\u201d). Each of the Plans provides for the grant of stock options to any director, officer or employee of the Company or any of its subsidiaries. The 2000 Plan also provides for the grant of stock options to consultants of the Company and its subsidiaries. Each of the Plans is administered by the Compensation Committee of the Company\u2019s Board of Directors. Options are generally granted for a term of ten years. The exercise price of options granted under each of the Plans must not be less than the fair market value of the Company\u2019s common stock on the date of grant. The 1996 Plan, the 1998 Plan, the 2000 Plan and the\n2000-B Plan each provide for the issuance of up to 329,500, 330,000, 300,000 and 500,000 shares of common stock, respectively, upon the exercise of options granted under such plans.\n(2) Consists of outstanding options to purchase 82,000 shares under the 1996 Plan, 61,600 shares under the 1998 Plan, 171,000 shares under the 2000 Plan and 241,000 shares under the 2000-B Plan.\n(3) Includes 236,500 shares issuable under the 1996 Plan, 148,400 shares issuable under the 1998 Plan, 109,000 shares issuable under the 2000 Plan and 230,600 shares issuable under the 2000-B Plan.\nItem 13. Certain Relationships and Related Transactions.\nThere are no related party transactions to report.\nItem 14. Principal Accountant Fees and Services.\nThe following is a summary of the fees billed by the Company\u2019s principal accountant for professional services rendered for the fiscal years ended January 3, 2004 and January 1, 2005.",
+   "prose_after": "Audit Fees. Services consist of the audit of the Company\u2019s annual financial statements and review of financial statements included in the Company\u2019s quarterly reports on Form 10-Q.\nAudit-Related Fees. Services consist of that which are reasonably related to the performance of the audit or review of the Company\u2019s consolidated financial statements, but are not reported under \u201cAudit Fees.\u201d No such fees were incurred during the past two years.\nTax Fees. Services consist of tax return preparation and tax advice for federal and state taxes. Services for 2003 and 2004 were provided by accountants other than the Company\u2019s principal accountant.\nAll Other Fees. Services consist of audits of the Company\u2019s employee benefit plans. Services for 2003 were provided by accountants other than the Company\u2019s principal accountant.\nThe Audit Committee of the Board of Directors of the Company considered that the provision of the services and the payment of the fees described above are compatible with maintaining the independence of Carlin, Charron & Rosen, LLP.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "COL. A",
+     "",
+     "COL. B",
+     "",
+     "",
+     "COL. C",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "COL. D",
+     "",
+     "",
+     "",
+     "",
+     "COL. E",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "ADDITIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Balance at Beginning",
+     "",
+     "",
+     "",
+     "Charged to Costs",
+     "",
+     "",
+     "",
+     "",
+     "Charged to Other",
+     "",
+     "",
+     "Deductions",
+     "",
+     "",
+     "",
+     "",
+     "Balance at End",
+     "",
+     ""
+    ],
+    [
+     "DESCRIPTION",
+     "",
+     "of Year",
+     "",
+     "",
+     "",
+     "and Expenses",
+     "",
+     "",
+     "",
+     "",
+     "Accounts-Describe",
+     "",
+     "",
+     "Describe",
+     "",
+     "",
+     "",
+     "",
+     "of Year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "YEAR ENDED JANUARY 1, 2005:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves and allowances deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts receivable",
+     "",
+     "$",
+     "234,187",
+     "",
+     "",
+     "$",
+     "762",
+     "",
+     "",
+     "",
+     "$",
+     "0",
+     "",
+     "(1)",
+     "",
+     "$",
+     "762",
+     "",
+     "$",
+     "234,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for excess and obsolete inventories",
+     "",
+     "",
+     "699,689",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(2)",
+     "",
+     "",
+     "56,669",
+     "",
+     "",
+     "643,020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for deferred tax assets",
+     "",
+     "",
+     "2,938,000",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(4)",
+     "",
+     "",
+     "1,432,000",
+     "",
+     "",
+     "1,506,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "YEAR ENDED JANUARY 3, 2004:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves and allowances deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts receivable",
+     "",
+     "",
+     "272,815",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(1)",
+     "",
+     "",
+     "38,628",
+     "",
+     "",
+     "234,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for excess and obsolete inventories",
+     "",
+     "",
+     "766,394",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(2)",
+     "",
+     "",
+     "66,705",
+     "",
+     "",
+     "699,689",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for deferred tax assets",
+     "",
+     "",
+     "6,177,000",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(4)",
+     "",
+     "",
+     "3,239,000",
+     "",
+     "",
+     "2,938,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "YEAR ENDED DECEMBER 28, 2002:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves and allowances deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts receivable",
+     "",
+     "",
+     "332,000",
+     "",
+     "",
+     "",
+     "73,780",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(1)",
+     "",
+     "",
+     "132,965",
+     "",
+     "",
+     "272,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for excess and obsolete inventories",
+     "",
+     "",
+     "1,034,182",
+     "",
+     "",
+     "",
+     "423,212",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(2)",
+     "",
+     "",
+     "691,000",
+     "",
+     "",
+     "766,394",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for deferred tax assets",
+     "",
+     "",
+     "641,000",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "(3)",
+     "",
+     "",
+     "5,536,000",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "6,177,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 586,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "We have audited the consolidated financial statements of EDAC Technologies Corporation and subsidiaries for the year ended December 28, 2002, and have issued our report thereon dated February 7, 2003 (except with respect to the matters discussed in (Section 3) of Note D as to which the date is April 10, 2003, which report expresses an unqualified opinion and includes an explanatory paragraph relating to the adoption of Statement of Financial Accounting Standards No. 142, \u201cGoodwill and Other Intangible Assets\u201d); such consolidated financial statements and; report are is included in your 2004 annual report to shareholders and are incorporated herein by reference. Our audit also included the 2002 financial statement schedule of EDAC Technologies Corporation. This financial statement schedule is the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the schedule based on our audit. In our opinion, the 2002 financial statement schedule, when considered in relation to the 2002 basic consolidated financial statements taken as a whole, presents fairly, in all material respects, the information set forth therein.\n/s/ Deloitte & Touche LLP\nHartford, Connecticut February 7, 2003 (except with respect to the matters discussed in (Section 3) of Note D as to which the date is April 10, 2003)\nSCHEDULE II - VALUATION AND QUALIFYING ACCOUNTS EDAC TECHNOLOGIES CORPORATION AND SUBSIDIARIES",
+   "prose_after": "(1) Write-off of specific accounts receivable.\n(2) Disposition of inventory reserved against.\n(3) Additions charged to income tax expense\n(4) Reductions credited to income tax expense\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EDAC TECHNOLOGIES CORPORATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BY",
+     "/s/ Dominick A. Pagano"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Dominick A. Pagano"
+    ],
+    [
+     "",
+     "  President and Chief Executive Officer"
+    ],
+    [
+     "Date: March 23, 2005",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "EDAC TECHNOLOGIES CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 634,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "(1) Write-off of specific accounts receivable.\n(2) Disposition of inventory reserved against.\n(3) Additions charged to income tax expense\n(4) Reductions credited to income tax expense\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Each person whose signature appears below hereby appoints Dominick A. Pagano and Glenn L. Purple, and each of them individually, his true and lawful attorney-in-fact, with power to act with or without the other and with full power of substitution and resubstitution, in any and all capacities, to sign any and all amendments to the Form 10-K and file the same with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or their substitutes, may lawfully cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Dominick A. Pagano      Dominick A. Pagano",
+     "President, Chief Executive Officer and Director (Principal Executive Officer)",
+     "March 23, 2005"
+    ],
+    [
+     "/s/ Glenn L. Purple      Glenn L. Purple",
+     "Chief Financial Officer, Vice President-Finance and Secretary (Principal Financial and Accounting Officer)",
+     "March 23, 2005"
+    ],
+    [
+     "/s/ William B. Bayne, Jr.      William B. Bayne, Jr.",
+     "Director",
+     "March 23, 2005"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 658
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "Each person whose signature appears below hereby appoints Dominick A. Pagano and Glenn L. Purple, and each of them individually, his true and lawful attorney-in-fact, with power to act with or without the other and with full power of substitution and resubstitution, in any and all capacities, to sign any and all amendments to the Form 10-K and file the same with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or their substitutes, may lawfully cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ John Moses      John Moses",
+     "Director",
+     "March 23, 2005"
+    ],
+    [
+     "/s/ Stephen J. Raffay      Stephen J. Raffay",
+     "Director",
+     "March 22, 2005"
+    ],
+    [
+     "/s/ Ross C. Towne      Ross C. Towne",
+     "Director",
+     "March 23, 2005"
+    ],
+    [
+     "/s/ Daniel C. Tracy      Daniel C. Tracy",
+     "Director, Chairman of the Board",
+     "March 22, 2005"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Sequential",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Page Number",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "EDAC\u2019s Amended and Restated Articles of Incorporation",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "EDAC\u2019s Amended and Restated By-Laws",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "EDAC\u2019s Amended and Restated Articles of incorporation",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Sections of EDAC\u2019s By-Laws",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Gros-Ite division Pension Plan",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "EDAC Technologies Corporation 1996 Stock Option Plan",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "EDAC Technologies Corporation 1998 Stock Option Plan",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Loan and Security Agreement dated September 29, 2000 among General Electric Capital Corp., EDAC and Apex Machine Tool Company Inc. as borrowers",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Leading Borrower\u2019s and Second Borrower\u2019s Revolving Credit Notes dated as of September 29, 2000 by and between General Electric Capital Corporation and EDAC",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Term Note A-1 dated September 29, 2000 by and between General Electric Capital Corporation and EDAC Technologies Corporation",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Term Note A-2 dated September 29, 2000 by and between General Electric Capital Corporation and Apex Machine Tool Company, Inc.",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Pledge Agreement dated September 29, 2000 by and between General Electric Capital Corporation and EDAC",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "EDAC Technologies Corporation 2000 Stock Option Plan",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "EDAC Technologies Corporation 2000-B Stock Option Plan",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Loan Agreement dated February 5, 2001 by and between Farmington Savings Bank and EDAC.",
+     "",
+     "(6)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Sequential",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Page Number",
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "Commercial Mortgage Note dated February 5, 2001 by and between Farmington Savings Bank and EDAC.",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Open-End Mortgage Deed and Security Agreement dated February 5, 2001 by and between Farmington Savings Bank and EDAC.",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "Environmental Indemnification Agreement dated February 5, 2001 by and between Farmington Savings Bank and EDAC.",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "Form of Agreements regarding Indemnification between EDAC and each of its directors and executive officers.",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "Separation Agreement and General Release dated November 22, 2002 between EDAC and Ronald G. Popolizio",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "Amended and Restated Employment contract dated February 13, 2003 between EDAC and Dominick Pagano.",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "Modification Agreement by and among EDAC, Apex Machine Tool Company, Inc. (\u201cApex\u201d), Gros-Ite Industries, Inc. (\u201cGros-Ite\u201d) and Fleet National Bank dated April 1, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "Amended and Restated Note A of EDAC in favor of Fleet National Bank dated April 1, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "Amended and Restated Note B of EDAC in favor of Fleet National Bank dated April 1, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "Waiver, Consent and Amendment No. 2 to Loan and Security Agreement by and among EDAC, Apex and General Electric Capital Corporation dated April 1, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "Amended and Restated Intercreditor and Subordination Agreement by and among EDAC, Apex, Gros-Ite, Fleet National Bank, Corsair Special Situations Fund, L.P. and General Electric Capital Corporation dated April 1, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.23",
+     "Amendment No. 3 to Loan and Security Agreement by and between EDAC and General Electric Capital Corporation dated June 25, 2003",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.24",
+     "Note and Mortgage Modification Agreement by and between EDAC and Farmington Savings Bank dated October 15, 2003",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.25",
+     "Consent and Amendment No. 4 to Loan and Security Agreement by and between EDAC and General Electric Capital Corporation dated January 15, 2004",
+     "",
+     "(12)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 712,
+    "end_line": 746
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Sequential",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Page Number",
+     "",
+     ""
+    ],
+    [
+     "10.26",
+     "Amended and Restated Employment contract dated February 13, 2004 between EDAC and Dominick Pagano.",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.27",
+     "Loan Agreement by and between EDAC, Apex and Banknorth N.A. dated March 5, 2004.",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.28",
+     "Term Note by and between EDAC, Apex and Banknorth N.A dated March 5, 2004.",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.29",
+     "Open-End Mortgage, Commercial Mortgage, Security Agreement and Assignment of Leases and Rents by and between Banknorth N.A and EDAC dated March 5, 2004.",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.30",
+     "Open-End Mortgage, Commercial Mortgage, Security Agreement and Assignment of Leases and Rents by and between Apex and Banknorth N.A dated March 5, 2004.",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.31",
+     "Hazardous Substance Certificate and Indemnification Agreement by and between EDAC, Apex and Banknorth N.A. dated March 5, 2004.",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.32*",
+     "Consent and Amendment No. 5 to Loan and Security Agreement by and between EDAC and General Electric Capital Corporation dated May 20, 2004.",
+     "",
+     "(14)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.33",
+     "Credit Agreement dated as of January 3, 2005 by and among EDAC, Apex Machine Tool Company, Inc., Gros-Ite Industries, Inc. and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.34",
+     "Security Agreement dated as of January 3, 2005 by and among EDAC, Apex Machine Tool Company, Inc., Gros-Ite Industries, Inc. and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.35",
+     "Open-End Mortgage Deed dated as of January 3, 2005 by and between EDAC and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.36",
+     "Open-End Mortgage Deed dated as of January 3, 2005 by and between Apex and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.37",
+     "Borrower\u2019s Environmental Indemnification dated as of January 3, 2005 by and among EDAC, Gros-Ite, Apex and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.38",
+     "Revolving Credit Note dated as of January 3, 2005 by and among EDAC, Gros-Ite, Apex and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Sequential",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Page Number",
+     "",
+     ""
+    ],
+    [
+     "10.39",
+     "Term Loan Note dated as of January 3, 2005 by and among EDAC, Gros-Ite, Apex and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.40",
+     "Equipment Loan Note dated as of January 3, 2005 by and among EDAC, Gros-Ite, Apex and Banknorth, N.A.",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.41",
+     "Amended and Restated Employment Agreement dated as of February 13, 2005 between EDAC and Dominick Pagano",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "11",
+     "Earnings per share information has been incorporated by reference to EDAC\u2019s 2004 Annual Report to Shareholders",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "13**",
+     "EDAC\u2019s 2004 Annual Report to Shareholders",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "14",
+     "EDAC Technologies Corporation Code of Ethics",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21**",
+     "Subsidiaries",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1**",
+     "Consent of Carlin, Charron & Rosen, LLP",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.2**",
+     "Consent of Deloitte & Touche LLP",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1**",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2**",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Rule 13a-14(b) under the Securities Exchange Act of 1934, as amended.",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 782,
+    "end_line": 811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Exhibit incorporated by reference to the Company\u2019s registration statement on Form S-1 dated August 6, 1985, commission File No. 2-99491, Amendment No. 1.\n(2) Exhibit incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 1996.\n(3) Exhibit incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ended January 2, 1999.\n(4) Exhibit incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2000.\n(5) Exhibit incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ended December 30, 2000.\n(6) Exhibit incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended March 31, 2001.\n(7) Exhibit incorporated by reference to the Company\u2019s Current Report on Form 8-K dated February 19, 2002.\n(8) Exhibit incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q dated June 30, 2002.\n(9) Exhibit incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ended December 28, 2002.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 811,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

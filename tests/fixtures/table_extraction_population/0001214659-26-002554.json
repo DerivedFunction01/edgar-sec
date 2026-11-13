@@ -1,0 +1,4016 @@
+{
+ "accession": "0001214659-26-002554",
+ "cik": "0001338474",
+ "form": "10-K",
+ "filing_date": "2026-02-26",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "q2226010k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n\n\n(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "84-1689138\n\n\n\n(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____ to _____\nCommission File No. 000-51927\nRidgewood Energy Q Fund, LLC\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "103 Foulk Road, Wilmington, DE 19803\n(Address of principal executive offices) (Zip code)\n(800) 942-5550\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nShares of LLC Membership Interest\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 1",
+     "BUSINESS",
+     "2"
+    ],
+    [
+     "",
+     "ITEM 1A",
+     "RISK FACTORS",
+     "9"
+    ],
+    [
+     "",
+     "ITEM 1B",
+     "UNRESOLVED STAFF COMMENTS",
+     "9"
+    ],
+    [
+     "",
+     "ITEM 1C",
+     "CYBERSECURITY",
+     "9"
+    ],
+    [
+     "",
+     "ITEM 2",
+     "PROPERTIES",
+     "10"
+    ],
+    [
+     "",
+     "ITEM 3",
+     "LEGAL PROCEEDINGS",
+     "11"
+    ],
+    [
+     "",
+     "ITEM 4",
+     "MINE SAFETY DISCLOSURES",
+     "11"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 5",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "12"
+    ],
+    [
+     "",
+     "ITEM 6",
+     "[RESERVED]",
+     "12"
+    ],
+    [
+     "",
+     "ITEM 7",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "12"
+    ],
+    [
+     "",
+     "ITEM 7A",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "17"
+    ],
+    [
+     "",
+     "ITEM 8",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "17"
+    ],
+    [
+     "",
+     "ITEM 9",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "17"
+    ],
+    [
+     "",
+     "ITEM 9A",
+     "CONTROLS AND PROCEDURES",
+     "17"
+    ],
+    [
+     "",
+     "ITEM 9B",
+     "OTHER INFORMATION",
+     "18"
+    ],
+    [
+     "",
+     "ITEM 9C",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "18"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 10",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "19"
+    ],
+    [
+     "",
+     "ITEM 11",
+     "EXECUTIVE COMPENSATION",
+     "20"
+    ],
+    [
+     "",
+     "ITEM 12",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "20"
+    ],
+    [
+     "",
+     "ITEM 13",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "20"
+    ],
+    [
+     "",
+     "ITEM 14",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "21"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 15",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "22"
+    ],
+    [
+     "",
+     "ITEM 16",
+     "FORM 10-K SUMMARY",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "SIGNATURES",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 76,
+    "end_line": 110
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThere is no market for the shares of LLC Membership Interest in the Fund. As of February 26, 2026, there were 830.5577 shares of LLC Membership Interest outstanding.\nRIDGEWOOD ENERGY Q FUND, LLC 2025 ANNUAL REPORT ON FORM 10-K TABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nCertain statements in this Annual Report on Form 10-K (\u201cAnnual Report\u201d) and the documents Ridgewood Energy Q Fund, LLC (the \u201cFund\u201d) has incorporated by reference into this Annual Report, other than purely historical information, including estimates, projections and statements relating to the Fund\u2019s business plans, strategies, objectives and expected operating results, and the assumptions upon which those statements are based, are \u201cforward-looking statements\u201d within the meaning of the U.S. Private Securities Litigation Reform Act of 1995. Such forward-looking statements are based on current expectations and assumptions and are subject to risks and uncertainties that may cause actual results to differ materially from the forward-looking statements. You are therefore cautioned against relying on any such forward-looking statements. Forward-looking statements can generally be identified by words such as \u201cbelieve,\u201d \u201cproject,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cintend,\u201d \u201cstrategy,\u201d \u201cplan,\u201d \u201ctarget,\u201d \u201cpursue,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cwill likely result,\u201d and similar expressions and references to future periods. Examples of events that could cause actual results to differ materially from historical results or those anticipated include the impact on the Fund\u2019s business and operations of any future widespread health emergencies or public health crises such as pandemics and epidemics, weather conditions, such as hurricanes, changes in market and other conditions affecting the pricing, production and demand of oil and natural gas, the cost and availability of equipment, the military conflict between Russia and Ukraine and the global response to such conflict, acts of terrorism and changes in domestic and foreign governmental regulations, as well as other risks and uncertainties discussed in this Annual Report in Item 1. \u201cBusiness\u201d and Item 7. \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\u201d Examples of forward-looking statements made herein include statements regarding projects, investments, insurance, capital expenditures and liquidity. Forward-looking statements made in this document speak only as of the date on which they are made. The Fund undertakes no obligation to update or revise publicly any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Productive Wells",
+     ""
+    ],
+    [
+     "",
+     "Gross",
+     "Net"
+    ],
+    [
+     "Oil and natural gas",
+     "5",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [
+    "Total Productive Wells"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 183
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "In addition to the Royalty Relief Rule, the Deepwater Royalty Relief Act of 1995 (the \u201cDeepwater Royalty Relief Act\u201d) was enacted to promote exploration and production of oil and natural gas in the deepwater of the Gulf of America and relieves eligible leases from paying royalties to the U.S. Government on certain defined amounts of deepwater production. The Deepwater Royalty Relief Act expired in the year 2000 but was extended for qualified leases by the BOEM to promote continued interest in deepwater. The Fund currently has one project, the Beta Project, which is eligible for royalty relief under the Deepwater Royalty Relief Act. The Deepwater Royalty Relief Act does not apply to oil if the prices of oil exceed certain thresholds (currently estimated to be between $48.48 per barrel and $62.95 per barrel) adjusted annually for inflation. The Deepwater Royalty Relief Act does not apply to natural gas if the prices of natural gas exceed certain thresholds (currently estimated to be between $6.06 per mmbtu and $10.49 per mmbtu) adjusted annually for inflation.\nProperties\nProductive Wells\nThe following table sets forth the number of productive oil and natural gas wells in which the Fund owned a working interest as of December 31, 2025. Productive wells are producing wells and wells mechanically capable of production. Gross wells are the total number of wells in which the Fund owns a working interest. Net wells are the sum of the Fund\u2019s fractional working interests owned in the gross wells. All of the wells, each of which produces both oil and natural gas, are located in the offshore waters of the Gulf of America and are operated by third-party operators.",
+   "prose_after": "Acreage Data\nThe following table sets forth the Fund\u2019s working interests in developed and undeveloped oil and natural gas acreage as of December 31, 2025. Gross acres are the total number of acres in which the Fund owns a working interest. Net acres are the sum of the fractional working interests owned in gross acres. Ownership interests generally take the form of working interests in oil and natural gas leases that have varying terms. All of the Fund\u2019s oil and natural gas acreage is located in the offshore waters of the Gulf of America.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 144,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 184,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Developed Acres",
+     "",
+     "Undeveloped Acres",
+     ""
+    ],
+    [
+     "Gross",
+     "Net",
+     "Gross",
+     "Net"
+    ],
+    [
+     "23,033",
+     "518",
+     "364",
+     "8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 189,
+    "end_line": 197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "Acreage Data\nThe following table sets forth the Fund\u2019s working interests in developed and undeveloped oil and natural gas acreage as of December 31, 2025. Gross acres are the total number of acres in which the Fund owns a working interest. Net acres are the sum of the fractional working interests owned in gross acres. Ownership interests generally take the form of working interests in oil and natural gas leases that have varying terms. All of the Fund\u2019s oil and natural gas acreage is located in the offshore waters of the Gulf of America.",
+   "prose_after": "Information regarding the Fund\u2019s Beta Project, which is located in the offshore waters of the Gulf of America, is provided in the following table. See Item 7. \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d of this Annual Report under the heading \u201cLiquidity Needs\u201d for information regarding the funding of the Fund\u2019s capital commitments.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 184,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 225,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Total Spent",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Working",
+     "",
+     "",
+     "through",
+     "Fund",
+     "",
+     ""
+    ],
+    [
+     "Project",
+     "Interest",
+     "",
+     "",
+     "December 31, 2025",
+     "Budget",
+     "",
+     "Status"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beta Project",
+     "",
+     "2.25%",
+     "$",
+     "22,621",
+     "$",
+     "26,148",
+     "The Beta Project, a seven-well project, commenced production from its first two wells in 2016. Additional five wells commenced production in 2017, 2018 and 2019. Well #4 is currently shut-in for pressure build that occurred during third quarter 2025. A rig recompletion operation for Well #4 began in January 2026 and is ongoing. Rig recompletions on Well #5 and Well #2 are scheduled to follow. The Fund expects to spend $1.5 million for additional development costs. Well #3 is currently shut-in for pressure build that occurred during third quarter 2025. The operator is working on plans to return Well #3 to production. The Fund expects to spend $2.0 million for asset retirement obligations."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 200,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "Information regarding the Fund\u2019s Beta Project, which is located in the offshore waters of the Gulf of America, is provided in the following table. See Item 7. \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d of this Annual Report under the heading \u201cLiquidity Needs\u201d for information regarding the funding of the Fund\u2019s capital commitments.",
+   "prose_after": "Marketing/Customers\nThe Manager, on behalf of the Fund, markets the Fund\u2019s oil and natural gas to third parties consistent with industry practice. The Fund utilizes Beta Sales and Transport, LLC (\u201cBeta S&T\u201d), a wholly-owned subsidiary of the Manager, as an aggregator to and as an accommodation for the Fund and other funds managed by the Manager to facilitate the transportation and sale of oil and natural gas produced from the Beta Project. In 2016, the Fund entered into a master agreement with Beta S&T pursuant to which Beta S&T is obligated to purchase from the Fund all of its interests in oil and natural gas produced from the Beta Project and sell such volumes to unrelated third-party purchasers. The number of customers purchasing the Fund\u2019s oil and natural gas may vary from time to time. Currently, the Fund has two major customers in the public market. Because a ready market exists for oil and natural gas, the Fund believes that the loss of any individual customer would not have a material adverse effect on its financial position or results of operations. The Fund\u2019s Beta Project is near existing transportation infrastructure and pipelines.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 184,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 225,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas revenue",
+     "$",
+     "1,767",
+     "$",
+     "2,824"
+    ],
+    [
+     "Other revenue",
+     "",
+     "258",
+     "",
+     "230"
+    ],
+    [
+     "Total revenue",
+     "",
+     "2,025",
+     "",
+     "3,054"
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depletion and amortization",
+     "",
+     "783",
+     "",
+     "1,143"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "609",
+     "",
+     "474"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "268",
+     "",
+     "249"
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,660",
+     "",
+     "1,866"
+    ],
+    [
+     "Income from operations",
+     "",
+     "365",
+     "",
+     "1,188"
+    ],
+    [
+     "Interest income",
+     "",
+     "116",
+     "",
+     "117"
+    ],
+    [
+     "Net income",
+     "$",
+     "481",
+     "$",
+     "1,305"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The Fund reviews the carrying value of its oil and gas properties for impairment whenever events and circumstances indicate that the recorded carrying value of its oil and gas properties may not be recoverable. Recoverability is evaluated by comparing estimated future net undiscounted cash flows to the carrying value of the oil and gas properties at the time of the review. If the carrying value exceeds the estimated future net undiscounted cash flows, the carrying value of the oil and gas properties is impaired, and written down to fair value. Fair value is determined using valuation techniques that include both market and income approaches and use Level 3 inputs. The fair value determinations require considerable judgment and are sensitive to change. Different pricing assumptions, estimates of oil and natural gas reserves and future development costs or discount rates could result in a significant impact on the amount of impairment.\nResults of Operations\nThe following table summarizes the Fund\u2019s results of operations during the years ended December 31, 2025 and 2024, and should be read in conjunction with the Fund\u2019s financial statements and the notes thereto included within Item 8. \u201cFinancial Statements and Supplementary Data\u201d in this Annual Report.",
+   "prose_after": "Overview. The following table provides information related to the Fund\u2019s oil and gas production and oil and gas revenue during the years ended December 31, 2025 and 2024. NGL sales are included within gas sales.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Number of wells producing",
+     "",
+     "7",
+     "",
+     "7"
+    ],
+    [
+     "Total number of production days",
+     "",
+     "2,264",
+     "",
+     "2,420"
+    ],
+    [
+     "Oil sales (in thousands of barrels)",
+     "",
+     "25",
+     "",
+     "36"
+    ],
+    [
+     "Average oil price per barrel",
+     "$",
+     "65",
+     "$",
+     "75"
+    ],
+    [
+     "Gas sales (in thousands of mcfs)",
+     "",
+     "37",
+     "",
+     "51"
+    ],
+    [
+     "Average gas price per mcf",
+     "$",
+     "3.85",
+     "$",
+     "3.19"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 465,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Overview. The following table provides information related to the Fund\u2019s oil and gas production and oil and gas revenue during the years ended December 31, 2025 and 2024. NGL sales are included within gas sales.",
+   "prose_after": "The production related decreases noted in the table above related to the Beta Project. Two wells in the Beta Project have been shut-in for pressure build that occurred during third quarter 2025. The Beta Project\u2019s production volumes were also further impacted by natural declines in production.\u201d\nSee Item 1. \u201cBusiness\u201d of this Annual Report under the heading \u201cProperties\u201d for more information.\nOil and Gas Revenue. Oil and gas revenue during the year ended December 31, 2025 was $1.8 million, a decrease of $1.1 million from the year ended December 31, 2024. The decrease was primarily attributable to decreased sales volume totaling $0.8 million coupled with decreased oil prices totaling $0.3 million.\nSee \u201cOverview\u201d above for factors that impact the oil and gas revenue volume and rate variances.\nOther Revenue. Other revenue is generated from the Fund\u2019s production handling, gathering and operating services agreement with affiliated entities and other third parties. See Note 2 of \u201cNotes to Financial Statements\u201d \u2013 \u201cRelated Parties\u201d contained in Item 8. \u201cFinancial Statements and Supplementary Data\u201d within this Annual Report for more information.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expense",
+     "$",
+     "246",
+     "$",
+     "232"
+    ],
+    [
+     "Accretion expense",
+     "",
+     "117",
+     "",
+     "75"
+    ],
+    [
+     "Workover expense",
+     "",
+     "103",
+     "",
+     "-"
+    ],
+    [
+     "Transportation and processing expense",
+     "",
+     "87",
+     "",
+     "118"
+    ],
+    [
+     "Insurance expense",
+     "",
+     "56",
+     "",
+     "49"
+    ],
+    [
+     "",
+     "$",
+     "609",
+     "$",
+     "474"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Other Revenue. Other revenue is generated from the Fund\u2019s production handling, gathering and operating services agreement with affiliated entities and other third parties. See Note 2 of \u201cNotes to Financial Statements\u201d \u2013 \u201cRelated Parties\u201d contained in Item 8. \u201cFinancial Statements and Supplementary Data\u201d within this Annual Report for more information.\nDepletion and Amortization. Depletion and amortization during the year ended December 31, 2025 was $0.8 million, a decrease of $0.4 million from the year ended December 31, 2024. The decrease was primarily attributable to a decrease in production volumes totaling $0.3 million.\nSee \u201cOverview\u201d above for certain factors that impact the depletion and amortization volume and rate variances. Depletion and amortization rates may be impacted by changes in reserves estimates provided annually by the Fund\u2019s independent petroleum engineers.\nOperating Expenses. Operating expenses represent costs specifically identifiable or allocable to the Fund\u2019s wells, as detailed in the following table.",
+   "prose_after": "Lease operating expense and transportation and processing expense relate to the Fund\u2019s producing projects. Accretion expense relates to the asset retirement obligations established for the Fund\u2019s oil and gas properties. Workover expense represents costs to restore or stimulate production of existing reserves. Insurance expense represents premiums related to the Fund\u2019s projects, which vary depending upon the number of wells producing or drilling.\nProduction costs, which include lease operating expense, transportation and processing expense and insurance expense, were $0.4 million ($12.48 per barrel of oil equivalent or \u201cBOE\u201d) during the year ended December 31, 2025, compared to $0.4 million ($9.06 per BOE) during the year ended December 31, 2024.\nProduction costs were relatively consistent during the year ended December 31, 2025 compared to the year ended December 31, 2024. The increase in production costs per BOE during the year ended December 31, 2025 compared to the year ended December 31, 2024 was primarily attributable to the Beta Project, which had higher production costs per BOE during the year ended December 31, 2025 primarily attributable to reduced production volumes due to natural declines in production.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name, Age and Position with Registrant"
+    ],
+    [
+     ""
+    ],
+    [
+     "Niloy Shah, 61\n\n\n\nPresident and Partner"
+    ],
+    [
+     ""
+    ],
+    [
+     "Kathleen P. McSherry, 60\n\n\n\nExecutive Vice President, Chief Financial Officer and\n\n\n\nAssistant Secretary"
+    ],
+    [
+     ""
+    ],
+    [
+     "Maria E. Haggerty, 55\n\n\n\nChief Compliance Officer and Vice President \u2013 Legal"
+    ]
+   ],
+   "caption_stack": [
+    "Name, Age and Position with Registrant"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThe President and Partner and Chief Financial Officer of the Fund have concluded that there have not been any changes in the Fund\u2019s internal control over financial reporting during the quarter ended December 31, 2025 that have materially affected, or are reasonably likely to materially affect, the Fund\u2019s internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nDuring the fourth quarter 2025, no officer of the Fund adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 408(a) of Regulation S-K.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe Fund has engaged Ridgewood Energy as the Manager. The Manager has very broad authority, including the authority to appoint the executive officers of the Fund. Executive officers of the Fund and their ages as of December 31, 2025 are as follows:",
+   "prose_after": "The officers are employed by and paid exclusively by the Manager. Set forth below is certain biographical information regarding the executive officers of Ridgewood Energy and the Fund:\nNiloy Shah has served as President and Partner of Ridgewood Energy since January 1, 2025, and as an executive officer of the Fund since April 30, 2025. Mr. Shah is a member of the Investment Committee. Prior to his promotion to President and Partner of Ridgewood Energy, he served as Chief Operating Officer since 2020. Mr. Shah received his B.S. and M.S. from the University of Tulsa and an MBA from the University of Houston. Prior to joining Ridgewood Energy as Executive Vice President \u2013 Commercial in 2017, Mr. Shah was with BP for thirty-two years serving in positions that included Head of Planning & Commercial Operations for the Americas, Global Head of Commercial Operations, CFO for the Gulf of Mexico Business, and CFO for the Asia Pacific Business.\nKathleen P. McSherry has served as the Executive Vice President, Chief Financial Officer and Assistant Secretary of Ridgewood Energy since 2001. Ms. McSherry holds a Bachelor of Science degree in Accounting from Kean University. The Manager of the Fund appointed Ms. McSherry as the CEO and PEO of the Fund, effective as of February 22, 2024, following the retirement of Mr. Swanson. Such role was relinquished by Ms. McSherry effective April 30, 2025 due to the appointment of Mr. Shah. Ms. McSherry also serves and will continue to serve as the Principal Financial and Accounting Officer of the Fund.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 651,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "82",
+     "$",
+     "82"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The Fund and other third-party working interest owners in the Beta Project (collectively, the \u201cBeta Project Owners\u201d) are parties to a production handling, gathering and operating services agreement (\u201cPHA\u201d) with Ridgewood Claiborne, LLC, a wholly-owned entity of Ridgewood Energy Stingray L.P. (\u201cStingray\u201d) and other third-party working interest owners in the Claiborne Project (collectively, the \u201cProducers\u201d), whereby the Beta Project Owners will provide services related to the production handling and delivery of oil and natural gas production from the Claiborne Project via their owned Beta Project production facility. The PHA was effective on December 12, 2016 and will continue in effect unless terminated by default, by the Beta Project Owners or the Producers pursuant to the terms of the PHA (as amended on February 10, 2017, March 9, 2017, September 19, 2018, November 30, 2018 and December 1, 2018). On September 23, 2020, a third-party working interest owner of the Claiborne Project executed a consent letter to assign the rights to the services under the PHA to Ridgewood Rattlesnake, LLC, a wholly-owned entity of Ridgewood Energy Oil & Gas Fund III, L.P. (\u201cInstitutional Fund III\u201d). On May 12, 2022, a third-party working interest owner executed an assignment and bill of sale agreement to assign the rights to the services under the PHA to Ridgewood Institutional IV Prospective Leases, LLC, a wholly-owned entity of Ridgewood Energy Oil & Gas Fund IV, L.P. (\u201cInstitutional Fund IV\u201d). Ridgewood Claiborne, LLC was a wholly-owned entity of Ridgewood Energy Oil & Gas Fund II (\u201cInstitutional Fund II\u201d), which transferred its ownership to Stingray on September 30, 2024. Stingray, Institutional Fund II, Institutional Fund III and Institutional Fund IV are entities that are managed by the Fund\u2019s Manager. Under the terms of the PHA, the Producers have agreed to pay the Beta Project Owners a fixed production handling fee for each barrel of oil and mcf of natural gas produced through the Beta Project production facility. See Note 2 of \u201cNotes to Financial Statements\u201d \u2013 \u201cRelated Parties\u201d contained in Item 8. \u201cFinancial Statements and Supplementary Data\u201d within this Annual Report for more information regarding the PHA.\nAt times, short-term payables and receivables, which do not bear interest, arise from transactions with affiliates in the ordinary course of business.\nThe Fund has working interest ownership in certain oil and natural gas projects, which are also owned by other entities that are likewise managed by the Manager.\nProfits and losses are allocated in accordance with the LLC Agreement. In general, profits and losses in any year are allocated 85% to shareholders and 15% to the Manager. The primary exception to this treatment is that all items of expense, loss, deduction and credit attributable to the expenditure of shareholders\u2019 capital contributions are allocated 99% to shareholders and 1% to the Manager.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following table presents fees for services rendered by Deloitte & Touche LLP during the years ended December 31, 2025 and 2024.",
+   "prose_after": "(1) Fees for audit of annual financial statements, reviews of the related quarterly financial statements, and reviews of documents filed with the SEC.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) (1) Financial Statements\nSee \u201cIndex to Financial Statements\u201d set forth on page F-1.\n(a) (2) Financial Statement Schedules\nNone.\n(a) (3)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT\n\n\n\nNUMBER",
+     "TITLE OF EXHIBIT",
+     "METHOD OF FILING"
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of Ridgewood Energy Q Fund, LLC dated August 16, 2005",
+     "Incorporated by reference to the Fund's Form 10 filed on April 21, 2006"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Limited Liability Company Agreement between Ridgewood Energy Corporation and Investors of Ridgewood Energy Q Fund, LLC dated September 6, 2005",
+     "Incorporated by reference to the Fund's Form 10 filed on April 21, 2006"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "Description of Shares",
+     "Incorporated by reference to the Fund\u2019s Form 10-K filed on March 3, 2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Niloy Shah, President and Partner of the Fund, pursuant to Exchange Act Rule 13a-14(a)",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Kathleen P. McSherry, Executive Vice President, Chief Financial Officer and Assistant Secretary of the Fund, pursuant to Exchange Act Rule 13a-14(a)",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certifications pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, signed by Niloy Shah, President and Partner of the Fund and Kathleen P. McSherry, Executive Vice President, Chief Financial Officer and Assistant Secretary of the Fund",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "99.1",
+     "Report of Netherland, Sewell & Associates, Inc.",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "  Inline XBRL Taxonomy Extension Presentation Linkbase",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Fees for audit of annual financial statements, reviews of the related quarterly financial statements, and reviews of documents filed with the SEC.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) (1) Financial Statements\nSee \u201cIndex to Financial Statements\u201d set forth on page F-1.\n(a) (2) Financial Statement Schedules\nNone.\n(a) (3)",
+   "prose_after": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RIDGEWOOD ENERGY Q FUND, LLC",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:  February 26, 2026",
+     "By:",
+     "/s/ NILOY SHAH"
+    ],
+    [
+     "",
+     "",
+     "Niloy Shah\n\n\n\nPresident and Partner\n\n\n\n(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "RIDGEWOOD ENERGY Q FUND, LLC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Capacity",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ NILOY SHAH",
+     "President and Partner (Principal Executive Officer)",
+     "February 26, 2026"
+    ],
+    [
+     "Niloy Shah",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ KATHLEEN P. MCSHERRY\n\n\n\nKathleen P. McSherry",
+     "Executive Vice President, Chief Financial Officer and Assistant Secretary\n\n\n\n(Principal Financial and Accounting Officer)",
+     "February 26, 2026"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "RIDGEWOOD ENERGY CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "BY:  /s/ MARIA E. HAGGERTY",
+     "Chief Compliance Officer and Vice President\n\u2013 Legal and Secretary of the Manager",
+     "February 26, 2026"
+    ],
+    [
+     "Maria E. Haggerty",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 771,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INDEX TO FINANCIAL STATEMENTS",
+     "PAGE"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID No. 34)",
+     "F-2"
+    ],
+    [
+     "Balance Sheets as of December 31, 2025 and 2024",
+     "F-5"
+    ],
+    [
+     "Statements of Operations for the years ended December 31, 2025 and 2024",
+     "F-6"
+    ],
+    [
+     "Statements of Changes in Members' Capital for the years ended December 31, 2025 and 2024",
+     "F-7"
+    ],
+    [
+     "Statements of Cash Flows for the years ended December 31, 2025 and 2024",
+     "F-8"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-9"
+    ],
+    [
+     "Supplementary Financial Information - Information about Oil and Gas Producing Activities - Unaudited",
+     "F-17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 791,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and the Manager of Ridgewood Energy Q Fund, LLC\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Ridgewood Energy Q Fund, LLC (the \"Fund\") as of December 31, 2025 and 2024, the related statements of operations, changes in members' capital, and cash flows, for each of the two years in the period ended December 31, 2025, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Fund as of December 31, 2025 and 2024, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2025, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Fund's management. Our responsibility is to express an opinion on the Fund's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Fund in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,134",
+     "",
+     "$",
+     "1,558",
+     ""
+    ],
+    [
+     "Production receivable",
+     "",
+     "108",
+     "",
+     "",
+     "195",
+     ""
+    ],
+    [
+     "Due from affiliate (Note 2)",
+     "",
+     "14",
+     "",
+     "",
+     "21",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "41",
+     "",
+     "",
+     "42",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "2,297",
+     "",
+     "",
+     "1,816",
+     ""
+    ],
+    [
+     "Salvage fund",
+     "",
+     "1,831",
+     "",
+     "",
+     "1,631",
+     ""
+    ],
+    [
+     "Oil and gas properties:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved properties",
+     "",
+     "24,896",
+     "",
+     "",
+     "24,923",
+     ""
+    ],
+    [
+     "Less:  accumulated depletion and amortization",
+     "",
+     "(23,455)",
+     "",
+     "",
+     "(22,672)",
+     ""
+    ],
+    [
+     "Total oil and gas properties, net",
+     "",
+     "1,441",
+     "",
+     "",
+     "2,251",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "5,569",
+     "",
+     "$",
+     "5,698",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Members' Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due to operators",
+     "$",
+     "136",
+     "",
+     "$",
+     "23",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "66",
+     "",
+     "",
+     "58",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "202",
+     "",
+     "",
+     "81",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "",
+     "1,280",
+     "",
+     "",
+     "1,280",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,482",
+     "",
+     "",
+     "1,361",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Members' capital:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Manager:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "(9,664)",
+     "",
+     "",
+     "(9,555)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "9,289",
+     "",
+     "",
+     "9,107",
+     ""
+    ],
+    [
+     "Manager's total",
+     "",
+     "(375)",
+     "",
+     "",
+     "(448)",
+     ""
+    ],
+    [
+     "Shareholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions (1,335 shares authorized; 830.5577 issued and outstanding)",
+     "",
+     "123,037",
+     "",
+     "",
+     "123,037",
+     ""
+    ],
+    [
+     "Syndication costs",
+     "",
+     "(14,070)",
+     "",
+     "",
+     "(14,070)",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "(54,759)",
+     "",
+     "",
+     "(54,137)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(49,746)",
+     "",
+     "",
+     "(50,045)",
+     ""
+    ],
+    [
+     "Shareholders' total",
+     "",
+     "4,462",
+     "",
+     "",
+     "4,785",
+     ""
+    ],
+    [
+     "Total members' capital",
+     "",
+     "4,087",
+     "",
+     "",
+     "4,337",
+     ""
+    ],
+    [
+     "Total liabilities and members' capital",
+     "$",
+     "5,569",
+     "",
+     "$",
+     "5,698",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "o Understanding the methodology utilized by management for development of the future oil and natural gas commodity prices.\no Comparing the future oil and natural gas commodity prices to an independently determined range of prices.\no Comparing management\u2019s future oil and natural gas commodity prices to published forward pricing indices and third-party industry sources.\n\u00b7 We evaluated the future oil and natural gas commodity prices by comparing future oil and natural gas commodity price differentials to historical realized price differentials.\n/s/ Deloitte & Touche LLP\nMorristown, New Jersey\nFebruary 26, 2026\nWe have served as the Fund's auditor since 2006.\nBALANCE SHEETS\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 881,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 942,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas revenue",
+     "$",
+     "1,767",
+     "$",
+     "2,824"
+    ],
+    [
+     "Other revenue",
+     "",
+     "258",
+     "",
+     "230"
+    ],
+    [
+     "Total revenue",
+     "",
+     "2,025",
+     "",
+     "3,054"
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depletion and amortization",
+     "",
+     "783",
+     "",
+     "1,143"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "609",
+     "",
+     "474"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "268",
+     "",
+     "249"
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,660",
+     "",
+     "1,866"
+    ],
+    [
+     "Income from operations",
+     "",
+     "365",
+     "",
+     "1,188"
+    ],
+    [
+     "Interest income",
+     "",
+     "116",
+     "",
+     "117"
+    ],
+    [
+     "Net income",
+     "$",
+     "481",
+     "$",
+     "1,305"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Manager Interest",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "182",
+     "$",
+     "350"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder Interest",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "299",
+     "$",
+     "955"
+    ],
+    [
+     "Net income per share",
+     "$",
+     "360",
+     "$",
+     "1,150"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(in thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN MEMBERS\u2019 CAPITAL\n(in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 942,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "# of Shares",
+     "",
+     "Manager",
+     "",
+     "",
+     "Shareholders",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2023",
+     "-",
+     "",
+     "830.5577",
+     "$",
+     "(450)",
+     "",
+     "$",
+     "5,799",
+     "",
+     "$",
+     "5,349",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "",
+     "-",
+     "",
+     "(348)",
+     "",
+     "",
+     "(1,969)",
+     "",
+     "",
+     "(2,317)",
+     ""
+    ],
+    [
+     "Net income",
+     "-",
+     "",
+     "-",
+     "",
+     "350",
+     "",
+     "",
+     "955",
+     "",
+     "",
+     "1,305",
+     ""
+    ],
+    [
+     "Balances, December 31, 2024",
+     "",
+     "",
+     "830.5577",
+     "$",
+     "(448)",
+     "",
+     "$",
+     "4,785",
+     "",
+     "$",
+     "4,337",
+     ""
+    ],
+    [
+     "Distributions",
+     "-",
+     "",
+     "-",
+     "",
+     "(109)",
+     "",
+     "",
+     "(622)",
+     "",
+     "",
+     "(731)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "-",
+     "",
+     "182",
+     "",
+     "",
+     "299",
+     "",
+     "",
+     "481",
+     ""
+    ],
+    [
+     "Balances, December 31, 2025",
+     "-",
+     "",
+     "830.5577",
+     "$",
+     "(375)",
+     "",
+     "$",
+     "4,462",
+     "",
+     "$",
+     "4,087",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 999
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN MEMBERS\u2019 CAPITAL\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "481",
+     "",
+     "$",
+     "1,305",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depletion and amortization",
+     "",
+     "783",
+     "",
+     "",
+     "1,143",
+     ""
+    ],
+    [
+     "Accretion expense",
+     "",
+     "117",
+     "",
+     "",
+     "75",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in production receivable",
+     "",
+     "87",
+     "",
+     "",
+     "105",
+     ""
+    ],
+    [
+     "Decrease (increase) in due from affiliate",
+     "",
+     "7",
+     "",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "Decrease (increase) in other current assets",
+     "",
+     "1",
+     "",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Increase (decrease) in due to operators",
+     "",
+     "113",
+     "",
+     "",
+     "(36)",
+     ""
+    ],
+    [
+     "Increase in accrued expenses",
+     "",
+     "8",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "1,597",
+     "",
+     "",
+     "2,584",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Capital expenditures) credits for oil and gas properties",
+     "",
+     "(90)",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Increase in salvage fund",
+     "",
+     "(200)",
+     "",
+     "",
+     "(207)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(290)",
+     "",
+     "",
+     "(206)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "(731)",
+     "",
+     "",
+     "(2,317)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(731)",
+     "",
+     "",
+     "(2,317)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "576",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "1,558",
+     "",
+     "",
+     "1,497",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "2,134",
+     "",
+     "$",
+     "1,558",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\n1. Organization and Summary of Significant Accounting Policies\nOrganization\nThe Ridgewood Energy Q Fund, LLC (the \u201cFund\u201d), a Delaware limited liability company, was formed on August 16, 2005 and operates pursuant to a limited liability company agreement (the \u201cLLC Agreement\u201d) dated as of September 6, 2005 by and among Ridgewood Energy Corporation (the \u201cManager\u201d) and the shareholders of the Fund, which addresses matters such as the authority and voting rights of the Manager and shareholders, capitalization, transferability of membership interests, participation in costs and revenues, distribution of assets and dissolution and winding up. The Fund was organized to primarily acquire interests in oil and gas properties located in the United States offshore waters of Texas, Louisiana and Alabama in the Gulf of America.\nThe Manager has direct and exclusive control over the management of the Fund\u2019s operations. The Manager performs, or arranges for the performance of, the management, advisory and administrative services required for the Fund\u2019s operations. Such services include, without limitation, the administration of shareholder accounts, shareholder relations, the preparation, review and dissemination of tax and other financial information and the management of the Fund\u2019s investments in projects. In addition, the Manager provides office space, equipment and facilities and other services necessary for the Fund\u2019s operations. The Manager also engages and manages contractual relations with unaffiliated custodians, depositories, accountants, attorneys, corporate fiduciaries, insurers, banks and others as required. See Notes 2 and 3.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of changes in asset retirement obligations",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of year",
+     "$",
+     "1,280",
+     "",
+     "$",
+     "834"
+    ],
+    [
+     "Accretion expense",
+     "",
+     "117",
+     "",
+     "",
+     "75"
+    ],
+    [
+     "Revision of estimates",
+     "",
+     "(117)",
+     "",
+     "",
+     "371"
+    ],
+    [
+     "Balance, end of year",
+     "$",
+     "1,280",
+     "",
+     "$",
+     "1,280"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of changes in asset retirement obligations",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1106
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "."
+    }
+   },
+   "prose_before": "For oil and gas properties, there are obligations to perform removal and remediation activities when the properties are retired. Upon the determination that a property is either proved or dry, a retirement obligation is incurred. The Fund recognizes the fair value of a liability for an asset retirement obligation in the period incurred based on expected future cash outflows required to satisfy the obligation discounted at the Fund\u2019s credit-adjusted risk-free rate. Plug and abandonment costs associated with unsuccessful projects are expensed as dry-hole costs. Annually, or more frequently if an event occurs that would dictate a change in assumptions or estimates underlying the obligations, the Fund reassesses its asset retirement obligations to determine whether any revisions to the obligations are necessary. The Fund maintains a salvage fund to provide for the funding of future asset retirement obligations. The following table presents changes in asset retirement obligations during the years ended December 31, 2025 and 2024:",
+   "prose_after": "Syndication Costs\nSyndication costs are direct costs incurred by the Fund in connection with the offering of the Fund\u2019s shares, including professional fees, selling expenses and administrative costs payable to the Manager, an affiliate of the Manager and unaffiliated broker-dealers, which are reflected on the Fund\u2019s balance sheet as a reduction of shareholders\u2019 capital.\nRevenue Recognition\nOil and gas revenues from contracts with customers are recognized at the point when control of oil and natural gas is transferred to the customers in accordance with Accounting Standard Codification Topic 606, Revenue from Contracts with Customers (\u201cASC 606\u201d). The Fund\u2019s revenue recognition policies, performance obligations and significant judgments in applying ASC 606 are described below.\nOil and Gas Revenue\nGenerally, the Fund sells oil and natural gas under two types of agreements, which are common in the oil and gas industry. Natural gas liquid (\u201cNGL\u201d) sales are included within gas revenues. The Fund\u2019s oil and natural gas generally are sold to its customers at prevailing market prices based on an index in which the prices are published, adjusted for pricing differentials, quality of oil and pipeline allowances.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of segment information",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas revenue",
+     "$",
+     "1,767",
+     "$",
+     "2,824"
+    ],
+    [
+     "Other revenue",
+     "",
+     "258",
+     "",
+     "230"
+    ],
+    [
+     "Total revenue",
+     "",
+     "2,025",
+     "",
+     "3,054"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depletion and amortization",
+     "",
+     "783",
+     "",
+     "1,143"
+    ],
+    [
+     "Lease operating expense",
+     "",
+     "246",
+     "",
+     "232"
+    ],
+    [
+     "Transportation and processing expense",
+     "",
+     "87",
+     "",
+     "118"
+    ],
+    [
+     "Insurance expense",
+     "",
+     "56",
+     "",
+     "49"
+    ],
+    [
+     "Workover expense",
+     "",
+     "103",
+     "",
+     "-"
+    ],
+    [
+     "Other segment items",
+     "",
+     "269",
+     "",
+     "207"
+    ],
+    [
+     "Net income",
+     "$",
+     "481",
+     "$",
+     "1,305"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of segment information",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1239,
+    "end_line": 1261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "The Fund\u2019s operations are managed through a single operating segment. As such, the Fund has only a single reportable segment that derives its revenue from the sale of oil and gas. The Fund is engaged solely in oil and gas activities, all of which are located in the United States offshore waters of the Gulf of America. The Fund\u2019s chief operating decision-maker (\u201cCODM\u201d) is the Executive Vice President, Chief Financial Officer and Assistant Secretary of the Fund, who reviews the Fund\u2019s operating results to make decisions about allocating resources and assessing performance for the Fund. The profit or loss metric used to evaluate segment performance is net income; consistent with net income reported on the statement of operations. The CODM uses net income to evaluate income generated from segment assets (return on assets) in determining distributions to the Manager and shareholders.\nThe accounting policies of the reportable segment are the same as those described in the summary of significant accounting policies in Note 1.\nThe measure of segment assets is reported on the balance sheet as total assets.\nRevenues from one customer represent approximately $1.6 million of the Fund's total revenue.\nThe following table is a summary of segment information for the years ended December 31, 2025 and 2024.",
+   "prose_after": "Other segment items include accretion expense related to the asset retirement obligations established for the Fund\u2019s oil and gas properties, general and administrative expenses representing costs specifically identifiable or allocable to the Fund, such as accounting and professional fees and insurance expenses, net of interest income earned on cash and cash equivalents and salvage fund.\nThe measure of expenditures for segment assets is reported on the statements of cash flows as \u201c(Capital expenditures) credits\u201d for oil and gas properties.\u201d Significant noncash items represent \u201cDepletion and amortization\u201d and \u201cAccretion expense\u201d as reported on the statements of cash flows.\nInformation about Oil and Gas Producing Activities\nSupplementary Financial Information\nInformation about Oil and Gas Producing Activities\n- Unaudited\nIn accordance with the FASB guidance on disclosures of oil and gas producing activities, this section provides supplementary information on oil and gas exploration and producing activities of the Fund. The Fund is engaged solely in oil and gas activities, all of which are located in the United States offshore waters of the Gulf of America.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1265,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of capitalized costs relating to oil and gas producing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved properties",
+     "$",
+     "24,896",
+     "",
+     "$",
+     "24,923",
+     ""
+    ],
+    [
+     "Accumulated depletion and amortization",
+     "",
+     "(23,455)",
+     "",
+     "",
+     "(22,672)",
+     ""
+    ],
+    [
+     "Oil and gas properties, net",
+     "$",
+     "1,441",
+     "",
+     "$",
+     "2,251",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of capitalized costs relating to oil and gas producing activities",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1279,
+    "end_line": 1291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Other segment items include accretion expense related to the asset retirement obligations established for the Fund\u2019s oil and gas properties, general and administrative expenses representing costs specifically identifiable or allocable to the Fund, such as accounting and professional fees and insurance expenses, net of interest income earned on cash and cash equivalents and salvage fund.\nThe measure of expenditures for segment assets is reported on the statements of cash flows as \u201c(Capital expenditures) credits\u201d for oil and gas properties.\u201d Significant noncash items represent \u201cDepletion and amortization\u201d and \u201cAccretion expense\u201d as reported on the statements of cash flows.\nInformation about Oil and Gas Producing Activities\nSupplementary Financial Information\nInformation about Oil and Gas Producing Activities\n- Unaudited\nIn accordance with the FASB guidance on disclosures of oil and gas producing activities, this section provides supplementary information on oil and gas exploration and producing activities of the Fund. The Fund is engaged solely in oil and gas activities, all of which are located in the United States offshore waters of the Gulf of America.\nTable I - Capitalized Costs Relating to Oil and Gas Producing Activities",
+   "prose_after": "Table II - Costs Incurred in Oil and Gas Property Acquisition, Exploration, and Development",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1268,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of costs incurred in oil and gas property acquisition, exploration, and development",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Development costs",
+     "$",
+     "(26)",
+     "",
+     "$",
+     "370"
+    ],
+    [
+     "",
+     "$",
+     "(26)",
+     "",
+     "$",
+     "370"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of costs incurred in oil and gas property acquisition, exploration, and development",
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1294,
+    "end_line": 1306
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Table II - Costs Incurred in Oil and Gas Property Acquisition, Exploration, and Development",
+   "prose_after": "Table III - Reserve Quantity Information\nOil and gas reserves of the Fund have been estimated by independent petroleum engineers, Netherland, Sewell & Associates, Inc. at December 31, 2025 and 2024. These reserve disclosures have been prepared in compliance with the Securities and Exchange Commission rules. Due to inherent uncertainties and the limited nature of recovery data, estimates of reserve information are subject to change as additional information becomes available.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1268,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of reserve quantity information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "United States",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil (MBBL)",
+     "",
+     "",
+     "NGL (MBBL)",
+     "",
+     "",
+     "Gas (MMCF)",
+     "",
+     "",
+     "Total (MBOE) (a)",
+     "",
+     "",
+     "Oil (MBBL)",
+     "",
+     "",
+     "NGL (MBBL)",
+     "",
+     "",
+     "Gas (MMCF)",
+     "",
+     "",
+     "Total (MBOE) (a)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved developed and undeveloped reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "",
+     "100.4",
+     "",
+     "",
+     "10.0",
+     "",
+     "",
+     "59.7",
+     "",
+     "",
+     "120.3",
+     "",
+     "",
+     "117.4",
+     "",
+     "",
+     "13.8",
+     "",
+     "",
+     "68.3",
+     "",
+     "",
+     "142.6",
+     ""
+    ],
+    [
+     "Revisions of previous estimates (b)",
+     "",
+     "17.3",
+     "",
+     "",
+     "4.0",
+     "",
+     "",
+     "10.5",
+     "",
+     "",
+     "23.1",
+     "",
+     "",
+     "18.6",
+     "",
+     "",
+     "0.4",
+     "",
+     "",
+     "17.1",
+     "",
+     "",
+     "21.8",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(25.0)",
+     "",
+     "",
+     "(3.4)",
+     "",
+     "",
+     "(17.0)",
+     "",
+     "",
+     "(31.2)",
+     "",
+     "",
+     "(35.6)",
+     "",
+     "",
+     "(4.2)",
+     "",
+     "",
+     "(25.7)",
+     "",
+     "",
+     "(44.1)",
+     ""
+    ],
+    [
+     "End of year",
+     "",
+     "92.7",
+     "",
+     "",
+     "10.6",
+     "",
+     "",
+     "53.2",
+     "",
+     "",
+     "112.2",
+     "",
+     "",
+     "100.4",
+     "",
+     "",
+     "10.0",
+     "",
+     "",
+     "59.7",
+     "",
+     "",
+     "120.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved developed reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "",
+     "46.4",
+     "",
+     "",
+     "5.6",
+     "",
+     "",
+     "33.3",
+     "",
+     "",
+     "57.5",
+     "",
+     "",
+     "79.3",
+     "",
+     "",
+     "10.0",
+     "",
+     "",
+     "49.3",
+     "",
+     "",
+     "97.5",
+     ""
+    ],
+    [
+     "End of year",
+     "",
+     "38.3",
+     "",
+     "",
+     "5.6",
+     "",
+     "",
+     "28.1",
+     "",
+     "",
+     "48.6",
+     "",
+     "",
+     "46.4",
+     "",
+     "",
+     "5.6",
+     "",
+     "",
+     "33.3",
+     "",
+     "",
+     "57.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved undeveloped reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "",
+     "54.0",
+     "",
+     "",
+     "4.4",
+     "",
+     "",
+     "26.4",
+     "",
+     "",
+     "62.8",
+     "",
+     "",
+     "38.1",
+     "",
+     "",
+     "3.8",
+     "",
+     "",
+     "19.0",
+     "",
+     "",
+     "45.1",
+     ""
+    ],
+    [
+     "End of year",
+     "",
+     "54.4",
+     "",
+     "",
+     "5.0",
+     "",
+     "",
+     "25.1",
+     "",
+     "",
+     "63.6",
+     "",
+     "",
+     "54.0",
+     "",
+     "",
+     "4.4",
+     "",
+     "",
+     "26.4",
+     "",
+     "",
+     "62.8",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of reserve quantity information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1311,
+    "end_line": 1340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Table III - Reserve Quantity Information\nOil and gas reserves of the Fund have been estimated by independent petroleum engineers, Netherland, Sewell & Associates, Inc. at December 31, 2025 and 2024. These reserve disclosures have been prepared in compliance with the Securities and Exchange Commission rules. Due to inherent uncertainties and the limited nature of recovery data, estimates of reserve information are subject to change as additional information becomes available.",
+   "prose_after": "(a) BOE refers to barrel of oil equivalent. Barrel of oil equivalent is based on six MCF of natural gas to one barrel of oil or one barrel of NGL, which reflects an energy content equivalency and not a price or revenue equivalency.\n(b) Revisions of previous estimates were attributable to well performance.\nTable IV - Standardized Measure of Discounted Future Net Cash Flows Relating to Proved Oil and Gas Reserves\nSummarized in the following table is information for the Fund with respect to the standardized measure of discounted future net cash flows relating to proved oil and gas reserves. Future cash inflows were determined based on average first-of-the-month pricing for the prior twelve-month period. Future production and development costs are derived based on current costs assuming continuation of existing economic conditions.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of standardized measure of discounted future net cash flows relating to proved oil and gas reserves",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Future cash inflows",
+     "$",
+     "6,122",
+     "",
+     "$",
+     "7,550",
+     ""
+    ],
+    [
+     "Future production costs",
+     "",
+     "(1,240)",
+     "",
+     "",
+     "(1,259)",
+     ""
+    ],
+    [
+     "Future development costs",
+     "",
+     "(3,751)",
+     "",
+     "",
+     "(3,732)",
+     ""
+    ],
+    [
+     "Future net cash flows",
+     "",
+     "1,131",
+     "",
+     "",
+     "2,559",
+     ""
+    ],
+    [
+     "10% annual discount for estimated timing of cash flows",
+     "",
+     "279",
+     "",
+     "",
+     "108",
+     ""
+    ],
+    [
+     "Standardized measure of discounted future net cash flows",
+     "$",
+     "1,410",
+     "",
+     "$",
+     "2,667",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of standardized measure of discounted future net cash flows relating to proved oil and gas reserves",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1348,
+    "end_line": 1364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "(a) BOE refers to barrel of oil equivalent. Barrel of oil equivalent is based on six MCF of natural gas to one barrel of oil or one barrel of NGL, which reflects an energy content equivalency and not a price or revenue equivalency.\n(b) Revisions of previous estimates were attributable to well performance.\nTable IV - Standardized Measure of Discounted Future Net Cash Flows Relating to Proved Oil and Gas Reserves\nSummarized in the following table is information for the Fund with respect to the standardized measure of discounted future net cash flows relating to proved oil and gas reserves. Future cash inflows were determined based on average first-of-the-month pricing for the prior twelve-month period. Future production and development costs are derived based on current costs assuming continuation of existing economic conditions.",
+   "prose_after": "Table V - Changes in the Standardized Measure for Discounted Cash Flows\nThe changes in present values between years, which can be significant, reflect changes in estimated proved reserve quantities and prices and assumptions used in forecasting production volumes and costs.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of changes in the standardized measure for discounted cash flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in sales and transfer prices and in production costs related to future production",
+     "$",
+     "(1,084)",
+     "",
+     "$",
+     "693",
+     ""
+    ],
+    [
+     "Sales and transfers of oil and gas produced during the period",
+     "",
+     "(1,378)",
+     "",
+     "",
+     "(2,425)",
+     ""
+    ],
+    [
+     "Changes in estimated future development costs",
+     "",
+     "(19)",
+     "",
+     "",
+     "(1,044)",
+     ""
+    ],
+    [
+     "Net change due to revisions in quantities estimates",
+     "",
+     "1,253",
+     "",
+     "",
+     "1,191",
+     ""
+    ],
+    [
+     "Accretion of discount",
+     "",
+     "267",
+     "",
+     "",
+     "402",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "(296)",
+     "",
+     "",
+     "(172)",
+     ""
+    ],
+    [
+     "Aggregate change in the standardized measure of discounted future net cash flows for the year",
+     "$",
+     "(1,257)",
+     "",
+     "$",
+     "(1,355)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of changes in the standardized measure for discounted cash flows",
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1369,
+    "end_line": 1386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Table V - Changes in the Standardized Measure for Discounted Cash Flows\nThe changes in present values between years, which can be significant, reflect changes in estimated proved reserve quantities and prices and assumptions used in forecasting production volumes and costs.",
+   "prose_after": "It is necessary to emphasize that the data presented should not be viewed as representing the expected cash flow from, or current value of, existing proved reserves as the computations are based on a number of estimates. Reserve quantities cannot be measured with precision and their estimation requires many judgmental determinations and frequent revisions. The required projection of production and related expenditures over time requires further estimates with respect to pipeline availability, rates and governmental control. Actual future prices and costs are likely to be substantially different from the current price and cost estimates utilized in the computation of reported amounts. Any analysis or evaluation of the reported amounts should give specific recognition to the computational methods utilized and the limitation inherent therein.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

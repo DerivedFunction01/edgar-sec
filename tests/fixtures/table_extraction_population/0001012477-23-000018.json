@@ -1,0 +1,6035 @@
+{
+ "accession": "0001012477-23-000018",
+ "cik": "0001012477",
+ "form": "10-Q",
+ "filing_date": "2023-08-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "avdl-20230630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Ireland",
+     "98-1341933"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: June 30, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-37977\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nAVADEL PHARMACEUTICALS PLC\n(Exact name of registrant as specified in its charter)\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+   "prose_after": "10 Earlsfort Terrace\nDublin 2 D02 T380\nIreland\n(Address of Principal Executive Office and Zip Code)\n+353-1-901-5201\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Large accelerated filer",
+     "[ ]",
+     "Accelerated filer",
+     "[ ]"
+    ],
+    [
+     "Non-accelerated filer",
+     "[X]",
+     "Smaller reporting company",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "Emerging growth company",
+     "[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page #"
+    ],
+    [
+     "Cautionary Note Regarding Forward Looking Statements",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "32"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "34"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "34"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "34"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "34"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "34"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "34"
+    ]
+   ],
+   "caption_stack": [
+    "Page #"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAt August 4, 2023, 89,367,975 ordinary shares, nominal value $0.01 each, of the Company were outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "NOTE REGARDING TRADEMARKS\nWe own various trademark registrations and applications, and unregistered trademarks, including AVADELTM, LUMRYZTM, MICROPUMPTM, LIQUITIMETM, and MEDUSATM. All other trade names, trademarks and service marks of other companies appearing in this Quarterly Report are the property of their respective holders. Solely for convenience, the trademarks and trade names in this Quarterly Report may be referred to without the \u00ae and \u2122 symbols, but such references should not be construed as any indicator that their respective owners will not assert, to the fullest extent under applicable law, their rights thereto. We do not intend to use or display other companies\u2019 trademarks and trade names to imply a relationship with, or endorsement or sponsorship of us by, any other companies.\nFrom time to time, we may use our website, LinkedIn or our Twitter account (@AvadelPharma) to distribute material information. Our financial and other material information is routinely posted to and accessible on the Investors section of our website, available at www.avadel.com. Investors are encouraged to review the Investors section of our website because we may post material information on that site that is not otherwise disseminated by us. Information that is contained in and can be accessed through our website, our LinkedIn posts or our Twitter posts are not incorporated into, and does not form a part of, this Quarterly Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "1,496",
+     "$",
+     "\u2014",
+     "$",
+     "1,496",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Cost of products sold",
+     "36",
+     "",
+     "\u2014",
+     "",
+     "36",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gross profit",
+     "1,460",
+     "",
+     "\u2014",
+     "",
+     "1,460",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "4,223",
+     "",
+     "4,541",
+     "",
+     "8,053",
+     "",
+     "11,532",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "46,778",
+     "",
+     "21,804",
+     "",
+     "71,246",
+     "",
+     "43,439",
+     ""
+    ],
+    [
+     "Restructuring expense",
+     "\u2014",
+     "",
+     "3,592",
+     "",
+     "\u2014",
+     "",
+     "3,592",
+     ""
+    ],
+    [
+     "Total operating expense",
+     "51,001",
+     "",
+     "29,937",
+     "",
+     "79,299",
+     "",
+     "58,563",
+     ""
+    ],
+    [
+     "Operating loss",
+     "(49,541)",
+     "",
+     "(29,937)",
+     "",
+     "(77,839)",
+     "",
+     "(58,563)",
+     ""
+    ],
+    [
+     "Investment and other income, net",
+     "623",
+     "",
+     "192",
+     "",
+     "816",
+     "",
+     "88",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(2,295)",
+     "",
+     "(3,506)",
+     "",
+     "(5,554)",
+     "",
+     "(5,523)",
+     ""
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "(13,129)",
+     "",
+     "\u2014",
+     "",
+     "(13,129)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(64,342)",
+     "",
+     "(33,251)",
+     "",
+     "(95,706)",
+     "",
+     "(63,998)",
+     ""
+    ],
+    [
+     "Income tax provision (benefit)",
+     "90",
+     "",
+     "30,193",
+     "",
+     "(490)",
+     "",
+     "25,870",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(64,432)",
+     "$",
+     "(63,444)",
+     "$",
+     "(95,216)",
+     "$",
+     "(89,868)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 basic",
+     "$",
+     "(0.83)",
+     "$",
+     "(1.07)",
+     "$",
+     "(1.35)",
+     "$",
+     "(1.52)"
+    ],
+    [
+     "Net loss per share \u2013 diluted",
+     "(0.83)",
+     "",
+     "(1.07)",
+     "",
+     "(1.35)",
+     "",
+     "(1.52)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding - basic",
+     "77,246",
+     "",
+     "59,037",
+     "",
+     "70,603",
+     "",
+     "58,931",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding - diluted",
+     "77,246",
+     "",
+     "59,037",
+     "",
+     "70,603",
+     "",
+     "58,931",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "These forward-looking statements are neither promises nor guarantees of future performance due to a variety of risks and uncertainties and other factors more fully discussed in the \u201cRisk Factors\u201d section in Part I, Item 1A of the Annual Report on Form 10-K filed with the U.S. Securities and Exchange Commission (\u201cSEC\u201d) on March 29, 2023 and the risk factors and cautionary statements described in our subsequent filings with the SEC. Given these uncertainties, readers should not place undue reliance on our forward-looking statements. These forward-looking statements speak only as of the date on which the statements were made and are not guarantees of future performance. Except as required by law, we assume no obligation to update these forward-looking statements publicly, or to revise any forward-looking statements to reflect events or developments occurring after the date of this Quarterly Report, even if new information becomes available in the future.\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF LOSS\n(In thousands, except per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 165,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 203,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(64,432)",
+     "$",
+     "(63,444)",
+     "$",
+     "(95,216)",
+     "$",
+     "(89,868)"
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation income (loss)",
+     "8",
+     "",
+     "(657)",
+     "",
+     "183",
+     "",
+     "(842)",
+     ""
+    ],
+    [
+     "Net other comprehensive income (loss), net of income tax expense of $0, $330, $0 and $0, respectively",
+     "75",
+     "",
+     "(629)",
+     "",
+     "216",
+     "",
+     "(1,546)",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss), net of tax",
+     "83",
+     "",
+     "(1,286)",
+     "",
+     "399",
+     "",
+     "(2,388)",
+     ""
+    ],
+    [
+     "Total comprehensive loss",
+     "$",
+     "(64,349)",
+     "$",
+     "(64,730)",
+     "$",
+     "(94,817)",
+     "$",
+     "(92,256)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 211,
+    "end_line": 227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 228,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "49,985",
+     "$",
+     "73,981"
+    ],
+    [
+     "Marketable securities",
+     "110,525",
+     "",
+     "22,518",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "1,775",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Inventories",
+     "1,439",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Research and development tax credit receivable",
+     "974",
+     "",
+     "2,248",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "6,532",
+     "",
+     "2,096",
+     ""
+    ],
+    [
+     "Total current assets",
+     "171,230",
+     "",
+     "100,843",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "715",
+     "",
+     "839",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "1,235",
+     "",
+     "1,713",
+     ""
+    ],
+    [
+     "Goodwill",
+     "16,836",
+     "",
+     "16,836",
+     ""
+    ],
+    [
+     "Research and development tax credit receivable",
+     "420",
+     "",
+     "1,232",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "10,540",
+     "",
+     "11,322",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "200,976",
+     "$",
+     "132,785"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "$",
+     "20,851",
+     "$",
+     "37,668"
+    ],
+    [
+     "Current portion of operating lease liability",
+     "783",
+     "",
+     "960",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "11,786",
+     "",
+     "7,890",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "17,582",
+     "",
+     "7,334",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "500",
+     "",
+     "1,941",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "51,502",
+     "",
+     "55,793",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "\u2014",
+     "",
+     "91,614",
+     ""
+    ],
+    [
+     "Long-term operating lease liability",
+     "490",
+     "",
+     "780",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "5,792",
+     "",
+     "5,743",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "57,784",
+     "",
+     "153,930",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity (deficit):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred shares, nominal value of $0.01 per share; 50,000 shares authorized; 5,194 issued and outstanding at June 30, 2023 and 488 issued and outstanding at December 31, 2022",
+     "52",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Ordinary shares, nominal value of $0.01 per share; 500,000 shares authorized; 89,321 issued and outstanding at June 30, 2023 and 62,878 issued and outstanding at December 31, 2022",
+     "893",
+     "",
+     "628",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "848,626",
+     "",
+     "589,783",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(680,436)",
+     "",
+     "(585,220)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(25,943)",
+     "",
+     "(26,341)",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity (deficit)",
+     "143,192",
+     "",
+     "(21,145)",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity (deficit)",
+     "$",
+     "200,976",
+     "$",
+     "132,785"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 236,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 230,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 293,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Ordinary shares",
+     "",
+     "",
+     "Preferred shares",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "Accumulated other comprehensive",
+     "",
+     "Total shareholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "paid-in capital",
+     "",
+     "deficit",
+     "",
+     "loss",
+     "",
+     "equity (deficit)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "62,878",
+     "$",
+     "628",
+     "488",
+     "$",
+     "5",
+     "$",
+     "589,783",
+     "$",
+     "(585,220)",
+     "$",
+     "(26,341)",
+     "$",
+     "(21,145)"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(30,784)",
+     "",
+     "\u2014",
+     "",
+     "(30,784)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "315",
+     "",
+     "315",
+     ""
+    ],
+    [
+     "Issuance of common stock under at-the-market offering program, net of issuance costs",
+     "1,564",
+     "16",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "11,897",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,913",
+     ""
+    ],
+    [
+     "Amortization of deferred issuance costs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(16)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "Vesting of restricted shares",
+     "22",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Employee share purchase plan share issuance",
+     "14",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "29",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,522",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,522",
+     ""
+    ],
+    [
+     "Balance, March 31, 2023",
+     "64,478",
+     "$",
+     "644",
+     "488",
+     "$",
+     "5",
+     "$",
+     "603,215",
+     "$",
+     "(616,004)",
+     "$",
+     "(26,026)",
+     "$",
+     "(38,166)"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(64,432)",
+     "",
+     "\u2014",
+     "",
+     "(64,432)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "83",
+     "",
+     "83",
+     ""
+    ],
+    [
+     "April 2023 public offering, net of issuance costs",
+     "12,205",
+     "122",
+     "",
+     "4,706",
+     "47",
+     "",
+     "133,982",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "134,151",
+     ""
+    ],
+    [
+     "Mandatory Exchange of April 2027 Notes, net of issuance costs",
+     "12,347",
+     "123",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "102,039",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "102,162",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "291",
+     "4",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,746",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,750",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "7,644",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,644",
+     ""
+    ],
+    [
+     "Balance, June 30, 2023",
+     "89,321",
+     "$",
+     "893",
+     "5,194",
+     "$",
+     "52",
+     "$",
+     "848,626",
+     "$",
+     "(680,436)",
+     "$",
+     "(25,943)",
+     "$",
+     "143,192"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 301,
+    "end_line": 329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 330,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Ordinary shares",
+     "",
+     "",
+     "Preferred shares",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "Accumulated other comprehensive",
+     "",
+     "Total shareholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "paid-in capital",
+     "",
+     "deficit",
+     "",
+     "loss",
+     "",
+     "equity (deficit)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "58,620",
+     "$",
+     "586",
+     "488",
+     "$",
+     "5",
+     "$",
+     "549,349",
+     "$",
+     "(447,756)",
+     "$",
+     "(23,940)",
+     "$",
+     "78,244"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(26,424)",
+     "",
+     "\u2014",
+     "",
+     "(26,424)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,102)",
+     "",
+     "(1,102)",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "275",
+     "3",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,903",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,906",
+     ""
+    ],
+    [
+     "Vesting of restricted shares",
+     "119",
+     "1",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Employee share purchase plan share issuance",
+     "18",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "103",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "103",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,505",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,505",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "59,032",
+     "$",
+     "590",
+     "488",
+     "$",
+     "5",
+     "$",
+     "553,859",
+     "$",
+     "(474,180)",
+     "$",
+     "(25,042)",
+     "$",
+     "55,232"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(63,444)",
+     "",
+     "\u2014",
+     "",
+     "(63,444)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,286)",
+     "",
+     "(1,286)",
+     ""
+    ],
+    [
+     "Vesting of restricted shares",
+     "6",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of October 2023 Notes conversion feature",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "5,508",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,508",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "658",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "658",
+     ""
+    ],
+    [
+     "Balance, June 30, 2022",
+     "59,038",
+     "$",
+     "590",
+     "488",
+     "$",
+     "5",
+     "$",
+     "560,025",
+     "$",
+     "(537,624)",
+     "$",
+     "(26,328)",
+     "$",
+     "(3,332)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 336,
+    "end_line": 361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 334,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 362,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(95,216)",
+     "$",
+     "(89,868)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "1,189",
+     "",
+     "506",
+     ""
+    ],
+    [
+     "Amortization of debt discount and debt issuance costs",
+     "2,460",
+     "",
+     "2,229",
+     ""
+    ],
+    [
+     "Changes in deferred taxes",
+     "\u2014",
+     "",
+     "25,870",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "9,166",
+     "",
+     "3,163",
+     ""
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "13,129",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other adjustments",
+     "42",
+     "",
+     "1,206",
+     ""
+    ],
+    [
+     "Net changes in assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(1,775)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Inventories",
+     "(1,439)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "(4,400)",
+     "",
+     "13,305",
+     ""
+    ],
+    [
+     "Research and development tax credit receivable",
+     "2,127",
+     "",
+     "30",
+     ""
+    ],
+    [
+     "Accounts payable & other current liabilities",
+     "2,470",
+     "",
+     "(4,457)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "10,246",
+     "",
+     "2,559",
+     ""
+    ],
+    [
+     "Other assets and liabilities",
+     "(255)",
+     "",
+     "(2,678)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(62,256)",
+     "",
+     "(48,135)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of marketable securities",
+     "25,618",
+     "",
+     "56,501",
+     ""
+    ],
+    [
+     "Purchases of marketable securities",
+     "(113,460)",
+     "",
+     "(2,202)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "(87,842)",
+     "",
+     "54,299",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from April 2023 public offering, net of issuance costs",
+     "134,151",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments for February 2023 Notes",
+     "(17,500)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments for debt issuance costs",
+     "(4,357)",
+     "",
+     "(4,803)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of shares off the at-the-market offering program",
+     "11,913",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from stock option exercises and employee share purchase plan",
+     "1,779",
+     "",
+     "2,009",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "125,986",
+     "",
+     "(2,794)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign currency exchange rate changes on cash and cash equivalents",
+     "116",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "(23,996)",
+     "",
+     "3,420",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at January 1,",
+     "73,981",
+     "",
+     "50,708",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at June 30,",
+     "$",
+     "49,985",
+     "$",
+     "54,128"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "4,520",
+     "$",
+     "6,455"
+    ],
+    [
+     "  Income taxes refund",
+     "$",
+     "\u2014",
+     "$",
+     "(14,096)"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 368,
+    "end_line": 424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO THE UNAUDITED CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n(In thousands, except per share data)\nNOTE 1: Summary of Significant Accounting Policies\nNature of Operations. Avadel Pharmaceuticals plc (Nasdaq: AVDL) (\u201cAvadel,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cour,\u201d or \u201cus\u201d) is a biopharmaceutical company. The Company is registered as an Irish public limited company. The Company\u2019s headquarters are in Dublin, Ireland with operations in Dublin, Ireland and St. Louis, Missouri, United States (\u201cU.S.\u201d).\nLUMRYZ, formally known as FT218, is an extended-release formulation of sodium oxybate indicated to be taken once at bedtime for the treatment of cataplexy or excessive daytime sleepiness (\u201cEDS\u201d) in adults with narcolepsy. LUMRYZ was approved by the U.S. Food and Drug Administration (\u201cFDA\u201d) on May 1, 2023. The FDA also granted Orphan Drug Exclusivity (\u201cODE\u201d) to LUMRYZ for a period of seven years until May 1, 2030. In June 2023, the Company commercially launched LUMRYZ in the U.S.\nIn approving LUMRYZ, the FDA approved a risk evaluation and mitigation strategy (\u201cREMS\u201d) for LUMRYZ to help ensure that the benefits of the drug in the treatment of cataplexy and EDS in narcolepsy outweigh the risks of serious adverse outcomes resulting from inappropriate prescribing, misuse, abuse, and diversion of the drug. Under this REMS, healthcare providers, pharmacies, practitioners, or health care settings that dispense the drug must be specially certified and the drug must be dispensed to patients with documentation of safe use conditions.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 366,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 425,
+     "token": "REPEATING_FOOTER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three and Six Months Ended June 30,",
+     ""
+    ],
+    [
+     "Sales by Customer:",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accredo",
+     "39",
+     "%"
+    ],
+    [
+     "Caremark",
+     "42",
+     "%"
+    ],
+    [
+     "Optum",
+     "19",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three and Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "The Company capitalizes inventory costs associated with products when future commercialization is considered probable and the future economic benefit is expected to be realized, which is typically when regulatory approval is obtained for a drug candidate. As such, the Company began capitalizing costs related to inventory in May 2023 upon FDA approval of LUMRYZ. Manufacturing costs associated with inventory purchased or produced prior to FDA approval were recorded as research and development expense in prior periods. Accordingly, cost of products sold in the near term will likely be lower than in later periods given the sales of pre-approval inventory will carry little to no manufacturing costs given such costs were previously expensed to research and development expense.\nThe unaudited condensed consolidated financial statements include the accounts of the Company and subsidiaries and reflect all adjustments (consisting only of normal recurring adjustments) that are, in the opinion of management, necessary for a fair presentation of the Company\u2019s financial position, results of operations and cash flows for the dates and periods presented. All intercompany accounts and transactions have been eliminated. Results for interim periods are not necessarily indicative of the results to be expected during the remainder of the current year or for any future period.\nNOTE 2: Revenue Recognition\nThe Company\u2019s source of net product revenue during the three and six months ended June 30, 2023 consists solely of sales of LUMRYZ.\nFor the three and six months ended June 30, 2023, three customers accounted for 100% of sales. The following table presents a summary of the percentage of total sales to customers:",
+   "prose_after": "The Company had no net product revenue during the three and six months ended June 30, 2022.\nNOTE 3: Fair Value Measurement\nThe Company is required to measure certain assets and liabilities at fair value, either upon initial recognition or for subsequent accounting or reporting. For example, the Company uses fair value extensively when accounting for and reporting certain financial instruments, when measuring certain contingent consideration liabilities and in the initial recognition of net assets acquired in a business combination. Fair value is estimated by applying the hierarchy described below, which prioritizes the inputs used to measure fair value into three levels and bases the categorization within the hierarchy upon the lowest level of input that is available and significant to the fair value measurement.\nASC 820, Fair Value Measurements and Disclosures, defines fair value as a market-based measurement that should be determined based on the assumptions that marketplace participants would use in pricing an asset or liability. When estimating fair value, depending on the nature and complexity of the asset or liability, the Company may generally use one or each of the following techniques:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As of December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value Measurements:",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities (see Note 4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mutual and money market funds",
+     "$",
+     "17,408",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "22,518",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Government securities - U.S.",
+     "93,117",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "110,525",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "22,518",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 525,
+    "end_line": 538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Measurement"
+    }
+   },
+   "prose_before": "\u2022Market approach, which is based on market prices and other information from market transactions involving identical or comparable assets or liabilities.\nAs a basis for considering the assumptions used in these techniques, the standard establishes a three-tier fair value hierarchy which prioritizes the inputs used in measuring fair value as follows:\n\u2022Level 1 - Quoted prices for identical assets or liabilities in active markets.\n\u2022Level 2 - Quoted prices for similar assets or liabilities in active markets, or quoted prices for identical or similar assets or liabilities in markets that are not active, or inputs other than quoted prices that are directly or indirectly observable, or inputs that are derived principally from, or corroborated by, observable market data by correlation or other means.\n\u2022Level 3 - Unobservable inputs that reflect estimates and assumptions.\nThe following table summarizes the financial instruments measured at fair value on a recurring basis classified in the fair value hierarchy (Level 1, 2 or 3) based on the inputs used for valuation in the accompanying unaudited condensed consolidated balance sheets:",
+   "prose_after": "A review of fair value hierarchy classifications is conducted on a quarterly basis. Changes in the observability of valuation inputs may result in a reclassification for certain financial assets or liabilities. During the periods ended June 30, 2023 and December 31, 2022, respectively, there were no transfers in and out of Level 3. During the three and six months ended June 30, 2023 and 2022, respectively, the Company did not recognize any allowances for credit losses.\nSome of the Company\u2019s financial instruments, such as cash and cash equivalents, accounts receivable and accounts payable, are reflected in the balance sheet at carrying value, which approximates fair value due to their short-term nature.\nDebt\nThe Company estimates the fair value of its $21,187 aggregate principal amount of its October 2023 Notes based on interest rates that would be currently available to the Company for issuance of similar types of debt instruments with similar terms and remaining maturities or recent trading prices obtained from brokers (a Level 2 input). The estimated fair value of the October 2023 Notes at June 30, 2023 is $31,622. See Note 6: Long-Term Debt for additional information regarding the Company\u2019s debt obligations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "fair_value",
+    "aligned_family": "fair_value",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable Securities:",
+     "Adjusted Cost",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mutual and money market funds",
+     "$",
+     "19,513",
+     "$",
+     "\u2014",
+     "$",
+     "(2,105)",
+     "$",
+     "17,408"
+    ],
+    [
+     "Government securities - U.S.",
+     "92,685",
+     "",
+     "432",
+     "",
+     "\u2014",
+     "",
+     "93,117",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "112,198",
+     "$",
+     "432",
+     "$",
+     "(2,105)",
+     "$",
+     "110,525"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 554,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Marketable Securities"
+    }
+   },
+   "prose_before": "The Company estimates the fair value of its $21,187 aggregate principal amount of its October 2023 Notes based on interest rates that would be currently available to the Company for issuance of similar types of debt instruments with similar terms and remaining maturities or recent trading prices obtained from brokers (a Level 2 input). The estimated fair value of the October 2023 Notes at June 30, 2023 is $31,622. See Note 6: Long-Term Debt for additional information regarding the Company\u2019s debt obligations.\nNOTE 4: Marketable Securities\nThe Company has investments in available-for-sale debt securities which are recorded at fair market value. The change in the fair value of available-for-sale debt investments is recorded as accumulated other comprehensive loss in shareholders\u2019 equity (deficit), net of income tax effects. As of June 30, 2023, the Company considered any decreases in fair value on its marketable securities to be driven by factors other than credit risk, including market risk.\nThe following tables show the Company\u2019s available-for-sale securities\u2019 adjusted cost, gross unrealized gains, gross unrealized losses and fair value by significant investment category as of June 30, 2023 and December 31, 2022, respectively:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable Securities:",
+     "Adjusted Cost",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mutual and money market funds",
+     "$",
+     "24,407",
+     "$",
+     "\u2014",
+     "$",
+     "(1,889)",
+     "$",
+     "22,518"
+    ],
+    [
+     "Total",
+     "$",
+     "24,407",
+     "$",
+     "\u2014",
+     "$",
+     "(1,889)",
+     "$",
+     "22,518"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Marketable Securities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company determines realized gains or losses on the sale of marketable securities on a specific identification method. The Company reflects these gains and losses as a component of investment and other income, net in the accompanying unaudited condensed consolidated statements of loss.\nThe Company recognized immaterial gross realized gains and losses for the three and six months ended June 30, 2023 and for the three months ended June 30, 2022. The Company recognized gross realized gains of $308 for the six months ended June 30, 2022 which were offset by realized losses of $1,031 for the six months ended June 30, 2022.\nThe following table summarizes the estimated fair value of the Company\u2019s investments in marketable debt securities, accounted for as available-for-sale debt securities and classified by the contractual maturity date of the securities as of June 30, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Maturities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable Debt Securities:",
+     "Less than 1 Year",
+     "",
+     "1-5 Years",
+     "",
+     "5-10 Years",
+     "",
+     "Greater than 10 Years",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Government securities - U.S.",
+     "$",
+     "93,117",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "93,117"
+    ],
+    [
+     "Total",
+     "$",
+     "93,117",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "93,117"
+    ]
+   ],
+   "caption_stack": [
+    "Maturities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Marketable Securities"
+    }
+   },
+   "prose_before": "The Company determines realized gains or losses on the sale of marketable securities on a specific identification method. The Company reflects these gains and losses as a component of investment and other income, net in the accompanying unaudited condensed consolidated statements of loss.\nThe Company recognized immaterial gross realized gains and losses for the three and six months ended June 30, 2023 and for the three months ended June 30, 2022. The Company recognized gross realized gains of $308 for the six months ended June 30, 2022 which were offset by realized losses of $1,031 for the six months ended June 30, 2022.\nThe following table summarizes the estimated fair value of the Company\u2019s investments in marketable debt securities, accounted for as available-for-sale debt securities and classified by the contractual maturity date of the securities as of June 30, 2023:",
+   "prose_after": "The Company has classified its investment in available-for-sale marketable debt securities as current assets in the consolidated balance sheets as the securities need to be available for use, if required, to fund current operations. There are no restrictions on the sale of any securities in the Company\u2019s investment portfolio.\nThe Company does not intend to sell the investments and it is not more likely than not that it will be required to sell the investments before recovery of their amortized cost bases.\nNOTE 5: Inventories\nThe principal categories of inventories at June 30, 2023 is comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Inventory:",
+     "June 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials and supplies",
+     "$",
+     "50"
+    ],
+    [
+     "Work in process",
+     "799",
+     ""
+    ],
+    [
+     "Finished goods",
+     "590",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,439"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 620
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "The Company has classified its investment in available-for-sale marketable debt securities as current assets in the consolidated balance sheets as the securities need to be available for use, if required, to fund current operations. There are no restrictions on the sale of any securities in the Company\u2019s investment portfolio.\nThe Company does not intend to sell the investments and it is not more likely than not that it will be required to sell the investments before recovery of their amortized cost bases.\nNOTE 5: Inventories\nThe principal categories of inventories at June 30, 2023 is comprised of the following:",
+   "prose_after": "The Company had no capitalized inventories at December 31, 2022. The Company capitalizes inventory costs associated with products when future commercialization is considered probable and the future economic benefit is expected to be realized, which is typically when regulatory approval is obtained for a drug candidate. As such, the Company began capitalizing costs related to inventory in May 2023 upon FDA approval of LUMRYZ. Manufacturing costs associated with inventory purchased or produced prior to FDA approval were recorded as research and development expense in prior periods.\nNOTE 6: Long-Term Debt\nLong-term debt is summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Principal amount of 4.50% exchangeable senior notes due October 2023",
+     "$",
+     "21,187",
+     "$",
+     "117,375"
+    ],
+    [
+     "Principal amount of 4.50% exchangeable senior notes due February 2023",
+     "\u2014",
+     "",
+     "17,500",
+     ""
+    ],
+    [
+     "Less: unamortized debt discount and issuance costs, net",
+     "(336)",
+     "",
+     "(5,593)",
+     ""
+    ],
+    [
+     "Net carrying amount of debt",
+     "20,851",
+     "",
+     "129,282",
+     ""
+    ],
+    [
+     "Less: current maturities, net of $336 and $1,019 unamortized debt discount and issuance costs, respectively",
+     "(20,851)",
+     "",
+     "(37,668)",
+     ""
+    ],
+    [
+     "  Long-term debt",
+     "$",
+     "\u2014",
+     "$",
+     "91,614"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "The Company had no capitalized inventories at December 31, 2022. The Company capitalizes inventory costs associated with products when future commercialization is considered probable and the future economic benefit is expected to be realized, which is typically when regulatory approval is obtained for a drug candidate. As such, the Company began capitalizing costs related to inventory in May 2023 upon FDA approval of LUMRYZ. Manufacturing costs associated with inventory purchased or produced prior to FDA approval were recorded as research and development expense in prior periods.\nNOTE 6: Long-Term Debt\nLong-term debt is summarized as follows:",
+   "prose_after": "For the three months ended June 30, 2023 and 2022, the total interest expense was $2,295 and $3,506, respectively, with coupon interest expense of $1,708 and $1,589 for each period, respectively, and the amortization of debt issuance costs and debt discount, totaling $587 and $1,917 for each period, respectively.\nFor the six months ended June 30, 2023 and 2022, the total interest expense was $5,554 and $5,523, respectively, with coupon interest expense of $3,094 and $3,206 for each period, respectively, and the amortization of debt issuance costs and debt discount of $2,460 and $2,229 for each period, respectively.\nFebruary 2023 Notes\nOn February 16, 2018, the Issuer issued $125,000 aggregate principal amount of its 4.50% exchangeable senior notes due February 2023 (the \u201cFebruary 2023 Notes\u201d) in a private placement (the \u201cOffering\u201d) to qualified institutional buyers pursuant to Rule 144A under the Securities Act. In connection with the Offering, the Issuer granted the initial purchasers of the February 2023 Notes a 30-day option to purchase up to an additional $18,750 aggregate principal amount of the February 2023 Notes, which was fully exercised on February 16, 2018. Net proceeds received by the Company, after issuance costs and discounts, were approximately $137,560. The February 2023 Notes were the Company\u2019s senior unsecured obligations and ranked equally in right of payment with all of the Company\u2019s existing and future senior unsecured indebtedness and effectively junior to any of the Company\u2019s existing and future secured indebtedness, to the extent of the value of the assets securing such indebtedness.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Prepaid Expenses and Other Current Assets:",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid and other expenses",
+     "$",
+     "5,716",
+     "$",
+     "1,523"
+    ],
+    [
+     "Other",
+     "747",
+     "",
+     "504",
+     ""
+    ],
+    [
+     "Income tax receivable",
+     "69",
+     "",
+     "69",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,532",
+     "$",
+     "2,096"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets and Liabilities"
+    }
+   },
+   "prose_before": "the effective income tax rate for the six months ended June 30, 2023, as compared to the prior period in 2022, is primarily driven by the valuation allowances recorded against net deferred tax assets established in the second quarter of 2022.\nThe Company's cumulative loss position was significant negative evidence in assessing the need for a valuation allowance on its deferred tax assets. Given the weight of objectively verifiable historical losses from operations, the Company recorded a full valuation allowance on its deferred tax assets. The Company will be able to reverse the valuation allowance when it has shown its ability to generate taxable income on a consistent basis in future periods. The valuation allowance does not have an impact on the Company's ability to utilize any net operating losses or other tax attributes to offset cash taxes payable as these items are still eligible to be used.\nNOTE 8: Other Assets and Liabilities\nVarious other assets and liabilities are summarized as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Other Non-Current Assets:",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use assets at contract manufacturing organizations, net",
+     "$",
+     "10,098",
+     "$",
+     "10,686"
+    ],
+    [
+     "Other",
+     "442",
+     "",
+     "636",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "10,540",
+     "$",
+     "11,322"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets and Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Accrued Expenses",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued professional fees",
+     "$",
+     "12,662",
+     "$",
+     "4,040"
+    ],
+    [
+     "Accrued compensation",
+     "4,405",
+     "",
+     "1,613",
+     ""
+    ],
+    [
+     "Reserves for variable consideration",
+     "280",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued outsource contract costs",
+     "182",
+     "",
+     "1,208",
+     ""
+    ],
+    [
+     "Accrued restructuring",
+     "53",
+     "",
+     "473",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "17,582",
+     "$",
+     "7,334"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets and Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Other Current Liabilities:",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "$",
+     "275",
+     "$",
+     "292"
+    ],
+    [
+     "Accrued interest",
+     "225",
+     "",
+     "1,649",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "500",
+     "$",
+     "1,941"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets and Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Other Non-Current Liabilities:",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax liabilities",
+     "$",
+     "5,420",
+     "$",
+     "5,246"
+    ],
+    [
+     "Other",
+     "372",
+     "",
+     "497",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "5,792",
+     "$",
+     "5,743"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 740,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets and Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 9: Net Loss Per Share\nBasic net loss per share is calculated by dividing net loss by the weighted average number of shares outstanding during each period. Diluted net loss per share is calculated by dividing net loss - diluted by the diluted number of shares outstanding during each period. Except where the result would be anti-dilutive to net loss, diluted net loss per share would be calculated assuming the impact of the conversion of the 2023 Notes, the conversion of the Company\u2019s preferred shares, the exercise of outstanding equity compensation awards, and ordinary shares expected to be issued under the Company\u2019s Employee Share Purchase Plan (\u201cESPP\u201d).\nThe Company has a choice to settle the conversion obligations under the 2023 Notes in cash, shares or any combination of the two. The Company utilizes the if-converted method to reflect the impact of the conversion of the 2023 Notes, unless the result is anti-dilutive. This method assumes the conversion of the 2023 Notes into shares of the Company\u2019s ordinary shares and reflects the elimination of the interest expense related to the 2023 Notes.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Per Share:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(64,432)",
+     "$",
+     "(63,444)",
+     "$",
+     "(95,216)",
+     "$",
+     "(89,868)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic shares",
+     "77,246",
+     "",
+     "59,037",
+     "",
+     "70,603",
+     "",
+     "58,931",
+     ""
+    ],
+    [
+     "Effect of dilutive securities\u2014employee and director equity awards outstanding, preferred shares and 2023 Notes",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Diluted shares",
+     "77,246",
+     "",
+     "59,037",
+     "",
+     "70,603",
+     "",
+     "58,931",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic",
+     "$",
+     "(0.83)",
+     "$",
+     "(1.07)",
+     "$",
+     "(1.35)",
+     "$",
+     "(1.52)"
+    ],
+    [
+     "Net loss per share - diluted",
+     "$",
+     "(0.83)",
+     "$",
+     "(1.07)",
+     "$",
+     "(1.35)",
+     "$",
+     "(1.52)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Net Loss Per Share"
+    }
+   },
+   "prose_before": "Basic net loss per share is calculated by dividing net loss by the weighted average number of shares outstanding during each period. Diluted net loss per share is calculated by dividing net loss - diluted by the diluted number of shares outstanding during each period. Except where the result would be anti-dilutive to net loss, diluted net loss per share would be calculated assuming the impact of the conversion of the 2023 Notes, the conversion of the Company\u2019s preferred shares, the exercise of outstanding equity compensation awards, and ordinary shares expected to be issued under the Company\u2019s Employee Share Purchase Plan (\u201cESPP\u201d).\nThe Company has a choice to settle the conversion obligations under the 2023 Notes in cash, shares or any combination of the two. The Company utilizes the if-converted method to reflect the impact of the conversion of the 2023 Notes, unless the result is anti-dilutive. This method assumes the conversion of the 2023 Notes into shares of the Company\u2019s ordinary shares and reflects the elimination of the interest expense related to the 2023 Notes.\nThe dilutive effect of the stock options, restricted stock units, preferred shares and ordinary shares expected to be issued under the Company\u2019s ESPP has been calculated using the treasury stock method.\nA reconciliation of basic and diluted net loss per share, together with the related shares outstanding, in thousands, is as follows:",
+   "prose_after": "Potential ordinary shares of 2,212 and 22,455 were excluded from the calculation of weighted average shares for the three months ended June 30, 2023 and 2022, respectively, and potential ordinary shares of 6,813 and 19,042 were excluded from the calculation of weighted average shares for the six months ended June 30, 2023 and 2022 because their effect was considered to be anti-dilutive. For the three and six months ended June 30, 2023 and 2022, the effects of dilutive securities were entirely excluded from the calculation of net loss per share as a net loss was reported in these periods.\nNOTE 10: Comprehensive Loss\nThe following table shows the components of accumulated other comprehensive loss for the three and six months ended June 30, 2023 and 2022, respectively, net of tax effects:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "eps_reconciliation",
+    "aligned_family": "eps_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated Other Comprehensive Loss:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(24,277)",
+     "$",
+     "(24,040)",
+     "$",
+     "(24,452)",
+     "$",
+     "(23,855)"
+    ],
+    [
+     "Net other comprehensive income (loss)",
+     "8",
+     "",
+     "(657)",
+     "",
+     "183",
+     "",
+     "(842)",
+     ""
+    ],
+    [
+     "Balance at June 30,",
+     "$",
+     "(24,269)",
+     "$",
+     "(24,697)",
+     "$",
+     "(24,269)",
+     "$",
+     "(24,697)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized loss on marketable debt securities, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(1,749)",
+     "$",
+     "(1,002)",
+     "$",
+     "(1,890)",
+     "$",
+     "(85)"
+    ],
+    [
+     "Net other comprehensive income (loss), net of income tax expense of $0, $330, $0 and $0, respectively",
+     "75",
+     "",
+     "(629)",
+     "",
+     "216",
+     "",
+     "(1,546)",
+     ""
+    ],
+    [
+     "Balance at June 30,",
+     "$",
+     "(1,674)",
+     "$",
+     "(1,631)",
+     "$",
+     "(1,674)",
+     "$",
+     "(1,631)"
+    ],
+    [
+     "Accumulated other comprehensive loss at June 30,",
+     "$",
+     "(25,943)",
+     "$",
+     "(26,328)",
+     "$",
+     "(25,943)",
+     "$",
+     "(26,328)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 788,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Comprehensive Loss"
+    }
+   },
+   "prose_before": "Potential ordinary shares of 2,212 and 22,455 were excluded from the calculation of weighted average shares for the three months ended June 30, 2023 and 2022, respectively, and potential ordinary shares of 6,813 and 19,042 were excluded from the calculation of weighted average shares for the six months ended June 30, 2023 and 2022 because their effect was considered to be anti-dilutive. For the three and six months ended June 30, 2023 and 2022, the effects of dilutive securities were entirely excluded from the calculation of net loss per share as a net loss was reported in these periods.\nNOTE 10: Comprehensive Loss\nThe following table shows the components of accumulated other comprehensive loss for the three and six months ended June 30, 2023 and 2022, respectively, net of tax effects:",
+   "prose_after": "The effect on the Company\u2019s unaudited condensed consolidated financial statements of amounts reclassified out of accumulated other comprehensive loss was immaterial for all periods presented.\nNOTE 11: Commitments and Contingencies\nLitigation\nThe Company is subject to potential liabilities generally incidental to its business arising out of present and future lawsuits and claims related to product liability, personal injury, contract, commercial, intellectual property, tax, employment, compliance and other matters that arise in the ordinary course of business. The Company accrues for potential liabilities when it is probable that future costs (including legal fees and expenses) will be incurred and such costs can be reasonably estimated. At June 30, 2023 and December 31, 2022, there were no contingent liabilities with respect to any litigation, arbitration or administrative or other proceeding that are reasonably likely to have a material adverse effect on the Company\u2019s consolidated financial position, results of operations, cash flows or liquidity.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comparative Statements of Loss",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "1,496",
+     "$",
+     "\u2014",
+     "$",
+     "1,496",
+     "n/a",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "36",
+     "",
+     "\u2014",
+     "",
+     "36",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Gross profit",
+     "1,460",
+     "",
+     "\u2014",
+     "",
+     "1,460",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "4,223",
+     "",
+     "4,541",
+     "",
+     "(318)",
+     "",
+     "(7.0)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "46,778",
+     "",
+     "21,804",
+     "",
+     "24,974",
+     "",
+     "114.5",
+     "%"
+    ],
+    [
+     "Restructuring expense",
+     "\u2014",
+     "",
+     "3,592",
+     "",
+     "(3,592)",
+     "",
+     "(100.0)",
+     "%"
+    ],
+    [
+     "Total operating expense",
+     "51,001",
+     "",
+     "29,937",
+     "",
+     "21,064",
+     "",
+     "70.4",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "(49,541)",
+     "",
+     "(29,937)",
+     "",
+     "(19,604)",
+     "",
+     "(65.5)",
+     "%"
+    ],
+    [
+     "Investment and other income, net",
+     "623",
+     "",
+     "192",
+     "",
+     "431",
+     "",
+     "224.5",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(2,295)",
+     "",
+     "(3,506)",
+     "",
+     "1,211",
+     "",
+     "34.5",
+     "%"
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "(13,129)",
+     "",
+     "\u2014",
+     "",
+     "(13,129)",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(64,342)",
+     "",
+     "(33,251)",
+     "",
+     "(31,091)",
+     "",
+     "(93.5)",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "90",
+     "",
+     "30,193",
+     "",
+     "(30,103)",
+     "",
+     "99.7",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(64,432)",
+     "$",
+     "(63,444)",
+     "$",
+     "(988)",
+     "(1.6)",
+     "%"
+    ],
+    [
+     "Net loss per share - diluted",
+     "$",
+     "(0.83)",
+     "$",
+     "(1.07)",
+     "$",
+     "0.24",
+     "22.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Rebates represent the estimated obligations resulting from agreements with payors. We estimate a reserve for rebates based on contractual rates, estimates regarding our expectations of future utilization rates and channel inventory data. These reserves are established in the same period that the related revenue is recognized, resulting in a reduction of gross product sales.\nProduct Returns\nWe maintain a returns policy that offers customers a right to return product within a defined period before and after the expiration date of that product. We record the estimate of product returns as a reduction of gross product sales in the period the related product revenue was recognized.\nExcept as set forth above, there have been no material changes in our critical accounting estimates from those disclosed in the \u201cCritical Accounting Estimates\u201d section of the Management\u2019s Discussion & Analysis in our Annual Report on Form 10-K for the year ended December 31, 2022, filed with the SEC on March 29, 2023.\nResults of Operations\nThe following is a summary of our financial results (in thousands, except per share amounts) for the three months ended June 30, 2023 and 2022, respectively:",
+   "prose_after": "The following is a summary of our financial results (in thousands, except per share amounts) for the six months ended June 30, 2023 and 2022, respectively:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comparative Statements of Loss",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "1,496",
+     "$",
+     "\u2014",
+     "$",
+     "1,496",
+     "n/a",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "36",
+     "",
+     "\u2014",
+     "",
+     "36",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Gross profit",
+     "1,460",
+     "",
+     "\u2014",
+     "",
+     "1,460",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "8,053",
+     "",
+     "11,532",
+     "",
+     "(3,479)",
+     "",
+     "(30.2)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "71,246",
+     "",
+     "43,439",
+     "",
+     "27,807",
+     "",
+     "64.0",
+     "%"
+    ],
+    [
+     "Restructuring expense",
+     "\u2014",
+     "",
+     "3,592",
+     "",
+     "(3,592)",
+     "",
+     "(100.0)",
+     "%"
+    ],
+    [
+     "Total operating expense",
+     "79,299",
+     "",
+     "58,563",
+     "",
+     "20,736",
+     "",
+     "35.4",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "(77,839)",
+     "",
+     "(58,563)",
+     "",
+     "(19,276)",
+     "",
+     "(32.9)",
+     "%"
+    ],
+    [
+     "Investment and other income, net",
+     "816",
+     "",
+     "88",
+     "",
+     "728",
+     "",
+     "827.3",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(5,554)",
+     "",
+     "(5,523)",
+     "",
+     "(31)",
+     "",
+     "(0.6)",
+     "%"
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "(13,129)",
+     "",
+     "\u2014",
+     "",
+     "(13,129)",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(95,706)",
+     "",
+     "(63,998)",
+     "",
+     "(31,708)",
+     "",
+     "(49.5)",
+     "%"
+    ],
+    [
+     "Income tax (benefit) provision",
+     "(490)",
+     "",
+     "25,870",
+     "",
+     "(26,360)",
+     "",
+     "101.9",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(95,216)",
+     "$",
+     "(89,868)",
+     "$",
+     "(5,348)",
+     "(6.0)",
+     "%"
+    ],
+    [
+     "Net loss per share - diluted",
+     "$",
+     "(1.35)",
+     "$",
+     "(1.52)",
+     "$",
+     "0.17",
+     "11.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1097,
+    "end_line": 1130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following is a summary of our financial results (in thousands, except per share amounts) for the six months ended June 30, 2023 and 2022, respectively:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three and Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross >",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "1,496",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "1,496",
+     "",
+     "n/a"
+    ],
+    [
+     "Cost of products sold",
+     "36",
+     "",
+     "",
+     "\u2014",
+     "",
+     "36",
+     "",
+     "",
+     "n/a"
+    ],
+    [
+     "Gross margin",
+     "$",
+     "1,460",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "1,460",
+     "",
+     "n/a"
+    ],
+    [
+     "Gross margin as a percentage of net product revenue",
+     "98",
+     "",
+     "%",
+     "n/a",
+     "",
+     "98",
+     "",
+     "%",
+     "n/a"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Net product revenue was $1,496 during the three and six months ended June 30, 2023. LUMRYZ was approved by the FDA on May 1, 2023 and we began shipping product to our customers in June 2023. Gross margin as a percentage of net product revenue was 98%, driven by the sale of inventory that was expensed as research and development prior to FDA approval.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and Development Expenses:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "$",
+     "4,223",
+     "$",
+     "4,541",
+     "$",
+     "(318)",
+     "(7.0)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1149,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Net product revenue was $1,496 during the three and six months ended June 30, 2023. LUMRYZ was approved by the FDA on May 1, 2023 and we began shipping product to our customers in June 2023. Gross margin as a percentage of net product revenue was 98%, driven by the sale of inventory that was expensed as research and development prior to FDA approval.",
+   "prose_after": "Research and development expenses decreased $318 or 7.0% during the three months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by lower active pharmaceutical ingredients (\u201cAPI\u201d) purchases during the current period of approximately $700. The decrease in research and development expense was offset by a $500 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and Development Expenses:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "$",
+     "8,053",
+     "$",
+     "11,532",
+     "$",
+     "(3,479)",
+     "(30.2)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Research and development expenses decreased $318 or 7.0% during the three months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by lower active pharmaceutical ingredients (\u201cAPI\u201d) purchases during the current period of approximately $700. The decrease in research and development expense was offset by a $500 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.",
+   "prose_after": "Research and development expenses decreased $3,479 or 30.2% during the six months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by lower API purchases of $3,300 and lower pre-commercial product related costs of $300, the majority of which were purchased in the three months ended March 31, 2022. The decrease in research and development expense was offset by a $500 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, General and Administrative Expenses:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "$",
+     "46,778",
+     "$",
+     "21,804",
+     "$",
+     "24,974",
+     "114.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Research and development expenses decreased $3,479 or 30.2% during the six months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by lower API purchases of $3,300 and lower pre-commercial product related costs of $300, the majority of which were purchased in the three months ended March 31, 2022. The decrease in research and development expense was offset by a $500 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.",
+   "prose_after": "Selling, general and administrative expenses increased $24,974 or 114.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher legal fees of $6,900, higher marketing and market research activities of $5,500, higher costs associated with the commercial launch of LUMRYZ of $2,600, higher compensation costs of $3,000, and an increase in regulatory expenses of $800. Selling, general, and administrative expense also includes a $7,800 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.\nIn the prior period, we incurred costs of approximately $5,100 related to the exchange of $117,375 of our February 2023 Notes for a new series of its October 2023 Notes that did not recur in the current period. In the prior period, we realized benefit from the reversal of approximately $2,300 of previously recorded compensation costs for employees affected by the 2022 Corporate Restructuring Plan that did not recur in the current period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, General and Administrative Expenses:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "$",
+     "71,246",
+     "$",
+     "43,439",
+     "$",
+     "27,807",
+     "64.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1191,
+    "end_line": 1201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Selling, general and administrative expenses increased $24,974 or 114.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher legal fees of $6,900, higher marketing and market research activities of $5,500, higher costs associated with the commercial launch of LUMRYZ of $2,600, higher compensation costs of $3,000, and an increase in regulatory expenses of $800. Selling, general, and administrative expense also includes a $7,800 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period.\nIn the prior period, we incurred costs of approximately $5,100 related to the exchange of $117,375 of our February 2023 Notes for a new series of its October 2023 Notes that did not recur in the current period. In the prior period, we realized benefit from the reversal of approximately $2,300 of previously recorded compensation costs for employees affected by the 2022 Corporate Restructuring Plan that did not recur in the current period.",
+   "prose_after": "Selling, general and administrative expenses increased $27,807 or 64.0% during the six months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher legal fees of $8,600, higher marketing and market research activities of $3,900, higher costs associated with the commercial launch of LUMRYZ of $3,500, and higher compensation costs of $2,600 due to increased headcount. Selling, general, and administrative expense in the six months ended June 30, 2023 includes a $7,800 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period. We also incurred costs related to financing activities of approximately $1,300 in the current period.\nIn the prior period, we incurred costs of approximately $5,450 related to the exchange of $117,375 of our February 2023 Notes for a new series of its October 2023 Notes that did not recur in the current period. In the prior period, we realized benefit from the reversal of approximately $2,300 of previously recorded compensation costs for employees affected by the 2022 Corporate Restructuring Plan that did not recur in the current period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment and Other Income, net:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment and other income, net",
+     "$",
+     "623",
+     "$",
+     "192",
+     "$",
+     "431",
+     "224.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1206,
+    "end_line": 1216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Selling, general and administrative expenses increased $27,807 or 64.0% during the six months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher legal fees of $8,600, higher marketing and market research activities of $3,900, higher costs associated with the commercial launch of LUMRYZ of $3,500, and higher compensation costs of $2,600 due to increased headcount. Selling, general, and administrative expense in the six months ended June 30, 2023 includes a $7,800 cumulative adjustment for certain compensation awards tied to the achievement of performance conditions, which became probable in the period. We also incurred costs related to financing activities of approximately $1,300 in the current period.\nIn the prior period, we incurred costs of approximately $5,450 related to the exchange of $117,375 of our February 2023 Notes for a new series of its October 2023 Notes that did not recur in the current period. In the prior period, we realized benefit from the reversal of approximately $2,300 of previously recorded compensation costs for employees affected by the 2022 Corporate Restructuring Plan that did not recur in the current period.",
+   "prose_after": "Investment and other income, net increased $431 or 224.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher interest income of approximately $400.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment and Other Income, net:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment and other income, net",
+     "$",
+     "816",
+     "$",
+     "88",
+     "$",
+     "728",
+     "827.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1219,
+    "end_line": 1229
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Investment and other income, net increased $431 or 224.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher interest income of approximately $400.",
+   "prose_after": "Investment and other income, net increased $728 or 827.3% during the six months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher net realized losses during the six months ended June 30, 2022 of approximately $700.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(2,295)",
+     "$",
+     "(3,506)",
+     "$",
+     "1,211",
+     "(34.5)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1232,
+    "end_line": 1242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Investment and other income, net increased $728 or 827.3% during the six months ended June 30, 2023 as compared to the same period in the prior year. This increase was driven by higher net realized losses during the six months ended June 30, 2022 of approximately $700.",
+   "prose_after": "Interest expense decreased $1,211 or 34.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by a $1,300 decrease in amortization of debt discount and debt issuance costs as a result of the extinguishment of $96,188 of our October 2023 Notes. See Note 6: Long-term debt to our unaudited condensed consolidated financial statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q for further details for further details.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three and Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     ""
+    ],
+    [
+     "Loss on extinguishment of debt:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "$",
+     "(13,129)",
+     "$",
+     "\u2014",
+     "$",
+     "(13,129)",
+     "n/a"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1245,
+    "end_line": 1255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Interest expense decreased $1,211 or 34.5% during the three months ended June 30, 2023 as compared to the same period in the prior year. This decrease was driven by a $1,300 decrease in amortization of debt discount and debt issuance costs as a result of the extinguishment of $96,188 of our October 2023 Notes. See Note 6: Long-term debt to our unaudited condensed consolidated financial statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q for further details for further details.",
+   "prose_after": "Over the course of April 3 and April 4, 2023, we completed an exchange of $96,188 of our $117,375 October 2023 Notes for $106,268 of new April 2027 Notes. We accounted for the exchange of the October 2023 Notes for the April 2027 Notes as an extinguishment of $96,188 of our October 2023 Notes. We recorded a loss on the extinguishment of $13,129 as a result of the exchange. See Note 6: Long-term debt to our unaudited condensed consolidated financial statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q for further details for further details.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Tax Provision:",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "90",
+     "",
+     "$",
+     "30,193",
+     "",
+     "$",
+     "(30,103)",
+     "99.7",
+     "%"
+    ],
+    [
+     "Percentage of loss before income taxes",
+     "(0.1)",
+     "",
+     "%",
+     "(90.8)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1259,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Over the course of April 3 and April 4, 2023, we completed an exchange of $96,188 of our $117,375 October 2023 Notes for $106,268 of new April 2027 Notes. We accounted for the exchange of the October 2023 Notes for the April 2027 Notes as an extinguishment of $96,188 of our October 2023 Notes. We recorded a loss on the extinguishment of $13,129 as a result of the exchange. See Note 6: Long-term debt to our unaudited condensed consolidated financial statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q for further details for further details.",
+   "prose_after": "The income tax provision was $90 for the three months ended June 30, 2023 resulting in an effective tax rate of (0.1)%. The income tax provision was $30,193 for the three months ended June 30, 2022 resulting in an effective tax rate of (90.8)%. The change in the effective tax rate for the three months ended June 30, 2023 when compared to the same period in 2022, is primarily driven by the valuation allowances recorded against net deferred tax assets established in the second quarter of 2022.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Tax (Benefit) Provision:",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (benefit) provision",
+     "$",
+     "(490)",
+     "",
+     "$",
+     "25,870",
+     "",
+     "$",
+     "(26,360)",
+     "101.9",
+     "%"
+    ],
+    [
+     "Percentage of loss before income taxes",
+     "0.5",
+     "",
+     "%",
+     "(40.4)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1273,
+    "end_line": 1284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The income tax provision was $90 for the three months ended June 30, 2023 resulting in an effective tax rate of (0.1)%. The income tax provision was $30,193 for the three months ended June 30, 2022 resulting in an effective tax rate of (90.8)%. The change in the effective tax rate for the three months ended June 30, 2023 when compared to the same period in 2022, is primarily driven by the valuation allowances recorded against net deferred tax assets established in the second quarter of 2022.",
+   "prose_after": "The income tax benefit was $490 for the six months ended June 30, 2023 resulting in an effective tax rate of 0.5%. The income tax provision was $25,870 for the six months ended June 30, 2022 resulting in an effective tax rate of (40.4)%. The change in the effective tax rate for the six months ended June 30, 2023 when compared to the same period in 2022, is primarily driven by the valuation allowances recorded against net deferred tax assets established in the second quarter of 2022.\nLiquidity and Capital Resources\nOur cash flows from operating, investing and financing activities, as reflected in the unaudited condensed consolidated statements of cash flows, are summarized in the following table:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2023 vs. 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by:",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(62,256)",
+     "$",
+     "(48,135)",
+     "$",
+     "(14,121)",
+     "(29.3)",
+     "%"
+    ],
+    [
+     "Investing activities",
+     "(87,842)",
+     "",
+     "54,299",
+     "",
+     "(142,141)",
+     "",
+     "(261.8)",
+     "%"
+    ],
+    [
+     "Financing activities",
+     "125,986",
+     "",
+     "(2,794)",
+     "",
+     "128,780",
+     "",
+     "(4,609.2)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1291,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The income tax benefit was $490 for the six months ended June 30, 2023 resulting in an effective tax rate of 0.5%. The income tax provision was $25,870 for the six months ended June 30, 2022 resulting in an effective tax rate of (40.4)%. The change in the effective tax rate for the six months ended June 30, 2023 when compared to the same period in 2022, is primarily driven by the valuation allowances recorded against net deferred tax assets established in the second quarter of 2022.\nLiquidity and Capital Resources\nOur cash flows from operating, investing and financing activities, as reflected in the unaudited condensed consolidated statements of cash flows, are summarized in the following table:",
+   "prose_after": "Operating Activities\nNet cash used in operating activities was $62,256 and $48,135 for the six months ended June 30, 2023 and 2022, respectively. Net cash used in operating activities for the six months ended June 30, 2023 was driven by net loss of $95,216, offset by favorable changes in working capital of $6,974 driven by an increase in accrued expenses and favorable non-cash adjustments of $25,986 due to the loss on extinguishment of debt and share-based compensation expense. For the six months ended June 30, 2022, net cash used in operating activities was driven by net loss of $89,868 partially offset by favorable non-cash adjustments of $32,974 and favorable changes in working capital of $8,759.\nInvesting Activities\nNet cash used in investing activities was $87,842 for the six months ended June 30, 2023. Net cash provided by investing activities was $54,299 for the six months ended June 30, 2022. Net cash used in investing activities for the six months ended\nJune 30, 2023 was due to net purchases of marketable securities over proceeds received from the excess of sales of $87,842 as a result of investing the proceeds of our financing activities. Net cash provided by investing activities for the six months ended June 30, 2022 was due to net proceeds received from the excess of sales over purchases of marketable securities of $54,299.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1\u2021*",
+     "Fourth Amendment to Sublease Agreement, dated as of May 31, 2023, between Avadel Management Corporation and R.G. Brinkmann Company"
+    ],
+    [
+     "31.1*",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) promulgated under the Exchange Act"
+    ],
+    [
+     "31.2*",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) promulgated under the Exchange Act"
+    ],
+    [
+     "32.1**",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certification of the Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (formatted as inline XBRL with applicable taxonomy extension information contained in Exhibits 101.*)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1387,
+    "end_line": 1404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "There have been no material changes in our risk factors from those disclosed in our Annual Report on Form 10-K for the year ended December 31, 2022 filed with the SEC on March 29, 2023.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS.\nNone.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES.\nNone.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nITEM 5. OTHER INFORMATION.\nDuring the three months ended June 30, 2023, none of the Company\u2019s directors or officers (as defined in Rule 16a-1(f) of the Securities Exchange Act of 1934) adopted, terminated or modified a Rule 10b5-1 trading arrangement or non-Rule 10b5-1 trading arrangement (as such terms are defined in Item 408 of Regulation S-K).\nITEM 6. EXHIBITS.",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 4,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "AVADEL PHARMACEUTICALS PLC",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 9, 2023",
+     "By:",
+     "/s/ Gregory J. Divis"
+    ],
+    [
+     "",
+     "",
+     "Gregory J. Divis"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Duly Authorized Officer and Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "AVADEL PHARMACEUTICALS PLC",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1414,
+    "end_line": 1424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date: August 9, 2023",
+     "By:",
+     "/s/ Thomas S. McHugh"
+    ],
+    [
+     "",
+     "",
+     "Thomas S. McHugh"
+    ],
+    [
+     "",
+     "",
+     "Senior Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Duly Authorized Officer and Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1425,
+    "end_line": 1432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

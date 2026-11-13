@@ -1,0 +1,2360 @@
+{
+ "accession": "0001171520-10-000117",
+ "cik": "0001419983",
+ "form": "10-K",
+ "filing_date": "2010-02-17",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "eps3717.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "000-52973",
+     ""
+    ],
+    [
+     "Commission file number",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Stalar 3, Inc.",
+     ""
+    ],
+    [
+     "(Name of Small Business Issuer in its charter)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Delaware",
+     "26-1402659"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "11755 Wilshire Blvd., Suite 2000",
+     ""
+    ],
+    [
+     "Los Angeles, CA",
+     "90025"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Issuer's telephone number: (310) 883-1300",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Securities registered under Section 12(b) of the Act: None",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Securities registered under Section 12(g) of the Act:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.0001 Par Value",
+     ""
+    ],
+    [
+     "(Title of Class)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "000-52973",
+    "Commission file number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-K\n[X] Annual Report under Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended September 30, 2009\nOr\n[ ] Transitional Report under Section 13 or 15(d) of the Securities Exchange Act of 1934",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. [ ]\nCheck whether the issuer (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). YES [ ] NO [X]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this form 10-K or any amendment to this Form 10-K. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "5"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "6"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "7"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "7"
+    ],
+    [
+     "Item 9A(T).",
+     "Controls and Procedures",
+     "7"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "8"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "9"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "11"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "11"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "12"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 104
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this form 10-K or any amendment to this Form 10-K. [X]\nIndicate by checkmark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. [X] Smaller Reporting Company\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nState issuer's revenues for its most recent fiscal year. The Company had no revenues during its fiscal year ending September 30, 2009.\nThe aggregate market value of the common stock held by non-affiliates of the issuer was $900.00 on September 30, 2009.\nAs of September 30, 2009, 2,022,500 shares of the Registrant's Common Stock and no shares of the Registrant's Preferred Stock were issued and outstanding.\nForm 10-K\nReport for the Fiscal Year Ended September 30, 2009\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nITEM 1. BUSINESS.\nStalar 3, Inc. (\"we\", \"us\", \"our\", the \"Company\" or the \"Registrant\") was incorporated in the State of Delaware on November 13, 2007. Since inception, the Company has been engaged in organizational efforts and obtaining initial financing. The Company was formed as a vehicle to pursue a business combination and has made numerous efforts to date to identify a possible business combination. The Company has conducted negotiations regarding a target business, but has not entered into a letter of intent. The business purpose of the Company is to seek the acquisition of, or merger with, an existing operating company.\nCurrently our Company would be defined as a \"shell\" company, an entity which is generally described as having no or nominal operations and no or nominal assets. The Company was organized as a vehicle to investigate and, if such investigation warrants, acquire a target company or business seeking the perceived advantages of being a publicly-held corporation. Our principal business objective for the past 12 months, for the next 12 months and beyond such time will be to achieve long-term growth potential through a combination with an operating business. The Company will not restrict our potential candidate target companies to any specific business, industry or geographical location and, thus, may acquire any type of business.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Steven R. Fox",
+     "56",
+     "Director, CEO/President, CFO, Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 264,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "As of the end of the period covered by this report, the Company carried out an evaluation, under the supervision and with the participation of the Company's management, including the Company's Chief Executive Officer and the Company's Chief Operating Officer and Principal Financial Officer, of the effectiveness of the design and operation of the Company's disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Securities Exchange Act of 1934, as amended). Based on this evaluation, the Company's Chief Executive Officer and Principal Financial Officer concluded that the Company's disclosure controls and procedures were effective in ensuring that (i) information required to be disclosed in the reports that the Company files or submits under the Securities Exchange Act of 1934, as amended, is recorded, processed, summarized and reported, within the time periods specified in the rules and forms of the Securities and Exchange Commission and (ii) information required to be disclosed in the reports the Company files or submits under the Securities Exchange Act of 1934, as amended, is accumulated and communicated to management, including the Company's Chief Executive Officer and Principal Financial Officer, or persons performing similar functions, as appropriate to allow timely decisions regarding required disclosure.\nThis annual report does not include an attestation report of the Company's registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the Company's registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit the Company to provide only management's report in this annual report.\nChanges in Internal Controls Over Financial Reporting\nThere were no changes in our internal controls over financial reporting during or that could significantly affect these controls subsequent to the date of the evaluation of those controls by the Chief Executive Officer and Principal Financial Officer.\nITEM 9B. OTHER INFORMATION.\nNone\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nThe sole Director and sole officer of the Company for the reported period, and up to December 9, 2009, was as follows:",
+   "prose_after": "Dr. Fox is a practicing dentist in New York City. Dr. Fox is a fellow in the American College of Dentistry and a fellow in the International College of Dentistry. He is a former faculty member of the Harvard School of Dental Medicine and a former officer of Harvard. In 1999 Dr. Fox was the Ernst and Young Entrepreneur of the Year. Dr. Fox is the Chairman of the Rebel Group, Inc., a privately-held company, that is involved in importing and exporting. Dr. Fox is currently an advisor to Scarguard, LLC, a medical product company. In 1999, Dr. Fox received the Medal of Freedom from the Republican Members of the United States Senate. Since the Company's inception, Dr. Fox has been serving as the Company's CEO/President, CFO, Secretary and sole Director.\nAs of the date of this report, the sole Director and sole officer of the Company is as follows:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Bruce Wendel",
+     "56",
+     "Director, CEO/President, CFO, Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 273,
+    "end_line": 277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "Dr. Fox is a practicing dentist in New York City. Dr. Fox is a fellow in the American College of Dentistry and a fellow in the International College of Dentistry. He is a former faculty member of the Harvard School of Dental Medicine and a former officer of Harvard. In 1999 Dr. Fox was the Ernst and Young Entrepreneur of the Year. Dr. Fox is the Chairman of the Rebel Group, Inc., a privately-held company, that is involved in importing and exporting. Dr. Fox is currently an advisor to Scarguard, LLC, a medical product company. In 1999, Dr. Fox received the Medal of Freedom from the Republican Members of the United States Senate. Since the Company's inception, Dr. Fox has been serving as the Company's CEO/President, CFO, Secretary and sole Director.\nAs of the date of this report, the sole Director and sole officer of the Company is as follows:",
+   "prose_after": "The Company\u2019s officers and directors are elected annually for a one year term or until their respective successors are duly elected and qualified or until their earlier resignation or removal.\nMr. Wendel is the Chief Executive Office of Abraxis BioScience, Inc. Prior to his appointment as Chief Executive Officer, Mr. Wendel served as the Executive Vice President of Corporate Operations and Development for Abraxis since November 2007 when Abraxis separated from a company formally known as Abraxis BioScience, Inc. (which changed its name to APP Pharmaceuticals in connection with the separation) (\u201cOld Abraxis\u201d). Mr. Wendel previously served as Executive Vice President of Corporate Development at Old Abraxis from March 2006 to the date of the separation. Mr. Wendel joined American Pharmaceutical Partners, Inc. (\u201cAPP\u201d) in 2004 as Vice President of Corporate Development. He began his 14 years with Bristol-Myers Squibb as in-house counsel before shifting to business and corporate development. Before joining APP, he served as vice president, business development and licensing for IVAX Corporation. Previously, Mr. Wendel served in the legal departments of Playtex and Combe. He earned a juris doctorate degree from Georgetown University Law School where he was an editor of Law & Policy in International Business, and a B.S. from Cornell University. Mr. Wendel is also a director of Abraxis BioScience, Inc. and Stalar 4, Inc, a Delaware corporation.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUMMARY COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and\n\nprincipal\n\nposition",
+     "Year",
+     "Salary ($)",
+     "Bonus\n\n($)",
+     "Stock\n\nAwards\n\n($)",
+     "Option\n\nAwards\n\n($)",
+     "Non-Equity\n\nIncentive Plan\n\nCompensation\n\n($)",
+     "Nonqualified\n\nDeferred\n\nCompensation\n\nEarnings ($)",
+     "All Other\n\nCompensation\n\n($)",
+     "Total\n\n($)"
+    ],
+    [
+     "Steven R. Fox\n\nDirector, CEO/President, CFO, Secretary",
+     "2009\n\n2008",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0",
+     "0\n\n0"
+    ]
+   ],
+   "caption_stack": [
+    "SUMMARY COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 324,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "The Board of Directors acts as the Audit Committee and the Board has no separate committees. The Company has no qualified financial expert at this time because it has not been able to hire a qualified candidate. Further, the Company believes that it has inadequate financial resources at this time to hire such an expert. The Company intends to continue to search for a qualified individual for hire.\nCode of Ethics.\nWe have adopted a Code of Ethics that applies to all of our executive officers, directors and employees. Our Code of Ethics codifies the business and ethical principles that govern all aspects of our business. This document will be made available in print, free of charge, to any stockholder requesting a copy in writing from the Company.\nITEM 11. EXECUTIVE COMPENSATION.\nSummary Compensation Table\nThe table below summarizes all compensation awarded to, earned by, or paid to both to our officers and to our directors for all services rendered in all capacities to us for our fiscal years ended September 30, 2008 and September 30, 2009.",
+   "prose_after": "Narrative Disclosure to the Summary Compensation Table\nThe Company's President, Secretary and sole Director has not received any cash remuneration since inception. Officers will not receive any remuneration until the consummation of an acquisition. No remuneration of any nature has been paid for or on account of services rendered by a Director in such capacity. The Company's sole officer and Director intends to devote a limited amount of time to our affairs.\nIt is possible that, after the Company successfully consummates a business combination with an unaffiliated entity, that entity may desire to employ or retain our sole officer and Director for the purposes of providing services to the surviving entity. However, the Company has adopted a policy whereby the offer of any post-transaction employment to our management will not be a consideration in our decision whether to undertake any proposed transaction.\nNo retirement, pension, profit sharing, stock option or insurance programs or other similar programs have been adopted by the Company for the benefit of its employees.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPTION AWARDS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "STOCK AWARDS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\n(#)\n\nExercisable",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\n (#)\n\nUnexercisable",
+     "Equity\n\nIncentive\n\n Plan Awards:\n\nNumber of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nUnearned\n\nOptions\n\n(#)",
+     "Option\n\nExercise\n\n Price\n\n ($)",
+     "Option\n\nExpiration\n\nDate",
+     "Number\n\nof\n\nShares\n\nor Units\n\nof Stock That\n\nHaveNot\n\nVested\n\n(#)",
+     "Market\n\nValue\n\nof Shares\n\nor Units\n\nof Stock\n\nThat\n\nHave Not\n\nVested\n\n($)",
+     "Equity\n\nIncentive \n\nPlan Awards: \n\nNumber of\n\nUnearned\n\nShares,\n\nUnits or\n\nOther Rights\n\nThat Have\n\nNot Vested\n\n(#)",
+     "Equity\n\nIncentive Plan\n\nAwards:\n\nMarket or\n\nPayout\n\nValue of\n\nUnearned Shares,\n\nUnits or\n\nOther Rights\n\nThat Have\n\nNot Vested\n\n(#)"
+    ],
+    [
+     "Steven R. Fox",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 366,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "There are no understandings or agreements regarding compensation our management will receive after a business combination that is required to be included in this item, or otherwise.\nWe have not entered into any employment agreement or consulting agreement with our executive officers. There are no arrangements or plans in which we provide pension, retirement or similar benefits for executive officers.\nAlthough we do not currently compensate our officers, we reserve the right to provide compensation at some time in the future. Our decision to compensate officers depends on the availability of our cash resources with respect to the need for cash to further our business purposes.\nStock Option Grants\nWe have not granted any stock options to the executive officers or directors since our inception.\nOutstanding Equity Awards at Fiscal Year-End\nThe table below summarizes all unexercised options, stock that has not vested, and equity incentive plan awards for each named executive officer as of September 30, 2009",
+   "prose_after": "Compensation of Directors\nThe table below summarizes all compensation of our directors as of September 30, 2009",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DIRECTOR COMPENSATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Fees Earned or\n\nPaid in\n\nCash\n\n($)",
+     "Stock Awards\n\n($)",
+     "Option Awards\n\n($)",
+     "Non-Equity\n\nIncentive\n\nPlan\n\nCompensation\n\n($)",
+     "Non-Qualified\n\nDeferred\n\nCompensation\n\nEarnings\n\n($)",
+     "All\n\nOther\n\nCompensation\n\n($)",
+     "Total\n\n($)"
+    ],
+    [
+     "Steven R. Fox",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "DIRECTOR COMPENSATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 404,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Compensation of Directors\nThe table below summarizes all compensation of our directors as of September 30, 2009",
+   "prose_after": "Narrative Disclosure to the Director Compensation Table\nThe Company does not have any standard arrangements pursuant to which directors of the Company are compensated for services provided as a director. All directors are entitled to reimbursement for expenses reasonably incurred in attending Board of Directors' meetings. There has been no compensation paid to the Company's sole Director as of September 30, 2009.\nStock Option Plans\nWe did not have a stock option plan in place as of September 30, 2009.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nAs of January 15, 2010, Abraxis Bioscience, LLC owned all 2,022,500 outstanding shares of the Company\u2019s Common Stock. Bruce Wendel, our sole officer and sole director, did not hold any Common Stock or any options or other rights to acquire the Company\u2019s Common Stock.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nDuring the fiscal year ended September 30, 2009, Dr. Steven R. Fox advanced funds in the aggregate amount of $10,893 to the Company to cover cash requirements. Inclusive of the $10,893, the aggregate principal amount of all loans made by Dr. Steven R. Fox from the Company\u2019s inception to September 30, 2009 was $21,803. The loans were unsecured and payable on demand with interest at the prime rate.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Document",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Balance Sheets",
+     "F-2"
+    ],
+    [
+     "Statements of Operations",
+     "F-3"
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-4"
+    ],
+    [
+     "Statements of Changes in Stockholders' Deficit",
+     "F-5"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6 to F-9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 474,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "There were no tax fees for the fiscal year ended September 30, 2009. Tax fees include fees for professional services rendered by the principal accountant for tax compliance, tax advice and tax planning.\nAll Other Fees\nThere were no other professional services rendered by our principal accountant during the last two fiscal years that were not included in the above paragraphs.\nThe engagement of the Company\u2019s independent auditor, MSCM LLP, was approved by the Company\u2019s Board of Directors which serves as the Audit Committee. The Audit Committee does not anticipate that the Company\u2019s auditor will provide any services other that audit services and consequently the Audit Committee has not adopted any pre-approval policies and procedures described in paragraph (c)(7)(i) of Rule 2-01 of Regulation S-X. No services described in Items 9(e)(2) through 9(e)(4) of Schedule 14A were provided by the Company\u2019s auditors.\nPART IV\nITEM 15. EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES.\n(a)(1) FINANCIAL STATEMENTS. The following financial statements are included in this report:",
+   "prose_after": "(a)(2) FINANCIAL STATEMENT SCHEDULES. The following financial statement schedules are included as part of this report:\nNone.\n(a)(3) EXHIBITS. The following exhibits are included as part of this report:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Title of Document"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (1)"
+    ],
+    [
+     "3.1(i)",
+     "Certificate of Correction to Certificate of Incorporation(1)"
+    ],
+    [
+     "3.2",
+     "Bylaws (1)"
+    ],
+    [
+     "14.1",
+     "Code of Ethics (2)"
+    ],
+    [
+     "23.1",
+     "Consent of MSCM LLP"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Securities Exchange Act Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Securities Exchange Act Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 490,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "(a)(2) FINANCIAL STATEMENT SCHEDULES. The following financial statement schedules are included as part of this report:\nNone.\n(a)(3) EXHIBITS. The following exhibits are included as part of this report:",
+   "prose_after": "(1) Incorporated by reference from the Company's registration statement on Form 10-SB filed on December 12, 2007.\n(2) Incorporated by reference from the Company's Quarterly Report on Form 10-Q filed on May 7, 2009.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "STALAR 3, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated:  February 5, 2010",
+     "By /s/ Bruce Wendel"
+    ],
+    [
+     "",
+     "Bruce Wendel, President"
+    ]
+   ],
+   "caption_stack": [
+    "STALAR 3, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 515,
+    "end_line": 521
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Incorporated by reference from the Company's registration statement on Form 10-SB filed on December 12, 2007.\n(2) Incorporated by reference from the Company's Quarterly Report on Form 10-Q filed on May 7, 2009.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.\nBy /s/ Bruce Wendel\nBruce Wendel\nCEO, CFO, President and Secretary\nDated: February 5, 2010\nINDEX TO FINANCIAL STATEMENTS\nPERIOD FROM NOVEMBER 13, 2007 (Inception) TO SEPTEMBER 30, 2009",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 510,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page\n\nNo."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL STATEMENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficit",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6 to F-9"
+    ]
+   ],
+   "caption_stack": [
+    "Page\n\nNo."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.\nBy /s/ Bruce Wendel\nBruce Wendel\nCEO, CFO, President and Secretary\nDated: February 5, 2010\nINDEX TO FINANCIAL STATEMENTS\nPERIOD FROM NOVEMBER 13, 2007 (Inception) TO SEPTEMBER 30, 2009",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nStalar 3, Inc. (A Development Stage Company)\nWe have audited the accompanying balance sheets of Stalar 3, Inc. as of September 30, 2009 and 2008 and the related statements of operations, changes in stockholders\u2019 deficit and cash flows for the years then ended. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "89",
+     "",
+     "$",
+     "544",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "10,458",
+     "",
+     "$",
+     "1,869",
+     ""
+    ],
+    [
+     "Loan payable - Officer",
+     "",
+     "21,803",
+     "",
+     "",
+     "10,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "32,261",
+     "",
+     "",
+     "12,779",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock - $0.0001 par value; 25,000,000 shares authorized; none issued or outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock - $0.0001 par value; 75,000,000 shares authorized; 2,022,500 and 2,000,000 issued and outstanding",
+     "",
+     "202",
+     "",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "898",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(33,272)",
+     "",
+     "",
+     "(12,435)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(32,172)",
+     "",
+     "",
+     "(12,235)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "89",
+     "",
+     "$",
+     "544",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Stalar 3, Inc. as of September 30, 2009 and 2008, and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note A to the financial statements, the Company has never generated revenue and is unlikely to generate earnings in the immediate or foreseeable future. These conditions raise substantial doubt as to the ability of the Company to continue as a going concern. Managements\u2019 plans in regards to these matters are described in Note A. These financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nSigned: \u201cMSCM LLP\u201d\nToronto, Ontario\nJanuary 28, 2010\nBALANCE SHEETS\nSEPTEMBER 30, 2009 AND 2008",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "November 13, 2007",
+     "",
+     "",
+     "November 13, 2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2009",
+     "",
+     "",
+     "September 30, 2008",
+     "",
+     "",
+     "September 30, 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "19,725",
+     "",
+     "",
+     "6,269",
+     "",
+     "",
+     "25,994",
+     ""
+    ],
+    [
+     "Organization costs",
+     "",
+     "-",
+     "",
+     "",
+     "5,708",
+     "",
+     "",
+     "5,708",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "750",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "750",
+     ""
+    ],
+    [
+     "Sundry",
+     "",
+     "362",
+     "",
+     "",
+     "458",
+     "",
+     "",
+     "820",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "20,837",
+     "",
+     "",
+     "12,435",
+     "",
+     "",
+     "33,272",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(20,837)",
+     "",
+     "$",
+     "(12,435)",
+     "",
+     "$",
+     "(33,272)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.006)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "common shares outstanding,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and diluted",
+     "",
+     "2,015,904",
+     "",
+     "",
+     "2,000,000",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 623,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "November 13, 2007",
+     "",
+     "",
+     "November 13, 2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2009",
+     "",
+     "",
+     "September 30, 2008",
+     "",
+     "",
+     "September 30, 2009",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(20,837)",
+     "",
+     "$",
+     "(12,435)",
+     "",
+     "$",
+     "(33,272)",
+     ""
+    ],
+    [
+     "Increase in cash flows from operating activities resulting from changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "8,589",
+     "",
+     "",
+     "1,869",
+     "",
+     "",
+     "10,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(12,248)",
+     "",
+     "",
+     "(10,566)",
+     "",
+     "",
+     "(22,814)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "900",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "1,100",
+     ""
+    ],
+    [
+     "Loans from Officer",
+     "",
+     "10,893",
+     "",
+     "",
+     "10,910",
+     "",
+     "",
+     "21,803",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "11,793",
+     "",
+     "",
+     "11,110",
+     "",
+     "",
+     "22,903",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash",
+     "",
+     "(455)",
+     "",
+     "",
+     "544",
+     "",
+     "",
+     "89",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "544",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "89",
+     "",
+     "$",
+     "544",
+     "",
+     "$",
+     "89",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "During",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Development",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Stage",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued at inception, November 13, 2007",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash, at par $.0001",
+     "",
+     "2,000,000",
+     "",
+     "200",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(12,435)",
+     "",
+     "",
+     "(12,435)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2008",
+     "",
+     "2,000,000",
+     "",
+     "200",
+     "",
+     "-",
+     "",
+     "(12,435)",
+     "",
+     "",
+     "(12,235)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash, at $.04 per share",
+     "",
+     "22,500",
+     "",
+     "2",
+     "",
+     "898",
+     "",
+     "-",
+     "",
+     "",
+     "900",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(20,837)",
+     "",
+     "",
+     "(20,837)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2009",
+     "",
+     "2,022,500",
+     "$",
+     "202",
+     "$",
+     "898",
+     "$",
+     "(33,272)",
+     "",
+     "$",
+     "(32,172)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deficit",
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIALS STATEMENTS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nSEPTEMBER 30, 2009\nNOTE A \u2013 NATURE OF BUSINESS AND BASIS OF PRESENTATION\nStalar 3, Inc. (\u201fthe Company\u201f) was incorporated in the State of Delaware on November 13, 2007. The Company, which is in the development stage, is a \u201cshell company\u201d because it has no or nominal assets, other than cash, and no or nominal operations. The Company was formed to pursue a business combination with an operating private company, foreign or domestic, seeking to become a reporting, \u201cpublic\u201d company. No assurances can be given that the Company will be successful in locating or negotiating with any target company. The Company has been engaged in organizational efforts, obtaining initial financing and has commenced negotiations with various operating entities; however, has not entered into any letter of intent to date.\nThe accompanying financial statements have been prepared in conformity with generally accepted accounting principles in the United States of America, which contemplate continuation of the Company as a going concern. The Company, however, has minimal assets and working capital and lacks a sufficient source of revenues, which raises substantial doubt about the Company\u2019s ability to continue as a going concern. The Company\u2019s ability to continue as a going concern and to realize its assets and to discharge its liabilities is dependent upon the Company\u2019s management to securing a business combination. Management intends to fund working capital requirements for the foreseeable future and believes that the current business plan if successfully implemented may provide the opportunity for the Company to continue as a going concern. The accompanying statements do not include any adjustments that might result should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,8120 @@
+{
+ "accession": "0001410578-23-000524",
+ "cik": "0001661779",
+ "form": "10-K",
+ "filing_date": "2023-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tmb-20221231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "46-5371570"
+    ],
+    [
+     "State or Other Jurisdiction of\n\nIncorporation or Organization",
+     "I.R.S. Employer Identification No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4100 West Alameda Avenue, 3rd Floor, Burbank, CA",
+     "91505"
+    ],
+    [
+     "Address of Principal Executive Offices",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission file number: 000-56415\nStartEngine Crowdfunding, Inc.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code (800) 317-2200\nSecurities registered pursuant to Section 12(b) of the Act:\nNone.\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, $0.00001 par value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nNote - Checking the box above will not relieve any registrant required to file reports pursuant to Section 13 or 15(d) of the Exchange Act from their obligations under those Sections.\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "4"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "15"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "21"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "21"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "PART II",
+     "",
+     "21"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "21"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "23"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "29"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "29"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "30"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "30"
+    ],
+    [
+     "PART III",
+     "",
+     "31"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "31"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "33"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "36"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "37"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "38"
+    ],
+    [
+     "PART IV",
+     "",
+     "38"
+    ],
+    [
+     "Item 15.",
+     "Exhibit and Financial Statement Schedules",
+     "38"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting and non-voting stock held by non-affiliates of the registrant as of December 31, 2022, the last business day of the registrant\u2019s most recently completed fourth fiscal quarter was $654,636,600 based upon the per share price in our current offering under Regulation A.\nAs of March 31, 2023, the registrant had 33,473,977 shares of Common Stock, 482,104 shares of Series T Preferred Stock, 10,240,536 shares of Series Seed Preferred Stock and 9,272,044 shares of Series A Preferred Stock\nDOCUMENTS INCORPORATED BY REFERENCE\nList hereunder the following documents if incorporated by reference and the Part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated: (1) Any annual report to security holders; (2) Any proxy or information statement; and (3) Any prospectus filed pursuant to Rule 424(b) or (c) under the Securities Act of 1933. The listed documents should be clearly described for identification purposes (e.g., annual report to security holders for fiscal year ended December 24, 1980).\nForm 10-K\nTABLE OF CONTENTS\nNote About Forward-Looking Statements",
+   "prose_after": "2\nNOTE ABOUT FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements. All statements contained in this Annual Report on Form 10-K other than statements of historical fact, including statements regarding our future results of operations and financial position, our business strategy and plans, and our objectives for future operations, are forward-looking statements. The words \u201cbelieve,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cestimate,\u201d \u201ccontinue,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cexpect,\u201d and similar expressions are intended to identify forward-looking statements. We have based these forward-looking statements largely on our current expectations and projections about future events and trends that we believe may affect our financial condition, results of operations, business strategy, short-term and long-term business operations and objectives, and financial needs. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in Part I, Item 1A, \u201cRisk Factors\u201d in this Annual Report on Form 10-K. Moreover, we operate in a very competitive and rapidly changing environment. New risks emerge from time to time. It is not possible for our management to predict all risks, nor can we assess the impact of all factors on our business or the extent to which any factor, or combination of factors, may cause actual results to differ materially from those contained in any forward-looking statements we may make. In light of these risks, uncertainties and assumptions, the future events and trends discussed in this Annual Report on Form 10-K may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 115,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "HIGH",
+     "",
+     "",
+     "",
+     "LOW",
+     ""
+    ],
+    [
+     "Quarter Ended:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2021",
+     "",
+     "$",
+     "4.00",
+     "",
+     "",
+     "$",
+     "3.00"
+    ],
+    [
+     "March 31, 2021",
+     "",
+     "$",
+     "4.66",
+     "",
+     "",
+     "$",
+     "2.83"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 593,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "The Common Stock of the Company has been quoted on the alternative trading system branded StartEngine Secondary, and operated by our subsidiary, StartEngine Primary, under the symbol \u201cSTGC.\u201d The Company has an open offering under Regulation A, and is currently not quoted. However, when we are quoted on the StartEngine Secondary, our securities may be less liquid, receive less coverage by security analysts and news media, and generate lower prices than might otherwise be obtained if they were listed on a national securities exchange.\nThe following table sets forth the high and low closing prices for our common stock for the quarters indicated as reported by StartEngine Secondary. These prices represent quotations between dealers without adjustment for retail mark-up, markdown or commission and may not represent actual transactions.\nOur securities traded during the following period: October 2020 - June 2021. The Company effected a 3 for 1 split in July 2021, we had a trading history as follows (adjusted on a post-split basis):",
+   "prose_after": "Last Reported Price.\nOn June 30, 2021 the last reported closing price of our shares of common stock reported on the StartEngine Secondary was $3.66 per share.\nHolders\nAs of March 31, 2023, there were 33,473,977 shares of common stock, which were held by approximately 32,601 shareholders of record. In addition, there were 10,240,536 shares of our Series Seed Preferred Stock outstanding, which shares were held by 40 shareholders of\nrecord, there were 9,272,044 shares of our Series Seed A Stock outstanding, which shares were held by 3 shareholders of record and there were 482,104 shares of our Series T Preferred Stock outstanding, which shares were held by 12 shareholders of record.\nDividends\nWe have never paid cash dividends on any of our capital stock and we currently intend to retain our future earnings, if any, to fund the development and growth of our business. We do not intend to pay cash dividends to holders of our common stock in the foreseeable future.\nEquity Compensation Plans",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "securities"
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "remaining"
+    ],
+    [
+     "",
+     "",
+     "securities",
+     "",
+     "Weighted-",
+     "",
+     "",
+     "available for"
+    ],
+    [
+     "",
+     "",
+     "to be issued",
+     "",
+     "average",
+     "",
+     "",
+     "future issuance"
+    ],
+    [
+     "",
+     "",
+     "upon",
+     "",
+     "exercise",
+     "",
+     "",
+     "under equity"
+    ],
+    [
+     "",
+     "",
+     "exercise of",
+     "",
+     "price of",
+     "",
+     "",
+     "compensation"
+    ],
+    [
+     "",
+     "",
+     "outstanding",
+     "",
+     "outstanding",
+     "",
+     "",
+     "plans (excluding"
+    ],
+    [
+     "",
+     "",
+     "options,",
+     "",
+     "options,",
+     "",
+     "",
+     "securities"
+    ],
+    [
+     "",
+     "",
+     "warrants",
+     "",
+     "warrants",
+     "",
+     "",
+     "reflected in"
+    ],
+    [
+     "Plan category",
+     "",
+     "and rights",
+     "",
+     "and rights",
+     "",
+     "",
+     "column (a))"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "11,590,000",
+     "",
+     "$",
+     "4.18",
+     "",
+     "4,476,500"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "",
+     "11,590,000",
+     "",
+     "$",
+     "4.18",
+     "",
+     "4,476,500"
+    ]
+   ],
+   "caption_stack": [
+    "Number of",
+    "securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 618,
+    "end_line": 635
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Last Reported Price.\nOn June 30, 2021 the last reported closing price of our shares of common stock reported on the StartEngine Secondary was $3.66 per share.\nHolders\nAs of March 31, 2023, there were 33,473,977 shares of common stock, which were held by approximately 32,601 shareholders of record. In addition, there were 10,240,536 shares of our Series Seed Preferred Stock outstanding, which shares were held by 40 shareholders of\nrecord, there were 9,272,044 shares of our Series Seed A Stock outstanding, which shares were held by 3 shareholders of record and there were 482,104 shares of our Series T Preferred Stock outstanding, which shares were held by 12 shareholders of record.\nDividends\nWe have never paid cash dividends on any of our capital stock and we currently intend to retain our future earnings, if any, to fund the development and growth of our business. We do not intend to pay cash dividends to holders of our common stock in the foreseeable future.\nEquity Compensation Plans",
+   "prose_after": "Recent Sales of Unregistered Securities and Use of Proceeds\nDuring the past three years, the Company has engaged in the following offerings of securities*:\n\u25cf From December 5, 2019 through May 8, 2020, the Company sold and issued 73,053 shares of Common Stock under Regulation Crowdfunding for a total of $182,633. Of the securities sold in the offering, 73,053 shares of Common Stock were sold where TruCrowd, Inc. (\u201cTruCrowd\u201d) was the funding portal and received $11,871 in commissions.\n\u25cf From April 29, 2020 through September 15, 2020, the Company sold and issued 139,038 shares of Common Stock under Regulation Crowdfunding for a total of $518,209. Of the securities sold in the offering, 139,038 shares of Common Stock were sold where TruCrowd, Inc. (\u201cTruCrowd\u201d) was the funding portal and received $33,684 in commissions.\n\u25cf From May 29, 2020 through December 17, 2020, the Company sold and issued 4,356,843 shares of Common Stock under Regulation A for a total of $17,052,746 and 67,500 shares of Series T Preferred Stock under Regulation A for a total of $200,000. Of the securities sold in the offering, 379,533 shares of Common Stock were sold where Dalmore Group, LLC (\u201cDalmore\u201d) was the broker-dealer and received $49,301 in commissions.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "$Change"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "$",
+     "24,360,685",
+     "",
+     "$",
+     "29,078,030",
+     "",
+     "(4,717,345)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "",
+     "6,368,629",
+     "",
+     "",
+     "5,888,893",
+     "",
+     "479,736"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "17,992,056",
+     "",
+     "",
+     "23,189,137",
+     "",
+     "(5,197,081)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "8,723,615",
+     "",
+     "",
+     "8,869,654",
+     "",
+     "(146,039)"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "",
+     "12,478,887",
+     "",
+     "",
+     "11,832,183",
+     "",
+     "646,704"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "4,667,593",
+     "",
+     "",
+     "3,132,996",
+     "",
+     "1,534,597"
+    ],
+    [
+     "Change in fair value of warrants received for fees",
+     "",
+     "",
+     "169,520",
+     "",
+     "",
+     "129,357",
+     "",
+     "40,163"
+    ],
+    [
+     "Impairment in value of shares received for fees",
+     "",
+     "",
+     "21,863",
+     "",
+     "",
+     "314,261",
+     "",
+     "(292,398)"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "26,061,478",
+     "",
+     "",
+     "24,278,451",
+     "",
+     "1,783,027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "",
+     "(8,069,422)",
+     "",
+     "",
+     "(1,089,314)",
+     "",
+     "(6,980,108)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "",
+     "",
+     "(188,684)",
+     "",
+     "",
+     "(113,748)",
+     "",
+     "(74,936)"
+    ],
+    [
+     "Total other expense (income), net",
+     "",
+     "",
+     "(188,684)",
+     "",
+     "",
+     "(113,748)",
+     "",
+     "(74,936)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before provision for income taxes",
+     "",
+     "",
+     "(7,880,738)",
+     "",
+     "",
+     "(975,566)",
+     "",
+     "(6,905,172)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "63,563",
+     "",
+     "",
+     "90,863",
+     "",
+     "(27,300)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "(7,944,302)",
+     "",
+     "",
+     "(1,066,429)",
+     "",
+     "(6,877,873)"
+    ],
+    [
+     "Less: net loss attributable to noncontrolling interest",
+     "",
+     "",
+     "(9,124)",
+     "",
+     "",
+     "(35,914)",
+     "",
+     "26,790"
+    ],
+    [
+     "Net Income (loss) attributable to stockholders",
+     "",
+     "",
+     "(7,935,178)",
+     "",
+     "$",
+     "(1,030,515)",
+     "",
+     "(6,904,663)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 684,
+    "end_line": 718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "On June 10, 2019, our subsidiary, StartEngine Primary LLC, was approved for membership as a broker-dealer with FINRA. During 2021, we experienced increased costs for payroll and training that will increase relative to our revenue. We anticipate that this trend will continue into 2022. In addition, in April 2020 we received approval to operate an ATS. StartEngine Primary launched its ATS, branded as \u201cStartEngine Secondary\u201d on May 18, 2020. As of December 31, 2021, four additional issuers were quoted on the platform. Currently, for StartEngine Secondary, we generate revenues by charging trade commissions to the sellers of the shares and we intend to generate revenues by charging a 5% commission to the seller. We expect increased costs due to technology and operations related to the operation of our ATS. We anticipate operating the ATS will initially increase our overall expenses by $50,000 per month. Further, we anticipate receiving increased revenue related to offerings under Regulation A.\nIn June 2022, we became a reporting company, as a result of which we anticipate higher internal costs related to the increased administrative burden as well as higher professional fees.\nWe additionally anticipate having to engage and train additional compliance personnel, to better ensure continued compliance with FINRA and SEC and also in order to expand our broker-dealer operations.\nOperating Results\nYear Ended December 31, 2022 Compared with the Year Ended December 31, 2021\nThe following table summarizes the results of our operations for the fiscal year ended December 31, 2022 as compared to the fiscal year ended December 31, 2021.",
+   "prose_after": "Revenues\nOur revenues during the fiscal year ended December 31, 2022 were $24,360,685, which represented decrease of $4,717,345, or 16%, from revenues in the same period in 2021. The following are the major components of our revenues during the years ended December 31, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "$ Change",
+     ""
+    ],
+    [
+     "Regulation Crowdfunding platform fees",
+     "",
+     "$",
+     "10,278,596",
+     "",
+     "$",
+     "14,617,318",
+     "",
+     "$",
+     "(4,438,722)"
+    ],
+    [
+     "Regulation A commissions",
+     "",
+     "",
+     "5,421,047",
+     "",
+     "",
+     "6,054,340",
+     "",
+     "",
+     "(633,293)"
+    ],
+    [
+     "StartEngine Premium",
+     "",
+     "",
+     "2,289,999",
+     "",
+     "",
+     "2,023,000",
+     "",
+     "",
+     "266,999"
+    ],
+    [
+     "StartEngine Secure",
+     "",
+     "",
+     "1,286,483",
+     "",
+     "",
+     "868,731",
+     "",
+     "",
+     "417,752"
+    ],
+    [
+     "StartEngine Promote",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "278,159",
+     "",
+     "",
+     "(278,159)"
+    ],
+    [
+     "OWNers Bonus revenue",
+     "",
+     "",
+     "4,437,943",
+     "",
+     "",
+     "4,934,022",
+     "",
+     "",
+     "(496,079)"
+    ],
+    [
+     "Other service revenue",
+     "",
+     "",
+     "646,617",
+     "",
+     "",
+     "302,460",
+     "",
+     "",
+     "344,157"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "$",
+     "24,360,685",
+     "",
+     "$",
+     "29,078,030",
+     "",
+     "$",
+     "(4,717,345)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 724,
+    "end_line": 742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Revenues\nOur revenues during the fiscal year ended December 31, 2022 were $24,360,685, which represented decrease of $4,717,345, or 16%, from revenues in the same period in 2021. The following are the major components of our revenues during the years ended December 31, 2022 and 2021:",
+   "prose_after": "The decrease in total revenues in twelve-months ended December 31, 2022 as compared to the same period in 2021 is primarily due to the following:\n\u25cf Decrease in Regulation Crowdfunding platform fees of $4,438,722 due primarily to lower amounts raised by issuers in Regulation Crowdfunding offerings. Specifically, in 2022, the Company raised approximately $121 million for issuers compared with 2021 raising approximately $142 million for issuers.* In addition to lower platform fees, the Company received reduced stock compensation from issuers in 2022 of approximately $209,000 than the previous year.\n\u25cf Decrease in Regulation A commissions of $633,293, due primarily to lower amounts raised in Regulation A offerings for its issuers. Specifically, in 2022, the Company raised approximately $74 million for issuers compared with 2021 raising approximately $101 million for issuers.* This loss in revenue, however, was partially offset due to receiving more of the platform fees in cash compensation rather than compensation in stock and warrants.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 755,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "$ Change",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "$",
+     "(7,094,758)",
+     "",
+     "$",
+     "(942,696)",
+     "",
+     "$",
+     "(6,152,062)"
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "$",
+     "(1,210,525)",
+     "",
+     "$",
+     "(65,975)",
+     "",
+     "$",
+     "(1,144,550)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "$",
+     "2,765,385",
+     "",
+     "$",
+     "3,469,655",
+     "",
+     "$",
+     "(704,279)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The Company records collectibles and real estate at cost in accordance with the Company\u2019s policy. These long-lived assets are reviewed for impairment annually or whenever events or changes in circumstances indicate that the carrying amount of an asset may not be recoverable. In general, we believe that we purchase these assets in arms-length transactions at fair value and such transactions are evidence of fair market value in the near term. For collectibles, over time, and as trends change and economic factors effect various markets for which we hold assets, the estimation of certain assets that do not trade in a regular market may be difficult to assess for fair value. Certain assets may be subject to market manipulation or overproduction that could effect the underlying value of like or similar items. The quality of authentication bodies may effect future valuation. If there are limited data points to assess fair value, especially for one-of-a-kind collectibles, we may not identify impairments in a timely manor. Many of the collectibles have value that is in the eye of the beholder. Accordingly, there is significant uncertainty to what these assets would be valued at in subsequent arms-length transactions. For real estate assets, there tend to be more relevant data points, including comparable sales in close proximity to held real estate assets. The Company can also assess trend information in the overall economy and local economy where such assets may be held. However, sharp changes in economic conditions may make it difficult to estimate fair value and therefore potential impairment.\nLiquidity and Capital Resources\nStatement of Cash Flows\nThe following table summarizes, for the periods indicated, selected items in our condensed Statements of Cash Flows:",
+   "prose_after": "Our net loss attributable to stockholders during the year ended December 31, 2022 was $7,935,178, as compared to a net loss of $1,030,515 in during the twelve-month period ended December 31, 2021.\nCash used by operating activities for the year ended December 31, 2022 was $7,094,757 as compared to cash used by operating activities of $942,696 for the same period in 2021. The increase in cash used by operating activities in 2022 was primarily due to the net loss in the period as well as an increase cash used for deferred revenue $4.8M. These losses were offset by a $1.3M increase in cash provided\nfrom accounts receivable collections, $1.4M increase in cash provided in stock based compensation us the stock based compensation expense increased, and finally a $4.6M provided in other current assets due to cash received from advertising loans as well as prepaid expense amortization.\nCash used in investing activities for the year ended December 31, 2022 was $1,210,526, as compared to cash used in investing activities of $65,975 in the same period in 2021. The cash used in 2022 relates to the purchase or collectible assets that are sold in our StartEngine Assets offerings.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "15,460,469",
+     "",
+     "$",
+     "21,000,367"
+    ],
+    [
+     "Marketable securities",
+     "",
+     "",
+     "1,856",
+     "",
+     "",
+     "1,856"
+    ],
+    [
+     "Accounts receivable, net of allowance",
+     "",
+     "",
+     "702,257",
+     "",
+     "",
+     "1,477,887"
+    ],
+    [
+     "Other current assets",
+     "",
+     "",
+     "1,953,756",
+     "",
+     "",
+     "3,483,129"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "18,118,338",
+     "",
+     "",
+     "25,963,239"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "109,141",
+     "",
+     "",
+     "57,541"
+    ],
+    [
+     "Investments - warrants",
+     "",
+     "",
+     "1,496,701",
+     "",
+     "",
+     "1,130,133"
+    ],
+    [
+     "Investments - stock",
+     "",
+     "",
+     "6,479,340",
+     "",
+     "",
+     "3,923,788"
+    ],
+    [
+     "Investments - Collectibles",
+     "",
+     "",
+     "3,072,227",
+     "",
+     "",
+     "1,926,394"
+    ],
+    [
+     "Investments - Real Estate",
+     "",
+     "",
+     "2,136,628",
+     "",
+     "",
+     "2,136,628"
+    ],
+    [
+     "Intangible assets",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "20,000"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "66,603",
+     "",
+     "",
+     "50,000"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "31,498,978",
+     "",
+     "$",
+     "35,207,722"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "284,371",
+     "",
+     "$",
+     "573,840"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "1,760,920",
+     "",
+     "",
+     "2,607,420"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "",
+     "2,715,422",
+     "",
+     "",
+     "4,111,829"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "4,760,713",
+     "",
+     "",
+     "7,293,089"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "4,760,713",
+     "",
+     "",
+     "7,293,089"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Cash used by operating activities for the year ended December 31, 2022 was $7,094,757 as compared to cash used by operating activities of $942,696 for the same period in 2021. The increase in cash used by operating activities in 2022 was primarily due to the net loss in the period as well as an increase cash used for deferred revenue $4.8M. These losses were offset by a $1.3M increase in cash provided\nfrom accounts receivable collections, $1.4M increase in cash provided in stock based compensation us the stock based compensation expense increased, and finally a $4.6M provided in other current assets due to cash received from advertising loans as well as prepaid expense amortization.\nCash used in investing activities for the year ended December 31, 2022 was $1,210,526, as compared to cash used in investing activities of $65,975 in the same period in 2021. The cash used in 2022 relates to the purchase or collectible assets that are sold in our StartEngine Assets offerings.\nCash provided by financing activities was $2,765,386 and $3,469,655 for the year ended December 31, 2022 and December 30, 2021, respectively.\nBalance Sheet\nThe following table summarizes our assets and liabilities as of December 31, 2022 as compared as of December 31, 2021:",
+   "prose_after": "The Company\u2019s current assets decreased by $7,844,901 from December 31, 2021 to December 31, 2022. The decrease was primarily driven by a decrease in cash in the amount of $5,539,898 driven by its use in operating activities as well as conversion of cash into collectibles assets.\nThe Company\u2019s long-term assets increased by $4,136,157 from December 31, 2021 to December 31, 2022. This was driven primarily by:\n\u25cf A $1,145,833 increase in collectible assets related to the purchase of assets for our StartEngine Asset offerings which were started in 2021; and\n\u25cf A $2,922,120 increase in warrants and stock assets which we earn as part of compensation for raising funds for issuers.\nCurrent liabilities decreased by $2,532,376 which is primarily due to a decrease in deferred revenue of $1,396,407 due to recognition of deferred OWNers Bonus revenue from 2021, as well as lower OWNers Bonus sales than 2021 which would have increased deferred revenue. Additionally, accrued liabilities decreased $846,500 due to credit card balance paydown between December 31, 2021 and December 31, 2022 as well as lower commission and discretionary bonus accrual.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 869,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statement of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes To Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Report"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We do not currently have any significant loans or available credit facilities. As of December 31, 2022, the Company\u2019s current assets were $18,118,338. To date, our activities have been funded from our revenues, investments from our founders, the previous sale of Series Seed Preferred Shares, Series A Preferred Shares, Series T Preferred Shares, and our Regulation A and Regulation CF offerings.\nWe have no off-balance sheet arrangements, including arrangements that would affect the liquidity, capital resources, market risk support, and credit risk support or other benefits.\nThe Company currently has no material commitments for capital expenditures.\nWe believe we have the cash, marketable securities through our open Regulation A offering, other current assets available, revenues, and access to funding that will be sufficient to fund operations until the Company starts generating positive cash flows from normal operations.\nItem 7A.Quantitative and Qualitative Disclosures About Market Risk\nAs a smaller reporting Company as defined by \u00a7229.10(f)(1), StartEngine is not required to provide the information under this Item.\nItem 8.Financial Statements and Supplementary Data\nIndex of the Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the shareholders and the board of directors of StartEngine Crowdfunding, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of StartEngine Crowdfunding, Inc. (the \"Company\") as of December 31, 2022 and 2021, the related statements of operations, stockholders' equity (deficit), and cash flows for the years then ended, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 900,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "15,460,469",
+     "",
+     "$",
+     "21,000,367"
+    ],
+    [
+     "Marketable securities",
+     "",
+     "",
+     "1,856",
+     "",
+     "",
+     "1,856"
+    ],
+    [
+     "Accounts receivable, net of allowance",
+     "",
+     "",
+     "702,257",
+     "",
+     "",
+     "1,477,887"
+    ],
+    [
+     "Other current assets",
+     "",
+     "",
+     "1,953,756",
+     "",
+     "",
+     "3,483,129"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "18,118,338",
+     "",
+     "",
+     "25,963,239"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "109,141",
+     "",
+     "",
+     "57,541"
+    ],
+    [
+     "Investments - warrants",
+     "",
+     "",
+     "1,496,701",
+     "",
+     "",
+     "1,130,133"
+    ],
+    [
+     "Investments - stock",
+     "",
+     "",
+     "6,479,340",
+     "",
+     "",
+     "3,923,788"
+    ],
+    [
+     "Investments - Collectibles",
+     "",
+     "",
+     "3,072,227",
+     "",
+     "",
+     "1,926,394"
+    ],
+    [
+     "Investments - Real Estate",
+     "",
+     "",
+     "2,136,628",
+     "",
+     "",
+     "2,136,628"
+    ],
+    [
+     "Intangible assets",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "20,000"
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "66,603",
+     "",
+     "",
+     "50,000"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "31,498,978",
+     "",
+     "$",
+     "35,207,722"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "284,371",
+     "",
+     "$",
+     "573,840"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "1,760,920",
+     "",
+     "",
+     "2,607,420"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "",
+     "2,715,422",
+     "",
+     "",
+     "4,111,829"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "4,760,713",
+     "",
+     "",
+     "7,293,089"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "4,760,713",
+     "",
+     "",
+     "7,293,089"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Preferred Stock, par value $0.00001, 10,350,000 shares authorized, 9,272,044 and 9,272,044 shares issued and outstanding at December 31, 2022 and December 31, 2021, respectfully, liquidation preference of $5,310,409 and $5,310,409 at December 31, 2022 and December 31, 2021, respectively.",
+     "",
+     "",
+     "5,286,667",
+     "",
+     "",
+     "5,286,667"
+    ],
+    [
+     "Series T Preferred Stock, par value $0.00001, 4,950,000 shares authorized, 482,104 and 482,211 shares issued and outstanding at December 31, 2022 and 2021, respectively, liquidation preference of $1,414,209 and $1,414,486 at September 30, 2022 and December 31, 2021, respectively.",
+     "",
+     "",
+     "983,634",
+     "",
+     "",
+     "983,852"
+    ],
+    [
+     "Series Seed Preferred Stock, par value $0.00001, 10,650,000 shares authorized, 10,240,536 and 10,247,938 and shares issued and outstanding at December 31, 2022 and December 31, 2021, respectfully, liquidation preference of $1,707,756 and $1,707,990 at December 31, 2022 and December 31, 2021, respectively.",
+     "",
+     "",
+     "1,706,756",
+     "",
+     "",
+     "1,707,990"
+    ],
+    [
+     "Common stock, par value $0.00001, 75,000,000 shares authorized, 33,301,662 and 32,865,193 shares issued and outstanding at December 31, 2022 and December 31, 2021, respectively.",
+     "",
+     "",
+     "332",
+     "",
+     "",
+     "328"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "45,639,151",
+     "",
+     "",
+     "39,246,724"
+    ],
+    [
+     "Subscription Receivable",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(367,831)"
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "",
+     "(13,251)",
+     "",
+     "",
+     "(4,127)"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(26,865,024)",
+     "",
+     "",
+     "(18,938,967)"
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "",
+     "26,738,265",
+     "",
+     "",
+     "27,914,633"
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "$",
+     "31,498,978",
+     "",
+     "$",
+     "35,207,722"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ BF Borgers CPA PC\nBF Borgers CPA PC (PCAOB ID 5041)\nWe have served as the Company's auditor since 2021\nLakewood, CO\nMarch 31, 2023\nConsolidated Balance Sheets",
+   "prose_after": "Consolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 930,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "$",
+     "24,360,685",
+     "",
+     "$",
+     "29,078,030"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "",
+     "6,368,629",
+     "",
+     "",
+     "5,888,893"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "17,992,056",
+     "",
+     "",
+     "23,189,137"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "8,723,615",
+     "",
+     "",
+     "8,869,654"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "",
+     "12,478,887",
+     "",
+     "",
+     "11,832,183"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "4,667,593",
+     "",
+     "",
+     "3,132,996"
+    ],
+    [
+     "Change in fair value of warrants received for fees",
+     "",
+     "",
+     "169,520",
+     "",
+     "",
+     "129,357"
+    ],
+    [
+     "Impairment in value of shares received for fees",
+     "",
+     "",
+     "21,863",
+     "",
+     "",
+     "314,261"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "26,061,478",
+     "",
+     "",
+     "24,278,451"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "",
+     "(8,069,422)",
+     "",
+     "",
+     "(1,089,314)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "",
+     "",
+     "(188,684)",
+     "",
+     "",
+     "(113,748)"
+    ],
+    [
+     "Total other expense (income), net",
+     "",
+     "",
+     "(188,684)",
+     "",
+     "",
+     "(113,748)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before provision for income taxes",
+     "",
+     "",
+     "(7,880,738)",
+     "",
+     "",
+     "(975,566)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "63,563",
+     "",
+     "",
+     "90,863"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "",
+     "(7,944,302)",
+     "",
+     "",
+     "(1,066,429)"
+    ],
+    [
+     "Less: net loss attributable to noncontrolling interest",
+     "",
+     "",
+     "(9,124)",
+     "",
+     "",
+     "(35,914)"
+    ],
+    [
+     "Net Income (loss) attributable to stockholders",
+     "",
+     "",
+     "(7,935,178)",
+     "",
+     "$",
+     "(1,030,515)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average loss per share - basic and diluted",
+     "",
+     "$",
+     "(0.14)",
+     "",
+     "$",
+     "(0.03)"
+    ],
+    [
+     "Weighted average shares outstanding - basic and diluted",
+     "",
+     "",
+     "58,402,642",
+     "",
+     "",
+     "56,894,507"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1041
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statement of Operations",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 995,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Series T Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Series Seed Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Subscription",
+     "",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Additional",
+     "",
+     "Receivable",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "9,762,783",
+     "",
+     "$",
+     "5,566,473",
+     "",
+     "497,439",
+     "",
+     "$",
+     "1,014,922",
+     "",
+     "10,650,000",
+     "",
+     "$",
+     "1,775,000",
+     "",
+     "30,508,476",
+     "",
+     "$",
+     "305",
+     "",
+     "32,526,503",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(40,041)",
+     "",
+     "$",
+     "(17,872,540)",
+     "",
+     "22,970,621"
+    ],
+    [
+     "Sale of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1,234,922",
+     "",
+     "",
+     "12",
+     "",
+     "15,180,987",
+     "",
+     "",
+     "(367,831)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "14,813,168"
+    ],
+    [
+     "Offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(11,471,836)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(11,471,836)"
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "213,766",
+     "",
+     "",
+     "2",
+     "",
+     "128,321",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "128,323"
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,504,872",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,504,872"
+    ],
+    [
+     "Conversion to Common Stock",
+     "",
+     "(490,739)",
+     "",
+     "",
+     "(279,806)",
+     "",
+     "(15,228)",
+     "",
+     "",
+     "(31,070)",
+     "",
+     "(402,062)",
+     "",
+     "",
+     "(67,010)",
+     "",
+     "908,029",
+     "",
+     "",
+     "9",
+     "",
+     "377,877",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "35,914",
+     "",
+     "",
+     "(35,914)",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,030,515)",
+     "",
+     "(1,030,515)"
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "9,272,044",
+     "",
+     "",
+     "5,286,667",
+     "",
+     "482,211",
+     "",
+     "",
+     "983,852",
+     "",
+     "10,247,938",
+     "",
+     "",
+     "1,707,990",
+     "",
+     "32,865,193",
+     "",
+     "",
+     "328",
+     "",
+     "39,246,724",
+     "",
+     "",
+     "(367,831)",
+     "",
+     "",
+     "(4,127)",
+     "",
+     "",
+     "(18,938,969)",
+     "",
+     "27,914,633"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1048,
+    "end_line": 1066
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "Series T Preferred Stock",
+     "",
+     "",
+     "",
+     "Series Seed Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Subscription",
+     "",
+     "Noncontrolling",
+     "",
+     "Accumulated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Additional",
+     "",
+     "Receivable",
+     "",
+     "Interest",
+     "",
+     "Deficit",
+     "",
+     "Total"
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "9,272,044",
+     "",
+     "5,286,667",
+     "",
+     "482,211",
+     "",
+     "983,852",
+     "",
+     "10,247,938",
+     "",
+     "1,707,990",
+     "",
+     "32,865,193",
+     "",
+     "328",
+     "",
+     "39,246,724",
+     "",
+     "(367,831)",
+     "",
+     "(4,127)",
+     "",
+     "(18,938,969)",
+     "",
+     "27,914,633"
+    ],
+    [
+     "Sale of common stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "401,645",
+     "",
+     "4",
+     "",
+     "7,101,429",
+     "",
+     "367,831",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,469,264"
+    ],
+    [
+     "Offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,741,913)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,741,913)"
+    ],
+    [
+     "Conversion to Common Stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(107)",
+     "",
+     "(218)",
+     "",
+     "(7,402)",
+     "",
+     "(1,234)",
+     "",
+     "26,897",
+     "",
+     "\u2014",
+     "",
+     "1,452",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,927",
+     "",
+     "\u2014",
+     "",
+     "38,035",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,035"
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,993,424",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,993,424"
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,124)",
+     "",
+     "9,124",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,935,178)",
+     "",
+     "(7,935,178)"
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "9,272,044",
+     "",
+     "5,286,667",
+     "",
+     "482,104",
+     "",
+     "983,634",
+     "",
+     "10,240,536",
+     "",
+     "1,706,756",
+     "",
+     "33,301,662",
+     "",
+     "332",
+     "",
+     "45,639,151",
+     "",
+     "0",
+     "",
+     "(13,251)",
+     "",
+     "(26,865,023)",
+     "",
+     "26,738,265"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (loss)",
+     "",
+     "$",
+     "(7,944,302)",
+     "",
+     "$",
+     "(1,066,429)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "13,090",
+     "",
+     "",
+     "6,086"
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "",
+     "314,214",
+     "",
+     "",
+     "118,335"
+    ],
+    [
+     "Fair value of warrants received for fees",
+     "",
+     "",
+     "(536,088)",
+     "",
+     "",
+     "(828,300)"
+    ],
+    [
+     "Fair value of investments - other received for fees",
+     "",
+     "",
+     "(2,577,415)",
+     "",
+     "",
+     "(3,190,512)"
+    ],
+    [
+     "Change in fair value of warrant investments",
+     "",
+     "",
+     "169,520",
+     "",
+     "",
+     "129,357"
+    ],
+    [
+     "Impairment of investments - other received for fees",
+     "",
+     "",
+     "21,863",
+     "",
+     "",
+     "314,261"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "3,993,424",
+     "",
+     "",
+     "2,504,872"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "461,420",
+     "",
+     "",
+     "(844,589)"
+    ],
+    [
+     "Other current assets",
+     "",
+     "",
+     "1,512,768",
+     "",
+     "",
+     "(3,094,467)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "(289,469)",
+     "",
+     "",
+     "227,695"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "(837,376)",
+     "",
+     "",
+     "1,426,916"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "",
+     "(1,396,407)",
+     "",
+     "",
+     "3,354,079"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(7,094,758)",
+     "",
+     "",
+     "(942,696)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments - Marketable Securities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,052,686"
+    ],
+    [
+     "Investments - Collectibles",
+     "",
+     "",
+     "(1,145,833)",
+     "",
+     "",
+     "(1,926,394)"
+    ],
+    [
+     "Investments - Real Estate",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,136,628)"
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "",
+     "(64,692)",
+     "",
+     "",
+     "(55,639)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(1,210,525)",
+     "",
+     "",
+     "(65,975)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "",
+     "7,101,432",
+     "",
+     "",
+     "15,180,999"
+    ],
+    [
+     "Subscription Receivable",
+     "",
+     "",
+     "367,832",
+     "",
+     "",
+     "(367,832)"
+    ],
+    [
+     "Offering costs",
+     "",
+     "",
+     "(4,741,913)",
+     "",
+     "",
+     "(11,471,836)"
+    ],
+    [
+     "Proceeds from exercise of employee stock options",
+     "",
+     "",
+     "38,035",
+     "",
+     "",
+     "128,324"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "2,765,385",
+     "",
+     "",
+     "3,469,655"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Decrease) increase in cash and restricted cash",
+     "",
+     "",
+     "(5,539,898)",
+     "",
+     "",
+     "2,460,984"
+    ],
+    [
+     "Cash and restricted cash, beginning of period",
+     "",
+     "",
+     "21,000,367",
+     "",
+     "",
+     "18,539,383"
+    ],
+    [
+     "Cash and restricted cash, end of period",
+     "",
+     "$",
+     "15,460,469",
+     "",
+     "$",
+     "21,000,367"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Cash paid for income taxes",
+     "",
+     "$",
+     "63,563",
+     "",
+     "$",
+     "90,863"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1092,
+    "end_line": 1147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 NATURE OF OPERATIONS\nStartEngine Crowdfunding, Inc. was formed on March 19, 2014 (\u201cInception\u201d) in the State of Delaware. The Company was originally incorporated as StartEngine Crowdsourcing, Inc. and changed to the current name on May 8, 2014. The consolidated financial statements of StartEngine Crowdfunding, Inc. (the \u201cCompany\u201d are prepared in accordance with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d). The Company\u2019s headquarters are located in Burbank, California.\nThe Company aims to revolutionize the startup financing model by helping both accredited and non-accredited investors invest in private companies on a public platform. StartEngine Crowdfunding Inc. has wholly-owned subsidiaries, StartEngine Capital LLC, StartEngine Secure LLC, StartEngine Assets LLC and StartEngine Primary LLC. StartEngine Capital LLC is a funding portal registered with the US Securities and Exchange Commission (SEC) and a member of the Financial Industry Regulatory Authority (FINRA), StartEngine Secure LLC is a transfer agent registered with the SEC. StartEngine Assets LLC was formed in 2020 to buy, hold and manage assets in various asset classes such as real estate, automobiles, luxury goods and royalty-producing intangible assets. StartEngine Primary LLC was formed in October 2017 and received approval to operate as a registered broker-dealer in July 2019. On April 16, 2020, StartEngine Primary LLC received approval to operate as an alternative trading system. The Company\u2019s mission is to empower thousands of companies to raise capital and create significant amounts of jobs over the coming years.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1090,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1148,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "15,460,469",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "15,460,469"
+    ],
+    [
+     "Marketable securities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,856",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,856"
+    ],
+    [
+     "Investment - warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,496,701",
+     "",
+     "",
+     "1,496,701"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "14,587,826",
+     "",
+     "$",
+     "1,856",
+     "",
+     "$",
+     "1,496,701",
+     "",
+     "$",
+     "16,959,026"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Level 3\nInvestments - warrants (private portfolio): Fair value measurements of warrants of private portfolio companies are priced based on a modified Black-Scholes option pricing model to estimate the asset value by using stated strike prices, warrant expiration dates modified to account for estimates to actual life relative to stated expiration, risk-free interest rates, and volatility assumptions based on comparable public companies. Option volatility assumptions used in the modified Black-Scholes model are based on public companies who operate in similar industries as companies in our private company portfolio. For these warrants, the fair value of the underlying stock is an unobservable input consistent with Investment - stocks noted above. Certain adjustments may be applied as determined appropriate by management for lack of liquidity.\nThe following fair value hierarchy table presents information about our assets and liabilities that are measured at fair value as of December 31, 2022:",
+   "prose_after": "The following fair value hierarchy table presents information about our assets and liabilities that are measured at fair value as of December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1259,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "21,000,367",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "21,000,367"
+    ],
+    [
+     "Marketable securities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,856",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,856"
+    ],
+    [
+     "Investments - warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,130,132",
+     "",
+     "",
+     "1,130,132"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "21,000,367",
+     "",
+     "$",
+     "1,856",
+     "",
+     "$",
+     "1,130,132",
+     "",
+     "$",
+     "22,132,355"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1223,
+    "end_line": 1233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following fair value hierarchy table presents information about our assets and liabilities that are measured at fair value as of December 31, 2021:",
+   "prose_after": "The following table presents additional information about transfers in and out of Level 3 assets measured at fair value for the year ended December 31, 2022 and 2021 as it relates to Investments - warrants:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1259,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Investments-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Warrants",
+     ""
+    ],
+    [
+     "Fair value at December 31, 2021",
+     "",
+     "",
+     "1,130,133"
+    ],
+    [
+     "Receipt of warrants",
+     "",
+     "",
+     "536,088"
+    ],
+    [
+     "Change in fair value of warrants",
+     "",
+     "",
+     "(169,520)"
+    ],
+    [
+     "Fair value at December 31, 2022",
+     "",
+     "$",
+     "1,496,701"
+    ]
+   ],
+   "caption_stack": [
+    "Investments-",
+    "Warrants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1236,
+    "end_line": 1247
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following table presents additional information about transfers in and out of Level 3 assets measured at fair value for the year ended December 31, 2022 and 2021 as it relates to Investments - warrants:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1259,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Investments-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Warrants",
+     ""
+    ],
+    [
+     "Fair value at December 31, 2020",
+     "",
+     "",
+     "431,190"
+    ],
+    [
+     "Receipt of warrants",
+     "",
+     "",
+     "698,943"
+    ],
+    [
+     "Change in fair value of warrants",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Fair value at December 31, 2021",
+     "",
+     "$",
+     "1,130,133"
+    ]
+   ],
+   "caption_stack": [
+    "Investments-",
+    "Warrants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1248,
+    "end_line": 1259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following range of variables were used in valuing Level 3 warrant assets during the year ended December 31, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1259,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Expected life (years)",
+     "",
+     "",
+     "1 - 2.5",
+     "",
+     "",
+     "1 - 2.5",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "0.1% - 0.9",
+     "%",
+     "",
+     "0.1% - 0.9",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "",
+     "30% - 225",
+     "%",
+     "",
+     "30% - 225",
+     "%"
+    ],
+    [
+     "Annual dividend yield",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Underlying share values",
+     "",
+     "$",
+     "0.30 \u2013 100.00",
+     "",
+     "$",
+     "0.30 \u2013 100.00",
+     ""
+    ],
+    [
+     "Strike Prices",
+     "",
+     "$",
+     "0.30 \u2013 100.00",
+     "",
+     "$",
+     "0.30 \u2013 100.00",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1262,
+    "end_line": 1272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following range of variables were used in valuing Level 3 warrant assets during the year ended December 31, 2022 and 2021:",
+   "prose_after": "For Investments \u2014 Warrants, the primary and most significant unobservable input relates to the underlying share value of the issuers for which we receive warrants. In all cases, there were sales of the stock to the public through Regulation Crowdfunding, Regulation A, or a Regulation D funding mechanism, but such sales are often not to the level that an active market existed or exists. After the sales, such shares are often illiquid, and a change in valuation is often difficult to determine due to the lack of information available. Information regarding these unobservable inputs could correspondingly change the value of these assets.\nFor warrants, the Company also adjusts the expected life of certain warrants to account for potential liquidation events, as well as doubts regarding the ability for the issuer companies to continue as a going concern. We may apply marketability discounts to private company warrants to account for a general lack of liquidity of 20% due to the private nature of the associated underlying company. The quantitative measure used is based upon various models. Significant judgment is required by Management in selecting unobservable able inputs, and accordingly a change in the assumptions used for the valuation could cause the value to be significantly different. In general, increases in underlying share prices, expected life and volatility, increase the value of the warrants, whereas decreases would reduce the value.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1259,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1298,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Period Ended December 31,",
+     "",
+     "",
+     "Period Ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Wine",
+     "",
+     "$",
+     "476,115",
+     "",
+     "$",
+     "208,123"
+    ],
+    [
+     "Trading Cards",
+     "",
+     "",
+     "486,657",
+     "",
+     "",
+     "939,271"
+    ],
+    [
+     "Artwork",
+     "",
+     "",
+     "1,287,378",
+     "",
+     "",
+     "779,000"
+    ],
+    [
+     "Comic Books",
+     "",
+     "",
+     "704,477",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "NFT",
+     "",
+     "",
+     "64,472",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Watches",
+     "",
+     "",
+     "53,128",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total collectibles",
+     "",
+     "$",
+     "3,072,227",
+     "",
+     "$",
+     "1,926,394"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1329,
+    "end_line": 1345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company treats the underlying assets as long-lived assets, and the underlying assets will be subject to an annual test for impairment and will not be depreciated or amortized. These long-lived assets are reviewed for impairment annually or whenever events or changes in circumstances indicate that the carrying amount of an asset may not be recoverable. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to the estimated undiscounted future cash flows expected to be generated by the asset. If the carrying amount of an asset exceeds its estimated future cash flows, an impairment charge is recognized in the amount by which the carrying amount of the asset exceeds the fair value of the asset.\nThe underlying assets are purchased by our subsidiary, StartEngine Assets, LLC, (the \u201cAdministrative Manager\u201d) and sold to our Series LLC subsidiary collectible funds for cash or a promissory note. The Series uses the proceeds of the offering to pay off the note. Acquisition expenses are typically paid for in advance by the Administrative Manager and are reimbursed by the Series from the proceeds of the offering in accordance with the offering circular. All such transactions are eliminated in consolidation.\nThe below is a breakdown of the types of collectibles and their value held as of December 31, 2022:",
+   "prose_after": "Crypto Assets\nThe Company holds crypto-denominated assets (\u201ccrypto assets\u201d), which are included as other assets in the balance sheets. As of December 31, 2022 and December 31, 2021, cryptocurrencies were $16,604.02 and $0, which included one bitcoin and is recorded at cost less impairment.\nInvestments \u2013 Real Estate\nInvestments in real estate are stated at cost less accumulated depreciation and presented separately from Property and Equipment used for internal operating purposes. Real Estate purchased for investment includes the cost of the purchased property, including the building, related land. The Company allocates certain capitalized title fees and relevant acquisition expenses to the capitalized costs of the building. All capitalized property costs, except for the value attributable to the land, are depreciated using the straight-line method over the estimated useful life of 27.5-39 years depending on the use of the building. Additions and property improvements in excess of $5,000 are capitalized and depreciated using the straight-line method over the estimated useful lives of 5-7 years, while routine repairs and maintenance are charged to expense as incurred. At the time of retirement or other disposition of property and equipment, the cost and accumulated depreciation are removed from the accounts and any resulting gain or loss is reflected in the consolidated statement of operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "Year Ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Regulation Crowdfunding platform fees",
+     "",
+     "$",
+     "10,278,596",
+     "",
+     "$",
+     "14,617,318"
+    ],
+    [
+     "Regulation A commissions",
+     "",
+     "",
+     "5,421,047",
+     "",
+     "",
+     "6,054,340"
+    ],
+    [
+     "StartEngine Premium",
+     "",
+     "",
+     "2,289,999",
+     "",
+     "",
+     "2,023,000"
+    ],
+    [
+     "StartEngine Secure",
+     "",
+     "",
+     "1,286,483",
+     "",
+     "",
+     "868,731"
+    ],
+    [
+     "StartEngine Promote",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "278,159"
+    ],
+    [
+     "OWNers Bonus revenue",
+     "",
+     "",
+     "4,437,943",
+     "",
+     "",
+     "4,934,022"
+    ],
+    [
+     "Other service revenue",
+     "",
+     "",
+     "646,617",
+     "",
+     "",
+     "302,461"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "$",
+     "24,360,685",
+     "",
+     "$",
+     "29,078,031"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1396,
+    "end_line": 1413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company hosts periodic events, such as summits, and recognizes revenues from ticket sales and sponsorships. Payments from event attendees and event sponsors received prior to each event are deferred and recognized in revenue once the event occurs.\nThe Company also provides other ancillary bundled professional services, which are recognized as such services are rendered.\nIn all instances, as a practical expedient, the Company does not adjust the transaction price for the effects of a significant financing component if, at contract inception, the period between customer payment and the transfer of goods or services is expected to be one year or less.\nThe Company\u2019s contracts with customers generally have a term of one year or less. As of December 31, 2022 and 2021, the Company had deferred revenue of $2,715,422 and $4,111,829, respectively, related to performance obligations yet to be fulfilled. The Company had no other customer contract assets.\nDuring the year ended December 31, 2022 and 2021, revenue was made up of the following categories associated with the above described services:",
+   "prose_after": "Cost of Revenues\nCost of revenues consists of internal employees, hosting fees, processing fees, and certain software subscription fees that are required to provide services to our issuers.\nResearch and Development\nWe incur research and development costs during the process of researching and developing our technologies and future offerings. Our research and development costs consist primarily of non-capitalizable engineering fees for both employees and consultants related to our website and future product offerings, email and other tools that are utilized for client related services and outreach. During the year ended December 31, 2022 and 2021, research and development costs were $4,667,593 and $3,132,996, respectively.\nStock-Based Compensation\nThe Company accounts for stock-based compensation costs under the provisions of ASC 718, Compensation\u2014Stock Compensation, which requires the measurement and recognition of compensation expense related to the fair value of stock-based compensation awards that are ultimately expected to vest. Stock-based compensation expense recognized includes the compensation cost for all stock-based payments granted to employees, officers, and directors based on the grant date fair value estimated in accordance with the provisions of",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "2021"
+    ],
+    [
+     "Weighted average shares outstanding - basic",
+     "",
+     "30,652,394"
+    ],
+    [
+     "Preferred shares",
+     "",
+     "20,910,222"
+    ],
+    [
+     "Stock options",
+     "",
+     "5,331,891"
+    ],
+    [
+     "Total Common Stock Equivalents",
+     "",
+     "56,894,507"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1432,
+    "end_line": 1442
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "ASC 718. ASC 718 is also applied to awards modified, repurchased, or cancelled during the periods reported. Stock-based compensation is recognized as expense over the employee\u2019s requisite vesting period and over the nonemployee\u2019s period of providing goods or services. The Company recognized a significant increase in Stock-Based Compensation year over year as both the fair value grant and the employee count increased, further increasing the options granted.\nEarnings per Common and Common Equivalent Share\nThe computation of basic earnings per common share is computed using the weighted average number of common shares outstanding during the year. The computation of diluted earnings per common share is based on the weighted average number of shares outstanding during the year plus common stock equivalents which would arise from the exercise of securities outstanding using the treasury stock method and the average market price per share during the period. Options and convertible preferred stock which are common stock equivalents are not included in the diluted earnings per share calculation for the year ended December 31, 2022 as the effects would be anti-dilutive. See Note 6 for outstanding stock-options as of December 31, 2022. The weighted average shares outstanding \u2013 diluted is calculated as follows for the period ended December 31, 2021:",
+   "prose_after": "Concentration of Credit Risk\nThe Company maintains its cash with a major financial institution located in the United States of America which it believes to be credit worthy. Balances are insured by the Federal Deposit Insurance Corporation up to $250,000. At times, the Company may maintain balances in excess of the federally insured limits.\nAt times, the Company may have certain vendors or customers that make up over 10% of the balance at any given time. However, the Company is not dependent on any single or group of vendors or customers, and accordingly, the loss of any such vendors or customers would not have a significant impact on the Company\u2019s operations.\nRecent Accounting Pronouncements\nThe FASB issues ASUs to amend the authoritative literature in the ASC. There have been a number of ASUs to date that amend the original text of ASC. Management believes that those issued to date either (i) provide supplemental guidance, (ii) are technical corrections, (iii) are not applicable to us or (iv) are not expected to have a significant impact our consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "$",
+     "1,856",
+     "",
+     "$",
+     "1,856"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "1,856",
+     "",
+     "$",
+     "1,856"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1459,
+    "end_line": 1467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 MARKETABLE SECURITIES AND INVESTMENTS"
+    }
+   },
+   "prose_before": "The Company maintains its cash with a major financial institution located in the United States of America which it believes to be credit worthy. Balances are insured by the Federal Deposit Insurance Corporation up to $250,000. At times, the Company may maintain balances in excess of the federally insured limits.\nAt times, the Company may have certain vendors or customers that make up over 10% of the balance at any given time. However, the Company is not dependent on any single or group of vendors or customers, and accordingly, the loss of any such vendors or customers would not have a significant impact on the Company\u2019s operations.\nRecent Accounting Pronouncements\nThe FASB issues ASUs to amend the authoritative literature in the ASC. There have been a number of ASUs to date that amend the original text of ASC. Management believes that those issued to date either (i) provide supplemental guidance, (ii) are technical corrections, (iii) are not applicable to us or (iv) are not expected to have a significant impact our consolidated financial statements.\nNOTE 3 \u2013 MARKETABLE SECURITIES AND INVESTMENTS\nMarketable Securities\nMarketable securities consisted of the following as of December 31, 2022 and December 31, 2021:",
+   "prose_after": "Unrealized gain during the year ended December 31, 2022 and 2021 were $0 and $0, respectively.\nInvestments \u2013 Warrant Assets\nEquity warrants, as described in Note 2, are equity warrants received for services provided. The warrants are valued on the date they are earned in accordance with revenue recognition criteria and again at each reporting date.\nInvestments \u2013 Stock\nInvestments - stock, as described in Note 2, consist of shares the Company holds in various companies that launched on its platform received in exchange for services provided. The shares are recorded at cost less any impairment.\nNOTE 4 \u2013 PROPERTY AND EQUIPMENT\nAs of December 31, 2022 and December 31, 2021, property and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "",
+     "$",
+     "137,048",
+     "",
+     "$",
+     "72,358"
+    ],
+    [
+     "Software",
+     "",
+     "",
+     "3,753",
+     "",
+     "",
+     "3,753"
+    ],
+    [
+     "Total property and equipment",
+     "",
+     "",
+     "140,802",
+     "",
+     "",
+     "76,111"
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "",
+     "(31,661)",
+     "",
+     "",
+     "(18,571)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "109,141",
+     "",
+     "$",
+     "57,540"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1482,
+    "end_line": 1494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Unrealized gain during the year ended December 31, 2022 and 2021 were $0 and $0, respectively.\nInvestments \u2013 Warrant Assets\nEquity warrants, as described in Note 2, are equity warrants received for services provided. The warrants are valued on the date they are earned in accordance with revenue recognition criteria and again at each reporting date.\nInvestments \u2013 Stock\nInvestments - stock, as described in Note 2, consist of shares the Company holds in various companies that launched on its platform received in exchange for services provided. The shares are recorded at cost less any impairment.\nNOTE 4 \u2013 PROPERTY AND EQUIPMENT\nAs of December 31, 2022 and December 31, 2021, property and equipment consisted of the following:",
+   "prose_after": "Depreciation expense for the year ended December 31, 2022 and 2021 was $13,090 and $6,086, respectively.\nNOTE 5 \u2013 COMMITMENTS AND CONTINGENCIES\nThe Company is currently not involved with and does not know of any pending or threatening litigation against the Company or any of its officers.\nNOTE 6 \u2013 STOCKHOLDERS\u2019 EQUITY\nPreferred Stock\nAs of December 31, 2022, the Company has authorized the issuance of 25,950,000 shares of our preferred stock with par value of $0.00001. Of these authorized shares, 10,350,000 are designated as Series A, 4,950,000 are designated as Series T, and 10,650,000 are designated as Series Seed.\nSeries A Preferred Stock\nThe Series A has liquidation priority over the Series Seed and common stock. In the event of the liquidation, dissolution or winding up of the Company, the Series A shall be entitled to receive, out of the assets of the Company available for distribution to its stockholders, before any payment is made to Series Seed or common stock, liquidation distributions, which will be paid ratably with the Series T in proportion to its respective liquidation preference. Holders of Series A will receive an amount equal to $0.5727 per share, as adjusted, plus all declared and unpaid dividends thereon to the date fixed for such distribution. If upon such event the assets of the Company legally available for distribution are insufficient to permit payment of the full preferential amount, the entire assets available for distribution to stockholders shall be distributed to the holders of the Series A and Series T ratably in proportion to the full preferential amounts for which they are entitled. The Series A votes on an as-converted basis. The Series A is convertible by the holder at any time after issuance at the conversion price, which equates to a one-to-one basis for common stock. The Series A is automatically convertible into common stock upon the earlier of 1) the vote or written consent of at least a majority of the voting power represented by the then outstanding shares of preferred stock or 2) the closing of a firm-commitment underwritten public offering pursuant to an effective registration statement under the Securities Act of 1933, as amended, coverts the offer and sale of common stock at an offering price of not less than $2.86 per share, as adjusted, with aggregate gross proceeds to the Company of not less than $15,000,000. In addition, the Series A has various anti-dilution provisions which take into account future sales and issuances of common stock and other dilutive instruments.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1514,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Expected life (years)",
+     "",
+     "6.5",
+     "",
+     "6.5",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.5 - 2.5%",
+     "%",
+     "0.6 - 1.1",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "45.7",
+     "%",
+     "45.7",
+     "%"
+    ],
+    [
+     "Annual dividend yield",
+     "",
+     "0",
+     "%",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1537,
+    "end_line": 1545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2021, the Company sold 1,234,922 shares of common stock through its Regulation A offering for gross proceeds of $15,180,999 and incurred offering costs of $11,471,836.\nStock Options\nIn 2015, our Board of Directors adopted the StartEngine Crowdfunding, Inc. 2015 Equity Incentive Plan (the \u201c2015 Plan\u201d). The 2015 Plan provides for the grant of equity awards to employees, and consultants, including stock options, stock purchase rights and restricted stock units to purchase shares of our common stock. Up to 7,590,000 shares of our common stock may be issued pursuant to awards granted under the 2015 Plan. The 2015 Plan is administered by our Board of Directors, and expires ten years after adoption, unless terminated earlier by the Board.\nThe Company valued options granted under the 2015 Plan under ASC 718 using the Black-Scholes pricing model. The granted options in 2022 and 2021 have exercise prices ranging from $4.33 to $25.00, generally vest over four years and expire in ten years. The stock\noptions granted during the year ended December 31, 2022 and 2021 were valued using the Black-Scholes pricing model using the range of inputs as indicated below:",
+   "prose_after": "The risk-free interest rate assumption for options granted is based upon observed interest rates on the United States government securities appropriate for the expected term of the Company\u2019s employee stock options.\nThe expected term of employee stock options is calculated using the simplified method which takes into consideration the contractual life and vesting terms of the options.\nThe Company determined the expected volatility assumption for options granted using the historical volatility of comparable public Company\u2019s common stock. The Company will continue to monitor peer companies and other relevant factors used to measure expected volatility for future stock option grants, until such time that the Company\u2019s common stock has enough market history to use historical volatility.\nThe dividend yield assumption for options granted is based on the Company\u2019s history and expectation of dividend payouts. The Company has never declared or paid any cash dividends on its common stock, and the Company does not anticipate paying any cash dividends in the foreseeable future.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1534,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "average"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "Remaining"
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Exercise",
+     "",
+     "",
+     "Contractual"
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Price",
+     "",
+     "",
+     "Term"
+    ],
+    [
+     "Outstanding at December 31, 2020",
+     "",
+     "6,814,599",
+     "",
+     "$",
+     "1.86",
+     "",
+     "7.57"
+    ],
+    [
+     "Granted",
+     "",
+     "587,000",
+     "",
+     "",
+     "8.25",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(213,766)",
+     "",
+     "",
+     "0.60",
+     "",
+     ""
+    ],
+    [
+     "Expired/Cancelled",
+     "",
+     "(108,000)",
+     "",
+     "",
+     "4.33",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021",
+     "",
+     "7,079,833",
+     "",
+     "$",
+     "2.36",
+     "",
+     "6.90"
+    ],
+    [
+     "Granted",
+     "",
+     "1,300,562",
+     "",
+     "",
+     "14.59",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(7,927)",
+     "",
+     "",
+     "3.60",
+     "",
+     ""
+    ],
+    [
+     "Expired/Cancelled",
+     "",
+     "(771,008)",
+     "",
+     "",
+     "8.29",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2022",
+     "",
+     "7,601,460",
+     "",
+     "$",
+     "3.99",
+     "",
+     "6.48"
+    ],
+    [
+     "Exercisable at December 31, 2022",
+     "",
+     "5,106,296",
+     "",
+     "$",
+     "1.71",
+     "",
+     "5.63"
+    ],
+    [
+     "Vested and expected to vest at December 31, 2022",
+     "",
+     "7,601,460",
+     "",
+     "$",
+     "3.99",
+     "",
+     "6.48"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1558,
+    "end_line": 1583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "The Company determined the expected volatility assumption for options granted using the historical volatility of comparable public Company\u2019s common stock. The Company will continue to monitor peer companies and other relevant factors used to measure expected volatility for future stock option grants, until such time that the Company\u2019s common stock has enough market history to use historical volatility.\nThe dividend yield assumption for options granted is based on the Company\u2019s history and expectation of dividend payouts. The Company has never declared or paid any cash dividends on its common stock, and the Company does not anticipate paying any cash dividends in the foreseeable future.\nThe Company currently recognizes option forfeitures as they occur as there is insufficient historical data to accurately determine future forfeiture rates A summary of the Company\u2019s stock option activity and related information is as follows\nA summary of the Company\u2019s stock option activity and related information is as follows.",
+   "prose_after": "The weighted average grant date fair values of options granted during the years ended December 31, 2022 and 2021 were $6.87 and $4.07 per option, respectively. The Company\u2019s fair market value is based on the offering price in its Regulation A offerings at the time of grant. During the years ended December 31, 2022 and 2021, employees exercised their vested options to purchase 7,927 and 213,766 shares of common stock, and the Company received aggregate exercise proceeds of $38,035 and $128,324, respectively. The intrinsic value of the options exercised was $925,607 during the year ended December 31, 2022.\nStock option expense for the years ended December 31, 2022 and 2021 was $3,993,424 and $2,504,872, respectively, and are included within the consolidated statements of operations as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1534,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "$",
+     "185,568",
+     "",
+     "$",
+     "252,467"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "1,327,114",
+     "",
+     "",
+     "614,063"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "",
+     "1,994,852",
+     "",
+     "",
+     "1,424,296"
+    ],
+    [
+     "Research and development",
+     "",
+     "",
+     "485,890",
+     "",
+     "",
+     "214,046"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "3,993,424",
+     "",
+     "$",
+     "2,504,872"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1588,
+    "end_line": 1599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "The weighted average grant date fair values of options granted during the years ended December 31, 2022 and 2021 were $6.87 and $4.07 per option, respectively. The Company\u2019s fair market value is based on the offering price in its Regulation A offerings at the time of grant. During the years ended December 31, 2022 and 2021, employees exercised their vested options to purchase 7,927 and 213,766 shares of common stock, and the Company received aggregate exercise proceeds of $38,035 and $128,324, respectively. The intrinsic value of the options exercised was $925,607 during the year ended December 31, 2022.\nStock option expense for the years ended December 31, 2022 and 2021 was $3,993,424 and $2,504,872, respectively, and are included within the consolidated statements of operations as follows:",
+   "prose_after": "At December 31, 2022, the total compensation cost related to nonvested awards not yet recognized was approximately $8,683,278 and the weighted-average period over which the total compensation cost related to nonvested awards not yet recognized is expected to be recognized is 2.74 years.\nNOTE 7 \u2013 INCOME TAXES\nFor the years ended December 31, 2022 and 2021, the Company only recorded state minimum taxes due to current and historical losses incurred by the Company. The Company\u2019s losses before income taxes consist solely of losses from domestic operations.\nOn March 27, 2020, the United States enacted the Coronavirus Aid, Relief, and Economic Security Act (\u201cCARES Act\u201d). The Cares Act includes provisions relating to refundable payroll tax credits, deferment of the employer portion of certain payroll taxes, net operating loss carryback periods, alternative minimum tax credit refunds, modifications to the net interest deduction limitations and technical corrections to tax depreciation methods for qualified improvement property. The CARES Act also established a Paycheck Protection Program whereby certain small businesses are eligible for a loan to fund payroll expenses, rent, and related costs.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "$",
+     "63,563",
+     "",
+     "$",
+     "90,863"
+    ],
+    [
+     "State",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Foreign",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "63,563",
+     "",
+     "$",
+     "90,863"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "$",
+     "621,678",
+     "",
+     "$",
+     "(251,555)"
+    ],
+    [
+     "State",
+     "",
+     "",
+     "(32,141)",
+     "",
+     "",
+     "(32,141)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "589,537",
+     "",
+     "",
+     "(283,696)"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "",
+     "(589,537)",
+     "",
+     "",
+     "283,696"
+    ],
+    [
+     "Total provision for income taxes",
+     "",
+     "$",
+     "63,563",
+     "",
+     "$",
+     "90,863"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1612,
+    "end_line": 1633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "On March 27, 2020, the United States enacted the Coronavirus Aid, Relief, and Economic Security Act (\u201cCARES Act\u201d). The Cares Act includes provisions relating to refundable payroll tax credits, deferment of the employer portion of certain payroll taxes, net operating loss carryback periods, alternative minimum tax credit refunds, modifications to the net interest deduction limitations and technical corrections to tax depreciation methods for qualified improvement property. The CARES Act also established a Paycheck Protection Program whereby certain small businesses are eligible for a loan to fund payroll expenses, rent, and related costs.\nThe Company considered the provisions under the CARES Act and elected not to take advantage of the provisions of CARES Act as the effect of such provisions was not expected to have a material impact on the Company\u2019s results of operations, cash flows and financial statements.\nThe following table presents the current and deferred tax provision for federal and state income taxes for the years ended December 31, 2022 and 2021.",
+   "prose_after": "Reconciliations of the U.S. federal statutory rate to the actual tax rate are as follows for the year ended December 31, 2022 and 2021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Tax at Federal Statutory Rate",
+     "",
+     "21.0",
+     "%",
+     "21.0",
+     "%"
+    ],
+    [
+     "State, Net of Federal Benefit",
+     "",
+     "7.0",
+     "%",
+     "7.0",
+     "%"
+    ],
+    [
+     "Meals & Entertainment",
+     "",
+     "(0.5)",
+     "%",
+     "(1.6)",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "(14.1)",
+     "%",
+     "(65.8)",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "(1.6)",
+     "%",
+     "(6.2)",
+     "%"
+    ],
+    [
+     "Change in Valuation Allowance",
+     "",
+     "(11.0)",
+     "%",
+     "54.1",
+     "%"
+    ],
+    [
+     "Provision for Taxes",
+     "",
+     "0.8",
+     "%",
+     "8.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1636,
+    "end_line": 1649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "Reconciliations of the U.S. federal statutory rate to the actual tax rate are as follows for the year ended December 31, 2022 and 2021.",
+   "prose_after": "The components of our deferred tax assets (liabilities for federal and state income taxes consisted of the following as of December 31, 2022 and 2021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1673,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net Operating Loss Carryforwards",
+     "",
+     "$",
+     "2,987,090",
+     "",
+     "$",
+     "3,505,436"
+    ],
+    [
+     "Reserves and Accruals",
+     "",
+     "",
+     "22,195",
+     "",
+     "",
+     "202,704"
+    ],
+    [
+     "Depreciation & Amortization",
+     "",
+     "",
+     "3,662",
+     "",
+     "",
+     "503"
+    ],
+    [
+     "Gross Deferred Tax Assets",
+     "",
+     "",
+     "3,012,947",
+     "",
+     "",
+     "3,708,643"
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "",
+     "(3,012,947)",
+     "",
+     "",
+     "(3,708,643)"
+    ],
+    [
+     "Net Deferred Tax Assets",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1652,
+    "end_line": 1665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of our deferred tax assets (liabilities for federal and state income taxes consisted of the following as of December 31, 2022 and 2021.",
+   "prose_after": "The Company has evaluated the positive and negative evidence bearing upon its ability to realize its deferred tax assets, which are comprised primarily of net operating loss carryforwards and tax credits. Management has considered the Company\u2019s history of cumulative net losses, estimated future taxable income and prudent and feasible tax planning strategies and has concluded that it is more likely than not that the Company will not realize the benefits of its U.S. federal and state deferred tax assets. Accordingly, a full valuation allowance has been established against these net deferred tax assets as of December 31, 2022 and 2021, respectively. The Company reevaluates the positive and negative evidence at each reporting period. The Company\u2019s valuation allowance increased during 2022 by $589,537 primarily due to the generation of net operating loss carryforwards and stock based compensation.\nBased on federal tax returns filed or to be filed through December 31, 2022, the Company had approximately $10.6 million in U.S. and $10.8 million in state tax net operating loss carryforwards, which begin to expire in 2034. The 2017 Tax Cuts and Jobs Act (\u201cTCJA\u201d) will generally allow losses incurred after 2017 to be carried over indefinitely, but will generally limit the net operating loss deduction to the lesser of the net operating loss carryover or 80% of a corporation\u2019s taxable income (subject to Section 382 of the Internal Revenue Code of 1986, as amended). Also, there will be no carryback for losses incurred after 2017. Losses incurred prior to 2018 will generally be deductible to the extent of the lesser of a corporation\u2019s net operating loss carryover or 100% of a corporation\u2019s taxable income and be available for twenty years from the period the loss was generated. Losses starting in 2018 do not expire. The CARES Act temporarily allows the Company to carryback net operating losses arising in 2018, 2019 and 2020 to the five prior tax years. In addition, net operating losses generated in these years could fully offset prior year taxable income without the 80% of the taxable income limitation under the TCJA which was enacted on December 22, 2017. The Company has been generating losses since its inception, as such the net operating loss carryback provision under the CARES Act is not applicable to the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1673,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Term of Office (if",
+     "",
+     "Approximate hours"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "indefinite, give date",
+     "",
+     "per week (if"
+    ],
+    [
+     "Name",
+     "",
+     "Position",
+     "",
+     "Age",
+     "",
+     "appointed)",
+     "",
+     "part-time)/full-time"
+    ],
+    [
+     "Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard Marks",
+     "",
+     "CEO",
+     "",
+     "60",
+     "",
+     "January 1, 2014, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Johanna Cronin",
+     "",
+     "Chief Marketing Officer",
+     "",
+     "34",
+     "",
+     "March 2014, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Jonathan Reyes",
+     "",
+     "Chief Compliance Officer",
+     "",
+     "36",
+     "",
+     "March 2020, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Allen Jebsen",
+     "",
+     "SVP, Fundraising",
+     "",
+     "31",
+     "",
+     "March 2019, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Joshua Amster",
+     "",
+     "VP, Fundraising",
+     "",
+     "32",
+     "",
+     "July 2016, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Hunter Strassman",
+     "",
+     "VP, Finance",
+     "",
+     "31",
+     "",
+     "October 2021, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "Joseph Mathews",
+     "",
+     "VP, Engineering",
+     "",
+     "50",
+     "",
+     "March 2019, Indefinitely",
+     "",
+     "Full-time"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard Marks",
+     "",
+     "Director",
+     "",
+     "60",
+     "",
+     "April 17, 2014, Indefinitely",
+     "",
+     ""
+    ],
+    [
+     "Ronald Miller",
+     "",
+     "Director and Chairman",
+     "",
+     "60",
+     "",
+     "April 17, 2014, Indefinitely",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Significant Employees:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "N/A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1738
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "During preparation for financial reporting related to the quarter ended March 31, 2022, and based on comments received from the Securities and Exchange Commission, the Company discovered certain classification errors (specifically for subscriptions receivable, allocated noncontrolling interest loss, and marketable securities) as well as an error in the using aggregation of the fair value of the Warrants instead of segregating those amounts) in its previously reported financial statements for the year ended December 31, 2021. Accordingly, the Company made certain corrections to previously reported financial statements for the year ended December 31, 2021, and the restated financial statements, including new notes to the audited financial statements and disclosure regarding the restatement in Note 1 to the audited financial statements for the periods ending December 31, 2021 and 2020, have been filed as Amendment No. 2 to the Company\u2019s Form 10 on August 4, 2022. As a result, management changed the Company\u2019s internal controls over financial reporting by hiring an additional employee with a public accounting background specifically for the preparation of financial statements, and has begun working with an external consultant. For details see the Company\u2019s Item 4.02 Form 8-K filed August 9, 2022.\nPART III\nItem 10.Directors, Executive Officers and Corporate Governance\nAs of March 31, 2023, our directors, executive officers and significant employees were as follows:",
+   "prose_after": "Howard Marks, Co-founder, CEO and Director\nHoward Marks is one of our co-founders and has served as our CEO since January 1, 2017. From our founding in March 2014 until December 2016, Howard served as our Executive Chairman. Howard founded StartEngine, an unrelated entity, in November 2011 as a\nstartup accelerator with the mission to help make Los Angeles a top tech entrepreneurial city. In March 2014, Howard and Ron Miller founded the Company as an equity crowdfunding platform. Howard was the founder and CEO of Acclaim Games, a publisher of online games now part of The Walt Disney company. Before Acclaim, Howard was the Chairman of Activision Studios from 1991 until 1997. As a former Board Member and Executive Vice-President of video-game giant Activision, he and a partner took control in 1991 and turned the ailing company into the $20 billion market cap video game industry leader. As a games industry expert, Howard built one of the largest and most successful games studios in the industry, selling millions of games. Howard is the 2015 \u201cTreasure of Los Angeles\u201d recipient, awarded for his work to transform Los Angeles into a leading technology city. Howard is a member of Mayor Eric Garcetti\u2019s technology council. Howard has a Bachelor of Science in Computer Engineering from the University of Michigan. He is bilingual and is a triple national of the United States, United Kingdom, and France.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1743,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nonqualified",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nonequity",
+     "",
+     "",
+     "deferred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Option",
+     "",
+     "",
+     "incentive plan",
+     "",
+     "",
+     "compensation",
+     "",
+     "",
+     "All other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "principal",
+     "",
+     "",
+     "",
+     "Salary",
+     "",
+     "",
+     "Bonus",
+     "",
+     "",
+     "awards",
+     "",
+     "",
+     "awards",
+     "",
+     "",
+     "compensation",
+     "",
+     "",
+     "earnings",
+     "",
+     "",
+     "compensation",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "position",
+     "",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)(1)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)(2)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Howard Marks, Chief Executive Officer",
+     "",
+     "2022",
+     "",
+     "$",
+     "645,000",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,895,160",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,540,160"
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "$",
+     "518,000",
+     "",
+     "$",
+     "518,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,036,000"
+    ],
+    [
+     "Allen Jebsen, VP of Sales",
+     "",
+     "2022",
+     "",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "358,035",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "252,688",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "710,723"
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "668,345",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "768,345"
+    ],
+    [
+     "Josh Amster, VP of Sales",
+     "",
+     "2022",
+     "",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "422,180",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "252,688",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "774,868"
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "477,565",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "577,565"
+    ],
+    [
+     "Johanna Cronin, Chief Marketing Officer",
+     "",
+     "2022",
+     "",
+     "$",
+     "300,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "252,688",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "552,688"
+    ],
+    [
+     "4,",
+     "",
+     "2021",
+     "",
+     "$",
+     "250,000",
+     "",
+     "$",
+     "250,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "500,000"
+    ]
+   ],
+   "caption_stack": [
+    "Nonqualified"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company\u2019s stockholders or other interested party may contact the Board members individually or as a group by writing to [our Secretary at 4100 W Alameda Ave., Suite 300, Burbank, CA 91505 with a request to forward the communication to the intended recipient or recipients. In general, any stockholder communication delivered to our Secretary for forwarding to the Board or specified Board member or members will be forwarded in accordance with the stockholder\u2019s instructions. However, our Secretary reserves the right not to forward to Board members any abusive, threatening, or otherwise inappropriate materials. Information regarding the submission of comments or complaints relating to our accounting, internal accounting controls, or auditing matters can be found on our website at https://www.startengine.com/contact-us.\nItem 11.Executive Compensation\nThe following discussion and analysis of compensation arrangements should be read with the compensation tables and related disclosures set forth below. This discussion contains forward looking statements that are based on our current plans and expectations regarding future compensation programs. The actual compensation programs that we adopt may differ materially from the programs summarized in this discussion.\nThis section describes the material elements of the compensation awarded to, earned by, or paid to our Chief Executive Officer, Howard Marks, and our three most highly compensated executive officers (other than our Chief Executive Officer), Johanna Cronin, Chief Marketing Officer, Joshua Amster, VP, Fundraising, and Allen Jebsen, SVP, Fundraising, for our fiscal year ended December 31, 2022.",
+   "prose_after": "(1) Options, if any, have not yet been granted for fiscal year 2022, but options have been granted in 2022 for the 2021 fiscal year.\n(2) Amounts reflect the aggregate grant date fair value of the options granted in 2021, computed in accordance with Financial Accounting Standards Board ASC Topic 718 (ASC 718). This amount does not reflect the actual economic value realized by the officer.\n(3) Options are subject to vesting with 25% vesting one year after date of grant and then 1/48 per month thereafter.\nPrincipal Elements of Compensation\nThe compensation of the Company\u2019s executive officers comprises of the following major elements: (a) base salary; (b) an annual, discretionary cash bonus; and (c) long-term equity incentives, consisting of stock options, restricted stock awards, performance compensation awards and/or other applicable awards granted under the Company\u2019s equity incentive plan (the \u201cEquity Incentive Plan\u201d) and any other equity plan that may be approved by the Board from time to time. These principal elements of compensation are described below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1797,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1837,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Option awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Market",
+     "",
+     "Equity",
+     "",
+     "Equity incentive"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Equity incentive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "value of",
+     "",
+     "incentive",
+     "",
+     "plan awards:"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "plan awards:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "shares or",
+     "",
+     "plan awards:",
+     "",
+     "market"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "number",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number",
+     "",
+     "units of",
+     "",
+     "number of",
+     "",
+     "or payout"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "of securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "of shares",
+     "",
+     "stock",
+     "",
+     "unearned",
+     "",
+     "value of"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "securities",
+     "",
+     "securities",
+     "",
+     "underlying",
+     "",
+     "Option",
+     "",
+     "",
+     "",
+     "or units",
+     "",
+     "that have",
+     "",
+     "shares, units or",
+     "",
+     "unearned"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "underlying",
+     "",
+     "underlying",
+     "",
+     "unexercised",
+     "",
+     "exercise",
+     "",
+     "",
+     "",
+     "of stock",
+     "",
+     "not",
+     "",
+     "other rights that",
+     "",
+     "shares, units or"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "unexercised",
+     "",
+     "unexercised",
+     "",
+     "unearned",
+     "",
+     "price",
+     "",
+     "Option",
+     "",
+     "that have",
+     "",
+     "vested",
+     "",
+     "have not",
+     "",
+     "other rights that"
+    ],
+    [
+     "",
+     "",
+     "Grant",
+     "",
+     "options - (#)",
+     "",
+     "options - (#)",
+     "",
+     "options",
+     "",
+     "",
+     "",
+     "expiration",
+     "",
+     "not vested",
+     "",
+     "",
+     "",
+     "vested",
+     "",
+     "have not vested"
+    ],
+    [
+     "Name",
+     "",
+     "date",
+     "",
+     "exercisable",
+     "",
+     "unexercisable",
+     "",
+     "(#)",
+     "",
+     "($)",
+     "",
+     "date",
+     "",
+     "(#)",
+     "",
+     "($)",
+     "",
+     "(#)",
+     "",
+     "($)"
+    ],
+    [
+     "Howard Marks, Chief Executive Officer",
+     "",
+     "1/13/2018",
+     "",
+     "300,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.264",
+     "",
+     "1/13/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "12/16/2020",
+     "",
+     "160,208",
+     "",
+     "139,792",
+     "",
+     "\u2014",
+     "",
+     "4.333",
+     "",
+     "12/16/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2022",
+     "",
+     "80,833",
+     "",
+     "219,167",
+     "",
+     "",
+     "",
+     "13.5",
+     "",
+     "1/1/2032",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Allen Jebsen, SVP, Fundraising",
+     "",
+     "6/14/2016",
+     "",
+     "30,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.097",
+     "",
+     "6/14/2026",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "2/7/2017",
+     "",
+     "30,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.097",
+     "",
+     "2/7/2027",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/18/2018",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.264",
+     "",
+     "1/18/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "8/31/2018",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.667",
+     "",
+     "8/31/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "4/24/2019",
+     "",
+     "142,812",
+     "",
+     "7,188",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "4/24/2029",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/2/2020",
+     "",
+     "116,458",
+     "",
+     "33,542",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "1/2/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "12/16/2020",
+     "",
+     "40,052",
+     "",
+     "34,948",
+     "",
+     "\u2014",
+     "",
+     "4.333",
+     "",
+     "12/16/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2022",
+     "",
+     "10,777",
+     "",
+     "29,223",
+     "",
+     "",
+     "",
+     "13.5",
+     "",
+     "1/1/2032",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Josh Amster, VP, Fundraising",
+     "",
+     "2/16/2016",
+     "",
+     "11,474",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.097",
+     "",
+     "2/16/2026",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2017",
+     "",
+     "30,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.097",
+     "",
+     "1/1/2027",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2018",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.264",
+     "",
+     "1/1/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "7/6/2018",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.667",
+     "",
+     "7/6/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "4/24/2019",
+     "",
+     "142,812",
+     "",
+     "7,188",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "4/24/2029",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/2/2020",
+     "",
+     "116,458",
+     "",
+     "33,542",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "1/2/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "12/16/2020",
+     "",
+     "40,052",
+     "",
+     "34,948",
+     "",
+     "\u2014",
+     "",
+     "4.333",
+     "",
+     "12/16/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2022",
+     "",
+     "10,777",
+     "",
+     "29,223",
+     "",
+     "",
+     "",
+     "13.5",
+     "",
+     "1/1/2032",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Johanna Cronin, Chief Marketing Officer",
+     "",
+     "6/15/2015",
+     "",
+     "695,872",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.083",
+     "",
+     "6/15/2025",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "2/7/2017",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.097",
+     "",
+     "2/7/2027",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/18/2018",
+     "",
+     "30,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.264",
+     "",
+     "1/18/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/13/2018",
+     "",
+     "60,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.264",
+     "",
+     "1/13/2028",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "5/15/2019",
+     "",
+     "142,916",
+     "",
+     "7,084",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "5/15/2029",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/2/2020",
+     "",
+     "70,312",
+     "",
+     "4,688",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "1/2/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "4/23/2019",
+     "",
+     "116,458",
+     "",
+     "33,542",
+     "",
+     "\u2014",
+     "",
+     "2.500",
+     "",
+     "4/23/2029",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "12/16/2020",
+     "",
+     "40,052",
+     "",
+     "34,948",
+     "",
+     "\u2014",
+     "",
+     "4.333",
+     "",
+     "12/16/2030",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "1/1/2022",
+     "",
+     "10,777",
+     "",
+     "29,223",
+     "",
+     "",
+     "",
+     "13.5",
+     "",
+     "1/1/2032",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1859,
+    "end_line": 1907
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In May 2015, the Company established the 2015 Equity Incentive Plan which was approved by the Company\u2019s Board and by stockholders in June 2015. The 2015 Equity Incentive Plan authorized the issuance of 3,000,000 shares of common stock. In December 2015, the 2015 Plan was amended to increase the number of shares authorized for issuance under the Plan from 1,000,000 to 2,030,000, further amended in September 2020 to increase the number of shares from 2,030,000 to 2,530,000, and then further amended in July 2021 to increase the number of shares under the plan on a post- split basis to 7,590,000 shares. as the Company amended the plan in 2023, and as of March 18, 2023, there are 11,590,000 shares available under the plan. The 2015 Equity Incentive Plan permits us to provide equity-based compensation in the form of stock options, restricted stock units, unrestricted stock and other stock bonus awards and performance compensation awards.\nThe 2015 Equity Incentive Plan is administered by our Board of Directors, or a committee appointed by the Board of Directors, which determines recipients and the number of shares subject to the awards, the exercise price and the vesting schedule. The term of stock options granted under the 2015 Equity Incentive Plan cannot exceed ten years.\nDirector Compensation\nThere is currently no agreement or arrangement to pay any of our directors for their services as directors.\nOutstanding Equity Awards at Fiscal Year-End",
+   "prose_after": "Long-Term Incentive Plans\nThere are no arrangements or plans in which we provide pension, retirement or similar benefits.\nCompensation Committee\nWe currently do not have a compensation committee of the Board of Directors. The Board of Directors as a whole determines executive compensation.\nCompensation of Directors\nFor the years ended December 31, 2022 and 2021, no members of our board of directors received compensation in their capacity as directors.\nItem 12.Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets out certain information with respect to the beneficial ownership of the voting securities of the Company, as of March 31, 2023, for:\n\u25cf Each person who we know beneficially owns more than five percent of any class of our voting securities.\n\u25cf Each of our director and director nominees.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1856,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "and",
+     "",
+     "and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "nature of",
+     "",
+     "nature of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name and address",
+     "",
+     "beneficial",
+     "",
+     "beneficial",
+     "",
+     "",
+     "Percent of",
+     ""
+    ],
+    [
+     "Title of class",
+     "",
+     "of beneficial owner",
+     "",
+     "ownership",
+     "",
+     "ownership acquirable",
+     "",
+     "",
+     "Class (2)",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "Howard Marks (1)(4)",
+     "",
+     "8,999,760",
+     "",
+     "600,000",
+     "(5)",
+     "",
+     "26.95",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "562,707",
+     "(6)",
+     "",
+     "30.22",
+     "%(3)"
+    ],
+    [
+     "Common Stock",
+     "",
+     "The Ronald David Miller Trust U/A 08/04/2020 (Ron Miller) (1)",
+     "",
+     "3,744,306",
+     "",
+     "300,000",
+     "(5)",
+     "",
+     "11.21",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "150,000",
+     "(6)",
+     "",
+     "12.39",
+     "%(3)"
+    ],
+    [
+     "Common Stock",
+     "",
+     "SE Agoura Investment LLC (7)",
+     "",
+     "174,454",
+     "",
+     "9,148,309",
+     "(5)",
+     "",
+     "0.52",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "21.91",
+     "%(3)"
+    ],
+    [
+     "Common Stock",
+     "",
+     "The Lee Miller Trust UA 09/05/2020 (Lee Miller)",
+     "",
+     "3,744,306",
+     "",
+     "300,000",
+     "(5)",
+     "",
+     "11.21",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "150,000",
+     "(6)",
+     "",
+     "12.39",
+     "%(3)"
+    ],
+    [
+     "Common Stock",
+     "",
+     "All executive officers and directors as a group (8 members including Howard Marks and Ron Miller)(1)",
+     "",
+     "12,772,744",
+     "",
+     "900,000",
+     "(5)",
+     "",
+     "38.24",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6,445,522",
+     "(6)",
+     "",
+     "49.39",
+     "%(3)"
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "Howard Marks (4)",
+     "",
+     "600,000",
+     "",
+     "",
+     "",
+     "",
+     "3.00",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "The Ronald David Miller Trust U/A 08/04/2020 (Ron Miller)(1)",
+     "",
+     "300,000",
+     "",
+     "",
+     "",
+     "",
+     "1.50",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "SE Agoura Investment LLC (7)",
+     "",
+     "9,148,309",
+     "",
+     "",
+     "",
+     "",
+     "45.75",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1932,
+    "end_line": 1956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2022 and 2021, no members of our board of directors received compensation in their capacity as directors.\nItem 12.Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets out certain information with respect to the beneficial ownership of the voting securities of the Company, as of March 31, 2023, for:\n\u25cf Each person who we know beneficially owns more than five percent of any class of our voting securities.\n\u25cf Each of our director and director nominees.\n\u25cf Each of our executive officers.\n\u25cf All of our directors, director nominees and executive officers as a group.\nWe have determined beneficial ownership in accordance with the rules of the Commission. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all securities that they beneficially own, subject to applicable community property laws.",
+   "prose_after": "(1) Unless otherwise indicated, the address for each beneficial owner is c/o StartEngine Crowdfunding, Inc., 4100 W Alameda Ave., Suite 300, Burbank, California 91505\n(2) Based on 33,473,977 shares of Common Stock, and 19,994,684 shares of Preferred Stock outstanding.\n(3) This calculation is the amount the person owns now, plus the amount that person is entitled to acquire. That amount is then shown as a percentage of the outstanding amount of securities in that class if no other person exercised their rights to acquire those securities. The result is a calculation of the maximum amount that person could ever own based on their current and acquirable ownership, which is why the amounts in this column may not add up to 100% for each class.\n(4) These shares are held by Howard E. Marks Living Trust U/A Dated 12/21/2001 (Howard Marks) and does not include the 1,001,876 shares held by the Marks Irrevocable Trust for the benefit of Mr. Marks\u2019 family.\n(5) Shares acquirable through conversion of Preferred Stock.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1973,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2022 (1)",
+     "",
+     "",
+     "December 31, 2021 (2)",
+     ""
+    ],
+    [
+     "Audit fees (3)",
+     "",
+     "$",
+     "129,300",
+     "",
+     "$",
+     "89,400"
+    ],
+    [
+     "Audit-related fees (4)",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0"
+    ],
+    [
+     "Tax fees (5)",
+     "",
+     "$",
+     "8,100",
+     "",
+     "$",
+     "8,100"
+    ],
+    [
+     "All other fees (6)",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0"
+    ],
+    [
+     "Total fees",
+     "",
+     "$",
+     "137,400",
+     "",
+     "$",
+     "97,500"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1978,
+    "end_line": 1989
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(7) SE Agoura Investment LLC is beneficially owned by Aubrey Chernick. The address for SE Agoura Investment LLC is 333 South Grand Avenue, Suite 1470, Los Angeles, CA 90071.\nItem 13.Certain Relationships and Related Transactions, and Director Independence\nThe Company does not have a standing nominating, compensation, or audit committee. Our Board of Directors performs the functions of these committees. We do not believe that our Board of Directors needs to appoint such committees because the low volume of matters that come before our Board of Directors permits the directors to give sufficient time and attention to such matters. We are not required to have such committees since the Company\u2019s stock is not listed on a national securities exchange.\nDirector Independence\nAs of the date of this Form 10-K, the Company does not have any independent directors under the corporate governance rules of The Nasdaq Stock Market LLC (Nasdaq).\nItem 14.Principal Accountant Fees and Services\nThe following is a summary of fees paid to the Company\u2019s independent accountant for services rendered.",
+   "prose_after": "(1) The Company engaged Borgers & Associates LLC as the Company\u2019s independent accounting firm for the fiscal year ending December 31, 2021 on March 15, 2022.\n(2) dbbmckennon was the Company\u2019s independent accounting firm until March 15, 2022.\n(3) Audit fees consist of the fees billed for each of the last two fiscal years for professional services rendered by the principal accountant for the audit of the Company\u2019s annual financial statements and review of financial statements in our Form 10-Q or services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years.\n(4) Audit-related fees consist of the fees billed in each of the last two fiscal year for assurance and related services by the principal accountant that are reasonably related to the performance of the audit or review of the Company\u2019s financial statements and are not reported under \u201cAudit fees.\u201d\n(5) Tax fees comprise fees billed for professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning. These services include tax preparation for fiscal year 2022 and tax preparation for fiscal year 2021.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1973,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Title of Document"
+    ],
+    [
+     "3.1",
+     "Sixth Amended and Restated Certificate of Incorporation (1)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws (2)"
+    ],
+    [
+     "4.1",
+     "Second Amended and Restated Investors\u2019 Rights Agreement (3)"
+    ],
+    [
+     "10.1",
+     "Amended and Restated 2015 Equity Incentive Plan (4)"
+    ],
+    [
+     "10.2+",
+     "Employment Agreement effective as of January 1, 2022 (Howard Marks) (5)"
+    ],
+    [
+     "10.3",
+     "Observer Rights Agreement dated November 2, 2016 (Ronald Miller) (6)"
+    ],
+    [
+     "10.4",
+     "Asset Purchase Agreement (7)"
+    ],
+    [
+     "31.1*",
+     "Certification of the principal executive officer and principal financial officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1#",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2018,
+    "end_line": 2038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The policy of the Company\u2019s Board of Directors (the \u201cBoard\u201d) is to pre-approve all audit and permissible non-audit services provided by the independent accountants. These services may include audit services, audit-related services, tax services, and other services. The Board generally pre-approves particular services or categories of services on a case-by-case basis. The independent registered public accounting firm and management are required to periodically report to the Board regarding the extent of services provided by the independent registered public accounting firm in accordance with these pre-approvals, and the fees for the services performed to date.\nAll of the services of Borgers & Associates LLC for 2022, and dbbmckennon for 2021, described above were pre-approved by the Board.\nPART IV\nItem 15.Exhibit and Financial Statement Schedules\n1. Financial Statements\nThe financial statements and Report of Independent Registered Public Accounting Firm are listed in the \u201cIndex to Financial Statements and Schedules\u201d on page F-1 and included on pages F-1 to F-20 of this annual report on Form 10-K\n2. Financial Statement Schedules\nAll schedules for which provision is made in the applicable accounting regulations of the Securities and Exchange Commission (the \u201cCommission\u201d) are either not required under the related instructions, are not applicable (and therefore have been omitted), or the required disclosures are contained in the financial statements included herein.\n3. Exhibits (including those incorporated by reference).\nCopies of the following documents are included as exhibits to this report pursuant to Item 601 of Regulation S-K.",
+   "prose_after": "+ Management contract or compensatory plan or arrangement.\n* Filed herewith",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2052,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Furnished herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2041,
+    "end_line": 2044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "+ Management contract or compensatory plan or arrangement.\n* Filed herewith",
+   "prose_after": "(1) Incorporated by reference to Exhibit 2.1 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A/A (Commission File No. 024-11487) filed with the SEC on July 13, 2021.\n(2) Incorporated by reference to Exhibit 2.2 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A/A (Commission File No. 024-10862) filed with the SEC on December 7, 2018.\n(3) Incorporated by reference to Exhibit 3.1 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A (Commission File No. 024-11177) filed with the SEC on March 12, 2020.\n(4) Incorporated by reference to Exhibit 6.1 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A POS (Commission File No. 024-11806) filed with the SEC on February 13, 2023.\n(5) Incorporated by reference to Exhibit 6.2 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A (Commission File No. 024-11806) filed with the SEC on February 14, 2022.\n(6) Incorporated by reference to Exhibit 1A-6 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A DOS (Commission File No. 367-00101) filed with the SEC on June 23, 2017.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2052,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "STARTENGINE CROWDFUNDING, INC."
+    ],
+    [
+     "",
+     "",
+     "(Registrant)"
+    ],
+    [
+     "Date: March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Howard Marks"
+    ],
+    [
+     "",
+     "",
+     "Howard Marks"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "STARTENGINE CROWDFUNDING, INC.",
+    "(Registrant)",
+    "Date: March 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2057,
+    "end_line": 2067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) Incorporated by reference to Exhibit 3.1 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A (Commission File No. 024-11177) filed with the SEC on March 12, 2020.\n(4) Incorporated by reference to Exhibit 6.1 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A POS (Commission File No. 024-11806) filed with the SEC on February 13, 2023.\n(5) Incorporated by reference to Exhibit 6.2 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A (Commission File No. 024-11806) filed with the SEC on February 14, 2022.\n(6) Incorporated by reference to Exhibit 1A-6 to the StartEngine Crowdfunding, Inc. Regulation A Offering Statement on Form 1-A DOS (Commission File No. 367-00101) filed with the SEC on June 23, 2017.\n(7) Incorporated by reference to Exhibit 99.2 to the StartEngine Crowdfunding, Inc. Form 8-K/A (Commission File No. 000-56415) filed with the SEC on November 28, 2022.\nSIGNATURES\nPursuant to the requirements of Section 12 of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2052,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Howard Marks",
+     ""
+    ],
+    [
+     "Howard Marks, Chief Executive Officer, principal financial",
+     ""
+    ],
+    [
+     "officer, principal accounting officer and Director",
+     ""
+    ],
+    [
+     "Date: March 31, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Howard Marks",
+    "Howard Marks, Chief Executive Officer, principal financial",
+    "officer, principal accounting officer and Director",
+    "Date: March 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2070,
+    "end_line": 2077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2052,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Ronald Miller",
+     ""
+    ],
+    [
+     "Ronald Miller, Director and Chairman",
+     ""
+    ],
+    [
+     "Date: March 31, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Ronald Miller",
+    "Ronald Miller, Director and Chairman",
+    "Date: March 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2078,
+    "end_line": 2084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2052,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,827 @@
+{
+ "accession": "0001493152-22-017828",
+ "cik": "0001552189",
+ "form": "10-K/A",
+ "filing_date": "2022-06-27",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "27-1085858"
+    ],
+    [
+     "State or Other Jurisdiction of\n\n\n\nIncorporation or Organization",
+     "I.R.S. Employer\n\n\n\nIdentification No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5910 S University Blvd, C18-193, Greenwood Village, CO",
+     "80121"
+    ],
+    [
+     "Address of Principal Executive Offices",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 3)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission file number 001-38190\nPanacea Life Sciences Holdings, Inc.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(800) 985-0515\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(800) 985-0515\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, par value $0.0001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Audit Firm ID",
+     "Auditor Name",
+     "Auditor Location"
+    ],
+    [
+     "5041",
+     "BF Borgers CPA PC",
+     "Lakewood, CO"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 82
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter, June 30, 2021, was approximately $11,185,976. The aggregate market value gives effect to the closing of the Securities Exchange Agreement dated June 30, 2021.\nThe number of outstanding shares of registrant\u2019s common stock was 14,965,317, par value $0.0001 per share, as of June 21, 2022.\nDOCUMENTS INCORPORATED BY REFERENCE\nThis Amendment No. 3 on Form 10-K/A to Form 10-K for the fiscal year ended December 31, 2021 is being filed to revise the Certification filed as Exhibit 31.1 to Amendment No. 2 on Form 10-K. This Amendment No. 3 on Form 10-K/A does not change the previously reported financial statements or any of the other disclosures contained in Part I, Part II or Part III of the Form 10-K, originally filed on March 31, 2022 and as amended by Amendment No. 1 on Form 10-K/A filed on April 29, 2022, and Amendment No. 2 on Form 10-K/A filed on May 18, 2022.",
+   "prose_after": "TABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Form 10-K/A",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "EXPLNATORY NOTE",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Controls and Procedures",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit Index",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "5"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Form 10-K/A"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 98
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "TABLE OF CONTENTS",
+   "prose_after": "EXPLANATORY NOTE\nThis Amendment No. 3 on Form 10-K/A (the \u201cAmendment\u201d) amends the Annual Report on Form 10-K (the\u201c2021 Form 10-K\u201d) of Panacea Life Sciences Holdings, Inc. (the \u201cCompany\u201d) for the year ended December 31, 2021 (\u201cFiscal 2021\u201d), as filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on March 31, 2022 and as amended on April 29, 2022 (the \u201cOriginal Form 10-K\u201d). The Company filed a second amendment to the 2021 Form 10-K on May 18, 2022 (the \u201cSecond Amendment \u201d) to clarify Part II, Item 9A \u201cInternal control over financial reporting\u201d (\u201cItem 9A\u201d) of the Original Form 10-K, which inadvertently omitted language necessary to meet the requirements of Item 308(a) of Regulation S-K. As requested by the Staff of the SEC, Item 9A is also included in the Amendment. This Amendment also includes a revised Exhibit 31.1 which includes all of the required paragraphs including those inadvertently omitted in Exhibit 31.1 to the Second Amendment.\nThe new Item 9A provides a statement of management\u2019s responsibility for establishing and maintaining adequate internal control over financial reporting and clarifies the framework our management uses to assess the effectiveness of such controls as of the end of our fiscal year ended December 31, 2021, including a statement regarding the conclusion of our Principal Executive Officer and our former Principal Financial Officer listing the material weakness in our internal control over financial reporting and a plan to rectify the material weaknesses.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 99,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     "Filed or Furnished"
+    ],
+    [
+     "Exhibit #",
+     "Exhibit Description",
+     "Form",
+     "Date",
+     "Number",
+     "Herewith"
+    ],
+    [
+     "3.1",
+     "Amended Articles of Incorporation",
+     "8-K",
+     "7/7/21",
+     "3.1",
+     ""
+    ],
+    [
+     "3.1(a)",
+     "Certificate of Amendment to its Amended and Restated Articles of Incorporation \u2013 name change and reverse stock split",
+     "8-K",
+     "10/29/21",
+     "3.1",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws",
+     "10-K",
+     "3/31/22",
+     "3.2",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Designation for Series A Preferred Stock",
+     "8-K",
+     "2/18/21",
+     "4.1",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate of Designation for Series B-1 Preferred Stock",
+     "8-K",
+     "3/4/16",
+     "3.1",
+     ""
+    ],
+    [
+     "3.5",
+     "Certificate of Designation for Series B-2 Preferred Stock",
+     "8-K/A",
+     "2/17/16",
+     "3.2",
+     ""
+    ],
+    [
+     "3.6",
+     "Certificate of Designation for Series C Preferred Stock",
+     "10-Q",
+     "8/23/21",
+     "3.7",
+     ""
+    ],
+    [
+     "3.7",
+     "Certificate of Designation for Series C-1 Preferred Stock",
+     "10-Q",
+     "8/23/21",
+     "3.8",
+     ""
+    ],
+    [
+     "3.8",
+     "Certificate of Designation for Series C-2 Preferred Stock",
+     "8-K",
+     "10/29/21",
+     "3.2",
+     ""
+    ],
+    [
+     "3.9",
+     "Certificate of Designation for Series D Preferred Stock",
+     "10-Q",
+     "8/23/21",
+     "3.9",
+     ""
+    ],
+    [
+     "3.10",
+     "Certificate to Withdrawal for Series A",
+     "10-K/A",
+     "4/29/22",
+     "3.10",
+     ""
+    ],
+    [
+     "4.1",
+     "Description of securities registered under Section 12 of the Exchange Act of 1934",
+     "10-K",
+     "3/31/22",
+     "4.1",
+     ""
+    ],
+    [
+     "10.1",
+     "Agreement (redacted) with Dr. Krassen Dimitrov, Digital Diagnostic, Inc. and KD Innovation, Ltd.+",
+     "8-K",
+     "1/27/21",
+     "10.2",
+     ""
+    ],
+    [
+     "10.2",
+     "Securities Purchase Agreement (redacted)+",
+     "8-K",
+     "2/18/21",
+     "10.1",
+     ""
+    ],
+    [
+     "10.3",
+     "Exchange Agreement",
+     "8-K",
+     "2/18/21",
+     "10.2",
+     ""
+    ],
+    [
+     "10.5",
+     "Settlement and Release Agreement with Creed2Med, LLC",
+     "10-K/A",
+     "4/23/21",
+     "10.6",
+     ""
+    ],
+    [
+     "10.6",
+     "Supply Agreement",
+     "10-K",
+     "4/15/21",
+     "10.3",
+     ""
+    ],
+    [
+     "10.7",
+     "Note and Loan Agreement",
+     "8-K",
+     "4/26/21",
+     "10.1",
+     ""
+    ],
+    [
+     "10.8",
+     "Form of Securities Exchange Agreement",
+     "8-K",
+     "7/7/21",
+     "10.1",
+     ""
+    ],
+    [
+     "10.9",
+     "Form of Indemnification Agreement*",
+     "8-K",
+     "7/7/21",
+     "10.2",
+     ""
+    ],
+    [
+     "10.10",
+     "Employment Agreement dated June 30, 2021 \u2013 Leslie Buttorff*",
+     "10-Q",
+     "8/23/21",
+     "10.2",
+     ""
+    ],
+    [
+     "10.11",
+     "Form of Promissory Note issued to Quintel-MC Incorporated (Panacea)",
+     "10-Q",
+     "8/23/21",
+     "10.5",
+     ""
+    ],
+    [
+     "10.12",
+     "Form of Promissory Note issued to Leslie Buttorff (Panacea)",
+     "10-Q",
+     "8/23/21",
+     "10.6",
+     ""
+    ],
+    [
+     "10.13",
+     "Form of Promissory Note issued to Leslie Buttorff (Exactus)",
+     "10-Q",
+     "8/23/21",
+     "10.7",
+     ""
+    ],
+    [
+     "10.14",
+     "Note Exchange Agreement+**",
+     "10-Q",
+     "8/23/21",
+     "10.8",
+     ""
+    ],
+    [
+     "10.15",
+     "Assignment of lease",
+     "10-Q",
+     "8/23/21",
+     "10.9",
+     ""
+    ],
+    [
+     "10.16",
+     "Form of Securities Purchase Agreement**",
+     "8-K",
+     "11/24/21",
+     "10.1",
+     ""
+    ],
+    [
+     "10.17",
+     "Form of Original Issue Discount Senior Convertible Promissory Note",
+     "8-K",
+     "11/24/21",
+     "10.2",
+     ""
+    ],
+    [
+     "10.18",
+     "Form of Warrant",
+     "8-K",
+     "11/24/21",
+     "10.3",
+     ""
+    ],
+    [
+     "10.19",
+     "Form of Registration Rights Agreement**",
+     "8-K",
+     "11/24/21",
+     "10.4",
+     ""
+    ],
+    [
+     "10.20",
+     "Amended and Restated 2021 Equity Incentive Plan*",
+     "10-K",
+     "3/31/22",
+     "10.20",
+     ""
+    ],
+    [
+     "16.1",
+     "Letter from RBSM LLP, dated December 28, 2021",
+     "8-K",
+     "12/29/21",
+     "16.1",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of BF Borgers CPA PC",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer (302)",
+     "",
+     "",
+     "",
+     "Filed"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive and Principal Financial Officer (906)",
+     "",
+     "",
+     "",
+     "Furnished***^"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     "",
+     "",
+     "Filed^"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 152,
+    "end_line": 201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits. See the Exhibit Index."
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf The Company does not have written documentation of our internal control policies and procedures.\nWe plan to rectify these weaknesses by establishing written policies and procedures for our internal control of financial reporting and hiring additional accounting personnel at such time as we raise sufficient capital to do so.\nChanges in Internal Controls over Financial Reporting\nThere have been no changes in the internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) during the quarter ended December 31, 2021 that have materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nPART IV\nItem 15. Exhibits, Financial Statements Schedules\n(a) Documents Filed as part of the report.\n(1) Financial Statements. See Index to Consolidated Financial Statements, which appears on page F-1 hereof. The financial statements listed in the accompanying Index to Consolidated Financial Statements are filed herewith in response to this Item.\n(2) Exhibits. See the Exhibit Index.",
+   "prose_after": "* Management contract or compensatory plan or arrangement.\n** Exhibits and/or Schedules have been omitted. The Company hereby agrees to furnish to the Securities and Exchange Commission upon request any omitted information.\n*** This exhibit is being furnished rather than filed and shall not be deemed incorporated by reference into any filing, in accordance with Item 601 of Regulation S-K.\n+Portions of this exhibit have been omitted as permitted by the rules of the SEC. The information excluded is both (i) not material and (ii) the type that the Company customarily and actually treats as private or confidential. The Company undertakes to submit a marked copy of this exhibit for review by the SEC Staff, to the extent it has not been previously provided, and provide supplemental materials to the SEC Staff promptly upon request.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 141,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 216,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "^",
+     "Previously filed with our 2021 Form 10-K, originally filed with the SEC on March 31, 2022, which is being amended hereby."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 210,
+    "end_line": 213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits. See the Exhibit Index."
+    },
+    "note": null
+   },
+   "prose_before": "* Management contract or compensatory plan or arrangement.\n** Exhibits and/or Schedules have been omitted. The Company hereby agrees to furnish to the Securities and Exchange Commission upon request any omitted information.\n*** This exhibit is being furnished rather than filed and shall not be deemed incorporated by reference into any filing, in accordance with Item 601 of Regulation S-K.\n+Portions of this exhibit have been omitted as permitted by the rules of the SEC. The information excluded is both (i) not material and (ii) the type that the Company customarily and actually treats as private or confidential. The Company undertakes to submit a marked copy of this exhibit for review by the SEC Staff, to the extent it has not been previously provided, and provide supplemental materials to the SEC Staff promptly upon request.",
+   "prose_after": "Copies of this Report (including the financial statements) and any of the exhibits referred to above will be furnished at no cost to our shareholders who make a written request to Panacea Life Sciences Holdings, Inc., at the address on the cover page of this Report, Attention: Corporate Secretary.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 141,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 216,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Panacea Life Sciences Holdings, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: June 27, 2022",
+     "By:",
+     "/s/ Leslie Buttorff"
+    ],
+    [
+     "",
+     "",
+     "Principal Executive Officer and Principal Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Panacea Life Sciences Holdings, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 221,
+    "end_line": 228
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits. See the Exhibit Index."
+    },
+    "note": null
+   },
+   "prose_before": "Copies of this Report (including the financial statements) and any of the exhibits referred to above will be furnished at no cost to our shareholders who make a written request to Panacea Life Sciences Holdings, Inc., at the address on the cover page of this Report, Attention: Corporate Secretary.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 216,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6273 @@
+{
+ "accession": "0000088205-20-000016",
+ "cik": "0000088205",
+ "form": "10-Q",
+ "filing_date": "2020-05-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "spxc-20200328.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "38-1016240"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 28, 2020\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 1-6948\nSPX CORPORATION\n(Exact Name of registrant as specified in its charter)",
+   "prose_after": "13320-A Ballantyne Corporate Place, Charlotte, North Carolina 28277\n(Address of principal executive offices) (Zip Code)\n(980) 474-3700\n(Registrant\u2019s telephone number, including area code)\nNOT APPLICABLE\n(Former name, former address, and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbols(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.01",
+     "SPXC",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "13320-A Ballantyne Corporate Place, Charlotte, North Carolina 28277\n(Address of principal executive offices) (Zip Code)\n(980) 474-3700\n(Registrant\u2019s telephone number, including area code)\nNOT APPLICABLE\n(Former name, former address, and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "PART 1 \u2013 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "  Item 1 \u2013 Financial Statements",
+     ""
+    ],
+    [
+     "    Condensed Consolidated Statements of Operations and Comprehensive Income",
+     "3"
+    ],
+    [
+     "    Condensed Consolidated Balance Sheets",
+     "4"
+    ],
+    [
+     "Condensed Consolidated Statements of Equity",
+     "5"
+    ],
+    [
+     "    Condensed Consolidated Statements of Cash Flows",
+     "6"
+    ],
+    [
+     "    Notes to Condensed Consolidated Financial Statements",
+     "7"
+    ],
+    [
+     "  Item 2 \u2013 Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "27"
+    ],
+    [
+     "  Item 3 \u2013 Quantitative and Qualitative Disclosures About Market Risk",
+     "36"
+    ],
+    [
+     "  Item 4 \u2013 Controls and Procedures",
+     "36"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART 2 \u2013 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "  Item 1 \u2013 Legal Proceedings",
+     "37"
+    ],
+    [
+     "  Item 1A \u2013 Risk Factors",
+     "37"
+    ],
+    [
+     "  Item 2 \u2013 Unregistered Sales of Equity Securities and Use of Proceeds",
+     "38"
+    ],
+    [
+     "  Item 6 \u2013 Exhibits",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "39"
+    ]
+   ],
+   "caption_stack": [
+    "PART 1 \u2013 FINANCIAL INFORMATION",
+    "Item 1 \u2013 Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [X]      Accelerated filer      [ ]\nNon-accelerated filer   [ ]  Smaller reporting company  [ ]\nEmerging growth company   [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No.\nCommon shares outstanding April 24, 2020, 44,559,420\nFORM 10-Q INDEX",
+   "prose_after": "PART I\u2014FINANCIAL INFORMATION\nITEM 1. Financial Statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\n(Unaudited; in millions, except per share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "369.3",
+     "$",
+     "343.6"
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "255.2",
+     "",
+     "260.4",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "78.9",
+     "",
+     "76.7",
+     ""
+    ],
+    [
+     "Intangible amortization",
+     "2.6",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Special charges, net",
+     "0.3",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Other operating (income) expense",
+     "(0.4)",
+     "",
+     "1.8",
+     ""
+    ],
+    [
+     "Operating income",
+     "32.7",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "0.7",
+     "",
+     "7.2",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(4.7)",
+     "",
+     "(5.3)",
+     ""
+    ],
+    [
+     "Interest income",
+     "\u2014",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "28.7",
+     "",
+     "5.2",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "(6.0)",
+     "",
+     "(4.6)",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "22.7",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss on disposition of discontinued operations, net of tax",
+     "\u2014",
+     "",
+     "(1.4)",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "\u2014",
+     "",
+     "(1.4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "22.7",
+     "$",
+     "(0.8)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income (loss) per share of common stock:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "0.51",
+     "$",
+     "0.01"
+    ],
+    [
+     "Loss from discontinued operations",
+     "\u2014",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Net income (loss) per share",
+     "$",
+     "0.51",
+     "$",
+     "(0.02)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 basic",
+     "44.309",
+     "",
+     "43.618",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income (loss) per share of common stock:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "0.50",
+     "$",
+     "0.01"
+    ],
+    [
+     "Loss from discontinued operations",
+     "\u2014",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Net income (loss) per share",
+     "$",
+     "0.50",
+     "$",
+     "(0.02)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 diluted",
+     "45.527",
+     "",
+     "44.880",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "9.8",
+     "$",
+     "0.9"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 155
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I\u2014FINANCIAL INFORMATION\nITEM 1. Financial Statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\n(Unaudited; in millions, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(Unaudited; in millions, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 93,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 158,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and equivalents",
+     "$",
+     "163.1",
+     "$",
+     "54.7"
+    ],
+    [
+     "Accounts receivable, net",
+     "239.6",
+     "",
+     "265.9",
+     ""
+    ],
+    [
+     "Contract assets",
+     "73.6",
+     "",
+     "63.4",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "175.1",
+     "",
+     "154.9",
+     ""
+    ],
+    [
+     "Other current assets (includes income taxes receivable of $22.7 and $23.0 at March 28, 2020 and December 31, 2019, respectively)",
+     "92.6",
+     "",
+     "93.2",
+     ""
+    ],
+    [
+     "Total current assets",
+     "744.0",
+     "",
+     "632.1",
+     ""
+    ],
+    [
+     "Property, plant and equipment:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "18.7",
+     "",
+     "18.7",
+     ""
+    ],
+    [
+     "Buildings and leasehold improvements",
+     "121.0",
+     "",
+     "121.9",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "343.3",
+     "",
+     "342.6",
+     ""
+    ],
+    [
+     "",
+     "483.0",
+     "",
+     "483.2",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(306.1)",
+     "",
+     "(304.1)",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "176.9",
+     "",
+     "179.1",
+     ""
+    ],
+    [
+     "Goodwill",
+     "446.6",
+     "",
+     "449.3",
+     ""
+    ],
+    [
+     "Intangibles, net",
+     "247.6",
+     "",
+     "251.7",
+     ""
+    ],
+    [
+     "Other assets",
+     "592.0",
+     "",
+     "605.9",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "14.8",
+     "",
+     "16.4",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "2,221.9",
+     "$",
+     "2,134.5"
+    ],
+    [
+     "LIABILITIES AND EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "148.0",
+     "$",
+     "141.6"
+    ],
+    [
+     "Contract liabilities",
+     "94.0",
+     "",
+     "100.8",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "195.0",
+     "",
+     "220.4",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "2.2",
+     "",
+     "2.2",
+     ""
+    ],
+    [
+     "Short-term debt",
+     "260.3",
+     "",
+     "142.6",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "2.6",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "702.1",
+     "",
+     "608.6",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "248.6",
+     "",
+     "249.9",
+     ""
+    ],
+    [
+     "Deferred and other income taxes",
+     "26.2",
+     "",
+     "26.3",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "729.9",
+     "",
+     "747.3",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "1,004.7",
+     "",
+     "1,023.5",
+     ""
+    ],
+    [
+     "Commitments and contingent liabilities (Note 15)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock (52,225,682 and 44,533,979 issued and outstanding at March 28, 2020, respectively, and 52,017,204 and 44,202,503 issued and outstanding at December 31, 2019, respectively)",
+     "0.5",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Paid-in capital",
+     "1,298.5",
+     "",
+     "1,302.4",
+     ""
+    ],
+    [
+     "Retained deficit",
+     "(562.6)",
+     "",
+     "(584.8)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "231.4",
+     "",
+     "244.3",
+     ""
+    ],
+    [
+     "Common stock in treasury (7,691,703 and 7,814,701 shares at March 28, 2020 and December 31, 2019, respectively)",
+     "(452.7)",
+     "",
+     "(460.0)",
+     ""
+    ],
+    [
+     "Total equity",
+     "515.1",
+     "",
+     "502.4",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND EQUITY",
+     "$",
+     "2,221.9",
+     "$",
+     "2,134.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 164,
+    "end_line": 226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(Unaudited; in millions, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED STATEMENTS OF EQUITY\n(Unaudited; in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 158,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended March 28, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "Paid-In Capital",
+     "",
+     "Retained Deficit",
+     "",
+     "Accum. Other Comprehensive Income",
+     "",
+     "Common Stock In Treasury",
+     "",
+     "SPX Corporation Shareholders\u2019 Equity",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "$",
+     "0.5",
+     "$",
+     "1,302.4",
+     "$",
+     "(584.8)",
+     "$",
+     "244.3",
+     "$",
+     "(460.0)",
+     "$",
+     "502.4"
+    ],
+    [
+     "Impact of adoption of ASU 2016-13 - See Note 2",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22.7",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(12.9)",
+     "",
+     "\u2014",
+     "",
+     "(12.9)",
+     ""
+    ],
+    [
+     "Incentive plan activity",
+     "\u2014",
+     "",
+     "4.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4.7",
+     ""
+    ],
+    [
+     "Long-term incentive compensation expense",
+     "\u2014",
+     "",
+     "3.0",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "Restricted stock and restricted stock unit vesting",
+     "\u2014",
+     "",
+     "(11.6)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7.3",
+     "",
+     "(4.3)",
+     ""
+    ],
+    [
+     "Balance at March 28, 2020",
+     "$",
+     "0.5",
+     "$",
+     "1,298.5",
+     "$",
+     "(562.6)",
+     "$",
+     "231.4",
+     "$",
+     "(452.7)",
+     "$",
+     "515.1"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 28, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 235,
+    "end_line": 252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED STATEMENTS OF EQUITY\n(Unaudited; in millions)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 272,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended March 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "Paid-In Capital",
+     "",
+     "Retained Deficit",
+     "",
+     "Accum. Other Comprehensive Income",
+     "",
+     "Common Stock In Treasury",
+     "",
+     "SPX Corporation Shareholders\u2019 Equity",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "$",
+     "0.5",
+     "$",
+     "1,295.4",
+     "$",
+     "(650.1)",
+     "$",
+     "244.9",
+     "$",
+     "(475.8)",
+     "$",
+     "414.9"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.8)",
+     ""
+    ],
+    [
+     "Other comprehensive income, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.7",
+     "",
+     "\u2014",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Incentive plan activity",
+     "\u2014",
+     "",
+     "3.4",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "Long-term incentive compensation expense",
+     "\u2014",
+     "",
+     "2.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Restricted stock and restricted stock unit vesting",
+     "\u2014",
+     "",
+     "(21.5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "15.0",
+     "",
+     "(6.5)",
+     ""
+    ],
+    [
+     "Balance at March 30, 2019",
+     "$",
+     "0.5",
+     "$",
+     "1,279.9",
+     "$",
+     "(650.9)",
+     "$",
+     "246.6",
+     "$",
+     "(460.8)",
+     "$",
+     "415.3"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited; in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 272,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Cash flows from (used in) operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "22.7",
+     "$",
+     "(0.8)"
+    ],
+    [
+     "Less: Loss from discontinued operations, net of tax",
+     "\u2014",
+     "",
+     "(1.4)",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "22.7",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Adjustments to reconcile income from continuing operations to net cash from (used in) operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Special charges, net",
+     "0.3",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Gain on change in fair value of equity security",
+     "\u2014",
+     "",
+     "(6.3)",
+     ""
+    ],
+    [
+     "Deferred and other income taxes",
+     "3.9",
+     "",
+     "2.5",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "9.2",
+     "",
+     "8.1",
+     ""
+    ],
+    [
+     "Pension and other employee benefits",
+     "2.2",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Long-term incentive compensation",
+     "3.5",
+     "",
+     "3.5",
+     ""
+    ],
+    [
+     "Other, net",
+     "0.7",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities, net of effects from acquisitions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable and other assets",
+     "23.8",
+     "",
+     "47.5",
+     ""
+    ],
+    [
+     "Inventories",
+     "(22.7)",
+     "",
+     "(14.4)",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses and other",
+     "(40.4)",
+     "",
+     "(32.2)",
+     ""
+    ],
+    [
+     "Cash spending on restructuring actions",
+     "(0.5)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Net cash from continuing operations",
+     "2.7",
+     "",
+     "11.5",
+     ""
+    ],
+    [
+     "Net cash used in discontinued operations",
+     "(3.1)",
+     "",
+     "(0.9)",
+     ""
+    ],
+    [
+     "Net cash from (used in) operating activities",
+     "(0.4)",
+     "",
+     "10.6",
+     ""
+    ],
+    [
+     "Cash flows from (used in) investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from company-owned life insurance policies, net",
+     "1.1",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Business acquisitions, net of cash acquired",
+     "\u2014",
+     "",
+     "(77.0)",
+     ""
+    ],
+    [
+     "Net proceeds from sales of assets",
+     "\u2014",
+     "",
+     "5.5",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(3.6)",
+     "",
+     "(3.7)",
+     ""
+    ],
+    [
+     "Net cash used in continuing operations",
+     "(2.5)",
+     "",
+     "(74.7)",
+     ""
+    ],
+    [
+     "Net cash from discontinued operations",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(2.5)",
+     "",
+     "(74.7)",
+     ""
+    ],
+    [
+     "Cash flows from (used in) financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings under senior credit facilities",
+     "178.7",
+     "",
+     "89.3",
+     ""
+    ],
+    [
+     "Repayments under senior credit facilities",
+     "(88.7)",
+     "",
+     "(64.5)",
+     ""
+    ],
+    [
+     "Borrowings under trade receivables financing arrangement",
+     "55.0",
+     "",
+     "40.0",
+     ""
+    ],
+    [
+     "Repayments under trade receivables financing arrangement",
+     "(27.0)",
+     "",
+     "(29.0)",
+     ""
+    ],
+    [
+     "Net borrowings (repayments) under other financing arrangements",
+     "(0.7)",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Payment of contingent consideration",
+     "(1.5)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Minimum withholdings paid on behalf of employees for net share settlements, net of proceeds from the exercise of employee stock options",
+     "(2.8)",
+     "",
+     "(5.9)",
+     ""
+    ],
+    [
+     "Net cash from continuing operations",
+     "113.0",
+     "",
+     "32.7",
+     ""
+    ],
+    [
+     "Net cash from (used in) discontinued operations",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash from financing activities",
+     "113.0",
+     "",
+     "32.7",
+     ""
+    ],
+    [
+     "Change in cash and equivalents due to changes in foreign currency exchange rates",
+     "(1.7)",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Net change in cash and equivalents",
+     "108.4",
+     "",
+     "(29.8)",
+     ""
+    ],
+    [
+     "Consolidated cash and equivalents, beginning of period",
+     "54.7",
+     "",
+     "68.8",
+     ""
+    ],
+    [
+     "Consolidated cash and equivalents, end of period",
+     "$",
+     "163.1",
+     "$",
+     "39.0"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 278,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited; in millions)",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited; in millions, except per share data)\n(1) BASIS OF PRESENTATION\nUnless otherwise indicated, \u201cwe,\u201d \u201cus\u201d and \u201cour\u201d mean SPX Corporation and its consolidated subsidiaries (\u201cSPX\u201d).\nWe prepared the condensed consolidated financial statements pursuant to the rules and regulations of the Securities and Exchange Commission (\u201cSEC\u201d) for interim reporting. As permitted under those rules and regulations, certain footnotes or other financial information normally required by accounting principles generally accepted in the United States (\u201cGAAP\u201d) can be condensed or omitted. The financial statements represent our accounts after the elimination of intercompany transactions and, in our opinion, include the adjustments (consisting only of normal and recurring items) necessary for their fair presentation.\nWe account for investments in unconsolidated companies where we exercise significant influence but do not have control using the equity method. In determining whether we are the primary beneficiary of a variable interest entity (\u201cVIE\u201d), we perform a qualitative analysis that considers the design of the VIE, the nature of our involvement and the variable interests held by other parties to determine which party has the power to direct the activities of the VIE that most significantly impact the entity\u2019s economic performance, and which party has the obligation to absorb losses or the right to receive benefits that could potentially be significant to the VIE. We have an interest in a VIE, in which we are not the primary beneficiary, as a result of the 2016 sale of Balcke D\u00fcrr. All other VIEs are considered immaterial, individually and in aggregate, to our condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 272,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended March 28, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reportable Segments and All Other",
+     "HVAC",
+     "",
+     "Detection and Measurement",
+     "",
+     "Engineered Solutions",
+     "",
+     "All Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Major product lines",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cooling",
+     "$",
+     "57.9",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "57.9"
+    ],
+    [
+     "Boilers, comfort heating, and ventilation",
+     "60.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "60.6",
+     ""
+    ],
+    [
+     "Underground locators and inspection and rehabilitation equipment",
+     "\u2014",
+     "",
+     "48.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "48.7",
+     ""
+    ],
+    [
+     "Signal monitoring, obstruction lighting, and bus fare collection systems",
+     "\u2014",
+     "",
+     "43.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "43.2",
+     ""
+    ],
+    [
+     "Power transformers",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "110.6",
+     "",
+     "\u2014",
+     "",
+     "110.6",
+     ""
+    ],
+    [
+     "Process cooling equipment and services, and heat exchangers",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "44.3",
+     "",
+     "1.9",
+     "",
+     "46.2",
+     ""
+    ],
+    [
+     "South African projects",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.1",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "118.5",
+     "$",
+     "91.9",
+     "$",
+     "154.9",
+     "$",
+     "4.0",
+     "$",
+     "369.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Timing of Revenue Recognition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues recognized at a point in time",
+     "$",
+     "118.5",
+     "$",
+     "83.5",
+     "$",
+     "11.6",
+     "$",
+     "1.3",
+     "$",
+     "214.9"
+    ],
+    [
+     "Revenues recognized over time",
+     "\u2014",
+     "",
+     "8.4",
+     "",
+     "143.3",
+     "",
+     "2.7",
+     "",
+     "154.4",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "118.5",
+     "$",
+     "91.9",
+     "$",
+     "154.9",
+     "$",
+     "4.0",
+     "$",
+     "369.3"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 28, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 411,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "As indicated in Note 1, on February 1, 2019, July 3, 2019, and November 12, 2019, we completed the acquisitions of Sabik, SGS, and Patterson-Kelley, respectively. The pro forma effects of these acquisitions are not material to our condensed consolidated results of operations for the three months ended March 30, 2019.\nDuring the three months ended March 30, 2019, we recorded an income tax provision of $1.4 within \u201cLoss on disposition of discontinued operations, net of tax\u201d as a result of a change in estimate associated with income tax liabilities retained in connection with a prior business divestiture.\n(4) REVENUES FROM CONTRACTS\nDisaggregated Revenues\nWe disaggregate revenue from contracts with customers by major product line and based on the timing of recognition for each of our reportable segments and other operating segments, as we believe such disaggregation best depicts how the nature, amount, timing, and uncertainty of our revenues and cash flows are affected by economic factors, with such disaggregation presented below for the three months ended March 28, 2020 and March 30, 2019:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended March 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reportable Segments and All Other",
+     "HVAC",
+     "",
+     "Detection and Measurement",
+     "",
+     "Engineered Solutions",
+     "",
+     "All Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Major product lines",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cooling",
+     "$",
+     "58.9",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "58.9"
+    ],
+    [
+     "Boilers, comfort heating, and ventilation",
+     "69.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "69.5",
+     ""
+    ],
+    [
+     "Underground locators and inspection and rehabilitation equipment",
+     "\u2014",
+     "",
+     "47.1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "47.1",
+     ""
+    ],
+    [
+     "Signal monitoring, obstruction lighting, and bus fare collection systems",
+     "\u2014",
+     "",
+     "38.0",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38.0",
+     ""
+    ],
+    [
+     "Power transformers",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "98.8",
+     "",
+     "\u2014",
+     "",
+     "98.8",
+     ""
+    ],
+    [
+     "Process cooling equipment and services, and heat exchangers",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "39.2",
+     "",
+     "3.7",
+     "",
+     "42.9",
+     ""
+    ],
+    [
+     "South African projects (1)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11.6)",
+     "",
+     "(11.6)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "128.4",
+     "$",
+     "85.1",
+     "$",
+     "138.0",
+     "$",
+     "(7.9)",
+     "$",
+     "343.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Timing of Revenue Recognition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues recognized at a point in time",
+     "$",
+     "128.4",
+     "$",
+     "79.6",
+     "$",
+     "12.5",
+     "$",
+     "1.1",
+     "$",
+     "221.6"
+    ],
+    [
+     "Revenues recognized over time (1)",
+     "\u2014",
+     "",
+     "5.5",
+     "",
+     "125.5",
+     "",
+     "(9.0)",
+     "",
+     "122.0",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "128.4",
+     "$",
+     "85.1",
+     "$",
+     "138.0",
+     "$",
+     "(7.9)",
+     "$",
+     "343.6"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 441,
+    "end_line": 469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "___________________________\n(1) As further discussed below, during the three months ended March 30, 2019, we reduced the amount of cumulative revenue associated with variable consideration on the large power projects in South Africa by $17.5.\nContract Balances\nOur customers are invoiced for products and services at the time of delivery or based on contractual milestones, resulting in outstanding receivables with payment terms from these customers (\u201cContract Accounts Receivable\u201d). In some cases, the timing of revenue recognition, particularly for revenue recognized over time, differs from when such amounts are invoiced to customers, resulting in a contract asset (revenue recognition precedes the invoicing of the related revenue amount) or a contract liability (payment from the customer precedes recognition of the related revenue amount). Contract assets and liabilities are generally classified as current. On a contract-by-contract basis, the contract assets and contract liabilities are reported net within our condensed consolidated balance sheets. Our contract balances consisted of the following as of March 28, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Contract Balances",
+     "March 28, 2020",
+     "",
+     "December 31, 2019",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Contract Accounts Receivable(1)",
+     "$",
+     "235.2",
+     "$",
+     "260.8",
+     "$",
+     "(25.6)"
+    ],
+    [
+     "Contract Assets",
+     "73.6",
+     "",
+     "63.4",
+     "",
+     "10.2",
+     ""
+    ],
+    [
+     "Contract Liabilities - current",
+     "(94.0)",
+     "",
+     "(100.8)",
+     "",
+     "6.8",
+     ""
+    ],
+    [
+     "Contract Liabilities - non-current(2)",
+     "(2.4)",
+     "",
+     "(3.3)",
+     "",
+     "0.9",
+     ""
+    ],
+    [
+     "Net contract balance",
+     "$",
+     "212.4",
+     "$",
+     "220.1",
+     "$",
+     "(7.7)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 478,
+    "end_line": 490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(1) As further discussed below, during the three months ended March 30, 2019, we reduced the amount of cumulative revenue associated with variable consideration on the large power projects in South Africa by $17.5.\nContract Balances\nOur customers are invoiced for products and services at the time of delivery or based on contractual milestones, resulting in outstanding receivables with payment terms from these customers (\u201cContract Accounts Receivable\u201d). In some cases, the timing of revenue recognition, particularly for revenue recognized over time, differs from when such amounts are invoiced to customers, resulting in a contract asset (revenue recognition precedes the invoicing of the related revenue amount) or a contract liability (payment from the customer precedes recognition of the related revenue amount). Contract assets and liabilities are generally classified as current. On a contract-by-contract basis, the contract assets and contract liabilities are reported net within our condensed consolidated balance sheets. Our contract balances consisted of the following as of March 28, 2020 and December 31, 2019:",
+   "prose_after": "___________________________\n(1) Included in \u201cAccounts receivable, net\u201d within the accompanying condensed consolidated balance sheets.\n(2) Included in \u201cOther long-term liabilities\u201d within the accompanying condensed consolidated balance sheets.\nThe $7.7 decrease in our net contract balance from December 31, 2019 to March 28, 2020 was due primarily to cash payments received from customers during the period, partially offset by revenue recognized during the period.\nDuring the three months ended March 28, 2020, we recognized revenues of $44.6 related to our contract liabilities at December 31, 2019.\nPerformance Obligations\nAs of March 28, 2020, the aggregate amount allocated to remaining performance obligations was $74.0. We expect to recognize revenue on approximately 36% and 61% of remaining performance obligations over the next 12 and 24 months, respectively, with the remaining recognized thereafter.\nVariable Consideration\nDuring February, March, and April of 2019, we received a number of claims from the prime contractors on the large power projects in South Africa asserting various amounts of damages. In consideration of these claims (including the magnitude",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HVAC reportable segment",
+     "$",
+     "118.5",
+     "$",
+     "128.4"
+    ],
+    [
+     "Detection and Measurement reportable segment",
+     "91.9",
+     "",
+     "85.1",
+     ""
+    ],
+    [
+     "Engineered Solutions reportable segment",
+     "154.9",
+     "",
+     "138.0",
+     ""
+    ],
+    [
+     "All Other (1)",
+     "4.0",
+     "",
+     "(7.9)",
+     ""
+    ],
+    [
+     "Consolidated revenues",
+     "$",
+     "369.3",
+     "$",
+     "343.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HVAC reportable segment",
+     "$",
+     "15.0",
+     "$",
+     "18.4"
+    ],
+    [
+     "Detection and Measurement reportable segment",
+     "18.2",
+     "",
+     "17.0",
+     ""
+    ],
+    [
+     "Engineered Solutions reportable segment",
+     "17.9",
+     "",
+     "8.0",
+     ""
+    ],
+    [
+     "All Other (1)",
+     "(3.9)",
+     "",
+     "(22.6)",
+     ""
+    ],
+    [
+     "Total income for segments",
+     "47.2",
+     "",
+     "20.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate expense",
+     "(11.1)",
+     "",
+     "(12.4)",
+     ""
+    ],
+    [
+     "Long-term incentive compensation expense",
+     "(3.5)",
+     "",
+     "(3.5)",
+     ""
+    ],
+    [
+     "Special charges, net",
+     "(0.3)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Other operating income (expense)",
+     "0.4",
+     "",
+     "(1.8)",
+     ""
+    ],
+    [
+     "Consolidated operating income",
+     "$",
+     "32.7",
+     "$",
+     "3.0"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Our Engineered Solutions reportable segment engineers, designs, manufactures, installs and services transformers for the power transmission and distribution market and process cooling equipment for the industrial and power generation markets. The primary distribution channels for the segment\u2019s products are direct to customers and third-party representatives. The segment has a strong presence in North America.\nAll Other\nOur \u201cAll Other\u201d group of operating segments engineer, design, manufacture, install and service equipment, including heat exchangers, primarily for the industrial and power generation markets. The primary distribution channels for the group\u2019s products are direct to customers and third-party representatives. These operating segments have a presence in North America and South Africa.\nCorporate Expense\nCorporate expense generally relates to the cost of our Charlotte, North Carolina corporate headquarters.\nFinancial data for our reportable segments and other operating segments for the three months ended March 28, 2020 and March 30, 2019 are presented below:",
+   "prose_after": "_____________________\n(1)As indicated in Note 4, during the three months ended March 30, 2019, we reduced the amount of cumulative revenue associated with the variable consideration on the large power projects in South Africa by $17.5.\n(7) SPECIAL CHARGES, NET\nSpecial charges, net, for the three months ended March 28, 2020 and March 30, 2019 are described in more detail below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "HVAC reportable segment",
+     "$",
+     "0.1",
+     "$",
+     "0.1"
+    ],
+    [
+     "Detection and Measurement reportable segment",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Engineered Solutions reportable segment",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All Other",
+     "0.2",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Corporate",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "0.3",
+     "$",
+     "0.1"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "_____________________\n(1)As indicated in Note 4, during the three months ended March 30, 2019, we reduced the amount of cumulative revenue associated with the variable consideration on the large power projects in South Africa by $17.5.\n(7) SPECIAL CHARGES, NET\nSpecial charges, net, for the three months ended March 28, 2020 and March 30, 2019 are described in more detail below:",
+   "prose_after": "HVAC \u2014 Charges for the three months ended March 28, 2020 related primarily to severance costs associated with a restructuring action at the segment's Cooling Americas business. Charges for the three months ended March 30, 2019 related primarily to severance costs associated with a restructuring action at the segment\u2019s Cooling EMEA business.\nAll Other \u2014 Charges for the three months ended March 28, 2020 related primarily to severance costs incurred in connection with the wind-down activities at DBT, our South African subsidiary.\nNo significant charges are expected to be incurred under actions approved as of March 28, 2020.\nThe following is an analysis of our restructuring liabilities for the three months ended March 28, 2020 and March 30, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Balance at beginning of year",
+     "$",
+     "1.7",
+     "$",
+     "2.7"
+    ],
+    [
+     "Special charges",
+     "0.3",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Utilization \u2014 cash",
+     "(0.5)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Currency translation adjustment and other",
+     "(0.2)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "1.3",
+     "$",
+     "1.8"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 621
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "HVAC \u2014 Charges for the three months ended March 28, 2020 related primarily to severance costs associated with a restructuring action at the segment's Cooling Americas business. Charges for the three months ended March 30, 2019 related primarily to severance costs associated with a restructuring action at the segment\u2019s Cooling EMEA business.\nAll Other \u2014 Charges for the three months ended March 28, 2020 related primarily to severance costs incurred in connection with the wind-down activities at DBT, our South African subsidiary.\nNo significant charges are expected to be incurred under actions approved as of March 28, 2020.\nThe following is an analysis of our restructuring liabilities for the three months ended March 28, 2020 and March 30, 2019:",
+   "prose_after": "(8) INVENTORIES, NET\nInventories at March 28, 2020 and December 31, 2019 comprised the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "66.4",
+     "$",
+     "57.6"
+    ],
+    [
+     "Work in process",
+     "23.8",
+     "",
+     "19.3",
+     ""
+    ],
+    [
+     "Raw materials and purchased parts",
+     "97.7",
+     "",
+     "90.3",
+     ""
+    ],
+    [
+     "Total FIFO cost",
+     "187.9",
+     "",
+     "167.2",
+     ""
+    ],
+    [
+     "Excess of FIFO cost over LIFO inventory value",
+     "(12.8)",
+     "",
+     "(12.3)",
+     ""
+    ],
+    [
+     "Total inventories, net",
+     "$",
+     "175.1",
+     "$",
+     "154.9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(8) INVENTORIES, NET\nInventories at March 28, 2020 and December 31, 2019 comprised the following:",
+   "prose_after": "Inventories include material, labor and factory overhead costs and are reduced, when necessary, to estimated net realizable values. Certain inventories are valued using the last-in, first-out (\u201cLIFO\u201d) method. These inventories were approximately 41% and 36% of total inventory at March 28, 2020 and December 31, 2019, respectively. Other inventories are valued using the first-in, first-out (\u201cFIFO\u201d) method.\n(9) GOODWILL AND OTHER INTANGIBLE ASSETS\nGoodwill\nThe changes in the carrying amount of goodwill for the three months ended March 28, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "Goodwill Resulting from Business Combinations (1)",
+     "",
+     "Impairments",
+     "",
+     "Foreign Currency Translation",
+     "",
+     "March 28, 2020",
+     ""
+    ],
+    [
+     "HVAC reportable segment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross goodwill",
+     "$",
+     "277.1",
+     "$",
+     "(0.1)",
+     "$",
+     "\u2014",
+     "$",
+     "(1.7)",
+     "$",
+     "275.3"
+    ],
+    [
+     "Accumulated impairments",
+     "(144.6)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.5",
+     "",
+     "(144.1)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "132.5",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "(1.2)",
+     "",
+     "131.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Detection and Measurement reportable segment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross goodwill",
+     "304.1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4.3)",
+     "",
+     "299.8",
+     ""
+    ],
+    [
+     "Accumulated impairments",
+     "(133.6)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.9",
+     "",
+     "(130.7)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "170.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.4)",
+     "",
+     "169.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Engineered Solutions reportable segment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross goodwill",
+     "334.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.5)",
+     "",
+     "331.7",
+     ""
+    ],
+    [
+     "Accumulated impairments",
+     "(187.9)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.5",
+     "",
+     "(185.4)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "146.3",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "146.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross goodwill",
+     "20.8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20.8",
+     ""
+    ],
+    [
+     "Accumulated impairments",
+     "(20.8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(20.8)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross goodwill",
+     "936.2",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "(8.5)",
+     "",
+     "927.6",
+     ""
+    ],
+    [
+     "Accumulated impairments",
+     "(486.9)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5.9",
+     "",
+     "(481.0)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "$",
+     "449.3",
+     "$",
+     "(0.1)",
+     "$",
+     "\u2014",
+     "$",
+     "(2.6)",
+     "$",
+     "446.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Inventories include material, labor and factory overhead costs and are reduced, when necessary, to estimated net realizable values. Certain inventories are valued using the last-in, first-out (\u201cLIFO\u201d) method. These inventories were approximately 41% and 36% of total inventory at March 28, 2020 and December 31, 2019, respectively. Other inventories are valued using the first-in, first-out (\u201cFIFO\u201d) method.\n(9) GOODWILL AND OTHER INTANGIBLE ASSETS\nGoodwill\nThe changes in the carrying amount of goodwill for the three months ended March 28, 2020 were as follows:",
+   "prose_after": "___________________________\n(1) Reflects a reduction in Patterson-Kelley's goodwill during the period of $0.5 resulting from revisions to the valuation of certain tangible assets, partially offset by an increase in SGS's goodwill during the period of $0.4 resulting from revisions to the valuation of certain income tax accounts. As indicated in Note 1, the acquired assets, including goodwill, and liabilities assumed in the SGS and Patterson-Kelley acquisitions have been recorded at estimates of fair value and are subject to change upon completion of acquisition accounting.\nOther Intangibles, Net\nIdentifiable intangible assets at March 28, 2020 and December 31, 2019 comprised the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Carrying Value",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Value",
+     "",
+     "Gross Carrying Value",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Value",
+     ""
+    ],
+    [
+     "Intangible assets with determinable lives:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "77.2",
+     "$",
+     "(10.3)",
+     "$",
+     "66.9",
+     "$",
+     "77.4",
+     "$",
+     "(8.7)",
+     "$",
+     "68.7"
+    ],
+    [
+     "Technology",
+     "29.3",
+     "",
+     "(4.0)",
+     "",
+     "25.3",
+     "",
+     "29.5",
+     "",
+     "(3.3)",
+     "",
+     "26.2",
+     ""
+    ],
+    [
+     "Patents",
+     "4.5",
+     "",
+     "(4.5)",
+     "",
+     "\u2014",
+     "",
+     "4.5",
+     "",
+     "(4.5)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "12.3",
+     "",
+     "(9.4)",
+     "",
+     "2.9",
+     "",
+     "12.6",
+     "",
+     "(9.2)",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "",
+     "123.3",
+     "",
+     "(28.2)",
+     "",
+     "95.1",
+     "",
+     "124.0",
+     "",
+     "(25.7)",
+     "",
+     "98.3",
+     ""
+    ],
+    [
+     "Trademarks with indefinite lives",
+     "152.5",
+     "",
+     "\u2014",
+     "",
+     "152.5",
+     "",
+     "153.4",
+     "",
+     "\u2014",
+     "",
+     "153.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "275.8",
+     "$",
+     "(28.2)",
+     "$",
+     "247.6",
+     "$",
+     "277.4",
+     "$",
+     "(25.7)",
+     "$",
+     "251.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "___________________________\n(1) Reflects a reduction in Patterson-Kelley's goodwill during the period of $0.5 resulting from revisions to the valuation of certain tangible assets, partially offset by an increase in SGS's goodwill during the period of $0.4 resulting from revisions to the valuation of certain income tax accounts. As indicated in Note 1, the acquired assets, including goodwill, and liabilities assumed in the SGS and Patterson-Kelley acquisitions have been recorded at estimates of fair value and are subject to change upon completion of acquisition accounting.\nOther Intangibles, Net\nIdentifiable intangible assets at March 28, 2020 and December 31, 2019 comprised the following:",
+   "prose_after": "At March 28, 2020, the net carrying value of intangible assets with determinable lives consisted of $26.5 in the HVAC reportable segment and $68.6 in the Detection and Measurement reportable segment. At March 28, 2020, trademarks with\nindefinite lives consisted of $96.1 in the HVAC reportable segment, $47.3 in the Detection and Measurement reportable segment, and $9.1 in the Engineered Solutions reportable segment.\nWe perform our annual goodwill impairment testing during the fourth quarter in conjunction with our annual financial planning process, with such testing based primarily on events and circumstances existing as of the end of the third quarter. In addition, we test goodwill for impairment on a more frequent basis if there are indications of potential impairment. A significant amount of judgment is involved in determining if an indication of impairment has occurred between annual testing dates. Such indication may include: a significant decline in expected future cash flows; a significant adverse change in legal factors or the business climate; unanticipated competition; and a more likely than not expectation of selling or disposing all, or a portion, of a reporting unit.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Balance at beginning of year",
+     "$",
+     "35.1",
+     "$",
+     "34.0"
+    ],
+    [
+     "Acquisitions",
+     "\u2014",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Provisions",
+     "2.9",
+     "",
+     "2.9",
+     ""
+    ],
+    [
+     "Usage",
+     "(3.5)",
+     "",
+     "(3.8)",
+     ""
+    ],
+    [
+     "Currency translation adjustment",
+     "(0.1)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "34.4",
+     "",
+     "33.2",
+     ""
+    ],
+    [
+     "Less: Current portion of warranty",
+     "11.9",
+     "",
+     "11.0",
+     ""
+    ],
+    [
+     "Non-current portion of warranty",
+     "$",
+     "22.5",
+     "$",
+     "22.2"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "We perform our annual trademarks impairment testing during the fourth quarter, or on a more frequent basis, if there are indications of potential impairment. The fair values of our trademarks are determined by applying estimated royalty rates to projected revenues, with the resulting cash flows discounted at a rate of return that reflects current market conditions (fair value based on unobservable inputs - Level 3, as defined in Note 17). The primary basis for these projected revenues is the annual operating plan for each of the related businesses, which is prepared in the fourth quarter of each year.\nAs indicated in Note 1, the COVID-19 pandemic is expected to have an adverse impact on our consolidated financial results in the second quarter of 2020, and possibly longer. As of March 28, 2020, there were no indications that the carrying value of our goodwill and other intangible assets may not be recoverable. However, a prolonged adverse impact of the COVID-19 pandemic on our consolidated financial results may require an impairment charge related to one or more of these assets in a future period.\n(10) WARRANTY\nThe following is an analysis of our product warranty accrual for the periods presented:",
+   "prose_after": "(11) EMPLOYEE BENEFIT PLANS\nNet periodic benefit expense (income) for our pension and postretirement plans include the following components:\nDomestic Pension Plans",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest cost",
+     "2.7",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "(2.4)",
+     "",
+     "(2.5)",
+     ""
+    ],
+    [
+     "Net periodic pension benefit expense",
+     "$",
+     "0.3",
+     "$",
+     "0.8"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 759,
+    "end_line": 771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(11) EMPLOYEE BENEFIT PLANS\nNet periodic benefit expense (income) for our pension and postretirement plans include the following components:\nDomestic Pension Plans",
+   "prose_after": "Foreign Pension Plans",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest cost",
+     "1.0",
+     "",
+     "1.2",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "(1.5)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Net periodic pension benefit income",
+     "$",
+     "(0.5)",
+     "$",
+     "(0.4)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 787
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Foreign Pension Plans",
+   "prose_after": "Postretirement Plans",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 837,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest cost",
+     "0.4",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Amortization of unrecognized prior service credits",
+     "(1.2)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Net periodic postretirement benefit income",
+     "$",
+     "(0.8)",
+     "$",
+     "(0.4)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 790,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Postretirement Plans",
+   "prose_after": "(12) INDEBTEDNESS\nThe following summarizes our debt activity (both current and non-current) for the three months ended March 28, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 837,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "Borrowings",
+     "",
+     "Repayments",
+     "",
+     "Other(5)",
+     "",
+     "March 28, 2020",
+     ""
+    ],
+    [
+     "Revolving loans (1)",
+     "$",
+     "140.0",
+     "$",
+     "178.7",
+     "$",
+     "(88.7)",
+     "$",
+     "\u2014",
+     "$",
+     "230.0"
+    ],
+    [
+     "Term loan(2)",
+     "248.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "248.3",
+     ""
+    ],
+    [
+     "Trade receivables financing arrangement(3)",
+     "\u2014",
+     "",
+     "55.0",
+     "",
+     "(27.0)",
+     "",
+     "\u2014",
+     "",
+     "28.0",
+     ""
+    ],
+    [
+     "Other indebtedness(4)",
+     "5.3",
+     "",
+     "\u2014",
+     "",
+     "(0.7)",
+     "",
+     "0.6",
+     "",
+     "5.2",
+     ""
+    ],
+    [
+     "Total debt",
+     "393.5",
+     "",
+     "$",
+     "233.7",
+     "$",
+     "(116.4)",
+     "$",
+     "0.7",
+     "511.5",
+     ""
+    ],
+    [
+     "Less: short-term debt",
+     "142.6",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "260.3",
+     ""
+    ],
+    [
+     "Less: current maturities of long-term debt",
+     "1.0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "249.9",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "248.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 807,
+    "end_line": 824
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(12) INDEBTEDNESS\nThe following summarizes our debt activity (both current and non-current) for the three months ended March 28, 2020:",
+   "prose_after": "___________________________\n(1)In March 2020, we borrowed $100.0 against our domestic revolving loan facility to preempt any potential concerns about cash availability in the bank markets as a result of the COVID-19 pandemic. In addition, while not due for repayment until December 2024 under the terms of our senior credit agreement, we have classified the outstanding balances for the revolving loans as a current liability in our condensed consolidated balance sheets, as it is reasonably expected that such balances will be repaid within one year with available cash and cash that is expected to be generated from operations.\n(2)The term loan is repayable in quarterly installments beginning in the first quarter of 2021, with the quarterly installments equal to 0.625% of the initial term loan balance of $250.0 during 2021, 1.25% in each of the four quarters of 2022 and 2023, and 1.25% during the first three quarters of 2024. The remaining balance is payable in full on December 17, 2024. Balances are net of unamortized debt issuance costs of $1.7 and $1.8 at March 28, 2020 and December 31, 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 837,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "March 30, 2019"
+    ],
+    [
+     "Weighted-average number of common shares used in basic income per share",
+     "44.309",
+     "43.618"
+    ],
+    [
+     "Dilutive securities \u2014 Employee stock options and restricted stock units",
+     "1.218",
+     "1.262"
+    ],
+    [
+     "Weighted-average number of common shares and dilutive securities used in diluted income per share",
+     "45.527",
+     "44.880"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 877,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "From time to time, we enter into commodity contracts to manage the exposure on forecasted purchases of commodity raw materials. At March 28, 2020 and December 31, 2019, the outstanding notional amount of commodity contracts were 3.5 and 3.4 pounds of copper, respectively. We designate and account for these contracts as cash flow hedges and, to the extent the commodity contracts are effective in offsetting the variability of the forecasted purchases, the change in fair value is included in AOCI. We reclassify AOCI associated with our commodity contracts to cost of products sold when the forecasted transaction impacts earnings. As of March 28, 2020 and December 31, 2019, the fair value of these contracts were $1.8 (current liability) and $0.4 (current asset), respectively. The unrealized gain (loss), net of taxes, recorded in AOCI were $(1.4) and $0.3 as of March 28, 2020 and December 31, 2019, respectively. We anticipate reclassifying the unrealized loss as of March 28, 2020 to earnings over the next 12 months.\n(14) EQUITY AND LONG-TERM INCENTIVE COMPENSATION\nIncome Per Share\nThe following table sets forth the number of weighted-average shares outstanding used in the computation of basic and diluted income per share:",
+   "prose_after": "The weighted-average number of restricted stock units and stock options excluded from the computation of diluted income per share because the assumed proceeds for these instruments exceed the average market value of the underlying common stock for the related period were 0.280 and 0.756, respectively, for the three months ended March 28, 2020, and 0.301 and 0.973, respectively, for the three months ended March 30, 2019.\nLong-Term Incentive Compensation\nLong-term incentive compensation awards may be granted to certain eligible employees or non-employee directors. A detailed description of the awards granted prior to 2020 is included in our 2019 Annual Report on Form 10-K.\nAwards granted on February 20, 2020 to executive officers and other members of senior management were comprised of performance stock units (\u201cPSU\u2019s\u201d), stock options, and time-based restricted stock units (\u201cRSU\u2019s\u201d), while other eligible employees were granted PSU\u2019s and RSU\u2019s. The PSU\u2019s are eligible to vest at the end of a three-year performance period, with performance based on the total return of our stock over the three-year performance period against a peer group within the S&P 600 Capital Goods Index. Stock options and RSU\u2019s vest ratably over the three-year period subsequent to the date of grant.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Unvested PSU's and RSU's",
+     "Weighted-Average Grant-Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2019",
+     "0.606",
+     "$",
+     "36.17"
+    ],
+    [
+     "Granted",
+     "0.238",
+     "48.24",
+     ""
+    ],
+    [
+     "Vested",
+     "(0.213)",
+     "31.36",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(0.002)",
+     "38.33",
+     ""
+    ],
+    [
+     "Outstanding at March 28, 2020",
+     "0.629",
+     "42.36",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 907,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Awards granted on February 20, 2020 to executive officers and other members of senior management were comprised of performance stock units (\u201cPSU\u2019s\u201d), stock options, and time-based restricted stock units (\u201cRSU\u2019s\u201d), while other eligible employees were granted PSU\u2019s and RSU\u2019s. The PSU\u2019s are eligible to vest at the end of a three-year performance period, with performance based on the total return of our stock over the three-year performance period against a peer group within the S&P 600 Capital Goods Index. Stock options and RSU\u2019s vest ratably over the three-year period subsequent to the date of grant.\nNon-employee directors receive annual long-term incentive awards at the time of our annual meeting of stockholders, with the 2020 meeting scheduled for May 14, 2020.\nCompensation expense within income from continuing operations related to long-term incentive awards totaled $3.5 for the three months ended March 28, 2020 and March 30, 2019. The related tax benefit was $0.9 for the three months ended March 28, 2020 and March 30, 2019.\nPSU\u2019s and RSU\u2019s\nWe use the Monte Carlo simulation model valuation technique to determine the fair value of our restricted stock units that contain a market condition (i.e., the PSU\u2019s). The Monte Carlo simulation model utilizes multiple input variables that determine the probability of satisfying the market condition stipulated in the award and calculates the fair value of each PSU.\nThe following table summarizes the PSU and RSU activity from December 31, 2019 through March 28, 2020:",
+   "prose_after": "As of March 28, 2020, there was $17.9 of unrecognized compensation cost related to PSU\u2019s and RSU\u2019s. We expect this cost to be recognized over a weighted-average period of 2.4 years.\nStock Options\nOn February 20, 2020, we granted 0.125 stock options, all of which were outstanding (but not exercisable) as of March 28, 2020. The exercise price per share of these options is $50.09 and the maximum contractual term of these options is 10 years.\nThe fair value per share of the stock options granted on February 20, 2020 was $17.40. The fair value of each option grant was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Annual expected stock price volatility",
+     "33.48",
+     "%"
+    ],
+    [
+     "Annual expected dividend yield",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "1.41",
+     "%"
+    ],
+    [
+     "Expected life of stock option (in years)",
+     "6.0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 928,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "As of March 28, 2020, there was $17.9 of unrecognized compensation cost related to PSU\u2019s and RSU\u2019s. We expect this cost to be recognized over a weighted-average period of 2.4 years.\nStock Options\nOn February 20, 2020, we granted 0.125 stock options, all of which were outstanding (but not exercisable) as of March 28, 2020. The exercise price per share of these options is $50.09 and the maximum contractual term of these options is 10 years.\nThe fair value per share of the stock options granted on February 20, 2020 was $17.40. The fair value of each option grant was estimated using the Black-Scholes option-pricing model with the following assumptions:",
+   "prose_after": "Annual expected stock price volatility is based on a weighted average of SPX\u2019s stock volatility since the spin-off of SPX FLOW, Inc. on September 26, 2015, and an average of the most recent six-year historical volatility of a peer company group. There is no annual expected dividend yield as we discontinued dividend payments in 2015 and do not expect to pay dividends for the foreseeable future. The average risk-free interest rate is based on the five-year and seven-year treasury constant maturity rates. The expected option life is based on a three-year pro-rata vesting schedule and represents the period of time that awards are expected to be outstanding.\nAs of March 28, 2020, there was $3.1 of unrecognized compensation cost related to stock options. We expect this cost to be recognized over a weighted-average period of 2.5 years.\nAccumulated Other Comprehensive Income\nThe changes in the components of accumulated other comprehensive income, net of tax, for the three months ended March 28, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Foreign Currency Translation Adjustment",
+     "",
+     "Net Unrealized Losses on Qualifying Cash Flow Hedges(1)",
+     "",
+     "Pension and Postretirement Liability Adjustment(2)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "228.0",
+     "$",
+     "(1.6)",
+     "$",
+     "17.9",
+     "$",
+     "244.3"
+    ],
+    [
+     "Other comprehensive income (loss) before reclassifications",
+     "(5.7)",
+     "",
+     "(6.8)",
+     "",
+     "0.1",
+     "",
+     "(12.4)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss)",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "(0.9)",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Current-period other comprehensive loss",
+     "(5.7)",
+     "",
+     "(6.4)",
+     "",
+     "(0.8)",
+     "",
+     "(12.9)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "222.3",
+     "$",
+     "(8.0)",
+     "$",
+     "17.1",
+     "$",
+     "231.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 943,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Annual expected stock price volatility is based on a weighted average of SPX\u2019s stock volatility since the spin-off of SPX FLOW, Inc. on September 26, 2015, and an average of the most recent six-year historical volatility of a peer company group. There is no annual expected dividend yield as we discontinued dividend payments in 2015 and do not expect to pay dividends for the foreseeable future. The average risk-free interest rate is based on the five-year and seven-year treasury constant maturity rates. The expected option life is based on a three-year pro-rata vesting schedule and represents the period of time that awards are expected to be outstanding.\nAs of March 28, 2020, there was $3.1 of unrecognized compensation cost related to stock options. We expect this cost to be recognized over a weighted-average period of 2.5 years.\nAccumulated Other Comprehensive Income\nThe changes in the components of accumulated other comprehensive income, net of tax, for the three months ended March 28, 2020 were as follows:",
+   "prose_after": "__________________________\n(1)Net of tax benefit of $2.7 and $0.5 as of March 28, 2020 and December 31, 2019, respectively.\n(2)Net of tax provision of $5.8 and $6.1 as of March 28, 2020 and December 31, 2019, respectively. The balances as of March 28, 2020 and December 31, 2019 include unamortized prior service credits.\nThe changes in the components of accumulated other comprehensive income, net of tax, for the three months ended March 30, 2019 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Foreign Currency Translation Adjustment",
+     "",
+     "Net Unrealized Losses on Qualifying Cash Flow Hedges(1)",
+     "",
+     "Pension and Postretirement Liability Adjustment(2)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "225.8",
+     "$",
+     "(0.6)",
+     "$",
+     "19.7",
+     "$",
+     "244.9"
+    ],
+    [
+     "Other comprehensive loss before reclassifications",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss)",
+     "2.4",
+     "",
+     "0.2",
+     "",
+     "(0.8)",
+     "",
+     "1.8",
+     ""
+    ],
+    [
+     "Current-period other comprehensive loss",
+     "2.4",
+     "",
+     "0.1",
+     "",
+     "(0.8)",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "228.2",
+     "$",
+     "(0.5)",
+     "$",
+     "18.9",
+     "$",
+     "246.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 969,
+    "end_line": 985
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "__________________________\n(1)Net of tax benefit of $2.7 and $0.5 as of March 28, 2020 and December 31, 2019, respectively.\n(2)Net of tax provision of $5.8 and $6.1 as of March 28, 2020 and December 31, 2019, respectively. The balances as of March 28, 2020 and December 31, 2019 include unamortized prior service credits.\nThe changes in the components of accumulated other comprehensive income, net of tax, for the three months ended March 30, 2019 were as follows:",
+   "prose_after": "__________________________\n(1)Net of tax benefit of $0.1 and $0.2 as of March 30, 2019 and December 31, 2018.\n(2)Net of tax provision of $6.4 and $6.6 as of March 30, 2019 and December 31, 2018. The balances as of March 30, 2019 and December 31, 2018 include unamortized prior service credits.\nThe following summarizes amounts reclassified from each component of accumulated comprehensive income for the three months ended March 28, 2020 and March 30, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Amount Reclassified from AOCI",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     "",
+     "Affected Line Item in the Condensed Consolidated Statements of Operations"
+    ],
+    [
+     "Losses on qualifying cash flow hedges:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity contracts",
+     "$",
+     "\u2014",
+     "$",
+     "0.3",
+     "Cost of products sold"
+    ],
+    [
+     "Swaps",
+     "0.5",
+     "",
+     "\u2014",
+     "",
+     "Interest expense"
+    ],
+    [
+     "Pre-tax",
+     "0.5",
+     "",
+     "0.3",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "(0.1)",
+     "",
+     "(0.1)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "0.4",
+     "$",
+     "0.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gains on pension and postretirement items:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of unrecognized prior service credits - Pre-tax",
+     "$",
+     "(1.2)",
+     "$",
+     "(1.0)",
+     "Other income (expense), net"
+    ],
+    [
+     "Income taxes",
+     "0.3",
+     "",
+     "0.2",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(0.9)",
+     "$",
+     "(0.8)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Amount Reclassified from AOCI",
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 994,
+    "end_line": 1018
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "__________________________\n(1)Net of tax benefit of $0.1 and $0.2 as of March 30, 2019 and December 31, 2018.\n(2)Net of tax provision of $6.4 and $6.6 as of March 30, 2019 and December 31, 2018. The balances as of March 30, 2019 and December 31, 2018 include unamortized prior service credits.\nThe following summarizes amounts reclassified from each component of accumulated comprehensive income for the three months ended March 28, 2020 and March 30, 2019:",
+   "prose_after": "(15) CONTINGENT LIABILITIES AND OTHER MATTERS\nGeneral\nNumerous claims, complaints and proceedings arising in the ordinary course of business have been asserted or are pending against us or certain of our subsidiaries (collectively, \u201cclaims\u201d). These claims relate to litigation matters (e.g., class actions and contracts, intellectual property, and competitive claims), environmental matters, product liability matters (predominately associated with alleged exposure to asbestos-containing materials), and other risk management matters (e.g., general liability, automobile, and workers\u2019 compensation claims). Additionally, we may become subject to other claims of which we are currently unaware, which may be significant, or the claims of which we are aware may result in our incurring significantly greater loss than we anticipate. While we (and our subsidiaries) maintain property, cargo, auto, product, general liability, environmental, and directors\u2019 and officers\u2019 liability insurance and have acquired rights under similar policies in connection with acquisitions that we believe cover a significant portion of these claims, this insurance may be insufficient or unavailable (e.g., in the case of insurer insolvency) to protect us against potential loss exposures. Also, while we believe we are entitled to indemnification from third parties for some of these claims, these rights may be insufficient or unavailable to protect us against potential loss exposures.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Guarantees and Bonds Liability (1)",
+     "",
+     "Indemnification Assets (1)",
+     "",
+     "Guarantees and Bonds Liability (1)",
+     "",
+     "Indemnification Assets (1)",
+     ""
+    ],
+    [
+     "Balance at beginning of year",
+     "$",
+     "2.0",
+     "$",
+     "0.3",
+     "$",
+     "4.4",
+     "$",
+     "1.2"
+    ],
+    [
+     "Reduction/Amortization for the period (2)",
+     "(0.3)",
+     "",
+     "(0.1)",
+     "",
+     "(1.3)",
+     "",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Impact of changes in foreign currency rates",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period (3)",
+     "$",
+     "1.7",
+     "$",
+     "0.2",
+     "$",
+     "3.0",
+     "$",
+     "1.0"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1116,
+    "end_line": 1131
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Parent Guarantees and Bonds Associated with Balcke D\u00fcrr \u2014 In connection with the 2016 sale of Balcke D\u00fcrr, existing parent company guarantees and bank surety bonds, which totaled approximately Euro 79.0 and Euro 79.0, respectively, at the time of sale (and Euro 31.7 and Euro 8.7, respectively, at March 28, 2020) will remain in place through each instrument\u2019s expiration date, with such expiration dates occurring through 2022. These guarantees and bonds provide protections for Balcke D\u00fcrr customers in regard to advance payments, performance, and warranties on projects in existence at the time of sale. In addition, certain bonds relate to lease obligations and foreign tax matters in existence at the time of sale. Balcke D\u00fcrr and the acquirer of Balcke D\u00fcrr have provided us an indemnity in the event that any bank guarantees or bonds are called. Also, at the time of sale, Balcke D\u00fcrr provided cash collateral of Euro 4.0 and mutares AG, an affiliate of the acquirer of Balcke D\u00fcrr, provided a guarantee of Euro 5.0 as a security for the above indemnifications (Euro 1.0 and Euro 2.5, respectively, at March 28, 2020). In connection with the sale, we recorded a liability for the estimated fair value of the guarantees and bonds and an asset for the estimated cash collateral and indemnities provided. Summarized below are changes in the liability and asset during the three months ended March 28, 2020, and March 30, 2019.",
+   "prose_after": "___________________________\n(1)In connection with the sale, we estimated the fair value of the existing parent company guarantees and bank and surety bonds considering the probability of default by Balcke D\u00fcrr and an estimate of the amount we would be obligated to pay in the event of a default. Additionally, we estimated the fair value of the cash collateral provided by Balcke D\u00fcrr and guarantee provided by mutares AG based on the terms and conditions and relative risk associated with each of these securities (unobservable inputs - Level 3).\n(2)We reduce the liability generally at the earlier of the completion of the related underlying project milestones or the expiration of the guarantees or bonds. We amortize the asset based on the expiration terms of each of the securities. We record the reduction of the liability and the amortization of the asset to \u201cOther income, net.\u201d\n(3)The balance associated with the guarantees and bonds is reflected within \u201cOther long-term liabilities,\u201d while the balance associated with the indemnification assets is reflected within \u201cOther assets.\u201d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     "% Change"
+    ],
+    [
+     "Revenues",
+     "$",
+     "369.3",
+     "",
+     "$",
+     "343.6",
+     "",
+     "7.5"
+    ],
+    [
+     "Gross profit",
+     "114.1",
+     "",
+     "",
+     "83.2",
+     "",
+     "",
+     "37.1"
+    ],
+    [
+     "% of revenues",
+     "30.9",
+     "",
+     "%",
+     "24.2",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "78.9",
+     "",
+     "",
+     "76.7",
+     "",
+     "",
+     "2.9"
+    ],
+    [
+     "% of revenues",
+     "21.4",
+     "",
+     "%",
+     "22.3",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Intangible amortization",
+     "2.6",
+     "",
+     "",
+     "1.6",
+     "",
+     "",
+     "62.5"
+    ],
+    [
+     "Special charges, net",
+     "0.3",
+     "",
+     "",
+     "0.1",
+     "",
+     "",
+     "200.0"
+    ],
+    [
+     "Other operating (income) expense",
+     "(0.4)",
+     "",
+     "",
+     "1.8",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "Other income, net",
+     "0.7",
+     "",
+     "",
+     "7.2",
+     "",
+     "",
+     "(90.3)"
+    ],
+    [
+     "Interest expense, net",
+     "(4.7)",
+     "",
+     "",
+     "(5.0)",
+     "",
+     "",
+     "(6.0)"
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "28.7",
+     "",
+     "",
+     "5.2",
+     "",
+     "",
+     "451.9"
+    ],
+    [
+     "Income tax provision",
+     "(6.0)",
+     "",
+     "",
+     "(4.6)",
+     "",
+     "",
+     "30.4"
+    ],
+    [
+     "Income from continuing operations",
+     "22.7",
+     "",
+     "",
+     "0.6",
+     "",
+     "",
+     "3,683.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Components of revenue increase:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1.6)"
+    ],
+    [
+     "Foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0.2"
+    ],
+    [
+     "South Africa revenue adjustment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5.1"
+    ],
+    [
+     "Acquisitions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3.8"
+    ],
+    [
+     "Net revenue increase",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "7.5"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1194,
+    "end_line": 1221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Non-GAAP Measures \u2014 Organic revenue growth (decline) presented herein is defined as revenue growth (decline) excluding the effects of foreign currency fluctuations, acquisitions/divestitures, and the impact of the reduction to revenues on the large power projects in South Africa during the three months ended March 30, 2019 of $17.5. We believe this metric is a useful financial measure for investors in evaluating our operating performance for the periods presented, as, when read in conjunction with our revenues, it presents a useful tool to evaluate our ongoing operations and provides investors with a tool they can use to evaluate our management of assets held from period to period. In addition, organic revenue growth (decline) is one of the factors we use in internal evaluations of the overall performance of our business. This metric, however, is not a measure of financial performance under accounting principles generally accepted in the United States (\u201cGAAP\u201d), should not be considered a substitute for net revenue growth (decline) as determined in accordance with GAAP, and may not be comparable to similarly titled measures reported by other companies.\nThe following table provides selected financial information for the three months ended March 28, 2020 and March 30, 2019, including the reconciliation of organic revenue decline to the net revenue increase:",
+   "prose_after": "_________________________________\n* Not meaningful for comparison purposes.\nRevenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared to the respective period in 2019, was due primarily to (i) an adjustment recorded during the first quarter of 2019 to the amount of cumulative revenue associated with the variable consideration on the large power projects in South Africa of $17.5 and (ii) the impact of the acquisitions of Sabik on February 1, 2019, SGS on July 3, 2019, and Patterson-Kelley on November 12, 2019, partially offset by a decline in organic revenue. The decline in organic revenue was due primarily to lower sales related to heating products within our HVAC reportable segment, partially offset by an increase in sales within our Engineered Solutions reportable segment primarily associated with the power transformer business. See \u201cResults of Reportable and Other Operating Segments\u201d for additional details.\nGross Profit \u2014 For the three months ended March 28, 2020, the increase in gross profit and gross profit as a percentage of revenues, compared to the respective period in 2019, was due primarily to (i) the reduction in revenue of $17.5 noted above associated with the large power projects in South Africa recorded during the first quarter of 2019 and (ii) an increase in profitability at our power transformer business associated with improved throughput at the business\u2019s manufacturing facilities.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1191,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     "% Change"
+    ],
+    [
+     "Revenues",
+     "$",
+     "118.5",
+     "",
+     "$",
+     "128.4",
+     "",
+     "(7.7)"
+    ],
+    [
+     "Income",
+     "15.0",
+     "",
+     "",
+     "18.4",
+     "",
+     "",
+     "(18.5)"
+    ],
+    [
+     "% of revenues",
+     "12.7",
+     "",
+     "%",
+     "14.3",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Components of revenue decrease:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(15.7)"
+    ],
+    [
+     "Foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(0.5)"
+    ],
+    [
+     "Acquisitions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8.5"
+    ],
+    [
+     "Net revenue decrease:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(7.7)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1255,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Income Tax Provision \u2014 For the three months ended March 28, 2020, we recorded an income tax provision of $6.0 on $28.7 of pre-tax income from continuing operations, resulting in an effective rate of 20.9%. This compares to an income tax provision for the three months ended March 30, 2019 of $4.6 on $5.2 of a pre-tax income from continuing operations, resulting in an effective rate of 88.5%. The most significant item impacting the income tax provision for the first quarter of 2020 was $1.2 of excess tax benefits resulting from stock-based compensation awards that vested and/or were exercised during the quarter. The most significant items impacting the income tax provision for the first quarter of 2019 were (i) foreign losses for which no tax benefit was recognized as the future realization of any such foreign tax benefit is considered unlikely and (ii) $1.2 of excess tax benefits resulting from stock-based compensation awards that vested during the quarter.\nRESULTS OF REPORTABLE AND OTHER OPERATING SEGMENTS\nThe following information should be read in conjunction with our condensed consolidated financial statements and related notes. These results exclude the operating results of discontinued operations for all periods presented. See Note 6 to our condensed consolidated financial statements for a description of each of our reportable segments.\nNon-GAAP Measures \u2014 Throughout the following discussion of segment results, we use \u201corganic revenue\u201d growth (decline) to facilitate explanation of the operating performance of our segments. Organic revenue growth (decline) is a non-GAAP financial measure and is not a substitute for revenue growth (decline). Refer to the explanation of this measure and purpose of use by management under \u201cResults of Continuing Operations\u2014Non-GAAP Measures.\u201d\nHVAC Reportable Segment",
+   "prose_after": "Revenues \u2014 For the three months ended March 28, 2020, the decrease in revenues, compared to the respective period in 2019, was due to a decrease in organic revenue, partially offset by the impact of the SGS and Patterson-Kelley acquisitions. The decrease in organic revenue was due to lower sales of heating products resulting from (i) a warmer than normal winter throughout the United States during the three months ended March 28, 2020 and (ii) stronger than typical demand during the three months ended March 30, 2019. In addition, the segment had lower sales of cooling products in the Asia Pacific region due to the impacts of the COVID-19 pandemic.\nIncome \u2014 For the three months ended March 28, 2020, the decrease in income and margin, compared to the respective period in 2019, was due primarily to the decrease in revenues noted above.\nBacklog \u2014 The segment had backlog of $88.9 and $58.5 as of March 28, 2020 and March 30, 2019, respectively. Aggregate backlog related to SGS and Patterson-Kelley totaled $9.4 as of March 28, 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     "% Change"
+    ],
+    [
+     "Revenues",
+     "$",
+     "91.9",
+     "",
+     "$",
+     "85.1",
+     "",
+     "8.0"
+    ],
+    [
+     "Income",
+     "18.2",
+     "",
+     "",
+     "17.0",
+     "",
+     "",
+     "7.1"
+    ],
+    [
+     "% of revenues",
+     "19.8",
+     "",
+     "%",
+     "20.0",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Components of revenue increase:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6.4"
+    ],
+    [
+     "Foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(0.9)"
+    ],
+    [
+     "Acquisition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2.5"
+    ],
+    [
+     "Net revenue increase",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8.0"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1280,
+    "end_line": 1295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Revenues \u2014 For the three months ended March 28, 2020, the decrease in revenues, compared to the respective period in 2019, was due to a decrease in organic revenue, partially offset by the impact of the SGS and Patterson-Kelley acquisitions. The decrease in organic revenue was due to lower sales of heating products resulting from (i) a warmer than normal winter throughout the United States during the three months ended March 28, 2020 and (ii) stronger than typical demand during the three months ended March 30, 2019. In addition, the segment had lower sales of cooling products in the Asia Pacific region due to the impacts of the COVID-19 pandemic.\nIncome \u2014 For the three months ended March 28, 2020, the decrease in income and margin, compared to the respective period in 2019, was due primarily to the decrease in revenues noted above.\nBacklog \u2014 The segment had backlog of $88.9 and $58.5 as of March 28, 2020 and March 30, 2019, respectively. Aggregate backlog related to SGS and Patterson-Kelley totaled $9.4 as of March 28, 2020.\nDetection and Measurement Reportable Segment",
+   "prose_after": "Revenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared to the respective period in 2019, was due to an increase in organic revenue and the impact of the Sabik acquisition. The increase in organic revenue was primarily the result of additional sales of bus fare collection systems, partially offset by lower sales of underground pipe and cable locators due to the impacts of the COVID-19 pandemic.\nIncome \u2014 For the three months ended March 28, 2020, the increase in income, compared to the respective period in 2019, was due primarily to the increase in revenues noted above, while the decrease in margin was primarily the result of a less profitable sales mix during the three months ended March 28, 2020.\nBacklog \u2014 The segment had backlog of $75.9 and $87.4 as of March 28, 2020 and March 30, 2019, respectively.\nEngineered Solutions Reportable Segment",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     "% Change"
+    ],
+    [
+     "Revenues",
+     "$",
+     "154.9",
+     "",
+     "$",
+     "138.0",
+     "",
+     "12.2"
+    ],
+    [
+     "Income",
+     "17.9",
+     "",
+     "",
+     "8.0",
+     "",
+     "",
+     "123.8"
+    ],
+    [
+     "% of revenues",
+     "11.6",
+     "",
+     "%",
+     "5.8",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Components of revenue increase:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12.2"
+    ],
+    [
+     "Foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net revenue increase",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12.2"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1304,
+    "end_line": 1318
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Revenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared to the respective period in 2019, was due to an increase in organic revenue and the impact of the Sabik acquisition. The increase in organic revenue was primarily the result of additional sales of bus fare collection systems, partially offset by lower sales of underground pipe and cable locators due to the impacts of the COVID-19 pandemic.\nIncome \u2014 For the three months ended March 28, 2020, the increase in income, compared to the respective period in 2019, was due primarily to the increase in revenues noted above, while the decrease in margin was primarily the result of a less profitable sales mix during the three months ended March 28, 2020.\nBacklog \u2014 The segment had backlog of $75.9 and $87.4 as of March 28, 2020 and March 30, 2019, respectively.\nEngineered Solutions Reportable Segment",
+   "prose_after": "Revenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared to the respective period in 2019, was due to an increase in organic revenue, primarily within the segment's power transformer business associated with higher throughput at the business's manufacturing facilities resulting from improved execution.\nIncome \u2014 For the three months ended March 28, 2020, the increase in income and margin, compared to the respective period in 2019, was due primarily to the increase in revenues noted above.\nBacklog \u2014 The segment had backlog of $363.2 and $296.3 as of March 28, 2020 and March 30, 2019, respectively. Portions of the segment\u2019s backlog are long-term in nature, with the related revenues expected to be recorded through 2020 and into 2021.\nAll Other",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     "",
+     "% Change"
+    ],
+    [
+     "Revenues",
+     "$",
+     "4.0",
+     "$",
+     "(7.9)",
+     "150.6"
+    ],
+    [
+     "Loss",
+     "(3.9)",
+     "",
+     "(22.6)",
+     "",
+     "(82.7)"
+    ],
+    [
+     "% of revenues",
+     "*",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Components of revenue increase:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organic",
+     "",
+     "",
+     "",
+     "",
+     "(97.5)"
+    ],
+    [
+     "Foreign currency",
+     "",
+     "",
+     "",
+     "",
+     "26.6"
+    ],
+    [
+     "South Africa revenue adjustment",
+     "",
+     "",
+     "",
+     "",
+     "221.5"
+    ],
+    [
+     "Net revenue increase",
+     "",
+     "",
+     "",
+     "",
+     "150.6"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1328,
+    "end_line": 1343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Revenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared to the respective period in 2019, was due to an increase in organic revenue, primarily within the segment's power transformer business associated with higher throughput at the business's manufacturing facilities resulting from improved execution.\nIncome \u2014 For the three months ended March 28, 2020, the increase in income and margin, compared to the respective period in 2019, was due primarily to the increase in revenues noted above.\nBacklog \u2014 The segment had backlog of $363.2 and $296.3 as of March 28, 2020 and March 30, 2019, respectively. Portions of the segment\u2019s backlog are long-term in nature, with the related revenues expected to be recorded through 2020 and into 2021.\nAll Other",
+   "prose_after": "_________________________________\n* Not meaningful for comparison purposes.\nRevenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared the respective period in 2019, was due primarily to an adjustment, during the first quarter of 2019, to the amount of cumulative revenue associated with variable consideration on the large power projects in South Africa of $17.5. This increase in revenues was partially offset by a decline in organic revenue, which was the result of lower sales related to (i) the large power projects in South Africa, as these projects are in the latter stages of completion, and (ii) the impact of the wind-down of the Heat Transfer business.\nLoss \u2014 For the three months ended March 28, 2020, the loss decreased, compared to the respective period in 2019, as operating results for the three months ended March 30, 2019 included the $17.5 charge noted above.\nBacklog \u2014 These operating segments had backlog of $6.1 and $30.2 as of March 28, 2020 and March 30, 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "",
+     "March 30, 2019",
+     "",
+     "",
+     "% Change"
+    ],
+    [
+     "Total consolidated revenues",
+     "$",
+     "369.3",
+     "",
+     "$",
+     "343.6",
+     "",
+     "7.5"
+    ],
+    [
+     "Corporate expense",
+     "11.1",
+     "",
+     "",
+     "12.4",
+     "",
+     "",
+     "(10.5)"
+    ],
+    [
+     "% of revenues",
+     "3.0",
+     "",
+     "%",
+     "3.6",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Long-term incentive compensation expense",
+     "3.5",
+     "",
+     "",
+     "3.5",
+     "",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1356,
+    "end_line": 1366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "* Not meaningful for comparison purposes.\nRevenues \u2014 For the three months ended March 28, 2020, the increase in revenues, compared the respective period in 2019, was due primarily to an adjustment, during the first quarter of 2019, to the amount of cumulative revenue associated with variable consideration on the large power projects in South Africa of $17.5. This increase in revenues was partially offset by a decline in organic revenue, which was the result of lower sales related to (i) the large power projects in South Africa, as these projects are in the latter stages of completion, and (ii) the impact of the wind-down of the Heat Transfer business.\nLoss \u2014 For the three months ended March 28, 2020, the loss decreased, compared to the respective period in 2019, as operating results for the three months ended March 30, 2019 included the $17.5 charge noted above.\nBacklog \u2014 These operating segments had backlog of $6.1 and $30.2 as of March 28, 2020 and March 30, 2019, respectively.\nCORPORATE AND OTHER EXPENSES",
+   "prose_after": "Corporate Expense \u2014 Corporate expense generally relates to the cost of our Charlotte, NC corporate headquarters. The decrease in corporate expense during the three months ended March 28, 2020, compared to the respective period in 2019, was due primarily to a decline in acquisition-related costs.\nLong-Term Incentive Compensation Expense \u2014 Long-term incentive compensation expense represents our consolidated expense, which we do not allocate for segment reporting purposes.\nLIQUIDITY AND FINANCIAL CONDITION\nListed below are the cash flows from (used in) operating, investing, and financing activities and discontinued operations, as well as the net change in cash and equivalents for the three months ended March 28, 2020 and March 30, 2019.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 28, 2020",
+     "",
+     "March 30, 2019",
+     ""
+    ],
+    [
+     "Continuing operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "$",
+     "2.7",
+     "$",
+     "11.5"
+    ],
+    [
+     "Cash flows used in investing activities",
+     "(2.5)",
+     "",
+     "(74.7)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "113.0",
+     "",
+     "32.7",
+     ""
+    ],
+    [
+     "Cash flows used in discontinued operations",
+     "(3.1)",
+     "",
+     "(0.9)",
+     ""
+    ],
+    [
+     "Change in cash and equivalents due to changes in foreign currency exchange rates",
+     "(1.7)",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Net change in cash and equivalents",
+     "$",
+     "108.4",
+     "$",
+     "(29.8)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1376,
+    "end_line": 1391
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Corporate Expense \u2014 Corporate expense generally relates to the cost of our Charlotte, NC corporate headquarters. The decrease in corporate expense during the three months ended March 28, 2020, compared to the respective period in 2019, was due primarily to a decline in acquisition-related costs.\nLong-Term Incentive Compensation Expense \u2014 Long-term incentive compensation expense represents our consolidated expense, which we do not allocate for segment reporting purposes.\nLIQUIDITY AND FINANCIAL CONDITION\nListed below are the cash flows from (used in) operating, investing, and financing activities and discontinued operations, as well as the net change in cash and equivalents for the three months ended March 28, 2020 and March 30, 2019.",
+   "prose_after": "Operating Activities \u2014 The decrease in cash flows from operating activities during the three months ended March 28, 2020, compared to the same period in 2019, was due primarily to an increase in 2019 short-term incentive compensation expense, which was paid in March 2020, versus 2018 short-term incentive compensation expense, which was paid in March 2019.\nInvesting Activities \u2014 Cash flows used in investing activities for the three months ended March 28, 2020 were comprised primarily of capital expenditures of $3.6, partially offset by proceeds from company-owned life insurance policies of $1.1.\nCash flows used in investing activities for the three months ended March 30, 2019 were comprised primarily of cash utilized for the acquisition of Sabik of $77.0 and capital expenditures of $3.7, partially offset by proceeds of $5.5 received in connection with the sale of Heat Transfer\u2019s manufacturing facility.\nFinancing Activities \u2014 Cash flows from financing activities for the three months ended March 28, 2020 were comprised of net borrowings under our various debt instruments of $117.3, partially offset by (i) minimum withholdings paid on behalf of employees on long-term incentive awards, net of proceeds from options exercised, of $2.8 and (ii) $1.5 related to contingent consideration paid in connection with the SGS acquisition.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "Borrowings",
+     "",
+     "Repayments",
+     "",
+     "Other(5)",
+     "",
+     "March 28, 2020",
+     ""
+    ],
+    [
+     "Revolving loans (1)",
+     "$",
+     "140.0",
+     "$",
+     "178.7",
+     "$",
+     "(88.7)",
+     "$",
+     "\u2014",
+     "$",
+     "230.0"
+    ],
+    [
+     "Term loan(2)",
+     "248.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "248.3",
+     ""
+    ],
+    [
+     "Trade receivables financing arrangement(3)",
+     "\u2014",
+     "",
+     "55.0",
+     "",
+     "(27.0)",
+     "",
+     "\u2014",
+     "",
+     "28.0",
+     ""
+    ],
+    [
+     "Other indebtedness(4)",
+     "5.3",
+     "",
+     "\u2014",
+     "",
+     "(0.7)",
+     "",
+     "0.6",
+     "",
+     "5.2",
+     ""
+    ],
+    [
+     "Total debt",
+     "393.5",
+     "",
+     "$",
+     "233.7",
+     "$",
+     "(116.4)",
+     "$",
+     "0.7",
+     "511.5",
+     ""
+    ],
+    [
+     "Less: short-term debt",
+     "142.6",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "260.3",
+     ""
+    ],
+    [
+     "Less: current maturities of long-term debt",
+     "1.0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "249.9",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "248.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": {
+    "phrase": "in millions",
+    "unit": "millions"
+   },
+   "location": {
+    "start_line": 1410,
+    "end_line": 1427
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (in millions)"
+    },
+    "note": null
+   },
+   "prose_before": "Financing Activities \u2014 Cash flows from financing activities for the three months ended March 28, 2020 were comprised of net borrowings under our various debt instruments of $117.3, partially offset by (i) minimum withholdings paid on behalf of employees on long-term incentive awards, net of proceeds from options exercised, of $2.8 and (ii) $1.5 related to contingent consideration paid in connection with the SGS acquisition.\nCash flows from financing activities for the three months ended March 30, 2019 were comprised primarily of net borrowings of $38.6, which resulted primarily from the Sabik acquisition, partially offset by minimum withholdings paid on behalf of employees on long-term incentive awards, net of proceeds from options exercised, of $5.9.\nDiscontinued Operations \u2014 Cash flows used in discontinued operations for the three months ended March 28, 2020 and March 30, 2019 related primarily to disbursements for liabilities retained in connection with dispositions.\nChange in Cash and Equivalents due to Changes in Foreign Currency Exchange Rates \u2014 Changes in foreign currency exchange rates did not have a significant impact on our cash and equivalents during the first three months of 2020 and 2019.\nBorrowings and Availability\nBorrowings \u2014 The following summarizes our debt activity (both current and non-current) for the three months ended March 28, 2020.",
+   "prose_after": "___________________________\n(1)In March 2020, we borrowed $100.0 against our domestic revolving loan facility to preempt any potential concerns about cash availability in the bank markets as a result of the COVID-19 pandemic. In addition, while not due for repayment until December\n2024 under the terms of our senior credit agreement, we have classified the outstanding balances for the revolving loans as a current liability in our condensed consolidated balance sheets, as it is reasonably expected that such balances will be repaid within one year with available cash and cash that is expected to be generated from operations.\n(2)The term loan is repayable in quarterly installments beginning in the first quarter of 2021, with the quarterly installments equal to 0.625% of the initial term loan balance of $250.0 during 2021, 1.25% in each of the four quarters of 2022 and 2023, and 1.25% during the first three quarters of 2024. The remaining balance is payable in full on December 17, 2024. Balances are net of unamortized debt issuance costs of $1.7 and $1.8 at March 28, 2020 and December 31, 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.1",
+     "SPX Corporation financial information from its Form 10-Q for the quarterly period ended March 28, 2020, formatted in Inline XBRL, including: (i) Condensed Consolidated Statements of Operations and Comprehensive Income for the three months ended March 28, 2020 and March 30, 2019; (ii) Condensed Consolidated Balance Sheets at March 28, 2020 and December 31, 2019; (iii) Condensed Consolidated Statements of Equity for the three months ended March 28, 2020 and March 30, 2019; (iv) Condensed Consolidated Statements of Cash Flows for the three months ended March 28, 2020 and March 30, 2019; and (v) Notes to Condensed Consolidated Financial Statements."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in the Interactive Data Files submitted as Exhibit 101.1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1553,
+    "end_line": 1566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022A loss of productivity, greater cybersecurity risk and other fraud risks, and difficulties in maintaining internal controls over financial reporting due to the impact of employees working remotely;\n\u2022An adverse impact to the funded status of our defined benefit pension plans, which could result in (i) a material charge during the fourth quarter of 2020 and (ii) on a longer-term, additional funding requirements for the plans;\n\u2022The diversion of management\u2019s attention from core business operations; and\n\u2022Restructuring charges if we decide to reduce headcount as a result of a decline in customer demand.\nAny of the above risks could have a material adverse impact on our business and consolidated financial results.\nIn addition to the other information set forth in this report, you should carefully consider the factors discussed in Part I, \u201cItem 1A. Risk Factors\u201d in our 2019 Annual Report on Form 10-K, which could materially affect our business, financial condition or future results.\nITEM 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nITEM 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1544,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 4,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "SPX CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 30, 2020",
+     "By",
+     "",
+     "/s/ Eugene J. Lowe, III"
+    ],
+    [
+     "",
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 30, 2020",
+     "By",
+     "",
+     "/s/ Scott W. Sproule"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Vice President, Chief Financial Officer and Treasurer"
+    ]
+   ],
+   "caption_stack": [
+    "SPX CORPORATION",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1572,
+    "end_line": 1584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4683 @@
+{
+ "accession": "0001401708-23-000195",
+ "cik": "0001401708",
+ "form": "10-Q",
+ "filing_date": "2023-08-03",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "nstg-20230630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "20-0094687"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2023 OR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____ to ____\nCommission File Number 001-35980\nNANOSTRING TECHNOLOGIES, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "530 Fairview Avenue North\nSeattle, Washington 98109\n(Address of principal executive offices)\n(206) 378-6266\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.0001 par value per share",
+     "NSTG",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "",
+     "",
+     "(The NASDAQ Global Market)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "530 Fairview Avenue North\nSeattle, Washington 98109\n(Address of principal executive offices)\n(206) 378-6266\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1:",
+     "Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets at June 30, 2023 and December 31, 2022",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations \u2014 Three and six months ended June 30, 2023 and 2022",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Loss \u2014 Three and six months ended June 30, 2023 and 2022",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit) \u2014 Three and six months ended June 30, 2023 and 2022",
+     "6"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows \u2014 Six Months Ended June 30, 2023 and 2022",
+     "7"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "8"
+    ],
+    [
+     "ITEM 2:",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "ITEM 3:",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "24"
+    ],
+    [
+     "ITEM 4:",
+     "Controls and Procedures",
+     "25"
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1:",
+     "Legal Proceedings",
+     "26"
+    ],
+    [
+     "ITEM 1A:",
+     "Risk Factors",
+     "27"
+    ],
+    [
+     "ITEM 5:",
+     "Other Information",
+     "52"
+    ],
+    [
+     "ITEM 6:",
+     "Exhibits",
+     "53"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "54"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 89
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer  [X]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of July 27, 2023 there were 47,545,550 shares of registrant\u2019s common stock outstanding.\nQUARTERLY REPORT ON FORM 10-Q\nFOR THE QUARTER ENDED June 30, 2023\nTABLE OF CONTENTS",
+   "prose_after": "1\nRisk Factor Summary\nOur business is subject to numerous risks and uncertainties, including those highlighted in the section of this report titled \u201cRisk Factors.\u201d The following is a summary of the principal risks we face:\n\u2022We have incurred losses since we were formed and expect to incur losses in the future. We cannot be certain that we will achieve or sustain profitability.\n\u2022Our financial results may vary significantly from quarter to quarter which may adversely affect our stock price.\n\u2022If we do not achieve, sustain or successfully manage our anticipated growth, our business and growth prospects will be harmed.\n\u2022Our future success is dependent upon our ability to expand our customer base and introduce new applications and products.\n\u2022The life sciences research market is highly competitive. If we fail to compete effectively, our business and operating results will suffer.\n\u2022New product development involves a lengthy and complex process, and we may be unable to commercialize on a timely basis, or at all, any of the products we develop.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Assets",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "114,305",
+     "$",
+     "112,250"
+    ],
+    [
+     "Restricted cash and equivalents",
+     "625",
+     "",
+     "898",
+     ""
+    ],
+    [
+     "Short-term investments",
+     "3,297",
+     "",
+     "84,282",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "42,982",
+     "",
+     "31,506",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "48,849",
+     "",
+     "43,273",
+     ""
+    ],
+    [
+     "Prepaid expenses and other",
+     "11,387",
+     "",
+     "14,565",
+     ""
+    ],
+    [
+     "Total current assets",
+     "221,445",
+     "",
+     "286,774",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "47,939",
+     "",
+     "44,457",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "15,458",
+     "",
+     "17,581",
+     ""
+    ],
+    [
+     "Other assets",
+     "4,148",
+     "",
+     "4,600",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "288,990",
+     "$",
+     "353,412"
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "20,868",
+     "$",
+     "16,619"
+    ],
+    [
+     "Accrued liabilities",
+     "8,649",
+     "",
+     "7,884",
+     ""
+    ],
+    [
+     "Accrued compensation and other employee benefits",
+     "13,110",
+     "",
+     "17,494",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "2,079",
+     "",
+     "1,757",
+     ""
+    ],
+    [
+     "Deferred revenue, current portion",
+     "12,287",
+     "",
+     "9,588",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current portion",
+     "5,440",
+     "",
+     "5,518",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "62,433",
+     "",
+     "58,860",
+     ""
+    ],
+    [
+     "Deferred revenue, net of current portion",
+     "4,836",
+     "",
+     "3,754",
+     ""
+    ],
+    [
+     "Long-term debt, net",
+     "227,379",
+     "",
+     "226,622",
+     ""
+    ],
+    [
+     "Operating lease liabilities, net of current portion",
+     "15,803",
+     "",
+     "18,362",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "310,451",
+     "",
+     "307,598",
+     ""
+    ],
+    [
+     "Commitment and contingencies (Note 10)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity (deficit):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value, 15,000 shares authorized; none issued",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, 150,000 shares authorized; 47,526 and 46,719 shares issued and outstanding at June 30, 2023 and December 31, 2022, respectively",
+     "5",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "872,732",
+     "",
+     "855,694",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss (income)",
+     "4",
+     "",
+     "(589)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(894,202)",
+     "",
+     "(809,296)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity (deficit)",
+     "(21,461)",
+     "",
+     "45,814",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity (deficit)",
+     "$",
+     "288,990",
+     "$",
+     "353,412"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 155,
+    "end_line": 205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022Undetected errors or defects in our products could harm our reputation, decrease market acceptance of our products or expose us to product liability claims.\n\u2022If we experience a significant disruption in our information technology systems or breaches of data security, our business could be adversely affected.\n\u2022We are subject to ongoing and extensive regulatory requirements, and our failure to comply with these requirements could substantially harm our business.\n\u2022The price of our common stock may be volatile, and you could lose all or part of your investment.\n\u2022Macroeconomic conditions, inflationary pressures and the political climate could adversely affect our operating results and growth prospects.\n\u2022Complying with the laws and regulations affecting public companies increases our costs and the demands on management and could harm our operating results.\nPART I. FINANCIAL INFORMATION\nItem 1. Condensed Consolidated Financial Statements\nCondensed Consolidated Balance Sheets\n(in thousands, except par value)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations\n(in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 149,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product",
+     "$",
+     "38,886",
+     "$",
+     "27,385",
+     "$",
+     "70,032",
+     "$",
+     "53,956"
+    ],
+    [
+     "Service and other",
+     "5,271",
+     "",
+     "4,834",
+     "",
+     "9,930",
+     "",
+     "9,343",
+     ""
+    ],
+    [
+     "Total revenue",
+     "44,157",
+     "",
+     "32,219",
+     "",
+     "79,962",
+     "",
+     "63,299",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "25,090",
+     "",
+     "11,961",
+     "",
+     "42,695",
+     "",
+     "23,433",
+     ""
+    ],
+    [
+     "Cost of service and other revenue",
+     "4,667",
+     "",
+     "3,891",
+     "",
+     "9,933",
+     "",
+     "7,197",
+     ""
+    ],
+    [
+     "Total cost of revenue",
+     "29,757",
+     "",
+     "15,852",
+     "",
+     "52,628",
+     "",
+     "30,630",
+     ""
+    ],
+    [
+     "Research and development",
+     "18,214",
+     "",
+     "17,346",
+     "",
+     "34,332",
+     "",
+     "34,763",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "39,076",
+     "",
+     "36,112",
+     "",
+     "76,442",
+     "",
+     "72,467",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "87,047",
+     "",
+     "69,310",
+     "",
+     "163,402",
+     "",
+     "137,860",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(42,890)",
+     "",
+     "(37,091)",
+     "",
+     "(83,440)",
+     "",
+     "(74,561)",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "1,527",
+     "",
+     "406",
+     "",
+     "2,812",
+     "",
+     "557",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(1,889)",
+     "",
+     "(1,880)",
+     "",
+     "(3,780)",
+     "",
+     "(3,763)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "(211)",
+     "",
+     "(490)",
+     "",
+     "(218)",
+     "",
+     "(707)",
+     ""
+    ],
+    [
+     "Total other expense, net",
+     "(573)",
+     "",
+     "(1,964)",
+     "",
+     "(1,186)",
+     "",
+     "(3,913)",
+     ""
+    ],
+    [
+     "Net loss before provision for income tax",
+     "(43,463)",
+     "",
+     "(39,055)",
+     "",
+     "(84,626)",
+     "",
+     "(78,474)",
+     ""
+    ],
+    [
+     "Provision for income tax",
+     "(205)",
+     "",
+     "(184)",
+     "",
+     "(280)",
+     "",
+     "(265)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(43,668)",
+     "$",
+     "(39,239)",
+     "$",
+     "(84,906)",
+     "$",
+     "(78,739)"
+    ],
+    [
+     "Net loss per share \u2014 basic and diluted",
+     "$",
+     "(0.92)",
+     "$",
+     "(0.85)",
+     "$",
+     "(1.80)",
+     "$",
+     "(1.70)"
+    ],
+    [
+     "Weighted average shares used in computing basic and diluted net loss per share",
+     "47,365",
+     "",
+     "46,427",
+     "",
+     "47,151",
+     "",
+     "46,201",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 216,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations\n(in thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Comprehensive Loss\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 214,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(43,668)",
+     "$",
+     "(39,239)",
+     "$",
+     "(84,906)",
+     "$",
+     "(78,739)"
+    ],
+    [
+     "Other comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in unrealized gain (loss) on available-for-sale debt securities",
+     "59",
+     "",
+     "(158)",
+     "",
+     "593",
+     "",
+     "(1,132)",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(43,609)",
+     "$",
+     "(39,397)",
+     "$",
+     "(84,313)",
+     "$",
+     "(79,871)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 266,
+    "end_line": 278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Comprehensive Loss\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit)\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 264,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 281,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total Stockholders\u2019 Equity (Deficit)",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "45,729",
+     "$",
+     "5",
+     "$",
+     "827,028",
+     "$",
+     "(318)",
+     "$",
+     "(649,753)",
+     "$",
+     "176,962"
+    ],
+    [
+     "Common stock issued for stock options and restricted stock units",
+     "624",
+     "\u2014",
+     "",
+     "1,035",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,035",
+     ""
+    ],
+    [
+     "Common stock issued for employee stock purchase plan",
+     "49",
+     "\u2014",
+     "",
+     "1,502",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,502",
+     ""
+    ],
+    [
+     "Tax withholdings related to net share settlements of restricted stock units",
+     "\u2014",
+     "\u2014",
+     "",
+     "(1,505)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,505)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "7,785",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,785",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(39,500)",
+     "",
+     "(39,500)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(974)",
+     "",
+     "\u2014",
+     "",
+     "(974)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2022",
+     "46,402",
+     "$",
+     "5",
+     "$",
+     "835,845",
+     "$",
+     "(1,292)",
+     "$",
+     "(689,253)",
+     "$",
+     "145,305"
+    ],
+    [
+     "Common stock issued for stock options and restricted stock units",
+     "76",
+     "\u2014",
+     "",
+     "264",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "6,493",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6,493",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(39,239)",
+     "",
+     "(39,239)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(158)",
+     "",
+     "\u2014",
+     "",
+     "(158)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "46,478",
+     "$",
+     "5",
+     "$",
+     "842,602",
+     "$",
+     "(1,450)",
+     "$",
+     "(728,492)",
+     "$",
+     "112,665"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 289,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit)\n(in thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 287,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 338,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Balance at January 1, 2023",
+     "46,719",
+     "$",
+     "5",
+     "$",
+     "855,694",
+     "$",
+     "(589)",
+     "$",
+     "(809,296)",
+     "$",
+     "45,814"
+    ],
+    [
+     "Common stock issued for stock options and restricted stock units",
+     "437",
+     "\u2014",
+     "",
+     "20",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Common stock issued for employee stock purchase plan",
+     "172",
+     "\u2014",
+     "",
+     "1,354",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,354",
+     ""
+    ],
+    [
+     "Tax withholdings related to net share settlements of restricted stock units",
+     "\u2014",
+     "\u2014",
+     "",
+     "(490)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(490)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "7,626",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,626",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(41,238)",
+     "",
+     "(41,238)",
+     ""
+    ],
+    [
+     "Other comprehensive gain",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "534",
+     "",
+     "\u2014",
+     "",
+     "534",
+     ""
+    ],
+    [
+     "Balance at March 31, 2023",
+     "47,328",
+     "$",
+     "5",
+     "$",
+     "864,204",
+     "$",
+     "(55)",
+     "$",
+     "(850,534)",
+     "$",
+     "13,620"
+    ],
+    [
+     "Common stock issued for stock options and restricted stock units",
+     "198",
+     "\u2014",
+     "",
+     "92",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "92",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "8,436",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,436",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(43,668)",
+     "",
+     "(43,668)",
+     ""
+    ],
+    [
+     "Other comprehensive gain",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "59",
+     "",
+     "\u2014",
+     "",
+     "59",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "47,526",
+     "$",
+     "5",
+     "$",
+     "872,732",
+     "$",
+     "4",
+     "$",
+     "(894,202)",
+     "$",
+     "(21,461)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 317,
+    "end_line": 335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows (in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 287,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 338,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(84,906)",
+     "$",
+     "(78,739)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "16,062",
+     "",
+     "14,125",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "7,442",
+     "",
+     "3,504",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "757",
+     "",
+     "732",
+     ""
+    ],
+    [
+     "Amortization of premium on short-term investments, net",
+     "102",
+     "",
+     "1,200",
+     ""
+    ],
+    [
+     "Non-cash operating lease cost",
+     "2,207",
+     "",
+     "1,954",
+     ""
+    ],
+    [
+     "Allowance for inventory obsolescence and accounts receivable credit loss",
+     "4,912",
+     "",
+     "1,708",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(11,496)",
+     "",
+     "7,920",
+     ""
+    ],
+    [
+     "Inventory",
+     "(11,036)",
+     "",
+     "(11,531)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "3,495",
+     "",
+     "(1,827)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "4,884",
+     "",
+     "2,063",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "3,164",
+     "",
+     "682",
+     ""
+    ],
+    [
+     "Accrued compensation and other employee benefits",
+     "(4,414)",
+     "",
+     "(3,453)",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "322",
+     "",
+     "310",
+     ""
+    ],
+    [
+     "Deferred revenue and other liabilities",
+     "3,907",
+     "",
+     "1,026",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "(2,599)",
+     "",
+     "(2,397)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(67,197)",
+     "",
+     "(62,723)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "(9,665)",
+     "",
+     "(7,635)",
+     ""
+    ],
+    [
+     "Purchase of internal-use software assets",
+     "(3,705)",
+     "",
+     "(4,118)",
+     ""
+    ],
+    [
+     "Purchase of intellectual property",
+     "\u2014",
+     "",
+     "(750)",
+     ""
+    ],
+    [
+     "Proceeds from sale of short-term investments",
+     "\u2014",
+     "",
+     "4,000",
+     ""
+    ],
+    [
+     "Proceeds from maturity of short-term investments",
+     "81,476",
+     "",
+     "134,974",
+     ""
+    ],
+    [
+     "Purchases of short-term investments",
+     "\u2014",
+     "",
+     "(45,800)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "68,106",
+     "",
+     "80,671",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax withholdings related to net share settlements of restricted stock units",
+     "(490)",
+     "",
+     "(1,504)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock for employee stock purchase plan",
+     "1,354",
+     "",
+     "1,502",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "112",
+     "",
+     "1,300",
+     ""
+    ],
+    [
+     "Repayment of finance lease obligations",
+     "(126)",
+     "",
+     "(183)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "850",
+     "",
+     "1,115",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash, restricted cash and cash equivalents",
+     "23",
+     "",
+     "(104)",
+     ""
+    ],
+    [
+     "Net increase in cash, restricted and cash equivalents",
+     "1,782",
+     "",
+     "18,959",
+     ""
+    ],
+    [
+     "Cash, restricted cash and cash equivalents",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "113,148",
+     "",
+     "107,068",
+     ""
+    ],
+    [
+     "End of period",
+     "$",
+     "114,930",
+     "$",
+     "126,027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Reconciliation of cash, cash equivalents and restricted cash",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "114,305",
+     "$",
+     "126,027"
+    ],
+    [
+     "Restricted cash and cash equivalents",
+     "625",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total cash, restricted cash and cash equivalents shown in the statement of cash flows",
+     "$",
+     "114,930",
+     "$",
+     "126,027"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows (in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nNotes to Condensed Consolidated Financial Statements\n1. Description of the Business\nNanoString Technologies, Inc. (the \u201cCompany\u201d) was incorporated in the state of Delaware on June 20, 2003. The Company\u2019s headquarters is located in Seattle, Washington. The Company\u2019s proprietary chemistries enable the direct detection, identification, and quantification of individual target molecules in biological samples by attaching unique molecular reporters to each target molecule of interest. The Company currently markets and sells its proprietary technologies, consisting of (i) its spatial biology platforms, including CosMx Spatial Molecular Imager or CosMx SMI, GeoMx Digital Spatial Profiler, or GeoMx, and AtoMx Spatial Informatics Platform, or AtoMx, a cloud-based informatics portal currently for use with CosMx, and (ii) its nCounter Analysis System for multi-plex bulk gene expression analysis. The CosMx, GeoMx, and nCounter product platforms include instruments, related consumables, software and services, have the versatility to detect both RNA and protein expression and are able to generate reliable and reproduceable data in a variety of biological sample types.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Americas",
+     "",
+     "Europe and Middle East",
+     "",
+     "Asia Pacific",
+     "",
+     "Total",
+     "",
+     "Americas",
+     "",
+     "Europe and Middle East",
+     "",
+     "Asia Pacific",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "11,536",
+     "$",
+     "3,509",
+     "$",
+     "2,584",
+     "$",
+     "17,629",
+     "$",
+     "17,555",
+     "$",
+     "7,631",
+     "$",
+     "3,813",
+     "$",
+     "28,999"
+    ],
+    [
+     "Consumables",
+     "13,882",
+     "",
+     "5,956",
+     "",
+     "1,419",
+     "",
+     "21,257",
+     "",
+     "26,631",
+     "",
+     "11,327",
+     "",
+     "3,075",
+     "",
+     "41,033",
+     ""
+    ],
+    [
+     "Service and other revenue",
+     "3,616",
+     "",
+     "1,280",
+     "",
+     "375",
+     "",
+     "5,271",
+     "",
+     "6,861",
+     "",
+     "2,303",
+     "",
+     "766",
+     "",
+     "9,930",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "29,034",
+     "$",
+     "10,745",
+     "$",
+     "4,378",
+     "$",
+     "44,157",
+     "$",
+     "51,047",
+     "$",
+     "21,261",
+     "$",
+     "7,654",
+     "$",
+     "79,962"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 457,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Revenue from Contracts with Customers"
+    }
+   },
+   "prose_before": "Capitalized costs associated with the implementation of hosted third-party cloud computing arrangements are recorded as part of current and long-term other assets. Maintenance and training costs are expensed as incurred on a straight-line basis over the term of the related hosting arrangement. Costs are recorded within the consolidated statements of operations based on functional use of the software. Unamortized capitalized software implementation costs were $1.6 million and $1.9 million as of June 30, 2023 and December 31, 2022, respectively. Amortization of capitalized software implementation costs of hosted third-party cloud computing arrangements was $0.2 million and $0.3 million for both the three and six month periods ended June 30, 2023 and 2022, respectively.\n3. Revenue from Contracts with Customers\nThe Company operates as a single reportable segment. The Company has one sales force that sells the Company\u2019s spatial biology and its nCounter Analysis systems and the consumables and services related to these platforms.\nDisaggregated Revenues\nThe following table of total revenue is based on the geographic location of end users or distributors who purchase products and services. For sales to distributors, their geographic location may be different from the geographic location of the ultimate end customer. For collaboration agreements, revenues are derived from partners located primarily in the United States. Americas consists of the United States, Canada, Mexico, and South America; and Asia Pacific includes Japan, China, South Korea, Singapore, Malaysia, India, and Australia.\nThe following table provides information about disaggregated revenue by major product line and primary geographic market (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Americas",
+     "",
+     "Europe and Middle East",
+     "",
+     "Asia Pacific",
+     "",
+     "Total",
+     "",
+     "Americas",
+     "",
+     "Europe and Middle East",
+     "",
+     "Asia Pacific",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "5,810",
+     "$",
+     "2,214",
+     "$",
+     "1,514",
+     "$",
+     "9,538",
+     "$",
+     "11,509",
+     "$",
+     "3,960",
+     "$",
+     "3,172",
+     "$",
+     "18,641"
+    ],
+    [
+     "Consumables",
+     "12,699",
+     "",
+     "4,085",
+     "",
+     "1,063",
+     "",
+     "17,847",
+     "",
+     "24,974",
+     "",
+     "8,090",
+     "",
+     "2,251",
+     "",
+     "35,315",
+     ""
+    ],
+    [
+     "Service and other revenue",
+     "3,400",
+     "",
+     "1,229",
+     "",
+     "205",
+     "",
+     "4,834",
+     "",
+     "6,687",
+     "",
+     "2,227",
+     "",
+     "429",
+     "",
+     "9,343",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "21,909",
+     "$",
+     "7,528",
+     "$",
+     "2,782",
+     "$",
+     "32,219",
+     "$",
+     "43,170",
+     "$",
+     "14,277",
+     "$",
+     "5,852",
+     "$",
+     "63,299"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Revenue from Contracts with Customers"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Total revenue in the United States was $28.5 million, $21.5 million, $49.8 million and $41.9 million for the three and six month periods ended June 30, 2023 and 2022, respectively. The Company\u2019s assets are primarily located in the United States and therefore are not allocated to any specific geographic region.\nContract balances and remaining performance obligations\nContract liabilities are comprised of the current and long-term portions of deferred revenue of $16.9 million and $13.0 million as of June 30, 2023 and December 31, 2022, respectively, and customer deposits of $2.1 million and $1.8 million as of June 30, 2023 and December 31, 2022, respectively, included within the condensed consolidated balance sheets. Total contract liabilities increased by $4.2 million as of June 30, 2023 as a result of additional deferred revenue of $12.4 million associated primarily with new or extended service contracts partially offset by the recognition of previously deferred revenue and customer deposits of $8.2 million for the completion of certain performance obligations during the period. The Company recorded contract assets of $0.9 million and $1.1 million as of June 30, 2023 and December 31, 2022, respectively, related to revenues recognized, but not yet invoiced to customers. The Company\u2019s contractual payment terms for its contracts with customers approximates 40 days on average.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "Six Months Ended June 30,",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "2022",
+     "2023",
+     "2022"
+    ],
+    [
+     "Options to purchase common stock",
+     "1,697",
+     "1,868",
+     "1,712",
+     "1,906"
+    ],
+    [
+     "Restricted stock units",
+     "4,741",
+     "1,871",
+     "3,658",
+     "1,553"
+    ],
+    [
+     "Common stock warrants",
+     "471",
+     "471",
+     "471",
+     "471"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Net Loss Per Share"
+    }
+   },
+   "prose_before": "Contract liabilities are comprised of the current and long-term portions of deferred revenue of $16.9 million and $13.0 million as of June 30, 2023 and December 31, 2022, respectively, and customer deposits of $2.1 million and $1.8 million as of June 30, 2023 and December 31, 2022, respectively, included within the condensed consolidated balance sheets. Total contract liabilities increased by $4.2 million as of June 30, 2023 as a result of additional deferred revenue of $12.4 million associated primarily with new or extended service contracts partially offset by the recognition of previously deferred revenue and customer deposits of $8.2 million for the completion of certain performance obligations during the period. The Company recorded contract assets of $0.9 million and $1.1 million as of June 30, 2023 and December 31, 2022, respectively, related to revenues recognized, but not yet invoiced to customers. The Company\u2019s contractual payment terms for its contracts with customers approximates 40 days on average.\nAs of June 30, 2023, unsatisfied or partially unsatisfied performance obligations related to undelivered products and service contracts were $19.0 million and are expected to be completed over the term of the related contract or as products are delivered.\n4. Net Loss Per Share\nNet loss per share is computed by dividing the net loss by the weighted average number of shares of common stock outstanding. Convertible Notes, outstanding options to purchase common stock, restricted stock units and common stock warrants have not been included in the calculation of diluted net loss per share because to do so would be anti-dilutive. Accordingly, the numerator and the denominator used in computing both basic and diluted net loss per share for each period are the same.\nThe following shares were excluded from the computation of basic and diluted net loss per share for the periods presented (in thousands):",
+   "prose_after": "5. Concentration of Risks\nFinancial instruments that potentially expose the Company to concentrations of credit risk consist principally of cash and cash equivalents, short-term investments, and accounts receivable. Cash is invested in accordance with the Company\u2019s investment policy, which includes guidelines intended to minimize and diversify credit risk. Most of the Company\u2019s investments are not federally insured and the Company holds cash deposits above the limits for federal insurance. The Company has credit risk related to the collectability of its accounts receivable. The Company performs initial and ongoing evaluations of its customers\u2019 credit history or financial position and generally extends credit on account without collateral. Additionally, the Company evaluates collectability risk over the life of its receivables in order to establish an appropriate reserve for certain receivables that may become uncollectible in future periods. The Company has not experienced significant credit losses to date. During the three and six months ended June 30, 2023 and 2022, the Company had no customers that individually represented more than 10% of total revenue. The Company had no customers that represented more than 10% of total accounts receivable as of June 30, 2023 or December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of securities as of June 30, 2023",
+     "Amortized cost",
+     "",
+     "Gross unrealized gains",
+     "",
+     "Gross unrealized losses",
+     "",
+     "Fair value",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "$",
+     "3,293",
+     "$",
+     "4",
+     "$",
+     "\u2014",
+     "$",
+     "3,297"
+    ],
+    [
+     "Total available-for-sale debt securities",
+     "$",
+     "3,293",
+     "$",
+     "4",
+     "$",
+     "\u2014",
+     "$",
+     "3,297"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 529
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Short-term Investments"
+    }
+   },
+   "prose_before": "Financial instruments that potentially expose the Company to concentrations of credit risk consist principally of cash and cash equivalents, short-term investments, and accounts receivable. Cash is invested in accordance with the Company\u2019s investment policy, which includes guidelines intended to minimize and diversify credit risk. Most of the Company\u2019s investments are not federally insured and the Company holds cash deposits above the limits for federal insurance. The Company has credit risk related to the collectability of its accounts receivable. The Company performs initial and ongoing evaluations of its customers\u2019 credit history or financial position and generally extends credit on account without collateral. Additionally, the Company evaluates collectability risk over the life of its receivables in order to establish an appropriate reserve for certain receivables that may become uncollectible in future periods. The Company has not experienced significant credit losses to date. During the three and six months ended June 30, 2023 and 2022, the Company had no customers that individually represented more than 10% of total revenue. The Company had no customers that represented more than 10% of total accounts receivable as of June 30, 2023 or December 31, 2022.\nThe Company is also subject to supply chain risks related to the outsourcing of the manufacturing and production of its instruments to sole suppliers. Although there are a limited number of manufacturers for instruments of this type, the Company believes that other suppliers could provide similar products on comparable terms. Similarly, the Company sources certain raw materials used in the manufacture of consumables from sole suppliers. A change in or loss of suppliers, however, could cause a delay in manufacturing and a possible loss of sales, which would adversely affect operating results.\n6. Short-term Investments\nShort-term investments consisted of available-for-sale and equity securities as follows (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of securities as of December 31, 2022",
+     "Amortized cost",
+     "",
+     "Gross unrealized gains",
+     "",
+     "Gross unrealized losses",
+     "",
+     "Fair value",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "$",
+     "62,862",
+     "$",
+     "\u2014",
+     "$",
+     "(359)",
+     "$",
+     "62,503"
+    ],
+    [
+     "Government-related debt securities",
+     "22,009",
+     "",
+     "\u2014",
+     "",
+     "(230)",
+     "",
+     "21,779",
+     ""
+    ],
+    [
+     "Total available-for-sale debt securities",
+     "$",
+     "84,871",
+     "$",
+     "\u2014",
+     "$",
+     "(589)",
+     "$",
+     "84,282"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 530,
+    "end_line": 540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Short-term Investments"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The fair values of available-for-sale debt securities by contractual maturity were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Maturing in one year or less",
+     "$",
+     "3,297",
+     "$",
+     "81,004"
+    ],
+    [
+     "Maturing in one to three years",
+     "\u2014",
+     "",
+     "3,278",
+     ""
+    ],
+    [
+     "Total available-for-sale debt securities",
+     "$",
+     "3,297",
+     "$",
+     "84,282"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 543,
+    "end_line": 553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Short-term Investments"
+    }
+   },
+   "prose_before": "The fair values of available-for-sale debt securities by contractual maturity were as follows (in thousands):",
+   "prose_after": "The Company has both the intent and ability to sell its available-for-sale debt securities maturing greater than one year within 12 months from the balance sheet date and, accordingly, has classified these securities as current in the condensed consolidated balance sheets.\n7. Fair Value Measurements\nThe Company establishes the fair value of its assets and liabilities using the price that would be received to sell an asset or paid to transfer a financial liability in an orderly transaction between market participants at the measurement date. A fair value hierarchy is used to measure fair value. The three levels of the fair value hierarchy are as follows:\n\u2022Level 1 \u2014 Quoted prices in active markets for identical assets and liabilities.\n\u2022Level 2 \u2014 Quoted prices for similar instruments in active markets; quoted prices for identical or similar instruments in markets that are not active; and model-derived valuations in which all significant inputs and significant value drivers are observable in active markets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair value measurement using:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of securities as of June 30, 2023",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market fund",
+     "$",
+     "110,746",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "110,746"
+    ],
+    [
+     "Short-term investments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "3,297",
+     "",
+     "\u2014",
+     "",
+     "3,297",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "110,746",
+     "$",
+     "3,297",
+     "$",
+     "\u2014",
+     "$",
+     "114,043"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair value measurement using:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of securities as of December 31, 2022",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market fund",
+     "$",
+     "104,294",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "104,294"
+    ],
+    [
+     "Short-term investments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "62,503",
+     "",
+     "\u2014",
+     "",
+     "62,503",
+     ""
+    ],
+    [
+     "U.S. Government-related debt securities",
+     "\u2014",
+     "",
+     "21,779",
+     "",
+     "\u2014",
+     "",
+     "21,779",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "104,294",
+     "$",
+     "84,282",
+     "$",
+     "\u2014",
+     "$",
+     "188,576"
+    ]
+   ],
+   "caption_stack": [
+    "Fair value measurement using:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 571,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "\u2022Level 1 \u2014 Quoted prices in active markets for identical assets and liabilities.\n\u2022Level 2 \u2014 Quoted prices for similar instruments in active markets; quoted prices for identical or similar instruments in markets that are not active; and model-derived valuations in which all significant inputs and significant value drivers are observable in active markets.\n\u2022Level 3 \u2014 Valuations derived from valuation techniques in which one or more significant inputs or significant value drivers are unobservable.\nThe recorded amounts of certain financial instruments, including cash, accounts receivable, prepaid expenses and other, accounts payable and accrued liabilities, approximate fair value due to their relatively short-term maturities. The recorded amount of the Company\u2019s long-term debt can be determined based on the estimated or actual bid prices of the Convertible Senior Notes in an over-the-counter market, which are classified as a Level 2 financial instrument.\nThe Company\u2019s investments by level within the fair value hierarchy were as follows (in thousands):",
+   "prose_after": "In March 2020, the Company issued $230.0 million of Convertible Notes as described in more detail in Note 9. Long-term Debt, Net. As of June 30, 2023, the fair value of the Convertible Notes was $184.0 million.\n8. Inventory\nInventory, net of related reserves, consisted of the following as of the date indicated (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "9,581",
+     "$",
+     "11,013"
+    ],
+    [
+     "Intermediate manufactured components",
+     "15,502",
+     "",
+     "14,715",
+     ""
+    ],
+    [
+     "Finished goods",
+     "23,766",
+     "",
+     "17,545",
+     ""
+    ],
+    [
+     "Total inventory, net",
+     "$",
+     "48,849",
+     "$",
+     "43,273"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 604,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "In March 2020, the Company issued $230.0 million of Convertible Notes as described in more detail in Note 9. Long-term Debt, Net. As of June 30, 2023, the fair value of the Convertible Notes was $184.0 million.\n8. Inventory\nInventory, net of related reserves, consisted of the following as of the date indicated (in thousands):",
+   "prose_after": "9. Long-term Debt, Net\nIn March 2020, the Company issued $230.0 million in aggregate principal amount of its Convertible Notes in a private offering (the \u201cConvertible Notes\u201d). The Convertible Notes are governed by an indenture dated March 9, 2020 between the Company and U.S. Bank, National Association, as trustee. The Company received net proceeds from the offering of $222.6 million.\nThe Convertible Notes bear interest at a rate of 2.625% per year, payable semi-annually in arrears on March 1st and September 1st. The Convertible Notes may bear additional interest under specified circumstances relating to the Company\u2019s failure to comply with its reporting obligations under, or if the Convertible Notes are not freely tradeable as required by, the indenture governing the Convertible Notes. Upon conversion, the Convertible Notes will be convertible into cash, shares of common stock or a combination of cash and shares of common stock, at the Company\u2019s election.\nThe Convertible Notes are general unsecured senior obligations and will mature on March 1, 2025, unless earlier repurchased, redeemed or converted, subject to satisfaction of certain conditions and during the periods described below. The initial conversion rate for the Convertible Notes is 20.9161 shares of common stock, par value $0.0001 per share, per $1,000 principal amount of Convertible Notes (which is equivalent to an initial conversion price of approximately $47.81 per share). The conversion rate will be subject to adjustment in some events but will not be adjusted for any accrued and unpaid interest. In addition, following certain corporate events that may occur prior to the maturity date or if the Company issues a notice of",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Outstanding principal of Convertible Notes",
+     "$",
+     "230,000",
+     "$",
+     "230,000"
+    ],
+    [
+     "Less: unamortized issuance costs",
+     "(2,621)",
+     "",
+     "(3,378)",
+     ""
+    ],
+    [
+     "Long-term debt, net",
+     "$",
+     "227,379",
+     "$",
+     "226,622"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Long-term Debt, Net"
+    }
+   },
+   "prose_before": "The Convertible Notes do not contain any financial or operating covenants or any restrictions on the issuance of other indebtedness or the issuance or repurchase of securities by the Company. The Convertible Notes indenture contains customary events of default, including that upon certain events of default, 100% of the principal and accrued and unpaid interest on the Convertible Notes will automatically become due and payable. The debt issuance costs of $7.4 million are amortized to interest expense using the effective interest method over five years, the contractual term of the Convertible Notes, with an effective interest rate of 3.3%.\nThe Company monitors the provision of the Convertible Notes that allow for certain conversion rights at each quarterly reporting date in order to determine whether the Convertible Notes are convertible or subject to an event triggering potential redemption during the prescribed measurement periods. As of the date of this report, none of the outstanding convertible notes had been redeemed by the Company. Based on the closing price of our common stock of $4.05 on the last trading day of the quarter, the if-converted values of the Convertible Notes did not exceed the remaining principal balance as of June 30, 2023.\nAll future principal payments related to the Convertible Notes are due in March 2025. The outstanding balances of the Company\u2019s Convertible Notes and previously outstanding term loan consisted of the following (in thousands):",
+   "prose_after": "The following table sets forth total interest expense recognized related to the Convertible Notes (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Contractual interest expense",
+     "$",
+     "1,509",
+     "$",
+     "1,509",
+     "$",
+     "3,019",
+     "$",
+     "3,018"
+    ],
+    [
+     "Amortization of issuance costs",
+     "378",
+     "",
+     "366",
+     "",
+     "757",
+     "",
+     "733",
+     ""
+    ],
+    [
+     "Total interest expense",
+     "$",
+     "1,887",
+     "$",
+     "1,875",
+     "$",
+     "3,776",
+     "$",
+     "3,751"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 648,
+    "end_line": 659
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Long-term Debt, Net"
+    }
+   },
+   "prose_before": "The following table sets forth total interest expense recognized related to the Convertible Notes (in thousands):",
+   "prose_after": "10. Commitments and Contingencies\nLitigation\nLiabilities for loss contingencies arising from claims, assessments, litigation, fines, and penalties and other sources are recorded when it is probable that a liability has been incurred and the amount can be reasonably estimated. Legal costs incurred in connection with loss contingencies are expensed as incurred.\n10x Genomics\nOn May 6, 2021, 10x Genomics, Inc. and Prognosys Biosciences, Inc. (\u201cPrognosys\u201d) filed a complaint, and on May 19, 2021, an amended complaint, and on May 4, 2022, a second amended complaint, against the Company in the U.S. District Court for the District of Delaware. The complaint, as amended, alleges that certain of the Company\u2019s products, services and components sold by the Company for use in connection with its GeoMx system (the \u201cIdentified GeoMx Products\u201d) infringe seven patents owned by Prognosys: (a) U.S. Patent No. 10,472,669, \u201cSpatially encoded biological assays,\u201d (b) U.S. Patent No. 10,961,566, \u201cSpatially encoded biological assays,\u201d (c) U.S. Patent No. 10,983,113, \u201cSpatially encoded biological assays,\u201d (d) U.S. Patent No. 10,996,219, \u201cSpatially encoded biological assays,\u201d (e) U.S. Patent No. 11,001,878, \u201cSpatially encoded biological assays,\u201d (f) U.S. Patent No. 11,008,607, \u201cSpatially encoded biological assays,\u201d and (g) U.S. Patent No. 11,293,917, \u201cSystems for analyzing target biological molecules via sample imaging and delivery of probes to substrate well\u201d (the \u201cAsserted Prognosys Patents\u201d). The complaint seeks, among other relief, injunctive relief and unspecified damages (including treble damages and attorneys\u2019 fees) in relation to the Company\u2019s making, using, selling, offering to sell, exporting and/or importing in",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Americas",
+     "$",
+     "29,034",
+     "66",
+     "%",
+     "$",
+     "21,909",
+     "68",
+     "%",
+     "33",
+     "%",
+     "$",
+     "51,047",
+     "64",
+     "%",
+     "$",
+     "43,170",
+     "68",
+     "%",
+     "18",
+     "%"
+    ],
+    [
+     "Europe & Middle East",
+     "10,745",
+     "",
+     "24",
+     "%",
+     "7,528",
+     "",
+     "23",
+     "%",
+     "43",
+     "%",
+     "21,261",
+     "",
+     "26",
+     "%",
+     "14,277",
+     "",
+     "23",
+     "%",
+     "49",
+     "%"
+    ],
+    [
+     "Asia Pacific",
+     "4,378",
+     "",
+     "10",
+     "%",
+     "2,782",
+     "",
+     "9",
+     "%",
+     "57",
+     "%",
+     "7,654",
+     "",
+     "10",
+     "%",
+     "5,852",
+     "",
+     "9",
+     "%",
+     "31",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "44,157",
+     "100",
+     "%",
+     "$",
+     "32,219",
+     "100",
+     "%",
+     "37",
+     "%",
+     "$",
+     "79,962",
+     "100",
+     "%",
+     "$",
+     "63,299",
+     "100",
+     "%",
+     "26",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 765,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "We focus a substantial portion of our resources on developing new technologies, products, and solutions. Research and development expense totaled $34.3 million and $34.8 million for the six months ended June 30, 2023 and 2022, respectively. We intend to continue making investments in research and development to support our existing instrument platforms and related consumables offerings, as well as in research and development of new technologies.\nWe have never been profitable and had net losses of $84.9 million and $78.7 million for the six months ended June 30, 2023 and 2022, respectively. As of June 30, 2023, our accumulated deficit was $894.2 million.\nResults of Operations\nRevenue\nOur product revenue is derived from sales of our spatial biology and nCounter instruments and related consumables. There may be fluctuations in sales mix between instruments and consumables from period to period. Service revenue consists of fees associated with service contracts and from our TAP. Our customer base is primarily comprised of academic institutions, government laboratories, biopharmaceutical companies, and clinical laboratories.\nThe following table reflects total revenue by geography based on the geographic location of our customers, distributors, and collaborators. For sales to distributors, their geographic location may be different from the geographic locations of the ultimate end customer.",
+   "prose_after": "The following table reflects the breakdown of our revenue into the primary components of instruments, consumables and service and other.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "17,629",
+     "$",
+     "9,538",
+     "85",
+     "%",
+     "$",
+     "28,999",
+     "$",
+     "18,641",
+     "56",
+     "%"
+    ],
+    [
+     "Consumables",
+     "21,257",
+     "",
+     "17,847",
+     "",
+     "19",
+     "%",
+     "41,033",
+     "",
+     "35,315",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "Service and other revenue",
+     "5,271",
+     "",
+     "4,834",
+     "",
+     "9",
+     "%",
+     "9,930",
+     "",
+     "9,343",
+     "",
+     "6",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "44,157",
+     "$",
+     "32,219",
+     "37",
+     "%",
+     "$",
+     "79,962",
+     "$",
+     "63,299",
+     "26",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 782,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The following table reflects the breakdown of our revenue into the primary components of instruments, consumables and service and other.",
+   "prose_after": "Instrument revenue during the three and six month periods ended June 30, 2023 increased as compared to the same periods in 2022, primarily as a result of increased shipments of our spatial biology systems, in particular of our CosMx systems. The increase was partially offset by lower instrument shipments for our nCounter platform, which is in a more mature phase of its product life cycle.\nConsumables revenue currently includes sales of consumables for our spatial biology systems and for nCounter, and sales of Prosigna in vitro diagnostic kits to our partner Veracyte. Consumables revenue increased for the three and six month periods ended June 30, 2023 as compared to the same period in 2022. The increase in consumables revenue for the three and six month periods ended June 30, 2023 was driven primarily by higher spatial biology consumables sales, as our installed base of spatial biology instruments increased as compared to the same periods in 2022, and by higher nCounter consumable sales.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "29,757",
+     "$",
+     "15,852",
+     "88",
+     "%",
+     "$",
+     "52,628",
+     "",
+     "$",
+     "30,630",
+     "72",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "14,400",
+     "",
+     "16,367",
+     "",
+     "(12)",
+     "%",
+     "27,334",
+     "",
+     "",
+     "32,669",
+     "",
+     "(16)",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "33%",
+     "",
+     "51%",
+     "",
+     "",
+     "",
+     "34",
+     "",
+     "%",
+     "52%",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 808,
+    "end_line": 818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Service and other revenue for the three and six month periods ended June 30, 2023 increased as compared to the same periods of 2022, due primarily to growth in our instrument installed bases and the corresponding service contract revenue.\nWe expect our product and service revenue may increase in future periods, primarily as a result of increased shipments of spatial biology systems and the sale of related spatial biology consumables and services.\nCost of Revenue; Gross Profit; and Gross Margin\nCost of revenue consists primarily of costs incurred in the production process including costs of purchasing instruments from third-party contract manufacturers, costs of consumable component materials and assembly labor and overhead, installation, warranty, service and packaging, and delivery costs. In addition, cost of product and service revenue includes royalty costs for licensed technologies included in our products, provisions for slow-moving and obsolete inventory, and stock-based compensation expense. We provide a one-year warranty for our CosMx, GeoMx, and nCounter systems and establish a reserve for warranty repairs based on historical warranty repair costs incurred.",
+   "prose_after": "For the three and six month periods ended June 30, 2023, cost of revenue increased as compared to the same period of 2022, due primarily to a higher volume of instruments sold, a higher volume of consumables sales and increased costs associated with providing service for our growing installed base of systems. In addition to volume driven cost of revenue increases, during the three and six month periods ended June 30, 2023, we have continued to make increased investments to support our manufacturing capabilities across all of our platforms, and incurred development amortization costs associated with AtoMx. Also, in accordance with internal policies, for the three and six month periods ended June 30, 2023 we recorded an increase to our inventory reserves resulting primarily from the shifting mix of spatial biology consumables sales away from our more targeted consumable panels toward our GeoMx whole transcriptome assay and other newer spatial biology consumables products.\nOur gross margins on revenue for the three and six month periods ended June 30, 2023 decreased as compared to the same periods of 2022 due to a shift in instrument sales mix toward CosMx instruments, which are currently selling at lower gross margins due to lower manufacturing yields and higher unit production costs than are expected to be incurred in future periods as we scale CosMx production. In addition, our gross margins were negatively impacted due to the increase in inventory reserves of approximately $2.8 million and $4.9 million recorded during the three and six month periods ended June 30, 2023, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and discovery",
+     "$",
+     "4,150",
+     "$",
+     "3,195",
+     "30",
+     "%",
+     "$",
+     "8,326",
+     "$",
+     "7,459",
+     "12",
+     "%"
+    ],
+    [
+     "Manufacturing, support and service",
+     "2,815",
+     "",
+     "1,699",
+     "",
+     "66",
+     "%",
+     "4,663",
+     "",
+     "3,326",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "Product and process engineering",
+     "8,200",
+     "",
+     "9,044",
+     "",
+     "(9)",
+     "%",
+     "15,462",
+     "",
+     "17,289",
+     "",
+     "(11)",
+     "%"
+    ],
+    [
+     "Regulatory and medical affairs",
+     "127",
+     "",
+     "315",
+     "",
+     "(60)",
+     "%",
+     "191",
+     "",
+     "682",
+     "",
+     "(72)",
+     "%"
+    ],
+    [
+     "Facilities and overhead",
+     "2,922",
+     "",
+     "3,093",
+     "",
+     "(6)",
+     "%",
+     "5,690",
+     "",
+     "6,007",
+     "",
+     "(5)",
+     "%"
+    ],
+    [
+     "Total research and development expense",
+     "$",
+     "18,214",
+     "$",
+     "17,346",
+     "5",
+     "%",
+     "$",
+     "34,332",
+     "$",
+     "34,763",
+     "(1)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 849
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Research and development expenses consist primarily of salaries and benefits, occupancy, laboratory supplies, engineering services, consulting fees, costs associated with licensing molecular diagnostics rights, and certain expenses related to research activities with customers and collaborators for which we have undertaken joint research projects. We have made substantial investments in research and development since our inception. Our research and development efforts have focused primarily on the tasks required to enhance our technologies and to support development and commercialization of new and existing products and applications.\nGiven the size of our research and development staff and the number of active projects at any given time, we believe it is most effective to manage our research and development activities on a departmental basis. Accordingly, other than for collaborations and certain major technology development programs, we have neither required employees to report their time by project nor allocated our research and development costs to individual projects. Research and development expense by functional area was as follows:",
+   "prose_after": "Research and development expenses for the three month period ended June 30, 2023 increased as compared to the same period in 2022, due primarily to higher professional fees and cloud storage costs related to the development of AtoMx and new consumables products for our spatial biology platforms. These increases were partially offset by lower personnel related costs resulting largely from our previously announced reorganization and restructuring activities. For the six month period ended June 30, 2023, research and development expense were approximately flat as compared to the same period in 2022.\nWe continue to invest in product development activities associated with our spatial biology platforms. We expect research and development expense may moderate in future periods, reflecting the impact of increasing investments in our spatial biology and other future projects and technologies, offset by certain reductions in employee and other expenses related to our previously announced reorganization and restructuring initiatives.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "$",
+     "39,076",
+     "$",
+     "36,112",
+     "8",
+     "%",
+     "$",
+     "76,442",
+     "$",
+     "72,467",
+     "5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 869
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Research and development expenses for the three month period ended June 30, 2023 increased as compared to the same period in 2022, due primarily to higher professional fees and cloud storage costs related to the development of AtoMx and new consumables products for our spatial biology platforms. These increases were partially offset by lower personnel related costs resulting largely from our previously announced reorganization and restructuring activities. For the six month period ended June 30, 2023, research and development expense were approximately flat as compared to the same period in 2022.\nWe continue to invest in product development activities associated with our spatial biology platforms. We expect research and development expense may moderate in future periods, reflecting the impact of increasing investments in our spatial biology and other future projects and technologies, offset by certain reductions in employee and other expenses related to our previously announced reorganization and restructuring initiatives.\nSelling, General and Administrative Expense\nSelling, general and administrative expense consists primarily of costs for our sales and marketing, finance, human resources, information technology, business development, legal, and general management functions, as well as professional fees for legal, insurance, consulting, and accounting services.\nSelling, general, and administrative expense was as follows:",
+   "prose_after": "Selling, general, and administrative expense for the three and six month periods ended June 30, 2023 increased as compared to the same periods in 2022, primarily due to higher costs associated with ongoing legal proceedings, increased stock-based compensation costs and higher costs for travel and trade show related activities. These increases were partially offset by lower marketing related costs and reduced bad debt reserves.\nWe expect selling, general and administrative expenses may increase modestly in future periods as the number of technical support and administrative personnel grows to support the expected growth of our spatial biology installed base and as we incur expenses related to ongoing legal proceedings, with growth in those expenses offset by certain reductions in employee and other expenses related to our previously announced reorganization and restructuring initiatives.\nOther Income (Expense)\nOther income and expense items are comprised primarily of interest income earned on our cash equivalents and short term investments and interest paid on our outstanding convertible debt. Other total other expense, net was as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "1,527",
+     "$",
+     "406",
+     "276",
+     "%",
+     "$",
+     "2,812",
+     "$",
+     "557",
+     "405",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(1,889)",
+     "",
+     "(1,880)",
+     "",
+     "\u2014",
+     "%",
+     "(3,780)",
+     "",
+     "(3,763)",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Other income (expense), net",
+     "(211)",
+     "",
+     "(490)",
+     "",
+     "(57)",
+     "%",
+     "(218)",
+     "",
+     "(707)",
+     "",
+     "(69)",
+     "%"
+    ],
+    [
+     "Total other expense, net",
+     "$",
+     "(573)",
+     "$",
+     "(1,964)",
+     "(71)",
+     "%",
+     "$",
+     "(1,186)",
+     "$",
+     "(3,913)",
+     "(70)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 878,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Selling, general, and administrative expense for the three and six month periods ended June 30, 2023 increased as compared to the same periods in 2022, primarily due to higher costs associated with ongoing legal proceedings, increased stock-based compensation costs and higher costs for travel and trade show related activities. These increases were partially offset by lower marketing related costs and reduced bad debt reserves.\nWe expect selling, general and administrative expenses may increase modestly in future periods as the number of technical support and administrative personnel grows to support the expected growth of our spatial biology installed base and as we incur expenses related to ongoing legal proceedings, with growth in those expenses offset by certain reductions in employee and other expenses related to our previously announced reorganization and restructuring initiatives.\nOther Income (Expense)\nOther income and expense items are comprised primarily of interest income earned on our cash equivalents and short term investments and interest paid on our outstanding convertible debt. Other total other expense, net was as follows:",
+   "prose_after": "Our total other expense, net for the three and six month periods ended June 30, 2023 decreased as compared with the same periods in the prior year, due primarily to increased interest income associated with higher yields on our short term investments, partially offset by increased losses on the remeasurement of foreign currency transactions into our functional currency of U.S. dollars, as a result of volatility in foreign exchange conversion rates associated primarily with the Euro and British pound sterling.\nWe continue to maintain a cash preservation investment strategy and, as a result, held the majority of our cash and cash equivalents in money market or other short duration fixed income positions for which yields have historically been very low. While we have seen improvement in interest rates available for investments resulting from the Federal Reserve responding to increasing inflation and other macroeconomic factors, at this time, we do not expect to see material increases in our interest income.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "114,305",
+     "$",
+     "112,250",
+     "$",
+     "2,055"
+    ],
+    [
+     "Short-term investments",
+     "3,297",
+     "",
+     "84,282",
+     "",
+     "(80,985)",
+     ""
+    ],
+    [
+     "Total cash and cash equivalents and short-term investments",
+     "$",
+     "117,602",
+     "$",
+     "196,532",
+     "$",
+     "(78,930)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 899,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Our total other expense, net for the three and six month periods ended June 30, 2023 decreased as compared with the same periods in the prior year, due primarily to increased interest income associated with higher yields on our short term investments, partially offset by increased losses on the remeasurement of foreign currency transactions into our functional currency of U.S. dollars, as a result of volatility in foreign exchange conversion rates associated primarily with the Euro and British pound sterling.\nWe continue to maintain a cash preservation investment strategy and, as a result, held the majority of our cash and cash equivalents in money market or other short duration fixed income positions for which yields have historically been very low. While we have seen improvement in interest rates available for investments resulting from the Federal Reserve responding to increasing inflation and other macroeconomic factors, at this time, we do not expect to see material increases in our interest income.\nLiquidity and Capital Resources",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "$",
+     "(67,197)",
+     "$",
+     "(62,723)",
+     "$",
+     "(4,474)"
+    ],
+    [
+     "Cash provided by investing activities",
+     "68,106",
+     "",
+     "80,671",
+     "",
+     "(12,565)",
+     ""
+    ],
+    [
+     "Cash provided by financing activities",
+     "850",
+     "",
+     "1,115",
+     "",
+     "(265)",
+     ""
+    ],
+    [
+     "Effect of foreign exchange on cash and cash equivalents",
+     "23",
+     "",
+     "(104)",
+     "",
+     "127",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "$",
+     "1,782",
+     "$",
+     "18,959",
+     "$",
+     "(17,177)"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Changes in Cash Flow\nOperating Activities\nFor the six months ended June 30, 2023, net cash used in operating activities consisted of our net loss of $84.9 million and net increases in our operating assets and liabilities of $13.8 million, partially offset by $31.5 million of net non-cash income and expense items, such as stock-based compensation, depreciation and amortization, increased provisions for inventory obsolescence, operating lease costs and bad debts and amortization of right-of-use assets.\nFor the six months ended June 30, 2022, net cash used in operating activities consisted of our net loss of $78.7 million, partially offset by $23.2 million of net non-cash income and expense items, such as stock-based compensation, depreciation and amortization, increased provisions for inventory obsolescence, operating lease costs and bad debts and amortization of right-of-use assets.\nInvesting Activities\nOur most significant investing activities for the six months ended June 30, 2023 and 2022, respectively, were related to the maturity, sale and purchase of short-term investments. Because we manage our cash usage with respect to our total cash, cash equivalents and short-term investments, we do not consider cash flows related to management of our short-term investments to be important to an understanding of our liquidity and capital resources.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description",
+     "Form",
+     "File No.",
+     "Filing Date",
+     "Exhibit",
+     "Filed Herewith"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Registrant.",
+     "8-K",
+     "001-35980",
+     "June 27, 2023",
+     "3.1",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Registrant.",
+     "8-K",
+     "001-35980",
+     "January 27, 2023",
+     "3.1",
+     ""
+    ],
+    [
+     "10.1+",
+     "Amended and Restated 2022 Equity Incentive Plan.",
+     "8-K",
+     "001-35980",
+     "June 27, 2023",
+     "10.1",
+     ""
+    ],
+    [
+     "10.2+",
+     "2018 Inducement Equity Incentive Plan, as amended.",
+     "8-K",
+     "001-35980",
+     "August 3, 2023",
+     "10.1",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a).",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a).",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document.",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL with applicable taxonomy extension information contained in Exhibits 101).",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1645,
+    "end_line": 1666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Furthermore, investor perceptions of our company may suffer as a result of material weakness findings in our internal controls, and this could cause a decline in the market price of our stock. Irrespective of compliance with Section 404, any failure of our internal control over financial reporting could have a material adverse effect on our stated operating results and harm our reputation. If we are unable to avoid future material weaknesses, our operations, financial reporting, or financial results could be harmed, and any such material weakness findings could result in an adverse opinion on our internal control over financial reporting from our independent registered public accounting firm.\nItem 5. Other Information.\nRule 10b5-1 Trading Plans\nDuring our last fiscal quarter, no director or officer, as defined in Rule 16a-1 (f), adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or any \u201cnon-Rule 10b5-1 trading arrangement,\u201d each as defined in Item 408 of Regulation S-K.\nItem 6. Exhibits and Financial Statement Schedules.\n(a) Exhibits.",
+   "prose_after": "+ Indicates a management contract or a compensatory plan, contract or arrangement.\n* The Certifications attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of NanoString Technologies, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Form 10-Q, irrespective of any general incorporation language contained in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1640,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1671,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "NANOSTRING TECHNOLOGIES, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "August 3, 2023",
+     "By:",
+     "/s/ R. Bradley Gray"
+    ],
+    [
+     "",
+     "",
+     "",
+     "R. Bradley Gray"
+    ],
+    [
+     "",
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "August 3, 2023",
+     "By:",
+     "/s/ K. Thomas Bailey"
+    ],
+    [
+     "",
+     "",
+     "",
+     "K. Thomas Bailey"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "NANOSTRING TECHNOLOGIES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1676,
+    "end_line": 1691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "+ Indicates a management contract or a compensatory plan, contract or arrangement.\n* The Certifications attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of NanoString Technologies, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Form 10-Q, irrespective of any general incorporation language contained in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1671,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1692,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

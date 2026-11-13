@@ -1,0 +1,4879 @@
+{
+ "accession": "0001493152-20-016628",
+ "cik": "0001674440",
+ "form": "10-K",
+ "filing_date": "2020-08-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "61-1789640"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act Of 1934\nFor the fiscal year ended April 30, 2020\n[ ] Transition Report Under Section 13 or 15(d) of the Securities Exchange Act Of 1934\nFor the transition period from _____________ to _____________\nCommission File Number: 333-214463\nSLINGER BAG INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2709 NORTH ROLLING ROAD, SUITE 138\nWINDSOR MILL\nMARYLAND 21244\n(Address of principal executive offices) (Zip code)\n(443) 407-7564\n(Registrant\u2019s Telephone Number, including Area Code)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "15"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "37"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "37"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "37"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Company\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "37"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "38"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "38"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "44"
+    ],
+    [
+     "Item 8",
+     "Financial Statements.",
+     "44"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "45"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "45"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "46"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "50"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management",
+     "50"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "52"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "52"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "52"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 126
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u25cf risks related to failure to obtain adequate financing on a timely basis and on acceptable terms for our planned development projects;\n\u25cf risks related to environmental regulation and liability;\n\u25cf risks related to tax assessments;\n\u25cf other risks and uncertainties related to our prospects, properties and business strategy.\nAlthough we believe that the expectations reflected in the forward-looking statements are reasonable, we cannot guarantee future results, levels of activity, performance or achievements. You should not place undue reliance on these forward-looking statements, which speak only as of the date of this report. Except as required by law, we do not undertake to update or revise any of the forward-looking statements to conform these statements to actual results, whether as a result of new information, future events or otherwise.\nAs used in this quarterly report, the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d refer to Singer Bag Inc., unless otherwise indicated\ni\nSLINGER BAG INC (FORMERLY KNOWN AS LAZEX INC.)",
+   "prose_after": "ii\nSLINGER BAG INC.\nAnnual Report on Form 10-K for the\nFiscal Year Ended April 30, 2020\nThe following analysis of our financial condition and results of operations should be read in conjunction with our financial statements and the related notes thereto contained elsewhere in this Form 10-K, as well as the risk factors included in this Form 10-K.\nPART I\nITEM 1. Business\nHistory of our Company\nLazex Inc. (the \u201cCompany\u201d or \u201cSlinger\u201d), was formed on July 12, 2015 as a Nevada corporation. From its inception until September 13, 2019, the Company was in the business of providing travel consulting and tour guide services. On September 16, 2019, Slinger Bag Americas Inc. (\u201cSlinger Bag Americas\u201d) acquired 20,000,000 shares of the Company\u2019s common stock from its then shareholders. On September 16, 2019, the Company acquired 100% of the outstanding shares of \u201cSlinger Bag Americas\u201d when the then owner of Slinger Bag Americas contributed her shares of Slinger Bag Americas to the Company in exchange for 20,000,000 shares of the Company. The result of the foregoing transactions is that Slinger Bag Americas became a wholly-owned subsidiary of the Company. From September 16, 2019 and onward, the Company ceased its performance of travel consulting or tour guide services and has switched its focus to the development of the technologies and products owned by Slinger Bag Americas and its affiliates.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Territory",
+     "Distributor",
+     "Minimum Purchase Requirement of Slinger Bag Tennis Ball Launchers"
+    ],
+    [
+     "Japan",
+     "Globeride Inc.",
+     "32,500 through the end of January 2025"
+    ],
+    [
+     "United Kingdom and Ireland",
+     "Framework Sports & Marketing Ltd",
+     "9,000 through the end of May 2025"
+    ],
+    [
+     "Switzerland",
+     "Ace Distribution",
+     "3,000 through the end of May 2025"
+    ],
+    [
+     "Denmark, Finland, Norway and Sweden",
+     "Frihavnskompagniet ApS",
+     "6,500 through the end of December 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 206,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Each of our distributor partners around the world are establishing their Slinger Bag distribution business as Slinger itself would do if it was establishing a Slinger Bag subsidiary in each market. As such, each distributor will also adopt all forms of Slinger brand marketing programs as well as initiating new local concepts of their own \u2013 all aimed at reaching the avid/regular tennis player directly and ensuring that the Slinger brand message is consistent around the globe. Slinger Bag has agreed a local marketing budget structure with each distributor as part of its distribution agreement. This marketing budget will be primarily funded by the distributor partner with an additional contribution coming from Slinger with the contribution being linked to the distributors purchase objectives. Each distributor will execute local grassroots programs including demonstration days, local teaching pro partnerships, specialist tennis network communications, seeding of Slinger Bag product locally as necessary to local key market tennis influencers to further increase the intensity of the influencer effort. Marketing dollars will also be allocated to Google, Facebook, YouTube and other social media advertising spend and, where appropriate, approved and overseen by Ad Venture Media Group.\nDistribution Agreements\nAs at the date of this report, Slinger Bag Americas has entered into exclusive distribution agreements for Slinger\u2019s line of products, including, but not limited to, tennis ball launcher devices, tennis ball launcher accessories, sports bags, tennis balls tennis court accessories and other tennis related products in the following markets and with the following distributors:",
+   "prose_after": "Brand Endorsements\nSlinger has reached agreement with several globally recognized brand ambassadors.\nNick Bollettieri is without question the most famous tennis coach globally, having trained 10 world #1 players such as Andre Agassi, Jim Courier, Boris Becker, Monica Seles, Maria Sharapova and Serena Williams. Nick will join Slinger Bag as \u201cHead Coach\u201d and will provide registered Slinger consumers with regular training and coaching tips through Slingers \u201cCoaches Corner\u201d on its website.\nMike & Bob Bryan (aka the Bryan Brothers \u2013 the foremost doubles team in the Tennis world) will be the global ambassadors for Slinger Bag from the global Tennis tour and will feature prominently in our marketing messaging.\nThe Professional Tennis Registry (PTR) \u2013 a United States-based teaching teacher association with approximately 40,000 members will become a non-exclusive strategic partner for Slinger with all their members able to access an affiliate member part of our website.\nPTCA Central Europe is a European Coach organization of leading touring pro coaches and they, like others, will undertake an affiliate marketing approach.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Expected life in years",
+     "2 - 5 years",
+     "NA"
+    ],
+    [
+     "Stock price volatility",
+     "121.4% - 144.2%",
+     "NA"
+    ],
+    [
+     "Risk free interest rate",
+     "0.36% - 2.43%",
+     "NA"
+    ],
+    [
+     "Expected dividends",
+     "0%",
+     "NA"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with ASC 360-10, the Company evaluates long-lived assets for impairment whenever events or changes in circumstances indicate that their net book value may not be recoverable. When such factors and circumstances exist, the Company compares the projected undiscounted future cash flows associated with the related asset or group of assets over their estimated useful lives against their respective carrying amount. Impairment, if any, is based on the excess of the carrying amount over the fair value, based on market value when available, or discounted expected cash flows, of those assets and is recorded in the period in which the determination is made. There was no impairment of long-lived assets identified during the year ended April 30, 2020 or 2019.\nWarrants\nThe Company grants warrants to key employees and executives as compensation on a discretionary basis. The Company also grants warrants in connection with certain note payable agreements. The Company measures the fair value of the awards using the Black-Scholes option pricing model as of the measurement date. Warrants granted in connection with ongoing arrangements are more fully described in Note 6 - Note Payable and Note 8 \u2013 Stockholders\u2019 Deficit.\nThe warrants granted during the year ended April 30, 2020 and 2019 were valued using the Black-Scholes pricing method on the date of grant using the following assumptions below.",
+   "prose_after": "Basic and Diluted Earnings Per Share\nBasic earnings per share are calculated by dividing income available to stockholders by the weighted-average number of common shares outstanding during each period. Diluted earnings per share are computed using the weighted average number of common and dilutive common share equivalents outstanding during the period. The Company had 8,137,859 common shares issuable as of April 30, 2020 which were not included in the calculation of diluted earnings per share as the effect is antidilutive. The Company also had outstanding notes payable convertible into 8,150,794 shares of common stock as of April 30, 2020, as well as outstanding warrants exercisable into 13,000,000 shares of common stock which were excluded from calculation of diluted earnings per share as the effect is antidilutive. There were no common share equivalents outstanding during the year ended April 30, 2019. As a result, the basic and diluted earnings per share are the same for each of the periods presented.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 898,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "686,179",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "686,179",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "1,370,897",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,370,897",
+     ""
+    ],
+    [
+     "Gross loss",
+     "",
+     "(684,718)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(684,718)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing expenses",
+     "",
+     "563,003",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "563,003",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,549,329",
+     "",
+     "",
+     "28,289",
+     "",
+     "",
+     "1,521,040",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "3,741,746",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,741,746",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "",
+     "179,982",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "179,982",
+     ""
+    ],
+    [
+     "Transaction costs",
+     "",
+     "198,443",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "198,443",
+     ""
+    ],
+    [
+     "  Total operating expenses",
+     "",
+     "6,232,503",
+     "",
+     "",
+     "28,289",
+     "",
+     "",
+     "6,204,214",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(6,917,221)",
+     "",
+     "",
+     "(28,289)",
+     "",
+     "",
+     "(6,888,932)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "1,565,174",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,565,174",
+     ""
+    ],
+    [
+     "Interest expense - related party",
+     "",
+     "171,918",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "171,918",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "573,431",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "573,431",
+     ""
+    ],
+    [
+     "  Total other expense",
+     "",
+     "2,310,523",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,310,523",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(9,227,744)",
+     "",
+     "",
+     "(28,289)",
+     "",
+     "",
+     "(9,199,455)",
+     ""
+    ],
+    [
+     "Provision for (benefit from) income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,227,744)",
+     "",
+     "$",
+     "(28,289)",
+     "",
+     "$",
+     "(9,199,455)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "In February 2016, the FASB issued Accounting Standards Update 2016-02, \u201cLeases\u201d (Topic 842). This guidance is effective for public entities for fiscal years beginning after December 15, 2018 including the interim periods within those fiscal years. Early application is permitted. Under the new provisions, all lessees will report a right-of-use asset and a liability for the obligation to make payments for all leases with the exception of those leases with a term of 12 months or less. All other leases will fall into one of two categories: (i) Financing leases, similar to capital leases, which will require the recognition of an asset and liability, measured at the present value of the lease payments and (ii) Operating leases which will require the recognition of an asset and liability measured at the present value of the lease payments. The Company has adopted this standard on May 1, 2019 with no significant impact to the Company\u2019s financial statements.\nResults of Operations for the Year Ended April 30, 2020 and 2019\nThe following are the results of our operations for the year ended April 30, 2020 as compared to 2019:",
+   "prose_after": "Net sales\nTo test the market for our products, we initiated a Kickstarter and Indiegogo campaign in 2019, taking orders for 3,100 units for total expected revenue of approximately $866,000. During the year ended April 30, 2020, we shipped orders representing $686,179 in sales. As of April 30, 2020, we had deferred revenue of $179,366 representing units that have not been shipped. We expect these orders to be fulfilled and the sales to be recognized in the year ended April 30, 2021. We had no sales during the year ended April 30, 2019.\nCost of sales\nOur cost of sales during the year ended April 30, 2020 amounted to $1,370,897, which represent the cost of units shipped during the year. The loss on these shipments is due to (1) discounted pricing on the initial crowdfunding orders, (2) as fulfillment was later than initial scheduled, we fulfilled orders with the \u201cdeluxe\u201d version of launcher (including all features), as well as tennis balls, both of which increased costs, and (3) due to sanctions by the US against Chinese sourced products, the import duty was raised on all launchers brought into USA increasing cost of sales. As a result, our cost of sales exceeded initial sales values raised in crowdfunding campaign. Once all initial crowdfunding orders are fulfilled, we expect our gross margin to become positive. We had no cost of sales during the year ended April 30,2019 as we had no sales during the year.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 898,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "$",
+     "(4,208,274)",
+     "",
+     "$",
+     "(27,788)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "$",
+     "73,400",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "$",
+     "4,217,761",
+     "",
+     "$",
+     "9,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 969,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our financial statements have been prepared on a going concern basis which assumes we will be able to realize our assets and discharge our liabilities in the normal course of business for the foreseeable future. We had an accumulated deficit of $10,228,513 as of April 30, 2020 and more losses are anticipated in the development of the business. Accordingly, there is substantial doubt about our ability to continue as a going concern. Our financial statements do not include any adjustments related to the recoverability and classification of assets or the amounts and classification of liabilities that might be necessary should we be unable to continue as a going concern.\nThe ability to continue as a going concern is dependent upon our generating profitable operations in the future and/or being able to obtain the necessary financing to meet our obligations and repay our liabilities arising from normal business operations when they become due. Management intends to finance operating costs over the next twelve months with existing cash on hands, loans from related parties, and/or private placement of common stock.\nThe following is a summary of our cash flows from operating, investing and financing activities for the year ended April 30, 2020 and 2019.",
+   "prose_after": "We had cash of $79,847 as of April 30, 2020, as compared to $1,994 as of April 30, 2019.\nNet cash used in operating activities was $4,208,274 during the year ended April 30, 2020, compared with $27,788 during the same period in 2019. The increase in cash used in operating activities was primarily due to our net loss for the period of $9,227,744, offset by non-cash expenses of $3,741,746 for stock-based compensation and $1,924,029 for amortization of debt discounts and non-cash interest expense. Our cash used in operating activities in 2019 was due primarily to our net loss of $28,289.\nNet cash provided from investing activities was $73,400 for the year ended April 30, 2020, compared with $0 for the same period in 2019. We had $73,400 in cash we acquired from the contribution of the net assets of Slinger Bag Limited.\nNet cash provided by financing activities was $4,217,761 for the year ended April 30, 2020, compared with $9,000 for the same period in 2019. Cash provided by financing activities in 2020 consisted of proceeds of $2,100,000 from notes payable with a related party, $1,950,000 in proceeds from convertible notes payable, and $500,000 from a note payable, offset by distribution to the majority shareholder for $332,239. Cash provided by financing activities in 2019 consisted of net borrowings from related parties.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 984,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Payments due by period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Less than\n\n\n\n1 year",
+     "",
+     "1-3 years",
+     "",
+     "3-5 years",
+     "",
+     "More than\n\n\n\n5 years",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes Payable - Related Party",
+     "$",
+     "2,100,000",
+     "$",
+     "2,100,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Convertible Notes Payable",
+     "$",
+     "1,825,000",
+     "$",
+     "125,000",
+     "$",
+     "1,700,000",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Note Payable",
+     "$",
+     "500,000",
+     "$",
+     "-",
+     "$",
+     "500,000",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "4,425,000",
+     "$",
+     "2,225,000",
+     "$",
+     "2,200,000",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Payments due by period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1024,
+    "end_line": 1039
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "On February 11, 2020, the Company entered into a convertible note payable agreement for borrowings of $125,000 bearing interest at 12% per annum. All outstanding borrowings and accrued interest are due on February 11, 2021. The outstanding principal and accrued interest are convertible into shares of the Company\u2019s common stock at any time at the option of the debtholder at a conversion price equal to 70% of the lowest closing price of the common stock as defined in the agreement.\nTotal outstanding principal of convertible notes payable at April 30, 2020 and 2019 amounted to $1,825,000 and $0, respectively. The outstanding balances are netted with debt discounts at April 30, 2020 and 2019 of $248,933 and $0, respectively.\nNote Payable\nOn March 16, 2020, the Company entered into a promissory note payable whereby the Company borrowed $500,000 bearing interest at 12% per annum. Interest on the note is payable monthly and outstanding principal on the note is due in full on March 16, 2022.\nFuture amounts due as of April 30, 2020 are summarized as follows.",
+   "prose_after": "We expect that working capital requirements will continue to be funded through a combination of our existing funds, cash flows from operations and further issuances of securities. Our working capital requirements are expected to increase in line with the growth of our business.\nExisting working capital, further advances and debt instruments, and anticipated cash flow are expected to be adequate to fund our operations over the next twelve months. We have no lines of credit or other bank financing arrangements. Generally, we have financed operations to date through the proceeds of the private placement of equity and debt instruments. In connection with our business plan, management anticipates additional increases in operating expenses and capital expenditures relating to (i) acquisition of inventory; (ii) developmental expenses associated with a start-up business; and (iii) marketing expenses. We intend to finance these expenses with further issuances of securities and debt issuances. Thereafter, we expect we will need to raise additional capital and generate revenues to meet long-term operating requirements. Additional issuances of equity or convertible debt securities will result in dilution to our current shareholders. Further, such securities might have rights, preferences or privileges senior to our common stock. Additional financing may not be available upon acceptable terms, or at all. If adequate funds are not available or not available on acceptable terms, we may not be able to take advantage of prospective new business endeavors or opportunities, which could significantly and materially restrict our business operations.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets as of April 30, 2020 and 2019",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the years ended April 30, 2020 and 2019",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the years ended April 30, 2020 and 2019",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended April 30, 2020 and 2019",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Existing working capital, further advances and debt instruments, and anticipated cash flow are expected to be adequate to fund our operations over the next twelve months. We have no lines of credit or other bank financing arrangements. Generally, we have financed operations to date through the proceeds of the private placement of equity and debt instruments. In connection with our business plan, management anticipates additional increases in operating expenses and capital expenditures relating to (i) acquisition of inventory; (ii) developmental expenses associated with a start-up business; and (iii) marketing expenses. We intend to finance these expenses with further issuances of securities and debt issuances. Thereafter, we expect we will need to raise additional capital and generate revenues to meet long-term operating requirements. Additional issuances of equity or convertible debt securities will result in dilution to our current shareholders. Further, such securities might have rights, preferences or privileges senior to our common stock. Additional financing may not be available upon acceptable terms, or at all. If adequate funds are not available or not available on acceptable terms, we may not be able to take advantage of prospective new business endeavors or opportunities, which could significantly and materially restrict our business operations.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nAs a smaller reporting company, we are not required to provide this information.\nITEM 8. FINANCIAL STATEMENTS\nThe financial statements and supplementary financial information required by this Item are set forth immediately below and are incorporated herein by reference.\nApril 30, 2020\nFORM 10-K\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Stockholders and the Board of Directors of Slinger Bag Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Slinger Bag Inc. and its subsidiaries (the Company) as of April 30, 2020 and 2019, the related consolidated statements of operations and comprehensive loss, stockholders' equity (deficit) and cash flows for the year then ended, and the related notes to the consolidated financial statements (collectively, the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of April 30, 2020 and 2019, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations and more losses are anticipated in the development of the business. This raises substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters also are described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "79,847",
+     "",
+     "$",
+     "1,994",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "919,644",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other current assets",
+     "",
+     "381,510",
+     "",
+     "",
+     "645",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "1,381,001",
+     "",
+     "",
+     "2,639",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "-",
+     "",
+     "",
+     "750",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "-",
+     "",
+     "",
+     "1,734",
+     ""
+    ],
+    [
+     "    Total assets",
+     "$",
+     "1,381,001",
+     "",
+     "$",
+     "5,123",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued expenses",
+     "$",
+     "989,112",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Deferred revenue",
+     "",
+     "179,366",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accrued interest - related parties",
+     "",
+     "138,967",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Stock refund payable",
+     "",
+     "-",
+     "",
+     "",
+     "1,200",
+     ""
+    ],
+    [
+     "  Notes payable - related party",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Convertible notes payable, net",
+     "",
+     "82,128",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Derivative liability",
+     "",
+     "620,238",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Due to related parties",
+     "",
+     "377,106",
+     "",
+     "",
+     "10,114",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "4,486,917",
+     "",
+     "",
+     "11,314",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Long-term portion of convertible notes payable, net",
+     "",
+     "1,493,939",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Note payable, net",
+     "",
+     "393,975",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "6,374,831",
+     "",
+     "",
+     "11,314",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value, 300,000,000 shares authorized, 24,749,354 and 24,380,000 shares issued and outstanding as of April 30, 2020 and 2019, respectively; 8,137,859 shares issuable as of April 30, 2020",
+     "",
+     "24,749",
+     "",
+     "",
+     "24,380",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "5,214,970",
+     "",
+     "",
+     "2,520",
+     ""
+    ],
+    [
+     "  Accumulated other comprehensive loss",
+     "",
+     "(5,036)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(10,228,513)",
+     "",
+     "",
+     "(33,091)",
+     ""
+    ],
+    [
+     "    Total stockholders\u2019 deficit",
+     "",
+     "(4,993,830)",
+     "",
+     "",
+     "(6,191)",
+     ""
+    ],
+    [
+     "    Total liabilities and stockholders\u2019 deficit",
+     "$",
+     "1,381,001",
+     "",
+     "$",
+     "5,123",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1161
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Mac Accounting Group, LLP\nWe have served as the Company's auditor since 2019.\nMidvale, Utah\nAugust 24, 2020\nConsolidated Balance Sheets",
+   "prose_after": "Consolidated Statements of Operations and Comprehensive Loss",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1162,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "686,179",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "1,370,897",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross loss",
+     "",
+     "(684,718)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing expenses",
+     "",
+     "563,003",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,549,329",
+     "",
+     "",
+     "28,289",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "3,741,746",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "",
+     "179,982",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Transaction costs",
+     "",
+     "198,443",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Total operating expenses",
+     "",
+     "6,232,503",
+     "",
+     "",
+     "28,289",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(6,917,221)",
+     "",
+     "",
+     "(28,289)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "1,565,174",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense - related party",
+     "",
+     "171,918",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "573,431",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Total other expense",
+     "",
+     "2,310,523",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(9,227,744)",
+     "",
+     "",
+     "(28,289)",
+     ""
+    ],
+    [
+     "Provision for (benefit from) income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,227,744)",
+     "",
+     "$",
+     "(28,289)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of tax",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Foreign currency translation adjustments",
+     "",
+     "(5,034)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other comprehensive loss, net of tax",
+     "",
+     "(5,034)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(9,232,778)",
+     "",
+     "$",
+     "(28,289)",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.37)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding, basic and diluted",
+     "",
+     "24,689,813",
+     "",
+     "",
+     "24,393,808",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1166,
+    "end_line": 1217
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations and Comprehensive Loss",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1162,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Income",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2018",
+     "",
+     "24,620,000",
+     "",
+     "$",
+     "24,620",
+     "",
+     "$",
+     "3,480",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(4,802)",
+     "",
+     "$",
+     "23,298",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common shares cancelled",
+     "",
+     "(240,000)",
+     "",
+     "",
+     "(240)",
+     "",
+     "",
+     "(960)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,200)",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(28,289)",
+     "",
+     "",
+     "(28,289)",
+     ""
+    ],
+    [
+     "Balance, April 30, 2019",
+     "",
+     "24,380,000",
+     "",
+     "$",
+     "24,380",
+     "",
+     "$",
+     "2,520",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(33,091)",
+     "",
+     "$",
+     "(6,191)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Contribution of Slinger Bag Limited",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2)",
+     "",
+     "",
+     "(967,678)",
+     "",
+     "",
+     "(967,680)",
+     ""
+    ],
+    [
+     "  Shares issuable related to note payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,492,188",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,492,188",
+     ""
+    ],
+    [
+     "  Distribution to shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(332,239)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(332,239)",
+     ""
+    ],
+    [
+     "  Forgiveness of net liabilities owed to former majority shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "15,289",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "15,289",
+     ""
+    ],
+    [
+     "  Shares issued for conversion of convertible debt",
+     "",
+     "369,354",
+     "",
+     "",
+     "369",
+     "",
+     "",
+     "182,476",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "182,845",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,741,746",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,741,746",
+     ""
+    ],
+    [
+     "  Warrants issued with note payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "112,990",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "112,990",
+     ""
+    ],
+    [
+     "  Foreign currency translation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,034)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,034)",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(9,227,744)",
+     "",
+     "",
+     "(9,227,744)",
+     ""
+    ],
+    [
+     "Balance, April 30, 2020",
+     "",
+     "24,749,354",
+     "",
+     "$",
+     "24,749",
+     "",
+     "$",
+     "5,214,970",
+     "",
+     "$",
+     "(5,036)",
+     "",
+     "$",
+     "(10,228,513)",
+     "",
+     "$",
+     "(4,993,830)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1222,
+    "end_line": 1249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity (Deficit)",
+   "prose_after": "Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(9,227,744)",
+     "",
+     "$",
+     "(28,289)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "650",
+     "",
+     "",
+     "2,600",
+     ""
+    ],
+    [
+     "    Stock-based compensation",
+     "",
+     "3,741,746",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Non-cash interest expense",
+     "",
+     "358,855",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Amortization of debt discount",
+     "",
+     "1,565,174",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Inventory",
+     "",
+     "(919,644)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Prepaid expenses and other current assets",
+     "",
+     "(381,510)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "855,853",
+     "",
+     "",
+     "(2,099)",
+     ""
+    ],
+    [
+     "      Deferred revenue",
+     "",
+     "(706,408)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued interest - related parties",
+     "",
+     "138,967",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Due to related parties",
+     "",
+     "365,787",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,208,274)",
+     "",
+     "",
+     "(27,788)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from contribution of net assets of Slinger Bag Limited",
+     "",
+     "73,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "73,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Distribution to shareholder",
+     "",
+     "(332,239)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from notes payable - related party",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "  Proceeds from note payable",
+     "",
+     "500,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from convertible note payable",
+     "",
+     "1,950,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "4,217,761",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate fluctuations on cash",
+     "",
+     "(5,034)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "77,853",
+     "",
+     "",
+     "(18,788)",
+     ""
+    ],
+    [
+     "Cash, beginning of the period",
+     "",
+     "1,994",
+     "",
+     "",
+     "20,782",
+     ""
+    ],
+    [
+     "Cash, end of the period",
+     "$",
+     "79,847",
+     "",
+     "$",
+     "1,994",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "224,726",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Forgiveness of net liabilities owed to former majority shareholder",
+     "$",
+     "15,289",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Shares issuable related to convertible note payable agreement",
+     "$",
+     "1,492,188",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Debt discount due to derivative liability",
+     "$",
+     "673,809",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Conversion of note payable and accrued interest into common stock",
+     "$",
+     "182,845",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Warrants issued with note payable",
+     "$",
+     "112,990",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Net assets contributed from Slinger Bag Limited",
+     "$",
+     "(967,680)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Cancellation of common stock for refund payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,200",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1254,
+    "end_line": 1319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1: ORGANIZATION AND BASIS OF PRESENTATION\nOrganization\nLazex Inc. (\u201cLazex\u201d) was incorporated under the laws of the State of Nevada on July 12, 2015. On August 23, 2019, the majority owner of Lazex entered into a Stock Purchase Agreement with Slinger Bag Americas Inc., a Delaware corporation (\u201cSlinger Bag Americas\u201d) which was 100% owned by Slinger Bag Ltd. (\u201cSBL\u201d), an Israeli company. In connection with the Stock Purchase Agreement, Slinger Bag Americas acquired 20,000,000 shares of common stock of Lazex for $332,239. On September 16, 2019, SBL transferred its ownership of Slinger Bag Americas to Lazex in exchange for the 20,000,000 shares of Lazex acquired on August 23, 2019. As a result of these transactions, Lazex owned 100% of Slinger Bag Americas and the sole shareholder of SBL now owned 20,000,000 shares of common stock (approximately 82%) of Lazex. Effective September 13, 2019, Lazex changed its name to Slinger Bag Inc.\nOn October 31, 2019, Slinger Bag Americas acquired control of Slinger Bag Canada, Inc., (\u201cSlinger Bag Canada\u201d) a Canadian company incorporated on November 3, 2017. There are no assets or liabilities or historical operational activity of Slinger Bag Canada.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Expected life in years",
+     "2 - 5 years",
+     "NA"
+    ],
+    [
+     "Stock price volatility",
+     "121.4% - 144.2%",
+     "NA"
+    ],
+    [
+     "Risk free interest rate",
+     "0.36% - 2.43%",
+     "NA"
+    ],
+    [
+     "Expected dividends",
+     "0%",
+     "NA"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1420,
+    "end_line": 1428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "In accordance with ASC 360-10, the Company evaluates long-lived assets for impairment whenever events or changes in circumstances indicate that their net book value may not be recoverable. When such factors and circumstances exist, the Company compares the projected undiscounted future cash flows associated with the related asset or group of assets over their estimated useful lives against their respective carrying amount. Impairment, if any, is based on the excess of the carrying amount over the fair value, based on market value when available, or discounted expected cash flows, of those assets and is recorded in the period in which the determination is made. There was no impairment of long-lived assets identified during the year ended April 30, 2020 or 2019.\nWarrants\nThe Company grants warrants to key employees and executives as compensation on a discretionary basis. The Company also grants warrants in connection with certain note payable agreements. The Company measures the fair value of the awards using the Black-Scholes option pricing model as of the measurement date. Warrants granted in connection with ongoing arrangements are more fully described in Note 6: Note Payable and Note 8: Stockholders\u2019 Deficit.\nThe warrants granted during the year ended April 30, 2020 and 2019 were valued using the Black-Scholes pricing method on the date of grant using the following assumptions below.",
+   "prose_after": "Basic and Diluted Earnings Per Share\nBasic earnings per share are calculated by dividing income available to stockholders by the weighted-average number of common shares outstanding during each period. Diluted earnings per share are computed using the weighted average number of common and dilutive common share equivalents outstanding during the period. The Company had 8,137,859 common shares issuable as of April 30, 2020 (see Note 5) which were not included in the calculation of diluted earnings per share as the effect is antidilutive. The Company also had outstanding notes payable convertible into 7,465,811 shares of common stock as of April 30, 2020 (see Note 5), as well as outstanding warrants exercisable into 13,000,000 shares of common stock which were excluded from calculation of diluted earnings per share as the effect is antidilutive. There were no common share equivalents outstanding during the year ended April 30, 2019. As a result, the basic and diluted earnings per share are the same for each of the periods presented.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1413,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "125,000"
+    ],
+    [
+     "2022",
+     "",
+     "1,700,000"
+    ],
+    [
+     "Total",
+     "$",
+     "1,825,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1477,
+    "end_line": 1488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "The Company evaluated the conversion option under the guidance in ASC 815-10, Derivatives and Hedging, and determined it to have characteristics of a derivative liability. Under this guidance, this derivative liability is marked-to-market at each reporting period with the non-cash gain or loss recorded in the period as a gain or loss on derivatives. The value of the conversion option amounted to $53,571 as of the issuance date on February 11, 2020, which was initially recorded as a discount to the outstanding note balance and a derivative liability. There was no change in the fair value of the derivative liability as of April 30, 2020. The discount is being amortized over the term of the agreement. Amortization of debt discounts during the year ended April 30, 2020 amounted to $10,699 and is recorded as amortization of debt discount in the accompanying consolidated statements of operations. The unamortized discount balance amounted to $42,872 as of April 30, 2020.\nTotal outstanding principal of convertible notes payable at April 30, 2020 and 2019 amounted to $1,825,000 and $0, respectively. The outstanding balances are netted with debt discounts at April 30, 2020 and 2019 of $248,933 and $0, respectively.\nFuture scheduled maturities of long-term convertible debt are as follows.",
+   "prose_after": "NOTE 6: NOTE PAYABLE\nOn March 16, 2020, the Company entered into a promissory note payable whereby the Company borrowed $500,000 bearing interest at 12% per annum. Interest on the note is payable monthly and outstanding principal on the note is due in full on March 16, 2022.\nFuture scheduled maturities of long-term debt are as follows.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1488,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "-"
+    ],
+    [
+     "2022",
+     "",
+     "500,000"
+    ],
+    [
+     "Total",
+     "$",
+     "500,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "NOTE PAYABLE"
+    }
+   },
+   "prose_before": "NOTE 6: NOTE PAYABLE\nOn March 16, 2020, the Company entered into a promissory note payable whereby the Company borrowed $500,000 bearing interest at 12% per annum. Interest on the note is payable monthly and outstanding principal on the note is due in full on March 16, 2022.\nFuture scheduled maturities of long-term debt are as follows.",
+   "prose_after": "In connection with the promissory note payable on March 16, 2020, the Company issued warrants to purchase 500,000 shares of the Company\u2019s common stock at an exercise price equal to a 40% discount of the market price of the Company\u2019s stock, as defined in the agreement. The warrants expire on March 16, 2022 and are fully vested upon issuance. The note was discounted by $112,990 allocated from the valuation of the warrants issued. The discount recorded on the note is being amortized as interest expense through the maturity date, which amounted to $6,965 for year ended April 30, 2020. As of April 30, 2020, the net book value of the promissory note amounted to $393,975 including the principal amount outstanding of $500,000 net of the remaining discount of $106,025.\nNOTE 7: RELATED PARTY TRANSACTIONS\nIn support of the Company\u2019s efforts and cash requirements, it may rely on advances from related parties until such time that the Company can support its operations or attain adequate financing through sales of its equity or traditional debt financing. There is no formal written commitment for continued support by officers, directors, or shareholders. Amounts represent advances or amounts paid in satisfaction of liabilities. The advances are considered temporary in nature and have not been formalized by a promissory note.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1488,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1526,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets (liabilities):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss carryforwards",
+     "$",
+     "301,000",
+     "",
+     "$",
+     "9,500",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "(400)",
+     ""
+    ],
+    [
+     "Related party accruals",
+     "",
+     "79,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Start-up costs",
+     "",
+     "61,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(441,000)",
+     "",
+     "",
+     "(9,100)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1563,
+    "end_line": 1578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Leases\nThe Company leases its office space under short-term leases with terms under a year. Total rent expense for the year ended April 30, 2020 and 2019 amounted to $2,800 and $0, respectively.\nContingencies\nFrom time to time, the Company may become involved in legal proceedings arising in the ordinary course of business. The Company is not presently a party to any legal proceedings that it currently believes would individually or taken together have a material adverse effect on the Company\u2019s business or financial statements.\nNOTE 10: INCOME TAXES\nThe Company does business in the US through its subsidiaries Slinger Bag Inc. and Slinger Bag Americas. It also does business in Israel through SBL, whose operations are reflected in the Company\u2019s consolidated financial statements from May 1, 2019 on, the beginning of the earliest period in which the entities were under common control.\nNet deferred tax assets from operations in the US, using an effective tax rate of 21%, consisted of the following.",
+   "prose_after": "The income tax provision differs from the amount of income tax determined by applying the applicable US statutory income tax rate of 21% to pretax loss due to the following for the year ended April 30, 2020 and 2019.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit based on book loss at US statutory rate",
+     "$",
+     "(1,273,000)",
+     "",
+     "$",
+     "(5,900)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "786,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Debt discount amortization",
+     "",
+     "15,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Related party accruals",
+     "",
+     "79,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Start up costs",
+     "",
+     "61,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "41,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Meals and entertainment",
+     "",
+     "1,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "400",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "290,000",
+     "",
+     "",
+     "5,500",
+     ""
+    ],
+    [
+     "Total income tax provision",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1581,
+    "end_line": 1599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The income tax provision differs from the amount of income tax determined by applying the applicable US statutory income tax rate of 21% to pretax loss due to the following for the year ended April 30, 2020 and 2019.",
+   "prose_after": "The Company had net operating loss carryforwards of approximately $1,424,000 as of April 30, 2020 which can be used to offset future taxable income in the US from the year 2021 through 2040. Tax years that remain subject to examination are 2017 and forward.\nNet deferred tax assets from operations in Israel , using an effective tax rate of 23%, consisted of the following. The net deferred tax assets as of April 30, 2019 represent the amounts from SBL contributed to the Company on May 1, 2019.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets (liabilities):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss carryforwards",
+     "$",
+     "384,000",
+     "",
+     "$",
+     "201,000",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "63,000",
+     "",
+     "",
+     "16,000",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "",
+     "23,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(470,000)",
+     "",
+     "",
+     "(216,000)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1604,
+    "end_line": 1618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company had net operating loss carryforwards of approximately $1,424,000 as of April 30, 2020 which can be used to offset future taxable income in the US from the year 2021 through 2040. Tax years that remain subject to examination are 2017 and forward.\nNet deferred tax assets from operations in Israel , using an effective tax rate of 23%, consisted of the following. The net deferred tax assets as of April 30, 2019 represent the amounts from SBL contributed to the Company on May 1, 2019.",
+   "prose_after": "The income tax provision differs from the amount of income tax determined by applying the applicable Israeli statutory income tax rate of 23% to pretax loss due to the following for the year ended April 30, 2020. As the net assets of SBL were contributed on May 1, 2019, there is no income tax provision related to the year ended April 30, 2019.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit based on book loss at Israeli statutory rate",
+     "$",
+     "(728,000)",
+     ""
+    ],
+    [
+     "Debt discount amortization",
+     "",
+     "430,000",
+     ""
+    ],
+    [
+     "Related party accruals",
+     "",
+     "44,000",
+     ""
+    ],
+    [
+     "Travel",
+     "",
+     "38,000",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "23,000",
+     ""
+    ],
+    [
+     "Other non-deductible items",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "184,000",
+     ""
+    ],
+    [
+     "Total income tax provision",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "April 30,",
+    "2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1621,
+    "end_line": 1637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The income tax provision differs from the amount of income tax determined by applying the applicable Israeli statutory income tax rate of 23% to pretax loss due to the following for the year ended April 30, 2020. As the net assets of SBL were contributed on May 1, 2019, there is no income tax provision related to the year ended April 30, 2019.",
+   "prose_after": "The Company had net operating loss carryforwards of approximately $1,671,000 as of April 30, 2020 which can be used to offset future taxable income in Israel. All of the Company\u2019s tax years since inception are open for examination.\nThe Company\u2019s policy is to record interest and penalties on uncertain tax positions as income tax expense. There were no interest or penalties recognized in the accompanying consolidated statements of operations for the year ended April 30, 2020 or 2019.\nNOTE 11: SUBSEQUENT EVENTS\nOn May 12, 2020, the Company borrowed an additional $1,000,000 from its existing related party lender (see Note 4). On July 3, 2020, the Company borrowed an additional $500,000 from this same related party. The borrowings bear interest at a rate of 24% per annum and are due on February 8, 2021. On July 8, 2020, the Company entered into a Purchase Order Financing Agreement (\u201cPO Financing Agreement\u201d) whereby $1,900,000 of the total $3,600,000 in outstanding debt due to the related party as of the date of the agreement has been labeled as inventory financing (\u201cPO Financing Amount\u201d). The PO Financing Amount, along with any accrued interest, is due in full no later than six months from the effective date of the PO Financing Agreement, or January 8, 2021. The outstanding balance of the PO Financing Amount bears interest at a rate of 2% per month. The Company has agreed to repay the PO Financing Amount together with any accrued, but unpaid, interest thereon out proceeds from the sale of its products, licensing activities, revenue to be generated from operations and/or amounts received by the Company from investors, lenders, financiers, financing sources or other persons before making payments of any other nature (including dividends and distributions) except for payments required to finance the Company\u2019s operations. On August 10, 2020, the Company borrowed an additional $250,000 subject to the PO Financing Agreement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions and Offices"
+    ],
+    [
+     "Mike Ballardie",
+     "59",
+     "President, Chief Executive Officer, Treasurer and Director"
+    ],
+    [
+     "Tom Dye\n\n\n\nPaul McKeown\n\n\n\nJuda Honickman",
+     "67\n\n\n\n65\n\n\n\n34",
+     "Chief Operating Officer\n\n\n\nChief Financial Officer\n\n\n\nChief Marketing Officer"
+    ],
+    [
+     "Mark Radom",
+     "51",
+     "General Counsel"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1704,
+    "end_line": 1715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This Annual Report does not include an attestation report of our independent registered public accounting firm regarding internal control over financial reporting. Our management\u2019s report was not subject to attestation by our independent registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this Annual Report.\nITEM 9B. OTHER INFORMATION\nManagement Changes\nNone.\nAcquisitions\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDIRECTORS AND EXECUTIVE OFFICERS\nOur executive officers and directors and their respective ages as at the date hereof are as follows:",
+   "prose_after": "The director named above will serve until the next annual meeting of the stockholders or until his resignation or removal from office. Thereafter, directors are anticipated to be elected for one-year terms at the annual stockholders\u2019 meeting. Officers will hold their positions pursuant to their respective service agreements.\nSet forth below is a brief description of the background and business experience of our executive officers and directors for the past five years.\nProfessional History of Mike Ballardie\nMike is an experienced and widely recognized tennis industry leader with 35 years of experience in Tennis as a player, a coach and business leader. Mike started his tennis business career at Wilson in the late 1980s where he spent 11 years growing and ultimately leading Wilson\u2019s EMEA Racquetsports division.\nIn 2002, Mike joined Prince Sports Europe as vice-president and managing director and stayed in this role through 2012. In 2003 Mike was part of the management buyout team that acquired the Prince brand from Benetton Sports in partnership with a private equity group. In 2007, after a highly successful business turnaround the business was sold with the management team in pace to another US based private equity group.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1674,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1720,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year ended April 30",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "All other compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Iuliia Gittleman (1)(2)",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Mike Ballardie (3)",
+     "2020",
+     "",
+     "226,750",
+     "",
+     "112,500",
+     "",
+     "1,496,698",
+     "",
+     "-",
+     "",
+     "82,212",
+     "",
+     "1,918,160"
+    ],
+    [
+     "Judah Honickman (4)",
+     "2020",
+     "",
+     "107,915",
+     "",
+     "51,000",
+     "",
+     "748,349",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "907,264"
+    ],
+    [
+     "Paul McKeown (5)",
+     "2020",
+     "",
+     "101,525",
+     "",
+     "-",
+     "",
+     "374,174",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "475,699"
+    ],
+    [
+     "Tom Dye (6)",
+     "2020",
+     "",
+     "90,292",
+     "",
+     "-",
+     "",
+     "374,174",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "464,466"
+    ],
+    [
+     "Mark Radom (7)",
+     "2020",
+     "",
+     "34,000",
+     "",
+     "-",
+     "",
+     "374,174",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "408,174"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Section 16(a) of the Securities Exchange Act of 1934 requires our executive officers and directors, and persons who own more than ten percent of a registered class of our equity securities, file reports of ownership and changes in ownership with the SEC. Executive officers, directors and greater-than-ten percent stockholders are required by SEC regulations to furnish us with all Section 16(a) forms they file. Based on our review of filings made on the SEC website, and the fact of us not receiving certain forms or written representations from certain reporting persons that they have complied with the relevant filing requirements, we believe that, during the year ended April 30, 2019, our executive officers, directors and greater-than-ten percent stockholders have not complied with all Section 16(a) filing requirements.\nCODE OF ETHICS\nThe Company has not adopted a code of ethics that applies to its principal executive officers, principal financial officer, principal accounting officer or controller, or persons performing similar functions. The Company has not adopted a code of ethics because it has only commenced operations.\nITEM 11. EXECUTIVE COMPENSATION\nSummary Compensation Table\nThe table below summarizes all compensation awarded to, earned by, or paid to our then Officers for all services rendered in all capacities to us for the fiscal years ended as indicated.",
+   "prose_after": "(1) Ms. Gittleman served as the Company\u2019s Principal Executive officer, Principal Financial officer, Secretary and as Chairman of the Board of Directors until September 16, 2019 and was the sole person who had any role in determining executive compensation for the fiscal year ended April 30, 2019.\n(2) Ms. Gittleman\u2019s principal address is 68/29 Husitska Street, Zizkov, Prague, Czech Republic 13,000.\n(3) Mr. Ballardie has served as the Company\u2019s Principal Executive Officer and as Chairman of the Board of Directors since September 16, 2019 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(4) Mr. Honickman has served as the Company\u2019s Chief Marketing Officer since September 16, 2019 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(5) Paul McKeown has served as the Company\u2019s Chief Financial Officer since April 30, 2020 has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(6) Tom Dye has served as the Company\u2019s Chief Operating Officer since April 30, 2020 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1793,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1846,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees earned or paid in cash ($)",
+     "Stock Awards ($)",
+     "Total ($)"
+    ],
+    [
+     "Mike Ballardie",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1832,
+    "end_line": 1837
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(4) Mr. Honickman has served as the Company\u2019s Chief Marketing Officer since September 16, 2019 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(5) Paul McKeown has served as the Company\u2019s Chief Financial Officer since April 30, 2020 has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(6) Tom Dye has served as the Company\u2019s Chief Operating Officer since April 30, 2020 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\n(7) Mark Radom has served as the Company\u2019s General Counsel since September 16, 2019 and has an address at 2709 N. Rolling Road, Suite 138, Windsor Mill, MD 21244.\nSTOCK-BASED COMPENSATION GRANTS\nThe stock-based awards in the above compensation table represent the grant date fair value of warrant awards issued to officers and executives and was determined in accordance with ASC Topic 718\nSERVICE AGREEMENTS\nThe Company is a party to service agreements each of its executive officers.\nDIRECTOR COMPENSATION\nThe following table sets forth director compensation for the year ended April 30, 2020:",
+   "prose_after": "Stock Options/SAR Grants. None.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nCERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nWe have not entered into any transactions in which any of our directors, executive officers, or affiliates, including any member of an immediate family, had or are to have a direct or indirect material interest.\nSECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information, as of August 24, 2020, with respect to any person (including any \u201cgroup\u201d, as that term is used in Section 13(d)(3) of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d)) who is known to us to be the beneficial owner of more than five percent (5%) of any class of our voting securities, and as to those shares of our equity securities beneficially owned by each of our directors and executive officers and all of our directors and executive officers as a group. Unless otherwise specified in the table below, such information, other than information with respect to our directors and executive officers, is based on a review of statements filed with the Securities and Exchange commission (the \u201cCommission\u201d) pursuant to Sections 13 (d), 13 (f), and 13 (g) of the Exchange Act with respect to our common stock.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1793,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1846,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "# of Shares (1)",
+     "",
+     "% of Class (1)",
+     "",
+     ""
+    ],
+    [
+     "Yonah Kalfa",
+     "",
+     "20,000,000",
+     "",
+     "42.8",
+     "%"
+    ],
+    [
+     "Montsaic Investments (2)",
+     "",
+     "8,137,859",
+     "",
+     "17.4",
+     "%"
+    ],
+    [
+     "Mike Ballardie (3)",
+     "",
+     "5,000,000",
+     "",
+     "10.7",
+     "%"
+    ],
+    [
+     "Judah Honickman (3)",
+     "",
+     "2,500,000",
+     "",
+     "5.4",
+     "%"
+    ],
+    [
+     "Paul McKeown (3)",
+     "",
+     "1,250,000",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "Tom Dye (3)",
+     "",
+     "1,250,000",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "Mark Radom (3)",
+     "",
+     "1,250,000",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "All current officers and directors as a group (5 persons) (3)",
+     "",
+     "11,250,000",
+     "",
+     "24.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1856,
+    "end_line": 1870
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(ii) each officer and director of our Company; and (iii) all officers and directors as a group. Information relating to beneficial ownership of common stock by our principal shareholders and management is based upon information furnished by each person using \u201cbeneficial ownership\u201d concepts under the rules of the Securities and Exchange Commission. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the Securities and Exchange Commission rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power.",
+   "prose_after": "(1) Beneficial Ownership is determined in accordance with the rules of the Securities and Exchange Commission and generally includes voting or investment power with respect to securities. Shares of common stock subject to options, warrants, convertible debt or convertible preferred shares currently exercisable or convertible, or exercisable or convertible within 60 days are deemed outstanding for computing percentage of the person holding such option or warrant but are not deemed outstanding for computing the percentage of any other person. Percentages are based on a total of shares of common stock outstanding on August 24, 2020, which was 26,209,714, and the shares issuable upon exercise of warrants and convertible debt. The number of common shares used in computing this percentage is 46,726,521.\n(2) In connection with a note payable issued on June 1, 2019, Montsaic Investments received a warrant giving them the right to acquire 33% of the outstanding shares of the Company for no charge, which amounted to a total of 8,137,859 shares issuable to Montsaic by the Company. Currently, the Company has issued 1,216,560 shares to Montsaic in satisfaction of the warrant with 6,921,299 shares remaining issuable as of the date of this report.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1846,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Equity Compensation Plan Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Plan Category",
+     "Number of\n\n\n\nsecurities to be\n\n\n\nissued upon\n\n\n\nexercise of\n\n\n\noutstanding options,\n\n\n\nwarrants and rights\n\n\n\n(a)",
+     "",
+     "Weighted-\n\n\n\naverage\n\n\n\nprice of\n\n\n\noutstanding\n\n\n\noptions,\n\n\n\nwarrants\n\n\n\nand rights\n\n\n\n(b)",
+     "",
+     "Number of securities\n\n\n\nremaining available\n\n\n\nfor future issuance\n\n\n\nunder equity\n\n\n\ncompensation plans\n\n\n\n(excluding securities\n\n\n\nreflected in column\n\n\n\n(a)) (c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "n/a",
+     "",
+     "n/a",
+     "",
+     "n/a"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "13,000,000",
+     "$",
+     "0.01",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "",
+     "13,000,000",
+     "$",
+     "0.01",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Equity Compensation Plan Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1880,
+    "end_line": 1903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) The above officers and directors were granted an aggregate total of 11,250,000 warrants on April 30, 2020 as compensation. The warrants have an exercise price of $0.001 per share, a contractual life of 10 years from the date of issuance and are vested immediately upon grant.\nSecurities authorized for issuance under equity compensation plans.\nThe table below provides information regarding all compensation plans as of the end of the most recently completed fiscal year (including individual compensation arrangements) under which equity securities of the registrant are authorized for issuance. The Company is planning to formally adopt an equity compensation plan for its officers and directors during the fiscal year ended April 30, 2021. As of April 30, 2020, we have issued 500,000 warrants to a debtholder in connection with a note payable agreement. In addition, in April 2020, we also issued warrants to purchase up to an aggregate of 12,500,000 shares of our Common Stock to certain of our key employees as part of their individual compensation arrangements.",
+   "prose_after": "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nNone\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following is a summary of fees incurred to our principal independent accountants for professional services rendered in connection with the audit of our financial statements and for the quarterly reviews of our financial statements.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal 2020",
+     "",
+     "Fiscal 2019",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "87,000",
+     "$",
+     "11,200"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "Nil",
+     "",
+     "Nil"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "Nil",
+     "",
+     "Nil"
+    ],
+    [
+     "Total",
+     "$",
+     "87,000",
+     "$",
+     "11,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1912,
+    "end_line": 1921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nNone\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following is a summary of fees incurred to our principal independent accountants for professional services rendered in connection with the audit of our financial statements and for the quarterly reviews of our financial statements.",
+   "prose_after": "PART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) Financial Statements\nOur financial statements as set forth in the Index to Consolidated Financial Statements under Part II, Item 8 of this Annual Report on Form 10-K are hereby incorporated by reference.\n(b) Exhibits\nThe following exhibits, which are numbered in accordance with Item 601 of Regulation S-K, are filed as part of this Annual Report on Form 10-K or, as noted, incorporated by reference herein:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "Exhibit Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Bylaws*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "Form of Convertible Redeemable Note issued on November 20, 2019 **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Form of Convertible Redeemable Note issued on February 11, 2020 **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "",
+     "Amended and Restated Loan Agreement Dated December 13, 2019 with 2490585 Ontario Inc. **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "",
+     "Amended and Restated Loan Agreement Dated December 13, 2019 with 2490585 Ontario Inc. **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "",
+     "Loan Agreement dated December 11, 2019 with 2490585 Ontario Inc. **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "",
+     "Loan Agreement dated January 6, 2020 with 2490585 Ontario Inc. **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "",
+     "Loan Agreement dated March 1, 2020 with 2490585 Ontario Inc. **"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "",
+     "Midcity 12% Promissory Note dated March 16, 2020 ***"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "",
+     "Midcity 12% Securities Purchase Agreement dated March 16, 2020 ***"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "",
+     "Midcity 12% Warrant Agreement dated March 16, 2020 ***"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "",
+     "Distribution Agreement with Globeride Inc. dated March 26, 2020 ***"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "",
+     "Loan Agreement dated May 12, 2020 with 2490585 Ontario Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "",
+     "Loan Agreement dated July 3, 2020 with 2490585 Ontario Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "",
+     "First Amendment to Promissory Note and Loan Agreements dated June 1, 2020 with Montsaic Investments, LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "",
+     "Loan Agreement dated June 30, 2020 with Montsaic Investments, LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "",
+     "Loan Agreement dated August 10, 2020 with 2490585 Ontario Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to Rule 13a-14(a) and15d-14(a)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer Pursuant to Rule 13a-14(a) and15d-14(a)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer and Pursuant to 18 U.S.C. 1350."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. 1350."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Definition"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1935,
+    "end_line": 1997
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "PART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) Financial Statements\nOur financial statements as set forth in the Index to Consolidated Financial Statements under Part II, Item 8 of this Annual Report on Form 10-K are hereby incorporated by reference.\n(b) Exhibits\nThe following exhibits, which are numbered in accordance with Item 601 of Regulation S-K, are filed as part of this Annual Report on Form 10-K or, as noted, incorporated by reference herein:",
+   "prose_after": "* Incorporated by reference to the Registrant\u2019s Form S-1 (File No. 333-214463), filed with the Commission on November 7, 2016.\n** Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q filed on March 12, 2020 *** Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed on April 1, 2020\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SLINGER BAG INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: August 24, 2020",
+     "By:",
+     "/s/ Mike Ballardie"
+    ],
+    [
+     "",
+     "",
+     "Mike Ballardie"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "SLINGER BAG INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2006,
+    "end_line": 2014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Incorporated by reference to the Registrant\u2019s Form S-1 (File No. 333-214463), filed with the Commission on November 7, 2016.\n** Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q filed on March 12, 2020 *** Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed on April 1, 2020\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2022,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: August 24, 2020",
+     "By:",
+     "/s/ Paul McKeown"
+    ],
+    [
+     "",
+     "",
+     "Paul McKeown"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2015,
+    "end_line": 2021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2022,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

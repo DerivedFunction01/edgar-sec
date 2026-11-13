@@ -1,0 +1,5930 @@
+{
+ "accession": "0000854775-13-000010",
+ "cik": "0000854775",
+ "form": "10-Q/A",
+ "filing_date": "2013-06-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "dgii-2013331x10qa.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "41-1532464"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q/A\n(Amendment No. 1)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: March 31, 2013\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to .\nCommission file number: 1-34033\nDIGI INTERNATIONAL INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "11001 Bren Road East",
+     ""
+    ],
+    [
+     "Minnetonka, Minnesota",
+     "55343"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "11001 Bren Road East"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(952) 912-3444\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files.) Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. Condensed Consolidated Financial Statements (unaudited):",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the three months and six months ended March 31, 2013 and 2012",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Comprehensive (Loss) Income for the three months and six months ended March 31, 2013 and 2012",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets as of March 31, 2013 and September 30, 2012",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the six months ended March 31, 2013 and 2012",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Forward-looking Statements",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. Controls and Procedures",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. Legal Proceedings",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A. Risk Factors",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. Defaults Upon Senior Securities",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. Mine Safety Disclosures",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 5. Other Information",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 6. Exhibits",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "EX-10.A.i",
+     ""
+    ],
+    [
+     "EX-10.A.ii",
+     ""
+    ],
+    [
+     "EX-31.A",
+     ""
+    ],
+    [
+     "EX-31.B",
+     ""
+    ],
+    [
+     "EX-32",
+     ""
+    ],
+    [
+     "EX-101 INSTANCE DOCUMENT",
+     ""
+    ],
+    [
+     "EX-101 SCHEMA DOCUMENT",
+     ""
+    ],
+    [
+     "EX-101 CALCULATION LINKBASE DOCUMENT",
+     ""
+    ],
+    [
+     "EX-101 DEFINITION LINKBASE DOCUMENT",
+     ""
+    ],
+    [
+     "EX-101 LABELS LINKBASE DOCUMENT",
+     ""
+    ],
+    [
+     "EX-101 PRESENTATION LINKBASE DOCUMENT",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 116
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "We filed our Quarterly Report on Form 10-Q for the quarter ended March 31, 2013 with the Securities and Exchange Commission (\u201cSEC\u201d) on May 3, 2013 (the \u201cOriginal Filing\u201d). We are filing this Amendment No. 1 on Form 10-Q/A (this \u201cAmendment\u201d) for the sole purpose of including corrected Exhibit 31(a), Exhibit 31(b) and Exhibit 32 certifications that were filed with the Original Filing in order to correctly identify the filing as a quarterly report on Form 10-Q. The certifications in the Original Filing incorrectly identified the filing as an annual report on Form 10\u2011K.\nPursuant to Rule 12b-15 under the Securities Exchange Act of 1934, as amended, and guidance provided by the staff of the SEC, this amendment contains the complete text of the Original Filing. Except with respect to appropriate revisions to Part II, Item 6 to reflect this Amendment as described above, we have not modified or updated other disclosures presented in the Original Filing. This Amendment does not amend, update or change the financial statements or any other disclosures in the Original Filing and does not reflect events occurring after the filing of the Original Filing. This Amendment should be read in conjunction with our other filings with the SEC subsequent to the filing of the Original Filing.\nINDEX",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except per common share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "48,197",
+     "",
+     "$",
+     "49,016",
+     "",
+     "$",
+     "95,188",
+     "",
+     "$",
+     "95,678",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "23,236",
+     "",
+     "",
+     "23,233",
+     "",
+     "",
+     "45,748",
+     "",
+     "",
+     "45,465",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "24,961",
+     "",
+     "",
+     "25,783",
+     "",
+     "",
+     "49,440",
+     "",
+     "",
+     "50,213",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "10,414",
+     "",
+     "",
+     "10,340",
+     "",
+     "",
+     "20,688",
+     "",
+     "",
+     "20,439",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "7,775",
+     "",
+     "",
+     "7,753",
+     "",
+     "",
+     "15,192",
+     "",
+     "",
+     "15,985",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "6,390",
+     "",
+     "",
+     "4,201",
+     "",
+     "",
+     "11,506",
+     "",
+     "",
+     "9,248",
+     "",
+     ""
+    ],
+    [
+     "Restructuring",
+     "(37)",
+     "",
+     "",
+     "60",
+     "",
+     "",
+     "(37)",
+     "",
+     "",
+     "296",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "24,542",
+     "",
+     "",
+     "22,354",
+     "",
+     "",
+     "47,349",
+     "",
+     "",
+     "45,968",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "419",
+     "",
+     "",
+     "3,429",
+     "",
+     "",
+     "2,091",
+     "",
+     "",
+     "4,245",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "50",
+     "",
+     "",
+     "74",
+     "",
+     "",
+     "102",
+     "",
+     "",
+     "146",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(37)",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "(37)",
+     "",
+     "",
+     "(15)",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "438",
+     "",
+     "",
+     "8",
+     "",
+     "",
+     "562",
+     "",
+     "",
+     "155",
+     "",
+     ""
+    ],
+    [
+     "Total other income, net",
+     "451",
+     "",
+     "",
+     "67",
+     "",
+     "",
+     "627",
+     "",
+     "",
+     "286",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "870",
+     "",
+     "",
+     "3,496",
+     "",
+     "",
+     "2,718",
+     "",
+     "",
+     "4,531",
+     "",
+     ""
+    ],
+    [
+     "Income tax (benefit) provision",
+     "(130)",
+     "",
+     "",
+     "1,374",
+     "",
+     "",
+     "488",
+     "",
+     "",
+     "1,685",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "2,122",
+     "",
+     "$",
+     "2,230",
+     "",
+     "$",
+     "2,846",
+     ""
+    ],
+    [
+     "Net income per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.04",
+     "",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "0.09",
+     "",
+     "$",
+     "0.11",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.04",
+     "",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "0.11",
+     ""
+    ],
+    [
+     "Weighted average common shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "26,138",
+     "",
+     "",
+     "25,709",
+     "",
+     "",
+     "26,163",
+     "",
+     "",
+     "25,674",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "26,476",
+     "",
+     "",
+     "26,205",
+     "",
+     "",
+     "26,474",
+     "",
+     "",
+     "26,172",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 129,
+    "end_line": 172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE (LOSS) INCOME",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "2,122",
+     "",
+     "$",
+     "2,230",
+     "",
+     "$",
+     "2,846",
+     ""
+    ],
+    [
+     "Other comprehensive (loss) income, net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "(3,090)",
+     "",
+     "",
+     "(139)",
+     "",
+     "",
+     "(3,379)",
+     "",
+     "",
+     "(1,922)",
+     "",
+     ""
+    ],
+    [
+     "Change in net unrealized (loss) gain on investments",
+     "(61)",
+     "",
+     "",
+     "64",
+     "",
+     "",
+     "(59)",
+     "",
+     "",
+     "87",
+     "",
+     ""
+    ],
+    [
+     "Less income tax benefit (provision)",
+     "24",
+     "",
+     "",
+     "(25)",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "(34)",
+     "",
+     ""
+    ],
+    [
+     "Reclassification of realized loss on investments included in net income (1)",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12",
+     "",
+     ""
+    ],
+    [
+     "Less income tax benefit (2)",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5)",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of tax",
+     "(3,127)",
+     "",
+     "",
+     "(100)",
+     "",
+     "",
+     "(3,415)",
+     "",
+     "",
+     "(1,862)",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive (loss) income",
+     "$",
+     "(2,127)",
+     "",
+     "$",
+     "2,022",
+     "",
+     "$",
+     "(1,185)",
+     "",
+     "$",
+     "984",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE (LOSS) INCOME",
+   "prose_after": "(1) Recorded in Other income, net in our Condensed Consolidated Statement of Operations.\n(2) Recorded in Income tax (benefit) provision in our Condensed Consolidated Statements of Operations.\nThe accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2013",
+     "",
+     "",
+     "September 30, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except share data)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "42,357",
+     "",
+     "$",
+     "60,246",
+     ""
+    ],
+    [
+     "Marketable securities",
+     "37,401",
+     "",
+     "",
+     "58,372",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "23,857",
+     "",
+     "",
+     "24,634",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "25,799",
+     "",
+     "",
+     "24,435",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "3,472",
+     "",
+     "",
+     "3,389",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "5,925",
+     "",
+     "",
+     "2,493",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "138,811",
+     "",
+     "",
+     "173,569",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities, long-term",
+     "22,105",
+     "",
+     "",
+     "2,016",
+     "",
+     ""
+    ],
+    [
+     "Property, equipment and improvements, net",
+     "15,107",
+     "",
+     "",
+     "15,157",
+     "",
+     ""
+    ],
+    [
+     "Identifiable intangible assets, net",
+     "11,938",
+     "",
+     "",
+     "10,629",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "102,473",
+     "",
+     "",
+     "86,209",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "4,636",
+     "",
+     "",
+     "5,010",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "526",
+     "",
+     "",
+     "494",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "295,596",
+     "",
+     "$",
+     "293,084",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "7,387",
+     "",
+     "$",
+     "6,040",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "\u2014",
+     "",
+     "",
+     "1,269",
+     "",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "5,789",
+     "",
+     "",
+     "5,744",
+     "",
+     ""
+    ],
+    [
+     "Accrued warranty",
+     "925",
+     "",
+     "",
+     "1,021",
+     "",
+     ""
+    ],
+    [
+     "Accrued legal settlement",
+     "1,525",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "3,562",
+     "",
+     "",
+     "4,118",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "19,188",
+     "",
+     "",
+     "18,192",
+     "",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "3,363",
+     "",
+     "",
+     "3,294",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "489",
+     "",
+     "",
+     "630",
+     "",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "100",
+     "",
+     "",
+     "111",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "23,140",
+     "",
+     "",
+     "22,227",
+     "",
+     ""
+    ],
+    [
+     "Contingencies (see Note 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.01 par value; 2,000,000 shares authorized; none issued and outstanding",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value; 60,000,000 shares authorized; 30,070,229 and 29,268,788 shares issued",
+     "301",
+     "",
+     "",
+     "293",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "208,795",
+     "",
+     "",
+     "199,495",
+     "",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "112,513",
+     "",
+     "",
+     "110,283",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(17,140)",
+     "",
+     "",
+     "(13,725)",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 4,033,176 and 3,356,453 shares",
+     "(32,013)",
+     "",
+     "",
+     "(25,489)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "272,456",
+     "",
+     "",
+     "270,857",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "295,596",
+     "",
+     "$",
+     "293,084",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 214,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Recorded in Other income, net in our Condensed Consolidated Statement of Operations.\n(2) Recorded in Income tax (benefit) provision in our Condensed Consolidated Statements of Operations.\nThe accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 212,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 272,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,230",
+     "",
+     "$",
+     "2,846",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation of property, equipment and improvements",
+     "1,705",
+     "",
+     "",
+     "1,606",
+     "",
+     ""
+    ],
+    [
+     "Amortization of identifiable intangible assets",
+     "2,204",
+     "",
+     "",
+     "2,437",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "1,914",
+     "",
+     "",
+     "1,886",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefits from stock-based compensation",
+     "(53)",
+     "",
+     "",
+     "(67)",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax benefit",
+     "(1,079)",
+     "",
+     "",
+     "(1,173)",
+     "",
+     ""
+    ],
+    [
+     "Bad debt/product return provision",
+     "285",
+     "",
+     "",
+     "338",
+     "",
+     ""
+    ],
+    [
+     "Inventory obsolescence",
+     "554",
+     "",
+     "",
+     "776",
+     "",
+     ""
+    ],
+    [
+     "Restructuring",
+     "\u2014",
+     "",
+     "",
+     "296",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "(307)",
+     "",
+     "",
+     "(117)",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities (net of acquisition)",
+     "(4,103)",
+     "",
+     "",
+     "(2,720)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "3,350",
+     "",
+     "",
+     "6,108",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of marketable securities",
+     "(37,337)",
+     "",
+     "",
+     "(41,640)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from maturities of marketable securities",
+     "38,161",
+     "",
+     "",
+     "30,566",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of investment",
+     "\u2014",
+     "",
+     "",
+     "135",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of business, net of cash acquired",
+     "(12,919)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property, equipment, improvements and certain other intangible assets",
+     "(2,080)",
+     "",
+     "",
+     "(2,650)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(14,175)",
+     "",
+     "",
+     "(13,589)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefits from stock-based compensation",
+     "53",
+     "",
+     "",
+     "67",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from stock option plan transactions",
+     "590",
+     "",
+     "",
+     "521",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from employee stock purchase plan transactions",
+     "248",
+     "",
+     "",
+     "568",
+     "",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "(6,765)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(5,874)",
+     "",
+     "",
+     "1,156",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "(1,190)",
+     "",
+     "",
+     "(621)",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "(17,889)",
+     "",
+     "",
+     "(6,946)",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "60,246",
+     "",
+     "",
+     "54,684",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "42,357",
+     "",
+     "$",
+     "47,738",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of non-cash investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for business acquisition",
+     "$",
+     "(6,804)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Securities purchased, not settled",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(3,600)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 278,
+    "end_line": 331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n1. BASIS OF PRESENTATION OF UNAUDITED INTERIM CONDENSED CONSOLIDATED FINANCIAL STATEMENTS AND SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe interim unaudited condensed consolidated financial statements included in this Form 10-Q have been prepared by Digi International Inc. (the \u201cCompany,\u201d \u201cDigi,\u201d \u201cwe,\u201d \u201cour,\u201d or \u201cus\u201d) pursuant to the rules and regulations of the United States Securities and Exchange Commission (the \u201cSEC\u201d). Certain information and footnote disclosures, normally included in consolidated financial statements prepared in accordance with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d), have been condensed or omitted, pursuant to such rules and regulations. These condensed consolidated financial statements should be read in conjunction with the consolidated financial statements and related notes thereto, including (but not limited to) the summary of significant accounting policies, presented in our Annual Report on Form 10-K for the year ended September 30, 2012 as filed with the SEC (\u201c2012 Financial Statements\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 276,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,000",
+     "$",
+     "2,122",
+     "$",
+     "2,230",
+     "$",
+     "2,846"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator for basic net income per common share \u2014 weighted average shares outstanding",
+     "26,138",
+     "",
+     "25,709",
+     "",
+     "26,163",
+     "",
+     "25,674",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee stock options, restricted stock units and employee stock purchase plan",
+     "338",
+     "",
+     "496",
+     "",
+     "311",
+     "",
+     "498",
+     ""
+    ],
+    [
+     "Denominator for diluted net income per common share \u2014 adjusted weighted average shares",
+     "26,476",
+     "",
+     "26,205",
+     "",
+     "26,474",
+     "",
+     "26,172",
+     ""
+    ],
+    [
+     "Net income per common share, basic",
+     "$",
+     "0.04",
+     "$",
+     "0.08",
+     "$",
+     "0.09",
+     "$",
+     "0.11"
+    ],
+    [
+     "Net income per common share, diluted",
+     "$",
+     "0.04",
+     "$",
+     "0.08",
+     "$",
+     "0.08",
+     "$",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 363,
+    "end_line": 384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "In August 2012, the SEC adopted a rule mandated by the Dodd-Frank Act to require companies to publicly disclose their use of conflict minerals that originated in the Democratic Republic of the Congo or an adjoining country. The final rule applies to a company that uses minerals including tantalum, tin, gold or tungsten. The final rule requires companies to provide disclosure on a new form filed with the SEC, with the first specialized disclosure report due on May 31, 2014, for the 2013 calendar year, and annually on May 31 each year thereafter. We are currently evaluating the impact of adoption.\n2. EARNINGS PER SHARE\nBasic net income per common share is calculated based on the weighted average number of common shares outstanding during the period. Diluted net income per common share is computed by dividing net income by the weighted average number of common and potentially dilutive common shares outstanding during the period. Potentially dilutive common shares of our stock result from dilutive common stock options, restricted stock units and shares purchased through our employee stock purchase plan.\nThe following table is a reconciliation of the numerators and denominators in the net income per common share calculations (in thousands, except per common share data):",
+   "prose_after": "Because their effect would be anti-dilutive, certain potentially dilutive shares related to stock options to purchase common shares were not included in the above computation of diluted earnings per common share. This is because the options\u2019 exercise prices were greater than the average market price of our common shares. For the three and six month periods ended March 31, 2013, there were 3,263,692 and 2,502,985 potentially dilutive shares related to such stock options. For both the three and six month periods ended March 31, 2012, there were 1,798,213 potentially dilutive shares related to such stock options.\n3. ACQUISITION\nEtherios, Inc.\nOn October 31, 2012, we acquired Etherios, Inc. (\"Etherios\"), a privately held corporation. The total purchase price of $20.5 million included $13.7 million in cash (excluding cash acquired of $0.8 million) and $6.8 million represented by 715,571 shares of our common stock. The common stock issued was valued at $9.508 per common share based on a per share value calculated as the average market price of the common stock during the fifteen trading days prior to the closing.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 356,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash, including cash in escrow",
+     "$",
+     "13,696",
+     ""
+    ],
+    [
+     "Common stock",
+     "6,804",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "20,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of net tangible assets acquired",
+     "$",
+     "1,367",
+     ""
+    ],
+    [
+     "Identifiable intangible assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Existing customer relationships",
+     "1,400",
+     "",
+     ""
+    ],
+    [
+     "Non-compete agreements",
+     "1,100",
+     "",
+     ""
+    ],
+    [
+     "Trade name",
+     "440",
+     "",
+     ""
+    ],
+    [
+     "Order backlog",
+     "360",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "17,120",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities related to identifiable intangibles",
+     "(1,287)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "20,500",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 416,
+    "end_line": 435
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITION"
+    }
+   },
+   "prose_before": "The Etherios acquisition has been accounted for using the acquisition method of accounting which requires, among other things, that most assets acquired and liabilities assumed pursuant to the stock purchase agreement be recognized at fair value as of the acquisition date. Certain estimated values are not yet finalized (see below) and are subject to change, which could be significant. We will finalize the amounts recognized as information necessary to complete the analysis is obtained. We expect to finalize these amounts no later than the end of our third quarter of fiscal 2013. The following items remain subject to change:\n\u2022 amounts for contingent liabilities, pending the finalization of our review of the Etherios contingent liabilities;\n\u2022 certain tangible and intangible assets, pending the finalization of valuation procedures;\n\u2022 certain assets and liabilities pending the results of a comprehensive accounting policy consistency review; and\n\u2022 amounts for deferred tax assets and liabilities, pending the finalization of assets acquired, liabilities assumed and resulting goodwill.\nThe following table summarizes the values of Etherios assets acquired and liabilities assumed as of the acquisition date. To the extent previously discussed, such amounts are considered preliminary (in thousands):",
+   "prose_after": "The weighted average useful life for all the identifiable intangibles listed above is 5.7 years. For purposes of determining fair value, the existing customer relationships identified above are assumed to have useful lives ranging between six to eight years, non-compete agreements are assumed to have useful lives of five years, the trade name is assumed to have a useful life of seven years, and the order backlog is assumed to have a useful life of one year. Useful lives for identifiable intangible assets are estimated at the time of acquisition based on the periods of time from which we expect to derive benefits from the identifiable intangible assets. The identifiable intangible assets are amortized using the straight-line method which reflects the pattern in which the asset is expected to be consumed.\n3. ACQUISITION (Continued)\nWe have determined that the Etherios acquisition is not material to our consolidated results of operations or financial position. Therefore, pro forma financial information is not presented.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2013",
+     "",
+     "September 30, 2012",
+     ""
+    ],
+    [
+     "Accounts receivable, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "24,216",
+     "$",
+     "24,929"
+    ],
+    [
+     "Less allowance for doubtful accounts",
+     "359",
+     "",
+     "295",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "23,857",
+     "$",
+     "24,634"
+    ],
+    [
+     "Inventories:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "20,607",
+     "$",
+     "18,159"
+    ],
+    [
+     "Work in process",
+     "489",
+     "",
+     "428",
+     ""
+    ],
+    [
+     "Finished goods",
+     "4,703",
+     "",
+     "5,848",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "25,799",
+     "$",
+     "24,435"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SELECTED BALANCE SHEET DATA"
+    }
+   },
+   "prose_before": "The weighted average useful life for all the identifiable intangibles listed above is 5.7 years. For purposes of determining fair value, the existing customer relationships identified above are assumed to have useful lives ranging between six to eight years, non-compete agreements are assumed to have useful lives of five years, the trade name is assumed to have a useful life of seven years, and the order backlog is assumed to have a useful life of one year. Useful lives for identifiable intangible assets are estimated at the time of acquisition based on the periods of time from which we expect to derive benefits from the identifiable intangible assets. The identifiable intangible assets are amortized using the straight-line method which reflects the pattern in which the asset is expected to be consumed.\n3. ACQUISITION (Continued)\nWe have determined that the Etherios acquisition is not material to our consolidated results of operations or financial position. Therefore, pro forma financial information is not presented.\n4. SELECTED BALANCE SHEET DATA\n(in thousands)",
+   "prose_after": "Inventories are stated at the lower of cost or market value, with cost determined using the first-in, first-out method.\n5. MARKETABLE SECURITIES\nOur marketable securities consist of certificates of deposit, commercial paper, corporate bonds and government municipal bonds. We analyze our available-for-sale marketable securities for impairment on an ongoing basis. When we perform this analysis, we consider factors such as the length of time and extent to which the securities have been in an unrealized loss position and the trend of any unrealized losses. We also consider whether an unrealized loss is a temporary loss or an other-than-temporary loss based on factors such as: (a) whether we have the intent to sell the security, or (b) whether it is more likely than not that we will be required to sell the security before its anticipated recovery, or (c) permanent impairment due to bankruptcy or insolvency.\nIn order to estimate the fair value for each security in our investment portfolio, where available, we obtain quoted market prices and trading activity for each security. We obtain relevant information from our investment advisor and also may review the financial solvency of certain security issuers if warranted. As of March 31, 2013, 61 of our 72 securities that we are holding were trading below our amortized cost basis. We determined each decline in value to be temporary based upon the above described factors. We expect to realize the fair value of these securities, plus accrued interest, either at the time of maturity or when the security is sold. All of our current holdings are classified as available-for-sale marketable securities and are recorded at fair value on our consolidated balance sheet with the unrealized gains and losses recorded in accumulated other comprehensive loss. All of our non-current marketable securities will mature in less than 3 years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost (1)",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses (2)",
+     "",
+     "",
+     "Fair Value (1)",
+     ""
+    ],
+    [
+     "Current marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "$",
+     "24,036",
+     "$",
+     "1",
+     "$",
+     "(18)",
+     "",
+     "$",
+     "24,019"
+    ],
+    [
+     "Commercial paper",
+     "2,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "4,758",
+     "",
+     "\u2014",
+     "",
+     "(2)",
+     "",
+     "",
+     "4,756",
+     ""
+    ],
+    [
+     "Government municipal bonds",
+     "6,626",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,626",
+     ""
+    ],
+    [
+     "Current marketable securities",
+     "37,420",
+     "",
+     "1",
+     "",
+     "(20)",
+     "",
+     "",
+     "37,401",
+     ""
+    ],
+    [
+     "Non-current marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "15,906",
+     "",
+     "4",
+     "",
+     "(37)",
+     "",
+     "",
+     "15,873",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "6,251",
+     "",
+     "\u2014",
+     "",
+     "(19)",
+     "",
+     "",
+     "6,232",
+     ""
+    ],
+    [
+     "Government municipal bonds",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-current marketable securities",
+     "22,157",
+     "",
+     "4",
+     "",
+     "(56)",
+     "",
+     "",
+     "22,105",
+     ""
+    ],
+    [
+     "Total marketable securities",
+     "$",
+     "59,577",
+     "$",
+     "5",
+     "$",
+     "(76)",
+     "",
+     "$",
+     "59,506"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "In order to estimate the fair value for each security in our investment portfolio, where available, we obtain quoted market prices and trading activity for each security. We obtain relevant information from our investment advisor and also may review the financial solvency of certain security issuers if warranted. As of March 31, 2013, 61 of our 72 securities that we are holding were trading below our amortized cost basis. We determined each decline in value to be temporary based upon the above described factors. We expect to realize the fair value of these securities, plus accrued interest, either at the time of maturity or when the security is sold. All of our current holdings are classified as available-for-sale marketable securities and are recorded at fair value on our consolidated balance sheet with the unrealized gains and losses recorded in accumulated other comprehensive loss. All of our non-current marketable securities will mature in less than 3 years.\n5. MARKETABLE SECURITIES (CONTINUED)\nAt March 31, 2013 our marketable securities were (in thousands):",
+   "prose_after": "(1) Included in amortized cost and fair value is purchased and accrued interest of $500.\n(2) The aggregate related fair value of securities with unrealized losses as of March 31, 2013 was $49,320. These investments have been in an unrealized loss position for less than twelve months.\nAt September 30, 2012 our marketable securities were (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost (1)",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses (2)",
+     "",
+     "",
+     "Fair Value (1)",
+     ""
+    ],
+    [
+     "Current marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "$",
+     "39,306",
+     "$",
+     "14",
+     "$",
+     "(19)",
+     "",
+     "$",
+     "39,301"
+    ],
+    [
+     "Commercial paper",
+     "2,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "7,262",
+     "",
+     "\u2014",
+     "",
+     "(4)",
+     "",
+     "",
+     "7,258",
+     ""
+    ],
+    [
+     "Government municipal bonds",
+     "9,814",
+     "",
+     "1",
+     "",
+     "(2)",
+     "",
+     "",
+     "9,813",
+     ""
+    ],
+    [
+     "Current marketable securities",
+     "58,382",
+     "",
+     "15",
+     "",
+     "(25)",
+     "",
+     "",
+     "58,372",
+     ""
+    ],
+    [
+     "Non-current marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "2,019",
+     "",
+     "\u2014",
+     "",
+     "(3)",
+     "",
+     "",
+     "2,016",
+     ""
+    ],
+    [
+     "Total marketable securities",
+     "$",
+     "60,401",
+     "$",
+     "15",
+     "$",
+     "(28)",
+     "",
+     "$",
+     "60,388"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 506,
+    "end_line": 523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "(1) Included in amortized cost and fair value is purchased and accrued interest of $500.\n(2) The aggregate related fair value of securities with unrealized losses as of March 31, 2013 was $49,320. These investments have been in an unrealized loss position for less than twelve months.\nAt September 30, 2012 our marketable securities were (in thousands):",
+   "prose_after": "(1) Included in amortized cost and fair value is purchased and accrued interest of $485.\n(2) The aggregate related fair value of securities with unrealized losses as of September 30, 2012 was $34,503. These investments have been in an unrealized loss position for less than twelve months.\n6. FAIR VALUE MEASUREMENTS\nFair value is defined as the amount that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants as of the measurement date. This standard also establishes a hierarchy for inputs used in measuring fair value. This standard maximizes the use of observable inputs and minimizes the use of unobservable inputs by requiring that the most observable inputs be used when available. Observable inputs are inputs market participants would use in valuing the asset or liability based on market data obtained from independent sources. Unobservable inputs are inputs that reflect our assumptions about the factors market participants would use in valuing the asset or liability based upon the best information available in the circumstances. The categorization of financial assets and liabilities within the valuation hierarchy is based upon the lowest level of input that is significant to the fair value measurement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurements at March 31, 2013 using:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total carrying value at March 31, 2013",
+     "",
+     "Quoted price in active markets (Level 1)",
+     "",
+     "Significant other observable inputs (Level 2)",
+     "",
+     "Significant unobservable inputs (Level 3)",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market",
+     "$",
+     "7,775",
+     "$",
+     "7,775",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Available-for-sale marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "39,892",
+     "",
+     "\u2014",
+     "",
+     "39,892",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Commercial paper",
+     "2,000",
+     "",
+     "\u2014",
+     "",
+     "2,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "10,988",
+     "",
+     "\u2014",
+     "",
+     "10,988",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Government municipal bonds",
+     "6,626",
+     "",
+     "\u2014",
+     "",
+     "6,626",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total cash equivalents and marketable securities measured at fair value",
+     "$",
+     "67,281",
+     "$",
+     "7,775",
+     "$",
+     "59,506",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at March 31, 2013 using:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 544,
+    "end_line": 562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "\u2022 Level 2 \u2014 Inputs include quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not active, and inputs (other than quoted prices) that are observable for the asset or liability, either directly or indirectly.\n\u2022 Level 3 \u2014 Inputs are unobservable for the asset or liability and their fair values are determined using pricing models, discounted cash flow methodologies or similar techniques and at least one significant model assumption or input is unobservable. Level 3 may also include certain investment securities for which there is limited market activity or a decrease in the observability of market pricing for the investments, such that the determination of fair value requires significant judgment or estimation.\nFair value is applied to financial assets such as our marketable securities, which are classified and accounted for as available-for-sale. These items are stated at fair value at each reporting period using the above guidance.\nThe following tables provide information by level for financial assets that are measured at fair value on a recurring basis (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurements at September 30, 2012 using:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total carrying value at September 30, 2012",
+     "",
+     "Quoted price in active markets (Level 1)",
+     "",
+     "Significant other observable inputs (Level 2)",
+     "",
+     "Significant unobservable inputs (Level 3)",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market",
+     "$",
+     "28,355",
+     "$",
+     "28,355",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Available-for-sale marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "41,317",
+     "",
+     "\u2014",
+     "",
+     "41,317",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Commercial paper",
+     "2,000",
+     "",
+     "\u2014",
+     "",
+     "2,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "7,258",
+     "",
+     "\u2014",
+     "",
+     "7,258",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Government municipal bonds",
+     "9,813",
+     "",
+     "\u2014",
+     "",
+     "9,813",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total cash equivalents and marketable securities measured at fair value",
+     "$",
+     "88,743",
+     "$",
+     "28,355",
+     "$",
+     "60,388",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at September 30, 2012 using:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 563,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "6. FAIR VALUE MEASUREMENTS (CONTINUED)\nCash equivalents are measured at fair value using quoted market prices in active markets for identical assets and are therefore classified as Level 1 assets. We value our Level 2 assets using inputs that are based on market indices of similar assets within an active market. There were no transfers in to or out of our Level 2 financial assets during the six months ended March 31, 2013.\nWe had no financial assets valued with Level 3 inputs as of March 31, 2013 nor did we purchase or sell any Level 3 financial assets during the six months ended March 31, 2013.\nThe use of different assumptions, applying different judgment to matters that are inherently subjective and changes in future market conditions could result in different estimates of fair value of our securities, currently and in the future. If market conditions deteriorate, we may incur impairment charges for securities in our investment portfolio.\n7. GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross carrying amount",
+     "",
+     "Accum. amort.",
+     "",
+     "",
+     "Net",
+     "",
+     "Gross carrying amount",
+     "",
+     "Accum. amort.",
+     "",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "Purchased and core technology",
+     "$",
+     "46,177",
+     "$",
+     "(43,847)",
+     "",
+     "$",
+     "2,330",
+     "$",
+     "46,597",
+     "$",
+     "(43,639)",
+     "",
+     "$",
+     "2,958"
+    ],
+    [
+     "License agreements",
+     "2,840",
+     "",
+     "(2,719)",
+     "",
+     "",
+     "121",
+     "",
+     "2,840",
+     "",
+     "(2,682)",
+     "",
+     "",
+     "158",
+     ""
+    ],
+    [
+     "Patents and trademarks",
+     "11,729",
+     "",
+     "(9,018)",
+     "",
+     "",
+     "2,711",
+     "",
+     "10,943",
+     "",
+     "(8,469)",
+     "",
+     "",
+     "2,474",
+     ""
+    ],
+    [
+     "Customer maintenance contracts",
+     "700",
+     "",
+     "(700)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "700",
+     "",
+     "(700)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "18,641",
+     "",
+     "(13,083)",
+     "",
+     "",
+     "5,558",
+     "",
+     "17,504",
+     "",
+     "(12,465)",
+     "",
+     "",
+     "5,039",
+     ""
+    ],
+    [
+     "Non-compete agreements",
+     "2,129",
+     "",
+     "(1,121)",
+     "",
+     "",
+     "1,008",
+     "",
+     "1,045",
+     "",
+     "(1,045)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Order backlog",
+     "360",
+     "",
+     "(150)",
+     "",
+     "",
+     "210",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "82,576",
+     "$",
+     "(70,638)",
+     "",
+     "$",
+     "11,938",
+     "$",
+     "79,629",
+     "$",
+     "(69,000)",
+     "",
+     "$",
+     "10,629"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Cash equivalents are measured at fair value using quoted market prices in active markets for identical assets and are therefore classified as Level 1 assets. We value our Level 2 assets using inputs that are based on market indices of similar assets within an active market. There were no transfers in to or out of our Level 2 financial assets during the six months ended March 31, 2013.\nWe had no financial assets valued with Level 3 inputs as of March 31, 2013 nor did we purchase or sell any Level 3 financial assets during the six months ended March 31, 2013.\nThe use of different assumptions, applying different judgment to matters that are inherently subjective and changes in future market conditions could result in different estimates of fair value of our securities, currently and in the future. If market conditions deteriorate, we may incur impairment charges for securities in our investment portfolio.\n7. GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS\nAmortizable identifiable intangible assets were (in thousands):",
+   "prose_after": "Amortization expense was $1.1 million and $1.2 million for the three month periods ended March 31, 2013 and 2012, respectively. Amortization was $2.2 million and $2.4 million for the six month periods ended March 31, 2013 and 2012, respectively. Amortization expense is recorded on our consolidated statement of operations within cost of sales and in general and administrative expense. Estimated amortization expense related to identifiable intangible assets for the remainder of fiscal 2013 and the five succeeding fiscal years is (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2013 (six months)",
+     "$",
+     "2,246"
+    ],
+    [
+     "2014",
+     "3,871",
+     ""
+    ],
+    [
+     "2015",
+     "2,660",
+     ""
+    ],
+    [
+     "2016",
+     "1,323",
+     ""
+    ],
+    [
+     "2017",
+     "696",
+     ""
+    ],
+    [
+     "2018",
+     "482",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Amortization expense was $1.1 million and $1.2 million for the three month periods ended March 31, 2013 and 2012, respectively. Amortization was $2.2 million and $2.4 million for the six month periods ended March 31, 2013 and 2012, respectively. Amortization expense is recorded on our consolidated statement of operations within cost of sales and in general and administrative expense. Estimated amortization expense related to identifiable intangible assets for the remainder of fiscal 2013 and the five succeeding fiscal years is (in thousands):",
+   "prose_after": "The changes in the carrying amount of goodwill are (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Beginning balance, October 1",
+     "$",
+     "86,209",
+     "",
+     "$",
+     "86,012"
+    ],
+    [
+     "Acquisition of Etherios, Inc.",
+     "17,120",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "(856)",
+     "",
+     "",
+     "102",
+     ""
+    ],
+    [
+     "Ending balance, March 31",
+     "$",
+     "102,473",
+     "",
+     "$",
+     "86,114"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "The changes in the carrying amount of goodwill are (in thousands):",
+   "prose_after": "7. GOODWILL AND OTHER IDENTIFIABLE INTANGIBLE ASSETS (CONTINUED)\nThe goodwill related to the acquisition of Etherios is not tax deductible. Etherios is included in our single reporting segment for purposes of goodwill impairment testing. Goodwill is tested for impairment on an annual basis as of June 30, or more frequently if events or circumstances occur which could indicate impairment. An impairment could have a material effect on our consolidated balance sheet and results of operations. The calculation of asset impairment requires us to make assumptions about future cash flows and revenues. These assumptions require significant judgment and actual results may differ from assumed or estimated amounts. At June 30, 2012, our market capitalization was $264.3 million compared to our carrying value of $265.7 million. Our market capitalization plus our estimated control premium of 40% resulted in a fair value in excess of our carrying value by a margin of 39% and therefore no impairment was indicated.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Unrecognized tax benefits as of September 30, 2012",
+     "$",
+     "2,720",
+     ""
+    ],
+    [
+     "Increases related to:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prior year income tax positions",
+     "202",
+     "",
+     ""
+    ],
+    [
+     "Decreases related to:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expiration of statute of limitations",
+     "(98)",
+     "",
+     ""
+    ],
+    [
+     "Unrecognized tax benefits as of March 31, 2013",
+     "$",
+     "2,824",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "In the second quarter of fiscal 2013, we recorded a discrete tax benefit of $0.4 million resulting from the enactment of legislation on January 2, 2013 extending the research and development tax credit for the last three quarters of fiscal 2012. In the first quarter of fiscal 2013, we recorded a discrete tax benefit of $0.1 million for the release of income tax reserves due to the expiration of the statutes of limitation from various U.S. and foreign tax jurisdictions. These discrete tax benefits reduced our effective tax rate by 19.1 percentage points for the six month period ended March 31, 2013.\nIn the first quarter of fiscal 2012, we recorded a discrete tax benefit of $0.1 million for the release of income tax reserves due to the expiration of statutes of limitation from various U.S. tax jurisdictions. This discrete tax benefit reduced our effective tax rate by 2.7 percentage points for the six month period ended March 31, 2012.\nThe effective tax rate for the first half of fiscal 2012, before consideration of the impact of the discrete tax benefit, was higher than the Federal statutory rate primarily due to state income taxes, lower domestic tax benefits and increases in certain foreign tax reserves.\nA reconciliation of the beginning and ending amount of unrecognized tax benefits is (in thousands):",
+   "prose_after": "The total amount of unrecognized tax benefits that, if recognized, would affect our effective tax rate is $2.8 million. We expect that it is reasonably possible that the total amounts of unrecognized tax benefits will increase approximately $0.2 million over the next 12 months due to increases in current year reserves, partially offset by the expiration of the statute of limitations.\nWe recognize interest and penalties related to income tax matters in income tax expense. During both the six month periods ended March 31, 2013 and 2012, there were insignificant amounts of interest and penalties related to income tax matters in income tax expense. We had accrued interest and penalties related to unrecognized tax benefits as of March 31, 2013 and September 30, 2012 of $0.5 million and $0.6 million, respectively. Our long-term income taxes payable on our condensed consolidated balance sheets includes these accrued interest and penalties in addition to the unrecognized tax benefits in the table above.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance at",
+     "",
+     "Warranties",
+     "",
+     "Settlements",
+     "",
+     "",
+     "Balance at",
+     ""
+    ],
+    [
+     "Period",
+     "January 1",
+     "",
+     "issued",
+     "",
+     "made",
+     "",
+     "",
+     "March 31",
+     ""
+    ],
+    [
+     "Three months ended March 31, 2013",
+     "$",
+     "935",
+     "$",
+     "103",
+     "$",
+     "(113)",
+     "",
+     "$",
+     "925"
+    ],
+    [
+     "Three months ended March 31, 2012",
+     "$",
+     "1,007",
+     "$",
+     "145",
+     "$",
+     "(171)",
+     "",
+     "$",
+     "981"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance at",
+     "",
+     "Warranties",
+     "",
+     "Settlements",
+     "",
+     "",
+     "Balance at",
+     ""
+    ],
+    [
+     "Period",
+     "October 1",
+     "",
+     "issued",
+     "",
+     "made",
+     "",
+     "",
+     "March 31",
+     ""
+    ],
+    [
+     "Six months ended March 31, 2013",
+     "$",
+     "1,021",
+     "$",
+     "153",
+     "$",
+     "(249)",
+     "",
+     "$",
+     "925"
+    ],
+    [
+     "Six months ended March 31, 2012",
+     "$",
+     "941",
+     "$",
+     "365",
+     "$",
+     "(325)",
+     "",
+     "$",
+     "981"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 703
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "PRODUCT WARRANTY OBLIGATION"
+    }
+   },
+   "prose_before": "We operate in multiple tax jurisdictions both in the U.S. and outside of the U.S. Accordingly, we must determine the appropriate allocation of income to each of these jurisdictions. This determination requires us to make several estimates and assumptions. Tax audits associated with the allocation of this income, and other complex issues, may require an extended period of time to resolve and may result in adjustments to our income tax balances in those years that are material to our consolidated balance sheet and results of operations. We are no longer subject to income tax examination for tax years prior to fiscal 2009 in the case of U.S. federal tax authorities and prior to fiscal 2008 for non-U.S. income tax authorities. For state taxing authorities, consisting primarily of Minnesota, California and Texas, we are no longer subject to income tax examination for tax years generally before fiscal 2008.\n9. PRODUCT WARRANTY OBLIGATION\nIn general, we warrant our products to be free from defects in material and workmanship under normal use and service. The warranty periods generally range from one to five years. We typically have the option to either repair or replace products we deem defective with regard to material or workmanship. Estimated warranty costs are accrued in the period that the related revenue is recognized based upon an estimated average per unit repair or replacement cost applied to the estimated number of units under warranty. These estimates are based upon historical warranty incidents and are evaluated on an ongoing basis to ensure the adequacy of the warranty accrual.\nThe following table summarizes the activity associated with the product warranty accrual (in thousands) and is included on our Condensed Consolidated Balance Sheets as its own line item within current liabilities:",
+   "prose_after": "We are not responsible for, and do not warrant that, custom software versions, created by original equipment manufacturer (OEM) customers based upon our software source code, will function in a particular way, will conform to any specifications or are fit for any particular purpose. Further, we do not indemnify these customers from any third-party liability as it relates to or arises from any customization or modifications made by the OEM customer.\n10. CONTINGENCIES\nPatent Infringement Lawsuits\nOn May 29, 2012, U.S. Ethernet Innovations, LLC (\"USEI\") filed a patent infringement lawsuit against us in federal court in the Eastern District of Texas. The lawsuit included allegations against us and one other company pertaining to the infringement of four patents related to Ethernet technology. On April 22, 2013, we announced the settlement of this patent infringement lawsuit for $1.5 million, which has been recorded in general and administrative expense on our Condensed Consolidated Statement of Operations and on our Condensed Consolidated Balance Sheet at March 31, 2013. The settlement fully resolves the claims by USEI with no future payment obligations. Net of taxes, the settlement was $1.0 million and therefore reduced earnings per diluted share for the second quarter of fiscal 2013 by approximately $0.04.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Employee Termination Costs",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Restructuring charge at April 26, 2012",
+     "$",
+     "568",
+     "",
+     "$",
+     "395",
+     "",
+     "$",
+     "963",
+     ""
+    ],
+    [
+     "Payments",
+     "(555)",
+     "",
+     "",
+     "(287)",
+     "",
+     "",
+     "(842)",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2012",
+     "$",
+     "13",
+     "",
+     "$",
+     "108",
+     "",
+     "$",
+     "121",
+     ""
+    ],
+    [
+     "Payments",
+     "\u2014",
+     "",
+     "",
+     "(80)",
+     "",
+     "",
+     "(80)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2012",
+     "$",
+     "13",
+     "",
+     "$",
+     "28",
+     "",
+     "$",
+     "41",
+     ""
+    ],
+    [
+     "Payments",
+     "\u2014",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "(4)",
+     "",
+     ""
+    ],
+    [
+     "Reversal",
+     "(13)",
+     "",
+     "",
+     "(24)",
+     "",
+     "",
+     "(37)",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2013",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 729,
+    "end_line": 747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "RESTRUCTURING"
+    }
+   },
+   "prose_before": "U.S. Restructuring\nOn April 26, 2012, we announced our intention to restructure certain of our operations. We recorded $1.0 million of restructuring charges on a pre-tax basis. The restructuring relates primarily to changes being implemented to focus on a shift in our business to more aggressively sell end-to-end M2M solutions. As a result of this restructuring, we eliminated employment positions in our work force of 30 employees at a cost of $0.6 million for severance and have moved to hire new employees or re-assign existing employees into newly created positions. We also expect to incur expenses from vacating facilities in Davis, California and Huntington Beach, California at a cost of approximately $0.4 million. The payments associated with these charges and all the actions associated with the restructuring were completed during the second quarter of fiscal 2013.\nBelow is listed a summary of the restructuring charges and other activity within the restructuring accrual (in thousands):",
+   "prose_after": "12. SUBSEQUENT EVENT\nOn April 22, 2013, we announced the settlement of a patent infringement lawsuit with U.S. Ethernet Innovations, LLC (\"USEI\") for $1.5 million ($1.0 million, net of taxes). For more detail, see Note 10 to our Condensed Consolidated Financial Statements.\nITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nOur management\u2019s discussion and analysis should be read in conjunction with our Annual Report on Form 10-K for the fiscal year ended September 30, 2012, as well as our reports on Forms 10-Q and 8-K and other publicly available information.\nSAFE HARBOR STATEMENT UNDER THE PRIVATE SECURITIES LITIGATION REFORM ACT OF 1995\nThis Form 10-Q contains certain statements that are \u201cforward-looking statements\u201d as that term is defined under the Private Securities Litigation Reform Act of 1995, and within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended.\nThe words \u201cassume,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201ctarget,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201cproject,\u201d \u201cshould,\u201d or \u201ccontinue\u201d or the negative thereof or other variations thereon or similar terminology, which are predictions of or indicate future events and trends and which do not relate to historical matters, identify forward-looking statements. Among other items, these statements relate to expectations of the business environment in which we operate, projections of future performance, perceived marketplace opportunities and statements regarding our mission and vision. Such statements are not guarantees of future performance and involve certain risks, uncertainties and assumptions, including risks related to the highly competitive market in which our company operates, rapid changes in technologies that may displace products sold by us, declining prices of networking products, our reliance on distributors and other third parties to sell our products, delays in product development efforts, uncertainty in user acceptance of our products, the ongoing shift of our sales efforts to focus more on the delivery of broader based solutions which can be a more complex sales process, has not been a historical sales focus of our company and can involve longer sales cycles than the sale of our legacy hardware products, the ability to integrate our products and services with those of other parties in a commercially accepted manner, potential liabilities that can arise if any of our products have design or manufacturing defects, our ability to defend or settle satisfactorily any litigation, uncertainty in global economic conditions and economic conditions within particular regions of the world which could negatively affect product demand and the financial solvency of customers and suppliers, the impact of natural disasters and other events beyond our control that could negatively impact our supply chain and customers, the ability to achieve the anticipated benefits and synergies associated with acquisitions, such as our recently announced purchase of Etherios, Inc., and changes in our level of revenue or profitability which can fluctuate for many reasons beyond our control. These and other risks, uncertainties and assumptions identified from time to time in our filings with the United States Securities and Exchange Commission, including without limitation, our annual report on Form 10-K for the year ended September 30, 2012 and subsequent quarterly reports on Form 10-Q and other filings, could cause the company\u2019s future results to differ materially from those expressed in any forward-looking statements made by us or on our behalf. Many of such factors are beyond our ability to control or predict. These forward-looking statements speak only as of the date for which they are made. We disclaim any intent or obligation to update any forward-looking statements, whether as a result of new information, future events or otherwise.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "48,197",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "49,016",
+     "100.0",
+     "%",
+     "(1.7)",
+     "",
+     "$",
+     "95,188",
+     "100.0",
+     "%",
+     "$",
+     "95,678",
+     "100.0",
+     "%",
+     "(0.5)",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "23,236",
+     "",
+     "",
+     "48.2",
+     "",
+     "23,233",
+     "",
+     "47.4",
+     "",
+     "\u2014",
+     "",
+     "45,748",
+     "",
+     "48.1",
+     "",
+     "45,465",
+     "",
+     "47.5",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Gross profit",
+     "24,961",
+     "",
+     "",
+     "51.8",
+     "",
+     "25,783",
+     "",
+     "52.6",
+     "",
+     "(3.2)",
+     "",
+     "49,440",
+     "",
+     "51.9",
+     "",
+     "50,213",
+     "",
+     "52.5",
+     "",
+     "(1.5)",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "24,542",
+     "",
+     "",
+     "50.9",
+     "",
+     "22,354",
+     "",
+     "45.6",
+     "",
+     "9.8",
+     "",
+     "47,349",
+     "",
+     "49.7",
+     "",
+     "45,968",
+     "",
+     "48.1",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "Operating income",
+     "419",
+     "",
+     "",
+     "0.9",
+     "",
+     "3,429",
+     "",
+     "7.0",
+     "",
+     "(87.8)",
+     "",
+     "2,091",
+     "",
+     "2.2",
+     "",
+     "4,245",
+     "",
+     "4.4",
+     "",
+     "(50.7)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "451",
+     "",
+     "",
+     "0.9",
+     "",
+     "67",
+     "",
+     "0.1",
+     "",
+     "573.1",
+     "",
+     "627",
+     "",
+     "0.7",
+     "",
+     "286",
+     "",
+     "0.3",
+     "",
+     "119.2",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "870",
+     "",
+     "",
+     "1.8",
+     "",
+     "3,496",
+     "",
+     "7.1",
+     "",
+     "(75.1)",
+     "",
+     "2,718",
+     "",
+     "2.9",
+     "",
+     "4,531",
+     "",
+     "4.7",
+     "",
+     "(40.0)",
+     ""
+    ],
+    [
+     "Income tax (benefit) provision",
+     "(130)",
+     "",
+     "",
+     "(0.3)",
+     "",
+     "1,374",
+     "",
+     "2.8",
+     "",
+     "(109.5)",
+     "",
+     "488",
+     "",
+     "0.6",
+     "",
+     "1,685",
+     "",
+     "1.7",
+     "",
+     "(71.0)",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,000",
+     "",
+     "2.1",
+     "%",
+     "$",
+     "2,122",
+     "4.3",
+     "%",
+     "(52.9)",
+     "%",
+     "$",
+     "2,230",
+     "2.3",
+     "%",
+     "$",
+     "2,846",
+     "3.0",
+     "%",
+     "(21.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 789,
+    "end_line": 809
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Net income was $1.0 million in the second quarter of fiscal 2013, or $0.04 per diluted share, compared to $2.1 million, or $0.08 per diluted share, in the second quarter of fiscal 2012. Net income in the second quarter of fiscal 2013 included the settlement described below of $1.0 million, net of taxes, which reduced earnings per diluted share by approximately $0.04. This was partially offset by a tax benefit of $0.4 million, or $0.01 per diluted share, resulting from the enactment of legislation extending the research and development tax credit that allowed us to record tax credits for the last three quarters of fiscal 2012 in the second quarter of fiscal 2013, based on the enactment date of January 2, 2013.\nOn April 22, 2013, we announced the settlement of a patent infringement lawsuit with U.S. Ethernet Innovations, LLC for $1.5 million ($1.0 million, net of taxes). We recorded the pre-tax settlement of $1.5 million in general and administrative expense in the second quarter of fiscal 2013 (See Note 10 to our Condensed Consolidated Financial Statements).\nITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS (CONTINUED)\nCONSOLIDATED RESULTS OF OPERATIONS\nThe following table sets forth selected information derived from our interim condensed consolidated statements of operations (dollars in thousands):",
+   "prose_after": "NET SALES\nNet sales decreased by $0.8 million, or 1.7%, for the three months ended March 31, 2013 compared to the three months ended March 31, 2012. Net sales decreased $0.5 million, or 0.5%, for the six months ended March 31, 2013 compared to the six months ended March 31, 2012. Net sales for the three and six month periods ended March 31, 2013 included Etherios net sales from the date of acquisition of $2.4 million and $3.9 million, respectively. The net sales of our mature products decreased at a faster rate than the increases in net sales of our growth and services products. In the second quarter of fiscal 2012, we recorded revenue of approximately $3.0 million that was delayed from the first quarter of fiscal 2012 as a result of the flooding in Thailand that took place in October 2011, impacting the operations of our contract manufacturer located near Bangkok, Thailand. We did not experience a significant change in net sales as a result of pricing during the three and six month periods ended March 31, 2013.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     ""
+    ],
+    [
+     "Growth products and services",
+     "$",
+     "27,176",
+     "56.4",
+     "%",
+     "$",
+     "26,398",
+     "53.9",
+     "%",
+     "2.9",
+     "%",
+     "$",
+     "53,024",
+     "55.7",
+     "%",
+     "$",
+     "50,194",
+     "52.5",
+     "%",
+     "5.6",
+     "%"
+    ],
+    [
+     "Mature products",
+     "21,021",
+     "",
+     "43.6",
+     "",
+     "22,618",
+     "",
+     "46.1",
+     "",
+     "(7.1)",
+     "",
+     "42,164",
+     "",
+     "44.3",
+     "",
+     "45,484",
+     "",
+     "47.5",
+     "",
+     "(7.3)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "48,197",
+     "100.0",
+     "%",
+     "$",
+     "49,016",
+     "100.0",
+     "%",
+     "(1.7)",
+     "%",
+     "$",
+     "95,188",
+     "100.0",
+     "%",
+     "$",
+     "95,678",
+     "100.0",
+     "%",
+     "(0.5)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Net sales decreased by $0.8 million, or 1.7%, for the three months ended March 31, 2013 compared to the three months ended March 31, 2012. Net sales decreased $0.5 million, or 0.5%, for the six months ended March 31, 2013 compared to the six months ended March 31, 2012. Net sales for the three and six month periods ended March 31, 2013 included Etherios net sales from the date of acquisition of $2.4 million and $3.9 million, respectively. The net sales of our mature products decreased at a faster rate than the increases in net sales of our growth and services products. In the second quarter of fiscal 2012, we recorded revenue of approximately $3.0 million that was delayed from the first quarter of fiscal 2012 as a result of the flooding in Thailand that took place in October 2011, impacting the operations of our contract manufacturer located near Bangkok, Thailand. We did not experience a significant change in net sales as a result of pricing during the three and six month periods ended March 31, 2013.\nBeginning in the second quarter of fiscal 2013, we are no longer measuring our products and services in the embedded and non-embedded product categories. We are now measuring our net sales by growth products and services and mature product categories as we believe that this is a more meaningful presentation and reflects how we are viewing and measuring our revenue.\nNet Sales by Growth Products and Services and Mature Product Categories",
+   "prose_after": "Our growth products and services portfolio includes all wireless products, as well as the ARM-based embedded module product line, which leverages the Device Cloud by Etherios\u2122 ((Device Cloud) formerly known as the iDigi\u00ae platform) with both wired and wireless connectivity. The services portfolio includes our wireless design solutions, application consulting services, Etherios consulting services, and the Device Cloud platform. Growth products and services increased by $0.8 million and $2.8 million for the three and six month periods ended March 31 2013 as compared to the same periods a year ago. The growth products and services portfolio includes net sales of Etherios' consulting services of $2.4 million and $3.9 million for the three and six month periods ended March 31, 2013. Our mature products portfolio includes all wired products, except for ARM-based embedded modules which are included in growth products. Net sales of our mature products decreased as expected for both the three and six month periods ended March 31, 2013 as compared to the same periods a year ago.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% incr.",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     ""
+    ],
+    [
+     "Wireless",
+     "$",
+     "20,816",
+     "43.2",
+     "%",
+     "$",
+     "21,827",
+     "44.5",
+     "%",
+     "(4.6)",
+     "%",
+     "$",
+     "42,481",
+     "44.6",
+     "%",
+     "$",
+     "41,662",
+     "43.5",
+     "%",
+     "2.0",
+     "%"
+    ],
+    [
+     "Wired",
+     "24,938",
+     "",
+     "51.7",
+     "",
+     "27,189",
+     "",
+     "55.5",
+     "",
+     "(8.3)",
+     "",
+     "48,843",
+     "",
+     "51.3",
+     "",
+     "54,016",
+     "",
+     "56.5",
+     "",
+     "(9.6)",
+     ""
+    ],
+    [
+     "Other",
+     "2,443",
+     "",
+     "5.1",
+     "",
+     "\u2014",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "3,864",
+     "",
+     "4.1",
+     "",
+     "\u2014",
+     "",
+     "N/A",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "48,197",
+     "100.0",
+     "%",
+     "$",
+     "49,016",
+     "100.0",
+     "%",
+     "(1.7)",
+     "%",
+     "$",
+     "95,188",
+     "100.0",
+     "%",
+     "$",
+     "95,678",
+     "100.0",
+     "%",
+     "(0.5)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 839,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Our growth products and services portfolio includes all wireless products, as well as the ARM-based embedded module product line, which leverages the Device Cloud by Etherios\u2122 ((Device Cloud) formerly known as the iDigi\u00ae platform) with both wired and wireless connectivity. The services portfolio includes our wireless design solutions, application consulting services, Etherios consulting services, and the Device Cloud platform. Growth products and services increased by $0.8 million and $2.8 million for the three and six month periods ended March 31 2013 as compared to the same periods a year ago. The growth products and services portfolio includes net sales of Etherios' consulting services of $2.4 million and $3.9 million for the three and six month periods ended March 31, 2013. Our mature products portfolio includes all wired products, except for ARM-based embedded modules which are included in growth products. Net sales of our mature products decreased as expected for both the three and six month periods ended March 31, 2013 as compared to the same periods a year ago.\nWe believe that our serial servers, Rabbit-branded modules, chips and USB products are mature products and we expect that net sales of these products will continue to decrease in the future as they are near the end of their product life cycles.\nITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS (CONTINUED)\nNet Sales by Wireless, Wired and Other Categories",
+   "prose_after": "Our Wireless products category comprised 43.2% and 44.6% of our total net sales for the three and six months ended March 31, 2013, respectively, and 44.5% and 43.5% of our net sales for the three and six months ended March 31, 2012, respectively. The Wireless products category includes all wireless products, in addition to wireless design services, application consulting services and the Device Cloud platform. The Other category includes consulting services revenue from Etherios.\nAs we continue to transition to a wireless products and solutions-based sales organization, we may experience uneven demand, that may cause fluctuations in revenue in future quarters.\nNet Sales by Geographic Location\nThe following summarizes our total net sales by geographic region for all products:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "$ incr.",
+     "",
+     "",
+     "% incr.",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "$ incr.",
+     "",
+     "",
+     "% incr.",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2013",
+     "",
+     "2012",
+     "",
+     "(decr.)",
+     "",
+     "",
+     "(decr.)",
+     "",
+     "2013",
+     "",
+     "2012",
+     "",
+     "(decr.)",
+     "",
+     "",
+     "(decr.)",
+     ""
+    ],
+    [
+     "North America",
+     "$",
+     "28,593",
+     "$",
+     "28,981",
+     "$",
+     "(388)",
+     "",
+     "(1.3)",
+     "%",
+     "$",
+     "55,595",
+     "$",
+     "56,745",
+     "$",
+     "(1,150)",
+     "",
+     "(2.0)",
+     "%"
+    ],
+    [
+     "EMEA",
+     "11,940",
+     "",
+     "12,168",
+     "",
+     "(228)",
+     "",
+     "",
+     "(1.9)",
+     "",
+     "23,923",
+     "",
+     "23,742",
+     "",
+     "181",
+     "",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Asia countries",
+     "6,268",
+     "",
+     "6,174",
+     "",
+     "94",
+     "",
+     "",
+     "1.5",
+     "",
+     "12,760",
+     "",
+     "11,801",
+     "",
+     "959",
+     "",
+     "",
+     "8.1",
+     ""
+    ],
+    [
+     "Latin America",
+     "1,396",
+     "",
+     "1,693",
+     "",
+     "(297)",
+     "",
+     "",
+     "(17.5)",
+     "",
+     "2,910",
+     "",
+     "3,390",
+     "",
+     "(480)",
+     "",
+     "",
+     "(14.2)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "48,197",
+     "$",
+     "49,016",
+     "$",
+     "(819)",
+     "",
+     "(1.7)",
+     "%",
+     "$",
+     "95,188",
+     "$",
+     "95,678",
+     "$",
+     "(490)",
+     "",
+     "(0.5)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "Our Wireless products category comprised 43.2% and 44.6% of our total net sales for the three and six months ended March 31, 2013, respectively, and 44.5% and 43.5% of our net sales for the three and six months ended March 31, 2012, respectively. The Wireless products category includes all wireless products, in addition to wireless design services, application consulting services and the Device Cloud platform. The Other category includes consulting services revenue from Etherios.\nAs we continue to transition to a wireless products and solutions-based sales organization, we may experience uneven demand, that may cause fluctuations in revenue in future quarters.\nNet Sales by Geographic Location\nThe following summarizes our total net sales by geographic region for all products:",
+   "prose_after": "Net sales in North America decreased by $0.4 million and $1.2 million for the three and six months ended March 31, 2013, respectively compared to the same periods a year ago as the net sales of our mature products decreased at a faster rate than the increases in net sales of our growth and services products. Net sales of Etherios for the three and six months ended March 31, 2013 were $2.4 million and $3.9 million, respectively.\nNet sales in Europe, Middle East & Africa (\u201cEMEA\u201d) decreased by $0.2 million for the three months ended March 31, 2013 compared to the same period a year ago primarily due to decreases in net sales of cellular and embedded modules. EMEA net sales for the six months ended March 31, 2013 compared to the same period a year ago increased by $0.2 million primarily due to an increase in cellular product net sales.\nNet sales in Asia countries increased by $0.1 million and $1.0 million for the three and six month periods ended March 31, 2013, respectively, compared to the same periods a year ago. This was primarily due to an increase in project-based revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$ incr.",
+     "",
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$ incr.",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "(decr.)",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "$",
+     "10,414",
+     "",
+     "21.6",
+     "%",
+     "$",
+     "10,340",
+     "21.1",
+     "%",
+     "$",
+     "74",
+     "",
+     "$",
+     "20,688",
+     "",
+     "21.7",
+     "%",
+     "$",
+     "20,439",
+     "21.4",
+     "%",
+     "$",
+     "249",
+     ""
+    ],
+    [
+     "Research and development",
+     "7,775",
+     "",
+     "",
+     "16.1",
+     "",
+     "7,753",
+     "",
+     "15.8",
+     "",
+     "22",
+     "",
+     "",
+     "15,192",
+     "",
+     "",
+     "15.9",
+     "",
+     "15,985",
+     "",
+     "16.7",
+     "",
+     "(793)",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "6,390",
+     "",
+     "",
+     "13.3",
+     "",
+     "4,201",
+     "",
+     "8.6",
+     "",
+     "2,189",
+     "",
+     "",
+     "11,506",
+     "",
+     "",
+     "12.1",
+     "",
+     "9,248",
+     "",
+     "9.7",
+     "",
+     "2,258",
+     "",
+     ""
+    ],
+    [
+     "Restructuring",
+     "(37)",
+     "",
+     "",
+     "(0.1)",
+     "",
+     "60",
+     "",
+     "0.1",
+     "",
+     "(97)",
+     "",
+     "",
+     "(37)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "296",
+     "",
+     "0.3",
+     "",
+     "(333)",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "$",
+     "24,542",
+     "",
+     "50.9",
+     "%",
+     "$",
+     "22,354",
+     "45.6",
+     "%",
+     "$",
+     "2,188",
+     "",
+     "$",
+     "47,349",
+     "",
+     "49.7",
+     "%",
+     "$",
+     "45,968",
+     "48.1",
+     "%",
+     "$",
+     "1,381",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 900,
+    "end_line": 913
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "ITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS (CONTINUED)\nprimarily due to the inclusion of gross margins from Etherios' consulting services. The margins on these services are generally lower than our products' margins.\nOPERATING EXPENSES\nOperating expenses increased by $2.2 million and $1.4 million for the three and six month periods ended March 31, 2013 as compared to the same periods a year ago. Incremental operating expenses for Etherios for the three and six month periods ended March 31, 2013 were $1.2 million and $1.9 million, respectively. The settlement of the patent infringement lawsuit of $1.5 million ($1.0 million, net of taxes) is included in general and administrative expenses for the three and six months ended March 31, 2013. This was partially offset by cost containment measures that were put in place to achieve targeted expense levels.\nThe following summarizes our total operating expenses, in dollars and as a percentage of net sales:",
+   "prose_after": "Sales and marketing expenses for the three and six months ended March 31, 2013 as compared to the same periods a year ago increased by $0.1 million and $0.2 million, respectively, primarily related to an increase in compensation-related expense partially offset by a decrease in outside services expense.\nResearch and development expenses remained mostly unchanged for the three months ended March 31, 2013 as compared to the three months ended March 31, 2012. Research and development expenses decreased $0.8 million for the six months ended March 31, 2013 as compared to the six months ended March 31, 2012 due primarily to a decrease of $0.5 million in outside services and a decrease of $0.3 million in other research and development expenses.\nGeneral and administrative expenses increased $2.2 million for the three months ended March 31, 2013 as compared to the three months ended March 31, 2012. The increase was primarily related to a patent infringement settlement of $1.5 million ($1.0 million, net of taxes) (see Note 10 to our Condensed Consolidated Financial Statements) and an increase of $0.3 million related to a prior year reversal of a reserve for the NetSilicon IPO litigation as our insurers paid on our behalf to the plaintiffs the full amount of the settlement share allocated to us. In addition, professional fees increased by $0.3 million. General and administrative expenses increased by $2.3 million for the six months ended March 31, 2013 as compared to the six months ended March 31, 2012 due primarily to the patent infringement settlement mentioned above of $1.5 million ($1.0 million, net of taxes), the $0.3 million prior year reversal for the NetSilicon IPO litigation as previously described and an increase of $0.6 million for professional fees.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$ incr.",
+     "",
+     ""
+    ],
+    [
+     "($ in thousands)",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "(decr.)",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "1,315",
+     "",
+     "$",
+     "1,151",
+     "",
+     "$",
+     "164",
+     ""
+    ],
+    [
+     "Inventories",
+     "(1,920)",
+     "",
+     "",
+     "(1,848)",
+     "",
+     "",
+     "(72)",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "(960)",
+     "",
+     "",
+     "(652)",
+     "",
+     "",
+     "(308)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "730",
+     "",
+     "",
+     "1,228",
+     "",
+     "",
+     "(498)",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "(3,647)",
+     "",
+     "",
+     "(3,461)",
+     "",
+     "",
+     "(186)",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "379",
+     "",
+     "",
+     "862",
+     "",
+     "",
+     "(483)",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "$",
+     "(4,103)",
+     "",
+     "$",
+     "(2,720)",
+     "",
+     "$",
+     "(1,383)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "We have financed our operations and capital expenditures principally with funds generated from operations. At March 31, 2013, we had cash, cash equivalents and short-term marketable securities of $79.8 million compared to $118.6 million at September 30, 2012. Our working capital (total current assets less total current liabilities) was $119.6 million at March 31, 2013 and $155.4 million at September 30, 2012. The decreases in both the liquid assets and the working capital resulted primarily from an increase of $20.1 million in long-term marketable securities from September 30. 2012 to March 31, 2013 as we modified our investment policy to allow purchases of certificates of deposits for up to a three year term. In addition we spent $12.9 million, net of cash acquired for the acquisition of Etherios, and $6.8 million on the purchase of our treasury stock. We presently anticipate total fiscal 2013 capital expenditures will be approximately $3.9 million.\nReconciliation of Changes in Operating Assets and Liabilities:",
+   "prose_after": "Net cash provided by operating activities was $3.4 million for the six months ended March 31, 2013 as compared to $6.1 million for the six months ended March 31, 2012, a net decrease of $2.7 million. This is primarily due to a reduction for changes in working capital of $1.4 million, a decrease in net income of $0.6 million, a decrease in the restructuring accrual of $0.3 million and a decrease of $0.4 million for inventory obsolescence and other reconciling items. The decrease of $1.4 million for working capital was due to lower bonus payouts relating to the fiscal 2012 bonus plan in the first quarter of fiscal 2013 compared to the prior fiscal year, a decrease in accounts payable balances due to less inventory purchases, additional prepaid expenses and income taxes receivable.\nNet cash used in investing activities was $14.2 million during the six months ended March 31, 2013 as compared to $13.6 million for the six months ended March 31, 2012, a net increase of $0.6 million. During the first six months of fiscal 2013 as compared to the first six months of fiscal 2012, we had net proceeds from maturities of marketable securities of $0.8 million in the first half of fiscal 2013 offset by net purchases of $11.1 million in the first half of fiscal 2012 and fewer expenditures for net capital equipment of $0.6 million. This was partially offset by an expenditure of $12.9 million, net of cash acquired, for the purchase of Etherios, Inc.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended March 31,",
+     "",
+     "% increase",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "2012",
+     "(decrease)",
+     ""
+    ],
+    [
+     "Euro",
+     "1.3087",
+     "1.3297",
+     "(1.6)",
+     "%"
+    ],
+    [
+     "British Pound",
+     "1.5804",
+     "1.5711",
+     "0.6",
+     "%"
+    ],
+    [
+     "Japanese Yen",
+     "0.0116",
+     "0.0128",
+     "(9.4)",
+     "%"
+    ],
+    [
+     "Indian Rupee",
+     "0.0185",
+     "0.0196",
+     "(5.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 998,
+    "end_line": 1009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "We have transactions that are executed in the U.S. Dollar, British Pound, Euro, Japanese Yen and Indian Rupee. As a result, we are exposed to foreign currency transaction risk associated with certain sales transactions being denominated in Euros, British Pounds, Japanese Yen or Indian Rupees, and foreign currency translation risk as the financial position and operating results of our foreign subsidiaries are translated into U.S. Dollars for consolidation. We have not implemented a formal hedging strategy to reduce foreign currency risk.\nFor the six months ended March 31, 2013 and 2012, we had approximately $39.6 million and $38.9 million, respectively, of net sales to foreign customers including export sales. Of these sales, $11.5 million and $12.4 million, respectively, were denominated in foreign currency, predominantly Euros and British Pounds. In future periods, we expect a significant portion of sales will continue to be made in both Euros and British Pounds.\nThe table below compares the average monthly exchange rates of the Euro, British Pound, Japanese Yen and Indian Rupee to the U.S. Dollar:",
+   "prose_after": "A 10% change from the first six months of fiscal year 2013 average exchange rate for the Euro, British Pound, Japanese Yen and Indian Rupee to the U.S. Dollar would have resulted in a 1.2% increase or decrease in net sales and a 1.9% increase or decrease in stockholders\u2019 equity due to foreign currency translation. The above analysis does not take into consideration any pricing adjustments we might consider in response to changes in such exchange rates.\nCREDIT RISK\nWe have some exposure to credit risk related to our accounts receivable portfolio. Exposure to credit risk is controlled through regular monitoring of customer financial status, credit limits and collaboration with sales management on customer contacts to facilitate payment.\nInvestments are made in accordance with our investment policy and consist of certificates of deposit, commercial paper, money market funds, government municipal bonds and corporate bonds. We may have some credit exposure related to the fair value of our securities, which could change based on changes in market conditions. If market conditions deteriorate or if these securities experience credit rating downgrades, we may incur impairment charges for securities in our investment portfolio. All of our securities are held domestically.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Purchased",
+     "Average Price Paid per Share",
+     "Total Number of Shares Purchased as Part of a Publicly Announced Program",
+     "Maximum Dollar Value of Shares that May Yet Be Purchased Under the Program"
+    ],
+    [
+     "January 1, 2013 - January 31, 2013",
+     "86,532",
+     "$9.67",
+     "86,532",
+     "$14,839,445.58"
+    ],
+    [
+     "February 1, 2013 - February 28, 2013",
+     "59,451",
+     "$9.96",
+     "59,451",
+     "$14,247,169.70"
+    ],
+    [
+     "March 1, 2013 - March 31, 2013",
+     "103,664",
+     "$9.77",
+     "103,664",
+     "$13,234,701.68"
+    ],
+    [
+     "Total",
+     "249,647",
+     "$9.78",
+     "249,647",
+     "$13,234,701.68"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1050,
+    "end_line": 1061
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "If a cyberattack or other security incident were to allow unauthorized access to or modification of our customers' data or our own data, whether due to a failure with our systems or related systems operated by third parties, we could suffer damage to our brand and reputation. The costs we would incur to address and fix these incidents would increase our expenses. These types of security incidents could also lead to lawsuits, regulatory investigations and increased legal liability, including in some cases contractual costs related to customer notification and fraud monitoring. Further, as regulatory focus on privacy and data security issues continues to increase and worldwide laws and regulations concerning the protection of information become more complex, the potential risks and costs of compliance to our business will intensify.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nOn July 25, 2012 our Board of Directors authorized a new program to repurchase up to $20.0 million of our common stock and terminated the prior repurchase authorization. This repurchase authorization expires on September 30, 2013. During the first quarter of fiscal 2013, we began to repurchase our common stock in the open market. The following table presents our repurchases during the second quarter of fiscal 2013:",
+   "prose_after": "ITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone\nITEM 4. MINE SAFETY DISCLOSURES\nNone\nITEM 5. OTHER INFORMATION\nNone\nITEM 6. EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1045,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "(a)",
+     "Restated Certificate of Incorporation of the Company, as amended (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "(b)",
+     "Amended and Restated By-Laws of the Company (2)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "(a)",
+     "Share Rights Agreement, dated as of April 22, 2008, between the Company and Wells Fargo Bank, N.A., as Rights Agent (3)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "(b)",
+     "Form of Amended and Restated Certificate of Powers, Designations, Preferences and Rights of Series A Junior Participating Preferred Shares (4)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)",
+     "Digi International Inc. 2013 Omnibus Incentive Plan (5)*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)(i)",
+     "Form of Notice of Grant of Stock Options and Option Agreement including Addendums to Option Agreement that may apply to certain grants (for grants under Digi International Inc. 2013 Omnibus Incentive Plan)*\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)(ii)",
+     "Form of (Director) Restricted Stock Unit Award Agreement (for awards under Digi International Inc. 2013 Omnibus Incentive Plan)*\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "(a)",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "(b)",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "",
+     "Section 1350 Certification"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Calculation Linkbase Document\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Definition Linkbase Document\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Label Linkbase Document\u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Presentation Linkbase Document\u2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1114
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "ITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone\nITEM 4. MINE SAFETY DISCLOSURES\nNone\nITEM 5. OTHER INFORMATION\nNone\nITEM 6. EXHIBITS",
+   "prose_after": "*Management contract or compensatory plan or arrangement required to be filed as an exhibit to this Form 10-Q.\n\u2020Previously filed with the Company's Quarterly Report on Form 10-Q for the quarter ended March 31, 2013 and filed May 3, 2013 (File No. 1-34033).\n______________\n(1) Incorporated by reference to Exhibit 3(a) to the Company\u2019s Form 10-K for the year ended September 30, 1993 (File No. 0-17972)\n(2) Incorporated by reference to Exhibit 3 to the Company\u2019s Current Report on Form 8-K filed January 21, 2011 (File No. 1-34033)\n(3) Incorporated by reference to Exhibit 4(a) to the Company\u2019s Registration Statement on Form 8-A filed on April 25, 2008 (File No. 1-34033)\n(4) Incorporated by reference to Exhibit 4(b) to the Company\u2019s Registration Statement on Form 8-A filed on April 25, 2008 (File No. 1-34033)\n(5) Incorporated by reference to Exhibit 99 to the Company's Registration Statement on Form S-8 filed on April 16, 2013 (File No. 333-187949)\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this Amendment to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "DIGI INTERNATIONAL INC.",
+     ""
+    ],
+    [
+     "Date:",
+     "June 14, 2013",
+     "By:",
+     "/s/ Steven E. Snyder"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Steven E. Snyder"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Senior Vice President, Chief Financial Officer and Treasurer (Principal Financial Officer and Duly Authorized Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "DIGI INTERNATIONAL INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "\u2020Previously filed with the Company's Quarterly Report on Form 10-Q for the quarter ended March 31, 2013 and filed May 3, 2013 (File No. 1-34033).\n______________\n(1) Incorporated by reference to Exhibit 3(a) to the Company\u2019s Form 10-K for the year ended September 30, 1993 (File No. 0-17972)\n(2) Incorporated by reference to Exhibit 3 to the Company\u2019s Current Report on Form 8-K filed January 21, 2011 (File No. 1-34033)\n(3) Incorporated by reference to Exhibit 4(a) to the Company\u2019s Registration Statement on Form 8-A filed on April 25, 2008 (File No. 1-34033)\n(4) Incorporated by reference to Exhibit 4(b) to the Company\u2019s Registration Statement on Form 8-A filed on April 25, 2008 (File No. 1-34033)\n(5) Incorporated by reference to Exhibit 99 to the Company's Registration Statement on Form S-8 filed on April 16, 2013 (File No. 333-187949)\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this Amendment to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Document Description",
+     "Form of Filing"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "(a)",
+     "Restated Certificate of Incorporation of the Company, as Amended",
+     "Incorporated by Reference"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "(b)",
+     "Amended and Restated By-Laws of the Company",
+     "Incorporated by Reference"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "(a)",
+     "Share Rights Agreement, dated as of April 22, 2008, between the Company and Wells Fargo Bank, N.A., as Rights Agent",
+     "Incorporated by Reference"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "(b)",
+     "Form of Amended and Restated Certificate of Powers, Designations, Preferences and Rights of Series A Junior Participating Preferred Shares",
+     "Incorporated by Reference"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)",
+     "Digi International Inc. 2013 Omnibus Incentive Plan",
+     "Incorporated by Reference"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)(i)",
+     "Form of Notice of Grant of Stock Options and Option Agreement including Addendums to Option Agreement that may apply to certain grants (for grants under Digi International Inc. 2013 Omnibus Incentive Plan)",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "(a)(ii)",
+     "Form of (Director) Restricted Stock Unit Award Agreement (for awards under Digi International Inc. 2013 Omnibus Incentive Plan)",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "(a)",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer",
+     "Filed Electronically"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "(b)",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer",
+     "Filed Electronically"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "",
+     "Section 1350 Certification",
+     "Filed Electronically"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Calculation Linkbase Document",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Definition Linkbase Document",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Label Linkbase Document",
+     "Previously Filed"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Presentation Linkbase Document",
+     "Previously Filed"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1143,
+    "end_line": 1181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

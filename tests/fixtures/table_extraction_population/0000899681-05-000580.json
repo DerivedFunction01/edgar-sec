@@ -1,0 +1,189 @@
+{
+ "accession": "0000899681-05-000580",
+ "cik": "0001002235",
+ "form": "10-Q",
+ "filing_date": "2005-08-05",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cpg-10q_072905.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware (State or other jurisdiction of incorporation or organization)",
+     "22-3258100 (I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 17,
+    "end_line": 20
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2005 or\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______to _______.\nCommission File No. 33-98136\nCPG PARTNERS, L.P. (Exact name of registrant as specified in its charter)",
+   "prose_after": "105 Eisenhower Parkway, Roseland, New Jersey 07068 (Address of principal executive offices - zip code)\n(973) 228-6111 (Registrant's telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days Yes [X] No .\nIndicate by check mark whether the registrant is an accelerated filer. Yes [ ] No [X]\nThere are no outstanding shares of Common Stock or voting securities.\nCPG Partners, L.P. Consolidated Balance Sheets (Unaudited) (In thousands)\n<B>June 30,</B>          December 31,\n<B>2005</B>                  2004",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 30,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Hedge Type    Swap, Cash Flow",
+     "Notional Value         $65.0 million",
+     "Rate    5.7625%",
+     "Maturity 1/1/2006",
+     "Fair Value   ($0.7 million)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "4) The mortgage loan was assumed as part of an acquisition. The stated interest rate of 5.85% was greater than that available to the OP for comparable debt. Accordingly, the OP recorded a $3.4 million debt premium that will be amortized over the period of the loan, which reduces the effective interest rate to 5.10%. The loan calls for a $0.4 million fixed monthly debt service payment on a 25-year amortization schedule. During the six months ended June 30, 2005 and 2004, the OP recognized approximately $0.1 million in debt premium amortization that is included in interest expense in the accompanying financial statements.\n5. Financial Instruments: Derivatives and Hedging\nThe OP employs interest rate and foreign currency forwards or purchased options to hedge qualifying anticipated transactions. Gains and losses are deferred and recognized in net income in the same period that the underlying hedged transaction affects net income, expires or is otherwise terminated or assigned.\nAt June 30, 2005, the OP\u2019s interest rate swap was reported at its fair value and classified as an other liability. At June 30, 2005, there were $0.6 million in deferred losses recorded in accumulated other comprehensive loss.",
+   "prose_after": "The notional value and fair value of the above hedge provides an indication of the extent of the OP\u2019s involvement in financial derivative instruments at June 30, 2005, but does not represent exposure to credit, interest rate, foreign exchange or market risk.\n6. Preferred Units\nIn September 2004, the Company completed a private sale of $65 million of Series C Variable Rate Preferred Stock (the Series C Preferred Stock). Proceeds from the sale were used to redeem the OP\u2019s Series B Cumulative Redeemable Preferred Units for approximately $65 million. The private sale was for 2.6 million restricted shares having a liquidation preference of $25.00 per unit share. The Series C Preferred Stock was redeemable at the Company\u2019s option, and paid a cumulative quarterly dividend at a rate equal to the London Interbank Offered Rate (\"LIBOR\") plus 1.0%. Pursuant to the Merger Agreement, on October 13, 2004, the Series C Preferred Stock was fully redeemed.\n7. Partners' Capital\nFollowing is a schedule of partners' capital balances at June 30, 2005 (in thousands):",
+   "structured_location": {
+    "item": null,
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.\n\n31.1 31.2\n\n32.1 32.2",
+     "Description\n\nSection 302 Certifications Section 302 Certifications\n\nSection 906 Certifications Section 906 Certifications"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "(1) Includes an interest rate swap, which effectively produces a fixed rate of 7.2625% until January 1, 2006.\nItem 4. Controls and Procedures\nOur chief executive officer and chief financial officer evaluated the effectiveness of our disclosure controls and procedures (as defined in rule 13a-14c under the Securities Exchange Act of 1934, as amended) as of June 30, 2005 and, based on that evaluation, concluded that, as of the end of the period covered by this report, we had sufficient controls and procedures for recording, processing, summarizing and reporting information that is required to be disclosed in our reports under the Securities Exchange Act of 1934, as amended, within the time periods specified in the SEC\u2019s rules and forms.\nThere have been no changes in the internal controls over financial reporting or in other factors that have materially affected, or are reasonably likely to materially affect these internal controls over financial reporting in the second quarter of 2005.\nPart II. Other Information\nItem 6. Exhibits",
+   "prose_after": "CPG PARTNERS, L.P.\nSignatures\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned thereunto duly authorized.\nCPG PARTNERS, L.P. By: /s/ Michael J. Clarke Michael J. Clarke Executive Vice President & Chief Financial Officer\nDate: August 4, 2005",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

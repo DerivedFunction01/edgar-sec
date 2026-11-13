@@ -1,0 +1,8708 @@
+{
+ "accession": "0001213900-21-018884",
+ "cik": "0001335112",
+ "form": "10-K",
+ "filing_date": "2021-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2020_logiqinc.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "46-5057897"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission File Number: 000-51815\nLOGIQ INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "85 Broad Street, 16-079\nNew York, NY 10004\n(Address of principal executive offices, including Zip Code)\n(808) 829-1057\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "85 Broad Street, 16-079\nNew York, NY 10004\n(Address of principal executive offices, including Zip Code)\n(808) 829-1057\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nCommon Stock, $0.0001 par value per share\n(Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS",
+     "",
+     "",
+     "ii"
+    ],
+    [
+     "USE OF TERMS",
+     "",
+     "",
+     "ii"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "",
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "22"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties",
+     "22"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "23"
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "23"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Selected Financial Data",
+     "26"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "27"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "36"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "F-1"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "37"
+    ],
+    [
+     "",
+     "Item 9A.",
+     "Controls and Procedures",
+     "37"
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other Information",
+     "37"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "38"
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "38"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation",
+     "46"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "49"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "50"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "51"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "52"
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits, and Financial Statement Schedules",
+     "52"
+    ],
+    [
+     "",
+     "Item 16.",
+     "Form 10-K Summary",
+     "53"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "54"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nThe aggregate market value of the registrant's common stock held by non-affiliates as of June 30, 2020, based upon the closing price of the registrant's common stock as reported by the OTCQX on such date, was approximately $12,304,517. This calculation does not reflect a determination that persons are affiliates for any other purposes.\nAs of March 26, 2021 the issuer had 16,794,588 shares of common stock issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE: None.\nTable of Contents",
+   "prose_after": "i\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis annual report on Form 10-K (\u201cAnnual Report\u201d) and other reports that we file with the SEC contain statements that are considered forward-looking statements. Forward-looking statements give the Company\u2019s current expectations, plans, objectives, assumptions or forecasts of future events. All statements other than statements of current or historical facts contained in this Annual Report, including statements regarding the Company\u2019s future financial position, business strategy, budgets, projected costs and plans and objectives of management for future operations, are forward-looking statements. In some cases, you can identify forward-looking statements by terminology such as \u201canticipate,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201ccontinue\u201d \u201cestimate,\u201d \u201cplans,\u201d \u201cpotential,\u201d \u201cprojects,\u201d \u201congoing,\u201d \u201cexpects,\u201d \u201cmanagement believes,\u201d \u201cwe believe,\u201d \u201cwe intend,\u201d and similar expressions. These statements are based on the Company\u2019s current plans and are subject to risks and uncertainties, and as such, the Company\u2019s actual future activities and results of operations may be materially different from those set forth in the forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 115,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2020 and 2019",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "  Quarter Ended December 31",
+     "$",
+     "14.00",
+     "$",
+     "5.49",
+     "$",
+     "0.56",
+     "$",
+     "0.32"
+    ],
+    [
+     "  Quarter Ended September 30",
+     "$",
+     "10.89",
+     "$",
+     "5.75",
+     "$",
+     "0.75",
+     "$",
+     "0.28"
+    ],
+    [
+     "  Quarter Ended June 30",
+     "$",
+     "6.00",
+     "$",
+     "1.79",
+     "$",
+     "0.99",
+     "$",
+     "0.24"
+    ],
+    [
+     "  Quarter Ended March 31",
+     "$",
+     "7.28",
+     "$",
+     "4.00",
+     "$",
+     "0.89",
+     "$",
+     "0.36"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 754,
+    "end_line": 764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "We are not currently a party to any legal proceedings, litigation or claims, which, if determined adversely to us, would have a material adverse effect on our business, financial condition, results of operations or cash flows. We may from time to time, be a party to litigation and subject to claims incident to the ordinary course of business. Regardless of the outcome, litigation can have an adverse impact on us because of defense and settlement costs, diversion of management resources, and other factors.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nOur common stock, par value $0.0001 per share, is traded on the OTC:QX under the symbol \"LGIQ\". Trading of securities on the OTC:QX is often sporadic and investors may have difficulty buying and selling or obtaining market quotations. Any OTC:QX market quotations reflect inter-dealer quotations, without adjustment for retail mark-up, mark-down or commission and may not necessarily represent actual transactions.\nThe following table shows high and low sales prices for the Company\u2019s common stock for each quarter during the past two fiscal years:",
+   "prose_after": "Holders\nAs of March 26, 2021, there were 16,794,588 shares of our common stock outstanding held by approximately 574 holders of record of our common stock. This number was derived from our stockholder records and does not include beneficial holders of our common stock whose shares are held in \u201cstreet name\u201d with various dealers, clearing agencies, banks, brokers and other fiduciaries.\nDividends\nWe have never declared or paid any cash dividends on our common stock. We currently intend to retain all available funds and any future earnings for use in the operation of our business, and do not anticipate paying any cash dividends on our common stock in the foreseeable future.\nOur future dividend policy will be determined at the discretion of our Board of Directors and will depend upon a number of factors, including our financial condition and performance, our cash needs and expansion plans, capital requirements, general business conditions, income tax consequences, and other factors that our Board of Directors may deem to be relevant. In addition, cash dividends may generally only be issued if we have a capital surplus.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of operations data",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "  Net Revenues",
+     "$",
+     "37,910,393",
+     "",
+     "$",
+     "34,648,621",
+     "",
+     "$",
+     "22,667,325",
+     "",
+     "$",
+     "15,578,171",
+     "",
+     "$",
+     "12,942,353",
+     ""
+    ],
+    [
+     "  Cost of revenues",
+     "",
+     "31,546,948",
+     "",
+     "",
+     "28,411,869",
+     "",
+     "",
+     "18,643,916",
+     "",
+     "",
+     "11,267,879",
+     "",
+     "",
+     "7,817,973",
+     ""
+    ],
+    [
+     "  Gross profit",
+     "",
+     "6,363,445",
+     "",
+     "",
+     "6,236,752",
+     "",
+     "",
+     "4,023,409",
+     "",
+     "",
+     "4,310,292",
+     "",
+     "",
+     "5,124,380",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "1,966,045",
+     "",
+     "",
+     "101,933",
+     "",
+     "",
+     "268,600",
+     "",
+     "",
+     "351,933",
+     "",
+     "",
+     "351,933",
+     ""
+    ],
+    [
+     "  Marketing and selling",
+     "",
+     "1,423,909",
+     "",
+     "",
+     "389,610",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Bad debt provision",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "698,736",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "10,994,815",
+     "",
+     "",
+     "5,918,660",
+     "",
+     "",
+     "2,880,387",
+     "",
+     "",
+     "1,937,483",
+     "",
+     "",
+     "988,686",
+     ""
+    ],
+    [
+     "  Research and development",
+     "",
+     "6,244,704",
+     "",
+     "",
+     "6,412,998",
+     "",
+     "",
+     "4,773,349",
+     "",
+     "",
+     "1,889,304",
+     "",
+     "",
+     "2,928,947",
+     ""
+    ],
+    [
+     "  Total operating expenses",
+     "",
+     "20,629,473",
+     "",
+     "",
+     "12,823,201",
+     "",
+     "",
+     "7,922,336",
+     "",
+     "",
+     "4,178,720",
+     "",
+     "",
+     "4,968,302",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  (Loss) income from operations",
+     "",
+     "(14,266,028)",
+     "",
+     "",
+     "(6,586,449)",
+     "",
+     "",
+     "(3,898,927)",
+     "",
+     "",
+     "131,572",
+     "",
+     "",
+     "156,078",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other Income/(Expenses)",
+     "",
+     "(243,641)",
+     "",
+     "",
+     "72,359",
+     "",
+     "",
+     "250",
+     "",
+     "",
+     "23,625",
+     "",
+     "",
+     "181,391",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Impairment loss on investment in associate",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(200,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income from operations before income taxes",
+     "",
+     "(14,509,669)",
+     "",
+     "",
+     "(6,514,090)",
+     "",
+     "",
+     "(4,098,677)",
+     "",
+     "",
+     "155,197",
+     "",
+     "",
+     "337,469",
+     ""
+    ],
+    [
+     "  Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "27,596",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "229,479",
+     "",
+     "",
+     "(229,479)",
+     ""
+    ],
+    [
+     "  Net (Loss) Income",
+     "$",
+     "(14,509,669)",
+     "",
+     "$",
+     "(6,541,686)",
+     "",
+     "$",
+     "(4,098,677)",
+     "",
+     "$",
+     "(74,282)",
+     "",
+     "$",
+     "566,948",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  (Loss) Earnings per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(1.1444)",
+     "",
+     "$",
+     "(1.3059)",
+     "",
+     "$",
+     "(1.8500)",
+     "",
+     "$",
+     "(0.044)",
+     "",
+     "$",
+     "0.398",
+     ""
+    ],
+    [
+     "  Diluted-NA",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted-average common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic *",
+     "",
+     "12,678,904",
+     "",
+     "",
+     "5,009,312",
+     "",
+     "",
+     "2,216,056",
+     "",
+     "",
+     "1,697,858",
+     "",
+     "",
+     "1,423,849",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Dividend per common share",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Dividends-NA",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 854,
+    "end_line": 900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "No underwriters were involved in the transactions described above. All of the securities issued in the foregoing transactions were issued by the Company in reliance upon the exemption from registration available under Section 4(a)(2) of the Securities Act, including Regulation D and/or Regulation S promulgated thereunder, in that the transactions involved the issuance and sale of the Company\u2019s securities to financially sophisticated individuals or entities that were aware of the Company\u2019s activities and business and financial condition, and took the securities for investment purposes and understood the ramifications of their actions. The Company did not engage in any form of general solicitation or general advertising in connection with the transactions. The individuals or entities represented that they were each an \u201caccredited investor\u201d as defined in Regulation D at the time of issuance of the securities, and that each of such individuals or entities was acquiring such securities for their own account and not for distribution. All certificates representing the securities issued have a legend imprinted on them stating that the shares have not been registered under the Securities Act and cannot be transferred until properly registered under the Securities Act or an exemption applies.\nUse of Proceeds\nNot applicable.\nIssuer Repurchases of Equity Securities\nDuring the year ended December 31, 2020, there were no repurchases of the Company\u2019s common stock by the Company.\nItem 6. Selected Financial Data\nThe following tables set forth the selected consolidated financial data for each of the fiscal years in the five-year period ended December 31, 2020. We derived the selected consolidated financial data from our audited consolidated financial statements, which should be read in conjunction with Item 7, Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations in Part II of this Annual Report on Form 10-K, and our consolidated financial statements and the related notes included elsewhere in this report. Our historical results for any prior period are not indicative of our future results.",
+   "prose_after": "* The weighted average number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet data",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2017",
+     "",
+     "2016",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents and Restricted cash",
+     "$",
+     "3,489,778",
+     "$",
+     "2,972,649",
+     "$",
+     "731,355",
+     "$",
+     "1,056,399",
+     "$",
+     "1,003,924"
+    ],
+    [
+     "  Net working capital",
+     "",
+     "7,427,385",
+     "",
+     "10,343,993",
+     "",
+     "4,395,711",
+     "",
+     "2,268,794",
+     "",
+     "1,217,947"
+    ],
+    [
+     "  Total assets",
+     "",
+     "29,940,103",
+     "",
+     "11,331,544",
+     "",
+     "5,488,537",
+     "",
+     "5,297,461",
+     "",
+     "3,395,878"
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "6,036,595",
+     "",
+     "875,953",
+     "",
+     "379,295",
+     "",
+     "2,046,536",
+     "",
+     "843,867"
+    ],
+    [
+     "  Total shareholders\u2019 equity",
+     "",
+     "23,903,508",
+     "",
+     "10,455,591",
+     "",
+     "5,109,242",
+     "",
+     "3,250,925",
+     "",
+     "2,552,011"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "* The weighted average number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020.",
+   "prose_after": "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nWe intend for this discussion to provide information that will assist in understanding our consolidated financial statements, the changes in certain key items in those consolidated financial statements, and the primary factors that accounted for those changes, as well as how certain accounting principles affect our consolidated financial statements. This discussion should be read in conjunction with our consolidated financial statements and accompanying notes for the fiscal years ended December 31, 2019, and year ended December 31, 2018. Readers should also read and take into consideration the risks and uncertainties described under the section titled, \u201cRisk Factors\u201d in this Annual Report, and our forward-looking statements disclaimer contained on the cover page in this Annual Report, the provisions of which are incorporated by reference herein.\nComponents of Results of Operations\nRevenue (Service)",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue (service)",
+     "$",
+     "37,910,393",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "34,648,621",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of revenues (service)",
+     "",
+     "31,546,948",
+     "",
+     "83.2",
+     "",
+     "",
+     "28,411,869",
+     "",
+     "82.0",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,363,445",
+     "",
+     "16.8",
+     "",
+     "",
+     "6,236,752",
+     "",
+     "18.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "1,966,045",
+     "",
+     "5.2",
+     "",
+     "",
+     "101,933",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "10,994,815",
+     "",
+     "29.0",
+     "",
+     "",
+     "5,918,660",
+     "",
+     "17.1",
+     ""
+    ],
+    [
+     "Sales and Marketing",
+     "",
+     "1,423,909",
+     "",
+     "3.8",
+     "",
+     "",
+     "389,610",
+     "",
+     "1.1",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "6,244,704",
+     "",
+     "16.5",
+     "",
+     "",
+     "6,412,998",
+     "",
+     "18.5",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "20,629,473",
+     "",
+     "54.5",
+     "",
+     "",
+     "12,823,201",
+     "",
+     "37.0",
+     ""
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(14,266,028)",
+     "",
+     "(37.6)",
+     "",
+     "",
+     "(6,586,449)",
+     "",
+     "(19.0)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (Expenses)/Income",
+     "",
+     "(243,641)",
+     "",
+     "(0.6)",
+     "",
+     "",
+     "72,359",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Impairment loss on investment in associate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net (loss) before income tax",
+     "",
+     "(14,509,669)",
+     "",
+     "(38.3)",
+     "",
+     "",
+     "(6,514,090)",
+     "",
+     "(18.8)",
+     ""
+    ],
+    [
+     "Income tax (expense)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(27,596)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "$",
+     "(14,509,669)",
+     "",
+     "(38.3)",
+     "",
+     "$",
+     "(6,541,686)",
+     "",
+     "(18.9)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Other income consists of income received for activities outside of our core business. In 2020, this includes interest from US based financial asset money market funds.\nOther (expense) consists of expense for activities outside of our core business. In 2020, DATALogiq incurred early withdrawal fees from an escrow account relating to Conversion Point Technologies.\nProvision for Income Taxes\nProvision for income taxes consists of estimated income taxes due to the United States, foreign countries, and the respective taxing authorities in jurisdictions in which we conduct business.\nResults of Operations\nThe following sets forth selected items from our statements of operations and the percentages that such items bear to net sales for the fiscal years ended December 31, 2020, and December 31, 2019 (Because of rounding, numbers may not foot). The Consolidated results include Logiq Inc (a Delaware Corporation) and its subsidiaries, Logiq, Inc (a Nevada Corporation) and Fixel AI Inc.(also known as DATALogiq). Logiq Inc (Delaware) results include our business segment APPLogiq.\nConsolidated Results of Operations",
+   "prose_after": "Logiq Inc .including APPLogiq Results of Operations",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue (service)",
+     "$",
+     "22,758,572",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "34,648,621",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of revenues (service)",
+     "",
+     "19,094,090",
+     "",
+     "83.9",
+     "",
+     "",
+     "28,411,869",
+     "",
+     "82.0",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "3,664,482",
+     "",
+     "16.1",
+     "",
+     "",
+     "6,236,752",
+     "",
+     "18.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "113,533",
+     "",
+     "0.5",
+     "",
+     "",
+     "101,933",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "6,611,134",
+     "",
+     "29.1",
+     "",
+     "",
+     "5,918,660",
+     "",
+     "17.1",
+     ""
+    ],
+    [
+     "Sales and Marketing",
+     "",
+     "1,016,625",
+     "",
+     "4.5",
+     "",
+     "",
+     "389,610",
+     "",
+     "1.1",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,953,913",
+     "",
+     "26.1",
+     "",
+     "",
+     "6,412,998",
+     "",
+     "18.5",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "13,695,205",
+     "",
+     "60.2",
+     "",
+     "",
+     "12,823,201",
+     "",
+     "37.0",
+     ""
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(10,030,723)",
+     "",
+     "(44.1)",
+     "",
+     "",
+     "(6,586,449)",
+     "",
+     "(19.0)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income/(Expenses)",
+     "",
+     "16,748",
+     "",
+     "0.1",
+     "",
+     "",
+     "72,359",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Impairment loss on investment in associate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net (loss) before income tax",
+     "",
+     "(10,013,975)",
+     "",
+     "(44.0)",
+     "",
+     "",
+     "(6,514,090)",
+     "",
+     "(18.8)",
+     ""
+    ],
+    [
+     "Income tax (expense)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(27,596)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "$",
+     "(10,013,975)",
+     "",
+     "(44.0)",
+     "",
+     "$",
+     "(6,541,686)",
+     "",
+     "(18.9)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1025
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Logiq Inc .including APPLogiq Results of Operations",
+   "prose_after": "DATALogiq Results of Operations",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "Revenue (service)",
+     "$",
+     "15,151,821",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "Cost of revenues (service)",
+     "",
+     "12,452,858",
+     "",
+     "82.2",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Gross profit",
+     "",
+     "2,698,963",
+     "",
+     "17.8",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "1,852,512",
+     "",
+     "12.2",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,383,681",
+     "",
+     "28.9",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Sales and Marketing",
+     "",
+     "407,284",
+     "",
+     "2.7",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Research and development",
+     "",
+     "290,791",
+     "",
+     "1.9",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "6,934,268",
+     "",
+     "45.8",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(4,235,305)",
+     "",
+     "(28.0)",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income/(Expenses)",
+     "",
+     "(260,389)",
+     "",
+     "(1.7)",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Impairment loss on investment in associate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Net (loss) before income tax",
+     "",
+     "(4,495,694)",
+     "",
+     "(29.7)",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Income tax (expense)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(4,495,694)",
+     "",
+     "(29.7)",
+     "",
+     "$",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1029,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "DATALogiq Results of Operations",
+   "prose_after": "Consolidated Geographical Information\n\u2013 Revenue\nRevenue by geographical region for the years ended December 31, 2020 and 2019 were as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Southeast Asia",
+     "$",
+     "12,109,193",
+     "31.9",
+     "%",
+     "$",
+     "25,988,621",
+     "75.0",
+     "%"
+    ],
+    [
+     "EU",
+     "",
+     "5,570,000",
+     "14.7",
+     "%",
+     "$",
+     "5,888,800",
+     "17.0",
+     "%"
+    ],
+    [
+     "South Korea",
+     "",
+     "3,770,000",
+     "9.9",
+     "%",
+     "$",
+     "2,771,200",
+     "8.0",
+     "%"
+    ],
+    [
+     "Africa",
+     "",
+     "961,200",
+     "2.6",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "North America",
+     "",
+     "15,500,000",
+     "40.9",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "37,910,393",
+     "100.0",
+     "%",
+     "",
+     "34,648,621",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Geographical Information\n\u2013 Revenue\nRevenue by geographical region for the years ended December 31, 2020 and 2019 were as follows:",
+   "prose_after": "Consolidated Revenue (Service)\nConsolidated Service revenues were $37,910,393 and $34,648,621 for the twelve months ended December 31, 2020 and 2019, respectively. The increase is due to the inclusion of the revenues of DATALogiq effective January 8, 2020. APPLogiq revenues declined by 34% as compared to 2019 due to a loss of customers as a result of adverse effects of the on-set of Covid-19 and from a strategic shift away from white label APP resellers and towards higher margin direct marketing customers.\nConsolidated Cost of Revenue (Service)\nConsolidated Cost of service was $31,546,948 and $28,411,869 for the twelve months ended December 31, 2020 and 2019, respectively. FY2020 included the cost of revenues of DATALogiq effective January 8, 2020.\nConsolidated Gross Profit\nConsolidated Gross Profit was $6,363,445 and $6,236,752 for the twelve months ended December 31, 2020 and 2019, respectively. FY2020 included the Gross profit of DATALogiq effective January 8, 2020.\nConsolidated Gross Profit margin was 16.8% and 18.0% for the twelve months ended December 31, 2020 and 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows:",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "  Net cash (used in) operating activities",
+     "$",
+     "(11,867,698)",
+     "",
+     "$",
+     "(6,916,380)",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) investment activities",
+     "$",
+     "3,697,068",
+     "",
+     "$",
+     "(2,730,363)",
+     ""
+    ],
+    [
+     "  Net cash provided by financing activities",
+     "$",
+     "8,687,759",
+     "",
+     "$",
+     "11,888,037",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1250,
+    "end_line": 1263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Our sources of liquidity and cash flows are used to fund ongoing operations, research and development projects for new products and technologies, and provide ongoing support services for our customers. Over the next two fiscal years, we anticipate that we will use our liquidity and cash flows from our operations to fund our growth, particularly to grow our data sales. In addition, as part of our business strategy, we occasionally evaluate potential acquisitions of businesses, products and technologies, and minority equity investments. Accordingly, a portion of our available cash may be used at any time for the acquisition of complementary products or businesses or minority equity investments. Such potential transactions may require substantial capital resources, which may require us to seek additional debt or equity financing. We cannot assure you that we will be able to successfully identify suitable acquisition or investment candidates, complete acquisitions or investments, integrate acquired businesses into our current operations, or expand into new markets. Furthermore, we cannot provide assurances that additional financing will be available to us in any required time frame and on commercially reasonable terms, if at all.\nAs of December 31, 2020, we currently have material commitments for capital expenditures. Our capex & R&D plans are dependent on the availability of working capital and is able to be scaled back as required.\nWe know of no material trends in our capital trends aside from the funds to be raised in future offerings. We have focused our resources behind a plan to grow our data sales, where we have a technology advantage and higher margins. If we are successful in implementing our plan, we expect to return to a positive cash flow from operations. However, there is no assurance that we will be able to achieve this objective.\nWe know of no trends or demands reasonably likely to affect liquidity other than those listed as Risk Factors.\nThe following table summarizes our cash flows for the years ended December 31, 2020 and 2019:",
+   "prose_after": "Operating Activities\nDuring the year ended December 31, 2020, loss from operations used $(14,509,669), compared to $(6,541,686) for the year ended December 31, 2019.\nInvesting Activities\nDuring the year ended December 31, 2020, we did use cash $3,697,068 for investing activities in the Company\u2019s financial asset investment portfolio based and managed in the US.\nFinancing Activities\nDuring the year ended December 31, 2020, we generated $8,687,759 from financing activities, compared to $11,888,037 of cash generated for the year ended December 31, 2019. During the year, we issued Convertible promissory notes of $2,911,000, private placements in aggregate of $8,607,691, and DATALogiq received from the US Government notes payable loan of $503,700 under the CARES Act.\nWe estimate that based on current plans and assumptions, that our available cash and the cash we generate from our core operations will generally be sufficient to satisfy our capital expenditures under our present operating expectations, without further financing, for up to 12 months. We have sufficient working capital to fund the expansion of our operations and to provide working capital necessary for our ongoing operations and obligations. However, we shall continue to evaluate our capital expenditure needs based upon factors including our growth rate, the timing and extent of spending to support development efforts, the expansion of our sales and marketing, the timing of new product introductions, and the continuing market acceptance of our products and services. If cash generated from operations is insufficient to satisfy our capital requirements, we may open a revolving line of credit with a bank, or we may have to sell additional equity or debt securities or obtain expanded credit facilities to fund our operating expenses, pay our obligations, diversify our geographical reach, and grow our company. In the event such financing is needed in the future, there can be no assurance that such financing will be available to us, or, if available, that it will be in amounts and on terms acceptable to us. If we cannot raise additional funds when we need or want them, our operations and prospects could be negatively affected. However, if cash flows from operations become insufficient to continue operations at the current level, and if no additional financing were obtained, then management would restructure the Company in a way to preserve its business while maintaining expenses within operating cash flows.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1278,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets for year ended December 31, 2020 and 2019",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for year ended December 31, 2020 and 2019",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the year ended December 31, 2020 and 2019",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity for the year ended December 31, 2020 and 2019",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1320,
+    "end_line": 1335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Our recently issued or newly adopted accounting standards are included in Note 2 - \u201cSummary of Significant Accounting Policies\u201d of the Notes to Consolidated Financial Statements included in this Annual Report.\nOff-Balance Sheet Arrangements\nAs of December 31, 2020, we did not have any relationships with unconsolidated entities or financial partnerships, such as entities often referred to as structured finance or special purpose entities, which would have been established for the purpose of facilitating off-balance sheet arrangements or other contractually narrow or limited purposes. As such, we are not materially exposed to any financing, liquidity, market, or credit risk that could arise if we had engaged in such relationships.\nWe do not have relationships or transactions with persons or entities that derive benefits from their non-independent relationship with us or our related parties.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nNot applicable.\nItem 8. Financial Statements and Supplementary Data\nLOGIQ, INC.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of Logiq Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Logiq Inc. (the \u201cCompany\u201d) as of December 31, 2020 and 2019, and the related consolidated statements of operations and comprehensive loss, stockholders\u2019 equity and cash flows for each of the two years in the period ended December 31, 2020, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2020 and 2019, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2020 in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1313,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Centurion ZD CPA & Co.",
+     ""
+    ],
+    [
+     "Centurion ZD CPA & Co.",
+     ""
+    ],
+    [
+     "Hong Kong",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "March 30, 2021",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2012",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Centurion ZD CPA & Co.",
+    "Centurion ZD CPA & Co.",
+    "Hong Kong"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1376,
+    "end_line": 1386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We tested the effectiveness of controls over management\u2019s goodwill and long-lived impairment process, including controls related to determining the completeness of management\u2019s assessment as to which events or changes in circumstance indicates a software technology\u2019s assets should be tested for recoverability.\nWe evaluated management\u2019s process for determining whether all potential indicators of impairment were appropriately identified, including:\n\u2022comparing the consistency and precision of the methodology used to determine the proper impairment indicators by management to the relevant requirements of generally accepted accounting principles (\u201cGAAP\u201d);\n\u2022considering current technology, economy or other industry changes through review of relevant industry publications, current news publications and Board of Directors\u2019 meeting minutes, in order to evaluate the completeness of events or changes in circumstances identified by management as indicators that the software technology asset should be tested for recoverability.",
+   "prose_after": "Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Intangible assets, net",
+     "",
+     "11,736,540",
+     "",
+     "",
+     "611,598",
+     ""
+    ],
+    [
+     "  Property and equipment, net",
+     "",
+     "178,561",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "5,078,090",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Total non-current assets",
+     "",
+     "16,993,191",
+     "",
+     "",
+     "611,598",
+     ""
+    ],
+    [
+     "  Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amount due from associate",
+     "",
+     "5,673,700",
+     "",
+     "",
+     "2,825,700",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "2,618,494",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Right to use assets \u2013 operating lease",
+     "",
+     "364,234",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Other amounts recoverable",
+     "",
+     "-",
+     "",
+     "",
+     "549,550",
+     ""
+    ],
+    [
+     "  Prepayment, deposit and other receivables",
+     "",
+     "206,443",
+     "",
+     "",
+     "1,641,684",
+     ""
+    ],
+    [
+     "  Financial assets held for resale",
+     "",
+     "594,263",
+     "",
+     "",
+     "2,730,363",
+     ""
+    ],
+    [
+     "  Restricted cash",
+     "",
+     "10,889",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "",
+     "3,478,889",
+     "",
+     "",
+     "2,972,649",
+     ""
+    ],
+    [
+     "  Total current assets",
+     "",
+     "12,946,912",
+     "",
+     "",
+     "10,719,946",
+     ""
+    ],
+    [
+     "  Total assets",
+     "$",
+     "29,940,103",
+     "",
+     "$",
+     "11,331,544",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LIABILITIES AND STOCKHOLDER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "1,009,204",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accruals and other payables",
+     "",
+     "1,110,732",
+     "",
+     "",
+     "298,453",
+     ""
+    ],
+    [
+     "  Deferred revenue",
+     "",
+     "46,857",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Lease liability \u2013 operating lease",
+     "",
+     "364,234",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Convertible promissory",
+     "",
+     "2,911,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Amount due to director",
+     "",
+     "77,500",
+     "",
+     "",
+     "77,500",
+     ""
+    ],
+    [
+     "  Total current liabilities",
+     "",
+     "5,519,527",
+     "",
+     "",
+     "375,953",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non-Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other loan",
+     "",
+     "10,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Notes payable",
+     "",
+     "507,068",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Bank loan",
+     "",
+     "-",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "  Total non-current liabilities",
+     "",
+     "517,068",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "6,036,595",
+     "",
+     "",
+     "875,953",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.0001 par value, 250,000,000 shares authorized, 15,557,439 and 8,561,704 shares issued and outstanding as of December 31, 2020 and 2019, respectively*",
+     "",
+     "1,556",
+     "",
+     "",
+     "11,130",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "66,739,895",
+     "",
+     "",
+     "58,058,118",
+     ""
+    ],
+    [
+     "  Capital reserves",
+     "",
+     "19,285,383",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accumulated deficit brought forward",
+     "",
+     "(62,123,326)",
+     "",
+     "",
+     "(47,613,657)",
+     ""
+    ],
+    [
+     "  Total stockholder\u2019s equity",
+     "",
+     "23,903,508",
+     "",
+     "",
+     "10,455,591",
+     ""
+    ],
+    [
+     "  Total liabilities and stockholders\u2019 equity",
+     "$",
+     "29,940,103",
+     "",
+     "$",
+     "11,331,544",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1390,
+    "end_line": 1450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheets",
+   "prose_after": "* The number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020.\nThe accompanying notes are an integral part of these financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1454,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Service Revenue",
+     "$",
+     "37,910,393",
+     "",
+     "",
+     "34,648,621",
+     ""
+    ],
+    [
+     "Cost of Service",
+     "",
+     "31,546,948",
+     "",
+     "",
+     "28,411,869",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "6,363,445",
+     "",
+     "",
+     "6,236,752",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "1,966,045",
+     "",
+     "",
+     "101,933",
+     ""
+    ],
+    [
+     "  Research and development",
+     "",
+     "6,244,704",
+     "",
+     "",
+     "6,412,998",
+     ""
+    ],
+    [
+     "  Sales and marketing",
+     "",
+     "1,423,909",
+     "",
+     "",
+     "389,610",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "10,994,815",
+     "",
+     "",
+     "5,918,660",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "20,629,473",
+     "",
+     "",
+     "12,823,201",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) from Operations",
+     "",
+     "(14,266,028)",
+     "",
+     "",
+     "(6,586,449)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "292,767",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "49,126",
+     "",
+     "",
+     "72,359",
+     ""
+    ],
+    [
+     "Other Income/(Expenses), net",
+     "",
+     "(243,641)",
+     "",
+     "",
+     "72,359",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) before income tax",
+     "",
+     "(14,509,669)",
+     "",
+     "",
+     "(6,514,090)",
+     ""
+    ],
+    [
+     "Income tax (Corporate tax)",
+     "",
+     "-",
+     "",
+     "",
+     "27,596",
+     ""
+    ],
+    [
+     "Net (Loss) for the year",
+     "$",
+     "(14,509,669)",
+     "",
+     "",
+     "(6,541,686)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) profit per common share - basic and fully diluted:",
+     "",
+     "(1.1444)",
+     "",
+     "",
+     "(1.3059)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of basic and fully diluted common shares outstanding*",
+     "",
+     "12,678,904",
+     "",
+     "",
+     "5,009,312",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1458,
+    "end_line": 1498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "* The number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020.\nThe accompanying notes are an integral part of these financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "* The weighted average number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020\nThe accompanying notes are an integral part of these financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1454,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1502,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net (loss)",
+     "$",
+     "(14,509,669)",
+     "",
+     "$",
+     "(6,541,686)",
+     ""
+    ],
+    [
+     "  Adjustments to reconciled net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation of property and equipment",
+     "",
+     "46,565",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Amortization of intangible assets",
+     "",
+     "1,919,480",
+     "",
+     "",
+     "101,933",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    (Increase) decrease in amount due from associate",
+     "",
+     "-",
+     "",
+     "",
+     "(1,963,700)",
+     ""
+    ],
+    [
+     "    (Increase) decrease in trade and other receivables",
+     "",
+     "(271,049)",
+     "",
+     "",
+     "(22,295)",
+     ""
+    ],
+    [
+     "    (Increase) decrease in prepaid expenses and current other assets",
+     "",
+     "(91,664)",
+     "",
+     "",
+     "1,562,262",
+     ""
+    ],
+    [
+     "    (Increase) decrease in accounts payable",
+     "",
+     "642,393",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    (Increase) decrease in other accrued liabilities",
+     "",
+     "405,347",
+     "",
+     "",
+     "(3,344)",
+     ""
+    ],
+    [
+     "    (Increase) decrease in amount due from subsidiary",
+     "",
+     "-",
+     "",
+     "",
+     "(549,550)",
+     ""
+    ],
+    [
+     "    Increase (decrease) in deferred revenue",
+     "",
+     "(9,101)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from bank loan",
+     "",
+     "-",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "  Net cash (used in) operating activities",
+     "",
+     "(11,867,698)",
+     "",
+     "",
+     "(6,916,380)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Purchase of intangible assets",
+     "",
+     "(116,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Financial assets held for resale",
+     "",
+     "2,136,100",
+     "",
+     "",
+     "(2,730,363)",
+     ""
+    ],
+    [
+     "    Net restricted cash acquired in acquisitions",
+     "",
+     "1,676,968",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) investing activities",
+     "",
+     "3,697,068",
+     "",
+     "",
+     "(2,730,363)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Advances to associate",
+     "",
+     "(2,848,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Repayment of bank loan",
+     "",
+     "(500,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Borrowings under Other loan",
+     "",
+     "10,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from Convertible promissory notes",
+     "",
+     "2,911,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from notes payable-US government CARES Act",
+     "",
+     "507,068",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from shares to be issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from stock issuance, net of expenses",
+     "",
+     "8,607,691",
+     "",
+     "",
+     "11,888,037",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) financing activities",
+     "",
+     "8,687,759",
+     "",
+     "",
+     "11,888,037",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "517,129",
+     "",
+     "",
+     "2,241,294",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH AND CASH EQUIVALENTS AND RESTRICTED CASH, BEGINNING OF PERIOD",
+     "",
+     "2,972,649",
+     "",
+     "",
+     "731,355",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH AND CASH EQUIVALENTS AND RESTRICTED CASH, END OF PERIOD",
+     "$",
+     "3,489,778",
+     "",
+     "$",
+     "2,972,649",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NON-CASH TRANSACTION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of shares for services received",
+     "$",
+     "2,014,223",
+     "",
+     "$",
+     "2,267,779",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1506,
+    "end_line": 1560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "* The weighted average number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020\nThe accompanying notes are an integral part of these financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Stockholders\u2019 Equity\nFor the Years Ended December 31, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1502,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1562,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock *",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Additional paid-in capital",
+     "",
+     "",
+     "Subscriptions received/Capital reserves",
+     "",
+     "Accumulated (Deficit)",
+     "",
+     "",
+     "Stockholders\u2019\n\n\n\n(Deficit)/Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2018",
+     "",
+     "36,915,343",
+     "",
+     "$",
+     "3,692",
+     "",
+     "$",
+     "46,177,521",
+     "",
+     "$",
+     "-",
+     "$",
+     "(41,071,971)",
+     "",
+     "$",
+     "5,109,242",
+     ""
+    ],
+    [
+     "    Issuance of Shares",
+     "",
+     "58,627,601",
+     "",
+     "",
+     "5,748",
+     "",
+     "",
+     "9,614,508",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "9,620,256",
+     ""
+    ],
+    [
+     "  Cancelation of shares",
+     "",
+     "(3,550,000)",
+     "",
+     "",
+     "(355)",
+     "",
+     "",
+     "355",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Shares issued for services",
+     "",
+     "19,311,309",
+     "",
+     "",
+     "2,045",
+     "",
+     "",
+     "2,265,734",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "2,267,779",
+     ""
+    ],
+    [
+     "  Net loss for the year",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(6,541,686)",
+     "",
+     "",
+     "(6,541,686)",
+     ""
+    ],
+    [
+     "Balance December 31, 2019",
+     "",
+     "111,304,253",
+     "",
+     "$",
+     "11,130",
+     "",
+     "$",
+     "58,058,118",
+     "",
+     "$",
+     "-",
+     "$",
+     "(47,613,657)",
+     "",
+     "$",
+     "10,455,591",
+     ""
+    ],
+    [
+     "  Effect of reverse split from 13 shares to 1 share",
+     "",
+     "(102,742,549)",
+     "",
+     "",
+     "(10,274)",
+     "",
+     "",
+     "10,274",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Issuance of Shares",
+     "",
+     "2,366,016",
+     "",
+     "",
+     "237",
+     "",
+     "",
+     "6,657,412",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "6,657,649",
+     ""
+    ],
+    [
+     "  Issuance of Shares for acquisitions",
+     "",
+     "3,311,668",
+     "",
+     "",
+     "331",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "19,285,383",
+     "",
+     "-",
+     "",
+     "",
+     "19,285,714",
+     ""
+    ],
+    [
+     "  Cancelation of shares",
+     "",
+     "(404,439)",
+     "",
+     "",
+     "(40)",
+     "",
+     "",
+     "(616,841)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(616,881)",
+     ""
+    ],
+    [
+     "    Shares issued for services",
+     "",
+     "1,722,490",
+     "",
+     "",
+     "172",
+     "",
+     "",
+     "2,630,932",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "2,631,104",
+     ""
+    ],
+    [
+     "  Net loss for the year",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(14,509,669)",
+     "",
+     "",
+     "(14,509,669)",
+     ""
+    ],
+    [
+     "Balance December 31, 2020",
+     "",
+     "15,557,439",
+     "",
+     "$",
+     "1,556",
+     "",
+     "$",
+     "66,739,895",
+     "",
+     "$",
+     "19,285,383",
+     "$",
+     "(62,123,326)",
+     "",
+     "$",
+     "23,903,508",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1568,
+    "end_line": 1591
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statements of Stockholders\u2019 Equity\nFor the Years Ended December 31, 2020 and 2019",
+   "prose_after": "* The number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020\nThe accompanying notes are an integral part of these financial statements\nLogiq, Inc.\nDECEMBER 31, 2020 AND 2019\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 ORGANIZATION AND BUSINESS DESCRIPTION\nLogiq Inc (a Delaware Corporation or the Company\u201d) and its subsidiary, Logiq, Inc (a Nevada Corporation) (also known as DATALogiq operating business segment). Logiq Inc (Delaware) results include our other operating business segment APPLogiq.\nThe Company has an associated company, PT Weyland Indonesia Perkasa (\u201cWIP\u2019), an Indonesian limited liability company, where it holds an equitable interest of 31%.\nThe Company offers solutions that help SMBs to provide access to and reduce transaction friction of e-commerce for their clients globally. The Company\u2019s solutions are provided through (i) its core platform, rebranded as \u201cAPPLogiq\u201d (operated as CreateApp (https://www.createapp.com/), which allows SMBs to establish their point-of-presence on the web and (ii) \u201cDATALogiq\u201d, a digital marketing analytics business unit that offers proprietary data management, audience targeting and other digital marketing services that improve an SMB\u2019s discovery and branding within the vast e-commerce landscape.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1562,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1595,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Logiq",
+     "",
+     "DataLogiq",
+     "",
+     "Fixel",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cost at January 1, 2020",
+     "$",
+     "1,769,330",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,769,330"
+    ],
+    [
+     "Additions",
+     "$",
+     "116,000",
+     "$",
+     "8,250,000",
+     "$",
+     "4,678,422",
+     "$",
+     "13,044,422"
+    ],
+    [
+     "Cost at December 31, 2020",
+     "$",
+     "1,885,330",
+     "$",
+     "8,250,000",
+     "$",
+     "4,678,422",
+     "$",
+     "14,813,752"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brought forward at January 1, 2020",
+     "$",
+     "1,157,732",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,157,732"
+    ],
+    [
+     "Charge for the period",
+     "$",
+     "113,533",
+     "$",
+     "1,650,000",
+     "$",
+     "155,947",
+     "",
+     "1,919,480"
+    ],
+    [
+     "Accumulated depreciation at December 31, 2020",
+     "$",
+     "1,271,265",
+     "$",
+     "1,650,000",
+     "$",
+     "155,947",
+     "$",
+     "3,077,212"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net intangible assets at December 31, 2020",
+     "$",
+     "614,065",
+     "$",
+     "6,600,000",
+     "$",
+     "4,522,475",
+     "$",
+     "11,736,540"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net intangible assets at December 31, 2019",
+     "$",
+     "611,598",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "611,598"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1766,
+    "end_line": 1784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "In July 2018, the FASB issued ASU 2018-11 - Leases (Topic 842): Targeted Improvements. The ASU simplifies transition requirements and, for lessors, provides a practical expedient for the separation of non-lease components from lease components. Specifically, the ASU provides: (1) an optional transition method that entities can use when adopting ASC 842 and (2) a practical expedient that permits lessors to not separate non-lease components from the associated lease component if certain conditions are met. For entities that have not adopted Topic 842 before the issuance of this Update, the effective date and transition requirements for the amendments in this Update are the same as the effective date and transition requirements in Update 2016-02. For entities that have adopted Topic 842 before the issuance of this Update, the transition and effective date of the amendments in this Update are as follows: 1) The practical expedient may be elected either in the first reporting period following the issuance of this Update or at the original effective date of Topic 842 for that entity. 2) The practical expedient may be applied either retrospectively or prospectively. All entities, including early adopters, that elect the practical expedient related to separating components of a contract in this Update must apply the expedient, by class of underlying asset, to all existing lease transactions that qualify for the expedient at the date elected. The Company does not believe this guidance will have a material impact on its condensed consolidated financial statements.\nThe Company has considered all new accounting pronouncements and has concluded that there are no new pronouncements that may have a material impact on results of operations, financial condition, or cash flows, based on current information.\nNOTE 3 \u2013 INTANGIBLE ASSETS, NET\nAs of December 31, 2020 and 2019, the Company has the following amounts related to intangible assets:",
+   "prose_after": "Amortization expenses related to intangible assets for the three months ended December 31, 2020 and 2019 amounted to $599,730 and $25,483, respectively. Amortization expenses related to intangible assets for the twelve months ended December 31, 2020 and 2019 amounted to $1,919,480 and $101,933, respectively.\nNo significant residual value is estimated for these intangible assets.\nThe estimated future amortization expense of intangible costs as of December 31, 2020 in the following fiscal years is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021",
+     "",
+     "2,679,627"
+    ],
+    [
+     "2022",
+     "",
+     "2,679,627"
+    ],
+    [
+     "2023",
+     "",
+     "2,679,627"
+    ],
+    [
+     "2024",
+     "",
+     "2,679,627"
+    ],
+    [
+     "2025",
+     "",
+     "1,018,032"
+    ],
+    [
+     "",
+     "$",
+     "11,736,540"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1791,
+    "end_line": 1801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "Amortization expenses related to intangible assets for the three months ended December 31, 2020 and 2019 amounted to $599,730 and $25,483, respectively. Amortization expenses related to intangible assets for the twelve months ended December 31, 2020 and 2019 amounted to $1,919,480 and $101,933, respectively.\nNo significant residual value is estimated for these intangible assets.\nThe estimated future amortization expense of intangible costs as of December 31, 2020 in the following fiscal years is as follows:",
+   "prose_after": "NOTE 4 \u2013 PROPERTY AND EQUIPMENT, NET\nAs of December 31, 2020, and December 31, 2019, the Company\u2019s DataLogiq business segment has the following amounts related to property and equipment:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Leasehold Improvements",
+     "",
+     "Computers and Equipment",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cost at January 1, 2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Additions",
+     "$",
+     "165,957",
+     "$",
+     "59,169",
+     "$",
+     "225,126"
+    ],
+    [
+     "Cost at December 31, 2020",
+     "$",
+     "165,957",
+     "$",
+     "59,169",
+     "$",
+     "225,126"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brought forward at January 1, 2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Charge for the period",
+     "$",
+     "33,635",
+     "$",
+     "12,930",
+     "$",
+     "46,565"
+    ],
+    [
+     "Accumulated depreciation at December 31, 2020",
+     "$",
+     "33,635",
+     "$",
+     "12,930",
+     "$",
+     "46,565"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net property and equipment assets at December 31, 2020",
+     "$",
+     "132,322",
+     "$",
+     "46,239",
+     "$",
+     "178,561"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net property and equipment assets at December 31, 2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1806,
+    "end_line": 1825
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 PROPERTY AND EQUIPMENT, NET"
+    }
+   },
+   "prose_before": "NOTE 4 \u2013 PROPERTY AND EQUIPMENT, NET\nAs of December 31, 2020, and December 31, 2019, the Company\u2019s DataLogiq business segment has the following amounts related to property and equipment:",
+   "prose_after": "Depreciation expenses for the years ended December 31, 2020 and 2019 amounted to $46,565 and $0, respectively.\nNOTE 5 \u2013 GOODWILL",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "As of December 31, 2019"
+    ],
+    [
+     "Goodwill at cost \u2013 Push",
+     "$",
+     "4,781,208",
+     "-"
+    ],
+    [
+     "Goodwill at cost - Fixel",
+     "",
+     "296,882",
+     "-"
+    ],
+    [
+     "Total",
+     "",
+     "5,078,090",
+     "-"
+    ],
+    [
+     "Accumulated impairment losses",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "5,078,090",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1830,
+    "end_line": 1842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 GOODWILL"
+    }
+   },
+   "prose_before": "Depreciation expenses for the years ended December 31, 2020 and 2019 amounted to $46,565 and $0, respectively.\nNOTE 5 \u2013 GOODWILL",
+   "prose_after": "Goodwill has been allocated for impairment testing purposes to the acquisition of Push Holdings Inc.\nThe recoverable amount of this unit is determined based on external valuation performed by a third party valuation firm on March 20, 2020 as updated to December 31, 2020.\nThe assets were valued using a Fair Market Value basis as defined by The Financial Accounting Standards Board (FASB ASC 820-10-20). Liabilities were taken from Push Holdings Inc Consolidated Balance Sheet as of January 8, 2020.\nNOTE 6 \u2013 ACCOUNTS RECEIVABLE",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Datalogiq",
+     "",
+     "",
+     "Fixel",
+     "",
+     "Datalogiq",
+     "",
+     "Fixel",
+     ""
+    ],
+    [
+     "Balance as at beginning of period",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Additions charged to operations",
+     "",
+     "2,649,352",
+     "",
+     "",
+     "23,761",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Allowance for doubtful debts",
+     "",
+     "(54,619)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Recoveries",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "2,594,733",
+     "",
+     "",
+     "23,761",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1851,
+    "end_line": 1863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "Goodwill has been allocated for impairment testing purposes to the acquisition of Push Holdings Inc.\nThe recoverable amount of this unit is determined based on external valuation performed by a third party valuation firm on March 20, 2020 as updated to December 31, 2020.\nThe assets were valued using a Fair Market Value basis as defined by The Financial Accounting Standards Board (FASB ASC 820-10-20). Liabilities were taken from Push Holdings Inc Consolidated Balance Sheet as of January 8, 2020.\nNOTE 6 \u2013 ACCOUNTS RECEIVABLE",
+   "prose_after": "Movement all in allowance for doubtful debts",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Datalogiq",
+     "",
+     "",
+     "Fixel",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "54,619",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Provision for bad debts",
+     "",
+     "60,324",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Write-offs",
+     "",
+     "(60,324)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "54,619",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1866,
+    "end_line": 1876
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "Movement all in allowance for doubtful debts",
+   "prose_after": "Age of Impaired trade receivables",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Datalogiq",
+     "",
+     "",
+     "",
+     "Fixel",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "1,106,719",
+     "41.8",
+     "%",
+     "",
+     "23,761",
+     "100.0",
+     "%"
+    ],
+    [
+     "1 - 30 days",
+     "",
+     "1,451,119",
+     "54.8",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "31 - 60 days",
+     "",
+     "24,809",
+     "0.9",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "61-90 days",
+     "",
+     "6,638",
+     "0.3",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "91 and over",
+     "",
+     "60,067",
+     "2.2",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "2,649,352",
+     "100.0",
+     "%",
+     "",
+     "23,761",
+     "100.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1879,
+    "end_line": 1891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "Age of Impaired trade receivables",
+   "prose_after": "NOTE 7 \u2013 FINANCIAL ASSETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "",
+     "",
+     "As of December 31, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     ""
+    ],
+    [
+     "Held-for-trading investments",
+     "$",
+     "594,263",
+     "",
+     "-",
+     "$",
+     "2,730,363",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Fair value"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1894,
+    "end_line": 1903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 FINANCIAL ASSETS"
+    }
+   },
+   "prose_before": "NOTE 7 \u2013 FINANCIAL ASSETS",
+   "prose_after": "The investments above include investments in quoted fixed income securities that offer the Company the opportunity for return through interest income and fair value gains. They have various fixed maturity and coupon rate. The fair values of these securities are based on closing quoted market prices on the last market day of the financial year.\nFair value of the Company\u2019s financial assets and financial liabilities are measured at fair value on recurring quoted bid prices on an active market basis. All the available for sale financial assets are classified as Level 1 as described in the Company\u2019s accounting policies.\nDuring the quarter ended June 30, 2020, certain investments were disposed and the proceeds utilized to repay the Company\u2019s loan in note 12 below\nNOTE 8 \u2013 INVESTMENT IN ASSOCIATE\nOn April 23, 2018, the Company participated in the incorporation of a company in Indonesia, PT Weyland Indonesia Perkasa (\u201cWIP\u2019), an Indonesian limited liability company of which the Company held a 49% equity interest with the option to purchase an additional 31% equity interest at a later date. In April 2019, the Company completed the distribution as a dividend in specie, to the Company\u2019s shareholders of record at October 12, 2018 of 49% equity interest in WIP to Weyland AtoZPay Inc. and now holds an equitable interest of 31% in WIP.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "As of December 31, 2019",
+     ""
+    ],
+    [
+     "Deposit",
+     "$",
+     "60,000",
+     "$",
+     "1,619,808"
+    ],
+    [
+     "Other receivables",
+     "",
+     "1,876",
+     "",
+     "1,876"
+    ],
+    [
+     "Prepayments",
+     "",
+     "144,567",
+     "",
+     "20,000"
+    ],
+    [
+     "",
+     "",
+     "206,443",
+     "",
+     "1,641,684"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1928,
+    "end_line": 1938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 PREPAYMENTS, DEPOSIT AND OTHER RECEIVABLES"
+    }
+   },
+   "prose_before": "On April 23, 2018, the Company participated in the incorporation of a company in Indonesia, PT Weyland Indonesia Perkasa (\u201cWIP\u2019), an Indonesian limited liability company of which the Company held a 49% equity interest with the option to purchase an additional 31% equity interest at a later date. In April 2019, the Company completed the distribution as a dividend in specie, to the Company\u2019s shareholders of record at October 12, 2018 of 49% equity interest in WIP to Weyland AtoZPay Inc. and now holds an equitable interest of 31% in WIP.\nThe results of operations under brand name PAY/GOLogiq of WIP from April 23, 2018 to September 30, 2020 has not been included as the amount had been fully impaired.\nThe Company held an 31% unexercised option in WIP as at December 31, 2018. Due to the continuing legal restructuring in Indonesia, all the conditions precedent had not been satisfied and the 31% option had not been exercised as December 31, 2020.\nThe Company is in the process of increasing its equity interest in WIP to 51% in order to consolidate the financial results of WIP on a going-forward basis.\nNOTE 9 \u2013 AMOUNT DUE FROM ASSOCIATE\nThe amount due from Associate is interest free, unsecured with no fixed repayment terms.\nNOTE 10 \u2013 PREPAYMENTS, DEPOSIT AND OTHER RECEIVABLES\nThe following amounts are outstanding at December 31, 2020 and December 31, 2019:",
+   "prose_after": "NOTE 11 \u2013 ACCRUALS AND OTHER PAYABLES\nAccruals and other payable consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "As of December 31, 2019",
+     ""
+    ],
+    [
+     "Accruals",
+     "$",
+     "910,326",
+     "",
+     "298,453"
+    ],
+    [
+     "Other payables",
+     "",
+     "200,407",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "1,110,733",
+     "",
+     "298,453"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1943,
+    "end_line": 1953
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 ACCRUALS AND OTHER PAYABLES"
+    }
+   },
+   "prose_before": "NOTE 11 \u2013 ACCRUALS AND OTHER PAYABLES\nAccruals and other payable consist of the following:",
+   "prose_after": "NOTE 12 \u2013 INCOME TAX\nThe United States of America\nLogiq, Inc. is incorporated in the State of Delaware in the U.S., and is subject to a gradual U.S. federal corporate income tax of 21%. The Company generated no taxable income for the year ended December 31, 2020 and 2019, and which is subject to U.S. federal corporate income tax rate of 21% and 34%, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "",
+     "As of December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "U.S. statutory tax rate",
+     "",
+     "21.00",
+     "%",
+     "",
+     "21.00",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "21.00",
+     "%",
+     "",
+     "21.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1960,
+    "end_line": 1966
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 INCOME TAX"
+    }
+   },
+   "prose_before": "NOTE 12 \u2013 INCOME TAX\nThe United States of America\nLogiq, Inc. is incorporated in the State of Delaware in the U.S., and is subject to a gradual U.S. federal corporate income tax of 21%. The Company generated no taxable income for the year ended December 31, 2020 and 2019, and which is subject to U.S. federal corporate income tax rate of 21% and 34%, respectively.",
+   "prose_after": "DATALogiq business segment (Logiq, Inc. (Nevada) formerly known as Origin8, Inc.)\nAs of December 31, 2020, this company does not have any deferred tax asset.\nNOTE 13 \u2013 NOTES PAYABLE\nOn April 24, 2020, the Company\u2019s subsidiary Logiq Inc (Nevada) formerly known as Origin8, Inc. received loan proceeds in the amount of $503,700 (the \u201cPPP Loan\u201d) under the Paycheck Protection Program (\u201cPPP\u201d) under the Coronavirus Aid, Relief and Economic Security Act and applicable regulations (the \u201cCARES Act\u201d).\nUnder the terms of the CARES Act, as amended by the Paycheck Protection Program Flexibility Act of 2020, Logiq Inc (Nevada) is eligible to apply for and receive forgiveness for all or a portion of its PPP Loan. Such forgiveness will be determined, subject to limitations, based on the use of the loan proceeds for certain permissible purposes as set forth in the PPP, including, but not limited to, payroll costs (as defined under the PPP) and mortgage interest, rent or utility costs (collectively, \u201cQualifying Expenses\u201d) incurred during the 24 weeks subsequent to funding, and on the maintenance of employee and compensation levels, as defined, following the funding of the PPP Loan. Logiq Inc (Nevada) intends to use the proceeds of its PPP Loan for Qualifying Expenses. However, no assurance is provided that Logiq Inc (Nevada) will be able to obtain forgiveness of the PPP Loan in whole or in part. Any amounts that are not forgiven incur interest at 1.0% per annum and monthly repayments of principal and interest are deferred until the Small Business Administration makes a determination on forgiveness. While Logiq Inc (Nevada\u2019s PPP Loan currently has a two-year maturity, the amended law will permit Logiq Inc (Nevada) to request a five-year maturity.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Grant-date Fair Value",
+     "",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Options Outstanding, December 31, 2014",
+     "",
+     "250,000",
+     "",
+     "",
+     "0.6",
+     "",
+     "2.8",
+     "",
+     "0.67",
+     "$",
+     "-"
+    ],
+    [
+     "Less: Option expired",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "0.6",
+     "",
+     "2.8",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options Outstanding, December 31, 2015",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options Outstanding, December 31, 2016",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options Outstanding, December 31, 2017",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options Outstanding, December 31, 2018",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options Outstanding, December 31, 2019",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2055,
+    "end_line": 2072
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2017, 100,000 shares with par value of $0.0001 per share were cancelled by various stockholders.\nDuring the year ended December 31, 2018, 62,964 shares with par value of $0.0001 per share were cancelled by various stockholders.\nDuring the year ended December 31, 2019, 3,550,000 shares with par value of $0.0001 per share were cancelled by various stockholders.\nDuring the year ended December 31, 2020, 404,439 shares with par value of $0.0001 per share were cancelled by various stockholders.\nEmployee Stock Option Plan\nThe Company has a stock option and incentive plan, the \u201cStock Option Plan\u201d. The exercise price for all equity awards issued under the Stock Option Plan is based on the fair market value of the common share price which is the closing price quoted on the Pink Sheets on the last trading day before the date of grant. The stock options generally vest on a monthly basis over a two-year to three-year period, and have a five-year life.\nA summary of the Company\u2019s stock option activity during the year ended December 31, 2019 is presented below:",
+   "prose_after": "All options outstanding are fully expired as of December 31, 2020. No new options were granted in the fiscal year 2020 or 2019.\nStock-Based Compensation\nFor the fiscal year ended December 31, 2020, a total of 1,318,640 shares of common stock was issued as stock-based compensation to directors, consultants, advisors and other professional parties.\nNOTE 16 \u2013 (LOSS) PER SHARE\nThe following table sets forth the computation of basic and diluted earnings per common share for the twelve months ended December 31, 2020 and 2019, respectively:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2030,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the twelve months ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Numerator - basic and diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss)",
+     "$",
+     "(7,142,483)",
+     "",
+     "$",
+     "(3,763,064)",
+     "",
+     "$",
+     "(14,509,669)",
+     "",
+     "$",
+     "(6,541,686)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding \u2014 basic and diluted",
+     "",
+     "14,093,979",
+     "",
+     "",
+     "7,948,080",
+     "",
+     "",
+     "12,678,904",
+     "",
+     "",
+     "5,009,312",
+     ""
+    ],
+    [
+     "(Loss) per common share \u2014 basic and diluted",
+     "$",
+     "(0.5068)",
+     "",
+     "$",
+     "(0.4735)",
+     "",
+     "$",
+     "(1.1444)",
+     "",
+     "$",
+     "(1.3059)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2083,
+    "end_line": 2096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 (LOSS) PER SHARE"
+    }
+   },
+   "prose_before": "All options outstanding are fully expired as of December 31, 2020. No new options were granted in the fiscal year 2020 or 2019.\nStock-Based Compensation\nFor the fiscal year ended December 31, 2020, a total of 1,318,640 shares of common stock was issued as stock-based compensation to directors, consultants, advisors and other professional parties.\nNOTE 16 \u2013 (LOSS) PER SHARE\nThe following table sets forth the computation of basic and diluted earnings per common share for the twelve months ended December 31, 2020 and 2019, respectively:",
+   "prose_after": "The weighted average number of shares of common stock has been retroactively restated to reflect the 1 for 13 reverse stock-split on February 25, 2020. The loss per share as shown in our audited 10-K pre-reverse split for FY2019 was $(0.1147) for twelve months ended December 31, 2019 based on 57,016,221 weighted average number of shares.\nNOTE 17 \u2013 COMMITMENTS AND CONTINGENCIES\nOperating lease\nThe Company\u2019s current executive offices are currently leased for $820 per month.\nLogiq Inc (Nevada) leases approximately 30,348 square feet comprising 12,313 square feet of office space and 18,217 square feet of warehouse space in Minneapolis, Minnesota, at a rate of $367,200 per annum under an operating lease. The leased office space from a related party under common ownership is under a 7.5-year lease expiring December 31, 2021. The lease on the primary offices has a renewal option providing for additional lease periods.\nThe operating lease is listed as separate line item on Logiq Inc (Nevada)'s December 31, 2020 and 2019 consolidated balance sheets and represent the Group\u2019s right to use the underlying asset for the lease term. The Group\u2019s obligations to make lease payments are also listed as a separate line items on the Group's December 31, 2020 and 2019 consolidated balance sheets. Based on the present value of the lease payments for the remaining lease term of the Group's existing leases, the Group recognized right-of-use assets and lease liabilities for operating leases of approximately $693,000, on January 8, 2020. Operating lease right-of-use assets and liabilities commencing after January 8, 2020 are recognized at commencement date based on the present value of lease payments over the lease term. As of December 31, 2020 and 2019, total operating right-of-use assets were $364,234 and $0, respectively. All operating lease expense is recognized on a straight-line basis over the lease term.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2020",
+     "",
+     "",
+     "As of December 31, 2019",
+     ""
+    ],
+    [
+     "Cash paid for operating lease liabilities",
+     "$",
+     "367,200",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Remaining lease term",
+     "",
+     "1 year",
+     "",
+     "",
+     "N/A"
+    ],
+    [
+     "Discount rate",
+     "",
+     "1.5",
+     "%",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2115,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The operating lease is listed as separate line item on Logiq Inc (Nevada)'s December 31, 2020 and 2019 consolidated balance sheets and represent the Group\u2019s right to use the underlying asset for the lease term. The Group\u2019s obligations to make lease payments are also listed as a separate line items on the Group's December 31, 2020 and 2019 consolidated balance sheets. Based on the present value of the lease payments for the remaining lease term of the Group's existing leases, the Group recognized right-of-use assets and lease liabilities for operating leases of approximately $693,000, on January 8, 2020. Operating lease right-of-use assets and liabilities commencing after January 8, 2020 are recognized at commencement date based on the present value of lease payments over the lease term. As of December 31, 2020 and 2019, total operating right-of-use assets were $364,234 and $0, respectively. All operating lease expense is recognized on a straight-line basis over the lease term.\nFor the years-ended December 31, 2020 and 2019, the Group recorded approximately $8,400 and $0 in amortization expense related to finance leases.\nBecause the rate implicit in the lease is not readily determinable, the Group uses its incremental borrowing rate to determine the present value of the lease payments.\nInformation related to the Group\u2019s operating lease liabilities are as follows:",
+   "prose_after": "Future minimum lease payments under the non-cancellable operating lease agreements are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021",
+     "$",
+     "367,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less imputed interest",
+     "",
+     "(2,966)",
+     ""
+    ],
+    [
+     "Total lease liability",
+     "$",
+     "364,234",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2125,
+    "end_line": 2133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "Future minimum lease payments under the non-cancellable operating lease agreements are as follows:",
+   "prose_after": "Legal proceedings\nNone.\nNOTE 18 \u2013 SEGMENT INFORMATION\nThe Group has determined that it operates in two operating and reportable business segments: AppLogiq and DataLogiq. The Company determined its reportable segments based on operating and financial reports regularly reviewed by the Company\u2019s Chief Operating Decision Maker (\u201cCODM\u201d), which is the Company\u2019s Chief Executive Officer (\u201cCEO\u201d).\nThe AppLogiq reportable segment is comprised of the accounts of CreateApp and Corporate activities.\nThe DataLogiq reportable segment is comprised of the subsidiaries accounts of Logiq, Inc(a Nevada Corporation) and Fixel AI,Inc.\nThe following table presents the segment information for the years ended December 31, 2020 and 2019:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the twelve months ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Logiq & AppLogiq",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment operating income",
+     "$",
+     "2,112,988",
+     "",
+     "",
+     "10,018,556",
+     "",
+     "$",
+     "22,758,572",
+     "",
+     "",
+     "34,648,621",
+     ""
+    ],
+    [
+     "Other corporate expenses, net",
+     "",
+     "7,951,920",
+     "",
+     "",
+     "13,781,620",
+     "",
+     "",
+     "32,772,547",
+     "",
+     "",
+     "41,190,307",
+     ""
+    ],
+    [
+     "Total operating (loss)",
+     "",
+     "(5,838,932)",
+     "",
+     "",
+     "(3,763,064)",
+     "",
+     "",
+     "(10,013,975)",
+     "",
+     "",
+     "(6,541,686)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DataLogiq & Fixel",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment operating income",
+     "",
+     "4,470,646",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "15,151,821",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other corporate expenses, net",
+     "",
+     "5,774,197",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "19,647,515",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating (loss)",
+     "",
+     "(1,303,551)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4,495,694)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment operating income",
+     "",
+     "6,583,634",
+     "",
+     "",
+     "10,018,556",
+     "",
+     "",
+     "37,910,393",
+     "",
+     "",
+     "34,648,621",
+     ""
+    ],
+    [
+     "Other corporate expenses, net",
+     "",
+     "13,726,117",
+     "",
+     "",
+     "13,781,620",
+     "",
+     "",
+     "52,420,062",
+     "",
+     "",
+     "41,190,307",
+     ""
+    ],
+    [
+     "Total operating (loss)",
+     "",
+     "(7,142,483)",
+     "",
+     "",
+     "(3,763,064)",
+     "",
+     "",
+     "(14,509,669)",
+     "",
+     "",
+     "(6,541,686)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2148,
+    "end_line": 2169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "\u2013 SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "Legal proceedings\nNone.\nNOTE 18 \u2013 SEGMENT INFORMATION\nThe Group has determined that it operates in two operating and reportable business segments: AppLogiq and DataLogiq. The Company determined its reportable segments based on operating and financial reports regularly reviewed by the Company\u2019s Chief Operating Decision Maker (\u201cCODM\u201d), which is the Company\u2019s Chief Executive Officer (\u201cCEO\u201d).\nThe AppLogiq reportable segment is comprised of the accounts of CreateApp and Corporate activities.\nThe DataLogiq reportable segment is comprised of the subsidiaries accounts of Logiq, Inc(a Nevada Corporation) and Fixel AI,Inc.\nThe following table presents the segment information for the years ended December 31, 2020 and 2019:",
+   "prose_after": "Significant Customers\nNo revenues from any single customer exceeded 10% of total net revenues in 2020 and 2019.\nNOTE 19 \u2013 GEOGRAPHICAL INFORMATION",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2196,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Southeast Asia",
+     "$",
+     "12,109,193",
+     "31.9",
+     "%",
+     "$",
+     "25,988,621",
+     "75.0",
+     "%",
+     "$",
+     "16,334,034",
+     "72.1",
+     "%"
+    ],
+    [
+     "EU",
+     "",
+     "5,570,000",
+     "14.7",
+     "%",
+     "$",
+     "5,888,800",
+     "17.0",
+     "%",
+     "",
+     "5,213,410",
+     "23.0",
+     "%"
+    ],
+    [
+     "South Korea",
+     "",
+     "3,770,000",
+     "9.9",
+     "%",
+     "$",
+     "2,771,200",
+     "8.0",
+     "%",
+     "",
+     "1,119,881",
+     "4.9",
+     "%"
+    ],
+    [
+     "Africa",
+     "",
+     "961,200",
+     "2.6",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "North America",
+     "",
+     "15,500,000",
+     "40.9",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%",
+     "",
+     "-",
+     "0.0",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "37,910,393",
+     "100.0",
+     "%",
+     "",
+     "34,648,621",
+     "100.0",
+     "%",
+     "$",
+     "22,667,325",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2176,
+    "end_line": 2188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 GEOGRAPHICAL INFORMATION"
+    }
+   },
+   "prose_before": "Significant Customers\nNo revenues from any single customer exceeded 10% of total net revenues in 2020 and 2019.\nNOTE 19 \u2013 GEOGRAPHICAL INFORMATION",
+   "prose_after": "NOTE 20 \u2013 BUSINESS COMBINATION\nPush Holdings Inc.\nOn January 8, 2020, the Company acquired substantially all the assets of Push Holdings Inc in exchange for 35,714,285 shares of the Company\u2019s common stock. The fair value of the shares of common stock at the close of the transaction was $14,285,714.\nThe acquisition of substantially all the assets of Pushing Holding was accounted for as a business combination in accordance with Accounting Standards Codification Topic 805, Business Combinations (\u201cASC 805\u201d), with the results of Logiq Inc (Nevada)\u2019s operations included in the Company\u2019s consolidated financial statements from January 9, 2020. Goodwill has been measured as the excess of the total consideration over the amounts assigned to identifiable assets acquired and liabilities assumed.\nDuring the period ended December 31, 2020, the Company, through its wholly-owned subsidiary, Logiq Inc (Nevada) acquired substantially all of the assets of Push Holdings, Inc. The fair values of assets acquired and liabilities assumed were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2196,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash and cash equivalents",
+     "$",
+     "574,572",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "1,025,000",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "709,053",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "11,940",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "225,126",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "8,250,000",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(367,091)",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "(424,094)",
+     ""
+    ],
+    [
+     "Due to parent company",
+     "",
+     "(500,000)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "4,781,208",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "14,285,714",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2199,
+    "end_line": 2214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 20,
+     "label": "NOTE 20",
+     "title": "\u2013 BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "Push Holdings Inc.\nOn January 8, 2020, the Company acquired substantially all the assets of Push Holdings Inc in exchange for 35,714,285 shares of the Company\u2019s common stock. The fair value of the shares of common stock at the close of the transaction was $14,285,714.\nThe acquisition of substantially all the assets of Pushing Holding was accounted for as a business combination in accordance with Accounting Standards Codification Topic 805, Business Combinations (\u201cASC 805\u201d), with the results of Logiq Inc (Nevada)\u2019s operations included in the Company\u2019s consolidated financial statements from January 9, 2020. Goodwill has been measured as the excess of the total consideration over the amounts assigned to identifiable assets acquired and liabilities assumed.\nDuring the period ended December 31, 2020, the Company, through its wholly-owned subsidiary, Logiq Inc (Nevada) acquired substantially all of the assets of Push Holdings, Inc. The fair values of assets acquired and liabilities assumed were as follows:",
+   "prose_after": "Fair valuation methods used for the identifiable net assets acquired in the acquisition make use of quoted prices in active markets, discounted cash flows and risk adjusted weighted cost of capital. The methods used in determining fair value of the intangible assets included consideration of the three traditional approaches to value: market, income, and cost. Accordingly, after due consideration of other appropriate and generally accepted valuation methodologies, the value of intangible assets acquired from Push has been developed primarily on the basis of the income approach. Under the income approach, the Company evaluated revenue projections derived from the software technology and the appropriate royalty rate that Push Holdings would have paid if Push Holdings did not own the software technology.\nOn the acquisition date, goodwill of $4,781,208 and other intangible assets of $8,250,000 were recorded. The other intangible asset identified during the acquisition is software technology, which has a weighted average useful life of five years, which is management\u2019s best estimate at the time of the acquisition.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 20
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2196,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2228,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash and cash equivalents",
+     "$",
+     "67,167",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "10,229",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "29,036",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "20,963",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "4,678,422",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "280",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "(47,021)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(55,958)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "296,882",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "5,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2231,
+    "end_line": 2246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 20,
+     "label": "NOTE 20",
+     "title": "\u2013 BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "On November 2, 2020, the Company acquired substantially all the assets of Fixel AI Inc., a Delaware corporation (\u201cFixel\u201d) in exchange for 564,467 shares of the Company\u2019s common stock. The fair value of the shares of common stock at the close of the transaction was $8.86.\nOn the Closing Date, the Company issued 564,467 restricted shares of its common stock to Fixel Stockholders, of which the shares allocated to the Fixel stockholders that are residents of Israel (\u201cIsrael Stockholders\u201d) will be delivered to an independent third-party escrow (the \u201cEscrow Shares\u201d), where (i) such shares will be released to Israel Stockholders upon each Israel Stockholder\u2019s compliance with the 104H tax ruling issued by certain tax authorities of Israel in connection with the Merger and (ii) shares held by Founders making up approximately 20% of the shares issued will be held subject to offset for indemnification purposes. The Shares were issued at a trailing twenty (20) day VWAP of $8.86 per share.\nThe fair values of assets acquired and liabilities assumed were as follows:",
+   "prose_after": "Fair valuation methods used for the identifiable net assets acquired in the acquisition make use of quoted prices in active markets, discounted cash flows and risk adjusted weighted cost of capital. The methods used in determining fair value of the intangible assets included consideration of the three traditional approaches to value: market, income, and cost. Accordingly, after due consideration of other appropriate and generally accepted valuation methodologies, the value of intangible assets acquired from Fixel has been developed primarily on the basis of the income approach. Under the income approach, the Company evaluated revenue projections derived from the software technology and the appropriate royalty rate that Fixel would have paid if Fixel did not own the software technology.\nOn the acquisition date, goodwill of $296,882 and other intangible assets of $4,678,422 were recorded. The other intangible asset identified during the acquisition is software technology, which has a weighted average useful life of five years, which is management\u2019s best estimate at the time of the acquisition.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 20
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2228,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2262,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions and Offices Held"
+    ],
+    [
+     "Tom Furukawa",
+     "48",
+     "Chief Executive Officer"
+    ],
+    [
+     "Brent Suen",
+     "54",
+     "President, Chairman, Principal Financial Officer and Director"
+    ],
+    [
+     "Steven Hartman",
+     "49",
+     "Chief Product Officer"
+    ],
+    [
+     "Daniel Urbino",
+     "35",
+     "Chief Operating Officer"
+    ],
+    [
+     "Lionel Choong",
+     "59",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "Eddie Foong",
+     "47",
+     "Vice President, Product"
+    ],
+    [
+     "John MacNeil",
+     "59",
+     "Chief of Staff and Director"
+    ],
+    [
+     "Matthew Burlage",
+     "57",
+     "Independent Director"
+    ],
+    [
+     "Joshua Jacobs",
+     "50",
+     "Independent Director"
+    ],
+    [
+     "Brett Lay",
+     "58",
+     "Independent Director"
+    ],
+    [
+     "Ross O\u2019Brian",
+     "53",
+     "Independent Director"
+    ],
+    [
+     "Lea Hickman",
+     "53",
+     "Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2320,
+    "end_line": 2336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Attestation Report of the Registered Public Accounting Firm\nThis Annual Report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to Item 308(b) of Regulation S-K.\nItem 9B. Other Information\nNone.\nPART III\nItem 10. Directors, Executive Officers, and Corporate Governance\nThe following table sets forth the names, ages, and positions of our executive officers and directors as of March 31, 2021. There are no arrangements, agreements or understandings between non-management security holders and management under which non-management security holders may directly or indirectly participate in or influence the management of our affairs. There are no arrangements or understandings between any director and any other person pursuant to which any director or executive officer was or is to be selected as a director or executive officer, as applicable.",
+   "prose_after": "Set forth below is a brief description of the background and business experience of each of our executive officers, directors, and key management personnel.\nBrent Suen, age 54, President, Chairman, Principal Financial Officer and Director\nBrent Suen has been President of the Company since November 19, 2014, and a director of the Company since November 19, 2014. Mr. Suen has 27 years of experience in the investment banking industry. He began his career in merger arbitrage at Bear Stearns in 1988, at the age of 20, as the firms\u2019 youngest hire. In 1993, he founded Axis Trading Corp., one of the first online platforms for stock trading and subsequently sold it to a division of Softbank in 1996. In 1997, he co-founded Elevation Capital which invested in and advised Silicon Valley based companies on IPO\u2019s, mergers and acquisitions, strategic partnerships and fund raising. In 2003 Brent moved to Hong Kong and China where he established Bay2Peak S.A. Bay2Peak has invested in and advised over fifty companies which include Internet, software, renewable energy and life science companies. From 2006 to 2008 he also advised IRG TMT Asia Fund on private and public investments. In 2012 Brent served as advisor to McLarty Group and Citibank Venture Capital on a sale/leaseback program valued at $160 million leading to the eventual sale of the company for $630 million. For the past six years, Brent led the start-up and management of Empirica S.A., a security/intelligence and frontier markets focused advisory firm operating in Asia, the Middle East, Africa and Central Asia.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2357,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Number of late reports",
+     "",
+     "Transactions not timely reported",
+     "",
+     "Known failures to file a required form",
+     ""
+    ],
+    [
+     "Tom Furukawa, Chief Executive Officer",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Brent Suen, President, Chairman, Principal Financial Officer & Director",
+     "",
+     "1",
+     "",
+     "1",
+     "",
+     "0"
+    ],
+    [
+     "Lionel Choong, Chief Financial Officer and Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Eddie Foong, Vice President, Product",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "John MacNeil, Chief of Staff and Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Matthew Burlage, Independent Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Joshua Jacobs, Independent Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Ross O\u2019Brien, Independent Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Brett Lay, Independent Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Lea Hickman, Independent Director",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2553,
+    "end_line": 2568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "There are no family relationships between any of the Company\u2019s directors or executive officers.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Securities Exchange Act of 1934 requires the Company\u2019s officers and directors, and persons who beneficially own more than ten percent (10%) of a registered class of the Company\u2019s equity securities to file reports of ownership and changes in ownership with the Securities and Exchange Commission (\u201cSEC\u201d). Officers, directors and greater than ten percent beneficial stockholders are required by SEC regulations to furnish the Company with copies of all Section 16(a) forms they file.\nTo the best of the Company\u2019s knowledge based solely on a review of Forms 3, 4, and 5 (and any amendments thereof) received by us during or with respect to the year ended December 31, 2020, the following persons have not filed on a timely basis, the identified reports required by Section 16(a) of the Exchange Act during fiscal year ended December 31, 2020:",
+   "prose_after": "Legal Proceedings\nTo the best of our knowledge, none of our directors or executive officers has, during the past ten years:\n\u25cf been convicted in a criminal proceeding or been subject to a pending criminal proceeding (excluding traffic violations and other minor offenses);\n\u25cf had any bankruptcy petition filed by or against the business or property of the person, or of any partnership, corporation or business association of which he was a general partner or executive officer, either at the time of the bankruptcy filing or within two years prior to that time;\n\u25cf been subject to any order, judgment, or decree, not subsequently reversed, suspended or vacated, of any court of competent jurisdiction or federal or state authority, permanently or temporarily enjoining, barring, suspending or otherwise limiting, his involvement in any type of business, securities, futures, commodities, investment, banking, savings and loan, or insurance activities, or to be associated with persons engaged in any such activity;",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2538,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 2580,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Position",
+     "Year",
+     "Salary paid in cash ($)",
+     "",
+     "Stock awards ($)",
+     "",
+     "Option awards ($)",
+     "",
+     "Non-equity incentive plan compensation ($)",
+     "",
+     "",
+     "Non-qualified deferred compensation earnings ($)",
+     "",
+     "",
+     "All other compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brent Suen",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  President, Chairman, Chief Executive Officer (former), President, Principal Financial Officer and Director",
+     "2019",
+     "",
+     "60,000",
+     "",
+     "193,750",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "253,750"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "144,000",
+     "",
+     "213,125",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "357,125"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tom Furukawa",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Chief Executive Officer",
+     "2020",
+     "",
+     "275,000",
+     "",
+     "90,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "365,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steven Hartman,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chief Marketing Officer",
+     "2020",
+     "",
+     "220,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "220,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel Urbino,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Chief Operating Officer",
+     "2020",
+     "",
+     "222,799",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "6,771",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "229,570"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lionel Choong",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Chief Financial Officer and Director",
+     "2019",
+     "",
+     "120,000",
+     "",
+     "117,500",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "237,500"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "144,000",
+     "",
+     "129,250",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "273,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John MacNeil",
+     "2019",
+     "",
+     "97,000",
+     "",
+     "176,250",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "273,250"
+    ],
+    [
+     "  Chief of Staff and director",
+     "2020",
+     "",
+     "90,000",
+     "",
+     "193,875",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "283,875"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eddie Foong",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Vice President, Product",
+     "2019",
+     "",
+     "120,000",
+     "",
+     "58,750",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "178,750"
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "120,000",
+     "",
+     "64,625",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "184,625"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2589,
+    "end_line": 2623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf been the subject of, or a party to, any sanction or order, not subsequently reversed, suspended or vacated, of any self-regulatory organization (as defined in Section 3(a)(26) of the Exchange Act), any registered entity (as defined in Section 1(a)(29) of the Commodity Exchange Act), or any equivalent exchange, association, entity or organization that has disciplinary authority over its members or persons associated with a member.\nExcept as set forth in our discussion below in \u201cCertain Relationships and Related Transactions,\u201d none of our directors or executive officers has been involved in any transactions with us or any of our directors, executive officers, affiliates or associates which are required to be disclosed pursuant to the rules and regulations of the Commission.\nItem 11. Executive Compensation\nExecutive Compensation\nThe table below summarizes all compensation awarded to, earned by, or paid to our former or current executive officers for the fiscal years ended December 31, 2020 and 2019.",
+   "prose_after": "Option Grants\nWe did not grant any options to any of our executive officers during the years ended December 31, 2020 and 2019.\nNarrative Disclosure to Compensation Tables\nMr. Suen is entitled to a base compensation of $144,000 per annum.\nMr. Choong is entitled to a base compensation of $144,000 per annum.\nMr. Foong is entitled to a base compensation of $120,000 per annum.\nMr. MacNeil is entitled to a base compensation of $90,000 per annum.\nMr. Urbino is entitled to a base compensation of $222,790 per annum\nMr. Furukawa is entitled to a base compensation of $275,000 per annum. Mr. Furukawa shall be entitled to receive bonus (the \u201cBonus\u201d) and incentive compensation, described below (the \u201cIncentive Compensation\u201d) of up to $180,000 per annum based on the performance metrics of the Company. Payment of the Bonus is conditioned on compliance with applicable law, and shall be payable to Mr. Furukawa in equal quarterly installments (i) only if the Mr. Furukawa has not breached the terms of his employment agreement, and (ii) only if Mr. Furukawa continues to be employed by the Company on the date of determination of the Bonus as well as on the date of payment thereof. The Incentive Compensation is subject to approval of the Board. Mr. Furukawa shall receive equity compensation, which shall be granted pursuant to the terms of the Equity Incentive Plan.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2580,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 2640,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Year",
+     "Fees earned or paid in cash (US$)",
+     "",
+     "Stock awards (US$)",
+     "",
+     "Option-based awards (US$)",
+     "",
+     "Non-equity incentive plan compensation (US$)",
+     "",
+     "Nonqualified deferred compensation earnings (US$)",
+     "",
+     "All other compensation (US$)",
+     "",
+     "Total (US$)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Matthew Burlage",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "47,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "47,500"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "50,000",
+     "$",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "50,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ross O\u2019Brien",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "23,500",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "23,500"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "25,850",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "25,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brett Lay",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "23,500",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "23,500"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "50,000",
+     "$",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "50,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joshua Jacobs",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lea Hickman",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wilson  Rondini (resigned)",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "117,500",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "117,500"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jon Najarian (resigned)",
+     "2019",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2672,
+    "end_line": 2699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "S-8 Registration Statement\nOn November 6, 2020, the Company filed a Form S-8 Registration Statement relating to 2,000,000 shares of the Company\u2019s common stock, par value $0.0001 per share issuable to the employees, officers, directors, consultants and advisors of the Company under the Logiq, Inc. 2020 Equity Incentive Plan.\nDirectors Compensation\nMr. Suen, Mr. Choong and Mr. MacNeil, received no compensation for their services as a director of the Company. The compensation received by Mr. Suen, Mr. Choong, and Mr. MacNeil as an officer are presented in \u201cExecutive Compensation \u2013 Summary Compensation Table.\u201d\nThe following table sets forth information for the year ended December 31, 2019 and the year ended December 31, 2020, regarding the compensation awarded to, earned by or paid to our non-management directors who served on our Board during 2019 and 2020. It is estimated that the compensation awarded to non-management directors in 2021 will be substantially similar to what was paid in 2020.",
+   "prose_after": "Employment Agreements, Termination and Change of Control Benefits\nThe Company and Mr. Furukawa entered into an employment agreement dated as of September 1, 2020. Pursuant to the employment agreement, the Company has the right to terminate the employment of Mr. Furukawa without cause with 10 days advance written notice, provided that the Company provides Mr. Furukawa with: (i) the immediate acceleration of all unvested equity compensation securities granted; (ii) the sum of 12 months base salary as severance; and (iii) his employment benefits for a period of 12 months following his termination. In the event of a change of control of the Company, the Company shall provide Mr. Furukawa with: (i) the immediate acceleration of all unvested equity compensation securities granted; (ii) the sum of 12 months base salary as severance; (iv) his employment benefits for a period of 12 months following his termination; and (v) an additional bonus of USD$1,000,000.\nThe Company entered into an independent contractor agreement with Lionel Choong on August 1, 2020. The agreement is for a term of two years and can be terminated by either party for any reason with 90 days prior written notice. Pursuant to the agreement, Mr. Choong is entitled to receive US$12,000 per month in consideration for the performance of the services provided. There are no payments required to be made to Mr. Choong by the Company upon a termination of the agreement or a change of control of the Company.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2661,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 2708,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Position",
+     "Number of Shares of Common Stock Beneficially Owned",
+     "",
+     "Percent of Common Stock Beneficially Owned (1)",
+     ""
+    ],
+    [
+     "Named Executive Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brent Suen",
+     "President, Chairman, Principal Financial Officer & Director",
+     "",
+     "317,842",
+     "",
+     "1.9"
+    ],
+    [
+     "Tom Furukawa",
+     "Chief Executive Officer",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Steven Hartman",
+     "Chief Marketing Officer",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel Urbino",
+     "Chief Operating Officer",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "John MacNeil",
+     "Chief of Staff, Director & former Chief Operating Officer",
+     "",
+     "174,612",
+     "",
+     "1.0"
+    ],
+    [
+     "Eddie Foong",
+     "Vice President, Product",
+     "",
+     "289,995",
+     "",
+     "1.7"
+    ],
+    [
+     "Lionel Choong",
+     "Chief Financial Officer & Director",
+     "",
+     "150,305",
+     "",
+     "0.9"
+    ],
+    [
+     "Matthew Burlage",
+     "Independent Director",
+     "",
+     "133,075",
+     "",
+     "0.8"
+    ],
+    [
+     "Ross O\u2019Brien",
+     "Independent Director",
+     "",
+     "102,307",
+     "",
+     "0.6"
+    ],
+    [
+     "Joshua Jacobs",
+     "Independent director",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Lea Hickman",
+     "Independent Director",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Brett Lay",
+     "Independent Director",
+     "",
+     "102,307",
+     "",
+     "0.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  All Directors and Officers as a group (11 persons)",
+     "",
+     "",
+     "1,270,443",
+     "",
+     "7.6"
+    ],
+    [
+     "ConversionPoint Technologies",
+     "",
+     "",
+     "3,981,681",
+     "",
+     "23.7"
+    ],
+    [
+     "None",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2717,
+    "end_line": 2741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table sets forth certain information regarding our shares of common stock beneficially owned as of March 26, 2021, for (i) each stockholder known to be the beneficial owner of 5% or more of our outstanding shares of common stock, (ii) each Named Executive Officer and director, and (iii) all executive officers and directors as a group. A person is considered to beneficially own any shares: (a) over which such person, directly or indirectly, exercises sole or shared voting or investment power, or (b) of which such person has the right to acquire beneficial ownership at any time within 60 days after such date upon the exercise of stock options, warrants or convertible securities. Unless otherwise indicated, voting and investment power relating to the shares shown in the table for our directors and executive officers is exercised solely by the beneficial owner or shared by the owner and the owner\u2019s spouse or children.\nFor purposes of this table, a person or group of persons is deemed to have \u201cbeneficial ownership\u201d of any shares of common stock that such person has the right to acquire within 60 days after March 26, 2021. For purposes of computing the percentage of outstanding shares of common stock held by each person or group of persons, any shares that such person or persons has the right to acquire within 60 days after April 10, 2019 is deemed to be outstanding, but is not deemed to be outstanding for the purpose of computing the percentage ownership of any other person. The inclusion of any shares listed as beneficially owned does not constitute an admission of beneficial ownership.\nUnless otherwise specified, the address of each of the persons set forth below is in care of Logiq Inc., 85 Broad Street, 16-079, New York, NY 10004.",
+   "prose_after": "Notes:\n(1) Applicable percentage ownership is based on 16,794,588 shares of common stock outstanding as of March 26, 2021.\nChanges in Control\nWe are not aware of any arrangements that may result in changes in control as that term is defined by the provisions of Item 403(c) of Regulation S-K.\nEquity Compensation Plan Information\nThere were no equity compensation plans outstanding as of December 31, 2020:\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nTransactions with Related Persons\nExcept as provided in \u201cExecutive Compensation\u201d set forth above, for the past two fiscal years, we have not entered into any transactions with any of our directors, nominees for director, officers or principal shareholders, nor any associate or affiliate of the foregoing, and we are not currently considering any proposed transactions with such related persons in which:\n\u25cf the amounts involved exceeded or will exceed $120,000; or",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2708,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 2754,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Financial Statements for the year ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Logiq",
+     "",
+     "AppLogiq",
+     "",
+     "DataLogiq",
+     "",
+     "Logiq",
+     "",
+     "AppLogiq",
+     "",
+     "DataLogiq",
+     ""
+    ],
+    [
+     "Audit fees",
+     "",
+     "45,000",
+     "",
+     "40,000",
+     "",
+     "55,000",
+     "",
+     "48,000",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Audit related fees",
+     "",
+     "18,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "18,000",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total fees",
+     "",
+     "63,000",
+     "",
+     "40,000",
+     "",
+     "55,000",
+     "",
+     "66,000",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Financial Statements for the year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2780,
+    "end_line": 2793
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf one percent (1%) of the average of our total assets at year-end for the last two completed fiscal years, and in which any director, executive officer, holder of 5% or more of any class of our capital stock or any member of the immediate family of any of the foregoing persons had or will have a direct or indirect material interest\nNo director has informed the Company of any related party transactions.\nBoard Committees and Director Independence\nWe believe our corporate governance initiatives comply with the rules and regulations of the SEC and with the rules of OTCQX.\nPolicies and Procedures Regarding Related Party Transactions\nWe have not adopted any formal procedures for the review or ratification, or standards for approval, of related-party transactions, but instead review such transactions on a case-by-case basis.\nItem 14. Principal Accountant Fees and Services\nThe following table discloses the fees billed by our auditor in connection with the audit of the Company\u2019s annual financial statements for the years ended December 31, 2020 and 2019:",
+   "prose_after": "Notes:\n(1) The aggregate fees billed for the fiscal year for professional services rendered by the principal accountant for the audit of the Company\u2019s annual financial statements and review of financial statements included in the Company\u2019s Form 10-Qs or services that are normally provided by the accountant in connection with statutory and regulatory engagements for that fiscal years.\n(2) The aggregate fees billed in the fiscal year for assurance and related services by the principal accountants that are reasonably related to the performance of the audit or review of the Company\u2019s financial statements and are not reported in Note 1.\n(3) The aggregate fees billed in the fiscal year for professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning.\n(4) The aggregate fees billed in the fiscal year for the products and services provided by the principal accountant, other than the services reported in Notes (1), (2) and (3).\nAudit Committee\u2019s Pre-Approval Practice",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2775,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 2808,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description of Exhibit"
+    ],
+    [
+     "3.1*",
+     "Certificate of Incorporation, filed November 18, 2004"
+    ],
+    [
+     "3.2*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed March 1, 2007"
+    ],
+    [
+     "3.3*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed August 2, 2011"
+    ],
+    [
+     "3.4*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed January 14, 2013"
+    ],
+    [
+     "3.5*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed April 10, 2013"
+    ],
+    [
+     "3.6*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed May 10, 2013"
+    ],
+    [
+     "3.7*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed September 18, 2013"
+    ],
+    [
+     "3.8*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed December 5, 2013"
+    ],
+    [
+     "3.9*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed August 5, 2015"
+    ],
+    [
+     "3.10*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed February 25, 2020"
+    ],
+    [
+     "3.11*",
+     "Certificate of Amendment to the Certificate of Incorporation of the Company, filed July 31, 2020"
+    ],
+    [
+     "3.12",
+     "Bylaws (1)"
+    ],
+    [
+     "10.1",
+     "Form of Subscription Agreement (2)"
+    ],
+    [
+     "10.2",
+     "Form of Warrant (2)"
+    ],
+    [
+     "10.3",
+     "Consultancy Service Agreement by and between the Company and Falcon Capital Partners Limited, dated June 7, 2019 (2)"
+    ],
+    [
+     "10.4",
+     "Asset Purchase Agreement, dated as of December 16, 2019 (3)"
+    ],
+    [
+     "10.5",
+     "Escrow Agreement, dated as of January 8, 2020 (4)"
+    ],
+    [
+     "10.6",
+     "Executive Employment Agreement, dated as of September 1, 2020 (5)"
+    ],
+    [
+     "10.7",
+     "Logiq, Inc. 2020 Equity Incentive Plan and related form agreements (6)"
+    ],
+    [
+     "10.8",
+     "Form of Stock Purchase Agreement, dated October 13, 2020 (7)"
+    ],
+    [
+     "10.9",
+     "Agreement and Plan of Merger by and among Fixel AI Inc., Logiq, Inc., Logiq Merger Sub, Inc., Etgar Shpivak, Hadar Shpivak and Elad Levy, dated as of October 30, 2020 (8)"
+    ],
+    [
+     "10.10",
+     "Form of Stock Purchase Agreement, dated November 5, 2020 (9)"
+    ],
+    [
+     "10.11",
+     "Executive Employment Agreement by and between Logiq, Inc. and Steven J. Hartman, dated as of November 4, 2020 (10)"
+    ],
+    [
+     "10.12",
+     "Convertible Promissory Note Agreement (11)"
+    ],
+    [
+     "10.13",
+     "Form of Stock Purchase Agreement, dated December 11, 2020 (12)"
+    ],
+    [
+     "10.14",
+     "Form of Stock Purchase Agreement, dated January 12, 2021 (13)"
+    ],
+    [
+     "10.15",
+     "Agreement and Plan of Merger by and among Logiq, Inc., RAI Acquisition Sub, Inc., Rebel AI, Inc, and Emmanuel Puentes, dated as of March 3, 2021 (14)"
+    ],
+    [
+     "10.16",
+     "Form of Stock Purchase Agreement, dated March 8, 2021 (15)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2823,
+    "end_line": 2856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Audit Committee has adopted policies and procedures for the preapproval of all audit and non-audit services to be rendered by our independent registered public accounting firm. Under the policies and procedures, the Audit Committee generally preapproves specified services in defined categories up to specified amounts. Preapproval may also be given as part of the Audit Committee\u2019s approval of the scope of the engagement of the independent registered public accounting firm or on a case-by-case basis for specific tasks before engagement. The Audit Committee has delegated the preapproval of services to the chairman of the Audit Committee who is required to report each preapproval to the full Audit Committee no later than its next meeting.\nThe Audit Committee has considered and determined that the provision of the non-audit services described is compatible with maintaining the independence of our registered public accounting firm.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) Exhibits\n1. Financial Statements. The financial statements, together with the Report of Independent Registered Public Accounting Firm, are included in this Annual Report on Form 10-K.\n2. Financial Statement Schedules. All financial statement schedules have been omitted since the information is either not applicable or required, or was included in the financial statements or notes included in this Annual Report on Form 10-K.\n3. Exhibits Required to be Filed by Item 601 of Regulation S-K. The information called for by this Item is incorporated by reference from the Index to Exhibits included in this Annual Report on Form 10-K.\n(b) Exhibits",
+   "prose_after": "21.1* Subsidiaries of the Company 31.1* Certification of Principal Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of the Principal Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS* XBRL Instance Document 101.SCH* XBRL Taxonomy Extension Schema Document 101.CAL* XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF* XBRL Taxonomy Extension Definition Linkbase Document 101.LAB* XBRL Taxonomy Extension Label Linkbase Document 101.PRE* XBRL Taxonomy Extension Presentation Linkbase Document\n* Filed herewith\n(1) incorporated by reference to Form SB-2 of the Company filed with the Securities and Exchange Commission on September 19, 2005",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2808,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 2857,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Logiq, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "By:",
+     "/s/ Tom Furukawa"
+    ],
+    [
+     "",
+     "",
+     "Tom Furukawa, Chief Executive Officer, Principal Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Brent Suen,"
+    ],
+    [
+     "",
+     "",
+     "Brent Suen,"
+    ],
+    [
+     "",
+     "",
+     "Chairman, Principal Financial Officer & Director"
+    ]
+   ],
+   "caption_stack": [
+    "Logiq, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2886,
+    "end_line": 2898
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(10) incorporated by reference to Form 8-K of the Company filed with the Securities and Exchange Commission on November 10, 2020\n(11) Incorporated by reference to Form 10-Q of the Company filed with the Securities and Exchange Commission on November 16, 2020\n(12) incorporated by reference to Form 8-K of the Company filed with the Securities and Exchange Commission on December 15, 2020\n(13) incorporated by reference to Form 8-K of the Company filed with the Securities and Exchange Commission on January 14, 2021\n(14) incorporated by reference to Form 8-K of the Company filed with the Securities and Exchange Commission on March 5, 2021\n(15) incorporated by reference to Form 8-K of the Company filed with the Securities and Exchange Commission on March 8, 2021\nItem 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Company has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2881,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2948,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "By:",
+     "/s/ Lionel Choong"
+    ],
+    [
+     "",
+     "",
+     "Lionel Choong Chief Financial Officer, Principal Accounting Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2899,
+    "end_line": 2904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the Company and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2881,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2948,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tom Furukawa",
+     "Chief Executive Officer",
+     "March 30, 2021"
+    ],
+    [
+     "Tom Furukawa",
+     "(Principal Executive)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lionel Choong",
+     "Chief Financial Officer, Director",
+     "March 30, 2021"
+    ],
+    [
+     "Lionel Choong",
+     "(Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brent Suen",
+     "President, Chairman, Principal Financial Officer & Director",
+     "March 30, 2021"
+    ],
+    [
+     "Brent Suen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John MacNeil",
+     "Chief Of Staff, Director",
+     "March 30, 2021"
+    ],
+    [
+     "John MacNeil",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Matthew Burlage",
+     "Independent Director",
+     "March 30, 2021"
+    ],
+    [
+     "Matthew Burlage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ross O\u2019Brien",
+     "Independent Director",
+     "March 30, 2021"
+    ],
+    [
+     "Ross O\u2019Brien",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brett Lay",
+     "Independent Director",
+     "March 30, 2021"
+    ],
+    [
+     "Brett Lay",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Josh Jacobs",
+     "Independent Director",
+     "March 30, 2021"
+    ],
+    [
+     "Josh Jacobs",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lea Hickman",
+     "Independent Director",
+     "March 30, 2021"
+    ],
+    [
+     "Lea Hickman",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2907,
+    "end_line": 2947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the Company and in the capacities and on the dates indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2881,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2948,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

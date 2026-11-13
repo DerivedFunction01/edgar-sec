@@ -1,0 +1,5467 @@
+{
+ "accession": "0001558370-25-004855",
+ "cik": "0001745032",
+ "form": "10-Q",
+ "filing_date": "2025-04-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "lfr-20240331x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "83-0556111"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\nIncorporation or Organization)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1635 43rd Street South, Suite 205\n\nFargo, North Dakota",
+     "58103"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2024\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 000-56082\nLODGING FUND REIT III, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(701) 630-6500\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(701) 630-6500\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I.",
+     "FINANCIAL INFORMATION",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Item 1.",
+     "Financial Statements",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Balance Sheets as of March 31, 2024 (unaudited) and December 31, 2023",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Operations for the Three Months Ended March 31, 2024 and 2023 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Changes in Stockholders\u2019 Equity for the Three Months Ended March 31, 2024 and 2023 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2024 and 2023 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "Notes to the Condensed Consolidated Financial Statements",
+     "7"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "31"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "55"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Controls and Procedures",
+     "55"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "OTHER INFORMATION",
+     "",
+     "57"
+    ],
+    [
+     "",
+     "Item 1.",
+     "Legal Proceedings",
+     "57"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "57"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "59"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Defaults upon Senior Securities",
+     "62"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "62"
+    ],
+    [
+     "",
+     "Item 5.",
+     "Other Information",
+     "62"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Exhibits",
+     "63"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "65"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer    [ ]  Accelerated filer        [ ]  Non-accelerated filer  [X]\nSmaller reporting company  [X]  Emerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of April 15, 2025, there were 10,013,042 outstanding shares of common stock of Lodging Fund REIT III, Inc.\nTable of Contents",
+   "prose_after": "i\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(audited)",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in hotel properties, net of accumulated depreciation and amortization of $30,453,086 and $27,729,162",
+     "",
+     "$",
+     "286,324,056",
+     "",
+     "$",
+     "287,347,479"
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "",
+     "4,471,571",
+     "",
+     "",
+     "3,052,937"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "8,582,334",
+     "",
+     "",
+     "9,891,392"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "",
+     "888,343",
+     "",
+     "",
+     "1,466,879"
+    ],
+    [
+     "Franchise fees, net",
+     "",
+     "",
+     "2,146,794",
+     "",
+     "",
+     "2,190,058"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "",
+     "2,194,497",
+     "",
+     "",
+     "1,825,589"
+    ],
+    [
+     "Total Assets (variable interest entities - $22,405,465 and $22,649,498)",
+     "",
+     "$",
+     "304,607,595",
+     "",
+     "$",
+     "305,774,334"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt, net",
+     "",
+     "$",
+     "199,688,767",
+     "",
+     "$",
+     "196,297,771"
+    ],
+    [
+     "Finance lease liabilities",
+     "",
+     "",
+     "13,042,554",
+     "",
+     "",
+     "13,106,110"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "5,025,279",
+     "",
+     "",
+     "3,877,980"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "6,711,142",
+     "",
+     "",
+     "7,808,118"
+    ],
+    [
+     "Distributions payable",
+     "",
+     "",
+     "614,665",
+     "",
+     "",
+     "1,012,279"
+    ],
+    [
+     "Due to related parties",
+     "",
+     "",
+     "12,354,420",
+     "",
+     "",
+     "11,164,605"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "5,504,220",
+     "",
+     "",
+     "4,203,421"
+    ],
+    [
+     "Total liabilities (variable interest entities - $17,363,577 and $17,392,077)",
+     "",
+     "",
+     "242,941,047",
+     "",
+     "",
+     "237,470,284"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (See Note 9)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 par value, 100,000,000 shares authorized; no shares issued and outstanding",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $0.01 par value, 900,000,000 shares authorized; 9,969,071 and 9,955,668 shares issued and outstanding",
+     "",
+     "",
+     "99,690",
+     "",
+     "",
+     "99,556"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "97,419,865",
+     "",
+     "",
+     "97,285,211"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(91,744,267)",
+     "",
+     "",
+     "(86,154,207)"
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "",
+     "5,775,288",
+     "",
+     "",
+     "11,230,560"
+    ],
+    [
+     "Non-controlling interest \u2013 Series B LP Units",
+     "",
+     "",
+     "(4,203,494)",
+     "",
+     "",
+     "(3,869,459)"
+    ],
+    [
+     "Non-controlling interest \u2013 Series GO LP Units",
+     "",
+     "",
+     "9,836,215",
+     "",
+     "",
+     "10,933,302"
+    ],
+    [
+     "Non-controlling interest \u2013 Series GO II LP Units",
+     "",
+     "",
+     "1,318,007",
+     "",
+     "",
+     "765,162"
+    ],
+    [
+     "Non-controlling interest \u2013 Series T LP Units",
+     "",
+     "",
+     "45,524,201",
+     "",
+     "",
+     "45,524,201"
+    ],
+    [
+     "Non-controlling interest \u2013 Common LP Units",
+     "",
+     "",
+     "3,416,331",
+     "",
+     "",
+     "3,720,284"
+    ],
+    [
+     "Total equity",
+     "",
+     "",
+     "61,666,548",
+     "",
+     "",
+     "68,304,050"
+    ],
+    [
+     "Total Liabilities and Equity",
+     "",
+     "$",
+     "304,607,595",
+     "",
+     "$",
+     "305,774,334"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 105,
+    "end_line": 154
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 101,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 157,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Room revenue",
+     "",
+     "$",
+     "14,887,191",
+     "",
+     "$",
+     "15,215,668"
+    ],
+    [
+     "Other revenue",
+     "",
+     "",
+     "1,084,232",
+     "",
+     "",
+     "1,012,562"
+    ],
+    [
+     "Total revenue",
+     "",
+     "",
+     "15,971,423",
+     "",
+     "",
+     "16,228,230"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property operations",
+     "",
+     "",
+     "8,718,484",
+     "",
+     "",
+     "8,018,226"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "3,118,439",
+     "",
+     "",
+     "2,370,060"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "",
+     "1,161,073",
+     "",
+     "",
+     "1,096,678"
+    ],
+    [
+     "Franchise fees",
+     "",
+     "",
+     "1,385,881",
+     "",
+     "",
+     "1,384,921"
+    ],
+    [
+     "Management fees",
+     "",
+     "",
+     "1,190,239",
+     "",
+     "",
+     "1,197,584"
+    ],
+    [
+     "Acquisition expense",
+     "",
+     "",
+     "8,542",
+     "",
+     "",
+     "8,766"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "2,726,851",
+     "",
+     "",
+     "2,649,028"
+    ],
+    [
+     "Total expenses",
+     "",
+     "",
+     "18,309,509",
+     "",
+     "",
+     "16,725,263"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "",
+     "",
+     "(262,404)",
+     "",
+     "",
+     "(46,121)"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(3,859,465)",
+     "",
+     "",
+     "(3,512,934)"
+    ],
+    [
+     "Total other expense",
+     "",
+     "",
+     "(4,121,869)",
+     "",
+     "",
+     "(3,559,055)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Before Income Taxes",
+     "",
+     "",
+     "(6,459,955)",
+     "",
+     "",
+     "(4,056,088)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "",
+     "84,468",
+     "",
+     "",
+     "129,914"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "(6,375,487)",
+     "",
+     "",
+     "(3,926,174)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest - Series B LP Units",
+     "",
+     "",
+     "(318,732)",
+     "",
+     "",
+     "(196,267)"
+    ],
+    [
+     "Net loss attributable to non-controlling interest - Series GO LP Units",
+     "",
+     "",
+     "(1,005,950)",
+     "",
+     "",
+     "(640,192)"
+    ],
+    [
+     "Net loss attributable to non-controlling interest - Series GO II LP Units",
+     "",
+     "",
+     "(75,106)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss attributable to non-controlling interest - Common LP Units",
+     "",
+     "",
+     "(286,100)",
+     "",
+     "",
+     "(182,076)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Attributable to Common Stockholders",
+     "",
+     "$",
+     "(4,689,599)",
+     "",
+     "$",
+     "(2,907,639)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Net Loss Per Share of Common Stock",
+     "",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "(0.30)"
+    ],
+    [
+     "Weighted-average Shares of Common Stock Outstanding, Basic and Diluted",
+     "",
+     "",
+     "9,957,180",
+     "",
+     "",
+     "9,661,217"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 163,
+    "end_line": 221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 157,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-Controlling Interest",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Par",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     "",
+     "Series B",
+     "",
+     "",
+     "Series GO",
+     "",
+     "",
+     "Series GO 2",
+     "",
+     "",
+     "Series T",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Value",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     "",
+     "LP Units",
+     "",
+     "",
+     "LP Units",
+     "",
+     "",
+     "LP Units",
+     "",
+     "",
+     "LP Units",
+     "",
+     "",
+     "LP Units",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "9,607,463",
+     "",
+     "$",
+     "96,074",
+     "",
+     "$",
+     "93,798,070",
+     "",
+     "$",
+     "(67,239,693)",
+     "",
+     "$",
+     "26,654,451",
+     "",
+     "$",
+     "(2,841,056)",
+     "",
+     "$",
+     "14,688,392",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "45,739,120",
+     "",
+     "$",
+     "4,751,639",
+     "",
+     "$",
+     "88,992,546"
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "61,190",
+     "",
+     "",
+     "612",
+     "",
+     "",
+     "625,388",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "626,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "626,000"
+    ],
+    [
+     "Issuance of stock-based compensation",
+     "",
+     "1,000",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "10,560",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,570",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,570"
+    ],
+    [
+     "Offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(449,537)",
+     "",
+     "",
+     "(449,537)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,665)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(452,202)"
+    ],
+    [
+     "Distributions declared ($0.175 per share)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,690,854)",
+     "",
+     "",
+     "(1,690,854)",
+     "",
+     "",
+     "(88,992)",
+     "",
+     "",
+     "(270,884)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(107,117)",
+     "",
+     "",
+     "(2,157,847)"
+    ],
+    [
+     "Distributions reinvested",
+     "",
+     "39,418",
+     "",
+     "",
+     "394",
+     "",
+     "",
+     "395,426",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "395,820",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "395,820"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,907,639)",
+     "",
+     "",
+     "(2,907,639)",
+     "",
+     "",
+     "(196,267)",
+     "",
+     "",
+     "(640,192)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(182,076)",
+     "",
+     "",
+     "(3,926,174)"
+    ],
+    [
+     "Balance at March 31, 2023",
+     "",
+     "9,709,071",
+     "",
+     "$",
+     "97,090",
+     "",
+     "$",
+     "94,829,444",
+     "",
+     "$",
+     "(72,287,723)",
+     "",
+     "$",
+     "22,638,811",
+     "",
+     "$",
+     "(3,126,315)",
+     "",
+     "$",
+     "13,774,651",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "45,739,120",
+     "",
+     "$",
+     "4,462,446",
+     "",
+     "$",
+     "83,488,713"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "9,955,668",
+     "",
+     "$",
+     "99,556",
+     "",
+     "$",
+     "97,285,211",
+     "",
+     "$",
+     "(86,154,207)",
+     "",
+     "$",
+     "11,230,560",
+     "",
+     "$",
+     "(3,869,459)",
+     "",
+     "$",
+     "10,933,302",
+     "",
+     "$",
+     "765,162",
+     "",
+     "$",
+     "45,524,201",
+     "",
+     "$",
+     "3,720,284",
+     "",
+     "$",
+     "68,304,050"
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "1,526",
+     "",
+     "",
+     "15",
+     "",
+     "",
+     "14,985",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,000"
+    ],
+    [
+     "Issuance of stock-based compensation",
+     "",
+     "1,000",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "10,560",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,570",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,570"
+    ],
+    [
+     "Issuance of GO II Units",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "650,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "650,000"
+    ],
+    [
+     "Offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(609,699)",
+     "",
+     "",
+     "(609,699)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6)",
+     "",
+     "",
+     "(22,049)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(631,754)"
+    ],
+    [
+     "Distributions declared ($0.029 per share)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(290,762)",
+     "",
+     "",
+     "(290,762)",
+     "",
+     "",
+     "(15,303)",
+     "",
+     "",
+     "(91,131)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(17,853)",
+     "",
+     "",
+     "(415,049)"
+    ],
+    [
+     "Distributions reinvested",
+     "",
+     "10,877",
+     "",
+     "",
+     "109",
+     "",
+     "",
+     "109,109",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "109,218",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "109,218"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,689,599)",
+     "",
+     "",
+     "(4,689,599)",
+     "",
+     "",
+     "(318,732)",
+     "",
+     "",
+     "(1,005,950)",
+     "",
+     "",
+     "(75,106)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(286,100)",
+     "",
+     "",
+     "(6,375,487)"
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "9,969,071",
+     "",
+     "$",
+     "99,690",
+     "",
+     "$",
+     "97,419,865",
+     "",
+     "$",
+     "(91,744,267)",
+     "",
+     "$",
+     "5,775,288",
+     "",
+     "$",
+     "(4,203,494)",
+     "",
+     "$",
+     "9,836,215",
+     "",
+     "$",
+     "1,318,007",
+     "",
+     "$",
+     "45,524,201",
+     "",
+     "$",
+     "3,416,331",
+     "",
+     "$",
+     "61,666,548"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 228,
+    "end_line": 261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 264,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(6,375,487)",
+     "",
+     "$",
+     "(3,926,174)"
+    ],
+    [
+     "Adjustments to reconcile net loss to cash (used in) provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "2,561,437",
+     "",
+     "",
+     "2,429,729"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "10,570",
+     "",
+     "",
+     "10,570"
+    ],
+    [
+     "Amortization",
+     "",
+     "",
+     "159,439",
+     "",
+     "",
+     "715,828"
+    ],
+    [
+     "Loss on disposal of fixed assets",
+     "",
+     "",
+     "5,672",
+     "",
+     "",
+     "18,894"
+    ],
+    [
+     "Deferred tax expense",
+     "",
+     "",
+     "(84,468)",
+     "",
+     "",
+     "(129,914)"
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "578,536",
+     "",
+     "",
+     "(293,963)"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "",
+     "(368,908)",
+     "",
+     "",
+     "3,147,197"
+    ],
+    [
+     "Decrease in finance lease liability",
+     "",
+     "",
+     "(63,556)",
+     "",
+     "",
+     "(63,106)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "1,118,853",
+     "",
+     "",
+     "665,548"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "(1,096,976)",
+     "",
+     "",
+     "(1,163,230)"
+    ],
+    [
+     "Due to related parties",
+     "",
+     "",
+     "1,371,832",
+     "",
+     "",
+     "2,076,238"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "1,385,267",
+     "",
+     "",
+     "(3,232,534)"
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "",
+     "(797,789)",
+     "",
+     "",
+     "255,083"
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Improvements and additions to hotel properties",
+     "",
+     "",
+     "(1,709,100)",
+     "",
+     "",
+     "(2,099,652)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(1,709,100)",
+     "",
+     "",
+     "(2,099,652)"
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from mortgage debt",
+     "",
+     "",
+     "16,896,801",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from lines of credit",
+     "",
+     "",
+     "1,539,023",
+     "",
+     "",
+     "2,554,844"
+    ],
+    [
+     "Principal payments on mortgage debt",
+     "",
+     "",
+     "(14,516,784)",
+     "",
+     "",
+     "(475,645)"
+    ],
+    [
+     "Principal payments on lines of credit",
+     "",
+     "",
+     "(335,400)",
+     "",
+     "",
+     "(95,000)"
+    ],
+    [
+     "Payments of deferred financing costs",
+     "",
+     "",
+     "(143,405)",
+     "",
+     "",
+     "(78,774)"
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "626,000"
+    ],
+    [
+     "Proceeds from issuance of GO II Units",
+     "",
+     "",
+     "650,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payments of offering costs",
+     "",
+     "",
+     "(800,628)",
+     "",
+     "",
+     "(244,697)"
+    ],
+    [
+     "Distributions paid",
+     "",
+     "",
+     "(688,142)",
+     "",
+     "",
+     "(1,673,401)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "2,616,465",
+     "",
+     "",
+     "613,327"
+    ],
+    [
+     "Net change in cash, cash equivalents, and restricted cash",
+     "",
+     "",
+     "109,576",
+     "",
+     "",
+     "(1,231,242)"
+    ],
+    [
+     "Beginning Cash, Cash Equivalents, and Restricted Cash",
+     "",
+     "",
+     "12,944,329",
+     "",
+     "",
+     "16,926,281"
+    ],
+    [
+     "Ending Cash, Cash Equivalents, and Restricted Cash",
+     "",
+     "$",
+     "13,053,905",
+     "",
+     "$",
+     "15,695,039"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 268,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Continued)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 264,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "$",
+     "4,857,548",
+     "",
+     "$",
+     "3,578,952"
+    ],
+    [
+     "Income taxes paid",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "42,158"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Non-Cash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt issued for refinance of Lakewood Property",
+     "",
+     "$",
+     "4,896,801",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Offering costs included in accounts payable",
+     "",
+     "$",
+     "28,446",
+     "",
+     "$",
+     "21,260"
+    ],
+    [
+     "Offering costs included in due to related parties",
+     "",
+     "$",
+     "(197,320)",
+     "",
+     "$",
+     "186,245"
+    ],
+    [
+     "Distributions included in due to related parties",
+     "",
+     "$",
+     "15,303",
+     "",
+     "$",
+     "72,541"
+    ],
+    [
+     "Reinvested distributions",
+     "",
+     "$",
+     "109,218",
+     "",
+     "$",
+     "395,820"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reconciliation of Cash, Cash Equivalents, and Restricted Cash:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "$",
+     "3,052,937",
+     "",
+     "$",
+     "6,193,449"
+    ],
+    [
+     "Restricted cash, beginning of period",
+     "",
+     "",
+     "9,891,392",
+     "",
+     "",
+     "10,732,832"
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash, beginning of period",
+     "",
+     "$",
+     "12,944,329",
+     "",
+     "$",
+     "16,926,281"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "$",
+     "4,471,571",
+     "",
+     "$",
+     "6,250,268"
+    ],
+    [
+     "Restricted cash, end of period",
+     "",
+     "",
+     "8,582,334",
+     "",
+     "",
+     "9,444,771"
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash, end of period",
+     "",
+     "$",
+     "13,053,905",
+     "",
+     "$",
+     "15,695,039"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 325,
+    "end_line": 361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Continued)\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\n1. ORGANIZATION\nLodging Fund REIT III, Inc. (\u201cLF REIT III\u201d), was formed on April 9, 2018 as a Maryland corporation. LF REIT III, together with its subsidiaries (the \u201cCompany\u201d), was formed for the principal purpose of acquiring, through purchase or contribution, direct or indirect ownership interests in a diverse portfolio of limited-service, select-service, full-service and extended stay hotel properties located primarily in \u201cAmerica\u2019s Heartland,\u201d which the Company defines as the geographic area from North Dakota to Texas and the Appalachian Mountains to the Rocky Mountains. LF REIT III has elected to be treated as a real estate investment trust, or REIT, for federal income tax purposes beginning with the taxable year ended December 31, 2018. The Company\u2019s business activities are directed and managed by Legendary Capital REIT III, LLC (the \u201cAdvisor\u201d) and its affiliates, which are related parties through common management, pursuant to the Amended and Restated Advisory Agreement (the \u201cAdvisory Agreement\u201d), dated June 1, 2018. The Company has no foreign operations or assets, and operates its business as one operating and reportable segment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 364,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Land and land improvements",
+     "",
+     "$",
+     "32,655,286",
+     "",
+     "$",
+     "32,655,286"
+    ],
+    [
+     "Building and building improvements",
+     "",
+     "",
+     "245,177,241",
+     "",
+     "",
+     "245,132,662"
+    ],
+    [
+     "Furniture, fixtures, and equipment",
+     "",
+     "",
+     "24,033,825",
+     "",
+     "",
+     "23,850,758"
+    ],
+    [
+     "Right-of-use asset - ground lease",
+     "",
+     "",
+     "7,340,868",
+     "",
+     "",
+     "7,340,868"
+    ],
+    [
+     "Construction in progress",
+     "",
+     "",
+     "7,569,922",
+     "",
+     "",
+     "6,097,067"
+    ],
+    [
+     "  Investment in hotel properties, at cost",
+     "",
+     "",
+     "316,777,142",
+     "",
+     "",
+     "315,076,641"
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "",
+     "(30,453,086)",
+     "",
+     "",
+     "(27,729,162)"
+    ],
+    [
+     "  Investment in hotel properties, net",
+     "",
+     "$",
+     "286,324,056",
+     "",
+     "$",
+     "287,347,479"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 459,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVESTMENT IN HOTEL PROPERTIES"
+    }
+   },
+   "prose_before": "In December 2023, the FASB issued ASU No. 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures, which focuses on income tax disclosures around effective tax rates and cash income taxes paid. This update requires disclosure, on an annual basis, of a tabular rate reconciliation using both percentages and currency amounts, broken out into specified categories with certain reconciling items further broken out by nature and jurisdiction to the extent those items exceed a specified threshold. In addition, all entities are required to disclose income taxes paid, net of refunds received disaggregated by federal, state/local, and foreign and by jurisdiction if the amount is at least 5% of total income tax payments, net of refunds received. The new standard is effective for annual periods beginning after December 15, 2024, with early adoption permitted. The amendments in this ASU may be applied prospectively by providing the revised disclosures for the period ending December 31, 2025 and continuing to provide the pre-ASU disclosures for the prior periods, or the amendments may be applied retrospectively by providing the revised disclosures for all periods presented. The adoption of this ASU is expected to only impact the notes to the Company\u2019s condensed consolidated financial statements by requiring additional disclosure but will have no impact on the Company\u2019s condensed consolidated financial statements.\n3. INVESTMENT IN HOTEL PROPERTIES\nInvestment in hotel properties as of March 31, 2024 and December 31, 2023 consisted of the following:",
+   "prose_after": "As of March 31, 2024, the Company consolidated nineteen hotel properties, consisting of eighteen hotel properties owned by the Company and an equity and profits interest in the parent of the entity which holds a leasehold interest in one hotel property, with an aggregate of 2,261 rooms located in ten states.\nOn August 10, 2022, the Company consolidated a variable interest entity (\u201cVIE\u201d) that owns one hotel in El Paso, Texas (the \u201cEl Paso University Property\u201d). The Company is the primary beneficiary of this VIE as the Company has the power to direct the activities that most significantly affect its economic performance. Additionally, the Company has the obligation to absorb its losses and the right to receive benefits that could be significant to it. Accordingly, the Company initially recognized the VIE\u2019s assets, liabilities, and noncontrolling interest at fair value. The Company\u2019s condensed consolidated balance sheet includes the following assets and liabilities of this entity:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in hotel properties, net of accumulated depreciation of $1,468,950 and $1,281,612",
+     "",
+     "$",
+     "20,873,769",
+     "",
+     "$",
+     "21,194,229"
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "",
+     "247,127",
+     "",
+     "",
+     "163,501"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "1,018,167",
+     "",
+     "",
+     "851,290"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "",
+     "216,030",
+     "",
+     "",
+     "412,856"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "",
+     "50,372",
+     "",
+     "",
+     "27,622"
+    ],
+    [
+     "Total Assets",
+     "",
+     "$",
+     "22,405,465",
+     "",
+     "$",
+     "22,649,498"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt, net",
+     "",
+     "$",
+     "12,044,956",
+     "",
+     "$",
+     "12,086,033"
+    ],
+    [
+     "Finance lease liability",
+     "",
+     "",
+     "4,638,771",
+     "",
+     "",
+     "4,750,889"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "142,713",
+     "",
+     "",
+     "143,030"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "243,012",
+     "",
+     "",
+     "109,897"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "294,125",
+     "",
+     "",
+     "302,228"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "$",
+     "17,363,577",
+     "",
+     "$",
+     "17,392,077"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVESTMENT IN HOTEL PROPERTIES"
+    }
+   },
+   "prose_before": "As of March 31, 2024, the Company consolidated nineteen hotel properties, consisting of eighteen hotel properties owned by the Company and an equity and profits interest in the parent of the entity which holds a leasehold interest in one hotel property, with an aggregate of 2,261 rooms located in ten states.\nOn August 10, 2022, the Company consolidated a variable interest entity (\u201cVIE\u201d) that owns one hotel in El Paso, Texas (the \u201cEl Paso University Property\u201d). The Company is the primary beneficiary of this VIE as the Company has the power to direct the activities that most significantly affect its economic performance. Additionally, the Company has the obligation to absorb its losses and the right to receive benefits that could be significant to it. Accordingly, the Company initially recognized the VIE\u2019s assets, liabilities, and noncontrolling interest at fair value. The Company\u2019s condensed consolidated balance sheet includes the following assets and liabilities of this entity:",
+   "prose_after": "Ground Leases\nThe Company has ground leases on two of its Hotel Properties in which a right-of-use asset and corresponding finance lease liability is recognized pursuant to ASC 842:\na) Sheraton Northbrook - matures in 2067 and has a yearly base rent that increases 3% every year through maturity. As of March 31, 2024, this finance lease had a discount rate of 7.75%.\nb) El Paso University - matures in 2054 and has annual rentals comprised of a base rent due at the beginning of the year plus, if applicable, a percent of revenue in excess of the base rent. The annual base rent of the El Paso ground lease is adjusted every five years by an average of a percent of the annual revenue in preceding years. If revenue remains below the previous five-year base rent, then there is no change to base rent. As of March 31, 2024, the finance lease had a discount rate of 9.00%.\nFor the three months ended March 31, 2024 and 2023, the Company recognized aggregate interest expense of $162,195 and $158,500, respectively and right-of-use amortization expense of $165,414 and $165,414, respectively related to the finance lease, which is included within \u201cDepreciation and amortization\u201d on the condensed consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024 (9 months)",
+     "",
+     "$",
+     "348,854"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "624,112"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "645,791"
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "660,511"
+    ],
+    [
+     "2028",
+     "",
+     "",
+     "675,672"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "43,341,125"
+    ],
+    [
+     "  Total finance lease payments",
+     "",
+     "",
+     "46,296,065"
+    ],
+    [
+     "Interest",
+     "",
+     "",
+     "(33,253,511)"
+    ],
+    [
+     "  Present value of finance lease liabilities",
+     "",
+     "$",
+     "13,042,554"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 518,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVESTMENT IN HOTEL PROPERTIES"
+    }
+   },
+   "prose_before": "b) El Paso University - matures in 2054 and has annual rentals comprised of a base rent due at the beginning of the year plus, if applicable, a percent of revenue in excess of the base rent. The annual base rent of the El Paso ground lease is adjusted every five years by an average of a percent of the annual revenue in preceding years. If revenue remains below the previous five-year base rent, then there is no change to base rent. As of March 31, 2024, the finance lease had a discount rate of 9.00%.\nFor the three months ended March 31, 2024 and 2023, the Company recognized aggregate interest expense of $162,195 and $158,500, respectively and right-of-use amortization expense of $165,414 and $165,414, respectively related to the finance lease, which is included within \u201cDepreciation and amortization\u201d on the condensed consolidated statements of operations.\nThe following table reconciles the undiscounted cash flows for each of the next five years and total of the remaining years to the finance lease liability included in the Company\u2019s condensed consolidated balance sheet as of March 31, 2024.",
+   "prose_after": "4. DEBT\nAt March 31, 2024 and December 31, 2023, all forms of debt consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "",
+     "Outstanding",
+     "",
+     "",
+     "Outstanding",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Rate as of",
+     "",
+     "",
+     "",
+     "Balance as of",
+     "",
+     "",
+     "Balance as of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "Maturity",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "Date",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Holiday Inn Express - Cedar Rapids(1)",
+     "",
+     "5.33%",
+     "",
+     "9/1/2024",
+     "",
+     "$",
+     "5,672,162",
+     "",
+     "$",
+     "5,698,543"
+    ],
+    [
+     "Hampton Inn & Suites - Pineville(2)",
+     "",
+     "5.13%",
+     "",
+     "6/6/2024",
+     "",
+     "",
+     "8,312,997",
+     "",
+     "",
+     "8,368,135"
+    ],
+    [
+     "Hampton Inn - Eagan(1)",
+     "",
+     "4.60%",
+     "",
+     "1/1/2025",
+     "",
+     "",
+     "8,781,864",
+     "",
+     "",
+     "8,839,737"
+    ],
+    [
+     "Home2 Suites - Prattville(3)",
+     "",
+     "4.13%",
+     "",
+     "8/1/2024",
+     "",
+     "",
+     "8,931,100",
+     "",
+     "",
+     "8,984,688"
+    ],
+    [
+     "Home2 Suites - Lubbock",
+     "",
+     "4.69%",
+     "",
+     "10/6/2026",
+     "",
+     "",
+     "7,040,914",
+     "",
+     "",
+     "7,103,138"
+    ],
+    [
+     "Fairfield Inn & Suites - Lubbock",
+     "",
+     "4.93%",
+     "",
+     "4/6/2029",
+     "",
+     "",
+     "8,766,891",
+     "",
+     "",
+     "8,809,051"
+    ],
+    [
+     "Homewood Suites - Southaven(4)",
+     "",
+     "3.70%",
+     "",
+     "3/3/2025",
+     "",
+     "",
+     "12,569,173",
+     "",
+     "",
+     "12,658,773"
+    ],
+    [
+     "Courtyard by Marriott - Aurora(5)(6)",
+     "",
+     "11.44%",
+     "",
+     "2/5/2025",
+     "",
+     "",
+     "15,000,000",
+     "",
+     "",
+     "15,000,000"
+    ],
+    [
+     "Holiday Inn - El Paso(6)(7)",
+     "",
+     "5.00%",
+     "",
+     "5/15/2024",
+     "",
+     "",
+     "7,600,000",
+     "",
+     "",
+     "7,600,000"
+    ],
+    [
+     "Hilton Garden Inn - Houston(8)",
+     "",
+     "3.85%",
+     "",
+     "9/2/2026",
+     "",
+     "",
+     "13,761,657",
+     "",
+     "",
+     "13,852,705"
+    ],
+    [
+     "Sheraton - Northbrook(6)(9)",
+     "",
+     "11.69%",
+     "",
+     "12/5/2024",
+     "",
+     "",
+     "4,026,202",
+     "",
+     "",
+     "4,026,202"
+    ],
+    [
+     "Hampton Inn - Fargo",
+     "",
+     "4.00%",
+     "",
+     "3/1/2027",
+     "",
+     "",
+     "7,048,891",
+     "",
+     "",
+     "7,095,283"
+    ],
+    [
+     "Courtyard by Marriott - El Paso(10)(20)",
+     "",
+     "6.01%",
+     "",
+     "5/13/2027",
+     "",
+     "",
+     "9,931,566",
+     "",
+     "",
+     "9,975,072"
+    ],
+    [
+     "Fairfield Inn & Suites - Lakewood(6)(11)",
+     "",
+     "12.32%",
+     "",
+     "10/5/2025",
+     "",
+     "",
+     "12,000,000",
+     "",
+     "",
+     "13,845,000"
+    ],
+    [
+     "Fairfield Inn & Suites - Lakewood - A-1",
+     "",
+     "14.50%",
+     "",
+     "3/27/2026",
+     "",
+     "",
+     "4,896,801",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Residence Inn - Fort Collins(12)(13)",
+     "",
+     "11.58%",
+     "",
+     "5/4/2025",
+     "",
+     "",
+     "11,200,000",
+     "",
+     "",
+     "11,200,000"
+    ],
+    [
+     "Residence Inn - Fort Collins - CapEx(12)(14)",
+     "",
+     "12.86%",
+     "",
+     "5/4/2025",
+     "",
+     "",
+     "1,875,000",
+     "",
+     "",
+     "1,875,000"
+    ],
+    [
+     "Residence Inn - Fort Collins - A-1(12)(15)",
+     "",
+     "7.00%",
+     "",
+     "8/2/2028",
+     "",
+     "",
+     "501,465",
+     "",
+     "",
+     "501,465"
+    ],
+    [
+     "Hilton Garden Inn - El Paso",
+     "",
+     "4.94%",
+     "",
+     "8/6/2025",
+     "",
+     "",
+     "12,265,246",
+     "",
+     "",
+     "12,341,759"
+    ],
+    [
+     "Hilton Garden Inn - Pineville(10)(20)",
+     "",
+     "6.20%",
+     "",
+     "8/25/2027",
+     "",
+     "",
+     "7,008,584",
+     "",
+     "",
+     "7,020,000"
+    ],
+    [
+     "Hilton Garden Inn - Charlotte(10)(20)",
+     "",
+     "6.20%",
+     "",
+     "8/25/2027",
+     "",
+     "",
+     "9,789,055",
+     "",
+     "",
+     "9,805,000"
+    ],
+    [
+     "Holiday Inn Express - Wichita(10)",
+     "",
+     "6.41%",
+     "",
+     "12/21/2027",
+     "",
+     "",
+     "5,642,000",
+     "",
+     "",
+     "5,642,000"
+    ],
+    [
+     "  Total Mortgage Debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "182,621,568",
+     "",
+     "",
+     "180,241,551"
+    ],
+    [
+     "Premium on assumed debt, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "207,918",
+     "",
+     "",
+     "203,135"
+    ],
+    [
+     "Deferred financing costs, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,772,288)",
+     "",
+     "",
+     "(2,574,861)"
+    ],
+    [
+     "  Net Mortgage",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "180,057,198",
+     "",
+     "",
+     "177,869,825"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$5.0 million revolving line of credit - Western(16)(17)",
+     "",
+     "9.50%",
+     "",
+     "4/15/2024",
+     "",
+     "",
+     "4,401,139",
+     "",
+     "",
+     "4,651,139"
+    ],
+    [
+     "$15.5 million revolving line of credit - A-1 Bonds(18)",
+     "",
+     "14.50%",
+     "",
+     "12/31/2024",
+     "",
+     "",
+     "14,630,430",
+     "",
+     "",
+     "13,176,807"
+    ],
+    [
+     "$0.6 million loan - NHS(19)",
+     "",
+     "7.00%",
+     "",
+     "3/3/2025",
+     "",
+     "",
+     "600,000",
+     "",
+     "",
+     "600,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Lines of Credit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "19,631,569",
+     "",
+     "",
+     "18,427,946"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "199,688,767",
+     "",
+     "$",
+     "196,297,771"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "4. DEBT\nAt March 31, 2024 and December 31, 2023, all forms of debt consists of the following:",
+   "prose_after": "(1) On February 26, 2025, the Cedar Rapids Property and Eagan Property loans were extended to March 31, 2025 along with a new interest rate of 9.50%. The Company and the lender are working to finalize an extension of these loans as of the date of this filing. See Note 10 \u201cSubsequent Events.\u201d\n(2) On July 23, 2024, the Hampton Inn & Suites Pineville was sold and the loan was repaid on the closing date.\n(3) On November 4, 2024, this loan was repaid in full and refinanced with a new loan secured by the Prattville Property. See Note 10 \u201cSubsequent Events\u201d.\n(4) On December 6, 2024, this loan was repaid in full and refinanced with a new loan secured by the Southaven Property. See Note 10 \u201cSubsequent Events\u201d.\n(5) Variable interest rate equal to 30-day LIBOR plus 6.00%, provided that LIBOR shall not be less than 1.00%. The Company and the lender are working to finalize an extension of these loans as of the date of this filing.\n(6) Loan is interest-only until maturity.\n(7) On May 15, 2024, the maturity date was extended to November 15, 2024 along with a new interest rate of 9.00%. On January 16, 2025, the maturity date was extended to April 15, 2025 along with a new interest rate of 12.00%. See Note 10 \u201cSubsequent Events.\u201d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024 (9 months)",
+     "",
+     "$",
+     "56,203,319"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "74,450,413"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "25,582,982"
+    ],
+    [
+     "2027",
+     "",
+     "",
+     "37,441,359"
+    ],
+    [
+     "2028",
+     "",
+     "",
+     "708,616"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "7,866,448"
+    ],
+    [
+     "",
+     "",
+     "",
+     "202,253,137"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Premium on assumed debt, net",
+     "",
+     "",
+     "207,918"
+    ],
+    [
+     "  Deferred financing costs, net",
+     "",
+     "",
+     "(2,772,288)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "199,688,767"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "On March 27, 2024, the proceeds from the New Lakewood Loan and the New A-1 Lakewood Loan were used to refinance the Original Lakewood Loan, and the outstanding obligations under Original Lakewood Loan were repaid in full. At the closing of the refinancing, an unpaid extension fee in the amount of $138,450 was paid to the A-1 Lender under the Original Lakewood Loan which was due but not paid in connection with the prior March 2023 extension of the Original\nLakewood Loan. All guaranties in connection and collateral with respect to the Original Lakewood Loan have been terminated or released, and all commitments with respect to the Original Lakewood Loan have been terminated or released.\nSee Note 10 \u201cSubsequent Events\u201d of the notes to the condensed consolidated financial statements included as part of this Quarterly Report on Form 10-Q for a description of changes to mortgage debt occurring subsequent to March 31, 2024.\nFuture Minimum Payments\nAs of March 31, 2024, the future minimum principal payments on the Company\u2019s debt were as follows:",
+   "prose_after": "The $56.2 million of future minimum principal payments due in 2024 includes the maturities of the mortgage debt secured individually by the Cedar Rapids Property, Pineville Property, Prattville Property, El Paso Property and Northbrook Property, along with the A-1 and Western Lines of Credit. See Note 10 \u201cSubsequent Events\u201d of the notes to the unaudited condensed consolidated financial statements included as part of this Quarterly Report on Form 10-Q for a description of amendments and refinancing subsequent to March 31, 2024.\n5. INCOME TAXES\nThe Company\u2019s earnings (losses), other than those generated by the Company\u2019s TRS, are not generally subject to federal corporate and state income taxes due to the Company\u2019s REIT election. The Company did not pay any federal and state income taxes for the period ended March 31, 2024 and did not pay any federal and state income taxes for the period ended March 31, 2023. The Company did not have any uncertain tax positions as of March 31, 2024 or December 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "debt_maturity",
+    "aligned_family": "debt_maturity",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incurred",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Fees:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Financing fees",
+     "",
+     "",
+     "90,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Asset management fees",
+     "",
+     "",
+     "631,017",
+     "",
+     "",
+     "613,742"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "721,017",
+     "",
+     "$",
+     "613,742"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reimbursements:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Offering costs",
+     "",
+     "$",
+     "585,048",
+     "",
+     "$",
+     "384,190"
+    ],
+    [
+     "  General and administrative",
+     "",
+     "",
+     "911,346",
+     "",
+     "",
+     "634,447"
+    ],
+    [
+     "  Sales and marketing",
+     "",
+     "",
+     "13,671",
+     "",
+     "",
+     "34,672"
+    ],
+    [
+     "  Acquisition costs",
+     "",
+     "",
+     "51,942",
+     "",
+     "",
+     "14,726"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "1,562,007",
+     "",
+     "$",
+     "1,068,035"
+    ]
+   ],
+   "caption_stack": [
+    "Incurred",
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Per the terms of the Operating Partnership\u2019s operating agreement, the Advisor receives distributions from the Operating Partnership in connection with their ownership of non-voting Series B LP Units. The Advisor\u2019s ownership of Series B LP Units is presented as non-controlling interest on the accompanying unaudited condensed consolidated financial statements. In years other than the year of liquidation, after the Company\u2019s common stockholders have received a 6% cumulative but not compounded return on their original capital contributions, the Advisor receives distributions equal to 5% of the total distributions made. In the year of liquidation, termination, merger or other cessation of the general partner, or the liquidation of the Operating Partnership, holders of the Series B LP Units shall be distributed an amount equal to 5% of the limited partners\u2019 capital contributions after the common stockholders and the limited partners have received a return of their original capital contributions plus a 6% cumulative but not compounded return. In the year of liquidation, termination, merger or other cessation of the general partner, or the liquidation of the Operating Partnership holders of the Series B LP Units shall also be distributed an amount equal to 20% of the net proceeds from the sale of the properties, after the common stockholders and the limited partners have received a return of their original capital contributions plus a 6% cumulative but not compounded return from all distributions.\nThe Advisor and its affiliates may be reimbursed by the Company for certain organization and offering expenses in connection with the Company\u2019s securities offerings, including legal, printing, marketing and other offering related costs and expenses. Following the termination of the Offering, the Advisor will reimburse the Company for any such amounts incurred by the Company in excess of 15% of the gross proceeds of the Offering. In addition, the Company may pay directly or reimburse the Advisor and its affiliates for certain costs incurred in connection with its provision of services to the Company, including certain acquisition costs, financing costs, and sales and marketing costs, as well as an allocable share of general and administrative overhead costs. All reimbursements are paid to the Advisor and its affiliates at cost.\nFees and reimbursements incurred and payable to the Advisor and its affiliates, for the three months ended March 31, 2024 and 2023, were as follows:",
+   "prose_after": "For the three months ended March 31, 2024, the Operating Partnership recorded distributions payable to the Advisor in the amount of $15,303 in connection with the Advisor\u2019s ownership of Series B LP Units. For the three months ended March 31, 2023, the Operating Partnership recorded distributions payable to the Advisor in the amount of $88,992. As of March 31, 2024 and December 31, 2023, the Company had distributions payable to the Advisor in the amount of $658,708 and $643,405, respectively. For the three months ended March 31, 2024 and 2023, the Company paid distributions in the amount of $3,344 and $10,031, respectively, to Corey Maple and Norman Leslie in connection with their ownership of 57,319 shares each, of the Company\u2019s common stock. For the three months ended March 31, 2024 and 2023, the Company paid Corey Maple distributions in an amount of $896 and $0, respectively, in connection with his ownership of 15,361 Series GO LP Units.\nThe members of the Advisor personally guaranty certain loans of the Company and may receive a guarantee fee of up to 1.0% per annum of the guaranty amount. As of March 31, 2024, Corey Maple, is a guarantor of the Company\u2019s loans secured by the hotel properties located in Prattville, Alabama, Southaven, Mississippi, and Fargo, North Dakota, which had original loan amounts of $9.6 million, $13.5 million, and $7.4 million, respectively, is a guarantor of 50% of the loan secured by the Houston Property, which had an original loan amount of $13.9 million, is a guarantor of 50% of the loan secured by the Wichita Property, is a guarantor of the new loan secured by the Fort Collins Property, which had an original loan amount of $11.2 million, and is a guarantor of the Company\u2019s $5.0 million line of credit which is secured by the hotel properties located in Cedar Rapids, Iowa and Eagan, Minnesota, and 100,000 Common LP Units of Lodging Fund REIT III OP, LP. Mr. Maple is also a guarantor of the loan secured by the El Paso University Property, which had an original principal loan amount of $14.4 million. As of March 31, 2024, Norman Leslie is a guarantor of the Company\u2019s loan secured by the Company\u2019s hotel property in Pineville, North Carolina, the new loan secured by the Fort Collins Property, and the new loan secured by the Lakewood Property, which had an original loan amount of $9.3 million, $11.2 million and $12.0 million, respectively. For the three months ended March 31, 2024 and 2023, the Company accrued guarantee fees in the amount of $37,312 and $38,317, respectively to each Mr. Maple and Mr. Leslie. The total amount accrued of $1,319,913 remained unpaid at March 31, 2024 and is included in Due to related parties on the accompanying condensed consolidated balance sheet. See Note 10, \u201cSubsequent Events,\u201d for a description of additional guarantees entered into subsequent to March 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incurred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Payable as of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Fees:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Management fees",
+     "",
+     "$",
+     "207,378",
+     "",
+     "$",
+     "224,591",
+     "",
+     "$",
+     "393,676",
+     "",
+     "$",
+     "186,298"
+    ],
+    [
+     "  Administrative fees",
+     "",
+     "",
+     "21,782",
+     "",
+     "",
+     "26,947",
+     "",
+     "",
+     "42,744",
+     "",
+     "",
+     "20,962"
+    ],
+    [
+     "  Accounting fees",
+     "",
+     "",
+     "37,872",
+     "",
+     "",
+     "46,280",
+     "",
+     "",
+     "64,237",
+     "",
+     "",
+     "32,220"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "267,032",
+     "",
+     "$",
+     "297,818",
+     "",
+     "$",
+     "500,657",
+     "",
+     "$",
+     "239,480"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reimbursements",
+     "",
+     "$",
+     "243,264",
+     "",
+     "$",
+     "272,800",
+     "",
+     "$",
+     "402,033",
+     "",
+     "$",
+     "216,595"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "NHS earns a monthly base management fee for property management services, including overseeing the day-to-day operations of the hotel properties, equal to up to 4% of gross revenue. NHS may also earn an accounting fee of $14.00 per room for accounting services, payable monthly, and an administrative fee equal to 0.60% of gross revenues for administrative and other services. The Company reimburses NHS for certain costs of operating the properties incurred on behalf of the Company. All reimbursements are paid to NHS at cost.\nNHS also earns a flat fee of $5,000 per hotel property for due diligence services, including analyzing, evaluating, and reporting on documentation and information received by sellers or contributors during the period of due diligence. Such fee is waived if, upon acquisition by us, NHS is selected as the management company for the hotel property. NHS is also reimbursed for actual out-of-pocket costs incurred in providing the due diligence services.\nLoan Agreement\nThe Company has a $600,000 loan (the \u201cNHS Loan\u201d) with NHS (see Note 4). The NHS Loan requires interest only payments, with all outstanding principal and interest amounts being due and payable at maturity. The NHS Loan has a fixed interest rate of 7.0% and a maturity date on September 30, 2025.\nFees and reimbursements incurred and payable to NHS for the three months ended March 31, 2024 and 2023, and fees and reimbursements payable to NHS as of March 31, 2024 and December 31, 2023, were as follows:",
+   "prose_after": "See Note 10 \u201cSubsequent Events\u201d for updates in connection with the property management services and the NHS Loans subsequent to March 31, 2024.\nOne Rep Construction, LLC (\u201cOne Rep\u201d) \u2014 One Rep is a related party through common management and ownership, as Corey Maple, Norman Leslie, and David Ekman, each hold a 33.33% ownership interest in One Rep. One Rep is a construction management company which provided construction management services to the Company during 2024 and 2023 related to the renovation construction activities at certain hotel properties. For the services provided, One Rep is paid a construction management fee equal to 6% or 7% of the total project costs. The Company reimburses One Rep for certain costs incurred on behalf of the Company, and all reimbursements are paid to One Rep at cost. For the three months ended March 31, 2024 and 2023, the Company incurred $0 and $110,299 of construction management fees and reimbursements payable to One Rep, respectively. As of March 31, 2024 and December 31, 2023, the amounts outstanding and due to One Rep were $34,856 and $34,856, respectively, which is included in due to related parties on the accompanying condensed consolidated balance sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Distribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Distributions",
+     "",
+     "",
+     "Declared Per",
+     "",
+     "",
+     "Distributions Paid (3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Flows Provided By",
+     ""
+    ],
+    [
+     "Period",
+     "",
+     "Declared (1)",
+     "",
+     "",
+     "Share (1) (2)",
+     "",
+     "",
+     "Cash",
+     "",
+     "",
+     "Reinvested",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "(Used In) Operations",
+     ""
+    ],
+    [
+     "First Quarter 2024",
+     "",
+     "$",
+     "306,065",
+     "",
+     "$",
+     "0.029",
+     "",
+     "$",
+     "903,061",
+     "",
+     "$",
+     "109,218",
+     "",
+     "$",
+     "1,012,279",
+     "",
+     "$",
+     "(797,789)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "306,065",
+     "",
+     "$",
+     "0.029",
+     "",
+     "$",
+     "903,061",
+     "",
+     "$",
+     "109,218",
+     "",
+     "$",
+     "1,012,279",
+     "",
+     "$",
+     "(797,789)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Distribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net Cash",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Distributions",
+     "",
+     "",
+     "Declared Per",
+     "",
+     "",
+     "Distributions Paid (3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Flows Provided By",
+     ""
+    ],
+    [
+     "Period",
+     "",
+     "Declared (1)",
+     "",
+     "",
+     "Share (1) (2)",
+     "",
+     "",
+     "Cash",
+     "",
+     "",
+     "Reinvested",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "(Used In) Operations",
+     ""
+    ],
+    [
+     "First Quarter 2023",
+     "",
+     "$",
+     "1,779,846",
+     "",
+     "$",
+     "0.175",
+     "",
+     "$",
+     "1,424,802",
+     "",
+     "$",
+     "395,820",
+     "",
+     "$",
+     "1,820,622",
+     "",
+     "$",
+     "255,083"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "1,779,846",
+     "",
+     "$",
+     "0.175",
+     "",
+     "$",
+     "1,424,802",
+     "",
+     "$",
+     "395,820",
+     "",
+     "$",
+     "1,820,622",
+     "",
+     "$",
+     "255,083"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                       2"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FRANCHISE AGREEMENTS"
+    }
+   },
+   "prose_before": "The Company is authorized to issue 900,000,000 shares of common stock and 100,000,000 shares of preferred stock. Each share of common stock entitles the holder to one vote per share on all matters upon which stockholders are entitled to vote and to receive distributions as authorized by the Company\u2019s board of directors. The rights of the holders of shares of preferred stock may be defined at such time any series of preferred shares are issued. As of March 31, 2024, the Company had issued and sold 10,256,596 shares of common stock, including 1,178,471 shares attributable to the DRIP described below, and received aggregate proceeds of $100.3 million.\nCommon Stock\nInitial Offering\nOn June 1, 2018, the Company commenced a private offering of shares of common stock, $0.01 par value per share, at a price of $10.00 per share, with a maximum offering of $100,000,000, which was increased to $150,000,000 in December 2021, to accredited investors only pursuant to a confidential private placement memorandum exempt from registration under the Securities Act of 1933, as amended.\nDividend Reinvestment Plan\nThe Company has adopted a dividend reinvestment plan (\u201cDRIP\u201d), which permits stockholders to reinvest their distributions back into the Company, purchasing shares of common stock at 95% of the then-current share net asset value (\u201cNAV\u201d).\nDistributions\nDistributions are determined by the board of directors based on the Company\u2019s financial condition and other relevant factors.",
+   "prose_after": "(1) Distributions for the period from January 1, 2023 through March 31, 2023 were payable to each stockholder as 100% in cash on a monthly basis. No distributions were declared for the period of January 1, 2024 through February 29, 2024. Distributions for the period from March 1, 2024 through March 31, 2024 were payable to each stockholder as 100% in cash.\n(2) Assumes share was issued and outstanding each day that was a record date for distributions during the period presented.\n(3) Distributions for the period from January 1, 2023 through March 31, 2023 were paid on a monthly basis. In general, distributions for all record dates of a given month during such period are paid on or about the tenth day of the following month. No distributions were declared for the period of January 1, 2024 through February 29, 2024, but resumed for the period of March 1, 2024 through March 31, 2024.\nShare Repurchase Plan\nThe board of directors has adopted a share repurchase plan that may enable its stockholders to have their shares repurchased in limited circumstances. In its sole discretion, the board of directors could choose to terminate or suspend the plan or to amend its provisions without stockholder approval. The repurchase plan may be reviewed and modified by the board of directors as it deems necessary in its sole discretion. The price at which the Company will repurchase shares is dependent on the amount of time the holder has owned the shares, and the then current value of the shares. There are several limitations on the Company\u2019s ability to repurchase shares under the share repurchase plan, including, but not limited to, a limitation that during any calendar year, the maximum number of shares potentially eligible for repurchase can only be the number of shares that the Company could purchase with the amount of net proceeds from the sale of shares under the Company\u2019s dividend reinvestment plan during the prior calendar year. The board of directors may, in its sole discretion, reject any request for repurchase and may, at any time and without stockholder approval, upon 10 business days\u2019 written notice to the stockholders (i) amend, suspend or terminate its Share Repurchase Plan and (ii) increase or decrease the funding available for the repurchase of shares pursuant to our Share Repurchase Plan. The Company repurchased no shares during the three months ended March 31, 2024 and March 31, 2023. As of March 31, 2024, the Company had repurchased 287,525 shares which represents an original investment of $2,858,355 for $2,794,469 under the share repurchase plan. As of March 31, 2024, all redemption proceeds had been paid. As of March 31, 2024, the Company had $1,466,850 available for eligible repurchases for the remainder of 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "$",
+     "(797,789)",
+     "",
+     "$",
+     "255,083"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(1,709,100)",
+     "",
+     "",
+     "(2,099,652)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "2,616,465",
+     "",
+     "",
+     "613,327"
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents and restricted cash",
+     "",
+     "$",
+     "109,576",
+     "",
+     "$",
+     "(1,231,242)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1240,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On March 27, 2024, the proceeds from the New Lakewood Loan and the New A-1 Lakewood Loan were used to refinance the Original Lakewood Loan, and the outstanding obligations under Original Lakewood Loan were repaid in full. At the closing of the refinancing, an unpaid extension fee in the amount of $138,450 was paid to the A-1 Lender under the Original Lakewood Loan which was due but not paid in connection with the prior March 2023 extension of the Original Lakewood Loan. All guaranties in connection and collateral with respect to the Original Lakewood Loan have been terminated or released, and all commitments with respect to the Original Lakewood Loan have been terminated or released.\nSee \u201c\u2014Subsequent Events\u201d below for a description of changes to mortgage debt occurring subsequent to March 31, 2024.\nEmployee Retention Credit (\u201cERC\u201d)\nUnder the provisions of the CARES Act, and the subsequent extension of the CARES Act, the Company was eligible for a refundable Employee Retention Credit (\u201cERC\u201d) subject to certain criteria. During 2021, the Company applied for and received a $0.8 million employee retention credit that is included in other income (expense) in the condensed consolidated statements of operations. The Company received the funds from the ERC in April of 2023.\nProperties Under Contract\nAs of March 31, 2024, we had no hotel properties under contract. See \u201c\u2014Subsequent Events\u201d below for a description of purchase agreements entered into subsequent to March 31, 2024 that remain under contract as of the date of this filing.\nCash Flows\nThe following table provides a breakdown of the net change in our cash, cash equivalents, and restricted cash:",
+   "prose_after": "Cash Flows From Operating Activities\nAs of March 31, 2024, we owned eighteen hotel properties and an equity and profits interest in the parent of the entity which holds a leasehold interest in one hotel property. During the three months ended March 31, 2024, net cash used by operating activities was $0.8 million and during the three months ended March 31, 2023, net cash provided by operating activities was $0.3 million. Our cash flows provided by operating activities generally consist of the net cash generated by our hotel operations, partially offset by the cash paid for corporate expenses and other working capital changes. See \"\u2014 Results of Operations\" for further discussion of our operating results for the three months ended March 31, 2024 and 2023.\nCash Flows From Investing Activities\nNet cash used in investing activities was $1.7 million for the three months ended March 31, 2024 and consisted of $1.7 million used for the improvements and additions to hotel properties. Net cash used in investing activities was $2.1 million for the three months ended March 31, 2023 and consisted of $2.1 million used for improvements and additions to hotel properties.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Distribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Distributions",
+     "",
+     "",
+     "Declared Per",
+     "",
+     "",
+     "Distributions Paid (3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Flows Provided By",
+     ""
+    ],
+    [
+     "Period",
+     "",
+     "Declared (1)",
+     "",
+     "",
+     "Share (1) (2)",
+     "",
+     "",
+     "Cash",
+     "",
+     "",
+     "Reinvested",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "(Used In) Operations",
+     ""
+    ],
+    [
+     "First Quarter 2024",
+     "",
+     "$",
+     "306,065",
+     "",
+     "$",
+     "0.029",
+     "",
+     "$",
+     "903,061",
+     "",
+     "$",
+     "109,218",
+     "",
+     "$",
+     "1,012,279",
+     "",
+     "$",
+     "(797,789)"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "306,065",
+     "",
+     "$",
+     "0.029",
+     "",
+     "$",
+     "903,061",
+     "",
+     "$",
+     "109,218",
+     "",
+     "$",
+     "1,012,279",
+     "",
+     "$",
+     "(797,789)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Distribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net Cash",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Distributions",
+     "",
+     "",
+     "Declared Per",
+     "",
+     "",
+     "Distributions Paid (3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Flows Provided By",
+     ""
+    ],
+    [
+     "Period",
+     "",
+     "Declared (1)",
+     "",
+     "",
+     "Share (1) (2)",
+     "",
+     "",
+     "Cash",
+     "",
+     "",
+     "Reinvested",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "(Used In) Operations",
+     ""
+    ],
+    [
+     "First Quarter 2023",
+     "",
+     "$",
+     "1,779,846",
+     "",
+     "$",
+     "0.175",
+     "",
+     "$",
+     "1,424,802",
+     "",
+     "$",
+     "395,820",
+     "",
+     "$",
+     "1,820,622",
+     "",
+     "$",
+     "255,083"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "1,779,846",
+     "",
+     "$",
+     "0.175",
+     "",
+     "$",
+     "1,424,802",
+     "",
+     "$",
+     "395,820",
+     "",
+     "$",
+     "1,820,622",
+     "",
+     "$",
+     "255,083"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1283,
+    "end_line": 1308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf $0.4 million of net cash provided by offering proceeds related to our Offering, net of payments of commissions and other offering costs of $0.2 million;\n\u25cf $1.9 million of net cash provided by debt financing as a result of proceeds from lines of credit of $2.6 million, partially offset by principal payments on debt of $0.5 million, principal payments on lines of credit of $0.1 million and payments of financing costs of $0.1 million; and\n\u25cf $1.7 million of net cash distributions, after giving effect to distributions reinvested by stockholders of $0.4 million.\nDistributions\nDuring our Offering, when we may raise capital more quickly than we acquire income-producing assets, and from time to time after the Offering, we may not pay distributions solely from our cash flow from operating activities, in which case\ndistributions may be paid in whole or in part from proceeds from the Offering or debt financing. Distributions declared, distributions paid, and net cash flow used in operations were as follows for the first quarter of 2024 and 2023:",
+   "prose_after": "(1) Distributions for the period from January 1, 2023 through March 31, 2023 were payable to each stockholder as 100% in cash on a monthly basis. No distributions were declared for the period of January 1, 2024 through February 29, 2024. Distributions for the period from March 1, 2024 through March 31, 2024 were payable to each stockholder as 100% in cash.\n(2) Assumes share was issued and outstanding each day that was a record date for distributions during the period presented.\n(3) Distributions for the period from January 1, 2023 through March 31, 2023 were paid on a monthly basis. In general, distributions for all record dates of a given month during such period are paid on or about the tenth day of the following month. No distributions were declared for the period of January 1, 2024 through February 29, 2024, but resumed for the period of March 1, 2024 through March 31, 2024.\nFor the three months ended March 31, 2024, we paid aggregate distributions of $1.0 million, including $0.9 million of distributions paid in cash and $0.1 million of distributions reinvested through our distribution reinvestment plan. Our net loss for the three months ended March 31, 2024 was $6.5 million. Net cash flow used in operations for the three months ended March 31, 2024 was $0.8 million. We funded 100% of our distributions paid, which includes cash distributions and distributions reinvested by stockholders, with proceeds from the Offering.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Month",
+     "",
+     "Total Number of Shares Repurchased",
+     "",
+     "",
+     "Average Price Paid Per Share",
+     "",
+     "",
+     "Approximate Dollar Value of Shares Available That May Yet Be Repurchased Under the Program",
+     ""
+    ],
+    [
+     "January 2024",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "(1)"
+    ],
+    [
+     "February 2024",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "(1)"
+    ],
+    [
+     "March 2024",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "(1)"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Three Months Ended March 31, 2024",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1676,
+    "end_line": 1690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf 92% of the current share NAV if death occurs less than six months of the purchase;\n\u25cf 96% of the current share NAV if death occurs from six months to one year of purchase; and\n\u25cf 100% of the current share NAV if death occurs after one year of purchase.\nWe will not be obligated to repurchase a deceased stockholder\u2019s shares if more than two years have elapsed from the date of death.\nAmendment, Suspension or Termination of Program and Notice\nThe board of directors may, at any time and without stockholder approval, upon 10 business days\u2019 written notice to the stockholders (i) amend, suspend or terminate our share repurchase plan and (ii) increase or decrease the funding available for the repurchase of shares pursuant to our share repurchase plan.\nShares Repurchased\nPursuant to the terms of our Share Repurchase Plan and the discretion provided therein, we will repurchase shares within 21 days following the end of a calendar quarter. During the three months ended March 31, 2024, we repurchased no shares of our common stock.",
+   "prose_after": "(1) We limit the dollar value of shares that may be repurchased under the plan as described above. One of these limitations is that during each calendar year, our share repurchase plan limits the number of shares we may repurchase to those that we could purchase with the amount of the net proceeds from the sale of shares under our dividend reinvestment plan during the prior calendar year. However, we may increase or decrease the funding available for the repurchase of shares upon ten business days\u2019 notice to our stockholders.\nThe above table is on a cash basis, but we record our shares repurchased on an accrual basis.\nItem 3. Defaults upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone of our directors or executive officers adopted or terminated a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement (as defined in Item 408(c) of Regulation S-K) during the quarter ended March 31, 2024.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1671,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1707,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Amendment and Restatement, dated as of June 1, 2018 (incorporated by reference to Exhibit 3.1 to the Company\u2019s Quarterly Report on Form 10-Q filed May 14, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Articles Supplementary for Interval Common Stock (incorporated by reference to Exhibit 3.2 to the Company\u2019s Quarterly Report on Form 10-Q filed May 14, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "",
+     "Bylaws, dated of as April 9, 2018, as amended by Amendment No. 1 dated as of November 12, 2019 (incorporated by reference to Exhibit 3.2 to the Company\u2019s Current Report on Form 8-K filed November 12, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Dividend Reinvestment Plan of the Registrant (incorporated by reference to Exhibit 4.1 to the Company\u2019s Registration Statement on Form 10 filed August 8, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.283",
+     "",
+     "Fourth Amendment to the Revolving Line of Credit Loan Agreement between the Operating Partnership and Legendary A-1 Bonds, LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.284",
+     "",
+     "Fourth Amended and Restated Promissory Note entered into by the Operating Partnership in favor of Legendary A-1 Bonds, LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.10 to the Company\u2019s Current Report on Form 8-K filed April 5, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.285",
+     "",
+     "Loan Agreement between the Borrower and Bluebird Credit EM LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.286",
+     "",
+     "Promissory Note entered into by Borrower in favor of Bluebird Credit EM LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.287",
+     "",
+     "Pledge and Security Agreement entered into by the Operating Partnership in favor of Bluebird Credit EM LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.288",
+     "",
+     "Pledge and Security Agreement entered into by Lodging Fund REIT III TRS, Inc. in favor of Bluebird Credit EM LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.289",
+     "",
+     "Guaranty of Payment Norman H. Leslie for the benefit of Bluebird Credit EM LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.290",
+     "",
+     "Loan Agreement between the Operating Partnership and Legendary A-1 Bonds, LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.7 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.291",
+     "",
+     "Promissory Note entered into by the Operating Partnership in favor of Legendary A-1 Bonds, LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.8 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1710,
+    "end_line": 1750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) We limit the dollar value of shares that may be repurchased under the plan as described above. One of these limitations is that during each calendar year, our share repurchase plan limits the number of shares we may repurchase to those that we could purchase with the amount of the net proceeds from the sale of shares under our dividend reinvestment plan during the prior calendar year. However, we may increase or decrease the funding available for the repurchase of shares upon ten business days\u2019 notice to our stockholders.\nThe above table is on a cash basis, but we record our shares repurchased on an accrual basis.\nItem 3. Defaults upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone of our directors or executive officers adopted or terminated a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement (as defined in Item 408(c) of Regulation S-K) during the quarter ended March 31, 2024.\nItem 6. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1707,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.292",
+     "",
+     "Pledge and Security Agreement entered into by the Company in favor of the Legendary A-1 Bonds, LLC, dated as of March 27, 2024 (incorporated by reference to Exhibit 10.9 to the Company\u2019s Current Report on Form 8-K filed April 2, 2024)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "**",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as created by Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "99.1\n\n",
+     "",
+     "Share Repurchase Plan of the Registrant (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form 10 filed August 8, 2019)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1752,
+    "end_line": 1765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 1787,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1770,
+    "end_line": 1786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 1787,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "LODGING FUND REIT III, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "April 15, 2025",
+     "By:",
+     "/s/ Norman H. Leslie"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Norman H. Leslie"
+    ],
+    [
+     "",
+     "",
+     "",
+     "President, Chief Executive Officer, Secretary, Chief Investment Officer, Treasurer and Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(principal executive officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "April 15, 2025",
+     "By:",
+     "/s/ Samuel C. Montgomery"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Samuel C. Montgomery"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(principal financial officer)"
+    ]
+   ],
+   "caption_stack": [
+    "LODGING FUND REIT III, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1792,
+    "end_line": 1807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1787,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 1808,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4855 @@
+{
+ "accession": "0000950170-21-003724",
+ "cik": "0001755237",
+ "form": "10-Q",
+ "filing_date": "2021-11-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cycn-20210930.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Massachusetts (State or other jurisdiction of incorporation or organization)",
+     "83-1895370 (I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "245 First Street, 18th Floor, Cambridge, Massachusetts (Address of principal executive offices)",
+     "02142 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2021\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-38787\nCYCLERION THERAPEUTICS, INC.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "(857) 327-8778\nRegistrant\u2019s Telephone Number, Including Area Code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, no par value",
+     "CYCN",
+     "The Nasdaq Stock Market LLC (Nasdaq Global Select Market)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(857) 327-8778\nRegistrant\u2019s Telephone Number, Including Area Code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I \u2014 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of September 30, 2021, and December 31, 2020",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations and Comprehensive Loss for Three and Nine Months Ended September 30, 2021, and 2020",
+     "6"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Stockholders\u2019 Equity (Deficit) for Three and Nine Months Ended September 30, 2021, and 2020",
+     "7"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for Three and Nine Months Ended September 30, 2021, and 2020",
+     "9"
+    ],
+    [
+     "",
+     "Notes to the Condensed Consolidated Financial Statements",
+     "10"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "31"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II \u2014 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "32"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "32"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "32"
+    ],
+    [
+     "",
+     "Signatures",
+     "34"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2014 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 90
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [X]    Smaller reporting company [X]\nEmerging growth company [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of November 5, 2021, the registrant had 43,315,745 shares of common stock, no par value, outstanding.\nCYCLERION PHARMACEUTICALS, INC.\nQUARTERLY REPORT ON FORM 10-Q\nFOR THE QUARTER ENDED SEPTEMBER 30, 2021\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Quarterly Report on Form 10-Q contains forward-looking statements within the meaning of the federal securities laws, which statements involve substantial risks and uncertainties. All statements in this report, other than statements of historical facts, including statements about future events, financing plans, financial position, business strategy, budgets, projected costs, plans and objectives of management for future operations, are forward-looking statements that involve certain risks and uncertainties. Use of the words \u201cmay,\u201d \u201cmight,\u201d \u201cwill,\u201d \u201cwould,\u201d \u201ccould,\u201d \u201cshould,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cprojects,\u201d \u201cpotential,\u201d \u201cexpects,\u201d \u201cplans,\u201d \u201cseeks,\u201d \u201cintends,\u201d \u201cevaluates,\u201d \u201cpursues,\u201d \u201canticipates,\u201d \u201ccontinues,\u201d \u201cdesigns,\u201d \u201cimpacts,\u201d \u201caffects,\u201d \u201cforecasts,\u201d \u201ctarget,\u201d \u201coutlook,\u201d \u201cinitiative,\u201d \u201cobjective,\u201d \u201cdesigned,\u201d \u201cpriorities,\u201d \u201cgoal\u201d or the negative of those words or other similar expressions may identify forward-looking statements that represent our current judgment about possible future events, but the absence of these words does not necessarily mean that a statement is not forward-looking.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2021",
+     "",
+     "",
+     "December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "62,503",
+     "",
+     "$",
+     "54,395",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "158",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Related party accounts receivable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "127",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "562",
+     "",
+     "",
+     "816",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "459",
+     "",
+     "",
+     "3,163",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "63,682",
+     "",
+     "",
+     "58,501",
+     ""
+    ],
+    [
+     "Restricted cash, net of current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,837",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "112",
+     "",
+     "",
+     "6,865",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "",
+     "1,449",
+     "",
+     "",
+     "43,402",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "2,499",
+     "",
+     "",
+     "2,773",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "67,742",
+     "",
+     "$",
+     "115,378",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,174",
+     "",
+     "$",
+     "1,149",
+     ""
+    ],
+    [
+     "Related party accounts payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "286",
+     ""
+    ],
+    [
+     "Accrued research and development costs",
+     "",
+     "3,432",
+     "",
+     "",
+     "1,421",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "3,240",
+     "",
+     "",
+     "7,294",
+     ""
+    ],
+    [
+     "Short-term note payable",
+     "",
+     "3,509",
+     "",
+     "",
+     "3,509",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,293",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "11,355",
+     "",
+     "",
+     "16,952",
+     ""
+    ],
+    [
+     "Operating lease liabilities, net of current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "38,933",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, no par value, 400,000,000 shares authorized and 43,310,089 issued and outstanding at September 30, 2021 and 400,000,000 shares authorized and 34,047,300 issued and outstanding at December 31, 2020",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(204,300)",
+     "",
+     "",
+     "(163,429)",
+     ""
+    ],
+    [
+     "Paid-in capital",
+     "",
+     "260,713",
+     "",
+     "",
+     "222,949",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(26)",
+     "",
+     "",
+     "(27)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "56,387",
+     "",
+     "",
+     "59,493",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "67,742",
+     "",
+     "$",
+     "115,378",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 148,
+    "end_line": 191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": null
+   },
+   "prose_before": "See the \u201cRisk Factors\u201d section in Item 1A of our annual report on Form 10-K for the fiscal year ended December 31, 2020, and elsewhere in this Quarterly Report on Form 10-Q for a further description of these and other factors. We caution you that the risks, uncertainties, and other factors referenced above may not contain all of the risks, uncertainties and other factors that are important to you. In addition, we cannot assure you that we will realize the results, benefits, or developments that we expect or anticipate or, even if substantially realized, that they will result in the consequences or affect us or our business in the way expected. There can be no assurance that (i) we have correctly measured or identified all of the factors affecting our business or the extent of these factors\u2019 likely impact, (ii) the available information with respect to these factors on which such analysis is based is complete or accurate, (iii) such analysis is correct or (iv) our strategy, which is based in part on this analysis, will be successful. All forward-looking statements in this report apply only as of the date of this report or as of the date they were made and, except as required by applicable law, we undertake no obligation to publicly update any forward-looking statement, whether as a result of new information, future developments or otherwise.\nCondensed Consolidated Balance Sheets\n(In thousands except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations and Comprehensive Loss\n(In thousands except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 146,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from license agreement",
+     "$",
+     "0",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,000",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Revenue from development agreement",
+     "",
+     "77",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "138",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Revenue from related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,163",
+     ""
+    ],
+    [
+     "Revenue from grants",
+     "",
+     "271",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "271",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "348",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "3,409",
+     "",
+     "",
+     "2,163",
+     ""
+    ],
+    [
+     "Cost and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "7,032",
+     "",
+     "",
+     "13,703",
+     "",
+     "",
+     "27,178",
+     "",
+     "",
+     "44,322",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,601",
+     "",
+     "",
+     "8,033",
+     "",
+     "",
+     "16,207",
+     "",
+     "",
+     "21,551",
+     ""
+    ],
+    [
+     "(Gain) / loss on lease modification and termination",
+     "",
+     "\u2014",
+     "",
+     "",
+     "444",
+     "",
+     "",
+     "881",
+     "",
+     "",
+     "(1,669)",
+     ""
+    ],
+    [
+     "Total cost and expenses",
+     "",
+     "11,633",
+     "",
+     "",
+     "22,180",
+     "",
+     "",
+     "44,266",
+     "",
+     "",
+     "64,204",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(11,285)",
+     "",
+     "",
+     "(21,780)",
+     "",
+     "",
+     "(40,857)",
+     "",
+     "",
+     "(62,041)",
+     ""
+    ],
+    [
+     "Sublease termination income, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,875",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,875",
+     ""
+    ],
+    [
+     "Interest and other income (expenses), net",
+     "",
+     "(5)",
+     "",
+     "",
+     "93",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "592",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,290)",
+     "",
+     "$",
+     "(18,812)",
+     "",
+     "$",
+     "(40,872)",
+     "",
+     "$",
+     "(58,574)",
+     ""
+    ],
+    [
+     "Net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "(0.59)",
+     "",
+     "$",
+     "(1.08)",
+     "",
+     "$",
+     "(2.01)",
+     ""
+    ],
+    [
+     "Weighted average shares used in calculating:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "43,291",
+     "",
+     "",
+     "32,096",
+     "",
+     "",
+     "37,730",
+     "",
+     "",
+     "29,196",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,290)",
+     "",
+     "$",
+     "(18,812)",
+     "",
+     "$",
+     "(40,872)",
+     "",
+     "$",
+     "(58,574)",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment (loss) gain",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(11,290)",
+     "",
+     "$",
+     "(18,809)",
+     "",
+     "$",
+     "(40,871)",
+     "",
+     "$",
+     "(58,581)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 202,
+    "end_line": 243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations and Comprehensive Loss\n(In thousands except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(In thousands except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Accumulated other comprehensive",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "loss",
+     "",
+     "",
+     "equity (deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "",
+     "27,598,133",
+     "$",
+     "\u2014",
+     "$",
+     "183,376",
+     "$",
+     "(85,627)",
+     "",
+     "$",
+     "(20)",
+     "",
+     "$",
+     "97,729",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(20,228)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(20,228)",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "156,761",
+     "",
+     "\u2014",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,036",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,036",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Balance at March 31, 2020",
+     "",
+     "27,754,894",
+     "$",
+     "\u2014",
+     "$",
+     "187,413",
+     "$",
+     "(105,855)",
+     "",
+     "$",
+     "(18)",
+     "",
+     "$",
+     "81,540",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(19,534)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19,534)",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "102,816",
+     "",
+     "\u2014",
+     "",
+     "155",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "155",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,952",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,952",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2020",
+     "",
+     "27,857,710",
+     "$",
+     "\u2014",
+     "$",
+     "191,520",
+     "$",
+     "(125,389)",
+     "",
+     "$",
+     "(30)",
+     "",
+     "$",
+     "66,101",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(18,812)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(18,812)",
+     ""
+    ],
+    [
+     "Issuance of common stock - 2020 private placement",
+     "",
+     "6,062,500",
+     "",
+     "\u2014",
+     "",
+     "24,250",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "24,250",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "41,345",
+     "",
+     "\u2014",
+     "",
+     "16",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,796",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,796",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Balance at September 30, 2020",
+     "",
+     "33,961,555",
+     "$",
+     "\u2014",
+     "$",
+     "219,582",
+     "$",
+     "(144,201)",
+     "",
+     "$",
+     "(27)",
+     "",
+     "$",
+     "75,354",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(In thousands except share data)",
+   "prose_after": "Condensed Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(In thousands except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 252,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 288,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Accumulated other comprehensive",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "loss",
+     "",
+     "",
+     "equity (deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "34,047,300",
+     "$",
+     "\u2014",
+     "$",
+     "222,949",
+     "$",
+     "(163,429)",
+     "",
+     "$",
+     "(27)",
+     "",
+     "$",
+     "59,493",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(13,399)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(13,399)",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "82,625",
+     "",
+     "\u2014",
+     "",
+     "27",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "27",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,921",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,921",
+     ""
+    ],
+    [
+     "Share\u2011based compensation expense related to issuance of stock options to non-employees",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "391",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "391",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at March 31, 2021",
+     "",
+     "34,129,925",
+     "$",
+     "\u2014",
+     "$",
+     "225,288",
+     "$",
+     "(176,828)",
+     "",
+     "$",
+     "(27)",
+     "",
+     "$",
+     "48,433",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(16,182)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(16,182)",
+     ""
+    ],
+    [
+     "Issuance of common stock - June 2021 equity private placement and ATM",
+     "",
+     "9,087,547",
+     "",
+     "\u2014",
+     "",
+     "30,497",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "30,497",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "57,777",
+     "",
+     "\u2014",
+     "",
+     "133",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "133",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,942",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,942",
+     ""
+    ],
+    [
+     "Share\u2011based compensation expense related to issuance of stock options and RSUs to non-employees",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "398",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "398",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Balance at June 30, 2021",
+     "",
+     "43,275,249",
+     "$",
+     "\u2014",
+     "$",
+     "258,258",
+     "$",
+     "(193,010)",
+     "",
+     "$",
+     "(26)",
+     "",
+     "$",
+     "65,222",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,290)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,290)",
+     ""
+    ],
+    [
+     "Issuance of common stock - ATM",
+     "",
+     "1,500",
+     "",
+     "\u2014",
+     "",
+     "6",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options, RSUs and employee stock purchase plan",
+     "",
+     "33,340",
+     "",
+     "\u2014",
+     "",
+     "37",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "37",
+     ""
+    ],
+    [
+     "Share-based compensation expense related to issuance of stock options and RSUs to employees and employee stock purchase plan",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,018",
+     ""
+    ],
+    [
+     "Share\u2011based compensation expense related to issuance of stock options and RSUs to non-employees",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "394",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "394",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at September 30, 2021",
+     "",
+     "43,310,089",
+     "$",
+     "\u2014",
+     "$",
+     "260,713",
+     "$",
+     "(204,300)",
+     "",
+     "$",
+     "(26)",
+     "",
+     "$",
+     "56,387",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 296,
+    "end_line": 333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(In thousands except share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 294,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(40,872)",
+     "",
+     "$",
+     "(58,574)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "424",
+     "",
+     "",
+     "1,827",
+     ""
+    ],
+    [
+     "Net loss on disposal of property and equipment",
+     "",
+     "6,322",
+     "",
+     "",
+     "205",
+     ""
+    ],
+    [
+     "(Gain) / loss on lease modification and termination",
+     "",
+     "881",
+     "",
+     "",
+     "(1,669)",
+     ""
+    ],
+    [
+     "Sublease termination income, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,875)",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "7,064",
+     "",
+     "",
+     "11,785",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(158)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Related party accounts receivable",
+     "",
+     "127",
+     "",
+     "",
+     "1,074",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "254",
+     "",
+     "",
+     "748",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,254",
+     "",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Operating lease assets",
+     "",
+     "(105)",
+     "",
+     "",
+     "(3,592)",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "274",
+     "",
+     "",
+     "(979)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "25",
+     "",
+     "",
+     "(1,094)",
+     ""
+    ],
+    [
+     "Related party accounts payable",
+     "",
+     "(286)",
+     "",
+     "",
+     "414",
+     ""
+    ],
+    [
+     "Accrued research and development costs",
+     "",
+     "2,011",
+     "",
+     "",
+     "(38)",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(1,048)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "(4,054)",
+     "",
+     "",
+     "(3,673)",
+     ""
+    ],
+    [
+     "Net cash (used in) operating activities",
+     "",
+     "(27,887)",
+     "",
+     "",
+     "(58,449)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(7)",
+     "",
+     "",
+     "(1,489)",
+     ""
+    ],
+    [
+     "Proceeds from sale of property and equipment",
+     "",
+     "1,464",
+     "",
+     "",
+     "71",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "1,457",
+     "",
+     "",
+     "(1,418)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from equity private placement and ATM",
+     "",
+     "30,503",
+     "",
+     "",
+     "24,250",
+     ""
+    ],
+    [
+     "Proceeds from exercises of stock options and ESPP",
+     "",
+     "197",
+     "",
+     "",
+     "172",
+     ""
+    ],
+    [
+     "Proceeds from short-term note payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,509",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "30,700",
+     "",
+     "",
+     "27,931",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash, cash equivalents and restricted cash",
+     "",
+     "1",
+     "",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents and restricted cash",
+     "",
+     "4,271",
+     "",
+     "",
+     "(31,943)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of period",
+     "",
+     "58,232",
+     "",
+     "",
+     "102,620",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of period",
+     "$",
+     "62,503",
+     "",
+     "$",
+     "70,677",
+     ""
+    ],
+    [
+     "Supplemental cash flow disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for initial direct costs of lease modification",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "6,507",
+     ""
+    ],
+    [
+     "Non-cash investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed asset purchases in accounts payable and accrued expenses",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4",
+     ""
+    ],
+    [
+     "Reconciliation of cash, cash equivalents and restricted cash to the condensed consolidated balance sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "62,503",
+     "",
+     "$",
+     "66,840",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,837",
+     ""
+    ],
+    [
+     "Total cash, cash equivalents and restricted cash",
+     "$",
+     "62,503",
+     "",
+     "$",
+     "70,677",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nNotes to the Condensed Consolidated Financial Statements\n1. Nature of Business\nNature of Operations\nCyclerion Therapeutics, Inc. (\u201cCyclerion\u201d, the \u201cCompany\u201d or \u201cwe\u201d) is a clinical-stage biopharmaceutical company on a mission to develop treatments that restore cognitive function. Our lead asset, CY6463 (previously known as, IW-6463), is a pioneering, central nervous system (\u201cCNS\u201d)-penetrant, soluble guanylate cyclase (sGC) stimulator that is currently in clinical development for Alzheimer\u2019s disease with vascular pathology (ADv), and Mitochondrial Encephalomyopathy, Lactic Acidosis and Stroke-like episodes (MELAS), and cognitive impairment associated with schizophrenia (CIAS). sGC stimulators are small molecules that act synergistically with nitric oxide (NO) as positive allosteric modulators of sGC to boost production of cyclic guanosine monophosphate (cGMP). cGMP is a key second messenger that, when produced by sGC, regulates diverse and critical biological functions in the CNS including neuronal function, neuroinflammation, cellular bioenergetics, and vascular function.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements as of September 30, 2021:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "61,451",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "61,451"
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "61,451",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "61,451"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements as of September 30, 2021:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 512,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "Under the Development Agreement, the Company provided certain research and development services to Ironwood at mutually agreed upon rates and the amounts earned are recorded as revenue from related party for the three and nine months ended September 30, 2020. Such research and development activities were governed by a joint steering committee composed of representatives of both Ironwood and the Company. Ironwood and the Company have agreed not to renew the Development Agreement beyond the end of its initial term on March 31, 2021. These transactions under the Development Agreement were considered related party transactions due to Mark Currie\u2019s role as President of the Company through December 31, 2020, and board member of Ironwood. In January 2021, Mark Currie\u2019s role transitioned from President of the Company to a senior advisor on a consulting basis. Therefore, effective January 2021, transactions under the Development Agreement are no longer accounted for as related party transactions. The Company recorded approximately $0.4 million and $2.2 million as related party revenue for the three and nine months ended September 30, 2020, respectively.\n4. Fair Value of Financial Instruments\nThe Company\u2019s cash equivalents are generally classified within Level 1 of the fair value hierarchy. The following tables present information about the Company\u2019s financial assets measured at fair value on a recurring basis and indicate the level of the fair value hierarchy used to determine such fair values as of September 30, 2021 and December 31, 2020 (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements as of December 31, 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash equivalents:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "53,240",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "53,240"
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "53,240",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "53,240"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements as of December 31, 2020:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 525,
+    "end_line": 536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "During the nine months ended September 30, 2021 and 2020, there were no transfers between levels. The fair value of the Company\u2019s cash equivalents, consisting of money market funds, is based on quoted market prices in active markets with no valuation adjustment.\nThe Company believes the carrying amounts of its prepaid expenses and other current assets, restricted cash, accounts payable, and accrued expenses approximate their fair value due to the short-term nature of these amounts.\n5. Property and Equipment\nProperty and equipment, net consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Software",
+     "$",
+     "2,214",
+     "",
+     "$",
+     "2,214",
+     ""
+    ],
+    [
+     "Computer and office equipment",
+     "",
+     "51",
+     "",
+     "",
+     "44",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14,894",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "",
+     "2,265",
+     "",
+     "",
+     "17,152",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "(2,153)",
+     "",
+     "",
+     "(10,287)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "112",
+     "",
+     "$",
+     "6,865",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "During the nine months ended September 30, 2021 and 2020, there were no transfers between levels. The fair value of the Company\u2019s cash equivalents, consisting of money market funds, is based on quoted market prices in active markets with no valuation adjustment.\nThe Company believes the carrying amounts of its prepaid expenses and other current assets, restricted cash, accounts payable, and accrued expenses approximate their fair value due to the short-term nature of these amounts.\n5. Property and Equipment\nProperty and equipment, net consisted of the following (in thousands):",
+   "prose_after": "As of September 30, 2021, and December 31, 2020, the Company\u2019s property and equipment was primarily located in Cambridge, Massachusetts.\nDepreciation and amortization expense of the Company\u2019s property and equipment was a de minimis amount and approximately $0.6 million for the three months ended September 30, 2021 and 2020, respectively, and approximately $0.4 million and $1.8 million for the nine months ended September 30, 2021 and 2020, respectively.\nDuring the nine months ended September 30, 2021, the Company recorded a non-cash loss of $6.3 million, on the disposal of leasehold improvements as a result of its Head Lease (as defined below) termination (see Note 8 to the Condensed Consolidated Financial Statements). The non-cash loss on the disposal of leasehold improvements was recognized as a component of operating expenses in the condensed consolidated statements of operations and comprehensive loss for the nine months ended September 30, 2021. The Company did not record any disposal of property and equipment during the three months ended September 30, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Accrued incentive compensation",
+     "$",
+     "957",
+     "$",
+     "1,720"
+    ],
+    [
+     "Salaries",
+     "",
+     "450",
+     "",
+     "514"
+    ],
+    [
+     "Accrued vacation",
+     "",
+     "338",
+     "",
+     "555"
+    ],
+    [
+     "Professional fees",
+     "",
+     "503",
+     "",
+     "689"
+    ],
+    [
+     "Accrued severance and benefit costs",
+     "",
+     "159",
+     "",
+     "3,640"
+    ],
+    [
+     "Other",
+     "",
+     "833",
+     "",
+     "176"
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "$",
+     "3,240",
+     "$",
+     "7,294"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 571,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense of the Company\u2019s property and equipment was a de minimis amount and approximately $0.6 million for the three months ended September 30, 2021 and 2020, respectively, and approximately $0.4 million and $1.8 million for the nine months ended September 30, 2021 and 2020, respectively.\nDuring the nine months ended September 30, 2021, the Company recorded a non-cash loss of $6.3 million, on the disposal of leasehold improvements as a result of its Head Lease (as defined below) termination (see Note 8 to the Condensed Consolidated Financial Statements). The non-cash loss on the disposal of leasehold improvements was recognized as a component of operating expenses in the condensed consolidated statements of operations and comprehensive loss for the nine months ended September 30, 2021. The Company did not record any disposal of property and equipment during the three months ended September 30, 2021.\n6. Accrued Expenses and Other Current Liabilities\nAccrued expenses and other current liabilities consisted of the following (in thousands):",
+   "prose_after": "7. Commitments and Contingencies\nOther Funding Commitments\nIn the normal course of business, the Company enters into contracts with clinical research organizations and other third parties for clinical and preclinical research studies and other services and products for operating purposes. These contracts are generally cancellable, with notice, at the Company\u2019s option and do not have any significant cancellation penalties.\nGuarantees\nOn September 6, 2018, Cyclerion was incorporated in Massachusetts and its officers and directors are indemnified for certain events or occurrences while they are serving in such capacity.\nThe Company enters into certain agreements with other parties in the ordinary course of business that contain indemnification provisions. These typically include agreements with directors and officers, business partners, contractors, clinical sites and customers. Under these provisions, the Company generally indemnifies and holds harmless the indemnified party for losses suffered or incurred by the indemnified party as a result of the Company\u2019s activities. These indemnification provisions generally survive termination of the underlying agreements. The maximum potential amount of future payments the Company could be required to make under these indemnification provisions is unlimited. However, to date the Company has not incurred material costs to defend lawsuits or settle claims related to these indemnification provisions. As a result, the estimated fair value of these obligations is minimal. Accordingly, the Company did not have any liabilities recorded for these obligations as of September 30, 2021 and December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Decrease in right-of-use assets related to lease modifications and termination",
+     "$",
+     "42,058",
+     "$",
+     "27,333",
+     ""
+    ],
+    [
+     "Decrease in operating lease liabilities due to lease modifications and termination",
+     "$",
+     "41,177",
+     "$",
+     "29,002",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities (in thousands)",
+     "$",
+     "\u2014",
+     "$",
+     "6,076",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term of operating leases (in years)",
+     "",
+     "\u2014",
+     "",
+     "8.8",
+     ""
+    ],
+    [
+     "Weighted-average discount rate of operating leases",
+     "",
+     "\u2014",
+     "",
+     "6.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Lease cost is recognized on a straight-line basis over the lease term. For the three and nine months ended September 30, 2021, the Company recognized a de minimis amount and a total of approximately $2.3 million of total lease costs related to the Head Lease, respectively, as amended. Variable lease costs not subject to an index or rate are recognized as incurred. For the nine months ended September 30, 2021, the Company recognized a total of approximately $0.7 million of variable lease costs related to the Head Lease, as amended. The Company did not record any lease costs related to the Head Lease, as amended, during the three months ended September 30, 2021.\nFor the three and nine months ended September 30, 2020, the Company recognized a total of approximately $2.0 million and $6.9 million, respectively, of total lease costs and $0.4 million and $1.9 million, respectively, of variable lease costs, related to the Head Lease, as amended.\nIn May 2021 the Company signed a membership agreement to lease space with WeWork at 501 Boylston Street. The lease commenced on August 1, 2021 and was accounted for as a short term lease. The Company recorded a de minimis lease expense associated with the membership agreement during the three months ended September 30, 2021.\nSupplemental cash flow information related to leases for the nine months ended September 30, 2021 is as follows:",
+   "prose_after": "On October 18, 2019, the Company entered into an agreement with a third party to sublease 15,700 rentable square feet of its lease premises under the Head Lease. The sublease was scheduled to expire on June 30, 2029, unless earlier terminated in accordance with the sublease agreement, and had no extension options. The sublease provided for annual base rent of approximately $1.5 million in the first year, which increased on a yearly basis by 3.0% (subject to an abatement of base rent of approximately $0.7 million for the first six months of the sublease). As part of the consideration for the sublease, the sublessee agreed to provide licensed rooms and services within the sublease premises to the Company over the sublease term free of charge. In addition, the sublessee was responsible for its pro rata share of certain costs, taxes and operating expenses related to the subleased space, the consideration for which is variable and is based on the actual operating costs of the lessor. The Company allocated the total consideration in the sublease agreement between the lease and non-lease components in the contract based on their relative standalone prices. The Company determined that the variable consideration related exclusively to non-lease components and would be recognized as incurred. The sublease included an initial security deposit of $0.5 million, which was provided by the sublessee in the form of a letter of credit, and an additional security deposit of $0.4 million within nine months of the sublease commencement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "957",
+     "$",
+     "1,784",
+     "$",
+     "2,874",
+     "$",
+     "5,584"
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,455",
+     "",
+     "2,012",
+     "",
+     "4,190",
+     "",
+     "6,200"
+    ],
+    [
+     "",
+     "$",
+     "2,412",
+     "$",
+     "3,796",
+     "$",
+     "7,064",
+     "$",
+     "11,784"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share-based Compensation Plans"
+    }
+   },
+   "prose_before": "Cyclerion also mirrored two of Ironwood\u2019s existing plans, the Amended and Restated 2005 Stock Incentive Plan (\u201c2005 Equity Plan\u201d) and the Amended and Restated 2010 Employee, Director and Consultant Equity Incentive Plan (\u201c2010 Equity Plan). These mirror plans were adopted to facilitate the exchange of Ironwood equity awards for Cyclerion equity awards upon the Separation as part of the equity conversion. As a result of the Separation and in accordance with the EMA, employees of both companies retained their existing Ironwood vested options and received a pro-rata share of Cyclerion options, regardless of which company employed them post-Separation. For employees that were ultimately employed by Cyclerion, unvested Ironwood options and RSUs were converted to unvested Cyclerion options and RSUs.\nThe following table provides share-based compensation reflected in the Company\u2019s condensed consolidated statements of operations and comprehensive loss for the three and nine months ended September 30, 2021 and 2020 (in thousands):",
+   "prose_after": "A summary of stock option activity for the nine months ended September 30, 2021, is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "Average",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "Remaining",
+     "",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Contractual",
+     "",
+     "Value (in",
+     ""
+    ],
+    [
+     "",
+     "of Options",
+     "",
+     "",
+     "Price",
+     "",
+     "Term (Years)",
+     "",
+     "thousands)",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2020",
+     "",
+     "7,426,356",
+     "",
+     "$",
+     "11.87",
+     "",
+     "7.0",
+     "",
+     "1,178"
+    ],
+    [
+     "Granted",
+     "",
+     "834,250",
+     "",
+     "",
+     "3.40",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(58,055)",
+     "",
+     "",
+     "2.21",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled or forfeited",
+     "",
+     "(1,237,123)",
+     "",
+     "",
+     "10.24",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of September 30, 2021",
+     "",
+     "6,965,428",
+     "",
+     "$",
+     "11.22",
+     "",
+     "6.7",
+     "$",
+     "873"
+    ],
+    [
+     "Exercisable at September 30, 2021",
+     "",
+     "4,373,344",
+     "",
+     "$",
+     "13.72",
+     "",
+     "5.7",
+     "$",
+     "301"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 673,
+    "end_line": 691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share-based Compensation Plans"
+    }
+   },
+   "prose_before": "A summary of stock option activity for the nine months ended September 30, 2021, is as follows:",
+   "prose_after": "As of September 30, 2021, the unrecognized share-based compensation expense, net of estimated forfeitures, related to all unvested time-based stock options held by the Company\u2019s employees is $9.6 million and the weighted average period over which that expense is expected to be recognized is 3.2 years.\nA summary of RSU activity for the nine months ended September 30, 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted Average",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "",
+     "of Shares",
+     "",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Unvested as of December 31, 2020",
+     "",
+     "294,913",
+     "",
+     "$",
+     "14.52"
+    ],
+    [
+     "Granted",
+     "",
+     "39,369",
+     "",
+     "",
+     "3.17"
+    ],
+    [
+     "Vested",
+     "",
+     "(88,217)",
+     "",
+     "",
+     "15.06"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(97,704)",
+     "",
+     "",
+     "14.41"
+    ],
+    [
+     "Unvested as of September 30, 2021",
+     "",
+     "148,361",
+     "",
+     "$",
+     "11.25"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share-based Compensation Plans"
+    }
+   },
+   "prose_before": "As of September 30, 2021, the unrecognized share-based compensation expense, net of estimated forfeitures, related to all unvested time-based stock options held by the Company\u2019s employees is $9.6 million and the weighted average period over which that expense is expected to be recognized is 3.2 years.\nA summary of RSU activity for the nine months ended September 30, 2021 is as follows:",
+   "prose_after": "As of September 30, 2021, the unrecognized share-based compensation expense, net of estimated forfeitures, related to all unvested restricted stock units by the Company\u2019s employees is $1 million and the weighted-average period over which that expense is expected to be recognized is 0.94 years.\nThe Company has granted to certain employees performance-based options to purchase shares of common stock. These options are subject to performance-based milestone vesting. During the three and nine months ended September 30, 2021 and 2020 there were no shares that vested as a result of performance milestone achievements. The Company recorded no share-based compensation expense related to these performance-based options for the three and nine months ended September 30, 2021 and 2020.\nThe Company also has granted to certain employees stock options containing market conditions that vest upon the achievement of specified price targets of the Company\u2019s share price for a period through December 31, 2024. Vesting is measured based upon the average closing price of the Company\u2019s share price for any thirty consecutive trading days, subject to certain service requirements. Stock compensation cost is expensed on a straight-line basis over the derived service period for each stock price target within the award, ranging from approximately 4.0 to 4.6 years. The Company accelerates expense when a stock price target is achieved prior to the derived service period. The Company does not reverse expense recognized if the share price target(s) are ultimately not achieved but expense is reversed when a stock award recipient has a break in service prior to the completion of the derived service period. For each of the three months ended September 30, 2021 and 2020, the Company recorded a de minimis amount of share-based compensation expense, respectively related to these stock options containing market conditions. During the nine months ended September 30, 2021, 150,000 stock options containing market conditions were forfeited with a weighted average exercise price of $2.01. As of September 30, 2021, there were 450,000 outstanding stock options containing market conditions with a weighted average exercise price of $2.01. As of September 30, 2021, there was $0.2 million of unrecognized compensation costs related to stock options containing market conditions, which is expected to be recognized over a weighted-average period of 2.42 years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss (in thousands)",
+     "$",
+     "(11,290)",
+     "",
+     "$",
+     "(18,812)",
+     "",
+     "$",
+     "(40,872)",
+     "",
+     "$",
+     "(58,574)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares used in calculating net loss per share \u2014 basic and diluted (in thousands)",
+     "",
+     "43,291",
+     "",
+     "",
+     "32,096",
+     "",
+     "",
+     "37,730",
+     "",
+     "",
+     "29,196",
+     ""
+    ],
+    [
+     "Net loss per share \u2014 basic and diluted",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "(0.59)",
+     "",
+     "$",
+     "(1.08)",
+     "",
+     "$",
+     "(2.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 722,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Loss per share"
+    }
+   },
+   "prose_before": "The Company also has granted to certain employees stock options containing market conditions that vest upon the achievement of specified price targets of the Company\u2019s share price for a period through December 31, 2024. Vesting is measured based upon the average closing price of the Company\u2019s share price for any thirty consecutive trading days, subject to certain service requirements. Stock compensation cost is expensed on a straight-line basis over the derived service period for each stock price target within the award, ranging from approximately 4.0 to 4.6 years. The Company accelerates expense when a stock price target is achieved prior to the derived service period. The Company does not reverse expense recognized if the share price target(s) are ultimately not achieved but expense is reversed when a stock award recipient has a break in service prior to the completion of the derived service period. For each of the three months ended September 30, 2021 and 2020, the Company recorded a de minimis amount of share-based compensation expense, respectively related to these stock options containing market conditions. During the nine months ended September 30, 2021, 150,000 stock options containing market conditions were forfeited with a weighted average exercise price of $2.01. As of September 30, 2021, there were 450,000 outstanding stock options containing market conditions with a weighted average exercise price of $2.01. As of September 30, 2021, there was $0.2 million of unrecognized compensation costs related to stock options containing market conditions, which is expected to be recognized over a weighted-average period of 2.42 years.\n10. Loss per share\nBasic and diluted net loss per common share is computed by dividing net loss by the weighted average number of common shares outstanding during the period as follows:",
+   "prose_after": "For both the three and nine months ended September 30, 2021 there were 6,965,428 shares of common stock related to stock options and 148,361 shares of common stock related to RSUs excluded from the calculation of diluted net loss per share since the inclusion of such shares would be anti-dilutive.\nFor the three months ended September 30, 2020, 7,439,901 shares of common stock related to stock options and 428,077 shares of common stock related to RSU\u2019s were excluded from the calculation of diluted net loss per share since the inclusion of such shares would be anti-dilutive.\n11. Defined Contribution Plan\nSubsequent to the Separation, Cyclerion adopted a defined contribution 401(k) Savings Plan similar to the plan in place at Ironwood. The plan assets under the Ironwood defined contribution 401(k) Savings Plan were transferred to the Cyclerion plan.\nSubject to certain IRS limits, eligible employees may elect to contribute from 1% to 100% of their compensation. Cyclerion contributions to the plan are at the sole discretion of the board of directors. Currently, Cyclerion provides a matching contribution of 75% of the employee\u2019s contributions, up to $6,000 annually.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amounts accrued at December 31, 2019",
+     "",
+     "Charges",
+     "",
+     "Amount paid",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "Amounts accrued at September 30, 2020",
+     ""
+    ],
+    [
+     "October 2019 workforce reduction",
+     "$",
+     "2,009",
+     "$",
+     "158",
+     "$",
+     "2,137",
+     "$",
+     "(30)",
+     "",
+     "$",
+     "0"
+    ],
+    [
+     "Total",
+     "$",
+     "2,009",
+     "$",
+     "158",
+     "$",
+     "2,137",
+     "$",
+     "(30)",
+     "",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 761,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Workforce Reduction"
+    }
+   },
+   "prose_before": "Included in compensation expense is a de minimis amount and approximately $0.5 million related to the defined contribution 401(k) Savings Plan for the three and nine months ended September 30, 2021, respectively, and a de minimis amount, and approximately $0.4 million for the three and nine months ended September 30, 2020, respectively.\n12. Workforce Reduction\n2019 Workforce Reduction\nOn October 30, 2019, the Company began a reduction of its current workforce by approximately thirty (30) full-time employees to align its resources with its ongoing clinical and preclinical programs, innovation strategy and partnering efforts. The total one-time costs related to the workforce reduction were approximately $3.0 million of\nwhich approximately $2.8 million were recorded during the year ended December 31, 2019 and the remaining $0.2 million were recorded during the three months ended March 31, 2020.\nThe following table summarizes the accrued liabilities activity recorded in connection with the reduction in workforce for the nine months ended September 30, 2020 (in thousands):",
+   "prose_after": "2020 Workforce Reduction\nOn November 5, 2020, the Company began a reduction of its current workforce by approximately forty-eight (48) full-time employees to align its resources with its current priorities of focusing on the MELAS study, the planned ADv study and further characterization of CY6463 novel pharmacology.\nThe total one-time costs related to the 2020 Workforce Reduction were approximately $5.0 million, including approximately $0.1 million in stock-based compensation from the modification of certain share-based equity awards.\nThe Company reduced its workforce by approximately thirty-one (31) employees in the fourth quarter of 2020 and recorded approximately $4.1 million of severance and benefits costs in accordance with ASC Topic 420, Exit or Disposal Cost Obligations, or ASC 420, including a de minimis amount of stock-based compensation expense, for the year ended December 31, 2020. The workforce reduction was completed by the end of the first quarter of 2021.\nThe following table summarizes the accrued liabilities activity recorded in connection with the reduction in workforce for the nine months ended September 30, 2021 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amounts accrued at December 31, 2020",
+     "",
+     "",
+     "Charges",
+     "",
+     "",
+     "Amount paid",
+     "",
+     "Adjustments",
+     "",
+     "Amounts accrued at September 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "2020 workforce reduction",
+     "$",
+     "(3,640)",
+     "",
+     "$",
+     "(858)",
+     "",
+     "$",
+     "4,339",
+     "$",
+     "\u2014",
+     "$",
+     "(159)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(3,640)",
+     "",
+     "$",
+     "(858)",
+     "",
+     "$",
+     "4,339",
+     "$",
+     "\u2014",
+     "$",
+     "(159)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)                                                                                                           5"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Workforce Reduction"
+    }
+   },
+   "prose_before": "On November 5, 2020, the Company began a reduction of its current workforce by approximately forty-eight (48) full-time employees to align its resources with its current priorities of focusing on the MELAS study, the planned ADv study and further characterization of CY6463 novel pharmacology.\nThe total one-time costs related to the 2020 Workforce Reduction were approximately $5.0 million, including approximately $0.1 million in stock-based compensation from the modification of certain share-based equity awards.\nThe Company reduced its workforce by approximately thirty-one (31) employees in the fourth quarter of 2020 and recorded approximately $4.1 million of severance and benefits costs in accordance with ASC Topic 420, Exit or Disposal Cost Obligations, or ASC 420, including a de minimis amount of stock-based compensation expense, for the year ended December 31, 2020. The workforce reduction was completed by the end of the first quarter of 2021.\nThe following table summarizes the accrued liabilities activity recorded in connection with the reduction in workforce for the nine months ended September 30, 2021 (in thousands):",
+   "prose_after": "13. License Agreement\nAkebia License Agreement\nOn June 3, 2021, the Company and Akebia entered into a License Agreement (the \u201cLicense Agreement\u201d) relating to the exclusive worldwide license by the Company to Akebia of our rights to the development, manufacture, medical affairs and commercialization of pharmaceutical products containing the pharmaceutical compound known as praliciguat and other related products and forms thereof enumerated in the License Agreement (collectively, the \u201cProducts\u201d). Pursuant to the License Agreement, Akebia will be responsible for all future research, development, regulatory, and commercialization activities for the Products.\nAkebia paid a $3.0 million up-front payment to the Company upon signing of the License Agreement and the Company is eligible to receive additional milestone cash payments of up to $12.0 million in the next 18 months. Further milestone cash payments by Akebia are scheduled in the License Agreement based on the initiation of phase 3 clinical trials in the U.S. for Products for first and second indication, for FDA approvals, for approvals in certain other major markets, and for certain sales milestones. In addition to these cash milestone payments, Akebia will pay the Company tiered royalty payments on net sales in certain major markets at percentages ranging from the mid-single digits to the high-teens, subject to certain reductions and offsets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product pipeline external costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CY6463",
+     "",
+     "3,064",
+     "",
+     "1,502",
+     "",
+     "7,114",
+     "",
+     "",
+     "4,339"
+    ],
+    [
+     "CY3018",
+     "",
+     "977",
+     "",
+     "\u2014",
+     "",
+     "1,581",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Olinciguat",
+     "",
+     "63",
+     "",
+     "2,012",
+     "",
+     "304",
+     "",
+     "",
+     "6,273"
+    ],
+    [
+     "Praliciguat",
+     "",
+     "13",
+     "",
+     "53",
+     "",
+     "(401)",
+     "",
+     "",
+     "269"
+    ],
+    [
+     "Discovery research",
+     "",
+     "\u2014",
+     "",
+     "541",
+     "",
+     "700",
+     "",
+     "",
+     "743"
+    ],
+    [
+     "Total product pipeline external costs",
+     "",
+     "4,117",
+     "",
+     "4,108",
+     "",
+     "9,298",
+     "",
+     "",
+     "11,624"
+    ],
+    [
+     "Personnel and related internal costs",
+     "",
+     "2,320",
+     "",
+     "6,214",
+     "",
+     "8,633",
+     "",
+     "",
+     "20,688"
+    ],
+    [
+     "Facilities and other",
+     "",
+     "595",
+     "",
+     "3,381",
+     "",
+     "9,247",
+     "",
+     "",
+     "12,010"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "7,032",
+     "$",
+     "13,703",
+     "$",
+     "27,178",
+     "",
+     "$",
+     "44,322"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Non-CNS assets. We have other assets that are outside of our current strategic focus. These non-core assets are not being internally developed at this time and, with the exception of praliciguat are available for licensing to a third-party partner. Praliciguat is an orally administered, once-daily systemic sGC stimulator. On June 3, 2021, we entered into a License Agreement with Akebia relating to the exclusive worldwide license to Akebia of our rights to the development, manufacture, medical affairs and commercialization of pharmaceutical products containing the pharmaceutical compound praliciguat and other related products and forms thereof enumerated in such agreement. Olinciguat is an orally administered, once-daily, vascular sGC stimulator that was evaluated in a Phase 2 study of participants with sickle cell disease. We released topline results from this study in October 2020.\nThe following table summarizes our research and development expenses, employee and facility related costs allocated to research and development expense, and discovery and pre-clinical phase programs, for the three and nine months ended September 30, 2021 and 2020. The product pipeline expenses relate primarily to external costs associated with nonclinical studies and clinical trial costs, which are presented by development candidate.",
+   "prose_after": "Securing regulatory approvals for new drugs is a lengthy and costly process. Any failure by us to obtain, or any delay in obtaining, regulatory approvals would materially adversely affect our product development efforts and our business overall.\nGiven the inherent uncertainties of pharmaceutical product development, we cannot estimate with any degree of certainty how our programs will evolve, and therefore the amount of time or money that would be required to obtain regulatory approval to market them. As a result of these uncertainties surrounding the timing and outcome of any approvals, we are currently unable to estimate precisely when, if ever, our discovery and development candidates will be approved. We invest carefully in our pipeline, and the commitment of funding for each subsequent stage of our development programs is dependent upon the receipt of clear, supportive data.\nThe successful development of our product candidates is highly uncertain and subject to a number of risks including, but not limited to:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 882,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from license agreement",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "3,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,000",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Revenue from development agreement",
+     "",
+     "77",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "77",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "138",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "138",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Revenue from related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "(400)",
+     "",
+     "",
+     "(100)",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,163",
+     "",
+     "",
+     "(2,163)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Revenue from grants",
+     "",
+     "271",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "271",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "271",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "271",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Total revenues",
+     "",
+     "348",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "(52)",
+     "",
+     "",
+     "(13)",
+     "%",
+     "",
+     "3,409",
+     "",
+     "",
+     "2,163",
+     "",
+     "",
+     "1,246",
+     "",
+     "",
+     "58",
+     "%"
+    ],
+    [
+     "Cost and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "7,032",
+     "",
+     "",
+     "13,703",
+     "",
+     "",
+     "(6,671)",
+     "",
+     "",
+     "(49)",
+     "%",
+     "",
+     "27,178",
+     "",
+     "",
+     "44,322",
+     "",
+     "",
+     "(17,144)",
+     "",
+     "",
+     "(39)",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,601",
+     "",
+     "",
+     "8,033",
+     "",
+     "",
+     "(3,432)",
+     "",
+     "",
+     "(43)",
+     "%",
+     "",
+     "16,207",
+     "",
+     "",
+     "21,551",
+     "",
+     "",
+     "(5,344)",
+     "",
+     "",
+     "(25)",
+     "%"
+    ],
+    [
+     "(Gain) / loss on lease modification and termination",
+     "",
+     "\u2014",
+     "",
+     "",
+     "444",
+     "",
+     "",
+     "(444)",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "881",
+     "",
+     "",
+     "(1,669)",
+     "",
+     "",
+     "2,550",
+     "",
+     "",
+     "(153)",
+     "%"
+    ],
+    [
+     "Total cost and expenses",
+     "",
+     "11,633",
+     "",
+     "",
+     "22,180",
+     "",
+     "",
+     "(10,547)",
+     "",
+     "",
+     "(48)",
+     "%",
+     "",
+     "44,266",
+     "",
+     "",
+     "64,204",
+     "",
+     "",
+     "(19,938)",
+     "",
+     "",
+     "(31)",
+     "%"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(11,285)",
+     "",
+     "",
+     "(21,780)",
+     "",
+     "",
+     "10,495",
+     "",
+     "",
+     "(48)",
+     "%",
+     "",
+     "(40,857)",
+     "",
+     "",
+     "(62,041)",
+     "",
+     "",
+     "21,184",
+     "",
+     "",
+     "(34)",
+     "%"
+    ],
+    [
+     "Sublease termination income, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,875",
+     "",
+     "",
+     "(2,875)",
+     "",
+     "",
+     "(100)",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,875",
+     "",
+     "",
+     "(2,875)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Interest and other income (expenses), net",
+     "",
+     "(5)",
+     "",
+     "",
+     "93",
+     "",
+     "",
+     "(98)",
+     "",
+     "",
+     "(105)",
+     "%",
+     "",
+     "(15)",
+     "",
+     "",
+     "592",
+     "",
+     "",
+     "(607)",
+     "",
+     "",
+     "(103)",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,290)",
+     "",
+     "$",
+     "(18,812)",
+     "",
+     "$",
+     "7,522",
+     "",
+     "",
+     "(40)",
+     "%",
+     "$",
+     "(40,872)",
+     "",
+     "$",
+     "(58,574)",
+     "",
+     "$",
+     "17,702",
+     "",
+     "",
+     "(30)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 918,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We believe that our application of accounting policies requires significant judgments and estimates on the part of management and is the most critical to aid in fully understanding and evaluating our reported financial results. Our significant accounting policies are more fully described in Note 2, Summary of Significant Accounting Policies, of the consolidated financial statements elsewhere in this Quarterly Report on Form 10-Q.\nAll research and development expenses are expensed as incurred. We defer and capitalize nonrefundable advance payments we make for research and development activities until the related goods are received or the\nrelated services are performed. See Note 2, Summary of Significant Accounting Policies, of the consolidated financial statements appearing elsewhere in this Quarterly Report on Form 10-Q.\nResults of Operations\nThe expenses reflected in the consolidated financial statements may not be indicative of revenue and expenses that will be incurred by us in the future. The following discussion summarizes the key factors we believe are necessary for an understanding of our consolidated financial statements.\nExpenses",
+   "prose_after": "Revenues. As of January 2021, revenues earned from the services performed under the Development Agreement for Ironwood, are not considered to be related party revenues (See Note 3). The increase in revenue of approximately $0.1 million for the three months ended September 30, 2021, compared to the three months ended September 30, 2020, can be attributed primarily to the revenue from the PTC Grant, which was approved in August 2021, offset by a decrease in revenue generated from services performed under the Development Agreement, which ended on March 31, 2021.\nThe increase in revenue of approximately $1.2 million for the nine months ended September 30, 2021 compared to the nine months ended September 30, 2020 can be attributed to $3.0 million in revenue from the License Agreement and approximately $0.3 million in revenue associated with the PTC Grant, offset by a decrease in revenue generated from services performed under the Development Agreement.\nResearch and development expense. The decrease in research and development expense of approximately $6.7 million for the three months ended September 30, 2021 compared to the three months ended September 30, 2020 was driven by a decrease of approximately $3.9 million in salaries, stock-based compensation and other employee-related expenses primarily due to lower average headcount, and a decrease of approximately $2.8 million in facilities and operating costs allocated to research and development primarily due to the reduction in the Company\u2019s total leased premises. Comparing the three months ended September 30, 2021 to the three months ended September 30, 2020, external research costs increased by approximately $1.5 million associated with CY6463 clinical trials, MELAS, CIAS and ADv, and approximately $1.0 million for CY3018 costs, offset by a decrease of $2.0 million related to olinciguat due to the completion of the STRONG-SCD study, with topline data read out on October 14, 2020, and a decrease of approximately $0.5 million in discovery research.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 909,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(27,887)",
+     "",
+     "$",
+     "(58,449)",
+     "",
+     "$",
+     "30,562",
+     "",
+     "(52)",
+     "%"
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "$",
+     "1,457",
+     "",
+     "$",
+     "(1,418)",
+     "",
+     "$",
+     "2,875",
+     "",
+     "(203)",
+     "%"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "30,700",
+     "",
+     "$",
+     "27,931",
+     "",
+     "$",
+     "2,769",
+     "",
+     "10",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 999,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "On September 30, 2021, we had approximately $62.5 million of unrestricted cash and cash equivalents. Our cash equivalents include amounts held in U.S. government money market funds. We invest cash in excess of immediate requirements in accordance with our investment policy, which requires all investments held by us to be at least \u201cAAA\u201d rated or equivalent, with a remaining final maturity when purchased of less than twelve months, so as to primarily achieve liquidity and capital preservation.\nGoing Concern\nBased on the timing expectations of our research and development plans, including our clinical trials, we expect that our existing cash and cash equivalents as of September 30, 2021 will be sufficient to fund our planned operating expenses and capital expenditure requirements at least through the next 12 months following the date of this Quarterly Report on Form 10-Q. We have based this estimate on assumptions that may prove to be wrong, particularly as the process of testing drug candidates in clinical trials is costly and the timing of progress in these trials is uncertain.\nCash Flows\nThe following is a summary of cash flows for the years ended September 30, 2021 and 2020:",
+   "prose_after": "Cash Flows from Operating Activities\nNet cash used in operating activities was $27.9 million for the nine months ended September 30, 2021 compared to $58.4 million for the nine months ended September 30, 2020. The decrease in net cash used in operations of $30.6 million primarily relates to a decrease in our net loss of $17.7 million, non-cash leasehold improvement write off of $6.3 million in the current year, the recording of non-cash loss on lease termination of\n$0.9 million in the current year and non-cash gain on lease modification of $1.7 million in prior year, non-cash gain on lease termination of sublease for $2.9 million in prior year, and a decrease in working capital accounts of $7.6 million, partially offset by a decrease of stock-based compensation and other non-cash items of $6.3 million.\nCash Flows from Investing Activities\nNet cash provided by investing activities was $1.5 million for the nine months ended September 30, 2021 compared to net cash used in investing activities of $1.4 million for the nine months ended September 30, 2020. The increase in net cash provided by investing activities of 2.9 million was primarily from an increase in cash received from sale of lab equipment in 2021 compared to purchases of leasehold improvements and other property and equipment in 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 978,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNo.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Cyclerion Therapeutics, Inc. Executive Severance Plan (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed on September 25, 2019 (File No. 001-38787))"
+    ],
+    [
+     "31.1",
+     "Certificate of Chief Executive Officer (Principal Executive Officer) pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certificate of Chief Financial Officer (Principal Financial Officer) pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certificate of Chief Executive Officer (Principal Executive Officer) pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "Certificate of Chief Financial Officer (Principal Financial Officer) pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1120,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "PART II\nItem 1. Legal Proceedings\nWe are not a party to any material legal proceedings at this time. From time to time we may be subject to various legal proceedings and claims, which may have a material adverse effect on our financial position or results of operations.\nItem 1A. Risk Factors\nYou should carefully review and consider the information regarding certain factors which could materially affect our business, financial condition or future results set forth under the heading \u201cRisk Factors\u201d in our Annual Report on Form 10-K for the fiscal year ended December 31, 2020.\nItem 5. Other Information\nNot applicable.\nItem 6. Exhibits\nSee the Exhibit Index on the following page of this Quarterly Report on Form 10-Q.\nEXHIBIT INDEX",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CYCLERION THERAPEUTICS, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Peter M. Hecht"
+    ],
+    [
+     "Name:",
+     "Peter M. Hecht"
+    ],
+    [
+     "Title:",
+     "Chief Executive Officer and Interim Chief Financial Officer (Principal Executive Officer"
+    ],
+    [
+     "",
+     "and Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "CYCLERION THERAPEUTICS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1148,
+    "end_line": 1157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: November 9, 2021",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1160,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

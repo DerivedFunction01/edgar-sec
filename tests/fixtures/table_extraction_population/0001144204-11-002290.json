@@ -1,0 +1,3582 @@
+{
+ "accession": "0001144204-11-002290",
+ "cik": "0001435064",
+ "form": "10-K",
+ "filing_date": "2011-01-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v208132_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "30-0399914"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "Incorporation or organization)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(D)\nOF THE SECURITIES ACT OF 1934\nFor the fiscal year ended September 30, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D)\nOF THE SECURITIES ACT OF 1934\nCommission File Number: 000-53238\nCEMTREX, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "19 Engineers Lane,\nFarmingdale, New York 11735\n(Address, including zip code, of principal executive offices)\n631-756-9116\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "19 Engineers Lane,\nFarmingdale, New York 11735\n(Address, including zip code, of principal executive offices)\n631-756-9116\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] N [ ] [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] N [ ] [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] N [ ] [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Part I",
+     ""
+    ],
+    [
+     "",
+     "Cautionary Statement Regarding Forward-Looking Statements",
+     "3"
+    ],
+    [
+     "Item 1",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "11"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "15"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "Item 4",
+     "(RESERVED AND REMOVED)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities",
+     "16"
+    ],
+    [
+     "Item 6",
+     "Selected Consolidated Financial Data",
+     "17"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 7A",
+     "Qualitative and Quantitative Disclosures about Market Risk",
+     "21"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "21"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "21"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part III",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "22"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "23"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "25"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "26"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part IV",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits and Financial Statements Schedules",
+     "28"
+    ]
+   ],
+   "caption_stack": [
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] N [ ] [X]\nAs of December 23, 2010, the aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant was $4,192,523 based on the average bid and asked price of $0.04 on December 23, 2010.\nAs of December 23, 2010, the registrant had 40,111,324 shares of common stock outstanding.\nDocuments incorporated by reference: None.\nIndex",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nStatements in this report may be \"forward-looking statements.\" Forward-looking statements include, but are not limited to, statements that express our intentions, beliefs, expectations, strategies, predictions or any other statements relating to our future activities or other future events or conditions. These statements are based on current expectations, estimates and projections about our business based, in part, on assumptions made by management. These statements are not guarantees of future performance and involve risks, uncertainties and assumptions that are difficult to predict. Therefore, actual outcomes and results may, and are likely to, differ materially from what is expressed or forecasted in the forward-looking statements due to numerous factors, including those described above and those risks discussed from time to time in this report, including the risks described under \"Risk Factors\" and any risks described in any other filings we make with the SEC. Any forward-looking statements speak only as of the date on which they are made, and we do not undertake any obligation to update any forward-looking statement to reflect events or circumstances after the date of this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 99,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Period",
+     "Stock Price",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "",
+     "4th Quarter",
+     "$",
+     "0.13",
+     "$",
+     "0.02"
+    ],
+    [
+     "",
+     "3rd Quarter",
+     "$",
+     "0.198",
+     "$",
+     "0.10"
+    ],
+    [
+     "",
+     "2nd Quarter",
+     "$",
+     "0.44",
+     "$",
+     "0.14"
+    ],
+    [
+     "2010",
+     "1st Quarter",
+     "$",
+     "0.50",
+     "$",
+     "0.24"
+    ],
+    [
+     "",
+     "4nd Quarter",
+     "$",
+     "0.53",
+     "$",
+     "0.24"
+    ],
+    [
+     "",
+     "3rd Quarter",
+     "$",
+     "0.64",
+     "$",
+     "0.45"
+    ],
+    [
+     "",
+     "2th Quarter",
+     "$",
+     "0.75",
+     "$",
+     "0.17"
+    ],
+    [
+     "2009",
+     "1st Quarter",
+     "$",
+     "0.22",
+     "$",
+     "0.008"
+    ],
+    [
+     "",
+     "4nd Quarter",
+     "$",
+     "0.02",
+     "$",
+     "0.004"
+    ],
+    [
+     "",
+     "3rd Quarter",
+     "$",
+     "0.031",
+     "$",
+     "0.015"
+    ],
+    [
+     "",
+     "2rd Quarter",
+     "$",
+     "0.032",
+     "$",
+     "0.006"
+    ],
+    [
+     "2008",
+     "1th Quarter",
+     "$",
+     "0.014",
+     "$",
+     "0.004"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 480,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED SHAREHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s Common Stock currently trades on the Over the Counter Bulletin Board electronic quotation system under the symbol \u201cCTEI.OB\u201d.\nAs of December 23, 2010, there were approximately 93 holders of record of the Company's common stock as determined from the Company\u2019s transfer agent\u2019s list. Such list does not include beneficial owners of securities whose shares are held in the names of various dealers and clearing agencies.\nThe Company is authorized to issue 60,000,000 shares of common stock, $0.001 par value per share. On December 23, 2010, there were 40,111,324 shares of common stock issued and outstanding and 1,000,000 shares of Series A preferred stock issued or outstanding.\nThe Company's Common Stock trades on the over-the-counter bulletin board trading system. The price ranges presented below represent the highest and lowest quoted bid prices during the third and fourth calendar quarters for 2008, 2009 and 2010 reported by the exchange. The quotes represent prices between dealers and do not reflect mark-ups, markdowns or commissions and therefore may not necessarily represent actual transactions.\nCommon Stock",
+   "prose_after": "As reported by the over-the-counter Pink Sheets, on December 23, 2010 the closing sales price of the Company\u2019s Common Stock was $0.04 per share.\nThe Company has not declared or paid any cash dividends on its common stock nor does it anticipate paying any in the foreseeable future. Furthermore, the Company expects to retain any future earnings to finance its operations and expansion. The payment of cash dividends in the future will be at the discretion of its Board of Directors and will depend upon its earnings levels, capital requirements, any restrictive loan covenants and other factors the Board considers relevant.\nThe Company has no equity compensation plans.\nITEM 6. SELECTED FINANCIAL DATA\nNot required for Smaller Reporting Companies\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion of our financial condition and plan of operations should be read in conjunction with the consolidated financial statements and the notes to those statements included elsewhere in this prospectus. This discussion includes forward-looking statements that involve risks and uncertainties. As a result of many factors, such as those set forth under \"risk factors\" and elsewhere in this prospectus, our actual results may differ materially from those anticipated in these forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "3,304,055",
+     "",
+     "$",
+     "6,967,992"
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "2,393,496",
+     "",
+     "$",
+     "2,634,071"
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(1,028,602)",
+     "",
+     "$",
+     "155,010"
+    ],
+    [
+     "Net Income (Loss) Per Common Share,",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "0.00"
+    ],
+    [
+     "Basic and Diluted",
+     "$",
+     "(0.03)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Shares",
+     "",
+     "39,772,862",
+     "",
+     "",
+     "36,397,337"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Current Assets",
+     "$",
+     "1,164,757",
+     "",
+     "$",
+     "1,654,119"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,231,255",
+     "",
+     "$",
+     "1,743,482"
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "2,147,651",
+     "",
+     "$",
+     "1,655,196"
+    ],
+    [
+     "Total Stockholders\u2019 Equity(Deficit)",
+     "$",
+     "(916,396)",
+     "",
+     "$",
+     "88,286"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 525,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Cemtrex, Inc is an environmental & energy efficiency technologies company engaged in manufacturing and selling instruments for emission monitoring of particulate, opacity, mercury, sulfur dioxide, nitrogen oxides, etc. and filtration products for the industry. Company also markets Green DCV, an innovative energy efficiency solution for high-quality green building applications, through optimizing HVAC control systems. Cemtrex provides technologies and services for abatement of greenhouse gases pursuant to the Kyoto Protocol and assists customers in developing carbon credits projects globally. The Company's Griffin Filters subsidiary sells air filtration and environmental control products to power plants, refineries, chemical plants, cement plants and other industries, including federal and state governmental agencies.\nFinancial condition\nThe following table sets forth selected historical consolidated financial data from our consolidated financial statements and should be read in conjunction with our consolidated financial statements including the related notes and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d which are included below.\nFISCAL YEAR ENDED SEPTEMBER 30, 2010",
+   "prose_after": "CRITICAL ACCOUNTING POLICIES AND ESTIMATES\nThe following discussion and analysis is based upon our consolidated financial statements which have been prepared in accordance with accounting principles generally accepted in the United States of America. The preparation of our financial statements requires management to make estimates and assumptions that affect the reported amounts of revenues and expenses, and assets and liabilities during the periods reported. Estimates are used when accounting for certain items such as revenues, allowances for returns, early payment discounts, customer discounts, doubtful accounts, employee compensation programs, depreciation and amortization periods, taxes, inventory values, and valuations of investments, goodwill, other intangible assets and long-lived assets. We base our estimates on historical experience, where applicable and other assumptions that we believe are reasonable under the circumstances. Actual results may differ from our estimates under different assumptions or conditions. We believe that the following critical accounting policies affect our more significant judgments and estimates used in preparation of our consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address",
+     "Age",
+     "Positions and Offices"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arun Govil\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "55",
+     "President, Chief Executive Officer, Treasurer, and Chairman of the Board of Directors"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Renato Dela Rama\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "62",
+     "Vice President of Finance and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ravi Narayan\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "51",
+     "Vice President of MIP Division and Director"
+    ],
+    [
+     "Saagar Govil\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "24",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of the company's registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the company's registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit the company to provide only management's report.\nChanges in Internal Control Over Financial Reporting\nThere were no changes in our internal controls over financial reporting during the year ended September 30, 2010 that have materially affected, or are reasonably likely to materially affect, our internal controls over financial reporting.\nITEM 9B. OTHER INFORMATION\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following persons are our executive officers and directors. Directors are elected to hold offices until the next annual meeting of Shareholders and until their successors are elected or appointed and qualified. Officers are appointed by the board of directors until a successor is elected and qualified or until resignation, removal or death.",
+   "prose_after": "Arun Govil has been our President since December 2004. Mr. Govil is also President (and owner) of Ducon Technologies Inc., a privately held company engaged in air pollution control systems business since 1996. Prior to 1996 Mr. Govil, Mr. Govil worked at various management and technical positions in the environmental industry. Mr. Govil holds a B.E. degree in Chemical Engineering and a M.B.A. in Finance. He is also a licensed Professional Engineer in New York State and New Jersey.\nRenato Dela Rama has been our Vice President of Finance since December 2004. Mr. Dela Rama also works as an accountant for Ducon Technologies Inc. since 2004. Prior to that, he worked in various accounting and financial management positions. Mr. Dela Rama holds a B.S. degree in accounting.\nRavi Narayan has been with the Company since 2002 as general manager of MIP Division. In 2009 he became Vice president of the Company\u2019s MIP Division. From 1993 to 2001 Mr. Narayan worked as a Technical manager at Procal UK Ltd. Mr. Narayan has a BE in Electronic and Instrument Engineering and an MBA in Business administration.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "LONG-TERM",
+     ""
+    ],
+    [
+     "",
+     "",
+     "ANNUAL COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "COMPENSATION AWARDS",
+     ""
+    ],
+    [
+     "NAME AND PRINCIPAL",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "SECURITIES UNDERLYING",
+     ""
+    ],
+    [
+     "POSITION",
+     "YEAR",
+     "SALARY",
+     "",
+     "BONUS",
+     "",
+     "OTHER",
+     "",
+     "OPTIONS/SARS",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arun Govil",
+     "2008",
+     "$",
+     "125,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "\u2014"
+    ],
+    [
+     "Chairman, Chief Executive",
+     "2009",
+     "$",
+     "150,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "\u2014"
+    ],
+    [
+     "Officer and Treasurer and",
+     "2010",
+     "$",
+     "115,482",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "\u2014"
+    ],
+    [
+     "President",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ravi Naravan",
+     "2008",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Vice President, Director",
+     "2009",
+     "$",
+     "110,577",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2010",
+     "$",
+     "92,456",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "LONG-TERM"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "All of our directors hold office until the next annual meeting of stockholders and the election and qualification of their successors. Our executive officers are elected annually by the board of directors to hold office until the first meeting of the board following the next annual meeting of stockholders and until their successors are chosen and qualified.\nDIRECTORS' COMPENSATION\nWe reimburse our directors for expenses incurred in connection with attending board meetings but we do not pay our directors fees or other cash compensation for services rendered as a director.\nEXECUTIVE COMPENSATION\nThe compensation discussion addresses all compensation awarded to, earned by, or paid to the Cemtrex's named executive officers. As of December 23, 2010, two of our executive officers are currently earning compensation. Set forth below is the aggregate compensation for services rendered in all capacities to us during our fiscal years ended September 30, 2008, 2009 and 2010 by our executive officers. Except as indicated below, none of our executive officers were compensated in excess of $100,000.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "OPTIONS/SAR GRANTS IN THE LAST FISCAL YEAR\nOn April 30, 2007, the Company issued a $1,300,000 Convertible Debenture to Arun Govil the Company\u2019s Chairman, CEO, President and Treasurer in conjunction with the purchase of Griffin Filters, Inc. pursuant to the Agreement and Assignment of Membership Interests between Arun Govil and Cemtrex, Inc. The debenture carried an 8% annual interest rate with interest payable semiannually in arrears on the first business day of January and July each year. The debenture principle was due and payable on April 30, 2011.\nThe debenture had the right of conversion into 30,000,000 non-assessable shares of common stock of the Company at $0.001 (par value) per share. Conversion is not exercisable prior to December 31, 2007. Commencing December 31, 2007 and continuing to April 30, 2011, the Debenture Holder had the right of conversion subject to the terms and conditions of the debenture. In the event the face amount of the debenture was not fully converted on or before April 30, 2011, the conversion rights will lapse.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 764,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Owner",
+     "Title",
+     "Amount Owned",
+     "",
+     "",
+     "Percentage of Issued\n\nCommon Stock (1)",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Arun Govil\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "President ,Chief Executive Officer and Chairman of the Board",
+     "",
+     "25,430,000",
+     "(2)(3)",
+     "",
+     "64.0"
+    ],
+    [
+     "Preferred Stock",
+     "Arun Govil\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "President ,Chief Executive Officer and Chairman of the Board",
+     "",
+     "1,000,000",
+     "(2)",
+     "",
+     "-"
+    ],
+    [
+     "Common Stock",
+     "Renato Dela Rama\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "Vice President and Director",
+     "",
+     "400,000",
+     "",
+     "",
+     "1.0"
+    ],
+    [
+     "Common Stock",
+     "Ravi Narayan\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "Vice President and Director",
+     "",
+     "800,000",
+     "",
+     "",
+     "2.0"
+    ],
+    [
+     "Common Stock",
+     "Saagar Govil\n\n19 Engineers Lane\n\nFarmingdale, New York 11735",
+     "Secretary & Director",
+     "",
+     "3,000,000",
+     "",
+     "",
+     "7.6"
+    ],
+    [
+     "Common Stock",
+     "All directors and executive officers as a group (4 persons)",
+     "",
+     "",
+     "29,630,000",
+     "",
+     "",
+     "74.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 793,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "o each of our executive officers; and\no all current directors and executive officers as a group.\nExcept as otherwise indicated, and subject to applicable community property laws, the persons named in the table below have sole voting and investment power with respect to all shares of common stock held by them.\nAs of December 23, 2010, 40,111,324 shares of common stock are issued and outstanding. Applicable percentage ownership in the following table is based on 40,111,324 shares of common stock outstanding as of December 23, 2010.(1)\nBeneficial ownership is determined in accordance with the rules of the SEC. In computing the number of shares beneficially owned by a person and the percentage ownership of that person, shares of common stock subject to options held by that person that are currently exercisable or exercisable within 60 days of December 23, 2010 are deemed outstanding. Such shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "(1) Except as otherwise noted herein, the percentage is determined on the basis of 39,722,862 shares of our common stock outstanding plus securities deemed outstanding pursuant to Rule 13d-3 promulgated under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). Under Rule 13d-3, a person is deemed to be a beneficial owner of any security owned by certain family members and any security of which that person has the right to acquire beneficial ownership within 60 days, including, without limitation, shares of our common stock subject to currently exercisable options.\n(2) The Series A Preferred Stock issued by the Company to Arun Govil the Company\u2019s Chairman, CEO, President and Treasurer in conjunction with the settlement of the debenture issued as consideration for the purchase of Griffin Filters, Inc. Pursuant to the Certificate of Designation of the Preferred Stock, each issued and outstanding Preferred Stock shall be entitled to the number of votes equal to the result of: (i) the number of shares of Common Stock issued and outstanding at the time of such vote multiplied by 1.01; divided by (ii) the total number of Preferred Stock issued and outstanding at the time of such vote, at each meeting of shareholders of the Company with respect to any and all matters presented to the shareholders of the Company for their action or consideration, including the election of directors. The shares of Series A Preferred Stock represent 100% of the total Series A Preferred Stock issued and outstanding.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 792,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "31,000",
+     "$",
+     "33,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "$",
+     "1,546.20"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Other Fees",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "Totals",
+     "31,000",
+     "$",
+     "34,546.20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "On September 8, 2009, the Company entered into a letter agreement with Arun Govil, the Chairman, Chief Executive Officer, Treasurer and President of the Company. Pursuant to the letter agreement Arun Govil agreed to cancel the convertible promissory note, held by him, dated April 30, 2007 (the \" Note \"). The principal balance of the Note was $1,300,000. Pursuant to the terms of the Note, the outstanding amount was convertible into 30,000,000 shares of our common stock. Pursuant to the letter agreement, in return for cancelling the Note, the Company issued Arun Govil 2,500,000 shares of our common stock and 1,000,000 shares of our Series A Preferred Stock. Pursuant to the Certificate of Designation of the Preferred Stock, each issued and outstanding Preferred Stock shall be entitled to the number of votes equal to the result of: (i) the number of shares of Common Stock issued and outstanding at the time of such vote multiplied by 1.01; divided by (ii) the total number of Preferred Stock issued and outstanding at the time of such vote, at each meeting of shareholders of the Company with respect to any and all matters presented to the shareholders of the Company for their action or consideration, including the election of directors. In consideration of the issuance of the Common Stock and Preferred Stock described above, Mr. Govil agreed to forfeit 27,500,000 shares of our common stock issuable as per the original terms of the Note.\nDucon Technologies, Inc. is owned by Arun Govil the Chairman, Chief Executive Officer, Treasurer and President of the Company.\nRenato Dela Rama the Vice President of Finance of the Company is also an accountant with Ducon Technologies Inc.\nSaagar Govil, Vice President, is the son of Arun Govil the Chairman, Chief Executive Officer, Treasurer and President of the Company.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe Company\u2019s Board of Directors does not have an Audit Committee.\nThe following table sets forth the aggregate fees billed to us for the years ended September 30, 2010 and September 30, 2009 by Gruber & Company, LLP, our independent auditors for the fiscal years ended September 30, 2010 and 2009:",
+   "prose_after": "Audit fees represent amounts billed for professional services rendered for the audit of our annual financial statements. Audit-Related Fees include amounts billed for professional services rendered in connection with our SEC filings and discussions with the SEC that occurred during fiscal 2010 for us to become a fully reporting public company. Our Board of Directors is of the opinion that the Audit-Related Fees charged by Gruber & Company, LLC, LLP were consistent with Gruber & Company, LLC maintaining its independence from us.\nThe Board of Directors has considered whether provision of the non-audit services described above is compatible with maintaining the independent accountant\u2019s independence and has determined that such services did not adversely affect Gruber & Company, LLC independence.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 840,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Audited Consolidated Balance Sheets as of September 30, 2010 and September 30, 2009",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Audited Consolidated Statements of Operations for the Year Ended September 30, 2010 and 2009",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Audited Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended September 30, 2010, and 2009",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Audited Consolidated Statements of Cash Flows for the Year Ended September 30, 2010 and 2009",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Audited Consolidated Financial Statements",
+     "34"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 876,
+    "end_line": 889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Audit fees represent amounts billed for professional services rendered for the audit of our annual financial statements. Audit-Related Fees include amounts billed for professional services rendered in connection with our SEC filings and discussions with the SEC that occurred during fiscal 2010 for us to become a fully reporting public company. Our Board of Directors is of the opinion that the Audit-Related Fees charged by Gruber & Company, LLC, LLP were consistent with Gruber & Company, LLC maintaining its independence from us.\nThe Board of Directors has considered whether provision of the non-audit services described above is compatible with maintaining the independent accountant\u2019s independence and has determined that such services did not adversely affect Gruber & Company, LLC independence.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTHE BOARD OF CEMTREX, INC.\nWe have audited the accompanying consolidated balance sheet of Cemtrex, Inc. and Subsidiary as of September 30, 2010 and 2009, and the related consolidated statements of operations, stockholders equity and cash flows for the periods then ended. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform our audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 869,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash & Equivalents",
+     "$",
+     "41,139",
+     "",
+     "$",
+     "356,552"
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "731,968",
+     "",
+     "",
+     "948,815"
+    ],
+    [
+     "Inventory",
+     "",
+     "387,628",
+     "",
+     "",
+     "334,102"
+    ],
+    [
+     "Prepaid Expenses & Other Assets",
+     "",
+     "4,022",
+     "",
+     "",
+     "14,650"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,164,757",
+     "",
+     "",
+     "1,654,119"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property & Equipment, Net",
+     "",
+     "62,273",
+     "",
+     "",
+     "85,138"
+    ],
+    [
+     "Other",
+     "",
+     "4,225",
+     "",
+     "",
+     "4,225"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,231,255",
+     "",
+     "$",
+     "1,743,482"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities & Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "911,840",
+     "",
+     "$",
+     "876,799"
+    ],
+    [
+     "Accrued Expenses",
+     "",
+     "191,382",
+     "",
+     "",
+     "387,877"
+    ],
+    [
+     "Note Payable - Bank",
+     "",
+     "250,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes Payable-Shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "1,353,222",
+     "",
+     "",
+     "1,264,676"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes Payable-Shareholder",
+     "",
+     "738,491",
+     "",
+     "",
+     "390,520"
+    ],
+    [
+     "Convertible Debenture",
+     "",
+     "55,938",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total Non-Current Liabilities",
+     "",
+     "794,429",
+     "",
+     "",
+     "390,520"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "2,147,651",
+     "",
+     "$",
+     "1,655,196"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments & Contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock Series A, $0.001 par value, 10,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1,000,000 shares issued and outstanding, respectively",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "1,000"
+    ],
+    [
+     "Common Stock, $0.001 par value, 60,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "39,822,862 and 39,722,862 shares issued and outstanding, respectively",
+     "",
+     "39,823",
+     "",
+     "",
+     "39,723"
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "66,506",
+     "",
+     "",
+     "42,606"
+    ],
+    [
+     "Retained Earnings (Accumulated Deficit)",
+     "",
+     "(1,023,725)",
+     "",
+     "",
+     "4,957"
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "(916,396)",
+     "",
+     "",
+     "88,286"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities & Stockholders' Equity (Deficit)",
+     "$",
+     "1,231,255",
+     "",
+     "$",
+     "1,743,482"
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 916,
+    "end_line": 973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform our audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the consolidated financial position of Cemtrex, Inc. and Subsidiary at September 30, 2010 and 2009, and the results of its\u2019 consolidated operations and its\u2019 consolidated stockholders equity and consolidated cash flows for the periods then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. As discussed in the notes to the financial statements, the Company has a negative equity and negative working capital. These items among others, raises substantial doubt about its ability to continue as a going concern.. These financial statements do not include any adjustments that might result from the outcome of this uncertainty\nGruber & Company, LLC\nSaint Louis, Missouri\nJanuary 6, 2011\nCemtrex, Inc. and Subsidiary\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Twelve Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "3,304,055",
+     "",
+     "$",
+     "6,967,992",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "1,912,271",
+     "",
+     "",
+     "4,067,677",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "1,391,784",
+     "",
+     "",
+     "2,900,315",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and Development",
+     "",
+     "-",
+     "",
+     "",
+     "5,535",
+     ""
+    ],
+    [
+     "General and Administrative",
+     "",
+     "2,393,496",
+     "",
+     "",
+     "2,628,536",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "2,393,496",
+     "",
+     "",
+     "2,634,071",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Income (Loss)",
+     "",
+     "(1,001,712)",
+     "",
+     "",
+     "266,244",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(26,970)",
+     "",
+     "",
+     "(107,789)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(26,970)",
+     "",
+     "",
+     "(107,789)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss) Before Income Taxes",
+     "",
+     "(1,028,682)",
+     "",
+     "",
+     "158,455",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "(3,445)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(1,028,602)",
+     "",
+     "$",
+     "155,010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) Per Share-Basic",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Income (Loss) Per Share-Diluted",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Shares-Basic",
+     "",
+     "39,772,862",
+     "",
+     "",
+     "36,397,337",
+     ""
+    ],
+    [
+     "Weighted Average Number of Shares-Diluted",
+     "",
+     "39,772,862",
+     "",
+     "",
+     "37,397,337",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Twelve Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 1029
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Twelve Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(1,028,682)",
+     "",
+     "$",
+     "155,010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation & Amortization",
+     "",
+     "23,255",
+     "",
+     "",
+     "33,296",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "24,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "216,847",
+     "",
+     "",
+     "579,416",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(53,526)",
+     "",
+     "",
+     "122,465",
+     ""
+    ],
+    [
+     "Prepaid Expenses & Other Assets",
+     "",
+     "10,628",
+     "",
+     "",
+     "(6,550)",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "",
+     "35,041",
+     "",
+     "",
+     "8,970",
+     ""
+    ],
+    [
+     "Accrued Expenses",
+     "",
+     "(196,495)",
+     "",
+     "",
+     "(518,382)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(968,932)",
+     "",
+     "",
+     "374,225",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Property and Equipment",
+     "",
+     "(390)",
+     "",
+     "",
+     "(10,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "(390)",
+     "",
+     "",
+     "(10,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from bank loan",
+     "",
+     "250,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loans from Shareholders",
+     "",
+     "347,971",
+     "",
+     "",
+     "(76,651)",
+     ""
+    ],
+    [
+     "Proceeds from convertible debenture",
+     "",
+     "55,938",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock Issued for Cash",
+     "",
+     "-",
+     "",
+     "",
+     "8,525",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "653,909",
+     "",
+     "",
+     "(68,126)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "(315,413)",
+     "",
+     "",
+     "295,942",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Beginning of Period",
+     "",
+     "356,552",
+     "",
+     "",
+     "60,610",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash End of Period",
+     "$",
+     "41,139",
+     "",
+     "$",
+     "356,552",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid during the period for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash Paid during the period for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Non-Cash Items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares Issued for Conversion of Convertible Debt",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,300,000",
+     ""
+    ],
+    [
+     "Equipment Sold in Exchange for Reduction in Accounts Payable",
+     "",
+     "-",
+     "",
+     "",
+     "72,242",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Twelve Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Stockholders' Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock-Series A",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\nShares",
+     "",
+     "Par Value\n\n($0.001) Amount",
+     "",
+     "Number of\n\nShares",
+     "",
+     "Par Value\n\n($0.001) Amount",
+     "",
+     "Additional Paid-In\n\nCapital",
+     "",
+     "",
+     "Retained\n\nEarnings\n\n(Accumulated\n\nDeficit)",
+     "",
+     "",
+     "Total\n\nStockholders'\n\nEquity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2008",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "34,327,862",
+     "$",
+     "34,328",
+     "$",
+     "(1,259,524)",
+     "",
+     "$",
+     "(150,053)",
+     "",
+     "$",
+     "(1,375,249)",
+     ""
+    ],
+    [
+     "Shares Issued for Conversion of Convertible Debt",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "2,500,000",
+     "",
+     "2,500",
+     "",
+     "1,296,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,300,000",
+     ""
+    ],
+    [
+     "Shares Issued for Cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,895,000",
+     "",
+     "2,895",
+     "",
+     "5,630",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,525",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "155,010",
+     "",
+     "",
+     "155,010",
+     ""
+    ],
+    [
+     "Balance at September 30, 2009",
+     "",
+     "1,000,000",
+     "$",
+     "1,000",
+     "",
+     "39,722,862",
+     "$",
+     "39,723",
+     "$",
+     "42,606",
+     "",
+     "$",
+     "4,957",
+     "",
+     "$",
+     "88,286",
+     ""
+    ],
+    [
+     "Shares Issued for Services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "100,000",
+     "$",
+     "100",
+     "$",
+     "23,900",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "24,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(1,028,682)",
+     "",
+     "$",
+     "(1,028,682)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2010",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "39,822,862",
+     "",
+     "39,823",
+     "",
+     "66,506",
+     "",
+     "",
+     "(1,023,725)",
+     "",
+     "",
+     "(916,396)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1105,
+    "end_line": 1129
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCemtrex, Inc. and Subsidiary\nConsolidated Statements of Stockholders' Equity (Deficit)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nNote 1 \u2013 Organization, Business & Operations\nCemtrex, Inc. and its wholly-owned subsidiary Griffin Filters, LLC (collectively the \u201cCompany\u201d), is engaged in manufacturing and selling the most advanced instruments for emission monitoring of particulate, opacity, mercury, sulfur dioxide, nitrogen oxides, etc. Cemtrex also provides turnkey services for carbon creation projects from abatement of greenhouse gases pursuant to Kyoto protocol and assists project owners in selling of carbon credits globally. Company's products are sold to power plants, refineries, chemical plants, cement plants & other industries including federal and state governmental agencies. Through its wholly-owned subsidiary, Griffin Filters, the Company designs, manufactures and sells air filtration equipment and systems to control particulate emissions in a variety of industries. The Company has also set up a subsidiary Cemtrex India Pvt. Ltd., located in Mumbai, India to sell emission monitors and related industrial equipment.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Current Taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Federal",
+     "$",
+     "-",
+     "",
+     "$",
+     "53,875",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. State and Local",
+     "",
+     "-",
+     "",
+     "",
+     "11,092",
+     ""
+    ],
+    [
+     "Current Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "64,967",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Asset",
+     "",
+     "(421,760)",
+     "",
+     "",
+     "(61,522)",
+     ""
+    ],
+    [
+     "Deferred Tax Valuation Allowance",
+     "",
+     "421,760",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,445",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1207,
+    "end_line": 1224
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company accounts for income taxes under the provisions of FASB ASC 740, \u201cIncome Taxes\u201d, formerly referenced as SFAS No. 109, \u201cAccounting for Income Taxes\u201d. Under the provisions of FASB ASC 740, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between their financial statement carrying values and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date.\nSignificant judgment is required in determining any valuation allowance recorded against deferred tax assets. In assessing the need for a valuation allowance, the Company considers all available evidence including past operating results, estimates of future taxable income, and the feasibility of tax planning strategies. In the event that the Company changes its determination as to the amount of deferred tax assets that can be realized, the Company will adjust its valuation allowance with a corresponding impact to the provision for income taxes in the period in which such determination is made.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1258,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory Federal Tax (Benefit) Rate",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "Statutory State Tax (Benefit) Rate",
+     "",
+     "7.0",
+     "%",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "Effective Tax (Benefit) Rate",
+     "",
+     "41.0",
+     "%",
+     "",
+     "41.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "41.0",
+     "%",
+     "",
+     "-38.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective Income Tax",
+     "",
+     "-",
+     "",
+     "",
+     "2.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1225,
+    "end_line": 1242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Guarantee Expense\nIn accordance with FASB Interpretation No. 45 (\"Fin 45\"), the Company recognizes, at the inception of a guarantee, the cost of the fair value of the obligation undertaken in issuing the guarantee.\nResearch and development costs\nExpenditures for research & development are expenses as incurred. Such costs are required to be expensed until the point that technological feasibility is established. The Company incurred $0 and $5,535 research and development costs for the years ended September 30, 2010 and 2009, respectively which were expensed.\nFair Value of Financial Instruments\nThe reported amounts of the Company's financial instruments, including accounts payable and accrued liabilities, approximate their fair value due to their short maturities. The carrying amounts of debt approximate fair value since the debt agreements provide for interest rates that approximate market.\nStock-based compensation\nThe Company records compensation expense associated with stock options and other forms of employee and non-employee equity compensation in accordance with FASB ASC 718, \u201cCompensation \u2013 Stock Compensation\u201d, formerly referenced as SFAS 123R, \u201cShare-Based Payment\u201d. The Company estimates the fair value of stock options granted using the Black-Scholes-Merton option-pricing formula and a single option approach. This fair value is then amortized on a straight-line basis over the requisite service periods of the awards, which is generally the vesting period.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1258,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture and Office Equipment",
+     "$",
+     "83,687",
+     "",
+     "$",
+     "83,687",
+     ""
+    ],
+    [
+     "Computer Software",
+     "",
+     "14,080",
+     "",
+     "",
+     "13,691",
+     ""
+    ],
+    [
+     "Machinery and Equipment",
+     "",
+     "68,942",
+     "",
+     "",
+     "68,942",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Accumulated Depreciation",
+     "",
+     "(104,437)",
+     "",
+     "",
+     "(81,182)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Property & Equipment",
+     "$",
+     "62,273",
+     "",
+     "$",
+     "85,138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation Expense",
+     "$",
+     "23,255",
+     "",
+     "$",
+     "33,296",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1331,
+    "end_line": 1348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "\u00b7 FASB ASC Topic 740, \u201cIncome Taxes\u201d, an Accounting Standard Update. In September 2009, the FASB issued this Update to address the need for additional implementation guidance on accounting for uncertainty in income taxes. The guidance answers the following questions: (i) Is the income tax paid by the entity attributable to the entity or its owners? (ii) What constitutes a tax position for a pass-through entity or a tax-exempt not-for-profit entity? (iii) How should accounting for uncertainty in income taxes be applied when a group of related entities comprise both taxable and nontaxable entities? In addition, this Updated decided to eliminate the disclosures required by paragraph 740-10-50-15(a) through (b) for nonpublic entities. The implementation guidance will apply to financial statements of nongovernmental entities that are presented in conformity with GAAP. The disclosure amendments will apply only to nonpublic entities as defined in Section 740-10-20. For entities that are currently applying the standards for accounting for uncertainty in income taxes, the guidance and disclosure amendments are effective for financial statements issued for interim and annual periods ending after September 15, 2009. The adoption of this Topic did not have a material impact on the Company\u2019s financial statements and disclosures.\nNote 4 - Inventory\nThe Company values its inventory under the FIFO method of costing under the lower of cost or market pricing model. The Company reviews its product for old and or obsolete items and adjusts accordingly. The Company\u2019s inventory consists of finished and raw material product.\nNote 5 - Property and Equipment\nAt September 30, 2010 and September 30, 2009, property and equipment are comprised of the following:",
+   "prose_after": "Depreciation for the twelve months ended September 30, 2010 and 2009 was $23,255 and $33,296, respectively.\nNote 6 \u2013 Business Combination and Related Party Transactions\nOn April 30, 2007, the Company purchased, though a business combination, all of the issued and outstanding membership interests of Griffin Filters LLC, (\u201cGriffin\u201d) a company established since 1971 and engaged in the design, engineering & supplying of industrial air filtration equipment from its President. Aron Govil, the Chairman, Chief Executive Officer, Treasurer and President of the Company, was the owner of 100% of the issued and outstanding membership interests of Griffin. The Company purchased 100% ownership in Griffin for a purchase price of $2,750,000.00. The Company completed the Griffin purchase by (i) paying cash of $700,000; (ii) issuing 20,000,000 shares of common stock valued at $750,000; and\n(iii) issuing a four year convertible debenture in the amount of $1,300,000 (see Note 7). Griffin had sales and net income of $3,297,409 and $145,981 respectively for fiscal year ended September 30, 2006. Griffin is now a wholly-owned subsidiary of the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1377,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Accounts Receivable",
+     "$",
+     "530,506",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "49,668",
+     ""
+    ],
+    [
+     "Property & Equipment, Net",
+     "",
+     "67,018",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "4,225",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "",
+     "(600,348)",
+     ""
+    ],
+    [
+     "Additional Paid-in-Capital",
+     "",
+     "2,698,931",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,750,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1358,
+    "end_line": 1369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Business Combination and Related Party Transactions"
+    }
+   },
+   "prose_before": "On April 30, 2007, the Company purchased, though a business combination, all of the issued and outstanding membership interests of Griffin Filters LLC, (\u201cGriffin\u201d) a company established since 1971 and engaged in the design, engineering & supplying of industrial air filtration equipment from its President. Aron Govil, the Chairman, Chief Executive Officer, Treasurer and President of the Company, was the owner of 100% of the issued and outstanding membership interests of Griffin. The Company purchased 100% ownership in Griffin for a purchase price of $2,750,000.00. The Company completed the Griffin purchase by (i) paying cash of $700,000; (ii) issuing 20,000,000 shares of common stock valued at $750,000; and\n(iii) issuing a four year convertible debenture in the amount of $1,300,000 (see Note 7). Griffin had sales and net income of $3,297,409 and $145,981 respectively for fiscal year ended September 30, 2006. Griffin is now a wholly-owned subsidiary of the Company.\nThe Company recorded the combination of Griffin Filters, LLC as a \u201cAs is Pooling\u201d because of the related party interest as follows:",
+   "prose_after": "These consolidated financial statements have been retrospectively adjusted for all periods presented.\nIn addition, the Company had the following related party transactions:\n\u00b7 The Company sold to Ducon Technologies India product totaling $450,000. Ducon is an enterprise owned by the majority stockholder of the Company.\n\u00b7 The Company leases space from Ducon Technologies, a related party, on a month to month basis.\nNote 7 \u2013 Note Payable Shareholder\nNotes Payable to shareholders and related parties total $862,847. Of this total $738,491 is due October 1, 2011 and accrues interest at 5% per annum.\nNote 8 \u2013 Convertible Debenture\nOn September 8th, 2009, Cemtrex, Inc. entered into a letter agreement with Arun Govil, the Chairman, Chief Executive Officer, Treasurer and President of the Company. Pursuant to the letter agreement Arun Govil agreed to cancel the convertible promissory note, held by him, dated April 30, 2007. The principal balance of the Note was $1,300,000. Pursuant to the terms of the Note, the Outstanding Amount was convertible into 30,000,000 shares of the Company\u2019s common stock. Pursuant to the letter agreement, in return for cancelling the Note, the Company issued Arun Govil 2,500,000 shares of common stock of the Company, par value $0.001 and 1,000,000 shares of Series A Preferred Stock of the Company, par value $0.001 per share. Mr. Govil agreed to forfeit 27,500,000 shares of common stock issuable as per the original terms of the Note.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1377,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Exhibit"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation of the Company*"
+    ],
+    [
+     "3.2",
+     "By Laws of the Company*"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment of Certificate of Incorporation dated September 29, 2006*"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment of Certificate of Incorporation dated March 30, 2007*"
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment of Certificate of Incorporation dated May 16, 2007*"
+    ],
+    [
+     "3.6",
+     "Certificate of Amendment of Certificate of Incorporation dated August 21, 2007*"
+    ],
+    [
+     "3.7",
+     "Certificate of Designation of the Series A Preferred Stock dated September 8, 2009**"
+    ],
+    [
+     "10.1",
+     "Cemtrex Lease Agreement-Ducon Technologies, Inc.*"
+    ],
+    [
+     "10.2",
+     "Lease Agreement between Daniel L. Canino and Griffin Filters, LLC*"
+    ],
+    [
+     "10.3",
+     "Asset Purchase Agreement between Ducon Technologies, Inc. and Cemtrex Inc.*"
+    ],
+    [
+     "10.4",
+     "Agreement and Assignment of Membership Interests between Arun Govil and Cemtrex, Inc.*"
+    ],
+    [
+     "10.5",
+     "8.0% Convertible Subordinated Debenture*"
+    ],
+    [
+     "10.6",
+     "Letter Agreement by and between the Company and Arun Govil, the Chairman, Chief Executive Officer, Treasurer and President of the Company dated September 8, 2009**"
+    ],
+    [
+     "21.1",
+     "Subsidiaries*"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm***"
+    ],
+    [
+     "31.1",
+     "Certification by CEO pursuant to Sections 302 of the Sarbanes-Oxley Act of 2002 ***"
+    ],
+    [
+     "31.2",
+     "Certification by Vice President of Finance pursuant to Sections 302 of the Sarbanes-Oxley Act of 2002***"
+    ],
+    [
+     "32.1",
+     "Certification of CEO pursuant to Section 906 of the Sarbanes-Oxley Act of 2002***"
+    ],
+    [
+     "32.2",
+     "Certification Vice President of Finance pursuant to Section 906 of the Sarbanes-Oxley Act of 2002***"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1446,
+    "end_line": 1469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "A Demand for Arbitration was filed on December 19, 2009 by Sindicatum Carbon Technology Limited, a U.K. company before the JAMS arbitration and mediation society in New York City. In the JAMS claim, SCT alleged breaches of contract by the Company. The Company filed counter claims against SCT for breaches of contract. A parallel action was filed by SCT before the Court of Arbitration and Mediation in the Chamber of Commerce and Industry of Geneva (the \u201cGeneva Claim\u201d). In early December, 2010, SCT and the Company agreed to settle all matters in dispute between them without the payment or money or other consideration by either side. The JAMS Claim and the Geneva Claim were each discontinued, with prejudice. As of September 30, 2010 the Company charged off as a bad debt the balance of $488,237 which was recorded as due from SCT relating to this contract.\nNote 13 \u2013 Other Related Party Transactions\nThe Company has an account receivable at September 30, 2010 in the amount of $200,000 due from a related corporation incurred in the ordinary course of business. Total sales to this related corporation total $200,000 for the year ended September 30, 2010.\nNote 14 - Subsequent Events\nThe Company has evaluated all subsequent events through January 11, 2010, the date this Annual Report on Form 10-K was ready to be filed with the SEC. There were no recognized or unrecognized events requiring disclosure as significant subsequent events.\n(b) Exhibit Index",
+   "prose_after": "______\n* Incorporated by reference from Form 10-12G filed on May 22, 2008\n** Incorporated by reference from Form 8-K filed on September 10, 2009\n*** Filed Herewith\nSIGNATURES\nPursuant to the requirements of the Securities and Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1477,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CEMTREX, INC.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: January 14, 2011",
+     "",
+     "By",
+     "/s/ Arun Govil",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Arun Govil, Chairman of the Board, Chief Executive Officer and President (Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: January 14, 2011",
+     "",
+     "By",
+     "/s/ Renato Dela Rama",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Renato Dela Rama, Vice President of Finance  (Principal Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: January 14, 2011",
+     "",
+     "By",
+     "/s/ Ravi Narayan",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Ravi Narayan, Vice President of MIP Division and Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: January 14, 2011",
+     "",
+     "By",
+     "/s/ Saagar Govil",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Saagar Govil, Secretary and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CEMTREX, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1484,
+    "end_line": 1509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "______\n* Incorporated by reference from Form 10-12G filed on May 22, 2008\n** Incorporated by reference from Form 8-K filed on September 10, 2009\n*** Filed Herewith\nSIGNATURES\nPursuant to the requirements of the Securities and Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

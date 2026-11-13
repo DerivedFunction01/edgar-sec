@@ -1,0 +1,6070 @@
+{
+ "accession": "0001437749-26-005114",
+ "cik": "0001567900",
+ "form": "10-K",
+ "filing_date": "2026-02-23",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "blkbx20251231_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the fiscal year ended",
+     "December 31, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 14
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "or\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the transition period from",
+     "to"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "or\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Commission File No.",
+     "001-41051"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "BLACKBOXSTOCKS INC. (Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "45-3598066"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "BLACKBOXSTOCKS INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "5430 LBJ Freeway Suite 1485, Dallas Texas",
+     "75240"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code (972) 726-9203\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.001",
+     "BLBX",
+     "The NASDAQ Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 55
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code (972) 726-9203\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "None"
+    ],
+    [
+     "(Title of class)"
+    ]
+   ],
+   "caption_stack": [
+    "None",
+    "(Title of class)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 63
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(g) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "INTRODUCTORY COMMENT",
+     "",
+     "1"
+    ],
+    [
+     "FORWARD LOOKING STATEMENTS",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     "2"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "18"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "33"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "33"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "33"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "33"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "34"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matter and Issuer Purchases of Equity Securities",
+     "34"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "35"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "35"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "45"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "45"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "45"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "46"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "47"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "48"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "48"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "52"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "55"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "57"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "57"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "58"
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "58"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "60"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "61"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 100,
+    "end_line": 139
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates (2,679,089 shares of common stock) as of June 30, 2025 was $15,779,834 (computed by reference to the price at which the common equity was last sold ($5.89) as of the last business day of the registrant\u2019s most recently completed second fiscal quarter). For purposes of the foregoing calculation only, directors, executive officers, and holders of 10% or more of the issuer\u2019s common capital stock have been deemed affiliates.\nAs of February 19, 2026 4,480,437 shares of common stock, par value $0.001 per share, were issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE:\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "INTRODUCTORY COMMENTS\nThroughout this Annual Report on Form 10-K (the \u201cReport\u201d), the terms \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d \u201cBlackbox\u201d \u201cBlackboxstocks\u201d or the \u201cCompany\u201d refers to Blackboxstocks Inc., a Nevada corporation.\n\u201cBlackboxstocks,\u201d the Blackboxstocks design logo and the trademark or service marks of Blackboxstocks appearing in this Report are the property of Blackbox.io Inc., the Company\u2019s wholly owned operating subsidiary (\u201cBlackbox.io\u201d or \u201cBlackbox Operating\u201d). Trade names, trademarks and service marks of other companies that may appear in this report are the property of their respective holders. We have omitted the \u00ae and \u2122 designations, as applicable, for the trademarks used in this Report.\nFORWARD LOOKING STATEMENTS\nWhen used in this Report, the words \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201ccontinue,\u201d \u201cestimate,\u201d \u201cintend,\u201d and similar expressions are intended to identify forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d) regarding events, conditions and financial trends which may affect the Company\u2019s future plans of operations, business strategy, operating results and financial position. Such statements are not guarantees of future performance and are subject to risks and uncertainties described herein and actual results may differ materially from those included within the forward-looking statements. Additional factors are described in the Company\u2019s other public reports and filings with the Securities and Exchange Commission (the \u201cSEC\u201d). Readers are cautioned not to place undue reliance on these forward-looking statements, which speak only as of the date made. The Company undertakes no obligation to publicly release the result of any revision of these forward-looking statements to reflect events or circumstances after the date they are made or to reflect the occurrence of unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 139,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Options Basic",
+     "Options Plus",
+     "Equities Plus",
+     "Equities and Options Premium"
+    ],
+    [
+     "$59 monthly\n\n\n\n$566.40 annual",
+     "$79 per monthly\n\n\n\n$758.40 annual",
+     "$89 monthly\n\n\n\n$854.40 annual",
+     "$149 per month\n\n\n\n$1,430,.40 annual"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Real-time Options Flow\n\n\n\nAlgo-based Options Alerts\n\n\n\nInstitutional-grade Charting\n\n\n\nDaily Options OI changes\n\n\n\nOptions Volume Ratio Scanner\n\n\n\nOptions Heatmap\n\n\n\nBullish / Bearish Options Flow\n\n\n\nMost Active Calls & Puts\n\n\n\nReal-time News\n\n\n\nAnalyst Ratings\n\n\n\nWatch List\n\n\n\nEducation Program\n\n\n\nBlackBox Mobile App",
+     "Everything in Basic PLUS\n\n\n\nDark Pool Data (real-time & historical)\n\n\n\nDark Pool Volume Profile Chart Study\n\n\n\nMultiple Live Options Trading Rooms\n\n\n\nTeam Trades with Entries & Exits\n\n\n\nReal-time Net Options Delta and Gamma Exposure\n\n\n\nExclusive Chart Studies\n\n\n\nGoNoGo Trend Study\n\n\n\nHistorical Options Flow Data\n\n\n\nHistorical Options Volume, OI, & Volatility Dashboards\n\n\n\nPremarket, Post Market, & Market Scanners\n\n\n\nVolume Ratio Scanner\n\n\n\nCustomizable Alert Notifications and Alert Stream\n\n\n\nDynamic Discord Community\n\n\n\nDownloadable Data",
+     "Real-time Stock Data & Algo scanners\n\n\n\nVolatility Indicator (Level 2 driven)\n\n\n\nVolume Ratio Scanner\n\n\n\nPremarket, Post Market, & Market Scanner\n\n\n\nTop Gainers & Top Decliners\n\n\n\nDark Pool Data (real-time and historical)\n\n\n\nDark Pool Volume Profile Chart Study\n\n\n\nLive Stock and Options Trading Rooms\n\n\n\nTeam Trades with Entries & Exits\n\n\n\nExclusive Chart Studies\n\n\n\nReal-time News, Analyst Ratings, & Watch List\n\n\n\nEducation Program\n\n\n\nBlackBox Mobile App\n\n\n\nDynamic Discord Community",
+     "Everything in Options Plus\n\n\n\nEverything in Equities Plus\n\n\n\nAlgo-based Stock and Options Alerts\n\n\n\nLive Stock and Options Trading Rooms\n\n\n\nTeam Trades with Entries and Exits\n\n\n\nDark Pool Data (real-time and historical)\n\n\n\nInstitutional-grade Charting with Exclusive Chart Studies\n\n\n\nReal-time News, Analyst Ratings, & Watch List\n\n\n\nHistorical Stock and Options Data\n\n\n\nEducation Program\n\n\n\nBlackBox Mobile App\n\n\n\nReal-Time Market Volatility Scanner\n\n\n\nDynamic Discord Community\n\n\n\nDownloadable Data"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Our mission is to provide powerful proprietary analytics in a simple and concise format to level the playing field for the average retail investor. We strive to educate our members through our live trading community as well as our scheduled, calendared classes with live instructors. We want every member to feel they are part of a team with the goal of improving financial literacy. We believe that we are the antithesis of the \u201ctrading guru\u201d platforms that feature a trading or investing expert that charges for what are often expensive courses. We do not charge for our classes. We do not upsell our members. All education and community programs are free with the subscription to our platform.\nRevenue Model\nWe generate revenue from a software as a service (or SaaS) model whereby members pay either an annual or monthly fee for a subscription to our platform. We have recently changed our pricing model to a tiered pricing platform that is comprised four different products with either monthly or annual subscriptions.",
+   "prose_after": "Monthly subscriptions are currently priced between $59 and $149 per month and annual subscriptions are currently priced at between $566.40 and $1,430.40. We occasionally offer gift cards and promotional discounts on our subscriptions.\nIn March of 2025, we initiated a program to expand our product offerings through educational courses targeted to not only current Blackbox members but also non-members including former members. Courses are offered as either free webinars or as paid courses and consist of a series of classes on a specific topic regarding trading in equities or options markets. Free webinars are designed to attract potential members by providing them with introductions to trading strategies at no cost. We believe that members who participate in our educational offerings are more likely to be successful traders and therefore more likely to be longer term members. We offer these paid courses for both members and non-members. These classes are expected to be offered to various level of traders (from novice to experienced) of either stocks or options and will become a significant additional revenue stream",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 226,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Beginner",
+     "Intermediate",
+     "Advanced"
+    ],
+    [
+     "Blackbox Intro Live",
+     "Dark Pool Basics",
+     "Options Adjustments"
+    ],
+    [
+     "Intro to the Market",
+     "Technical Analysis 101",
+     "Understanding options for a Bull & Bear Market"
+    ],
+    [
+     "Charting 101",
+     "Blackbox Trading System -Stocks",
+     "Options Strategies for Higher Volatility"
+    ],
+    [
+     "Stock Basics",
+     "Blackbox Trading System -Options",
+     "Insights for Options Core Concepts"
+    ],
+    [
+     "",
+     "Understanding Options Flow",
+     "Short Term Options Explained"
+    ],
+    [
+     "",
+     "",
+     "Implied & Historical Volatility"
+    ],
+    [
+     "",
+     "",
+     "Options Pricing Explained"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 303,
+    "end_line": 314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Team Trade Push Alerts: We provided access to push alert notifications so that our members could get real time alerts on their mobile devices of the trades made by their favorite Blackbox Team Trader(s).\nWatchlists for our Mobile Application: We improved our mobile application to include the capability to add watchlists. This feature allows our members to quickly analyze their specific portfolio positions using our powerful mobile application while on the go.\nEducation\nWe offer all members access to a curriculum of classes and orientations, and live market sessions. Many of our education programs are free to our members. Our curriculum includes classes for beginner, intermediate, and advanced-level traders. We believe education is vital to increasing the probability of our members long-term success in the markets. We have many regularly calendared live webinars, Q&A sessions, as well as recorded classes. The educators of these classes often specialize in specific market sectors or trading strategies. Classes and webinar events offered to our members include but are not limited to:",
+   "prose_after": "In addition to our internal curriculum, we have partnered with the Options Industry Council (OIC), a nonprofit organization funded by the Options Clearing Corporation (OCC) with the mission of providing the investing public a better understanding of the options markets. Classes taught by the OIC to our members include but are not limited to:\n\u25cf The Greeks Part I\n\u25cf The Greeks Part II\n\u25cf Implied Volatility\n\u25cf Short Term Options Explained\n\u25cf Options Pricing Explained\nOne of the most attractive aspects of our education program is that the classes are taught by members of our community. The student members who take these are often familiar with the instructor from following them in live trading channels on our platform. We believe this familiarity often brings an element of authenticity and heightened engagement increasing the success of these educational endeavors as well as adding to the community aspect of our platform.\nBlackbox Academy\nIn addition to our free curriculum, we added a new program - Blackbox Academy. Blackbox Academy offers several courses on trading and market related topics to our existing members as well as the general trading public as well. These courses are offered for fees that currently range between $197 and $497. Courses offered during 2025 included:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 282,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,426,116)",
+     "",
+     "$",
+     "(3,471,227)",
+     ""
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense and financing costs",
+     "",
+     "460,826",
+     "",
+     "",
+     "132,571",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "5,363",
+     "",
+     "",
+     "16,031",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "1,313,852",
+     "",
+     "",
+     "368,662",
+     ""
+    ],
+    [
+     "Total Adjustments",
+     "",
+     "1,780,041",
+     "",
+     "",
+     "517,264",
+     ""
+    ],
+    [
+     "EBITDA",
+     "$",
+     "(2,646,075)",
+     "",
+     "$",
+     "(2,953,963)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1184,
+    "end_line": 1200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We report our financial results in accordance with accounting principles generally accepted in the United States of America (\u201cGAAP\u201d). However, management believes the presentation of certain non-GAAP financial measures provides useful information to management and investors regarding financial and business trends relating to the Company\u2019s financial condition and results of operations, and that when GAAP financial measures are viewed in conjunction with the non-GAAP financial measures, investors are provided with a more meaningful understanding of the Company\u2019s ongoing operating performance. In addition, these non-GAAP financial measures are among the primary indicators management uses as a basis for evaluating performance. For all non-GAAP financial measures in this release, we have provided corresponding GAAP financial measures for comparative purposes in the report.\nEBITDA is defined by us as net income (loss) before interest expense, income tax, depreciation and amortization expense and certain non-cash items. EBITDA is not a measure of operating performance under GAAP and therefore should not be considered in isolation nor construed as an alternative to operating profit, net income (loss) or cash flows from operating, investing or financing activities, each as determined in accordance with GAAP. Also, EBITDA should not be considered as a measure of liquidity. Moreover, since EBITDA is not a measurement determined in accordance with GAAP, and thus is susceptible to varying interpretations and calculations, EBITDA, as presented, may not be comparable to similarly titled measures presented by other companies.\nReconciliation of net loss to EBITDA",
+   "prose_after": "Off Balance Sheet Arrangements\nWe do not have any off-balance sheet arrangements.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nOur Company is a \u201csmaller reporting company\u201d as defined by Rule 12b-2 of the Exchange Act, and as such, is not required to provide the information required under this Item.\nItem 8. Financial Statements and Supplementary Data.\nAll financial statements required by this Item are presented beginning on Page F-1, and are incorporated herein by this reference.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.\nNone.\nItem 9A. Controls and Procedures.\nEvaluation of Disclosure Controls and Procedures",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) Held"
+    ],
+    [
+     "Executive Officers",
+     "",
+     ""
+    ],
+    [
+     "Gust Kepler",
+     "61",
+     "Director, President and Chief Executive Officer"
+    ],
+    [
+     "Robert Winspear",
+     "60",
+     "Director, Chief Financial Officer and Secretary"
+    ],
+    [
+     "Charles Smith",
+     "55",
+     "Chief Technology Officer"
+    ],
+    [
+     "Non-Employee Directors",
+     "",
+     ""
+    ],
+    [
+     "Grant Evans*",
+     "67",
+     "Director (1) (2) (3)"
+    ],
+    [
+     "Keller Reid*",
+     "45",
+     "Director (1) (2) (3)"
+    ],
+    [
+     "Dalya Sulaiman*",
+     "59",
+     "Director (1) (2) (3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Our disclosure controls and procedures provide our principal executive officer and principal financial officer with reasonable assurances that our disclosure controls and procedures will achieve their objectives. However, our management does not expect that our disclosure controls and procedures or our internal control over financial reporting can or will prevent all human error. A control system, no matter how well designed and implemented, can provide only reasonable, not absolute, assurance that the objectives of the control system are met. Furthermore, the design of a control system must reflect the fact that there are internal resource constraints, and the benefit of controls must be weighed relative to their corresponding costs. Because of the limitations in all control systems, no evaluation of controls can provide complete assurance that all control issues and instances of error, if any, within our company are detected. These inherent limitations include the realities that judgments in decision-making can be faulty, and that breakdowns can occur due to human error or mistake. Additionally, controls, no matter how well designed, could be circumvented by the individual acts of specific persons within the organization. The design of any system of controls is also based in part upon certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated objectives under all potential future conditions.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot Applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors and Executive Officers\nThe following table sets forth the names, ages and positions of our executive officers and directors. All directors of our Company hold office until the next annual meeting of stockholders or until their successors have been elected and qualified. The executive officers of our Company are appointed by our Board and hold office until their death, resignation or removal from office.",
+   "prose_after": "* Independent Director as defined by Nasdaq Rule 5605(a)(2).\n(1) Member of the Compensation Committee.\n(2) Member of the Audit Committee.\n(3) Member of the Nominating and Governance Committee.\nExecutive Officers\nGust Kepler, Chairman of the Board, President and Chief Executive Officer. Mr. Kepler was appointed to serve as a director and our President and Chief Executive Officer on December 1, 2015. Mr. Kepler also serves as the President of G2 International, Inc. (\u201cG2\u201d). G2 is a consulting firm with expertise in investment banking founded by Mr. Kepler in 2002. G2\u2019s primary focus is taking private companies public and providing advice regarding capitalization, strategic planning and investor relations. Prior to founding G2, Mr. Kepler founded Parallax Entertainment, Inc. (\u201cParallax\u201d) in 1996. Parallax was an independent record label, online promotional vehicle and e-commerce solution for musicians on the Internet. Mr. Kepler managed all aspects of the label including A&R, production, marketing and distribution. In 2000, Mr. Kepler successfully completed a direct public offering for the company and Parallax subsequently became a publicly traded company on the OTC Bulletin Board. Mr. Kepler was also the cofounder of Glance Toys, Ltd. (\u201cGlance Toys\u201d) which was formed in 1990. Glance Toys designed, manufactured and marketed products classified in junior sporting goods category. Products included foam balls, flying discs and beach products, some of which received patents. Glance Toy\u2019s products were sold nationally in prominent chains such as Wal-Mart, Target, Toys R Us, 7-Eleven, and numerous other well-known retailers. The Company believes that Mr. Kepler\u2019s experience as the Company\u2019s founder and Chief Executive Officer as well as his previous experience in marketing and advising public companies on capitalization and investor relations give him the qualifications and skills to serve as a member of the Board.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1254,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1298,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "",
+     "Bonus (1)",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Gust Kepler, Director, President and Chief",
+     "2025",
+     "$",
+     "200,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "200,000",
+     ""
+    ],
+    [
+     "Executive Officer (Principal Executive Officer)",
+     "2024",
+     "$",
+     "200,000",
+     "",
+     "$",
+     "19,494",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "219,494",
+     ""
+    ],
+    [
+     "Robert Winspear, Director, Chief Financial",
+     "2025",
+     "$",
+     "200,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "621,000",
+     "",
+     "$",
+     "821,000",
+     ""
+    ],
+    [
+     "Officer and Secretary (Principal Financial Officer)",
+     "2024",
+     "$",
+     "200,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "200,000",
+     ""
+    ],
+    [
+     "Charles Smith, Chief Technology Officer",
+     "2025",
+     "$",
+     "180,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "180,000",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "$",
+     "180,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "180,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1375,
+    "end_line": 1389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Nominating and Governance Committee has not adopted a formal policy with regard to consideration of director candidates recommended by security holders. For vacancies which are anticipated on the Board, the Nominating and Governance Committee intends to seek out and evaluates potential candidates from a variety of sources that may include recommendations by security holders, members of management and the Board, consultants and others. The minimum qualifications for potential candidates for the Board include demonstrated business experience, decision-making abilities, personal integrity and a good reputation. While diversity is not a leading factor in the Nominating and Governance Committee\u2019s evaluation of potential candidates and there is no formal policy for considering diversity when nominating a potential director, it is a consideration that is evaluated along with other qualifications of potential candidates. In light of the foregoing, it is believed that a formal, written policy and procedure with regard to consideration of director candidates recommended by security holders is not necessary in order for the Nominating and Governance Committee to perform its duties. The Corporate Nominating and Governance Committee identifies and recommends to the Board individuals qualified to serve as directors of the Company, advises the Board with respect to its committees\u2019 composition, oversees the evaluation of the Board, and oversees other matters of corporate governance.\nCode of Business Conduct and Ethics\nWe have adopted a formal Code of Ethics and Business Conduct applicable to all Board members, officers and employees. Our Code of Ethics and Business Conduct can be found on the Corporate Governance section of the investor relations page of our website at https://blackboxstocks.com.\nItem 11. Executive Compensation.\nThe following table sets forth all compensation for the last two fiscal years awarded to, earned by or paid to our principal executive officer and our two other most highly compensated executive officers serving during the last completed fiscal year (collectively, the \u201cNamed Executives\u201d):\nSummary Compensation Table",
+   "prose_after": "(1) Reflects cash bonus payment.\nOutstanding Equity Awards at Fiscal Year End\nThe following table sets forth information regarding outstanding stock options and other equity awards held by each of our Named Executives as of December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Equity Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Number of Securities\n\n\n\nUnderlying\n\n\n\nUnexercised awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercise\n\n\n\nPrice",
+     "",
+     "",
+     "Expiration Date",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Date",
+     "",
+     "",
+     "Exercisable",
+     "",
+     "",
+     "Unexercisable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gust Kepler",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Winspear (1)",
+     "",
+     "9-11-2021",
+     "",
+     "",
+     "25,000",
+     "",
+     "",
+     "0",
+     "",
+     "$",
+     "7.80",
+     "",
+     "",
+     "9-11-2031",
+     ""
+    ],
+    [
+     "Charles Smith (2)",
+     "",
+     "11-29-2021",
+     "",
+     "",
+     "12,500",
+     "",
+     "",
+     "0",
+     "",
+     "$",
+     "13.68",
+     "",
+     "",
+     "11-29-2031",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1396,
+    "end_line": 1415
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Reflects cash bonus payment.\nOutstanding Equity Awards at Fiscal Year End\nThe following table sets forth information regarding outstanding stock options and other equity awards held by each of our Named Executives as of December 31, 2025:",
+   "prose_after": "Narrative Disclosure to Summary Compensation and Outstanding Equity Awards at Fiscal Year End Tables\nGust Kepler, a director and our President and Chief Executive Officer is paid an annual salary of $200,000. Mr. Kepler was paid a discretionary cash bonus of $19,494 in 2024.\nRobert Winspear, a director and our Chief Financial Officer and Secretary was appointed to serve as Chief Financial Officer and Secretary on September 11, 2021. Mr. Winspear\u2019s salary is $200,000 per year. Mr. Winspear received a stock grant of 25,000 shares at a value of $3.46 per share and a stock grant of 50,000 shares at a value of $10.69 per share during 2025. Both grants are 100% vested.\nCharles Smith was appointed to serve as our Chief Technology Officer on November 29, 2021. Mr. Smith\u2019s salary is $180,000 per year.\nEmployment Agreements\nThe Company has not entered into any other employment agreement or consulting agreement with any Named Executive or director of the Company providing for compensation and all serve at the discretion of our Board.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)",
+     "",
+     "",
+     "Stock Awards ($)",
+     "",
+     "",
+     "Option Awards ($)",
+     "",
+     "",
+     "Non-equity incentive\n\n\n\nplan compensation\n\n\n\n($)",
+     "",
+     "",
+     "All other compensation\n\n\n\n($)",
+     "",
+     "",
+     "Total ($)",
+     "",
+     ""
+    ],
+    [
+     "Keller Reid (1)",
+     "",
+     "0",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Grant Evans (1)",
+     "",
+     "0",
+     "",
+     "",
+     "35,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "35,000",
+     ""
+    ],
+    [
+     "Dalya Sulaiman (1)",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "30,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1434,
+    "end_line": 1449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Robert Winspear, a director and our Chief Financial Officer and Secretary was appointed to serve as Chief Financial Officer and Secretary on September 11, 2021. Mr. Winspear\u2019s salary is $200,000 per year. Mr. Winspear received a stock grant of 25,000 shares at a value of $3.46 per share and a stock grant of 50,000 shares at a value of $10.69 per share during 2025. Both grants are 100% vested.\nCharles Smith was appointed to serve as our Chief Technology Officer on November 29, 2021. Mr. Smith\u2019s salary is $180,000 per year.\nEmployment Agreements\nThe Company has not entered into any other employment agreement or consulting agreement with any Named Executive or director of the Company providing for compensation and all serve at the discretion of our Board.\nCompensation of Directors\nOur non-employee directors are currently paid an annual cash retainer of, or equity incentives valued at, $30,000 per year ($35,000 for the audit committee chair) and receive an option grant of 5,000 shares of our common stock. Our Officers do not receive additional compensation for serving as directors.\nThe following table sets forth certain information with respect to the compensation paid to our non-employee directors, excluding reasonable travel expenses, for the year ended December 31, 2025.",
+   "prose_after": "(1) Non-employee directors receive an annual retainer of $30,000 or $35,000 payable in cash or stock. Ms. Sulaiman was paid in cash for her service through December of 2025, and Mr. Evans and Mr. Reid received grants of 10,116 and 8,671 shares of Blackboxstocks common stock, respectively, in lieu of cash. Ms. Sulaiman received 15,000 of cash and a grant of 1,434 shares\nOutstanding Equity Awards at Fiscal Year-End\nThe following table sets forth information regarding outstanding stock options and other equity awards held by each of our non-employee directors as of December 31, 2025.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Optionholder",
+     "Number of Shares of Common Stock Subject to Blackboxstocks Options",
+     "",
+     "Exercise Price",
+     "",
+     "Grant Date",
+     ""
+    ],
+    [
+     "Dalya Sulaiman",
+     "",
+     "1,250",
+     "$",
+     "19.84",
+     "",
+     "9-11-21"
+    ],
+    [
+     "Dalya Sulaiman",
+     "",
+     "1,250",
+     "",
+     "4.08",
+     "",
+     "9-11-22"
+    ],
+    [
+     "Dalya Sulaiman",
+     "",
+     "1,250",
+     "",
+     "2.53",
+     "",
+     "11-17-23"
+    ],
+    [
+     "Dalya Sulaiman",
+     "",
+     "5,000",
+     "",
+     "3.46",
+     "",
+     "2-5-25"
+    ],
+    [
+     "Sub-total",
+     "",
+     "8,750",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Grant Evans",
+     "",
+     "5,000",
+     "",
+     "3.46",
+     "",
+     "2-5-25"
+    ],
+    [
+     "Sub-total",
+     "",
+     "5,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Keller Reid",
+     "",
+     "1,250",
+     "",
+     "2.53",
+     "",
+     "11-17-23"
+    ],
+    [
+     "Keller Reid",
+     "",
+     "5,000",
+     "",
+     "3.46",
+     "",
+     "2-5-25"
+    ],
+    [
+     "Sub-total",
+     "",
+     "6,250",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Grand Total",
+     "",
+     "20,000",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1456,
+    "end_line": 1479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Non-employee directors receive an annual retainer of $30,000 or $35,000 payable in cash or stock. Ms. Sulaiman was paid in cash for her service through December of 2025, and Mr. Evans and Mr. Reid received grants of 10,116 and 8,671 shares of Blackboxstocks common stock, respectively, in lieu of cash. Ms. Sulaiman received 15,000 of cash and a grant of 1,434 shares\nOutstanding Equity Awards at Fiscal Year-End\nThe following table sets forth information regarding outstanding stock options and other equity awards held by each of our non-employee directors as of December 31, 2025.",
+   "prose_after": "Equity Award Timing Policies\nWe do not have a formal policy or obligation that requires us to award equity-based compensation on specific dates. Our Compensation Committee and Board have adopted a policy with respect to the grant of stock options and other equity incentive awards that generally prohibits the grant of stock options or other equity awards to executive officers during closed quarterly trading windows (as determined in accordance with our Insider Trading Policy). Our Insider Trading Policy also prohibits directors, officers and employees from trading in our common stock while in possession of or on the basis of material non-public information about us. Neither our Board nor our Compensation Committee takes material non-public information into account when determining the timing of equity awards, nor do we time the disclosure of material non-public information for the purpose of impacting the value of executive compensation. We generally issue equity awards to our executive officers on a limited and infrequent basis, and not in accordance with any fixed schedule.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan",
+     "Number of\n\n\n\nsecurities to\n\n\n\nbe\n\n\n\nissued upon\n\n\n\nexercise of\n\n\n\noutstanding\n\n\n\noptions and\n\n\n\nrights (1)",
+     "",
+     "Weighted-\n\n\n\naverage\n\n\n\nexercise\n\n\n\nprice of\n\n\n\noutstanding\n\n\n\noptions and\n\n\n\nrights (1)",
+     "",
+     "Number of\n\n\n\nsecurities\n\n\n\nremaining\n\n\n\navailable for\n\n\n\nissuance\n\n\n\nunder\n\n\n\nequity\n\n\n\ncompensation\n\n\n\nplans",
+     ""
+    ],
+    [
+     "2021 Stock Incentive Plan",
+     "",
+     "132,625",
+     "$",
+     "9.55",
+     "",
+     "11,256"
+    ],
+    [
+     "2025 Long-Term Incentive Plan",
+     "",
+     "0",
+     "",
+     "-",
+     "",
+     "8,500,000"
+    ],
+    [
+     "Total",
+     "",
+     "132,625",
+     "$",
+     "9.55",
+     "",
+     "8,511,256"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1502,
+    "end_line": 1529
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "On August 4, 2021, our Board of Directors and our stockholders approved the adoption of the 2021 Stock Incentive Plan (the \u201c2021 Plan\u201d) and it became effective August 31, 2021. We amended the 2021 Plan effective October 6, 2022 to increase the number of shares available for issuance from 187,500 to 312,500 and again on February 6, 2023 to increase the number of shares available for issuance from 312,500 to 612,500. Participation in the 2021 Plan will continue until all of the benefits to which the participants are entitled have been paid in full. The following table sets forth our equity compensation 2021 Plan information as of December 31, 2025.\n2025 Long-Term Incentive Plan\nOn January 30, 2026, in connection with the REalloys Merger, our Stockholders approved the adoption of the 2025 Long-Term Incentive Plan, the \u201d2025 Plan\u201d. The 2025 Plan provides for the granting of incentive stock options, nonqualified stock options, stock appreciation rights, restricted stock, restricted stock units, performance awards, dividend equivalent rights, and other awards, which may be granted singly, in combination, or in tandem, and which may be paid in cash or shares of our common stock. 8,500,000 shares are available for issuance under the 2025 Plan. No awards were made during the year ended December 31, 2025 as the 2025 Plan was not yet approved by the stockholders of the Company until 2026.",
+   "prose_after": "(1) Excludes restricted stock grants for 442,150 shares under the 2021 Plan. Because there is no exercise price associated with the restricted stock grants, such shares are not included in the weighted-average price calculation.\nBeneficial Ownership of Principal Shareholders and Management\nThe following table sets forth information regarding the beneficial ownership of our Common Stock and Series A Preferred Stock as of February 19, 2026, unless otherwise indicated, by: (1) each person known to us to be the beneficial owner of more than 5% of each class of our capital stock; (2) each director of the Company; (3) the Company\u2019s current named executive officers and (4) all current directors and executive officers as a group. To the best of our knowledge, each of the persons named in the table below as beneficially owning the shares set forth therein has sole voting power and sole investment power with respect to such shares, unless otherwise indicated. Applicable percentages are based upon 4,480,437 shares of Common Stock and 3,269,998 shares of Series A Preferred Stock outstanding as of February 19, 2026. Unless otherwise specified, the address of each of the persons set forth below is in care of the Company, at the address of 5430 LBJ Freeway, Suite 1485, Dallas, Texas 75240.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of\n\n\n\nBeneficial Owner(1)",
+     "Amount and\n\n\n\nNature of\n\n\n\nBeneficial\n\n\n\nOwnership",
+     "",
+     "Percent of\n\n\n\nClass",
+     "",
+     "",
+     "Voting\n\n\n\nControl",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As Individuals",
+     "Gust Kepler (2)",
+     "",
+     "596,410",
+     "",
+     "13.4",
+     "%",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Robert Winspear (3)",
+     "",
+     "143,250",
+     "",
+     "3.2",
+     "%",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Charles Smith (4)",
+     "",
+     "40,013",
+     "",
+     "*",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Grant Evans (6)",
+     "",
+     "23,724",
+     "",
+     "*",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Dalya Sulaiman (5)",
+     "",
+     "39,396",
+     "",
+     "*",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Keller Reid (7)",
+     "",
+     "23,798",
+     "",
+     "*",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As a Group",
+     "Executive Officers and Directors as a group (6 persons)",
+     "",
+     "866,591",
+     "",
+     "19.5",
+     "%",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stephen Chiang\n\n\n\n8 Kitchener Link\n\n\n\nCity Square Residences #21-14\n\n\n\nSingapore 207226",
+     "",
+     "250,000",
+     "",
+     "5.6",
+     "%",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As a Group",
+     "Officers and Directors",
+     "",
+     "3,269,998",
+     "",
+     "100",
+     "%",
+     "",
+     "98.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As Individuals",
+     "Gust Kepler",
+     "",
+     "3,269,998",
+     "",
+     "100",
+     "%",
+     "",
+     "98.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1536,
+    "end_line": 1578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth information regarding the beneficial ownership of our Common Stock and Series A Preferred Stock as of February 19, 2026, unless otherwise indicated, by: (1) each person known to us to be the beneficial owner of more than 5% of each class of our capital stock; (2) each director of the Company; (3) the Company\u2019s current named executive officers and (4) all current directors and executive officers as a group. To the best of our knowledge, each of the persons named in the table below as beneficially owning the shares set forth therein has sole voting power and sole investment power with respect to such shares, unless otherwise indicated. Applicable percentages are based upon 4,480,437 shares of Common Stock and 3,269,998 shares of Series A Preferred Stock outstanding as of February 19, 2026. Unless otherwise specified, the address of each of the persons set forth below is in care of the Company, at the address of 5430 LBJ Freeway, Suite 1485, Dallas, Texas 75240.",
+   "prose_after": "*Less than 1%\n(1) Beneficial ownership is calculated in accordance with the rules of the SEC in accordance with Rule 13d-3(d)(1) of the Exchange Act. In computing the number of shares beneficially owned by a person and the percentage ownership of that person, shares of common stock subject to options or warrants held by that person that are currently exercisable or will become exercisable within 60 days following February 19, 2026 are deemed outstanding. However, these shares are not deemed outstanding for the purpose of computing the percentage ownership of any other person. Unless otherwise indicated in the footnotes to this table, the persons and entities named in the table have sole voting and sole investment power with respect to all shares beneficially owned, subject to community property laws where applicable.\n(2) Includes 192 shares owned by Judy Children Inheritance Trust for which Mr. Kepler serves as trustee. Excludes 3,269,998 shares of Series A Preferred Stock held by Mr. Kepler (separately noted in the table) which may be converted on a 5-for-1 share ratio (for a total of 653,999 shares of common stock) based upon the Company\u2019s current market capitalization and the limitations provided for in our Conversion Agreement with Mr. Kepler. Each share of Series A Preferred Stock held by Mr. Kepler is entitled to 100 votes on all stockholder matters, and along with the common stock held by Mr. Kepler collectively represents approximately 56.3% of our issued and outstanding capital stock and approximately 98.8% of the voting power of our stockholders.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "82,500",
+     "$",
+     "89,299"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "15,000",
+     "",
+     "7,500"
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "2,710",
+     "",
+     "5,250"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "",
+     "",
+     "---"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "100,210",
+     "$",
+     "101,979"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1617,
+    "end_line": 1628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "We have undertaken a review of the independence of each director and considered whether each director has a material relationship with us that could compromise his or her ability to exercise independent judgment in carrying out his or her responsibilities. As a result of this review, we determined that each of Messrs. Keller Reid and Grant Evans and Ms. Dalya Sulaiman representing three of our five directors, are considered \u201cindependent directors\u201d as defined under the applicable rules and regulations of the SEC and the listing requirements and rules of Nasdaq.\nItem 14. Principal Accounting Fees and Services.\nPrincipal Accountant Fees and Services\nOn December 20, 2024, the Company engaged Victor Mokuolu CPA PLLC as its new independent registered public accounting firm, for the audit of the Company\u2019s consolidated financial statements for the year ended December 31, 2025 and terminated Turner Stone & Company L.L.P.\nThe following table sets forth aggregate fees billed to the Company for professional services by Victor Mokuolo CPA PLLC for the years ended December 31, 2025 and 2024.:",
+   "prose_after": "(1) \u201cAudit Fees\u201d consist of fees for professional services rendered in connection with the audit of our annual consolidated financial statements, including audited financial statements presented in our annual report on Form 10-K, review of our quarterly financial statements presented in our quarterly report on Form 10-Q and services that are normally provided by our independent registered public accounting firm in connection with statutory and regulatory filings or engagements for those fiscal years, including audit services in connection with filing registration statements, and amendments thereto.\n(2) \u201cAudit-related Fees\u201d consist of fees related to audit and assurance procedures not otherwise included in Audit Fees, including fees related to the application of GAAP to proposed transactions and new accounting pronouncements.\n(3) \u201cTax Fees\u201d consist of professional services rendered for tax compliance, tax advice or tax planning.\nAudit Committee Pre-Approval\nOur Audit Committee pre-approves all auditing services and permitted non-audit services to be performed for us by our independent auditor, including the fees and terms thereof. All of the services described above were approved by our Audit Committee.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1636,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID #6771)",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2025 and 2024",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2025 and 2024",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit for the years ended December 31, 2025 and 2024",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2025 and 2024",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7 \u2013 F-18"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1645,
+    "end_line": 1662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(1) \u201cAudit Fees\u201d consist of fees for professional services rendered in connection with the audit of our annual consolidated financial statements, including audited financial statements presented in our annual report on Form 10-K, review of our quarterly financial statements presented in our quarterly report on Form 10-Q and services that are normally provided by our independent registered public accounting firm in connection with statutory and regulatory filings or engagements for those fiscal years, including audit services in connection with filing registration statements, and amendments thereto.\n(2) \u201cAudit-related Fees\u201d consist of fees related to audit and assurance procedures not otherwise included in Audit Fees, including fees related to the application of GAAP to proposed transactions and new accounting pronouncements.\n(3) \u201cTax Fees\u201d consist of professional services rendered for tax compliance, tax advice or tax planning.\nAudit Committee Pre-Approval\nOur Audit Committee pre-approves all auditing services and permitted non-audit services to be performed for us by our independent auditor, including the fees and terms thereof. All of the services described above were approved by our Audit Committee.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Financial Statements\nThe following documents are filed as part of this l Report on Form 10-K beginning on the pages referenced below:",
+   "prose_after": "(b) Exhibits -Need to Update\nThe following exhibits are filed with this Report on Form 10-K or are incorporated by reference as described below.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1636,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger, dated March 10, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub, Inc., and REalloys Inc. (incorporated by reference to Exhibit 2.1 to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on March 10, 2025)."
+    ],
+    [
+     "2.2",
+     "First Amendment to Agreement and Plan of Merger, dated July 1, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub, Inc., and REalloys Inc. (incorporated by reference to Exhibit 2.1 to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on July 1, 2025)."
+    ],
+    [
+     "2.3",
+     "Second Amendment to Agreement and Plan of Merger, dated August 22, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub, Inc., and REalloys Inc. (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 22, 2025)."
+    ],
+    [
+     "2.4",
+     "Third Amendment to Agreement and Plan of Merger, dated December 10, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub, Inc. and REalloys Inc. (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 10, 2025)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of SMSA Ballinger Acquisition Corp. (incorporated by reference to Exhibit 3.4 of the Company's Registration Statement on Form 10-12G filed with the Commission on August 5, 2014)."
+    ],
+    [
+     "3.2",
+     "Certificate of Designation of Series A Preferred Stock dated December 1, 2015 (incorporated by reference to Exhibit 3.1 of the Company\u2019s Information Statement on Form 8-K filed with the Commission on December 7, 2015)."
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to Articles of Incorporation dated effective March 9, 2016 (incorporated by reference to Exhibit 3.9 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on April 14, 2016"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to Articles of Incorporation dated effective as of July 15, 2019 (incorporated by reference to Exhibit 3.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 15, 2019)"
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment to Articles of Incorporation dated effective as of April 10, 2023 (incorporated by reference to Exhibit 3.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on April 10, 2023)."
+    ],
+    [
+     "3.6",
+     "Certificate of Designation of Series B Preferred Stock dated June 8, 2023 (incorporated by reference to Exhibit 3.1 of the Company's Current Report on Form 8-K filed with the Commission on June 9, 2023)."
+    ],
+    [
+     "3.7",
+     "Amended and Restated Bylaws of Blackboxstocks, Inc. adopted and effective on April 18, 2022 (incorporated by reference to Exhibit 3.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on April 19, 2022)"
+    ],
+    [
+     "4.1",
+     "Description of Securities (incorporated by reference to Exhibit 4.1 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on April 16, 2020)"
+    ],
+    [
+     "4.2",
+     "Blackboxstocks, Inc. 2021 Stock Incentive Plan (amended and restated effective as of February 6, 2023) (incorporated by reference to Appendix A to the Company\u2019s Information Statement on Schedule 14C filed on December 29, 2022)"
+    ],
+    [
+     "4.3",
+     "Common Stock Purchase Warrant issued to Alexander Capital, L.P. (incorporated by reference to Exhibit 4.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on November 16, 2021)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1667,
+    "end_line": 1713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(b) Exhibits -Need to Update\nThe following exhibits are filed with this Report on Form 10-K or are incorporated by reference as described below.",
+   "prose_after": "10.1 Office Lease dated March 26, 2015 between Teachers Insurance and Annuity Association of America and G2 International, Inc. (incorporated by reference to Exhibit 10.36 of the Company\u2019s Registration Statement on Form S-4 dated effective as of January 16, 2026). 10.2 First Amendment to Office Lease dated June 12, 2015 between Teachers Insurance and Annuity Association of America and G2 International, Inc. (incorporated by reference to Exhibit 10.37 of the Company's Registration Statement on Form S-4 dated effective as of January 16, 2026). 10.3 Second Amendment to Office Lease dated September 19, 2017 between Teachers Insurance and Annuity Association of America and Blackboxstocks, Inc. (incorporated by reference to Exhibit 10.14 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on April 17, 2018). 10.4 Assignment of Lease dated August 28, 2017 between G2 International, Inc. and Blackboxstocks Inc. (incorporated by reference to Exhibit 10.13 to the Company's Annual Report on Form 10-K filed with the Securities and Exchange Commission on April 17, 2018). 10.5 Conversion Rights Agreement dated effective as of October 14, 2021 (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on October 15, 2021). 10.6 Securities Exchange Agreement between Blackboxstocks Inc. and Evtec Group Limited dated June 9, 2023 (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on June 9, 2023). 10.7 Amendment to the Amended Letter of Intent among Blackboxstocks Inc., Evtec Group Limited, Evtec Automotive Limited, and Evtec Aluminium Limited dated November 24, 2023 (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on November 24, 2023). 10.8 Forfeiture Agreement between Blackboxstocks Inc. and Evtec Group Limited dated November 28, 2023 (incorporated by reference to Exhibit 10.2 of the Company's Current Report on Form 8-K filed with the Commission on November 24, 2023). 10.9 Share Exchange Agreement dated December 12, 2023 among Blackboxstocks, Inc., Evtec Aluminium Limited, and the shareholders of Evtec Aluminium Limited (incorporated by reference to Exhibit 2.1 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023). 10.10 Option Agreement between Blackboxstocks, Inc. and Gust Kepler (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023 and is included as Exhibit C in the Share Exchange Agreement dated December 12, 2023). 10.11 Form of Contingent Value Rights Agreement (incorporated by reference to Exhibit 10.2 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023 and is included as Exhibit E in the Share Exchange Agreement dated December 12, 2023). 10.12 Contribution Agreement dated April 18, 2024, by and between Blackboxstocks Inc. and Blackbox.io Inc. (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on April 22, 2024). 10.13 First Amendment to Share Exchange Agreement dated July 3, 2024, by and among Blackboxstocks Inc., Evtec Aluminium Limited, and the shareholders of Evtec Aluminium Limited (incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.14 Stock Purchase Agreement dated July 1, 2024, by and between Blackboxstocks Inc., Gust Kepler and Quadrofoglio Holdings LLC (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.15 Convertible Loan Agreement dated July 1, 2024, between Blackboxstocks Inc. and Evtec Aluminium Limited (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.16 Termination Agreement dated as of January 13, 2025, by and among Blackboxstocks Inc. and Evtec Aluminium Limited (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 17, 2025). 10.17 Securities Purchase Agreement dated as of January 17, 2025, between Blackboxstocks Inc. and Five Narrow Lane LP (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.18 7.00% Senior Debenture dated January 17, 2025, issued by Blackboxstocks Inc. (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.19 Form of Registration Rights Agreement (incorporated by reference to Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.20 Amendment to Securities Purchase Agreement dated as of January 27, 2025, by and among Blackboxstocks Inc. and Five Narrow Lane LP (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on February 4, 2025). 10.21 Amended and Restated Debenture Due the Earlier of the Trigger Date and March 14, 2025 dated January 27, 2025 (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on February 4, 2025). 10.22 Agreement and Plan of Merger dated March 10, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub Inc. and REalloys Inc. (incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.23 Company Stockholder Support Agreement dated March 10, 2025, by and among Blackboxstocks Inc., REalloys Inc. and Gust Kepler (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.24 Form of REalloys Stockholder Support Agreement dated March 10, 2025, by and among Blackboxstocks Inc., REalloys Inc. and the Stockholders party thereto (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.25 Amended and Restated Senior Secured Convertible Debenture due the Earlier of the Trigger Date and January 17, 2026 (incorporated by reference to Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1636,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.26",
+     "Registration Rights Agreement dated March 10, 2025, between Blackboxstocks Inc. and the Purchasers signatory thereto (incorporated by reference to Exhibit 10.4 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025)."
+    ],
+    [
+     "10.27",
+     "Security Agreement dated March 10, 2025, by and among Blackboxstocks Inc., Blackbox.io Inc. and Five Narrow Lane LP (incorporated by reference to Exhibit 10.5 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025)."
+    ],
+    [
+     "10.28",
+     "Subsidiary Guarantee dated March 10, 2025, by and among the Guarantors signatory thereto and Purchasers named therein (incorporated by reference to Exhibit 10.6 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025)."
+    ],
+    [
+     "14.1",
+     "Code of Business Conduct (incorporated by reference to Exhibit 14.1 to the Company's Annual Report on Form 10-K filed with the Securities and Exchange Commission on March 21, 2025)."
+    ],
+    [
+     "19.1",
+     "Insider Trading Policy (incorporated by reference to Exhibit 19.1 to the Company\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on March 21, 2025)."
+    ],
+    [
+     "21.1*",
+     "List of Subsidiaries of the Registrant"
+    ],
+    [
+     "24.1",
+     "Power of Attorney (contained in signature page to this Annual Report on Form 10-K)"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Rule 13a-14a/Rule 14d-14(a)*"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14a/Rule 14d-14(a)*"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350*"
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350*"
+    ],
+    [
+     "97.1",
+     "Executive Incentive Compensation Recoupment Policy (incorporated by reference to Exhibit 97.1 to the Company's Annual Report on Form 10-K filed with the Commission on April 1, 2024)."
+    ],
+    [
+     "101.1",
+     "Inline Interactive data files pursuant to Rule 405 of Regulation S-T*"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1716,
+    "end_line": 1753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "10.1 Office Lease dated March 26, 2015 between Teachers Insurance and Annuity Association of America and G2 International, Inc. (incorporated by reference to Exhibit 10.36 of the Company\u2019s Registration Statement on Form S-4 dated effective as of January 16, 2026). 10.2 First Amendment to Office Lease dated June 12, 2015 between Teachers Insurance and Annuity Association of America and G2 International, Inc. (incorporated by reference to Exhibit 10.37 of the Company's Registration Statement on Form S-4 dated effective as of January 16, 2026). 10.3 Second Amendment to Office Lease dated September 19, 2017 between Teachers Insurance and Annuity Association of America and Blackboxstocks, Inc. (incorporated by reference to Exhibit 10.14 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on April 17, 2018). 10.4 Assignment of Lease dated August 28, 2017 between G2 International, Inc. and Blackboxstocks Inc. (incorporated by reference to Exhibit 10.13 to the Company's Annual Report on Form 10-K filed with the Securities and Exchange Commission on April 17, 2018). 10.5 Conversion Rights Agreement dated effective as of October 14, 2021 (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on October 15, 2021). 10.6 Securities Exchange Agreement between Blackboxstocks Inc. and Evtec Group Limited dated June 9, 2023 (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on June 9, 2023). 10.7 Amendment to the Amended Letter of Intent among Blackboxstocks Inc., Evtec Group Limited, Evtec Automotive Limited, and Evtec Aluminium Limited dated November 24, 2023 (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on November 24, 2023). 10.8 Forfeiture Agreement between Blackboxstocks Inc. and Evtec Group Limited dated November 28, 2023 (incorporated by reference to Exhibit 10.2 of the Company's Current Report on Form 8-K filed with the Commission on November 24, 2023). 10.9 Share Exchange Agreement dated December 12, 2023 among Blackboxstocks, Inc., Evtec Aluminium Limited, and the shareholders of Evtec Aluminium Limited (incorporated by reference to Exhibit 2.1 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023). 10.10 Option Agreement between Blackboxstocks, Inc. and Gust Kepler (incorporated by reference to Exhibit 10.1 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023 and is included as Exhibit C in the Share Exchange Agreement dated December 12, 2023). 10.11 Form of Contingent Value Rights Agreement (incorporated by reference to Exhibit 10.2 of the Company's Current Report on Form 8-K filed with the Commission on December 12, 2023 and is included as Exhibit E in the Share Exchange Agreement dated December 12, 2023). 10.12 Contribution Agreement dated April 18, 2024, by and between Blackboxstocks Inc. and Blackbox.io Inc. (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on April 22, 2024). 10.13 First Amendment to Share Exchange Agreement dated July 3, 2024, by and among Blackboxstocks Inc., Evtec Aluminium Limited, and the shareholders of Evtec Aluminium Limited (incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.14 Stock Purchase Agreement dated July 1, 2024, by and between Blackboxstocks Inc., Gust Kepler and Quadrofoglio Holdings LLC (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.15 Convertible Loan Agreement dated July 1, 2024, between Blackboxstocks Inc. and Evtec Aluminium Limited (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on July 3, 2024). 10.16 Termination Agreement dated as of January 13, 2025, by and among Blackboxstocks Inc. and Evtec Aluminium Limited (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 17, 2025). 10.17 Securities Purchase Agreement dated as of January 17, 2025, between Blackboxstocks Inc. and Five Narrow Lane LP (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.18 7.00% Senior Debenture dated January 17, 2025, issued by Blackboxstocks Inc. (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.19 Form of Registration Rights Agreement (incorporated by reference to Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K filed with the Commission on January 22, 2025). 10.20 Amendment to Securities Purchase Agreement dated as of January 27, 2025, by and among Blackboxstocks Inc. and Five Narrow Lane LP (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on February 4, 2025). 10.21 Amended and Restated Debenture Due the Earlier of the Trigger Date and March 14, 2025 dated January 27, 2025 (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on February 4, 2025). 10.22 Agreement and Plan of Merger dated March 10, 2025, by and among Blackboxstocks Inc., RABLBX Merger Sub Inc. and REalloys Inc. (incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.23 Company Stockholder Support Agreement dated March 10, 2025, by and among Blackboxstocks Inc., REalloys Inc. and Gust Kepler (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.24 Form of REalloys Stockholder Support Agreement dated March 10, 2025, by and among Blackboxstocks Inc., REalloys Inc. and the Stockholders party thereto (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025). 10.25 Amended and Restated Senior Secured Convertible Debenture due the Earlier of the Trigger Date and January 17, 2026 (incorporated by reference to Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K filed with the Commission on March 10, 2025).",
+   "prose_after": "* Filed herewith.\nItem 16. Form 10\u2013K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1759,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: February 23, 2026",
+     "BLACKBOXSTOCKS INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Gust Kepler"
+    ],
+    [
+     "",
+     "",
+     "Gust Kepler"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: February 23, 2026",
+     "By:",
+     "/s/ Robert Winspear"
+    ],
+    [
+     "",
+     "",
+     "Robert Winspear"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer, Secretary and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1764,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\nItem 16. Form 10\u2013K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below hereby constitutes and appoints Gust Kepler and Robert Winspear, and each of them, as his or her true and lawful attorney-in-fact and agent with full power of substitution, for him or her in any and all capacities, to act on, sign any and all amendments to this Annual Report on Form 10-K and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorney-in-fact, proxy, and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully for all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact, proxy and agent, or his substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this Annual Report on Form 10-K has been signed by the following persons in the capacities set forth opposite their names and on February 23, 2026.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1759,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1808,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Gust Kepler",
+     "President, Chief Executive Officer and Director"
+    ],
+    [
+     "Gust Kepler",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert Winspear",
+     "Chief Financial Officer, Secretary and Director"
+    ],
+    [
+     "Robert Winspear",
+     "(Principal Accounting and Financial Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Grant Evans",
+     "Director"
+    ],
+    [
+     "Grant Evans",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Keller Reid",
+     "Director"
+    ],
+    [
+     "Keller Reid",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Dalya Sulaiman",
+     "Director"
+    ],
+    [
+     "Dalya Sulaiman",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1784,
+    "end_line": 1808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below hereby constitutes and appoints Gust Kepler and Robert Winspear, and each of them, as his or her true and lawful attorney-in-fact and agent with full power of substitution, for him or her in any and all capacities, to act on, sign any and all amendments to this Annual Report on Form 10-K and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorney-in-fact, proxy, and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully for all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact, proxy and agent, or his substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this Annual Report on Form 10-K has been signed by the following persons in the capacities set forth opposite their names and on February 23, 2026.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders\nBlackboxstocks, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of Blackboxstocks, Inc. (the \u201cCompany\u201d) as of December 31, 2025 and 2024, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for the years ended December 31, 2025 and 2024, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2025 and 2024, and the results of its operations and its cash flows for the year ended December 31, 2025 and 2024, in conformity with accounting principles generally accepted in the United States of America.\nSubstantial doubt about the Company\u2019s ability to continue as a Going concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations - $4,028,290 and $3,309,064 for the years ended December 31, 2025 and December 31, 2024 respectively; and used cash in its operating activities that raise substantial doubt about its ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1759,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1808,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "39,158",
+     "",
+     "$",
+     "17,036",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "20,148",
+     "",
+     "",
+     "7,217",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "3,464",
+     "",
+     "",
+     "3,464",
+     ""
+    ],
+    [
+     "Note receivable",
+     "",
+     "-",
+     "",
+     "",
+     "1,100,000",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "6,970",
+     "",
+     "",
+     "44,880",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "69,740",
+     "",
+     "",
+     "1,172,597",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "947",
+     "",
+     "",
+     "6,310",
+     ""
+    ],
+    [
+     "Right of use lease",
+     "",
+     "221,380",
+     "",
+     "",
+     "287,783",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "8,394,000",
+     "",
+     "",
+     "8,424,000",
+     ""
+    ],
+    [
+     "Total long term assets",
+     "",
+     "8,616,327",
+     "",
+     "",
+     "8,718,093",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "8,686,067",
+     "",
+     "$",
+     "9,890,690",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,463,102",
+     "",
+     "$",
+     "1,629,803",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "92,564",
+     "",
+     "",
+     "1,613",
+     ""
+    ],
+    [
+     "Unearned subscriptions",
+     "",
+     "726,208",
+     "",
+     "",
+     "928,203",
+     ""
+    ],
+    [
+     "Lease liability right of use, current",
+     "",
+     "74,362",
+     "",
+     "",
+     "65,389",
+     ""
+    ],
+    [
+     "Senior secured convertible debenture, net of issuance costs",
+     "",
+     "252,030",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Convertible note payable",
+     "",
+     "164,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Note payable",
+     "",
+     "100,000",
+     "",
+     "",
+     "10,592",
+     ""
+    ],
+    [
+     "Merchant cash advance",
+     "",
+     "-",
+     "",
+     "",
+     "187,921",
+     ""
+    ],
+    [
+     "Advances payable",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Advances payable, related party",
+     "",
+     "-",
+     "",
+     "",
+     "101,189",
+     ""
+    ],
+    [
+     "Evtec advances payable",
+     "",
+     "-",
+     "",
+     "",
+     "1,293,000",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,872,266",
+     "",
+     "",
+     "4,267,710",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability right of use, long term",
+     "",
+     "154,423",
+     "",
+     "",
+     "228,785",
+     ""
+    ],
+    [
+     "Total long term liabilities",
+     "",
+     "154,423",
+     "",
+     "",
+     "228,785",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock (undesignated), $0.001 par value, 2,600,000 shares authorized; no shares issued and outstanding at December 31, 2025 and 2024, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred Stock, $0.001 par value, 5,000,000 shares authorized; 3,269,998 issued and outstanding at December 31, 2025 and 2024, respectively",
+     "",
+     "3,270",
+     "",
+     "",
+     "3,270",
+     ""
+    ],
+    [
+     "Series B Convertible Preferred Stock, $0.001 par value, 2,400,000 shares authorized; no shares issued and outstanding at December 31, 2025 and December 31, 2024, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 100,000,000 shares authorized: 4,309,652 and 3,538,038 issued and outstanding at December 31, 2025 and 2024, respectively",
+     "",
+     "4,310",
+     "",
+     "",
+     "3,538",
+     ""
+    ],
+    [
+     "Treasury stock",
+     "",
+     "(40)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "33,034,072",
+     "",
+     "",
+     "28,343,505",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(27,382,234)",
+     "",
+     "",
+     "(22,956,118)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "5,659,378",
+     "",
+     "",
+     "5,394,195",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "8,686,067",
+     "",
+     "$",
+     "9,890,690",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1850,
+    "end_line": 1922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee or the Company\u2019s governance and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there are no critical audit matters communicated or required to be communicated to the audit committee.\nOther Matters\nWe have served as the Company\u2019s auditor since 2024.\nHouston, Texas\nFebruary 23, 2026\nPCAOB ID: 6771\nConsolidated Balance Sheets\nDecember 31, 2025 and 2024",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\nFor the years ended December 31, 2025 and 2024",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1924,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subscriptions",
+     "$",
+     "2,347,439",
+     "",
+     "$",
+     "2,563,257",
+     ""
+    ],
+    [
+     "Other revenues",
+     "",
+     "83,794",
+     "",
+     "",
+     "3,689",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "2,431,233",
+     "",
+     "",
+     "2,566,946",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "1,265,109",
+     "",
+     "",
+     "1,437,283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "1,166,124",
+     "",
+     "",
+     "1,129,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Software development costs",
+     "",
+     "413,594",
+     "",
+     "",
+     "417,944",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "4,503,299",
+     "",
+     "",
+     "3,568,296",
+     ""
+    ],
+    [
+     "Advertising and marketing",
+     "",
+     "272,158",
+     "",
+     "",
+     "436,456",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "5,363",
+     "",
+     "",
+     "16,031",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "5,194,414",
+     "",
+     "",
+     "4,438,727",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "(4,028,290)",
+     "",
+     "",
+     "(3,309,064)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "117,557",
+     "",
+     "",
+     "263",
+     ""
+    ],
+    [
+     "Financing costs",
+     "",
+     "102,254",
+     "",
+     "",
+     "132,308",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "241,015",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on disposition of assets",
+     "",
+     "-",
+     "",
+     "",
+     "29,940",
+     ""
+    ],
+    [
+     "Gain on settlement of assets and liabilities",
+     "",
+     "(93,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "(348)",
+     ""
+    ],
+    [
+     "Investment loss",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "",
+     "397,826",
+     "",
+     "",
+     "162,163",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(4,426,116)",
+     "",
+     "",
+     "(3,471,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,426,116)",
+     "",
+     "$",
+     "(3,471,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "3,796,373",
+     "",
+     "",
+     "3,376,407",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "$",
+     "(1.17)",
+     "",
+     "$",
+     "(1.03)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1930,
+    "end_line": 1986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\nFor the years ended December 31, 2025 and 2024",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\nFor the years ended December 31, 2025 and 2024",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1924,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1988,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "Series B Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Additional\n\n\n\nPaid in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2023",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "3,269,998",
+     "$",
+     "3,270",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "3,223,015",
+     "",
+     "$",
+     "3,223",
+     "",
+     "$",
+     "(27,650)",
+     "",
+     "$",
+     "26,802,808",
+     "",
+     "$",
+     "(19,484,891)",
+     "",
+     "$",
+     "7,296,760",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retirement of treasury stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,607)",
+     "",
+     "",
+     "(11)",
+     "",
+     "",
+     "27,650",
+     "",
+     "",
+     "(27,639)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeiture of shares",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "(10)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "23,130",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "368,639",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "368,662",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "312,500",
+     "",
+     "",
+     "313",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,199,687",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,200,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,471,227)",
+     "",
+     "",
+     "(3,471,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2024",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "3,269,998",
+     "$",
+     "3,270",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "3,538,038",
+     "",
+     "$",
+     "3,538",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "28,343,505",
+     "",
+     "$",
+     "(22,956,118)",
+     "",
+     "$",
+     "5,394,195",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued to treasury",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "39,724",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "(40)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "164,287",
+     "",
+     "",
+     "164",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,364,913",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,365,077",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "210,000",
+     "",
+     "",
+     "210",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,492,812",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,493,022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock for financing costs",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,000",
+     "",
+     "",
+     "15",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "49,635",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "49,650",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock for conversion of debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "326,658",
+     "",
+     "",
+     "327",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,783,223",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,783,550",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock for cashless exercise of options and warrants",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,945",
+     "",
+     "",
+     "16",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(16)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4,426,116)",
+     "",
+     "",
+     "(4,426,116)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2025",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "3,269,998",
+     "$",
+     "3,270",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "4,309,652",
+     "",
+     "$",
+     "4,310",
+     "",
+     "$",
+     "(40)",
+     "",
+     "$",
+     "33,034,072",
+     "",
+     "$",
+     "(27,382,234)",
+     "",
+     "$",
+     "5,659,378",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1994,
+    "end_line": 2037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\nFor the years ended December 31, 2025 and 2024",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\nFor the years ended December 31, 2025 and 2024",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1988,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2039,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,426,116)",
+     "",
+     "$",
+     "(3,471,227)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "5,363",
+     "",
+     "",
+     "16,031",
+     ""
+    ],
+    [
+     "Amortization of note discount and issuance costs",
+     "",
+     "241,015",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing costs",
+     "",
+     "102,254",
+     "",
+     "",
+     "132,308",
+     ""
+    ],
+    [
+     "Shares issued for financing costs",
+     "",
+     "49,650",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "1,365,077",
+     "",
+     "",
+     "368,662",
+     ""
+    ],
+    [
+     "Right of use lease",
+     "",
+     "1,014",
+     "",
+     "",
+     "(1,474)",
+     ""
+    ],
+    [
+     "Gain on settlement of other liabilities and note receivable",
+     "",
+     "(93,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on disposition of assets",
+     "",
+     "-",
+     "",
+     "",
+     "29,940",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "(348)",
+     ""
+    ],
+    [
+     "Investment loss",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(12,931)",
+     "",
+     "",
+     "10,995",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "-",
+     "",
+     "",
+     "475,000",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "37,910",
+     "",
+     "",
+     "(9,719)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(198,136)",
+     "",
+     "",
+     "667,229",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "90,951",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unearned subscriptions",
+     "",
+     "(201,995)",
+     "",
+     "",
+     "(367,311)",
+     ""
+    ],
+    [
+     "Advances payable",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Advances payable, related party",
+     "",
+     "(101,189)",
+     "",
+     "",
+     "101,189",
+     ""
+    ],
+    [
+     "Evtec advances payable",
+     "",
+     "-",
+     "",
+     "",
+     "1,293,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(3,160,133)",
+     "",
+     "",
+     "(705,725)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of marketable securities",
+     "",
+     "-",
+     "",
+     "",
+     "(9,273)",
+     ""
+    ],
+    [
+     "Sale of marketable securities",
+     "",
+     "-",
+     "",
+     "",
+     "12,576",
+     ""
+    ],
+    [
+     "Issuance of note receivable",
+     "",
+     "-",
+     "",
+     "",
+     "(1,100,000)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "(1,096,697)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "1,493,022",
+     "",
+     "",
+     "1,200,000",
+     ""
+    ],
+    [
+     "Proceeds from issuance of senior secured convertible debenture",
+     "",
+     "1,990,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from merchant cash advance",
+     "",
+     "-",
+     "",
+     "",
+     "397,750",
+     ""
+    ],
+    [
+     "Principal payments on notes payable",
+     "",
+     "(10,592)",
+     "",
+     "",
+     "(29,022)",
+     ""
+    ],
+    [
+     "Payments on merchant cash advance",
+     "",
+     "(290,175)",
+     "",
+     "",
+     "(221,967)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "3,182,255",
+     "",
+     "",
+     "1,346,761",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "$",
+     "22,122",
+     "",
+     "$",
+     "(455,661)",
+     ""
+    ],
+    [
+     "Cash - beginning of year",
+     "",
+     "17,036",
+     "",
+     "",
+     "472,697",
+     ""
+    ],
+    [
+     "Cash - end of year",
+     "$",
+     "39,158",
+     "",
+     "$",
+     "17,036",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "1,590",
+     "",
+     "$",
+     "264",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount on note payable",
+     "$",
+     "60,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Discount on note payable from fees payable",
+     "$",
+     "195,435",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Fees payable settled through convertible note payable",
+     "$",
+     "164,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Note payable issued on settlement of other liabilities and note receivable",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of stock for conversion of senior secured convertible debenture",
+     "$",
+     "1,783,550",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Retirement of treasury stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "27,650",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2045,
+    "end_line": 2120
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\nFor the years ended December 31, 2025 and 2024",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\n1. Organization\nBlackboxstocks Inc. (the \u201cCompany\u201d) was incorporated on October 4, 2011, under the laws of the State of Nevada under the name SMSA Ballinger Acquisition Corp. to effect the reincorporation of Senior Management Services of Heritage Oaks at Ballinger, Inc., a Texas corporation, mandated by a Plan of Reorganization confirmed by the United States Bankruptcy Court for the Northern District of Texas for reorganization under Chapter 11 of the United States Bankruptcy Code.\nThe Company changed its name to Blackboxstocks, Inc. and began operating as a financial technology and social media platform in March 2016. The platform offers real-time proprietary analytics and news for stock and options traders of all levels. The Company believes its web-based software employs \u201cpredictive technology\u201d enhanced by artificial intelligence to find volatility and unusual market activity that may result in the rapid change in the price of a stock or option. The software continuously scans the NASDAQ, New York Stock Exchange, CBOE, and other options markets, analyzing over 10,000 stocks and up to 1,500,000 options contracts multiple times per second. The Company also provides users with a fully interactive social media platform that is integrated into our dashboard, enabling users to exchange information and ideas quickly and efficiently through a common network. Recently, the Company also introduced a live audio/video feature that allows members to broadcast on their own channels to share trade strategies and market insight within the community. The platform was initially made available to subscribers in September 2016. Subscriptions for the use of the platform are sold on a monthly and/or annual subscription basis to individual consumers through the Company website at http://blackboxstocks.com.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2039,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred Shares",
+     "",
+     "3,269,998",
+     "",
+     "3,269,998"
+    ],
+    [
+     "Conversion rate",
+     "",
+     "0.2",
+     "",
+     "0.2"
+    ],
+    [
+     "Common shares after conversion",
+     "",
+     "654,000",
+     "",
+     "654,000"
+    ],
+    [
+     "Option shares",
+     "",
+     "132,625",
+     "",
+     "144,125"
+    ],
+    [
+     "Warrant shares",
+     "",
+     "100,245",
+     "",
+     "88,510"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Senior secured convertible debenture",
+     "$",
+     "266,450",
+     "",
+     "-"
+    ],
+    [
+     "Convertible note",
+     "$",
+     "164,000",
+     "",
+     "-"
+    ],
+    [
+     "Conversion rate",
+     "$",
+     "5.46",
+     "",
+     "-"
+    ],
+    [
+     "Shares if converted",
+     "",
+     "78,837",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2205,
+    "end_line": 2219
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Subsequent Events. The Company has evaluated all transactions through the date the financial statements were issued for subsequent event disclosure or adjustment consideration.\nEarnings or (Loss) Per Share. Basic earnings per share (or loss per share), is computed by dividing the earnings (loss) for the period by the weighted average number of common stock shares outstanding for the period. Diluted earnings per share reflects the potential dilution of securities by including other potentially issuable shares of common stock, including shares issuable upon conversion of convertible securities or exercise of outstanding stock options and warrants, in the weighted average number of common shares outstanding for the period. Therefore, because including shares issuable upon conversion of convertible securities and/or exercise of outstanding options and warrants would have an anti-dilutive effect on the loss per share, only the basic earnings (loss) per share is reported in the accompanying financial statements for period of loss.\nThe Company had total potential additional dilutive securities outstanding at December 31, 2025 and 2024, as follows.",
+   "prose_after": "3. Investments\nInvestments\nEvtec Group Limited (\u201cEvtec Group\u201d) operates through a single subsidiary, Evtec Automotive Limited, as a supplier of critical automotive parts to the automobile manufacturing industry. Evtec Group is based in the UK and provides complete assemblies to auto manufacturers, simplifying sourcing, saving time on procurement, and increasing production efficiency. Their pick and pack service supplies aftermarket automotive products, as well as offering kitting and fulfilment for non-automotive businesses. Their business focuses on premium luxury brands and a market transition to electric vehicles and includes Jaguar Land Rover Group as their largest customer.\nOn June 9, 2023, the Company entered into a Securities Exchange Agreement (the Securities Exchange Agreement\u201d) with Evtec Group whereby the Company issued 2,400,000 shares of Series B Convertible Preferred Stock (the \u201cSeries B Stock\u201d) in exchange for 4,086 preferred shares of Evtec Group. Upon conversion of the Series B Stock, the 2,400,000 shares would represent approximately 43% of the total common shares outstanding. The Evtec Group preferred shares were convertible into common shares of Evtec Group on a one-for-one basis upon a change in control or the listing of Evtec Group on Nasdaq or the London Stock Exchange. The preferred shares of Evtec Group were converted into common shares representing approximately 13% of Evtec Group.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2219,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\n\n\nShares",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise Price",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining Life\n\n\n\n(in\n\n\n\nyears)",
+     ""
+    ],
+    [
+     "Warrants as of December 31, 2023",
+     "",
+     "109,584",
+     "",
+     "$",
+     "13.25",
+     "",
+     "3.53"
+    ],
+    [
+     "Issued",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(21,074)",
+     "",
+     "$",
+     "7.80",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Warrants as of December 31, 2024",
+     "",
+     "88,510",
+     "",
+     "$",
+     "14.54",
+     "",
+     "3.26"
+    ],
+    [
+     "Issued",
+     "",
+     "33,700",
+     "",
+     "$",
+     "5.46",
+     "",
+     "5.00"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(8,814)",
+     "",
+     "$",
+     "7.80",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(13,151)",
+     "",
+     "$",
+     "16.10",
+     "",
+     "-"
+    ],
+    [
+     "Warrants as of December 31, 2025",
+     "",
+     "100,245",
+     "",
+     "$",
+     "13.19",
+     "",
+     "3.58"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2290,
+    "end_line": 2314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Warrants to Purchase Common Stock"
+    }
+   },
+   "prose_before": "On July 1, 2025 the Company entered into an At-The-Market Issuance Sales Agreement (the \u201cATM Agreement\u201d) with Alexander Capital, L.P. (\u201cAlexander Capital\u201d). Pursuant to the ATM Agreement, the Company may from time to time issue and sell to or through Alexander Capital, acting as the Company\u2019s sales agent, shares of the Company\u2019s common stock, par value $0.001 per share (the \u201cShares\u201d), having an aggregate offering price of up to $5,795,000. Sales of the Shares, if any, will be made by any method permitted by law deemed to be an \u201cat the market offering\u201d as defined in Rule 415 promulgated under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d). As sales agent, Alexander Capital will offer the Shares at prevailing market prices and will use its commercially reasonable efforts, consistent with its sales and trading practices, to sell on the Company\u2019s behalf all of the Shares requested to be sold by the Company, subject to the terms and conditions of the ATM Agreement. As of December 31, 2025, the Company has raised gross proceeds of $1,493,022 from the ATM from the sale of 210,000 shares of its common stock and incurred $99,878 in expenses including fees of Alexander Capital and legal fees.\n5. Warrants to Purchase Common Stock\nDuring the year ended December 31, 2025, the Company calculated the fair value of the warrants granted based on assumptions used in the Cox-Ross-Rubinstein binomial pricing model using the following inputs: the price of the Company\u2019s common stock on the date of issuance; risk-free interest rate of 3.96%, expected volatility of 150% based on the volatility of the Company\u2019s common stock, exercise price of $5.46, and terms of 5 years.\nDuring the year ended December 31, 2025, the Company issued a warrant for the purchase of 33,700 shares related to financing costs. The warrant, valued at $233,010, vested at issuance.\nThe following table presents the Company\u2019s warrants as of December 31, 2025 and 2024:",
+   "prose_after": "During the years ended December 31, 2025 and 2024, stock based compensation related to warrants totaled $233,000 and $85,016, respectively.\nAt December 31, 2025, warrants for the purchase of 100,245 shares were vested and no warrants remained unvested.\n6. Incentive Stock Plan\nOn August 4, 2021, our Board of Directors created and our stockholders approved the 2021 Blackboxstocks, Inc. Incentive Stock Plan (the \u201c2021 Plan\u201d) which became effective August 31, 2021. Effective October 7, 2022, the Company\u2019s Stockholders approved an amendment and restatement of the 2021 Plan to increase the numbers of issuable shares from 187,500 to 312,500. On February 6, 2023 the Company\u2019s stockholders approved the amendment and restatement the 2021 Plan to increase the number of shares available for issuance from 312,500 to 612,500 shares. The 2021 Plan allows the Company, under the direction of the Board of Directors or a committee thereof, to make grants of stock options, restricted and unrestricted stock and other stock-based awards to employees, including our executive officers, consultants and directors.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2266,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2318,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\n\n\nShares",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise Price",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining Life\n\n\n\n(in\n\n\n\nyears)",
+     ""
+    ],
+    [
+     "Options as of December 31, 2023",
+     "",
+     "215,625",
+     "",
+     "$",
+     "8.97",
+     "",
+     "8.37"
+    ],
+    [
+     "Issued",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(71,500)",
+     "",
+     "$",
+     "6.03",
+     "",
+     "6.56"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options as of December 31, 2024",
+     "",
+     "144,125",
+     "",
+     "$",
+     "9.09",
+     "",
+     "7.35"
+    ],
+    [
+     "Issued",
+     "",
+     "15,000",
+     "",
+     "$",
+     "3.46",
+     "",
+     "10.00"
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(26,500)",
+     "",
+     "$",
+     "3.65",
+     "",
+     "8.50"
+    ],
+    [
+     "Options as of December 31, 2025",
+     "",
+     "132,625",
+     "",
+     "$",
+     "9.54",
+     "",
+     "6.45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2332,
+    "end_line": 2356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Incentive Stock Plan"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2025, the Company calculated the fair value of the options granted based on assumptions used in the Cox-Ross-Rubinstein binomial pricing model using the following inputs: the price of the Company\u2019s common stock on the date of issuance; risk-free interest rate of 4.43%, expected volatility of 153% based on the volatility of the Company\u2019s common stock, exercise price of $3.46, and terms of 10 years.\nDuring the year ended December 31, 2024, 23,130 shares of restricted common stock were granted. The restricted shares, valued at $92,850, were vested at issuance.\nDuring the year ended December 31, 2025, 164,287 shares of restricted common stock valued at $1,365,077 were granted. The restricted common stock all vested during 2025. Approximately 77,500 restricted shares issued were not covered by 2021 Plan including 50,000 shares of restricted common stock valued at $534,450 issued to Robert Winspear, CFO.\nThe following table presents the Company\u2019s options as of December 31, 2025 and 2024:",
+   "prose_after": "During the years ended December 31, 2025 and 2024, stock based compensation related to options totaled $51,222 and $190,796, respectively.\nAt December 31, 2025, options to purchase 132,625 shares were vested and no options remained unvested.\n7. Related Party Transactions\nAs noted in Note 4, on July 1, 2024 Mr. Kepler purchased 25,000 shares of common stock at a price of $4.00 per share in connection with the Stock Purchase Agreement.\nDuring 2024, Mr. Kepler forfeited 10,000 shares of common stock. The shares were subsequently retired and added back to authorized but unissued shares.\nDuring the years ended December 31, 2025 and 2024, Mr. Kepler advanced the Company approximately $360,000 and $101,000, respectively. At December 31, 2025, and 2024, advances totaling approximately $-0- and $101,000, respectively, remained due to Mr. Kepler.\n8. Debt\nSenior Secured Debenture\nThe Company entered into a Securities Purchase Agreement dated with Five Narrow Lane LP (\u201cFNL\u201d), on January 17, 2025 which was later amended on January 27, 2025 (the \u201cPurchase Agreement\u201d), pursuant to which the Company agreed to issue, and Five Narrow Lane LP agreed to purchase, debentures (defined therein as the \u201cAdditional Debentures\u201d). The Purchase Agreement provides for financing of up to an aggregate principal amount of $2,300,000 of which $2,050,000 has been received. In addition, pursuant to the terms of the Additional Debenture, upon consummation of the Merger, the Company shall, at its option, either (i) pay FNL in cash the entire principal amount of the Additional Debenture then outstanding, together with all accrued and unpaid interest thereon, the exit fee and any other amounts due thereunder, or (ii) issue to FNL such number of shares of Series C Convertible Preferred Stock, par value $0.001 per share, to be established by the Company upon closing of the Merger (the \u201cSeries C Stock\u201d) for aggregate stated value equal to (x) 3.0 multiplied by (y) the entire principal amount of the Additional Debenture then outstanding, together with all accrued and unpaid interest thereon, the exit fee and other amounts due thereunder. The Company has filed a registration statement (the \u201cResale Registration Statement\u201d) with the SEC registering the resale of common stock underlying the Additional Debenture (the \u201cResale Securities\u201d) which was declared effective by the SEC on May 5, 2025. Pursuant to the terms of the Merger Agreement, (i) any REalloys Warrants outstanding at the effective time of the Merger will be assumed by the Company and (ii) shares of Series X Stock issued by REalloys will be exchanged for shares of Series C Stock of the Company on a one-to-one basis. Shares underlying the REalloys Warrants and the Series C Stock will be registered pursuant to the Merger Registration Statement. Prior to the Merger, the Additional Debenture is convertible into common stock at a conversion price of $5.46 per share. As of December 31, 2025, FNL had converted $1,783,550 of the Additional Debenture into 326,658 shares of common stock.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2318,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2368,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "2026",
+     "$",
+     "93,136",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "95,150",
+     ""
+    ],
+    [
+     "2028",
+     "",
+     "72,495",
+     ""
+    ],
+    [
+     "Total remaining lease payments",
+     "$",
+     "260,781",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "(31,996)",
+     ""
+    ],
+    [
+     "Present Value of remaining lease payments",
+     "$",
+     "228,785",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "74,362",
+     ""
+    ],
+    [
+     "Noncurrent",
+     "$",
+     "154,423",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term (years)",
+     "",
+     "2.17",
+     ""
+    ],
+    [
+     "Weighted-average discount rate",
+     "",
+     "10.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2413,
+    "end_line": 2432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company issued 15,000 shares with a value of $49,650 in consideration for amending the two merchant cash advances. The amendments of the cash advances were accounted for as a debt extinguishment and reissuance in accordance with ASC 470-50-40-10.\nAs of December 31, 2025 and 2024, the unpaid balance of the merchant cash advances totaled $-0- and $187,921, respectively.\nAdvance\nOn December 30, 2024, the Company received an advance totaling $50,000 from an unrelated third party. The advance was unsecured, bears no interest, and had no stated maturity date. The advance was repaid during the year ended December 31, 2025.\n9. Commitments and Contingencies\nLeases\nThe Company leases approximately 2,685 square feet of office space in Dallas Texas pursuant to an office lease with Teachers Insurance and Annuity Association of America that expires on September 30, 2028. During the year ended December 31, 2025, the Company\u2019s rental expenses totaled approximately $140,000.\nThe table below shows the future lease payment obligations:",
+   "prose_after": "Merger Agreement\nOn March 10, 2025 the Company entered into an Agreement and Plan of Merger (the \u201cMerger Agreement\u201d) with RABLBX Merger Sub Inc., a Nevada corporation and wholly owned subsidiary of the Company (\u201cMerger Sub\u201d) and REalloys Inc., a Nevada corporation (\u201cREalloys\u201d). Upon the terms and subject to the satisfaction of the conditions described in the Merger Agreement, REalloys will merge with and into Merger Sub, Merger Sub will cease to exist and REalloys will become a wholly-owned subsidiary of the Company (the \u201cMerger\u201d). At the closing of the Merger (the \u201cClosing\u201d), the holders of capital stock and outstanding instruments convertible into or exercisable for capital stock of REalloys will receive shares of common and preferred stock of the Company, $0.001 par value, based on an exchange ratio formula in the Merger Agreement (the \u201cExchange Ratio\u201d) or as otherwise agreed to in the Merger Agreement, which is subject to adjustment in the event the parties raise capital in excess of certain thresholds. Immediately following Closing, based upon the Exchange Ratio, pre-Closing stockholders of the Company are expected to collectively retain approximately 7.3% of the post-Close aggregate common stock of the Company, par value $0.001 (the \u201cCompany Common Stock\u201d) and holders of REalloys capital stock and instruments convertible into or exercisable for capital stock of the REalloys will receive as merger consideration newly issued shares of Company Common Stock representing approximately 92.7% of the post-Close aggregate as common and preferred stock of the Company. Closing of the Merger is subject to various customary closing conditions including but not limited to the Securities and Exchange Commission (\u201cSEC\u201d) declaring the registration statement effective, approval of REalloys initial listing application by Nasdaq, and stockholder approval. The Merger will be accounted for as a reverse merger with REalloys being the accounting acquiror.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2449,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Federal tax statutory rate",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Temporary differences",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "-8",
+     "%",
+     "",
+     "-2",
+     "%"
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "-13",
+     "%",
+     "",
+     "-19",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2455,
+    "end_line": 2466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "On January 31, 2025, the Company filed a registration statement on Form S-3 for the sale of up to $50,000,000 of securities. Pursuant to General Instruction I.B.6 of Form S-3, in no event will we sell securities in a primary offering with a value exceeding more than one-third of our public float in any 12-month period so long as our public float remains below $75,000,000.\nLegal\nFrom time to time in the normal course of business, the Company may be party to lawsuits or other claims. None such matters are expected to have a material impact on the Company\u2019s financial position or results of operations.\n10. Income Taxes\nThe Company accounts for income taxes under ASC 740-10, which provides for an asset and liability approach of accounting for income taxes. Under this approach, deferred tax assets and liabilities are recognized based on anticipated future tax consequences, using currently enacted tax laws, attributed to temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts are calculated for income tax purposes. The provision (benefit) for income taxes for the years ended December 31, 2025, and 2024, assumes a statutory 21%, effective tax rate for federal income taxes.",
+   "prose_after": "The Company had deferred income tax assets as of December 31, 2025, and 2024, as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2449,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2501,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "5,313,000",
+     "",
+     "$",
+     "4,384,000",
+     ""
+    ],
+    [
+     "Temporary differences",
+     "",
+     "9,000",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "(1,064,000)",
+     "",
+     "",
+     "(714,000)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(4,258,000)",
+     "",
+     "",
+     "(3,679,000)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2469,
+    "end_line": 2481
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company had deferred income tax assets as of December 31, 2025, and 2024, as follows:",
+   "prose_after": "The Company provides for a valuation allowance when it is more likely than not that it will not realize a portion of the deferred tax assets. The Company has established a valuation allowance against the net deferred tax asset due to the uncertainty that enough taxable income will be generated in those taxing jurisdictions to utilize the assets. Therefore, the Company has not reflected any benefit of such deferred tax assets in the accompanying financial statements. The Company\u2019s net deferred tax asset and valuation allowance increased by $579,000 and $648,000 in the fiscal years ending December 31, 2025, and 2024, respectively.\nAt December 31, 2025, the Company had approximately $20,278,000 in federal net operating loss carryforwards, substantially all of which are allowed to be carried forward indefinitely and are to be limited to 80% of the taxable income. Pursuant to Internal Revenue Code Section 382, the future utilization of the Company\u2019s net operating loss carryforwards to offset future taxable income may be subject to an annual limitation as a result of ownership changes that may have occurred previously or that could occur in the future.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2449,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2501,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

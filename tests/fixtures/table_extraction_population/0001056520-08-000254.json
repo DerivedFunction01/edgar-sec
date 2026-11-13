@@ -1,0 +1,2085 @@
+{
+ "accession": "0001056520-08-000254",
+ "cik": "0001142129",
+ "form": "10-Q",
+ "filing_date": "2008-05-15",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "march0810qfnprjbpcomments.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Interim Balance Sheets as at March 31, 2008 (unaudited) and December 31, 2007 (audited)",
+     "",
+     "3"
+    ],
+    [
+     "Interim Statements of Operations for the 3-month periods ended March 31, 2008 and March 31, 2007 (unaudited)",
+     "",
+     "4"
+    ],
+    [
+     "Interim Statements of Cash Flows for the 3-month periods ended March 31, 2008 and March 31, 2007 (unaudited)",
+     "",
+     "5"
+    ],
+    [
+     "Interim Statements of Changes in Stockholders\u2019 Deficiency for the 3-month period ended March 31, 2008 (unaudited) and the year ended December 31, 2007",
+     "",
+     "6 - 7"
+    ],
+    [
+     "Condensed Notes to Interim Financial Statements (Unaudited)",
+     "",
+     "8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 69
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "As of March 31, 2007, there were 76,422,760 shares issued and outstanding of the issuer\u2019s common stock.\nPART I: FINANCIAL INFORMATION\nItem 1. Financial Statements:\nFirst National Power Corporation\n(A Development Stage Company)\nInterim Financial Statements (unaudited)\nFor the 3-Month Period Ended March 31, 2008\nAmounts expressed in US Dollars\nThe Condensed Notes form an integral part of the consolidated unaudited interim financial statements\nIndex",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FIRST NATIONAL POWER CORPORATION",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interim Balance Sheets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of March 31,2008 and December 31, 2007",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Amounts expressed in US Dollars)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31, 2008",
+     "",
+     "Dec 31, 2007"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CURRENT ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "140,147",
+     "",
+     "158,313"
+    ],
+    [
+     "",
+     "",
+     "140,147",
+     "",
+     "158,313"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable and accrued liabilities",
+     "11,505",
+     "",
+     "8,875"
+    ],
+    [
+     "",
+     "Loans from shareholders",
+     "258,313",
+     "",
+     "258,313"
+    ],
+    [
+     "",
+     "",
+     "269,818",
+     "",
+     "267,188"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIENCY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CAPITAL STOCK",
+     "76,424",
+     "",
+     "76,424"
+    ],
+    [
+     "",
+     "ADDITIONAL PAID-IN-CAPITAL",
+     "320,937",
+     "",
+     "320,937"
+    ],
+    [
+     "",
+     "DEFICIT, ACCUMULATED DURING THE DEVELOPMENT STAGE",
+     "(527,032)",
+     "",
+     "(506,236)"
+    ],
+    [
+     "",
+     "",
+     "(129,671)",
+     "",
+     "(108,875)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "140,147",
+     "",
+     "158,313"
+    ]
+   ],
+   "caption_stack": [
+    "FIRST NATIONAL POWER CORPORATION",
+    "(A Development Stage Company)",
+    "Interim Balance Sheets",
+    "As of March 31,2008 and December 31, 2007",
+    "(Amounts expressed in US Dollars)",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FIRST NATIONAL POWER CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interim Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the 3 month periods ended March 31, 2008 and March 31, 2007",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Amounts expressed in US Dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Three months",
+     "",
+     "Three months"
+    ],
+    [
+     "",
+     "",
+     "Cumulative",
+     "",
+     "ended",
+     "",
+     "ended"
+    ],
+    [
+     "",
+     "",
+     "Since",
+     "",
+     "31-Mar",
+     "",
+     "31-Mar"
+    ],
+    [
+     "",
+     "",
+     "Inception",
+     "",
+     "2008",
+     "",
+     "2007"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest Income",
+     "(5,657)",
+     "",
+     "(757)",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Forgiveness of accounts payable and loans",
+     "(47,394)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "General and administrative expenses",
+     "333,711",
+     "",
+     "6,227",
+     "",
+     "1,296"
+    ],
+    [
+     "",
+     "(Gain) Loss on Foreign Exchange",
+     "289",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Project development costs",
+     "242,857",
+     "",
+     "15,326",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Interest",
+     "3,226",
+     "",
+     "0",
+     "",
+     "34"
+    ],
+    [
+     "",
+     "",
+     "527,032",
+     "",
+     "20,796",
+     "",
+     "1,330"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "527,032",
+     "",
+     "(20,796)",
+     "",
+     "(1,330)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "",
+     "",
+     "",
+     "$          (0.00)",
+     "",
+     "$         (0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "",
+     "",
+     "76,422,760",
+     "",
+     "76,276,760"
+    ]
+   ],
+   "caption_stack": [
+    "FIRST NATIONAL POWER CORPORATION",
+    "(A Development Stage Company)",
+    "Interim Statements of Operations",
+    "For the 3 month periods ended March 31, 2008 and March 31, 2007",
+    "(Amounts expressed in US Dollars)",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 144,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FIRST NATIONAL POWER CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interim Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the 3 month periods ended March 31, 2008 and March 31, 2007",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Amounts expressed in US Dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Cumulative",
+     "",
+     "Three months",
+     "",
+     "Three months"
+    ],
+    [
+     "",
+     "",
+     "Since",
+     "",
+     "ended",
+     "",
+     "ended"
+    ],
+    [
+     "",
+     "",
+     "Inception",
+     "",
+     "March 31, 2008",
+     "",
+     "March 31, 2007"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "(527,032)",
+     "",
+     "(20,796)",
+     "",
+     "(1,330)"
+    ],
+    [
+     "",
+     "Adjustments for items not affecting cash",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued for services rendered",
+     "299,890",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Forgiveness of accounts payable and loans",
+     "(47,394)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Increase (decrease) in accounts payable",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "and accrued liabilities",
+     "15,504",
+     "",
+     "2,630",
+     "",
+     "(561)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net cash used in operating activities",
+     "(259,032)",
+     "",
+     "(18,166)",
+     "",
+     "(1,891)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Loans from Shareholders",
+     "301,708",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Proceeds from capital stock subscriptions",
+     "97,471",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Net cash provided by financing activities",
+     "399,179",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "140,147",
+     "",
+     "(18,166)",
+     "",
+     "(1,891)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash, beginning of period",
+     "-",
+     "",
+     "158,313",
+     "",
+     "203,272"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, END OF PERIOD",
+     "",
+     "140,147",
+     "",
+     "140,147",
+     "",
+     "201,381"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAXES PAID",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INTEREST PAID",
+     "",
+     "3,226",
+     "",
+     "-",
+     "",
+     "34"
+    ]
+   ],
+   "caption_stack": [
+    "FIRST NATIONAL POWER CORPORATION",
+    "(A Development Stage Company)",
+    "Interim Statements of Cash Flows",
+    "For the 3 month periods ended March 31, 2008 and March 31, 2007",
+    "(Amounts expressed in US Dollars)",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 146,
+    "end_line": 192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 144,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FIRST NATIONAL POWER CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interim Statements of Changes in Stockholders\u2019 Deficiency",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the period from inception to March 31, 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Amounts expressed in US Dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "accumulated"
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "Stock",
+     "",
+     "Common",
+     "",
+     "Paid-In",
+     "",
+     "during the"
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     "Number of",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "development"
+    ],
+    [
+     "",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Subscribed",
+     "",
+     "(Discount)",
+     "",
+     "stage"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$"
+    ],
+    [
+     "Balance at November 16, 2000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Issuance of common stock for cash",
+     "100",
+     "",
+     "100,000",
+     "",
+     "",
+     "",
+     "900",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(968)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2000",
+     "",
+     "100",
+     "",
+     "100,000",
+     "",
+     "-",
+     "",
+     "900",
+     "",
+     "(968)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Issuance of stock for cash",
+     "400",
+     "",
+     "400,000",
+     "",
+     "",
+     "",
+     "3,600",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Issuance of stock for cash",
+     "700",
+     "",
+     "700,000",
+     "",
+     "",
+     "",
+     "6,300",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Issuance of stock for cash",
+     "850",
+     "",
+     "850,000",
+     "",
+     "",
+     "",
+     "7,650",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Currency Translation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "100",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(23,954)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2001",
+     "",
+     "2,050",
+     "",
+     "2,050,000",
+     "",
+     "-",
+     "",
+     "18,550",
+     "",
+     "(24,922)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Expiration of rescission offer for sale of stock",
+     "64",
+     "",
+     "63,536",
+     "",
+     "",
+     "",
+     "6,290",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(26,047)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2002",
+     "",
+     "2,114",
+     "",
+     "2,113,536",
+     "",
+     "-",
+     "",
+     "24,840",
+     "",
+     "(50,969)"
+    ]
+   ],
+   "caption_stack": [
+    "FIRST NATIONAL POWER CORPORATION",
+    "(A Development Stage Company)",
+    "Interim Statements of Changes in Stockholders\u2019 Deficiency",
+    "For the period from inception to March 31, 2008",
+    "(Amounts expressed in US Dollars)",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 236,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stock split 5:1",
+     "8,454",
+     "",
+     "8,454,144",
+     "",
+     "",
+     "",
+     "(8,454)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued for services rendered",
+     "200",
+     "",
+     "200,000",
+     "",
+     "",
+     "",
+     "79,800",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(107,245)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2003",
+     "",
+     "10,768",
+     "",
+     "10,767,680",
+     "",
+     "-",
+     "",
+     "96,186",
+     "",
+     "(158,214)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock split 7:1",
+     "64,606",
+     "",
+     "64,606,080",
+     "",
+     "",
+     "",
+     "(64,606)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued for services rendered",
+     "30",
+     "",
+     "30,000",
+     "",
+     "",
+     "",
+     "15,870",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares subscribed",
+     "",
+     "",
+     "",
+     "",
+     "146",
+     "",
+     "70,371",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued for services rendered",
+     "44",
+     "",
+     "43,000",
+     "",
+     "",
+     "",
+     "9,956",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(75,414)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2004",
+     "",
+     "75,448",
+     "",
+     "75,446,760",
+     "",
+     "146",
+     "",
+     "127,777",
+     "",
+     "(233,628)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued for services rendered",
+     "830",
+     "",
+     "830,000",
+     "",
+     "",
+     "",
+     "193,160",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(208,886)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2005",
+     "",
+     "76,278",
+     "",
+     "76,276,760",
+     "",
+     "146",
+     "",
+     "320,937",
+     "",
+     "(442,514)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(32,962)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2006",
+     "",
+     "76,278",
+     "",
+     "76,276,760",
+     "",
+     "146",
+     "",
+     "320,937",
+     "",
+     "(475,476)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Issued shares bought by subscription",
+     "146",
+     "",
+     "146,000",
+     "",
+     "(146)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(30,760)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2007",
+     "",
+     "76,424",
+     "",
+     "76,422,760",
+     "",
+     "-",
+     "",
+     "320,937",
+     "",
+     "(506,236)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(20,796)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as at March 31, 2008",
+     "",
+     "76,424",
+     "",
+     "76,422,760",
+     "",
+     "-",
+     "",
+     "320,937",
+     "",
+     "(527,032)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 238,
+    "end_line": 277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements",
+   "prose_after": "The Condensed Notes form an integral part of the consolidated unaudited interim financial statements\nNOTES TO INTERIM FINANCIAL STATEMENTS\nThe accompanying unaudited interim financial statements have been prepared in accordance with the instructions to Form 10-Q and do not include all the information and footnotes required by generally accepted accounting principles for complete financial statements. In the opinion of management, all adjustments (consisting of all recurring accruals considered necessary for fair presentation) have been included. Operating results for the interim periods are not necessarily indicative of the results that may be expected for the year ended December 31, 2008. Interim financial statements should be read in conjunction with the Company\u2019s annual audited financial statements.\n1.\nOrganization and Basis of Presentation\nDescription of the Business\nThe Company was incorporated on November 16, 2000 under the laws of the State of Delaware. The business purpose of the Company is to acquire and deploy green energy generation solutions that are new to the market.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 236,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document",
+     "Location"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation",
+     "Previously Filed"
+    ],
+    [
+     "3.2",
+     "Bylaws",
+     "Previously Filed"
+    ],
+    [
+     "31",
+     "Rule 13a-41(a)/15d-14(a) Certificates",
+     "Included"
+    ],
+    [
+     "32",
+     "Section 1350 Certifications",
+     "Included"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 326,
+    "end_line": 339
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "(a) Evaluation of Disclosure Controls and Procedures. Under the supervision and with the participation of our senior management, consisting of Peter Wanner, our chief executive officer and chief financial officer, we conducted an evaluation of the effectiveness of the design and operation of our disclosure controls and procedures, as defined in Rules 13a-15(e) and 15d-15(e) under the Securities Exchange Act of 1934, as amended, as of the end of the period covered by this report (the \u201cEvaluation Date\u201d). Based on this evaluation, our chief executive officer and chief financial officer concluded as of the Evaluation Date that our disclosure controls and procedures were effective such that the information relating to us, including our consolidated subsidiary, required to be disclosed in our Securities and Exchange Commission (\u201cSEC\u201d) reports (i) is recorded, processed, summarized and reported within the time periods specified in SEC rules and forms, and (ii) is accumulated and communicated to our management, including our chief executive officer and chief financial officer, as appropriate to allow timely decisions regarding required disclosure.\n(b) Changes in Internal Control over Financial Reporting. There were no changes in our internal control over financial reporting that occurred during the period covered by this report that have materially affected or are reasonably likely to materially affect our internal control over financial reporting.\n(c)\nInherent in small business is the pervasive problem of segregation of duties. Given that the Company only employs one executive officer, who is also a director, segregation of duties is not possible at this stage in the corporate lifecycle.\nPART II \u2013 OTHER INFORMATION\nItem 6. Exhibits\nExhibits:",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nFIRST NATIONAL POWER CORPORATION\nDATE: May 14, 2008\n/s/ Peter Wanner\nPeter Wanner\nChief Financial Officer",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

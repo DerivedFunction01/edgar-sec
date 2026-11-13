@@ -1,0 +1,5334 @@
+{
+ "accession": "0001185185-23-001064",
+ "cik": "0001098009",
+ "form": "10-K",
+ "filing_date": "2023-10-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "amgreat20230630_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wyoming\n\n\n\n(State or other jurisdiction of incorporation or organization)",
+     "98-0178621\n\n\n\n(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1609 W Valley Blvd Unit 338A, Alhambra, CA\n\n\n\n(Address of principal executive offices)",
+     "91803\n\n\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2023\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 000-27873\nAmerica Great Health\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (888) 988-1333\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, no par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act.\nYes [ ] No [X]\nNote \u2013 Checking the box above will not relieve any registrant required to file reports pursuant to Section 13 or 15(d) of the Exchange Act from their obligations under those Sections.\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B.",
+     "",
+     "Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Properties",
+     "7"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Legal Proceedings",
+     "7"
+    ],
+    [
+     "Item 4.",
+     "",
+     "Mine Safety Disclosures",
+     "7"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6.",
+     "",
+     "Selected Financial Data",
+     "9"
+    ],
+    [
+     "Item 7.",
+     "",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "12"
+    ],
+    [
+     "Item 8.",
+     "",
+     "Financial Statements and Supplementary Data",
+     "12"
+    ],
+    [
+     "Item 9.",
+     "",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "13"
+    ],
+    [
+     "Item 9A.",
+     "",
+     "Controls and Procedures",
+     "13"
+    ],
+    [
+     "Item 9B.",
+     "",
+     "Other Information",
+     "13"
+    ],
+    [
+     "Item 9C.",
+     "",
+     "Disclosure Regarding Foreign Jurisdictions That Prevent Inspections",
+     "13"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "",
+     "Directors, Executive Officers and Corporate Governance",
+     "14"
+    ],
+    [
+     "Item 11.",
+     "",
+     "Executive Compensation",
+     "16"
+    ],
+    [
+     "Item 12.",
+     "",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "18"
+    ],
+    [
+     "Item 13.",
+     "",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "18"
+    ],
+    [
+     "Item 14.",
+     "",
+     "Principal Accounting Fees and Services",
+     "19"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "",
+     "Exhibits, Financial Statement Schedules",
+     "20"
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "22"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 90,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No [X]\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date. The number of shares outstanding of the registrant\u2019s common stock as of August 31, 2023 was 21,107,018,148.\nFORM 10-K\nFor the Year Ended June 30, 2023\nTABLE OF CONTENTS",
+   "prose_after": "In this annual report the words \"we,\" \"us,\" \"our,\" and the \"Company\" refer to America Great Health and subsidiaries.\nFORWARD LOOKING STATEMENTS\nWhen used in this report, the words \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201ccontinue,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cintend,\u201d and similar expressions are intended to identify forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934 regarding events, conditions, and financial trends that may affect the Company\u2019s future plans of operations, business strategy, operating results, and financial position. Persons reviewing this report are cautioned that any forward-looking statements are not guarantees of future performance and are subject to risks and uncertainties and that actual results may differ materially from those included within the forward-looking statements as a result of various factors.\nStatements made in this Form 10-K that are not historical or current facts are \"forward-looking statements\" made pursuant to the safe harbor provisions of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent our best judgment as to what may occur in the future. These forward-looking statements include our plans and objectives for our future growth, including plans and objectives related to the consummation of acquisitions and future private and public issuances of our equity and debt securities. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Assumptions relating to the foregoing involve judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond our control. Although we believe that the assumptions underlying the forward-looking statements are reasonable, any of the assumptions could be inaccurate and, therefore, there can be no assurance that the forward-looking statements included in this Form 10-K will prove to be accurate. In light of the significant uncertainties inherent in the forward-looking statements included herein, you should not regard the inclusion of such information as our representation or the representation of any other person that we will achieve our objectives and plans. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended",
+     "",
+     "Bid Prices",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30,",
+     "Period",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "First Quarter",
+     "$",
+     "0.0238",
+     "$",
+     "0.0065"
+    ],
+    [
+     "",
+     "Second Quarter",
+     "$",
+     "0.0100",
+     "$",
+     "0.0006"
+    ],
+    [
+     "",
+     "Third Quarter",
+     "$",
+     "0.0120",
+     "$",
+     "0.0011"
+    ],
+    [
+     "",
+     "Fourth Quarter",
+     "$",
+     "0.0250",
+     "$",
+     "0.0011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "First Quarter",
+     "$",
+     "0.1850",
+     "$",
+     "0.0300"
+    ],
+    [
+     "",
+     "Second Quarter",
+     "$",
+     "0.2299",
+     "$",
+     "0.1010"
+    ],
+    [
+     "",
+     "Third Quarter",
+     "$",
+     "0.1649",
+     "$",
+     "0.0010"
+    ],
+    [
+     "",
+     "Fourth Quarter",
+     "$",
+     "0.0800",
+     "$",
+     "0.0002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 207,
+    "end_line": 223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "No legal proceedings are threatened or pending against us or any of our officers or directors. Further, none of our officers, directors or affiliates are parties against us or have any material interests in actions that are averse to the Company\u2019s interests.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nMarket Information\nOur common stock is currently listed on the OTC Bulletin Board under the symbol \u201cAAGH\u201d. There has been limited trading of the common stock from December 2, 2013 (Inception) through June 30, 2023. The last sale price of our common stock on June 30, 2023, was 0.0139 per share.\nThe following table sets forth the high and low transaction price for each quarter within the fiscal years ended June 30, 2023 and 2022, as provided by the NASDAQ Stock Markets, Inc. The information reflects prices between dealers, and does not include retail markup, markdown, or commissions, and may not represent actual transactions.",
+   "prose_after": "Our shares are subject to Section 15(g) and Rule 15g-9 of the Securities and Exchange Act, commonly referred to as the \u201cpenny stock\u201d rule. The rule defines penny stock to be any equity security that has a market price less than $5.00 per share, subject to certain exceptions. The rule provides that any equity security is considered to be a penny stock unless that security is:\n- registered and traded on a national securities exchange meeting specified criteria set by the SEC;\n- issued by a registered investment company;\n- excluded from the definition on the basis of price (at least $5.00 per share) or the issuer\u2019s net tangible assets.\nTrading in the penny stocks is subject to additional sales practice requirements on broker-dealers who sell penny stocks to persons other than established customers and accredited investors. Accredited investors, in general, include certain institutional investors and individuals with assets in excess of $1,000,000 or annual income exceeding $200,000 or $300,000 together with their spouse.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "remaining available for",
+     ""
+    ],
+    [
+     "",
+     "Number of securities",
+     "",
+     "",
+     "",
+     "future issuance under",
+     ""
+    ],
+    [
+     "",
+     "to be issued",
+     "",
+     "Weighted-average",
+     "",
+     "equity compensation",
+     ""
+    ],
+    [
+     "",
+     "upon exercise",
+     "",
+     "exercise price of",
+     "",
+     "plans (excluding",
+     ""
+    ],
+    [
+     "",
+     "of outstanding options,",
+     "",
+     "outstanding options,",
+     "",
+     "securities reflected",
+     ""
+    ],
+    [
+     "",
+     "warrants and rights",
+     "",
+     "warrants and rights",
+     "",
+     "in column (a))",
+     ""
+    ],
+    [
+     "Plan category",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "0",
+     "$",
+     "0.00",
+     "",
+     "0"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0",
+     "$",
+     "0.00",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "0",
+     "$",
+     "0.00",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "Number of securities",
+    "remaining available for"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 250,
+    "end_line": 266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "As of June 30, 2023, there were approximately 917 shareholders of record holding 21,107,018,148 shares of common stock. The holders of common stock are entitled to one vote for each share held of record on all matters submitted to a vote of stockholders. Holders of the common stock have no preemptive rights and no right to convert their common stock into any other securities. There are no redemption or sinking fund provisions applicable to the common stock.\nDividends\nThe Company has not paid any dividends on its common stock. The Company current intends to retain any earnings for use in its business, and therefore does not anticipate paying cash dividends in the foreseeable future.\nSecurities Authorized Under Equity Compensation Plans\nThe following table lists the securities authorized for issuance under any equity compensation plans approved by our shareholders and any equity compensation plans not approved by our shareholders as of June 30, 2023. This chart also includes individual compensation agreements.\nEQUITY COMPENSATION PLAN INFORMATION",
+   "prose_after": "Company repurchases of common stock during the year ended June 30, 2023\nNone\nPerformance Graphic\nThis item is not required to provide a performance graph since it is a \u201csmaller reporting company\u201d as defined in Exchange Act Regulation S-K Rule 10(f).\nShare issuances in year ended June 30, 2023\nAll share issuances have been previously reported.\nITEM 6. [Reserved]\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION\nForward Looking Statement Notice\nThis Current Report on Form 10-K contains forward-looking statements within the meaning of the federal securities laws. These include statements about our expectations, beliefs, intentions or strategies for the future, which we indicate by words or phrases such as \u201canticipate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cwill,\u201d \u201cwe believe,\u201d \u201cbelieves,\u201d \u201cmanagement believes\u201d and similar language. Except for the historical information contained herein, the matters discussed in this \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d and elsewhere in this report are forward-looking statements that involve risks and uncertainties. The factors listed in the section captioned \u201cRisk Factors,\u201d as well as any cautionary language in this report; provide examples of risks, uncertainties and events that may cause our actual results to differ materially from those projected. Except as may be required by law, we undertake no obligation to update any forward-looking statement to reflect events after the date of this Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position with the Company",
+     "Age",
+     "Period"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mike Wang",
+     "Chairman of the Board of Directors, President, Chief Executive Officer",
+     "68",
+     "2017 - Present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rex Chang",
+     "Director",
+     "72",
+     "2018 - Present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aihua Guo",
+     "Director",
+     "49",
+     "2020 - Present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peter Britton",
+     "Director",
+     "71",
+     "2020 - Present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jiaxin Xue",
+     "Director",
+     "47",
+     "2018 - Present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quinn Chen",
+     "Chief Financial Officer",
+     "60",
+     "2022 - Present"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 423,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "We identified material weaknesses in our ICFR primarily attributable to (i) lack of segregation of incompatible duties; and (ii) insufficient Board of Directors representation. These weaknesses are due to our inadequate staffing during the period covered by this report and our lack of working capital to hire additional staff. Management has retained an outside, independent financial consultant to record and review all financial data, as well as prepare our financial reports, in order to mitigate this weakness. Although management will periodically re-evaluate this situation, at this point it considers that the risk associated with such lack of segregation of duties and the potential benefits of adding employees to segregate such duties are not cost justified. We intend to hire additional accounting personnel to assist with financial reporting as soon as our finances will allow.\nThis annual report does not include an attestation report of our registered public accounting firm regarding ICFR. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this annual report.\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nSet forth below are the names of our directors, executive officers and significant employees of our company as of the date of this Form 10-K, their ages, all positions and offices that they hold with us, the periods during which they have served as such, and their business experience during at least the last five years.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position with the Company and Principal Occupations"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Mike Wang",
+     "Chairman of the Board of Directors, President, Chief Executive Officer and Chief Financial Officer since 2017. Mr. Wang has served as the Chief Financial Officer of our company since 2017. He has been working in the health supplements business for about 20 years. From 2012 to present, he worked as the vice-president of the American Nutrition and Health Association. From 2013 to present, he worked as the president of the Health & Beauty Group Inc. From 2016 to present, he worked as our President, Chief Executive Officer and Chief Financial Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Rex Chang",
+     "Director Mr. Rex Chang is an experienced GPA Consultant and an international trade specialist. He started in manufacturing facilities, well-trained in commercial and industrial, import-export, QC/QA, marketing development and government procurement. Mr. Chang served as Chief Executive Officer in U. S. Asia Chamber of Commerce, and Chief Executive Officer- Asian Marketing in U.S. Foods International. He also served as Chief Executive Officer of New Cathay International Development Corp. Mr. Chang is consultant to the Center for International Trade Development and Taiwan Trade Center."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Aihua Guo",
+     "Director Ms. Aihua Guo is an entrepreneur and founder of Hong Kong-based Brilliant Health Co., Ltd., which she founded in 2018. She has been the standing editor of Chinese Journals of Tissue Engineering and Aesthetic Plastic Surgery since 2018. She has also been the visiting professor of Galway Institute of Regenerative Medicine in Ireland and CEO of Pure Athesthetic Co., Ltd. of Hong Kong since 2017. From 2016 to 2018, Ms. Guo served as the business director of China Regenerative Medicine International Co., Ltd. She has been the members of British Blood Transfusion Association, Illouz Foundation France and China Plastic Surgery Association since 2015. Ms. Guo obtained her MD of Plastic Surgery in 2012 and PhD of Immunology of Transplantation and Ophthalmology in 2007."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Peter Britton",
+     "Director. Mr. Peter Britton is the founder and board chairman of Purecell Group, co-inventor of UCF (Umbilical Cord Factors) global patent, and international expert on translational cellular regenerative medicine. He is the director and chief scientist of Purcell in the development, commercialization and multiple medical applications of Purecell patented anti-aging products and technologies including UCF, Exosome, NAD+, SKQ1 and Liposome. He currently serves as the chief scientist and director of the joint-venture between Purecell and BoaoYiling Life Care Center in China, which leads the world-first officially-approved medical application and commercialization of UCF technology in the field of degenerative joint disease. He is also the founder of Hong Kong-based N Cell, a leading provider of proteomic analysis for Asian market since 2016, and has been the founding member of the Sino-Australian Stem Cell Centre of Excellence with Peking University since 2015. Mr. Peter Britton graduated with a bachelor's degree from the University of Sydney, and obtained post graduate work at the University of Bern in Switzerland."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 468
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Jiaxin Xue",
+     "Director. Mr. Jiaxin Xue is graduate of Henan Medical University. He also obtain Doctor degree in Natural Medicine from American Naturopathic University, Master's degree in Social Medicine and Health Management from Peking Union Medical College, Mr. Xue obtained PhD degree in Social Economics, School of Philosophy and Sociology from Beijing Normal University. He is an experienced specialist involves comprehensive fields such as medical treatment, medicine, health, rehabilitation, and elderly care. From 2007 to 2008, Mr. Xue was the Deputy Director of the Chinese Red Cross Rescue Training Department, Vice President of the Business Development Department of Haihong Pharmaceutical Holdings; in 2009 Mr. Xue founded Mai Dingsheng International Medical Investment Service Agency. From 2014 to the present, Mr. Xue is the Deputy Dean of the International College of Natural Therapy, Executive Vice President of the Zhongguancun Industry Integration and Transformation Promotion Association and Chairman of the International Medical Care Industry Committee, Deputy Director of the Chronic Disease Prevention Fund Management Committee of the China Medical and Health Development Foundation, Chinese Nationality Deputy Director of the Internet + Medical Work Committee of the Health Association, Deputy Director of the Clinical Medicine Center of the Research Institute of the National Health Commission."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Quinn Chen",
+     "CFO. Mr. Quinn Chen has more than two decades of practice experience in public and private accounting where he specialized in both private and public company financial audits, oversight over financial reporting, cash management, tax compliance, and mergers and acquisitions. From October 2018 through present date, Mr. Chen was the Chief Financial Officer of NuOrganic Cosmetics. From September 2014 \u2013July 2019, he was a financial controller at Gardiner & Theobald, an independent global consultancy to the construction and property industry. At the same time, he served as the chief tax consultant of real estate investments at 42nd Street Realty, a well- known Times Square Realty Company of New York City, and provided consulting service in asset management and tax planning of trusts and estates to high-profile. Prior to that, Mr. Chen spent about ten years as an auditor and tax accountant with several public accounting firms in the New York City metropolitan area. Mr. Chen holds a Master of Business Administration from Baruch College, Zicklin School of Business."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "All our directors hold office until the next annual meeting of our shareholders or until their successors have been elected and qualified. The executive officers of our company are appointed by our board of directors and hold office until their death, resignation, or removal from office.\nFamily Relationships\nThere is no family relationship among any of our officers or directors.\nCode of Ethics\nThe Company has not adopted a code of ethics which applies to the chief executive officer, or principal financial and accounting officer, because of our current low level of operations as a public entity. The Company intends to adopt a code of ethics in the near future.\nAudit Committee Financial Expert\nThe Company does not have either an Audit Committee or a financial expert on the BOD. The BOD believes that obtaining the services of an audit committee financial expert is not economically rational at this time in light of the costs associated with identifying and retaining an individual who would qualify as an audit committee financial expert, the limited scope of our operations and the relative simplicity of our financial statements and accounting procedures.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Incentive",
+     "",
+     "Nonqualified",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Option",
+     "",
+     "Plan",
+     "",
+     "Deferred",
+     "",
+     "All Other",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Awards",
+     "",
+     "Awards",
+     "",
+     "Compensation",
+     "",
+     "Compensation",
+     "",
+     "Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Position",
+     "Year",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Mike Q. Wang",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "President/Executive",
+     "2023",
+     "$",
+     "43,800",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "43,8001"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "40,711",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "40,711"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quinn Chen",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CFO",
+     "2023",
+     "$",
+     "8,308",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "8,308"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "13,846",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "13,846"
+    ]
+   ],
+   "caption_stack": [
+    "Non-Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 515,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act requires our executive officers and directors and persons who own more than 10% of a registered class of our equity securities to file with the SEC initial statements of beneficial ownership, reports of changes in ownership and annual reports concerning their ownership of our common stock and other equity securities, on Form 3, 4 and 5 respectively. Executive officers, directors and greater than 10% shareholders are required by the SEC regulations to furnish our Company with copies of all Section 16(a) reports they file.\nBased solely on our review of the copies of such reports received by us and on written representations by our officers and directors regarding their compliance with the applicable reporting requirements under Section 16(a) of the Exchange Act, On the fiscal year ended June 30, 2023, two new board members, Mr. Peter Britton, Ms. Aihua Guo did not file Forms 3.\nITEM 11. EXECUTIVE COMPENSATION\nExecutive Officers and Directors\nThe following tables set forth certain information about compensation paid, earned or accrued for services by (i) the Company\u2019s Chief Executive Officer and Chief Financial Officer in the years ended June 30, 2023 and 2022 (\u201cNamed Executive Officers\u201d):",
+   "prose_after": "Employment Contracts\nWe currently do not have any written employment agreements with our executive officers.\nDirector Compensation\nNone of our directors was compensated for their services to the board other than Mr. Rex Chang who was paid $- and $50,935 respectively for the years ended June 30, 2023 and 2022.\nDirector Qualifications\nDirectors are responsible for overseeing the Company\u2019s business consistent with their fiduciary duty to the shareholders. This significant responsibility requires highly skilled individuals with various qualities, attributes and professional experience. Our BOD believes that there are general requirements for service on the BOD that are applicable to directors and that there are other skills and experience that should be represented on the BOD as a whole but not necessarily by each director. The BOD considers the qualifications of director and director candidates individually and in the broader context of the BOD\u2019s overall composition and the Company\u2019s current and future needs.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 560,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "High level of financial literacy",
+     "",
+     "Mike Q. Wang",
+     "Quinn Chen",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "X",
+     ""
+    ],
+    [
+     "Extensive knowledge of the Company\u2019s business",
+     "",
+     "X",
+     "X",
+     ""
+    ],
+    [
+     "Marketing/Marketing related technology experience",
+     "",
+     "X",
+     "",
+     ""
+    ],
+    [
+     "Relevant Chief Executive/President or like experience",
+     "",
+     "X",
+     "X",
+     ""
+    ],
+    [
+     "Corporate Governance expertise",
+     "",
+     "X",
+     "X",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 551,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The BOD has identified particular qualifications, attributes, skills and experience that are important to be represented on the board as a whole, in light of the Company\u2019s current needs and its business priorities. The BOD believes that it should include some directors with a high level of financial literacy and some directors who possess relevant business experience as a Chief Executive Officer or a President or like position. Marketing is the core focus of our business, and the Company seeks to develop and deploy the world\u2019s most innovative and effective marketing and technology. Therefore, the Board believes that marketing and technology experience should be represented on the BOD. Since the Company is involved in the healthcare business, the Company\u2019s business also requires compliance with a variety of regulatory requirements and relationships with various governmental entities. Therefore, the BOD believes that governmental, political, or diplomatic expertise should be represented on the Board.\nSet forth below are a chart and a narrative disclosure that summarize the specific qualifications, attributes, skills and experiences described above. An \u201cX\u201d in the chart below indicates that the item is a specific reason that the director has been nominated to serve on the Company\u2019s Board. The lack of an \u201cX\u201d for a particular qualification does not mean that the director does not possess that qualification or skill. Rather, an \u201cX\u201d indicates a specific area of focus or expertise of a director on which the BOD currently relies.",
+   "prose_after": "Directors or Executive Officers involved in Bankruptcy or Criminal Proceedings\nTo our knowledge, during the last ten years, none of our directors and executive officers (including those of our subsidiaries), has:\n\u25cf Had a bankruptcy petition filed by or against any business of which such person was a general partner or executive officer either at the time of the bankruptcy or within two years prior to that time.\n\u25cf Been convicted in a criminal proceeding or been subject to a pending criminal proceeding, excluding traffic violations and other minor offenses.\n\u25cf Been subject to any order, judgment, or decree, not subsequently reversed, suspended or vacated, of any court of competent jurisdiction, permanently or temporarily enjoining, barring, suspending or otherwise limiting his involvement in any type of business, securities or banking activities.\n\u25cf Been found by a court of competent jurisdiction (in a civil action), the SEC, or the Commodities Futures Trading Commission to have violated a federal or state securities or commodities law, and the judgment has not been reversed, suspended or vacated.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 560,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Amount and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "nature of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "beneficial",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Office",
+     "owner (1)",
+     "",
+     "of class",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mike Q. Wang",
+     "Chief Executive Officer, Director",
+     "",
+     "999,171,990",
+     "",
+     "4.73",
+     "%"
+    ],
+    [
+     "Rex Chang",
+     "Director",
+     "",
+     "200,000,000",
+     "",
+     "0.95",
+     "%"
+    ],
+    [
+     "Aihua Guo",
+     "Director",
+     "",
+     "311,797,747",
+     "",
+     "1.48",
+     "%"
+    ],
+    [
+     "Peter Britton",
+     "Director",
+     "",
+     "--",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "Jianxin Xue",
+     "Director",
+     "",
+     "627,000,000",
+     "",
+     "2.97",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All officer and directors as a group (5 person)",
+     "N/A",
+     "",
+     "2,137,969,737",
+     "",
+     "10.13",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Amount and",
+    "nature of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf meeting separately with the independent auditors to discuss critical accounting policies, management letters, recommendations on internal controls, the auditor\u2019s engagement letter and independence letter and other material written communications between the independent auditors and the management.\nOur BOD is responsible for approving all related party transactions. We have not adopted written policies and procedures specifically for related person transactions.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nBeneficial Ownership\nThe following table sets forth, as of the date of this report the outstanding common stock of the Company owned of record or beneficially by each person who owned of record, or was known by the Company to own beneficially, more than 5% of the Company\u2019s 21,107,081,148 shares of common stock issued and outstanding, and the name and shareholdings of each director and all of the executive officers and directors as a group.\nUnless otherwise indicated in the footnotes to the following table, each person named in the table has sole voting and investment power and that person\u2019s address is c/o 1609 W Valley Blvd., Unit 338A, Alhambra, CA 91803:\nCERTAIN BENEFICIAL OWNERS",
+   "prose_after": "(1) Except as otherwise noted, shares are owned beneficially and of record, and such record shareholder has sole voting, investment, and dispositive power.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nDuring the year ended June 30, 2023, the Company's current majority shareholder advanced $224,423 to the Company as working capital and the Company repaid $373,140 to the shareholder. As of June 30, 2023 and 2022, the Company owed its current majority shareholder and other related $425,142 and $573,859 respectively. The advances are non-interest bearing and are due on demand.\nDirector Independence\nCurrently, the Company does not have any independent directors. Since the Company\u2019s common stock is not currently listed on a national securities exchange, we have used the definition of \u201cindependence\u201d of The NASDAQ Stock Market to make this determination.\nUnder NASDAQ Listing Rule 5605(a)(2), an \"independent director\" is a \"person other than an officer or employee of the company or any other individual having a relationship which, in the opinion of the company's board of directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\"",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of Services Rendered",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "36,500",
+     "$",
+     "120,158"
+    ],
+    [
+     "Audit-Related Fees",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "Currently, the Company does not have any independent directors. Since the Company\u2019s common stock is not currently listed on a national securities exchange, we have used the definition of \u201cindependence\u201d of The NASDAQ Stock Market to make this determination.\nUnder NASDAQ Listing Rule 5605(a)(2), an \"independent director\" is a \"person other than an officer or employee of the company or any other individual having a relationship which, in the opinion of the company's board of directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\"\nWe do not currently have a separately designated audit, nominating or compensation committee. However, we do intend to comply with the independent director and committee composition requirements in the future.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following table sets forth the fees paid by the Company for professional services rendered for the audits of the annual financial statements and fees billed for other services rendered by its prior principal accountant, WWC, P.C. and by its current principal accountant, Gries & Associates LLC:",
+   "prose_after": "Pre-approval Policies\nWe do not have a standing audit committee currently serving and as a result our BOD performs the duties of an audit committee. Our BOD evaluates and approves, in advance, the scope and cost of the engagement of an accounting firm before the accounting firm renders audit and non-audit services. We do not rely on pre-approval policies and procedures.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) (1) Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm Gries & Associates, LLC (PCAOB ID # 6778)",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets as of June 30, 2023 and 2022",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended June 30, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Deficit for the Years Ended June 30, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended June 30, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Pre-approval Policies\nWe do not have a standing audit committee currently serving and as a result our BOD performs the duties of an audit committee. Our BOD evaluates and approves, in advance, the scope and cost of the engagement of an accounting firm before the accounting firm renders audit and non-audit services. We do not rely on pre-approval policies and procedures.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) (1) Financial Statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Gries & Associates, LLC\n\n\n\nCertified Public Accountants\n\n\n\n501 S. Cherry Street, Suite 1100\n\n\n\nDenver, Colorado 80246"
+    ]
+   ],
+   "caption_stack": [
+    "Gries & Associates, LLC\n\n\n\nCertified Public Accountants\n\n\n\n501 S. Cherry Street, Suite 1100\n\n\n\nDenver, Colorado 80246"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders American Great Health and Subsidiaries\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of American Great Health and Subsidiaries. (the Company) as of June 30, 2023, and the related statement of operations, stockholders\u2019 deficit and cash flows for the period then ended and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of June 30, 2023, and the results of its operations and its cash flows for each of the period then ended in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of June 30,",
+     "",
+     "",
+     "As of June 30,",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "54,150",
+     "",
+     "$",
+     "62,643",
+     ""
+    ],
+    [
+     "Account receivable, net",
+     "",
+     "-",
+     "",
+     "",
+     "918",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "108,351",
+     "",
+     "",
+     "116,060",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advance to supplier",
+     "",
+     "16,964",
+     "",
+     "",
+     "16,964",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "179,465",
+     "",
+     "",
+     "196,585",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use asset, net",
+     "",
+     "41,918",
+     "",
+     "",
+     "93,886",
+     ""
+    ],
+    [
+     "Due from the related parties",
+     "",
+     "8,218",
+     "",
+     "",
+     "8,218",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "11,836",
+     "",
+     "",
+     "13,836",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "57,692",
+     "",
+     "",
+     "23,618",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "299,129",
+     "",
+     "$",
+     "336,143",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expense",
+     "$",
+     "1,450,574",
+     "",
+     "$",
+     "1,437,522",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "3,970",
+     "",
+     "",
+     "102",
+     ""
+    ],
+    [
+     "Short term loan",
+     "",
+     "705,216",
+     "",
+     "",
+     "183,932",
+     ""
+    ],
+    [
+     "Other payable",
+     "",
+     "241,784",
+     "",
+     "",
+     "334,112",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "425,142",
+     "",
+     "",
+     "573,859",
+     ""
+    ],
+    [
+     "Deferred income",
+     "",
+     "223,331",
+     "",
+     "",
+     "157,000",
+     ""
+    ],
+    [
+     "Lease liability - current",
+     "",
+     "41,918",
+     "",
+     "",
+     "70,895",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "3,091,935",
+     "",
+     "",
+     "2,757,422",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability \u2013 non-current",
+     "",
+     "-",
+     "",
+     "",
+     "22,991",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "609,892",
+     "",
+     "",
+     "384,073",
+     ""
+    ],
+    [
+     "Long term loan",
+     "",
+     "1,123,138",
+     "",
+     "",
+     "1,032,138",
+     ""
+    ],
+    [
+     "Total Non-Current liabilities",
+     "",
+     "1,733,030",
+     "",
+     "",
+     "1,439,202",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "4,824,965",
+     "",
+     "",
+     "4,196,624",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable, convertible preferred stock, 10,000,000 shares authorized:\n\n\n\nSeries A voting preferred stock, zero shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, no par value, unlimited shares authorized;\n\n\n\n21,107,018,148 and 21,090,218,148 shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "4,732,477",
+     "",
+     "",
+     "4,619,991",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "(500)",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(9,183,110)",
+     "",
+     "",
+     "(8,421,849)",
+     ""
+    ],
+    [
+     "Total America Great Health stockholder\u2019s deficit",
+     "",
+     "(4,451,133)",
+     "",
+     "",
+     "(3,801,698)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "(74,703)",
+     "",
+     "",
+     "(58,783)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL SHAREHOLDERS' DEFICIT",
+     "",
+     "(4,525,836)",
+     "",
+     "",
+     "(3,860,481)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "$",
+     "299,129",
+     "",
+     "$",
+     "336,143",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "As described in Note 1,8 and 9 to the consolidated financial statements, the Company issued 545,000,000 shares to acquire 51% of Purecell\u2019s equity interest. Management reviews its equity investment in Purecell and accounted for under the equity methods because the Company does not have significant control over Purecell. The Company hired an external valuation firm to perform 409A valuation as of the acquisition date to determine the fair value of the Company\u2019s common share. The share was valued at $0.00001 per share.\nThe principal considerations for our determination that performing procedures relating to the fair value of the investment in Purecell is a critical audit matter are there was significant judgment by management. This in turn led to a high degree of auditor judgment, subjectivity and effort in performing procedures.\nAddressing the matter involved performing procedures and evaluating audit evidence in connection with forming our overall opinion on the consolidated financial statements. These procedures included(i) evaluating the appropriateness of comparable market value and (ii) evaluating the reasonableness of cost to recreate a similar company.\n/s/ TAAD, LLP\nWe have served as the Company\u2019s auditor from 2020 through 2022, and we previously served as the Company\u2019s auditor from 2016 through 2018\nDiamond Bar, California\nJanuary 20, 2022\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and\nComprehensive Income",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 764,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "204,308",
+     "",
+     "$",
+     "104,648",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "35,720",
+     "",
+     "",
+     "1,588,453",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "168,588",
+     "",
+     "",
+     "(1,483,805)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling expense",
+     "",
+     "3,999",
+     "",
+     "",
+     "86,316",
+     ""
+    ],
+    [
+     "General and administrative expense",
+     "",
+     "657,233",
+     "",
+     "",
+     "3,163,977",
+     ""
+    ],
+    [
+     "",
+     "",
+     "661,232",
+     "",
+     "",
+     "3,250,293",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(492,644)",
+     "",
+     "",
+     "(4,734,098)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "26",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(319,705)",
+     "",
+     "",
+     "(190,916)",
+     ""
+    ],
+    [
+     "Loss on equity investment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "34,983",
+     "",
+     "",
+     "73",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(284,696)",
+     "",
+     "",
+     "(190,838)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(777,340)",
+     "",
+     "",
+     "(4,924,936)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(777,340)",
+     "",
+     "$",
+     "(4,924,936)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest share of loss",
+     "",
+     "15,920",
+     "",
+     "",
+     "58,783",
+     ""
+    ],
+    [
+     "Net loss attributed to the Company",
+     "",
+     "(761,420)",
+     "",
+     "",
+     "(4,866,153)",
+     ""
+    ],
+    [
+     "Foreign currency transaction",
+     "",
+     "500",
+     "",
+     "",
+     "(160)",
+     ""
+    ],
+    [
+     "Comprehensive income or loss",
+     "",
+     "(760,920)",
+     "",
+     "",
+     "(4,866,313)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED-AVERAGE COMMON SHARES OUTSTANDING\n\n\n\nBASIC AND DILUTED",
+     "",
+     "21,093,402,806",
+     "",
+     "",
+     "21,090,049,276",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 844,
+    "end_line": 893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and\nComprehensive Income",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Changes in Shareholders' Deficit\nFor the Years ended June 30, 2023 and 2022",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "deficit",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "during",
+     "",
+     "",
+     "controlling",
+     "",
+     "",
+     "comprehensive",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amt",
+     "",
+     "Shares",
+     "",
+     "Amt",
+     "",
+     "Capital",
+     "",
+     "development",
+     "",
+     "",
+     "interest",
+     "",
+     "",
+     "income",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2021",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "21,070,866,399",
+     "",
+     "-",
+     "",
+     "3,087,869",
+     "",
+     "(3,555,696)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(467,827)",
+     ""
+    ],
+    [
+     "Issuance of common stock for debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "6,221,840",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock for equity investment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,300,000",
+     "",
+     "-",
+     "",
+     "97,500",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "97,500",
+     ""
+    ],
+    [
+     "Issuance of common stock for compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "11,829,909",
+     "",
+     "-",
+     "",
+     "1,361,133",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,361,133",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "11,893",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "11,893",
+     ""
+    ],
+    [
+     "Gain/loss on exchange rate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "160",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "Original issue discount on debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "61,596",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "61,596",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,866,153)",
+     "",
+     "",
+     "(58,783)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,924,936)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2022",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "21,090,218,148",
+     "$",
+     "-",
+     "$",
+     "4,619,991",
+     "$",
+     "(8,421,849)",
+     "",
+     "$",
+     "(58,783)",
+     "",
+     "$",
+     "160",
+     "",
+     "$",
+     "(3,860,481)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2022",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "21,090,218,148",
+     "",
+     "-",
+     "$",
+     "4,619,991",
+     "$",
+     "(8,421,849)",
+     "",
+     "$",
+     "(58,783)",
+     "",
+     "$",
+     "160",
+     "",
+     "$",
+     "(3,860,481)",
+     ""
+    ],
+    [
+     "Issuance of common stock for debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,600,000",
+     "",
+     "-",
+     "",
+     "26,200",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "26,200",
+     ""
+    ],
+    [
+     "Issuance of common stock for equity investment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock for compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,200,000",
+     "",
+     "-",
+     "",
+     "65,880",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "65,880",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,205",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,205",
+     ""
+    ],
+    [
+     "Gain/loss on exchange rate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "159",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(659)",
+     "",
+     "",
+     "(500)",
+     ""
+    ],
+    [
+     "Original issue discount on debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,200",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,200",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(761,420)",
+     "",
+     "",
+     "(15,920)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(777,340)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2023",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "21,107,018,148",
+     "$",
+     "-",
+     "$",
+     "4,732,477",
+     "$",
+     "(9,183,110)",
+     "",
+     "$",
+     "(74,703)",
+     "",
+     "$",
+     "(499)",
+     "",
+     "$",
+     "(4,525,836)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 901,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Changes in Shareholders' Deficit\nFor the Years ended June 30, 2023 and 2022",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(777,340)",
+     "",
+     "$",
+     "(4,924,936)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "10,346",
+     "",
+     "",
+     "5,905",
+     ""
+    ],
+    [
+     "Original issue discount on debt",
+     "",
+     "15,200",
+     "",
+     "",
+     "61,596",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "-",
+     "",
+     "",
+     "1,361,133",
+     ""
+    ],
+    [
+     "Financing cost",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on equity investment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "5,205",
+     "",
+     "",
+     "11,893",
+     ""
+    ],
+    [
+     "Changes in operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Account receivable",
+     "",
+     "919",
+     "",
+     "",
+     "(918)",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "-",
+     "",
+     "",
+     "61,771",
+     ""
+    ],
+    [
+     "Other long term asset",
+     "",
+     "2,000",
+     "",
+     "",
+     "(13,138)",
+     ""
+    ],
+    [
+     "Other short term asset",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "7,709",
+     "",
+     "",
+     "(108,211)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expense",
+     "",
+     "13,050",
+     "",
+     "",
+     "1,380,314",
+     ""
+    ],
+    [
+     "Customer advances",
+     "",
+     "66,331",
+     "",
+     "",
+     "157,000",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "(7,863)",
+     "",
+     "",
+     "194,318",
+     ""
+    ],
+    [
+     "Other payable",
+     "",
+     "(88,459)",
+     "",
+     "",
+     "333,415",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities from continuing operations",
+     "",
+     "(752,902)",
+     "",
+     "",
+     "(1,479,858)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(752,902)",
+     "",
+     "",
+     "(1,479,858)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(44,420)",
+     "",
+     "",
+     "(16,851)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(44,420)",
+     "",
+     "",
+     "(16,851)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "92,080",
+     "",
+     "",
+     "97,500",
+     ""
+    ],
+    [
+     "Short term loan",
+     "",
+     "521,284",
+     "",
+     "",
+     "183,932",
+     ""
+    ],
+    [
+     "Long term loan",
+     "",
+     "324,682",
+     "",
+     "",
+     "639,734",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "(148,718)",
+     "",
+     "",
+     "250,109",
+     ""
+    ],
+    [
+     "Repayment to related party",
+     "",
+     "-",
+     "",
+     "",
+     "(8,219)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "789,328",
+     "",
+     "",
+     "1,163,056",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "(7,994)",
+     "",
+     "",
+     "(333,653)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash beginning of period",
+     "",
+     "62,643",
+     "",
+     "",
+     "396,136",
+     ""
+    ],
+    [
+     "Effect of foreign currency translation",
+     "",
+     "(499)",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "Cash end of period",
+     "$",
+     "54,150",
+     "",
+     "$",
+     "62,643",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash transactions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for equity investment",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 1002
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n(FORMERLY KNOWN AS CROWN MARKETING)\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nJUNE 30, 2023 AND 2022\nNOTE 1 \u2013 NATURE OF BUSINESS\nHistory and Organization\nAmerica Great Health, formerly Crown Marketing, is a Wyoming corporation (the \"Company\"). A change of control of the Company was completed on January 19, 2017 from Jay Hooper, the former officer and director of the Company and its former majority shareholder. Control was obtained by the sale of 16,155,746,000 shares of Company common stock from Mr. Hooper to an investor group led by Mike Q. Wang. In connection with the change of control, the Company sold to its former majority shareholder a subsidiary for $100 and another subsidiary in exchange for the cancellation of all payables and accrued expenses. After December 31, 2016, the Company\u2019s operations are determined and structured by the new investor group. As such, the Company accounted for all of its assets, liabilities and results of operations up to January 1, 2017 as discontinued operations.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1004,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Attributable",
+     ""
+    ],
+    [
+     "",
+     "Place of",
+     "Equity",
+     ""
+    ],
+    [
+     "Name of Subsidiary",
+     "Incorporation",
+     "Interest %",
+     ""
+    ],
+    [
+     "America Great Health in California",
+     "USA",
+     "",
+     "100"
+    ],
+    [
+     "GOF Biotechnologies in California",
+     "USA",
+     "",
+     "75"
+    ],
+    [
+     "International Institute of Great Health in California",
+     "USA",
+     "",
+     "100"
+    ],
+    [
+     "Nutrature Health LLC in California",
+     "USA",
+     "",
+     "100"
+    ],
+    [
+     "Sijinsai in China",
+     "CHINA",
+     "",
+     "60"
+    ],
+    [
+     "US-China Mega Beauty Health Industry Development Co., LTD",
+     "CHINA",
+     "",
+     "100"
+    ]
+   ],
+   "caption_stack": [
+    "Attributable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Our cash needs for the 12 months ended June 30, 2023 were primarily met by loans and advances from the current majority shareholder. As of June 30, 2023, we had a cash balance of $54,150. We intend to finance operating costs over the next twelve months with existing cash on hand and advance from the current majority shareholder.\nNOTE 2 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe accompanying CFS were prepared in conformity with accounting principles generally accepted in the United States of America (\u201cUS GAAP\u201d).\nBasis of Consolidation\nThe Consolidated Financial Statements includes the accounts of the Company and its current wholly owned subsidiaries, America Great Health in California (100%), GOF Biotechnologies in California (75%), International Institute of Great Health in California (100%), Nutrature Health LLC in California (100%), Sijinsai in China (60%), and US-China Mega Beauty Health Industry Development Co., LTD, (100%). Intercompany transactions and accounts were eliminated in consolidation.\nThe following table depicts the identity of the Company\u2019s subsidiaries:",
+   "prose_after": "Estimates\nThe preparation of the financial statements in conformity with US GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, and disclosure of contingent liabilities at the date of the financial statements and the reported amounts of expenses during the reporting period. Significant estimates include accounting for potential liabilities and the assumptions made in valuing stock instruments issued for services, debt and equity investment. Actual results could differ from those estimates.\nForeign Currency Translation\nTransactions denominated in currencies other than the functional currency are translated into the functional currency at the exchange rates prevailing at the dates of the transaction. Monetary assets and liabilities denominated in currencies other than the functional currency are translated into the functional currency using the applicable exchange rates at the balance sheet dates. The resulting exchange differences are recorded in the statement of operations.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "Average Yearly (average rate)",
+     "2023",
+     ""
+    ],
+    [
+     "Chinese Renminbi (RMB)",
+     "RMB",
+     "6.9632"
+    ],
+    [
+     "United States dollar ($)",
+     "$",
+     "1.00"
+    ],
+    [
+     "Year Ended (Closing rate)",
+     "2023",
+     ""
+    ],
+    [
+     "Chinese Renminbi (RMB)",
+     "RMB",
+     "7.2537"
+    ],
+    [
+     "United States dollar ($)",
+     "$",
+     "1.00"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1091,
+    "end_line": 1102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "In accordance with ASC 830, \u201cTranslation of Financial Statements\u201d the subsidiary\u2019s assets and liabilities booked and recorded at the non-US local functional currency are generally translated into USD for consolidation purposes, using the exchange rate on the balance sheet date, and revenues and expenses are translated at average rates prevailing during the period. The gains and losses resulting from translation of foreign subsidiary\u2019s financial statements are recorded as a separate component of accumulated other comprehensive income within the statement of stockholders\u2019 equity.\nThe Company\u2019s reporting currency is the United States Dollar (\u201cUSD\u201d). The Company\u2019s wholly owned subsidiary of Meizhong Health Industry Development Co., Ltd. maintains its books and records in its local currency. The Chinese Yuan (\u201cRMB\u201d), which is the functional currency as being the primary currency of the economic environment in which the subsidiary operates.\nBelow is a table with foreign exchange rates used for translation:",
+   "prose_after": "Cash\nThe Company considers all highly liquid debt instruments purchased with maturity periods of three months or less to be cash equivalents. The carrying amounts reported in the accompanying balance sheet for cash and cash equivalents approximate their fair value. The Company\u2019s bank account in the United States is protected by FDIC insurance.\nThe Company\u2019s bank account in the United States is protected by FDIC insurance. As of June 30, 2023 and 2022, the Company\u2019s bank account in the United States had $4,131 and $3,194, respectively, under FDIC insurance of $250,000.\nRevenues\nRevenue from sale of goods under Topic 606, Revenue from Contracts with Customers, is recognized in a manner that reasonably reflects the delivery of the Company\u2019s products and services to customers in return for expected consideration and includes the following elements:\n\u25cf executed contract(s) with customers that the Company believes is legally enforceable;\n\u25cf identification of performance obligation in the respective contract;",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "June 30, 2022",
+     ""
+    ],
+    [
+     "Rent deposits",
+     "",
+     "11,836",
+     "",
+     "13,836"
+    ],
+    [
+     "Total",
+     "",
+     "11,836",
+     "",
+     "13,836"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OTHER ASSET"
+    }
+   },
+   "prose_before": "In December 2019, the FASB issued ASU No. 2019-12, Simplifying the Accounting for Income Taxes, as part of its initiative to reduce complexity in accounting standards. The amendments in the ASU are effective for fiscal years beginning after December 15, 2020, including interim periods therein. Early adoption of the standard is permitted, including adoption in interim or annual periods for which financial statements have not yet been issued. The Company is currently evaluating the effect, if any, that the ASU will have on its consolidated financial statements.\nOther recent accounting pronouncements issued by the FASB, including its Emerging Issues Task Force, the American Institute of Certified Public Accountants, and the Securities and Exchange Commission did not or is not believed by management to have a material impact on the Company\u2019s present or future consolidated financial statements.\nNOTE 3 \u2013 OTHER ASSET\nAs of June 30, 2023 and 2022, other receivable amounted to $11,836 and $13,836, respectively. Other receivable consists of the following:",
+   "prose_after": "NOTE 4 \u2013 RELATED PARTY TRANSACTIONS\nDuring the year ended June 30, 2023, the Company's current majority shareholder advanced $224,423 to the Company as working capital and the Company repaid $373,140 to the shareholder. As of June 30, 2023 and 2022, the Company owed its current shareholder of $389,952 and $538,669 respectively. The advances are non-interest bearing and are due on demand. Imputed interest amounted to $5,206 and $11,893 for the years ended June 30, 2023 and 2022 and was recorded as paid in capital, respectively. Other dues to the related parties are $35,190 as of June 30, 2023.\nNOTE 5 \u2013 SHORT TERM LOAN\nAs of June 31, 2023 and 2022, short term loan amounted to $705,216 and $183,932 from unrelated third parties, respectively. On September 15, 2022, the Company paid interest of $3,178 on two short term loans of $50,000 due on July 10, 2022 and $10,000 due on August 1, 2022. The Company then re-entered an agreement of a new short-term loan of $60,000. The loan has an annual interest rate of 18% and the principal and interest are due on February 28, 2023. On January 13, 2023, the Company paid interest of $4,175 on an early-withdrew long-term loan of $100,000. On January 24, 2023, the Company paid interest of $3,178 on a short-term loan of $60,000. On March 2, 2023, the Company paid a first monthly installment of $667 interest on a 7-month short-term loan of $80,000. On September 15, 2022, the Company paid interest of $3,616 on two short term loans, each with $50,000 due on July 26, 2022, and August 1, 2022, and paid $20,000 of principal in January 2023. The Company then re-entered an agreement of a new short-term, interest free loan of $80,000. The principal is due on February 28, 2023. The Company will issue 1,600,000 shares of the Company stocks to the party as a reward. These shares were issued on April 18, 2023. The third loan amount is $2,871 which has an 8-month short term. The latest loan occurred on November 2, 2022, the Company entered an agreement of short-term loan of $25,000. The Company will repay $37,475, with a fixed repayment of $329 every business day from November 10, 2022.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Principal",
+     "",
+     "Accrued interest",
+     "",
+     "Balance",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Received long term loan on April 27, 2021",
+     "$",
+     "200,000",
+     "$",
+     "87,014",
+     "$",
+     "287,014"
+    ],
+    [
+     "Received long term loan on June 3, 2021",
+     "",
+     "290,000",
+     "",
+     "120,290",
+     "",
+     "410,290"
+    ],
+    [
+     "Received long term loan on June 4, 2021",
+     "",
+     "50,000",
+     "",
+     "20,740",
+     "",
+     "70,740"
+    ],
+    [
+     "Received long term loan on June 23, 2021",
+     "",
+     "30,000",
+     "",
+     "12,115",
+     "",
+     "42,115"
+    ],
+    [
+     "Received long term loan on July 12, 2021",
+     "",
+     "10,000",
+     "",
+     "3,934",
+     "",
+     "13,934"
+    ],
+    [
+     "Received long term loan on September 1, 2021",
+     "",
+     "60,000",
+     "",
+     "21,929",
+     "",
+     "81,929"
+    ],
+    [
+     "Received long term loan on September 22, 2021",
+     "",
+     "50,000",
+     "",
+     "17,699",
+     "",
+     "67,699"
+    ],
+    [
+     "Received long term loan on September 27, 2021",
+     "",
+     "50,000",
+     "",
+     "17,562",
+     "",
+     "67,562"
+    ],
+    [
+     "Received long term loan on September 30, 2021",
+     "",
+     "10,000",
+     "",
+     "3,496",
+     "",
+     "13,496"
+    ],
+    [
+     "Received long term loan on October 29, 2021",
+     "",
+     "12,138",
+     "",
+     "4,050",
+     "",
+     "16,188"
+    ],
+    [
+     "Received long term loan on November 9, 2021",
+     "",
+     "50,000",
+     "",
+     "16,384",
+     "",
+     "66,384"
+    ],
+    [
+     "Received long term loan on November 16, 2021",
+     "",
+     "140,000",
+     "",
+     "45,337",
+     "",
+     "185,337"
+    ],
+    [
+     "Received long term loan on November 18, 2021",
+     "",
+     "50,000",
+     "",
+     "16,134",
+     "",
+     "66,137"
+    ],
+    [
+     "Received long term loan on November 29, 2021",
+     "",
+     "20,000",
+     "",
+     "6,334",
+     "",
+     "26,334"
+    ],
+    [
+     "Received long term loan on November 30, 2021",
+     "",
+     "10,000",
+     "",
+     "3,161",
+     "",
+     "13,162"
+    ],
+    [
+     "Received long term loan on October 13, 2022",
+     "",
+     "21,000",
+     "",
+     "2,992",
+     "",
+     "23,992"
+    ],
+    [
+     "Received long term loan on March 10, 2023",
+     "",
+     "10,000",
+     "",
+     "614",
+     "",
+     "10,614"
+    ],
+    [
+     "Received long term loan on March 14, 2023",
+     "",
+     "10,000",
+     "",
+     "591",
+     "",
+     "10,591"
+    ],
+    [
+     "Received long term loan on March 16, 2023",
+     "",
+     "10,000",
+     "",
+     "581",
+     "",
+     "10,581"
+    ],
+    [
+     "Received long term loan on April 17, 2023",
+     "",
+     "30,000",
+     "",
+     "1,216",
+     "",
+     "31,216"
+    ],
+    [
+     "Received long term loan on May 9, 2023",
+     "",
+     "10,000",
+     "",
+     "285",
+     "",
+     "10,285"
+    ],
+    [
+     "Total",
+     "$",
+     "1,123,138",
+     "$",
+     "402,458",
+     "$",
+     "1,525,600"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1194,
+    "end_line": 1224
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 LONG TERM LOAN"
+    }
+   },
+   "prose_before": "As of June 31, 2023 and 2022, short term loan amounted to $705,216 and $183,932 from unrelated third parties, respectively. On September 15, 2022, the Company paid interest of $3,178 on two short term loans of $50,000 due on July 10, 2022 and $10,000 due on August 1, 2022. The Company then re-entered an agreement of a new short-term loan of $60,000. The loan has an annual interest rate of 18% and the principal and interest are due on February 28, 2023. On January 13, 2023, the Company paid interest of $4,175 on an early-withdrew long-term loan of $100,000. On January 24, 2023, the Company paid interest of $3,178 on a short-term loan of $60,000. On March 2, 2023, the Company paid a first monthly installment of $667 interest on a 7-month short-term loan of $80,000. On September 15, 2022, the Company paid interest of $3,616 on two short term loans, each with $50,000 due on July 26, 2022, and August 1, 2022, and paid $20,000 of principal in January 2023. The Company then re-entered an agreement of a new short-term, interest free loan of $80,000. The principal is due on February 28, 2023. The Company will issue 1,600,000 shares of the Company stocks to the party as a reward. These shares were issued on April 18, 2023. The third loan amount is $2,871 which has an 8-month short term. The latest loan occurred on November 2, 2022, the Company entered an agreement of short-term loan of $25,000. The Company will repay $37,475, with a fixed repayment of $329 every business day from November 10, 2022.\nNOTE 6 \u2013 LONG TERM LOAN\nAs of June 30, 2023 and 2022, long term loan amounted to $1,525,600 and $1,221,892, respectively. The loan has an annual interest rate of 20%. The principal and interest are due in five years. Interest expenses incurred for the years ended June 30, 2023 and 2022 amounted to $402,458 and $189,754, respectively.\nAs of June 30, 2023, long term loan consisted of the following:",
+   "prose_after": "On May 5, 2021, the Company issued 10,000,000 shares to an unrelated party as collateral for a loan of $200,000. The loan has an annual interest rate of 20%. The principal and interest are due in five years. The shares issued are restricted and will be returned to the Company after the principal and interest are paid in full. During the investment period, if the stock can be normally traded in the stock market, and the market value of this part of AAGH stock exceeds the principal and interest of loan for 30 consecutive trading days. The remaining principal and interest of loan will be forgiven. The Company received the proceed on April 27, 2021.\nOn May 31, 2021, the Company agreed 500,000 shares to an unrelated party as collateral for loans of $50,000. The loan has an annual interest rate of 20%. The principal and interest are due in five years. The shares issued are restricted and will be returned to the Company after the principal and interest are paid in full. During the investment period, if the stock can be normally traded in the stock market, and the market value of this part of AAGH stock exceeds the principal and interest of loan for 30 consecutive trading days. The remaining principal and interest of loan will be forgiven. The Company received the proceed $20,000 on June 3, 2021 and $30,000 on June 23, 2021 and issued 200,000 shares on June 18, 2021 and 240,000 shares on October 28, 2021 with 60,000 shares unissued.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1226,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "From date of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "investment to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "06/30/2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "270,931",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "246,441",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(307,359)",
+     ""
+    ],
+    [
+     "51% share",
+     "",
+     "(156,753)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "From date of",
+    "equity",
+    "investment to",
+    "06/30/2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1325,
+    "end_line": 1337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 EQUITY INVESTMENT"
+    }
+   },
+   "prose_before": "On May 11, 2021, Aussie Produce PTY LTD (\u201cAP\u201d) signed agreement with Purecell to invest $2,340,000 in exchange of 6% of total outstanding shares of Purecell and 35,000,000 shares of the Company owned by Purecell. Purecell will issue 6% shares to AP in exchange for the $2,340,000 investment. In addition, Purecell will issue 68,372 shares to AP and issue 71,163 shares to the Company. The Company will also issue additional 31,212,000 shares to Purecell. Purecell will use the proceeds to acquire VERITA PHARMA, which is a medicine factory. In order to complete the change of 35,000,000 shares of the Company held by Purecell to AP within the agreed time limit, and to meet the conditions that AP investment funds are in place, the Company and Purecell agreed through consultation that in order to gain time, the Company will issue an additional 35,000,000 shares for AP. On May 26, 2021, the Company issued 35,000,000 shares to shareholder of AP, at fair market value of $0.00001 per share.\nThe following table summarizes the income statement of Purecell.",
+   "prose_after": "The following table provides the summary of balance sheet information for Purecell.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,192,224",
+     ""
+    ],
+    [
+     "Net assets",
+     "",
+     "2,203,484",
+     ""
+    ],
+    [
+     "51% ownership",
+     "",
+     "1,231,113",
+     ""
+    ],
+    [
+     "Beginning balance of investment",
+     "",
+     "5,450",
+     ""
+    ],
+    [
+     "Loss on equity investment",
+     "",
+     "(5,450)",
+     ""
+    ],
+    [
+     "Ending balance of investment",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of June 30,",
+    "2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1340,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 EQUITY INVESTMENT"
+    }
+   },
+   "prose_before": "The following table provides the summary of balance sheet information for Purecell.",
+   "prose_after": "NOTE 10 \u2013 INCOME TAXES\nDeferred taxes represent the net tax effects of the temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes. Temporary differences result primarily from the recording of tax benefits of net operating loss carry forwards.\nAs of June 30, 2023, the Company has an insufficient history to support the likelihood of ultimate realization of the benefit associated with the deferred tax asset. Accordingly, a valuation allowance has been established for the full amount of the net deferred tax asset.\nUnder the Provisional Regulations of The People\u2019s Republic of China Concerning Income Tax on Enterprises promulgated by the PRC, which took effect on January 1, 2008, domestic and foreign companies pay a unified corporate income tax of 25%, except for a 15% corporate income tax rate for qualified high technology and science enterprises.\nThe Company\u2019s effective income tax rate differs from the amount computed by applying the federal statutory income tax rate to loss before income taxes for the years ended June 30, 2023 and 2022 as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit at federal statutory rate-US",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "State tax, net of fed effect-US",
+     "",
+     "7",
+     "%",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "Change in valuation allowance-US",
+     "",
+     "(28)",
+     "%",
+     "",
+     "(28)",
+     "%"
+    ],
+    [
+     "Income tax benefit at federal statutory rate-PRC",
+     "",
+     "25",
+     "%",
+     "",
+     "25",
+     "%"
+    ],
+    [
+     "Change in valuation allowance-PRC",
+     "",
+     "(25)",
+     "%",
+     "",
+     "(25)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1363,
+    "end_line": 1376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "Deferred taxes represent the net tax effects of the temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes. Temporary differences result primarily from the recording of tax benefits of net operating loss carry forwards.\nAs of June 30, 2023, the Company has an insufficient history to support the likelihood of ultimate realization of the benefit associated with the deferred tax asset. Accordingly, a valuation allowance has been established for the full amount of the net deferred tax asset.\nUnder the Provisional Regulations of The People\u2019s Republic of China Concerning Income Tax on Enterprises promulgated by the PRC, which took effect on January 1, 2008, domestic and foreign companies pay a unified corporate income tax of 25%, except for a 15% corporate income tax rate for qualified high technology and science enterprises.\nThe Company\u2019s effective income tax rate differs from the amount computed by applying the federal statutory income tax rate to loss before income taxes for the years ended June 30, 2023 and 2022 as follows:",
+   "prose_after": "The components of deferred taxes consist of the following at June 30, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "June 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "6,697,872",
+     "",
+     "$",
+     "5,920,531",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(6,697,872)",
+     "",
+     "",
+     "(5,920,531)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1379,
+    "end_line": 1389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of deferred taxes consist of the following at June 30, 2022 and 2021:",
+   "prose_after": "As of June 30, 2023, the Company had federal and California income tax net operating loss carryforwards of $6,697,872. These net operating losses originating in tax years beginning prior to Jan. 1, 2018, will begin to expire 20 years from the date the tax returns are filed. The net operating losses originating in tax years beginning after Jan. 1, 2018, will be carry forwarded indefinitely.\nNOTE 11 \u2013 LEASE\nThe Company has entered into an operating leases agreement with GKT, Alhambra, LP. The lease term of the office space is from December 1, 2020 to November 30, 2023. The current monthly rent including monthly management fee is $4,655.64. The operating lease is listed as separate line item on the Company\u2019s condensed consolidated financial statements and represent the Company\u2019s right to use the underlying asset for the lease term. The Company\u2019s obligation to make lease payments is also listed as a separate line item on the Company\u2019s condensed consolidated financial statements.\nThe Company has entered into an operating lease agreement with SoCal Industrial LLC, Irwindale. The lease term of the office space is from June 1, 2023 to May 31, 2024 after the prior lease expired on May 31, 2023. The current monthly rent including monthly management fee is $1,764.00. The operating lease is listed as a separate line item on the Company\u2019s condensed consolidated financial statements and represents the Company\u2019s right to use the underlying asset for the lease term. The Company\u2019s obligation to make lease payments is also listed as a separate line item on the Company\u2019s condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for operating lease liabilities",
+     "$",
+     "75,706",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term",
+     "",
+     "0.64",
+     ""
+    ],
+    [
+     "Weighted-average discount rate",
+     "",
+     "5",
+     "%"
+    ],
+    [
+     "Minimum future lease payments",
+     "$",
+     "42,191",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1404,
+    "end_line": 1413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 LEASE"
+    }
+   },
+   "prose_before": "The Company has entered into an operating lease agreement with SoCal Industrial LLC, Irwindale. The lease term of the office space is from June 1, 2023 to May 31, 2024 after the prior lease expired on May 31, 2023. The current monthly rent including monthly management fee is $1,764.00. The operating lease is listed as a separate line item on the Company\u2019s condensed consolidated financial statements and represents the Company\u2019s right to use the underlying asset for the lease term. The Company\u2019s obligation to make lease payments is also listed as a separate line item on the Company\u2019s condensed consolidated financial statements.\nOperating lease right-of-use assets and liabilities commencing after December 1, 2020 are recognized at commencement date based on the present value of lease payments over the lease term. For the year ended June 30, 2023, the Company recognized approximately $36,556 in total lease costs.\nBecause the rate implicit in each lease is not readily determinable, the Company uses its incremental borrowing rate to determine the present value of the lease payments.\nInformation related to the Company\u2019s operating ROU assets and related lease liabilities are as follows:",
+   "prose_after": "The following table presents the amortization of the Company\u2019s lease liabilities under ASC 842 for each of the following years ending June 30:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024",
+     "$",
+     "36,899",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "3,528",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "1,764",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total minimum payments",
+     "",
+     "42,191",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "(273)",
+     ""
+    ],
+    [
+     "Total lease liability",
+     "",
+     "41,918",
+     ""
+    ],
+    [
+     "Less: short-term lease liability",
+     "",
+     "(41,918)",
+     ""
+    ],
+    [
+     "Long-term lease liability",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1416,
+    "end_line": 1431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 LEASE"
+    }
+   },
+   "prose_before": "The following table presents the amortization of the Company\u2019s lease liabilities under ASC 842 for each of the following years ending June 30:",
+   "prose_after": "NOTE 12 \u2013 CONCENTRATION\nMajor vendors\nFor the year ended June 30, 2023, no vendors accounted for 10% or more of the Company\u2019s purchases and its outstanding accounts payable balances as at year-end dates.\nNOTE 13 \u2013 SUBSEQUENT EVENTS\nOn July 23, 2023, the Company, SHOWA International Pty Ltd. (\u201cSHOWA\u201d), and Jeffery Tu & Eric Hsu, entered into a Cooperation Agreement (the \u201cAgreement\u201d), in which three parties shall establish a strategic partnership in Japan to produce and promoting Bio-active Protein Peptide in Japan. SHOWA, as a Japanese based company, shall use its best effort in promoting the Company\u2019s Bio-active Protein Peptide and related products in Japan, and shall be in charge of the overall marketing strategy, day-to-day business operations, products design, public relations, etc. As the Company\u2019s exclusive strategic partner in Japan, SHOWA shall be responsible for marketing and promoting all of the Company\u2019s Bio-active Protein Peptide and related products within the territory of Japan and other mutually agreed regions. In addition, SHOWA shall achieve the following milestones in sales during the next four-year period of time: 150,000 bottles during year one, 300,000 bottles during year two, 600,000 during year three, 1,000,000 bottles during year four.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2.1",
+     "Agreement and Plan of Reorganization between the Company and Okra Energy, Inc. dated December 2, 2013 (1)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (2)"
+    ],
+    [
+     "3.2",
+     "Articles of Merger (3)"
+    ],
+    [
+     "3.3",
+     "Bylaws (2)"
+    ],
+    [
+     "3.4",
+     "Amended and Restated Articles of Incorporation, as filed June 24, 2016 (4)"
+    ],
+    [
+     "3.5",
+     "Amendment to Articles of Incorporation increasing authorized Series A Preferred, August 20, 2016 (4)"
+    ],
+    [
+     "3.6",
+     "Articles of Amendment (5)"
+    ],
+    [
+     "10.1",
+     "Lease Agreement"
+    ],
+    [
+     "31.1",
+     "Certification by the Principal Executive Officer and Principal Accounting and Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certifications by the Principal Executive Officer and Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "INLINE XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "INLINE XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "INLINE XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "INLINE XBRL Taxonomy Extension Definition Linkbase Definition"
+    ],
+    [
+     "101.PRE",
+     "INLINE XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "INLINE XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1446,
+    "end_line": 1466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On October 04, 2023, the Company entered into a New Drugs Application and Joint Venture Agreement (the \u201cAgreement\u201d), with CIMC Automatic Control System Technology (Liaoning) Co., Ltd. (\u201cCIMC\u201d), in which both parties agree to establish a joint venture in Beijing, China aiming to develop and promote the Bio-active Protein Peptide supplements and Peptide medicinal in China (\u201cNew Venture\u201d). Upon execution of the Agreement, the Company shall contribute its technologies and marketing assistance, and owns 30% of total outstanding shares of the New Venture; CIMC shall contribute all required working capital and other resources and owns 70% of total outstanding shares of the New Venture. The total registered capital of the New Venture shall be $10 million RMB. CIMC shall also be responsible for all required capital in the new drugs application and approval process which is approximately 200 million RMB. Both parties further agree that the New Venture shall distribute 10% of its net profit to the Company annually for R&D and product productions.\n(b) Exhibits. The following exhibits of the Company are included herein.",
+   "prose_after": "1. Previously filed with Current Report on Form 8-K filed December 5, 2013\n2. Previously filed with Registration Statement on Form S-1 filed September 9, 2011.\n3. Previously filed with Amendment No. 1 to Registration Statement on Form S-1 dated October 14, 2011.\n4. Previously filed with Annual Report on Form 10-K filed December 16, 2016.\n5. Previously filed with Current Report on Form 8-K filed May 17, 2017.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AMERICA GREAT HEALTH",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 13, 2023",
+     "/s/ Quinn Chen",
+     ""
+    ],
+    [
+     "",
+     "Quinn Chen, Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "AMERICA GREAT HEALTH"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1477,
+    "end_line": 1484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "1. Previously filed with Current Report on Form 8-K filed December 5, 2013\n2. Previously filed with Registration Statement on Form S-1 filed September 9, 2011.\n3. Previously filed with Amendment No. 1 to Registration Statement on Form S-1 dated October 14, 2011.\n4. Previously filed with Annual Report on Form 10-K filed December 16, 2016.\n5. Previously filed with Current Report on Form 8-K filed May 17, 2017.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: October 13, 2023",
+     "",
+     "/s/ Mike Q. Wang",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Mike Q. Wang, President, Chief Executive Officer,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Secretary and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1487,
+    "end_line": 1494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

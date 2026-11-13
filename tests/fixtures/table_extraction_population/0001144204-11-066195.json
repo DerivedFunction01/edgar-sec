@@ -1,0 +1,5938 @@
+{
+ "accession": "0001144204-11-066195",
+ "cik": "0001373846",
+ "form": "10-Q",
+ "filing_date": "2011-11-21",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v240438_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "98-0500738"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-Q\n(Mark One)\n[X] QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2011\n[ ][ ]\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCOMMISSION FILE NUMBER: 000-52832\nCHINA INTERNET CAFE HOLDINGS GROUP, INC.\n(Exact Name of small business issuer as specified in its charter)",
+   "prose_after": "#2009-2010, 4th Building, ZhuoYue Century Center, FuHua Third Road, FuTian District, Shenzhen, Guangdong Province P.R.C. 518048\n(Address of principal executive offices) (Zip Code)\nIssuer\u2019s telephone Number: 011-86-755-8989-0998\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1.  Financial Statements (Unaudited).",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets at September 30, 2011 \u2013 unaudited and December 31, 2010",
+     "F-1"
+    ],
+    [
+     "Condensed Consolidated Statements of Income and Comprehensive Income \u2013 unaudited",
+     "F-2"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows - unaudited",
+     "F-3"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements \u2013 unaudited",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2.  Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3.  Quantitative and Qualitative Disclosures About Market Risk.",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4.  Controls and Procedures.",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II  - OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. (Removed and Reserved).",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAPPLICABLE ONLY TO ISSUERS INVOLVED IN BANKRUPTCY\nPROCEEDINGS DURING THE PRECEDING FIVE YEARS\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Sections 12, 13, or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes [ ] No [ ]\nAPPLICABLE ONLY TO CORPORATE ISSUERS\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common equity, as of the latest practicable date:\nAs of November 9, 2011, there are 21,200,507 shares of $0.00001 par value common stock issued and outstanding.\nFORM 10-Q\nCHINA INTERNET CAFE HOLDINGS GROUP, INC.\nINDEX",
+   "prose_after": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements (Unaudited).\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2011",
+     "",
+     "December 31, 2010",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "20,628,454",
+     "$",
+     "3,836,824"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "-",
+     "",
+     "945,280"
+    ],
+    [
+     "Loan receivable",
+     "",
+     "-",
+     "",
+     "2,419,916"
+    ],
+    [
+     "Rental deposit",
+     "",
+     "96,752",
+     "",
+     "55,512"
+    ],
+    [
+     "Equipment deposit",
+     "",
+     "-",
+     "",
+     "1,300,650"
+    ],
+    [
+     "Prepayment",
+     "",
+     "15,653",
+     "",
+     "-"
+    ],
+    [
+     "Inventory",
+     "",
+     "201,724",
+     "",
+     "180,582"
+    ],
+    [
+     "Deferred advisory fee",
+     "",
+     "123,091",
+     "",
+     "-"
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "67,422",
+     "",
+     "-"
+    ],
+    [
+     "Total current assets",
+     "",
+     "21,133,096",
+     "",
+     "8,738,764"
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "11,123,057",
+     "",
+     "6,848,342"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "169,569",
+     "",
+     "191,087"
+    ],
+    [
+     "Rental deposit-long term portion",
+     "",
+     "270,376",
+     "",
+     "235,509"
+    ],
+    [
+     "Total assets",
+     "$",
+     "32,696,098",
+     "$",
+     "16,013,702"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short term loan",
+     "$",
+     "156,531",
+     "$",
+     "151,245"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "112,139",
+     "",
+     "69,373"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "1,958,396",
+     "",
+     "579,822"
+    ],
+    [
+     "Payroll and payroll related liabilities",
+     "",
+     "316,185",
+     "",
+     "199,548"
+    ],
+    [
+     "Income and other taxes payable",
+     "",
+     "1,541,846",
+     "",
+     "987,194"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "421,364",
+     "",
+     "102,018"
+    ],
+    [
+     "Amount due to a shareholder",
+     "",
+     "1,995,338",
+     "",
+     "465,741"
+    ],
+    [
+     "Dividend payable on preferred stock",
+     "",
+     "72,729",
+     "",
+     "-"
+    ],
+    [
+     "Derivative financial instrument - preferred stock",
+     "",
+     "4,905,728",
+     "",
+     "-"
+    ],
+    [
+     "Derivative financial instrument - warrants",
+     "",
+     "2,619,033",
+     "",
+     "-"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "14,035,289",
+     "",
+     "2,554,941"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 17)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock ($0.00001 par value, 100,000,000 shares authorized,  4,274,703 and 0 shares issued and outstanding; preference in liquidation - $5,770,849 and $0)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Stockholders' Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock ($0.00001 par value, 100,000,000 shares authorized,  21,124,967 and 20,200,000 shares issued and outstanding  as of September 30, 2011 and December 31, 2010, respectively)",
+     "",
+     "212",
+     "",
+     "202"
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "1,171,027",
+     "",
+     "1,628,417"
+    ],
+    [
+     "Statutory surplus reserves",
+     "",
+     "718,744",
+     "",
+     "718,744"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "15,398,528",
+     "",
+     "10,499,454"
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "1,308,298",
+     "",
+     "611,944"
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "18,660,809",
+     "",
+     "13,458,761"
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "32,696,098",
+     "$",
+     "16,013,702"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements (Unaudited).\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nUNAUDITED CONDENSED CONSOLIDATED\nSTATEMENTS OF INCOME AND COMPREHENSIVE INCOME",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For The three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "23,722,727",
+     "",
+     "$",
+     "14,142,866",
+     "",
+     "$",
+     "8,608,066",
+     "",
+     "$",
+     "5,840,453",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "14,180,296",
+     "",
+     "",
+     "7,797,869",
+     "",
+     "",
+     "5,112,773",
+     "",
+     "",
+     "3,130,304",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "9,542,431",
+     "",
+     "",
+     "6,344,997",
+     "",
+     "",
+     "3,495,293",
+     "",
+     "",
+     "2,710,149",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,986,821",
+     "",
+     "",
+     "351,888",
+     "",
+     "",
+     "655,275",
+     "",
+     "",
+     "75,906",
+     ""
+    ],
+    [
+     "Reorganizational expenses",
+     "",
+     "-",
+     "",
+     "",
+     "435,086",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "435,086",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,986,821",
+     "",
+     "",
+     "786,974",
+     "",
+     "",
+     "655,275",
+     "",
+     "",
+     "510,992",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "7,555,610",
+     "",
+     "",
+     "5,558,023",
+     "",
+     "",
+     "2,840,018",
+     "",
+     "",
+     "2,199,157",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-operating income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments - day-one loss",
+     "",
+     "(1,120,072)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative financial instrument - preferred stock",
+     "",
+     "492,755",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "203,607",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative financial instrument - warrants",
+     "",
+     "309,529",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "129,125",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "12,055",
+     "",
+     "",
+     "4,287",
+     "",
+     "",
+     "6,953",
+     "",
+     "",
+     "1,827",
+     ""
+    ],
+    [
+     "Interest expenses",
+     "",
+     "(7,826)",
+     "",
+     "",
+     "(7,115)",
+     "",
+     "",
+     "(2,662)",
+     "",
+     "",
+     "(2,402)",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "(552)",
+     "",
+     "",
+     "(43)",
+     "",
+     "",
+     "(80)",
+     "",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "Total non-operating income (expenses)",
+     "",
+     "(314,111)",
+     "",
+     "",
+     "(2,871)",
+     "",
+     "",
+     "336,943",
+     "",
+     "",
+     "(585)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "7,241,499",
+     "",
+     "",
+     "5,555,152",
+     "",
+     "",
+     "3,176,961",
+     "",
+     "",
+     "2,198,572",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "2,167,718",
+     "",
+     "",
+     "1,340,823",
+     "",
+     "",
+     "795,332",
+     "",
+     "",
+     "572,302",
+     ""
+    ],
+    [
+     "Net income attributable to China Internet Cafe Holdings Group, Inc.",
+     "",
+     "5,073,781",
+     "",
+     "$",
+     "4,214,329",
+     "",
+     "$",
+     "2,381,629",
+     "",
+     "$",
+     "1,626,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend on preferred stock",
+     "",
+     "(174,707)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(72,729)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income attributable to China Internet Cafe Holdings Group, Inc. common stockholders",
+     "",
+     "4,899,074",
+     "",
+     "",
+     "4,214,329",
+     "",
+     "",
+     "2,308,900",
+     "",
+     "",
+     "1,626,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "5,073,781",
+     "",
+     "",
+     "4,214,329",
+     "",
+     "",
+     "2,381,629",
+     "",
+     "",
+     "1,626,270",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "696,354",
+     "",
+     "",
+     "229,549",
+     "",
+     "",
+     "281,243",
+     "",
+     "",
+     "209,872",
+     ""
+    ],
+    [
+     "Total comprehensive income",
+     "$",
+     "5,770,135",
+     "",
+     "$",
+     "4,443,878",
+     "",
+     "$",
+     "2,662,872",
+     "",
+     "$",
+     "1,836,142",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Basic",
+     "",
+     "0.23",
+     "",
+     "",
+     "0.22",
+     "",
+     "",
+     "0.11",
+     "",
+     "",
+     "0.08",
+     ""
+    ],
+    [
+     "- Diluted",
+     "",
+     "0.24",
+     "",
+     "",
+     "0.22",
+     "",
+     "",
+     "0.11",
+     "",
+     "",
+     "0.08",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Basic",
+     "",
+     "20,944,826",
+     "",
+     "",
+     "19,400,000",
+     "",
+     "",
+     "21,124,967",
+     "",
+     "",
+     "20,186,957",
+     ""
+    ],
+    [
+     "- Diluted",
+     "",
+     "20,944,826",
+     "",
+     "",
+     "19,400,000",
+     "",
+     "",
+     "21,124,967",
+     "",
+     "",
+     "20,186,957",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 178,
+    "end_line": 235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated financial statements\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nUNAUDITED CONDENSED CONSOLIDATED\nSTATEMENTS OF INCOME AND COMPREHENSIVE INCOME",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "5,073,781",
+     "",
+     "$",
+     "4,214,329",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments - day-one loss",
+     "",
+     "1,120,072",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative financial instrument - preferred stock",
+     "",
+     "(492,755)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative financial instrument- warrants",
+     "",
+     "(309,529)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advisory fee",
+     "",
+     "848,909",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "2,111,933",
+     "",
+     "",
+     "1,161,497",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "27,763",
+     "",
+     "",
+     "14,601",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "(66,384)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "963,258",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepayment",
+     "",
+     "(15,412)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Rental deposit",
+     "",
+     "(65,035)",
+     "",
+     "",
+     "(81,776)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(14,602)",
+     "",
+     "",
+     "1,156",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "41,601",
+     "",
+     "",
+     "45,374",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "1,337,394",
+     "",
+     "",
+     "(130,200)",
+     ""
+    ],
+    [
+     "Payroll and payroll related liabilities",
+     "",
+     "107,974",
+     "",
+     "",
+     "27,431",
+     ""
+    ],
+    [
+     "Income and other taxes payable",
+     "",
+     "512,138",
+     "",
+     "",
+     "442,125",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "312,290",
+     "",
+     "",
+     "82,094",
+     ""
+    ],
+    [
+     "Amount due to a shareholder",
+     "",
+     "1,505,459",
+     "",
+     "",
+     "231,668",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "12,998,855",
+     "",
+     "",
+     "6,008,299",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property, plant and equipment",
+     "",
+     "(4,759,757)",
+     "",
+     "",
+     "(2,696,834)",
+     ""
+    ],
+    [
+     "Receipt of loan receivable due to termination of an investment agreement",
+     "",
+     "2,465,939",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Acquisition of cafes",
+     "",
+     "-",
+     "",
+     "",
+     "(635,233)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(2,293,818)",
+     "",
+     "",
+     "(3,332,067)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from issuance of preferred stock and warrants",
+     "",
+     "5,675,614",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of shares for reverse merger",
+     "",
+     "-",
+     "",
+     "",
+     "251,612",
+     ""
+    ],
+    [
+     "Net proceeds from short term loan",
+     "",
+     "-",
+     "",
+     "",
+     "300,000",
+     ""
+    ],
+    [
+     "Compensation for reorganization",
+     "",
+     "-",
+     "",
+     "",
+     "1,442",
+     ""
+    ],
+    [
+     "Net cash flows provided by financing activities:",
+     "",
+     "5,675,614",
+     "",
+     "",
+     "553,054",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign currency translation on cash",
+     "",
+     "410,979",
+     "",
+     "",
+     "117,906",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "16,791,630",
+     "",
+     "",
+     "3,347,192",
+     ""
+    ],
+    [
+     "Cash - beginning of period",
+     "",
+     "3,836,824",
+     "",
+     "",
+     "3,061,856",
+     ""
+    ],
+    [
+     "Cash - end of period",
+     "$",
+     "20,628,454",
+     "",
+     "$",
+     "6,409,048",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "7,826",
+     "",
+     "$",
+     "7,115",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "1,935,931",
+     "",
+     "$",
+     "1,051,472",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON-CASH INVESTING AND FINANCING ACTIVTIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Summary of Assets Acquired from Acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "499,776",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "-",
+     "",
+     "",
+     "15,678",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "-",
+     "",
+     "",
+     "207,964",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "",
+     "-",
+     "",
+     "",
+     "723,418",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transfer of equipment / deposits paid in property and equipment",
+     "$",
+     "1,243,723",
+     "",
+     "$",
+     "83,811",
+     ""
+    ],
+    [
+     "Dividend payable on preferred stock",
+     "$",
+     "72,729",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Advisory fee",
+     "$",
+     "848,909",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated financial statements\nCHINA INTERNET CAFE HOLDINGS GROUP, INC. AND SUBSIDIARIES\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated financial statements\nCHINA INTERNT CAF\u00c9 HOLDINGS, GROUP, INC.\nNOTES TO AUDITED CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nSEPTEMBER 30, 2011\n1. Organization, Recapitalization and Nature of Business\nChina Internet Cafe Holdings Group, Inc. (\u201cChina Internet Cafe\u201d)\nChina Internet Cafe Holdings Group, Inc. (formerly known as China Unitech Group, Inc.) ( \u201cthe Company\u201d, \u201cwe\u201d, \u201cus\u201d, \u201cour\u201d or \u201cChina Internet Cafe\u201d) was incorporated in the State of Nevada on March 14, 2006. The Company was a development company from incorporation to June 30, 2010. On July 2, 2010, the Company successfully closed a share exchange transaction with the shareholders of Classic Bond Development Limited, a British Virgin Islands corporation (\u201cClassic Bond\u201d). The Company will operate through its variable interest entities in China to execute the current business plan of those affiliates which involves the operation of a chain of China-based internet cafes.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 323,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated Useful Lives"
+    ],
+    [
+     "Leasehold improvement",
+     "5 years"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cafe computer equipment and hardware",
+     "5 years"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cafe furniture and fixtures",
+     "5 years"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Office furniture, fixtures and equipments",
+     "5 years"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Motor vehicles",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated Useful Lives"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 459
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Our advisor assists the Company with ongoing corporate compliance and developments are accounted for under ASC 505-50. ASC 505-50-30-11 (previously EITF 96-18) which provides that an issuer shall measure the fair value of the equity instruments in these transactions using the stock price and other measurement assumptions as of the earlier of the following dates, referred to as the measurement date:\ni. The date at which a commitment for performance by the counterparty to earn the equity instruments is reached (a performance commitment); and\nii. The date at which the counterparty\u2019s performance is complete.\n(l) Equipments deposits\nThe Company prepaid the equipments deposits to the computer suppliers for purchase of computer and equipments for new internet cafes.\n(m) Property and equipment\nProperty and equipment, comprising computer equipment and hardware, leasehold improvement, office furniture and vehicles and are stated at cost less accumulated depreciation. Depreciation is computed using the straight-line method over the estimated useful lives listed below.",
+   "prose_after": "Leasehold improvements mainly result from decoration expenses. All of our lease contracts state lease terms of 5 years and leasehold improvements are amortized over 5 years, which represents the shorter of useful life and lease term.\n(n) Intangible Assets\nOur intangible assets consist of definite-lived assets subject to amortization such as Business License and Customer Lists. The useful lives of the Business License is 9 to 15 years and we amortize the customer lists by 5 years. We calculate amortization of the definite-lived intangible assets on a straight-line basis over the useful lives of the related intangible assets.\nDevelopment cost of internal-use software is insignificant and has been recorded as expense in the period such cost occurs.\n(o) Deferred Revenue\nDeferred revenue represents unused balances of the prepaid amounts from the IC cards that are unused balance. The Outstanding customer balances are $1,958,396 and $579,822 as of September 30, 2011 and December 31, 2010, respectively, and are included in deferred revenue on the balance sheets. Management has evaluated the deferred revenue balance and has determined any potential revenue from the unused balance to be immaterial at the quarter ended September 30, 2011.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Current assets and Long term rental deposit",
+     "$",
+     "21,256,285",
+     "",
+     "$",
+     "8,968,000",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "11,018,866",
+     "",
+     "",
+     "6,848,342",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "273,759",
+     "",
+     "",
+     "191,087",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "32,548,911",
+     "",
+     "",
+     "16,007,431",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "(11,269,333)",
+     "",
+     "",
+     "(2,182,851)",
+     ""
+    ],
+    [
+     "Net assets",
+     "$",
+     "21,279,578",
+     "",
+     "$",
+     "13,824,580",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 486,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Income taxes are provided on an asset and liability approach for financial accounting and reporting of income taxes. Current tax is based on the profit or loss from ordinary activities adjusted for items that are non-assessable or disallowable for income tax purpose and is calculated using tax rates that have been enacted or substantively enacted at the balance sheet date. Deferred income tax liabilities or assets are recorded to reflect the tax consequences in future differences between the tax basis of assets and liabilities and the financial reporting amounts at each year-end. A valuation allowance is recognized if it is more likely than not that some portion, or all, of a deferred tax asset will not be realized.\n(r) Consolidation of Variable Interest Entities\nAccording to the requirements of Statement of Financial Accounting Standards No. 810-10, \u201cVariable interest Entities\u201d, the Company has evaluated the economic relationships of its Zhonghefangda with Junlong and has determined that it is required to consolidate Zhonghefangda and Junlong pursuant to the rules of FASB ASC Topic 810-10. Therefore Junlong is considered to be a VIE, as defined by FASB ASC Topic 810-10, of which Classic Bond is the primary beneficiary as a result of its 100% ownership of Zhonghefangda. Classic Bond, as mentioned above, will absorb a majority of the economic risks and rewards of the VIEs being consolidated in the accompanying financial statements.\nThe carrying amount of the VIEs\u2019 assets and liabilities are as follows:",
+   "prose_after": "(s) Foreign currency translation\nAssets and liabilities of the Company with a functional currency of RMB is translated into US$ using period end exchange rates. Income and expense items are translated at the average exchange rates in effect during the period. Foreign currency translation differences are included as a component of Accumulated Other Comprehensive Income in Stockholders\u2019 Equity.\nThe exchange rates used to translate amounts in RMB into USD for the purposes of preparing the financial statements were as follows (source: www.onanda.com):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sept 30, 2011",
+     "",
+     "Sept 30, 2010",
+     ""
+    ],
+    [
+     "Quarter end RMB : USD exchange rate (closing buying rate)",
+     "",
+     "6.3885",
+     "",
+     "6.6781"
+    ],
+    [
+     "Nine months average RMB : USD exchange rate (average ask rate)",
+     "",
+     "6.4884",
+     "",
+     "6.7983"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "12/31/2010",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year end RMB : USD exchange rate (closing buying rate)",
+     "",
+     "6.6118",
+     "",
+     ""
+    ],
+    [
+     "Average yearly RMB : USD exchange rate (average ask rate)",
+     "",
+     "6.7788",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "(s) Foreign currency translation\nAssets and liabilities of the Company with a functional currency of RMB is translated into US$ using period end exchange rates. Income and expense items are translated at the average exchange rates in effect during the period. Foreign currency translation differences are included as a component of Accumulated Other Comprehensive Income in Stockholders\u2019 Equity.\nThe exchange rates used to translate amounts in RMB into USD for the purposes of preparing the financial statements were as follows (source: www.onanda.com):",
+   "prose_after": "The RMB is not freely convertible into foreign currency and all foreign exchange transactions must take place through authorized institutions. No representation is made that the RMB amounts could have been, or could be, converted into USD at the rates used in translation.\n(t) Post-retirement and post-employment benefits\nThe Company contributes to a state pension plan in respect of its PRC employees. Other than the above, neither the Company nor its subsidiary provides any other post-retirement or post-employment benefits.\n(u) Earnings per share (EPS)\nEarnings per share (\u201cEPS\u201d) is calculated in accordance with ASC 260-10 which requires the Company to calculate net income (loss) per share based on basic and diluted net income (loss) per share, as defined. Basic EPS excludes dilution and is computed by dividing net income (loss) by the weighted average number of shares outstanding for the period. Diluted EPS reflects the potential dilution that could occur if securities or other contracts to issue common stock were exercised or converted into common stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Name of Payee: Mr. Long Weijun",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Terms: Interest free, unsecured and repayment date is February 28, 2011.",
+     "$",
+     "-",
+     "$",
+     "2,419,916"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Loan Receivable"
+    }
+   },
+   "prose_before": "In December 2010, the FASB issued amendments to the guidance on goodwill impairment testing. The amendments modify Step 1 of the goodwill impairment test for reporting units with zero or negative carrying amounts. For those reporting units, an entity is required to perform Step 2 of the goodwill impairment test if it is more likely than not that a goodwill impairment exists. In making that determination, an entity should consider whether there are any adverse qualitative factors indicating that impairment may exist. The amendments were effective January 1, 2011 and the Company adopted this guidance on January 1, 2011 which did not have a material impact in the Consolidated Financial Statements.\nIn January 2010, the FASB issued additional disclosure requirements for fair value measurements which the Company included in its interim and annual financial statements in 2010. Certain disclosure requirements relating to fair value measurements using significant unobservable inputs (Level 3) were deferred until January 1, 2011. These new requirements did not have an impact in the consolidated financial results as they relate only to additional disclosures.\n3. Loan Receivable\nLoans receivable consist of:",
+   "prose_after": "The Company entered into a trust agreement with Mr. Long Weijun on December 25, 2010 and appointed Mr. Long Weijun as the General Manger of Yunnan subsidiary company. The Company was committed to establish a new subsidiary company located in Kunming city, Yunnan province with total investment of approximately $3.02 million (RMB 20 million) with 1.51 million (RMB 10 million) as registered capital and 1.51 million (equivalent to RMB 10 million) as capital proceeds. The initial proceed was released to Long Weijun on December 31, 2010 of total sum of $2.42 million (RMB 16 million), the rest $0.6 million (RMB 4 million) was released on January 7, 2011.\nHowever, the Company entered into a termination agreement with Mr. Long Weijun on February 13, 2011 to terminate the trust agreement signed on December 25, 2010. The total proceed of $3.02 million (RMB 20 million) was returned to the Company on February 28, 2011.\n4. Equipment Deposit\nEquipment deposit consists of:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment deposit for the purchase of computers for 4 new internet cafes of which 3 were opened in March 2011 and 1 was opened in April, 2011",
+     "$",
+     "-",
+     "$",
+     "1,300,650"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 574
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Equipment Deposit"
+    }
+   },
+   "prose_before": "The Company entered into a trust agreement with Mr. Long Weijun on December 25, 2010 and appointed Mr. Long Weijun as the General Manger of Yunnan subsidiary company. The Company was committed to establish a new subsidiary company located in Kunming city, Yunnan province with total investment of approximately $3.02 million (RMB 20 million) with 1.51 million (RMB 10 million) as registered capital and 1.51 million (equivalent to RMB 10 million) as capital proceeds. The initial proceed was released to Long Weijun on December 31, 2010 of total sum of $2.42 million (RMB 16 million), the rest $0.6 million (RMB 4 million) was released on January 7, 2011.\nHowever, the Company entered into a termination agreement with Mr. Long Weijun on February 13, 2011 to terminate the trust agreement signed on December 25, 2010. The total proceed of $3.02 million (RMB 20 million) was returned to the Company on February 28, 2011.\n4. Equipment Deposit\nEquipment deposit consists of:",
+   "prose_after": "5. Inventory\nInventory consists of:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchased IC cards",
+     "$",
+     "201,724",
+     "$",
+     "180,582"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 579,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "5. Inventory\nInventory consists of:",
+   "prose_after": "There was no allowance made for obsolete or slow moving inventory as of September 30, 2011 and December 31, 2010.\n6. Short Term Loan\nThe short-term loans due within one year as of September 30, 2011 and December 31, 2010 consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "Bank",
+     "Loan Period",
+     "Interest rate",
+     "",
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "China Construction Bank",
+     "November 15, 2010 to November 14, 2011",
+     "",
+     "6.372",
+     "%",
+     "$",
+     "156,531",
+     "$",
+     "151,245"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 594,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Short Term Loan"
+    }
+   },
+   "prose_before": "There was no allowance made for obsolete or slow moving inventory as of September 30, 2011 and December 31, 2010.\n6. Short Term Loan\nThe short-term loans due within one year as of September 30, 2011 and December 31, 2010 consist of the following:",
+   "prose_after": "On November 15, 2010, the Company entered into a loan agreement with China Construction Bank for $154,727 (RMB 1,000,000), which was secured by director\u2019s guarantee. The annual interest rate is 6.372% and is due on November 14, 2011.\n7. Income and Other Taxes Payable\nIncome and other taxes payable consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Business tax payable",
+     "$",
+     "558,858",
+     "$",
+     "420,236"
+    ],
+    [
+     "Income tax",
+     "",
+     "805,647",
+     "",
+     "483,006"
+    ],
+    [
+     "Withhold individual income tax payable",
+     "",
+     "1,320",
+     "",
+     "4,022"
+    ],
+    [
+     "Other tax payable",
+     "",
+     "176,021",
+     "",
+     "79,930"
+    ],
+    [
+     "Total",
+     "$",
+     "1,541,846",
+     "$",
+     "987,194"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 622
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income and Other Taxes Payable"
+    }
+   },
+   "prose_before": "On November 15, 2010, the Company entered into a loan agreement with China Construction Bank for $154,727 (RMB 1,000,000), which was secured by director\u2019s guarantee. The annual interest rate is 6.372% and is due on November 14, 2011.\n7. Income and Other Taxes Payable\nIncome and other taxes payable consist of the following:",
+   "prose_after": "8. Amount Due To A Shareholder (Related party loan)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Guo Dishan, a shareholder of the Company",
+     "$",
+     "1,995,338",
+     "$",
+     "465,741"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 625,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income and Other Taxes Payable"
+    }
+   },
+   "prose_before": "8. Amount Due To A Shareholder (Related party loan)",
+   "prose_after": "The related party loan due to Mr. Guo Dishan is unsecured with no stated interest and payable on demand.\n9. Income Tax\nThe Company\u2019s subsidiary incorporated in the PRC is subject to PRC enterprise income tax at the applicable tax rates on taxable income reported in their Chinese statutory accounts in accordance with the relevant enterprise income tax laws. Junlong was charged a tax rate of 22% of its taxable income in 2010 and 24% in 2011.\nThe Company uses the liability method, where deferred tax assets and liabilities are determined based on the expected future tax consequences of temporary differences between the carrying amounts of assets and liabilities for financial and income tax reporting purposes. There are no material timing differences and therefore no deferred tax assets or liabilities as of September 30, 2011. As approved by the relevant tax authority in the PRC, Junlong\u2019s income tax rates will be 25% for 2012 and thereafter.\nThe income tax provision consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Nine Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- PRC",
+     "$",
+     "2,235,138",
+     "",
+     "$",
+     "1,340,823"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in deferred tax assets",
+     "",
+     "(481,820)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Change in valuation allowances",
+     "",
+     "414,398",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets - current",
+     "",
+     "(67,422)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Tax Expenses",
+     "$",
+     "2,167,718",
+     "",
+     "$",
+     "1,340,823"
+    ]
+   ],
+   "caption_stack": [
+    "For The Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 644,
+    "end_line": 661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "The related party loan due to Mr. Guo Dishan is unsecured with no stated interest and payable on demand.\n9. Income Tax\nThe Company\u2019s subsidiary incorporated in the PRC is subject to PRC enterprise income tax at the applicable tax rates on taxable income reported in their Chinese statutory accounts in accordance with the relevant enterprise income tax laws. Junlong was charged a tax rate of 22% of its taxable income in 2010 and 24% in 2011.\nThe Company uses the liability method, where deferred tax assets and liabilities are determined based on the expected future tax consequences of temporary differences between the carrying amounts of assets and liabilities for financial and income tax reporting purposes. There are no material timing differences and therefore no deferred tax assets or liabilities as of September 30, 2011. As approved by the relevant tax authority in the PRC, Junlong\u2019s income tax rates will be 25% for 2012 and thereafter.\nThe income tax provision consists of the following:",
+   "prose_after": "The components of the deferred tax assets and deferred tax liability are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets for NOL carry forwards-US",
+     "$",
+     "552,316",
+     "",
+     "$",
+     "137,918",
+     ""
+    ],
+    [
+     "Temporary difference from accrued expenses",
+     "",
+     "67,422",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "619,738",
+     "",
+     "",
+     "137,918",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(619,738)",
+     "",
+     "",
+     "(137,918)",
+     ""
+    ],
+    [
+     "Total deferred tax assets-current",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 664,
+    "end_line": 677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "The components of the deferred tax assets and deferred tax liability are as follows:",
+   "prose_after": "The Company applied the provisions of ASC 740.10.50, \u201cAccounting For Uncertainty In Income Taxes\u201d, which provides clarification related to the process associated with accounting for uncertain tax positions recognized in our financial statements. The Company classified all interest and penalties related to unrecognized tax benefits, if any, as a component of income tax provisions. The Company performed self-assessment and the Company\u2019s liability for income taxes includes the liability for unrecognized tax benefits, interest and penalties, which relate to tax years still subject to review by taxing authorities. Audit periods remain open for review until the statute of limitations has passed. The completion of review or the expiration of the statute of limitations for a given audit period could result in an adjustment to the Company\u2019s liability for income taxes. Any such adjustment could be material to the Company\u2019s results of operations for any given quarterly or annual period based, in part, upon the results of operations for the given period. As of September 30, 2011, the management concluded that the Company had no uncertain tax positions affecting its condensed consolidated financial position and results of operations or cash flows, and will continue to evaluate for the uncertain position in future. There are no estimated interest costs and penalties provided in the Company\u2019s condensed consolidated financial statements for the nine months ended September 30, 2011 and 2010, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "$",
+     "7,241,499",
+     "$",
+     "5,555,152"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computed \u201cexpected\u201d income tax expense at 24% and 22% on income in 2011 and 2010, respectively",
+     "$",
+     "1,753,320",
+     "$",
+     "1,222,133"
+    ],
+    [
+     "Effect of cumulative tax losses",
+     "",
+     "414,398",
+     "",
+     "118,690"
+    ],
+    [
+     "",
+     "$",
+     "2,167,718",
+     "$",
+     "1,340,823"
+    ]
+   ],
+   "caption_stack": [
+    "For The Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 684,
+    "end_line": 699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Tax"
+    }
+   },
+   "prose_before": "The Company applied the provisions of ASC 740.10.50, \u201cAccounting For Uncertainty In Income Taxes\u201d, which provides clarification related to the process associated with accounting for uncertain tax positions recognized in our financial statements. The Company classified all interest and penalties related to unrecognized tax benefits, if any, as a component of income tax provisions. The Company performed self-assessment and the Company\u2019s liability for income taxes includes the liability for unrecognized tax benefits, interest and penalties, which relate to tax years still subject to review by taxing authorities. Audit periods remain open for review until the statute of limitations has passed. The completion of review or the expiration of the statute of limitations for a given audit period could result in an adjustment to the Company\u2019s liability for income taxes. Any such adjustment could be material to the Company\u2019s results of operations for any given quarterly or annual period based, in part, upon the results of operations for the given period. As of September 30, 2011, the management concluded that the Company had no uncertain tax positions affecting its condensed consolidated financial position and results of operations or cash flows, and will continue to evaluate for the uncertain position in future. There are no estimated interest costs and penalties provided in the Company\u2019s condensed consolidated financial statements for the nine months ended September 30, 2011 and 2010, respectively.\nThe Company\u2019s uncertain tax positions are related to tax years that remain subject to examination by the relevant tax authorities, primarily the China Tax Authority. The open tax year for examination in PRC is 10 years.\nAll of the Group\u2019s income before income taxes is from PRC sources. Actual income tax expense reported in the condensed consolidated statements of operations and comprehensive income differ from the amounts computed by applying the PRC statutory income tax rate of 24% and 22% for the nine months ended September 30, 2011 and 2010 to income before income taxes for the three months ended September 30, 2011 and 2010 for the followings reasons:",
+   "prose_after": "Our policy for recording interest and penalties associated with audits is to record such items as a component of income tax expense. There were no interest and penalties recorded for the nine months ended September 30, 2011 and 2010.\n10. Employee Benefits\nThe Company contributes to a state pension scheme organized by municipal and provincial governments with respect to its employees in PRC. The pension expense related to this plan is calculated at a range of 8% of the average monthly salary. The pension expense was $ 9,887 and $5,483 for the nine months ended September 30, 2011 and 2010, respectively. The pension expense was $3,588and $2,552 for the three months ended September 30, 2011 and 2010, respectively.\n11. Stockholders\u2019 Equity\n(i) Common Stock\nOn February 22, 2011 (the \u201cClosing Date\u201d), in connection with a security purchase agreement between the Company and certain investors, we closed a private placement (the \u201cOffering\u201d) of approximately $6.4 million from offering a total of 474,967 units (the \u201cUnits\u201d) at a purchase price of $13.50 per Unit, each consisting of:(i) nine shares of the Company\u2019s 5% Series A Convertible Preferred Stock, par value $0.00001 per share (the \u201cPreferred Shares\u201d), convertible on a one to one basis into nine shares of the Company\u2019s common stock, par value $0.00001 per share (the \u201c Common Stock\u201d); (ii) one share of Common Stock; (iii) two three-year Series A Warrants (the \u201cSeries A Warrants\u201d),each exercisable for the purchase of one share of Common Stock, at an exercise price of $2.00 per share; and (iv) two three-year Series B Warrants (the \u201cSeries B Warrants\u201d), each exercisable for the purchase of one share of Common Stock, to purchase one share of Common Stock, at an exercise price of $3.00 per share.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred \u2013\n\nEmbedded\n\nDerivative",
+     "",
+     "",
+     "Warrants",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance, December 31, 2010",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued \u2013 February 22, 2011",
+     "",
+     "5,398,483",
+     "",
+     "",
+     "2,928,562",
+     "",
+     "",
+     "8,327,045",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value adjustments",
+     "",
+     "(492,755)",
+     "",
+     "",
+     "(309,529)",
+     "",
+     "",
+     "(802,284)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ending balance, September 30, 2011",
+     "$",
+     "4,905,728",
+     "",
+     "$",
+     "2,619,033",
+     "",
+     "$",
+     "7,524,761",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Series A Preferred Stock and Warrants"
+    }
+   },
+   "prose_before": "In addition to the above fees, the Company issued 50,000 shares to its legal counsel, in consideration for their introducing the Company to the placement agent. The cost of these shares, which were valued at $2.16 per share (determined as described above) were expensed during the period ended September 30, 2011.\nFair Value Considerations\nAs required by FASB ASC 820, assets and liabilities measured at fair value are classified in their entirety based on the lowest level of input that is significant to their fair value measurement. Our derivative financial instruments that are measured at fair value on a recurring basis under FASB ASC 815 are all measured at fair value using Level 3 inputs. Level 3 inputs are unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities.\nThe following represents a reconciliation of the changes in fair value of financial instruments measured at fair value using Level 3 inputs during the nine months ended September 30, 2011:",
+   "prose_after": "Estimating fair values of derivative financial instruments requires the development of significant and subjective estimates that may, and are likely to, change over the duration of the instrument with related changes in internal and external market factors. In addition, valuation techniques are sensitive to changes in the estimated fair value of our common stock and our estimates of its volatility. Because derivative financial instruments are initially and subsequently carried at fair values, our income will reflect the volatility in these estimate and assumption changes.\n13. Commitments and Contingencies\nOperating Leases\nIn the normal course of business, the Company leases office space and internet cafes under operating lease agreements, which expire through 2016. The Company rents internet cafes venues and office space, primarily for regional sales administration offices that are conducive to administrative operations. The operating lease agreements generally contain renewal options that may be exercised in the Company's discretion after the completion of the base rental terms. In addition, many of the leases provide for regular increases to the base rental rate at specified intervals, which usually occur on an annual basis.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal year",
+     "",
+     ""
+    ],
+    [
+     "Remainder of 2011",
+     "$",
+     "499,527"
+    ],
+    [
+     "2012",
+     "",
+     "1,678,110"
+    ],
+    [
+     "2013",
+     "",
+     "1,369,896"
+    ],
+    [
+     "2014",
+     "",
+     "1,271,876"
+    ],
+    [
+     "2015",
+     "",
+     "590,396"
+    ],
+    [
+     "2016",
+     "",
+     "23,440"
+    ],
+    [
+     "",
+     "$",
+     "5,433,245"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 867
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Estimating fair values of derivative financial instruments requires the development of significant and subjective estimates that may, and are likely to, change over the duration of the instrument with related changes in internal and external market factors. In addition, valuation techniques are sensitive to changes in the estimated fair value of our common stock and our estimates of its volatility. Because derivative financial instruments are initially and subsequently carried at fair values, our income will reflect the volatility in these estimate and assumption changes.\n13. Commitments and Contingencies\nOperating Leases\nIn the normal course of business, the Company leases office space and internet cafes under operating lease agreements, which expire through 2016. The Company rents internet cafes venues and office space, primarily for regional sales administration offices that are conducive to administrative operations. The operating lease agreements generally contain renewal options that may be exercised in the Company's discretion after the completion of the base rental terms. In addition, many of the leases provide for regular increases to the base rental rate at specified intervals, which usually occur on an annual basis.\nAs of September 30, 2011, the Company was obligated under operating leases requiring minimum rentals as follows:",
+   "prose_after": "During the three and nine months ended September 30, 2011, rent expenses amounted to $538,854 and $1,473,919, respectively, of which $504,608 and $1,367,160 was recorded as cost of sales, respectively.\nDuring the three and nine months ended September 30, 2010, rent expenses amounted to $308,482 and $765,392, respectively, of which $306,243 and $748,723 was recorded as cost of sales, respectively.\n14. Concentrations\nThe Company did not have any customer constituting greater than 10% of net sales for the nine months ended September 30, 2011 and 2010.\nAt September 30, 2011 and December 2010, there was one supplier of consignment snacks and drinks in the amount of $111,825 and $67,224, respectively, which accounted for 99.7% and 97% of the Company\u2019s accounts payable.\n15. Operating Risk and Uncertainties\nInterest rate risk\nThe interest rates and terms of repayment of bank and other borrowings are disclosed in Note 6. Other financial assets and liabilities do not have material interest rate risk.\nForeign currency risk",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The 3 Months Ended Sept 30,",
+     "",
+     "",
+     "",
+     "",
+     "For The 9 Months Ended Sept 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "BASIC",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator for basic earnings per share attributable to the Company\u2019s common stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,381,629",
+     "",
+     "$",
+     "1,626,270",
+     "$",
+     "5,073,781",
+     "",
+     "$",
+     "4,214,329"
+    ],
+    [
+     "Dividend on preferred stock",
+     "",
+     "(72,729)",
+     "",
+     "",
+     "-",
+     "",
+     "(174,707)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Net income used in computing basic earnings per share",
+     "$",
+     "2,308,900",
+     "",
+     "$",
+     "1,626,270",
+     "$",
+     "4,899,074",
+     "",
+     "$",
+     "4,214,329"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "$",
+     "0.11",
+     "",
+     "$",
+     "0.08",
+     "$",
+     "0.23",
+     "",
+     "$",
+     "0.22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average shares outstanding",
+     "",
+     "21,124,967",
+     "",
+     "",
+     "20,186,957",
+     "",
+     "20,944,826",
+     "",
+     "",
+     "19,400,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For The 3 Months Ended Sept 30,",
+     "",
+     "",
+     "",
+     "",
+     "For The 9 Months Ended Sept 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "DILUTED",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator for diluted earnings per share attributable to the Company\u2019s common stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,308,900",
+     "",
+     "$",
+     "1,626,270",
+     "$",
+     "4,899,074",
+     "",
+     "$",
+     "4,214,329"
+    ],
+    [
+     "Dividend on preferred stock",
+     "",
+     "72,729",
+     "",
+     "",
+     "-",
+     "",
+     "174,707",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Net income used in computing diluted earnings per share",
+     "$",
+     "2,381,629",
+     "",
+     "$",
+     "1,626,270",
+     "$",
+     "5,073,781",
+     "",
+     "$",
+     "4,214,329"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted earnings per share",
+     "$",
+     "0.11",
+     "",
+     "$",
+     "0.08",
+     "$",
+     "0.24",
+     "",
+     "$",
+     "0.22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average outstanding shares of common stock",
+     "",
+     "21,124,967",
+     "",
+     "",
+     "20,186,957",
+     "",
+     "20,944,826",
+     "",
+     "",
+     "19,000,000"
+    ],
+    [
+     "Preferred stock and contingently issuable shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Warrants and contingently issuable shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Diluted weighted average shares outstanding",
+     "",
+     "21,124,967",
+     "",
+     "",
+     "20,186,957",
+     "",
+     "20,944,826",
+     "",
+     "",
+     "19,000,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Potential common shares outstanding as of September 30:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred stock",
+     "",
+     "4,274,703",
+     "",
+     "",
+     "-",
+     "",
+     "4,274,703",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Warrants",
+     "",
+     "2,498,326",
+     "",
+     "",
+     "-",
+     "",
+     "2,498,326",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "6,773,029",
+     "",
+     "",
+     "-",
+     "",
+     "6,773,029",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 900,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "The Chinese government began tightening its regulation of internet cafes in 2001. In particular, a large number of unlicensed internet cafes have been closed. In addition, the Chinese government has imposed higher capital and facility requirements for the establishment of internet cafes (RMB 10,000,000 for regional internet cafe chains and RMB 50,000,000 for national internet cafe chains). Furthermore, the Chinese government\u2019s policy, which encourages the development of a limited number of national and regional internet cafe chains and discourages the establishment of independent internet cafes, may slow down the growth of internet cafes. Recently, the Ministry of Culture, together with other government authorities, issued a joint notice suspending the issuance of new internet cafe chain licenses. Any intensified government regulation of internet cafes could restrict our ability to maintain and expand our operations.\nCurrently, the Company uses only one internet service provider. However, there are other internet service providers available to the Company. The management of the Company believes that the risk of loss of internet services is not that high because of other service providers available to the Company.\n16. Earnings per Share\nBasic earnings per share is computed by dividing net income attributable to common shareholders by the weighted average number of common shares outstanding during the period. Diluted earnings per share reflects the potential dilution of securities by including other potential common stock, including convertible preferred stock, stock options and warrants, in the weighted average number of common shares outstanding for the period, if dilutive. The numerators and denominators used in the computations of basic and dilutive earnings per share are presented in the following table:",
+   "prose_after": "For the three months ended September 30, 2011 and 2010, the number of securities was 6,773,029 and 0, respectively, and was not included in the diluted EPS because the effect would have been anti-dilutive.\nFor the nine months ended September 30, 2011 and 2010, the number of securities was 6,773,029 and 0, respectively, and was not included in the diluted EPS because the effect would have been anti-dilutive.\n17. Segment Information\nThe Company applies the provisions of ASC 280, \"Disclosures about Segments of an Enterprise and Related Information\". The Company views its operations and manages its business as [ ]\u2022e segment: the operation of internet cafe chains. Factors used to identify the Company's single operating segment include the organizational structure of the Company and the financial information available for evaluation by the chief operating decision-maker in making decisions about how to allocate resources and assess performance. The Company operates in one geographical area, the PRC.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "As percentage",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As percentage",
+     "",
+     "",
+     "change",
+     "",
+     "",
+     "change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "8,608,066",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "5,840,453",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "2,767,613",
+     "",
+     "",
+     "47",
+     "%"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "5,112,773",
+     "",
+     "",
+     "59",
+     "%",
+     "",
+     "3,130,304",
+     "",
+     "",
+     "54",
+     "%",
+     "",
+     "1,982,469",
+     "",
+     "",
+     "63",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "3,495,293",
+     "",
+     "",
+     "41",
+     "%",
+     "",
+     "2,710,149",
+     "",
+     "",
+     "46",
+     "%",
+     "",
+     "785,144",
+     "",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "655,275",
+     "",
+     "",
+     "8",
+     "%",
+     "",
+     "75,906",
+     "",
+     "",
+     "1",
+     "%",
+     "",
+     "579,369",
+     "",
+     "",
+     "763",
+     "%"
+    ],
+    [
+     "Reorganizational expenses",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "435,086",
+     "",
+     "",
+     "7",
+     "%",
+     "",
+     "(435,086)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "655,275",
+     "",
+     "",
+     "8",
+     "%",
+     "",
+     "510,992",
+     "",
+     "",
+     "9",
+     "%",
+     "",
+     "144,283",
+     "",
+     "",
+     "28",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "2,840,018",
+     "",
+     "",
+     "33",
+     "%",
+     "",
+     "2,199,157",
+     "",
+     "",
+     "38",
+     "%",
+     "",
+     "640,861",
+     "",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-operating income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments - day-one loss",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative financial instrument\n\n - preferred stock",
+     "",
+     "203,607",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "203,607",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Change in fair value of derivative financial instrument\n\n - warrants",
+     "",
+     "129,125",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "129,125",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Interest income",
+     "",
+     "6,953",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "1,827",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "5,126",
+     "",
+     "",
+     "281",
+     "%"
+    ],
+    [
+     "Interest expenses",
+     "",
+     "(2,662)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(2,402)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(260)",
+     "",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "Other expenses",
+     "",
+     "(80)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(10)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(70)",
+     "",
+     "",
+     "700",
+     "%"
+    ],
+    [
+     "Total non-operating income (expenses)",
+     "",
+     "336,943",
+     "",
+     "",
+     "4",
+     "%",
+     "",
+     "(585)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "337,528",
+     "",
+     "",
+     "(57,697)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "3,176,961",
+     "",
+     "",
+     "38",
+     "%",
+     "",
+     "2,198,572",
+     "",
+     "",
+     "38",
+     "%",
+     "",
+     "978,389",
+     "",
+     "",
+     "45",
+     "%"
+    ],
+    [
+     "Income taxes",
+     "",
+     "795,332",
+     "",
+     "",
+     "9",
+     "%",
+     "",
+     "572,302",
+     "",
+     "",
+     "10",
+     "%",
+     "",
+     "223,030",
+     "",
+     "",
+     "39",
+     "%"
+    ],
+    [
+     "Net income attributable to China Internet Caf\u00e9 Holdings Group, Inc.",
+     "$",
+     "2,381,629",
+     "",
+     "",
+     "28",
+     "%",
+     "$",
+     "1,626,270",
+     "",
+     "",
+     "28",
+     "%",
+     "",
+     "755,358",
+     "",
+     "",
+     "46",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend on preferred stock",
+     "",
+     "(72,729)",
+     "",
+     "",
+     "(1)",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(72,729)",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Net income attributable to China Internet eCaf\u00e9 Holdings Group, Inc. Common stockholders",
+     "",
+     "2,308,900",
+     "",
+     "",
+     "27",
+     "%",
+     "",
+     "1,626,270",
+     "",
+     "",
+     "28",
+     "%",
+     "",
+     "682,630",
+     "",
+     "",
+     "42",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "2,381,629",
+     "",
+     "",
+     "28",
+     "%",
+     "",
+     "1,626,270",
+     "",
+     "",
+     "28",
+     "%",
+     "",
+     "755,358",
+     "",
+     "",
+     "46",
+     "%"
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "281,243",
+     "",
+     "",
+     "3",
+     "%",
+     "",
+     "209,872",
+     "",
+     "",
+     "4",
+     "%",
+     "",
+     "71,371",
+     "",
+     "",
+     "34",
+     "%"
+    ],
+    [
+     "Net Comprehensive income",
+     "$",
+     "2,662,872",
+     "",
+     "",
+     "31",
+     "%",
+     "$",
+     "1,836,142",
+     "",
+     "",
+     "31",
+     "%",
+     "",
+     "826,730",
+     "",
+     "",
+     "45",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For The three Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1018,
+    "end_line": 1067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "As a condition to the Offering, we agreed to grant certain registration rights to the Investors pursuant to a Registration Rights Agreement dated February 22, 2011. We agreed to register for resale with the Securities and Exchange Commission (i) the shares of Common Stock issuable upon conversion of the Preferred Shares (4,274,703); (ii) the Common Shares (474,967); (iii) the shares of Common Stock issuable upon exercise of the Warrants (2,498,326); and (iv) any securities issued or issuable upon any stock split, dividend or other distribution, recapitalization or similar event with respect to the foregoing.\nFrom January through August of this year, we have opened 13 internet caf\u00e9s. As a result, we currently own 57 internet caf\u00e9s within the city of Shenzhen in Guangdong Province, PRC.\nResults of Operations for the three months ended September 30, 2011\nThe following tables set forth key components of our results of operations for the periods indicated, in dollars and as a percentage of revenue.\nThe following sets forth certain information of the Company\u2019s income statement for the three months ended September 30, 2011 and 2010.",
+   "prose_after": "Comparison of Three Months Ended September 30, 2011 and 2010\nRevenue. Our revenue is primarily generated from sales of prepaid IC cards. Sales revenue increased by approximately $2.8 million, or 47%, to $8.6 million for the three months ended September 30, 2011 from $5.8 million for the same period in 2010. The increase was mainly due to the revenue generated by the new caf\u00e9s opened in 2011. Management expects this trend to continue in the fourth quarter of 2011 as we continue to focus on organic growth within Shenzhen while simultaneously pursuing options for expansion through establishment and acquisition in other provinces.\nCost of Revenue. Our cost of sales is primarily composed of depreciation and amortization, salary, rent, utility business tax and surcharge. Our cost of sales increased approximately $2.0 million, or 63%, to approximately $5.1 million for the period ended September 30, 2011 from approximately $3.1 million during the same period in 2010. The increase was mainly attributable to increased labor cost and taxes in 2011 as compared to the same period in 2010. During 2011, the increased business tax was a direct result of the higher cost generated from the business. We expect this trend to continue in 2011 as we continue to expand our revenue base. In addition, we expect to slightly increase our average employee salary as the Shenzhen Government moves forward with its plan to increase the basic local income level.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "As percentage",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As percentage",
+     "",
+     "",
+     "change",
+     "",
+     "",
+     "change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "23,722,727",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "14,142,866",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "9,579,861",
+     "",
+     "",
+     "68",
+     "%"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "14,180,296",
+     "",
+     "",
+     "60",
+     "%",
+     "",
+     "7,797,869",
+     "",
+     "",
+     "55",
+     "%",
+     "",
+     "6,382,427",
+     "",
+     "",
+     "82",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "9,542,431",
+     "",
+     "",
+     "40",
+     "%",
+     "",
+     "6,344,997",
+     "",
+     "",
+     "45",
+     "%",
+     "",
+     "3,197,434",
+     "",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,986,821",
+     "",
+     "",
+     "8",
+     "%",
+     "",
+     "351,888",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "1,634,993",
+     "",
+     "",
+     "465",
+     "%"
+    ],
+    [
+     "Reorganizational expenses",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "435,086",
+     "",
+     "",
+     "3",
+     "%",
+     "",
+     "(435,086)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,986,821",
+     "",
+     "",
+     "8",
+     "%",
+     "",
+     "786,974",
+     "",
+     "",
+     "6",
+     "%",
+     "",
+     "1,199,847",
+     "",
+     "",
+     "152",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "7,555,610",
+     "",
+     "",
+     "32",
+     "%",
+     "",
+     "5,558,023",
+     "",
+     "",
+     "39",
+     "%",
+     "",
+     "1,997,587",
+     "",
+     "",
+     "36",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-operating income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments - day-one loss",
+     "",
+     "(1,120,072)",
+     "",
+     "",
+     "(5)",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,120,072)",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Change in fair value of derivative financial instrument\n\n - preferred stock",
+     "",
+     "492,755",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "492,755",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Change in fair value of derivative financial instrument\n\n - warrants",
+     "",
+     "309,529",
+     "",
+     "",
+     "1",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "309,529",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Interest income",
+     "",
+     "12,055",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "4,287",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "7,768",
+     "",
+     "",
+     "181",
+     "%"
+    ],
+    [
+     "Interest expenses",
+     "",
+     "(7,826)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(7,115)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(711)",
+     "",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "Other expenses",
+     "",
+     "(552)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(43)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(509)",
+     "",
+     "",
+     "1184",
+     "%"
+    ],
+    [
+     "Total non-operating income (expenses)",
+     "",
+     "(314,111)",
+     "",
+     "",
+     "(1)",
+     "%",
+     "",
+     "(2,871)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "(311,240)",
+     "",
+     "",
+     "10841",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "7,241,499",
+     "",
+     "",
+     "31",
+     "%",
+     "",
+     "5,555,152",
+     "",
+     "",
+     "39",
+     "%",
+     "",
+     "1,686,347",
+     "",
+     "",
+     "30",
+     "%"
+    ],
+    [
+     "Income taxes",
+     "",
+     "2,167,718",
+     "",
+     "",
+     "9",
+     "%",
+     "",
+     "1,340,823",
+     "",
+     "",
+     "9",
+     "%",
+     "",
+     "826,895",
+     "",
+     "",
+     "62",
+     "%"
+    ],
+    [
+     "Net income attributable to China Internet Caf\u00e9 Holdings Group, Inc.",
+     "",
+     "5,073,781",
+     "",
+     "",
+     "21",
+     "%",
+     "$",
+     "4,214,329",
+     "",
+     "",
+     "30",
+     "%",
+     "",
+     "859,452",
+     "",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend on preferred stock",
+     "",
+     "(174,707)",
+     "",
+     "",
+     "(1)",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(174,707)",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Net income attributable to China Internet Caf\u00e9 Holdings Group, Inc. Common stockholders",
+     "",
+     "4,899,074",
+     "",
+     "",
+     "21",
+     "%",
+     "",
+     "4,214,329",
+     "",
+     "",
+     "30",
+     "%",
+     "",
+     "684,745",
+     "",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "5,073,781",
+     "",
+     "",
+     "21",
+     "%",
+     "",
+     "4,214,329",
+     "",
+     "",
+     "30",
+     "%",
+     "",
+     "859,452",
+     "",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "696,354",
+     "",
+     "",
+     "3",
+     "%",
+     "",
+     "229,549",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "466,805",
+     "",
+     "",
+     "203",
+     "%"
+    ],
+    [
+     "Net Comprehensive income",
+     "$",
+     "5,770,135",
+     "",
+     "",
+     "24",
+     "%",
+     "$",
+     "4,443,878",
+     "",
+     "",
+     "31",
+     "%",
+     "",
+     "1,326,257",
+     "",
+     "",
+     "30",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For The Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1096,
+    "end_line": 1147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Income Taxes. Our income taxes increased by almost $0.22 million during the three months ended September 30, 2011 to approximately $0.80 million from approximately $0.57 million during the same period in 2010. The primary reasons for the increase of income taxes was the higher taxable income generated by the opening of new internet caf\u00e9s and an increase in tax rate.\nNet Income. Our net income increased by approximately $0.76 million, or 46%, to approximately $2.38million during the three months ended September 30, 2011 from approximately $1.63 million during the same period in 2010 as a result of the factors described above. We expect to generate higher net profit after the expansion of our business in the fourth quarter of 2011.\nResults of Operations for the nine months ended September 30, 2011\nThe following tables set forth key components of our results of operations for the periods indicated, in dollars and as a percentage of revenue.\nThe following sets forth certain information of the Company\u2019s income statement for the nine months ended September 30, 2011 and 2010.",
+   "prose_after": "Comparison of Nine months Ended September 30, 2011 and 2010\nRevenue. Our revenue is primarily generated from sales of prepaid IC cards. Sales revenue increased by approximately $9.6 million, or 68%, to $23.7 million for the nine months ended September 30, 2011 from $14.1 million for the same period in 2010. The increase was mainly due to the revenue generated by the new caf\u00e9s opened in the year of 2011. Management expects this trend to continue in the fourth quarter of 2011 as we continue to focus on organic growth within Shenzhen while simultaneously pursuing options for expansion through establishment and acquisition in other provinces.\nCost of Revenue. Our cost of sales is primarily composed of depreciation and amortization, salary, rent, utility business tax and surcharge. Our cost of sales increased approximately $6.4 million, or 82%, to approximately $14.2 million for the period ended September 30, 2011 from approximately $7.80 million during the same period in 2010. The increase was mainly attributable to increased labor cost and taxes in 2011 as compared to the same period in 2010. During 2011, the increased business tax was a direct cause of the higher costs generated by the business. We expect this trend to continue in 2011 as we continue to expand our revenue base. In addition, we expect that our operating expenses will increase because we intend to implement a slight increase in salaries in the fourth quarter of 2011 due to the adjustment of the basic income level by the Shenzhen Government.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months Ended\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "12,998,854",
+     "$",
+     "6,008,299",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "(2,293,818)",
+     "",
+     "(3,332,067)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "5,675,614",
+     "",
+     "553,054",
+     ""
+    ],
+    [
+     "Effect of Foreign currency translation on cash and cash equivalents",
+     "",
+     "410,979",
+     "",
+     "117,906",
+     ""
+    ],
+    [
+     "Net cash flows",
+     "",
+     "16,791,630",
+     "",
+     "3,347,192",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine months Ended\n\nSeptember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1176,
+    "end_line": 1189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Income Taxes. Our income taxes increased by almost $0.83 million during the nine months ended September 30, 2011 to approximately $2.17 million from approximately $1.34 million during the same period in 2010. The primary reasons for the increase of income taxes was the higher taxable income generated by the opening of new internet caf\u00e9s and an increase in tax rate.\nNet Income. Our net income increased by approximately $0.86 million to approximately $5.07 million during the nine months ended September 30, 2011 from approximately $4.21 million during the same period in 2010 as a result of the factors described above. We expect to generate higher net profit after the expansion of our business in the fourth quarter of 2011.\nLiquidity and Capital Resources\nAs of September 30, 2011, we had cash and cash equivalents of approximately $16.42 million and restricted cash of approximately $0.97 million. The following table provides detailed information about our net cash flow for each financial statement period presented in this report.\nCash Flow",
+   "prose_after": "Operating Activities\nNet cash provided by operating activities was approximately $13.0 million for the nine months ended September 30, 2011, as compared to $6.0 million of net cash provided by operating activities for the same period in 2010. The change was mainly attributable to the change in fair value of derivative financial instruments, deferred revenue, and an amount due to a director. The Company has relied on advances from a director to pay certain public company expenses. Going forward, management intends to pay these expenses using our proceeds from the Offering.\nInvesting Activities\nNet cash used in investing activities was $2.3 million for the nine months ended September 30, 2011, as compared to $3.3 million net cash used in investing activities for the same period in 2010. The change was mainly attributable to the acquisition of property, plant and equipment, as well as the return of a prepayment made to Yunnan Province due to the cancellation of the Company\u2019s plans to establish a subsidiary in Kunming City.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated Useful Lives"
+    ],
+    [
+     "Leasehold improvement",
+     "5 years"
+    ],
+    [
+     "Caf\u00e9 computer equipment and hardware",
+     "5 years"
+    ],
+    [
+     "Caf\u00e9 furniture and fixtures",
+     "5 years"
+    ],
+    [
+     "Office furniture, fixtures and equipments",
+     "5 years"
+    ],
+    [
+     "Motor vehicles",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated Useful Lives"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1226,
+    "end_line": 1235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "The Company also records revenue from commission received from the sale of third parties on-line gaming cards, snacks and drinks. Commission revenue amounting to 20% of the value of the on-line gaming cards, snacks and drinks is recognized at the time the items are sold to customers.\nCost of goods sold\nCost of goods sold consists primarily of depreciation of each internet caf\u00e9\u2019s computer equipment and hardware and overhead associated with the internet caf\u00e9s including rental payments, utilities, business taxes and surcharges. Our internet surfing business tax is 20% on gross revenue generated from our internet caf\u00e9s. Our other surcharges are an education surcharge of 3%, city development surcharge of 1%, a culture development surcharge of 3%, and a snacks and drinks business tax of 5%. All surcharges are calculated on the basis of business tax amount.\nProperty, plant and equipment\nProperty and equipment, comprising computer equipment and hardware, leasehold improvements, office furniture and vehicles are stated at cost less accumulated depreciation. Depreciation is computed using the straight-line method over the estimated useful lives listed below.",
+   "prose_after": "Leasehold improvements mainly result from decoration expenses. All of our lease contracts state lease terms of 5 years and leasehold improvements are amortized over 5 years, which represents the shorter of useful life and lease term.\nDeferred Revenue\nDeferred revenue represents unused balances of the prepaid amounts from the IC cards that are unused balance. The Outstanding customer balances are $1,964,584 and $579,822 as at September 30, 2011 and December 31, 2010, respectively, and are included in deferred revenue on the balance sheets. Management has evaluated the deferred revenue balance and has determined any potential revenue from the unused balance to be immaterial as of the quarter ended September 30, 2011.\nComprehensive income\nThe Company follows the FASB\u2019s accounting standards. Comprehensive income is defined as the change in equity of a company during a period from transactions and other events and circumstances excluding transactions resulting from investments from owners and distributions to owners. For the Company, comprehensive income for the periods presented includes net income and foreign currency translation adjustments.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1207,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Year end RMB : USD exchange rate",
+     "",
+     "6.4630",
+     "",
+     "6.8060"
+    ],
+    [
+     "Nine months average RMB : USD exchange rate",
+     "",
+     "6.4884",
+     "",
+     "6.8164"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1258,
+    "end_line": 1264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Income taxes are provided on an asset and liability approach for financial accounting and reporting of income taxes. Current tax is based on the profit or loss from ordinary activities adjusted for items that are non-assessable or disallowable for income tax purpose and is calculated using tax rates that have been enacted or substantively enacted at the balance sheet date. Deferred income tax liabilities or assets are recorded to reflect the tax consequences in future differences between the tax basis of assets and liabilities and the financial reporting amounts at each year-end. A valuation allowance is recognized if it is more likely than not that some portion, or all, of a deferred tax asset will not be realized.\nForeign currency translation\nAssets and liabilities of the Company with a functional currency other than US$ are translated into US$ using period end exchange rates. Income and expense items are translated at the average exchange rates in effect during the period. Foreign currency translation differences are included as a component of Accumulated Other Comprehensive Income in Stockholders\u2019 Equity.\nThe exchange rates used to translate amounts in RMB into USD for the purposes of preparing the consolidated financial statements were as follows:",
+   "prose_after": "The RMB is not freely convertible into foreign currency and all foreign exchange transactions must take place through authorized institutions. No representation is made that the RMB amounts could have been, or could be, converted into USD at the rates used in translation.\nRecently issued accounting pronouncements\nAccounting Standards Codification\nIn June 2009, the FASB issued a standard that established the FASB Accounting Standards Codification (the \u201cASC\u201d), which effectively amended the hierarchy of U.S. generally accepted accounting principles (\u201cGAAP\u201d) and established only two levels of GAAP, authoritative and non-authoritative. All previously existing accounting standard documents were superseded, and the ASC became the single source of authoritative, nongovernmental GAAP, except for rules and interpretive releases of the Securities and Exchange Commission (\u201cSEC\u201d), which are sources of authoritative GAAP for SEC registrants. All other non-grandfathered, non-SEC accounting literature not included in the ASC became non-authoritative. The ASC was intended to provide access to the authoritative guidance related to a particular topic in one place. New guidance issued subsequent to June 30, 2009 will be communicated by the FASB through Accounting Standards Updates. The ASC was effective for financial statements for interim or annual reporting periods ending after September 15, 2009. We adopted and applied the provisions of the ASC for the Company\u2019s fiscal year ended December 31, 2009, and have eliminated references to pre-ASC accounting standards throughout the financial statements. The adoption of the ASC did not have a material impact on the Company\u2019s financial statements.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1237,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1266,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Title of Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Principal Executive Officer and Principal Financial Officer pursuant to U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Schema Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Calculation Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Label Linkbase Document **"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Presentation Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Definition Linkbase Document**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1331,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Not Applicable.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nNone.\nItem 3. Defaults Upon Senior Securities.\nNone.\nItem 4. (Removed and Reserved).\nItem 5. Other Information.\nNot applicable.\nItem 6. Exhibits.\nCopies of the following documents are included as exhibits to this report pursuant to Item 601 of Regulation S-K.",
+   "prose_after": "* The Exhibits attached to this Form 10-Q shall not be deemed \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934 (the \"Exchange Act\") or otherwise subject to liability under that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as expressly set forth by specific reference in such filing.\n** Attached as Exhibit 101 to this report are the following financial statements from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2011 formatted in XBRL (eXtensible Business Reporting Language): (i) the Condensed Consolidated Balance Sheets, (ii) the Unaudited Condensed Consolidated Statements of Income and Comprehensive Income, (iii) the Unaudited Condensed Consolidated Statements of Cash Flows, and (iv) related notes to these financial statements tagged as blocks of text. The XBRL-related information in Exhibit 101 to this Quarterly Report on Form 10-Q shall not be deemed \u201cfiled\u201d or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, and is not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of those sections.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1302,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CHINA INTERNET CAFE HOLDINGS\n\nGROUP, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: November 21, 2011",
+     ""
+    ],
+    [
+     "",
+     "/s/ Dishan Guo"
+    ],
+    [
+     "",
+     "Dishan Guo"
+    ],
+    [
+     "",
+     "Chief Executive Officer, President (Principal"
+    ],
+    [
+     "",
+     "Executive Officer) and Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "CHINA INTERNET CAFE HOLDINGS\n\nGROUP, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1365,
+    "end_line": 1378
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "** Attached as Exhibit 101 to this report are the following financial statements from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2011 formatted in XBRL (eXtensible Business Reporting Language): (i) the Condensed Consolidated Balance Sheets, (ii) the Unaudited Condensed Consolidated Statements of Income and Comprehensive Income, (iii) the Unaudited Condensed Consolidated Statements of Cash Flows, and (iv) related notes to these financial statements tagged as blocks of text. The XBRL-related information in Exhibit 101 to this Quarterly Report on Form 10-Q shall not be deemed \u201cfiled\u201d or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, and is not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of those sections.\nSIGNATURES\nIn accordance with the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1378,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

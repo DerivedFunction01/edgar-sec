@@ -1,0 +1,7803 @@
+{
+ "accession": "0001415889-14-000926",
+ "cik": "0001402785",
+ "form": "10-K",
+ "filing_date": "2014-03-25",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "fluoropharma10k_dec312013.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "20-8325616"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2013\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE EXCHANGE ACT\nFor the transition period from ________________ to _______________\n333-147193\n(Commission file number)\nFluoroPharma Medical, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "8 Hillside Avenue, Suite 207\nMontclair, NJ 07042\n(973) 744-1565\n(Address and telephone number of principal executive offices)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I.",
+     "FINANCIAL INFORMATION",
+     "Page\n\nNumber"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "21"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "21"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market For Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "22"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "23"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "27"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "27"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "27"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "27"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "28"
+    ],
+    [
+     "PART III.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, and Corporate Governance",
+     "28"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "34"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "37"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "38"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "42"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of the registrant\u2019s knowledge, in the definitive proxy or information statement incorporated by reference in Part III of this Form 10-K or amendment to Form 10-K. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a small reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]                  Accelerated filer [ ]\nNon-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates as of June 28, 2013, was $10,129,936.\nAs of March 10, 2014, there were 27,745,019 shares of common stock outstanding.\nIndex",
+   "prose_after": "-i-\nFORWARD LOOKING STATEMENTS\nThis Annual Report on Form 10-K (including the section regarding Management's Discussion and Analysis or Plan of Operation) contains forward-looking statements regarding our business, financial condition, results of operations and prospects. Words such as \"expects,\" \"anticipates,\" \"intends,\" \"plans,\" \"believes,\" \"seeks,\" \"estimates\" and similar expressions or variations of such words are intended to identify forward-looking statements, but are not deemed to represent an all-inclusive means of identifying forward-looking statements as denoted in this Annual Report on Form 10-K. Additionally, statements concerning future matters are forward-looking statements.\nAlthough forward-looking statements in this Annual Report on Form 10-K reflect the good faith judgment of our management, such statements can only be based on facts and factors currently known by us. Consequently, forward-looking statements are inherently subject to risks and uncertainties and actual results and outcomes may differ materially from the results and outcomes discussed in or anticipated by the forward-looking statements. Factors that could cause or contribute to such differences in results and outcomes include, without limitation, those specifically addressed under the heading \"Risks Factors\" below, as well as those discussed elsewhere in this Annual Report on Form 10-K. Readers are urged not to place undue reliance on these forward-looking statements, which speak only as of the date of this Annual Report on Form 10-K. We file reports with the United States Securities and Exchange Commission (\"SEC\"). Our electronic filings with the SEC (including our Annual Reports on Form 10-K, quarterly reports on Form 10-Q and current reports on Form 8-K, and any amendments to these reports) are available free of charge on the SEC\u2019s website at http://www.sec.gov. You can also read and copy any materials we file with the SEC at the SEC's Public Reference Room at 100 F Street, NE, Washington, DC 20549. You can obtain additional information about the operation of the Public Reference Room by calling the SEC at 1-800-SEC-0330. In addition, the SEC maintains an Internet site (www.sec.gov) that contains reports, proxy and information statements, and other information regarding issuers that file electronically with the SEC, including us.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2013",
+     "",
+     "High",
+     "",
+     "Low"
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.91",
+     "$",
+     "0.77"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "0.84",
+     "$",
+     "0.55"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.70",
+     "$",
+     "0.52"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.67",
+     "$",
+     "0.51"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.01",
+     "$",
+     "0.70"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "0.85",
+     "$",
+     "0.51"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.10",
+     "$",
+     "0.71"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.99",
+     "$",
+     "0.67"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 625,
+    "end_line": 639
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "In July 2013, an action was filed against us in the United States District Court for the District of Nevada. The action, Todd Nelson v. Fluoropharma Medical, Inc. and Does 1 through 10, No. 13 CV 01152 JAD CWH, alleges that the plaintiff suffered losses attributable to our refusal to honor certain stock options after February 28, 2012. Plaintiff seeks at least $325,200 in damages, as well as punitive and exemplary damages, prejudgment interest, and costs. On August 16, 2013, we filed a motion to dismiss the complaint. We are currently awaiting the judge\u2019s ruling on the motion.\nWe are not aware of any other material pending or threatened legal proceeding against us.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nPART II\nItem 5. Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nOur common stock is quoted on the OTC.QB under the symbol \u201cFPMI\u201d. The following table sets forth, for the calendar periods indicated the range of the high and low last reported of the Company\u2019s common stock, as reported by the OTC.QB. The quotations represent inter-dealer prices without retail mark-ups, mark-downs or commissions, and may not necessarily represent actual transactions. The quotations may be rounded for presentation.",
+   "prose_after": "As of March 18, 2014, we had approximately 154 stockholders of record. Our transfer agent is VStock Transfer, LLC, Cedarhurst, New York.\nDividend Policy\nWe have not previously paid any cash dividends on our common stock and do not anticipate or contemplate paying dividends on our common stock in the foreseeable future. We currently intend to utilize all available funds to develop our business. We can give no assurances that we will ever have excess funds available to pay dividends.\nUnregistered Sales of Equity Securities\nEquity Compensation Plan Information\nThe following table reflects, as of December 31, 2013, compensation plans pursuant to which the Company is authorized to issue options, warrants or other rights to purchase shares of its common stock, including the number of shares issuable under outstanding options, warrants and rights issued under the plans and the number of shares remaining available for issuance under the plans:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights (a)",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights (b)",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a)) (c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by shareholders",
+     "",
+     "4,536,928",
+     "$",
+     "0.68",
+     "",
+     "1,938,822"
+    ],
+    [
+     "Equity compensation plans not approved by shareholders",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "Total",
+     "",
+     "4,536,928",
+     "$",
+     "0.68",
+     "",
+     "1,938,822"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "As of March 18, 2014, we had approximately 154 stockholders of record. Our transfer agent is VStock Transfer, LLC, Cedarhurst, New York.\nDividend Policy\nWe have not previously paid any cash dividends on our common stock and do not anticipate or contemplate paying dividends on our common stock in the foreseeable future. We currently intend to utilize all available funds to develop our business. We can give no assurances that we will ever have excess funds available to pay dividends.\nUnregistered Sales of Equity Securities\nEquity Compensation Plan Information\nThe following table reflects, as of December 31, 2013, compensation plans pursuant to which the Company is authorized to issue options, warrants or other rights to purchase shares of its common stock, including the number of shares issuable under outstanding options, warrants and rights issued under the plans and the number of shares remaining available for issuance under the plans:",
+   "prose_after": "Item 6. Selected Financial Data.\nNot required for smaller reporting companies.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThis report contains forward-looking statements. These forward-looking statements include, without limitation, statements containing the words \u201cbelieves,\u201d \u201canticipates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cprojects,\u201d \u201cwill,\u201d and other words of similar import or the negative of those terms or expressions. Forward-looking statements in this report include, but are not limited to, expectations of future levels of research and development spending, general and administrative spending, levels of capital expenditures and operating results, sufficiency of our capital resources, our intention to pursue and consummate strategic opportunities available to us, including sales of certain of our assets. Forward-looking statements subject to certain known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. These risks and uncertainties include, but are not limited to those described in \u201cRisk Factors\u201d of the reports filed with the SEC.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Johan M. (Thijs) Spoor",
+     "41",
+     "Chief Executive Officer, President, Chairman and Director"
+    ],
+    [
+     "Tamara Rhein",
+     "41",
+     "Chief Financial Officer"
+    ],
+    [
+     "Walter Witoshkin",
+     "68",
+     "Director"
+    ],
+    [
+     "Peter S. Conti, M.D., Ph.D.",
+     "57",
+     "Director"
+    ],
+    [
+     "Lawrence Atinsky",
+     "44",
+     "Director"
+    ],
+    [
+     "Joseph A. Pierro, M.D.",
+     "56",
+     "Director"
+    ],
+    [
+     "Andrew H. Sassine",
+     "49",
+     "Director*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Our management evaluated the effectiveness of the Company\u2019s internal control over financial reporting as of December 31, 2013. In making this assessment, our management used the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (COSO) in Internal Control \u2014 Integrated Framework. Based on this evaluation, our management, with the participation of the CEO, concluded that, as of December 31, 2013, our internal control over financial reporting was effective.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to rules of the SEC that permits us to provide only management\u2019s report in this annual report.\nChanges in Internal Control over Financial Reporting. There were no changes in our internal control over financial reporting that occurred during the fourth quarter of the year ended December 31, 2013 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information\nNone.\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following persons are our executive officers and directors, and hold the positions set forth opposite their respective names.",
+   "prose_after": "* Effective as of April 1, 2014.\nOur directors hold office until the earlier of their death, resignation or removal or until their successors have been qualified.\nJohan M. (Thijs) Spoor has been our president, chief executive officer and a member of our Board since February 14, 2011, and has been the Chairman of our Board since June 14, 2012. Mr. Spoor was the chief financial officer for Sunstone BioSciences from February 2010 through September 2010. From December 2008 until joining Sunstone BioSciences, he worked at Oliver Wyman as a consultant to pharmaceutical and medical device companies. Mr. Spoor was an equity research analyst at J.P. Morgan from July 2007 through October 2008 and at Credit Suisse from November 2005 through July 2007, covering the biotechnology and medical device industries. Prior to his career on Wall Street, Mr. Spoor worked in the pharmaceutical industry spending 11 years with Amersham / GE Healthcare where he worked in 7 countries in a variety of roles including setting up GMP facilities, accountability for the nuclear cardiology portfolio and most recently as the Director of New Product Opportunities leading the PET strategic plan. Mr. Spoor also sits on the board of directors of MetaStat, Inc. (MTST), AtheroNova, Inc. (AHRO) and Protea Biosciences Group, Inc. He holds a Nuclear Pharmacy degree from the University of Toronto as well as an M.B.A. from Columbia University. We believe that Mr. Spoor\u2019s background in nuclear pharmacy, finance and accounting and as a healthcare research analyst, as well as his experience at both large and small healthcare companies, provides him with a broad familiarity of the range of issues confronting our company, which makes him a qualified member of our Board.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 820,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 854,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name & Principal Position",
+     "Year",
+     "Salary ($)",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation($)",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)"
+    ],
+    [
+     "Johan M. (Thijs) Spoor",
+     "2013",
+     "293,750",
+     "",
+     "50,000",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "343,750"
+    ],
+    [
+     "",
+     "2012",
+     "232,500",
+     "",
+     "30,000",
+     "50,000",
+     "",
+     "324,535",
+     "-",
+     "",
+     "-",
+     "637,035"
+    ],
+    [
+     "",
+     "2011",
+     "183,867",
+     "",
+     "-",
+     "57,600",
+     "",
+     "1,343,040",
+     "-",
+     "",
+     "-",
+     "11,584,507"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tamara Rhein",
+     "2013",
+     "100,000",
+     "",
+     "10,000",
+     "10,000",
+     "",
+     "45,610",
+     "-",
+     "",
+     "-",
+     "165,610"
+    ],
+    [
+     "",
+     "2012 (1)",
+     "85,000",
+     "",
+     "10,000",
+     "10,000",
+     "",
+     "41,260",
+     "-",
+     "",
+     "-",
+     "146,260"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 973,
+    "end_line": 986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "In December 2010, Mr. Spoor was granted 600,000 common stock options with an exercise price of $0.50. 150,000 of these options vested immediately and the remaining options will vest based on milestones related to the completion of our clinical trials. During 2011, Mr. Spoor was granted an additional 600,000 common stock options with an exercise price of $0.50. These options vest equally over a four-year period. During 2012, Mr. Spoor was granted an additional 600,000 common stock options with an exercise price of $0.84. These options vest equally over a three-year period. During 2012, Ms. Rhein was granted 80,000 common stock options with an exercise price of $0.83 which vest based on milestones related to the completion of our clinical trials. During 2013, Ms. Rhein was granted 100,000 common stock options with an exercise price of $0.83. These options vest equally over a three-year period.\nCompensation Committee Interlocks and Insider Participation\nMembers of our compensation committee of the board of directors were Lawrence Atinsky, Walter Witoshkin and Peter Conti. No member of our compensation committee was, or has been, our officer or employee.\nNo member of the compensation committee has a relationship that would constitute an interlocking relationship with our executive officers or directors or another entity.\nItem 11. Executive Compensation\nThe following table sets forth the annual and long-term compensation paid to our chief executive officer and the other executive officers who earned more than $100,000 per year at the end of the last three completed fiscal years. We refer to all of these officers collectively as our \u201cnamed executive officers.\u201d\nSummary Compensation Table",
+   "prose_after": "(1) Ms. Rhein was appointed as our chief financial officer on August 16, 2012.\nOutstanding Equity Awards at Fiscal Year End\nThe following table sets forth information with respect to grants of options to purchase our common stock to the named executive officers at December 31, 2013.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of securities underlying unexercised options (#) exercisable",
+     "",
+     "Number of securities underlying unexercised options (#) unexercisable",
+     "",
+     "Equity incentive plan awards: Number of securities underlying unexercised unearned options (#)",
+     "Option exercise price ($)",
+     "",
+     "Option expiration date",
+     "Number of shares or units of stock that have not vested (#)",
+     "Market value of shares or units of stock that have not vested ($)",
+     "Equity incentive plan awards: Number of unearned shares, units or other rights that have not vested (#)",
+     "Equity incentive plan awards: Market or payout value of unearned shares, units or other rights that have not vested ($)"
+    ],
+    [
+     "Johan M. (Thijs) Spoor",
+     "",
+     "150,000",
+     "",
+     "450,000",
+     "",
+     "$",
+     "0.50",
+     "12/03/2020",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "300,000",
+     "",
+     "300,000",
+     "",
+     "$",
+     "0.50",
+     "5/01/2021",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "200,000",
+     "",
+     "400,000",
+     "",
+     "$",
+     "0.84",
+     "9/19/2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tamara Rhein",
+     "",
+     "7,000",
+     "",
+     "3,500",
+     "",
+     "$",
+     "1.05",
+     "12/05/2021",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "80,000",
+     "",
+     "$",
+     "0.83",
+     "6/25/2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "33,333",
+     "",
+     "66,667",
+     "",
+     "$",
+     "0.83",
+     "01/02/2023",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 993,
+    "end_line": 1016
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Ms. Rhein was appointed as our chief financial officer on August 16, 2012.\nOutstanding Equity Awards at Fiscal Year End\nThe following table sets forth information with respect to grants of options to purchase our common stock to the named executive officers at December 31, 2013.",
+   "prose_after": "Employment Agreements with Executive Officers\nJohan M. (Thijs) Spoor:\nOn July 30, 2012, we entered into a three-year employment agreement with Johan M. (Thijs) Spoor to continue to serve as our chief executive officer. Under the agreement, Mr. Spoor will receive a base salary at an annual rate of $305,000, and is entitled to an annual bonus if we meet or exceed criteria adopted by the Board. The target bonus for Mr. Spoor for 2013 is $125,000 upon achievement of 100% of certain criteria set forth in the agreement. Mr. Spoor is also eligible for grants of awards under our 2011 Incentive Plan based upon completion of performance milestones as the Board may determine from time to time with an aggregate target amount of 350,000 shares of common stock.\nUpon termination of Mr. Spoor\u2019s employment prior to expiration of his employment period, he shall be entitled to receive $550,000 payable in either 12 equal monthly installment payments or in a single lump sum, at our discretion, together with the value of any accrued but unused vacation time, the amount of all accrued but previously unpaid base salary through the date of such termination, any expenses incurred. In addition, we have agreed to provide him with all benefits to which he is entitled for 18 months or the full unexpired term of the agreement, whichever is longer, unless Mr. Spoor\u2019s employment is terminated for cause. Additionally, in the event we complete a sales transaction, as defined in the agreement, 100% of Mr. Spoor\u2019s then outstanding options will vest immediately. This agreement contains standard non-competition, non-solicitation, and confidentiality clauses.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Change in Pension Value and Nonqualified Deferred Compensation Earnings",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Walter Witoshkin",
+     "$",
+     "30,000",
+     "",
+     "",
+     "$",
+     "34,207",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "101,000",
+     "$",
+     "165,207"
+    ],
+    [
+     "Peter S. Conti",
+     "$",
+     "30,000",
+     "",
+     "-",
+     "$",
+     "34,207",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "64,207"
+    ],
+    [
+     "Lawrence Atinsky",
+     "$",
+     "30,000",
+     "",
+     "-",
+     "$",
+     "34,207",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "64,207"
+    ],
+    [
+     "Joseph Pierro",
+     "$",
+     "22,500",
+     "",
+     "-",
+     "$",
+     "36,613",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "59,113"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1035,
+    "end_line": 1045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "Effective as of August 22, 2012, we entered into an employment agreement with Ms. Rhein pursuant to which Ms. Rhein serves as our chief financial officer. The agreement is for an initial one year term that shall automatically renew for successive one year increments unless otherwise terminated. Under the agreement, Ms. Rhein will receive a base salary at an annual rate of $130,000, and is entitled to an annual bonus as determined by our Board or compensation committee. Ms. Rhein is also eligible for grants of awards under our 2011 Incentive Plan as the compensation committee may determine from time to time. Upon termination of Ms. Rhein\u2019s employment prior to expiration of her employment period without cause Ms. Rhein shall be entitled to receive (i) all unpaid but due base salary, unpaid bonus and unused vacation days, (ii) benefits received immediately prior to termination for an additional period of six months following termination, (iii) reimbursement of expenses, and (iv) base salary immediately prior to termination for an additional period of six months following termination. The employment agreement contains standard non-competition, non-solicitation, and confidentiality clauses.\nDirector Compensation\nThe following table sets forth certain information concerning compensation paid or accrued to our non-executive directors during the year ended December 31, 2013.",
+   "prose_after": "We pay the non-executive directors a quarterly stipend of $7,500 to compensate them for their time, attendance at board meetings and for phone calls as required.\nEquity Incentive Plan\nOn February 14, 2011, our Board and stockholders adopted the 2011 Equity Incentive Plan (the \u201cPlan\u201d). Under the Plan, awards may take the form of options intended to qualify as incentive stock options under Section 422 of the Internal Revenue Code of 1986 (the \u201cCode\u201d), non-statutory options or restricted stock. The purpose of the Plan is to attract and retain the best available personnel in order to promote the success of our business and to encourage the sense of proprietorship and to stimulate the active interest of such persons in our development and financial success.\nThe Plan initially reserved 6,475,750 shares of common stock for issuance, of which a maximum of 161,250 could be issued as restricted stock. The 2011 Plan provides that on January 1 of each year, commencing on January 1, 2013, the aggregate number of shares available for issuance under the Plan shall be automatically increased so that the number of shares then available for issuance under the Plan will equal the greater of (i) the aggregate number of shares subject to the Plan as of the preceding December 31 and (ii) seven percent (7%) of our total outstanding shares. There are currently 1,938,822 shares reserved for issuance under the Plan. As of December 27, 2013, there were outstanding under the Plan options to purchase 4,536,928 shares and 161,250 shares of restricted stock.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "Number of\n\nShares Beneficially Owned",
+     "",
+     "Percentage Beneficially\n\nOwned (2)",
+     ""
+    ],
+    [
+     "Johan (Thijs) Spoor (3)",
+     "",
+     "939,643",
+     "34",
+     "%"
+    ],
+    [
+     "Tamara Rhein (4)",
+     "",
+     "73,919",
+     "0.3",
+     "%"
+    ],
+    [
+     "Walter Witoshkin (5)",
+     "",
+     "218,345",
+     "0.8",
+     "%"
+    ],
+    [
+     "Peter S. Conti (6)",
+     "",
+     "509,083",
+     "1.8",
+     "%"
+    ],
+    [
+     "Lawrence Atinsky (7)",
+     "",
+     "180,444",
+     "0.7",
+     "%"
+    ],
+    [
+     "Joseph A. Pierro (8)",
+     "",
+     "75,000",
+     "0.3",
+     "%"
+    ],
+    [
+     "Andrew H. Sassine (9)",
+     "",
+     "1,200,000",
+     "4.3",
+     "%"
+    ],
+    [
+     "MKM Opportunity Master Fund, Ltd. (10)",
+     "",
+     "2,117,566",
+     "7.6",
+     "%"
+    ],
+    [
+     "Platinum Long Term Growth VII LLC (11)",
+     "",
+     "1,824,543",
+     "6.6",
+     "%"
+    ],
+    [
+     "All executive officers and directors as a group (7 persons)",
+     "",
+     "1,996,434",
+     "11.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1090,
+    "end_line": 1106
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following tables set forth certain information as of March 10, 2014 regarding the beneficial ownership of our common stock, by (i) each person or entity who, to our knowledge, owns more than 5% of our common stock; (ii) our executive officers; (iii) each director; and (iv) all of our executive officers and directors as a group. Unless otherwise indicated in the footnotes to the following table, each person named in the table has sole voting and investment power and that person\u2019s address is c/o FluoroPharma Medical, Inc., 8 Hillside Avenue, Suite 207, Montclair, N.J. 07042. Shares of common stock subject to options, warrants, or other rights currently exercisable or exercisable within 60 days of March 10, 2014, are deemed to be beneficially owned and outstanding for computing the share ownership and percentage of the stockholder holding such options, warrants or other rights, but are not deemed outstanding for computing the percentage of any other stockholder.",
+   "prose_after": "(1) Unless otherwise indicated in the footnotes to the following table, each person named in the table has sole voting and investment power and that person\u2019s address is c/o FluoroPharma Medical, Inc., 8 Hillside Avenue, Suite 207, Montclair, N.J. 07042.\n(2) Based upon 27,745,019 shares of our common stock issued and outstanding.\n(3) Includes 200,398 shares of common stock, 30,000 shares of common stock issuable upon conversion of Series B Preferred Stock, 59,245 shares of common stock underlying warrants, 450,000 shares of common stock issuable upon exercise of options at $0.50 per share and 200,000 shares of common stock issuable upon exercise of options at $0.84 per share. Does not include 750,000 shares of common stock issuable upon exercise of options at $0.50 per share and 400,000 shares of common stock issuable upon exercise of options at $0.84 per share which are held by Mr. Spoor but not currently exercisable nor exercisable within 60 days of March 10, 2014.\n(4) Includes 10,000 shares of common stock, 12,875 shares of common stock issuable upon conversion of Series B Preferred Stock, 10,711 shares of common stock underlying warrants, 7,000 shares of common stock issuable upon exercise of options at $1.05 per share and 33,333 shares of common stock issuable upon exercise of options at $0.83 per share. Does not include 3,500 shares of common stock issuable upon exercise of options at $1.05 per share, 146,667 shares of common stock issuable upon exercise of options at $0.83 per share and 50,000 shares of common stock issuable upon exercise of options at $0.51which are held by Ms. Rhein but not currently exercisable nor exercisable within 60 days of March 10, 2014. Includes 10,000 shares of common stock, 12,875 shares of common stock issuable upon conversion of Series B Preferred Stock, 10,711 shares of common stock underlying warrants, 7,000 shares of common stock issuable upon exercise of options at $1.05 per share and 33,333 shares of common stock issuable upon exercise of options at $0.83 per share. Does not include 3,500 shares of common stock issuable upon exercise of options at $1.05 per share, 146,667 shares of common stock issuable upon exercise of options at $0.83 per share and 50,000 shares of common stock issuable upon exercise of options at $0.51which are held by Ms. Rhein but not currently exercisable nor exercisable within 60 days of March 10, 2014.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SERVICES",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "67,500",
+     "$",
+     "38,141"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "8,500",
+     "",
+     "8,525"
+    ],
+    [
+     "Tax fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All other fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total fees",
+     "$",
+     "76,000",
+     "$",
+     "46,666"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1138,
+    "end_line": 1150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Prior to moving to our current offices, we utilized space that we leased from a company in which our former chairman and chief scientific officer, David Elmaleh, has an ownership interest. During the years ended December 31, 2011 and 2012, we paid the lessor $34,500 and $22,500, respectively. This lease expired on June 22, 2012.\nDirector independence\nWalter Witoshkin, Lawrence Atinsky, Peter Conti, Andrew Sassine and Joseph Pierro are independent directors, as the term \u201cindependent\u201d is defined by the rules of the NASDAQ Stock Market.\nItem 14. Principal Accounting Fees and Services\nThe following table sets forth fees billed to us by our independent auditors for the years ended 2013 and 2012 for (i) services rendered for the audit of our annual financial statements and the review of our quarterly financial statements, (ii) services rendered that are reasonably related to the performance of the audit or review of our financial statements that are not reported as Audit Fees, and (iii) services rendered in connection with tax preparation, compliance, advice and assistance.",
+   "prose_after": "Our audit committee is responsible for the pre-approval of all audit and permissible non-audit services provided by our principal accountants on a case-by-case basis. Our audit committee has established a policy regarding approval of all audit and permissible non-audit services provided by our principal accountants. Our audit committee pre-approves these services by category and service. Our audit committee has pre-approved all of the services provided by our principal accountants.\nItem 15. Exhibits, Financial Statement Schedules",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1133,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger, dated as of May 16, 2011, by and among FluoroPharma Medical, Inc., FPI Merger Corporation and FluoroPharma, Inc. (Incorporated by reference to the Company\u2019s Current Report on Form 8-K/A filed with the Securities and Exchange Commission on July 12, 2011)."
+    ],
+    [
+     "2.2",
+     "Certificate of Merger, dated May 16, 2011 merging FPI Merger Corporation with and into FluoroPharma, Inc. (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (Incorporated by reference to the Company\u2019s Registration Statement on Form SB-2 filed on November 7, 2007)."
+    ],
+    [
+     "3.2",
+     "Bylaws (Incorporated by reference to the Company\u2019s Registration Statement on Form SB-2 filed on November 7, 2007)."
+    ],
+    [
+     "3.3",
+     "Certificate of Designation of the Relative Rights and Preferences of the Series A Preferred Stock, filed with the Secretary of State of Nevada on May 13, 2011 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011)."
+    ],
+    [
+     "3.4",
+     "Certificate of Designation of the Relative Rights and Preferences of the Series B Preferred Stock, filed with the Secretary of State of Nevada on September 18, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013)."
+    ],
+    [
+     "4.1",
+     "Form of 2012 Warrant (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the SEC on November 21, 2012)."
+    ],
+    [
+     "4.2",
+     "Form of 2011 Warrant (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1173
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit committee is responsible for the pre-approval of all audit and permissible non-audit services provided by our principal accountants on a case-by-case basis. Our audit committee has established a policy regarding approval of all audit and permissible non-audit services provided by our principal accountants. Our audit committee pre-approves these services by category and service. Our audit committee has pre-approved all of the services provided by our principal accountants.\nItem 15. Exhibits, Financial Statement Schedules",
+   "prose_after": "4.3 Form of Warrant (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 4.4 Form of Warrant (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.1+ Exclusive License Agreement with Massachusetts General Hospital dated as of April 27, 2009, as amended (Incorporated by reference to the Company's Registration Statement filed with the Securities and Exchange Commission on Form S-1filed on January 23, 2014). 10.2 Securities Purchase Agreement dated November 19, 2012 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on November 21, 2012). 10.3 Registration Rights Agreement dated November 19, 2012 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on November 21, 2012). 10.4 Form of 2011 Subscription Agreement - Lead Investor (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.5 Form of 2011 Registration Rights Agreement (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.6 Form of Securities Purchase Agreement dated September 18, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 10.7 Form of Registration Rights Agreement dated September 18, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 10.8 Form of Securities Purchase Agreement dated December 31, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.9 Form of Registration Rights Agreement dated December 31, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.10 FluoroPharma Medical, Inc. 2011 Incentive Plan (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.11 Lease Agreement between Hillside Square, LLC and FluoroPharma Medical, Inc. dated as of September 8, 2011 (Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on November 14, 2011). 10.12 Employment Agreement dated July 30, 2012 between the Company and Johan (Thijs) Spoor (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on August 1, 2012). 10.13 Employment Agreement dated August 22, 2012 between the Company and Tamara Rhein (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on August 22, 2012). 10.14* Consulting Agreement dated March 24, 2014 between the Company and Del Mar Consulting Group, Inc.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "14.1",
+     "C Code of Ethics adopted by the Board of Directors (Incorporated by reference to the Company\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on March 16, 2012)."
+    ],
+    [
+     "21",
+     "List of Subsidiaries (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011)."
+    ],
+    [
+     "23.1*",
+     "Consent of Wolf & Company, P.C."
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14 of the Securities Exchange Act of 1934."
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14 of the Securities Exchange Act of 1934."
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to Section 1350."
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to Section 1350."
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "XBRL Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "XBRL Calculation Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "XBRL Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "XBRL Presentation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "XBRL Definition Linkbase Document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1176,
+    "end_line": 1192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "4.3 Form of Warrant (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 4.4 Form of Warrant (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.1+ Exclusive License Agreement with Massachusetts General Hospital dated as of April 27, 2009, as amended (Incorporated by reference to the Company's Registration Statement filed with the Securities and Exchange Commission on Form S-1filed on January 23, 2014). 10.2 Securities Purchase Agreement dated November 19, 2012 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on November 21, 2012). 10.3 Registration Rights Agreement dated November 19, 2012 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on November 21, 2012). 10.4 Form of 2011 Subscription Agreement - Lead Investor (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.5 Form of 2011 Registration Rights Agreement (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.6 Form of Securities Purchase Agreement dated September 18, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 10.7 Form of Registration Rights Agreement dated September 18, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 19, 2013). 10.8 Form of Securities Purchase Agreement dated December 31, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.9 Form of Registration Rights Agreement dated December 31, 2013 (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 7, 2014). 10.10 FluoroPharma Medical, Inc. 2011 Incentive Plan (Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 16, 2011). 10.11 Lease Agreement between Hillside Square, LLC and FluoroPharma Medical, Inc. dated as of September 8, 2011 (Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q filed with the Securities and Exchange Commission on November 14, 2011). 10.12 Employment Agreement dated July 30, 2012 between the Company and Johan (Thijs) Spoor (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on August 1, 2012). 10.13 Employment Agreement dated August 22, 2012 between the Company and Tamara Rhein (Incorporated by reference to the Company's Current Report on Form 8-K filed with the Securities and Exchange Commission on August 22, 2012). 10.14* Consulting Agreement dated March 24, 2014 between the Company and Del Mar Consulting Group, Inc.",
+   "prose_after": "_______________\n* Filed herewith.\n+ Confidential treatment has been granted with respect to portions of this exhibit.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FluoroPharma Medical, Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 24, 2014",
+     "By:",
+     "/s/ Johan M. (Thijs) Spoor",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Johan M. (Thijs) Spoor",
+     ""
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "FluoroPharma Medical, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1205,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "_______________\n* Filed herewith.\n+ Confidential treatment has been granted with respect to portions of this exhibit.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Johan M. (Thijs) Spoor",
+     "March 24, 2014"
+    ],
+    [
+     "Johan M. (Thijs) Spoor",
+     ""
+    ],
+    [
+     "President, Chief Executive Officer, Chairman & Director\n\n(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Tamara Rhein",
+     "March 24, 2014"
+    ],
+    [
+     "Tamara Rhein",
+     ""
+    ],
+    [
+     "Chief Financial Officer\n\n(Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Peter S. Conti",
+     "March 24, 2014"
+    ],
+    [
+     "Peter S. Conti, M.D., Ph.D.",
+     ""
+    ],
+    [
+     "Director",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Lawrence Atinsky",
+     "March 24, 2014"
+    ],
+    [
+     "Lawrence Atinsky",
+     ""
+    ],
+    [
+     "Director",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Walter Witoshkin",
+     "March 24, 2014"
+    ],
+    [
+     "Walter Witoshkin",
+     ""
+    ],
+    [
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1216,
+    "end_line": 1241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Joseph Pierro",
+     "March 24, 2014"
+    ],
+    [
+     "Joseph Pierro, M.D.",
+     ""
+    ],
+    [
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1242,
+    "end_line": 1247
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "FluoroPharma Medical, Inc.\nIndex to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Number"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2013 and 2012",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the periods ended December 31, 2013 and 2012",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity (Deficit) for the periods ended December 31, 2013 and 2012",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the periods ended December 31, 2013 and 2012",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1254,
+    "end_line": 1264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "FluoroPharma Medical, Inc.\nIndex to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors of FluoroPharma Medical, Inc. and Subsidiary\nWe have audited the accompanying consolidated balance sheets of FluoroPharma Medical, Inc. and Subsidiary as of December 31, 2013 and 2012 and the related statements of operations, stockholders\u2019 equity (deficit), and cash flows for the years then ended and for the period June 13, 2003 (inception) to December 31, 2013, except that we did not audit these financial statements for the period from inception (June 13, 2003) to December 31, 2011 which were audited by other auditors whose report dated March 13, 2012, except for Note 15, as to which the date was March 19, 2013, expressed an unqualified opinion on those statements. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1249,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1264,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2013",
+     "",
+     "December 31,\n\n2012",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,143,175",
+     "$",
+     "1,304,088"
+    ],
+    [
+     "Investment in trading securities",
+     "",
+     "634,826",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid expenses & other",
+     "",
+     "52,959",
+     "",
+     "77,310"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,830,960",
+     "",
+     "1,381,398"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "35,429",
+     "",
+     "176,889"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "49,339",
+     "",
+     "55,247"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,915,728",
+     "$",
+     "1,613,534"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "183,298",
+     "$",
+     "137,779"
+    ],
+    [
+     "Derivative warrant liability",
+     "",
+     "2,549,196",
+     "",
+     "-"
+    ],
+    [
+     "Accrued expenses and other",
+     "",
+     "239,673",
+     "",
+     "97,728"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "2,972,167",
+     "",
+     "235,507"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments & Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock Series A; $0.001 par value, 3,500,000 shares designated 2,350,196 and 2,126,574 shares issued and outstanding at December 31, 2013 and 2012, respectively (preference in liquidation of $1,950,663 at December 31, 2013)",
+     "",
+     "2,352",
+     "",
+     "2,127"
+    ],
+    [
+     "Preferred stock Series B; $0.001 par value, 12,000,000 shares designated 5,725,821 and 0 shares issued and outstanding at December 31, 2013 and  2012, respectively (preference in liquidation of $4,703,533 at December 31, 2013)",
+     "",
+     "5,726",
+     "",
+     "-"
+    ],
+    [
+     "Common stock - Class A - $0.001 par value, 100,000,000 shares authorized, 25,675,013 and 24,330,013 shares issued and outstanding at December 31, 2013 and 2012, respectively",
+     "",
+     "25,676",
+     "",
+     "24,331"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "23,084,429",
+     "",
+     "18,242,109"
+    ],
+    [
+     "Deficit accumulated in the development stage",
+     "",
+     "(24,174,622)",
+     "",
+     "(16,890,540)"
+    ],
+    [
+     "Total Stockholders\u2019 Equity  (Deficit)",
+     "",
+     "(1,056,439)",
+     "",
+     "1,378,027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "1,915,728",
+     "$",
+     "1,613,534"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of FluoroPharma Medical, Inc. and Subsidiary as of December 31, 2013 and 2012, and the results of its operations and its cash flows for the years then ended and for the period from inception (June 13, 2003) to December 31, 2013 in conformity with U.S. generally accepted accounting principles.\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the consolidated financial statements, the Company has suffered recurring losses from operations, has a significant accumulated deficit and, at December 31, 2013, the Company did not have sufficient capital to fund its operations. This raises substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regards to these matters are described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Wolf & Company, P.C.\nBoston, Massachusetts\nMarch 24, 2014\nFLUOROPHARMA MEDICAL, INC. and Subisidiary (a development stage company)\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1338,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 13, 2003 (inception) to December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "3,049,591",
+     "",
+     "$",
+     "2,726,224",
+     "",
+     "$",
+     "13,959,968",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "1,312,507",
+     "",
+     "",
+     "1,423,286",
+     "",
+     "",
+     "7,379,570",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "4,362,098",
+     "",
+     "",
+     "4,149,510",
+     "",
+     "",
+     "21,339,538",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(4,362,098)",
+     "",
+     "",
+     "(4,149,510)",
+     "",
+     "",
+     "(21,339,538)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "211",
+     "",
+     "",
+     "767",
+     "",
+     "",
+     "5,307",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "70,525",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "70,525",
+     ""
+    ],
+    [
+     "Gain on debt restructuring",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,358,127",
+     ""
+    ],
+    [
+     "Loss on disposition of fixed assets",
+     "",
+     "-",
+     "",
+     "",
+     "(1,145)",
+     "",
+     "",
+     "(72,695)",
+     ""
+    ],
+    [
+     "Gain on settlement of accounts payable",
+     "",
+     "6,594",
+     "",
+     "",
+     "133,142",
+     "",
+     "",
+     "264,625",
+     ""
+    ],
+    [
+     "Loss on sale of trading securities",
+     "",
+     "(818,365)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(818,365)",
+     ""
+    ],
+    [
+     "Unrealized loss on trading securities",
+     "",
+     "(236,143)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(236,143)",
+     ""
+    ],
+    [
+     "Loss on revaluation and modification of derivative warrant liability",
+     "",
+     "(216,701)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(216,701)",
+     ""
+    ],
+    [
+     "Interest and other expense",
+     "",
+     "(51,351)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(367,677)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense), net",
+     "",
+     "(1,245,230)",
+     "",
+     "",
+     "132,764",
+     "",
+     "",
+     "(12,997)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss Before Provision for Income Taxes",
+     "",
+     "(5,607,328)",
+     "",
+     "",
+     "(4,016,746)",
+     "",
+     "",
+     "(21,352,535)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(5,607,328)",
+     "",
+     "$",
+     "(4,016,746)",
+     "",
+     "$",
+     "(21,352,535)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "",
+     "(1,676,754)",
+     "",
+     "",
+     "(167,945)",
+     "",
+     "",
+     "(2,822,087)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Attributable to Common Stockholders",
+     "$",
+     "(7,284,082)",
+     "",
+     "$",
+     "(4,184,691)",
+     "",
+     "$",
+     "(24,174,622)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per Common Share - Basic and Diluted",
+     "$",
+     "(0.30)",
+     "",
+     "$",
+     "(0.18)",
+     "",
+     "$",
+     "(2.20)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Used in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "per Share Calculation - Basic and Diluted:",
+     "",
+     "24,373,970",
+     "",
+     "",
+     "22,642,792",
+     "",
+     "",
+     "10,978,674",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1338,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock -\n\nSeries A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock -\n\nSeries B",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit Accumulated",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number\n\nof",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number\n\nof",
+     "",
+     "",
+     "",
+     "Number\n\nof",
+     "",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "",
+     "in the Development",
+     "",
+     "",
+     "Stockholders' Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "shares",
+     "",
+     "Amount",
+     "",
+     "shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stage",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "2,696,250",
+     "$",
+     "2,697",
+     "$",
+     "(899)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,798",
+     ""
+    ],
+    [
+     "Issuance of preferred stock",
+     "",
+     "",
+     "206,250",
+     "",
+     "",
+     "206",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "274,793",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "274,999",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(333,146)",
+     "",
+     "",
+     "(333,146)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2004",
+     "",
+     "",
+     "206,250",
+     "",
+     "",
+     "206",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,696,250",
+     "",
+     "2,697",
+     "",
+     "273,894",
+     "",
+     "",
+     "(333,146)",
+     "",
+     "",
+     "(56,349)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of preferred stock for contract",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "termination",
+     "",
+     "",
+     "37,500",
+     "",
+     "",
+     "38",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "49,963",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,001",
+     ""
+    ],
+    [
+     "Issuance of preferred stock",
+     "",
+     "",
+     "187,500",
+     "",
+     "",
+     "188",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "249,813",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "250,001",
+     ""
+    ],
+    [
+     "Issuance of stock options to non-employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "158,803",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "158,803",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(687,576)",
+     "",
+     "",
+     "(687,576)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2005",
+     "",
+     "",
+     "431,250",
+     "",
+     "",
+     "432",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,696,250",
+     "",
+     "2,697",
+     "",
+     "732,472",
+     "",
+     "",
+     "(1,020,722)",
+     "",
+     "",
+     "(285,121)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for consulting",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "24,638",
+     "",
+     "24",
+     "",
+     "23,464",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "23,488",
+     ""
+    ],
+    [
+     "Conversion of\n\npreferred stock\n\nto common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "stock",
+     "",
+     "",
+     "(431,250)",
+     "",
+     "",
+     "(432)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "431,250",
+     "",
+     "432",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock to induce",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "conversion of preferred stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "34,358",
+     "",
+     "35",
+     "",
+     "(35)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock to investor",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,644,255",
+     "",
+     "1,643",
+     "",
+     "1,564,381",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,566,023",
+     ""
+    ],
+    [
+     "Issuance of common stock to employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "28,806",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "28,806",
+     ""
+    ],
+    [
+     "Issuance of common stock to non-employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "511,888",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "511,888",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,999,214)",
+     "",
+     "",
+     "(1,999,214)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2006",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,830,750",
+     "",
+     "4,830",
+     "",
+     "2,860,976",
+     "",
+     "",
+     "(3,019,936)",
+     "",
+     "",
+     "(154,130)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "940,587",
+     "",
+     "942",
+     "",
+     "1,249,058",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,250,000",
+     ""
+    ],
+    [
+     "Issuance of stock options to employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "19,239",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "19,239",
+     ""
+    ],
+    [
+     "Issuance of stock options to non-employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "429,391",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "429,391",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(2,354,043)",
+     "",
+     "",
+     "(2,354,043)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2007",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,771,337",
+     "",
+     "5,772",
+     "",
+     "4,558,664",
+     "",
+     "",
+     "(5,373,979)",
+     "",
+     "",
+     "(809,543)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of stock options to employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "274,299",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "274,299",
+     ""
+    ],
+    [
+     "Issuance of stock options to non-employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "216,779",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "216,779",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(2,272,144)",
+     "",
+     "",
+     "(2,272,144)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2008",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,771,337",
+     "",
+     "5,772",
+     "",
+     "5,049,742",
+     "",
+     "",
+     "(7,646,123)",
+     "",
+     "",
+     "(2,590,609)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,037,682",
+     "",
+     "4,038",
+     "",
+     "668,909",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "672,947",
+     ""
+    ],
+    [
+     "Issurance of stock options to employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "157,933",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "157,933",
+     ""
+    ],
+    [
+     "Non-cash fair\n\nvalue of stock\n\noptions to non-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "54,064",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "54,064",
+     ""
+    ],
+    [
+     "Fair value of\n\nstockholder debt,\n\npayables and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "advances settled in common stock",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,331,458",
+     "",
+     "2,331",
+     "",
+     "386,246",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "388,577",
+     ""
+    ],
+    [
+     "Fair value of common stock issued to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "settle accounts payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "564,561",
+     "",
+     "564",
+     "",
+     "103,308",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "103,872",
+     ""
+    ],
+    [
+     "Fair value of common stock options issued to settle accounts payable and accrued expenses",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "18,364",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "18,364",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "132,005",
+     "",
+     "",
+     "132,005",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2009",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,705,038",
+     "",
+     "12,705",
+     "",
+     "6,438,566",
+     "",
+     "",
+     "(7,514,118)",
+     "",
+     "",
+     "(1,062,847)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock Options to Employees",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "86,985",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "86,985",
+     ""
+    ],
+    [
+     "Fair Value of Warrants Issued with Convertible\n\nNotes Payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "11,818",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "11,818",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(954,118)",
+     "",
+     "",
+     "(954,118)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2010",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,705,038",
+     "",
+     "12,705",
+     "",
+     "6,537,369",
+     "",
+     "",
+     "(8,468,236)",
+     "",
+     "",
+     "(1,918,162)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share Based Compensation",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,569,037",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,569,037",
+     ""
+    ],
+    [
+     "Fair Value of Warrants Issued with Convertible Notes Payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "7,474",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,474",
+     ""
+    ],
+    [
+     "Common stock issued in cashless exercise of stock options",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "836,250",
+     "",
+     "837",
+     "",
+     "(837)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock\n\nissued on\n\nconversion of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "notes payable and accrued interest",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,299,957",
+     "",
+     "1,300",
+     "",
+     "836,299",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "837,599",
+     ""
+    ],
+    [
+     "Common stock\n\nissued for\n\nconsideration of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "extension of notes payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "45,000",
+     "",
+     "45",
+     "",
+     "37,455",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "37,500",
+     ""
+    ],
+    [
+     "Common stock issued for deferred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "compensation",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "442,892",
+     "",
+     "443",
+     "",
+     "367,157",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "367,600",
+     ""
+    ],
+    [
+     "Preferred and\n\nCommon stock\n\nissued for cash,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net of offering costs of  $591,877",
+     "",
+     "",
+     "1,807,229",
+     "",
+     "",
+     "1,807",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,481,757",
+     "",
+     "5,482",
+     "",
+     "5,517,290",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,524,579",
+     ""
+    ],
+    [
+     "Shares issued upon recapitalization",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,500,000",
+     "",
+     "1,500",
+     "",
+     "(1,500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Recapitalization effect of net assets",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "589",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "589",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "880,278",
+     "",
+     "",
+     "(880,278)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Stock Dividend Accrued",
+     "",
+     "",
+     "117,001",
+     "",
+     "",
+     "117",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "96,993",
+     "",
+     "",
+     "(97,110)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(3,260,225)",
+     "",
+     "",
+     "(3,260,225)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2011",
+     "",
+     "",
+     "1,924,230",
+     "",
+     "",
+     "1,924",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "22,310,894",
+     "",
+     "22,312",
+     "",
+     "15,847,604",
+     "",
+     "",
+     "(12,705,849)",
+     "",
+     "",
+     "3,165,991",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share Based Compensation",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "553,290",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "553,290",
+     ""
+    ],
+    [
+     "Common stock issued for bonus\n\npayment",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "70,000",
+     "",
+     "70",
+     "",
+     "69,930",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "Preferred Stock Dividend Accrued",
+     "",
+     "",
+     "202,344",
+     "",
+     "",
+     "203",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "167,742",
+     "",
+     "",
+     "(167,945)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Fair value of common stock\n\nissued for\n\nconsulting services",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "130,000",
+     "",
+     "130",
+     "",
+     "110,370",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "110,500",
+     ""
+    ],
+    [
+     "Fair value of warrants issued for consulting services",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "134,420",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "134,420",
+     ""
+    ],
+    [
+     "Common Stock issued for cash, net of offering costs of $185,678",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,819,119",
+     "",
+     "1,819",
+     "",
+     "1,358,753",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,360,572",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,016,746)",
+     "",
+     "",
+     "(4,016,746)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2012",
+     "",
+     "",
+     "2,126,574",
+     "",
+     "",
+     "2,127",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "24,330,013",
+     "",
+     "24,331",
+     "",
+     "18,242,109",
+     "",
+     "",
+     "(16,890,540)",
+     "",
+     "",
+     "1,378,027",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share Based Compensation",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "632,413",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "632,413",
+     ""
+    ],
+    [
+     "Preferred Stock Dividend - Series A",
+     "",
+     "",
+     "223,622",
+     "",
+     "",
+     "225",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "185,381",
+     "",
+     "",
+     "(185,606)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Fair value of common stock issued for consulting services",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "60,000",
+     "",
+     "60",
+     "",
+     "45,490",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "45,550",
+     ""
+    ],
+    [
+     "Common Stock issued for cash, net of offering costs of $68,276",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,285,000",
+     "",
+     "1,285",
+     "",
+     "572,939",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "574,224",
+     ""
+    ],
+    [
+     "Preferred Stock issued for cash, investments held for sale and conversion of bridge notes, net of offering costs of $81,536 and warrant liability",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,725,821",
+     "",
+     "5,726",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,121,932",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,127,658",
+     ""
+    ],
+    [
+     "Deemed dividend related to beneficial conversion feature on Series B issuance",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,368,272",
+     "",
+     "",
+     "(1,368,272)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Stock Dividend Accrued - Series B",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(122,876)",
+     "",
+     "",
+     "(122,876)",
+     ""
+    ],
+    [
+     "Warrant modification and reclassification to derivative liability",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(84,107)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(84,107)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(5,607,328)",
+     "",
+     "",
+     "(5,607,328)",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2013",
+     "",
+     "",
+     "2,350,196",
+     "",
+     "$",
+     "2,352",
+     "",
+     "",
+     "5,725,821",
+     "$",
+     "5,726",
+     "",
+     "25,675,013",
+     "$",
+     "25,676",
+     "$",
+     "23,084,429",
+     "",
+     "$",
+     "(24,174,622)",
+     "",
+     "$",
+     "(1,056,439)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1399,
+    "end_line": 1546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+   "prose_after": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 13, 2003 (inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,607,328)",
+     "",
+     "$",
+     "(4,016,746)",
+     "",
+     "$",
+     "(21,352,535)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "24,479",
+     "",
+     "",
+     "24,450",
+     "",
+     "",
+     "280,467",
+     ""
+    ],
+    [
+     "Non-cash fair value of common stock issued for consulting",
+     "",
+     "45,550",
+     "",
+     "",
+     "110,500",
+     "",
+     "",
+     "179,538",
+     ""
+    ],
+    [
+     "Share-based compensation related to employee stock options",
+     "",
+     "626,450",
+     "",
+     "",
+     "544,503",
+     "",
+     "",
+     "3,311,397",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "19,292",
+     ""
+    ],
+    [
+     "Non-cash fair value of stock options issued to non-employees for consulting",
+     "",
+     "5,963",
+     "",
+     "",
+     "8,787",
+     "",
+     "",
+     "1,380,715",
+     ""
+    ],
+    [
+     "Non-cash fair value of warrants issued to non-employees",
+     "",
+     "-",
+     "",
+     "",
+     "134,420",
+     "",
+     "",
+     "134,420",
+     ""
+    ],
+    [
+     "Expenses paid by issuance of preferred and common stock",
+     "",
+     "-",
+     "",
+     "",
+     "70,000",
+     "",
+     "",
+     "247,650",
+     ""
+    ],
+    [
+     "Loss on fixed assets",
+     "",
+     "128,245",
+     "",
+     "",
+     "1,145",
+     "",
+     "",
+     "200,940",
+     ""
+    ],
+    [
+     "Non-cash interest expense on beneficial conversion",
+     "",
+     "27,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "27,500",
+     ""
+    ],
+    [
+     "Gain on debt and accounts payable settlement",
+     "",
+     "(6,594)",
+     "",
+     "",
+     "(133,142)",
+     "",
+     "",
+     "(1,622,752)",
+     ""
+    ],
+    [
+     "Loss on early extinguishment of debt",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "61,419",
+     ""
+    ],
+    [
+     "Net loss on sale of trading securities",
+     "",
+     "818,365",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "818,365",
+     ""
+    ],
+    [
+     "Unrealized loss on trading securities",
+     "",
+     "236,143",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "236,143",
+     ""
+    ],
+    [
+     "Loss on revaluation and modification of derivative warrant liability",
+     "",
+     "216,701",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "216,701",
+     ""
+    ],
+    [
+     "(Increase) decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "24,351",
+     "",
+     "",
+     "(27,019)",
+     "",
+     "",
+     "(52,959)",
+     ""
+    ],
+    [
+     "Increase (decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "52,112",
+     "",
+     "",
+     "(56,090)",
+     "",
+     "",
+     "702,141",
+     ""
+    ],
+    [
+     "Accrued expenses and other",
+     "",
+     "76,266",
+     "",
+     "",
+     "58,496",
+     "",
+     "",
+     "669,776",
+     ""
+    ],
+    [
+     "Net Cash Used by Operating Activities",
+     "",
+     "(3,331,797)",
+     "",
+     "",
+     "(3,280,696)",
+     "",
+     "",
+     "(14,491,782)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of investments, net",
+     "",
+     "1,806,050",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,806,050",
+     ""
+    ],
+    [
+     "Cash paid for intangible assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(161,609)",
+     ""
+    ],
+    [
+     "Net cash received in acquistition",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "69",
+     ""
+    ],
+    [
+     "Cash paid for purchase of property and equipment",
+     "",
+     "(5,356)",
+     "",
+     "",
+     "(40,929)",
+     "",
+     "",
+     "(418,328)",
+     ""
+    ],
+    [
+     "Net Cash Provided by (Used in) Investing Activities",
+     "",
+     "1,800,694",
+     "",
+     "",
+     "(40,929)",
+     "",
+     "",
+     "1,226,182",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of notes \u2013 stockholders",
+     "",
+     "330,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,730,000",
+     ""
+    ],
+    [
+     "Repayment of notes payable - stockholders",
+     "",
+     "(55,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(55,000)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of short-term convertible notes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "608,165",
+     ""
+    ],
+    [
+     "Advances from stockholders",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "679,500",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock, net",
+     "",
+     "574,224",
+     "",
+     "",
+     "1,360,572",
+     "",
+     "",
+     "9,005,144",
+     ""
+    ],
+    [
+     "Proceeds from sale of preferred stock, net",
+     "",
+     "520,966",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,440,966",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "1,370,190",
+     "",
+     "",
+     "1,360,572",
+     "",
+     "",
+     "14,408,775",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash and Cash Equivalents",
+     "",
+     "(160,913)",
+     "",
+     "",
+     "(1,961,053)",
+     "",
+     "",
+     "1,143,175",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, Beginning of Period",
+     "",
+     "1,304,088",
+     "",
+     "",
+     "3,265,141",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, End of Period",
+     "$",
+     "1,143,175",
+     "",
+     "$",
+     "1,304,088",
+     "",
+     "$",
+     "1,143,175",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense paid in cash",
+     "$",
+     "5,297",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,297",
+     ""
+    ],
+    [
+     "Tax paid",
+     "$",
+     "1,662",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,662",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Non-Cash Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses settled in preferred stock",
+     "$",
+     "57,196",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "57,196",
+     ""
+    ],
+    [
+     "Sale of preferred stock for marketable equity securities",
+     "$",
+     "3,495,384",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,495,384",
+     ""
+    ],
+    [
+     "Fair value of warrants issued to Series B holders",
+     "$",
+     "(2,224,778)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(2,224,778)",
+     ""
+    ],
+    [
+     "Fair value of warrants modified in connection with Series B financing",
+     "$",
+     "(113,685)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(113,685)",
+     ""
+    ],
+    [
+     "Fair value of warrants issued to Series B placement agents",
+     "$",
+     "(23,608)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(23,608)",
+     ""
+    ],
+    [
+     "Conversion of preferred stock to common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "288",
+     ""
+    ],
+    [
+     "Notes payable \u2013 stockholder \u2013 settled in common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,135,000",
+     ""
+    ],
+    [
+     "Accrued interest \u2013 stockholder \u2013 settled in common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "188,569",
+     ""
+    ],
+    [
+     "Notes payable \u2013 stockholder \u2013 settled in preferred stock",
+     "$",
+     "275,000",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "275,000",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "$",
+     "(1,676,754)",
+     "",
+     "$",
+     "(167,945)",
+     "",
+     "$",
+     "(2,822,087)",
+     ""
+    ],
+    [
+     "Advances from stockholders settled in common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "679,500",
+     ""
+    ],
+    [
+     "Accounts payable settled in common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "471,472",
+     ""
+    ],
+    [
+     "Accounts payable settled in common stock options",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "30,500",
+     ""
+    ],
+    [
+     "Accrued expenses settled in common stock options",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,000",
+     ""
+    ],
+    [
+     "Decrease in accounts payable related to fixed asset disposition",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "133,314",
+     ""
+    ],
+    [
+     "Decrease in accounts payable related to settlement",
+     "$",
+     "6,594",
+     "",
+     "$",
+     "133,142",
+     "",
+     "$",
+     "1,622,752",
+     ""
+    ],
+    [
+     "Decrease in accrued expenses related to settlement",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,000",
+     ""
+    ],
+    [
+     "Increase in accounts receivable related to common stock issuance",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "50,000",
+     ""
+    ],
+    [
+     "Warrants issued with convertible notes payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "7,474",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1553,
+    "end_line": 1641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See the report of independent registered public accounting firm and the accompanying notes to these consolidated financial statements.\nFLUOROPHARMA MEDICAL, INC. and Subsidiary (a development stage company)\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. ORGANIZATION, BASIS OF PRESENTATION AND GOING CONCERN\nFluoroPharma Medical, Inc. (the \u201cCompany\u201d or \u201cFPM\u201d) was organized on January 25, 2007 under the laws of the State of Nevada. The Company\u2019s subsidiary, FluoroPharma Inc. (\u201cFPI\u201d or \u201cthe Subsidiary\u201d), a Delaware corporation, is a molecular imaging company headquartered in Montclair, NJ. FPI was founded in 2003 to engage in the discovery, development and commercialization of proprietary products for the positron emission tomography (PET) market. The Company\u2019s initial focus has been on the development of novel cardiovascular imaging agents that can more efficiently and effectively detect and assess acute and chronic forms of coronary artery disease (CAD). Molecular imaging pharmaceuticals are radiopharmaceuticals that enable early detection of disease through the visualization of subtle changes in biochemical and biological processes.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1643,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trading securities",
+     "$",
+     "634,826",
+     "$",
+     "--",
+     "$",
+     "--",
+     "$",
+     "634,826"
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative warrant liability",
+     "$",
+     "-",
+     "$",
+     "--",
+     "$",
+     "2,549,196",
+     "$",
+     "2,549,196"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1726,
+    "end_line": 1736
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "Level 3 \u2013 Valuation is based on unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities. Level 3 assets and liabilities include financial instruments whose value is determined using pricing models, discounted cash flow methodologies, or similar techniques, as well as instruments for which the determination of fair value requires significant management judgment or estimation.\nIn certain cases, the inputs used to measure fair value may fall into different levels of the fair value hierarchy. In such cases, an instrument\u2019s level within the fair value hierarchy is based on the lowest level of input that is significant to the fair value measurement. The Company\u2019s assessment of the significance of a particular input to the fair value measurement in its entirety requires judgment, and considers factors specific to the financial instrument.\nThe Company recognizes transfers between levels at the end of the reporting period as if the transfers occurred on the last day of the reporting period.\nAssets and liabilities measured at fair value on a recurring basis are summarized below:",
+   "prose_after": "There were no assets or liabilities measured at fair value on a recurring basis at December 31, 2012.\nThe following table sets forth the changes in the estimated fair value for our Level 3 classified derivative warrant liability:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1723,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "December 30, 2012",
+     ""
+    ],
+    [
+     "Fair value at beginning of period",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Issuance of derivative warrant liability:",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Warrants issued to investors in 2013 Series B Offering",
+     "",
+     "2,224,778",
+     "",
+     "-"
+    ],
+    [
+     "Placement agent warrants in 2013 Series B Offering",
+     "",
+     "23,608",
+     "",
+     "-"
+    ],
+    [
+     "Modification and reclassification of outstanding warrants",
+     "",
+     "84,109",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2,332,495",
+     "",
+     "-"
+    ],
+    [
+     "Change in fair value",
+     "",
+     "216,701",
+     "",
+     "-"
+    ],
+    [
+     "Fair value at end of period",
+     "$",
+     "2,549,196",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1741,
+    "end_line": 1756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "There were no assets or liabilities measured at fair value on a recurring basis at December 31, 2012.\nThe following table sets forth the changes in the estimated fair value for our Level 3 classified derivative warrant liability:",
+   "prose_after": "At December 31, 2013, the Company measured at fair value on a nonrecurring basis certain equipment in accordance with ASC Topic 360-10-35. Fair value was determined to be $0 using certain Level 3 inputs and resulted in the Company recording a loss of $128,245. Fair value was estimated using quantitative and qualitative considerations including the expected use and disposition of the equipment.\nIncome Taxes\nThe Company uses the asset and liability method of accounting for income taxes. Deferred tax assets and liabilities are recognized for the future tax consequences attributable to the differences between the financial statement carrying amounts of the existing assets and liabilities and the respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be realized or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in results of operations in the period that the tax rate change occurs. Valuation allowances are established when necessary to reduce deferred tax assets to the amount expected to be realized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1723,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "2.61",
+     "%",
+     "",
+     "2.42",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "61.67",
+     "%",
+     "",
+     "77.70",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "none",
+     "",
+     "",
+     "none",
+     "",
+     ""
+    ],
+    [
+     "Expected term",
+     "6 years",
+     "",
+     "",
+     "5 years",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1775,
+    "end_line": 1783
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "To compute compensation expense, the Company estimated the fair value of each option award on the date of grant using the Black-Scholes-Merton option pricing model for employees, and calculated the fair value of each option award at the end of the period for non-employees. The Company based the expected volatility assumption on a volatility index of peer companies as the Company did not have sufficient historical market information to estimate the volatility of its own stock. The expected term of options granted represents the period of time that options are expected to be outstanding. The Company estimated the expected term of stock options by using the simplified method. The expected forfeiture rates are based on the historical employee forfeiture experiences. To determine the risk-free interest rate, the Company utilized the U.S. Treasury yield curve in effect at the time of grant with a term consistent with the expected term of the Company\u2019s awards. The Company has not declared a dividend on its common stock since its inception and has no intentions of declaring a dividend in the foreseeable future and therefore used a dividend yield of zero.\nThe fair value of each share-based payment is estimated on the measurement date using the Black-Scholes model with the following assumptions:",
+   "prose_after": "Net Loss per Common Share\nThe Company computes net loss per common share in accordance with ASC Topic 260. Net loss per share is based upon the weighted average number of outstanding common shares and the dilutive effect of common share equivalents, such as options and warrants to purchase common stock, and convertible notes, if applicable, that are outstanding each year.\nBasic and diluted earnings per share were the same for all periods presented as including common stock equivalents in the calculation of diluted earnings per share would have been antidilutive. As of December 31, 2013, the Company had outstanding options exercisable for 4,536,928 shares of its common stock, warrants exercisable for 14,616,535 shares of its common stock, series A preferred stock (the \u201cSeries A Preferred Stock\u201d) convertible into 3,901,325 shares of common stock, and series B preferred stock (the \u201cSeries B Preferred Stock\u201d) convertible into 6,621,099 shares of common stock. At December 31, 2012, the Company had outstanding options exercisable for 4,035,428 shares of its common stock, and warrants exercisable for 7,404,562 shares of common stock, and Series A Preferred Stock convertible into preferred stock convertible into 2,126,574 shares of common stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid insurance",
+     "$",
+     "10,679",
+     "",
+     "$",
+     "45,695",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "42,280",
+     "",
+     "",
+     "31,615",
+     ""
+    ],
+    [
+     "Prepaid expenses and other",
+     "$",
+     "52,959",
+     "",
+     "$",
+     "77,310",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computers and office equipment",
+     "$",
+     "60,653",
+     "",
+     "$",
+     "55,297",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "112,421",
+     "",
+     "",
+     "240,666",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "25,171",
+     "",
+     "",
+     "25,171",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "(162,816)",
+     "",
+     "",
+     "(144,245)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "35,429",
+     "",
+     "$",
+     "176,889",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "$",
+     "51,646",
+     "",
+     "$",
+     "49,594",
+     ""
+    ],
+    [
+     "Accrued dividends Series B Preferred Stock",
+     "",
+     "122,876",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "65,151",
+     "",
+     "",
+     "48,134",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "239,673",
+     "",
+     "$",
+     "97,728",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1810,
+    "end_line": 1839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "Research and Development Costs\nResearch and development costs are expensed as incurred.\nReclassification\nCertain items in the 2012 financial statements have been reclassified to conform to the current year presentation.\nSegment Reporting\nThe Company has determined that it operates in only one segment currently, which is biopharmaceutical research and development.\nRecent Accounting Pronouncements\nManagement does not expect any recently issued, but not yet effective, accounting standards to have a material effect on the accompanying financial statements.\n3. OTHER BALANCE SHEET INFORMATION\nComponents of selected captions in the accompanying balance sheets as of December 31, 2013 and 2012 consist of:",
+   "prose_after": "4. INTANGIBLE ASSETS\nIntangible assets as of December 31, 2013 and 2012 consist of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Technology license",
+     "$",
+     "92,112",
+     "",
+     "$",
+     "92,112",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(42,773)",
+     "",
+     "",
+     "(36,865)",
+     ""
+    ],
+    [
+     "Intangibles, net",
+     "$",
+     "49,339",
+     "",
+     "$",
+     "55,247",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1844,
+    "end_line": 1853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "4. INTANGIBLE ASSETS\nIntangible assets as of December 31, 2013 and 2012 consist of the following:",
+   "prose_after": "Amortization expense relating to intangible assets was $5,908, $5,908 and $112,269 during the periods ended December 31, 2013, 2012 and the period from inception to December 31, 2013, respectively.\nFuture amortization will approximate $10,000 for each of the next five years.\nSee Note 15 for commitments and contingencies associated with the Company\u2019s technology licenses.\n5. TRADING SECURITIES\nOn September 18, 2013, the Company received 1,230,769 shares of freely tradable equity securities with a fair value of $3,495,384 (based upon the closing price on the day prior to closing) in connection with the 2013 Series B Offering (see Note 7). The Company\u2019s investments in trading securities are comprised of a single investment in a publicly traded stock and as of December 31, 2013, the Company has recorded an unrealized loss related to that stock\u2019s decline in value of $236,143. In addition, during the year ended December 31, 2013, the Company has received cash proceeds of $1,806,050 and has recorded $818,365 in realized losses upon the sale of these securities. As at December 31, 2013, the Company has shares with a fair value of $634,826 in trading securities included in its consolidated balance sheet.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Proceeds from sale of Series B Preferred Stock:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "602,500",
+     ""
+    ],
+    [
+     "Converted note payable",
+     "",
+     "275,000",
+     ""
+    ],
+    [
+     "Beneficial conversion on note payable",
+     "",
+     "27,500",
+     ""
+    ],
+    [
+     "Trading securities",
+     "",
+     "3,495,384",
+     ""
+    ],
+    [
+     "Accrued expenses settled in Series B Preferred Stock",
+     "",
+     "57,196",
+     ""
+    ],
+    [
+     "Total gross proceeds",
+     "",
+     "4,457,580",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "(81,536)",
+     ""
+    ],
+    [
+     "Fair value of warrants issued to Series B Preferred Stock purchasers",
+     "",
+     "(2,224,778)",
+     ""
+    ],
+    [
+     "Fair value of warrants issued to Placement Agents",
+     "",
+     "(23,608)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from sale of Series B Preferred Stock",
+     "$",
+     "2,127,658",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Proceeds from sale of Series B Preferred Stock:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1886,
+    "end_line": 1904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "). As of December 31, 2013, the Company received gross proceeds of $1.8 million from the sale of a portion of such freely tradable securities received as consideration in the 2013 Series B Offering (as defined in Note 7)."
+    }
+   },
+   "prose_before": "In order to account for the sale of Series B Preferred Stock and the issuance of the warrants, the Company allocated the total gross proceeds of $4,457,580, which included the dollar value of notes payable exchanged at a 10% premium, between the Series B Preferred Stock and the warrants. The warrants were allocated their full fair value as of the respective grant dates totaling $2,224,778 and the residual net proceeds of $2,232,802 were allocated to the Series B Preferred Stock. The conversion feature of the Series B Preferred Stock was determined to be beneficial, or \u201cin the money\u201d, at the issuance date due to a conversion rate that allows the investor to obtain the common stock at a below market price. The Company recorded a deemed dividend on the beneficial conversion feature of $1,368,272 equal to the intrinsic value resulting from the reduction in the effective conversion rate. This deemed dividend is included in the Statement of Operations in arriving at the Net Loss Applicable to Common Shareholders.\nA summary of the accounting for the Series B Preferred is as follows:",
+   "prose_after": "In connection with the closing of the 2013 Series B Offering, the Company entered into a registration rights agreement with the investors, in which the Company agreed to file a registration statement with the SEC to register for resale the shares underlying the Series B Preferred Stock and the warrant shares within 60 calendar days of the final closing of the 2013 Series B Offering, and to have the registration statement declared effective within 60 calendar days after the filing date or within 120 calendar days of the filing date in the event of a full review of the registration statement by the SEC. The registration rights agreement does not contain any provisions for liquidated damages. The registration statement was filed by the Company and declared effective on February 12, 2014 by the SEC.\n8. 2013 PRIVATE PLACEMENT - Common Stock\nOn December 31, 2013, the Company closed a private placement offering and raised aggregate gross proceeds of $642,500 upon the sale of 1,285,000 shares of common stock (the \u201c2013 Common Stock Offering\u201d). For each share of common stock purchased at a price per share of $0.50, the investors received a five-year warrant to purchase a share of common stock at an exercise price of $0.83.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1879,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares\n\n Under Warrants",
+     "",
+     "",
+     "Exercise\n\nPrice\n\n Per Share",
+     "",
+     "Weighted\n\n Average Exercise Price",
+     ""
+    ],
+    [
+     "Warrants issued and exercisable at December 31, 2012",
+     "",
+     "7,404,562",
+     "",
+     "$",
+     "0.50 - 1.33",
+     "$",
+     "1.08"
+    ],
+    [
+     "Warrants Granted",
+     "",
+     "9,543,438",
+     "",
+     "$",
+     "0.50 - 0.83",
+     "$",
+     "0.76"
+    ],
+    [
+     "Warrants Expired/Forfeited",
+     "",
+     "(2,331,465)",
+     "",
+     "$",
+     "0.83 - 1.00",
+     "$",
+     "0.91"
+    ],
+    [
+     "Warrants issued and exercisable at December 31, 2013",
+     "",
+     "14,616,535",
+     "",
+     "$",
+     "0.50 - 1.33",
+     "$",
+     "0.90"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2017,
+    "end_line": 2031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE WARRANTS"
+    }
+   },
+   "prose_before": "As a result of the issuance of common stock pursuant to the 2013 Common Stock Offering, the exercise price of the warrants issued in connection with the 2013 Series B Offering was reduced from $0.83 to $0.50, provided, however, Platinum waived its right to adjust the exercise price of the 6,020,214 warrants held by it and accordingly, such exercise price remains $0.83 per share solely with respect to Platinum.\nIn addition, during the year ended December 31, 2013, the Company exchanged 426,096 common stock warrants for an equal number of warrants with the same terms as the warrants issued in the Series B Offering. As a result of this exchange and because such warrants are derivative instruments, the Company increased its derivative warrant liability by approximately $114,000, the fair value of the warrants on the date of the modification. In addition, in conjunction with the exchange, the Company recognized a one-time expense of approximately $30,000 representing the incremental fair value resulting from the modification, which is included in the accompanying statements of operations.\nThe following is a summary of all common stock warrant activity during the year ended December 31, 2013:",
+   "prose_after": "The following represents additional information related to common stock warrants outstanding and exercisable at December 31, 2013:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2000,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2031,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Number of Shares\n\nUnder Warrants",
+     "",
+     "Weighted Average Remaining Contract\n\nLife in Years",
+     "",
+     "Weighted Average\n\nExercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.50",
+     "",
+     "2,109,724",
+     "",
+     "4.76",
+     "$",
+     "0.50"
+    ],
+    [
+     "$",
+     "0.83",
+     "",
+     "6,020,214",
+     "",
+     "4.72",
+     "$",
+     "0.83"
+    ],
+    [
+     "Total warrants accounted for as a derivative liability",
+     "",
+     "",
+     "8,129,938",
+     "",
+     "4.73",
+     "$",
+     "0.74"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2034,
+    "end_line": 2045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE WARRANTS"
+    }
+   },
+   "prose_before": "The following represents additional information related to common stock warrants outstanding and exercisable at December 31, 2013:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2031,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2072,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Number of Shares\n\nUnder Warrants",
+     "",
+     "Weighted Average Remaining Contract\n\nLife in Years",
+     "",
+     "Weighted Average\n\nExercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.50",
+     "",
+     "277,500",
+     "",
+     "0.30",
+     "$",
+     "0.50"
+    ],
+    [
+     "$",
+     "0.83",
+     "",
+     "2,289,432",
+     "",
+     "3.74",
+     "$",
+     "0.83"
+    ],
+    [
+     "$",
+     "0.84",
+     "",
+     "20,000",
+     "",
+     "2.59",
+     "$",
+     "0.84"
+    ],
+    [
+     "$",
+     "0.85",
+     "",
+     "281,912",
+     "",
+     "3.56",
+     "$",
+     "0.85"
+    ],
+    [
+     "$",
+     "0.95",
+     "",
+     "20,000",
+     "",
+     "2.75",
+     "$",
+     "0.95"
+    ],
+    [
+     "$",
+     "1.00",
+     "",
+     "165,417",
+     "",
+     "5.35",
+     "$",
+     "1.00"
+    ],
+    [
+     "$",
+     "1.33",
+     "",
+     "3,432,336",
+     "",
+     "1.50",
+     "$",
+     "1.33"
+    ],
+    [
+     "Total warrants accounted for as equity",
+     "",
+     "",
+     "6,486,597",
+     "",
+     "2.43",
+     "$",
+     "1.09"
+    ],
+    [
+     "Total for all warrants outstanding",
+     "",
+     "",
+     "14,616,535",
+     "",
+     "3.71",
+     "$",
+     "0.90"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2046,
+    "end_line": 2064
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "STOCK PURCHASE WARRANTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company used the Black-Scholes option price calculation to value the warrants granted in 2013 using the following assumptions: risk-free rate of 1.75%, respectively, volatility of 61.67%; actual term and exercise price of warrants granted. For warrants granted that are accounted for as a derivative liability, the Company used a Binomial Options Pricing model. The primary assumptions used to determine the grant date fair value of these warrants were: a risk free interest rate of 1.4%, volatility of 61.67%, actual term and exercise price of the warrants granted. There were no material changes to the primary assumptions, as noted above, used to determine the fair value of the warrants as of December 31, 2013.\n12. COMMON STOCK OPTIONS\nOn February 11, 2011, the Company adopted its 2011 Equity Incentive Plan (the \u201cPlan\u201d) under which 6,475,750 shares of common stock were reserved for issuance under options or other equity interests as set forth in the Plan. Under the Plan, options are available for issuance to employees, officers, directors, consultants and advisors. The Plan provides that the board of directors will determine the exercise price and vesting terms of each option on the date of grant. Options granted under the Plan generally expire ten years from the date of grant.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2031,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2072,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Under\n\nOptions Outstanding",
+     "",
+     "Weighted Average\n\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2012",
+     "",
+     "4,035,428",
+     "$",
+     "0.66"
+    ],
+    [
+     "Options granted",
+     "",
+     "515,000",
+     "$",
+     "0.83"
+    ],
+    [
+     "Options forfeited",
+     "",
+     "13,500",
+     "$",
+     "0.95"
+    ],
+    [
+     "Options exercised",
+     "",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2013",
+     "",
+     "4,536,928",
+     "$",
+     "0.68"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2075,
+    "end_line": 2088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "COMMON STOCK OPTIONS"
+    }
+   },
+   "prose_before": "On February 11, 2011, the Company adopted its 2011 Equity Incentive Plan (the \u201cPlan\u201d) under which 6,475,750 shares of common stock were reserved for issuance under options or other equity interests as set forth in the Plan. Under the Plan, options are available for issuance to employees, officers, directors, consultants and advisors. The Plan provides that the board of directors will determine the exercise price and vesting terms of each option on the date of grant. Options granted under the Plan generally expire ten years from the date of grant.\nUnder the Plan, the Company has issued 161,250 shares of fully paid and non-assessable restricted common stock to a director of the Company. These shares of restricted stock are subject to the terms of the Plan and are unvested and outstanding as of December 31, 2013. The shares shall vest upon the earlier of (i) the occurrence of a Change of Control, as defined in the Plan, (ii) the successful completion of a Phase II clinical trial for any of the Company\u2019s products, or (iii) the determination by the board of directors to provide for immediate vesting. The weighted average grant-date fair value is $1.07 per share.\nThe following is a summary of all common stock option activity for the year ended December 31, 2013:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2072,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Exercisable",
+     "",
+     "Weighted Average Exercise\n\nPrice per Share",
+     ""
+    ],
+    [
+     "Exercisable at December 31, 2012",
+     "",
+     "2,294,053",
+     "$",
+     "0.66"
+    ],
+    [
+     "Exercisable at December 31, 2013",
+     "",
+     "2,786,928",
+     "$",
+     "0.69"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2089,
+    "end_line": 2097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "COMMON STOCK OPTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The weighted average fair value of options granted during the year ended December 31, 2013 was $0.48.\nThe weighted average remaining contractual term for exercisable and outstanding options is 5.72 and 6.55 years, respectively. The aggregate intrinsic value of all of the Company\u2019s exercisable and outstanding options is approximately $395,000 and $551,000, respectively.\nAs of December 31, 2013, there was approximately $695,000 of unrecognized compensation cost related to non-vested options. The unrecognized compensation expense is estimated to be recognized over a period of 1.2 years at December 31, 2013.\nThe Company used the Black-Scholes option pricing model to value the all option grants (see Note 2, Summary of Significant Accounting Policies, \u201cAccounting for Share Based Payments\u201d).\n13. RETIREMENT PLAN\nIn 2011, the Company adopted a defined contribution plan intended to qualify under Section 401(k) of the Internal Revenue Code covering all eligible employees of the Company. All employees are eligible to be to become participants of the plan upon reaching age 21 on the first day of the month following the hire date. Each employee may elect, voluntarily, to contribute a percentage of their compensation to the plan each year, subject to certain limitations. The Company reserves the right to make additional contributions to the plan. The Company has elected to make \u201csafe harbor\u201d contributions equal to 100% of the first 6% of participants\u2019 elective deferrals. In the years ended December 31, 2013 and 2012, the Company recognized expense related to its contributions of $20,562 and $15,291, respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2072,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Gross deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carry-forwards",
+     "$",
+     "5,906,889",
+     "",
+     "$",
+     "4,605,967",
+     ""
+    ],
+    [
+     "Stock based expenses",
+     "",
+     "1,052,509",
+     "",
+     "",
+     "994,016",
+     ""
+    ],
+    [
+     "Tax credit carry-forwards",
+     "",
+     "281,699",
+     "",
+     "",
+     "243,441",
+     ""
+    ],
+    [
+     "Capital loss carry-forwards & unrealized losses on investments",
+     "",
+     "421,170",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "7,662,267",
+     "",
+     "",
+     "5,843,424",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset valuation allowance",
+     "",
+     "(7,662,267)",
+     "",
+     "",
+     "(5,843,424)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2116,
+    "end_line": 2132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "In 2011, the Company adopted a defined contribution plan intended to qualify under Section 401(k) of the Internal Revenue Code covering all eligible employees of the Company. All employees are eligible to be to become participants of the plan upon reaching age 21 on the first day of the month following the hire date. Each employee may elect, voluntarily, to contribute a percentage of their compensation to the plan each year, subject to certain limitations. The Company reserves the right to make additional contributions to the plan. The Company has elected to make \u201csafe harbor\u201d contributions equal to 100% of the first 6% of participants\u2019 elective deferrals. In the years ended December 31, 2013 and 2012, the Company recognized expense related to its contributions of $20,562 and $15,291, respectively.\n14. INCOME TAXES\nThe Company is subject to taxation in the U.S. and the State of New Jersey. At December 31, 2013 and 2012, the Company had gross deferred tax assets calculated at an expected blended rate of 39.94% of approximately $7,662,000 and $5,843,000 respectively. As the Company cannot determine that it is more likely than not that the Company will realize the benefit of the deferred tax asset, a valuation allowance of approximately $7,662,000 and $5,843,000 has been established at December 31, 2013 and 2012, respectively.\nThe significant components of the Company\u2019s net deferred tax assets (liabilities) at December 31, 2013 and 2012 are as follows:",
+   "prose_after": "Income taxes computed using the federal statutory income tax rate differs from the Company\u2019s effective tax rate primarily due to the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2154,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Income taxes benefit (expense) at statutory rate",
+     "34.00",
+     "",
+     "%",
+     "34.00",
+     "",
+     "%"
+    ],
+    [
+     "State income tax, net of federal benefit",
+     "",
+     "(5.94)",
+     "%",
+     "",
+     "(5.94)",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Meals & entertainment",
+     "",
+     "(0.05)",
+     "%",
+     "",
+     "(0.07)",
+     "%"
+    ],
+    [
+     "Share-based compensation & Warrant adjustments",
+     "",
+     "(4.53)",
+     "%",
+     "",
+     "(3.84)",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(23.48)",
+     "%",
+     "",
+     "(24.15)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2135,
+    "end_line": 2148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Income taxes computed using the federal statutory income tax rate differs from the Company\u2019s effective tax rate primarily due to the following:",
+   "prose_after": "At December 31, 2013, the Company has gross net operating loss carry-forwards for federal income tax purposes of approximately $16,100,000 which expire in the years 2023 through 2033. The Company has gross state net operating loss carryforwards of approximately $7,200,000 which expire in the years 2031 and 2033. The Company also has federal research and development carryforwards of approximately $282,000 which expire twenty years from the date of inception. The net increase in the valuation allowance in the years ended December 31, 2013 and 2012 was approximately $1,800,000 and $708,000, respectively.\nThe Company is subject to the net operating loss utilization provisions of Section 382 of the Internal Revenue Code. Due to the reverse merger/recapitalization, the Company is restricted in the future use of net operating loss and tax credit carry-forwards generated by FPM before the effective date of the merger. Other ownership changes may cause the net operating losses to further be limited. Both of the separate loss years\u2019 net operating losses will be subject to possible limitations concerning changes of control and other limitations under the Internal Revenue Code. The effect of an ownership change would be the imposition of an annual limitation on the use of NOL carryforwards attributable to periods before the change. The amount of the annual limitation depends upon the value of the Company immediately before the change, changes to the Company\u2019s capital during a specified period prior to the change, and the federal published interest rate.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2154,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31, 2014",
+     "$",
+     "45,600"
+    ],
+    [
+     "2015",
+     "",
+     "15,200"
+    ],
+    [
+     "",
+     "$",
+     "60,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2179,
+    "end_line": 2186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The Company maintains employment contracts with key Company executives that provide for the continuation of salary and the grant of certain options to the executives if terminated for reasons other than cause, as defined within the agreements. One contract also provides for a $1 million bonus should the Company execute transactions as specified in the contract, including the sale of substantially all of the Company\u2019s assets or stock or a merger transaction, any of which resulting in compensation to the Company\u2019s stockholders aggregating in excess of $50 million for such transaction.\nOperating Lease Commitment\nIn July 2011, the Company entered into a three-year lease for office space, which commenced May 1, 2012 and expires on April 30, 2015. The annual minimum lease payments over this three-year period for this office space are $45,600 per year plus common area costs. In conjunction with this agreement, the Company paid $5,700 as a security deposit and an additional $25,171 for leasehold improvements. The future minimum lease payments through April 30, 2015 are as follows:",
+   "prose_after": "Rent expense, net of sublease income, was $31,485, $57,468 and $318,953 for the years ended December 31, 2013 and 2012 and the period from inception to December 31, 2013, respectively.\nLegal Contingencies\nOn July 16, 2013, Todd Nelson, as plaintiff, served Fluoropharma Medical, Inc. with process in the matter captioned, Todd Nelson v. Fluoropharma Medical, Inc.; and Does 1 through 10, No. 13 CV 01152 JAD CWH, which is pending before the United States District Court for the District of Nevada. In this action, the plaintiff alleged that he suffered damages attributable to the Company\u2019s refusal to honor certain stock options after February 28, 2012. Plaintiff seeks at least $325,200 in damages, as well as punitive and exemplary damages, prejudgment interest, and costs. On August 16, 2013, the Company filed a motion to dismiss the complaint. This motion has been fully briefed and the Company is presently awaiting the court\u2019s ruling on this motion. Management, with its external legal counsel, intends to vigorously defend these matters. Management believes that it has meritorious defenses in all such matters, and accordingly, no accrual has been recorded for these matters as of December 31, 2013.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2174,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2205,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": null,
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

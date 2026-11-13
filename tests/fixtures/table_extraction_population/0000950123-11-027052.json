@@ -1,0 +1,8941 @@
+{
+ "accession": "0000950123-11-027052",
+ "cik": "0001140184",
+ "form": "10-K",
+ "filing_date": "2011-03-21",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "g26547e10vk.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "62-1847043"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "40 Burton Hills Boulevard, Suite 415",
+     ""
+    ],
+    [
+     "Nashville, Tennessee",
+     "37215"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 000-50280\niPayment, Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (615) 665-1858 Securities registered pursuant to Section 12(b) of the Act: NONE Securities registered pursuant to Section 12(g) of the Act: NONE\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X] (Note: The registrant, as a voluntary filer, is not subject to the filing requirements under Section 13 or 15(d) of the Securities Exchange Act of 1934, but has been filing all reports required to be filed by those sections for the preceding 12 months.)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Caution Regarding Forward-Looking Statements",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. BUSINESS",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A. RISK FACTORS",
+     "12"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. PROPERTIES",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. LEGAL PROCEEDINGS",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. (REMOVED AND RESERVED)",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 6. SELECTED FINANCIAL DATA",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "42"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "43"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURES",
+     "63"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9A. CONTROLS AND PROCEDURES",
+     "63"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9B. OTHER INFORMATION",
+     "64"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "64"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 10. DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT",
+     "64"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 11. EXECUTIVE COMPENSATION",
+     "66"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "69"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "69"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "69"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "71"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "71"
+    ],
+    [
+     "EX-10.6",
+     ""
+    ],
+    [
+     "EX-10.7",
+     ""
+    ],
+    [
+     "EX-10.8",
+     ""
+    ],
+    [
+     "EX-10.11",
+     ""
+    ],
+    [
+     "EX-10.12",
+     ""
+    ],
+    [
+     "EX-10.13",
+     ""
+    ],
+    [
+     "EX-10.14",
+     ""
+    ],
+    [
+     "EX-10.18",
+     ""
+    ],
+    [
+     "EX-10.19",
+     ""
+    ],
+    [
+     "EX-10.20",
+     ""
+    ],
+    [
+     "EX-10.21",
+     ""
+    ],
+    [
+     "EX-10.22",
+     ""
+    ],
+    [
+     "EX-10.23",
+     ""
+    ],
+    [
+     "EX-10.24",
+     ""
+    ],
+    [
+     "EX-10.25",
+     ""
+    ],
+    [
+     "EX-10.26",
+     ""
+    ],
+    [
+     "EX-10.27",
+     ""
+    ],
+    [
+     "EX-21.1",
+     ""
+    ],
+    [
+     "EX-31.1",
+     ""
+    ],
+    [
+     "EX-31.2",
+     ""
+    ],
+    [
+     "EX-32.1",
+     ""
+    ],
+    [
+     "EX-32.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 138
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]            Non-accelerated filer [X]            Smaller reporting company [ ]\n(Do not check if a Smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAggregate market value of registrant\u2019s common stock held by non-affiliates of the registrant as of June 30, 2010, was NONE. There is no trading market for the common stock of the Registrant.\nNumber of shares of the registrant\u2019s common stock outstanding as of March 21, 2011, was 100.\nDocuments incorporated by reference: NONE\nTable of Contents",
+   "prose_after": "2\nCaution Regarding Forward-Looking Statements\nThis Form 10-K contains forward-looking statements about iPayment, Inc. within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934, and pursuant to the \u201csafe harbor\u201d provisions of the Private Securities Litigation Reform Act of 1995. For example, statements in the future tense, words such as \u201canticipates,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cbelieves,\u201d and other words and terms of similar substance used in connection with any discussion of future results, performance or achievements identify such forward-looking statements. Those forward-looking statements involve risks and uncertainties and are not guarantees of future results, performance or achievements, and actual results, performance or achievements could differ materially from the Company\u2019s current expectations as a result of numerous factors, including those discussed in the \u201cRisk Factors\u201d section in Item 1A of this Form 10-K and elsewhere in this Form 10-K.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 140,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Purchase Amount",
+     "$",
+     "100.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less Cash to Merchant",
+     "",
+     "(97.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "iPayment Gross Revenue",
+     "$",
+     "3.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Interchange",
+     "",
+     "(1.75)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Network dues and assessments and bank processing fees",
+     "",
+     "(0.21)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average iPayment Net Settlement",
+     "$",
+     "1.04",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Other Transaction Costs",
+     "",
+     "(0.61)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average iPayment Processing Margin",
+     "$",
+     "0.43",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 216,
+    "end_line": 236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Processing Vendors. Processing vendors, which may include banks, gather sales information from merchants, obtain authorization for merchants\u2019 transactions from card issuers, facilitate the collection of funds from sponsoring banks for payment to merchants and provide merchant accounting and settlement services on our behalf.\nThe following diagram illustrates a typical relationship among our Company and a merchant, a processing vendor and a sponsoring bank:\nWe derive the majority of our revenues from fee income related to transaction processing, which is primarily comprised of a percentage of the dollar amount of each transaction we process, as well as a fixed fee per transaction. The percentage we charge varies upon several factors, including the transaction amount, as well as whether the transaction process is a swipe transaction or a non-swipe transaction. On average, the gross revenue we generate from processing transactions equals approximately $3.00 for every $100 transaction we process, excluding costs and expenses. The following diagram illustrates the portion of a typical transaction amount paid to the processing bank, the Visa and MasterCard card associations and us:\nAn Example of a Typical $100 Transaction",
+   "prose_after": "Distribution of $3.00 Revenue\nVisa and MasterCard card-based payment transactions represent approximately 80% of the total card transaction volume generated by our merchant accounts.\nMarketing and Sales\nWe market and sell our services to merchants throughout the United States primarily through a network of ISGs, which are non-employee, external sales organizations with which we have contractual relationships. These relationships are typically mutually non-exclusive, permitting us to establish relationships with multiple ISGs and permitting our groups to enter into relationships with other providers of payment processing services. We believe that this sales approach provides us with access to an experienced sales force to market our services with limited investment in sales infrastructure and management time. We believe our focus on the unique needs of small merchants allows us to develop compelling offerings for our ISGs to bring to prospective merchants and provides us with a competitive advantage in our target market. Among the services and capabilities we provide are rapid application response time, merchant application acceptance by fax or on-line submission, superior customer service and merchant reporting. In addition, we believe we offer the ISGs more rapid and consistent review of merchant applications than may be available from other service providers. Additionally, in certain circumstances, we offer our sales organizations tailored compensation programs and unique technology applications to assist them in the sales process. We keep an open dialogue with our ISGs to address their concerns as quickly as possible and to work with them in investigating chargebacks or potentially suspicious activity with the aim of ensuring our merchants do not unduly suffer downtime or the unnecessary withholding of funds.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 198,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period from",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 1",
+     "",
+     "",
+     "May 11",
+     "",
+     "January 1",
+     "",
+     "",
+     "",
+     "May 11",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "through",
+     "",
+     "",
+     "through",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "May 10,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "",
+     "2006",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Predecessor",
+     "",
+     "",
+     "Successor",
+     "",
+     "",
+     "Successor",
+     "",
+     "",
+     "Successor",
+     "",
+     "",
+     "Successor",
+     "",
+     "",
+     "Successor",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations Data (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "252,514",
+     "",
+     "$",
+     "481,474",
+     "",
+     "$",
+     "759,109",
+     "",
+     "$",
+     "794,825",
+     "",
+     "$",
+     "717,928",
+     "",
+     "$",
+     "699,174",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interchange",
+     "",
+     "145,459",
+     "",
+     "",
+     "279,653",
+     "",
+     "",
+     "437,955",
+     "",
+     "",
+     "450,570",
+     "",
+     "",
+     "397,530",
+     "",
+     "",
+     "380,577",
+     ""
+    ],
+    [
+     "Other cost of services",
+     "",
+     "76,994",
+     "",
+     "",
+     "147,055",
+     "",
+     "",
+     "228,537",
+     "",
+     "",
+     "240,880",
+     "",
+     "",
+     "228,253",
+     "",
+     "",
+     "216,873",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "14,432",
+     "",
+     "",
+     "13,017",
+     "",
+     "",
+     "21,144",
+     "",
+     "",
+     "20,941",
+     "",
+     "",
+     "20,348",
+     "",
+     "",
+     "13,827",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "236,885",
+     "",
+     "",
+     "439,725",
+     "",
+     "",
+     "687,636",
+     "",
+     "",
+     "712,391",
+     "",
+     "",
+     "646,131",
+     "",
+     "",
+     "611,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "15,629",
+     "",
+     "",
+     "41,749",
+     "",
+     "",
+     "71,473",
+     "",
+     "",
+     "82,434",
+     "",
+     "",
+     "71,797",
+     "",
+     "",
+     "87,897",
+     ""
+    ],
+    [
+     "Other income (expenses):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(5,229)",
+     "",
+     "",
+     "(39,591)",
+     "",
+     "",
+     "(60,216)",
+     "",
+     "",
+     "(56,289)",
+     "",
+     "",
+     "(46,488)",
+     "",
+     "",
+     "(45,662)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "(6,729)",
+     "",
+     "",
+     "(2,187)",
+     "",
+     "",
+     "179",
+     "",
+     "",
+     "(750)",
+     "",
+     "",
+     "(1,245)",
+     "",
+     "",
+     "(1,058)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "(11,958)",
+     "",
+     "",
+     "(41,778)",
+     "",
+     "",
+     "(60,037)",
+     "",
+     "",
+     "(57,039)",
+     "",
+     "",
+     "(47,733)",
+     "",
+     "",
+     "(46,720)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "3,671",
+     "",
+     "",
+     "(29)",
+     "",
+     "",
+     "11,436",
+     "",
+     "",
+     "25,395",
+     "",
+     "",
+     "24,064",
+     "",
+     "",
+     "41,177",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "3,690",
+     "",
+     "",
+     "674",
+     "",
+     "",
+     "6,005",
+     "",
+     "",
+     "10,105",
+     "",
+     "",
+     "8,736",
+     "",
+     "",
+     "18,349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "(19)",
+     "",
+     "",
+     "(703)",
+     "",
+     "",
+     "5,431",
+     "",
+     "",
+     "15,290",
+     "",
+     "",
+     "15,328",
+     "",
+     "",
+     "22,828",
+     ""
+    ],
+    [
+     "Less: Net income attributable to noncontrolling interests",
+     "",
+     "869",
+     "",
+     "",
+     "(187)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(987)",
+     "",
+     "",
+     "(3,588)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to iPayment, Inc.",
+     "$",
+     "850",
+     "",
+     "$",
+     "(890)",
+     "",
+     "$",
+     "5,431",
+     "",
+     "$",
+     "14,303",
+     "",
+     "$",
+     "11,740",
+     "",
+     "$",
+     "22,828",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet Data (as of period end) (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "N/A",
+     "",
+     "",
+     "96",
+     "",
+     "",
+     "33",
+     "",
+     "",
+     "3,589",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Working capital (deficit)",
+     "",
+     "N/A",
+     "",
+     "",
+     "(9,279)",
+     "",
+     "",
+     "(8,713)",
+     "",
+     "",
+     "(10,591)",
+     "",
+     "",
+     "(6,601)",
+     "",
+     "",
+     "(9,732)",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "N/A",
+     "",
+     "",
+     "784,966",
+     "",
+     "",
+     "767,545",
+     "",
+     "",
+     "768,864",
+     "",
+     "",
+     "745,366",
+     "",
+     "",
+     "735,629",
+     ""
+    ],
+    [
+     "Total long-term debt, including current portion",
+     "",
+     "N/A",
+     "",
+     "",
+     "714,656",
+     "",
+     "",
+     "697,357",
+     "",
+     "",
+     "687,326",
+     "",
+     "",
+     "651,519",
+     "",
+     "",
+     "619,114",
+     ""
+    ],
+    [
+     "Stockholder\u2019s equity",
+     "",
+     "N/A",
+     "",
+     "",
+     "16,890",
+     "",
+     "",
+     "17,216",
+     "",
+     "",
+     "26,605",
+     "",
+     "",
+     "43,138",
+     "",
+     "",
+     "72,441",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial and Other Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Charge volume (in millions) (unaudited) (1)",
+     "",
+     "9,072",
+     "",
+     "",
+     "17,265",
+     "",
+     "",
+     "26,797",
+     "",
+     "",
+     "26,783",
+     "",
+     "",
+     "23,526",
+     "",
+     "",
+     "22,653",
+     ""
+    ],
+    [
+     "Capital expenditures (in thousands)",
+     "",
+     "587",
+     "",
+     "",
+     "1,510",
+     "",
+     "",
+     "1,110",
+     "",
+     "",
+     "2,374",
+     "",
+     "",
+     "2,304",
+     "",
+     "",
+     "2,925",
+     ""
+    ],
+    [
+     "Ratio of earnings to fixed charges (2)",
+     "",
+     "1.87",
+     "",
+     "",
+     "1.04",
+     "",
+     "",
+     "1.20",
+     "",
+     "",
+     "1.41",
+     "",
+     "",
+     "1.44",
+     "",
+     "",
+     "1.90",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Period from"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 725,
+    "end_line": 777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We are party to certain other legal proceedings and claims, either asserted or unasserted, which arise in the ordinary course of business. While the ultimate outcome of these other matters cannot be predicted with certainty, based on information currently available, advice of counsel, and available insurance coverage, we do not believe that the outcome of any of these claims will have a materially adverse effect on our business, financial condition or results of operations. However, the results of legal proceedings cannot be predicted with certainty and in the event of unexpected future developments, it is possible that the ultimate resolution of one or more of these matters could be unfavorable. Should we fail to prevail in any of these legal matters or should several of these legal matters be resolved against us in the same reporting period, our consolidated financial position or operating results could be materially adversely affected. Regardless of the outcome, any litigation may require us to incur significant litigation expenses and may result in significant diversion of management\u2019s attention. All litigation settlements are recorded within other expense on our Consolidated Financial Statements.\nITEM 4. (REMOVED AND RESERVED)\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nThere is no established public trading market for our common stock. On May 10, 2006, Holdings acquired all of our issued and outstanding common stock. Holdings is a wholly-owned subsidiary of iPayment Investors. Pursuant to the terms of our senior secured credit facility, we are limited in the amount of dividends we can declare or pay on our outstanding shares of common stock. In August 2010, the Board of Directors of iPayment, Inc. declared a $1.0 million dividend to our parent company, iPayment Investors, LP, to cover certain operating and legal costs, including reimbursement to the Company of certain costs previously paid for by the Company on behalf of iPayment Investors, LP. We did not pay any cash dividends in 2009.\nITEM 6. SELECTED FINANCIAL DATA",
+   "prose_after": "(1) Represents the total dollar volume of all Visa and MasterCard transactions processed by our merchants. This data is provided to us by our third-party processing vendors.\n(2) Computed in accordance with Item 503(d) of Regulation S-K. For purposes of computing the ratio of earnings to fixed charges, fixed charges consist of interest expense on long-term debt and capital leases, amortization of deferred financing costs and that portion of rental expense deemed to be representative of interest. Earnings consist of income (loss) before income taxes and minority interest, plus fixed charges and minority interest in pre-tax losses of subsidiaries that have not incurred fixed charges. The ratio of earnings to fixed charges differs from the fixed charge coverage ratio computed for the purposes of the indenture governing our senior subordinated notes and from the consolidated interest coverage ratio computed for the purpose of the credit agreement governing the senior secured credit facility.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Acquired Business or Significant Portfolio of Merchant Accounts",
+     "Date of Acquisition"
+    ],
+    [
+     "FDMS Bank Portfolio",
+     "December 2003"
+    ],
+    [
+     "Transaction Solutions",
+     "September 2004"
+    ],
+    [
+     "FDMS Merchant Portfolio",
+     "December 2004"
+    ],
+    [
+     "Petroleum Card Services",
+     "January 2005"
+    ],
+    [
+     "iPayment ICE of Utah, LLC",
+     "June 2005"
+    ],
+    [
+     "National Processing Management Group",
+     "October 2005"
+    ],
+    [
+     "Cambridge Payment Systems",
+     "December 2007"
+    ],
+    [
+     "Merchant Service Center",
+     "April 2008"
+    ],
+    [
+     "Central Payment Co Portfolio",
+     "November 2009"
+    ],
+    [
+     "Flagship Merchant Services Portfolio",
+     "November 2010"
+    ],
+    [
+     "Existing ISG Portfolio",
+     "December 2010"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 approximately $202.2 million raised through the issuance by iPayment of private notes; and\n\u2022 approximately $8.2 million funded by cash on hand and borrowings under the revolving credit facility described above.\nAcquisitions\nSince December 2003, we have expanded our card-based payment processing services through the acquisition of five businesses, four significant portfolios and several smaller portfolios of merchant accounts, as set forth below. These acquisitions have significantly impacted our revenues, results of operations, and financial condition. Primarily due to these acquisitions, our merchant portfolio base increased from approximately 56,000 active small merchants on January 1, 2003, to approximately 133,000 on December 31, 2010. In addition, primarily due to these acquisitions, our revenues grew from $226.1 million in 2003 to $699.2 million in 2010, which represents a 17.5% compound annual growth rate from 2003 to 2010.\nThe following table lists each of the acquisitions that we have made since December 2003:",
+   "prose_after": "On December 19, 2003, we entered into an asset purchase agreement with FDMS pursuant to which we acquired the FDMS Bank Portfolio for a price of $55.0 million in cash. Pursuant to the terms of the asset purchase agreement, we commenced receiving revenue from these accounts on January 1, 2004. In order to finance the acquisition, we increased our borrowing capacity under our revolving credit facility from $30.0 million to $65.0 million. We borrowed $45.0 million under our credit facility and used available cash for the balance of the purchase price. We are currently a customer of FDMS for merchant processing services.\nOn September 15, 2004, we entered into an agreement to purchase substantially all of the assets of TS Black and Gold, LP (\u201cTransaction Solutions\u201d). Transaction Solutions is a provider of card-based payment transaction processing services. Consideration included cash at closing and contingent payments based upon future performance over two years, all of which was paid as of December 31, 2006. The acquisition was recorded under the purchase method with the total consideration allocated to the fair value of assets acquired and liabilities assumed. The operating results of Transaction Solutions from September 1, 2004, were included in our Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 806,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 841,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "699,174",
+     "",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "717,928",
+     "",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "(18,754)",
+     "",
+     "",
+     "-2.6",
+     "%"
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interchange",
+     "",
+     "380,577",
+     "",
+     "",
+     "54.4",
+     "%",
+     "",
+     "397,530",
+     "",
+     "",
+     "55.4",
+     "%",
+     "",
+     "(16,953)",
+     "",
+     "",
+     "-4.3",
+     "%"
+    ],
+    [
+     "Other cost of services",
+     "",
+     "216,873",
+     "",
+     "",
+     "31.0",
+     "%",
+     "",
+     "228,253",
+     "",
+     "",
+     "31.8",
+     "%",
+     "",
+     "(11,380)",
+     "",
+     "",
+     "-5.0",
+     "%"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "13,827",
+     "",
+     "",
+     "2.0",
+     "%",
+     "",
+     "20,348",
+     "",
+     "",
+     "2.8",
+     "%",
+     "",
+     "(6,521)",
+     "",
+     "",
+     "-32.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "611,277",
+     "",
+     "",
+     "87.4",
+     "%",
+     "",
+     "646,131",
+     "",
+     "",
+     "90.0",
+     "%",
+     "",
+     "(34,854)",
+     "",
+     "",
+     "-5.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "87,897",
+     "",
+     "",
+     "12.6",
+     "%",
+     "",
+     "71,797",
+     "",
+     "",
+     "10.0",
+     "%",
+     "",
+     "16,100",
+     "",
+     "",
+     "22.4",
+     "%"
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(45,662)",
+     "",
+     "",
+     "-6.5",
+     "%",
+     "",
+     "(46,488)",
+     "",
+     "",
+     "-6.5",
+     "%",
+     "",
+     "826",
+     "",
+     "",
+     "-1.8",
+     "%"
+    ],
+    [
+     "Other, net",
+     "",
+     "(1,058)",
+     "",
+     "",
+     "-0.2",
+     "%",
+     "",
+     "(1,245)",
+     "",
+     "",
+     "-0.2",
+     "%",
+     "",
+     "187",
+     "",
+     "",
+     "-15.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "(46,720)",
+     "",
+     "",
+     "-6.7",
+     "%",
+     "",
+     "(47,733)",
+     "",
+     "",
+     "-6.6",
+     "%",
+     "",
+     "1,013",
+     "",
+     "",
+     "-2.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "41,177",
+     "",
+     "",
+     "5.9",
+     "%",
+     "",
+     "24,064",
+     "",
+     "",
+     "3.4",
+     "%",
+     "",
+     "17,113",
+     "",
+     "",
+     "71.1",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "18,349",
+     "",
+     "",
+     "2.6",
+     "%",
+     "",
+     "8,736",
+     "",
+     "",
+     "1.2",
+     "%",
+     "",
+     "9,613",
+     "",
+     "",
+     "110.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "22,828",
+     "",
+     "",
+     "3.3",
+     "%",
+     "",
+     "15,328",
+     "",
+     "",
+     "2.1",
+     "%",
+     "",
+     "7,500",
+     "",
+     "",
+     "48.9",
+     "%"
+    ],
+    [
+     "Less: Net income attributable to noncontrolling interests",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.0",
+     "%",
+     "",
+     "(3,588)",
+     "",
+     "",
+     "-0.5",
+     "%",
+     "",
+     "3,588",
+     "",
+     "",
+     "-100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to iPayment, Inc.",
+     "$",
+     "22,828",
+     "",
+     "",
+     "3.3",
+     "%",
+     "$",
+     "11,740",
+     "",
+     "",
+     "1.6",
+     "%",
+     "$",
+     "11,088",
+     "",
+     "",
+     "94.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our revenues and earnings are impacted by the volume of consumer usage of credit and debit cards at the point of sale. For example, we experience increased point of sale activity during the traditional holiday shopping period in the fourth quarter. Revenues during the first quarter tend to decrease in comparison to the remaining three quarters of our fiscal year on a same store basis, particularly in comparison to our fourth quarter.\nOff-Balance Sheet Arrangements\nWe do not have transactions, arrangements and other relationships with unconsolidated entities that are reasonably likely to affect our liquidity or capital resources. We have no special purpose or limited purpose entities that provide off-balance sheet financing, liquidity or market or credit risk support, engage in leasing, hedging, research and development services, or other relationships that expose us to liability that is not reflected on the face of the financial statements.\nResults of Operations\nYears ended December 31, 2010 and 2009 (in thousands, except percentages)\nThe following table sets forth our operating results for the periods indicated as a percentage of our revenues:",
+   "prose_after": "Revenues. Revenues decreased 2.6% to $699.2 million in 2010 from $717.9 million in 2009. The decrease in revenues was largely due to the deconsolidation of CPC after the sale of our equity interest in the fourth quarter of 2009. Revenues increased 0.2% to $699.2 million in 2010 from $698.0 million in 2009 when the revenues of CPC are removed and the financial impact of the merchant portfolio acquisition made during the fourth quarter of 2009 is included as if the acquisition had occurred on January 1, 2009. Our merchant processing volume, which represents the total value of transactions processed by us, declined 3.7% to $22,653 million during 2010 from $23,526 million during 2009, reflecting a smaller total number of merchant customers in 2010 compared to 2009. Revenues decreased at a lower rate than charge volume due to increases in fees charged to merchants.\nInterchange. Interchange expenses decreased 4.3% to $380.6 million in 2010 from $397.5million in 2009, due to decreased charge volume and due to the deconsolidation of CPC after the sale of our equity interest in the fourth quarter of 2009. Interchange expenses decreased 2.1% to $380.6 million in 2010 from $388.6 million in 2009 when the interchange expenses related to CPC are removed and we include the merchant portfolio acquisition made during the fourth quarter of 2009 as if the acquisition had occurred on January 1, 2009.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 927,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "717,928",
+     "",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "794,825",
+     "",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "(76,897)",
+     "",
+     "",
+     "-9.7",
+     "%"
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interchange",
+     "",
+     "397,530",
+     "",
+     "",
+     "55.4",
+     "%",
+     "",
+     "450,570",
+     "",
+     "",
+     "56.7",
+     "%",
+     "",
+     "(53,040)",
+     "",
+     "",
+     "-11.8",
+     "%"
+    ],
+    [
+     "Other cost of services",
+     "",
+     "228,253",
+     "",
+     "",
+     "31.8",
+     "%",
+     "",
+     "240,880",
+     "",
+     "",
+     "30.3",
+     "%",
+     "",
+     "(12,627)",
+     "",
+     "",
+     "-5.2",
+     "%"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "20,348",
+     "",
+     "",
+     "2.8",
+     "%",
+     "",
+     "20,941",
+     "",
+     "",
+     "2.6",
+     "%",
+     "",
+     "(593)",
+     "",
+     "",
+     "-2.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "646,131",
+     "",
+     "",
+     "90.0",
+     "%",
+     "",
+     "712,391",
+     "",
+     "",
+     "89.6",
+     "%",
+     "",
+     "(66,260)",
+     "",
+     "",
+     "-9.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "71,797",
+     "",
+     "",
+     "10.0",
+     "%",
+     "",
+     "82,434",
+     "",
+     "",
+     "10.4",
+     "%",
+     "",
+     "(10,637)",
+     "",
+     "",
+     "-12.9",
+     "%"
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(46,488)",
+     "",
+     "",
+     "-6.5",
+     "%",
+     "",
+     "(56,289)",
+     "",
+     "",
+     "-7.1",
+     "%",
+     "",
+     "9,801",
+     "",
+     "",
+     "-17.4",
+     "%"
+    ],
+    [
+     "Other, net",
+     "",
+     "(1,245)",
+     "",
+     "",
+     "-0.2",
+     "%",
+     "",
+     "(750)",
+     "",
+     "",
+     "-0.1",
+     "%",
+     "",
+     "(495)",
+     "",
+     "",
+     "66.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "(47,733)",
+     "",
+     "",
+     "-6.6",
+     "%",
+     "",
+     "(57,039)",
+     "",
+     "",
+     "-7.2",
+     "%",
+     "",
+     "9,306",
+     "",
+     "",
+     "-16.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "24,064",
+     "",
+     "",
+     "3.4",
+     "%",
+     "",
+     "25,395",
+     "",
+     "",
+     "3.2",
+     "%",
+     "",
+     "(1,331)",
+     "",
+     "",
+     "-5.2",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "8,736",
+     "",
+     "",
+     "1.2",
+     "%",
+     "",
+     "10,105",
+     "",
+     "",
+     "1.3",
+     "%",
+     "",
+     "(1,369)",
+     "",
+     "",
+     "-13.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "15,328",
+     "",
+     "",
+     "2.1",
+     "%",
+     "",
+     "15,290",
+     "",
+     "",
+     "1.9",
+     "%",
+     "",
+     "38",
+     "",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "Less: Net income attributable to noncontrolling interests",
+     "",
+     "(3,588)",
+     "",
+     "",
+     "-0.5",
+     "%",
+     "",
+     "(987)",
+     "",
+     "",
+     "-0.1",
+     "%",
+     "",
+     "(2,601)",
+     "",
+     "",
+     "263.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to iPayment, Inc.",
+     "$",
+     "11,740",
+     "",
+     "",
+     "1.6",
+     "%",
+     "$",
+     "14,303",
+     "",
+     "",
+     "1.8",
+     "%",
+     "$",
+     "(2,563)",
+     "",
+     "",
+     "-17.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 995,
+    "end_line": 1030
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Income Tax. Income taxes increased $9.6 million to $18.3 million in 2010 from $8.7 million in 2009 primarily due to an increase in our income before income taxes. Our effective income tax rate increased to approximately 44.6% in 2010, from approximately 36.3% in 2009, primarily due to adjustments to certain deferred tax items relating to our intangible assets. The effective income tax rate also increased due to a reduction in the value of our deferred tax assets as a result of an expected future decrease in our state tax rate. Additionally, the lower rate in 2009 compared to 2010 was partly attributable to our adoption of ASC 810 (formerly known as SFAS No. 160), under which our income before income taxes includes 100% of earnings of our former consolidated joint venture, CPC, including earnings allocable to the noncontrolling interests in CPC, but the income tax expenses do not include any tax expenses on the noncontrolling interests\u2019 share of earnings of CPC.\nNoncontrolling Interests. There was no income attributable to noncontrolling interests in 2010 due to sale of our interest in CPC during the fourth quarter of 2009. Net income attributable to noncontrolling interests was $3.6 million in 2009.\nResults of Operations\nYears ended December 31, 2009 and 2008 (in thousands, except percentages)\nThe following table sets forth our operating results for the periods indicated as a percentage of our revenues:",
+   "prose_after": "Revenues. Revenues decreased 9.7% to $717.9 million in 2009 from $794.8 million in 2008. The decrease resulted from the challenging economic environment, as our merchant processing volume, which represents the total value of transactions processed by us, declined 12.2% to $23,526 million during 2009 from $26,783 million during 2008, reflecting lower consumer spending. Revenues decreased at a lower rate than charge volume due to increases in fees charged to merchants.\nInterchange. Interchange expenses decreased 11.8% to $397.5 million in 2009 from $450.6 million in 2008. Interchange expenses as a percentage of total revenues decreased to 55.4% in 2009 as compared to 56.7% in 2008. Average interchange costs increased in relation to charge volume, but were offset by greater corresponding increases in average fees charged to merchants.\nOther Costs of Services. Other costs of services decreased 5.2% to $228.3 million in 2009 from $240.9 million in 2008. Other costs of services represented 30.3% of revenues in 2009 as compared to 30.4% of revenues in 2008. The percentage increase was primarily attributable to increased depreciation and amortization, partially offset by reductions in processing costs.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1043,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Payments due by period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Less than 1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "More than 5",
+     ""
+    ],
+    [
+     "Contractual Obligations",
+     "Total",
+     "",
+     "year",
+     "",
+     "1-3 years",
+     "",
+     "4-5 years",
+     "",
+     "years",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Credit Facility",
+     "$",
+     "431,638",
+     "$",
+     "\u2014",
+     "$",
+     "431,638",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Senior Subordinated Notes",
+     "",
+     "194,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "194,500",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest (1)",
+     "",
+     "87,831",
+     "",
+     "29,340",
+     "",
+     "51,379",
+     "",
+     "7,111",
+     "",
+     "\u2014"
+    ],
+    [
+     "Capital lease obligations",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Operating lease obligations",
+     "",
+     "6,188",
+     "",
+     "1,325",
+     "",
+     "2,257",
+     "",
+     "1,760",
+     "",
+     "846"
+    ],
+    [
+     "Purchase obligations (2)(3)(4)",
+     "",
+     "4,100",
+     "",
+     "3,771",
+     "",
+     "329",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total contractual obligations",
+     "$",
+     "724,257",
+     "$",
+     "34,436",
+     "$",
+     "485,603",
+     "$",
+     "203,371",
+     "$",
+     "846"
+    ]
+   ],
+   "caption_stack": [
+    "Payments due by period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1101,
+    "end_line": 1118
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We had net capitalized debt issuance costs related to the senior secured credit facility totaling $2.6 million and net capitalized debt issuance costs related to the senior subordinated notes totaling $3.6 million as of December 31, 2010, which is materially consistent with amounts computed using an effective interest method. These costs are being amortized to interest expense on a straight-line basis over the life of the related debt instruments. Amortization expense related to the debt issuance costs was $2.2 million for the years ended December 31, 2010, 2009, and 2008 and is included within interest expense on the Consolidated Income Statements.\nContractual Obligations\nThe following table of our material contractual obligations as of December 31, 2010 summarizes the aggregate effect that these obligations are expected to have on our cash flows in the periods indicated. The table excludes contingent payments in connection with earnouts related to completed acquisitions. We cannot quantify the exact amounts to be paid because they are based on future EBITDA results. We had no earnout payments in 2010 compared to $2.7 million in 2009. We currently do not anticipate that earnout payments will be made in the near future.",
+   "prose_after": "(1) Future interest obligations are calculated using current interest rates on existing debt balances as of December 31, 2010, and assume no principal reduction other than mandatory principal repayments in accordance with the terms of the debt instruments as described in Note 7 to our Consolidated Financial Statements.\n(2) Purchase obligations represent costs of contractually guaranteed minimum processing volumes with certain of our third-party transaction processors.\n(3) We are required to pay FDMS an annual processing fee through 2011 related to the FDMS Merchant Portfolio and the FDMS Bank Portfolio. The minimum fee for 2011 will be at least 70% of such fee paid to FDMS in 2010, or at least $3.8 million.\n(4) We have agreed to utilize FDMS to process at least 75% of our consolidated transaction sales volume in any calendar year through 2011. The minimum commitments for such years are not calculable as of December 31, 2010, and are excluded from this table.\nWe expect to be able to fund our operations, capital expenditures and the contractual obligations above (other than the repayment at maturity of the aggregate principal amount of (i) term loans under our senior secured credit facility and (ii) our senior subordinated notes) using our cash from operations. We intend to use our revolving credit facility primarily to fund additional acquisition opportunities as they arise. To the extent we are unable to fund our operations, capital expenditures and the contractual obligations above using cash from operations, we intend to use borrowings under our revolving credit facility or future debt or equity financings. In addition, we may seek to sell additional equity or arrange debt financing to give us financial flexibility to pursue attractive opportunities that may arise in the future. If we raise additional funds through the sale of equity or convertible debt securities, these transactions may dilute the value of our outstanding common stock. We may also decide to issue securities, including debt securities, which have rights, preferences and privileges senior to our common stock. If future financing is not available or is not available on acceptable terms, we may not be able to fund our future needs, which may prevent us from increasing our market share, capitalizing on new business opportunities or remaining competitive in our industry.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1125,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1",
+     "$",
+     "2",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of $735 and $857 at December 31, 2010 and 2009, respectively",
+     "",
+     "27,542",
+     "",
+     "25,077",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "1,191",
+     "",
+     "1,463",
+     ""
+    ],
+    [
+     "Investment in merchant advances, net of allowance for doubtful accounts of $397 and $527 at December 31, 2010 and 2009, respectively",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "2,073",
+     "",
+     "2,353",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "30,807",
+     "",
+     "28,895",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "556",
+     "",
+     "680",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "4,766",
+     "",
+     "4,673",
+     ""
+    ],
+    [
+     "Intangible assets and other, net of accumulated amortization of $177,600 and $138,789 at December 31, 2010 and 2009, respectively.",
+     "",
+     "156,734",
+     "",
+     "163,774",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "527,978",
+     "",
+     "527,978",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "4,324",
+     "",
+     "8,219",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "",
+     "10,464",
+     "",
+     "11,147",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "735,629",
+     "$",
+     "745,366",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES and STOCKHOLDER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "3,265",
+     "$",
+     "4,132",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "11,818",
+     "",
+     "8,529",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "2,573",
+     "",
+     "2,735",
+     ""
+    ],
+    [
+     "Accrued liabilities and other",
+     "",
+     "17,060",
+     "",
+     "20,100",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "5,823",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "40,539",
+     "",
+     "35,496",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "",
+     "619,144",
+     "",
+     "651,519",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "3,505",
+     "",
+     "15,213",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "663,188",
+     "",
+     "702,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 5)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s equity",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value; 1,000 shares authorized, 100 shares issued and outstanding at December 31, 2010, and 2009 respectively",
+     "",
+     "20,055",
+     "",
+     "20,055",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss, net of tax benefits of $0 and $4,984 at December 31, 2010, and 2009, respectively",
+     "",
+     "\u2014",
+     "",
+     "(7,475)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "52,386",
+     "",
+     "30,558",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholder\u2019s equity",
+     "",
+     "72,441",
+     "",
+     "43,138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholder\u2019s equity",
+     "$",
+     "735,629",
+     "$",
+     "745,366",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1174,
+    "end_line": 1231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. We were not engaged to perform an audit of the Company\u2019s internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, and evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the consolidated financial position of iPayment, Inc. at December 31, 2010 and 2009, and the consolidated results of its operations and its cash flows for each of the three years in the period ended December 31, 2010, in conformity with U.S. generally accepted accounting principles.\n/s/ ERNST & YOUNG LLP\nLos Angeles, California March 21, 2011\niPAYMENT, INC. CONSOLIDATED BALANCE SHEETS (In thousands, except share data)",
+   "prose_after": "iPAYMENT, INC. CONSOLIDATED INCOME STATEMENTS (In thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1170,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1232,
+     "token": "REPEATING_FOOTER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "699,174",
+     "$",
+     "717,928",
+     "",
+     "$",
+     "794,825",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interchange",
+     "",
+     "380,577",
+     "",
+     "397,530",
+     "",
+     "",
+     "450,570",
+     ""
+    ],
+    [
+     "Other costs of services",
+     "",
+     "216,873",
+     "",
+     "228,253",
+     "",
+     "",
+     "240,880",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "13,827",
+     "",
+     "20,348",
+     "",
+     "",
+     "20,941",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "611,277",
+     "",
+     "646,131",
+     "",
+     "",
+     "712,391",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "87,897",
+     "",
+     "71,797",
+     "",
+     "",
+     "82,434",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "45,662",
+     "",
+     "46,488",
+     "",
+     "",
+     "56,289",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "",
+     "1,058",
+     "",
+     "1,245",
+     "",
+     "",
+     "750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "41,177",
+     "",
+     "24,064",
+     "",
+     "",
+     "25,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "18,349",
+     "",
+     "8,736",
+     "",
+     "",
+     "10,105",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "22,828",
+     "",
+     "15,328",
+     "",
+     "",
+     "15,290",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Net income attributable to noncontrolling interest",
+     "",
+     "\u2014",
+     "",
+     "(3,588)",
+     "",
+     "",
+     "(987)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to iPayment, Inc.",
+     "$",
+     "22,828",
+     "$",
+     "11,740",
+     "",
+     "$",
+     "14,303",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1238,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "iPAYMENT, INC. CONSOLIDATED INCOME STATEMENTS (In thousands)",
+   "prose_after": "iPAYMENT, INC. CONSOLIDATED STATEMENTS of CHANGES IN STOCKHOLDER\u2019S EQUITY and COMPREHENSIVE INCOME (In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1274,
+     "token": "REPEATING_FOOTER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stockholder's Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "controlling",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     "",
+     "interest",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2007",
+     "",
+     "100",
+     "$",
+     "20,055",
+     "$",
+     "(7,354)",
+     "",
+     "$",
+     "4,515",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "17,216",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized (loss) on fair value of derivatives, net of tax benefits of $3,276",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,914)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,914)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14,303",
+     "",
+     "",
+     "987",
+     "",
+     "",
+     "15,290",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,376",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2008",
+     "",
+     "100",
+     "$",
+     "20,055",
+     "$",
+     "(12,268)",
+     "",
+     "$",
+     "18,818",
+     "",
+     "$",
+     "987",
+     "",
+     "$",
+     "27,592",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions to noncontrolling interest in equity of subsidiary",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,640)",
+     "",
+     "",
+     "(2,640)",
+     ""
+    ],
+    [
+     "Sale of interest in equity of subsidiary",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,935)",
+     "",
+     "",
+     "(1,935)",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on fair value of derivatives, net of tax expense of $3,195",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,793",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,793",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "11,740",
+     "",
+     "",
+     "3,588",
+     "",
+     "",
+     "15,328",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "20,121",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "",
+     "100",
+     "$",
+     "20,055",
+     "$",
+     "(7,475)",
+     "",
+     "$",
+     "30,558",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "43,138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend paid to parent company",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on fair value of derivatives, net of tax expense of $4,984",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,475",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,475",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "22,828",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "22,828",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "30,303",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "",
+     "100",
+     "$",
+     "20,055",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "52,386",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "72,441",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Stockholder's Equity",
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1280,
+    "end_line": 1327
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "iPAYMENT, INC. CONSOLIDATED STATEMENTS of CHANGES IN STOCKHOLDER\u2019S EQUITY and COMPREHENSIVE INCOME (In thousands, except share data)",
+   "prose_after": "iPAYMENT, INC. CONSOLIDATED STATEMENTS of CASH FLOWS (In thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1328,
+     "token": "REPEATING_FOOTER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "22,828",
+     "",
+     "$",
+     "15,328",
+     "",
+     "$",
+     "15,290",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "41,221",
+     "",
+     "",
+     "45,828",
+     "",
+     "",
+     "38,041",
+     ""
+    ],
+    [
+     "Noncash interest expense and other",
+     "",
+     "3,217",
+     "",
+     "",
+     "2,584",
+     "",
+     "",
+     "2,433",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities, excluding effects of acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(2,465)",
+     "",
+     "",
+     "(1,001)",
+     "",
+     "",
+     "(967)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "272",
+     "",
+     "",
+     "344",
+     "",
+     "",
+     "612",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "(3,049)",
+     "",
+     "",
+     "(5,804)",
+     "",
+     "",
+     "(5,851)",
+     ""
+    ],
+    [
+     "Accounts payable and income taxes payable",
+     "",
+     "2,422",
+     "",
+     "",
+     "3,139",
+     "",
+     "",
+     "(2,353)",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "(151)",
+     "",
+     "",
+     "(313)",
+     "",
+     "",
+     "(218)",
+     ""
+    ],
+    [
+     "Accrued liabilities and other",
+     "",
+     "(2,301)",
+     "",
+     "",
+     "2,600",
+     "",
+     "",
+     "(548)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "61,994",
+     "",
+     "",
+     "62,705",
+     "",
+     "",
+     "46,439",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in restricted cash",
+     "",
+     "124",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "267",
+     ""
+    ],
+    [
+     "Expenditures for property and equipment",
+     "",
+     "(2,904)",
+     "",
+     "",
+     "(2,304)",
+     "",
+     "",
+     "(2,374)",
+     ""
+    ],
+    [
+     "Investment in merchant advances",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,460",
+     "",
+     "",
+     "(4,344)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from disposition of noncontrolling interest, net of cash disposed",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,772",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Acquisitions of businesses and portfolios, net of cash acquired",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "(24,629)",
+     "",
+     "",
+     "(22,063)",
+     ""
+    ],
+    [
+     "Payments related to businesses previously acquired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,734)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments for prepaid residual expenses",
+     "",
+     "(6,315)",
+     "",
+     "",
+     "(5,126)",
+     "",
+     "",
+     "(4,160)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(34,095)",
+     "",
+     "",
+     "(27,552)",
+     "",
+     "",
+     "(32,674)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net borrowings (repayments) on line of credit",
+     "",
+     "100",
+     "",
+     "",
+     "10,900",
+     "",
+     "",
+     "(2,200)",
+     ""
+    ],
+    [
+     "Repayments of debt",
+     "",
+     "(27,000)",
+     "",
+     "",
+     "(47,000)",
+     "",
+     "",
+     "(8,009)",
+     ""
+    ],
+    [
+     "Dividend",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Distributions to noncontrolling interest in equity of subsidiary",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,640)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(27,900)",
+     "",
+     "",
+     "(38,740)",
+     "",
+     "",
+     "(10,209)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(1)",
+     "",
+     "",
+     "(3,587)",
+     "",
+     "",
+     "3,556",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "2",
+     "",
+     "",
+     "3,589",
+     "",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "1",
+     "",
+     "$",
+     "2",
+     "",
+     "$",
+     "3,589",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for income taxes",
+     "$",
+     "14,197",
+     "",
+     "$",
+     "13,712",
+     "",
+     "$",
+     "13,917",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest",
+     "$",
+     "43,231",
+     "",
+     "$",
+     "44,218",
+     "",
+     "$",
+     "54,072",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of non-cash activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrual of deferred payments for acquisitions of businesses",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,456",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash (decreases) increases in assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(2,277)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1334,
+    "end_line": 1398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "iPAYMENT, INC. CONSOLIDATED STATEMENTS of CASH FLOWS (In thousands)",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. Organization and Business and Basis of Presentation\nOrganization and Business\niPayment, Inc. (\u201ciPayment\u201d) was originally incorporated as iPayment Holdings, Inc. in Tennessee and was reincorporated in Delaware under the name iPayment, Inc. iPayment is a provider of card-based payment processing services to small business merchants located across the United States. We enable merchants to accept credit and debit cards as payment for their products and services by providing card authorization, data capture, settlement, risk management, fraud detection and chargeback services. Our services also include data organization and retrieval, ongoing merchant assistance and resolution support in connection with disputes with cardholders. We market and sell our services primarily through independent sales groups (\u201cISGs\u201d).\nOn May 10, 2006, the Company completed a merger transaction with iPayment Holdings, Inc. (\u201cHoldings\u201d) pursuant to which iPayment MergerCo, Inc. (\u201cMergerCo\u201d) was merged with and into the Company, with the Company remaining as the surviving corporation and a wholly-owned subsidiary of Holdings (the \u201cTransaction\u201d). The Transaction has been accounted for as a purchase at the parent company level (Holdings), with the related purchase accounting adjustments pushed down to the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1330,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1399,
+     "token": "REPEATING_FOOTER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2011",
+     "$",
+     "37,942"
+    ],
+    [
+     "2012",
+     "",
+     "31,380"
+    ],
+    [
+     "2013",
+     "",
+     "23,584"
+    ],
+    [
+     "2014",
+     "",
+     "17,886"
+    ],
+    [
+     "2015",
+     "",
+     "12,752"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1471,
+    "end_line": 1480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "We monitor indicators of impairment on our merchant processing portfolios on a periodic basis and at least on a quarterly basis. Further, we perform quantitative tests quarterly or annually (annually for portfolios that are smaller in value) by estimating the cash flows over the remaining useful life of each portfolio and comparing to its carrying value. To the extent that the estimated cash flows exceed the carrying value of each portfolio, no impairment of the value of the portfolio is necessary. The sum of the cash flows exceeded the carrying value of each portfolio during the years ended December 31, 2010 and 2009. Therefore, we concluded that there were no instances of impairment on our merchant processing portfolios as of those dates.\nEstimated useful lives are determined for merchant processing portfolios based on the life of the expected cash flows from the underlying merchant accounts and for other intangible assets primarily over the remaining terms of the contracts. During the years ended December 31, 2010, 2009, and 2008, amortization expense related to intangible assets was $39.0 million, $43.7 million, and $36.3 million, respectively. As of December 31, 2010, estimated amortization expense for each of the five succeeding years is expected to be as follows (in thousands):",
+   "prose_after": "Estimated future amortization expense is based on intangible amounts recorded as of December 31, 2010. Actual amounts will increase if additional amortizable intangible assets are acquired.\nGoodwill\nWe follow ASC 350 \u201cIntangibles \u2014 Goodwill and Other Topics\u201d (formerly known as SFAS No. 142, Goodwill and Other Intangible Assets), which addresses financial accounting and reporting for acquired goodwill and other intangible assets, and requires that goodwill is no longer subject to amortization over its estimated useful life. Rather, goodwill is subject to at least an annual assessment for impairment and in addition, if facts and circumstances indicate goodwill may be impaired, we perform a recoverability evaluation. In accordance with ASC 350, the recoverability analysis is based on fair value. The calculation of fair value includes a number of estimates and assumptions, including projections of future income and cash flows, the identification of\nappropriate market multiples of other publicly traded institutions in our industry, the current economic environment, and the choice of an appropriate discount rate.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1457,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "$",
+     "4,636",
+     "",
+     "$",
+     "3,665",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "1,068",
+     "",
+     "",
+     "1,336",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "601",
+     "",
+     "",
+     "457",
+     ""
+    ],
+    [
+     "Computer software and equipment",
+     "",
+     "4,103",
+     "",
+     "",
+     "4,454",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "10,408",
+     "",
+     "",
+     "9,912",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(5,642)",
+     "",
+     "",
+     "(5,239)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "4,766",
+     "",
+     "$",
+     "4,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "527,978",
+     "",
+     "$",
+     "527,912",
+     ""
+    ],
+    [
+     "Acquired during the period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Divested during the period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "Adjustments to goodwill acquired in prior period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "278",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "527,978",
+     "",
+     "$",
+     "527,978",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1586,
+    "end_line": 1614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Details of Balance Sheet Accounts"
+    }
+   },
+   "prose_before": "In November 2010,we entered into a Purchase and Sale Agreement with the shareholders of Flagship Merchant Services (\u201cFlagship\u201d), whereby we acquired a merchant portfolio of approximately 8,400 merchant accounts from Flagship. This acquisition constituted a permitted acquisition under our senior secured credit facility. Total consideration at closing was $20 million in cash, which was funded from our cash on hand and from our revolving credit facility. The effect of the portfolio acquisition was included in our Consolidated Income Statements beginning October 1, 2010.\nIn December 2010, we entered into a Purchase and Sale Agreement with an existing ISG, whereby we acquired a merchant portfolio of approximately 2,500 merchant accounts. This acquisition constituted a permitted acquisition under our senior secured credit facility. Consideration at closing was $5 million in cash which was funded at closing from our revolving credit facility. The effect of the portfolio acquisition was included in our Consolidated Income Statements beginning December 1, 2010.\n4. Details of Balance Sheet Accounts",
+   "prose_after": "5. Commitments and Contingencies\nLeases\nOur facilities include locations in Nashville, Tennessee; Westlake Village, California; Minden, Nevada; Novi, Michigan; and Akron, Ohio. Our future minimum lease commitments under noncancelable leases are as follows at December 31, 2010 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1655,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "1,325"
+    ],
+    [
+     "2012",
+     "",
+     "1,161"
+    ],
+    [
+     "2013",
+     "",
+     "1,096"
+    ],
+    [
+     "2014",
+     "",
+     "938"
+    ],
+    [
+     "2015",
+     "",
+     "822"
+    ],
+    [
+     "Thereafter",
+     "",
+     "3,461"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "$",
+     "8,803"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1621,
+    "end_line": 1634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "5. Commitments and Contingencies\nLeases\nOur facilities include locations in Nashville, Tennessee; Westlake Village, California; Minden, Nevada; Novi, Michigan; and Akron, Ohio. Our future minimum lease commitments under noncancelable leases are as follows at December 31, 2010 (in thousands):",
+   "prose_after": "Total rent expense for the years ended December 31, 2010, 2009, and 2008 was $2.0 million, $2.3 million, and $2.1 million, respectively.\nMinimum Processing Commitments\nWe have non-exclusive agreements with several processors to provide us services related to transaction processing and transmittal, transaction authorization and data capture, and access to various reporting tools. Certain of these agreements require us to submit a minimum monthly number of transactions for processing. If we submit a number of transactions that is lower than the minimum, we are required to pay to the processor the fees that it would have received if we had submitted the required minimum number of transactions. As of December 31, 2010, such minimum fee commitments were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1655,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "4,593"
+    ],
+    [
+     "2012",
+     "",
+     "329"
+    ],
+    [
+     "2013",
+     "",
+     "\u2014"
+    ],
+    [
+     "2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "2015",
+     "",
+     "\u2014"
+    ],
+    [
+     "Thereafter",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "4,922"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1641,
+    "end_line": 1654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Total rent expense for the years ended December 31, 2010, 2009, and 2008 was $2.0 million, $2.3 million, and $2.1 million, respectively.\nMinimum Processing Commitments\nWe have non-exclusive agreements with several processors to provide us services related to transaction processing and transmittal, transaction authorization and data capture, and access to various reporting tools. Certain of these agreements require us to submit a minimum monthly number of transactions for processing. If we submit a number of transactions that is lower than the minimum, we are required to pay to the processor the fees that it would have received if we had submitted the required minimum number of transactions. As of December 31, 2010, such minimum fee commitments were as follows (in thousands):",
+   "prose_after": "In conjunction with our purchase of a merchant portfolio from First Data Merchant Services (\u201cFDMS\u201d) in 2004, we also entered into service agreements with FDMS (the \u201cService Agreements\u201d), pursuant to which FDMS agreed to perform certain data processing and related services with respect to the acquired merchant contracts through 2011. In consideration for entering into the Service Agreements, we are required to pay FDMS a processing fee related to these accounts of at least 70% of the amount paid during the immediately preceding year. The minimum commitments for years after 2010 included in the table above are based on the preceding year minimum amounts. The actual minimum commitments for such years may vary based on actual fees paid in the preceding years.\nWe also have agreed to utilize FDMS to process at least 75% of our consolidated transaction sales volume in any calendar year through 2011. The minimum commitments for such years are not calculable as of December 31, 2010, and are excluded from this table.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1655,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Senior secured credit facility:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Term loans",
+     "$",
+     "420,638",
+     "",
+     "$",
+     "447,638"
+    ],
+    [
+     "Revolver",
+     "",
+     "11,000",
+     "",
+     "",
+     "10,900"
+    ],
+    [
+     "Senior subordinated notes, net of discount",
+     "",
+     "193,329",
+     "",
+     "",
+     "192,981"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "624,967",
+     "",
+     "",
+     "651,519"
+    ],
+    [
+     "Less: current portion of long-term debt",
+     "",
+     "(5,823)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "619,144",
+     "",
+     "$",
+     "651,519"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1691,
+    "end_line": 1708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "In 2007, we began, on a selective basis, offering advances to prospective and current merchants based on expected future processing volume. We stopped offering new merchant advances to our customers in 2008. Our merchant advances are reflected in \u201cInvestment in merchant advances\u201d in the Consolidated Balance Sheets. Investments in merchant advances were $0, net of allowance for doubtful accounts of $0.4 million, at December 31, 2010 and $0, net of allowance for doubtful accounts of $0.5 million, at December 31, 2009. The allowance for doubtful accounts is further described in \u201cReserve for Losses on Merchant Accounts\u201d within Note 2.\nPayments for Prepaid Residual Expenses\nDuring the year ended December 31, 2010, we made payments totaling $6.3 million to several ISGs in exchange for contract modifications which lower our obligations for future payments of residuals to them. These payments have been assigned to intangible assets in the accompanying Consolidated Balance Sheets and are amortized over their expected useful lives.\n7. Long-Term Debt\nLong-term debt consists of the following (in thousands):",
+   "prose_after": "The senior secured credit facility consists of $515.0 million of term loans and a $60.0 million revolving credit facility, further expandable to $100.0 million. The senior secured credit facility contains a $25.0 million letter of credit sublimit and is secured by the Company\u2019s assets. Interest on outstanding borrowings under the term loans is payable at a rate of LIBOR plus a margin of 2.00% to 2.25% (currently 2.00%). Interest on outstanding borrowings under the revolving credit facility is payable at prime plus a margin of 0.50% to 1.25% (currently 1.25%) or at a rate of LIBOR plus a margin of 1.50% to 2.25% (currently 2.25%) depending on our ratio of consolidated debt to EBITDA, as defined in the agreement. Additionally, the senior secured credit facility requires us to pay unused commitment fees of up to 0.50% (currently 0.50%) on any undrawn amounts under the revolving credit facility. The senior secured credit facility contains customary affirmative and negative covenants, including financial covenants requiring maintenance of a debt-to-EBITDA ratio (as defined therein), which is currently 4.75 to 1.00, but which decreases periodically over the life of the agreement to a ratio of 4.00 to 1.00 on December 31, 2011. The senior secured credit facility also contains an excess cash flow covenant (as defined therein), which requires us to make additional principal payments after the end of every fiscal year. At December 31, 2010, the payment attributable to this covenant was $5.8 million and was included in the current portion of long-term debt. At December 31, 2009, there was no additional payment attributable to this covenant. Principal repayments on the term loans were due quarterly in the amount of $1.3 million which began on June 30, 2006, with any remaining unpaid balance due on March 31, 2013. During the quarter ended March 31, 2009, the Company paid its excess cash flow sweep and prepaid its quarterly principal payments required by the senior secured credit facility through the second quarter of 2010. Throughout the remainder of 2009, the Company prepaid the remainder of its quarterly principal payments required by the senior secured credit facility. Since that time, the Company has repaid an additional $39.9 million of debt principal beyond the required quarterly principal payments. Outstanding principal balances on the revolving credit facility are due when the revolving credit facility matures on May 10, 2012. At December 31, 2010, we had outstanding $420.6 million of term loans at a weighted average interest rate of 2.29% and $11.0 million of borrowings outstanding under the revolving credit facility at a weighted average interest rate of 3.42%.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1681,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "\u2014"
+    ],
+    [
+     "2012",
+     "",
+     "11,000"
+    ],
+    [
+     "2013",
+     "",
+     "420,638"
+    ],
+    [
+     "2014",
+     "",
+     "193,329"
+    ],
+    [
+     "2015",
+     "",
+     "\u2014"
+    ],
+    [
+     "Thereafter",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "624,967"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1738,
+    "end_line": 1751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "During 2008, the Company spent $1.1 million on repurchases of senior subordinated notes. The Company intends to hold the senior subordinated notes until maturity. In accordance with ASC 860 \u201cTransfers and Servicing,\u201d formerly known as SFAS No. 140, Accounting for Transfers and Servicing of Financial Assets and Extinguishment of Liabilities, the repurchase was accounted for as an extinguishment of debt. We reflected this transaction as a reduction in long-term debt within the Consolidated Balance Sheets as of December 31, 2008. We amended our senior secured credit facility in April 2007 to allow for repurchases of our senior subordinated notes up to $10.0 million, and have now completed note repurchases in compliance with that amendment. At December 31, 2010, we had $194.5 million of outstanding senior subordinated notes and $1.5 million of remaining unamortized discount on the senior subordinated notes.\nWe had net capitalized debt issuance costs related to the senior secured credit facility totaling $2.6 million and net capitalized debt issuance costs related to the senior subordinated notes totaling $3.7 million as of December 31, 2010, which is materially consistent with amounts computed using an effective interest method. These costs are being amortized to interest expense on a straight-line basis over the life of the related debt instruments. Amortization expense related to the debt issuance costs was $2.2 million for the years ended December 31, 2010, 2009, and 2008 and is included within interest expense on the Consolidated Income Statements.\nThe maturities of long-term debt (before unamortized discount) are as follows (in thousands):",
+   "prose_after": "8. Income Taxes\nThe provision for income taxes and liabilities for the years ended December 31, 2010, 2009 and 2008, was comprised of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1752,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "14,374",
+     "",
+     "$",
+     "11,736",
+     "",
+     "$",
+     "13,743",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "1,942",
+     "",
+     "",
+     "2,435",
+     "",
+     "",
+     "2,778",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current",
+     "",
+     "16,316",
+     "",
+     "",
+     "14,171",
+     "",
+     "",
+     "16,521",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "993",
+     "",
+     "",
+     "(5,146)",
+     "",
+     "",
+     "(6,327)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(238)",
+     "",
+     "",
+     "81",
+     "",
+     "",
+     "523",
+     ""
+    ],
+    [
+     "Changes in uncertain tax positions",
+     "",
+     "1,278",
+     "",
+     "",
+     "(370)",
+     "",
+     "",
+     "178",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total income tax provision",
+     "$",
+     "18,349",
+     "",
+     "$",
+     "8,736",
+     "",
+     "$",
+     "10,895",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1758,
+    "end_line": 1774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "8. Income Taxes\nThe provision for income taxes and liabilities for the years ended December 31, 2010, 2009 and 2008, was comprised of the following (in thousands):",
+   "prose_after": "The differences between the federal statutory tax rate of 35% and effective tax rates are primarily due to state income tax provisions, and changes in uncertain positions, as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1752,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1794,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Statutory Rate",
+     "",
+     "35",
+     "%",
+     "",
+     "35",
+     "%",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Increase (decreases) in taxes resulting from the following:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State income taxes net of federal tax benefit",
+     "",
+     "5",
+     "%",
+     "",
+     "5",
+     "%",
+     "",
+     "4",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "0",
+     "%",
+     "",
+     "-4",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Increase to valuation allowance",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Increase (decreases) in uncertain positions",
+     "",
+     "3",
+     "%",
+     "",
+     "-2",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "2",
+     "%",
+     "",
+     "2",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "45",
+     "%",
+     "",
+     "36",
+     "%",
+     "",
+     "41",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1777,
+    "end_line": 1791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The differences between the federal statutory tax rate of 35% and effective tax rates are primarily due to state income tax provisions, and changes in uncertain positions, as follows:",
+   "prose_after": "Deferred income tax assets are included as a component of other assets in the accompanying Consolidated Balance Sheets as of December 31, 2010 and 2009 and were comprised of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1752,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1794,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Current deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves",
+     "$",
+     "1,063",
+     "",
+     "$",
+     "1,971",
+     ""
+    ],
+    [
+     "Gain on sale of noncontrolling interest",
+     "",
+     "362",
+     "",
+     "",
+     "367",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "790",
+     "",
+     "",
+     "966",
+     ""
+    ],
+    [
+     "Valuation allowances",
+     "",
+     "(31)",
+     "",
+     "",
+     "(116)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current deferred tax assets",
+     "",
+     "2,184",
+     "",
+     "",
+     "3,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(111)",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(623)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current deferred tax liabilities",
+     "",
+     "(111)",
+     "",
+     "",
+     "(835)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net current deferred tax asset",
+     "$",
+     "2,073",
+     "",
+     "$",
+     "2,353",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit of unrealized loss on fair value of derivatives",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,976",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "",
+     "1,865",
+     "",
+     "",
+     "1,898",
+     ""
+    ],
+    [
+     "Cancellation of debt income",
+     "",
+     "549",
+     "",
+     "",
+     "704",
+     ""
+    ],
+    [
+     "Gain on sale of noncontrolling interest",
+     "",
+     "258",
+     "",
+     "",
+     "889",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "15,810",
+     "",
+     "",
+     "7,188",
+     ""
+    ],
+    [
+     "Valuation allowances",
+     "",
+     "(558)",
+     "",
+     "",
+     "(711)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long-term deferred tax assets",
+     "",
+     "17,924",
+     "",
+     "",
+     "14,944",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets, net of depreciation and amortization",
+     "",
+     "(4,088)",
+     "",
+     "",
+     "(6,725)",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "(9,512)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long-term deferred tax liabilities",
+     "",
+     "(13,600)",
+     "",
+     "",
+     "(6,725)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net long-term deferred tax asset",
+     "$",
+     "4,324",
+     "",
+     "$",
+     "8,219",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1796,
+    "end_line": 1842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Deferred income tax assets are included as a component of other assets in the accompanying Consolidated Balance Sheets as of December 31, 2010 and 2009 and were comprised of the following (in thousands):",
+   "prose_after": "We account for income taxes in accordance with ASC 740, \u201cIncome Taxes.\u201d ASC 740 clarifies the accounting and reporting for uncertainties in income tax law by prescribing a comprehensive model for the financial statement recognition, measurement, presentation and disclosure for uncertain tax positions taken or expected to be taken in income tax returns.\nAs of December 31, 2010, our liabilities for unrecognized tax benefits totaled $2.7 million, included in other long-term liabilities. Interest and penalties related to income tax liabilities are included in income tax expense. The balance of accrued interest and penalties recorded in the Consolidated Balance Sheets at December 31, 2010 was $0.2 million.\nThe following presents a rollforward of our unrecognized tax benefits (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1794,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1871,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Unrecognized",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Tax Benefits",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2008",
+     "$",
+     "1,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in prior year tax positions",
+     "",
+     "(604)",
+     ""
+    ],
+    [
+     "Increase for tax positions taken during the current period",
+     "",
+     "551",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "$",
+     "1,087",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reductions due to lapse of the applicable statute of limitations",
+     "",
+     "(125)",
+     ""
+    ],
+    [
+     "Increase in prior year tax positions",
+     "",
+     "1,129",
+     ""
+    ],
+    [
+     "Increase for tax positions taken during the current period",
+     "",
+     "634",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "$",
+     "2,725",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Unrecognized",
+    "Tax Benefits"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1849,
+    "end_line": 1868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "We account for income taxes in accordance with ASC 740, \u201cIncome Taxes.\u201d ASC 740 clarifies the accounting and reporting for uncertainties in income tax law by prescribing a comprehensive model for the financial statement recognition, measurement, presentation and disclosure for uncertain tax positions taken or expected to be taken in income tax returns.\nAs of December 31, 2010, our liabilities for unrecognized tax benefits totaled $2.7 million, included in other long-term liabilities. Interest and penalties related to income tax liabilities are included in income tax expense. The balance of accrued interest and penalties recorded in the Consolidated Balance Sheets at December 31, 2010 was $0.2 million.\nThe following presents a rollforward of our unrecognized tax benefits (in thousands):",
+   "prose_after": "As of December 31, 2010, the total amount of unrecognized tax benefits that would affect the tax rate, if recognized, would be $1.0 million.\nWe file income tax returns in the U.S. federal jurisdiction and various state jurisdictions. With limited exception, we are no longer subject to federal, state and local income tax audits by taxing authorities for the years through 2005.\nAt December 31, 2010, we had state net operating loss carryforwards of approximately $30.3 million, which begins to expire in 2022. ASC 740 also requires that deferred tax assets be reduced by a valuation allowance if it is more likely than not that some portion or all of the deferred tax assets will not be realized. At December 31, 2010, we had $0.6 million of valuation allowances on deferred tax assets. The net deferred taxes recorded at December 31, 2010, represent amounts that are more likely than not to be utilized in the near term.\nDuring the first quarter of 2011, we made tax payments totaling $11.9 million to cover all federal and state taxes payable relating to 2010.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1794,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1871,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "1st",
+     "",
+     "",
+     "2nd",
+     "",
+     "3rd",
+     "",
+     "4th",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     "Quarter",
+     "",
+     "Quarter",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "(Unaudited)",
+     "",
+     "(Unaudited)",
+     "",
+     "(Audited)",
+     ""
+    ],
+    [
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "159,540",
+     "",
+     "$",
+     "183,933",
+     "$",
+     "175,098",
+     "$",
+     "180,603",
+     "$",
+     "699,174"
+    ],
+    [
+     "Interchange",
+     "",
+     "90,997",
+     "",
+     "",
+     "98,544",
+     "",
+     "97,200",
+     "",
+     "93,836",
+     "",
+     "380,577"
+    ],
+    [
+     "Other cost of services",
+     "",
+     "50,601",
+     "",
+     "",
+     "55,605",
+     "",
+     "54,064",
+     "",
+     "56,603",
+     "",
+     "216,873"
+    ],
+    [
+     "Selling, general, and administrative",
+     "",
+     "3,082",
+     "",
+     "",
+     "3,303",
+     "",
+     "3,771",
+     "",
+     "3,671",
+     "",
+     "13,827"
+    ],
+    [
+     "Income from operations",
+     "",
+     "14,860",
+     "",
+     "",
+     "26,481",
+     "",
+     "20,063",
+     "",
+     "26,493",
+     "",
+     "87,897"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "10,625",
+     "",
+     "",
+     "10,148",
+     "",
+     "9,683",
+     "",
+     "10,765",
+     "",
+     "41,221"
+    ],
+    [
+     "Net income attributable to iPayment, Inc.",
+     "",
+     "2,220",
+     "",
+     "",
+     "8,309",
+     "",
+     "5,217",
+     "",
+     "7,082",
+     "",
+     "22,828"
+    ],
+    [
+     "Charge Volume (in millions, unaudited)",
+     "",
+     "5,541",
+     "",
+     "",
+     "5,853",
+     "",
+     "5,718",
+     "",
+     "5,541",
+     "",
+     "22,653"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "170,053",
+     "",
+     "$",
+     "190,745",
+     "$",
+     "182,716",
+     "$",
+     "174,414",
+     "$",
+     "717,928"
+    ],
+    [
+     "Interchange",
+     "",
+     "96,910",
+     "",
+     "",
+     "103,575",
+     "",
+     "101,975",
+     "",
+     "95,070",
+     "",
+     "397,530"
+    ],
+    [
+     "Other cost of services",
+     "",
+     "55,368",
+     "",
+     "",
+     "60,574",
+     "",
+     "56,147",
+     "",
+     "56,164",
+     "",
+     "228,253"
+    ],
+    [
+     "Selling, general, and administrative",
+     "",
+     "4,992",
+     "",
+     "",
+     "5,138",
+     "",
+     "5,149",
+     "",
+     "5,069",
+     "",
+     "20,348"
+    ],
+    [
+     "Income from operations",
+     "",
+     "12,783",
+     "",
+     "",
+     "21,456",
+     "",
+     "19,445",
+     "",
+     "18,113",
+     "",
+     "71,797"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "11,956",
+     "",
+     "",
+     "12,160",
+     "",
+     "10,781",
+     "",
+     "10,931",
+     "",
+     "45,828"
+    ],
+    [
+     "Net income (loss) attributable to iPayment, Inc.",
+     "",
+     "(210)",
+     "",
+     "",
+     "4,224",
+     "",
+     "3,741",
+     "",
+     "3,985",
+     "",
+     "11,740"
+    ],
+    [
+     "Charge Volume (in millions, unaudited)",
+     "",
+     "5,737",
+     "",
+     "",
+     "6,091",
+     "",
+     "6,030",
+     "",
+     "5,668",
+     "",
+     "23,526"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2009 - PRO FORMA",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue, unaudited",
+     "$",
+     "165,349",
+     "",
+     "$",
+     "185,082",
+     "$",
+     "175,766",
+     "$",
+     "171,765",
+     "$",
+     "697,962"
+    ],
+    [
+     "Interchange, unaudited",
+     "",
+     "95,254",
+     "",
+     "",
+     "100,814",
+     "",
+     "98,645",
+     "",
+     "93,862",
+     "",
+     "388,575"
+    ],
+    [
+     "Other cost of services, unaudited",
+     "",
+     "54,915",
+     "",
+     "",
+     "59,551",
+     "",
+     "54,835",
+     "",
+     "55,625",
+     "",
+     "224,926"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative, unaudited",
+     "",
+     "3,091",
+     "",
+     "",
+     "3,083",
+     "",
+     "2,971",
+     "",
+     "4,283",
+     "",
+     "13,428"
+    ],
+    [
+     "Income from operations, unaudited",
+     "",
+     "12,089",
+     "",
+     "",
+     "21,635",
+     "",
+     "19,314",
+     "",
+     "17,994",
+     "",
+     "71,032"
+    ],
+    [
+     "Depreciation and amortization, unaudited",
+     "",
+     "12,905",
+     "",
+     "",
+     "13,110",
+     "",
+     "11,728",
+     "",
+     "11,247",
+     "",
+     "48,990"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "185,455",
+     "",
+     "$",
+     "212,580",
+     "$",
+     "203,654",
+     "$",
+     "193,136",
+     "$",
+     "794,825"
+    ],
+    [
+     "Interchange",
+     "",
+     "108,381",
+     "",
+     "",
+     "121,855",
+     "",
+     "116,188",
+     "",
+     "104,146",
+     "",
+     "450,570"
+    ],
+    [
+     "Other cost of services",
+     "",
+     "55,610",
+     "",
+     "",
+     "61,892",
+     "",
+     "61,286",
+     "",
+     "62,092",
+     "",
+     "240,880"
+    ],
+    [
+     "Selling, general, and administrative",
+     "",
+     "4,981",
+     "",
+     "",
+     "5,078",
+     "",
+     "5,166",
+     "",
+     "5,716",
+     "",
+     "20,941"
+    ],
+    [
+     "Income from operations",
+     "",
+     "16,483",
+     "",
+     "",
+     "23,755",
+     "",
+     "21,014",
+     "",
+     "21,183",
+     "",
+     "82,434"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "8,563",
+     "",
+     "",
+     "8,988",
+     "",
+     "9,665",
+     "",
+     "10,825",
+     "",
+     "38,041"
+    ],
+    [
+     "Net income attributable to iPayment, Inc.",
+     "",
+     "1,331",
+     "",
+     "",
+     "5,772",
+     "",
+     "3,729",
+     "",
+     "3,471",
+     "",
+     "14,303"
+    ],
+    [
+     "Charge Volume (in millions, unaudited)",
+     "",
+     "6,535",
+     "",
+     "",
+     "7,280",
+     "",
+     "6,924",
+     "",
+     "6,044",
+     "",
+     "26,783"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1913,
+    "end_line": 1957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Summarized Quarterly Financial Data"
+    }
+   },
+   "prose_before": "On March 4, 2011, the Company entered into an employment agreement with its Chief Financial Officer, Mark C. Monaco. Mr. Monaco has served as the Company\u2019s Chief Financial Officer since October 15, 2010.\nWe sponsor a defined contribution plan (the \u201cPlan\u201d) under Section 401(k) of the Internal Revenue Code, covering employees of iPayment, Inc. and certain of its subsidiaries. Under the Plan, we may match contributions of up to 3% of a participant\u2019s salary. Employer contributions for the years ended December 31, 2010, 2009, and 2008 were $188,000, $179,000, and $197,000, respectively.\n14. Summarized Quarterly Financial Data\nThe following unaudited schedule indicates our quarterly results of operations for 2010, 2009 and 2008 (in thousands, except charge volume). We have also included unaudited pro forma quarterly results from 2009 that remove the operating results of CPC resulting from the sale of our equity in CPC. Within the unaudited pro forma results for 2009, we have also included the financial impact of the merchant portfolio acquisition made during the fourth quarter of 2009 as if the acquisition had occurred on January 1, 2009.",
+   "prose_after": "15. Guarantor Financial Information\nIn connection with the May 2006 issuance of 9.75% senior subordinated notes due 2014, all of our existing and future subsidiaries (the \u201cGuarantors\u201d) that guarantee our other debt or debt of the guarantors have fully and unconditionally guaranteed, on a joint and several basis, our obligations under the related indenture (the \u201cGuarantees\u201d). iPayment, Inc., the issuer of the senior subordinated notes and parent company of the Guarantors, has no independent assets or operations. Any subsidiary of iPayment, Inc. other than the Guarantors is minor, and there are no significant restrictions on our ability to obtain funds from our subsidiaries by dividend or loan.\n16. Significant Developments\nIn May 2009, a jury in the Superior Court of the State of California for the County of Los Angeles handed down a verdict in the amount of $300 million, plus punitive damages in the amount of $50 million, against Mr. Daily, our Chief Executive Officer, in connection with litigation over Mr. Daily\u2019s beneficial ownership in us. This lawsuit was brought against Mr. Daily individually and not in his capacity as the Chairman and Chief Executive Officer or Director of the Company. Neither the Company, nor any other shareholders, officers, employees or directors were a party to this action. The Company has no indemnification, reimbursement or any other contractual obligation to Mr. Daily in connection with this legal matter. In response to the verdict, Mr. Daily filed for personal bankruptcy protection under Chapter 11 of the United States Bankruptcy Code in Nashville, Tennessee. On April 8, 2010, the bankruptcy court ordered the appointment of a trustee to administer the estate of Mr. Daily. The appointment of a trustee by the bankruptcy court could result in one or more of the change of control events under our senior secured credit facility, which would constitute an event of default under our senior secured credit facility. See Risk Factors \u201c\u2014In the event of a change of control, we may not be able to repurchase our senior subordinated notes as required by the indenture, which would result in a default under our indenture,\u201d \u201c\u2014A change of control under our senior secured credit facility could cause a material adverse effect on our liquidity, financial condition or results of operations\u201d and \u201c\u2014A change of control under the indenture governing our senior subordinated notes could cause a material adverse effect on our liquidity, financial condition or results of operations.\u201d",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1905,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1958,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Age",
+     "Principal Occupation, Business Experience, Directorships and Education"
+    ],
+    [
+     "Gregory S. Daily Chairman and CEO Age 51",
+     "Greg Daily co-founded iPayment and has served as Chairman of the board of directors and Chief Executive Officer since the Company\u2019s founding in 2001. In 1984, Mr. Daily co-founded PMT Services, Inc., a credit card processing company, and served as President of PMT Services, Inc. Mr. Daily served as the Vice-Chairman of the board of directors of NOVA Corporation from September 1998 until May 2001. Mr. Daily has served as the Chief Manager and President of Caymas, LLC, a private investment company, since January 2001 and he has served as the Chief Executive Officer of Hardsworth, LLC, a private investment company, since May 1997. Mr. Daily graduated with a B.A. in Business Administration from Trevecca Nazarene University."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Carl A. Grimstad Director and President Age 43",
+     "Carl Grimstad co-founded iPayment and has served as the Company\u2019s President since the Company\u2019s founding in 2001. In 2003, Mr. Grimstad led iPayment in a successful IPO (NASDAQ: IPMT). Mr. Grimstad was instrumental in taking iPayment private in 2006. Mr. Grimstad has served as the managing partner of GS Capital, LLC, a private investment company since 1995. Mr. Grimstad and his family are active supporters of various charities including the Nashville Zoo and the Sexual Assault Center. Mr. Grimstad currently serves as a trustee of the Cheekwood Botanical Gardens, as a board member of the Nashville Symphony and as a board member of the Oasis Center, a safe haven for children in trouble. Mr. Grimstad graduated with a B.A. in Economics from Boston University in 1989."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2004,
+    "end_line": 2021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "iPayment assesses the effectiveness of its internal control over financial reporting using the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (\u201cCOSO\u201d) in Internal Control-Integrated Framework. Management assessed the effectiveness of the Company\u2019s internal control over financial reporting as of December 31, 2010, based on the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (\u201cCOSO\u201d) in Internal Control-Integrated Framework. Based on this assessment and those criteria, management believes that the Company maintained effective internal control over financial reporting as of December 31, 2010.\nDuring the twelve months ended December 31, 2010, there have been no changes in our internal control over financial reporting that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone\nPART III\nITEM 10. DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT\nThe following table provides information about our directors and executive officers as of December 31, 2010:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1984,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 2022,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Age",
+     "Principal Occupation, Business Experience, Directorships and Education"
+    ],
+    [
+     "Mark C. Monaco Chief Financial Officer Age 45",
+     "Mr. Monaco has served as our Chief Financial Officer since October 2010. From February 2007 to January 2009, Mr. Monaco served as Head of Principal Investments at Brooklyn NY Holdings, LLC, the investment organization of the Alfred Lerner Family. From June 1996 to January 2007, Mr. Monaco was a Managing Director at Windward Capital Management, LLC, a middle market private equity firm focused on financial and business services investments. During his tenure at Windward, Mr. Monaco served as Chairman of Retriever Payment Systems, Inc., a merchant acquiring organization, from 2000 to 2004, when it was acquired by National Processing Company. Prior to joining Windward Capital, Mr. Monaco was at Credit Suisse First Boston, serving as the Director of Finance and Corporate Development after several years in the financial institutions group with the firm\u2019s investment banking department. Mr. Monaco earned his MBA in finance from The University of Pennsylvania, The Wharton Graduate School of Business, and received his undergraduate degree from Harvard University."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Robert S. Torino COO and Executive Vice President Age 57",
+     "Robert Torino has served as our Chief Operating Officer since 2006. From 2002 to 2006, he served as our Executive Vice President of Financial Operations and from January 2001 to September 2002, he served as our Chief Financial Officer. From October 1999 to April 2000, Mr. Torino served as Chief Executive Officer of M80 Technologies, Inc., a start-up software development company. Mr. Torino served as President and Chief Executive Officer of TRUE Software Inc., a software development company, from April 1995 until its acquisition by McCabe & Associates in October 1999. Mr. Torino graduated magna cum laude from Boston College with a degree in accounting."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Afshin M. Yazdian Executive Vice President, General Counsel and Secretary Age 38",
+     "Afshin Yazdian has served as our Executive Vice President and General Counsel since the Company\u2019s founding in 2001. Mr. Yazdian previously served as General Counsel and Vice President of Mergers and Acquisitions for eConception, a technology venture fund. Prior to that, Mr. Yazdian practiced in the Corporate and Mergers & Acquisitions groups at the law firm of Waller Lansden Dortch & Davis, PLLC in Nashville, Tennessee. Mr. Yazdian is currently on the board of the Nashville Jewish Federation and is involved in a variety of other local and national charities. Mr. Yazdian graduated from Emory University with a BBA in business, and graduated with honors from the University of Miami School of Law."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2057
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "In May 2009, a jury in the Superior Court of the State of California for the County of Los Angeles handed down a verdict in the amount of $300 million, plus punitive damages in the amount of $50 million, against Mr. Daily, our Chairman and Chief Executive Officer, in connection with litigation over Mr. Daily\u2019s beneficial ownership in us. In response to the verdict, Mr. Daily filed for personal bankruptcy protection under Chapter 11 of the United States Bankruptcy Code in Nashville, Tennessee.\nDirector Qualifications\nWhen considering whether directors and nominees have the experience, qualifications, attributes or skills, taken as a whole, to enable our board of directors to satisfy its oversight responsibilities effectively in light of our business and structure, the board of directors focused primarily on each person\u2019s background and experience as reflected in the information discussed in each of the directors\u2019 individual biographies set forth above. We believe that our directors are committed to employing their skills and abilities to aid the long-term interests of the stakeholders of the Company. Our directors are knowledgeable and experienced in multiple business endeavors which further qualifies them for service as members of the board of directors. In particular, the members of our board of directors considered the following important characteristics: (i) Mr. Daily has extensive business experience in the payment processing industry and has experience in management, having served as President of PMT Services, Inc. and as the Vice-Chairman of the board of directors of NOVA Corporation and (ii) Mr. Grimstad has extensive knowledge of our business and the payment processing industry generally, having served as President of the Company since its inception and having significant involvement in the day-to-day oversight of the Company\u2019s business operations.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2022,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 2068,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and",
+     "Annual Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "All Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal Position",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "",
+     "Bonus",
+     "",
+     "Compensation",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Gregory S. Daily",
+     "",
+     "2010",
+     "$",
+     "708,000",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "16,500",
+     "(1)",
+     "$",
+     "724,500"
+    ],
+    [
+     "Chairman and",
+     "",
+     "2009",
+     "",
+     "187,500",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "3,750",
+     "(1)",
+     "",
+     "1,191,250"
+    ],
+    [
+     "Chief Executive Officer",
+     "",
+     "2008",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carl A. Grimstad",
+     "",
+     "2010",
+     "$",
+     "708,000",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "708,000"
+    ],
+    [
+     "Director and President",
+     "",
+     "2009",
+     "",
+     "300,000",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,300,000"
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "300,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "300,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark C. Monaco",
+     "",
+     "2010",
+     "$",
+     "125,000",
+     "(2)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "125,000"
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "2009",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Afshin M. Yazdian",
+     "",
+     "2010",
+     "$",
+     "185,000",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "14,000",
+     "(1)",
+     "$",
+     "199,000"
+    ],
+    [
+     "Executive Vice President,",
+     "",
+     "2009",
+     "",
+     "185,000",
+     "",
+     "",
+     "165,000",
+     "",
+     "10,050",
+     "(1)",
+     "",
+     "360,050"
+    ],
+    [
+     "General Counsel and Secretary",
+     "",
+     "2008",
+     "",
+     "185,000",
+     "",
+     "",
+     "150,000",
+     "",
+     "7,950",
+     "(1)",
+     "",
+     "342,950"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert S. Torino",
+     "",
+     "2010",
+     "$",
+     "296,000",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "59,820",
+     "(3)",
+     "$",
+     "355,820"
+    ],
+    [
+     "Chief Operating Officer",
+     "",
+     "2009",
+     "",
+     "296,000",
+     "",
+     "",
+     "220,000",
+     "",
+     "59,820",
+     "(3)",
+     "",
+     "575,820"
+    ],
+    [
+     "and Executive Vice President",
+     "",
+     "2008",
+     "",
+     "230,000",
+     "",
+     "",
+     "200,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "430,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2103,
+    "end_line": 2128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Retirement Plan. Mr. Daily, Mr. Monaco, and Mr. Yazdian participate in iPayment\u2019s defined contribution plans. iPayment\u2019s contributions to its defined contribution plans on behalf of the named executive officers are shown in the \u201cAll Other Compensation\u201d column of the Summary Compensation Table below.\nSummary. The board believes that the combination of competitive base salaries and annual incentives paid in cash comprise a highly-effective and motivational executive compensation program, which works to attract and retain talented executives and strongly aligns the interests of senior management with those of the stockholders of the Company in seeking to optimize long-term performance. The board has reviewed the total compensation received by the executive officers during the year ended December 31, 2010, and has determined that those amounts were not excessive or unreasonable.\nThe following table shows the cash and other compensation paid or earned and certain long-term awards made to our Chief Executive Officer, Chief Financial Officer, and each of our three most highly compensated executive officers (the \u201cNamed Executives\u201d) for all services to us in all capacities for 2010, 2009 and 2008.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "(1) Represents Company\u2019s matching of 401(k) plan contributions made by executive officers.\n(2) Represents Mr. Monaco\u2019s salary for the period commencing upon his hiring on October 15, 2010 and ending on December 31, 2010\n(3) Represents housing reimbursements made to Mr. Torino.\nCompensation of Directors\nFollowing the closing of the Transaction in 2006, we have not paid our directors, Gregory S. Daily and Carl. A. Grimstad, any compensation for their service as directors.\nCompensation Committee Interlocks and Insider Participation\nAs a private company, we do not have a compensation committee. Our board of directors, which is currently composed of Mr. Daily and Mr. Grimstad, in consultation with the other executive officers, establishes policies and makes decisions regarding compensation of directors and executive officers.\nCompensation Committee Report\nOur board of directors has reviewed and discussed with our management the Compensation Discussion and Analysis set forth above. Based on the review and discussion, our board of directors has recommended that the Compensation Discussion and Analysis be included in this Form 10-K for the year ended December 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2097,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2150,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "467,000",
+     "(a)",
+     "$",
+     "463,000",
+     "(b)"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax Fees",
+     "",
+     "74,000",
+     "",
+     "",
+     "176,000",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "541,000",
+     "",
+     "$",
+     "639,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2202,
+    "end_line": 2213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Company does not have securities listed on a national securities exchange or inter-dealer quotation system with requirements that a majority of the board of directors be \u201cindependent.\u201d Accordingly, the Company is not subject to rules requiring certain of its directors to be independent. The board of directors has determined that Messrs. Daily and Grimstad were not independent under the listing standards of the Nasdaq Stock Market. However, if we were a listed company, we believe we would be eligible for the controlled company exception set forth in Nasdaq Listing Rule 5615(c) (if that were the exchange on which we were listed) from the rule that would ordinarily require that a majority of a listed issuer\u2019s board of directors be independent and from certain other rules.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nWe do not have an audit committee. As a result, our board of directors performs the duties of an audit committee. Our board of directors evaluates and approves in advance the scope and cost of the engagement of an auditor before the auditor renders audit and\nnon-audit services. We do not rely on pre-approval policies and procedures. The following table sets forth the aggregate fees billed to iPayment, Inc. for the years ended December 31, 2010 and 2009, by Ernst & Young LLP:",
+   "prose_after": "(a) Comprised of fees for the fiscal 2010 financial statement audit and review of financial statements included in our Form 10-Q quarterly reports, and services that are normally provided by the independent registered public accounting firm in connection with statutory and regulatory filings or engagements.\n(b) Comprised of fees for the fiscal 2009 financial statement audit and review of financial statements included in our Form 10-Q quarterly reports, and services that are normally provided by the independent registered public accounting firm in connection with statutory and regulatory filings or engagements.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) 1. Financial Statements\nThe Consolidated Financial Statements, together with the report thereon of Ernst & Young LLP dated March 21, 2011, are included as part of Item 8, Financial Statements and Supplementary Data, commencing on page 43, above. \u201cSchedule II \u2014 Valuation and Qualifying Accounts\u201d is included below. All other schedules have been omitted since the required information is not present or not present in amounts sufficient to require submission of the schedule, or because the information required is included in the respective financial statements or notes thereto.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2198,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 69
+    },
+    "after": {
+     "line": 2217,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 70
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Additions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance at",
+     "",
+     "Charged to",
+     "",
+     "Charged to",
+     "",
+     "",
+     "",
+     "",
+     "Balance at",
+     ""
+    ],
+    [
+     "",
+     "Beginning of",
+     "",
+     "Costs and",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     "End of",
+     ""
+    ],
+    [
+     "Description",
+     "Period",
+     "",
+     "Expenses",
+     "",
+     "Accounts",
+     "",
+     "Deductions",
+     "",
+     "",
+     "Period",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2008:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "768,000",
+     "$",
+     "304,000",
+     "$",
+     "\u2014",
+     "$",
+     "74,000",
+     "(1)",
+     "$",
+     "998,000"
+    ],
+    [
+     "Valuation allowance on deferred tax asset",
+     "",
+     "223,000",
+     "",
+     "\u2014",
+     "",
+     "523,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "746,000"
+    ],
+    [
+     "Reserve for merchant advance losses",
+     "",
+     "\u2014",
+     "",
+     "4,283,000",
+     "",
+     "\u2014",
+     "",
+     "461,000",
+     "",
+     "",
+     "3,822,000"
+    ],
+    [
+     "Reserve for merchant losses",
+     "",
+     "1,020,000",
+     "",
+     "4,200,000",
+     "",
+     "\u2014",
+     "",
+     "3,901,000",
+     "(3)",
+     "",
+     "1,319,000"
+    ],
+    [
+     "Total",
+     "$",
+     "2,011,000",
+     "$",
+     "8,787,000",
+     "$",
+     "523,000",
+     "$",
+     "4,436,000",
+     "",
+     "$",
+     "6,885,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2009:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "998,000",
+     "$",
+     "704,000",
+     "$",
+     "\u2014",
+     "$",
+     "845,000",
+     "(1)",
+     "$",
+     "857,000"
+    ],
+    [
+     "Valuation allowance on deferred tax asset",
+     "",
+     "746,000",
+     "",
+     "\u2014",
+     "",
+     "73,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "819,000"
+    ],
+    [
+     "Reserve for merchant advance losses",
+     "",
+     "3,822,000",
+     "",
+     "206,000",
+     "",
+     "\u2014",
+     "",
+     "3,501,000",
+     "",
+     "",
+     "527,000"
+    ],
+    [
+     "Reserve for merchant losses",
+     "",
+     "1,319,000",
+     "",
+     "4,900,000",
+     "",
+     "\u2014",
+     "",
+     "4,695,000",
+     "(3)",
+     "",
+     "1,524,000"
+    ],
+    [
+     "Total",
+     "$",
+     "6,885,000",
+     "$",
+     "5,810,000",
+     "$",
+     "73,000",
+     "$",
+     "9,041,000",
+     "",
+     "$",
+     "3,727,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2010:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deducted from asset accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "857,000",
+     "$",
+     "262,000",
+     "$",
+     "\u2014",
+     "$",
+     "384,000",
+     "(1)",
+     "$",
+     "735,000"
+    ],
+    [
+     "Valuation allowance on deferred tax asset",
+     "",
+     "819,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "230,000",
+     "",
+     "",
+     "589,000"
+    ],
+    [
+     "Reserve for merchant advance losses",
+     "",
+     "527,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "130,000",
+     "",
+     "",
+     "397,000"
+    ],
+    [
+     "Reserve for merchant losses",
+     "",
+     "1,524,000",
+     "",
+     "3,501,000",
+     "",
+     "\u2014",
+     "",
+     "3,640,000",
+     "(3)",
+     "",
+     "1,385,000"
+    ],
+    [
+     "Total",
+     "$",
+     "3,727,000",
+     "$",
+     "3,763,000",
+     "$",
+     "\u2014",
+     "$",
+     "4,384,000",
+     "",
+     "$",
+     "3,106,000"
+    ]
+   ],
+   "caption_stack": [
+    "Additions"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2229,
+    "end_line": 2262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(b) Comprised of fees for the fiscal 2009 financial statement audit and review of financial statements included in our Form 10-Q quarterly reports, and services that are normally provided by the independent registered public accounting firm in connection with statutory and regulatory filings or engagements.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) 1. Financial Statements\nThe Consolidated Financial Statements, together with the report thereon of Ernst & Young LLP dated March 21, 2011, are included as part of Item 8, Financial Statements and Supplementary Data, commencing on page 43, above. \u201cSchedule II \u2014 Valuation and Qualifying Accounts\u201d is included below. All other schedules have been omitted since the required information is not present or not present in amounts sufficient to require submission of the schedule, or because the information required is included in the respective financial statements or notes thereto.\nSchedule II \u2014 Valuation and Qualifying Accounts iPayment, Inc.",
+   "prose_after": "(1) Write-off of previously reserved accounts receivables.\n(2) Write-off of previously reserved merchant losses.\n(3) Write-off of previously reserved merchant advances.\n2. Exhibits\nReference is made to the Exhibit Index beginning on page 73 hereof.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2217,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 70
+    },
+    "after": {
+     "line": 2270,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 71
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "IPAYMENT INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Gregory S. Daily\nName: Gregory S. Daily"
+    ],
+    [
+     "",
+     "Title: Chairman and Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 21, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "IPAYMENT INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2276,
+    "end_line": 2286
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Write-off of previously reserved accounts receivables.\n(2) Write-off of previously reserved merchant losses.\n(3) Write-off of previously reserved merchant advances.\n2. Exhibits\nReference is made to the Exhibit Index beginning on page 73 hereof.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated on March 21, 2011.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2270,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2299,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Signature",
+     "Title"
+    ],
+    [
+     "/s/ Gregory S. Daily",
+     "Director"
+    ],
+    [
+     "Gregory S. Daily",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Carl A. Grimstad",
+     "Director"
+    ],
+    [
+     "Carl A. Grimstad",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2289,
+    "end_line": 2298
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated on March 21, 2011.",
+   "prose_after": "EXHIBIT INDEX\n2.1 Agreement and Plan of Merger, dated as of December 27, 2005, among iPayment Holdings, Inc., iPayment MergerCo, Inc. and iPayment, Inc., (incorporated by reference to Exhibit 2.1 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 28, 2005). 2.2 Guarantee, dated as of December 27, 2005, by Gregory S. Daily in favor of iPayment, Inc. (incorporated by reference to Exhibit 2.2 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 28, 2005). 2.3 Guarantee, dated as of December 27, 2005, by Carl A. Grimstad in favor of iPayment, Inc. (incorporated by reference to Exhibit 2.3 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 28, 2005). 3.1 Certificate of Incorporation of iPayment, Inc., attached as Exhibit A to the Certificate of Merger of iPayment Merger Co., Inc. into iPayment, Inc. (incorporated by reference to Exhibit 3.1 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 3.2 Bylaws of Merger Co., as adopted by iPayment, Inc. (incorporated by reference to Exhibit 3.2 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 4.1 Indenture, dated as of May 10, 2006, among iPayment, Inc., the Subsidiary Guarantors named therein and Wells Fargo Bank, N.A. as Trustee (incorporated by reference to Exhibit 4.1 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 4.2 Purchase Agreement, dated as of May 3, 2006, among iPayment, Inc., the Subsidiary Guarantors named therein, Banc of America Securities LLC and J.P. Morgan Securities Inc. (incorporated by reference to Exhibit 4.2 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 4.3 Registration Rights Agreement, dated as of May 10, 2006, among iPayment, Inc., the Subsidiary Guarantors named therein, Banc of America Securities LLC and J.P. Morgan Securities Inc. (incorporated by reference to Exhibit 4.3 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 4.4 Form of Note (included as Exhibit A to Exhibit 4.1 hereto) (incorporated by reference to Exhibit 4.4 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 10.1 Credit Agreement, dated May 10, 2006, among iPayment, Inc., as Borrower, iPayment Holdings, Inc., the Subsidiary Guarantors named therein, Bank of America, N.A., as Administrative Agent, JPMorgan Chase Bank, N.A., as Syndication Agent and Banc of America Securities LLC, as Sole Lead Arranger (incorporated by reference to Exhibit 10.1 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 10.2 Security Agreement, dated May 10, 2006, among iPayment, Inc., iPayment Holdings, Inc., the Subsidiary Guarantors named therein and Bank of America N.A. (incorporated by reference to Exhibit 10.2 of the Registrant\u2019s Form S-4 filed with the SEC on July 21, 2006). 10.3 Pledge Agreement, dated May 10, 2006, among the Pledgors named therein and Bank of America N.A. (incorporated by reference to Exhibit 10.3 of the Registration\u2019s Form S-4 filed with the SEC on July 21, 2006).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2270,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2299,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

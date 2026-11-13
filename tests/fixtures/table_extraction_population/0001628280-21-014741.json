@@ -1,0 +1,6654 @@
+{
+ "accession": "0001628280-21-014741",
+ "cik": "0000060977",
+ "form": "10-Q",
+ "filing_date": "2021-07-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ldl-20210630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "",
+     "",
+     "",
+     "06-0865505"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "",
+     "",
+     "",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "One Colonial Road",
+     ",",
+     "Manchester",
+     ",",
+     "Connecticut",
+     "06042"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "",
+     "",
+     "",
+     "(zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2021\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 1-7665\nLydall, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(860) 646-1233\n(Registrant\u2019s telephone number, including area code)\nNone\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.01 par value",
+     "LDL",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(860) 646-1233\n(Registrant\u2019s telephone number, including area code)\nNone\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Total Shares outstanding July 15, 2021",
+     "18,033,012"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 65
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer [ ] Smaller reporting company [ ] Emerging growth company\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.",
+   "prose_after": "LYDALL, INC.\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Income (Loss) (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "41"
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signature",
+     "",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number",
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 104
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "LYDALL, INC.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nItem 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share amounts) (Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "221,744",
+     "$",
+     "146,160",
+     "$",
+     "448,843",
+     "$",
+     "346,687"
+    ],
+    [
+     "Cost of sales",
+     "173,958",
+     "",
+     "117,742",
+     "",
+     "352,508",
+     "",
+     "279,701",
+     ""
+    ],
+    [
+     "Gross profit",
+     "47,786",
+     "",
+     "28,418",
+     "",
+     "96,335",
+     "",
+     "66,986",
+     ""
+    ],
+    [
+     "Selling, product development and administrative expenses",
+     "38,182",
+     "",
+     "30,164",
+     "",
+     "73,815",
+     "",
+     "63,191",
+     ""
+    ],
+    [
+     "Impairment of goodwill and other long-lived assets",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "61,109",
+     ""
+    ],
+    [
+     "Restructuring expenses",
+     "190",
+     "",
+     "\u2014",
+     "",
+     "967",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "9,414",
+     "",
+     "(1,746)",
+     "",
+     "21,553",
+     "",
+     "(57,314)",
+     ""
+    ],
+    [
+     "(Gain) loss on the sale of a business",
+     "266",
+     "",
+     "\u2014",
+     "",
+     "964",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Employee benefit plans settlement expenses",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "385",
+     ""
+    ],
+    [
+     "Interest expense",
+     "2,414",
+     "",
+     "4,476",
+     "",
+     "5,862",
+     "",
+     "7,333",
+     ""
+    ],
+    [
+     "Other (income) expense, net",
+     "206",
+     "",
+     "248",
+     "",
+     "292",
+     "",
+     "(170)",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "6,528",
+     "",
+     "(6,470)",
+     "",
+     "14,435",
+     "",
+     "(64,862)",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "905",
+     "",
+     "(595)",
+     "",
+     "3,726",
+     "",
+     "(2,610)",
+     ""
+    ],
+    [
+     "(Income) loss from equity method investment",
+     "(157)",
+     "",
+     "(18)",
+     "",
+     "(165)",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,780",
+     "$",
+     "(5,857)",
+     "$",
+     "10,874",
+     "$",
+     "(62,278)"
+    ],
+    [
+     "Earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.33",
+     "$",
+     "(0.34)",
+     "$",
+     "0.62",
+     "$",
+     "(3.59)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.32",
+     "$",
+     "(0.34)",
+     "$",
+     "0.61",
+     "$",
+     "(3.59)"
+    ],
+    [
+     "Weighted average number of common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "17,575",
+     "",
+     "17,372",
+     "",
+     "17,560",
+     "",
+     "17,354",
+     ""
+    ],
+    [
+     "Diluted",
+     "17,977",
+     "",
+     "17,372",
+     "",
+     "17,923",
+     "",
+     "17,354",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 117,
+    "end_line": 149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nItem 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share amounts) (Unaudited)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)\n(In thousands) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 111,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 150,
+     "token": "REPEATING_FOOTER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,780",
+     "$",
+     "(5,857)",
+     "$",
+     "10,874",
+     "$",
+     "(62,278)"
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "3,060",
+     "",
+     "5,146",
+     "",
+     "46",
+     "",
+     "(4,811)",
+     ""
+    ],
+    [
+     "Pension liability adjustment, net of taxes of less than $0.1 million, $0.0 million, $0.1 million and $0.1 million, respectively",
+     "22",
+     "",
+     "\u2014",
+     "",
+     "387",
+     "",
+     "331",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on hedging activities, net of taxes of $0.4 million, $0.2 million, $0.9 million, and $0.1 million, respectively",
+     "(125)",
+     "",
+     "(685)",
+     "",
+     "2,893",
+     "",
+     "(239)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "2,957",
+     "",
+     "4,461",
+     "",
+     "3,326",
+     "",
+     "(4,719)",
+     ""
+    ],
+    [
+     "Total comprehensive income (loss)",
+     "$",
+     "8,737",
+     "$",
+     "(1,396)",
+     "$",
+     "14,200",
+     "$",
+     "(66,997)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 158,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)\n(In thousands) (Unaudited)",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share amounts) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 177,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Assets",
+     "June 30, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "102,544",
+     "$",
+     "102,176"
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of $2,188 and $2,402, respectively",
+     "128,407",
+     "",
+     "116,947",
+     ""
+    ],
+    [
+     "Contract assets",
+     "22,756",
+     "",
+     "32,403",
+     ""
+    ],
+    [
+     "Inventories",
+     "88,226",
+     "",
+     "78,996",
+     ""
+    ],
+    [
+     "Taxes receivable",
+     "12,687",
+     "",
+     "6,652",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "5,066",
+     "",
+     "4,870",
+     ""
+    ],
+    [
+     "Other current assets",
+     "7,986",
+     "",
+     "7,348",
+     ""
+    ],
+    [
+     "Assets of a business held-for-sale",
+     "1,233",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current assets",
+     "368,905",
+     "",
+     "349,392",
+     ""
+    ],
+    [
+     "Property, plant and equipment, at cost",
+     "515,393",
+     "",
+     "506,509",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(303,908)",
+     "",
+     "(291,996)",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "211,485",
+     "",
+     "214,513",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "25,798",
+     "",
+     "22,243",
+     ""
+    ],
+    [
+     "Goodwill",
+     "87,842",
+     "",
+     "87,595",
+     ""
+    ],
+    [
+     "Other intangible assets, net",
+     "86,922",
+     "",
+     "95,121",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "6,948",
+     "",
+     "6,598",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "787,900",
+     "$",
+     "775,462"
+    ],
+    [
+     "Liabilities and Stockholders' Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "$",
+     "8,609",
+     "$",
+     "9,789"
+    ],
+    [
+     "Accounts payable",
+     "116,631",
+     "",
+     "101,905",
+     ""
+    ],
+    [
+     "Accrued payroll and other compensation",
+     "23,177",
+     "",
+     "24,589",
+     ""
+    ],
+    [
+     "Accrued taxes",
+     "6,555",
+     "",
+     "8,214",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "8,147",
+     "",
+     "11,996",
+     ""
+    ],
+    [
+     "Restructuring liabilities",
+     "36",
+     "",
+     "9,431",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "24,442",
+     "",
+     "21,705",
+     ""
+    ],
+    [
+     "Liabilities of a business held-for-sale",
+     "1,933",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "189,530",
+     "",
+     "187,629",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "251,477",
+     "",
+     "260,649",
+     ""
+    ],
+    [
+     "Long-term operating lease liabilities",
+     "20,973",
+     "",
+     "17,947",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "30,913",
+     "",
+     "27,174",
+     ""
+    ],
+    [
+     "Benefit plan liabilities",
+     "17,554",
+     "",
+     "21,691",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "2,254",
+     "",
+     "2,676",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 16)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 per share par value, 500 shares authorized (none issued or outstanding)",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.01 per share par value, 30,000 shares authorized (25,755 and 25,555 shares issued, respectively)",
+     "258",
+     "",
+     "256",
+     ""
+    ],
+    [
+     "Capital in excess of par value",
+     "103,272",
+     "",
+     "99,770",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "277,778",
+     "",
+     "266,904",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "(15,016)",
+     "",
+     "(18,342)",
+     ""
+    ],
+    [
+     "Less treasury stock, 7,722 and 7,717 shares of common stock, respectively, at cost",
+     "(91,093)",
+     "",
+     "(90,892)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "275,199",
+     "",
+     "257,696",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "787,900",
+     "$",
+     "775,462"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 185,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share amounts) (Unaudited)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 243,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "10,874",
+     "$",
+     "(62,278)"
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "22,794",
+     "",
+     "24,035",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "252",
+     "",
+     "807",
+     ""
+    ],
+    [
+     "Impairment of goodwill and long-lived assets",
+     "\u2014",
+     "",
+     "61,109",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "3,094",
+     "",
+     "(6,048)",
+     ""
+    ],
+    [
+     "(Gain) loss on the sale of a business",
+     "964",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Employee benefit plans settlement expenses",
+     "\u2014",
+     "",
+     "385",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "2,695",
+     "",
+     "1,799",
+     ""
+    ],
+    [
+     "(Gain) loss on disposition of property, plant and equipment",
+     "7",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "(Gain) loss from equity method investment",
+     "(165)",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "Other, net",
+     "(88)",
+     "",
+     "53",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(16,690)",
+     "",
+     "3,063",
+     ""
+    ],
+    [
+     "Contract assets",
+     "9,594",
+     "",
+     "222",
+     ""
+    ],
+    [
+     "Inventories",
+     "(9,508)",
+     "",
+     "(353)",
+     ""
+    ],
+    [
+     "Income taxes (receivable) payable",
+     "(6,753)",
+     "",
+     "886",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "(648)",
+     "",
+     "(953)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "11,415",
+     "",
+     "8,342",
+     ""
+    ],
+    [
+     "Accrued payroll and other compensation",
+     "(2,378)",
+     "",
+     "2,974",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(768)",
+     "",
+     "1,850",
+     ""
+    ],
+    [
+     "Accrued taxes payable",
+     "(105)",
+     "",
+     "5,833",
+     ""
+    ],
+    [
+     "Benefit plan liabilities",
+     "(3,899)",
+     "",
+     "(434)",
+     ""
+    ],
+    [
+     "Other, net",
+     "(2,190)",
+     "",
+     "(928)",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) operating activities",
+     "18,497",
+     "",
+     "40,415",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(13,265)",
+     "",
+     "(15,472)",
+     ""
+    ],
+    [
+     "Collections of finance receivables",
+     "3,111",
+     "",
+     "3,390",
+     ""
+    ],
+    [
+     "Payments from divestitures",
+     "(2,715)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from the sale of property, plant and equipment",
+     "19",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) investing activities",
+     "(12,850)",
+     "",
+     "(12,080)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from borrowings",
+     "263,210",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Debt repayments",
+     "(274,910)",
+     "",
+     "(7,001)",
+     ""
+    ],
+    [
+     "Proceeds from servicing receivables",
+     "4,787",
+     "",
+     "458",
+     ""
+    ],
+    [
+     "Common stock issued",
+     "793",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "Common stock repurchased",
+     "(201)",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) financing activities",
+     "(6,321)",
+     "",
+     "13,482",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "1,042",
+     "",
+     "(602)",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash and cash equivalents",
+     "368",
+     "",
+     "41,215",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "102,176",
+     "",
+     "51,331",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "102,544",
+     "$",
+     "92,546"
+    ]
+   ],
+   "caption_stack": [
+    "For the Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 251,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands) (Unaudited)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\n1. BASIS OF FINANCIAL STATEMENT PRESENTATION\nBasis of Presentation\nThe accompanying Condensed Consolidated Financial Statements include the accounts of Lydall, Inc. and its subsidiaries (collectively, \u201cLydall\u201d, \u201cthe Company\u201d, \u201cwe\u201d, and \u201cour\u201d). All financial information is unaudited for the interim periods reported. All significant intercompany transactions have been eliminated in the Condensed Consolidated Financial Statements. The Company's Condensed Consolidated Financial Statements have been prepared in accordance with U.S. generally accepted accounting principles (\u201cU.S. GAAP\u201d). The year-end Condensed Consolidated Balance Sheet amounts have been derived from the audited financial statements for the year ended December 31, 2020 but does not include all disclosures required by U.S. GAAP. In the opinion of management, the condensed consolidated financial information reflects all adjustments necessary for a fair statement of the Company\u2019s consolidated financial position, results of operations, and cash flows for the interim periods reported, but do not include all the disclosures required by U.S. GAAP. All such adjustments are of a normal recurring nature, unless otherwise disclosed in this report. Certain amounts in prior year financial statements and notes thereto have been reclassified to conform to current year presentation. The statements should be read in conjunction with the consolidated financial statements and accompanying notes included in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 309,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Total trade accounts receivable balances sold",
+     "$",
+     "30,961",
+     "$",
+     "10,288",
+     "$",
+     "65,107",
+     "$",
+     "42,974"
+    ],
+    [
+     "Total cash received",
+     "$",
+     "29,268",
+     "$",
+     "9,374",
+     "$",
+     "60,507",
+     "$",
+     "39,533"
+    ],
+    [
+     "Total fees incurred",
+     "$",
+     "173",
+     "$",
+     "76",
+     "$",
+     "308",
+     "$",
+     "142"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 348,
+    "end_line": 357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "BASIS OF FINANCIAL STATEMENT PRESENTATION"
+    }
+   },
+   "prose_before": "The Company accounts for transfers of financial assets as sold when it has surrendered control over the related assets. Whether control has been relinquished requires, among other things, an evaluation of relevant legal considerations and an assessment of the nature and extent of the Company's continuing involvement with the assets transferred. Gains or losses and any expenditures stemming from the transfers are included in Other (income) expense, net on the Company's Condensed Consolidated Statements of Operations. Assets obtained and liabilities incurred in connection with transfers reported as sold are initially recognized on the Company's Condensed Consolidated Balance Sheets at fair value.\nThe Company maintains arrangements with banking institutions to sell trade accounts receivable balances for select customers. Under the programs, the Company has no risk of loss due to credit default and is charged a fee based on the nominal value of receivables sold between the time of the sale of the trade accounts receivables to banking institutions and collection of the trade accounts receivables from the customer. Under one of the programs, the Company services the trade receivables after the sale to the bank and receives 90.0% of the trade receivables in cash at the time of sale and the remaining 10.0% in cash, net of fees, when the customer pays. Total activity under both arrangements was as follows:",
+   "prose_after": "The Company's senior secured revolving credit agreement permits the Company to sell trade accounts receivable balances to approved third parties in connection with Receivable Purchases Agreements, or other similar agreements. At any given time, outstanding trade accounts receivable balances sold cannot exceed $10.0 million for a certain approved customer and $50.0 million in aggregate for any other approved group of customers.\n2. RECENT ACCOUNTING STANDARDS\nRecent Accounting Standards Adopted\nIn December 2019, the FASB issued ASU 2019-12, \"Income Taxes (Topic 740): Simplifying the Accounting for Income Taxes\". The new standard is intended to simplify accounting for income taxes by removing certain exceptions to the general principles in Topic 740, and by clarifying and amending existing guidance in other areas of the same topic. This ASU was effective for fiscal years and interim periods beginning after December 15, 2020 with early adoption permitted. The Company adopted this ASU upon issuance and there was no material impact to the Company's Condensed Consolidated Financial Statements and disclosures.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "In thousands",
+     "At June 30, 2021",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "$",
+     "912"
+    ],
+    [
+     "Inventories",
+     "18",
+     ""
+    ],
+    [
+     "Taxes receivable",
+     "35",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "22",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "246",
+     ""
+    ],
+    [
+     "Total assets held-for-sale",
+     "$",
+     "1,233"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "161"
+    ],
+    [
+     "Accrued taxes",
+     "58",
+     ""
+    ],
+    [
+     "Accrued payroll & other compensation",
+     "300",
+     ""
+    ],
+    [
+     "Restructuring liabilities",
+     "1,414",
+     ""
+    ],
+    [
+     "Total liabilities held-for-sale",
+     "$",
+     "1,933"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 385,
+    "end_line": 405
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "DIVESTITURE ACTIVITIES"
+    }
+   },
+   "prose_before": "During the third quarter of 2020, the Company undertook actions to consolidate global production facilities for sealing & advanced solutions products, a part of the Company's Performance Materials segment. In the first quarter of 2021, the Company entered into an agreement to sell a German facility, which closed on March 11, 2021. The Company agreed to pay $1.8 million (\u20ac1.5 million) to the buyer and provide $2.3 million (\u20ac1.9 million) in additional funding, net of cash and certain net working capital adjustments, to cover pension and restructuring liabilities recorded in 2020. As a result of the sale of the facility, the Company recorded a pre-tax loss of $0.3 million and $1.0 million for the three and six-month periods ended June 30, 2021, respectively. The final consideration and loss are subject to a working capital adjustment expected to be settled in 2022.\nIn the second quarter of 2021, the Company reached an agreement to sell an operating facility located in the Netherlands, which is a component of the Company\u2019s Performance Materials segment. The transaction was completed on July 9, 2021. The assets and liabilities sold in connection with the transaction met the criteria for held-for-sale reporting as of June 30, 2021. The Company did not report the transaction as discontinued operations as it was not considered a strategic shift in the Company\u2019s business. The Company expects to record a gain on the sale in the third quarter of 2021. The results of the operating facility are reflected in continuing operations for the three and six-month periods ended June 30, 2021. The assets and liabilities of the operating facility are reported as current \u201cAssets of a business held-for-sale\u201d and current \u201cLiabilities of a business held-for-sale\u201d as of June 30, 2021. The held-for-sale assets and liabilities of the operating facility were as follows:",
+   "prose_after": "4. REVENUE FROM CONTRACTS WITH CUSTOMERS\nThe Company accounts for revenue in accordance with ASC 606, \"Revenue from Contracts with Customers\". Revenues are generated from the design and manufacture of specialty engineered filtration media, industrial thermal insulating solutions, automotive thermal and acoustical barriers for filtration/separation and thermal/acoustical applications. The Company\u2019s revenue\nrecognition policies require the Company to make significant judgments and estimates. In applying the Company\u2019s revenue recognition policy, determinations must be made as to when the control of products passes to the Company\u2019s customers which can be either at a point in time or over time. Revenue is generally recognized at a point in time when control passes to customers upon shipment of the Company\u2019s products and revenue is generally recognized over time when control of the Company\u2019s products transfers to customers during the manufacturing process. The Company analyzes several factors, including, but not limited to, the nature of the products being sold and contractual terms and conditions in contracts with customers to help the Company make such judgments about revenue recognition. Unfulfilled performance obligations are generally expected to be satisfied within one year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "In thousands",
+     "At June 30, 2021",
+     "",
+     "At December 31, 2020",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Contract assets",
+     "$",
+     "22,756",
+     "$",
+     "32,403",
+     "$",
+     "(9,647)"
+    ],
+    [
+     "Contract liabilities",
+     "$",
+     "3,251",
+     "$",
+     "3,686",
+     "$",
+     "(435)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 421,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE FROM CONTRACTS WITH CUSTOMERS"
+    }
+   },
+   "prose_before": "recognition policies require the Company to make significant judgments and estimates. In applying the Company\u2019s revenue recognition policy, determinations must be made as to when the control of products passes to the Company\u2019s customers which can be either at a point in time or over time. Revenue is generally recognized at a point in time when control passes to customers upon shipment of the Company\u2019s products and revenue is generally recognized over time when control of the Company\u2019s products transfers to customers during the manufacturing process. The Company analyzes several factors, including, but not limited to, the nature of the products being sold and contractual terms and conditions in contracts with customers to help the Company make such judgments about revenue recognition. Unfulfilled performance obligations are generally expected to be satisfied within one year.\nContract Assets and Liabilities\nThe Company\u2019s contract assets primarily include unbilled amounts typically resulting from sales under contracts when the overtime method of revenue recognition is utilized and revenue recognized exceeds the amount billed to the customer. These unbilled accounts receivable in contract assets are transferred to accounts receivable upon invoicing, typically when the right to payment becomes unconditional, in which case payment is due based only upon the passage of time.\nThe Company\u2019s contract liabilities primarily relate to billings and advance payments received from customers and deferred revenue. These contract liabilities represent the Company\u2019s obligations to transfer its products to its customers for which the Company has received, or is owed, consideration from its customers. Contract liabilities are included in Other accrued liabilities in the Company's Condensed Consolidated Balance Sheets.\nContract assets and liabilities consisted of the following:",
+   "prose_after": "The $9.6 million decrease in contract assets from December 31, 2020 to June 30, 2021 was primarily due to timing of tooling billings to customers and, to a lesser extent, the billings on last-time sales of membrane-based filtration media initiated in December 2020 in the Company's Netherlands facility.\nThe $0.4 million decrease in contract liabilities from December 31, 2020 to June 30, 2021 was primarily due to $2.7 million of revenue recognized in the first six months of 2021 related to contract liabilities at December 31, 2020, offset by an increase in customer deposits.\nDisaggregated Revenue\nThe Company disaggregates revenue from customers by geographic region, as it believes this disclosure best depicts how the nature, amount, timing, and uncertainty of the Company's revenues and cash flows are affected by economic factors. Disaggregated revenue by geographical region for the three and six-month periods ended June 30, 2021 and 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended June 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Three Months Ended June 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "North America",
+     "",
+     "Europe",
+     "",
+     "Asia",
+     "",
+     "Total Net Sales",
+     "",
+     "North America",
+     "",
+     "Europe",
+     "",
+     "Asia",
+     "",
+     "Total Net Sales",
+     ""
+    ],
+    [
+     "Performance Materials",
+     "$",
+     "58,195",
+     "$",
+     "15,272",
+     "$",
+     "3,719",
+     "$",
+     "77,186",
+     "$",
+     "40,190",
+     "$",
+     "16,501",
+     "$",
+     "1,782",
+     "$",
+     "58,473"
+    ],
+    [
+     "Technical Nonwovens",
+     "46,443",
+     "",
+     "18,077",
+     "",
+     "7,959",
+     "",
+     "72,479",
+     "",
+     "31,236",
+     "",
+     "15,418",
+     "",
+     "5,353",
+     "",
+     "52,007",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions",
+     "50,709",
+     "",
+     "22,673",
+     "",
+     "3,476",
+     "",
+     "76,858",
+     "",
+     "22,575",
+     "",
+     "11,424",
+     "",
+     "3,449",
+     "",
+     "37,448",
+     ""
+    ],
+    [
+     "Eliminations and Other",
+     "(4,475)",
+     "",
+     "(304)",
+     "",
+     "\u2014",
+     "",
+     "(4,779)",
+     "",
+     "(1,668)",
+     "",
+     "(100)",
+     "",
+     "\u2014",
+     "",
+     "(1,768)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "150,872",
+     "$",
+     "55,718",
+     "$",
+     "15,154",
+     "$",
+     "221,744",
+     "$",
+     "92,333",
+     "$",
+     "43,243",
+     "$",
+     "10,584",
+     "$",
+     "146,160"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE FROM CONTRACTS WITH CUSTOMERS"
+    }
+   },
+   "prose_before": "The $9.6 million decrease in contract assets from December 31, 2020 to June 30, 2021 was primarily due to timing of tooling billings to customers and, to a lesser extent, the billings on last-time sales of membrane-based filtration media initiated in December 2020 in the Company's Netherlands facility.\nThe $0.4 million decrease in contract liabilities from December 31, 2020 to June 30, 2021 was primarily due to $2.7 million of revenue recognized in the first six months of 2021 related to contract liabilities at December 31, 2020, offset by an increase in customer deposits.\nDisaggregated Revenue\nThe Company disaggregates revenue from customers by geographic region, as it believes this disclosure best depicts how the nature, amount, timing, and uncertainty of the Company's revenues and cash flows are affected by economic factors. Disaggregated revenue by geographical region for the three and six-month periods ended June 30, 2021 and 2020 were as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended June 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended June 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "North America",
+     "",
+     "Europe",
+     "",
+     "Asia",
+     "",
+     "Total Net Sales",
+     "",
+     "North America",
+     "",
+     "Europe",
+     "",
+     "Asia",
+     "",
+     "Total Net Sales",
+     ""
+    ],
+    [
+     "Performance Materials",
+     "$",
+     "117,069",
+     "$",
+     "32,196",
+     "$",
+     "7,254",
+     "$",
+     "156,519",
+     "$",
+     "86,107",
+     "$",
+     "33,776",
+     "$",
+     "3,810",
+     "$",
+     "123,693"
+    ],
+    [
+     "Technical Nonwovens",
+     "82,281",
+     "",
+     "34,976",
+     "",
+     "16,897",
+     "",
+     "134,154",
+     "",
+     "66,967",
+     "",
+     "32,356",
+     "",
+     "10,087",
+     "",
+     "109,410",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions",
+     "111,362",
+     "",
+     "48,786",
+     "",
+     "7,754",
+     "",
+     "167,902",
+     "",
+     "79,676",
+     "",
+     "34,964",
+     "",
+     "6,569",
+     "",
+     "121,209",
+     ""
+    ],
+    [
+     "Eliminations and Other",
+     "(9,153)",
+     "",
+     "(579)",
+     "",
+     "\u2014",
+     "",
+     "(9,732)",
+     "",
+     "(7,345)",
+     "",
+     "(280)",
+     "",
+     "\u2014",
+     "",
+     "(7,625)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "301,559",
+     "$",
+     "115,379",
+     "$",
+     "31,905",
+     "$",
+     "448,843",
+     "$",
+     "225,405",
+     "$",
+     "100,816",
+     "$",
+     "20,466",
+     "$",
+     "346,687"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE FROM CONTRACTS WITH CUSTOMERS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "5. INVENTORIES\nInventories as of June 30, 2021 and December 31, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "In thousands",
+     "At June 30, 2021 (1)",
+     "",
+     "At December 31, 2020",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "40,805",
+     "$",
+     "32,258"
+    ],
+    [
+     "Work in process (2)",
+     "16,093",
+     "",
+     "17,087",
+     ""
+    ],
+    [
+     "Finished goods",
+     "31,328",
+     "",
+     "29,651",
+     ""
+    ],
+    [
+     "Total inventories",
+     "$",
+     "88,226",
+     "$",
+     "78,996"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 472,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "5. INVENTORIES\nInventories as of June 30, 2021 and December 31, 2020 were as follows:",
+   "prose_after": "(1)Excludes inventories at the Netherlands operating facility that is classified as held-for-sale. See Note 3, \"Divestiture Activities,\" in these Notes to Condensed Consolidated Financial Statements for additional information.\n(2) Work in process includes net tooling inventory of $1.4 million and $2.8 million at June 30, 2021 and December 31, 2020, respectively.\n6. GOODWILL AND OTHER INTANGIBLE ASSETS\nGoodwill\nThe Company performs an assessment of its goodwill for impairment at least annually, in the fourth quarter, and whenever events or changes in circumstances indicate that the carrying value may exceed its fair value. There were no such events or changes in circumstances during the six-month period ended June 30, 2021.\nThe following table sets forth the change in carrying value of goodwill for each reportable segment and for the Company at June 30, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "In thousands",
+     "Performance Materials",
+     "",
+     "Technical Nonwovens",
+     "",
+     "Thermal Acoustical Solutions",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Gross balance at December 31, 2020",
+     "$",
+     "143,659",
+     "$",
+     "55,607",
+     "$",
+     "12,160",
+     "$",
+     "211,426"
+    ],
+    [
+     "Accumulated impairment",
+     "(111,671)",
+     "",
+     "\u2014",
+     "",
+     "(12,160)",
+     "",
+     "(123,831)",
+     ""
+    ],
+    [
+     "Net balance at December 31, 2020",
+     "31,988",
+     "",
+     "55,607",
+     "",
+     "\u2014",
+     "",
+     "87,595",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "(17)",
+     "",
+     "264",
+     "",
+     "\u2014",
+     "",
+     "247",
+     ""
+    ],
+    [
+     "Net balance at June 30, 2021",
+     "$",
+     "31,971",
+     "$",
+     "55,871",
+     "$",
+     "\u2014",
+     "$",
+     "87,842"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 495,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "GOODWILL AND OTHER INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "(1)Excludes inventories at the Netherlands operating facility that is classified as held-for-sale. See Note 3, \"Divestiture Activities,\" in these Notes to Condensed Consolidated Financial Statements for additional information.\n(2) Work in process includes net tooling inventory of $1.4 million and $2.8 million at June 30, 2021 and December 31, 2020, respectively.\n6. GOODWILL AND OTHER INTANGIBLE ASSETS\nGoodwill\nThe Company performs an assessment of its goodwill for impairment at least annually, in the fourth quarter, and whenever events or changes in circumstances indicate that the carrying value may exceed its fair value. There were no such events or changes in circumstances during the six-month period ended June 30, 2021.\nThe following table sets forth the change in carrying value of goodwill for each reportable segment and for the Company at June 30, 2021:",
+   "prose_after": "Other Intangible Assets\nThe table below presents the gross carrying amount and, as applicable, the accumulated amortization of the Company\u2019s acquired intangible assets, other than goodwill, at June 30, 2021 and December 31, 2020. These amounts are included in Other intangible assets, net on the Company's Condensed Consolidated Balance Sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "At June 30, 2021",
+     "",
+     "",
+     "",
+     "At December 31, 2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "Amortization Period",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     ""
+    ],
+    [
+     "Amortized intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer Relationships",
+     "10 - 14 years",
+     "$",
+     "143,650",
+     "$",
+     "(58,187)",
+     "$",
+     "143,479",
+     "$",
+     "(50,076)"
+    ],
+    [
+     "Patents",
+     "28 years",
+     "650",
+     "",
+     "(623)",
+     "",
+     "650",
+     "",
+     "(616)",
+     ""
+    ],
+    [
+     "Technology",
+     "15 years",
+     "2,500",
+     "",
+     "(1,227)",
+     "",
+     "2,500",
+     "",
+     "(1,144)",
+     ""
+    ],
+    [
+     "Trade Names",
+     "5 years",
+     "7,495",
+     "",
+     "(7,336)",
+     "",
+     "7,495",
+     "",
+     "(7,167)",
+     ""
+    ],
+    [
+     "License Agreements",
+     "10 years",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "185",
+     "",
+     "(185)",
+     ""
+    ],
+    [
+     "Other",
+     "7 - 15 years",
+     "464",
+     "",
+     "(464)",
+     "",
+     "467",
+     "",
+     "(467)",
+     ""
+    ],
+    [
+     "Total other intangible assets",
+     "",
+     "$",
+     "154,759",
+     "$",
+     "(67,837)",
+     "$",
+     "154,776",
+     "$",
+     "(59,655)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 514,
+    "end_line": 531
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "GOODWILL AND OTHER INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Other Intangible Assets\nThe table below presents the gross carrying amount and, as applicable, the accumulated amortization of the Company\u2019s acquired intangible assets, other than goodwill, at June 30, 2021 and December 31, 2020. These amounts are included in Other intangible assets, net on the Company's Condensed Consolidated Balance Sheets.",
+   "prose_after": "Estimated amortization expense for total intangible assets is expected to be $16.5 million, $14.5 million, $12.8 million, $11.4 million, $9.8 million, and $30.1 million, for each of the years ending December 31, 2021 through 2025 and thereafter, respectively.\n7. LONG-TERM DEBT AND FINANCING ARRANGEMENTS\nThe long-term debt payable at June 30, 2021 and December 31, 2020 consisted of:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 556,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "In thousands",
+     "Effective Rate",
+     "",
+     "Maturity",
+     "At June 30, 2021",
+     "",
+     "At December 31, 2020",
+     ""
+    ],
+    [
+     "Revolver loan",
+     "2.10",
+     "%",
+     "4/26/2026",
+     "$",
+     "87,210",
+     "$",
+     "134,500"
+    ],
+    [
+     "Term loan, net of debt issuance costs",
+     "2.10",
+     "%",
+     "4/26/2026",
+     "172,876",
+     "",
+     "135,938",
+     ""
+    ],
+    [
+     "Total debt",
+     "",
+     "",
+     "",
+     "260,086",
+     "",
+     "270,438",
+     ""
+    ],
+    [
+     "Less current portion due within one year",
+     "",
+     "",
+     "",
+     "(8,609)",
+     "",
+     "(9,789)",
+     ""
+    ],
+    [
+     "Total long-term debt, excluding current portion",
+     "",
+     "",
+     "",
+     "$",
+     "251,477",
+     "$",
+     "260,649"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "LONG-TERM DEBT AND FINANCING ARRANGEMENTS"
+    }
+   },
+   "prose_before": "Estimated amortization expense for total intangible assets is expected to be $16.5 million, $14.5 million, $12.8 million, $11.4 million, $9.8 million, and $30.1 million, for each of the years ending December 31, 2021 through 2025 and thereafter, respectively.\n7. LONG-TERM DEBT AND FINANCING ARRANGEMENTS\nThe long-term debt payable at June 30, 2021 and December 31, 2020 consisted of:",
+   "prose_after": "On August 31, 2018, the Company amended and restated its senior secured revolving credit agreement, which was further amended on February 14, 2020, May 11, 2020 and October 14, 2020 (collectively, the \u201c2018 Amended Credit Agreement\u201d). On April 26, 2021, the Company replaced its 2018 Amended Credit Agreement with a newly executed Credit Agreement by and among the Company, as borrower, and certain direct and indirect subsidiaries as guarantors, and Bank of America, N.A., as Administrative Agent, Lender, L/C Issuer and Swingline Lender, and Wells Fargo Bank, N.A., JPMorgan Chase Bank, N.A., KeyBank N.A., Santander Bank, N.A., TD Bank, N.A., and Webster Bank, N.A., as Lenders, which increased the Company's total available borrowings from $314.0 million to $346.0 million. This newly executed Credit Agreement has a revolving facility of $170.0 million, which includes a $50.0 million sublimit for the issuance of letters of credit, a $50.0 million sublimit for alternative currency loans and a $30.0 million sublimit for swingline loans, and a term loan facility of $176.0 million (the revolving facility and the term loan facility are collectively referred to as the \u201c2021 Credit Facility\u201d). The 2021 Credit Facility permits the Company to request an increase of up to $150.0 million in the aggregate. The proceeds of the 2021 Credit Facility were used, and will continue to be used throughout the duration of the term of the 2021 Credit Facility, to (a) refinance indebtedness and commitments outstanding under the existing 2018 Amended Credit Agreement, (b) pay fees and expenses incurred in connection with the 2021 Credit Facility, and (c) provide ongoing working capital and for other general corporate purposes. The 2021 Credit Facility matures on April 26, 2026.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 556,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "At June 30, 2021",
+     "",
+     "",
+     "",
+     "At December 31, 2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "Asset Derivatives",
+     "",
+     "Liability Derivatives",
+     "",
+     "Asset Derivatives",
+     "",
+     "Liability Derivatives",
+     ""
+    ],
+    [
+     "Interest rate contracts",
+     "$",
+     "\u2014",
+     "$",
+     "3,430",
+     "$",
+     "\u2014",
+     "$",
+     "5,063"
+    ],
+    [
+     "Cross-currency swaps",
+     "\u2014",
+     "",
+     "4,717",
+     "",
+     "\u2014",
+     "",
+     "6,933",
+     ""
+    ],
+    [
+     "Total derivatives",
+     "$",
+     "\u2014",
+     "$",
+     "8,147",
+     "$",
+     "\u2014",
+     "$",
+     "11,996"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "DERIVATIVES"
+    }
+   },
+   "prose_before": "In November 2019, the Company entered into three fixed-to-fixed cross-currency swaps with banking institutions with aggregate notional amounts totaling \u20ac67.8 million ($75.0 million U.S. dollar equivalent). These swaps hedge a portion of the Company's net investment in a Euro functional currency denominated subsidiary against the variability of exchange rate translation impacts between the U.S. dollar and Euro. These contracts require monthly cash interest exchanges over the life of the contracts with the Company recognizing a reduction to interest expense due to the favorable interest rate differential. Also, settlement of the notional \u20ac22.6 million ($25.0 million U.S. dollar equivalent) cross-currency swaps occur at maturity dates of August 2021, August 2022, and August 2023. The Company assesses hedge effectiveness of the cross-currency swaps quarterly by ensuring the critical terms of the swaps continue to match the critical terms of the designated net investment. The Company elected to assess effectiveness using the spot method, and as a result, records the interest rate differential monthly on the Company's Condensed Consolidated Statements of Operations.\nDerivative instruments are recorded at fair value and recognized as either assets or liabilities. For derivative instruments that are designated and qualify as a cash flow hedge, the effective portion of the gain or loss on the derivative is reported as a component of other comprehensive income and reclassified into earnings in the same period or periods in which the hedge transaction affects earnings. Any ineffective portion, or amounts related to contracts that are not designated as hedges, are recorded directly to earnings. The Company's policy for classifying cash flows from derivatives is to report the cash flows consistent with the underlying hedged item. The Company does not use derivatives for speculative or trading purposes.\nThe following table sets forth the fair value amounts of derivative instruments held by the Company presented on the Condensed Consolidated Balance Sheets as Derivative liabilities:",
+   "prose_after": "The following table sets forth the activity recorded in accumulated other comprehensive income (loss), net of tax, for the three and six-month periods ended June 30, 2021 and 2020 for derivatives held by the Company and designated as hedging instruments:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Cash flow hedges:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate contracts",
+     "$",
+     "571",
+     "$",
+     "11",
+     "$",
+     "1,189",
+     "$",
+     "(2,162)"
+    ],
+    [
+     "Cross-currency swaps",
+     "(696)",
+     "",
+     "(1,093)",
+     "",
+     "1,704",
+     "",
+     "1,526",
+     ""
+    ],
+    [
+     "Total derivatives",
+     "$",
+     "(125)",
+     "$",
+     "(1,082)",
+     "$",
+     "2,893",
+     "$",
+     "(636)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "DERIVATIVES"
+    }
+   },
+   "prose_before": "The following table sets forth the activity recorded in accumulated other comprehensive income (loss), net of tax, for the three and six-month periods ended June 30, 2021 and 2020 for derivatives held by the Company and designated as hedging instruments:",
+   "prose_after": "9. FAIR VALUE MEASUREMENTS\nFair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants at the measurement date.\nThe Company uses a three-level fair value hierarchy that prioritizes the inputs used to measure fair value. This hierarchy requires the Company to maximize the use of observable inputs and minimize the use of unobservable inputs. The three levels of inputs used to measure fair value are as follows:\n\u2022Level 1 - Quoted prices in active markets for identical assets or liabilities.\n\u2022Level 2 - Observable inputs other than quoted prices included in Level 1, such as quoted prices in markets that are not active or other inputs that are observable or can be corroborated by observable market data.\n\u2022Level 3 - Unobservable inputs that are supported by little or no market activity and are significant to the fair value of the assets or liabilities. This includes certain pricing models, discounted cash flow methodologies, and similar techniques that use significant unobservable inputs.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "At June 30, 2021",
+     "",
+     "",
+     "",
+     "At December 31, 2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Debt",
+     "$",
+     "261,010",
+     "$",
+     "280,725",
+     "$",
+     "271,000",
+     "$",
+     "272,792"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company uses a three-level fair value hierarchy that prioritizes the inputs used to measure fair value. This hierarchy requires the Company to maximize the use of observable inputs and minimize the use of unobservable inputs. The three levels of inputs used to measure fair value are as follows:\n\u2022Level 1 - Quoted prices in active markets for identical assets or liabilities.\n\u2022Level 2 - Observable inputs other than quoted prices included in Level 1, such as quoted prices in markets that are not active or other inputs that are observable or can be corroborated by observable market data.\n\u2022Level 3 - Unobservable inputs that are supported by little or no market activity and are significant to the fair value of the assets or liabilities. This includes certain pricing models, discounted cash flow methodologies, and similar techniques that use significant unobservable inputs.\nThe following table presents the carrying value and fair value of financial instruments that are not carried at fair value:",
+   "prose_after": "The fair values of the Company\u2019s long-term debt outstanding were computed based on discounted future cash flows (observable inputs), as applicable, which falls under Level 2 of the fair value hierarchy. Differences from carrying values are attributable to interest rate changes subsequent to when the transactions occurred.\nThe fair values of cash and cash equivalents, accounts receivable, net and accounts payable approximate their carrying amounts due to the short-term maturities of these instruments.\nRecurring Fair Value Measures\nThe Company holds derivative instruments for interest rate swap contracts and cross-currency swaps that are measured using observable market inputs such as forward rates and its counterparties' credit risks. Based on these inputs, the derivative\ninstruments are classified within Level 2 of the valuation hierarchy. At June 30, 2021 and December 31, 2020, these derivative instruments were included in Derivative liabilities on the Company's Condensed Consolidated Balance Sheets. Based on the Company's continued ability to trade and enter into interest rate swaps and cross-currency swaps, the Company considers the markets for their fair value instruments to be open.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Components of employer benefit cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "29",
+     "$",
+     "40",
+     "$",
+     "58",
+     "$",
+     "80"
+    ],
+    [
+     "Interest cost",
+     "304",
+     "",
+     "428",
+     "",
+     "608",
+     "",
+     "857",
+     ""
+    ],
+    [
+     "Expected return on assets",
+     "(589)",
+     "",
+     "(532)",
+     "",
+     "(1,178)",
+     "",
+     "(1,065)",
+     ""
+    ],
+    [
+     "Amortization of actuarial loss",
+     "4",
+     "",
+     "\u2014",
+     "",
+     "8",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Net periodic benefit cost (income)",
+     "$",
+     "(252)",
+     "$",
+     "(64)",
+     "$",
+     "(504)",
+     "$",
+     "(126)"
+    ],
+    [
+     "Settlement loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "385",
+     ""
+    ],
+    [
+     "Total employer benefit plan cost",
+     "$",
+     "(252)",
+     "$",
+     "(64)",
+     "$",
+     "(504)",
+     "$",
+     "259"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "EMPLOYER SPONSORED BENEFIT PLANS"
+    }
+   },
+   "prose_before": "The Company maintains one domestic pension plan, the Retirement Income Plan for Employees of Interface Performance Materials, Inc. (\"IPM Pension Plan\"). During the three-month period ended March 31, 2020, the Company settled the pension obligation of the Interface Sealing Solutions, Inc. Pension Plan (\"ISS Pension Plan\") through lump sum distributions to participants or by irrevocably transferring pension liabilities to an insurance company through the purchase of a group annuity contract. This purchase, funded with pension assets, resulted in a pre-tax settlement loss of $0.4 million in the six-month period ended June 30, 2020, related to the recognition of accumulated deferred actuarial losses. The settlement loss and expenses were included as non-operating expense on the Condensed Consolidated Statements of Operations.\nThe IPM Pension Plan covers a portion of Interface's union and non-union employees. The plan is closed to new employees and benefits are no longer accruing for the majority of participants. The Company expects to make contributions of approximately $0.7 million to the IPM Pension Plan during 2021. Contributions of $0.2 million and $0.4 million were made during the three and six-month periods ended June 30, 2021. Contributions of $0.4 million were made during the six-month period ended June 30, 2020. There were no contributions made during the three-month period ended June 30, 2020 because the Company took advantage of the deferral in minimum funding contribution due dates as permitted under the Coronavirus Aid, Relief, and Economic Security Act (\"CARES Act\").\nThe following is a summary of the components of net periodic benefit cost for the domestic defined benefit pension plans for\nthe three and six-month periods ended June 30, 2021 and 2020:",
+   "prose_after": "The Company reports the service cost component of net periodic benefit cost in the same line item as other compensation costs in operating expenses and the non-service cost components of net periodic benefit cost in Other (income) expense, net on the Condensed Consolidated Statements of Operations.\n12. RESTRUCTURING\nDuring the third quarter of 2020, the Company\u2019s Performance Materials segment undertook actions to discontinue production of a lower efficiency air filtration media product and, in turn, fully depreciated the supporting machinery and equipment in North America and consolidated certain product lines. In addition, the Company began exiting underperforming facilities in Europe. These restructuring activities, which will be completed in the third quarter of 2021, are expected to reduce operating costs, increase production efficiency, and enhance the Company\u2019s flexibility by better aligning its manufacturing operations with the segment's customer base. The Company expects to incur total pre-tax expenses of approximately $17.0 million. As a result of these restructuring activities, the Company incurred total pre-tax expenses of $16.9 million through June 30, 2021, of which approximately $11.2 million was related to cash expenditures primarily due to severance and employee retention expenses. Also contributing to total pre-tax expenses was $5.7 million of non-cash expenditures, which consisted of fully depreciating and/or amortizing long-lived assets and, to a lesser extent, writing-off inventory. See Note 3, \"Divestiture Activities\", in these Notes to Condensed Consolidated Financial Statements for additional information.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "For the Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2021",
+     ""
+    ],
+    [
+     "Severance and Related Expenses",
+     "$",
+     "190",
+     "$",
+     "967"
+    ],
+    [
+     "Total pre-tax expense incurred",
+     "$",
+     "190",
+     "$",
+     "967"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 709,
+    "end_line": 720
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "RESTRUCTURING"
+    }
+   },
+   "prose_before": "During the third quarter of 2020, the Company\u2019s Performance Materials segment undertook actions to discontinue production of a lower efficiency air filtration media product and, in turn, fully depreciated the supporting machinery and equipment in North America and consolidated certain product lines. In addition, the Company began exiting underperforming facilities in Europe. These restructuring activities, which will be completed in the third quarter of 2021, are expected to reduce operating costs, increase production efficiency, and enhance the Company\u2019s flexibility by better aligning its manufacturing operations with the segment's customer base. The Company expects to incur total pre-tax expenses of approximately $17.0 million. As a result of these restructuring activities, the Company incurred total pre-tax expenses of $16.9 million through June 30, 2021, of which approximately $11.2 million was related to cash expenditures primarily due to severance and employee retention expenses. Also contributing to total pre-tax expenses was $5.7 million of non-cash expenditures, which consisted of fully depreciating and/or amortizing long-lived assets and, to a lesser extent, writing-off inventory. See Note 3, \"Divestiture Activities\", in these Notes to Condensed Consolidated Financial Statements for additional information.\nThe following table summarizes the total restructuring expenses incurred, by cost type, for the three and six-month periods ended June 30, 2021:",
+   "prose_after": "The following table summarizes the change in the accrued liability balance for the restructuring actions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "In thousands",
+     "Total",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2020",
+     "$",
+     "9,431"
+    ],
+    [
+     "Pre-tax restructuring expenses, excluding asset write-off expenses",
+     "967",
+     ""
+    ],
+    [
+     "Cash paid",
+     "(1,642)",
+     ""
+    ],
+    [
+     "Accrued liability included with the sale of the German facility",
+     "(7,311)",
+     ""
+    ],
+    [
+     "Currency translation adjustments",
+     "5",
+     ""
+    ],
+    [
+     "Accrued liability included in Liabilities of a business held-for-sale",
+     "(1,414)",
+     ""
+    ],
+    [
+     "Balance as of June 30, 2021",
+     "$",
+     "36"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 723,
+    "end_line": 736
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "RESTRUCTURING"
+    }
+   },
+   "prose_before": "The following table summarizes the change in the accrued liability balance for the restructuring actions:",
+   "prose_after": "The above accrued liability balances were included in Restructuring liabilities on the Company\u2019s Condensed Consolidated Balance Sheets.\n13. INCOME TAXES\nFor the three-month period ended June 30, 2021, the Company's effective tax rate was 13.9% compared to an effective tax rate of 9.2% for the three-month period ended June 30, 2020. For the three-month period ended June 30, 2021, the rate was positively impacted by $0.4 million related to accounting method changes and $0.2 million related to foreign earnings taxed at higher rates. These were partially offset by $0.3 million of valuation allowance activity. For the three-month period ended June 30, 2020, the rate was negatively impacted by valuation allowance activity of $0.5 million and a foreign withholding tax liability of $0.4 million, resulting in a lower effective tax rate when in a pre-tax loss position.\nFor the six-month period ended June 30, 2021, the Company's effective tax rate was 25.8% compared to an effective tax rate of 4.0% for the six-month period ended June 30, 2020. For the six-month period ended June 30, 2021, the rate was negatively impacted by $0.6 million due to a change in assertion on unremitted foreign earnings and $0.5 million of valuation allowance activity. These were partially offset by a benefit of $0.4 million related to accounting method changes. For the six-month period ended June 30, 2020, the Company had a pre-tax loss primarily resulting from impairment charges of $61.1 million. The impairment charges significantly impacted the Company's effective tax rate because $48.7 million of the impairment charges related to non-deductible goodwill, resulting in a low effective tax rate for the six-month period ended June 30, 2020 when in a pre-tax loss position. Additionally, the effective rate was negatively impacted by valuation allowance activity of $0.7 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands, except per share amounts",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,780",
+     "$",
+     "(5,857)",
+     "$",
+     "10,874",
+     "$",
+     "(62,278)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average common shares outstanding",
+     "17,575",
+     "",
+     "17,372",
+     "",
+     "17,560",
+     "",
+     "17,354",
+     ""
+    ],
+    [
+     "Effect of dilutive options and restricted stock awards",
+     "402",
+     "",
+     "\u2014",
+     "",
+     "363",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Diluted weighted-average common shares outstanding",
+     "17,977",
+     "",
+     "17,372",
+     "",
+     "17,923",
+     "",
+     "17,354",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.33",
+     "$",
+     "(0.34)",
+     "$",
+     "0.62",
+     "$",
+     "(3.59)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.32",
+     "$",
+     "(0.34)",
+     "$",
+     "0.61",
+     "$",
+     "(3.59)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 758,
+    "end_line": 774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company\u2019s effective tax rates in future periods could be affected by an increase or decrease in earnings in countries where tax rates differ from the United States federal tax rate, the relative impact of permanent tax adjustments on earnings from domestic operations, changes in net deferred tax asset valuation allowances, including valuation allowances on loss carryforwards in which no tax benefit can be recognized, stock vesting, pension plan terminations, the completion of acquisitions or divestitures, changes in tax rates or tax laws and the completion of ongoing tax planning strategies and audits.\n14. EARNINGS (LOSS) PER SHARE\nFor the three and six-month periods ended June 30, 2021 and 2020, basic earnings per share was computed by dividing net income (loss) by the weighted average number of shares of common stock outstanding during the period. Unexercised stock options and unvested restricted share awards, including awards subject to certain performance criteria, are excluded from the basic earnings per share calculation, but are included in the diluted earnings per share calculation using the treasury stock method in periods of net income, as long as their effect is not antidilutive. All potential shares of common stock from unexercised stock options and unvested restricted share awards are antidilutive in periods of net loss.\nThe following table provides a reconciliation of weighted-average shares used to determine basic and diluted earnings per share:",
+   "prose_after": "For the three and six-month periods ended June 30, 2021, there were 73,464 and 156,709 shares excluded from the computation of diluted earnings per share, respectively. These included antidilutive stock options, antidilutive unvested restricted share awards for which requisite service has not yet been rendered, and antidilutive unvested performance share awards with contingently issuable shares.\nFor the three and six-month periods ended June 30, 2020, there were 736,944 and 734,756 shares excluded from the computation of diluted earnings per share, respectively. Because the Company had a net loss during the three and six-month periods ended June 30, 2020, the excluded shares included all outstanding, unvested restricted share awards for which requisite service has not yet been rendered, all stock options, and certain unvested performance share awards with contingently issuable shares.\nA description of the Company's stock options and restricted share awards is included in Note, 13, \"Equity Compensation Plans\", in the Notes to Consolidated Financial Statements in Part II, Item 8 - Financial Statements and Supplemental Data of the Company's Annual Report on Form 10-K for the year ended December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Performance Materials Segment (1),(2):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Filtration Products",
+     "$",
+     "34,066",
+     "$",
+     "29,636",
+     "$",
+     "68,412",
+     "$",
+     "55,523"
+    ],
+    [
+     "Sealing and Advanced Solutions Products",
+     "43,120",
+     "",
+     "28,837",
+     "",
+     "88,107",
+     "",
+     "68,170",
+     ""
+    ],
+    [
+     "Performance Materials Segment net sales",
+     "77,186",
+     "",
+     "58,473",
+     "",
+     "156,519",
+     "",
+     "123,693",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Technical Nonwovens Segment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Industrial Filtration Products",
+     "35,411",
+     "",
+     "29,413",
+     "",
+     "71,812",
+     "",
+     "60,782",
+     ""
+    ],
+    [
+     "Advanced Materials Products (2)",
+     "37,068",
+     "",
+     "22,594",
+     "",
+     "62,342",
+     "",
+     "48,628",
+     ""
+    ],
+    [
+     "Technical Nonwovens Segment net sales",
+     "72,479",
+     "",
+     "52,007",
+     "",
+     "134,154",
+     "",
+     "109,410",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions Segment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Parts",
+     "71,222",
+     "",
+     "32,448",
+     "",
+     "157,716",
+     "",
+     "109,769",
+     ""
+    ],
+    [
+     "Tooling",
+     "5,636",
+     "",
+     "5,000",
+     "",
+     "10,186",
+     "",
+     "11,440",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions Segment net sales",
+     "76,858",
+     "",
+     "37,448",
+     "",
+     "167,902",
+     "",
+     "121,209",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eliminations and Other (2)",
+     "(4,779)",
+     "",
+     "(1,768)",
+     "",
+     "(9,732)",
+     "",
+     "(7,625)",
+     ""
+    ],
+    [
+     "Consolidated Net Sales",
+     "$",
+     "221,744",
+     "$",
+     "146,160",
+     "$",
+     "448,843",
+     "$",
+     "346,687"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 802,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "The Technical Nonwovens segment is a global leader in engineered nonwoven materials for industrial filtration applications and advanced materials products. The primary industrial filtration markets include air pollution and emissions control, power generation, and liquid filtration solutions. Advanced materials products include geotextile felts for separation, reinforcement, filtration, drainage, and protection; thermal and acoustic insulation for transportation and automotive applications; and highly customized and technical solutions for acoustic media, medical, building & construction, and safety apparel. Specifically, the segment\u2019s offerings include needle punched nonwoven and highly engineered felts made from a variety of synthetic fibers. Automotive media is provided to Tier 1 and Tier 2 suppliers as well as the Company's Thermal Acoustical Solutions segment.\nThermal Acoustical Solutions Segment\nThe Thermal Acoustical Solutions segment designs, manufactures, and distributes a full range of innovative engineered products tailored for the transportation and industrial sectors. These products shield sensitive components from high temperature environments, assist in the reduction of harmful emissions and reduce noise and vibration. Within the transportation sector, the Company's products are found in the interior, underbody, and underhood of cars, trucks, SUVs, heavy duty trucks, and recreational vehicles.\nSegment Results\nNet sales by business segment is as follows:",
+   "prose_after": "Operating income (loss) by business segment is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Performance Materials (1),(3)",
+     "$",
+     "14,853",
+     "$",
+     "5,443",
+     "$",
+     "30,149",
+     "$",
+     "(51,498)"
+    ],
+    [
+     "Technical Nonwovens (4)",
+     "8,765",
+     "",
+     "6,684",
+     "",
+     "13,869",
+     "",
+     "10,497",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions",
+     "(1,500)",
+     "",
+     "(6,285)",
+     "",
+     "174",
+     "",
+     "(657)",
+     ""
+    ],
+    [
+     "Corporate Office Expenses",
+     "(12,704)",
+     "",
+     "(7,588)",
+     "",
+     "(22,639)",
+     "",
+     "(15,656)",
+     ""
+    ],
+    [
+     "Consolidated Operating Income (Loss)",
+     "$",
+     "9,414",
+     "$",
+     "(1,746)",
+     "$",
+     "21,553",
+     "$",
+     "(57,314)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 838,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "Operating income (loss) by business segment is as follows:",
+   "prose_after": "(1)For the six-month period ended June 30, 2021, the Performance Materials segment includes the results of the German facility that the Company sold on March 11, 2021.\n(2)Included in the Performance Materials segment, Technical Nonwovens segment, and Eliminations and Other is the following:\n\u2022Performance Materials segment intercompany sales to the Thermal Acoustical Solutions segment were as follows:\n\u25e6$1.0 million and $0.3 million for the three-month periods ended June 30, 2021 and 2020, respectively.\n\u25e6$2.1 million and $1.2 million for the six-month periods ended June 30, 2021 and 2020, respectively.\n\u2022Technical Nonwovens segment intercompany sales to the Thermal Acoustical Solutions segment were as follows:\n\u25e6$3.6 million and $1.4 million for the three-month periods ended June 30, 2021 and 2020, respectively.\n\u25e6$7.5 million and $6.4 million for the six-month periods ended June 30, 2021 and 2020, respectively.\n(3)Included in the operating results within the Performance Materials segment are the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Beginning Balance",
+     "$",
+     "264,550",
+     "$",
+     "253,577",
+     "$",
+     "257,696",
+     "$",
+     "318,420"
+    ],
+    [
+     "Comprehensive income (loss)",
+     "8,737",
+     "",
+     "(1,396)",
+     "",
+     "14,200",
+     "",
+     "(66,997)",
+     ""
+    ],
+    [
+     "Stock repurchased",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(201)",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Stock issued under employee plans",
+     "151",
+     "",
+     "1",
+     "",
+     "793",
+     "",
+     "32",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "1,363",
+     "",
+     "720",
+     "",
+     "2,313",
+     "",
+     "1,455",
+     ""
+    ],
+    [
+     "Stock issued to directors",
+     "398",
+     "",
+     "360",
+     "",
+     "398",
+     "",
+     "360",
+     ""
+    ],
+    [
+     "Ending Balance",
+     "$",
+     "275,199",
+     "$",
+     "253,262",
+     "$",
+     "275,199",
+     "$",
+     "253,262"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 905,
+    "end_line": 920
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The Company accounts for asset retirement obligations by recognizing the fair value of the related liability for an asset retirement obligation in the period in which it is incurred, if a reasonable estimate of fair value can be determined. At June 30, 2021, the Company had combined asset retirement obligations of $0.8 million, which are associated with the estimated costs to remove/remediate asbestos materials from various locations. The initial measurement of the asset retirement obligations was recorded as a liability at its fair value, with an offsetting asset retirement cost recorded as an increase to the related property and equipment, which is being depreciated using a systematic and rational method similar to the approach used for the associated property and equipment. The Company also has an asset retirement obligation with an offset to goodwill as the estimated costs were derived from known required remediation obligations as of the acquisition date of Interface Performance Materials on August 31, 2018. The Company has been performing ongoing remediation activity, which offsets the liability associated with the respective asset retirement obligations.\n17. STOCKHOLDERS' EQUITY AND ACCUMULATED OTHER COMPREHENSIVE INCOME (LOSS)\nChanges in stockholders' equity for the three and six-month periods ended June 30, 2021 and 2020 were as follows:",
+   "prose_after": "The components of accumulated other comprehensive income (loss) are shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Foreign currency translation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(6,528)",
+     "$",
+     "(27,979)",
+     "$",
+     "(3,514)",
+     "$",
+     "(18,022)"
+    ],
+    [
+     "Net gain (loss) on foreign currency translation",
+     "3,060",
+     "",
+     "5,146",
+     "",
+     "(988)",
+     "",
+     "(4,811)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss) (1)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,034",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "3,060",
+     "",
+     "5,146",
+     "",
+     "46",
+     "",
+     "(4,811)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "(3,468)",
+     "",
+     "(22,833)",
+     "",
+     "(3,468)",
+     "",
+     "(22,833)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pension and other postretirement benefit plans:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "(5,243)",
+     "",
+     "(2,749)",
+     "",
+     "(5,608)",
+     "",
+     "(3,080)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss) (2)",
+     "22",
+     "",
+     "\u2014",
+     "",
+     "387",
+     "",
+     "331",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "22",
+     "",
+     "\u2014",
+     "",
+     "387",
+     "",
+     "331",
+     ""
+    ],
+    [
+     "Ending balance",
+     "(5,221)",
+     "",
+     "(2,749)",
+     "",
+     "(5,221)",
+     "",
+     "(2,749)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized loss on derivative instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "(6,202)",
+     "",
+     "(4,431)",
+     "",
+     "(9,220)",
+     "",
+     "(4,877)",
+     ""
+    ],
+    [
+     "Net gain (loss) on derivative instruments (3)",
+     "(696)",
+     "",
+     "(1,082)",
+     "",
+     "1,704",
+     "",
+     "(636)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss) (4)",
+     "571",
+     "",
+     "397",
+     "",
+     "1,189",
+     "",
+     "397",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "(125)",
+     "",
+     "(685)",
+     "",
+     "2,893",
+     "",
+     "(239)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "(6,327)",
+     "",
+     "(5,116)",
+     "",
+     "(6,327)",
+     "",
+     "(5,116)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total accumulated other comprehensive income (loss)",
+     "$",
+     "(15,016)",
+     "$",
+     "(30,698)",
+     "$",
+     "(15,016)",
+     "$",
+     "(30,698)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 924,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The components of accumulated other comprehensive income (loss) are shown below:",
+   "prose_after": "(1)For the six-month period ended June 30, 2021, the amount represents the recognition of the accumulated loss on foreign currency translation relating to the divestiture of the German Facility in the Performance Materials segment, net of tax impact of $0.2 million. This is included in (Gain) loss on the sale of a business on the Company\u2019s Condensed Consolidated Statements of Operations.\n(2)For the three-month period ended June 30, 2021, the amount represents routine amortization of actuarial gains and losses in net periodic benefit cost, net of tax impact of less than $0.1 million. For the six-month period ended June 30, 2021, the amount primarily represents the recognition of the accumulated loss on the defined pension plan relating to the divestiture of the German Facility in the Performance Materials segment. This amount was $0.4 million, net of tax impact of $0.1 million, and is included in (Gain) loss on the sale of a business on the Company\u2019s Condensed Consolidated Statements of Operations. For the six-month period ended June 30, 2020, the amount primarily represents the settlement of the ISS Pension Plan. This amount was $0.4 million, net of tax impact of $0.1 million. The amounts for the six-month periods ended June 30, 2021 and 2020 also include routine amortization of actuarial gains and losses in net periodic benefit cost of less than $0.1 million, net of tax impact of less than $0.1 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "221,744",
+     "",
+     "$",
+     "146,160",
+     "",
+     "$",
+     "448,843",
+     "",
+     "$",
+     "346,687",
+     ""
+    ],
+    [
+     "$ change",
+     "75,584",
+     "",
+     "",
+     "(74,651)",
+     "",
+     "",
+     "102,156",
+     "",
+     "",
+     "(92,149)",
+     "",
+     ""
+    ],
+    [
+     "% change",
+     "51.7",
+     "",
+     "%",
+     "(33.8)",
+     "",
+     "%",
+     "29.5",
+     "",
+     "%",
+     "(21.0)",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated operating income was $9.4 million for the three-month period ended June 30, 2021 compared to an operating loss of $(1.7) million in the corresponding period in 2020. Operating income for the three-month period ended June 30, 2020 was adversely impacted by COVID-19-related plant shutdowns in the Company's Thermal Acoustical Solutions business and lower production of the Company's industrial filtration products. The $11.1 million increase was primarily a result of higher operating income of $9.4 million in the Performance Materials segment, driven by a favorable product mix due to higher sales for specialty filtration products and sealing and insulation products. Operating income for the Thermal Acoustical Solutions segment increased $4.8 million mainly due to the recovery from COVID-19 related shutdowns during the second quarter of 2020. The Technical Nonwovens segment also experienced an increase in operating income with a $2.1 million improvement from the comparable period in 2020. The increase in Technical Nonwovens was primarily attributable to higher sales volume driven by the recovery from the COVID-19 pandemic.\nThe chart below reflects the change in consolidated operating income by segment:\nConsolidated net income was $5.8 million, or $0.32 per diluted share, for the three-month period ended June 30, 2021 compared to a net loss of $(5.9) million, or $(0.34) per diluted share, in the corresponding period in 2020.\nCONSOLIDATED RESULTS OF OPERATIONS\nAll of the following tabular comparisons are for the three and six-month periods ended June 30, 2021 and 2020, unless otherwise indicated.\nNet Sales",
+   "prose_after": "Net sales for the three-month period ended June 30, 2021 increased $75.6 million, or 51.7%, compared to the corresponding period in 2020. The increase was primarily driven by higher net sales in the Thermal Acoustical Solutions segment of $39.4 million, or 27.0%, of consolidated net sales, as a result of improved demand across all regions driven by the absence of COVID-19-related production shutdowns in the prior year. In addition, the Technical Nonwovens segment\u2019s net sales increased $20.5 million, or 14.0%, of consolidated net sales, mainly due to higher sales volume mostly seen in geosynthetics and industrial air filtration. The Company\u2019s Performance Materials segment net sales increased $18.7 million, or 12.8%, of consolidated net sales, primarily due to favorable product mix, driven by increased demand for sealing solutions, higher sales for specialty filtration products, and stronger demand for specialty insulation. Foreign currency translation positively impacted segment net sales by $9.8 million, or 6.7%.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1054,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "$",
+     "173,958",
+     "",
+     "$",
+     "117,742",
+     "",
+     "$",
+     "352,508",
+     "",
+     "$",
+     "279,701",
+     ""
+    ],
+    [
+     "$ change",
+     "56,216",
+     "",
+     "",
+     "(57,794)",
+     "",
+     "",
+     "72,807",
+     "",
+     "",
+     "(71,804)",
+     "",
+     ""
+    ],
+    [
+     "% change",
+     "47.7",
+     "",
+     "%",
+     "(32.9)",
+     "",
+     "%",
+     "26.0",
+     "",
+     "%",
+     "(20.4)",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1082,
+    "end_line": 1091
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Net sales for the six-month period ended June 30, 2021 increased $102.2 million, or 29.5%, compared to the corresponding period in 2020. The increase was primarily driven by higher net sales in the Thermal Acoustical Solutions segment of $46.7 million, or 13.5%, of consolidated net sales. This increase was mainly due to higher sales volume driven by the continued recovery from the COVID-19 pandemic as the segment experienced temporary plant shutdowns across most of its operations during the comparable period in 2020. The Company\u2019s Performance Materials segment net sales increased $32.8 million, or 9.5%, of consolidated net sales, primarily driven by higher sales for specialty filtration products and strong demand for sealing and specialty insulation products, as the segment continues to recover from the COVID-19 pandemic. In addition, the Technical Nonwovens segment\u2019s net sales increased $24.7 million, or 7.1%, of consolidated net sales, mainly due to higher sales volume mostly in geosynthetics and industrial air filtration. Foreign currency translation positively impacted consolidated net sales by $17.3 million, or 5.0%.\nCost of Sales",
+   "prose_after": "Cost of sales for the three-month period ended June 30, 2021 increased by $56.2 million, or 47.7%, compared to the corresponding period in 2020. The increase was primarily driven by higher sales volume across all three segments, which was mainly attributable to the absence of shutdowns that the Company endured during the comparable period in 2020 as a result of the COVID-19 pandemic. The Company's Thermal Acoustical Solutions segment incurred higher labor costs due to furloughs and layoffs implemented during the comparable period in 2020 in addition to higher material costs primarily driven by aluminum prices. The Performance Materials segment\u2019s cost of sales increased mainly as a result of higher sales volume coupled with an increase in labor and material costs. Similarly, the increase in the Technical Nonwovens segment\u2019s cost of sales were driven by an increase in sales volume mainly in geosynthetics and industrial air filtration products in addition to higher material costs. Foreign currency translation increased cost of sales by $7.4 million, or 6.3%, in the three-month period ended June 30, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "47,786",
+     "",
+     "$",
+     "28,418",
+     "",
+     "$",
+     "96,335",
+     "",
+     "$",
+     "66,986",
+     ""
+    ],
+    [
+     "$ change",
+     "19,368",
+     "",
+     "",
+     "(16,857)",
+     "",
+     "",
+     "29,349",
+     "",
+     "",
+     "(20,345)",
+     "",
+     ""
+    ],
+    [
+     "% change",
+     "68.2",
+     "",
+     "%",
+     "(37.2)",
+     "",
+     "%",
+     "43.8",
+     "",
+     "%",
+     "(23.3)",
+     "",
+     "%"
+    ],
+    [
+     "% of net sales",
+     "21.6",
+     "",
+     "%",
+     "19.4",
+     "",
+     "%",
+     "21.5",
+     "",
+     "%",
+     "19.3",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1098,
+    "end_line": 1108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Cost of sales for the three-month period ended June 30, 2021 increased by $56.2 million, or 47.7%, compared to the corresponding period in 2020. The increase was primarily driven by higher sales volume across all three segments, which was mainly attributable to the absence of shutdowns that the Company endured during the comparable period in 2020 as a result of the COVID-19 pandemic. The Company's Thermal Acoustical Solutions segment incurred higher labor costs due to furloughs and layoffs implemented during the comparable period in 2020 in addition to higher material costs primarily driven by aluminum prices. The Performance Materials segment\u2019s cost of sales increased mainly as a result of higher sales volume coupled with an increase in labor and material costs. Similarly, the increase in the Technical Nonwovens segment\u2019s cost of sales were driven by an increase in sales volume mainly in geosynthetics and industrial air filtration products in addition to higher material costs. Foreign currency translation increased cost of sales by $7.4 million, or 6.3%, in the three-month period ended June 30, 2021.\nCost of sales for the six-month period ended June 30, 2021 increased by $72.8 million, or 26.0%, compared to the corresponding period in 2020 as a result of the drivers noted above. Foreign currency translation increased cost of sales by $12.3 million, or 4.4%, in the six-month period ended June 30, 2021.\nGross Profit",
+   "prose_after": "Gross profit for the three-month period ended June 30, 2021 increased $19.4 million, or 68.2%, compared to the corresponding period in 2020. The Performance Materials segment favorably impacted consolidated gross profit by $9.4 million, primarily due to higher sales for specialty filtration products and strong demand for sealing and specialty insulation products. The Thermal Acoustical Solutions segment also drove positive results with a $6.7 million increase in gross profit, mostly attributable to the continued recovery from the COVID-19 pandemic, partially offset by higher material pricing mainly in aluminum and aluminized steel. In addition, the Technical Nonwovens segment favorably impacted consolidated gross profit by $3.4 million, primarily driven by higher demand in geosynthetics and industrial air filtration products.\nGross profit for the six-month period ended June 30, 2021 increased $29.3 million, or 43.8%, compared to the corresponding period in 2020. The Performance Materials segment was the main driver with an increase of $20.6 million, resulting from higher sales driven by specialty filtration products and strong demand for sealing and specialty insulation products. The Technical Nonwovens and Thermal Acoustical Solutions segments also contributed favorably to consolidated gross profit with increases of $5.3 million and $3.7 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Selling, product development and administrative expenses",
+     "$",
+     "38,182",
+     "",
+     "$",
+     "30,164",
+     "",
+     "$",
+     "73,815",
+     "",
+     "$",
+     "63,191",
+     ""
+    ],
+    [
+     "$ change",
+     "8,018",
+     "",
+     "",
+     "(1,932)",
+     "",
+     "",
+     "10,624",
+     "",
+     "",
+     "(1,911)",
+     "",
+     ""
+    ],
+    [
+     "% change",
+     "26.6",
+     "",
+     "%",
+     "(6.0)",
+     "",
+     "%",
+     "16.8",
+     "",
+     "%",
+     "(2.9)",
+     "",
+     "%"
+    ],
+    [
+     "% of net sales",
+     "17.2",
+     "",
+     "%",
+     "20.6",
+     "",
+     "%",
+     "16.4",
+     "",
+     "%",
+     "18.2",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1115,
+    "end_line": 1125
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Gross profit for the three-month period ended June 30, 2021 increased $19.4 million, or 68.2%, compared to the corresponding period in 2020. The Performance Materials segment favorably impacted consolidated gross profit by $9.4 million, primarily due to higher sales for specialty filtration products and strong demand for sealing and specialty insulation products. The Thermal Acoustical Solutions segment also drove positive results with a $6.7 million increase in gross profit, mostly attributable to the continued recovery from the COVID-19 pandemic, partially offset by higher material pricing mainly in aluminum and aluminized steel. In addition, the Technical Nonwovens segment favorably impacted consolidated gross profit by $3.4 million, primarily driven by higher demand in geosynthetics and industrial air filtration products.\nGross profit for the six-month period ended June 30, 2021 increased $29.3 million, or 43.8%, compared to the corresponding period in 2020. The Performance Materials segment was the main driver with an increase of $20.6 million, resulting from higher sales driven by specialty filtration products and strong demand for sealing and specialty insulation products. The Technical Nonwovens and Thermal Acoustical Solutions segments also contributed favorably to consolidated gross profit with increases of $5.3 million and $3.7 million, respectively.\nSelling, Product Development and Administrative Expenses",
+   "prose_after": "Selling, product development and administrative expenses for the three-month period ended June 30, 2021 increased $8.0 million, or 26.6%, compared to the corresponding period in 2020. The increase was driven by higher compensation-related expenses of $4.2 million, higher expenses related to corporate strategic initiatives of $2.5 million, primarily relating to the pending merger, an increase in consulting costs of $0.8 million, and an increase in other general administrative costs of $1.5 million. These increases were partially offset by a decrease in intangible assets amortization expense of $1.0 million.\nSelling, product development and administrative expenses for the six-month period ended June 30, 2021 increased $10.6 million, or 16.8%, compared to the corresponding period in 2020. The increase was driven by higher compensation-related expenses of $7.0 million, higher consulting expenses of $2.9 million, and increases of $0.7 million, $0.6 million, $1.5 million in corporate strategic initiatives expenses, computer maintenance and support, and other general administrative costs, respectively. These increases were partially offset by a decrease in intangible assets amortization expense of $2.1 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Impairment of goodwill and other long-lived assets",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "61,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1133,
+    "end_line": 1140
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Selling, product development and administrative expenses for the three-month period ended June 30, 2021 increased $8.0 million, or 26.6%, compared to the corresponding period in 2020. The increase was driven by higher compensation-related expenses of $4.2 million, higher expenses related to corporate strategic initiatives of $2.5 million, primarily relating to the pending merger, an increase in consulting costs of $0.8 million, and an increase in other general administrative costs of $1.5 million. These increases were partially offset by a decrease in intangible assets amortization expense of $1.0 million.\nSelling, product development and administrative expenses for the six-month period ended June 30, 2021 increased $10.6 million, or 16.8%, compared to the corresponding period in 2020. The increase was driven by higher compensation-related expenses of $7.0 million, higher consulting expenses of $2.9 million, and increases of $0.7 million, $0.6 million, $1.5 million in corporate strategic initiatives expenses, computer maintenance and support, and other general administrative costs, respectively. These increases were partially offset by a decrease in intangible assets amortization expense of $2.1 million.\nImpairment of Goodwill and Other Long-Lived Assets",
+   "prose_after": "The Company recorded a goodwill impairment charge of $48.7 million in the Performance Materials segment during the three-month period ended March 30, 2020 due to lower demand in automotive and other end markets as a result of the COVID-19 pandemic. In addition, as a result of the COVID 19 pandemic and the Company's action plan to address the associated risks, the Company accelerated certain strategic actions. One such action was a review of an underperforming European plant within the Performance Materials segment. As a result of a strategic shift regarding this plant, the Company performed an impairment assessment on the long-lived assets of the plant, which resulted in a long-lived asset impairment charge of $12.4 million during the three-month period ended March 31, 2020.\nRestructuring Expenses",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Restructuring expenses",
+     "$",
+     "190",
+     "$",
+     "\u2014",
+     "$",
+     "967",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1145,
+    "end_line": 1152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company recorded a goodwill impairment charge of $48.7 million in the Performance Materials segment during the three-month period ended March 30, 2020 due to lower demand in automotive and other end markets as a result of the COVID-19 pandemic. In addition, as a result of the COVID 19 pandemic and the Company's action plan to address the associated risks, the Company accelerated certain strategic actions. One such action was a review of an underperforming European plant within the Performance Materials segment. As a result of a strategic shift regarding this plant, the Company performed an impairment assessment on the long-lived assets of the plant, which resulted in a long-lived asset impairment charge of $12.4 million during the three-month period ended March 31, 2020.\nRestructuring Expenses",
+   "prose_after": "In the three and six-month periods ended June 30, 2021, the Company recorded pre-tax restructuring charges of $0.2 million and $1.0 million, respectively, primarily consisting of severance costs and legal expenses.\n(Gain) Loss On The Sale Of A Business",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "(Gain) loss on the sale of a business",
+     "$",
+     "266",
+     "$",
+     "\u2014",
+     "$",
+     "964",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In the three and six-month periods ended June 30, 2021, the Company recorded pre-tax restructuring charges of $0.2 million and $1.0 million, respectively, primarily consisting of severance costs and legal expenses.\n(Gain) Loss On The Sale Of A Business",
+   "prose_after": "In the three-month period ended March 31, 2021, the Company entered into an agreement to sell a facility in Germany, which closed on March 11, 2021. The Company agreed to pay $1.8 million (\u20ac1.5 million) to the buyer and provide $2.3 million (\u20ac1.9 million) in additional funding, net of cash and certain net working capital adjustments, to cover pension and restructuring liabilities recorded in 2020. As a result of the sale of the business, the Company recorded a pre-tax loss of $0.3 million and $1.0 million for the three-month and six-month periods ending June 30, 2021, respectively. The final consideration and loss are subject to a working capital adjustment expected to be settled in 2022.\nEmployee Benefit Plans Settlement Expenses",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Employee benefit plans settlement expenses",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "385"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1169,
+    "end_line": 1176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In the three-month period ended March 31, 2021, the Company entered into an agreement to sell a facility in Germany, which closed on March 11, 2021. The Company agreed to pay $1.8 million (\u20ac1.5 million) to the buyer and provide $2.3 million (\u20ac1.9 million) in additional funding, net of cash and certain net working capital adjustments, to cover pension and restructuring liabilities recorded in 2020. As a result of the sale of the business, the Company recorded a pre-tax loss of $0.3 million and $1.0 million for the three-month and six-month periods ending June 30, 2021, respectively. The final consideration and loss are subject to a working capital adjustment expected to be settled in 2022.\nEmployee Benefit Plans Settlement Expenses",
+   "prose_after": "In the three-month period ended March 31, 2020, the Company settled the pension obligation of the Interface Sealing Solutions, Inc. Pension Plan through lump sum distributions to participants or by irrevocably transferring pension liabilities to an insurance company through the purchase of a group annuity contract. The settlement, funded with pension plan assets, resulted in a non-cash settlement expense of $0.4 million in the first quarter of 2020 related to the recognition of accumulated deferred actuarial losses.\nInterest Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2021",
+     "",
+     "",
+     "June 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "2,414",
+     "",
+     "$",
+     "4,476",
+     "",
+     "$",
+     "5,862",
+     "",
+     "$",
+     "7,333",
+     ""
+    ],
+    [
+     "Weighted average interest rate during the year",
+     "4.4",
+     "",
+     "%",
+     "5.2",
+     "",
+     "%",
+     "3.7",
+     "",
+     "%",
+     "4.8",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1182,
+    "end_line": 1190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In the three-month period ended March 31, 2020, the Company settled the pension obligation of the Interface Sealing Solutions, Inc. Pension Plan through lump sum distributions to participants or by irrevocably transferring pension liabilities to an insurance company through the purchase of a group annuity contract. The settlement, funded with pension plan assets, resulted in a non-cash settlement expense of $0.4 million in the first quarter of 2020 related to the recognition of accumulated deferred actuarial losses.\nInterest Expense",
+   "prose_after": "The decrease in interest expense for the three and six-month period ended June 30, 2021 compared to the corresponding periods in 2020 was primarily due to lower interest rates as a result of the newly executed credit agreement the Company entered into effective April 26, 2021. For additional information, see Note 7, \u201cLong-Term Debt and Financing Arrangements,\u201d in the Notes to Condensed Consolidated Financial Statements.\nOther Income and Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "$",
+     "206",
+     "$",
+     "248",
+     "$",
+     "292",
+     "$",
+     "(170)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1195,
+    "end_line": 1202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The decrease in interest expense for the three and six-month period ended June 30, 2021 compared to the corresponding periods in 2020 was primarily due to lower interest rates as a result of the newly executed credit agreement the Company entered into effective April 26, 2021. For additional information, see Note 7, \u201cLong-Term Debt and Financing Arrangements,\u201d in the Notes to Condensed Consolidated Financial Statements.\nOther Income and Expense",
+   "prose_after": "Other expense (income), net, was favorable for the three-month period ended June 30, 2021 and unfavorable for the six-month period ended June 30, 2021, compared to the corresponding periods in 2020. The fluctuations of each period were primarily due to the impact of foreign currency translation on the revaluation of cash, trade payables and receivables, and intercompany loans denominated in currencies other than the functional currencies of the Company's subsidiaries.\nEffective Income Tax Rate",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "13.9",
+     "%",
+     "9.2",
+     "%",
+     "25.8",
+     "%",
+     "4.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1207,
+    "end_line": 1214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Other expense (income), net, was favorable for the three-month period ended June 30, 2021 and unfavorable for the six-month period ended June 30, 2021, compared to the corresponding periods in 2020. The fluctuations of each period were primarily due to the impact of foreign currency translation on the revaluation of cash, trade payables and receivables, and intercompany loans denominated in currencies other than the functional currencies of the Company's subsidiaries.\nEffective Income Tax Rate",
+   "prose_after": "For the three-month period ended June 30, 2021, the Company's effective tax rate was 13.9% compared to an effective tax rate of 9.2% for the three-month period ended June 30, 2020. For the three-month period ended June 30, 2021, the rate was positively impacted by $0.4 million related to accounting method changes and $0.2 million related to foreign earnings taxed at higher rates. These were partially offset by $0.3 million of valuation allowance activity. For the three-month period ended June 30, 2020, the rate was negatively impacted by valuation allowance activity of $0.5 million and a foreign withholding tax liability of $0.4 million, resulting in a lower effective tax rate when in a pre-tax loss position.\nFor the six-month period ended June 30, 2021, the Company's effective tax rate was 25.8% compared to an effective tax rate of 4.0% for the six-month period ended June 30, 2020. For the six-month period ended June 30, 2021, the rate was negatively impacted by $0.6 million due to a change in assertion on unremitted foreign earnings and $0.5 million of valuation allowance activity. These were partially offset by a benefit of $0.4 million related to accounting method changes. For the six-month period ended June 30, 2020, the Company had a pre-tax loss primarily resulting from impairment charges of $61.1 million. The impairment charges significantly impacted the Company's effective tax rate because $48.7 million of the impairment charges related to non-deductible goodwill, resulting in a low effective tax rate for the six-month period ended June 30, 2020 when in a pre-tax loss position. Additionally, the effective rate was negatively impacted by valuation allowance activity of $0.7 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Performance Materials Segment (1),(2):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Filtration Products",
+     "$",
+     "34,066",
+     "$",
+     "29,636",
+     "$",
+     "68,412",
+     "$",
+     "55,523"
+    ],
+    [
+     "Sealing and Advanced Solutions Products",
+     "43,120",
+     "",
+     "28,837",
+     "",
+     "88,107",
+     "",
+     "68,170",
+     ""
+    ],
+    [
+     "Performance Materials Segment net sales",
+     "77,186",
+     "",
+     "58,473",
+     "",
+     "156,519",
+     "",
+     "123,693",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Technical Nonwovens Segment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Industrial Filtration Products",
+     "35,411",
+     "",
+     "29,413",
+     "",
+     "71,812",
+     "",
+     "60,782",
+     ""
+    ],
+    [
+     "Advanced Materials Products (2)",
+     "37,068",
+     "",
+     "22,594",
+     "",
+     "62,342",
+     "",
+     "48,628",
+     ""
+    ],
+    [
+     "Technical Nonwovens Segment net sales",
+     "72,479",
+     "",
+     "52,007",
+     "",
+     "134,154",
+     "",
+     "109,410",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions Segment:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Parts",
+     "71,222",
+     "",
+     "32,448",
+     "",
+     "157,716",
+     "",
+     "109,769",
+     ""
+    ],
+    [
+     "Tooling",
+     "5,636",
+     "",
+     "5,000",
+     "",
+     "10,186",
+     "",
+     "11,440",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions Segment net sales",
+     "76,858",
+     "",
+     "37,448",
+     "",
+     "167,902",
+     "",
+     "121,209",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eliminations and Other (2)",
+     "(4,779)",
+     "",
+     "(1,768)",
+     "",
+     "(9,732)",
+     "",
+     "(7,625)",
+     ""
+    ],
+    [
+     "Consolidated Net Sales",
+     "$",
+     "221,744",
+     "$",
+     "146,160",
+     "$",
+     "448,843",
+     "$",
+     "346,687"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1226,
+    "end_line": 1258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "For the six-month period ended June 30, 2021, the Company's effective tax rate was 25.8% compared to an effective tax rate of 4.0% for the six-month period ended June 30, 2020. For the six-month period ended June 30, 2021, the rate was negatively impacted by $0.6 million due to a change in assertion on unremitted foreign earnings and $0.5 million of valuation allowance activity. These were partially offset by a benefit of $0.4 million related to accounting method changes. For the six-month period ended June 30, 2020, the Company had a pre-tax loss primarily resulting from impairment charges of $61.1 million. The impairment charges significantly impacted the Company's effective tax rate because $48.7 million of the impairment charges related to non-deductible goodwill, resulting in a low effective tax rate for the six-month period ended June 30, 2020 when in a pre-tax loss position. Additionally, the effective rate was negatively impacted by valuation allowance activity of $0.7 million.\nSEGMENT RESULTS\nThe following tables present segment net sales and operating income (loss) for the primary product categories for the three and six-month periods ended June 30, 2021 and 2020.\nNet sales by segment:",
+   "prose_after": "Operating income (loss) by segment:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "Performance Materials (1),(3)",
+     "$",
+     "14,853",
+     "$",
+     "5,443",
+     "$",
+     "30,149",
+     "$",
+     "(51,498)"
+    ],
+    [
+     "Technical Nonwovens (4)",
+     "8,765",
+     "",
+     "6,684",
+     "",
+     "13,869",
+     "",
+     "10,497",
+     ""
+    ],
+    [
+     "Thermal Acoustical Solutions",
+     "(1,500)",
+     "",
+     "(6,285)",
+     "",
+     "174",
+     "",
+     "(657)",
+     ""
+    ],
+    [
+     "Corporate Office Expenses",
+     "(12,704)",
+     "",
+     "(7,588)",
+     "",
+     "(22,639)",
+     "",
+     "(15,656)",
+     ""
+    ],
+    [
+     "Consolidated Operating Income (Loss)",
+     "$",
+     "9,414",
+     "$",
+     "(1,746)",
+     "$",
+     "21,553",
+     "$",
+     "(57,314)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1261,
+    "end_line": 1274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Operating income (loss) by segment:",
+   "prose_after": "(1)For the six-month period ended June 30, 2021, the Performance Materials segment includes the results of the German facility that the Company sold on March 11, 2021.\n(2)Included in the Performance Materials segment, Technical Nonwovens segment, and Eliminations and Other is the following:\n\u2022Performance Materials segment intercompany sales to the Thermal Acoustical Solutions segment were as follows:\n\u25e6$1.0 million and $0.3 million for the three-month periods ended June 30, 2021 and 2020, respectively.\n\u25e6$2.1 million and $1.2 million for the six-month periods ended June 30, 2021 and 2020, respectively.\n\u2022Technical Nonwovens segment intercompany sales to the Thermal Acoustical Solutions segment were as follows:\n\u25e6$3.6 million and $1.4 million for the three-month periods ended June 30, 2021 and 2020, respectively.\n\u25e6$7.5 million and $6.4 million for the six-month periods ended June 30, 2021 and 2020, respectively.\n(3)Included in the operating results within the Performance Materials segment are the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands",
+     "June 30, 2021",
+     "",
+     "June 30, 2020",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Total cash provided by (used for):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "18,497",
+     "$",
+     "40,415",
+     "$",
+     "(21,918)"
+    ],
+    [
+     "Investing activities",
+     "(12,850)",
+     "",
+     "(12,080)",
+     "",
+     "(770)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "(6,321)",
+     "",
+     "13,482",
+     "",
+     "(19,803)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Free Cash Flow (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used for) operating activities",
+     "18,497",
+     "",
+     "40,415",
+     "",
+     "(21,918)",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(13,265)",
+     "",
+     "(15,472)",
+     "",
+     "2,207",
+     ""
+    ],
+    [
+     "Free cash flow",
+     "$",
+     "5,232",
+     "$",
+     "24,943",
+     "$",
+     "(19,711)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1399,
+    "end_line": 1416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In 2020, the Company approved investments to add capital equipment in North America and Europe to produce fine fiber meltblown filtration media in the Performance Materials segment. In North America, the Company is investing approximately $25.0 million for two production lines in its Rochester, New Hampshire facility. The Company received a $13.5 million grant\nfrom the U.S. Government to partially fund this investment. The cumulative capital expenditures incurred for this project was $11.4 million through June 30, 2021, net of $13.5 million in funding received from the U.S. Government.\nIn Europe, the Company is investing approximately $13.0 million for a production line in its Saint-Rivalain, France facility to meet the European Union demand for face mask and air filtration products. This investment is being partially funded by a grant from the French Government that provides funding for up to 30% of the investment. The cumulative capital expenditures incurred for this ongoing project was $10.3 million through June 30, 2021, net of $3.2 million in funding from the French Government.\nDiscussion and Analysis of Cash Flows\nA summary of the Company's consolidated cash flows is as follows:",
+   "prose_after": "(1) Free Cash Flow, a non-U.S. GAAP financial measure, is defined as net cash provided by operating activities less capital expenditures, both of which are presented in the Company\u2019s Condensed Consolidated Statements of Cash Flows. See Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations \u2013 Non-GAAP Financial Measures for more information regarding Free Cash Flow.\nOperating Cash Flows\nNet cash provided by operating activities for the six-month period ended June 30, 2021 was $18.5 million compared with net cash provided by operating activities of $40.4 million in the corresponding period in 2020. The $21.9 million decrease was driven primarily by higher accounts receivables and inventory as a result of an increase in sales volume, as the Company continues to recover from the COVID-19 pandemic, and higher income taxes receivables, partially offset by higher accounts payables due to the timing of payments for raw material purchases.\nInvesting Cash Flows\nDuring the six-month periods ended June 30, 2021 and 2020, net cash used for investing activities consisted of capital expenditures of $13.3 million and $15.5 million, respectively. The Company also paid $2.7 million in connection with the sale of a facility in Germany.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1390,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "In thousands",
+     "At June 30, 2021",
+     "",
+     "At December 31, 2020",
+     ""
+    ],
+    [
+     "Total borrowings committed:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolver commitment",
+     "$",
+     "170,000",
+     "$",
+     "170,000"
+    ],
+    [
+     "Term loan commitment",
+     "176,000",
+     "",
+     "144,000",
+     ""
+    ],
+    [
+     "Total borrowings committed",
+     "$",
+     "346,000",
+     "$",
+     "314,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total borrowings outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amounts outstanding under the revolver",
+     "$",
+     "87,210",
+     "$",
+     "134,500"
+    ],
+    [
+     "Amounts outstanding under the term loan, excluding debt issuance costs",
+     "173,800",
+     "",
+     "136,500",
+     ""
+    ],
+    [
+     "Total borrowings outstanding",
+     "$",
+     "261,010",
+     "$",
+     "271,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total borrowings available:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolver commitment",
+     "$",
+     "170,000",
+     "$",
+     "170,000"
+    ],
+    [
+     "Less amounts outstanding under the revolver",
+     "87,210",
+     "",
+     "134,500",
+     ""
+    ],
+    [
+     "Less letters of credit outstanding",
+     "1,776",
+     "",
+     "1,776",
+     ""
+    ],
+    [
+     "Available borrowings, net of letters of credit",
+     "$",
+     "81,014",
+     "$",
+     "33,724"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1446,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Interest rates on amounts outstanding under the 2021 Credit Facility are variable based on LIBOR. The LIBOR benchmark has been the subject of national, international, and other regulatory guidance and proposals for reform. In July 2017, the U.K. Financial Conduct Authority announced that it intends to stop persuading or compelling banks to submit rates for calculation of LIBOR after 2021. These reforms may cause LIBOR to perform differently than in the past, and LIBOR may ultimately cease to exist after 2021. Alternative benchmark rate(s) may replace LIBOR and could affect the Company's debt securities, derivative instruments, receivables, debt payments, and receipts. At this time, it is not possible to predict the effect of any changes to LIBOR, any phase out of LIBOR or any establishment of alternative benchmark rates. Any new benchmark rate will likely not replicate LIBOR exactly, which could impact the Company's contracts that terminate after 2021. There is uncertainty about how applicable law, the courts or the Company will address the replacement of LIBOR with alternative rates on variable rate retail loan contracts and other contracts that do not include alternative rate fallback provisions. In addition, any changes to benchmark rates may have an uncertain impact on the Company's cost of funds and access to the capital markets, which could impact liquidity, financial position, or results of operations.\nBorrowings outstanding and available borrowings are summarized below:",
+   "prose_after": "Under the 2021 Credit Facility, interest is charged on borrowings, at the Company\u2019s option, of either: (i) LIBOR (if LIBOR is not available for an alternative currency, such other interest rate customarily used by Bank of America for such alternative currency) plus the Applicable Margin, or (ii) for U.S. denominated loans the Base Rate, which is a fluctuating rate equal to the highest of (a) the federal funds rate plus 0.50%, (b) the prime rate as set by the Administrative Agent, and (c) the Eurocurrency Rate plus 1.00%, provided that if the Base Rate shall be less than zero, such rate shall be deemed zero. The Applicable Margin is 2.00% per annum in the case of LIBOR and alternative currency loans and letters of credit and 1.00% per annum in the case of Base Rate loans for the first full fiscal quarter following the closing date of the 2021 Credit Facility. Thereafter, the Applicable Margin is determined based on the Company\u2019s Consolidated Net Leverage Ratio (as defined in the 2021 Credit",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger, dated June 21, 2021, by and among Lydall, Inc., Unifrax Holding Co., Outback Merger Sub, Inc., and Unifrax I LLC (previously filed as Annex A to the Company\u2019s Preliminary Proxy Statement on Schedule 14A (File No. 001-07665), filed on July 21, 2021 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Rule 13a-14(a) and Rule 15d-14(a) under the Securities Exchange Act of 1934, of principal executive officer, filed herewith."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Rule 13a-14(a) and Rule 15d-14(a) under the Securities Exchange Act of 1934, of principal financial officer, filed herewith."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certifications Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, filed herewith."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1657,
+    "end_line": 1682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "These provisions could discourage a potential third-party acquirer that might have an interest in acquiring all or a significant portion of the Company from considering or proposing that acquisition, even if the acquirer was prepared to pay consideration with a higher per share cash or market value than the market value proposed to be received or realized in the Merger, or might otherwise result in a potential third-party acquirer proposing to pay a lower price to our stockholders than they might otherwise have proposed to pay due to the added expense of the termination fee that may become payable in certain circumstances.\nIf the Merger Agreement is terminated and the Company decides to seek another business combination, we may not be able to negotiate or consummate a transaction with another party on terms comparable to, or better than, the terms of the Merger Agreement.\nItem 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nOn April 20, 2021, the Company announced that our Board of Directors approved a Share Repurchase Program authorizing the repurchase, from time to time at the Company's discretion, of up to an aggregate of $30.0 million of common stock, par value $0.01 per share, of the Company. No shares were repurchased under this program during the three-month period ended June 30, 2021. The Company suspended the Share Repurchase Program due to the pending Merger.\nDuring the three-month period ended June 30, 2021, the Company did not repurchase any shares of its common stock.\nItem 5. OTHER INFORMATION\nNone.\nItem 6. EXHIBITS",
+   "prose_after": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1654,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "LYDALL, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 28, 2021",
+     "By:",
+     "/s/ Randall B. Gonzales"
+    ],
+    [
+     "",
+     "",
+     "Randall B. Gonzales Executive Vice President and Chief Financial Officer and Treasurer (Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "LYDALL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1688,
+    "end_line": 1695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1696,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

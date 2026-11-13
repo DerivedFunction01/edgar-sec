@@ -1,0 +1,907 @@
+{
+ "accession": "0001019687-15-001144",
+ "cik": "0001094651",
+ "form": "10-K",
+ "filing_date": "2015-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "trimax_10k-2010.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "76-0616468"
+    ],
+    [
+     "(State of Incorporation)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2010\nCommission file number 000-32479\nTrimax Corp\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1007 N Federal Hwy #275 Ft Lauderdale, FL 33304\n(Address of principal executive offices) (Zip Code)\n302-261-3660\nRegistrant\u2019s telephone number, including area code\nSecurities registered under Section 12(b) of the Exchange Act:\nNone.\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, par value $0.001 per share\n(Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements",
+     "1"
+    ],
+    [
+     "Item 2. Nature of Business",
+     "1"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosure About Market Risks",
+     "3"
+    ],
+    [
+     "Item 4T. Controls and Procedures",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "4"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "4"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "4"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "5"
+    ],
+    [
+     "Item 4. Reserved",
+     "5"
+    ],
+    [
+     "Item 5. Other Information",
+     "5"
+    ],
+    [
+     "Item 6. Exhibits",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "6"
+    ]
+   ],
+   "caption_stack": [
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer                        [ ]  Accelerated filer          [ ]\nNon-accelerated filer                          [ ]  Smaller reporting company  [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of March 25, 2015, the aggregate market value of the voting common equity held by non-affiliates of the registrant was approximately $540,000 based on the closing trade reported on the NASD Over-the-Counter Bulletin Board National Quotation System.\nAs of December 31, 2010, the registrant had issued 30,564,000 shares of Common Stock, par value $0.001; and had issued nil shares of preferred stock, par value $0.001.\nTrimax Corporation\nFiscal Year Ending\nDecember 31, 2010",
+   "prose_after": "PART I FINANCIAL INFORMATION\nITEM 1. Financial Statements\nConsolidated financial statements are set forth in this Report beginning at page F-1 and are incorporated by reference into this Item.\nITEM 2. NATURE OF BUSINESS\nThe information in this report contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. This Act provides a \u201csafe harbor\u201d for forward-looking statements to encourage companies to provide prospective information about themselves so long as they identify these statements as forward looking and provide meaningful cautionary statements identifying important factors that could cause actual results to differ from the projected results. All statements other than statements of historical fact made in this report are forward looking. In particular, the statements herein regarding industry prospects and future results of operations or financial position are forward-looking statements. Forward-looking statements reflect management\u2019s current expectations and are inherently uncertain. Our actual results may differ significantly from management\u2019s expectations.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Trimax Corp",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Zoran Cvetojevic"
+    ],
+    [
+     "",
+     "",
+     "Zoran Cvetojevic Chairman, Acting Chief Executive Officer and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Trimax Corp"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 214,
+    "end_line": 221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Exhibit 32.1 Certification of Principal Executive Officer pursuant to Sarbanes-Oxley Section 906\nExhibit 32.2 Certification of Principal Financial Officer pursuant to Sarbanes-Oxley Section 906\n101.INS XBRL Instance Document\n101.SCH XBRL Schema Document\n101.CAL XBRL Calculation Linkbase Document\n101.DEF XBRL Definition Linkbase Document\n101.LAB XBRL Label Linkbase Document\n101.PRE XBRL Presentation Linkbase Document\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Dated March 25, 2015\nYear Ending Dec 31 2010\nTable of Contents",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheet",
+     "F-2"
+    ],
+    [
+     "Statement of Earnings and Retained Earnings",
+     "F-3"
+    ],
+    [
+     "Statement of Cash Flows",
+     "F-4"
+    ],
+    [
+     "Statement of Shareholders' Equity",
+     "F-5"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 230,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Dated March 25, 2015\nYear Ending Dec 31 2010\nTable of Contents",
+   "prose_after": "These financial statements and notes thereto present fairly, in all material respects, the financial position of the company and the results of its operations and cash flows for the period presented, in conformity with accounting principles generally accepted in the United States, consistently applied.\nCONSOLIDATED BALANCE SHEET\nAs at December 31, 2010",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Cash",
+     "$",
+     "7,617",
+     ""
+    ],
+    [
+     "      Accounts Receivable",
+     "",
+     "18,697",
+     ""
+    ],
+    [
+     "      Other Receivable",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "      Inventory",
+     "",
+     "30,995",
+     ""
+    ],
+    [
+     "      Prepaid Accounts",
+     "",
+     "1,500",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "58,809",
+     ""
+    ],
+    [
+     "LONG-TERM EQUITY INVESTMENT",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "FIXED ASSETS - NBV",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "INTANGIBLE ASSETS - NBV",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "58,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts Payable and Accrued Liabilities",
+     "$",
+     "109,322",
+     ""
+    ],
+    [
+     "  Notes Payable",
+     "",
+     "68,595",
+     ""
+    ],
+    [
+     "  Taxes payable",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "    TOTAL CURRENT LIABILITIES",
+     "",
+     "177,917",
+     ""
+    ],
+    [
+     "    LONG TERM LIABILITIES",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "      TOTAL LIABILITIES",
+     "$",
+     "177,917",
+     ""
+    ],
+    [
+     "SHAREHOLDERS' EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CAPITAL STOCK",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, authorized shares 120,000,000 Issued and outstanding - 30,564,000 @ PV $.001",
+     "",
+     "30,564",
+     ""
+    ],
+    [
+     "Paid In Capital",
+     "",
+     "16,987,149",
+     ""
+    ],
+    [
+     "Deficit",
+     "",
+     "(16,898,605)",
+     ""
+    ],
+    [
+     "      TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "119,108",
+     ""
+    ],
+    [
+     "      TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "58,809",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ASSETS",
+    "CURRENT ASSETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 247,
+    "end_line": 286
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "These financial statements and notes thereto present fairly, in all material respects, the financial position of the company and the results of its operations and cash flows for the period presented, in conformity with accounting principles generally accepted in the United States, consistently applied.\nCONSOLIDATED BALANCE SHEET\nAs at December 31, 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCONSOLIDATED STATEMENTS OF EARNINGS AND RETAINED EARNINGS\nFOR THE YEAR ENDED December 31, 2010",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 288,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "REVENUE",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Sales",
+     "$",
+     "264,290",
+     ""
+    ],
+    [
+     "TOTAL SALES",
+     "",
+     "264,290",
+     ""
+    ],
+    [
+     "COST OF SALES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cost of Sales",
+     "",
+     "79,404",
+     ""
+    ],
+    [
+     "TOTAL COST OF SALES",
+     "",
+     "79,404",
+     ""
+    ],
+    [
+     "GROSS PROFIT",
+     "",
+     "184,886",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Administrative Expense",
+     "",
+     "191,860",
+     ""
+    ],
+    [
+     "  Selling Expense",
+     "",
+     "29,528",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "221,388",
+     ""
+    ],
+    [
+     "OTHER INCOME & EXPENSES",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROFIT (LOSS)",
+     "",
+     "(36,502)",
+     ""
+    ],
+    [
+     "NET PROFIT (LOSS)",
+     "$",
+     "(36,502)",
+     ""
+    ],
+    [
+     "Deficit - Beginning of period",
+     "$",
+     "(16,862,103)",
+     ""
+    ],
+    [
+     "Deficit - End of period",
+     "$",
+     "(16,898,605)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "REVENUE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 296,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCONSOLIDATED STATEMENTS OF EARNINGS AND RETAINED EARNINGS\nFOR THE YEAR ENDED December 31, 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCONSOLIDATED STATEMENT OF CASH FLOWS\nFOR THE YEAR ENDED December 31, 2010",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 294,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Profit/Loss from operations",
+     "$",
+     "(36,502)",
+     ""
+    ],
+    [
+     "Adjustments to cash flows from operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of goodwill",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "  Depreciation of fixed assets",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "(36,502)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Capital expenditures",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Investment in inventory",
+     "",
+     "(30,995)",
+     ""
+    ],
+    [
+     "  Increase in accounts receivable",
+     "",
+     "(18,697)",
+     ""
+    ],
+    [
+     "  Increase in prepaid expenses",
+     "",
+     "(1,500)",
+     ""
+    ],
+    [
+     "  Cash used in investing activities",
+     "",
+     "(51,192)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Increase in accounts payable and accrued liabilities",
+     "",
+     "58,822",
+     ""
+    ],
+    [
+     "  Decrease in paid in capital",
+     "",
+     "(123,606)",
+     ""
+    ],
+    [
+     "  Increase in loans payable",
+     "",
+     "30,095",
+     ""
+    ],
+    [
+     "  Issuance of capital stock",
+     "",
+     "130,000",
+     ""
+    ],
+    [
+     "  Cash used for financing activities",
+     "",
+     "95,311",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "7,617",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "7,617",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash flows from operating activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 334,
+    "end_line": 365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCONSOLIDATED STATEMENT OF CASH FLOWS\nFOR THE YEAR ENDED December 31, 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE YEAR December 31, 2010\nNOTE 1. GENERAL ORGANIZATION AND BUSINESS ISSUES\nOn June 24, 2010, the company announced the sale of there majority shareholder to a European based holding company. The company and its newly announced management plan to work diligently toward identifying viable merger candidates with high growth potential.\nNOTE 2. SUMMARY OF SIGNIFICANT ACCOUNTING PRACTICES\nAccounting policies and procedures are listed below. The company has adopted a December 31 year end. We have prepared the consolidated financial statements according to generally accepted accounting Principles (GAAP). The Company adopted the provisions of SFAS No. 128, \"Earnings per Share.\" SFAS No. 128 requires the presentation of basic and diluted earnings per share (\"EPS\").\nCash and Cash Equivalents\nThe Company considers all highly liquid investments with original maturities of three months or less as cash equivalents. As of December 31, 2010 the company had no cash or cash equivalent balances in excess Of the federally insured amounts. The Company\u2019s policy is to invest excess funds in only well capitalized financial institutions.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 332,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 367,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

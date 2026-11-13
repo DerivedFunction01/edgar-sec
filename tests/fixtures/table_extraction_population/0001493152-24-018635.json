@@ -1,0 +1,4088 @@
+{
+ "accession": "0001493152-24-018635",
+ "cik": "0001500305",
+ "form": "10-Q",
+ "filing_date": "2024-05-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2612",
+     "quarterly report under section 13 Or 15(d) of the securities exchange act of 1934"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the quarterly period ended",
+     "March 31, 2024"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 18
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2610",
+     "transition report under section 13 Or 15(d) of the securities exchange act of 1934"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "For the transition period from ________________________________ to __________________________________",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Commission file number",
+     "000-54875"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the transition period from ________________________________ to __________________________________",
+   "prose_after": "Sustainable Projects Group Inc.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "81-5445107"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Tankedraget 7, Aalborg, Denmark",
+     "DK-9000"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Sustainable Projects Group Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "305-814-2915\n(Registrant\u2019s telephone number, including area code)\nNot Applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n\u2612 Yes \u2610 No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\n\u2612 Yes \u2610 No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Larger accelerated filer \u2610",
+     "Accelerated filer \u2610"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Non-accelerated filer \u2612",
+     "Smaller reporting company \u2612"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Emerging growth company \u2610"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 66,
+    "end_line": 73
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n\u2612 Yes \u2610 No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\n\u2612 Yes \u2610 No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "prose_after": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n\u2610 Yes \u2612 No\nAs of May 10, 2024, there were 296,037,813 shares of the registrant\u2019s common stock, $0.0001 par value, outstanding, which is the only class of common or voting stock of the registrant issued.\nFor the THREE MONTHS Ended MARCH 31, 2024 AND 2023\nindex to UNAUDITED CONSOLIDATED INTERIM financial statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Unaudited Interim Balance Sheets",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Unaudited Interim Statements of Operations and Comprehensive Loss",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Unaudited Interim Statements of Stockholders\u2019 Deficit",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Unaudited Interim Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Unaudited Interim Financial Statements",
+     "F-6 to F-15"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n\u2610 Yes \u2612 No\nAs of May 10, 2024, there were 296,037,813 shares of the registrant\u2019s common stock, $0.0001 par value, outstanding, which is the only class of common or voting stock of the registrant issued.\nFor the THREE MONTHS Ended MARCH 31, 2024 AND 2023\nindex to UNAUDITED CONSOLIDATED INTERIM financial statements",
+   "prose_after": "CONSOLIDATED INTERIM BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "As at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "399,945",
+     "",
+     "$",
+     "847,724",
+     ""
+    ],
+    [
+     "Other receivables \u2013 Note 4",
+     "",
+     "15,490",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "239,738",
+     "",
+     "",
+     "398,067",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "655,173",
+     "",
+     "",
+     "1,245,791",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of Use Asset \u2013 Note 9",
+     "",
+     "1,589,453",
+     "",
+     "",
+     "1,688,003",
+     ""
+    ],
+    [
+     "Equipment \u2013 Note 5",
+     "",
+     "117,508",
+     "",
+     "",
+     "102,907",
+     ""
+    ],
+    [
+     "Intangible assets \u2013 Note 7",
+     "",
+     "31,223",
+     "",
+     "",
+     "32,903",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "2,393,357",
+     "",
+     "$",
+     "3,069,604",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities \u2013 Note 8",
+     "$",
+     "488,096",
+     "",
+     "$",
+     "449,952",
+     ""
+    ],
+    [
+     "Amounts due to related parties \u2013 Note 12",
+     "",
+     "687,660",
+     "",
+     "",
+     "502,397",
+     ""
+    ],
+    [
+     "Other payable \u2013 Note 4",
+     "",
+     "-",
+     "",
+     "",
+     "19,334",
+     ""
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "24,566",
+     "",
+     "",
+     "149,148",
+     ""
+    ],
+    [
+     "Notes and interest payable \u2013 Note 10",
+     "",
+     "70,415",
+     "",
+     "",
+     "69,605",
+     ""
+    ],
+    [
+     "Deposits received",
+     "",
+     "74,257",
+     "",
+     "",
+     "76,545",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "2,071",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liability, current portion \u2013 Note 9",
+     "",
+     "184,135",
+     "",
+     "",
+     "183,913",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "1,531,200",
+     "",
+     "",
+     "1,450,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease Liability obligation, long term \u2013 Note 9",
+     "",
+     "1,475,858",
+     "",
+     "",
+     "1,559,818",
+     ""
+    ],
+    [
+     "TOTAL NON-CURRENT LIABILITIES",
+     "",
+     "1,475,858",
+     "",
+     "",
+     "1,559,818",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "3,007,058",
+     "",
+     "",
+     "3,010,712",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock \u2013 Note 11 Par Value: $0.0001 Authorized 500,000,000 shares Common Stock Issued: 296,037,813 (Dec 31, 2023 \u2013 296,037,813)",
+     "",
+     "29,604",
+     "",
+     "",
+     "29,604",
+     ""
+    ],
+    [
+     "Additional Paid In Capital",
+     "",
+     "3,586,468",
+     "",
+     "",
+     "3,438,273",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(4,232,365)",
+     "",
+     "",
+     "(3,359,757)",
+     ""
+    ],
+    [
+     "Other Accumulated Comprehensive Gain (Loss)",
+     "",
+     "2,592",
+     "",
+     "",
+     "(49,228)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "(613,701)",
+     "",
+     "",
+     "58,892",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "2,393,357",
+     "",
+     "$",
+     "3,069,604",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED INTERIM BALANCE SHEETS",
+   "prose_after": "See accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 167,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three",
+     "",
+     "",
+     "For the Three",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative and other operating expenses",
+     "",
+     "101,030",
+     "",
+     "",
+     "19,064",
+     ""
+    ],
+    [
+     "Advertising and marketing",
+     "",
+     "2,147",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "10,212",
+     "",
+     "",
+     "770",
+     ""
+    ],
+    [
+     "Amortization of ROU Assets",
+     "",
+     "59,516",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Management fees",
+     "",
+     "267,581",
+     "",
+     "",
+     "201,591",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "77,942",
+     "",
+     "",
+     "83,308",
+     ""
+    ],
+    [
+     "Rent expense",
+     "",
+     "-",
+     "",
+     "",
+     "49,607",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "42,889",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Wages and salaries",
+     "",
+     "145,329",
+     "",
+     "",
+     "53,476",
+     ""
+    ],
+    [
+     "Travel expenses",
+     "",
+     "29,718",
+     "",
+     "",
+     "7,018",
+     ""
+    ],
+    [
+     "Vehicle expenses",
+     "",
+     "23,953",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liability expense",
+     "",
+     "42,688",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "7,770",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based payments",
+     "",
+     "148,195",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating Expenses",
+     "",
+     "958,970",
+     "",
+     "",
+     "414,834",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss before other items",
+     "",
+     "(958,970)",
+     "",
+     "",
+     "(414,834)",
+     ""
+    ],
+    [
+     "Miscellaneous income",
+     "",
+     "87,172",
+     "",
+     "",
+     "21,574",
+     ""
+    ],
+    [
+     "Interest (expense) income",
+     "",
+     "(810)",
+     "",
+     "",
+     "1,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(872,608)",
+     "",
+     "",
+     "(392,032)",
+     ""
+    ],
+    [
+     "Comprehensive gain (loss) - translation",
+     "",
+     "51,820",
+     "",
+     "",
+     "(4,898)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss and comprehensive loss attributed to shareholders",
+     "$",
+     "(820,788)",
+     "",
+     "$",
+     "(396,930)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "-Basic and diluted",
+     "$",
+     "(0.003)",
+     "",
+     "$",
+     "(0.003)",
+     ""
+    ],
+    [
+     "Weighted average no. of shares of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "-Basic and diluted",
+     "",
+     "296,037,813",
+     "",
+     "",
+     "147,958,345",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 173,
+    "end_line": 217
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "See accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFor the Three Months Ended March 31, 2024 and 2023",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 219,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Par Value",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "",
+     "at $0.0001",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For March 31, 2024",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023",
+     "",
+     "296,037,813",
+     "-",
+     "$",
+     "29,604",
+     "$",
+     "3,438,273",
+     "$",
+     "(3,359,757)",
+     "",
+     "$",
+     "(49,228)",
+     "",
+     "$",
+     "58,892",
+     ""
+    ],
+    [
+     "Stock based payments",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "148,195",
+     "",
+     "(148,195)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss and comprehensive loss",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(724,413)",
+     "",
+     "",
+     "51,820",
+     "",
+     "",
+     "(672,593)",
+     ""
+    ],
+    [
+     "Balance, March 31, 2024",
+     "",
+     "296,037,813",
+     "-",
+     "$",
+     "29,604",
+     "$",
+     "3,586,468",
+     "$",
+     "(4,232,365)",
+     "",
+     "$",
+     "2,592",
+     "",
+     "$",
+     "(613,701)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 227,
+    "end_line": 241
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\nFor the Three Months Ended March 31, 2024 and 2023",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 225,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "Share",
+     "",
+     "",
+     "at $0.0001",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For March 31, 2023",
+     "Shares",
+     "",
+     "Capital",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "50,000",
+     "$",
+     "7,940",
+     "",
+     "$",
+     "-",
+     "-",
+     "$",
+     "(224,419)",
+     "",
+     "$",
+     "(4,853)",
+     "",
+     "$",
+     "(221,332)",
+     ""
+    ],
+    [
+     "Common stock issued in reverse acquisition*",
+     "",
+     "287,140,813",
+     "",
+     "(7,940)",
+     "",
+     "",
+     "28,719",
+     "",
+     "",
+     "(387,386)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(366,607)",
+     ""
+    ],
+    [
+     "Net loss and comprehensive loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "(392,032)",
+     "",
+     "",
+     "(4,898)",
+     "",
+     "",
+     "(396,930)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2023",
+     "",
+     "287,190,813",
+     "$",
+     "-",
+     "",
+     "$",
+     "28,719",
+     "-",
+     "$",
+     "(1,003,837)",
+     "",
+     "$",
+     "(9,751)",
+     "",
+     "$",
+     "(984,869)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Including 71,979,703 shares of common stock issued pursuant to a convertible loan settlement, as disclosed in Note 11.\nSee accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 225,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three",
+     "",
+     "",
+     "For the Three",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(872,608)",
+     "",
+     "$",
+     "(392,032)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "10,212",
+     "",
+     "",
+     "770",
+     ""
+    ],
+    [
+     "ROU amortization",
+     "",
+     "59,516",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "148,195",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest on lease payments",
+     "",
+     "42,688",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in current assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "158,329",
+     "",
+     "",
+     "3,562",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "(7,879)",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "(15,490)",
+     "",
+     "",
+     "6,774",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "38,144",
+     "",
+     "",
+     "400,730",
+     ""
+    ],
+    [
+     "Interest payable",
+     "",
+     "810",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "(124,582)",
+     "",
+     "",
+     "16,993",
+     ""
+    ],
+    [
+     "Other payables",
+     "",
+     "(19,334)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deposits received",
+     "",
+     "(2,289)",
+     "",
+     "",
+     "9,560",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "2,071",
+     "",
+     "",
+     "2,247",
+     ""
+    ],
+    [
+     "Amount due to related parties",
+     "",
+     "185,263",
+     "",
+     "",
+     "352,773",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "(389,075)",
+     "",
+     "",
+     "393,498",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Office equipment",
+     "",
+     "(2,012)",
+     "",
+     "",
+     "(11,885)",
+     ""
+    ],
+    [
+     "Filtration equipment",
+     "",
+     "(23,599)",
+     "",
+     "",
+     "(24,887)",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "-",
+     "",
+     "",
+     "(10,468)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(25,611)",
+     "",
+     "",
+     "(47,240)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from note and interest payable, related party",
+     "",
+     "-",
+     "",
+     "",
+     "19,413",
+     ""
+    ],
+    [
+     "Proceeds from note payable",
+     "",
+     "-",
+     "",
+     "",
+     "67,156",
+     ""
+    ],
+    [
+     "Common stock issued in reverse acquisition",
+     "",
+     "-",
+     "",
+     "",
+     "(366,607)",
+     ""
+    ],
+    [
+     "Lease payments",
+     "",
+     "(85,843)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(85,843)",
+     "",
+     "",
+     "(280,038)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign exchange on cash",
+     "",
+     "52,750",
+     "",
+     "",
+     "(5,519)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash",
+     "",
+     "(447,779)",
+     "",
+     "",
+     "60,701",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "847,724",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "399,945",
+     "",
+     "$",
+     "60,701",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 267,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "* Including 71,979,703 shares of common stock issued pursuant to a convertible loan settlement, as disclosed in Note 11.\nSee accompanying notes to the unaudited interim consolidated financial statements.\nCONSOLIDATED INTERIM STATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to the unaudited interim consolidated financial statements.\nNOTES TO THE INTERIM CONSOLIDATED FINANCIAL STATEMENTS\nMarch 31, 2024\n1. Organization and Nature of Operations\nSustainable Projects Group Inc. (the \u201cCompany\u201d) was incorporated in the State of Nevada, USA on September 4, 2009 as Blue Spa Incorporated. On December 19, 2016, the Company amended its name from \u201cBlue Spa Incorporated\u201d to \u201cSustainable Petroleum Group Inc.\u201d On September 6, 2017, the Company obtained a majority vote from its shareholders to amend the Company\u2019s name from \u201cSustainable Petroleum Group Inc.\u201d to \u201cSustainable Projects Group Inc.\u201d to better reflect its business at the time. The name change was effective on October 20, 2017. Prior to the Exchange Transaction (as defined below), the Company was a multinational business development company that pursued investments and partnerships with companies across sustainable sectors. The Company also was involved in consulting services and collaborative partnerships.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 265,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three",
+     "",
+     "For the Year",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "Ended",
+     ""
+    ],
+    [
+     "",
+     "March 31,\n\n\n\n2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and miscellaneous income",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sustainable Projects Group",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "YER Brands",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Lithium Harvest",
+     "",
+     "87,172",
+     "",
+     "251,089"
+    ],
+    [
+     "Total Sales",
+     "$",
+     "87,172",
+     "$",
+     "251,089"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sustainable Projects Group",
+     "$",
+     "3,730",
+     "$",
+     "6,090"
+    ],
+    [
+     "YER Brands",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Lithium Harvest",
+     "",
+     "2,389,627",
+     "",
+     "3,063,514"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2,393,357",
+     "$",
+     "3,069,604"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 404,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of accounting policies"
+    }
+   },
+   "prose_before": "The preparation of the consolidated interim financial statements in conformity with GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Management makes its best estimate of the ultimate outcome for these items based on historical trends and other information available when the financial statements are prepared. Changes in estimates are recognized in accordance with the accounting rules for the estimate, which is typically in the period when new information becomes available to management. Actual results could differ from those estimates.\nSegment Reporting\nThe Company reports segment information based on the \u201cmanagement\u201d approach. The management approach designates the internal reporting used by management for making decisions and assessing performance of its various businesses on a corporation-wide basis. As of March 31, 2024, the Company has three reportable segments: YER Brands, Sustainable Projects Group and Lithium Harvest. The segments are determined based on several factors including the nature of products and services, nature of production processes and delivery channels and consultancy services. Each operating segment\u2019s performance is evaluated based on its segment income. Segment income is defined as gross sales and miscellaneous income. For the three months ended March 31, 2024 and the year ended December 31, 2023, segment income and total assets were reported as follows:\nSchedule of Segment Reporting",
+   "prose_after": "Revenue Recognition\nThe Company adopted Accounting Standards Codification (\u201cASC\u201d) 606, \u201cRevenue from Contracts with Customers\u201d (\u201cASC 606\u201d). The Company recognizes revenue when the Company transfers promised services to the customer. The performance obligation is the monthly services rendered. The Company has one main revenue source at the moment from Lithium Harvest, which is sub-leasing office space with and/or without furniture. Accordingly, the Company recognizes revenue when services are provided. This revenue is billed in advance, arrears and/or is prepaid. The performance obligation is the monthly services rendered. Where there is a sub-leasing contract for office space with and/or without furniture, the Company bills monthly for its services as rendered. Where there is no contract, the revenue is recognized when received.\nThe Company recognizes revenue in accordance with ASC 606 using the following five steps to identify revenues:\n\u25cf identify the contract with a customer;\n\u25cf identify the performance obligations in the contract;",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of March 31, 2024",
+     "Cost",
+     "",
+     "Depreciation",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer",
+     "$",
+     "23,354",
+     "$",
+     "9,870",
+     "$",
+     "13,484"
+    ],
+    [
+     "Equipment",
+     "",
+     "5,000",
+     "",
+     "5,000",
+     "",
+     "-"
+    ],
+    [
+     "Office Furniture & Equipment",
+     "",
+     "93,108",
+     "",
+     "33,410",
+     "",
+     "59,698"
+    ],
+    [
+     "Machinery under construction",
+     "",
+     "44,326",
+     "",
+     "-",
+     "",
+     "44,326"
+    ],
+    [
+     "",
+     "$",
+     "165,788",
+     "$",
+     "48,280",
+     "$",
+     "117,508"
+    ],
+    [
+     "As of December 31, 2023",
+     "Cost",
+     "",
+     "Depreciation",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer",
+     "$",
+     "21,088",
+     "$",
+     "8,461",
+     "$",
+     "12,627"
+    ],
+    [
+     "Equipment",
+     "",
+     "5,000",
+     "",
+     "5,000",
+     "",
+     "-"
+    ],
+    [
+     "Office Furniture & Equipment",
+     "",
+     "95,320",
+     "",
+     "26,260",
+     "",
+     "69,060"
+    ],
+    [
+     "Machinery under construction",
+     "",
+     "21,220",
+     "",
+     "-",
+     "",
+     "21,220"
+    ],
+    [
+     "",
+     "$",
+     "142,628",
+     "$",
+     "39,721",
+     "$",
+     "102,907"
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 473,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Equipment"
+    }
+   },
+   "prose_before": "The Company uses the asset and liability method of accounting for income taxes in accordance with ASC 740, \u201cIncome Taxes\u201d (\u201cASC 740\u201d). Under this method, income tax expense is recognized as the amount of: (i) taxes payable or refundable for the current year and (ii) future tax consequences attributable to differences between financial statement carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in the results of operations in the period that includes the enactment date. A valuation allowance is provided to reduce the deferred tax assets reported if based on the weight of available evidence it is more likely than not that some portion or all of the deferred tax assets will not be realized.\nRecently issued accounting pronouncements\nThe Company adopts new pronouncements relating to GAAP applicable to the Company as they are issued, which may be in advance of their effective date. Management does not believe that any pronouncements not included above will have a material effect on the Company\u2019s consolidated financial statements.\n4. Other Receivables/Payables\nOther receivables/payables pertain to VAT (value added taxes) receivables/payables of Lithium Harvest. The standard VAT rate in Denmark is 25%.\n5. Equipment\nEquipment as of March 31, 2024 and December 31, 2023 is summarized as follows:\nSchedule of Equipment",
+   "prose_after": "Machinery under construction has not been depreciated as it is not yet available for use.\n6. Reverse Acquisition\nOn February 14, 2023, the Company entered into the Agreement with Lithium Harvest and all the Shareholders. Pursuant to the Agreement, the Company acquired all outstanding shares of capital stock of Lithium Harvest in exchange for issuing to the Shareholders 206,667,233 shares of the Company\u2019s common stock. The lender of a convertible note payable exercised its conversion feature and received 71,797,703 shares of common stock in exchange for its debt and interest. The Exchange Transaction represents a change of control and was accounted for as a reverse acquisition with Lithium Harvest being the accounting acquirer and the Company being the accounting acquiree. As a result of the Exchange Transaction, the number of shares of common stock outstanding increased to 287,190,813. The purchase price of Lithium Harvest was valued at $10,333,362 using the fair market value of the Company\u2019s common stock price on the date of the Exchange Transaction, February 14, 2023.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of March 31, 2024",
+     "Cost",
+     "",
+     "Depreciation",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent - Denmark",
+     "$",
+     "35,132",
+     "$",
+     "3,909",
+     "$",
+     "31,223"
+    ],
+    [
+     "As of December 31, 2023",
+     "Cost",
+     "",
+     "Depreciation",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent - Denmark",
+     "$",
+     "35,967",
+     "$",
+     "3,064",
+     "$",
+     "32,903"
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "On February 14, 2023, the Company entered into the Agreement with Lithium Harvest and all the Shareholders. Pursuant to the Agreement, the Company acquired all outstanding shares of capital stock of Lithium Harvest in exchange for issuing to the Shareholders 206,667,233 shares of the Company\u2019s common stock. The lender of a convertible note payable exercised its conversion feature and received 71,797,703 shares of common stock in exchange for its debt and interest. The Exchange Transaction represents a change of control and was accounted for as a reverse acquisition with Lithium Harvest being the accounting acquirer and the Company being the accounting acquiree. As a result of the Exchange Transaction, the number of shares of common stock outstanding increased to 287,190,813. The purchase price of Lithium Harvest was valued at $10,333,362 using the fair market value of the Company\u2019s common stock price on the date of the Exchange Transaction, February 14, 2023.\n7. Intangible Assets\nIntangible assets as of March 31, 2024 and December 31, 2023 are summarized as follows:\nSummary of Intangible Assets",
+   "prose_after": "8. Accounts Payable and Accrued Liabilities\nAccounts payable and accrued liabilities as of March 31, 2024 and December 31, 2023 are summarized as follows:\nSchedule of Accounts Payable and Accrued Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Accounts Payable:",
+     "Mar 31, 2024",
+     "",
+     "Dec 31, 2023",
+     ""
+    ],
+    [
+     "Accounting fee",
+     "$",
+     "31,346",
+     "$",
+     "25,597"
+    ],
+    [
+     "Audit fee",
+     "",
+     "50,750",
+     "",
+     "750"
+    ],
+    [
+     "Consulting fee",
+     "",
+     "73,266",
+     "",
+     "73,266"
+    ],
+    [
+     "Purchase of property, plant and equipment",
+     "",
+     "29,171",
+     "",
+     "-"
+    ],
+    [
+     "Rental expenses",
+     "",
+     "63,992",
+     "",
+     "63,992"
+    ],
+    [
+     "Professional fees",
+     "",
+     "129,435",
+     "",
+     "176,767"
+    ],
+    [
+     "Others",
+     "",
+     "71,750",
+     "",
+     "42,330"
+    ],
+    [
+     "Accounts payable Total",
+     "$",
+     "449,710",
+     "$",
+     "382,702"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 529,
+    "end_line": 543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Accounts Payable and Accrued Liabilities"
+    }
+   },
+   "prose_before": "8. Accounts Payable and Accrued Liabilities\nAccounts payable and accrued liabilities as of March 31, 2024 and December 31, 2023 are summarized as follows:\nSchedule of Accounts Payable and Accrued Liabilities",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Accrued liabilities:",
+     "Mar 31, 2024",
+     "",
+     "Dec 31, 2023",
+     ""
+    ],
+    [
+     "Professional fees",
+     "$",
+     "11,000",
+     "$",
+     "-"
+    ],
+    [
+     "Audit fees",
+     "",
+     "26,589",
+     "",
+     "67,250"
+    ],
+    [
+     "General and Administrative",
+     "",
+     "797",
+     "",
+     "-"
+    ],
+    [
+     "Accrued Liabilities Total",
+     "$",
+     "38,386",
+     "$",
+     "67,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 544,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Accounts Payable and Accrued Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "9. Right of Use Assets and Lease Liability\nThe Company has entered into lease agreements with various third parties. The terms of the Company\u2019s operating leases range from 12 to 94 months. These operating leases are included in \u201cRight of Use Assets\u201d on the Company\u2019s Consolidated Interim Balance Sheets and represent the Company\u2019s right to use the underlying asset for the lease term. The Company\u2019s obligation to make lease payments is included in \u201cLease liability\u201d on the Company\u2019s Consolidated Interim Balance Sheets. Additionally, the Company has entered into various short-term operating leases with an initial term of 12 months or less. These leases are not recorded on the Company\u2019s Consolidated Interim Balance Sheets. All operating lease expense is recognized on a straight-line basis over the lease term.\nSchedule of Operating Lease Right and Lease Liability",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use asset, net",
+     "$",
+     "1,589,453",
+     "",
+     "$",
+     "1,688,003",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current lease liability",
+     "$",
+     "184,135",
+     "",
+     "$",
+     "183,913",
+     ""
+    ],
+    [
+     "Non-current lease liability",
+     "",
+     "1,475,858",
+     "",
+     "",
+     "1,559,818",
+     ""
+    ],
+    [
+     "Total lease liability",
+     "$",
+     "1,659,993",
+     "",
+     "$",
+     "1,743,731",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remaining lease term and discount rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term",
+     "",
+     "81 months",
+     "",
+     "",
+     "84 months",
+     ""
+    ],
+    [
+     "Discount rate used",
+     "",
+     "10",
+     "%",
+     "",
+     "10",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Right of Use Assets and Lease Liability"
+    }
+   },
+   "prose_before": "9. Right of Use Assets and Lease Liability\nThe Company has entered into lease agreements with various third parties. The terms of the Company\u2019s operating leases range from 12 to 94 months. These operating leases are included in \u201cRight of Use Assets\u201d on the Company\u2019s Consolidated Interim Balance Sheets and represent the Company\u2019s right to use the underlying asset for the lease term. The Company\u2019s obligation to make lease payments is included in \u201cLease liability\u201d on the Company\u2019s Consolidated Interim Balance Sheets. Additionally, the Company has entered into various short-term operating leases with an initial term of 12 months or less. These leases are not recorded on the Company\u2019s Consolidated Interim Balance Sheets. All operating lease expense is recognized on a straight-line basis over the lease term.\nSchedule of Operating Lease Right and Lease Liability",
+   "prose_after": "Commitments\nThe following table summarizes the future minimum lease payments due under the Company\u2019s operating leases as of March 31, 2024:\nSchedule of Future Minimum Lease Payments",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Remainder of 2024",
+     "$",
+     "257,529",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "2,050,829",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "(648,365)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,659,993",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Right of Use Assets and Lease Liability"
+    }
+   },
+   "prose_before": "Commitments\nThe following table summarizes the future minimum lease payments due under the Company\u2019s operating leases as of March 31, 2024:\nSchedule of Future Minimum Lease Payments",
+   "prose_after": "10. Notes Payable, Convertible Notes Payable and Obligation to Issue Shares\nOn March 1, 2019, the Company entered into an unsecured loan agreement for $50,000 with an interest rate of 3.5% per annum. The loan was originally due on or before April 15, 2022. On March 28, 2022, the term of the loan agreement was extended to April 15, 2024. At March 31, 2024, there was $8,899 (March 31, 2023 - $7,144) in accrued interest under the loan. As of the date of this report, the loan is in default. The Company is negotiating new terms.\nOn July 23, 2021, the Company borrowed $100,000 pursuant to a two-year unsecured convertible promissory note, bearing interest at 10% per annum. The loan could be renewed at the option of the lender and was secured by a security agreement with collateral consisting of the Company\u2019s present and future assets. The outstanding principal and unpaid accrued interest would automatically convert into shares of the Company\u2019s common stock on or before the maturity date upon the closing of a \u201cQualified Transaction\u201d in an amount equal to 25% of the fully diluted capitalization of the Company on a post-money basis. In the event that a Qualified Transaction was not consummated on or prior to the maturity date, the lender had the right to convert the principal and unpaid accrued interest of the note into shares of the Company\u2019s common stock in an amount equal to 25% of the fully diluted capitalization of the Company. A Qualified Transaction is defined as the reverse acquisition of the Company with a target company. On June 22, 2022, the Company received an additional loan advance of $25,000. On February 14, 2023, the lender exercised the convertible feature of the debt, and the outstanding principal and accrued interest under the loan was converted into 71,797,703 shares of common stock valued at a total amount of $3,589,885.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Mar 31, 2024",
+     "",
+     "Dec 31, 2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "260,290",
+     "$",
+     "205,558"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "427,370",
+     "",
+     "296,839"
+    ],
+    [
+     "Total",
+     "$",
+     "687,660",
+     "$",
+     "502,397"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 625,
+    "end_line": 635
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Related Party transactions"
+    }
+   },
+   "prose_before": "a) On February 14, 2023, 206,667,233 shares of common stock valued at $10,333,362 were issued to the shareholders of Lithium Harvest pursuant to the Agreement with Lithium Harvest with respect to the Exchange Transaction.\nb) On February 14, 2023, 71,979,703 shares of common stock valued at $3,589,885 were issued to a lender pursuant to a convertible loan settlement in connection with the Exchange Transaction.\nc) On August 18, 2023, 1,500,000 shares of common stock valued at $375,000 were issued to an investor pursuant to a private placement subscription at $0.25 per share.\nd) On August 18, 2023, an aggregate of 4,006,000 shares of common stock valued at $1,402,100 were issued to investors pursuant to private placement subscriptions at $0.35 per share.\ne) On December 22, 2023, an aggregate of 3,341,000 shares of common stock valued at $1,169,350 were issued to investors pursuant to private placement subscriptions at $0.35 per share.\nAs of December 31, 2023, the Company had 296,037,813 shares of common stock issued and outstanding.\n12. Related Party transactions\nRelated party transactions as of March 31, 2024 and December 31, 2023 are summarized as follows:\nSchedule of Related Party Transaction",
+   "prose_after": "Stefan Muehlbauer resigned as a director on February 14, 2023 and is currently the Chief Financial Officer (\u201cCFO\u201d). During the three months ended March 31, 2024, the Company incurred management fees to the CFO totaling an aggregate of $31,250 (March 31, 2023 - $15,625). At March 31, 2024, $140,875 (March 31, 2023 - $110,465) was owing to the CFO for management fees, both current and past due, and $2,742 (March 31, 2023 - $1,180) for reimbursement of out of pocket expenses. The Company entered into an Employment Agreement with the CFO on February 14, 2023. His annual salary is $125,000, payable on a monthly basis with other benefits. The employment agreement is for a period of one year and at such time, the CFO will be eligible to receive a one-time, lump sum bonus of $25,000, subject to other conditions and terms. The Company is currently re-negotiating a new employment agreement with Mr. Muehlbauer.\nOn February 14, 2023, Tiffany Muehlbauer resigned as Chief Technology Officer. At March 31, 2024, $12,766 (March 31, 2023 - $12,766) was owing to the prior officer for past due salaries and $25,500 (March 31, 2023 - $25,500) for management fees.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 637,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Vesting Schedule (Number of Shares)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Title",
+     "Total RSUs",
+     "",
+     "May 10, 2024",
+     "",
+     "May 10, 2025",
+     "",
+     "May 10, 2026",
+     ""
+    ],
+    [
+     "Sune Mathiesen",
+     "CEO, Director",
+     "",
+     "6,111,111",
+     "",
+     "2,037,037",
+     "",
+     "2,037,037",
+     "",
+     "2,037,037"
+    ],
+    [
+     "Paw Juul",
+     "CTO, Director",
+     "",
+     "5,625,000",
+     "",
+     "1,875,000",
+     "",
+     "1,875,000",
+     "",
+     "1,875,000"
+    ],
+    [
+     "Stefan Muehlbauer",
+     "CFO, Secretary",
+     "",
+     "1,736,111",
+     "",
+     "578,704",
+     "",
+     "578,704",
+     "",
+     "578,703"
+    ],
+    [
+     "Kristian Jensen",
+     "Director",
+     "",
+     "1,458,333",
+     "",
+     "486,111",
+     "",
+     "486,111",
+     "",
+     "486,111"
+    ],
+    [
+     "Restricted stock award shares",
+     "",
+     "",
+     "-",
+     "",
+     "4,976,852",
+     "",
+     "4,976,852",
+     "",
+     "4,976,851"
+    ]
+   ],
+   "caption_stack": [
+    "Vesting Schedule (Number of Shares)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "On May 10, 2023, the Company granted restricted stock unit (\u201cRSU\u201d) awards to certain key employees and directors under the Company\u2019s 2023 Equity Incentive Plan (the \u201cIncentive Plan\u201d). The settlement of these RSU awards is subject to stockholder approval. The Company is authorized to grant options and other stock-based awards to executive officers, directors, employees and consultants enabling them to acquire up to 45,000,000 shares of common stock of the Company. The exercise price of each option equals the market price of the Company\u2019s shares of common stock as calculated on the date of the grant. The maximum term and/or vesting period shall not be more than ten years from the grant date. The vesting period for all options is at the discretion of the board of directors of the Company and shall not be more than ten years from the grant date. The options are non-transferable.\nRestricted stock and RSU awards are subject to vesting spread over time at the discretion of the committee administering the Incentive Plan. Upon the vesting of RSUs and the Company\u2019s determination that any necessary conditions precedent to the release of vested shares have been satisfied, such vested shares will then be made available to the participants. Except as otherwise provided in the Incentive Plan or award agreement, the participants with a restricted stock award shall have all the rights of a stockholder, including the right to vote the shares of restricted stock. The RSU awards granted on May 10, 2023 provide that the recipients do not have rights of a stockholder prior to vesting. The fair value of the Company\u2019s common stock on the grant date was $0.072 per share. At March 31, 2024, the stock based compensation expense was $640,902.\nThe table below sets forth the vesting schedule with respect to the RSUs granted on May 10, 2023.\nSummary of Restricted Stock Award Activity",
+   "prose_after": "On February 1, 2024, the Company received the resignation of Kristian Jensen as director. In accordance with the Incentive Plan, the unvested RSU award granted to Mr. Jensen in the amount of 1,458,333 units was forfeited. Below is the updated vesting schedule as at March 31, 2024:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Vesting Schedule (Number of Shares)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Title",
+     "Total RSUs",
+     "",
+     "May 10, 2024",
+     "",
+     "May 10, 2025",
+     "",
+     "May 10, 2026",
+     ""
+    ],
+    [
+     "Sune Mathiesen",
+     "CEO, Director",
+     "",
+     "6,111,111",
+     "",
+     "2,037,037",
+     "",
+     "2,037,037",
+     "",
+     "2,037,037"
+    ],
+    [
+     "Paw Juul",
+     "CTO, Director",
+     "",
+     "5,625,000",
+     "",
+     "1,875,000",
+     "",
+     "1,875,000",
+     "",
+     "1,875,000"
+    ],
+    [
+     "Stefan Muehlbauer",
+     "CFO, Secretary",
+     "",
+     "1,736,111",
+     "",
+     "578,704",
+     "",
+     "578,704",
+     "",
+     "578,703"
+    ],
+    [
+     "Restricted stock award shares",
+     "",
+     "",
+     "13,472,222",
+     "",
+     "4,490,741",
+     "",
+     "4,490,741",
+     "",
+     "4,490,740"
+    ]
+   ],
+   "caption_stack": [
+    "Vesting Schedule (Number of Shares)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "On February 1, 2024, the Company received the resignation of Kristian Jensen as director. In accordance with the Incentive Plan, the unvested RSU award granted to Mr. Jensen in the amount of 1,458,333 units was forfeited. Below is the updated vesting schedule as at March 31, 2024:",
+   "prose_after": "14. Commitments and Contingencies\nAt March 31, 2024, there were no commitments or contingencies to report other than what has been disclosed in this report.\n15. Income Taxes\nThe Company and its subsidiaries file separate income tax returns.\nThe Company files income tax returns in the United States of America and in the States of Florida and Indiana for Sustainable Projects Group Inc. and YER Brands Inc., respectively, and is subject to a U.S. federal corporate income tax rate of 21%. The Company generated a taxable loss for the three months ended March 31, 2024 and 2023. Lithium Harvest is subject to a Danish corporate income tax rate of 22%.\n16. Legal Matters\nThe Company has no known legal issues pending.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation\nCautionary Language Regarding Forward-Looking Statements and Industry Data\nThis report contains \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995 that involve risks and uncertainties, many of which are beyond our control. Our actual results could differ materially and adversely from those anticipated in such forward-looking statements as a result of certain factors, including those set forth in this report. Important factors that may cause actual results to differ from projections include, but are not limited to:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three",
+     "",
+     "",
+     "For the Three",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative and other operating expenses",
+     "",
+     "101,030",
+     "",
+     "",
+     "19,064",
+     ""
+    ],
+    [
+     "Advertising and marketing",
+     "",
+     "2,147",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "10,212",
+     "",
+     "",
+     "770",
+     ""
+    ],
+    [
+     "Amortization of ROU Assets",
+     "",
+     "59,516",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Management fees",
+     "",
+     "267,581",
+     "",
+     "",
+     "201,591",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "77,942",
+     "",
+     "",
+     "83,308",
+     ""
+    ],
+    [
+     "Rent expense",
+     "",
+     "-",
+     "",
+     "",
+     "49,607",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "42,889",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Wages and salaries",
+     "",
+     "145,329",
+     "",
+     "",
+     "53,476",
+     ""
+    ],
+    [
+     "Travel expenses",
+     "",
+     "29,718",
+     "",
+     "",
+     "7,018",
+     ""
+    ],
+    [
+     "Vehicle expenses",
+     "",
+     "23,953",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liability expense",
+     "",
+     "42,688",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "7,770",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based payments",
+     "",
+     "148,195",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "958,970",
+     "",
+     "",
+     "414,834",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss before other items",
+     "",
+     "(958,970)",
+     "",
+     "",
+     "(414,834)",
+     ""
+    ],
+    [
+     "Miscellaneous income",
+     "",
+     "87,172",
+     "",
+     "",
+     "21,574",
+     ""
+    ],
+    [
+     "Interest (expense) income",
+     "",
+     "(810)",
+     "",
+     "",
+     "1,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(872,608)",
+     "",
+     "",
+     "(392,032)",
+     ""
+    ],
+    [
+     "Comprehensive gain (loss) - translation",
+     "",
+     "51,820",
+     "",
+     "",
+     "(4,898)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss and comprehensive loss attributed to shareholders",
+     "$",
+     "(820,788)",
+     "",
+     "$",
+     "(396,930)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "-Basic and diluted",
+     "$",
+     "(0.003)",
+     "",
+     "$",
+     "(0.003)",
+     ""
+    ],
+    [
+     "Weighted average no. of shares of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "-Basic and diluted",
+     "",
+     "296,037,813",
+     "",
+     "",
+     "147,958,345",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Legal Matters"
+    }
+   },
+   "prose_before": "On February 14, 2023, we entered into a Securities Exchange Agreement (the \u201cAgreement\u201d) with Lithium Harvest ApS, a Denmark private limited liability company (\u201cLithium Harvest\u201d), and all of the shareholders of Lithium Harvest (the \u201cShareholders\u201d). Pursuant to the terms of the Agreement, we acquired all of the outstanding shares of capital stock of Lithium Harvest in exchange for issuing to the Shareholders 206,667,233 shares of our common stock (the \u201cExchange Transaction\u201d). The Exchange Transaction closed on February 14, 2023.\nPrior to the Exchange Transaction, we were a business development company engaged in project development and holdings through value-based investments and collaborative partnerships, including a joint venture relationship with Hero Wellness Systems Inc. (\u201cHero Wellness\u201d) and a purchase agreement with the inventors of the Soy-yer Dough product line. During September 2022, we decided to exit the joint venture with Hero Wellness, and following the Exchange Transaction, we have not made final plans on the Soy-yer Dough project. We impaired our intangible assets associated with this project as of December 31, 2021.\nCONSOLIDATED INTERIM STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "Results of Operations\nQuarter Ended March 31, 2024 Compared to the Quarter Ended March 31, 2023\nOperating Expenses. The Company\u2019s operating expenses during the three months ended March 31, 2024 were $958,970 as compared to $414,834 for the same time period of the prior fiscal year. The increase in operating expenses can be primarily attributed to the expansion of business activities following the reverse acquisition of Lithium Harvest. The most significant cost drivers are related to stock based payments, which increased from $0 in the first quarter of 2023 to $148,195 during the first quarter of 2024. As disclosed above, the stock based compensation in the form of RSUs requires stockholder approval prior to settlement. Additionally, the increase in operating expenses was affected by a significant increase in wages and salaries, which increased to $145,329 for the three months ended March 31, 2024 as compared to $53,476 in the corresponding quarter for the year 2023. The third major driver of operating expenses was increased administrative and other operating expenses, which increased from $19,064 for the quarter ending March 31, 2023 to $101,030 during the quarter ending March 31, 2024. This increase in cost is largely attributed to expansion of our operating activities. Additionally, management fees increased from $201,591 for the quarter ended March 31, 2023 to $267,581 for the quarter ended March 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 750,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Description"
+    ],
+    [
+     "2.1",
+     "",
+     "Securities Exchange Agreement, among the Company, Lithium Harvest ApS and, for certain limited purposes, its shareholders, dated as of February 14, 2023, incorporated herein by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed February 14, 2023."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation and Certificate of Amendment, dated September 4, 2009, incorporated herein by reference to Exhibit 3.1 to the Company\u2019s registration statement on Form S-1 filed on September 13, 2010."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "By-Laws, incorporated herein by reference to Exhibit 3.2 to the Company\u2019s registration statement on Form S-1 filed on September 13, 2010."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Amendment to Articles of Incorporation, dated August 16, 2010, incorporated herein by reference to Exhibit 3.3 to the Company\u2019s registration statement on Form S-1 filed on September 13, 2010."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "",
+     "Certificate of Amendment to Articles of Incorporation, dated November 9, 2016, incorporated herein by reference to Exhibit 3.4 to the Company\u2019s Current Report on Form 8-K filed December 19, 2016."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "",
+     "Certificate of Amendment to Articles of Incorporation, dated October 18, 2017 incorporated herein by reference to Exhibit 3.5 to the Company\u2019s Current Report on Form 8-K filed October 26, 2017."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of principal executive officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) of the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of principal financial officer pursuant to Rule 13a-14(a) and Rule 15d-14(a) of the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of principal executive officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of principal financial officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101",
+     "",
+     "The following information from the quarterly report on Form 10-Q of Sustainable Projects Group Inc. for the period ended March 31, 2024, formatted in Inline XBRL: (i) the Consolidated Interim Balance Sheets, (ii) the Consolidated Interim Statements of Operations and Comprehensive Loss; (iii) the Consolidated Interim Statements of Stockholders\u2019 Deficit, (iv) the Consolidated Interim Statements of Cash Flows, (v) the Notes to Consolidated Unaudited Interim Financial Statements and (vi) the information in Part II, Item 5."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 955,
+    "end_line": 990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Legal Matters"
+    }
+   },
+   "prose_before": "None.\nItem 3. Defaults Upon Senior Securities.\nNone.\nItem 4. Mining Safety Disclosures.\nThere are no current mining activities at the date of this report.\nItem 5. Other Information.\nDuring the three months ended March 31, 2024, none of our directors or officers (as defined in Rule 16a-1(f) of the Exchange Act) adopted, modified or terminated any contract, instruction or written plan for the purchase or sale of our securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) of the Exchange Act or any non-Rule 10b5-1 trading arrangement (as defined in the SEC\u2019s rules).\nItem 6. Exhibits\nIndex to and Description of Exhibits\nThe exhibits listed in the following exhibit index are filed as part of this report.",
+   "prose_after": "Signatures\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sustainable projects Group Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 10, 2024",
+     "By:",
+     "/s/ Sune Mathiesen"
+    ],
+    [
+     "",
+     "Name:",
+     "Sune Mathiesen"
+    ],
+    [
+     "",
+     "Title:",
+     "President & Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 10, 2024",
+     "By:",
+     "/s/ Stefan Muehlbauer"
+    ],
+    [
+     "",
+     "Name:",
+     "Stefan Muehlbauer"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Sustainable projects Group Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1011
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Legal Matters"
+    }
+   },
+   "prose_before": "Signatures\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

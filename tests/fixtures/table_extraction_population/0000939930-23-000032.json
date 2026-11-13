@@ -1,0 +1,8621 @@
+{
+ "accession": "0000939930-23-000032",
+ "cik": "0000939930",
+ "form": "10-Q",
+ "filing_date": "2023-02-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "pyx-20221231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.39999999999999997,
+   "rows": [
+    [
+     "000-25734"
+    ],
+    [
+     "(Commission File Number)"
+    ]
+   ],
+   "caption_stack": [
+    "000-25734",
+    "(Commission File Number)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 14
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE QUARTERLY PERIOD ENDED December 31, 2022.\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM _______ TO _______.",
+   "prose_after": "Pyxus International, Inc.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Virginia",
+     "",
+     "85-2386250"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "8001 Aerial Center Parkway",
+     "",
+     ""
+    ],
+    [
+     "Morrisville,",
+     "North Carolina",
+     "27560"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Pyxus International, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(919) 379-4300\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Table of Contents",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "Part I.",
+     "Financial Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Financial Statements (Unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Operations",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Comprehensive Income (Loss)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Balance Sheets",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Stockholders\u2019 Equity",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Cash Flows",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "9"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "27"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "37"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Controls and Procedures",
+     "37"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II.",
+     "Other Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Legal Proceedings",
+     "37"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "37"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Exhibits",
+     "38"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signature",
+     "",
+     "",
+     "39"
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries",
+    "Table of Contents",
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 60,
+    "end_line": 84
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]\nNon-accelerated filer [X]\nAccelerated filer [ ]\nSmaller reporting company [X]\nEmerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate by check mark if the registrant has filed all documents and reports required to be filed under Sections 12, 13, or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes [X] No [ ]\nAs of January 31, 2023, the registrant had 24,999,947 shares outstanding of Common Stock (no par value).",
+   "prose_after": "2\nPart I. Financial Information\nItem 1. Financial Statements\n<TABLE>\nPyxus International, Inc. and Subsidiaries\nCondensed Consolidated Statements of Operations\n---------------------------------------------------------------------------------------------------------------\n(Unaudited)\nThree Months Ended        Nine Months Ended\nDecember 31,              December 31,",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "655,553",
+     "$",
+     "428,942",
+     "$",
+     "1,507,736",
+     "$",
+     "1,156,433"
+    ],
+    [
+     "Cost of goods and services sold",
+     "567,752",
+     "",
+     "363,716",
+     "",
+     "1,311,861",
+     "",
+     "997,033",
+     ""
+    ],
+    [
+     "Gross profit",
+     "87,801",
+     "",
+     "65,226",
+     "",
+     "195,875",
+     "",
+     "159,400",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "37,119",
+     "",
+     "34,235",
+     "",
+     "106,694",
+     "",
+     "106,005",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "9,040",
+     "",
+     "(163)",
+     "",
+     "9,106",
+     "",
+     "1,491",
+     ""
+    ],
+    [
+     "Restructuring and asset impairment charges",
+     "35",
+     "",
+     "560",
+     "",
+     "4,380",
+     "",
+     "7,652",
+     ""
+    ],
+    [
+     "Goodwill impairment",
+     "\u2014",
+     "",
+     "372",
+     "",
+     "\u2014",
+     "",
+     "372",
+     ""
+    ],
+    [
+     "Operating income",
+     "41,607",
+     "",
+     "30,222",
+     "",
+     "75,695",
+     "",
+     "43,880",
+     ""
+    ],
+    [
+     "Loss on deconsolidation/disposition of subsidiaries",
+     "\u2014",
+     "",
+     "7,069",
+     "",
+     "648",
+     "",
+     "9,525",
+     ""
+    ],
+    [
+     "Loss on pension settlement",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,588",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "31,361",
+     "",
+     "27,503",
+     "",
+     "85,649",
+     "",
+     "82,820",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes and other items",
+     "10,246",
+     "",
+     "(4,350)",
+     "",
+     "(13,190)",
+     "",
+     "(48,465)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "17,887",
+     "",
+     "31,809",
+     "",
+     "15,810",
+     "",
+     "9,242",
+     ""
+    ],
+    [
+     "Income from unconsolidated affiliates",
+     "5,404",
+     "",
+     "6,102",
+     "",
+     "10,708",
+     "",
+     "5,999",
+     ""
+    ],
+    [
+     "Net loss",
+     "(2,237)",
+     "",
+     "(30,057)",
+     "",
+     "(18,292)",
+     "",
+     "(51,708)",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to noncontrolling interests",
+     "96",
+     "",
+     "43",
+     "",
+     "241",
+     "",
+     "(419)",
+     ""
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "$",
+     "(2,333)",
+     "$",
+     "(30,100)",
+     "$",
+     "(18,533)",
+     "$",
+     "(51,289)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.09)",
+     "$",
+     "(1.20)",
+     "$",
+     "(0.74)",
+     "$",
+     "(2.05)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "25,000",
+     "",
+     "25,000",
+     "",
+     "25,000",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See \"Notes to Condensed Consolidated Financial Statements\"",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries",
+    "Condensed Consolidated Statements of Operations",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Comprehensive Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,237)",
+     "$",
+     "(30,057)",
+     "$",
+     "(18,292)",
+     "$",
+     "(51,708)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "4,855",
+     "",
+     "(1,753)",
+     "",
+     "1,001",
+     "",
+     "(2,655)",
+     ""
+    ],
+    [
+     "Pension and other postretirement benefit plans",
+     "(78)",
+     "",
+     "\u2014",
+     "",
+     "(1,640)",
+     "",
+     "(512)",
+     ""
+    ],
+    [
+     "Change in pension liability for settlements",
+     "\u2014",
+     "",
+     "(35)",
+     "",
+     "\u2014",
+     "",
+     "(35)",
+     ""
+    ],
+    [
+     "Cash flow hedges",
+     "(371)",
+     "",
+     "(1,550)",
+     "",
+     "(3,642)",
+     "",
+     "(118)",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss), net of tax",
+     "4,406",
+     "",
+     "(3,338)",
+     "",
+     "(4,281)",
+     "",
+     "(3,320)",
+     ""
+    ],
+    [
+     "Total comprehensive income (loss)",
+     "2,169",
+     "",
+     "(33,395)",
+     "",
+     "(22,573)",
+     "",
+     "(55,028)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to noncontrolling interests",
+     "96",
+     "",
+     "43",
+     "",
+     "241",
+     "",
+     "(419)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to Pyxus International, Inc.",
+     "$",
+     "2,073",
+     "$",
+     "(33,438)",
+     "$",
+     "(22,814)",
+     "$",
+     "(54,609)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See \"Notes to Condensed Consolidated Financial Statements\"",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries",
+    "Condensed Consolidated Statements of Comprehensive Income (Loss)",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 137,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Net income (loss) attributable to noncontrolling interests          96           43           241         (419)\n----------  -----------  --------------------------\nNet loss attributable to Pyxus International, Inc.           $ (2,333)   $ (30,100)    $ (18,533)    $ (51,289)\n----------  -----------  ------------  ------------\nLoss per share:\nBasic and diluted                                             $ (0.09)     $ (1.20)      $ (0.74)      $ (2.05)\nWeighted average number of shares outstanding:\nBasic and diluted                                               25,000       25,000        25,000        25,000\nSee \"Notes to Condensed Consolidated Financial Statements\"\n</TABLE>",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 136,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Balance Sheets (Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "216,449",
+     "$",
+     "146,083",
+     "$",
+     "198,777"
+    ],
+    [
+     "Restricted cash",
+     "1,936",
+     "",
+     "3,771",
+     "",
+     "2,148",
+     ""
+    ],
+    [
+     "Trade receivables, net",
+     "205,991",
+     "",
+     "189,211",
+     "",
+     "247,677",
+     ""
+    ],
+    [
+     "Other receivables",
+     "16,336",
+     "",
+     "17,511",
+     "",
+     "12,511",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "696,583",
+     "",
+     "745,239",
+     "",
+     "749,427",
+     ""
+    ],
+    [
+     "Advances to tobacco suppliers, net",
+     "79,669",
+     "",
+     "56,805",
+     "",
+     "48,932",
+     ""
+    ],
+    [
+     "Recoverable income taxes",
+     "7,053",
+     "",
+     "5,320",
+     "",
+     "7,906",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "31,495",
+     "",
+     "30,235",
+     "",
+     "34,817",
+     ""
+    ],
+    [
+     "Other current assets",
+     "15,648",
+     "",
+     "17,040",
+     "",
+     "25,452",
+     ""
+    ],
+    [
+     "Total current assets",
+     "1,271,160",
+     "",
+     "1,211,215",
+     "",
+     "1,327,647",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "\u2014",
+     "",
+     "389",
+     "",
+     "389",
+     ""
+    ],
+    [
+     "Investments in unconsolidated affiliates",
+     "94,099",
+     "",
+     "92,459",
+     "",
+     "95,420",
+     ""
+    ],
+    [
+     "Goodwill",
+     "\u2014",
+     "",
+     "31,814",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other intangible assets, net",
+     "39,732",
+     "",
+     "46,330",
+     "",
+     "45,061",
+     ""
+    ],
+    [
+     "Deferred income taxes, net",
+     "9,738",
+     "",
+     "5,018",
+     "",
+     "6,498",
+     ""
+    ],
+    [
+     "Long-term recoverable income taxes",
+     "3,444",
+     "",
+     "4,168",
+     "",
+     "4,588",
+     ""
+    ],
+    [
+     "Other noncurrent assets",
+     "43,086",
+     "",
+     "36,085",
+     "",
+     "45,424",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "32,842",
+     "",
+     "35,417",
+     "",
+     "35,979",
+     ""
+    ],
+    [
+     "Property, plant, and equipment, net",
+     "136,556",
+     "",
+     "137,802",
+     "",
+     "137,521",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,630,657",
+     "$",
+     "1,600,697",
+     "$",
+     "1,698,527"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable to banks",
+     "$",
+     "492,326",
+     "$",
+     "384,230",
+     "$",
+     "378,612"
+    ],
+    [
+     "Accounts payable",
+     "135,092",
+     "",
+     "90,025",
+     "",
+     "179,012",
+     ""
+    ],
+    [
+     "Advances from customers",
+     "30,826",
+     "",
+     "63,176",
+     "",
+     "52,998",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "95,312",
+     "",
+     "79,584",
+     "",
+     "82,239",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "6,665",
+     "",
+     "6,909",
+     "",
+     "5,592",
+     ""
+    ],
+    [
+     "Operating leases payable",
+     "9,097",
+     "",
+     "7,624",
+     "",
+     "8,065",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "97,282",
+     "",
+     "107,687",
+     "",
+     "107,856",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "866,600",
+     "",
+     "739,235",
+     "",
+     "814,374",
+     ""
+    ],
+    [
+     "Long-term taxes payable",
+     "4,850",
+     "",
+     "6,703",
+     "",
+     "6,703",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "496,636",
+     "",
+     "541,096",
+     "",
+     "580,477",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "12,770",
+     "",
+     "9,353",
+     "",
+     "11,670",
+     ""
+    ],
+    [
+     "Liability for unrecognized tax benefits",
+     "13,402",
+     "",
+     "15,262",
+     "",
+     "14,401",
+     ""
+    ],
+    [
+     "Long-term leases",
+     "23,663",
+     "",
+     "27,148",
+     "",
+     "28,604",
+     ""
+    ],
+    [
+     "Pension, postretirement, and other long-term liabilities",
+     "56,990",
+     "",
+     "64,030",
+     "",
+     "60,927",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,474,911",
+     "",
+     "1,402,827",
+     "",
+     "1,517,156",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock\u2014no par value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized shares (250,000 for all periods)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued shares (25,000 for all periods)",
+     "390,290",
+     "",
+     "390,290",
+     "",
+     "390,290",
+     ""
+    ],
+    [
+     "Retained deficit",
+     "(237,346)",
+     "",
+     "(187,983)",
+     "",
+     "(218,813)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive (loss) income",
+     "(477)",
+     "",
+     "(10,053)",
+     "",
+     "3,804",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity of Pyxus International, Inc.",
+     "152,467",
+     "",
+     "192,254",
+     "",
+     "175,281",
+     ""
+    ],
+    [
+     "Noncontrolling interests",
+     "3,279",
+     "",
+     "5,616",
+     "",
+     "6,090",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "155,746",
+     "",
+     "197,870",
+     "",
+     "181,371",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,630,657",
+     "$",
+     "1,600,697",
+     "$",
+     "1,698,527"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See \"Notes to Condensed Consolidated Financial Statements\"",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Balance Sheets (Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other Comprehensive (Loss) Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Common Stock",
+     "",
+     "Retained Deficit",
+     "",
+     "Currency Translation Adjustment",
+     "",
+     "Pensions, Net of Tax",
+     "",
+     "Derivatives, Net of Tax",
+     "",
+     "Noncontrolling Interests",
+     "",
+     "Total Stockholders' Equity",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "$",
+     "390,290",
+     "$",
+     "(218,813)",
+     "$",
+     "(8,873)",
+     "$",
+     "6,328",
+     "$",
+     "6,349",
+     "$",
+     "6,090",
+     "$",
+     "181,371"
+    ],
+    [
+     "Net (loss) income attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(14,663)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "158",
+     "",
+     "(14,505)",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,052)",
+     "",
+     "(3,052)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "947",
+     "",
+     "\u2014",
+     "",
+     "(1,503)",
+     "",
+     "\u2014",
+     "",
+     "(556)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2022",
+     "390,290",
+     "",
+     "(233,476)",
+     "",
+     "(7,926)",
+     "",
+     "6,328",
+     "",
+     "4,846",
+     "",
+     "3,196",
+     "",
+     "163,258",
+     ""
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(1,537)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(13)",
+     "",
+     "(1,550)",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,801)",
+     "",
+     "(1,562)",
+     "",
+     "(1,768)",
+     "",
+     "\u2014",
+     "",
+     "(8,131)",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022",
+     "390,290",
+     "",
+     "(235,013)",
+     "",
+     "(12,727)",
+     "",
+     "4,766",
+     "",
+     "3,078",
+     "",
+     "3,183",
+     "",
+     "153,577",
+     ""
+    ],
+    [
+     "Net (loss) income attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(2,333)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "96",
+     "",
+     "(2,237)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,855",
+     "",
+     "(78)",
+     "",
+     "(371)",
+     "",
+     "\u2014",
+     "",
+     "4,406",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "$",
+     "390,290",
+     "$",
+     "(237,346)",
+     "$",
+     "(7,872)",
+     "$",
+     "4,688",
+     "$",
+     "2,707",
+     "$",
+     "3,279",
+     "$",
+     "155,746"
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries",
+    "Condensed Consolidated Statements of Stockholders' Equity",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 239,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance, March 31, 2021",
+     "$",
+     "391,089",
+     "$",
+     "(136,686)",
+     "$",
+     "(4,649)",
+     "$",
+     "541",
+     "$",
+     "(2,625)",
+     "$",
+     "6,270",
+     "$",
+     "253,940"
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(11,508)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(120)",
+     "",
+     "(11,628)",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "(8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other comprehensive income, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "689",
+     "",
+     "\u2014",
+     "",
+     "4,328",
+     "",
+     "\u2014",
+     "",
+     "5,017",
+     ""
+    ],
+    [
+     "Balance, June 30, 2021",
+     "391,089",
+     "",
+     "(148,202)",
+     "",
+     "(3,960)",
+     "",
+     "541",
+     "",
+     "1,703",
+     "",
+     "6,158",
+     "",
+     "247,329",
+     ""
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(9,681)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(342)",
+     "",
+     "(10,023)",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(88)",
+     "",
+     "(88)",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,591)",
+     "",
+     "(512)",
+     "",
+     "(2,896)",
+     "",
+     "\u2014",
+     "",
+     "(4,999)",
+     ""
+    ],
+    [
+     "Balance, September 30, 2021",
+     "391,089",
+     "",
+     "(157,883)",
+     "",
+     "(5,551)",
+     "",
+     "29",
+     "",
+     "(1,193)",
+     "",
+     "5,728",
+     "",
+     "232,219",
+     ""
+    ],
+    [
+     "Net (loss) income attributable to Pyxus International, Inc.",
+     "\u2014",
+     "",
+     "(30,100)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "43",
+     "",
+     "(30,057)",
+     ""
+    ],
+    [
+     "Other",
+     "(799)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(155)",
+     "",
+     "(954)",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,753)",
+     "",
+     "(35)",
+     "",
+     "(1,550)",
+     "",
+     "\u2014",
+     "",
+     "(3,338)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "$",
+     "390,290",
+     "$",
+     "(187,983)",
+     "$",
+     "(7,304)",
+     "$",
+     "(6)",
+     "$",
+     "(2,743)",
+     "$",
+     "5,616",
+     "$",
+     "197,870"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See \"Notes to Condensed Consolidated Financial Statements\"",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Statements of Cash Flows (Unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(18,292)",
+     "$",
+     "(51,708)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "14,678",
+     "",
+     "11,984",
+     ""
+    ],
+    [
+     "Debt amortization/interest",
+     "15,339",
+     "",
+     "17,364",
+     ""
+    ],
+    [
+     "Loss on foreign currency transactions",
+     "3,657",
+     "",
+     "1,554",
+     ""
+    ],
+    [
+     "Asset impairment charges",
+     "4,035",
+     "",
+     "6,111",
+     ""
+    ],
+    [
+     "Loss on deconsolidation/disposition of subsidiaries",
+     "648",
+     "",
+     "9,525",
+     ""
+    ],
+    [
+     "Loss on pension settlement",
+     "2,588",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income from unconsolidated affiliates, net of dividends",
+     "814",
+     "",
+     "3,212",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities, net",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade and other receivables",
+     "(91,242)",
+     "",
+     "(171,653)",
+     ""
+    ],
+    [
+     "Inventories and advances to tobacco suppliers",
+     "18,493",
+     "",
+     "(34,079)",
+     ""
+    ],
+    [
+     "Deferred items",
+     "(14,670)",
+     "",
+     "(6,363)",
+     ""
+    ],
+    [
+     "Recoverable income taxes",
+     "2,369",
+     "",
+     "(554)",
+     ""
+    ],
+    [
+     "Payables and accrued expenses",
+     "(29,808)",
+     "",
+     "(28,066)",
+     ""
+    ],
+    [
+     "Advances from customers",
+     "(22,236)",
+     "",
+     "51,442",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "9,041",
+     "",
+     "5,692",
+     ""
+    ],
+    [
+     "Income taxes",
+     "1,301",
+     "",
+     "(493)",
+     ""
+    ],
+    [
+     "Other operating assets and liabilities",
+     "4,442",
+     "",
+     "3,870",
+     ""
+    ],
+    [
+     "Other, net",
+     "(11,756)",
+     "",
+     "(2,669)",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "(110,599)",
+     "",
+     "(184,831)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property, plant, and equipment",
+     "(9,931)",
+     "",
+     "(12,201)",
+     ""
+    ],
+    [
+     "Proceeds from sale of property, plant, and equipment",
+     "2,213",
+     "",
+     "2,168",
+     ""
+    ],
+    [
+     "Collections from beneficial interests in securitized trade receivables",
+     "122,638",
+     "",
+     "155,226",
+     ""
+    ],
+    [
+     "DIP loan to deconsolidated subsidiary",
+     "\u2014",
+     "",
+     "(5,229)",
+     ""
+    ],
+    [
+     "Collection of DIP loan from deconsolidated subsidiary",
+     "\u2014",
+     "",
+     "10,996",
+     ""
+    ],
+    [
+     "Proceeds from settlement of debt claims from deconsolidated subsidiaries",
+     "2,011",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, net",
+     "486",
+     "",
+     "(3,197)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "117,417",
+     "",
+     "147,763",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from short-term borrowings",
+     "116,492",
+     "",
+     "11,889",
+     ""
+    ],
+    [
+     "Proceeds from DDTL facility",
+     "\u2014",
+     "",
+     "117,600",
+     ""
+    ],
+    [
+     "Repayment of DDTL facility",
+     "(110,250)",
+     "",
+     "(15,375)",
+     ""
+    ],
+    [
+     "Proceeds from DDTL term loan facility",
+     "100,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from revolving loan facilities",
+     "80,000",
+     "",
+     "11,000",
+     ""
+    ],
+    [
+     "Repayment of revolving loan facilities",
+     "(170,000)",
+     "",
+     "(26,000)",
+     ""
+    ],
+    [
+     "Debt issuance costs",
+     "(6,074)",
+     "",
+     "(6,903)",
+     ""
+    ],
+    [
+     "Fees paid to refinance the DDTL facility",
+     "(4,000)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, net",
+     "309",
+     "",
+     "(23)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "6,477",
+     "",
+     "92,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "3,776",
+     "",
+     "(2,590)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in cash, cash equivalents, and restricted cash",
+     "17,071",
+     "",
+     "52,530",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Statements of Cash Flows (Unaudited)",
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 292,
+    "end_line": 352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See \"Notes to Condensed Consolidated Financial Statements\"",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 353,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Statements of Cash Flows (Unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "198,777",
+     "",
+     "92,705",
+     ""
+    ],
+    [
+     "Restricted cash at beginning of period",
+     "2,537",
+     "",
+     "5,008",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash at end of period",
+     "$",
+     "218,385",
+     "$",
+     "150,243"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income taxes, net",
+     "$",
+     "14,455",
+     "$",
+     "14,951"
+    ],
+    [
+     "Cash paid for interest, net",
+     "54,840",
+     "",
+     "56,858",
+     ""
+    ],
+    [
+     "Noncash investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash amounts obtained as a beneficial interest in exchange for transferring trade receivables in a securitization transaction",
+     "130,421",
+     "",
+     "162,065",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See \"Notes to Condensed Consolidated Financial Statements\"",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries Condensed Consolidated Statements of Cash Flows (Unaudited)",
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 354,
+    "end_line": 373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 353,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Pyxus International, Inc. and Subsidiaries",
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "",
+     ""
+    ],
+    [
+     "Note 1",
+     "Basis of Presentation and Summary of Significant Accounting Policies",
+     "10"
+    ],
+    [
+     "Note 2",
+     "New Accounting Standards",
+     "10"
+    ],
+    [
+     "Note 3",
+     "Revenue Recognition",
+     "10"
+    ],
+    [
+     "Note 4",
+     "Restructuring and Asset Impairment Charges",
+     "11"
+    ],
+    [
+     "Note 5",
+     "Income Taxes",
+     "11"
+    ],
+    [
+     "Note 6",
+     "Loss Per Share",
+     "12"
+    ],
+    [
+     "Note 7",
+     "Inventories, Net",
+     "12"
+    ],
+    [
+     "Note 8",
+     "CCAA Proceeding and Deconsolidation of Subsidiaries",
+     "12"
+    ],
+    [
+     "Note 9",
+     "Equity Method Investments",
+     "13"
+    ],
+    [
+     "Note 10",
+     "Variable Interest Entities",
+     "13"
+    ],
+    [
+     "Note 11",
+     "Other Intangible Assets, Net",
+     "14"
+    ],
+    [
+     "Note 12",
+     "Debt Arrangements",
+     "15"
+    ],
+    [
+     "Note 13",
+     "Securitized Receivables",
+     "18"
+    ],
+    [
+     "Note 14",
+     "Guarantees",
+     "19"
+    ],
+    [
+     "Note 15",
+     "Derivative Financial Instruments",
+     "19"
+    ],
+    [
+     "Note 16",
+     "Fair Value Measurements",
+     "19"
+    ],
+    [
+     "Note 17",
+     "Pension and Other Postretirement Benefits",
+     "20"
+    ],
+    [
+     "Note 18",
+     "Contingencies and Other Information",
+     "20"
+    ],
+    [
+     "Note 19",
+     "Related Party Transactions",
+     "21"
+    ],
+    [
+     "Note 20",
+     "Segment Information",
+     "22"
+    ],
+    [
+     "Note 21",
+     "Subsequent Events",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Pyxus International, Inc. and Subsidiaries",
+    "Notes to Condensed Consolidated Financial Statements",
+    "(in thousands, except per share data)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 375,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "1. Basis of Presentation and Summary of Significant Accounting Policies\nThe accompanying condensed consolidated financial statements represent the consolidation of Pyxus International, Inc. (the \"Company\", \"Pyxus\", \"we\", or \"us\") and all companies that Pyxus directly or indirectly controls, either through majority ownership or otherwise. These condensed consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America (\"U.S. GAAP\") for interim information and with the instructions to Form 10-Q and Regulation S-X. Accordingly, they do not include the information and footnotes required by U.S. GAAP for annual financial statements. In the opinion of management, the normal and recurring adjustments necessary for fair statement of financial position, results of operations, and cash flows at the dates and for the periods presented have been included. Intercompany accounts and transactions have been eliminated.\nThese condensed consolidated interim financial statements should be read in conjunction with the Company's consolidated financial statements and notes thereto included in the Annual Report on Form 10-K for the fiscal year ended March 31, 2022 filed on June 14, 2022. Due to the seasonal nature of the Company\u2019s business, the results of operations for a fiscal quarter are not necessarily indicative of the operating results that may be attained for other quarters or a full fiscal year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Leaf:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product revenue",
+     "$",
+     "625,129",
+     "$",
+     "394,823",
+     "$",
+     "1,423,612",
+     "$",
+     "1,064,280"
+    ],
+    [
+     "Processing and other revenues",
+     "27,128",
+     "",
+     "31,301",
+     "",
+     "75,212",
+     "",
+     "82,657",
+     ""
+    ],
+    [
+     "Total sales and other operating revenues",
+     "652,257",
+     "",
+     "426,124",
+     "",
+     "1,498,824",
+     "",
+     "1,146,937",
+     ""
+    ],
+    [
+     "All Other:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total sales and other operating revenues",
+     "3,296",
+     "",
+     "2,818",
+     "",
+     "8,912",
+     "",
+     "9,496",
+     ""
+    ],
+    [
+     "Total sales and other operating revenues",
+     "$",
+     "655,553",
+     "$",
+     "428,942",
+     "$",
+     "1,507,736",
+     "$",
+     "1,156,433"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "In November 2021, the FASB issued Accounting Standards Update (\"ASU\") No. 2021-10, Disclosures by Business Entities about Government Assistance. This ASU created ASC Topic 832, Government Assistance, and requires certain information be disclosed regarding assistance received from a government entity when either a grant or contribution accounting model is applied. The new disclosures are required for annual periods for transactions with a government entity that are within the scope of the Topic. The new disclosure guidance was adopted prospectively and became effective for the Company on April 1, 2022. The adoption of this new accounting standard is not expected to have a material impact on the Company's annual disclosures for fiscal year 2023.\n3. Revenue Recognition\nProduct revenue is primarily processed tobacco sold to the customer. Processing and other revenues are mainly contracts to process customer-owned green tobacco. During processing, ownership remains with the customers. All Other revenue is primarily composed of revenue from the sale of e-liquids and non-tobacco agriculture products. The following disaggregates sales and other operating revenues by major source, with the All Other category being included for purposes of reconciliation of the respective balances below of the Leaf segment (the Company's sole reportable segment) to the condensed consolidated financial statements:",
+   "prose_after": "The following summarizes activity in the allowance for expected credit losses:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "$",
+     "(23,698)",
+     "$",
+     "(23,641)",
+     "$",
+     "(24,541)",
+     "$",
+     "(20,900)"
+    ],
+    [
+     "Additions",
+     "(593)",
+     "",
+     "(251)",
+     "",
+     "(1,618)",
+     "",
+     "(3,139)",
+     ""
+    ],
+    [
+     "Write-offs",
+     "201",
+     "",
+     "\u2014",
+     "",
+     "2,069",
+     "",
+     "147",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "(24,090)",
+     "",
+     "(23,892)",
+     "",
+     "(24,090)",
+     "",
+     "(23,892)",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "230,081",
+     "",
+     "213,103",
+     "",
+     "230,081",
+     "",
+     "213,103",
+     ""
+    ],
+    [
+     "Trade receivables, net",
+     "$",
+     "205,991",
+     "$",
+     "189,211",
+     "$",
+     "205,991",
+     "$",
+     "189,211"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 448,
+    "end_line": 463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The following summarizes activity in the allowance for expected credit losses:",
+   "prose_after": "4. Restructuring and Asset Impairment Charges\nThe Company continued its focus on cost saving initiatives. The employee separation and asset impairment charges for the periods ended December 31, 2022 were primarily related to the restructuring of certain non-leaf agriculture operations. The employee separation and asset impairment charges for the periods ended December 31, 2021 were primarily related to the write-off of the Company's remaining industrial hemp cannabidiol (\"CBD\") extraction equipment and the continued restructuring of certain leaf operations. The following summarizes the Company's restructuring and asset impairment charges:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Employee separation charges",
+     "$",
+     "35",
+     "$",
+     "510",
+     "$",
+     "345",
+     "$",
+     "1,913"
+    ],
+    [
+     "Asset impairment and other non-cash charges",
+     "\u2014",
+     "",
+     "50",
+     "",
+     "4,035",
+     "",
+     "5,739",
+     ""
+    ],
+    [
+     "Restructuring and asset impairment charges",
+     "$",
+     "35",
+     "$",
+     "560",
+     "$",
+     "4,380",
+     "$",
+     "7,652"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "4. Restructuring and Asset Impairment Charges\nThe Company continued its focus on cost saving initiatives. The employee separation and asset impairment charges for the periods ended December 31, 2022 were primarily related to the restructuring of certain non-leaf agriculture operations. The employee separation and asset impairment charges for the periods ended December 31, 2021 were primarily related to the write-off of the Company's remaining industrial hemp cannabidiol (\"CBD\") extraction equipment and the continued restructuring of certain leaf operations. The following summarizes the Company's restructuring and asset impairment charges:",
+   "prose_after": "5. Income Taxes\nThe Company's quarterly provision for income taxes has generally been calculated using the annual effective tax rate method (\"AETR method\"), which applies an estimated annual effective tax rate to pre-tax income or loss. The AETR method was used to calculate the provision for income taxes for the prior fiscal years, for which the Company reported income tax benefits in each prior reporting period. As of December 31, 2022, the AETR method produced an unreliable estimate of the Company\u2019s annual effective tax rate; therefore, the Company recorded its interim income tax provision using the discrete method, as allowed under ASC 740-270, Income Taxes - Interim Reporting. Using the discrete method, the Company determined current and deferred income tax expense as if the nine-month interim period of the current fiscal year were an annual period.\nThe effective tax rate for the nine months ended December 31, 2022 and 2021 was (119.9)% and (19.1)%, respectively. For the nine months ended December 31, 2022 and 2021, the difference between the Company\u2019s effective rate and the U.S. statutory rate of 21.0% is primarily due to the impact of net foreign exchange effects, non-deductible interest, and variations in the expected jurisdictional mix of earnings.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "$",
+     "(2,333)",
+     "$",
+     "(30,100)",
+     "$",
+     "(18,533)",
+     "$",
+     "(51,289)"
+    ],
+    [
+     "Shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "25,000",
+     "",
+     "25,000",
+     "",
+     "25,000",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "$",
+     "(0.09)",
+     "$",
+     "(1.20)",
+     "$",
+     "(0.74)",
+     "$",
+     "(2.05)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The Company's quarterly provision for income taxes has generally been calculated using the annual effective tax rate method (\"AETR method\"), which applies an estimated annual effective tax rate to pre-tax income or loss. The AETR method was used to calculate the provision for income taxes for the prior fiscal years, for which the Company reported income tax benefits in each prior reporting period. As of December 31, 2022, the AETR method produced an unreliable estimate of the Company\u2019s annual effective tax rate; therefore, the Company recorded its interim income tax provision using the discrete method, as allowed under ASC 740-270, Income Taxes - Interim Reporting. Using the discrete method, the Company determined current and deferred income tax expense as if the nine-month interim period of the current fiscal year were an annual period.\nThe effective tax rate for the nine months ended December 31, 2022 and 2021 was (119.9)% and (19.1)%, respectively. For the nine months ended December 31, 2022 and 2021, the difference between the Company\u2019s effective rate and the U.S. statutory rate of 21.0% is primarily due to the impact of net foreign exchange effects, non-deductible interest, and variations in the expected jurisdictional mix of earnings.\n6. Loss Per Share\nThe following summarizes the computation of loss per share:",
+   "prose_after": "7. Inventories, Net\nThe following summarizes the composition of inventories, net:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Processed tobacco",
+     "$",
+     "571,909",
+     "$",
+     "650,373",
+     "$",
+     "517,613"
+    ],
+    [
+     "Unprocessed tobacco",
+     "86,487",
+     "",
+     "64,191",
+     "",
+     "193,406",
+     ""
+    ],
+    [
+     "Other tobacco related",
+     "30,018",
+     "",
+     "19,397",
+     "",
+     "29,694",
+     ""
+    ],
+    [
+     "All Other",
+     "8,169",
+     "",
+     "11,278",
+     "",
+     "8,714",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "696,583",
+     "$",
+     "745,239",
+     "$",
+     "749,427"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 521
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "7. Inventories, Net\nThe following summarizes the composition of inventories, net:",
+   "prose_after": "8. CCAA Proceeding and Deconsolidation of Subsidiaries\nOn January 21, 2021, Figr Norfolk Inc. (\"Figr Norfolk\"), Figr Brands, Inc. (\"Figr Brands\"), and Canada\u2019s Island Garden Inc. (\"Figr East,\" and together with Figr Norfolk and Figr Brands, the \"Canadian Cannabis Subsidiaries\"), which, prior to their disposition, were indirect subsidiaries of the Company, applied for relief from their respective creditors pursuant to Canada\u2019s Companies\u2019 Creditors Arrangement Act (the \"CCAA\") in the Ontario Superior Court of Justice (Commercial List) (the \"Canadian Court\") in Ontario, Canada as Court File No. CV-21-00655373-00CL (the \"CCAA Proceeding\"). On January 21, 2021 (the \"Order Date\"), upon application by the Canadian Cannabis Subsidiaries, the Canadian Court issued an order for creditor protection of the Canadian Cannabis Subsidiaries pursuant to the provisions of the CCAA and the appointment of FTI Consulting Canada Inc. to serve as the Canadian Court-appointed monitor of the Canadian Cannabis Subsidiaries during the pendency of the CCAA Proceeding (the \"Monitor\"). The administration of the CCAA Proceeding, including the Canadian Court's appointment of the Monitor and the related authority of the Monitor, including approval rights with respect to significant actions of the Canadian Cannabis Subsidiaries during the pendency of the CCAA Proceeding, resulted in the Company losing control (in accordance with U.S. GAAP) of the Canadian Cannabis Subsidiaries at that time, and the deconsolidation on January 20, 2021 of the Canadian Cannabis Subsidiaries' assets and liabilities and elimination of their equity components from the Company's consolidated financial statements as of January 21, 2021. Prior to the deconsolidation of the Canadian Cannabis Subsidiaries, they comprised an operating segment within the Other Products and Services reportable segment, which upon the Company's reevaluation of operating and reportable segments effective during the fourth quarter of the fiscal year ended March 31, 2022 is presented in the All Other category. Upon deconsolidation, the Company accounts for its investments in the Canadian Cannabis Subsidiaries using the cost method of accounting.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Investee Name",
+     "Location",
+     "Primary Purpose",
+     "Ownership Percentage",
+     "Basis Difference",
+     ""
+    ],
+    [
+     "Adams International Ltd.",
+     "Thailand",
+     "Purchase and process tobacco",
+     "49%",
+     "$",
+     "(4,526)"
+    ],
+    [
+     "Alliance One Industries India Private Ltd.",
+     "India",
+     "Purchase and process tobacco",
+     "49%",
+     "(5,770)",
+     ""
+    ],
+    [
+     "China Brasil Tobacos Exportadora SA",
+     "Brazil",
+     "Purchase and process tobacco",
+     "49%",
+     "44,500",
+     ""
+    ],
+    [
+     "Oryantal T\u00fct\u00fcn Paketleme Sanayi ve Ticaret A.\u015e.",
+     "Turkey",
+     "Process tobacco",
+     "50%",
+     "(416)",
+     ""
+    ],
+    [
+     "Purilum, LLC",
+     "U.S.",
+     "Produce flavor formulations and consumable e-liquids",
+     "50%",
+     "4,589",
+     ""
+    ],
+    [
+     "Siam Tobacco Export Company",
+     "Thailand",
+     "Purchase and process tobacco",
+     "49%",
+     "(6,098)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 537,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "On January 29, 2021, the Canadian Court issued an order permitting the Canadian Cannabis Subsidiaries to initiate a sale and investment solicitation process to be conducted by the Monitor and its affiliate to solicit interest in, and opportunities for, a sale of, or investment in, all or substantially all, or one or more components, of the assets and/or the business operations of the Canadian Cannabis Subsidiaries. On January 28, 2022, a sale of the assets of Figr Norfolk for a purchase price of Cdn.$5,000 was completed. On June 28, 2021, a sale of the outstanding equity of Figr East and certain intangible assets of Figr Brands for an aggregate purchase price of Cdn.$24,750 was completed. On February 2, 2022, Figr Norfolk and Figr Brands obtained approval to make cash distributions to their creditors pursuant to a distribution protocol approved by the Canadian Court. In the three months ended June 30, 2022, the Company received $2,011 in settlement of its debt claims with respect to the Canadian Cannabis Subsidiaries and did not receive any recovery with respect to its equity interest in the Canadian Cannabis Subsidiaries. On April 21, 2022, Figr Norfolk and Figr Brands obtained approval from the Canadian Court to terminate the CCAA Proceedings and commence bankruptcy proceedings under Canada's Bankruptcy and Insolvency Act (the \"BIA Proceedings\") to complete certain corporate and tax-related wind-up activities. On May 13, 2022, Figr Norfolk and Figr Brands commenced the BIA Proceedings. On June 13, 2022, the CCAA Proceedings were formally terminated.\nRelated Party Relationship\nThe commencement of the CCAA Proceeding, the appointment of the Monitor, and the subsequent deconsolidation of the Canadian Cannabis Subsidiaries results in transactions with the Canadian Cannabis Subsidiaries no longer being eliminated in consolidation. As such, transactions between the Company and the Canadian Cannabis Subsidiaries, including loans under the debtor-in-possession financing facility (the \"Canadian DIP Facility\") from another non-U.S. subsidiary of Pyxus (the \"DIP Lender\") provided during the pendency of the CCAA Proceedings, which were fully repaid on July 8, 2021, are treated as related party transactions. See \"Note 19. Related Party Transactions\" for transactions between the Company and the Canadian Cannabis Subsidiaries.\n9. Equity Method Investments\nThe following summarizes the Company's equity method investments as of December 31, 2022:",
+   "prose_after": "The following summarizes financial information for these equity method investments:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Operations statement:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "165,621",
+     "$",
+     "122,710",
+     "$",
+     "297,278",
+     "$",
+     "186,654"
+    ],
+    [
+     "Gross profit",
+     "25,340",
+     "",
+     "28,995",
+     "",
+     "45,195",
+     "",
+     "35,109",
+     ""
+    ],
+    [
+     "Net income",
+     "11,625",
+     "",
+     "13,421",
+     "",
+     "23,867",
+     "",
+     "13,727",
+     ""
+    ],
+    [
+     "Company's dividends received",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,523",
+     "",
+     "8,666",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 561
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The following summarizes financial information for these equity method investments:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Balance sheet:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "$",
+     "395,381",
+     "$",
+     "284,803",
+     "$",
+     "375,015"
+    ],
+    [
+     "Property, plant, and equipment and other assets",
+     "41,000",
+     "",
+     "36,394",
+     "",
+     "42,841",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "308,221",
+     "",
+     "200,636",
+     "",
+     "289,816",
+     ""
+    ],
+    [
+     "Long-term obligations and other liabilities",
+     "2,767",
+     "",
+     "2,378",
+     "",
+     "2,999",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "10. Variable Interest Entities\nThe Company holds variable interests in multiple entities that primarily procure or process inventory or are securitization entities. These variable interests relate to equity investments, receivables, guarantees, and securitized receivables. The following summarizes the Company's financial relationships with its unconsolidated variable interest entities:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Investments in variable interest entities",
+     "$",
+     "87,381",
+     "$",
+     "85,263",
+     "$",
+     "88,118"
+    ],
+    [
+     "Receivables with variable interest entities",
+     "145",
+     "",
+     "2,599",
+     "",
+     "2,211",
+     ""
+    ],
+    [
+     "Guaranteed amounts to variable interest entities (not to exceed)",
+     "68,193",
+     "",
+     "55,973",
+     "",
+     "55,884",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "10. Variable Interest Entities\nThe Company holds variable interests in multiple entities that primarily procure or process inventory or are securitization entities. These variable interests relate to equity investments, receivables, guarantees, and securitized receivables. The following summarizes the Company's financial relationships with its unconsolidated variable interest entities:",
+   "prose_after": "11. Other Intangible Assets, Net\nThe following summarizes the changes in the Company's goodwill and other intangible assets, net:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Weighted Average Remaining Useful Life",
+     "Beginning Carrying Amount, Net",
+     "",
+     "Amortization Expense",
+     "",
+     "Ending Intangible Assets, Net",
+     ""
+    ],
+    [
+     "Intangibles subject to amortization:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "9.7 years",
+     "$",
+     "23,568",
+     "$",
+     "(2,543)",
+     "$",
+     "21,025"
+    ],
+    [
+     "Technology",
+     "5.4 years",
+     "11,471",
+     "",
+     "(2,181)",
+     "",
+     "9,290",
+     ""
+    ],
+    [
+     "Trade names",
+     "11.7 years",
+     "10,022",
+     "",
+     "(605)",
+     "",
+     "9,417",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "45,061",
+     "$",
+     "(5,329)",
+     "$",
+     "39,732"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "11. Other Intangible Assets, Net\nThe following summarizes the changes in the Company's goodwill and other intangible assets, net:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Weighted Average Remaining Useful Life",
+     "Beginning Carrying Amount, Net",
+     "",
+     "Additions",
+     "",
+     "Amortization Expense",
+     "",
+     "Disposition of Humble Juice",
+     "",
+     "Impairment",
+     "",
+     "Ending Intangible Assets, Net",
+     ""
+    ],
+    [
+     "Intangibles subject to amortization:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "10.3 years",
+     "$",
+     "27,730",
+     "$",
+     "\u2014",
+     "$",
+     "(2,427)",
+     "$",
+     "(1,735)",
+     "$",
+     "\u2014",
+     "$",
+     "23,568"
+    ],
+    [
+     "Technology",
+     "5.8 years",
+     "12,858",
+     "",
+     "840",
+     "",
+     "(2,227)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,471",
+     ""
+    ],
+    [
+     "Trade names",
+     "12.4 years",
+     "10,829",
+     "",
+     "\u2014",
+     "",
+     "(807)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10,022",
+     ""
+    ],
+    [
+     "Intangibles not subject to amortization:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "36,853",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,667)",
+     "",
+     "(32,186)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "88,270",
+     "$",
+     "840",
+     "$",
+     "(5,461)",
+     "$",
+     "(6,402)",
+     "$",
+     "(32,186)",
+     "$",
+     "45,061"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 606,
+    "end_line": 622
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "12. Debt Arrangements\nThe following summarizes debt and notes payable:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     "",
+     "March 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Interest Rate",
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Senior secured credit facilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ABL Credit Facility",
+     "4.8",
+     "%",
+     "(1)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "90,000"
+    ],
+    [
+     "Exit ABL Credit Facility",
+     "5.8",
+     "%",
+     "(1)",
+     "\u2014",
+     "",
+     "52,500",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "DDTL Term Loan Facility (2)",
+     "11.6",
+     "%",
+     "(1)",
+     "97,177",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "DDTL Facility",
+     "10.7",
+     "%",
+     "(1)",
+     "\u2014",
+     "",
+     "106,013",
+     "",
+     "107,832",
+     ""
+    ],
+    [
+     "Senior secured notes:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.0% senior secured first lien notes (3)",
+     "10.0",
+     "%",
+     "",
+     "273,593",
+     "",
+     "269,872",
+     "",
+     "270,762",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exit Term Loan Credit Facility (4)",
+     "10.3",
+     "%",
+     "(1)",
+     "222,620",
+     "",
+     "218,509",
+     "",
+     "219,500",
+     ""
+    ],
+    [
+     "Other long-term debt",
+     "4.4",
+     "%",
+     "(1)",
+     "528",
+     "",
+     "1,889",
+     "",
+     "239",
+     ""
+    ],
+    [
+     "Notes payable to banks (5)",
+     "6.3",
+     "%",
+     "(1)",
+     "492,326",
+     "",
+     "384,230",
+     "",
+     "378,612",
+     ""
+    ],
+    [
+     "Total debt",
+     "",
+     "",
+     "",
+     "$",
+     "1,086,244",
+     "$",
+     "1,033,013",
+     "$",
+     "1,066,945"
+    ],
+    [
+     "Short-term (5)",
+     "",
+     "",
+     "",
+     "$",
+     "492,326",
+     "$",
+     "384,230",
+     "$",
+     "378,612"
+    ],
+    [
+     "Long-term:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "",
+     "",
+     "$",
+     "97,282",
+     "$",
+     "107,687",
+     "$",
+     "107,856"
+    ],
+    [
+     "Long-term debt",
+     "",
+     "",
+     "",
+     "496,636",
+     "",
+     "541,096",
+     "",
+     "580,477",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "$",
+     "593,918",
+     "$",
+     "648,783",
+     "$",
+     "688,333"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Letters of credit",
+     "",
+     "",
+     "",
+     "$",
+     "14,337",
+     "$",
+     "9,543",
+     "$",
+     "9,038"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) Weighted average rate for the trailing twelve months ended December 31, 2022. As the ABL Credit Facility and the DDTL Term Loan Facility have not been outstanding for a trailing twelve-month period, the interest rate is the weighted average rate from inception through December 31, 2022.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2) Balance of $97,177 is net of original issue discount of $2,823. Total repayment will be $100,000, subject to a 2.0% exit fee payable upon repayment occurring after July 28, 2023.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(3) Balance of $273,593 is net of original issue discount of $7,251. Total repayment will be $280,844.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(4) The aggregate balance of the Exit Term Loan Credit Facility of $222,620 includes $3,718 accrued paid-in-kind interest and $5,484 original issue premium.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(5) Primarily foreign seasonal lines of credit.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 628,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "12. Debt Arrangements\nThe following summarizes debt and notes payable:",
+   "prose_after": "ABL Credit Facility\nOn February 8, 2022, the Company\u2019s wholly owned subsidiary, Pyxus Holdings, Inc. (\"Pyxus Holdings\"), certain subsidiaries of Pyxus Holdings (together with Pyxus Holdings, the \"Borrowers\"), and the Company and its wholly owned subsidiary, Pyxus Parent, Inc. (\"Pyxus Parent\"), as parent guarantors, entered into an ABL Credit Agreement (the \"ABL Credit Agreement\"), dated as of February 8, 2022, by and among Pyxus Holdings, as Borrower Agent, the Borrowers and parent guarantors party thereto, the lenders party thereto, and PNC Bank, National Association, as Administrative Agent and Collateral Agent, to establish an asset-based revolving credit facility (the \"ABL Credit Facility\"), the proceeds of which may be used to refinance existing senior bank debt, pay fees and expenses related to the ABL Credit Facility, partially fund capital expenditures, and provide for the ongoing working capital needs of the Borrowers. The ABL Credit Facility may be used for revolving credit loans and letters of credit from time to time up to an initial maximum principal amount of $100,000, subject to the limitations described below in this paragraph. The ABL Credit Facility includes a $20,000 uncommitted accordion feature that permits Pyxus Holdings, under certain conditions, to solicit the lenders under the ABL Credit Facility to provide additional revolving loan commitments to increase the aggregate amount of the revolving loan commitments under the ABL Credit Facility not to exceed a maximum principal amount of $120,000. The ABL Credit Facility matures, subject to extension on terms and conditions set forth in the ABL Credit Agreement, on the earlier of February 8, 2027 or 90 days prior to the earliest maturity of obligations owing under the Exit Term Loan Credit Agreement and the Existing Notes Indenture (each as defined below). A detailed description of the ABL Credit Agreement is included in the Company's Annual Report on Form 10-K for the fiscal year ended March 31, 2022. At December 31, 2022, Pyxus Holdings was in compliance with the covenants under the ABL Credit Agreement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Receivables outstanding in facility",
+     "$",
+     "270,042",
+     "$",
+     "105,175",
+     "$",
+     "131,092"
+    ],
+    [
+     "Beneficial interests",
+     "37,650",
+     "",
+     "21,573",
+     "",
+     "28,072",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The Company sells trade receivables to unaffiliated financial institutions under three accounts receivable securitization facilities, two of which are subject to annual renewal. Under the first facility, the Company continuously sells a designated pool of trade receivables to a special purpose entity, which sells 100% of the receivables to an unaffiliated financial institution. As of December 31, 2022, the investment limit of this facility was $100,000 of trade receivables. For the other facilities, the Company offers trade receivables for sale to an unaffiliated financial institution, which are then subject to acceptance by the unaffiliated financial institution. As of December 31, 2022, the investment limit under the second facility was $110,000 of trade receivables. As of December 31, 2022, the investment limit under the third facility was variable based on qualifying sales. As the servicer of the first and second facilities, the Company may receive funds that are due to the unaffiliated financial institutions, which are net settled on the next settlement date. As of December 31, 2022 and 2021, and March 31, 2022, trade receivables, net in the condensed consolidated balance sheets has been reduced by $12,280, $2,730, and $1,872 as a result of the net settlement, respectively. Refer to \"Note 16. Fair Value Measurements\" for additional information.\nThe following summarizes the Company's accounts receivable outstanding in the securitization facilities, which represents trade receivables sold into the program that have not been collected from the customer, and related beneficial interests, which represents the Company's residual interest in receivables sold that have not been collected from the customer:",
+   "prose_after": "Cash proceeds from the sale of trade receivables is comprised of a combination of cash and a deferred purchase price receivable. Deferred purchase price receivable is realized after the collection of the underlying trade receivables sold by the purchasers. The following summarizes the Company's cash purchase price and deferred purchase price:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash proceeds for the period ended:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash purchase price",
+     "$",
+     "574,977",
+     "$",
+     "317,677"
+    ],
+    [
+     "Deferred purchase price",
+     "122,638",
+     "",
+     "155,226",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "697,615",
+     "$",
+     "472,903"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "Cash proceeds from the sale of trade receivables is comprised of a combination of cash and a deferred purchase price receivable. Deferred purchase price receivable is realized after the collection of the underlying trade receivables sold by the purchasers. The following summarizes the Company's cash purchase price and deferred purchase price:",
+   "prose_after": "14. Guarantees\nIn certain markets, the Company guarantees bank loans for suppliers to finance their crops. The Company also guarantees bank loans of certain unconsolidated subsidiaries. The following summarizes amounts guaranteed and the fair value of those guarantees:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 717,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Amounts guaranteed (not to exceed)",
+     "$",
+     "129,837",
+     "$",
+     "94,462",
+     "$",
+     "114,208"
+    ],
+    [
+     "Amounts outstanding under guarantee (1)",
+     "48,376",
+     "",
+     "26,609",
+     "",
+     "49,413",
+     ""
+    ],
+    [
+     "Fair value of guarantees",
+     "1,752",
+     "",
+     "747",
+     "",
+     "2,956",
+     ""
+    ],
+    [
+     "Amounts due to local banks on behalf of suppliers for government subsidized rural credit financing",
+     "113",
+     "",
+     "\u2014",
+     "",
+     "15,781",
+     ""
+    ],
+    [
+     "(1) Most of the guarantees outstanding at December 31, 2022 expire within one year.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 756,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "14. Guarantees\nIn certain markets, the Company guarantees bank loans for suppliers to finance their crops. The Company also guarantees bank loans of certain unconsolidated subsidiaries. The following summarizes amounts guaranteed and the fair value of those guarantees:",
+   "prose_after": "15. Derivative Financial Instruments\nThe Company uses forward or option currency contracts to manage risks associated with foreign currency exchange rates on foreign operations. These contracts are for green tobacco purchases, processing costs, and selling, general, and administrative expenses. The Company recorded a net gain of $1,966 and $4,676 from its derivative financial instruments in cost of goods and services sold for the three and nine months ended December 31, 2022, respectively. The Company recorded a net gain of $663 and $1,725 from its derivative financial instruments in cost of goods and services sold for the three and nine months ended December 31, 2021, respectively. As of December 31, 2022 and 2021, the Company recorded current derivative assets of $678 and $603 within other current assets and current derivative liabilities of $0 and $1,280 within accrued expenses and other current liabilities, respectively. The U.S. Dollar notional amount of derivative contracts outstanding as of December 31, 2022 and 2021 was $32,000 and $72,522, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total at Fair Value",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total at Fair Value",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total at Fair Value",
+     ""
+    ],
+    [
+     "Financial Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments",
+     "$",
+     "678",
+     "$",
+     "\u2014",
+     "$",
+     "678",
+     "$",
+     "603",
+     "$",
+     "\u2014",
+     "$",
+     "603",
+     "$",
+     "9,867",
+     "$",
+     "\u2014",
+     "$",
+     "9,867"
+    ],
+    [
+     "Securitized beneficial interests",
+     "\u2014",
+     "",
+     "37,650",
+     "",
+     "37,650",
+     "",
+     "\u2014",
+     "",
+     "21,573",
+     "",
+     "21,573",
+     "",
+     "\u2014",
+     "",
+     "28,072",
+     "",
+     "28,072",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "678",
+     "$",
+     "37,650",
+     "$",
+     "38,328",
+     "$",
+     "603",
+     "$",
+     "21,573",
+     "$",
+     "22,176",
+     "$",
+     "9,867",
+     "$",
+     "28,072",
+     "$",
+     "37,939"
+    ],
+    [
+     "Financial Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "1,280",
+     "$",
+     "\u2014",
+     "$",
+     "1,280",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Long-term debt",
+     "419,020",
+     "",
+     "532",
+     "",
+     "419,552",
+     "",
+     "448,903",
+     "",
+     "2,057",
+     "",
+     "450,960",
+     "",
+     "447,843",
+     "",
+     "246",
+     "",
+     "448,089",
+     ""
+    ],
+    [
+     "Guarantees",
+     "\u2014",
+     "",
+     "1,752",
+     "",
+     "1,752",
+     "",
+     "\u2014",
+     "",
+     "747",
+     "",
+     "747",
+     "",
+     "\u2014",
+     "",
+     "2,956",
+     "",
+     "2,956",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "419,020",
+     "$",
+     "2,284",
+     "$",
+     "421,304",
+     "$",
+     "450,183",
+     "$",
+     "2,804",
+     "$",
+     "452,987",
+     "$",
+     "447,843",
+     "$",
+     "3,202",
+     "$",
+     "451,045"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The Company uses forward or option currency contracts to manage risks associated with foreign currency exchange rates on foreign operations. These contracts are for green tobacco purchases, processing costs, and selling, general, and administrative expenses. The Company recorded a net gain of $1,966 and $4,676 from its derivative financial instruments in cost of goods and services sold for the three and nine months ended December 31, 2022, respectively. The Company recorded a net gain of $663 and $1,725 from its derivative financial instruments in cost of goods and services sold for the three and nine months ended December 31, 2021, respectively. As of December 31, 2022 and 2021, the Company recorded current derivative assets of $678 and $603 within other current assets and current derivative liabilities of $0 and $1,280 within accrued expenses and other current liabilities, respectively. The U.S. Dollar notional amount of derivative contracts outstanding as of December 31, 2022 and 2021 was $32,000 and $72,522, respectively.\n16. Fair Value Measurements\nThe following summarizes the financial assets and liabilities measured at fair value on a recurring basis:",
+   "prose_after": "The following summarizes the reconciliation of changes in Level 3 instruments measured on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Securitized Beneficial Interests",
+     "",
+     "Long-Term Debt",
+     "",
+     "Guarantees",
+     "",
+     "Securitized Beneficial Interests",
+     "",
+     "Long-Term Debt",
+     "",
+     "Guarantees",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "22,842",
+     "$",
+     "577",
+     "$",
+     "1,206",
+     "$",
+     "26,056",
+     "$",
+     "3,127",
+     "$",
+     "343"
+    ],
+    [
+     "Issuances of sales of receivables/guarantees",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,549",
+     "",
+     "70,323",
+     "",
+     "\u2014",
+     "",
+     "452",
+     ""
+    ],
+    [
+     "Settlements",
+     "(40,002)",
+     "",
+     "\u2014",
+     "",
+     "(79)",
+     "",
+     "(73,977)",
+     "",
+     "(1,070)",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Additions",
+     "60,310",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Losses recognized in earnings",
+     "(5,500)",
+     "",
+     "(45)",
+     "",
+     "(924)",
+     "",
+     "(829)",
+     "",
+     "\u2014",
+     "",
+     "(43)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "37,650",
+     "$",
+     "532",
+     "$",
+     "1,752",
+     "$",
+     "21,573",
+     "$",
+     "2,057",
+     "$",
+     "747"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The following summarizes the reconciliation of changes in Level 3 instruments measured on a recurring basis:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Securitized Beneficial Interests",
+     "",
+     "Long-Term Debt",
+     "",
+     "Guarantees",
+     "",
+     "Securitized Beneficial Interests",
+     "",
+     "Long-Term Debt",
+     "",
+     "Guarantees",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "28,072",
+     "$",
+     "246",
+     "$",
+     "2,956",
+     "$",
+     "19,370",
+     "$",
+     "3,162",
+     "$",
+     "1,740"
+    ],
+    [
+     "Issuances of sales of receivables/guarantees",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,236",
+     "",
+     "162,065",
+     "",
+     "\u2014",
+     "",
+     "948",
+     ""
+    ],
+    [
+     "Settlements",
+     "(112,758)",
+     "",
+     "\u2014",
+     "",
+     "(1,422)",
+     "",
+     "(156,651)",
+     "",
+     "(1,107)",
+     "",
+     "(1,708)",
+     ""
+    ],
+    [
+     "Additions",
+     "131,392",
+     "",
+     "325",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Losses recognized in earnings",
+     "(9,056)",
+     "",
+     "(39)",
+     "",
+     "(2,018)",
+     "",
+     "(3,211)",
+     "",
+     "\u2014",
+     "",
+     "(233)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "37,650",
+     "$",
+     "532",
+     "$",
+     "1,752",
+     "$",
+     "21,573",
+     "$",
+     "2,057",
+     "$",
+     "747"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the nine months ended December 31, 2022 and 2021, the impact to earnings attributable to the change in unrealized losses on securitized beneficial interests was $2,252 and $640, respectively.\n17. Pension and Other Postretirement Benefits\nOn November 19, 2021, the Compensation Committee of the Company's Board of Directors approved a resolution to terminate the Company's U.S. defined benefit pension plan (\"U.S. Pension Plan\"). During the nine months ended December 31, 2022, the Company settled benefits with vested participants that elected a lump sum payout and made a cash contribution of $5,300 to fully fund the U.S. Pension Plan's liabilities in preparation to purchase a group annuity contract to administer future payments to the remaining U.S. Pension Plan participants. In addition, the Company recorded a pension settlement charge of $2,588 during the nine months ended December 31, 2022, which included the reclassification of unrecognized pension gains within accumulated other comprehensive loss within the Company's condensed consolidated statements of operations. Termination of the U.S. Pension Plan occurred during the three-month period ended December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "630",
+     "$",
+     "1,955",
+     "$",
+     "21,180",
+     "$",
+     "20,768"
+    ],
+    [
+     "Purchases",
+     "56,661",
+     "",
+     "39,447",
+     "",
+     "133,057",
+     "",
+     "87,120",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "carrying value of $13,535. The intrastate trade tax credits are monitored for impairment in future periods based on market conditions and the Company\u2019s ability to use or sell the tax credits.\nOther Matters\nIn addition to the above-mentioned matters, certain of the Company\u2019s subsidiaries are involved in other litigation or legal matters incidental to their business activities, including tax matters. While the outcome of these matters cannot be predicted with certainty, they are being vigorously defended and the Company does not currently expect that any of them will have a material adverse effect on its business or financial position. However, should one or more of these matters be resolved in a manner adverse to its current expectation, the effect on the Company\u2019s results of operations for a particular fiscal reporting period could be material.\n19. Related Party Transactions\nThe Company engages in transactions with its equity method investees primarily for the procuring and processing of inventory. The following summarizes sales and purchases transactions with related parties:",
+   "prose_after": "The Company included the following related party balances in its condensed consolidated balance sheets:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     "",
+     "Location in the Condensed Consolidated Balance Sheets"
+    ],
+    [
+     "Accounts receivable, related parties",
+     "$",
+     "770",
+     "$",
+     "1,283",
+     "$",
+     "1,896",
+     "Other receivables"
+    ],
+    [
+     "Notes receivable, related parties",
+     "\u2014",
+     "",
+     "2,579",
+     "",
+     "1,431",
+     "",
+     "Other receivables"
+    ],
+    [
+     "Accounts payable, related parties",
+     "39,640",
+     "",
+     "12,232",
+     "",
+     "41,747",
+     "",
+     "Accounts payable"
+    ],
+    [
+     "Advances from related parties",
+     "3,494",
+     "",
+     "13,804",
+     "",
+     "15,240",
+     "",
+     "Advances from customers"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The Company included the following related party balances in its condensed consolidated balance sheets:",
+   "prose_after": "Transactions with Significant Shareholders\nOn August 24, 2020, the Company entered into an Exit Term Loan Credit Agreement and issued Senior Secured First Lien Notes with certain lenders, including the Glendon Investor and the Monarch Investor.\nOn April 23, 2021, the Company and certain of its subsidiaries with certain funds managed by the Glendon Investor and the Monarch Investor, as lenders, and related matters entered into a $120,000 delayed-draw credit facility agreement (see \"Note 12. Debt Arrangements\" for additional information). After that date, a fund managed by Owl Creek Asset Management, L.P. became a lender under the Initial DDTL Facility. On December 30, 2021, the Company repaid $15,375 of the Initial DDTL Facility. On June 2, 2022, Intabex, the Company and the DDTL Parent Guarantors entered into the Amendment and Restatement Agreement with the DDTL Facility Lenders and the DDTL Agent to amend and restate the Initial DDTL Facility Credit Agreement as set forth in the DDTL Credit Agreement, which became effective on July 28, 2022 (see \"Note 12. Debt Arrangements\" for additional information). In connection with the effectiveness of the DDTL Credit Agreement, certain funds managed by Glendon Capital Management, L.P. (the \"Glendon Investor\"), certain funds managed by Monarch Alternative Capital LP (the \"Monarch Investor\"), and a fund managed by Owl Creek Asset Management, L.P. received $5,119 of the aggregate $5,250 in exit fee payments from the repayment of the principal amount under the Initial DDTL Facility. The Glendon Investor, the Monarch Investor and a fund managed by Owl Creek Asset Management, L.P. received in the aggregate $3,900 of the total $4,000 in commitment and closing fees, which were reflected as original issue discount, paid to all DDTL Loan Lenders in connection with the aggregate $97,500 principal amount of the DDTL Term Loans made by them of the total $100,000 aggregate principal amount of the DDTL Term Loans made by all DDTL Loan Lenders.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Sales and other operating revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leaf",
+     "$",
+     "652,257",
+     "$",
+     "426,124",
+     "$",
+     "1,498,824",
+     "$",
+     "1,146,937"
+    ],
+    [
+     "All Other",
+     "3,296",
+     "",
+     "2,818",
+     "",
+     "8,912",
+     "",
+     "9,496",
+     ""
+    ],
+    [
+     "Consolidated sales and other operating revenues",
+     "$",
+     "655,553",
+     "$",
+     "428,942",
+     "$",
+     "1,507,736",
+     "$",
+     "1,156,433"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment operating income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leaf",
+     "$",
+     "47,268",
+     "$",
+     "36,617",
+     "$",
+     "94,696",
+     "$",
+     "71,011"
+    ],
+    [
+     "All Other",
+     "(5,626)",
+     "",
+     "(5,463)",
+     "",
+     "(14,621)",
+     "",
+     "(19,107)",
+     ""
+    ],
+    [
+     "Segment operating income",
+     "41,642",
+     "",
+     "31,154",
+     "",
+     "80,075",
+     "",
+     "51,904",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restructuring and asset impairment charges",
+     "35",
+     "",
+     "560",
+     "",
+     "4,380",
+     "",
+     "7,652",
+     ""
+    ],
+    [
+     "Goodwill impairment",
+     "\u2014",
+     "",
+     "372",
+     "",
+     "\u2014",
+     "",
+     "372",
+     ""
+    ],
+    [
+     "Consolidated operating income",
+     "$",
+     "41,607",
+     "$",
+     "30,222",
+     "$",
+     "75,695",
+     "$",
+     "43,880"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "In connection with the CCAA Proceeding, the DIP Lender, a non-U.S. subsidiary of the Company, provided Figr Brands with secured debtor-in-possession financing to fund the working capital needs of the Canadian Cannabis Subsidiaries in accordance with the cash flow projections approved by the Monitor and the DIP Lender. These payments also funded fees and expenses paid to the DIP Lender, professional fees and expenses incurred by the Canadian Cannabis Subsidiaries and the Monitor in respect of the CCAA Proceeding, and such other costs and expenses of the Canadian Cannabis Subsidiaries as agreed to by the DIP Lender. On July 8, 2021, the loans under the Canadian DIP Facility were fully repaid to the DIP Lender.\n20. Segment Information\nThe following summarizes segment information, with the All Other category being included for purposes of reconciliation of the respective balances below of the Leaf segment (the Company's sole reportable segment) to the condensed consolidated financial statements:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Segment assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leaf",
+     "$",
+     "1,587,806",
+     "$",
+     "1,539,210",
+     "$",
+     "1,641,552"
+    ],
+    [
+     "All Other",
+     "42,851",
+     "",
+     "61,487",
+     "",
+     "56,975",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,630,657",
+     "$",
+     "1,600,697",
+     "$",
+     "1,698,527"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 923,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "21. Subsequent Events\nDebt Exchange Transactions\nAs contemplated by the Support Agreement described in \"Note 12. Debt Arrangements\", on January 5, 2023, the Holding Companies commenced a set of exchange transactions (collectively, the \"Exchange Transactions\") in which, among other things:\n\u2022Each holder of the DDTL Facility Loans was offered the opportunity to exchange all of its DDTL Facility Loans for (i) an equal principal amount of new senior secured term loans due December 31, 2027 with Pyxus Holdings as the borrower (the \"New Intabex Loans\") and (ii) additional New Intabex Loans in a principal amount equal to 2% of the principal amount of such holder\u2019s exchanged DDTL Facility Loans on account of the exit fee that would be payable under certain circumstances on the repayment of the DDTL Facility Loans (the \"DDTL Facility Loans Exchange Offer\");\n\u2022Each holder of the Exit Facility Loans was offered the opportunity to exchange (i) 40% of its Exit Facility Loans for an equal principal amount of New Intabex Loans and (ii) 60% of its Exit Facility Loans for an equal principal amount of new senior secured term loans due December 31, 2027 with Pyxus Holdings as the borrower (the \"New Pyxus Loans\" and, together with the New Intabex Loans, the \"New Term Loans\"); provided that, if less than all holders of Exit Facility Loans participate in the Exchange Transactions the amount of New Intabex Loans reserved for the non-participating holders was be allocated ratably to the participating holders (and the amount of New Pyxus Loans to be issued to participating holders shall be reduced commensurately) (the \"Exit Facility Loans Exchange Offer\");",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Three Months Ended December 31, 2022 and 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "(in millions, except per kilo amounts)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "$",
+     "%"
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "655.6",
+     "",
+     "$",
+     "428.9",
+     "",
+     "226.7",
+     "52.9"
+    ],
+    [
+     "Cost of goods and services sold",
+     "567.8",
+     "",
+     "",
+     "363.7",
+     "",
+     "",
+     "204.1",
+     "56.1"
+    ],
+    [
+     "Gross profit",
+     "87.8",
+     "",
+     "",
+     "65.2",
+     "",
+     "",
+     "22.6",
+     "34.7"
+    ],
+    [
+     "Gross profit as a percent of sales",
+     "13.4",
+     "",
+     "%",
+     "15.2",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "$",
+     "37.1",
+     "",
+     "$",
+     "34.2",
+     "",
+     "2.9",
+     "8.5"
+    ],
+    [
+     "Other expense (income), net",
+     "9.0",
+     "",
+     "",
+     "(0.2)",
+     "",
+     "",
+     "9.2",
+     "4,600.0"
+    ],
+    [
+     "Restructuring and asset impairment charges",
+     "\u2014",
+     "",
+     "",
+     "0.6",
+     "",
+     "",
+     "(0.6)",
+     "(100.0)"
+    ],
+    [
+     "Goodwill impairment",
+     "\u2014",
+     "",
+     "",
+     "0.4",
+     "",
+     "",
+     "(0.4)",
+     "(100.0)"
+    ],
+    [
+     "Operating income",
+     "41.6",
+     "",
+     "",
+     "30.2",
+     "",
+     "",
+     "11.4",
+     "37.7"
+    ],
+    [
+     "Loss on deconsolidation/disposition of subsidiaries",
+     "\u2014",
+     "",
+     "",
+     "7.1",
+     "",
+     "",
+     "(7.1)",
+     "(100.0)"
+    ],
+    [
+     "Interest expense, net",
+     "31.4",
+     "",
+     "",
+     "27.5",
+     "",
+     "",
+     "3.9",
+     "14.2"
+    ],
+    [
+     "Income tax expense",
+     "17.9",
+     "",
+     "",
+     "31.8",
+     "",
+     "",
+     "(13.9)",
+     "(43.7)"
+    ],
+    [
+     "Income from unconsolidated affiliates",
+     "5.4",
+     "",
+     "",
+     "6.1",
+     "",
+     "",
+     "(0.7)",
+     "(11.5)"
+    ],
+    [
+     "Net income attributable to noncontrolling interests",
+     "0.1",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.1",
+     "100.0"
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "$",
+     "(2.3)",
+     "",
+     "$",
+     "(30.1)",
+     "",
+     "27.8",
+     "92.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leaf:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "625.1",
+     "",
+     "$",
+     "394.8",
+     "",
+     "230.3",
+     "58.3"
+    ],
+    [
+     "Tobacco costs",
+     "510.2",
+     "",
+     "",
+     "313.6",
+     "",
+     "",
+     "196.6",
+     "62.7"
+    ],
+    [
+     "Transportation, storage, and other period costs",
+     "32.8",
+     "",
+     "",
+     "23.2",
+     "",
+     "",
+     "9.6",
+     "41.5"
+    ],
+    [
+     "Total cost of goods sold",
+     "543.0",
+     "",
+     "",
+     "336.8",
+     "",
+     "",
+     "206.2",
+     "61.2"
+    ],
+    [
+     "Product revenue gross profit",
+     "82.1",
+     "",
+     "",
+     "58.0",
+     "",
+     "",
+     "24.1",
+     "41.5"
+    ],
+    [
+     "Product revenue gross profit as a percent of sales",
+     "13.1",
+     "",
+     "%",
+     "14.7",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kilos sold",
+     "129.4",
+     "",
+     "",
+     "106.2",
+     "",
+     "",
+     "23.3",
+     "21.9"
+    ],
+    [
+     "Average price per kilo",
+     "$",
+     "4.83",
+     "",
+     "$",
+     "3.72",
+     "",
+     "1.11",
+     "29.8"
+    ],
+    [
+     "Average cost per kilo",
+     "4.19",
+     "",
+     "",
+     "3.17",
+     "",
+     "",
+     "1.02",
+     "32.2"
+    ],
+    [
+     "Average gross profit per kilo",
+     "0.64",
+     "",
+     "",
+     "0.55",
+     "",
+     "",
+     "0.09",
+     "16.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Processing and other revenues",
+     "$",
+     "27.1",
+     "",
+     "$",
+     "31.3",
+     "",
+     "(4.2)",
+     "(13.3)"
+    ],
+    [
+     "Processing and other revenues costs of services sold",
+     "20.5",
+     "",
+     "",
+     "22.3",
+     "",
+     "",
+     "(1.7)",
+     "(7.8)"
+    ],
+    [
+     "Processing and other gross profit",
+     "6.6",
+     "",
+     "",
+     "9.0",
+     "",
+     "",
+     "(2.4)",
+     "(26.9)"
+    ],
+    [
+     "Processing and other gross profit as a percent of sales",
+     "24.3",
+     "",
+     "%",
+     "28.9",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "3.3",
+     "",
+     "$",
+     "2.8",
+     "",
+     "0.5",
+     "17.0"
+    ],
+    [
+     "Cost of goods and services sold",
+     "4.2",
+     "",
+     "",
+     "4.6",
+     "",
+     "",
+     "(0.4)",
+     "(9.3)"
+    ],
+    [
+     "Gross loss",
+     "(0.9)",
+     "",
+     "",
+     "(1.8)",
+     "",
+     "",
+     "0.9",
+     "50.2"
+    ],
+    [
+     "Gross loss as a percent of sales",
+     "(27.4)",
+     "",
+     "%",
+     "(64.4)",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note: dollar and percentage changes may not calculate exactly due to rounding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended December 31, 2022 and 2021",
+    "Three Months Ended December 31,",
+    "Change"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The Company is a global agricultural company with 150 years of experience delivering value-added products and services to businesses and customers. The Company is a trusted provider of responsibly sourced, independently verified, sustainable, and traceable products and ingredients.\nHistorically, the Company had nine operating segments that were organized by product category and geographic area and were aggregated into three reportable segments for financial reporting purposes: Leaf - North America, Leaf - Other Regions, and Other Products and Services. During year ended March 31, 2022, the Company reevaluated its operating and reportable segments under ASC Topic 280 - Segment Reporting. As a result of this reevaluation, effective during the fourth quarter of the year ended March 31, 2022, the Company has eight operating segments organized by geographic area and product category that are aggregated into one reportable segment for financial reporting purposes: Leaf. An All Other category is included for purposes of reconciliation of the results of the Leaf reportable segment to the consolidated results. See \"Note 1. Basis of Presentation and Summary of Significant Accounting Policies\" for additional information.\nResults of Operations",
+   "prose_after": "Sales and other operating revenues were $428.9 million for the three months ended December 31, 2021 and $655.6 million for the three months ended December 31, 2022, an increase of $226.7 million, or 52.9%. This increase was primarily due to a 21.9% increase in leaf volume and a 29.8% increase in average price per kilo. The increase in leaf volume was driven by increased volume from Asia, more normalized timing of shipments from South America from the current crop, and the timing of shipments from North America that were delayed from the three months ended September 30, 2022 into the three months ended December 31, 2022. The increase in average price per kilo was mainly due to higher tobacco prices.\nCost of goods and services sold were $363.7 million for the three months ended December 31, 2021 and $567.8 million for the three months ended December 31, 2022, an increase of $204.1 million, or 56.1%. This increase was mainly due to the increase in sales and other operating revenues. Average cost per kilo increased primarily due to higher tobacco prices.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1055,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nine Months Ended December 31, 2022 and 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "(in millions, except per kilo amounts)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "$",
+     "%"
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "1,507.7",
+     "",
+     "$",
+     "1,156.4",
+     "",
+     "351.3",
+     "30.4"
+    ],
+    [
+     "Cost of goods and services sold",
+     "1,311.9",
+     "",
+     "",
+     "997.0",
+     "",
+     "",
+     "314.9",
+     "31.6"
+    ],
+    [
+     "Gross profit",
+     "195.9",
+     "",
+     "",
+     "159.4",
+     "",
+     "",
+     "36.5",
+     "22.9"
+    ],
+    [
+     "Gross profit as a percent of sales",
+     "13.0",
+     "",
+     "%",
+     "13.8",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "$",
+     "106.7",
+     "",
+     "$",
+     "106.0",
+     "",
+     "0.7",
+     "0.7"
+    ],
+    [
+     "Other expense, net",
+     "9.1",
+     "",
+     "",
+     "1.5",
+     "",
+     "",
+     "7.6",
+     "506.7"
+    ],
+    [
+     "Restructuring and asset impairment charges",
+     "4.4",
+     "",
+     "",
+     "7.7",
+     "",
+     "",
+     "(3.3)",
+     "(42.9)"
+    ],
+    [
+     "Goodwill impairment",
+     "\u2014",
+     "",
+     "",
+     "0.4",
+     "",
+     "",
+     "(0.4)",
+     "(100.0)"
+    ],
+    [
+     "Operating income",
+     "75.7",
+     "",
+     "",
+     "43.9",
+     "",
+     "",
+     "31.8",
+     "72.4"
+    ],
+    [
+     "Loss on deconsolidation/disposition of subsidiaries",
+     "0.6",
+     "",
+     "",
+     "9.5",
+     "",
+     "",
+     "(8.9)",
+     "(93.7)"
+    ],
+    [
+     "Loss on pension settlement",
+     "2.6",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2.6",
+     "100.0"
+    ],
+    [
+     "Interest expense, net",
+     "85.6",
+     "",
+     "",
+     "82.8",
+     "",
+     "",
+     "2.8",
+     "3.4"
+    ],
+    [
+     "Income tax expense",
+     "15.8",
+     "",
+     "",
+     "9.2",
+     "",
+     "",
+     "6.6",
+     "71.7"
+    ],
+    [
+     "Income from unconsolidated affiliates",
+     "10.7",
+     "",
+     "",
+     "6.0",
+     "",
+     "",
+     "4.7",
+     "78.3"
+    ],
+    [
+     "Net income (loss) attributable to noncontrolling interests",
+     "0.2",
+     "",
+     "",
+     "(0.4)",
+     "",
+     "",
+     "0.6",
+     "150.0"
+    ],
+    [
+     "Net loss attributable to Pyxus International, Inc.",
+     "$",
+     "(18.5)",
+     "",
+     "$",
+     "(51.3)",
+     "",
+     "32.8",
+     "63.9"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leaf:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "1,423.6",
+     "",
+     "$",
+     "1,064.3",
+     "",
+     "359.3",
+     "33.8"
+    ],
+    [
+     "Tobacco costs",
+     "1,164.8",
+     "",
+     "",
+     "858.3",
+     "",
+     "",
+     "306.5",
+     "35.7"
+    ],
+    [
+     "Transportation, storage, and other period costs",
+     "77.8",
+     "",
+     "",
+     "63.5",
+     "",
+     "",
+     "14.4",
+     "22.6"
+    ],
+    [
+     "Total cost of goods sold",
+     "1,242.7",
+     "",
+     "",
+     "921.8",
+     "",
+     "",
+     "320.9",
+     "34.8"
+    ],
+    [
+     "Product revenue gross profit",
+     "181.0",
+     "",
+     "",
+     "142.5",
+     "",
+     "",
+     "38.4",
+     "27.0"
+    ],
+    [
+     "Product revenue gross profit as a percent of sales",
+     "12.7",
+     "",
+     "%",
+     "13.4",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kilos sold",
+     "302.9",
+     "",
+     "",
+     "261.6",
+     "",
+     "",
+     "41.3",
+     "15.8"
+    ],
+    [
+     "Average price per kilo",
+     "$",
+     "4.70",
+     "",
+     "$",
+     "4.07",
+     "",
+     "0.63",
+     "15.5"
+    ],
+    [
+     "Average cost per kilo",
+     "4.10",
+     "",
+     "",
+     "3.52",
+     "",
+     "",
+     "0.58",
+     "16.5"
+    ],
+    [
+     "Average gross profit per kilo",
+     "0.60",
+     "",
+     "",
+     "0.55",
+     "",
+     "",
+     "0.05",
+     "9.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Processing and other revenues",
+     "$",
+     "75.2",
+     "",
+     "$",
+     "82.7",
+     "",
+     "(7.4)",
+     "(9.0)"
+    ],
+    [
+     "Processing and other revenues costs of services sold",
+     "56.1",
+     "",
+     "",
+     "59.2",
+     "",
+     "",
+     "(3.2)",
+     "(5.3)"
+    ],
+    [
+     "Processing and other gross profit",
+     "19.1",
+     "",
+     "",
+     "23.4",
+     "",
+     "",
+     "(4.3)",
+     "(18.3)"
+    ],
+    [
+     "Processing and other gross profit as a percent of sales",
+     "25.4",
+     "",
+     "%",
+     "28.4",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and other operating revenues",
+     "$",
+     "8.9",
+     "",
+     "$",
+     "9.5",
+     "",
+     "(0.6)",
+     "(6.1)"
+    ],
+    [
+     "Cost of goods and services sold",
+     "13.1",
+     "",
+     "",
+     "16.1",
+     "",
+     "",
+     "(2.9)",
+     "(18.2)"
+    ],
+    [
+     "Gross loss",
+     "(4.2)",
+     "",
+     "",
+     "(6.6)",
+     "",
+     "",
+     "2.3",
+     "35.7"
+    ],
+    [
+     "Gross loss as a percent of sales",
+     "(47.3)",
+     "",
+     "%",
+     "(69.0)",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note: dollar and percentage changes may not calculate exactly due to rounding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended December 31, 2022 and 2021",
+    "Nine Months Ended December 31,",
+    "Change"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1133,
+    "end_line": 1192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "Operating income was $30.2 million for the three months ended December 31, 2021 and $41.6 million for the three months ended December 31, 2022, an increase of $11.4 million, or 37.7%. This increase was mainly due to higher leaf sales and other operating revenues from increased volume and average price per kilo and was partially offset by higher other expense, net, which was primarily due to higher utilization of securitization facilities.\nIncome tax expense was $31.8 million for the three months ended December 31, 2021 and $17.9 million for the three months ended December 31, 2022, a decrease of $13.9 million, or 43.7%. The decrease was driven by the Company utilizing a different method for estimating tax expense for the period ended December 31, 2022. Using the discrete method for the period ended December 31, 2022, the Company determined current and deferred income tax expense as if the nine-month interim period of the current fiscal year were an annual period, which resulted in the recognition of the fiscal 2023 year-to-date expense in the quarter. Refer to See \"Note 5. Income Taxes\" to the \"Notes to Condensed Consolidated Financial Statements\" for additional information.",
+   "prose_after": "Sales and other operating revenues were $1,156.4 million for the nine months ended December 31, 2021 and $1,507.7 million for the nine months ended December 31, 2022, an increase of $351.3 million, or 30.4%. This increase was primarily due to a 15.8% increase in leaf volume and a 15.5% increase in average price per kilo. The increase in leaf volume was driven by increased volume from Asia and North America, more normalized timing of shipments from South America, and the timing of shipments from Asia. The increase in average price per kilo was mainly due to higher tobacco prices.\nCost of goods and services sold were $997.0 million for the nine months ended December 31, 2021 and $1,311.9 million for the nine months ended December 31, 2022, an increase of $314.9 million, or 31.6%. This increase was mainly due to the increase in sales and other operating revenues. Average cost per kilo increased primarily due to higher tobacco prices.\nGross profit was $159.4 million for the nine months ended December 31, 2021 and $195.9 million for the nine months ended December 31, 2022, an increase of $36.5 million, or 22.9%. This increase was mainly due to the increase in sales and other operating revenues. Gross profit as a percent of sales went from 13.8% for the nine months ended December 31, 2021 to 13.0% for the nine months ended December 31, 2022. This decrease was primarily due to customer mix in South America and the impact of short-crops in certain markets in Africa.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1132,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in millions)",
+     "Total Borrowing Capacity",
+     "",
+     "Remaining Amount Available",
+     ""
+    ],
+    [
+     "ABL Credit Facility",
+     "$",
+     "100.0",
+     "$",
+     "100.0"
+    ],
+    [
+     "Foreign seasonal lines of credit",
+     "711.2",
+     "",
+     "218.9",
+     ""
+    ],
+    [
+     "Other long-term debt",
+     "0.6",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Letters of credit",
+     "18.4",
+     "",
+     "4.1",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "830.2",
+     "$",
+     "323.1"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1225,
+    "end_line": 1239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "We continue to finance our business with a combination of short-term and long-term credit lines, the long-term debt securities, advances from customers, and cash from operations when available. See \"Note 12. Debt Arrangements\" and \"Note 21. Subsequent Events\" to the \"Notes to Condensed Consolidated Financial Statements\" for a summary of our short-term and long-term debt.\nWe continuously monitor and, as available, adjust funding sources as needed to enhance and drive various business opportunities. From time to time we may take steps to reduce our debt or otherwise improve our financial position. Such actions could include prepayments, open market debt repurchases, negotiated repurchases, other redemptions or retirements of outstanding debt, and refinancing of debt. The amount of prepayments or the amount of debt that may be repurchased, refinanced, or otherwise retired, if any, will depend on market conditions, trading levels of our debt, our cash position, compliance with debt covenants, and other considerations.\nThe following summarizes our total borrowing capacity at December 31, 2022 and 2021 under our short-term and long-term credit lines and letter of credit facilities and the remaining available amount after the reduction for outstanding borrowings and amounts reserved for outstanding letters of credit:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in millions)",
+     "Total Borrowing Capacity",
+     "",
+     "Remaining Amount Available",
+     ""
+    ],
+    [
+     "ABL Credit Facility",
+     "$",
+     "75.0",
+     "$",
+     "22.5"
+    ],
+    [
+     "Foreign seasonal lines of credit",
+     "619.5",
+     "",
+     "235.2",
+     ""
+    ],
+    [
+     "Other long-term debt",
+     "2.5",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Letters of credit",
+     "12.9",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "709.9",
+     "$",
+     "261.7"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1240,
+    "end_line": 1254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Net Debt\nWe refer to \"Net debt,\" a non-GAAP measure, as total debt liabilities less cash and cash equivalents. We believe this non-GAAP financial measure is useful to monitor leverage and to evaluate changes to the Company's capital structure. A limitation associated with using net debt is that it subtracts cash and cash equivalents, and therefore, may imply that management intends to use cash and cash equivalents to reduce outstanding debt and that cash held in certain jurisdictions can be applied to repay obligations owing in other jurisdictions and without reduction for applicable taxes. In addition, net debt suggests that our debt obligations are less than the most comparable GAAP measure indicates.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in millions)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Notes payable to banks(1)",
+     "$",
+     "492.3",
+     "$",
+     "384.2",
+     "$",
+     "378.6"
+    ],
+    [
+     "Current portion of long-term debt",
+     "97.3",
+     "",
+     "107.7",
+     "",
+     "107.9",
+     ""
+    ],
+    [
+     "Long-term debt(2)",
+     "496.6",
+     "",
+     "541.1",
+     "",
+     "580.5",
+     ""
+    ],
+    [
+     "Total debt liabilities*",
+     "$",
+     "1,086.2",
+     "$",
+     "1,033.0",
+     "$",
+     "1,066.9"
+    ],
+    [
+     "Less: Cash and cash equivalents",
+     "216.4",
+     "",
+     "146.1",
+     "",
+     "198.8",
+     ""
+    ],
+    [
+     "Net debt*",
+     "$",
+     "869.8",
+     "$",
+     "886.9",
+     "$",
+     "868.2"
+    ],
+    [
+     "* Amounts may not equal column totals due to rounding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) The increase from December 31, 2021 to December 31, 2022 is due to higher borrowings under the Company's foreign seasonal lines of credit used to finance higher green tobacco prices and processing costs in Africa and South America as well as increased borrowing capacity in certain markets. The increase from March 31, 2022 to December 31, 2022 is due to seasonality of the business, with higher working capital requirements in the first half of the fiscal year.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2) The decrease in long-term debt from December 31, 2021 and March 31, 2022 is due to the full repayment of outstanding indebtedness under the ABL Credit Facility in December 2022. Weighted average borrowings outstanding under the ABL Credit Facility during the three months ended December 31, 2022 was $71.6 million.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1260,
+    "end_line": 1284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "Net Debt\nWe refer to \"Net debt,\" a non-GAAP measure, as total debt liabilities less cash and cash equivalents. We believe this non-GAAP financial measure is useful to monitor leverage and to evaluate changes to the Company's capital structure. A limitation associated with using net debt is that it subtracts cash and cash equivalents, and therefore, may imply that management intends to use cash and cash equivalents to reduce outstanding debt and that cash held in certain jurisdictions can be applied to repay obligations owing in other jurisdictions and without reduction for applicable taxes. In addition, net debt suggests that our debt obligations are less than the most comparable GAAP measure indicates.",
+   "prose_after": "Working Capital\nThe following summarizes our working capital:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in millions except for current ratio)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash",
+     "$",
+     "218.4",
+     "$",
+     "149.9",
+     "$",
+     "200.9"
+    ],
+    [
+     "Trade and other receivables, net",
+     "222.3",
+     "",
+     "206.7",
+     "",
+     "260.2",
+     ""
+    ],
+    [
+     "Inventories and advances to tobacco suppliers",
+     "776.3",
+     "",
+     "802.0",
+     "",
+     "798.4",
+     ""
+    ],
+    [
+     "Recoverable income taxes",
+     "7.1",
+     "",
+     "5.3",
+     "",
+     "7.9",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "47.1",
+     "",
+     "47.3",
+     "",
+     "60.3",
+     ""
+    ],
+    [
+     "Total current assets*",
+     "$",
+     "1,271.2",
+     "$",
+     "1,211.2",
+     "$",
+     "1,327.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable to banks",
+     "$",
+     "492.3",
+     "$",
+     "384.2",
+     "$",
+     "378.6"
+    ],
+    [
+     "Accounts payable",
+     "135.1",
+     "",
+     "90.0",
+     "",
+     "179.0",
+     ""
+    ],
+    [
+     "Advances from customers",
+     "30.8",
+     "",
+     "63.2",
+     "",
+     "53.0",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "95.3",
+     "",
+     "79.6",
+     "",
+     "82.2",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "97.3",
+     "",
+     "107.7",
+     "",
+     "107.9",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "15.8",
+     "",
+     "14.5",
+     "",
+     "13.7",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "866.6",
+     "$",
+     "739.2",
+     "$",
+     "814.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current ratio",
+     "1.5 to 1",
+     "",
+     "1.6 to 1",
+     "",
+     "1.6 to 1",
+     ""
+    ],
+    [
+     "Working capital",
+     "$",
+     "404.6",
+     "$",
+     "472.0",
+     "$",
+     "513.2"
+    ],
+    [
+     "* Amounts may not equal column totals due to rounding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1289,
+    "end_line": 1314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "Working Capital\nThe following summarizes our working capital:",
+   "prose_after": "Working capital decreased from December 31, 2021 to December 31, 2022 by $67.4 million, or 14.3%, primarily due to increased foreign seasonal lines of credit used to finance higher green tobacco prices and processing costs in Africa and South America and increased borrowing capacity in certain markets as well as the utilization of cash from higher sales of tobacco inventories to repay the outstanding indebtedness under the ABL Credit Facility in December 2022, which was classified as long-term debt.\nInventories\nThe following summarizes inventory committed to a customer and uncommitted inventory balances for processed tobacco:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in millions)",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Committed",
+     "$",
+     "543.2",
+     "$",
+     "590.4",
+     "$",
+     "471.9"
+    ],
+    [
+     "Uncommitted",
+     "28.7",
+     "",
+     "60.0",
+     "",
+     "45.7",
+     ""
+    ],
+    [
+     "Total processed tobacco",
+     "$",
+     "571.9",
+     "$",
+     "650.4",
+     "$",
+     "517.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1322,
+    "end_line": 1332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "Working capital decreased from December 31, 2021 to December 31, 2022 by $67.4 million, or 14.3%, primarily due to increased foreign seasonal lines of credit used to finance higher green tobacco prices and processing costs in Africa and South America and increased borrowing capacity in certain markets as well as the utilization of cash from higher sales of tobacco inventories to repay the outstanding indebtedness under the ABL Credit Facility in December 2022, which was classified as long-term debt.\nInventories\nThe following summarizes inventory committed to a customer and uncommitted inventory balances for processed tobacco:",
+   "prose_after": "Total processed tobacco decreased from December 31, 2021 to December 31, 2022 by $78.5 million, or 12.1%, primarily due to higher sales of inventories. See \"Note 1. Basis of Presentation and Summary of Significant Accounting Policies\" and \"Note 7. Inventories\" to the \"Notes to Condensed Consolidated Financial Statements\" for additional information.\nSources and Uses of Cash\nWe typically finance our non-U.S. tobacco operations with short-term foreign seasonal lines of credit. These foreign lines of credit are generally seasonal in nature, normally extending for a term of 180 to 365 days, corresponding to the tobacco crop cycle in that market. These short-term foreign seasonal lines of credit are typically uncommitted and provide lenders the right to cease making loans and demand repayment of loans. These short-term foreign seasonal lines of credit are generally renewed at the outset of each tobacco season. We maintain various other financing arrangements to meet the cash requirements of our businesses. See \"Note 12. Debt Arrangements\" to the \"Notes to Condensed Consolidated Financial Statements\" for additional information.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in millions)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Trade and other receivables",
+     "$",
+     "(91.2)",
+     "$",
+     "(171.7)"
+    ],
+    [
+     "Inventories and advances to tobacco suppliers",
+     "18.5",
+     "",
+     "(34.1)",
+     ""
+    ],
+    [
+     "Payables and accrued expenses",
+     "(29.8)",
+     "",
+     "(28.1)",
+     ""
+    ],
+    [
+     "Advances from customers",
+     "(22.2)",
+     "",
+     "51.4",
+     ""
+    ],
+    [
+     "Other",
+     "14.1",
+     "",
+     "(2.3)",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "$",
+     "(110.6)",
+     "$",
+     "(184.8)"
+    ],
+    [
+     "Collections from beneficial interests in securitized trade receivables",
+     "122.6",
+     "",
+     "155.2",
+     ""
+    ],
+    [
+     "Other",
+     "(5.2)",
+     "",
+     "(7.4)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "$",
+     "117.4",
+     "$",
+     "147.8"
+    ],
+    [
+     "Net proceeds from short-term borrowings",
+     "116.5",
+     "",
+     "11.9",
+     ""
+    ],
+    [
+     "Proceeds from DDTL facility",
+     "\u2014",
+     "",
+     "117.6",
+     ""
+    ],
+    [
+     "Net repayment of revolving loan facilities",
+     "(90.0)",
+     "",
+     "(15.0)",
+     ""
+    ],
+    [
+     "Other",
+     "(20.0)",
+     "",
+     "(22.3)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "6.5",
+     "$",
+     "92.2"
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "3.8",
+     "",
+     "(2.6)",
+     ""
+    ],
+    [
+     "Increase in cash, cash equivalents, and restricted cash*",
+     "$",
+     "17.1",
+     "$",
+     "52.5"
+    ],
+    [
+     "* Amounts may not equal column totals due to rounding",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1346,
+    "end_line": 1374
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "We typically finance our non-U.S. tobacco operations with short-term foreign seasonal lines of credit. These foreign lines of credit are generally seasonal in nature, normally extending for a term of 180 to 365 days, corresponding to the tobacco crop cycle in that market. These short-term foreign seasonal lines of credit are typically uncommitted and provide lenders the right to cease making loans and demand repayment of loans. These short-term foreign seasonal lines of credit are generally renewed at the outset of each tobacco season. We maintain various other financing arrangements to meet the cash requirements of our businesses. See \"Note 12. Debt Arrangements\" to the \"Notes to Condensed Consolidated Financial Statements\" for additional information.\nWe utilize capital in excess of cash flow from operations to finance accounts receivable, inventory, and advances to tobacco suppliers in foreign countries. In addition, we may periodically elect to purchase, redeem, repay, retire, or cancel indebtedness prior to stated maturity under our various foreign credit lines.\nAs of December 31, 2022, our cash, cash equivalents, and restricted cash was $218.4 million of which approximately $95.8 million was held in foreign jurisdictions, certain of which are subject to exchange controls and tax consequences that could limit our ability to fully repatriate these funds. Fluctuation of the U.S. dollar versus many of the currencies in which we have costs may have an impact on our working capital requirements. We will continue to monitor and hedge foreign currency costs, as needed.\nThe following summarizes the sources and uses of our cash flows:",
+   "prose_after": "The change in cash, cash equivalents, and restricted cash decreased by $35.4 million for the nine months ended December 31, 2022 compared to the nine months ended December 31, 2021. The decrease was primarily due to the full repayment of the outstanding indebtedness under the ABL Credit Facility during the period ended December 31, 2022 and the issuance of the DDTL Facility during the period ended December 31, 2021. These decreases were partially offset by higher sales and higher utilization of securitization facilities, which resulted in less cash used by operating activities.\nPlanned Capital Expenditures\nCapital investments in our leaf operations have been made primarily for routine replacement of machinery and equipment, as well as investments in assets that will add value for our customers and increase our efficiency. We have incurred approximately $9.9 million in capital expenditures for the nine months ended December 31, 2022, and are expecting to incur an additional $11.1 million for the remainder of the fiscal year ending March 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1402,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     ""
+    ],
+    [
+     "(in millions)",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Contributions made during the period (1)",
+     "$",
+     "9.6"
+    ],
+    [
+     "Contributions expected for the remainder of the fiscal year",
+     "0.3",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "9.9"
+    ],
+    [
+     "(1) Includes $5.3 million paid in the three months ended September 30, 2022 to fully fund the U.S. Pension Plan's liabilities in preparation to purchase a group annuity contract to administer future payments to the remaining U.S. Pension Plan participants.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "The change in cash, cash equivalents, and restricted cash decreased by $35.4 million for the nine months ended December 31, 2022 compared to the nine months ended December 31, 2021. The decrease was primarily due to the full repayment of the outstanding indebtedness under the ABL Credit Facility during the period ended December 31, 2022 and the issuance of the DDTL Facility during the period ended December 31, 2021. These decreases were partially offset by higher sales and higher utilization of securitization facilities, which resulted in less cash used by operating activities.\nPlanned Capital Expenditures\nCapital investments in our leaf operations have been made primarily for routine replacement of machinery and equipment, as well as investments in assets that will add value for our customers and increase our efficiency. We have incurred approximately $9.9 million in capital expenditures for the nine months ended December 31, 2022, and are expecting to incur an additional $11.1 million for the remainder of the fiscal year ending March 31, 2023.\nPension and Postretirement Health and Life Insurance Benefits\nThe following summarizes cash contributions to pension and postretirement health and life insurance benefits:",
+   "prose_after": "No cash dividends were paid to shareholders during the nine months ended December 31, 2022. As of December 31, 2022, the payment of dividends is restricted under the terms of the ABL Credit Agreement, the Exit Term Loan Credit Agreement, and the Existing Notes Indenture.\nCritical Accounting Policies and Estimates\nAs of the date of this report, there are no material changes to the critical accounting policies and estimates previously disclosed in Part I, Item 7 \"Critical Accounting Policies and Estimates\" in the Company's Annual Report on Form 10-K for the fiscal year ended March 31, 2022.\nItem 3. Quantitative and Qualitative Disclosures About Market Risk\nThere have been no significant changes to our market risk exposures since March 31, 2022. For a discussion of our exposure to market risk, see Part II, Item 7A \"Quantitative and Qualitative Disclosures About Market Risk\" contained in our Annual Report on Form 10-K for the fiscal year ended March 31, 2022.\nItem 4. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1402,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "10.1",
+     "Support and Exchange Agreement, effective as of December 27, 2022, among Pyxus Holdings, Inc., Pyxus International, Inc., Pyxus Parent, Inc. and the Credit Parties party thereto, incorporated by reference to Exhibit 10.1 to the registrant\u2019s Current Report on Form 8-K filed on January 3, 2023 (File No. 000-25734)"
+    ],
+    [
+     "31.01",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)"
+    ],
+    [
+     "31.02",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)"
+    ],
+    [
+     "32",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (filed herewith)"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema (filed herewith)"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase (filed herewith)"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase (filed herewith)"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase (filed herewith)"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase (filed herewith)"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in the Interactive Data Files submitted as Exhibits 101.*)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "In June 2022, the U.S. Food and Drug Administration (the \"FDA\") announced its plan to publish a proposed rule in 2023 that would prohibit the sale of cigarettes in the United States other than cigarettes having significantly reduced levels of nicotine. The definitive provisions of such a proposed rule have not yet been announced and any rule proposal is subject to public comment prior to being adopted by the FDA. Accordingly, the terms of any such final rule are uncertain and the date of effectiveness of such a rule is also uncertain. While the FDA announced that reducing the nicotine levels of cigarettes would\nreduce consumption of cigarettes by future generations and facilitate current smokers to stop consuming cigarettes, it is uncertain whether such potential regulations, if they are adopted and become effective, will have such effect. While the impact of such potential regulations on the Company is also uncertain, such regulations, if they are adopted and become effective, could materially adversely affect our business, results of operations and financial condition.\nItem 6. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "SIGNATURE",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Pyxus International, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: February 14, 2023",
+     "/s/ Philip C. Garofolo"
+    ],
+    [
+     "",
+     "Philip C. Garofolo"
+    ],
+    [
+     "",
+     "Vice President - Chief Accounting Officer"
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SIGNATURE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1460,
+    "end_line": 1475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 21,
+     "label": "NOTE 21",
+     "title": "Subsequent Events                                                        23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 21
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1476,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5539 @@
+{
+ "accession": "0001555074-20-000013",
+ "cik": "0001555074",
+ "form": "10-K",
+ "filing_date": "2020-02-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "aamc10k12312019.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UNITED STATES VIRGIN ISLANDS",
+     "66-0783125"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE FISCAL YEAR ENDED DECEMBER 31, 2019\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCOMMISSION FILE NUMBER: 001-36063\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "5100 Tamarind Reef\nChristiansted, United States Virgin Islands 00820\n(Address of principal executive office)\n(340) 692-0525\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 14,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Exchange on which Registered"
+    ],
+    [
+     "Common stock, par value $0.01 per share",
+     "AAMC",
+     "NYSE American"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "5100 Tamarind Reef\nChristiansted, United States Virgin Islands 00820\n(Address of principal executive office)\n(340) 692-0525\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 14,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I",
+     "1"
+    ],
+    [
+     "Item 1. Business.",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "8"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments.",
+     "30"
+    ],
+    [
+     "Item 2. Properties.",
+     "31"
+    ],
+    [
+     "Item 3. Legal Proceedings.",
+     "31"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures.",
+     "32"
+    ],
+    [
+     "Part II",
+     "33"
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "33"
+    ],
+    [
+     "Item 6. Selected Financial Data.",
+     "34"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "35"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk.",
+     "41"
+    ],
+    [
+     "Item 8. Consolidated Financial Statements and Supplementary Data.",
+     "41"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.",
+     "41"
+    ],
+    [
+     "Item 9A. Controls and Procedures.",
+     "42"
+    ],
+    [
+     "Item 9B. Other Information.",
+     "44"
+    ],
+    [
+     "Part III",
+     "45"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance.",
+     "45"
+    ],
+    [
+     "Item 11. Executive Compensation.",
+     "45"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "45"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence.",
+     "45"
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services.",
+     "45"
+    ],
+    [
+     "Part IV",
+     "46"
+    ],
+    [
+     "Item 15. Exhibits.",
+     "46"
+    ],
+    [
+     "Signatures",
+     "48"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of common stock held by non-affiliates of the registrant was $8.2 million, based on the closing share price as reported on the New York Stock Exchange on June 28, 2019 and the assumption that all Directors and executive officers of the registrant and their families and beneficial holders of 10% of the registrant's common stock are affiliates. This determination of affiliate status is not necessarily a conclusive determination for any other purpose.\nAs of February 21, 2020, 1,618,800 shares of our common stock were outstanding (excluding 1,308,424 shares held as treasury stock).\nPortions of the registrant's definitive proxy statement for the registrant's 2020 annual meeting, to be filed within 120 days after the close of the registrant's fiscal year, are incorporated by reference into Part III of this Annual Report on Form 10-K.\nDecember 31, 2019\nTable of Contents",
+   "prose_after": "i\nReferences in this report to \u201cwe,\u201d \u201cour,\u201d \u201cus,\u201d \u201cAAMC\u201d or the \u201cCompany\u201d refer to Altisource Asset Management Corporation and its consolidated subsidiaries, unless otherwise indicated. References in this report to \u201cFront Yard\u201d refer to Front Yard Residential Corporation and its consolidated subsidiaries, unless otherwise indicated.\nSpecial note on forward-looking statements\nOur disclosure and analysis in this Annual Report on Form 10-K contain \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). In some cases, you can identify forward-looking statements by the use of forward-looking terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpredicts\u201d or \u201cpotential\u201d or the negative of these words and phrases or similar words or phrases that are predictions of or indicate future events or trends and that do not relate solely to historical matters. You can also identify forward-looking statements by discussions of strategy, plans or intentions.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter ended",
+     "High",
+     "",
+     "L[ ]w",
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "March 31",
+     "$",
+     "39.75",
+     "$",
+     "25.83",
+     "$",
+     "81.60",
+     "$",
+     "58.35"
+    ],
+    [
+     "June 30",
+     "30.25",
+     "",
+     "11.50",
+     "",
+     "70.40",
+     "",
+     "57.60",
+     ""
+    ],
+    [
+     "September 30",
+     "13.80",
+     "",
+     "7.99",
+     "",
+     "69.05",
+     "",
+     "56.40",
+     ""
+    ],
+    [
+     "December 31",
+     "15.50",
+     "",
+     "9.35",
+     "",
+     "59.50",
+     "",
+     "29.69",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "On February 3, 2020, Luxor filed a complaint in the Supreme Court of the State of New York, County of New York, against AAMC for breach of contract, specific performance, unjust enrichment, and related damages and expenses. The complaint alleges that AAMC\u2019s position that it would not redeem any of Luxor\u2019s Series A Shares on the March 15, 2020 redemption date is a material breach of AAMC\u2019s redemption obligations under the Certificate. Luxor seeks an order requiring AAMC to redeem its Series A Shares, recovery of no less than $144,212,000 in damages, which is equal to the amount Luxor would receive if AAMC redeemed all of Luxor\u2019s Series A Shares at the redemption price of $1,000 per share set forth in the Certificate, as well as payment of its costs and expenses in the lawsuit. In the alternative, Luxor seeks a return of its initial purchase price of $150,000,000 for the Series A Shares, as well as payment of its costs and expenses in the lawsuit. As described above, AAMC previously filed an action for declaratory relief to confirm its interpretation of the redemption provisions in the Certificate, and intends to vigorously defend itself against the claims by Luxor.\nItem 4. Mine safety disclosures\nNot applicable.\nPart II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nOur common stock has been listed on the NYSE American under the symbol \u201cAAMC\u201d since December 13, 2013. The following table sets forth the high and low close of day sales prices for our common stock as reported by the New York Stock Exchange for the periods indicated:",
+   "prose_after": "The number of holders of record of our common stock as of February 21, 2020 was 47. The number of beneficial stockholders is substantially greater than the number of holders as a large portion of our stock is held through brokerage firms. Information regarding securities authorized for issuance under equity compensation plans is set forth in Note 7 of the consolidated financial statements.\nThe information under the heading \u201cEquity Compensation Plan Information\u201d in our definitive proxy statement for the 2020 Annual Meeting of Stockholders to be filed with the SEC not later than 120 days after December 31, 2019 is incorporated herein by reference.\nDividends\nWe will pay dividends at the sole and absolute discretion of our Board of Directors in the light of conditions then existing, including our earnings, financial condition, liquidity, capital requirements, the availability of capital, general overall economic conditions and other factors. We paid no dividends from inception through December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "15,762",
+     "",
+     "$",
+     "15,926",
+     "",
+     "$",
+     "18,160",
+     "",
+     "$",
+     "19,991",
+     "",
+     "$",
+     "248,099",
+     ""
+    ],
+    [
+     "Net loss",
+     "(2,613)",
+     "",
+     "",
+     "(10,876)",
+     "",
+     "",
+     "(6,969)",
+     "",
+     "",
+     "(4,935)",
+     "",
+     "",
+     "(3,290)",
+     "",
+     ""
+    ],
+    [
+     "Loss per basic common share",
+     "(1.77)",
+     "",
+     "",
+     "(6.88)",
+     "",
+     "",
+     "(4.57)",
+     "",
+     "",
+     "(2.93)",
+     "",
+     "",
+     "(1.59)",
+     "",
+     ""
+    ],
+    [
+     "Loss per diluted common share",
+     "(1.77)",
+     "",
+     "",
+     "(6.88)",
+     "",
+     "",
+     "(4.57)",
+     "",
+     "",
+     "(2.93)",
+     "",
+     "",
+     "(1.59)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 923
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "In March 2014, the Board of Directors authorized total repurchases of up to $300.0 million of common stock. At December 31, 2019, we have approximately $31.3 million remaining that is authorized by our Board of Directors for share repurchases. Repurchased shares are held as treasury stock and available for general corporate purposes. No repurchase plan has expired during the year ended December 31, 2019.\nWe did not repurchase any shares of common stock pursuant to our share repurchase plan during the year ended December 31, 2019.\nPursuant to our equity incentive plan, we may reacquire shares of common stock tendered to satisfy the tax withholding on equity awards. During the year ended December 31, 2019, 9,596 shares were reacquired at a weighted average per share price of $25.39 pursuant to our equity incentive plan.\nItem 6. Selected Financial Data\nThe following table sets forth selected financial data derived from our audited consolidated financial statements ($ in thousands, except per share data). The historical results presented below may not be indicative of our future performance. The data should be read in conjunction with our consolidated financial statements and notes thereto, included elsewhere in this report, and \u201cItem 7. Management's Discussion and Analysis of Financial Condition and Results of Operations.\u201d",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2017",
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "53,248",
+     "$",
+     "49,367",
+     "$",
+     "60,387",
+     "$",
+     "65,748",
+     "$",
+     "2,518,601"
+    ],
+    [
+     "Repurchase and loan agreements",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "763,369",
+     ""
+    ],
+    [
+     "Other secured borrowings",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "502,599",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 924,
+    "end_line": 933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Deconsolidation of Front Yard\nPrior to January 1, 2016, we concluded that Front Yard was a variable interest entity (\u201cVIE\u201d), and we consolidated the accounts of Front Yard in our consolidated financial statements. Effective January 1, 2016, we adopted the provisions of Accounting Standards Update (\u201cASU\u201d) 2015-02, Consolidation (Topic 810) \u2013 Amendments to the Consolidation Analysis (\u201cASU 2015-02\u201d) and performed an analysis of our relationship with Front Yard pursuant to the amended guidance. We determined that the compensation we receive in return for our services to Front Yard is commensurate with the level of effort required to perform such services and the arrangement includes customary terms, conditions or amounts present in arrangements for similar services negotiated at arm\u2019s length; therefore, Front Yard is no longer a VIE under the amended guidance. As a result, effective January 1, 2016, we no longer consolidate the accounts of Front Yard. We have applied ASU 2015-02 using the modified retrospective approach, which has resulted in a cumulative-effect adjustment to our equity on January 1, 2016. As a result, periods prior to January 1, 2016 were not impacted. The adoption effectively removed those balances previously disclosed that related to Front Yard from our consolidated financial statements and eliminated the amounts previously reported as non-controlling interests in Front Yard as a consolidated affiliate. Subsequent to adoption, our consolidated revenues consist of management fees and expense reimbursements received from Front Yard under the asset management agreements, and our consolidated expenses consist of salaries and employee benefits, legal and professional fees and general and administrative expenses.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "$",
+     "(6,744)",
+     "",
+     "$",
+     "(2,426)",
+     "",
+     "$",
+     "365",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(186)",
+     "",
+     "",
+     "(107)",
+     "",
+     "",
+     "(1,841)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(244)",
+     "",
+     "",
+     "(3,645)",
+     "",
+     "",
+     "(5,759)",
+     "",
+     ""
+    ],
+    [
+     "Total cash flows",
+     "$",
+     "(7,174)",
+     "",
+     "$",
+     "(6,178)",
+     "",
+     "$",
+     "(7,235)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1074,
+    "end_line": 1086
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "AAMC intends to continue to pursue its strategic business initiatives despite this litigation. See \u201cItem 1. Business.\u201d If Luxor were to prevail in its lawsuit, we may need to cease or curtail our business initiatives and our liquidity could be materially and adversely affected. For more information on the legal proceedings with Luxor, see \u201cItem 1A. Risk Factors\u201d and \u201cItem 3. Legal Proceedings\u201d in this Annual Report on Form 10-K.\nTreasury Shares\nAt December 31, 2019, a total of $268.7 million in shares of our common stock have been repurchased under the authorization by our Board of Directors to repurchase up to $300.0 million in shares of our common stock. Repurchased shares are held as treasury stock and are available for general corporate purposes. We have an aggregate of $31.3 million remaining for repurchases under our Board-approved repurchase plan.\nCash Flows\nWe report and analyze our cash flows based on operating activities, investing activities and financing activities. The following table summarizes our cash flows for the periods indicated ($ in thousands):",
+   "prose_after": "Net cash used in operating activities for the years ended December 31, 2019 and 2018 consisted primarily of ongoing salaries and benefits, payment of annual incentive compensation, dividends on preferred stock issued under the 2016 Employee Preferred Stock Program and general corporate expenses in excess of revenues. Net cash provided by operating activities for the year ended December 31, 2017 consisted primarily of management fee revenues, partially offset by salaries and employee benefits, legal and professional fees and general and administrative expenses.\nNet cash used in investing activities for the years ended December 31, 2019 and 2018 consisted of investments in short-term investments and property and equipment, partially offset by proceeds from the maturities of short-term investments. Net cash used in investing activities for the year ended December 31, 2017 consisted of investments in short-term investments and property and equipment.\nNet cash used in financing activities during the year ended December 31, 2019 primarily related to shares withheld for taxes upon vesting of restricted stock. Net cash used in financing activities for the years ended December 31, 2018 and 2017 consisted primarily of repurchases of our common stock.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Separation Agreement, dated as of December 21, 2012, between Altisource Asset Management Corporation and Altisource Portfolio Solutions S.A. (incorporated by reference to Exhibit 2.1 of the Registrant's Current Report on Form 8-K filed with the Commission on December 28, 2012)."
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation of Altisource Asset Management Corporation (incorporated by reference to Exhibit 3.1 of the Registrant's Current Report on Form 8-K filed with the Commission on January 5, 2017)."
+    ],
+    [
+     "3.2*",
+     "Third Amended and Restated Bylaws of Altisource Asset Management Corporation."
+    ],
+    [
+     "3.3",
+     "Certificate of Designations establishing the Company\u2019s Series A Convertible Preferred Stock (incorporated by reference to Exhibit 3.1 of the Registrant\u2019s Current Report on Form 8-K filed with the Commission on March 19, 2014)."
+    ],
+    [
+     "4.1",
+     "Form of Option Award Agreement by and between Altisource Asset Management Corporation and Indroneel Chatterjee (incorporated by reference to Exhibit 4.3 of the Registrant\u2019s Form S-8 filed with the Commission on January 29, 2020)."
+    ],
+    [
+     "4.2",
+     "Form of Restricted Stock Award Agreement by and between Altisource Asset Management Corporation and Indroneel Chatterjee (incorporated by reference to Exhibit 4.4 of the Registrant\u2019s Form S-8 filed with the Commission on January 29, 2020)."
+    ],
+    [
+     "10.1",
+     "Amended and Restated Asset Management Agreement, dated as of May 7, 2019, by and among Front Yard Residential Corporation, Front Yard Residential, L.P. and Altisource Asset Management Corporation (incorporated by reference to Exhibit 10.1 of the Registrant's Current Report on Form 8-K filed with the Commission on May 8, 2019)."
+    ],
+    [
+     "10.2",
+     "Asset Management Agreement, dated March 31, 2015, among Front Yard Residential Corporation (f/k/a Altisource Residential Corporation), Front Yard Residential L.P. (f/k/a Altisource Residential, L.P.) and Altisource Asset Management Corporation (incorporated by reference to Exhibit 10.1 of the Registrant's Current Report on Form 8-K filed with the Commission on April 2, 2015)."
+    ],
+    [
+     "10.3",
+     "Amendment to Asset Management Agreement, dated April 7, 2015, among Front Yard Residential Corporation (f/k/a Altisource Residential Corporation), Front Yard Residential L.P. (f/k/a Altisource Residential, L.P.) and Altisource Asset Management Corporation (incorporated by reference to Exhibit 10.1 of the Registrant's Current Report on Form 8-K filed with the Commission on April 13, 2015)."
+    ],
+    [
+     "10.4\u2020",
+     "Altisource Asset Management Corporation 2016 Preferred Stock Plan (incorporated by reference to Exhibit 10.22 of the Registrant's Annual Report on Form 10-K filed with the Commission on March 1, 2017)."
+    ],
+    [
+     "10.5\u2020",
+     "Form of Preferred Stock Agreement under 2016 Employee Preferred Stock Plan (incorporated by reference to Exhibit 10.1 of the Registrant's Current Report on Form 8-K filed with the Commission on January 5, 2017)."
+    ],
+    [
+     "21*",
+     "Schedule of Subsidiaries"
+    ],
+    [
+     "23*",
+     "Consent of Ernst & Young LLP"
+    ],
+    [
+     "24*",
+     "Power of Attorney (incorporated by reference to the signature page of this Annual Report on Form 10-K)"
+    ],
+    [
+     "31.1*",
+     "Certification of Co-CEO Pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "31.2*",
+     "Certification of Co-CEO Pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "31.3*",
+     "Certification of CFO Pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.1*",
+     "Certification of Co-CEO Pursuant to Section 906 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.2*",
+     "Certification of Co-CEO Pursuant to Section 906 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.3*",
+     "Certification of CFO Pursuant to Section 906 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1231,
+    "end_line": 1272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The information required by Item 11 is hereby incorporated by reference from our 2020 Proxy Statement under the captions \u201cExecutive Compensation\u201d and \u201cDirector Compensation.\u201d\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe information required by Item 12 is hereby incorporated by reference from our 2020 Proxy Statement under the caption \u201cSecurity Ownership of Certain Beneficial Owners and Management.\u201d\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by Item 13 is hereby incorporated by reference from our 2020 Proxy Statement under the captions \u201cTransactions with Related Persons\u201d and \u201cInformation Regarding the Board of Directors and Corporate Governance.\u201d\nItem 14. Principal Accountant Fees and Services\nThe information required by Item 14 is hereby incorporated by reference from our 2020 Proxy Statement under the captions \u201cIndependent Registered Public Accounting Firm Fees\u201d and \u201cPre-Approval Policy and Procedures.\u201d\nPart IV\nItem 15. Exhibits\nExhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1223,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "101.LAB*",
+     "XBRL Extension Labels Linkbase"
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1275,
+    "end_line": 1281
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "__________\n* Filed herewith.\n\u2020 Denotes management contract or compensatory arrangement.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Altisource Asset Management Corporation"
+    ],
+    [
+     "Date:",
+     "February 28, 2020",
+     "By:",
+     "/s/",
+     "George G. Ellison"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "George G. Ellison"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Co-Chief Executive Officer"
+    ],
+    [
+     "Date:",
+     "February 28, 2020",
+     "By:",
+     "/s/",
+     "Indroneel Chatterjee"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Indroneel Chatterjee"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Co-Chief Executive Officer"
+    ],
+    [
+     "Date:",
+     "February 28, 2020",
+     "By:",
+     "/s/",
+     "Robin N. Lowe"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Robin N. Lowe"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Altisource Asset Management Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1294,
+    "end_line": 1309
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "__________\n* Filed herewith.\n\u2020 Denotes management contract or compensatory arrangement.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Power of Attorney\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints George G. Ellison, Indroneel Chatterjee and Robin N. Lowe and each of them severally, his or her true and lawful attorney-in-fact with power of substitution and resubstitution to sign in his or her name, place and stead, in any and all capacities, to do any and all things and execute any and all instruments that such attorney may deem necessary or advisable under the Securities Exchange Act of 1934, as amended, and any rules, regulations and requirements of the Securities and Exchange Commission in connection with the Annual Report on Form 10-K and any and all amendments hereto, as fully for all intents and purposes as he or she might or could do in person, and hereby ratifies and confirms all said attorneys-in-fact and agents, each acting alone, and his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ George G. Ellison",
+     "Chairman of the Board of Directors and Co-Chief Executive Officer (Principal Executive Officer)",
+     "February 28, 2020"
+    ],
+    [
+     "George G. Ellison",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ricardo C. Byrd",
+     "Director",
+     "February 28, 2020"
+    ],
+    [
+     "Ricardo C. Byrd",
+     "",
+     ""
+    ],
+    [
+     "/s/ John P. de Jongh, Jr.",
+     "Director",
+     "February 28, 2020"
+    ],
+    [
+     "John P. de Jongh, Jr.",
+     "",
+     ""
+    ],
+    [
+     "/s/ John A. Engerman",
+     "Director",
+     "February 28, 2020"
+    ],
+    [
+     "John A. Engerman",
+     "",
+     ""
+    ],
+    [
+     "/s/ Indroneel Chatterjee",
+     "Director and Co-Chief Executive Officer (Principal Executive Officer)",
+     "February 28, 2020"
+    ],
+    [
+     "Indroneel Chatterjee",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robin N. Lowe",
+     "Chief Financial Officer (Principal Financial Officer and Principal Accounting Officer)",
+     "February 28, 2020"
+    ],
+    [
+     "Robin N. Lowe",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1316,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints George G. Ellison, Indroneel Chatterjee and Robin N. Lowe and each of them severally, his or her true and lawful attorney-in-fact with power of substitution and resubstitution to sign in his or her name, place and stead, in any and all capacities, to do any and all things and execute any and all instruments that such attorney may deem necessary or advisable under the Securities Exchange Act of 1934, as amended, and any rules, regulations and requirements of the Securities and Exchange Commission in connection with the Annual Report on Form 10-K and any and all amendments hereto, as fully for all intents and purposes as he or she might or could do in person, and hereby ratifies and confirms all said attorneys-in-fact and agents, each acting alone, and his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated:",
+   "prose_after": "Index to Consolidated Financial Statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "4"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss",
+     "5"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit",
+     "6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Index to Consolidated Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Stockholders and Board of Directors of Altisource Asset Management Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Altisource Asset Management Corporation (the Company) as of December 31, 2019 and 2018, the related consolidated statements of operations, comprehensive loss, stockholders' deficit, and cash flows for each of the three years in the period ended December 31, 2019, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2019 and 2018, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2019, in conformity with U.S. generally accepted accounting principles.\nWe also have audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the Company\u2019s internal control over financial reporting as of December 31, 2019, based on criteria established in Internal Control - Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission (2013 framework) and our report dated February 28, 2020 expressed an unqualified opinion thereon.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "19,965",
+     "",
+     "$",
+     "27,171",
+     ""
+    ],
+    [
+     "Short-term investments",
+     "517",
+     "",
+     "",
+     "584",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock, at fair value",
+     "20,046",
+     "",
+     "",
+     "14,182",
+     "",
+     ""
+    ],
+    [
+     "Receivable from Front Yard",
+     "5,014",
+     "",
+     "",
+     "3,968",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "1,609",
+     "",
+     "",
+     "1,552",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "47,151",
+     "",
+     "",
+     "47,457",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use lease assets",
+     "4,339",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "1,758",
+     "",
+     "",
+     "1,910",
+     "",
+     ""
+    ],
+    [
+     "Total non-current assets",
+     "6,097",
+     "",
+     "",
+     "1,910",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "53,248",
+     "",
+     "",
+     "49,367",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued salaries and employee benefits",
+     "$",
+     "5,407",
+     "",
+     "$",
+     "5,583",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "1,328",
+     "",
+     "",
+     "1,188",
+     "",
+     ""
+    ],
+    [
+     "Short-term lease liabilities",
+     "265",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "7,000",
+     "",
+     "",
+     "6,771",
+     "",
+     ""
+    ],
+    [
+     "Long-term lease liabilities",
+     "4,218",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "11,218",
+     "",
+     "",
+     "6,771",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 5)",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable preferred stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred stock, $0.01 par value, 250,000 shares issued and outstanding as of December 31, 2019 and 2018; redemption value $250,000",
+     "249,958",
+     "",
+     "",
+     "249,752",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value, 5,000,000 authorized shares; 2,897,177 and 1,598,512 shares issued and outstanding, respectively, as of December 31, 2019 and 2,862,760 and 1,573,691 shares issued and outstanding, respectively, as of December 31, 2018",
+     "29",
+     "",
+     "",
+     "29",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "44,646",
+     "",
+     "",
+     "42,245",
+     "",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "23,662",
+     "",
+     "",
+     "26,558",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(33)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 1,298,665 and 1,289,069 shares as of December 31, 2019 and 2018, respectively",
+     "(276,232)",
+     "",
+     "",
+     "(275,988)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "(207,928)",
+     "",
+     "",
+     "(207,156)",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "53,248",
+     "",
+     "$",
+     "49,367",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1383,
+    "end_line": 1434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Ernst & Young LLP\nWe have served as the Company\u2018s auditor since 2017.\nAtlanta, Georgia\nFebruary 28, 2020\nConsolidated Balance Sheets\n(In thousands, except share and per share amounts)",
+   "prose_after": "Consolidated Statements of Operations\n(In thousands, except share and per share amounts)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1377,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fees from Front Yard",
+     "$",
+     "14,270",
+     "",
+     "$",
+     "14,567",
+     "",
+     "$",
+     "16,010",
+     ""
+    ],
+    [
+     "Conversion fees from Front Yard",
+     "29",
+     "",
+     "",
+     "176",
+     "",
+     "",
+     "1,291",
+     "",
+     ""
+    ],
+    [
+     "Expense reimbursements from Front Yard",
+     "1,463",
+     "",
+     "",
+     "1,183",
+     "",
+     "",
+     "859",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "15,762",
+     "",
+     "",
+     "15,926",
+     "",
+     "",
+     "18,160",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and employee benefits",
+     "17,029",
+     "",
+     "",
+     "17,320",
+     "",
+     "",
+     "19,393",
+     "",
+     ""
+    ],
+    [
+     "Legal and professional fees",
+     "3,611",
+     "",
+     "",
+     "1,605",
+     "",
+     "",
+     "2,794",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "4,147",
+     "",
+     "",
+     "3,609",
+     "",
+     "",
+     "3,320",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "24,787",
+     "",
+     "",
+     "22,534",
+     "",
+     "",
+     "25,507",
+     "",
+     ""
+    ],
+    [
+     "Other income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of Front Yard common stock",
+     "5,864",
+     "",
+     "",
+     "(5,084)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Dividend income on Front Yard common stock",
+     "731",
+     "",
+     "",
+     "975",
+     "",
+     "",
+     "975",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "155",
+     "",
+     "",
+     "216",
+     "",
+     "",
+     "111",
+     "",
+     ""
+    ],
+    [
+     "Total other income (loss)",
+     "6,750",
+     "",
+     "",
+     "(3,893)",
+     "",
+     "",
+     "1,086",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(2,275)",
+     "",
+     "",
+     "(10,501)",
+     "",
+     "",
+     "(6,261)",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "338",
+     "",
+     "",
+     "375",
+     "",
+     "",
+     "708",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "(2,613)",
+     "",
+     "",
+     "(10,876)",
+     "",
+     "",
+     "(6,969)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "(206)",
+     "",
+     "",
+     "(206)",
+     "",
+     "",
+     "(206)",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders",
+     "$",
+     "(2,819)",
+     "",
+     "$",
+     "(11,082)",
+     "",
+     "$",
+     "(7,175)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock \u2013 basic:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per basic common share",
+     "$",
+     "(1.77)",
+     "",
+     "$",
+     "(6.88)",
+     "",
+     "$",
+     "(4.57)",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding \u2013 basic",
+     "1,589,952",
+     "",
+     "",
+     "1,611,424",
+     "",
+     "",
+     "1,570,428",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock \u2013 diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per diluted common share",
+     "$",
+     "(1.77)",
+     "",
+     "$",
+     "(6.88)",
+     "",
+     "$",
+     "(4.57)",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding \u2013 diluted",
+     "1,589,952",
+     "",
+     "",
+     "1,611,424",
+     "",
+     "",
+     "1,570,428",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1441,
+    "end_line": 1484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations\n(In thousands, except share and per share amounts)",
+   "prose_after": "Consolidated Statements of Comprehensive Loss\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 1485,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,613)",
+     "",
+     "$",
+     "(10,876)",
+     "",
+     "$",
+     "(6,969)",
+     ""
+    ],
+    [
+     "Other comprehensive (loss) income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currency translation adjustments, net",
+     "(33)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Change in unrealized loss on Front Yard common stock",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,332",
+     "",
+     ""
+    ],
+    [
+     "Total other comprehensive (loss) income",
+     "(33)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,332",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(2,646)",
+     "",
+     "$",
+     "(10,876)",
+     "",
+     "$",
+     "(5,637)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1491,
+    "end_line": 1507
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Comprehensive Loss\n(In thousands)",
+   "prose_after": "Consolidated Statements of Stockholders' Deficit\n(In thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1485,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Total Stockholders' Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2016",
+     "2,637,629",
+     "$",
+     "26",
+     "$",
+     "30,696",
+     "$",
+     "46,145",
+     "",
+     "$",
+     "(2,662)",
+     "",
+     "$",
+     "(266,484)",
+     "",
+     "$",
+     "(192,279)",
+     ""
+    ],
+    [
+     "Common shares issued under share-based compensation plans, net of employee tax withholdings",
+     "177,493",
+     "2",
+     "",
+     "83",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "85",
+     "",
+     ""
+    ],
+    [
+     "Treasury shares repurchased",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,980)",
+     "",
+     "",
+     "(4,980)",
+     "",
+     ""
+    ],
+    [
+     "Shares withheld for taxes upon vesting of restricted stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(864)",
+     "",
+     "",
+     "(864)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(206)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(206)",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "6,986",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,986",
+     "",
+     ""
+    ],
+    [
+     "Change in unrealized loss on Front Yard common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,332",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,332",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,969)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,969)",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2017",
+     "2,815,122",
+     "28",
+     "",
+     "37,765",
+     "",
+     "38,970",
+     "",
+     "",
+     "(1,330)",
+     "",
+     "",
+     "(272,328)",
+     "",
+     "",
+     "(196,895)",
+     "",
+     ""
+    ],
+    [
+     "Cumulative effect of adoption of ASU 2016-01 (Note 1)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,330)",
+     "",
+     "",
+     "1,330",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued under share-based compensation plans, net of employee tax withholdings",
+     "47,638",
+     "1",
+     "",
+     "14",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15",
+     "",
+     ""
+    ],
+    [
+     "Treasury shares repurchased",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,186)",
+     "",
+     "",
+     "(3,186)",
+     "",
+     ""
+    ],
+    [
+     "Shares withheld for taxes upon vesting of restricted stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(474)",
+     "",
+     "",
+     "(474)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(206)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(206)",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,466",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,466",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(10,876)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10,876)",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "2,862,760",
+     "29",
+     "",
+     "42,245",
+     "",
+     "26,558",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(275,988)",
+     "",
+     "",
+     "(207,156)",
+     "",
+     ""
+    ],
+    [
+     "Cumulative effect of adoption of ASC 842 (Note 1)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(77)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(77)",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued under share-based compensation plans, net of employee tax withholdings",
+     "34,417",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Shares withheld for taxes upon vesting of restricted stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(244)",
+     "",
+     "",
+     "(244)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(206)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(206)",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,401",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,401",
+     "",
+     ""
+    ],
+    [
+     "Currency translation adjustments, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33)",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,613)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,613)",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "2,897,177",
+     "29",
+     "",
+     "44,646",
+     "",
+     "23,662",
+     "",
+     "",
+     "(33)",
+     "",
+     "",
+     "(276,232)",
+     "",
+     "",
+     "(207,928)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1514,
+    "end_line": 1554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders' Deficit\n(In thousands, except share amounts)",
+   "prose_after": "Consolidated Statements of Cash Flows\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,613)",
+     "",
+     "$",
+     "(10,876)",
+     "",
+     "$",
+     "(6,969)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "392",
+     "",
+     "",
+     "436",
+     "",
+     "",
+     "302",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of Front Yard common stock",
+     "(5,864)",
+     "",
+     "",
+     "5,084",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "2,401",
+     "",
+     "",
+     "4,466",
+     "",
+     "",
+     "6,986",
+     "",
+     ""
+    ],
+    [
+     "Amortization of operating lease right-of-use assets",
+     "345",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivable from Front Yard",
+     "(1,046)",
+     "",
+     "",
+     "183",
+     "",
+     "",
+     "1,115",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "(147)",
+     "",
+     "",
+     "(530)",
+     "",
+     "",
+     "942",
+     "",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "13",
+     "",
+     "",
+     "(224)",
+     "",
+     "",
+     "(1,060)",
+     "",
+     ""
+    ],
+    [
+     "Accrued salaries and employee benefits",
+     "(163)",
+     "",
+     "",
+     "(68)",
+     "",
+     "",
+     "1,551",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "126",
+     "",
+     "",
+     "(897)",
+     "",
+     "",
+     "(2,502)",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "(188)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "(6,744)",
+     "",
+     "",
+     "(2,426)",
+     "",
+     "",
+     "365",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in short-term investments",
+     "(1,564)",
+     "",
+     "",
+     "(571)",
+     "",
+     "",
+     "(625)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from maturities of short-term investments",
+     "1,631",
+     "",
+     "",
+     "612",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Investment in property and equipment",
+     "(295)",
+     "",
+     "",
+     "(148)",
+     "",
+     "",
+     "(1,216)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from disposition of property and equipment",
+     "42",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(186)",
+     "",
+     "",
+     "(107)",
+     "",
+     "",
+     "(1,841)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from stock option exercises",
+     "\u2014",
+     "",
+     "",
+     "36",
+     "",
+     "",
+     "650",
+     "",
+     ""
+    ],
+    [
+     "Payment of tax withholdings on exercise of stock options",
+     "\u2014",
+     "",
+     "",
+     "(21)",
+     "",
+     "",
+     "(565)",
+     "",
+     ""
+    ],
+    [
+     "Shares withheld for taxes upon vesting of restricted stock",
+     "(244)",
+     "",
+     "",
+     "(474)",
+     "",
+     "",
+     "(864)",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "",
+     "",
+     "(3,186)",
+     "",
+     "",
+     "(4,980)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(244)",
+     "",
+     "",
+     "(3,645)",
+     "",
+     "",
+     "(5,759)",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "(7,174)",
+     "",
+     "",
+     "(6,178)",
+     "",
+     "",
+     "(7,235)",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "(32)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of the period",
+     "27,171",
+     "",
+     "",
+     "33,349",
+     "",
+     "",
+     "40,584",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of the period",
+     "$",
+     "19,965",
+     "",
+     "$",
+     "27,171",
+     "",
+     "$",
+     "33,349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "594",
+     "",
+     "$",
+     "1,467",
+     "",
+     "$",
+     "820",
+     ""
+    ],
+    [
+     "Right-of-use lease assets recognized - operating leases",
+     "4,684",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities recognized",
+     "4,671",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1561,
+    "end_line": 1611
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows\n(In thousands)",
+   "prose_after": "Notes to Consolidated Financial Statements\nDecember 31, 2019\n1. Organization and Basis of Presentation\nAltisource Asset Management Corporation (\u201cwe,\u201d \u201cour,\u201d \u201cus,\u201d \u201cAAMC\u201d or the \u201cCompany\u201d) was incorporated in the U.S. Virgin Islands (\u201cUSVI\u201d) on March 15, 2012 (our \u201cinception\u201d) and commenced operations on December 21, 2012. Our primary business is to provide asset management and certain corporate governance services to institutional investors. We have also been a registered investment adviser under Section 203(c) of the Investment Advisers Act of 1940 since October 2013.\nOur primary client is Front Yard Residential Corporation (\u201cFront Yard\u201d), a public real estate investment trust (\u201cREIT\u201d) focused on acquiring and managing quality, affordable single-family rental (\u201cSFR\u201d) properties throughout the United States. All of our revenue for all periods presented was generated through our asset management agreements with Front Yard.\nOn March 31, 2015, we entered into an asset management agreement (the \u201cFormer AMA\u201d) with Front Yard, under which we were the exclusive asset manager for Front Yard for an initial term of 15 years from April 1, 2015, with two potential five-year extensions. The Former AMA provided for a fee structure in which we were entitled to a base management fee, an incentive management fee and a conversion fee for mortgage loans and real estate owned (\u201cREO\u201d) properties that became rental properties during each quarter.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 6
+    },
+    "after": {
+     "line": 1612,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "",
+     "Carrying Amount",
+     "",
+     "Quoted Prices in Active Markets",
+     "",
+     "Observable Inputs Other Than Level 1 Prices",
+     "",
+     "Unobservable Inputs",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring basis (assets)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "$",
+     "20,046",
+     "$",
+     "20,046",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring basis (assets)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "$",
+     "14,182",
+     "$",
+     "14,182",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1780,
+    "end_line": 1794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "We recognize share-based compensation expense related to (i) awards to employees in salaries and employee benefits and (ii) awards to Directors or non-employees in general and administrative expense in our consolidated statements of operations.\nForfeitures of share-based awards are recognized as they occur.\nShort-term investments\nShort-term investments include certificates of deposit with original maturities greater than three months and remaining maturities less than one year.\nTreasury stock\nWe account for repurchased common stock under the cost method and include such treasury stock as a component of total stockholders\u2019 equity. We have repurchased shares of our common stock (i) under our Board approval to repurchase up to $300.0 million in shares of our common stock and (ii) upon our withholding of shares of our common stock to satisfy tax withholding obligations in connection with the vesting of our restricted stock.\n3. Fair Value of Financial Instruments\nThe following table sets forth the carrying amount and fair value of the Company's financial assets by level within the fair value hierarchy as of December 31, 2019 and 2018 ($ in thousands):",
+   "prose_after": "We did not transfer any assets from one level to another level during the years ended December 31, 2019 or 2018.\nThe fair value of our Front Yard common stock is based on unadjusted quoted market prices from active markets.\nAt each of December 31, 2019 and 2018, we held 1,624,465 shares of Front Yard's common stock, representing approximately 3.0% of Front Yard's then-outstanding common stock at each date. All of our shares of Front Yard's common stock were acquired in open market transactions.\nThe following table presents the cost and fair value of our holdings in Front Yard's common stock as of December 31, 2019 and 2018 ($ in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1774,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1822,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "$",
+     "20,596",
+     "$",
+     "\u2014",
+     "$",
+     "(550)",
+     "",
+     "$",
+     "20,046"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "$",
+     "20,596",
+     "$",
+     "\u2014",
+     "$",
+     "(6,414)",
+     "",
+     "$",
+     "14,182"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1803,
+    "end_line": 1816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "We did not transfer any assets from one level to another level during the years ended December 31, 2019 or 2018.\nThe fair value of our Front Yard common stock is based on unadjusted quoted market prices from active markets.\nAt each of December 31, 2019 and 2018, we held 1,624,465 shares of Front Yard's common stock, representing approximately 3.0% of Front Yard's then-outstanding common stock at each date. All of our shares of Front Yard's common stock were acquired in open market transactions.\nThe following table presents the cost and fair value of our holdings in Front Yard's common stock as of December 31, 2019 and 2018 ($ in thousands):",
+   "prose_after": "4. Leases\nWe currently occupy office space under operating leases in Christiansted, U.S. Virgin Islands; Charlotte, North Carolina; College Station, Texas; George Town, Cayman Islands; and Bengaluru, India. As of December 31, 2019, our weighted average remaining lease term, including applicable extensions, was 9.1 years. We applied a discount rate of 8.4% to our office leases. We determine the discount rate for each lease to be either the discount rate stated in the lease agreement or our estimated rate that we would be charged to finance real estate assets.\nDuring the year ended December 31, 2019, we recognized rent expense of $0.5 million related to long-term operating leases and $0.2 million related to short-term operating leases. We include rent expense as a component of general and administrative expenses.\nThe following table presents a maturity analysis of our operating leases as of December 31, 2019 ($ in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1774,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1822,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Lease Liabilities",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "622"
+    ],
+    [
+     "2021",
+     "642",
+     ""
+    ],
+    [
+     "2022",
+     "667",
+     ""
+    ],
+    [
+     "2023",
+     "695",
+     ""
+    ],
+    [
+     "2024",
+     "717",
+     ""
+    ],
+    [
+     "Thereafter",
+     "3,162",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "6,505",
+     ""
+    ],
+    [
+     "Less: interest",
+     "2,022",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "$",
+     "4,483"
+    ]
+   ],
+   "caption_stack": [
+    "Operating Lease Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1826,
+    "end_line": 1842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "4. Leases\nWe currently occupy office space under operating leases in Christiansted, U.S. Virgin Islands; Charlotte, North Carolina; College Station, Texas; George Town, Cayman Islands; and Bengaluru, India. As of December 31, 2019, our weighted average remaining lease term, including applicable extensions, was 9.1 years. We applied a discount rate of 8.4% to our office leases. We determine the discount rate for each lease to be either the discount rate stated in the lease agreement or our estimated rate that we would be charged to finance real estate assets.\nDuring the year ended December 31, 2019, we recognized rent expense of $0.5 million related to long-term operating leases and $0.2 million related to short-term operating leases. We include rent expense as a component of general and administrative expenses.\nThe following table presents a maturity analysis of our operating leases as of December 31, 2019 ($ in thousands):",
+   "prose_after": "5. Commitments and Contingencies\nLitigation, claims and assessments\nFrom time to time, we may be involved in various claims and legal actions arising in the ordinary course of business. Set forth below is a summary of material legal proceedings to which we are a party as of December 31, 2019:\nErbey Holding Corporation et al. v. Blackrock Management Inc., et al.\nOn April 12, 2018, a partial stockholder derivative action was filed in the Superior Court of the Virgin Islands, Division of St. Croix under the caption Erbey Holding Corporation, et al. v. Blackrock Financial Management Inc., et al. The action was filed by Erbey Holding Corporation (\u201cErbey Holding\u201d), John R. Erbey Family Limited Partnership (\u201cJREFLP\u201d), by its general partner Jupiter Capital, Inc., Salt Pond Holdings, LLC (\u201cSalt Pond\u201d), Munus, L.P. (\u201cMunus\u201d), Carisma Trust (\u201cCarisma\u201d), by its trustee, Venia, LLC, and Tribue Limited Partnership (collectively, the \u201cPlaintiffs\u201d) each on its own behalf and Salt Pond and Carisma derivatively on behalf of AAMC. The action was filed against Blackrock Financial Management, Inc., Blackrock Investment Management, LLC, Blackrock Investments, LLC, Blackrock Capital Management, Inc., Blackrock, Inc. (collectively, \u201cBlackrock\u201d), Pacific Investment Management Company LLC, PIMCO Investments LLC (collectively, \u201cPIMCO\u201d) and John and Jane Does 1-10 (collectively with Blackrock and PIMCO, the \u201cDefendants\u201d). The action alleges a conspiracy by Blackrock and PIMCO to harm Ocwen Financial Corporation (\u201cOcwen\u201d) and AAMC and certain of their subsidiaries, affiliates and related companies and to extract enormous profits at the expense of Ocwen and AAMC by attempting to damage their operations, business relationships and reputations. The complaint alleges that Defendants\u2019 conspiratorial activities, which included short-selling activities, were designed to destroy Ocwen and AAMC, and that the Plaintiffs (including AAMC) suffered significant injury, including but not limited to lost value of their stock and/or stock holdings. The action seeks, among other things, an award of monetary damages to AAMC, including treble damages under Section 605, Title IV of the Virgin Islands Code related to the Criminally Influenced and Corrupt Organizations Act, punitive damages and an award of attorney\u2019s and other fees and expenses.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1822,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "Initially, commencing on the Effective Date and until the Reset Date (as defined below), the quarterly Base Management Fee will be (i) $3,584,000 (the \u201cMinimum Base Fee\u201d) plus (ii) an additional amount (the \u201cAdditional Base Fee\u201d), if any, of 50% of the amount by which Front Yard's per share Adjusted AFFO (as defined in the Amended AMA) for the quarter exceeds $0.15 per share (provided that the Base Management Fee for any calendar quarter prior to the Reset Date cannot be less than the Minimum Base Fee or greater than $5,250,000). Beginning in 2021, the Base Management Fee may be reduced, but not below the Minimum Base Fee, in the fourth quarter of each year by the amount that Front Yard's AFFO (as defined below) on a per share basis is less than an aggregate of $0.60 for the applicable calendar year (the \u201cAFFO Adjustment Amount\u201d); and"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1878,
+    "end_line": 1885
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Related-party Transactions"
+    }
+   },
+   "prose_before": "We provide Front Yard with a management team and support personnel who have substantial experience in the acquisition and management of residential properties. Our management also has significant corporate governance experience that enables us to manage Front Yard's business and organizational structure efficiently. We have agreed not to provide the same or substantially similar services without the prior written consent of Front Yard's Board of Directors to any business or entity competing against Front Yard in (a) the acquisition or sale of SFR and/or REO properties, non-performing and re-performing mortgage loans or other similar assets; (b) the carrying on of an SFR business or (c) any other activity in which Front Yard engages. Notwithstanding the foregoing, we may engage in any other business or render similar or different services to any businesses engaged in lending or insurance activities or any other activity other than those described above. Further, at any time following Front Yard's determination and announcement that it will no longer engage in any of the above-described competitive activities, we would be entitled to provide advisory or other services to businesses or entities in such competitive activities without Front Yard's prior consent.\nTerms of the Amended AMA\nWe and Front Yard entered into the Amended AMA on May 7, 2019 (the \u201cEffective Date\u201d). The Amended AMA amends and restates, in its entirety, the Former AMA. The Amended AMA has an initial term of five years and will renew automatically each year thereafter for an additional one-year term, subject in each case to the termination provisions further described below.\nManagement Fees\nThe Amended AMA provides for the following management fee structure, which is subject to certain performance thresholds and an Aggregate Fee Cap (as described below):\n\u2022 Base Management Fee. Front Yard will pay a quarterly base management fee (the \u201cBase Management Fee\u201d) to us as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "Thereafter, commencing in the first quarter after which the quarterly Base Management Fee first reaches $5,250,000 (the \u201cReset Date\u201d), the Base Management Fee will be 25% of the sum of (i) the applicable Annual Base Fee Floor plus (ii) the amount calculated by multiplying the applicable Manager Base Fee Percentage by the amount, if any, that Front Yard's Gross Real Estate Assets (as defined below) exceeds the applicable Gross Real Estate Assets Floor (in each case of the foregoing clauses (i) and (ii), as set forth in the table below), minus (iii) solely in the case of the fourth quarter of a calendar year, the AFFO Adjustment Amount (if any); provided, that the Base Management Fee for any calendar quarter shall not be less than the Minimum Base Fee."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1887,
+    "end_line": 1894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Related-party Transactions"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1922,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross Real Estate Assets (1)",
+     "Annual Base Fee Floor",
+     "Manager Base Fee Percentage",
+     "Gross Real Estate Assets Floor"
+    ],
+    [
+     "Up to $2,750,000,000",
+     "$21,000,000",
+     "0.325%",
+     "$2,250,000,000"
+    ],
+    [
+     "$2,750,000,000 \u2013 $3,250,000,000",
+     "$22,625,000",
+     "0.275%",
+     "$2,750,000,000"
+    ],
+    [
+     "$3,250,000,000 \u2013 $4,000,000,000",
+     "$24,000,000",
+     "0.250%",
+     "$3,250,000,000"
+    ],
+    [
+     "$4,000,000,000 \u2013 $5,000,000,000",
+     "$25,875,000",
+     "0.175%",
+     "$4,000,000,000"
+    ],
+    [
+     "$5,000,000,000 \u2013 $6,000,000,000",
+     "$27,625,000",
+     "0.125%",
+     "$5,000,000,000"
+    ],
+    [
+     "$6,000,000,000 \u2013 $7,000,000,000",
+     "$28,875,000",
+     "0.100%",
+     "$6,000,000,000"
+    ],
+    [
+     "Thereafter",
+     "$29,875,000",
+     "0.050%",
+     "$7,000,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1906
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Related-party Transactions"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "_______________\n(1) Gross Real Estate Assets is generally defined as the aggregate book value of all residential real estate assets owned by Front Yard and its subsidiaries before reserves for depreciation, impairment or other non-cash reserves as computed in accordance with GAAP.\nIn determining the Base Management Fee, \u201cAFFO\u201d is generally calculated as GAAP net income (or loss) adjusted for (i) gains or losses from debt restructuring and sales of property; (ii) depreciation, amortization and impairment on residential real estate assets; (iii) unconsolidated partnerships and joint ventures; (iv) acquisition and related expenses, equity based compensation expenses and other non-recurring or non-cash items; (v) recurring capital expenditures on all real estate assets and (vi) the cost of leasing commissions.\nFor any partial quarter during the term of the Amended AMA, the Base Management Fee is subject to proration based on the number of calendar days under the Amended AMA in such period.\nIncentive Fee. We may earn an annual Incentive Fee to the extent that Front Yard's AFFO exceeds certain performance thresholds. The annual Incentive Fee, if any, shall be an amount equal to 20% of the amount by which Front Yard's AFFO for the calendar year (after the deduction of Base Management Fees but prior to the deduction of Incentive Fees) exceeds 5% of Gross Shareholder Equity (as defined below).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1922,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross Real Estate Assets",
+     "Aggregate Fee Floor",
+     "Aggregate Fee Percentage",
+     "Gross Real Estate Assets Floor"
+    ],
+    [
+     "$2,250,000,000 \u2013 $2,750,000,000",
+     "$21,000,000",
+     "0.650%",
+     "$2,250,000,000"
+    ],
+    [
+     "$2,750,000,000 \u2013 $3,250,000,000",
+     "$24,250,000",
+     "0.600%",
+     "$2,750,000,000"
+    ],
+    [
+     "$3,250,000,000 \u2013 $4,000,000,000",
+     "$27,250,000",
+     "0.500%",
+     "$3,250,000,000"
+    ],
+    [
+     "$4,000,000,000 \u2013 $5,000,000,000",
+     "$31,000,000",
+     "0.450%",
+     "$4,000,000,000"
+    ],
+    [
+     "$5,000,000,000 \u2013 $6,000,000,000",
+     "$35,500,000",
+     "0.250%",
+     "$5,000,000,000"
+    ],
+    [
+     "$6,000,000,000 \u2013 $7,000,000,000",
+     "$38,000,000",
+     "0.125%",
+     "$6,000,000,000"
+    ],
+    [
+     "Thereafter",
+     "$39,250,000",
+     "0.100%",
+     "$7,000,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1932,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Related-party Transactions"
+    }
+   },
+   "prose_before": "Gross Shareholder Equity for purposes of the Amended AMA is generally defined as the arithmetic average of all shareholder equity as computed in accordance with GAAP and adding back all accumulated depreciation and changes due to non-cash valuations (including those recorded as a component of accumulated other comprehensive income) and other non-cash adjustments, in each case, as of the first day of such calendar year, the first day of each of the second, third and fourth calendar quarters of such calendar year and the first day of the succeeding calendar year.\nFront Yard has the flexibility to pay up to 25% of the annual Incentive Fee to us in shares of its common stock, subject to certain conditions specified in the Amended AMA.\nAggregate Fee Cap\nThe aggregate amount of the Base Management Fees and Incentive Fees payable to us in any calendar year cannot exceed the \u201cAggregate Fee Cap,\u201d which is generally defined as follows:\n\u2022 For any calendar year in which average Gross Real Estate Assets is less than $2,250,000,000, the aggregate fees payable to us shall not exceed $21,000,000; or\n\u2022 For any calendar years in which average Gross Real Estate Assets exceeds $2,250,000,000, the aggregate fees payable to us shall not exceed the sum of (i) the applicable Aggregate Fee Floor plus (ii) the amount calculated by multiplying the applicable Aggregate Fee Percentage by the amount, if any, by which average Gross Real Estate Assets exceed the applicable Gross Real Estate Assets Floor, in each case as set forth in the table below.",
+   "prose_after": "Expenses and Expense Budget\nWe are responsible for all of our own costs and expenses other than the expenses related to compensation of Front Yard\u2019s dedicated general counsel and, beginning in January 2020, four specified employees who provide direct property management services to Front Yard. Front Yard and its subsidiaries pay their own costs and expenses, and, to the extent such Front Yard expenses are initially paid by us, Front Yard is required to reimburse us for such reasonable costs and expenses.\nTermination Provisions\nThe Amended AMA may be terminated without cause (i) by Front Yard for any reason, or no reason, or (ii) by Front Yard or us in connection with the expiration of the initial term or any renewal term, in either case with 180 days' prior written notice. If the Amended AMA is terminated by Front Yard without cause or in connection with the expiration of the initial term or any renewal term, Front Yard shall pay a termination fee (the \u201cTermination Fee\u201d) to us in an amount generally equal to three times the arithmetical mean of the aggregate fees actually paid or payable with respect to each of the three immediately preceding completed calendar years (including any such prior years that may have occurred prior to the Effective Date). Upon any such termination by Front Yard, Front Yard shall have the right, at its option, to license certain intellectual property and technology assets from us.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1922,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1955,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019"
+    ],
+    [
+     "Stock options outstanding",
+     "15,256"
+    ],
+    [
+     "Possible future issuances under equity incentive plan",
+     "2,442"
+    ],
+    [
+     "",
+     "17,698"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1998,
+    "end_line": 2007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Incentive Compensation and Share-based Payments"
+    }
+   },
+   "prose_before": "A special grant of stock options and restricted stock was made to certain employees of Altisource Portfolio Solutions N.A. (\u201cASPS\u201d) related to our separation from ASPS under the 2012 Special Equity Incentive Plan (the \u201c2012 Special Plan\u201d). We included no share-based compensation in our consolidated financial statements for the portion of these grants made to ASPS employees. The shares of restricted stock became fully vested and were issued during 2017.\nDividends received on restricted stock are forfeitable and are accumulated until the time of vesting at the same rate and on the same date as on shares of common stock. Upon the vesting of stock options and restricted stock, we may withhold up to the statutory minimum to satisfy the resulting employee tax obligation.\nThe following table sets forth the number of shares of common stock reserved for future issuance. We may issue new shares or issue shares from treasury shares upon the exercise of stock options or the vesting of restricted stock.",
+   "prose_after": "As of December 31, 2019, we had 2,102,823 remaining shares of common stock authorized to be issued under our charter.\nStock options\nThe following table sets forth the activity of our outstanding options:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1976,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2009,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price per Share",
+     ""
+    ],
+    [
+     "December 31, 2016",
+     "141,367",
+     "",
+     "$",
+     "1.01"
+    ],
+    [
+     "Exercised (1)",
+     "(111,917)",
+     "",
+     "0.75",
+     ""
+    ],
+    [
+     "December 31, 2017",
+     "29,450",
+     "",
+     "2.01",
+     ""
+    ],
+    [
+     "Exercised (1)",
+     "(12,112)",
+     "",
+     "1.26",
+     ""
+    ],
+    [
+     "Forfeited or canceled",
+     "(1,832)",
+     "",
+     "0.66",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "15,506",
+     "",
+     "2.75",
+     ""
+    ],
+    [
+     "Exercised (1)",
+     "(250)",
+     "",
+     "1.51",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "15,256",
+     "",
+     "$",
+     "2.77"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2015,
+    "end_line": 2032
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Incentive Compensation and Share-based Payments"
+    }
+   },
+   "prose_before": "As of December 31, 2019, we had 2,102,823 remaining shares of common stock authorized to be issued under our charter.\nStock options\nThe following table sets forth the activity of our outstanding options:",
+   "prose_after": "_____________\n(1) The intrinsic value of stock options exercised during the years ended December 31, 2019, 2018 and 2017 was a nominal amount, $0.7 million and $9.0 million, respectively.\nAs of December 31, 2019, we had 15,256 outstanding options, all of which were exercisable, with a weighted average exercise price of $2.77, weighted average remaining life of 1.1 years and intrinsic value of $0.1 million. Of these options, none had an exercise price higher than the market price of our common stock as of December 31, 2019.\nRestricted stock\nDuring the year ended December 31, 2019, we granted 60,329 shares of service-based restricted stock to members of management with a weighted average grant date fair value per share of $26.68 under the 2012 Plan. The restricted stock will vest in three equal annual installments on each of January 23, 2020, 2021 and 2022, subject to forfeiture or acceleration.\nDuring the year ended December 31, 2018, we granted 25,074 shares of service-based restricted stock to members of management with a weighted average grant date fair value per share of $64.05 under the 2012 Plan. The restricted stock vests in three equal annual installments, the first of which occurred on February 20, 2019 with the remaining installments vesting in February 2020 and 2021, subject to forfeiture or acceleration.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2009,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2053,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "December 31, 2016",
+     "124,879",
+     "",
+     "$",
+     "193.17"
+    ],
+    [
+     "Granted",
+     "22,206",
+     "",
+     "79.60",
+     ""
+    ],
+    [
+     "Vested (1)",
+     "(65,576)",
+     "",
+     "79.45",
+     ""
+    ],
+    [
+     "December 31, 2017",
+     "81,509",
+     "",
+     "253.72",
+     ""
+    ],
+    [
+     "Granted",
+     "26,940",
+     "",
+     "64.07",
+     ""
+    ],
+    [
+     "Vested (1)",
+     "(35,526)",
+     "",
+     "339.25",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "72,923",
+     "",
+     "142.03",
+     ""
+    ],
+    [
+     "Granted",
+     "73,022",
+     "",
+     "24.51",
+     ""
+    ],
+    [
+     "Vested (1)",
+     "(34,188)",
+     "",
+     "178.76",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "111,757",
+     "",
+     "$",
+     "54.18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2063,
+    "end_line": 2082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Incentive Compensation and Share-based Payments"
+    }
+   },
+   "prose_before": "Additionally, our Directors each receive annual grants of restricted stock equal to $60,000 based on the market value of our common stock at the time of the annual stockholders meeting. This restricted stock vests and is issued after a one-year service period subject to each Director attending at least 75% of the Board and committee meetings. No dividends are paid on the shares until the award is issued. During the years ended December 31, 2019, 2018 and 2017, we granted 12,693, 1,866 and 2,001 shares of stock, respectively, pursuant to the 2012 Plan with a weighted average grant date fair value per share of $14.18, $64.30 and $89.93, respectively.\nWe recorded $2.4 million, $4.5 million and $7.0 million of compensation expense related to these grants for the years ended December 31, 2019, 2018 and 2017, respectively. As of December 31, 2019 and 2018, we had $1.2 million and $1.8 million, respectively, of total unrecognized share-based compensation cost to be recognized over a weighted average remaining estimated term of 0.8 years and 1.6 years, respectively.\nThe following table sets forth the activity of our restricted stock:",
+   "prose_after": "_____________\n(1) The vesting date fair value of restricted stock that vested during the years ended December 31, 2019, 2018 and 2017 was $0.9 million, $2.1 million and $5.1 million, respectively.\n8. Income Taxes\nWe are domiciled in the USVI and are obligated to pay taxes to the USVI on our income. We applied for tax benefits from the USVI Economic Development Commission and received our certificate of benefits (\u201cthe EDC Certificate\u201d), effective as of February 1, 2013. Pursuant to the EDC Certificate, so long as we comply its provisions, we will receive a 90% tax reduction on our USVI-sourced income until 2043. For the year ended December 31, 2019, we generated a tax loss in the USVI.\nFor the years ended December 31, 2019, 2018 and 2017, in addition to the management fees from Front Yard (which represent eligible income under the EDC Certificate), AAMC also had income on the Front Yard common stock that it owns, as well as internally-sourced revenues from its Cayman Islands subsidiary, both of which are not eligible for the 90% tax reduction.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2053,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "U.S. Virgin Islands",
+     "$",
+     "(3,433)",
+     "",
+     "$",
+     "(10,955)",
+     "",
+     "$",
+     "(7,259)",
+     ""
+    ],
+    [
+     "Other",
+     "1,158",
+     "",
+     "",
+     "454",
+     "",
+     "",
+     "998",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "$",
+     "(2,275)",
+     "",
+     "$",
+     "(10,501)",
+     "",
+     "$",
+     "(6,261)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2097,
+    "end_line": 2108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "We are domiciled in the USVI and are obligated to pay taxes to the USVI on our income. We applied for tax benefits from the USVI Economic Development Commission and received our certificate of benefits (\u201cthe EDC Certificate\u201d), effective as of February 1, 2013. Pursuant to the EDC Certificate, so long as we comply its provisions, we will receive a 90% tax reduction on our USVI-sourced income until 2043. For the year ended December 31, 2019, we generated a tax loss in the USVI.\nFor the years ended December 31, 2019, 2018 and 2017, in addition to the management fees from Front Yard (which represent eligible income under the EDC Certificate), AAMC also had income on the Front Yard common stock that it owns, as well as internally-sourced revenues from its Cayman Islands subsidiary, both of which are not eligible for the 90% tax reduction.\nBeginning on January 1, 2017, AAMC US, Inc., a domestic U.S. corporation and wholly-owned subsidiary, began operations. This entity is based entirely in the mainland U.S. and is subject to U.S. federal and state corporate income tax.\nThe following table sets forth the components of income (loss) before income taxes:",
+   "prose_after": "The following table sets forth the components of our deferred tax assets:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2053,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "$",
+     "114",
+     "",
+     "$",
+     "199",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "669",
+     "",
+     "",
+     "619",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "\u2014",
+     "",
+     "",
+     "1,482",
+     "",
+     ""
+    ],
+    [
+     "Net operating losses (1)",
+     "357",
+     "",
+     "",
+     "184",
+     "",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "955",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "48",
+     "",
+     "",
+     "35",
+     "",
+     ""
+    ],
+    [
+     "Gross deferred tax assets",
+     "2,143",
+     "",
+     "",
+     "2,519",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liability:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use lease assets",
+     "922",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Front Yard common stock",
+     "42",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "4",
+     "",
+     "",
+     "10",
+     "",
+     ""
+    ],
+    [
+     "Gross deferred tax liabilities",
+     "968",
+     "",
+     "",
+     "10",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets before valuation allowance",
+     "1,175",
+     "",
+     "",
+     "2,509",
+     "",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(491)",
+     "",
+     "",
+     "(1,877)",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset, net",
+     "$",
+     "684",
+     "",
+     "$",
+     "632",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2112,
+    "end_line": 2139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The following table sets forth the components of our deferred tax assets:",
+   "prose_after": "_____________\n(1) Net operating loss (\u201cNOL\u201d) carry-forwards for tax years prior to 2018 expire in 2037. Beginning with 2018, NOLs are carried forward indefinitely.\nThe change in deferred tax assets is included in changes in other non-current assets in the consolidated statement of cash flows. Significant factors contributing to the decrease in our valuation allowance in 2019 are decreases in the temporary differences attributable to our investment in Front Yard common stock, partially offset by tax losses in the USVI.\nThe following table sets forth the reconciliation of the statutory USVI income tax rate to our effective income tax rate:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2168,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "U.S. Virgin Islands income tax rate",
+     "23.1",
+     "%",
+     "23.1",
+     "%",
+     "38.5",
+     "%"
+    ],
+    [
+     "State and local income tax rates",
+     "(0.7)",
+     "",
+     "0.1",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "EDC benefits in the USVI",
+     "(42.4)",
+     "",
+     "9.2",
+     "",
+     "(45.1)",
+     ""
+    ],
+    [
+     "Foreign tax rate differential",
+     "(1.4)",
+     "",
+     "(0.3)",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Permanent and other",
+     "(8.0)",
+     "",
+     "(3.5)",
+     "",
+     "(4.6)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "(56.1)",
+     "",
+     "(22.0)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "68.8",
+     "",
+     "(10.2)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "(16.7)",
+     "%",
+     "(3.6)",
+     "%",
+     "(11.0)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2148,
+    "end_line": 2164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "_____________\n(1) Net operating loss (\u201cNOL\u201d) carry-forwards for tax years prior to 2018 expire in 2037. Beginning with 2018, NOLs are carried forward indefinitely.\nThe change in deferred tax assets is included in changes in other non-current assets in the consolidated statement of cash flows. Significant factors contributing to the decrease in our valuation allowance in 2019 are decreases in the temporary differences attributable to our investment in Front Yard common stock, partially offset by tax losses in the USVI.\nThe following table sets forth the reconciliation of the statutory USVI income tax rate to our effective income tax rate:",
+   "prose_after": "During the tax years ended December 31, 2019 and 2018, we recognized no interest or penalties associated with unrecognized tax benefits. As of December 31, 2019 and 2018, we had accrued no unrecognized tax benefits or associated interest and penalties.\nWe remain subject to tax examination in the USVI for tax years 2016 to 2019 and in the United States for tax years 2017 to 2019.\n9. Earnings Per Share\nThe following table sets forth the components of diluted loss per share (in thousands, except share and per share amounts):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2168,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,613)",
+     "",
+     "$",
+     "(10,876)",
+     "",
+     "$",
+     "(6,969)",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "(206)",
+     "",
+     "",
+     "(206)",
+     "",
+     "",
+     "(206)",
+     "",
+     ""
+    ],
+    [
+     "Numerator for basic and diluted EPS - net loss attributable to common stockholders",
+     "$",
+     "(2,819)",
+     "",
+     "$",
+     "(11,082)",
+     "",
+     "$",
+     "(7,175)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding \u2013 basic",
+     "1,589,952",
+     "",
+     "",
+     "1,611,424",
+     "",
+     "",
+     "1,570,428",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common stock outstanding \u2013 diluted",
+     "1,589,952",
+     "",
+     "",
+     "1,611,424",
+     "",
+     "",
+     "1,570,428",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per basic common share",
+     "$",
+     "(1.77)",
+     "",
+     "$",
+     "(6.88)",
+     "",
+     "$",
+     "(4.57)",
+     ""
+    ],
+    [
+     "Loss per diluted common share",
+     "$",
+     "(1.77)",
+     "",
+     "$",
+     "(6.88)",
+     "",
+     "$",
+     "(4.57)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2174,
+    "end_line": 2193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Earnings Per Share"
+    }
+   },
+   "prose_before": "During the tax years ended December 31, 2019 and 2018, we recognized no interest or penalties associated with unrecognized tax benefits. As of December 31, 2019 and 2018, we had accrued no unrecognized tax benefits or associated interest and penalties.\nWe remain subject to tax examination in the USVI for tax years 2016 to 2019 and in the United States for tax years 2017 to 2019.\n9. Earnings Per Share\nThe following table sets forth the components of diluted loss per share (in thousands, except share and per share amounts):",
+   "prose_after": "We excluded the items presented below from the calculation of diluted earnings per share as they were antidilutive for the periods indicated ($ in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2168,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2213,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance costs",
+     "$",
+     "206",
+     "$",
+     "206",
+     "$",
+     "206"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options",
+     "12,860",
+     "",
+     "22,268",
+     "",
+     "57,488",
+     ""
+    ],
+    [
+     "Restricted stock",
+     "26,575",
+     "",
+     "36,180",
+     "",
+     "38,424",
+     ""
+    ],
+    [
+     "Preferred stock, if converted",
+     "200,000",
+     "",
+     "200,000",
+     "",
+     "200,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2196,
+    "end_line": 2209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Earnings Per Share"
+    }
+   },
+   "prose_before": "We excluded the items presented below from the calculation of diluted earnings per share as they were antidilutive for the periods indicated ($ in thousands):",
+   "prose_after": "10. Segment Information\nOur primary business is to provide asset management and certain corporate governance services to institutional investors. Because substantially all of our revenue is derived from the services we provide to Front Yard, we operate as a single segment focused on providing asset management and corporate governance services.\n11. Quarterly Financial Information (Unaudited)\nThe following tables set forth our quarterly financial information (unaudited, $ in thousands except per share amounts):\n<TABLE>\n2019\n------------------------------------------------------------\nFirst       Second       Third       Fourth\nQuarter      Quarter     Quarter      Quarter   Full Year\n----------  -----------  ----------  -----------  ----------",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2168,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2213,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "First Quarter",
+     "",
+     "",
+     "Second Quarter",
+     "",
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "Fourth Quarter",
+     "",
+     "",
+     "Full Year",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "$",
+     "3,903",
+     "",
+     "$",
+     "3,898",
+     "",
+     "$",
+     "3,834",
+     "",
+     "$",
+     "4,127",
+     "",
+     "$",
+     "15,762",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "(840)",
+     "",
+     "",
+     "3,289",
+     "",
+     "",
+     "(3,523)",
+     "",
+     "",
+     "(1,539)",
+     "",
+     "",
+     "(2,613)",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income per share of common stock \u2013 basic",
+     "(0.56)",
+     "",
+     "",
+     "2.04",
+     "",
+     "",
+     "(2.25)",
+     "",
+     "",
+     "(1.00)",
+     "",
+     "",
+     "(1.77)",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income per share of common stock \u2013 diluted",
+     "(0.56)",
+     "",
+     "",
+     "1.81",
+     "",
+     "",
+     "(2.25)",
+     "",
+     "",
+     "(1.00)",
+     "",
+     "",
+     "(1.77)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "First Quarter",
+     "",
+     "",
+     "Second Quarter",
+     "",
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "Fourth Quarter",
+     "",
+     "",
+     "Full Year",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "$",
+     "4,052",
+     "",
+     "$",
+     "3,916",
+     "",
+     "$",
+     "3,934",
+     "",
+     "$",
+     "4,024",
+     "",
+     "$",
+     "15,926",
+     ""
+    ],
+    [
+     "Net loss",
+     "(4,364)",
+     "",
+     "",
+     "(1,067)",
+     "",
+     "",
+     "(1,155)",
+     "",
+     "",
+     "(4,290)",
+     "",
+     "",
+     "(10,876)",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock \u2013 basic",
+     "(2.75)",
+     "",
+     "",
+     "(0.69)",
+     "",
+     "",
+     "(0.75)",
+     "",
+     "",
+     "(2.69)",
+     "",
+     "",
+     "(6.88)",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock \u2013 diluted",
+     "(2.75)",
+     "",
+     "",
+     "(0.69)",
+     "",
+     "",
+     "(0.75)",
+     "",
+     "",
+     "(2.69)",
+     "",
+     "",
+     "(6.88)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2019"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

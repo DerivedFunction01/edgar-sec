@@ -1,0 +1,4470 @@
+{
+ "accession": "0000072333-20-000195",
+ "cik": "0000072333",
+ "form": "10-Q",
+ "filing_date": "2020-09-04",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "jwn-20200801.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Washington",
+     "91-0515058"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended August 1, 2020\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to___________\nCommission File Number: 001-15059\nNORDSTROM, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1617 Sixth Avenue, Seattle, Washington 98101\n(Address of principal executive offices)\n206-628-2111\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, without par value",
+     "JWN",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1617 Sixth Avenue, Seattle, Washington 98101\n(Address of principal executive offices)\n206-628-2111\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "FORWARD-LOOKING STATEMENTS",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "DEFINITIONS",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (Unaudited).",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Earnings Quarter and Six Months Ended August 1, 2020 and August 3, 2019",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Earnings Quarter and Six Months Ended August 1, 2020 and August 3, 2019",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets August 1, 2020, February 1, 2020, and August 3, 2019",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Shareholders\u2019 Equity Quarter and Six Months Ended August 1, 2020 and August 3, 2019",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows Six Months Ended August 1, 2020 and August 3, 2019",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures.",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit Index",
+     "",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n[X]  Large Accelerated Filer  [ ]  Accelerated filer\n[ ]  Non-accelerated filer    [ ]  Smaller reporting company\n[ ]  Emerging growth company\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nCommon stock outstanding as of August 28, 2020: 157,150,280 shares\nTABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Quarterly Report on Form 10-Q contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are subject to the \u201csafe harbor\u201d created by those sections. Forward-looking statements are based on our management\u2019s beliefs and assumptions and on information currently available to our management. In some cases, you can identify forward-looking statements by terms such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cgoal,\u201d \u201cwould,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cpredict,\u201d \u201cpotential,\u201d \u201cpursue,\u201d \u201cgoing forward,\u201d and similar expressions intended to identify forward-looking statements. These statements involve known and unknown risks, uncertainties and other factors, which may cause our actual results, performance, time frames or achievements to be materially different from any future results, performance, time frames or achievements expressed or implied by the forward-looking statements. These risks, uncertainties and other factors include, but are not limited to, our anticipated financial outlook for the fiscal year ending January 30, 2021, trends in our operations and the following:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Term",
+     "Definition"
+    ],
+    [
+     "2019 Plan",
+     "2019 Equity Incentive Plan"
+    ],
+    [
+     "2019 Annual Report",
+     "Annual Report on Form 10-K filed on March 20, 2020"
+    ],
+    [
+     "Adjusted EBITDA",
+     "Adjusted earnings before interest, income taxes, depreciation and amortization (a non-GAAP financial measure)"
+    ],
+    [
+     "Adjusted EBITDAR",
+     "Adjusted earnings before interest, income taxes, depreciation, amortization and rent, as defined by our Revolver covenant (a non-GAAP financial measure)"
+    ],
+    [
+     "Adjusted ROIC",
+     "Adjusted return on invested capital (a non-GAAP financial measure)"
+    ],
+    [
+     "ASC",
+     "Accounting Standards Codification"
+    ],
+    [
+     "ASU",
+     "Accounting Standards Update"
+    ],
+    [
+     "CARES Act",
+     "Coronavirus Aid, Relief and Economic Security Act"
+    ],
+    [
+     "CODM",
+     "Chief operating decision maker"
+    ],
+    [
+     "COVID-19",
+     "Novel coronavirus"
+    ],
+    [
+     "Digital sales",
+     "Online and digitally-assisted store sales, which include Online Order Pickup, Ship to Store and Style Board, a digital selling tool"
+    ],
+    [
+     "EBIT",
+     "Earnings (Loss) before interest and income taxes"
+    ],
+    [
+     "EPS",
+     "Earnings (Loss) per share"
+    ],
+    [
+     "ESPP",
+     "Employee Stock Purchase Plan"
+    ],
+    [
+     "Exchange Act",
+     "Securities Exchange Act of 1934, as amended"
+    ],
+    [
+     "Express Services",
+     "Full-Price order pickups and returns offered at certain Nordstrom Rack stores"
+    ],
+    [
+     "FASB",
+     "Financial Accounting Standards Board"
+    ],
+    [
+     "Second quarter of 2020",
+     "13 fiscal weeks ending August 1, 2020"
+    ],
+    [
+     "Second quarter of 2019",
+     "13 fiscal weeks ending August 3, 2019"
+    ],
+    [
+     "Fiscal year 2020",
+     "52 fiscal weeks ending January 30, 2021"
+    ],
+    [
+     "Fiscal year 2019",
+     "52 fiscal weeks ending February 1, 2020"
+    ],
+    [
+     "FLS",
+     "Full-line stores"
+    ],
+    [
+     "Full-Price",
+     "Nordstrom U.S. full-line stores, Nordstrom.com, Canada, Nordstrom Local, Trunk Club and, prior to the second quarter of 2020, Jeffrey"
+    ],
+    [
+     "GAAP",
+     "Generally accepted accounting principles"
+    ],
+    [
+     "Gross profit",
+     "Net sales less cost of sales and related buying and occupancy costs"
+    ],
+    [
+     "Inventory turnover rate",
+     "Trailing 4-quarter cost of sales and related buying and occupancy costs divided by the trailing 4-quarter average inventory"
+    ],
+    [
+     "Lease Standard",
+     "ASU No. 2016-02, Leases, and all related amendments (ASC 842)"
+    ],
+    [
+     "Leverage Ratio",
+     "Ratio of adjusted debt to earnings before interest, income taxes, depreciation, amortization and rent (a non-GAAP financial measure)"
+    ],
+    [
+     "MD&A",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    ],
+    [
+     "Nordstrom Local",
+     "Nordstrom Local service hubs, which offer Full-Price order pickups, returns, alterations and other services"
+    ],
+    [
+     "Nordstrom NYC",
+     "Our New York City flagship FLS, including the Men\u2019s location"
+    ],
+    [
+     "The Nordy Club",
+     "Our customer loyalty program enhanced in October 2018"
+    ],
+    [
+     "NRHL",
+     "Nordstromrack.com/HauteLook"
+    ],
+    [
+     "NYSE",
+     "New York Stock Exchange"
+    ],
+    [
+     "Off-Price",
+     "Nordstrom U.S. Rack stores, Nordstromrack.com, HauteLook.com and Last Chance clearance stores"
+    ],
+    [
+     "Operating Lease Cost",
+     "Fixed rent expense, including fixed common area maintenance expense, net of developer reimbursement amortization"
+    ],
+    [
+     "PCAOB",
+     "Public Company Accounting Oversight Board (United States)"
+    ],
+    [
+     "Property incentives",
+     "Developer and vendor reimbursements"
+    ],
+    [
+     "PSU",
+     "Performance share unit"
+    ],
+    [
+     "Revolver",
+     "Senior revolving credit facility"
+    ],
+    [
+     "ROU asset",
+     "Operating lease right-of-use asset"
+    ],
+    [
+     "RSU",
+     "Restricted stock unit"
+    ],
+    [
+     "SEC",
+     "Securities and Exchange Commission"
+    ],
+    [
+     "SERP",
+     "Unfunded defined benefit Supplemental Executive Retirement Plan"
+    ],
+    [
+     "Secured Notes",
+     "8.750% senior secured notes due May 2025"
+    ],
+    [
+     "SG&A",
+     "Selling, general and administrative"
+    ],
+    [
+     "Supply Chain Network",
+     "Fulfillment centers that primarily process and ship orders to our customers, distribution centers that primarily process and ship merchandise to our stores and other facilities and omni-channel centers that both fulfill customer orders and ship merchandise to our stores"
+    ],
+    [
+     "TD",
+     "Toronto-Dominion Bank, N.A."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 201,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "These and other factors, including those factors we discussed in Part II, Item 1A: Risk Factors, could affect our financial results and cause our actual results to differ materially from any forward-looking information we may provide. Given these risks, uncertainties and other factors, you should not place undue reliance on these forward-looking statements. Also, these forward-looking statements represent our estimates and assumptions only as of the date of this filing. You should read this Quarterly Report on Form 10-Q completely and with the understanding that our actual future results may be materially different from what we expect. We hereby qualify our forward-looking statements by these cautionary statements. Except as required by law, we assume no obligation to update these forward-looking statements publicly, or to update the reasons actual results could differ materially from those anticipated in these forward-looking statements, even if new information becomes available in the future.\nAll references to \u201cNordstrom,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d or the \u201cCompany\u201d mean Nordstrom, Inc. and its subsidiaries.\nIn addition, statements that \u201cwe believe\u201d and similar statements reflect our beliefs and opinions on the relevant subject. These statements are based upon information available to us as of the filing date of this Quarterly Report on Form 10-Q, and while we believe such information forms a reasonable basis for such statements, such information may be limited or incomplete, and our statements should not be read to indicate that we have conducted an exhaustive inquiry into, or review of, all potentially available relevant information. These statements are inherently uncertain and investors are cautioned not to unduly rely upon these statements.\nDEFINITIONS\nThe following table includes definitions of Nordstrom commonly used terms:",
+   "prose_after": "PART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements (Unaudited).\nCONDENSED CONSOLIDATED STATEMENTS OF EARNINGS\n(Amounts in millions except per share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 256,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net sales",
+     "$1,778",
+     "$3,778",
+     "$3,804",
+     "$7,127"
+    ],
+    [
+     "Credit card revenues, net",
+     "84",
+     "94",
+     "177",
+     "188"
+    ],
+    [
+     "Total revenues",
+     "1,862",
+     "3,872",
+     "3,981",
+     "7,315"
+    ],
+    [
+     "Cost of sales and related buying and occupancy costs",
+     "(1,406)",
+     "(2,476)",
+     "(3,216)",
+     "(4,704)"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "(826)",
+     "(1,180)",
+     "(1,948)",
+     "(2,319)"
+    ],
+    [
+     "(Loss) earnings before interest and income taxes",
+     "(370)",
+     "216",
+     "(1,183)",
+     "292"
+    ],
+    [
+     "Interest expense, net",
+     "(51)",
+     "(23)",
+     "(85)",
+     "(46)"
+    ],
+    [
+     "(Loss) earnings before income taxes",
+     "(421)",
+     "193",
+     "(1,268)",
+     "246"
+    ],
+    [
+     "Income tax benefit (expense)",
+     "166",
+     "(52)",
+     "492",
+     "(69)"
+    ],
+    [
+     "Net (loss) earnings",
+     "($255)",
+     "$141",
+     "($776)",
+     "$177"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) earnings per share:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "($1.62)",
+     "$0.91",
+     "($4.95)",
+     "$1.14"
+    ],
+    [
+     "Diluted",
+     "($1.62)",
+     "$0.90",
+     "($4.95)",
+     "$1.14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "157.2",
+     "155.0",
+     "156.8",
+     "155.0"
+    ],
+    [
+     "Diluted",
+     "157.2",
+     "155.6",
+     "156.8",
+     "155.9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements (Unaudited).\nCONDENSED CONSOLIDATED STATEMENTS OF EARNINGS\n(Amounts in millions except per share amounts)",
+   "prose_after": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nNORDSTROM, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE EARNINGS\n(Amounts in millions)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 267,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net (loss) earnings",
+     "($255)",
+     "$141",
+     "($776)",
+     "$177"
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "11",
+     "7",
+     "(13)",
+     "(2)"
+    ],
+    [
+     "Post retirement plan adjustments, net of tax",
+     "1",
+     "\u2014",
+     "3",
+     "\u2014"
+    ],
+    [
+     "Comprehensive net (loss) earnings",
+     "($243)",
+     "$148",
+     "($786)",
+     "$175"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 311,
+    "end_line": 323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nNORDSTROM, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE EARNINGS\n(Amounts in millions)\n(Unaudited)",
+   "prose_after": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(Amounts in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 267,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "August 1, 2020",
+     "February 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$991",
+     "$853",
+     "$956"
+    ],
+    [
+     "Accounts receivable, net",
+     "146",
+     "179",
+     "211"
+    ],
+    [
+     "Merchandise inventories",
+     "1,466",
+     "1,920",
+     "1,932"
+    ],
+    [
+     "Prepaid expenses and other",
+     "802",
+     "278",
+     "384"
+    ],
+    [
+     "Total current assets",
+     "3,405",
+     "3,230",
+     "3,483"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land, property and equipment (net of accumulated depreciation of $6,843, $6,995 and $6,813)",
+     "3,845",
+     "4,179",
+     "4,036"
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "1,655",
+     "1,774",
+     "1,801"
+    ],
+    [
+     "Goodwill",
+     "249",
+     "249",
+     "249"
+    ],
+    [
+     "Other assets",
+     "381",
+     "305",
+     "366"
+    ],
+    [
+     "Total assets",
+     "$9,535",
+     "$9,737",
+     "$9,935"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings under revolving line of credit",
+     "$500",
+     "$\u2014",
+     "$\u2014"
+    ],
+    [
+     "Accounts payable",
+     "1,298",
+     "1,576",
+     "1,819"
+    ],
+    [
+     "Accrued salaries, wages and related benefits",
+     "288",
+     "510",
+     "442"
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "272",
+     "244",
+     "237"
+    ],
+    [
+     "Other current liabilities",
+     "1,284",
+     "1,190",
+     "1,427"
+    ],
+    [
+     "Current portion of long-term debt",
+     "\u2014",
+     "\u2014",
+     "500"
+    ],
+    [
+     "Total current liabilities",
+     "3,642",
+     "3,520",
+     "4,425"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net",
+     "3,266",
+     "2,676",
+     "2,178"
+    ],
+    [
+     "Non-current operating lease liabilities",
+     "1,782",
+     "1,875",
+     "1,912"
+    ],
+    [
+     "Other liabilities",
+     "671",
+     "687",
+     "661"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 5)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, no par value: 1,000 shares authorized; 157.1, 155.6 and 154.9 shares issued and outstanding",
+     "3,168",
+     "3,129",
+     "3,084"
+    ],
+    [
+     "Accumulated deficit",
+     "(2,916)",
+     "(2,082)",
+     "(2,286)"
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(78)",
+     "(68)",
+     "(39)"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "174",
+     "979",
+     "759"
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$9,535",
+     "$9,737",
+     "$9,935"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 334,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(Amounts in millions)",
+   "prose_after": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY\n(Amounts in millions except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 332,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Common stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "$3,148",
+     "$3,067",
+     "$3,129",
+     "$3,048"
+    ],
+    [
+     "Issuance of common stock under stock compensation plans",
+     "\u2014",
+     "\u2014",
+     "11",
+     "11"
+    ],
+    [
+     "Stock-based compensation",
+     "20",
+     "17",
+     "28",
+     "25"
+    ],
+    [
+     "Balance, end of period",
+     "$3,168",
+     "$3,084",
+     "$3,168",
+     "$3,084"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "($2,661)",
+     "($2,370)",
+     "($2,082)",
+     "($2,138)"
+    ],
+    [
+     "Cumulative effect of adopted accounting standards",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(25)"
+    ],
+    [
+     "Net (loss) earnings",
+     "(255)",
+     "141",
+     "(776)",
+     "177"
+    ],
+    [
+     "Dividends",
+     "\u2014",
+     "(57)",
+     "(58)",
+     "(114)"
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(186)"
+    ],
+    [
+     "Balance, end of period",
+     "($2,916)",
+     "($2,286)",
+     "($2,916)",
+     "($2,286)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "($90)",
+     "($46)",
+     "($68)",
+     "($37)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "12",
+     "7",
+     "(10)",
+     "(2)"
+    ],
+    [
+     "Balance, end of period",
+     "($78)",
+     "($39)",
+     "($78)",
+     "($39)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Shareholders\u2019 Equity",
+     "$174",
+     "$759",
+     "$174",
+     "$759"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends per share",
+     "$\u2014",
+     "$0.37",
+     "$0.37",
+     "$0.74"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 392,
+    "end_line": 429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY\n(Amounts in millions except per share amounts)",
+   "prose_after": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Amounts in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Operating Activities",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "($776)",
+     "$177"
+    ],
+    [
+     "Adjustments to reconcile net (loss) earnings to net cash (used in) provided by operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization expenses and other, net",
+     "353",
+     "325"
+    ],
+    [
+     "Asset impairment",
+     "137",
+     "\u2014"
+    ],
+    [
+     "Right-of-use asset amortization",
+     "85",
+     "89"
+    ],
+    [
+     "Deferred income taxes, net",
+     "(67)",
+     "(21)"
+    ],
+    [
+     "Stock-based compensation expense",
+     "33",
+     "40"
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "49",
+     "21"
+    ],
+    [
+     "Merchandise inventories",
+     "397",
+     "1"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "(534)",
+     "(140)"
+    ],
+    [
+     "Accounts payable",
+     "(49)",
+     "322"
+    ],
+    [
+     "Accrued salaries, wages and related benefits",
+     "(219)",
+     "(137)"
+    ],
+    [
+     "Other current liabilities",
+     "98",
+     "128"
+    ],
+    [
+     "Lease liabilities",
+     "(103)",
+     "(125)"
+    ],
+    [
+     "Other liabilities",
+     "5",
+     "12"
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "(591)",
+     "692"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing Activities",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(228)",
+     "(480)"
+    ],
+    [
+     "Other, net",
+     "17",
+     "26"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(211)",
+     "(454)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing Activities",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from revolving line of credit",
+     "800",
+     "\u2014"
+    ],
+    [
+     "Payments on revolving line of credit",
+     "(300)",
+     "\u2014"
+    ],
+    [
+     "Proceeds from long-term borrowings",
+     "600",
+     "\u2014"
+    ],
+    [
+     "(Decrease) Increase in cash book overdrafts",
+     "(84)",
+     "92"
+    ],
+    [
+     "Cash dividends paid",
+     "(58)",
+     "(114)"
+    ],
+    [
+     "Payments for repurchase of common stock",
+     "\u2014",
+     "(210)"
+    ],
+    [
+     "Proceeds from issuances under stock compensation plans",
+     "11",
+     "11"
+    ],
+    [
+     "Tax withholding on share-based awards",
+     "(8)",
+     "(18)"
+    ],
+    [
+     "Other, net",
+     "(12)",
+     "\u2014"
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "949",
+     "(239)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "(9)",
+     "\u2014"
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "138",
+     "(1)"
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "853",
+     "957"
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$991",
+     "$956"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     ""
+    ],
+    [
+     "Income taxes, net",
+     "$8",
+     "$62"
+    ],
+    [
+     "Interest, net of capitalized interest",
+     "68",
+     "50"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 502
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Amounts in millions)",
+   "prose_after": "The accompanying Notes to Condensed Consolidated Financial Statements are an integral part of these financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1: BASIS OF PRESENTATION\nThe accompanying Condensed Consolidated Financial Statements include the balances of Nordstrom, Inc. and its subsidiaries. All intercompany transactions and balances are eliminated in consolidation. The interim Condensed Consolidated Financial Statements have been prepared on a basis consistent in all material respects with the accounting policies described and applied in our 2019 Annual Report and reflect all adjustments of a normal recurring nature that are, in management\u2019s opinion, necessary for the fair presentation of the results of operations, financial position and cash flows for the periods presented.\nThe Condensed Consolidated Financial Statements as of and for the periods ended August 1, 2020 and August 3, 2019 are unaudited. The Condensed Consolidated Balance Sheet as of February 1, 2020 has been derived from the audited Consolidated Financial Statements included in our 2019 Annual Report. The interim Condensed Consolidated Financial Statements should be read together with the Consolidated Financial Statements and related footnote disclosures contained in our 2019 Annual Report.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "August 1, 2020",
+     ""
+    ],
+    [
+     "",
+     "Quarter Ended",
+     "Six Months Ended"
+    ],
+    [
+     "Long-lived asset impairment (1)",
+     "$2",
+     "$96"
+    ],
+    [
+     "Operating lease ROU asset impairment (1)",
+     "18",
+     "41"
+    ],
+    [
+     "Total asset impairment",
+     "$20",
+     "$137"
+    ]
+   ],
+   "caption_stack": [
+    "August 1, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 533,
+    "end_line": 544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "We reduce sales and cost of sales by an estimate of our future customer merchandise returns, which is calculated based on historical return patterns, and record a sales return allowance and an estimated return asset. We record the impact of the sales return allowance in our separate Full-Price, Off-Price and digital sales metrics. The majority of our returns from both digital and physical sales come through our stores. While our stores were temporarily closed approximately 50% of the days for the quarter and six months ended August 1, 2020, our customers were generally not able to return goods in our stores, impacting the expected timing of returns. As a result, our estimates of future returns require more judgment, and actual returns may differ from our historical return rates.\nLong-Lived Assets\nWhen facts and circumstances indicate that the carrying values of buildings, equipment and ROU assets may be impaired, we compare the carrying value to the related projected future cash flows, among other quantitative and qualitative analysis. These projections are inherently subject to uncertainties and while we believe the inputs and assumptions utilized in our future cash flows are reasonable, our estimates may change in the near term based on our future performance.\nAs we optimize our mix of physical and digital assets to align with longer-term customer trends, we closed 16 FLS, six Trunk Club clubhouses and three Jeffrey boutiques. As part of these closures, we incurred non-cash impairment charges on long-lived tangible and ROU assets, primarily associated with the FLS closures, to adjust the carrying values to their estimated fair value. The following table provides details related to asset impairment charges as a result of COVID-19:",
+   "prose_after": "1 As of August 1, 2020, the carrying value of the applicable long-lived and operating lease ROU assets after impairment was $14 and $6.\nThese charges are primarily included in our Retail segment SG&A expense on the Condensed Consolidated Statement of Earnings.\nGoodwill Impairment\nWe review our goodwill annually in the fourth quarter or when circumstances indicate that the carrying value may exceed fair value. Our most recently completed goodwill impairment analyses in the fourth quarter of 2019 indicated significant excess fair values over carrying values. After performing both qualitative and quantitative analyses, including review of future long-term revenue and cash flow assumptions, we concluded a triggering event requiring us to accelerate our annual goodwill impairment analysis did not occur, as we still expect any potential change in fair value to exceed carrying value. As a result, we did not record a goodwill impairment charge for the six months ended August 1, 2020.\nCARES Act and Other COVID-19 Stimulus",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 549,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Contract Liabilities"
+    ],
+    [
+     "Balance as of February 2, 2019",
+     "$548"
+    ],
+    [
+     "Balance as of May 4, 2019",
+     "504"
+    ],
+    [
+     "Balance as of August 3, 2019",
+     "488"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance as of February 1, 2020",
+     "576"
+    ],
+    [
+     "Balance as of May 2, 2020",
+     "489"
+    ],
+    [
+     "Balance as of August 1, 2020",
+     "498"
+    ]
+   ],
+   "caption_stack": [
+    "Contract Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVENUE"
+    }
+   },
+   "prose_before": "In addition, for the six months ended August 1, 2020, we recognized $58 in employee retention payroll tax credits and elected to defer payment of the employer portion of social security taxes, both as provided for under the CARES Act and other COVID-19 related stimulus.\nSeverance\nIn the first quarter of 2020, we recorded $88 of restructuring costs in connection with our regional and corporate reorganization, including $25 in cost of sales and related buying and occupancy costs and $63 in SG&A on the Condensed Consolidated Statement of Earnings. We have approximately $25 of payments remaining as of August 1, 2020.\nLeases\nWe incurred operating lease liabilities arising from the commencement of lease agreements of $39 for the six months ended August 1, 2020 and $58 for the six months ended August 3, 2019.\nNOTE 2: REVENUE\nContract Liabilities\nContract liabilities represent our obligation to transfer goods or services to customers and include deferred revenue for The Nordy Club (including points and Nordstrom Notes) and gift cards. Our contract liabilities are classified as current on the Condensed Consolidated Balance Sheets and are as follows:",
+   "prose_after": "Revenues recognized from our beginning contract liability balance were $71 and $175 for the quarter and six months ended August 1, 2020 and $138 and $231 for the quarter and six months ended August 3, 2019.\nDisaggregation of Revenue\nThe following table summarizes our disaggregated net sales:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 549,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Full-Price",
+     "$1,066",
+     "",
+     "$2,530",
+     "",
+     "$2,423",
+     "",
+     "$4,657",
+     ""
+    ],
+    [
+     "Off-Price",
+     "712",
+     "",
+     "1,248",
+     "",
+     "1,381",
+     "",
+     "2,470",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$1,778",
+     "",
+     "$3,778",
+     "",
+     "$3,804",
+     "",
+     "$7,127",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Digital sales as a % of total net sales",
+     "61",
+     "%",
+     "30",
+     "%",
+     "57",
+     "%",
+     "31",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 598,
+    "end_line": 612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVENUE"
+    }
+   },
+   "prose_before": "Revenues recognized from our beginning contract liability balance were $71 and $175 for the quarter and six months ended August 1, 2020 and $138 and $231 for the quarter and six months ended August 3, 2019.\nDisaggregation of Revenue\nThe following table summarizes our disaggregated net sales:",
+   "prose_after": "The following table summarizes the percent of net sales by merchandise category:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Women\u2019s Apparel",
+     "27",
+     "%",
+     "32",
+     "%",
+     "30",
+     "%",
+     "32",
+     "%"
+    ],
+    [
+     "Shoes",
+     "27",
+     "%",
+     "23",
+     "%",
+     "26",
+     "%",
+     "24",
+     "%"
+    ],
+    [
+     "Men\u2019s Apparel",
+     "12",
+     "%",
+     "16",
+     "%",
+     "11",
+     "%",
+     "16",
+     "%"
+    ],
+    [
+     "Women\u2019s Accessories",
+     "15",
+     "%",
+     "11",
+     "%",
+     "14",
+     "%",
+     "11",
+     "%"
+    ],
+    [
+     "Beauty",
+     "12",
+     "%",
+     "11",
+     "%",
+     "12",
+     "%",
+     "11",
+     "%"
+    ],
+    [
+     "Kids\u2019 Apparel",
+     "4",
+     "%",
+     "4",
+     "%",
+     "4",
+     "%",
+     "4",
+     "%"
+    ],
+    [
+     "Other",
+     "3",
+     "%",
+     "3",
+     "%",
+     "3",
+     "%",
+     "2",
+     "%"
+    ],
+    [
+     "Total net sales",
+     "100",
+     "%",
+     "100",
+     "%",
+     "100",
+     "%",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVENUE"
+    }
+   },
+   "prose_before": "The following table summarizes the percent of net sales by merchandise category:",
+   "prose_after": "NOTE 3: DEBT AND CREDIT FACILITIES\nDebt\nDuring the first quarter of 2020, we issued $600 aggregate principal amount of 8.750% Senior Secured Notes due May 2025. These notes are guaranteed by certain subsidiaries and secured by various store, distribution center and corporate properties. The Secured Notes contain covenants that include limitations on indebtedness, liens, mergers, acquisitions, asset sales, investments, dividend payments and equity distributions, in addition to certain change of control triggering events and provisions for events of default. We will be permitted to prepay our Secured Notes at a premium beginning in 2022.\nCredit Facilities\nDuring the first quarter of 2020, we amended our existing Revolver and borrowed $800. Under the terms of the amendment, if our Leverage Ratio is greater than four or our unsecured debt is rated below BBB- with a stable outlook at Standard & Poor\u2019s or Baa3 with a stable outlook at Moody\u2019s, any borrowings under our Revolver will be secured by substantially all our personal property and we will be subject to asset coverage and minimum liquidity covenants, as well as a fixed charge coverage covenant beginning in the third quarter of 2020. If our Leverage Ratio is below four and our unsecured debt is rated at or above BBB- with a stable outlook at Standard & Poor\u2019s or Baa3 with a stable outlook at Moody\u2019s, any borrowings under our Revolver will be unsecured, we will not be subject to the above covenants and the restrictions on dividend payments and share repurchases will be removed. As of August 1, 2020, our borrowings under the Revolver were classified as secured as our Leverage Ratio exceeded four and we did not meet or exceed our credit rating threshold. We met our asset coverage and minimum liquidity covenants. Provided that we obtain written consent from the lenders, we have the option to increase the Revolver by up to $200, to a total of $1,000, and two options to extend the Revolver by one year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "August 1, 2020",
+     "February 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Carrying value of long-term debt",
+     "$3,266",
+     "$2,676",
+     "$2,678"
+    ],
+    [
+     "Fair value of long-term debt",
+     "2,922",
+     "2,905",
+     "2,782"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 664,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "We disclose our financial assets and liabilities that are measured at fair value in our Condensed Consolidated Balance Sheets by level within the fair value hierarchy as defined by applicable accounting standards:\nLevel 1: Quoted market prices in active markets for identical assets or liabilities\nLevel 2: Other observable market-based inputs or unobservable inputs that are corroborated by market data\nLevel 3: Unobservable inputs that cannot be corroborated by market data that reflect the reporting entity\u2019s own assumptions\nFinancial Instruments Measured at Carrying Value\nFinancial instruments measured at carrying value on a recurring basis include cash and cash equivalents, accounts receivable, accounts payable and our Revolver, which approximate fair value due to their short-term nature.\nLong-term debt is recorded at carrying value. If long-term debt was measured at fair value, we would use quoted market prices of the same or similar issues, which is considered a Level 2 fair value measurement. The following table summarizes the carrying value and fair value estimate of our long-term debt, including current maturities:",
+   "prose_after": "Non-financial Assets Measured at Fair Value on a Nonrecurring Basis\nWe also measure certain non-financial assets at fair value on a nonrecurring basis, primarily goodwill, long-lived tangible and ROU assets, in connection with periodic evaluations for potential impairment. We estimate the fair value of these assets using primarily unobservable inputs and, as such, these are considered Level 3 fair value measurements. For more information regarding long-lived tangible and ROU asset impairment charges for the six months ended August 1, 2020, see Note 1: Basis of Presentation. There were no material impairment charges for the six months ended August 3, 2019.\nNOTE 5: COMMITMENTS AND CONTINGENCIES\nOur NYC flagship store opened in October 2019 and the related building and equipment assets were placed into service at the end of the third quarter of 2019, while construction continues in the residential condominium units above the store. As of August 1, 2020, we have a fee interest in the retail condominium unit. We are committed to make one remaining installment payment based on the developer meeting final pre-established construction and development milestones. Precautions related to the COVID-19 pandemic have caused delays in meeting these milestones and the timing of the remaining payment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "2018 Program",
+     "",
+     ""
+    ],
+    [
+     "Shares of common stock repurchased",
+     "\u2014",
+     "4.1"
+    ],
+    [
+     "Aggregate amount of common stock repurchased",
+     "\u2014",
+     "$186"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Our NYC flagship store opened in October 2019 and the related building and equipment assets were placed into service at the end of the third quarter of 2019, while construction continues in the residential condominium units above the store. As of August 1, 2020, we have a fee interest in the retail condominium unit. We are committed to make one remaining installment payment based on the developer meeting final pre-established construction and development milestones. Precautions related to the COVID-19 pandemic have caused delays in meeting these milestones and the timing of the remaining payment.\nOur estimated total purchase obligations decreased by approximately 30% as of August 1, 2020, compared with our balance as of February 2, 2020. This decrease was primarily from a reduction in inventory purchase orders.\nNOTE 6: SHAREHOLDERS\u2019 EQUITY\nIn August 2018, our Board of Directors authorized a program to repurchase up to $1,500 of our outstanding common stock, with no expiration date. On March 23, 2020, in response to uncertainty from the COVID-19 pandemic, we announced the suspension of our quarterly dividend payments beginning in the second quarter of 2020 and the immediate suspension of our share repurchase program. We remain committed to these programs over the long-term and intend to resume dividend payments and share repurchases when appropriate. The following is a summary of share repurchase activity:",
+   "prose_after": "We had $707 remaining in share repurchase capacity as of August 1, 2020. The actual timing, price, manner and amounts of future share repurchases, if any, will be subject to market and economic conditions, certain financial covenants and applicable SEC rules.\nThe amendment to our Revolver contains negative covenants with respect to the payment of dividends and share repurchases when either our Leverage Ratio is above four or our unsecured debt is rated below BBB- with a stable outlook at Standard & Poor\u2019s or Baa3 with a stable outlook at Moody\u2019s. As of August 1, 2020, our Leverage Ratio exceeded four and we did not meet our credit rating covenant, preventing us from paying dividends or repurchasing shares.\nNOTE 7: STOCK-BASED COMPENSATION\nThe following table summarizes our stock-based compensation expense:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "RSUs",
+     "$16",
+     "$14",
+     "$29",
+     "$28"
+    ],
+    [
+     "Stock options",
+     "2",
+     "3",
+     "4",
+     "7"
+    ],
+    [
+     "Other (1)",
+     "2",
+     "3",
+     "\u2014",
+     "5"
+    ],
+    [
+     "Total stock-based compensation expense, before income tax benefit",
+     "20",
+     "20",
+     "33",
+     "40"
+    ],
+    [
+     "Income tax benefit",
+     "(8)",
+     "(5)",
+     "(13)",
+     "(10)"
+    ],
+    [
+     "Total stock-based compensation expense, net of income tax benefit",
+     "$12",
+     "$15",
+     "$20",
+     "$30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "We had $707 remaining in share repurchase capacity as of August 1, 2020. The actual timing, price, manner and amounts of future share repurchases, if any, will be subject to market and economic conditions, certain financial covenants and applicable SEC rules.\nThe amendment to our Revolver contains negative covenants with respect to the payment of dividends and share repurchases when either our Leverage Ratio is above four or our unsecured debt is rated below BBB- with a stable outlook at Standard & Poor\u2019s or Baa3 with a stable outlook at Moody\u2019s. As of August 1, 2020, our Leverage Ratio exceeded four and we did not meet our credit rating covenant, preventing us from paying dividends or repurchasing shares.\nNOTE 7: STOCK-BASED COMPENSATION\nThe following table summarizes our stock-based compensation expense:",
+   "prose_after": "1 Other stock-based compensation expense includes PSUs, ESPP and nonemployee director stock awards.\nThe following table summarizes our grant allocations:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "",
+     "Granted",
+     "Weighted-average grant-date fair value per unit",
+     "Granted",
+     "Weighted-average grant-date fair value per unit"
+    ],
+    [
+     "RSUs",
+     "3.3",
+     "$21",
+     "1.1",
+     "$41"
+    ],
+    [
+     "Stock options",
+     "1.8",
+     "$7",
+     "1.0",
+     "$15"
+    ],
+    [
+     "PSUs",
+     "0.4",
+     "$24",
+     "0.3",
+     "$42"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 727,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "1 Other stock-based compensation expense includes PSUs, ESPP and nonemployee director stock awards.\nThe following table summarizes our grant allocations:",
+   "prose_after": "Under our deferred and stock-based compensation plan arrangements, we issued 0.1 and 1.6 shares of common stock during the quarter and six months ended August 1, 2020 and 0.3 and 1.4 shares during the quarter and six months ended August 3, 2019.\nNOTE 8: EARNINGS PER SHARE\nThe computation of EPS is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net (loss) earnings",
+     "($255)",
+     "$141",
+     "($776)",
+     "$177"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic shares",
+     "157.2",
+     "155.0",
+     "156.8",
+     "155.0"
+    ],
+    [
+     "Dilutive effect of common stock equivalents",
+     "\u2014",
+     "0.6",
+     "\u2014",
+     "0.9"
+    ],
+    [
+     "Diluted shares",
+     "157.2",
+     "155.6",
+     "156.8",
+     "155.9"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) earnings per basic share",
+     "($1.62)",
+     "$0.91",
+     "($4.95)",
+     "$1.14"
+    ],
+    [
+     "(Loss) earnings per diluted share",
+     "($1.62)",
+     "$0.90",
+     "($4.95)",
+     "$1.14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anti-dilutive common stock equivalents",
+     "14.4",
+     "11.5",
+     "13.7",
+     "10.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 749,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Under our deferred and stock-based compensation plan arrangements, we issued 0.1 and 1.6 shares of common stock during the quarter and six months ended August 1, 2020 and 0.3 and 1.4 shares during the quarter and six months ended August 3, 2019.\nNOTE 8: EARNINGS PER SHARE\nThe computation of EPS is as follows:",
+   "prose_after": "NOTE 9: SEGMENT REPORTING\nThe following table sets forth information for our reportable segment:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 789,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Retail segment EBIT",
+     "($394)",
+     "$272",
+     "($1,105)",
+     "$414"
+    ],
+    [
+     "Corporate/Other income (loss) before interest and income taxes",
+     "24",
+     "(56)",
+     "(78)",
+     "(122)"
+    ],
+    [
+     "Interest expense, net",
+     "(51)",
+     "(23)",
+     "(85)",
+     "(46)"
+    ],
+    [
+     "(Loss) earnings before income taxes",
+     "($421)",
+     "$193",
+     "($1,268)",
+     "$246"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 774,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "NOTE 9: SEGMENT REPORTING\nThe following table sets forth information for our reportable segment:",
+   "prose_after": "For information about disaggregated revenues, see Note 2: Revenue.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\n(Dollar and share amounts in millions except per share amounts)\nOVERVIEW\nAt the onset of the pandemic, our primary objective was protecting and enhancing liquidity, which we achieved. Given the uncertainty over how long our temporary store closures would last, and with inventory as our biggest investment, we took decisive action to minimize risk and stabilize our business.\nIn the first quarter, we significantly reduced inventory levels by more than 25%, allowing us to mitigate markdowns and bring in newness for customers. As the pace of change in customer behavior continued to accelerate, we also took proactive steps to execute our strategic plans with greater speed. This included restructuring our organization and permanently closing 16 FLS, which contributed to overhead cost reductions of nearly 20% in the second quarter.\nFor the second quarter, we successfully executed on our operating plan with earnings, cash and liquidity well exceeding our expectations. Our net loss per share of $1.62 and EBIT loss of $370 included COVID-19 related charges of $0.08 per share or $23, primarily associated with corporate asset impairments. We ended the quarter with almost $1,300 in liquidity, including $991 in cash. We generated quarterly operating cash flow of more than $185, enabling us to pay down $300 on our revolving line of credit.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 789,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Net sales by business:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Full-Price",
+     "$1,066",
+     "",
+     "$2,530",
+     "",
+     "$2,423",
+     "",
+     "$4,657",
+     ""
+    ],
+    [
+     "Off-Price",
+     "712",
+     "",
+     "1,248",
+     "",
+     "1,381",
+     "",
+     "2,470",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$1,778",
+     "",
+     "$3,778",
+     "",
+     "$3,804",
+     "",
+     "$7,127",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales decrease by business:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Full-Price",
+     "(57.9",
+     "%)",
+     "(6.5",
+     "%)",
+     "(48.0",
+     "%)",
+     "(5.9",
+     "%)"
+    ],
+    [
+     "Off-Price",
+     "(43.0",
+     "%)",
+     "(1.9",
+     "%)",
+     "(44.1",
+     "%)",
+     "(1.3",
+     "%)"
+    ],
+    [
+     "Total Company",
+     "(53.0",
+     "%)",
+     "(5.1",
+     "%)",
+     "(46.6",
+     "%)",
+     "(4.3",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Digital sales as % of total net sales",
+     "61",
+     "%",
+     "30",
+     "%",
+     "57",
+     "%",
+     "31",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Our actions to shore up our financial position in the first half of 2020 allow us to head into the second half of this year and prepare for 2021 from a position of strength. We accelerated our long-term strategic plans by optimizing the mix of physical and digital assets and increasing our agility through a leaner and more efficient organization. When combined with a capital structure that provides a strong foundation for reinvestment, we are well-positioned to respond quickly to a period of accelerated change in customer behavior. Over the near and medium term, we are focused on reinvesting in our strategic growth priorities to deliver a best-in-class customer experience while maintaining a strong balance sheet. As we emerge from this disruptive period, our ambition is for Nordstrom to be positioned as a retail winner by gaining market share and driving profitable growth.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nRESULTS OF OPERATIONS\nIn our ongoing effort to enhance the customer experience, we are focused on providing a seamless experience across our businesses. We invested early in our omni-channel capabilities, integrating our operations, merchandising and technology across our stores and online, in both our Full-Price and Off-Price businesses. While our customers may engage with us through multiple businesses, we know they value the overall Nordstrom brand experience and view us simply as Nordstrom, which is ultimately how we view our company. We have one Retail reportable segment and analyze our results on a total company basis, using customer, market share, operational and net sales metrics.\nNet Sales\nThe following table summarizes net sales by business:",
+   "prose_after": "Total Company net sales decreased 53.0% and 46.6% for the second quarter and six months ended August 1, 2020, compared with the same periods in 2019. These declines primarily resulted from COVID-19, including our temporary store closures for approximately 50% of the days for the quarter and six months ended August 1, 2020, as well as the timing impact of the Anniversary Sale shifting from the second quarter to the third quarter in 2020. The top-performing merchandise categories were Home, Kids\u2019 and Accessories for the second quarter of 2020 and six months ended August 1, 2020. During the six months ended August 1, 2020, we closed 16 FLS, six Trunk Club clubhouses and three Jeffrey boutiques.\nDigital sales decreased 5% for the second quarter of 2020 and were flat for the six months ended August 1, 2020, compared with the same periods in 2019, primarily due to the Anniversary Sale timing shift that negatively impacted the second quarter by approximately 25 percentage points. By excluding the shift impact, digital sales increased approximately 20% in the second quarter and in the mid-teens range for the six months ended August 1, 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 815,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$372",
+     "",
+     "$1,302",
+     "",
+     "$588",
+     "",
+     "$2,423",
+     ""
+    ],
+    [
+     "Gross profit as a % of net sales",
+     "20.9",
+     "%",
+     "34.5",
+     "%",
+     "15.5",
+     "%",
+     "34.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Inventory turnover rate",
+     "",
+     "",
+     "",
+     "",
+     "4.52",
+     "",
+     "4.71",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 878
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Full-Price net sales decreased 57.9% and 48.0% for the second quarter and six months ended August 1, 2020, compared with the same periods in 2019. These declines resulted from the temporary store closures and the Anniversary Sale timing shift. Off-Price net sales decreased 43.0% and 44.1% for the second quarter and six months ended August 1, 2020, compared with the same periods in 2019. These declines resulted primarily from the temporary store closures.\nCredit Card Revenues, Net\nCredit card revenues, net include our portion of the ongoing credit card revenue, net of credit losses, pursuant to our program agreement with TD. TD is the exclusive issuer of our consumer credit cards and we perform the account servicing functions. Credit card revenues, net was $84 and $177 for the second quarter and six months ended August 1, 2020, compared with $94 and $188 for the same periods in 2019. The decreases were primarily a result of lower interchange revenue from lower spend on our credit cards at other merchants.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nGross Profit\nThe following table summarizes gross profit:",
+   "prose_after": "Gross profit decreased $930 and 14% as a percentage of net sales for the second quarter of 2020, and $1,835 and 19% for the six months ended August 1, 2020 compared with the same periods in 2019, primarily due to planned markdowns and deleverage from lower sales volume.\nEnding inventory as of August 1, 2020 decreased 24% compared with the prior period, primarily due to the impact of our aggressive actions in prior quarter to reduce receipts and clear inventory, enabling targeted new receipts to support the Anniversary Sale. Lower sales volume led to a decrease in inventory turnover rate as of August 1, 2020.\nSelling, General and Administrative Expenses\nSG&A is summarized in the following table:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "SG&A expenses",
+     "$826",
+     "",
+     "$1,180",
+     "",
+     "$1,948",
+     "",
+     "$2,319",
+     ""
+    ],
+    [
+     "SG&A expenses as a % of net sales",
+     "46.5",
+     "%",
+     "31.2",
+     "%",
+     "51.2",
+     "%",
+     "32.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Gross profit decreased $930 and 14% as a percentage of net sales for the second quarter of 2020, and $1,835 and 19% for the six months ended August 1, 2020 compared with the same periods in 2019, primarily due to planned markdowns and deleverage from lower sales volume.\nEnding inventory as of August 1, 2020 decreased 24% compared with the prior period, primarily due to the impact of our aggressive actions in prior quarter to reduce receipts and clear inventory, enabling targeted new receipts to support the Anniversary Sale. Lower sales volume led to a decrease in inventory turnover rate as of August 1, 2020.\nSelling, General and Administrative Expenses\nSG&A is summarized in the following table:",
+   "prose_after": "SG&A decreased $354 for the second quarter of 2020 and $371 for the six months ended August 1, 2020, compared with the same periods in 2019, primarily as a result of lower sales volumes in addition to reduced overhead labor and benefit costs. SG&A rates increased for the second quarter of 2020 and six months ended August 1, 2020, primarily as a result of deleverage on lower sales volumes.\nEarnings (Loss) Before Interest and Income Taxes\nEBIT is summarized in the following table:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "EBIT",
+     "($370)",
+     "",
+     "$216",
+     "",
+     "($1,183)",
+     "",
+     "$292",
+     ""
+    ],
+    [
+     "EBIT as a % of sales",
+     "(20.8",
+     "%)",
+     "5.7",
+     "%",
+     "(31.1",
+     "%)",
+     "4.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "SG&A decreased $354 for the second quarter of 2020 and $371 for the six months ended August 1, 2020, compared with the same periods in 2019, primarily as a result of lower sales volumes in addition to reduced overhead labor and benefit costs. SG&A rates increased for the second quarter of 2020 and six months ended August 1, 2020, primarily as a result of deleverage on lower sales volumes.\nEarnings (Loss) Before Interest and Income Taxes\nEBIT is summarized in the following table:",
+   "prose_after": "EBIT decreased $586 for the second quarter of 2020 and $1,475 for the six months ended August 1, 2020, compared with the same periods in 2019, primarily due to lower sales volume from COVID-19 and the Anniversary Sale timing shift. COVID-19 related charges of $23 in the second quarter of 2020 consisted primarily of corporate asset impairments. COVID-19 related charges of $303 for the six months ended August 1, 2020 consisted primarily of asset impairments from store closures, premium pay and benefits and restructuring charges.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nInterest Expense, Net\nInterest expense, net was $51 for the second quarter of 2020, compared with $23 for the same period in 2019, and $85 for the six months ended August 1, 2020, compared with $46 for the same period in 2019. The increase for the second quarter of 2020 and six months ended August 1, 2020 was primarily due to additional interest related to the Revolver drawdown and the new Senior Secured Note in the first quarter of 2020, as well as lower capitalized interest in 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "($166)",
+     "",
+     "$52",
+     "",
+     "($492)",
+     "",
+     "$69",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "39.5",
+     "%",
+     "27.2",
+     "%",
+     "38.8",
+     "%",
+     "28.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 928,
+    "end_line": 937
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "EBIT decreased $586 for the second quarter of 2020 and $1,475 for the six months ended August 1, 2020, compared with the same periods in 2019, primarily due to lower sales volume from COVID-19 and the Anniversary Sale timing shift. COVID-19 related charges of $23 in the second quarter of 2020 consisted primarily of corporate asset impairments. COVID-19 related charges of $303 for the six months ended August 1, 2020 consisted primarily of asset impairments from store closures, premium pay and benefits and restructuring charges.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nInterest Expense, Net\nInterest expense, net was $51 for the second quarter of 2020, compared with $23 for the same period in 2019, and $85 for the six months ended August 1, 2020, compared with $46 for the same period in 2019. The increase for the second quarter of 2020 and six months ended August 1, 2020 was primarily due to additional interest related to the Revolver drawdown and the new Senior Secured Note in the first quarter of 2020, as well as lower capitalized interest in 2020.\nIncome Tax Expense\nIncome tax expense is summarized in the following table:",
+   "prose_after": "The effective tax rate increased in the second quarter of 2020 and for the six months ended August 1, 2020, compared with the same periods in 2019, primarily due to the CARES Act that allows us to carry back expected 2020 losses at the higher tax rate in previous years. The increase was partially offset by reduced federal credits and increased nondeductible stock compensation.\nEarnings (Loss) Per Share\nEPS is as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 956,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Basic",
+     "($1.62)",
+     "$0.91",
+     "($4.95)",
+     "$1.14"
+    ],
+    [
+     "Diluted",
+     "($1.62)",
+     "$0.90",
+     "($4.95)",
+     "$1.14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 944,
+    "end_line": 953
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "The effective tax rate increased in the second quarter of 2020 and for the six months ended August 1, 2020, compared with the same periods in 2019, primarily due to the CARES Act that allows us to carry back expected 2020 losses at the higher tax rate in previous years. The increase was partially offset by reduced federal credits and increased nondeductible stock compensation.\nEarnings (Loss) Per Share\nEPS is as follows:",
+   "prose_after": "Earnings (loss) per diluted share decreased $2.52 for the second quarter of 2020, compared with the same period in 2019, and decreased $6.09 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to lower sales as a result of COVID-19 and the Anniversary Sale timing shift.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nAdjusted ROIC (Non-GAAP financial measure)\nWe believe that Adjusted ROIC is a useful financial measure for investors in evaluating the efficiency and effectiveness of the capital we have invested in our business to generate returns over time. In addition, we have incorporated it in our executive incentive measures and we believe it is an important indicator of shareholders\u2019 return over the long term.\nFor 2019, income statement activity for adjusted net operating profit and balance sheet amounts for average invested capital are comprised of two quarters of activity under the Lease Standard for 2019, and two quarters of 2018 under the previous lease standard. Under the previous lease standard, we estimated the value of our operating leases as if they met the criteria for capital leases or we had purchased the properties. This provided additional supplemental information that estimated the investment in our operating leases. Estimated depreciation on capitalized operating leases and average estimated asset base of capitalized operating leases are not calculated in accordance with, nor an alternative for, GAAP and should not be considered in isolation or as a substitution for our results as reported under GAAP.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 956,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Four Quarters Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "($458)",
+     "",
+     "$492",
+     ""
+    ],
+    [
+     "Add: income tax (benefit) expense",
+     "(375)",
+     "",
+     "144",
+     ""
+    ],
+    [
+     "Add: interest expense",
+     "149",
+     "",
+     "109",
+     ""
+    ],
+    [
+     "(Loss) earnings before interest and income tax expense",
+     "(684)",
+     "",
+     "745",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Add: operating lease interest (1)",
+     "98",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "Add: rent expense, net",
+     "\u2014",
+     "",
+     "127",
+     ""
+    ],
+    [
+     "Less: estimated depreciation on capitalized operating leases (2)",
+     "\u2014",
+     "",
+     "(68)",
+     ""
+    ],
+    [
+     "Adjusted net operating (loss) profit",
+     "(586)",
+     "",
+     "851",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: estimated income tax expense",
+     "264",
+     "",
+     "(193)",
+     ""
+    ],
+    [
+     "Adjusted net operating (loss) profit after tax",
+     "($322)",
+     "",
+     "$658",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average total assets",
+     "$9,850",
+     "",
+     "$9,016",
+     ""
+    ],
+    [
+     "Add: average estimated asset base of capitalized operating leases (2)",
+     "\u2014",
+     "",
+     "1,005",
+     ""
+    ],
+    [
+     "Less: average deferred property incentives and deferred rent liability",
+     "\u2014",
+     "",
+     "(303)",
+     ""
+    ],
+    [
+     "Less: average deferred property incentives in excess of ROU assets (3)",
+     "(296)",
+     "",
+     "(154)",
+     ""
+    ],
+    [
+     "Less: average non-interest-bearing current liabilities",
+     "(3,267)",
+     "",
+     "(3,528)",
+     ""
+    ],
+    [
+     "Average invested capital",
+     "$6,287",
+     "",
+     "$6,036",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Return on assets (4)",
+     "(4.6",
+     "%)",
+     "5.5",
+     "%"
+    ],
+    [
+     "Adjusted ROIC (4)",
+     "(5.1",
+     "%)",
+     "10.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Four Quarters Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 1006
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "For 2019, income statement activity for adjusted net operating profit and balance sheet amounts for average invested capital are comprised of two quarters of activity under the Lease Standard for 2019, and two quarters of 2018 under the previous lease standard. Under the previous lease standard, we estimated the value of our operating leases as if they met the criteria for capital leases or we had purchased the properties. This provided additional supplemental information that estimated the investment in our operating leases. Estimated depreciation on capitalized operating leases and average estimated asset base of capitalized operating leases are not calculated in accordance with, nor an alternative for, GAAP and should not be considered in isolation or as a substitution for our results as reported under GAAP.\nAdjusted ROIC is not a measure of financial performance under GAAP and should be considered in addition to, and not as a substitute for, return on assets, net earnings, total assets or other GAAP financial measures. Our method of determining non-GAAP financial measures may differ from other companies\u2019 methods and therefore may not be comparable to those used by other companies. The financial measure calculated under GAAP which is most directly comparable to Adjusted ROIC is return on assets.\nThe following is a reconciliation of return on assets to Adjusted ROIC:",
+   "prose_after": "1 As a result of the adoption of the Lease Standard, we add back the operating lease interest to reflect how we manage our business. Operating lease interest is a component of operating lease cost recorded in occupancy costs and is calculated in accordance with the Lease Standard.\n2 Capitalized operating leases is our best estimate of the asset base we would record for our leases that are classified as operating under the previous lease standard if they had met the criteria for a finance lease or we had purchased the property. The asset base for each quarter is calculated as the trailing four quarters of rent expense multiplied by eight, a commonly used method to estimate the asset base we would record for our capitalized operating leases.\n3 For leases with property incentives that exceed the ROU assets, we reclassify the amount from assets to other current liabilities and other liabilities. As a result of the adoption of the Lease Standard, we reduce average total assets, as this better reflects how we manage our business.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "($591)",
+     "$692"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(211)",
+     "(454)"
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "949",
+     "(239)"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1048
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Second quarter operating cash flow of $187 exceeded our expectations and enabled us to pay down $300 on our Revolver. Nordstrom ended the second quarter with $991 in cash and cash equivalents and $300 of additional liquidity available on our Revolver. With our financial position strengthened, we are prioritizing market share gains and profitable sales growth.\nWe strive to maintain a level of liquidity sufficient to allow us to cover our seasonal cash needs and to maintain appropriate levels of short-term borrowings. While this is a time of great uncertainty, we believe that our operating cash flows are sufficient to meet our cash requirements for the next 12 months and beyond.\nOver the long term, we manage our cash and capital structure to maximize shareholder return, maintain our financial position, manage refinancing risk and allow flexibility for strategic initiatives. We regularly assess our debt and leverage levels, capital expenditure requirements, debt service payments, dividend payouts, potential share repurchases and other future investments.\nThe following is a summary of our cash flows by activity:",
+   "prose_after": "Operating Activities\nCash from operating activities decreased $1,283 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to a reduction in net earnings as a result of temporary store closures and the Anniversary Sale timing shift.\nInvesting Activities\nNet cash used in investing activities decreased $243 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to a decrease in capital expenditures, as we prioritized investments in supply chain and technology, while reducing non-critical spend on store remodels.\nCapital Expenditures\nOur capital expenditures, net are summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "",
+     "August 3, 2019",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$228",
+     "",
+     "$480",
+     ""
+    ],
+    [
+     "Less: deferred property incentives (1)",
+     "(27)",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "Capital expenditures, net",
+     "$201",
+     "",
+     "$441",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures % of net sales",
+     "6.0",
+     "%",
+     "6.7",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Operating Activities\nCash from operating activities decreased $1,283 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to a reduction in net earnings as a result of temporary store closures and the Anniversary Sale timing shift.\nInvesting Activities\nNet cash used in investing activities decreased $243 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to a decrease in capital expenditures, as we prioritized investments in supply chain and technology, while reducing non-critical spend on store remodels.\nCapital Expenditures\nOur capital expenditures, net are summarized as follows:",
+   "prose_after": "1 Deferred property incentives are included in our cash provided by operations in our Consolidated Statements of Cash Flows in Item 1. We operationally view the property incentives we receive from our developers and vendors as an offset to our capital expenditures.\nFinancing Activities\nCash from financing activities increased $1,188 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to the net proceeds from the Revolver and Secured Notes.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nFree Cash Flow (Non-GAAP financial measure)\nFree Cash Flow is one of our key liquidity measures and, when used in conjunction with GAAP measures, we believe it provides investors with a meaningful analysis of our ability to generate cash from our business.\nFree Cash Flow is not a measure of financial performance under GAAP and should be considered in addition to, and not as a substitute for, operating cash flows or other financial measures prepared in accordance with GAAP. Our method of determining non-GAAP financial measures may differ from other companies\u2019 methods and therefore may not be comparable to those used by other companies. The financial measure calculated under GAAP which is most directly comparable to Free Cash Flow is net cash (used in) provided by operating activities. The following is a reconciliation of net cash (used in) provided by operating activities to Free Cash Flow:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "($591)",
+     "$692"
+    ],
+    [
+     "Less: capital expenditures",
+     "(228)",
+     "(480)"
+    ],
+    [
+     "(Less) Add: change in cash book overdrafts",
+     "(84)",
+     "92"
+    ],
+    [
+     "Free Cash Flow",
+     "($903)",
+     "$304"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Cash from financing activities increased $1,188 for the six months ended August 1, 2020, compared with the same period in 2019, primarily due to the net proceeds from the Revolver and Secured Notes.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nFree Cash Flow (Non-GAAP financial measure)\nFree Cash Flow is one of our key liquidity measures and, when used in conjunction with GAAP measures, we believe it provides investors with a meaningful analysis of our ability to generate cash from our business.\nFree Cash Flow is not a measure of financial performance under GAAP and should be considered in addition to, and not as a substitute for, operating cash flows or other financial measures prepared in accordance with GAAP. Our method of determining non-GAAP financial measures may differ from other companies\u2019 methods and therefore may not be comparable to those used by other companies. The financial measure calculated under GAAP which is most directly comparable to Free Cash Flow is net cash (used in) provided by operating activities. The following is a reconciliation of net cash (used in) provided by operating activities to Free Cash Flow:",
+   "prose_after": "Adjusted EBITDA and Adjusted EBITDAR (Non-GAAP financial measures)\nAdjusted EBITDA is one of our key financial metrics to reflect our view of cash flow from net earnings. Adjusted EBITDA excludes significant items which are non-operating in nature in order to evaluate our core operating performance against prior periods. The financial measure calculated under GAAP which is most directly comparable to Adjusted EBITDA is net earnings.\nAdjusted EBITDAR is also one of our key financial metrics as it will be used to measure compliance with one of our Revolver covenants beginning in the third quarter of 2020. Adjusted EBITDAR reflects the items in Adjusted EBITDA, excludes rent expense as defined by the Revolver agreement, and captures other differences between the contractual requirements in the Revolver agreement and Adjusted EBITDA, including the inclusion or exclusion of certain non-cash charges. The financial measure calculated under GAAP which is most directly comparable to Adjusted EBITDAR is net earnings.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1085,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "August 1, 2020",
+     "August 3, 2019"
+    ],
+    [
+     "Net (loss) earnings",
+     "($776)",
+     "$177"
+    ],
+    [
+     "Add: income tax (benefit) expense",
+     "(492)",
+     "69"
+    ],
+    [
+     "Add: interest expense, net",
+     "85",
+     "46"
+    ],
+    [
+     "(Loss) earnings before interest and income taxes",
+     "(1,183)",
+     "292"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Add: depreciation and amortization expenses",
+     "342",
+     "323"
+    ],
+    [
+     "Less: amortization of developer reimbursements",
+     "(42)",
+     "(38)"
+    ],
+    [
+     "Add: asset impairments",
+     "137",
+     "\u2014"
+    ],
+    [
+     "Adjusted EBITDA",
+     "($746)",
+     "$577"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Add: rent expense (1)",
+     "116",
+     "130"
+    ],
+    [
+     "Add: other Revolver covenant adjustments (2)",
+     "2",
+     "5"
+    ],
+    [
+     "Adjusted EBITDAR",
+     "($628)",
+     "$712"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Adjusted EBITDAR is also one of our key financial metrics as it will be used to measure compliance with one of our Revolver covenants beginning in the third quarter of 2020. Adjusted EBITDAR reflects the items in Adjusted EBITDA, excludes rent expense as defined by the Revolver agreement, and captures other differences between the contractual requirements in the Revolver agreement and Adjusted EBITDA, including the inclusion or exclusion of certain non-cash charges. The financial measure calculated under GAAP which is most directly comparable to Adjusted EBITDAR is net earnings.\nAdjusted EBITDA and Adjusted EBITDAR are not measures of financial performance under GAAP and should be considered in addition to, and not as a substitute for net earnings, overall change in cash or liquidity of the business as a whole. Our method of determining non-GAAP financial measures may differ from other companies\u2019 methods and therefore may not be comparable to those used by other companies. The following is a reconciliation of net earnings to Adjusted EBITDA and Adjusted EBITDAR:",
+   "prose_after": "1 Rent expense, exclusive of amortization of developer reimbursements, is added back for consistency with our debt covenant calculation requirements, and is calculated under the previous lease standard.\n2 Other adjusting items to reconcile Adjusted EBITDA to Adjusted EBITDAR as defined by our Revolver covenant includes interest income, and certain non-cash charges where relevant.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nCredit Capacity and Commitments\nDuring the first quarter of 2020, we amended our existing Revolver and borrowed $800. As of August 1, 2020, we had $500 outstanding under the facility. The Revolver contains customary representations, warranties, covenants and terms, including paying a variable rate of interest and a commitment fee based on our debt rating. The Revolver is available for working capital, capital expenditures and general corporate purposes. Provided that we obtain written consent from our lenders, we have the option to increase the Revolver by up to $200, to a total of $1,000, and two options to extend the Revolver by one year. For more information about our credit facilities, see Note 3: Debt and Credit Facilities in Item 1.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1085,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Credit Ratings",
+     "Outlook"
+    ],
+    [
+     "Moody\u2019s",
+     "Baa3",
+     "Negative"
+    ],
+    [
+     "Standard & Poor\u2019s",
+     "BB+",
+     "Negative"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1158,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "During the first quarter of 2020, we amended our existing Revolver and borrowed $800. As of August 1, 2020, we had $500 outstanding under the facility. The Revolver contains customary representations, warranties, covenants and terms, including paying a variable rate of interest and a commitment fee based on our debt rating. The Revolver is available for working capital, capital expenditures and general corporate purposes. Provided that we obtain written consent from our lenders, we have the option to increase the Revolver by up to $200, to a total of $1,000, and two options to extend the Revolver by one year. For more information about our credit facilities, see Note 3: Debt and Credit Facilities in Item 1.\nImpact of Credit Ratings\nChanges in our credit ratings may impact our costs to borrow, whether our personal property secures our Revolver and the debt covenants we follow.\nFor our Revolver, the interest rate applicable to any borrowings we may enter into depends upon the type of borrowing incurred plus an applicable margin, which is determined based on our credit ratings. At the time of this report, our credit ratings and outlook were as follows:",
+   "prose_after": "Should the ratings assigned to our long-term debt improve, the applicable margin associated with any borrowings under the Revolver may decrease, resulting in a lower borrowing cost under this facility. Conversely, should the ratings assigned to our long-term debt worsen, the applicable margin associated with any borrowings under the Revolver may increase, resulting in a higher borrowing cost under this facility.\nIn June 2020, we amended our program agreement with TD to eliminate the prior requirement to post collateral and extend the term of the agreement until April 2024.\nDebt Covenants\nAs of August 1, 2020, our borrowings under the Revolver were classified as secured as our Leverage Ratio exceeded four, and we met our asset coverage and minimum liquidity covenants. For more information about our debt covenants, see Note 3: Debt and Credit Facilities in Item 1.\nContractual Obligations\nAs of August 1, 2020, there have been no material changes to our contractual obligations as disclosed in our 2019 Annual Report except as disclosed in Note 3: Debt and Credit Facilities and Note 5: Commitments and Contingencies of Item 1.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1146,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1184,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Method of Filing"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Bylaws, as amended and restated on August 19, 2020",
+     "Incorporated by reference from the Registrant\u2019s Form 8-K filed on August 20, 2020, Exhibit 3.1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Nordstrom Supplemental Executive Retirement Plan (2020 Restatement)",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer required by Section 302(a) of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer required by Section 302(a) of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Furnished herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document",
+     "Filed herewith electronically"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (Inline XBRL)",
+     "Filed herewith electronically"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1236,
+    "end_line": 1269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "To the extent the COVID-19 pandemic adversely affects our business and financial results, it may also have the effect of heightening many of the other risks described in the \u201cRisk Factors\u201d sections of our Annual Report on Form 10-K, such as those risks relating to our high level of indebtedness, our need to generate sufficient cash flows to service our indebtedness and other liabilities, our ability to comply with the covenants contained in the agreements that govern our indebtedness, our ability to attract, retain, train and develop our future leaders and our ability to maintain our relationships with our customers, vendors, landlords and employees.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\n(c) SHARE REPURCHASES\n(Dollar and share amounts in millions, except per share amounts)\nIn August 2018, our Board of Directors authorized a program to repurchase up to $1,500 of our outstanding common stock, with no expiration date. On March 23, 2020, in response to uncertainty from the COVID-19 pandemic, we announced that we were suspending share repurchases. During the second quarter of 2020, we did not repurchase any shares of our common stock and we had $707 remaining in share repurchase capacity as of August 1, 2020. The actual timing, price, manner and amounts of future share repurchases, if any, will be subject to market and economic conditions, certain financial covenants and applicable SEC rules.\nItem 6. Exhibits.\nExhibits are incorporated herein by reference or are filed or furnished with this report as set forth in the Exhibit Index on page 26 hereof.\nExhibit Index",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NORDSTROM, INC.",
+     ""
+    ],
+    [
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Anne L. Bramman",
+     ""
+    ],
+    [
+     "Anne L. Bramman",
+     ""
+    ],
+    [
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "(Principal Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "September 4, 2020"
+    ]
+   ],
+   "caption_stack": [
+    "NORDSTROM, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1275,
+    "end_line": 1287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

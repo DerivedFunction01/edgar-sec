@@ -1,0 +1,4001 @@
+{
+ "accession": "0001104659-10-035008",
+ "cik": "0001360555",
+ "form": "10-K/A",
+ "filing_date": "2010-06-22",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a10-10552_210ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "11-3658790"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-K/A\n(Amendment No. 1)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2010\n[X] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 001-33083\nSTANLEY, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "3101 Wilson Boulevard, Suite 700\nArlington, VA 22201\n(Address of Principal Executive Offices, Including Zip Code)\n(703) 684-1125\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, $0.01 par value",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "3101 Wilson Boulevard, Suite 700\nArlington, VA 22201\n(Address of Principal Executive Offices, Including Zip Code)\n(703) 684-1125\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities Registered Pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Explanatory Note",
+     "",
+     "i"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "1"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "5"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "22"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "24"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "26"
+    ],
+    [
+     "",
+     "Signatures",
+     "27"
+    ],
+    [
+     "",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "Certifications",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]      Accelerated filer [X]\nNon-accelerated filer [ ]   Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting stock held by non-affiliates of the Registrant on September 25, 2009 was approximately $489.8 million (based upon the closing price of $26.54 per share on September 25, 2009, as reported on the New York Stock Exchange). Only for the purpose of this computation, all directors, executive officers and 10% beneficial owners (excluding the Registrant\u2019s Employee Stock Ownership Plan) of the Registrant have been treated as affiliates.\nAs of June 1, 2010, there were 24,347,202 shares of the Registrant\u2019s common stock, par value $0.01 per share, outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE:\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "EXPLANATORY NOTE\nStanley, Inc. (the \u201cCompany,\u201d \u201cwe,\u201d \u201cus\u201d or \u201cour\u201d) is filing this Amendment No. 1 on Form 10-K/A (this \u201cAmendment\u201d) to its Annual Report on Form 10-K for the fiscal year ended March 31, 2010 (the \u201cOriginal Filing\u201d or \u201cForm 10-K\u201d), which was originally filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on May 20, 2010, solely to set forth information required by Items 10, 11, 12, 13 and 14 of Part III of Form 10-K because a definitive proxy statement containing such information will not be filed within 120 days after the end of the fiscal year covered by the Original Filing. This Amendment amends and restates in its entirety Items 10, 11, 12, 13 and 14 of Part III and amends Part IV of the Original Filing. Except as expressly set forth herein, this Amendment does not reflect events occurring after the date of the Original Filing or modify or update any of the other disclosures contained therein in any way other than as required to reflect the amendments discussed above. Accordingly, this Amendment should be read in conjunction with the Original Filing and the Company\u2019s other filings with the SEC.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Principal Occupation/ Position Held With the Company"
+    ],
+    [
+     "Mr. Philip O. Nolan",
+     "",
+     "51",
+     "",
+     "Chairman, President and Chief Executive Officer"
+    ],
+    [
+     "Mr. George H. Wilson",
+     "",
+     "52",
+     "",
+     "Executive Vice President and Director"
+    ],
+    [
+     "Mr. William E. Karlson",
+     "",
+     "50",
+     "",
+     "Director"
+    ],
+    [
+     "Mr. James C. Hughes",
+     "",
+     "66",
+     "",
+     "Independent Director"
+    ],
+    [
+     "Lt. General Richard L. Kelly, USMC (Ret.)",
+     "",
+     "62",
+     "",
+     "Independent Director"
+    ],
+    [
+     "Mr. Charles S. Ream",
+     "",
+     "66",
+     "",
+     "Independent Director"
+    ],
+    [
+     "Mr. John P. Riceman",
+     "",
+     "69",
+     "",
+     "Independent Director"
+    ],
+    [
+     "General Jimmy D. Ross, USA (Ret.)",
+     "",
+     "74",
+     "",
+     "Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 110,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Stanley, Inc. (the \u201cCompany,\u201d \u201cwe,\u201d \u201cus\u201d or \u201cour\u201d) is filing this Amendment No. 1 on Form 10-K/A (this \u201cAmendment\u201d) to its Annual Report on Form 10-K for the fiscal year ended March 31, 2010 (the \u201cOriginal Filing\u201d or \u201cForm 10-K\u201d), which was originally filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on May 20, 2010, solely to set forth information required by Items 10, 11, 12, 13 and 14 of Part III of Form 10-K because a definitive proxy statement containing such information will not be filed within 120 days after the end of the fiscal year covered by the Original Filing. This Amendment amends and restates in its entirety Items 10, 11, 12, 13 and 14 of Part III and amends Part IV of the Original Filing. Except as expressly set forth herein, this Amendment does not reflect events occurring after the date of the Original Filing or modify or update any of the other disclosures contained therein in any way other than as required to reflect the amendments discussed above. Accordingly, this Amendment should be read in conjunction with the Original Filing and the Company\u2019s other filings with the SEC.\ni\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nOur Board of Directors is currently comprised of eight directors, with one vacancy.\nDirectors",
+   "prose_after": "The following is a brief biography of each of our directors, including their experience, qualifications, attributes and skills which contributed to the Nominating and Corporate Governance Committee\u2019s conclusion that each director is qualified to serve on the Board in light of our business and structure:\nMr. Philip O. Nolan has been our Chief Executive Officer since 2002 and our President and a member of our Board of Directors since 1996. In 2006, he became Chairman of our Board of Directors. From 1989 to 1995, Mr. Nolan served in various capacities, including program manager, general manager, Treasurer, Secretary and Vice President. Prior to joining us in 1989, Mr. Nolan served on active duty in the U.S. Navy from 1981 to 1988, most recently as Deputy Program Manager for Weapons Integration for the Submarine Launched Cruise Missile Project. Mr. Nolan remained an active member of the U.S. Navy Reserve following his release from active duty until his retirement in December 2005. Mr. Nolan received a B.S. degree in physics from the U.S. Naval Academy, an M.S.E. degree in engineering management from the Catholic University of America and a J.D. degree from George Washington University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position Held With the Company"
+    ],
+    [
+     "Mr. James H. Brabston",
+     "",
+     "42",
+     "",
+     "Chief Operating Officer"
+    ],
+    [
+     "Mr. John R. Brooks",
+     "",
+     "55",
+     "",
+     "Senior Vice President of Mission Systems Group"
+    ],
+    [
+     "Mr. Scott D. Chaplin",
+     "",
+     "43",
+     "",
+     "Senior Vice President, General Counsel and Corporate Secretary"
+    ],
+    [
+     "Mr. Brian J. Clark",
+     "",
+     "39",
+     "",
+     "Executive Vice President, Chief Financial Officer and Treasurer"
+    ],
+    [
+     "Mr. Gregory M. Denkler",
+     "",
+     "51",
+     "",
+     "Executive Vice President of Shared Services"
+    ],
+    [
+     "Mr. E. Patrick Flannery",
+     "",
+     "42",
+     "",
+     "Senior Vice President of Business Operations Group"
+    ],
+    [
+     "Mr. Eric A. Wolking",
+     "",
+     "35",
+     "",
+     "Senior Vice President of Technical Programs Group"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "General Jimmy D. Ross, USA (Ret.) has been a member of our Board of Directors since 2001. He was a U.S. Army military officer for 36 years and retired as a four-star General in 1994. General Ross\u2019 last active duty assignment was as Commander of the United States Army Materiel Command in Alexandria, Virginia-a worldwide command of 95,000 military and civilian personnel and 126 different organizations. Following his military retirement, General Ross served as an executive with the American Red Cross and is currently a consultant to Cypress International. General Ross is also a member of the Board of Directors of VSE Corporation. General Ross received a B.S.E. degree from Henderson State University and an M.A. degree in business management from Central Michigan University. He is also a graduate of the Industrial College of the Armed Forces, the U.S. Army Command and General Staff College, the U.S. Army Transportation Advanced Officer Course and the Basic Infantry Officer Course.\nGeneral Ross\u2019s service as a distinguished officer in the U.S. Army, together with his last active duty assignment as Commander of the United States Army Materiel Command, provides the Board of Directors with significant familiarity of customers within the Department of Defense and ongoing Department of Defense initiatives and priorities that guide strategic business decisions. In addition, his many years of service as a director of our company, as well as another public company, provide him with valuable perspective on governance and management issues.\nExecutive Officers Who Are Not Directors",
+   "prose_after": "Mr. James H. Brabston began serving as our first Chief Operating Officer on April 12, 2010, after serving as the Senior Vice President of our mission systems group since November 2007. Mr. Brabston joined our company in 1990. From 2003 to 2007, Mr. Brabston served as a Vice President and account manager for defense programs. Prior to becoming Vice President, Mr. Brabston was a senior program manager directly responsible for all of our software development efforts being performed for the Department of the Army and U.S. Marine Corps. Mr. Brabston has also served in various functional, technical, and management capacities and has led the deployment of our personnel in support of Operation Desert Shield/Storm in Saudi Arabia and Operation Restore Hope in Somalia. Mr. Brabston earned a B.A. degree in economics from Syracuse University, and an M.S. degree in software engineering from George Mason University.\nMr. John R. Brooks succeeded Mr. Brabston as Group Manager for our Mission Systems Group. Mr. Brooks has over 33 years in the defense security and intelligence field with demonstrated success in operations, large-scale development projects, program management, practical application of advanced technologies, networks and data applications and business development. For the past two years, Mr. Brooks has served as the General Manager of our Oberon Division. Mr. Brooks joined Oberon Associates in 2005 as Vice President, Strategic Planning and Business Development, which was acquired by us in July 2008. Mr. Brooks\u2019 experience originated during his service as a highly decorated Military Police and Military Intelligence officer in the U.S. Army. Mr. Brooks\u2019 last Army assignment was as the Senior Intelligence Officer G-2, 4th Infantry Division, the U.S. Army\u2019s first digital fighting unit. After retirement from the U.S. Army, he joined General Dynamics as a Senior Manager, responsible for development of real-time collaboration and knowledge management technology and associated business development targeted at the U.S. defense and intelligence market. Mr. Brooks is a graduate of The Citadel, The Military College of South Carolina and various military schools.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 181,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Increase in Base Salary (%)",
+     "",
+     "Fiscal 2010 Base Salary ($)",
+     "",
+     ""
+    ],
+    [
+     "Mr. Nolan",
+     "",
+     "12.5",
+     "",
+     "$",
+     "450,000",
+     ""
+    ],
+    [
+     "Mr. Clark",
+     "",
+     "10.3",
+     "",
+     "$",
+     "320,000",
+     ""
+    ],
+    [
+     "Mr. Chaplin",
+     "",
+     "9.6",
+     "",
+     "$",
+     "285,000",
+     ""
+    ],
+    [
+     "Mr. Denkler",
+     "",
+     "7.7",
+     "",
+     "$",
+     "280,000",
+     ""
+    ],
+    [
+     "Mr. Wilson",
+     "",
+     "7.7",
+     "",
+     "$",
+     "280,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 315,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 Long-term equity incentive awards\u2014We provide long-term equity incentive awards to our executives, comprised of service-based stock options and restricted stock and performance-based restricted stock, which are intended to reward them for prior service and motivate them to stay with us and build long-term stockholder value.\nWe view these components as related, but having distinct attributes. Although the Committee does review the total compensation paid to the Named Executive Officers during the year, we do not generally believe that significant compensation derived from one component of compensation should negate or reduce compensation from other components.\nBase salary. In determining the fiscal 2010 base salary increases for our Named Executive Officers, the Committee considered the core peer group data which indicated that, overall, fiscal 2009 base salaries for our executives were below the median of the competitive market. Because we believe it is appropriate to pay base salaries, our only element of fixed compensation, competitive with the market, the Committee awarded base salary increases for fiscal 2010, as set forth below:",
+   "prose_after": "The salary increases for Messrs. Chaplin, Denkler and Wilson were also based on internal equity considerations and our desire to treat each executive relatively equal.\nAnnual Cash Incentive Awards. During fiscal 2010, each Named Executive Officer participated in our annual cash incentive award program. Each executive\u2019s fiscal 2010 incentive amount was determined as follows:\n\u00b7 Target Award. Each executive\u2019s target cash incentive award was expressed as a percentage of his base salary for the year, as set forth in the table below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Threshold Award Percentage",
+     "",
+     "Threshold Award ($)",
+     "",
+     "Target Award Percentage",
+     "",
+     "Target Award ($)",
+     "",
+     "Overachieve Award Percentage",
+     "",
+     "Overachieve Award ($)",
+     ""
+    ],
+    [
+     "Mr. Nolan",
+     "",
+     "35",
+     "%",
+     "157,500",
+     "",
+     "100",
+     "%",
+     "450,000",
+     "",
+     "150",
+     "%",
+     "675,000",
+     ""
+    ],
+    [
+     "Mr. Clark",
+     "",
+     "26.2",
+     "%",
+     "84,000",
+     "",
+     "75",
+     "%",
+     "240,000",
+     "",
+     "112.5",
+     "%",
+     "360,000",
+     ""
+    ],
+    [
+     "Mr. Chaplin",
+     "",
+     "21",
+     "%",
+     "59,900",
+     "",
+     "60",
+     "%",
+     "171,000",
+     "",
+     "90",
+     "%",
+     "256,500",
+     ""
+    ],
+    [
+     "Mr. Denkler",
+     "",
+     "21",
+     "%",
+     "58,800",
+     "",
+     "60",
+     "%",
+     "168,000",
+     "",
+     "90",
+     "%",
+     "252,000",
+     ""
+    ],
+    [
+     "Mr. Wilson",
+     "",
+     "21",
+     "%",
+     "58,800",
+     "",
+     "60",
+     "%",
+     "168,000",
+     "",
+     "90",
+     "%",
+     "252,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 331,
+    "end_line": 340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The salary increases for Messrs. Chaplin, Denkler and Wilson were also based on internal equity considerations and our desire to treat each executive relatively equal.\nAnnual Cash Incentive Awards. During fiscal 2010, each Named Executive Officer participated in our annual cash incentive award program. Each executive\u2019s fiscal 2010 incentive amount was determined as follows:\n\u00b7 Target Award. Each executive\u2019s target cash incentive award was expressed as a percentage of his base salary for the year, as set forth in the table below.",
+   "prose_after": "\u00b7 Performance Goals. The actual amount of the cash incentive award paid for fiscal 2010 was determined based upon the Committee\u2019s review of the achievement of four general categories of information. Specifically, the Committee reviewed certain objective financial and operational performance goals, which we believe are the best indicators of our annual performance, as well as subjective or qualitative goals within three additional categories: People, Process and Perspectives.\n\u00b7 Financial and Operational Performance Goals. As in fiscal 2009, the Committee focused and rewarded the executives for the financial and operational performance measures for which they have direct control and which, we believe, most directly affect our long-term growth. Under the annual incentive compensation plan, 70% of each executive\u2019s potential incentive compensation for the year was based on achievement of financial and operational performance objectives, similar to prior years. For those executives responsible for our overall corporate performance, including each Named Executive Officer, this portion of each executive\u2019s annual incentive award was based on the following corporate measures:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Objective",
+     "",
+     "Weighting",
+     ""
+    ],
+    [
+     "Consolidated Revenue",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "EPS",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Free Cash Flow",
+     "",
+     "15",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 347,
+    "end_line": 354
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 Performance Goals. The actual amount of the cash incentive award paid for fiscal 2010 was determined based upon the Committee\u2019s review of the achievement of four general categories of information. Specifically, the Committee reviewed certain objective financial and operational performance goals, which we believe are the best indicators of our annual performance, as well as subjective or qualitative goals within three additional categories: People, Process and Perspectives.\n\u00b7 Financial and Operational Performance Goals. As in fiscal 2009, the Committee focused and rewarded the executives for the financial and operational performance measures for which they have direct control and which, we believe, most directly affect our long-term growth. Under the annual incentive compensation plan, 70% of each executive\u2019s potential incentive compensation for the year was based on achievement of financial and operational performance objectives, similar to prior years. For those executives responsible for our overall corporate performance, including each Named Executive Officer, this portion of each executive\u2019s annual incentive award was based on the following corporate measures:",
+   "prose_after": "The Committee established threshold, target and overachieve targets for each of the Consolidated Revenue, Free Cash Flow and EPS metrics. Threshold, or 50% of target, emphasized that a minimum level of performance for each metric was necessary in order for the executive to earn the award, while overachieve, or 150% of target, provided the executives the ability to earn above target annual incentive amounts if we exceeded our goals. In order to further focus the executives on the corporate metrics that we believe are the key factors affecting our growth and stockholder return, the 50% \u201coverachieve\u201d potential annual incentive award for financial and operations performance was based on the Consolidated Revenue and EPS metrics only. The financial and operational goals were determined based upon our fiscal 2010 financial plan, as determined by the senior management team and approved by the Board of Directors, and were as set forth below:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Corporate Performance Goal",
+     "",
+     "Threshold",
+     "",
+     "Target",
+     "",
+     "Overachieve",
+     ""
+    ],
+    [
+     "Consolidated Revenue",
+     "",
+     "$850 Million",
+     "",
+     "$890 Million",
+     "",
+     "$928 Million",
+     ""
+    ],
+    [
+     "EPS",
+     "",
+     "$1.65",
+     "",
+     "$1.72",
+     "",
+     "$1.79",
+     ""
+    ],
+    [
+     "Free Cash Flow",
+     "",
+     "$27.9 Million",
+     "",
+     "$33.1 Million",
+     "",
+     "N/A",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 357,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Committee established threshold, target and overachieve targets for each of the Consolidated Revenue, Free Cash Flow and EPS metrics. Threshold, or 50% of target, emphasized that a minimum level of performance for each metric was necessary in order for the executive to earn the award, while overachieve, or 150% of target, provided the executives the ability to earn above target annual incentive amounts if we exceeded our goals. In order to further focus the executives on the corporate metrics that we believe are the key factors affecting our growth and stockholder return, the 50% \u201coverachieve\u201d potential annual incentive award for financial and operations performance was based on the Consolidated Revenue and EPS metrics only. The financial and operational goals were determined based upon our fiscal 2010 financial plan, as determined by the senior management team and approved by the Board of Directors, and were as set forth below:",
+   "prose_after": "\u00b7 People Goals. As in fiscal 2009, Mr. Nolan recommended that 20% of the fiscal 2010 cash incentive would be based on the achievement of certain goals relating to the quality of our workforce. The qualitative objectives in this area for fiscal 2010 were to promote leadership to achieve corporate objectives (to be evaluated based in part on the teamwork displayed among senior executives), achieve the highest quality workforce in our industry and enhance our culture.\n\u00b7 Process and Perspectives Goals. The remaining 10% of the potential fiscal 2010 cash incentive awards was split evenly between Process and Perspectives criteria, each of which were also recommended by Mr. Nolan. Such criteria included maintaining effective company communications, customer-focused internal organizations and processes, achieving the highest levels of customer satisfaction, establishing lasting customer relationships and increasing name recognition and visibility.\n\u00b7 Determination of Award Amounts. In evaluating fiscal 2010 financial performance, the Committee noted that we exceeded our \u201coverachieve\u201d target amounts for EPS and Group Revenue, exceeded our target amounts for Free Cash Flow and exceeded our threshold amount for Consolidated Revenue, EBIT, DSO and direct labor.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal 2010 Equity Awards",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Annual Option Award",
+     "",
+     "Annual Restricted Stock Award",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Mr. Nolan",
+     "",
+     "38,749",
+     "",
+     "7,473",
+     "",
+     "46,222",
+     ""
+    ],
+    [
+     "Mr. Clark",
+     "",
+     "17,714",
+     "",
+     "3,416",
+     "",
+     "21,130",
+     ""
+    ],
+    [
+     "Mr. Chaplin",
+     "",
+     "12,621",
+     "",
+     "2,433",
+     "",
+     "15,054",
+     ""
+    ],
+    [
+     "Mr. Denkler",
+     "",
+     "12,401",
+     "",
+     "2,391",
+     "",
+     "14,792",
+     ""
+    ],
+    [
+     "Mr. Wilson",
+     "",
+     "12,401",
+     "",
+     "2,391",
+     "",
+     "14,792",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal 2010 Equity Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 395,
+    "end_line": 406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Individual grant sizes for the awards made in fiscal 2010 were primarily determined based on a value commensurate with the Mercer peer group data and with positioning the executives to be at approximately 75th percentile of the Mercer peer group in total direct compensation, a level the Committee deemed appropriate. Because the Mercer peer group review indicated that our executive base salaries and total cash compensation (base salary plus incentive) were at the 25th percentile and median of the Mercer peer group, respectively, a larger percentage of each executive\u2019s annual compensation was determined to be delivered in the form of equity awards, which was consistent with our focus on performance-based equity awards, retention and return on stockholder value.\nOur equity awards are granted at the beginning of each fiscal year in order to recognize the executive\u2019s performance during the prior fiscal year as well as to incentivize performance and encourage retention for the coming years. Because our equity awards are designed to motivate our executives to stay with our company and increase stockholder value, the Committee generally does not consider an executive\u2019s current stock or option holdings as a material component in making decisions for additional awards.\nThe following table sets forth the equity awards for each Named Executive Officer during fiscal 2010 (in shares of common stock underlying awards):",
+   "prose_after": "Equity Grant Practices. The Committee approves grants of equity awards, including to the Named Executive Officers, at the Committee\u2019s first fiscal quarter meeting each year. Special grants to newly-hired employees are generally granted in the month of hire. While our Board has delegated the authority for Mr. Nolan to approve grants of stock option awards, up to certain maximum amounts, as a hiring and retention tool, to date, this authority has not been utilized. The exercise price of any option grant is equal to the fair market value of the shares on the date of grant, which is the closing price of our common stock on the New York Stock Exchange.\nChange in Control Agreements\nAs previously disclosed, we entered into change in control severance agreements with certain of our executive officers, including each of the Named Executive Officers. The amounts and types of severance benefits payable to the executives under the agreements were determined based on the prevailing structure and amounts within the core peer group companies.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "",
+     "Salary ($)(1)",
+     "",
+     "Stock Awards ($)(2)",
+     "",
+     "Option Awards ($)(2)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)(3)",
+     "",
+     "All Other Compensation ($)(4)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "2010",
+     "",
+     "437,693",
+     "",
+     "188,469",
+     "",
+     "296,674",
+     "",
+     "575,400",
+     "",
+     "42,277",
+     "",
+     "1,540,513",
+     ""
+    ],
+    [
+     "Chairman, President &",
+     "",
+     "2009",
+     "",
+     "374,004",
+     "",
+     "3,340,025",
+     "",
+     "231,647",
+     "",
+     "612,000",
+     "",
+     "41,142",
+     "",
+     "4,598,818",
+     ""
+    ],
+    [
+     "CEO",
+     "",
+     "2008",
+     "",
+     "338,750",
+     "",
+     "154,279",
+     "",
+     "431,859",
+     "",
+     "510,000",
+     "",
+     "50,890",
+     "",
+     "1,485,778",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "2010",
+     "",
+     "311,846",
+     "",
+     "86,152",
+     "",
+     "135,624",
+     "",
+     "306,900",
+     "",
+     "31,983",
+     "",
+     "872,505",
+     ""
+    ],
+    [
+     "Executive Vice President &",
+     "",
+     "2009",
+     "",
+     "280,558",
+     "",
+     "1,982,109",
+     "",
+     "107,972",
+     "",
+     "332,775",
+     "",
+     "29,706",
+     "",
+     "2,733,120",
+     ""
+    ],
+    [
+     "CFO",
+     "",
+     "2008",
+     "",
+     "257,500",
+     "",
+     "98,656",
+     "",
+     "161,112",
+     "",
+     "292,500",
+     "",
+     "27,509",
+     "",
+     "837,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "2010",
+     "",
+     "277,923",
+     "",
+     "61,360",
+     "",
+     "96,630",
+     "",
+     "218,600",
+     "",
+     "26,137",
+     "",
+     "680,650",
+     ""
+    ],
+    [
+     "Senior Vice President, General Counsel and Corporate Secretary",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "2010",
+     "",
+     "273,539",
+     "",
+     "60,301",
+     "",
+     "94,946",
+     "",
+     "214,800",
+     "",
+     "32,516",
+     "",
+     "676,102",
+     ""
+    ],
+    [
+     "Executive Vice President",
+     "",
+     "2009",
+     "",
+     "233,163",
+     "",
+     "1,323,158",
+     "",
+     "74,461",
+     "",
+     "230,100",
+     "",
+     "31,447",
+     "",
+     "1,892,329",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "224,583",
+     "",
+     "74,011",
+     "",
+     "120,828",
+     "",
+     "202,500",
+     "",
+     "33,862",
+     "",
+     "655,784",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "2010",
+     "",
+     "273,539",
+     "",
+     "60,301",
+     "",
+     "94,946",
+     "",
+     "214,800",
+     "",
+     "33,000",
+     "",
+     "676,586",
+     ""
+    ],
+    [
+     "Executive Vice President",
+     "",
+     "2009",
+     "",
+     "237,029",
+     "",
+     "1,323,158",
+     "",
+     "74,461",
+     "",
+     "220,200",
+     "",
+     "31,488",
+     "",
+     "1,886,336",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "224,167",
+     "",
+     "86,372",
+     "",
+     "140,958",
+     "",
+     "202,500",
+     "",
+     "38,136",
+     "",
+     "692,133",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Deductibility of Executive Compensation. Section 162(m) of the Internal Revenue Code generally limits the tax deductibility of certain compensation in excess of $1,000,000 paid in any one year to the principal executive officer and the other three highest paid executive officers (other than the principal financial officer). Qualified performance-based compensation will not be subject to this deduction limit if certain requirements are met. As described above, a portion of our annual cash incentive awards and our performance-based restricted stock awards are determined based upon the achievement of certain pre-determined performance goals, which permits us to deduct such awards despite the deduction limits otherwise imposed by Section 162(m). In addition, stock options are inherently performance-based and qualify for the qualified performance-based compensation exemption from the deduction limits under Section 162(m). Only the base salaries and the service-based restricted stock awards are not exempt from the deduction limits imposed under Section 162(m). While we will continue to monitor our compensation programs in light of Section 162(m), the Committee considers it important to retain the flexibility to design compensation programs that are in the best long-term interests of our company and our stockholders. As a result, the Committee may conclude that paying compensation at levels that are not deductible under Section 162(m) is nevertheless in the best interests of the Company and our stockholders.\nExecutive Compensation Tables\nSummary Compensation Table\nThe following table sets forth information regarding compensation earned by our Named Executive Officers for service during the last three completed fiscal years, whether or not such amounts were paid in such year:",
+   "prose_after": "(1) For fiscal 2010, amounts reflect fiscal year 2009 base salary until May 1, 2009, at which point fiscal 2010 base salary amounts became effective. See the \u201cCompensation Discussion and Analysis\u2014Principle Elements of Compensation\u2014Base Salary\u201d above for information on each Named Executive Officer\u2019s fiscal 2010 base salary. Values reflect base salary actually received by each named executive officer in the years presented, which depending on the position of pay periods within a calendar year, may not equal an Named Executive Officer\u2019s stated annual salary.\n(2) The amounts reported in the Stock Awards column and the Option Awards column reflect aggregate grant date fair value computed in accordance with Financial Accounting Standards Board ASC Topic 718. These amounts reflect our calculation of the value of these awards at the grant date and do not necessarily correspond to the actual value that may ultimately be recognized by the named executive officer. For 2010, assumptions used in the calculation of these amounts are included in Note 12 to our audited financial statements for the fiscal year ended March 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Executive Allowance ($)",
+     "",
+     "Tax Planning and Preparation ($)",
+     "",
+     "401(k)\nContributions ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "30,000",
+     "",
+     "2,500",
+     "",
+     "9,777",
+     "",
+     "42,277",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "20,000",
+     "",
+     "1,875",
+     "",
+     "10,108",
+     "",
+     "31,983",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "20,000",
+     "",
+     "1,875",
+     "",
+     "4,262",
+     "",
+     "26,137",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "20,000",
+     "",
+     "2,500",
+     "",
+     "10,016",
+     "",
+     "32,516",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "20,000",
+     "",
+     "2,500",
+     "",
+     "10,500",
+     "",
+     "33,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 473,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(2) The amounts reported in the Stock Awards column and the Option Awards column reflect aggregate grant date fair value computed in accordance with Financial Accounting Standards Board ASC Topic 718. These amounts reflect our calculation of the value of these awards at the grant date and do not necessarily correspond to the actual value that may ultimately be recognized by the named executive officer. For 2010, assumptions used in the calculation of these amounts are included in Note 12 to our audited financial statements for the fiscal year ended March 31, 2010.\n(3) Amounts in this column reflect the amounts earned by each Named Executive Officer under our fiscal 2010 annual cash incentive plan. For additional information on this plan, see \u201cCompensation Discussion and Analysis\u2014Annual Cash Incentive Awards\u201d above and the Grants of Plan-Based Awards Table below.\n(4) Amounts in this column for each respective Named Executive Officer are set forth in the table below and include an executive allowance, tax planning and preparation fees and matching contributions to our 401(k) plan for each Named Executive Officer. For additional information on each executive\u2019s executive allowance for fiscal 2010, see \u201cCompensation Discussion and Analysis\u2014Perquisites\u201d above. Amounts included under \u201ctax planning and preparation\u201d reflect actual cost to us for these tax services on behalf of the executive.",
+   "prose_after": "Grants of Plan-Based Awards\nThe following Grants of Plan-Based Awards table provides additional information about cash incentive awards payable based on fiscal 2010 performance and restricted stock and option awards granted to our Named Executive Officers during fiscal 2010:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Estimated Possible Payouts Under Non-Equity Incentive Plan Awards(1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "All Other Stock Awards:\nNumber of Shares of Stock or",
+     "",
+     "All Other Option Awards:\nNumber of Securities Underlying",
+     "",
+     "Exercise or Base Price of Option",
+     "",
+     "Grant Date Fair Value of Stock and Option",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Grant Date",
+     "",
+     "Threshold ($)",
+     "",
+     "Target ($)",
+     "",
+     "Maximum ($)",
+     "",
+     "Units (#)\n(2)",
+     "",
+     "Options (#)\n(3)",
+     "",
+     "Awards ($/Sh)",
+     "",
+     "Awards ($)(4)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "",
+     "",
+     "157,500",
+     "",
+     "450,000",
+     "",
+     "675,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "38,749",
+     "",
+     "25.22",
+     "",
+     "296,674",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "7,473",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "188,469",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "",
+     "",
+     "84,000",
+     "",
+     "240,000",
+     "",
+     "360,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "17,714",
+     "",
+     "25.22",
+     "",
+     "135,624",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,416",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "86,152",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "",
+     "",
+     "59,900",
+     "",
+     "171,000",
+     "",
+     "256,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,621",
+     "",
+     "25.22",
+     "",
+     "96,630",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,433",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "61,360",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "",
+     "",
+     "58,800",
+     "",
+     "168,000",
+     "",
+     "252,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,401",
+     "",
+     "25.22",
+     "",
+     "94,946",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,391",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "60,301",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "",
+     "",
+     "58,800",
+     "",
+     "168,000",
+     "",
+     "252,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,401",
+     "",
+     "25.22",
+     "",
+     "94,946",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5/6/2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,391",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "60,301",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Grants of Plan-Based Awards\nThe following Grants of Plan-Based Awards table provides additional information about cash incentive awards payable based on fiscal 2010 performance and restricted stock and option awards granted to our Named Executive Officers during fiscal 2010:",
+   "prose_after": "(1) Amounts in these columns represent the estimated threshold, target and maximum possible payouts under our fiscal 2010 annual cash incentive plan. For the actual amounts earned by the Named Executive Officers, see the \u201cNon-Equity Incentive Compensation\u201d column of the Summary Compensation Table. See the \u201cCompensation Discussion and Analysis\u2014Annual Cash Incentive Awards\u201d above for a discussion of the determination of the actual amounts awarded under the plan.\n(2) Amounts in this column represent the number of shares of our common stock underlying restricted stock awards issued to our Named Executive Officers in fiscal 2010. These awards were granted based, in part, on each executive\u2019s performance during fiscal year 2010. See the \u201cCompensation Discussion and Analysis\u2014Long-Term Equity Incentive Awards\u201d above. These shares vest annually in three equal installments.\n(3) Amounts in this column represent the number of shares of our common stock underlying options issued to our Named Executive Officers during fiscal 2010. These awards were granted based, in part, on each executive\u2019s performance during fiscal year 2010. See the \u201cCompensation Discussion and Analysis\u2014Long-Term Equity Incentive Awards\u201d above. These options vest annually in three equal installments.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Number of Securities Underlying Unexercised Options (#)\nExercisable",
+     "",
+     "Number of Securities Underlying Unexercised Options (#)\nUnexercisable",
+     "",
+     "Option Exercise Price ($)",
+     "",
+     "Option Expiration Date",
+     "",
+     "Number of Shares or Units of Stock That Have Not Vested (#) (5)",
+     "",
+     "Grant Date",
+     "",
+     "Market Value of Shares or Units of Stock That Have Not Vested ($)(7)",
+     "",
+     "Equity Incentive Plan Awards:\nNumber of Unearned Shares That Have Not Vested (#) (6)",
+     "",
+     "Equity Incentive Plan Awards:\nMarket Value of Shares That Have Not Vested ($) (7)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "12,000",
+     "",
+     "\u2014",
+     "",
+     "1.78",
+     "",
+     "3/31/2010",
+     "",
+     "3,370",
+     "",
+     "5/3/2007",
+     "",
+     "95,337",
+     "",
+     "126,445",
+     "",
+     "3,577,129",
+     ""
+    ],
+    [
+     "",
+     "",
+     "47,250",
+     "",
+     "54,000",
+     "(1)",
+     "8.65",
+     "",
+     "5/4/2011",
+     "",
+     "4,340",
+     "",
+     "5/8/2008",
+     "",
+     "122,779",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "59,926",
+     "",
+     "29,964",
+     "(2)",
+     "15.26",
+     "",
+     "5/3/2012",
+     "",
+     "4,982",
+     "",
+     "5/6/2009",
+     "",
+     "140,941",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "11,251",
+     "",
+     "22,503",
+     "(3)",
+     "25.15",
+     "",
+     "5/8/2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "38,749",
+     "(4)",
+     "25.22",
+     "",
+     "5/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "14,000",
+     "",
+     "\u2014",
+     "",
+     "6.56",
+     "",
+     "4/3/2016",
+     "",
+     "2,155",
+     "",
+     "5/3/2007",
+     "",
+     "60,965",
+     "",
+     "75,867",
+     "",
+     "2,146,277",
+     ""
+    ],
+    [
+     "",
+     "",
+     "22,356",
+     "",
+     "11,179",
+     "(2)",
+     "15.26",
+     "",
+     "5/3/2012",
+     "",
+     "2,024",
+     "",
+     "5/8/2008",
+     "",
+     "57,259",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5,244",
+     "",
+     "10,489",
+     "(3)",
+     "25.15",
+     "",
+     "5/8/2013",
+     "",
+     "2,278",
+     "",
+     "5/6/2009",
+     "",
+     "64,445",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "17,714",
+     "(4)",
+     "25.22",
+     "",
+     "5/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "8,500",
+     "",
+     "",
+     "",
+     "5.50",
+     "",
+     "",
+     "",
+     "1,888",
+     "",
+     "5/3/2007",
+     "",
+     "53,412",
+     "",
+     "50,578",
+     "",
+     "1,430,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "15,000",
+     "",
+     "\u2014",
+     "",
+     "7.86",
+     "",
+     "",
+     "",
+     "1,396",
+     "",
+     "5/8/2008",
+     "",
+     "39,493",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "19,558",
+     "",
+     "9,782",
+     "",
+     "15.26",
+     "",
+     "5/3/2012",
+     "",
+     "1,622",
+     "",
+     "5/6/2009",
+     "",
+     "45,886",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,616",
+     "",
+     "7,234",
+     "",
+     "25.15",
+     "",
+     "5/8/2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,621",
+     "",
+     "25.22",
+     "",
+     "5/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "6,000",
+     "",
+     "\u2014",
+     "",
+     "2.35",
+     "",
+     "4/29/2013",
+     "",
+     "1,618",
+     "",
+     "5/3/2007",
+     "",
+     "45,773",
+     "",
+     "50,578",
+     "",
+     "1,430,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "30,000",
+     "",
+     "\u2014",
+     "",
+     "3.33",
+     "",
+     "5/4/2014",
+     "",
+     "1,396",
+     "",
+     "5/8/2008",
+     "",
+     "39,493",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "27,000",
+     "",
+     "18,000",
+     "(1)",
+     "7.86",
+     "",
+     "5/4/2016",
+     "",
+     "1,594",
+     "",
+     "5/6/2009",
+     "",
+     "45,094",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "16,766",
+     "",
+     "8,384",
+     "(2)",
+     "15.26",
+     "",
+     "5/3/2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,616",
+     "",
+     "7,234",
+     "(3)",
+     "25.15",
+     "",
+     "5/8/2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,401",
+     "(4)",
+     "25.22",
+     "",
+     "5/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "6,708",
+     "",
+     "\u2014",
+     "",
+     "3.33",
+     "",
+     "5/4/2014",
+     "",
+     "1,888",
+     "",
+     "5/3/2007",
+     "",
+     "53,412",
+     "",
+     "50,578",
+     "",
+     "1,430,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "27,000",
+     "",
+     "18,000",
+     "(1)",
+     "7.86",
+     "",
+     "5/4/2016",
+     "",
+     "1,396",
+     "",
+     "5/8/2008",
+     "",
+     "39,493",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "19,558",
+     "",
+     "9,782",
+     "(2)",
+     "15.26",
+     "",
+     "5/3/2012",
+     "",
+     "1,594",
+     "",
+     "5/6/2009",
+     "",
+     "45,094",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,616",
+     "",
+     "7,234",
+     "(3)",
+     "25.15",
+     "",
+     "5/8/2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "12,401",
+     "(4)",
+     "25.22",
+     "",
+     "5/6/2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 530,
+    "end_line": 570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Amounts in this column represent the number of shares of our common stock underlying restricted stock awards issued to our Named Executive Officers in fiscal 2010. These awards were granted based, in part, on each executive\u2019s performance during fiscal year 2010. See the \u201cCompensation Discussion and Analysis\u2014Long-Term Equity Incentive Awards\u201d above. These shares vest annually in three equal installments.\n(3) Amounts in this column represent the number of shares of our common stock underlying options issued to our Named Executive Officers during fiscal 2010. These awards were granted based, in part, on each executive\u2019s performance during fiscal year 2010. See the \u201cCompensation Discussion and Analysis\u2014Long-Term Equity Incentive Awards\u201d above. These options vest annually in three equal installments.\n(4) Amounts in this column represent the grant date fair value of the restricted stock and stock option awards in fiscal 2010, as computed in accordance with ASC Topic 718.\nOutstanding Equity Awards at Fiscal Year-End\nThe following table summarizes information regarding each unexercised stock option and unvested shares of restricted stock held by each of our Named Executive Officers as of March 31, 2010.",
+   "prose_after": "(1) 50% of the remaining unvested shares subject to this option vested on May 4, 2010, and the remaining shares will vest on May 4, 2011.\n(2) The remaining unvested shares subject to this option vested on May 3, 2010.\n(3) 50% of the remaining unvested shares subject to this option vested on May 8, 2010, and the remaining shares will vest on May 8, 2011.\n(4) 33% of the remaining unvested shares subject to this option vested on May 6, 2010, and the remaining shares will vest on May 6, 2011, and May 6, 2012.\n(5) The remaining unvested shares subject to the restricted stock grant dated May 3, 2007, vested on May 3, 2010; 50% of the remaining unvested shares subject to the restricted stock grant dated May 8, 2008, vested on May 8, 2010, and the remaining will vest on May 8, 2011; and 33% of the remaining unvested shares subject to the restricted stock grant dated May 6, 2009, vested on May 6, 2010, and the remaining shares will vest on May 6, 2011 and May 6, 2012.\n(6) 75% of the awards vest on the date the Company files its Form 10-K for the fiscal year ended March 31, 2011 with the SEC if, by such date, certain revenue and earnings per share targets have been achieved by the Company (the \u201cPerformance Targets\u201d), and 25% vest on March 31, 2012 if the Performance Targets have previously been met.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Number of Shares Acquired on Exercise (#)",
+     "",
+     "Value Realized on Exercise ($)(1)",
+     "",
+     "Number of Shares Acquired on Vesting (#)",
+     "",
+     "Value Realized on Vesting ($)(2)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "24,000",
+     "",
+     "643,320",
+     "",
+     "5,540",
+     "",
+     "143,790",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,166",
+     "",
+     "82,089",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,583",
+     "",
+     "66,925",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,313",
+     "",
+     "59,956",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "53,292",
+     "",
+     "1,227,388",
+     "",
+     "2,583",
+     "",
+     "66,925",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(5) The remaining unvested shares subject to the restricted stock grant dated May 3, 2007, vested on May 3, 2010; 50% of the remaining unvested shares subject to the restricted stock grant dated May 8, 2008, vested on May 8, 2010, and the remaining will vest on May 8, 2011; and 33% of the remaining unvested shares subject to the restricted stock grant dated May 6, 2009, vested on May 6, 2010, and the remaining shares will vest on May 6, 2011 and May 6, 2012.\n(6) 75% of the awards vest on the date the Company files its Form 10-K for the fiscal year ended March 31, 2011 with the SEC if, by such date, certain revenue and earnings per share targets have been achieved by the Company (the \u201cPerformance Targets\u201d), and 25% vest on March 31, 2012 if the Performance Targets have previously been met.\n(7) Market value based on $28.29, the closing price of our common stock on March 31, 2010, the last day of fiscal 2010.\nOption Exercises and Stock Vested\nThe following table sets forth information regarding stock options exercised by our Named Executive Officers during fiscal 2010:",
+   "prose_after": "(1) Value realized based on difference between the closing price of our common stock on the date of exercise and the exercise price of the shares subject to the option.\n(2) Value realized is based on the closing price of our common stock on the date of vesting.\nNonqualified Deferred Compensation\nOn May 6, 2009, the Board adopted the Stanley Executive Savings Plan, or the Savings Plan, for the purpose of attracting high quality executives and promoting in them increased efficiency and an interest in the successful operation of the Company. Under our Savings Plan, a participant, including our Named Executive Officers, is permitted to defer receipt of up to 80% of their base salary and 100% of their bonus, commissions and/or restricted stock awards. The Company has the discretion to make contributions to the Savings Plan at any time on behalf of any participant. No participant has the right to receive any contributions in a particular year regardless of whether contributions are made on behalf of other participants.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Executive Contributions in Last FY ($)(1)",
+     "",
+     "Registrant Contributions in Last FY ($)",
+     "",
+     "Aggregate Earnings in Last FY ($)(2)",
+     "",
+     "Aggregate Withdrawals/ Distributions ($)",
+     "",
+     "Aggregate Balance at Last FYE ($)(3)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "36,346",
+     "",
+     "\u2014",
+     "",
+     "457",
+     "",
+     "\u2014",
+     "",
+     "8,748,709",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "53,539",
+     "",
+     "\u2014",
+     "",
+     "5,320",
+     "",
+     "\u2014",
+     "",
+     "483,209",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "37,154",
+     "",
+     "\u2014",
+     "",
+     "3,544",
+     "",
+     "\u2014",
+     "",
+     "4,599,066",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6,215,030",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "In addition, pursuant to the terms of our 2002 Executive Deferred Compensation and Equity Incentive Plan, the Compensation Committee could elect to issue awards of restricted stock to the award recipient directly or to a rabbi trust, or the Trust, established by us on behalf of the recipients for tax deferral purposes. Awards of restricted stock were issued into the Trust on two occasions, in 2004 and 2006, including on behalf of certain of the Named Executive Officers. No other contributions have been made to the Trust. All unvested shares of restricted stock held in the Trust vested in full upon our initial public offering, and thus all shares in the Trust are fully vested.\nWhile held in the Trust, the Named Executive Officers have no rights in the shares, including no right to vote the shares or to receive or retain any dividends and distributions paid or distributed on the shares; provided, however, that any\ndividends or distributions paid will automatically be added to each executive\u2019s aggregate shares held in the Trust. Other than any declaration of dividends or other distributions, there is no right to additional earnings on the shares held in the Trust. Upon termination of employment for any reason, the Named Executive Officer will be entitled to receive all of the vested shares of stock held on behalf of the recipient in the Trust.\nThe following table shows the nonqualified deferred compensation for each Named Executive Officer as of March 31, 2010, pursuant to the Savings Plan and the 2002 Executive Deferred Compensation and Equity Incentive Plan:",
+   "prose_after": "(1) Amounts represent the aggregate executive contributions made by the Named Executive Officer under the Savings Plan.\n(2) Amounts represent the aggregate dividends, interest and market value changes accrued under the Savings Plan for each Named Executive Officer.\n(3) Amounts represent the Named Executive Officer\u2019s account balance under the Savings Plan and the value of the vested shares held in Trust, which is based on the closing market price of our common stock on March 31, 2010, or $28.29, multiplied by the number of vested shares:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Shares of Vested Restricted Stock (#)",
+     "",
+     "Aggregate Value as of March 31, 2010 ($)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "307,950",
+     "",
+     "8,711,906",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "15,000",
+     "",
+     "424,350",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "161,130",
+     "",
+     "4,558,368",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "219,690",
+     "",
+     "6,215,030",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 639,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Amounts represent the aggregate executive contributions made by the Named Executive Officer under the Savings Plan.\n(2) Amounts represent the aggregate dividends, interest and market value changes accrued under the Savings Plan for each Named Executive Officer.\n(3) Amounts represent the Named Executive Officer\u2019s account balance under the Savings Plan and the value of the vested shares held in Trust, which is based on the closing market price of our common stock on March 31, 2010, or $28.29, multiplied by the number of vested shares:",
+   "prose_after": "Potential Payments Upon Termination or Change in Control\nChange in Control and Severance Payments. As discussed under \u201cCompensation Discussion and Analysis-Adoption of Change in Control Agreements\u201d above, we entered into Change in Control Severance Agreements with each of the Named Executive Officers, as well as other senior officers, on June 26, 2008. We have summarized and quantified the estimated payments under the agreements, assuming a termination event occurred on March 31, 2010, below.\nThe Change in Control Severance Agreements are \u201cdouble trigger\u201d agreements, meaning that the payment of the severance and benefits thereunder require both a \u201cchange in control\u201d (as defined below) and a qualifying termination of the executive\u2019s employment without \u201ccause\u201d (as defined below) or the executive terminates his employment for \u201cgood reason\u201d (as defined below) within 24 months (or 36 months in the case of Mr. Nolan) following a change in control. The term of the agreements is two years; provided, however, that the agreement will automatically extend for one-year terms thereafter unless either we or the executive provides notice of non-renewal at least one year prior to the commencement of the renewal term. The term of any agreement will not expire, however, during a \u201cpotential change in control period\u201d (as defined below) or prior to the expiration of 24 months (or 36 months in the case of Mr. Nolan) after the date of a change in control, including during a potential change in control period.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Cash Severance\n(1) ($)",
+     "",
+     "Incentive Bonus\n(2) ($)",
+     "",
+     "Accelerated Option Awards (3)($)",
+     "",
+     "Accelerated Stock Awards (3)($)",
+     "",
+     "Benefits (4)($)",
+     "",
+     "Tax Gross-Up Payment (5)($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Philip O. Nolan",
+     "",
+     "3,798,001",
+     "",
+     "612,000",
+     "",
+     "1,375,461",
+     "",
+     "4,006,668",
+     "",
+     "199,200",
+     "",
+     "3,019,479",
+     "",
+     "13,010,809",
+     ""
+    ],
+    [
+     "Brian J. Clark",
+     "",
+     "1,638,325",
+     "",
+     "332,775",
+     "",
+     "232,971",
+     "",
+     "2,361,168",
+     "",
+     "108,188",
+     "",
+     "1,549,917",
+     "",
+     "6,223,344",
+     ""
+    ],
+    [
+     "Scott D. Chaplin",
+     "",
+     "1,265,700",
+     "",
+     "231,900",
+     "",
+     "379,844",
+     "",
+     "1,592,548",
+     "",
+     "115,051",
+     "",
+     "1,135,174",
+     "",
+     "4,720,217",
+     ""
+    ],
+    [
+     "Gregory M. Denkler",
+     "",
+     "1,250,300",
+     "",
+     "230,100",
+     "",
+     "543,785",
+     "",
+     "1,583,722",
+     "",
+     "115,839",
+     "",
+     "1,128,218",
+     "",
+     "4,851,964",
+     ""
+    ],
+    [
+     "George H. Wilson",
+     "",
+     "1,220,600",
+     "",
+     "220,200",
+     "",
+     "555,959",
+     "",
+     "1,591,360",
+     "",
+     "115,222",
+     "",
+     "1,101,600",
+     "",
+     "4,804,941",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 730,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Estimated Benefits. The following table sets forth the estimates of the potential severance payments, benefits and value of the accelerated vesting of equity awards to be received by the Named Executive Officers under the change in control severance agreements and equity plan, assuming that a change in control and/or qualifying termination occurred on March 31, 2010, and the closing market price of our common stock on the NYSE on such date of $28.29. For purposes of the table below, we have assumed that any unvested stock options and restricted stock awards outstanding and unvested as of March 31, 2010, have not been assumed or substituted by the successor company.\nThe amounts set forth below do not include any amounts already earned or accrued through the termination date, but not yet paid, including base salary through the date of termination, any unreimbursed business expenses, and accrued but unused vacation pay, which is available to all our employees on a non-discriminatory basis. The amounts set forth below also do not include the value of the shares of restricted stock which will be released from the 2002 Executive Deferred Compensation and Equity Incentive Plan Trust or amounts payable under the Stanley Executive Savings Plan upon each executive\u2019s termination of employment. For more information regarding the value and number of vested shares of restricted stock held in the Trust or the amounts held in the Stanley Executive Savings Plan on behalf of each of the Named Executive Officers, see the \u201cNonqualified Deferred Compensation\u201d table above.",
+   "prose_after": "(1) Amounts in this column represent the Named Executive Officer\u2019s fiscal 2010 base salary and the executive\u2019s highest annual incentive bonus payment for the prior three years, multiplied by the severance multiple of two years, or three years for Mr. Nolan. Base salary and annual incentive amounts used are as set forth in \u201cCompensation Discussion and Analysis\u2014Base Salary\u201d and the Non-Equity Incentive Plan Compensation column of the Summary Compensation Table, above, respectively. The fiscal 2009 bonus was the highest bonus paid to each Named Executive Officer for the prior three years.\n(2) Amounts in this column represent each Named Executive Officer\u2019s annual incentive bonus for fiscal 2009, which was the highest bonus paid to each Named Executive Officer for the prior three years. Assuming a March 31, 2010 termination event, the bonus would not be pro rated.\n(3) Amounts in this column represent the value of accelerated vesting of stock options and restricted stock (including performance-based restricted stock) held by the Named Executive Officer and unvested as of March 31, 2010. For stock options, amounts represent the intrinsic value of the unvested awards, or the difference between the closing market price of our common stock on March 31, 2010, and the exercise price for the shares underlying the options. For shares of restricted stock, amounts represent the number of unvested restricted shares multiplied by the closing market price of our common stock on March 31, 2010. For more information regarding the number of unvested stock options and shares of restricted stock held by each of the Named Executive Officers as of the end of fiscal 2010, see the \u201cOutstanding Equity Awards at Fiscal Year End\u201d table above.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Fees Earned or Paid in Cash ($)(1)",
+     "",
+     "Stock Awards (3)($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "James C. Hughes",
+     "",
+     "\u2014",
+     "",
+     "66,308",
+     "",
+     "66,308",
+     ""
+    ],
+    [
+     "Lt. General Richard L. Kelly",
+     "",
+     "\u2014",
+     "",
+     "66,308",
+     "",
+     "66,308",
+     ""
+    ],
+    [
+     "Charles S. Ream",
+     "",
+     "39,078",
+     "",
+     "33,154",
+     "",
+     "72,232",
+     ""
+    ],
+    [
+     "John P. Riceman",
+     "",
+     "17,819",
+     "",
+     "66,308",
+     "",
+     "84,127",
+     ""
+    ],
+    [
+     "General Jimmy D. Ross",
+     "",
+     "39,078",
+     "",
+     "33,154",
+     "",
+     "72,232",
+     ""
+    ],
+    [
+     "William E. Karlson",
+     "",
+     "45,516",
+     "(2)",
+     "\u2014",
+     "",
+     "45,516",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 759,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Amounts in this column reflect the tax gross-up payment payable on behalf of the Named Executive Officer to cover the cost of any excise tax (and interest or penalties relating thereto) that would otherwise be payable by the Named Executive Officer due to the provision of the severance payments and benefits payable in a change in control. We are not able to deduct the amounts payable in tax gross-ups.\nDirector Compensation\nDirectors who are also our employees are not paid any fees or other compensation for services as members of the Board of Directors or of any committee of the Board of Directors. Directors who are not our employees are paid an annual fee of $95,000, of which 25% is required to be paid in shares of our common stock and the remaining 75% is eligible to be paid in cash, equity, or a combination of the two, at the election of the director (with any fractional shares payable in cash). The 25% of each director\u2019s annual fee required to be paid in common stock, and any additional shares of common stock issued as part of the director\u2019s election, are shares of restricted stock which vest one year after grant, based on continued service.\nThe following table summarizes the compensation earned by our non-employee directors for their service as members of the Board of Directors during fiscal 2010.",
+   "prose_after": "(1) The Board of Directors sets its annual compensation in August of each year. Accordingly, amounts set forth in this column represent an $85,000 annual fee during the first part of fiscal 2010 (April-August 2009), and a $95,000 annual fee during the remainder of the fiscal year (September 2009-March 2010). During the first part of fiscal 2010, Messrs. Hughes and Riceman and General Kelly elected to receive the remaining 75% of their annual fee in shares of our common stock. Mr. Ream and General Ross elected to receive the remaining 75% of their annual fee for the same period equally in cash and in our common stock. In the latter part of fiscal 2010, Messrs. Hughes and Karlson and General Kelly elected to receive the remaining 75% of their annual fee in shares of our common stock. Messrs. Ream and Riceman and General Ross elected to receive the remaining 75% of their annual fee for the same period equally in cash and in our common stock. Amounts do not include cash paid in lieu of fractional shares, which amounts were de minimus.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 749,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 770,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Beneficial Ownership(1)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial Owner",
+     "",
+     "Number of Shares",
+     "",
+     "Percent of Total",
+     ""
+    ],
+    [
+     "Named Executive Officers and Directors:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Philip O. Nolan(2)",
+     "",
+     "1,868,127",
+     "",
+     "7.67",
+     "%"
+    ],
+    [
+     "Brian J. Clark(3)",
+     "",
+     "213,492",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Scott D. Chaplin(4)",
+     "",
+     "130,491",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Gregory M. Denkler(5)",
+     "",
+     "275,497",
+     "",
+     "1.13",
+     "%"
+    ],
+    [
+     "George H. Wilson(6)",
+     "",
+     "516,884",
+     "",
+     "2.12",
+     "%"
+    ],
+    [
+     "William E. Karlson(7)",
+     "",
+     "1,037,897",
+     "",
+     "4.26",
+     "%"
+    ],
+    [
+     "James C. Hughes(8)",
+     "",
+     "95,305",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Lt. General Richard L. Kelly(9)",
+     "",
+     "25,985",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Charles S. Ream(10)",
+     "",
+     "12,526",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "John P. Riceman(11)",
+     "",
+     "84,040",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "General Jimmy D. Ross(12)",
+     "",
+     "40,499",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All executive officers and directors as a group (16 persons)",
+     "",
+     "4,736,230",
+     "",
+     "16.59",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Stockholders:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wells Fargo Bank, N.A.(13)",
+     "",
+     "2,943,416",
+     "",
+     "12.09",
+     "%"
+    ],
+    [
+     "1525 West WT Harris Boulevard",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Charlotte, NC 28262",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Beneficial Ownership(1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 805
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(1) The Board of Directors sets its annual compensation in August of each year. Accordingly, amounts set forth in this column represent an $85,000 annual fee during the first part of fiscal 2010 (April-August 2009), and a $95,000 annual fee during the remainder of the fiscal year (September 2009-March 2010). During the first part of fiscal 2010, Messrs. Hughes and Riceman and General Kelly elected to receive the remaining 75% of their annual fee in shares of our common stock. Mr. Ream and General Ross elected to receive the remaining 75% of their annual fee for the same period equally in cash and in our common stock. In the latter part of fiscal 2010, Messrs. Hughes and Karlson and General Kelly elected to receive the remaining 75% of their annual fee in shares of our common stock. Messrs. Ream and Riceman and General Ross elected to receive the remaining 75% of their annual fee for the same period equally in cash and in our common stock. Amounts do not include cash paid in lieu of fractional shares, which amounts were de minimus.\n(2) Represents Mr. Karlson\u2019s pro-rated annual fee from his retirement as an officer of our company in January 2009 through August 2009.\n(3) Represents the aggregate grant date fair value computed in accordance with FASB ASC Topic 718.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding the ownership of the Company\u2019s common stock as of June 1, 2010, by: (i) each director; (ii) each of the executive officers named in the Summary Compensation Table; (iii) all executive officers and directors of the Company as a group; and (iv) all those known by the Company to be beneficial owners of more than 5% of its common stock. Except as otherwise noted, the address of the individuals below is c/o Stanley, Inc., 3101 Wilson Boulevard, Suite 700, Arlington, VA 22201.",
+   "prose_after": "* Less than one percent.\n(1) This table is based solely upon information supplied by officers, directors and principal stockholders and Schedules 13D and 13G filed with the SEC. Unless otherwise indicated in the footnotes to this table and subject to community property laws where applicable, the Company believes that each of the stockholders named in this table has sole voting and investment power with respect to the shares indicated as beneficially owned. Applicable percentages are based on 24,347,202 shares outstanding on June 1, 2010, adjusted as required by rules promulgated by the SEC.\n(2) Consists of: a) 1,352,757 shares as to which Mr. Nolan has sole voting and investment power, b) 160,155 shares held by our ESOP for his account as to which he has shared voting and investment power, c) 148,907 unvested shares of restricted stock as to which he has sole voting power and d) 206,308 shares issuable pursuant to options exercisable within 60 days of June 1, 2010. Excludes 307,950 shares which are held for his account by the Executive Deferred Compensation and Equity Incentive Plan Trust (\u201c2002 Trust\u201d) and 212,814 shares which are held in a dynasty trust, as to which he does not have voting or investment power and, as such, disclaims beneficial ownership.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 775,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "",
+     "Number of Securities To Be Issued Upon Exercise of Outstanding Options, Warrants and Rights (1)",
+     "",
+     "Weighted-average Exercise Price of Outstanding Options, Warrants and Rights",
+     "",
+     "",
+     "Number of Securities Remaining Available For Future Issuance Under Equity Compensation Plans (Excluding Securities Reflected in Column (a)) (2)",
+     ""
+    ],
+    [
+     "Equity Compensation Plans Approved By Security Holders",
+     "",
+     "1,731,521",
+     "",
+     "$",
+     "17.82",
+     "",
+     "2,795,990",
+     ""
+    ],
+    [
+     "Equity Compensation Plans Not Approved By Security Holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,731,521",
+     "",
+     "$",
+     "17.82",
+     "",
+     "2,795,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(12) Consists of: a) 21,291 shares as to which General Ross has sole voting and investment power, b) 17,100 shares issuable pursuant to options exercisable within 60 days of June 1, 2010, and c) 2,108 shares of unvested restricted stock as to which he has sole voting power.\n(13) Wells Fargo Bank, N.A. is the trustee of the ESOP and the beneficial owner of 2,943,416 shares of common stock held in the ESOP at June 1, 2010. For participants in our ESOP, holdings include shares allocated to their individual accounts. Under the terms of the ESOP, the trustee is currently obligated, with respect to certain matters, to solicit participants to vote shares of our common stock allocated to participants\u2019 accounts, and the trustee generally will vote such shares in accordance with the voting decisions of the participants.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nThe following table sets forth certain information relating to the number of shares of our common stock subject to outstanding stock options and the number of shares remaining available for future issuance under our equity compensation plans as of March 31, 2010.",
+   "prose_after": "(1) Represents the aggregate number of shares of our common stock subject to stock options outstanding under our 1995 Stock Incentive Plan, 2002 Executive Deferred Compensation and Equity Incentive Plan, and our 2006 Omnibus Incentive Compensation Plan, as amended.\n(2) Represents the aggregate number of shares of common stock available for issuance under our 2006 Omnibus Incentive Compensation Plan, as amended, and Employee Stock Purchase Plan, or the ESPP. 70,011 of the 400,000 shares of common stock available for grant pursuant to the ESPP have been issued. No shares of common stock remain available for grant under the 1995 Stock Incentive Plan or 2002 Executive Deferred Compensation and Equity Incentive Plan.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nRelated-Person Transactions Policy and Procedures\nWe have adopted a written Related-Person Transactions Policy that sets forth our policies and procedures regarding the identification, review, consideration and approval or ratification of \u201crelated-persons transactions.\u201d For purposes of our policy only, a \u201crelated-person transaction\u201d is a transaction, arrangement or relationship (or any series of similar transactions, arrangements or relationships) in which we and any \u201crelated person\u201d are, were or will be participants involving an amount that exceeds $10,000. Transactions involving compensation for services provided to us as an employee, director or consultant by a related person are not covered by this policy. A related person is any executive officer, director, or more than 5% stockholder of our company, including any of their immediate family members, and any entity owned or controlled by such persons.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3/31/2009",
+     "",
+     "",
+     "3/31/2010",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "",
+     "$",
+     "800,000",
+     "",
+     "$",
+     "828,600",
+     ""
+    ],
+    [
+     "Audit-related Fees(2)",
+     "",
+     "143,805",
+     "",
+     "",
+     "46,400",
+     "",
+     ""
+    ],
+    [
+     "Tax Fees(3)",
+     "",
+     "250,740",
+     "",
+     "",
+     "320,895",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total Fees",
+     "",
+     "$",
+     "1,194,545",
+     "",
+     "$",
+     "1,195,895",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 879,
+    "end_line": 892
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "Consistent with these considerations, the Board has affirmatively determined that the following five current directors are independent directors under our Corporate Governance Guidelines, which incorporate the independence requirements of the applicable NYSE listing standards: Mr. Hughes, Lt. General Kelly, Mr. Ream, Mr. Riceman and General Ross. In making this determination, the Board found that none of these directors had a material or other disqualifying relationship with us. The Board has determined that Mr. Nolan, our Chairman of the Board, President and Chief Executive Officer, Mr. Wilson, one of our Executive Vice Presidents and Mr. Karlson, our former Senior Vice President, are not independent directors by virtue of their current or recent employment with us. Our director independence standards are included as Exhibit A to our Corporate Governance Guidelines, available on our website at www.stanleyassociates.com.\nThe Board of Directors has three committees: an Audit Committee, a Compensation Committee and a Nominating and Corporate Governance Committee. The Board of Directors has determined that each member of each committee meets the applicable NYSE rules and regulations regarding \u201cindependence\u201d and that each member is free of any relationship that would impair his or her individual exercise of independent judgment with regard to the Company.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nIndependent Public Accounting Firm Fees and Services\nThe following table represents aggregate fees billed to us for the fiscal years ended March 31, 2009, and March 31, 2010, by Deloitte & Touche, our independent registered public accounting firm.",
+   "prose_after": "(1) Audit fees principally include those for services related to the annual audit of the consolidated financial statements, SEC registration statements and other filings, annual audit of internal control over financial reporting and consultation on accounting matters.\n(2) Audit-related fees principally include acquisition due diligence and services related to preparation for the audit of internal control over financial reporting.\n(3) Tax fees principally include services related to domestic (federal, state and local) and international tax compliance and acquisition due diligence.\nPre-Approval Policies and Procedures\nThe Audit Committee has adopted procedures for the pre-approval of all audit and non-audit services rendered by our independent registered public accounting firm, Deloitte & Touche LLP. Pre-approval may be given as part of the Audit Committee\u2019s approval of the scope of the engagement of the independent auditor or on an individual explicit case-by-case basis before the independent auditor is engaged to provide each service. The pre-approval of services may be delegated to one or more of the Audit Committee\u2019s members, but the decision must be reported to the full Audit Committee at its next scheduled meeting.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger, dated as of May 6, 2010, among CGI Group Inc., CGI Federal Inc., CGI Fairfax Corporation and Stanley, Inc. (incorporated by reference to Exhibit 2.1 to the Company\u2019s Form 8-K, filed May 7, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "Stockholders Agreement, dated as of May 6, 2010, by and among Philip O. Nolan, William E. Karlson, George H. Wilson, Gregory M. Denkler, Brian J. Clark, Scott D. Chaplin and James H. Brabston, CGI Group Inc. and CGI Federal Inc (incorporated by reference to Exhibit 2.2 to the Company\u2019s Form 8-K, filed May 7, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of Stanley, Inc. (incorporated by reference to Exhibit 3.1 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Stanley, Inc. (incorporated by reference to Exhibit 3.2 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Stock Certificate (incorporated by reference to Exhibit 4.1 to Pre-Effective Amendment No. 2 to the Registration Statement on Form S-1 (File No. 333-134053), filed July 28, 2006)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "1995 Stock Incentive Plan, as Amended as of October 11, 2001 (incorporated by reference to Exhibit 10.1 to Pre-Effective Amendment No. 1 to the Registration Statement on Form S-1 (File No. 333-134053), filed June 26, 2006)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Executive Deferred Compensation and Equity Incentive Plan, as of January 30, 2002 (incorporated by reference to Exhibit 10.6 to Pre-Effective Amendment No. 2 to the Registration Statement on Form S-1 (File No. 333-134053), filed July 28, 2006)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Amendment No. 1 to Executive Deferred Compensation and Equity Incentive Plan, as of June 28, 2006 (incorporated by reference to Exhibit 10.12 to Pre-Effective Amendment No. 2 to the Registration Statement on Form S-1 (File No. 333-134053), filed July 28, 2006)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Amendment No. 2 to Executive Deferred Compensation and Equity Incentive Plan, as of November 6, 2008 (incorporated by reference to Exhibit 10.2 to the Company\u2019s Form 10-Q for the fiscal quarter ended December 26, 2008)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Executive Deferred Compensation and Equity Incentive Plan Trust, as of March 5, 2004 (incorporated by reference to Exhibit 10.7 to Pre-Effective Amendment No. 2 to the Registration Statement on Form S-1 (File No. 333-134053), filed July 28, 2006)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Amended and Restated 2006 Omnibus Incentive Compensation Plan (incorporated by reference to Exhibit 10.1 to the Company\u2019s Form 8-K, filed August 7, 2009)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Form of Restricted Stock Award Agreement under the 2006 Omnibus Incentive Compensation Plan (incorporated by reference to Exhibit 10.8 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008)\u2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Form of Incentive Stock Option Award Agreement under the 2006 Omnibus Incentive Compensation Plan (incorporated by reference to Exhibit 10.9 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008)\u2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 926,
+    "end_line": 966
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In connection with the audits of our financial statements for the fiscal years ended March 31, 2009 and 2010, there were no disagreements with Deloitte & Touche on any matter of accounting principles or practices, financial statement disclosure, or auditing scope or procedure, that would have caused Deloitte & Touche to report the disagreement if it had not been resolved to the satisfaction of Deloitte & Touche. Deloitte & Touche\u2019s reports on the financial statements for the past two fiscal years did not contain an adverse opinion or disclaimer of an opinion nor were they qualified or modified as to uncertainty, audit scope or accounting principles.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n15(a)(3) Exhibits\nThe exhibits required to be filed as part of this Form 10-K/A are listed in the Exhibit Index attached hereto and are incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nSTANLEY, INC. /s/ PHILIP O. NOLAN Philip O. Nolan Chairman, President and Chief Executive Officer (Principal Executive Officer) June 22, 2010\nEXHIBIT INDEX",
+   "prose_after": "10.9 Form of Nonqualified Stock Option Award Agreement under the 2006 Omnibus Incentive Compensation Plan (incorporated by reference to Exhibit 10.10 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008)\u2020 10.10 Amended and Restated Revolving Credit and Term Loan Agreement, dated as of October 10, 2007 (incorporated by reference to Exhibit 10.11 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2008) 10.11 Amendment to Amended and Restated Revolving Credit and Term Loan Agreement, dated August 4, 2008 (incorporated by reference to Exhibit 10.10 to the Company\u2019s Form 10-Q for the fiscal quarter ended June 27, 2008) 10.12 Second Amendment to Amended and Restated Resolving Credit and Term Loan Agreement, dated March 27, 2009 (incorporated by reference to Exhibit 10.15 to the Company\u2019s Form 10-K for the fiscal year ended March 31, 2009) 10.13 Change in Control Severance Agreement, dated June 26, 2008, by and between Stanley, Inc. and Philip O. Nolan (incorporated by reference to Exhibit 10.2 to the Company\u2019s Form 10-Q for the fiscal quarter ended June 27, 2008)\u2020 10.14 Change in Control Severance Agreement, dated June 26, 2008, by and between Stanley, Inc. and Brian J. Clark (incorporated by reference to Exhibit 10.3 to the Company\u2019s Form 10-Q for the fiscal quarter ended June 27, 2008)\u2020 10.15 Change in Control Severance Agreement, dated June 26, 2008, by and between Stanley, Inc. and George H. Wilson (incorporated by reference to Exhibit 10.4 to the Company\u2019s Form 10-Q for the fiscal quarter ended June 27, 2008)\u2020 10.16 Change in Control Severance Agreement, dated June 26, 2008, by and between Stanley, Inc. and Gregory M. Denkler (incorporated by reference to Exhibit 10.5 to the Company\u2019s Form 10-Q for the fiscal quarter ended June 27, 2008)\u2020 10.17 Change in Control Severance Agreement, dated June 26, 2008, by and between Stanley, Inc. and",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

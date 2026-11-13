@@ -1,0 +1,5937 @@
+{
+ "accession": "0000807882-26-000042",
+ "cik": "0000807882",
+ "form": "10-Q",
+ "filing_date": "2026-02-18",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "jack-20260118.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "95-2698708"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended January 18, 2026\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nfor the transition period from ________to________.\nCommission File Number: 1-9390\n____________________________________________________\nJACK IN THE BOX INC.\n(Exact name of registrant as specified in its charter)\n_______________________________________________________________________________________",
+   "prose_after": "9357 Spectrum Center Blvd.\nSan Diego, California 92123\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code (858) 571-2121\n_______________________________________________________________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock",
+     "JACK",
+     "NASDAQ Global Select Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "9357 Spectrum Center Blvd.\nSan Diego, California 92123\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code (858) 571-2121\n_______________________________________________________________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I \u2013 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Financial Statements (Unaudited):",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets",
+     "2"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Earnings (Loss)",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Income (Loss)",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Stockholders\u2019 Deficit",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "29"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "29"
+    ],
+    [
+     "",
+     "PART II \u2013 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "30"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "30"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "30"
+    ],
+    [
+     "Item 3.",
+     "Defaults of Senior Securities",
+     "30"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "30"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "30"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "31"
+    ],
+    [
+     "",
+     "Signature",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 98
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [X]  Smaller reporting company  [ ]\nAccelerated filer        [ ]    Emerging growth company    [ ]\nNon-accelerated filer    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAs of the close of business February 11, 2026, 19,036,016 shares of the registrant\u2019s common stock were outstanding.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nINDEX",
+   "prose_after": "1\nPART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nJACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "September 28, 2025",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "71,973",
+     "$",
+     "45,766"
+    ],
+    [
+     "Restricted cash",
+     "27,398",
+     "",
+     "30,282",
+     ""
+    ],
+    [
+     "Accounts and other receivables, net",
+     "92,437",
+     "",
+     "73,744",
+     ""
+    ],
+    [
+     "Inventories",
+     "2,771",
+     "",
+     "2,346",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "12,648",
+     "",
+     "13,604",
+     ""
+    ],
+    [
+     "Current assets held for sale",
+     "16,430",
+     "",
+     "46,042",
+     ""
+    ],
+    [
+     "Other current assets",
+     "8,561",
+     "",
+     "8,588",
+     ""
+    ],
+    [
+     "Total current assets",
+     "232,218",
+     "",
+     "220,372",
+     ""
+    ],
+    [
+     "Property and equipment:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, at cost",
+     "1,145,008",
+     "",
+     "1,150,490",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "(808,559)",
+     "",
+     "(806,873)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "336,449",
+     "",
+     "343,617",
+     ""
+    ],
+    [
+     "Other assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "1,000,680",
+     "",
+     "1,005,024",
+     ""
+    ],
+    [
+     "Goodwill",
+     "136,026",
+     "",
+     "136,026",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "62,020",
+     "",
+     "61,501",
+     ""
+    ],
+    [
+     "Non-current assets held for sale",
+     "\u2014",
+     "",
+     "574,967",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "254,234",
+     "",
+     "251,914",
+     ""
+    ],
+    [
+     "Total other assets",
+     "1,452,960",
+     "",
+     "2,029,432",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,021,627",
+     "$",
+     "2,593,421"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "$",
+     "28,270",
+     "$",
+     "29,458"
+    ],
+    [
+     "Current operating lease liabilities",
+     "136,668",
+     "",
+     "138,199",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "45,278",
+     "",
+     "56,349",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "141,810",
+     "",
+     "142,478",
+     ""
+    ],
+    [
+     "Current liabilities held for sale",
+     "\u2014",
+     "",
+     "64,139",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "352,026",
+     "",
+     "430,623",
+     ""
+    ],
+    [
+     "Long-term liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of current maturities",
+     "1,564,253",
+     "",
+     "1,674,235",
+     ""
+    ],
+    [
+     "Long-term operating lease liabilities, net of current portion",
+     "900,779",
+     "",
+     "907,910",
+     ""
+    ],
+    [
+     "Non-current liabilities held for sale",
+     "\u2014",
+     "",
+     "377,445",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "140,607",
+     "",
+     "141,479",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "2,605,639",
+     "",
+     "3,101,069",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock $0.01 par value, 15,000,000 shares authorized, none issued",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock $0.01 par value, 175,000,000 shares authorized, 83,147,600 and 83,012,784 issued and outstanding, respectively",
+     "831",
+     "",
+     "830",
+     ""
+    ],
+    [
+     "Capital in excess of par value",
+     "546,336",
+     "",
+     "542,177",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "1,766,747",
+     "",
+     "1,769,205",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(49,327)",
+     "",
+     "(49,858)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 64,120,270 and 64,120,270 shares, respectively",
+     "(3,200,625)",
+     "",
+     "(3,200,625)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "(936,038)",
+     "",
+     "(938,271)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,021,627",
+     "$",
+     "2,593,421"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 113,
+    "end_line": 177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "1\nPART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nJACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF EARNINGS (LOSS)\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 111,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 178,
+     "token": "REPEATING_FOOTER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Company restaurant sales",
+     "$",
+     "131,907",
+     "$",
+     "133,755"
+    ],
+    [
+     "Franchise rental revenues",
+     "97,387",
+     "",
+     "105,781",
+     ""
+    ],
+    [
+     "Franchise royalties and other",
+     "58,876",
+     "",
+     "63,615",
+     ""
+    ],
+    [
+     "Franchise contributions for advertising and other services",
+     "61,347",
+     "",
+     "67,913",
+     ""
+    ],
+    [
+     "",
+     "349,517",
+     "",
+     "371,064",
+     ""
+    ],
+    [
+     "Operating costs and expenses, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Food and packaging",
+     "39,232",
+     "",
+     "34,690",
+     ""
+    ],
+    [
+     "Payroll and employee benefits",
+     "46,577",
+     "",
+     "44,528",
+     ""
+    ],
+    [
+     "Occupancy and other",
+     "24,801",
+     "",
+     "23,540",
+     ""
+    ],
+    [
+     "Franchise occupancy expenses",
+     "66,301",
+     "",
+     "67,916",
+     ""
+    ],
+    [
+     "Franchise support and other costs",
+     "3,760",
+     "",
+     "3,301",
+     ""
+    ],
+    [
+     "Franchise advertising and other services expenses",
+     "63,472",
+     "",
+     "68,992",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "37,018",
+     "",
+     "41,156",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "13,609",
+     "",
+     "12,457",
+     ""
+    ],
+    [
+     "Pre-opening costs",
+     "59",
+     "",
+     "1,457",
+     ""
+    ],
+    [
+     "Other operating expenses, net",
+     "8,050",
+     "",
+     "2,547",
+     ""
+    ],
+    [
+     "",
+     "302,879",
+     "",
+     "300,584",
+     ""
+    ],
+    [
+     "Earnings from operations",
+     "46,638",
+     "",
+     "70,480",
+     ""
+    ],
+    [
+     "Other pension and post-retirement expenses, net",
+     "1,684",
+     "",
+     "1,789",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "23,682",
+     "",
+     "24,380",
+     ""
+    ],
+    [
+     "Earnings before income taxes",
+     "21,272",
+     "",
+     "44,311",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "6,883",
+     "",
+     "13,315",
+     ""
+    ],
+    [
+     "Earnings from continuing operations",
+     "14,389",
+     "",
+     "30,996",
+     ""
+    ],
+    [
+     "(Losses) earnings from discontinued operations, net of taxes",
+     "(16,847)",
+     "",
+     "2,690",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "$",
+     "(2,458)",
+     "$",
+     "33,686"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings (loss) per share - basic:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from continuing operations",
+     "$",
+     "0.75",
+     "$",
+     "1.63"
+    ],
+    [
+     "(Losses) earnings from discontinued operations",
+     "$",
+     "(0.88)",
+     "$",
+     "0.14"
+    ],
+    [
+     "Net (loss) earnings per share",
+     "$",
+     "(0.13)",
+     "$",
+     "1.77"
+    ],
+    [
+     "Net earnings (loss) per share - diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from continuing operations",
+     "$",
+     "0.75",
+     "$",
+     "1.61"
+    ],
+    [
+     "(Losses) earnings from discontinued operations",
+     "$",
+     "(0.88)",
+     "$",
+     "0.14"
+    ],
+    [
+     "Net (loss) earnings per share",
+     "$",
+     "(0.13)",
+     "$",
+     "1.75"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash dividends declared per common share",
+     "$",
+     "\u2014",
+     "$",
+     "0.44"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 189,
+    "end_line": 244
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF EARNINGS (LOSS)\n(In thousands, except per share data)",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 187,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 245,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "$",
+     "(2,458)",
+     "$",
+     "33,686"
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Actuarial gains and prior service costs reclassified to earnings",
+     "718",
+     "",
+     "808",
+     ""
+    ],
+    [
+     "Tax effect",
+     "(187)",
+     "",
+     "(213)",
+     ""
+    ],
+    [
+     "Other comprehensive income, net of taxes",
+     "531",
+     "",
+     "595",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive (loss) income",
+     "$",
+     "(1,927)",
+     "$",
+     "34,281"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 252,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 271,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) earnings",
+     "$",
+     "(2,458)",
+     "$",
+     "33,686"
+    ],
+    [
+     "(Losses) earnings from discontinued operations",
+     "(16,847)",
+     "",
+     "2,690",
+     ""
+    ],
+    [
+     "Earnings from continuing operations",
+     "14,389",
+     "",
+     "30,996",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "13,609",
+     "",
+     "12,457",
+     ""
+    ],
+    [
+     "Amortization of franchise tenant improvement allowances and incentives",
+     "1,798",
+     "",
+     "1,606",
+     ""
+    ],
+    [
+     "Deferred finance cost amortization",
+     "1,359",
+     "",
+     "1,473",
+     ""
+    ],
+    [
+     "Tax deficiency from share-based compensation arrangements",
+     "1,399",
+     "",
+     "1,111",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "9,271",
+     "",
+     "(4,526)",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "4,159",
+     "",
+     "3,689",
+     ""
+    ],
+    [
+     "Pension and post-retirement expense",
+     "1,684",
+     "",
+     "1,789",
+     ""
+    ],
+    [
+     "Gains on cash surrender value of company-owned life insurance",
+     "(4,044)",
+     "",
+     "(189)",
+     ""
+    ],
+    [
+     "(Gains) losses on the disposition of property and equipment, net",
+     "(6,271)",
+     "",
+     "417",
+     ""
+    ],
+    [
+     "Impairment charges",
+     "267",
+     "",
+     "610",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts and other receivables",
+     "2,177",
+     "",
+     "13,923",
+     ""
+    ],
+    [
+     "Inventories",
+     "(424)",
+     "",
+     "(94)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "5,266",
+     "",
+     "(1,629)",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets and lease liabilities",
+     "(4,664)",
+     "",
+     "(5,705)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(5,617)",
+     "",
+     "8,036",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "2,656",
+     "",
+     "7,873",
+     ""
+    ],
+    [
+     "Pension and post-retirement contributions",
+     "(2,090)",
+     "",
+     "(2,218)",
+     ""
+    ],
+    [
+     "Franchise tenant improvement allowance and incentive disbursements",
+     "(1,844)",
+     "",
+     "(1,816)",
+     ""
+    ],
+    [
+     "Other",
+     "(2,534)",
+     "",
+     "33,780",
+     ""
+    ],
+    [
+     "Cash flows provided by operating activities",
+     "30,546",
+     "",
+     "101,583",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "(23,218)",
+     "",
+     "(21,300)",
+     ""
+    ],
+    [
+     "Purchases of assets intended for sale or leaseback",
+     "\u2014",
+     "",
+     "(5,724)",
+     ""
+    ],
+    [
+     "Proceeds from the sale of property and equipment",
+     "10,948",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from the sale and leaseback of assets",
+     "3,593",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "2,800",
+     "",
+     "3,303",
+     ""
+    ],
+    [
+     "Cash flows used in investing activities",
+     "(5,877)",
+     "",
+     "(23,721)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayments of borrowings on revolving credit facilities",
+     "\u2014",
+     "",
+     "(6,000)",
+     ""
+    ],
+    [
+     "Principal repayments on debt",
+     "(112,313)",
+     "",
+     "(7,456)",
+     ""
+    ],
+    [
+     "Dividends paid on common stock",
+     "\u2014",
+     "",
+     "(8,308)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "1",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Repurchases of common stock",
+     "\u2014",
+     "",
+     "(4,999)",
+     ""
+    ],
+    [
+     "Payroll tax payments for equity award issuances",
+     "(873)",
+     "",
+     "(2,336)",
+     ""
+    ],
+    [
+     "Cash flows used in financing activities",
+     "(113,185)",
+     "",
+     "(29,098)",
+     ""
+    ],
+    [
+     "Cash flows (used in) provided by continuing operations",
+     "(88,516)",
+     "",
+     "48,764",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities of discontinued operations",
+     "(11,902)",
+     "",
+     "4,073",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities of discontinued operations",
+     "118,014",
+     "",
+     "(2,363)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities of discontinued operations",
+     "(38)",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Net cash provided by discontinued operations",
+     "106,074",
+     "",
+     "1,702",
+     ""
+    ],
+    [
+     "Cash and restricted cash at beginning of period, including discontinued operations cash",
+     "81,813",
+     "",
+     "54,167",
+     ""
+    ],
+    [
+     "Cash and restricted cash at end of period, including discontinued operations cash",
+     "$",
+     "99,371",
+     "$",
+     "104,633"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 280,
+    "end_line": 344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 278,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 345,
+     "token": "REPEATING_FOOTER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Amount",
+     "",
+     "Capital in Excess of Par Value",
+     "",
+     "Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Treasury Stock",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at September 28, 2025",
+     "83,013",
+     "$",
+     "830",
+     "$",
+     "542,177",
+     "$",
+     "1,769,205",
+     "$",
+     "(49,858)",
+     "$",
+     "(3,200,625)",
+     "$",
+     "(938,271)"
+    ],
+    [
+     "Shares issued under stock plans, including tax benefit",
+     "135",
+     "1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,159",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,159",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,458)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,458)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "531",
+     "",
+     "\u2014",
+     "",
+     "531",
+     ""
+    ],
+    [
+     "Balance at January 18, 2026",
+     "83,148",
+     "$",
+     "831",
+     "$",
+     "546,336",
+     "$",
+     "1,766,747",
+     "$",
+     "(49,327)",
+     "$",
+     "(3,200,625)",
+     "$",
+     "(936,038)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 354,
+    "end_line": 367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 352,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 384,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Amount",
+     "",
+     "Capital in Excess of Par Value",
+     "",
+     "Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Treasury Stock",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at September 29, 2024",
+     "82,826",
+     "$",
+     "828",
+     "$",
+     "533,818",
+     "$",
+     "1,866,660",
+     "$",
+     "(57,475)",
+     "$",
+     "(3,195,629)",
+     "$",
+     "(851,798)"
+    ],
+    [
+     "Shares issued under stock plans, including tax benefit",
+     "145",
+     "1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,689",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,689",
+     ""
+    ],
+    [
+     "Dividends declared",
+     "\u2014",
+     "\u2014",
+     "",
+     "61",
+     "",
+     "(8,369)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(8,308)",
+     ""
+    ],
+    [
+     "Purchases of treasury stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,996)",
+     "",
+     "(4,996)",
+     ""
+    ],
+    [
+     "Net earnings",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "33,686",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "33,686",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "595",
+     "",
+     "\u2014",
+     "",
+     "595",
+     ""
+    ],
+    [
+     "Balance at January 19, 2025",
+     "82,971",
+     "$",
+     "829",
+     "$",
+     "537,568",
+     "$",
+     "1,891,977",
+     "$",
+     "(56,880)",
+     "$",
+     "(3,200,625)",
+     "$",
+     "(827,131)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 368,
+    "end_line": 383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\n1.BASIS OF PRESENTATION\nNature of operations \u2014 Jack in the Box Inc. (the \u201cCompany\u201d), together with its consolidated subsidiaries, develops, operates, and franchises quick-service restaurants under the Jack in the Box\u00ae restaurant brand.\nAs of January 18, 2026, there were 149 company-operated and 1,979 franchise-operated Jack in the Box restaurants.\nReferences to the Company throughout these notes to condensed consolidated financial statements are made using the first person notations of \u201cwe,\u201d \u201cus\u201d and \u201cour.\u201d\nBasis of presentation \u2014 The accompanying condensed consolidated financial statements have been prepared in accordance with U.S. generally accepted accounting principles (\u201cU.S. GAAP\u201d) and the rules and regulations of the Securities and Exchange Commission (\u201cSEC\u201d).\nThese financial statements should be read in conjunction with the consolidated financial statements and related notes contained in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended September 28, 2025 (\u201c2025 Form 10-K\u201d). The accounting policies used in preparing these condensed consolidated financial statements are the same as those described in our 2025 Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 352,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 384,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Balance as of beginning of period",
+     "$",
+     "(4,466)",
+     "$",
+     "(4,210)"
+    ],
+    [
+     "(Provision) reversal for expected credit losses",
+     "(409)",
+     "",
+     "124",
+     ""
+    ],
+    [
+     "Balance as of end of period",
+     "$",
+     "(4,875)",
+     "$",
+     "(4,086)"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 426,
+    "end_line": 437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Total contributions made by the Company and other marketing activities are included in \u201cSelling, general and administrative expenses\u201d in the accompanying condensed consolidated statements of earnings (loss). For the year-to-date periods in 2026 and 2025, advertising costs were $10.3 million and $10.5 million, respectively.\nAllowance for credit losses \u2014 The Company closely monitors the financial condition of our franchisees and estimates the allowance for credit losses based on the lifetime expected loss on receivables. These estimates are based on historical collection experience with our franchisees as well as other factors, including current market conditions and events. Credit quality is monitored through the timing of payments compared to predefined aging criteria and known facts regarding the financial condition of the franchisee or customer. Account balances are charged off against the allowance after recovery efforts have ceased. The Company\u2019s allowance for doubtful accounts has not historically been material.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table summarizes the activity in the allowance for doubtful accounts (in thousands):",
+   "prose_after": "Recent accounting pronouncements \u2014 In December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures, which requires disaggregated information about a reporting entity\u2019s effective tax rate reconciliation as well as information on income taxes paid. The guidance is effective for fiscal years beginning after December 15, 2024, with early adoption permitted, and should be applied on a prospective basis with the option to apply the standard retrospectively. The Company will adopt this pronouncement on a prospective basis in its Form 10-K for fiscal year ended September 27, 2026, and does not expect this pronouncement to have a significant impact.\nIn November 2024, the FASB issued ASU 2024-03, Income Statement - Reporting Comprehensive Income - Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. ASU 2024-03 requires public companies to disclose, in the notes to financial statements, specified information about certain costs and expenses at each interim and annual reporting period. Additionally, companies will need to disclose the total amount of selling expenses and, in annual reporting periods, an entity\u2019s definition of selling expenses. This ASU is effective for annual reporting periods beginning after December 15, 2026, and interim reporting periods beginning after December 15, 2027. Early adoption is permitted. ASU 2024-03 should be applied prospectively to financial statements issued for reporting periods beginning after the effective date, but entities may elect to apply the ASU retrospectively to any or all prior periods presented in the financial statements. The Company is currently evaluating the impact of this guidance on its consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Company restaurant sales",
+     "$",
+     "131,907",
+     "$",
+     "133,755"
+    ],
+    [
+     "Franchise rental revenues",
+     "97,387",
+     "",
+     "105,781",
+     ""
+    ],
+    [
+     "Franchise royalties",
+     "57,153",
+     "",
+     "61,825",
+     ""
+    ],
+    [
+     "Marketing fees",
+     "56,610",
+     "",
+     "61,461",
+     ""
+    ],
+    [
+     "Technology and sourcing fees",
+     "4,737",
+     "",
+     "6,452",
+     ""
+    ],
+    [
+     "Franchise fees and other services",
+     "1,723",
+     "",
+     "1,790",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "349,517",
+     "$",
+     "371,064"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 450,
+    "end_line": 465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "In November 2024, the FASB issued ASU 2024-03, Income Statement - Reporting Comprehensive Income - Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. ASU 2024-03 requires public companies to disclose, in the notes to financial statements, specified information about certain costs and expenses at each interim and annual reporting period. Additionally, companies will need to disclose the total amount of selling expenses and, in annual reporting periods, an entity\u2019s definition of selling expenses. This ASU is effective for annual reporting periods beginning after December 15, 2026, and interim reporting periods beginning after December 15, 2027. Early adoption is permitted. ASU 2024-03 should be applied prospectively to financial statements issued for reporting periods beginning after the effective date, but entities may elect to apply the ASU retrospectively to any or all prior periods presented in the financial statements. The Company is currently evaluating the impact of this guidance on its consolidated financial statements.\n2.REVENUE\nNature of products and services \u2014 The Company derives revenue from retail sales at Jack in the Box company-operated restaurants and rental revenue, royalties, advertising, and franchise and other fees from franchise-operated restaurants.\nOur franchise arrangements generally provide for an initial franchise fee per restaurant for a 20-year term, and generally require that franchisees pay royalty and marketing fees based upon a percentage of gross sales. The agreements also require franchisees to pay technology fees, as well as sourcing fees.\nDisaggregation of revenue \u2014 The following table disaggregates revenue by primary source (in thousands):",
+   "prose_after": "Contract liabilities \u2014 Contract liabilities consist of deferred revenue resulting from initial franchise and development fees received from franchisees for new restaurant openings or new franchise terms, which are recognized over the franchise term. The Company classifies these contract liabilities as \u201cAccrued liabilities\u201d and \u201cOther long-term liabilities\u201d in our condensed consolidated balance sheets.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nA summary of significant changes in contract liabilities is presented below (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Deferred franchise and development fees at beginning of period",
+     "$",
+     "35,807",
+     "$",
+     "39,101"
+    ],
+    [
+     "Revenue recognized",
+     "(1,405)",
+     "",
+     "(1,522)",
+     ""
+    ],
+    [
+     "Additions",
+     "967",
+     "",
+     "462",
+     ""
+    ],
+    [
+     "Deferred franchise and development fees at end of period",
+     "$",
+     "35,369",
+     "$",
+     "38,041"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 475,
+    "end_line": 487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Contract liabilities \u2014 Contract liabilities consist of deferred revenue resulting from initial franchise and development fees received from franchisees for new restaurant openings or new franchise terms, which are recognized over the franchise term. The Company classifies these contract liabilities as \u201cAccrued liabilities\u201d and \u201cOther long-term liabilities\u201d in our condensed consolidated balance sheets.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nA summary of significant changes in contract liabilities is presented below (in thousands):",
+   "prose_after": "As of January 18, 2026, approximately $4.0 million of development fees related to unopened restaurants are included in deferred revenue. Timing of revenue recognition for development fees related to unopened restaurants is dependent upon the timing of restaurant openings and are recognized over the franchise term at the date of opening.\nThe following table reflects the estimated franchise fees to be recognized in the future related to performance obligations that are unsatisfied as of January 18, 2026 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Remainder of 2026",
+     "$",
+     "3,024"
+    ],
+    [
+     "2027",
+     "4,111",
+     ""
+    ],
+    [
+     "2028",
+     "3,557",
+     ""
+    ],
+    [
+     "2029",
+     "2,986",
+     ""
+    ],
+    [
+     "2030",
+     "2,529",
+     ""
+    ],
+    [
+     "Thereafter",
+     "15,117",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "31,324"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "As of January 18, 2026, approximately $4.0 million of development fees related to unopened restaurants are included in deferred revenue. Timing of revenue recognition for development fees related to unopened restaurants is dependent upon the timing of restaurant openings and are recognized over the franchise term at the date of opening.\nThe following table reflects the estimated franchise fees to be recognized in the future related to performance obligations that are unsatisfied as of January 18, 2026 (in thousands):",
+   "prose_after": "The Company has applied the optional exemption, as provided for under ASC Topic 606, Revenue from Contracts with Customers, which allows us to not disclose the transaction price allocated to unsatisfied performance obligations when the transaction price is a sales-based royalty.\n3.ASSETS HELD FOR SALE\nAssets held for sale \u2014 Assets classified as held for sale on our condensed consolidated balance sheets as of January 18, 2026 and September 28, 2025 have carrying amounts of $16.4 million and $621.0 million, respectively. In the current year, these amounts relate to operating restaurant properties which we intend to sell to franchisees and/or sell and leaseback with a third party, and closed restaurant properties which we are marketing for sale. Of the balance as of September 28, 2025, $602.7 million relates to Del Taco which is presented as held for sale as of September 28, 2025. Refer to Note 4, Discontinued Operations, for additional information on assets and liabilities held for sale.\n4.DISCONTINUED OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026 (1)",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Company restaurant sales",
+     "$",
+     "48,713",
+     "$",
+     "67,650"
+    ],
+    [
+     "Franchise revenues",
+     "21,509",
+     "",
+     "30,724",
+     ""
+    ],
+    [
+     "Company restaurant costs",
+     "(43,199)",
+     "",
+     "(58,309)",
+     ""
+    ],
+    [
+     "Franchise costs",
+     "(12,944)",
+     "",
+     "(22,813)",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses (2)",
+     "(7,018)",
+     "",
+     "(9,523)",
+     ""
+    ],
+    [
+     "Depreciation and amortization (3)",
+     "(882)",
+     "",
+     "(5,812)",
+     ""
+    ],
+    [
+     "Pre-opening costs",
+     "(50)",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "Other operating expense, net",
+     "(570)",
+     "",
+     "(972)",
+     ""
+    ],
+    [
+     "Transaction-related costs (4)",
+     "(7,817)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gains on the sale of company-operated restaurants",
+     "\u2014",
+     "",
+     "2,806",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "1",
+     "",
+     "(46)",
+     ""
+    ],
+    [
+     "Operating (loss) earnings from discontinued operations before income taxes",
+     "(2,257)",
+     "",
+     "3,686",
+     ""
+    ],
+    [
+     "Loss on Del Taco sale",
+     "(47,428)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Losses) earnings from discontinued operations and before income taxes",
+     "(49,685)",
+     "",
+     "3,686",
+     ""
+    ],
+    [
+     "Income tax (benefit) expense (5)",
+     "(32,838)",
+     "",
+     "996",
+     ""
+    ],
+    [
+     "(Losses) earnings from discontinued operations, net of income taxes",
+     "(16,847)",
+     "",
+     "2,690",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) earnings per share from discontinued operations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.88)",
+     "$",
+     "0.14"
+    ],
+    [
+     "Diluted",
+     "$",
+     "(0.88)",
+     "$",
+     "0.14"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 525,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "As the Del Taco Sale represents a strategic shift that will have a major effect on our operations and financial results, the Del Taco results are classified as discontinued operations in our condensed consolidated statements of earnings (loss) and our condensed consolidated statements of cash flows for all periods presented. Prior year results have been recast to conform with the current year presentation.\nWe also entered into a Transition Services Agreement with the Buyer pursuant to which the Buyer is receiving certain services (the \u201cServices\u201d) to enable it to operate the Del Taco business after the closing of the Del Taco Sale. The Services include information technology, finance and accounting, human resources, supply chain and other corporate support services. The Company recorded $0.9 million related to the Services in the first quarter of 2026 as a reduction of selling, general and administrative expenses in the condensed consolidated statements of earnings (loss).\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table summarizes the Del Taco results for each period prior to the sale (in thousands, except per share data):",
+   "prose_after": "____________________________\n(1)Del Taco operating results include only twelve weeks of activity through the sale date on December 22, 2025.\n(2)Selling, general and administrative expenses presented in the table above include corporate costs directly in support of Del Taco operations. All other corporate costs were classified in results of continuing operations.\n(3)Depreciation and amortization ceased upon classification of the Del Taco assets as held for sale during the quarter.\n(4)Transaction-related costs are comprised primarily of professional fees for accounting and legal, which were not contingent fees included in loss on sale calculation.\n(5)Income tax benefit in 2026 is primarily due to utilization of capital loss from the Del Taco sale, net of valuation allowance against excess capital loss carryforward to expire in fiscal year 2031.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following is a reconciliation of the loss recorded for the Del Taco sale (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Net proceeds received from the Del Taco Sale (1)",
+     "$",
+     "119,086"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Del Taco assets:",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "421"
+    ],
+    [
+     "Accounts and other receivables, net",
+     "14,048",
+     ""
+    ],
+    [
+     "Inventories",
+     "1,688",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "848",
+     ""
+    ],
+    [
+     "Other current assets",
+     "1,508",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "99,790",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "369,349",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "9,803",
+     ""
+    ],
+    [
+     "Trademarks",
+     "105,600",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "14,014",
+     ""
+    ],
+    [
+     "Total Del Taco assets",
+     "$",
+     "617,069"
+    ],
+    [
+     "Del Taco liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "$",
+     "31"
+    ],
+    [
+     "Current operating lease liabilities",
+     "21,551",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "12,986",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "21,281",
+     ""
+    ],
+    [
+     "Long-term debt, net of current maturities",
+     "245",
+     ""
+    ],
+    [
+     "Long-term operating lease liabilities, net of current portion",
+     "349,616",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "23,405",
+     ""
+    ],
+    [
+     "Other long-term liabilities, including note payable",
+     "26,390",
+     ""
+    ],
+    [
+     "Total Del Taco liabilities",
+     "$",
+     "455,505"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other transaction costs incurred as part of the Del Taco sale (2)",
+     "$",
+     "4,950"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on sale of Del Taco before income taxes",
+     "$",
+     "(47,428)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "____________________________\n(1)Del Taco operating results include only twelve weeks of activity through the sale date on December 22, 2025.\n(2)Selling, general and administrative expenses presented in the table above include corporate costs directly in support of Del Taco operations. All other corporate costs were classified in results of continuing operations.\n(3)Depreciation and amortization ceased upon classification of the Del Taco assets as held for sale during the quarter.\n(4)Transaction-related costs are comprised primarily of professional fees for accounting and legal, which were not contingent fees included in loss on sale calculation.\n(5)Income tax benefit in 2026 is primarily due to utilization of capital loss from the Del Taco sale, net of valuation allowance against excess capital loss carryforward to expire in fiscal year 2031.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following is a reconciliation of the loss recorded for the Del Taco sale (in thousands):",
+   "prose_after": "____________________________\n(1)The proceeds received from the Del Taco Sale include working capital adjustments outlined in the Purchase Agreement, which must be finalized within 60 days after the closing date.\n(2)Costs directly incurred as a result of the Del Taco Sale, including investment bank fees and employee transaction awards.\nThe assets being sold and liabilities being assumed by the Buyer were classified as held-for-sale during the first quarter of 2026. As such, prior year balances have been recast to conform with this presentation. Upon classification of the Del Taco assets as held for sale, the assets were no longer depreciated. Proceeds from the Del Taco Sale have been presented in the condensed consolidated statement of cash flows within cash provided by discontinued operations in investing activities.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table summarizes the major categories of assets and liabilities classified as held for sale in our condensed consolidated balance sheet as of September 28, 2025 and acquired in the Del Taco Sale (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 28, 2025",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "5,765"
+    ],
+    [
+     "Accounts and other receivables, net",
+     "16,567",
+     ""
+    ],
+    [
+     "Inventories",
+     "1,612",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "3,769",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "99,991",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "366,430",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "9,884",
+     ""
+    ],
+    [
+     "Trademarks",
+     "105,600",
+     ""
+    ],
+    [
+     "Deferred tax assets (1)",
+     "(20,233)",
+     ""
+    ],
+    [
+     "Other assets",
+     "13,295",
+     ""
+    ],
+    [
+     "Total assets classified as held for sale (2)",
+     "$",
+     "602,680"
+    ],
+    [
+     "Liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Current operating lease liabilities",
+     "$",
+     "21,068"
+    ],
+    [
+     "Accounts payable",
+     "14,752",
+     ""
+    ],
+    [
+     "Accrued liabilities, including current note payable",
+     "28,319",
+     ""
+    ],
+    [
+     "Long-term operating lease liabilities, net of current portion",
+     "351,667",
+     ""
+    ],
+    [
+     "Other long-term liabilities, including note payable",
+     "25,778",
+     ""
+    ],
+    [
+     "Total liabilities classified as held for sale",
+     "$",
+     "441,584"
+    ]
+   ],
+   "caption_stack": [
+    "September 28, 2025",
+    "Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 630,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "(1)The proceeds received from the Del Taco Sale include working capital adjustments outlined in the Purchase Agreement, which must be finalized within 60 days after the closing date.\n(2)Costs directly incurred as a result of the Del Taco Sale, including investment bank fees and employee transaction awards.\nThe assets being sold and liabilities being assumed by the Buyer were classified as held-for-sale during the first quarter of 2026. As such, prior year balances have been recast to conform with this presentation. Upon classification of the Del Taco assets as held for sale, the assets were no longer depreciated. Proceeds from the Del Taco Sale have been presented in the condensed consolidated statement of cash flows within cash provided by discontinued operations in investing activities.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table summarizes the major categories of assets and liabilities classified as held for sale in our condensed consolidated balance sheet as of September 28, 2025 and acquired in the Del Taco Sale (in thousands):",
+   "prose_after": "____________________________\n(1)Reflects deferred income tax liabilities for Del Taco, which were netted against the Jack in the Box deferred income tax assets in other assets, net, on our condensed consolidated balance sheets.\n(2)The current assets held for sale on the condensed consolidated balance sheet as of September 28, 2025 includes Jack in the Box assets held for sale of $18.3 million.\n5. LEASES\nNature of leases \u2014 The Company owns restaurant sites and also leases restaurant sites from third parties. Some of these owned or leased sites are leased and/or subleased to franchisees. Initial terms of our real estate leases are generally 20 years, exclusive of options to renew, which are generally exercisable at our sole discretion for 1 to 20 years. In some instances, our leases have provisions for contingent rentals based upon a percentage of defined revenues. Many of our restaurants also have rent escalation clauses and require the payment of property taxes, insurance, and maintenance costs. Variable lease costs include contingent rent, cost-of-living index adjustments, and payments for additional rent such as real estate taxes, insurance, and common area maintenance, which are excluded from the measurement of the lease liability.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 626,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Operating lease income - franchise",
+     "$",
+     "70,249",
+     "$",
+     "72,064"
+    ],
+    [
+     "Variable lease income - franchise",
+     "27,129",
+     "",
+     "33,708",
+     ""
+    ],
+    [
+     "Amortization of sublease assets and liabilities, net",
+     "9",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Franchise rental revenues",
+     "$",
+     "97,387",
+     "$",
+     "105,781"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease income - closed restaurants and other (1)",
+     "$",
+     "2,545",
+     "$",
+     "1,785"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Nature of leases \u2014 The Company owns restaurant sites and also leases restaurant sites from third parties. Some of these owned or leased sites are leased and/or subleased to franchisees. Initial terms of our real estate leases are generally 20 years, exclusive of options to renew, which are generally exercisable at our sole discretion for 1 to 20 years. In some instances, our leases have provisions for contingent rentals based upon a percentage of defined revenues. Many of our restaurants also have rent escalation clauses and require the payment of property taxes, insurance, and maintenance costs. Variable lease costs include contingent rent, cost-of-living index adjustments, and payments for additional rent such as real estate taxes, insurance, and common area maintenance, which are excluded from the measurement of the lease liability.\nAs lessor, our leases and subleases primarily consist of restaurants that have been leased to franchisees in connection with refranchising transactions. Revenues from leasing arrangements with our franchisees are presented in \u201cFranchise rental revenues\u201d in the accompanying condensed consolidated statements of earnings (loss), and the related expenses are presented in \u201cFranchise occupancy expenses.\u201d\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table presents rental income for the periods presented (in thousands):",
+   "prose_after": "____________________________\n(1)Includes closed restaurant properties included in \u201cOther operating expenses, net\u201d in our condensed consolidated statements of earnings (loss).\n6.FAIR VALUE MEASUREMENTS\nFinancial assets and liabilities \u2014 The following table presents our financial assets and liabilities measured at fair value on a recurring basis (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     "Quoted Prices in Active Markets for Identical Assets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "Fair value measurements as of January 18, 2026:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-qualified deferred compensation plan (1)",
+     "$",
+     "18,438",
+     "$",
+     "18,438",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "18,438",
+     "$",
+     "18,438",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Fair value measurements as of September 28, 2025:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-qualified deferred compensation plan (1)",
+     "$",
+     "18,326",
+     "$",
+     "18,326",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "18,326",
+     "$",
+     "18,326",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "____________________________\n(1)Includes closed restaurant properties included in \u201cOther operating expenses, net\u201d in our condensed consolidated statements of earnings (loss).\n6.FAIR VALUE MEASUREMENTS\nFinancial assets and liabilities \u2014 The following table presents our financial assets and liabilities measured at fair value on a recurring basis (in thousands):",
+   "prose_after": "____________________________\n(1)The Company maintains an unfunded defined contribution plan for key executives and other members of management. The fair value of this obligation is based on the closing market prices of the participants\u2019 elected investments. The obligation is included in \u201cAccrued liabilities\u201d and \u201cOther long-term liabilities\u201d on our condensed consolidated balance sheets.\nThe Company did not have any transfers in or out of Level 1, 2 or 3 for its financial liabilities.\nThe following table presents the carrying value and estimated fair value of our Class A-2 Notes as of January 18, 2026 and September 28, 2025 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "fair_value",
+    "aligned_family": "fair_value",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "",
+     "",
+     "September 28, 2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Amount",
+     "",
+     "Fair Value",
+     "",
+     "Carrying Amount",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Series 2019 Class A-2 Notes",
+     "$",
+     "585,563",
+     "$",
+     "560,173",
+     "$",
+     "692,375",
+     "$",
+     "675,500"
+    ],
+    [
+     "Series 2022 Class A-2 Notes",
+     "$",
+     "1,017,500",
+     "$",
+     "931,826",
+     "$",
+     "1,023,000",
+     "$",
+     "952,720"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 725,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "____________________________\n(1)The Company maintains an unfunded defined contribution plan for key executives and other members of management. The fair value of this obligation is based on the closing market prices of the participants\u2019 elected investments. The obligation is included in \u201cAccrued liabilities\u201d and \u201cOther long-term liabilities\u201d on our condensed consolidated balance sheets.\nThe Company did not have any transfers in or out of Level 1, 2 or 3 for its financial liabilities.\nThe following table presents the carrying value and estimated fair value of our Class A-2 Notes as of January 18, 2026 and September 28, 2025 (in thousands):",
+   "prose_after": "The fair value of the Class A-2 Notes was estimated using Level 2 inputs based on quoted market prices in markets that are not considered active markets.\nNon-financial assets and liabilities \u2014 The Company\u2019s non-financial instruments, which primarily consist of property and equipment, operating lease right-of-use assets, goodwill and intangible assets, are reported at carrying value and are not required to be measured at fair value on a recurring basis. However, on an annual basis, or whenever events or changes in circumstances indicate that their carrying value may not be recoverable, non-financial instruments are assessed for impairment. If applicable, the carrying values are written down to fair value.\nJACK IN THE BOX INC. AND SUBSIDIARIES\n7.INDEBTEDNESS\nLong-term debt obligations consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "September 28, 2025",
+     ""
+    ],
+    [
+     "Series 2019-1 Class A-2-II Notes",
+     "$",
+     "156,938",
+     "$",
+     "262,625"
+    ],
+    [
+     "Series 2019-1 Class A-2-III Notes",
+     "428,625",
+     "",
+     "429,750",
+     ""
+    ],
+    [
+     "Series 2022-1 Class A-2-I Notes",
+     "508,750",
+     "",
+     "511,500",
+     ""
+    ],
+    [
+     "Series 2022-1 Class A-2-II Notes",
+     "508,750",
+     "",
+     "511,500",
+     ""
+    ],
+    [
+     "Finance lease obligations and other debt",
+     "122",
+     "",
+     "208",
+     ""
+    ],
+    [
+     "Total debt",
+     "1,603,185",
+     "",
+     "1,715,583",
+     ""
+    ],
+    [
+     "Less current maturities of long-term debt",
+     "(28,270)",
+     "",
+     "(29,458)",
+     ""
+    ],
+    [
+     "Less unamortized debt issuance costs",
+     "(10,662)",
+     "",
+     "(11,890)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "1,564,253",
+     "$",
+     "1,674,235"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The fair value of the Class A-2 Notes was estimated using Level 2 inputs based on quoted market prices in markets that are not considered active markets.\nNon-financial assets and liabilities \u2014 The Company\u2019s non-financial instruments, which primarily consist of property and equipment, operating lease right-of-use assets, goodwill and intangible assets, are reported at carrying value and are not required to be measured at fair value on a recurring basis. However, on an annual basis, or whenever events or changes in circumstances indicate that their carrying value may not be recoverable, non-financial instruments are assessed for impairment. If applicable, the carrying values are written down to fair value.\nJACK IN THE BOX INC. AND SUBSIDIARIES\n7.INDEBTEDNESS\nLong-term debt obligations consist of the following (in thousands):",
+   "prose_after": "The Anticipated Repayment Dates of the 2019-1 Class A-2-II Notes and the Class A-2-III Notes are August 2026 and August 2029, respectively, and the 2022-1 Class A-2-I Notes and the 2022-1 Class A-2-II Notes are February 2027 and February 2032, respectively.\nThe legal final maturity date of the 2019 Notes and 2022 Notes is August 2049 and February 2052, respectively, but it is anticipated that, unless earlier prepaid to the extent permitted under the Indenture, the Notes will be repaid by the Anticipated Repayment Dates. If the Master Issuer has not repaid or refinanced the Notes prior to the respective Anticipated Repayment Dates, additional interest will accrue pursuant to the Indenture.\nOn January 9, 2026, the Company prepaid $105.0 million of its existing Series 2019-1 Class A-2-II Notes. The repayment was made using proceeds from the Del Taco Sale and is in connection with the Company\u2019s ongoing prioritization of debt reduction as part of its \u201cJACK on Track\u201d plan.\nThe Company also has a revolving financing facility of Series 2022-1 Variable Funding Senior Secured Notes (the \u201cVariable Funding Notes\u201d), which permits borrowings up to a maximum of $150.0 million, subject to certain borrowing conditions, a portion of which may be used to issue letters of credit. As of January 18, 2026, the Company had no outstanding borrowings and available borrowing capacity of $95.3 million under our Variable Funding Notes, net of letters of credits issued of $54.7 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Remainder of 2026",
+     "$",
+     "176,935"
+    ],
+    [
+     "2027",
+     "516,000",
+     ""
+    ],
+    [
+     "2028",
+     "15,500",
+     ""
+    ],
+    [
+     "2029",
+     "427,250",
+     ""
+    ],
+    [
+     "2030",
+     "11,000",
+     ""
+    ],
+    [
+     "Thereafter",
+     "456,500",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,603,185"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 778,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The Company also has a revolving financing facility of Series 2022-1 Variable Funding Senior Secured Notes (the \u201cVariable Funding Notes\u201d), which permits borrowings up to a maximum of $150.0 million, subject to certain borrowing conditions, a portion of which may be used to issue letters of credit. As of January 18, 2026, the Company had no outstanding borrowings and available borrowing capacity of $95.3 million under our Variable Funding Notes, net of letters of credits issued of $54.7 million.\nThe quarterly principal payment on the Class A-2 Notes may be suspended when the specified leverage ratio, which is a measure of outstanding debt to earnings before interest, taxes, depreciation, and amortization, adjusted for certain items (as defined in the Indenture), is less than or equal to 5.0x. Exceeding the leverage ratio of 5.0x does not violate any covenant related to the Class A-2 Notes. The Company has a leverage ratio of greater than 5.0x and, accordingly, is making the scheduled amortization payments on its 2019 Notes and 2022 Notes.\nMaturities of long-term debt \u2014 Assuming repayment by the Anticipated Repayment Dates and based on the leverage ratio as of January 18, 2026, principal payments on our long-term debt outstanding at January 18, 2026 for each of the next five fiscal years and thereafter are as follows (in thousands):",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\n8.OTHER OPERATING EXPENSES, NET\nOther operating expenses, net in the accompanying condensed consolidated statements of earnings (loss) is comprised of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Restructuring, integration and other (1)",
+     "$",
+     "11,246",
+     "$",
+     "1,332"
+    ],
+    [
+     "Costs of closed restaurants (2)",
+     "2,633",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "Impairment charges (3)",
+     "353",
+     "",
+     "622",
+     ""
+    ],
+    [
+     "Accelerated depreciation",
+     "89",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Gains) losses on disposition of property and equipment, net (4)",
+     "(6,271)",
+     "",
+     "417",
+     ""
+    ],
+    [
+     "Other operating expenses, net",
+     "$",
+     "8,050",
+     "$",
+     "2,547"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 813
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\n8.OTHER OPERATING EXPENSES, NET\nOther operating expenses, net in the accompanying condensed consolidated statements of earnings (loss) is comprised of the following (in thousands):",
+   "prose_after": "____________________________\n(1)Restructuring, integration and other includes proxy contest fees, restructuring that is not deemed discontinued operations, professional fees for a tax refund settlement, and other consulting fees for discrete project-based strategic initiatives.\n(2)Costs of closed restaurants includes ongoing costs associated with closed restaurants and cancelled project costs.\n(3)Impairment charges are related to underperforming restaurants.\n(4)In 2026, the amount is primarily related to the sale of real estate.\n9.SEGMENT REPORTING\nThe Company\u2019s principal business consists of developing, operating and franchising our Jack in the Box restaurant brands. Our chief operating decision maker (\u201cCODM\u201d) is our Chief Executive Officer, Lance Tucker. Following the sale of Del Taco in December 2025, the Company is considered to have only one reportable operating segment. The segment reporting structure reflects the Company\u2019s current management structure, internal reporting method and financial information used in deciding how to allocate Company resources.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 793,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 830,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Segment revenues",
+     "$",
+     "349,517",
+     "$",
+     "371,064"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Food and packaging",
+     "$",
+     "39,232",
+     "$",
+     "34,690"
+    ],
+    [
+     "Payroll and employee benefits",
+     "46,577",
+     "",
+     "44,528",
+     ""
+    ],
+    [
+     "Occupancy and other",
+     "24,801",
+     "",
+     "23,540",
+     ""
+    ],
+    [
+     "Other segment expenses (1)",
+     "12,202",
+     "",
+     "16,137",
+     ""
+    ],
+    [
+     "Franchise expenses",
+     "133,533",
+     "",
+     "140,209",
+     ""
+    ],
+    [
+     "Segment profit:",
+     "$",
+     "93,172",
+     "$",
+     "111,960"
+    ],
+    [
+     "General, administrative, and other unallocated",
+     "27,291",
+     "",
+     "25,085",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "13,609",
+     "",
+     "12,457",
+     ""
+    ],
+    [
+     "(Gains) losses on COLI",
+     "(2,416)",
+     "",
+     "1,391",
+     ""
+    ],
+    [
+     "Other operating expense, net",
+     "8,050",
+     "",
+     "2,547",
+     ""
+    ],
+    [
+     "Other pension and post-retirement expenses, net",
+     "1,684",
+     "",
+     "1,789",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "23,682",
+     "",
+     "24,380",
+     ""
+    ],
+    [
+     "Earnings before income taxes",
+     "$",
+     "21,272",
+     "$",
+     "44,311"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The Company\u2019s principal business consists of developing, operating and franchising our Jack in the Box restaurant brands. Our chief operating decision maker (\u201cCODM\u201d) is our Chief Executive Officer, Lance Tucker. Following the sale of Del Taco in December 2025, the Company is considered to have only one reportable operating segment. The segment reporting structure reflects the Company\u2019s current management structure, internal reporting method and financial information used in deciding how to allocate Company resources.\nThe Company measures and evaluates its segment based on segment revenues and segment profit. The reportable segment excludes certain general and administrative functions such as accounting/finance, human resources, legal, and certain unallocated costs such as share-based compensation. The Company\u2019s measure of segment profit also excludes the following items: depreciation and amortization, net gains (losses) on company-owned life insurance (\u201cCOLI\u201d), net other operating expenses, net other pension and post-retirement expenses and net interest expense.\nJACK IN THE BOX INC. AND SUBSIDIARIES\nThe following table provides information related to our operating segments in each period (in thousands):",
+   "prose_after": "____________________________\n(1)Other segment expense represents selling, general, and administrative costs, pre-opening costs, and certain amortization expenses attributable to the identified operating segments.\nThe Company does not evaluate, manage or measure performance of segments using assets, pension or post-retirement expense, interest income and expense, or income tax information; accordingly, this information by segment is not prepared or disclosed.\n10.INCOME TAXES\nFor the first quarter of fiscal year 2026, the Company recorded an income tax expense of $6.9 million resulting in an effective tax rate of 32.4%. The effective tax rate for such period differed from the U.S. statutory tax rate primarily due to the establishment of a valuation allowance on cumulative interest deduction limitations from current and prior fiscal years and the nondeductible component of share-based compensation largely offset by a favorable state refund claim settlement.\nFor the first quarter of fiscal year 2025, the Company recorded an income tax expense of $13.3 million, resulting in an effective tax rate of 30.0%. The effective tax rate for such period differed from the U.S. statutory tax rate primarily due to the nondeductible component of share-based compensation.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 833,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 881,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "January 19, 2025"
+    ],
+    [
+     "Weighted-average shares outstanding \u2013 basic",
+     "19,136",
+     "19,050"
+    ],
+    [
+     "Effect of potentially dilutive securities:",
+     "",
+     ""
+    ],
+    [
+     "Nonvested stock awards and units",
+     "79",
+     "97"
+    ],
+    [
+     "Performance share awards",
+     "19",
+     "68"
+    ],
+    [
+     "Weighted-average shares outstanding \u2013 diluted",
+     "19,234",
+     "19,215"
+    ],
+    [
+     "Excluded from diluted weighted-average shares outstanding:",
+     "",
+     ""
+    ],
+    [
+     "Antidilutive",
+     "647",
+     "324"
+    ],
+    [
+     "Performance conditions not satisfied at the end of the period",
+     "425",
+     "150"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 892,
+    "end_line": 908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Stockholder Rights Plan \u2014 On July 1, 2025, the Board of Directors adopted a limited-duration stockholder rights plan and declared a dividend of one right (a \u201cRight\u201d) for each outstanding share of the Company\u2019s common stock held of record at the close of business on July 14, 2025. The Rights will generally become exercisable if a person or group acquires beneficial ownership of 12.5% or more of the outstanding shares of the Company\u2019s common stock, subject to certain exceptions (including an exception for existing persons who own in excess of such triggering percentage and do not acquire additional shares of the Company\u2019s common stock). If the Rights become exercisable, all holders of Rights (other than the triggering person or group) will be entitled to purchase shares of the Company\u2019s common stock at a 50% discount to the then-current market price or the Company may exchange each Right held by such holders for one share of the Company\u2019s common stock. The terms of the Rights are set forth in the Stockholder Protection Rights Agreement, dated as of July 1, 2025, by and between the Company and Computershare Trust Company, N.A., as rights agent (the \u201cRights Agreement\u201d). The Rights will expire on July 1, 2026, unless the Rights are earlier redeemed, or the Rights Agreement is terminated, by the Board of Directors.\n12.WEIGHTED AVERAGE SHARES OUTSTANDING\nThe following table reconciles basic weighted-average shares outstanding to diluted weighted-average shares outstanding (in thousands):",
+   "prose_after": "13.COMMITMENTS AND CONTINGENCIES\nLegal matters \u2014 The Company assesses contingencies, including litigation contingencies, to determine the degree of probability and range of possible loss for potential accrual in our financial statements. An estimated loss contingency is accrued in the financial statements if it is probable that a liability has been incurred and the amount of the loss can be reasonably estimated. As of January 18, 2026, the Company had accruals of $17.9 million for all of its legal matters in aggregate, presented within \u201cAccrued liabilities\u201d on our condensed consolidated balance sheet. Because litigation is inherently unpredictable, assessing contingencies is highly subjective and requires judgments about future events. When evaluating litigation contingencies, we may be unable to provide a meaningful estimate due to a number of factors, including the procedural status of the matter in question, the availability of appellate remedies, insurance coverage related to the claim or claims in question, the presence of complex or novel legal theories, and the ongoing discovery and development of information important to the matter. In addition, damage amounts claimed in litigation against us may be unsupported, exaggerated, or unrelated to possible outcomes, and as such are not meaningful indicators of our potential liability or financial exposure. The Company regularly reviews contingencies to determine the adequacy of the accruals and related disclosures. The ultimate amount of loss may differ from these estimates. Any estimate is not an indication of expected loss, if any, or of the Company\u2019s maximum possible loss exposure and the ultimate amount of loss may differ materially from these estimates in the near term.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Non-cash investing and financing transactions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in obligations for purchases of property and equipment",
+     "$",
+     "8,829",
+     "$",
+     "5,269"
+    ],
+    [
+     "Increase in dividends accrued or converted to common stock equivalents",
+     "$",
+     "\u2014",
+     "$",
+     "61"
+    ],
+    [
+     "Right-of use assets obtained in exchange for operating lease obligations",
+     "$",
+     "38,933",
+     "$",
+     "42,825"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Lease guarantees \u2014 We remain contingently liable for certain leases relating to our former Qdoba business which we sold in fiscal 2018. Under the Qdoba Purchase Agreement, the buyer has indemnified the Company of all claims related to these guarantees. As of January 18, 2026, the maximum potential liability of future undiscounted payments under these leases is approximately $22.5 million. The lease terms extend for a maximum of approximately 12 more years and we would remain a guarantor of the leases in the event the leases are extended for any established renewal periods. In the event of default, we believe the exposure is limited due to contractual protections and recourse available in the lease agreements, as well as the Qdoba Purchase Agreement, including a requirement of the landlord to mitigate damages by re-letting the properties in default, and indemnity from the Buyer. The Company has not recorded a liability for these guarantees as we believe the likelihood of making any future payments is remote.\nFranchisee Guarantees \u2014 The Company has an agreement for a financing structure with a lender to allow them to limit their exposure to risk, while they service franchise-owned locations. The agreement with the Company is to remain in effect until all franchisee obligations are paid in full. As of January 18, 2026, and in accordance with that arrangement, $2.0 million was held within \u201cRestricted cash\u201d on our condensed consolidated balance sheet, and the Company has an additional unfunded obligation of approximately $1.8 million. The Company has not recorded a liability for these unfunded obligation as we believe the likelihood of making any future payments is remote.\n14.SUPPLEMENTAL CONSOLIDATED CASH FLOW INFORMATION (in thousands)",
+   "prose_after": "JACK IN THE BOX INC. AND SUBSIDIARIES\n15.SUPPLEMENTAL CONSOLIDATED BALANCE SHEET INFORMATION (in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "September 28, 2025",
+     ""
+    ],
+    [
+     "Accounts and other receivables, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade",
+     "$",
+     "58,356",
+     "$",
+     "70,225"
+    ],
+    [
+     "Notes receivable, current portion",
+     "3,481",
+     "",
+     "3,786",
+     ""
+    ],
+    [
+     "Income tax receivable (1)",
+     "30,000",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "Other",
+     "5,475",
+     "",
+     "3,999",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "(4,875)",
+     "",
+     "(4,466)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "92,437",
+     "$",
+     "73,744"
+    ],
+    [
+     "Property and equipment, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "71,366",
+     "$",
+     "78,774"
+    ],
+    [
+     "Buildings",
+     "843,201",
+     "",
+     "850,213",
+     ""
+    ],
+    [
+     "Restaurant and other equipment",
+     "200,389",
+     "",
+     "184,746",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "30,052",
+     "",
+     "36,757",
+     ""
+    ],
+    [
+     "",
+     "1,145,008",
+     "",
+     "1,150,490",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "(808,559)",
+     "",
+     "(806,873)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "336,449",
+     "$",
+     "343,617"
+    ],
+    [
+     "Other assets, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Company-owned life insurance policies",
+     "$",
+     "136,747",
+     "$",
+     "135,504"
+    ],
+    [
+     "Franchise tenant improvement allowances",
+     "40,266",
+     "",
+     "40,454",
+     ""
+    ],
+    [
+     "Deferred rent receivable",
+     "32,044",
+     "",
+     "33,194",
+     ""
+    ],
+    [
+     "Notes receivable, less current portion",
+     "7,437",
+     "",
+     "7,820",
+     ""
+    ],
+    [
+     "Other",
+     "37,740",
+     "",
+     "34,942",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "254,234",
+     "$",
+     "251,914"
+    ],
+    [
+     "Accrued liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payroll and related taxes",
+     "$",
+     "26,991",
+     "$",
+     "28,418"
+    ],
+    [
+     "Legal accruals",
+     "17,898",
+     "",
+     "17,640",
+     ""
+    ],
+    [
+     "Insurance",
+     "21,466",
+     "",
+     "20,731",
+     ""
+    ],
+    [
+     "Sales and property taxes",
+     "20,683",
+     "",
+     "23,001",
+     ""
+    ],
+    [
+     "Deferred rent income",
+     "6,883",
+     "",
+     "351",
+     ""
+    ],
+    [
+     "Deferred franchise and development fees",
+     "5,047",
+     "",
+     "5,126",
+     ""
+    ],
+    [
+     "Other",
+     "42,842",
+     "",
+     "47,211",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "141,810",
+     "$",
+     "142,478"
+    ],
+    [
+     "Other long-term liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Defined benefit pension plans",
+     "$",
+     "45,521",
+     "$",
+     "46,320"
+    ],
+    [
+     "Deferred franchise and development fees",
+     "30,322",
+     "",
+     "30,680",
+     ""
+    ],
+    [
+     "Other",
+     "64,764",
+     "",
+     "64,479",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "140,607",
+     "$",
+     "141,479"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 950,
+    "end_line": 1002
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "JACK IN THE BOX INC. AND SUBSIDIARIES\n15.SUPPLEMENTAL CONSOLIDATED BALANCE SHEET INFORMATION (in thousands)",
+   "prose_after": "____________________________\n(1)The income tax receivable increased due to the accrual of refunds from capital loss carryback on the Del Taco divestment, as well as a tax refund receivable on a state refund claim settled in the current year.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nGENERAL\nThe Company\u2019s fiscal year is 52 or 53 weeks ending the Sunday closest to September 30. Fiscal years 2026 and 2025 each include 52 weeks. Our first quarter includes 16 weeks and all other quarters include 12 weeks. All comparisons between 2026 and 2025 refer to the 16 weeks (\u201cquarter\u201d) ended January 18, 2026 and January 19, 2025, respectively, unless otherwise indicated.\nFor an understanding of the significant factors that influenced our performance during 2026 and 2025, our Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d) should be read in conjunction with the condensed consolidated financial statements and related notes included in this Quarterly Report and our Annual Report on Form 10-K for the fiscal year ended September 28, 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 946,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Company",
+     "(4.7",
+     "%)",
+     "(0.4",
+     "%)"
+    ],
+    [
+     "Franchise",
+     "(7.0",
+     "%)",
+     "0.5",
+     "%"
+    ],
+    [
+     "System",
+     "(6.7",
+     "%)",
+     "0.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1060
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Founded in 1951, Jack in the Box Inc. (the \u201cCompany\u201d) operates and franchises Jack in the Box\u00ae quick-service restaurants. As of January 18, 2026, we operated and franchised 2,128 restaurants, primarily in the western and southern United States, including two in Guam and three in Mexico.\nWe derive revenue from retail sales at company-operated restaurants and rental revenue, royalties (based upon a percent of sales), franchise fees and contributions for advertising and other services from franchisees.\nOn October 15, 2025, the Company entered into a Stock Purchase Agreement (the \u201cPurchase Agreement\u201d) with Yadav Enterprises, Inc., a California corporation (\u201cBuyer\u201d) and Anil Yadav (\u201cBuyer Guarantor\u201d) to sell to Buyer all of the issued and outstanding equity interests of Del Taco Holdings Inc., a Delaware corporation (\u201cDel Taco\u201d), which owns and operates the Company\u2019s Del Taco restaurant operations, for an aggregate purchase price of $115.0 million in cash, subject to certain closing cash, working capital, debt and transaction expense adjustments. The Del Taco sale closed on December 22, 2025.\nRESULTS OF OPERATIONS\nThe following tables summarize changes in same-store sales for Jack in the Box company-operated, franchised, and system restaurants:",
+   "prose_after": "The following tables summarize year-to-date changes in the number and mix of Jack in the Box company and franchise restaurants:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Company",
+     "",
+     "Franchise",
+     "",
+     "Total",
+     "",
+     "Company",
+     "",
+     "Franchise",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "150",
+     "",
+     "1,986",
+     "",
+     "2,136",
+     "",
+     "150",
+     "",
+     "2,041",
+     "",
+     "2,191",
+     ""
+    ],
+    [
+     "New",
+     "1",
+     "",
+     "5",
+     "",
+     "6",
+     "",
+     "2",
+     "",
+     "3",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Closed",
+     "(2)",
+     "",
+     "(12)",
+     "",
+     "(14)",
+     "",
+     "\u2014",
+     "",
+     "(6)",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "End of period",
+     "149",
+     "",
+     "1,979",
+     "",
+     "2,128",
+     "",
+     "152",
+     "",
+     "2,038",
+     "",
+     "2,190",
+     ""
+    ],
+    [
+     "% of system",
+     "7",
+     "%",
+     "93",
+     "%",
+     "100",
+     "%",
+     "7",
+     "%",
+     "93",
+     "%",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1076
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The following tables summarize year-to-date changes in the number and mix of Jack in the Box company and franchise restaurants:",
+   "prose_after": "The following tables summarize restaurant sales for Jack in the Box company-operated, franchised, and systemwide sales (in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Company-operated restaurant sales",
+     "$",
+     "131,907",
+     "$",
+     "133,755"
+    ],
+    [
+     "Franchised restaurant sales (1)",
+     "1,136,642",
+     "",
+     "1,232,347",
+     ""
+    ],
+    [
+     "Systemwide sales (1)",
+     "$",
+     "1,268,549",
+     "$",
+     "1,366,102"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1079,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The following tables summarize restaurant sales for Jack in the Box company-operated, franchised, and systemwide sales (in thousands):",
+   "prose_after": "____________________________\n(1)Franchised restaurant sales represent sales at franchised restaurants and are revenues of our franchisees. System sales include company and franchised restaurant sales. We do not record franchised sales as revenues; however, our royalty revenues, marketing fees and percentage rent revenues are calculated based on a percentage of franchised sales. We believe franchised and system restaurant sales information is useful to investors as they have a direct effect on the Company's profitability.\nCompany Restaurant Operations\nThe following table presents company restaurant sales and costs as a percentage of the related sales (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "",
+     "",
+     "January 19, 2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Company restaurant sales",
+     "$",
+     "131,907",
+     "",
+     "",
+     "$",
+     "133,755",
+     "",
+     ""
+    ],
+    [
+     "Company restaurant costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Food and packaging",
+     "$",
+     "39,232",
+     "29.7",
+     "%",
+     "$",
+     "34,690",
+     "25.9",
+     "%"
+    ],
+    [
+     "Payroll and employee benefits",
+     "$",
+     "46,577",
+     "35.3",
+     "%",
+     "$",
+     "44,528",
+     "33.3",
+     "%"
+    ],
+    [
+     "Occupancy and other",
+     "$",
+     "24,801",
+     "18.8",
+     "%",
+     "$",
+     "23,540",
+     "17.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1099,
+    "end_line": 1110
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "____________________________\n(1)Franchised restaurant sales represent sales at franchised restaurants and are revenues of our franchisees. System sales include company and franchised restaurant sales. We do not record franchised sales as revenues; however, our royalty revenues, marketing fees and percentage rent revenues are calculated based on a percentage of franchised sales. We believe franchised and system restaurant sales information is useful to investors as they have a direct effect on the Company's profitability.\nCompany Restaurant Operations\nThe following table presents company restaurant sales and costs as a percentage of the related sales (dollars in thousands):",
+   "prose_after": "Company restaurant sales decreased $1.8 million, or 1.4% compared to the prior year. The following table presents the approximate impact of changes in AUVs and the number of restaurants on company restaurant sales (in millions):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "AUV decrease",
+     "$",
+     "(5.5)"
+    ],
+    [
+     "Change in the average number of restaurants",
+     "2.8",
+     ""
+    ],
+    [
+     "Other",
+     "0.9",
+     ""
+    ],
+    [
+     "Total change in company restaurant sales",
+     "$",
+     "(1.8)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Company restaurant sales decreased $1.8 million, or 1.4% compared to the prior year. The following table presents the approximate impact of changes in AUVs and the number of restaurants on company restaurant sales (in millions):",
+   "prose_after": "Same-store sales at company-operated restaurants decreased 4.7% compared to a year ago. The following table summarizes the change versus a year ago:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Average check (1)",
+     "0.4",
+     "%"
+    ],
+    [
+     "Transactions",
+     "(5.1",
+     "%)"
+    ],
+    [
+     "Change in same-store sales",
+     "(4.7",
+     "%)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1125,
+    "end_line": 1132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Same-store sales at company-operated restaurants decreased 4.7% compared to a year ago. The following table summarizes the change versus a year ago:",
+   "prose_after": "____________________________\n(1)Includes price increases of approximately 3.0% in the quarter.\nFood and packaging costs, as a percentage of company restaurant sales, increased 3.8% compared to the prior year, due mainly to commodity inflation, a non-recurring benefit from a new supply chain contract in the prior year, and unfavorable menu item mix, offset by menu price increases. Commodity inflation was 7.1% in the quarter, with the greatest impacts in beef, tacos, beverages, and poultry.\nPayroll and employee benefit costs, as a percentage of company restaurant sales, increased 2.0% compared to the prior year primarily due to a change in the mix of restaurants. Labor inflation was approximately 0.2% in the quarter.\nOccupancy and other costs, as a percentage of company restaurant sales, increased 1.2% compared to the prior year. The increase was primarily due to higher rent, utilities, and other operating costs.\nFranchise Operations\nThe following table presents franchise revenues and costs in each period and other information we believe is useful in analyzing the change in franchise operating results (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Franchise rental revenues",
+     "$",
+     "97,387",
+     "$",
+     "105,781"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalties",
+     "57,153",
+     "",
+     "61,825",
+     ""
+    ],
+    [
+     "Franchise fees and other",
+     "1,723",
+     "",
+     "1,790",
+     ""
+    ],
+    [
+     "Franchise royalties and other",
+     "58,876",
+     "",
+     "63,615",
+     ""
+    ],
+    [
+     "Franchise contributions for advertising and other services",
+     "61,347",
+     "",
+     "67,913",
+     ""
+    ],
+    [
+     "Total franchise revenues",
+     "$",
+     "217,610",
+     "$",
+     "237,309"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Franchise occupancy expenses",
+     "$",
+     "66,301",
+     "$",
+     "67,916"
+    ],
+    [
+     "Franchise support and other costs",
+     "3,760",
+     "",
+     "3,301",
+     ""
+    ],
+    [
+     "Franchise advertising and other services expenses",
+     "63,472",
+     "",
+     "68,992",
+     ""
+    ],
+    [
+     "Total franchise costs",
+     "$",
+     "133,533",
+     "$",
+     "140,209"
+    ],
+    [
+     "Franchise costs as a percentage of total franchise revenues",
+     "61.4%",
+     "",
+     "59.1%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average number of franchise restaurants",
+     "1,974",
+     "",
+     "2,032",
+     ""
+    ],
+    [
+     "% decrease",
+     "(2.9)%",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Franchised restaurant sales",
+     "$",
+     "1,136,642",
+     "$",
+     "1,232,347"
+    ],
+    [
+     "Franchised restaurant AUVs",
+     "$",
+     "576",
+     "$",
+     "606"
+    ],
+    [
+     "Royalties as a percentage of total franchised restaurant sales",
+     "5.0%",
+     "",
+     "5.0%",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1147,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Food and packaging costs, as a percentage of company restaurant sales, increased 3.8% compared to the prior year, due mainly to commodity inflation, a non-recurring benefit from a new supply chain contract in the prior year, and unfavorable menu item mix, offset by menu price increases. Commodity inflation was 7.1% in the quarter, with the greatest impacts in beef, tacos, beverages, and poultry.\nPayroll and employee benefit costs, as a percentage of company restaurant sales, increased 2.0% compared to the prior year primarily due to a change in the mix of restaurants. Labor inflation was approximately 0.2% in the quarter.\nOccupancy and other costs, as a percentage of company restaurant sales, increased 1.2% compared to the prior year. The increase was primarily due to higher rent, utilities, and other operating costs.\nFranchise Operations\nThe following table presents franchise revenues and costs in each period and other information we believe is useful in analyzing the change in franchise operating results (dollars in thousands):",
+   "prose_after": "Franchise rental revenues decreased $8.4 million, or 7.9% compared to the prior year primarily due to lower percent rent of $6.0 million due to lower sales and a $2.3 million decrease in revenue due to fewer franchise restaurants.\nFranchise royalties and other decreased $4.7 million, or 7.4% compared to the prior year primarily due to lower royalty income of $3.7 million driven by lower sales and a decrease in royalties of $1.0 million due to a decrease in the number of franchise restaurants.\nFranchise contributions for advertising and other services revenues decreased $6.6 million, or 9.7% compared to the prior year due mainly to lower sales and a decrease in the number of restaurants driving marketing contributions lower by $3.8 million and $1.1 million, respectively.\nFranchise occupancy expenses, primarily rent, decreased $1.6 million, or 2.4% compared to the prior year. The decrease was primarily driven by lower operating lease costs of $1.7 million due to the decrease in the number of franchise restaurants.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Advertising",
+     "$",
+     "7,627",
+     "$",
+     "6,921"
+    ],
+    [
+     "COLI (gains) losses, net",
+     "(2,416)",
+     "",
+     "1,391",
+     ""
+    ],
+    [
+     "Information technology (including $0.6 million of TSA income)",
+     "7,531",
+     "",
+     "6,538",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "4,159",
+     "",
+     "3,690",
+     ""
+    ],
+    [
+     "Insurance",
+     "1,480",
+     "",
+     "2,151",
+     ""
+    ],
+    [
+     "Other (including $0.3 million of TSA income)",
+     "18,637",
+     "",
+     "20,465",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "37,018",
+     "$",
+     "41,156"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Franchise contributions for advertising and other services revenues decreased $6.6 million, or 9.7% compared to the prior year due mainly to lower sales and a decrease in the number of restaurants driving marketing contributions lower by $3.8 million and $1.1 million, respectively.\nFranchise occupancy expenses, primarily rent, decreased $1.6 million, or 2.4% compared to the prior year. The decrease was primarily driven by lower operating lease costs of $1.7 million due to the decrease in the number of franchise restaurants.\nFranchise support and other costs increased $0.5 million, or 13.9% compared to the prior year.\nFranchise advertising and other service expenses decreased $5.5 million, or 8.0% compared to the prior year. The decrease is primarily due to lower sales and fewer restaurants driving lower marketing expenses.\nDepreciation and Amortization\nDepreciation and amortization for the quarter ended January 18, 2026 increased $1.2 million compared to the prior year period primarily due to increases for new technology assets placed in service and new company-operated restaurants.\nSelling, General and Administrative (\u201cSG&A\u201d) Expenses\nThe following table presents the amounts for SG&A expenses in each period (in thousands):",
+   "prose_after": "Advertising costs mainly represent company contributions to our marketing funds and are generally determined as a percentage of company-operated restaurant sales. Advertising costs increased $0.7 million compared to the prior year, primarily due to an increase in expenses related to opting into third party digital sponsorships, partially offset by a decrease in company-operated restaurant sales in the current year.\nThe cash surrender value of our company-owned life insurance (\u201cCOLI\u201d) policies, net of changes in our non-qualified deferred compensation obligation supported by these policies, are subject to market fluctuations. The changes in market values had a favorable impact of $3.8 million compared to the prior year.\nInformation technology costs increased $1.0 million compared to the prior year, primarily due to increased spend relating to our digital platform.\nShare-based compensation increased by $0.5 million compared to the prior year, primarily due to prior year forfeitures.\nInsurance decreased $0.7 million compared to the prior year primarily due to group insurance reimbursements received in the current quarter.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Restructuring, integration and other",
+     "$",
+     "11,246",
+     "$",
+     "1,332"
+    ],
+    [
+     "Costs of closed restaurants",
+     "2,633",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "Impairment charges",
+     "353",
+     "",
+     "622",
+     ""
+    ],
+    [
+     "Accelerated depreciation",
+     "89",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Gains) losses on disposition of property and equipment, net",
+     "(6,271)",
+     "",
+     "417",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "8,050",
+     "$",
+     "2,547"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1232,
+    "end_line": 1246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Advertising costs mainly represent company contributions to our marketing funds and are generally determined as a percentage of company-operated restaurant sales. Advertising costs increased $0.7 million compared to the prior year, primarily due to an increase in expenses related to opting into third party digital sponsorships, partially offset by a decrease in company-operated restaurant sales in the current year.\nThe cash surrender value of our company-owned life insurance (\u201cCOLI\u201d) policies, net of changes in our non-qualified deferred compensation obligation supported by these policies, are subject to market fluctuations. The changes in market values had a favorable impact of $3.8 million compared to the prior year.\nInformation technology costs increased $1.0 million compared to the prior year, primarily due to increased spend relating to our digital platform.\nShare-based compensation increased by $0.5 million compared to the prior year, primarily due to prior year forfeitures.\nInsurance decreased $0.7 million compared to the prior year primarily due to group insurance reimbursements received in the current quarter.\nWe had income from the transition services agreement (\u201cTSA\u201d) following the Del Taco sale of $0.9 million in the current quarter.\nOther Operating Expenses, Net\nOther operating expenses, net is comprised of the following (in thousands):",
+   "prose_after": "The increase of $5.5 million in the other operating expenses, net, was primarily due to the increase of restructuring, integration and other of $9.9 million, partially offset by higher gains in the current year related to the sale of real estate. Current year costs include proxy contest fees, professional fees for tax refund settlement, restructuring costs not deemed to be discontinued operations, and other consulting fees for discrete project-based strategic initiatives. Prior year costs were primarily comprised of severance related to restructuring as well as consulting fees for strategic initiatives.\nInterest Expense, Net\nInterest expense, net is comprised of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "24,303",
+     "$",
+     "24,941"
+    ],
+    [
+     "Interest income",
+     "(621)",
+     "",
+     "(561)",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "$",
+     "23,682",
+     "$",
+     "24,380"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1253,
+    "end_line": 1264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The increase of $5.5 million in the other operating expenses, net, was primarily due to the increase of restructuring, integration and other of $9.9 million, partially offset by higher gains in the current year related to the sale of real estate. Current year costs include proxy contest fees, professional fees for tax refund settlement, restructuring costs not deemed to be discontinued operations, and other consulting fees for discrete project-based strategic initiatives. Prior year costs were primarily comprised of severance related to restructuring as well as consulting fees for strategic initiatives.\nInterest Expense, Net\nInterest expense, net is comprised of the following (in thousands):",
+   "prose_after": "Interest expense, net, decreased $0.7 million compared to the prior year primarily due to lower average borrowings.\nIncome Taxes\nFor the first quarter of fiscal year 2026, the Company recorded income tax expense of $6.9 million resulting in an effective tax rate of 32.4%. The effective tax rate for such period differed from the U.S. statutory tax rate primarily due to the establishment of valuation allowance on cumulative interest deduction limitations from current and prior fiscal years and the nondeductible component of share-based compensation largely offset by a favorable state refund claim settlement.\nFor the first quarter of fiscal year 2025, the Company recorded an income tax expense of $13.3 million, resulting in an effective tax rate of 30.0%. The effective tax rate for such period differed from the U.S. statutory tax rate primarily due to the nondeductible component of share-based compensation.\nLoss from Discontinued Operations\nThe results of operations from the sale of our Del Taco business has been reported as discontinued operations for all periods presented. There were losses from discontinued operations, net of taxes of $16.8 million for the first quarter of 2026, compared with earnings from discontinued operations, net of taxes of $2.7 million in the prior year quarter. Refer to Note 4, Discontinued Operations, in the notes to condensed consolidated financial statements, for additional information regarding discontinued operations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Total cash provided by (used in) continuing operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "30,546",
+     "$",
+     "101,583"
+    ],
+    [
+     "Investing activities",
+     "(5,877)",
+     "",
+     "(23,721)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "(113,185)",
+     "",
+     "(29,098)",
+     ""
+    ],
+    [
+     "Net cash flows",
+     "$",
+     "(88,516)",
+     "$",
+     "48,764"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1292,
+    "end_line": 1305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Our primary sources of short-term and long-term liquidity and capital resources are cash flows from operations and borrowings available under our credit facility. Our cash requirements consist principally of working capital, general corporate needs, capital expenditures, income tax payments, debt service requirements, franchise tenant improvement allowance and incentive distributions, and obligations related to our benefit plans. We generally use available cash flows from operations to invest in our business and service our debt obligations.\nAs of January 18, 2026, the Company had $99.4 million of cash and restricted cash on its condensed consolidated balance sheet and available borrowings of $95.3 million under its $150.0 million Variable Funding Notes. The Company continually assesses the optimal sources and uses of cash for our business. We review our balance sheet for any undervalued assets and pursue opportunities for capital sources, including the sale of our owned Jack in the Box properties.\nBased upon current levels of operations and anticipated growth, we expect that cash flows from operations, combined with our securitized financing facility, will be sufficient to meet our capital expenditure, working capital and debt service requirements for at least the next twelve months and the foreseeable future.\nCash Flows\nThe table below summarizes our cash flows from continuing operations (in thousands):",
+   "prose_after": "Operating Activities. Operating cash flows decreased $71.0 million compared with a year ago primarily due to a decrease in working capital of $59.2 million, as well as lower net income, when adjusted for non-cash items, of $11.8 million. The change in working capital included the $35.0 million received in the prior year in connection with a supply chain contract, the timing for marketing and information technology payments, as well as a state refund claim settled in the current year.\nInvesting Activities. Cash flows used in investing activities decreased by $17.8 million compared with a year ago primarily due to an increase in proceeds from the sale of real estate of $10.9 million, higher purchases of property and equipment of $1.9 million, and higher proceeds received from assets held for sale and leaseback of $3.6 million, in the current year.\nCapital Expenditures \u2014 The composition of capital expenditures in each period follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Sixteen Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 18, 2026",
+     "",
+     "January 19, 2025",
+     ""
+    ],
+    [
+     "Restaurants:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remodel / refresh programs",
+     "$",
+     "136",
+     "$",
+     "1,842"
+    ],
+    [
+     "New restaurants",
+     "5,965",
+     "",
+     "4,742",
+     ""
+    ],
+    [
+     "Restaurant facility expenditures",
+     "5,304",
+     "",
+     "2,817",
+     ""
+    ],
+    [
+     "Restaurant information technology",
+     "10,141",
+     "",
+     "10,751",
+     ""
+    ],
+    [
+     "",
+     "21,546",
+     "",
+     "20,152",
+     ""
+    ],
+    [
+     "Corporate Services:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Information technology",
+     "1,648",
+     "",
+     "1,030",
+     ""
+    ],
+    [
+     "Corporate facilities",
+     "24",
+     "",
+     "118",
+     ""
+    ],
+    [
+     "",
+     "1,672",
+     "",
+     "1,148",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total capital expenditures",
+     "$",
+     "23,218",
+     "$",
+     "21,300"
+    ]
+   ],
+   "caption_stack": [
+    "Sixteen Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1312,
+    "end_line": 1334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Operating Activities. Operating cash flows decreased $71.0 million compared with a year ago primarily due to a decrease in working capital of $59.2 million, as well as lower net income, when adjusted for non-cash items, of $11.8 million. The change in working capital included the $35.0 million received in the prior year in connection with a supply chain contract, the timing for marketing and information technology payments, as well as a state refund claim settled in the current year.\nInvesting Activities. Cash flows used in investing activities decreased by $17.8 million compared with a year ago primarily due to an increase in proceeds from the sale of real estate of $10.9 million, higher purchases of property and equipment of $1.9 million, and higher proceeds received from assets held for sale and leaseback of $3.6 million, in the current year.\nCapital Expenditures \u2014 The composition of capital expenditures in each period follows (in thousands):",
+   "prose_after": "Financing Activities. Cash flows used in financing activities increased by $84.1 million compared with a year ago, primarily due to a $105.0 million debt prepayment made in the current year using proceeds from the Del Taco sale. The higher debt payments were partially offset by a $8.3 million decrease in dividends, a $6.0 million repayment in the prior year on the Variable Funding Notes, and a $5.0 million decrease in stock repurchases compared with a year ago.\nDebt Prepayment \u2014 The Anticipated Repayment Dates of the 2019-1 Class A-2-II Notes and the Class A-2-III Notes are August 2026 and August 2029, respectively, and the 2022-1 Class A-2-I Notes and the 2022-1 Class A-2-II Notes are February 2027 and February 2032, respectively.\nThe legal final maturity date of the 2019 Notes and 2022 Notes is August 2049 and February 2052, respectively, but it is anticipated that, unless earlier prepaid to the extent permitted under the Indenture, the Notes will be repaid by the Anticipated Repayment Dates. If the Master Issuer has not repaid or refinanced the Notes prior to the respective Anticipated Repayment Dates, additional interest will accrue pursuant to the Indenture.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "(a)\nTotal number of shares purchased",
+     "(b)\nAverage price paid per share",
+     "",
+     "(c)\nTotal number of shares purchased as part of publicly announced programs",
+     "(d)\nMaximum dollar value that may yet be purchased under these programs (in thousands)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "175,001"
+    ],
+    [
+     "September 29, 2025 - October 26, 2025",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "175,001"
+    ],
+    [
+     "October 27, 2025 - November 23, 2025",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "175,001"
+    ],
+    [
+     "November 24, 2025 - December 21, 2025",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "175,001"
+    ],
+    [
+     "December 22, 2025 - January 18, 2026",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "175,001"
+    ],
+    [
+     "Total",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1472,
+    "end_line": 1487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "When evaluating our business and our prospects, you should consider the risks and uncertainties described under Item 1A of Part I of our Annual Report on Form 10-K for the fiscal year ended September 28, 2025, which we filed with the SEC on November 19, 2025, as updated in this Item 1A. You should also consider the risks and uncertainties discussed under the heading \u201cCautionary Statements Regarding Forward-Looking Statements\u201d in Item 2 of this Quarterly Report on Form 10-Q. You should also refer to the other information set forth in this Quarterly Report and in our Annual Report on Form 10-K for the fiscal year ended September 28, 2025, including our financial statements and the related notes. These risks and uncertainties are not the only ones we face. Additional risks and uncertainties not presently known to us or that we currently consider immaterial may also impair our business operations. If any of the risks or uncertainties actually occur, our business and financial results could be harmed. In that case, the market price of our common stock could decline.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nStock Repurchases \u2014 In the first quarter of 2026, we did not repurchase any shares of our common stock. As of January 18, 2026, this leaves $175.0 million remaining under share repurchase programs authorized by the Board of Directors.",
+   "prose_after": "ITEM 3. DEFAULTS OF SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nDuring the quarter ended January 18, 2026, no director or officer of the Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term in defined in Item 408(a) of Regulation S-K.\nITEM 6. EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1455,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Number",
+     "Description",
+     "Form",
+     "Filed with SEC"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "\u2014",
+     "Filed herewith"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "\u2014",
+     "Filed herewith"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "\u2014",
+     "Filed herewith"
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "\u2014",
+     "Filed herewith"
+    ],
+    [
+     "101.INS",
+     "iXBRL Instance Document",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "iXBRL Taxonomy Extension Schema Document",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "iXBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "iXBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "iXBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "iXBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File formatted in iXBRL",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1502,
+    "end_line": 1518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "ITEM 3. DEFAULTS OF SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nDuring the quarter ended January 18, 2026, no director or officer of the Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term in defined in Item 408(a) of Regulation S-K.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "JACK IN THE BOX INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/S/   DAWN HOOPER"
+    ],
+    [
+     "",
+     "Dawn Hooper"
+    ],
+    [
+     "",
+     "Chief Financial Officer (principal financial officer) (Duly Authorized Signatory)"
+    ]
+   ],
+   "caption_stack": [
+    "JACK IN THE BOX INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1524,
+    "end_line": 1532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Date: February 18, 2026",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1535,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

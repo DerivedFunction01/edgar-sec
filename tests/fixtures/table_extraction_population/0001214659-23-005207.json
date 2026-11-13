@@ -1,0 +1,3466 @@
+{
+ "accession": "0001214659-23-005207",
+ "cik": "0000065759",
+ "form": "10-Q",
+ "filing_date": "2023-04-11",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "j41023010q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "75-1225149"
+    ],
+    [
+     "(State of Incorporation)",
+     "",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "905 E. Walnut, Garland, Texas",
+     "",
+     "75040"
+    ],
+    [
+     "(Address of Principal Executive Office)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended February 25, 2023\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number 0-5109\nMICROPAC INDUSTRIES, INC.",
+   "prose_after": "Registrant\u2019s Telephone Number, including Area Code: (972) 272-3571\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.10 par value per share",
+     "MPAD",
+     "NONE"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 35,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s Telephone Number, including Area Code: (972) 272-3571\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of large accelerated filer,\u201d accelerated filer,\u201d smaller reporting company,\u201d and emerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 1 - FINANCIAL STATEMENTS",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Balance Sheets as of February 25, 2023 (unaudited) and November 30, 2022",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "Condensed Statements of Operations for the three months ended February 25, 2023 and February 26, 2022 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "Condensed Statements of Cash Flows for the three months ended February 25, 2023 and February 26, 2022 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "Statements of Shareholders\u2019 Equity for the three months ended February 25, 2023 and February 26, 2022 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "Notes to Condensed Financial Statements (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 2 - MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 3 - QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 4 - CONTROLS AND PROCEDURES",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 1 - LEGAL PROCEEDINGS",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 1A -RISK FACTORS",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 2 - UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 3 - DEFAULTS UPON SENIOR SECURITIES",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 4 - MINE SAFETY DISCLOSURE",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 5 - OTHER INFORMATION",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "ITEM 6 - EXHIBITS",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 100
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of large accelerated filer,\u201d accelerated filer,\u201d smaller reporting company,\u201d and emerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]    Emerging growth company     [ ]\nAccelerated filer        [ ]  Smaller reporting company     [X]\nNon-accelerated filer    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nOn April 11, 2023 there were 2,578,315 shares of Common Stock, $0.10 par value, outstanding.\nFORM 10-Q\nFebruary 25, 2023\nINDEX",
+   "prose_after": "2\nPART I - FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED BALANCE SHEETS\n(Dollars in thousands)\n<TABLE>\nCURRENT ASSETS                                                                                                                            February 25, 2023  November 30, 2022\n----------------------------------------------------------------------------------------------------------------------------------------  -----------------  -----------------\n(Unaudited)\nCash and cash equivalents                                                                                                                          $ 13,244           $ 15,375",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CURRENT ASSETS",
+     "February 25, 2023",
+     "",
+     "",
+     "November 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "13,244",
+     "",
+     "$",
+     "15,375",
+     ""
+    ],
+    [
+     "Receivables, net of allowance for doubtful accounts of $0 at February 25, 2023 and November 30 2022",
+     "",
+     "2,810",
+     "",
+     "",
+     "3,644",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "920",
+     "",
+     "",
+     "920",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "722",
+     "",
+     "",
+     "408",
+     ""
+    ],
+    [
+     "Inventories:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials and supplies",
+     "",
+     "7,164",
+     "",
+     "",
+     "6,715",
+     ""
+    ],
+    [
+     "Work in process",
+     "",
+     "4,175",
+     "",
+     "",
+     "3,573",
+     ""
+    ],
+    [
+     "Total inventories",
+     "",
+     "11,339",
+     "",
+     "",
+     "10,288",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "593",
+     "",
+     "",
+     "564",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "29,629",
+     "",
+     "",
+     "31,199",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY, PLANT AND EQUIPMENT, at cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "1,518",
+     "",
+     "",
+     "1,518",
+     ""
+    ],
+    [
+     "Buildings",
+     "",
+     "498",
+     "",
+     "",
+     "498",
+     ""
+    ],
+    [
+     "Facility improvements",
+     "",
+     "1,126",
+     "",
+     "",
+     "1,126",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "1,183",
+     "",
+     "",
+     "1,036",
+     ""
+    ],
+    [
+     "Construction in process equipment",
+     "",
+     "19,575",
+     "",
+     "",
+     "19,415",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "10,024",
+     "",
+     "",
+     "9,952",
+     ""
+    ],
+    [
+     "Total property, plant, and equipment",
+     "",
+     "33,924",
+     "",
+     "",
+     "33,545",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(11,160)",
+     "",
+     "",
+     "(11,082)",
+     ""
+    ],
+    [
+     "Net property, plant, and equipment",
+     "",
+     "22,764",
+     "",
+     "",
+     "22,463",
+     ""
+    ],
+    [
+     "Operating lease right to use asset",
+     "",
+     "-",
+     "",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Deferred income taxes, net",
+     "",
+     "86",
+     "",
+     "",
+     "86",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "52,479",
+     "",
+     "$",
+     "53,762",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,469",
+     "",
+     "$",
+     "1,173",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "842",
+     "",
+     "",
+     "1,086",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "646",
+     "",
+     "",
+     "1,192",
+     ""
+    ],
+    [
+     "Property taxes",
+     "",
+     "131",
+     "",
+     "",
+     "560",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "25",
+     "",
+     "",
+     "149",
+     ""
+    ],
+    [
+     "Current portion of long term debt",
+     "",
+     "225",
+     "",
+     "",
+     "224",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "25",
+     "",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "3,363",
+     "",
+     "",
+     "4,431",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt, net of debt issuance costs and current portion",
+     "",
+     "14,634",
+     "",
+     "",
+     "14,535",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "17,997",
+     "",
+     "",
+     "18,966",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.10 par value, authorized   10,000,000 shares, 3,078,315 issued and 2,578,315 outstanding at February 25, 2023 and November 30 2022",
+     "",
+     "308",
+     "",
+     "",
+     "308",
+     ""
+    ],
+    [
+     "Additional paid-in-capital",
+     "",
+     "885",
+     "",
+     "",
+     "885",
+     ""
+    ],
+    [
+     "Treasury stock, 500,000 shares, at cost",
+     "",
+     "(1,250)",
+     "",
+     "",
+     "(1,250)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "34,539",
+     "",
+     "",
+     "34,853",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "34,482",
+     "",
+     "",
+     "34,796",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "52,479",
+     "",
+     "$",
+     "53,762",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 25, 2023",
+     "",
+     "",
+     "February 26, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET SALES",
+     "$",
+     "6,190",
+     "",
+     "$",
+     "6,066",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST AND EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "(3,939)",
+     "",
+     "",
+     "(3,276)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "(652)",
+     "",
+     "",
+     "(464)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "(1,806)",
+     "",
+     "",
+     "(1,768)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total cost and expenses",
+     "",
+     "(6,397)",
+     "",
+     "",
+     "(5,508)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING INCOME (LOSS)",
+     "",
+     "(207)",
+     "",
+     "",
+     "558",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "139",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) BEFORE TAXES",
+     "",
+     "(68)",
+     "",
+     "",
+     "559",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Provision) benefit for taxes",
+     "",
+     "12",
+     "",
+     "",
+     "(95)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "$",
+     "(56)",
+     "",
+     "$",
+     "464",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS) PER SHARE, BASIC AND DILUTED",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "0.18",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DIVIDENDS PER SHARE",
+     "$",
+     "0.10",
+     "",
+     "$",
+     "0.10",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE OF SHARES, basic and diluted",
+     "",
+     "2,578,315",
+     "",
+     "",
+     "2,578,315",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 195,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Retained earnings                                                                                                                                    34,539             34,853\n-----------------  -----------------\nTotal shareholders\u2019 equity                                                                                                                           34,482             34,796\n-----------------  -----------------\nTotal liabilities and shareholders\u2019 equity                                                                                                         $ 52,479           $ 53,762\n=================  =================\n</TABLE>\nCONDENSED STATEMENTS OF OPERATIONS\n(Dollars in thousands except share data)\n(Unaudited)",
+   "prose_after": "CONDENSED STATEMENTS OF CASH FLOWS\n(Dollars in thousands)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 233,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "February 25, 2023",
+     "",
+     "",
+     "February 26, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(56)",
+     "",
+     "$",
+     "464",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "103",
+     "",
+     "",
+     "98",
+     ""
+    ],
+    [
+     "Amortization of right-of-use assets",
+     "",
+     "14",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Changes in certain current assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in accounts receivable",
+     "",
+     "834",
+     "",
+     "",
+     "1,490",
+     ""
+    ],
+    [
+     "Increase in contract assets",
+     "",
+     "(314)",
+     "",
+     "",
+     "(189)",
+     ""
+    ],
+    [
+     "Increase in inventories",
+     "",
+     "(1,051)",
+     "",
+     "",
+     "(168)",
+     ""
+    ],
+    [
+     "(Increase) decrease in prepaid expenses and other assets",
+     "",
+     "(29)",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "(Decrease) increase in deferred revenue",
+     "",
+     "(546)",
+     "",
+     "",
+     "181",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "372",
+     "",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Decrease in accrued compensation",
+     "",
+     "(244)",
+     "",
+     "",
+     "(451)",
+     ""
+    ],
+    [
+     "Decrease in income taxes payable",
+     "",
+     "(124)",
+     "",
+     "",
+     "(42)",
+     ""
+    ],
+    [
+     "Decrease in lease liabilities",
+     "",
+     "(14)",
+     "",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Decrease in all other accrued liabilities",
+     "",
+     "(438)",
+     "",
+     "",
+     "(260)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(1,493)",
+     "",
+     "",
+     "1,176",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additions to property, plant and equipment",
+     "",
+     "(480)",
+     "",
+     "",
+     "(5,281)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(480)",
+     "",
+     "",
+     "(5,281)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash dividend",
+     "",
+     "(258)",
+     "",
+     "",
+     "(258)",
+     ""
+    ],
+    [
+     "Proceeds from long term debt",
+     "",
+     "100",
+     "",
+     "",
+     "5,014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "(158)",
+     "",
+     "",
+     "4,756",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "(2,131)",
+     "",
+     "",
+     "651",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "15,375",
+     "",
+     "",
+     "15,252",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "13,244",
+     "",
+     "$",
+     "15,903",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "118",
+     "",
+     "$",
+     "137",
+     ""
+    ],
+    [
+     "Supplemental Non-Cash Flow Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in accrued property, plant and equipment",
+     "$",
+     "75",
+     "",
+     "$",
+     "(269)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 243,
+    "end_line": 299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED STATEMENTS OF CASH FLOWS\n(Dollars in thousands)\n(Unaudited)",
+   "prose_after": "STATEMENTS OF SHAREHOLDERS\u2019 EQUITY\nFOR THE QUARTERS ENDED FEBRUARY 25, 2023 AND FEBRUARY 26, 2022\n(Dollars in thousands)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 235,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 300,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common",
+     "",
+     "Additional",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock",
+     "",
+     "paid-in-capital",
+     "",
+     "Stock",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, November 30, 2021",
+     "$",
+     "308",
+     "$",
+     "885",
+     "$",
+     "(1,250)",
+     "",
+     "$",
+     "32,324",
+     "",
+     "$",
+     "32,267",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(258)",
+     "",
+     "",
+     "(258)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "464",
+     "",
+     "",
+     "464",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, February 26, 2022",
+     "$",
+     "308",
+     "$",
+     "885",
+     "$",
+     "(1,250)",
+     "",
+     "$",
+     "32,530",
+     "",
+     "$",
+     "32,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "Additional",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     "paid-in-capital",
+     "",
+     "Stock",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, November 30, 2022",
+     "$",
+     "308",
+     "$",
+     "885",
+     "$",
+     "(1,250)",
+     "",
+     "$",
+     "34,853",
+     "",
+     "$",
+     "34,796",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(258)",
+     "",
+     "",
+     "(258)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(56)",
+     "",
+     "",
+     "(56)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, February 25, 2023",
+     "$",
+     "308",
+     "$",
+     "885",
+     "$",
+     "(1,250)",
+     "",
+     "$",
+     "34,539",
+     "",
+     "$",
+     "34,482",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 312,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF SHAREHOLDERS\u2019 EQUITY\nFOR THE QUARTERS ENDED FEBRUARY 25, 2023 AND FEBRUARY 26, 2022\n(Dollars in thousands)\n(Unaudited)",
+   "prose_after": "NOTES TO CONDENSED FINANCIAL STATEMENTS\n(Unaudited)\nNote 1 BASIS OF PRESENTATION\nBusiness Description\nMicropac Industries, Inc. (the \u201cCompany\u201d), a Delaware corporation, designs, manufactures and distributes various types of microelectronic circuits including solid state relays and power controllers, optoelectronic components, and sensor and display components and assemblies. The Company\u2019s products are used as components and assemblies in a broad range of military, space, medical and commercial systems, including aircraft instrumentation and navigation systems, satellite systems, power supplies, electronic controls, computers, medical devices, and high-temperature (200o\nC) products.\nThe Company\u2019s facilities are certified and qualified by the Defense Logistics Agency (DLA) to MIL-PRF-38534 (class K-space level) and MIL-PRF-19500 JANS (space level) and are certified to ISO 9001:2015 and AS 9100D. Micropac is a National Aeronautics and Space Administration (NASA) core supplier and is registered to AS9100-Aerospace Industry standard for supplier certification. The Company has Underwriters Laboratories (UL) approval on our industrial power controllers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 342,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of net sales by product line",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Sales by Product Line",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Feb. 25, 2023",
+     "",
+     "Feb. 26, 2022",
+     ""
+    ],
+    [
+     "Microelectronics",
+     "$",
+     "1,020",
+     "$",
+     "1,541"
+    ],
+    [
+     "Optoelectronics",
+     "",
+     "1,857",
+     "",
+     "2,205"
+    ],
+    [
+     "Sensors and Displays",
+     "",
+     "3,313",
+     "",
+     "2,320"
+    ],
+    [
+     "",
+     "$",
+     "6,190",
+     "$",
+     "6,066"
+    ],
+    [
+     "Timing of revenue recognition:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recognized at a point in time",
+     "$",
+     "5,112",
+     "$",
+     "5,351"
+    ],
+    [
+     "Recognized over time",
+     "",
+     "1,078",
+     "",
+     "715"
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "6,190",
+     "$",
+     "6,066"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of net sales by product line",
+    "Net Sales by Product Line",
+    "(Dollars in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 408,
+    "end_line": 425
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "This performance obligation is satisfied when control of the product is transferred to the customer, which occurs upon shipment or delivery. The Company receives purchase orders for products to be delivered over multiple dates that may extend across reporting periods. The Company accounting policy treats shipping and handling activities as a fulfillment cost. The Company invoices for each delivery upon shipment and recognizes revenues at the fixed price for each distinct product delivered when transfer of control has occurred, which is generally upon shipment.\nFor certain contracts under which the Company produces products with no alternative use and for which the Company has an enforceable right to payment during the production cycle, the Company recognizes revenue for the cost incurred of work in process plus a margin at the end of each period and records a contract asset (unbilled receivable). The majority of these products are shipped weekly and monthly to the customers and the contracts require us to manage and limit the level of work in process to meet the scheduled delivery dates.\nIn addition, the Company may have a contract or purchase order to provide a non-recurring engineering service to a customer. These contracts are reviewed, and performance obligations are determined and we recognize revenue at the point in time in which each performance obligation is fully satisfied.\nDisaggregation of Revenue\nThe following table summarizes the Company\u2019s net sales by product line.",
+   "prose_after": "The following table summarizes the Company\u2019s net sales by major market.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 383,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of net sales by major market",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023 First Quarter Sales by Major Market\n\n\n\n(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Military",
+     "",
+     "Space",
+     "",
+     "Medical",
+     "",
+     "Commercial",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Domestic Direct",
+     "$",
+     "1,310",
+     "$",
+     "52",
+     "$",
+     "950",
+     "$",
+     "1,306",
+     "$",
+     "3,618"
+    ],
+    [
+     "Domestic Distribution",
+     "",
+     "1,736",
+     "",
+     "410",
+     "",
+     "-",
+     "",
+     "150",
+     "",
+     "2,296"
+    ],
+    [
+     "International",
+     "",
+     "28",
+     "",
+     "2",
+     "",
+     "-",
+     "",
+     "246",
+     "",
+     "276"
+    ],
+    [
+     "",
+     "$",
+     "3,074",
+     "$",
+     "464",
+     "$",
+     "950",
+     "$",
+     "1,702",
+     "$",
+     "6,190"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of net sales by major market",
+    "2023 First Quarter Sales by Major Market\n\n\n\n(Dollars in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 428,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following table summarizes the Company\u2019s net sales by major market.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 383,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022 First Quarter Sales by Major Market (Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Military",
+     "",
+     "Space",
+     "",
+     "Medical",
+     "",
+     "Commercial",
+     "",
+     "Total"
+    ],
+    [
+     "Domestic Direct",
+     "$",
+     "2,505",
+     "$",
+     "603",
+     "$",
+     "555",
+     "$",
+     "189",
+     "$",
+     "3,852"
+    ],
+    [
+     "Domestic Distribution",
+     "",
+     "1,793",
+     "",
+     "146",
+     "",
+     "-",
+     "",
+     "139",
+     "",
+     "2,078"
+    ],
+    [
+     "International",
+     "",
+     "71",
+     "",
+     "22",
+     "",
+     "-",
+     "",
+     "43",
+     "",
+     "136"
+    ],
+    [
+     "",
+     "$",
+     "4,369",
+     "$",
+     "771",
+     "$",
+     "555",
+     "$",
+     "371",
+     "$",
+     "6,066"
+    ]
+   ],
+   "caption_stack": [
+    "2022 First Quarter Sales by Major Market (Dollars in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 442,
+    "end_line": 452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Receivables, net, Contract Assets and Contract Liabilities\nThe timing of revenue recognition, billings and cash collections results in billed accounts receivable, unbilled receivables (contract assets), and customer advances and deposits (deferred revenue) on the Condensed Balance Sheets.\nReceivables, net, contract assets and contract liabilities were as follows:\nReceivables, net, Contract Assets and Contract Liabilities\n(Dollars in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of receivables, net, contract assets and contract liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 25, 2023",
+     "",
+     "November 30, 2022",
+     "",
+     "December 1, 2021",
+     ""
+    ],
+    [
+     "Receivables, net",
+     "$",
+     "2,810",
+     "$",
+     "3,644",
+     "$",
+     "4,974"
+    ],
+    [
+     "Contract assets",
+     "$",
+     "722",
+     "$",
+     "408",
+     "$",
+     "603"
+    ],
+    [
+     "Deferred revenue",
+     "$",
+     "646",
+     "$",
+     "1,192",
+     "$",
+     "1,258"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of receivables, net, contract assets and contract liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 463,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Receivables, net, Contract Assets and Contract Liabilities\nThe timing of revenue recognition, billings and cash collections results in billed accounts receivable, unbilled receivables (contract assets), and customer advances and deposits (deferred revenue) on the Condensed Balance Sheets.\nReceivables, net, contract assets and contract liabilities were as follows:\nReceivables, net, Contract Assets and Contract Liabilities\n(Dollars in thousands)",
+   "prose_after": "There was $546,000 of revenue recognized in fiscal year 2023 that was included in the deferred revenue liability balance at the beginning of the fiscal year.\nContract costs\nThe Company does not have material incremental costs to obtain a contract in the form of sales commissions or bonuses. The Company incurs other immaterial costs to obtain and fulfill a contract; however, the Company has elected the practical expedient under ASC 340-40-24-4 to recognize all incremental costs to obtain a contract as an expense when incurred if the amortization period is one year or less.\nLeases\nIn the first quarter of 2020, the Company entered into a three (3) year lease extension on the property that has been leased on a year to year basis. The Company had an operating lease expense of $14,000 for the first three months of 2023 and $13,000 for the first three months of 2022. The Company used an estimated incremental borrowing rate of 3.25% representative of the rate of interest that the company would have to pay to borrow on the Company\u2019s line of credit. The remaining lease term is month to month.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of property,plant and equipment useful lives",
+     ""
+    ],
+    [
+     "Buildings",
+     "15-30"
+    ],
+    [
+     "Facility improvements",
+     "8-15"
+    ],
+    [
+     "Machinery and equipment",
+     "5-10"
+    ],
+    [
+     "Furniture and fixtures",
+     "5-8"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of property,plant and equipment useful lives"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Inventories are stated at lower of cost or net realizable value and include material, labor and manufacturing overhead. All inventories are valued using the FIFO (first-in, first-out) method of inventory valuation. The Company determines the need to write inventory down to the lower of cost or net realizable value via an analysis based on the usage of inventory over a three year period and projected usage based on current backlog.\nIncome Taxes\nThe Company accounts for income taxes using the asset and liability method. Under this method the Company records deferred income taxes for the temporary differences between the financial reporting basis and the tax basis of assets and liabilities at enacted tax rates expected to be in effect when such amounts are realized or settled. The resulting deferred tax liabilities and assets are adjusted to reflect changes in tax law or rates in the period that includes the enactment date.\nThe Company records a liability for an unrecognized tax benefit for a tax position that is not \u201cmore-likely-than-not\u201d to be sustained. The Company did not record any liability for uncertain tax positions as of February 25, 2023 or November 30, 2022.\nProperty, Plant, and Equipment\nProperty, plant, and equipment are carried at cost, and depreciation is provided using the straight-line method at rates based upon the following estimated useful lives (in years) of the assets:",
+   "prose_after": "The Company assesses long-lived assets for impairment in accordance with Financial Accounting Standards Board (FASB) Accounting Standards Codification (ASC) ASC 360-10-35, Property, Plant and Equipment \u2013 Subsequent Measurement. When events or circumstances indicate that an asset may be impaired, an assessment is performed. The estimated future undiscounted cash flows associated with the asset are compared to the asset\u2019s net book value to determine if a write down to market value less cost to sell is required.\nConstruction in progress relates to multiple capital projects ongoing during the year ended November 30, 2022 and the three months ended February 25, 2023, including the construction of the new manufacturing facility. Construction in progress also includes interest and fees on debt that are directly related to the financing of the Company\u2019s capital projects.\nRepairs and maintenance are expensed as incurred. Improvements which extend the useful lives of property, plant, and equipment are capitalized.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 534,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of long-term debt",
+     "",
+     ""
+    ],
+    [
+     "Debt February 25, 2023",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "$",
+     "15,010,000"
+    ],
+    [
+     "Less unamortized debt issuance costs",
+     "",
+     "151,000"
+    ],
+    [
+     "Net Debt",
+     "",
+     "14,859,000"
+    ],
+    [
+     "Less\u2014Current portion",
+     "",
+     "225,000"
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "14,634,000"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of long-term debt",
+    "Debt February 25, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "COMMITMENTS"
+    }
+   },
+   "prose_before": "The interest rate of (3.40%) per annum including an Interest-Only Period. Interest only shall be due and payable monthly as it accrues on the twenty-sixth (26th) day of each and every calendar month, beginning April 26, 2021, and continuing regularly and monthly thereafter until March 26, 2023; interest being calculated on the unpaid principal each day principal is outstanding and all payments made credited to any collection costs and late charges, to the discharge of the interest accrued and to the reduction of the principal, in such order as Lender shall determine.\nThe loan shall be secured by a \u201cDeed of Trust, Security Agreement \u2013 Financing Statement\u201d covering the 9.2 acre tract in Garland, Texas and the improvements made on it.\nRevolving Credit Loans. Subject to the terms of the, Loan Agreement, Frost will lend to the Company, on a revolving basis, amounts not to exceed a total principal balance of $6,000,000, minus amounts available and amounts previously disbursed under outstanding Frost letters of credit. Subject to certain terms and conditions, the Company may borrow, repay and reborrow under the Loan Agreement. The loan has a maturity date of April 23, 2023.\nThe interest on the outstanding and unpaid principal balance shall be computed at a per annum rate equal to the lesser of (a) a rate equal to the Prime Rate per annum; provided, however, in no event shall the resulting rate be less than three and one-quarter percent (3.25%).\nThe Company has borrowed $15,010,000 against the construction loan as of February 25, 2023.",
+   "prose_after": "Estimated maturities of our long-term debt over the next 5 years are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 534,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of maturities of long-term debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2025",
+     "",
+     "2026",
+     "",
+     "2027",
+     "",
+     "Thereafter",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Frost Bank",
+     "$",
+     "225",
+     "$",
+     "396",
+     "$",
+     "409",
+     "$",
+     "423",
+     "$",
+     "438",
+     "$",
+     "13,119",
+     "$",
+     "15,010"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of maturities of long-term debt"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 574
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "COMMITMENTS"
+    }
+   },
+   "prose_before": "Estimated maturities of our long-term debt over the next 5 years are as follows:",
+   "prose_after": "Note 6 EARNINGS PER COMMON SHARE\nBasic and diluted earnings per share are computed based upon the weighted average number of shares outstanding during the respective periods. Diluted earnings per share gives effect to all dilutive potential common shares. For the three months ended February 25, 2023 and February 26, 2022, the Company had no dilutive potential common stock instruments.\nNote 7 SHAREHOLDERS\u2019 EQUITY\nOn December 7, 2022, the Board of Directors of Micropac Industries, Inc. approved the payment of a $0.10 per share special dividend to all shareholders of record as of January 11, 2023. The dividend was paid to shareholders on February 10, 2023.\nOn December 7, 2021, the Board of Directors of Micropac Industries, Inc. approved the payment of a $0.10 per share special dividend to all shareholders of record as of January 11, 2022. The dividend was paid to shareholders on February 10, 2022.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nBusiness",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 534,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 25, 2023",
+     "",
+     "",
+     "February 26,2022",
+     "",
+     ""
+    ],
+    [
+     "NET SALES",
+     "",
+     "100.0%",
+     "",
+     "",
+     "100.0%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST AND EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "63.6%",
+     "",
+     "",
+     "54.0%",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "10.5%",
+     "",
+     "",
+     "7.6%",
+     ""
+    ],
+    [
+     "Selling, general & administrative expenses",
+     "",
+     "29.2%",
+     "",
+     "",
+     "29.1%",
+     ""
+    ],
+    [
+     "Total cost and expenses",
+     "",
+     "103.3%",
+     "",
+     "",
+     "90.7%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING INCOME (LOSS)",
+     "",
+     "(3.3)",
+     "%",
+     "",
+     "9.3%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "2.2%",
+     "",
+     "",
+     "0.0%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) BEFORE TAXES",
+     "",
+     "(1.1)",
+     "%",
+     "",
+     "9.2%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Provision) benefit for taxes",
+     "",
+     ".2%",
+     "",
+     "",
+     "(1.6)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS)",
+     "",
+     "(0.9)",
+     "%",
+     "",
+     "7.7%",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 614,
+    "end_line": 636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Inventory purchases and commitments are based upon future demand. If there is a sudden and significant decrease in demand for our products or there is a higher risk of inventory obsolescence because of changing customer requirements, we may be required to increase our inventory allowances and our gross margin could be adversely affected.\nThe Company recognizes deferred tax assets and liabilities based on differences between the financial reporting and tax basis of assets and liabilities using the enacted tax rates and laws that are expected to be in effect when the differences are expected to be recovered. If we were to determine we would not be able to realize all or part of the deferred tax asset in the future, an adjustment to the deferred tax asset would be necessary which would reduce our net income for that period.\nDepreciable and useful lives estimated for property and equipment are based on initial expectations of the period of time these assets will provide benefit. Changes in circumstances related to a change in our business or other factors could result in these assets becoming impaired, which could adversely affect the value of these assets.\nResults of Operations",
+   "prose_after": "Sales for the first quarter ended February 25, 2023, totaled $6,190,000. Sales for the first quarter increased 2% or $124,000 above sales of $6,066,000 for the first quarter of 2022\nThree customers accounted for 15%, 11% and 10% of the Company\u2019s sales for the first quarter of 2023 and three customers accounted for 18% and 11%, and 10% of the Company\u2019s sales for the first quarter of 2022. The three customers are distributors that sell to multiple customers.\nCost of goods sold for the first quarter of 2023 and 2022 totaled 63.6% and 54.0% of net sales, respectively. Cost of sales increased $662,000 or 20% for the first quarter of 2023 as compared to the first quarter of 2022.Two new custom products for separate customers have incurred higher material cost during the engineering and first production builds resulting in lower gross margins.\nResearch and development cost increased $188,000 for the first quarter of 2023 compared to the same period of 2022. The research and development expenditures were associated with the continued development of power management products, sensor products and process automation improvements.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2023 Current Backlog by Major Market\n\n\n\n(Dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Military",
+     "",
+     "Space",
+     "",
+     "Medical",
+     "",
+     "Commercial",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Domestic Direct",
+     "$",
+     "17,935",
+     "$",
+     "1,678",
+     "$",
+     "4,461",
+     "$",
+     "2,007",
+     "$",
+     "26,081"
+    ],
+    [
+     "Domestic Distribution",
+     "",
+     "4,135",
+     "",
+     "1,822",
+     "",
+     "-",
+     "",
+     "490",
+     "$",
+     "6,447"
+    ],
+    [
+     "International",
+     "",
+     "274",
+     "",
+     "213",
+     "",
+     "-",
+     "",
+     "481",
+     "$",
+     "968"
+    ],
+    [
+     "",
+     "$",
+     "22,344",
+     "$",
+     "3,713",
+     "$",
+     "4,461",
+     "$",
+     "2,978",
+     "$",
+     "33,496"
+    ]
+   ],
+   "caption_stack": [
+    "2023 Current Backlog by Major Market\n\n\n\n(Dollars in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 670,
+    "end_line": 682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "Cash and cash equivalents totaled $13,244,000 as of February 25, 2023 compared to $15,375,000 on November 30, 2022, a decrease of $2,131,000. The decrease in cash and cash equivalents is attributable to $1,493,000 cash used in operations, $100,000 proceeds from the construction loan, offset by the payment of a cash dividend of $258,000, $320,000 in cash for additional manufacturing equipment and $160,000 for construction in process on the new facility.\nIn addition to cash on hand, the Company also has the ability to borrow under a loan agreement as discussed in Note 5 to the condensed financial statements.\nThe Company has no significant off-balance sheet arrangements.\nOutlook\nNew orders for the first quarter of 2023 totaled $6,361,000 compared to $7,223,000 for the comparable period of 2022. Backlog totaled $33,496,000 on February 25, 2023 compared to $33,823,000 as of February 26, 2022 and $32,686,000 on November 30, 2022. Approximately $24,305,000 of the current backlog is expected to ship during the remainder of 2023.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2023 Current Backlog by Product Line\n\n\n\n(Dollars in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Microelectronics",
+     "$",
+     "12,102"
+    ],
+    [
+     "Optoelectronics",
+     "",
+     "5,677"
+    ],
+    [
+     "Sensors and Displays",
+     "",
+     "15,717"
+    ],
+    [
+     "",
+     "$",
+     "33,496"
+    ]
+   ],
+   "caption_stack": [
+    "2023 Current Backlog by Product Line\n\n\n\n(Dollars in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 683,
+    "end_line": 694
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company cannot assure that the results of operations for the interim period presented are indicative of total results for the entire year due to fluctuations in customer delivery schedules, or other factors over which the Company has no control.\nImpact of COVID-19 on our Business\nIn March 2020 the World Health Organization declared the spread of the COVID-19 virus a pandemic.\nThe Company continues to monitor our supply chain and orders from customers for COVID-19 pandemic related changes. We are continuing to serve our customers while taking precautions to provide a safe work environment for our employees and customers. We have been staggering some shifts and otherwise adjusting work schedules to maximize our capacity while adhering to recommended precautions. We have established and implemented a work from home provision where possible.\nTo date, we have not experienced significant raw material shortages; however, supply-chain disruptions could potentially delay or prevent us from fulfilling customer orders.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "/s/ Mark King",
+     ""
+    ],
+    [
+     "April 11, 2023",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date",
+     "",
+     "Mark King",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "/s/ Patrick Cefalu",
+     ""
+    ],
+    [
+     "April 11, 2023",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date",
+     "",
+     "Patrick Cefalu",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Mark King",
+    "April 11, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 765,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHAREHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "None\nITEM 4. MINE SAFETY DISCLOSURE\nNot Applicable\nITEM 5. OTHER INFORMATION\nNone\nITEM 6. EXHIBITS\n(a) Exhibits\n31.1 Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 31.2 Certification of Chief Accounting Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 32.1 Certification of Chief Executive Officer pursuant to 18 U.S.C. section 1350, as adopted pursuant to section 906 of the Sarbanes-Oxley act of 2002. 32.2 Certification of Chief Accounting Officer pursuant to 18 U. S. C. section 1350, as adopted pursuant to section 906 of the Sarbanes-Oxley act of 2002.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 763,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

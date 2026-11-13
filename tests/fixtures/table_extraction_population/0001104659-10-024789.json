@@ -1,0 +1,4403 @@
+{
+ "accession": "0001104659-10-024789",
+ "cik": "0001005201",
+ "form": "10-Q",
+ "filing_date": "2010-05-04",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a10-5829_110q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CALIFORNIA",
+     "94-3229046"
+    ],
+    [
+     "(STATE OR OTHER JURISDICTION OF",
+     "(I.R.S. EMPLOYER"
+    ],
+    [
+     "INCORPORATION OR ORGANIZATION)",
+     "IDENTIFICATION NUMBER)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE QUARTERLY PERIOD ENDED March 31, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM TO\nCOMMISSION FILE NUMBER 001-13111\nDEPOMED, INC.\n(EXACT NAME OF REGISTRANT AS SPECIFIED IN ITS CHARTER)",
+   "prose_after": "1360 O\u2019BRIEN DRIVE\nMENLO PARK, CALIFORNIA 94025\n(ADDRESS OF PRINCIPAL EXECUTIVE OFFICES, INCLUDING ZIP CODE)\n(650) 462-5900\n(REGISTRANT\u2019S TELEPHONE NUMBER, INCLUDING AREA CODE)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company, as defined in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 51,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I \u2014 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Condensed Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Balance Sheets at March 31, 2010 (unaudited) and December 31, 2009",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Operations for the three months ended March 31, 2010 and 2009 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Cash Flows for the three months ended March 31, 2010 and 2009 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Financial Statements (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosure About Market Risk",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II \u2014 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults upon Senior Securities",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Reserved",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "40"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 55,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company, as defined in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]      Accelerated filer [X]\nNon-accelerated filer [ ]   Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe number of issued and outstanding shares of the Registrant\u2019s Common Stock, no par value, as of April 30, 2010 was 52,370,998.",
+   "prose_after": "2\nPART I\n\u2014 FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nCONDENSED BALANCE SHEETS\n(in thousands, except share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 53,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(1)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "7,424",
+     "",
+     "$",
+     "26,821",
+     ""
+    ],
+    [
+     "Marketable securities",
+     "",
+     "51,527",
+     "",
+     "",
+     "42,922",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "6,276",
+     "",
+     "",
+     "4,933",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "2,760",
+     "",
+     "",
+     "2,565",
+     "",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "",
+     "2,634",
+     "",
+     "",
+     "1,185",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "70,621",
+     "",
+     "",
+     "78,426",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities, long-term",
+     "",
+     "12,524",
+     "",
+     "",
+     "12,016",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "871",
+     "",
+     "",
+     "942",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "197",
+     "",
+     "",
+     "197",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "84,213",
+     "",
+     "$",
+     "91,581",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "14,452",
+     "",
+     "",
+     "15,222",
+     "",
+     ""
+    ],
+    [
+     "Deferred product sales",
+     "",
+     "1,594",
+     "",
+     "",
+     "1,635",
+     "",
+     ""
+    ],
+    [
+     "Deferred license revenue",
+     "",
+     "11,159",
+     "",
+     "",
+     "11,184",
+     "",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "425",
+     "",
+     "",
+     "414",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "3,859",
+     "",
+     "",
+     "3,747",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "31,489",
+     "",
+     "",
+     "32,202",
+     "",
+     ""
+    ],
+    [
+     "Deferred license revenue, non-current portion",
+     "",
+     "38,660",
+     "",
+     "",
+     "41,306",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "",
+     "1,160",
+     "",
+     "",
+     "2,170",
+     "",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "143",
+     "",
+     "",
+     "177",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, no par value, 5,000,000 shares authorized; Series A convertible preferred stock, 25,000 shares designated, 18,158 shares issued and surrendered, and zero shares outstanding at March 31, 2010 and December 31, 2009",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock, no par value, 100,000,000 shares authorized; 52,354,402 and 52,200,358 shares issued and outstanding at March 31, 2010 and December 31, 2009, respectively",
+     "",
+     "188,756",
+     "",
+     "",
+     "187,895",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(176,029)",
+     "",
+     "",
+     "(172,202)",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive gain",
+     "",
+     "34",
+     "",
+     "",
+     "33",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "12,761",
+     "",
+     "",
+     "15,726",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "84,213",
+     "",
+     "$",
+     "91,581",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 110,
+    "end_line": 157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I\n\u2014 FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nCONDENSED BALANCE SHEETS\n(in thousands, except share amounts)",
+   "prose_after": "(1) Derived from the audited financial statements included in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2009.\nCONDENSED STATEMENTS OF OPERATIONS\n(in thousands, except share and per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 104,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 157,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product sales",
+     "",
+     "$",
+     "12,601",
+     "",
+     "$",
+     "6,840",
+     ""
+    ],
+    [
+     "Royalties",
+     "",
+     "88",
+     "",
+     "",
+     "464",
+     "",
+     ""
+    ],
+    [
+     "License and milestone revenue",
+     "",
+     "2,671",
+     "",
+     "",
+     "2,568",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "15,360",
+     "",
+     "",
+     "9,872",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "1,481",
+     "",
+     "",
+     "1,032",
+     "",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "5,187",
+     "",
+     "",
+     "10,021",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Promotion fee expense",
+     "",
+     "8,879",
+     "",
+     "",
+     "4,544",
+     "",
+     ""
+    ],
+    [
+     "Other selling, general and administrative expense",
+     "",
+     "3,550",
+     "",
+     "",
+     "4,458",
+     "",
+     ""
+    ],
+    [
+     "Total selling, general and administrative expense",
+     "",
+     "12,429",
+     "",
+     "",
+     "9,002",
+     "",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "19,097",
+     "",
+     "",
+     "20,055",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(3,737)",
+     "",
+     "",
+     "(10,183)",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "94",
+     "",
+     "",
+     "314",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(183)",
+     "",
+     "",
+     "(285)",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(89)",
+     "",
+     "",
+     "29",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "(3,826)",
+     "",
+     "",
+     "(10,154)",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "(1)",
+     "",
+     "",
+     "(1)",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(3,827)",
+     "",
+     "$",
+     "(10,155)",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.20)",
+     ""
+    ],
+    [
+     "Shares used in computing basic and diluted net loss per share",
+     "",
+     "52,298,726",
+     "",
+     "",
+     "51,207,540",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 172,
+    "end_line": 212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Derived from the audited financial statements included in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2009.\nCONDENSED STATEMENTS OF OPERATIONS\n(in thousands, except share and per share amounts)",
+   "prose_after": "CONDENSED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 213,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(3,827)",
+     "",
+     "$",
+     "(10,155)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "153",
+     "",
+     "",
+     "214",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "545",
+     "",
+     "",
+     "694",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(1,343)",
+     "",
+     "",
+     "(323)",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(195)",
+     "",
+     "",
+     "(53)",
+     "",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "(1,449)",
+     "",
+     "",
+     "1,933",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and other accrued liabilities",
+     "",
+     "539",
+     "",
+     "",
+     "(309)",
+     "",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "(1,331)",
+     "",
+     "",
+     "(1,478)",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(2,712)",
+     "",
+     "",
+     "22,376",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "",
+     "(9,620)",
+     "",
+     "",
+     "12,899",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(49)",
+     "",
+     "",
+     "(84)",
+     "",
+     ""
+    ],
+    [
+     "Purchases of marketable securities",
+     "",
+     "(32,546)",
+     "",
+     "",
+     "(63,523)",
+     "",
+     ""
+    ],
+    [
+     "Maturities of marketable securities",
+     "",
+     "20,932",
+     "",
+     "",
+     "32,847",
+     "",
+     ""
+    ],
+    [
+     "Sales of marketable securities",
+     "",
+     "2,490",
+     "",
+     "",
+     "6,010",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(9,173)",
+     "",
+     "",
+     "(24,750)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments on long-term debt",
+     "",
+     "(921)",
+     "",
+     "",
+     "(714)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "317",
+     "",
+     "",
+     "26",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(604)",
+     "",
+     "",
+     "(688)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(19,397)",
+     "",
+     "",
+     "(12,539)",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "26,821",
+     "",
+     "",
+     "22,127",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "",
+     "$",
+     "7,424",
+     "",
+     "$",
+     "9,588",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 225,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "prose_after": "NOTES TO CONDENSED FINANCIAL STATEMENTS\nNOTE 1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThese unaudited Condensed Financial Statements and the related footnote information of Depomed, Inc. (the Company or Depomed) have been prepared pursuant to the requirements of the Securities and Exchange Commission (SEC) for interim reporting. As permitted under those rules and regulations, certain footnotes or other financial information that are normally required by U.S. generally accepted accounting principles have been condensed or omitted pursuant to such rules and regulations. In the opinion of the Company\u2019s management, the accompanying interim unaudited condensed financial statements include all adjustments (consisting only of normal recurring adjustments) necessary for a fair presentation of the information for the periods presented. The results for the interim period ended March 31, 2010 are not necessarily indicative of results to be expected for the entire year ending December 31, 2010 or future operating periods.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 223,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "REPEATING_FOOTER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "March 31, 2010",
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "U.S. debt securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total included in cash and cash equivalents",
+     "",
+     "$",
+     "4,136",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,136",
+     ""
+    ],
+    [
+     "Total maturing within 1 year and included in marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. corporate debt securities",
+     "",
+     "3,000",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,001",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "22,025",
+     "",
+     "",
+     "31",
+     "",
+     "",
+     "(7)",
+     "",
+     "",
+     "22,049",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "26,468",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "26,477",
+     "",
+     ""
+    ],
+    [
+     "Total maturing between 1 and 2 years and included in marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "6,029",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "6,025",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "6,495",
+     "",
+     "",
+     "5",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "6,499",
+     "",
+     ""
+    ],
+    [
+     "Total available-for-sale",
+     "",
+     "$",
+     "68,153",
+     "",
+     "$",
+     "46",
+     "",
+     "$",
+     "(12)",
+     "",
+     "$",
+     "68,187",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 358,
+    "end_line": 375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "In September 2009, the FASB issued Accounting Standards Update 2009-13 (Topic 605), Multiple-Deliverable Revenue Arrangements (ASU 2009-13). ASU 2009-13 applies to multiple-deliverable revenue arrangements that are currently within the scope of the Revenue Recognition \u2014 Multiple-Element Arrangements topic of the Codification. ASU 2009-13 provides principles and application guidance on whether multiple deliverables exist, how the arrangement should be separated and the consideration allocated. ASU 2009-13 requires an entity to allocate revenue in an arrangement using estimated selling prices of deliverables if a vendor does not have vendor-specific objective evidence or third-party evidence of selling price. ASU 2009-13 eliminates the use of the residual method and requires an entity to allocate revenue using the relative selling price method and also significantly expands the disclosure requirements for multiple-deliverable revenue arrangements. ASU 2009-13 should be applied on a prospective basis for revenue arrangements entered into or materially modified in fiscal years beginning on or after June 15, 2010, with earlier application permitted. The Company expects to adopt ASU 2009-13 on January 1, 2011 and does not expect the adoption of ASU 2009-13 to have a material impact on its financial statements.\nNOTES TO CONDENSED FINANCIAL STATEMENTS (Continued)\nNOTE 2. CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES\nSecurities classified as available-for-sale as of March 31, 2010 and December 31, 2009 are summarized below (in thousands). Estimated fair value is based on quoted market prices for these investments.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 352,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2009",
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "U.S. debt securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total included in cash and cash equivalents",
+     "",
+     "$",
+     "21,186",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "21,186",
+     ""
+    ],
+    [
+     "Total maturing within 1 year and included in marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. corporate debt securities",
+     "",
+     "7,900",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,901",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "12,989",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "13,029",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "21,988",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "21,992",
+     "",
+     ""
+    ],
+    [
+     "Total maturing between 1 and 2 years and included in marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "12,028",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "12,016",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total available-for-sale",
+     "",
+     "$",
+     "79,091",
+     "",
+     "$",
+     "50",
+     "",
+     "$",
+     "(17)",
+     "",
+     "$",
+     "76,124",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 376,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company considers all highly liquid investments with a maturity at date of purchase of three months or less to be cash equivalents. Cash and cash equivalents consist of cash on deposit with banks, money market instruments and commercial paper. The Company places its cash, cash equivalents and marketable securities with high quality, U.S. financial institutions and, to date, has not experienced material losses on any of its balances. All marketable securities are classified as available-for-sale since these instruments are readily marketable. These securities are carried at fair value, which is based on readily available market information, with unrealized gains and losses included in accumulated other comprehensive gain or loss within shareholders\u2019 equity. The Company uses the specific identification method to determine the amount of realized gains or losses on sales of marketable securities. Realized gains or losses have been insignificant and are included in \u201cinterest and other income\u201d in the condensed statement of operations. As of March 31, 2010, the individual contractual period for all available-for-sale debt securities is less than two years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 352,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Less than 12 months",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12 months or greater",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Debt Securities",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "$",
+     "8,990",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "8,990",
+     "",
+     "$",
+     "(1)",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "15,065",
+     "",
+     "",
+     "(11)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,065",
+     "",
+     "",
+     "(11)",
+     "",
+     ""
+    ],
+    [
+     "Total available-for-sale",
+     "",
+     "$",
+     "24,055",
+     "",
+     "$",
+     "(12)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "24,055",
+     "",
+     "$",
+     "(12)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 414
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "The Company considers all highly liquid investments with a maturity at date of purchase of three months or less to be cash equivalents. Cash and cash equivalents consist of cash on deposit with banks, money market instruments and commercial paper. The Company places its cash, cash equivalents and marketable securities with high quality, U.S. financial institutions and, to date, has not experienced material losses on any of its balances. All marketable securities are classified as available-for-sale since these instruments are readily marketable. These securities are carried at fair value, which is based on readily available market information, with unrealized gains and losses included in accumulated other comprehensive gain or loss within shareholders\u2019 equity. The Company uses the specific identification method to determine the amount of realized gains or losses on sales of marketable securities. Realized gains or losses have been insignificant and are included in \u201cinterest and other income\u201d in the condensed statement of operations. As of March 31, 2010, the individual contractual period for all available-for-sale debt securities is less than two years.\nAt March 31, 2010, the Company had thirteen securities in an unrealized loss position. The following table shows the gross unrealized losses and fair value of the Company\u2019s investments with unrealized losses that are not deemed to be other-than-temporarily impaired, aggregated by investment category and length of time that individual securities have been in a continuous unrealized loss position, at March 31, 2010 (in thousands):",
+   "prose_after": "The gross unrealized losses above were caused by interest rate increases. No significant facts or circumstances have arisen to indicate that there has been any deterioration in the creditworthiness of the issuers of the Company\u2019s securities. Based on the Company\u2019s review of these securities, including the assessment of the duration and severity of the unrealized losses and the Company\u2019s ability and intent to hold the investments until maturity, there were no material other-than-temporary impairments for these securities at March 31, 2010.\nFair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. Valuation techniques used to measure fair value must maximize the use of observable inputs and minimize the use of unobservable inputs.\nThe Company utilizes the following fair value hierarchy based on three levels of inputs:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "",
+     "$",
+     "4,136",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,136",
+     ""
+    ],
+    [
+     "U.S. corporate debt securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,001",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "28,074",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "28,074",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32,976",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32,976",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "4,136",
+     "",
+     "$",
+     "64,051",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "68,187",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "Fair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. Valuation techniques used to measure fair value must maximize the use of observable inputs and minimize the use of unobservable inputs.\nThe Company utilizes the following fair value hierarchy based on three levels of inputs:\n\u00b7 Level 1: Quoted prices in active markets for identical assets or liabilities.\n\u00b7 Level 2: Inputs other than Level 1 that are observable, either directly or indirectly, such as quoted prices for similar assets or liabilities; quoted prices in markets that are not active; or other inputs that are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities.\n\u00b7 Level 3: Unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities.\nThe following table represents the Company\u2019s fair value hierarchy for its financial assets measured at fair value on a recurring basis as of March 31, 2010 (in thousands):",
+   "prose_after": "The following table represents the Company\u2019s fair value hierarchy for its financial assets measured at fair value on a recurring basis as of December 31, 2009 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "",
+     "$",
+     "21,186",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "21,186",
+     ""
+    ],
+    [
+     "U.S. corporate debt securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,901",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,901",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency debt securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,045",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,045",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,992",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,992",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "21,186",
+     "",
+     "$",
+     "54,938",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "76,124",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 454
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "The following table represents the Company\u2019s fair value hierarchy for its financial assets measured at fair value on a recurring basis as of December 31, 2009 (in thousands):",
+   "prose_after": "There are no financial liabilities measured at fair value on a recurring basis as of March 31, 2010 and December 31, 2009.\nNOTE 3. NET LOSS PER COMMON SHARE\nBasic net loss per common share is calculated based on the weighted-average number of shares of common stock outstanding during the period. Diluted net loss per common share is calculated based on the weighted-average number of shares of common stock outstanding and other dilutive securities outstanding during the period, if dilutive. The potential dilutive shares of common stock resulting from the assumed exercise of outstanding stock options and equivalents and the assumed exercise of the warrants are determined under the treasury stock method. Shares used in the computation of net loss per common share are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except per share amounts)",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Numerator for basic and diluted shares::",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(3,827)",
+     "",
+     "$",
+     "(10,155)",
+     ""
+    ],
+    [
+     "Denominator for basic and diluted shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average common shares outstanding",
+     "",
+     "52,299",
+     "",
+     "",
+     "51,208",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.20)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 465,
+    "end_line": 479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "NET LOSS PER COMMON SHARE"
+    }
+   },
+   "prose_before": "There are no financial liabilities measured at fair value on a recurring basis as of March 31, 2010 and December 31, 2009.\nNOTE 3. NET LOSS PER COMMON SHARE\nBasic net loss per common share is calculated based on the weighted-average number of shares of common stock outstanding during the period. Diluted net loss per common share is calculated based on the weighted-average number of shares of common stock outstanding and other dilutive securities outstanding during the period, if dilutive. The potential dilutive shares of common stock resulting from the assumed exercise of outstanding stock options and equivalents and the assumed exercise of the warrants are determined under the treasury stock method. Shares used in the computation of net loss per common share are as follows:",
+   "prose_after": "At March 31, 2010 and 2009, the total number of outstanding common stock equivalents excluded from the loss per share computation was 5.6 million and 6.5 million, respectively.\nNOTE 4. LICENSE AND COLLABORATIVE ARRANGEMENTS\nAbbott Products Inc. (formerly Solvay Pharmaceuticals, Inc.)\nIn March 2010, Abbott Products Inc. (Abbott Products) submitted a New Drug Application (NDA) for DM-1796 to the U.S. Food and Drug Administration (FDA) for the management of post-herpetic neuralgia.\nEffective January 2009, the Company entered into an exclusive license agreement with Solvay Pharmaceuticals, Inc. (Solvay) granting Solvay exclusive rights to develop and commercialize DM-1796 for pain indications in the United States, Canada and Mexico. Abbott Products acquired the pharmaceutical business of Solvay in a transaction that closed in February 2010.\nPursuant to the agreement, Solvay paid the Company a $25.0 million upfront fee in February 2009. The Company is also eligible to receive milestone payments for acceptance and FDA approval of the NDA for DM-1796 for post-herpetic neuralgia , and sales milestone payments upon reaching certain sales milestones. Abbott Products is obligated to pay the Company royalties of 14 to 20 percent of net product sales, depending on the level of product sales.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 459,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Principal",
+     "",
+     "",
+     "Interest",
+     "",
+     ""
+    ],
+    [
+     "Less than 1 year",
+     "",
+     "$",
+     "3,957",
+     "",
+     "$",
+     "400",
+     ""
+    ],
+    [
+     "1-2 years",
+     "",
+     "1,209",
+     "",
+     "",
+     "27",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "5,166",
+     "",
+     "$",
+     "427",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 506,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "In June 2008, the Company entered into a loan and security agreement with General Electric Capital Corporation, as agent (GECC), and Oxford Finance Corporation (Oxford) that provided the Company with a $15.0 million credit facility. The credit facility was available in up to three tranches. The first tranche of $3.8 million was advanced to the Company upon the closing of the loan agreement. The second tranche of $5.6 million was advanced to the Company in July 2008. The third tranche of $5.6 million was not drawn and is no longer available to the Company, and GECC and Oxford waived the 2% unused line fee related to the unused portion of the credit facility.\nThe Company paid interest only on the first tranche for the first six months at an interest rate of 11.59%. Beginning in January 2009, the Company began principal payments on the first tranche, plus interest at such rate, which will be paid in 30 equal monthly installments. The second tranche was interest-only through December 31, 2008, with principal and interest payable thereafter in 30 equal monthly installments at an interest rate of 11.59%. Interest expense, which includes amortization of debt issuance costs, was $0.2 million for the three months ended March 31, 2010.\nAs of March 31, 2010, the outstanding balance under the facility was $5.2 million, and the unamortized portion of the debt issuance costs was approximately $0.2 million. Future contractual principal and interest payments are as follows (in thousands):",
+   "prose_after": "The Company has the right to voluntarily prepay debt outstanding under the facility, in full or in part. Upon any voluntary prepayment of any of the tranches, the Company will be required to pay the lenders a prepayment premium equal to: (i) 5% on such prepayment amount, if such prepayment is made within 14 months after the closing date, (ii) 4% on such prepayment amount, if such prepayment is made more than 14 months after the closing date but within 29 months after the closing date, and (ii) 3% on such prepayment amount, if such prepayment is made more than 29 months after the closing date, but on or before the maturity date of the respective tranche.\nThe obligations of the Company under the loan agreement are secured by interests in all of the Company\u2019s personal property, and proceeds from any intellectual property, but not by the Company\u2019s intellectual property.\nThe credit facility contains affirmative and negative covenants with which the Company must comply with, and imposes restrictions with regards to additional indebtedness, liens, various fundamental changes (including mergers and acquisitions), payments, investments, transactions with affiliates, and other limitations customary in secured credit facilities. The Company was in compliance with such covenants as of March 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 496,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "$",
+     "3",
+     "",
+     "$",
+     "9",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "166",
+     "",
+     "",
+     "208",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "",
+     "376",
+     "",
+     "",
+     "477",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "545",
+     "",
+     "$",
+     "694",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 531,
+    "end_line": 544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The Company has the right to voluntarily prepay debt outstanding under the facility, in full or in part. Upon any voluntary prepayment of any of the tranches, the Company will be required to pay the lenders a prepayment premium equal to: (i) 5% on such prepayment amount, if such prepayment is made within 14 months after the closing date, (ii) 4% on such prepayment amount, if such prepayment is made more than 14 months after the closing date but within 29 months after the closing date, and (ii) 3% on such prepayment amount, if such prepayment is made more than 29 months after the closing date, but on or before the maturity date of the respective tranche.\nThe obligations of the Company under the loan agreement are secured by interests in all of the Company\u2019s personal property, and proceeds from any intellectual property, but not by the Company\u2019s intellectual property.\nThe credit facility contains affirmative and negative covenants with which the Company must comply with, and imposes restrictions with regards to additional indebtedness, liens, various fundamental changes (including mergers and acquisitions), payments, investments, transactions with affiliates, and other limitations customary in secured credit facilities. The Company was in compliance with such covenants as of March 31, 2010.\nNOTE\n6. STOCK-BASED COMPENSATION\nThe following table presents stock-based compensation expense recognized for stock options, stock awards and the Company\u2019s employee stock purchase program (ESPP) in the Company\u2019s statements of operations (in thousands):",
+   "prose_after": "At March 31, 2010, the Company had $2.9 million of total unrecognized compensation expense, net of estimated forfeitures, related to stock option grants that will be recognized over an average vesting period of 2.4 years.\nNOTE\n7. COMPREHENSIVE LOSS\nThe following table summarizes components of total comprehensive loss (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(3,827)",
+     "",
+     "$",
+     "(10,155)",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on available-for-sale securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(66)",
+     "",
+     ""
+    ],
+    [
+     "Total comprehensive loss",
+     "",
+     "$",
+     "(3,827)",
+     "",
+     "$",
+     "(10,221)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 552,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMPREHENSIVE LOSS"
+    }
+   },
+   "prose_before": "At March 31, 2010, the Company had $2.9 million of total unrecognized compensation expense, net of estimated forfeitures, related to stock option grants that will be recognized over an average vesting period of 2.4 years.\nNOTE\n7. COMPREHENSIVE LOSS\nThe following table summarizes components of total comprehensive loss (in thousands):",
+   "prose_after": "NOTE\n8. INVENTORIES\nInventories relate to the manufacture of the Company\u2019s GLUMETZA and Proquin XR products. Inventories are stated at the lower of cost or market and consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "December 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "$",
+     "81",
+     "",
+     "$",
+     "49",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "2,617",
+     "",
+     "",
+     "2,453",
+     "",
+     ""
+    ],
+    [
+     "Deferred costs",
+     "",
+     "62",
+     "",
+     "",
+     "63",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "2,760",
+     "",
+     "$",
+     "2,565",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 570,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "NOTE\n8. INVENTORIES\nInventories relate to the manufacture of the Company\u2019s GLUMETZA and Proquin XR products. Inventories are stated at the lower of cost or market and consist of the following (in thousands):",
+   "prose_after": "Deferred costs represent the costs of Proquin XR product shipped for which recognition of revenue has been deferred.\nNOTE 9. ACCOUNTS PAYABLE AND ACCRUED LIABILITIES\nAccounts payable and accrued liabilities consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 584,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "December 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "638",
+     "",
+     "$",
+     "709",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "1,072",
+     "",
+     "",
+     "2,404",
+     "",
+     ""
+    ],
+    [
+     "Accrued clinical trial expense",
+     "",
+     "43",
+     "",
+     "",
+     "221",
+     "",
+     ""
+    ],
+    [
+     "Accrued rebates and sales discounts",
+     "",
+     "3,198",
+     "",
+     "",
+     "4,396",
+     "",
+     ""
+    ],
+    [
+     "Allowance for product returns",
+     "",
+     "3,682",
+     "",
+     "",
+     "3,364",
+     "",
+     ""
+    ],
+    [
+     "Accrued promotion fee",
+     "",
+     "3,926",
+     "",
+     "",
+     "1,752",
+     "",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "1,893",
+     "",
+     "",
+     "2,376",
+     "",
+     ""
+    ],
+    [
+     "Total accounts payable and accrued liabilities",
+     "",
+     "$",
+     "14,452",
+     "",
+     "$",
+     "15,222",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "ACCOUNTS PAYABLE AND ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "Deferred costs represent the costs of Proquin XR product shipped for which recognition of revenue has been deferred.\nNOTE 9. ACCOUNTS PAYABLE AND ACCRUED LIABILITIES\nAccounts payable and accrued liabilities consist of the following (in thousands):",
+   "prose_after": "NOTE\n10. SHAREHOLDERS\u2019 EQUITY\nOption Exercises\nFor the three months ended March 31, 2010, employees and consultants exercised options to purchase 154,044 shares of the Company\u2019s common stock with net proceeds to the Company of approximately $0.3 million.\nNOTE\n11. INCOME TAXES\nAs of December 31, 2009 and March 31, 2010, the Company had $3.2 million of unrecognized tax benefits, which is netted against deferred tax assets and is fully offset by a valuation allowance. All tax years since inception remain open to examination by the Internal Revenue Service and the California Franchise Tax Board until such time the Company\u2019s net operating losses and credits are either utilized or expire. Interest and penalties, if any, related to unrecognized tax benefits, would be recognized as income tax expense by the Company. The Company does not have any accrued interest or penalties associated with unrecognized tax benefits. The Company does not foresee any material changes to unrecognized tax benefits within the next twelve months.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 586,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Product",
+     "",
+     "Indication",
+     "",
+     "Status"
+    ],
+    [
+     "DM-1796",
+     "",
+     "Postherpetic neuralgia",
+     "",
+     "Phase 3 study completed.\n\n\n\nNew Drug Application submitted to the FDA in March 2010.\n\n\n\nLicensed to Abbott Products in the United States, Mexico and Canada."
+    ],
+    [
+     "SeradaTM",
+     "",
+     "Menopausal hot flashes",
+     "",
+     "Phase 3 studies completed (Breeze 1 and Breeze 2).\n\n\n\nOne additional Phase 3 study (Breeze 3) expected to be initiated in Q2 or Q3 2010."
+    ],
+    [
+     "DM-3458",
+     "",
+     "Gastroesophageal reflux disease",
+     "",
+     "Proof of concept studies completed."
+    ],
+    [
+     "DM-1992",
+     "",
+     "Parkinson\u2019s disease",
+     "",
+     "Phase 1 study completed.\n\n\n\nSecond Phase 1 study expected to be initiated in 2010."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "We seek to optimize the use and value of our product candidates and drug delivery technologies in three ways. First, we are seeking to assemble a number of pharmaceutical products that can be highly differentiated from immediate release versions of the compounds upon which they are based and may be promoted together within a specialty pharmaceutical field, such as women\u2019s health care providers. Our development of Serada, and our retention of co-promotion rights within the obstetrics/gynecology field in our commercialization arrangements with Covidien, Ltd. (Covidien) and Santarus, Inc. (Santarus), are examples of this aspect of our business strategy. Second, we out-license product candidates after we have increased their value through our formulation and clinical development efforts. Our DM-1796 license and development arrangement with Abbott Products is an example of this strategy. Third, we enter into collaborative partnerships with other companies where the unique capabilities of our technology can provide superior value to a partner\u2019s product candidate, resulting in greater value for Depomed than traditional fee-for-service arrangements. Our license and development arrangement with Covidien and our license agreement with Merck & Co., Inc. (Merck) are examples of this strategy.\nWe have developed two products which have been approved by the FDA and are currently marketed. GLUMETZA is a once-daily treatment for adults with type 2 diabetes that we commercialize in the United States with Santarus. Proquin\u00ae XR (ciprofloxacin hydrochloride) is a once-daily treatment for uncomplicated urinary tract infections.\nThe following table summarizes our product pipeline and marketed products.\nProduct Pipeline",
+   "prose_after": "Marketed Products",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Product",
+     "",
+     "Indication",
+     "",
+     "Status"
+    ],
+    [
+     "GLUMETZA\u00ae",
+     "",
+     "Type 2 diabetes",
+     "",
+     "Currently sold in the United States and Canada.\n\n\n\nCo-promoted in the United States with Santarus.\n\n\n\nCanadian rights held by Biovail.\n\n\n\nKorean rights held by LG Life Sciences."
+    ],
+    [
+     "Proquin\u00ae XR",
+     "",
+     "Uncomplicated urinary tract infection",
+     "",
+     "Currently sold in the United States.\n\n\n\nRegulatory application approved in Sweden.\n\n\n\nEuropean rights held by Rottapharm/Madaus."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Marketed Products",
+   "prose_after": "Significant Developments and Highlights for the Quarter Ended March 31, 2010\n\u00b7 In March 2010, a NDA for DM-1796 for the treatment of postherpetic neuralgia was filed with the Food & Drug Administration (FDA) by Abbott Products.\n\u00b7 Revenue for the three months ended March 31, 2010 was $15.4 million, compared to $9.9 million for the three months ended March 31, 2009.\n\u00b7 Operating expenses for the three months ended March 31, 2010 were $17.6 million, compared to $19.0 million for the three months ended March 31, 2009.\n\u00b7 Cash, cash equivalents and marketable securities were $71.5 million as of March 31, 2010, compared to $81.8 million as of December 31, 2009.\nRECENT PRODUCT DEVELOPMENTS AND TRANSACTIONS\nDM-1796 for Postherpetic Neuralgia\nAbbott Products Inc. In November 2008, we entered into an exclusive license agreement with Solvay Pharmaceuticals, Inc. (Solvay) granting Solvay exclusive rights to develop and commercialize DM-1796 in the United States, Canada and Mexico for pain indications. The agreement became effective in January 2009, upon clearance of the transaction under the Hart-Scott-Rodino (HSR) Antitrust Improvements Act of 1976. Abbott Products acquired the pharmaceutical business of Solvay in a transaction that closed in February 2010.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Product sales:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GLUMETZA",
+     "",
+     "$",
+     "12,545",
+     "",
+     "$",
+     "6,643",
+     ""
+    ],
+    [
+     "Proquin XR",
+     "",
+     "56",
+     "",
+     "",
+     "197",
+     "",
+     ""
+    ],
+    [
+     "Total product sales",
+     "",
+     "12,601",
+     "",
+     "",
+     "6,840",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalties:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GLUMETZA",
+     "",
+     "88",
+     "",
+     "",
+     "36",
+     "",
+     ""
+    ],
+    [
+     "Teva",
+     "",
+     "\u2014",
+     "",
+     "",
+     "428",
+     "",
+     ""
+    ],
+    [
+     "Total royalties",
+     "",
+     "88",
+     "",
+     "",
+     "464",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "License and collaborative revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DM-1796",
+     "",
+     "1,561",
+     "",
+     "",
+     "1,477",
+     "",
+     ""
+    ],
+    [
+     "GLUMETZA",
+     "",
+     "626",
+     "",
+     "",
+     "626",
+     "",
+     ""
+    ],
+    [
+     "Acuform technology",
+     "",
+     "458",
+     "",
+     "",
+     "458",
+     "",
+     ""
+    ],
+    [
+     "Proquin XR",
+     "",
+     "26",
+     "",
+     "",
+     "7",
+     "",
+     ""
+    ],
+    [
+     "Total license and collaborative revenue",
+     "",
+     "2,671",
+     "",
+     "",
+     "2,568",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "$",
+     "15,360",
+     "",
+     "$",
+     "9,872",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Modifications to the design of Breeze 3 relative to Breeze 1 and 2 include: (i) a single active arm rather than two arms, and therefore a required statistical p value of .05 rather than .025 to achieve statistical significance; (ii) up to 65% more patients in the active treatment arm than in Breeze 1 and 2 (iii) a two-week run in period to prior to randomization, rather than one week, which is designed to reduce the regression to the mean observed in Breeze 1 and 2, resulting in a more stable baseline, and thereby potentially reducing the placebo effect; and (iv) an alternative statistical analysis method, known as a non-parametric analysis, that is designed to reduce the influence significant outliers can have on the achievement of efficacy endpoints.\nCRITICAL ACCOUNTING POLICIES\nCritical accounting policies are those that require significant judgment and/or estimates by management at the time that the financial statements are prepared such that materially different results might have been reported if other assumptions had been made. We consider certain accounting policies related to revenue recognition, accrued liabilities and stock-based compensation to be critical policies. There have been no changes to our critical accounting policies since we filed our 2009 Annual Report on Form 10-K with the Securities and Exchange Commission on March 9, 2010. For a description of our critical accounting policies, please refer to our 2009 Annual Report on Form 10-K.\nRESULTS OF OPERATIONS\nThree Months Ended March 31, 2010 and March 31, 2009\nRevenue\nTotal revenues are summarized in the following table (in thousands):",
+   "prose_after": "Product sales\nGLUMETZA. The increase in GLUMETZA product sales for the three months ended March 31, 2010 as compared to the three months ended March 31, 2009 is primarily driven by increased penetration in the metformin prescription market resulting from the promotion efforts by our promotion partner, Santarus, and price increases during 2009 and the first quarter of 2010.\nProduct sales for GLUMETZA relative to its current runrate will depend in part on the success of our promotion partner, Santarus, as well any price adjustments.\nProquin XR. We defer recognition of revenue on product shipments of Proquin XR until the right of return no longer exists, which occurs at the earlier of the time Proquin XR units are dispensed through patient prescriptions or expiration of the right of return. At March 31, 2010, we have a deferred revenue balance, which is classified as a liability on the balance sheet, of $1.6 million associated with the deferral of revenue on Proquin XR product shipments, which is net of estimated wholesaler fees, retail pharmacy discounts, stocking allowances and prompt payment discounts.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "$",
+     "1,481",
+     "",
+     "$",
+     "1,032",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Acuform Technology. In November 2008, we entered into a license agreement with Covidien granting Covidien worldwide rights to utilize our Acuform technology for the exclusive development of four products containing acetaminophen in combination with opiates. Through November 2008, Covidien paid us a total of $5.5 million in upfront fees, representing a $4.0 million upfront license fee and a $1.5 million upfront payment for formulation work to be performed by Depomed under the agreement. The entire $5.5 million is being accounted for as a single unit of accounting and being amortized ratably through November 2011, which is the length of time Depomed is obligated to perform formulation work under the agreement.\nCost of Sales\nCost of sales consists of costs of the active pharmaceutical ingredient, contract manufacturing and packaging costs, inventory write-downs, product quality testing, internal employee costs related to the manufacturing process, distribution costs and shipping costs related to our product sales of GLUMETZA and Proquin XR. Total cost of sales for the three months ended March 31, 2010, as compared to the prior year, was as follows (in thousands):",
+   "prose_after": "Cost of sales for the three months ended March 31, 2010 and 2009 relates primarily to costs associated with the sale of GLUMETZA and Proquin XR. Cost of sales increased in 2010 as compared to the corresponding period in 2009 primarily as a result of an increase in GLUMETZA product sales.\nThe costs of manufacturing associated with deferred revenue on Proquin XR product shipments are recorded as deferred costs, which are included in inventory, until such time the related deferred revenue is recognized.\nResearch and Development Expense\nOur research and development expenses currently include costs for scientific personnel, supplies, equipment, outsourced clinical and other research activities, consultants, depreciation, facilities and utilities. The scope and magnitude of future research and development expenses cannot be predicted at this time for our product candidates in the early phases of research and development, as it is not possible to determine the nature, timing and extent of clinical trials and studies, the FDA\u2019s requirements for a particular drug and the requirements and level of participation, if any, by potential partners. As potential products proceed through the development process, each step is typically more extensive, and therefore more expensive, than the previous step. Success in development therefore, generally results in increasing expenditures until actual product launch.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "$",
+     "5,187",
+     "",
+     "$",
+     "10,021",
+     ""
+    ],
+    [
+     "Dollar change from prior year",
+     "",
+     "(4,834)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage change from prior year",
+     "",
+     "(48)",
+     "",
+     "%",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Our research and development expenses currently include costs for scientific personnel, supplies, equipment, outsourced clinical and other research activities, consultants, depreciation, facilities and utilities. The scope and magnitude of future research and development expenses cannot be predicted at this time for our product candidates in the early phases of research and development, as it is not possible to determine the nature, timing and extent of clinical trials and studies, the FDA\u2019s requirements for a particular drug and the requirements and level of participation, if any, by potential partners. As potential products proceed through the development process, each step is typically more extensive, and therefore more expensive, than the previous step. Success in development therefore, generally results in increasing expenditures until actual product launch.\nTotal research and development expense for the three months ended March 31, 2010, as compared to the prior year, was as follows (in thousands):",
+   "prose_after": "The decrease in research and development expense for the three months ended March 31, 2010 as compared to the three months ended March 31, 2009 was primarily due to lower clinical research organization expenses related to the completion of our DM-1796 Phase 3 and Serada Breeze 1 and Breeze 2 Phase 3 programs in October 2009.\nWe plan to conduct a single additional pivotal Phase 3 trial evaluating Serada for the treatment of menopausal hot flashes. The company expects to initiate the trial, which will be known as Breeze 3, by the end of July 2010. As such, we expect research and development expense to increase from levels reported for the three months ended March 31, 2010. While we expect to continue to incur significant research and development expenses resulting from the progress of Breeze 3, we expect total research and development expenses to decrease in 2010 from 2009 as a result of completion of the DM-1796 Phase 3 clinical trial during 2009.\nWe categorize our research and development expense by project. The table below shows research and development costs for our major clinical development programs, as well as the expenses associated with all other projects in our product pipeline.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "DM-1796",
+     "",
+     "$",
+     "1,377",
+     "",
+     "$",
+     "4,081",
+     ""
+    ],
+    [
+     "Serada",
+     "",
+     "1,948",
+     "",
+     "",
+     "3,575",
+     "",
+     ""
+    ],
+    [
+     "Other projects",
+     "",
+     "1,862",
+     "",
+     "",
+     "2,365",
+     "",
+     ""
+    ],
+    [
+     "Total research and development expenses",
+     "",
+     "$",
+     "5,187",
+     "",
+     "$",
+     "10,021",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 850,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The decrease in research and development expense for the three months ended March 31, 2010 as compared to the three months ended March 31, 2009 was primarily due to lower clinical research organization expenses related to the completion of our DM-1796 Phase 3 and Serada Breeze 1 and Breeze 2 Phase 3 programs in October 2009.\nWe plan to conduct a single additional pivotal Phase 3 trial evaluating Serada for the treatment of menopausal hot flashes. The company expects to initiate the trial, which will be known as Breeze 3, by the end of July 2010. As such, we expect research and development expense to increase from levels reported for the three months ended March 31, 2010. While we expect to continue to incur significant research and development expenses resulting from the progress of Breeze 3, we expect total research and development expenses to decrease in 2010 from 2009 as a result of completion of the DM-1796 Phase 3 clinical trial during 2009.\nWe categorize our research and development expense by project. The table below shows research and development costs for our major clinical development programs, as well as the expenses associated with all other projects in our product pipeline.",
+   "prose_after": "Selling, General and Administrative Expense\nSelling, general and administrative expenses primarily consist of personnel expenses to support our administrative and operating activities, marketing and promotion expenses associated with Serada, GLUMETZA and Proquin XR, facility costs and professional expenses, such as legal and accounting fees. Total selling, general and administrative expenses, as compared to the prior year, were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Promotion fee expense",
+     "",
+     "$",
+     "8,879",
+     "",
+     "$",
+     "4,544",
+     ""
+    ],
+    [
+     "Other selling, general and administrative expense",
+     "",
+     "3,550",
+     "",
+     "",
+     "4,458",
+     "",
+     ""
+    ],
+    [
+     "Total selling, general and administrative expense",
+     "",
+     "$",
+     "12,429",
+     "",
+     "$",
+     "9,002",
+     ""
+    ],
+    [
+     "Dollar change from prior year",
+     "",
+     "3,427",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage change from prior year",
+     "",
+     "38",
+     "",
+     "%",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 869,
+    "end_line": 884
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Selling, General and Administrative Expense\nSelling, general and administrative expenses primarily consist of personnel expenses to support our administrative and operating activities, marketing and promotion expenses associated with Serada, GLUMETZA and Proquin XR, facility costs and professional expenses, such as legal and accounting fees. Total selling, general and administrative expenses, as compared to the prior year, were as follows (in thousands):",
+   "prose_after": "The increase in selling, general and administrative expense was primarily due to an increase in GLUMETZA promotion fees to Santarus which was driven by an increase in GLUMETZA gross margin. The increase in promotion fee expense was partially offset by a decrease in other expenses due to lower headcount in 2010.\nInterest Income and Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "$",
+     "94",
+     "",
+     "$",
+     "314",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(183)",
+     "",
+     "",
+     "(285)",
+     "",
+     ""
+    ],
+    [
+     "Net interest income (expense)",
+     "",
+     "(89)",
+     "",
+     "",
+     "29",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 901
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The increase in selling, general and administrative expense was primarily due to an increase in GLUMETZA promotion fees to Santarus which was driven by an increase in GLUMETZA gross margin. The increase in promotion fee expense was partially offset by a decrease in other expenses due to lower headcount in 2010.\nInterest Income and Expense",
+   "prose_after": "Interest and other income decreased during the three months ended March 31, 2010 as compared to the corresponding period in 2009 as a result of lower interest rates on our investments.\nInterest expense relates to interest on the credit facility we entered into in June 2008 with General Electric Capital Corporation and Oxford Finance Corporation.\nLIQUIDITY AND CAPITAL RESOURCES",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "March 31, 2010",
+     "",
+     "",
+     "December 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and marketable securities",
+     "",
+     "$",
+     "71,475",
+     "",
+     "$",
+     "81,759",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 908,
+    "end_line": 914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Interest and other income decreased during the three months ended March 31, 2010 as compared to the corresponding period in 2009 as a result of lower interest rates on our investments.\nInterest expense relates to interest on the credit facility we entered into in June 2008 with General Electric Capital Corporation and Oxford Finance Corporation.\nLIQUIDITY AND CAPITAL RESOURCES",
+   "prose_after": "Since inception through March 31, 2010, we have financed our product development efforts and operations primarily from private and public sales of equity securities and from license and termination fees from collaborative and license partners.\nIn December 2006, we entered into a common stock purchase agreement with Azimuth Opportunity, Ltd., pursuant to which Azimuth is committed to purchase, from time to time and at our sole discretion, up to the lesser of (a) $30.0 million of our common stock, or (b) 8,399,654 shares of common stock. In August 2008, the agreement was amended and the term of the agreement was extended until December 2010. Sales to Azimuth under the agreement, if any, will be made at a price equal to the average closing price of our common stock over a given pricing period, minus a discount ranging from approximately 3.8% to 6.4%, which varies based on a threshold price set by us. Upon each sale of the our common stock to Azimuth under the agreement, we have also agreed to pay Reedland Capital Partners a placement fee equal to approximately 1.1% of the aggregate dollar amount of common stock purchased by Azimuth. Azimuth is not required to purchase our common stock when the price of our common stock is below $2 per share. As of March 31, 2010, we have not sold any common stock to Azimuth under this common stock purchase agreement.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Less than\n1 year",
+     "",
+     "",
+     "1-3 years",
+     "",
+     "",
+     "3-5 years",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "$",
+     "1,613",
+     "",
+     "1,370",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,983",
+     ""
+    ],
+    [
+     "Long-term debt (principal)",
+     "",
+     "3,957",
+     "",
+     "",
+     "1,209",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,166",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt (interest)",
+     "",
+     "400",
+     "",
+     "",
+     "27",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "427",
+     "",
+     ""
+    ],
+    [
+     "Purchase commitments",
+     "",
+     "1,690",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,690",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "7,660",
+     "",
+     "$",
+     "2,606",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "10,266",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 997
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Net cash used in investing activities during the three months ended March 31, 2010 was approximately $9.2 million and consisted primarily of a net increase in marketable securities as a result of a shift in purchasing slightly longer term securities. During the three months ended March 31, 2010, the Company purchased more securities with original maturities greater than three months as compared to the fourth quarter of 2009, where purchases of securities with original maturities under three months are classified as cash equivalents and not marketable securities. Net cash used in investing activities during the three months ended March 31, 2009 was approximately $24.8 million and consisted primarily a net increase in marketable securities resulting from investment of the upfront payment received from Solvay in February 2009.\nCash Flows from Financing Activities\nCash used in financing activities during the three months ended March 31, 2010 was approximately $0.6 million compared to $0.7 million for the same period in 2009, and consisted of repayments of principal on our credit facility offset by proceeds from employee and consultant option exercises.\nContractual Obligations\nAs of March 31, 2010, our aggregate contractual obligations are as shown in the following table (in thousands):",
+   "prose_after": "At March 31, 2010 we had non-cancelable purchase orders and minimum purchase obligations of approximately $0.7 million under our manufacturing agreement with Patheon Puerto Rico, Inc. for the manufacture of 500mg GLUMETZA, and $1.0 million under our supply agreement with Biovail for the supply of 1000mg GLUMETZA. The amounts disclosed only represent minimum purchase requirements. Actual purchases are expected to exceed these amounts.\nThe contractual obligations reflected in this table exclude $3.0 million of contingent milestone payments we may be obligated to pay in the future under our sublicense agreement with PharmaNova. The payments relate to various milestones for the product candidate under the sublicense agreement, including submission to the FDA of an NDA, and FDA approval of an NDA. The above table also excludes any future royalty payments we may be required to pay on products we have licensed or any promotion fees associated with our promotion agreement with Santarus.\nITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1006,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "",
+     "31.1",
+     "Certification pursuant to Rule 13a-14(a) under the Securities Exchange Act of 1934 of Carl A. Pelzel"
+    ],
+    [
+     "",
+     "",
+     "31.2",
+     "Certification pursuant to Rule 13a-14(a) under the Securities Exchange Act of 1934 of Tammy L. Cameron"
+    ],
+    [
+     "",
+     "",
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350 of Carl A. Pelzel"
+    ],
+    [
+     "",
+     "",
+     "32.2",
+     "Certification pursuant to 18 U.S.C. Section 1350 of Tammy L. Cameron"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1412,
+    "end_line": 1419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Our operations are vulnerable to damage or interruption from computer viruses, human error, natural disasters, telecommunications failures, intentional acts of vandalism and similar events. In particular, our corporate headquarters are located in the San Francisco Bay area, which has a history of seismic activity. We have not established a formal disaster recovery plan, and our back-up operations and our business interruption insurance may not be adequate to compensate us for losses that occur. A significant business interruption could result in losses or damages incurred by us and require us to cease or curtail our operations.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nNot applicable.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNot applicable.\nITEM 4. RESERVED\nNot applicable.\nITEM 5. OTHER INFORMATION\nNot applicable.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1408,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: May 3, 2010",
+     "DEPOMED, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Carl A. Pelzel",
+     ""
+    ],
+    [
+     "",
+     "Carl A. Pelzel",
+     ""
+    ],
+    [
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Tammy L. Cameron",
+     ""
+    ],
+    [
+     "",
+     "Tammy L. Cameron",
+     ""
+    ],
+    [
+     "",
+     "Vice President, Finance",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1426,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1440,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

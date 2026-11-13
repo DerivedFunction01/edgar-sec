@@ -1,0 +1,2607 @@
+{
+ "accession": "0001104659-21-004311",
+ "cik": "0000784539",
+ "form": "10-Q",
+ "filing_date": "2021-01-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tm213004d1_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "59-2597349"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended November 30, 2020, or\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______ to _______\nCommission File No. 000-14311\nEACO CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "5065 East Hunter Avenue\nAnaheim, California 92807\n(Address of Principal Executive Offices)\n(714) 876-2490\n(Registrant\u2019s Telephone No.)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, $0.01 Par Value\n(Title of Class)\nIndicate by check mark whether the registrant:\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "53,403",
+     "",
+     "$",
+     "56,040",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "38,951",
+     "",
+     "",
+     "40,144",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "14,452",
+     "",
+     "",
+     "15,896",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "12,681",
+     "",
+     "",
+     "12,602",
+     ""
+    ],
+    [
+     "    Income from operations",
+     "",
+     "1,771",
+     "",
+     "",
+     "3,294",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss on trading securities",
+     "",
+     "(553)",
+     "",
+     "",
+     "(80)",
+     ""
+    ],
+    [
+     "Loss on sale of real property",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "(102)",
+     ""
+    ],
+    [
+     "Interest and other expense, net",
+     "",
+     "(69)",
+     "",
+     "",
+     "(119)",
+     ""
+    ],
+    [
+     "  Other (expense), net",
+     "",
+     "(622)",
+     "",
+     "",
+     "(301)",
+     ""
+    ],
+    [
+     "    Income before income taxes",
+     "",
+     "1,149",
+     "",
+     "",
+     "2,993",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "298",
+     "",
+     "",
+     "1,076",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "851",
+     "",
+     "",
+     "1,917",
+     ""
+    ],
+    [
+     "Cumulative preferred stock dividend",
+     "",
+     "(19)",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "    Net income attributable to common shareholders",
+     "$",
+     "832",
+     "",
+     "$",
+     "1,898",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted earnings per common share:",
+     "$",
+     "0.17",
+     "",
+     "$",
+     "0.39",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "4,861,590",
+     "",
+     "",
+     "4,861,590",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n\n\nNovember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Smaller reporting company [X]  Emerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAs of January 5, 2021, 4,861,590 shares of the registrant\u2019s common stock were outstanding.\nPART I\nFINANCIAL INFORMATION\nItem 1. Financial Statements\nCondensed Consolidated Statements of Income\n(in thousands, except for share and per share information)",
+   "prose_after": "Condensed Consolidated Statements of Comprehensive Income\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 75,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 114,
+     "token": "REPEATING_FOOTER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "851",
+     "",
+     "$",
+     "1,917",
+     ""
+    ],
+    [
+     "Other comprehensive gain (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Foreign translation gain (loss)",
+     "",
+     "(82)",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "Total comprehensive income",
+     "$",
+     "769",
+     "",
+     "$",
+     "1,705",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n\n\nNovember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 124,
+    "end_line": 138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Statements of Comprehensive Income\n(in thousands)",
+   "prose_after": "Condensed Consolidated Balance Sheets\n(in thousands, except share information)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 122,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 139,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "November 30,",
+     "",
+     "August 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2020*",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "6,665",
+     "$",
+     "6,079"
+    ],
+    [
+     "  Restricted cash",
+     "",
+     "3,202",
+     "",
+     "2,916"
+    ],
+    [
+     "  Trade accounts receivable, net",
+     "",
+     "28,033",
+     "",
+     "29,667"
+    ],
+    [
+     "  Inventory, net",
+     "",
+     "39,616",
+     "",
+     "39,545"
+    ],
+    [
+     "  Marketable securities, trading",
+     "",
+     "791",
+     "",
+     "1,368"
+    ],
+    [
+     "  Prepaid expenses and other current assets",
+     "",
+     "4,388",
+     "",
+     "5,094"
+    ],
+    [
+     "Total current assets",
+     "",
+     "82,695",
+     "",
+     "84,669"
+    ],
+    [
+     "Non-current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property, equipment and leasehold improvements, net",
+     "",
+     "8,650",
+     "",
+     "8,848"
+    ],
+    [
+     "  Operating lease right-of-use assets",
+     "",
+     "12,393",
+     "",
+     "12,810"
+    ],
+    [
+     "  Other assets, net",
+     "",
+     "1,414",
+     "",
+     "1,424"
+    ],
+    [
+     "Total assets",
+     "$",
+     "105,152",
+     "$",
+     "107,751"
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Trade accounts payable",
+     "$",
+     "16,334",
+     "$",
+     "16,535"
+    ],
+    [
+     "  Accrued expenses and other current liabilities",
+     "",
+     "5,909",
+     "",
+     "6,632"
+    ],
+    [
+     "  Liability for short sales of trading securities",
+     "",
+     "3,202",
+     "",
+     "2,916"
+    ],
+    [
+     "  Current portion of operating lease liabilities",
+     "",
+     "2,585",
+     "",
+     "2,653"
+    ],
+    [
+     "  Current portion of long-term debt",
+     "",
+     "3,049",
+     "",
+     "5,209"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "31,079",
+     "",
+     "33,945"
+    ],
+    [
+     "Non-current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Long-term debt",
+     "",
+     "4,671",
+     "",
+     "4,698"
+    ],
+    [
+     "  Operating lease liabilities",
+     "",
+     "9,833",
+     "",
+     "10,289"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "45,583",
+     "",
+     "48,932"
+    ],
+    [
+     "Commitments and Contingencies (Note 8)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Convertible preferred stock, $0.01 par value per share; 10,000,000 shares authorized; 36,000 shares outstanding (liquidation value $900)",
+     "",
+     "1",
+     "",
+     "1"
+    ],
+    [
+     "    Common stock, $0.01 par value per share; 8,000,000 shares authorized; 4,861,590 shares outstanding",
+     "",
+     "49",
+     "",
+     "49"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "12,378",
+     "",
+     "12,378"
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "706",
+     "",
+     "788"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "46,435",
+     "",
+     "45,603"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "59,569",
+     "",
+     "58,819"
+    ],
+    [
+     "  Total liabilities and shareholders\u2019 equity",
+     "$",
+     "105,152",
+     "$",
+     "107,751"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 149,
+    "end_line": 198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Balance Sheets\n(in thousands, except share information)",
+   "prose_after": "* Derived from the Company\u2019s audited financial statements included in its Form 10-K for the year ended August 31, 2020 filed with the U.S. Securities and Exchange Commission on November 30, 2020.\nCondensed Consolidated Statement of Shareholders\u2019 Equity\n(in thousands, except share information)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 147,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 201,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Convertible",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Shareholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, August 31, 2020 *",
+     "",
+     "36,000",
+     "$",
+     "1",
+     "",
+     "4,861,590",
+     "$",
+     "49",
+     "$",
+     "12,378",
+     "$",
+     "788",
+     "",
+     "$",
+     "45,603",
+     "",
+     "$",
+     "58,819",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19)",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "Foreign translation loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(82)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(82)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "851",
+     "",
+     "",
+     "851",
+     ""
+    ],
+    [
+     "Balance, November 30, 2020",
+     "",
+     "36,000",
+     "$",
+     "1",
+     "",
+     "4,861,590",
+     "$",
+     "49",
+     "$",
+     "12,378",
+     "$",
+     "706",
+     "",
+     "$",
+     "46,435",
+     "",
+     "$",
+     "59,569",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, August 31, 2019 *",
+     "",
+     "36,000",
+     "$",
+     "1",
+     "",
+     "4,861,590",
+     "$",
+     "49",
+     "$",
+     "12,378",
+     "$",
+     "876",
+     "",
+     "$",
+     "37,886",
+     "",
+     "$",
+     "51,190",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19)",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "Foreign translation loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(212)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,917",
+     "",
+     "",
+     "1,917",
+     ""
+    ],
+    [
+     "Balance, November 30, 2019",
+     "",
+     "36,000",
+     "$",
+     "1",
+     "",
+     "4,861,590",
+     "$",
+     "49",
+     "$",
+     "12,378",
+     "$",
+     "664",
+     "",
+     "$",
+     "39,784",
+     "",
+     "$",
+     "52,876",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 211,
+    "end_line": 235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "* Derived from the Company\u2019s audited financial statements included in its Form 10-K for the year ended August 31, 2020 filed with the U.S. Securities and Exchange Commission on November 30, 2020.\nCondensed Consolidated Statement of Shareholders\u2019 Equity\n(in thousands, except share information)",
+   "prose_after": "* Derived from the Company\u2019s audited financial statements included in its Form 10-K for the years ended August 31, 2020 and 2019 as filed with the U. S. Securities and Exchange Commission on November 30, 2020 and November 27, 2019, respectively.\nCondensed Consolidated Statements of Cash Flows\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 238,
+     "token": "REPEATING_FOOTER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "851",
+     "",
+     "$",
+     "1,917",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "377",
+     "",
+     "",
+     "259",
+     ""
+    ],
+    [
+     "  Bad debt expense",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "  Loss on sale of property",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "102",
+     ""
+    ],
+    [
+     "  Net gain on trading securities",
+     "",
+     "553",
+     "",
+     "",
+     "80",
+     ""
+    ],
+    [
+     "(Increase) decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Trade accounts receivable",
+     "",
+     "1,634",
+     "",
+     "",
+     "2,175",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "(71)",
+     "",
+     "",
+     "(2,472)",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other assets",
+     "",
+     "716",
+     "",
+     "",
+     "(729)",
+     ""
+    ],
+    [
+     "  Operating lease right-of-use assets",
+     "",
+     "417",
+     "",
+     "",
+     "\u2013\u2013",
+     ""
+    ],
+    [
+     "Increase (decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Trade accounts payable",
+     "",
+     "666",
+     "",
+     "",
+     "(2,266)",
+     ""
+    ],
+    [
+     "  Accrued expenses and other current liabilities",
+     "",
+     "(723)",
+     "",
+     "",
+     "(737)",
+     ""
+    ],
+    [
+     "  Operating lease liabilities",
+     "",
+     "(524)",
+     "",
+     "",
+     "\u2013\u2013",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "3,896",
+     "",
+     "",
+     "(1,668)",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Additions to property, equipment, and leasehold improvements",
+     "",
+     "(179)",
+     "",
+     "",
+     "(2,393)",
+     ""
+    ],
+    [
+     "  Proceeds from sale of property",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "7,075",
+     ""
+    ],
+    [
+     "  Sale of marketable securities, trading",
+     "",
+     "24",
+     "",
+     "",
+     "1,388",
+     ""
+    ],
+    [
+     "  Net change in liabilities for short sales of trading securities",
+     "",
+     "286",
+     "",
+     "",
+     "2,167",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "131",
+     "",
+     "",
+     "8,237",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  (Payments) borrowings on revolving credit facility, net",
+     "",
+     "(2,187)",
+     "",
+     "",
+     "513",
+     ""
+    ],
+    [
+     "  Borrowings on Construction Loan",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "1,701",
+     ""
+    ],
+    [
+     "  Repayments on long-term debt",
+     "",
+     "\u2013\u2013",
+     "",
+     "",
+     "(5,125)",
+     ""
+    ],
+    [
+     "  Preferred stock dividend",
+     "",
+     "(19)",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "  Bank overdraft",
+     "",
+     "(867)",
+     "",
+     "",
+     "104",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(3,073)",
+     "",
+     "",
+     "(2,826)",
+     ""
+    ],
+    [
+     "  Effect of foreign currency exchange rate changes on cash and cash equivalents",
+     "",
+     "(82)",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "Net increase in cash, cash equivalents, and restricted cash",
+     "",
+     "872",
+     "",
+     "",
+     "3,531",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash - beginning of period",
+     "",
+     "8,995",
+     "",
+     "",
+     "5,347",
+     ""
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash - end of period",
+     "$",
+     "9,867",
+     "",
+     "$",
+     "8,878",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "$",
+     "48",
+     "",
+     "$",
+     "122",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n\n\nNovember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 248,
+    "end_line": 302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "* Derived from the Company\u2019s audited financial statements included in its Form 10-K for the years ended August 31, 2020 and 2019 as filed with the U. S. Securities and Exchange Commission on November 30, 2020 and November 27, 2019, respectively.\nCondensed Consolidated Statements of Cash Flows\n(in thousands)",
+   "prose_after": "NOTES TO UNAUDITED CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNovember 30, 2020\nNote 1. Organization and Basis of Presentation\nEACO Corporation (\u201cEACO\u201d), incorporated in Florida in September 1985, is a holding company, primarily comprised of its wholly-owned subsidiary, Bisco Industries, Inc. (\u201cBisco\u201d) and Bisco\u2019s wholly-owned Canadian subsidiary, Bisco Industries Limited. Substantially all of EACO\u2019s operations are conducted through Bisco and Bisco Industries Limited. Bisco was incorporated in Illinois in 1974 and is a distributor of electronic components and fasteners with 49 sales offices and seven distribution centers located throughout the United States and Canada. Bisco supplies parts used in the manufacture of products in a broad range of industries, including the aerospace, circuit board, communication, computer, fabrication, instrumentation, industrial equipment and marine industries.\nNote 2. Significant Accounting Policies and Significant Recent Accounting Pronouncements\nUse of Estimates",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 303,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "November 30,\n\n\n\n2020",
+     "",
+     "August 31,\n\n\n\n2020",
+     ""
+    ],
+    [
+     "  Accrued expenses and other current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued accounts payable",
+     "$",
+     "1,455",
+     "$",
+     "1,515"
+    ],
+    [
+     "Accrued compensation and payroll",
+     "",
+     "1,944",
+     "",
+     "2,892"
+    ],
+    [
+     "  Accrued taxes",
+     "",
+     "2,510",
+     "",
+     "2,225"
+    ],
+    [
+     "  Total Accrued expenses and other current liabilities",
+     "$",
+     "5,909",
+     "$",
+     "6,632"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "In February 2016, the FASB issued ASU 2016-02, \"Leases (Topic 842),\" which requires lessees to recognize almost all leases on their balance sheet as a right-of-use asset and a lease liability. For income statement purposes, the FASB retained a dual model, requiring leases to be classified as either operating or finance. Classification will be based on criteria that are largely similar to those applied in current lease accounting, but without explicit bright lines. Lessor accounting is similar to the current model, but updated to align with certain changes to the lessee model and the new revenue recognition standard. This ASU is effective for fiscal years beginning after December 15, 2019, including interim periods within those fiscal years. The Company adopted ASU 2016-02 on September 1, 2019 and applied the package of practical expedients included therein, as well as utilized the transition method included in ASU 2018-11.\nIn June 2016, the FASB issued ASU 2016-13, \u201cFinancial Instruments \u2013 Credit Losses\u201d, which will require the measurement of all expected credit losses for financial assets held at the reporting date based on historical experience, current conditions, and reasonable and supportable forecasts. The guidance is effective for annual reporting periods beginning after December 15, 2019 and interim periods within those fiscal years. In November 2019, the FASB deferred the effective dates of the new credit losses standard for all entities except SEC filers that are not smaller reporting companies to fiscal year beginning after December 15, 2022, including interim periods within those fiscal years. The Company is currently evaluating this statement and its impact on its results of operations or financial position.\nNote 3. Accrued Liabilities\nThe Company\u2019s accrued liabilities as of November 30, 2020 and August 31, 2020 are summarized as follows (in thousands):",
+   "prose_after": "Note 4. Debt\nThe Company currently has a $15,000,000 line of credit agreement with Citizens Business Bank (the \u201cBank\u201d). On December 4, 2019, the Company entered into an amendment, which modified the Company\u2019s $10,000,000 line of credit between the Company and the Bank to increase the maximum amount that may be borrowed thereunder from $10.0 million to $15.0 million. In addition, the Amendment removed the Company\u2019s interest rate options but provided that in no event would such interest rate be less than 3.5% per annum. The expiration date of the line of credit under the line of credit agreement is July 5, 2021. The amounts outstanding under this line of credit as of November 30, 2020 and August 31, 2020 are currently all under the default variable interest index rate of 3.5%. Borrowings are secured by substantially all of the assets of the Company and its subsidiaries. The amounts outstanding under this line of credit as of November 30, 2020 and August 31, 2020 were $2,939,000 and $5,100,000, respectively. The line of credit agreement contains certain nonfinancial and financial covenants, including the maintenance of certain financial ratios. As of November 30, 2020 and August 31, 2020, the Company was in compliance with all such covenants.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except share and per share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EPS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "851",
+     "",
+     "$",
+     "1,917",
+     ""
+    ],
+    [
+     "  Less: accrued preferred stock dividends",
+     "",
+     "(19)",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "  Net income available for common shareholders",
+     "$",
+     "832",
+     "",
+     "$",
+     "1,898",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Earnings per common share  \u2013 basic and diluted",
+     "$",
+     "0.17",
+     "",
+     "$",
+     "0.39",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n\n\nNovember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "The Company also entered into a new Loan Agreement with the Bank to borrow up to $5,000,000 (the \u201cConstruction Loan\u201d) for the primary purpose of financing tenant improvements at its new corporate headquarters located at 5065 East Hunter Avenue in Anaheim, California (the \u201cHunter Property\u201d). The Construction Loan was a line of credit evidenced by a Promissory Note in the principal amount of up to $5,000,000 with a maturity date of May 15, 2027. The terms of the Construction Loan provided that the Company could only request advances through July 15, 2020, and thereafter, the Construction Loan converted to a term loan with a fixed rate of 4.6%, which is entitled to a .25% rate discount if a demand deposit account is held with the Bank. On July 15, 2020, the amount drawn on the Construction Loan was converted to a term loan in the amount of $4,807,000. Interest on the Construction Loan is payable monthly (4.35% per annum at both November 30, 2020 and August 31, 2020). Concurrent with the execution of this Construction Loan, Bisco entered into a commercial security agreement, dated July 12, 2019, with the Bank, pursuant to which Bisco granted the Bank a security interest in substantially all of Bisco\u2019s personal property to secure Bisco\u2019s obligations under the Construction Loan. The outstanding balance of the Construction Loan at November 30, 2020 and August 31, 2020 was $4,780,000 and $4,807,000, respectively.\nEACO has also entered into a business loan agreement (and related $100,000 promissory note) with the Bank in order to obtain a $100,000 letter of credit as security for the Company\u2019s worker\u2019s compensation requirements.\nNote 5. Earnings per Share\nThe following is a reconciliation of the numerators and denominators of the basic and diluted computations for earnings per common share (in thousands, except per share data):",
+   "prose_after": "For the three months ended November 30, 2020 and 2019, 40,000 potential common shares (issuable upon conversion of 36,000 shares of the Company\u2019s Series A Cumulative Convertible Preferred Stock) have been included in the computation of diluted earnings per share, which had no effect on basic earnings per share.\nNote 6. Related Party Transactions\nThe Company leases its Chicago area sales office and distribution center located in Glendale Heights, Illinois under an operating lease agreement (the \u201cGlendale Lease\u201d) from the Glen\nF. Ceiley and Barbara A.Ceiley Revocable Trust (the \u201cTrust\u201d), which is the grantor trust of Glen Ceiley, the Company\u2019s Chief Executive Officer, Chairman of the Board, and majority shareholder. The Glendale Lease is a ten year lease with an initial monthly rental rate of $22,600, which is subject to annual rent increases of approximately 2.5% as set forth in the Glendale Lease. During the three months ended November 30, 2020 and 2019, the Company incurred expense related to the Glendale Lease of approximately $72,000 and $71,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "53,403",
+     "",
+     "$",
+     "56,040",
+     "",
+     "$",
+     "(2,637)",
+     "",
+     "",
+     "(4.7)",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "38,951",
+     "",
+     "",
+     "40,144",
+     "",
+     "",
+     "(1,193)",
+     "",
+     "",
+     "(3.0)",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "$",
+     "14,452",
+     "",
+     "$",
+     "15,896",
+     "",
+     "$",
+     "(1,444)",
+     "",
+     "",
+     "(9.1)",
+     "%"
+    ],
+    [
+     "Gross margin as a percent of revenues",
+     "",
+     "27.0",
+     "%",
+     "",
+     "28.4",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "(1.4)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 535,
+    "end_line": 548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "A valuation allowance is provided for deferred tax assets if it is more likely than not that these items will either expire before the Company is able to realize their benefit, or when future deductibility is uncertain. The Company records net deferred tax assets to the extent management believes these assets will more likely than not be realized. In making such determination, the Company considers all available positive and negative evidence, including scheduled reversals of deferred tax liabilities, projected future taxable income (if any), tax planning strategies and recent financial performance.\nInventory\nThe Company\u2019s inventory provisions are based upon management\u2019s review of inventories on-hand over their expected future utilization and length of time held by the Company. The Company\u2019s methodology for estimating these adjustments to the cost basis is evaluated for factors that could require changes to the cost basis including significant changes in product demand, market conditions, condition of the inventory or net realizable value. If business or economic conditions change, the Company\u2019s estimates and assumptions may be adjusted as deemed appropriate.\nThere have been no changes to the Company\u2019s critical accounting policies for the three months ended November 30, 2020.\nResults of Operations\nComparison of the Three Months Ended November 30, 2020 and 2019\nNet Sales and Gross Profit ($ in thousands)",
+   "prose_after": "Net sales consist primarily of sales of component parts and fasteners, but also include, to a lesser extent, kitting charges and special order fees, as well as freight charged to customers. The Company expanded its product offering during the prior fiscal year to include personal protection equipment (\u201cPPE\u201d) including, among other things, masks, shields and sanitizing stations.\nThe decrease in revenues in the three months ended November 30, 2020 (\u201cQ1 2021\u201d) as compared to the three months ended November 30, 2019 (\u201cQ1 2020\u201d) was largely due to lower demand for product resulting from the global industry-wide slowdown due to the impact from the COVID-19 pandemic. While our sales continue to remain strong, we cannot predict how long the pandemic will last or the impact of such pandemic on our financial condition and results of operations.\nThe gross margins in Q1 2021 decreased by 1.4% as a percentage of revenues when compared to Q1 2020. This decrease was primarily due to a combination of product and customer mix, and overall declines in gross profit margin due to the global industry-wide slowdown and the impacts from the COVID-19 outbreak. The PPE products distributed by the Company typically carry lower margins, which also contributed to the decline in gross margins in the current periods.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "$",
+     "12,681",
+     "",
+     "$",
+     "12,602",
+     "",
+     "$",
+     "79",
+     "",
+     "0.6",
+     "%"
+    ],
+    [
+     "Percent of net sales",
+     "",
+     "23.7",
+     "%",
+     "",
+     "22.5",
+     "%",
+     "",
+     "",
+     "",
+     "1.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Net sales consist primarily of sales of component parts and fasteners, but also include, to a lesser extent, kitting charges and special order fees, as well as freight charged to customers. The Company expanded its product offering during the prior fiscal year to include personal protection equipment (\u201cPPE\u201d) including, among other things, masks, shields and sanitizing stations.\nThe decrease in revenues in the three months ended November 30, 2020 (\u201cQ1 2021\u201d) as compared to the three months ended November 30, 2019 (\u201cQ1 2020\u201d) was largely due to lower demand for product resulting from the global industry-wide slowdown due to the impact from the COVID-19 pandemic. While our sales continue to remain strong, we cannot predict how long the pandemic will last or the impact of such pandemic on our financial condition and results of operations.\nThe gross margins in Q1 2021 decreased by 1.4% as a percentage of revenues when compared to Q1 2020. This decrease was primarily due to a combination of product and customer mix, and overall declines in gross profit margin due to the global industry-wide slowdown and the impacts from the COVID-19 outbreak. The PPE products distributed by the Company typically carry lower margins, which also contributed to the decline in gross margins in the current periods.\nSelling, General and Administrative Expenses ($ in thousands)",
+   "prose_after": "Selling, general and administrative expense (\u201cSG&A\u201d) consists primarily of payroll and related expenses for the Company\u2019s sales and administrative staff, professional fees including accounting, legal and technology costs and expenses, and sales and marketing costs. SG&A in Q1 2021 increased from Q1 2020 largely due to an increase in employee headcount, and annual raises as well as increases in rent in leased offices primarily due to the move to the Hunter Property, which almost doubled the size of the Anaheim warehouse and distribution center. SG&A as a percent of revenue in Q1 2021 increased from Q1 2020 by 1.2%, primarily due to increases in the employee headcount, higher rent expense, and a decrease in Q1 2021 sales due to the COVID-19 pandemic.\nOther (Expense), Net ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Other (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) on trading securities",
+     "$",
+     "(553)",
+     "",
+     "$",
+     "(80)",
+     "",
+     "$",
+     "(473)",
+     "",
+     "",
+     "(591.3)",
+     "%"
+    ],
+    [
+     "Loss on sale of property",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(102)",
+     "",
+     "",
+     "102",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Interest and other expense, net",
+     "",
+     "(69)",
+     "",
+     "",
+     "(119)",
+     "",
+     "",
+     "50",
+     "",
+     "",
+     "42.0",
+     "%"
+    ],
+    [
+     "Other (expense), net",
+     "$",
+     "(622)",
+     "",
+     "$",
+     "(301)",
+     "",
+     "$",
+     "(321)",
+     "",
+     "",
+     "(106.6)",
+     "%"
+    ],
+    [
+     "Percent of net sales",
+     "",
+     "(1.2)",
+     "%",
+     "",
+     "(0.5)",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "(0.7)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 590
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Selling, general and administrative expense (\u201cSG&A\u201d) consists primarily of payroll and related expenses for the Company\u2019s sales and administrative staff, professional fees including accounting, legal and technology costs and expenses, and sales and marketing costs. SG&A in Q1 2021 increased from Q1 2020 largely due to an increase in employee headcount, and annual raises as well as increases in rent in leased offices primarily due to the move to the Hunter Property, which almost doubled the size of the Anaheim warehouse and distribution center. SG&A as a percent of revenue in Q1 2021 increased from Q1 2020 by 1.2%, primarily due to increases in the employee headcount, higher rent expense, and a decrease in Q1 2021 sales due to the COVID-19 pandemic.\nOther (Expense), Net ($ in thousands)",
+   "prose_after": "Other (expense), net, primarily consists of income or loss on trading in short-term marketable equity securities of publicly-held corporations and interest related to the Company\u2019s debt obligations. The Company\u2019s investment strategy consists of both long and short positions, as well as utilizing options designed to improve returns. During Q1 2021, the Company recognized a net loss on trading securities of $553,000 as compared to a net loss of $80,000 in Q1 2020. The increase in net trading securities losses in Q1 2021 was primarily due to timing of sales and purchases and general market climate for short and long positions during the period.\nInterest and other (expense), net, decreased in Q1 2021 compared to Q1 2020, which was primarily due to lower variable rates on our loans and carrying a lower balance on our line of credit during Q1 2021 compared to Q1 2020.\nIncome Tax Provision ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 617,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nNovember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "298",
+     "",
+     "$",
+     "1,076",
+     "",
+     "$",
+     "(778)",
+     "",
+     "",
+     "(72.3)",
+     "%"
+    ],
+    [
+     "Percent of pre-tax income",
+     "",
+     "25.9",
+     "%",
+     "",
+     "36.0",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "(10.1)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 597,
+    "end_line": 608
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Other (expense), net, primarily consists of income or loss on trading in short-term marketable equity securities of publicly-held corporations and interest related to the Company\u2019s debt obligations. The Company\u2019s investment strategy consists of both long and short positions, as well as utilizing options designed to improve returns. During Q1 2021, the Company recognized a net loss on trading securities of $553,000 as compared to a net loss of $80,000 in Q1 2020. The increase in net trading securities losses in Q1 2021 was primarily due to timing of sales and purchases and general market climate for short and long positions during the period.\nInterest and other (expense), net, decreased in Q1 2021 compared to Q1 2020, which was primarily due to lower variable rates on our loans and carrying a lower balance on our line of credit during Q1 2021 compared to Q1 2020.\nIncome Tax Provision ($ in thousands)",
+   "prose_after": "The provision for income taxes decreased by $778,000 in Q1 2021 over the prior year period. This decrease was primarily due to lower taxable income in the current quarter as compared to the prior year period. The income tax provision as a percent of pre-tax income decreased from 36.0% at Q1 2020 to 25.9% at Q1 2021, which was primarily due to a discrete tax item resulting from certain deferred tax assets and permanent book to tax differences, related to prior periods that was reconciled and recorded in Q1 2020 for approximately $277,000.\nLiquidity and Capital Resources\nAs of November 30, 2020 and August 31, 2020, the Company held approximately $6,665,000 and $6,079,000 of unrestricted cash and cash equivalents, respectively. The Company also held $791,000 and $1,368,000 of marketable securities at November 30, 2020 and August 31, 2020, respectively, which could be liquidated, if necessary.\nThe Company currently has a $15,000,000 line of credit agreement with the Bank. On December 4, 2019, the Company entered into a Change in Terms Agreement dated November 27, 2019 with the Bank (the \u201cAmendment\u201d), which modified the Company\u2019s $10,000,000 line of credit between the Company and the Bank to increase the maximum amount that may be borrowed thereunder from $10.0 million to $15.0 million. In addition, the Amendment removed the Company\u2019s interest rate options but provided that in no event would such interest rate be less than 3.5% per annum. The expiration date of the line of credit under the line of credit agreement is July 5, 2021. The Company intends to renew the line of credit beyond its maturity date. The amounts outstanding under this line of credit as of November 30, 2020 and August 31, 2020 are currently all under the default variable interest index rate of 3.5%. Borrowings are secured by substantially all of the assets of the Company and its subsidiaries. The amounts outstanding under this line of credit as of November 30, 2020 and August 31, 2020 were $2,939,000 and $5,100,000, respectively. The line of credit agreement contains certain nonfinancial and financial covenants, including the maintenance of certain financial ratios. As of November 30, 2020 and August 31, 2020, the Company was in compliance with all such covenants.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 617,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "Exhibit"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act."
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone\nItem 6. Exhibits\nThe following exhibits are filed as part of this Quarterly report on Form 10-Q.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "EACO CORPORATION"
+    ],
+    [
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: January 14, 2021",
+     "/s/ Glen Ceiley"
+    ],
+    [
+     "",
+     "Glen Ceiley"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "(Principal Executive Officer & Principal Financial Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Michael Narikawa"
+    ],
+    [
+     "",
+     "Michael Narikawa"
+    ],
+    [
+     "",
+     "Controller"
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "EACO CORPORATION",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 840,
+    "end_line": 856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "Exhibit"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act."
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 874,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5335 @@
+{
+ "accession": "0001753926-20-000065",
+ "cik": "0001537663",
+ "form": "10-K",
+ "filing_date": "2020-03-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "g081937_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "45-3588650"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 21
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTIONS 13 OR 15 (d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2019\nCommission file number: 333-206839\nHEALTH-RIGHT DISCOVERIES, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "18851 NE 29th Avenue, Suite 700, Aventura, Florida 33180\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: (305) 705-3247\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (ss.232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "3"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "7"
+    ],
+    [
+     "Item 2. Properties",
+     "8"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "10"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "13"
+    ],
+    [
+     "Item 9. Change in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "13"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "15"
+    ],
+    [
+     "Item 9B. Other Information",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers, and Corporate Governance",
+     "15"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "16"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "18"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "19"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "22"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 59,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge Accelerated Filer [ ]  Accelerated Filer [ ]\nNon-accelerated filer [X]    Smaller reporting company [X]\nEmerging growth company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was sold, or the average bid and asked prices of such common equity as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: Not applicable.\nThe number of shares outstanding of the issuer\u2019s common stock, $0.001 par value, as of March 27, 2020 was 22,869,191 shares.\nHEALTH-RIGHT DISCOVERIES, INC.\nANNUAL REPORT ON FORM 10-K FOR THE YEAR ENDED DECEMBER 31, 2019\nTABLE OF CONTENTS",
+   "prose_after": "2\nFORWARD LOOKING STATEMENTS\nCertain statements made in this Annual Report on Form 10-K are \u201cforward-looking statements\u201d regarding the plans and objectives of management for future operations. Such statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Our plans and objectives are based, in part, on assumptions involving judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond our control. Although we believe that our assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate and, therefore, there can be no assurance that the forward-looking statements included in this report will prove to be accurate. In light of the significant uncertainties inherent in the forward-looking statements included herein particularly in view of the current state of our operations, the inclusion of such information should not be regarded as a statement by us or any other person that our objectives and plans will be achieved. Factors that could cause actual results to differ materially from those expressed or implied by such forward-looking statements include, but are not limited to, the factors set forth herein under the headings \u201cItem 1. Business\u201d and \u201cItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\u201d We undertake no obligation to revise or update publicly any forward-looking statements for any reason.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "1,087,500 shares (1)",
+     "$0.35",
+     "1,912,500 shares (1)"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "0 shares",
+     "None issued",
+     "0 shares"
+    ],
+    [
+     "  Total",
+     "1,087,500 shares (1)",
+     "None issued",
+     "1,912,500 shares (1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "There is presently no public market for our common stock and there has never been a market for our common stock. Our common stock has been approved for quotation on the OTCQB tier of the over-the-counter market operated by OTC Market Group, Inc. under the symbol \u201cHRDV.\u201d However, our shares have not as yet commenced trading and there is no assurance that a public market will develop and if developed, be liquid and be sustained.\nHolders\nAs of the date of this report, we had 22,869,191 shares of common stock issued and outstanding and 40 holders of record of our common stock.\nDividends\nThe payment by us of dividends, if any, in the future rests within the discretion of our Board of Directors and will depend, among other things, upon our earnings, capital requirements and financial condition, as well as other relevant factors. We have not paid any dividends since our inception and we do not intend to pay any cash dividends in the foreseeable future, but intend to retain all earnings, if any, for use in our business.\nSecurities Authorized for Issuance under Equity Compensation Plans",
+   "prose_after": "(1) Represents shares of common stock underlying options issued as of this report or shares reserved for issuance under our 2015 Incentive Stock Plan.\nItem 6. Selected Financial Data.\nAs a \u201csmaller reporting company,\u201d as defined in Rule 12b-2 under the Exchange Act, we are not required to provide the information required by this Item.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nResults of Operations\nOverview\nHRD, through its subsidiaries, CCI and SCLLC, along with licensed wholesale pharmaceutical wholesalers offer and provide their respective services to physician practices that desire to offer In-Office Dispensing Services.\nCCI offers and provides administrative services and billing services to physician practices (each a \u201cPractice\u201d and collectively, the \u201cPractices\u201d) desiring to make certain over-the-counter products, including non-narcotic topical medications, (\u201cOTC Products\u201d), and certain prescription medications (\u201cPrescription Medications\u201d) available to patients in the physician practice\u2019s office. Each participating Practice is responsible for obtaining and maintaining any necessary and appropriate licenses, permits, or other documentation required to order, receive, store, and dispense OTC Products or certain Prescription Medications in the Practice\u2019s office in accordance with applicable federal and state law. Such services include, but are not limited to, assisting Practices with insurance claim processing, prior authorization, billing and collections, and recordkeeping. CCI offers its fee-based services to Practices participating in the In-Office Dispensing Program. CCI also provides billing and collection services on behalf of SCLLC in connection with SCLLC\u2019s sales and distribution of OTC Products to Practices participating in the OTC Program.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 242,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) and Office(s) Held"
+    ],
+    [
+     "David Hopkins",
+     "52",
+     "President, Chief Executive Officer and Director"
+    ],
+    [
+     "James Pande",
+     "61",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "(c) Remediation of Material Weaknesses\nTo remediate the material weakness in our documentation, evaluation and testing of internal controls we plan to engage a third-party firm to assist us in remedying this material weakness once resources become available.\nWe also intend to remedy our material weakness with regard to insufficient segregation of duties by hiring additional employees in order to segregate duties in a manner that establishes effective internal controls once resources become available.\n(d) Changes in Internal Controls Over Financial Reporting\nThere were no changes in our internal controls over financial reporting that occurred during the last fiscal quarter covered by this report that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nOur directors and executive officers and their respective ages and titles are as follows:",
+   "prose_after": "Set forth below is a brief description of the background and business experience of our directors and executive officers.\nDavid Hopkins founded Health-Right in 2011, has served as President and a director since that time and assumed the additional position of Chief Executive Officer in January 2018. From November 2009 until he founded the Company, Mr. Hopkins was a founder and managing member of Envirocare Solutions, LLC, a privately-held technology-driven manufacturer and wholesale distributor of products designed to deliver cold air micro-mist diffusion safely into the environment. In addition, since 2001, Mr. Hopkins has been a principal of Hopkins & Associates, a consulting firm providing turnaround and business development services to various private and public held companies engaged in a variety of industries, ranging from the production and distribution of soft drinks to biotechnology and environmental products. Mr. Hopkins holds a B.S. degree from Carroll University in Wisconsin.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards (#)",
+     "",
+     "Option Awards (#)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "David Hopkins,\n\n\n\n\n\nPresident and CEO(1)",
+     "",
+     "2019\n\n\n\n2018 2017",
+     "",
+     "295,545\n\n\n\n311,481 82,750",
+     "(5)\n(2)\n(4)",
+     "",
+     "0\n\n\n\n0\n0",
+     "",
+     "0\n0\n0",
+     "",
+     "0 525,000\n0",
+     "",
+     "0\n0\n0",
+     "",
+     "0\n0\n0",
+     "",
+     "7,200 7,200 7,200",
+     "(3)\n(3)\n(3)",
+     "",
+     "302,745 318,681 89,950"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 441,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Our directors are appointed for a one-year term to hold office until the next annual meeting of our shareholders and until a successor is appointed and qualified, or until their removal, resignation, or death. Executive officers serve at the pleasure of the board of directors.\nBoard Committees\nOur board of directors does not currently have an audit committee, a compensation committee, or a corporate governance committee. We plan to establish such committees in the future.\nCode of Ethics\nWe do not currently have a Code of Ethics that applies to employees, including our principal executive officer, principal financial officer, principal accounting officer or controller, or persons performing similar functions. We plan to adopt a Code of Ethics in the future.\nItem 11. Executive Compensation.\nSummary Compensation Table\nThe table below summarizes all compensation awarded to, earned by, or paid to our President and Chief Executive Officer, who was our sole executive officer for the years ended December 31, 2019, 2018 and 2017, including amounts accrued but not paid.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "(1) Mr. Hopkins assumed the additional position of Chief Executive Officer in January 2018.\n(2) Includes $132,000 in previously accrued salary paid to Mr. Hopkins in 2018.\n(3) Represents a $600 monthly car allowance for Mr. Hopkins.\n(4) Includes $13,000 in accrued but unpaid 2017 salary for Mr. Hopkins.\n(5) Includes $50,000 in previously accrued salary paid to Mr. Hopkins in 2019.\nEmployment Agreement\nIn consideration for David Hopkins, the Company\u2019s Chief Executive Officer and President, assuming the additional duties of President of the Company\u2019s two subsidiaries, CCI Billing, Inc. d/b/a Complete Claim Management and Script Connection, LLC (collectively, the \u201cSubsidiaries\u201d), on May 31, 2019, the Company entered into an amended and restated employment agreement with Mr. Hopkins, effective as of April 15, 2019 (the \u201cEffective Date\u201d), which superseded the January 2018 employment agreement between the Company and Mr. Hopkins. The amended and restated employment agreement is for an initial term of three (3) years from the Effective Date and automatically renews for additional three (3) year periods, provided that the Subsidiaries achieve combined Adjusted EBITDA (as determined by the Company\u2019s accountants from the Subsidiaries\u2019 financial statements used in preparing the Company\u2019s audited consolidated financial statements) of $3,000,000 for any calendar year during the initial term and any renewal term.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 428,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPTION AWARDS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "STOCK AWARDS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\n\n\n\n\nSecurities\n\n\n\n\n\nUnderlying\n\n\n\n\n\nUnexercised\n\n\n\n\n\nOptions\n\n\n\n\n\n(#)\n\n\n\n\n\nExercisable",
+     "",
+     "Number of\n\n\n\n\n\nSecurities\n\n\n\n\n\nUnderlying\n\n\n\n\n\nUnexercised\n\n\n\n\n\nOptions\n\n\n\n\n\n(#)\n\n\n\n\n\nUnexercisable",
+     "",
+     "Equity\n\n\n\n\n\nIncentive\n\n\n\n\n\nPlan\n\n\n\n\n\nAwards:\n\n\n\n\n\nNumber of\n\n\n\n\n\nSecurities\n\n\n\n\n\nUnderlying \n\n\n\nUnexercised\n\n\n\n\n\nUnearned\n\n\n\n\n\nOptions\n\n\n\n\n\n(#)",
+     "",
+     "Option\n\n\n\n\n\nExercise\n\n\n\n\n\nPrice\n\n\n\n\n\n($)",
+     "",
+     "Option \n\n\n\nExpiration \n\n\n\nDate",
+     "",
+     "Number\n\n\n\n\n\nof\n\n\n\n\n\nShares\n\n\n\n\n\nor Shares\n\n\n\n\n\nof\n\n\n\n\n\nStock That\n\n\n\n\n\nHave\n\n\n\n\n\nNot\n\n\n\n\n\nVested\n\n\n\n\n\n(#)",
+     "",
+     "Market\n\n\n\n\n\nValue\n\n\n\n\n\nof\n\n\n\n\n\nShares\n\n\n\n\n\nor \n\n\n\nShares\n\n\n\n\n\nof\n\n\n\n\n\nStock\n\n\n\n\n\nThat\n\n\n\n\n\nHave\n\n\n\n\n\nNot\n\n\n\n\n\nVested\n\n\n\n\n\n($)",
+     "",
+     "Equity\n\n\n\n\n\nIncentive\n\n\n\n\n\nPlan\n\n\n\n\n\nAwards:\n\n\n\n\n\nNumber \n\n\n\nof\n\n\n\n\n\nUnearned\n\n\n\n\n\nShares,\n\n\n\n\n\nShares or\n\n\n\n\n\nOther\n\n\n\n\n\nRights\n\n\n\n\n\nThat Have\n\n\n\n\n\nNot \n\n\n\nVested\n\n\n\n\n\n(#)",
+     "",
+     "Equity \n\n\n\nIncentive \n\n\n\nPlan \n\n\n\nAwards: \n\n\n\nMarket or \n\n\n\nPayout\n\n\n\n\n\nValue of\n\n\n\n\n\nUnearned\n\n\n\n\n\nShares,\n\n\n\n\n\nShares or\n\n\n\n\n\nOther \n\n\n\nRights \n\n\n\nThat \n\n\n\nHave Not \n\n\n\nVested\n\n\n\n\n\n(#)",
+     ""
+    ],
+    [
+     "David Hopkins",
+     "",
+     "350,000",
+     "",
+     "175,000",
+     "",
+     "0",
+     "",
+     "0.35",
+     "",
+     "12/31/2027",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 480,
+    "end_line": 548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The amended and restated employment agreement provides for an initial base salary of $250,000. In the event in any calendar year during the initial term or any renewal term, the Subsidiaries achieve combined Adjusted EBITDA (as determined by the Company\u2019s accountants from the Subsidiaries\u2019 financial statements used in preparing the Company\u2019s audited consolidated financial statements) of $3,000,000, Mr. Hopkins\u2019 annual base salary shall automatically increase to $300,000 and in the event in any calendar year during the initial term or any renewal term, the Subsidiaries achieve combined Adjusted EBITDA (as determined by the Company\u2019s accountants from the Subsidiaries\u2019 financial statements used in preparing the Company\u2019s audited consolidated financial statements) of $3,500,000, his annual base salary shall automatically increase to $350,000. Mr. Hopkins will also receive a $600 per month car allowance while the amended and restated employment agreement is in effect.\nThe amended and restated employment agreement also contains customary confidentiality, non-competition and change in control provisions.\nOutstanding Equity Awards at Fiscal Year-End Table\nThe table below summarizes all unexercised options, stock that has not vested, and equity incentive plan awards for our President and Chief Executive Officer, our sole executive officer, outstanding as of December 31, 2019.",
+   "prose_after": "Compensation of Directors Table\nThe table below summarizes all compensation paid to our directors for our last completed fiscal year.\nDIRECTOR COMPENSATION",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned\n\n\n\n\n\nor\n\n\n\n\n\nPaid in\n\n\n\n\n\nCash\n\n\n\n\n\n($)",
+     "",
+     "Stock \n\n\n\nAwards\n\n\n\n\n\n($)",
+     "",
+     "Option\n\n\n\n\n\nAwards\n\n\n\n\n\n($)",
+     "",
+     "Non-Equity\n\n\n\n\n\nIncentive\n\n\n\n\n\nPlan\n\n\n\n\n\nCompensation \n\n\n\n($)",
+     "",
+     "Non-Qualified \n\n\n\nDeferred \n\n\n\nCompensation \n\n\n\nEarnings \n\n\n\n($)",
+     "",
+     "All\n\n\n\n\n\nOther \n\n\n\nCompensation\n\n\n\n\n\n($)",
+     "",
+     "Total\n\n\n\n\n\n($)",
+     ""
+    ],
+    [
+     "David Hopkins",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James Pande",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Compensation of Directors Table\nThe table below summarizes all compensation paid to our directors for our last completed fiscal year.\nDIRECTOR COMPENSATION",
+   "prose_after": "Narrative Disclosure to the Director Compensation Table\nWe currently do not compensate our non-employee directors. When we expand our board, we will intend to compensate them with a combination of cash and stock option awards, depending on our financial resources at that time.\n2015 Incentive Stock Plan\nOur 2015 Incentive Stock Plan provides for equity incentives to be granted to our employees, executive officers or directors or to key advisers or consultants. Equity incentives may be in the form of stock options with an exercise price not less than the fair market value of the underlying shares as determined pursuant to the 2015 Incentive Stock Plan, restricted stock awards, other stock-based awards, or any combination of the foregoing. The 2015 Incentive Stock Plan is administered by the board of directors. 3,000,000 shares of our common stock are reserved for issuance pursuant to the exercise of awards under the 2015 Incentive Stock Plan. The number of shares so reserved automatically adjusts upward on January 1 of each year, so that the number of shares covered by the 2015 Incentive Stock Plan is equal to 15% of our issued and outstanding common stock. As of the date of this report, options to purchase 1,087,500 shares at an exercise price of $0.35 per share have been granted and are outstanding.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Names and addresses of\n\n\n\n\n\nbeneficial owners",
+     "Number of shares of common stock*",
+     "",
+     "",
+     "Percentage of class (%)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and executive officers:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David Hopkins",
+     "",
+     "5,913,510",
+     "(1)",
+     "",
+     "25.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James Pande",
+     "",
+     "5,966,666",
+     "",
+     "",
+     "26.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (two (2) persons)",
+     "",
+     "11,880,176",
+     "(1)",
+     "",
+     "51.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other 5% or greater shareholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Burroughs & Partners LLC\n\n\n\n\n\n50 Buckingham Drive\n\n\n\n\n\nRogers, AR 72758",
+     "",
+     "1,751,580",
+     "",
+     "",
+     "7.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GPB Debt Holdings, LLC\n\n\n\n\n\n535 W. 24th Street, 4th Floor\n\n\n\n\n\nNew York, New York 10011",
+     "",
+     "14,947,916",
+     "(2)",
+     "",
+     "65.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 594,
+    "end_line": 622
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "Our 2015 Incentive Stock Plan provides for equity incentives to be granted to our employees, executive officers or directors or to key advisers or consultants. Equity incentives may be in the form of stock options with an exercise price not less than the fair market value of the underlying shares as determined pursuant to the 2015 Incentive Stock Plan, restricted stock awards, other stock-based awards, or any combination of the foregoing. The 2015 Incentive Stock Plan is administered by the board of directors. 3,000,000 shares of our common stock are reserved for issuance pursuant to the exercise of awards under the 2015 Incentive Stock Plan. The number of shares so reserved automatically adjusts upward on January 1 of each year, so that the number of shares covered by the 2015 Incentive Stock Plan is equal to 15% of our issued and outstanding common stock. As of the date of this report, options to purchase 1,087,500 shares at an exercise price of $0.35 per share have been granted and are outstanding.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following table sets forth, as of the date of this report, the beneficial ownership of our common stock by each director and executive officer, by each person known by us to beneficially own 5% or more of our common stock and by directors and executive officers as a group. Unless otherwise stated, the address of the persons set forth in the table is c/o the Company, 18851 NE 29th Avenue, Suite 700, Aventura, Florida 33180.",
+   "prose_after": "*Includes shares issuable within sixty (60) days of the date of this report pursuant to the exercise of options or conversion of notes.\n(1) Includes 350,000 shares issuable upon exercise of options held by Mr. Hopkins under our 2015 Incentive Stock Plan.\n(2) Includes 11,363,637 shares issuable upon conversion of the GPB Note.\nThe persons named above have full voting and investment power with respect to the shares indicated. Under the rules of the SEC, a person (or group of persons) is deemed to be a \u201cbeneficial owner\u201d of a security if he or she, directly or indirectly, has or shares the power to vote or to direct the voting of such security, or the power to dispose of or to direct the disposition of such security. Accordingly, more than one person may be deemed to be a beneficial owner of the same security.\nSecurities Authorized for Issuance under Equity Compensation Plans",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 631,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "land category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "1,087,500 shares (1)",
+     "$0.35",
+     "1,912,500 shares (1)"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "0 shares",
+     "None issued",
+     "0 shares"
+    ],
+    [
+     "  Total",
+     "1,087,500 shares (1)",
+     "None issued",
+     "1,912,500 shares (1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 634,
+    "end_line": 648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "*Includes shares issuable within sixty (60) days of the date of this report pursuant to the exercise of options or conversion of notes.\n(1) Includes 350,000 shares issuable upon exercise of options held by Mr. Hopkins under our 2015 Incentive Stock Plan.\n(2) Includes 11,363,637 shares issuable upon conversion of the GPB Note.\nThe persons named above have full voting and investment power with respect to the shares indicated. Under the rules of the SEC, a person (or group of persons) is deemed to be a \u201cbeneficial owner\u201d of a security if he or she, directly or indirectly, has or shares the power to vote or to direct the voting of such security, or the power to dispose of or to direct the disposition of such security. Accordingly, more than one person may be deemed to be a beneficial owner of the same security.\nSecurities Authorized for Issuance under Equity Compensation Plans",
+   "prose_after": "(1) Represents shares of common stock underlying options issued as of the date of this report or shares reserved for issuance under our 2015 Incentive Stock Plan.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nRelated Party Transactions\nPrior to the Acquisition, the Company\u2019s board of directors had authorized payment of a salary to Mr. Hopkins in the amount of $52,000 per annum plus a car allowance of $600 per month. As of October 1, 2017, Mr. Hopkin\u2019s salary was increased to $175,000 per annum. Given the Company\u2019s limited financial resources prior to completion of the Acquisition, a substantial portion of Mr. Hopkins\u2019 salary was accrued, which accrued amount aggregated $182,000 as of December 31, 2017. The board of directors authorized the payment of such accrued amount to Mr. Hopkins in quarterly installments of $25,000, commencing with the fourth quarter of 2017. As a result, the accrued amount owed to Mr. Hopkins was reduced to $50,000 as of December 31, 2018 and was paid in full in the first quarter of 2019.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 631,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firms",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2019 and 2018",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2019 and 2018",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficiency for the Years Ended December 31, 2019 and 2018",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2019 and 2018",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 703
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Audit-Related Fees\nThere were no audit-related fees billed by Prager for the years ended December 31, 2019 and December 31, 2018.\nTax Fees\nThere were no tax fees billed by Prager for the years ended December 31, 2019 and December 31, 2018.\nPre-Approval Policy\nWe do not currently have a standing audit committee. Provision of the above services was approved by our board of directors.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) The following documents are filed as part of this Report:\n(1) Financial Statements. The following financial statements and the reports of our independent registered public accounting firms, are filed as \u201cItem 8. Financial Statements and Supplementary Data\u201d of this report:",
+   "prose_after": "(2) Financial Statement Schedules.\nFinancial Statement Schedules are omitted because the information required is not applicable or the required information is shown in the financial statements or notes thereto.\n(3) Exhibits.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)",
+     "Amended and Restated Articles of Incorporation(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "By-Laws(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "2015 Stock Incentive Plan(1)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Securities Purchase Agreement (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "CCI Note(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "GPB Purchase Agreement(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "GPB Note(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Amended and Restated Employment Agreement with David Hopkins(4)*"
+    ],
+    [
+     "31.1",
+     "Section 302 Certification(5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 906 Certification(5)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 711,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules.\nFinancial Statement Schedules are omitted because the information required is not applicable or the required information is shown in the financial statements or notes thereto.\n(3) Exhibits.",
+   "prose_after": "(1) Filed as an Exhibit to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-206839) and incorporated herein by reference.\n(2) Filed as An Exhibit to the registrant\u2019s Current Report on Form 8-K dated September 5, 2017 and incorporated herein by reference.\n(3) Filed as an Exhibit to the registrant\u2019s Current Report on Form 8-K dated September 29, 2017 and incorporated herein by reference.\n(4) Filed as an Exhibit to the registrant\u2019s Current Report on Form 8-K dated June 3, 2019 and incorporated herein by reference.\n(5) Filed herewith.\n*Management incentive or compensation plan.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "HEALTH-RIGHT DISCOVERIES, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 30, 2020",
+     "By:",
+     "/s/ David Hopkins"
+    ],
+    [
+     "",
+     "",
+     "  David Hopkins, President"
+    ],
+    [
+     "",
+     "",
+     "  (Principal Executive, Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "HEALTH-RIGHT DISCOVERIES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Filed as an Exhibit to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-206839) and incorporated herein by reference.\n(2) Filed as An Exhibit to the registrant\u2019s Current Report on Form 8-K dated September 5, 2017 and incorporated herein by reference.\n(3) Filed as an Exhibit to the registrant\u2019s Current Report on Form 8-K dated September 29, 2017 and incorporated herein by reference.\n(4) Filed as an Exhibit to the registrant\u2019s Current Report on Form 8-K dated June 3, 2019 and incorporated herein by reference.\n(5) Filed herewith.\n*Management incentive or compensation plan.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "",
+     "Title(s)",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ David Hopkins",
+     "President, Chief Executive Officer and Director",
+     "March 30, 2020"
+    ],
+    [
+     "",
+     "  David Hopkins",
+     "(Principal Executive, Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ James Pande",
+     "Director",
+     "March 30, 2020"
+    ],
+    [
+     "",
+     "  James Pande",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 759,
+    "end_line": 771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firms",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2019 and 2018",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2019 and 2018",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficiency for the Years Ended December 31, 2019 and 2018",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2019 and 2018",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of Health-Right Discoveries, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Health-Right Discoveries, Inc. and Subsidiaries (the Company) as of December 31, 2019 and 2018, and the related consolidated statements of operations, stockholders\u2019 deficiency, and cash flows for each of the two years in the period ended December 31, 2019, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2019 and 2018, and the results of its operations and its cash flows for each of the years in the two year period ended December 31, 2019, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "2,242,013",
+     "",
+     "$",
+     "2,149,738",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "52,281",
+     "",
+     "",
+     "148,225",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "10,735",
+     "",
+     "",
+     "44,431",
+     ""
+    ],
+    [
+     "Prepaid and other assets",
+     "",
+     "14,433",
+     "",
+     "",
+     "4,000",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,319,462",
+     "",
+     "",
+     "2,346,394",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "23,871",
+     "",
+     "",
+     "37,369",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "25,001",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "2,230,122",
+     "",
+     "",
+     "3,731,584",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,313,226",
+     "",
+     "",
+     "3,313,226",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "7,911,682",
+     "",
+     "$",
+     "9,428,573",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "1,388,505",
+     "",
+     "$",
+     "1,100,005",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "Salaries payable - related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Current portion of right of use liability",
+     "",
+     "8,040",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Current Portion-notes payable",
+     "",
+     "2,500,000",
+     "",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "  Current portion - notes payable,  related party net of discounts of $123,336 and $0 December 31, 2019 and 2018, respectively",
+     "",
+     "5,181,164",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "9,077,709",
+     "",
+     "",
+     "3,730,005",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use liability, net of current portion",
+     "",
+     "16,784",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Notes payable, related party net of discounts of $0 and $287,785 December 31, 2019 and 2018, respectively",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,862,215",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "",
+     "364,882",
+     "",
+     "",
+     "905,128",
+     ""
+    ],
+    [
+     "Total Long-term Liabilities",
+     "",
+     "381,666",
+     "",
+     "",
+     "5,767,343",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "9,459,375",
+     "",
+     "$",
+     "9,497,348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIENCY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred Stock, .001 par value, 5,000,000 shares authorized No shares issued and outstanding December 31, 2019 and 2018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common Stock, .001 par value, 100,000,000 shares authorized 22,869,191 shares issued and outstanding December 31, 2019 and 2018, respectively",
+     "",
+     "22,869",
+     "",
+     "",
+     "22,869",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "1,117,967",
+     "",
+     "",
+     "1,117,967",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(2,688,529)",
+     "",
+     "",
+     "(1,209,611)",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficiency",
+     "",
+     "(1,547,693)",
+     "",
+     "",
+     "(68,775)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIENCY",
+     "$",
+     "7,911,682",
+     "",
+     "$",
+     "9,428,573",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 823,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Prager Metis CPA\u2019s, LLC\nWe have served as the Company\u2019s auditor since 2018.\nHackensack, NJ\nMarch 30, 2020\nCONSOLIDATED BALANCE SHEETS\nDECEMBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "3,467,661",
+     "",
+     "$",
+     "6,283,923",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Revenue",
+     "",
+     "488,384",
+     "",
+     "",
+     "1,026,423",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "2,979,277",
+     "",
+     "",
+     "5,257,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "1,972,980",
+     "",
+     "",
+     "3,571,295",
+     ""
+    ],
+    [
+     "  Amortization and depreciation",
+     "",
+     "462,693",
+     "",
+     "",
+     "476,722",
+     ""
+    ],
+    [
+     "  Impairment loss",
+     "",
+     "1,061,200",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,496,873",
+     "",
+     "",
+     "4,048,017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "(517,596)",
+     "",
+     "",
+     "1,209,483",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expenses",
+     "",
+     "1,483,314",
+     "",
+     "",
+     "1,807,808",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "",
+     "1,483,314",
+     "",
+     "",
+     "1,807,808",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income tax (provision) benefit",
+     "",
+     "(2,000,910)",
+     "",
+     "",
+     "(598,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (provision) benefit",
+     "",
+     "540,246",
+     "",
+     "",
+     "(68,669)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(1,460,664)",
+     "",
+     "$",
+     "(666,994)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share",
+     "",
+     "(0.06)",
+     "",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding -  basic and diluted",
+     "",
+     "22,869,191",
+     "",
+     "",
+     "22,869,191",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIENCY",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "------COMMON STOCK------",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2013 December 31, 2017",
+     "",
+     "22,869,191",
+     "$",
+     "22,869",
+     "$",
+     "1,117,967",
+     "$",
+     "(542,617)",
+     "",
+     "$",
+     "598,219",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(666,994)",
+     "",
+     "",
+     "(666,994)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2013 December 31, 2018",
+     "",
+     "22,869,191",
+     "$",
+     "22,869",
+     "$",
+     "1,117,967",
+     "$",
+     "(1,209,611)",
+     "",
+     "$",
+     "(68,775)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adoption of ASU 2016-02",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(18,254)",
+     "",
+     "",
+     "(18,254)",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,460,664)",
+     "",
+     "",
+     "(1,460,664)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2013 December 31, 2019",
+     "",
+     "22,869,191",
+     "$",
+     "22,869",
+     "$",
+     "1,117,967",
+     "$",
+     "(2,688,529)",
+     "",
+     "$",
+     "(1,547,693)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIENCY",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,460,664)",
+     "",
+     "$",
+     "(666,994)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation expense",
+     "",
+     "10,792",
+     "",
+     "",
+     "6,962",
+     ""
+    ],
+    [
+     "    Abandonment of property and equipment",
+     "",
+     "2,707",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Amortization expenses",
+     "",
+     "440,261",
+     "",
+     "",
+     "465,133",
+     ""
+    ],
+    [
+     "    Impairment loss",
+     "",
+     "1,061,200",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Right of use liability amortization",
+     "",
+     "(18,431)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Bad debt",
+     "",
+     "2,146",
+     "",
+     "",
+     "40,966",
+     ""
+    ],
+    [
+     "    Non-cash interest",
+     "",
+     "318,949",
+     "",
+     "",
+     "1,165,054",
+     ""
+    ],
+    [
+     "    Deferred income tax (benefit)",
+     "",
+     "(540,246)",
+     "",
+     "",
+     "(75,084)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts receivable",
+     "",
+     "93,798",
+     "",
+     "",
+     "281,921",
+     ""
+    ],
+    [
+     "    Inventories",
+     "",
+     "33,696",
+     "",
+     "",
+     "(11,851)",
+     ""
+    ],
+    [
+     "    Prepaid and other assets",
+     "",
+     "(10,433)",
+     "",
+     "",
+     "(4,000)",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses",
+     "",
+     "288,500",
+     "",
+     "",
+     "(392,060)",
+     ""
+    ],
+    [
+     "    Income tax payable",
+     "",
+     "(80,000)",
+     "",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "    Accrued salary to related party",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "(132,000)",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY OPERATING ACTIVITIES",
+     "",
+     "92,275",
+     "",
+     "",
+     "758,047",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of property and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33,739)",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33,739)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds of (repayment of) loan from related parties",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33,512)",
+     ""
+    ],
+    [
+     "NET CASH USED IN FINANCING ACTIVITIES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33,512)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCREASE IN CASH",
+     "",
+     "92,275",
+     "",
+     "",
+     "690,796",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH - BEGINNING OF YEAR",
+     "",
+     "2,149,738",
+     "",
+     "",
+     "1,458,942",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH - END OF YEAR",
+     "$",
+     "2,242,013",
+     "",
+     "$",
+     "2,149,738",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accrued interest converted to note payable",
+     "$",
+     "154,500",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash paid for interest",
+     "$",
+     "668,582",
+     "",
+     "$",
+     "649,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash paid for income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "63,753",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 1021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 Business\nHealth-Right Discoveries, Inc. (\u201cthe Company\u201d) was formed under the laws of the State of Florida on October 12, 2011 under the name Four Plex Partners, Inc. and subsequently changed its name to Health-Right Discoveries, Inc. on March 22, 2012. The Company\u2019s primary business was to develop and market an innovative portfolio of both prescription nutritional, OTC monograph and natural products that primarily focus on factors relating to stress-induced conditions and diseases.\nOn September 29, 2017, pursuant to a Securities Purchase Agreement dated August 17, 2017, the Company acquired (the \u201cAcquisition\u201d) all the outstanding shares of Common Compounds, Inc., n/k/a CCI Billing, Inc. d/b/a Complete Claim Management (\u201cCCI\u201d) and EZPharmaRx, LLC n/k/a Script Connection, LLC (\u201cSCLLC\u201d). HRD, through its subsidiaries, CCI and SCLLC, along with licensed pharmaceutical wholesalers, offer and provide their respective services to physician practices that desire to prescribe and dispense certain pharmaceutical products and medications in the practice\u2019s office to patients receiving treatment for work-related injuries (\u201cIn-Office Dispensing Program\u201d).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Year Ended December 31, 2019",
+     "",
+     "Ancillary Program",
+     "",
+     "OTC and Prescription Medication",
+     "",
+     "Corporate (1)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Product Sales",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "674,853",
+     "$",
+     "\u2014",
+     "$",
+     "674,853"
+    ],
+    [
+     "Consulting Services",
+     "",
+     "",
+     "2,792,808",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,792,808"
+    ],
+    [
+     "",
+     "Total Revenue",
+     "$",
+     "2,792,808",
+     "$",
+     "674,853",
+     "$",
+     "\u2014",
+     "$",
+     "3,467,661"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2018",
+     "",
+     "Ancillary Program",
+     "",
+     "OTC and Prescription Medication",
+     "",
+     "Corporate (1)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Product Sales",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "1,353,571",
+     "$",
+     "\u2014",
+     "$",
+     "1,353,571"
+    ],
+    [
+     "Consulting Services",
+     "",
+     "",
+     "4,930,352",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,930,352"
+    ],
+    [
+     "",
+     "Total Revenue",
+     "$",
+     "4,930,352",
+     "$",
+     "1,353,571",
+     "$",
+     "\u2014",
+     "$",
+     "6,283,923"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1073,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "SCLLC\u2019s revenue from the sale of products are recognized when the sale is consummated, and title is transferred. The Company and customer enter into an agreement which outlines the place and date of sale, purchase price, payment terms, and the assignment of rights and warranties from the Company to the customer. Management has identified the promise in the sale contract to be the transfer of ownership of the asset. Management believes the asset holds standalone value to the customer as it is not dependent on any other services for functionality purposes and therefore is distinct within the context of the contract and as described in ASC 606-10. The transaction price is set at a fixed dollar amount per fixed quantity (number of assets) and is explicitly stated in each contract. Sales revenue is based on a set price for a set number of assets, which is allocated to the performance obligation in its entirety. The Company has determined the date of transfer to the customer to be the date the customer obtains control and title over the asset and the date which revenue is to be recognized and payment is due. As such, there is no impact to the timing and amounts of revenue recognized for equipment sales related to the implementation of ASC 606.\nThe following tables disaggregate revenue by major source for the years ended December 31, 2019 and 2018:",
+   "prose_after": "(1) The Company's corporate group is non-revenue generating and supports our two reportable segments Ancillary Program and Prescription.\nInventories\nInventories, which consist of the Company\u2019s product held for resale, are stated at the lower of cost, determined using the first-in, first-out, or net realizable value. Net realizable value is the estimated selling price, in the ordinary course of business, less estimated costs to complete and dispose of the product.\nIf the Company identifies excess, obsolete or unsalable items, its inventories are written down to their net realizable value in the period in which the impairment is first identified. Shipping and handling costs incurred for inventory purchases and product shipments are recorded in cost of sales in the Company\u2019s statements of operations. During the year ended December 31, 2019 and 2018, the Company recorded no loss due to management\u2019s estimate of obsolete inventory, respectively.\nProperty and Equipment\nProperty and equipment are stated at cost. Expenditures for additions are capitalized, repairs and maintenance are expensed as incurred. Depreciation is provided using the straight-line method over the estimated useful lives of the assets, which are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1070,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1116,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Machinery and equipment \u2013 7 years",
+     "$",
+     "44,497",
+     "",
+     "$",
+     "52,934",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(20,626)",
+     "",
+     "",
+     "(15,565)",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "$",
+     "23,871",
+     "",
+     "$",
+     "37,369",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Inventories, which consist of the Company\u2019s product held for resale, are stated at the lower of cost, determined using the first-in, first-out, or net realizable value. Net realizable value is the estimated selling price, in the ordinary course of business, less estimated costs to complete and dispose of the product.\nIf the Company identifies excess, obsolete or unsalable items, its inventories are written down to their net realizable value in the period in which the impairment is first identified. Shipping and handling costs incurred for inventory purchases and product shipments are recorded in cost of sales in the Company\u2019s statements of operations. During the year ended December 31, 2019 and 2018, the Company recorded no loss due to management\u2019s estimate of obsolete inventory, respectively.\nProperty and Equipment\nProperty and equipment are stated at cost. Expenditures for additions are capitalized, repairs and maintenance are expensed as incurred. Depreciation is provided using the straight-line method over the estimated useful lives of the assets, which are as follows:",
+   "prose_after": "Intangible Assets\nIntangible assets continue to be subject to amortization, and any impairment is determined in accordance with ASC 360, \u201cProperty, Plant, and Equipment,\u201d intangible assets are stated at historical cost and amortized over their estimated useful lives. The Company uses a straight-line method of amortization, unless a method that better reflects the pattern in which the economic benefits of the intangible asset are consumed or otherwise used up can be reliably determined\nIntangible assets are tested annually for impairment and are tested for impairment more frequently if events and circumstances indicate that the asset might be impaired. An impairment loss is recognized to the extent that the carrying amount of the asset group exceeds its fair value. Conditions that may indicate impairment include, but are not limited to, a significant adverse change in legal factors or business climate that could affect the value of an asset, a product recall, or an adverse action or assessment by a regulator. If an impairment indicator exists, we test the intangible asset for recoverability. For purposes of the recoverability test, we group our amortizable intangible assets with other assets and liabilities at the lowest level of identifiable cash flows if the intangible asset does not generate cash flows independent of other assets and liabilities. If the carrying value of the intangible asset (asset group) exceeds the undiscounted cash flows expected to result from the use and eventual disposition of the intangible asset (asset group), the Company will write the carrying value down to the fair value in the period identified.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1070,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1116,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "3,600,000",
+     ""
+    ],
+    [
+     "1,751,580 shares of common stock issued",
+     "",
+     "175,158",
+     ""
+    ],
+    [
+     "Note payable",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "(763,558)",
+     ""
+    ],
+    [
+     "Total Purchase Price",
+     "$",
+     "5,511,600",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1221,
+    "end_line": 1230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Acquisitions"
+    }
+   },
+   "prose_before": "Health-Right Discoveries, Inc. modified its business plan from building a platform of products in the nutraceutical and dietary supplement space to seeking acquisitions in the healthcare field. HRD identified two target companies for sale that fit their plan going forward of acquiring small, profitable, privately held companies in the healthcare space that generate at least $5 million in revenue and $1 million in EBITDA.\nOn September 29, 2017, the Company closed a securities purchase agreement with CCI and SCLLC to purchase 100% of their outstanding interests for $6.1 million plus 1,751,580 shares of its common stock. The $6.1 million purchase price consists of $3.6 million cash and a $2.5 million 5-year non-interest bearing note, payable at $500,000 per year. Interest on the non-interest bearing note has been imputed using 12.75% interest rate (see Note 5).\nIn accordance with the acquisition method of accounting, the Company allocated the consideration to the net tangible and identifiable intangible assets based on their estimated fair values which were determined by an independent valuation performed by a third party.\nGoodwill represents the excess of the purchase price over the fair value of the underlying net tangible and identifiable intangible assets.\nThe following table presents the consideration of net assets purchased:",
+   "prose_after": "The assets acquired and liabilities assumed as part of our acquisition were recognized at their fair values as of the effective acquisition date, September 29, 2017, based upon an appraisal from a third party. The following table summarizes the fair values assigned to the assets acquired and liabilities assumed.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash",
+     "$",
+     "81,359",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "759,710",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "",
+     "11,167",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "4,313,000",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,313,226",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "(1,343,880)",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "",
+     "(1,622,982)",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "5,511,600",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1233,
+    "end_line": 1245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Acquisitions"
+    }
+   },
+   "prose_before": "The assets acquired and liabilities assumed as part of our acquisition were recognized at their fair values as of the effective acquisition date, September 29, 2017, based upon an appraisal from a third party. The following table summarizes the fair values assigned to the assets acquired and liabilities assumed.",
+   "prose_after": "Acquisition costs of $410,000 were incurred and expensed for the year December 31, 2017. As part of the acquisition the company recognized deferred tax liabilities of $1,622,982 related to the unamortized identifiable intangible assets acquired in the amount of $4,313,000 using a blended 37.63% tax rate.\nNOTE 4 \u2013 Leases\nAdoption of ASC Topic 842, Leases\nOn January 1, 2019, the Company adopted ASC 842, Leases, using a modified retrospective method applied to all contracts as of January 1, 2019. Therefore, for reporting periods beginning after December 31, 2018, the financial statements are prepared in accordance with the current lease standard and the financial statements for all periods prior to January 1, 2019 are presented under the previous lease standard (\"ASC 840\").\nThe Company determines if an arrangement is a lease, or contains a lease, when a contract is signed. The Company determines if a lease is an operating or financing lease and records a lease asset and a lease liability upon lease commencement,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Leases",
+     "Classification in Consolidated Balance Sheet",
+     "December 31,\n\n\n\n\n\n2019",
+     ""
+    ],
+    [
+     "Operating lease assets",
+     "Right of use asset",
+     "$",
+     "25,001"
+    ],
+    [
+     "Lease Liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current capital lease liabilities",
+     "Right of use liability",
+     "$",
+     "8,040"
+    ],
+    [
+     "  Long-term capital lease liabilities",
+     "Right of use liability",
+     "",
+     "16,784"
+    ],
+    [
+     "Total capital lease liabilities",
+     "",
+     "$",
+     "24,824"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1268,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "Some leases have one or more options to renew, with renewal terms that can initially extend the lease term for various periods up to 2 years. The exercise of renewal options for office space and data centers is at the Company\u2019s discretion and are included if they are reasonably certain to be exercised. As of December 31, 2019, the Company\u2019s weighted-average remaining lease term for all leases was approximately 2.83 years.\nOn July 29, 2019, the Company terminated its Arkansas lease effect October 31, 2019 in accordance with Section 8 of their First Amendment. On October 6, 2019, the Company entered into a new one year lease in Arkansas beginning on November 1, 2019 with monthly rent in the amount of $1,210 per month. The Company has a lease in Florida with a monthly rent of $80.\nWhen the rate implicit in the lease is not readily determinable, the Company uses its incremental borrowing rate as its discount rate to determine the present value of its lease payments. The incremental borrowing rates approximate the rate the Company would pay to borrow in the currency of the lease payments on a collateralized basis for the weighted-average life of the lease. As of December 31, 2019, the Company\u2019s weighted-average discount rate was approximately 5.0%.\nThe Company recognized the following related to leases in its Consolidated Balance Sheet at December 31, 2019.",
+   "prose_after": "As of December 31, 2019, the operating lease liabilities will mature over the following periods:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2020",
+     "$",
+     "9,100",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "9,600",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "8,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total remaining lease payments",
+     "$",
+     "26,700",
+     ""
+    ],
+    [
+     "Less: Imputed interest",
+     "",
+     "(1,876)",
+     ""
+    ],
+    [
+     "Total capital lease liabilities",
+     "$",
+     "24,824",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1285,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "As of December 31, 2019, the operating lease liabilities will mature over the following periods:",
+   "prose_after": "At December 31, 2018, future minimum lease payments for operating leases having an initial term in excess of one year under ASC 840 were as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2019",
+     "$",
+     "65,444"
+    ],
+    [
+     "2020",
+     "",
+     "67,238"
+    ],
+    [
+     "2021",
+     "",
+     "59,253"
+    ],
+    [
+     "2022",
+     "",
+     "9,600"
+    ],
+    [
+     "2023",
+     "",
+     "1,600"
+    ],
+    [
+     "Thereafter",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "203,135"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1300,
+    "end_line": 1311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "At December 31, 2018, future minimum lease payments for operating leases having an initial term in excess of one year under ASC 840 were as follows:",
+   "prose_after": "The Company recognized the following related to operating leases in its Consolidated Statement of Operations:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "Classification in",
+     "December 31,",
+     ""
+    ],
+    [
+     "Leases",
+     "Consolidated Statement of Operations",
+     "2019",
+     ""
+    ],
+    [
+     "Lease expense",
+     "General and administrative and Information technology",
+     "$",
+     "53,321"
+    ],
+    [
+     "Total lease expense",
+     "",
+     "$",
+     "53,321"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1314,
+    "end_line": 1324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "The Company recognized the following related to operating leases in its Consolidated Statement of Operations:",
+   "prose_after": "Supplemental cash flow information related to capital leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\n\n\n\n\nDecember 31,",
+     ""
+    ],
+    [
+     "Leases",
+     "2019",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     ""
+    ],
+    [
+     "  Operating cash flow from capital leases",
+     "$",
+     "53,321"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for lease obligations:",
+     "",
+     ""
+    ],
+    [
+     "  Capital Leases",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended\n\n\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1327,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Leases"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to capital leases are as follows:",
+   "prose_after": "\"Operating lease amortization\" presented in the operating activities section of the Consolidated Statement of Cash Flows reflects the portion of the capital lease expense that amortized the capital lease asset.\nNOTE 5 \u2013 Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Amortizing Intangible Assets",
+     "Estimates Useful Life",
+     "",
+     "Gross Carrying Amount December 31, 2019",
+     "",
+     "",
+     "Gross Carrying Amount December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer Lists",
+     "",
+     "8/10 years",
+     "$",
+     "1,326,500",
+     "",
+     "$",
+     "2,653,000",
+     ""
+    ],
+    [
+     "Tradenames",
+     "",
+     "15 years",
+     "",
+     "377,000",
+     "",
+     "",
+     "377,000",
+     ""
+    ],
+    [
+     "IP Technologies",
+     "",
+     "10 years",
+     "",
+     "819,000",
+     "",
+     "",
+     "819,000",
+     ""
+    ],
+    [
+     "Non-compete",
+     "",
+     "5 years",
+     "",
+     "464,000",
+     "",
+     "",
+     "464,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2,986,500",
+     "",
+     "",
+     "4,313,000",
+     ""
+    ],
+    [
+     "Less: Accumulated Amortization",
+     "",
+     "",
+     "",
+     "(756,378)",
+     "",
+     "",
+     "(581,416)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "2,230,122",
+     "",
+     "$",
+     "3,731,584",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1360
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Intangible Assets"
+    }
+   },
+   "prose_before": "\"Operating lease amortization\" presented in the operating activities section of the Consolidated Statement of Cash Flows reflects the portion of the capital lease expense that amortized the capital lease asset.\nNOTE 5 \u2013 Intangible Assets",
+   "prose_after": "The amortization expense related to the intangible assets was $440,261 and $465,133 as of December 31, 2019 and 2018, respectively. During the third quarter 2019, the Company reviewed its customer lists and impaired approximately 50% of its value, or $1,061,200.\nThe valuation of the assets acquired and liabilities assumed in connection with this acquisition was based on fair values at the acquisition date. The assets purchased and liabilities assumed for these acquisitions have been reflected in the accompanying consolidated balance sheets.\nNOTE 6 \u2013 Notes payable\nThe Company obtained a secured convertible note with a lender for $5 million, interest is payable monthly, at 12.75% per annum, the note matures on September 29, 2020. The note can be converted at any time in whole or in part at $0.44 per share. In addition, the lender received 3,584,279 shares of common stock valued at $0.10 per share along with a 2% original issue discount. The total amount of the discount is $493,345. The Company had incurred $34,917 in loan costs. Both the discount and loan costs are presented as a discount to the note payable. The Company recorded $154,500 and $150,000 of payment-in-kind interest which was added to the note as of December 31, 2019 and 2018, respectively. The note is collateralized by substantially all the assets of the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 monthly interest, 12.75% per annum, matures on September 29, 2020",
+     "$",
+     "5,304,500",
+     "",
+     "$",
+     "5,150,000",
+     ""
+    ],
+    [
+     "Less discounts",
+     "",
+     "(123,336)",
+     "",
+     "",
+     "(287,785)",
+     ""
+    ],
+    [
+     "Note payable \u2013 monthly interest, 12.75% per annum, matures on September 30, 2022 (The loan is currently in default and currently payable.)",
+     "",
+     "2,500,000",
+     "",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Less discounts",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Subtotal",
+     "",
+     "7,681,164",
+     "",
+     "",
+     "7,362,215",
+     ""
+    ],
+    [
+     "Less: current portion",
+     "",
+     "7,681,164",
+     "",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Long- term portion",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,862,215",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1373,
+    "end_line": 1389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Notes payable"
+    }
+   },
+   "prose_before": "The Company has expensed the unamortized discount of $470,054 and has accrued default interest for the years ended December 31, 2019 and 2018 in the amount of $425,000 and $107,123 (17% per annum), respectively. Upon each annual payment date (each, a \u201cDue Date\u201d), the holder may elect to convert the annual installment of the principal amount due into shares of common stock at a conversion price equal to 50% of \u201cfair market value,\u201d which is defined as the average closing price for the shares on the principal market on which they are traded during the thirty (30) trading days prior to the applicable Due Date, provided, further, that (a) the conversion price shall not be lower than $2.00 per share, subject to adjustment for stock splits, stock dividends and similar recapitalization events; and (b) in the event such conversion price as so adjusted is lower than $2.00 per share, the installment payable upon such Due Date may not be converted into shares without written agreement between the Company and the seller.",
+   "prose_after": "Principal payments on the above notes mature as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "8,334,508"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "Thereafter",
+     "$",
+     "8,334,508"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1392,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Notes payable"
+    }
+   },
+   "prose_before": "Principal payments on the above notes mature as follows:",
+   "prose_after": "NOTE 7 \u2013 Related Party\nAs of December 31, 2019 and 2018, the Company has unpaid and accrued salary to its President in the amount of $0 and $50,000, respectively.\nOn January 10, 2018, the Company entered into employment agreement with David Hopkins, its President, effective as of January 1, 2018. Pursuant to the employment agreement, Mr. Hopkins assumed the additional position of Chief Executive Officer of the Company. The employment agreement is for an initial term of three (3) and automatically renews for additional three (3) year periods, provided that the Company achieves Adjusted EBITDA (as defined) of $3,500,000 for any calendar year during the initial term and any renewal term.\nThe employment agreement provides for an initial base salary of $175,000. In the event in any calendar year during the initial term or any renewal term, HRD achieves Adjusted EBITDA of $3,500,000, Mr. Hopkins\u2019 annual base salary shall automatically increase to $250,000 and in the event in any calendar year during the initial term or any renewal term, the Company achieves Adjusted EBITDA of $5,000,000, his annual base salary shall automatically increase to $325,000. Mr. Hopkins will also receive a $600 per month car allowance while the employment agreement is in effect.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "$",
+     "(2,000,910)",
+     "",
+     "",
+     "$",
+     "(598,325)",
+     ""
+    ],
+    [
+     "Computed tax at federal statutory rate of 21%",
+     "$",
+     "(420,191)",
+     "",
+     "",
+     "$",
+     "(125,621)",
+     ""
+    ],
+    [
+     "State taxes at 6%, net of federal benefit",
+     "",
+     "(94,844)",
+     "",
+     "",
+     "",
+     "(28,361)",
+     ""
+    ],
+    [
+     "Other state taxes",
+     "",
+     "(25,211)",
+     "",
+     "",
+     "",
+     "172,114",
+     ""
+    ],
+    [
+     "Timing differences",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "56,833",
+     ""
+    ],
+    [
+     "Adjustment to valuation allowance",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other items, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(6,269)",
+     ""
+    ],
+    [
+     "Provision (benefit) from income taxes",
+     "$",
+     "(540,246)",
+     "",
+     "",
+     "$",
+     "68,669",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1440,
+    "end_line": 1455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. Based on the assessment, management has established a full valuation allowance against the entire deferred tax asset relating to NOLs for every period because it is more likely than not that all of the deferred tax asset will not be realized.\nThe Company files U.S. federal and state of Florida and Arkansas tax returns that are subject to audit by tax authorities beginning with the year ended December 31, 2013. The Company\u2019s policy is to classify assessments, if any, for tax and related interest and penalties as tax expense.\nThe components of income before income taxes and the effect of adjustments to tax computed at the federal statutory rate for the years ended December 31, 2019 and 2018 were as follows:",
+   "prose_after": "The provision (benefit) from income taxes in the consolidated statements of operations consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31,",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "State",
+     "\u2014",
+     "",
+     "",
+     "143,753",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "(420,191)",
+     "",
+     "$",
+     "(58,399)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(120,055)",
+     "",
+     "",
+     "(16,685)",
+     ""
+    ],
+    [
+     "Adjustment to valuation allowance",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Provision (benefit) from income taxes",
+     "$",
+     "(540,246)",
+     "",
+     "$",
+     "68,669",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1458,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "The provision (benefit) from income taxes in the consolidated statements of operations consists of the following:",
+   "prose_after": "As of December 31, 2019 and 2018, the components of the deferred tax assets and liabilities are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019 Deferred tax",
+     "",
+     "",
+     "2018 Deferred tax",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Assets (Liabilities)",
+     "",
+     "",
+     "Assets (Liabilities)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carry forward",
+     "$",
+     "237,251",
+     "",
+     "$",
+     "102,400",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "(602,133)",
+     "",
+     "",
+     "(1,007,528)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "(364,882)",
+     "",
+     "$",
+     "(905,128)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "As of December 31, 2019 and 2018, the components of the deferred tax assets and liabilities are as follows:",
+   "prose_after": "NOTE 11 \u2013 Business Segment Information\nThe Company has two reportable segments (billing services and OTC and prescription medication) supported by a corporate group which conducts activities that are non-segment specific. The following table present selected financial information about the Company's reportable segments for the year ended December 31, 2019 and 2018.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year \n\n\n\nended December 31, 2019",
+     "Consolidated",
+     "",
+     "",
+     "Billing Services",
+     "",
+     "OTC and Prescription Medication",
+     "",
+     "Corporate",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "3,467,661",
+     "",
+     "$",
+     "2,792,808",
+     "$",
+     "674,853",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cost of Revenue",
+     "",
+     "488,384",
+     "",
+     "",
+     "\u2014",
+     "",
+     "488,384",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-lived assets",
+     "",
+     "5,592,220",
+     "",
+     "",
+     "5,034,689",
+     "",
+     "557,531",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income (loss) before income tax",
+     "",
+     "(2,000,910)",
+     "",
+     "",
+     "1,836,703",
+     "",
+     "159,048",
+     "",
+     "(3,996,661)",
+     ""
+    ],
+    [
+     "Identifiable assets",
+     "",
+     "2,278,994",
+     "",
+     "",
+     "1,721,463",
+     "",
+     "557,531",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "462,693",
+     "",
+     "",
+     "347,020",
+     "",
+     "115,673",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "1,061,200",
+     "",
+     "",
+     "795,900",
+     "",
+     "265,300",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1492,
+    "end_line": 1507
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "NOTE 11 \u2013 Business Segment Information\nThe Company has two reportable segments (billing services and OTC and prescription medication) supported by a corporate group which conducts activities that are non-segment specific. The following table present selected financial information about the Company's reportable segments for the year ended December 31, 2019 and 2018.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year \n\n\n\nended December 31, 2018",
+     "Consolidated",
+     "",
+     "",
+     "Billing Services",
+     "",
+     "OTC and Prescription Medication",
+     "",
+     "Corporate",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "6,283,923",
+     "",
+     "$",
+     "4,930,352",
+     "$",
+     "1,353,571",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cost of Revenue",
+     "",
+     "1,026,423",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1,026,423",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-lived assets",
+     "",
+     "7,082,179",
+     "",
+     "",
+     "6,149,283",
+     "",
+     "932,896",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income (loss) before income tax",
+     "",
+     "(598,325)",
+     "",
+     "",
+     "2,345,950",
+     "",
+     "221,004",
+     "",
+     "(3,165,279)",
+     ""
+    ],
+    [
+     "Identifiable assets",
+     "",
+     "3,768,953",
+     "",
+     "",
+     "2,836,057",
+     "",
+     "932,896",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "483,684",
+     "",
+     "",
+     "364,504",
+     "",
+     "119,180",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1508,
+    "end_line": 1523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Business Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company has two reportable segments for the year ended December 31, 2019 and 2018.\nNOTE 12 \u2013 Litigation\nIn August 2018, we were served with a complaint (which was amended in September 2018 to include David Hopkins, our CEO, as a defendant), filed in Miami-Dade County, Florida Circuit Court by the seller of CCI and SCLLC. In the complaint, the seller alleges breach of contract and fraud in that we allegedly failed to pay him excess working capital as of the closing of the acquisition of approximately $381,000 and failed to reimburse him for certain credit card expenses. We believe that the seller\u2019s claims are without merit, as his calculation of working capital does not follow the methodology provided for in the Securities Purchase Agreement for the transaction and that in fact, there was a working capital shortfall at closing of approximately $725,000 (for which we demanded payment in June 2018). Moreover, the seller has refused to submit the working capital dispute to the resolution process provided for in the Securities Purchase Agreement. We have answered the complaint denying the seller\u2019s claims and have filed counterclaims against the seller for the sums we believe are do us for the working capital shortfall and for damages arising from seller\u2019s breach of contract, breach of good faith and fair dealing, fraud in the inducement, indemnification obligations under the Securities Purchase Agreement and violation of his non-competition and non-solicitation agreement with the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "At December 31, 2019",
+     "At December 31, 2018"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of customers over 10%",
+     "6",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage of accounts receivable",
+     "10%, 12%, 13%, 13%, 15%, 18%",
+     "10% and 13%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1540,
+    "end_line": 1548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Concentration"
+    }
+   },
+   "prose_before": "In April 2018, Stephen Andrews, the former CEO of CCI, filed a wrongful termination arbitration claim seeking recovery in the amount in excess of $500,000. In addition to raising defenses, the Company has filed a counterclaim alleging violation of non-disclosure/non-compete agreements by Mr. Andrews as well as claims for breach of a non-solicitation agreement, breach of the employee manual and injunctive relief. The final arbitration hearing was scheduled for January 2020. However, Andrews moved for a stay of the arbitration on November 20, 2019 based on his belief that he is the target of a parallel federal criminal grand jury investigation. The arbitrator granted the stay on December 17, 2019 and the final arbitration hearing was postponed indefinitely.\nNOTE 13 \u2013 Concentration\nThe Company offers physicians and medical clinics an ancillary program to treat their patients with topical prescription medicine to manage pain. The program is designed for patients with work related injuries managed under worker compensation claims. The program both delivers the topical medicine to the care provider for sale to the patient, as well as providing the care provider with insurance claim processing services on behalf of the patient.\nAccounts Receivable Concentration",
+   "prose_after": "We have two vendors who both represent 100% of purchased products that are sold for 2019 and 2018.\nNOTE 14 \u2013 Commitments, Contingencies, Guarantees and Indemnities\nOn October 6, 2019, the Company entered into a new one year lease in Arkansas beginning on November 1, 2019 with monthly rent in the amount of $1,210 per month. The Company has a lease in Florida with a monthly rent of $80.\nFuture minimum payments under operating lease agreements are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1574,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "13,060"
+    ],
+    [
+     "2021",
+     "\u2014",
+     ""
+    ],
+    [
+     "2022",
+     "\u2014",
+     ""
+    ],
+    [
+     "2023",
+     "\u2014",
+     ""
+    ],
+    [
+     "2024",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Total",
+     "$",
+     "13,060"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1557,
+    "end_line": 1570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 Commitments, Contingencies, Guarantees and Indemnities"
+    }
+   },
+   "prose_before": "We have two vendors who both represent 100% of purchased products that are sold for 2019 and 2018.\nNOTE 14 \u2013 Commitments, Contingencies, Guarantees and Indemnities\nOn October 6, 2019, the Company entered into a new one year lease in Arkansas beginning on November 1, 2019 with monthly rent in the amount of $1,210 per month. The Company has a lease in Florida with a monthly rent of $80.\nFuture minimum payments under operating lease agreements are as follows:",
+   "prose_after": "NOTE 15 \u2013 Subsequent Events\nThe Company has evaluated subsequent events through the date that the financial statements were issued and determined that there were no subsequent events requiring adjustment to or disclosure in the financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1574,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

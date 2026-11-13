@@ -1,0 +1,3435 @@
+{
+ "accession": "0001165527-12-000155",
+ "cik": "0001100778",
+ "form": "10-K",
+ "filing_date": "2012-02-23",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "g5780.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "75-2610236"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I. R. S.  Employer ID Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nForm 10-K\n(Mark one)\n[X] Annual Report Under Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2011\n[ ] Transition Report Under Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ______________ to _____________\nCommission File Number: 000-28453\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "1600 West Golf Course, Midland, TX 79701\n(Address of Principal Executive Offices)\n(432) 889-4477\n(Registrant\u2019s Telephone Number)\n211 West Wall Street, Midland, TX 79701\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to Section 12 (b) of the Act - None\nSecurities registered pursuant to Section 12(g) of the Act:\n- Common Stock - $0.0001 par value\nIndicate by check mark if the registrant is a well known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "8"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "8"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4",
+     "(Removed and Reserved)",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "10"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "15"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "15"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "16"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "20"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "21"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "21"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "24"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number",
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of the registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act): Yes [X] No [ ]\nThe aggregate market value of voting and non-voting common equity held by non-affiliates as of February 23, 2012 was approximately $96,795 based upon 71,700 shares held by non-affiliates and a closing market price of $1.35 per share on October 28, 2011, the last reported trade as reported at www.bigcharts.com.\nAs of February 23, 2012, there were 362,200 shares of Common Stock issued and outstanding.\nEight Dragons Corporation\nIndex to Contents",
+   "prose_after": "Caution Regarding Forward-Looking Information\nCertain statements contained in this annual filing, including, without limitation, statements containing the words \u201cbelieves\u201d, \u201canticipates\u201d, \u201cexpects\u201d and words of similar import, constitute forward-looking statements. Such forward-looking statements involve known and unknown risks, uncertainties and other factors that may cause the actual results, performance or achievements of the Company, or industry results, to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements.\nSuch factors include, among others, the following: international, national and local general economic and market conditions: demographic changes; the ability of the Company to sustain, manage or forecast its growth; the ability of the Company to successfully make and integrate acquisitions; existing government regulations and changes in, or the failure to comply with, government regulations; adverse publicity; competition; fluctuations and difficulty in forecasting operating results; changes in business strategy or development plans; business disruptions; the ability to attract and retain qualified personnel; and other factors referenced in this and previous filings.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Fiscal year ended December 31, 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter ended March 31, 2010",
+     "$",
+     "0.14",
+     "$",
+     "0.14"
+    ],
+    [
+     "Quarter ended June 30, 2010",
+     "$",
+     "0.14",
+     "$",
+     "0.07"
+    ],
+    [
+     "Quarter ended September 30, 2010",
+     "$",
+     "0.07",
+     "$",
+     "0.07"
+    ],
+    [
+     "Quarter ended December 31, 2010",
+     "$",
+     "0.15",
+     "$",
+     "0.07"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal year ended December 31, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter ended March 31, 2011",
+     "$",
+     "0.16",
+     "$",
+     "1.05"
+    ],
+    [
+     "Quarter ended June 30, 2011",
+     "$",
+     "1.05",
+     "$",
+     "1.15"
+    ],
+    [
+     "Quarter ended September 30, 2011",
+     "$",
+     "1.15",
+     "$",
+     "3.00"
+    ],
+    [
+     "Quarter ended December 31, 2011",
+     "$",
+     "1.35",
+     "$",
+     "1.35"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 275,
+    "end_line": 290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "It is likely that the Company will not establish an office until it has completed a business acquisition transaction, but it is not possible to predict what arrangements will actually be made with respect to future office facilities.\nItem 3 - Legal Proceedings\nThe Company is not a party to any pending legal proceedings, and no such proceedings are known to be contemplated.\nItem 4 - [Removed and Reserved]\nPART II\nItem 5 - Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nThe Company\u2019s securities are eligible for trading on the OTC Bulletin Board under the Commission\u2019s Rule 15c2-11, Subsection (a)(5). The Company\u2019s trading symbol is EDRG. As of the date of this report, there have been limited and sporadic trades of the Company\u2019s securities.\nAs of February 23, 2012, there were a total of 362,200 shares of our common stock held by approximately 276 stockholders of record and approximately 280 stockholders whose positions were held in brokerage accounts. There are no shares of our preferred stock outstanding at the date of this report.\nThe following table sets forth the quarterly average high and low closing bid prices per share for the Common Stock:",
+   "prose_after": "The source for the high and low closing bids quotations was www.bigcharts.com and may not represent actual transactions and have not been adjusted for stock dividends or splits. The reported closing price of the Company\u2019s common stock, based on the last reported trade on October 28, 2011, was $1.35 per share. Additionally, there were only approximately 19 trades involving the Company\u2019s stock during Calendar 2011 and approximately 15 trades involving the Company\u2019s stock during Calendar 2010.\nCommon Stock\nOur authorized capital stock consists of 100,000,000 shares of $0.0001 par value common stock and 50,000,000 shares of $0.0001 par value preferred stock. Each share of common stock entitles a stockholder to one vote on all matters upon which stockholders are permitted to vote. No stockholder has any preemptive right or other similar right to purchase or subscribe for any additional securities issued by us, and no stockholder has any right to convert the common stock into other securities. No shares of common stock are subject to redemption or any sinking fund provisions. All the outstanding shares of our common stock are fully paid and non-assessable. Subject to the rights of the holders of the preferred stock, if any, our stockholders of common stock are entitled to dividends when, as and if declared by our board from funds legally available therefore and, upon liquidation, to a pro-rata share in any distribution to stockholders. We do not anticipate declaring or paying any cash dividends on our common stock in the foreseeable future.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wilkerson note sold to Little",
+     "$",
+     "740,000",
+     "$",
+     "740,000"
+    ],
+    [
+     "Working capital note payable to Little",
+     "",
+     "122,050",
+     "",
+     "110,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "862,050",
+     "$",
+     "850,050"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 409,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The Company and its controlling stockholder and sole officer, Glenn A. Little, have acknowledged that outside funds are necessary to support the corporate entity and comply with the periodic reporting requirements of the Securities Exchange Act of 1934, as amended. Accordingly, Mr. Little agreed to lend the Company up to $50,000 with a maturity period not to exceed two (2) years from the initial funding date at an interest rate of 6.0% per annum. In May 2005, Mr. Little advanced approximately $50,000 under this agreement, with an initial maturity date in May 2007. During 2007, this agreement was modified to extend the credit limit to $75,000 and the maturity date was extended to December 31, 2008. Through December 31, 2011 and 2010, an aggregate $122,050 and $110,050 has been advanced under this agreement. This note matured on December 31, 2008 and no demand for payment has been made by Mr. Little.\nThe following table is a summary of the notes payable to the Company\u2019s controlling shareholder as of December 31, 2011 and 2010, respectively:",
+   "prose_after": "There are no assurances that the Company will be able to either (1) consummate a business combination transaction with a privately-owned business seeking to become a public company; (2) if successful, achieve a level of revenues adequate to generate sufficient cash flow from operations; or (3) obtain additional financing through either private placement, public offerings and/or bank financing necessary to support the Company\u2019s current working capital requirements. To the extent that funds generated from any private placements, public offerings and/or bank financing are insufficient to support the Company, the Company will have to raise additional working capital. No assurance can be given that additional financing will be available, or if available, will be on terms acceptable to the Company. If adequate working capital is not available, the Company may not renew its operations.\nThe Company\u2019s ultimate continued existence is dependent upon its ability to generate sufficient cash flows from operations to support its daily operations as well as provide sufficient resources to retire existing liabilities and obligations on a timely basis.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00be",
+     "Pertain to the maintenance of records that in reasonable detail accurately and fairly reflect the transactions and dispositions of our assets;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 495
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "Controls and Procedures"
+    },
+    "note": null
+   },
+   "prose_before": "Disclosure Controls and Procedures. Our management, under the supervision and with the participation of our Chief Executive and Financial Officer (Certifying Officer), has evaluated the effectiveness of our disclosure controls and procedures as defined in Rules 13a-15 promulgated under the Exchange Act as of the end of the period covered by this Annual Report. Disclosure controls and procedures are controls and procedures designed to ensure that information required to be disclosed in our reports filed or submitted under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the Commission\u2019s rules and forms and include controls and procedures designed to ensure that information we are required to disclose in such reports is accumulated and communicated to management, including our Certifying Officer, as appropriate, to allow timely decisions regarding required disclosure. Based upon that evaluation, our Certifying Officer concluded that as of such date, our disclosure controls and procedures were not effective to ensure that the information required to be disclosed by us in our reports is recorded, processed, summarized and reported within the time periods specified by the SEC due to a weakness in our controls described below. However, our Certifying Officer believes that the financial statements included in this report fairly present, in all material respects, our financial condition, results of operations and cash flows for the respective periods presented.\nManagement\u2019s Annual Report on Internal Control over Financial Reporting. Management is responsible for establishing and maintaining adequate internal control over financial reporting, as such term is defined in Rule 13a-15(f) of the Exchange Act.\nInternal control over financial reporting is defined under the Exchange Act as a process designed by, or under the supervision of, our Certifying Officer and effected by our board of directors, management and other personnel, to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles and includes those policies and procedures that:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00be",
+     "Provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with generally accepted accounting principles, and that our receipts and expenditures are being made only in accordance with authorizations of our management and directors; and"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "Controls and Procedures"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00be",
+     "Provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use or disposition of our assets that could have a material effect on the financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "Controls and Procedures"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Because of its inherent limitation, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluations of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies and procedures may deteriorate. Accordingly, even an effective system of internal control over financial reporting will provide only reasonable assurance with respect to financial statement preparation.\nManagement\u2019s assessment of the effectiveness of the Company\u2019s internal control over financial reporting is as of the year ended December 31, 2011. We are currently considered to be a shell company in as much as we have no current operations, revenues or employees. Because we have only one officer and director, the Company\u2019s internal controls are deficient for the following reasons, (1) there are no entity level controls because there is only one person serving in the dual capacity of sole officer and sole director, (2) there are no segregation of duties as that same person approves, enters, and pays the Company\u2019s bills, and (3) there is no separate audit committee. As a result, the Company\u2019s internal controls have an inherent weakness which may increase the risks of errors in financial reporting under current operations and accordingly are deficient as evaluated against the criteria set forth in the Internal Control - Integrated Framework issued by the committee of Sponsoring Organizations of the Treadway Commission. Based on our evaluation, our management concluded that our internal controls over financial reporting were not effective as of December 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position Held and Tenure"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn A. Little",
+     "58",
+     "President, Chief Executive Officer Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 522,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Management\u2019s assessment of the effectiveness of the Company\u2019s internal control over financial reporting is as of the year ended December 31, 2011. We are currently considered to be a shell company in as much as we have no current operations, revenues or employees. Because we have only one officer and director, the Company\u2019s internal controls are deficient for the following reasons, (1) there are no entity level controls because there is only one person serving in the dual capacity of sole officer and sole director, (2) there are no segregation of duties as that same person approves, enters, and pays the Company\u2019s bills, and (3) there is no separate audit committee. As a result, the Company\u2019s internal controls have an inherent weakness which may increase the risks of errors in financial reporting under current operations and accordingly are deficient as evaluated against the criteria set forth in the Internal Control - Integrated Framework issued by the committee of Sponsoring Organizations of the Treadway Commission. Based on our evaluation, our management concluded that our internal controls over financial reporting were not effective as of December 31, 2011.\nThis Annual Report does not include an attestation report of our registered public accounting firm regarding our internal control over financial reporting, pursuant to the current appropriate Laws and Regulations.\nChanges in Internal Control over Financial Reporting. There was no change in our internal control over financial reporting that occurred during the quarter ended December 31, 2011 that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting which internal controls will remain deficient until such time as the Company completes a merger transaction or acquisition of an operating business at which time management will be able to implement effective controls and procedures.\nItem 9B - Other Information\nNot applicable.\nPART III\nItem 10 - Directors, Executive Officers and Corporate Governance",
+   "prose_after": "The director named above will serve until the next annual meeting of the Company\u2019s stockholders or until any successors are duly elected and have qualified. Directors will be elected for one-year terms at the annual stockholders meeting. Officers will hold their positions at the pleasure of the board of directors, absent any employment agreement, of which none currently exists or is contemplated. There is no arrangement or understanding between any of the directors or officers of the Company and any other person pursuant to which any director or officer was or is to be selected as a director or officer, and there is no arrangement, plan or understanding as to whether non-management shareholders will exercise their voting rights to continue to elect the current directors to the Company\u2019s board. There are also no arrangements, agreements or understandings between non-management shareholders that may directly or indirectly participate in or influence the management of the Company\u2019s affairs.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Year combination",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "transaction",
+     ""
+    ],
+    [
+     "Entity",
+     "File/CIK #",
+     "",
+     "occurred",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United National Film Corporation",
+     "",
+     "842694",
+     "",
+     "2007"
+    ],
+    [
+     "Jade Mountain Corporation",
+     "",
+     "1165527",
+     "",
+     "2007"
+    ],
+    [
+     "8888 Acquisition Corporation",
+     "",
+     "1376866",
+     "",
+     "2010"
+    ]
+   ],
+   "caption_stack": [
+    "Year combination",
+    "transaction"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Since 1988, Mr. Little has been successful in the reactivation of various inactive public companies, similar to the Company, upon his acquisition of a controlling position in each entity. As demonstrated by the following list of companies which consummated reverse merger transactions during the past five (5) years where Mr. Little held comparable titles and duties to those he holds in the Company, we believe that Mr. Little possesses the attributes, experience, and qualifications necessary to effect the Company\u2019s stated business plan. Furthermore, given Mr. Little\u2019s abilities and the Company\u2019s limited financial resources, the Company has determined that it is in its best interests for Mr. Little to serve as both the Company\u2019s principal executive officer as well as Chairman of the Board of Directors. Since Mr. Little serves as the Company\u2019s sole director, there is no designated lead director, and therefore, any and all risk oversight and risk management matters are the responsibility of Mr. Little.\nMr. Little is no longer a controlling shareholder, officer or director of any of the below listed entities and his involvement terminated upon the fulfillment of the respective plan of operation involving a business combination transaction with a private entity wishing to become publicly owned. In most instances, when a business combination was transacted with one of these companies, that entity was required to file a current Report on Form 8-K describing the transaction. We refer the reader to the respective Form 8-K, if filed, for any of the companies listed below for detailed information concerning the business combination entered into by that company.",
+   "prose_after": "It is specifically noted that the relative success or failure of any of these entities subsequent to Mr. Little\u2019s involvement in them is not an indication of the possibility of success or failure of the Company upon the completion of it\u2019s current plan of operations. Additional information about these companies can be researched at www.sec.gov.\nIndemnification of Officers and Directors.\nWe have the authority under the Nevada General Corporation Law to indemnify our directors and officers to the extent provided for in such statute. Set forth below is a discussion of Nevada law regarding indemnification which we believe discloses the material aspects of such law on this subject. The Nevada law provides, in part, that a corporation may indemnify a director or officer or other person who was, is or is threatened to be made a named defendant or respondent in a proceeding because such person is or was a director, officer, employee or agent of the corporation, if it is determined that such person:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 532,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\nPrincipal Position",
+     "Year",
+     "Salary($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock\n\nAwards ($)",
+     "",
+     "Option\n\nAwards ($)",
+     "",
+     "Non-Equity\n\nIncentive Plan\n\nCompensation ($)",
+     "",
+     "Change in\n\nPension\n\nValue and\n\nNonqualified\n\nDeferred\n\nCompensation\n\nEarnings ($)",
+     "",
+     "All Other\n\nCompensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn A. Little,",
+     "2011",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ],
+    [
+     "Principal Executive Officer",
+     "2010",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ],
+    [
+     "",
+     "2009",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "Our board of directors appoints our executive officers to serve at the discretion of the board. Glenn A. Little is our sole officer and director. Our directors receive no compensation from us for serving on the board. Until we consummate a business combination, we do not intend to reimburse our officers or directors for travel and other expenses incurred in connection with attending the board meetings or for conducting business activities.\nExecutive Compensation\nGlenn A. Little has received no compensation from us nor have we accrued any cash or non-cash compensation for his services since he was elected as an officer and director. The current management and oversight of the Company requires less than five (5) hours per month. As the Company\u2019s sole officer and director is engaged in other full-time income producing activities, the Company\u2019s sole officer or director has received any compensation from the Company. In future periods, subsequent to the consummation of a business combination transaction, the Company anticipates that it will pay compensation to its officer(s) and/or director(s).\nWe do not have any employment or consulting agreements with any parties nor do we have a stock option plan or other equity compensation plans.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "The Company has no other executive compensation issues which would require the inclusion of other mandated table disclosures.\nItem 12 - Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth, as of the date of this Annual Report, the number of shares of Common Stock owned of record and beneficially by executive officers, directors and persons who hold 5% or more of the outstanding Common Stock of the Company. Also included are the shares held by all executive officers and directors as a group.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Beneficially Owned (1)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and address (2)",
+     "Number of Shares",
+     "",
+     "Percentage (3)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenn A. Little",
+     "",
+     "290,500",
+     "",
+     "80.2",
+     "%"
+    ],
+    [
+     "1600 West Golf Course",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Midland, Texas 79701",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Directors and",
+     "",
+     "290,500",
+     "",
+     "80.2",
+     "%"
+    ],
+    [
+     "Executive Officers (1 person)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Shares Beneficially Owned (1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has no other executive compensation issues which would require the inclusion of other mandated table disclosures.\nItem 12 - Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth, as of the date of this Annual Report, the number of shares of Common Stock owned of record and beneficially by executive officers, directors and persons who hold 5% or more of the outstanding Common Stock of the Company. Also included are the shares held by all executive officers and directors as a group.",
+   "prose_after": "(1) On December 31, 2011, there were 362,200 shares of our common stock outstanding and no shares of preferred stock issued and outstanding. We have no outstanding stock options or warrants.\n(2) Under applicable Commission rules, a person is deemed the \u201cbeneficial owner\u201d of a security with regard to which the person directly or indirectly, has or shares (a) the voting power, which includes the power to vote or direct the voting of the security, or (b) the investment power, which includes the power to dispose, or direct the disposition, of the security, in each case irrespective of the person\u2019s economic interest in the security. Under Commission rules, a person is deemed to beneficially own securities which the person has the right to acquire within 60 days through the exercise of any option or warrant or through the conversion of another security.\n(3) In determining the percent of voting stock owned by a person on December 31, 2011 (a) the numerator is the number of shares of common stock beneficially owned by the person, including shares the beneficial ownership of which may be acquired within 60 days upon the exercise of options or warrants or conversion of convertible securities, and (b) the denominator is the total of (i) the 362,200 shares of common stock outstanding on December 31, 2008, and (ii) any shares of common stock which the person has the right to acquire within 60 days upon the exercise of options or warrants or conversion of convertible securities. Neither the numerator nor the denominator includes shares which may be issued upon the exercise of any other options or warrants or the conversion of any other convertible securities.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "Year ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1. Audit fees",
+     "$",
+     "5,150",
+     "$",
+     "5,713"
+    ],
+    [
+     "2. Audit-related fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "3. Tax fees",
+     "",
+     "325",
+     "",
+     "235"
+    ],
+    [
+     "4. All other fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "5,475",
+     "$",
+     "5,948"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 725,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Although management has no current plans to cause the Company to do so, it is possible that the Company may enter into an agreement with an acquisition candidate requiring the sale of all or a portion of the Common Stock held by the Company\u2019s current stockholders to the acquisition candidate or principals thereof, or to other individuals or business entities, or requiring some other form of payment to the Company\u2019s current stockholders, or requiring the future employment of specified officers and payment of salaries to them. It is more likely than not that any sale of securities by the Company\u2019s current stockholders to an acquisition candidate would be at a price substantially higher than that originally paid by such stockholders. Any payment to current stockholders in the context of an acquisition involving the Company would be determined entirely by the largely unforeseeable terms of a future agreement with an unidentified business entity.\nDirector Independence\nPursuant to the Company\u2019s current structure of having a sole director, who is also the Company\u2019s sole officer and controlling shareholder, the Company has no independent directors, as defined in Rule 4200 (a) (15) of the NASDAQ Marketplace Rules.\nItem 14 - Principal Accounting Fees and Services\nThe Company paid or accrued the following fees in each of the prior two fiscal years to its principal accountant, S. W. Hatfield, CPA of Dallas, Texas:",
+   "prose_after": "We have considered whether the provision of any non-audit services, currently or in the future, is compatible with S. W. Hatfield, CPA maintaining its independence and have determined that these services do not compromise their independence.\nFinancial Information System Design and Implementation: S. W. Hatfield, CPA did not charge the Company any fees for financial information system design and implementation fees.\nThe Company has no formal audit committee. However, the entire Board of Directors (Board) is the Company\u2019s defacto audit committee. In discharging its oversight responsibility as to the audit process, the Board obtained from the independent auditors a formal written statement describing all relationships between the auditors and the Company that might bear on the auditors\u2019 independence as required by the appropriate Professional Standards issued by the Public Company Accounting Oversight Board, the U. S. Securities and Exchange Commission and/or the American Institute of Certified Public Accountants. The Board discussed with the auditors any relationships that may impact their objectivity and independence, including fees for non-audit services, and satisfied itself as to the auditors\u2019 independence. The Board also discussed with management, the internal auditors and the independent auditors the quality and adequacy of the Company\u2019s internal controls.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Registered Independent Certified Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     ""
+    ],
+    [
+     "as of December 31, 2011 and 2010",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations and Comprehensive Loss",
+     ""
+    ],
+    [
+     "for the years ended December 31, 2011 and 2010",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Changes in Shareholders' Equity",
+     ""
+    ],
+    [
+     "for the years ended December 31, 2011 and 2010",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     ""
+    ],
+    [
+     "for the years ended December 31, 2010 and 2010",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has no formal audit committee. However, the entire Board of Directors (Board) is the Company\u2019s defacto audit committee. In discharging its oversight responsibility as to the audit process, the Board obtained from the independent auditors a formal written statement describing all relationships between the auditors and the Company that might bear on the auditors\u2019 independence as required by the appropriate Professional Standards issued by the Public Company Accounting Oversight Board, the U. S. Securities and Exchange Commission and/or the American Institute of Certified Public Accountants. The Board discussed with the auditors any relationships that may impact their objectivity and independence, including fees for non-audit services, and satisfied itself as to the auditors\u2019 independence. The Board also discussed with management, the internal auditors and the independent auditors the quality and adequacy of the Company\u2019s internal controls.\nThe Company\u2019s principal accountant, S. W. Hatfield, CPA, did not engage any other persons or firms other than the principal accountant\u2019s full-time, permanent employees.\nItem 15 - Exhibits, Financial Statement Schedules\nExhibit\nNumber\n31.1 Certification pursuant to Section 302 of Sarbanes-Oxley Act of 2002.\n32.1 Certification pursuant to Section 906 of Sarbanes-Oxley Act of 2002.\n101 Interactive data files pursuant to Rule 405 of Regulation S-T.\n(Financial statements follow on next page)\nCONTENTS",
+   "prose_after": "REPORT OF REGISTERED INDEPENDENT CERTIFIED PUBLIC ACCOUNTING FIRM\nBoard of Directors and Stockholders\nWe have audited the accompanying balance sheets of Eight Dragons Company (a Nevada corporation) as of December 31, 2011 and 2010 and the related statements of operations and comprehensive loss, changes in shareholders\u2019 equity (deficit) and cash flows for the each of the two years ended December 31, 2011 and 2010, respectively. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 766,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 792,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash on hand and in bank",
+     "$",
+     "2,118",
+     "",
+     "$",
+     "208",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,118",
+     "",
+     "",
+     "208",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2,118",
+     "",
+     "$",
+     "208",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable - trade",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Notes payable to controlling stockholder",
+     "",
+     "862,050",
+     "",
+     "",
+     "850,050",
+     ""
+    ],
+    [
+     "Accrued interest payable to controlling stockholder",
+     "",
+     "379,006",
+     "",
+     "",
+     "297,976",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "1,243,256",
+     "",
+     "",
+     "1,148,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "1,243,256",
+     "",
+     "",
+     "1,148,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock - $0.0001 par value.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "50,000,000 shares authorized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "None issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock - $0.0001 par value.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "100,000,000 shares authorized.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "362,200 shares issued and outstanding, respectively",
+     "",
+     "36",
+     "",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "31,690,302",
+     "",
+     "",
+     "31,690,302",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(32,931,476)",
+     "",
+     "",
+     "(32,838,456)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Shareholders\u2019 Equity (Deficit)",
+     "",
+     "(1,241,138)",
+     "",
+     "",
+     "(1,148,118)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholders\u2019 Equity",
+     "$",
+     "2,118",
+     "",
+     "$",
+     "208",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 819,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Marketing Acquisition Corporation as of December 31, 2011 and 2010 and the results of its operations and its cash flows for the each of the two years ended December 31, 2011 and 2010, respectively, in conformity with generally accepted accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note C to the financial statements, the Company has no viable operations or significant assets and is dependent upon significant shareholders to provide sufficient working capital to maintain the integrity of the corporate entity. These circumstances create substantial doubt about the Company\u2019s ability to continue as a going concern and are discussed in Note C. The financial statements do not contain any adjustments that might result from the outcome of these uncertainties.\n/s/ S. W. Hatfield, CPA\nS. W. HATFIELD, CPA\nDallas, Texas\nFebruary 23, 2012\nBALANCE SHEETS\nDecember 31, 2011 and 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nYears ended December 31, 2011 and 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "Year ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "11,990",
+     "",
+     "",
+     "11,026",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) from operations",
+     "",
+     "(11,990)",
+     "",
+     "",
+     "(11,026)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(81,030)",
+     "",
+     "",
+     "(80,406)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) before provision for income taxes",
+     "",
+     "(93,020)",
+     "",
+     "",
+     "(91,432)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(93,020)",
+     "",
+     "",
+     "(91,432)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Comprehensive Income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "$",
+     "(93,020)",
+     "",
+     "$",
+     "(91,432)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share of common stock outstanding computed on net loss -",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and fully diluted",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "(0.25)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average number of shares outstanding \u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and fully diluted",
+     "",
+     "362,200",
+     "",
+     "",
+     "362,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nYears ended December 31, 2011 and 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY\nYears ended December 31, 2011 and 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 923,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at January 1, 2010",
+     "",
+     "362,200",
+     "$",
+     "36",
+     "$",
+     "31,690,302",
+     "$",
+     "(32,747,024)",
+     "",
+     "$",
+     "(1,056,686)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(91,432)",
+     "",
+     "",
+     "(91,432)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2010",
+     "",
+     "362,200",
+     "",
+     "36",
+     "",
+     "31,690,302",
+     "",
+     "(32,838,456)",
+     "",
+     "",
+     "(1,148,118)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(93,020)",
+     "",
+     "",
+     "(93,020)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2011",
+     "",
+     "362,200",
+     "$",
+     "36",
+     "$",
+     "31,690,302",
+     "$",
+     "(32,931,476)",
+     "",
+     "$",
+     "(1,241,138)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY\nYears ended December 31, 2011 and 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\nYears ended December 31, 2011 and 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 923,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "Year ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) for the period",
+     "$",
+     "(93,020)",
+     "",
+     "$",
+     "(91,432)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "provided by operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase (Decrease) in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable - trade",
+     "",
+     "1,900",
+     "",
+     "",
+     "300",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "81,030",
+     "",
+     "",
+     "80,406",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(10,090)",
+     "",
+     "",
+     "(10,726)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from loan from stockholder/officer",
+     "",
+     "12,000",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "12,000",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Cash",
+     "",
+     "1,910",
+     "",
+     "",
+     "(1,726)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "208",
+     "",
+     "",
+     "1,934",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "2,118",
+     "",
+     "$",
+     "208",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Interest and Income Taxes Paid",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid for the year",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes paid for the year",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 957,
+    "end_line": 1001
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\nYears ended December 31, 2011 and 2010",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nDecember 31, 2011 and 2010\nNOTE A - ORGANIZATION AND DESCRIPTION OF BUSINESS\nEight Dragons Company (Company), formerly known as Tahoe Pacific Corporation, Pacific Holdings, Inc. and Ameri-First Financial Group, respectively, was incorporated in the State of Nevada on September 27, 1996.\nOn October 24, 2007, the Company changed its state of incorporation from Delaware to Nevada by means of a merger with and into Eight Dragons Company, a Nevada corporation formed on September 26, 2007 solely for the purpose of effecting the reincorporation. The merger was consummated through an exchange of 100 shares in the Nevada corporation for each share then issued and outstanding in the Delaware corporation. The Articles of Incorporation and Bylaws of the Nevada corporation are the Articles of Incorporation and Bylaws of the surviving corporation. Such Articles of Incorporation modified the Company\u2019s capital structure to allow for the issuance of up to 50,000,000 shares of $0.0001 par value common stock and up to 10,000,000 shares of $0.0001 par value preferred stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1003,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wilkerson note sold to Little",
+     "$",
+     "740,000",
+     "$",
+     "740,000"
+    ],
+    [
+     "Working capital note payable to Little",
+     "",
+     "122,050",
+     "",
+     "110,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "862,050",
+     "$",
+     "850,050"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1110,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "The Company and its controlling stockholder and sole officer, Glenn A. Little, have acknowledged that outside funds are necessary to support the corporate entity and comply with the periodic reporting requirements of the Securities Exchange Act of 1934, as amended. Accordingly, Mr. Little agreed to lend the Company up to $50,000 with a maturity period not to exceed two (2) years from the initial funding date at an interest rate of 6.0% per annum. In May 2005, Mr. Little advanced approximately $50,000 under this agreement, with an initial maturity date in May 2007. During 2007, this agreement was modified to extend the credit limit to $75,000 and the maturity date was extended to December 31, 2008. Through December 31, 2011 and 2010, an aggregate $122,050 and $110,050 has been advanced under this agreement. This note matured on December 31, 2008 and no demand for payment has been made by Mr. Little. It is the intent of Mr. Little and the Company to extend the maturity date of this note to a future date.\nThe following table is a summary of the notes payable to the Company\u2019s controlling shareholder as of December 31, 2011 and 2010, respectively:",
+   "prose_after": "NOTE G - INCOME TAXES\nThe components of income tax (benefit) expense for each of the years ended December 31, 2011 and 2010, are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1096,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1148,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "Year ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Federal:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "State:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "NOTE G - INCOME TAXES\nThe components of income tax (benefit) expense for each of the years ended December 31, 2011 and 2010, are as follows:",
+   "prose_after": "NOTES TO FINANCIAL STATEMENTS - CONTINUED\nDecember 31, 2011 and 2010\nNOTE G - INCOME TAXES - CONTINUED\nAs a result of a 2005 change in control, the Company has a net operating loss carryforward of approximately $593,000 for Federal income tax purposes. The amount and availability of any future net operating loss carryforwards may be subject to limitations set forth by the Internal Revenue Code. Factors such as the number of shares ultimately issued within a three year look-back period; whether there is a deemed more than 50 percent change in control; the applicable long-term tax exempt bond rate; continuity of historical business; and subsequent income of the Company all enter into the annual computation of allowable annual utilization of the carryforwards.\nThe Company\u2019s income tax expense (benefit) for each of the years ended December 31, 2011 and 2010, respectively, differed from the statutory federal rate of 34 percent as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1096,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1148,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "Year ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory rate applied to income before income taxes",
+     "$",
+     "(32,000)",
+     "",
+     "$",
+     "(31,000)",
+     ""
+    ],
+    [
+     "Increase (decrease) in income taxes resulting from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, including reserve for deferred tax asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and application of net operating loss carryforward",
+     "",
+     "32,000",
+     "",
+     "",
+     "31,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "NOTES TO FINANCIAL STATEMENTS - CONTINUED\nDecember 31, 2011 and 2010\nNOTE G - INCOME TAXES - CONTINUED\nAs a result of a 2005 change in control, the Company has a net operating loss carryforward of approximately $593,000 for Federal income tax purposes. The amount and availability of any future net operating loss carryforwards may be subject to limitations set forth by the Internal Revenue Code. Factors such as the number of shares ultimately issued within a three year look-back period; whether there is a deemed more than 50 percent change in control; the applicable long-term tax exempt bond rate; continuity of historical business; and subsequent income of the Company all enter into the annual computation of allowable annual utilization of the carryforwards.\nThe Company\u2019s income tax expense (benefit) for each of the years ended December 31, 2011 and 2010, respectively, differed from the statutory federal rate of 34 percent as follows:",
+   "prose_after": "Temporary differences, which consist principally of net operating loss carryforwards, statutory deferrals of expenses for organizational costs and statutory differences in the depreciable lives for property and equipment, between the financial statement carrying amounts and tax bases of assets and liabilities give rise to deferred tax assets and/or liabilities, as appropriate. As of December 31, 2011 and 2010, respectively, the deferred tax asset is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1148,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "217,000",
+     "",
+     "$",
+     "185,000",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(217,000)",
+     "",
+     "",
+     "(185,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Deferred Tax Asset",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1179,
+    "end_line": 1191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Temporary differences, which consist principally of net operating loss carryforwards, statutory deferrals of expenses for organizational costs and statutory differences in the depreciable lives for property and equipment, between the financial statement carrying amounts and tax bases of assets and liabilities give rise to deferred tax assets and/or liabilities, as appropriate. As of December 31, 2011 and 2010, respectively, the deferred tax asset is as follows:",
+   "prose_after": "During the years ended December 31, 2011 and 2010, respectively, the valuation allowance for the deferred tax asset increased by approximately $32,000 and $31,000.\nNOTE H - SUBSEQUENT EVENTS\nManagement has evaluated all activity of the Company through February 23, 2012 (the issue date of the financial statements) and concluded that no subsequent events have occurred that would require recognition in the financial statements or disclosure in the notes to financial statements.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1148,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Eight Dragons Company"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated: February 23, 2012",
+     "/s/ Glenn A. Little"
+    ],
+    [
+     "",
+     "Glenn A. Little"
+    ],
+    [
+     "",
+     "President, Chief Executive Officer"
+    ],
+    [
+     "",
+     "Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [
+    "Eight Dragons Company"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1202,
+    "end_line": 1211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "During the years ended December 31, 2011 and 2010, respectively, the valuation allowance for the deferred tax asset increased by approximately $32,000 and $31,000.\nNOTE H - SUBSEQUENT EVENTS\nManagement has evaluated all activity of the Company through February 23, 2012 (the issue date of the financial statements) and concluded that no subsequent events have occurred that would require recognition in the financial statements or disclosure in the notes to financial statements.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates as indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: February 23, 2012",
+     "/s/ Glenn A. Little"
+    ],
+    [
+     "",
+     "Glenn A. Little"
+    ],
+    [
+     "",
+     "President, Chief Executive Officer"
+    ],
+    [
+     "",
+     "Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates as indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

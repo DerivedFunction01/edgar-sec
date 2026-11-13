@@ -1,0 +1,4216 @@
+{
+ "accession": "0001564590-20-019364",
+ "cik": "0001043000",
+ "form": "10-K/A",
+ "filing_date": "2020-04-29",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "csu-10ka_20191231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "75-2678809"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14160 Dallas Parkway, Suite 300\n\n\n\nDallas, Texas",
+     "75254"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Amendment No. 1)\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended December 31, 2019\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 1-13445\nCapital Senior Living Corporation\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\n(972) 770-5600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange\n\n\n\non which registered"
+    ],
+    [
+     "Common Stock, $.01 par value per share",
+     "CSU",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 51
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code:\n(972) 770-5600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by a check mark if the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by a check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "1"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "3"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "17"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "20"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "21"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "22"
+    ],
+    [
+     "Signatures",
+     "",
+     "25"
+    ],
+    [
+     "Appendix A \u2013 Certain Information With Respect to Non-GAAP Financial Measures Used in This Amendment",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number",
+    "PART III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "We are filing this Amendment to include the information required by Part III and not included in the Original Filing, as we will not file our definitive proxy statement within 120 days of the end of our fiscal year ended December 31, 2019. The reference on the cover page of the Original Filing to our incorporation by reference of certain sections of our definitive proxy statement into Part III of the Original Filing is hereby deleted.\nExcept as set forth in Part III below and the updates to the List of Exhibits, no other changes are made to the Original Filing. The Original Filing continues to speak as of the date of the Original Filing. Unless expressly stated, this Amendment does not reflect events occurring after the filing of the Original Filing, nor does it modify or update in any way the disclosures contained in the Original Filing. Accordingly, this Amendment should be read in conjunction with the Original Filing and our other filings with the SEC.\ni\nCAPITAL SENIOR LIVING CORPORATION\nTABLE OF CONTENTS",
+   "prose_after": "ii\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nInformation required under this Item with respect to executive officers of the Company is included under the heading \u201cInformation about Our Executive Officers and Other Key Employees\u201d at the end of Item 1 in the Original Filing. The names of our directors, their ages as of the date of this Amendment, and certain other information about them are set forth below. There are no family relationships among any of our directors or executive officers.\nDirectors\nOur Board of Directors (the \u201cBoard\u201d) is currently divided into three classes and the number of directors: Class I (terms expire at 2022 annual meeting), Class II (terms expire at 2020 annual meeting) and Class III (terms expire at 2021 annual meeting). The Board had previously fixed the authorized number of directors at ten and, following the prior resignation of a Class I director, we had nine directors and one vacant Board seat.\nThe Board determined to rebalance the number of directors in each Board class in order to equalize the class sizes. Accordingly, Ross Levin agreed to be redesignated from a Class III director to a Class II director and was redesignated by the Board from a Class III director to a Class II director to stand for election at the 2020 annual meeting of the Company\u2019s stockholders. The Board also resolved to reduce the number of directors from ten to nine. As a result of such changes, the Board currently consists of nine directors with three directors in each of Classes I, II and III.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)",
+     "Class",
+     "Director\u2019s Term Expires"
+    ],
+    [
+     "Kimberly S. Lody",
+     "54",
+     "Chief Executive Officer, President and Director",
+     "II",
+     "2020"
+    ],
+    [
+     "E. Rodney Hornbake",
+     "69",
+     "Director",
+     "II",
+     "2020"
+    ],
+    [
+     "Ross B. Levin",
+     "36",
+     "Director",
+     "II",
+     "2020"
+    ],
+    [
+     "Paul J. Isaac",
+     "70",
+     "Director",
+     "III",
+     "2021"
+    ],
+    [
+     "Jill M. Krueger",
+     "60",
+     "Director",
+     "III",
+     "2021"
+    ],
+    [
+     "Michael W. Reid",
+     "66",
+     "Director",
+     "III",
+     "2021"
+    ],
+    [
+     "Philip A. Brooks",
+     "61",
+     "Director",
+     "I",
+     "2022"
+    ],
+    [
+     "Ed A. Grier",
+     "65",
+     "Director",
+     "I",
+     "2022"
+    ],
+    [
+     "Steven T. Plochocki",
+     "68",
+     "Director",
+     "I",
+     "2022"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 124,
+    "end_line": 138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "The Board determined to rebalance the number of directors in each Board class in order to equalize the class sizes. Accordingly, Ross Levin agreed to be redesignated from a Class III director to a Class II director and was redesignated by the Board from a Class III director to a Class II director to stand for election at the 2020 annual meeting of the Company\u2019s stockholders. The Board also resolved to reduce the number of directors from ten to nine. As a result of such changes, the Board currently consists of nine directors with three directors in each of Classes I, II and III.\nIn December 2019, the Board unanimously approved and declared advisable, and determined to recommend that our stockholders approve, amendments to the Fifth Article of our Amended and Restated Certificate of Incorporation, as amended, to implement a path to declassify the Board such that, if approved by our stockholders, we will hold annual elections of all directors beginning with the 2023 annual meeting of stockholders.\nSet forth below is information concerning the age, principal occupation and employment during the past five years, other directorships and positions with the Company for each of our directors, including the year in which he or she first became a director of the Company and his or her term of office as a director.",
+   "prose_after": "Philip A. Brooks has been a director since 2010. Mr. Brooks has more than 31 years of experience as a financier and investor, credit manager, and product/policy analyst. With extended focus on seniors housing and healthcare, he has provided $5 billion of operating and property capital for this sector. He is a principal investor and managing partner in Select Living, LLC, which acquires properties to develop to special market dynamics. He is a portfolio advisor to NRV, a venture capital firm funding early stage growth companies in Virginia. Previously, Mr. Brooks served as a Senior Vice President, Loan Production for Walker & Dunlop, LLC, a NYSE-listed provider of financial services for owners and developers of commercial real estate throughout the United States. Prior to Walker & Dunlop, LLC, from February 2011, Mr. Brooks served as Senior Vice President, Loan Production for CWCapital, LLC, a mortgage finance company, which was acquired by Walker & Dunlop, LLC in September 2012. From 1996 to October 2010, Mr. Brooks served in various senior executive positions with Berkadia Commercial Mortgage, LLC, a national mortgage bank, which was previously known as Capmark Finance Inc. and GMAC Commercial Mortgage. He was a founding member of the American Seniors Housing Association, a leading trade association promoting seniors housing, and was on the Board of Directors of the National Investment Center for the Seniors Housing & Care Industry, a leading trade association promoting the industry to the capital markets. Mr. Brooks also serves a director of the Virginia Council on Economic Education and the Virginia Community Development Corporation.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive",
+     "Principal Position",
+     "2019",
+     "2018"
+    ],
+    [
+     "Kimberly S. Lody",
+     "President and Chief Executive Officer",
+     "$725,000",
+     "N/A"
+    ],
+    [
+     "Carey P. Hendrickson",
+     "EVP and Chief Financial Officer",
+     "$441,632",
+     "$429,983"
+    ],
+    [
+     "David R. Brickman",
+     "SVP, General Counsel and Secretary",
+     "$341,160",
+     "$334,471"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 190,
+    "end_line": 197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Base salary represents the only fixed component of the four primary components of our executive compensation program and is intended to provide a baseline amount of annual compensation for our named executive officers. While base salary is a major component of compensation for salaried employees, it becomes a smaller component as a percentage of total pay for executives. In determining the base salary for our named executive officers, the Compensation Committee primarily relies upon peer group data, third party industry surveys and reports from any independent compensation consultant engaged by the Compensation Committee, other factors deemed relevant by such compensation consultant and input and recommendations from our CEO.\nThe following table shows the annualized base salaries of our named executive officers for fiscal 2019 and 2018. Ms. Lody did not receive any base salary from the Company prior to her appointment as its President and Chief Executive Officer in January 2019, and as such, no base salary information is provided for Ms. Lody for fiscal 2018.",
+   "prose_after": "Annual Incentive Plan\nAnnual cash performance incentives are awarded to our named executive officers under an incentive compensation plan, which we refer to as our \u201cIncentive Compensation Plan.\u201d The Incentive Compensation Plan is designed to reward our named executive officers for accomplishing our 2019 Business Plan and additional compensation is awarded for performance beyond our 2019 Business Plan.\nThe Incentive Compensation Plan represents the Compensation Committee\u2019s determination that, although a substantial portion of the cash performance incentive opportunity for our named executive officers should be dependent upon measures that are reflective of our overall financial performance, the Incentive Compensation Plan should also reward the individual contributions of each eligible named executive officer for the achievement of elements of our business plan that are within such individual\u2019s sphere of influence.\nUnder the Incentive Compensation Plan, cash performance incentives are targeted at a pre-determined percentage of each named executive officer\u2019s base salary for such year. These percentages are established by the Compensation Committee based upon (i) its general review of publicly-available information with respect to similar programs offered by the companies in our peer group, (ii) each officer\u2019s ability, by virtue of his or her position with us, to exert a significant influence over the factors upon which cash performance incentives under the Incentive Compensation Plan are contingent and (iii) market analysis and reports from the compensation consultant engaged by the Compensation Committee. The target percentages in 2019 were as follows: Ms. Lody (110%), Mr. Hendrickson (70%) and Mr. Brickman (50%).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level",
+     "",
+     "Performance\n\n\n\nas a Percent\n\n\n\nof Target\n\n\n\nGoal",
+     "",
+     "",
+     "",
+     "Adjusted CFFO\n\n\n\nper share\n\n\n\nperformance\n\n\n\ngoal",
+     "",
+     "",
+     "",
+     "Same store\n\n\n\nfacility net\n\n\n\noperating income\n\n\n\nperformance\n\n\n\ngoal",
+     "",
+     "",
+     "",
+     "Adjusted\n\n\n\nEBITDAR\n\n\n\nperformance\n\n\n\ngoal",
+     "",
+     ""
+    ],
+    [
+     "Threshold Opportunity",
+     "",
+     "",
+     "95",
+     "%",
+     "",
+     "$",
+     "0.63",
+     "",
+     "",
+     "$",
+     "184,725,180",
+     "",
+     "",
+     "$",
+     "129,411,850",
+     ""
+    ],
+    [
+     "Target Opportunity",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "$",
+     "0.66",
+     "",
+     "",
+     "$",
+     "194,447,558",
+     "",
+     "",
+     "$",
+     "136,223,000",
+     ""
+    ],
+    [
+     "Maximum Opportunity",
+     "",
+     "",
+     "105",
+     "%",
+     "",
+     "$",
+     "0.69",
+     "",
+     "",
+     "$",
+     "204,169,936",
+     "",
+     "",
+     "$",
+     "143,034,150",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 213,
+    "end_line": 228
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "In determining the corporate and individual performance metrics under our Incentive Compensation Plan, the Compensation Committee endeavors to use metrics that drive shareholder value creation and incentivize achieving the Company\u2019s strategic plan. The Incentive Compensation Plan metrics and weightings for 2019 were as follows: Adjusted Cash Flows from Operations (\u201cCFFO\u201d) per share (30%), Same Store Facility Net Operating Income (30%), Adjusted Earnings before Interest, Taxes, Depreciation, Amortization, and Rent (\u201cEBITDAR\u201d) (20%) and Individual Performance (20%).\nCorporate Performance Goals\nThe table below shows the threshold, target and maximum cash bonus opportunities for our named executive officers under our Incentive Compensation Plan relating to corporate goals for 2019. Performance below threshold level results in no payout for the applicable performance metric. Payouts are capped at the maximum level for performance that exceeds maximum goals. Payouts for performance between threshold, target and maximum levels are interpolated.",
+   "prose_after": "The table below shows the Company\u2019s actual results with respect the corporate goals for 2019 under our Incentive Compensation Plan and the corresponding payout factors, if any, relating to each corporate goal.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Corporate Metrics*",
+     "",
+     "Achievement\n\n\n\nAmount",
+     "",
+     "",
+     "",
+     "Payout Factor",
+     "",
+     ""
+    ],
+    [
+     "Adjusted CFFO per Share",
+     "",
+     "$",
+     "0.33",
+     "",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Same Store Facility Net Operating Income",
+     "",
+     "$",
+     "166,678,358",
+     "",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Adjusted EBITDAR",
+     "",
+     "$",
+     "121,361,000",
+     "",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Combined Payout for Corporate Goals",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "The table below shows the Company\u2019s actual results with respect the corporate goals for 2019 under our Incentive Compensation Plan and the corresponding payout factors, if any, relating to each corporate goal.",
+   "prose_after": "* Adjusted EBITDAR, Adjusted CFFO and Same Store Facility Net Operating Income are financial valuation and performance measures, none of which are calculated in accordance with U.S. generally accepted accounting principles (\u201cGAAP\u201d). Please see Appendix A to this Amendment for important information concerning such non-GAAP financial measures, including the Company\u2019s definitions of such measures and reconciliations of such measures to the most directly comparable GAAP measure.\nIndividual Performance Goals\nThe table below shows the individual goals for our named executive officers under our Incentive Compensation Plan for 2019 and the Compensation Committee\u2019s determination as to whether the individual goals were achieved. Based upon each named executive officer\u2019s achievement of his or her individual goals, the Compensation Committee had discretion to award between 0% and 150% of the target cash bonus attributable to individual goals to such named executive officer.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive",
+     "",
+     "Individual Performance Goal",
+     "",
+     "Weight",
+     "",
+     "",
+     "",
+     "Achievement",
+     "",
+     "Payout Factor",
+     "",
+     ""
+    ],
+    [
+     "Kimberly S. Lody",
+     "",
+     "Accurately forecast the Company\u2019s monthly revenue(1)",
+     "",
+     "",
+     "6.7",
+     "%",
+     "",
+     "Maximum",
+     "",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Attain specific year-end cash balance(2)",
+     "",
+     "",
+     "6.7",
+     "%",
+     "",
+     "Exceeded target",
+     "",
+     "",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Improve the operational performance of underperforming assets(3)",
+     "",
+     "",
+     "6.7",
+     "%",
+     "",
+     "No",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Carey P. Hendrickson",
+     "",
+     "Accurately forecast the Company\u2019s monthly revenue(1)",
+     "",
+     "",
+     "7.5",
+     "%",
+     "",
+     "Maximum",
+     "",
+     "",
+     "11.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Attain specific year-end cash balance(2)",
+     "",
+     "",
+     "7.5",
+     "%",
+     "",
+     "Exceeded target",
+     "",
+     "",
+     "8.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Improve the operational performance of underperforming assets(3)",
+     "",
+     "",
+     "5.0",
+     "%",
+     "",
+     "No",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "David R. Brickman",
+     "",
+     "Accurately forecast the Company\u2019s monthly revenue(1)",
+     "",
+     "",
+     "5",
+     "%",
+     "",
+     "Maximum",
+     "",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Attain specific year-end cash balance(2)",
+     "",
+     "",
+     "5",
+     "%",
+     "",
+     "Exceeded target",
+     "",
+     "",
+     "5.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Develop, implement and provide legal guidance on social media marketing platform(4)",
+     "",
+     "",
+     "5",
+     "%",
+     "",
+     "Maximum",
+     "",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Improve the operational performance of underperforming assets(3)",
+     "",
+     "",
+     "5",
+     "%",
+     "",
+     "No",
+     "",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 249,
+    "end_line": 264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "* Adjusted EBITDAR, Adjusted CFFO and Same Store Facility Net Operating Income are financial valuation and performance measures, none of which are calculated in accordance with U.S. generally accepted accounting principles (\u201cGAAP\u201d). Please see Appendix A to this Amendment for important information concerning such non-GAAP financial measures, including the Company\u2019s definitions of such measures and reconciliations of such measures to the most directly comparable GAAP measure.\nIndividual Performance Goals\nThe table below shows the individual goals for our named executive officers under our Incentive Compensation Plan for 2019 and the Compensation Committee\u2019s determination as to whether the individual goals were achieved. Based upon each named executive officer\u2019s achievement of his or her individual goals, the Compensation Committee had discretion to award between 0% and 150% of the target cash bonus attributable to individual goals to such named executive officer.",
+   "prose_after": "(1) With respect to this individual performance goal, the threshold level of performance was subject to developing a tool to more accurately forecast the Company\u2019s monthly revenue by June 30, 2019, which would result in a payout equal to 50% of the targeted amount. In the event that the Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for at least four out of the six months during the six month period from July 1, 2019 until December 31, 2019, then the targeted level of performance would be attained, which would result in a payout equal to 100% of the targeted amount. In the event that the Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for all of the six",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "months during the six month period from July 1, 2019 until December 31, 2019, then the maximum level of performance would be attained, which would result in a payout equal to 150% of the targeted amount.  The Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for each of the six months during the six month period from July 1, 2019 until December 31, 2019, and as result, the maximum level of performance was achieved for this performance goal."
+    ]
+   ],
+   "caption_stack": [
+    "months during the six month period from July 1, 2019 until December 31, 2019, then the maximum level of performance would be attained, which would result in a payout equal to 150% of the targeted amount.  The Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for each of the six months during the six month period from July 1, 2019 until December 31, 2019, and as result, the maximum level of performance was achieved for this performance goal."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 268,
+    "end_line": 273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(1) With respect to this individual performance goal, the threshold level of performance was subject to developing a tool to more accurately forecast the Company\u2019s monthly revenue by June 30, 2019, which would result in a payout equal to 50% of the targeted amount. In the event that the Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for at least four out of the six months during the six month period from July 1, 2019 until December 31, 2019, then the targeted level of performance would be attained, which would result in a payout equal to 100% of the targeted amount. In the event that the Company\u2019s actual monthly revenue was within 1.5% of the forecasted revenue for such month for all of the six",
+   "prose_after": "(2) With respect to this individual performance goal, the threshold level of performance was subject to the Company having a cash balance of at least $10 million as of December 31, 2019, which would result in a payout equal to 50% of the targeted amount. In the event that the Company\u2019s cash balance was at least $20 million as of December 31, 2019, then the targeted level of performance would be attained, which would result in a payout equal to 100% of the targeted amount. In the event that the Company\u2019s cash balance was at least $35 million as of December 31, 2019, then the maximum level of performance would be attained, which would result in a payout equal to 100% of the targeted amount. As the Company\u2019s cash balance as of December 31, 2019 was approximately $24 million, the targeted level of performance was achieved for this performance goal, but the maximum level of performance was not achieved. As a result, the payout factor for this individual performance goal was prorated between 100% and 150% of the targeted amount based on actual performance for 2019.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive",
+     "",
+     "Target",
+     "",
+     "",
+     "",
+     "Plan Payout\n\n\n\nFactor",
+     "",
+     "",
+     "",
+     "Plan Payout\n\n\n\nAmount(1)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kimberly S. Lody",
+     "",
+     "$",
+     "797,500",
+     "",
+     "",
+     "N/A",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "N/A(2)",
+     ""
+    ],
+    [
+     "Carey P. Hendrickson",
+     "",
+     "$",
+     "309,400",
+     "",
+     "",
+     "",
+     "19.8",
+     "%",
+     "",
+     "$",
+     "61,107",
+     "",
+     ""
+    ],
+    [
+     "David R. Brickman",
+     "",
+     "$",
+     "170,581",
+     "",
+     "",
+     "",
+     "20.7",
+     "%",
+     "",
+     "$",
+     "35,253",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 284,
+    "end_line": 293
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(4) With respect to this individual performance goal, the threshold level of performance was subject to developing and implementing a pilot social media marketing program, including providing legal guidance on the structure of such program, by May 31, 2019, which would result in a payout equal to 50% of the targeted amount. In the event that a rollout plan for such social media marketing program was developed and approved, with such rollout plan occurring by July 15, 2019, then the targeted level of performance would be attained, which would result in a payout equal to 100% of the targeted amount. In the event that such social media marketing program was rolled out to all of the Company\u2019s senior housing communities with at least 85% providing minimum weekly updates by December 31, 2019, then the maximum level of performance would be attained, which would result in a payout equal to 150% of the targeted amount. The maximum level of performance was achieved for this performance goal.\nIncentive Compensation Plan Payouts for 2019\nBased upon the foregoing, the table below summarizes the payouts earned by each of our named executive officers under our Incentive Compensation Plan for 2019.",
+   "prose_after": "(1) The payout amounts differ slightly from the result of multiplying the targeted amounts by the plan payout factors in the table above due to rounding.\n(2) Pursuant to the terms of Ms. Lody\u2019s employment agreement, Ms. Lody was entitled to receive an annual performance bonus for fiscal 2019 equal to at least 50% of the full targeted performance bonus. Accordingly, Ms. Lody received a cash performance bonus of $398,750 under our Incentive Compensation Plan for 2019 in lieu of the amount set forth in the table above. Beginning in fiscal 2020, Ms. Lody is eligible to receive an annual performance bonus under our Incentive Compensation Plan based on the achievement of Company and individual performance goals similar to our other eligible executive officers.\nLong-Term Incentive Awards\nOur primary long-term incentive compensation programs for our named executive officers are performance-based restricted stock awards (\u201cPSAs\u201d) and time-based restricted stock awards (\u201cRSAs\u201d). Since 2017, the Compensation Committee has used (i) a targeted mix that places greater weighting on PSAs and (ii) cumulative three-year performance periods instead of three annual performance periods, as it had done in prior years.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 267,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Vehicle",
+     "",
+     "Weighting",
+     "",
+     "",
+     "",
+     "Vesting",
+     "",
+     "Performance Metrics"
+    ],
+    [
+     "RSAs",
+     "",
+     "40%",
+     "",
+     "",
+     "",
+     "3-year ratable vesting",
+     "",
+     "N/A"
+    ],
+    [
+     "PSAs",
+     "",
+     "60%",
+     "",
+     "",
+     "",
+     "3-year cumulative performance measurement",
+     "",
+     "\u2022    Adjusted EBITDAR"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2022    Relative TSR Modifier vs. a Healthcare Services Group can modify the amounts earned by adjusted EBITDAR performance as follows, with linear interpolation between achievement levels:"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2022    25th Percentile = -25%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2022    50th Percentile = 0%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2022    75th Percentile = +25%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 303,
+    "end_line": 320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Pursuant to the terms of Ms. Lody\u2019s employment agreement, Ms. Lody was entitled to receive an annual performance bonus for fiscal 2019 equal to at least 50% of the full targeted performance bonus. Accordingly, Ms. Lody received a cash performance bonus of $398,750 under our Incentive Compensation Plan for 2019 in lieu of the amount set forth in the table above. Beginning in fiscal 2020, Ms. Lody is eligible to receive an annual performance bonus under our Incentive Compensation Plan based on the achievement of Company and individual performance goals similar to our other eligible executive officers.\nLong-Term Incentive Awards\nOur primary long-term incentive compensation programs for our named executive officers are performance-based restricted stock awards (\u201cPSAs\u201d) and time-based restricted stock awards (\u201cRSAs\u201d). Since 2017, the Compensation Committee has used (i) a targeted mix that places greater weighting on PSAs and (ii) cumulative three-year performance periods instead of three annual performance periods, as it had done in prior years.",
+   "prose_after": "Messrs. Hendrickson and Brickman\nIn determining the amount and types of long-term incentive awards to be granted to Messrs. Hendrickson and Brickman for 2019, the Compensation Committee primarily relied upon the same factors described above for determining base salary, while also taking into consideration the competitive market, individual and company performance, retention concerns, and managing share use and stockholder dilution. In May 2019, the Compensation Committee, after taking into account the foregoing factors, with a particular emphasis on managing share use and stockholder dilution, granted Messrs. Hendrickson and Brickman shares of restricted stock in the amounts set forth in the table below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Targeted\n\n\n\nValue of\n\n\n\nTime-Based\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Number of\n\n\n\nShares of\n\n\n\nTime-Based\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Targeted\n\n\n\nValue of\n\n\n\nPerformance-\n\n\n\nBased\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Number of\n\n\n\nShares of\n\n\n\nPerformance-\n\n\n\nBased\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     ""
+    ],
+    [
+     "Carey P. Hendrickson",
+     "",
+     "$",
+     "155,341",
+     "",
+     "",
+     "",
+     "41,314",
+     "",
+     "",
+     "$",
+     "233,015",
+     "",
+     "",
+     "",
+     "61,972",
+     ""
+    ],
+    [
+     "David R. Brickman",
+     "",
+     "$",
+     "85,081",
+     "",
+     "",
+     "",
+     "22,628",
+     "",
+     "",
+     "$",
+     "127,626",
+     "",
+     "",
+     "",
+     "33,943",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 325,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Messrs. Hendrickson and Brickman\nIn determining the amount and types of long-term incentive awards to be granted to Messrs. Hendrickson and Brickman for 2019, the Compensation Committee primarily relied upon the same factors described above for determining base salary, while also taking into consideration the competitive market, individual and company performance, retention concerns, and managing share use and stockholder dilution. In May 2019, the Compensation Committee, after taking into account the foregoing factors, with a particular emphasis on managing share use and stockholder dilution, granted Messrs. Hendrickson and Brickman shares of restricted stock in the amounts set forth in the table below.",
+   "prose_after": "The following table shows the targeted value of the long-term incentive awards granted to Messrs. Hendrickson and Brickman in fiscal 2019 as compared to fiscal 2018, which illustrates the emphasis the Compensation Committee placed on managing share use and stockholder dilution when determining the 2019 long-term incentive awards granted to such individuals.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "2018 Targeted\n\n\n\nValue of Time-\n\n\n\nBased Restricted\n\n\n\nStock",
+     "",
+     "",
+     "2019 Targeted\n\n\n\nValue of Time-\n\n\n\nBased Restricted\n\n\n\nStock",
+     "",
+     "",
+     "2018 Targeted\n\n\n\nValue of\n\n\n\nPerformance-\n\n\n\nBased Restricted\n\n\n\nStock",
+     "",
+     "",
+     "2019 Targeted\n\n\n\nValue of\n\n\n\nPerformance- Based\n\n\n\nRestricted Stock",
+     "",
+     "",
+     "Aggregate Increase\n\n\n\n(Decrease) in Targeted\n\n\n\nValue of Restricted\n\n\n\nStock Awards",
+     "",
+     ""
+    ],
+    [
+     "Carey P. Hendrickson",
+     "$",
+     "347,199",
+     "",
+     "$",
+     "155,341",
+     "",
+     "$",
+     "520,804",
+     "",
+     "$",
+     "233,015",
+     "",
+     "$",
+     "(479,648)",
+     ""
+    ],
+    [
+     "David R. Brickman",
+     "$",
+     "286,399",
+     "",
+     "$",
+     "85,081",
+     "",
+     "$",
+     "429,604",
+     "",
+     "$",
+     "127,626",
+     "",
+     "$",
+     "(503,296)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "The following table shows the targeted value of the long-term incentive awards granted to Messrs. Hendrickson and Brickman in fiscal 2019 as compared to fiscal 2018, which illustrates the emphasis the Compensation Committee placed on managing share use and stockholder dilution when determining the 2019 long-term incentive awards granted to such individuals.",
+   "prose_after": "Ms. Lody\nWith respect to Ms. Lody, pursuant to the terms of her employment agreement with us, on January 7, 2019 Ms. Lody received the equity awards set forth in the table below. Pursuant to Ms. Lody\u2019s employment agreement, beginning with fiscal year 2020, she will be eligible to receive equity awards under our annual equity incentive award program in effect for our other senior executives, as determined by the Compensation Committee.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Targeted\n\n\n\nValue of\n\n\n\nTime-Based\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Number of\n\n\n\nShares of\n\n\n\nTime-Based\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Targeted\n\n\n\nValue of\n\n\n\nPerformance-\n\n\n\nBased\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Number of\n\n\n\nShares of\n\n\n\nPerformance-\n\n\n\nBased\n\n\n\nRestricted\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Targeted\n\n\n\nValue of\n\n\n\nOption to Purchase\n\n\n\nShares of Common\n\n\n\nStock",
+     "",
+     "",
+     "",
+     "Number of\n\n\n\nShares of Common\n\n\n\nStock Subject to\n\n\n\nStock Option(1)",
+     "",
+     ""
+    ],
+    [
+     "Kimberly S. Lody",
+     "",
+     "$",
+     "549,205",
+     "",
+     "",
+     "",
+     "73,620",
+     "",
+     "",
+     "$",
+     "831,906",
+     "",
+     "",
+     "",
+     "147,239",
+     "",
+     "",
+     "$",
+     "438,772",
+     "",
+     "",
+     "",
+     "147,239",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 364,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Ms. Lody\nWith respect to Ms. Lody, pursuant to the terms of her employment agreement with us, on January 7, 2019 Ms. Lody received the equity awards set forth in the table below. Pursuant to Ms. Lody\u2019s employment agreement, beginning with fiscal year 2020, she will be eligible to receive equity awards under our annual equity incentive award program in effect for our other senior executives, as determined by the Compensation Committee.",
+   "prose_after": "(1) Represents a non-qualified stock option to purchase 147,239 shares of our common stock with an exercise price of $7.46 per share and a ten-year term, which option is scheduled to vest in installments of 33%, 33% and 34% on the first, second, and third anniversaries of the grant date, respectively.\nEXECUTIVE COMPENSATION TABLES\nSummary Compensation Table\nThe following table summarizes the compensation earned by our named executive officers in 2019 and 2018, except that Ms. Lody was not one of our named executive officers for 2018, and accordingly, information with respect to Ms. Lody for such year is not provided.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "",
+     "",
+     "Bonus",
+     "",
+     "",
+     "",
+     "Stock\n\n\n\nAwards(1)",
+     "",
+     "",
+     "",
+     "Option\n\n\n\nAwards(1)",
+     "",
+     "",
+     "",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation(2)",
+     "",
+     "",
+     "",
+     "All Other\n\n\n\nCompensation(3)",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Kimberly S. Lody,",
+     "",
+     "2019",
+     "",
+     "$",
+     "714,310",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "1,381,111",
+     "",
+     "",
+     "$",
+     "438,772",
+     "",
+     "",
+     "$",
+     "398,750",
+     "",
+     "",
+     "$",
+     "1,007,250",
+     "",
+     "",
+     "$",
+     "3,940,193",
+     ""
+    ],
+    [
+     "President and Chief\n\n\n\nExecutive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carey P. Hendrickson,",
+     "",
+     "2019",
+     "",
+     "$",
+     "438,746",
+     "",
+     "",
+     "$",
+     "142,881",
+     "(4)",
+     "",
+     "$",
+     "388,355",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "61,107",
+     "",
+     "",
+     "$",
+     "5,888",
+     "",
+     "",
+     "$",
+     "1,036,977",
+     ""
+    ],
+    [
+     "Executive Vice President and\n\n\n\nChief Financial Officer",
+     "",
+     "2018",
+     "",
+     "$",
+     "430,143",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "868,003",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "5,300",
+     "",
+     "",
+     "$",
+     "1,303,446",
+     ""
+    ],
+    [
+     "David R. Brickman,",
+     "",
+     "2019",
+     "",
+     "$",
+     "341,161",
+     "",
+     "",
+     "$",
+     "110,375",
+     "(4)",
+     "",
+     "$",
+     "212,707",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "35,253",
+     "",
+     "",
+     "$",
+     "4,951",
+     "",
+     "",
+     "$",
+     "704,447",
+     ""
+    ],
+    [
+     "Senior Vice President, General\n\n\n\nCounsel and Secretary",
+     "",
+     "2018",
+     "",
+     "$",
+     "334,471",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "716,004",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "$",
+     "4,738",
+     "",
+     "",
+     "$",
+     "1,055,213",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Represents a non-qualified stock option to purchase 147,239 shares of our common stock with an exercise price of $7.46 per share and a ten-year term, which option is scheduled to vest in installments of 33%, 33% and 34% on the first, second, and third anniversaries of the grant date, respectively.\nEXECUTIVE COMPENSATION TABLES\nSummary Compensation Table\nThe following table summarizes the compensation earned by our named executive officers in 2019 and 2018, except that Ms. Lody was not one of our named executive officers for 2018, and accordingly, information with respect to Ms. Lody for such year is not provided.",
+   "prose_after": "(1) Amounts reflect the grant date fair value of the respective equity awards computed in accordance with Financial Accounting Standards Board Accounting Standards Codification Topic 718 (\u201cASC 718\u201d), including, with respect to performance-based shares, the grant date fair value of the performance shares based on the probable outcome of the performance conditions as of the date of grant (rather than the maximum potential value of the award). Assumptions used in the calculation of these amounts are included in footnote 10 to our audited financial statements for the fiscal year ended December 31, 2019 included in the Original Filing. Please see \u201cCompensation of Executive Officers\u2014Components of Executive Compensation\u2014Long-Term Incentive Awards\u201d above for more information.\nA portion of the amounts reflected under stock awards for fiscal 2019 for our named executive officers include the value of performance-based restricted stock awards (assuming target level performance), with values of $831,906 for Ms. Lody, $233,015 for Mr. Hendrickson and $127,626 for Mr. Brickman. The value of these performance-based restricted awards at the grant date assuming the highest level of performance was achieved is $1,660,789 for Ms. Lody, $436,903 for Mr. Hendrickson and $239,298 for Mr. Brickman.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 420,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nOptions\n\n\n\n(#)\n\n\n\nExercisable",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nOptions\n\n\n\n(#)\n\n\n\nUnexercisable",
+     "",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nAwards:\n\n\n\nNumber of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nUnearned\n\n\n\nOptions\n\n\n\n(#)",
+     "",
+     "Option\n\n\n\nExercise\n\n\n\nPrice\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Option\n\n\n\nExpiration\n\n\n\nDate",
+     "",
+     "",
+     "Number\n\n\n\nof Shares\n\n\n\nor Units\n\n\n\nof Stock\n\n\n\nThat\n\n\n\nHave Not\n\n\n\nVested\n\n\n\n(#)",
+     "",
+     "Market\n\n\n\nValue of\n\n\n\nShares or\n\n\n\nUnits of\n\n\n\nStock That\n\n\n\nHave Not\n\n\n\nVested\n\n\n\n($)(1)",
+     "",
+     "",
+     "",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nAwards:\n\n\n\nNumber of\n\n\n\nUnearned\n\n\n\nShares,\n\n\n\nUnits or\n\n\n\nOther\n\n\n\nRights\n\n\n\nThat Have\n\n\n\nNot Vested\n\n\n\n(#)",
+     "",
+     "Equity\n\n\n\nIncentive\n\n\n\nPlan Awards:\n\n\n\nMarket or\n\n\n\nPayout Value\n\n\n\nof Unearned\n\n\n\nShares, Units\n\n\n\nor Other\n\n\n\nRights That\n\n\n\nHave Not\n\n\n\nVested\n\n\n\n($)(1)",
+     "",
+     ""
+    ],
+    [
+     "Kimberly S. Lody",
+     "",
+     "\u2014",
+     "",
+     "147,239(a)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7.46",
+     "",
+     "",
+     "1/7/2029",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "73,620(b)",
+     "",
+     "",
+     "227,486",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "147,239(c)",
+     "",
+     "",
+     "454,969",
+     ""
+    ],
+    [
+     "Carey P. Hendrickson",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "41,314(d)",
+     "",
+     "",
+     "127,660",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,480(e)",
+     "",
+     "",
+     "66,373",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,696(f)",
+     "",
+     "",
+     "26,871",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "61,972(g)",
+     "",
+     "",
+     "191,493",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "48,089(h)",
+     "",
+     "",
+     "148,595",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "38,362(i)",
+     "",
+     "",
+     "118,539",
+     ""
+    ],
+    [
+     "David R. Brickman",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "22,628(d)",
+     "",
+     "",
+     "69,921",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,719(e)",
+     "",
+     "",
+     "54,752",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,171(f)",
+     "",
+     "",
+     "22,158",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "33,943(g)",
+     "",
+     "",
+     "104,884",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "39,668(h)",
+     "",
+     "",
+     "122,574",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "31,634(i)",
+     "",
+     "",
+     "97,749",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 511,
+    "end_line": 571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "In the event of a change in control, immediately prior to such change in control, the targeted number of performance shares will convert into time-based restricted shares and will vest on the scheduled vesting date (without regard to achievement of any of the applicable performance measures) if the holder remains employed with us on such scheduled vesting date; provided, however, that (i) if the Compensation Committee has made a provision for the substitution, assumption, exchange or other continuation of the such award in connection with the change in control, then in the event that the holder\u2019s employment is terminated (A) by us due to death or disability following the change in control, the unvested portion of the award will immediately fully vest, or (B) by us other than for \u201cCause,\u201d or by the holder for \u201cGood Reason,\u201d in each case within one year following the change in control, the unvested portion of the award will immediately fully vest; or (ii) if the Compensation Committee has not made a provision for the substitution, assumption, exchange or other continuation of such award in connection with the change in control, the unvested portion of the award will fully vest immediately prior to the change in control.\n2019 Outstanding Equity Awards at Fiscal Year-End\nThe following table sets forth certain information with respect to our named executive officers\u2019 outstanding stock options and restricted stock awards as of December 31, 2019.",
+   "prose_after": "(1) Calculated by reference to the closing price for shares of our common stock on the NYSE on December 31, 2019, which was $3.09 per share.\n(a) Represents stock option to purchase 147,239 shares of common stock granted on January 7, 2019, which vests in installments of 33%, 33% and 34% on January 7, 2020, January 7, 2021 and January 7, 2022, respectively.\n(b) Represents shares of restricted stock granted on January 7, 2019, which vest in installments of 33%, 33% and 34% on January 7, 2020, January 7, 2021 and January 7, 2022, respectively.\n(c) Represents shares of restricted stock granted on January 7, 2020, which will vest upon the achievement of the target performance objective. Does not include an additional 220,859 shares that are issuable upon the achievement of the maximum performance objective.\n(d) Represents shares of restricted stock granted on May 14, 2019, which vest in installments of 33%, 33% and 34% on May 14, 2020, May 14, 2021 and May 14, 2022, respectively.\n(e) Represents the remaining shares of restricted stock (second and third tranches) granted on March 27, 2018, which vest in installments of 33%, 33% and 34% on March 27, 2019, March 27, 2020 and March 27, 2021, respectively.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Fees Earned or\n\n\n\nPaid in Cash ($)(1)",
+     "",
+     "",
+     "",
+     "Stock\n\n\n\nAwards\n\n\n\n($)(2)",
+     "",
+     "",
+     "",
+     "Option\n\n\n\nAwards ($)",
+     "",
+     "All Other\n\n\n\nCompensation ($)",
+     "",
+     "Total ($)",
+     "",
+     ""
+    ],
+    [
+     "Philip A. Brooks",
+     "",
+     "$",
+     "69,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "144,001",
+     ""
+    ],
+    [
+     "Ed A. Grier",
+     "",
+     "$",
+     "85,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "160,001",
+     ""
+    ],
+    [
+     "E. Rodney Hornbake",
+     "",
+     "$",
+     "68,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "143,001",
+     ""
+    ],
+    [
+     "Paul J. Isaac",
+     "",
+     "$",
+     "67,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "142,001",
+     ""
+    ],
+    [
+     "Jill M. Krueger",
+     "",
+     "$",
+     "99,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "174,001",
+     ""
+    ],
+    [
+     "Ross B. Levin",
+     "",
+     "$",
+     "61,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "136,001",
+     ""
+    ],
+    [
+     "Kimberly S. Lody(3)",
+     "",
+     "$",
+     "11,033",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "11,033",
+     ""
+    ],
+    [
+     "Ronald M. Malone",
+     "",
+     "$",
+     "43,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "43,000",
+     ""
+    ],
+    [
+     "Steven T. Plochocki",
+     "",
+     "$",
+     "30,500",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "105,501",
+     ""
+    ],
+    [
+     "Michael W. Reid",
+     "",
+     "$",
+     "120,000",
+     "",
+     "",
+     "$",
+     "75,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "195,001",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 598,
+    "end_line": 616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "(g) Represents shares of restricted stock granted on May 14, 2019, which vest subject to the satisfaction of certain performance conditions upon the third anniversary of the grant date (or such later date that the Compensation Committee certifies that such performance conditions have been satisfied).\n(h) Represents shares of restricted stock granted on March 27, 2018, which vest subject to the satisfaction of certain performance conditions upon the third anniversary of the grant date (or such later date that the Compensation Committee certifies that such performance conditions have been satisfied).\n(i) Represents shares of restricted stock granted on March 28, 2017, which vest subject to the satisfaction of certain performance conditions upon the third anniversary of the grant date (or such later date that the Compensation Committee certifies that such performance conditions have been satisfied).\n2019 DIRECTOR COMPENSATION\nThe following table summarizes the compensation earned by our non-employee directors in 2019.",
+   "prose_after": "During 2019, we did not maintain any pension or deferred compensation arrangements for our directors.\n(1) Represents an annual retainer fee and compensation for attendance at Board and committee meetings during 2019. See \u201c\u2014Compensation of Directors During 2019\u2014Cash Compensation\u201d below for more information.\n(2) Amounts reflect the aggregate grant date fair value of the equity award computed in accordance with ASC 718, and represents 19,947 shares of restricted stock granted pursuant to our 2019 Omnibus Stock and Incentive Plan on May 14, 2019, which vest in full on May 14, 2020; provided, however, that, in lieu of receiving such award, Messrs. Grier, Isaac and Levin each elected to receive 19,947 restricted stock units, with each unit representing the right to receive one share of our common stock, which also vest in full on May 14, 2020. These are the only shares of restricted stock and restricted stock units that were held by the non-employee directors and outstanding as of December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "",
+     "Number of Securities to\n\n\n\nbe Issued Upon\n\n\n\nExercise of Outstanding\n\n\n\nOptions, Warrants and\n\n\n\nRights",
+     "",
+     "",
+     "",
+     "Weighted-Average\n\n\n\nExercise Price of the\n\n\n\nOutstanding\n\n\n\nOptions, Warrants\n\n\n\nand Rights",
+     "",
+     "",
+     "",
+     "Number of Securities\n\n\n\nRemaining Available for\n\n\n\nFuture Issuance Under\n\n\n\nEquity Compensation Plans\n\n\n\n(Excluding Securities\n\n\n\nReflected in First Column)",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by\n\n\n\n   security holders",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "",
+     "285,502",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved\n\n\n\n   by security holders",
+     "",
+     "",
+     "147,239(1)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "147,239(1)",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "",
+     "285,502",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "For their services to us, our non-employee directors each receive an equity grant effective immediately following the Company\u2019s annual meeting of stockholders with a value of approximately $75,000 on the date of grant. Accordingly, on May 14, 2019, the Compensation Committee granted each of our non-employee directors (other than Mr. Malone who was not nominated for reelection as a director at the 2019 annual meeting) 19,947 shares of restricted stock pursuant to the 2019 Omnibus Stock and Incentive Plan, which vest in full on May 14, 2020; provided, however, that, in lieu of receiving such award, Messrs. Isaac and Levin\neach elected to receive 19,947 restricted stock units, with each unit representing the right to receive one share of our common stock, which also vest in full on May 14, 2020.\nRecent Compensation Decisions\nIn response to current economic conditions, the Board decided to defer the payment of all cash compensation to the Company\u2019s non-employee directors, beginning November 1, 2019. The Company expects to begin paying the deferred director cash compensation at a later date in fiscal 2020, although no assurances can be given at this time.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nThe following table presents information relating to the Company\u2019s equity compensation plans as of December 31, 2019:",
+   "prose_after": "(1) Represents a non-qualified stock option granted as an employment inducement award outside of a plan to purchase 147,239 shares of our common stock with an exercise price of $7.46 per share and a ten-year term, which option is scheduled to vest in installments of 33%, 33% and 34% on the first, second, and third anniversaries of the grant date, respectively.\nSECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information with respect to the beneficial ownership of our common stock as of April 24, 2020 by: (i) each person known by us to be the beneficial owner of more than five percent of our common stock; (ii) each of our directors and director nominees; (iii) each of our \u201cnamed executive officers\u201d set forth in the Summary Compensation Table below; and (iv) all of our current executive officers and directors as a group. Except as otherwise indicated, the address of each person listed below is 14160 Dallas Parkway, Suite 300, Dallas, Texas 75254.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Shares Beneficially Owned(1)(2)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner",
+     "",
+     "Number",
+     "",
+     "",
+     "",
+     "Percent of Class",
+     "",
+     ""
+    ],
+    [
+     "5% or More Stockholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Seymour Pluchenik(3)",
+     "",
+     "",
+     "4,615,921",
+     "",
+     "",
+     "",
+     "14.48",
+     "%"
+    ],
+    [
+     "Arbiter Partners Capital Management LLC(4)",
+     "",
+     "",
+     "4,337,325",
+     "",
+     "",
+     "",
+     "13.60",
+     "%"
+    ],
+    [
+     "Cove Street Capital, LLC(5)",
+     "",
+     "",
+     "3,586,600",
+     "",
+     "",
+     "",
+     "11.25",
+     "%"
+    ],
+    [
+     "Steven D. Lebowitz(6)",
+     "",
+     "",
+     "1,914,619",
+     "",
+     "",
+     "",
+     "6.01",
+     "%"
+    ],
+    [
+     "Named Executive Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paul J. Isaac(4)(7)",
+     "",
+     "",
+     "4,580,871",
+     "",
+     "",
+     "",
+     "14.37",
+     "%"
+    ],
+    [
+     "Kimberly S. Lody(8)",
+     "",
+     "",
+     "320,402",
+     "",
+     "",
+     "1.00",
+     "",
+     "%"
+    ],
+    [
+     "Carey P. Hendrickson(9)",
+     "",
+     "",
+     "322,164",
+     "",
+     "",
+     "1.01",
+     "",
+     "%"
+    ],
+    [
+     "David R. Brickman(10)",
+     "",
+     "",
+     "283,937",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Philip A. Brooks(11)",
+     "",
+     "",
+     "87,080",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Jill M. Krueger(12)",
+     "",
+     "",
+     "85,672",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Steven T. Plochocki(13)",
+     "",
+     "",
+     "69,947",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Michael W. Reid(14)",
+     "",
+     "",
+     "68,272",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "E. Rodney Hornbake(15)",
+     "",
+     "",
+     "67,172",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Ross B. Levin(16)",
+     "",
+     "",
+     "46,928",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "Ed A. Grier(17)",
+     "",
+     "",
+     "44,212",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (18 persons)(18)",
+     "",
+     "",
+     "6,300,206",
+     "",
+     "",
+     "",
+     "19.76",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Shares Beneficially Owned(1)(2)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 683,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Represents a non-qualified stock option granted as an employment inducement award outside of a plan to purchase 147,239 shares of our common stock with an exercise price of $7.46 per share and a ten-year term, which option is scheduled to vest in installments of 33%, 33% and 34% on the first, second, and third anniversaries of the grant date, respectively.\nSECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth certain information with respect to the beneficial ownership of our common stock as of April 24, 2020 by: (i) each person known by us to be the beneficial owner of more than five percent of our common stock; (ii) each of our directors and director nominees; (iii) each of our \u201cnamed executive officers\u201d set forth in the Summary Compensation Table below; and (iv) all of our current executive officers and directors as a group. Except as otherwise indicated, the address of each person listed below is 14160 Dallas Parkway, Suite 300, Dallas, Texas 75254.",
+   "prose_after": "* Less than one percent.\n(1) Pursuant to SEC rules, a person has beneficial ownership of any securities as to which such person, directly or indirectly, through any contract, arrangement, undertaking, relationship or otherwise has or shares voting power and/or investment power and as to which such person has the right to acquire such voting and/or investment power within 60 days. Percentage of beneficial ownership as to any person as of a particular date is calculated by dividing the number of shares beneficially owned by such person by the sum of the number of shares outstanding as of such date and the number of shares as to which such person has the right to acquire voting and/or investment power within 60 days (rounded to the nearest tenth of a percent).\n(2) The percentages indicated are based on 31,882,747 shares of our common stock issued and outstanding on April 24, 2020.\n(3) The address of the reporting persons reported on this line is c/o GF Investments, 810 Seventh Avenue, 28th Floor, New York, NY 10019. Shares reported on this line represent shares that may be deemed to be beneficially owned by Seymour Pluchenik, Sam Levinson, Simon Glick, Silk Partners, LP (\u201cSilk\u201d); Siget, LLC (\u201cSiget\u201d); Siget NY Partners, L.P. (\u201cSiget NY\u201d); 1271 Associates, LLC (\u201c1271 Associates\u201d); and PF Investors, LLC (\u201cPF Investors\u201d). Mr. Levinson is the chief investment officer of Siget NY. Siget NY is the investment manager of and makes investment decisions for Silk. 1271 Associates is the General Partner of Siget NY. Messrs. Glick and Pluchenik are the managing members of 1271 Associates. Siget is the General Partner of Silk. Messrs. Glick and Pluchenik are the managing members of Siget. By virtue of these relationships, each of Siget NY, 1271 Associates, Siget and Messrs. Levinson, Glick and Pluchenik may be deemed to beneficially own the shares owned directly by Silk. Mr. Pluchenik is the manager of PF Investors, and by virtue of this relationship, Mr. Pluchenik may be deemed to beneficially own the shares of Common Stock owned directly by PF Investors. Based solely on a Schedule 13D/A filed on July 1, 2019, (i) Seymour Pluchenik has the sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 4,615,921 shares, (ii) Sam Levinson, Simon Glick, Siget, Siget NY and 1271 Associates have the sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 4,362,145 shares, (iii) Silk has the sole voting and dispositive power with respect to 4,362,145 shares and shared voting and dispositive power with respect to none of the shares and (iv) PF Investors has the sole voting and dispositive power with respect to 253,776 shares and shared voting and dispositive power with respect to none of the shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "and Form 4 filed with the SEC on August 29, 2017. Arbiter Partners is a registered investment adviser that manages and/or administers Arbiter Partners QP LP, an affiliated investment fund (\u201cAPQ\u201d), and various accounts, including Isaac Brothers, LLC, Nana Associates LLC and 9 Interlaken Partners LLC (collectively, the \u201cFamily Accounts\u201d). Mr. Isaac controls Arbiter Partners. By reason of its position as investment adviser to APQ and as manager and/or administrator of the Family Accounts, Arbiter Partners may be deemed to possess the power to vote and dispose of the shares held by APQ and the Family Accounts. By reason of his responsibility for the supervision and conduct of all investment activities of Arbiter Partners, Mr. Isaac may be deemed to possess the power to vote and dispose of the shares beneficially owned by Arbiter Partners. Mr. Isaac disclaims beneficial ownership of these securities for all purposes of Section 16 of the Securities Exchange Act of 1934, as amended, except to the extent of his pecuniary interest therein. The shares reported in this line do not include 69,780 shares held by Mr. Isaac directly, 19,947 unvested restricted stock units held by Mr. Isaac directly, and 27,000 shares held by Mr. Isaac\u2019s spouse directly."
+    ]
+   ],
+   "caption_stack": [
+    "and Form 4 filed with the SEC on August 29, 2017. Arbiter Partners is a registered investment adviser that manages and/or administers Arbiter Partners QP LP, an affiliated investment fund (\u201cAPQ\u201d), and various accounts, including Isaac Brothers, LLC, Nana Associates LLC and 9 Interlaken Partners LLC (collectively, the \u201cFamily Accounts\u201d). Mr. Isaac controls Arbiter Partners. By reason of its position as investment adviser to APQ and as manager and/or administrator of the Family Accounts, Arbiter Partners may be deemed to possess the power to vote and dispose of the shares held by APQ and the Family Accounts. By reason of his responsibility for the supervision and conduct of all investment activities of Arbiter Partners, Mr. Isaac may be deemed to possess the power to vote and dispose of the shares beneficially owned by Arbiter Partners. Mr. Isaac disclaims beneficial ownership of these securities for all purposes of Section 16 of the Securities Exchange Act of 1934, as amended, except to the extent of his pecuniary interest therein. The shares reported in this line do not include 69,780 shares held by Mr. Isaac directly, 19,947 unvested restricted stock units held by Mr. Isaac directly, and 27,000 shares held by Mr. Isaac\u2019s spouse directly."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 729
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(3) The address of the reporting persons reported on this line is c/o GF Investments, 810 Seventh Avenue, 28th Floor, New York, NY 10019. Shares reported on this line represent shares that may be deemed to be beneficially owned by Seymour Pluchenik, Sam Levinson, Simon Glick, Silk Partners, LP (\u201cSilk\u201d); Siget, LLC (\u201cSiget\u201d); Siget NY Partners, L.P. (\u201cSiget NY\u201d); 1271 Associates, LLC (\u201c1271 Associates\u201d); and PF Investors, LLC (\u201cPF Investors\u201d). Mr. Levinson is the chief investment officer of Siget NY. Siget NY is the investment manager of and makes investment decisions for Silk. 1271 Associates is the General Partner of Siget NY. Messrs. Glick and Pluchenik are the managing members of 1271 Associates. Siget is the General Partner of Silk. Messrs. Glick and Pluchenik are the managing members of Siget. By virtue of these relationships, each of Siget NY, 1271 Associates, Siget and Messrs. Levinson, Glick and Pluchenik may be deemed to beneficially own the shares owned directly by Silk. Mr. Pluchenik is the manager of PF Investors, and by virtue of this relationship, Mr. Pluchenik may be deemed to beneficially own the shares of Common Stock owned directly by PF Investors. Based solely on a Schedule 13D/A filed on July 1, 2019, (i) Seymour Pluchenik has the sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 4,615,921 shares, (ii) Sam Levinson, Simon Glick, Siget, Siget NY and 1271 Associates have the sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 4,362,145 shares, (iii) Silk has the sole voting and dispositive power with respect to 4,362,145 shares and shared voting and dispositive power with respect to none of the shares and (iv) PF Investors has the sole voting and dispositive power with respect to 253,776 shares and shared voting and dispositive power with respect to none of the shares.\n(4) The address of Arbiter Partners Capital Management LLC (\u201cArbiter Partners\u201d) is 530 Fifth Avenue, 20th Floor, New York, NY 10036. Arbiter Partners and Paul J. Isaac share voting power and share dispositive power with respect to all of the reported shares. Information relating to Arbiter Partners and Mr. Isaac is based on a Schedule 13D filed with the SEC on March 10, 2017",
+   "prose_after": "(5) The address of Cove Street Capital, LLC (\u201cCove Street\u201d) is 2101 East El Segundo Boulevard, Suite 302, El Segundo, California 90245. Shares reported on this line represent shares that may be deemed to be beneficially owned by Cove Street and Jeffrey Bronchick, as a member of Cove Street. Based solely on a Schedule 13D/A filed on August 21, 2019, (i) Cove Street has sole voting and dispositive power with respect to none of the reported shares, has shared voting power with respect to 2,512,900 shares and shared dispositive power with respect to 3,556,600 shares and (ii) Mr. Bronchick has sole voting and dispositive power with respect to 30,000 shares, shared voting power with respect to 2,512,900 shares and shared dispositive power with respect to 3,556,600 shares. The shared dispositive power includes 1,043,700 shares held by a separately managed account, over which Cove Street does not have any voting power.\n(6) The address of the reporting persons reported on this line is 1333 Second Street, Suite 650, Santa Monica, CA 90401. Shares reported on this line represent shares that may be deemed to be beneficially owned by Steven D. Lebowitz, Deborah P. Lebowitz, David Lebowitz, Amanda Lebowitz, Lauren Lebowitz Salem, Robert Lebowitz, Kathryn Lebowitz Silverberg, Andrew Lebowitz, Ashley Lebowitz, The Lebowitz Family Stock, LLC (\u201cLFS LLC\u201d) Lebowitz RCT, L.P. (\u201cRCT LP\u201d), Lebowitz RCT, Inc. (\u201cRCT Inc.\u201d) and Leonard S. Pearlstein. Based solely on a Schedule 13G/A filed on February 3, 2020, (i) Steven D. Lebowitz has sole voting and dispositive power with respect to 267,500 shares, shared voting power with respect to 1,484,619 shares and shared dispositive power with respect to 1,647,119 shares, (ii) Deborah P. Lebowitz has sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 1,484,619 shares, (iii) David Lebowitz and Amanda Lebowitz have sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 10,000 shares, (iv) Lauren Lebowitz has sole voting power with respect to 38,000 shares, sole dispositive power with respect to none of the shares, shared voting power with respect to none of the shares, and shared dispositive power with respect to 38,000 shares, (v) Robert Lebowitz has sole voting power with respect to 3,000 shares, sole dispositive power with respect to none of the shares, shared voting power with respect to none of the shares, and shared dispositive power with respect to 3,000 shares, (vi) Kathryn Lebowitz Silverberg has sole voting power with respect to 25,500 shares, sole dispositive power with respect to none of the shares, shared voting power with respect to none of the shares, and shared dispositive power with respect to 25,500 shares, (vii) Andrew Lebowitz and Ashley Lebowitz have sole voting and dispositive power with respect to none of the shares and shared voting and dispositive power with respect to 72,500 shares, (viii) LFS LLC has sole voting and dispositive power with respect to 140,000 shares and shared voting and dispositive power with respect to none of the shares, (ix) RCT LP and RCT Inc. have sole voting and dispositive power with respect to 127,500 shares and shared voting and dispositive power with respect to none of the shares, and (x) Leonard S. Pearlstein has sole voting power with respect to 14,000 shares, sole dispositive power with respect to none of the shares, shared voting power with respect to none of the shares, and shared dispositive power with respect to 14,000 shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Services Rendered",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Audit fees(1)",
+     "",
+     "$",
+     "1,085,000",
+     "",
+     "",
+     "$",
+     "1,037,000",
+     ""
+    ],
+    [
+     "Audit-Related fees(2)",
+     "",
+     "",
+     "98,500",
+     "",
+     "",
+     "",
+     "23,000",
+     ""
+    ],
+    [
+     "Tax fees(3)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "All other fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "1,183,500",
+     "",
+     "",
+     "$",
+     "1,060,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 794,
+    "end_line": 805
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "In addition, members of the Compensation Committee must not have any relationship or affiliation with us that would materially affect the director\u2019s ability to be independent from management as a Compensation Committee member and must otherwise be \u201cindependent\u201d under our Director Independence Policy. Members of the Audit Committee may not accept any consulting, advisory or other compensatory fee from us or any of our subsidiaries or affiliates other than directors\u2019 compensation.\nThe terms \u201cus,\u201d \u201cwe\u201d and \u201cour\u201d refer to Capital Senior Living Corporation and any direct or indirect subsidiary of Capital Senior Living Corporation, which is part of the consolidated group. An \u201cimmediate family member\u201d includes a person\u2019s spouse, parents, children, siblings, mothers and fathers-in-law, sons and daughters-in-law, brothers and sisters-in-law and anyone (other than domestic employees) who shares such person\u2019s home.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nFees Paid to Independent Auditors\nIn connection with the audit of the Company\u2019s 2019 financial statements, the Company entered into an engagement agreement with Ernst & Young LLP, which sets forth the terms by which Ernst & Young LLP has performed audit services for the Company. The aggregate fees billed by Ernst & Young LLP for fiscal years 2019 and 2018 were as follows:",
+   "prose_after": "(1) Includes professional services for the audit of our annual financial statements, reviews of the financial statements included in our Form 10-Q filings, and services that are normally provided in connection with statutory and regulatory filings or engagements.\n(2) Includes fees associated with assurance and related services that are reasonably related to the performance of the audit or review of our financial statements.\n(3) Includes fees associated with tax compliance, tax advice and tax planning.\nThe Audit Committee has considered whether the provision of the above services other than audit services is compatible with maintaining Ernst & Young LLP\u2019s independence and has concluded that it is.\nAudit Committee Pre-Approval of Services Performed by Independent Auditors\nThe Audit Committee has the sole authority to appoint or replace the independent auditor and is directly responsible for the compensation and oversight of the work of the independent auditor. The Audit Committee is responsible for the engagement of the independent auditor to provide permissible non-audit services, which require pre-approval by the Audit Committee (other than with respect to de minimis exceptions described in the rules of the NYSE or the SEC that are approved by the Audit Committee).",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Registrant (Incorporated by reference to Exhibit 3.1 to the Registration Statement No. 333-33379 on Form S-1/A filed by the Company with the Securities and Exchange Commission on September 8, 1997.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1.1",
+     "Amendment to Amended and Restated Certificate of Incorporation of the Registrant (Incorporated by reference to Exhibit 3.1 to the Company\u2019s Quarterly Report on Form 10-Q for the quarterly period ended September 30, 1999, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Second Amended and Restated Bylaws of the Registrant (Incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on March 8, 2013.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "2007 Omnibus Stock and Incentive Plan for Capital Senior Living Corporation (Incorporated by reference to Exhibit 4.6 to the Company\u2019s Registration Statement on Form S-8 filed by the Company with the Securities and Exchange Commission on May 31, 2007.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "First Amendment to 2007 Omnibus Stock and Incentive Plan for Capital Senior Living Corporation (Incorporated by reference to Exhibit 4.7 to the Company\u2019s Registration Statement on Form S-8 filed by the Company with the Securities and Exchange Commission on May 31, 2007.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Amended and Restated Second Amendment to the 2007 Omnibus Stock and Incentive Plan for Capital Senior Living Corporation, as amended (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on May 22, 2015.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "2019 Omnibus Stock and Incentive Plan for Capital Senior Living Corporation (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on May 15, 2019)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Description of the Company\u2019s securities.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Employment Agreement, dated as of November 26, 1996, by and between Capital Senior Living, Inc. and David R. Brickman (Incorporated by reference to Exhibit 10.12 to the Registration Statement No. 333-33379 on Form S-1 filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Agreement of Limited Partnership of Triad Senior Living II, L.P., dated September 23, 1998 (Incorporated by reference to Exhibit 10.57 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 1998, filed by the Company with the Securities and Exchange Commission.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 845,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Financial Statements of Capital Senior Living Corporation\nReport of Independent Registered Public Accounting Firm, Ernst & Young LLP\nConsolidated Balance Sheets \u2014 December 31, 2019 and 2018\nConsolidated Statements of Operations and Comprehensive Loss \u2014 For the years ended December 31, 2019, 2018 and 2017\nConsolidated Statements of Shareholders\u2019 Equity \u2014 For the years ended December 31, 2019, 2018 and 2017\nConsolidated Statements of Cash Flows \u2014 For the years ended December 31, 2019, 2018 and 2017\nNotes to Consolidated Financial Statements\nReport of Independent Registered Public Accounting Firm on Internal Control Over Financial Reporting, Ernst & Young LLP\n(2) Exhibits:\nThe following documents are included as a part of this Amendment. Those exhibits previously filed and incorporated herein by reference are identified below. Exhibits not required for this Amendment have been omitted.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 880,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description"
+    ],
+    [
+     "10.3",
+     "Agreement of Limited Partnership of Triad Senior Living III, L.P., dated November 10, 1998 (Incorporated by reference to Exhibit 10.58 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 1998, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Agreement of Limited Partnership of Triad Senior Living IV, L.P., dated December 22, 1998 (Incorporated by reference to Exhibit 10.59 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 1998, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Second Amended and Restated Agreement of Limited Partnership of Triad Senior Living I, L.P. (Incorporated by reference to Exhibit 10.78 to the Company\u2019s Annual Report on Form 10-K, dated March 30, 2000, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5.1",
+     "Amendment No. 1 to Second Amended and Restated Agreement of Limited Partnership of Triad Senior Living I, LP. (Incorporated by reference to Exhibit 10.105 to the Company\u2019s Quarterly Report on Form 10-Q for the quarterly period ended September 30, 2002, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "First Amendment to Triad II Partnership Agreement (Incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K, dated August 15, 2000, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Second Amendment to the Employment Agreement of David R. Brickman, dated January 27, 2003, by and between David R. Brickman and Capital Senior Living Corporation (Incorporated by reference to Exhibit 10.109 to the Company\u2019s Annual Report on Form 10-K, dated March 26, 2003, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Master Lease Agreement, dated June 30, 2005, between Ventas Amberleigh, LLC and Capital Senior Management 2, Inc. (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K/A, dated June 30, 2005, filed by the Company with the Securities and Exchange Commission on July 11, 2005.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "Schedule identifying substantially identical agreements to Exhibit 10.10 (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K/A, dated June 30, 2005, filed by the Company with the Securities and Exchange Commission on July 11, 2005.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "Master Lease Agreement, dated October 18, 2005, between Ventas Georgetowne, LLC and Capital Senior Management 2, Inc. (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K, dated October 18, 2005, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Master Lease Agreement, dated May 31, 2006, between subsidiaries of the Company and Healthpeak (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K, dated May 31, 2006, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "Lease, dated May 31, 2006, between subsidiaries of the Company and Healthpeak regarding the Crosswood Oaks Facility in Citrus Heights, California (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K, dated May 31, 2006, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Schedule identifying substantially identical agreements to Exhibit 10.14 (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K, dated May 31, 2006, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "Master Lease Agreement, dated as of September 10, 2010, between Capital Texas S, LLC and the Landlord parties thereto (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 16, 2010.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "Employment Agreement dated December 23, 2019, by and between Capital Senior Living Corporation and Carey P. Hendrickson.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "Form of Outside Director\u2019s Restricted Share Unit Award Under the 2007 Omnibus Stock and Incentive Plan for Capital Senior Living Corporation (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q filed by the Company with the Securities and Exchange Commission on August 5, 2015.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 880,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description"
+    ],
+    [
+     "10.17",
+     "Employment Agreement dated January 7, 2019, by and between Capital Senior Living Corporation and Kimberly S. Lody (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on January 8, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "Nonqualified Stock Option Agreement dated January 7, 2019, by and between Capital Senior Living Corporation and Kimberly S. Lody (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on January 8, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "Performance Award Agreement dated January 7, 2019, by and between Capital Senior Living Corporation and Kimberly S. Lody (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on January 8, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "Restricted Stock Award Agreement dated January 7, 2019, by and between Capital Senior Living Corporation and Kimberly S. Lody (Incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on January 8, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "Separation Agreement and Release, entered into as of March 1, 2019, by and between Capital Senior Living, Inc. and Brett D. Lee (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on March 7, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "Employment Agreement, dated February 20, 2019, by and between Capital Senior Living, Inc. and Michael C. Fryar (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10-Q for the quarterly period ended June 30, 2019, filed by the Company with the Securities and Exchange Commission.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.23",
+     "Employment Agreement, dated as of September 10, 2019, by and between Capital Senior Living Corporation and Brandon M. Ribar. (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on September 10, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.24",
+     "Sign-On Performance Award Agreement, dated as of September 10, 2019, by and between Capital Senior Living Corporation and Brandon M. Ribar. (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on September 10, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.25",
+     "Sign-On Restricted Stock Award Agreement, dated as of September 10, 2019, by and between Capital Senior Living Corporation and Brandon M. Ribar. (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed by the Company with the Securities and Exchange Commission on September 10, 2019.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Company.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Ernst & Young LLP.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a).#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a).#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*31.3",
+     "Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*31.4",
+     "Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Kimberly S. Lody pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Carey P. Hendrickson pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document#"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 933,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Filed with Original Filing."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 999
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAPITAL SENIOR LIVING CORPORATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/    CAREY P. HENDRICKSON"
+    ],
+    [
+     "",
+     "Carey P. Hendrickson"
+    ],
+    [
+     "",
+     "Executive Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: April 28, 2020",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CAPITAL SENIOR LIVING CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1005,
+    "end_line": 1015
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "APPENDIX A\nCertain Information With Respect to Non-GAAP Financial Measures Used in This Amendment\nIn this Amendment, the Company utilizes certain financial valuation and performance measures of operating performance, such as Adjusted CFFO, Same Store Facility Net Operating Income and Adjusted EBITDAR, that are not calculated in accordance with GAAP.\nAdjusted EBITDAR, Adjusted CFFO and Same Store Facility Net Operating Income are financial valuation and performance measures, none of which are calculated in accordance with GAAP. Non-GAAP financial measures may have material limitations in that they do not reflect all of the costs associated with our results of operations as determined in accordance with GAAP. As a result, these non-GAAP financial measures should not be considered a substitute for, nor superior to, financial results and measures determined or calculated in accordance with GAAP.\nAdjusted EBITDAR is defined as income from operations before provision for income taxes, interest, depreciation and amortization (including non-cash charges), facility lease expense, non-cash compensation expense, provision for bad debts, and certain unusual expenditures that are considered non-operating in nature. This metric is adjusted for any communities undergoing significant repositioning as well as for acquisitions and dispositions of communities approved by the Board. Adjusted EBITDAR is a valuation measure commonly used by our management, research analysts and investors to value companies in the senior living industry. Because Adjusted EBITDAR excludes interest expense and rent expense, it allows our management, research analysts and investors to compare the enterprise values of different companies without regard to differences in capital structures and leasing arrangements.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year\n\n\n\nEnded\n\n\n\nDecember 31,\n\n\n\n2019",
+     "",
+     ""
+    ],
+    [
+     "Adjusted EBITDAR",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(36,030)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "64,190",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "2,509",
+     ""
+    ],
+    [
+     "Facility lease expense",
+     "",
+     "57,022",
+     ""
+    ],
+    [
+     "Provision for bad debts",
+     "",
+     "3,765",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(221)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "49,802",
+     ""
+    ],
+    [
+     "Write-off of deferred loan costs and prepayment premiums",
+     "",
+     "4,746",
+     ""
+    ],
+    [
+     "Long-lived asset impairment",
+     "",
+     "3,004",
+     ""
+    ],
+    [
+     "Gain on disposition of assets, net",
+     "",
+     "(36,528)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "448",
+     ""
+    ],
+    [
+     "Casualty losses",
+     "",
+     "2,868",
+     ""
+    ],
+    [
+     "Transaction and conversion costs",
+     "",
+     "2,657",
+     ""
+    ],
+    [
+     "Employee placement and separation costs",
+     "",
+     "3,073",
+     ""
+    ],
+    [
+     "Employee benefit reserve adjustments",
+     "",
+     "(100)",
+     ""
+    ],
+    [
+     "Communities excluded due to repositioning/lease-up",
+     "",
+     "163",
+     ""
+    ],
+    [
+     "Adjusted EBITDAR",
+     "$",
+     "121,361",
+     ""
+    ],
+    [
+     "Same-Store Facility NOI",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "$",
+     "(14,689)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "64,190",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "27,518",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "2,509",
+     ""
+    ],
+    [
+     "Facility lease expense",
+     "",
+     "57,021",
+     ""
+    ],
+    [
+     "Provision for bad debts",
+     "",
+     "3,765",
+     ""
+    ],
+    [
+     "Property and other taxes",
+     "",
+     "21,387",
+     ""
+    ],
+    [
+     "Property insurance",
+     "",
+     "4,889",
+     ""
+    ],
+    [
+     "Employee health insurance benefits",
+     "",
+     "10,343",
+     ""
+    ],
+    [
+     "Loss on facility lease termination",
+     "0",
+     "",
+     ""
+    ],
+    [
+     "Communities excluded due to repositioning/lease-up",
+     "",
+     "(10,255)",
+     ""
+    ],
+    [
+     "Same-store facility NOI",
+     "$",
+     "166,678",
+     ""
+    ],
+    [
+     "Adjusted CFFO",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(36,030)",
+     ""
+    ],
+    [
+     "Non-cash charges, net",
+     "",
+     "39,516",
+     ""
+    ],
+    [
+     "Operating lease payment adjustment to normalize lease commitments",
+     "",
+     "(910)",
+     ""
+    ],
+    [
+     "Recurring capital expenditures",
+     "",
+     "(4,581)",
+     ""
+    ],
+    [
+     "Casualty losses",
+     "",
+     "2,868",
+     ""
+    ],
+    [
+     "Transaction and conversion costs",
+     "",
+     "2,674",
+     ""
+    ],
+    [
+     "Employee placement and separation costs",
+     "",
+     "3,073",
+     ""
+    ],
+    [
+     "Employee benefit reserve adjustments",
+     "",
+     "(100)",
+     ""
+    ],
+    [
+     "Communities excluded due to repositioning/lease-up",
+     "",
+     "1,623",
+     ""
+    ],
+    [
+     "Adjusted CFFO",
+     "$",
+     "8,133",
+     ""
+    ],
+    [
+     "Diluted shares outstanding",
+     "$",
+     "30,263",
+     ""
+    ],
+    [
+     "Adjusted CFFO per share (as reported)",
+     "$",
+     "0.27",
+     ""
+    ],
+    [
+     "New lease accounting standard adjustment",
+     "$",
+     "0.06",
+     ""
+    ],
+    [
+     "Adjusted CFFO per share (as adjusted for new lease accounting standard)",
+     "$",
+     "0.33",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year\n\n\n\nEnded\n\n\n\nDecember 31,\n\n\n\n2019",
+    "Adjusted EBITDAR"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1042,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "The Company believes Adjusted CFFO and Same Store Facility Net Operating Income are useful performance measures in identifying trends in day-to-day operations because it excludes the costs associated with acquisitions and conversions and other items that do not ordinarily reflect the ongoing operating results of our primary business. Same store results are important points of analysis when evaluating performance as it provides an indication of the effectiveness of management producing growth in operations from existing assets. Adjusted CFFO and Same Store Facility Net Operating Income provide indicators to management of progress in achieving both consolidated and individual business unit operating performance and is used by research analysts and investors to evaluate the performance of companies in the senior living industry.\nThe Company strongly urges you to review the following reconciliation of net loss to Adjusted EBITDAR, reconciliation of income from operations to Same Store Facility Net Operating Income, and the reconciliation of net loss to Adjusted CFFO, along with the Company\u2019s consolidated balance sheets, statements of operations, and statements of cash flows, which are included in the Original Filing.\nCAPITAL SENIOR LIVING CORPORATION\nNON-GAAP RECONCILIATIONS\n(In thousands, except per share data)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1035,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1106,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

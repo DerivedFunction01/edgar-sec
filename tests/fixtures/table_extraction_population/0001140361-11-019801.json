@@ -1,0 +1,4529 @@
+{
+ "accession": "0001140361-11-019801",
+ "cik": "0001164552",
+ "form": "10-K",
+ "filing_date": "2011-03-31",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n (State or other jurisdiction of  incorporation or organization)",
+     "75-2873882\n\n (I.R.S. Employer  Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "381 Teaneck Road, Suite 3\n\n Teaneck, NJ\n\n (Address of principal executive offices)",
+     "07666\n\n (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____ to____\nCommission file number: 000-33491\nGreen Energy Management Services Holdings, Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s Telephone Number, Including Area Code\n(201) 530-1200\nSecurities Registered Pursuant to Section 12(b) of the Act:\nNone\nSecurities Registered Pursuant to Section 12(g) of the Act:\nCommon Stock, $0.0001 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] or No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] or No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] or No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] or No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "14"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "14"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 4.",
+     "(Removed and Reserved)",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "15"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "15"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discuss and Analysis of Financial Condition and Results of Operation",
+     "16"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "20"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "21"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants and Financial Disclosure",
+     "40"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "40"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "42"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "44"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "48"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "49"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "51"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [ ]  Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the voting stock held by non-affiliates of the registrant, computed by reference to the closing price as of the last business day of the registrants most recently completed second fiscal quarter ended June 30, 2010, was approximately $1.3 million. For the sole purpose of making this calculation, the term \u201cnon-affiliate\u201d has been interpreted to exclude directors, corporate officers and holders of 10% or more of the Company\u2019s common stock. As of March 28, 2011, the registrant had outstanding 443,777,432 shares of common stock, $0.0001 par value.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nGreen Energy Management Services Holdings, Inc. and its subsidiaries (collectively referred to as the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d references to \u201cGEM\u201d refer only to Green Energy Management Services, Inc., our wholly-owned subsidiary) has made forward-looking statements in this Annual Report on Form 10-K (the \u201cAnnual Report\u201d) that are subject to risks and uncertainties. These statements are based on the beliefs and assumptions of our management and the management of our subsidiaries. Generally, forward-looking statements include information concerning possible or assumed future actions, events or results of operations of the Company. Forward-looking statements include, without limitation, the information regarding: conditions to, and the timetable for, completion and integration of acquisitions and the future economic performance of our subsidiaries. Forward-looking statements may be preceded by, followed by or include the words \u201cmay,\u201d \u201cwill,\u201d \u201cbelieve,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cestimate,\u201d \u201ccould,\u201d \u201cmight,\u201d or \u201ccontinue\u201d or the negative or other variations thereof or comparable terminology.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2010",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "1st Quarter Ended March 31, 2010",
+     "$",
+     "0.30",
+     "$",
+     "0.045"
+    ],
+    [
+     "2nd Quarter Ended June 30, 2010",
+     "$",
+     "0.189",
+     "$",
+     "0.102"
+    ],
+    [
+     "3rd Quarter Ended September 30, 2010",
+     "$",
+     "0.375",
+     "$",
+     "0.120"
+    ],
+    [
+     "4th Quarter Ended December 31, 2010",
+     "$",
+     "0.375",
+     "$",
+     "0.220"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 379,
+    "end_line": 387
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "We are subject to various claims and litigation relating to our past and current operations, which are being handled and vigorously defended in the ordinary course of business. While the results of any ultimate resolution cannot be predicted, as of December 31, 2010, it is the opinion of management, based upon discussions with counsel, that any losses resulting from these matters will not have a material adverse effect on our financial position or results of operations.\nItem 4. (Removed and Reserved)\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nMarket Information and Dividends\nOur common stock has been quoted on the OTCBB under the symbol GRMS.OB since September 22, 2010. Prior to September 22, 2010, our common stock was quoted on the OTCBB under the symbol CWDW.OB. As of March 15, 2011, there were 796 holders of record of our common stock. The last reported sales price of our common stock on March 15, 2011 was $0.12 per share.\nThe following table sets forth the high and low bid prices for our common stock for the periods indicated, as reported by the OTCBB. The quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission, and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 368,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 418,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2009",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "1st Quarter Ended March 31, 2009",
+     "$",
+     "0.21",
+     "$",
+     "0.003"
+    ],
+    [
+     "2nd Quarter Ended June 30, 2009",
+     "$",
+     "0.012",
+     "$",
+     "0.003"
+    ],
+    [
+     "3rd Quarter Ended September 30, 2009",
+     "$",
+     "0.069",
+     "$",
+     "0.005"
+    ],
+    [
+     "4th Quarter Ended December 31, 2009",
+     "$",
+     "0.39",
+     "$",
+     "0.06"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Dividend Policy\nAlthough GEM, prior to the Merger, made a distribution of $18,096 to its stockholders during the six months ended June 30, 2010, we did not pay any cash dividends in 2009 or 2010 and currently do not intend to pay any cash dividends in the foreseeable future and we intend to retain future earnings, if any, to finance the expansion of our business. Our future dividend policy will depend on the requirements of financing agreements to which we may be a party. Any future determination to pay dividends will be at the discretion of our Board and will depend upon, among other factors, our results of operations, financial condition, capital requirements and contractual restrictions.\nSecurities Authorized for Issuance under Equity Compensation Plans\nNone.\nRecent Sales of Unregistered Securities\nOther than as disclosed in our Quarterly Reports on Form 10-Q and our Current Reports on Form 8-K filed since January 1, 2010 and as otherwise described below, there have been no other sales or issuances of unregistered securities that were not registered under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d).",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 368,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 418,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Consolidated Financial Statements of Green Energy Management Services Holdings, Inc. for the periods ended December 31, 2010 and December 31, 2009",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (MaloneBailey, LLP)",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (Hannis T. Bourgeois, LLP)",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2010 and 2009",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations  for the Years Ended December 31, 2010 and 2009",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2010 and 2009",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Equity and Comprehensive Income (Loss) for the years ended December 31, 2010 and 2009",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "28 - 39"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Consolidated Financial Statements of Green Energy Management Services Holdings, Inc. for the periods ended December 31, 2010 and December 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "In October 2009, the FASB issued ASC Subtopic 605-25 \u201cMultiple Element Arrangements.\u201d The amendments allow vendors to account for products and services separately rather than as a combined unit. A selling price hierarchy for determining the selling price of each deliverable is established in this ASU, along with eliminating the residual method. The amendments are effective for revenue arrangements that begin or are changed in fiscal years that start June 15, 2010 or later. The Company is in the process of assessing the provisions of this new guidance and currently does not expect that the adoption will have a material impact on its consolidated financial statements.\nOther recent accounting pronouncements issued by the FASB and the SEC did not have, or are not believed by management to have, a material impact on the Company\u2019s present or future consolidated financial statements.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk.\nNot required for smaller reporting companies.\nItem 8. Financial Statements and Supplementary Data.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors of\nGreen Energy Management Services Holdings, Inc.\nTeaneck, New Jersey\nWe have audited the accompanying balance sheet of Green Energy Management Services Holdings, Inc. (\u201cthe \u201cCompany\u201d) as of December 31, 2010 and the related statements of operations, stockholders\u2019 equity and comprehensive income (loss), and cash flows for the year then ended. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatements. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall consolidated financial statement presentation. We believe that our audit provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "896,057",
+     "",
+     "$",
+     "18,241",
+     ""
+    ],
+    [
+     "Contract receivables",
+     "",
+     "23,638",
+     "",
+     "",
+     "220,652",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "58,052",
+     "",
+     "",
+     "3,710",
+     ""
+    ],
+    [
+     "Deferred project costs - Current",
+     "",
+     "39,114",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "111,292",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,128,153",
+     "",
+     "",
+     "242,603",
+     ""
+    ],
+    [
+     "Property and equipment-net",
+     "",
+     "79,202",
+     "",
+     "",
+     "79,339",
+     ""
+    ],
+    [
+     "Deferred project costs",
+     "",
+     "243,955",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Licensing agreements",
+     "",
+     "673,600",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "9,612",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2,134,522",
+     "",
+     "$",
+     "321,942",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable - trade",
+     "$",
+     "428,155",
+     "",
+     "$",
+     "222,370",
+     ""
+    ],
+    [
+     "Line of Credit",
+     "",
+     "-",
+     "",
+     "",
+     "195,000",
+     ""
+    ],
+    [
+     "Note payable - Current portion",
+     "",
+     "11,440",
+     "",
+     "",
+     "10,877",
+     ""
+    ],
+    [
+     "Advances from stockholders",
+     "",
+     "-",
+     "",
+     "",
+     "38,550",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "181,003",
+     "",
+     "",
+     "3,802",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "620,598",
+     "",
+     "",
+     "470,599",
+     ""
+    ],
+    [
+     "Note payable - long-term portion",
+     "",
+     "40,855",
+     "",
+     "",
+     "52,351",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "661,453",
+     "",
+     "",
+     "522,950",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 per value, 500,000,000 shares authorized; 442,403,636 and 351,691,756 shares issued and outstanding on December 31, 2010 and December 31, 2009, respectively",
+     "",
+     "44,240",
+     "",
+     "",
+     "35,169",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "3,600,362",
+     "",
+     "",
+     "(34,169)",
+     ""
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Retained deficit",
+     "",
+     "(2,121,533)",
+     "",
+     "",
+     "(202,008)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "1,473,069",
+     "",
+     "",
+     "(201,008)",
+     ""
+    ],
+    [
+     "Total Liabilities & Stockholders' Equity (Deficit)",
+     "$",
+     "2,134,522",
+     "",
+     "$",
+     "321,942",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 623,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis of designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Southside Electric, Inc. as of December 31, 2009, and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States of America.\n/s/ Hannis T. Bourgeois, LLP\nBaton Rouge, Louisiana\nMay 20, 2010\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract revenue earned",
+     "$",
+     "291,311",
+     "",
+     "$",
+     "1,697,321",
+     ""
+    ],
+    [
+     "Cost of revenue earned",
+     "",
+     "270,163",
+     "",
+     "",
+     "1,456,506",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "21,148",
+     "",
+     "",
+     "240,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "1,931,861",
+     "",
+     "",
+     "312,254",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "19,538",
+     "",
+     "",
+     "9,575",
+     ""
+    ],
+    [
+     "Loss on sale of assets",
+     "",
+     "-",
+     "",
+     "",
+     "3,750",
+     ""
+    ],
+    [
+     "Gain on settlement of trade payables",
+     "",
+     "(24,029)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(1,906,222)",
+     "",
+     "",
+     "(84,764)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(13,303)",
+     "",
+     "",
+     "(4,421)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "",
+     "(13,303)",
+     "",
+     "",
+     "(4,421)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "(1,919,525)",
+     "",
+     "",
+     "(89,185)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,919,525)",
+     "",
+     "$",
+     "(89,185)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding",
+     "",
+     "384,448,742",
+     "",
+     "",
+     "351,691,756",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 683,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(1,919,525)",
+     "",
+     "$",
+     "(89,185)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "19,538",
+     "",
+     "",
+     "9,575",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "230,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on forgiveness of trade payables",
+     "",
+     "(24,029)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on sale of vehicle",
+     "",
+     "-",
+     "",
+     "",
+     "3,750",
+     ""
+    ],
+    [
+     "Net change in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in contract receivables",
+     "",
+     "197,014",
+     "",
+     "",
+     "131,769",
+     ""
+    ],
+    [
+     "(Increase) in prepaid expenses",
+     "",
+     "(54,342)",
+     "",
+     "",
+     "(1,498)",
+     ""
+    ],
+    [
+     "(Increase) in deferred project costs",
+     "",
+     "(283,069)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Increase) in other current assets",
+     "",
+     "(111,292)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in other assets",
+     "",
+     "(9,612)",
+     "",
+     "",
+     "5,374",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable - trade",
+     "",
+     "229,814",
+     "",
+     "",
+     "(55,176)",
+     ""
+    ],
+    [
+     "Decrease in billings in excess of costs and estimated earnings on uncompleted contracts",
+     "",
+     "-",
+     "",
+     "",
+     "(70,496)",
+     ""
+    ],
+    [
+     "(Decrease) in advances from shareholders",
+     "",
+     "(38,550)",
+     "",
+     "",
+     "(22,937)",
+     ""
+    ],
+    [
+     "Increase in accrued liabilities",
+     "",
+     "177,201",
+     "",
+     "",
+     "3,574",
+     ""
+    ],
+    [
+     "Net cash (used in) operating activities",
+     "",
+     "(1,586,852)",
+     "",
+     "",
+     "(85,250)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash distributions prior to merger",
+     "",
+     "(9,998)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from sale of vehicle",
+     "",
+     "-",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "Cash paid for intangible assset",
+     "",
+     "(40,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(19,401)",
+     "",
+     "",
+     "(73,961)",
+     ""
+    ],
+    [
+     "Net cash (used in) investing activites",
+     "",
+     "(69,399)",
+     "",
+     "",
+     "(73,461)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings on installment notes",
+     "",
+     "-",
+     "",
+     "",
+     "65,000",
+     ""
+    ],
+    [
+     "Net proceeds from (repayments of) line of credit",
+     "",
+     "5,000",
+     "",
+     "",
+     "43,581",
+     ""
+    ],
+    [
+     "Repayment of debt on installment notes",
+     "",
+     "(10,933)",
+     "",
+     "",
+     "(1,772)",
+     ""
+    ],
+    [
+     "Cash proceeds from equity issuance",
+     "",
+     "1,440,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash proceeds from merger transaction",
+     "",
+     "1,100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,534,067",
+     "",
+     "",
+     "106,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "877,816",
+     "",
+     "",
+     "(51,902)",
+     ""
+    ],
+    [
+     "Cash - beginning of year",
+     "",
+     "18,241",
+     "",
+     "",
+     "70,143",
+     ""
+    ],
+    [
+     "Cash - end of year",
+     "$",
+     "896,057",
+     "",
+     "$",
+     "18,241",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash payments for interest",
+     "$",
+     "13,888",
+     "",
+     "$",
+     "11,266",
+     ""
+    ],
+    [
+     "Non-cash items - Debt assumed by related party",
+     "$",
+     "200,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  - Stock used for acquisition of licensing agreement",
+     "$",
+     "633,600",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  - Stock used for debt",
+     "$",
+     "1,100,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF CHANGES IN EQUITY AND COMPREHENSIVE INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Subscription",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Receivable",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2009",
+     "",
+     "351,691,756",
+     "",
+     "$",
+     "35,169",
+     "",
+     "$",
+     "(34,169)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(112,813)",
+     "",
+     "$",
+     "1,000",
+     ""
+    ],
+    [
+     "Net loss for the Year Ended December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(89,195)",
+     "",
+     "",
+     "(89,195)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2009",
+     "",
+     "351,691,756",
+     "",
+     "",
+     "35,169",
+     "",
+     "",
+     "(34,169)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(202,008)",
+     "",
+     "",
+     "(201,008)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares retained by stockholders of registrant",
+     "",
+     "64,699,880",
+     "",
+     "",
+     "6,470",
+     "",
+     "",
+     "(6,470)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shares issued upon conversion of convertible notes",
+     "",
+     "23,000,000",
+     "",
+     "",
+     "2,300",
+     "",
+     "",
+     "1,147,700",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,150,000",
+     ""
+    ],
+    [
+     "Subscription receivable - Steve Solomon",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(50,000)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "Distribution to shareholder prior to merger transactions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(9,998)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(9,998)",
+     ""
+    ],
+    [
+     "Common stock issued as compensation for consulting services at $0.18 per share",
+     "",
+     "500,000",
+     "",
+     "",
+     "50",
+     "",
+     "",
+     "89,950",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "90,000",
+     ""
+    ],
+    [
+     "Debt assumed by related party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Common stock issued as purchase price for licensing rights at $0.30 per share",
+     "",
+     "2,112,000",
+     "",
+     "",
+     "211",
+     "",
+     "",
+     "633,389",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "633,600",
+     ""
+    ],
+    [
+     "Common stock issued as compensation for Directors Serving on the Board of Directors at $0.35 per share",
+     "",
+     "400,000",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "139,960",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "140,000",
+     ""
+    ],
+    [
+     "Redemption of shares pursuant to fund raising",
+     "",
+     "(30,000,000)",
+     "",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "3,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued in private placement",
+     "",
+     "30,000,000",
+     "",
+     "",
+     "3,000",
+     "",
+     "",
+     "1,437,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,440,000",
+     ""
+    ],
+    [
+     "Net loss for the Twelve Months Ended December 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,919,525)",
+     "",
+     "",
+     "(1,919,525)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2010",
+     "",
+     "442,403,636",
+     "",
+     "$",
+     "44,240",
+     "",
+     "$",
+     "3,600,362",
+     "",
+     "$",
+     "(50,000)",
+     "",
+     "$",
+     "(2,121,533)",
+     "",
+     "$",
+     "1,473,069",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 806,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nCONSOLIDATED STATEMENTS OF CHANGES IN EQUITY AND COMPREHENSIVE INCOME (LOSS)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nGREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.\n(formerly CDSS Wind Down Inc. and Southside Electric Corporation, Inc.)\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNote 1. Description of Business and Organization and Going Concern\nDescription of Business and Organization\nOverview\nGreen Energy Management Services Holdings, Inc. (f/k/a CDSS Wind Down Inc.) (which, together with its consolidated subsidiary, Green Energy Management Services, Inc. (\u201cGEM\u201d), is referred to as the \u201cCompany\u201d, \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d) was incorporated pursuant to the laws of the State of Delaware in December 1996 under the name \u201cCitadel Security Software Inc.\u201d We changed our name to \u201cCDSS Wind Down Inc.\u201d on December 12, 2006 following a sale of substantially all of our assets to McAfee, Inc. on December 4, 2006 (the \u201cMcAfee Transaction\u201d), pursuant to a plan of liquidation approved by our stockholders (the \u201cLiquidation Plan\u201d). Prior to the McAfee Transaction, we were principally engaged in the marketing and licensing of security software products to large enterprises and government agencies. Following the McAfee Transaction, we had no active business operations. During 2009, our board of directors (the \u201cBoard\u201d) considered alternatives to liquidating, including the possibility of seeking potential merger or acquisition targets. On November 16, 2009, the Board elected to terminate the Liquidation Plan. On August 20, 2010, pursuant to the terms of the Merger Agreement (as defined below), the Merger Sub (as defined below) merged with and into GEM (the \u201cMerger\u201d), and GEM, as the surviving corporation, became our wholly-owned subsidiary.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, \n\n2010",
+     "",
+     "December 31,\n\n2009",
+     ""
+    ],
+    [
+     "Billed:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Completed contracts",
+     "$",
+     "23,638",
+     "$",
+     "220,652"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1035,
+    "end_line": 1044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Contract receivables"
+    }
+   },
+   "prose_before": "We invest available cash in money market funds. We consider any liquid investment with an original maturity of three months or less when purchased to be cash equivalents. Investments, including certificates of deposit with maturity dates greater than three months when purchased, and which have readily determined fair values, are classified as available-for-sale investments and reflected in current assets as marketable securities at fair market value. Historically, we have complied with our investment policy which requires that all investments be investment grade quality and no more than ten percent of our portfolio may be invested in any one security or with one institution. However, recently, our ability to continue to follow this policy has not been practicable due to the small aggregate amount of investment funds that has been remaining for investment. As a result, as of December 31, 2010, all of our cash was held in high grade money market funds.\nNote 6. Contract receivables\nAt December 31, 2010 and December 31, 2009, the following is a list of receivables outstanding:",
+   "prose_after": "Balances outstanding more than 90 days in billed receivables are $23,638 for December 31, 2010 and $107,451 for December 31, 2009.\nNote 7. Property and Equipment\nWe record our property and equipment at cost and provide for depreciation using the straight-line method for financial reporting purposes and accelerated methods for income tax reporting purposes. Vehicles and office equipment are depreciated over a five year period and leasehold improvements over a 15 year period.\nThe detail of property and equipment at December 31, 2010 and December 31, 2009 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vehicles",
+     "$",
+     "87,366",
+     "",
+     "$",
+     "103,366",
+     ""
+    ],
+    [
+     "Computer Equipment",
+     "",
+     "17,083",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "2,317",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Property & Equipment",
+     "",
+     "106,766",
+     "",
+     "$",
+     "103,366",
+     ""
+    ],
+    [
+     "Less:  accumulated depreciation",
+     "",
+     "(27,564)",
+     "",
+     "",
+     "(24,027)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "79,202",
+     "",
+     "$",
+     "79,339",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1053,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Balances outstanding more than 90 days in billed receivables are $23,638 for December 31, 2010 and $107,451 for December 31, 2009.\nNote 7. Property and Equipment\nWe record our property and equipment at cost and provide for depreciation using the straight-line method for financial reporting purposes and accelerated methods for income tax reporting purposes. Vehicles and office equipment are depreciated over a five year period and leasehold improvements over a 15 year period.\nThe detail of property and equipment at December 31, 2010 and December 31, 2009 is as follows:",
+   "prose_after": "Note 8. Deferred Project Costs\nWe have incurred costs associated with three in-process efficiency lighting and water conservation projects. Cost items consist of materials and labor costs to purchase and install products purchased from outside vendors and either are installed or pending installation. The total costs incurred total approximately $283,000, of which approximately $39,000 and approximately $244,000 are classified as current and long-term, respectively, on our consolidated balance sheets.\nNote 9. Debt\nIn August 2010 and pursuant to the Merger Agreement and terms, we forced conversion of $1,150,000 of our convertible notes issued pursuant to a capital raise by CDSS in July and August 2010 prior to the Merger, into 23,000,000 shares of our common stock. The converted notes included a convertible promissory note in the principal amount of $150,000, issued to Mr. Solomon, our former Chief Executive Officer, President and Chairman of the Board of Directors, as part of the August 20, 2010 private placement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "December 31,\n\n2009",
+     ""
+    ],
+    [
+     "Accrued startup expenses",
+     "$",
+     "48,070",
+     "$",
+     "-"
+    ],
+    [
+     "Accrued salaries and benefits",
+     "",
+     "132,933",
+     "",
+     "-"
+    ],
+    [
+     "Payroll tax liabilities",
+     "",
+     "-",
+     "",
+     "3,802"
+    ],
+    [
+     "",
+     "$",
+     "181,003",
+     "$",
+     "3,802"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1091,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "As of December 31, 2010 and December 31, 2009, we had $0 and $195,000, respectively, available to us under the line of credit with PNC Bank. In August 2010 the line of credit was assumed by a principal of our Company guaranteeing the loan and is no longer an obligation of our Company. We no longer have an ability to borrow under this line of credit.\nAssumption of Debt by a Related Party\nSouthside maintained a line of credit with PNC Bank in the aggregate principal amount of $200,000. Interest on the line of credit was the highest prime rate published from time-to-time in the \u201cMoney Rates\u201d section of the Wall Street Journal. In August 2010, a principal of the Company assumed the line of credit liability, which released us from any further obligations under the line of credit agreement. The assumption was accounted for as a contribution to capital. As a result, the line of credit is no longer an obligation of the Company and we no longer have an ability to borrow under this line of credit.\nNote 10. Accrued Liabilities\nThe details of accrued liabilities at December 31, 2010 and December 31, 2009 are as follows:",
+   "prose_after": "Note 11. Commitments and Contingencies\nLegal Matters\nFrom time to time, we may become involved in litigation relating to claims arising out of our operations in the normal course of business. No legal proceedings, government actions, administrative actions, investigations or claims are currently pending against us or involve us which, in the opinion of our management, could reasonably be expected to have a material adverse effect on our business or financial condition.\nThere are currently no proceedings in which any of our directors, officers or affiliates, or any registered or beneficial stockholder, is an adverse party or has a material interest adverse to us.\nThe PMP Agreement\nPursuant to the PMP Agreement, commencing on September 15, 2010, GEM agreed to pay Mr. Bocos a monthly consulting fee of $8,000.\nLong Term Debt\nThe maturities of the note payable at December 31, 2010 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2012",
+     "",
+     "2013",
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Note payable",
+     "$",
+     "11,440",
+     "",
+     "11,758",
+     "$",
+     "12,225",
+     "$",
+     "12,711",
+     "$",
+     "4,161",
+     "$",
+     "52,295"
+    ],
+    [
+     "Interest Expense",
+     "$",
+     "1,730",
+     "$",
+     "1,412",
+     "$",
+     "945",
+     "$",
+     "459",
+     "$",
+     "229",
+     "$",
+     "4,775"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1120,
+    "end_line": 1126
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Note 11. Commitments and Contingencies\nLegal Matters\nFrom time to time, we may become involved in litigation relating to claims arising out of our operations in the normal course of business. No legal proceedings, government actions, administrative actions, investigations or claims are currently pending against us or involve us which, in the opinion of our management, could reasonably be expected to have a material adverse effect on our business or financial condition.\nThere are currently no proceedings in which any of our directors, officers or affiliates, or any registered or beneficial stockholder, is an adverse party or has a material interest adverse to us.\nThe PMP Agreement\nPursuant to the PMP Agreement, commencing on September 15, 2010, GEM agreed to pay Mr. Bocos a monthly consulting fee of $8,000.\nLong Term Debt\nThe maturities of the note payable at December 31, 2010 are as follows:",
+   "prose_after": "Operating leases\nThe Company has a leased principal executive office comprised of approximately 1,500 square feet located at 381 Teaneck Road, Teaneck, New Jersey 07666 (the \u201cTeaneck Office\u201d) and a leased sales and distribution office comprised of approximately 1,600 square feet located at 13713 W. Sunrise Blvd., Sunrise, Florida 33323 (the \u201cSunrise Office\u201d). As of December 31, 2010, lease payments for the Teaneck Office were $4,500 per month and are due on a month-to-month basis. The Sunrise Office is owned by an affiliate of Mr. Samuel, our Chairman, President and Chief Executive Officer. We lease the Sunrise Office on a month-to-month basis with lease payments of $4,076 per month. We do not currently signed a lease for this space. Commencing January 1, 2011, we sublet on a month-to-month basis approximately 500 square feet of the Teaneck Office space to a certain stockholder of ours in consideration of monthly payments of $1,500, which we believe represents market rates. See Note 16 \u2013 Subsequent Events. Rental expense for leases was $32,025 and $20,100 in 2010 and 2009, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2010",
+     "",
+     "December 31,\n\n2009",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "\u2015",
+     "$",
+     "37,377"
+    ],
+    [
+     "2011",
+     "",
+     "\u2015",
+     "",
+     "11,350"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2015",
+     "$",
+     "48,727"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1135,
+    "end_line": 1147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company has a leased principal executive office comprised of approximately 1,500 square feet located at 381 Teaneck Road, Teaneck, New Jersey 07666 (the \u201cTeaneck Office\u201d) and a leased sales and distribution office comprised of approximately 1,600 square feet located at 13713 W. Sunrise Blvd., Sunrise, Florida 33323 (the \u201cSunrise Office\u201d). As of December 31, 2010, lease payments for the Teaneck Office were $4,500 per month and are due on a month-to-month basis. The Sunrise Office is owned by an affiliate of Mr. Samuel, our Chairman, President and Chief Executive Officer. We lease the Sunrise Office on a month-to-month basis with lease payments of $4,076 per month. We do not currently signed a lease for this space. Commencing January 1, 2011, we sublet on a month-to-month basis approximately 500 square feet of the Teaneck Office space to a certain stockholder of ours in consideration of monthly payments of $1,500, which we believe represents market rates. See Note 16 \u2013 Subsequent Events. Rental expense for leases was $32,025 and $20,100 in 2010 and 2009, respectively.\nThe Company also leased vehicles through operating leases which expire at various dates. For the years ended December 31, 2010 and 2009, total vehicle lease payments were $3,870 and $34,754, respectively, which are included in costs of revenue and general and administrative expenses in these financial statements. Total minimum lease commitments for the indicated periods are as follows:",
+   "prose_after": "Surety bonds\nIn the normal course of its business, the Company may also subcontract to various specialty contractors who may or may not have obtained surety bonds. Management has adequate controls in place to monitor the pre-qualifications and performance of the subcontractors. Therefore, no accruals have been considered necessary by management for financial guarantees related to the non-bonded subcontractors.\nIssuance of Common Stock to Green RG\nPursuant to the license and marketing agreement that we entered into with Green RG, we may be required to issue to Green RG between 10 million and 30 million restricted shares of our common stock, based on the achievements of certain performance thresholds. We intend to agree with certain of our existing stockholders to issue such shares to Green RG, however, there are presently no formal agreements in place to obtain such shares nor can we provide any assurance that any of our existing stockholders will agree to provide such shares. We do not expect that we will be issuing any additional shares as a result of this transaction as we intend to agree with an existing stockholder of our Company for such stockholders to transfer the required shares to Green RG, however, there are presently no formal agreements in place to obtain such shares nor can we provide any assurance that any of our existing stockholders will agree to provide such shares. As of March 28, 2011, no shares have been issued to Green RG. See Note 4. Technology Licensing Agreements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position with the Company"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Samuel",
+     "55",
+     "Chairman, President and Chief Executive Officer, Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Weinstein",
+     "51",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "William \u201cChip\u201d D\u2019Angelo",
+     "55",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Rapaport",
+     "32",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Key Employees",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oren Moskowitz",
+     "28",
+     "Chief Technology Officer of GEM"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Morra III",
+     "48",
+     "President and Director of Project Development of GEM"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1274,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The LoC Agreement contains customary events of default which could, subject to certain conditions, cause the note to become immediately due and payable, including, but not limited to, failure to make premium or interest payments; failure to pay final judgments entered by a court or courts of competent jurisdiction aggregating $50,000 or more (excluding amounts covered by insurance), which judgments are not paid, discharged or stayed, for a period of 30 days from the date of entry thereof; and certain events of bankruptcy or insolvency.\nThis summary does not purport to be complete and is qualified in its entirety by reference to the LoC Agreement and the note, both of which will be filed as exhibits to our next Quarterly Report on Form 10-Q. Interested parties should read these documents in their entirety.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nManagement\nSet forth below is certain information regarding our current executive officers and directors. Each of the directors listed below was elected to our Board to serve until our next annual meeting of stockholders or until his successor is elected and qualified. All directors hold office for one-year terms until the election and qualification of their successors. The following table sets forth information regarding the members of our board of directors and our executive officers as of December 31, 2010:",
+   "prose_after": "Biographical Information\nExecutive Officers and Directors\nMichael Samuel. Mr. Samuel has been the Chairman and Chief Executive Officer of GEM since March 2010 and became the Chairman and Chief Executive Officer of the Company in August 2010 in connection with the merger. Since 2007, Mr. Samuel has been a principal of SamDevelop, a progressive real estate investment and development firm. SamDevelop has developed and managed over fifty projects in New York, San Francisco, Virginia, Florida and New Orleans. The portfolio of SamDevelop encompasses projects valued in excess of $2.2 billion. From 1997 to 2007, Mr. Samuel founded and operated Samuel & Co, for which he was instrumental in the master planning of ventures, from overseeing day-to-day operations, construction development to financial analysis of the project. In addition to Mr. Samuel\u2019s extensive experience and successful track record in real estate development, Mr. Samuel acquired Citywide Management Inc., a property management and full-service building maintenance firm based in Port Washington, New York, which he sold in September 2001. On December 23, 2009, Market Street Properties, L.L.C., a limited liability company in which a limited liability company partially owned by Mr. Samuel had a membership interest and served on the management committee, filed for bankruptcy protection under Chapter 11 of the United States Bankruptcy Code. Mr. Samuel received his Bachelor of Science degree in Economics from Queens College.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1265,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1302,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "",
+     "Bonus ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "",
+     "Total ($)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Samuel,",
+     "2010",
+     "",
+     "99,123",
+     "(4)",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "99,123",
+     "(4)"
+    ],
+    [
+     "Chairman of the Board of Directors, President and Chief Executive Officer (1)",
+     "2009",
+     "",
+     "\u2015",
+     "(5)",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     ""
+    ],
+    [
+     "Robert Weinstein,",
+     "2010",
+     "",
+     "184,167",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "(7)",
+     "",
+     "184,167",
+     ""
+    ],
+    [
+     "Chief Financial Officer (2)",
+     "2009",
+     "",
+     "\u2015",
+     "(5)",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     ""
+    ],
+    [
+     "John Morra, III,",
+     "2010",
+     "",
+     "192,250",
+     "(6)",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "18,183",
+     "(6)",
+     "",
+     "210,375",
+     ""
+    ],
+    [
+     "President and Director of Project Development of GEM",
+     "2009",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     ""
+    ],
+    [
+     "Steven B. Solomon,",
+     "2010",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     ""
+    ],
+    [
+     "Former Chief Executive Officer and Chief Financial Officer (3)",
+     "2009",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1351,
+    "end_line": 1364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Our Board has adopted a Code of Ethics to provide guidance to all the Company\u2019s directors, officers and employees, including the Company\u2019s principal executive officer, principal accounting officer or controller or persons performing similar functions.\nWe have posted our Code of Ethics under the \u201cCorporate Governance\u201d portion of our website, www.gempowered.com. Our Code of Ethics is also available in print without charge to any stockholder of record that makes a written request to the Company. Inquiries must be directed to Green Energy Management Services Holdings, Inc., Attn: Jason Edelboim, 381 Teaneck Road, Teaneck, NJ 07666 (Tel: 917-733-1474).\nItem 11. Executive Compensation\nSummary Compensation Table\nThe table below sets forth, for the last two fiscal years, the compensation earned by (i) each individual who served as our principal executive officer during the last fiscal year and (ii) our two most highly compensated executive officers, other than those listed in clause (i) above, who were serving as executive officers at the end of the last fiscal year (together, the \u201cNamed Executive Officers\u201d).",
+   "prose_after": "(1) Mr. Samuel was appointed Chairman, President and Chief Executive Officer of the Company on August 19, 2010.\n(2) Mr. Weinstein was appointed Chief Financial Officer of GEM on April 15, 2010.\n(3) Mr. Solomon resigned from all of his positions with the Company effective as of August 20, 2010 and received no cash or stock compensation for 2010 and 2009.\n(4) Mr. Samuel has deferred his entire 2010 compensation indefinitely, until the Company becomes cash flow positive. No formal agreement has been entered into between Mr. Samuel and the Company regarding the deferral of his compensation.\n(5) Messrs. Samuel and Weinstein received no compensation from GEM during the year ended December 31, 2009.\n(6) Includes salary of $46,287 paid by Southside prior to its merger with GEM and $145,963 paid by GEM following the merger with Southside.\n(7) The amount of perquisites and other personal benefits has been excluded as the total value of perquisites and other personal benefits was less than $10,000.\n(8) Includes (i) $13,200 in payments for COBRA Continuation health coverage, (ii) $59 in life insurance premium payments, (iii) $872 in disability insurance payments, and (iv) $4,052 in payments made on behalf of Mr. Morra to the union to which he formerly belonged.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of securities underlying unexercised options (#) exercisable",
+     "",
+     "Number of securities underlying unexercised options (#) unexercisable",
+     "",
+     "Equity incentive plan awards: Number of securities underlying unexercised unearned options (#)",
+     "",
+     "Option exercise price ($)",
+     "",
+     "Option expiration date",
+     "",
+     "Number of shares or units of stock that have not vested (#)",
+     "",
+     "Market value of shares or units of stock that have not vested ($)",
+     "",
+     "",
+     "Equity incentive plan awards: Number of unearned shares, units or other rights that have not vested (#)",
+     "",
+     "Equity incentive plan awards: Market value or payout value of unearned shares, units or other rights that have not vested ($)",
+     ""
+    ],
+    [
+     "Michael Samuel,\n\nChairman, President and Chief Executive Officer",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015"
+    ],
+    [
+     "Robert Weinstein,\n\nChief Financial Officer",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "2,976,558",
+     "$",
+     "744,140",
+     "(3)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Morra, III,\n\nPresident and Director of Project Development of GEM",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015"
+    ],
+    [
+     "Steven B. Solomon,\n\nFormer Chief Executive Officer and Chief Financial Officer",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "\u2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1391,
+    "end_line": 1417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Chief Financial Officer \u2015 On April 15, 2010, Robert Weinstein entered into an employment agreement with GEM (the \u201cWeinstein Employment Agreement\u201d) with an initial term of two years, with automatic one year renewals, which the Weinstein Employment Agreement will be assumed by CDSS in connection with the Merger. His base salary is $260,000 per annum with annual adjustments pursuant to the applicable regional CPI. Mr. Weinstein will be entitled to receive an annual bonus at the discretion of the Board based on performance goals and targeted at 50% of his annual salary. In addition to any perquisites and other fringe benefits provided to other executives, Mr. Weinstein received 5,495,184 shares of restricted common stock, with certain anti-dilution provisions, and vesting at a rate of 1/24th per month. In the event Mr. Weinstein is terminated by us without good cause or he resigns for good reason, as such terms are defined in the Weinstein Employment Agreement, we will be obligated to pay Mr. Weinstein in a lump sum an amount equal to 12 months salary and benefits.\nOutstanding Equity Awards at End of Fiscal Year 2010",
+   "prose_after": "(1) Mr. Solomon resigned from all of his positions held with the Company effective as of August 20, 2010.\n(2) In connection with the execution of his employment agreement on April 15, 2010, Mr. Weinstein received 5,495,184 restricted shares of our common stock. Such shares vest at a rate of 1/24th per month. These shares were issued by us to Mr. Weinstein as part of the Merger unconsideration of the same amount of shares that Mr. Weinstein was entitled to receive from GEM.\n(3) Market value calculated by multiplying the number of shares by $0.25, the closing price per share of our common stock on the last trading day of our fiscal year 2010.\nPotential Payments Upon Termination or Change-in-Control\nMr. Samuels - In the event Mr. Samuel is terminated by us without Cause (as defined in the Samuel Employment Agreement) or due to his death or he resigns for Good Reason (as defined in the Samuel Employment Agreement), we will be obligated to pay Mr. Samuel in a lump sum an amount equal to 6 months\u2019 salary and benefits, payable within 30 days following such termination, plus any accrued but unused vacation (the \u201cTermination Benefits\u201d). In addition, if Mr. Samuel elects health care continuation coverage under COBRA, we shall pay for such health insurance coverage for a period of 12 months following the termination of his employment, at the same rate as we pay for health insurance coverage for our active employees (with Mr. Samuel required to pay for any employee-paid portion of such coverage) (the \u201cCOBRA Benefits\u201d). After the 12-month continuation period concludes, Mr. Samuel will be responsible for the payment of all premiums attributable to COBRA continuation coverage at the same rate as we charge all COBRA beneficiaries. If Mr. Samuel\u2019s employment is terminated during his employment term by (x) us for Cause, (y) Mr. Samuel for any reason other than Good Reason or (z) due to his Disability (as defined in the Samuel Employment Agreement), then he will not be entitled to receive the Termination Benefits or the COBRA Benefits, and shall only be entitled to his Accrued Benefits (as defined in the Samuel Employment Agreement).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1427,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Voluntary",
+     "",
+     "",
+     "Termination for Cause or by Executive Other Than for Good",
+     "",
+     "",
+     "Termination Upon Expiration of Employment",
+     "",
+     "",
+     "Involuntary Termination Without Cause or by Executive for Good",
+     "",
+     "",
+     "Termination Due to",
+     "",
+     "",
+     "Termination Due to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Termination",
+     "",
+     "",
+     "Reason",
+     "",
+     "",
+     "Agreement",
+     "",
+     "",
+     "Reason",
+     "",
+     "",
+     "Disability",
+     "",
+     "",
+     "Death",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salary Continuation",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "135,000",
+     "(3)",
+     "",
+     "135,000",
+     "(3)",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "135,000",
+     "(3)"
+    ],
+    [
+     "Bonus",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)"
+    ],
+    [
+     "Medical/Dental Insurance",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "\u2015",
+     "",
+     "",
+     "(4)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1442,
+    "end_line": 1452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Generally, each of Messrs. Samuels\u2019 and Weinstein\u2019s employment agreements define a termination for \u201cgood reason\u201d to mean means a termination by the executive during the term of his employment with the Company based upon the occurrence (without the executive\u2019s consent) of any of the following: (i) a material diminution in the executive\u2019s annual base salary, (ii) a material diminution in the executive\u2019s annual bonus opportunity, (iii) a material diminution in the executive\u2019s authority, duties, or responsibilities, (iv) a requirement that the executive have a reporting relationship other than to the Board (or with respect to Mr. Weinstein, the Chief Executive Officer or the Board), (v) a material breach by the Company of any of its obligations under such executive\u2019s employment agreement; or (vi) a direction by the Board that the executive take any action that would constitute a violation of law, including without limitation, federal securities laws. In addition, Mr. Weinstein\u2019s employment agreement also provides that a termination for \u201cgood reason\u201d shall also include a termination by Mr. Weinstein during the term of his employment with the Company based upon the occurrence (without the executive\u2019s consent) of any of the following: (x) a change in the geographic location at which Mr. Weinstein must perform his services hereunder by more than 30 miles from Irvington, New York, or (y) if his employment agreement has not been assumed by the Company\u2019s subsidiary surviving the Merger (which is referred to in this Annual Report as GEM\u201d).\nSummary Tables\nThe following tables summarize the amounts potentially payable upon termination of employment for each of Messrs. Samuels and Weinstein assuming termination occurred on December 31, 2010. For purposes of presenting amounts payable over a period of time (e.g., salary continuation), the amounts are shown as a single total but not as a present value (i.e., the single sum does not reflect any discount).\nMichael Samuel",
+   "prose_after": "(1) Mr. Samuel will be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(2) Mr. Samuel will be entitled to any unpaid annual bonus for any year prior to the year in which his employment terminates.\n(3) Base salary of $270,000 for 6 months. Mr. Samuel will also be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(4) If Mr. Samuel elects health care continuation coverage under COBRA, the Company shall pay for such health insurance coverage for a period of 12 months following the termination of Mr. Samuel\u2019s employment, at the same rate as it pays for health insurance coverage for its active employees (with Mr. Samuel required to pay for any employee-paid portion of such coverage).\nRobert Weinstein",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Voluntary Termination",
+     "",
+     "",
+     "Termination for Cause or by Executive Other Than for Good Reason",
+     "",
+     "",
+     "Termination Upon Expiration of Employment Agreement",
+     "",
+     "",
+     "Involuntary Termination Without Cause or by Executive for Good Reason",
+     "",
+     "",
+     "Termination Due to Disability",
+     "",
+     "",
+     "Termination Due to Death",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salary Continuation",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "260,000",
+     "(3)",
+     "",
+     "260,000",
+     "(3)",
+     "",
+     "\u2015",
+     "(1)",
+     "",
+     "260,000",
+     "(3)"
+    ],
+    [
+     "Bonus",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)",
+     "",
+     "\u2015",
+     "(2)"
+    ],
+    [
+     "Medical/Dental Insurance",
+     "",
+     "\u2015",
+     "",
+     "",
+     "\u2015",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "\u2015",
+     "",
+     "",
+     "(4)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1473
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Mr. Samuel will be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(2) Mr. Samuel will be entitled to any unpaid annual bonus for any year prior to the year in which his employment terminates.\n(3) Base salary of $270,000 for 6 months. Mr. Samuel will also be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(4) If Mr. Samuel elects health care continuation coverage under COBRA, the Company shall pay for such health insurance coverage for a period of 12 months following the termination of Mr. Samuel\u2019s employment, at the same rate as it pays for health insurance coverage for its active employees (with Mr. Samuel required to pay for any employee-paid portion of such coverage).\nRobert Weinstein",
+   "prose_after": "(1) Mr. Weinstein will be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(2) Mr. Weinstein will be entitled to any unpaid annual bonus for any year prior to the year in which his employment terminates.\n(3) Base salary of $260,000 for 12 months. Mr. Weinstein will also be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(4) If Mr. Weinstein elects health care continuation coverage under COBRA, the Company shall pay for such health insurance coverage for a period of 12 months following the termination of Mr. Weinstein\u2019s employment, at the same rate as it pays for health insurance coverage for its active employees (with Mr. Weinstein required to pay for any employee-paid portion of such coverage).\nDirector Compensation for Fiscal Year 2010\nThe following table presents information concerning compensation attributable to the Company\u2019s directors for the fiscal year ended December 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned\n\nor Paid in\n\nCash\n\n($)",
+     "",
+     "Stock Awards\n\n($)(2)",
+     "",
+     "All Other\n\nCompensation\n\n($)(4)",
+     "",
+     "Total\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Samuel",
+     "",
+     "\u2015 (1)",
+     "",
+     "\u2015",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "William \u201cChip\u201d D\u2019Angelo",
+     "",
+     "\u2015",
+     "$",
+     "70,000(3)",
+     "",
+     "\u2014",
+     "$",
+     "70,000"
+    ],
+    [
+     "Michael Rapaport",
+     "",
+     "\u2015",
+     "$",
+     "70,000(3)",
+     "",
+     "\u2014",
+     "$",
+     "70,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1488,
+    "end_line": 1502
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Mr. Weinstein will be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(2) Mr. Weinstein will be entitled to any unpaid annual bonus for any year prior to the year in which his employment terminates.\n(3) Base salary of $260,000 for 12 months. Mr. Weinstein will also be entitled to his accrued but unpaid vacation and annual base salary through the date of his termination.\n(4) If Mr. Weinstein elects health care continuation coverage under COBRA, the Company shall pay for such health insurance coverage for a period of 12 months following the termination of Mr. Weinstein\u2019s employment, at the same rate as it pays for health insurance coverage for its active employees (with Mr. Weinstein required to pay for any employee-paid portion of such coverage).\nDirector Compensation for Fiscal Year 2010\nThe following table presents information concerning compensation attributable to the Company\u2019s directors for the fiscal year ended December 31, 2010.",
+   "prose_after": "(1) Mr. Samuel does not receive any separate compensation for his services as a director of the Company.\n(2) Represents the full aggregate grant date fair values, computed in accordance with Financial Accounting Standards Board\u2019s (FASB) authoritative guidance on stock-based compensation accounting, for awards of restricted stock granted in 2010.\n(3) On October 27, 2010, the Board granted to each of Messrs. D\u2019Angelo and Rapaport 200,000 shares of restricted common stock as director compensation.\n(4) The amount of perquisites and other personal benefits has been excluded for all directors as the total value of each director\u2019s perquisites and other personal benefits was less than $10,000.\nWe will grant 200,000 shares of restricted common stock to newly appointed independent Board members. We may adopt an additional compensation plan for our independent directors in order to attract qualified persons and to retain them. We expect that the future compensation arrangements may be comprised of a combination of cash and/or equity awards.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1537,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "Number of Shares Beneficially Owned",
+     "",
+     "Percentage Beneficially Owned (2)",
+     "",
+     ""
+    ],
+    [
+     "5% Owner",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GEM Lighting, LLC (3)",
+     "",
+     "65,623,216",
+     "",
+     "14.8",
+     "%"
+    ],
+    [
+     "Steven B. Solomon (4)",
+     "",
+     "58,381,903",
+     "",
+     "13.2",
+     "%"
+    ],
+    [
+     "Financial Partners Funding, LLC (5)",
+     "",
+     "66,360,545",
+     "",
+     "13.0",
+     "%"
+    ],
+    [
+     "Ocean Drive Investments, L.L.C. (6)",
+     "",
+     "41,575,242",
+     "",
+     "9.4",
+     "%"
+    ],
+    [
+     "Watz Enterprises, L.L.C. (7)",
+     "",
+     "40,437,071",
+     "",
+     "9.1",
+     "%"
+    ],
+    [
+     "Esousa Holdings LLC (8)",
+     "",
+     "27,654,313",
+     "",
+     "6.2",
+     "%"
+    ],
+    [
+     "Tzameret Holdings, L.L.C. (9)",
+     "",
+     "22,259,803",
+     "",
+     "5.0",
+     "%"
+    ],
+    [
+     "Executive Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Samuel (3)",
+     "",
+     "\u2015",
+     "",
+     "\u2015",
+     ""
+    ],
+    [
+     "Robert Weinstein (10)",
+     "",
+     "5,495,184",
+     "",
+     "1.2",
+     "%"
+    ],
+    [
+     "William D\u2019Angelo (11)",
+     "",
+     "200,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Michael Rapaport (11)",
+     "",
+     "200,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All executive officers and directors as a group (four persons)",
+     "",
+     "5,895,184",
+     "",
+     "1.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1517,
+    "end_line": 1535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We will grant 200,000 shares of restricted common stock to newly appointed independent Board members. We may adopt an additional compensation plan for our independent directors in order to attract qualified persons and to retain them. We expect that the future compensation arrangements may be comprised of a combination of cash and/or equity awards.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth certain information as of March 15, 2011 regarding the beneficial ownership of our common stock by (i) each person or entity who, to our knowledge, owns more than 5% of our common stock; (ii) our Named Executive Officers; (iii) each director; and, (iv) all of our executive officers and directors as a group. Unless otherwise indicated in the footnotes to the following table, each person named in the table has sole voting and investment power. Shares of our common stock subject to options, warrants, or other rights currently exercisable or exercisable within 60 days of March 15, 2011, are deemed to be beneficially owned and outstanding for computing the share ownership and percentage of the stockholder holding the options, warrants or other rights, but are not deemed outstanding for computing the percentage of any other stockholder.",
+   "prose_after": "_______________________\n* Represents beneficial ownership of less than 1%.\n(1) Unless otherwise indicated, the address of all of the above named persons is c/o Green Energy Management Services Holdings, Inc., 381 Teaneck Road, Teaneck, New Jersey 07666.\n(2) Based on 443,777,432 shares of our common stock outstanding on March 28, 2011.\n(3) Although Mr. Samuel does not have a direct beneficial ownership of any of the Company\u2019s shares of common stock, his wife, Ms. Deborah Samuel, and his son, Jonathan Samuel, are the sole two members of GEM Lighting, L.L.C., which beneficially owns 65,623,216 shares of our common stock. Ms. Samuel and Mr. Jonathan Samuel have the shared voting and investment power over the reported securities. Mr. Samuel disclaims beneficial ownership of the shares held by GEM Lighting, LLC.\n(4) Pursuant to Amendment No. 1 to Schedule 13G filed with the SEC on February 14, 2011, Mr. Solomon reported that his beneficial ownership includes (i) 55,547,562 shares of our common stock and (ii) convertible promissory notes issued by the Company on August 20, 2010, which were converted into 3,000,000 shares of our common stock. Mr. Solomon\u2019s address is 2828 N. Harwood, Suite 1700, Dallas, Texas 75201. Mr. Solomon resigned from all of his positions held with the Company effective as of August 20, 2010.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1537,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description of Exhibits"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1634,
+    "end_line": 1637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Report of Independent Registered Public Accounting Firm (MaloneBailey, LLP)\nReport of Independent Registered Public Accounting Firm (Hannis T. Bourgeois, LLP)\nConsolidated Balance Sheets as of December 31, 2010 and 2009\nConsolidated Statements of Operations for the years ended December 31, 2010 and 2009\nConsolidated Statements of Cash Flows for the years ended December 31, 2010 and 2009\nConsolidated Statements of Changes in Equity and Comprehensive Income (Loss) for the years ended December 31, 2010 and 2009\nNotes to Consolidated Financial Statements\n(2) Financial Statement Schedules\nAll schedules have been omitted since they are either not applicable or the information is contained elsewhere in this Annual Report.\n(b) Exhibits.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1603,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1667,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit",
+     "Incorporated by Reference to the Following Documents"
+    ],
+    [
+     "2.1",
+     "Merger Agreement, dated as of April 29, 2010, by and among CDSS Wind Down, Inc., CDSS Merger Corporation and Green Energy Management Services, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed March 31, 2010, Exhibit 10.1"
+    ],
+    [
+     "2.2",
+     "Amendment No. 1 to the Merger Agreement, dated as of April 30, 2010, by and among CDSS Wind Down, Inc., CDSS Merger Corporation and Green Energy Management Services, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed April 30, 2010, Exhibit 10.1"
+    ],
+    [
+     "2.3",
+     "Amendment No. 2 to the Merger Agreement, dated as of June 16, 2010, by and among CDSS Wind Down, Inc., CDSS Merger Corporation and Green Energy Management Services, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed June 18, 2010, Exhibit 10.1"
+    ],
+    [
+     "2.4",
+     "Amendment No. 3 to the Merger Agreement, effective as of July 22, 2010, by and among CDSS Wind Down, Inc., CDSS Merger Corporation and Green Energy Management Services, Inc.",
+     "Supplement to Definitive Information Statement on Schedule 14C (No. 000-33491), filed July 26, 2010, Annex 1"
+    ],
+    [
+     "2.5",
+     "Certificate of Merger filed with the Secretary of State of the State of Delaware on August 20, 2010, effecting the merger of CDSS Merger Corporation and Green Energy Management Services, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 28, 2010 Exhibit 2.5"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of CDSS Wind Down, Inc.",
+     "Registration Statement on Form 10-SB (File No. 000-33491), filed January 11, 2002, Exhibit 3.1"
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to the Certificate of Incorporation of CDSS Wind Down, Inc., filed with the Secretary of State of the State of Delaware on August 18, 2010, effecting the 1 for 3 reverse stock split of all of CDSS Wind Down, Inc.\u2019s common stock",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 28, 2010 Exhibit 3.2"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to the Certificate of Incorporation of CDSS Wind Down, Inc., filed with the Secretary of State of the State of Delaware on August 18, 2010, increasing the number of authorized shares of common stock from 100,000,000 to 500,000,000 and reducing the par value per share from $0.01 to $0.0001 per share.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 28, 2010 Exhibit 3.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1638,
+    "end_line": 1667
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1603,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1667,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.4",
+     "Amended and Restated Bylaws of CDSS Wind Down, Inc.",
+     "Registration Statement on Form 10-SB (File No. 000-33491), filed January 11, 2002, Exhibit 3.2"
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment to the Certificate of Incorporation of CDSS Wind Down, Inc. filed with the Secretary of State of the State of Delaware on September 20, 2010, changing the name of the Company to Green Energy Management Services Holdings, Inc.",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed September 20, 2010, Exhibit 10.9"
+    ],
+    [
+     "4.1",
+     "Form of Warrant issued to Financial Partners Funding, LLC.",
+     "To be filed by an amendment to the Current Report on Form 8-K (File No. 000-33491), filed March 9, 2011"
+    ],
+    [
+     "10.1",
+     "Form of Subscription Agreement for shares of common stock, between CDSS Wind Down, Inc. and a certain investor party thereto.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 4, 2009, Exhibit 10.1"
+    ],
+    [
+     "10.2",
+     "Form of Subscription Agreement for convertible notes, among CDSS Wind Down, Inc. and certain investors party thereto.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 4, 2009, Exhibit 10.2"
+    ],
+    [
+     "10.3",
+     "Form of convertible Promissory Note.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 4, 2009, Exhibit 10.3"
+    ],
+    [
+     "10.4\u2020",
+     "Employment Agreement, dated as of August 20, 2010, between Michael Samuel and CDSS Wind Down, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 26, 2010, Exhibit 10.4"
+    ],
+    [
+     "10.5\u2020",
+     "Employment Agreement, dated as of April 15, 2010, between Robert Weinstein and Green Energy Management Services, Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 26, 2010, Exhibit 10.5"
+    ],
+    [
+     "10.6",
+     "Promissory Note, dated as of July 29, 2010, issued by Green Energy Management Services, Inc. to CDSS Wind Down Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 4, 2009, Exhibit 10.6"
+    ],
+    [
+     "10.7",
+     "Stockholders\u2019 Agreement, dated as of August 20, 2010, by and among by and among CDSS Wind Down, Inc., Green Energy Management Services, Inc., Michael Samuel, Ice Nine, L.L.C. and the persons identified on Exhibit A thereto",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 26, 2010, Exhibit 10.7"
+    ],
+    [
+     "10.8",
+     "Promissory Note, dated as of August 20, 2010, issued by Green Energy Management Services, Inc. to CDSS Wind Down Inc.",
+     "Current Report on Form 8-K (File No. 000-33491), filed August 26, 2010, Exhibit 10.8"
+    ],
+    [
+     "10.9\u2020",
+     "Employment Agreement, dated as of May 15, 2010, between John Morra III and Green Energy Management Services, Inc.",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed September 20, 2010, Exhibit 10.9"
+    ],
+    [
+     "10.10",
+     "Technology License Agreement by and between PMP Pool Maintenance Protection, Inc., Juan Carlos Bocos and Green Energy Management Services, Inc. dated September 29, 2010",
+     "Registration Statement on Form S-1/A ((File No. 333-169496) filed October 28, 2010, Exhibit 10.9"
+    ],
+    [
+     "10.11",
+     "Southside Electric Inc. Promissory Note \u2013 PNC Bank",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.11"
+    ],
+    [
+     "10.12",
+     "Southside Electric Inc. Security Agreement \u2013 PNC Bank",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.12"
+    ],
+    [
+     "10.13",
+     "Southside Electric Inc. Guaranty \u2013 PNC Bank",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.13"
+    ],
+    [
+     "10.14",
+     "Sales Commission Agreement, dated October 26, 2010, by and between Claudio Castella and Green Energy Management Services, Inc.",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.14"
+    ],
+    [
+     "10.15",
+     "Sales and User Agreement, dated as of November 2, 2010, by and between The Riverbay Fund, Inc. and Green Energy Management Services, Inc.",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.15"
+    ],
+    [
+     "10.16",
+     "License and Marketing Agreement, dated as of September 30, 2010, by and between GEM RG, Inc., Green RG, Inc., Alfred Meyer and Horn illegible, Inc.",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.16"
+    ],
+    [
+     "10.17",
+     "Form of Stock Transfer Agreement",
+     "Registration Statement on Form S-1 (File No. 333-169496) filed November 24, 2010, Exhibit 10.17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1670,
+    "end_line": 1714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1669,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1714,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.18",
+     "Consulting Services Agreement, dated as of February 1, 2011, by and between Titan Management and Consulting LLC and Green Energy Management Services Holdings, Inc.",
+     "*"
+    ],
+    [
+     "10.19",
+     "Sales Agency Agreement, dated as of February 1, 2011, by and between Titan Management and Consulting LLC and Green Energy Management Services Holdings, Inc.",
+     "*"
+    ],
+    [
+     "10.20",
+     "Commitment Letter, dated as of March 3, 2011, by and between Financial Partners Funding, LLC and Green Energy Management Services, Inc.",
+     "*"
+    ],
+    [
+     "10.21",
+     "Consulting Services Agreement, effective as of March 3, 2011, by and between SE Management Consultants, Inc. and Green Energy Management Services, Inc.",
+     "*"
+    ],
+    [
+     "10.22",
+     "Sales Agency Agreement, effective as of March 3, 2011, by and between Energy Sales Solutions, LLC and Green Energy Management Services, Inc.",
+     "*"
+    ],
+    [
+     "10.23",
+     "Settlement Agreement, dated as of March 26, 2011, by and among Titan Management and Consulting, L.L.C., Anthony Corso and Green Energy Management Services, Inc.",
+     "*"
+    ],
+    [
+     "16.1",
+     "Letter from KBA Group LLP to the Securities and Exchange Commission, dated June 3, 2009",
+     "Current Report on Form 8-K (File No. 000-33491), filed June 9, 2009, Exhibit 16.1"
+    ],
+    [
+     "16.2",
+     "Letter from Hannis T. Bourgeois, LLP to the Securities and Exchange Commission dated September 1, 2010",
+     "Current Report on Form 8-K/A (File No. 000-33491), filed September 2, 2010, Exhibit 16.1"
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Company",
+     "*"
+    ],
+    [
+     "23.1",
+     "Consent of Hannis T. Bourgeois, LLP",
+     "*"
+    ],
+    [
+     "23.2",
+     "Consent of MaloneBailey, LLP",
+     "*"
+    ],
+    [
+     "31.1",
+     "Certification of CEO Pursuant to Rule 13a-14 or 15d-14 of the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "*"
+    ],
+    [
+     "31.2",
+     "Certification of CFO Pursuant to Rule 13a-14 or 15d-14 of the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "*"
+    ],
+    [
+     "32.1",
+     "Certification of CEO Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "**"
+    ],
+    [
+     "32.2",
+     "Certification of CFO Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "\u2020 Management contract or compensatory plan or arrangement required to be filed as an exhibit\npursuant to the requirements of Item 15(a)(3) of Form 10-K.\n* Filed herewith\n** Furnished herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1716,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1762,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "GREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31, 2011",
+     "By:",
+     "/s/ Michael Samuel",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name: Michael Samuel",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Title: Chairman, President and Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GREEN ENERGY MANAGEMENT SERVICES HOLDINGS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1769,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u2020 Management contract or compensatory plan or arrangement required to be filed as an exhibit\npursuant to the requirements of Item 15(a)(3) of Form 10-K.\n* Filed herewith\n** Furnished herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Act of 1934, this report has been signed by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1764,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Samuel",
+     "Chairman, President, Chief Executive",
+     "March 31, 2011"
+    ],
+    [
+     "Michael Samuel",
+     "Officer and Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Robert Weinstein",
+     "Chief Financial Officer (Principal",
+     "March 31, 2011"
+    ],
+    [
+     "Robert Weinstein",
+     "Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William D\u2019Angelo",
+     "Director",
+     "March 31, 2011"
+    ],
+    [
+     "William D\u2019Angelo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Rapaport",
+     "Director",
+     "March 31, 2011"
+    ],
+    [
+     "Michael Rapaport",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1780,
+    "end_line": 1800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Act of 1934, this report has been signed by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1764,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1801,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

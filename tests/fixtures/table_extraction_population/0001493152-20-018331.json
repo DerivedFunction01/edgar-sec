@@ -1,0 +1,2641 @@
+{
+ "accession": "0001493152-20-018331",
+ "cik": "0000924095",
+ "form": "10-K",
+ "filing_date": "2020-09-25",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "VIRGINIA",
+     "54-1694665"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(IRS Employer\n\n\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED JUNE 30, 2020\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number: 811-8387\nWATERSIDE CAPITAL CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "140 West 31st Street, 2nd Floor\nNew York, New York 10001\nRegistrant\u2019s telephone number, including area code: 212-686-1515\nSecurities registered under Section 12 (b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class: NONE",
+     "Name of each exchange on which registered: NONE"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 33,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "140 West 31st Street, 2nd Floor\nNew York, New York 10001\nRegistrant\u2019s telephone number, including area code: 212-686-1515\nSecurities registered under Section 12 (b) of the Exchange Act:",
+   "prose_after": "Securities registered pursuant to section 12(g) of the Act:\nNone\nTitle of Class\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. YES [ ] NO [X]\nIndicate by check mark whether the registrant (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the Registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate website if any, every Interactive Date File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (ss. 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). YES [ ] NO [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Properties",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9B. Other Information",
+     "36"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers, and Corporate Governance",
+     "37"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "41"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "42"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "43"
+    ]
+   ],
+   "caption_stack": [
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "OTHER INFORMATION"
+    },
+    "note": null
+   },
+   "prose_before": "Indicate by checkmark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [X]   Smaller Reporting Company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) YES [X] NO [ ]\nThe aggregate market value of the registrant\u2019s voting stock held by non-affiliates, computed on the basis of the closing price of the registrant\u2019s common stock on the OTC Pink on September 23, 2020, was approximately $364,933 (6,082,214 shares at $0.06 per share).\nAs of September 23, 2020, there were 6,082,214 shares of the registrant\u2019s common stock, $1.00 par value per share, outstanding.\nOTHER INFORMATION\nAs used in this Annual Report on Form 10-K, the terms \u201cwe\u201d, \u201cus\u201d, \u201cour\u201d, \u201cWaterside\u201d and the \u201cCompany\u201d refer to Waterside Capital Corporation, a Virginia corporation, unless otherwise stated. \u201cSEC\u201d refers to the Securities and Exchange Commission.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nExcept for historical information, this Annual Report contains forward-looking statements within the meaning of the federal securities laws. Such forward-looking statements are based on management\u2019s current expectations, assumptions, and beliefs concerning future developments and their potential effect on our business, and are subject to risks and uncertainties that could negatively affect our business, operating results, financial condition, and stock price. We have attempted to identify forward-looking statements by terminology including \u201canticipates,\u201d \u201cbelieves,\u201d \u201ccan,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cplans,\u201d \u201cpotential,\u201d \u201cpredicts,\u201d \u201cshould,\u201d \u201cwill,\u201d \u201cwould\u201d, \u201cif, \u201cshall\u201d, \u201cmight\u201d, \u201cwill likely result, \u201cprojects\u201d, \u201cgoal\u201d, \u201cobjective\u201d, or \u201ccontinues\u201d, or the negative of these terms or other comparable terminology, although the absence of these words does not necessarily mean that a statement is not forward-looking. Additionally, statements concerning future matters such as our business strategy, development of new products, sales levels, expense levels, cash flows, future commercial and financing matters, future partnering opportunities and other statements regarding matters that are not historical are forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Fiscal Year Ended:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2019",
+     "",
+     ""
+    ],
+    [
+     "Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest income",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Gain from extinguishment of debt",
+     "",
+     "-",
+     "",
+     "",
+     "10,584,254",
+     ""
+    ],
+    [
+     "  Total income",
+     "",
+     "-",
+     "",
+     "",
+     "10,584,254",
+     ""
+    ],
+    [
+     "Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Administrative expenses",
+     "",
+     "(57,760)",
+     "",
+     "",
+     "(66,344)",
+     ""
+    ],
+    [
+     "  Interest Expense",
+     "",
+     "(70,707)",
+     "",
+     "",
+     "(92,185)",
+     ""
+    ],
+    [
+     "  Total expenses",
+     "",
+     "(128,467)",
+     "",
+     "",
+     "(158,529)",
+     ""
+    ],
+    [
+     "Net Loss (Income)",
+     "$",
+     "(128,467)",
+     "",
+     "$",
+     "10,425,725",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Fiscal Year Ended:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Management makes judgments as to the interpretation of the tax laws that might be challenged upon an audit and cause changes to previous estimates of tax liability. In addition, the Company operates within multiple taxing jurisdictions and is subject to audit in these jurisdictions. In management\u2019s opinion, adequate provisions for income taxes have been made for all years. If actual taxable income by tax jurisdiction varies from estimates, additional allowances or reversals of reserves may be necessary.\nManagement assumes that the realization of the Company\u2019s net deferred tax assets resulting from its net operating loss (\u201cNOL\u201d) carryforwards for Federal income tax purposes that may be offset against future taxable income was not considered more likely than not and accordingly, the potential tax benefits of the net loss carry-forwards are offset by a full valuation allowance. Management made this assumption based on (a) the Company has incurred recurring losses and presently has no revenue-producing business, (b) general economic conditions, and (c) its ability to raise additional funds to support its daily operations by way of a public or private offering, among other factors.\nResults of Operations\nFor the year ended June 30, 2020, as compared to the year ended June 30, 2019:",
+   "prose_after": "Revenues and Gains\nSince there were no operations, the Company did not generate any revenues for the year ended June 30, 2020, and 2019. However, for the year ended June 30, 2019, there was a gain from extinguishment of the Roran debt of $10,584,254, which is offset by NOLs to limit the Company\u2019s taxable income. As part of the Receivership, all of the Company\u2019s revenue-generating assets were liquidated. We expect that the Company will not generate any revenue until we can execute on our plan to enter into a new business or merge with or otherwise acquire another business. Even if we are successful in closing such a transaction, there is still no assurance we will generate any revenue.\nExpenses\nThe Company did not conduct any active business; therefore, the Company had no direct costs associated with generating revenue.\nTotal expenses for the year ended June 30, 2019, totaled $158,529. These expenses consisted primarily of legal and accounting and administrative expenses to maintain the Company\u2019s status as a mandatory filer with the SEC; and, interest expense.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Note Payable (See Note 3 of the accompanying financial statements)",
+     "$",
+     "104,838"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest on Convertible Note Payable",
+     "",
+     "20,749"
+    ],
+    [
+     "",
+     "$",
+     "125,587"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 573,
+    "end_line": 584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Total expenses for the year ended June 30, 2019, totaled $158,529. These expenses consisted primarily of legal and accounting and administrative expenses to maintain the Company\u2019s status as a mandatory filer with the SEC; and, interest expense.\nTotal expenses for the year ended June 30, 2020, totaled $128,467. These expenses consisted primarily of legal and accounting and administrative expenses to maintain the Company\u2019s status as a mandatory filer with the SEC; and, interest expense.\nPersonnel\nThe Company had no employees for the years ended June 30, 2020, and June 30, 2019. Any expenses related to \u201cpersonnel\u201d were for professional fees, consultants, and contractors engaged in maintaining the corporate existence of the Company.\nRelated Party Transactions\nThe Company has identified the following individuals and entities as related parties based on their affiliation with the Chairman of the Board and Acting Chief Financial Officer:\n- Yitzhak Zelmanovitch\n- Roran Capital, LLC\nThe Company owed the following amounts to related parties, affiliated with the CEO and Chairman of the Board, at the dates indicated:",
+   "prose_after": "Liquidity and Capital Resources\nOn June 30, 2020, and 2019, we had cash and cash equivalents of $12,625 and $8,993, respectively. On June 30, 2020, and 2019, we have a working capital deficit of $121,662 and $183,195, respectively. For the year ended June 30, 2020, and through the date of this Annual Report, we have faced an increasingly challenging liquidity situation that has severely hamstrung our ability to execute our operating plan. We have no operating business, and we generate no revenue. While we are focused on identifying a new business to enter into, or merge with or otherwise acquire an operating business, even those activities require capital. We also need to maintain our corporate existence and remain current in our filings with the SEC. We will seek to borrow the needed capital from Roran and seek other sources for capital. There is no assurance that our Company will be able to secure such funding on acceptable (or any) terms. During the year ended June 30, 2020, and 2019, we reported a net loss from operations of $128,467 and $158,529 (excluding the non-cash extinguishment of debt income), respectively.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CONTENTS:",
+     "",
+     "PAGE #"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of June 30, 2020 and 2019",
+     "",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Income (Loss) for the years ended June 30, 2020 and 2019",
+     "",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders\u2019 Deficit for the years ended June 30, 2020 and 2019",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the years ended June 30, 2020 and 2019",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "",
+     "29"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Zindel Zelmanovitch is our president, secretary, and our chief financial officer. Mr. Zelmanovitch is only required to devote a small portion of his time to our affairs on a part-time or as-needed basis. No regular compensation has, in the past, nor is anticipated in the future, to be paid to any officer or director in their capacities as such. We do not anticipate hiring any full-time employees as long as we are seeking and evaluating Business Targets.\nAs a Smaller Reporting Company as defined by Rule 12b-2 of the Exchange Act and in Item 10(f)(1) of Regulation S-K, we are electing scaled disclosure reporting obligations and therefore are not required to provide the information requested by this Item.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nAs a Smaller Reporting Company as defined by Rule 12b-2 of the Exchange Act and in Item 10(f)(1) of Regulation S-K, we are electing scaled disclosure reporting obligations and therefore are not required to provide the information requested by this Item.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nINDEX TO FINANCIAL STATEMENTS AND NOTES",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders Waterside Capital Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Waterside Capital Corporation (the \u201cCompany\u201d) as of June 30, 2020, and 2019 and the related statements of income (loss), stockholders\u2019 deficit, and cash flows for each of the two years in the period ended June 30, 2020, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of June 30, 2020, and 2019, and the results of its operations and its cash flows for each of the two years in the period ended June 30, 2020, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared to assume the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has experienced liquidity issues and does not have working capital. The Company has no active business to generate cash flows to repay its current and future obligations. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. Further information and management\u2019s plans in regard to this uncertainty are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2020",
+     "",
+     "",
+     "June 30, 2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash",
+     "$",
+     "12,625",
+     "",
+     "$",
+     "8,993",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "12,625",
+     "",
+     "$",
+     "8,993",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Current Liabilitites",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts Payable",
+     "$",
+     "8,700",
+     "",
+     "$",
+     "7,308",
+     ""
+    ],
+    [
+     "      Convertible Note Payable - Roran, net of debt discount",
+     "",
+     "104,838",
+     "",
+     "",
+     "161,838",
+     ""
+    ],
+    [
+     "      Accrued Interest Payable",
+     "",
+     "20,749",
+     "",
+     "",
+     "23,042",
+     ""
+    ],
+    [
+     "    Total Current Liabilities",
+     "",
+     "134,287",
+     "",
+     "",
+     "192,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "134,287",
+     "",
+     "",
+     "192,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stockholders Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Common Stock, $1.00 par value, 10,000,000 shares authorized, 6,082,214 and 1,915,548 shares issued and outstanding, as of June 30, 2020 and June 30, 2019, respectively",
+     "",
+     "6,082,214",
+     "",
+     "",
+     "1,915,548",
+     ""
+    ],
+    [
+     "    Additional Paid-In Capital",
+     "",
+     "11,609,814",
+     "",
+     "",
+     "15,586,480",
+     ""
+    ],
+    [
+     "    Accumulated Deficit",
+     "",
+     "(17,813,690)",
+     "",
+     "",
+     "(17,685,223)",
+     ""
+    ],
+    [
+     "  Total Stockholders Deficit",
+     "",
+     "(121,662)",
+     "",
+     "",
+     "(183,195)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS DEFICIT",
+     "$",
+     "12,625",
+     "",
+     "$",
+     "8,993",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures include examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ HASKELL & WHITE LLP\nWe have served as the Company\u2019s auditor since 2017.\nIrvine, California\nSeptember 25, 2020\nBalance Sheets\nJune 30, 2020 and 2019",
+   "prose_after": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Income (Loss)\nFor the Years Ended June 30, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 725,
+     "token": "REPEATING_FOOTER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Administrative expenses",
+     "$",
+     "57,760",
+     "",
+     "$",
+     "66,344",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "70,707",
+     "",
+     "",
+     "92,185",
+     ""
+    ],
+    [
+     "Total Expense",
+     "",
+     "128,467",
+     "",
+     "",
+     "158,529",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(128,467)",
+     "",
+     "",
+     "(158,529)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on Extinguishment of Debt",
+     "",
+     "-",
+     "",
+     "",
+     "10,584,254",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss (Income)",
+     "$",
+     "(128,467)",
+     "",
+     "$",
+     "10,425,725",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Common Shares Outstanding- Basic and Diluted",
+     "",
+     "2,165,548",
+     "",
+     "",
+     "1,915,548",
+     ""
+    ],
+    [
+     "Net Loss (Income) Per Share- Basic and Diluted",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "5.44",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Income (Loss)\nFor the Years Ended June 30, 2020 and 2019",
+   "prose_after": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Stockholders\u2019 Deficit\nFor the Years Ended June 30, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 760,
+     "token": "REPEATING_FOOTER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "($1 Par Value)",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2018",
+     "",
+     "1,915,548",
+     "$",
+     "1,915,548",
+     "$",
+     "15,539,813",
+     "",
+     "$",
+     "(28,110,948)",
+     "",
+     "$",
+     "(10,655,587)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "46,667",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "46,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income for the year",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "10,425,725",
+     "",
+     "",
+     "10,425,725",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2019",
+     "",
+     "1,915,548",
+     "",
+     "1,915,548",
+     "",
+     "15,586,480",
+     "",
+     "",
+     "(17,685,223)",
+     "",
+     "",
+     "(183,195)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "40,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "40,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of note payable and accrued interest",
+     "",
+     "4,166,666",
+     "",
+     "4,166,666",
+     "",
+     "(4,016,666)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(128,467)",
+     "",
+     "",
+     "(128,467)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2020",
+     "",
+     "6,082,214",
+     "$",
+     "6,082,214",
+     "$",
+     "11,609,814",
+     "",
+     "$",
+     "(17,813,690)",
+     "",
+     "$",
+     "(121,662)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 793
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Stockholders\u2019 Deficit\nFor the Years Ended June 30, 2020 and 2019",
+   "prose_after": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Cash Flows\nFor the Years Ended June 30, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 796,
+     "token": "REPEATING_FOOTER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss (income)",
+     "$",
+     "(128,467)",
+     "",
+     "$",
+     "10,425,725",
+     ""
+    ],
+    [
+     "    Adjustments to reconcile net loss (income) to net cash used:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Amortization of debt discount",
+     "",
+     "47,500",
+     "",
+     "",
+     "75,450",
+     ""
+    ],
+    [
+     "    Gain on extinguishment of debt",
+     "",
+     "-",
+     "",
+     "",
+     "(10,584,254)",
+     ""
+    ],
+    [
+     "  Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts Payable",
+     "",
+     "1,392",
+     "",
+     "",
+     "713",
+     ""
+    ],
+    [
+     "    Accrued Interest Payable",
+     "",
+     "23,207",
+     "",
+     "",
+     "16,735",
+     ""
+    ],
+    [
+     "      Net cash used by operating activities",
+     "",
+     "(56,368)",
+     "",
+     "",
+     "(65,631)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from convertible note payable",
+     "",
+     "60,000",
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "      Net cash provided by financing activities",
+     "",
+     "60,000",
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash increase for year",
+     "",
+     "3,632",
+     "",
+     "",
+     "4,369",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "",
+     "8,993",
+     "",
+     "",
+     "4,624",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "12,625",
+     "",
+     "$",
+     "8,993",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intrinsic value of embedded beneficial conversion feature on convertible note payable",
+     "$",
+     "40,000",
+     "",
+     "$",
+     "46,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of note payable and accrued interest to common stock",
+     "$",
+     "150,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes are an integral part of these Financial Statements.\nStatements of Cash Flows\nFor the Years Ended June 30, 2020 and 2019",
+   "prose_after": "The accompanying Notes are an integral part of these Financial Statements.\nNOTE 1 \u2013 ORGANIZATION AND OPERATIONS\nWaterside Capital Corporation (the \u201cCompany\u201d) was incorporated in the Commonwealth of Virginia on July 13, 1993 and was a closed-end investment company licensed by the Small Business Administration (the \u201cSBA\u201d) as a Small Business Investment Corporation (\u201cSBIC\u201d). The Company previously made equity investments in, and provided loans to, small businesses to finance their growth, expansion, and development. Under applicable SBA regulations, the Company was restricted to investing only in qualified small businesses as contemplated by the Small Business Investment Act of 1958. As a registered investment company under the Investment Company Act of 1940, as amended (the \u201cInvestment Company Act\u201d), the Company\u2019s investment objective was to provide its shareholders with a high level of income, with capital appreciation as a secondary objective. The Company made its first investment in a small business in October 1996.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 798,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 842,
+     "token": "REPEATING_FOOTER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Note Payable",
+     "$",
+     "104,838"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest on Convertible Note Payable",
+     "",
+     "20,749"
+    ],
+    [
+     "",
+     "$",
+     "125,587"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 958,
+    "end_line": 969
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "."
+    }
+   },
+   "prose_before": "On September 19, 2017, the Company issued a Convertible Promissory Note in an amount up to $150,000 in favor of Roran which was increased to $200,000 on June 17, 2019 and $250,000 on December 13, 2019 (the \u201cNote\u201d). The Note was issued pursuant to a Convertible Loan Agreement with Roran (the \u201cLoan Agreement\u201d). All outstanding principal and accrued interest on the Note is due and payable on the maturity date, which was March 19, 2019 and then extended to September 19, 2019 and then June 19, 2020 and a further extension is being negotiated. Amounts borrowed under the Note bear interest at 12% per annum. Roran has the right to convert all or any portion of the Note into shares of the Company\u2019s common stock at a conversion price equal to 60% of the share price. As a result of the advances made pursuant to the Loan Agreement, the Company has incurred total obligations of $104,838 as of June 30, 2020 (exclusive of accrued interest). During the year ended June 30, 2020, the total advances were $60,000. The Company recorded a BCF due the conversion option of $40,000, and the unamortized balance at June 30, 2020 is $0. The amount is netted against the note payable balance as a debt discount with the corresponding entry to additional paid-in capital. The debt discount has been amortized as interest expense through the maturity date.\nNOTE 4 - RELATED PARTY TRANSACTIONS\nThe following individuals and entities have been identified as related parties based on their family affiliation with our CEO and Chairman of the Board:\nYitzhak Zelmanovitch\nRoran Capital LLC\nThe following amounts were owed to related parties, affiliated with the CEO and Chairman of the Board, at the dates indicated:",
+   "prose_after": "On June 8, 2020, Roran Capital converted $124,500 principal amount of its promissory note with Waterside Capital Corporation (the \u201cCompany\u201d) and $25,500 of accrued and unpaid interest thereon, totaling $150,000, into 4,166,666 shares of Company Common Stock at the stated conversion price per share of $0.036. The remaining balance due on the promissory note, as of the conversion date, was $104,838 in principal and $19,988 in interest, and the Company has not yet amended its Loan Agreement and Promissory Note with Roran Capital to extend the maturity date, which expired on June 19, 2020.\nNOTE 5 - SUBSEQUENT EVENTS\nThe Company has evaluated all events that occurred after the balance sheet date through the date when the financial statements were issued to determine if they must be reported.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE\nThere were no disagreements with our accountants on accounting or financial disclosure matters during 2020 and 2019, respectively. In the past the Company was not required to engage an independent registered public accounting firm due to its status as a registered investment company. Since the Company is no longer a registered investment company, it engaged the services of Haskell & White LLP in January 2017 to serve as the Company\u2019s independent registered public accounting firm.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 942,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Director Since",
+     "Position(s) Held"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zindel Zelmanovitch",
+     "73",
+     "2017",
+     "Chief Executive Officer, Chairman, Secretary, Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1031,
+    "end_line": 1037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Changes in Internal Controls Over Financial Reporting\nThere have been no changes in our internal controls over financial reporting (as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act or in other factors that materially affected or are reasonably likely to materially affect our internal controls and procedures over financial reporting during the fourth quarter of the fiscal year ended June 30, 2020.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nInformation Regarding Our Board of Directors\nPursuant to our bylaws, the number of directors is fixed and may be increased or decreased from time to time by resolution of our Board of Directors (the \u201cBoard\u201d). The Company currently has one individual serving on the Board. The Company will seek to fill vacancies on the Board as it executes on its business plan and is able to fund the cost of errors and omissions insurance coverage for the Board.\nInformation with respect to our current directors is shown below.",
+   "prose_after": "Set forth below is a brief description of the background and business experience of our executive officers and directors for the past five years.\nZindel Zelmanovitch. Mr. Zelmanovitch has been Chairman of the Board of Directors and Chief Executive Officer, Secretary, and Chief Financial Officer of the Company since September, 2017. He has served as Chairman of the Board of Directors and Chief Executive Officer of East Coast Capital Holdings (a diversified private investment fund) since 2002, previously serving as the President and a Director of East Coast Capital Holdings (including its predecessor) since 1986. From 1982 through October 2000 Mr. Zelmanovitch was President and a director and stockholder of Freshstart Venture Capital Corp., a public company which was licensed as an SBA SBIC, which was listed on NASDAQ. Mr. Zelmanovitch guided Freshstart through its initial public offering; the company was eventually sold to Medallion Financial Corp. Mr. Zelmanovitch received an M.B.A. degree from C.W. Post Center of Long Island University in 1979.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Shares\n\n\n\nBeneficially\n\n\n\nOwned",
+     "",
+     "Percentage of\n\n\n\nTotal Voting\n\n\n\nPower",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Named Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "None",
+     "",
+     "",
+     "",
+     "-0-",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All executive officers and directors as a group (persons)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "None",
+     "",
+     "",
+     "",
+     "-0-",
+     "%"
+    ],
+    [
+     "5% Shareholders",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Roran Capital LLC\n\n\n\n140 West 31st Street\n\n\n\nNew York, NY 10001",
+     "",
+     "",
+     "",
+     "70",
+     "%"
+    ],
+    [
+     "Michael L. Field",
+     "",
+     "",
+     "",
+     "5.5",
+     "%"
+    ],
+    [
+     "1340 N. Great Neck Road 1272-384\n\n\n\nVirginia Beach, VA 23454",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1125,
+    "end_line": 1149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table provides information regarding the beneficial ownership of our common stock as of September 1, 2020, which is also referred to herein as the \u201cEvaluation Date\u201d, by: (i) each person or group who is known by us to beneficially own more than 5% of our common stock; (ii) each of our current directors; (iii) each of our named executive officers as set forth in Item 11 of this Annual Report; and, (iv) all such directors and executive officers as a group. The table is based upon information supplied by our officers, directors and principal shareholders and a review of Schedules 13D and 13G, if any, filed with the SEC. Unless otherwise indicated in the footnotes to the table and subject to community property laws where applicable, we believe that each of the shareholders named in the table has sole voting and investment power with respect to the shares indicated as beneficially owned.\nApplicable percentages are based on 6,082,214 shares outstanding as of the Evaluation Date, adjusted as required by rules promulgated by the SEC. These rules generally attribute beneficial ownership of securities to persons who possess sole or shared voting power or investment power with respect to those securities. In addition, the rules include shares of our common stock issuable pursuant to the exercise of stock options or warrants that are either immediately exercisable or exercisable within 60 days of the Evaluation Date. These shares are deemed to be outstanding and beneficially owned by the person holding those options for the purpose of computing the percentage ownership of that person, but they are not treated as outstanding for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nCertain Relationships and Related Transactions\nOur sole executive officer and sole director is the father of Yitzhak Zelmanovitch, who is the manager of Roran.\nThe Company\u2019s outstanding judgment payable owed to the SBA was purchased by Roran from the SBA in July 2017. As such, all amounts due under the outstanding judgment payable were now owed to Roran rather than the SBA. Waterside satisfied the judgment in full on May 16, 2019 as Roran agreed to forgive the judgment.\nOn September 19, 2017, the Company issued a Convertible Promissory Note in an amount up to $150,000 in favor of Roran which was increased to $200,000 on June 17, 2019 and $250,000 on December 13, 2019 (the \u201cNote\u201d). The Note was issued pursuant to a Convertible Loan Agreement with Roran (the \u201cLoan Agreement\u201d). All outstanding principal and accrued interest on the Note is due and payable on the maturity date, which was March 19, 2019 and then extended to September 19, 2019 and then June 19, 2020 and a further extension is being negotiated. Amounts borrowed under the Note bear interest at 12% per annum. Roran has the right to convert all or any portion of the Note into shares of the Company\u2019s common stock at a conversion price equal to 60% of the share price.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended June 30",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "24,000",
+     "$",
+     "24,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Related Fees (2)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees (4)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fees:",
+     "$",
+     "24,000",
+     "$",
+     "24,000"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On June 8, 2020, Roran Capital converted $124,500 principal amount of its promissory note with Waterside Capital Corporation (the \u201cCompany\u201d) and $25,500 of accrued and unpaid interest thereon, totaling $150,000, into 4,166,666 shares of Company Common Stock at the stated conversion price per share of $0.036. The remaining balance due on the promissory note, as of the conversion date, was $104,838 in principal and $19,988 in interest, and the Company has not yet amended its Loan Agreement and Promissory Note with Roran Capital to extend the maturity date, which expired on June 19, 2020.\nDirector Independence\nWe are not currently subject to listing requirements of any national securities exchange or inter-dealer quotation system which has requirements that a majority of the board of directors be \u201cindependent\u201d and, as a result, we are not at this time required to have our Board of Directors comprised of a majority of \u201cindependent directors\u201d.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following table provides information regarding the fees billed to us by Haskell & White LLP in the years ended June 30, 2020, and 2019. All fees described below were approved by the Board:",
+   "prose_after": "(1) Audit Fees include fees for services rendered for the audit of our financial statements, included in our Annual Report on Form 10-K.\n(2) Audit Related Fess consists of assurance and related services by the independent registered public accounting firm that are reasonably related to the performance of the audit or review of our financial statements and are not reported above under \u201cAudit Fees.\u201d The services for the fees disclosed under this category include consultation regarding our correspondence with the SEC and other accounting consulting.\n(3) Tax Fees consists of professional services rendered by our independent registered public accounting firm for tax compliance and tax advice. The services for the fees disclosed under this category include tax return preparation and technical tax advice.\n(4) All Other Fees consists of fees for other miscellaneous items.\nPre-Approval Policies and Procedures\nThe policy of our Board is to pre-approve all audit and permissible non-audit services provided by our independent auditors. These services may include audit services, audit-related services, tax services, and other services. Pre-approval is generally provided for up to one year and any pre-approval is detailed as to the particular service or category of services. The independent auditor and management are required to periodically report to the Board regarding the extent of services provided by the independent auditor in accordance with this pre-approval. Any proposed services not included within the list of pre-approved services or any proposed services that will cause the Company to exceed the pre-approved aggregate amount requires specific pre-approval by the Board.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "(1)",
+     "The Company\u2019s financial statements and related notes thereto are listed and included in this Annual Report (Item 8)."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(2)",
+     "Schedules are omitted because they are not applicable or the required information is shown in the financial statements or notes thereto."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(3)",
+     "The following exhibits are filed as part of this Annual Report pursuant to Item 601 of Regulation S-K:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1203,
+    "end_line": 1210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) Tax Fees consists of professional services rendered by our independent registered public accounting firm for tax compliance and tax advice. The services for the fees disclosed under this category include tax return preparation and technical tax advice.\n(4) All Other Fees consists of fees for other miscellaneous items.\nPre-Approval Policies and Procedures\nThe policy of our Board is to pre-approve all audit and permissible non-audit services provided by our independent auditors. These services may include audit services, audit-related services, tax services, and other services. Pre-approval is generally provided for up to one year and any pre-approval is detailed as to the particular service or category of services. The independent auditor and management are required to periodically report to the Board regarding the extent of services provided by the independent auditor in accordance with this pre-approval. Any proposed services not included within the list of pre-approved services or any proposed services that will cause the Company to exceed the pre-approved aggregate amount requires specific pre-approval by the Board.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Amended and Restated Articles of Incorporation of the Registrant, incorporated by reference to Exhibit 1 to Financial Statements and Exhibits on Form N-5/A as filed with the Securities and Exchange Commission on January 9, 1999."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Amended and Restated Bylaws of the Registrant, incorporated by reference to Exhibit 2 to Financial Statements and Exhibits on Form N-5/A as filed with the Securities and Exchange Commission on January 9, 1999."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "The Registrant\u2019s License From the Small Business Administration, incorporated by reference to Exhibit 8 to Financial Statements and Exhibits on Form N-5/A as filed with the Securities and Exchange Commission on January 9, 1999."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Convertible Loan Agreement dated September 19, 2017 between the Registrant and Roran Capital LLC, incorporated by reference to Exhibit 10.2 to Form 10-Q as filed by the Registrant with the Securities and Exchange Commission on April 26, 2018."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "",
+     "Convertible Promissory Note dated September 19, 2017 issued by the Registrant in favor of Roran Capital LLC in an amount up to $150,000, incorporated by reference to Exhibit 10.3 to Form 10-Q as filed by the Registrant with the Securities and Exchange Commission on April 26, 2018."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "",
+     "Form of First Amendment to Loan Agreement**"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "",
+     "Form of First Amendment to Note**"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002(*)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of the Chief Financial Officer and Chief Operating Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002(*)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes Oxley Act of 2002(*)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of the Chief Financial Officer and Chief Operating Officer pursuant to Section 906 of the Sarbanes Oxley Act of 2002(*)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "99.1",
+     "",
+     "Final order Approving and Confirming The Receiver\u2019s Final Report, Terminating The Receivership And Discharging The Receiver, as filed in the United States District Court for The Eastern District of Virginia Norfolk Division on 06-28-2017, incorporated by reference to Exhibit 99.1 to the Registrant\u2019s Form 10-K as filed with the Securities and Exchange Commissions on April 12, 2018."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1211,
+    "end_line": 1246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(*) Filed herewith. (**) Incorporated by reference from the Company\u2019s Current Report on Form 8-K filed with the SEC on June 21, 2019.\n+ Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files on Exhibit 101 hereto shall not be deemed \u201cfiled\u201d or part of a registration statement or prospectus for purposes of Section 11 or 12 of the Securities Act, Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections, and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nIn accordance with the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: September 25, 2020",
+     "WATERSIDE CAPITAL CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Zindel Zelmanovitch"
+    ],
+    [
+     "",
+     "Name:",
+     "ZINDEL ZELMANOVITCH"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer, Chief Financial Officer (Principal Executive Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1255,
+    "end_line": 1263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(*) Filed herewith. (**) Incorporated by reference from the Company\u2019s Current Report on Form 8-K filed with the SEC on June 21, 2019.\n+ Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files on Exhibit 101 hereto shall not be deemed \u201cfiled\u201d or part of a registration statement or prospectus for purposes of Section 11 or 12 of the Securities Act, Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections, and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nIn accordance with the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report is signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "TITLE",
+     "DATE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Zindel Zelmanovitch",
+     "Chairman of the Board;",
+     "September 25, 2020"
+    ],
+    [
+     "",
+     "Chief Executive Officer;",
+     ""
+    ],
+    [
+     "",
+     "Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1275
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report is signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

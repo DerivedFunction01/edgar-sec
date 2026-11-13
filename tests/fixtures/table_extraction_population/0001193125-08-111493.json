@@ -1,0 +1,4677 @@
+{
+ "accession": "0001193125-08-111493",
+ "cik": "0001352045",
+ "form": "10-Q",
+ "filing_date": "2008-05-12",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "20-4736881"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "8731 Prestige Court\n\n\n\nRancho, Cucamonga, California",
+     "91730"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2008\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 000-51991\nBasin Water, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(909) 481-6800\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and\n(2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer [ ] Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: On May 8, 2008 there were 21,978,454 shares of common stock, par value $0.001, outstanding.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I.",
+     "Financial Information:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Balance Sheets \u2013 March 31, 2008 (unaudited) and December 31, 2007 (audited)",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Operations (unaudited) \u2013 Three months ended March 31, 2008 and 2007",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statement of Changes in Stockholders\u2019 Equity (unaudited) \u2013 Three months ended March 31, 2008",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Cash Flows (unaudited) \u2013 Three months ended March 31, 2008 and 2007",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Notes to Condensed Consolidated Financial Statements (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "20"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4.",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II.",
+     "Other Information:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Legal Proceedings",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "24"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "24"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5.",
+     "Other Information",
+     "24"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 6.",
+     "Exhibits",
+     "24"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 60,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and\n(2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer [ ] Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: On May 8, 2008 there were 21,978,454 shares of common stock, par value $0.001, outstanding.\nBASIN WATER, INC.\nINDEX",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2008",
+     "",
+     "",
+     "December 31, 2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "27,294",
+     "",
+     "$",
+     "35,456",
+     ""
+    ],
+    [
+     "  Accounts receivable, net of $72 and $72 allowance for doubtful accounts",
+     "",
+     "2,089",
+     "",
+     "",
+     "2,849",
+     ""
+    ],
+    [
+     "  Unbilled receivables, net of $524 and $524 allowance for doubtful accounts",
+     "",
+     "12,802",
+     "",
+     "",
+     "11,761",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "1,530",
+     "",
+     "",
+     "1,055",
+     ""
+    ],
+    [
+     "  Current portion of notes receivable",
+     "",
+     "512",
+     "",
+     "",
+     "338",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other",
+     "",
+     "1,217",
+     "",
+     "",
+     "1,233",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total current assets",
+     "",
+     "45,444",
+     "",
+     "",
+     "52,692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "",
+     "16,458",
+     "",
+     "",
+     "15,945",
+     ""
+    ],
+    [
+     "  Less: accumulated depreciation",
+     "",
+     "1,917",
+     "",
+     "",
+     "1,645",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property and equipment, net",
+     "",
+     "14,541",
+     "",
+     "",
+     "14,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "8,682",
+     "",
+     "",
+     "8,682",
+     ""
+    ],
+    [
+     "  Unbilled receivables, net of current portion",
+     "",
+     "7,981",
+     "",
+     "",
+     "7,664",
+     ""
+    ],
+    [
+     "  Notes receivable, net of current portion",
+     "",
+     "2,841",
+     "",
+     "",
+     "3,015",
+     ""
+    ],
+    [
+     "  Intangible assets, net",
+     "",
+     "3,176",
+     "",
+     "",
+     "3,416",
+     ""
+    ],
+    [
+     "  Patent costs, net",
+     "",
+     "2,257",
+     "",
+     "",
+     "2,274",
+     ""
+    ],
+    [
+     "  Investment in affiliate",
+     "",
+     "4,462",
+     "",
+     "",
+     "4,502",
+     ""
+    ],
+    [
+     "  Other assets",
+     "",
+     "2,776",
+     "",
+     "",
+     "1,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total other assets",
+     "",
+     "32,175",
+     "",
+     "",
+     "31,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total assets",
+     "$",
+     "92,160",
+     "",
+     "$",
+     "98,212",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "2,326",
+     "",
+     "$",
+     "3,553",
+     ""
+    ],
+    [
+     "  Current portion of capital lease obligations",
+     "",
+     "10",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "  Current portion of deferred revenue and advances",
+     "",
+     "294",
+     "",
+     "",
+     "266",
+     ""
+    ],
+    [
+     "  Current portion of contract loss reserve",
+     "",
+     "2,055",
+     "",
+     "",
+     "1,964",
+     ""
+    ],
+    [
+     "  Accrued expenses and other",
+     "",
+     "3,165",
+     "",
+     "",
+     "3,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total current liabilities",
+     "",
+     "7,850",
+     "",
+     "",
+     "8,934",
+     ""
+    ],
+    [
+     "Capital lease obligations, net of current portion",
+     "",
+     "13",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Deferred revenue, net of current portion",
+     "",
+     "277",
+     "",
+     "",
+     "296",
+     ""
+    ],
+    [
+     "Deferred revenue - affiliate",
+     "",
+     "1,920",
+     "",
+     "",
+     "1,920",
+     ""
+    ],
+    [
+     "Contract loss reserve, net of current portion",
+     "",
+     "4,900",
+     "",
+     "",
+     "5,311",
+     ""
+    ],
+    [
+     "Deferred income tax liability",
+     "",
+     "2,268",
+     "",
+     "",
+     "2,268",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "179",
+     "",
+     "",
+     "179",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "17,407",
+     "",
+     "",
+     "18,923",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value - 100,000,000 shares authorized, 21,948,704 shares issued and outstanding",
+     "",
+     "22",
+     "",
+     "",
+     "22",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "110,961",
+     "",
+     "",
+     "110,354",
+     ""
+    ],
+    [
+     "  Treasury stock",
+     "",
+     "(552)",
+     "",
+     "",
+     "(552)",
+     ""
+    ],
+    [
+     "  Accumulated deficiency",
+     "",
+     "(35,678)",
+     "",
+     "",
+     "(30,535)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total stockholders\u2019 equity",
+     "",
+     "74,753",
+     "",
+     "",
+     "79,289",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total liabilities and stockholders\u2019 equity",
+     "$",
+     "92,160",
+     "",
+     "$",
+     "98,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 112,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 191,
+     "token": "REPEATING_FOOTER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  System sales",
+     "$",
+     "1,383",
+     "",
+     "$",
+     "929",
+     ""
+    ],
+    [
+     "  Contract revenues",
+     "",
+     "1,605",
+     "",
+     "",
+     "678",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total revenues",
+     "",
+     "2,988",
+     "",
+     "",
+     "1,607",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cost of system sales",
+     "",
+     "983",
+     "",
+     "",
+     "1,158",
+     ""
+    ],
+    [
+     "  Cost of contract revenues",
+     "",
+     "1,550",
+     "",
+     "",
+     "630",
+     ""
+    ],
+    [
+     "  Depreciation expense",
+     "",
+     "151",
+     "",
+     "",
+     "106",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total cost of revenues",
+     "",
+     "2,684",
+     "",
+     "",
+     "1,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "304",
+     "",
+     "",
+     "(287)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "74",
+     "",
+     "",
+     "161",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "",
+     "5,729",
+     "",
+     "",
+     "2,337",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(5,499)",
+     "",
+     "",
+     "(2,785)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(3)",
+     "",
+     "",
+     "(75)",
+     ""
+    ],
+    [
+     "  Interest income",
+     "",
+     "397",
+     "",
+     "",
+     "702",
+     ""
+    ],
+    [
+     "  Equity in loss of affiliate",
+     "",
+     "(40)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Other income",
+     "",
+     "2",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total other income",
+     "",
+     "356",
+     "",
+     "",
+     "628",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before taxes",
+     "",
+     "(5,143)",
+     "",
+     "",
+     "(2,157)",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,143)",
+     "",
+     "$",
+     "(2,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "",
+     "21,737",
+     "",
+     "",
+     "19,700",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "21,737",
+     "",
+     "",
+     "19,700",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 201,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 195,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 260,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Accumulated Deficiency",
+     "",
+     "",
+     "Totals",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2007",
+     "21,949",
+     "$",
+     "22",
+     "$",
+     "110,354",
+     "$",
+     "(552)",
+     "",
+     "$",
+     "(30,535)",
+     "",
+     "$",
+     "79,289",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "306",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "306",
+     ""
+    ],
+    [
+     "Deferred stock compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "301",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "301",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,143)",
+     "",
+     "",
+     "(5,143)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - March 31, 2008",
+     "21,949",
+     "$",
+     "22",
+     "$",
+     "110,961",
+     "$",
+     "(552)",
+     "",
+     "$",
+     "(35,678)",
+     "",
+     "$",
+     "74,753",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 272,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOW\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 270,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 288,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(5,143)",
+     "",
+     "$",
+     "(2,157)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "462",
+     "",
+     "",
+     "229",
+     ""
+    ],
+    [
+     "  Stock-based compensation expense",
+     "",
+     "658",
+     "",
+     "",
+     "401",
+     ""
+    ],
+    [
+     "  Equity in loss of affiliate",
+     "",
+     "40",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable including unbilled",
+     "",
+     "(281)",
+     "",
+     "",
+     "(234)",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "(475)",
+     "",
+     "",
+     "(53)",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other",
+     "",
+     "16",
+     "",
+     "",
+     "(244)",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(1,227)",
+     "",
+     "",
+     "(533)",
+     ""
+    ],
+    [
+     "  Deferred revenues",
+     "",
+     "9",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "  Accrued expenses and other",
+     "",
+     "25",
+     "",
+     "",
+     "(35)",
+     ""
+    ],
+    [
+     "  Contract loss reserve",
+     "",
+     "(320)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Other assets and other liabilities",
+     "",
+     "(1,403)",
+     "",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net cash used in operating activities",
+     "",
+     "(7,639)",
+     "",
+     "",
+     "(2,542)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of property, plant and equipment",
+     "",
+     "(513)",
+     "",
+     "",
+     "(898)",
+     ""
+    ],
+    [
+     "  Patent costs",
+     "",
+     "(10)",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net cash used in investing activities",
+     "",
+     "(523)",
+     "",
+     "",
+     "(899)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from stock option exercises",
+     "",
+     "\u2014",
+     "",
+     "",
+     "98",
+     ""
+    ],
+    [
+     "  Repayments of notes payable and capital lease obligations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net cash provided by financing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "92",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(8,162)",
+     "",
+     "",
+     "(3,349)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "35,456",
+     "",
+     "",
+     "54,567",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "27,294",
+     "",
+     "$",
+     "51,218",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "$",
+     "3",
+     "",
+     "$",
+     "74",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non-cash financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for services",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Warrants issued for services and other",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 298,
+    "end_line": 362
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOW\n(In thousands)",
+   "prose_after": "Note 1\u2014Business Activity\nBasin Water, Inc. and its subsidiaries (the Company) are providers of reliable, long-term process solutions for a range of customers which include designing, building, implementing, and servicing systems for the treatment of contaminated groundwater, the treatment of wastewater, waste reduction and resource recovery. Customers can choose between purchasing the Company\u2019s systems or entering into long-term contracting arrangements for the Company\u2019s systems.\nThe Company markets its treatment systems and services primarily to utilities, cities, municipalities, special districts, real estate developers and other organizations for use in treating groundwater that does not comply with federal or state drinking water regulations due to the presence of chemical contaminants. The Company markets its treatment systems and services through its direct sales force, independent contractors and strategic relationships. The Company\u2019s customers include Arizona American Water, California Water Service Group and American States Water Company, three of the largest investor-owned water utilities in the United States based on population served.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 292,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 363,
+     "token": "REPEATING_FOOTER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current assets",
+     "$",
+     "2,585",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "2,191",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "4,238",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "8,682",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total assets acquired",
+     "",
+     "17,696",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "(2,754)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "",
+     "(266)",
+     ""
+    ],
+    [
+     "Deferred income tax liability",
+     "",
+     "(2,268)",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "(179)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total liabilities assumed",
+     "",
+     "(5,467)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net assets acquired",
+     "$",
+     "12,229",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 431,
+    "end_line": 452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014Acquisition"
+    }
+   },
+   "prose_before": "On September 14, 2007, a newly formed subsidiary of the Company acquired 100% of the business of Mobile Process Technology Co., an Arkansas corporation based in Memphis, Tennessee, through the means of a merger agreement, and upon completion of the merger and acquisition, the business was renamed Basin Water-MPT, Inc. (MPT). MPT is a provider of technology and services to the water treatment and industrial process markets. This acquisition provides additional capabilities including expanded technological solutions, increased geographic presence and expanded customer base. MPT also provides the Company with the ability to service and treat smaller capacity water systems than the Company\u2019s current product offering.\nThe aggregate purchase price was approximately $12,200, consisting of approximately $6,900 of cash and 462,746 shares of Company common stock with a fair value of approximately $5,300. The fair value of the common stock issued was determined based on the average closing market price of the Company\u2019s common stock over the period beginning five business days before and ending five business days after the terms of the acquisition were agreed upon and announced.\nA valuation of MPT\u2019s property and intangible assets is in the process of being developed; accordingly, the allocation of the purchase price is subject to refinement. The following table presents the estimated fair values of the assets acquired and liabilities assumed at the date of acquisition.",
+   "prose_after": "The net assets acquired in the table above represent cash consideration of $6,214 (net of cash acquired), $749 of cash acquired included in current assets above and common stock consideration of $5,266. The purchase price was allocated to net tangible and intangible assets acquired based on their estimated fair values, with approximately $4,200 allocated to intangible assets with a weighted-average useful life of approximately 11 years.\nAs of March 31, 2008, approximately $1,250 of the cash portion of the purchase price remained in an escrow account as a reserve for unidentified liabilities of the acquired business.\nIn addition, $750 of the cash portion of the purchase price was placed into an escrow account until the working capital of MPT at the date of acquisition was finalized. In February 2008, $326 was released from the working capital escrow account to the Company, reducing the purchase price, and the balance of the working capital escrow account was released to the former shareholders of MPT.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "REPEATING_HEADER",
+     "id": 21,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss applicable to common shares",
+     "$",
+     "(5,143)",
+     "",
+     "$",
+     "(2,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "21,737",
+     "",
+     "",
+     "19,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - assuming dilution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss applicable to common shares",
+     "$",
+     "(5,143)",
+     "",
+     "$",
+     "(2,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "21,737",
+     "",
+     "",
+     "19,700",
+     ""
+    ],
+    [
+     "Add shares issued on assumed:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Exercise of stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Exercise of warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  preferred stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "21,737",
+     "",
+     "",
+     "19,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share - diluted",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 485,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Earnings Per Share"
+    }
+   },
+   "prose_before": "The Company incurred net losses for the three months ended March 31, 2008 and 2007, respectively. Approximately 247,000 stock options and 416,000 warrants have been excluded from the computation of diluted EPS for the three months ended March 31, 2008 due to the antidilutive effect of such common stock equivalents. Likewise, approximately 426,000 stock options and 616,000 warrants have been excluded from the computation of diluted EPS for the three months ended March 31, 2007, due to the antidilutive effect of such common stock equivalents.\nIn addition, approximately 784,000 stock options and 48,000 warrants have been excluded from the computation of diluted EPS for the three months ended March 31, 2008, and approximately 419,000 stock options and 50,000 warrants have been excluded from the computation of diluted EPS for the three months ended March 31, 2007, as the exercise price of such options and warrants was higher than the weighted average price of the Company\u2019s common stock during those periods.\nNote 4\u2014Earnings Per Share (continued)\nThe following tables contain a reconciliation of the numerators (net loss) and denominators (weighted average shares) used in both basic and diluted EPS calculations:",
+   "prose_after": "Note 5\u2014Stock-Based Compensation\n2006 Equity Incentive Award Plan\nIn May 2006, the Company adopted the Basin Water 2006 Equity Incentive Award Plan, or 2006 Equity Plan. The 2006 Equity Plan became effective immediately prior to the completion of the initial public offering in May 2006. Under the 2006 Equity Plan, 2,500,000 shares of the Company\u2019s common stock were initially reserved for issuance. In addition, the 2006 Plan contains an evergreen provision that allows for an annual increase in the number of shares available for issuance under the plan on January 1 of each year during the ten-year term of the 2006 Plan, beginning on January 1, 2007. Under this evergreen provision, the annual increase in the number of shares shall be equal to the least of:\n\u2022 5.0% of the Company\u2019s outstanding capital stock on the first day of the relevant fiscal year;\n\u2022 1,000,000 shares; and\n\u2022 an amount determined by the Company\u2019s board of directors.\nIn no event shall the number of shares of the Company\u2019s common stock that may be issued or transferred pursuant to awards under the 2006 Plan exceed an aggregate of 12,500,000 shares. As of January 1, 2007, the number of total shares of common stock that may be issued under the 2006 Plan automatically increased to 3,495,383 shares. As of January 1, 2008, the number of total shares of common stock that may be issued under the 2006 Plan automatically increased to 4,495,383 shares.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 479,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "2007"
+    ],
+    [
+     "Expected option term in years",
+     "\u2014",
+     "5.0 to 6.5"
+    ],
+    [
+     "Risk free interest rate",
+     "\u2014",
+     "4.8%"
+    ],
+    [
+     "Expected volatility",
+     "\u2014",
+     "29.5%"
+    ],
+    [
+     "Expected dividend yield",
+     "\u2014",
+     "0.0%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 589,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The Company accounts for stock-based compensation in accordance with the provisions set forth in SFAS No. 123(R), \u201cShare-Based Payment\u201d, (SFAS No. 123(R)). Under the provisions of SFAS No.123(R), stock-based compensation cost is measured at the date of grant, based on the calculated fair value of the stock-based award, and is recognized as expense over the employee\u2019s requisite service period (generally the vesting period of the award).\nThe Company estimates the fair value of stock options granted using the Black-Scholes method. Key assumptions used to estimate the fair value of stock options include the exercise price of the award, the fair value of the Company\u2019s stock on the date of grant, the expected option term, the risk free interest rate at the date of grant, the expected volatility of the Company\u2019s stock over the expected option term, and the expected annual dividend yield on the Company\u2019s stock.\nThe fair value of each option grant during the three months ended March 31, 2008 and 2007 was estimated on the date of grant using the following assumptions:",
+   "prose_after": "The expected option term in years was calculated using an average of the vesting period and the option term, in accordance with the \u201csimplified method\u201d for \u201cplain vanilla\u201d stock options allowed under Staff Accounting Bulletin (SAB) 110.\nThe risk free interest rate is the rate on a zero-coupon U.S. Treasury bond with a remaining term equal to the expected option term. The expected volatility was derived from an industry-based index, in accordance with the calculated value method allowed under SFAS No. 123(R).\nStock Option Activity\nA summary of stock option activity for the three months ended March 31, 2008 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands, except exercise prices)",
+     "Number of Shares",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "  Options outstanding at December 31, 2007",
+     "1,710",
+     "$",
+     "5.85"
+    ],
+    [
+     "  Granted",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Exercised",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Forfeited",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Options outstanding at March 31, 2008",
+     "1,710",
+     "$",
+     "5.85"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 612,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The expected option term in years was calculated using an average of the vesting period and the option term, in accordance with the \u201csimplified method\u201d for \u201cplain vanilla\u201d stock options allowed under Staff Accounting Bulletin (SAB) 110.\nThe risk free interest rate is the rate on a zero-coupon U.S. Treasury bond with a remaining term equal to the expected option term. The expected volatility was derived from an industry-based index, in accordance with the calculated value method allowed under SFAS No. 123(R).\nStock Option Activity\nA summary of stock option activity for the three months ended March 31, 2008 is as follows:",
+   "prose_after": "The following table summarizes information about stock options outstanding and exercisable as of March 31, 2008:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands, except exercise prices)",
+     "Outstanding",
+     "",
+     "Exercisable",
+     ""
+    ],
+    [
+     "  Number of shares",
+     "",
+     "1,710",
+     "",
+     "877"
+    ],
+    [
+     "  Weighted average remaining contractual life in years",
+     "",
+     "7.4",
+     "",
+     "5.9"
+    ],
+    [
+     "  Weighted average exercise price per share",
+     "$",
+     "5.85",
+     "$",
+     "3.69"
+    ],
+    [
+     "  Aggregate intrinsic value (at March 31, 2008 closing price of $5.74 per share)",
+     "$",
+     "1,946",
+     "$",
+     "1,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The following table summarizes information about stock options outstanding and exercisable as of March 31, 2008:",
+   "prose_after": "The aggregate intrinsic value in the table above represents the total pretax intrinsic value (the difference between the Company\u2019s closing price as of March 31, 2008 and the exercise price multiplied by the number of shares) that would have been received by the option holders had all options holders exercised their options on March 31, 2008. This amount will vary as the Company\u2019s stock price varies.\nThe weighted average grant-date fair value of options granted by the Company during the three months ended March 31, 2007 was $2.96 per share.\nAs of March 31, 2008, approximately $1,257 of unrecognized compensation expense related to stock options is expected to be recognized over a weighted average period of 1.2 years. The total fair value of options vested during the three months ending March 31, 2008 and 2007 was $74 and $41, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "Number of Options Outstanding",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life of Options Outstanding",
+     "Number of Options Exercisable",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "$0.83 -$1.33",
+     "247",
+     "$",
+     "1.00",
+     "3.4 yrs",
+     "247",
+     "$",
+     "1.00"
+    ],
+    [
+     "$4.00",
+     "308",
+     "$",
+     "4.00",
+     "6.2 yrs",
+     "308",
+     "$",
+     "4.00"
+    ],
+    [
+     "$5.00",
+     "325",
+     "$",
+     "5.00",
+     "7.4 yrs",
+     "276",
+     "$",
+     "5.00"
+    ],
+    [
+     "$6.79 -$9.00",
+     "725",
+     "$",
+     "7.87",
+     "9.0 yrs",
+     "46",
+     "$",
+     "8.16"
+    ],
+    [
+     "$9.87 - $12.29",
+     "105",
+     "$",
+     "11.33",
+     "9.4 yrs",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1,710",
+     "$",
+     "5.85",
+     "",
+     "877",
+     "$",
+     "3.69"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The aggregate intrinsic value in the table above represents the total pretax intrinsic value (the difference between the Company\u2019s closing price as of March 31, 2008 and the exercise price multiplied by the number of shares) that would have been received by the option holders had all options holders exercised their options on March 31, 2008. This amount will vary as the Company\u2019s stock price varies.\nThe weighted average grant-date fair value of options granted by the Company during the three months ended March 31, 2007 was $2.96 per share.\nAs of March 31, 2008, approximately $1,257 of unrecognized compensation expense related to stock options is expected to be recognized over a weighted average period of 1.2 years. The total fair value of options vested during the three months ending March 31, 2008 and 2007 was $74 and $41, respectively.",
+   "prose_after": "There were no stock options exercised during the three months ended March 31, 2008. The total intrinsic value of stock options exercised during the three months ended March 31, 2007 was $38.\nNon-vested Stock\nUnder the 2006 Equity Plan, the Company has granted non-vested stock to management, officers and directors, which is subject only to a service condition. In general, such non-vested stock vests over three years for management and officers, and one year for directors. The total cumulative number of shares of non-vested stock granted under the 2006 Equity Plan through March 31, 2008 is 283,125, of which 70,999 shares had vested as of March 31, 2008.\nThe fair value of non-vested stock is measured at the date of grant based upon the closing price of the Company\u2019s common stock on that date, and such fair value if recognized as stock-based compensation expense over the requisite vesting period. Compensation expense arising from grants of non-vested stock during the three months ended March 31, 2008 and 2007 was $301 and $200, respectively. As of March 31, 2008, approximately $1,304 of unrecognized compensation expense related to non-vested stock grants is expected to be recognized over a weighted average period of 1.5 years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2008",
+     "",
+     "",
+     "December 31, 2007",
+     "",
+     ""
+    ],
+    [
+     "Deferred stock based compensation",
+     "$",
+     "138",
+     "",
+     "$",
+     "189",
+     ""
+    ],
+    [
+     "Fair value of warrants",
+     "",
+     "843",
+     "",
+     "",
+     "916",
+     ""
+    ],
+    [
+     "Service agreements and contracts",
+     "",
+     "1,355",
+     "",
+     "",
+     "1,355",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "",
+     "569",
+     "",
+     "",
+     "569",
+     ""
+    ],
+    [
+     "Covenant not to compete",
+     "",
+     "322",
+     "",
+     "",
+     "322",
+     ""
+    ],
+    [
+     "Trade name",
+     "",
+     "180",
+     "",
+     "",
+     "180",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "(231)",
+     "",
+     "",
+     "(115)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "$",
+     "3,176",
+     "",
+     "$",
+     "3,416",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 686,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "The fair value of non-vested stock is measured at the date of grant based upon the closing price of the Company\u2019s common stock on that date, and such fair value if recognized as stock-based compensation expense over the requisite vesting period. Compensation expense arising from grants of non-vested stock during the three months ended March 31, 2008 and 2007 was $301 and $200, respectively. As of March 31, 2008, approximately $1,304 of unrecognized compensation expense related to non-vested stock grants is expected to be recognized over a weighted average period of 1.5 years.\nNote 6\u2014Notes Receivable\nAt March 31, 2008, long-term notes receivable consisted of non-interest bearing notes receivable from VL Capital, due in 72 monthly installments of $63 beginning April 2008, with a net present value of $3,353, calculated using an imputed interest rate of 5.0% per annum.\nVL Capital is a financial entity that purchased water treatment systems utilized by five of the Company\u2019s customers. The Company had previously entered into long-term water services agreements with each of the customers.\nNote 7\u2014Goodwill and Intangible Assets\nAs described above in Note 3, the carrying amount of goodwill as of March 31, 2008 and December 31, 2007 was $8,682.\nNet intangible assets are as shown in the following table as of the dates indicated:",
+   "prose_after": "The amortization periods of intangible assets are as follows: patents \u2013 17 years; customer relationships \u2013 15 years; covenant not to compete \u2013 three years; trade name \u2013 two years; service agreements and contracts \u2013 six years; deferred stock-based compensation \u2013 three years; and fair value of warrants issued to a joint venture partner \u2013 five years.\nNote 8\u2014Contract Loss Reserve\nBeginning in 2006, the Company determined that certain of its service contracts were operating at net cash flow losses, and that these contracts would continue to generate such losses. Accordingly, the Company recorded a reserve for future contract losses at the end of 2006 in the amount of approximately $3,700. An additional reserve for future contract losses was recorded in the third quarter of 2007 in the amount of $4,700 (net of third quarter charges against the prior reserve). Actual losses on the underlying contracts are being charged against the reserve as incurred. Such charges against the reserve totaled approximately $320 during the first quarter of 2008. The reserve for future contract losses included on the balance sheet, both short and long term, as of March 31, 2008 was $6,955.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "% of Revenues",
+     "",
+     "2007",
+     "",
+     "",
+     "% of Revenues",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  System sales",
+     "$",
+     "1,383",
+     "",
+     "46",
+     "%",
+     "$",
+     "929",
+     "",
+     "58",
+     "%"
+    ],
+    [
+     "  Contract revenues",
+     "",
+     "1,605",
+     "",
+     "54",
+     "%",
+     "",
+     "678",
+     "",
+     "42",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total revenues",
+     "",
+     "2,988",
+     "",
+     "100",
+     "%",
+     "",
+     "1,607",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cost of system sales",
+     "",
+     "983",
+     "",
+     "33",
+     "%",
+     "",
+     "1,158",
+     "",
+     "72",
+     "%"
+    ],
+    [
+     "  Cost of contract revenues",
+     "",
+     "1,550",
+     "",
+     "52",
+     "%",
+     "",
+     "630",
+     "",
+     "39",
+     "%"
+    ],
+    [
+     "  Depreciation expense",
+     "",
+     "151",
+     "",
+     "5",
+     "%",
+     "",
+     "106",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total cost of revenues",
+     "",
+     "2,684",
+     "",
+     "90",
+     "%",
+     "",
+     "1,894",
+     "",
+     "118",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "304",
+     "",
+     "10",
+     "%",
+     "",
+     "(287)",
+     "",
+     "-18",
+     "%"
+    ],
+    [
+     "Research and development expense",
+     "",
+     "74",
+     "",
+     "2",
+     "%",
+     "",
+     "161",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expense",
+     "",
+     "5,729",
+     "",
+     "174",
+     "%",
+     "",
+     "2,337",
+     "",
+     "145",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(5,499)",
+     "",
+     "-166",
+     "%",
+     "",
+     "(2,785)",
+     "",
+     "-173",
+     "%"
+    ],
+    [
+     "Other income",
+     "",
+     "356",
+     "",
+     "12",
+     "%",
+     "",
+     "628",
+     "",
+     "39",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before taxes",
+     "",
+     "(5,143)",
+     "",
+     "-154",
+     "%",
+     "",
+     "(2,157)",
+     "",
+     "-134",
+     "%"
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(5,143)",
+     "",
+     "-154",
+     "%",
+     "$",
+     "(2,157)",
+     "",
+     "-134",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 754,
+    "end_line": 792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "Building on our success in the market for treating groundwater to be used for drinking water, we are taking steps to become a next generation water services company that succeeds by combining the strengths of our existing businesses and employees with the offering of cutting edge technology and site-tailored solutions. We plan to employ this model across a broad range of treatment scenarios in municipal and industrial water markets.\nWe make available free of charge through our internet website our press releases, our Annual Report on Form 10-K, Quarterly Reports on Form 10-Q, Current Reports on Form 8-K and all other required filings with the Securities and Exchange Commission (SEC) and amendments thereto as soon as reasonably practical after they are electronically filed with, or furnished to, the SEC. Our principal executive offices are located at 8731 Prestige Court, Rancho Cucamonga, California 91730, and our telephone number is (909) 481-6800. Our website address is www.basinwater.com. The information on our website is neither part of nor incorporated by reference into this Quarterly Report on Form 10-Q.\nResults of Operations\nThe following table sets forth key components of our results of operations for the periods indicated, both in dollars and as a percentage of revenues:",
+   "prose_after": "Three months Ended March 31, 2008 and 2007\nThe following table summarizes the significant components of revenues, cost of revenues and gross profit or loss for the three months ended March 31, 2008 compared to the same period in the prior year:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Large system sales",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "635",
+     "",
+     "$",
+     "(635)",
+     ""
+    ],
+    [
+     "  Standard system sales",
+     "",
+     "1,383",
+     "",
+     "",
+     "294",
+     "",
+     "",
+     "1,089",
+     ""
+    ],
+    [
+     "  Contract operations",
+     "",
+     "1,605",
+     "",
+     "",
+     "678",
+     "",
+     "",
+     "927",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Revenues",
+     "",
+     "2,988",
+     "",
+     "",
+     "1,607",
+     "",
+     "",
+     "1,381",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Large system sales",
+     "",
+     "\u2014",
+     "",
+     "",
+     "920",
+     "",
+     "",
+     "(920)",
+     ""
+    ],
+    [
+     "  Standard system sales",
+     "",
+     "983",
+     "",
+     "",
+     "238",
+     "",
+     "",
+     "745",
+     ""
+    ],
+    [
+     "  Contract operations",
+     "",
+     "1,870",
+     "",
+     "",
+     "750",
+     "",
+     "",
+     "1,120",
+     ""
+    ],
+    [
+     "  Reserve for future contract operations",
+     "",
+     "(320)",
+     "",
+     "",
+     "(120)",
+     "",
+     "",
+     "(200)",
+     ""
+    ],
+    [
+     "  Depreciation expense",
+     "",
+     "151",
+     "",
+     "",
+     "106",
+     "",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Cost of Revenues",
+     "",
+     "2,684",
+     "",
+     "",
+     "1,894",
+     "",
+     "",
+     "790",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit (Loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Large system sales",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(285)",
+     "",
+     "",
+     "285",
+     ""
+    ],
+    [
+     "  Standard system sales",
+     "",
+     "400",
+     "",
+     "",
+     "56",
+     "",
+     "",
+     "344",
+     ""
+    ],
+    [
+     "  Reserve for future contract operations",
+     "",
+     "320",
+     "",
+     "",
+     "120",
+     "",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "  Contract operations",
+     "",
+     "(416)",
+     "",
+     "",
+     "(178)",
+     "",
+     "",
+     "(238)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Gross Profit (Loss)",
+     "$",
+     "304",
+     "",
+     "$",
+     "(287)",
+     "",
+     "$",
+     "591",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "Three months Ended March 31, 2008 and 2007\nThe following table summarizes the significant components of revenues, cost of revenues and gross profit or loss for the three months ended March 31, 2008 compared to the same period in the prior year:",
+   "prose_after": "Revenues\nRevenues were $3.0 million and $1.6 million during the three months ended March 31, 2008 and 2007, respectively. Revenues from system sales increased $0.5 million, or 56%, to $1.4 million in the first quarter of 2008 compared to $0.9 million for the same period in 2007. Contract revenues increased from $0.7 million during the first quarter of 2007 to $1.6 million during the same period of 2008, an increase of $0.9 million, or 129%, as the number of systems placed in service with customers during 2008 increased, as well as the addition of Basin Water \u2013 MPT, Inc. (MPT), which contributed $0.7 million to contract revenues for the first quarter of 2008 after its acquisition in mid-September 2007.\nCost of Revenues\nCost of revenues increased by $0.8 million, or 42%, to $2.7 million during the first quarter of 2008 compared to $1.9 million during the same period in 2007. Cost of system sales decreased $0.2 million in the three months ended March 31, 2008 compared to the same period in 2007 despite an increase in system sales. During the first quarter of 2007, we recorded approximately $0.3 million higher than anticipated costs associated with the sale of three of our larger groundwater projects. No similar cost overruns were experienced in the first quarter of 2008.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "",
+     "2007",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation and benefits",
+     "$",
+     "2,003",
+     "$",
+     "795",
+     "$",
+     "1,208",
+     ""
+    ],
+    [
+     "Severance, consulting, and stock-based compensation - former Chairman and CEO",
+     "",
+     "983",
+     "",
+     "\u2014",
+     "",
+     "983",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "760",
+     "",
+     "456",
+     "",
+     "304",
+     ""
+    ],
+    [
+     "Travel and entertainment",
+     "",
+     "310",
+     "",
+     "116",
+     "",
+     "194",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "261",
+     "",
+     "201",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "Restricted stock expense",
+     "",
+     "250",
+     "",
+     "200",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Amortization - intangibles",
+     "",
+     "216",
+     "",
+     "73",
+     "",
+     "143",
+     ""
+    ],
+    [
+     "Directors\u2019 fees and public company costs",
+     "",
+     "162",
+     "",
+     "172",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "153",
+     "",
+     "35",
+     "",
+     "118",
+     ""
+    ],
+    [
+     "Outside selling, marketing & promotion",
+     "",
+     "126",
+     "",
+     "77",
+     "",
+     "49",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "80",
+     "",
+     "78",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Sarbanes Oxley 404 expense",
+     "",
+     "72",
+     "",
+     "\u2014",
+     "",
+     "72",
+     ""
+    ],
+    [
+     "Other SG&A expense",
+     "",
+     "353",
+     "",
+     "134",
+     "",
+     "219",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total SG&A Expense",
+     "$",
+     "5,729",
+     "$",
+     "2,337",
+     "$",
+     "3,392",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 881
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "We recorded gross profit of $0.3 million during the first quarter of 2008 compared to a gross loss of $0.3 million during the first quarter of 2007. This increase in gross profit was primarily the result of higher gross profit on system sales in the first quarter of 2008 compared to higher than anticipated costs associated with the sale of three of our larger groundwater projects, including a $0.5 million reserve for these projects, in the first quarter of 2007. Our contract operations gross profit was impacted by higher volume-related contract operating costs and increased field service labor and engineering expense. We expect our gross profit percentage to fluctuate based on the portion of our revenues derived from system sales as opposed to long-term contracts.\nResearch and Development Expense\nResearch and development expense was $0.1 million in the first quarter of 2008 compared to $0.2 million in the first quarter of 2007. We expect our research and development expense to increase in absolute dollars in subsequent periods as we develop additional water treatment systems and expand our research and development personnel. We anticipate that our research and development expense will fluctuate significantly from period to period based upon the timing of our internal and sponsored research projects.\nSelling, General and Administrative Expense\nThe following table summarizes the significant components of selling, general and administrative (SG&A) expenses for the three months ended March 31, 2008 compared to the same period in the prior year.",
+   "prose_after": "SG&A expense increased by $3.4 million, or 148%, to $5.7 million during the first quarter of 2008 from $2.3 million during the same period of 2007. The increase was primarily due to higher compensation and benefits costs as we increased our personnel to support our overall growth. SG&A also increased due to costs associated with the resignation of our former Chairman and CEO. Such costs were $1.0 million and included a cash severance payment, stock-based compensation expense associated with options and restricted stock awarded in prior periods, and consulting payments to be made over a two-year period. Stock-based compensation expense recorded in accordance with the provisions of SFAS No. 123(R) increased in the first quarter of 2008 compared to the same period in 2007. We had increased professional expenses in the first quarter of 2008 when compared to 2007, primarily for legal fees. Additionally, we experienced increases in our sales, marketing and promotion expense as our sales force and marketing efforts expanded in late 2007. SG&A expenses included approximately $0.8 million during the first quarter of 2008 as a result of our acquisition of MPT. We expect our general and administrative expense to continue to increase in future periods as we incur additional costs associated with operating as a public company, and expand our administrative organization to support our overall growth.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "Expense (Increase)\nDecrease",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "397",
+     "",
+     "$",
+     "702",
+     "",
+     "$",
+     "(305)",
+     ""
+    ],
+    [
+     "Interest expense - notes & loans",
+     "",
+     "(3)",
+     "",
+     "",
+     "(36)",
+     "",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "Equity in loss of affiliate",
+     "",
+     "(40)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "Amortization - fair value of warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(37)",
+     "",
+     "",
+     "37",
+     ""
+    ],
+    [
+     "Capitalized interest & other",
+     "",
+     "2",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income",
+     "$",
+     "356",
+     "",
+     "$",
+     "628",
+     "",
+     "$",
+     "(272)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "SG&A expense increased by $3.4 million, or 148%, to $5.7 million during the first quarter of 2008 from $2.3 million during the same period of 2007. The increase was primarily due to higher compensation and benefits costs as we increased our personnel to support our overall growth. SG&A also increased due to costs associated with the resignation of our former Chairman and CEO. Such costs were $1.0 million and included a cash severance payment, stock-based compensation expense associated with options and restricted stock awarded in prior periods, and consulting payments to be made over a two-year period. Stock-based compensation expense recorded in accordance with the provisions of SFAS No. 123(R) increased in the first quarter of 2008 compared to the same period in 2007. We had increased professional expenses in the first quarter of 2008 when compared to 2007, primarily for legal fees. Additionally, we experienced increases in our sales, marketing and promotion expense as our sales force and marketing efforts expanded in late 2007. SG&A expenses included approximately $0.8 million during the first quarter of 2008 as a result of our acquisition of MPT. We expect our general and administrative expense to continue to increase in future periods as we incur additional costs associated with operating as a public company, and expand our administrative organization to support our overall growth.\nOther Income (Expense)\nThe following table summarizes the significant components of other income and expenses for the quarter ended March 31, 2008 compared to the same period in the prior year.",
+   "prose_after": "Other income was approximately $0.4 million during the first quarter of 2008 compared to $0.6 million in the first quarter of 2007. Interest expense decreased due to the payoff of existing debt in the second quarter of 2007. Meanwhile, since receiving the net proceeds of our initial public offering in mid-May, 2006, we have earned interest income on our invested cash balances. Interest income decreased due to both lower cash balances as we used cash for our operations and lower interest rates on money market funds during the first quarter of 2008 compared to the same period in 2007.\nLiquidity and Capital Resources\nAt March 31, 2008, we had approximately $27.3 million in cash and cash equivalents. We have invested substantially all of our available cash balances in money market funds placed with reputable institutions for which credit loss is not anticipated. The following table summarizes our primary sources and uses of cash in the periods presented.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating activities",
+     "$",
+     "(7,639)",
+     "",
+     "$",
+     "(2,542)",
+     ""
+    ],
+    [
+     "  Investing activities",
+     "",
+     "(523)",
+     "",
+     "",
+     "(899)",
+     ""
+    ],
+    [
+     "  Financing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "92",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "$",
+     "(8,162)",
+     "",
+     "$",
+     "(3,349)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 926
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "Other income was approximately $0.4 million during the first quarter of 2008 compared to $0.6 million in the first quarter of 2007. Interest expense decreased due to the payoff of existing debt in the second quarter of 2007. Meanwhile, since receiving the net proceeds of our initial public offering in mid-May, 2006, we have earned interest income on our invested cash balances. Interest income decreased due to both lower cash balances as we used cash for our operations and lower interest rates on money market funds during the first quarter of 2008 compared to the same period in 2007.\nLiquidity and Capital Resources\nAt March 31, 2008, we had approximately $27.3 million in cash and cash equivalents. We have invested substantially all of our available cash balances in money market funds placed with reputable institutions for which credit loss is not anticipated. The following table summarizes our primary sources and uses of cash in the periods presented.",
+   "prose_after": "Operating Activities\nNet cash used in operating activities was approximately $7.6 million for the first three months of 2008 compared to net cash used of $2.5 million for the comparable period in 2007. In addition to our net loss of $5.1 million, cash used in operating activities was primarily due to an increase in other assets and liabilities of $1.4 million including approximately $0.9 million of bid bonds, a net decrease in accounts payable of $0.7 million, a $0.4 million increase in inventory, and a $0.3 million decrease in contract loss reserve. For the first three months of 2007, net cash used in operating activities of $2.5 million was primarily due to our net loss of $2.2 million, together with a decrease in accounts payable of $0.5 million.\nInvesting Activities\nNet cash used in investing activities was approximately $0.5 million for the first three months of 2008, compared to net cash used in investing activities of $0.9 million during the same period in 2007. Cash used in investing activities for the first three months of 2008 and 2007 primarily represents capital expenditures for building our treatment systems.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Payments Due by Period",
+     "Less than 1 Year 2008-2009",
+     "",
+     "1 to 3 Years (2009-2011)",
+     "",
+     "3 to 5 Years (2011-2013)",
+     "",
+     "More than\n5 Years (After 2013)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Long-term debt obligations",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "  Capital lease obligations",
+     "",
+     "10",
+     "",
+     "13",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "23"
+    ],
+    [
+     "  Operating lease obligations",
+     "",
+     "736",
+     "",
+     "1,470",
+     "",
+     "726",
+     "",
+     "\u2014",
+     "",
+     "2,932"
+    ],
+    [
+     "  Capital commitments (1)",
+     "",
+     "1,984",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,984"
+    ],
+    [
+     "  Purchase commitments (2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Totals",
+     "$",
+     "2,730",
+     "$",
+     "1,483",
+     "$",
+     "726",
+     "$",
+     "\u2014",
+     "$",
+     "4,939"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 947,
+    "end_line": 961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "Net cash used in operating activities was approximately $7.6 million for the first three months of 2008 compared to net cash used of $2.5 million for the comparable period in 2007. In addition to our net loss of $5.1 million, cash used in operating activities was primarily due to an increase in other assets and liabilities of $1.4 million including approximately $0.9 million of bid bonds, a net decrease in accounts payable of $0.7 million, a $0.4 million increase in inventory, and a $0.3 million decrease in contract loss reserve. For the first three months of 2007, net cash used in operating activities of $2.5 million was primarily due to our net loss of $2.2 million, together with a decrease in accounts payable of $0.5 million.\nInvesting Activities\nNet cash used in investing activities was approximately $0.5 million for the first three months of 2008, compared to net cash used in investing activities of $0.9 million during the same period in 2007. Cash used in investing activities for the first three months of 2008 and 2007 primarily represents capital expenditures for building our treatment systems.\nFinancing Activities\nNet cash provided by financing activities was approximately $0.1 million for the first three months of 2007 for cash received from stock option exercises compared to $0.0 million in the same period of 2008.\nOutstanding Indebtedness\nContractual Obligations\nThe following table summarizes our known contractual obligations to make future cash payments as of March 31, 2008 as well as an estimate of the periods during which these payments are expected to be made.",
+   "prose_after": "(1)- Represents estimated costs to complete groundwater treatment systems under current contracts with customers\n(2)- There are no minimum purchase arrangements with vendors\nCapital Expenditures\nCapital expenditures totaled $0.5 million in the first three months of 2008 compared to $0.9 million for the comparable period of 2007. Our capital expenditures are primarily for groundwater treatment systems that we build and then contract to customers under long-term contracts. Our future capital expenditures will fluctuate depending on the number of our systems we place with customers under long-term contracts.\nItem 3. Quantitative and Qualitative Disclosure About Market Risk\nMarket risk represents the risk of loss arising from adverse changes in market rates and foreign exchange rates. At March 31, 2008, we had no outstanding indebtedness. The amount of our outstanding debt at any time may fluctuate and we may from time to time be subject to refinancing risk. A hypothetical 100 basis point increase in interest rates would not have a material effect on our annual interest expense, our results of operations or financial condition. We derive substantially all of our revenues from sales within the United States. Since transactions in foreign currencies are immaterial to us as a whole, we do not consider it necessary to hedge against currency risk.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 974,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: May 12, 2008",
+     "BY:",
+     "/s/ THOMAS C. TEKULVE"
+    ],
+    [
+     "",
+     "",
+     "Thomas C. Tekulve"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1090,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Litigation"
+    }
+   },
+   "prose_before": "31.1 Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, filed herewith. 31.2 Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, filed herewith. 32.1* Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n* These certifications are being furnished solely to accompany this quarterly report pursuant to 18 U.S.C. Section 1350, and are not being filed for purposes of Section 18 of the Exchange Act and are not to be incorporated by reference into any filing of Basin Water, Inc., whether made before or after the date hereof, regardless of any general incorporation language in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1084,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

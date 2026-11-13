@@ -1,0 +1,5167 @@
+{
+ "accession": "0001104659-12-073185",
+ "cik": "0001502034",
+ "form": "10-Q",
+ "filing_date": "2012-11-01",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a12-18761_110q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "20-8536244"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or organization)",
+     "",
+     "Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "300 Sixth Avenue",
+     "",
+     "15222"
+    ],
+    [
+     "Pittsburgh, Pennsylvania",
+     "",
+     "(Zip Code)"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-Q\n(Mark one)\n[X]    QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2012\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from                     to                    .\nCommission File Number: 001-35113\nGNC Holdings, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (412) 288-4600\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 45,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of September 30, 2012 (unaudited) and December 31, 2011",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Income for the three and nine months ended September 30, 2012 and 2011",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Comprehensive Income for the three and nine months ended September 30, 2012 and 2011",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Stockholders\u2019 Equity for the nine months ended September 30, 2012 and 2011",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Cash Flows for the nine months ended September 30, 2012 and 2011",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Summarized Notes to Unaudited Consolidated Financial Statements",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 49,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [X]  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nAs of October 26, 2012, there were 99,298,280 outstanding shares of Class A common stock, par value $0.001 per share (the \u201cClass A common stock\u201d), of GNC Holdings, Inc.\nTABLE OF CONTENTS",
+   "prose_after": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Balance Sheets\n(in thousands, including share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 45,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Current assets:",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "96,795",
+     "$",
+     "128,438"
+    ],
+    [
+     "Receivables, net",
+     "134,585",
+     "",
+     "114,190",
+     ""
+    ],
+    [
+     "Inventories (Note 3)",
+     "496,069",
+     "",
+     "423,610",
+     ""
+    ],
+    [
+     "Prepaids and other current assets",
+     "43,397",
+     "",
+     "38,777",
+     ""
+    ],
+    [
+     "Total current assets",
+     "770,846",
+     "",
+     "705,015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill (Note 4)",
+     "639,765",
+     "",
+     "637,877",
+     ""
+    ],
+    [
+     "Brands (Note 4)",
+     "720,000",
+     "",
+     "720,000",
+     ""
+    ],
+    [
+     "Other intangible assets, net (Note 4)",
+     "143,745",
+     "",
+     "149,589",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "198,405",
+     "",
+     "198,171",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "29,702",
+     "",
+     "18,935",
+     ""
+    ],
+    [
+     "Total long-term assets",
+     "1,731,617",
+     "",
+     "1,724,572",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "2,502,463",
+     "$",
+     "2,429,587"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "116,472",
+     "",
+     "124,416",
+     ""
+    ],
+    [
+     "Current portion, long-term debt (Note 5)",
+     "3,788",
+     "",
+     "1,592",
+     ""
+    ],
+    [
+     "Deferred revenue and other current liabilities",
+     "120,147",
+     "",
+     "104,525",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "240,407",
+     "",
+     "230,533",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt (Note 5)",
+     "1,095,291",
+     "",
+     "899,950",
+     ""
+    ],
+    [
+     "Deferred tax liabilities, net",
+     "285,331",
+     "",
+     "283,403",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "42,937",
+     "",
+     "37,239",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "1,423,559",
+     "",
+     "1,220,592",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,663,966",
+     "",
+     "1,451,125",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 150,000 shares authorized:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A, 111,525 shares issued and 99,073 shares outstanding and 12,452 shares held in treasury at September 30, 2012 and 105,988 shares issued and 102,985 shares outstanding and 3,004 shares held in treasury at December 31, 2011",
+     "111",
+     "",
+     "105",
+     ""
+    ],
+    [
+     "Class B, 0 and 2,060 shares issued and outstanding at September 30, 2012 and December 31, 2011, respectively",
+     "-",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Paid-in-capital",
+     "802,703",
+     "",
+     "741,848",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "456,237",
+     "",
+     "298,831",
+     ""
+    ],
+    [
+     "Treasury stock, at cost",
+     "(423,900)",
+     "",
+     "(65,048)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "3,346",
+     "",
+     "2,724",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "838,497",
+     "",
+     "978,462",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "2,502,463",
+     "$",
+     "2,429,587"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Balance Sheets\n(in thousands, including share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Income\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 98,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 165,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "621,607",
+     "$",
+     "538,028",
+     "$",
+     "1,864,961",
+     "$",
+     "1,562,571"
+    ],
+    [
+     "Cost of sales, including cost of warehousing, distribution and occupancy",
+     "386,393",
+     "",
+     "343,129",
+     "",
+     "1,149,600",
+     "",
+     "992,908",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "235,214",
+     "",
+     "194,899",
+     "",
+     "715,361",
+     "",
+     "569,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation and related benefits",
+     "78,707",
+     "",
+     "72,375",
+     "",
+     "237,126",
+     "",
+     "219,011",
+     ""
+    ],
+    [
+     "Advertising and promotion",
+     "15,697",
+     "",
+     "12,433",
+     "",
+     "45,327",
+     "",
+     "40,031",
+     ""
+    ],
+    [
+     "Other selling, general and administrative",
+     "28,717",
+     "",
+     "26,629",
+     "",
+     "91,075",
+     "",
+     "84,530",
+     ""
+    ],
+    [
+     "Foreign currency (loss) gain",
+     "(8)",
+     "",
+     "225",
+     "",
+     "(84)",
+     "",
+     "106",
+     ""
+    ],
+    [
+     "Transaction related costs",
+     "924",
+     "",
+     "637",
+     "",
+     "1,610",
+     "",
+     "12,999",
+     ""
+    ],
+    [
+     "Operating income",
+     "111,177",
+     "",
+     "82,600",
+     "",
+     "340,307",
+     "",
+     "212,986",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net (Note 5)",
+     "12,080",
+     "",
+     "10,418",
+     "",
+     "32,958",
+     "",
+     "64,517",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "99,097",
+     "",
+     "72,182",
+     "",
+     "307,349",
+     "",
+     "148,469",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense (Note 10)",
+     "36,868",
+     "",
+     "23,519",
+     "",
+     "114,592",
+     "",
+     "53,879",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "62,229",
+     "$",
+     "48,663",
+     "$",
+     "192,757",
+     "$",
+     "94,590"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income per share - Basic and Diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "62,229",
+     "$",
+     "48,663",
+     "$",
+     "192,757",
+     "$",
+     "94,590"
+    ],
+    [
+     "Preferred stock dividends",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,726)",
+     ""
+    ],
+    [
+     "Net income available to common shareholders",
+     "$",
+     "62,229",
+     "$",
+     "48,663",
+     "$",
+     "192,757",
+     "$",
+     "89,864"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.61",
+     "$",
+     "0.47",
+     "$",
+     "1.84",
+     "$",
+     "0.91"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.60",
+     "$",
+     "0.45",
+     "$",
+     "1.81",
+     "$",
+     "0.89"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "102,541",
+     "",
+     "104,390",
+     "",
+     "104,946",
+     "",
+     "98,223",
+     ""
+    ],
+    [
+     "Diluted",
+     "103,721",
+     "",
+     "107,351",
+     "",
+     "106,515",
+     "",
+     "100,858",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends declared per share:",
+     "$",
+     "0.11",
+     "-",
+     "",
+     "$",
+     "0.33",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 224
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Income\n(in thousands, except per share data)",
+   "prose_after": "Consolidated Statements of Comprehensive Income\n(unaudited)\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 251,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "62,229",
+     "$",
+     "48,663",
+     "$",
+     "192,757",
+     "$",
+     "94,590"
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gains on derivatives and qualified as cash flow hedges, net of tax of $2,718",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,751",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "848",
+     "",
+     "(2,397)",
+     "",
+     "622",
+     "",
+     "(1,277)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "848",
+     "",
+     "(2,397)",
+     "",
+     "622",
+     "",
+     "3,474",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "63,077",
+     "$",
+     "46,266",
+     "$",
+     "193,379",
+     "$",
+     "98,064"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 248
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Comprehensive Income\n(unaudited)\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\n(in thousands, including per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 251,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Treasury",
+     "",
+     "Paid-in-",
+     "",
+     "Retained",
+     "",
+     "Comprehensive",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Dollars",
+     "",
+     "Shares",
+     "Dollars",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "Earnings",
+     "",
+     "Income/(Loss)",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2011",
+     "102,985",
+     "$",
+     "105",
+     "2,060",
+     "$",
+     "2",
+     "$",
+     "(65,048)",
+     "$",
+     "741,848",
+     "$",
+     "298,831",
+     "$",
+     "2,724",
+     "$",
+     "978,462"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "192,757",
+     "",
+     "622",
+     "",
+     "193,379",
+     ""
+    ],
+    [
+     "Conversion of Class B stock to Class A stock",
+     "2,060",
+     "2",
+     "",
+     "(2,060)",
+     "(2)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "(9,477)",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "(358,852)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(358,852)",
+     ""
+    ],
+    [
+     "Common stock dividends",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(34,300)",
+     "",
+     "-",
+     "",
+     "(34,300)",
+     ""
+    ],
+    [
+     "Conversions to common stock",
+     "3,505",
+     "4",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "57,246",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "57,250",
+     ""
+    ],
+    [
+     "Non-cash stock-based compensation",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "3,609",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,609",
+     ""
+    ],
+    [
+     "Other",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,051)",
+     "",
+     "-",
+     "",
+     "(1,051)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2012 (unaudited)",
+     "99,073",
+     "$",
+     "111",
+     "-",
+     "$",
+     "-",
+     "$",
+     "(423,900)",
+     "$",
+     "802,703",
+     "$",
+     "456,237",
+     "$",
+     "3,346",
+     "$",
+     "838,497"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "59,199",
+     "$",
+     "60",
+     "28,169",
+     "$",
+     "28",
+     "$",
+     "(2,277)",
+     "$",
+     "451,728",
+     "$",
+     "171,224",
+     "$",
+     "(1,280)",
+     "$",
+     "619,483"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "94,590",
+     "",
+     "3,474",
+     "",
+     "98,064",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "16,000",
+     "16",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "237,237",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "237,253",
+     ""
+    ],
+    [
+     "Conversion of Class B stock to Class A stock",
+     "14,387",
+     "14",
+     "",
+     "(14,387)",
+     "(14)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,726)",
+     "",
+     "-",
+     "",
+     "(4,726)",
+     ""
+    ],
+    [
+     "Conversions to common stock",
+     "1,572",
+     "1",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "18,620",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "18,621",
+     ""
+    ],
+    [
+     "Non-cash stock-based compensation",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "2,895",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,895",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2011 (unaudited)",
+     "91,158",
+     "$",
+     "91",
+     "13,782",
+     "$",
+     "14",
+     "$",
+     "(2,277)",
+     "$",
+     "710,480",
+     "$",
+     "261,088",
+     "$",
+     "2,194",
+     "$",
+     "971,590"
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 261,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity\n(in thousands, including per share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Cash Flows\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 303,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "192,757",
+     "",
+     "$",
+     "94,590",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on early extinguishment of debt",
+     "-",
+     "",
+     "",
+     "19,855",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "36,476",
+     "",
+     "",
+     "34,344",
+     "",
+     ""
+    ],
+    [
+     "Amortization of debt costs",
+     "1,811",
+     "",
+     "",
+     "2,195",
+     "",
+     ""
+    ],
+    [
+     "Increase in provision for inventory losses",
+     "8,902",
+     "",
+     "",
+     "14,582",
+     "",
+     ""
+    ],
+    [
+     "Increase in receivables",
+     "(23,273)",
+     "",
+     "",
+     "(15,205)",
+     "",
+     ""
+    ],
+    [
+     "Increase in inventory",
+     "(78,193)",
+     "",
+     "",
+     "(46,418)",
+     "",
+     ""
+    ],
+    [
+     "Decrease in prepaids and other current assets",
+     "4,568",
+     "",
+     "",
+     "2,452",
+     "",
+     ""
+    ],
+    [
+     "(Decrease) increase in accounts payable",
+     "(7,855)",
+     "",
+     "",
+     "36,155",
+     "",
+     ""
+    ],
+    [
+     "Increase in deferred revenue and other current liabilities",
+     "8,721",
+     "",
+     "",
+     "1,371",
+     "",
+     ""
+    ],
+    [
+     "Other operating activities",
+     "(1,962)",
+     "",
+     "",
+     "2,459",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "141,952",
+     "",
+     "",
+     "146,380",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(29,856)",
+     "",
+     "",
+     "(27,808)",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of LuckyVitamin.com, net of cash required",
+     "-",
+     "",
+     "",
+     "(20,998)",
+     "",
+     ""
+    ],
+    [
+     "Other investing activities",
+     "(1,966)",
+     "",
+     "",
+     "(1,437)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(31,822)",
+     "",
+     "",
+     "(50,243)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments on long-term debt",
+     "(1,757)",
+     "",
+     "",
+     "(1,355,566)",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid to shareholders",
+     "(34,300)",
+     "",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercised stock options",
+     "23,840",
+     "",
+     "",
+     "11,125",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of treasury stock",
+     "(359,990)",
+     "",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit from exercise of stock options",
+     "35,605",
+     "",
+     "",
+     "8,379",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of Series A preferred stock",
+     "-",
+     "",
+     "",
+     "(223,107)",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from sale of Class A common stock",
+     "-",
+     "",
+     "",
+     "237,253",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of long-term debt",
+     "199,000",
+     "",
+     "",
+     "1,196,200",
+     "",
+     ""
+    ],
+    [
+     "Deferred financing fees",
+     "(1,148)",
+     "",
+     "",
+     "(17,346)",
+     "",
+     ""
+    ],
+    [
+     "Other financing activities",
+     "(2,500)",
+     "",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(141,250)",
+     "",
+     "",
+     "(143,062)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate on cash and cash equivalents",
+     "(523)",
+     "",
+     "",
+     "(870)",
+     "",
+     ""
+    ],
+    [
+     "Decrease in cash and cash equivalents",
+     "(31,643)",
+     "",
+     "",
+     "(47,795)",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance, cash and cash equivalents",
+     "128,438",
+     "",
+     "",
+     "193,902",
+     "",
+     ""
+    ],
+    [
+     "Ending balance, cash and cash equivalents",
+     "$",
+     "96,795",
+     "",
+     "$",
+     "146,107",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 313,
+    "end_line": 367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Cash Flows\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nNOTE 1. NATURE OF BUSINESS\nGeneral Nature of Business. GNC Holdings, Inc., formerly GNC Acquisition Holdings Inc., a Delaware corporation (\u201cHoldings,\u201d and collectively with its subsidiaries and, unless the context requires otherwise, its and their respective predecessors, the \u201cCompany\u201d), is a global specialty retailer of health and wellness products, which include: vitamins, minerals and herbal supplements, sports nutrition products, diet products and other wellness products.\nThe Company is vertically integrated as its operations consist of purchasing raw materials, formulating and manufacturing products and selling the finished products through its three primary segments: Retail, Franchising and Manufacturing/Wholesale. Corporate retail store operations are located in the United States, Canada and Puerto Rico, and in addition the Company offers products domestically through GNC.com, www.drugstore.com, and since September 2011, LuckyVitamin.com. Franchise stores are located in the United States and 55 international countries (including distribution centers where retail sales are made). The Company operates its primary manufacturing facilities in South Carolina and distribution centers in Arizona, Pennsylvania and South Carolina. The Company manufactures the majority of its branded products, but also merchandises various third party products. Additionally, the Company licenses the use of its trademarks and trade names.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 309,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished product ready for sale",
+     "$",
+     "415,259",
+     "$",
+     "354,913"
+    ],
+    [
+     "Work-in-process, bulk product and raw materials",
+     "73,373",
+     "",
+     "61,684",
+     ""
+    ],
+    [
+     "Packaging supplies",
+     "7,437",
+     "",
+     "7,013",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "496,069",
+     "$",
+     "423,610"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 432,
+    "end_line": 446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "disclosure of quantitative information about unobservable inputs used for Level 3 fair value measurements. The amendments relate to measuring the fair value of financial instruments that are managed within a portfolio; application of premiums and discounts in a fair value measurement; and additional disclosures concerning the valuation processes used and sensitivity of the fair value measurement to changes in unobservable inputs for those items categorized as Level 3, a reporting entity\u2019s use of a nonfinancial asset in a way that differs from the asset\u2019s highest and best use, and the categorization by level in the fair value hierarchy for items required to be measured at fair value for disclosure purposes only. The Company adopted this guidance during the first quarter of 2012, and it had no material impact on the Company\u2019s financial statements.\nIn July 2012, the FASB issued an accounting standard that simplifies the impairment test for indefinite-lived intangible assets other than goodwill. The new guidance gives the option to first assess qualitative factors to determine if it is more likely than not that the fair value of an indefinite-lived intangible asset is less than its carrying amount as a basis for determining whether it is necessary to perform a quantitative valuation test. The new standard is effective for fiscal years, and interim periods within those fiscal years, beginning on or after September 15, 2012. The Company will adopt this accounting standard in the fourth quarter of 2012 and it does not anticipate that this adoption will have a significant impact on its financial statements.\nNOTE 3. INVENTORIES\nThe net carrying value of inventories consisted of the following:",
+   "prose_after": "NOTE 4. GOODWILL AND INTANGIBLE ASSETS, NET\nFor the nine months ended September 30, 2012 and 2011, the Company acquired 23 and 22 franchise stores, respectively. These acquisitions were accounted for as business combinations and the Company recorded the acquired inventory, fixed assets, franchise rights and goodwill, with an applicable reduction to receivables and cash. For the nine months ended September 30, 2012 and 2011, the total purchase price associated with these acquisitions was $3.6 million and $2.1 million, respectively, of which $1.8 million and $0.8 million, respectively, was paid in cash.\nThe following table summarizes the Company\u2019s goodwill activity:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Manufacturing/",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Retail",
+     "",
+     "Franchising",
+     "",
+     "Wholesale",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2011",
+     "$",
+     "317,733",
+     "$",
+     "117,303",
+     "$",
+     "202,841",
+     "$",
+     "637,877"
+    ],
+    [
+     "Acquired franchise stores",
+     "1,888",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,888",
+     ""
+    ],
+    [
+     "Balance at September 30, 2012 (unaudited)",
+     "$",
+     "319,621",
+     "$",
+     "117,303",
+     "$",
+     "202,841",
+     "$",
+     "639,765"
+    ]
+   ],
+   "caption_stack": [
+    "Manufacturing/"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "GOODWILL AND INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "NOTE 4. GOODWILL AND INTANGIBLE ASSETS, NET\nFor the nine months ended September 30, 2012 and 2011, the Company acquired 23 and 22 franchise stores, respectively. These acquisitions were accounted for as business combinations and the Company recorded the acquired inventory, fixed assets, franchise rights and goodwill, with an applicable reduction to receivables and cash. For the nine months ended September 30, 2012 and 2011, the total purchase price associated with these acquisitions was $3.6 million and $2.1 million, respectively, of which $1.8 million and $0.8 million, respectively, was paid in cash.\nThe following table summarizes the Company\u2019s goodwill activity:",
+   "prose_after": "Intangible assets other than goodwill consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Retail",
+     "",
+     "Franchise",
+     "",
+     "Operating",
+     "",
+     "Other",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Brand",
+     "",
+     "Brand",
+     "",
+     "Agreements",
+     "",
+     "Intangibles",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2011",
+     "$",
+     "500,000",
+     "$",
+     "220,000",
+     "$",
+     "138,970",
+     "$",
+     "10,619",
+     "$",
+     "869,589"
+    ],
+    [
+     "Acquired franchise stores",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "548",
+     "",
+     "548",
+     ""
+    ],
+    [
+     "Amortization expense",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,990)",
+     "",
+     "(1,402)",
+     "",
+     "(6,392)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2012 (unaudited)",
+     "$",
+     "500,000",
+     "$",
+     "220,000",
+     "$",
+     "133,980",
+     "$",
+     "9,765",
+     "$",
+     "863,745"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 472,
+    "end_line": 485
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "GOODWILL AND INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "Intangible assets other than goodwill consisted of the following:",
+   "prose_after": "The following table reflects the gross carrying amount and accumulated amortization for each major intangible asset:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Weighted -",
+     "September 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Average",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "Carrying",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "Carrying",
+     ""
+    ],
+    [
+     "",
+     "Life",
+     "Cost",
+     "",
+     "Amortization",
+     "",
+     "Amount",
+     "",
+     "Cost",
+     "",
+     "Amortization",
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brands - retail",
+     "-",
+     "$",
+     "500,000",
+     "$",
+     "-",
+     "$",
+     "500,000",
+     "$",
+     "500,000",
+     "$",
+     "-",
+     "$",
+     "500,000"
+    ],
+    [
+     "Brands - franchise",
+     "-",
+     "220,000",
+     "",
+     "-",
+     "",
+     "220,000",
+     "",
+     "220,000",
+     "",
+     "-",
+     "",
+     "220,000",
+     ""
+    ],
+    [
+     "Retail agreements",
+     "30.2",
+     "31,000",
+     "",
+     "(5,986)",
+     "",
+     "25,014",
+     "",
+     "31,000",
+     "",
+     "(5,196)",
+     "",
+     "25,804",
+     ""
+    ],
+    [
+     "Franchise agreements",
+     "25.0",
+     "70,000",
+     "",
+     "(15,517)",
+     "",
+     "54,483",
+     "",
+     "70,000",
+     "",
+     "(13,417)",
+     "",
+     "56,583",
+     ""
+    ],
+    [
+     "Manufacturing agreements",
+     "25.0",
+     "70,000",
+     "",
+     "(15,517)",
+     "",
+     "54,483",
+     "",
+     "70,000",
+     "",
+     "(13,417)",
+     "",
+     "56,583",
+     ""
+    ],
+    [
+     "Other intangibles",
+     "11.4",
+     "10,600",
+     "",
+     "(1,848)",
+     "",
+     "8,752",
+     "",
+     "10,600",
+     "",
+     "(938)",
+     "",
+     "9,662",
+     ""
+    ],
+    [
+     "Franchise rights",
+     "3.7",
+     "4,981",
+     "",
+     "(3,968)",
+     "",
+     "1,013",
+     "",
+     "4,433",
+     "",
+     "(3,476)",
+     "",
+     "957",
+     ""
+    ],
+    [
+     "Total",
+     "24.5",
+     "$",
+     "906,581",
+     "$",
+     "(42,836)",
+     "$",
+     "863,745",
+     "$",
+     "906,033",
+     "$",
+     "(36,444)",
+     "$",
+     "869,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "GOODWILL AND INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "The following table reflects the gross carrying amount and accumulated amortization for each major intangible asset:",
+   "prose_after": "The following table represents future estimated amortization expense of intangible assets with finite lives at September 30, 2012:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Estimated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "amortization",
+     ""
+    ],
+    [
+     "Years ending December 31,",
+     "",
+     "expense",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "2012",
+     "",
+     "$",
+     "2,115"
+    ],
+    [
+     "2013",
+     "",
+     "8,293",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "8,121",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "7,995",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "7,915",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "109,306",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "143,745"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated",
+    "amortization"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 511,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "GOODWILL AND INTANGIBLE ASSETS, NET"
+    }
+   },
+   "prose_before": "The following table represents future estimated amortization expense of intangible assets with finite lives at September 30, 2012:",
+   "prose_after": "NOTE 5. LONG-TERM DEBT / INTEREST EXPENSE\nLong-term debt consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Senior Credit Facility",
+     "$",
+     "1,096,191",
+     "$",
+     "897,387"
+    ],
+    [
+     "Mortgage",
+     "2,878",
+     "",
+     "4,135",
+     ""
+    ],
+    [
+     "Capital leases",
+     "10",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Total debt",
+     "1,099,079",
+     "",
+     "901,542",
+     ""
+    ],
+    [
+     "Less: current maturities",
+     "(3,788)",
+     "",
+     "(1,592)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "1,095,291",
+     "$",
+     "899,950"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 537,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LONG-TERM DEBT / INTEREST EXPENSE"
+    }
+   },
+   "prose_before": "NOTE 5. LONG-TERM DEBT / INTEREST EXPENSE\nLong-term debt consisted of the following:",
+   "prose_after": "For the nine months ended September 30, 2012, interest expense of $33.0 million consisted primarily of interest on outstanding borrowings under the Term Loan Facility. Interest under both the Term Loan Facility and the Revolving Credit Facility is based on variable rates. At September 30, 2012 and December 31, 2011, the interest rate under the Term Loan Facility was 5.25% and 4.25%, respectively, and the interest rate under the Revolving Credit Facility was 4.00% and 4.25%, respectively. The Revolving Credit Facility was undrawn and had outstanding letters of credit of $1.2 million and $8.0 million at September 30, 2012 and December 31, 2011, respectively. Interest on the letters of credit was 3.00% and 3.25% at September 30, 2012 and December 31, 2011, respectively.\nFor the nine months ended September 30, 2011, interest expense of $64.5 million consisted primarily of $24.1 million on the Senior Credit Facility, $23.2 million of expenses related to the Refinancing, $4.9 million of original issue discount and deferred financing fees related to the $300.0 million repayment of outstanding borrowings under the Term Loan Facility in connection with the IPO, and $10.3 million of interest expense on former indebtedness prior to the Refinancing. The $23.2 million of expenses related to the Refinancing consisted of $5.8 million in interest rate swap termination costs, write-off of $13.4 million of deferred financing fees of former indebtedness, write-off of $1.6 million in original issue discount related to former indebtedness and $2.4 million to defease former indebtedness.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "REPEATING_HEADER",
+     "id": 21,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2012",
+     "",
+     "",
+     "",
+     "December 31, 2011",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying",
+     "",
+     "Fair",
+     "",
+     "Carrying",
+     "",
+     "Fair",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "Value",
+     "",
+     "Amount",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "96,795",
+     "$",
+     "96,795",
+     "$",
+     "128,438",
+     "$",
+     "128,438"
+    ],
+    [
+     "Receivables, net",
+     "134,585",
+     "",
+     "134,585",
+     "",
+     "114,190",
+     "",
+     "114,190",
+     ""
+    ],
+    [
+     "Franchise notes receivable, net",
+     "7,024",
+     "",
+     "7,024",
+     "",
+     "6,510",
+     "",
+     "6,510",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "116,472",
+     "",
+     "116,472",
+     "",
+     "124,416",
+     "",
+     "124,416",
+     ""
+    ],
+    [
+     "Long-term debt (including current portion)",
+     "1,099,079",
+     "",
+     "1,099,079",
+     "",
+     "901,542",
+     "",
+     "892,526",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 571,
+    "end_line": 588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "FINANCIAL INSTRUMENTS"
+    }
+   },
+   "prose_before": "At September 30, 2012 and December 31, 2011, the Company\u2019s financial instruments consisted of cash and cash equivalents, receivables, franchise notes receivable, accounts payable, certain accrued liabilities and long-term debt. The carrying amount of cash and cash equivalents, receivables, accounts payable and accrued liabilities approximates their respective fair values because of the short maturities of these instruments. Based on the interest rates currently available and their underlying risk, the carrying value of the franchise notes receivable approximates their respective fair values. These fair values are reflected net of reserves for uncollectible amounts. The Company determined the estimated fair values of its debt by using currently available market information. The fair value of debt would be classified as a Level 1 category on the fair value hierarchy, as defined in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2011. As considerable judgment is required to determine these estimates and assumptions, changes in the assumptions or methodologies may have an effect on these estimates. The actual and estimated fair values of the Company\u2019s financial instruments are as follows:",
+   "prose_after": "NOTE 7. COMMITMENTS AND CONTINGENCIES\nLitigation\nThe Company is engaged in various legal actions, claims and proceedings resulting from the Company\u2019s business activities arising in the normal course of business, including claims related to breach of contracts, products liabilities, intellectual property matters and employment-related matters. As with most actions such as these, an estimation of any possible and/or ultimate liability cannot always be determined. The Company continues to assess the requirement to account for additional contingencies in accordance with the standard on contingencies. If the Company is required to make a payment in connection with an adverse outcome in these matters, it could have a material impact on its business, financial condition, operating results and cash flows.\nAs a manufacturer and retailer of health and wellness products and other consumer products that are ingested by consumers or applied to their bodies, the Company has been and is currently subjected to various product liability claims. Although the effects of these claims to date have not been material to the Company, it is possible that current and future product liability claims could have a material adverse impact on its business, financial condition, operating results or cash flows. The Company currently maintains product liability insurance with a deductible/retention of $3.0 million per claim with an aggregate cap on retained loss of $10.0 million. The Company typically seeks and has obtained contractual indemnification from most parties that supply raw materials for its products or that manufacture or market products it sells. The Company also typically seeks to be added, and has been added, as an additional insured under most of such parties\u2019 insurance policies. The Company is also entitled to indemnification by a former owner of the Company for certain losses arising from claims related to products containing ephedra or Kava Kava sold prior to December 5, 2003. However, any such indemnification or insurance is limited by its terms and any such indemnification, as a practical matter, is limited to the creditworthiness of the indemnifying party and its insurer, and the absence of significant defenses by the insurers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 569,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 601,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Options",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (in years)",
+     "Aggregate Intrinsic Value (in thousands)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2011",
+     "6,673,054",
+     "",
+     "$",
+     "11.46",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "64,667",
+     "",
+     "34.57",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(3,503,728)",
+     "",
+     "6.94",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(69,768)",
+     "",
+     "19.96",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2012",
+     "3,164,225",
+     "",
+     "$",
+     "16.75",
+     "6.2",
+     "$",
+     "70,327"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at September 30, 2012",
+     "1,121,500",
+     "",
+     "$",
+     "10.68",
+     "5.3",
+     "$",
+     "31,727"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION PLANS"
+    }
+   },
+   "prose_before": "The Company utilizes the Black Scholes model to calculate the fair value of options under both the 2011 Stock Plan and the 2007 Stock Plan. The grant-date fair value of the Company\u2019s restricted stock awards is based on the stock price on the grant date. The resulting compensation cost is recognized in the Company\u2019s financial statements over the option vesting period. The Company recognized $3.6 million and $2.9 million of non-cash stock-based compensation expense for the nine months ended September 30, 2012 and 2011, respectively. At September 30, 2012, there was approximately $13.3 million of total unrecognized compensation cost related to non-vested stock-based compensation for all awards previously made that are expected to be recognized over a weighted average period of approximately 1.8 years.\nDuring the nine months ended September 30, 2012, the total intrinsic value of awards exercised was $96.8 million and the total amount received by Holdings from the exercise of options was $23.8 million. The tax impact associated with the exercise of awards for the nine months ended September 30, 2012 was a benefit of $35.6 million.\nThe following table sets forth a summary of stock options under all plans for the nine months ended September 30, 2012:",
+   "prose_after": "The Black Scholes model utilizes the following assumptions in determining a fair value: price of underlying stock, award exercise price, expected term, risk-free interest rate, expected dividend yield and expected stock price volatility over the award\u2019s expected term. Due to the utilization of these assumptions, the existing models do not necessarily represent the definitive fair value of awards for future periods. As the IPO occurred during the second quarter of 2011, the option term has been estimated by considering both the vesting period, which typically for both plans has been four or five years, and the contractual term, which historically has been either seven or ten years. Prior to the IPO, the fair value of the Class A common stock was estimated based upon the net enterprise value of the Company, discounted to reflect the lack of liquidity and control associated with the stock. Since the consummation of the IPO, the fair value of the Class A common stock has been based upon the closing price of the Class A common stock as reported on the New York Stock Exchange. Volatility is estimated based upon the Company utilizing its current peer group average to estimate the expected volatility.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dividend yield",
+     "1.1%-1.4%"
+    ],
+    [
+     "Expected option life",
+     "5.0 years"
+    ],
+    [
+     "Volatility factor percentage of market price",
+     "40.7%"
+    ],
+    [
+     "Discount rate",
+     "0.6%-0.9%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION PLANS"
+    }
+   },
+   "prose_before": "The Black Scholes model utilizes the following assumptions in determining a fair value: price of underlying stock, award exercise price, expected term, risk-free interest rate, expected dividend yield and expected stock price volatility over the award\u2019s expected term. Due to the utilization of these assumptions, the existing models do not necessarily represent the definitive fair value of awards for future periods. As the IPO occurred during the second quarter of 2011, the option term has been estimated by considering both the vesting period, which typically for both plans has been four or five years, and the contractual term, which historically has been either seven or ten years. Prior to the IPO, the fair value of the Class A common stock was estimated based upon the net enterprise value of the Company, discounted to reflect the lack of liquidity and control associated with the stock. Since the consummation of the IPO, the fair value of the Class A common stock has been based upon the closing price of the Class A common stock as reported on the New York Stock Exchange. Volatility is estimated based upon the Company utilizing its current peer group average to estimate the expected volatility.\nThe assumptions used in the Company\u2019s Black Scholes valuation related to stock option grants made during the nine months ended September 30, 2012 were as follows:",
+   "prose_after": "The following table sets forth a summary of restricted stock granted under the 2011 Stock Plan and related information for the nine months ended September 30, 2012:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restricted Stock",
+     "",
+     "Weighted Average Fair Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2011",
+     "138,119",
+     "",
+     "$",
+     "22.35"
+    ],
+    [
+     "Granted",
+     "14,679",
+     "",
+     "33.31",
+     ""
+    ],
+    [
+     "Vested",
+     "(1,545)",
+     "",
+     "39.06",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(6,882)",
+     "",
+     "21.22",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2012",
+     "144,371",
+     "",
+     "$",
+     "23.34"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION PLANS"
+    }
+   },
+   "prose_before": "The following table sets forth a summary of restricted stock granted under the 2011 Stock Plan and related information for the nine months ended September 30, 2012:",
+   "prose_after": "NOTE 9. SEGMENTS\nThe Company has three reportable segments, each of which represents an identifiable component of the Company for which separate financial information is available. This information is utilized by management to assess performance and allocate assets accordingly. The Company\u2019s management evaluates segment operating results based on several indicators. The primary key performance indicators are sales and operating income or loss for each segment. Operating income or loss, as evaluated by management, excludes certain items that are managed at the consolidated level, such as distribution and warehousing, impairments and other corporate costs. The following table represents key financial information for each of the Company\u2019s reportable segments, identifiable by the distinct operations and management of each: Retail, Franchising, and Manufacturing/Wholesale. The Retail reportable segment includes the Company\u2019s corporate store operations in the United States, Canada, Puerto Rico and its GNC.com and LuckyVitamin.com businesses. The Franchise reportable segment represents the Company\u2019s franchise operations, both domestically and internationally. The Manufacturing/Wholesale reportable segment represents the Company\u2019s manufacturing operations in South Carolina and the Wholesale sales business. This segment supplies the Retail and Franchise segments, along with various third parties, with finished products for sale. The Warehousing and Distribution and Corporate costs represent the Company\u2019s administrative expenses. The accounting policies of the segments are the same as those described in the \u201cBasis of Presentation and Summary of Significant Accounting Policies.\u201d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail",
+     "$",
+     "445,008",
+     "$",
+     "385,231",
+     "$",
+     "1,373,460",
+     "$",
+     "1,153,237"
+    ],
+    [
+     "Franchise",
+     "108,785",
+     "",
+     "90,884",
+     "",
+     "313,809",
+     "",
+     "251,096",
+     ""
+    ],
+    [
+     "Manufacturing/Wholesale:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intersegment (1)",
+     "65,813",
+     "",
+     "58,430",
+     "",
+     "202,931",
+     "",
+     "166,271",
+     ""
+    ],
+    [
+     "Third Party",
+     "67,814",
+     "",
+     "61,913",
+     "",
+     "177,692",
+     "",
+     "158,238",
+     ""
+    ],
+    [
+     "Subtotal Manufacturing/Wholesale",
+     "133,627",
+     "",
+     "120,343",
+     "",
+     "380,623",
+     "",
+     "324,509",
+     ""
+    ],
+    [
+     "Subtotal segment revenues",
+     "687,420",
+     "",
+     "596,458",
+     "",
+     "2,067,892",
+     "",
+     "1,728,842",
+     ""
+    ],
+    [
+     "Intersegment elimination (1)",
+     "(65,813)",
+     "",
+     "(58,430)",
+     "",
+     "(202,931)",
+     "",
+     "(166,271)",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "621,607",
+     "$",
+     "538,028",
+     "$",
+     "1,864,961",
+     "$",
+     "1,562,571"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail",
+     "$",
+     "86,257",
+     "$",
+     "62,167",
+     "$",
+     "277,050",
+     "$",
+     "189,173"
+    ],
+    [
+     "Franchise",
+     "36,319",
+     "",
+     "31,997",
+     "",
+     "103,038",
+     "",
+     "83,291",
+     ""
+    ],
+    [
+     "Manufacturing/Wholesale",
+     "26,455",
+     "",
+     "23,385",
+     "",
+     "73,150",
+     "",
+     "60,982",
+     ""
+    ],
+    [
+     "Unallocated corporate and other costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warehousing and distribution costs",
+     "(16,181)",
+     "",
+     "(15,190)",
+     "",
+     "(47,601)",
+     "",
+     "(45,577)",
+     ""
+    ],
+    [
+     "Corporate costs",
+     "(20,749)",
+     "",
+     "(19,122)",
+     "",
+     "(63,720)",
+     "",
+     "(61,884)",
+     ""
+    ],
+    [
+     "Transaction related costs",
+     "(924)",
+     "",
+     "(637)",
+     "",
+     "(1,610)",
+     "",
+     "(12,999)",
+     ""
+    ],
+    [
+     "Subtotal unallocated corporate and other costs",
+     "(37,854)",
+     "",
+     "(34,949)",
+     "",
+     "(112,931)",
+     "",
+     "(120,460)",
+     ""
+    ],
+    [
+     "Total operating income",
+     "$",
+     "111,177",
+     "$",
+     "82,600",
+     "$",
+     "340,307",
+     "$",
+     "212,986"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 700,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SEGMENTS"
+    }
+   },
+   "prose_before": "The Company has three reportable segments, each of which represents an identifiable component of the Company for which separate financial information is available. This information is utilized by management to assess performance and allocate assets accordingly. The Company\u2019s management evaluates segment operating results based on several indicators. The primary key performance indicators are sales and operating income or loss for each segment. Operating income or loss, as evaluated by management, excludes certain items that are managed at the consolidated level, such as distribution and warehousing, impairments and other corporate costs. The following table represents key financial information for each of the Company\u2019s reportable segments, identifiable by the distinct operations and management of each: Retail, Franchising, and Manufacturing/Wholesale. The Retail reportable segment includes the Company\u2019s corporate store operations in the United States, Canada, Puerto Rico and its GNC.com and LuckyVitamin.com businesses. The Franchise reportable segment represents the Company\u2019s franchise operations, both domestically and internationally. The Manufacturing/Wholesale reportable segment represents the Company\u2019s manufacturing operations in South Carolina and the Wholesale sales business. This segment supplies the Retail and Franchise segments, along with various third parties, with finished products for sale. The Warehousing and Distribution and Corporate costs represent the Company\u2019s administrative expenses. The accounting policies of the segments are the same as those described in the \u201cBasis of Presentation and Summary of Significant Accounting Policies.\u201d\nThe following table represents key financial information of the Company\u2019s segments:",
+   "prose_after": "(1) Intersegment revenues are eliminated from consolidated revenue.\nNOTE 10. INCOME TAXES\nThe Company recognized $114.6 million of income tax expense (or 37.3% of pre-tax income) during the nine months ended September 30, 2012 compared to $53.9 million (or 36.3% of pre-tax income) for the same period in 2011. For the nine months ended September 30, 2012 and 2011, income tax expense included $0.6 million (0.2% of pre-tax income) and $2.3 million (1.5% of pre-tax income), respectively, related to non-deductible costs incurred in connection with the Offerings. Income tax expense during the nine months ended September 30, 2011 was offset by $2.6 million (or 1.8% of pre-tax income) related to non-recurring tax credits and incentives.\nThe Company files a consolidated U.S. federal tax return and various consolidated and separate tax returns as prescribed by the tax laws of the state, local and international jurisdictions in which it operates. The Company has been audited by the Internal Revenue Service (the \u201cIRS\u201d) through its March 16, 2007 tax year and the Company has been informed that its federal income tax return for 2010 will be audited. The Company has various state, local and international jurisdiction tax years open to examination (the earliest open period is 2003), and is also currently under audit in certain state and local jurisdictions. As of September 30, 2012, the Company believes that it has appropriately reserved for any potential federal, state, local and international income tax exposures.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 738,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail",
+     "$",
+     "445.0",
+     "71.6%",
+     "$",
+     "385.2",
+     "71.6%",
+     "$",
+     "1,373.5",
+     "73.7%",
+     "$",
+     "1,153.3",
+     "73.8%"
+    ],
+    [
+     "Franchise",
+     "108.8",
+     "",
+     "17.5%",
+     "90.9",
+     "",
+     "16.9%",
+     "313.8",
+     "",
+     "16.8%",
+     "251.1",
+     "",
+     "16.1%"
+    ],
+    [
+     "Manufacturing / Wholesale",
+     "67.8",
+     "",
+     "10.9%",
+     "61.9",
+     "",
+     "11.5%",
+     "177.7",
+     "",
+     "9.5%",
+     "158.2",
+     "",
+     "10.1%"
+    ],
+    [
+     "Total net revenues",
+     "621.6",
+     "",
+     "100.0%",
+     "538.0",
+     "",
+     "100.0%",
+     "1,865.0",
+     "",
+     "100.0%",
+     "1,562.6",
+     "",
+     "100.0%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales, including warehousing, distribution and occupancy",
+     "386.4",
+     "",
+     "62.2%",
+     "343.1",
+     "",
+     "63.8%",
+     "1,149.6",
+     "",
+     "61.6%",
+     "992.9",
+     "",
+     "63.5%"
+    ],
+    [
+     "Compensation and related benefits",
+     "78.7",
+     "",
+     "12.7%",
+     "72.4",
+     "",
+     "13.5%",
+     "237.1",
+     "",
+     "12.7%",
+     "219.0",
+     "",
+     "14.0%"
+    ],
+    [
+     "Advertising and promotion",
+     "15.7",
+     "",
+     "2.5%",
+     "12.4",
+     "",
+     "2.3%",
+     "45.3",
+     "",
+     "2.4%",
+     "40.0",
+     "",
+     "2.6%"
+    ],
+    [
+     "Other selling, general and administrative",
+     "26.6",
+     "",
+     "4.3%",
+     "24.7",
+     "",
+     "4.6%",
+     "84.8",
+     "",
+     "4.6%",
+     "78.8",
+     "",
+     "5.0%"
+    ],
+    [
+     "Transaction related costs",
+     "0.9",
+     "",
+     "0.1%",
+     "0.6",
+     "",
+     "0.1%",
+     "1.6",
+     "",
+     "0.1%",
+     "13.0",
+     "",
+     "0.9%"
+    ],
+    [
+     "Amortization expense",
+     "2.1",
+     "",
+     "0.3%",
+     "2.0",
+     "",
+     "0.3%",
+     "6.4",
+     "",
+     "0.3%",
+     "5.8",
+     "",
+     "0.4%"
+    ],
+    [
+     "Foreign currency gain (loss)",
+     "-",
+     "",
+     "0.0%",
+     "0.2",
+     "",
+     "0.0%",
+     "(0.1)",
+     "",
+     "0.0%",
+     "0.1",
+     "",
+     "0.0%"
+    ],
+    [
+     "Total operating expenses",
+     "510.4",
+     "",
+     "82.1%",
+     "455.4",
+     "",
+     "84.6%",
+     "1,524.7",
+     "",
+     "81.7%",
+     "1,349.6",
+     "",
+     "86.4%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail",
+     "86.3",
+     "",
+     "13.9%",
+     "62.2",
+     "",
+     "11.6%",
+     "277.0",
+     "",
+     "14.9%",
+     "189.2",
+     "",
+     "12.1%"
+    ],
+    [
+     "Franchise.",
+     "36.3",
+     "",
+     "5.8%",
+     "32.0",
+     "",
+     "6.0%",
+     "103.0",
+     "",
+     "5.5%",
+     "83.3",
+     "",
+     "5.3%"
+    ],
+    [
+     "Manufacturing / Wholesale",
+     "26.5",
+     "",
+     "4.3%",
+     "23.4",
+     "",
+     "4.3%",
+     "73.2",
+     "",
+     "3.9%",
+     "61.0",
+     "",
+     "3.9%"
+    ],
+    [
+     "Unallocated corporate and other costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warehousing and distribution costs",
+     "(16.2)",
+     "",
+     "-2.7%",
+     "(15.2)",
+     "",
+     "-2.9%",
+     "(47.6)",
+     "",
+     "-2.5%",
+     "(45.6)",
+     "",
+     "-2.9%"
+    ],
+    [
+     "Corporate costs",
+     "(20.8)",
+     "",
+     "-3.3%",
+     "(19.2)",
+     "",
+     "-3.5%",
+     "(63.7)",
+     "",
+     "-3.4%",
+     "(61.9)",
+     "",
+     "-4.0%"
+    ],
+    [
+     "Transaction related costs",
+     "(0.9)",
+     "",
+     "-0.1%",
+     "(0.6)",
+     "",
+     "-0.1%",
+     "(1.6)",
+     "",
+     "-0.1%",
+     "(13.0)",
+     "",
+     "-0.8%"
+    ],
+    [
+     "Subtotal unallocated corporate and other costs, net",
+     "(37.9)",
+     "",
+     "-6.1%",
+     "(35.0)",
+     "",
+     "-6.5%",
+     "(112.9)",
+     "",
+     "-6.0%",
+     "(120.5)",
+     "",
+     "-7.7%"
+    ],
+    [
+     "Total operating income",
+     "111.2",
+     "",
+     "17.9%",
+     "82.6",
+     "",
+     "15.4%",
+     "340.3",
+     "",
+     "18.3%",
+     "213.0",
+     "",
+     "13.6%"
+    ],
+    [
+     "Interest expense, net",
+     "12.1",
+     "",
+     "",
+     "10.4",
+     "",
+     "",
+     "32.9",
+     "",
+     "",
+     "64.5",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "99.1",
+     "",
+     "",
+     "72.2",
+     "",
+     "",
+     "307.4",
+     "",
+     "",
+     "148.5",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "36.9",
+     "",
+     "",
+     "23.5",
+     "",
+     "",
+     "114.6",
+     "",
+     "",
+     "53.9",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "62.2",
+     "",
+     "$",
+     "48.7",
+     "",
+     "$",
+     "192.8",
+     "",
+     "$",
+     "94.6",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Same store sales growth reflects the percentage change in same store sales in the period presented compared to the prior year period. Same store sales are calculated on a daily basis for each store and exclude the net sales of a store for any period if the store was not open during the same period of the prior year. We also include internet sales, as generated only through GNC.com and www.drugstore.com, in our domestic retail company-owned domestic same store sales calculation. When a store\u2019s square footage has been changed as a result of reconfiguration or relocation in the same mall or shopping center, the store continues to be treated as a same store. If, during the period presented, a store was closed, relocated to a different mall or shopping center, or converted to a franchise store or a company-owned store, sales from that store up to and including the\nclosing day or the day immediately preceding the relocation or conversion are included as same store sales as long as the store was open during the same period of the prior year. We exclude from the calculation sales during the period presented that occurred on or after the date of relocation to a different mall or shopping center or the date of a conversion.\nResults of Operations\n(Dollars in millions and percentages expressed as a percentage of total net revenue)",
+   "prose_after": "Note: The numbers in the above table have been rounded to millions. All calculations related to the Results of Operations for the year-over-year comparisons were derived from unrounded data and could occasionally differ immaterially if you were to use the table above for these calculations.\nComparison of the Three Months Ended September 30, 2012 and 2011\nRevenues\nOur consolidated net revenues increased $83.6 million, or 15.5%, to $621.6 million for the three months ended September 30, 2012 compared to $538.0 million for the same period in 2011. The increase was the result of increased sales in each of our segments.\nRetail. Revenue in our Retail segment increased $59.8 million, or 15.5%, to $445.0 million for the three months ended September 30, 2012 compared to $385.2 million for the same period in 2011. Domestic retail revenue increased $41.7 million due to a 9.8% increase in our same store sales and the opening of new stores. The increase in domestic retail revenue was primarily due to sales increases in the sports nutrition, vitamin and diet categories, and also included an increase in sales from GNC.com of $4.2 million, or 20.9%, to $24.2 million for the three months ended September 30, 2012, compared to $20.0 million for the same period in 2011. Sales from LuckyVitamin.com, acquired on August 31, 2011, contributed $9.9 million to the increase in revenue. Our",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 882,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 945,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Number of Shares Purchased (1)",
+     "",
+     "Average Price Paid per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans",
+     "",
+     "Maximum Number (or Approximate Dollar Value) of Shares that May Yet Be Purchased under the Plans or Programs",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 1 to July 31, 2012",
+     "",
+     "653,690",
+     "",
+     "$39.00",
+     "",
+     "653,690",
+     "",
+     "$274,503,732"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 1 to August 31, 2012.",
+     "",
+     "7,158,206",
+     "",
+     "$38.35",
+     "",
+     "7,158,206",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 1 to September 30, 2012",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "7,811,896",
+     "",
+     "$38.40",
+     "",
+     "7,811,896",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1229,
+    "end_line": 1246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In addition to the foregoing, we are subject to numerous federal, state, local and foreign environmental and health and safety laws and regulations governing our operations, including the handling, transportation and disposal of our non-hazardous and hazardous substances and wastes, as well as emissions and discharges from its operations into the environment, including discharges to air, surface water and groundwater. Failure to comply with such laws and regulations could result in costs for remedial actions, penalties or the imposition of other liabilities. New laws, changes in existing laws or the interpretation thereof, or the development of new facts or changes in their processes could also cause us to incur additional capital and operating expenditures to maintain compliance with environmental laws and regulations and environmental permits. We also are subject to laws and regulations that impose liability and cleanup responsibility for releases of hazardous substances into the environment without regard to fault or knowledge about the condition or action causing the liability. Under certain of these laws and regulations, such liabilities can be imposed for cleanup of previously owned or operated properties, or for properties to which substances or wastes that were sent in connection with current or former operations at its facilities. The presence of contamination from such substances or wastes could also adversely affect our ability to sell or lease our properties, or to use them as collateral for financing.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nIssuer Purchases of Equity Securities\nThe following table sets forth information regarding Holdings\u2019 purchases of shares of Class A common stock during the quarter ended September 30, 2012:",
+   "prose_after": "(1) On June 19, 2012, we announced the approval of a share repurchase program pursuant to which we were authorized to purchase up to an aggregate of $300.0 million shares of Class A common stock during the twelve month period ending July 31, 2013 (the \u201cRepurchase Program\u201d). We concluded the Repurchase Program in August 2012. Other than purchases in connection with the Repurchase Program as set forth in the table above, we made no purchases of shares of Class A common stock for the quarter ended September 30, 2012.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nItem 4 is not applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Fifth Amended and Restated Bylaws of Holdings, as currently in effect. (Incorporated by reference to Exhibit 10.1 to Holdings\u2019 Current Report on Form 8-K (File No. 001-35113)), filed October 23, 2012.)"
+    ],
+    [
+     "10.1",
+     "Form of Restricted Stock Unit Award Agreement. (Incorporated by reference to Exhibit 10.1 to Holdings\u2019 Current Report on Form 8-K (File No. 001-35113)), filed October 23, 2012.)"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of CEO and CFO Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) On June 19, 2012, we announced the approval of a share repurchase program pursuant to which we were authorized to purchase up to an aggregate of $300.0 million shares of Class A common stock during the twelve month period ending July 31, 2013 (the \u201cRepurchase Program\u201d). We concluded the Repurchase Program in August 2012. Other than purchases in connection with the Repurchase Program as set forth in the table above, we made no purchases of shares of Class A common stock for the quarter ended September 30, 2012.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nItem 4 is not applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the persons undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "GNC HOLDINGS, INC.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Joseph M. Fortunato",
+     ""
+    ],
+    [
+     "Date: November 1, 2012",
+     "Joseph M. Fortunato",
+     ""
+    ],
+    [
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Michael M. Nuzzo",
+     ""
+    ],
+    [
+     "Date: November 1, 2012",
+     "Michael M. Nuzzo",
+     ""
+    ],
+    [
+     "",
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "",
+     "(Principal Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Andrew S. Drexler",
+     ""
+    ],
+    [
+     "Date: November 1, 2012",
+     "Andrew S. Drexler",
+     ""
+    ],
+    [
+     "",
+     "Corporate Controller",
+     ""
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GNC HOLDINGS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1309
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the persons undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1281,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1310,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

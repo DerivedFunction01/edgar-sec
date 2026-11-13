@@ -1,0 +1,245 @@
+{
+ "accession": "0001174947-15-000408",
+ "cik": "0001294808",
+ "form": "10-K",
+ "filing_date": "2015-03-13",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k-13344_gsc2.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the fiscal year ended:",
+     "Commission file number:"
+    ],
+    [
+     "December 31, 2014",
+     "001-32247"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 8,
+    "end_line": 12
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\nANNUAL REPORT Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934",
+   "prose_after": "MERRILL LYNCH DEPOSITOR, INC.\n(ON BEHALF OF PPLUS TRUST SERIES GSC-2)\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE (State or other jurisdiction of incorporation)",
+     "13-3891329\n(I. R. S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "MERRILL LYNCH DEPOSITOR, INC.\n(ON BEHALF OF PPLUS TRUST SERIES GSC-2)\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ONE BRYANT PARK, 4th FL NEW YORK, NEW YORK (Address of principal executive offices)",
+     "10036 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (646) 855-6745\nSecurities registered pursuant to Section 12(b) of the Act:\nPPLUS Trust Certificates Series GSC-2 listed on The New York Stock Exchange.\nSecurities registered pursuant to Section 12(g) of the Act:\nNot Applicable.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MERRILL LYNCH DEPOSITOR, INC.",
+     "",
+     ""
+    ],
+    [
+     "Date: March 13, 2015",
+     "By:",
+     "/s/ Dylan Lohonen",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Dylan Lohonen"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "President"
+    ]
+   ],
+   "caption_stack": [
+    "MERRILL LYNCH DEPOSITOR, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "31.1. Certification of the President of Registrant dated March 13, 2015, pursuant to Rules 13a-14 and 15d-14 under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, with respect to the Registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 2014. 99.1. Trustee\u2019s Annual Compliance Certificate dated February 23, 2015. 99.2. Report of PricewaterhouseCoopers LLP, Independent Accountants, dated March 11, 2015, Registrant\u2019s Assertion on Compliance with PPLUS Minimum Servicing Standards dated March 11, 2015 and PPLUS Minimum Servicing Standards. 99.3. Report of KPMG LLP, Independent Registered Public Accounting Firm, dated February 20, 2015, The Bank of New York Mellon\u2019s Assertion on Compliance with PPLUS Minimum Servicing Standards dated February 20, 2015 and PPLUS Minimum Servicing Standards.\n(b) Exhibits\nThe Registrant hereby files as part of this Annual Report on Form 10-K the exhibits listed in Item 15(a)(3) set forth above.\n(c) Financial Statement Schedules\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

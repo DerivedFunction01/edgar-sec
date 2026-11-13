@@ -1,0 +1,2294 @@
+{
+ "accession": "0001140361-22-036605",
+ "cik": "0001865533",
+ "form": "10-Q",
+ "filing_date": "2022-10-07",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "brhc10042312_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cayman Islands",
+     "001-41136",
+     "98-1607027"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(Commission File Number)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nEMERGING MARKETS HORIZON CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "8th Floor, Berkeley Square House Berkeley Square\n\nLondon, United Kingdom",
+     "W1J 6DB"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: +44 20 7647 9100 Not Applicable (Former name or former address, if changed since last report) Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class:",
+     "Trading Symbol:",
+     "Name of Each Exchange on Which Registered:"
+    ],
+    [
+     "Units, each consisting of one Class A ordinary share, par value $0.0001, and one-half of one redeemable warrant to acquire one Class A ordinary share",
+     "HORIU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Class A ordinary shares included as part of the units",
+     "HORI",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Redeemable warrants included as part of the units, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+     "HORIW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: +44 20 7647 9100 Not Applicable (Former name or former address, if changed since last report) Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "",
+     "Condensed Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Condensed Balance Sheets as of March 31, 2022 (Unaudited) and December 31, 2021",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Condensed Statement of Operations for the Three Months ended March 31, 2022 (Unaudited)",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Condensed Statement of Changes in Shareholders\u2019 Deficit for the Three Months ended March 31, 2022 (Unaudited)",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Statement of Cash Flows for the Three Months ended March 31, 2022 (Unaudited)",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "Notes to Condensed Financial Statements (Unaudited)",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "19"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "23"
+    ],
+    [
+     "Item 4.",
+     "",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Item 1.",
+     "",
+     "Legal Proceedings",
+     "24"
+    ],
+    [
+     "Item 1A.",
+     "",
+     "Risk Factors",
+     "24"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Unregistered Sales of Equity Securities and Use of Proceeds from Registered Securities",
+     "24"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Defaults upon Senior Securities",
+     "24"
+    ],
+    [
+     "Item 4.",
+     "",
+     "Mine Safety Disclosures",
+     "24"
+    ],
+    [
+     "Item 5.",
+     "",
+     "Other Information",
+     "24"
+    ],
+    [
+     "Item 6.",
+     "",
+     "Exhibits",
+     "25"
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of October 7, 2022, 28,750,000 Class A ordinary shares, par value $0.0001 per share, and 7,187,500 Class B ordinary shares, par value $0.0001 per share, were issued and outstanding, respectively.\nForm 10-Q\nFor the Quarter Ended March 31, 2022\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nCONDENSED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "374,779",
+     "",
+     "$",
+     "503,187",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "Prepaid expenses - current",
+     "",
+     "620,872",
+     "",
+     "",
+     "584,866",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "995,651",
+     "",
+     "",
+     "1,100,553",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "293,278,042",
+     "",
+     "",
+     "293,251,371",
+     ""
+    ],
+    [
+     "Prepaid expenses - non-current",
+     "",
+     "\u2014",
+     "",
+     "",
+     "116,668",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "294,273,693",
+     "",
+     "$",
+     "294,468,592",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "507,131",
+     "",
+     "$",
+     "133,563",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "15,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "522,131",
+     "",
+     "",
+     "133,563",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liabilities",
+     "",
+     "3,740,000",
+     "",
+     "",
+     "13,881,250",
+     ""
+    ],
+    [
+     "Deferred underwriting commissions payable",
+     "",
+     "10,062,500",
+     "",
+     "",
+     "10,062,500",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "14,324,631",
+     "",
+     "",
+     "24,077,313",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value, subject to possible redemption; 28,750,000 shares (at a redemption value of $10.20 per share) at March 31, 2022 and December 31,2021",
+     "",
+     "293,278,042",
+     "",
+     "",
+     "293,251,371",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred shares, $0.0001 par value; 1,000,000 shares authorized; none issued and outstanding at March 31, 2022 and December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value; 300,000,000 shares authorized; none issued and outstanding (excluding 28,750,000 shares subject to possible redemption) at March 31, 2022 and December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B ordinary shares, $0.0001 par value; 30,000,000 shares authorized; 7,187,500 shares issued and outstanding at March 31, 2022 and December 31, 2021",
+     "",
+     "719",
+     "",
+     "",
+     "719",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(13,329,699)",
+     "",
+     "",
+     "(22,860,811)",
+     ""
+    ],
+    [
+     "Total Shareholders\u2019 Deficit",
+     "",
+     "(13,328,980)",
+     "",
+     "",
+     "(22,860,092)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND SHAREHOLDERS\u2019 DEFICIT",
+     "$",
+     "294,273,693",
+     "",
+     "$",
+     "294,468,592",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 154
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nCONDENSED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 103,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 157,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Formation and operating costs",
+     "$",
+     "610,138",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(610,138)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "10,141,250",
+     ""
+    ],
+    [
+     "Income earned on investments held in Trust Account",
+     "",
+     "26,671",
+     ""
+    ],
+    [
+     "Total other income, net",
+     "",
+     "10,167,921",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "9,557,783",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average Class A redeemable shares outstanding, basic and diluted",
+     "",
+     "28,750,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income per Class A redeemable share outstanding",
+     "$",
+     "0.27",
+     ""
+    ],
+    [
+     "Weighted average Class B non-redeemable shares outstanding, basic and diluted",
+     "",
+     "7,187,500",
+     ""
+    ],
+    [
+     "Basic and diluted net income per Class B non-redeemable share outstanding",
+     "$",
+     "0.27",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 165,
+    "end_line": 188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 163,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class B\n\nOrdinary Shares",
+     "",
+     "",
+     "",
+     "Additional\n\nPaid in\n\nCapital",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "Total\n\nShareholders\u2019\n\nDeficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2021",
+     "",
+     "7,187,500",
+     "$",
+     "719",
+     "$",
+     "\u2014",
+     "$",
+     "(22,860,811)",
+     "",
+     "$",
+     "(22,860,092)",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on Class A ordinary shares subject to possible redemption",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(26,671)",
+     "",
+     "",
+     "(26,671)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "9,557,783",
+     "",
+     "",
+     "9,557,783",
+     ""
+    ],
+    [
+     "Balance \u2013 March 31, 2022",
+     "",
+     "7,187,500",
+     "$",
+     "719",
+     "$",
+     "\u2014",
+     "$",
+     "(13,329,699)",
+     "",
+     "$",
+     "(13,328,980)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 199,
+    "end_line": 215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 197,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "9,557,783",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "(10,141,250)",
+     ""
+    ],
+    [
+     "Income earned on investments held in Trust Account",
+     "",
+     "(26,671)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "93,162",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "373,568",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(128,408)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "$",
+     "(128,408)",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "",
+     "503,187",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "$",
+     "374,779",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Noncash Financing Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on Class A ordinary shares subject to possible redemption",
+     "$",
+     "26,671",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 226,
+    "end_line": 248
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nNOTES TO CONDENSED FINANCIAL STATEMENTS\nNOTE 1 \u2014 DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nEmerging Markets Horizon Corp. (the \u201cCompany\u201d) is a blank check company incorporated as a Cayman Islands exempted company on May 6, 2021. The Company was formed for the purpose of effecting a merger, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses (a \u201cbusiness combination\u201d). The information contained within this quarterly report on Form 10-Q (this \u201cReport\u201d) should be read in conjunction with the Company\u2019s annual report on Form 10-K filed with the U.S. Securities and Exchange Commission (\u201cSEC\u201d) on September 12, 2022 (the \u201cAnnual Report\u201d).\nOn May 11, 2021, EM Horizon Investments (the \u201cPrior Sponsor\u201d) purchased 7,187,500 Class B ordinary shares of the Company in a private placement. On December 8, 2021, the Prior Sponsor transferred 12,500 Class B ordinary shares to each of the Company\u2019s independent directors and, on June 8, 2022, it transferred its remaining 7,150,000 Class B ordinary shares to our current sponsor, New Emerging Markets Horizon (the \u201cSponsor\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 224,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 251,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class A ordinary shares subject to possible redemption at May 6, 2021 (inception)",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gross proceeds from the sale of Class A ordinary shares in IPO",
+     "",
+     "287,500,000",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of Public Warrants at issuance",
+     "",
+     "(17,968,750)",
+     ""
+    ],
+    [
+     "Issuance costs on Class A ordinary shares",
+     "",
+     "(15,591,299)",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on Class A ordinary shares subject to possible redemption to redemption value",
+     "",
+     "39,311,420",
+     ""
+    ],
+    [
+     "Class A ordinary shares subject to possible redemption at December 31, 2021",
+     "",
+     "293,251,371",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on Class A ordinary shares subject to possible redemption to redemption value",
+     "",
+     "26,671",
+     ""
+    ],
+    [
+     "Class A ordinary shares subject to possible redemption at March 31, 2022",
+     "$",
+     "293,278,042",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 363,
+    "end_line": 378
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company accounts for its ordinary shares subject to possible redemption in accordance with the guidance in ASC Topic 480, \u201cDistinguishing Liabilities from Equity.\u201d Ordinary shares subject to mandatory redemption are classified as a liability instrument and are measured at fair value. Conditionally redeemable ordinary shares (including ordinary shares that feature redemption rights that are either within the control of the holder or subject to redemption upon the occurrence of uncertain events not solely within the Company\u2019s control) are classified as temporary equity. At all other times, ordinary shares are classified as a component of shareholders\u2019 deficit. The Company\u2019s Class A ordinary shares feature certain redemption rights that are considered to be outside of the Company\u2019s control and subject to occurrence of uncertain future events. Accordingly, at March 31, 2022, the shares of Class A ordinary shares subject to possible redemption in the amount of $293,278,042 are presented as temporary equity, outside of the shareholders\u2019 deficit section of the Company\u2019s balance sheet.\nThe Company recognizes changes in redemption value immediately as they occur and adjusts the carrying value of redeemable shares of Class A ordinary shares to equal the redemption value at the end of each reporting period. Immediately upon the closing of the Initial Public Offering, the Company recognized a measurement adjustment from initial book value to redemption value. The change in the carrying value of redeemable Class A ordinary shares resulted in charges against additional paid-in capital and accumulated deficit of approximately $39.3 million.\nThe activity in Class A ordinary shares subject to possible redemption for the period from May 6, 2021 (inception) through December 31, 2021 and the three months ended March 31, 2022 is as follows:",
+   "prose_after": "The Class B ordinary shares are classified as a component of shareholders\u2019 deficit since they are not subject to possible redemption outside of the Company\u2019s control.\nIncome Taxes\nThe Company is considered an exempted Cayman Islands company and is presently not subject to income taxes or income tax filing requirements in the Cayman Islands or the United States. As such, the Company's tax provision was zero for the period presented.\nConcentration of Credit Risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist of a cash account in a financial institution, which, at times, may exceed the Federal Depository Insurance Coverage of $250,000. The Company has not experienced losses on this account and management believes the Company is not exposed to significant risks on such account.\nFair Value Measurements\nFair value is defined as the price that would be received for sale of an asset or paid for transfer of a liability, in an orderly transaction between market participants at the measurement date. GAAP establishes a three-tier fair value hierarchy, which prioritizes the inputs used in measuring fair value. The hierarchy gives the highest priority to unadjusted quoted prices in active markets for identical assets or liabilities (Level 1 measurements) and the lowest priority to unobservable inputs (Level 3 measurements). These tiers include:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 401,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common shares subject to possible redemption",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Net income allocable to common shares subject to possible redemption",
+     "$",
+     "7,646,226",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator: Weighted average Class A redeemable common shares",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average Class A redeemable common shares outstanding, basic and diluted",
+     "",
+     "28,750,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, Class A redeemable common stock",
+     "$",
+     "0.27",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Redeemable Common Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Net income minus redeemable net earnings",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "9,557,783",
+     ""
+    ],
+    [
+     "Less: redeemable net income",
+     "",
+     "(7,646,226)",
+     ""
+    ],
+    [
+     "Non-redeemable net income",
+     "$",
+     "1,911,557",
+     ""
+    ],
+    [
+     "Denominator: Weighted average Class B non-redeemable common shares",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average Class B non-redeemable common shares outstanding, basic and diluted",
+     "",
+     "7,187,500",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, Class B non-redeemable common stock",
+     "$",
+     "0.27",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common shares subject to possible redemption"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company\u2019s statements of operations include a presentation of income per share for common stock subject to possible redemption in a manner similar to the two-class method of income per common share. Net income per common share, basic and diluted, for redeemable common stock is calculated by dividing the proportional amount of net income by the weighted average number of redeemable common shares outstanding during the period.\nNet income per common share, basic and diluted, for non-redeemable common stock is calculated by dividing the net income, adjusted for income attributable to redeemable common stock, by the weighted average number of non-redeemable common shares outstanding during the period. Non-redeemable common stock includes the Founder Shares as these common shares do not have any redemption features and do not participate in the income earned on the Trust Account.\nThe following table reflects the calculation of basic and diluted income per common share for the three months ended March 31, 2022:",
+   "prose_after": "Recent Accounting Standards\nManagement does not believe that any recently issued, but not yet effective, accounting standards, if currently adopted, would have a material effect on the Company\u2019s financial statement.\nNOTE 3 \u2014 INITIAL PUBLIC OFFERING\nPursuant to the Initial Public Offering, the Company sold 28,750,000 Units, including 3,750,000 Units issued pursuant to the full exercise by the underwriters of their over-allotment option at a purchase price of $10.00 per Unit. Each Unit consists of one Class A ordinary share of the Company and one-half of one redeemable warrant (\u201cPublic Warrant\u201d). Each Public Warrant will entitle the holder to purchase one Class A ordinary share at an exercise price of $11.50 per whole share, subject to adjustment (see Note 7).\nNOTE 4 \u2014 PRIVATE PLACEMENT\nUpon the closing of the Initial Public Offering, the underwriters fully exercised their over-allotment option. The Sponsor and underwriters purchased 9,000,000 warrants (including 1,000,000 warrants issued pursuant to the full exercise by the underwriters of their over-allotment), at a price of $1.50 per Private Placement Warrant, for an aggregate purchase price of $13,500,000. Each Private Placement Warrant is exercisable to purchase one Class A ordinary share at a price of $11.50 per share, subject to adjustment (see Note 8).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 472,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "At March 31, 2022",
+     "Quoted Prices in",
+     "",
+     "Significant Other",
+     "",
+     "Significant Other",
+     ""
+    ],
+    [
+     "",
+     "Active Markets",
+     "",
+     "Observable Inputs",
+     "",
+     "Unobservable Inputs",
+     ""
+    ],
+    [
+     "Description",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "$",
+     "293,278,042",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public Warrants",
+     "$",
+     "2,300,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Private Placement Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,440,000"
+    ],
+    [
+     "Total warrant liabilities",
+     "$",
+     "2,300,000",
+     "$",
+     "\u2014",
+     "$",
+     "1,440,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 571,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company follows the guidance in ASC 820 for its financial assets and liabilities that are re-measured and reported at fair value at each reporting period-end, and non-financial assets and liabilities that are re-measured and reported at fair value at least annually.\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities).\nThe following tables present information about the Company\u2019s assets and liabilities that are measured at fair value at March 31, 2022 and December 31, 2021, and indicate the level in the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "At December 31, 2021",
+     "Quoted Prices in",
+     "",
+     "Significant Other",
+     "",
+     "Significant Other",
+     ""
+    ],
+    [
+     "",
+     "Active Markets",
+     "",
+     "Observable Inputs",
+     "",
+     "Unobservable Inputs",
+     ""
+    ],
+    [
+     "Description",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "$",
+     "293,251,371",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public Warrants",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "8,481,250"
+    ],
+    [
+     "Private Placement Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,400,000"
+    ],
+    [
+     "Total warrant liabilities",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "13,881,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Investments Held in Trust Account\nAt March 31, 2022 and December 31, 2021, the entire $293.3 million balance in the Trust Account was held in cash and marketable securities.\nWarrant Liabilities\nThe accounting treatment of derivative financial instruments requires that the Company record a derivative liability upon the closing of the Initial Public Offering. Accordingly, the Company has classified both the Public Warrants and Private Placement Warrants as liabilities at their fair value, as determined by the valuation techniques noted below. These liabilities are subject to re-measurement at each balance sheet date. With each such re-measurement, the warrant liabilities will be adjusted to fair value, with the change in fair value recognized in the Company\u2019s statement of operations. The Company will reassess the classification at each balance sheet date. If the classification changes as a result of events during the period, the warrants will be reclassified as of the date of the event that causes the reclassification.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Private Placement\n\nWarrants",
+     "",
+     ""
+    ],
+    [
+     "Exercise price",
+     "$",
+     "11.50",
+     ""
+    ],
+    [
+     "Share price",
+     "$",
+     "9.86",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "3.6",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "4.8",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "2.41",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Private Placement\n\nWarrants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 619,
+    "end_line": 631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The estimated fair value of the Public Warrants at March 31, 2022 was based upon Level 1 inputs as such warrants were actively traded on an exchange. The estimated fair value of the Public Warrants at December 31, 2021 and Private Placement Warrants at March 31, 2022 and December 31, 2021 was determined using Level 3 inputs. Inherent in a Monte Carlo simulation model are assumptions related to expected stock-price volatility, expected life, risk-free interest rate and dividend yield. The Company estimates the volatility of its common stock based on historical volatility of select peer companies\u2019 common stock that matches the expected remaining life of the warrants. The risk-free interest rate is based on the U.S. Treasury zero-coupon yield curve on the grant date for a maturity similar to the expected remaining life of the warrants. The expected life of the warrants is assumed to be equivalent to their remaining contractual term. The dividend rate is based on the historical rate, which the Company anticipates will remain at zero.\nThe following table provides quantitative information regarding Level 3 fair value measurements as of March 31, 2022:",
+   "prose_after": "The following table provides quantitative information regarding Level 3 fair value measurements as of December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Public Warrants",
+     "",
+     "",
+     "Private Placement\n\nWarrants",
+     "",
+     ""
+    ],
+    [
+     "Exercise price",
+     "$",
+     "11.50",
+     "",
+     "$",
+     "11.50",
+     ""
+    ],
+    [
+     "Share price",
+     "$",
+     "9.71",
+     "",
+     "$",
+     "9.71",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "11.0",
+     "%",
+     "",
+     "11.0",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "6.0",
+     "",
+     "",
+     "6.0",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "1.35",
+     "%",
+     "",
+     "1.35",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "\u2014",
+     "%",
+     "",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 634,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following table provides quantitative information regarding Level 3 fair value measurements as of December 31, 2021:",
+   "prose_after": "The change in fair value of the warrant liabilities classified as Level 3 during the three months ended March 31, 2022 is summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Public Warrants",
+     "",
+     "",
+     "Private Placement\n\nWarrants",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liabilities at December 31, 2021",
+     "$",
+     "8,481,250",
+     "",
+     "$",
+     "5,400,000",
+     ""
+    ],
+    [
+     "Transfer out to Level 1",
+     "",
+     "(8,481,250)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,960,000)",
+     ""
+    ],
+    [
+     "Warrant liabilities at March 31, 2022",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,440,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The change in fair value of the warrant liabilities classified as Level 3 during the three months ended March 31, 2022 is summarized as follows:",
+   "prose_after": "NOTE 10 \u2014 SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date through October 7, 2022, the date that the financial statements were issued. Based upon this review, other than as described within these financial statements, the Company did not identify any subsequent events that would have required adjustment or disclosure in the financial statements other than those disclosed below and the changes in management on April 21, 2022 and sponsor on June 8, 2022 (disclosed in Note 1).\nRelated Party Loans\nOn September 1, 2022, the Company received a Working Capital Loan from the Sponsor in the amount of $561,996 pursuant to the 2022 Note, the proceeds of which were used to settle outstanding invoices from various service providers. Borrowings under the 2022 Note will not bear interest. The 2022 Note will mature on the earlier to occur of (i) the effective date of our Business Combination or (ii) the date that the winding up of the Company becomes effective.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Securities Exchange Act Rules 13a-14(a) or Rule 15d-14(a).*"
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to Securities Exchange Act Rules 13a-14(a) or Rule 15d-14(a).*"
+    ],
+    [
+     "32.1",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. \u00a7 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.**"
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Financial Officer pursuant to 18 U.S.C. \u00a7 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.**"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 823,
+    "end_line": 838
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On March 30, 2022, the SEC issued proposed rules relating to, among other items, enhancing disclosures in business combination transactions involving special purpose acquisition companies (\u201cSPACs\u201d) and private operating companies; amending the financial statement requirements applicable to transactions involving shell companies; effectively eliminating the safe harbor relating to the use of projections in SEC filings in connection with proposed business combination transactions; increasing the potential liability of certain participants in proposed business combination transactions; and the extent to which SPACs could become subject to regulation under the Investment Company Act of 1940. These rules, if adopted, whether in the form proposed or in revised form, may materially adversely affect our ability to negotiate and complete our initial business combination and may increase the costs and time related thereto.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS FROM REGISTERED SECURITIES\nNone.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "* Filed herewith ** Furnished herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "EMERGING MARKETS HORIZON CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 7, 2022",
+     "/s/ Jonathan Neill",
+     ""
+    ],
+    [
+     "",
+     "Name: Jonathan Neill",
+     ""
+    ],
+    [
+     "",
+     "Title: Interim Chief Executive Officer and Director",
+     ""
+    ],
+    [
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "EMERGING MARKETS HORIZON CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 847,
+    "end_line": 856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith ** Furnished herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 841,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: October 7, 2022",
+     "/s/ Christopher Edwards",
+     ""
+    ],
+    [
+     "",
+     "Name: Christopher Edwards",
+     ""
+    ],
+    [
+     "",
+     "Title: Interim Chief Financial Officer and Director",
+     ""
+    ],
+    [
+     "",
+     "(Principal Financial Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 857,
+    "end_line": 865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 841,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

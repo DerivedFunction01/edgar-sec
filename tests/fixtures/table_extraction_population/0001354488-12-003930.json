@@ -1,0 +1,7699 @@
+{
+ "accession": "0001354488-12-003930",
+ "cik": "0001092791",
+ "form": "10-K",
+ "filing_date": "2012-08-08",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "plff_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "33-0619256"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "201 St. Charles Avenue \u2013 Suite 2534\n\nNew Orleans, LA",
+     "",
+     "70170"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended March 31, 2011\n[ ]  Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ________ to ________\nCommission File Number 0-30595\nORPHEUM PROPERTY, INC.\n(Exact name of small business issuer in its charter)",
+   "prose_after": "Registrant's telephone number, including area code: (504) 599-5697\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, par value $.001\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Secur\u00adities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nCheck if there is no disclosure of delinquent filers in response to Item 405 of Regulation S-B is not contained in this form, and no disclosure will be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2007",
+     "",
+     "0.90",
+     "",
+     "0.90"
+    ],
+    [
+     "September 30, 2007",
+     "",
+     "0.90",
+     "",
+     "0.60"
+    ],
+    [
+     "December 31, 2007",
+     "",
+     "1.90",
+     "",
+     "0.60"
+    ],
+    [
+     "March 31, 2008",
+     "",
+     "1.82",
+     "",
+     "1.01"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2008",
+     "",
+     "1.75",
+     "",
+     "1.55"
+    ],
+    [
+     "September 30, 2008",
+     "",
+     "1.55",
+     "",
+     "1.55"
+    ],
+    [
+     "December 31, 2008",
+     "",
+     "1.55",
+     "",
+     "1.55"
+    ],
+    [
+     "March 31, 2009",
+     "",
+     "1.55",
+     "",
+     "0.57"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2009",
+     "",
+     "2.00",
+     "",
+     "0.57"
+    ],
+    [
+     "September 30, 2009",
+     "",
+     "2.00",
+     "",
+     "2.00"
+    ],
+    [
+     "December 31, 2009",
+     "",
+     "2.00",
+     "",
+     "2.00"
+    ],
+    [
+     "March 31, 2010",
+     "",
+     "2.00",
+     "",
+     "2.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2010",
+     "",
+     "2.00",
+     "",
+     "2.00"
+    ],
+    [
+     "September 30, 2010",
+     "",
+     "3.00",
+     "",
+     "2.00"
+    ],
+    [
+     "12/31/2010  *",
+     "",
+     "20.00",
+     "",
+     "0.20"
+    ],
+    [
+     "3/31/2011  *",
+     "",
+     "1.50",
+     "",
+     "1.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 128,
+    "end_line": 152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY AND RELATED STOCK\u00adHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The Securities and Exchange Commission has submitted inquiries to us that question why we did not treat the purchase of 129 University Place, LLC as a reverse merger. After exhaustive analysis, valuations and expert consultation, we determined that the purchase of 129 University Place, LLC, was an asset purchase according to prevailing accounting literature as has been reflected on past quarterly reports and submissions. One of the components to qualify as a business combination, and in this case a reverse merger, both entities must qualify as operating businesses. In our case, 129 University Place, LLC had one asset, the Orpheum Theater, but had no history or plans to operate as a business, including the receiving of inputs and outputs. Prior to 129 University Place, LLC obtaining the Orpheum Theater, the property was held by another owner merely as an inventory item.\nITEM 2. DESCRIPTION OF PROPERTY\nWe rent 200 square feet of office space under a lease expiring in October 2014.\nITEM 3. LEGALPROCEEDINGS\nOrpheum Property, Inc. is not a party to any pending legal proceedings.\nITEM 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS\nNo matters were submitted to a vote of security holders during the fourth quarter of the fiscal year ended March 31, 2011.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY AND RELATED STOCK\u00adHOLDER MATTERS\nOur common stock commenced trading in the quarter ended June 30, 2005 under the symbol PLCF.OB on the OTC Bulletin Board. The symbol was changed to PLFF.OB in September 2007 in connection with a one-for-three reverse stock split effective September 25, 2007. In the three years ended March 31, 2010 the high and low trading prices (adjusted for the reverse split) were as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 121,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 160,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "* Subsequent to December 10, 2010 20:1 stock split"
+    ],
+    [
+     ""
+    ],
+    [
+     "These prices do not include retail mark up and mark down and may not represent actual transactions."
+    ],
+    [
+     ""
+    ],
+    [
+     "As of March 31, 2011, there were approximately 300 holders of common stock."
+    ]
+   ],
+   "caption_stack": [
+    "* Subsequent to December 10, 2010 20:1 stock split"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 153,
+    "end_line": 160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY AND RELATED STOCK\u00adHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 6. SELECTED FINANCIAL DATA\nThe Registrant is not required to supply this information because it is a smaller reporting company.\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OR PLAN OF OPERATIONS\nIn our plan of operation for fiscal 2010-11 we stated a need to find a third party to acquire the public shell for the purpose of generating additional investment capital. As disclosed in the notes to the financial statements, such an investor was located and prior to June 30, 2010, a deal was consummated which includes the contribution of real estate which significantly increases the net assets and equity of the Company. Additionally, the coffee company and research subsidiaries were sold to former Directors, which helped the company in eliminating a material amount of liabilities.\nInformation included in this report includes forward looking statements, which can be identified by the use of forward-looking terminology such as may, will, expect, anticipate, believe, estimate, or continue, or the negative thereof or other variations thereon or comparable terminology. The statements in \"Risk Factors\" and other statements and disclaimers in this report constitute cautionary statements identifying important factors, including risks and uncertainties, relating to the forward-looking statements that could cause actual results to differ materially from those reflected in the forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 121,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 160,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "LaPorte, APAC\n\n111 Veterans Blvd. | Suite 600\n\nMetairie, LA 70005\n\n504.835.5522 | Fax 504.835.5535\n\nLaPorte.com"
+    ]
+   ],
+   "caption_stack": [
+    "LaPorte, APAC\n\n111 Veterans Blvd. | Suite 600\n\nMetairie, LA 70005\n\n504.835.5522 | Fax 504.835.5535\n\nLaPorte.com"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 183,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Since we have not yet generated significant and consistent revenues, we are a development stage company as that term is defined in Accounting Standards Codification (\u201cASC\u201d) Topic 915. Our activities to date have been limited to seeking capital; seeking supply contracts and development of a business plan. Our auditors have included an explanatory paragraph in their report on our financial statements, relating to the uncertainty of our business as a going concern, due to our lack of operating history or current revenues, its nature as a start up business, management's limited experience and limited funds. We do not believe that conventional financing, such as bank loans, is available to us due to these factors. Management believes that it will be able to raise the required funds for operations from one or more future offerings, in order to implement our business plan. No terms have been discussed, and we cannot predict the price or terms of any offering nor the amount of dilution existing shareholders may experience as a result of such offering.\nForward looking information\nDue to the significant change in operations during our fiscal year and subsequent to our year end, forward looking information related to our current operations would not be useful. As the re-organization and revamping of operations of the public company appear to be favorable, the recent changes do not have adequate historical documentation to formulate a definitive plan of action beyond stating that the company\u2019s intention is to acquire additional investment capital and purchase numerous other properties for improvement, restoration and development.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors\nOrpheum Property, Inc. (a development stage company)\nNew Orleans, Louisiana\nWe have audited the accompanying balance sheet of Orpheum Property, Inc. (a development stage company) as of March 31, 2011, and the related statements of operations, changes in stockholders equity, and cash flows for the year ended March 31, 2011 and for the period from inception (February 14, 2003) through March 31, 2011. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit. The financial statements of Orpheum Property, Inc. for the year ended March 31, 2010 were audited by other auditors whose report, dated July 22, 2010, expressed an unqualified opinion on those financial statements.\nWe conducted our audit in accordance with the auditing standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company has determined that it is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal controls over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash in Bank",
+     "$",
+     "727",
+     "$",
+     "8,628",
+     ""
+    ],
+    [
+     "Accounts Receivable, net of allowance for doubtful accounts of $-0- and $3,248",
+     "",
+     "-",
+     "",
+     "19,378",
+     ""
+    ],
+    [
+     "Prepaid Expenses",
+     "",
+     "5,000",
+     "",
+     "400",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "5,727",
+     "",
+     "28,406",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "-",
+     "",
+     "63,057",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "-",
+     "",
+     "2,827",
+     ""
+    ],
+    [
+     "Construction in Progress - Orpheum Theatre",
+     "",
+     "6,296,935",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Less: Accumulated Depreciation",
+     "",
+     "-",
+     "",
+     "(56,288)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fixed Assets",
+     "",
+     "6,296,935",
+     "",
+     "9,596",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rent Deposit",
+     "",
+     "-",
+     "",
+     "3,979",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "-",
+     "",
+     "3,979",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "6,302,662",
+     "$",
+     "41,981",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 225,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying financial statements have been prepared assuming Orpheum Property, Inc. will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has limited operating capital with limited revenue from operations. Realization of a major portion of the assets is dependent upon the Company\u2019s ability to meet its future financing requirements, and the success of future operations. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are described in Note 2. The financial statements do not include any adjustment that might result from the outcome of this uncertainty.\nAs more fully described in Notes 6 and 8 to the financial statements, the Company has transactions with related parties primarily to cover the Company\u2019s cash flow needs associated with its operating expenses.\nA Professional Accounting Corporation\nMetairie, Louisiana\nAugust 6, 2012\nNEW ORLEANS HOUSTON BATON ROUGE COVINGTON An Independently Owned Member, McGladrey Alliance The McGladrey Alliance is a premier affiliation of independent accounting and consulting firms. The McGladrey Alliance member firms maintain their name, autonomy and independence and are responsible for their own client fee arrangements, delivery ol services and maintenance ol client relationships.\nORPHEUM PROPERTY INC (A Development Stage Company) BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nORPHEUM PROPERTY INC (A Development Stage Company) BALANCE SHEETS (Continued)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 222,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "31,867",
+     "",
+     "$",
+     "150,574",
+     ""
+    ],
+    [
+     "Credit Line",
+     "",
+     "-",
+     "",
+     "",
+     "24,690",
+     ""
+    ],
+    [
+     "Payroll and Excise Taxes Payable",
+     "",
+     "-",
+     "",
+     "",
+     "23,914",
+     ""
+    ],
+    [
+     "Payable - Jones Day",
+     "",
+     "-",
+     "",
+     "",
+     "552,505",
+     ""
+    ],
+    [
+     "Advances by Officer",
+     "",
+     "-",
+     "",
+     "",
+     "26,250",
+     ""
+    ],
+    [
+     "Current Portion - Long Term Debt",
+     "",
+     "-",
+     "",
+     "",
+     "9,934",
+     ""
+    ],
+    [
+     "Accrued Interest",
+     "",
+     "299,143",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Demand Note - Orpheum",
+     "",
+     "2,698,360",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "3,029,370",
+     "",
+     "",
+     "787,867",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock Class A - 1,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Par value of $.001 per share; 0 and 900,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "900",
+     ""
+    ],
+    [
+     "Common Stock - 50,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Par value of $.001 per share; 6,461,336 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and 638,744 shares issued and outstanding",
+     "",
+     "6,462",
+     "",
+     "",
+     "639",
+     ""
+    ],
+    [
+     "Stock Payable",
+     "",
+     "3,415,734",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "3,133,706",
+     "",
+     "",
+     "971,151",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(3,282,610)",
+     "",
+     "",
+     "(1,567,742)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Orpheum Property, Inc.  Stockholders'",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity (Deficit)",
+     "",
+     "3,273,292",
+     "",
+     "",
+     "(595,052)",
+     ""
+    ],
+    [
+     "Non-Controlling Interest",
+     "",
+     "-",
+     "",
+     "",
+     "(150,834)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "3,273,292",
+     "",
+     "",
+     "(745,886)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity (Deficit)",
+     "$",
+     "6,302,662",
+     "",
+     "$",
+     "41,981",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 266,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nORPHEUM PROPERTY INC (A Development Stage Company) BALANCE SHEETS (Continued)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 263,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ORPHEUM PROPERTY INC"
+    ],
+    [
+     "(A Development Stage Company)"
+    ],
+    [
+     "STATEMENTS OF OPERATION"
+    ],
+    [
+     "For the Years Ended March 31, 2011 and 2010 and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY INC",
+    "(A Development Stage Company)",
+    "STATEMENTS OF OPERATION",
+    "For the Years Ended March 31, 2011 and 2010 and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 313,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "February 14,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2003 through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "1,427,644",
+     "",
+     "",
+     "82,453",
+     "",
+     "",
+     "1,730,474",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss from Operations",
+     "",
+     "(1,427,644)",
+     "",
+     "",
+     "(82,453)",
+     "",
+     "",
+     "(1,730,474)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "-",
+     "",
+     "",
+     "20,900",
+     "",
+     "",
+     "96,215",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(264,870)",
+     "",
+     "",
+     "(15,203)",
+     "",
+     "",
+     "(287,763)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other (Income) Expense",
+     "",
+     "(264,870)",
+     "",
+     "",
+     "5,697",
+     "",
+     "",
+     "(287,763)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss from Continuing Operations",
+     "",
+     "(1,692,514)",
+     "",
+     "",
+     "(76,756)",
+     "",
+     "",
+     "(2,018,237)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discontinued Operations",
+     "",
+     "6,113",
+     "",
+     "",
+     "(86,719)",
+     "",
+     "",
+     "(1,235,906)",
+     ""
+    ],
+    [
+     "Loss - Sale of Discontinued  Operations",
+     "",
+     "(28,467)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(28,467)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,714,868)",
+     "",
+     "$",
+     "(163,475)",
+     "",
+     "$",
+     "(3,282,610)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss Per Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing Operations",
+     "$",
+     "(1.05)",
+     "",
+     "$",
+     "(0.12)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discontinued Operations",
+     "",
+     "-",
+     "",
+     "",
+     "(0.14)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per Share",
+     "$",
+     "(1.05)",
+     "",
+     "$",
+     "(0.26)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding (Adjusted for 20 to 1 Reverse Stock Split on December 10, 2010)",
+     "",
+     "1,615,550",
+     "",
+     "",
+     "638,744",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "February 14,",
+    "2003 through"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 320,
+    "end_line": 372
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ORPHEUM PROPERTY INC"
+    ],
+    [
+     "(A Development Stage Company)"
+    ],
+    [
+     "Statement of Stockholders' Equity (Deficit)"
+    ],
+    [
+     "For the Period from Inception (February 14, 2003) Through March 31, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY INC",
+    "(A Development Stage Company)",
+    "Statement of Stockholders' Equity (Deficit)",
+    "For the Period from Inception (February 14, 2003) Through March 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 377,
+    "end_line": 383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 376,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "N[ ]\u2022",
+     "",
+     "",
+     "Common",
+     "",
+     "Net",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred",
+     "",
+     "Preferred",
+     "",
+     "Common",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Controlling",
+     "",
+     "",
+     "Stock",
+     "",
+     "Stockholder's",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Stock",
+     "",
+     "Shares",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Payable",
+     "",
+     "Equity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance February 14, 2003",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued to initial stockholders  for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "835",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "1,002",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributed Capital-Corporate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Organization and Start-up Costs, at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inception, Services and Costs at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Estimated Fair Market Value",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss from February 14, 2003",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Inception) to March 31, 2003",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,195)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(1,195)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2003",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "1,835",
+     "",
+     "",
+     "(1,195)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "807",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash contributed for Working Capital",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,978",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "1,978",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2004",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,176)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(1,176)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2004",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "3,813",
+     "",
+     "",
+     "(2,371)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "1,609",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2005",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(6,695)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(6,695)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2005",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "3,813",
+     "",
+     "",
+     "(9,066)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(5,086)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2006",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(7,733)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(7,733)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2006",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "3,813",
+     "",
+     "",
+     "(16,799)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(12,819)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash contributed by shareholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "3,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2007",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(52,841)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(52,841)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2007",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "166,667",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "7,313",
+     "",
+     "",
+     "(69,640)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(62,160)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Preferred Shares",
+     "",
+     "900,000",
+     "",
+     "900",
+     "",
+     "(45,000)",
+     "",
+     "",
+     "(45)",
+     "",
+     "",
+     "(855)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Shares for Service",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "74,715",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "91,459",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "91,534",
+     ""
+    ],
+    [
+     "Conversion of Debt to Shares",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,489",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "93,260",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "93,262",
+     ""
+    ],
+    [
+     "Issuance of Shares for Merger",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "382,207",
+     "",
+     "",
+     "382",
+     "",
+     "",
+     "76,059",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "28,884",
+     "",
+     "",
+     "-",
+     "",
+     "105,325",
+     ""
+    ],
+    [
+     "Adjustment for Conversion of ICTI Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "44,645",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "43,259",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(43,304)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Adjustment for ICTI stock changes",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "360,620",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "173,361",
+     "",
+     "",
+     "-",
+     "",
+     "533,981",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(328,249)",
+     "",
+     "",
+     "(55,776)",
+     "",
+     "",
+     "-",
+     "",
+     "(384,025)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2008",
+     "",
+     "900,000",
+     "",
+     "900",
+     "",
+     "625,723",
+     "",
+     "",
+     "625",
+     "",
+     "",
+     "671,115",
+     "",
+     "",
+     "(397,889)",
+     "",
+     "",
+     "103,165",
+     "",
+     "",
+     "-",
+     "",
+     "377,916",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustment for Conversion of ICTI Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "13,021",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "6,869",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(6,882)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contribution of Interest earned by Shareholder",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,796",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "6,796",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2009",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,005,177)",
+     "",
+     "",
+     "(241,866)",
+     "",
+     "",
+     "-",
+     "",
+     "(1,247,043)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2009",
+     "",
+     "900,000",
+     "",
+     "900",
+     "",
+     "638,744",
+     "",
+     "",
+     "638",
+     "",
+     "",
+     "684,780",
+     "",
+     "",
+     "(1,403,066)",
+     "",
+     "",
+     "(145,583)",
+     "",
+     "",
+     "-",
+     "",
+     "(862,331)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 384,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 376,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 453,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ORPHEUM PROPERTY INC"
+    ],
+    [
+     "(A Development Stage Company)"
+    ],
+    [
+     "Statement of Stockholders' Equity (Deficit) (Continued)"
+    ],
+    [
+     "For the Period from Inception (February 14, 2003) Through March 31, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY INC",
+    "(A Development Stage Company)",
+    "Statement of Stockholders' Equity (Deficit) (Continued)",
+    "For the Period from Inception (February 14, 2003) Through March 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 456,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 455,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 498,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "N[ ]\u2022",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Net",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred",
+     "",
+     "",
+     "Preferred",
+     "",
+     "",
+     "Common",
+     "",
+     "Common",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Controlling",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Stockholder's",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Shares",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Payable",
+     "",
+     "",
+     "Equity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 1, 2009",
+     "",
+     "900,000",
+     "",
+     "$",
+     "900",
+     "",
+     "",
+     "638,744",
+     "$",
+     "638",
+     "$",
+     "684,780",
+     "",
+     "$",
+     "(1,403,066)",
+     "",
+     "$",
+     "(145,583)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(862,331)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of Officer Debt to Equity",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "269,097",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "269,097",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "17,275",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "17,275",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2010",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(164,676)",
+     "",
+     "",
+     "(5,251)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(169,927)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2010",
+     "",
+     "900,000",
+     "",
+     "",
+     "900",
+     "",
+     "",
+     "638,744",
+     "",
+     "638",
+     "",
+     "971,152",
+     "",
+     "",
+     "(1,567,742)",
+     "",
+     "",
+     "(150,834)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(745,886)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Class B Preferred Stock and purchase of Orpheum",
+     "",
+     "42,260",
+     "",
+     "",
+     "84,520",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(117,650)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,474,000",
+     "",
+     "",
+     "3,440,870",
+     ""
+    ],
+    [
+     "Conversion Class A Preferred Stock to Common Stock",
+     "",
+     "(900,000)",
+     "",
+     "",
+     "(900)",
+     "",
+     "",
+     "45,000",
+     "",
+     "45",
+     "",
+     "855",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Common Stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "66,256",
+     "",
+     "66",
+     "",
+     "(66)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Sale of Integrated Coffee Tech. and Coscina Coffee Brothers",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "643,319",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "150,834",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "794,153",
+     ""
+    ],
+    [
+     "Donation from Officer",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,015",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,015",
+     ""
+    ],
+    [
+     "Conversion - Preferred to Common",
+     "",
+     "(42,260)",
+     "",
+     "",
+     "(84,520)",
+     "",
+     "",
+     "4,226,000",
+     "",
+     "4,226",
+     "",
+     "80,294",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Conversion of Stock Payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "137,561",
+     "",
+     "138",
+     "",
+     "35,628",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(35,766)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payment to reduce Stock Payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(22,500)",
+     "",
+     "",
+     "(22,500)",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for services",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,347,775",
+     "",
+     "1,348",
+     "",
+     "1,332,117",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,333,465",
+     ""
+    ],
+    [
+     "Investment by Shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "184,043",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "184,043",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss - Year Ended March 31, 2011",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,714,868)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,714,868)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2011",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "6,461,336",
+     "$",
+     "6,461",
+     "$",
+     "3,133,707",
+     "",
+     "$",
+     "(3,282,610)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,415,734",
+     "",
+     "$",
+     "3,273,292",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 463,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 455,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 498,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ORPHEUM PROPERTY INC"
+    ],
+    [
+     "(A Development Stage Company)"
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS"
+    ],
+    [
+     "For the Years Ended March 31, 2011 and 2010"
+    ],
+    [
+     "and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY INC",
+    "(A Development Stage Company)",
+    "STATEMENTS OF CASH FLOWS",
+    "For the Years Ended March 31, 2011 and 2010",
+    "and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year",
+     "",
+     "",
+     "For the Year",
+     "",
+     "",
+     "February 14,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "Ended",
+     "",
+     "",
+     "2003 through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,714,868)",
+     "",
+     "$",
+     "(163,475)",
+     "",
+     "$",
+     "(3,282,610)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contribution of interest on advances by officer",
+     "",
+     "-",
+     "",
+     "",
+     "20,306",
+     "",
+     "",
+     "24,071",
+     ""
+    ],
+    [
+     "Common Stock issued for conversion of subsidiary stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,881",
+     ""
+    ],
+    [
+     "Stock issued for payment for consulting services",
+     "",
+     "1,333,465",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,462,248",
+     ""
+    ],
+    [
+     "Contributed Capital - noncash fair market value of start-up and organization services and costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Bad debt recognized - Loss on sale of discontinued operations",
+     "",
+     "25,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "(Increase) Decrease in Prepaid expenses",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Increase (Decrease) in accounts payable",
+     "",
+     "(19,555)",
+     "",
+     "",
+     "4,746",
+     "",
+     "",
+     "31,867",
+     ""
+    ],
+    [
+     "Increase (Decrease) in accrued interest",
+     "",
+     "266,013",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "266,013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(114,945)",
+     "",
+     "",
+     "(138,423)",
+     "",
+     "",
+     "(1,470,530)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Improvements to Orpheum Theater",
+     "",
+     "(124,575)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(124,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "(124,575)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(124,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the sale of stock/contributed cash",
+     "",
+     "184,043",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "655,523",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - related party",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "49,700",
+     ""
+    ],
+    [
+     "Proceeds from advances from former officer - net",
+     "",
+     "75,000",
+     "",
+     "",
+     "92,746",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Proceeds from mergers",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "304,540",
+     ""
+    ],
+    [
+     "Payment to reduce Stock Payable",
+     "",
+     "(22,500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(22,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "236,543",
+     "",
+     "",
+     "92,746",
+     "",
+     "",
+     "1,017,263",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Decrease in Cash and Cash Equivalents",
+     "",
+     "(2,977)",
+     "",
+     "",
+     "(45,677)",
+     "",
+     "",
+     "(577,842)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, Beginning of Period",
+     "",
+     "8,628",
+     "",
+     "",
+     "10,313",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash (Used in) Provided by Discontinued Operating Activities",
+     "",
+     "(4,924)",
+     "",
+     "",
+     "43,992",
+     "",
+     "",
+     "578,569",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, End of Period",
+     "$",
+     "727",
+     "",
+     "$",
+     "8,628",
+     "",
+     "$",
+     "727",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ORPHEUM PROPERTY INC"
+    ],
+    [
+     "(A Development Stage Company)"
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS (Continued)"
+    ],
+    [
+     "For the Years Ended March 31, 2011 and 2010"
+    ],
+    [
+     "and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY INC",
+    "(A Development Stage Company)",
+    "STATEMENTS OF CASH FLOWS (Continued)",
+    "For the Years Ended March 31, 2011 and 2010",
+    "and for the Period from Inception (February 14, 2003) Through March 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 564,
+    "end_line": 571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year",
+     "",
+     "",
+     "For the Year",
+     "",
+     "February 14,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "Ended",
+     "",
+     "2003 through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,673",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Noncash Investing and Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impact of Sale of Discontinued Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilites assumed in excess of assets released",
+     "$",
+     "794,153",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Reduction in Noncontrolling Interest of Discontinued Operations",
+     "",
+     "(150,834)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in Additional Paid in Capital",
+     "",
+     "(643,319)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Transaction",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Business Acquisitions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Value of assets acquired",
+     "$",
+     "6,172,360",
+     "",
+     "$",
+     "-",
+     "$",
+     "7,447,703",
+     ""
+    ],
+    [
+     "Issuance of debt/assumption of liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(1,170,013)",
+     ""
+    ],
+    [
+     "Liabilities assumed",
+     "",
+     "(2,731,490)",
+     "",
+     "",
+     "-",
+     "",
+     "(2,760,379)",
+     ""
+    ],
+    [
+     "Stock Issued at acquisition",
+     "",
+     "(84,520)",
+     "",
+     "",
+     "-",
+     "",
+     "(160,961)",
+     ""
+    ],
+    [
+     "Capital in Excess of Par",
+     "",
+     "(3,356,350)",
+     "",
+     "",
+     "-",
+     "",
+     "(3,356,350)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Transaction",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nOrpheum Property, Inc.\n(A Development Stage Company)\nNotes to Financial Statements\nMarch 31, 2011",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 1.",
+     "Organization and Summary of Significant Accounting Policies\n\n \n\n Organization\n\n \n\n Orpheum Property, Inc. (the Company) was organized under the laws of the State of Delaware on February 14, 2003, and has elected a fiscal year end of March 31st.  The Company was originally organized for the purpose of the research and development of tropical plantation plants, to own and sell real and personal property and to sell products.  The Company\u2019s previous name was Pacific Land and Coffee Corporation.  However, on October 22, 2010, the Company filed a Schedule 14C with the Securities and Exchange Commission in order to change the name of the Company to Orpheum Property, Inc.  Currently, the Company is involved in the development and renovation of commercial property.\n\n \n\n On May 20, 2003, the Company combined with Back Channel Investments, Inc., in a reverse merger pursuant to an Agreement and Plan of Reorganization.  Back Channel acquired all the outstanding shares of common stock of the Company in exchange for 7,000,000 shares of Back Channel\u2019s common stock.  The surviving entity was Orpheum Property, Inc.  Upon completion of the agreement, the combined Company essentially re-capitalized to have 10,000,000 shares outstanding.  No change in net book value or goodwill was recognized.  Subsequently, in August, 2007, these shares were reduced to 3,333,332 shares through a reverse stock split.  The pre-merger financial statements of Orpheum Property, Inc. are now the historical financial statements of the Company.\n\n \n\n Seeking to redirect its activities, on June 28, 2010, the Company acquired 129 University Place whose sole asset was the Orpheum Theater with the intention of restoring the historic commercial property.  The transaction involved the issuance of 42,260 shares of a new class of Preferred Stock (B) with a par value of $2.00 per share and convertible into 2,000 shares of common stock for each share of preferred.  The purchase price of the property was $6,172,360 with the Company assuming an existing liability on the property of $2,698,360 and an obligation to issue Company stock valued at $3,474,000.\n\n\n\n\n\nBasis of Presentation and Discontinued Operations\n\n \n\nThe financial statements as of and for the year ended March 31, 2010, as well as for the period of inception (February 14, 2003) through March 31, 2010 include the accounts of Orpheum Property, Inc. (formerly known as Pacific Land & Coffee Corporation) and its majority owned subsidiaries, Coscina Brothers Coffee Company and Integrated Coffee Technologies, Inc.  On June 30, 2010, the board of directors elected to dispose the coffee-related businesses and focus on building a real estate portfolio, and the coffee related businesses were sold to former directors of the Company.  Accordingly, the activity of the coffee related businesses through June 30, 2010 has been accounted for as discontinued operations and the results of operations of the coffee related businesses have been removed from the results of continuing operations for all periods presented.  The accompanying balance sheet as of March 31, 2011 reflects the financial position of Orpheum Property, Inc. after the liquidation of the coffee related business in June 2010.\n\n \n\nThe Company is considered a development stage company as defined in the Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) Topic 915.  The Company has at the present time, not paid any dividends and any dividends that may be paid in the future will depend upon the financial requirements of the Company and other relevant factors."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nOrpheum Property, Inc.\n(A Development Stage Company)\nNotes to Financial Statements\nMarch 31, 2011",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 611,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 1.",
+     "Organization and Summary of Significant Accounting Policies (Continued)\n\n \n\n Income Taxes\n\nThe Company applies the provisions of FASB ASC Topic 740, Income Taxes.  Topic 740 requires an asset and liability approach for financial accounting and reporting for income taxes, and the recognition of deferred tax assets and liabilities for the temporary differences between the financial reporting basis and tax basis of the Company\u2019s assets and liabilities at enacted tax rates expected to be in effect when such amounts are realized or settled.  Due to a loss from inception, the Company has no tax liability.  Deferred income tax assets and liabilities are reflected at currently enacted income tax rates applicable to the period in which the deferred tax assets and liabilities are expected to be realized or settled.  As changes in tax laws or rates are enacted, deferred tax assets and liabilities are adjusted through the provision for income taxes.\n\n\n\n Use of Estimates in Preparation of Financial Statements\n\nThe preparation of financial statements in conformity with Accounting Principles Generally Accepted in the United States requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period.  Actual results could differ from those estimates.\n\n\n\n Basic Loss per Common Share\n\nThe Company computes basic loss per common share in accordance with FASB ASC Topic 260-10, Earnings Per Share.  Net loss is divided by the weighted-average number of common shares outstanding during the period.  Diluted earnings per share is computed using weighted average number of common shares plus dilutive common shares equivalents outstanding during the period using the treasury stock method.  Because the Company incurred losses for the years ended March 31, 2011 and 2010, the effect of any equivalent shares for each year would be excluded from the loss per share computation since the impact would be antidilutive.  There were no common stock equivalents outstanding as March 31, 2011 and 2010.\n\n\n\n Revenue Recognition\n\nRevenues of the Company will be recognized as earned in accordance with the nature of the income as it occurs.  Anticipated revenues in future periods is expected from event receipts earned at the renovated theater, operating income from commercial properties invested into, and gains from the sale of properties that may be purchased.  Revenues will not be recognized until such time as the service has been completed or escrows have closed.\n\n \n\nFor prior periods the Company recorded accounts receivable for sales (from Discontinued Operations) which had been delivered but for which money had not been collected as of March 31, 2010.  The balance uncollected as of March 31, 2010 was $22,626.  At March 31, 2010, the Company had an allowance for uncollectible accounts of $3,248.  The allowance for doubtful accounts, which is based upon management\u2019s evaluation of numerous factors, including a predictive analysis of the outcome of the current portfolio and prior credit loss experience, is deemed adequate to cover reasonably expected losses inherent in the outstanding receivables.  The Company charged off uncollectible accounts when management estimates no possibility of collecting the related receivable.  For customer purchases paid in advance, the Company records a liability until products are shipped.  There was no outstanding unearned revenue from product sales as of March 31, 2011 or 2010.\n\n\n\n Property and Equipment\n\nProperty and equipment are stated at cost.  Depreciation is provided using the straight-line method over the useful lives of the related assets.  Expenditures for maintenance and repairs are charged to expenses as incurred.\n\n \n\nAs of March 31, 2011, the Company\u2019s sole asset (the Orpheum Theatre) had not been placed into service; therefore no depreciation is included for the year then ended."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 659,
+    "end_line": 705
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 1.",
+     "Organization and Summary of Significant Accounting Policies (Continued)\n\n \n\n Impairment of Long-lived Assets\n\nLong-lived tangible assets, including property, plant and equipment, and finite-lived intangible assets are reviewed for impairment whenever events or changes in circumstances indicate that the book value of the asset or asset groups may not be recoverable.  The Company evaluates, regularly, whether events and circumstances have occurred that indicate possible impairment and relies on a number of factors, including operating results, business plans, economic projections, and anticipated future cash flows.  The Company uses an estimate of the future undiscounted net cash flows of the related asset or asset group over the remaining life in measuring whether the assets are recoverable.  Measurement of the amount of impairment, if any, is based upon the difference between the asset\u2019s carrying value and estimated fair value.\n\n\n\n Cash and Cash Equivalents\n\n For purposes of the statement of cash flows, the Company considers all highly liquid investments purchased with a maturity of three months or less to be cash equivalents.\n\n\n\n\n\nLine of Credit\n\nAt March 31, 2010, the Company had a $25,000 variable interest rate credit line with a commercial bank, for which the balance outstanding as of March 31, 2010 was $24,690, which was part of the operations that were discontinued.  As of March 31, 2011, the Company did not have any liability for that line of credit.\n\n\n\n Recently Issued Accounting Standards\n\nIn June 2009, the FASB changed the accounting guidance for the consolidation of variable interest entities.  The current quantitative-based risks and rewards calculation for determining which enterprise is the primary beneficiary of the variable interest entity will be replaced with an approach focused on identifying which enterprise has the power to direct the activities of a variable interest entity and the obligation to absorb losses of the entity or the right to receive benefits from the entity.  The new guidance became effective for the Company on April 1, 2010 with no impact on its financial statements.\n\n\n\n In June 2009, the FASB changed the accounting guidance for transfers of financial assets.  The new guidance increases the information that a reporting entity provides in its financial reports about a transfer of financial assets; the effects of a transfer on its statement of financial condition, financial performance and cash flows; and a continuing interest in transferred financial assets.  In addition, the guidance amends various concepts associated with the accounting for transfers and servicing of financial assets and extinguishments of liabilities including removing the concept of qualified special purpose entities.  This new guidance was adopted by the Company on April 1, 2010 with no impact on its financial statements.\n\n\n\n In January 2010, the FASB issued ASU 2010-06, \u201cFair Value Measurements and Disclosures\u201d (Topic 820) that requires new disclosures related to fair value measurements and clarifies existing disclosure requirements about the level of disaggregation, inputs and valuation techniques.  Specifically, reporting entities now must disclose separately the amounts of significant transfers in and out of Level 1 and Level 2 fair value measurements and describe the reasons for the transfers.  In addition, in the reconciliation for Level 3 fair value measurements, a reporting entity needs to use judgment in determining the appropriate classes of assets and liabilities for disclosure of fair value measurement, considering the level of disaggregated information required by other applicable U.S. GAAP guidance and should also provide disclosures about the valuation techniques and inputs used to measure fair value for each class of assets and liabilities.  The guidance was effective for financial statements issued for periods ending after December 15, 2009, except for disclosures about purchases, sales, issuances and settlements in reconciliation for Level 3 fair value measurements, which was effective for fiscal years beginning after December 15, 2010.  The adoption of this guidance affects only the disclosure requirements and had no impact on the Company\u2019s statements of operations and condition."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 1",
+     "Organization and Summary of Significant Accounting Policies (Continued)\n\n \n\n Recently Issued Accounting Standards (Continued)\n\n\n\n In December 2010, the FASB issued authoritative guidance that modified Step 1 of the goodwill impairment test for reporting units with zero or negative carrying amounts.  For those reporting units, an entity is required to perform Step 2 of the goodwill impairment test if it is more likely than not that a goodwill impairment exists.  In determining whether it is more likely than not that a goodwill impairment exists, an entity should consider whether there are any adverse qualitative factors indicating that an impairment may exist such as if an event occurs or circumstances change that would more likely than not reduce the fair value of a reporting unit below its carrying amount.  This new authoritative guidance is effective on April 1, 2011 and is not expected to have a significant impact on the Company\u2019s financial statements.\n\n\n\n In April 2011, the FASB issued ASU 2011-02, which amends the guidance for evaluating whether the restructuring of a receivable by a creditor is a troubled debt restructuring (TDR). In evaluating whether a restructuring constitutes a TDR both for purposes of recording an impairment loss and for disclosure purposes, a creditor must separately conclude that both of the following exist: (a) the restructuring constitutes a concession; and (b) the debtor is experiencing financial difficulties.  For public companies, the new guidance is effective for interim and annual periods beginning on or after June 15, 2011, and applies retrospectively to restructurings occurring on or after the beginning of the annual period of adoption.  However, an entity should apply prospectively changes in the method used to calculate impairment.  At the same time a public entity adopts ASU 2011-02, it is required to disclose the activity based information that was previously deferred by ASU No. 2011-01.  The adoption of this ASU is not expected to have a material impact on Company\u2019s financial statements.\n\n\n\n In May 2011, the FASB issued ASU 2011-04, \u201cAmendments to Achieve Common Fair Value Measurement and Disclosure Requirements in U.S. GAAP and IFRSs\u201d.  The ASU contains guidance on the application of the highest and best use and valuation premise concepts, the measurement of fair values of instruments classified in shareholders\u2019 equity, the measurement of fair values of financial instruments that are managed within a portfolio, and the application of premiums and discounts in a fair value measurement.  It also requires additional disclosures about fair value measurements, including information about the unobservable inputs used in fair value measurements within Level 3 of the fair value hierarchy, the sensitivity of recurring fair value measurements within Level 3 to changes in unobservable inputs and the interrelationships between those inputs, and the categorization by level of the fair value hierarchy for items that are not measured at fair value but for which the fair value is required to be disclosed.  These amendments are to be applied prospectively for interim and annual periods beginning after December 15, 2011.  The adoption of this guidance is not expected to have a significant effect on the Company\u2019s financial statements.\n\n\n\n In June 2011, the FASB issued ASU 2011-05, \u201cPresentation of Comprehensive Income\u201d.  The ASU increases the prominence of other comprehensive income in financial statements by requiring comprehensive income to be reported in either a single statement or in two consecutive statements which report both net income and other comprehensive income.  It eliminates the option to report other comprehensive income and its components in the statement of changes in equity.  The ASU is effective for periods beginning after December 15, 2011 and requires retrospective application.  The ASU does not change the components of other comprehensive income, the timing of items reclassified to net income, or the net income basis for income per share calculations.  As this ASU is disclosure related only, the adoption of this ASU will not impact reported financial position or results of operations.\n\n\n\n In September 2011, the FASB amended guidance pertaining to goodwill impairment testing.  The amendments permit an entity to first assess qualitative factors to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying amount as a basis for determining whether it is necessary to perform the two-step goodwill impairment test.  An entity is not required to calculate the fair value of a reporting unit unless the entity determines that it is more likely than not that its fair value is less than its carrying amount.  The guidance is effective January 1, 2012 with no significant impact expected on the Company\u2019s financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 754,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 1.",
+     "Organization and Summary of Significant Accounting Policies (Continued)\n\n \n\n Recently Issued Accounting Standards (Continued)\n\n\n\n In December 2011, the FASB issued guidance which relates to deconsolidation events. Under this amendment, when a parent (reporting entity) ceases to have a controlling financial interest in a subsidiary that is in substance real estate as a result of the default on the subsidiary\u2019s nonrecourse debt, the reporting entity should apply the guidance in Subtopic 360-20, Property, Plant and Equipment - Real Estate Sales, to determine whether it should derecognize the in substance real estate.  This guidance is effective for the fiscal year ending December 31, 2013 and is not expected to have a significant impact on the Company\u2019s financial statements.\n\n\n\n In December 2011, The FASB issued authoritative guidance to provide enhanced disclosures in the financial statements about offsetting and netting arrangements.  The new guidance requires entities to disclose both gross information and net information about both instruments and transactions eligible for offset in the statement of financial position and instruments and transactions subject to an agreement similar to a master netting agreement.  This guidance was issued to facilitate comparison between financial statements prepared on a U.S. GAAP and IFRS reporting.  The new guidance will be effective January 1, 2013 and is not expected to have a significant impact on the Company\u2019s financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 798,
+    "end_line": 814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 2.",
+     "Going Concern\n\n \n\n\n\nThe Company has limited operating capital with limited revenue from operations.  Realization of a major portion of the assets is dependent upon the Company\u2019s ability to meet its future financing requirements, and the success of future operations.  These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern.  The financial statements do not include any adjustment that might result from the outcome of this uncertainty.\n\n\n\n\n\nThe Company is developing its operations from renovated theater property and from purchase/development of other commercial properties.  The Company is planning on obtaining additional funds through equity financing. Should the Company fail to acquire these funds, expanding operations will be limited.  Management has agreed to advance additional funds to cover the Company\u2019s current operations.  If the Company is unsuccessful in these efforts and cannot attain sufficient cash flows to permit profitable operations or if it cannot obtain a source of funding or investment, it may substantially curtail or terminate its operations."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 815,
+    "end_line": 827
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note3.",
+     "Property and Equipment\n\n \n\n Property and equipment is carried at cost and summarized as follows as of March 31, 2011:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 828,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Going Concern"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost",
+     "",
+     "Accumulated Depreciation",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Orpheum Theatre - Construction in Progress",
+     "$",
+     "6,296,935",
+     "$",
+     "-",
+     "$",
+     "6,296,935"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Going Concern"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Property and equipment held as of March 31, 2010 were relinquished as part of the Company\u2019s sale of discontinued operations.\n\n \n\nFor the statements presented current depreciation expense is $ -0- , as none of the assets acquired have been put into service as of March 31, 2011.  Depreciation expense for the year ended March 31, 2010 totaled $12,664, all of which pertained to property and equipment associated with the Company\u2019s discontinued operations."
+    ]
+   ],
+   "caption_stack": [
+    "Property and equipment held as of March 31, 2010 were relinquished as part of the Company\u2019s sale of discontinued operations.\n\n \n\nFor the statements presented current depreciation expense is $ -0- , as none of the assets acquired have been put into service as of March 31, 2011.  Depreciation expense for the year ended March 31, 2010 totaled $12,664, all of which pertained to property and equipment associated with the Company\u2019s discontinued operations."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 843,
+    "end_line": 849
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Going Concern"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 4.",
+     "Demand Note Payable\n\n \n\n The mortgage on the Orpheum property which bears an interest rate of 13% per annum accrued monthly based on a 360 day per year calculation.  The principal is due on demand.  The principal balance at March 31, 2011, was $2,698,360.\n\n\n\n At the time of the Company\u2019s acquisition the note had accrued interest of $33,130.  Between June 28, 2010 and March 31, 2011, additional interest of $266,013 has been accrued, which results in an accrued interest balance of $299,143 as of March 31, 2011.\n\n \n\nThe demand note consists of debentures that are held by numerous individuals.  In February, 2011, some of the debenture holders filed a lawsuit against the owners of the Orpheum Theater prior to its transfer to 129 University Place and against 129 University Place demanding either payment or release of the property.  Terms of the agreement require that we participate in an arbitration process first.  We are currently working with legal counsel, lending sources, and the debenture holders to provide for a quick settlement of their claims and satisfaction of their complaint."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Going Concern"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 899,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 5.",
+     "Preferred Stock\n\n \n\n On August 22, 2007, the Company effected a one-for-three reverse stock split of its common stock, and authorized the issuance of a class of preferred stock (1,000,000 shares) of which 900,000 shares were issued.  They are convertible to 1 share of common stock for each share of preferred.  There are no stated dividend payments attributed at this time to those shares and they bear a par value of $ .001 each.  On June 28, 2010, these shares were converted to common stock.\n\n\n\n Also on June 28, 2010, the Company issued 42,260 shares of Class B Preferred Stock as part of its offer to purchase the Orpheum Theater.  These shares had a par value of $2.00 per share and were convertible into 2,000 shares of common stock.  On December 31, 2010, the shares were converted into 4,226,000 shares of common stock."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 877
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Demand Note Payable"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 899,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 6.",
+     "Common Stock\n\n \n\n\n\nThe Company, at inception, issued 1,000 shares of common stock to two initial stockholders at approximately $1.00 per share for a total amount of $1,002.\n\n\n\n\n\n On May 20, 2004, the Company combined with Back Channel Investments, Inc. (\u201cBack Channel\u201d) in a reverse merger pursuant to an Agreement and Plan of Reorganization.  Back Channel acquired all of the outstanding shares of common stock of the Company in exchange for 7,000,000 shares of Back Channel\u2019s common stock.  Prior to the combination, Back Channel had 1,000,000 shares of common stock outstanding which were forward split on the basis of three for one.  The surviving entity is Orpheum Property, Inc.  Upon completion of the agreement, the combined Company essentially re-capitalized to have 10,000,000 shares outstanding.  In August, 2007, these shares were converted to 3,333,332 shares in a reverse stock split.\n\n\n\n\n\n The Company has filed a registration statement with the Securities and Exchange Commission on Form SB-2.  The offering includes 3,000,000 shares of common stock of Pacific Land & Coffee Corporation, which are offered by the selling stockholders.  Certain of the selling stockholders which were promoters or affiliates of Orpheum Property, Inc. are deemed underwriters.\n\n\n\n\n\nDuring the year ended March 31, 2007, two shareholders sold 7,000 shares at a price of $.50 per share and contributed the proceeds to the Company.\n\n\n\n On August 22, 2007, the Company effected a one-for-three reverse stock split of its common stock, and authorized the issuance of a class of preferred stock (1,000,000 shares) and to increase the number of authorized shares of common stock from 10,000,000 to 50,000,000.  Directors and officers active at that time received 669,299 of these shares for services rendered."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 878,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Preferred Stock"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 899,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 6.",
+     "Common Stock (Continued)\n\n \n\n On March 24, 2008, the Company also issued 125,000 shares to Tyrus C Young (Chief Financial Officer/Director) for services rendered.  On June 30, 2010, Mr. Young was issued an additional 50,000 shares.  These shares, pursuant to the reverse split described below, totaled 8,750 shares.  In January, 2011, he received an additional 50,000 post-split shares.\n\n\n\n On December 10, 2010, with 15,000,000 shares issued and outstanding the Company issued a reverse stock split at a rate of 20 to 1, thereby reducing the outstanding total shares to 750,000.  The financial statements have been retroactively revised for this change in its capital structure.\n\n\n\n On December 31, 2010, Rampant Leon converted its 42,260 shares of Preferred Class B shares into 4,226,000 shares of common stock.\n\n\n\n At the time of the acquisition of 129 University, the management of Orpheum was authorized to issue shares to existing and former officers, directors and staff to bring the outstanding total shares to 15,000,000 shares.  Post reverse stock split shares of 111,251 shares were issued on January 27, 2011.\n\n\n\n On January 27, 2011, the Company issued 1,219,030 shares to various individuals who had assisted or consulted the Company in various ways over the prior six months.\n\n\n\n On February 15, 2011 the Company issued 57,250 shares to three unrelated parties for debt that was owed by a related party partially owned by the Company\u2019s Chairman, Andrew Reid.  This was in return for advances made to the Company by the related party.\n\n\n\n On March 9, 2011, the Company issued 137,561 shares to the early investors in the Orpheum Theater (pre-acquisition) and reduced the Stock Payable that was established at the time of the purchase by $35,766.\n\n\n\n Also on March 9, 2011, the Company issued 1,500 shares to an unrelated party for consulting services.\n\n\n\n On March 18, 2011, the Company issued 70,000 shares to unrelated parties for consulting services."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 902,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Common Stock"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 7.",
+     "Income Taxes\n\n \n\nThe provision for income taxes for 2011 and 2010 consists of the following for the years ended March 31st:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 930,
+    "end_line": 935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Common Stock"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "State",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Provision (Benefit)",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 7.",
+     "Income Taxes (Continued)\n\n \n\n The provisions for income taxes differs from that computed by applying Federal and state statutory rates to loss before income tax expense, as indicated in the following analysis:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Expected Benefit at statutory rates",
+     "$",
+     "(692,807)",
+     "",
+     "$",
+     "(65,993)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "",
+     "96",
+     ""
+    ],
+    [
+     "Increase in Valuation Allowance",
+     "",
+     "692,807",
+     "",
+     "",
+     "65,897",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 960,
+    "end_line": 971
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Significant components of the Company\u2019s deferred tax assets and liabilities, based on an assumed combined Federal and state tax rate of 40.4%, as of March 31, 2011 and 2010, are as follows:"
+    ]
+   ],
+   "caption_stack": [
+    "Significant components of the Company\u2019s deferred tax assets and liabilities, based on an assumed combined Federal and state tax rate of 40.4%, as of March 31, 2011 and 2010, are as follows:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Loss Carryforwads",
+     "$",
+     "1,338,687",
+     "",
+     "$",
+     "645,880",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Deferred Tax Asset",
+     "",
+     "1,338,687",
+     "",
+     "",
+     "645,880",
+     ""
+    ],
+    [
+     "Less:  Valuation Allowance",
+     "",
+     "(1,338,687)",
+     "",
+     "",
+     "(645,880)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Deferred Tax Asset",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Deferred Tax Asset (Liability)",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 977,
+    "end_line": 995
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "The Company has net operating losses totaling $ 3,313,581, which expire through March 31, 2031.\n\n \n\nWhen tax returns are filed, it is highly certain that some positions taken would be sustained upon examination by the taxing authorities, while others are subject to uncertainty about the merits of the position taken or the amount of the position that would be ultimately sustained.  The benefit of a tax position is recognized in the financial statements in the period during which, based on all available evidence, management believes it is more likely than not that the position will be sustained upon examination, including the resolution of appeals or litigation processes, if any.  We did not identify any material uncertain tax position of the Company on returns that have been filed or that will be filed.  The Company has not had operations and is carrying a large net operating loss carryforward, as disclosed above.  Since it is not thought that this net operating loss carryforward will ever produce a tax benefit, even if examined by taxing authorities and disallowed entirely, there would be no effect on the financial statements.\n\n \n\nThe Company has filed income tax returns in the United States.  All years prior to 2007 are closed by expiration of the statute of limitations.  The years ended March 31, 2007, 2008, and 2009 are open for examination.\n\n \n\nThe Company\u2019s policy is to recognize potential interest and penalties accrued related to unrecognized tax benefits within income tax expenses.  For the year ended March 31, 2011 and 2010, we did not recognize any interest or penalties, nor did we have any interest or penalties accrued as of March 31, 2011 and 2010 relating to unrecognized benefits."
+    ]
+   ],
+   "caption_stack": [
+    "The Company has net operating losses totaling $ 3,313,581, which expire through March 31, 2031.\n\n \n\nWhen tax returns are filed, it is highly certain that some positions taken would be sustained upon examination by the taxing authorities, while others are subject to uncertainty about the merits of the position taken or the amount of the position that would be ultimately sustained.  The benefit of a tax position is recognized in the financial statements in the period during which, based on all available evidence, management believes it is more likely than not that the position will be sustained upon examination, including the resolution of appeals or litigation processes, if any.  We did not identify any material uncertain tax position of the Company on returns that have been filed or that will be filed.  The Company has not had operations and is carrying a large net operating loss carryforward, as disclosed above.  Since it is not thought that this net operating loss carryforward will ever produce a tax benefit, even if examined by taxing authorities and disallowed entirely, there would be no effect on the financial statements.\n\n \n\nThe Company has filed income tax returns in the United States.  All years prior to 2007 are closed by expiration of the statute of limitations.  The years ended March 31, 2007, 2008, and 2009 are open for examination.\n\n \n\nThe Company\u2019s policy is to recognize potential interest and penalties accrued related to unrecognized tax benefits within income tax expenses.  For the year ended March 31, 2011 and 2010, we did not recognize any interest or penalties, nor did we have any interest or penalties accrued as of March 31, 2011 and 2010 relating to unrecognized benefits."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1012
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 8.",
+     "Related Party Transactions\n\n \n\n On June 30, 2010, the two existing coffee related subsidiaries were sold to entities controlled by two former officers and directors.  The purchase price of $110,000 was paid by reducing the amounts due to one of these individuals by $55,000 and recording a short term receivable of $55,000.  The Company was able to recover $30,000 of this receivable and as of March 31, 2011, recognized a bad debt expense for the remaining $25,000 owed, which is included in the loss on sale of discontinued operations presented within the statement of operations.\n\n \n\nAlso, during June, 2010, the same former director paid our former audit firm a total of $45,000 for bills incurred by the Company over the prior fiscal year.\n\n \n\n Between June 28, 2010 and March 31, 2011, our majority shareholder has advanced a total of $184,043 to the Company for renovation costs to the Orpheum Theater and for operating costs.  The majority shareholder agreed to recognize these advances as additional contributed capital to the Company as of March 31, 2011."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1015,
+    "end_line": 1028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 9.",
+     "Significant Concentration of Credit Risk\n\n \n\nThe Company\u2019s concentration of activities is currently in the City of New Orleans.  As the major asset of the Company as of March 31, 2011, is a single location, any natural disasters or acts of vandalism or terrorism could prove detrimental to the holdings of the Company.  However, see subsequent events which lessen the risk."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1029,
+    "end_line": 1035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 10.",
+     "Discontinued Operations\n\n \n\nIn accordance with ASC 205-20, the Company has classified all results from operations of its former businesses of coffee roasting and research operations into discontinued operations line items within the Company\u2019s statements of operations and statements of cash flow.\n\n \n\nNet Loss from discontinued operations for the years ended March 31, 2011 and 2010 consisted of the following:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1036,
+    "end_line": 1044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Significant Concentration of Credit Risk"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "81,067",
+     "",
+     "$",
+     "408,496",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "(74,155)",
+     "",
+     "",
+     "(495,241)",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(799)",
+     "",
+     "",
+     "(5,225)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Profit (Loss) from Discontinued Operations",
+     "",
+     "6,113",
+     "",
+     "",
+     "(91,970)",
+     ""
+    ],
+    [
+     "Net Loss to Non-controlling Interest",
+     "",
+     "-",
+     "",
+     "",
+     "5,251",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss from Discontinued Operations attributable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "to Orpheum Property, Inc.",
+     "$",
+     "6,113",
+     "",
+     "$",
+     "(86,719)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1045,
+    "end_line": 1062
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note 11.",
+     "Subsequent Events\n\n \n\n In accordance with FASB ASC Topic 855, Subsequent Events, the Company evaluates events and transactions that occur after the balance sheet date for potential recognition in the financial statements.  The effects of all subsequent events that provide additional evidence of conditions that existed at the balance sheet date are recognized in the financial statements as of March 31, 2011.  In preparing these financial statements, the Company evaluated the events and transactions that occurred through the date these financial statements were issued.  The Company determined that the following events required disclosure:\n\n \n\nOn June 10, 2011, the Company acquired three parcels of vacant land valued at $20,000 through a stock issuance.\n\n\n\n On July 26, 2011, the Company acquired vacant land in California (42.9 acres) and another parcel in Nevada (5.48 acres) appraised at $3,795,000.  The Company paid through the issuance of common stock.\n\n\n\n On November 14, 2011, the Company acquired 10 vacant residential lots in Hot Springs Village, Arkansas, ($160,000), in return for common stock.\n\n\n\n On December 13, 2011, the Company acquired approximately 22.5 acres of unimproved land for $3,000,000, in exchange for a combination of cash, mortgage assumption and common stock.\n\n\n\n On December 29, 2011, the Company acquired a 50% stake in a venture in Baja, Mexico for $6,329,190.  The coastal property contains stones along the beach that will be removed and sold, generally for decorative purposes.\n\n\n\n On February 21, 2012, the Company acquired a commercial building from our CEO, Morris Kahn for $3,200,000.  The Company issued common stock and assumed the mortgage on the property.\n\n\n\n Also on February 21, 2012, we acquired the open contracts of Morris Kahn & Associates for $1,500,000 in common stock."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1091
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNT\u00adING AND FINANCIAL DISCLOSURE\nChange of Auditors\nBy mutual agreement the Company and its former audit firm, Mantyla McReynolds decided to terminate our professional relationship citing communication and fee issues. Effective with our September 30, 2010, interim report, we used the firm of M & K CPAs PLCC, however, communication issues which resulted in delays led us to change to LaPorte CPAs to complete the audit.\nITEM 9A. CONTROLS AND PROCEDURES.\nAs of the end of the period covered by this report, we carried out an evaluation, under the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer, of the effectiveness of the design and operation of our disclosure and procedures (as defined in Exchange Act Rule 13a-15(e) and 15d-15(e)). Based upon that evaluation, our Chief Executive Officer and Chief Financial Officer concluded that as of the end of the period covered by this Annual Report on Form 10-K our disclosure controls and procedures were not effective to enable us to accurately record, process, summarize and report certain information required to be included in the Company\u2019s periodic SEC filings within the required time periods, and to accumulate and communicate to our management, including the Chief Executive Officer and Chief Financial Officer, to allow timely decisions regarding required disclosure.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ANNUALCOMPENSATION",
+     "",
+     "",
+     "",
+     "",
+     "LONG TERM COMPENSATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other Annual Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Restricted",
+     "",
+     "Securities",
+     "",
+     "Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Underlying",
+     "",
+     "LTIP",
+     "",
+     "Payouts",
+     ""
+    ],
+    [
+     "Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Awards ($)",
+     "",
+     "Options SARs (#)",
+     "",
+     "Payouts ($)",
+     "",
+     "Compensation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tyrus C. Young",
+     "2011",
+     "",
+     "13,353",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Chief Financial Officer",
+     "2010",
+     "",
+     "27,002",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Director",
+     "2009",
+     "",
+     "32,375",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1146,
+    "end_line": 1162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth the cash and all other compensation of Orpheum Property, Inc.'s executive officers and directors during each of the last three fiscal years. The remuneration described in the table includes the cost to Orpheum Property, Inc. of any benefits which may be furnished to the named executive officers, including premiums for health insurance and other benefits provided to such individual that are extended in connection with the conduct of Orpheum Property, Inc.'s business. The executive officers named below did not receive any manner of compensation in the years set forth below.\nUntil we obtain funding, most Company officers and directors are devoting the majority of their time to other employment and are serving without compensation. Following funding we expect that the aggregate monthly compensation for management will be under $250,000. Morris Kahn began receiving compensation, but not until after April 1, 2011. The only officer/director to receive any compensation was Tyrus C. Young though all payments were made to his management corporations.\nSummary Compensation Table",
+   "prose_after": "Back Channel Investments, which later acquired Pacific Land & Coffee Corporation, by resolution of its Board of Directors and stockholders, adopted a 1994 Stock Option Plan (the \"Plan\") on April 20, 1994. The Plan enables the Company to offer an incentive based compensation system to employees, officers and directors and to employees of companies who do business with the Company.\nIn the discretion of a committee comprised of non-employee directors (the \"Committee\"), directors, officers, and key employees or employees of companies with which we do business become participants in the Plan upon receiving grants in the form of stock options or restricted stock. A total of 2,000,000 shares are authorized for issuance under the Plan, of which no shares are issued. The Company may increase the number of shares authorized for issuance under the Plan or may make other material modifications to the Plan without shareholder approval. However, no amendment may change the existing rights of any option holder.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1137,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1164,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address",
+     "Preferred Stock",
+     "",
+     "Percentage",
+     "",
+     "Common Stock",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrew V. Reid, Chairman and CEO (9/24/10-03/31/11)",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "1,416,667",
+     "",
+     "21.93",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John L. Hales, CEO (through 9/24/10)",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "34,176",
+     "",
+     ".53",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tyrus C. Young, CFO and Director",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "58,750",
+     "",
+     ".91",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bruce Gwyn, Director",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "17,560",
+     "",
+     ".27",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael A. Mulshine, Corp Secretary",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "350,000",
+     "",
+     "5.42",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All officers and directors as a group (5 persons)",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "1,877,153",
+     "",
+     "29.05",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BRW Consulting Group, LLC",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "1,416,666",
+     "",
+     "21.93",
+     "%"
+    ],
+    [
+     "Edgewater River Investments, LLC",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "1,416,667",
+     "",
+     "21.93",
+     "%"
+    ],
+    [
+     "Tahoe Investments",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "343,987",
+     "",
+     "5.32",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1185,
+    "end_line": 1205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth information relating to the beneficial ownership of Company common stock as of March 31, 2011 by (i) each person known by Orpheum Property, Inc. to be the beneficial owner of more than 5% of the outstanding shares of common stock and (ii) each of Orpheum Property, Inc.'s directors and executive officers. Unless otherwise noted below, Orpheum Property, Inc. believes that all persons named in the table have sole voting and investment power with respect to all shares of common stock beneficially owned by them. For purposes hereof, a person is deemed to be the beneficial owner of securities that can be acquired by such person within 60 days from the date hereof upon the exercise of warrants or options or the conversion of convertible securities. Each beneficial owner's percentage ownership is determined by assuming that any warrants, options or convertible securities that are held by such person (but not those held by any other person) and which are exercisable within 60 days from the date hereof, have been exercised.",
+   "prose_after": "Except as otherwise noted, shares are owned beneficially and of record, and such record shareholder has sole voting, investment, and dispositive power.\nShares owned by Andrew V. Reid are held of record by NOLA Commercial Finance which is controlled by him.\nShares owned by Bruce Gwyn are held of record by Level III Trading Partners, a corporation controlled by Mr. Gwyn.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\nBack Channel Investments, Inc. was organized as a Delaware corporation on April 21, 1994 to seek out an advantageous acquisition. On May 20, 2003, Back Channel Investments, Inc. acquired all of the capital stock of Orpheum Property, Inc., a Hawaii corporation, in exchange for 7,000,000 shares of newly issued common stock of Back Channel Investments, Inc. Prior to the exchange Back Channel Investments, Inc. had 3,000,000 shares outstanding (after giving effect to a three-for-one forward stock split). As a result, there are 10,000,000 shares outstanding. In August, 2007, these shares were converted to 3,333,332 shares in a reverse stock split.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document Description",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2",
+     "Agreement and Plan of Reorganization between Back Channel Investments, Inc. and Orpheum Property, Inc. (2)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "Board Resolution accepting the assets as a contribution to capital. (5)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "Certificate of Incorporation and Bylaws",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.1.",
+     "Articles of Incorporation(1)"
+    ],
+    [
+     "",
+     "3.2",
+     "Articles of Amendment(2)"
+    ],
+    [
+     "",
+     "3.3",
+     "Bylaws(1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "Material Contracts",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.1",
+     "Stock Option Plan(1)"
+    ],
+    [
+     "",
+     "10.2",
+     "Sublease of Roaster Facilities(4)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "16",
+     "Letter regarding change in certifying accountant(3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "21",
+     "Subsidiaries. The Company has no subsidiaries, and operates under the trade name Axiom Global Properties.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "31.",
+     "Chief Executive Officer and Chief Financial Officer - Rule 13a-15(e) Certification.  Filed herewith."
+    ],
+    [
+     "",
+     "32.",
+     "Chief Executive Officer and Chief Financial Officer - Sarbanes-Oxley Act Section 906 Certification.  Filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1226,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "EXHIBITS AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Back Channel Investments, Inc. was organized as a Delaware corporation on April 21, 1994 to seek out an advantageous acquisition. On May 20, 2003, Back Channel Investments, Inc. acquired all of the capital stock of Orpheum Property, Inc., a Hawaii corporation, in exchange for 7,000,000 shares of newly issued common stock of Back Channel Investments, Inc. Prior to the exchange Back Channel Investments, Inc. had 3,000,000 shares outstanding (after giving effect to a three-for-one forward stock split). As a result, there are 10,000,000 shares outstanding. In August, 2007, these shares were converted to 3,333,332 shares in a reverse stock split.\nBack Channel Investments, Inc. subsequently changed its name to Pacific Land & Coffee Corporation, and in 2010, to Orpheum Property, Inc. References to Orpheum Property, Inc. in this report are to the combined entity unless otherwise noted. Prior to the exchange, Back Channel Investments, Inc., Pacific Land and Coffee Company and Orpheum Property, Inc. had no affiliation or prior relationship. The terms of the share exchange were negotiated at arm's length.\nPART IV\nITEM 14. EXHIBITS AND REPORTS ON FORM 8-K\n(a) Exhibits. The following exhibits of the Company are included herein.",
+   "prose_after": "___________\nFiled herewith\n(1) Filed with the Company's original Form 10-SB.\n(2) Filed with Registration Statement on Form SB-2, file no. 333-105564 and incorporated by reference.\n(3) Incorporated by reference to the Current Report on Form 8-K dated September 8, 2003.\n(4) Filed with Amendment No. 1 to Registration Statement 333-105564 and incorporated by reference\n(5) Incorporated by reference to the Current Report on Form 8-K dated November 6, 2006.\n(b) Reports on Form 8-K. None\nITEM 16. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nAudit Fees",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1268,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ORPHEUM PROPERTY, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Morris Kahn",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Morris Kahn",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ORPHEUM PROPERTY, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "This category includes the aggregate fees billed for professional services rendered for the audits of our financial statements for fiscal years 2011 and 2010, for the reviews of the financial statements included in our reports on Form 10-Q, and for the services that are normally provided by the independent auditors in connection with statutory and regulatory filings or engagements for the relevant fiscal years. Audit fees pertaining to services provided to the Company for the fiscal years ended March 31, 2011 and 2010 amount to $44,048 and $44,645, respectively.\nAudit Committees pre-approval policies and procedures.\nWe do not have an audit committee. Our engagement of LaPorte, A Professional Accounting Corporation, was approved by the Board of Directors. No services described in Item 9(e)(2) through 9(e)(4) of Schedule 14A were performed by our auditors.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on August 6, 2012.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities on August 6, 2012.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Morris Kahn",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "Morris Kahn",
+     "(principal executive officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Tyrus C. Young",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "",
+     "Tyrus C. Young",
+     "(principal financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1298,
+    "end_line": 1307
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities on August 6, 2012.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

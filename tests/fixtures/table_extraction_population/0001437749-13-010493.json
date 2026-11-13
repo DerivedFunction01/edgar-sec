@@ -1,0 +1,7877 @@
+{
+ "accession": "0001437749-13-010493",
+ "cik": "0001399480",
+ "form": "10-K/A",
+ "filing_date": "2013-08-12",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "vrdt20130812_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "45-2405975"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D. C. 20549\nFORM 10-K/A\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2012\nCommission File number: 000-52677\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "12223 Highland Avenue, Suite 106-542, Rancho Cucamonga, California 91739\n(Address of principal executive offices)\n(909)786-1981\n(Issuer\u2019s telephone number)\nSecurities registered pursuant to Section 12(b) of the Act:\nNone.\nSecurities registered pursuant to Section 12(g) of the Act:\nTitle of Class Common Stock\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ]  No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 14,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 31,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large Accelerated\n\n\n\nFiler \u2610",
+     "Accelerated\n\n\n\nFiler \u2610",
+     "Non-accelerated\n\n\n\nFiler \u2610",
+     "Smaller reporting\n\n\n\ncompany \u2612"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.40",
+     "$",
+     "0.18",
+     "$",
+     "0.25",
+     "$",
+     "0.13"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "8.50",
+     "$",
+     "0.31",
+     "$",
+     "0.20",
+     "$",
+     "0.16"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.90",
+     "$",
+     "0.35",
+     "$",
+     "0.16",
+     "$",
+     "0.16"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "1.01",
+     "$",
+     "0.21",
+     "$",
+     "0.30",
+     "$",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 414,
+    "end_line": 423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Item 3. Legal Proceedings.\nNone.\nItem 4. Mine Safety Disclosures.\nNone.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nMarket for Common Equity\nMarket Information\nThe Company\u2019s common stock is traded on the NASDAQ OTC Bulletin Board under the symbol \u201cVRDT.\u201d As of March 31, 2012, the Company\u2019s common stock was held by 483 shareholders of record, which does not include shareholders whose shares are held in street or nominee name.\nThe Company\u2019s shares commenced trading on or about February 7, 2007. The following chart is indicative of the fluctuations in the stock prices for the year ending March 31, 2012:",
+   "prose_after": "The Company\u2019s transfer agent is OTC Stock Transfer, Inc. of Salt Lake City, Utah.\nDividend Distributions\nWe have not historically and do not intend to distribute dividends to stockholders in the foreseeable future.\nPenny Stock\nOur common stock is considered \"penny stock\" under the rules the Securities and Exchange Commission (the \"SEC\") under the Securities Exchange Act of 1934. The SEC has adopted rules that regulate broker-dealer practices in connection with transactions in penny stocks. Penny stocks are generally equity securities with a price of less than $5.00, other than securities registered on certain national securities exchanges or quoted on the NASDAQ Stock Market System, provided that current price and volume information with respect to transactions in such securities is provided by the exchange or quotation system.\nThe penny stock rules require a broker-dealer, prior to a transaction in a penny stock, to deliver a standardized risk disclosure document prepared by the Commission, that:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 391,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Financial Statements:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Management intends to raise additional operating funds through equity and/or debt offerings. However, there can be no assurance management will be successful in its endeavors. Ultimately, the Company will need to achieve profitable operations in order to continue as a going concern.\nThere are no assurances that the Company will be able to either (1) achieve a level of revenues adequate to generate sufficient cash flow from operations; or (2) obtain additional financing through either private placement, public offerings and/or bank financing necessary to support its working capital requirements. To the extent that funds generated from operations and any private placements, public offerings and/or bank financing are insufficient, the Company will have to raise additional working capital. No assurance can be given that additional financing will be available, or if available, will be on terms acceptable to the Company. If adequate working capital is not available, the Company may be required to curtail its operations.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nAs the Company is a \u201csmaller reporting company,\u201d this item is inapplicable.\nItem 8. Financial Statements and Supplementary Data.",
+   "prose_after": "Consolidated Balance Sheet",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2012",
+     "",
+     "",
+     "March 31, 2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "36,447",
+     "",
+     "$",
+     "101",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "38,921",
+     "",
+     "",
+     "3,472",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "75,368",
+     "",
+     "",
+     "3,573",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, NET",
+     "",
+     "48,144",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "6,270",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Note Receivable",
+     "",
+     "215,383",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "221,653",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "345,165",
+     "",
+     "$",
+     "3,573",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY / (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "3,092,645",
+     "",
+     "$",
+     "147,498",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses - Related party",
+     "",
+     "20,679",
+     "",
+     "",
+     "3,768",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "95,000",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Notes Payable - Related parties",
+     "",
+     "942,759",
+     "",
+     "",
+     "142,759",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "4,151,083",
+     "",
+     "",
+     "294,025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLERS' EQUITY / (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.001 par value; 10,000,005 shares authorized, 0 shares issued and outstanding at March 31, 2012",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Common Stock, .001 par value: 989,999,995 shares authorized: 66,546,840 and 3,700,726 shares issued and outstanding as of March 31, 2012, and March 31, 2011, respectively",
+     "",
+     "66,547",
+     "",
+     "",
+     "3,701",
+     ""
+    ],
+    [
+     "Common Stock issued under Restricted Stock Agreements, 54,400,000 shares issued and pending as of March 31, 2012",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "14,146,673",
+     "",
+     "",
+     "8,414,039",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(18,019,138)",
+     "",
+     "",
+     "(8,708,192)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity / (Deficit)",
+     "",
+     "(3,805,918)",
+     "",
+     "",
+     "(290,452)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY / (DEFICIT)",
+     "$",
+     "345,165",
+     "",
+     "$",
+     "3,573",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 522,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheet",
+   "prose_after": "See the accompanying notes to the financial statements\nConsolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Period August 19, 1999 (Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "370,800",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "370,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,871",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "4,709",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "5,441,702",
+     "",
+     "",
+     "104,987",
+     "",
+     "",
+     "12,377,304",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "",
+     "3,833,722",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,833,722",
+     ""
+    ],
+    [
+     "Impairment of long-lived assets",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "855",
+     ""
+    ],
+    [
+     "Impairment of loan receivable",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "130,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "9,279,295",
+     "",
+     "",
+     "104,987",
+     "",
+     "",
+     "16,346,590",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income / (Loss) from Operations",
+     "",
+     "(9,279,295)",
+     "",
+     "",
+     "(104,987)",
+     "",
+     "",
+     "(15,975,790)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income / (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "56,889",
+     ""
+    ],
+    [
+     "Loss from conversion of shareholder debt",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(1,506,528)",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "383",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "383",
+     ""
+    ],
+    [
+     "Interest (expense)",
+     "",
+     "(15,123)",
+     "",
+     "",
+     "(10,131)",
+     "",
+     "",
+     "(561,523)",
+     ""
+    ],
+    [
+     "Interest (expense) - Related parties",
+     "",
+     "(16,911)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(32,569)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income / (Expense)",
+     "",
+     "(31,651)",
+     "",
+     "",
+     "(10,131)",
+     "",
+     "",
+     "(2,043,348)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income / (Loss) before Income Taxes",
+     "",
+     "(9,310,946)",
+     "",
+     "",
+     "(115,118)",
+     "",
+     "",
+     "(18,019,138)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provisions for Income Taxes",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss)",
+     "$",
+     "(9,310,946)",
+     "",
+     "$",
+     "(115,118)",
+     "",
+     "$",
+     "(18,019,138)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss) Per Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.16)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "59,001,914",
+     "",
+     "",
+     "3,700,726",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the financial statements\nConsolidated Statement of Operations",
+   "prose_after": "See the accompanying notes to the financial statements\nStatement of Stockholder's Equity\nFor the Period August 19, 1999 (Inception) to March 31, 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Deficit Accumulated During the Development",
+     "",
+     "",
+     "Total Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stage",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at inception, August 19, 1999",
+     "",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "2,000",
+     "",
+     "2",
+     "",
+     "18",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(84,021)",
+     "",
+     "",
+     "(84,021)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 1999",
+     "",
+     "2,000",
+     "",
+     "2",
+     "",
+     "18",
+     "",
+     "",
+     "(84,021)",
+     "",
+     "",
+     "(84,001)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(230,879)",
+     "",
+     "",
+     "(230,879)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2000",
+     "",
+     "2,000",
+     "",
+     "2",
+     "",
+     "18",
+     "",
+     "",
+     "(314,900)",
+     "",
+     "",
+     "(314,880)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(494,816)",
+     "",
+     "",
+     "(494,816)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2001",
+     "",
+     "2,000",
+     "",
+     "2",
+     "",
+     "18",
+     "",
+     "",
+     "(809,716)",
+     "",
+     "",
+     "(809,696)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(384,590)",
+     "",
+     "",
+     "(384,590)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2002",
+     "",
+     "2,000",
+     "",
+     "2",
+     "",
+     "18",
+     "",
+     "",
+     "(1,194,306)",
+     "",
+     "",
+     "(1,194,286)",
+     ""
+    ],
+    [
+     "Reclassification of debt to equity",
+     "",
+     "4,300",
+     "",
+     "4",
+     "",
+     "1,581,979",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "1,581,983",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(736,364)",
+     "",
+     "",
+     "(736,364)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2003",
+     "",
+     "6,300",
+     "",
+     "6",
+     "",
+     "1,581,997",
+     "",
+     "",
+     "(1,930,670)",
+     "",
+     "",
+     "(348,667)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(205,994)",
+     "",
+     "",
+     "(205,994)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2004",
+     "",
+     "6,300",
+     "",
+     "6",
+     "",
+     "1,581,997",
+     "",
+     "",
+     "(2,136,664)",
+     "",
+     "",
+     "(554,661)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,592,469)",
+     "",
+     "",
+     "(1,592,469)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2005",
+     "",
+     "6,300",
+     "",
+     "6",
+     "",
+     "1,581,997",
+     "",
+     "",
+     "(3,729,133)",
+     "",
+     "",
+     "(2,147,130)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,376,529)",
+     "",
+     "",
+     "(1,376,529)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2006",
+     "",
+     "6,300",
+     "",
+     "6",
+     "",
+     "1,581,997",
+     "",
+     "",
+     "(5,105,662)",
+     "",
+     "",
+     "(3,523,659)",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "88,285",
+     "",
+     "88",
+     "",
+     "123,511",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "123,599",
+     ""
+    ],
+    [
+     "Expenses paid by related party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "515,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "515,000",
+     ""
+    ],
+    [
+     "Stock issued as dividend",
+     "",
+     "2,636,564",
+     "",
+     "2,637",
+     "",
+     "(2,637)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Conversion of SKRM Interactive payable to equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,382,718",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,382,718",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,810,502)",
+     "",
+     "",
+     "(1,810,502)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2007",
+     "",
+     "2,731,149",
+     "",
+     "2,731",
+     "",
+     "6,600,589",
+     "",
+     "",
+     "(6,916,164)",
+     "",
+     "",
+     "(312,844)",
+     ""
+    ],
+    [
+     "Stock issued for debt",
+     "",
+     "669,577",
+     "",
+     "670",
+     "",
+     "1,673,250",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,673,920",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,596,320)",
+     "",
+     "",
+     "(1,596,320)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2008",
+     "",
+     "3,400,726",
+     "",
+     "3,401",
+     "",
+     "8,273,839",
+     "",
+     "",
+     "(8,512,484)",
+     "",
+     "",
+     "(235,244)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(6,954)",
+     "",
+     "",
+     "(6,954)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2009",
+     "",
+     "3,400,726",
+     "$",
+     "3,401",
+     "$",
+     "8,273,839",
+     "",
+     "$",
+     "(8,519,438)",
+     "",
+     "$",
+     "(242,198)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the financial statements\nStatement of Stockholder's Equity\nFor the Period August 19, 1999 (Inception) to March 31, 2012",
+   "prose_after": "See the accompanying notes to the financial statements\nStatement of Stockholder's Equity - continued\nFor the Period August, 1999 (Inception) to March 31, 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Deficit Accumulated During the Development",
+     "",
+     "",
+     "Total Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stage",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of Martin debt",
+     "",
+     "300,000",
+     "",
+     "$",
+     "300",
+     "",
+     "$",
+     "60,700",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "61,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(73,636)",
+     "",
+     "",
+     "(73,636)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2010",
+     "",
+     "3,700,726",
+     "",
+     "",
+     "3,701",
+     "",
+     "",
+     "8,334,539",
+     "",
+     "",
+     "(8,593,074)",
+     "",
+     "",
+     "(254,834)",
+     ""
+    ],
+    [
+     "Stock-based compensation - Non-Emp",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "79,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "79,500",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(115,118)",
+     "",
+     "",
+     "(115,118)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2011",
+     "",
+     "3,700,726",
+     "",
+     "",
+     "3,701",
+     "",
+     "",
+     "8,414,039",
+     "",
+     "",
+     "(8,708,192)",
+     "",
+     "",
+     "(290,452)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "",
+     "30,000,000",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "2,970,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury Stock - Redemtion and cancellation",
+     "",
+     "(1,700,000)",
+     "",
+     "",
+     "(1,700)",
+     "",
+     "",
+     "(848,300)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(850,000)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Purchased for Cash",
+     "",
+     "16,021,000",
+     "",
+     "",
+     "16,021",
+     "",
+     "",
+     "2,272,780",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "2,288,800",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "13,265,500",
+     "",
+     "",
+     "13,266",
+     "",
+     "",
+     "1,293,155",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "1,306,420",
+     ""
+    ],
+    [
+     "Restricted Stock - Employees & Directors",
+     "",
+     "54,400,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Exercised warrants",
+     "",
+     "259,614",
+     "",
+     "",
+     "260",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "260",
+     ""
+    ],
+    [
+     "Conversion of debt to equity",
+     "",
+     "5,000,000",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "45,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Net (Loss) / Income",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(9,310,946)",
+     "",
+     "",
+     "(9,310,946)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2012",
+     "",
+     "120,946,840",
+     "",
+     "$",
+     "66,547",
+     "",
+     "$",
+     "14,146,673",
+     "",
+     "$",
+     "(18,019,138)",
+     "",
+     "$",
+     "(3,805,918)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 714,
+    "end_line": 747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the financial statements\nStatement of Stockholder's Equity - continued\nFor the Period August, 1999 (Inception) to March 31, 2012",
+   "prose_after": "See the accompanying notes to the financial statements\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 749,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Tweleve Months Ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Period August 19, 1999 (Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATIONS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss)",
+     "$",
+     "(9,310,946)",
+     "",
+     "$",
+     "(115,118)",
+     "",
+     "$",
+     "(18,019,138)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income / (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,871",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "56,660",
+     ""
+    ],
+    [
+     "Impairment of Goodwill",
+     "",
+     "3,833,722",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,833,722",
+     ""
+    ],
+    [
+     "Impairment of Long-Lived Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "855",
+     ""
+    ],
+    [
+     "Impairment of Loan Receivable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "130,000",
+     ""
+    ],
+    [
+     "Accrued Interest on payable converted to debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "209,817",
+     ""
+    ],
+    [
+     "Issurance of warrants for services",
+     "",
+     "",
+     "",
+     "",
+     "79,500",
+     "",
+     "",
+     "79,500",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "1,456,680",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,580,279",
+     ""
+    ],
+    [
+     "Loss on conversion of stockholder debt to C/Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,506,528",
+     ""
+    ],
+    [
+     "Expense paid by stockholder and affiliate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "636,796",
+     ""
+    ],
+    [
+     "Payables and servcies converted to C/Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "770,674",
+     ""
+    ],
+    [
+     "Assumption of liabilities over value of assets",
+     "",
+     "(833,722)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(833,722)",
+     ""
+    ],
+    [
+     "Changes in Assets & Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease / (Increase) in prepaid expenses",
+     "",
+     "(41,719)",
+     "",
+     "",
+     "(490)",
+     "",
+     "",
+     "(45,191)",
+     ""
+    ],
+    [
+     "Decrease / (Increase) in note receivable",
+     "",
+     "(215,383)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(215,383)",
+     ""
+    ],
+    [
+     "(Decrease) / Increase in accounts payable and accrued expenses",
+     "",
+     "2,945,147",
+     "",
+     "",
+     "(7,000)",
+     "",
+     "",
+     "3,101,899",
+     ""
+    ],
+    [
+     "(Decrease) / Increase in interest payable to stockholder",
+     "",
+     "16,911",
+     "",
+     "",
+     "(5,352)",
+     "",
+     "",
+     "356,436",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "(2,145,439)",
+     "",
+     "",
+     "(48,460)",
+     "",
+     "",
+     "(6,850,268)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property plant and equipment",
+     "",
+     "(52,015)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(105,659)",
+     ""
+    ],
+    [
+     "Loan receivable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(130,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(52,015)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(235,659)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from parent company",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "697,193",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - other",
+     "",
+     "95,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "480,000",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - shareholder",
+     "",
+     "",
+     "",
+     "",
+     "48,523",
+     "",
+     "",
+     "1,911,907",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - affiliates",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,564,191",
+     ""
+    ],
+    [
+     "Payments on notes payable - other",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(388,018)",
+     ""
+    ],
+    [
+     "Payments on notes payable - shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(190,699)",
+     ""
+    ],
+    [
+     "Payments on notes payable - affiliates",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(141,000)",
+     ""
+    ],
+    [
+     "Proceeds from inssuance of common stock",
+     "",
+     "2,188,800",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,188,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash from financing activities",
+     "",
+     "2,233,800",
+     "",
+     "",
+     "48,523",
+     "",
+     "",
+     "7,122,374",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase / (Decrease) in cash",
+     "",
+     "36,346",
+     "",
+     "",
+     "63",
+     "",
+     "",
+     "36,447",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "101",
+     "",
+     "",
+     "38",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "36,447",
+     "",
+     "$",
+     "101",
+     "",
+     "$",
+     "36,447",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the financial statements\nConsolidated Statement of Cash Flows",
+   "prose_after": "See the accompanying notes to the financial statements\nStatement of Cash Flows - continued",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 749,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Tweleve Months Ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "April 19. 1999 to",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     "",
+     "March 31, 2012",
+     ""
+    ],
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for Interest",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "Cash paid for Income Taxes",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "Converson of related party payable to notes payable to shareholder",
+     "",
+     "",
+     "$",
+     "141,079",
+     "$",
+     "141,079"
+    ],
+    [
+     "Conversion of notes payable to common stock",
+     "$",
+     "50,000",
+     "",
+     "",
+     "$",
+     "111,000"
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "$",
+     "3,000,000",
+     "",
+     "",
+     "$",
+     "3,000,000"
+    ],
+    [
+     "Common stock issued for services",
+     "$",
+     "1,456,680",
+     "",
+     "",
+     "$",
+     "1,456,680"
+    ],
+    [
+     "Note Payable issued",
+     "$",
+     "850,000",
+     "",
+     "",
+     "$",
+     "850,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 827,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying notes to the financial statements\nStatement of Cash Flows - continued",
+   "prose_after": "See the accompanying notes to the financial statements\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1. BASIS OF PRESENTATION AND RECENT ACCOUNTING PRONOUNCEMENTS\nThe accompanying audited financial statements of VRDT Corporation (the \u201cCompany\u201d) have been prepared in accordance with generally accepted accounting principles (\u201cGAAP\u201d) for financial information and the instructions to Form 10-K and Article 10 of Regulation S-X. In the opinion of the Company\u2019s management, the information contained herein reflects all adjustments necessary for a fair presentation of the Company\u2019s results of operations, financial position and cash flows. The Company has reclassified certain amounts previously reported in our financial statements to conform to the current presentation.\nThe consolidated financial statements include by full consolidation all domestic and foreign entities controlled by the Company (i.e., all subsidiaries), except where the subsidiary\u2019s effect on the Company\u2019s financial position and results of operations is immaterial. The following list includes all entities controlled by the Company:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 854,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2012",
+     "",
+     "March 31, 2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable, 12% interest, principal and interest due monthly commencing January 1, 2013, and due June 1, 2014. (1)",
+     "$",
+     "142,759",
+     "$",
+     "142,759"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable, payments are due monthly at 5% of the monthly gross monies raised with the balance due no later than June 1, 2014. (2)",
+     "",
+     "800,000",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "942,759",
+     "$",
+     "142,759"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 923
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "NOTES PAYABLE-RELATED PARTIES"
+    }
+   },
+   "prose_before": "In May, 2011, the Company entered into a Securities Exchange Agreement and Plan of Reorganization (the \u201cAgreement\u201d) with Verdant Industries, Inc., a privately-held Delaware corporation (\u201cVII\u201d). Under the Agreement, the Company issued 30,000,000 shares of its restricted common stock to certain designees of VII. In exchange, the Company acquired all of the tangible and intangible assets of VII. As a result of the Agreement, the officers and directors of the Company tendered their respective resignations and the management of VII was appointed as the officers and directors of the Company. The value of the tangible and intangible assets recorded was $3,838,000, of which $3,833,722 was intangible assets subsequently written off as impaired.\nNOTE 8. GOODWILL\nGoodwill represents the excess of the cost of the amount paid over the acquired assets over the fair value of their net assets at the dates of acquisitions, plus the assumption of certain liabilities. Under ASC 350, Goodwill and Other Intangible Assets, the Company is required to annually assess the carrying value of goodwill to determine if impairment in value has occurred.\nThe Company determined that its goodwill was impaired and recorded an impairment charge of $3,833,722 for the year ended March 31, 2012.\nNOTE 9. NOTES PAYABLE-RELATED PARTIES\nThe Company\u2019s related party notes payable, all due currently, consists of the following:",
+   "prose_after": "(1) This note is convertible into 881,744 shares of common stock for its cancellation and the conversion price is based on the 10-day volume-weighted average price (\u201cVWAP\u201d) of the Company\u2019s common stock or $0.16, whichever is less. The accrued interest shall be converted at the same rate.\n(2) On May 10, 2012, the holder of this note agreed to extend the term thereon until June 1, 2014. Interest payments up to $10,000 are due on or before August 31, 2012. Principal and interest payments are due monthly commencing January 1, 2013 and ending June 1, 2014. The outstanding balance of this note is also convertible to shares of the Company\u2019s common stock at a price of $0.63 per share at any time prior to June 1, 2014.\nNOTE 10. NOTES PAYABLE\nThe Company\u2019s notes payable consists of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 927,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2012",
+     "",
+     "March 31, 2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, 15% interest, principle and interest due April 12, 2012(1)",
+     "$",
+     "45,000",
+     "$",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable, 10% interest, principle and interest due March 18, 2013",
+     "$",
+     "50,000",
+     "$",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "95,000",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 945
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "NOTES PAYABLE"
+    }
+   },
+   "prose_before": "(1) This note is convertible into 881,744 shares of common stock for its cancellation and the conversion price is based on the 10-day volume-weighted average price (\u201cVWAP\u201d) of the Company\u2019s common stock or $0.16, whichever is less. The accrued interest shall be converted at the same rate.\n(2) On May 10, 2012, the holder of this note agreed to extend the term thereon until June 1, 2014. Interest payments up to $10,000 are due on or before August 31, 2012. Principal and interest payments are due monthly commencing January 1, 2013 and ending June 1, 2014. The outstanding balance of this note is also convertible to shares of the Company\u2019s common stock at a price of $0.63 per share at any time prior to June 1, 2014.\nNOTE 10. NOTES PAYABLE\nThe Company\u2019s notes payable consists of the following:",
+   "prose_after": "(1) Effective April 11, 2012, the holder of this note agreed to extend the term of the note until April 12, 2013, upon the same terms in the original note.\nEach of two (2) unsecured convertible promissory notes identified in this Note 10 are convertible to common stock of the Company at one-tenth of one percent of the Company\u2019s initial private placement offering, which, in this case, was $0.10 per share. As such, the notes are convertible to common stock of the Company at $0.01 per share. The $45,000 note bears interest at 15% per annum and the $50,000 note bears interest at 10% per annum. The notes are scheduled to be converted on or before April 12, 2013 and March 18, 2013, respectively.\nDuring the quarter ended December 31, 2011, a note holder elected to convert his note valued at $50,000 to common stock at one-tenth of one percent of the Company\u2019s initial private placement offering, which, in this case, was $0.10 per share. As such, that note holder received 5,000,000 shares of the Company\u2019s restricted common stock at the time of conversion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 927,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Current Tax Benefit",
+     "$",
+     "--",
+     "$",
+     "--"
+    ],
+    [
+     "Deferred Tax(Benefit) Provision",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "Total Tax (Benefit) Provision",
+     "$",
+     "--",
+     "$",
+     "--"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 960,
+    "end_line": 969
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The application of income tax law is inherently complex. Laws and regulation in this area are voluminous and are often ambiguous. As such, the Company is required to make many subjective assumptions and judgments regarding the income tax exposures. Because interpretations of, and guidance surrounding, income tax laws and regulations change over time, changes in the subjective assumptions and judgments can materially affect amounts recognized in the balance sheets and statements of income.\nThe Company uses the liability method to account for income tax expense. Under this method, deferred tax assets and liabilities are determined based on differences between financial reporting and tax bases of assets and liabilities and are measured using the enacted tax rates and laws that will be in effect when the differences are expected to reverse. Valuation allowances are established for deferred tax assets if, after assessment of available positive and negative evidence, it is more likely than not that the deferred tax asset will not be fully realized.\nThe provision for income taxes consists of the following:",
+   "prose_after": "A reconciliation of the expected Federal statutory rate of 34% to the Company\u2019s actual rate as reported for each of the periods presented is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 927,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Expected statutory rate",
+     "",
+     "34.00",
+     "%",
+     "",
+     "34.00",
+     "%"
+    ],
+    [
+     "State Income tax rate, net of federal benefit",
+     "",
+     "8.84",
+     "%",
+     "",
+     "8.84",
+     "%"
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(42.84)",
+     "%",
+     "",
+     "(42.84)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 982
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation of the expected Federal statutory rate of 34% to the Company\u2019s actual rate as reported for each of the periods presented is as follows:",
+   "prose_after": "Due to various changes in ownership over the years, management does not believe that any significant net operating losses from prior years will be recognized. The current year losses should have created federal tax benefits for net operating losses and various deferrals in the amount of approximately $3,200,000. A valuation allowance in an equal amount has been recognized for the year ended March 31, 2012.\nThe Company is currently open to audit under the statute of limitations by the Internal Revenue Service for the years ending March 31, 2009 through 2012. The Company state income tax returns are open to audit under the statute of limitations for the years ending March 31, 2009 through 2012.\nThe Company recognizes interest and penalties related to income taxes in income tax expense. The Company knew of no incurred penalties and interest for the years ended March 31, 2012 and 2011.\nNOTE 12. SUBSEQUENT EVENTS\nExcept as provided herein, the Company has evaluated its activities, pursuant to ASC 855, and has determined that there are no additional reportable subsequent events.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Terms",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "500,000",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exchanged for Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2011",
+     "",
+     "500,000",
+     "",
+     "$",
+     "0.16",
+     "",
+     "4.87",
+     "",
+     "70,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exchanged for Shares",
+     "",
+     "(300,000)",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2012",
+     "",
+     "200,000",
+     "",
+     "$",
+     "0.16",
+     "",
+     "3.87",
+     "",
+     "28,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at March 31, 2012",
+     "",
+     "200,000",
+     "",
+     "$",
+     "0.16",
+     "",
+     "3.42",
+     "",
+     "28,000"
+    ],
+    [
+     "Weighted Average Grant Date Fair Value",
+     "",
+     "",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "All treasury stock has been cancelled as of March 31, 2012.\nWarrants\nDuring the quarter ended March 31 2012, the Company did not issue any new warrants.\nDuring the quarter ended December 31 2011, the Company did not issue any new warrants.\nDuring the quarter ended September 30, 2011, the Company did not issue any warrants.\nDuring the quarter ended June 30, 2011, and prior to the acquisition of Verdant Industries, Inc., Verdant Industries, Inc. issued 600,000 warrants, having a de minimus value, to two (2) members of its advisory board. The warrants were assumed by the Company during the acquisition of the assets and liabilities of Verdant Industries, Inc. The warrants are convertible to common stock of the Company at a strike price of $0.01 per share and, as of the date of this Report, 300,000 of said warrants have been exercised by one (1) holder as set forth in Note 13 herein.\nPrior to the acquisition of Verdant Industries, Inc., for the year ending March 31, 2011, the Company granted warrants to non-employee individuals and entities as follows:",
+   "prose_after": "On February 18, 2011, the Company granted 500,000 warrants to five non-employees. The warrants were valued at $0.159 per warrant or $79,500 using a Black-Scholes option-pricing model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1044,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Price",
+     "$0.16",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected Term",
+     "5 Years",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected Volatility",
+     "252.35%",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend Yield",
+     "0",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk Free Interest Rate",
+     "1.125%",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "On February 18, 2011, the Company granted 500,000 warrants to five non-employees. The warrants were valued at $0.159 per warrant or $79,500 using a Black-Scholes option-pricing model with the following assumptions:",
+   "prose_after": "The expected term equals the contractual terms for this non-employee grant. The volatility is based on comparable volatility of other companies since the Company was not yet trading and had no historical volatility.\nSubsequent to the quarter ended December 31, 2011, 1 warrant holder exercised the cashless exercise of its warrant for a total of 87,200 shares of restricted common stock at a strike price of $0.16 per share, which is not reflected in the table, above.\nNOTE 14 EARNINGS PER SHARE\nThe Company\u2019s Certificate of Incorporation authorizes us to issue 989,999,995 shares of common stock, par value $.001 per share. As of March 31, 2012, there were 120,946,840 shares of Class A Common Stock issued and outstanding. As of March 31, 2012, the Company had no other classes of capital stock authorized, issued or outstanding. The 120,946,840 shares of Class A Common Stock that were issued and outstanding as of March 31, 2012 include 54,400,000 shares of Class A Common Stock that were issued in 2011 and 2012 to key employees and executives and yet at March 31, 2012 remained subject to a repurchase or cancellation right in favor of the Company if certain conditions were not met, including for instance, termination of continued employment of the holder by the Company. The Company had not at March 31, 2012 exercised its repurchase/cancellation right as to any of such unvested shares, but the Company\u2019s repurchase/cancellation right was exercisable as to all 54,400,000 unvested shares at such date. For accounting presentation purposes herein, all 54,400,000 issued but unvested shares will not be considered as outstanding securities for earnings per share calculation. However, pursuant to Delaware state law, which governs the issuance and repurchase of our capital stock, all such shares are duly and validly issued, outstanding and eligible to vote.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1044,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As\n\n\n\nOriginally\n\n\n\nFiled",
+     "",
+     "",
+     "Reclassification\n\n\n\nof RSAs",
+     "",
+     "",
+     "As\n\n\n\nAmended",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "36,447",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "36,447",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "5,403,921",
+     "",
+     "",
+     "(5,365,000)",
+     "",
+     "",
+     "38,921",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "5,440,368",
+     "",
+     "",
+     "(5,365,000)",
+     "",
+     "",
+     "75,368",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, NET",
+     "",
+     "48,144",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "48,144",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "6,270",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "6,270",
+     ""
+    ],
+    [
+     "Note Receivable",
+     "",
+     "215,383",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "215,383",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "221,653",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "221,653",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "5,710,165",
+     "",
+     "$",
+     "(5,365,000)",
+     "",
+     "$",
+     "345,165",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY / (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "3,142,645",
+     "",
+     "$",
+     "(50,000)",
+     "",
+     "$",
+     "3,092,645",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses - Related party",
+     "",
+     "20,679",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "20,679",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "95,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Notes Payable - Related parties",
+     "",
+     "942,759",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "942,759",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "4,201,083",
+     "",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "4,151,083",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLERS' EQUITY / (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "120,947",
+     "",
+     "",
+     "(54,400)",
+     "",
+     "",
+     "66,547",
+     ""
+    ],
+    [
+     "Common Stock issued under Restricted Stock Agreements",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "19,607,273",
+     "",
+     "",
+     "(5,460,600)",
+     "",
+     "",
+     "14,146,673",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(18,219,138)",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "(18,019,138)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity / (Deficit)",
+     "",
+     "1,509,082",
+     "",
+     "",
+     "(5,315,000)",
+     "",
+     "",
+     "(3,805,918)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY / (DEFICIT)",
+     "$",
+     "5,710,165",
+     "",
+     "$",
+     "(5,365,000)",
+     "",
+     "$",
+     "345,165",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1121,
+    "end_line": 1175
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Until the vesting of the restricted stock granted by way of the RSAs, the Company retains the ability to repurchase the restricted stock from the Recipient at par value ($0.001) per share, and, under certain conditions, including for instance, the termination of continued employment of the holder by the Company, cancel the restricted stock. As of the date of this Report, none of the restricted stock granted in the RSAs has vested.\nSince the shares issued under RSAs are outstanding and eligible to vote, they were originally considered in the number of outstanding shares of the Company. Until vesting, their value was considered a Prepaid Expense to be recognized as a valid expense of the Company at vesting.\nDue to the Company\u2019s right to cancel the shares under certain conditions, for financial presentation purposes, the entire 54,900,000 shares are no longer considered as outstanding securities for financial calculation purposes, though they remain duly issued, outstanding and eligible to vote.\nThe line-by-line effect of these changes are reflected as follows:\nConsolidated Balance Sheet\nVRDT Corporation\n(A Development Stage Company)\nConsolidated Balance Sheet\nFor Fiscal Year Ended 3/31/2012",
+   "prose_after": "Consolidated Income Statement\nConsolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As\n\n\n\nOriginally\n\n\n\nFiled",
+     "",
+     "",
+     "Reclassification\n\n\n\nof RSAs",
+     "",
+     "",
+     "As\n\n\n\nAmended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,871",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,871",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "5,641,702",
+     "",
+     "",
+     "(200,000)",
+     "",
+     "",
+     "5,441,702",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "",
+     "3,833,722",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,833,722",
+     ""
+    ],
+    [
+     "Impairment of long-lived assets",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Impairment of loan receivable",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "9,479,295",
+     "",
+     "",
+     "(200,000)",
+     "",
+     "",
+     "9,279,295",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income / (Loss) from Operations",
+     "",
+     "(9,479,295)",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "(9,279,295)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income / (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Loss from conversion of shareholder debt",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "383",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "383",
+     ""
+    ],
+    [
+     "Interest (expense)",
+     "",
+     "(15,123)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(15,123)",
+     ""
+    ],
+    [
+     "Interest (expense) - Related parties",
+     "",
+     "(16,911)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(16,911)",
+     ""
+    ],
+    [
+     "Total Other Income / (Expense)",
+     "",
+     "(31,651)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(31,651)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income / (Loss) before Income Taxes",
+     "",
+     "(9,510,946)",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "(9,310,946)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provisions for Income Taxes",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss)",
+     "$",
+     "(9,510,946)",
+     "",
+     "$",
+     "200,000",
+     "",
+     "$",
+     "(9,310,946)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss) Per Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.12)",
+     "",
+     "$",
+     "(0.04)",
+     "",
+     "$",
+     "(0.16)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "79,726,924",
+     "",
+     "",
+     "(20,725,010)",
+     "",
+     "",
+     "59,001,914",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1184,
+    "end_line": 1238
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Consolidated Income Statement\nConsolidated Statement of Operations",
+   "prose_after": "Equity\nStatement of Stockholder's Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1182,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As\n\n\n\nOriginally\n\n\n\nFiled",
+     "",
+     "",
+     "Reclassification\n\n\n\nof RSAs",
+     "",
+     "",
+     "As\n\n\n\nAmended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock: Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2011",
+     "",
+     "3,700,726",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,700,726",
+     ""
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "",
+     "30,000,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "30,000,000",
+     ""
+    ],
+    [
+     "Treasury Stock - Redemtion and cancellation",
+     "",
+     "(1,700,000)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(1,700,000)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Purchased for Cash",
+     "",
+     "16,020,500",
+     "",
+     "",
+     "500",
+     "",
+     "",
+     "16,021,000",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "14,015,500",
+     "",
+     "",
+     "(750,000)",
+     "",
+     "",
+     "13,265,500",
+     ""
+    ],
+    [
+     "Restricted Stock - Employees & Directors",
+     "",
+     "53,650,000",
+     "",
+     "",
+     "750,000",
+     "",
+     "",
+     "54,400,000",
+     ""
+    ],
+    [
+     "Exercised warrants",
+     "",
+     "259,614",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "259,614",
+     ""
+    ],
+    [
+     "Conversion of debt to equity",
+     "",
+     "5,000,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "5,000,000",
+     ""
+    ],
+    [
+     "Balance at March 31, 2012",
+     "",
+     "120,946,340",
+     "",
+     "",
+     "(54,399,500)",
+     "",
+     "",
+     "120,946,840",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock: Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2011",
+     "$",
+     "3,701",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,701",
+     ""
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "",
+     "30,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Treasury Stock - Redemtion and cancellation",
+     "",
+     "(1,700)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(1,700)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Purchased for Cash",
+     "",
+     "16,021",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "16,021",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "14,016",
+     "",
+     "",
+     "(750)",
+     "",
+     "",
+     "13,266",
+     ""
+    ],
+    [
+     "Restricted Stock - Employees & Directors",
+     "",
+     "53,650",
+     "",
+     "",
+     "(53,650)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Exercised warrants",
+     "",
+     "260",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "260",
+     ""
+    ],
+    [
+     "Conversion of debt to equity",
+     "",
+     "5,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Balance at March 31, 2012",
+     "$",
+     "120,947",
+     "",
+     "$",
+     "(54,400)",
+     "",
+     "$",
+     "66,547",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional Paid-In Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2011",
+     "$",
+     "8,414,039",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "8,414,039",
+     ""
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "",
+     "2,970,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "2,970,000",
+     ""
+    ],
+    [
+     "Treasury Stock - Redemtion and cancellation",
+     "",
+     "(848,300)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(848,300)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Purchased for Cash",
+     "",
+     "2,272,780",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "2,272,780",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "1,442,405",
+     "",
+     "",
+     "(149,250)",
+     "",
+     "",
+     "1,293,155",
+     ""
+    ],
+    [
+     "Restricted Stock - Employees & Directors",
+     "",
+     "5,311,350",
+     "",
+     "",
+     "(5,311,350)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Exercised warrants",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Conversion of debt to equity",
+     "",
+     "45,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "45,000",
+     ""
+    ],
+    [
+     "Balance at March 31, 2012",
+     "$",
+     "19,607,273",
+     "",
+     "$",
+     "(5,460,600)",
+     "",
+     "$",
+     "14,146,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2011",
+     "$",
+     "(290,452)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(290,452)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Change in Control",
+     "",
+     "3,000,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ],
+    [
+     "Treasury Stock - Redemtion and cancellation",
+     "",
+     "(850,000)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(850,000)",
+     ""
+    ],
+    [
+     "Issuance of common stock - Purchased for Cash",
+     "",
+     "2,288,800",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "2,288,800",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "1,456,420",
+     "",
+     "",
+     "(150,000)",
+     "",
+     "",
+     "1,306,420",
+     ""
+    ],
+    [
+     "Restricted Stock - Employees & Directors",
+     "",
+     "5,365,000",
+     "",
+     "",
+     "(5,365,000)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Exercised warrants",
+     "",
+     "260",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "260",
+     ""
+    ],
+    [
+     "Conversion of debt to equity",
+     "",
+     "50,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Net (Loss) / Income",
+     "",
+     "(9,510,946)",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "(9,310,946)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2012",
+     "$",
+     "1,509,082",
+     "",
+     "$",
+     "(5,315,000)",
+     "",
+     "$",
+     "(3,805,918)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Equity\nStatement of Stockholder's Equity",
+   "prose_after": "Consolidated Cash Flow\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "REPEATING_HEADER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As\n\n\n\nOriginally\n\n\n\nFiled",
+     "",
+     "",
+     "Reclassification\n\n\n\nof RSAs",
+     "",
+     "",
+     "As\n\n\n\nAmended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATIONS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income / (Loss)",
+     "$",
+     "(9,510,946)",
+     "",
+     "$",
+     "200,000",
+     "",
+     "$",
+     "(9,310,946)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income / (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,871",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,871",
+     ""
+    ],
+    [
+     "Impairment of Goodwill",
+     "",
+     "3,833,722",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "3,833,722",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "1,456,680",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "1,456,680",
+     ""
+    ],
+    [
+     "Assumption of liabilities over value of assets",
+     "",
+     "(833,722)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(833,722)",
+     ""
+    ],
+    [
+     "Changes in Assets & Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease / (Increase) in prepaid expenses",
+     "",
+     "(41,719)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(41,719)",
+     ""
+    ],
+    [
+     "Decrease / (Increase) in note receivable",
+     "",
+     "(215,383)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(215,383)",
+     ""
+    ],
+    [
+     "(Decrease) / Increase in accounts payable and accrued expenses",
+     "",
+     "2,995,147",
+     "",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "2,945,147",
+     ""
+    ],
+    [
+     "(Decrease) / Increase in interest payable to stockholder",
+     "",
+     "16,911",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "16,911",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "(2,295,439)",
+     "",
+     "",
+     "150,000",
+     "",
+     "",
+     "(2,145,439)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property plant and equipment",
+     "",
+     "(52,015)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(52,015)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(52,015)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(52,015)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from notes payable - other",
+     "",
+     "95,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Payments on notes payable - other",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "Proceeds from inssuance of common stock",
+     "",
+     "2,338,800",
+     "",
+     "",
+     "(150,000)",
+     "",
+     "",
+     "2,188,800",
+     ""
+    ],
+    [
+     "Net cash from financing activities",
+     "",
+     "2,383,800",
+     "",
+     "",
+     "(150,000)",
+     "",
+     "",
+     "2,233,800",
+     ""
+    ],
+    [
+     "Net Increase / (Decrease) in cash",
+     "",
+     "36,346",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "36,346",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "101",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "101",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "36,447",
+     "",
+     "",
+     "0",
+     "",
+     "$",
+     "36,447",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1317,
+    "end_line": 1367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Consolidated Cash Flow\nConsolidated Statement of Cash Flows",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1315,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2451 N. McMullen Booth Road \n\n\n\nSuite.308\n\n\n\nClearwater, FL 33759\n\n\n\n \n\n\n\n855.334.0934 Toll free"
+    ]
+   ],
+   "caption_stack": [
+    "2451 N. McMullen Booth Road \n\n\n\nSuite.308\n\n\n\nClearwater, FL 33759\n\n\n\n \n\n\n\n855.334.0934 Toll free"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1368,
+    "end_line": 1377
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nThe Board of Directors and Stockholders\nVRDT Corporation We have audited the accompanying consolidated balance sheets of VRDT Corporation as of March 31, 2012 and 2011, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for the years then ended and from August 19, 1999 (Inception) through March 31, 2012. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit. We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion. In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of VRDT Corporation as of March 31, 2012 and 2011 and the results of its operations and its cash flows for the years then ended and the period from August 19, 1999 (Inception) through March 31, 2012, in conformity with accounting principles generally accepted in the United States of America. The accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in footnote 3 to the financial statements, the Company has not generated revenue and has not established operations which raise substantial doubt about its ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty. As discussed in footnote 15 to the consolidated financial statements, the consolidated financial statements as of and for the year ended March 31, 2012 have been revised to change the presentation of restricted stock awards.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1385,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Cortis Capital LLP",
+     "2006 \u2013 Present",
+     "Managing Partner"
+    ],
+    [
+     "VSL Group",
+     "2006 \u2013 July 2012",
+     "Chairman"
+    ],
+    [
+     "Applied Intelligence Resource",
+     "2003 \u2013 Present",
+     "Managing Partner"
+    ],
+    [
+     "Unisys Corporation",
+     "2008 \u2013 2009",
+     "Advisor to the Management Board"
+    ],
+    [
+     "Cable & Wireless",
+     "2007 - 2008",
+     "Advisor to the Management Board"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1434,
+    "end_line": 1443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "The Company\u2019s management, including the CEO and CFO, does not expect that our disclosure controls and procedures or our internal control over financial reporting will prevent or detect all error and all fraud. A control system, no matter how well designed and operated, can provide only reasonable, not absolute, assurance that the control system\u2019s objectives will be met. Further, the design of the control system must reflect that there are resource constraints and that the benefits must be considered relative to their costs. Because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that all control issues and instances of fraud, if any, within the company have been detected. These inherent limitations include the realities that judgments in decision-making can be faulty and that breakdowns can occur because of simple error or mistake. Controls can also be circumvented by the individual acts of some persons, by collusion of two or more people, or by management override of controls. The design of any system of controls is based in part on certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated goals under all potential future conditions. Projections of any evaluation of controls effectiveness to future periods are subject to risks. Over time, controls may become inadequate because of changes in conditions or deterioration in the degree of compliance with policies or procedures.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nExecutive Officers and Directors of VRDT\nExecutive Officers\nGraham Norton-Standen; Age 55; Executive Chairman; Chairman of the Board\nAppointed to Board of Directors on June 24, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Norton-Standen\u2019s experience as a board member and chairman for other entities led the Company to conclude that he was qualified to serve as a director of the Company.\nDaniel J Elliott, Age 41, Chief Production Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1415,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Kimridge Consulting",
+     "01/2009 \u2013 01/2011",
+     "Partner"
+    ],
+    [
+     "Microvast, Inc.",
+     "03/2010 \u2013 08/2010",
+     "Chief Executive Officer"
+    ],
+    [
+     "Phoenix MC, Inc.",
+     "11/2006 \u2013 12/2009",
+     "Chairman; Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1452,
+    "end_line": 1459
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Norton-Standen\u2019s experience as a board member and chairman for other entities led the Company to conclude that he was qualified to serve as a director of the Company.\nDaniel J Elliott, Age 41, Chief Production Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Elliott\u2019s experience as a board member for other entities, his technical understanding of energy storage solutions and his background as chief executive for other energy-related entities led the Company to conclude that Mr. Elliott was qualified to serve as a director of the Company.\nSteve Aust; Age 54; President; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1415,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Self-Employed",
+     "2007-Present",
+     "Business Development Consultant"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1468,
+    "end_line": 1473
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Elliott\u2019s experience as a board member for other entities, his technical understanding of energy storage solutions and his background as chief executive for other energy-related entities led the Company to conclude that Mr. Elliott was qualified to serve as a director of the Company.\nSteve Aust; Age 54; President; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Aust\u2019s entrepreneurial experiences and fundamental understanding of corporate development led the Company to conclude that he was qualified to serve as a director of the Company.\nDennis Hogan, Age 59, Chief Financial Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1415,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Phoenix Motorcars",
+     "2/2007-2/2011",
+     "Chief Financial Officer"
+    ],
+    [
+     "Greenhouse Capital",
+     "1/2007-Present",
+     "Consultant"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1482,
+    "end_line": 1488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Aust\u2019s entrepreneurial experiences and fundamental understanding of corporate development led the Company to conclude that he was qualified to serve as a director of the Company.\nDennis Hogan, Age 59, Chief Financial Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Hogan\u2019s prior experience as an officer, his fundamental understanding of management of energy related companies, and his extensive background in finance led the Company to conclude that he was qualified to serve as a director of the Company.\nDavid Edgar, Age 39, Chief Technology and Operating Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Microvast, Inc.",
+     "3/2010-01/2011",
+     "General Manager"
+    ],
+    [
+     "Phoenix Motorcars",
+     "12/2007-3/2010",
+     "Director"
+    ],
+    [
+     "Rapiscan Systems",
+     "12/2006-1/2008",
+     "Program Manager"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1497,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Hogan\u2019s prior experience as an officer, his fundamental understanding of management of energy related companies, and his extensive background in finance led the Company to conclude that he was qualified to serve as a director of the Company.\nDavid Edgar, Age 39, Chief Technology and Operating Officer; Director\nAppointed to Board of Directors on May 11, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Edgar\u2019s experience as a board member for other entities and his extensive operational and technical knowledge of battery and energy storage technologies led the Company to conclude that he was qualified to serve as a director of the Company.\nLarry Pendleton, Age 56, Chief Information Officer\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "24Tech Corporation",
+     "9/2007- Present",
+     "VP/Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1511,
+    "end_line": 1516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Edgar\u2019s experience as a board member for other entities and his extensive operational and technical knowledge of battery and energy storage technologies led the Company to conclude that he was qualified to serve as a director of the Company.\nLarry Pendleton, Age 56, Chief Information Officer\nPrior Business Experience:",
+   "prose_after": "Bryon Bliss; Age 33; Secretary, Chief of Staff\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Phoenix Motorcars",
+     "11/2006 to 06/2011",
+     "VP, Sales & Marketing"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1521,
+    "end_line": 1526
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Bryon Bliss; Age 33; Secretary, Chief of Staff\nPrior Business Experience:",
+   "prose_after": "Dan Malstrom, Age 41, Chief Marketing Officer\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Malstrom Consulting",
+     "2004-Present",
+     "Principal"
+    ],
+    [
+     "Microvast, Inc.",
+     "4/2010-1/2011",
+     "Senior VP, Business Development"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1531,
+    "end_line": 1537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Dan Malstrom, Age 41, Chief Marketing Officer\nPrior Business Experience:",
+   "prose_after": "Non-Employee Directors\nAC Green; Age 49; Director\nAppointed to Board of Directors on July 6, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "A.C. Green Youth Foundation",
+     "1989- Present",
+     "Principal and Founder"
+    ],
+    [
+     "National Basketball Association",
+     "2004-Present",
+     "Global Ambassador"
+    ],
+    [
+     "Going Green with AC Green",
+     "2009-Present",
+     "Principal and founder"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1546,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Non-Employee Directors\nAC Green; Age 49; Director\nAppointed to Board of Directors on July 6, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience",
+   "prose_after": "Mr. Green\u2019s experience as a business owner, his commitment to \u201cgreen\u201d technologies, his celebrity and exposure and his entrepreneurial background led the Company to conclude that Mr. Mr. Green was qualified to serve as a director of the Company.\nDonald A. Driftmier, CPA, Age 66, Director, Chairman-Audit Committee\nAppointed to Board of Directors on September 24, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employer",
+     "Dates",
+     "Position"
+    ],
+    [
+     "Noble House Entertainment Pictures, Inc.",
+     "11/2007 \u2013 Present",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Boards:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Casa Colina Centers for Rehabilitation",
+     "1984-Present",
+     "Chairman-Audit Committee, Finance"
+    ],
+    [
+     "",
+     "",
+     "Committee, Centers Operating Committee"
+    ],
+    [
+     "California Board of Accountancy",
+     "2004 \u2013 Present",
+     "Board Member; President (2008)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1562,
+    "end_line": 1573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Green\u2019s experience as a business owner, his commitment to \u201cgreen\u201d technologies, his celebrity and exposure and his entrepreneurial background led the Company to conclude that Mr. Mr. Green was qualified to serve as a director of the Company.\nDonald A. Driftmier, CPA, Age 66, Director, Chairman-Audit Committee\nAppointed to Board of Directors on September 24, 2011, to serve until his successor has been duly appointed and qualified.\nPrior Business Experience:",
+   "prose_after": "Mr. Driftmier\u2019s experience as a board member for other entities and his extensive background in finance led the Company to conclude that Mr. Driftmier was qualified to serve as a director of the Company.\nItem 11. Executive Compensation.\nNon-Employee Director Compensation\nThe following table shows, for the year ended March 31, 2012, certain information with respect to the compensation of all of our non-employee directors.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director",
+     "Accrued Fees",
+     "",
+     "Stock Compensation",
+     "",
+     "Total Compensation",
+     ""
+    ],
+    [
+     "Don Driftmier",
+     "$",
+     "60,000",
+     "$",
+     "200,000",
+     "$",
+     "260,000"
+    ],
+    [
+     "AC Green",
+     "$",
+     "90,000",
+     "$",
+     "250,000",
+     "$",
+     "340,000"
+    ],
+    [
+     "Graham Norton-Standen",
+     "$",
+     "90,000",
+     "$",
+     "550,000",
+     "$",
+     "640,000"
+    ],
+    [
+     "",
+     "$",
+     "240,000",
+     "$",
+     "1,000,000",
+     "$",
+     "1,240,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Mr. Driftmier\u2019s experience as a board member for other entities and his extensive background in finance led the Company to conclude that Mr. Driftmier was qualified to serve as a director of the Company.\nItem 11. Executive Compensation.\nNon-Employee Director Compensation\nThe following table shows, for the year ended March 31, 2012, certain information with respect to the compensation of all of our non-employee directors.",
+   "prose_after": "Compensation for employee-directors is set forth below. See: \u201c2012 Compensation Actions for Our Named Executive Officers (through March 31, 2012).\u201d\nThe directors have each agreed to temporarily forego their respective cash compensation, which has accrued as unpaid executive compensation owed by the Company until paid, until such time as the Company determines that it has sufficient capital to begin distributing said cash compensation.\nExecutive Officer Compensation\nOur named executive officers as of June 26, 2012, are:\nGraham Norton-Standen \u2013 Executive Chairman and Chief Executive Officer\nDan Elliott- Chief Production Officer\nSteve Aust- President\nDennis Hogan- Chief Financial Officer\nDavid Edgar- Chief Technology Officer\nHistorical Compensation Decisions",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Salary($/year) (1)",
+     "Stock Awards (Fair Value in $)\u2019 (2)"
+    ],
+    [
+     "Graham Norton-Standen",
+     "Executive Chairman",
+     "312,000",
+     "400,000"
+    ],
+    [
+     "Daniel J, Elliott",
+     "Chief Production Officer",
+     "312,000",
+     "400,000"
+    ],
+    [
+     "Steve Aust",
+     "President",
+     "312,000",
+     "400,000"
+    ],
+    [
+     "Dennis Hogan",
+     "Chief Financial Officer",
+     "264,000",
+     "200,000"
+    ],
+    [
+     "David Edgar",
+     "Chief Technical Officer",
+     "240,000",
+     "200,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1676,
+    "end_line": 1686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Initial equity compensation awards for executive officers are individually negotiated with each executive officer at the time they are hired. In determining initial equity grants, our Chief Executive Officer and board of directors considered a number of factors, including the competitive market for corresponding positions within comparable companies, the general and personal knowledge possessed by our Chief Executive Officer, human resources staff and board members, internal equity and a subjective evaluation of the potential contributions of the executive officer to the company given the executive\u2019s particular position within the company (such as potential impact on long-term results or impact on operational results). The individual grants approved in 2011 and 2012, as described below under \u201c2012 Compensation Actions for Our Named Executive Officers,\u201d were determined based on a review of the executive\u2019s job performance in addition to a review of the criteria described above. Equity awards to executive officers have not historically been based upon a formula.\nThe board of directors expects the compensation committee to continue an annual stock option grant program for executive officers considering the same type of criteria as described above to continue aligning the interests of our executive officers with those of our stockholders. Participation in our Employee Stock Purchase Plan as part of our Stock Compensation Program will also be available to all executive officers on the same basis as our other employees.\nOther Compensation and Benefits\nOther Employee Benefits. We provide health care, dental, and life insurance to all full-time employees, including our executive officers. These benefits are available to all employees, subject to applicable laws. Other than as described above, we do not provide perquisites to executive officers that are not available to all Company employees on the same terms.\n2012 Compensation Actions for Our Named Executive Officers (through March 31, 2012)",
+   "prose_after": "No executive officer received any bonus pay, option awards, non-equity incentive plan compensation, non-qualified deferred compensation earnings, or other compensation not identified in the above chart. Additionally, each executive officer has served in that capacity for only 1 year. Thus, there is no data available for fiscal year 2010 with respect to each.\nAccounting and Tax Considerations\nSection 162(m) of the Internal Revenue Code of 1986, which only applies to public companies, limits the deduction for federal income tax purposes to not more than $1 million of compensation paid to certain executive officers in a calendar year. Compensation above $1 million may be deducted if it is \u201cperformance-based compensation.\u201d The compensation committee has not established a policy for determining which forms of incentive compensation awarded to our executive officers should be designed to qualify as \u201cperformance-based compensation\u201d following our initial public offering. To maintain flexibility in compensating our executive officers in a manner designed to promote our objectives, the compensation committee has not adopted a policy that requires all compensation to be deductible.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1665,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1692,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of Unvested Shares",
+     "Market Value of Unvested Shares ($)\u20191"
+    ],
+    [
+     "Graham Norton-Standen",
+     "4,000,000",
+     "2,040,000"
+    ],
+    [
+     "Daniel J, Elliott",
+     "4,000,000",
+     "2,040,000"
+    ],
+    [
+     "Steve Aust",
+     "4,000,000",
+     "2,040,000"
+    ],
+    [
+     "Dennis Hogan",
+     "2,000,000",
+     "1,020,000"
+    ],
+    [
+     "David Edgar",
+     "2,000,000",
+     "1,020,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1713,
+    "end_line": 1723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Until the vesting of the restricted stock granted by way of the RSAs, the Company retains the ability to repurchase the restricted stock from the Recipient at par value ($0.001) per share, and, under certain conditions, including for instance, the termination of continued employment of the holder by the Company, cancel the restricted stock. As of the date of this Report, none of the restricted stock granted in the RSAs has vested.\nFor accounting presentation purposes herein, all 54,900,000 issued but unvested shares will not be considered as outstanding securities. However, pursuant to Delaware state law, which governs the issuance and repurchase of our capital stock, all such shares are duly and validly issued, outstanding and eligible to vote.\nOutstanding Equity Awards at Fiscal Year-End\nAs the Restricted Securities granted by way of the respective RSAs have not vested as of the Company\u2019s fiscal year end, each of those shares remains an outstanding equity award. There are, however, no outstanding option awards or equity incentive plan awards for any person or entity. The following chart illustrates the outstanding unvested stock awards for the executive officers identified in this Report:",
+   "prose_after": "Equity Benefit Plan\n2013 Stock Compensation Program\nOur board of directors has instructed counsel to prepare a employee stock compensation program and intends to consider the draft presented to it at a its next meeting, subject to stockholder approval. The Stock Compensation Program will become effective as of the date of the effectiveness of stockholder approval.\n3 The closing market price of the Company\u2019s common stock as of March 30, 2012, was $0.51 per share, which serves as the basis for the market value of the unvested shares identified herein.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nPRINCIPAL STOCKHOLDERS\nSecurity Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nPrincipal Stockholders\nThe following table sets forth information about the beneficial ownership of our common stock as of June 26, 2012 for:\n\u25cf each person, or group of affiliated persons, known to us to be the beneficial owner of more than 5% of our common stock;",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1696,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Shares Beneficially Owned",
+     "Percentage of Class Beneficially Owned"
+    ],
+    [
+     "Graham Norton-Standen",
+     "9,500,000",
+     "7.62"
+    ],
+    [
+     "Daniel J. Elliott",
+     "8,817,500",
+     "7.08"
+    ],
+    [
+     "Steve Aust",
+     "8,817,500",
+     "7.08"
+    ],
+    [
+     "Dennis Hogan",
+     "6,700,000",
+     "5.38"
+    ],
+    [
+     "David Edgar",
+     "6,700,000",
+     "5.38"
+    ],
+    [
+     "Raymond Chin",
+     "6,700,000",
+     "5.38"
+    ],
+    [
+     "AC Green",
+     "4,500,000",
+     "3.61"
+    ],
+    [
+     "Bryon Bliss",
+     "4,500,000",
+     "3.61"
+    ],
+    [
+     "Dan Malstrom",
+     "4,500,000",
+     "3.61"
+    ],
+    [
+     "Don Driftmier",
+     "1,250,000",
+     "1.00"
+    ],
+    [
+     "Larry Pendleton",
+     "1,100,000",
+     "0.88"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1749,
+    "end_line": 1765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nPrincipal Stockholders\nThe following table sets forth information about the beneficial ownership of our common stock as of June 26, 2012 for:\n\u25cf each person, or group of affiliated persons, known to us to be the beneficial owner of more than 5% of our common stock;\n\u25cf each named executive officer;\n\u25cf each of our directors; and\n\u25cf all of our executive officers and directors as a group.\nUnless otherwise noted below, the address of each beneficial owner listed on the table is c/o VRDT Corporation, 12223 Highland Avenue, Suite 106-542, Rancho Cucamonga, California 91739. We have determined beneficial ownership in accordance with the rules of the SEC. We believe that, based on the information furnished to us by the stockholders, the persons and entities named in the tables below have sole voting and investment power with respect to all shares of common stock that they beneficially own, subject to applicable community property laws.",
+   "prose_after": "Total Shares Owned By Executive Officers and Directors as a Group: 63,085,000\nTotal Percent of Class Owned By Executive Officers and Directors as a Group: 50.62%\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nCERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS\nBelow we describe transactions and series of similar transactions, from May 11, 2011 to March 31, 2012, to which we have been a party or will be a party, in which:\n\u25cf the amounts involved exceeded or will exceed $120,000; and\n\u25cf a director, executive officer, beneficial holder of more than 5% of our capital stock or any member of their immediate family had or will have a direct or indirect material interest.\nBelow we also describe certain other transactions with our directors, executive officers and stockholders. Other than as described below, there has not been, nor is there currently proposed, any such transaction or series of similar transactions to which we have been or will be a party other than compensation arrangements described elsewhere herein.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "Certification of Chief Executive Officer of the Company required by Rule 13a-14(1) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer of the Company required by Rule 13a-14(1) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Chief Executive Officer of the Company pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and Section 1350 of 18 U.S.C. 63."
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Chief Financial Officer of the Company pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and Section 1350 of 18 U.S.C. 63."
+    ],
+    [
+     "101.INS*",
+     "",
+     "XBRL Instance (Previously filed)"
+    ],
+    [
+     "101.SCH*",
+     "",
+     "XBRL Taxonomy Extension Schema (Previously filed)"
+    ],
+    [
+     "101.CAL*",
+     "",
+     "XBRL Taxonomy Extension Calculation (Previously filed)"
+    ],
+    [
+     "101.DEF*",
+     "",
+     "XBRL Taxonomy Extension Definition (Previously filed)"
+    ],
+    [
+     "101.LAB*",
+     "",
+     "XBRL Taxonomy Extension Labels (Previously filed)"
+    ],
+    [
+     "101.PRE*",
+     "",
+     "XBRL Taxonomy Extension Presentation (Previously filed)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1875,
+    "end_line": 1889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "At present, there is no pending litigation or proceeding involving any of our directors or executive officers as to which indemnification is required or permitted, and we are not aware of any threatened litigation or proceeding that may result in a claim for indemnification.\nItem 14. Principal Accounting Fees and Services.\nAudit Fees\nThe Company\u2019s auditors for the years ended March 31, 2012 and March 31, 2011 are Drake & Klein, CPAs, located in Clearwater, Florida. The Company has paid $7,500 and $7,500 for its quarterly financial reviews, Form 10-Q reviews, and Form 10-K reviews for the years ending March 31, 2012 and March 31, 2011, respectively. The Company has paid $10,000 and $10,000 for its annual financial audits for the years ending March 31, 2012 and March 31, 2011, respectively.\nTax Fees\nThe Company\u2019s taxes are prepared internally therefore no fees have been paid associated with tax preparation.\nAll Other Fees\nThe Company has no other related fees.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.",
+   "prose_after": "* XBRL information is furnished and not filed or a part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1839,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Graham Norton-Standen",
+     "August 12, 2013"
+    ],
+    [
+     "Graham Norton-Standen, Chief Executive Officer",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1896,
+    "end_line": 1900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "* XBRL information is furnished and not filed or a part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Dennis Hogan",
+     "August 12, 2013"
+    ],
+    [
+     "Dennis Hogan, Chief Financial Officer, and Principal Accounting Officer",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1901,
+    "end_line": 1905
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Graham Norton-Standen",
+     "August 12, 2013"
+    ],
+    [
+     "Graham Norton-Standen, Director",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1908,
+    "end_line": 1912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Dennis Hogan",
+     "August 12, 2013"
+    ],
+    [
+     "Dennis Hogan, Director",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1913,
+    "end_line": 1917
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Don Driftmier",
+     "August 12, 2013"
+    ],
+    [
+     "Don Driftmier, Director",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1918,
+    "end_line": 1922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Steve Aust",
+     "August 12, 2013"
+    ],
+    [
+     "Steve Aust, President and Director",
+     "Date"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1923,
+    "end_line": 1927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RESTATED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1891,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

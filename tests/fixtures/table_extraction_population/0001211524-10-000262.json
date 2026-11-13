@@ -1,0 +1,5227 @@
+{
+ "accession": "0001211524-10-000262",
+ "cik": "0001400000",
+ "form": "10-K",
+ "filing_date": "2010-12-21",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "abakan10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada (State or other jurisdiction of incorporation or organization)",
+     "N/A\n\n\n\n(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended May 31, 2010.\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___ t [ ] .\nCommission file number: 000-52784\nABAKAN INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2665 S. Bayshore Drive, Suite 450, Miami, Florida 33133\n(Address of principal executive offices) (Zip Code)\nRegistrant\u2019s telephone number, including area code: (786) 206-5368\nSecurities registered under Section 12(b) of the Act: none.\nSecurities registered under Section 12(g) of the Act: common stock (title of class), $0.0001 par value.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] N [ ] [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] N [ ] [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] N [ ] [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item1.",
+     "",
+     "Business",
+     "",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "",
+     "Risk Factors",
+     "",
+     "12"
+    ],
+    [
+     "Item 1B.",
+     "",
+     "Unresolved Staff Comments",
+     "",
+     "15"
+    ],
+    [
+     "Item 2.",
+     "",
+     "Properties",
+     "",
+     "16"
+    ],
+    [
+     "Item 3.",
+     "",
+     "Legal Proceedings",
+     "",
+     "16"
+    ],
+    [
+     "Item 4.",
+     "",
+     "(Removed and Reserved)",
+     "",
+     "16"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities",
+     "",
+     "16"
+    ],
+    [
+     "Item 6.",
+     "",
+     "Selected Financial Data",
+     "",
+     "21"
+    ],
+    [
+     "Item 7.",
+     "",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "22"
+    ],
+    [
+     "Item 7A.",
+     "",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "",
+     "26"
+    ],
+    [
+     "Item 8.",
+     "",
+     "Financial Statements and Supplementary Data",
+     "",
+     "26"
+    ],
+    [
+     "Item 9.",
+     "",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "27"
+    ],
+    [
+     "Item 9A.",
+     "",
+     "Controls and Procedures",
+     "",
+     "27"
+    ],
+    [
+     "Item 9B.",
+     "",
+     "Other Informatio\u2022",
+     "",
+     "28"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "",
+     "Directors, Executive Officers, and Corporate Governance",
+     "",
+     "29"
+    ],
+    [
+     "Item 11.",
+     "",
+     "Executive Compensatio\u2022",
+     "",
+     "34"
+    ],
+    [
+     "Item 12.",
+     "",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "",
+     "38"
+    ],
+    [
+     "Item 13.",
+     "",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "39"
+    ],
+    [
+     "Item 14.",
+     "",
+     "Principal Accountant Fees and Services",
+     "",
+     "41"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "",
+     "41",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "42",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 126
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [X] N [ ] [ ]\nThe aggregate market value of the registrant\u2019s common stock, $0.0001 par value (the only class of voting stock), held by non-affiliates (35,075,000 shares) was $36,478,000 based on the average of the bid and ask price ($1.04) for the common stock on December 20 , 2010.\nAt December 20 , 2010, the number of shares outstanding of the registrant\u2019s common stock, $0.0001 par value (the only class of voting stock), was 58,175,000.",
+   "prose_after": "ITEM 1. BUSINESS\nAs used herein the terms \u201cCompany,\u201d \u201cwe,\u201d \u201cour,\u201d a\u2022d \u201cus\u201d refer to Abakan Inc. unless context indicates otherwise.\nCorporate History\nThe Company was incorporated in the State of Nevada on June 27, 2006 under the name \u201cYour Digital Memories Inc.\u201d\nWaste to Energy Group Inc., a wholly-owned subsidiary of the Company, was incorporated in the state of Nevada on August 13, 2008. Waste to Energy Group Inc., and the Company entered into an Agreement and Plan of Merger on August 14, 2008. The board of directors of Waste to Energy Group Inc., and the Company deemed it advisable and in the best interest of their respective companies and shareholders that Waste to Energy Inc., be merged with and into the Company with the Company remaining as the surviving corporation under the name \u201cWaste to Energy Group Inc.\u201d\nAbakan Inc., a wholly-owned subsidiary of the Company, was incorporated in the state of Nevada on November 6, 2009. Abakan Inc. and the Company entered into an Agreement and Plan of Merger on November 6, 2009. The board of directors of Abakan Inc., and the Company deemed it advisable and in the best interest of their respective companies and shareholders that Abakan Inc., be merged with and into the Company with the Company remaining as the surviving corporation as \u201cAbakan Inc.\u201d",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "High and Low Bid Prices",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year",
+     "Quarter Ended",
+     "High",
+     "Low"
+    ],
+    [
+     "2010",
+     "November 30",
+     "$1.18",
+     "$0.48"
+    ],
+    [
+     "2010",
+     "August 31",
+     "$1.03",
+     "$0.26"
+    ],
+    [
+     "2010",
+     "May 31",
+     "$1.55",
+     "$0.40"
+    ],
+    [
+     "2010",
+     "February 28",
+     "$0.90",
+     "$0.65"
+    ],
+    [
+     "2009",
+     "November 30",
+     "$0.25",
+     "$0.80"
+    ],
+    [
+     "2009",
+     "August 31",
+     "$0.10",
+     "$0.25"
+    ],
+    [
+     "2009",
+     "May 31",
+     "$0.51",
+     "$0.21"
+    ],
+    [
+     "2009",
+     "February 28",
+     "$1.00",
+     "$0.40"
+    ]
+   ],
+   "caption_stack": [
+    "High and Low Bid Prices"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 435
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company currently maintains its offices at 2665 S. Bayshore Drive, Suite 450, Miami, Florida, 33133. The Company pays no rent for the use of this address. The Company does not believe that it will need to maintain as larger office at any time in the foreseeable future in order to carry out the plan of operation described herein as our subsidiary and future acquisitions will maintain adequate facilities.\nITEM 3. LEGAL PROCEEDINGS\nNone.\nITEM 4. (REMOVED AND RESERVED)\nRemoved and reserved.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES\nThe Company\u2019s common stock has been quoted on the Pink Sheets electronic quotation system under the symbol \u201cABKI\u201d. Trading has been limited and sporadic and the quotations set forth below are not necessarily indicative of actual market conditions. Further, these prices reflect inter-dealer prices without retail mark-up, mark-down, or commission, and may not necessarily reflect actual transactions. The following table sets forth for the periods indicated the high and low bid prices for the common stock as reported for each quarterly period.",
+   "prose_after": "Capital Stock\nThe following is a summary of the material terms of the Company\u2019s capital stock. This summary is subject to and qualified by our articles of incorporation and bylaws.\nCommon Stock\nAs of December 20, 2010 there were 34 shareholders of record holding a total of 58,175,000 shares of fully paid and non-assessable common stock of the 2,500,000,000 shares of common stock, par value $0.0001, authorized. The board of directors believes that the number of beneficial owners is greater than the number of record holders because a portion of our outstanding common stock is held in broker \u201cstreet names\u201d for the benefit of individual investors. The holders of the common stock are entitled to one vote for each share held of record on all matters submitted to a vote of stockholders. Holders of the common stock have no pre-emptive rights and no right to convert their common stock into any other securities. There are no redemption or sinking fund provisions applicable to the common stock.\nPreferred Stock",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Investor",
+     "Net Consideration",
+     "Exemption",
+     "Shares"
+    ],
+    [
+     "Bank Julius Baer & Co. Ltd.",
+     "$1,245,000",
+     "Reg S/Sec 4(2)",
+     "1,660,000"
+    ],
+    [
+     "Cat Brokerage AG",
+     "$825,000",
+     "Reg S/Sec 4(2)",
+     "1,100,000"
+    ],
+    [
+     "Edward P. Phelan",
+     "$112,500",
+     "Reg D, Rule 506/Sec 4(2)",
+     "150,000"
+    ],
+    [
+     "Kosson Ventures Ltd.",
+     "$67,500",
+     "Reg S/Sec 4(2)",
+     "90,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 250,000 options have an exercise price of $1.30 per share, expire on April 29, 2020, and vest in equal increments over three years to beginning April 29, 2011.\n\u00b7 200,000 options have an exercise price of $0.65 per share, expire on July 31, 2020, and vest in equal increments over three years to beginning July 31, 2011.\n1,225,000 options have an exercise price of $0.65 per share, expire on October 18, 2020, and vest in equal increments over three years beginning on October 18, 2011.\nConvertible Securities\nAs of December 20, 2010, the Company had no securities convertible into the shares of its common stock.\nTransfer Agent and Registrar\nOur transfer agent is Island Stock Transfer, located at 100 Second Avenue South, Suite 300, St. Petersburg, Florida, 33701. (727) 289-0010.\nRecent Sales of Unregistered Securities; Use of Proceeds from Registered Securities\nOn December 10, 2010 the board of directors of the Company closed an equity financing to raise an aggregate of $2,250,000 through the sale of common shares at $0.75 per share as follows:",
+   "prose_after": "Regulation S provides generally that any offer or sale that occurs outside of the United States is exempt from the registration requirements of the Securities Act, provided that certain conditions are met. Regulation S has two safe harbors. One safe harbor applies to offers and sales by issuers, securities professionals involved in the distribution process pursuant to contract, their respective affiliates, and persons acting on behalf of any of the foregoing (the \u201cissuer safe harbor\u201d), and the other applies to resales by persons other than the issuer, securities professionals involved in the distribution process pursuant to contract, their respective affiliates (except certain officers and directors), and persons acting on behalf of any of the forgoing (the \u201cresale safe harbor\u201d). An offer, sale or resale of securities that satisfies all conditions of the applicable safe harbor is deemed to be outside the United States as required by Regulation S.\nThe Company complied with the exemption requirements of Regulation S by having directed no offering efforts in the United States, by offering common shares only to offerees who were outside the United States at the time of the offering, and ensuring that the persons to whom the common shares were issued and authorized were non-U.S. persons with addresses in foreign countries.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grantee",
+     "Options"
+    ],
+    [
+     "Elisheva Levin",
+     "25,000"
+    ],
+    [
+     "Reginald Allen",
+     "25,000"
+    ],
+    [
+     "Ruairidh Campbell",
+     "50,000"
+    ],
+    [
+     "Mario Medanic",
+     "200,000"
+    ],
+    [
+     "Edward Phelan",
+     "200,000"
+    ],
+    [
+     "James Chew",
+     "200,000"
+    ],
+    [
+     "Prosper Financial",
+     "500,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "On November 1, 2010, the Company authorized the issuance of 60,000 shares of common stock to Uptick Capital, LLC, pursuant to a consulting agreement relying on an exemption provided by Section 4(2) of the Securities Act.\nThe Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the issuance was an isolated private transactions that did not involve a public offering; (2) there was only one offeree; (3) the offeree committed to hold its stock; (4) there have been no subsequent or contemporaneous public offerings of the stock; (5) the stock was not broken down into smaller denominations; and (6) the discussions that lead to the issuance of the stock took place directly between the offeree and the Company.\nOn October 18, 2010, the Company granted options to purchase an aggregate of 1,200,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on October 18, 2011, at an exercise price of $0.65 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "prose_after": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there was only seven grantees; (3) the grantees committed to hold their options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the option grants took place directly between the grantees and the Company.\nOn July 31, 2010, the Company granted options to purchase 200,000 shares of the Company\u2019s common stock to Costas Takkas, the Company\u2019s chief financial officer, pursuant to a consulting agreement, which options vest in equal parts over three years commencing on July 31, 2011, at an exercise price of $0.65 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act.\nThe Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grant was an isolated private transaction that did not involve a public offering; (2) there was only one grantee; (3) the grantee committed to hold his options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the grant of the options took place directly between the grantee and the Company.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grantee",
+     "Options"
+    ],
+    [
+     "Mario Medanic",
+     "50,000"
+    ],
+    [
+     "Reginald Allen",
+     "50,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 577
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "On April 1, 2010 the Company granted options to purchase 100,000 shares of the Company\u2019s common stock to Carol Laws, which options vest in equal parts over three years commencing on April 1, 2010, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act.\nThe Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grant was an isolated private transaction that did not involve a public offering; (2) there was only one grantee; (3) the grantee committed to hold her options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the grant of the options took place directly between the grantee and the Company.\nOn March 15, 2010, the Company granted options to purchase an aggregate of 100,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on March 15, 2011, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "prose_after": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there were only two grantees; (3) the grantees committed to hold their options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the option grants took place directly between the grantees and the Company.\nOn December 11, 2009, the Company granted options to purchase an aggregate of 300,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on December 11, 2009, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grantee",
+     "Options"
+    ],
+    [
+     "David Greenbaum",
+     "200,000"
+    ],
+    [
+     "Carol Laws",
+     "100,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there were only two grantees; (3) the grantees committed to hold their options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the option grants took place directly between the grantees and the Company.\nOn December 11, 2009, the Company granted options to purchase an aggregate of 300,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on December 11, 2009, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "prose_after": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there were only two grantees; (3) the grantees committed to hold their options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the option grants took place directly between the grantees and the Company.\nOn December 11, 2009, the Company granted options to purchase an aggregate of 2,000,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on December 11, 2010, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grantee",
+     "Options"
+    ],
+    [
+     "Andrew Sherman",
+     "1,000,000"
+    ],
+    [
+     "Prosper Financial, Inc.",
+     "1,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 598,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND BUSINESS ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there were only two grantees; (3) the grantees committed to hold their options; (4) there have been no subsequent or contemporaneous public offerings of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the option grants took place directly between the grantees and the Company.\nOn December 11, 2009, the Company granted options to purchase an aggregate of 2,000,000 shares of the Company\u2019s common stock, that vest in equal parts over three years commencing on December 11, 2010, at an exercise price of $0.60 per share for a period of ten years from the date of grant, relying on an exemption provided by Section 4(2) of the Securities Act, to the following:",
+   "prose_after": "The Company complied with the exemption requirements of Section 4(2) of the Securities Act for the above option grants based on the following factors: (1) the grants were isolated private transactions that did not involve a public offering; (2) there were limited grantees, all of whom have some managerial responsibility with the Company; (3) the grantees committed to hold the stock underlying their options; (4) there were no subsequent or contemporaneous public grants of the options; (5) the options were not broken down into smaller denominations; and (6) the discussions that lead to the grant of the options took place directly between the grantees and the Company.\nPurchases of Equity Securities made by the Issuer and Affiliated Purchasers\nThe Company has not repurchased any shares of its common stock during the fiscal year ended May 31, 2010.\nITEM 6. SELECTED FINANCIAL DATA\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION\nThis Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and other parts of this current report contain forward-looking statements that involve risks and uncertainties. Forward-looking statements can also be identified by words such as \u201canticipates,\u201d \u201cexpects,\u201d \u201cbelieves,\u201d \u201cplans,\u201d \u201cpredicts,\u201d and similar terms. Forward-looking statements are not guarantees of future performance and our actual results may differ significantly from the results discussed in the forward-looking statements. Factors that might cause such differences include but are not limited to those discussed in the subsection entitled Forward-Looking Statements and Factors That May Affect Future Results and Financial Condition below. The following discussion should be read in conjunction with our financial statements and notes thereto included in this current report. Our fiscal year end is May 31.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "May 31,",
+     "",
+     "May 31,"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "",
+     "",
+     "$",
+     "40,564",
+     "$",
+     "15"
+    ],
+    [
+     "Note receivable - related party (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "8,500",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid expenses (Note 4)",
+     "",
+     "",
+     "",
+     "",
+     "25,151",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid expenses - related party (Note 5)",
+     "",
+     "",
+     "",
+     "",
+     "14,153",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "88,368",
+     "",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment, net (Note 3)",
+     "",
+     "",
+     "",
+     "",
+     "2,526",
+     "",
+     "5,347"
+    ],
+    [
+     "Website, net (Note 3)",
+     "",
+     "",
+     "",
+     "",
+     "3,500",
+     "",
+     "10,500"
+    ],
+    [
+     "Investment in Minority Interest - MesoCoat (Note 6)",
+     "",
+     "",
+     "",
+     "",
+     "1,208,365",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,214,391",
+     "",
+     "15,847"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "",
+     "",
+     "$",
+     "1,302,759",
+     "$",
+     "15,862"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accruals",
+     "",
+     "",
+     "",
+     "$",
+     "72,899",
+     "$",
+     "17,858"
+    ],
+    [
+     "Accounts payable - related parties",
+     "",
+     "",
+     "",
+     "",
+     "72,071",
+     "",
+     "71,210"
+    ],
+    [
+     "Loans Payable (Note 9)",
+     "",
+     "",
+     "",
+     "",
+     "70,156",
+     "",
+     "196,225"
+    ],
+    [
+     "Accrued interest - loans payable (Note 9)",
+     "",
+     "",
+     "",
+     "",
+     "11,380",
+     "",
+     "7,665"
+    ],
+    [
+     "Loan payable- related party",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "48,483"
+    ],
+    [
+     "Accrued interest - related party",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "2,664"
+    ],
+    [
+     "Accrued Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "67,261",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "293,767",
+     "",
+     "344,104"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (Note 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT) (Note 7)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.0001 par value, 50,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, none issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.0001, 2,500,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, 55,115,000 issued and outstanding \u2013 May 31, 2010,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "50,265,000 issued and outstanding - May 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "5,511",
+     "",
+     "5,026"
+    ],
+    [
+     "Paid in capital",
+     "",
+     "",
+     "",
+     "",
+     "3,018,313",
+     "",
+     "73,116"
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "",
+     "",
+     "",
+     "(1,750)",
+     "",
+     "-"
+    ],
+    [
+     "Contributed Capital",
+     "",
+     "",
+     "",
+     "",
+     "5,050",
+     "",
+     "5,050"
+    ],
+    [
+     "Accumulated deficit during the development stage",
+     "",
+     "",
+     "",
+     "",
+     "(2,018,132)",
+     "",
+     "(411,434)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "1,008,992",
+     "",
+     "(328,242)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "$",
+     "1,302,759",
+     "$",
+     "15,862"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 884
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Abakan, Inc. (A Development Stage Company) as of May 31, 2010, and the related statements of operations, stockholders\u2019 equity (deficit) and cash flows for the years ended May 31, 2010 and 2009, and since inception on June 27, 2006 through May 31, 2010, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 12 to the financial statements, the Company has net losses since inception in the amount of $2,018,132 which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans concerning these matters are also described in Note 12. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Seale and Beers, CPAs\nSeale and Beers, CPAs\nLas Vegas, Nevada\nDecember 20, 2010\n50 S. Jones Blvd. Suite 202 Las Vegas, NV 89107 Phone: (888)727-8251 Fax: (888)782-2351\n(Formerly known as Waste to Energy Group, Inc.)\nBALANCE SHEETS",
+   "prose_after": "The accompanying condensed notes are an integral part of these consolidated financial statements.\n(Formerly Waste To Energy Group Inc)\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Cumulative"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "amounts from"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "development stage"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "activities"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "June 27, 2006"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "May 31,",
+     "",
+     "",
+     "",
+     "(Inception) to"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "May 31, 2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,596"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative",
+     "",
+     "",
+     "",
+     "74,529",
+     "",
+     "22,313",
+     "",
+     "105,404"
+    ],
+    [
+     "Professional Fees",
+     "",
+     "",
+     "",
+     "85,393",
+     "",
+     "39,605",
+     "",
+     "150,555"
+    ],
+    [
+     "Professional Fees - Related party",
+     "",
+     "",
+     "",
+     "35,000",
+     "",
+     "-",
+     "",
+     "45,000"
+    ],
+    [
+     "Consulting",
+     "",
+     "",
+     "",
+     "166,799",
+     "",
+     "92,500",
+     "",
+     "241,971"
+    ],
+    [
+     "Consulting - Related party",
+     "",
+     "",
+     "",
+     "512,000",
+     "",
+     "-",
+     "",
+     "539,500"
+    ],
+    [
+     "Payroll and benefits expense",
+     "",
+     "",
+     "",
+     "66,261",
+     "",
+     "-",
+     "",
+     "66,261"
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "",
+     "9,821",
+     "",
+     "9,615",
+     "",
+     "23,436"
+    ],
+    [
+     "Impairment of Asset",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "180,000",
+     "",
+     "180,000"
+    ],
+    [
+     "Stock Expense on note Conversion",
+     "",
+     "",
+     "",
+     "142,370",
+     "",
+     "-",
+     "",
+     "142,370"
+    ],
+    [
+     "Stock options Expense",
+     "",
+     "",
+     "",
+     "313,313",
+     "",
+     "-",
+     "",
+     "313,313"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "",
+     "",
+     "1,405,484",
+     "",
+     "344,034",
+     "",
+     "1,808,808"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "",
+     "(1,405,484)",
+     "",
+     "(344,034)",
+     "",
+     "(1,807,212)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest - Loans",
+     "",
+     "",
+     "",
+     "8,893",
+     "",
+     "7,665",
+     "",
+     "16,628"
+    ],
+    [
+     "Interest - Related Party",
+     "",
+     "",
+     "",
+     "2,038",
+     "",
+     "2,664",
+     "",
+     "4,631"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total interest expense",
+     "",
+     "",
+     "",
+     "10,931",
+     "",
+     "10,329",
+     "",
+     "21,259"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "",
+     "",
+     "1,382",
+     "",
+     "-",
+     "",
+     "2,004"
+    ],
+    [
+     "Equity in MesoCoat loss",
+     "",
+     "",
+     "",
+     "(191,665)",
+     "",
+     "-",
+     "",
+     "(191,665)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "",
+     "",
+     "(1,606,698)",
+     "",
+     "(354,363)",
+     "",
+     "(2,018,132)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "",
+     "$",
+     "(1,606,698)",
+     "$",
+     "(354,363)",
+     "$",
+     "(2,018,132)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE - BASIC AND DILUTED",
+     "",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHARES OUTSTANDING - BASIC AND DILUTED",
+     "",
+     "",
+     "",
+     "52,393,630",
+     "",
+     "94,930,479",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "* = less than $(.01) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cumulative",
+    "amounts from",
+    "development stage",
+    "activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these consolidated financial statements.\n(Formerly Waste To Energy Group Inc)\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying condensed notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF STOCKHOLDERS' EQUITY (DEFECIT)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid - in",
+     "",
+     "Accumulated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Capital",
+     "",
+     "During",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Contributed",
+     "",
+     "Warrants",
+     "",
+     "Development",
+     "",
+     "Stockholders\u2019"
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "Capital",
+     "",
+     "and Options",
+     "",
+     "Stage",
+     "",
+     "Equity"
+    ],
+    [
+     "Inception, June 27, 2006",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Common Shares issued to director for cash June 27, 2006",
+     "2,500,000",
+     "",
+     "250",
+     "",
+     "(150)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "100"
+    ],
+    [
+     "Common Shares issued to director for cash June 27, 2006",
+     "125,300,000",
+     "",
+     "12,530",
+     "",
+     "(7,518)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,012"
+    ],
+    [
+     "Common Shares issued to director for cash October 31, 2006",
+     "62,500,000",
+     "",
+     "6,250",
+     "",
+     "(3,750)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,500"
+    ],
+    [
+     "Private placement closed April 30, 2007",
+     "35,265,000",
+     "",
+     "3,527",
+     "",
+     "67,003",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "70,530"
+    ],
+    [
+     "Net (loss) for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(28,079)",
+     "",
+     "(28,079)"
+    ],
+    [
+     "Balance, May 31, 2007",
+     "225,565,000",
+     "",
+     "22,557",
+     "",
+     "55,585",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(28,079)",
+     "",
+     "50,063"
+    ],
+    [
+     "Net (loss) for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(28,993)",
+     "",
+     "(28,993)"
+    ],
+    [
+     "Balance, May 31, 2008 (Restated)",
+     "225,565,000",
+     "",
+     "22,557",
+     "",
+     "55,585",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(57,072)",
+     "",
+     "21,070"
+    ],
+    [
+     "Common Shares cancelled to directors September 2, 2008",
+     "(175,300,000)",
+     "",
+     "(17,531)",
+     "",
+     "17,531",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Contributed Capital",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,050",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,050"
+    ],
+    [
+     "Net (loss) for the year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(354,363)",
+     "",
+     "(354,363)"
+    ],
+    [
+     "Balance, May 31, 2009",
+     "50,265,000",
+     "",
+     "5,026",
+     "",
+     "73,116",
+     "",
+     "5,050",
+     "",
+     "-",
+     "",
+     "(411,434)",
+     "",
+     "(328,242)"
+    ],
+    [
+     "Private placement, closed December 16, 2009 for $0.50 per share",
+     "4,200,000",
+     "",
+     "420",
+     "",
+     "2,099,580",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,100,000"
+    ],
+    [
+     "Debt Converted into stock December 16, 2009 for $0.60 per share, including costs of $102,370",
+     "400,000",
+     "",
+     "40",
+     "",
+     "342,330",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "342,370"
+    ],
+    [
+     "Subscription receivable from above private placement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,750)",
+     "",
+     "",
+     "",
+     "(1,750)"
+    ],
+    [
+     "Common shares issued services on April 26, 2010",
+     "150,000",
+     "",
+     "15",
+     "",
+     "89,985",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "90,000"
+    ],
+    [
+     "Common shares issued services on April 30, 2010",
+     "100,000",
+     "",
+     "10",
+     "",
+     "99,990",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "100,000"
+    ],
+    [
+     "Stock options expense",
+     "",
+     "",
+     "",
+     "",
+     "313,313",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "313,313"
+    ],
+    [
+     "Net (loss) for nine months",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,606,698)",
+     "",
+     "(1,606,698)"
+    ],
+    [
+     "Balance, May 31, 2010",
+     "55,115,000",
+     "$",
+     "5,511",
+     "$",
+     "3,018,313",
+     "$",
+     "5,050",
+     "$",
+     "(1,750)",
+     "",
+     "(2,018,132)",
+     "$",
+     "1,008,992"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 986,
+    "end_line": 1025
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF STOCKHOLDERS' EQUITY (DEFECIT)",
+   "prose_after": "The accompanying condensed notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Cumulative"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "amounts from"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "development"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "stage activities"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "June 27, 2006"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "May 31,",
+     "",
+     "",
+     "",
+     "(Inception) to"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "May 31, 2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM DEVELOPMENT STAGE ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) from development stage activities",
+     "",
+     "",
+     "",
+     "$",
+     "(1,606,698)",
+     "$",
+     "(354,363)",
+     "$",
+     "(2,018,132)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided (used)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "by development stage activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "",
+     "",
+     "9,821",
+     "",
+     "9,615",
+     "",
+     "23,436"
+    ],
+    [
+     "Stock options expense",
+     "",
+     "",
+     "",
+     "",
+     "313,313",
+     "",
+     "-",
+     "",
+     "313,313"
+    ],
+    [
+     "Stock expense from note conversion",
+     "",
+     "",
+     "",
+     "",
+     "142,370",
+     "",
+     "-",
+     "",
+     "142,370"
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "",
+     "",
+     "",
+     "190,000",
+     "",
+     "-",
+     "",
+     "190,000"
+    ],
+    [
+     "Equity in investee loss",
+     "",
+     "",
+     "",
+     "",
+     "191,665",
+     "",
+     "-",
+     "",
+     "191,665"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts receivable",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "387",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Accounts receivable - related party",
+     "",
+     "",
+     "",
+     "(8,500)",
+     "",
+     "-",
+     "",
+     "(8,500)"
+    ],
+    [
+     "",
+     "Prepaid expenses",
+     "",
+     "",
+     "",
+     "(39,304)",
+     "",
+     "-",
+     "",
+     "(39,304)"
+    ],
+    [
+     "",
+     "Accounts payable and accrued liabilities",
+     "",
+     "",
+     "",
+     "122,302",
+     "",
+     "86,068",
+     "",
+     "211,369"
+    ],
+    [
+     "",
+     "Accounts payable - related parties",
+     "",
+     "",
+     "",
+     "64,872",
+     "",
+     "-",
+     "",
+     "64,872"
+    ],
+    [
+     "",
+     "Accrued interest - related party",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "2,664",
+     "",
+     "2,664"
+    ],
+    [
+     "",
+     "Accrued interest - loans payable",
+     "",
+     "",
+     "",
+     "10,931",
+     "",
+     "7,665",
+     "",
+     "18,596"
+    ],
+    [
+     "",
+     "Waste to Energy Group LLC",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "180,000",
+     "",
+     "180,000"
+    ],
+    [
+     "Total adjustments",
+     "",
+     "",
+     "",
+     "",
+     "997,469",
+     "",
+     "286,399",
+     "",
+     "1,290,480"
+    ],
+    [
+     "",
+     "NET CASH USED BY DEVELOPMENT STAGE ACTIVITIES",
+     "",
+     "",
+     "",
+     "(609,229)",
+     "",
+     "(67,964)",
+     "",
+     "(727,652)"
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Purchase of computer equipment and website",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "(2,645)",
+     "",
+     "(29,462)"
+    ],
+    [
+     "",
+     "MesoCoat Inc- minority interest",
+     "",
+     "",
+     "",
+     "(1,400,030)",
+     "",
+     "-",
+     "",
+     "(1,400,030)"
+    ],
+    [
+     "",
+     "Waste to Energy Group LLC",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "(180,000)",
+     "",
+     "(180,000)"
+    ],
+    [
+     "",
+     "NET CASH PROVIDED USED BY INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "(1,400,030)",
+     "",
+     "(182,645)",
+     "",
+     "(1,609,492)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Proceeds from sale of Common Stock",
+     "",
+     "",
+     "",
+     "2,100,000",
+     "",
+     "-",
+     "",
+     "2,178,142"
+    ],
+    [
+     "",
+     "Loans payable",
+     "",
+     "",
+     "",
+     "(50,192)",
+     "",
+     "196,225",
+     "",
+     "146,033"
+    ],
+    [
+     "",
+     "Loans payable - related party",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "48,483",
+     "",
+     "48,483"
+    ],
+    [
+     "",
+     "Contributed capital",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "5,050",
+     "",
+     "5,050"
+    ],
+    [
+     "",
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "2,049,808",
+     "",
+     "249,758",
+     "",
+     "2,377,708"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "NET INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "",
+     "",
+     "40,549",
+     "",
+     "(671)",
+     "",
+     "40,564"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH AND CASH EQUIVALENTS, BEGINNING OF PERIOD",
+     "",
+     "",
+     "",
+     "15",
+     "",
+     "687",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH AND CASH EQUIVALENTS, END OF PERIOD",
+     "",
+     "",
+     "$",
+     "40,564",
+     "$",
+     "15",
+     "$",
+     "40,564"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash paid for income taxes",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "Cash paid for interest",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Supplemental Non-cash Disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes and accounts payable converted to stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable - related party",
+     "",
+     "",
+     "$",
+     "(64,010)",
+     "",
+     "",
+     "$",
+     "(64,010)"
+    ],
+    [
+     "",
+     "Loans payable",
+     "",
+     "",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "",
+     "(25,000)"
+    ],
+    [
+     "",
+     "Notes payable - related party",
+     "",
+     "",
+     "",
+     "(99,515)",
+     "",
+     "",
+     "",
+     "(99,515)"
+    ],
+    [
+     "",
+     "Accrued interest \u2013 related party",
+     "",
+     "",
+     "",
+     "(9,724)",
+     "",
+     "",
+     "",
+     "(9,724)"
+    ],
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "",
+     "200,000"
+    ],
+    [
+     "",
+     "Subscription receivable",
+     "",
+     "",
+     "",
+     "(1,750)",
+     "",
+     "",
+     "",
+     "(1,750)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Cumulative",
+    "amounts from",
+    "development",
+    "stage activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1166
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these consolidated financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying condensed notes are an integral part of these consolidated financial statements.\n(Formerly Waste to Energy Group Inc.)\nFor the years ended May 31, 2010 and 2009\nNote 1 \u2013 General Organization and Business\nAbakan Inc. (\u201cthe Company,\u201d we, us, our, ABKI) was incorporated in the state of Nevada on June 27, 2006, and is in the development stage as defined under FASB ASC 915-10, \"Development Stage Entities.\"\nAbakan Inc., a wholly-owned subsidiary of Waste to Energy Group Inc., was incorporated in the state of Nevada on November 6, 2009. Abakan Inc. and Waste to Energy Group Inc. entered into an Agreement and Plan of Merger on November 6, 2009. The board of directors of Abakan Inc. and Waste to Energy Group Inc. deemed it advisable and in the best interest of their respective companies and shareholders that Abakan Inc. be merged with and into Waste to Energy Group Inc. with Waste to Energy Group Inc. remaining as the surviving corporation under the name Abakan Inc.\nWaste to Energy Group Inc., a wholly-owned subsidiary of Your Digital Memories Inc., was incorporated in the state of Nevada on August 13, 2008. Waste to Energy Group Inc. and Your Digital Memories Inc. entered into an Agreement and Plan of Merger on August 14, 2008. The board of directors of Waste to Energy Group Inc. and Your Digital Memories Inc. deemed it advisable and in the best interest of their respective companies and shareholders that Waste to Energy be merged with and into Your Digital Memories Inc. with Your Digital Memories Inc. remaining as the surviving corporation under the name Waste to Energy Group Inc.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1029,
+     "token": "REPEATING_HEADER",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "05/31/10",
+     "05/31/09"
+    ],
+    [
+     "",
+     "Cost",
+     "Accumulated Amortization",
+     "Net Book\n\n\n\nValue",
+     "Net Book Value"
+    ],
+    [
+     "Computer Equipment",
+     "$ 8,462",
+     "$ 5,936",
+     "$ 2,526",
+     "$ 5,347"
+    ],
+    [
+     "Website",
+     "$21,000",
+     "$17,500",
+     "$ 3,500",
+     "$10,500"
+    ],
+    [
+     "Total",
+     "$29,462",
+     "$23,436",
+     "$ 6,026",
+     "$15,847"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1306,
+    "end_line": 1317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property and Equipment"
+    }
+   },
+   "prose_before": "The Company will expense its advertising costs when incurred. There have been no expenditures on advertising since inception.\nFor the years ended May 31, 2010 and 2009\nStock-based compensation\nThe Company adopted FASB ASC 718-10 and valued our employee stock based awards based on the grant-date fair value estimated in accordance with the provisions of FASB ASC 718-10. The Company accounts for equity instruments issued in exchange for the receipt of goods or services from other than employees in accordance with FASB ASC 718-10 and the conclusions reached in FASB ASC 505-10. Costs are measured at the estimated fair market value of the consideration received or the estimated fair value of the equity instruments issued, whichever is more reliably measurable. The value of equity instruments issued for consideration other than employee services is determined on the earliest of a performance commitment or completion of performance by the provider of goods or services as defined by FASB ASC 505-10.\nNote 3 \u2013 Property and Equipment\nProperty and equipment consisted of the following:",
+   "prose_after": "Depreciation and amortization expense was $9,821 and $9,615 for the years ended May 31, 2010 and 2009, respectively.\nWebsite Development\nIn December 2007, we contracted with an unrelated contractor to develop a website that reflected our new logo, business and branding. It was completed and was accessible in December 2007. Since it was completed, our contractor has made updates to reflect our current business as needed. In accordance with ASC 350-50, \u201cIntangibles \u2013 Goodwill and other- Websites,\u201d we capitalized website development costs of $21,000, and commenced its amortization over three years starting in December 2007.\nFor the years ended May 31, 2010 and 2009\nNote 4 \u2013 Prepaid Expenses\nPrepaid expenses comprise of the following at May 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1296,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1323,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Description",
+     "Amount"
+    ],
+    [
+     "Preferred Medical Plan",
+     "Month in advance premium",
+     "$            151"
+    ],
+    [
+     "Haynes and Boone, LLP",
+     "Prepayment retainer for legal fees",
+     "25,000"
+    ],
+    [
+     "",
+     "Total",
+     "$        25,151"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1333,
+    "end_line": 1342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Prepaid Expenses"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense was $9,821 and $9,615 for the years ended May 31, 2010 and 2009, respectively.\nWebsite Development\nIn December 2007, we contracted with an unrelated contractor to develop a website that reflected our new logo, business and branding. It was completed and was accessible in December 2007. Since it was completed, our contractor has made updates to reflect our current business as needed. In accordance with ASC 350-50, \u201cIntangibles \u2013 Goodwill and other- Websites,\u201d we capitalized website development costs of $21,000, and commenced its amortization over three years starting in December 2007.\nFor the years ended May 31, 2010 and 2009\nNote 4 \u2013 Prepaid Expenses\nPrepaid expenses comprise of the following at May 31, 2010:",
+   "prose_after": "Note 5 \u2013 Prepaid Expenses \u2013 related party\nPrepaid expenses comprise of the following at May 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "REPEATING_HEADER",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Description",
+     "Amount",
+     ""
+    ],
+    [
+     "Prosper Financial",
+     "Advance payment for expenses",
+     "$",
+     "2,522"
+    ],
+    [
+     "Costas M.Takkas",
+     "Consulting advance payment",
+     "",
+     "1,631"
+    ],
+    [
+     "MesoCoat, Inc.",
+     "Advance payment for expenses",
+     "",
+     "10,000"
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "14,153"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1347,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Prepaid Expenses \u2013 related party"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Prepaid Expenses \u2013 related party\nPrepaid expenses comprise of the following at May 31, 2010:",
+   "prose_after": "Note 6 - Investment in non-controlling interest\nOn December 11, 2009 we entered into an Investment Agreement (\u201cAgreement\u201d) with MesoCoat, Inc., (\u201cMesoCoat\u201d) and Powdermet Inc., its majority shareholder. MesoCoat is in the process of building a diversified, patented product platform that consists of environmentally friendly coating compositions and breakthrough methods of applying coatings to large surface areas.\nPursuant to the Agreement, we subscribed to a fully diluted thirty four percent (34%) equity interest in MesoCoat in exchange for $1,400,000 and a series of options to acquire up to one hundred percent (100%) of MesoCoat on the satisfaction of certain conditions. The closing of the Agreement also entitled the Company to appoint two directors to MesoCoat\u2019s five person board of directors.\nThe initial option entitles us to subscribe to an additional seventeen percent (17%) equity interest in MesoCoat in exchange for two million eight hundred thousand dollars ($2,800,000) within twelve (12) months of the closing date of the Agreement. Exercise of the initial option would increase the Company\u2019s holdings to a fully diluted fifty one percent (51%) of MesoCoat and entitle the Company\u2019s management to offer an independent director to serve as one of the five appointed to the MesoCoat board of directors. Further, the exercise of the initial option would cause the Shareholders Agreement, executed concurrently with the Agreement, to become effective. The Shareholders Agreement governs the actions of MesoCoat shareholders in certain aspects of corporate action and creates an obligation for existing shareholders and any new shareholders to be bound in like manner. The second option entitles us to subscribe to an additional twenty four percent (24%) equity interest in MesoCoat in exchange for sixteen million dollars ($16,000,000) within twelve (12) months of the exercise of the initial option.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "REPEATING_HEADER",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 16, 2009"
+    ],
+    [
+     "Expected volatility (based on historical volatility)",
+     "158.57%"
+    ],
+    [
+     "Expected dividends",
+     "0.00"
+    ],
+    [
+     "Expected term in years",
+     "10"
+    ],
+    [
+     "Risk-free rate",
+     "0.95%"
+    ]
+   ],
+   "caption_stack": [
+    "December 16, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1431,
+    "end_line": 1440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "As part of the above placement we also converted several debts to shares of our common stock in exchange for the amounts owed to an unrelated party and two related parties. For the converted debt of $200,000 the individuals received 400,000 units, each unit consisted of one share of restricted common stock, and one half share warrant to purchase shares of our common stock, with a purchase price of $0.75 per share and an expiration date of two years from the closing. We incurred a stock expense from the conversion of debt of $142,370, including $102,370 for the detachable warrants granted and $40,000 from a discount of our closing share price on the day.\nOn April 26 and 30, 2010, we issued 150,000 and 100,000 shares of common stock, respectively, for signing bonuses to our Vice President of Business Development and our Vice President of Pipeline Coating Sales. These issuances were in fulfillment of the agreements discussed in Note 10, below.\nFor the years ended May 31, 2010 and 2009\nNote 7 \u2013 Stockholders\u2019 Equity \u2013 continued\nCommon Stock Warrants\nIn connection with the above private placement and payables to common stock conversions, we valued the common stock warrants granted during the year ended May 31, 2010 using the Black-Scholes model with the following assumptions:",
+   "prose_after": "The expected volatility assumption was based upon historical stock price volatility measured on a daily basis. The risk-free interest rate assumption is based upon U.S. Treasury bond interest rates appropriate for the term of the Company\u2019s warrants. The dividend yield assumption is based on our history and expectation of dividend payments.\nA summary of the common stock warrants granted during the year ended May 31, 2010 is presented below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1421,
+     "token": "REPEATING_HEADER",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1458,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options"
+    ],
+    [
+     "Balance at June 1, 2009",
+     "-"
+    ],
+    [
+     "Granted",
+     "2,300,000"
+    ],
+    [
+     "Exercised",
+     "-"
+    ],
+    [
+     "Forfeited or Expired",
+     "-"
+    ],
+    [
+     "Balance at May 31, 2010",
+     "2,300,000"
+    ],
+    [
+     "Exercisable at May 31, 2010",
+     "2,300,000"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Options"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1445,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "The expected volatility assumption was based upon historical stock price volatility measured on a daily basis. The risk-free interest rate assumption is based upon U.S. Treasury bond interest rates appropriate for the term of the Company\u2019s warrants. The dividend yield assumption is based on our history and expectation of dividend payments.\nA summary of the common stock warrants granted during the year ended May 31, 2010 is presented below:",
+   "prose_after": "For the years ended May 31, 2010 and 2009\nNote 8 \u2013 Related Party Transactions\nAs of May 31, 2010 and 2009, we had balances totalling $72,071 and $71,210 outstanding in accounts payable - related party respectively. In addition to related party transactions mentioned elsewhere, we have the below agreements and transactions:\nConsulting Agreements\na) During the year ending May 31, 2009 the Company entered into a consulting agreement commencing September 2, 2008 with a company controlled by the chief executive officer. The terms of the consulting agreement are $5,000 per month payable in consulting fees and reimbursement to the consultant for all reasonable business expenses incurred by it in the performance of its duties. On December 1, 2009 we entered into a new consulting agreement commencing December 1, 2009 with the same related company. The terms of the new consulting agreement are $2,500 per month payable in consulting fees and reimbursement to the consultant for all reasonable business expenses incurred by it in the performance of its duties, and will be in effect until December 01, 2010. The consultant was also granted 1,000,000 stock options with an exercise price of $0.60 per share; they will vest equally over 3 years (see Note 11). For the years ended May 31, 2010 and 2009, we expensed $42,500 and $45,000, respectively, in connection with this contract and are included in consulting fees \u2013 related parties. As of May 31, 2010 and 2009, we owed $-0- and $22,729, respectively, and is included in accounts payable - related party.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1421,
+     "token": "REPEATING_HEADER",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1458,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31,",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "2010",
+     "",
+     "2009"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated entity bearing no interest",
+     "$           -",
+     "",
+     "$      11,250"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated entity bearing no interest",
+     "-",
+     "",
+     "35,000"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated\n\n\n\nEntity bearing 1% interest per annum\n\n\n\nUncollateralized demand note to an unrelated entity bearing 8% interest per annum",
+     "156\n\n\n\n \n\n\n\n     70,000",
+     "",
+     "-\n\n\n\n   \n\n\n\n       70,000"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated entity bearing 8% interest per annum",
+     "-",
+     "",
+     "50,000"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated entity bearing 8% interest per annum",
+     "-",
+     "",
+     "10,000"
+    ],
+    [
+     "Uncollateralized demand note to an unrelated entity bearing no interest",
+     "-",
+     "",
+     "19,975"
+    ],
+    [
+     "",
+     "$     70,156",
+     "",
+     "$    196,225"
+    ]
+   ],
+   "caption_stack": [
+    "May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Loans Payable"
+    }
+   },
+   "prose_before": "b) On September 22, 2008, $50,000 was advanced to Waste to Energy Group LLC as part of the payments due to Waste to Energy Group LLC in the Memorandum of Understanding between the two companies by a company controlled by the chief executive officer of the Company. A Promissory Note in the amount of $50,000 was issued from the Company on September 22, 2008 paying 8% interest per annum. During the year ending May 31, 2009 $1,617 was paid by an unrelated party directly to the company controlled by the chief executive officer on behalf of the Company. During the year ended May 31, 2010, the same related party was assigned a note and accrued interest, as described in Note 9b, above. As of the year ended May 31, 2010 the total interest accrued on this Promissory Note issued by the Company was $4,702. Then the Note holder used the balance owed including the accrued interest and an amount from accounts payable to purchase units in our private placement closed on December 16, 2009, as further described in Note 8. Accordingly, as of May 31, 2010, the balance on this note is zero.\nFor the years ended May 31, 2010 and 2009\nNote 9 \u2013 Loans Payable\nAs of May 31, 2010 and 2009, the loans payable balance consisting of:",
+   "prose_after": "We also owed $11,380 and $7,665 in accrued interest for the above notes as of May 31, 2010 and 2009, respectively.\nNote 10 \u2013 Commitments and Contingencies\nConsulting agreements\nOn November 1, 2009 we entered into a consulting agreement commencing November 1, 2009 with an unrelated individual to provide business office consulting. The terms of the consulting agreement are $2,000 per month payable in consulting fees and reimbursement to the consultant for all reasonable business expenses incurred by it in the performance of its duties, and will be in effect until November 30, 2010.\nOn February 1, 2010, we entered into an additional consulting agreement commencing February 1, 2010, with an unrelated individual to provide business office consulting. The terms of the consulting agreement are $3,300 per month payable in consulting fees and reimbursement to the consultant for all reasonable business expenses incurred by it in the performance of its duties, and will be in effect until January 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1511,
+     "token": "REPEATING_HEADER",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 14, 2009",
+     "March 15, 2010",
+     "April 1, 2010",
+     "April 26, 2010"
+    ],
+    [
+     "Expected volatility (based on historical volatility)",
+     "158.57%",
+     "200.15%",
+     "200.15%",
+     "200.15%"
+    ],
+    [
+     "Expected dividends",
+     "0.00",
+     "0.00",
+     "0.00",
+     "0.00"
+    ],
+    [
+     "Expected term in years",
+     "10",
+     "10",
+     "10",
+     "10"
+    ],
+    [
+     "Risk-free rate",
+     "0.95%",
+     "0.95%",
+     "0.95%",
+     "0.95%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1583,
+    "end_line": 1592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The Plan administrator determines the term of stock options granted under our Plan, up to a maximum of ten years, except in the case of certain events, as described below. Unless the terms of an optionee's stock option agreement provide otherwise, if an optionee's relationship with us ceases for any reason other than disability or death, the optionee may exercise any vested options for a period of ninety days following the cessation of service. If an optionee's service relationship with us ceases due to disability or death the optionee or a beneficiary may exercise any vested options for a period of 12 months in the event of disability or death.\nUnless the Plan administrator provides otherwise, options generally are not transferable except by will, the laws of descent and distribution, or pursuant to a domestic relations order. An optionee may designate a beneficiary, however, who may exercise the option following the optionee's death.\nThe value of employee and non-employee stock warrants granted during the year ended May 31, 2010 was estimated using the Black-Scholes model with the following assumptions:",
+   "prose_after": "The expected volatility assumption was based upon historical stock price volatility measured on a daily basis. The risk-free interest rate assumption is based upon U.S. Treasury bond interest rates appropriate for the term of the Company\u2019s employee stock options. The dividend yield assumption is based on our history and expectation of dividend payments.\nA summary of the options granted to employees and non-employees under the plan and changes during the year ended May 31, 2010 is presented below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1571,
+     "token": "REPEATING_HEADER",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1612,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "Balance at June 1, 2009",
+     "-",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Granted",
+     "3,150,000",
+     "",
+     "0.64",
+     "",
+     "2,041,966"
+    ],
+    [
+     "Exercised",
+     "-",
+     "",
+     "0.60",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or Expired",
+     "-",
+     "",
+     "0.60",
+     "",
+     "-"
+    ],
+    [
+     "Balance at May 31, 2010",
+     "3,150,000",
+     "$",
+     "0.60",
+     "",
+     "2,041,966"
+    ],
+    [
+     "Exercisable at May 31, 2010",
+     "166,660",
+     "$",
+     "0.61",
+     "",
+     "59,298"
+    ],
+    [
+     "Weighted average fair value of options granted during the year",
+     "",
+     "$",
+     "0.64",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1597,
+    "end_line": 1612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The expected volatility assumption was based upon historical stock price volatility measured on a daily basis. The risk-free interest rate assumption is based upon U.S. Treasury bond interest rates appropriate for the term of the Company\u2019s employee stock options. The dividend yield assumption is based on our history and expectation of dividend payments.\nA summary of the options granted to employees and non-employees under the plan and changes during the year ended May 31, 2010 is presented below:",
+   "prose_after": "For the years ended May 31, 2010 and 2009\nNote 11 \u2013 Stock Based Compensation - continued\nThe following table summarizes information about employee stock options under the 2009 Plan outstanding at May 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1571,
+     "token": "REPEATING_HEADER",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1612,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Range of Exercise Price",
+     "Number Outstanding at May 31, 2010",
+     "Weighted Average Remaining Contractual Life",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Intrinsic Value",
+     "Number Exercisable at May 31, 2010",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "$",
+     "0.60",
+     "2,500,000",
+     "10.00 Years",
+     "$",
+     "0.59",
+     "$",
+     "1,490,791",
+     "166,660",
+     "$",
+     "0.61",
+     "$",
+     "102,562"
+    ],
+    [
+     "$",
+     "0.75",
+     "400,000",
+     "10.00 Years",
+     "$",
+     "0.55",
+     "$",
+     "223,657",
+     "-0-",
+     "$",
+     "0.00",
+     "$",
+     "-0-"
+    ],
+    [
+     "$",
+     "1.30",
+     "250,000",
+     "10.00 Years",
+     "$",
+     "1.29",
+     "$",
+     "324,519",
+     "-0-",
+     "$",
+     "0.00",
+     "$",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "3,150,000",
+     "10.00 Years",
+     "$",
+     "0.64",
+     "$",
+     "2,038,967",
+     "166,660",
+     "$",
+     "0.61",
+     "$",
+     "102,562"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1622,
+    "end_line": 1636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "For the years ended May 31, 2010 and 2009\nNote 11 \u2013 Stock Based Compensation - continued\nThe following table summarizes information about employee stock options under the 2009 Plan outstanding at May 31, 2010:",
+   "prose_after": "On December 14, 2009, the board of directors granted to a consultants 2,300,000 stock options with an exercise price of $0.60 per share. The options will expire ten years from the grant date, and 300,000 options will have an immediate vesting of 33.33%, and the remaining 66.67% cliff vest at 33.33% on each grant date anniversary over the next two years. The remaining 2,000,000 options will vest in equal one third parts on the anniversary of the options grant date. In March 2010, we granted 100,000 stock options to consultants at an exercise price of $0.75 per share, and in April 2010, we granted 750,000 stock options to related party consultants at an exercise price of $0.60 and $1.30. The options will expire ten years from the grant date, and 200,000 options have an immediate vesting of one third, and the remaining two thirds vested over the next two years. The remaining 650,000 options will vest in equal one third parts on the anniversary of the option grant date.\nThe total value of employee and non-employee stock options granted during the year ended May 31, 2010, was $2,038,967. During year ended May 31, 2010 the Company recorded $313,313 in stock-based compensation expense relating to stock option grants.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1614,
+     "token": "REPEATING_HEADER",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expiring Year",
+     "Amount"
+    ],
+    [
+     "2027",
+     "$       28,079"
+    ],
+    [
+     "2028",
+     "28,993"
+    ],
+    [
+     "2029",
+     "349,313"
+    ],
+    [
+     "2030",
+     "1,411,157"
+    ],
+    [
+     "Total",
+     "$ 1,817,542"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1658,
+    "end_line": 1669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "The accompanying financial statements have been prepared assuming that the Company will continue as a going concern. The Company has net losses for the period of inception to the year ended May 31, 2010, of $2,018,132, and a working capital deficit of $205,399. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. The Company\u2019s continuation as a going concern is dependent on its ability to meet its obligations, to obtain additional financing as may be required an ultimately to attain profitability. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nFor the years ended May 31, 2010 and 2009\nNote 13 \u2013 Income Taxes\nThe net operating loss carryforward is the only component of deferred tax assets for income tax purposes as of May 31, 2010, of approximately $1,817,542 which was reduced to zero after considering the valuation allowance of $1,817,542, since there is no assurance of future taxable income.\nThe net operating loss carryforward as of May 31, 2010 expires as follows:",
+   "prose_after": "These loss carryovers could be limited under the Internal Revenue Code should a significant change in ownership occur.\nThe following is an analysis of deferred tax assets as of May 31, 2010:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "REPEATING_HEADER",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1699,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Deferred",
+     "Valuation",
+     ""
+    ],
+    [
+     "",
+     "Tax Assets",
+     "Allowance",
+     "Balance"
+    ],
+    [
+     "Deferred tax assets at May 31, 2009",
+     "$    60,958",
+     "$   (60,958)",
+     "$           -0-"
+    ],
+    [
+     "Additions for the year",
+     "211,674",
+     "(211,674)",
+     "-0-"
+    ],
+    [
+     "Deferred tax assets at May 31, 2010",
+     "$ 272,631",
+     "$ (272,631)",
+     "$           -0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1674,
+    "end_line": 1683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "These loss carryovers could be limited under the Internal Revenue Code should a significant change in ownership occur.\nThe following is an analysis of deferred tax assets as of May 31, 2010:",
+   "prose_after": "The following is reconciliation from the expected statutory federal income tax rate to the Company\u2019s actual income tax rate for the years ended May 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "REPEATING_HEADER",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1699,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "2009"
+    ],
+    [
+     "Expected income tax (benefit) at",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory tax rate -15%",
+     "$ (241,005)",
+     "$ (53,154)"
+    ],
+    [
+     "Permanent differences",
+     "29,331",
+     "757"
+    ],
+    [
+     "Valuation allowance",
+     "211,674",
+     "52,397"
+    ],
+    [
+     "",
+     "________",
+     "________"
+    ],
+    [
+     "Income tax expense",
+     "$         - 0 -",
+     "$         - 0 -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1686,
+    "end_line": 1697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "The following is reconciliation from the expected statutory federal income tax rate to the Company\u2019s actual income tax rate for the years ended May 31:",
+   "prose_after": "We currently have three years of tax returns that are subject to examination, based on their filing dates by taxing authorities. We currently have no uncertainty of the tax positions that we have taken and believe that we can defend them to any tax jurisdiction.\nFor the years ended May 31, 2010 and 2009\nNote 14 \u2013 Recent Accounting Pronouncements\nWe have examined all recent accounting pronouncements and believe that none of them will have an material impact on the financial statements of our company.\nNote 15 \u2013 Impairment of WTE LLC Acquisition\nDuring the year ending May 31, 2009 the Company entered into a memorandum of understanding to acquire Waste to Energy Group, LLC pursuant to a share exchange. As part of the payments due $180,000 was advanced to Waste to Energy Group, LLC. Upon completion of a thorough due diligence inquiry the decision was made to abandon the prospective transaction. The asset was subsequently impaired as a result of this decision.\nNote 16 \u2013 Subsequent Events\nIn accordance with Accounting Standards Codification (ASC) topic 855-10 \u201cSubsequent Events\u201d, the Company has evaluated subsequent events through the date which the financial statements were available to be issued. The Company has determined that there were no such events that warrant disclosure or recognition in the financial statements except as follows.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "REPEATING_HEADER",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1699,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Year Appointed",
+     "Position(s) and Office(s)"
+    ],
+    [
+     "Robert H. Miller",
+     "57",
+     "2009",
+     "President, chief executive officer, and director"
+    ],
+    [
+     "Costas Takkas",
+     "52",
+     "2010",
+     "Chief financial officer and principal accounting officer"
+    ],
+    [
+     "Hermann Buschor",
+     "74",
+     "2010",
+     "Director"
+    ],
+    [
+     "James S. B. Chew",
+     "49",
+     "2010",
+     "Director"
+    ],
+    [
+     "Andrew J. Sherman",
+     "47",
+     "2010",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1792,
+    "end_line": 1807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting as management's report is not subject to attestation by the Company\u2019s registered public accounting firm.\nChanges in Internal Controls over Financial Reporting\nDuring the period ended May 31, 2010, there has been no change in internal control over financial reporting that has materially affected or is reasonably likely to materially affect our internal control over financial reporting except for that change in connection with the inadequate segregation of duties consistent with internal control objectives. On December 11, 2009 the Company appointed an individual to serve as chief financial officer and principal accounting officer thereby bifurcating executive duties.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nDirectors and Executive Officers\nSet forth below is the name, age and present principal occupation or employment, and material occupations, positions, offices or employments for the past five years of our current directors and executive officers:",
+   "prose_after": "Business Experience\nThe following is a brief account of the education and business experience of our director and executive officer during at least the past five years, indicating her business experience, principal occupation during the period, and the name and principal business of the organization by which she was employed.\nRobert H. Miller was appointed as a member of the board of directors and as the Company\u2019s chief executive officer on December 8, 2009.\nSince June of 2009 Mr. Miller has served as an officer and director of Sonnen Corporation. Sonnen is involved in the research and development of a novel process for energy generation consisting of specific materials and proprietary material combinations. He has served from 2007 as a director of LifeSpan BioSciences, Inc., a provider of reagents and services for proteomics and pathology. LifeSpan's catalogue of antibodies is used for research applications including immunoblotting, immunohistochemistry, immunofluorescence, and fluorescence-activated cell sorting. Mr. Miller is also a consultant to Prosper Financial, Inc., a management company that provides financial and corporate consulting services to start-up companies. Mr. Miller's prior experience includes being (i) the founder and chairman of Crystallex International Corporation, a Canadian based gold producer, (ii) a director and financier of ZMAX Corporation, a \"y2k\" company, (iii) the founder and director of Nanovation Technologies Inc, a developer of fiber-optic products, and (iv) the principle financier and consultant to Asiamerica Equities Inc., a merchant bank that was based in Hong Kong.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1782,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1820,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name (1)",
+     "Fees Earned Paid in Cash ($)",
+     "Stock Awards ($)",
+     "Option Awards\n\n\n\n($)",
+     "Non-Equity Incentive Plan Compensation\n\n\n\n($)",
+     "Nonqualified Deferred Compensation Earnings\n\n\n\n($)",
+     "All Other Compensation ($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Robert Miller(2)",
+     "$45,000",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$45,000"
+    ],
+    [
+     "Hermann Buschor(3)",
+     "$0",
+     "$0",
+     "$324,519",
+     "$0",
+     "$0",
+     "$0",
+     "$324,519"
+    ],
+    [
+     "David Greenbaum(4)",
+     "$36,000",
+     "$0",
+     "$118,607",
+     "$0",
+     "$0",
+     "$0",
+     "$154,607"
+    ],
+    [
+     "Maria C. Maz(5)",
+     "$30,000",
+     "$0",
+     "$593,037",
+     "$0",
+     "$0",
+     "$0",
+     "$623,037"
+    ]
+   ],
+   "caption_stack": [
+    "Director Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1922,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Our chief executive officer who also serves as a director received compensation of $7,500 per month pursuant to a consulting agreement. Our former chief executive officer who also served as a director received compensation at $5,000 per month through a company controlled by her pursuant to a consulting agreement. Our former chief financial officer and former director received compensation at $6,000 per month pursuant to a consulting agreement.\nThe board of directors may award special remuneration to any director undertaking any special services on behalf of the Company other than services ordinarily required of a director. Since inception to the date hereof, no director received and/or accrued any such compensation for his or her services as a director, including committee participation and/or special assignments.\nWe may offer all directors additional compensation in the future.\nSummary Compensation\nThe following table provides summary information for the fiscal year ended May 31, 2010 concerning cash and non-cash compensation paid or accrued by the Company to or on behalf of our directors.",
+   "prose_after": "(1) James S. B. Chew and Andrew Sherman were appointed as directors subsequent to the period on August 20, 2010. Mr. Sherman was granted 1,000,000 options during the year ended May 31, 2010 valued at $593,037.\n(2) Mr. Miller as appointed as chief executive officer and director on December 8, 2009. Mr. Miller is considered the beneficial owner of the option awards under the name of Maria C. Maz who is Mr. Miller\u2019s spouse.\n(3) Mr. Buschor was appointed as director on April 30, 2010.\n(4) Mr. Greenbaum was appointed as chief financial officer and principal accounting officer on December 11, 2009, was appointed as director on May 28, 2010, and he resigned on such positions on August 20, 2010.\n(5) Ms. Maz as appointed as chief executive officer, chief financial officer, principal accounting officer, and director on August 27, 2008, resigned as chief executive officer on December 7, 2009, resigned as chief financial officer and principal accounting officer on December 11, 2009, and resigned as director on May 28, 2010. Ms. Maz is paid pursuant to two consulting contracts through a company owned by Ms. Maz.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1916,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year\n\n\n\n(ended May 31)",
+     "Annual\n\n\n\nSalary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock Awards ($)",
+     "Option Awards\n\n\n\n($)",
+     "Non-Equity Incentive Plan Compensation\n\n\n\n($)",
+     "Nonqualified Deferred Compensation Earnings\n\n\n\n($)",
+     "All Other Compensation ($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Robert Miller: CEO, director(1)",
+     "2010",
+     "$45,000",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$45,000"
+    ],
+    [
+     "Costa Takkas: CFO, PAO(2)",
+     "2010",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0"
+    ],
+    [
+     "David Greenbaum: former CFO, director (3)",
+     "2010",
+     "$36,000",
+     "$0",
+     "$0",
+     "$118,607",
+     "$0",
+     "$0",
+     "$0",
+     "$154,607"
+    ],
+    [
+     "Maria C.\n\n\n\nMaz: former CEO, CFO, director (4)",
+     "2010\n\n\n\n2009",
+     "$42,500(5)\n\n\n\n$60,000(5)",
+     "$0\n\n\n\n$0",
+     "$0\n\n\n\n$0",
+     "$593,037(5)\n\n\n\n$0",
+     "$0\n\n\n\n$0",
+     "$0\n\n\n\n$0",
+     "$0\n\n\n\n$0",
+     "$635,537\n\n\n\n$60,000"
+    ],
+    [
+     "Hermann Buschor: director, VP Bus. Devel.",
+     "2010",
+     "$10,000",
+     "$0",
+     "$100,000",
+     "$324,519",
+     "$0",
+     "$0",
+     "$500",
+     "$435,019"
+    ],
+    [
+     "Andrew J. Sherman: consultant (6)",
+     "2010",
+     "$0",
+     "$0",
+     "$0",
+     "$593,037",
+     "$0",
+     "$0",
+     "$0",
+     "$593,037"
+    ],
+    [
+     "Carol Laws: consultant",
+     "2010",
+     "$20,000",
+     "$0",
+     "$0",
+     "$99,231",
+     "$0",
+     "$0",
+     "$0",
+     "$119,231"
+    ],
+    [
+     "John Neukirchen: VP Pipeline Coating Sales",
+     "2010",
+     "$6,000",
+     "$0",
+     "$90,000",
+     "$223,657",
+     "$0",
+     "$0",
+     "$101,000",
+     "$420,657"
+    ]
+   ],
+   "caption_stack": [
+    "Executive Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1970,
+    "end_line": 2006
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "During the annual period ended May 31, 2010, our chief executive officer received compensation of $7,500 per month pursuant to a consulting agreement and a company controlled by a former chief executive officer received option awards valued at $593,037; these option awards are considered beneficially owned by our current chief executive officer. Since the Company had limited operations during the annual periods ended May 31, 2009, and 2008, little compensation was paid to retain the services of our former executive officers. During 2009, our former chief executive officer received compensation at $5,000 per month through a company controlled by her pursuant to a consulting agreement, which she continued to earn until resigning in December 2009. Effective December 1, 2009, our former chief financial officer received compensation at $6,000 per month pursuant to a consulting agreement.\nSummary Compensation\nThe following table provides summary information for the fiscal years ended May 31, 2010, 2009, and 2008 concerning cash and non-cash compensation paid or accrued by the Company to or on behalf of (i) the chief executive officer and (ii) any other employee to receive compensation in excess of $100,000.",
+   "prose_after": "(1) Mr. Miller as appointed as chief executive officer and director on December 8, 2009. Mr. Miller is considered the beneficial owner of the option awards under the name of Maria C. Maz who is Mr. Miller\u2019s spouse.\n(2) Mr. Takkas was appointed as chief financial officer and principal accounting officer on August 20, 2010, subsequent to our fiscal year 2010.\n(3) Mr. Greenbaum was appointed as chief financial officer and principal accounting officer on December 11, 2009, was appointed as director on May 28, 2010, and he resigned on such positions on August 20, 2010.\n(4) Ms. Maz as appointed as chief executive officer, chief financial officer, principal accounting officer, and director on August 27, 2008, resigned as chief executive officer on December 7, 2009, resigned as chief financial officer and principal accounting officer on December 11, 2009, and resigned as director on May 28, 2010. Approximately $12,500 of the annual salary amount was incurred and the whole option awards amount was granted following Ms. Maz\u2019s resignation as executive officer pursuant to a consulting agreement.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 2006,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding Equity Awards at Fiscal Year-End",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Option awards",
+     "",
+     "",
+     "",
+     "",
+     "Stock awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of securities underlying unexercised options (#) exercisable",
+     "Number of securities underlying unexercised options (#) unexercisable",
+     "Equity incentive plan awards: number of securities underlying unexercised unearned options (#)",
+     "Option exercise price ($)",
+     "Option expiration date",
+     "Number of shares or units of stock that have not vested (#)",
+     "Market value of shares or units of stock that have not vested (#)",
+     "Equity incentive plan awards: number of unearned shares, units or other rights that have not vested (#)",
+     "Equity incentive plan awards: market or payout value of unearned shares, units or other rights that have not vested ($)"
+    ],
+    [
+     "Robert H. Miller(1) (2)",
+     "0",
+     "1,000,000",
+     "-",
+     "0.60",
+     "December 11, 2019",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Andrew J. Sherman(2)",
+     "0",
+     "1,000,000",
+     "-",
+     "0.60",
+     "December 11, 2019",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "David Greenbaum(3)",
+     "66,666",
+     "133,334",
+     "-",
+     "0.60",
+     "December 11, 2019",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Carol Laws(3)",
+     "33,333",
+     "66,667",
+     "-",
+     "0.60",
+     "December 11, 2019",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Carol Laws",
+     "0",
+     "100,000",
+     "-",
+     "0.60",
+     "April 21, 2020",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "John Neukirchen",
+     "0",
+     "400,000",
+     "-",
+     "0.60",
+     "April 26, 2020",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Hermann Buschor",
+     "0",
+     "250,000",
+     "-",
+     "1.30",
+     "April 29, 2020",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Outstanding Equity Awards at Fiscal Year-End"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(4) Ms. Maz as appointed as chief executive officer, chief financial officer, principal accounting officer, and director on August 27, 2008, resigned as chief executive officer on December 7, 2009, resigned as chief financial officer and principal accounting officer on December 11, 2009, and resigned as director on May 28, 2010. Approximately $12,500 of the annual salary amount was incurred and the whole option awards amount was granted following Ms. Maz\u2019s resignation as executive officer pursuant to a consulting agreement.\n(5) Ms. Maz is paid as a consultant through a company owned by Ms. Maz.\n(6) Andrew J. Sherman weas appointed as directors subsequent to the period on August 20, 2010.\nOutstanding Equity Awards\nThe following table provides summary information for the period ended May 31, 2010 concerning unexercised options, stock that has not vested, and equity incentive plan awards by the Company to or on behalf of (i) the chief executive officer and (ii) any other employee to receive compensation in excess of $100,000:",
+   "prose_after": "(1) Mr. Miller is the indirect, beneficial owner of these options. Additionally, subsequent to the year ended May 31, 2010, Mr. Miller became the indirect owner of 500,000 additional options to purchase common stock at $0.65 per share before October 19, 2020, one third of which vest each year beginning on October 19, 2011.\n(2) Subsequent to the period one third of these options became exercisable.\n(3) Subsequent to the period an additional third of these options became exercisable.\n* Subsequent to the period: Mr. Takkas was granted 200,000 options that vest in equal increments over three years to purchase shares of common stock at $0.65 per share on or before July 31, 2020; Mr. Chew was granted was granted 200,000 options that vest in equal increments over three years to purchase shares of common stock at $0.65 per share on or before October 19, 2020.\n2009 Stock Option Plan\nOur board of directors adopted and approved our 2009 Stock option Plan (\u201cPlan\u201d) on December 14, 2009, which provides for the granting and issuance of up to 10 million shares of our common stock. As of December 16, 2010, we granted options to purchase 4,575,000 shares of common stock which were outstanding at exercise prices of $0.60, $0.65, $0.75 and $1.30 per share, which options vest over three years in equal increments. At December 16, 2010, 5,425,000 options remained available for future grant",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2006,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 2059,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Ownership",
+     "Amount and nature of Beneficial Ownership (1)",
+     "Percent of Class"
+    ],
+    [
+     "Common Stock",
+     "Robert H. Miller\n\n\n\n4801 Alhambra Circle\n\n\n\nCoral Gables, Florida 33146",
+     "23,000,000 (2)",
+     "39.5%"
+    ],
+    [
+     "Common Stock",
+     "Costas Takkas\n\n\n\n105 Marbel Drive\n\n\n\nP.O. Box 1436 GT\n\n\n\nGrand Cayman, Cayman Islands\n\n\n\nBritish West Indies",
+     "0 (3)",
+     "0%"
+    ],
+    [
+     "Common Stock",
+     "Hermann Buschor\n\n\n\n1920 Stoney Brook Drive\n\n\n\nHouston, Texas 77063",
+     "100,000 (4)",
+     "0.2%"
+    ],
+    [
+     "Common Stock",
+     "Andrew J. Sherman\n\n\n\n9181 Boyer Lane\n\n\n\nKirtland Hills, Ohio 44060",
+     "0 (5)",
+     "0%"
+    ],
+    [
+     "Common Stock",
+     "James S.B. Chew\n\n\n\n1 Vinewood Lane\n\n\n\nLandera Ranch, California 92694",
+     "0 (6)",
+     "0%"
+    ],
+    [
+     "Common Stock",
+     "All Executive Officers and Directors as a Group",
+     "23,100,000",
+     "39.7%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Maria Maz\n\n\n\n4801 Alhambra Circle\n\n\n\nCoral Gables, Florida 33146",
+     "23,000,000 (7)",
+     "39.5%"
+    ],
+    [
+     "Common Stock",
+     "Thomas and Mario Miller Family Irrevocable Trust u/a/d 12/01/2009",
+     "5,250,000",
+     "9.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2095,
+    "end_line": 2146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Long Term Incentive Plan Awards.\nWe have no long-term incentive plans.\nTermination of Employment and Change in Control Arrangements\nThe Company has no plans that provides for the payment of retirement benefits, or benefits that will be paid primarily following retirement.\nThe Company has no agreement that provides for payment to any executive officer at, following, or in connection with the resignation, retirement or other termination, or a change in control of Company or a change in our executive officers\u2019 responsibilities following a change in control.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information concerning the ownership of the Company\u2019s 58,175,000 shares of common stock issued and outstanding as of December 20, 2010 with respect to: (i) all directors; (ii) each person known by us to be the beneficial owner of more than five percent of our common stock; and (iii) our directors and executive officers as a group.",
+   "prose_after": "(1) Beneficial ownership is determined in accordance with Commission rules and generally includes voting or investment power with respect to securities. Shares of common stock subject to options, warrants and convertible preferred stock currently exercisable or convertible, or exercisable or convertible within sixty (60) days, would be counted as outstanding for computing the percentage of the person holding such options or warrants but not counted as outstanding for computing the percentage of any other person.\n(2) Mr. Miller is a beneficial owner of 17,750,000 shares held by Ms. Maria Maz, to whom Mr. Miller is married, and the beneficial owner of 5,250,000 shares held by the Thomas and Mario Miller Family Irrevocable Trust u/a/d 12/01/2009, which trust\u2019s beneficiaries are Mr. Miller\u2019s children. See footnote 7, below, for more details.\n(3) Mr. Takkas was granted 200,000 options that vest in equal increments over three years to purchase shares of common stock at $0.65 per share on or before July 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2079,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2147,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "Fiscal 2010 Fees ($)",
+     "Fiscal 2009 Fees ($)"
+    ],
+    [
+     "Audit Fees",
+     "14,625",
+     "11,500"
+    ],
+    [
+     "Audit-Related Fees",
+     "0",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "0",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2195,
+    "end_line": 2208
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "During the year ending May 31, 2009, a company controlled by the chief executive officer of the Company advanced to the company $2,500 by way of a direct payment to one of the Company\u2019s current accounts payable. A Promissory Note was issued in the amount of $2,500 by the Company to the aforementioned company. This was an interest free loan. During the year ending May 31, 2009 the Promissory Note of $2,500 was paid by an unrelated party directly to the note holder on behalf of the Company, making this balance zero.\nDirector Independence\nOur common stock is quoted on the Pink Sheets electronic quotation system, which does not have director independence requirements. For purposes of determining director independence, we have applied the definitions set out in NASDAQ Rule 4200(a) (15). Under NASDAQ Rule 4200(a)(15), a director is not considered to be independent if he or she is also an executive officer or employee of the corporation. Accordingly, we had no independent directors as of May 31, 2010.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following is a summary of the fees that are billed to us by our auditors for professional services rendered for the past two fiscal years:",
+   "prose_after": "Audit fees consist of fees billed for professional services rendered for the audit of our financial statements and review of the interim financial statements included in quarterly reports and services that are normally provided by Seale & Beers CPAs in connection with statutory and regulatory filings or engagements.\nAudit Committee Pre-Approval\nThe Company does not have a standing audit committee. Therefore, all services provided to us by Seale & Beers CPAs, as detailed above, were pre-approved by our board of directors. Seale & Beer CPAs performed all work only with their permanent full time employees.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements\nThe following documents are filed under Item 8. Financial Statements and Supplementary Data, pages F-1 through F-24, and are included as part of this Form 10-K:\nFinancial Statements of the Company for the years ended May 31, 2010 and 2009:\nReport of Independent Registered Public Accounting Firm\nBalance Sheets",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2189,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 2245,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Abakan Inc.",
+     "Date"
+    ],
+    [
+     "/s/ Robert H. Miller\n\n\n\nBy: Robert H. Miller\n\n\n\nIts: President, Chief Executive Officer and Director",
+     "December 20, 2010"
+    ],
+    [
+     "/s/ Costas Takkas\n\n\n\nBy: Costas Takkas\n\n\n\nIts: Chief Financial Officer and Principal Accounting Officer",
+     "December 20, 2010"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2251,
+    "end_line": 2265
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Statements of Operations\nStatements of Stockholders\u2019 Equity\nStatements of Cash Flows\nNotes to Financial Statements\n(b) Exhibits\nThe exhibits required to be attached by Item 601 of Regulation S-K are listed in the Index to Exhibits on page 43 of this Form 10-K, and are incorporated herein by this reference.\n(c) Financial Statement Schedules\nWe are not filing any financial statement schedules as part of this Form 10-K because such schedules are either not applicable or the required information is included in the financial statements or notes thereto.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2245,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 2293,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Date"
+    ],
+    [
+     "/s/ Robert H. Miller\n\n\n\nRobert H. Miller\n\n\n\nPresident, Chief Executive Officer and Director",
+     "December 20, 2010"
+    ],
+    [
+     "/s/ Hermann Buschor\n\n\n\nHermann Buschor\n\n\n\nDirector",
+     "December 21, 2010"
+    ],
+    [
+     "/s/ Andrew J. Sherman\n\n\n\nAndrew J. Sherman\n\n\n\nDirector",
+     "December 21, 2010"
+    ],
+    [
+     "/s/ James S. B. Chew\n\n\n\nJames S.B. Chew\n\n\n\nDirector",
+     "December 21, 2010"
+    ]
+   ],
+   "caption_stack": [
+    "Date"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2268,
+    "end_line": 2292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO EXHIBITS\nExhibit No. Exhibit Description\n3(i) Certificate of Incorporation of the Company, incorporated hereto by reference to the Form SB-2, filed with the Commission on June 19, 2007.\n3(ii) Bylaws of the Company, incorporated hereto by reference to the Form SB-2, filed with the Commission on June 19, 2007.\n10(i) Certificate of Change (Pursuant to NRS 78.209), incorporated hereto by reference to the Form 8-K, filed with the Commission on September 9, 2008.\n10(ii) Articles of Merger (Pursuant to NRS 92A.200), incorporated hereto by reference to the Form 8-K, filed with the Commission on September 9, 2008.\n10(iii) Memorandum of Understanding, incorporated hereto by reference to the Form 8-K, filed with the Commission on September 9, 2008.\n10(iv) Share Purchase Agreement, incorporated hereto by reference to the Schedule 13-D, filed with the Commission on September 29, 2008.\n10(v) Share Purchase Agreement, incorporated hereto by reference to the Schedule 13-D, filed with the Commission on September 29, 2008.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2245,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 2293,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

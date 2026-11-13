@@ -1,0 +1,3920 @@
+{
+ "accession": "0000950123-11-031364",
+ "cik": "0000844856",
+ "form": "10-K",
+ "filing_date": "2011-03-31",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "c14914e10vk.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "84-1070932"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "of incorporation or organization)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3101 W. Hallandale Boulevard",
+     ""
+    ],
+    [
+     "Suite 100 Hallandale, FL",
+     "33009"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 000-19001\nVAPOR CORP\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 888-482-7671\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, par value $0.001 (Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. RISK FACTORS",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Properties",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9B. Other Information",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "36"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "EXHIBIT INDEX",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "51"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 21.1",
+     ""
+    ],
+    [
+     "Exhibit 23.1",
+     ""
+    ],
+    [
+     "Exhibit 31.1",
+     ""
+    ],
+    [
+     "Exhibit 31.2",
+     ""
+    ],
+    [
+     "Exhibit 32.1",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [ ]  Accelerated filer [ ]           Non-accelerated filer [ ]           Smaller Reporting Company [X]\n(Do not check if smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting stock held by non-affiliates of the registrant, as of March 31, 2011, was approximately $20,098,122 based upon the closing price reported for such date on the Over the Counter Bulletin Board market. For purposes of this disclosure, shares of common stock held by persons who hold more than 5% of the outstanding shares of common stock and shares held by executive officers and directors of the registrant have been excluded because such persons may be deemed to be affiliates. This determination of executive officer or affiliate status is not necessarily a conclusive determination for other purposes.\n60,135,344 shares of Common Stock Issued and Outstanding as of March 30, 2011\nVAPOR, CORP. TABLE OF CONTENTS",
+   "prose_after": "2\nThe Business section and other parts of this Annual Report on Form 10-K (\u201cForm 10-K\u201d) contain forward-looking statements that involve risks and uncertainties. Many of the forward-looking statements are located in \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\u201d Forward-looking statements provide current expectations of future events based on certain assumptions and include any statement that does not directly relate to any historical or current fact. Forward-looking statements can also be identified by words such as \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cpredicts,\u201d and similar terms. Forward-looking statements are not guarantees of future performance and the Company\u2019s actual results may differ significantly from the results discussed in the forward-looking statements. Factors that might cause such differences include, but are not limited to, those discussed in the subsection entitled \u201cRisk Factors\u201d under Part I, Item 1A of this Form 10-K, which are incorporated herein by reference. The Company assumes no obligation to revise or update any forward-looking statements for any reason, except as required by law.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fourth Quarter",
+     "",
+     "Third Quarter",
+     "",
+     "Second Quarter",
+     "",
+     "First Quarter",
+     ""
+    ],
+    [
+     "Fiscal 2009 price range per common share",
+     "$",
+     "1.275-0.15",
+     "$",
+     "0.75-.25",
+     "$",
+     "0.475-0.0375",
+     "$",
+     "0.075-0.0375"
+    ],
+    [
+     "Fiscal 2010 price range per common share",
+     "$",
+     "0.20-0.60",
+     "$",
+     "0.15- 0.40",
+     "$",
+     "0.14-0.49",
+     "$",
+     "0.14-0.90"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 541,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "On February 23, 2010 Smoke Anywhere USA, Inc., our wholly owned subsidiary, filed an arbitration against TransFirst, a company providing us credit card transaction processing services, as required, in the event of a dispute under the services contract by and between the parties. We are seeking to have certain fees and fines levied on the company reversed, in addition to demanding that certain monies held by TransFirst, be released to the Company.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nThe Company\u2019s common stock is traded on the Over-the-Counter Bulletin Board market under the symbol VPCO. For purposes of this Item the existence of limited or sporadic quotations should not of itself be deemed to constitute an established public trading market.\nPrice Range of Common Stock\nThe price range per share of common stock presented below represents the highest and lowest sales prices for the Company\u2019s common stock on the over-the-counter Bulletin Board market during each quarter of the two most recent years. The quotations listed below reflect sporadic trading activity in the company\u2019s stock and does not represent the existence of an established public trading market for our securities.",
+   "prose_after": "Holders\nAs of March 31, 2011, there were 1,425 shareholders of record.\nDividends\nThe Company did not declare or pay cash dividends in either 2010 or 2009. The Company anticipates that for the foreseeable future it will retain any earnings for use in the operation of its business.\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers\nNone.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION\nOur Management\u2019s Discussion and Analysis should be read in conjunction with our financial statements included in this prospectus.\nForward-Looking Statements\nThis current report contains forward-looking statements and information relating to us that are based on the beliefs of our management as well as assumptions made by, and information currently available to, our management. When used in this report, the words \u201cbelieve,\u201d \u201canticipate,\u201d \u201cexpect,\u201d \u201cestimate,\u201d \u201cintend\u201d, \u201cplan\u201d and similar expressions, as they relate to us or our management, are intended to identify forward-looking statements. These statements reflect management\u2019s current view of us concerning future events and are subject to certain risks, uncertainties and assumptions, including among many others: a general economic downturn; a downturn in the securities markets; federal or state laws or regulations having an adverse effect on proposed transactions that we desire to effect; Securities and Exchange Commission regulations which affect trading in the securities of \u201cpenny stocks,\u201d and other risks and uncertainties. Should any of these risks or uncertainties materialize, or should underlying assumptions prove incorrect, actual results may vary materially from those described in this report as anticipated, estimated or expected. The accompanying information contained herein, including, without limitation, the information set forth under the heading \u201cManagement\u2019s Discussion and Analysis and Plan of Operation\u201d identifies important additional factors that could materially adversely affect actual results and performance. You are urged to carefully consider these factors. All forward-looking statements attributable to us are expressly qualified in their entirety by the foregoing cautionary statement. The terms \u201cVapor Corp,\u201d \u201cVapor,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d and the \u201cCompany\u201d refer to Vapor Corporation and the terms \u201cSmoke Anywhere USA,\u201d and \u201cSmoke\u201d refer to our wholly owned subsidiary Smoke Anywhere USA, Inc.\u201d",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 560,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "Age",
+     "Position with Company",
+     "Director since"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kevin Frija",
+     "39",
+     "Director",
+     "June 9, 2009"
+    ]
+   ],
+   "caption_stack": [
+    "Name of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s management is responsible for establishing and maintaining adequate internal control over financial reporting (as defined in Rule 13a-15(f) under the Exchange Act. Management conducted an evaluation of the effectiveness of the Company\u2019s internal control over financial reporting based and has concluded that its internal control over financial reporting was effective as of December 31, 2010 to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements in accordance with U.S. generally accepted accounting principles.\nChanges in Internal Control Over Financial Reporting\nThere were no changes in the Company\u2019s internal control over financial reporting during the fourth quarter of fiscal 2010, which were identified in connection with management\u2019s evaluation required by paragraph (d) of rules 13a-15 and 15d-15 under the Exchange Act, that have materially affected, or are reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors\nThe names of our director(s) and certain information about them, as of December 31, 2010, are set forth below:",
+   "prose_after": "Executive Officers\nThe names of our executive officer(s) and certain information about them, as of December 31, 2010, are set forth below:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Officer",
+     "Age",
+     "Position with Company",
+     "Officer since"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kevin Frija",
+     "39",
+     "Chief Executive Officer and Chief Financial Officer",
+     "November 5, 2009"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Executive Officers\nThe names of our executive officer(s) and certain information about them, as of December 31, 2010, are set forth below:",
+   "prose_after": "Kevin Frija\nMr. Kevin Frija is the company\u2019s CEO, CFO and Chairman of the Board of Directors, Mr. Frija is the Company\u2019s sole executive officer and director and has been such, since June 9, 2009. Kevin has over 20 years of experience, particularly in the areas of sourcing, manufacturing, supply chain management, marketing, advertising, and licensing. Prior to Kevin\u2019s involvement in the Company, Kevin operated and Ingear, Inc. a swim and resortwear company based in Miami, Florida. Kevin, currently and on a limited basis assists Ingear in a managerial capacity.\nBoard Committees\nThe Board does not have a standing Audit and Finance Committee (the \u201cAudit Committee\u201d), or Compensation Committee and Nominating and Corporate Governance Committee (the \u201cNominating Committee\u201d). Since the Board is comprised solely of our sole executive officer, we do not have any independent board members nor an independent board.\nDirector Compensation\nWe do not currently have any non-employee directors and no additional compensation is currently paid to Mr. Frija in connection with his directorship over and above his employee based compensation.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nonequity",
+     "",
+     "Nonqualified",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "incentive",
+     "",
+     "deferred",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name & Principal",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Option",
+     "",
+     "plan",
+     "",
+     "compensation",
+     "",
+     "All Other",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Position(1)(2)",
+     "Year",
+     "",
+     "Salary $",
+     "",
+     "Bonus $",
+     "",
+     "Awards $",
+     "",
+     "Awards $",
+     "",
+     "compensation $",
+     "",
+     "earnings $",
+     "",
+     "Compensation $",
+     "",
+     "Total $",
+     ""
+    ],
+    [
+     "Kevin Frija",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PEO, PAO and Director",
+     "",
+     "2010",
+     "",
+     "72,000",
+     "",
+     "36,000",
+     "",
+     "\u2014",
+     "",
+     "0.00",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Kevin Frija",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PEO, PAO and Director",
+     "",
+     "2009",
+     "",
+     "27,000",
+     "",
+     "12,000",
+     "",
+     "\u2014",
+     "",
+     "0.00",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 737,
+    "end_line": 748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Board does not have a standing Audit and Finance Committee (the \u201cAudit Committee\u201d), or Compensation Committee and Nominating and Corporate Governance Committee (the \u201cNominating Committee\u201d). Since the Board is comprised solely of our sole executive officer, we do not have any independent board members nor an independent board.\nDirector Compensation\nWe do not currently have any non-employee directors and no additional compensation is currently paid to Mr. Frija in connection with his directorship over and above his employee based compensation.\nCode of Ethics\nThe Company has a code of ethics, \u201cBusiness Conduct: \u201cCode of Conduct and Policy,\u201d that applies to all of the Company\u2019s employees, including its principal executive officer, principal financial officer and principal accounting officer, and the Board. A copy of this code is attached hereto as an exhibit to this Form 10-k and is available on the Company\u2019s website at www.vapor-corp. The Company intends to disclose any changes in or waivers from its code of ethics by posting such information on its website or by filing a Form 8-K.\nItem 11. Executive Compensation.\nEXECUTIVE COMPENSATION SUMMARY COMPENSATION TABLE",
+   "prose_after": "Arrangements with Named Executive Officers\nEffective October 1, 2009 the Company entered into an employment agreement with Mr. Kevin Frija, PEO, PAO and president of the company. The agreement provides for the payment of $72,000 in annual cash compensation, a one time bonus of $48,000 payable ratably over a 12 month period and an award of 900,000 stock options which shall vest monthly on a pro-rata basis over 12 months, exercisable at $0.45 per share. Mr. Frija shall be eligible to participate in any employee benefit programs, stock option plan or other equity incentive or bonus plan that the company may subsequently adopt.\nOutstanding Equity Awards at 2010 Year-End\nThe following table presents information regarding the outstanding equity awards held by each of the named executive officers as of December 31, 2010, including the vesting dates for the portions of these awards that had not vested as of that date.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "OPTION AWARDS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "STOCK AWARDS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Equity",
+     "",
+     "Incentive",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Incentive",
+     "",
+     "Plan",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Market",
+     "",
+     "Plan",
+     "",
+     "Awards:",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Value",
+     "",
+     "Awards:",
+     "",
+     "Market or",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Equity",
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number",
+     "",
+     "of",
+     "",
+     "Number",
+     "",
+     "Payout Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Incentive",
+     "",
+     "Incentive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "of",
+     "",
+     "Shares",
+     "",
+     "of",
+     "",
+     "of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Plan",
+     "",
+     "Plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "or",
+     "",
+     "Unearned",
+     "",
+     "Unearned",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Awards:",
+     "",
+     "Awards:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "or",
+     "",
+     "Units",
+     "",
+     "Shares,",
+     "",
+     "Shares,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Units of",
+     "",
+     "of",
+     "",
+     "Units or",
+     "",
+     "Units",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Stock",
+     "",
+     "Other",
+     "",
+     "or other",
+     ""
+    ],
+    [
+     "",
+     "of",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "that",
+     "",
+     "that",
+     "",
+     "Rights",
+     "",
+     "Rights",
+     ""
+    ],
+    [
+     "",
+     "Securities",
+     "",
+     "Unexercised",
+     "",
+     "Unexercised",
+     "",
+     "Option",
+     "",
+     "Option",
+     "",
+     "have",
+     "",
+     "Have",
+     "",
+     "that",
+     "",
+     "that",
+     ""
+    ],
+    [
+     "",
+     "Underlying",
+     "",
+     "Unearned",
+     "",
+     "Unearned",
+     "",
+     "Exercise",
+     "",
+     "Expiration",
+     "",
+     "not",
+     "",
+     "not",
+     "",
+     "have not",
+     "",
+     "have not",
+     ""
+    ],
+    [
+     "",
+     "Unexercised",
+     "",
+     "Options",
+     "",
+     "Options",
+     "",
+     "Price",
+     "",
+     "Date",
+     "",
+     "Vested",
+     "",
+     "Vested",
+     "",
+     "Vested",
+     "",
+     "Vested",
+     ""
+    ],
+    [
+     "Name",
+     "options",
+     "",
+     "(#)",
+     "",
+     "(#)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "(#)",
+     "",
+     "($)",
+     "",
+     "(#)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "(a)",
+     "(#) (b)",
+     "",
+     "(c)",
+     "",
+     "(d)",
+     "",
+     "(e)",
+     "",
+     "(f)",
+     "",
+     "(g)",
+     "",
+     "(h)",
+     "",
+     "(i)",
+     "",
+     "(j)",
+     ""
+    ],
+    [
+     "Kevin Frija, PEO",
+     "",
+     "900,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.45",
+     "",
+     "10/01/2015",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 785
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Arrangements with Named Executive Officers\nEffective October 1, 2009 the Company entered into an employment agreement with Mr. Kevin Frija, PEO, PAO and president of the company. The agreement provides for the payment of $72,000 in annual cash compensation, a one time bonus of $48,000 payable ratably over a 12 month period and an award of 900,000 stock options which shall vest monthly on a pro-rata basis over 12 months, exercisable at $0.45 per share. Mr. Frija shall be eligible to participate in any employee benefit programs, stock option plan or other equity incentive or bonus plan that the company may subsequently adopt.\nOutstanding Equity Awards at 2010 Year-End\nThe following table presents information regarding the outstanding equity awards held by each of the named executive officers as of December 31, 2010, including the vesting dates for the portions of these awards that had not vested as of that date.",
+   "prose_after": "Termination of Employment\nIn the event any of the Named Executive Officers or other covered employees or consultants, as determined by the company, are terminated without cause or if they should resign for \u201cGood Reason,\u201d those options, restricted stock, and restricted stock units outstanding that are not yet vested as of the date of such termination or resignation will vest in full. Generally, \u201cCause\u201d is defined to include a felony conviction, willful disclosure of confidential information or willful and continued failure to perform his or her employment duties. \u201cGood Reason\u201d includes resignation of employment as a result of a substantial diminution in position or duties, or an adverse change in title or reduction in annual base salary.\nPotential Payments Upon Termination or Change in Control\nAs noted above, the Company does not have employment agreements or severance arrangements with any of its named executive officers, and the Company does not maintain any other plans or arrangements that provide for any named executive officer to receive cash severance or other cash payments in connection with a termination of such officer\u2019s employment with the Company and/or a change in control of the Company.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Equity Compensation Plan Information",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "remaining available",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "for future issuance under",
+     ""
+    ],
+    [
+     "",
+     "Number of securities to be issued",
+     "",
+     "Weighted-average exercise price of",
+     "",
+     "equity compensation plans",
+     ""
+    ],
+    [
+     "",
+     "upon exercise of outstanding",
+     "",
+     "outstanding options, warrants and",
+     "",
+     "(excluding securities",
+     ""
+    ],
+    [
+     "",
+     "options, warrants and rights",
+     "",
+     "rights",
+     "",
+     "reflected in column (a))",
+     ""
+    ],
+    [
+     "Plan category",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "3,600,000",
+     "",
+     "0.45",
+     "",
+     "96,400,000"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "3,600,000",
+     "",
+     "0.45",
+     "",
+     "96,400,000"
+    ]
+   ],
+   "caption_stack": [
+    "Equity Compensation Plan Information",
+    "Number of securities",
+    "remaining available",
+    "for future issuance under"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 800,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "In the event any of the Named Executive Officers or other covered employees or consultants, as determined by the company, are terminated without cause or if they should resign for \u201cGood Reason,\u201d those options, restricted stock, and restricted stock units outstanding that are not yet vested as of the date of such termination or resignation will vest in full. Generally, \u201cCause\u201d is defined to include a felony conviction, willful disclosure of confidential information or willful and continued failure to perform his or her employment duties. \u201cGood Reason\u201d includes resignation of employment as a result of a substantial diminution in position or duties, or an adverse change in title or reduction in annual base salary.\nPotential Payments Upon Termination or Change in Control\nAs noted above, the Company does not have employment agreements or severance arrangements with any of its named executive officers, and the Company does not maintain any other plans or arrangements that provide for any named executive officer to receive cash severance or other cash payments in connection with a termination of such officer\u2019s employment with the Company and/or a change in control of the Company.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nSecurities authorized for issuance under equity compensation plans.",
+   "prose_after": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nSecurity ownership of certain beneficial owners. The following table provides the names and addresses of each person known to own directly or beneficially more than 5% of our outstanding Common Stock (as determined in accordance with Rule 13d-3 under the Exchange Act) as of December 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 820,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "Percentage of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Beneficially",
+     "",
+     "Beneficial",
+     "",
+     ""
+    ],
+    [
+     "Name and address of beneficial owner",
+     "Owned(1)",
+     "",
+     "Ownership(1)",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adam Frija",
+     "",
+     "4,464,720",
+     "",
+     "7.43",
+     "%"
+    ],
+    [
+     "Tamar Galazan",
+     "",
+     "5,900,000",
+     "",
+     "9.813",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Named Executive Officers & Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kevin Frija",
+     "",
+     "4,314,000",
+     "",
+     "7.19",
+     "%"
+    ],
+    [
+     "Isaac Galazan",
+     "",
+     "4,169,640",
+     "",
+     "16.95",
+     "%"
+    ],
+    [
+     "Jeffrey Holman",
+     "",
+     "5,625,548",
+     "",
+     "9.36",
+     "%"
+    ],
+    [
+     "Doron Ziv",
+     "",
+     "6,945,120",
+     "",
+     "11.55",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Current Officers and Directors As a Group (4 person)",
+     "",
+     "21,054,308",
+     "",
+     "35.01",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nSecurity ownership of certain beneficial owners. The following table provides the names and addresses of each person known to own directly or beneficially more than 5% of our outstanding Common Stock (as determined in accordance with Rule 13d-3 under the Exchange Act) as of December 31, 2010.",
+   "prose_after": "(1) Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and generally includes voting or investment power with respect to securities. Except as indicated by footnote, and subject to the community property laws where applicable, to the Company\u2019s knowledge the persons named in the table above have sole voting and investment power with respect to all shares of common stock shown as beneficially owned by them. Unless otherwise indicated, the address for each person is the Company\u2019s address at 3101 W. Hallandale Boulevard #100, Hallandale, Florida 33009.\n(2) On December 31, 20010 there were 60,135,344 shares of our common stock outstanding and no shares of preferred stock issued and outstanding.\n(3) In determining the percent of voting stock owned by a person (a) the numerator is the number of shares of common stock beneficially owned by the person, including shares the beneficial ownership of which may be acquired within 60 days upon the exercise of options or warrants or conversion of convertible securities, and (b) the denominator is the total of (i) the 60,135,344 shares of common stock and (ii) any shares of common stock which the person has the right to acquire within 60 days upon the exercise of options or warrants or conversion of convertible securities. Neither the numerator nor the denominator includes shares which may be issued upon the exercise of any other options or warrants or the conversion of any other convertible securities.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 820,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consolidated Balance Sheets as of December 31, 2010 and December 31, 2009",
+     "42"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the two years ended December 31, 2010 and December 31, 2009",
+     "43"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Equity for the two years ended December 31, 2010 and December 31, 2009",
+     "44"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the two years ended December 31, 2010 and December 31, 2009",
+     "45"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "46"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Reports of Paritz & Co., Independent Registered Public Accounting Firm",
+     "41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 900,
+    "end_line": 913
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "During the last two fiscal years, no fees were billed or incurred for assurance or related services by our auditors that were reasonably related to the audit or review of financial statements reported above.\nTAX FEES\nTax preparation fees billed for the fiscal years ended December 31, 2009 was approximately $1,980, We have not yet accrued any tax preparation fees for the Year ending December 31, 2010.\nALL OTHER FEES\nDuring the last two fiscal years, no other fees were billed or incurred for services by our auditors other than the fees noted above.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) Documents filed as part of this report\n(1) All financial statements\nIndex to Consolidated Financial Statements",
+   "prose_after": "(2) Financial Statement Schedules\nAll financial statement schedules have been omitted, since the required information is not applicable or is not present in amounts sufficient to require submission of the schedule, or because the information required is included in the consolidated financial statements and notes thereto.\n(b) Exhibits required by Item 601 of Regulation S-K\nThe information required by this Item is set forth on the exhibit index that follows the signature page of this report.\nParitz & Company, P.A.\nVAPOR CORPORATION (FORMERLY MILLER DIVERSIFIED CORPORATION)\nCONSOLIDATED FINANCIAL STATEMENTS WITH REPORT OF INDEPENDENT REGISTERED ACCOUNTING FIRM\nYEARS ENDED DECEMBER 31, 2010 AND 2009\nREPORT OF INDEPENDENT REGISTERED ACCOUNTING FIRM\nBoard of Directors Vapor Corporation (formerly Miller Diversified Corporation) Hallandale, Florida",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "Hackensack, New Jersey"
+    ],
+    [
+     "March 26, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "Hackensack, New Jersey",
+    "March 26, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 942,
+    "end_line": 947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with auditing standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of Vapor Corporation (formerly Miller Diversified Corporation), as of December 31, 2010 and 2009 and the results of its operations and its cash flows for the year then ended in conformity with accounting principles generally accepted in the United States of America.",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "DECEMBER 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "65,734",
+     "$",
+     "841"
+    ],
+    [
+     "Due from merchant credit card processor, net of reserve for charge-backs of $80,000 and $60,000, respectively",
+     "",
+     "499,485",
+     "",
+     "361,623"
+    ],
+    [
+     "Accounts receivable, net of allowance of $5,000",
+     "",
+     "304,391",
+     "",
+     "\u2014"
+    ],
+    [
+     "Vendor deposits",
+     "",
+     "\u2014",
+     "",
+     "169,424"
+    ],
+    [
+     "Inventories",
+     "",
+     "924,809",
+     "",
+     "827,412"
+    ],
+    [
+     "Sundry current assets",
+     "",
+     "4,713",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "1,799,132",
+     "",
+     "1,359,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "1,799,132",
+     "$",
+     "1,359,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "1,001,122",
+     "$",
+     "453,823"
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "173,471",
+     "",
+     "202,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "1,174,593",
+     "",
+     "655,823"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.001 par value, 250,000,000 shares authorized 60,135,000 and 60,000,000 shares issued and outstanding, in 2010 and 2009, respectively",
+     "",
+     "60,135",
+     "",
+     "60,000"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "347,115",
+     "",
+     "325,500"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "217,289",
+     "",
+     "317,977"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "624,539",
+     "",
+     "703,477"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "1,799,132",
+     "$",
+     "1,359,300"
+    ]
+   ],
+   "caption_stack": [
+    "DECEMBER 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 954,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF INCOME",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 950,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 999,
+     "token": "REPEATING_FOOTER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED DECEMBER 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SALES",
+     "$",
+     "10,917,101",
+     "",
+     "$",
+     "7,957,247"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COSTS AND EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "6,058,297",
+     "",
+     "",
+     "3,039,301"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "4,958,492",
+     "",
+     "",
+     "4,381,215"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL COSTS AND EXPENSES",
+     "",
+     "11,016,789",
+     "",
+     "",
+     "7,420,516"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(LOSS) INCOME BEFORE INCOME TAXES",
+     "",
+     "(99,688)",
+     "",
+     "",
+     "536,731"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "1,000",
+     "",
+     "",
+     "202,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET (LOSS) INCOME",
+     "$",
+     "(100,688)",
+     "",
+     "$",
+     "334,731"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED NET (LOSS) INCOME PER COMMON SHARE",
+     "$",
+     "(0.001)",
+     "",
+     "$",
+     "0.01"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON SHARES",
+     "",
+     "60,039,436",
+     "",
+     "",
+     "24,301,159"
+    ]
+   ],
+   "caption_stack": [
+    "YEAR ENDED DECEMBER 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF INCOME",
+   "prose_after": "CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1003,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1038,
+     "token": "REPEATING_FOOTER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Shares",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2014 JANUARY 1, 2009",
+     "",
+     "100",
+     "$",
+     "100",
+     "$",
+     "375,400",
+     "",
+     "$",
+     "(16,754)",
+     "",
+     "$",
+     "358,746",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Elimination of Miller Corporation equity and common stock in connection with reverse merger",
+     "",
+     "59,999,900",
+     "",
+     "59,900",
+     "",
+     "(59,900)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional investment by shareholder",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "334,731",
+     "",
+     "",
+     "334,731",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2014 DECEMBER 31, 2009",
+     "",
+     "60,000,000",
+     "",
+     "60,000",
+     "",
+     "325,500",
+     "",
+     "",
+     "317,977",
+     "",
+     "",
+     "703,477",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "135,000",
+     "",
+     "135",
+     "",
+     "21,615",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(100,688)",
+     "",
+     "",
+     "(100,688)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE \u2014 DECEMBER 31, 2010",
+     "",
+     "60,135,000",
+     "$",
+     "60,135",
+     "$",
+     "347,115",
+     "",
+     "$",
+     "217,289",
+     "",
+     "$",
+     "624,539",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1046,
+    "end_line": 1071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1042,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1072,
+     "token": "REPEATING_FOOTER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED DECEMBER 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(100,688)",
+     "",
+     "$",
+     "334,731",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) income to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserve for charge-backs",
+     "",
+     "20,000",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "21,750",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due from merchant credit card processor",
+     "",
+     "(137,862)",
+     "",
+     "",
+     "(391,623)",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(324,391)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vendor deposits",
+     "",
+     "169,424",
+     "",
+     "",
+     "(109,424)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(97,397)",
+     "",
+     "",
+     "(816,099)",
+     ""
+    ],
+    [
+     "Sundry current assets",
+     "",
+     "(4,713)",
+     "",
+     "",
+     "4,755",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "547,332",
+     "",
+     "",
+     "445,896",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "(28,562)",
+     "",
+     "",
+     "202,033",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(21,190)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY (USED IN) OPERATING ACTIVITIES",
+     "",
+     "64,893",
+     "",
+     "",
+     "(320,921)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional investment by shareholder",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCREASE (DECREASE) IN CASH",
+     "",
+     "64,893",
+     "",
+     "",
+     "(310,921)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH \u2014 BEGINNING OF YEAR",
+     "",
+     "841",
+     "",
+     "",
+     "311,762",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH \u2014 END OF YEAR",
+     "$",
+     "65,734",
+     "",
+     "$",
+     "841",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "YEAR ENDED DECEMBER 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2010 and 2009\n1 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBusiness description\nVapor Corporation (formerly Miller Diversified Corporation) (\u201cMiller\u201d) is the holding company for its wholly-owned subsidiary Smoke Anywhere U.S.A., Inc. (\u201cSmoke\u201d). The Company markets and distributes personal vaporizers under the Fifty-OneTM, KraveTM, EZ SmokerTM and Green PufferTM brands.\nOn September 1, 2009 Miller on entered into a definitive agreement with Smoke, a Florida Corporation, whereby Miller acquired 100% of the issued and outstanding shares of Smoke. As a result of the transaction, Smoke became a wholly-owned subsidiary of Miller. On November 5, 2009 Miller and Smoke completed, subject to certain post-closing undertakings, the transaction. For accounting purposes, this transaction is being accounted for as a reverse merger, since the stockholders of Smoke own a majority of the issued and outstanding shares of common stock of Miller and the directors and executive officers of Smoke now own and control in excess of 80% of Miller\u2019s outstanding stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1076,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1120,
+     "token": "REPEATING_FOOTER",
+     "id": 53,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "900",
+     "",
+     "$",
+     "173,000"
+    ],
+    [
+     "Deferred",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "100",
+     "",
+     "",
+     "29,000"
+    ],
+    [
+     "Deferred",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "4,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "202,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1180,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "New accounting pronouncements\nFrom time to time, new accounting pronouncements are issued by the Financial Accounting Standards Board or other standard setting bodies that may have an impact on the Company\u2019s accounting and reporting. The Company believes that such recently issued accounting pronouncements and other authoritative guidance for which the effective date is in the future either will not have an impact on its accounting or reporting or that such impact will not be material to its financial position, results of operations and cash flows when implemented.\n[[SEC:PAGE_BREAK id=57]] DUE FROM MERCHANT CREDIT CARD PROCESSOR\nDue from merchant credit card processor represents monies held in reserve by the Company\u2019s former credit card processors. The funds are expected to be released to the Company no later than June 30, 2011 pending satisfaction of their reserve requirements and expiration of charge backs/refunds from customers.\n3 INCOME TAXES\nThe income tax expense (benefit) consists of the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "U.S. Federal statutory rate",
+     "",
+     "-2",
+     "%",
+     "",
+     "34",
+     "%"
+    ],
+    [
+     "State income tax, net of Federal benefits",
+     "",
+     "-1",
+     "%",
+     "",
+     "4",
+     "%"
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "4",
+     "%",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "1",
+     "%",
+     "",
+     "38",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1200,
+    "end_line": 1212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "$",
+     "4,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deferred tax asset",
+     "",
+     "4,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(4,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset, net of valuation allowance",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1213,
+    "end_line": 1230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "[[SEC:PAGE_BREAK id=59]] RELATED PARTY TRANSACTIONS\nThe Company utilizes the services of an entity that is owned 50% by the CEO of the Company. The entity performs fulfillment services and leasing of warehouse space for the Company at a cost that is approximately equal to what these services would cost from an unrelated third party. Amounts paid to this entity for the year ended December 31, 2010 approximately $65,000.\n5 LEASE COMMITMENTS\nThe Company is obligated under an operating lease for its Florida office which calls for minimum annual rentals of $23,000. The lease expires in December 2011.\nRental expense charged to operations for the year ended December 31, 2010 aggregated approximately $26,000.\n6 CONTINGENCIES, LITIGATION AND GENERAL COMMENTS\nThe Company is subject to various legal proceedings and claims which have arisen in the ordinary course of its business and have not been fully adjudicated. These actions, when ultimately concluded and determined, will not, in the opinion of management, have a material adverse effect on results of operations or the financial condition of the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Incorporated by Reference",
+     ""
+    ],
+    [
+     "Exhibit",
+     "",
+     "",
+     "",
+     "",
+     "Filing Date/"
+    ],
+    [
+     "Number",
+     "",
+     "",
+     "Exhibit Description",
+     "Form",
+     "Period End Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.1",
+     "",
+     "Amended and Restated Articles of Incorporation, filed with the Secretary of State of the State of Nevada on January 4, 2010.",
+     "DEF-14C",
+     "12/10/09"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.2",
+     "",
+     "By-Laws of the Registrant, as amended.",
+     "8-K",
+     "01/10/86"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4.1",
+     "",
+     "Form of Stock Certificate of the Registrant.",
+     "10-Q",
+     "12/30/06"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.1",
+     "*",
+     "VAPOR CORP Equity Incentive Plan.",
+     "DEF-14C",
+     "12/10/09"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "14.1",
+     "",
+     "Code of Ethics",
+     "10-K",
+     "03/31/2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "21.1",
+     "**",
+     "Subsidiaries of the Registrant.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "23.1",
+     "**",
+     "Consent of Paritz &Co., Independent Registered Public Accounting Firm.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "24.1",
+     "**",
+     "Power of Attorney (included on the Signature Page of this Annual Report on Form 10-K).",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.1",
+     "**",
+     "Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.2",
+     "**",
+     "Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "32.1",
+     "**",
+     "Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1255,
+    "end_line": 1285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The Company utilizes the services of an entity that is owned 50% by the CEO of the Company. The entity performs fulfillment services and leasing of warehouse space for the Company at a cost that is approximately equal to what these services would cost from an unrelated third party. Amounts paid to this entity for the year ended December 31, 2010 approximately $65,000.\n5 LEASE COMMITMENTS\nThe Company is obligated under an operating lease for its Florida office which calls for minimum annual rentals of $23,000. The lease expires in December 2011.\nRental expense charged to operations for the year ended December 31, 2010 aggregated approximately $26,000.\n6 CONTINGENCIES, LITIGATION AND GENERAL COMMENTS\nThe Company is subject to various legal proceedings and claims which have arisen in the ordinary course of its business and have not been fully adjudicated. These actions, when ultimately concluded and determined, will not, in the opinion of management, have a material adverse effect on results of operations or the financial condition of the Company.\n[[SEC:PAGE_BREAK id=61]] SUBSEQUENT EVENTS\nManagement evaluated all activity of the Company through March 26, 2011 (the issue date of the financial statements). There were no material subsequent events as of that date.\nEXHIBIT INDEX",
+   "prose_after": "* Indicates management contract or compensatory plan or arrangement.\n** Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, this 30th day of March 2011.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "VAPOR CORP.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Kevin Frija\nKevin Frija"
+    ],
+    [
+     "",
+     "President, Chief Executive Officer and"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "VAPOR CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "* Indicates management contract or compensatory plan or arrangement.\n** Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, this 30th day of March 2011.",
+   "prose_after": "Power of Attorney\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Kevin Frija attorney-in-fact, each with the power of substitution, for him in any and all capacities, to sign any amendments to this Annual Report on Form 10-K, and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that each of said attorneys-in-fact, or his substitute or substitutes, may do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kevin Frija\nKEVIN FRIJA",
+     "Chief Executive Officer, Chief Financial Officer and Director (Principal Executive Officer & Principal Financial Officer)",
+     "March 30, 2011"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1311,
+    "end_line": 1319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Power of Attorney\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Kevin Frija attorney-in-fact, each with the power of substitution, for him in any and all capacities, to sign any amendments to this Annual Report on Form 10-K, and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that each of said attorneys-in-fact, or his substitute or substitutes, may do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1289,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

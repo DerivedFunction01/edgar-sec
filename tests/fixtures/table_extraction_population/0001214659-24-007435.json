@@ -1,0 +1,2044 @@
+{
+ "accession": "0001214659-24-007435",
+ "cik": "0001642363",
+ "form": "10-Q",
+ "filing_date": "2024-04-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "q220200930_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "35-7654530"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period ended September 30, 2020\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to   _____________\nCommission file number: 333-205822\nSEGUIN NATURAL HAIR PRODUCTS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "50 Yorkville Ave.  Suite 2803, Toronto, Ontario, Canada",
+     "M4W 0A3"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(647) 271-4226\n(Issuer's telephone number, including area code)\n(Former name, former address and former fiscal year if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for at least the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. FINANCIAL STATEMENTS",
+     "F-1"
+    ],
+    [
+     "ITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "3"
+    ],
+    [
+     "ITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "4"
+    ],
+    [
+     "ITEM 4. CONTROLS AND PROCEDURES",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. LEGAL PROCEEDINGS",
+     "5"
+    ],
+    [
+     "ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+     "5"
+    ],
+    [
+     "ITEM 3. DEFAULTS UPON SENIOR SECURITIES",
+     "5"
+    ],
+    [
+     "ITEM 4. MINE SAFETY DISCLOSURES",
+     "5"
+    ],
+    [
+     "ITEM 5. OTHER INFORMATION",
+     "5"
+    ],
+    [
+     "ITEM 6. EXHIBITS",
+     "5"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 84
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [ ]    Smaller reporting company [X]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act.)\nYes [X] No [ ]\nIndicate the number of shares outstanding of each of the issuer's classes of common equity, as of the latest practicable date: As of April 23, 2024, there were 16,843,878 shares of the Company\u2019s common stock issued and outstanding.\nSEGUIN NATURAL HAIR PRODUCTS, INC.\nFORM 10-Q\nFor the Quarter Ended September 30, 2020\nTABLE OF CONTENTS",
+   "prose_after": "2\nTABLE OF CONTENTS\nFinancial Statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheets as of September 30, 2020 (unaudited) and March 31, 2020",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the three and six months ended September 30, 2020 and 2019 (unaudited)",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders' Deficit for the three and six months ended September 30, 2020 and 2019 (unaudited)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the six months ended September 30, 2020 and 2019 (unaudited)",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements (unaudited)",
+     "F-6 - F-13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nTABLE OF CONTENTS\nFinancial Statements",
+   "prose_after": "Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2020",
+     "",
+     "",
+     "March 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "6,886",
+     "",
+     "",
+     "24,411",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "6,886",
+     "",
+     "",
+     "24,411",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "6,886",
+     "",
+     "$",
+     "24,411",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "$",
+     "3,445",
+     "",
+     "$",
+     "3,445",
+     ""
+    ],
+    [
+     "Compensation payable",
+     "",
+     "17,500",
+     "",
+     "",
+     "17,500",
+     ""
+    ],
+    [
+     "Advances from stockholders",
+     "",
+     "236",
+     "",
+     "",
+     "236",
+     ""
+    ],
+    [
+     "Loan payable \u2013 related party",
+     "",
+     "58,270",
+     "",
+     "",
+     "58,270",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "79,451",
+     "",
+     "",
+     "79,451",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "79,451",
+     "",
+     "$",
+     "79,451",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock par value $0.0001: 500,000,000 shares authorized; 14,578,506 shares issued and outstanding as of September 30, 2020 and March 31, 2020",
+     "$",
+     "1,457",
+     "",
+     "$",
+     "1,457",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "190,915",
+     "",
+     "",
+     "190,915",
+     ""
+    ],
+    [
+     "Common shares to be issued",
+     "",
+     "21,000",
+     "",
+     "",
+     "21,000",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(285,937)",
+     "",
+     "",
+     "(268,412)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(72,565)",
+     "",
+     "",
+     "(55,040)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficit",
+     "$",
+     "6,886",
+     "",
+     "$",
+     "24,411",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 106,
+    "end_line": 151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Balance Sheets",
+   "prose_after": "See accompanying notes to the unaudited financial statements.\nStatements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Month's Ending September 30th,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Month's Ending September 30th,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "$",
+     "17,525",
+     "",
+     "$",
+     "3,630",
+     "",
+     "$",
+     "17,525",
+     "",
+     "$",
+     "10,224",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "-",
+     "",
+     "",
+     "11",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "17,525",
+     "",
+     "",
+     "3,641",
+     "",
+     "",
+     "17,525",
+     "",
+     "",
+     "10,250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(17,525)",
+     "",
+     "",
+     "(3,641)",
+     "",
+     "",
+     "(17,525)",
+     "",
+     "",
+     "(10,250)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Tax Provision",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(17,525)",
+     "",
+     "$",
+     "(3,641)",
+     "",
+     "$",
+     "(17,525)",
+     "",
+     "$",
+     "(10,250)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per Common Share - Basic and Diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding: - basic and diluted",
+     "",
+     "14,578,506",
+     "",
+     "",
+     "14,578,506",
+     "",
+     "",
+     "14,578,506",
+     "",
+     "",
+     "14,578,506",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 159,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements.\nStatements of Operations",
+   "prose_after": "See accompanying notes to the unaudited financial statements.\nStatements of Changes in Stockholders' Deficit\nFor the Six Months Ended September 30th, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 157,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock, $0.0001 Par Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Shares to be",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "issued",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2019",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(250,909)",
+     "",
+     "$",
+     "(37,537)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(6,609)",
+     "",
+     "",
+     "(6,609)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2019",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(257,518)",
+     "",
+     "$",
+     "(44,146)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(3,641)",
+     "",
+     "",
+     "(3,641)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2019",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(261,159)",
+     "",
+     "$",
+     "(47,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2020",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(268,412)",
+     "",
+     "$",
+     "(55,040)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2020",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(268,412)",
+     "",
+     "$",
+     "(55,040)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(17,525)",
+     "",
+     "",
+     "(17,525)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2020",
+     "",
+     "14,578,506",
+     "$",
+     "1,457",
+     "$",
+     "21,000",
+     "$",
+     "190,915",
+     "$",
+     "(285,937)",
+     "",
+     "$",
+     "(72,565)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 204,
+    "end_line": 239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements.\nStatements of Changes in Stockholders' Deficit\nFor the Six Months Ended September 30th, 2020 and 2019",
+   "prose_after": "See accompanying notes to the unaudited financial statements.\nStatements of Cash Flows\nUnaudited",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 202,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended September 30th,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(17,525)",
+     "",
+     "$",
+     "(10,250)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid Expenses",
+     "",
+     "17,525",
+     "",
+     "",
+     "1,224",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "-",
+     "",
+     "",
+     "(9,026)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from promissory notes payable \u2013 related parties",
+     "",
+     "-",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "-",
+     "",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of the reporting period",
+     "",
+     "-",
+     "",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of the reporting period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOWS INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Six Months Ended September 30th,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 247,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements.\nStatements of Cash Flows\nUnaudited",
+   "prose_after": "See accompanying notes to the unaudited financial statements.\nSeguin Natural Hair Products Inc.\nNote 1 - Organization\nSeguin Natural Hair Products Inc. (the \u201cCompany\u201d) was incorporated on April 29, 2014 under the laws of the State of Nevada. Initial operations have included organization and incorporation, target market identification, marketing plans, capital formation and property acquisitions. A substantial portion of the Company\u2019s activities has involved developing a business plan and establishing contacts and visibility in the marketplace. The Company has generated no revenues since inception.\nWe are no longer in the business of developing and selling shampoo, conditioner, or any other hair care products.\nThe Company has no operations at this time and currently does not have any principal products or services, customers, or intellectual property. As the Company has no current operations, it also currently is not subject to any competitive business conditions. Further, the Company is not subject to any government approvals at this time, other than those applicable to it as a \u201cshell company,\u201d as such term is defined in Rule 12b-2 under the Exchange Act.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "Quoted market prices available in active markets for identical assets or liabilities as of the reporting date."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2",
+     "Pricing inputs other than quoted prices in active markets included in Level 1, which are either directly or indirectly observable as of the reporting date."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3",
+     "Pricing inputs that are generally observable inputs and not corroborated by market data."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 341,
+    "end_line": 348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Significant and Critical Accounting Policies and Practices"
+    }
+   },
+   "prose_before": "The Company follows paragraph 825-10-50-10 of the FASB Accounting Standards Codification for disclosures about fair value of its financial instruments and paragraph 820-10-35-37 of the FASB Accounting Standards Codification (\u201cParagraph 820-10-35-37\u201d) to measure the fair value of its financial instruments. Paragraph 820-10- 35-37 establishes a framework for measuring fair value in generally accepted accounting principles (GAAP) and expands disclosures about fair value measurements. To increase consistency and comparability in fair value measurements and related disclosures, Paragraph 820-10-35-37 establishes a fair value hierarchy which prioritizes the inputs to valuation techniques used to measure fair value into three (3) broad levels. The fair value hierarchy gives the highest priority to quoted prices (unadjusted) in active markets for identical assets or liabilities and the lowest priority to unobservable inputs. The three (3) levels of fair value hierarchy defined by Paragraph 820-10-35-37 are described below:",
+   "prose_after": "Financial assets are considered Level 3 when their fair values are determined using pricing models, discounted cash flow methodologies or similar techniques and at least one significant model assumption or input is unobservable.\nThe fair value hierarchy gives the highest priority to quoted prices (unadjusted) in active markets for identical assets or liabilities and the lowest priority to unobservable inputs. If the inputs used to measure the financial assets and liabilities fall within more than one level described above, the categorization is based on the lowest level input that is significant to the fair value measurement of the instrument.\nThe carrying amounts of the Company\u2019s financial assets and liabilities, such as cash and accrued expenses approximate their fair value because of the short maturity of this instrument.\nTransactions involving related parties cannot be presumed to be carried out on an arm's-length basis, as the requisite conditions of competitive, free-market dealings may not exist. Representations about transactions with related parties, if made, shall not imply that the related party transactions were consummated on terms equivalent to those that prevail in arm's-length transactions unless such representations can be substantiated.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 356,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1*",
+     "Articles of Incorporation"
+    ],
+    [
+     "3.2*",
+     "Bylaws"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101",
+     "The following financial information from our Quarterly Report on Form 10-Q/A for the quarter ended September 30, 2020 formatted in Extensible Business Reporting Language (XBRL): (i) the Balance Sheets, (ii) the Statements of Operations, (iii) the Statements of Cash Flows, and (iv) Notes to Financial Statements"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "*Incorporated by reference to the Registration Statement on Form S-1 filed July 23, 2015."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "None.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nNone.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: April 23, 2024",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 547,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SEGUIN NATURAL HAIR PRODUCTS, INC.",
+     "",
+     ""
+    ],
+    [
+     "(Registrant)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Danny Iandoli",
+     ""
+    ],
+    [
+     "",
+     "Danny Iandoli",
+     ""
+    ],
+    [
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SEGUIN NATURAL HAIR PRODUCTS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: April 23, 2024",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

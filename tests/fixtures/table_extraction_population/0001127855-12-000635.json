@@ -1,0 +1,2873 @@
+{
+ "accession": "0001127855-12-000635",
+ "cik": "0001409885",
+ "form": "10-Q",
+ "filing_date": "2012-11-19",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ecobuilding10q093012.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "20-8677788"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2012\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE EXCHANGE ACT\nFor the transition period from _______________ to _______________\nCommission file number: 000-53875\nEco Building Products, Inc.\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "909 West Vista Way\nVista, California 92083\n(Address of principal executive offices)\n(760) 732-5826\n(Registrants telephone number, including area code)\n____________________________________________________________\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     "Number"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Unaudited Condensed Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheet",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Operations",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Cash Flows",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to the Interim Financial Statements",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Management's Discussion and Analysis of Financial Condition",
+     ""
+    ],
+    [
+     "",
+     "and Results of Operations",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6",
+     "Exhibits and Reports",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 60,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company; as defined within Rule 12b-2 of the Exchange Act.\n[ ] Large accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [X] Smaller reporting company\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nThe number of shares outstanding of each of the issuer's classes of common equity as of November 19, 2012: 318,022,903 shares of common stock.\nContents",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ECO BUILDING PRODUCTS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30",
+     "",
+     "",
+     "June 30",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "3,394",
+     "",
+     "$",
+     "111,251",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of $18,727 at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 30, 2012 and June 30, 2012",
+     "",
+     "1,169,337",
+     "",
+     "",
+     "666,223",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "1,089,987",
+     "",
+     "",
+     "922,646",
+     ""
+    ],
+    [
+     "Prepaid loan facility fee - related party, current portion",
+     "",
+     "1,008,383",
+     "",
+     "",
+     "1,008,383",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "15,796",
+     "",
+     "",
+     "7,297",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "7,100",
+     "",
+     "",
+     "7,100",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,110",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "3,295,107",
+     "",
+     "",
+     "2,722,900",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, net",
+     "",
+     "1,187,948",
+     "",
+     "",
+     "1,207,035",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable - long-term portion",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "15,471",
+     "",
+     "",
+     "16,325",
+     ""
+    ],
+    [
+     "Prepaid loan facility fee - related party",
+     "",
+     "826,765",
+     "",
+     "",
+     "1,078,861",
+     ""
+    ],
+    [
+     "Equipment deposits - related party",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other assets",
+     "",
+     "842,236",
+     "",
+     "",
+     "1,095,186",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "5,325,291",
+     "",
+     "$",
+     "5,025,121",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "448,411",
+     "",
+     "$",
+     "426,179",
+     ""
+    ],
+    [
+     "Payroll and taxes payable",
+     "",
+     "1,762,164",
+     "",
+     "",
+     "1,594,848",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other payables and accrued expenses",
+     "",
+     "495,811",
+     "",
+     "",
+     "336,287",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "-",
+     "",
+     "",
+     "33,640",
+     ""
+    ],
+    [
+     "Current maturities of notes payable",
+     "",
+     "8,278",
+     "",
+     "",
+     "8,670",
+     ""
+    ],
+    [
+     "Line of credit payable - related party",
+     "",
+     "1,666,667",
+     "",
+     "",
+     "1,666,667",
+     ""
+    ],
+    [
+     "Loans payable - related party",
+     "",
+     "336,935",
+     "",
+     "",
+     "201,480",
+     ""
+    ],
+    [
+     "Loans payable - other",
+     "",
+     "144,500",
+     "",
+     "",
+     "44,500",
+     ""
+    ],
+    [
+     "Convertible notes net of loan discount",
+     "",
+     "1,340,206",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "6,202,972",
+     "",
+     "",
+     "4,312,271",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Line of credit payable - related party",
+     "",
+     "3,333,333",
+     "",
+     "",
+     "3,333,333",
+     ""
+    ],
+    [
+     "Notes payable, less current maturities",
+     "",
+     "13,608",
+     "",
+     "",
+     "17,295",
+     ""
+    ],
+    [
+     "Total long term liabilities",
+     "",
+     "3,346,941",
+     "",
+     "",
+     "3,350,628",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "9,549,913",
+     "",
+     "",
+     "7,662,899",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 500,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "311,322,033 shares issued and outstanding at September 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and 290,961,669 shares issued and outstandingJune 30, 2012",
+     "",
+     "235,522",
+     "",
+     "",
+     "216,162",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "19,918,439",
+     "",
+     "",
+     "18,578,613",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(24,378,583)",
+     "",
+     "",
+     "(21,432,553)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "(4,224,622)",
+     "",
+     "",
+     "(2,637,778)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "$",
+     "5,325,291",
+     "",
+     "$",
+     "5,025,121",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ECO BUILDING PRODUCTS, INC.",
+    "CONDENSED CONSOLIDATED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 181
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See accompanying notes to condensed consolidated financial statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ECO BUILDING PRODUCTS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3-month ended",
+     "",
+     "",
+     "3-month ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30",
+     "",
+     "",
+     "September 30",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product sale",
+     "$",
+     "1,060,426",
+     "",
+     "$",
+     "690,679",
+     ""
+    ],
+    [
+     "License sale",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment and other sales",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL REVENUE",
+     "$",
+     "1,060,426",
+     "",
+     "$",
+     "690,679",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST OF SALES",
+     "",
+     "811,682",
+     "",
+     "",
+     "623,604",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS PROFIT",
+     "",
+     "248,744",
+     "",
+     "",
+     "67,075",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "95,217",
+     "",
+     "",
+     "18,621",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "92,468",
+     "",
+     "",
+     "29,953",
+     ""
+    ],
+    [
+     "Goodwill/Donation",
+     "",
+     "9,325",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Compensation and related expenses",
+     "",
+     "674,761",
+     "",
+     "",
+     "606,454",
+     ""
+    ],
+    [
+     "Rent - facilities",
+     "",
+     "210,620",
+     "",
+     "",
+     "78,955",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "477,893",
+     "",
+     "",
+     "293,190",
+     ""
+    ],
+    [
+     "Consulting",
+     "",
+     "381,623",
+     "",
+     "",
+     "78,556",
+     ""
+    ],
+    [
+     "Other general and administrative expenses",
+     "",
+     "474,714",
+     "",
+     "",
+     "333,795",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "2,416,621",
+     "",
+     "",
+     "1,439,524",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(2,167,877)",
+     "",
+     "",
+     "(1,372,449)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "-",
+     "",
+     "",
+     "3,365",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(337,270)",
+     "",
+     "",
+     "(220,165)",
+     ""
+    ],
+    [
+     "Gain (loss) on settlement of lease",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain (loss) on settlement of debt",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on modification of debt",
+     "",
+     "(448,437)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "7,554",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(778,153)",
+     "",
+     "",
+     "(216,800)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE PROVISION FOR INCOME TAXES",
+     "",
+     "(2,946,030)",
+     "",
+     "",
+     "(1,589,249)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(2,946,030)",
+     "",
+     "$",
+     "(1,589,249)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER COMMON SHARE - BASIC",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON SHARES OUTSTANDING",
+     "",
+     "298,641,804",
+     "",
+     "",
+     "178,286,100",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ECO BUILDING PRODUCTS, INC.",
+    "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 186,
+    "end_line": 253
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to condensed consolidated financial statements",
+   "prose_after": "See accompanying notes to condensed consolidated financial statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 185,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 255,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ECO BUILDING PRODUCTS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(UNAUDITED)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3-month ended",
+     "",
+     "",
+     "3-month ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30",
+     "",
+     "",
+     "September 30",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(2,946,030)",
+     "",
+     "$",
+     "(1,589,249)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest o amortization of loan fees",
+     "",
+     "",
+     "",
+     "",
+     "181,617",
+     ""
+    ],
+    [
+     "Loss on modification of debt by issuance of common stock",
+     "",
+     "448,436",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Gain) loss on settlement of debt",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest on amortization of debt discount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of loan fees",
+     "",
+     "252,096",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest on repricing of warrant",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issuance for services",
+     "",
+     "896,560",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issuance for payment of rent and lease settlement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Based Compensation",
+     "",
+     "14,190",
+     "",
+     "",
+     "14,190",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "41,464",
+     "",
+     "",
+     "43,666",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) in accounts receivable",
+     "",
+     "(503,114)",
+     "",
+     "",
+     "(74,437)",
+     ""
+    ],
+    [
+     "(Increase) in other receivable",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Increase) in inventory",
+     "",
+     "(167,341)",
+     "",
+     "",
+     "(448,743)",
+     ""
+    ],
+    [
+     "(Increase) in prepaid expenses & other current assets",
+     "",
+     "(9,609)",
+     "",
+     "",
+     "13,611",
+     ""
+    ],
+    [
+     "Decrease (Increase) in deposits",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in accounts payable",
+     "",
+     "22,232",
+     "",
+     "",
+     "76,253",
+     ""
+    ],
+    [
+     "Increase in Payroll and taxable payable",
+     "",
+     "",
+     "",
+     "",
+     "71,738",
+     ""
+    ],
+    [
+     "Increase in rent payable",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in other payable and accrued expenses",
+     "",
+     "229,456",
+     "",
+     "",
+     "(28,562)",
+     ""
+    ],
+    [
+     "Increase in deferred rent expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Decrease) in other payables and accrued expenses",
+     "",
+     "",
+     "",
+     "",
+     "(10,000)",
+     ""
+    ],
+    [
+     "Increase in accrued interest added to principle",
+     "",
+     "72,022",
+     "",
+     "",
+     "38,548",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "(1,649,638)",
+     "",
+     "",
+     "(1,711,368)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(21,523)",
+     "",
+     "",
+     "(29,473)",
+     ""
+    ],
+    [
+     "Purchase of software licenses",
+     "",
+     "-",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "Payments for equipment deposits - related party",
+     "",
+     "-",
+     "",
+     "",
+     "(11,964)",
+     ""
+    ],
+    [
+     "Payments for prepaid trademark costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided (used) by investing activities",
+     "",
+     "(21,523)",
+     "",
+     "",
+     "(66,437)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related party line of credit advances",
+     "",
+     "-",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ],
+    [
+     "Proceeds from debt issuance",
+     "",
+     "1,327,849",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from related party advances and notes",
+     "",
+     "235,455",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments of debt issuances",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments of related party advances and notes",
+     "",
+     "-",
+     "",
+     "",
+     "(1,272,491)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,563,304",
+     "",
+     "",
+     "1,727,509",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalent",
+     "",
+     "(107,857)",
+     "",
+     "",
+     "(50,296)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent at the beginning of year",
+     "",
+     "111,251",
+     "",
+     "",
+     "81,648",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent at the end of year",
+     "$",
+     "3,394",
+     "",
+     "$",
+     "31,352",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiven Note Payable in connection with the transfer of common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "72,791",
+     ""
+    ],
+    [
+     "Issuance of warrant in connection with the loan fee of line of credit",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ECO BUILDING PRODUCTS, INC.",
+    "CONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS",
+    "(UNAUDITED)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 258,
+    "end_line": 337
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to condensed consolidated financial statements",
+   "prose_after": "See accompanying notes to condensed consolidated financial statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NONCASH INVESTING AND FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "On February 14, 2011, the Company entered into a revolving line of credit and warrant purchase agreement with MRL. This agreement",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "did not go into effect until it is ratified by the shareholders of MRL, on July 26, 2011. Pursuant to the terms of this agreement, MRL",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "extended a $5,000,000 revolving loan facility in advances of $500,000, each, from time to time. On July 26, 2011, the Company drew",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "down $3,000,000 on the revolving line of credit. In consideration of the revolving line of credit and warrant purchase agreement, the",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Company issued MRL 5-year warrants for 50,000,000 common shares at an exercise price of $0.10 per share. The warrants were",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "valued at $3,025,148 on July 26, 2011 and expire on July 26, 2016. The valuation of these warrants was determined using a",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "multi-nominal lattice model using an exercise period of 5 years and projected volatility of 163%. The following assumptions",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "were incorporated into the model: (a) Due to the large number of warrants issued in the money, the dilutive impact of the transaction",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "was modeled; (b) MRL would exercise the warrants as they become exercisable based on volume limitations. Volume limitations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "were based on 100% of the last 12 months average volume, increasing 1% monthly; (c) MRL would exercise the warrant at maturity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "if the stock price was above 10 times the exercise price; and (d) Registration of the underlying shares would be effective 180 days",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "following their issuance. The Company has recorded the $3,025,148 value as a prepaid loan fee and is amortizing the value of the",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "warrants to interest expense over the 3 year availability period of the revolving line of credit. A total of $181,617 of interest expense",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "was recognized for the amortization of these warrants during the three months ended September 30, 2011.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "In September 2011, the Company purchased a vehicle for $32,095 via an installment sale with an auto dealership. Pursuant to the",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "installment sale agreement, the Company made a down payment of $5,000 and financed the remaining $27,095 over a five year period",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "at an interest rate of 9.99%.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "NONCASH INVESTING AND FINANCING ACTIVITIES"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 342,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to condensed consolidated financial statements",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements\n1. Organization and Basis of Presentation\nOrganization\nEco Building Products, Inc. (the \u201cCompany\u201d) was incorporated in the state of Colorado under the name N8 Concepts, Inc. on March 27, 2007.\nOn October 19, 2009, the Company merged with Ecoblu Products, Inc., a Nevada Corporation (\u201cECOBLU\u201d). For financial reporting purposes, the acquisition was treated as a reverse acquisition whereby ECOBLU\u2019s operations continue to be reported as if it had actually been the acquirer. Assets and liabilities continue to be reported at the acquiree\u2019s historical cost because before the reverse acquisition; the Company had nominal assets, liabilities and operations, and accordingly, the fair value of the assets approximated their carrying value and no goodwill was recorded.\nECOBLU was organized May 20, 2009 in Nevada as a wholesale distributor and manufacturer of proprietary wood products coated with an eco-friendly chemistry that is designed to protect against mold, rot, decay, termites and fire. The Company has also developed an affiliate coating program that allows lumber companies to coat commodity lumber at their facilities contingent upon their stocking the Company\u2019s inventory and supporting the Company\u2019s products.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 401,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Chemicals",
+     "$",
+     "255,852"
+    ],
+    [
+     "Lumber",
+     "",
+     "833,914"
+    ],
+    [
+     "",
+     "$",
+     "1,089,766"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 552,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "In September 2011, FASB issued ASU 2011-08, \u201cIntangibles \u2013 Goodwill and Other (Topic 350).\u201d Under the amendments in ASU 2011-08, an entity has the option to first assess qualitative factors to determine whether the existence of events or circumstances leads to a determination that it is more likely than not that the fair value of a reporting unit is less than its carrying amount. If, after assessing the totality of events or circumstances, an entity determines it is not more likely than not that the fair value of a reporting unit is less than its carrying amount, then performing the two-step impairment test is unnecessary. However, if an entity concludes otherwise, then it is required to perform the first step of the two-step impairment test by calculating the fair value of the reporting unit and comparing the fair value with the carrying amount of the reporting unit, as described in paragraph 350-20-35-4. If the carrying amount of a reporting unit exceeds its fair value, then the entity is required to perform the second step of the goodwill impairment test to measure the amount of the impairment loss, if any, as described in paragraph 350-20-35-9. Under the amendments in this Update, an entity has the option to bypass the\nqualitative assessment for any reporting unit in any period and proceed directly to performing the first step of the two-step goodwill impairment test. An entity may resume performing the qualitative assessment in any subsequent period. The amendments are effective for annual and interim goodwill impairment tests performed for fiscal years beginning after December 15, 2011. Early adoption is permitted, including for annual and interim goodwill impairment tests performed as of a\ndate before September 15, 2011, if an entity's financial statements for the most recent annual or interim period have not yet been issued. Management does not expect the provisions of ASU 2011-08 to have a material effect on the Company\u2019s financial position, results of operations or cash flows.\n3. Inventories\nAs of September 30, 2012, inventories consisted of the following:",
+   "prose_after": "In addition, inventory is considered finished goods as the Company sells and markets the chemical and treated and untreated lumber. All of the Company\u2019s inventories are pledged as collateral for the Company\u2019s $5,000,000 Loan Facility (see Note 5).\n4. Prepaid Loan Facility Fee\nAs discussed in Note 5, In September 2011, the Company issued 50,000,000 warrants in exchange for the payment of the $3.0 million prepaid loan fees in connection with the MRL $5 million line of credit. The $3,025,000 total prepaid loan fees were amortized using the straight line method over the three year terms of the underlying notes. Amortization charged to interest expense for the years ended September 30, 2012 and September 30, 2011 totaled $1,192,758 and $181,617 respectively. As of September 30, 2012, the current and non-current prepaid loan facility fee was $1,008,383 and $826,765 respectively.\n5. Notes Payable\nLoan Facility and Credit and Warrant Agreement with MRL\nOn February 14, 2011, the Company entered into a revolving credit and warrant purchase agreement (the \u201cCredit and Warrant Agreement\u201d) with MRL. The Credit and Warrant Agreement did not go into effect until it is ratified by the shareholders of MRL, on July 26, 2011.",
+   "structured_location": {
+    "item": null,
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30, 2012",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Short term",
+     "",
+     "Long term",
+     ""
+    ],
+    [
+     "Auto notes payable",
+     "$",
+     "8,278",
+     "$",
+     "13,608"
+    ],
+    [
+     "MRL line of credit",
+     "",
+     "1,666,667",
+     "",
+     "3,333,333"
+    ],
+    [
+     "Loan payable related party",
+     "",
+     "336,935",
+     "",
+     "-"
+    ],
+    [
+     "Loan payable other",
+     "",
+     "144,500",
+     "",
+     "-"
+    ],
+    [
+     "Financing with warrant issuance",
+     "",
+     "15,206",
+     "",
+     "-"
+    ],
+    [
+     "Convertible notes",
+     "",
+     "1,325,000",
+     "",
+     "-"
+    ],
+    [
+     "Total notes payable",
+     "$",
+     "3,496,586",
+     "$",
+     "3,346,941"
+    ]
+   ],
+   "caption_stack": [
+    "As of September 30, 2012"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 635
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "In accordance with ASC 470-20, Debt with conversions and other options, the proceeds from ICG, Inc. were allocated based on the relative fair value of the note without the warrant issued in conjunction with the note and of the warrant itself at the time of issuance. We recorded the relative fair value of the warrant issued to ICG Inc. in the amount of $84,795 as a debt discount upon issuance, and amortized this debt discount as interest expense over the life of the note. Additionally, as a result of issuing the warrant with the subordinated convertible promissory note, a beneficial conversion option was recorded as a debt discount reflecting the incremental intrinsic value benefit of $0, at the time of issuance provided to the holder of the note, which was also amortized as interest expense over the life of the note. We recorded interest expenses in the amounts of $12,603 for the three months ended September 30, 2012 and 2011, respectively, in connection with the Senior Note.\nLoan Payable \u2013 Related Party\nAt September 30, 2012, the Company had a non interest bearing note payable due to its Chief Executive Officer who is also a Director and significant shareholder with a balance of $336,935.\nLoan Payable - Other\nAt September 30, 2012, the Company has a $144,500 liability for advances from a third party. As of the date these financial statements were issued, no terms for repayment have been agreed to between the Company and this third party.\nThe Company entered in an auto loan agreement on November 7, 2011 to lease a Ford 150 pickup truck. The principal amount of the loan is $21,886 and the interest rate 9.99%. The loan will be matured on October 7, 2015. The Company is currently paying $690 auto payment per month.\nThe following table summarizes the notes payable for the period ended September 30, 2012.",
+   "prose_after": "Moreover the following table summarizes the future minimum payment for 5-year commitments of the notes payable:",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Principal",
+     ""
+    ],
+    [
+     "6/30/2013",
+     "$",
+     "2,938,271"
+    ],
+    [
+     "6/30/2014",
+     "",
+     "3,894,970"
+    ],
+    [
+     "6/30/2015",
+     "",
+     "7,585"
+    ],
+    [
+     "6/30/2016",
+     "",
+     "2,701"
+    ],
+    [
+     "6/30/2017",
+     "",
+     "-"
+    ],
+    [
+     "Thereafter",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "6,843,527"
+    ]
+   ],
+   "caption_stack": [
+    "Principal"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "Moreover the following table summarizes the future minimum payment for 5-year commitments of the notes payable:",
+   "prose_after": "Employment Agreement \u2013 President and Chief Executive Officer\nEffective April 1, 2011, the Company entered into an employment agreement with its President and Chief Executive Officer for a term of two years. Key provisions of the agreement include:\n(a) Annual salary of $300,000\n(b) Cash bonus of $300,000 in the event that gross sales for the fiscal year ending June 30, 2012 exceed $34,000,000, subject to certain limitations.\n(c) Additional cash bonus of $300,000 in the event that gross sales for the fiscal year ending June 30, 2012 exceed $92,000,000, subject to certain limitations. In the event that gross sales for the prior fiscal year are with 35% of the $92,000,000 target, the target shall be adjusted up so that a minimum sales increase must be achieved for the bonus to vest.\n(d) Option grants to purchase 800,000 shares of the company\u2019s common stock at an exercise price of $0.10 per share, expiring April 1, 2016 (five-year life). Such options will vest over a two-year period. These options were valued at $75,680, as determined using the Black-Scholes option-pricing model using a risk free rate of 2.24%, volatility of 169.83% and a trading price of the underlying shares of $0.10.",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Liabilities measured at fair value at September 30, 2012:",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Line of credit payable \u2013 related party",
+     "$",
+     "--",
+     "$",
+     "6,532,641",
+     "$",
+     "--",
+     "$",
+     "6,532,641"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "$",
+     "--",
+     "$",
+     "21,886",
+     "$",
+     "--",
+     "$",
+     "21,886"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 721
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Assets and Liabilities"
+    }
+   },
+   "prose_before": "Loans Payable - Other. The Company assessed that the fair value of this liability approximates its carrying value due to its short-term nature. The methodology described above may produce a current fair value calculation that may not be indicative of net realizable value or reflective of future fair values. If readily determined market values became available or if actual performance were to vary appreciably from assumptions used, assumptions may need to be adjusted, which could result in material differences from the recorded carrying amounts. The Company believes its method of determining fair value is appropriate and consistent with other market participants. However, the use of different methodologies or different assumptions to value certain financial instruments could result in a different estimate of fair value.\nThe following table presents the fair value of financial instruments that are measured and recognized on a non-recurring basis classified under the appropriate level of the valuation hierarchy described above, as of September 30, 2012:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Loans payable \u2013 other",
+     "$",
+     "--",
+     "$",
+     "144,500",
+     "$",
+     "--",
+     "$",
+     "144,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 722,
+    "end_line": 725
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Assets and Liabilities"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "7. Stockholders' Deficit\nInvestment Agreement with MRL\nOn February 14, 2011, the Company entered into an investment agreement (the \u201cInvestment Agreement\u201d) with MRL and LTK, a controlling shareholder of MRL (the \u201cInvestment Agreement\u201d).\nOn February 16, 2011, pursuant to the terms of the Investment Agreement, LTK subscribed for 81,000,000 shares in the Company, representing approximately 26 percent of the Company\u2019s resulting total issued and outstanding common equity, for an aggregate consideration of $5,000,000. The agreement called for LTK to sell the Sale Shares to MRL, for the same consideration, subject to approval from shareholders of MRL, which occurred on July 26, 2011.\nOn February 14, 2011, the Company also entered into a revolving credit and warrant purchase agreement with MRL. The Credit and Warrant Agreement did not go into effect until it was ratified by the shareholders of MRL, which occurred on July 26, 2011. See Notes 4 and 5 for material terms of the Credit and Warrant Agreement.",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 696,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Eco Building Products, Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 19, 2012",
+     "By:",
+     "/s/ Steve Conboy",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Steve Conboy, President",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Principal Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Principal Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Eco Building Products, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits and Reports"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "3.1 Articles of Incorporation, filed as exhibit 3.1.1 with the registrant\u2019s Registration Statement on Form SB-2, as amended; filed with the Securities and Exchange Commission on August 23, 2007. 3.2 Bylaws, filed as exhibit 3.2 with the registrant\u2019s Registration Statement on Form SB-2, as amended; filed with the Securities and Exchange Commission on August 23, 2007. 3.3 Amended Articles of Incorporation ; filed as exhibit 3.1 with the registrant\u2019s Current Report on Form 8-K; filed with the Securities and Exchange Commission on October 22, 2009 3.4 Amended Articles of Incorporation ; filed as exhibit 3.3 with the registrant\u2019s Annual Report on Form 10-K; filed with the Securities and Exchange Commission on September 28, 2011 4.1 Convertible Promissory Note, dated December 22, 2009; filed as exhibit 10.5 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on February 22, 2010 4.2 Convertible Promissory Note, dated February 11, 2010; filed as exhibit 10.6 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on February 22, 2010 10.1 Investment Agreement \u2013 between Ecoblu Products, Inc., Manhattan Resources Limited and Dato\u2019 Low Tuck Kwong , dated February 14, 2009, filed as exhibit 10.1 with the registrant\u2019s Current Report on Form 8-K; filed with the Securities and Exchange Commission on February 16, 2011. 10.2 Revolving Credit and Warrant Agreement \u2013 between Ecoblu Products, Inc. and Manhattan Resources Limited, dated February 14, 2009, filed as exhibit 10.2 with the registrant\u2019s Current Report on Form 8-K; filed with the Securities and Exchange Commission on February 16, 2011. 10.3 Warrant Termination Agreement \u2013 between Ecoblu Products, Inc. and SLM Holding PTE, Ltd., dated January 12, 2011; filed as exhibit 10.3 with the registrant\u2019s Current Report on Form 8-K; filed with the Securities and Exchange Commission on February 16, 2011. 10.4 Hartindo AF21 Product, Purchase, Sales, Distribution & Service Agreement, between Ecoblu Products, Inc. and Newstar Holdings Pte Ltd, dated January 18, 2011; filed as exhibit 10.8 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on February 22, 2011. 10.5 Employment Agreement \u2013 between Ecoblu Products, Inc. and Steve Conboy, Effective April 1, 2011. filed as exhibit 10.5 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on May 23, 2011. 10.6 Employment Agreement \u2013 between Ecoblu Products, Inc. and Mark Vuozzo, Effective April 1, 2011 filed as exhibit 10.6 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on May 23, 2011. 21.1 Subsidiaries List filed as exhibit 21.1 with the registrant\u2019s Current Report on Form 10-Q; filed with the Securities and Exchange Commission on November 15, 2011.\nEco Building Products, Inc. includes herewith the following exhibits:\n31.1 Certification of Principal Executive Officer and Principal Financial Officer (Rule 13a-14(a)/15(d)-14(a)) 32.1 Certification of Principal Executive Officer and Principal Financial Officer (18 U.S.C. 1350)\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

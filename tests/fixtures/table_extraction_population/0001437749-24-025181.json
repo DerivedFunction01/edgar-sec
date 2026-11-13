@@ -1,0 +1,6579 @@
+{
+ "accession": "0001437749-24-025181",
+ "cik": "0001285819",
+ "form": "10-Q",
+ "filing_date": "2024-08-07",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "omer20240630_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Washington",
+     "91-1663741"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "201 Elliott Avenue West\n\n\n\nSeattle, Washington",
+     "98119"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ],
+    [
+     "(206) 676-5000\n\n\n\n(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2024\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-34475\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 24,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Securities Exchange Act of 1934:",
+     "",
+     ""
+    ],
+    [
+     "(Title of each class)",
+     "(Trading symbol)",
+     "(Name of each exchange on which registered)"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "OMER",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Securities Exchange Act of 1934:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 24,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I \u2014 Financial Information",
+     "",
+     "5"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations and Comprehensive Loss",
+     "6"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Stockholders\u2019 Equity (Deficit)",
+     "7"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows",
+     "8"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "9"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "25"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "25"
+    ],
+    [
+     "Part II \u2014 Other Information",
+     "",
+     "26"
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "26"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "26"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "26"
+    ],
+    [
+     "Item 3.",
+     "Default Upon Senior Securities",
+     "26"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "26"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "26"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "27"
+    ],
+    [
+     "Signatures",
+     "",
+     "28"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 110,
+    "end_line": 133
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Our actual results could differ materially from those anticipated in these forward-looking statements for many reasons, including the risks, uncertainties and other factors described in this Quarterly Report on Form 10-Q under the headings \u201cRisk Factors\u201d and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and in our other filings with the U.S. Securities and Exchange Commission (the \u201cSEC\u201d). Given these risks, uncertainties and other factors, actual results or anticipated developments may not be realized or, even if substantially realized, may not have the expected consequences to or effects on our company, business or operations. Accordingly, you should not place undue reliance on these forward-looking statements, which represent our estimates and assumptions only as of the date of the filing of this Quarterly Report on Form 10-Q. You should read this Quarterly Report on Form 10-Q completely and with the understanding that our actual results in subsequent periods may differ materially from current expectations. Except as required by applicable law, we assume no obligation to update or revise any forward-looking statements contained herein, whether as a result of any new information, future events or otherwise.\nFORM 10-Q FOR THE QUARTER ENDED June 30, 2024\nINDEX",
+   "prose_after": "PART I \u2014 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 133,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,120",
+     "",
+     "$",
+     "7,105",
+     ""
+    ],
+    [
+     "Short-term investments",
+     "",
+     "156,792",
+     "",
+     "",
+     "164,743",
+     ""
+    ],
+    [
+     "OMIDRIA contract royalty asset, current",
+     "",
+     "29,665",
+     "",
+     "",
+     "29,373",
+     ""
+    ],
+    [
+     "Receivables",
+     "",
+     "8,080",
+     "",
+     "",
+     "8,096",
+     ""
+    ],
+    [
+     "Prepaid expense and other assets",
+     "",
+     "6,273",
+     "",
+     "",
+     "8,581",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "202,930",
+     "",
+     "",
+     "217,898",
+     ""
+    ],
+    [
+     "OMIDRIA contract royalty asset, non-current",
+     "",
+     "133,428",
+     "",
+     "",
+     "138,736",
+     ""
+    ],
+    [
+     "Right of use assets",
+     "",
+     "16,868",
+     "",
+     "",
+     "18,631",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "2,034",
+     "",
+     "",
+     "1,950",
+     ""
+    ],
+    [
+     "Restricted investments",
+     "",
+     "1,054",
+     "",
+     "",
+     "1,054",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "356,314",
+     "",
+     "$",
+     "378,269",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and shareholders\u2019 equity (deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "6,502",
+     "",
+     "$",
+     "7,712",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "27,966",
+     "",
+     "",
+     "31,868",
+     ""
+    ],
+    [
+     "OMIDRIA royalty obligation, current",
+     "",
+     "19,434",
+     "",
+     "",
+     "8,576",
+     ""
+    ],
+    [
+     "Lease liabilities, current",
+     "",
+     "5,573",
+     "",
+     "",
+     "5,160",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "59,475",
+     "",
+     "",
+     "53,316",
+     ""
+    ],
+    [
+     "Convertible senior notes, net",
+     "",
+     "96,888",
+     "",
+     "",
+     "213,155",
+     ""
+    ],
+    [
+     "Long-term debt, net",
+     "",
+     "94,506",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "OMIDRIA royalty obligation, non-current",
+     "",
+     "212,323",
+     "",
+     "",
+     "116,550",
+     ""
+    ],
+    [
+     "Lease liabilities, non-current",
+     "",
+     "15,632",
+     "",
+     "",
+     "18,143",
+     ""
+    ],
+    [
+     "Other accrued liabilities, non-current",
+     "",
+     "2,088",
+     "",
+     "",
+     "2,088",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.01 per share, 20,000,000 shares authorized; none issued and outstanding at June 30, 2024 and December 31, 2023.",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, par value $0.01 per share, 150,000,000 shares authorized at June 30, 2024 and December 31, 2023; 57,944,159 and 61,128,597 shares issued and outstanding at June 30, 2024 and December 31, 2023, respectively.",
+     "",
+     "579",
+     "",
+     "",
+     "611",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "721,578",
+     "",
+     "",
+     "727,936",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(846,755)",
+     "",
+     "",
+     "(753,530)",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 deficit",
+     "",
+     "(124,598)",
+     "",
+     "",
+     "(24,983)",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity (deficit)",
+     "$",
+     "356,314",
+     "",
+     "$",
+     "378,269",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 147,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2014 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 145,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "45,349",
+     "",
+     "$",
+     "29,639",
+     "",
+     "$",
+     "72,119",
+     "",
+     "$",
+     "54,249",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "13,808",
+     "",
+     "",
+     "11,260",
+     "",
+     "",
+     "26,072",
+     "",
+     "",
+     "22,363",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "59,157",
+     "",
+     "",
+     "40,899",
+     "",
+     "",
+     "98,191",
+     "",
+     "",
+     "76,612",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(59,157)",
+     "",
+     "",
+     "(40,899)",
+     "",
+     "",
+     "(98,191)",
+     "",
+     "",
+     "(76,612)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(9,215)",
+     "",
+     "",
+     "(7,932)",
+     "",
+     "",
+     "(17,446)",
+     "",
+     "",
+     "(15,865)",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "3,247",
+     "",
+     "",
+     "4,537",
+     "",
+     "",
+     "6,662",
+     "",
+     "",
+     "8,500",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(65,125)",
+     "",
+     "",
+     "(44,294)",
+     "",
+     "",
+     "(108,975)",
+     "",
+     "",
+     "(83,977)",
+     ""
+    ],
+    [
+     "Net income from discontinued operations, net of tax",
+     "",
+     "9,084",
+     "",
+     "",
+     "7,000",
+     "",
+     "",
+     "15,750",
+     "",
+     "",
+     "12,982",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(56,041)",
+     "",
+     "$",
+     "(37,294)",
+     "",
+     "$",
+     "(93,225)",
+     "",
+     "$",
+     "(70,995)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(1.12)",
+     "",
+     "$",
+     "(0.70)",
+     "",
+     "$",
+     "(1.87)",
+     "",
+     "$",
+     "(1.34)",
+     ""
+    ],
+    [
+     "Net income from discontinued operations",
+     "",
+     "0.15",
+     "",
+     "",
+     "0.11",
+     "",
+     "",
+     "0.27",
+     "",
+     "",
+     "0.21",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.97)",
+     "",
+     "$",
+     "(0.59)",
+     "",
+     "$",
+     "(1.60)",
+     "",
+     "$",
+     "(1.13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares used to compute basic and diluted net income (loss) per share",
+     "",
+     "57,944,016",
+     "",
+     "",
+     "62,837,125",
+     "",
+     "",
+     "58,374,716",
+     "",
+     "",
+     "62,832,991",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 203,
+    "end_line": 235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(In thousands, except share and per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 201,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 236,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2024",
+     "",
+     "61,128,597",
+     "",
+     "$",
+     "611",
+     "",
+     "$",
+     "727,936",
+     "",
+     "$",
+     "(753,530)",
+     "",
+     "$",
+     "(24,983)",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options",
+     "",
+     "9,339",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32",
+     ""
+    ],
+    [
+     "Repurchases of common stock",
+     "",
+     "(3,195,241)",
+     "",
+     "",
+     "(32)",
+     "",
+     "",
+     "(11,819)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,851)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,658",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,658",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(37,184)",
+     "",
+     "",
+     "(37,184)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "57,942,695",
+     "",
+     "",
+     "579",
+     "",
+     "",
+     "718,807",
+     "",
+     "",
+     "(790,714)",
+     "",
+     "",
+     "(71,328)",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options",
+     "",
+     "1,464",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,768",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,768",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(56,041)",
+     "",
+     "",
+     "(56,041)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2024",
+     "",
+     "57,944,159",
+     "",
+     "$",
+     "579",
+     "",
+     "$",
+     "721,578",
+     "",
+     "$",
+     "(846,755)",
+     "",
+     "$",
+     "(124,598)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "",
+     "62,828,765",
+     "",
+     "$",
+     "628",
+     "",
+     "$",
+     "720,773",
+     "",
+     "$",
+     "(635,717)",
+     "",
+     "$",
+     "85,684",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,953",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,953",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(33,701)",
+     "",
+     "",
+     "(33,701)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2023",
+     "",
+     "62,828,765",
+     "",
+     "",
+     "628",
+     "",
+     "",
+     "723,726",
+     "",
+     "",
+     "(669,418)",
+     "",
+     "",
+     "54,936",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of stock options",
+     "",
+     "19,556",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "97",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,771",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,771",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(37,294)",
+     "",
+     "",
+     "(37,294)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "",
+     "62,848,321",
+     "",
+     "$",
+     "628",
+     "",
+     "$",
+     "726,594",
+     "",
+     "$",
+     "(706,712)",
+     "",
+     "$",
+     "20,510",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 244,
+    "end_line": 277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\n(In thousands, except share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 242,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(93,225)",
+     "",
+     "$",
+     "(70,995)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "5,426",
+     "",
+     "",
+     "5,724",
+     ""
+    ],
+    [
+     "Non-cash interest earned on royalty obligation",
+     "",
+     "1,806",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Amortization of discount and issuance costs on convertible notes",
+     "",
+     "569",
+     "",
+     "",
+     "959",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "412",
+     "",
+     "",
+     "518",
+     ""
+    ],
+    [
+     "Amortization of non-cash interest and issuance costs on long-term debt",
+     "",
+     "115",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-cash interest earned on OMIDRIA contract royalty asset",
+     "",
+     "(8,614)",
+     "",
+     "",
+     "(7,754)",
+     ""
+    ],
+    [
+     "Remeasurement of OMIDRIA contract royalty asset",
+     "",
+     "(6,653)",
+     "",
+     "",
+     "(4,824)",
+     ""
+    ],
+    [
+     "Accretion on U.S. government treasury bills, net",
+     "",
+     "(3,412)",
+     "",
+     "",
+     "(5,090)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OMIDRIA contract royalty asset",
+     "",
+     "20,283",
+     "",
+     "",
+     "19,914",
+     ""
+    ],
+    [
+     "Prepaid expenses and other",
+     "",
+     "1,890",
+     "",
+     "",
+     "(1,044)",
+     ""
+    ],
+    [
+     "Receivables",
+     "",
+     "16",
+     "",
+     "",
+     "202,031",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expense",
+     "",
+     "(6,378)",
+     "",
+     "",
+     "2,759",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(87,765)",
+     "",
+     "",
+     "142,198",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of investments",
+     "",
+     "(626,051)",
+     "",
+     "",
+     "(662,738)",
+     ""
+    ],
+    [
+     "Proceeds from the sale and maturities of investments",
+     "",
+     "637,414",
+     "",
+     "",
+     "517,057",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(138)",
+     "",
+     "",
+     "(275)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "11,225",
+     "",
+     "",
+     "(145,956)",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of future royalties",
+     "",
+     "115,525",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds upon exercise of stock options",
+     "",
+     "35",
+     "",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "Cash paid to repurchase 2026 convertible senior notes",
+     "",
+     "(21,179)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repurchases of common stock",
+     "",
+     "(11,851)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Principal payments on OMIDRIA royalty obligation",
+     "",
+     "(10,700)",
+     "",
+     "",
+     "(467)",
+     ""
+    ],
+    [
+     "Principal payments on finance lease obligations",
+     "",
+     "(275)",
+     "",
+     "",
+     "(278)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "71,555",
+     "",
+     "",
+     "(648)",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "(4,985)",
+     "",
+     "",
+     "(4,406)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "7,105",
+     "",
+     "",
+     "11,009",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "2,120",
+     "",
+     "$",
+     "6,603",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "14,945",
+     "",
+     "$",
+     "15,865",
+     ""
+    ],
+    [
+     "Cash paid (received) for income taxes, net",
+     "$",
+     "(144)",
+     "",
+     "$",
+     "3,776",
+     ""
+    ],
+    [
+     "Equipment acquired under finance lease",
+     "$",
+     "369",
+     "",
+     "$",
+     "500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 286,
+    "end_line": 339
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNote 1\u2014Organization and Basis of Presentation\nGeneral\nOmeros Corporation (\u201cOmeros,\u201d the \u201cCompany\u201d or \u201cwe\u201d) is a clinical-stage biopharmaceutical company committed to discovering, developing and commercializing small-molecule and protein therapeutics for large-market as well as orphan indications targeting immunologic disorders including complement-mediated diseases, as well as cancers and addictive and compulsive disorders.\nOur clinical-stage development programs include: narsoplimab, our antibody targeting mannan-binding lectin-associated serine protease 2 (\u201cMASP-2\u201d), the effector enzyme of the lectin pathway of complement; OMS1029, our long-acting antibody targeting MASP-2; zaltenibart, also known as OMS906, our antibody targeting mannan-binding lectin-associated serine protease-3 (\u201cMASP-3\u201d), the key activator of the alternative pathway of complement; and OMS527, our phosphodiesterase 7 (\u201cPDE7\u201d) inhibitor program.\nClinical development of narsoplimab is currently focused primarily on hematopoietic stem cell transplant-associated thrombotic microangiopathy (\u201cTA-TMA\u201d). We successfully completed a pivotal clinical trial for narsoplimab in TA-TMA and previously submitted to FDA a biologics license application (\u201cBLA\u201d) seeking marketing approval for narsoplimab in this indication. In late 2021, FDA issued a complete response letter (\u201cCRL\u201d) with respect to the BLA in which the agency indicated that additional information would be needed to support regulatory approval. We appealed FDA\u2019s decision to issue the CRL through a formal dispute resolution process that concluded in late 2022. Although our appeal was denied, the decision identified potential paths for resubmission of the BLA based on data from our completed pivotal trial and submission of additional evidence and analyses. We are having ongoing discussions with the agency regarding the data and analyses required to be included in a potential resubmission of our BLA. As a result, we are currently unable to estimate when we will submit the BLA or, subsequently, FDA\u2019s timing for a decision regarding approval. There can be no guarantee that FDA's specific recommendations for resubmission will be acceptable to us in terms of the time and/or expenditure required or that any resubmission of the BLA will result in approval of narsoplimab for TA-TMA.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 284,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 340,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": null,
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "2026 Notes convertible to common stock (1)(2)",
+     "",
+     "9,714,522",
+     "",
+     "12,172,008",
+     "",
+     "10,696,990",
+     "",
+     "12,172,008"
+    ],
+    [
+     "2023 Notes convertible to common stock (3)",
+     "",
+     "\u2014",
+     "",
+     "4,941,739",
+     "",
+     "\u2014",
+     "",
+     "4,941,739"
+    ],
+    [
+     "Outstanding options to purchase common stock",
+     "",
+     "84,864",
+     "",
+     "98,920",
+     "",
+     "90,635",
+     "",
+     "42,186"
+    ],
+    [
+     "Outstanding restricted stock units(4)",
+     "",
+     "\u2014",
+     "",
+     "89,750",
+     "",
+     "\u2014",
+     "",
+     "89,750"
+    ],
+    [
+     "Total potentially dilutive shares excluded from net loss per share",
+     "",
+     "9,799,386",
+     "",
+     "17,302,417",
+     "",
+     "10,787,625",
+     "",
+     "17,245,683"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 456,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014Net Loss Per Share"
+    }
+   },
+   "prose_before": "Financial instruments that potentially subject the Company to significant concentrations of credit risk consist primarily of cash, cash equivalents and short-term investments. Cash and cash equivalents are deposited in checking and sweep accounts at financial institutions. At times, our cash and cash equivalents balance held at a financial institution may exceed the federally insured limits. To limit the credit risk, we invest our excess cash in high-quality securities such as money market mutual funds, certificates of deposit and U.S. treasury bills. The Company has not experienced any losses on its deposits of cash and cash equivalents. Management believes that the Company is not currently exposed to significant credit risk as the Company\u2019s short-term investments are held in custody at third-party financial institutions. The Company\u2019s investment policy limits investments to certain types of securities issued by the U.S. government, its agencies and institutions with investment-grade credit ratings and places restrictions on maturities and concentration by type and issuer. The Company is exposed to credit risk in the event of a default by the financial institutions holding its cash, cash equivalents and investments, and issuers of the investments to the extent recorded on the unaudited condensed consolidated balance sheets. As of June 30, 2024, the Company has no off-balance sheet concentrations of credit risk.\nNote 3\u2014Net Loss Per Share\nBasic net income (loss) per share (\u201cBasic EPS\u201d) is computed by dividing net income (loss) by the weighted average number of common shares outstanding during the period. Diluted net income per share (\u201cDiluted EPS\u201d) is computed by dividing net income by the weighted average number of common shares and potentially dilutive common shares outstanding during the period using the treasury stock method. We do not compute Diluted EPS for periods in which we have overall net income and a net loss from continuing operations.\nPotentially dilutive securities are as follows:",
+   "prose_after": "(1) The 2026 Notes are subject to a capped call arrangements that potentially reduces the dilutive effect of conversion as described in \u201cNote 6 \u2014 Debt.\u201d Any potential impact of the capped call arrangements is excluded from this table.\n(2) On June 3, 2024, we repurchased $118.1 million of our 2026 Notes reducing any effect of dilution related to those notes. For further details refer to \u201cNote 6 \u2014 Debt.\u201d\n(3) The 2023 Notes (defined below) were fully extinguished upon maturity on November 15, 2023.\n(4) The outstanding restricted stock units were vested and converted to shares of common stock on December 1, 2023.\nNote 4\u2014Investments and Fair-Value Measurements\nAll of our investments are held in our name and are classified as short-term and held-to-maturity on the accompanying condensed consolidated balance sheets. Interest income is included as a component of other income on our condensed consolidated statement of operations and comprehensive loss. Interest and other income for the three months ended June 30, 2024 and June 30, 2023 consists primarily of interest earned of $2.5 million and $4.2 million, respectively. Interest and other income for the six months ended June 30, 2024 and June 30, 2023 consists primarily of interest earned of $5.3 million and $7.6 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Gross Unrealized",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Gains/(Losses)",
+     "",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government securities classified as short-term investments",
+     "$",
+     "91,041",
+     "$",
+     "(5)",
+     "",
+     "$",
+     "91,036"
+    ],
+    [
+     "Money-market funds classified as short-term investments",
+     "",
+     "65,751",
+     "",
+     "\u2014",
+     "",
+     "",
+     "65,751"
+    ],
+    [
+     "Total short-term investments",
+     "",
+     "156,792",
+     "",
+     "(5)",
+     "",
+     "",
+     "156,787"
+    ],
+    [
+     "Certificate of deposit classified as non-current restricted investments",
+     "",
+     "1,054",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,054"
+    ],
+    [
+     "Total investments",
+     "$",
+     "157,846",
+     "$",
+     "(5)",
+     "",
+     "$",
+     "157,841"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2024",
+    "Gross Unrealized"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 482,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Investments and Fair-Value Measurements"
+    }
+   },
+   "prose_before": "(2) On June 3, 2024, we repurchased $118.1 million of our 2026 Notes reducing any effect of dilution related to those notes. For further details refer to \u201cNote 6 \u2014 Debt.\u201d\n(3) The 2023 Notes (defined below) were fully extinguished upon maturity on November 15, 2023.\n(4) The outstanding restricted stock units were vested and converted to shares of common stock on December 1, 2023.\nNote 4\u2014Investments and Fair-Value Measurements\nAll of our investments are held in our name and are classified as short-term and held-to-maturity on the accompanying condensed consolidated balance sheets. Interest income is included as a component of other income on our condensed consolidated statement of operations and comprehensive loss. Interest and other income for the three months ended June 30, 2024 and June 30, 2023 consists primarily of interest earned of $2.5 million and $4.2 million, respectively. Interest and other income for the six months ended June 30, 2024 and June 30, 2023 consists primarily of interest earned of $5.3 million and $7.6 million, respectively.\nThe following tables summarize our investments:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Gross Unrealized",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Gains/(Losses)",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government securities classified as short-term investments",
+     "$",
+     "102,100",
+     "$",
+     "19",
+     "$",
+     "102,119"
+    ],
+    [
+     "Money-market funds classified as short-term investments",
+     "",
+     "62,643",
+     "",
+     "\u2014",
+     "",
+     "62,643"
+    ],
+    [
+     "Total short-term investments",
+     "",
+     "164,743",
+     "",
+     "19",
+     "",
+     "164,762"
+    ],
+    [
+     "Certificate of deposit classified as non-current restricted investments",
+     "",
+     "1,054",
+     "",
+     "\u2014",
+     "",
+     "1,054"
+    ],
+    [
+     "Total investments",
+     "$",
+     "165,797",
+     "$",
+     "19",
+     "$",
+     "165,816"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023",
+    "Gross Unrealized"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Investments and Fair-Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Fair value is defined as the exchange price that would be received for an asset or paid to transfer a liability, an exit price, in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. The accounting standard establishes a fair value hierarchy that requires an entity to maximize the use of observable inputs, where available. The following summarizes the three levels of inputs required:\nLevel 1\u2014Observable inputs for identical assets or liabilities, such as quoted prices in active markets;\nLevel 2\u2014Inputs other than quoted prices in active markets that are either directly or indirectly observable; and\nLevel 3\u2014Unobservable inputs in which little or no market data exists, therefore they are developed using estimates and assumptions developed by us, which reflect those that a market participant would use.\nOur fair value hierarchy for our financial assets and liabilities are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government securities classified as short-term investments",
+     "$",
+     "\u2014",
+     "$",
+     "91,036",
+     "$",
+     "\u2014",
+     "$",
+     "91,036"
+    ],
+    [
+     "Money-market funds classified as short-term investments",
+     "",
+     "65,751",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "65,751"
+    ],
+    [
+     "Total short-term investments",
+     "",
+     "65,751",
+     "",
+     "91,036",
+     "",
+     "\u2014",
+     "",
+     "156,787"
+    ],
+    [
+     "Certificate of deposit classified as non-current restricted investments",
+     "",
+     "1,054",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,054"
+    ],
+    [
+     "Total investments",
+     "$",
+     "66,805",
+     "$",
+     "91,036",
+     "$",
+     "\u2014",
+     "$",
+     "157,841"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 530,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Investments and Fair-Value Measurements"
+    }
+   },
+   "prose_before": "Fair value is defined as the exchange price that would be received for an asset or paid to transfer a liability, an exit price, in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. The accounting standard establishes a fair value hierarchy that requires an entity to maximize the use of observable inputs, where available. The following summarizes the three levels of inputs required:\nLevel 1\u2014Observable inputs for identical assets or liabilities, such as quoted prices in active markets;\nLevel 2\u2014Inputs other than quoted prices in active markets that are either directly or indirectly observable; and\nLevel 3\u2014Unobservable inputs in which little or no market data exists, therefore they are developed using estimates and assumptions developed by us, which reflect those that a market participant would use.\nOur fair value hierarchy for our financial assets and liabilities are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government securities classified as short-term investments",
+     "$",
+     "\u2014",
+     "$",
+     "102,119",
+     "$",
+     "\u2014",
+     "$",
+     "102,119"
+    ],
+    [
+     "Money-market funds classified as short-term investments",
+     "",
+     "62,643",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "62,643"
+    ],
+    [
+     "Total short-term investments",
+     "",
+     "62,643",
+     "",
+     "102,119",
+     "",
+     "\u2014",
+     "",
+     "164,762"
+    ],
+    [
+     "Certificate of deposit classified as non-current restricted investments",
+     "",
+     "1,054",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,054"
+    ],
+    [
+     "Total investments",
+     "$",
+     "63,697",
+     "$",
+     "102,119",
+     "$",
+     "\u2014",
+     "$",
+     "165,816"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Investments and Fair-Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Cash held in demand deposit accounts of $2.1 million and $7.1 million is excluded from our fair-value hierarchy disclosure as of June 30, 2024 and December 31, 2023, respectively. The carrying amounts reported in the accompanying condensed consolidated balance sheets for receivables, accounts payable and accrued liabilities, and other current monetary assets and liabilities approximate fair value.\nSee \u201cNote 6 \u2014 Debt\u201d and \u201cNote 8 \u2014 OMIDRIA Royalty Obligation\u201d for the carrying amount and estimated fair value of our outstanding term loan, convertible senior notes and the OMIDRIA royalty obligation.\nNote 5 \u2014 Certain Balance Sheet Accounts\nOMIDRIA Contract Royalty Asset\nThe OMIDRIA contract royalty asset consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short-term contract royalty asset",
+     "$",
+     "29,665",
+     "$",
+     "29,373"
+    ],
+    [
+     "Long-term contract royalty asset",
+     "",
+     "133,428",
+     "",
+     "138,736"
+    ],
+    [
+     "Total OMIDRIA contract royalty asset",
+     "$",
+     "163,093",
+     "$",
+     "168,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Certain Balance Sheet Accounts"
+    }
+   },
+   "prose_before": "Cash held in demand deposit accounts of $2.1 million and $7.1 million is excluded from our fair-value hierarchy disclosure as of June 30, 2024 and December 31, 2023, respectively. The carrying amounts reported in the accompanying condensed consolidated balance sheets for receivables, accounts payable and accrued liabilities, and other current monetary assets and liabilities approximate fair value.\nSee \u201cNote 6 \u2014 Debt\u201d and \u201cNote 8 \u2014 OMIDRIA Royalty Obligation\u201d for the carrying amount and estimated fair value of our outstanding term loan, convertible senior notes and the OMIDRIA royalty obligation.\nNote 5 \u2014 Certain Balance Sheet Accounts\nOMIDRIA Contract Royalty Asset\nThe OMIDRIA contract royalty asset consists of the following:",
+   "prose_after": "See \u201cNote 7 \u2014 Discontinued Operations \u2013 Sale of OMIDRIA\u201d for discussion regarding the estimated fair value of our OMIDRIA contract royalty asset.\nReceivables\nReceivables consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OMIDRIA royalty receivables",
+     "$",
+     "6,806",
+     "$",
+     "6,724"
+    ],
+    [
+     "Other receivables",
+     "",
+     "1,274",
+     "",
+     "1,372"
+    ],
+    [
+     "Total receivables",
+     "$",
+     "8,080",
+     "$",
+     "8,096"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Certain Balance Sheet Accounts"
+    }
+   },
+   "prose_before": "See \u201cNote 7 \u2014 Discontinued Operations \u2013 Sale of OMIDRIA\u201d for discussion regarding the estimated fair value of our OMIDRIA contract royalty asset.\nReceivables\nReceivables consist of the following:",
+   "prose_after": "Property and Equipment, Net\nProperty and equipment, net consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment under finance lease obligations",
+     "$",
+     "7,169",
+     "",
+     "$",
+     "6,929",
+     ""
+    ],
+    [
+     "Laboratory equipment",
+     "",
+     "3,663",
+     "",
+     "",
+     "3,525",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "",
+     "1,113",
+     "",
+     "",
+     "1,113",
+     ""
+    ],
+    [
+     "Office equipment and furniture",
+     "",
+     "624",
+     "",
+     "",
+     "624",
+     ""
+    ],
+    [
+     "Total cost",
+     "",
+     "12,569",
+     "",
+     "",
+     "12,191",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "(10,535)",
+     "",
+     "",
+     "(10,241)",
+     ""
+    ],
+    [
+     "Total property and equipment, net",
+     "$",
+     "2,034",
+     "",
+     "$",
+     "1,950",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Certain Balance Sheet Accounts"
+    }
+   },
+   "prose_before": "Property and Equipment, Net\nProperty and equipment, net consists of the following:",
+   "prose_after": "For the three months ended June 30, 2024 and 2023, depreciation and amortization expense was $0.2 million and $0.3 million, respectively. For the six months ended June 30, 2024 and 2023, depreciation and amortization expense was $0.4 million and $0.5 million, respectively.\nAccrued Expenses\nAccrued expenses consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Clinical trials",
+     "$",
+     "8,091",
+     "$",
+     "10,168"
+    ],
+    [
+     "Contract research and development",
+     "",
+     "7,104",
+     "$",
+     "6,223"
+    ],
+    [
+     "Employee compensation",
+     "",
+     "5,556",
+     "",
+     "7,380"
+    ],
+    [
+     "Consulting and professional fees",
+     "",
+     "3,035",
+     "",
+     "3,539"
+    ],
+    [
+     "Interest payable",
+     "",
+     "2,641",
+     "",
+     "4,242"
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "1,538",
+     "",
+     "316"
+    ],
+    [
+     "Total accrued expenses",
+     "$",
+     "27,966",
+     "$",
+     "31,868"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Certain Balance Sheet Accounts"
+    }
+   },
+   "prose_before": "For the three months ended June 30, 2024 and 2023, depreciation and amortization expense was $0.2 million and $0.3 million, respectively. For the six months ended June 30, 2024 and 2023, depreciation and amortization expense was $0.4 million and $0.5 million, respectively.\nAccrued Expenses\nAccrued expenses consists of the following:",
+   "prose_after": "Note 6\u2014Debt\n2024 Secured Term Loan\nOn June 3, 2024, we entered into a Credit Agreement with the Lenders, which provides for a term loan credit facility of up to $92.1 million, in aggregate, consisting of an Initial Term Loan of $67.1 million and a Delayed Draw Term Loan of $25.0 million. The Delayed Draw Term Loan may be drawn once in full, on or prior to June 3, 2025, conditioned upon receipt of FDA approval of narsoplimab in TA-TMA. The Delayed Draw Term Loan would be issued with an original issue discount of 3.0% and the proceeds may be used only for commercialization of narsoplimab in TA-TMA and transaction costs associated with the Delayed Draw Term Loan. Until the earlier of November 1, 2025 and the date we elect to utilize the Delayed Draw Term Loan, the Company, at its sole discretion, may exchange up to $14.9 million aggregate principal amount of outstanding 2026 Notes for cash and/or additional term loan amounts, with the holders of such notes becoming Lenders under the Credit Agreement (any such additional term loans, together with the Initial Term Loan and the Delayed Draw Term Loan, the \u201cLoans\u201d). As of August 7, 2024, no such additional exchanges have occurred. All indebtedness under the Credit Agreement is secured by a first-priority security interest in and lien on substantially all our tangible and intangible property, subject to customary exceptions, and excluding royalty interests in OMIDRIA\u00ae and certain related rights.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Principal amount",
+     "$",
+     "67,077"
+    ],
+    [
+     "Unamortized debt premium, net of issuance costs",
+     "",
+     "27,429"
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "94,506"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,",
+    "2024",
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 657,
+    "end_line": 668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "In connection with our entry into the Credit Agreement, we used the Initial Term Loan along with $21.2 million of cash on hand to repurchase $118.1 million aggregate principal amount of the 2026 Notes held by the Lenders. The total consideration paid at closing of $88.3 million represents a purchase price equal to approximately 75% of the par value of the 2026 Notes retired in the transaction. The reduction in the aggregate outstanding principal of balance of our 2026 Notes and incurrence of new Initial Term Loan resulted in a $51.0 million reduction of our outstanding debt. The $29.8 million difference between the $118.1 million aggregate principal amount of the 2026 Notes and the $88.3 million aggregate repurchase price was recorded as a premium (i.e., an increase) to the long-term debt on the Company\u2019s condensed consolidated balance sheet instead of being recognized as a gain on early extinguishment of debt. As a post-closing adjustment, we accrued $0.6 million which was paid in July 2024 in additional cash consideration to a certain Lender.\nThe amount outstanding on the Initial Term Loan is as follows:",
+   "prose_after": "The Loans have a stated maturity date of June 3, 2028 and bear interest at an adjusted secured overnight financing rate (\u201cadjusted SOFR\u201d), subject to a 3.0% floor, plus 8.75% per annum, payable quarterly from the closing date. As of June 30, 2024, the contractual interest rate on the Loans was 14.20%. We have the option to pay all of the interest in cash or to pay 50% in cash and pay-in-kind (\u201cPIK\u201d), the remaining interest. When this provision is elected, interest for the quarter, including both the cash interest and PIK interest, is calculated based on adjusted SOFR plus a 10.25% PIK margin (instead of the customary 8.75% margin). The PIK interest is then added to the outstanding principal balance and interest is computed using the original adjusted SOFR plus 8.75% margin rate. Due to the premium amortization on the Initial Term Loan, interest expense is currently being recognized at an implied effective interest rate of 1.61%.\nThe following table sets forth interest expense recognized related to the Initial Term Loan:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Contractual interest expense",
+     "$",
+     "714",
+     ""
+    ],
+    [
+     "Amortization of premium and debt issuance costs",
+     "",
+     "(599)",
+     ""
+    ],
+    [
+     "Total interest expense",
+     "$",
+     "115",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "June 30,",
+    "2024",
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 673,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "The Loans have a stated maturity date of June 3, 2028 and bear interest at an adjusted secured overnight financing rate (\u201cadjusted SOFR\u201d), subject to a 3.0% floor, plus 8.75% per annum, payable quarterly from the closing date. As of June 30, 2024, the contractual interest rate on the Loans was 14.20%. We have the option to pay all of the interest in cash or to pay 50% in cash and pay-in-kind (\u201cPIK\u201d), the remaining interest. When this provision is elected, interest for the quarter, including both the cash interest and PIK interest, is calculated based on adjusted SOFR plus a 10.25% PIK margin (instead of the customary 8.75% margin). The PIK interest is then added to the outstanding principal balance and interest is computed using the original adjusted SOFR plus 8.75% margin rate. Due to the premium amortization on the Initial Term Loan, interest expense is currently being recognized at an implied effective interest rate of 1.61%.\nThe following table sets forth interest expense recognized related to the Initial Term Loan:",
+   "prose_after": "We may elect to prepay the Loans, in whole or in part, in cash, plus an applicable prepayment and/or make-whole premium. Under certain circumstances, we are required to prepay all or a portion of the outstanding Loans, plus an applicable prepayment and/or make-whole premium, as described below.\n(1) If, on November 1, 2025, (i) the aggregate outstanding principal amount of the outstanding 2026 Notes that is not held by the Lenders equals or exceeds $38.5 million and (ii) we have not made or delivered notice that we expect to make certain voluntary or mandatory prepayments under the Credit Agreement of at least $20.0 million in the aggregate, then we would be required, on or prior to November 15, 2025, to make a $20.0 million mandatory prepayment, together with a $1.0 million prepayment premium.\n(2) Upon the occurrence of a change in control, we must prepay the entire outstanding amount of the Loans, plus the applicable make-whole or prepayment premium.\n(3) We must prepay the Loans in an amount equal to: (i) 25.0% of any milestone payments received from DRI or its affiliates on the basis of net sales of OMIDRIA; (ii) 60.0% of the net cash proceeds (excluding transaction expenses and certain milestone payments) received by Omeros from the sale or license of our assets (or in the case of an asset sale or license involving narsoplimab that occurs while any Delayed Draw Term Loan is outstanding, an amount equal to 100% of the net cash proceeds from such transaction); (iii) 100.0% of net cash proceeds of indebtedness incurred by the Company other than as permitted by the Credit Agreement and (iv) 100% of the net cash proceeds of insurance recoveries on loss of property, except to the extent utilized to repair or replace the relevant assets within a specified time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contractual interest expense",
+     "$",
+     "\u2014",
+     "$",
+     "1,484",
+     "$",
+     "\u2014",
+     "$",
+     "2,969"
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "\u2014",
+     "",
+     "176",
+     "",
+     "\u2014",
+     "",
+     "349"
+    ],
+    [
+     "Total interest expense",
+     "$",
+     "\u2014",
+     "$",
+     "1,660",
+     "$",
+     "\u2014",
+     "$",
+     "3,318"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 705,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "The Credit Agreement contains certain customary default provisions, representation and warranties and affirmative and negative covenants. These include a covenant requiring us to maintain at all times unrestricted cash and cash equivalents of at least $25.0 million in accounts subject to control agreements and a covenant limiting the use of cash for open market or privately negotiated repurchases of any outstanding 2026 Notes to: (i) an initial amount not exceeding $25.0 million, which may be increased by up to an additional $10.0 million subject to the satisfaction of certain conditions; (ii) an unlimited amount, if the amount of the Loans outstanding at the time of repurchase does not exceed $38.5 million; and (iii) an additional amount not to exceed 50% of the net cash proceeds from an equity offering, provided that the Company offers to prepay an equal amount of the Loans with the net cash proceeds of such offering. As of June 30, 2024, the Company was in compliance with the covenants under the Credit Agreement. After review of the customary default provisions, affirmative and negative covenants, and voluntary and mandatory prepayment options, this resulted in a net derivative asset that was not significant as of June 30, 2024.\nThe fair value of the Loans is classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently observable in the market. As of June 30, 2024, the approximate fair value of our Loan obligations was $68.9 million. We determined the fair market value by discounting the future cash flows based on adjusted SOFR at each measurement date.\n2023 Unsecured Convertible Senior Notes\nWe extinguished the $95.0 million outstanding on our 6.25% convertible senior notes (the \u201c2023 Notes\u201d) at par upon maturity on November 15, 2023. The following table set forth interest expense recognized related to the 2023 Notes.",
+   "prose_after": "2026 Unsecured Convertible Senior Notes\nWe have outstanding unsecured convertible senior notes which accrue interest at an annual rate of 5.25% per annum, payable semi-annually in arrears on February 15 and August 15 of each year. The 2026 Notes mature on February 15, 2026, unless earlier purchased, redeemed or converted in accordance with their terms. On June 3, 2024, we completed the 2026 Note Repurchase Transaction, through which we repurchased $118.1 million of principal amount outstanding on our 2026 Notes for total consideration of $88.3 million (approximately 75% of par value), consisting of the Initial Term Loan of $67.1 million and $21.2 million of cash on hand. As discussed above, subsequent to June 30, 2024, we paid an additional $0.6 million in cash to certain Lenders as a post-closing adjustment under the 2026 Note Repurchase Transaction.\nAmounts outstanding on our 2026 Notes are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal amount",
+     "$",
+     "97,862",
+     "",
+     "$",
+     "215,924",
+     ""
+    ],
+    [
+     "Unamortized debt issuance costs",
+     "",
+     "(974)",
+     "",
+     "",
+     "(2,769)",
+     ""
+    ],
+    [
+     "Total unsecured convertible senior notes, net",
+     "$",
+     "96,888",
+     "",
+     "$",
+     "213,155",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of outstanding unsecured convertible senior notes (1)",
+     "$",
+     "68,626",
+     "",
+     "$",
+     "131,444",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 726,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "2026 Unsecured Convertible Senior Notes\nWe have outstanding unsecured convertible senior notes which accrue interest at an annual rate of 5.25% per annum, payable semi-annually in arrears on February 15 and August 15 of each year. The 2026 Notes mature on February 15, 2026, unless earlier purchased, redeemed or converted in accordance with their terms. On June 3, 2024, we completed the 2026 Note Repurchase Transaction, through which we repurchased $118.1 million of principal amount outstanding on our 2026 Notes for total consideration of $88.3 million (approximately 75% of par value), consisting of the Initial Term Loan of $67.1 million and $21.2 million of cash on hand. As discussed above, subsequent to June 30, 2024, we paid an additional $0.6 million in cash to certain Lenders as a post-closing adjustment under the 2026 Note Repurchase Transaction.\nAmounts outstanding on our 2026 Notes are as follows:",
+   "prose_after": "(1) The fair value is classified as Level 3 liability due to the limited trading activity for the unsecured convertible senior notes. The fair value of the 2026 Notes is determined based on quoted prices in an over-the counter market using the most recent trading information at the end of the reporting period. The value of the conversion feature of the 2026 Notes is not deemed to be significant as the current market price of our common stock is below the initial conversion price of $18.49 per share of common stock.\nUnamortized debt issuance costs of $1.0 million as of June 30, 2024 are amortized to interest expense at an effective interest rate of 5.89% over the remaining term.\nThe following table sets forth interest expense recognized related to the 2026 Notes:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contractual interest expense",
+     "$",
+     "2,369",
+     "$",
+     "2,954",
+     "$",
+     "5,203",
+     "$",
+     "5,907"
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "1,487",
+     "",
+     "307",
+     "",
+     "1,795",
+     "",
+     "610"
+    ],
+    [
+     "Total interest expense",
+     "$",
+     "3,856",
+     "$",
+     "3,261",
+     "$",
+     "6,998",
+     "$",
+     "6,517"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 747,
+    "end_line": 760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "(1) The fair value is classified as Level 3 liability due to the limited trading activity for the unsecured convertible senior notes. The fair value of the 2026 Notes is determined based on quoted prices in an over-the counter market using the most recent trading information at the end of the reporting period. The value of the conversion feature of the 2026 Notes is not deemed to be significant as the current market price of our common stock is below the initial conversion price of $18.49 per share of common stock.\nUnamortized debt issuance costs of $1.0 million as of June 30, 2024 are amortized to interest expense at an effective interest rate of 5.89% over the remaining term.\nThe following table sets forth interest expense recognized related to the 2026 Notes:",
+   "prose_after": "The initial conversion rate is 54.0906 shares of our common stock per $1,000 of note principal (equivalent to an initial conversion price of approximately $18.4875 per share of common stock), which equaled approximately 12.2 million shares issuable upon conversion, subject to adjustment in certain circumstances.\nThe 2026 Notes are convertible at the option of the holders on or after November 15, 2025 at any time prior to the close of business on February 12, 2026, the second scheduled trading day immediately before the stated maturity date of February 15, 2026. Additionally, holders may convert their 2026 Notes at their option at specified times prior to the maturity date only if:\n(1) during any calendar quarter, the last reported sale price per share of our common stock exceeds 130% of the conversion price of the 2026 Notes for each of at least 20 trading days, whether or not consecutive, in the period of 30 consecutive trading days ending on, and including, the last trading day of the immediately preceding calendar quarter;",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026 Notes",
+     "",
+     "",
+     "Term Loan",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "20,000",
+     "$",
+     "20,000"
+    ],
+    [
+     "2026",
+     "",
+     "97,862",
+     "",
+     "",
+     "\u2014",
+     "",
+     "97,862"
+    ],
+    [
+     "2027",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "2028",
+     "",
+     "\u2014",
+     "",
+     "",
+     "47,077",
+     "",
+     "47,077"
+    ],
+    [
+     "2029 and thereafter",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total principal payments",
+     "$",
+     "97,862",
+     "",
+     "$",
+     "67,077",
+     "$",
+     "164,939"
+    ],
+    [
+     "Unamortized premiums, discounts and issuance costs",
+     "",
+     "(974)",
+     "",
+     "",
+     "27,429",
+     "",
+     "26,455"
+    ],
+    [
+     "Carrying value of debt",
+     "$",
+     "96,888",
+     "",
+     "$",
+     "94,506",
+     "$",
+     "191,394"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Debt"
+    }
+   },
+   "prose_before": "In order to reduce the dilutive impact or potential cash expenditure associated with the conversion of the 2026 Notes, we entered into capped call transactions in connection with the issuances of the 2026 Notes (the \u201c2026 Capped Call\u201d). The 2026 Capped Call will cover, subject to anti-dilution adjustments substantially similar to those applicable to the 2026 Notes, the number of shares of common stock underlying the 2026 Notes when our common stock is trading within the range of approximately $18.49 and $26.10. However, should the market price of our common stock exceed the $26.10 cap, then the conversion of the 2026 Notes would have an additional dilutive impact or may require a cash expenditure to the extent the market price of our common stock exceeds the cap price. The 2026 Capped Call will expire on various dates over the 50-trading-day period ranging from December 2, 2025 to February 12, 2026, if not exercised earlier. The 2026 Capped Call is a separate transaction and not part of the terms of the 2026 Notes and was executed separately from the issuance of the 2026 Notes. The amount paid for the 2026 Capped Call was recorded as a reduction to additional paid-in capital in the condensed consolidated balance sheet. The Company also retains all potential future value of the capped calls associated with the repurchased 2026 Notes. As of June 30, 2024, approximately 12.2 million shares remained outstanding under the 2026 Capped Call.\nFurther, we concluded the 2026 Capped Call qualifies for a derivative scope exception for instruments that are both indexed to an entity\u2019s own stock and classified in stockholders\u2019 equity in its balance sheet. Consequently, the fair value of the 2026 Capped Call of $23.2 million is classified as equity, not accounted for as derivatives, and will not be subsequently remeasured.\nMinimum Commitments\nAs of June 30, 2024, the most probable principal payments on our 2026 Notes and Term Loan are as follows.",
+   "prose_after": "Note 7\u2014Discontinued Operations - Sale of OMIDRIA\nOn December 23, 2021, we sold the rights to OMIDRIA and related assets to Rayner, which is reported as discontinued operations in our condensed consolidated statements of operations and comprehensive loss and excluded from continuing operations for all periods presented.\nIn December 2022, we earned a $200.0 million milestone payment upon the occurrence of an event specified in the Asset Purchase Agreement with Rayner. The milestone payment was received in February 2023.\nNet income from discontinued operations is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on OMIDRIA contract royalty asset",
+     "$",
+     "4,271",
+     "$",
+     "3,829",
+     "$",
+     "8,614",
+     "$",
+     "7,754"
+    ],
+    [
+     "Remeasurement adjustments",
+     "",
+     "4,314",
+     "",
+     "3,147",
+     "",
+     "6,653",
+     "",
+     "4,824"
+    ],
+    [
+     "Other income, net",
+     "",
+     "499",
+     "",
+     "24",
+     "",
+     "483",
+     "",
+     "404"
+    ],
+    [
+     "Net income from discontinued operations, net of tax",
+     "$",
+     "9,084",
+     "$",
+     "7,000",
+     "$",
+     "15,750",
+     "$",
+     "12,982"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 810,
+    "end_line": 824
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Discontinued Operations - Sale of OMIDRIA"
+    }
+   },
+   "prose_before": "Note 7\u2014Discontinued Operations - Sale of OMIDRIA\nOn December 23, 2021, we sold the rights to OMIDRIA and related assets to Rayner, which is reported as discontinued operations in our condensed consolidated statements of operations and comprehensive loss and excluded from continuing operations for all periods presented.\nIn December 2022, we earned a $200.0 million milestone payment upon the occurrence of an event specified in the Asset Purchase Agreement with Rayner. The milestone payment was received in February 2023.\nNet income from discontinued operations is as follows:",
+   "prose_after": "The following is a roll forward of the OMIDRIA contract royalty asset (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OMIDRIA contract royalty asset at December 31, 2023",
+     "$",
+     "168,109",
+     ""
+    ],
+    [
+     "Royalties earned",
+     "",
+     "(20,283)",
+     ""
+    ],
+    [
+     "Interest earned on OMIDRIA contract royalty asset",
+     "",
+     "8,614",
+     ""
+    ],
+    [
+     "Remeasurement adjustments",
+     "",
+     "6,653",
+     ""
+    ],
+    [
+     "OMIDRIA contract royalty asset at June 30, 2024",
+     "$",
+     "163,093",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 827,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Discontinued Operations - Sale of OMIDRIA"
+    }
+   },
+   "prose_before": "The following is a roll forward of the OMIDRIA contract royalty asset (in thousands):",
+   "prose_after": "We remeasure the OMIDRIA contract royalty asset on a quarterly basis using the expected value approach, which incorporates actual results and future expectations.\nCash flow from discontinued operations is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by discontinued operations from operating activities",
+     "$",
+     "21,418",
+     "$",
+     "217,688"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Discontinued Operations - Sale of OMIDRIA"
+    }
+   },
+   "prose_before": "We remeasure the OMIDRIA contract royalty asset on a quarterly basis using the expected value approach, which incorporates actual results and future expectations.\nCash flow from discontinued operations is as follows:",
+   "prose_after": "Net cash provided by discontinued operations primarily represents royalties received and the $200.0 million milestone payment that we collected from Rayner in February 2023.\nNote 8\u2014OMIDRIA Royalty Obligation\nIn September 2022, we sold to DRI an interest in our future OMIDRIA royalty receipts and received $125.0 million in cash consideration, which was recorded as an OMIDRIA royalty obligation on our condensed consolidated balance sheet. DRI was entitled to receive royalties on OMIDRIA net sales between September 1, 2022 and December 31, 2030, subject to annual caps.\nIn February 2024, Omeros and DRI expanded their royalty purchase agreement under the DRI Amendment, resulting in Omeros receiving an additional $115.5 million in cash consideration, which we accounted for as a modification of our existing debt from DRI. The DRI Amendment eliminated the annual caps on royalty payments and provides that DRI will receive all royalties on U.S. net sales of OMIDRIA payable between January 1, 2024 and December 31, 2031.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OMIDRIA royalty obligation at December 31, 2023",
+     "$",
+     "125,126",
+     ""
+    ],
+    [
+     "Additional proceeds",
+     "",
+     "115,525",
+     ""
+    ],
+    [
+     "Non-cash interest",
+     "",
+     "1,806",
+     ""
+    ],
+    [
+     "Principal payments",
+     "",
+     "(10,700)",
+     ""
+    ],
+    [
+     "OMIDRIA royalty obligation at June 30, 2024",
+     "$",
+     "231,757",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014OMIDRIA Royalty Obligation"
+    }
+   },
+   "prose_before": "We retain the right to receive all royalties payable by Rayner on any net sales of OMIDRIA outside the U.S. payable after January 1, 2024, as well as royalties on global net sales of OMIDRIA payable from and after December 31, 2031. To date, international royalties have not been significant. DRI has no recourse to our assets other than its interest in OMIDRIA royalties.\nWe are also entitled to receive a milestone ranging between $10.0 million and $27.5 million if U.S. net sales of OMIDRIA reach applicable thresholds ranging between a total of $156.0 million and $160.0 million for any period of four consecutive quarters prior to January 1, 2026. In addition, we are entitled to receive a separate milestone ranging between $8.0 million and $27.5 million if U.S. net sales of OMIDRIA reach applicable thresholds ranging between a total of $181.0 million and $185.0 million for any period of four consecutive quarters prior to January 1, 2028.\nThe following schedule is a roll forward of the OMIDRIA royalty obligation (in thousands):",
+   "prose_after": "We account for the OMIDRIA royalty obligation under the catch-up method. The catch-up method requires that we adjust the carrying amount to match the present value of revised estimated cash flows of Rayner\u2019s U.S. net sales of OMIDRIA. We discounted the OMIDRIA royalty obligation at an implied effective interest rate of 10.27%.\nThe OMIDRIA royalty obligation is classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently observable in the market. As of June 30, 2024, the approximate fair value of our obligation was $216.9 million. We determined the fair market value by discounting the future cash flows based on the initial contractual rate adjusted for any changes in the prime rate through to the measurement date.\nFor the three months ended June 30, 2024 and 2023, we incurred interest expense of $6.4 million and $3.0 million, respectively. For the six months ended June 30, 2024 and 2023, we incurred interest expense of $11.5 million and $5.9 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Principal",
+     "",
+     "Interest",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "9,292",
+     "$",
+     "11,058",
+     "$",
+     "20,350"
+    ],
+    [
+     "2025",
+     "",
+     "20,995",
+     "",
+     "20,667",
+     "",
+     "41,662"
+    ],
+    [
+     "2026",
+     "",
+     "23,996",
+     "",
+     "18,500",
+     "",
+     "42,496"
+    ],
+    [
+     "2027",
+     "",
+     "27,318",
+     "",
+     "16,027",
+     "",
+     "43,345"
+    ],
+    [
+     "2028",
+     "",
+     "30,995",
+     "",
+     "13,217",
+     "",
+     "44,212"
+    ],
+    [
+     "Thereafter",
+     "",
+     "119,161",
+     "",
+     "18,852",
+     "",
+     "138,013"
+    ],
+    [
+     "Total scheduled payments",
+     "$",
+     "231,757",
+     "$",
+     "98,321",
+     "$",
+     "330,078"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014OMIDRIA Royalty Obligation"
+    }
+   },
+   "prose_before": "We account for the OMIDRIA royalty obligation under the catch-up method. The catch-up method requires that we adjust the carrying amount to match the present value of revised estimated cash flows of Rayner\u2019s U.S. net sales of OMIDRIA. We discounted the OMIDRIA royalty obligation at an implied effective interest rate of 10.27%.\nThe OMIDRIA royalty obligation is classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently observable in the market. As of June 30, 2024, the approximate fair value of our obligation was $216.9 million. We determined the fair market value by discounting the future cash flows based on the initial contractual rate adjusted for any changes in the prime rate through to the measurement date.\nFor the three months ended June 30, 2024 and 2023, we incurred interest expense of $6.4 million and $3.0 million, respectively. For the six months ended June 30, 2024 and 2023, we incurred interest expense of $11.5 million and $5.9 million, respectively.\nAs of June 30, 2024, future expected principal and interest payments are as follows:",
+   "prose_after": "Note 9\u2014Leases\nWe have an operating lease for our office and laboratory facilities with an initial term that ends in November 2027 and two options to extend the lease term by an additional five years each. Restricted investments of $1.1 million represent the security deposit on our office and laboratory facilities. We have finance leases for certain laboratory and office equipment that have lease terms expiring through November 2026.\nSupplemental lease information is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "1,606",
+     "",
+     "$",
+     "1,616",
+     "",
+     "$",
+     "3,211",
+     "",
+     "$",
+     "3,249",
+     ""
+    ],
+    [
+     "Finance lease cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "149",
+     "",
+     "",
+     "271",
+     "",
+     "",
+     "295",
+     "",
+     "",
+     "389",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "40",
+     "",
+     "",
+     "41",
+     "",
+     "",
+     "97",
+     "",
+     "",
+     "92",
+     ""
+    ],
+    [
+     "Variable lease cost",
+     "",
+     "882",
+     "",
+     "",
+     "757",
+     "",
+     "",
+     "1,798",
+     "",
+     "",
+     "1,547",
+     ""
+    ],
+    [
+     "Sublease income",
+     "",
+     "(385)",
+     "",
+     "",
+     "(375)",
+     "",
+     "",
+     "(774)",
+     "",
+     "",
+     "(750)",
+     ""
+    ],
+    [
+     "Net lease cost",
+     "$",
+     "2,292",
+     "",
+     "$",
+     "2,310",
+     "",
+     "$",
+     "4,627",
+     "",
+     "$",
+     "4,527",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 904,
+    "end_line": 922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "Note 9\u2014Leases\nWe have an operating lease for our office and laboratory facilities with an initial term that ends in November 2027 and two options to extend the lease term by an additional five years each. Restricted investments of $1.1 million represent the security deposit on our office and laboratory facilities. We have finance leases for certain laboratory and office equipment that have lease terms expiring through November 2026.\nSupplemental lease information is as follows:",
+   "prose_after": "Cash paid for amounts included in the measurement of lease liabilities is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash payments for operating leases",
+     "$",
+     "3,630",
+     "$",
+     "3,568"
+    ],
+    [
+     "Cash payments for financing leases",
+     "$",
+     "361",
+     "$",
+     "336"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 925,
+    "end_line": 936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014Leases"
+    }
+   },
+   "prose_before": "Cash paid for amounts included in the measurement of lease liabilities is as follows:",
+   "prose_after": "Note 10\u2014Commitments and Contingencies\nGood and Service Contracts\nWe have various agreements with third parties that collectively require payment of termination fees totaling $7.9 million as of June 30, 2024 if we cancel the work within specific time frames, either prior to commencing or during performance of the contracted services.\nDevelopment Milestones and Product Royalties\nWe have entered a variety of development, collaboration, licensing or similar agreements with third parties under which we have accessed technology or services in connection with our development assets and programs. Some of these agreements require milestone payments based on achievements of development, regulatory or sales milestones, and/or low-single to low-double digit royalties on net income or net sales of the relevant product. For the three and six months ended June 30, 2024 and 2023, development milestone expenses were not significant.\nNote 11\u2014Shareholders\u2019 Equity (Deficit)\nCommon Stock\nAt the Market Sales Agreement - We have a sales agreement to sell shares of our common stock having an aggregate offering price of up to $150.0 million, from time to time, through an \u201cat the market\u201d equity offering program. As of June 30, 2024, we have not sold any shares under this program.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "1,069",
+     "$",
+     "1,133",
+     "",
+     "$",
+     "2,083",
+     "$",
+     "2,405",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "1,699",
+     "",
+     "1,680",
+     "",
+     "",
+     "3,343",
+     "",
+     "3,402",
+     ""
+    ],
+    [
+     "Total stock-based compensation in continuing operations",
+     "",
+     "2,768",
+     "",
+     "2,813",
+     "",
+     "",
+     "5,426",
+     "",
+     "5,807",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "(42)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(83)",
+     ""
+    ],
+    [
+     "Total stock-based compensation",
+     "$",
+     "2,768",
+     "$",
+     "2,771",
+     "",
+     "$",
+     "5,426",
+     "$",
+     "5,724",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Share Repurchase Program - On November 9, 2023, the Board of Directors approved an indefinite term share repurchase program under which we were authorized to repurchase from time to time up to $50.0 million of our common stock in the open market or through privately negotiated transactions. Since inception of the program, we have repurchased and retired 5.0 million shares at an average price of $3.30 per share. During the first quarter of 2024, we repurchased and retired 3.2 million shares of common stock at an average share price of $3.71 at an aggregate cost of $11.9 million. We did not repurchase any shares of our common stock in the three months ended June 30, 2024. The terms of the Credit Agreement prohibit us from repurchasing our common stock unless expressly agreed to by the Lenders. Consequently, the Board of Directors terminated the share repurchase program effective upon execution of the Credit Agreement.\nNote 12\u2014Stock-Based Compensation\nOur stock option plans provide for the grant of incentive and non-qualified stock options, restricted stock awards, restricted stock units, and other stock awards to employees, non-employee directors and consultants.\nStock-based compensation is as follows:",
+   "prose_after": "The fair value of each option grant is estimated on the date of grant using the Black-Scholes option-pricing model. The following assumptions were applied to all stock option grants:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1025,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2024",
+     "",
+     "",
+     "June 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Estimated weighted-average fair value",
+     "$",
+     "2.56",
+     "",
+     "$",
+     "2.57",
+     ""
+    ],
+    [
+     "Weighted-average assumptions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "95",
+     "%",
+     "",
+     "95",
+     "%"
+    ],
+    [
+     "Expected life, in years",
+     "",
+     "7.2",
+     "",
+     "",
+     "7.2",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "4.37",
+     "%",
+     "",
+     "4.37",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "\u2014",
+     "%",
+     "",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 981,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The fair value of each option grant is estimated on the date of grant using the Black-Scholes option-pricing model. The following assumptions were applied to all stock option grants:",
+   "prose_after": "Expected volatility is based on the historical volatility of our stock price weighted by grant issuances over the reporting period. We estimated the expected life of the stock options granted using the historical exercise behavior of option holders. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant. Forfeiture expense is estimated at the time of grant and revised in subsequent periods if actual forfeitures differ from those estimates.\nStock option activity for all stock plans and related information is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1025,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted-",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Remaining",
+     "",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "",
+     "Options",
+     "",
+     "",
+     "Price per",
+     "",
+     "Contractual Life",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "",
+     "Outstanding",
+     "",
+     "",
+     "Share",
+     "",
+     "(In years)",
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "15,255,154",
+     "",
+     "$",
+     "9.50",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "3,072,900",
+     "",
+     "",
+     "3.10",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(10,803)",
+     "",
+     "",
+     "3.32",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(327,751)",
+     "",
+     "",
+     "6.83",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2024",
+     "",
+     "17,989,500",
+     "",
+     "$",
+     "8.46",
+     "",
+     "6.2",
+     "$",
+     "6,863"
+    ],
+    [
+     "Vested and expected to vest at June 30, 2024",
+     "",
+     "17,307,104",
+     "",
+     "$",
+     "8.64",
+     "",
+     "6.1",
+     "$",
+     "6,280"
+    ],
+    [
+     "Exercisable at June 30, 2024",
+     "",
+     "11,556,891",
+     "",
+     "$",
+     "11.03",
+     "",
+     "4.6",
+     "$",
+     "1,282"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted-"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1017
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Expected volatility is based on the historical volatility of our stock price weighted by grant issuances over the reporting period. We estimated the expected life of the stock options granted using the historical exercise behavior of option holders. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant. Forfeiture expense is estimated at the time of grant and revised in subsequent periods if actual forfeitures differ from those estimates.\nStock option activity for all stock plans and related information is as follows:",
+   "prose_after": "On April 25, 2024, annual stock option grants of approximately 2.9 million shares of common stock were awarded to eligible participants for the 2023 annual performance period.\nOf the 18.0 million common stock options outstanding as of June 30, 2024, 9.8 million have an exercise price per share above $4.06, which was the closing price of our stock on the Nasdaq exchange on June 28, 2024.\nAs of June 30, 2024, there were 6.4 million unvested options outstanding that will vest over a weighted-average period of 2.5 years. The total estimated compensation expense yet to be recognized on outstanding options is $16.3 million.\nAs of June 30, 2024, the total number of shares of common stock available for grant was 6.1 million.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with the unaudited condensed consolidated financial statements and notes thereto included elsewhere in this Quarterly Report on Form 10\u2011Q and with our audited financial statements and the notes thereto included in our Annual Report on Form 10-K for the year ended December 31, 2023, which was filed with the SEC on April 1, 2024. In addition, you should read the section entitled \u201cRisk Factors\u201d and the disclaimers regarding forward-looking statements included herein and in our Annual Report on Form 10-K for the year ended December 31, 2023, for a discussion of important factors that could cause our results to differ materially from the results described in or implied by any forward-looking statements contained herein.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1025,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Direct external expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Clinical research and development:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MASP-2 program - OMS721 (narsoplimab)",
+     "$",
+     "22,003",
+     "$",
+     "9,970",
+     "$",
+     "28,688",
+     "$",
+     "18,922"
+    ],
+    [
+     "MASP-3 program - OMS906 (zaltenibart)",
+     "",
+     "8,173",
+     "",
+     "5,280",
+     "",
+     "13,426",
+     "",
+     "7,791"
+    ],
+    [
+     "MASP-2 program - OMS1029",
+     "",
+     "1,170",
+     "",
+     "1,390",
+     "",
+     "2,296",
+     "",
+     "2,710"
+    ],
+    [
+     "Other",
+     "",
+     "28",
+     "",
+     "33",
+     "",
+     "28",
+     "",
+     "78"
+    ],
+    [
+     "Total clinical research and development",
+     "",
+     "31,374",
+     "",
+     "16,673",
+     "",
+     "44,438",
+     "",
+     "29,501"
+    ],
+    [
+     "Preclinical research and development",
+     "",
+     "1,789",
+     "",
+     "1,533",
+     "",
+     "3,369",
+     "",
+     "2,442"
+    ],
+    [
+     "Total direct external expenses",
+     "",
+     "33,163",
+     "",
+     "18,206",
+     "",
+     "47,807",
+     "",
+     "31,943"
+    ],
+    [
+     "Internal overhead and other expenses",
+     "",
+     "11,116",
+     "",
+     "10,300",
+     "",
+     "22,228",
+     "",
+     "19,901"
+    ],
+    [
+     "Stock-based compensation expenses",
+     "",
+     "1,069",
+     "",
+     "1,133",
+     "",
+     "2,083",
+     "",
+     "2,405"
+    ],
+    [
+     "Total research and development expenses",
+     "$",
+     "45,348",
+     "$",
+     "29,639",
+     "$",
+     "72,118",
+     "$",
+     "54,249"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Our loss for the three and six months ended June 30, 2024 was $56.0 million and $93.2 million, respectively. As of June 30, 2024, we had cash, cash equivalents and short-term investments of $158.9 million available to fund operations and to service debt.\nResults of Operations\nResearch and Development Expenses\nOur research and development expenses can be divided into three categories: direct external expenses, which include clinical research and development and preclinical research and development activities; internal overhead and other expenses; and stock-based compensation expense. Direct external expenses consist primarily of expenses incurred pursuant to agreements with third-party manufacturing organizations prior to receiving regulatory approval for a drug candidate, contract research organizations, clinical trial sites, collaborators, licensors and consultants. Pre-clinical research and development includes costs prior to beginning Phase 1 studies in human subjects. Internal overhead and other expenses primarily consist of costs for personnel, overhead, rent, utilities and depreciation. The following table illustrates our expenses associated with these activities:",
+   "prose_after": "For the three and six months ended June 30, 2024, clinical research and development expenses increased $14.7 million and $14.9 million, respectively, compared to the prior year periods. The increases were primarily due to increased narsoplimab drug substance manufacturing and zaltenibart clinical research costs, partially offset by decreased clinical expenditures on narsoplimab due to the termination of our IgA nephropathy program following analysis of our Phase 3 clinical trial results. Our accounting policy is to expense all manufacturing costs related to drug candidates until regulatory approval is reasonably assured in either the U.S. or European Union.\nFor the three and six months ended June 30, 2024, internal overhead and other expenses increased $0.8 million and $2.3 million, respectively, as compared to the same periods in the prior year. The increases were primarily due to additional employee related costs and receipt of an Employee Retention Credit received in the second quarter of the prior year that was recorded as an offset to expense.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses, excluding stock-based compensation expense",
+     "$",
+     "12,109",
+     "$",
+     "9,580",
+     "$",
+     "22,729",
+     "$",
+     "18,961"
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "1,699",
+     "",
+     "1,680",
+     "",
+     "3,343",
+     "",
+     "3,402"
+    ],
+    [
+     "Total selling, general and administrative expenses",
+     "$",
+     "13,808",
+     "$",
+     "11,260",
+     "$",
+     "26,072",
+     "$",
+     "22,363"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1164,
+    "end_line": 1179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "At this time, we are unable to estimate with certainty the longer-term costs we will incur in the continued development of our drug candidates due to the inherently unpredictable nature of our preclinical and clinical development activities. Clinical development timelines, the probability of success and development costs can differ materially as new data become available and as expectations change. Our future research and development expenses will depend, in part, on the preclinical or clinical success of each drug candidate as well as ongoing assessments of each program\u2019s commercial potential. In addition, we cannot forecast with precision which drug candidates, if any, may be subject to future collaborations, when such arrangements will be secured, if at all, and to what degree such arrangements would affect our development plans and capital requirements.\nWe are required to expend substantial resources in the development of our drug candidates due to the lengthy process of completing clinical trials and seeking regulatory approval. Any failure or delay in completing clinical trials, or in obtaining regulatory approvals, could delay our generation of product revenue and increase our research and development expenses.\nSelling, General and Administrative Expenses",
+   "prose_after": "For the three and six months ended June 30, 2024, selling, general and administrative expenses, excluding stock-based compensation expense, increased $2.5 million and $3.8 million, respectively, as compared to the same periods in the prior year. The increase was primarily due to legal and financial advisory expenses incurred in the connection with the 2026 Note Repurchase Transaction, receipt of an Employee Retention Credit in the second quarter of 2023 (that was recorded as an offset to expense) and patent related expenses.\nWe expect selling, general and administrative expenses in the third quarter of 2024 to be lower compared to those in the second quarter of this year.\nInterest Expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "9,215",
+     "$",
+     "7,932",
+     "$",
+     "17,446",
+     "$",
+     "15,865"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1186,
+    "end_line": 1195
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "For the three and six months ended June 30, 2024, selling, general and administrative expenses, excluding stock-based compensation expense, increased $2.5 million and $3.8 million, respectively, as compared to the same periods in the prior year. The increase was primarily due to legal and financial advisory expenses incurred in the connection with the 2026 Note Repurchase Transaction, receipt of an Employee Retention Credit in the second quarter of 2023 (that was recorded as an offset to expense) and patent related expenses.\nWe expect selling, general and administrative expenses in the third quarter of 2024 to be lower compared to those in the second quarter of this year.\nInterest Expense",
+   "prose_after": "Interest expense is primarily comprised of interest and amortization of debt discount and issuance costs on our 2026 Notes as well as interest on our DRI royalty obligation (see \u201cNote 6 \u2014 Debt\u201d and \u201cNote 8 \u2014 OMIDRIA Royalty Obligation\u201d in the Notes to Condensed Consolidated Financial Statements included elsewhere in this Quarterly Report on Form 10-Q).\nInterest expense for the three and six months ended June 30, 2024 increased $1.3 million and $1.6 million, respectively, due to a $115.5 million of borrowing under our royalty obligation with DRI in February 2024. These increases were partially offset by a reduction in interest expense from the retirement at maturity in November 2023 of our 6.25% convertible senior notes, which had a par value of $95.0 million, and the partial repurchase of our 2026 Notes in December 2023 and in June 2024, which had a collective par value of $127.2 million.\nWe expect that interest expense for the third quarter of 2024 will decrease from the second quarter due to the net reduction of debt resulting from the 2026 Note Repurchase Transaction.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "$",
+     "3,247",
+     "$",
+     "4,537",
+     "$",
+     "6,662",
+     "$",
+     "8,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1204,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Interest expense is primarily comprised of interest and amortization of debt discount and issuance costs on our 2026 Notes as well as interest on our DRI royalty obligation (see \u201cNote 6 \u2014 Debt\u201d and \u201cNote 8 \u2014 OMIDRIA Royalty Obligation\u201d in the Notes to Condensed Consolidated Financial Statements included elsewhere in this Quarterly Report on Form 10-Q).\nInterest expense for the three and six months ended June 30, 2024 increased $1.3 million and $1.6 million, respectively, due to a $115.5 million of borrowing under our royalty obligation with DRI in February 2024. These increases were partially offset by a reduction in interest expense from the retirement at maturity in November 2023 of our 6.25% convertible senior notes, which had a par value of $95.0 million, and the partial repurchase of our 2026 Notes in December 2023 and in June 2024, which had a collective par value of $127.2 million.\nWe expect that interest expense for the third quarter of 2024 will decrease from the second quarter due to the net reduction of debt resulting from the 2026 Note Repurchase Transaction.\nInterest and Other Income",
+   "prose_after": "Interest and other income decreased $1.3 million and $1.8 million for the three and six months ended June 30, 2024, respectively, as compared to the same periods in 2023 primarily due to holding a lower average cash and investment balance than in the prior year.\nWe expect interest and other income for the third quarter of 2024 to be lower compared to those in the second quarter of this year due to lower average cash and investment balances.\nDiscontinued operations and OMIDRIA contract royalty asset\nNet income from OMIDRIA discontinued operations, net of tax is shown below:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on OMIDRIA contract royalty asset",
+     "$",
+     "4,271",
+     "$",
+     "3,829",
+     "$",
+     "8,614",
+     "$",
+     "7,754"
+    ],
+    [
+     "Remeasurement adjustments",
+     "",
+     "4,314",
+     "",
+     "3,147",
+     "",
+     "6,653",
+     "",
+     "4,824"
+    ],
+    [
+     "Other income, net",
+     "",
+     "499",
+     "",
+     "24",
+     "",
+     "483",
+     "",
+     "404"
+    ],
+    [
+     "Net income from discontinued operations, net of tax",
+     "$",
+     "9,084",
+     "$",
+     "7,000",
+     "$",
+     "15,750",
+     "$",
+     "12,982"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1222,
+    "end_line": 1236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Interest and other income decreased $1.3 million and $1.8 million for the three and six months ended June 30, 2024, respectively, as compared to the same periods in 2023 primarily due to holding a lower average cash and investment balance than in the prior year.\nWe expect interest and other income for the third quarter of 2024 to be lower compared to those in the second quarter of this year due to lower average cash and investment balances.\nDiscontinued operations and OMIDRIA contract royalty asset\nNet income from OMIDRIA discontinued operations, net of tax is shown below:",
+   "prose_after": "Interest is earned on the OMIDRIA contract royalty asset at an implied effective interest rate of 11.0%. The $0.4 million and $0.9 million increase in interest earned for the three and six months ended June 30, 2024, respectively, were due to a higher OMIDRIA contract royalty asset balance in 2024 than during the same periods in 2023. The increased balance in the OMIDRIA contract royalty asset resulted from periodic remeasurements made during 2023.\nFor the three and six months ended June 30, 2024, remeasurement adjustments increased $1.2 million and $1.8 million, respectively, reflecting the increased interest incurred on the OMIDRIA contract royalty asset as a result of remeasurements made during 2023.\nThe following schedule presents a roll forward of the OMIDRIA contract royalty asset (in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OMIDRIA contract royalty asset at December 31, 2023",
+     "$",
+     "168,109",
+     ""
+    ],
+    [
+     "Royalties earned",
+     "",
+     "(20,283)",
+     ""
+    ],
+    [
+     "Interest earned on OMIDRIA contract royalty asset",
+     "",
+     "8,614",
+     ""
+    ],
+    [
+     "Remeasurement adjustments",
+     "",
+     "6,653",
+     ""
+    ],
+    [
+     "OMIDRIA contract royalty asset at June 30, 2024",
+     "$",
+     "163,093",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1243,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Interest is earned on the OMIDRIA contract royalty asset at an implied effective interest rate of 11.0%. The $0.4 million and $0.9 million increase in interest earned for the three and six months ended June 30, 2024, respectively, were due to a higher OMIDRIA contract royalty asset balance in 2024 than during the same periods in 2023. The increased balance in the OMIDRIA contract royalty asset resulted from periodic remeasurements made during 2023.\nFor the three and six months ended June 30, 2024, remeasurement adjustments increased $1.2 million and $1.8 million, respectively, reflecting the increased interest incurred on the OMIDRIA contract royalty asset as a result of remeasurements made during 2023.\nThe following schedule presents a roll forward of the OMIDRIA contract royalty asset (in thousands):",
+   "prose_after": "Financial Condition \u2013 Liquidity and Capital Resources\nAs of June 30, 2024, we had cash, cash equivalents and short-term investments of $158.9 million. Our loss for the three and six months ended June 30, 2024 was $56.0 million and $93.2 million, respectively. Cash used in operations for the six months ended June 30, 2024 was $87.8 million. The second quarter of 2024 includes a $17.6 million charge for delivery of narsoplimab drug substance. In addition, we made a $21.2 million payment for term loan-related debt repurchase and incurred $1.9 million of term loan-related transaction costs. Pursuant to a covenant in the Credit Agreement entered on June 3, 2024, we must maintain at all times unrestricted cash and cash equivalents of at least $25.0 million.\nHistorically, we have incurred net losses from continuing operations and negative operating cash flows. We have not yet established an ongoing source of revenue sufficient to cover our operating costs; therefore, we potentially need to continue to raise additional capital to accomplish our business plan. We have a sales agreement to sell shares of our common stock, from time to time, in an \u201cat the market\u201d equity offering facility through which we may offer and sell shares of our common stock equaling an aggregate amount up to $150.0 million. In addition, our Delayed Draw Term Loan of $25.0 million may be drawn once in full on or prior to June 3, 2025 at our election, but it is conditioned on the approval by FDA of narsoplimab in TA-TMA. Proceeds of the Delayed Draw Term Loan may only be used toward any related transaction costs and for commercialization efforts of TA-TMA.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selected cash flow data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(87,765)",
+     "",
+     "$",
+     "142,198",
+     ""
+    ],
+    [
+     "Investing activities",
+     "$",
+     "11,225",
+     "",
+     "$",
+     "(145,956)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "$",
+     "71,555",
+     "",
+     "$",
+     "(648)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Historically, we have incurred net losses from continuing operations and negative operating cash flows. We have not yet established an ongoing source of revenue sufficient to cover our operating costs; therefore, we potentially need to continue to raise additional capital to accomplish our business plan. We have a sales agreement to sell shares of our common stock, from time to time, in an \u201cat the market\u201d equity offering facility through which we may offer and sell shares of our common stock equaling an aggregate amount up to $150.0 million. In addition, our Delayed Draw Term Loan of $25.0 million may be drawn once in full on or prior to June 3, 2025 at our election, but it is conditioned on the approval by FDA of narsoplimab in TA-TMA. Proceeds of the Delayed Draw Term Loan may only be used toward any related transaction costs and for commercialization efforts of TA-TMA.\nWe may pursue additional debt financings to retire the 2026 Notes that remain outstanding and to fund operations. Should it be determined to be strategically advantageous, we could pursue public and private offerings of our equity securities, or other strategic transactions, which may include licensing or selling a portion or all of one or more of our existing technologies. However, pursuing debt financings, certain equity offerings or other strategic transactions may result in mandatory prepayments of the Initial Term Loan to the Credit Agreement. (See \u201cNote 6 \u2014 Debt\u201d for further details). We expect to continue to fund our operations and service our debt for at least the next twelve months with our existing cash and investments. We plan to manage our operating expenses and reduce our cash requirements by reducing or delaying selected research and development efforts and by managing operating expenses.\nCash Flow Data",
+   "prose_after": "Operating Activities. Net cash used in operating activities for the six months ended June 30, 2024 increased by $230.0 million compared to the same period in 2023. This change was primarily due to collecting a $200.0 million Milestone Payment from Rayner in the prior year, a $22.2 million increase in net loss, a $9.1 million decrease in accounts payable and accrued expenses, and a $2.9 million decrease in prepaid expenses.\nInvesting Activities. Cash flows provided by investing activities primarily reflects cash used to purchase short-term investments and proceeds from the sale of those investments. This frequently causes a shift between our cash, cash equivalents and short-term investment balances. As we manage our usage with respect to total cash, cash equivalents and short-term investments, we do not consider fluctuations in cash flows from investing activities to be important to the understanding of our liquidity and capital resources.\nNet cash provided by investing activities during the six months ended June 30, 2024 increased by $157.2 million as compared to the same period in 2023. The increase was due to the timing of purchasing investments and of maturities of investments. Significant initial investment purchases during the periods were the investment of the $200.0 million Milestone Payment we received from Rayner in February 2023 and the $115.5 million we received from DRI related to the sale of future OMIDRIA royalties in February 2024.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1 \u2020",
+     "",
+     "Credit and Guaranty Agreement, dated as of June 3, 2024, among the Company, certain subsidiaries of the Company, as guarantors, various Lenders and Wilmington Savings Fund Society, FSB, as Administrative Agent and Collateral Agent (incorporated by reference to Exhibit 10.1 of the Registrant\u2019s Current Report on Form 8-K filed June 3, 2024)"
+    ],
+    [
+     "10.2",
+     "",
+     "Pledge and Security Agreement, dated as of June 3, 2024, between the Company, nura inc. and Wilmington Savings Fund Society, FSB, as Collateral Agent (incorporated by reference to Exhibit 10.2 of the Registrant\u2019s Current Report on Form 8-K filed June 3, 2024)"
+    ],
+    [
+     "10.3",
+     "",
+     "Fifteenth Amendment to Lease dated November 1, 2022 between Omeros Corporation and BMR-201 Elliott Avenue LLC"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer Pursuant to Rule 13-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934 as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer Pursuant to Rule 13-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934 as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Link base Document"
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104.1",
+     "",
+     "Cover Page Interactive Data File, formatted in Inline XBRL (included in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1367,
+    "end_line": 1392
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "\u25cf On June 27, 2024, Gregory A. Demopulos, M.D., our President, Chief Executive Officer and Chairman of the Board of Directors, adopted a 10b5-1 Plan providing for the potential exercise of vested stock options for 449,999 shares of our common stock, and the associated sale of up to all or a portion of the underlying shares under certain conditions. Dr. Demopulos\u2019 10b5-1 Plan will remain in effect until the earliest of (i) October 29, 2024 (which is the expiration date of the stock options covered by the 10b5-1 Plan), (ii) the date on which all of the shares of common stock covered by the 10b5-1 Plan have been sold, and (iii) such time as Dr. Demopulos\u2019 10b5-1 Plan is otherwise terminated or expires according to its terms.\nNo other directors or Section 16 reporting officers adopted or terminated any contract, instruction or written plan for the purchase or sale of our securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) under the Exchange Act or any \u201cnon-Rule 10b5-1 trading arrangement\u201d (as defined in Item 408(c) of Regulation S-K) during the three months ended June 30, 2024.\nITEM 6. EXHIBITS",
+   "prose_after": "\u2020 Certain identified information has been excluded from the exhibit because it both (A) is not material and (B) would be competitively harmful if publicly disclosed.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1364,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1392,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "The certifications attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the SEC and are not to be incorporated by reference into any filing of Omeros Corporation under the Securities Act or the Exchange Act, whether made before or after the date of this Quarterly Report on Form 10-Q, irrespective of any general incorporation language contained in such filing."
+    ]
+   ],
+   "caption_stack": [
+    "The certifications attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the SEC and are not to be incorporated by reference into any filing of Omeros Corporation under the Securities Act or the Exchange Act, whether made before or after the date of this Quarterly Report on Form 10-Q, irrespective of any general incorporation language contained in such filing."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1395,
+    "end_line": 1400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "\u2020 Certain identified information has been excluded from the exhibit because it both (A) is not material and (B) would be competitively harmful if publicly disclosed.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1392,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1400,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "OMEROS CORPORATION"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated: August 7, 2024",
+     "/s/ Gregory A. Demopulos"
+    ],
+    [
+     "",
+     "Gregory A. Demopulos, M.D."
+    ],
+    [
+     "",
+     "President, Chief Executive Officer and Chairman of the Board of Directors"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated: August 7, 2024",
+     "/s/ David J. Borges"
+    ],
+    [
+     "",
+     "David J. Borges"
+    ],
+    [
+     "",
+     "Vice President, Finance, Chief Accounting Officer and Treasurer"
+    ]
+   ],
+   "caption_stack": [
+    "OMEROS CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1405,
+    "end_line": 1418
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014Stock-Based Compensation"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1400,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1419,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

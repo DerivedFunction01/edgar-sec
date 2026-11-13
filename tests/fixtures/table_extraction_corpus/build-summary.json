@@ -1,0 +1,138 @@
+{
+ "breaks_inside": 0,
+ "breaks_with_namespace": 0,
+ "defect_counts": {
+  "break-namespace-unresolved": 34,
+  "geometry-count-drift-explained": 4,
+  "geometry-not-located": 383,
+  "grid-divergence-boundary-shift": 475,
+  "grid-divergence-paren-merge": 4403
+ },
+ "filings_retained": 409,
+ "geometries": 18899,
+ "located": 18517,
+ "located_share": 0.9798,
+ "per_family_per_split": {
+  "aoci": {
+   "derivation": 8,
+   "heldout": 7
+  },
+  "balance_sheet": {
+   "derivation": 117,
+   "heldout": 94
+  },
+  "cash_flow": {
+   "derivation": 151,
+   "heldout": 134
+  },
+  "cover_layout": {
+   "derivation": 1,
+   "heldout": 0
+  },
+  "debt_maturity": {
+   "derivation": 6,
+   "heldout": 4
+  },
+  "deferred_tax": {
+   "derivation": 44,
+   "heldout": 49
+  },
+  "derivatives_hedging": {
+   "derivation": 2,
+   "heldout": 9
+  },
+  "eps_reconciliation": {
+   "derivation": 24,
+   "heldout": 36
+  },
+  "equity_statement": {
+   "derivation": 9,
+   "heldout": 11
+  },
+  "fair_value": {
+   "derivation": 18,
+   "heldout": 13
+  },
+  "income_statement": {
+   "derivation": 154,
+   "heldout": 146
+  },
+  "intangibles": {
+   "derivation": 4,
+   "heldout": 10
+  },
+  "inventory": {
+   "derivation": 18,
+   "heldout": 13
+  },
+  "lease_maturity": {
+   "derivation": 17,
+   "heldout": 19
+  },
+  "other": {
+   "derivation": 6413,
+   "heldout": 6637
+  },
+  "pension": {
+   "derivation": 4,
+   "heldout": 11
+  },
+  "ppe": {
+   "derivation": 3,
+   "heldout": 2
+  },
+  "shares_purchased": {
+   "derivation": 2,
+   "heldout": 0
+  },
+  "stock_comp_rollforward": {
+   "derivation": 8,
+   "heldout": 10
+  },
+  "tax_reconciliation": {
+   "derivation": 22,
+   "heldout": 33
+  }
+ },
+ "population": "retained-409",
+ "split_counts": {
+  "derivation": 9565,
+  "heldout": 9334
+ },
+ "timing": {
+  "compute_s_mean": 2.754,
+  "fetch_s_mean": 4.99,
+  "filings_timed": 409,
+  "per_session": [
+   {
+    "filings": 141,
+    "filings_per_hour": 3799.1,
+    "run_id": "succ-shard-0",
+    "wall_s": 133.612
+   },
+   {
+    "filings": 146,
+    "filings_per_hour": 3698.8,
+    "run_id": "succ-shard-1",
+    "wall_s": 142.099
+   },
+   {
+    "filings": 122,
+    "filings_per_hour": 3658.7,
+    "run_id": "succ-shard-2",
+    "wall_s": 120.044
+   },
+   {
+    "filings": 150,
+    "filings_per_hour": 3388.4,
+    "run_id": "succ-mopup",
+    "wall_s": 159.368
+   }
+  ],
+  "total_s": {
+   "mean": 7.747,
+   "p50": 6.395,
+   "p95": 16.489
+  }
+ }
+}

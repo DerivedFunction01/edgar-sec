@@ -1,0 +1,3448 @@
+{
+ "accession": "0001326321-18-000009",
+ "cik": "0001130758",
+ "form": "10-K",
+ "filing_date": "2018-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "k24-17.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "State of Delaware",
+     "",
+     "41-1990952"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "30 East 7th Street, Suite 1300\n\nSt. Paul, Minnesota 55101",
+     "",
+     "(651) 227-7333"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Registrant's telephone number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nAnnual Report Pursuant to Section 13 or 15(d) of The Securities Exchange Act of 1934\nFor the Fiscal Year Ended: December 31, 2017\nCommission file number: 000-49653\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     "None",
+     "",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nLimited Liability Company Units (Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the\nSecurities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or\nSection 15(d) of the Exchange Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property",
+     "Purchase\n\nDate",
+     "",
+     "Original Property\n\nCost",
+     "",
+     "Tenant",
+     "Annual\n\nLease\n\nPayment",
+     "",
+     "Annual\n\nRent\n\nPer Sq. Ft.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advance Auto Parts Store\n\n   Middletown, OH\n\n   (45%)",
+     "6/1/06",
+     "$",
+     "835,890",
+     "",
+     "Advance Stores\n\nCompany, Inc.",
+     "$",
+     "64,512",
+     "$",
+     "20.84"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Applebee's Restaurant\n\n   Fishers, IN",
+     "9/21/06",
+     "$",
+     "3,002,553",
+     "",
+     "Apple Indiana\n\nII LLC",
+     "$",
+     "250,247",
+     "$",
+     "49.55"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tractor Supply Company Store\n\n   Grand Forks, ND\n\n   (50%)",
+     "1/19/07",
+     "$",
+     "1,403,934",
+     "",
+     "Tractor Supply\n\nCompany",
+     "$",
+     "115,437",
+     "$",
+     "10.47"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dick's Sporting Goods Store\n\n   Fredericksburg, VA\n\n   (35%)",
+     "5/8/08",
+     "$",
+     "4,052,921",
+     "",
+     "Dick's Sporting\n\nGoods, Inc.",
+     "$",
+     "301,972",
+     "$",
+     "17.71"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fresenius Medical Center\n\n   Shreveport, LA\n\n   (45%)",
+     "10/2/08",
+     "$",
+     "1,151,666",
+     "",
+     "Bio-Medical\n\nApplications of\n\nLouisiana, LLC",
+     "$",
+     "92,268",
+     "$",
+     "24.12"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Best Buy Store\n\n   Lake Geneva, WI\n\n   (34%)",
+     "10/6/08",
+     "$",
+     "2,083,526",
+     "",
+     "Best Buy\n\nStores, L.P.",
+     "$",
+     "153,826",
+     "$",
+     "14.89"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Family Dollar Store\n\n   McDonough, GA",
+     "5/14/12",
+     "$",
+     "1,640,500",
+     "(1)",
+     "Family Dollar Stores\n\nof Georgia, Inc.",
+     "$",
+     "136,168",
+     "$",
+     "16.84"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Coliseum Health Clinic\n\n   Macon, GA\n\n   (50%)",
+     "7/25/12",
+     "$",
+     "967,500",
+     "(1)",
+     "Macon\n\nHealthcare, LLC",
+     "$",
+     "82,014",
+     "$",
+     "23.71"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PetSmart Store\n\n   Gonzales, LA\n\n   (27%)",
+     "6/12/13",
+     "$",
+     "842,400",
+     "(1)",
+     "PetSmart, Inc.",
+     "$",
+     "63,186",
+     "$",
+     "19.30"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fresenius Medical Center\n\n   Grove City, OH",
+     "9/11/14",
+     "$",
+     "2,375,000",
+     "(1)",
+     "Bio-Medical Applications of\n\nOhio, Inc.",
+     "$",
+     "180,924",
+     "$",
+     "22.51"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 136,
+    "end_line": 197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES."
+    },
+    "note": null
+   },
+   "prose_before": "The Company's properties are commercial, single tenant buildings. The properties were acquired on a debt-free basis and are leased to tenants under net leases, classified as operating leases. The Company holds an undivided fee simple interest in the properties.\nThe Company's properties are subject to the general competitive conditions incident to the ownership of single tenant investment real estate. Since each property is leased under a long\u2011term lease, there is little competition until the Company decides to sell the property. At this time, the Company will be competing with other real estate owners, on both a national and local level, in attempting to find buyers for the properties. In the event of a tenant default, the Company would be competing with other real estate owners, who have property vacancies, to attract a new tenant to lease the property. The Company's tenants operate in industries that are competitive and can be affected by factors such as changes in regional or local economies, seasonality and changes in consumer preference.\nITEM 2. PROPERTIES. (Continued)\nThe following table is a summary of the properties that the Company acquired and owned as of December 31, 2017.",
+   "prose_after": "(1) Does not include acquisition costs that were expensed.\nThe properties listed above with a partial ownership percentage are owned with the following affiliated entities and/or unrelated third parties: Advance Auto Parts store (AEI Income & Growth Fund 26 LLC); Tractor Supply Company store (AEI Income & Growth Fund XXII Limited Partnership); Dick's Sporting Goods store (AEI Income & Growth Fund 23 LLC, AEI Income & Growth Fund 25 LLC and AEI Income & Growth Fund 26 LLC); Fresenius Medical Center in Shreveport, Louisiana (AEI Income & Growth Fund XXI Limited Partnership); Best Buy store (AEI Income & Growth Fund XXII Limited Partnership and AEI Income & Growth Fund 27 LLC); Coliseum Health clinic (AEI Income & Growth Fund 25 LLC); and PetSmart store (AEI Income & Growth Fund 25 LLC).\nITEM 2. PROPERTIES. (Continued)\nThe Company accounts for properties owned as tenants-in-common with affiliated entities and/or unrelated third parties using the proportionate consolidation method. Each tenant-in-common owns a separate, undivided interest in the properties. Any tenant-in-common that holds more than a 50% interest does not control decisions over the other tenant-in-common interests. The financial statements reflect only this Company's percentage share of the properties' land, building, liabilities, revenues and expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 201,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number\n\nof Units\n\nPurchased",
+     "Average\n\nPrice Paid\n\nper Unit",
+     "Total Number of Units\n\nPurchased as Part of\n\nPublicly Announced\n\nPlans or Programs",
+     "Maximum Number\n\nof Units that May Yet\n\nBe Purchased Under\n\nthe Plans or Programs"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10/1/17 to 10/31/17",
+     "148.87",
+     "$591.47",
+     "1,174.07(1)",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "11/1/17 to 11/30/17",
+     "--",
+     "--",
+     "--",
+     "--"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12/1/17 to 12/31/17",
+     "--",
+     "--",
+     "--",
+     "--"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCK-"
+    },
+    "note": null
+   },
+   "prose_before": "(c) Pursuant to Section 7.7 of the Operating Agreement, each Limited Member has the right to present Units to the Company for purchase by submitting notice to the Managing Member during January or July of each year. The purchase price of the Units is equal to 80% of the net asset value per Unit, as of the first business day of January or July of each year, as determined by the Managing Member in accordance with the provisions of the Operating Agreement. Units tendered to the Company during January and July may be repurchased on April 1st and October 1st, respectively, of each year subject to the following limitations. The Company will not be obligated to purchase in any year any number of Units that, when aggregated with all other transfers of Units that have occurred since the beginning of the same calendar year (excluding Permitted Transfers as defined in the Operating Agreement), would exceed 2% of the total number of Units outstanding on January 1 of such year. In no event shall the Company be obligated to purchase Units if, in the sole discretion of the Managing Member, such purchase would impair the capital or operation of the Company.\nSmall Business Issuer Purchases of Equity Securities",
+   "prose_after": "(1) The Company's repurchase plan is mandated by the Operating Agreement as included in the prospectus related to the original offering of the Units.\n(2) The Operating Agreement contains annual limitations on repurchases described in the paragraph above and has no expiration date.\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCK-\nOther Information\nEffective April 11, 2016, the Financial Industry Regulatory Authority (\"FINRA\") implemented Rule 2310, a revised rule that requires securities broker-dealers to report on customer account statements the value of investment units of non-traded securities, such as REITs, LLCs and Limited Partnerships, provided that the per unit value is derived using methodology set forth by the rule.\nAt December 31, 2017, the estimated value of the Company's Units was $741 per Unit. The Managing Member is the party responsible for the estimated value per Unit. The estimated value was derived using methodology that conforms to standard industry practice and based upon material assistance and/or confirmation by third-party valuation expert(s), in accordance with the appraised value method set forth in FINRA Rule 2340(c)(1)(B). Third-party valuation services were provided by:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 228,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,\n\n2017",
+     "",
+     "December 31,\n\n2016"
+    ],
+    [
+     "Properties",
+     "$",
+     "16,955,000",
+     "$",
+     "17,536,000"
+    ],
+    [
+     "Cash",
+     "",
+     "1,173,000",
+     "",
+     "1,371,000"
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "(414,000)",
+     "",
+     "(446,000)"
+    ],
+    [
+     "Value attributable to the interest of the Managing Members",
+     "",
+     "(177,000)",
+     "",
+     "(185,000)"
+    ],
+    [
+     "Value attributable to the interest of the Limited Members",
+     "$",
+     "17,537,000",
+     "$",
+     "18,276,000"
+    ],
+    [
+     "LLC Units outstanding",
+     "",
+     "23,657",
+     "",
+     "23,928"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 293,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": null
+   },
+   "prose_before": "The per Unit value was the aggregate estimated value of the Company's assets less the Company's liabilities, and less the value attributable to the interest of the Managing Members, divided by the number of Units outstanding. The Company's cash, receivables and liabilities were valued at face value. Each of the Company's properties were valued by dividing their annual rental income as of December 1, 2017 by a capitalization rate the Managing Member believed, based upon material assistance and/or confirmation by the aforementioned third-party valuation experts, to be representative of the retail market for the sale of each property. The resulting value for each property was reviewed to determine that it also reflected circumstances that may have been unique to each specific property. The valuations were estimates only, and were based on a number of assumptions which may not be accurate or complete. In addition, property values are subject to change and could decline after the date of the valuations. Accordingly, this estimated value should not be viewed as the amount at which a Limited Member may be able to sell his units, or the fair market value of the Company properties, nor does it represent the amount of net proceeds Limited Members would receive if the Company properties were sold and the proceeds distributed in a liquidation of the Company.\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCK-\nThe following table provides a breakdown of each major asset type, liabilities and the number of Units that were used to calculate the estimated value per Unit as of December 31, 2017 and 2016:",
+   "prose_after": "ITEM 6. SELECTED FINANCIAL DATA.\nNot required for a smaller reporting company.\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL\nCONDITION AND RESULTS OF OPERATIONS.\nThis section contains \"forward-looking statements\" which represent management's expectations or beliefs concerning future events, including statements regarding anticipated application of cash, expected returns from rental income, growth in revenue, the sufficiency of cash to meet operating expenses, rates of distribution, and other matters. These, and other forward-looking statements, should be evaluated in the context of a number of factors that may affect the Company's financial condition and results of operations, including the following:\n\u2014 Market and economic conditions which affect the value of the properties the Company owns and the cash from rental income such properties generate;\n\u2014 the federal income tax consequences of rental income, deductions, gain on sales and other items and the effects of these consequences for Members;",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 289,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 330,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of December 31, 2017 and 2016",
+     "",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements for the Years Ended December 31, 2017 and 2016:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Income",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash Flows",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Changes in Members' Equity (Deficit)",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "",
+     "21 \u2013 31"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 415,
+    "end_line": 432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "During 2017, the Company repurchased a total of 271.27 Units for $161,325 from 11 Limited Members in accordance with the Operating Agreement. During 2016, the Company repurchased a total of 149.50 Units for $93,883 from three Limited Members. The Company acquired these Units using Net Cash Flow from operations. In prior years, the Company repurchased a total of 753.30 Units for $529,205 from 40 Limited Members. The repurchases increase the remaining Limited Members' ownership interest in the Company. As a result of these repurchases and pursuant to the Operating Agreement, the Managing Members received distributions of $4,989 and $2,904 in 2017 and 2016, respectively.\nThe continuing rent payments from the properties, together with cash generated from property sales, should be adequate to fund continuing distributions and meet other Company obligations on both a short-term and long-term basis.\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS. (Continued)\nOff-Balance Sheet Arrangements\nAs of December 31, 2017 and 2016, the Company had no material off-balance sheet arrangements that had or are reasonably likely to have current or future effects on its financial condition, results of operations, liquidity or capital resources.\nITEM 7A. QUANTITATIVE & QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nNot required for a smaller reporting company.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nSee accompanying index to financial statements.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Members:\nSt. Paul, Minnesota\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of AEI Income & Growth Fund 24 LLC (a Delaware limited liability company) as of December 31, 2017 and 2016, and the related statements of income, members' equity (deficit), and cash flows for each of the years in the two-year period ended December 31, 2017, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2017 and 2016, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2017, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ BOULAY PLLP",
+     ""
+    ],
+    [
+     "Boulay PLLP",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "We have served as the Company's auditor since 2000",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Minneapolis, Minnesota",
+     ""
+    ],
+    [
+     "March 28, 2018",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ BOULAY PLLP",
+    "Boulay PLLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 454,
+    "end_line": 463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.",
+   "prose_after": "BALANCE SHEETS\nASSETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "REPEATING_HEADER",
+     "id": 21,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,162,482",
+     "",
+     "$",
+     "1,320,236",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Real Estate Investments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "4,934,814",
+     "",
+     "",
+     "4,934,814",
+     ""
+    ],
+    [
+     "Buildings",
+     "",
+     "12,213,592",
+     "",
+     "",
+     "12,175,342",
+     ""
+    ],
+    [
+     "Acquired Intangible Lease Assets",
+     "",
+     "1,207,484",
+     "",
+     "",
+     "1,207,484",
+     ""
+    ],
+    [
+     "Real Estate Held for Investment, at cost",
+     "",
+     "18,355,890",
+     "",
+     "",
+     "18,317,640",
+     ""
+    ],
+    [
+     "Accumulated Depreciation and Amortization",
+     "",
+     "(4,672,162)",
+     "",
+     "",
+     "(4,058,525)",
+     ""
+    ],
+    [
+     "Real Estate Held for Investment, Net",
+     "",
+     "13,683,728",
+     "",
+     "",
+     "14,259,115",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "14,846,210",
+     "",
+     "$",
+     "15,579,351",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEETS\nASSETS",
+   "prose_after": "LIABILITIES AND MEMBERS' EQUITY",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 465,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payable to AEI Fund Management, Inc.",
+     "$",
+     "69,091",
+     "",
+     "$",
+     "66,539",
+     ""
+    ],
+    [
+     "Distributions Payable",
+     "",
+     "304,729",
+     "",
+     "",
+     "308,862",
+     ""
+    ],
+    [
+     "Unearned Rent",
+     "",
+     "9,620",
+     "",
+     "",
+     "9,620",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "383,440",
+     "",
+     "",
+     "385,021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Members' Equity (Deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members",
+     "",
+     "(54,825)",
+     "",
+     "",
+     "(35,707)",
+     ""
+    ],
+    [
+     "Limited Members \u2013 50,000 Units authorized;\n\n   23,657 and 23,928 Units issued and outstanding\n\n   as of December 31, 2017 and 2016, respectively",
+     "",
+     "14,517,595",
+     "",
+     "",
+     "15,230,037",
+     ""
+    ],
+    [
+     "Total Members' Equity",
+     "",
+     "14,462,770",
+     "",
+     "",
+     "15,194,330",
+     ""
+    ],
+    [
+     "Total Liabilities and Members' Equity",
+     "$",
+     "14,846,210",
+     "",
+     "$",
+     "15,579,351",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Current Liabilities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "LIABILITIES AND MEMBERS' EQUITY",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF INCOME",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 465,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "2016",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental Income",
+     "$",
+     "1,393,620",
+     "$",
+     "1,377,777"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LLC Administration \u2013 Affiliates",
+     "",
+     "141,520",
+     "",
+     "171,796"
+    ],
+    [
+     "LLC Administration and Property\n\n   Management \u2013 Unrelated Parties",
+     "",
+     "25,491",
+     "",
+     "35,491"
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "567,301",
+     "",
+     "565,388"
+    ],
+    [
+     "Total Expenses",
+     "",
+     "734,312",
+     "",
+     "772,675"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Income",
+     "",
+     "659,308",
+     "",
+     "605,102"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "3,460",
+     "",
+     "3,790"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "662,768",
+     "$",
+     "608,892"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income Allocated:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members",
+     "$",
+     "19,883",
+     "$",
+     "18,267"
+    ],
+    [
+     "Limited Members",
+     "",
+     "642,885",
+     "",
+     "590,625"
+    ],
+    [
+     "Total",
+     "$",
+     "662,768",
+     "$",
+     "608,892"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income per LLC Unit",
+     "$",
+     "27.01",
+     "$",
+     "24.63"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Units Outstanding \u2013\n\n      Basic and Diluted",
+     "",
+     "23,799",
+     "",
+     "23,981"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 524,
+    "end_line": 566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF INCOME",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 520,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2017",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "662,768",
+     "",
+     "$",
+     "608,892",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Income\n\nTo Net Cash Provided by Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "613,637",
+     "",
+     "",
+     "611,724",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Payable to\n\n   AEI Fund Management, Inc.",
+     "",
+     "2,552",
+     "",
+     "",
+     "(28,210)",
+     ""
+    ],
+    [
+     "Total Adjustments",
+     "",
+     "616,189",
+     "",
+     "",
+     "583,514",
+     ""
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Operating Activities",
+     "",
+     "1,278,957",
+     "",
+     "",
+     "1,192,406",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments in Real Estate",
+     "",
+     "(38,250)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Payments Received on Note Receivable",
+     "",
+     "0",
+     "",
+     "",
+     "50,826",
+     ""
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Investing Activities",
+     "",
+     "(38,250)",
+     "",
+     "",
+     "50,826",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Paid to Members",
+     "",
+     "(1,232,147)",
+     "",
+     "",
+     "(1,232,533)",
+     ""
+    ],
+    [
+     "Repurchase of LLC Units",
+     "",
+     "(166,314)",
+     "",
+     "",
+     "(96,787)",
+     ""
+    ],
+    [
+     "Net Cash Provided By (Used For)\n\n   Financing Activities",
+     "",
+     "(1,398,461)",
+     "",
+     "",
+     "(1,329,320)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "(157,754)",
+     "",
+     "",
+     "(86,088)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "",
+     "1,320,236",
+     "",
+     "",
+     "1,406,324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "1,162,482",
+     "",
+     "$",
+     "1,320,236",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CHANGES IN MEMBERS' EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 570,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Managing Members",
+     "",
+     "",
+     "Limited Members",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Limited Member Units Outstanding",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2015",
+     "$",
+     "(16,248)",
+     "",
+     "$",
+     "15,933,297",
+     "",
+     "$",
+     "15,917,049",
+     "",
+     "",
+     "24,077.98",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Declared",
+     "",
+     "(34,822)",
+     "",
+     "",
+     "(1,200,002)",
+     "",
+     "",
+     "(1,234,824)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of LLC Units",
+     "",
+     "(2,904)",
+     "",
+     "",
+     "(93,883)",
+     "",
+     "",
+     "(96,787)",
+     "",
+     "",
+     "(149.50)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "18,267",
+     "",
+     "",
+     "590,625",
+     "",
+     "",
+     "608,892",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2016",
+     "",
+     "(35,707)",
+     "",
+     "",
+     "15,230,037",
+     "",
+     "",
+     "15,194,330",
+     "",
+     "",
+     "23,928.48",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions Declared",
+     "",
+     "(34,012)",
+     "",
+     "",
+     "(1,194,002)",
+     "",
+     "",
+     "(1,228,014)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of LLC Units",
+     "",
+     "(4,989)",
+     "",
+     "",
+     "(161,325)",
+     "",
+     "",
+     "(166,314)",
+     "",
+     "",
+     "(271.27)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "19,883",
+     "",
+     "",
+     "642,885",
+     "",
+     "",
+     "662,768",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "$",
+     "(54,825)",
+     "",
+     "$",
+     "14,517,595",
+     "",
+     "$",
+     "14,462,770",
+     "",
+     "",
+     "23,657.21",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 632,
+    "end_line": 658
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying Notes to Financial Statements are an integral part of these statements.\nSTATEMENTS OF CHANGES IN MEMBERS' EQUITY (DEFICIT)",
+   "prose_after": "The accompanying Notes to Financial Statements are an integral part of these statements.\n(1) Organization \u2013\nAEI Income & Growth Fund 24 LLC (\"Company\"), a Limited Liability Company, was formed on November 21, 2000 to acquire and lease commercial properties to operating tenants. The Company's operations are managed by AEI Fund Management XXI, Inc. (\"AFM\"), the Managing Member. Robert P. Johnson, the President and sole director of AFM, serves as the Special Managing Member. AFM is a wholly owned subsidiary of AEI Capital Corporation of which Mr. Johnson is the majority shareholder. AEI Fund Management, Inc. (\"AEI\"), an affiliate of AFM, performs the administrative and operating functions for the Company.\nThe terms of the offering called for a subscription price of $1,000 per LLC Unit, payable on acceptance of the offer. The Company commenced operations on October 31, 2001 when minimum subscriptions of 1,500 LLC Units ($1,500,000) were accepted. The offering terminated May 17, 2003 when the extended offering period expired. The Company received subscriptions for 24,831.283 Units. Under the terms of the Operating Agreement, the Limited Members and Managing Members contributed funds of $24,831,283 and $1,000, respectively. The Company shall continue until December 31, 2051, unless dissolved, terminated and liquidated prior to that date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 660,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "2017",
+     "",
+     "2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "a.",
+     "AEI is reimbursed for costs incurred in providing services related to managing the Company's operations and properties, maintaining the Company's books, and communicating with the Limited Members.",
+     "$",
+     "141,520",
+     "$",
+     "171,796"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "b.",
+     "AEI is reimbursed for all direct expenses it paid on the Company's behalf to third parties related to Company administration and property management. These expenses included printing costs, legal and filing fees, direct administrative costs, outside audit costs, taxes, insurance and other property costs.",
+     "$",
+     "25,491",
+     "$",
+     "35,491"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 788,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In January 2017, the FASB issued ASU 2017-01, which clarifies the definition of a business by adding guidance to assist entities in evaluating whether transactions should be accounted for as acquisitions (or disposals) of assets or businesses. The guidance is effective for annual periods beginning after December 15, 2017, including interim periods within those periods, with early adoption permitted, and is required to be applied prospectively to any transactions occurring within the period of adoption. We are currently evaluating the accounting and disclosure requirements of the standard. We expect the new standard will result in the majority of our real estate acquisitions to be considered asset acquisitions, whereby external acquisition costs related to these asset acquisitions will be capitalized. Currently, the majority of our real estate acquisitions are considered acquisitions of businesses, whereby all acquisition-related costs are expensed as incurred. We do not expect the standard to have a significant impact on the allocation of purchase price to tangible and identifiable intangible assets and liabilities acquired based on their respective fair values.\n(3) Related Party Transactions \u2013\nThe Company owns the percentage interest shown below in the following properties as tenants-in-common with the affiliated entities listed: Advance Auto Parts store (45% \u2013 AEI Income & Growth Fund 26 LLC); Tractor Supply Company store (50% \u2013 AEI Income & Growth Fund XXII Limited Partnership); Dick's Sporting Goods store (35% \u2013 AEI Income & Growth Fund 23 LLC, AEI Income & Growth Fund 25 LLC and AEI Income & Growth Fund 26 LLC); Fresenius Medical Center in Shreveport, Louisiana (45% \u2013 AEI Income & Growth Fund XXI Limited Partnership); Best Buy store (34% \u2013 AEI Income & Growth Fund XXII Limited Partnership and AEI Income & Growth Fund 27 LLC); Coliseum Health clinic (50% \u2013 AEI Income & Growth Fund 25 LLC); and PetSmart store (27% \u2013 AEI Income & Growth Fund 25 LLC).\nAEI received the following reimbursements for costs and expenses from the Company for the years ended December 31:",
+   "prose_after": "The payable to AEI Fund Management, Inc. represents the balance due for the services described in 3a and b. This balance is non-interest bearing and unsecured and is to be paid in the normal course of business.\n(4) Real Estate Investments \u2013\nThe Company leases its properties to tenants under net leases, classified as operating leases. Under a net lease, the tenant is responsible for real estate taxes, insurance, maintenance, repairs and operating expenses for the property. For some leases, the Company is responsible for repairs to the structural components of the building, the roof, and the parking lot. At the time the properties were acquired, the remaining primary lease terms varied from 10 to 20 years. The lease for the Fresenius Medical Center in Shreveport, Louisiana was extended to expire on June 30, 2027. The leases provide the tenants with one to six five-year renewal options subject to the same terms and conditions as the primary term.\nThe Company's properties are commercial, single-tenant buildings. The Advance Auto Parts store was constructed in 2004 and acquired in 2006. The Applebee's restaurant in Fishers, Indiana was constructed in 1996 and acquired in 2006. The Tractor Supply Company store was constructed in 2005 and acquired in 2007. The land for the Dick's Sporting Goods store was acquired in 2007 and construction of the store was completed in 2008. The Fresenius Medical Center in Shreveport, Louisiana and the Best Buy store were constructed and acquired in 2008. The Family Dollar store and the Coliseum Health clinic were constructed and acquired in 2012. The PetSmart store was constructed and acquired in 2013. The Fresenius Medical Center in Grove City, Ohio was constructed in 2013 and acquired in 2014. There have been no costs capitalized as improvements subsequent to the acquisitions, except for $38,250 of tenant improvements related to the Fresenius Medical Center in Shreveport, Louisiana.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 776,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property",
+     "Land",
+     "",
+     "Buildings",
+     "",
+     "Total",
+     "",
+     "Accumulated\n\nDepreciation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advance Auto Parts, Middletown, OH",
+     "$",
+     "91,836",
+     "$",
+     "744,054",
+     "$",
+     "835,890",
+     "$",
+     "344,747"
+    ],
+    [
+     "Applebee's, Fishers, IN",
+     "",
+     "1,204,372",
+     "",
+     "1,798,181",
+     "",
+     "3,002,553",
+     "",
+     "812,178"
+    ],
+    [
+     "Tractor Supply, Grand Forks, ND",
+     "",
+     "238,557",
+     "",
+     "1,165,377",
+     "",
+     "1,403,934",
+     "",
+     "510,825"
+    ],
+    [
+     "Dick's Sporting Goods, Fredericksburg, VA",
+     "",
+     "2,078,645",
+     "",
+     "1,974,276",
+     "",
+     "4,052,921",
+     "",
+     "821,570"
+    ],
+    [
+     "Fresenius Medical Center, Shreveport, LA",
+     "",
+     "83,506",
+     "",
+     "1,068,160",
+     "",
+     "1,151,666",
+     "",
+     "382,976"
+    ],
+    [
+     "Best Buy, Lake Geneva, WI",
+     "",
+     "345,298",
+     "",
+     "1,738,228",
+     "",
+     "2,083,526",
+     "",
+     "640,244"
+    ],
+    [
+     "Family Dollar, McDonough, GA",
+     "",
+     "530,000",
+     "",
+     "779,550",
+     "",
+     "1,309,550",
+     "",
+     "175,403"
+    ],
+    [
+     "Coliseum Health, Macon, GA",
+     "",
+     "200,000",
+     "",
+     "451,516",
+     "",
+     "651,516",
+     "",
+     "98,581"
+    ],
+    [
+     "PetSmart, Gonzales, LA",
+     "",
+     "102,600",
+     "",
+     "555,521",
+     "",
+     "658,121",
+     "",
+     "100,918"
+    ],
+    [
+     "Fresenius Medical Center, Grove City, OH",
+     "",
+     "60,000",
+     "",
+     "1,938,729",
+     "",
+     "1,998,729",
+     "",
+     "255,264"
+    ],
+    [
+     "",
+     "$",
+     "4,934,814",
+     "$",
+     "12,213,592",
+     "$",
+     "17,148,406",
+     "$",
+     "4,142,706"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company's properties are commercial, single-tenant buildings. The Advance Auto Parts store was constructed in 2004 and acquired in 2006. The Applebee's restaurant in Fishers, Indiana was constructed in 1996 and acquired in 2006. The Tractor Supply Company store was constructed in 2005 and acquired in 2007. The land for the Dick's Sporting Goods store was acquired in 2007 and construction of the store was completed in 2008. The Fresenius Medical Center in Shreveport, Louisiana and the Best Buy store were constructed and acquired in 2008. The Family Dollar store and the Coliseum Health clinic were constructed and acquired in 2012. The PetSmart store was constructed and acquired in 2013. The Fresenius Medical Center in Grove City, Ohio was constructed in 2013 and acquired in 2014. There have been no costs capitalized as improvements subsequent to the acquisitions, except for $38,250 of tenant improvements related to the Fresenius Medical Center in Shreveport, Louisiana.\nThe cost of the properties not held for sale and related accumulated depreciation at December 31, 2017 are as follows:",
+   "prose_after": "For the years ended December 31, 2017 and 2016, the Company recognized depreciation expense of $499,173 and $497,260, respectively.\n(4) Real Estate Investments \u2013 (Continued)\nThe following schedule presents the cost and related accumulated amortization of acquired lease intangibles not held for sale at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 804,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "",
+     "2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Cost",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Cost",
+     "",
+     "Accumulated Amortization"
+    ],
+    [
+     "In-Place Lease Intangibles\n\n   (weighted average life of 70 and 82 months, respectively)",
+     "$",
+     "711,169",
+     "$",
+     "313,044",
+     "$",
+     "711,169",
+     "$",
+     "244,916"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Above-Market Lease Intangibles\n\n   (weighted average life of 73 and 85 months, respectively)",
+     "",
+     "496,315",
+     "",
+     "216,412",
+     "",
+     "496,315",
+     "",
+     "170,076"
+    ],
+    [
+     "Acquired Intangible Lease Assets",
+     "$",
+     "1,207,484",
+     "$",
+     "529,456",
+     "$",
+     "1,207,484",
+     "$",
+     "414,992"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 843,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "For the years ended December 31, 2017 and 2016, the Company recognized depreciation expense of $499,173 and $497,260, respectively.\n(4) Real Estate Investments \u2013 (Continued)\nThe following schedule presents the cost and related accumulated amortization of acquired lease intangibles not held for sale at December 31:",
+   "prose_after": "For the years ended December 31, 2017 and 2016, the value of in-place lease intangibles amortized to expense was $68,128 and the decrease to rental income for above-market leases was $46,336 for both years. For lease intangibles not held for sale at December 31, 2017, the estimated amortization expense is $68,128 and the estimated decrease to rental income is $46,336 for each of the next four succeeding years. For the year ended December 31, 2022, the estimated amortization expense is $62,402 and the estimated decrease to rental income is $44,049.\nIn April 2017, the Company entered into an agreement with the tenant of the Fresenius Medical Center in Shreveport, Louisiana to extend the lease term nine years to expire on June 30, 2027. The annual rent will remain the same throughout the remainder of the extended lease term. As part of the agreement, the Company paid a tenant improvement allowance of $38,250 that was capitalized and will be depreciated.\nFor properties owned as of December 31, 2017, the minimum future rent payments required by the leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 837,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2018",
+     "$",
+     "1,443,562"
+    ],
+    [
+     "2019",
+     "",
+     "1,009,523"
+    ],
+    [
+     "2020",
+     "",
+     "926,365"
+    ],
+    [
+     "2021",
+     "",
+     "825,241"
+    ],
+    [
+     "2022",
+     "",
+     "816,741"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,979,159"
+    ],
+    [
+     "",
+     "$",
+     "7,000,591"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 866,
+    "end_line": 877
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "For the years ended December 31, 2017 and 2016, the value of in-place lease intangibles amortized to expense was $68,128 and the decrease to rental income for above-market leases was $46,336 for both years. For lease intangibles not held for sale at December 31, 2017, the estimated amortization expense is $68,128 and the estimated decrease to rental income is $46,336 for each of the next four succeeding years. For the year ended December 31, 2022, the estimated amortization expense is $62,402 and the estimated decrease to rental income is $44,049.\nIn April 2017, the Company entered into an agreement with the tenant of the Fresenius Medical Center in Shreveport, Louisiana to extend the lease term nine years to expire on June 30, 2027. The annual rent will remain the same throughout the remainder of the extended lease term. As part of the agreement, the Company paid a tenant improvement allowance of $38,250 that was capitalized and will be depreciated.\nFor properties owned as of December 31, 2017, the minimum future rent payments required by the leases are as follows:",
+   "prose_after": "There were no contingent rents recognized in 2017 and 2016.\n(5) Major Tenants \u2013\nThe following schedule presents rental income from individual tenants, or affiliated groups of tenants, who each contributed more than ten percent of the Company's total rental income for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 837,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Tenants",
+     "Industry",
+     "",
+     "2017",
+     "",
+     "2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dick's Sporting Goods, Inc.",
+     "Retail",
+     "$",
+     "301,972",
+     "$",
+     "301,972"
+    ],
+    [
+     "Fresenius Medical Care Holdings, Inc.",
+     "Medical",
+     "",
+     "259,592",
+     "",
+     "258,635"
+    ],
+    [
+     "Apple American Group",
+     "Restaurant",
+     "",
+     "250,247",
+     "",
+     "237,153"
+    ],
+    [
+     "Best Buy Stores, L.P.",
+     "Retail",
+     "",
+     "153,826",
+     "",
+     "153,826"
+    ],
+    [
+     "Aggregate rental income of major tenants",
+     "",
+     "$",
+     "965,637",
+     "$",
+     "951,586"
+    ],
+    [
+     "Aggregate rental income of major tenants\n\nas a percentage of total rental income",
+     "",
+     "",
+     "69%",
+     "",
+     "69%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "There were no contingent rents recognized in 2017 and 2016.\n(5) Major Tenants \u2013\nThe following schedule presents rental income from individual tenants, or affiliated groups of tenants, who each contributed more than ten percent of the Company's total rental income for the years ended December 31:",
+   "prose_after": "(6) Members' Capital \u2013\nFor the years ended December 31, 2017 and 2016, the Company declared distributions of $1,228,014 and $1,234,824, respectively. The Limited Members received distributions of $1,194,002 and $1,200,002 and the Managing Members received distributions of $34,012 and $34,822 for the years, respectively. The Limited Members' distributions represented $50.17 and $50.04 per LLC Unit outstanding using 23,799 and 23,981 weighted average Units in 2017 and 2016, respectively. The distributions represented $20.19 and $20.71 per Unit of Net Income and $29.98 and $29.33 per Unit of return of contributed capital in 2017 and 2016, respectively.\nAs part of the distributions discussed above, the Company distributed net sale proceeds (from property sales completed in 2014) of $141,414 and $111,111 in 2017 and 2016, respectively. The Limited Members received distributions of $140,000 and $110,000 and the Managing Members received distributions of $1,414 and $1,111 for the years, respectively. The Limited Members' distributions represented $5.90 and $4.59 per Unit for the years, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 881,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2017",
+     "",
+     "2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income for Financial Reporting Purposes",
+     "$",
+     "662,768",
+     "$",
+     "608,892"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation for Tax Purposes Under Depreciation\n\n    and Amortization for Financial Reporting Purposes",
+     "",
+     "232,247",
+     "",
+     "228,658"
+    ],
+    [
+     "Taxable Income to Members",
+     "$",
+     "895,015",
+     "$",
+     "837,550"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 922,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company may repurchase Units from Limited Members who have tendered their Units to the Company. Such Units may be acquired at a discount. The Company will not be obligated to purchase in any year any number of Units that, when aggregated with all other transfers of Units that have occurred since the beginning of the same calendar year (excluding Permitted Transfers as defined in the Operating Agreement), would exceed 2% of the total number of Units outstanding on January 1 of such year. In no event shall the Company be obligated to purchase Units if, in the sole discretion of the Managing Member, such purchase would impair the capital or operation of the Company.\n(6) Members' Capital \u2013 (Continued)\nDuring 2017, the Company repurchased a total of 271.27 Units for $161,325 from 11 Limited Members in accordance with the Operating Agreement. During 2016, the Company repurchased a total of 149.50 Units for $93,883 from three Limited Members. The Company acquired these Units using Net Cash Flow from operations. The repurchases increase the remaining Limited Members' ownership interest in the Company. As a result of these repurchases and pursuant to the Operating Agreement, the Managing Members received distributions of $4,989 and $2,904 in 2017 and 2016, respectively.\n(7) Income Taxes \u2013\nThe following is a reconciliation of net income for financial reporting purposes to income reported for federal income tax purposes for the years ended December 31:",
+   "prose_after": "The following is a reconciliation of Members' Equity for financial reporting purposes to Members' Equity reported for federal income tax purposes for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2017",
+     "",
+     "2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Members' Equity for Financial Reporting Purposes",
+     "$",
+     "14,462,770",
+     "$",
+     "15,194,330"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted Tax Basis of Investments in Real Estate\n\n    Over Net Investments in Real Estate\n\n    for Financial Reporting Purposes",
+     "",
+     "1,709,561",
+     "",
+     "1,477,314"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Accrued for Tax Purposes Over\n\n    Income for Financial Reporting Purposes",
+     "",
+     "9,620",
+     "",
+     "9,620"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Syndication Costs Treated as Reduction\n\n    of Capital For Financial Reporting Purposes",
+     "",
+     "3,659,328",
+     "",
+     "3,659,328"
+    ],
+    [
+     "Members' Equity for Tax Reporting Purposes",
+     "$",
+     "19,841,279",
+     "$",
+     "20,340,592"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The following is a reconciliation of Members' Equity for financial reporting purposes to Members' Equity reported for federal income tax purposes for the years ended December 31:",
+   "prose_after": "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON\nACCOUNTING AND FINANCIAL DISCLOSURE.\nNone.\nITEM 9A. CONTROLS AND PROCEDURES.\n(a) Disclosure Controls and Procedures.\nUnder the supervision and with the participation of management, including its President and Chief Financial Officer, the Managing Member of the Company evaluated the effectiveness of the design and operation of our disclosure controls and procedures (as defined in Rule 13a-15(e) under the Securities Exchange Act of 1934 (the \"Exchange Act\")). Based upon that evaluation, the President and Chief Financial Officer of the Managing Member concluded that, as of the end of the period covered by this report, our disclosure controls and procedures were effective in ensuring that information required to be disclosed by us in the reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in applicable rules and forms and that such information is accumulated and communicated to management, including the President and Chief Financial Officer of the Managing Member, in a manner that allows timely decisions regarding required disclosure.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address\n\nof Beneficial Owner",
+     "Number of\n\nUnits Held",
+     "Percent\n\nof Class"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "AEI Fund Management XXI, Inc.",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Robert P. Johnson",
+     "0",
+     "0.00%"
+    ],
+    [
+     "Patrick W. Keene",
+     "0",
+     "0.00%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Address for all:",
+     "",
+     ""
+    ],
+    [
+     "1300 Wells Fargo Place\n\n30 East 7th Street, St. Paul, Minnesota 55101",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1024,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND"
+    },
+    "note": null
+   },
+   "prose_before": "The Managing Member and affiliates are reimbursed at cost for all services performed on behalf of the registrant and for all third party expenses paid on behalf of the registrant. The cost for services performed on behalf of the registrant is based on actual time spent performing such services plus an overhead burden. These services include organizing the registrant and arranging for the offer and sale of Units, reviewing properties for acquisition and rendering administrative, property management and property sales services. The amount and nature of such payments are detailed in Item 13 of this annual report on Form 10-K.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND\nMANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth information pertaining to the ownership of the Units by each person known by the Company to beneficially own 5% or more of the Units, by each Managing Member, and by each officer or director of the Managing Member as of February 28, 2018:",
+   "prose_after": "The Managing Members know of no holders of more than 5% of the outstanding Units.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND\nDIRECTOR INDEPENDENCE.\nThe registrant, AFM and its affiliates have common management and utilize the same facilities. As a result, certain administrative expenses are allocated among these related entities. All of such activities and any other transactions involving the affiliates of the Managing Member of the registrant are governed by, and are conducted in conformity with, the limitations set forth in the Operating Agreement of the registrant. Reference is made to Note 3 of the Financial Statements, as presented, and is incorporated herein by reference, for details of related party transactions for the years ended December 31, 2017 and 2016.\nNeither the registrant, nor the Managing Member of the registrant, has a board of directors consisting of any members who are \"independent.\" The sole director of the Managing Member, Robert P. Johnson, is also the Special Managing Member of the registrant, and is the Chief Executive Officer, and indirectly the principal owner, of the Managing Member. Accordingly, there is no disinterested board, or other functioning body, that reviews related party transactions, or the transactions between the registrant and the Managing Members, except as performed in connection with the audit of its financial statements.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1048,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Person or Entity\n\nReceiving\n\nCompensation",
+     "Form and Method\n\nof Compensation",
+     "Amount Incurred From\n\nInception (November 21, 2000)\n\nTo December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AEI Securities, Inc.",
+     "Selling Commissions equal to 10% of proceeds, most of which were reallowed to Participating Dealers.",
+     "",
+     "$",
+     "2,482,128"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members and Affiliates",
+     "Reimbursement at Cost for other Organization and Offering Costs.",
+     "",
+     "$",
+     "1,200,499"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members and Affiliates",
+     "Reimbursement at Cost for all Acquisition Expenses.",
+     "",
+     "$",
+     "459,302"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members and Affiliates",
+     "Reimbursement at Cost for providing administrative services to the Fund, including all expenses related to management of the Fund's properties and all other transfer agency, reporting, partner relations and other administrative functions.",
+     "",
+     "$",
+     "3,321,624"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members and Affiliates",
+     "Reimbursement at Cost for providing services related to the disposition of the Fund's properties.",
+     "",
+     "$",
+     "668,693"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members",
+     "3% of Net Cash Flow in any fiscal year.",
+     "",
+     "$",
+     "586,628"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Managing Members",
+     "1% of distributions of Net Proceeds of Sale until Limited Members have received an amount equal to (a) their Adjusted Capital Contributions, plus (b) an amount equal to 7% of their Adjusted Capital Contributions per annum, cumulative but not compounded, to the extent not previously distributed. 10% of distributions of Net Proceeds of Sale thereafter.",
+     "",
+     "$",
+     "30,184"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND"
+    },
+    "note": null
+   },
+   "prose_before": "The limitations included in the Operating Agreement require that the cumulative reimbursements to the Managing Members and their affiliates for certain expenses will not exceed an amount equal to the sum of (i) 20% of capital contributions, (ii) 1% of gross revenues, plus an initial leasing fee of 3% of gross revenues for the first five years of the original term of each lease, (iii) 3% of Net Proceeds of Sale, and (iv) 10% of Net Cash Flow less the Net Cash Flow actually distributed to the Managing Members. The cumulative reimbursements subject to this limitation are reimbursements for (i) organization and offering expenses, including commissions, (ii) acquisition expenses, (iii) services provided in the sales effort of properties, and (iv) expenses of controlling persons and overhead expenses directly attributable to the forgoing services or attributable to administrative services. As of December 31, 2017, these cumulative reimbursements to the Managing Members and their affiliates did not exceed the limitation amount.\nThe following table sets forth the forms of compensation, distributions and cost reimbursements paid by the registrant to the Managing Members or their Affiliates in connection with the operation of the Fund for the period from inception through December 31, 2017.",
+   "prose_after": "ITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe following is a summary of the fees billed to the Company by Boulay PLLP for professional services rendered for the years ended December 31, 2017 and 2016:",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1048,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1088,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "",
+     "2017",
+     "",
+     "2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "19,950",
+     "$",
+     "19,300"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "19,950",
+     "$",
+     "19,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1094,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe following is a summary of the fees billed to the Company by Boulay PLLP for professional services rendered for the years ended December 31, 2017 and 2016:",
+   "prose_after": "Audit Fees - Consists of fees billed for professional services rendered for the audit of the Company's annual financial statements and review of the interim financial statements included in quarterly reports, and services that are normally provided by Boulay PLLP in connection with statutory and regulatory filings or engagements.\nAudit-Related Fees - Consists of fees billed for assurance and related services that are reasonably related to the performance of the audit or review of financial statements and are not reported under \"Audit Fees.\" These services include consultations concerning financial accounting and reporting standards.\nTax Fees - Consists of fees billed for professional services for federal and state tax compliance, tax advice and tax planning.\nAll Other Fees - Consists of fees for products and services other than the services reported above.\nPolicy for Preapproval of Audit and Permissible Non-Audit Services\nBefore the Independent Registered Public Accounting Firm is engaged by the Company to render audit or non-audit services, the engagement is approved by Mr. Johnson acting as the Company's audit committee.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1088,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AEI INCOME & GROWTH FUND 24",
+     ""
+    ],
+    [
+     "",
+     "Limited Liability Company",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "AEI Fund Management XXI, Inc."
+    ],
+    [
+     "",
+     "",
+     "Its Managing Member"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 28, 2018",
+     "By:",
+     "/s/ ROBERT P JOHNSON"
+    ],
+    [
+     "",
+     "",
+     "Robert P. Johnson, President and Director"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "AEI INCOME & GROWTH FUND 24",
+    "Limited Liability Company"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1148,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "10.1 Assignment and Assumption of Lease dated May 31, 2006 between the Company, AEI Income & Growth Fund 26 LLC and Blue Bell Partners, LLC relating to the Property at 65 North University Boulevard, Middletown, Ohio (incorporated by reference to Exhibit 10.2 of Form 10-QSB filed August 14, 2006).\n10.2 Net Lease Agreement dated September 21, 2006 between the Company and Apple Indiana II LLC relating to the Property at 8310 E. 96th Street, Fishers, Indiana (incorporated by reference to Exhibit 10.2 of Form 8-K filed September 26, 2006).\n31.1 Certification of Chief Executive Officer of Managing Member pursuant to Rule 15d-14(a)(17 CFR 240.15d-14(a)) and Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 Certification of Chief Financial Officer of Managing Member pursuant to Rule 15d-14(a)(17 CFR 240.15d-14(a)) and Section 302 of the Sarbanes-Oxley Act of 2002.\n32 Certification of Chief Executive Officer and Chief Financial Officer of Managing Member pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ ROBERT P JOHNSON",
+     "President (Principal Executive Officer)",
+     "March 28, 2018"
+    ],
+    [
+     "Robert P. Johnson",
+     "and Sole Director of Managing Member",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ PATRICK W KEENE",
+     "Chief Financial Officer and Treasurer",
+     "March 28, 2018"
+    ],
+    [
+     "Patrick W. Keene",
+     "(Principal Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

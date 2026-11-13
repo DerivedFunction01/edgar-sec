@@ -1,0 +1,2033 @@
+{
+ "accession": "0001504412-16-000232",
+ "cik": "0001575913",
+ "form": "10-K",
+ "filing_date": "2016-04-14",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gdee10k_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "45-2283057"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended December 31, 2015\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from _________________ to _________________\nCommission File Number: 000-54958\nGolden Edge Entertainment, Inc.",
+   "prose_after": "3959 van dyke rd, Suite 313\nTampa, FL, 33558\nTel: (770) 329-5298\n(Address and telephone number of principal executive offices)\nCopies to: Daniel C. Masters, Esq.\nP. O. Box 66\nLa Jolla, California 92038\n(858) 459-1133 \u2013 Tel *** (858) 459-1103 - Fax\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock, $0.001 par value",
+     "",
+     "none"
+    ],
+    [
+     "(Title of Each Class)",
+     "",
+     "(Name of Each Exchange on Which Registered)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "3959 van dyke rd, Suite 313\nTampa, FL, 33558\nTel: (770) 329-5298\n(Address and telephone number of principal executive offices)\nCopies to: Daniel C. Masters, Esq.\nP. O. Box 66\nLa Jolla, California 92038\n(858) 459-1133 \u2013 Tel *** (858) 459-1103 - Fax\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether Golden Edge Entertainment, Inc. (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7229.405 of this chapter) is not contained herein, and will not be contained, to the best of Golden Edge Entertainment, Inc. knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures (Not applicable)"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Selected Financial Data"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Other Information"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accounting Fees and Services"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 116
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [ ] (Do not check if a smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether Golden Edge Entertainment, Inc. is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No [X]\nThe aggregate market value of Golden Edge Entertainment, Inc. common stock held by non-affiliates of Golden Edge Entertainment, Inc. as of the last business day of the most recently completed fiscal quarter (March 31, 2016 was approximately $0.00, based on lack of any trade or posted price reported by OTC on or prior to December 31, 2015.\nThere were 17,580,000 shares of Golden Edge Entertainment, Inc. common stock outstanding as of April 14, 2016.\nDOCUMENTS INCORPORATED BY REFERENCE: None.\nGOLDEN EDGE ENTERTAINMENT, INC.\nANNUAL REPORT ON FORM 10-K\nFOR THE YEAR ENDED DECEMBER 31, 2015\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nThis report includes \u201cforward-looking statements.\u201d The words \u201cmay,\u201d \u201cwill,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201caim,\u201d \u201cseek,\u201d \u201cshould,\u201d \u201cis likely,\u201d and similar expressions as they relate to us or our management are intended to identify these forward-looking statements. All statements by us regarding our expected financial position, revenues, cash flows and other operating results, business strategy, legal proceedings and similar matters are forward-looking statements. Our expectations expressed or implied in these forward-looking statements may not turn out to be correct. Our results could be materially different from our expectations because of various risks, including the risks discussed in this report under \u201cPart I \u2014 Item 1A \u2014 Risk Factors.\u201d Any forward-looking statement speaks only as of the date as of which such statement is made, and, except as required by law, we undertake no obligation to update any forward-looking statement to reflect events or circumstances, including unanticipated events, after the date as of which such statement was made.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2015",
+     "December 31, 2014"
+    ],
+    [
+     "Statement of Operations Data",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "-",
+     "-"
+    ],
+    [
+     "Expenses",
+     "80,334",
+     "11,454"
+    ],
+    [
+     "Net Profit/Loss",
+     "(80,334)",
+     "(11,454)"
+    ],
+    [
+     "Loss per share",
+     "",
+     ""
+    ],
+    [
+     "  Basic & Diluted",
+     "(0.00)",
+     "(0.00)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet Data",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "0",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "1400",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "51,514",
+     "693"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders \u2019 Equity (Deficit)",
+     "(50,114)",
+     "(693)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 378,
+    "end_line": 397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "- The opportunity to obtain any additional information, to the extent we possessed such information, necessary to verify the accuracy of the information to which the investors were given access.\nThe 16,000,000 shares of common stock issued in these private placements will not be eligible for resale under Rule 144 until the conditions of Rule 144(i) are met.\nStock Splits\nWe have never authorized a stock split or reverse stock split.\nRepurchases\nWe have never repurchased any shares of our common stock, nor were any repurchases made on our behalf, nor have any future repurchases been authorized.\nITEM 6. SELECTED FINANCIAL DATA\nThe following balance sheet data and statement of operations data for the periods ended December 31, 2015 and 2014 were derived from our audited financial statements. Our audited financial statements for those periods and the notes thereto appear elsewhere herein. The data should be read in conjunction with the annual financial statements, related notes, and other financial information appearing elsewhere herein.",
+   "prose_after": "ITEM 7. MANAGEMENT DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION\nThe following Discussion and Analysis is intended to help you understand our financial condition and results of operations for the years ended December 31, 2015 and December 31, 2014. You should read the following discussion and analysis together with our audited financial statements and the notes to the financial statements included under Item 8 in this report. Our future financial condition and results of operations will vary from our historical financial condition and results of operations described below based on a variety of factors. You should carefully review the risks described under Item 1A and elsewhere in this report, which identify certain important factors that could cause our future financial condition and results of operations to vary.\nLIQUIDITY AND CAPITAL RESOURCES\nAs of December 31, 2015 we had assets of $1,400, and liabilities of $59,677and we had an accumulated deficit of $167,173. As of December 31, 2014 we had assets of $Nil, and $693 of liabilities and we had an accumulated deficit of $86,839. Most of our expenses in 2015, were for professional, general, and administrative expenses which totalled $72,997. In 2014 the Company was dormant and we had $11,454 of expenses. Our increase in liabilities was the result of a loan from an officer and shareholder. We will, in all likelihood, sustain continued operating expenses without corresponding revenues, at least for the next year, and we will continue to depend upon shareholders, officers, and directors to make loans to the Company to meet any costs that may occur. All such advances will be interest-free.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 405,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Tony Khoury",
+     "36",
+     "Director, Secretary and treasurer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony Pavek",
+     "36",
+     "CEO"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Govoruhk",
+     "57",
+     "COO"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 490,
+    "end_line": 501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Management is committed to improving its internal controls and will (1) continue to assess and address shortfalls in staffing and to assist the Company with accounting and finance responsibilities, (2) increase the frequency of independent reconciliations of significant accounts which will mitigate the lack of segregation of duties until there are sufficient personnel and (3) may consider appointing outside directors and audit committee members in the future.\nManagement has discussed the material weakness noted above with our independent registered public accounting firm. This annual report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by our registered public accounting firm pursuant to temporary rules of the SEC that permit us to provide only management's report in this annual report.\nChanges in Internal Control over Financial Reporting\nThere have been no changes in the Company's internal controls over financial reporting during its fiscal year that have materially affected, or are reasonably likely to materially affect, its internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nIdentification of Director and Executive Officer\nWe have one director and two officers, as set forth below.",
+   "prose_after": "Biographies and Qualifications of Our Executive Officers and Director.\nThe biographies of our executive officer and director and our two consultants, including certain information regarding the director\u2019s experience, attributes, skills and/or qualifications that led to the conclusion that the individual should be serving as an executive officer and/or director of our Company, are as follows:\nMr. Khoury has been involved as an experienced professional in the industry of sales and leasing for the past ten years. From approximately 2006 to 2015, Mr. Khoury has been a Director of Sales and leasing at TRAMS Property Management in Montreal, Quebec, which is a multi-national, vertically integrated real estate group offering third party real estate services in the United States. Mr. Khoury was responsible for a team of sales people creating new marketing ideas, negotiating sales of properties and implementing new corporate strategies. From approximately 2004 through 2006, Mr. Khoury was a business broker for Sunbelt Business Brokers in Toronto, Ontario, which is a large main street and lower middle market business intermediary firm. Mr. Khoury assisted in negotiations in Mergers and Acquisitions, assisted potential buyers to acquire businesses and analyzed financial records to help improve corporate growth. Mr.Khoury attended Vanier College in Montreal, Quebec.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "30.2",
+     "",
+     "Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule\n\n\n\n15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to\n\n\n\nSection 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. 1350, as adopted\n\n\n\npursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted\n\n\n\npursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 606,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The following materials from the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2015, formatted in XBRL (eXtensible Business Reporting Language).\nBalance Sheets as of December 31, 2015 and 2014\nStatements of Operations for the years ended December 31, 2015 and 2014\nStatements of Changes in Stockholders\u2019 Deficit\nStatements of Cash Flows for the years ended December, 2015 and 2014\nNotes to Financial Statements\nFINANCIAL STATEMENT SCHEDULES\nAll financial statement schedules have been omitted as they are not required, not applicable, or the required information is otherwise included.\nEXHIBITS\nThe exhibits listed below are filed with or incorporated by reference in this report.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nGOLDEN EDGE ENTERTAINMENT INC.\nDate: April 14, 2016\nBy: /s/ Anthony Pavek\nAnthony Pavek\nChief Executive Officer\n(Principal Executive Officer)\n(Principal Financial Officer)\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 651,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Capacity",
+     "Date"
+    ],
+    [
+     "/s/ Anthony Pavek\n\n\n\nAnthony Pavek",
+     "Chief Executive Officer, and Chief Financial Officer\n\n\n\n(Principal Executive Officer)",
+     "April 14, 2016"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nGOLDEN EDGE ENTERTAINMENT INC.\nDate: April 14, 2016\nBy: /s/ Anthony Pavek\nAnthony Pavek\nChief Executive Officer\n(Principal Executive Officer)\n(Principal Financial Officer)\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders\nGolden Edge Entertainment, Inc.\nWe have audited the accompanying balance sheet of Golden Edge Entertainment, Inc. (the \"Company\") as of December 31, 2015 and the related statements of operations, stockholders' deficit, and cash flows for the year then ended. The Company\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company's internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 651,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLDEN EDGE ENTERTAINMENT, INC.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "December 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets",
+     "",
+     "1,400",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "$\n\n\n\n1,400",
+     "",
+     "$\n\n\n\n-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bank Overdraft",
+     "",
+     "116",
+     "",
+     "-"
+    ],
+    [
+     "Accounts Payable",
+     "",
+     "14,976",
+     "",
+     "693"
+    ],
+    [
+     "Convertible Note Payable, Net",
+     "",
+     "11,227",
+     "",
+     "-"
+    ],
+    [
+     "Derivative liability",
+     "",
+     "13,358",
+     "",
+     "-"
+    ],
+    [
+     "Shares to be Issued",
+     "",
+     "$\n\n\n\n20,000",
+     "",
+     "$\n\n\n\n-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "$\n\n\n\n59,677",
+     "",
+     "$\n\n\n\n693"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; $0.0001 par value, 20,000,000 share authorized;",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "no shares issued and outstanding at December 31, 2015 and 2014",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common stock; $0.0001 par value,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "100,000,000 shares",
+     "",
+     "$\n\n\n\n1,758",
+     "",
+     "$\n\n\n\n1,718"
+    ],
+    [
+     "authorized; 17,580,000 and 17,180,000 shares issued",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and outstanding at December 31, 2015 and 2014.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional paid - in capital",
+     "",
+     "107,138",
+     "",
+     "84,428"
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(167,173)",
+     "",
+     "(86,839)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "$\n\n\n\n(58,277)",
+     "",
+     "$\n\n\n\n(693)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "",
+     "$\n\n\n\n1,400",
+     "",
+     "$\n\n\n\n-"
+    ]
+   ],
+   "caption_stack": [
+    "GOLDEN EDGE ENTERTAINMENT, INC.",
+    "BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Golden Edge Entertainment, Inc. as of December 31, 2015 and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 3 to the financial statements, the Company has had no revenues and income since inception. These conditions, among others, raise substantial doubt about the Company's ability to continue as a going concern. Management's plans concerning these matters are also described in Note 3 which includes the raising of additional equity financing or merger with another entity. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Anton & Chia LLP\nNewport Beach, CA\nApril 14, 2016",
+   "prose_after": "The accompanying notes are an integral part of these financial statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLDEN EDGE ENTERTAINMENT INC.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the year",
+     "",
+     "For the year"
+    ],
+    [
+     "",
+     "",
+     "ended",
+     "",
+     "ended"
+    ],
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "December 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "$\n\n\n\n-",
+     "",
+     "$\n\n\n\n-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "72,997",
+     "",
+     "11,454"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(72,997)",
+     "",
+     "(11,454)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income / (Expenses)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative Expenses",
+     "",
+     "(4,072)",
+     "",
+     "-"
+    ],
+    [
+     "Change in Derivative Liability",
+     "",
+     "714",
+     "",
+     "-"
+    ],
+    [
+     "Financing costs",
+     "",
+     "(3,979)",
+     "",
+     "-"
+    ],
+    [
+     "Total Other Income and Expenses",
+     "",
+     "7,337",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(80,334)",
+     "",
+     "(11,454)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$\n\n\n\n(80,334)",
+     "",
+     "$\n\n\n\n(11,454)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  basic and diluted",
+     "",
+     "$\n\n\n\n(0.00)",
+     "",
+     "$\n\n\n\n(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  common shares outstanding",
+     "",
+     "17,489,041",
+     "",
+     "17,180,000"
+    ]
+   ],
+   "caption_stack": [
+    "GOLDEN EDGE ENTERTAINMENT INC.",
+    "STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 793
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements",
+   "prose_after": "The accompanying notes are an integral part of these financial statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLDEN EDGE ENTERTAINMENT, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF CHANGES IN SHAREHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "Add'l",
+     "",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accum.",
+     "",
+     "Stockholders'"
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "Equity"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2013",
+     "",
+     "17,180,000",
+     "",
+     "$\n\n\n\n1,718",
+     "",
+     "$\n\n\n\n70,227",
+     "",
+     "$\n\n\n\n(75,385)",
+     "",
+     "$\n\n\n\n(3,440)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "14,201",
+     "",
+     "-",
+     "",
+     "14,201"
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(11,454)",
+     "",
+     "(11,454)"
+    ],
+    [
+     "Balance, December 31, 2014",
+     "",
+     "17,180,000",
+     "",
+     "$\n\n\n\n1,718",
+     "",
+     "$\n\n\n\n84,428",
+     "",
+     "$\n\n\n\n(86,839)",
+     "",
+     "$\n\n\n\n(693)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds received from Issuance Shares of Common Stock",
+     "",
+     "400,000",
+     "",
+     "40",
+     "",
+     "19,960",
+     "",
+     "-",
+     "",
+     "20,000"
+    ],
+    [
+     "Beneficial Conversion Feature on Convertible Note Payable",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,750",
+     "",
+     "-",
+     "",
+     "2,750"
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(80,334)",
+     "",
+     "(80,334)"
+    ],
+    [
+     "Balance, December 31, 2015",
+     "",
+     "17,580,000",
+     "",
+     "$\n\n\n\n1,758",
+     "",
+     "$\n\n\n\n107,138",
+     "",
+     "$\n\n\n\n(167,173)",
+     "",
+     "$\n\n\n\n(58,277)"
+    ]
+   ],
+   "caption_stack": [
+    "GOLDEN EDGE ENTERTAINMENT, INC.",
+    "STATEMENT OF CHANGES IN SHAREHOLDERS' EQUITY"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 797,
+    "end_line": 827
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements",
+   "prose_after": "The accompanying notes are an integral part of these financial statements",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Golden Edge Entertainment, Inc.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the year",
+     "",
+     "For the year"
+    ],
+    [
+     "",
+     "",
+     "ended",
+     "",
+     "ended"
+    ],
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "December 31, 2014"
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$\n\n\n\n(80,334)",
+     "",
+     "$\n\n\n\n(11,454)"
+    ],
+    [
+     "Adjustment to reconcile net loss to cash",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "flows used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued per court order",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Warrants issued per court order",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Amortization of debt discounts",
+     "",
+     "3,613",
+     "",
+     "-"
+    ],
+    [
+     "Derivative expense",
+     "",
+     "4,072",
+     "",
+     "-"
+    ],
+    [
+     "Change in value of derivative liability",
+     "",
+     "(714)",
+     "",
+     "-"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "14,763",
+     "",
+     "693"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "$\n\n\n\n(58,600)",
+     "",
+     "$\n\n\n\n(10,761)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of fixed assets",
+     "",
+     "(1,400)",
+     "",
+     "-"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "$\n\n\n\n(1,400)",
+     "",
+     "$\n\n\n\n-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds received for exercised warrants",
+     "",
+     "40,000",
+     "",
+     "-"
+    ],
+    [
+     "Proceeds received for convertible note payable",
+     "",
+     "20,000",
+     "",
+     "-"
+    ],
+    [
+     "Forgiveness of debt",
+     "",
+     "-",
+     "",
+     "14,201"
+    ],
+    [
+     "Decrease in related party note payable",
+     "",
+     "-",
+     "",
+     "(5,800)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "$\n\n\n\n60,000",
+     "",
+     "$\n\n\n\n8,401"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "$\n\n\n\n-",
+     "",
+     "$\n\n\n\n(2,360)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "",
+     "$\n\n\n\n-",
+     "",
+     "$\n\n\n\n2,360"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "",
+     "$\n\n\n\n-",
+     "",
+     "$\n\n\n\n-"
+    ]
+   ],
+   "caption_stack": [
+    "Golden Edge Entertainment, Inc.",
+    "STATEMENTS OF CASH FLOWS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nGOLDEN EDGE ENTERTAINMENT, INC.\nNotes to Financial Statements\nDecember 31, 2015\nNOTE 1. ORGANIZATION AND NATURE OF BUSINESS\nGolden Edge Entertainment, Inc. (\u201cthe Company\u201d or \u201cthe Issuer\u201d) was organized under the name Retail Spicy Gourmet, Inc. under the laws of the State of Delaware on December 30, 2010. The name was changed to Golden Edge Entertainment, Inc. on February 26, 2013. The Company was established as part of the Chapter 11 reorganization of Spicy Gourmet Organics, Inc. (\u201cSGO\u201d). Under SGO\u2019s Plan of Reorganization, as confirmed by the U.S. Bankruptcy Court for the Central District of California, the Company was incorporated to: (1) receive and hold any interest which SGO had in the business of retail sales of imported spices; and (2) issue shares of its common stock to SGO's general unsecured creditors, to its administrative creditors, and to its shareholder.\nOn February 1, 2013 the Company resolved to enter the music production and distribution business. The Company intends to develop revenue by providing professional services to recording artists. Such services include production of recordings, management of the manufacture of CDs and internet uploading of music files, and management of the manufacture of promotional merchandise such as T-shirts and caps. As of December 31, 2015 had not yet realized any revenues from its planned operations. Activities have consisted primarily of formation, establishing relationships with studio owners, engineers, technicians, and manufacturers with whom the Company can contract for services, and administrative efforts related to registration under the 1934 Act.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock price",
+     "",
+     "$\n\n\n\n0.21"
+    ],
+    [
+     "Risk free rate",
+     "",
+     "0.61%"
+    ],
+    [
+     "Volatility",
+     "",
+     "270%"
+    ],
+    [
+     "Conversion/ Exercise price",
+     "",
+     "$\n\n\n\n0.276"
+    ],
+    [
+     "Dividend rate",
+     "",
+     "0%"
+    ],
+    [
+     "Term (years)",
+     "",
+     "0.95"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1001,
+    "end_line": 1013
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DERIVATIVE LIABILITY"
+    }
+   },
+   "prose_before": "Due to the variable conversion price associated with this convertible line of credit, the Company has determined that the conversion feature is considered derivative liabilities. The embedded conversion feature at the date of each draw was calculated to be $14,072, which is recorded as a derivative liability as of the date of issuance. The derivative liability was first recorded as a debt discount up to the face amount of the draws on convertible line of credit of $10,000 with the remaining $4,072 begin charge as a financing cost during the year ended December 31, 2015. The debt discount is being amortized over the term of the convertible line of credit.\nThe Company recognized additional interest expense of $3,613 during the year ended December 31, 2015 related to the amortization of the debt discount.\nNOTE 5. DERIVATIVE LIABILITY\nThe convertible line of credit discussed in Note 5 has a variable conversion price which results in the conversion feature being recorded as a derivative liability.\nThe fair value of the derivative liability is recorded and shown separately under current liabilities. Changes in the fair value of the derivative liability is recorded in the statement of operations under other income (expense).\nThe Company uses the Black-Scholes-Merton option pricing model with the following assumptions to measure the fair value of derivative liability at December 31, 2015:",
+   "prose_after": "The following table represents the Company\u2019s derivative liability activity for the period ended December 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1013,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability balance, December 31, 2014",
+     "$",
+     "-"
+    ],
+    [
+     "Issuance of derivative liability during the year ended December 31, 2015",
+     "",
+     "14,072"
+    ],
+    [
+     "Change in derivative liability during the year ended December 31, 2015",
+     "",
+     "714"
+    ],
+    [
+     "Derivative liability balance, December 31, 2015",
+     "$",
+     "13,358"
+    ]
+   ],
+   "caption_stack": [
+    "Amount"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1017,
+    "end_line": 1028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DERIVATIVE LIABILITY"
+    }
+   },
+   "prose_before": "The following table represents the Company\u2019s derivative liability activity for the period ended December 31, 2015:",
+   "prose_after": "NOTE 6. STOCKHOLDERS' EQUITY COMMON STOCK\nThe authorized share capital of the Company consists of 100,000,000 shares of common stock with $0.0001 par value, and 20,000,000 shares of preferred stock also with $0.0001 par value. No other classes of stock are authorized.\nCOMMON STOCK: As of December 31, 2015, there were a total of 17,580,000 common shares issued and outstanding.\nThe Company\u2019s first issuance of common stock, totalling 1,180,000 shares, took place on December 30, 2010 pursuant to the Chapter 11 Plan of Reorganization confirmed by the U.S. Bankruptcy Court in the matter of Spicy Gourmet Organics, Inc. (\u201cSGO\u201d). The Court ordered the distribution of shares in Retail Spicy Gourmet, Inc. to all general unsecured creditors of SGO, with these creditors to receive their pro rata share (according to amount of debt held) of a pool of 80,000 shares in the Company. The Court also ordered the distribution of 100,000 shares in the Company to the shareholders of SGO. The Court also ordered the distribution of 1,000,000 shares and 5,000,000 warrants in the Company to the administrative creditors of SGO, with these creditors to receive one share of common stock and five warrants in the Company for each $0.05 of SGO\u2019s administrative debt which they held. The warrants consisted of 1,000,000 \u201cA Warrants\u201d each convertible into one share of common stock at an exercise price of $3.00; 1,000,000 \u201cB Warrants\u201d each convertible into one share of common stock at an exercise price of $4.00; 1,000,000 \u201cC Warrants\u201d each convertible into one share of common stock at an exercise price of $5.00; 1,000,000 \u201cD Warrants\u201d each convertible into one share of common stock at an exercise price of $6.00; and 1,000,000 \u201cE Warrants\u201d each convertible into one share of common stock at an exercise price of $7.00. All warrants are exercisable at any time prior to November 19, 2015.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1013,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1054,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

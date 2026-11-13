@@ -1,0 +1,5317 @@
+{
+ "accession": "0001213900-20-012373",
+ "cik": "0001669400",
+ "form": "10-K",
+ "filing_date": "2020-05-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2019_veritasfarms.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "90-1254190"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTIONS 13 OR 15 (d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2019\nCommission file number: 333-21090\nVERITAS FARMS, INC\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "E. Broward Blvd., Suite 300, Fort Lauderdale, FL 33301\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: (561) 288-6603\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (ss.232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 23,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1512
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "9"
+    ],
+    [
+     "Item 2. Properties",
+     "9"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "10"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "11"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "11"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "12"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "12"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "16"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9. Change in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "17"
+    ],
+    [
+     "Item 9A. Controls And Procedures",
+     "17"
+    ],
+    [
+     "Item 9B. Other Information",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers, and Corporate Governance",
+     "18"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "23"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "25"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "27"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 57,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge Accelerated Filer [ ]  Accelerated Filer [ ]\nNon-accelerated filer [X]    Smaller reporting company [X]\nEmerging Growth Company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was sold, or the average bid and asked prices of such common equity as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: $234,158,814.\nThe number of shares outstanding of the issuer\u2019s common stock, $0.001 par value, as of May 14, 2020 was 41,623,366 shares.\nTABLE OF CONTENTS",
+   "prose_after": "i\nFORWARD LOOKING STATEMENTS\nCertain statements made in this report are \u201cforward-looking statements\u201d regarding the plans and objectives of management for future operations. Such statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Our plans and objectives are based, in part, on assumptions involving judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond our control. Although we believe that our assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate and, therefore, there can be no assurance that the forward-looking statements included in this report will prove to be accurate. In light of the significant uncertainties inherent in the forward-looking statements included herein particularly in view of the current state of our operations, the inclusion of such information should not be regarded as a statement by us or any other person that our objectives and plans will be achieved. We undertake no obligation to revise or update publicly any forward-looking statements for any reason.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "4,318,750 shares",
+     "(1)",
+     "$",
+     "1.23",
+     "",
+     "1,952,495 shares",
+     "(1)"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0 shares",
+     "",
+     "",
+     "None issued",
+     "",
+     "0 shares",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "4,318,750 shares",
+     "(1)",
+     "$",
+     "1.23",
+     "",
+     "1,952,495 shares",
+     "(1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this report, we had 41,623,366 shares of common stock issued and outstanding and approximately 195 holders of record of our common stock. One of these holders is CEDE and Company which is the mechanism used for brokerage firms to hold securities in book entry form on behalf of their clients and as of the date of this report, they held 7,029,090 shares of common stock for these shareholders. Accordingly, we believe that Veritas Farms has significantly in excess of 2,000 beneficial shareholders as of the date of this report.\nDividends\nThe payment by us of dividends, if any, in the future rests within the discretion of our board of directors and will depend, among other things, upon our earnings, capital requirements and financial condition, as well as other relevant factors. We have not paid any dividends since our inception and we do not intend to pay any cash dividends in the foreseeable future, but intend to retain all earnings, if any, for use in our business.\nSecurities Authorized for Issuance under Equity Compensation Plans",
+   "prose_after": "(1) Represents shares of common stock underlying options granted or reserved for issuance under our 2017 Incentive Stock Plan as of the date of this report.\nRecent Sales of Unregistered Securities\nDuring the fourth quarter of 2019, we issued 11,789 shares of common stock without registration under the Securities Act of 1933 (the \u201cSecurities Act\u201d), as amended to a single person upon the exercise of outstanding warrants.\nThe shares of our common stock so issued were issued and sold pursuant to the exemption from registration afforded by Section 4(a)(2) of the Securities Act.\nItem 6. Selected Financial Data.\nAs a \u201csmaller reporting company,\u201d as defined in Rule 12b-2 under the Exchange Act, we are not required to provide the information required by this Item.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nEffects of the Current Coronavirus (COVID-19) Pandemic on the Company\nThe adverse public health developments and economic effects of the current COVID-19 pandemic in the United States, could adversely affect the Company\u2019s customers and suppliers as a result of quarantines, facility closures, closing of \u201cbrick and mortar\u201d retail outlets and logistics restrictions imposed or which otherwise occur in connection with the pandemic. More broadly, the high degree unemployment resulting from the pandemic could potentially lead to an extended economic downturn, which would likely decrease spending, adversely affect demand for our products and services and harm our business, results of operations and financial condition. At this time, we cannot accurately predict the effect the COVID-19 pandemic will have on the Company.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 470,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2019 and December 31, 2018",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2019 and December 31, 2018",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Deficit for the Years Ended December 31, 2019 and December 31, 2018",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2019 and December 31, 2018",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Effective September 27, 2017, the Company became taxed as a C-Corporation. Income tax benefits are recognized for income tax positions taken or expected to be taken in a tax return, only when it is determined that the income tax position will more-likely than-not be sustained upon examination by taxing authorities. The Company has analyzed tax positions taken for filings with the Internal Revenue Service and all tax jurisdictions where it operates. The Company believes that income tax filing positions will be sustained upon examination and does not anticipate any adjustments that would result in a material adverse effect on the Company\u2019s financial condition, results of operations or cash flows. Accordingly, the Company has not recorded any reserves, or related accruals for interest and penalties for uncertain income tax positions at December 31, 2019 and 2018.\nOff-Balance Sheet Arrangements\nThere are no off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that is material to investors.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nAs a \u201csmaller reporting company,\u201d we are not required to provide the information required by this Item.\nItem 8. Financial Statements and Supplementary Data.\nSee the Index to the Financial Statements beginning on page F-1 below.\nVERITAS FARMS, INC.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nVeritas Farms, Inc.\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Veritas Farms, Inc.(the Company) as of December 31, 2019 and 2018, and the related consolidated statement of operations, stockholders\u2019 equity, and cash flows for the years then ended, and the related notes (collectively referred to as the consolidated financial statements). In our opinion, the consolidated financial statements present fairly, in all material respects, the consolidated financial position of the Company as of December 31, 2019 and 2018, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying consolidated financial statements have been prepared in conformity with accounting principles generally accepted in the United States, which contemplate continuation of the Company as a going concern. However, the Company has sustained substantial losses from operations since its inception. As of and for the year ended December 31, 2019, the Company had an accumulated deficit of $19,074,608, and a net loss of $11,147,608. These factors, among others, raise substantial doubt about the ability of the Company to continue as a going concern. Continuation as a going concern is dependent on the ability to raise additional capital and financing, though there is no assurance of success. Management\u2019s plans in regard to these matters are also described in Note 3 to the accompanying consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 552,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Prager Metis CPA\u2019s LLC"
+    ],
+    [
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2018"
+    ],
+    [
+     ""
+    ],
+    [
+     "Hackensack, New Jersey"
+    ],
+    [
+     "May 14, 2020"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Prager Metis CPA\u2019s LLC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audits provide a reasonable basis for our opinion.",
+   "prose_after": "Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash and Cash Equivalents",
+     "$",
+     "1,076,543",
+     "$",
+     "164,086"
+    ],
+    [
+     "    Inventories",
+     "",
+     "6,600,455",
+     "",
+     "2,508,954"
+    ],
+    [
+     "    Accounts Receivable",
+     "",
+     "523,033",
+     "",
+     "244,150"
+    ],
+    [
+     "    Prepaid Expenses",
+     "",
+     "622,922",
+     "",
+     "116,403"
+    ],
+    [
+     "      Total Current Assets",
+     "$",
+     "8,822,953",
+     "$",
+     "3,033,593"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  PROPERTY PLANT AND EQUIPMENT, net of accumulated depreciation of $976,005 and $580,232 respectively",
+     "$",
+     "4,914,063",
+     "$",
+     "3,932,459"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intellectual Property",
+     "",
+     "55,000",
+     "",
+     "-"
+    ],
+    [
+     "Right of Use Assets, net of accumulated amortization",
+     "",
+     "134,345",
+     "",
+     "-"
+    ],
+    [
+     "Deposits",
+     "",
+     "292,196",
+     "",
+     "48,034"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "14,218,557",
+     "$",
+     "7,014,086"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheets",
+   "prose_after": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Balance Sheets (continued)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 634,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts Payable",
+     "$",
+     "1,567,611",
+     "",
+     "$",
+     "189,431",
+     ""
+    ],
+    [
+     "    Accrued Expenses",
+     "",
+     "51,240",
+     "",
+     "",
+     "165,677",
+     ""
+    ],
+    [
+     "    Accrued Interest - Related Parties",
+     "",
+     "18,828",
+     "",
+     "",
+     "17,949",
+     ""
+    ],
+    [
+     "    Notes Payable - Related Parties",
+     "",
+     "-",
+     "",
+     "",
+     "262,924",
+     ""
+    ],
+    [
+     "    Deferred Rent",
+     "",
+     "-",
+     "",
+     "",
+     "7,045",
+     ""
+    ],
+    [
+     "    Deferred Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "45,018",
+     ""
+    ],
+    [
+     "    Current Portion of Right of Use Lease Liability",
+     "",
+     "80,046",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Current Portion of Long Term Debt",
+     "",
+     "67,996",
+     "",
+     "",
+     "50,432",
+     ""
+    ],
+    [
+     "      Total Current Liabilities",
+     "$",
+     "1,785,721",
+     "",
+     "$",
+     "738,476",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Long-term Debt, net of current portion",
+     "$",
+     "184,826",
+     "",
+     "$",
+     "196,261",
+     ""
+    ],
+    [
+     "    Right of Use Lease Liability, net of current portion",
+     "",
+     "52,798",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Total Liabilities",
+     "$",
+     "2,023,345",
+     "",
+     "$",
+     "934,737",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Common Stock, $0.004 par value, 50,000,000 shares authorized, 41,421,698 and 27,876,208 shares issued and outstanding at December 31, 2019 and 2018 respectively",
+     "$",
+     "165,446",
+     "",
+     "$",
+     "111,505",
+     ""
+    ],
+    [
+     "    Additional Paid in Capital",
+     "",
+     "31,104,373",
+     "",
+     "",
+     "13,894,844",
+     ""
+    ],
+    [
+     "    Accumulated Deficit",
+     "",
+     "(19,074,608)",
+     "",
+     "",
+     "(7,927,000)",
+     ""
+    ],
+    [
+     "      Total Stockholders\u2019 Equity",
+     "$",
+     "12,195,212",
+     "",
+     "$",
+     "6,079,349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "14,218,557",
+     "",
+     "$",
+     "7,014,086",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Balance Sheets (continued)",
+   "prose_after": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 634,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ending December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "7,291,908",
+     "",
+     "$",
+     "2,079,981",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "3,753,807",
+     "",
+     "",
+     "1,203,667",
+     ""
+    ],
+    [
+     "Plant Inventory Write-off",
+     "",
+     "77,387",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Cost of sales",
+     "",
+     "3,831,194",
+     "",
+     "",
+     "1,203,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Gross profit",
+     "$",
+     "3,460,714",
+     "",
+     "$",
+     "876,314",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Selling, General and Administrative",
+     "$",
+     "14,590,155",
+     "",
+     "$",
+     "5,282,744",
+     ""
+    ],
+    [
+     "    Total Operating Expenses",
+     "$",
+     "14,590,155",
+     "",
+     "$",
+     "5,282,744",
+     ""
+    ],
+    [
+     "    Operating loss",
+     "$",
+     "(11,129,441)",
+     "",
+     "$",
+     "(4,406,430)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses (Income)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest Expense - Related Party",
+     "",
+     "5,714",
+     "",
+     "",
+     "22,048",
+     ""
+    ],
+    [
+     "  Interest Expense - Other",
+     "",
+     "12,453",
+     "",
+     "",
+     "6,420",
+     ""
+    ],
+    [
+     "  Gain on Forgiveness of Debt",
+     "",
+     "-",
+     "",
+     "",
+     "(598,915)",
+     ""
+    ],
+    [
+     "    Total Other Expenses (Income)",
+     "$",
+     "18,167",
+     "",
+     "$",
+     "(570,447)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Loss before Provision for Income Taxes",
+     "$",
+     "(11,147,608)",
+     "",
+     "$",
+     "(3,835,983)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Income Tax Provision",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    NET LOSS",
+     "$",
+     "(11,147,608)",
+     "",
+     "$",
+     "(3,835,983)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net Loss per Share - Basic and fully diluted",
+     "$",
+     "(0.32)",
+     "",
+     "$",
+     "(0.19)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Weighted Average Shares Outstanding - Basic and fully diluted",
+     "",
+     "34,712,692",
+     "",
+     "",
+     "19,744,350",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 729
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Operations",
+   "prose_after": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "",
+     "14,973,750",
+     "$",
+     "59,895",
+     "$",
+     "7,139,409",
+     "$",
+     "(4,091,017)",
+     "",
+     "$",
+     "3,108,287",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Cash",
+     "",
+     "12,596,208",
+     "",
+     "50,385",
+     "",
+     "5,482,467",
+     "",
+     "-",
+     "",
+     "",
+     "5,532,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Services",
+     "",
+     "306,250",
+     "",
+     "1,225",
+     "",
+     "386,775",
+     "",
+     "-",
+     "",
+     "",
+     "388,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based Compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "886,193",
+     "",
+     "-",
+     "",
+     "",
+     "886,193",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(3,835,983)",
+     "",
+     "",
+     "(3,835,983)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31 2018",
+     "",
+     "27,876,208",
+     "$",
+     "111,505",
+     "$",
+     "13,894,844",
+     "$",
+     "(7,927,000)",
+     "",
+     "$",
+     "6,079,349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Cash",
+     "",
+     "9,643,854",
+     "",
+     "38,350",
+     "",
+     "13,323,991",
+     "",
+     "-",
+     "",
+     "",
+     "13,362,342",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Services",
+     "",
+     "15,625",
+     "",
+     "63",
+     "",
+     "16,813",
+     "",
+     "-",
+     "",
+     "",
+     "16,875",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based Compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,366,752",
+     "",
+     "-",
+     "",
+     "",
+     "2,366,752",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants Exercised",
+     "",
+     "3,886,011",
+     "",
+     "15,528",
+     "",
+     "1,501,973",
+     "",
+     "-",
+     "",
+     "",
+     "1,517,502",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(11,147,608)",
+     "",
+     "",
+     "(11,147,608)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "41,421,698",
+     "$",
+     "165,446",
+     "$",
+     "31,104,373",
+     "$",
+     "(19,074,608)",
+     "",
+     "$",
+     "12,195,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Stockholders\u2019 Equity",
+   "prose_after": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net Loss",
+     "$",
+     "(11,147,608)",
+     "",
+     "$",
+     "(3,835,983)",
+     ""
+    ],
+    [
+     "    Adjustments to Reconcile Net Loss to Net Cash Used Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Depreciation",
+     "",
+     "404,622",
+     "",
+     "",
+     "274,194",
+     ""
+    ],
+    [
+     "      Amortization of Right of Use Assets",
+     "",
+     "80,607",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Stock-based Compensation",
+     "",
+     "2,383,627",
+     "",
+     "",
+     "1,274,193",
+     ""
+    ],
+    [
+     "      Gain on Forgiveness of Debt",
+     "",
+     "",
+     "",
+     "",
+     "(538,254)",
+     ""
+    ],
+    [
+     "      Loss on Disposal of Property and Equipment",
+     "",
+     "2,207",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Changes in Operating Assets and Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Inventories",
+     "",
+     "(4,091,501)",
+     "",
+     "",
+     "(1,080,196)",
+     ""
+    ],
+    [
+     "      Prepaid Expenses",
+     "",
+     "(506,519)",
+     "",
+     "",
+     "(74,309)",
+     ""
+    ],
+    [
+     "      Accounts Receivable",
+     "",
+     "(278,883)",
+     "",
+     "",
+     "(164,249)",
+     ""
+    ],
+    [
+     "      Deposits",
+     "",
+     "(244,162)",
+     "",
+     "",
+     "(25,034)",
+     ""
+    ],
+    [
+     "      Deferred Rent",
+     "",
+     "(7,045)",
+     "",
+     "",
+     "7,045",
+     ""
+    ],
+    [
+     "      Deferred Revenue",
+     "",
+     "(45,018)",
+     "",
+     "",
+     "45,018",
+     ""
+    ],
+    [
+     "      Accrued Interest - Related Parties",
+     "",
+     "879",
+     "",
+     "",
+     "1,719",
+     ""
+    ],
+    [
+     "      Right of Use Lease Liability",
+     "",
+     "(82,108)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued Expenses",
+     "",
+     "(114,437)",
+     "",
+     "",
+     "5,773",
+     ""
+    ],
+    [
+     "      Accounts Payable",
+     "",
+     "1,378,180",
+     "",
+     "",
+     "(55,651)",
+     ""
+    ],
+    [
+     "  NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(12,267,159)",
+     "",
+     "",
+     "(4,165,734)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Purchase of Property and Equipment",
+     "$",
+     "(1,388,433)",
+     "",
+     "$",
+     "(597,469)",
+     ""
+    ],
+    [
+     "    Purchase of Intangible Asset",
+     "",
+     "(55,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(1,443,433)",
+     "",
+     "",
+     "(597,469)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Payments of Long-term Debt",
+     "$",
+     "6,129",
+     "",
+     "$",
+     "(13,001)",
+     ""
+    ],
+    [
+     "    Repayment of Notes Payable - Related Parties",
+     "",
+     "(262,924)",
+     "",
+     "",
+     "(767,156)",
+     ""
+    ],
+    [
+     "    Proceeds from Note Payable",
+     "",
+     "-",
+     "",
+     "",
+     "146,791",
+     ""
+    ],
+    [
+     "    Proceeds from Stock Warrants Exercised",
+     "",
+     "1,517,502",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from Issuance of Common Stock",
+     "",
+     "13,362,342",
+     "",
+     "",
+     "5,532,852",
+     ""
+    ],
+    [
+     "  NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "14,623,049",
+     "",
+     "",
+     "4,899,486",
+     ""
+    ],
+    [
+     "  NET INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS",
+     "",
+     "912,457",
+     "",
+     "",
+     "136,283",
+     ""
+    ],
+    [
+     "  CASH AND CASH EQUIVALENTS - Beginning of Period",
+     "",
+     "164,086",
+     "",
+     "",
+     "27,803",
+     ""
+    ],
+    [
+     "  CASH AND CASH EQUIVALENTS - End of Period",
+     "$",
+     "1,076,543",
+     "",
+     "$",
+     "164,086",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Supplemental Disclosure of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash Paid for Interest",
+     "$",
+     "12,500",
+     "",
+     "$",
+     "26,749",
+     ""
+    ],
+    [
+     "    Cash Paid for Income Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Non-Cash Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Operating Lease Right of Use Asset Obtained in Exchange for Lease Obligations",
+     "$",
+     "214,952",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nConsolidated Statements of Cash Flows",
+   "prose_after": "The Accompanying Notes Are an Integral Part of These Consolidated Financial Statements\nNOTE 1: NATURE OF BUSINESS AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nNature of Business\nVeritas Farms, Inc. (the \u201cCompany\u201d), was incorporated as Armeau Brands Inc. in the State of Nevada on March 15, 2011. On October 13, 2017, the Company filed Amended and Restated Articles of Incorporation with the Nevada Secretary of State changing the name from \u201cArmeau Brands Inc.\u201d to \u201cSanSal Wellness Holdings, Inc.\u201d Effective February 5, 2019, the Company changed its name from \u201cSanSal Wellness Holdings, Inc.\u201d to \u201cVeritas Farms, Inc.\u201d The Company\u2019s business objectives are to produce natural rich-hemp products, using strict natural protocols and materials yielding broad spectrum phytocannabinoid rich hemp oils, distillates and isolates. The Company is licensed by the Colorado Department of Agriculture to grow industrial hemp pursuant to Federal law on its farm.\nEffective September 27, 2017, the Company acquired 100% of the issued and outstanding limited liability company membership interests of 271 Lake Davis Holdings LLC dba SanSal Wellness (\u201c271 Lake Davis\u201d) in exchange for 11,700,000 (46,800,000 prior to reverse split) restricted shares of the Company\u2019s common stock, which represented 100% of 271 Lake Davis\u2019s total membership interests outstanding immediately following the closing of the transaction. The transaction has been accounted for as a reverse merger, whereby 271 Lake Davis is the accounting survivor and the historical financial statements presented are those of 271 Lake Davis.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Work In Progress",
+     "$",
+     "4,062,890",
+     "$",
+     "2,241,554"
+    ],
+    [
+     "  Finished Goods",
+     "",
+     "1,983,107",
+     "",
+     "72,604"
+    ],
+    [
+     "  Other",
+     "",
+     "554,458",
+     "",
+     "194,796"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Inventory",
+     "$",
+     "6,600,455",
+     "$",
+     "2,508,954"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 957,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "The consolidated financial statements shall include disclosures of related party transactions, other than compensation arrangements, expense allowances, and other similar items in the ordinary course of business. However, disclosure of transactions that are eliminated in the preparation of consolidated or combined financial statements is not required in those statements. The disclosures shall include: a) the nature of the relationship(s) involved; b) a description of the transactions, including transactions to which no amounts or nominal amounts were ascribed, for each of the periods for which statements of operation are presented, and such other information deemed necessary to an understanding of the effects of the transactions on the financial statements; c) the dollar amounts of transactions for each of the periods for which statements of operations are presented and the effects of any change in the method of establishing the terms from that used in the preceding period; and d) amounts due from or to related parties as of the date of each balance sheet presented and, if not otherwise apparent, the terms and manner of settlement.\nLegal Proceedings\nCurrently there are no material legal proceedings pending or threatened against the Company. However, from time to time, the Company may become involved in various lawsuits and legal proceedings which arise in the ordinary course of business. Litigation is subject to inherent uncertainties, and an adverse result in any such matter may harm the Company\u2019s business.\nSubsequent Events\nThe Company has evaluated subsequent events through the date which the financial statements were issued.\nNOTE 2: INVENTORIES\nInventory consists of:",
+   "prose_after": "During the periods ending December 31, 2019 and December 31, 2018 the Company realized a loss from destruction of plants in the amounts of $77,387 and $0, respectively.\nNOTE 3: GOING CONCERN\nThe accompanying financial statements have been prepared in conformity with accounting principles generally accepted in the United States, which contemplate continuation of the Company as a going concern. However, the Company has sustained substantial losses from operations since its inception. As of and for the period ended December 31, 2019, the Company had an accumulated deficit of $19,074,608, and a net loss of $11,147,608. These factors, among others, raise substantial doubt about the ability of the Company to continue as a going concern. Continuation as a going concern is dependent on the ability to raise additional capital and financing, though there is no assurance of success.\nThe Company\u2019s rebranded line of hemp oil and extract product allowed market penetration into large retail chains vastly increasing brand exposure and awareness. The initial rollouts have been successful creating opportunities for thousands of new retail outlets across the country. The shift from smaller order fulfillment to larger \u201cbig box store\u201d orders creates an economy of scale and increased profitability.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 984,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Life",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Land and Land Improvements",
+     "-",
+     "$",
+     "398,126",
+     "",
+     "",
+     "398,126",
+     ""
+    ],
+    [
+     "  Building and Improvements",
+     "39",
+     "",
+     "1,510,175",
+     "",
+     "",
+     "1,465,245",
+     ""
+    ],
+    [
+     "  Greenhouse",
+     "39",
+     "",
+     "920,896",
+     "",
+     "",
+     "693,987",
+     ""
+    ],
+    [
+     "  Fencing and Irrigation",
+     "15",
+     "",
+     "203,793",
+     "",
+     "",
+     "203,793",
+     ""
+    ],
+    [
+     "  Machinery and Equipment",
+     "7",
+     "",
+     "2,480,475",
+     "",
+     "",
+     "1,475,644",
+     ""
+    ],
+    [
+     "  Furniture and Fixtures",
+     "7",
+     "",
+     "236,344",
+     "",
+     "",
+     "224,682",
+     ""
+    ],
+    [
+     "  Computer Equipment",
+     "5",
+     "",
+     "20,053",
+     "",
+     "",
+     "20,053",
+     ""
+    ],
+    [
+     "  Vehicles",
+     "5",
+     "",
+     "120,206",
+     "",
+     "",
+     "31,161",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "5,890,068",
+     "",
+     "$",
+     "4,512,691",
+     ""
+    ],
+    [
+     "    Less Accumulated Depreciation",
+     "",
+     "",
+     "(976,005)",
+     "",
+     "",
+     "(580,232)",
+     ""
+    ],
+    [
+     "    Property and Equipment",
+     "",
+     "$",
+     "4,914,063",
+     "",
+     "",
+     "3,932,459",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 988,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Currently, the Company incorporates an aggressive marketing plan to compete in the Cannabinoid industry. To become market leaders in the market, the Company will use three primary departments to market its products including: web-based marketing, traditional marketing, and medical marketing departments.\nThe Company believes that it will require additional financing to fund its growth and achieve profitability The Company anticipates that such financing, will be generated from subsequent public or private offerings of its equity and/or debt securities. Outside financing, in concert with increased profitability of \"Big Box\" retail orders and Ecommerce allow management to conclude that the Company will continue as a going concern.\nThe accompanying financial statements do not include any adjustments to reflect the possible future effects on the recoverability and classification of assets or the amounts and classification of liabilities that may result from the possible inability of the Company to continue as a going concern.\nNOTE 4: PROPERTY AND EQUIPMENT",
+   "prose_after": "Total depreciation expense was $404,346 and $274,195 for the years ended December 31, 2019 and 2018, respectively.\nNOTE 5: LONG-TERM DEBT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 984,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1034,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable which requires monthly payments of $1,618 including interest at 6.00% per annum until February 1, 2020 when the balance is due in full.  The note is secured by specific assets of the Company.",
+     "$",
+     "-",
+     "",
+     "$",
+     "99,902",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes Payable which require monthly payments of $3,690, $669, and $1,691, including interest at 5.16% per annum until December 1, 2022, May 1, 2023, and August 1, 2024, when the balance is due in full.  The note is secured by specific assets of the Company.",
+     "",
+     "211,952",
+     "",
+     "",
+     "146,791",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable which require monthly payments of $758, including interest at 3.4% per annum until April 1, 2025, when the balance is due in full.  The note is secured by specific assets of the Company.",
+     "",
+     "40,870",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "252,822",
+     "",
+     "",
+     "246,693",
+     ""
+    ],
+    [
+     "Less Current Portion",
+     "",
+     "(67,996)",
+     "",
+     "",
+     "(50,432)",
+     ""
+    ],
+    [
+     "  Long-Term Debt - net of current portion",
+     "$",
+     "184,826",
+     "",
+     "$",
+     "196,261",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1013,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Total depreciation expense was $404,346 and $274,195 for the years ended December 31, 2019 and 2018, respectively.\nNOTE 5: LONG-TERM DEBT",
+   "prose_after": "NOTE 5: LONG-TERM DEBT (CONTINUED)\nLong-term debt consisted of the following:\nFuture principal payments are as follows as of the year ended December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 984,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1034,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2020",
+     "$",
+     "67,996"
+    ],
+    [
+     "2021",
+     "",
+     "67,996"
+    ],
+    [
+     "2022",
+     "",
+     "67,996"
+    ],
+    [
+     "2023",
+     "",
+     "27,299"
+    ],
+    [
+     "2024",
+     "",
+     "18,980"
+    ],
+    [
+     "Thereafter",
+     "",
+     "2,554"
+    ],
+    [
+     "",
+     "$",
+     "252,822"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1042,
+    "end_line": 1053
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "NOTE 5: LONG-TERM DEBT (CONTINUED)\nLong-term debt consisted of the following:\nFuture principal payments are as follows as of the year ended December 31, 2019:",
+   "prose_after": "NOTE 6: STOCK-BASED COMPENSATION\nThe Company approved their 2017 Incentive Stock Plan on September 27, 2017 (the \u201cIncentive Plan\u201d) which authorizes the Company to grant or issue non-qualified stock options, incentive stock options, stock appreciation rights, restricted stock, restricted stock units and other equity awards up to a total of 45 million shares. Under the terms of the Incentive Plan, awards may be granted to our employees, directors or consultants. Awards issued under the Incentive Plan vest as determined by the Board of Directors or any of the Committees appointed under the Incentive Plan at the time of grant.\nThe Company\u2019s outstanding stock options have a 10-year term. Outstanding non-qualified stock options granted to employees and a consultant vest on a case by case basis. Outstanding incentive stock options issued to employees vest over a three-year period. The incentive stock options granted vest based solely upon continued employment (\u201ctime-based\u201d). The Company\u2019s time-based share awards that vest in their entirety at the end of three-year periods, time-based share awards where 33.3% of the award vests on each of the three anniversary dates. Outstanding incentive stock options issued to executives vest partially upon grant date, with the residual vesting over the subsequent 6 or 12 months.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1034,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Non-Qualified Stock Options - Immediate",
+     "$",
+     "998,603",
+     "$",
+     "251,023"
+    ],
+    [
+     "Incentive Stock Options - Time Bases",
+     "",
+     "1,368,149",
+     "",
+     "623,620"
+    ],
+    [
+     "  Total Stock-based Compensation Expense",
+     "$",
+     "2,366,752",
+     "$",
+     "874,643"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended",
+    "December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The Company approved their 2017 Incentive Stock Plan on September 27, 2017 (the \u201cIncentive Plan\u201d) which authorizes the Company to grant or issue non-qualified stock options, incentive stock options, stock appreciation rights, restricted stock, restricted stock units and other equity awards up to a total of 45 million shares. Under the terms of the Incentive Plan, awards may be granted to our employees, directors or consultants. Awards issued under the Incentive Plan vest as determined by the Board of Directors or any of the Committees appointed under the Incentive Plan at the time of grant.\nThe Company\u2019s outstanding stock options have a 10-year term. Outstanding non-qualified stock options granted to employees and a consultant vest on a case by case basis. Outstanding incentive stock options issued to employees vest over a three-year period. The incentive stock options granted vest based solely upon continued employment (\u201ctime-based\u201d). The Company\u2019s time-based share awards that vest in their entirety at the end of three-year periods, time-based share awards where 33.3% of the award vests on each of the three anniversary dates. Outstanding incentive stock options issued to executives vest partially upon grant date, with the residual vesting over the subsequent 6 or 12 months.\nNOTE 6: STOCK BASED COMPENSATION (CONTINUED)\nStock-based compensation expense was as follows:",
+   "prose_after": "Stock option activity was as follows in the periods ended December 31, 2019 (Post Reverse Split) and December 31, 2018:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stock",
+     "",
+     "Weighted- Average",
+     "",
+     "Weighted- Average",
+     ""
+    ],
+    [
+     "",
+     "Options",
+     "",
+     "Exercise",
+     "",
+     "Remaining",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2018",
+     "",
+     "2,275,000",
+     "$",
+     "1.06",
+     "",
+     "9.30"
+    ],
+    [
+     "Granted",
+     "",
+     "2,043,750",
+     "$",
+     "1.23",
+     "",
+     "9.53"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited/Canceled",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at Dec 31, 2019",
+     "",
+     "4,318,750",
+     "$",
+     "1.14",
+     "",
+     "8.91"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested at Dec 31, 2019",
+     "",
+     "2,448,958",
+     "$",
+     "1.14",
+     "",
+     "8.51"
+    ],
+    [
+     "Exercisable at Dec 31, 2019",
+     "",
+     "2,448,958",
+     "$",
+     "1.14",
+     "",
+     "8.51"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Stock option activity was as follows in the periods ended December 31, 2019 (Post Reverse Split) and December 31, 2018:",
+   "prose_after": "The Company estimated the fair value of each stock option on the date of grant using the Black Scholes valuation model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Valuation Assumptions",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "2.14% \u2013 2.94%"
+    ],
+    [
+     "Expected dividend yield",
+     "0%"
+    ],
+    [
+     "Expected stock price volatility",
+     "105% to 180%"
+    ],
+    [
+     "Expected life of stock options (in years)",
+     "10"
+    ]
+   ],
+   "caption_stack": [
+    "Valuation Assumptions"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1099,
+    "end_line": 1107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The Company estimated the fair value of each stock option on the date of grant using the Black Scholes valuation model with the following assumptions:",
+   "prose_after": "NOTE 7: LEASES\nWe adopted ASC 842 using the modified retrospective approach, electing the practical expedient that allows us not to restate our comparative periods prior to the adoption of the standard on January 1, 2019. As such, the disclosures required under ASC 842 are not presented for periods before the date of adoption.\nNOTE 7: LEASES (CONTINUED)\nThe Company recognized the following related to leases in its Consolidated Balance Sheet:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Right of Use Lease Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current portion",
+     "$",
+     "80,046",
+     "$",
+     "-"
+    ],
+    [
+     "  Long-term portion",
+     "",
+     "52,798",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "132,844",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1117,
+    "end_line": 1128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "NOTE 7: LEASES\nWe adopted ASC 842 using the modified retrospective approach, electing the practical expedient that allows us not to restate our comparative periods prior to the adoption of the standard on January 1, 2019. As such, the disclosures required under ASC 842 are not presented for periods before the date of adoption.\nNOTE 7: LEASES (CONTINUED)\nThe Company recognized the following related to leases in its Consolidated Balance Sheet:",
+   "prose_after": "On January 15, 2017, the Company entered an agreement with Pueblo, CO Board of Water Works to lease water for the Company\u2019s cultivation process. The agreement went into effect as of November 1, 2016 with a term of 10 years expiring on October 31, 2026, with an option to extend the lease upon expiration for 10 additional years. This agreement replaced previously entered agreements with Pueblo, CO Board of Water Works. The lease requires annual non-refundable minimum service fees of $15,000 and a usage charge of $1,063 per acre for 30 acres. The minimum service fees and usage charges are subject to escalators for each year based upon percentage increases of Pueblo, CO Board of Water Works rates from the previous calendar year. Total water lease expense was $34,632 and $44,813 for the years ended December 31, 2019 and 2018, respectively.\nThe Company analyzed the classification of the lease under ASC 842, and as it did not meet any of the criteria for a financing lease it has been classified as an operating lease. The Company determined the Right of Use asset and Lease liability values at inception calculated at the present value of all future lease payments for the lease term, using an incremental borrowing rate of 5%. The Lease Liability will be expensed each month, on a straight line basis, over the life of the lease.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Federal Taxes (credits) at statutory rates",
+     "$",
+     "(2,470,000)",
+     "",
+     "$",
+     "(965,000)",
+     ""
+    ],
+    [
+     "State and local taxes, net of Federal benefit",
+     "",
+     "(526,000)",
+     "",
+     "",
+     "(177,000)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "2,996,000",
+     "",
+     "",
+     "1,142,000",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1154,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "In September of 2019, the board of directors approved an amendment to the Company\u2019s Certificate of Incorporation, as amended, to effect a 1-for-4 reverse stock split on the issued and outstanding common. All relevant information relating to numbers of shares and warrants and per share information have been retrospectively adjusted to reflect the reverse stock split for all periods presented. The reverse split was effective on September 19, 2019.\nDuring the year ending December 31, 2019, warrants to purchase 3,886,011 shares of common stock were exercised for $1,519,467. Included in warrants exercised are 1,290,570 shares of common stock issued in accordance with a cashless exercise of warrants.\nDuring the year ending December 31, 2019, the Company issued 9,643,854 shares of common stock for proceeds of $13,360,377, net of $2,069,603 issuance costs, and 15,625 shares of common stock for marketing services valued at $16,875.\nNOTE 9: INCOME TAX\nThe reconciliation of income tax computed at the Federal statutory rate to the provision (benefit) for income taxes from continuing operations is as follows:",
+   "prose_after": "Components of deferred tax assets are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Loss Carryforwards",
+     "$",
+     "3,930,000",
+     "",
+     "$",
+     "1,515,000",
+     ""
+    ],
+    [
+     "Stock Compensation",
+     "",
+     "910,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accrued Related Party Expenses",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Total Deferred Tax Assets",
+     "",
+     "4,840,000",
+     "",
+     "",
+     "1,520,000",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(4,300,000)",
+     "",
+     "",
+     "(1,304,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Deferred Tax Assets net of Valuation Allowance",
+     "$",
+     "540,000",
+     "",
+     "$",
+     "216,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and Amortization",
+     "",
+     "370,000",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Prepaid Expense",
+     "",
+     "170,000",
+     "",
+     "",
+     "16,000",
+     ""
+    ],
+    [
+     "Total Deferred Tax Liabilities",
+     "",
+     "540,000",
+     "",
+     "",
+     "216,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Deferred Tax Assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1168,
+    "end_line": 1193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "Components of deferred tax assets are as follows:",
+   "prose_after": "NOTE 9: INCOME TAX (CONTINUED)\nThe Company has approximately $14,500,000 net operating loss carryforwards that are available to reduce future taxable income. Those NOLs begin to expire in 2038. In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. Based on the assessment, management has established a full valuation allowance against all of the deferred tax assets for every period because it is more likely than not that all of the deferred tax assets will not be realized.\nThe Company\u2019s deferred tax liability associated with timing differences related to depreciation and amortization includes $69,000 of liability resulting from tax depreciation deducted in excess of GAAP depreciation prior to the Company becoming taxed as a C-Corporation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) and Office(s) Held"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alexander Salgado",
+     "53",
+     "Chief Executive Officer, Secretary and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Pelletier",
+     "58",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erduis Sanabria",
+     "46",
+     "Executive Vice President and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dave Smith",
+     "65",
+     "Chief Operating Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rianna Meyer",
+     "50",
+     "Vice President of Operations"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derek Thomas",
+     "35",
+     "Vice President of Business Development"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bao T. Doan, M.D.",
+     "47",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kellie Newton",
+     "60",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark J. Horowitz",
+     "55",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1278,
+    "end_line": 1300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "To address these material weaknesses, our Chief Executive Officer and Our Chief Financial Officer performed additional analyses and other procedures to ensure that the consolidated financial statements included herein fairly present, in all material respects, our financial position, results of operations and cash flows for the periods presented. Accordingly, we believe that the consolidated financial statements included in this report fairly present, in all material respects, our financial condition, results of operations and cash flows for the periods presented.\nChanges in Internal Controls Over Financial Reporting\nThere were no changes in our internal controls over financial reporting that occurred during the fourth quarter of 2019, that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors and Executive Officers\nOur directors and executive officers and their respective ages and titles are as follows:",
+   "prose_after": "Set forth below is a brief description of the background and business experience of our directors and executive officers.\nAlexander Salgado co-founded Veritas Farms and has served as its Chief Executive Officer since its inception in January 2015. From 2013 to 2015, Mr. Salgado was the Chief Operating Officer of IXE Agro USA LLC, a division of a multi-national conglomerate of firms involved in the agricultural industry focused on the growing, marketing, shipping and selling of fresh produce throughout the Americas. From 2006 to 2013, Mr. Salgado was the President of Protex Investment Group LLC, a real estate acquisition and management consultation company. Since 2000, Mr. Salgado, a board licensed Certified Public Accountant has also served as President of Alexander M. Salgado, CPA, PA, an accounting, tax and consulting firm located in Miami, Florida. Mr. Salgado holds a bachelor\u2019s degree in Accounting from Florida International University.\nMichael Pelletier, who joined the Company as its Chief Financial Officer in April 2019,has over 35 years of experience in accounting and financial reporting, most recently as Chief Financial Officer of Inter-Continental Cigar Corp. (ICCC), a South Florida-based global cigar manufacturing and distribution firm, for over 20 years, from 1997 until joining the Company. His responsibilities at ICCC included inventory management, sales control, customer service, finance, annual audits, budgets, quarterly forecasts, state and federal licensing as well as assuring required compliance and filings. Prior to his long career in the cigar industry, Mr. Pelletier held other senior accounting and finance roles, including Assistant Controller of Gold Coast Media, a Miami-based direct marketing firm from 1995 to 1997, and Controller - Southeast of Hunter Douglas, Inc., a global leader in the window covering industry from 1990 to 1995. Earlier in his career, Mr. Pelletier spent more than 4 years with Pelletier& Veal CPA\u2019s, an Atlanta-based public accounting firm where he performed write-up, tax, compilation and review work for small and medium size businesses in diverse industries. He holds a Bachelor of Business Administration (Accounting) degree from Florida Atlantic University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1269,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards (#)",
+     "",
+     "Option Awards (#)(1)",
+     "",
+     "Option Awards ($)(1)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Alexander M.",
+     "",
+     "2019",
+     "250,000",
+     "",
+     "170,000",
+     "",
+     "0",
+     "",
+     "333,333",
+     "",
+     "477,657",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "897,657",
+     ""
+    ],
+    [
+     "Salgado,",
+     "",
+     "2018",
+     "",
+     "250,000",
+     "",
+     "20,000",
+     "",
+     "0",
+     "",
+     "166,666",
+     "",
+     "238,829",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "508,829"
+    ],
+    [
+     "Chief Executive Officer",
+     "",
+     "2017",
+     "",
+     "150,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "250,000",
+     "",
+     "76,155",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "226,153"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erduis",
+     "",
+     "2019",
+     "",
+     "250,000",
+     "",
+     "168,500",
+     "",
+     "0",
+     "",
+     "333,333",
+     "",
+     "477,657",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "896,157"
+    ],
+    [
+     "Sanabria,",
+     "",
+     "2018",
+     "",
+     "250,000",
+     "",
+     "20,000",
+     "",
+     "0",
+     "",
+     "166,666",
+     "",
+     "238,829",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "508,829"
+    ],
+    [
+     "Executive Vice President Officer",
+     "",
+     "2017",
+     "",
+     "150,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "250,000",
+     "",
+     "76,155",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "226,153"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derek",
+     "",
+     "2019",
+     "",
+     "100,000",
+     "",
+     "2,500",
+     "",
+     "0",
+     "",
+     "33,333",
+     "",
+     "36,967",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "139,467"
+    ],
+    [
+     "Thomas,",
+     "",
+     "2018",
+     "",
+     "87,500",
+     "",
+     "5,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "92,500"
+    ],
+    [
+     "Vice President of Business Development (3)",
+     "",
+     "2017",
+     "",
+     "8,331",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "8,331"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rianna",
+     "",
+     "2019",
+     "",
+     "170,000",
+     "",
+     "7,500",
+     "",
+     "0",
+     "",
+     "58,333",
+     "",
+     "35,314",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "212,814"
+    ],
+    [
+     "Meyer,",
+     "",
+     "2018",
+     "",
+     "132,500",
+     "",
+     "10,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "142,500"
+    ],
+    [
+     "Vice President of Operations",
+     "",
+     "2017",
+     "",
+     "75,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "125,000",
+     "",
+     "11,423",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "86,423"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dave Smith,",
+     "",
+     "2019",
+     "",
+     "225,000",
+     "",
+     "95,000",
+     "",
+     "0",
+     "",
+     "93,750",
+     "",
+     "134,413",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "454,413"
+    ],
+    [
+     "Chief Operating Officer(4)",
+     "",
+     "2018",
+     "",
+     "69,500",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "93,750",
+     "",
+     "134,413",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "203,913"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Pelletier,",
+     "",
+     "2019",
+     "",
+     "127,000",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "",
+     "127,000"
+    ],
+    [
+     "Chief\n\n\n\nFinancial Officer(2)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1425,
+    "end_line": 1456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf develop and review periodically corporate governance procedures and consider any other corporate governance issue.\nMs. Newton is the chairperson of the nominating and corporate governance committee.\nCode of Ethics\nWe have adopted a Code of Ethics that applies to employees, including our principal executive officer, principal financial officer, or persons performing similar functions.\nBoard of Directors Role in Risk Oversight\nMembers of the board of directors and since its establishment, the Company\u2019s audit committee have periodic meetings with management and the Company\u2019s independent auditors to perform risk oversight with respect to the Company\u2019s internal control processes. The Company believes that the board\u2019s role in risk oversight does not materially affect the leadership structure of the Company.\nItem 11. Executive Compensation.\nSummary Compensation Table\nSUMMARY COMPENSATION TABLE\nThe table below summarizes all compensation awarded to, earned by, or paid to each of our executive officers for the years ended December 31, 2019, December 31, 2018 and December 31, 2017.",
+   "prose_after": "(1) Represents options granted under our 2017 Incentive Stock Plan.\n(2) Mr. Pelletier joined the Company in April 2019\n(3) Mr. Thomas joined the Company in December 2017.\n(4) Mr. Smith joined the Company in September 2018.\nEmployment Agreements\nEffective September 27, 2017, the Company entered into employment agreements with each of Messrs. Salgado and Sanabria. Each employment agreement provides for a three-year rolling term, base salary of $150,000, increasing to $250,000 on April 1, 2018 and a grant of 1,000,000 vested options under the Company\u2019s 2017 Stock Incentive Plan. The options are exercisable at any time during the ten (10) year period commencing on the date of grant, at an exercise price of $0.0833 per share and are otherwise subject to the terms of the 2017 Stock Incentive Plan. The employment agreements also contain customary confidentiality, non-competition and change in control provisions.\nIn August 2018, the Company entered into a three-year employment agreement with Dave Smith, to serve as the Company\u2019s Chief Operating Officer, effective in September 2018. The employment agreement provides for a base salary of $225,000, the ability to be granted an annual bonus of up to $125,000 based on performance criteria set by the board of directors and a grant of 750,000 options under the Company\u2019s 2017 Stock Incentive Plan, 375,000 of which vested on the grant date and the 375,000 balance of which will vest on the six-month anniversary of the grant date. The options are exercisable, to the extent vested, at any time during the ten (10) year period commencing on the date of grant, at an exercise price of $0.36 per share and are otherwise subject to the terms of the 2017 Stock Incentive Plan. The employment agreement also contains customary confidentiality, non-competition and change in control provisions.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1416,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1465,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Grantee",
+     "Number of Securities Underlying Unexercised Options Exercisable",
+     "",
+     "Number of Securities Underlying Unexercised Options Unexercisable",
+     "",
+     "Exercise Price",
+     "",
+     "Option Expiration Date",
+     "Number of Shares that have not vested",
+     "",
+     "Market Value of Shares that have not Vested",
+     ""
+    ],
+    [
+     "Alexander Salgado",
+     "",
+     "250,000",
+     "",
+     "0",
+     "",
+     "0.333",
+     "9/27/2027",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Alexander Salgado",
+     "",
+     "666,667",
+     "",
+     "0",
+     "",
+     "1.44",
+     "8/6/2028",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Alexander Salgado",
+     "",
+     "0",
+     "",
+     "500,000",
+     "",
+     "0.980",
+     "7/26/2029",
+     "",
+     "500,000",
+     "",
+     "2,633,807"
+    ],
+    [
+     "Michael Pelletier",
+     "",
+     "0",
+     "",
+     "25,000",
+     "",
+     "2.580",
+     "3/26/2029",
+     "",
+     "25,000",
+     "",
+     "62,202"
+    ],
+    [
+     "Erduis Sanabria",
+     "",
+     "250,000",
+     "",
+     "0",
+     "",
+     "0.333",
+     "9/27/2027",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Erduis Sanabria",
+     "",
+     "666,667",
+     "",
+     "0",
+     "",
+     "1.44",
+     "8/6/2028",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Erduis Sanabria",
+     "",
+     "0",
+     "",
+     "500,000",
+     "",
+     "0.980",
+     "7/26/2029",
+     "",
+     "500,000",
+     "",
+     "2,633,807"
+    ],
+    [
+     "Rianna Meyer",
+     "",
+     "83,333",
+     "",
+     "41,667",
+     "",
+     "0.333",
+     "9/27/2027",
+     "",
+     "41,677",
+     "",
+     "11,550"
+    ],
+    [
+     "Rianna Meyer",
+     "",
+     "16,667",
+     "",
+     "33,333",
+     "",
+     "1.44",
+     "8/6/2028",
+     "",
+     "33,333",
+     "",
+     "47,529"
+    ],
+    [
+     "Rianna Meyer",
+     "",
+     "0",
+     "",
+     "50,000",
+     "",
+     "0.980",
+     "7/26/2029",
+     "",
+     "50,000",
+     "",
+     "259,442"
+    ],
+    [
+     "Derek Thomas",
+     "",
+     "16,667",
+     "",
+     "33,333",
+     "",
+     "0.8",
+     "5/10/2028",
+     "",
+     "33,333",
+     "",
+     "26,405"
+    ],
+    [
+     "Derek Thomas",
+     "",
+     "16,667",
+     "",
+     "33,333",
+     "",
+     "1.44",
+     "8/6/2028",
+     "",
+     "33,333",
+     "",
+     "47,529"
+    ],
+    [
+     "Derek Thomas",
+     "",
+     "0",
+     "",
+     "25,000",
+     "",
+     "0.980",
+     "7/26/2029",
+     "",
+     "25,000",
+     "",
+     "129,721"
+    ],
+    [
+     "Dave Smith",
+     "",
+     "187,500",
+     "",
+     "0",
+     "",
+     "1.444",
+     "9/24/2028",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Dave Smith",
+     "",
+     "0",
+     "",
+     "187,500",
+     "",
+     "0.980",
+     "7/26/2029",
+     "",
+     "187,500",
+     "",
+     "987,677"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1476,
+    "end_line": 1498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In August 2018, the Company entered into a three-year employment agreement with Dave Smith, to serve as the Company\u2019s Chief Operating Officer, effective in September 2018. The employment agreement provides for a base salary of $225,000, the ability to be granted an annual bonus of up to $125,000 based on performance criteria set by the board of directors and a grant of 750,000 options under the Company\u2019s 2017 Stock Incentive Plan, 375,000 of which vested on the grant date and the 375,000 balance of which will vest on the six-month anniversary of the grant date. The options are exercisable, to the extent vested, at any time during the ten (10) year period commencing on the date of grant, at an exercise price of $0.36 per share and are otherwise subject to the terms of the 2017 Stock Incentive Plan. The employment agreement also contains customary confidentiality, non-competition and change in control provisions.\nOutstanding Equity Awards at Fiscal Year-End Table\nThe table below summarizes all unexercised options, stock that has not vested, and equity incentive plan awards for each of our executive officers outstanding as of December 31, 2019, the end of our last completed fiscal year.",
+   "prose_after": "Compensation of Directors\nWe do not compensate employee directors for their services as such. As we had no non-employee directors during 2018, our last completed fiscal year, no compensation was paid to our directors for their services as such. With the appointment of our first two non-employee directors (Dr. Bao Doan and Ms. Kellie Newton) in April 2018, we have agreed to compensate non-employee directors with an annual grant of stock options under our 2017 Incentive Stock Plan, in an amount and on terms to be determined by the board of directors. The initial grants to each of Dr. Doan and Ms. Newton are for options to purchase 100,000 shares at an exercise price of $0.645 per share. The options vest in four (4) quarterly installments commencing ninety (90) days from the date of grant and are contingent upon their continued service on the board. We have also agreed to reimburse them for out-of-pocket expenses incurred in connection with attending board and committee meetings and have entered into indemnification agreements with each director.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1465,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Names and addresses of beneficial owners",
+     "Number of shares of common stock (1)",
+     "",
+     "Percentage of class (%)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and executive officers:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alexander M. Salgado (2)",
+     "",
+     "6,912,977",
+     "",
+     "16.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Pelletier",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erduis Sanabria (3)",
+     "",
+     "6,564,977",
+     "",
+     "15.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dave Smith",
+     "",
+     "281,250",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rianna Meyer",
+     "",
+     "100,000",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derek Thomas",
+     "",
+     "50,000",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bao T. Doan, M.D.",
+     "",
+     "259,375",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kellie Newton",
+     "",
+     "25,000",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (eight persons) (2)(3)",
+     "",
+     "14,193,579",
+     "",
+     "31.9"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other 5% or greater shareholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "George Attlee Boden 198 Magellan Quay Grand Cayman Cayman Islands KY1-1108",
+     "",
+     "2,443,750",
+     "",
+     "5.8"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "William R. Maines\n15 Meadowood Lane Binghamton, NY 13901",
+     "",
+     "3,125,000",
+     "",
+     "7.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cornelis Wit (4)\n2101 W. Commercial Blvd, Suite 3500 Fort Lauderdale, FL 33309",
+     "",
+     "3,112,500",
+     "",
+     "7.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1512,
+    "end_line": 1546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our 2017 Incentive Stock Plan provides for equity incentives to be granted to our employees, executive officers or directors or to key advisers or consultants. Equity incentives may be in the form of stock options with an exercise price not less than the fair market value of the underlying Shares as determined pursuant to the 2017 Incentive Stock Plan, restricted stock awards, other stock-based awards, or any combination of the foregoing. The 2017 Incentive Stock Plan is administered by the compensation committee, or alternatively by the board of directors. The number of Shares so reserved automatically adjusts upward on January 1 of each year, commencing January 1, 2019, so that the number of Shares covered by the 2017 Incentive Stock Plan is equal to 15% of our issued and outstanding common stock as of that measurement date. As of the date of this report, 6,271,245 Shares have been reserved for issuance and the Company has granted options to purchase 4,718,750 Shares under the 2017 Incentive Stock Plan. Such options are exercisable at prices ranging from of $0.33332 to $3.44 per Share.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following table sets forth, as of the date of this report, the beneficial ownership of our common stock by each director and executive officer, by each person known by us to beneficially own 5% or more of our common stock and by directors and executive officers as a group. Unless otherwise stated, the address of the persons set forth in the table is c/o the Company, 1512 E. Broward Blvd, Suite 300, Fort Lauderdale, FL 33301.",
+   "prose_after": "* Less than 1%.\n(1) Includes shares issuable upon the exercise of options within sixty (60) days of the date of this report.\n(2) Includes\n(a) 1,420,089 shares owned of record by Mr. Salgado; (b) 1,166,667 shares underlying presently exercisable options held by Mr. Salgado; and (c) 4,326,221 shares held by other shareholders who were former Members of 271, which Messrs. Salgado and Sanabria have the right to vote (but not dispose of) pursuant to a five-year voting agreement entered into among Messrs. Salgado, Sanabria and such other shareholders at Closing of the Acquisition on September 37, 2017 (the \u201cVoting Agreement\u201d).\n(3) Includes\n(a) 1,072,089 shares owned of record by Mr. Sanabria; (b) 1,166,667 shares underlying presently exercisable options held by Mr. Sanabria; and (c) 4,326,221 shares held by other shareholders who were former Members of 271, which Messrs. Salgado and Sanabria have the right to vote (but not dispose of) pursuant to the Voting Agreement.\n(4) Includes\n(a) 3,050,000 shares held of record by Mr. Wit and (b) 62,500 shares held by Ananda Cifre, his spouse.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1551,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "4,318,750 shares",
+     "(1)",
+     "$",
+     "1.23",
+     "",
+     "1,952,495 shares",
+     "(1)"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0 shares",
+     "",
+     "",
+     "None issued",
+     "",
+     "0 shares",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "4,318,750 shares",
+     "(1)",
+     "$",
+     "1.23",
+     "",
+     "1,952,495 shares",
+     "(1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1565,
+    "end_line": 1578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(a) 1,072,089 shares owned of record by Mr. Sanabria; (b) 1,166,667 shares underlying presently exercisable options held by Mr. Sanabria; and (c) 4,326,221 shares held by other shareholders who were former Members of 271, which Messrs. Salgado and Sanabria have the right to vote (but not dispose of) pursuant to the Voting Agreement.\n(4) Includes\n(a) 3,050,000 shares held of record by Mr. Wit and (b) 62,500 shares held by Ananda Cifre, his spouse.\nThe persons named above have full voting and investment power with respect to the shares indicated. Under the rules of the SEC, a person (or group of persons) is deemed to be a \u201cbeneficial owner\u201d of a security if he or she, directly or indirectly, has or shares the power to vote or to direct the voting of such security, or the power to dispose of or to direct the disposition of such security. Accordingly, more than one person may be deemed to be a beneficial owner of the same security.\nSecurities Authorized for Issuance under Equity Compensation Plans",
+   "prose_after": "(1) Represents shares of common stock underlying options granted or reserved for issuance under our 2017 Incentive Stock Plan as of the date of this report.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nVoting Agreement\nShareholders holding 4,326,221 shares of our common stock, who were former members of 271, including Messrs. Salgado and Sanabria, are parties to a Voting Agreement originally entered into in September 2017, pursuant to which Messrs. Salgado and Sanabria have the right to vote (but not dispose of) such shares until September 2022.\nLoans\nPrior to completion of the 2018 Private Offering, a primary source of capital to develop and implement our business plan came from the proceeds of loans made by members of 271 Lake Davis prior to its September 2017 acquisition by the Company (none of which lenders was an officer, director or principal shareholder of the Company) and loans made during 2017 and 2018 by Erduis Sanabria, our Executive Vice President and a director. The loans accrued interest at rates between 2% and 3% per annum.. As of December 31.2018, the principal balance of the loans to the members of 271Lake Davis and Mr. Sanabria were reduced to $40,985 and $221,939, respectively and the principal balance of these loans together with accrued interest were repaid in full by December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1551,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1581,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws(2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Securities Exchange Agreement(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Employment Agreement with Alexander M. Salgado(3)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Employment Agreement with Erduis Sanabria(3)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "2017 Stock Incentive Plan(3)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Voting Agreement(3)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Code of Ethics(4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Employment Agreement with Dave Smith(5)*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Form of Non-Employee Director Appointment Letter with attached Form of Non-Employee Director Indemnification Agreement(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of Registrant(4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Prager Metis CPAs LLC(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Section 302 Chief Executive Officer Certification(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Section 302 Chief Financial Officer Certification(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 906 Chief Executive Officer Certification(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Section 906 Chief Financial Officer Certification(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1648,
+    "end_line": 1691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Financial Statements. The following financial statements and the report of our independent registered public accounting firm, are filed as \u201cItem 8. Financial Statements and Supplementary Data\u201d of this report:\nReport of Independent Registered Public Accounting Firm\nConsolidated Balance Sheets at December 31, 2019 and December 31, 2018\nConsolidated Statements of Operations for the Years Ended December 31, 2019 and December 31, 2018\nConsolidated Statements of Cash Flows for the Years Ended December 31, 2019 and December 31, 2018\nConsolidated Statements of Shareholders\u2019 Deficit for the Years Ended December 31, 2019 and December 31, 2018\nNotes to Consolidated Financial Statements\n(2) Financial Statement Schedules.\nFinancial Statement Schedules are omitted because the information required is not applicable or the required information is shown in the financial statements or notes thereto.\n(3) Exhibits.",
+   "prose_after": "(1) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated November 13, 2017 and incorporated herein by reference, except for an amendment thereto, filed as an exhibit to the registrant\u2019s current report on Form 8-K dated February 5, 2019 and incorporated herein by reference.\n(2) Filed as an exhibit the registrant\u2019s Registration Statement on Form S-1 (File No. 333-210190) and incorporated herein by reference.\n(3) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated October 2, 2017 and incorporated herein by reference.\n(4) Filed as an exhibit to the registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 2017 and incorporated herein by reference.\n(5) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated October 22, 2018 and incorporated herein by reference.\n(6) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated April 9, 2019 and incorporated herein by reference.\n(7) Filed herewith.\n* Management compensation plan or arrangement.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1708,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "VERITAS FARMS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: May 15, 2020",
+     "By:",
+     "/s/ Alexander M. Salgado"
+    ],
+    [
+     "",
+     "",
+     "Alexander M. Salgado, Chief Executive Officer (Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: May 15, 2020",
+     "By:",
+     "/s/ Michael Pelletier"
+    ],
+    [
+     "",
+     "",
+     "Michael Pelletier, Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "VERITAS FARMS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1713,
+    "end_line": 1725
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated November 13, 2017 and incorporated herein by reference, except for an amendment thereto, filed as an exhibit to the registrant\u2019s current report on Form 8-K dated February 5, 2019 and incorporated herein by reference.\n(2) Filed as an exhibit the registrant\u2019s Registration Statement on Form S-1 (File No. 333-210190) and incorporated herein by reference.\n(3) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated October 2, 2017 and incorporated herein by reference.\n(4) Filed as an exhibit to the registrant\u2019s Annual Report on Form 10-K for the year ended December 31, 2017 and incorporated herein by reference.\n(5) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated October 22, 2018 and incorporated herein by reference.\n(6) Filed as an exhibit to the registrant\u2019s Current Report on Form 8-K dated April 9, 2019 and incorporated herein by reference.\n(7) Filed herewith.\n* Management compensation plan or arrangement.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1708,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alexander M. Salgado",
+     "Chief Executive Officer and Director",
+     "May 15, 2020"
+    ],
+    [
+     "Alexander M. Salgado",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Pelletier",
+     "Chief Financial Officer",
+     "May 15, 2020"
+    ],
+    [
+     "Michael Pelletier",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Erduis Sanabria",
+     "Executive Vice President and Director",
+     "May 15, 2020"
+    ],
+    [
+     "Erduis Sanabria",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bao T. Doan",
+     "Director",
+     "May 15, 2020"
+    ],
+    [
+     "Bao T. Doan, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kellie Newton",
+     "Director",
+     "May 15, 2020"
+    ],
+    [
+     "Kellie Newton",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mark J. Horowitz",
+     "Director",
+     "May 15, 2020"
+    ],
+    [
+     "Mark J. Horowitz",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1728,
+    "end_line": 1756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1708,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

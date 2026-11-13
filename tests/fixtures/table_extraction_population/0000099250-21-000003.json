@@ -1,0 +1,5205 @@
+{
+ "accession": "0000099250-21-000003",
+ "cik": "0000099250",
+ "form": "10-K",
+ "filing_date": "2021-02-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tgpl-20201231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "74-1079400"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2800 Post Oak Boulevard",
+     "",
+     ""
+    ],
+    [
+     "Houston",
+     "Texas",
+     "77056"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]   ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended       December 31, 2020\nOR\n[ ]   TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from                      to\nCommission file number 1-7584\nTRANSCONTINENTAL GAS PIPE LINE COMPANY, LLC\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "713-215-2000\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "21"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "21"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "23"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "27"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "28"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosures",
+     "57"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "57"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "58"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance (Omitted)",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation (Omitted)",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters (Omitted)",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence (Omitted)",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "58"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "59"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "61"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 100
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer  [ ]  Non-accelerated filer  [X]  Smaller reporting company  [ ]  Emerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nREGISTRANT MEETS THE CONDITIONS SET FORTH IN GENERAL INSTRUCTIONS (I) (1)(a) AND (b) OF FORM 10-K AND IS THEREFORE FILING THIS FORM 10-K WITH THE REDUCED DISCLOSURE FORMAT.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "1\nDEFINITIONS\nWe use the following gas measurements in this report:\nMdth \u2013 means thousand dekatherms.\nMdth/d \u2013 means thousand dekatherms per day.\nMMdth \u2013 means million dekatherms.\nPART 1\nItem 1. Business\nIn this report, Transcontinental Gas Pipe Line Company, LLC (Transco) is at times referred to in the first person as \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d.\nTransco is indirectly owned by The Williams Companies, Inc. (Williams), a publicly traded Delaware corporation.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2020",
+     "Expected Maturity Date",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in millions)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, excluding other financing obligation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed rate",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest rate",
+     "5.20",
+     "",
+     "%",
+     "5.20",
+     "",
+     "%",
+     "5.20",
+     "",
+     "%",
+     "5.20",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other financing obligation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed rate",
+     "$",
+     "23",
+     "",
+     "$",
+     "25",
+     "",
+     "$",
+     "27",
+     "",
+     "$",
+     "30",
+     ""
+    ],
+    [
+     "Interest rate",
+     "9.01",
+     "",
+     "%",
+     "9.01",
+     "",
+     "%",
+     "9.01",
+     "",
+     "%",
+     "9.01",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2020",
+     "Expected Maturity Date",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "Thereafter",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Dollars in millions)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, excluding other financing obligation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed rate",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,183",
+     "",
+     "$",
+     "4,183",
+     "",
+     "$",
+     "5,074",
+     ""
+    ],
+    [
+     "Interest rate",
+     "5.20",
+     "",
+     "%",
+     "4.41",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other financing obligation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed rate",
+     "$",
+     "32",
+     "",
+     "$",
+     "967",
+     "",
+     "$",
+     "1,104",
+     "",
+     "$",
+     "1,875",
+     ""
+    ],
+    [
+     "Interest rate",
+     "9.01",
+     "",
+     "%",
+     "9.04",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 740,
+    "end_line": 767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022Our financial condition, results of operations, and liquidity have not been materially impacted by direct effects of COVID-19.\n\u2022We believe we have the ability to access the debt market if necessary, and continue to have significant levels of unused capacity on our revolving credit facility with no significant debt maturities in the near future.\n\u2022We continue to monitor and adapt our remote working arrangements and limit business-related travel. Implementation of these measures has not required material expenditures or significantly impacted our ability to operate our business.\n\u2022Our remote working arrangements have not significantly impacted our internal controls over financial reporting and disclosure controls and procedures.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nAt December 31, 2020, our debt portfolio included only fixed rate issues. The following table provides information about our long-term debt, including current maturities, as of December 31, 2020. The table presents principal cash flows and weighted-average interest rates by expected maturity dates.",
+   "prose_after": "Item 8. Financial Statements and Supplementary Data",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Comprehensive Income",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheet",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Member\u2019s Equity",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Cash Flows",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "37"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 771,
+    "end_line": 787
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Item 8. Financial Statements and Supplementary Data",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Management Committee and Member of Transcontinental Gas Pipe Line Company, LLC\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Transcontinental Gas Pipe Line Company, LLC (the Company) as of December 31, 2020 and 2019, the related consolidated statements of comprehensive income, member\u2019s equity and cash flows for each of the three years in the period ended December 31, 2020, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2020 and 2019, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2020, in conformity with U.S. generally accepted accounting principles.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "  Description of the Matter",
+     "Regulatory Assets and Liabilities As discussed in Note 1 to the consolidated financial statements, the Company is an interstate natural gas transmission company that is regulated by the Federal Energy Regulatory Commission (\u201cFERC\u201d) and applies accounting principles in Topic 980 for regulated operations. As such, certain incurred costs that would otherwise be charged to expense are deferred as regulatory assets, based on the expected recovery from customers in future rates. Likewise, certain actual or anticipated credits that would otherwise reduce expense are deferred as regulatory liabilities, based on the expected return to customers in future rates. The Company records items as regulatory assets or liabilities if, based on regulatory orders or other available evidence, it is probable that the costs or obligations will be included in amounts allowable for recovery or refund in future rates.\nAuditing regulatory assets and liabilities is complex as it requires specialized knowledge of rate-regulated activities and judgments as to matters that could affect the recording of regulatory assets and liabilities."
+    ],
+    [
+     "How We Addressed the Matter in Our Audit",
+     "We obtained an understanding, evaluated the design, and tested the operating effectiveness of internal controls over the Company\u2019s accounting for regulatory assets and liabilities, including, among others, controls over the evaluation of filings with regulatory bodies and their effects on existing regulatory assets and liabilities, including factors that may affect the timing or nature of recoverability.\nWe performed audit procedures that included, among others, reviewing evidence of correspondence with regulatory bodies to test that the Company evaluated new information obtained from regulatory rulings. For example, we assessed the recoverability, considering information obtained from regulatory orders and ongoing proceedings, of various regulatory assets including deferred cash out costs. In addition, we tested calculations of material regulatory assets and liabilities, including that amortization for certain regulatory assets and liabilities corresponded to relevant regulatory rulings and/or orders."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 810,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matter\nThe critical audit matter communicated below is a matter arising from the current period audit of the financial statements that was communicated or required to be communicated to the audit committee and that: (1) relates to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. The communication of the critical audit matter does not alter in any way our opinion on the consolidated financial statements, taken as a whole, and we are not, by communicating the critical audit matter below, providing a separate opinion on the critical audit matter or on the accounts or disclosures to which it relates.",
+   "prose_after": "/s/ Ernst & Young LLP\nWe have served as the Company\u2019s auditor since 1995.\nHouston, Texas\nFebruary 24, 2021\nCONSOLIDATED STATEMENT OF COMPREHENSIVE INCOME",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Operating Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural gas sales",
+     "$",
+     "80,351",
+     "$",
+     "105,884",
+     "$",
+     "127,821"
+    ],
+    [
+     "Natural gas transportation",
+     "2,241,760",
+     "",
+     "2,188,058",
+     "",
+     "1,784,794",
+     ""
+    ],
+    [
+     "Natural gas storage",
+     "161,956",
+     "",
+     "147,687",
+     "",
+     "136,666",
+     ""
+    ],
+    [
+     "Other",
+     "20,246",
+     "",
+     "11,113",
+     "",
+     "10,600",
+     ""
+    ],
+    [
+     "Total operating revenues",
+     "2,504,313",
+     "",
+     "2,452,742",
+     "",
+     "2,059,881",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Costs and Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of natural gas sales",
+     "80,351",
+     "",
+     "105,884",
+     "",
+     "127,821",
+     ""
+    ],
+    [
+     "Cost of natural gas transportation",
+     "53,654",
+     "",
+     "50,273",
+     "",
+     "38,749",
+     ""
+    ],
+    [
+     "Operation and maintenance",
+     "323,093",
+     "",
+     "382,513",
+     "",
+     "399,293",
+     ""
+    ],
+    [
+     "Administrative and general",
+     "184,768",
+     "",
+     "217,000",
+     "",
+     "189,588",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "463,757",
+     "",
+     "433,480",
+     "",
+     "366,566",
+     ""
+    ],
+    [
+     "Taxes \u2014 other than income taxes",
+     "83,687",
+     "",
+     "76,632",
+     "",
+     "67,537",
+     ""
+    ],
+    [
+     "Impairment of assets",
+     "170,128",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Regulatory credit resulting from tax rate changes",
+     "(30,752)",
+     "",
+     "(24,202)",
+     "",
+     "(20,867)",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "5,461",
+     "",
+     "6,195",
+     "",
+     "64,918",
+     ""
+    ],
+    [
+     "Total operating costs and expenses",
+     "1,334,147",
+     "",
+     "1,247,775",
+     "",
+     "1,233,605",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Income",
+     "1,170,166",
+     "",
+     "1,204,967",
+     "",
+     "826,276",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (Income) and Other Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense - affiliate",
+     "892",
+     "",
+     "2,319",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "  - other",
+     "311,451",
+     "",
+     "283,990",
+     "",
+     "218,126",
+     ""
+    ],
+    [
+     "Interest income - affiliate",
+     "(132)",
+     "",
+     "(89)",
+     "",
+     "(7,606)",
+     ""
+    ],
+    [
+     "  - other",
+     "(4,265)",
+     "",
+     "(4,349)",
+     "",
+     "(3,448)",
+     ""
+    ],
+    [
+     "Allowance for equity and borrowed funds used during construction (AFUDC)",
+     "(22,648)",
+     "",
+     "(39,289)",
+     "",
+     "(116,347)",
+     ""
+    ],
+    [
+     "Equity in earnings of unconsolidated affiliates",
+     "\u2014",
+     "",
+     "(3,216)",
+     "",
+     "(1,068)",
+     ""
+    ],
+    [
+     "Miscellaneous other (income) expenses, net",
+     "4,832",
+     "",
+     "2,305",
+     "",
+     "(4,520)",
+     ""
+    ],
+    [
+     "Total other (income) and other expenses",
+     "290,130",
+     "",
+     "241,671",
+     "",
+     "85,197",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "880,036",
+     "",
+     "963,296",
+     "",
+     "741,079",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity interest in unrealized gain on interest rate hedges (includes $(162) and $(143) for the years ended December 31, 2019 and 2018, respectively, of accumulated other comprehensive income reclassification for equity interest in realized losses (gains) on interest rate hedges)",
+     "\u2014",
+     "",
+     "(641)",
+     "",
+     "197",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Income",
+     "$",
+     "880,036",
+     "$",
+     "962,655",
+     "$",
+     "741,276"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 844,
+    "end_line": 897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "/s/ Ernst & Young LLP\nWe have served as the Company\u2019s auditor since 1995.\nHouston, Texas\nFebruary 24, 2021\nCONSOLIDATED STATEMENT OF COMPREHENSIVE INCOME",
+   "prose_after": "CONSOLIDATED BALANCE SHEET",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 898,
+     "token": "REPEATING_FOOTER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Receivables:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade",
+     "223,864",
+     "",
+     "242,416",
+     ""
+    ],
+    [
+     "Affiliates",
+     "1,011",
+     "",
+     "669",
+     ""
+    ],
+    [
+     "Advances to affiliate",
+     "642,734",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "14,660",
+     "",
+     "10,850",
+     ""
+    ],
+    [
+     "Transportation and exchange gas receivables",
+     "4,627",
+     "",
+     "6,360",
+     ""
+    ],
+    [
+     "Inventories:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gas in storage, at original cost",
+     "926",
+     "",
+     "857",
+     ""
+    ],
+    [
+     "Gas available for customer nomination, at average cost",
+     "7,909",
+     "",
+     "20,653",
+     ""
+    ],
+    [
+     "Materials and supplies, at average cost",
+     "47,462",
+     "",
+     "43,482",
+     ""
+    ],
+    [
+     "Regulatory assets",
+     "62,861",
+     "",
+     "69,440",
+     ""
+    ],
+    [
+     "Other",
+     "13,847",
+     "",
+     "11,240",
+     ""
+    ],
+    [
+     "Total current assets",
+     "1,019,901",
+     "",
+     "405,967",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, Plant and Equipment:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural gas transmission plant",
+     "17,123,779",
+     "",
+     "16,764,904",
+     ""
+    ],
+    [
+     "Less-Accumulated depreciation and amortization",
+     "4,802,256",
+     "",
+     "4,438,077",
+     ""
+    ],
+    [
+     "Total property, plant and equipment, net",
+     "12,321,523",
+     "",
+     "12,326,827",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regulatory assets",
+     "281,870",
+     "",
+     "290,923",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "78,899",
+     "",
+     "84,979",
+     ""
+    ],
+    [
+     "Other",
+     "252,051",
+     "",
+     "210,017",
+     ""
+    ],
+    [
+     "Total other assets",
+     "612,820",
+     "",
+     "585,919",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "13,954,244",
+     "$",
+     "13,318,713"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEET",
+   "prose_after": "(continued)\nCONSOLIDATED BALANCE SHEET",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 904,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 952,
+     "token": "REPEATING_FOOTER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "LIABILITIES AND MEMBER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payables:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade",
+     "$",
+     "109,636",
+     "$",
+     "155,676"
+    ],
+    [
+     "Affiliates",
+     "32,676",
+     "",
+     "47,740",
+     ""
+    ],
+    [
+     "Advances from affiliate",
+     "\u2014",
+     "",
+     "252,549",
+     ""
+    ],
+    [
+     "Cash overdrafts",
+     "18,813",
+     "",
+     "28,292",
+     ""
+    ],
+    [
+     "Transportation and exchange gas payables",
+     "1,905",
+     "",
+     "3,961",
+     ""
+    ],
+    [
+     "Reserve for rate refunds",
+     "\u2014",
+     "",
+     "188,842",
+     ""
+    ],
+    [
+     "Accrued liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and other taxes",
+     "20,177",
+     "",
+     "19,034",
+     ""
+    ],
+    [
+     "Interest",
+     "75,806",
+     "",
+     "70,572",
+     ""
+    ],
+    [
+     "Regulatory liabilities",
+     "57,086",
+     "",
+     "57,359",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "24,686",
+     "",
+     "30,551",
+     ""
+    ],
+    [
+     "Customer advances",
+     "27,082",
+     "",
+     "27,207",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "52,764",
+     "",
+     "32,704",
+     ""
+    ],
+    [
+     "Other",
+     "41,864",
+     "",
+     "19,060",
+     ""
+    ],
+    [
+     "Long-term debt due within one year",
+     "22,640",
+     "",
+     "20,180",
+     ""
+    ],
+    [
+     "  Total current liabilities",
+     "485,135",
+     "",
+     "953,727",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Debt",
+     "5,217,140",
+     "",
+     "4,044,790",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Long-Term Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "397,737",
+     "",
+     "426,505",
+     ""
+    ],
+    [
+     "Regulatory liabilities",
+     "946,774",
+     "",
+     "966,961",
+     ""
+    ],
+    [
+     "Advances for construction costs",
+     "38,585",
+     "",
+     "16,533",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "205,030",
+     "",
+     "215,598",
+     ""
+    ],
+    [
+     "Lease liability",
+     "78,688",
+     "",
+     "84,528",
+     ""
+    ],
+    [
+     "Other",
+     "4,336",
+     "",
+     "4,288",
+     ""
+    ],
+    [
+     "Total other long-term liabilities",
+     "1,671,150",
+     "",
+     "1,714,413",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contingent Liabilities and Commitments (Note 4)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Member\u2019s Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Member\u2019s capital",
+     "4,543,499",
+     "",
+     "4,428,499",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "2,037,320",
+     "",
+     "2,177,284",
+     ""
+    ],
+    [
+     "Total member\u2019s equity",
+     "6,580,819",
+     "",
+     "6,605,783",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and member\u2019s equity",
+     "$",
+     "13,954,244",
+     "$",
+     "13,318,713"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 960,
+    "end_line": 1014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "(continued)\nCONSOLIDATED BALANCE SHEET",
+   "prose_after": "CONSOLIDATED STATEMENT OF MEMBER\u2019S EQUITY",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1015,
+     "token": "REPEATING_FOOTER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Member's Capital:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "4,428,499",
+     "$",
+     "4,428,499",
+     "$",
+     "4,088,499"
+    ],
+    [
+     "Cash contributions from parent",
+     "115,000",
+     "",
+     "\u2014",
+     "",
+     "340,000",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "4,543,499",
+     "",
+     "4,428,499",
+     "",
+     "4,428,499",
+     ""
+    ],
+    [
+     "Retained Earnings:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "2,177,284",
+     "",
+     "2,099,567",
+     "",
+     "1,848,488",
+     ""
+    ],
+    [
+     "Net income",
+     "880,036",
+     "",
+     "963,296",
+     "",
+     "741,079",
+     ""
+    ],
+    [
+     "Cash distributions to parent",
+     "(1,020,000)",
+     "",
+     "(824,000)",
+     "",
+     "(490,000)",
+     ""
+    ],
+    [
+     "Non-cash distribution to parent",
+     "\u2014",
+     "",
+     "(25,000)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-cash distribution of investments in subsidiaries",
+     "\u2014",
+     "",
+     "(36,579)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "2,037,320",
+     "",
+     "2,177,284",
+     "",
+     "2,099,567",
+     ""
+    ],
+    [
+     "Accumulated Other Comprehensive Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "\u2014",
+     "",
+     "534",
+     "",
+     "337",
+     ""
+    ],
+    [
+     "Equity interest in unrealized gain (loss) on interest rate hedge",
+     "\u2014",
+     "",
+     "(641)",
+     "",
+     "197",
+     ""
+    ],
+    [
+     "Non-cash distribution of investments in subsidiaries",
+     "\u2014",
+     "",
+     "107",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "534",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Member's Equity",
+     "$",
+     "6,580,819",
+     "$",
+     "6,605,783",
+     "$",
+     "6,528,600"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1054
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF MEMBER\u2019S EQUITY",
+   "prose_after": "CONSOLIDATED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1021,
+     "token": "REPEATING_HEADER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1055,
+     "token": "REPEATING_FOOTER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "equity_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "880,036",
+     "$",
+     "963,296",
+     "$",
+     "741,079"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "463,757",
+     "",
+     "433,480",
+     "",
+     "366,566",
+     ""
+    ],
+    [
+     "Impairment of assets",
+     "170,128",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Allowance for equity funds used during construction (equity AFUDC)",
+     "(14,889)",
+     "",
+     "(28,785)",
+     "",
+     "(87,111)",
+     ""
+    ],
+    [
+     "Regulatory credit resulting from tax rate changes",
+     "(30,752)",
+     "",
+     "(24,202)",
+     "",
+     "(20,867)",
+     ""
+    ],
+    [
+     "Equity in earnings of unconsolidated affiliates",
+     "\u2014",
+     "",
+     "(3,216)",
+     "",
+     "(1,068)",
+     ""
+    ],
+    [
+     "Distributions from unconsolidated affiliates",
+     "\u2014",
+     "",
+     "4,908",
+     "",
+     "3,250",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables \u2014 affiliates",
+     "(342)",
+     "",
+     "582",
+     "",
+     "91",
+     ""
+    ],
+    [
+     "\u2014 trade and other",
+     "14,742",
+     "",
+     "(52,307)",
+     "",
+     "(30,776)",
+     ""
+    ],
+    [
+     "Transportation and exchange gas receivable",
+     "1,733",
+     "",
+     "(1,845)",
+     "",
+     "(1,310)",
+     ""
+    ],
+    [
+     "Regulatory assets - current",
+     "6,579",
+     "",
+     "26,330",
+     "",
+     "1,379",
+     ""
+    ],
+    [
+     "Regulatory assets - non-current",
+     "11,361",
+     "",
+     "3,622",
+     "",
+     "(8,605)",
+     ""
+    ],
+    [
+     "Inventories",
+     "8,695",
+     "",
+     "(1,787)",
+     "",
+     "(23,178)",
+     ""
+    ],
+    [
+     "Payables \u2014 affiliates",
+     "(15,064)",
+     "",
+     "(2,981)",
+     "",
+     "7,307",
+     ""
+    ],
+    [
+     "\u2014 trade",
+     "(915)",
+     "",
+     "(18,842)",
+     "",
+     "(35,869)",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "22,881",
+     "",
+     "(1,723)",
+     "",
+     "40,993",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "12,027",
+     "",
+     "15,713",
+     "",
+     "24,659",
+     ""
+    ],
+    [
+     "Reserve for rate refunds",
+     "(188,842)",
+     "",
+     "188,842",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(10,568)",
+     "",
+     "(10,566)",
+     "",
+     "(10,565)",
+     ""
+    ],
+    [
+     "Other, net",
+     "(36,990)",
+     "",
+     "(36,365)",
+     "",
+     "10,317",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "1,293,577",
+     "",
+     "1,454,154",
+     "",
+     "976,292",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt",
+     "1,195,629",
+     "",
+     "\u2014",
+     "",
+     "993,440",
+     ""
+    ],
+    [
+     "Proceeds from other financing obligations",
+     "8,725",
+     "",
+     "41,513",
+     "",
+     "50,269",
+     ""
+    ],
+    [
+     "Retirement of long-term debt",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(250,000)",
+     ""
+    ],
+    [
+     "Payments on other financing obligations",
+     "(20,366)",
+     "",
+     "(17,436)",
+     "",
+     "(3,705)",
+     ""
+    ],
+    [
+     "Payments for debt issuance costs",
+     "(11,441)",
+     "",
+     "\u2014",
+     "",
+     "(10,148)",
+     ""
+    ],
+    [
+     "Cash distributions to parent",
+     "(1,020,000)",
+     "",
+     "(824,000)",
+     "",
+     "(490,000)",
+     ""
+    ],
+    [
+     "Cash contributions from parent",
+     "115,000",
+     "",
+     "\u2014",
+     "",
+     "340,000",
+     ""
+    ],
+    [
+     "Advances from affiliate, net",
+     "(252,549)",
+     "",
+     "252,549",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "14,998",
+     "",
+     "(547,374)",
+     "",
+     "629,856",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF CASH FLOWS",
+   "prose_after": "(continued)\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1061,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1111,
+     "token": "REPEATING_FOOTER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures*",
+     "$",
+     "(649,459)",
+     "$",
+     "(901,374)",
+     "$",
+     "(2,326,672)"
+    ],
+    [
+     "Contributions and advances for construction costs",
+     "35,284",
+     "",
+     "47,034",
+     "",
+     "408,912",
+     ""
+    ],
+    [
+     "Disposal of property, plant and equipment, net",
+     "(43,900)",
+     "",
+     "(45,720)",
+     "",
+     "(26,469)",
+     ""
+    ],
+    [
+     "Advances to affiliate, net",
+     "(642,734)",
+     "",
+     "33,034",
+     "",
+     "362,213",
+     ""
+    ],
+    [
+     "Contributions to unconsolidated affiliates",
+     "\u2014",
+     "",
+     "(12,250)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of ARO Trust investments",
+     "(53,357)",
+     "",
+     "(72,946)",
+     "",
+     "(51,793)",
+     ""
+    ],
+    [
+     "Proceeds from sale of ARO Trust investments",
+     "45,591",
+     "",
+     "45,479",
+     "",
+     "27,661",
+     ""
+    ],
+    [
+     "Other, net",
+     "\u2014",
+     "",
+     "(37)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(1,308,575)",
+     "",
+     "(906,780)",
+     "",
+     "(1,606,148)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "*   Increase to property, plant and equipment, exclusive of equity AFUDC",
+     "$",
+     "(582,896)",
+     "$",
+     "(854,761)",
+     "$",
+     "(2,085,888)"
+    ],
+    [
+     "Changes in related accounts payable and accrued liabilities",
+     "(66,563)",
+     "",
+     "(46,613)",
+     "",
+     "(240,784)",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "(649,459)",
+     "$",
+     "(901,374)",
+     "$",
+     "(2,326,672)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest (exclusive of amount capitalized)",
+     "$",
+     "299,470",
+     "$",
+     "268,559",
+     "$",
+     "168,418"
+    ],
+    [
+     "Income taxes",
+     "352",
+     "",
+     "76",
+     "",
+     "632",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1119,
+    "end_line": 1154
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "(continued)\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nCorporate Structure and Control\nIn this report, Transco (which includes Transcontinental Gas Pipe Line Company, LLC and, unless the context otherwise requires, all of our majority-owned subsidiaries) is at times referred to in the first person as \u201cwe,\u201d \u201cus\u201d or \u201cour.\u201d\nTransco was indirectly owned by Williams Partners L.P. (WPZ), a publicly traded Delaware limited partnership, which was consolidated by The Williams Companies, Inc. (Williams). On August 10, 2018, Williams completed a merger with WPZ, pursuant to which Williams acquired all of the publicly held outstanding common units of WPZ in exchange for shares of Williams' common stock (WPZ Merger). Williams continued as the surviving entity. Transco is now indirectly owned by Williams.\nTransco is a single member limited liability company, and as such, single member losses are limited to the amount of its investment.\nNature of Operations\nWe are an interstate natural gas transmission company that owns and operates a natural gas pipeline system extending from Texas, Louisiana, Mississippi and the Gulf of Mexico through Alabama, Georgia, South Carolina, North Carolina, Virginia, Maryland, Delaware, Pennsylvania and New Jersey to the New York City metropolitan area. The system serves customers in Texas and the 12 southeast and Atlantic seaboard states mentioned above, including major metropolitan areas in Georgia, Washington D.C., Maryland, North Carolina, New York, New Jersey and Pennsylvania.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1155,
+     "token": "REPEATING_FOOTER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Category of Property",
+     "2020-2019 (1)",
+     "2018"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gathering facilities",
+     "0% - 1.00%",
+     "1.35% - 2.50%"
+    ],
+    [
+     "Storage facilities",
+     "1.86% -  2.05%",
+     "2.10% -  2.25%"
+    ],
+    [
+     "Onshore transmission facilities",
+     "2.50%  -  7.13%",
+     "2.61%  -  5.00%"
+    ],
+    [
+     "Offshore transmission facilities",
+     "1.25%  -  1.25%",
+     "1.20%  -  1.20%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1249,
+    "end_line": 1258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Property, plant and equipment is recorded at cost. The carrying values of these assets are also based on estimates, assumptions and judgments relative to capitalized costs, useful lives and salvage values. These estimates, assumptions and judgments reflect FERC regulations, as well as historical experience and expectations regarding future industry conditions and operations. The FERC identifies installation, construction and replacement costs that are to be capitalized. All other costs are expensed as incurred. Gains or losses from the ordinary sale or retirement of property, plant and equipment are credited or charged to accumulated depreciation; certain other gains or losses are recorded in operating income.\nWe provide for depreciation under the composite (group) method at straight-line FERC prescribed rates that are applied to the cost of the group for transmission facilities, production and gathering facilities and storage facilities. Under this method, assets with similar lives and characteristics are grouped and depreciated as one asset. Included in our depreciation rates is a negative salvage component (net cost of removal) that we currently collect in rates. Our depreciation rates are subject to change each time we file a general rate case with the FERC. Depreciation rates used for major regulated gas plant facilities at December 31, 2020, 2019 and 2018 are as follows:",
+   "prose_after": "(1) Changes in depreciation rates in 2019 were due to placing into effect the rates in Docket No. RP18-1126\non March 1, 2019.\nWe record a liability and increase the basis in the underlying asset for the present value of each expected future Asset Retirement Obligations (ARO) at the time the liability is initially incurred, typically when the asset is acquired or constructed. Measurements of AROs include, as a component of future expected costs, an estimate of the price that a third party would demand, and could expect to receive, for bearing the uncertainties inherent in the obligations, sometimes referred to as a market-risk premium. The ARO asset is depreciated in a manner consistent with the expected timing of the future abandonment of the underlying physical assets. We measure changes in the liability due to passage of time by applying an interest method of allocation. The depreciation of the ARO asset and accretion of the ARO liability are recognized as an increase to a regulatory asset, as management expects to recover such amounts in future rates. The regulatory asset is amortized commensurate with our collection of these costs in rates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1248,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "",
+     "(Thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "226,164",
+     "$",
+     "236,730"
+    ],
+    [
+     "Recognized in revenue",
+     "(10,568)",
+     "",
+     "(10,566)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "215,596",
+     "$",
+     "226,164"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1334,
+    "end_line": 1344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "The majority of our trade receivable balances are due within 30 days. We monitor the credit quality of our counterparties through review of collection trends, credit ratings, and other analysis, such as bankruptcy monitoring. Financial assets are evaluated as one pool. Changes in counterparty risk factors could lead to reassessment of the composition of our financial assets as one pool. We calculate our allowance for credit losses incorporating an aging method. In estimating our expected credit losses, we utilized historical loss rates over many years. Our expected credit loss estimate considered both internal and external forward-looking commodity price expectations, as well as counterparty credit ratings, and factors impacting their near-term liquidity.\nPast due accounts are generally written off against the allowance for doubtful accounts only after all collection attempts have been exhausted. We do not have a material amount of significantly aged receivables at December 31, 2020.\n2. REVENUE RECOGNITION\nRevenue by Category\nOur revenue disaggregation by major service line includes Natural gas sales, Natural gas transportation, Natural gas storage, and Other, which are separately presented on the Condensed Consolidated Statement of Comprehensive Income.\nContract Liabilities\nThe following table presents a reconciliation of our contract liabilities:",
+   "prose_after": "Remaining Performance Obligations\nOur remaining performance obligations primarily include reservation charges on contracted capacity on our firm transportation and storage contracts with customers. Amounts from certain contracts included in the table below, which are subject to the periodic review and approval by the FERC, reflect the rates for such services in our current FERC tariffs, net of estimated reserve for refund, for the life of the related contracts; however, these rates may change based on future tariffs approved by the FERC and the amount and timing of these changes is not currently known. This table excludes the variable consideration component for commodity charges. Certain of our contracts contain evergreen provisions for periods beyond the initial term of the contract. The remaining performance obligation as of December 31, 2020, do not consider potential future performance obligations for which the renewal has not been exercised. The table below also does not include contracts with customers for which the underlying facilities have not received FERC authorization to be placed into service.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1323,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Contract Liabilities",
+     "",
+     "Remaining Performance Obligations",
+     ""
+    ],
+    [
+     "",
+     "(Thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "10,566",
+     "$",
+     "2,349,047"
+    ],
+    [
+     "2022",
+     "10,566",
+     "",
+     "2,196,621",
+     ""
+    ],
+    [
+     "2023",
+     "10,566",
+     "",
+     "2,040,685",
+     ""
+    ],
+    [
+     "2024",
+     "10,568",
+     "",
+     "1,487,964",
+     ""
+    ],
+    [
+     "2025",
+     "10,566",
+     "",
+     "1,453,924",
+     ""
+    ],
+    [
+     "Thereafter",
+     "162,764",
+     "",
+     "12,231,530",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "215,596",
+     "$",
+     "21,759,771"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1351,
+    "end_line": 1366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "Our remaining performance obligations primarily include reservation charges on contracted capacity on our firm transportation and storage contracts with customers. Amounts from certain contracts included in the table below, which are subject to the periodic review and approval by the FERC, reflect the rates for such services in our current FERC tariffs, net of estimated reserve for refund, for the life of the related contracts; however, these rates may change based on future tariffs approved by the FERC and the amount and timing of these changes is not currently known. This table excludes the variable consideration component for commodity charges. Certain of our contracts contain evergreen provisions for periods beyond the initial term of the contract. The remaining performance obligation as of December 31, 2020, do not consider potential future performance obligations for which the renewal has not been exercised. The table below also does not include contracts with customers for which the underlying facilities have not received FERC authorization to be placed into service.\nThe following table presents the amount of the contract liabilities balance expected to be recognized as revenue when performance obligations are satisfied and the transaction price allocated to the remaining performance obligations under certain contracts as of December 31, 2020.",
+   "prose_after": "Accounts Receivable\nReceivables from contracts with customers are included within Receivables - Trade and Receivables - Affiliates and receivables that are not related to contracts with customers are included within the balance of Receivables - Advances to affiliate and Receivables - Other in our Consolidated Balance Sheet.\n3. LEASES\nWe are a lessee through non-cancellable lease agreements for property and equipment consisting primarily of buildings, land, vehicles, and equipment used in both our operations and administrative functions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1323,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease Cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "9,691",
+     "",
+     "$",
+     "10,276",
+     ""
+    ],
+    [
+     "Variable lease cost",
+     "3,135",
+     "",
+     "",
+     "6,867",
+     "",
+     ""
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "12,826",
+     "",
+     "$",
+     "17,143",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of operating lease liabilities",
+     "$",
+     "3,690",
+     "",
+     "$",
+     "9,986",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "$",
+     "78,899",
+     "",
+     "$",
+     "84,979",
+     ""
+    ],
+    [
+     "Operating lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current (included in Accrued liabilities - Other in our Consolidated Balance Sheet)",
+     "$",
+     "6,222",
+     "",
+     "$",
+     "811",
+     ""
+    ],
+    [
+     "Lease liability",
+     "$",
+     "78,688",
+     "",
+     "$",
+     "84,528",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term - operating leases (years)",
+     "15",
+     "",
+     "",
+     "15",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average discount rate - operating leases",
+     "4.66",
+     "",
+     "%",
+     "4.65",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1376,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Accounts Receivable\nReceivables from contracts with customers are included within Receivables - Trade and Receivables - Affiliates and receivables that are not related to contracts with customers are included within the balance of Receivables - Advances to affiliate and Receivables - Other in our Consolidated Balance Sheet.\n3. LEASES\nWe are a lessee through non-cancellable lease agreements for property and equipment consisting primarily of buildings, land, vehicles, and equipment used in both our operations and administrative functions.",
+   "prose_after": "Prior to adopting ASU 2016-02, total rent expense was $10.8 million in 2018 and primarily included in Operation and maintenance and Administrative and general expenses in the Consolidated Statement of Comprehensive Income.\nAs of December 31, 2020, the following table represents our operating lease maturities, including renewal provisions that we have assessed as being reasonably certain of exercise, for each of the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(Thousands)",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "9,471"
+    ],
+    [
+     "2022",
+     "9,611",
+     ""
+    ],
+    [
+     "2023",
+     "9,614",
+     ""
+    ],
+    [
+     "2024",
+     "9,316",
+     ""
+    ],
+    [
+     "2025",
+     "9,065",
+     ""
+    ],
+    [
+     "Thereafter",
+     "74,330",
+     ""
+    ],
+    [
+     "Total future lease payments",
+     "121,407",
+     ""
+    ],
+    [
+     "Less amount representing interest",
+     "36,497",
+     ""
+    ],
+    [
+     "Total obligations under operating leases",
+     "$",
+     "84,910"
+    ]
+   ],
+   "caption_stack": [
+    "(Thousands)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1411,
+    "end_line": 1427
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Prior to adopting ASU 2016-02, total rent expense was $10.8 million in 2018 and primarily included in Operation and maintenance and Administrative and general expenses in the Consolidated Statement of Comprehensive Income.\nAs of December 31, 2020, the following table represents our operating lease maturities, including renewal provisions that we have assessed as being reasonably certain of exercise, for each of the years ended December 31:",
+   "prose_after": "4. CONTINGENT LIABILITIES AND COMMITMENTS\nRate Matters\nGeneral rate case (Docket No. RP18-1126) On August 31, 2018, we filed a general rate case with the FERC for an overall increase in rates and to comply with the terms of the settlement in our prior rate case to file a rate case no later than August 31, 2018. On September 28, 2018, the FERC issued an order accepting and suspending our general rate filing to be effective March 1, 2019, subject to refund and the outcome of a hearing, except that rates for certain services that were proposed as overall rate decreases were accepted, without suspension, to be effective October 1, 2018. On December 31, 2019, we filed a stipulation and agreement with the FERC to resolve all issues in this proceeding without the need for a hearing. On March 24, 2020, the FERC approved the settlement, which became effective on June 1, 2020. Refunds of $284.3 million were issued on July 1, 2020.\nNotice of Inquiry (Docket No. PL19-4-000). On May 21, 2020, the FERC issued a \u201cPolicy Statement on Determining Return on Equity for Natural Gas and Oil Pipelines\u201d (Policy Statement) in Docket No. PL19-4-000 adopting changes to its policies concerning the calculation of a public utility return on equity (ROE). In this Policy Statement, the FERC revised its ROE policy for natural gas pipelines and oil pipelines to provide that the FERC will determine a pipeline\u2019s ROE by averaging the results of the Discounted Cash Flow model and the Capital Asset Pricing Model, with each weighted equally. The FERC declined to adopt any additional policy changes at this time and will address all other issues concerning the determination of a pipeline\u2019s ROE as they arise in future proceedings.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Debentures:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "7.08% due 2026",
+     "$",
+     "7,500",
+     "$",
+     "7,500"
+    ],
+    [
+     "7.25% due 2026",
+     "200,000",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Total debentures",
+     "207,500",
+     "",
+     "207,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "7.85% due 2026",
+     "1,000,000",
+     "",
+     "1,000,000",
+     ""
+    ],
+    [
+     "4.0% due 2028",
+     "400,000",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "3.25% due 2030",
+     "700,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "5.4% due 2041",
+     "375,000",
+     "",
+     "375,000",
+     ""
+    ],
+    [
+     "4.45% due 2042",
+     "400,000",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "4.6% due 2048",
+     "600,000",
+     "",
+     "600,000",
+     ""
+    ],
+    [
+     "3.95% due 2050",
+     "500,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total notes",
+     "3,975,000",
+     "",
+     "2,775,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other financing obligations",
+     "1,104,143",
+     "",
+     "1,115,980",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long-term debt, including current portion",
+     "5,286,643",
+     "",
+     "4,098,480",
+     ""
+    ],
+    [
+     "Unamortized debt issuance costs",
+     "(32,505)",
+     "",
+     "(22,876)",
+     ""
+    ],
+    [
+     "Unamortized debt premium and discount, net",
+     "(14,358)",
+     "",
+     "(10,634)",
+     ""
+    ],
+    [
+     "Long-term debt due within one year",
+     "(22,640)",
+     "",
+     "(20,180)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "5,217,140",
+     "$",
+     "4,044,790"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1471,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT AND FINANCING ARRANGEMENTS"
+    }
+   },
+   "prose_before": "We consider prudently incurred environmental assessment and remediation costs and the costs associated with compliance with environmental standards to be recoverable through rates. To date, we have been permitted recovery of environmental costs, and it is our intent to continue seeking recovery of such costs through future rate filings.\nOther Matters\nVarious other proceedings are pending against us and are considered incidental to our operations.\nSummary\nWe estimate that for all matters for which we are able to reasonably estimate a range of loss, including those noted above and others that are not individually significant, our aggregate reasonably possible losses beyond amounts accrued for all of our contingent liabilities are immaterial to our expected future annual results of operations, liquidity and financial position. These calculations have been made without consideration of any potential recovery from third parties. We have disclosed all significant matters for which we are unable to reasonably estimate a range of possible loss.\nOther Commitments\nWe have commitments for construction and acquisition of property, plant and equipment of approximately $14 million at December 31, 2020.\n5. DEBT AND FINANCING ARRANGEMENTS\nLong-Term Debt\nAt December 31, 2020 and 2019, long-term debt outstanding was as follows (in thousands):",
+   "prose_after": "Aggregate minimum maturities (face value) applicable to long-term debt outstanding at December 31, 2020, for the next five years, are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021:     Other financing obligations",
+     "$",
+     "22,640"
+    ],
+    [
+     "2022:     Other financing obligations",
+     "$",
+     "24,762"
+    ],
+    [
+     "2023:     Other financing obligations",
+     "$",
+     "27,082"
+    ],
+    [
+     "2024:     Other financing obligations",
+     "$",
+     "29,621"
+    ],
+    [
+     "2025:     Other financing obligations",
+     "$",
+     "32,397"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1508,
+    "end_line": 1515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT AND FINANCING ARRANGEMENTS"
+    }
+   },
+   "prose_before": "Aggregate minimum maturities (face value) applicable to long-term debt outstanding at December 31, 2020, for the next five years, are as follows (in thousands):",
+   "prose_after": "No property is pledged as collateral under any of our long-term debt issues.\nRestrictive Debt Covenants\nAt December 31, 2020, none of our debt instruments restrict the amount of distributions to our parent, provided, however, that under the credit facility described below, we are restricted from making distributions to our parent during an event of default if we have directly incurred indebtedness under the credit facility. Our debt agreements contain restrictions on our ability to incur secured debt beyond certain levels and to guarantee certain indebtedness. The indenture governing our $1 billion of 7.85 percent Senior Notes due 2026 further restricts our ability to guarantee certain indebtedness.\nIssuance and Retirement of Long-Term Debt\nOn May 8, 2020, we issued $700 million of 3.25 percent senior unsecured notes due 2030 and $500 million of 3.95 percent senior unsecured notes due 2050 to investors in a private debt placement. As part of the issuance, we entered into a registration rights agreement with the initial purchasers of the unsecured notes. Under the terms of the agreement, we were obligated to file and consummate a registration statement for an offer to exchange the notes for a new issue of substantially identical notes registered under the Securities Act of 1933, as amended, within 365 days from closing and to use commercially reasonable efforts to complete the exchange offer. In the fourth quarter of 2020, we filed the registration statement and completed the exchange offer.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost Basis",
+     "",
+     "Fair Value",
+     "",
+     "Amortized Cost Basis",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Money Market Funds",
+     "$",
+     "5.8",
+     "$",
+     "5.8",
+     "$",
+     "15.8",
+     "$",
+     "15.8"
+    ],
+    [
+     "U.S. Equity Funds",
+     "59.9",
+     "",
+     "108.0",
+     "",
+     "55.3",
+     "",
+     "83.3",
+     ""
+    ],
+    [
+     "International Equity Funds",
+     "34.2",
+     "",
+     "43.7",
+     "",
+     "31.8",
+     "",
+     "35.4",
+     ""
+    ],
+    [
+     "Municipal Bond Funds",
+     "74.9",
+     "",
+     "78.0",
+     "",
+     "64.7",
+     "",
+     "66.1",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "174.8",
+     "$",
+     "235.5",
+     "$",
+     "167.6",
+     "$",
+     "200.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1568,
+    "end_line": 1582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "ARO TRUST"
+    }
+   },
+   "prose_before": "Williams participates in a commercial paper program and Williams management considers amounts outstanding under this program to be a reduction of available capacity under the credit facility. The program allows a maximum outstanding amount at any time of $4.0 billion of unsecured commercial paper notes. At December 31, 2020, Williams had no outstanding commercial paper.\n6. ARO TRUST\nWe are entitled to collect in rates the amounts necessary to fund our ARO. We deposit monthly, into an external trust account (ARO Trust), the revenues specifically designated for ARO. The ARO Trust carries a moderate risk portfolio. The Money Market Funds held in our ARO Trust are considered investments. We measure the financial instruments held in our ARO Trust at fair value. However, in accordance with ASC Topic 980, Regulated Operations, both realized and unrealized gains and losses of the ARO Trust are recorded as regulatory assets or liabilities.\nEffective March 1, 2019, the annual ARO funding obligation based on the Docket No. RP18-1126 rate case filing was approximately $35.9 million. Pursuant to the Docket No. RP18-1126 rate case settlement, the new funding obligation (1) effective March 1, 2019 is approximately $23.8 million and (2) effective March 1, 2020 is approximately $16.0 million\nInvestments within the ARO Trust at fair value were as follows (in millions):",
+   "prose_after": "7. FAIR VALUE MEASUREMENTS\nThe following table presents, by level within the fair value hierarchy, certain of our financial assets and liabilities. The carrying values of short-term financial assets (advances to affiliate and from affiliate) that have variable interest rates, accounts receivable and accounts payable approximate fair value because of the short-term nature of these instruments. Therefore, these assets and liabilities are not presented in the following table.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1547,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Fair Value Measurements Using",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Amount",
+     "",
+     "Fair Value",
+     "",
+     "Quoted Prices In Active Markets for Identical Assets (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Millions)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets (liabilities) at December 31, 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Measured on a recurring basis:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ARO Trust investments",
+     "$",
+     "235.5",
+     "$",
+     "235.5",
+     "$",
+     "235.5",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, including current portion",
+     "(5,239.8)",
+     "",
+     "(6,949.0)",
+     "",
+     "\u2014",
+     "",
+     "(6,949.0)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets (liabilities) at December 31, 2019:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Measured on a recurring basis:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ARO Trust investments",
+     "$",
+     "200.6",
+     "$",
+     "200.6",
+     "$",
+     "200.6",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, including current portion",
+     "(4,065.0)",
+     "",
+     "(5,251.4)",
+     "",
+     "\u2014",
+     "",
+     "(5,251.4)",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements Using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1588,
+    "end_line": 1610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "7. FAIR VALUE MEASUREMENTS\nThe following table presents, by level within the fair value hierarchy, certain of our financial assets and liabilities. The carrying values of short-term financial assets (advances to affiliate and from affiliate) that have variable interest rates, accounts receivable and accounts payable approximate fair value because of the short-term nature of these instruments. Therefore, these assets and liabilities are not presented in the following table.",
+   "prose_after": "Fair Value Methods\nThe following methods and assumptions were used to estimate the fair value of each class of financial instruments for which it is practicable to estimate that value:\nAssets and liabilities measured at fair value on a recurring basis\nARO Trust investments - We deposit a portion of our collected rates, pursuant to the terms of the Docket No. RP18-1126 rate case settlement, into the ARO Trust which is specifically designated to fund future asset retirement obligations. The ARO Trust invests in a portfolio of actively traded mutual funds that are measured at fair value on a recurring basis based on quoted prices in an active market and are reported in Other Assets-Other on the accompanying Consolidated Balance Sheet. However, both realized and unrealized gains and losses are ultimately recorded as regulatory assets or liabilities. See Note 6 for more information regarding the ARO Trust.\nLong-term debt - The disclosed fair value of our long-term debt is determined primarily by a market approach using broker quoted indicative period-end bond prices. The quoted prices are based on observable transactions in less active markets for our debt or similar instruments. The fair values of the financing obligations associated with our Dalton and Atlantic Sunrise expansions, which are included within long-term debt, were determined using an income approach (See Note 5 - Debt and Financing Agreements).",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1621,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Dominion Energy, Inc.",
+     "$",
+     "248.5",
+     "$",
+     "250.7",
+     "$",
+     "113.5"
+    ],
+    [
+     "Duke Energy Corporation",
+     "232.8",
+     "",
+     "222.5",
+     "",
+     "194.5",
+     ""
+    ],
+    [
+     "The Southern Company, Inc.",
+     "216.4",
+     "",
+     "216.1",
+     "",
+     "166.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1659,
+    "end_line": 1666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "TRANSACTIONS WITH MAJOR CUSTOMERS AND AFFILIATES"
+    }
+   },
+   "prose_before": "The Williams Companies, Inc. 2007 Incentive Plan, as subsequently amended and restated, (Plan) provides for Williams\u2019 common stock-based awards to both employees and non-management directors. The Plan permits the granting of various types of awards including, but not limited to, restricted stock units and stock options. Awards may be granted for no consideration other than prior and future services or based on certain financial performance targets achieved.\nWilliams currently bills us directly for compensation expense related to stock-based compensation awards based on the fair value of the awards. We are also billed for our proportionate share of Williams\u2019 and other affiliates\u2019 stock-based compensation expense through various allocation processes.\nTotal stock-based compensation expense for the years ended December 31, 2020, 2019, and 2018 was $4.0 million, $5.9 million, and $6.3 million, respectively, excluding amounts allocated from WPZ and Williams.\n9. TRANSACTIONS WITH MAJOR CUSTOMERS AND AFFILIATES\nMajor Customers\nOperating revenues received from three of our major customers in 2020, 2019 and 2018 are as follows (in millions):",
+   "prose_after": "Affiliates\nWe are a participant in Williams' cash management program, and we make advances to and receive advances from Williams. At December 31, 2020, our advances to Williams totaled approximately $642.7 million. These advances are represented by demand notes and are classified as Receivables - Advances to affiliate in the accompanying Consolidated Balance Sheet. At December 31, 2019, our advances from Williams totaled approximately $252.5 million. These advances are represented by demand notes and are classified as Payables - Advances from affiliate in the accompanying Consolidated Balance Sheet. Advances are stated at the historical carrying amounts. Interest expense and income are recognized when chargeable and collectability is reasonably assured. The interest rate on these intercompany demand notes is based upon the daily overnight investment rate paid on Williams' excess cash at the end of each month. At December 31, 2020, the interest rate was 0.01 percent.\nIncluded in Operating Revenues in the accompanying Consolidated Statement of Comprehensive Income for 2020, 2019 and 2018 are revenues received from affiliates of $11.4 million, $10.5 million, and $10.1 million, respectively. The rates charged to provide sales and services to affiliates are the same as those that are charged to similarly-situated nonaffiliated customers.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1677,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "459,209",
+     "$",
+     "394,323"
+    ],
+    [
+     "Accretion",
+     "23,142",
+     "",
+     "21,806",
+     ""
+    ],
+    [
+     "New obligations",
+     "1,154",
+     "",
+     "103",
+     ""
+    ],
+    [
+     "Changes in estimates of existing obligations (1)",
+     "(21,889)",
+     "",
+     "49,070",
+     ""
+    ],
+    [
+     "Property dispositions/obligations settled",
+     "(11,115)",
+     "",
+     "(6,093)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "450,501",
+     "$",
+     "459,209"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1696,
+    "end_line": 1708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "ASSET RETIREMENT OBLIGATIONS"
+    }
+   },
+   "prose_before": "During 2019, we recognized a non-cash distribution of $25 million to our parent related to a settlement agreement between Williams and a co-owner in our Atlantic Sunrise project. Although the agreement was between Williams and a third party, since the agreement was in part related to our Atlantic Sunrise project, the settlement amount was added to our Atlantic Sunrise project financing obligation. (See Note 5)\nEffective December 31, 2019, we made a $36.6 million non-cash distribution to our parent of our interests in our wholly-owned subsidiaries, Cardinal Operating Company, LLC, Pine Needle Operating Company, LLC, TransCarolina LNG Company, LLC, and TransCardinal Company, LLC.\n10. ASSET RETIREMENT OBLIGATIONS\nThese accrued obligations relate to underground storage caverns, offshore platforms, pipelines, and gas transmission facilities. At the end of the useful life of each respective asset, we are legally obligated to plug storage caverns and remove any related surface equipment, to dismantle offshore platforms, to cap certain gathering pipelines at the wellhead connection and remove any related surface equipment, and to remove certain components of gas transmission facilities from the ground.\nDuring 2020 and 2019, our overall asset retirement obligation changed as follows (in thousands):",
+   "prose_after": "(1) Changes in estimates of existing obligations are primarily due to the annual review process, which considers various factors including inflation rate, current estimates for removal costs, discount rates, and the estimated remaining life of assets. The decrease in 2020 is primarily due to a decrease in the inflation rate. The increase in 2019 is primarily due to an increase in the inflation rate and a decrease in the discount rate.\nWe are entitled to collect in rates the amounts necessary to fund our ARO. All funds received for such retirements are deposited into an external trust account dedicated to funding our ARO (See Note 6).\n11. REGULATORY ASSETS AND LIABILITIES\nThe regulatory assets and regulatory liabilities resulting from our application of the provisions of ASC Topic 980, Regulated Operations, included in the accompanying Consolidated Balance Sheet at December 31, 2020 and December 31, 2019 are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1677,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Regulatory Assets",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Grossed-up deferred taxes on equity funds used during construction",
+     "$",
+     "36.1",
+     "$",
+     "37.5"
+    ],
+    [
+     "Asset retirement obligations",
+     "139.5",
+     "",
+     "147.6",
+     ""
+    ],
+    [
+     "Asset retirement costs - Eminence",
+     "36.6",
+     "",
+     "42.2",
+     ""
+    ],
+    [
+     "Deferred cash out",
+     "70.0",
+     "",
+     "64.4",
+     ""
+    ],
+    [
+     "Fuel cost",
+     "34.1",
+     "",
+     "40.2",
+     ""
+    ],
+    [
+     "Electric power cost",
+     "7.8",
+     "",
+     "8.4",
+     ""
+    ],
+    [
+     "Slug catcher",
+     "6.4",
+     "",
+     "6.6",
+     ""
+    ],
+    [
+     "Other",
+     "14.2",
+     "",
+     "13.5",
+     ""
+    ],
+    [
+     "Total Regulatory Assets",
+     "$",
+     "344.7",
+     "$",
+     "360.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1718,
+    "end_line": 1733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "(1) Changes in estimates of existing obligations are primarily due to the annual review process, which considers various factors including inflation rate, current estimates for removal costs, discount rates, and the estimated remaining life of assets. The decrease in 2020 is primarily due to a decrease in the inflation rate. The increase in 2019 is primarily due to an increase in the inflation rate and a decrease in the discount rate.\nWe are entitled to collect in rates the amounts necessary to fund our ARO. All funds received for such retirements are deposited into an external trust account dedicated to funding our ARO (See Note 6).\n11. REGULATORY ASSETS AND LIABILITIES\nThe regulatory assets and regulatory liabilities resulting from our application of the provisions of ASC Topic 980, Regulated Operations, included in the accompanying Consolidated Balance Sheet at December 31, 2020 and December 31, 2019 are as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1760,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Regulatory Liabilities",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Negative salvage",
+     "$",
+     "504.5",
+     "$",
+     "482.6"
+    ],
+    [
+     "Deferred taxes - liability",
+     "392.8",
+     "",
+     "423.5",
+     ""
+    ],
+    [
+     "Sentinel meter station depreciation",
+     "6.8",
+     "",
+     "6.6",
+     ""
+    ],
+    [
+     "Postretirement benefits other than pension",
+     "60.9",
+     "",
+     "68.0",
+     ""
+    ],
+    [
+     "Pension",
+     "38.9",
+     "",
+     "43.3",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Total Regulatory Liabilities",
+     "$",
+     "1,003.9",
+     "$",
+     "1,024.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1734,
+    "end_line": 1747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The significant regulatory assets and liabilities include:\nGrossed-up deferred taxes on equity funds used during construction: Regulatory asset balance established to offset the deferred tax for the equity component of the allowance for funds used during the construction of long-lived assets. All amounts were generated during the period that we were a taxable entity. Taxes on capitalized funds used during construction and the offsetting deferred income taxes are included in the rate base and are recovered over the depreciable lives of the long-lived asset to which they relate.\nAsset retirement obligations: Regulatory asset balance established to offset depreciation of the ARO asset and changes in the ARO liability due to the passage of time. The regulatory asset is being recovered through our rates, and is being amortized to expense consistent with the amounts collected in rates (See Note 10).\nAsset retirement costs - Eminence: Regulatory asset balance associated with the Eminence Storage Field retirement costs. The regulatory asset is being recovered through our rates and is being amortized to expense consistent with the amounts collected in rates.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1760,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "1.4",
+     "$",
+     "1.4"
+    ],
+    [
+     "Audit-related fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Tax fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All other fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total fees",
+     "$",
+     "1.4",
+     "$",
+     "1.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1817,
+    "end_line": 1828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "Under the supervision and with the participation of our management, including our Senior Vice President and our Vice President and Chief Accounting Officer, we assessed the effectiveness of our internal control over financial reporting as of December 31, 2020, based on the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (COSO) in Internal Control \u2014 Integrated Framework (2013). Based on our assessment, we concluded that, as of December 31, 2020, our internal control over financial reporting was effective.\nThis annual report does not include a report of the company\u2019s registered public accounting firm regarding internal control over financial reporting. A report by the company\u2019s registered public accounting firm is not required pursuant to rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this annual report.\nItem 9B. Other information\nNone.\nPART III\nSince we meet the conditions set forth in General Instruction (I)(1)(a) and (b) of Form 10-K, the information required by Items 10, 11, 12, and 13, is omitted.\nItem 14. Principal Accounting Fees and Services\nFees for professional services provided by our independent registered public accounting firm in each of the last two fiscal years in each of the following categories are (in millions):",
+   "prose_after": "Fees for audit services include fees associated with the annual audit, the reviews for our quarterly reports on Form 10-Q, the reviews for other SEC and FERC filings, and accounting consultation.\nAs a wholly owned subsidiary of Williams, we do not have a separate audit committee. The Williams Audit Committee is responsible for the appointment, compensation, retention, and oversight of Ernst & Young LLP (\u201cEY\u201d) as such appointment relates to us and Williams\u2019 other affiliates. The Williams Audit Committee is responsible for overseeing the determination of fees associated with EY\u2019s audit of our financial statements. The Williams Audit Committee has established a policy regarding pre-approval of all audit and non-audit services provided by EY to Williams and its affiliates. On an ongoing basis, management presents specific projects and categories of service, including projects and categories of service relating to us, to the Williams Audit Committee to request advance approval. The Williams Audit Committee reviews those requests and advises management if the Williams Audit Committee approves the engagement of EY. On a periodic basis, management reports to the Williams Audit Committee regarding the actual spending for such projects and services compared to the approved amounts. The Williams Audit Committee may also delegate the authority to pre-approve audit and permitted non-audit services, excluding services related to internal control over financial reporting, to a subcommittee of one or more committee members, provided that any such pre-approvals are reported on at a subsequent Williams Audit Committee meeting.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1800,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page Reference to 2020 10-K"
+    ],
+    [
+     "A. 1 and 2. Transcontinental Gas Pipe Line Company, LLC financials",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Index",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Covered by Report of Independent Registered Public Accounting Firm:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Comprehensive Income for the Years Ended December 31, 2020, 2019 and 2018",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheet as of December 31, 2020 and 2019",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Member\u2019s Equity for the Years Ended December 31, 2020, 2019 and 2018",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Cash Flows for the Years Ended December 31, 2020, 2019 and 2018",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "37"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "The following schedules are omitted because of the absence of the conditions under which they are required: I, II, III, IV, and V.",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page Reference to 2020 10-K",
+    "A. 1 and 2. Transcontinental Gas Pipe Line Company, LLC financials"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1838,
+    "end_line": 1859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "As a wholly owned subsidiary of Williams, we do not have a separate audit committee. The Williams Audit Committee is responsible for the appointment, compensation, retention, and oversight of Ernst & Young LLP (\u201cEY\u201d) as such appointment relates to us and Williams\u2019 other affiliates. The Williams Audit Committee is responsible for overseeing the determination of fees associated with EY\u2019s audit of our financial statements. The Williams Audit Committee has established a policy regarding pre-approval of all audit and non-audit services provided by EY to Williams and its affiliates. On an ongoing basis, management presents specific projects and categories of service, including projects and categories of service relating to us, to the Williams Audit Committee to request advance approval. The Williams Audit Committee reviews those requests and advises management if the Williams Audit Committee approves the engagement of EY. On a periodic basis, management reports to the Williams Audit Committee regarding the actual spending for such projects and services compared to the approved amounts. The Williams Audit Committee may also delegate the authority to pre-approve audit and permitted non-audit services, excluding services related to internal control over financial reporting, to a subcommittee of one or more committee members, provided that any such pre-approvals are reported on at a subsequent Williams Audit Committee meeting.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules",
+   "prose_after": "3. Exhibits:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1860,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2",
+     "Certificate of Conversion dated December 22, 2008 and effective December 31, 2008 (filed on February 24, 2011 as Exhibit 2.1 to our annual report on Form 10-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Certificate of Formation executed as of December 22, 2008 and effective December 31, 2008 (filed on February 24, 2011 as Exhibit 3.1 to our annual report on Form 10-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Operating Agreement of Transcontinental Gas Pipe Line Company, LLC dated February 17, 2010 (filed on October 28, 2010 as Exhibit 3.2 to our quarterly report on Form 10-Q (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Senior Indenture dated July 15, 1996 between Transcontinental Gas Pipe Line Corporation and Citibank, N.A., as Trustee (filed on April 2, 1996 as Exhibit 4.1 to our registration statement Form S-3 (File No. 333-02155) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Indenture, dated as of August 12, 2011 between Transcontinental Gas Pipe Line Company, LLC and The Bank of New York Mellon Trust Company, N.A., as Trustee (filed on August 12, 2011 as Exhibit 4.1 to our current report on Form 8-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Indenture, dated as of July 13, 2012, between Transcontinental Gas Pipe Line Company, LLC and The Bank of New York Mellon Trust Company, N.A., as Trustee (filed on July 16, 2012 as Exhibit 4.1 to our current report Form 8-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Indenture, dated as of January 22, 2016, between Transcontinental Gas Pipe Line Company, LLC and The Bank of New York Mellon Trust Company, N.A., as trustee (filed on January 22, 2016 as Exhibit 4.1 to our current report on Form 8-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Indenture, dated as of March 15, 2018, between Transcontinental Gas Pipe Line Company, LLC and The Bank of New York Mellon Trust Company, N.A., as trustee (filed on March 15, 2018 as Exhibit 4.1 to our current report on Form 8-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Indenture, dated as of May 8, 2020, between Transcontinental Gas Pipe Line Company, LLC and The Bank of New York Mellon Trust Company, N.A., as trustee (filed on May 8, 2020 as Exhibit 4.1 to our current report on Form 8-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "10.1",
+     "Administrative Services Agreement, dated as of February 17, 2010, by and between Transco Pipeline Services LLC and Transcontinental Gas Pipe Line Company, LLC (filed on February 22, 2010 as Exhibit 10.3 to Williams Partners L.P.\u2019s, Form 8-K (File No. 001-32599) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Assignment Agreement dated February 13, 2013 by and between Transco Pipeline Services LLC and Williams WPC-I, LLC, effective January 1, 2013 (filed on February 27, 2013 as Exhibit 10.2 to our annual report on Form 10-K (File No. 001-07584) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Credit Agreement dated as of July 13, 2018, between The Williams Companies, Inc., Northwest Pipeline LLC, and Transcontinental Gas Pipeline Company, LLC, as co-borrowers, the lenders named therein, and Citibank, N.A. as Administrative Agent (filed on July 17, 2018 as Exhibit 10.1 to The Williams Companies, Inc.\u2019s Current Report on Form 8-K (File No. 001-04174) and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of Ernst & Young LLP, Independent Registered Public Accounting Firm of Transcontinental Gas Pipe Line Company, LLC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer pursuant to Rules 13a-14(a) and 15d-14(a) promulgated under the Securities Exchange Act of 1934, as amended, and Item 601(b)(31) of Regulation S-K, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer pursuant to Rules 13a-14(a) and 15d-14(a) promulgated under the Securities Exchange Act of 1934, as amended, and Item 601(b)(31) of Regulation S-K, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32 **",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1863,
+    "end_line": 1914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "3. Exhibits:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1860,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1915,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "101.INS*",
+     "XBRL Instance Document. The instance document dos not appear in the interactive data file because its XBRL tags are embedded within the inline XBRL document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File. The cover page interactive data file does not appear in the interactive data file because its XBRL tags are embedded within the inline XBRL document (contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1916,
+    "end_line": 1932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nItem 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1915,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "TRANSCONTINENTAL GAS PIPE LINE COMPANY, LLC (Registrant)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Billeigh W. Mark"
+    ],
+    [
+     "",
+     "Billeigh W. Mark"
+    ],
+    [
+     "",
+     "Controller"
+    ]
+   ],
+   "caption_stack": [
+    "TRANSCONTINENTAL GAS PIPE LINE COMPANY, LLC (Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1945,
+    "end_line": 1953
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.\nItem 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: February 24, 2021\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Signature",
+     "Title"
+    ],
+    [
+     "/s/ Scott A. Hallam",
+     "Management Committee Member and Senior Vice President (Principal Executive Officer)"
+    ],
+    [
+     "  Scott A. Hallam",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ John D. Porter",
+     "Vice President and Chief Accounting Officer (Principal Financial Officer)"
+    ],
+    [
+     "  John D. Porter",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Billeigh W. Mark",
+     "Controller (Principal Accounting Officer)"
+    ],
+    [
+     "Billeigh W. Mark",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1958,
+    "end_line": 1972
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "REGULATORY ASSETS AND LIABILITIES"
+    }
+   },
+   "prose_before": "Date: February 24, 2021\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "Date: February 24, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

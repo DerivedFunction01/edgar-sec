@@ -1,0 +1,7406 @@
+{
+ "accession": "0001193125-26-218624",
+ "cik": "0001066656",
+ "form": "10-Q",
+ "filing_date": "2026-05-12",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d132994d10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "13-4018068"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2026\nOR [ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 000-25603\nCERES CLASSIC L.P.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o Ceres Managed Futures LLC\n1585 Broadway\nNew York, New York 10036\n(Address of principal executive offices) (Zip Code)\n(855) 672-4468\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Trading Symbol(s)",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 45,
+    "end_line": 53
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o Ceres Managed Futures LLC\n1585 Broadway\nNew York, New York 10036\n(Address of principal executive offices) (Zip Code)\n(855) 672-4468\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None.",
+   "prose_after": "Indicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2026 (Unaudited)",
+     "",
+     "December 31,\n\n 2025",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity in trading account:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrestricted cash",
+     "$",
+     "118,358,655",
+     "$",
+     "99,411,668"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "17,750,317",
+     "",
+     "24,693,956"
+    ],
+    [
+     "Foreign cash (cost $1,066,366 and $1,395,855 at",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31, 2026 and December 31, 2025, respectively)",
+     "",
+     "1,074,021",
+     "",
+     "1,430,209"
+    ],
+    [
+     "Net unrealized appreciation on open futures contracts",
+     "",
+     "1,473,147",
+     "",
+     "1,681,335"
+    ],
+    [
+     "Net unrealized appreciation on open forward contracts",
+     "",
+     "1,037,556",
+     "",
+     "1,600,596"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total equity in trading account\n(1)",
+     "",
+     "139,693,696",
+     "",
+     "128,817,764"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest receivable",
+     "",
+     "330,088",
+     "",
+     "292,956"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "140,023,784",
+     "$",
+     "129,110,720"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Partners\u2019 Capital:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative and General Partner\u2019s fees",
+     "$",
+     "86,077",
+     "$",
+     "80,113"
+    ],
+    [
+     "Management fees",
+     "",
+     "137,898",
+     "",
+     "126,021"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "138,805",
+     "",
+     "-"
+    ],
+    [
+     "Professional fees",
+     "",
+     "345,536",
+     "",
+     "306,036"
+    ],
+    [
+     "Redemptions payable to General Partner",
+     "",
+     "-",
+     "",
+     "140,000"
+    ],
+    [
+     "Redemptions payable to Limited Partners",
+     "",
+     "427,099",
+     "",
+     "1,422,787"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,135,415",
+     "",
+     "2,074,957"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partner, Class Z, 108,161.520 Units outstanding at March 31, 2026 and December 31, 2025",
+     "",
+     "1,531,029",
+     "",
+     "1,377,669"
+    ],
+    [
+     "Limited Partners, Class A, 4,259,281.107 and 4,322,499.482 Units outstanding at March 31, 2026 and December 31, 2025, respectively",
+     "",
+     "137,200,504",
+     "",
+     "125,516,968"
+    ],
+    [
+     "Limited Partners, Class Z, 11,079.649 Units outstanding at March 31, 2026 and December 31, 2025",
+     "",
+     "156,836",
+     "",
+     "141,126"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total partners\u2019 capital (net asset value)",
+     "",
+     "138,888,369",
+     "",
+     "127,035,763"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners\u2019 capital",
+     "$",
+     "140,023,784",
+     "$",
+     "129,110,720"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per Unit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A",
+     "$",
+     "32.21",
+     "$",
+     "29.04"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class Z",
+     "$",
+     "14.16",
+     "$",
+     "12.74"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Large accelerated filer    Accelerated filer        Non-accelerated filer\n[X]\nSmaller reporting company  Emerging growth company\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes No [X]\nAs of April 30, 2026, 4,231,614.106 Limited Partnership Class A Units were outstanding and 11,079.649 Limited Partnership Class Z Units were outstanding.\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements.\nConsolidated Statements of Financial Condition",
+   "prose_after": "(1) As of March 31, 2026 and December 31, 2025, the amounts include $129,360,189 and $118,852,107, respectively, held in trading accounts with MS&Co.\nConsolidated Condensed Schedule of Investments\nMarch 31, 2026",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 145,
+     "token": "REPEATING_FOOTER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Notional ($)/ Number of Contracts",
+     "",
+     "Fair Value",
+     "",
+     "% of Partners\u2019 Capital",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts Purchased",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "298",
+     "",
+     "$ (401,425)",
+     "",
+     "(0.29)",
+     "%"
+    ],
+    [
+     "Energy",
+     "",
+     "146",
+     "",
+     "1,317,384",
+     "",
+     "0.95",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "542",
+     "",
+     "310,778",
+     "",
+     "0.22",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "162",
+     "",
+     "(407,331)",
+     "",
+     "(0.29)",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "96",
+     "",
+     "(191,797)",
+     "",
+     "(0.14)",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "258",
+     "",
+     "(235,440)",
+     "",
+     "(0.17)",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "44",
+     "",
+     "114,032",
+     "",
+     "0.08",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "178",
+     "",
+     "(197,733)",
+     "",
+     "(0.14)",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "126",
+     "",
+     "60,980",
+     "",
+     "0.05",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts purchased",
+     "",
+     "",
+     "",
+     "369,448",
+     "",
+     "0.27",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts Sold",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "364",
+     "",
+     "147,209",
+     "",
+     "0.10",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "42",
+     "",
+     "76,554",
+     "",
+     "0.06",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "79",
+     "",
+     "(49,227)",
+     "",
+     "(0.04)",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "198",
+     "",
+     "145,047",
+     "",
+     "0.10",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "431",
+     "",
+     "91,431",
+     "",
+     "0.07",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "1,939",
+     "",
+     "723,444",
+     "",
+     "0.52",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "32",
+     "",
+     "27,560",
+     "",
+     "0.02",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "8",
+     "",
+     "3,587",
+     "",
+     "0.00",
+     "*"
+    ],
+    [
+     "Softs",
+     "",
+     "120",
+     "",
+     "(61,906)",
+     "",
+     "(0.04)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts sold",
+     "",
+     "",
+     "",
+     "1,103,699",
+     "",
+     "0.79",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open futures contracts",
+     "",
+     "",
+     "",
+     "$ 1,473,147",
+     "",
+     "1.06%",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized Appreciation on Open Forward Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "$ 184,787,289",
+     "",
+     "$ 2,038,031",
+     "",
+     "1.47",
+     "%"
+    ],
+    [
+     "Metals",
+     "",
+     "238",
+     "",
+     "1,211,705",
+     "",
+     "0.87",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open forward contracts",
+     "",
+     "",
+     "",
+     "3,249,736",
+     "",
+     "2.34",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized Depreciation on Open Forward Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "$ 131,037,875",
+     "",
+     "(1,434,712)",
+     "",
+     "(1.03)",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "208",
+     "",
+     "(777,468)",
+     "",
+     "(0.56)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open forward contracts",
+     "",
+     "",
+     "",
+     "(2,212,180)",
+     "",
+     "(1.59)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open forward contracts",
+     "",
+     "",
+     "",
+     "$ 1,037,556",
+     "",
+     "0.75",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 157,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "(1) As of March 31, 2026 and December 31, 2025, the amounts include $129,360,189 and $118,852,107, respectively, held in trading accounts with MS&Co.\nConsolidated Condensed Schedule of Investments\nMarch 31, 2026",
+   "prose_after": "* Due to rounding.\nConsolidated Condensed Schedule of Investments\nDecember 31, 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 214,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Notional ($)/ Number of Contracts",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "% of Partners\u2019 Capital",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts Purchased",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "567",
+     "$",
+     "105,577",
+     "",
+     "",
+     "0.08",
+     "%"
+    ],
+    [
+     "Energy",
+     "",
+     "72",
+     "",
+     "12,649",
+     "",
+     "",
+     "0.01",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "238",
+     "",
+     "(551,005)",
+     "",
+     "",
+     "(0.43)",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "582",
+     "",
+     "240,967",
+     "",
+     "",
+     "0.19",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "458",
+     "",
+     "(181,235)",
+     "",
+     "",
+     "(0.15)",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "958",
+     "",
+     "(152,943)",
+     "",
+     "",
+     "(0.12)",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "48",
+     "",
+     "90,970",
+     "",
+     "",
+     "0.07",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "358",
+     "",
+     "1,586,972",
+     "",
+     "",
+     "1.25",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "120",
+     "",
+     "(80,263)",
+     "",
+     "",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts purchased",
+     "",
+     "",
+     "",
+     "1,071,689",
+     "",
+     "",
+     "0.84",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts Sold",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "420",
+     "",
+     "178,306",
+     "",
+     "",
+     "0.14",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "239",
+     "",
+     "4,852",
+     "",
+     "",
+     "0.00",
+     "*"
+    ],
+    [
+     "Grains",
+     "",
+     "860",
+     "",
+     "466,865",
+     "",
+     "",
+     "0.37",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "81",
+     "",
+     "(14,689)",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "32",
+     "",
+     "(820)",
+     "",
+     "",
+     "(0.00)",
+     "*"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "1,582",
+     "",
+     "38,705",
+     "",
+     "",
+     "0.03",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "27",
+     "",
+     "(4,160)",
+     "",
+     "",
+     "(0.00)",
+     "*"
+    ],
+    [
+     "Metals",
+     "",
+     "2",
+     "",
+     "(44,810)",
+     "",
+     "",
+     "(0.04)",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "305",
+     "",
+     "(14,603)",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total futures contracts sold",
+     "",
+     "",
+     "",
+     "609,646",
+     "",
+     "",
+     "0.48",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open futures contracts",
+     "",
+     "",
+     "$",
+     "1,681,335",
+     "",
+     "",
+     "1.32",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized Appreciation on Open Forward Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "195,243,984",
+     "$",
+     "1,189,681",
+     "",
+     "",
+     "0.93",
+     "%"
+    ],
+    [
+     "Metals",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LME COPPER FUTURE; Mar 26",
+     "",
+     "50",
+     "",
+     "1,762,685",
+     "",
+     "",
+     "1.39",
+     ""
+    ],
+    [
+     "Other: Mar 26",
+     "",
+     "293",
+     "",
+     "888,756",
+     "",
+     "",
+     "0.70",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open forward contracts",
+     "",
+     "",
+     "",
+     "3,841,122",
+     "",
+     "",
+     "3.02",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized Depreciation on Open Forward Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "166,080,892",
+     "",
+     "(901,297)",
+     "",
+     "",
+     "(0.71)",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "326",
+     "",
+     "(1,339,229)",
+     "",
+     "",
+     "(1.05)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open forward contracts",
+     "",
+     "",
+     "",
+     "(2,240,526)",
+     "",
+     "",
+     "(1.76)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open forward contracts",
+     "",
+     "",
+     "$",
+     "1,600,596",
+     "",
+     "",
+     "1.26",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 224,
+    "end_line": 280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* Due to rounding.\nConsolidated Condensed Schedule of Investments\nDecember 31, 2025",
+   "prose_after": "* Due to rounding.\nConsolidated Statements of Income and Expenses",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 283,
+     "token": "REPEATING_FOOTER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Investment Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "1,003,580",
+     "",
+     "$",
+     "1,290,474",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Clearing fees",
+     "",
+     "139,695",
+     "",
+     "",
+     "126,518",
+     ""
+    ],
+    [
+     "Administrative and General Partner\u2019s fees",
+     "",
+     "247,841",
+     "",
+     "",
+     "272,827",
+     ""
+    ],
+    [
+     "Ongoing placement agent fees",
+     "",
+     "244,858",
+     "",
+     "",
+     "269,647",
+     ""
+    ],
+    [
+     "Management fees",
+     "",
+     "393,808",
+     "",
+     "",
+     "448,874",
+     ""
+    ],
+    [
+     "Incentive fees",
+     "",
+     "138,805",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "118,182",
+     "",
+     "",
+     "132,513",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,283,189",
+     "",
+     "",
+     "1,250,379",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "",
+     "(279,609)",
+     "",
+     "",
+     "40,095",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trading Results:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net gains (losses) on trading of commodity interests:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gains (losses) on closed contracts",
+     "",
+     "14,901,793",
+     "",
+     "",
+     "2,082,711",
+     ""
+    ],
+    [
+     "Net change in unrealized gains (losses) on open contracts",
+     "",
+     "(797,927)",
+     "",
+     "",
+     "(2,119,947)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total trading results",
+     "",
+     "14,103,866",
+     "",
+     "",
+     "(37,236)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "13,824,257",
+     "",
+     "$",
+     "2,859",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per Unit*:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A",
+     "$",
+     "3.17",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class Z",
+     "$",
+     "1.42",
+     "",
+     "$",
+     "0.02",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average Units outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A",
+     "",
+     "4,295,595.949",
+     "",
+     "",
+     "4,811,803.016",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class Z",
+     "",
+     "119,241.169",
+     "",
+     "",
+     "130,230.180",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 293,
+    "end_line": 344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* Due to rounding.\nConsolidated Statements of Income and Expenses",
+   "prose_after": "* Represents the change in net asset value per Unit during the period.*\nConsolidated Statements of Changes in Partners\u2019 Capital\nFor the Three Months Ended March 31, 2026 and 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 291,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 347,
+     "token": "REPEATING_FOOTER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Class\nZ",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     "",
+     "Amount",
+     "",
+     "Units",
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital, December 31, 2024",
+     "$",
+     "143,957,312",
+     "",
+     "",
+     "4,849,003.081",
+     "",
+     "$",
+     "1,683,226",
+     "",
+     "130,230.180",
+     "$",
+     "145,640,538",
+     "",
+     "",
+     "4,979,233.261",
+     ""
+    ],
+    [
+     "Redemptions - Limited Partners",
+     "",
+     "(4,499,261)",
+     "",
+     "",
+     "(151,123.194)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,499,261)",
+     "",
+     "",
+     "(151,123.194)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "(149)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,008",
+     "",
+     "-",
+     "",
+     "2,859",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital, March 31, 2025",
+     "$",
+     "139,457,902",
+     "",
+     "",
+     "4,697,879.887",
+     "",
+     "$",
+     "1,686,234",
+     "",
+     "130,230.180",
+     "$",
+     "141,144,136",
+     "",
+     "",
+     "4,828,110.067",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Class Z",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     "",
+     "Amount",
+     "",
+     "Units",
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital, December 31, 2025",
+     "$",
+     "125,516,968",
+     "",
+     "",
+     "4,322,499.482",
+     "",
+     "$",
+     "1,518,795",
+     "",
+     "119,241.169",
+     "$",
+     "127,035,763",
+     "",
+     "",
+     "4,441,740.651",
+     ""
+    ],
+    [
+     "Redemptions - Limited Partners",
+     "",
+     "(1,971,651)",
+     "",
+     "",
+     "(63,218.375)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,971,651)",
+     "",
+     "",
+     "(63,218.375)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "13,655,187",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "169,070",
+     "",
+     "-",
+     "",
+     "13,824,257",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Capital, March 31, 2026",
+     "$",
+     "137,200,504",
+     "",
+     "",
+     "4,259,281.107",
+     "",
+     "$",
+     "1,687,865",
+     "",
+     "119,241.169",
+     "$",
+     "138,888,369",
+     "",
+     "",
+     "4,378,522.276",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 359,
+    "end_line": 384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* Represents the change in net asset value per Unit during the period.*\nConsolidated Statements of Changes in Partners\u2019 Capital\nFor the Three Months Ended March 31, 2026 and 2025",
+   "prose_after": "1. Organization:\nCeres Classic L.P. (the \u201cPartnership\u201d) is a Delaware limited partnership organized in 1998 to engage primarily in the speculative trading of futures contracts, options on futures and forward contracts, forward contracts on physical commodities and other commodity interests, including, but not limited to, foreign currencies, financial instruments, metals, energy and agricultural products (collectively, \u201cFutures Interests\u201d) (refer to Note 4, \u201cFinancial Instrument Risks\u201d). The General Partner (as defined below) may also determine to invest up to all of the Partnership\u2019s assets in United States (\u201cU.S.\u201d) Treasury bills and/or money market mutual funds, including money market mutual funds managed by Morgan Stanley or its affiliates.\nCeres Managed Futures LLC, a Delaware limited liability company, acts as the general partner (\u201cCeres\u201d or the \u201cGeneral Partner\u201d) and commodity pool operator of the Partnership. The General Partner is a wholly-owned subsidiary of Morgan Stanley Capital Management LLC (\u201cMSCM\u201d). MSCM is ultimately owned by Morgan Stanley. Morgan Stanley is a publicly held company whose shares are listed on the New York Stock Exchange. Morgan Stanley is engaged in various financial services and other businesses. Morgan Stanley Smith Barney LLC, doing business as Morgan Stanley Wealth Management (\u201cMorgan Stanley Wealth Management\u201d), currently acts as the placement agent for the Partnership. Morgan Stanley Wealth Management is a principal subsidiary of MSCM.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 357,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 385,
+     "token": "REPEATING_FOOTER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class Z",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class Z",
+     "",
+     ""
+    ],
+    [
+     "Per Unit Performance (for a unit outstanding throughout the period):*",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized and unrealized gains (losses)",
+     "$",
+     "3.23",
+     "",
+     "$",
+     "1.42",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "",
+     "(0.06)",
+     "",
+     "",
+     "-",
+     "****",
+     "",
+     "0.01",
+     "",
+     "",
+     "0.03",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) for the period",
+     "",
+     "3.17",
+     "",
+     "",
+     "1.42",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "0.02",
+     ""
+    ],
+    [
+     "Net asset value per Unit, beginning of period",
+     "",
+     "29.04",
+     "",
+     "",
+     "12.74",
+     "",
+     "",
+     "29.69",
+     "",
+     "",
+     "12.93",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per Unit, end of period",
+     "$",
+     "32.21",
+     "",
+     "$",
+     "14.16",
+     "",
+     "$",
+     "29.69",
+     "",
+     "$",
+     "12.95",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended\n\n March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class Z",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class Z",
+     "",
+     ""
+    ],
+    [
+     "Ratios to Average Limited Partners\u2019 Capital: **",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss) ***",
+     "",
+     "(0.5)",
+     "%",
+     "",
+     "0.2",
+     "%",
+     "",
+     "0.1",
+     "%",
+     "",
+     "0.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "3.5",
+     "%",
+     "",
+     "2.7",
+     "%",
+     "",
+     "3.5",
+     "%",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "0.1",
+     "%",
+     "",
+     "0.1",
+     "%",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "3.6",
+     "%",
+     "",
+     "2.8",
+     "%",
+     "",
+     "3.5",
+     "%",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return before incentive fees",
+     "",
+     "11.0",
+     "%",
+     "",
+     "11.2",
+     "%",
+     "",
+     "-",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "Incentive fees",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return after incentive fees",
+     "",
+     "10.9",
+     "%",
+     "",
+     "11.1",
+     "%",
+     "",
+     "-",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 475,
+    "end_line": 520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Segment Reporting. The Partnership operates as a single reportable segment, as the Chief Operating Decision Maker (CODM) monitors the operating results of the Partnership as a whole against its investment objective, which is included in Note 1. The Partnership\u2019s President acts as the Partnership\u2019s CODM and is responsible for assessing the performance of the Partnership\u2019s single segment and deciding how to allocate the segment\u2019s resources. To perform this function, the CODM reviews the total trading results as reflected in the accompanying Consolidated Statements of Income and Expenses and total return as reflected in the financial highlights as included in the notes to the Partnership\u2019s consolidated financial statements. Additionally, segment assets are presented in the accompanying Consolidated Statements of Financial Condition and significant segment expenses are reported in the accompanying Consolidated Statements of Income and Expenses.\nThere have been no material changes with respect to the Partnership\u2019s critical accounting policies as reported in the Partnership\u2019s Annual Report on Form 10-K for the year ended December 31, 2025.\n3. Financial Highlights:\nFinancial highlights for the limited partner class as a whole for the three months ended March 31, 2026 and 2025 were as follows:",
+   "prose_after": "* Net investment income (loss) per Unit is calculated by dividing the interest income less total expenses by the average number of Units outstanding during the period. The net realized and unrealized gains (losses) per Unit is a balancing amount necessary to reconcile the change in net asset value per Unit with the other per unit information.\n** Annualized (except for incentive fees).\n*** Interest income less total expenses.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 469,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "****",
+     "Due to rounding."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* Net investment income (loss) per Unit is calculated by dividing the interest income less total expenses by the average number of Units outstanding during the period. The net realized and unrealized gains (losses) per Unit is a balancing amount necessary to reconcile the change in net asset value per Unit with the other per unit information.\n** Annualized (except for incentive fees).\n*** Interest income less total expenses.",
+   "prose_after": "The above ratios and total return may vary for individual investors based on the timing of capital transactions during the period. Additionally, these ratios are calculated for the limited partner class using the limited partners\u2019 share of consolidated income, expenses and average partners\u2019 capital of the Partnership.\n4. Financial Instrument Risks:\nThe Partnership trades Futures Interests. Futures and forwards represent contracts for delayed delivery of an instrument at a specified date and price.\nIn general, the risks associated with non-exchange-traded contracts are greater than those associated with exchange-traded contracts because of the greater risk of default by the counterparty to a non-exchange-traded contract. The Partnership has credit risk associated with counterparty nonperformance. As of the date of the financial statements, the credit risk associated with the instruments in which the Partnership trades is limited to the unrealized gain amounts reflected in the Consolidated Statements of Financial Condition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 469,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "March 31, 2026",
+     "Gross\n\n Amounts\n\n Recognized",
+     "",
+     "",
+     "Gross Amounts\n\n Offset in the\n\n Consolidated\n\n Statements of\n\n Financial\n\n Condition",
+     "",
+     "",
+     "Amounts\n\n Presented in the\n\n Consolidated\n\n Statements of\n\n Financial\n\n Condition",
+     "",
+     "",
+     "Gross Amounts Not Offset in the\n\n Consolidated Statements of\n\n Financial Condition",
+     "",
+     "",
+     "",
+     "Net Amount",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial\n\n Instruments",
+     "",
+     "Cash Collateral\n\n Received/\n\n Pledged*",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MS&Co.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "3,912,162",
+     "",
+     "$",
+     "(2,439,015)",
+     "",
+     "$",
+     "1,473,147",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,473,147",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "3,132,678",
+     "",
+     "",
+     "(2,050,508)",
+     "",
+     "",
+     "1,082,170",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,082,170",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "7,044,840",
+     "",
+     "",
+     "(4,489,523)",
+     "",
+     "",
+     "2,555,317",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,555,317",
+     ""
+    ],
+    [
+     "JPMorgan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "117,058",
+     "",
+     "",
+     "(117,058)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "7,161,898",
+     "",
+     "$",
+     "(4,606,581)",
+     "",
+     "$",
+     "2,555,317",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "2,555,317",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MS&Co.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "(2,439,015)",
+     "",
+     "$",
+     "2,439,015",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "(2,050,508)",
+     "",
+     "",
+     "2,050,508",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(4,489,523)",
+     "",
+     "",
+     "4,489,523",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "JPMorgan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "(161,672)",
+     "",
+     "",
+     "117,058",
+     "",
+     "",
+     "(44,614)",
+     "",
+     "",
+     "-",
+     "",
+     "44,614",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "(4,651,195)",
+     "",
+     "$",
+     "4,606,581",
+     "",
+     "$",
+     "(44,614)",
+     "",
+     "$",
+     "-",
+     "$",
+     "44,614",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net fair value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "2,555,317",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 567,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The Partnership\u2019s objective is to profit from speculative trading in Futures Interests. Therefore, the Trading Advisor will take speculative positions in Futures Interests where it feels the best profit opportunities exist for its trading strategy. As such, the average number of contracts outstanding in absolute quantities (the total of the open long and open short positions) has been presented as a part of the volume disclosure, as position direction is not an indicative factor in such volume disclosures.\nAll of the Futures Interests owned by the Partnership are held for trading purposes. The monthly average number of futures contracts traded during the three months ended March 31, 2026 and 2025 were 5,998 and 7,603, respectively. The monthly average number of metals forward contracts traded during the three months ended March 31, 2026 and 2025 were 932 and 1,041, respectively. The monthly average notional values of currency forward contracts traded during the three months ended March 31, 2026 and 2025 were $566,652,349 and $623,442,677, respectively.\nThe following tables summarize the gross and net amounts recognized relating to the assets and liabilities of the Partnership\u2019s derivative instruments and transactions eligible for offset subject to master netting agreements or similar arrangements as of March 31, 2026 and December 31, 2025, respectively.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 555,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2025",
+     "Gross\n\n Amounts\n\n Recognized",
+     "",
+     "",
+     "Gross Amounts\n\n Offset in the\n\n Consolidated\n\n Statements of\n\n Financial\n\n Condition",
+     "",
+     "",
+     "Amounts\n\n Presented in the\n\n Consolidated\n\n Statements of\n\n Financial\n\n Condition",
+     "",
+     "",
+     "Gross Amounts Not Offset in the\n\n Consolidated Statements of\n\n Financial Condition",
+     "",
+     "",
+     "",
+     "Net Amount",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial\n\n Instruments",
+     "",
+     "Cash Collateral\n\n Received/\n\n Pledged*",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MS&Co.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "3,755,084",
+     "",
+     "$",
+     "(2,073,749)",
+     "",
+     "$",
+     "1,681,335",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,681,335",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "3,754,836",
+     "",
+     "",
+     "(2,100,950)",
+     "",
+     "",
+     "1,653,886",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,653,886",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "7,509,920",
+     "",
+     "",
+     "(4,174,699)",
+     "",
+     "",
+     "3,335,221",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,335,221",
+     ""
+    ],
+    [
+     "JPMorgan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "86,286",
+     "",
+     "",
+     "(86,286)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "7,596,206",
+     "",
+     "$",
+     "(4,260,985)",
+     "",
+     "$",
+     "3,335,221",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "3,335,221",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MS&Co.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "(2,073,749)",
+     "",
+     "$",
+     "2,073,749",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "(2,100,950)",
+     "",
+     "",
+     "2,100,950",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(4,174,699)",
+     "",
+     "",
+     "4,174,699",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "JPMorgan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forwards",
+     "",
+     "(139,576)",
+     "",
+     "",
+     "86,286",
+     "",
+     "",
+     "(53,290)",
+     "",
+     "",
+     "-",
+     "",
+     "53,290",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "(4,314,275)",
+     "",
+     "$",
+     "4,260,985",
+     "",
+     "$",
+     "(53,290)",
+     "",
+     "$",
+     "-",
+     "$",
+     "53,290",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net fair value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "3,335,221",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* In the event of default by the Partnership, MS&Co., the Partnership\u2019s commodity futures broker and a counterparty to the Partnership\u2019s non-exchange-traded contracts, as applicable, and JPM, as a counterparty to certain non-exchange traded contracts, has the right to offset the Partnership\u2019s obligation with the Partnership\u2019s cash and/or U.S. Treasury bills held by MS&Co. or JPM, as applicable, thereby minimizing MS&Co.\u2019s and JPM\u2019s risk of loss. In certain instances, a counterparty may not post collateral and as such, in the event of default by such counterparty, the Partnership is exposed to the amount shown in the Consolidated Statements of Financial Condition. In the case of exchange-traded contracts, the Partnership\u2019s exposure to counterparty risk may be reduced since the exchange\u2019s clearinghouse interposes its credit between buyer and seller and the clearinghouse\u2019s guarantee funds may be available in the event of a default. In some instances, the actual collateral received and/or pledged may be more than the amount shown due to overcollateralization.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2026",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "183,039",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "1,477,160",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "413,761",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "289,909",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "172,431",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "891,064",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "186,412",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "136,033",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "162,353",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open futures contracts",
+     "",
+     "3,912,162",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "(437,255)",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "(83,222)",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "(152,210)",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "(552,193)",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "(272,797)",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "(403,060)",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "(44,820)",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "(330,179)",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "(163,279)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open futures contracts",
+     "",
+     "(2,439,015)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open futures contracts",
+     "$",
+     "1,473,147",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "2,038,031",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "1,211,705",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open forward contracts",
+     "",
+     "3,249,736",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "(1,434,712)",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "(777,468)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open forward contracts",
+     "",
+     "(2,212,180)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open forward contracts",
+     "",
+     "$ 1,037,556",
+     "**"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2026",
+    "Assets",
+    "Futures Contracts"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* In the event of default by the Partnership, MS&Co., the Partnership\u2019s commodity futures broker and a counterparty to the Partnership\u2019s non-exchange-traded contracts, as applicable, and JPM, as a counterparty to certain non-exchange traded contracts, has the right to offset the Partnership\u2019s obligation with the Partnership\u2019s cash and/or U.S. Treasury bills held by MS&Co. or JPM, as applicable, thereby minimizing MS&Co.\u2019s and JPM\u2019s risk of loss. In certain instances, a counterparty may not post collateral and as such, in the event of default by such counterparty, the Partnership is exposed to the amount shown in the Consolidated Statements of Financial Condition. In the case of exchange-traded contracts, the Partnership\u2019s exposure to counterparty risk may be reduced since the exchange\u2019s clearinghouse interposes its credit between buyer and seller and the clearinghouse\u2019s guarantee funds may be available in the event of a default. In some instances, the actual collateral received and/or pledged may be more than the amount shown due to overcollateralization.\nThe following tables indicate the gross fair values of derivative instruments of futures and forward contracts as separate assets and liabilities as of March 31, 2026 and December 31, 2025, respectively.",
+   "prose_after": "* This amount is in \u201cNet unrealized appreciation on open futures contracts\u201d in the Consolidated Statements of Financial Condition.\n** This amount is in \u201cNet unrealized appreciation on open forward contracts\u201d in the Consolidated Statements of Financial Condition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "REPEATING_HEADER",
+     "id": 37,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "343,064",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "183,950",
+     "",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "479,342",
+     "",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "482,753",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "15,218",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "317,649",
+     "",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "95,478",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "1,631,622",
+     "",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "206,008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open futures contracts",
+     "",
+     "3,755,084",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures Contracts",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "(59,181)",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "(166,449)",
+     "",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "(563,482)",
+     "",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "(256,475)",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "(197,273)",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "(431,887)",
+     "",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "(8,668)",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "(89,460)",
+     "",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "(300,874)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open futures contracts",
+     "",
+     "(2,073,749)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open futures contracts",
+     "$",
+     "1,681,335",
+     "",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "1,189,681",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "2,651,441",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized appreciation on open forward contracts",
+     "",
+     "3,841,122",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forward Contracts",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "(901,297)",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "(1,339,229)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total unrealized depreciation on open forward contracts",
+     "",
+     "(2,240,526)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized appreciation on open forward contracts",
+     "$",
+     "1,600,596",
+     "",
+     "**"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025",
+    "Assets",
+    "Futures Contracts"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 806
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* This amount is in \u201cNet unrealized appreciation on open futures contracts\u201d in the Consolidated Statements of Financial Condition.\n** This amount is in \u201cNet unrealized appreciation on open forward contracts\u201d in the Consolidated Statements of Financial Condition.",
+   "prose_after": "* This amount is in \u201cNet unrealized appreciation on open futures contracts\u201d in the Consolidated Statements of Financial Condition.\n** This amount is in \u201cNet unrealized appreciation on open forward contracts\u201d in the Consolidated Statements of Financial Condition.\nThe following table indicates the trading gains and losses, by market sector, on derivative instruments for the three months ended March 31, 2026 and 2025, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "REPEATING_HEADER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 811,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sector",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "2,105,121",
+     "$",
+     "(821,925)"
+    ],
+    [
+     "Energy",
+     "",
+     "9,842,758",
+     "",
+     "(746,478)"
+    ],
+    [
+     "Grains",
+     "",
+     "(500,246)",
+     "",
+     "(185,085)"
+    ],
+    [
+     "Indices",
+     "",
+     "(139,060)",
+     "",
+     "1,527,064"
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "(253,520)",
+     "",
+     "(866,520)"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "(1,790,562)",
+     "",
+     "(1,345,031)"
+    ],
+    [
+     "Livestock",
+     "",
+     "35,380",
+     "",
+     "506,278"
+    ],
+    [
+     "Metals",
+     "",
+     "3,277,664",
+     "",
+     "1,770,933"
+    ],
+    [
+     "Softs",
+     "",
+     "1,526,331",
+     "",
+     "123,528"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "14,103,866 ***",
+     "$",
+     "(37,236) ***"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 837
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "* This amount is in \u201cNet unrealized appreciation on open futures contracts\u201d in the Consolidated Statements of Financial Condition.\n** This amount is in \u201cNet unrealized appreciation on open forward contracts\u201d in the Consolidated Statements of Financial Condition.\nThe following table indicates the trading gains and losses, by market sector, on derivative instruments for the three months ended March 31, 2026 and 2025, respectively.",
+   "prose_after": "*** This amount is in \u201cTotal trading results\u201d in the Consolidated Statements of Income and Expenses.\n6. Fair Value Measurements:\nPartnership\u2019s and the Trading Company\u2019s Fair Value Measurements. Fair value is defined as the value that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date under current market conditions. The fair value hierarchy gives the highest priority to unadjusted quoted prices in active markets for identical assets or liabilities (Level 1) and the lowest priority to fair values derived from unobservable inputs (Level 3). The level in the fair value hierarchy within which the fair value measurement in its entirety falls shall be determined based on the lowest level input that is significant to the fair value measurement in its entirety.\nThe fair value of exchange-traded futures, forward and option contracts is determined by the various exchanges, and reflects the settlement price for each contract as of the close of business on the last business day of the reporting period. The fair value of non-exchange-traded foreign currency forward contracts is extrapolated on a forward basis from the spot prices quoted as of approximately 3:00 P.M. (E.T.) on the last business day of the reporting period from various exchanges. The fair value of non-exchange-traded foreign currency option contracts is calculated by applying an industry standard model application for options valuation of foreign currency options, using as inputs the spot prices, interest rates and option implied volatilities quoted as of approximately 3:00 P.M. (E.T.) on the last business day of the reporting period. U.S. Treasury bills are valued at the last available bid price received from independent pricing services as of the close of the last business day of the reporting period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "REPEATING_HEADER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "March 31, 2026",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "3,912,162",
+     "$",
+     "3,912,162",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Forwards",
+     "",
+     "3,249,736",
+     "",
+     "-",
+     "",
+     "3,249,736",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "7,161,898",
+     "$",
+     "3,912,162",
+     "$",
+     "3,249,736",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "2,439,015",
+     "$",
+     "2,439,015",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Forwards",
+     "",
+     "2,212,180",
+     "",
+     "-",
+     "",
+     "2,212,180",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "4,651,195",
+     "$",
+     "2,439,015",
+     "$",
+     "2,212,180",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2025",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "3,755,084",
+     "$",
+     "3,755,084",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Forwards",
+     "",
+     "3,841,122",
+     "",
+     "-",
+     "",
+     "3,841,122",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "7,596,206",
+     "$",
+     "3,755,084",
+     "$",
+     "3,841,122",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Futures",
+     "$",
+     "2,073,749",
+     "$",
+     "2,073,749",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Forwards",
+     "",
+     "2,240,526",
+     "",
+     "-",
+     "",
+     "2,240,526",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "4,314,275",
+     "$",
+     "2,073,749",
+     "$",
+     "2,240,526",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The fair value of exchange-traded futures, forward and option contracts is determined by the various exchanges, and reflects the settlement price for each contract as of the close of business on the last business day of the reporting period. The fair value of non-exchange-traded foreign currency forward contracts is extrapolated on a forward basis from the spot prices quoted as of approximately 3:00 P.M. (E.T.) on the last business day of the reporting period from various exchanges. The fair value of non-exchange-traded foreign currency option contracts is calculated by applying an industry standard model application for options valuation of foreign currency options, using as inputs the spot prices, interest rates and option implied volatilities quoted as of approximately 3:00 P.M. (E.T.) on the last business day of the reporting period. U.S. Treasury bills are valued at the last available bid price received from independent pricing services as of the close of the last business day of the reporting period.\nThe Partnership and the Trading Company consider prices for exchange-traded commodity futures, swap and option contracts to be based on unadjusted quoted prices in active markets for identical assets and liabilities (Level 1). The values of U.S. Treasury bills, non-exchange-traded forward, swap and certain option contracts for which market quotations are not readily available are priced by pricing services that derive fair values for those assets and liabilities from observable inputs (Level 2). As of March 31, 2026 and December 31, 2025 and for the periods ended March 31, 2026 and 2025, the Partnership and the Trading Company did not hold any derivative instruments that were priced at fair value using unobservable inputs through the application of the General Partner\u2019s assumptions and internal valuation pricing models (Level 3).",
+   "prose_after": "7. Investment in the Trading Company:\nOn January 1, 2021, the assets allocated to WCM for trading were invested in CMF Winton, a limited partnership organized under the partnership laws of the State of New York. CMF Winton permits accounts managed by WCM using the Winton Futures Program, a proprietary, systematic trading system, to invest together in one trading vehicle. The General Partner is also the general partner of CMF Winton. Individual and pooled accounts currently managed by WCM, including the Partnership, are permitted to be limited partners of CMF Winton. The General Partner and WCM believe that trading through this structure promotes efficiency and economy in the trading process. The General Partner and WCM have agreed that WCM will trade the Partnership\u2019s assets allocated to WCM at a level that is up to 1.5 times the amount of assets allocated, provided that the General Partner may instruct WCM to change such level in accordance with the investment management agreement from time to time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 850,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 899,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total Assets",
+     "",
+     "Toal Liabilities",
+     "",
+     "Total Capital",
+     ""
+    ],
+    [
+     "CMF Winton",
+     "$",
+     "53,687,757",
+     "$",
+     "335,562",
+     "$",
+     "53,352,195"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total Assets",
+     "",
+     "Toal Liabilities",
+     "",
+     "Total Capital",
+     ""
+    ],
+    [
+     "CMF Winton",
+     "$",
+     "46,755,312",
+     "$",
+     "160,343",
+     "$",
+     "46,594,969"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 909,
+    "end_line": 924
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Management fees, Administrative and General Partner fees, ongoing placement agent fees and incentive fees are charged at the Partnership level. All clearing fees paid to MS&Co. are borne directly by the Partnership for its direct trading. In addition, clearing fees are borne by the Trading Company and allocated to the Trading Company\u2019s limited partners, including the Partnership. Professional fees are borne by the Trading Company and allocated to the Partnership, and also charged directly at the Partnership level.\nAs of March 31, 2026 and December 31, 2025, the Partnership owned 100% of CMF Winton. It is the Partnership\u2019s intention to continue to invest in the Trading Company. The performance of the Partnership is directly affected by the performance of the Trading Company. The Partnership consolidates its wholly owned investment in the Trading Company. Expenses to investors as a result of investment in the Trading Company are approximately the same as they would be if the Partnership traded directly and redemption rights are not affected.\nSummarized information reflecting the total assets, liabilities and partners\u2019 capital of the Trading Company is shown in the following tables:",
+   "prose_after": "Summarized information reflecting the net investment income (loss), total trading results and net income (loss) of the Trading Company is shown in the following tables:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Investment Income (Loss)",
+     "",
+     "Total Trading Results",
+     "",
+     "",
+     "Net Income (Loss)",
+     "",
+     ""
+    ],
+    [
+     "CMF Winton",
+     "$",
+     "277,781",
+     "$",
+     "7,983,154",
+     "",
+     "$",
+     "8,260,935",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the three months ended March 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Investment Income (Loss)",
+     "",
+     "Total Trading Results",
+     "",
+     "",
+     "Net Income (Loss)",
+     "",
+     ""
+    ],
+    [
+     "CMF Winton",
+     "$",
+     "376,200",
+     "$",
+     "(1,917,360)",
+     "",
+     "$",
+     "(1,541,160)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Summarized information reflecting the net investment income (loss), total trading results and net income (loss) of the Trading Company is shown in the following tables:",
+   "prose_after": "Summarized information reflecting the Partnership\u2019s investment in and the Partnership\u2019s pro-rata share of the results of operations of the Trading Company is shown in the following tables:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     "For the three months ended March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "% of\n\n Partners\u2019\n\n Capital",
+     "",
+     "",
+     "",
+     "",
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Net\n\n Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Funds",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "Income (Loss)",
+     "",
+     "",
+     "Clearing Fees",
+     "",
+     "Professional Fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Investment Objective",
+     "Redemptions Permitted"
+    ],
+    [
+     "CMF Winton",
+     "",
+     "38.41",
+     "%",
+     "$",
+     "53,352,195",
+     "$",
+     "8,333,515",
+     "",
+     "$",
+     "53,520",
+     "$",
+     "19,060",
+     "",
+     "$",
+     "8,260,935",
+     "",
+     "Commodity Portfolio",
+     "Monthly"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "For the three months ended March 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "% of\n\n Partners\u2019\n\n Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "Net\n\n Income (Loss)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Funds",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "Income (Loss)",
+     "",
+     "",
+     "Clearing Fees",
+     "",
+     "Professional Fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Investment Objective",
+     "Redemptions Permitted"
+    ],
+    [
+     "CMF Winton",
+     "",
+     "36.68",
+     "%",
+     "$",
+     "46,594,969",
+     "$",
+     "(1,486,114)",
+     "",
+     "$",
+     "35,987",
+     "$",
+     "19,059",
+     "",
+     "$",
+     "(1,541,160)",
+     "",
+     "Commodity Portfolio",
+     "Monthly"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Summarized information reflecting the Partnership\u2019s investment in and the Partnership\u2019s pro-rata share of the results of operations of the Trading Company is shown in the following tables:",
+   "prose_after": "8. Subsequent Events:\nThe General Partner evaluates events that occur after the balance sheet date but before and up until consolidated financial statements are issued. The General Partner has assessed the subsequent events through the date the consolidated financial statements were issued and has determined that there were no subsequent events requiring adjustment to or disclosure in the consolidated financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nLiquidity and Capital Resources\nThe Partnership does not have, nor does it expect to have, any capital assets. The Partnership does not engage in sales of goods or services. Its assets are its (i) equity in trading account, consisting of restricted and unrestricted cash, foreign cash, net unrealized appreciation on open futures contracts and net unrealized appreciation on open forward contracts, as applicable, and (ii) interest receivable. Because of the low margin deposits normally required in commodity futures trading, relatively small price movements may result in substantial losses to the Partnership, through its direct investments. While substantial losses could lead to a material decrease in liquidity, no such illiquidity occurred in the first quarter of 2026.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 975,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Advisor",
+     "March 31, 2026",
+     "",
+     "March 31, 2026 (percentage of Partners\u2019 Capital)",
+     "",
+     "",
+     "December 31, 2025",
+     "",
+     "December 31, 2025 (percentage of Partners\u2019 Capital)",
+     "",
+     ""
+    ],
+    [
+     "Campbell",
+     "$",
+     "39,156,046",
+     "",
+     "28",
+     "%",
+     "$",
+     "35,563,541",
+     "",
+     "28",
+     "%"
+    ],
+    [
+     "EMC",
+     "",
+     "10,727,645",
+     "",
+     "8",
+     "%",
+     "",
+     "9,896,937",
+     "",
+     "8",
+     "%"
+    ],
+    [
+     "Graham",
+     "",
+     "23,498,026",
+     "",
+     "17",
+     "%",
+     "",
+     "21,881,993",
+     "",
+     "17",
+     "%"
+    ],
+    [
+     "WCM",
+     "",
+     "53,507,020",
+     "",
+     "38",
+     "%",
+     "",
+     "46,723,749",
+     "",
+     "37",
+     "%"
+    ],
+    [
+     "Unallocated",
+     "",
+     "11,999,632",
+     "",
+     "9",
+     "%",
+     "",
+     "12,969,543",
+     "",
+     "10",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1035,
+    "end_line": 1045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Incentive fees are based on the new trading profits generated by the Trading Advisors at the end of the year as defined in the management agreement among the Partnership, the General Partner and the relevant Trading Advisor. Trading performance for the three months ended March 31, 2026 and 2025 resulted in incentive fees of $138,805 and $0, respectively. To the extent that a Trading Advisor incurs a loss for the Partnership, the Trading Advisor will not be paid incentive fees until such Trading Advisor recovers any net loss incurred and earns additional new trading profits for the Partnership.\nIn allocating substantially all of the assets of the Partnership among the Trading Advisors, the General Partner considers, among other factors, the Trading Advisors\u2019 past performance, trading style, volatility of markets traded and fee requirements. The General Partner may modify or terminate the allocation of assets to the Trading Advisors and allocate assets to additional advisors at any time.\nAs of March 31, 2026 and December 31, 2025, the Partnership\u2019s Net Assets were allocated among the Trading Advisors in the following approximate percentages:",
+   "prose_after": "Item 3. Quantitative and Qualitative Disclosures About Market Risk.\nIntroduction\nThe Partnership and the Trading Company are commodity pools engaged primarily in the speculative trading of Futures Interests. The market-sensitive instruments held by the Partnership are acquired for speculative trading purposes only and, as a result, all or substantially all of the Partnership\u2019s assets are at risk of trading loss. Unlike an operating company, the risk of market-sensitive instruments is inherent to the primary business activity of the Partnership.\nThe Futures Interests on such contracts traded by the Partnership involve varying degrees of related market risk. Market risk is often dependent upon changes in the level or volatility of held interest rates, exchange rates, and prices of financial instruments and commodities, factors that result in frequent changes in the fair value of the Partnership\u2019s open positions, and consequently in its earnings, whether realized or unrealized, and cash flow. Gains and losses on open positions of exchange-traded futures, exchange-traded forward and exchange-traded futures-styled option contracts are settled daily through variation margin. Gains and losses on non-exchange-traded forward currency contracts and forward currency option contracts are settled upon termination of the contract. Gains and losses on non-exchange-traded forward currency option contracts are settled on an agreed-upon settlement date.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Market Sector",
+     "Value at Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "6,797,660",
+     "",
+     "4.90",
+     "%"
+    ],
+    [
+     "Energy",
+     "",
+     "1,375,619",
+     "",
+     "0.99",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "802,787",
+     "",
+     "0.58",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "2,750,541",
+     "",
+     "1.98",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "1,171,115",
+     "",
+     "0.84",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "1,914,865",
+     "",
+     "1.38",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "224,180",
+     "",
+     "0.16",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "1,616,474",
+     "",
+     "1.16",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "723,255",
+     "",
+     "0.52",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "17,376,496",
+     "",
+     "12.51",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1084,
+    "end_line": 1101
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "Exchange margin requirements have been used by the Partnership/Trading Company as the measure of its Value at Risk. Margin requirements are set by exchanges to equal or exceed the maximum losses reasonably expected to be incurred in the fair value of any given contract in 95%-99% of any one-day interval. The margin levels are established by dealers and exchanges using historical price studies as well as an assessment of current market volatility (including the implied volatility of the options on a given futures contract) and economic fundamentals to provide a probabilistic estimate of the maximum expected near-term one-day price fluctuation.\nValue at Risk tables represent a probabilistic assessment of the risk of loss in market sensitive instruments. The first trading Value at Risk table reflects the market sensitive instruments held by the Partnership directly and through its investments in the Trading Company. The remaining trading Value at Risk tables reflect the market sensitive instruments held by the Partnership directly (i.e. in the managed accounts in the Partnership\u2019s name traded by certain Trading Advisors) and indirectly by the Trading Company separately. There have been no material changes in the trading Value at Risk, non-trading risk and risk management information previously disclosed in the Partnership\u2019s Annual Report on Form 10-K for the year ended December 31, 2025.\nThe following table indicates the trading Value at Risk associated with the Partnership\u2019s open positions by market category as of March 31, 2026. As of March 31, 2026, the Partnership\u2019s total capitalization was $138,888,369.\nMarch 31, 2026",
+   "prose_after": "The following table indicates the trading Value at Risk associated with the Partnership\u2019s open positions by market category as of December 31, 2025. As of December 31, 2025, the Partnership\u2019s total capitalization was $127,035,763.\nDecember 31, 2025",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1078,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1124,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Market Sector",
+     "Value at Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "8,367,131",
+     "",
+     "6.59",
+     "%"
+    ],
+    [
+     "Energy",
+     "",
+     "839,928",
+     "",
+     "0.66",
+     ""
+    ],
+    [
+     "Grains",
+     "",
+     "1,392,982",
+     "",
+     "1.10",
+     ""
+    ],
+    [
+     "Indices",
+     "",
+     "5,361,022",
+     "",
+     "4.22",
+     ""
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "1,055,751",
+     "",
+     "0.83",
+     ""
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "2,195,679",
+     "",
+     "1.73",
+     ""
+    ],
+    [
+     "Livestock",
+     "",
+     "245,080",
+     "",
+     "0.19",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "3,226,244",
+     "",
+     "2.54",
+     ""
+    ],
+    [
+     "Softs",
+     "",
+     "988,972",
+     "",
+     "0.78",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "23,672,789",
+     "",
+     "18.64",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1123
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The following table indicates the trading Value at Risk associated with the Partnership\u2019s open positions by market category as of December 31, 2025. As of December 31, 2025, the Partnership\u2019s total capitalization was $127,035,763.\nDecember 31, 2025",
+   "prose_after": "The following tables indicate the trading Value at Risk associated with the Partnership\u2019s/Trading Company\u2019s open positions by market category as of March 31, 2026 and December 31, 2025, and the highest, lowest and average values during the three months ended March 31, 2026 and for the twelve months ended December 31, 2025. All open position trading risk exposures of the Partnership have been included in calculating the figures set forth below.\nAs of March 31, 2026, the Partnership\u2019s total capitalization was $138,888,369.\nMarch 31, 2026",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1078,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1124,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three Months Ended March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Value at Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     "",
+     "High Value at Risk",
+     "",
+     "Low Value at Risk",
+     "",
+     "Average Value at Risk*",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "5,280,968",
+     "",
+     "3.80",
+     "%",
+     "$",
+     "7,067,895",
+     "$",
+     "4,306,822",
+     "$",
+     "5,387,696"
+    ],
+    [
+     "Energy",
+     "",
+     "469,753",
+     "",
+     "0.34",
+     "",
+     "",
+     "888,042",
+     "",
+     "404,660",
+     "",
+     "617,409"
+    ],
+    [
+     "Grains",
+     "",
+     "222,152",
+     "",
+     "0.16",
+     "",
+     "",
+     "1,009,687",
+     "",
+     "201,349",
+     "",
+     "500,597"
+    ],
+    [
+     "Indices",
+     "",
+     "1,785,463",
+     "",
+     "1.29",
+     "",
+     "",
+     "4,579,994",
+     "",
+     "1,722,640",
+     "",
+     "3,517,591"
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "680,679",
+     "",
+     "0.49",
+     "",
+     "",
+     "1,551,327",
+     "",
+     "446,387",
+     "",
+     "994,746"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "1,302,222",
+     "",
+     "0.94",
+     "",
+     "",
+     "3,050,468",
+     "",
+     "1,179,663",
+     "",
+     "1,913,308"
+    ],
+    [
+     "Livestock",
+     "",
+     "185,020",
+     "",
+     "0.13",
+     "",
+     "",
+     "266,310",
+     "",
+     "154,550",
+     "",
+     "219,032"
+    ],
+    [
+     "Metals",
+     "",
+     "995,477",
+     "",
+     "0.72",
+     "",
+     "",
+     "1,578,728",
+     "",
+     "781,963",
+     "",
+     "1,153,579"
+    ],
+    [
+     "Softs",
+     "",
+     "265,678",
+     "",
+     "0.19",
+     "",
+     "",
+     "540,899",
+     "",
+     "226,674",
+     "",
+     "374,569"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11,187,412",
+     "",
+     "8.06",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "The following tables indicate the trading Value at Risk associated with the Partnership\u2019s/Trading Company\u2019s open positions by market category as of March 31, 2026 and December 31, 2025, and the highest, lowest and average values during the three months ended March 31, 2026 and for the twelve months ended December 31, 2025. All open position trading risk exposures of the Partnership have been included in calculating the figures set forth below.\nAs of March 31, 2026, the Partnership\u2019s total capitalization was $138,888,369.\nMarch 31, 2026",
+   "prose_after": "*Average of daily Values at Risk.\nAs of December 31, 2025, the Partnership\u2019s total capitalization was $127,035,763.\nDecember 31, 2025",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1124,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Twelve Months Ended December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Valueat Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     "",
+     "High Value at Risk",
+     "",
+     "Low Value at Risk",
+     "",
+     "Average Value at Risk*",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "7,068,790",
+     "",
+     "5.56",
+     "%",
+     "$",
+     "10,052,251",
+     "$",
+     "5,672,300",
+     "$",
+     "7,665,303"
+    ],
+    [
+     "Energy",
+     "",
+     "493,009",
+     "",
+     "0.39",
+     "",
+     "",
+     "1,526,682",
+     "",
+     "336,589",
+     "",
+     "915,235"
+    ],
+    [
+     "Grains",
+     "",
+     "953,075",
+     "",
+     "0.75",
+     "",
+     "",
+     "1,216,187",
+     "",
+     "345,784",
+     "",
+     "772,365"
+    ],
+    [
+     "Indices",
+     "",
+     "4,110,010",
+     "",
+     "3.23",
+     "",
+     "",
+     "5,667,711",
+     "",
+     "1,615,148",
+     "",
+     "3,716,680"
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "1,025,548",
+     "",
+     "0.81",
+     "",
+     "",
+     "1,572,239",
+     "",
+     "220,160",
+     "",
+     "898,244"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "1,660,404",
+     "",
+     "1.31",
+     "",
+     "",
+     "2,604,091",
+     "",
+     "1,355,161",
+     "",
+     "2,013,940"
+    ],
+    [
+     "Livestock",
+     "",
+     "165,660",
+     "",
+     "0.13",
+     "",
+     "",
+     "397,981",
+     "",
+     "109,780",
+     "",
+     "260,633"
+    ],
+    [
+     "Metals",
+     "",
+     "1,545,736",
+     "",
+     "1.22",
+     "",
+     "",
+     "1,875,044",
+     "",
+     "728,385",
+     "",
+     "1,402,008"
+    ],
+    [
+     "Softs",
+     "",
+     "368,946",
+     "",
+     "0.29",
+     "",
+     "",
+     "854,941",
+     "",
+     "240,447",
+     "",
+     "513,046"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "17,391,178",
+     "",
+     "13.69",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1158,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "*Average of daily Values at Risk.\nAs of December 31, 2025, the Partnership\u2019s total capitalization was $127,035,763.\nDecember 31, 2025",
+   "prose_after": "*Annual average of daily Values at Risk.\nAs of March 31, 2026, the Trading Company\u2019s total capitalization was $53,352,195 and the Partnership owned 100% of the Trading Company. The Partnership invests a portion of its assets in the Trading Company. The Trading Company\u2019s Value at Risk as of March 31, 2026 was as follows:\nMarch 31, 2026",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1124,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three Months Ended March 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Value at Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     "",
+     "High Value at Risk",
+     "",
+     "Low Value at Risk",
+     "",
+     "Average Value at Risk*",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "1,516,692",
+     "",
+     "2.84",
+     "%",
+     "$",
+     "1,606,276",
+     "$",
+     "732,982",
+     "$",
+     "1,118,310"
+    ],
+    [
+     "Energy",
+     "",
+     "905,866",
+     "",
+     "1.70",
+     "",
+     "",
+     "1,210,359",
+     "",
+     "343,830",
+     "",
+     "712,277"
+    ],
+    [
+     "Grains",
+     "",
+     "580,635",
+     "",
+     "1.09",
+     "",
+     "",
+     "701,058",
+     "",
+     "240,864",
+     "",
+     "459,772"
+    ],
+    [
+     "Indices",
+     "",
+     "965,078",
+     "",
+     "1.81",
+     "",
+     "",
+     "1,490,913",
+     "",
+     "841,998",
+     "",
+     "1,218,042"
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "490,436",
+     "",
+     "0.92",
+     "",
+     "",
+     "537,763",
+     "",
+     "30,203",
+     "",
+     "208,705"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "612,643",
+     "",
+     "1.15",
+     "",
+     "",
+     "745,862",
+     "",
+     "364,097",
+     "",
+     "539,896"
+    ],
+    [
+     "Livestock",
+     "",
+     "39,160",
+     "",
+     "0.07",
+     "",
+     "",
+     "143,990",
+     "",
+     "39,160",
+     "",
+     "92,492"
+    ],
+    [
+     "Metals",
+     "",
+     "620,997",
+     "",
+     "1.16",
+     "",
+     "",
+     "1,680,508",
+     "",
+     "620,997",
+     "",
+     "1,214,282"
+    ],
+    [
+     "Softs",
+     "",
+     "457,577",
+     "",
+     "0.86",
+     "",
+     "",
+     "688,228",
+     "",
+     "457,577",
+     "",
+     "596,372"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,189,084",
+     "",
+     "11.60",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1186,
+    "end_line": 1205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "*Annual average of daily Values at Risk.\nAs of March 31, 2026, the Trading Company\u2019s total capitalization was $53,352,195 and the Partnership owned 100% of the Trading Company. The Partnership invests a portion of its assets in the Trading Company. The Trading Company\u2019s Value at Risk as of March 31, 2026 was as follows:\nMarch 31, 2026",
+   "prose_after": "*Average of daily Values at Risk.\nAs of December 31, 2025, the Trading Company\u2019s total capitalization was $46,594,969 and the Partnership owned 100% of the Trading Company. The Partnership invests a portion of its assets in the Trading Company. The Trading Company\u2019s Value at Risk as of December 31, 2025 was as follows:\nDecember 31, 2025",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Twelve Months Ended December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Market Sector",
+     "Value at Risk",
+     "",
+     "% of Total Capitalization",
+     "",
+     "",
+     "High Value at Risk",
+     "",
+     "Low Value at Risk",
+     "",
+     "Average Value at Risk*",
+     ""
+    ],
+    [
+     "Currencies",
+     "$",
+     "1,298,341",
+     "",
+     "2.79",
+     "%",
+     "$",
+     "2,090,616",
+     "$",
+     "921,695",
+     "$",
+     "1,293,659"
+    ],
+    [
+     "Energy",
+     "",
+     "346,919",
+     "",
+     "0.75",
+     "",
+     "",
+     "709,928",
+     "",
+     "255,214",
+     "",
+     "468,229"
+    ],
+    [
+     "Grains",
+     "",
+     "439,907",
+     "",
+     "0.94",
+     "",
+     "",
+     "581,157",
+     "",
+     "219,843",
+     "",
+     "378,566"
+    ],
+    [
+     "Indices",
+     "",
+     "1,251,012",
+     "",
+     "2.68",
+     "",
+     "",
+     "1,629,975",
+     "",
+     "587,085",
+     "",
+     "1,073,820"
+    ],
+    [
+     "Interest Rates U.S.",
+     "",
+     "30,203",
+     "",
+     "0.06",
+     "",
+     "",
+     "804,953",
+     "",
+     "19,432",
+     "",
+     "279,129"
+    ],
+    [
+     "Interest Rates Non-U.S.",
+     "",
+     "535,275",
+     "",
+     "1.15",
+     "",
+     "",
+     "794,790",
+     "",
+     "238,430",
+     "",
+     "468,128"
+    ],
+    [
+     "Livestock",
+     "",
+     "79,420",
+     "",
+     "0.17",
+     "",
+     "",
+     "494,670",
+     "",
+     "72,941",
+     "",
+     "291,486"
+    ],
+    [
+     "Metals",
+     "",
+     "1,680,508",
+     "",
+     "3.61",
+     "",
+     "",
+     "2,261,033",
+     "",
+     "692,594",
+     "",
+     "1,451,391"
+    ],
+    [
+     "Softs",
+     "",
+     "620,026",
+     "",
+     "1.33",
+     "",
+     "",
+     "737,920",
+     "",
+     "162,598",
+     "",
+     "431,913"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,281,611",
+     "",
+     "13.48",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1212,
+    "end_line": 1231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk."
+    },
+    "note": null
+   },
+   "prose_before": "*Average of daily Values at Risk.\nAs of December 31, 2025, the Trading Company\u2019s total capitalization was $46,594,969 and the Partnership owned 100% of the Trading Company. The Partnership invests a portion of its assets in the Trading Company. The Trading Company\u2019s Value at Risk as of December 31, 2025 was as follows:\nDecember 31, 2025",
+   "prose_after": "*Annual average of daily Values at Risk.\nItem 4. Controls and Procedures.\nThe Partnership\u2019s disclosure controls and procedures are designed to ensure that information required to be disclosed by the Partnership on the reports that it files or submits under the Exchange Act is recorded, processed, summarized and reported within the time periods expected in the SEC\u2019s rules and forms. Disclosure controls and procedures include controls and procedures designed to ensure that information required to be disclosed by the Partnership in the reports it files is accumulated and communicated to management, including the President (the General Partner\u2019s principal executive officer) and Chief Financial Officer (\u201cCFO\u201d) (the General Partner\u2019s principal financial officer) of the General Partner, to allow for timely decisions regarding required disclosure and appropriate SEC filings.\nThe General Partner is responsible for ensuring that there is an adequate and effective process for establishing, maintaining and evaluating disclosure controls and procedures for the Partnership\u2019s external disclosures.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "",
+     "Class A (a) Total Number of Units Purchased*",
+     "",
+     "",
+     "Class A (b)\nAverage Price Paid per Unit**",
+     "",
+     "",
+     "",
+     "(c) Total Number of Units Purchased as Part of Publicly Announced Plans or Programs",
+     "",
+     "",
+     "(d) Maximum Number (or Approximate Dollar Value) of Units that May Yet Be Purchased Under the Plans or Programs",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2026 - January 31, 2026",
+     "",
+     "",
+     "30,752.037",
+     "",
+     "",
+     "$",
+     "30.34",
+     "",
+     "",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "February 1, 2026 -February 28, 2026",
+     "",
+     "",
+     "19,206.524",
+     "",
+     "",
+     "$",
+     "31.84",
+     "",
+     "",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "March 1, 2026 - March 31, 2026",
+     "",
+     "",
+     "13,259.814",
+     "",
+     "",
+     "$",
+     "32.21",
+     "",
+     "",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "63,218.375",
+     "",
+     "",
+     "$",
+     "31.19",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1316,
+    "end_line": 1331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors."
+    },
+    "note": null
+   },
+   "prose_before": "There have been no material changes to the risk factors set forth under Part I, Item 1A. \u201cRisk Factors.\u201d in the Partnership\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2025, other than as disclosed in Note 4, \u201cFinancial Instrument Risks,\u201d of the financial statements.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nFor the three months ended March 31, 2026, there were no subscriptions of Class A and Class Z Units. Units are issued in reliance upon applicable exemptions from registration under Section 4(a)(2) of the Securities Act and Section 506 of Regulation D promulgated thereunder. Units are purchased by accredited investors as defined in Regulation D. In determining the applicability of the exemption, the General Partner relies on the fact that the Units are purchased by accredited investors in a private offering.\nProceeds of net offering are used for the trading of Futures Interests.\nThe following chart sets forth the purchases of Units by the Partnership.",
+   "prose_after": "* Generally, limited partners are permitted to redeem their Units as of the end of each month on three business days\u2019 notice to the General Partner. Under certain circumstances, the General Partner can compel redemption, although to date the General Partner has not exercised this right. Purchases of Units by the Partnership reflected in the chart above were made in the ordinary course of the Partnership\u2019s business in connection with effecting redemptions for limited partners.\n** Redemptions of Units are effected as of the last day of each month at the net asset value per Unit as of that day.\nItem 3. Defaults Upon Senior Securities. None.\nItem 4. Mine Safety Disclosures. Not applicable.\nItem 5. Other Information.\nThe Partnership has no directors or executive officers and its affairs are managed by its General Partner. The General Partner is managed by a board of directors. During the fiscal quarter ended March 31, 2026, no officers or directors of the General Partner adopted, modified or terminated a \u201cRule 10b5-1 trading arrangement\u201d (as defined in Item 408 of Regulation S-K of the Exchange Act).",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1302,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CERES CLASSIC L.P.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "Ceres Managed Futures LLC"
+    ],
+    [
+     "",
+     "(General Partner)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Patrick T. Egan"
+    ],
+    [
+     "",
+     "Patrick T. Egan"
+    ],
+    [
+     "",
+     "President and Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 12, 2026",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Brooke Lambert"
+    ],
+    [
+     "",
+     "Brooke Lambert"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 12, 2026",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CERES CLASSIC L.P."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1378,
+    "end_line": 1400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "32.2 \u2014 Section 1350 Certification (Certification of Chief Financial Officer) (filed herewith).\n101.INS Inline XBRL Instance Document.\n101.SCH Inline XBRL Taxonomy Extension Schema Document.\n101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase Document.\n101.LAB Inline XBRL Taxonomy Extension Label Linkbase Document.\n101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase Document.\n101.DEF Inline XBRL Taxonomy Extension Definition Document.\n104. Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101).\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "The General Partner which signed the above is the only party authorized to act for the registrant. The registrant has no principal executive officer, principal financial officer, controller, or principal accounting officer and has no Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1372,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1403,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

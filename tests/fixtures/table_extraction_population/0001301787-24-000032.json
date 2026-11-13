@@ -1,0 +1,5389 @@
+{
+ "accession": "0001301787-24-000032",
+ "cik": "0001301787",
+ "form": "10-Q",
+ "filing_date": "2024-10-29",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bxc-20240928.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "77-0627356"
+    ],
+    [
+     "(State of Incorporation)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1950 Spectrum Circle, Suite 300",
+     "",
+     ""
+    ],
+    [
+     "Marietta",
+     "GA",
+     "30067"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 28, 2024\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 001-32383\nBlueLinx Holdings Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "(770) 953-7000\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name, former address and former fiscal year, if changed since last report.)\nSecurities registered pursuant to Section 12(b) of the Act:\n<TABLE>\nTitle of each class            Trading Symbol(s)  Name of each exchange on which registered\nCommon Stock, par value $0.01 per share         BXC                  New York Stock Exchange\n</TABLE>\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Large Accelerated Filer",
+     "\u2611",
+     "Accelerated Filer",
+     "\u2610",
+     "Non-accelerated Filer",
+     "\u2610",
+     "Smaller Reporting Company",
+     "\u2610"
+    ],
+    [
+     "Emerging Growth Company",
+     "\u2610",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements \u2014 BlueLinx Holdings Inc. (Unaudited)",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations and Comprehensive Income",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Balance Sheets",
+     "2"
+    ],
+    [
+     "Condensed Consolidated Statements of Stockholders' Equity",
+     "3"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows",
+     "5"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     "6"
+    ],
+    [
+     "Note 1 - Basis of Presentation",
+     "6"
+    ],
+    [
+     "Note 2 - Inventories",
+     "7"
+    ],
+    [
+     "Note 3 - Goodwill and Intangible Assets, net",
+     "8"
+    ],
+    [
+     "Note 4 - Revenue Recognition",
+     "8"
+    ],
+    [
+     "Note 5 - Debt and Finance Lease Obligations",
+     "9"
+    ],
+    [
+     "Note 6 - Net Periodic Pension Cost (Benefit)",
+     "10"
+    ],
+    [
+     "Note 7 - Share-Based Compensation",
+     "11"
+    ],
+    [
+     "Note 8 - Leases",
+     "11"
+    ],
+    [
+     "Note 9 - Commitments and Contingencies",
+     "14"
+    ],
+    [
+     "Note 10 - Accumulated Other Comprehensive Loss",
+     "14"
+    ],
+    [
+     "Note 11 - Income Taxes",
+     "15"
+    ],
+    [
+     "Note 12 - Earnings Per Share and Stockholders' Equity",
+     "15"
+    ],
+    [
+     "Note 13 - Fair Value Disclosures",
+     "16"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "26"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "27"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "27"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "27"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "27"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "27"
+    ],
+    [
+     "Item 5. Other Information",
+     "27"
+    ],
+    [
+     "Item 6. Exhibits",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge Accelerated Filer  [X]  Accelerated Filer  [ ]  Non-accelerated Filer  [ ]  Smaller Reporting Company  [ ]\nEmerging Growth Company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of October 25, 2024, there were 8,380,695 shares of BlueLinx Holdings Inc. common stock, par value $0.01, outstanding.\nForm 10-Q\nFor the Quarterly Period Ended September 28, 2024\nTable of Contents",
+   "prose_after": "i\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND\nCOMPREHENSIVE INCOME\n(In thousands, except per share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "747,288",
+     "$",
+     "809,981",
+     "$",
+     "2,241,895",
+     "$",
+     "2,423,852"
+    ],
+    [
+     "Cost of products sold",
+     "621,619",
+     "",
+     "670,735",
+     "",
+     "1,866,101",
+     "",
+     "2,015,264",
+     ""
+    ],
+    [
+     "Gross profit",
+     "125,669",
+     "",
+     "139,246",
+     "",
+     "375,794",
+     "",
+     "408,588",
+     ""
+    ],
+    [
+     "Operating expenses (income):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative",
+     "92,210",
+     "",
+     "91,354",
+     "",
+     "272,913",
+     "",
+     "271,278",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "9,530",
+     "",
+     "8,089",
+     "",
+     "29,083",
+     "",
+     "23,758",
+     ""
+    ],
+    [
+     "Amortization of deferred gains on real estate",
+     "(984)",
+     "",
+     "(984)",
+     "",
+     "(2,952)",
+     "",
+     "(2,952)",
+     ""
+    ],
+    [
+     "Other operating expenses, net",
+     "888",
+     "",
+     "1,131",
+     "",
+     "1,210",
+     "",
+     "5,240",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "101,644",
+     "",
+     "99,590",
+     "",
+     "300,254",
+     "",
+     "297,324",
+     ""
+    ],
+    [
+     "Operating income",
+     "24,025",
+     "",
+     "39,656",
+     "",
+     "75,540",
+     "",
+     "111,264",
+     ""
+    ],
+    [
+     "Non-operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "4,619",
+     "",
+     "5,577",
+     "",
+     "14,044",
+     "",
+     "19,575",
+     ""
+    ],
+    [
+     "Settlement of defined benefit pension plan",
+     "(2,226)",
+     "",
+     "\u2014",
+     "",
+     "(2,226)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "\u2014",
+     "",
+     "594",
+     "",
+     "\u2014",
+     "",
+     "1,782",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "21,632",
+     "",
+     "33,485",
+     "",
+     "63,722",
+     "",
+     "89,907",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "5,616",
+     "",
+     "9,103",
+     "",
+     "15,878",
+     "",
+     "23,247",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "16,016",
+     "$",
+     "24,382",
+     "$",
+     "47,844",
+     "$",
+     "66,660"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "$",
+     "1.88",
+     "$",
+     "2.72",
+     "$",
+     "5.54",
+     "$",
+     "7.39"
+    ],
+    [
+     "Diluted earnings per share",
+     "$",
+     "1.87",
+     "$",
+     "2.71",
+     "$",
+     "5.53",
+     "$",
+     "7.38"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "16,016",
+     "$",
+     "24,382",
+     "$",
+     "47,844",
+     "$",
+     "66,660"
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of unrecognized pension gain, net of tax",
+     "\u2014",
+     "",
+     "225",
+     "",
+     "\u2014",
+     "",
+     "689",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(22)",
+     ""
+    ],
+    [
+     "Total other comprehensive income",
+     "\u2014",
+     "",
+     "225",
+     "",
+     "\u2014",
+     "",
+     "667",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "16,016",
+     "$",
+     "24,607",
+     "$",
+     "47,844",
+     "$",
+     "67,327"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 120,
+    "end_line": 164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "i\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND\nCOMPREHENSIVE INCOME\n(In thousands, except per share amounts)",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 118,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 165,
+     "token": "REPEATING_FOOTER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "December 30, 2023",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "526,281",
+     "$",
+     "521,743"
+    ],
+    [
+     "Receivables, less allowances of $3,244 and $3,398, respectively",
+     "278,049",
+     "",
+     "228,410",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "340,541",
+     "",
+     "343,638",
+     ""
+    ],
+    [
+     "Other current assets",
+     "36,500",
+     "",
+     "26,608",
+     ""
+    ],
+    [
+     "Total current assets",
+     "1,181,371",
+     "",
+     "1,120,399",
+     ""
+    ],
+    [
+     "Property and equipment, at cost",
+     "423,842",
+     "",
+     "396,321",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(187,992)",
+     "",
+     "(170,334)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "235,850",
+     "",
+     "225,987",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "45,647",
+     "",
+     "37,227",
+     ""
+    ],
+    [
+     "Goodwill",
+     "55,372",
+     "",
+     "55,372",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "27,834",
+     "",
+     "30,792",
+     ""
+    ],
+    [
+     "Deferred income tax asset, net",
+     "51,306",
+     "",
+     "53,256",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "13,699",
+     "",
+     "14,568",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,611,079",
+     "$",
+     "1,537,601"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "186,319",
+     "$",
+     "157,931"
+    ],
+    [
+     "Accrued compensation",
+     "18,400",
+     "",
+     "14,273",
+     ""
+    ],
+    [
+     "Finance lease liabilities - current",
+     "12,547",
+     "",
+     "11,178",
+     ""
+    ],
+    [
+     "Operating lease liabilities - current",
+     "8,276",
+     "",
+     "6,284",
+     ""
+    ],
+    [
+     "Real estate deferred gains - current",
+     "3,935",
+     "",
+     "3,935",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "28,247",
+     "",
+     "24,961",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "257,724",
+     "",
+     "218,562",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "294,733",
+     "",
+     "293,743",
+     ""
+    ],
+    [
+     "Finance lease liabilities, less current portion",
+     "281,263",
+     "",
+     "274,248",
+     ""
+    ],
+    [
+     "Operating lease liabilities, less current portion",
+     "38,752",
+     "",
+     "32,519",
+     ""
+    ],
+    [
+     "Real estate deferred gains, less current portion",
+     "64,280",
+     "",
+     "66,599",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "18,738",
+     "",
+     "17,644",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "955,490",
+     "",
+     "903,315",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.01 par value, 30,000,000 shares authorized, none outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common Stock, $0.01 par value, 20,000,000 shares authorized,      8,423,383 and 8,650,046 outstanding, respectively",
+     "84",
+     "",
+     "87",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "138,522",
+     "",
+     "165,060",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "516,983",
+     "",
+     "469,139",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "655,589",
+     "",
+     "634,286",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,611,079",
+     "$",
+     "1,537,601"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 173,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 231,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Retained Earnings",
+     "",
+     "Stockholders\u2019 Equity Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 30, 2023",
+     "8,650",
+     "$",
+     "87",
+     "$",
+     "165,060",
+     "$",
+     "469,139",
+     "$",
+     "634,286"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,492",
+     "",
+     "17,492",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "19",
+     "(a)",
+     "",
+     "(a)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,350",
+     "",
+     "\u2014",
+     "",
+     "2,350",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(7)",
+     "\u2014",
+     "",
+     "(907)",
+     "",
+     "\u2014",
+     "",
+     "(907)",
+     ""
+    ],
+    [
+     "Balance, March 30, 2024",
+     "8,662",
+     "87",
+     "",
+     "166,503",
+     "",
+     "486,631",
+     "",
+     "653,221",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14,336",
+     "",
+     "14,336",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "57",
+     "1",
+     "",
+     "(1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,405",
+     "",
+     "\u2014",
+     "",
+     "1,405",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(16)",
+     "(a)",
+     "",
+     "(1,545)",
+     "",
+     "\u2014",
+     "",
+     "(1,545)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(152)",
+     "(2)",
+     "",
+     "(15,083)",
+     "",
+     "\u2014",
+     "",
+     "(15,085)",
+     ""
+    ],
+    [
+     "Balance, June 29, 2024",
+     "8,551",
+     "86",
+     "",
+     "151,279",
+     "",
+     "500,967",
+     "",
+     "652,332",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,016",
+     "",
+     "16,016",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "26",
+     "(a)",
+     "",
+     "(a)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,186",
+     "",
+     "\u2014",
+     "",
+     "3,186",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(8)",
+     "(a)",
+     "",
+     "(816)",
+     "",
+     "\u2014",
+     "",
+     "(816)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(146)",
+     "(2)",
+     "",
+     "(15,127)",
+     "",
+     "\u2014",
+     "",
+     "(15,129)",
+     ""
+    ],
+    [
+     "Balance, September 28, 2024",
+     "8,423",
+     "$",
+     "84",
+     "$",
+     "138,522",
+     "$",
+     "516,983",
+     "$",
+     "655,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 241,
+    "end_line": 272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "prose_after": "(a) Activity rounds to less than one thousand dollars",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 239,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 275,
+     "token": "REPEATING_FOOTER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Retained Earnings",
+     "",
+     "Stockholders\u2019 Equity Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "9,049",
+     "$",
+     "90",
+     "$",
+     "200,748",
+     "$",
+     "(31,412)",
+     "$",
+     "420,603",
+     "$",
+     "590,029"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,812",
+     "",
+     "17,812",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "228",
+     "",
+     "\u2014",
+     "",
+     "228",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "67",
+     "1",
+     "",
+     "(1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,569",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,569",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(8)",
+     "\u2014",
+     "",
+     "(570)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(570)",
+     ""
+    ],
+    [
+     "Obligation for repurchase of shares to satisfy employee tax withholdings",
+     "(19)",
+     "",
+     "",
+     "(1,319)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,319)",
+     ""
+    ],
+    [
+     "Balance, April 1, 2023",
+     "9,089",
+     "91",
+     "",
+     "203,427",
+     "",
+     "(31,184)",
+     "",
+     "438,415",
+     "",
+     "610,749",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,466",
+     "",
+     "24,466",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "214",
+     "",
+     "\u2014",
+     "",
+     "214",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "95",
+     "\u2014",
+     "",
+     "(1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,926",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,926",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(24)",
+     "\u2014",
+     "",
+     "(2,071)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,071)",
+     ""
+    ],
+    [
+     "Obligation for repurchase of shares to satisfy employee tax withholdings",
+     "(10)",
+     "\u2014",
+     "",
+     "(913)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(913)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(142)",
+     "(1)",
+     "",
+     "(11,598)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,599)",
+     ""
+    ],
+    [
+     "Balance, July 1, 2023",
+     "9,008",
+     "90",
+     "",
+     "190,770",
+     "",
+     "(30,970)",
+     "",
+     "462,881",
+     "",
+     "622,771",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,382",
+     "",
+     "24,382",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "225",
+     "",
+     "\u2014",
+     "",
+     "225",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "7",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,980",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,980",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(3)",
+     "\u2014",
+     "",
+     "(281)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(281)",
+     ""
+    ],
+    [
+     "Obligation for shares repurchases not yet settled",
+     "(10)",
+     "\u2014",
+     "",
+     "(843)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(843)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(206)",
+     "(2)",
+     "",
+     "(17,720)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(17,722)",
+     ""
+    ],
+    [
+     "Balance, September 30, 2023",
+     "8,796",
+     "$",
+     "88",
+     "$",
+     "174,906",
+     "$",
+     "(30,745)",
+     "$",
+     "487,263",
+     "$",
+     "631,512"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 278,
+    "end_line": 321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "(a) Activity rounds to less than one thousand dollars",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 277,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 322,
+     "token": "REPEATING_FOOTER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "47,844",
+     "$",
+     "66,660"
+    ],
+    [
+     "Adjustments to reconcile net income to cash provided by operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "29,083",
+     "",
+     "23,758",
+     ""
+    ],
+    [
+     "Amortization of debt discount and issuance costs",
+     "990",
+     "",
+     "989",
+     ""
+    ],
+    [
+     "Settlement of frozen defined benefit pension plan",
+     "(2,226)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Provision for deferred income taxes",
+     "1,950",
+     "",
+     "1,117",
+     ""
+    ],
+    [
+     "Amortization of deferred gains from real estate",
+     "(2,952)",
+     "",
+     "(2,952)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "6,941",
+     "",
+     "9,475",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(47,413)",
+     "",
+     "(46,013)",
+     ""
+    ],
+    [
+     "Inventories",
+     "3,097",
+     "",
+     "120,151",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "27,932",
+     "",
+     "49,791",
+     ""
+    ],
+    [
+     "Other current assets",
+     "(9,892)",
+     "",
+     "2,621",
+     ""
+    ],
+    [
+     "Other assets and liabilities",
+     "11,080",
+     "",
+     "5,127",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "66,434",
+     "",
+     "230,724",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "839",
+     "",
+     "191",
+     ""
+    ],
+    [
+     "Property and equipment investments",
+     "(19,830)",
+     "",
+     "(18,938)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(18,991)",
+     "",
+     "(18,747)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(29,982)",
+     "",
+     "(29,321)",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(3,257)",
+     "",
+     "(5,157)",
+     ""
+    ],
+    [
+     "Principal payments on finance lease liabilities",
+     "(9,666)",
+     "",
+     "(6,659)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(42,905)",
+     "",
+     "(41,137)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "4,538",
+     "",
+     "170,840",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "521,743",
+     "",
+     "298,943",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "526,281",
+     "$",
+     "469,783"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the period",
+     "$",
+     "29,147",
+     "$",
+     "27,948"
+    ],
+    [
+     "Taxes paid during the period",
+     "$",
+     "24,224",
+     "$",
+     "17,682"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment acquired under finance leases",
+     "$",
+     "16,710",
+     "$",
+     "11,277"
+    ],
+    [
+     "Liabilities for properties and equipment investments",
+     "$",
+     "1,013",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Obligation for shares repurchases not yet settled",
+     "$",
+     "\u2014",
+     "$",
+     "843"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 332,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nSeptember 28, 2024\n1. Basis of Presentation\nBlueLinx Holdings Inc., including consolidated subsidiaries (collectively, the \u201cCompany\u201d), is a leading wholesale distributor of residential and commercial building products in the United States. The Company is a two-step distributor and purchases products from manufacturers and distributes those products to dealers and other suppliers in local markets, who then sell those products to end users. The Company carries a broad portfolio of both branded and private-label stock keeping units (\u201cSKUs\u201d) across two principal product categories: specialty products and structural products. Specialty products include items such as engineered wood, siding, moulding and millwork, outdoor living, specialty lumber and panels, and industrial products. Structural products include items such as lumber, plywood, oriented strand board, rebar, and remesh. The Company also provides a wide range of value-added services and solutions aimed at relieving distribution and logistics challenges for its customers and suppliers, while enhancing their marketing and inventory management capabilities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 330,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 387,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product type",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "519,000",
+     "$",
+     "558,851",
+     "$",
+     "1,562,300",
+     "$",
+     "1,697,679"
+    ],
+    [
+     "Structural products",
+     "228,288",
+     "",
+     "251,130",
+     "",
+     "679,595",
+     "",
+     "726,173",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "747,288",
+     "$",
+     "809,981",
+     "$",
+     "2,241,895",
+     "$",
+     "2,423,852"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Substantially all of the amount reported in Cost of products sold on the Company\u2019s consolidated statement of operations is composed of costs incurred to purchase inventory that is subsequently resold to customers, including costs related to import duties and tariffs. Import duties and tariffs are not typically passed through to customers as separately billed charges. Certain import duties are classified by the U.S. Department of Commerce (the \u201cCommerce Department\u201d) as \u201cantidumping or countervailing duties,\u201d and these duties may be subject to periodic review and adjustments by the Commerce Department through a process known as a trade remedy administrative review, which can result in both retroactive and prospective adjustments to duty rates. At the time of importation, the Company tenders antidumping duty and countervailing duty cash deposits (as use of that term has been defined by the Commerce Department) to the U.S. Customs and Border Protection (\u201cU.S. Customs\u201d) and accounts for duties and tariffs based on the then-current rates in effect, and records any retroactive adjustments in the period in which U.S. Customs determines final duty rates at the time entries subject to antidumping and countervailing duties liquidate (as use of that term has been defined by the Commerce Department), typically through the resolution of a trade remedy administrative review proceeding. During the three and nine months ended September 28, 2024, the Company recognized refunds of $3.8 million and $20.7 million, respectively, plus interest of $0.7 million and $2.7 million, respectively, related to retroactive adjustments associated with certain antidumping duties for imported wood moulding and millwork products. The antidumping duty cash deposits were originally paid and accounted for by the Company in prior reporting periods at the then-current rates. Impacted inventories have since been sold. These adjustment amounts are reflected in Cost of products sold and Interest expense, net, respectively, on the Company\u2019s unaudited condensed consolidated statements of operations for\nthe three and nine months ended September 28, 2024. See Note 9, Commitments and Contingencies, for disclosure concerning another matter related to import duties.\n3. Goodwill and Intangible Assets, net\nDuring the fiscal quarter and year-to-date period ended September 28, 2024, the only change to the carrying values of Goodwill and Intangible assets, net, was the amortization of Intangible assets, all of which have definite lives. Amortization expense for intangible assets was $1.0 million and $3.0 million for the three and nine month periods ended September 28, 2024, respectively. For the three and nine month periods ended September 30, 2023, amortization expense was $1.0 million and $3.2 million, respectively.\n4. Revenue Recognition\nThe following table presents the Company\u2019s revenues disaggregated by revenue source. Sales and usage-based taxes are excluded from revenues.",
+   "prose_after": "The following table presents the Company\u2019s revenues disaggregated by sales channel. Sales and usage-based taxes are excluded from revenues.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales channel",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warehouse and reload",
+     "$",
+     "622,981",
+     "$",
+     "683,072",
+     "$",
+     "1,843,942",
+     "$",
+     "2,065,212"
+    ],
+    [
+     "Direct",
+     "140,505",
+     "",
+     "143,026",
+     "",
+     "445,606",
+     "",
+     "405,335",
+     ""
+    ],
+    [
+     "Customer discounts and rebates",
+     "(16,198)",
+     "",
+     "(16,117)",
+     "",
+     "(47,653)",
+     "",
+     "(46,695)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "747,288",
+     "$",
+     "809,981",
+     "$",
+     "2,241,895",
+     "$",
+     "2,423,852"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 458,
+    "end_line": 471
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The following table presents the Company\u2019s revenues disaggregated by sales channel. Sales and usage-based taxes are excluded from revenues.",
+   "prose_after": "Warehouse sales are delivered from Company warehouses. Reload sales are similar to warehouse sales but are shipped from warehouses, most of which are operated by third parties, where the Company stores owned products to enhance operating efficiencies. The reload channel is employed primarily to service strategic customers that would be less economical to service from Company warehouses, and to distribute large volumes of imported products from port facilities. Direct sales are shipped from the manufacturer to the customer without the Company taking physical possession of the inventory and, as a result, typically generate lower margins than warehouse and reload distribution channels but require lower amount of committed capital and fixed costs.\nPerformance obligations in contracts with customers generally consist solely of delivery of goods.\n5. Debt and Finance Lease Obligations\nAs of September 28, 2024 and December 30, 2023, debt and finance lease obligations consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "December 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Senior Secured Notes (\u201c2029 Notes\u201d) (1)",
+     "$",
+     "300,000",
+     "$",
+     "300,000"
+    ],
+    [
+     "Revolving Credit Facility (2)",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Finance lease obligations (3)",
+     "293,810",
+     "",
+     "285,426",
+     ""
+    ],
+    [
+     "",
+     "593,810",
+     "",
+     "585,426",
+     ""
+    ],
+    [
+     "Unamortized debt issuance costs",
+     "(2,629)",
+     "",
+     "(3,246)",
+     ""
+    ],
+    [
+     "Unamortized bond discount costs",
+     "(2,638)",
+     "",
+     "(3,011)",
+     ""
+    ],
+    [
+     "",
+     "588,543",
+     "",
+     "579,169",
+     ""
+    ],
+    [
+     "Less: current portion of finance lease obligations",
+     "12,547",
+     "",
+     "11,178",
+     ""
+    ],
+    [
+     "Total, net of current portion",
+     "$",
+     "575,996",
+     "$",
+     "567,991"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 499
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Warehouse sales are delivered from Company warehouses. Reload sales are similar to warehouse sales but are shipped from warehouses, most of which are operated by third parties, where the Company stores owned products to enhance operating efficiencies. The reload channel is employed primarily to service strategic customers that would be less economical to service from Company warehouses, and to distribute large volumes of imported products from port facilities. Direct sales are shipped from the manufacturer to the customer without the Company taking physical possession of the inventory and, as a result, typically generate lower margins than warehouse and reload distribution channels but require lower amount of committed capital and fixed costs.\nPerformance obligations in contracts with customers generally consist solely of delivery of goods.\n5. Debt and Finance Lease Obligations\nAs of September 28, 2024 and December 30, 2023, debt and finance lease obligations consisted of the following:",
+   "prose_after": "(1) As of September 28, 2024 and December 30, 2023, long-term debt was comprised of $300 million of Senior Secured Notes (\u201c2029 Notes\u201d) issued in October 2021. These notes are presented under the Long-term debt caption of the Company\u2019s unaudited condensed consolidated balance sheets at $294.7 million and $293.7 million as of September 28, 2024 and December 30, 2023, respectively. This balance sheet presentation is net of unamortized discount of $2.6 million and $3.0 million, respectively, and unamortized debt issuance costs of $2.6 million and $3.2 million, respectively, as of September 28, 2024 and December 30, 2023. The Senior Secured Notes are presented in this table at their face value.\n(2) Available borrowing capacity under the Revolving Credit Facility was $346.5 million as of September 28, 2024 and December 30, 2023. The available borrowing capacity reflects undrawn letters of credit.\n(3) Refer to Note 8, Leases, for interest rates associated with finance lease obligations. Amounts on this line include $125.1 million and $125.0 million as of September 28, 2024 and December 30, 2023, respectively, for sale-leasebacks of real estate in fiscal 2019 and 2020 that did not qualify for sale treatment for accounting purposes.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "11,668",
+     "$",
+     "11,394",
+     "$",
+     "35,958",
+     "33,977",
+     ""
+    ],
+    [
+     "Interest income",
+     "7,049",
+     "",
+     "5,817",
+     "",
+     "21,914",
+     "",
+     "14,402",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "$",
+     "4,619",
+     "$",
+     "5,577",
+     "$",
+     "14,044",
+     "$",
+     "19,575"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "(1) As of September 28, 2024 and December 30, 2023, long-term debt was comprised of $300 million of Senior Secured Notes (\u201c2029 Notes\u201d) issued in October 2021. These notes are presented under the Long-term debt caption of the Company\u2019s unaudited condensed consolidated balance sheets at $294.7 million and $293.7 million as of September 28, 2024 and December 30, 2023, respectively. This balance sheet presentation is net of unamortized discount of $2.6 million and $3.0 million, respectively, and unamortized debt issuance costs of $2.6 million and $3.2 million, respectively, as of September 28, 2024 and December 30, 2023. The Senior Secured Notes are presented in this table at their face value.\n(2) Available borrowing capacity under the Revolving Credit Facility was $346.5 million as of September 28, 2024 and December 30, 2023. The available borrowing capacity reflects undrawn letters of credit.\n(3) Refer to Note 8, Leases, for interest rates associated with finance lease obligations. Amounts on this line include $125.1 million and $125.0 million as of September 28, 2024 and December 30, 2023, respectively, for sale-leasebacks of real estate in fiscal 2019 and 2020 that did not qualify for sale treatment for accounting purposes.\nInterest expense, net on the Company\u2019s unaudited condensed consolidated statements of operations consisted of the following components:",
+   "prose_after": "Interest expense for the reporting periods presented in the above table primarily reflects interest expense for the 2029 Notes, interest expense on finance lease obligations, certain ongoing fees for the Revolving Credit Facility that are classified as interest expense, amortization of debt issuance costs for the 2029 Notes and Revolving Credit Facility, and amortization of original-issue bond discount on the 2029 Notes. Total amortization of debt issuance costs and bond discount costs was $0.3 million and $1.0 million for the three and nine months ended September 28, 2024, respectively, and $0.3 million and $1.0 million for the three and nine months ended September 30, 2023, respectively. Interest expense for the nine months ended September 28, 2024 also includes $1.2 million for estimated interest expense related to import duties that the Company believes it may owe (see Note 9, Commitments and Contingencies).\nInterest income for the reporting periods presented in the above table primarily reflects interest earned on the Company\u2019s cash and cash equivalents. Interest income for the three and nine months ended September 28, 2024 also includes $0.7 million and $2.7 million, respectively, on refunds approved in fiscal 2024 from U.S. Customs for anti-dumping import duties (see Note 2, Inventories).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost (1)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest cost on projected benefit obligation",
+     "\u2014",
+     "",
+     "1,105",
+     "",
+     "\u2014",
+     "",
+     "3,314",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "\u2014",
+     "",
+     "(812)",
+     "",
+     "\u2014",
+     "",
+     "(2,437)",
+     ""
+    ],
+    [
+     "Amortization of unrecognized gain",
+     "\u2014",
+     "",
+     "301",
+     "",
+     "\u2014",
+     "",
+     "905",
+     ""
+    ],
+    [
+     "Settlement loss adjustment(2)",
+     "(2,226)",
+     "",
+     "\u2014",
+     "",
+     "(2,226)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net periodic pension (benefit) cost",
+     "$",
+     "(2,226)",
+     "$",
+     "594",
+     "$",
+     "(2,226)",
+     "$",
+     "1,782"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 548,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The Revolving Credit Facility and the 2029 Notes contain various covenants and restrictions, including customary financial covenants. The Company was in compliance with all such covenants as of September 28, 2024 and December 30, 2023. The Company\u2019s right to make draws on the Revolving Credit Facility may be conditioned upon, among other things, compliance with these covenants. These covenants also limit the Company\u2019s ability to, among other things: incur additional debt; grant liens on assets; make investments; repurchase stock; pay dividends and make distributions; sell or acquire assets, including certain real estate assets, outside the ordinary course of business; engage in transactions with affiliates; and make fundamental business changes.\nFinance Lease Obligations\nThe Company\u2019s finance lease liabilities consist of leases related to equipment, vehicles, and real estate, with the majority of those finance leases related to real estate. For more information on the Company\u2019s finance lease obligations, refer to Note 8, Leases.\n6. Net Periodic Pension Cost (Benefit)\nAs previously disclosed, effective December 5, 2023, the Company settled its noncontributory defined benefit pension plan (the \u201cDB Plan\u201d) by purchasing an irrevocable nonparticipating annuity contract with an insurance company (the \u201cbuy-out contract\u201d). The buyout contract met the requirements for a settlement, as that term is defined in ASC No. 715, Compensation-Retirement Benefits, and the DB Plan and Company, as sponsor, were relieved of primary responsibility for the benefits obligations.\nThe Company incurred the following net periodic pension (benefit) cost for the following periods:",
+   "prose_after": "(1) Service cost not a part of net periodic pension benefit as the pension plan was frozen for all participants.\n(2) Represents an adjustment for the settlement charge originally recognized during the fourth quarter of fiscal 2023 related to settlement of the Company\u2019s frozen defined benefit pension plan.\nNet periodic pension cost is included in Other expense, net in the Company\u2019s unaudited condensed consolidated statement of operations and comprehensive income. However, the settlement charge and related adjustments are reported on a separate line\nunder Non-operating expenses on the Company\u2019s unaudited condensed consolidated statement of operations and comprehensive income.\n7. Share-Based Compensation\nDuring the three and nine months ended September 28, 2024, the Company incurred stock compensation expense of $3.2 million and $6.9 million, respectively. Expense in the nine months ended September 28, 2024 included a credit of $1.7 million (recognized in fiscal second quarter 2024) related to cumulative adjustments for certain unvested restricted stock unit grants that were granted in June 2022 and are subject to vesting based, in part, on performance criteria that are not expected, as of September 28, 2024, to be fully achieved before the end of the vesting period on June 28, 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "pension",
+    "aligned_family": "pension",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Lease Assets and Liabilities",
+     "",
+     "September 28, 2024",
+     "",
+     "December 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "Classification",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "Operating lease right-of-use assets",
+     "$",
+     "45,647",
+     "$",
+     "37,227"
+    ],
+    [
+     "Finance lease right-of-use assets (1)",
+     "Property and equipment, net",
+     "136,958",
+     "",
+     "138,357",
+     ""
+    ],
+    [
+     "Total lease right-of-use assets",
+     "",
+     "$",
+     "182,605",
+     "$",
+     "175,584"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "Operating lease liabilities - current",
+     "$",
+     "8,276",
+     "$",
+     "6,284"
+    ],
+    [
+     "Finance lease liabilities",
+     "Finance lease liabilities - current",
+     "12,547",
+     "",
+     "11,178",
+     ""
+    ],
+    [
+     "Non-current portion:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "Operating lease liabilities - noncurrent",
+     "38,752",
+     "",
+     "32,519",
+     ""
+    ],
+    [
+     "Finance lease liabilities",
+     "Finance lease liabilities - noncurrent",
+     "281,263",
+     "",
+     "274,248",
+     ""
+    ],
+    [
+     "Total lease liabilities",
+     "",
+     "$",
+     "340,838",
+     "$",
+     "324,229"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The Company\u2019s finance lease liabilities consist of leases related to equipment and vehicles, and real estate. A majority of the Company\u2019s finance leases relate to real estate. During fiscal 2017 and fiscal 2018, the Company entered into real estate financing transactions on certain of its warehouse facilities. These transactions were completed pursuant to sale-leaseback arrangements, and upon their completion, the Company entered into long-term leases on the properties having renewal options. The Company accounted for these transactions in accordance with the ASC 840, Leases, which was the lease accounting standard in effect for the Company at the inception of these arrangements. The Company recorded these transactions as finance lease liabilities on its consolidated balance sheet. Gains on these sale-leaseback transactions were deferred and are being recognized into the Company\u2019s earnings. As of September 28, 2024 and December 30, 2023, the remaining unrecognized deferred gains related to these transactions were $68.2 million and $70.5 million, respectively, and these deferred gains are being recognized in earning on a straight-line basis. During the three months ended September 28, 2024 and September 30, 2023, the Company recognized $1.0 million and $1.0 million, respectively, of these deferred gains in each quarter. In the nine months ended September 28, 2024 and September 30, 2023, the Company recognized $3.0 million and $3.0 million, respectively, of these deferred gains in each period.\nThe following table presents the assets and liabilities related to the Company\u2019s leases as of September 28, 2024 and December 30, 2023:",
+   "prose_after": "(1) Finance lease right-of-use assets are presented net of accumulated amortization of $111.4 million and $102.9 million as of September 28, 2024 and December 30, 2023, respectively.\nThe components of lease expense were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Components of lease expense",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease expense before sublease income",
+     "$",
+     "2,886",
+     "$",
+     "2,755",
+     "$",
+     "7,965",
+     "$",
+     "8,789"
+    ],
+    [
+     "Sublease income",
+     "(900)",
+     "",
+     "(1,062)",
+     "",
+     "(2,648)",
+     "",
+     "(2,475)",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "1,986",
+     "$",
+     "1,693",
+     "$",
+     "5,317",
+     "$",
+     "6,314"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance lease expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of right-of-use assets",
+     "$",
+     "4,716",
+     "$",
+     "5,408",
+     "$",
+     "14,478",
+     "$",
+     "12,190"
+    ],
+    [
+     "  Interest on lease liabilities",
+     "6,407",
+     "",
+     "6,077",
+     "",
+     "19,108",
+     "",
+     "18,158",
+     ""
+    ],
+    [
+     "Total finance lease expense",
+     "$",
+     "11,123",
+     "$",
+     "11,485",
+     "$",
+     "33,586",
+     "$",
+     "30,348"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "(1) Finance lease right-of-use assets are presented net of accumulated amortization of $111.4 million and $102.9 million as of September 28, 2024 and December 30, 2023, respectively.\nThe components of lease expense were as follows:",
+   "prose_after": "Supplemental cash flow information related to leases is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow information",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating cash flows, operating leases",
+     "$",
+     "2,930",
+     "$",
+     "2,367",
+     "$",
+     "8,132",
+     "$",
+     "8,958"
+    ],
+    [
+     "  Operating cash flows, finance leases",
+     "$",
+     "6,407",
+     "$",
+     "6,077",
+     "$",
+     "19,108",
+     "$",
+     "18,158"
+    ],
+    [
+     "  Financing cash flows, finance leases",
+     "$",
+     "3,255",
+     "$",
+     "2,393",
+     "$",
+     "9,666",
+     "$",
+     "6,659"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 643,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to leases is as follows:",
+   "prose_after": "Non-cash supplemental cash flow information related to leases is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash information",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for lease obligations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "$",
+     "3,183",
+     "$",
+     "\u2014",
+     "$",
+     "14,515",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Finance leases",
+     "$",
+     "5,560",
+     "$",
+     "7,877",
+     "$",
+     "16,710",
+     "$",
+     "11,277"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Non-cash supplemental cash flow information related to leases is as follows:",
+   "prose_after": "Supplemental balance sheet information related to leases is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheet Information",
+     "September 28, 2024",
+     "",
+     "",
+     "December 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "($ in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "$",
+     "248,322",
+     "",
+     "$",
+     "241,276",
+     ""
+    ],
+    [
+     "  Accumulated depreciation",
+     "(111,364)",
+     "",
+     "",
+     "(102,919)",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "136,958",
+     "",
+     "$",
+     "138,357",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term (in years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "8.44",
+     "",
+     "",
+     "8.88",
+     "",
+     ""
+    ],
+    [
+     "  Finance leases",
+     "17.87",
+     "",
+     "",
+     "19.94",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Discount Rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "8.18",
+     "",
+     "%",
+     "8.74",
+     "",
+     "%"
+    ],
+    [
+     "  Finance leases",
+     "8.80",
+     "",
+     "%",
+     "8.84",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 671,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Supplemental balance sheet information related to leases is as follows:",
+   "prose_after": "The major categories of the Company\u2019s obligations under finance leases as of September 28, 2024 and December 30, 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Category",
+     "September 28, 2024",
+     "",
+     "December 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment and vehicles",
+     "$",
+     "50,752",
+     "$",
+     "42,252"
+    ],
+    [
+     "Real estate(1)",
+     "243,058",
+     "",
+     "243,174",
+     ""
+    ],
+    [
+     "Total finance leases",
+     "$",
+     "293,810",
+     "$",
+     "285,426"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The major categories of the Company\u2019s obligations under finance leases as of September 28, 2024 and December 30, 2023 are as follows:",
+   "prose_after": "(1)Amounts include $125.1 million and $125.0 million as of September 28, 2024 and December 30, 2023, respectively, for sale-leasebacks of real estate in fiscal 2019 and 2020 that did not qualify for sale treatment for accounting purposes.\nBelow is a summary of undiscounted finance and operating lease liabilities that have initial terms in excess of one year as of September 28, 2024. The table also includes a reconciliation of the future undiscounted cash flows to the present value of the finance and operating lease liabilities included in the unaudited condensed consolidated balance sheet, including options to extend lease terms that are reasonably certain of being exercised.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year:",
+     "Operating Leases",
+     "",
+     "Finance Leases",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "2,932",
+     "$",
+     "9,999"
+    ],
+    [
+     "2025",
+     "11,074",
+     "",
+     "37,057",
+     ""
+    ],
+    [
+     "2026",
+     "8,089",
+     "",
+     "40,487",
+     ""
+    ],
+    [
+     "2027",
+     "7,138",
+     "",
+     "34,900",
+     ""
+    ],
+    [
+     "2028",
+     "6,885",
+     "",
+     "35,093",
+     ""
+    ],
+    [
+     "Thereafter",
+     "30,713",
+     "",
+     "504,048",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "$",
+     "66,831",
+     "$",
+     "661,584"
+    ],
+    [
+     "Less: imputed interest",
+     "(19,803)",
+     "",
+     "(367,774)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "47,028",
+     "$",
+     "293,810"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "(1)Amounts include $125.1 million and $125.0 million as of September 28, 2024 and December 30, 2023, respectively, for sale-leasebacks of real estate in fiscal 2019 and 2020 that did not qualify for sale treatment for accounting purposes.\nBelow is a summary of undiscounted finance and operating lease liabilities that have initial terms in excess of one year as of September 28, 2024. The table also includes a reconciliation of the future undiscounted cash flows to the present value of the finance and operating lease liabilities included in the unaudited condensed consolidated balance sheet, including options to extend lease terms that are reasonably certain of being exercised.",
+   "prose_after": "9. Commitments and Contingencies\nRegulatory Matters\nGovernment and regulatory agencies may have the ability to conduct routine audits and periodic examinations of, and administrative proceedings regarding, the Company\u2019s business operations. As previously disclosed, U.S. Customs gathered initial information from the Company under routine audit procedures, and the information indicated that the Company potentially underpaid duties in prior periods arising from certain classification discrepancies for products imported into the United States as separately entered shipments. In working with U.S. Customs, the Company has exercised reasonable care to address this matter in an equitable and expeditious manner through the filing of a prior disclosure submission with U.S. Customs. As of September 28, 2024, the Company estimates that it will be required to pay approximately $8.0 million, excluding any interest. This amount is reflected in Other current liabilities on the Company\u2019s unaudited condensed consolidated balance sheet as of September 28, 2024. On the Company\u2019s unaudited condensed consolidated statements of operations, expense of $0.3 million and $8.0 million, excluding interest, was recognized for this matter in the three and nine months ended September 28, 2024, respectively, within Cost of products sold. See Note 2, Inventories, for disclosure concerning another matter related to import duties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Defined Benefit Pension Plan, net of tax",
+     "",
+     "Other, net of tax",
+     "",
+     "Total Accumulated Other Comprehensive Loss",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 30, 2023 balances",
+     "$",
+     "(31,986)",
+     "$",
+     "1,241",
+     "$",
+     "(30,745)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 744,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "From time to time, the Company is involved in various proceedings incidental to its business and the Company is subject to a variety of environmental and pollution control laws and regulations in all jurisdictions in which it operates. Although the ultimate outcome of these proceedings cannot be determined with certainty, based on presently available information, the Company believes that adequate liabilities have been accrued for probable losses with respect thereto and receivables recorded for expected receipts from settlements. The Company further believes that, while the ultimate outcome of these matters could be material to the Company\u2019s financial position, results of operations and cash flows in any given reporting period, they will not have a materially adverse effect on the Company\u2019s long-term financial condition, results of operations, or cash flows.\nCollective Bargaining Agreements\nAs of September 28, 2024, approximately 18.4 percent of the Company\u2019s employees were represented by various local labor unions with terms and conditions of employment governed by collective bargaining agreements (\u201cCBAs\u201d). Two CBAs covering approximately 1.3 percent percent of the Company\u2019s employees are up for renewal during the remainder of fiscal 2024 and are expected to be renegotiated before their renewal dates.\n10. Accumulated Other Comprehensive Loss\nAs of September 28, 2024 and December 30, 2023, the Company had no accumulated other comprehensive income or loss. For changes in accumulated other comprehensive loss during the three and nine months ended September 30, 2023, see the unaudited condensed consolidated statements of operations and comprehensive income included in this Form 10-Q. As of September 30, 2023, the components of accumulated other comprehensive loss were as follows:",
+   "prose_after": "11. Income Taxes\nEffective Income Tax Rate\nThe Company\u2019s effective income tax rates for the three months ended September 28, 2024 and September 30, 2023 were 26.0 percent and 27.2 percent, respectively. The Company\u2019s effective income tax rates for the nine months ended September 28, 2024 and September 30, 2023 were 24.9 percent and 25.9 percent, respectively.\nThe Company\u2019s effective income tax rates for the three and nine months ended September 28, 2024 and September 30, 2023 were impacted by the permanent addback of certain nondeductible expenses, including meals and entertainment and executive compensation, partially offset by a partial release of a valuation allowance for deferred income tax assets, the vesting of restricted stock units, and the return-to-provision adjustment associated with the most recently filed U.S. Federal income tax return.\nThe Company\u2019s effective income tax rates for the three and nine months ended September 30, 2023 were impacted by state taxes as well as the permanent addback of certain nondeductible expenses, including executive compensation, offset by a benefit from the vesting of restricted stock units.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     "",
+     "September 28, 2024",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Net income (in thousands)",
+     "$",
+     "16,016",
+     "$",
+     "24,382",
+     "$",
+     "47,844",
+     "$",
+     "66,660"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding - Basic",
+     "8,496,383",
+     "",
+     "8,935,851",
+     "",
+     "8,622,616",
+     "",
+     "9,009,812",
+     ""
+    ],
+    [
+     "Dilutive effect of share-based awards",
+     "31,927",
+     "",
+     "34,343",
+     "",
+     "24,015",
+     "",
+     "17,646",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding - Diluted",
+     "8,528,310",
+     "",
+     "8,970,194",
+     "",
+     "8,646,631",
+     "",
+     "9,027,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "$",
+     "1.88",
+     "$",
+     "2.72",
+     "$",
+     "5.54",
+     "$",
+     "7.39"
+    ],
+    [
+     "Diluted earnings per share",
+     "$",
+     "1.87",
+     "$",
+     "2.71",
+     "$",
+     "5.53",
+     "$",
+     "7.38"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "12. Earnings Per Share and Stockholders' Equity\nThe Company calculates basic earnings per share by dividing net income for the period by the weighted average number of shares of common stock outstanding for the period. For rounding purposes when calculating earnings per share, the Company\u2019s policy is to round down to the whole cent.\nThe Company calculates diluted earnings per share using the treasury stock method whereby net income for the period is divided by the weighted average number of shares of common stock outstanding for the period including the dilutive effect, if any, of shares of stock associated with unvested share-based grants. However, for share-based grants that vest in whole or in part based on performance metrics, their dilutive effect is included only after the performance metrics have been achieved.\nThe reconciliations of basic net income and diluted earnings per common share for the three and nine month periods ended September 28, 2024 and September 30, 2023 are as follows:",
+   "prose_after": "During the three and nine months ended September 28, 2024, unvested time-based restricted stock units totaling 6,299 and 1,644, respectively, and unvested performance-based restricted stock units totaling 139,654 for both periods were outstanding but not included in the computation of diluted earnings per share for the respective periods. During the three and nine months ended September 30, 2023, unvested time-based restricted stock units totaling 103,152 and 161,572, respectively, and unvested performance-based restricted stock units totaling 112,252 for both periods were outstanding but not included in the computation of diluted earnings per share for the respective periods. Each restricted stock unit is composed of one unvested share of the Company\u2019s common stock.\nThe unvested time-based restricted stock units were excluded because they were antidilutive based on their unearned compensation amounts and on the Company\u2019s average stock price during the periods. The unvested performance-based restricted stock units were excluded because their performance metrics had not been achieved as of the end of the respective reporting period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 28, 2024",
+     "",
+     "% of Net Sales",
+     "Three Months Ended September 30, 2023",
+     "",
+     "% of Net Sales"
+    ],
+    [
+     "",
+     "($ amounts in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "747,288",
+     "",
+     "$",
+     "809,981",
+     ""
+    ],
+    [
+     "Gross profit",
+     "125,669",
+     "",
+     "16.8%",
+     "139,246",
+     "",
+     "17.2%"
+    ],
+    [
+     "Selling, general, and administrative",
+     "92,210",
+     "",
+     "12.3%",
+     "91,354",
+     "",
+     "11.3%"
+    ],
+    [
+     "Depreciation and amortization",
+     "9,530",
+     "",
+     "1.3%",
+     "8,089",
+     "",
+     "1.0%"
+    ],
+    [
+     "Amortization of deferred gains on real estate",
+     "(984)",
+     "",
+     "(0.1)%",
+     "(984)",
+     "",
+     "(0.1)%"
+    ],
+    [
+     "Other operating expenses, net",
+     "888",
+     "",
+     "0.1%",
+     "1,131",
+     "",
+     "0.1%"
+    ],
+    [
+     "Operating income",
+     "24,025",
+     "",
+     "3.2%",
+     "39,656",
+     "",
+     "4.9%"
+    ],
+    [
+     "Interest expense, net",
+     "4,619",
+     "",
+     "0.6%",
+     "5,577",
+     "",
+     "0.7%"
+    ],
+    [
+     "Settlement of defined benefit pension plan",
+     "(2,226)",
+     "",
+     "(0.3)%",
+     "\u2014",
+     "",
+     "\u2014%"
+    ],
+    [
+     "Other expense, net",
+     "\u2014",
+     "",
+     "\u2014%",
+     "594",
+     "",
+     "0.1%"
+    ],
+    [
+     "Income before provision for income taxes",
+     "21,632",
+     "",
+     "2.9%",
+     "33,485",
+     "",
+     "4.1%"
+    ],
+    [
+     "Provision for income taxes",
+     "5,616",
+     "",
+     "0.8%",
+     "9,103",
+     "",
+     "1.1%"
+    ],
+    [
+     "Net income",
+     "$",
+     "16,016",
+     "2.1%",
+     "$",
+     "24,382",
+     "3.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Our results of operations and financial performance are influenced by a variety of factors, including the following: housing market conditions; pricing and product cost variability; volumes of product sold; competition; the cyclical nature of the industry in which we operate; consolidation among competitors, suppliers, and customers; disintermediation risk; loss of products or key suppliers and manufacturers; our dependence on international suppliers and manufacturers for certain products; effective inventory management relative to our sales volume or the prices of the products we produce; business disruptions; potential acquisitions and the integration and completion of such acquisitions; information technology security risks and business interruption risks; the ability to attract, train, and retain highly qualified associates and other key personnel while controlling related labor costs; exposure to product liability and other claims and legal proceedings related to our business and the products we distribute; natural disasters, catastrophes, fire, wars or other unexpected events; the impacts of climate change; successful implementation of our strategy; wage increases or work stoppages by our union employees; costs imposed by federal, state, local, and other regulations; compliance costs associated with federal, state, and local environmental protection laws; the effects of epidemics, global pandemics or other widespread public health crises and governmental rules and regulations; fluctuations in our operating results; our level of indebtedness and our ability to incur additional debt to fund future needs; the covenants of the instruments governing our indebtedness limiting the discretion of our management in operating the business; the potential to incur more debt; the fact that we have consummated certain sale leaseback transactions with resulting long-term non-cancelable leases, many of which are or will be finance leases; the fact that we lease many of our distribution centers, and we would still be obligated under these leases even if we close a leased distribution center; inability to raise funds necessary to finance a required repurchase of our senior secured notes; a lowering or withdrawal of debt ratings; changes in our product mix; increases in fuel and other energy prices or availability of third-part freight providers; changes in insurance-related deductible/retention liabilities based on actual loss development experience; the possibility that the value of our deferred tax assets could become impaired; changes in our expected annual effective tax rate could be volatile; the costs and liabilities related to our participation in multi-employer pension plans could increase; the risk that our cash flows and capital resources may be insufficient to service our existing or future indebtedness; interest rate risk, which could cause our debt service obligations to increase; and changes\nin, or interpretation of, accounting principles. These factors, and the related trends and uncertainties, have historically produced cyclicality in our results of operations, and we expect this cyclicality to continue in future periods.\nFor more information on the risk factors impacting our business, refer to Part I, Item 1A, Risk Factors, in our Annual Report on Form 10-K for the fiscal year 2023.\nResults of Operations\nOur results of operations for the three months ended September 28, 2024 (\u201cthird quarter of fiscal 2024\u201d) and for the three months ended September 30, 2023 (\u201cthird quarter of fiscal 2023\u201d) were as follows:",
+   "prose_after": "Our results of operations for the nine months ended September 28, 2024 (\u201cfirst nine months of fiscal 2024\u201d) and for the nine months ended September 30, 2023 (\u201cfirst nine months of fiscal 2023\u201d) were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 28, 2024",
+     "",
+     "% of Net Sales",
+     "Nine Months Ended September 30, 2023",
+     "",
+     "% of Net Sales"
+    ],
+    [
+     "",
+     "($ amounts in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "2,241,895",
+     "",
+     "$",
+     "2,423,852",
+     ""
+    ],
+    [
+     "Gross profit",
+     "375,794",
+     "",
+     "16.8%",
+     "408,588",
+     "",
+     "16.9%"
+    ],
+    [
+     "Selling, general, and administrative",
+     "272,913",
+     "",
+     "12.2%",
+     "271,278",
+     "",
+     "11.2%"
+    ],
+    [
+     "Depreciation and amortization",
+     "29,083",
+     "",
+     "1.3%",
+     "23,758",
+     "",
+     "1.0%"
+    ],
+    [
+     "Amortization of deferred gains on real estate",
+     "(2,952)",
+     "",
+     "(0.1)%",
+     "(2,952)",
+     "",
+     "(0.1)%"
+    ],
+    [
+     "Other operating expenses, net",
+     "1,210",
+     "",
+     "0.1%",
+     "5,240",
+     "",
+     "0.2%"
+    ],
+    [
+     "Operating income",
+     "75,540",
+     "",
+     "3.4%",
+     "111,264",
+     "",
+     "4.6%"
+    ],
+    [
+     "Interest expense, net",
+     "14,044",
+     "",
+     "0.6%",
+     "19,575",
+     "",
+     "0.8%"
+    ],
+    [
+     "Settlement of defined benefit pension plan",
+     "(2,226)",
+     "",
+     "(0.1)%",
+     "\u2014",
+     "",
+     "\u2014%"
+    ],
+    [
+     "Other expense, net",
+     "\u2014",
+     "",
+     "\u2014%",
+     "1,782",
+     "",
+     "0.1%"
+    ],
+    [
+     "Income before provision for income taxes",
+     "63,722",
+     "",
+     "2.8%",
+     "89,907",
+     "",
+     "3.7%"
+    ],
+    [
+     "Provision for income taxes",
+     "15,878",
+     "",
+     "0.7%",
+     "23,247",
+     "",
+     "1.0%"
+    ],
+    [
+     "Net income",
+     "$",
+     "47,844",
+     "2.1%",
+     "$",
+     "66,660",
+     "2.8%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 905,
+    "end_line": 927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "Our results of operations for the nine months ended September 28, 2024 (\u201cfirst nine months of fiscal 2024\u201d) and for the nine months ended September 30, 2023 (\u201cfirst nine months of fiscal 2023\u201d) were as follows:",
+   "prose_after": "The following table sets forth net sales by product category:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "September 28, 2024",
+     "",
+     "",
+     "September 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "Net sales by product category",
+     "($ amounts in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "519,000",
+     "",
+     "$",
+     "558,851",
+     "",
+     "$",
+     "1,562,300",
+     "",
+     "$",
+     "1,697,679",
+     ""
+    ],
+    [
+     "Structural products",
+     "228,288",
+     "",
+     "",
+     "251,130",
+     "",
+     "",
+     "679,595",
+     "",
+     "",
+     "726,173",
+     "",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "747,288",
+     "",
+     "$",
+     "809,981",
+     "",
+     "$",
+     "2,241,895",
+     "",
+     "$",
+     "2,423,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage of total net sales by product category",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "69.5",
+     "",
+     "%",
+     "69.0",
+     "",
+     "%",
+     "69.7",
+     "",
+     "%",
+     "70.0",
+     "",
+     "%"
+    ],
+    [
+     "Structural products",
+     "30.5",
+     "",
+     "%",
+     "31.0",
+     "",
+     "%",
+     "30.3",
+     "",
+     "%",
+     "30.0",
+     "",
+     "%"
+    ],
+    [
+     "Total net sales",
+     "100.0",
+     "",
+     "%",
+     "100.0",
+     "",
+     "%",
+     "100.0",
+     "",
+     "%",
+     "100.0",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 931,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The following table sets forth net sales by product category:",
+   "prose_after": "The following table sets forth gross profit and gross margin percentages by product category:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "September 28, 2024",
+     "",
+     "",
+     "September 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "Gross profit by product category:",
+     "($ amounts in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "100,479",
+     "",
+     "$",
+     "110,898",
+     "",
+     "$",
+     "308,878",
+     "",
+     "$",
+     "326,366",
+     ""
+    ],
+    [
+     "Structural products",
+     "25,190",
+     "",
+     "",
+     "28,348",
+     "",
+     "",
+     "66,916",
+     "",
+     "",
+     "82,222",
+     "",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "125,669",
+     "",
+     "$",
+     "139,246",
+     "",
+     "$",
+     "375,794",
+     "",
+     "$",
+     "408,588",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin % by product category:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "19.4",
+     "",
+     "%",
+     "19.8",
+     "",
+     "%",
+     "19.8",
+     "",
+     "%",
+     "19.2",
+     "",
+     "%"
+    ],
+    [
+     "Structural products",
+     "11.0",
+     "",
+     "%",
+     "11.3",
+     "",
+     "%",
+     "9.8",
+     "",
+     "%",
+     "11.3",
+     "",
+     "%"
+    ],
+    [
+     "Company gross margin %",
+     "16.8",
+     "",
+     "%",
+     "17.2",
+     "",
+     "%",
+     "16.8",
+     "",
+     "%",
+     "16.9",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "The following table sets forth gross profit and gross margin percentages by product category:",
+   "prose_after": "Third Quarter of Fiscal 2024 Compared to Third Quarter of Fiscal 2023\nFor the third quarter of fiscal 2024, the Company generated consolidated net sales of $747.3 million, a decrease of $62.7 million, or 7.7 percent, compared to the third quarter of fiscal 2023. The decrease in net sales in the current quarter was attributable to continuing pricing pressures in both specialty products and structural products, with commodity prices in U.S. markets for lumber and panels being down 12 percent and 19 percent, respectively, compared to the prior year period. However, pricing declines were partially offset by volume growth for both specialty and structural products. The Company\u2019s gross profit for the third quarter of fiscal 2024 decreased by $13.6 million to $125.7 million from $139.2 million in the prior year period and this decrease was attributable to both specialty and structural products. Gross margin percentage for the Company decreased from 17.2 percent to 16.8 percent in the current quarter, also attributable to both structural products and specialty products. The import-duty and LCNRV matters discussed in the sections below for specialty products and structural products contributed $5.9 million to the current quarter\u2019s gross profit. Excluding these items, gross margin percentage was 16.0 percent for the current quarter.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 28, 2024",
+     "",
+     "December 30, 2023",
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables, less allowance for doubtful accounts",
+     "$",
+     "278,049",
+     "$",
+     "228,410",
+     "$",
+     "297,568"
+    ],
+    [
+     "Inventories, net",
+     "340,541",
+     "",
+     "343,638",
+     "",
+     "364,162",
+     ""
+    ],
+    [
+     "",
+     "618,590",
+     "",
+     "572,048",
+     "",
+     "661,730",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "186,319",
+     "",
+     "157,931",
+     "",
+     "202,256",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net working capital",
+     "$",
+     "432,271",
+     "$",
+     "414,117",
+     "$",
+     "459,474"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1087
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "During the first nine months of fiscal 2023, we repurchased 358,212 shares of our common stock under the former 2021/2022 share repurchase program at an average price of $83.52 per share, including broker commissions but excluding federal excise tax due on the repurchases. The 2021/2022 share repurchase program was concluded during the fourth quarter of fiscal 2023.\nThe repurchase dollar amounts noted above are based on trade date activity, while the amounts reported on our consolidated statements of cash flows for share repurchases are based on settlement date activity.\nNet Working Capital\nNet working capital is an important measurement we use to determine the efficiencies of our operations and our ability to readily convert assets into cash. Net working capital is defined as the sum of accounts receivables and inventory, less accounts payable, each determined in accordance with GAAP and included in our consolidated balance sheets. This metric differs from traditional working capital in that it excludes certain current assets and current liabilities that are reported in our consolidated balance sheets. Net working capital of $432.3 million as of September 28, 2024, compared to $414.1 million as of December 30, 2023, increased on a net basis by approximately $18.2 million, as shown below:",
+   "prose_after": "Investments in Property and Equipment\nOur investments in capital assets consist of cash paid for owned assets and the inception of financing lease arrangements for long-lived assets to support our distribution infrastructure. The gross value of these assets is included in property and equipment, at cost on our unaudited condensed consolidated balance sheets.\nFor the first nine months of fiscal 2024, we invested $19.8 million in long-lived assets primarily related to investments in our distribution facilities and to a lesser extent, upgrading our fleet. We also added $16.7 million in new finance leases during the first nine months of fiscal 2024 for new tractors and forklifts to enhance our logistics network.\nFor the first nine months of fiscal 2023, we invested $18.9 million in cash investments in long-lived assets primarily related to investments in our distribution facilities and to a lesser extent, upgrading our fleet. We also added $11.3 million in new finance leases during the 2023 period for new forklifts to enhance our logistics network.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1088,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Purchased (1)",
+     "Average Price Paid per Share(2)",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs (3)",
+     "Maximum Dollar Value of Shares that May Yet Be Purchased Under the Plans or Programs",
+     ""
+    ],
+    [
+     "June 30 - August 3",
+     "77,241",
+     "$",
+     "104.54",
+     "69,267",
+     "$",
+     "69,152,479"
+    ],
+    [
+     "August 4 - August 31",
+     "16,737",
+     "$",
+     "101.40",
+     "16,466",
+     "$",
+     "67,482,814"
+    ],
+    [
+     "September 1 - September 28",
+     "59,878",
+     "$",
+     "100.83",
+     "59,815",
+     "$",
+     "61,453,701"
+    ],
+    [
+     "Total",
+     "153,856",
+     "",
+     "",
+     "145,548",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1126,
+    "end_line": 1138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "We are, and from time to time may be, a party to routine legal proceedings incidental to the operation of our business. Except as disclosed in Note 9, Commitments and Contingencies, under Regulatory Matters, to our unaudited condensed consolidated financial statements in this Quarterly Report on Form 10-Q, the Company does not expect that the outcome of any other pending or threatened proceedings, if determined adversely to the Company, would individually, or taken together, have a material adverse effect on our financial condition, operating results, or cash flows, based on our current understanding of the relevant facts. Legal expenses incurred related to these contingencies are generally expensed as incurred.\nITEM 1A. RISK FACTORS\nThere have been no material changes to the risk factors disclosed in Part I, \"Item 1A.Risk Factors\" in the Company\u2019s Annual Report on Form 10-K for the year ended December 30, 2023.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nThe following table presents our share repurchase activity for each fiscal month of the fiscal quarter ended September 28, 2024:",
+   "prose_after": "(1) Includes shares withheld by us in connection with tax withholding obligations of our employees upon vesting of such employees\u2019 restricted stock unit awards.\n(2) Includes broker commissions associated with the repurchases. Excludes federal excise tax incurred under The Inflation Reduction Act of 2022.\n(3) On October 31, 2023, our Board of Directors announced a new share repurchase authorization for up to $100 million. As of September 28, 2024, we had a remaining authorization amount of approximately $61.5 million under this program. With the remaining availability under the stock repurchase program, we may repurchase our common stock at any time or from time to time, without prior notice, subject to prevailing market conditions and other considerations. Our repurchases may be made through a variety of methods, which may include open market purchases, privately negotiated transactions, accelerated share repurchase programs, tender offers or pursuant to a trading plan that may be adopted in accordance with the Securities and Exchange Commission Rule 10b5-1.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description"
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "**",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "**",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.Def",
+     "",
+     "Definition Linkbase Document."
+    ],
+    [
+     "101.Pre",
+     "",
+     "Presentation Linkbase Document."
+    ],
+    [
+     "101.Lab",
+     "",
+     "Labels Linkbase Document."
+    ],
+    [
+     "101.Cal",
+     "",
+     "Calculation Linkbase Document."
+    ],
+    [
+     "101.Sch",
+     "",
+     "Schema Document."
+    ],
+    [
+     "101.Ins",
+     "",
+     "Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "104",
+     "",
+     "The cover page from this Quarterly Report on Form 10-Q for the quarter ended September 28, 2024, formatted in Inline XBRL."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "*",
+     "Filed herewith."
+    ],
+    [
+     "",
+     "**",
+     "Exhibit is being furnished and shall not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of that Section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended."
+    ],
+    [
+     "",
+     "\u00b1",
+     "Indicates management contract or compensatory plan or arrangement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "(3) On October 31, 2023, our Board of Directors announced a new share repurchase authorization for up to $100 million. As of September 28, 2024, we had a remaining authorization amount of approximately $61.5 million under this program. With the remaining availability under the stock repurchase program, we may repurchase our common stock at any time or from time to time, without prior notice, subject to prevailing market conditions and other considerations. Our repurchases may be made through a variety of methods, which may include open market purchases, privately negotiated transactions, accelerated share repurchase programs, tender offers or pursuant to a trading plan that may be adopted in accordance with the Securities and Exchange Commission Rule 10b5-1.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone of our directors or executive officers adopted or terminated a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement (as defined in Item 408(c) of Regulation S-K) during the third quarter of fiscal 2024.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "BlueLinx Holdings Inc."
+    ],
+    [
+     "",
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 29, 2024",
+     "By:",
+     "/s/ Andrew Wamser"
+    ],
+    [
+     "",
+     "",
+     "Andrew Wamser"
+    ],
+    [
+     "",
+     "",
+     "Senior Vice President, Chief Financial Officer and Treasurer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 29, 2024",
+     "By:",
+     "/s/ Kimberly A. DeBrock"
+    ],
+    [
+     "",
+     "",
+     "Kimberly A. DeBrock"
+    ],
+    [
+     "",
+     "",
+     "Vice President and Chief Accounting Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "BlueLinx Holdings Inc.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1185,
+    "end_line": 1202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Fair Value Disclosures                                                                    16"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1203,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

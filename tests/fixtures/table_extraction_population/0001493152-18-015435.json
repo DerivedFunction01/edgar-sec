@@ -1,0 +1,2640 @@
+{
+ "accession": "0001493152-18-015435",
+ "cik": "0001632121",
+ "form": "10-Q",
+ "filing_date": "2018-11-08",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-1146785"
+    ],
+    [
+     "(State or other jurisdiction\n\n\n\nof incorporation)",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: September 30, 2018\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File No. 333-202959\nBALANCE LABS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "350 Lincoln Road, 2nd Floor\nMiami Beach, Florida 33139\n(Address of principal executive offices)\n(305) 907-7600\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by section 13 or 15(d) of the Securities Exchange Act of 1934 during the past 12 months, and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (Sec.232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements.",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk.",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures.",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings.",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2 Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3 Defaults Upon Senior Securities.",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures.",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information.",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits.",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "22"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAs of November 8, 2018, there were 21,620,000 shares outstanding of the registrant\u2019s common stock.\nFORM 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nCondensed Consolidated Balance Sheets\n<TABLE>\nSeptember 30, 2018  December 31, 2017\n------------------  -----------------\n(unaudited)\nAssets\nCurrent Assets:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "85,270",
+     "",
+     "$",
+     "7,355",
+     ""
+    ],
+    [
+     "  Prepaid Expenses",
+     "",
+     "29,325",
+     "",
+     "",
+     "29,325",
+     ""
+    ],
+    [
+     "    Total Current Assets",
+     "",
+     "114,595",
+     "",
+     "",
+     "36,680",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "3,631",
+     "",
+     "",
+     "4,722",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Investment at Fair Value - Related Party",
+     "",
+     "255,000",
+     "",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "373,226",
+     "",
+     "$",
+     "121,402",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholder\u2019s Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts Payable - Related Party",
+     "$",
+     "461,659",
+     "",
+     "$",
+     "371,659",
+     ""
+    ],
+    [
+     "  Accounts Payable and Accrued Expenses",
+     "",
+     "393,484",
+     "",
+     "",
+     "247,100",
+     ""
+    ],
+    [
+     "  Convertible Note Payable - net of discount of $0 and $0, respectively",
+     "",
+     "525,000",
+     "",
+     "",
+     "525,000",
+     ""
+    ],
+    [
+     "  Convertible Notes Payable - Related Party - net of discount of $0 and $0, respectively",
+     "",
+     "120,000",
+     "",
+     "",
+     "120,000",
+     ""
+    ],
+    [
+     "  Notes Payable \u2013 Related Party",
+     "",
+     "164,500",
+     "",
+     "",
+     "69,500",
+     ""
+    ],
+    [
+     "  Short-Term Advances - Related Party",
+     "",
+     "616,039",
+     "",
+     "",
+     "312,789",
+     ""
+    ],
+    [
+     "    Total Current Liabilities",
+     "",
+     "2,280,682",
+     "",
+     "",
+     "1,646,048",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (see Note 6)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred Stock $.0001 par value: Authorized 50,000,000 shares none issued and outstanding as of September 30, 2018 and December 31, 2017",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common Stock, $.0001 par value: Authorized 500,000,000 shares, 21,620,000 Issued and outstanding as of September 30, 2018 and December 31, 2017",
+     "",
+     "2,162",
+     "",
+     "",
+     "2,162",
+     ""
+    ],
+    [
+     "  Additional Paid in Capital",
+     "",
+     "741,271",
+     "",
+     "",
+     "741,271",
+     ""
+    ],
+    [
+     "  Accumulated Deficit",
+     "",
+     "(2,650,889)",
+     "",
+     "",
+     "(2,347,579)",
+     ""
+    ],
+    [
+     "  Accumulated Other Comprehensive Income",
+     "",
+     "-",
+     "",
+     "",
+     "79,500",
+     ""
+    ],
+    [
+     "    Total Stockholder\u2019s Deficit",
+     "",
+     "(1,907,456)",
+     "",
+     "",
+     "(1,524,646)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholder\u2019s Deficit",
+     "$",
+     "373,226",
+     "",
+     "$",
+     "121,402",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three",
+     "",
+     "",
+     "For the three",
+     "",
+     "",
+     "For the nine",
+     "",
+     "",
+     "For the nine",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "September 30, 2017",
+     "",
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "September 30, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue related party",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and Administrative expenses",
+     "",
+     "29,236",
+     "",
+     "",
+     "21,806",
+     "",
+     "",
+     "73,775",
+     "",
+     "",
+     "75,576",
+     ""
+    ],
+    [
+     "  Professional Fees",
+     "",
+     "27,699",
+     "",
+     "",
+     "17,137",
+     "",
+     "",
+     "79,642",
+     "",
+     "",
+     "39,469",
+     ""
+    ],
+    [
+     "  Salaries and Wages",
+     "",
+     "73,434",
+     "",
+     "",
+     "65,437",
+     "",
+     "",
+     "211,757",
+     "",
+     "",
+     "160,618",
+     ""
+    ],
+    [
+     "  General and Administrative expenses - related party",
+     "",
+     "32,500",
+     "",
+     "",
+     "37,500",
+     "",
+     "",
+     "107,500",
+     "",
+     "",
+     "112,500",
+     ""
+    ],
+    [
+     "    Total Operating Expenses",
+     "",
+     "162,869",
+     "",
+     "",
+     "141,880",
+     "",
+     "",
+     "472,674",
+     "",
+     "",
+     "388,163",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(162,869)",
+     "",
+     "",
+     "(141,880)",
+     "",
+     "",
+     "(472,674)",
+     "",
+     "",
+     "(387,663)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income and Expenses",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Unrealized gain (Loss) on available for sale purchases",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "175,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Interest expense(includes amortization of warrants on note)",
+     "",
+     "(30,835)",
+     "",
+     "",
+     "(60,808)",
+     "",
+     "",
+     "(89,636)",
+     "",
+     "",
+     "(275,307)",
+     ""
+    ],
+    [
+     "    Total Other Income (Loss)",
+     "",
+     "(35,835)",
+     "",
+     "",
+     "(202,688)",
+     "",
+     "",
+     "85,364",
+     "",
+     "",
+     "(275,307)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(198,704)",
+     "",
+     "$",
+     "(202,688)",
+     "",
+     "$",
+     "(387,310)",
+     "",
+     "$",
+     "(662,970)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss attributable to Non Controlling Interest",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss attributable to the company",
+     "$",
+     "(198,704)",
+     "",
+     "$",
+     "(202,688)",
+     "",
+     "$",
+     "(382,810)",
+     "",
+     "$",
+     "(662,970)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Comprehensive Loss",
+     "",
+     "-",
+     "",
+     "",
+     "(215,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(657,250)",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "",
+     "(198,704)",
+     "",
+     "",
+     "(417,688)",
+     "",
+     "",
+     "(382,810)",
+     "",
+     "",
+     "(1,320,220)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per share Basic and Diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average Number of Common Shares Outstanding-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "",
+     "21,620,000",
+     "",
+     "",
+     "21,620,000",
+     "",
+     "",
+     "21,620,000",
+     "",
+     "",
+     "21,620,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "------------------  -----------------\nTotal Stockholder\u2019s Deficit                                                                                                                 (1,907,456)        (1,524,646)\n------------------  -----------------\nTotal Liabilities and Stockholder\u2019s Deficit                                                                                                       $ 373,226          $ 121,402\n==================  =================\n</TABLE>\nThe accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nCondensed Consolidated Statement of Operations\n(unaudited)",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nBalance Labs, Inc and Subsidiaries\nCondensed Consolidated Statement of Changes in Stockholders\u2019 Deficit",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred",
+     "",
+     "Preferred",
+     "",
+     "Common",
+     "",
+     "Common",
+     "",
+     "Additional",
+     "",
+     "Other",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock",
+     "",
+     "Stock",
+     "",
+     "Stock",
+     "",
+     "Stock",
+     "",
+     "Paid-in",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Controlling",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31,2017",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "21,620,000",
+     "$",
+     "2,162",
+     "$",
+     "741,271",
+     "$",
+     "79,500",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(2,347,579)",
+     "",
+     "$",
+     "(1,524,646)",
+     ""
+    ],
+    [
+     "Reclass of Comprehensive Loss to Retained Earnings for adoption of ASU 2016-01",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(79,500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "79,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Non-Controlling Interest - Krypto",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "4,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,500",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,500)",
+     "",
+     "",
+     "(382,810)",
+     "",
+     "",
+     "(387,310)",
+     ""
+    ],
+    [
+     "Balance September 30, 2018 (unaudited)",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "21,620,000",
+     "$",
+     "2,162",
+     "$",
+     "741,271",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(2,650,889)",
+     "",
+     "$",
+     "(1,907,456)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 212,
+    "end_line": 228
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nBalance Labs, Inc and Subsidiaries\nCondensed Consolidated Statement of Changes in Stockholders\u2019 Deficit",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nCondensed Consolidated Statement of Cash Flows\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine",
+     "",
+     "",
+     "For the Nine",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Months Ended",
+     "",
+     "",
+     "Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "September 30, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net Loss",
+     "$",
+     "(387,310)",
+     "",
+     "$",
+     "(662,970)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net  loss to net cash in operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of Debt Discount",
+     "",
+     "4,500",
+     "",
+     "",
+     "208,571",
+     ""
+    ],
+    [
+     "  Depreciation expense",
+     "",
+     "2,652",
+     "",
+     "",
+     "2,728",
+     ""
+    ],
+    [
+     "  Unrealized gain on Investment",
+     "",
+     "(175,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts Payable and Accrued Expenses",
+     "",
+     "146,384",
+     "",
+     "",
+     "83,520",
+     ""
+    ],
+    [
+     "  Accounts Payable and Accrued Expenses, related party",
+     "",
+     "90,000",
+     "",
+     "",
+     "90,000",
+     ""
+    ],
+    [
+     "Net cash used in Operating activities",
+     "",
+     "(318,774)",
+     "",
+     "",
+     "(274,253)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of intangible assets",
+     "",
+     "(1,561)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash used in Investing Activities",
+     "",
+     "(1,561)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from short term advances, related parties",
+     "",
+     "303,250",
+     "",
+     "",
+     "271,330",
+     ""
+    ],
+    [
+     "  Proceeds from Notes Payable",
+     "",
+     "90,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from non-controlling interest",
+     "",
+     "4,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash provided by financing activities",
+     "",
+     "398,250",
+     "",
+     "",
+     "271,330",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash increase (decrease) for the period",
+     "",
+     "77,915",
+     "",
+     "",
+     "(2,923)",
+     ""
+    ],
+    [
+     "Cash beginning of the Period",
+     "",
+     "7,355",
+     "",
+     "",
+     "16,057",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash end of Period",
+     "$",
+     "85,270",
+     "",
+     "$",
+     "13,134",
+     ""
+    ],
+    [
+     "Supplemental Disclosure for Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "3,700",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure for Non Cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Reclassification of short-term advances against Notes Payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 237,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nCondensed Consolidated Statement of Cash Flows\n(unaudited)",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements\nNotes to Condensed Consolidated Financial Statements\nAs of September 30, 2018 (Unaudited)\nNote 1 \u2013 Business Organization and Nature of Operations\nBalance Labs, Inc. (\u201cBalance Labs\u201d or the \u201cCompany\u201d) was incorporated on June 5, 2014 under the laws of the State of Delaware. Balance Labs is a consulting firm that provides business development and consulting services to start up and development stage businesses. The Company offers services to help businesses in various industries improve and fine tune their business models, sales and marketing plans and internal operations as well as make introductions to professional services such as business plan writing, accounting firms and legal service providers.\nDuring the years ending December 31, 2017 and 2016 the Company added the following wholly owned subsidiaries:\nBalanceLabs, LLC., formed October 12, 2015, Balance AgroTech Co., formed July 11, 2016, Advanced AutoTech Co., formed May 10, 2016, Balance Medical Marijuana Co., formed December 22, 2015, Balance Cannabis Co. formed May 13, 2016 and majority owned KryptoBank Co., formed December 27, 2017. All intercompany transactions have been eliminated.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 290,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Fair-value \u2013 equity securities",
+     "$",
+     "255,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "255,000"
+    ],
+    [
+     "Total Assets measured at fair value",
+     "$",
+     "255,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "255,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 381,
+    "end_line": 389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "We adopted accounting guidance for financial and non-financial assets and liabilities (ASC 820). This standard defines fair value, provides guidance for measuring fair value and requires certain disclosures. This standard does not require any new fair value measurements, but rather applies to all other accounting pronouncements that require or permit fair value measurements. This guidance does not apply to measurements related to share-based payments. This guidance discusses valuation techniques, such as the market approach (comparable market prices), the income approach (present value of future income or cash flow), and the cost approach (cost to replace the service capacity of an asset or replacement cost). The guidance utilizes a fair value hierarchy that prioritizes the inputs to valuation techniques used to measure fair value into three broad levels. The following is a brief description of those three levels:\n\u25cf Level 1: Observable inputs such as quoted prices (unadjusted) in active markets for identical assets or liabilities.\n\u25cf Level 2: Inputs other than quoted prices that are observable, either directly or indirectly. These include quoted prices for similar assets or liabilities in active markets and quoted prices for identical or similar assets or liabilities in markets that are not active.\n\u25cf Level 3: Unobservable inputs in which little or no market data exists, therefore developed using estimates and assumptions developed by us, which reflect those that a market participant would use.\nThe following table presents certain assets of the Company\u2019s measured and recorded at fair value on the Company\u2019s balance sheet on a recurring basis and their level within the fair value hierarchy as of September 30, 2018.",
+   "prose_after": "The following table presents certain assets of the Company\u2019s measured and recorded at fair value on the Company\u2019s balance sheet on a recurring basis and their level within the fair value hierarchy as of December 31, 2017.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Fair-value \u2013 equity securities",
+     "$",
+     "80,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "80,000"
+    ],
+    [
+     "Total Assets measured at fair value",
+     "$",
+     "80,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "80,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 392,
+    "end_line": 400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The following table presents certain assets of the Company\u2019s measured and recorded at fair value on the Company\u2019s balance sheet on a recurring basis and their level within the fair value hierarchy as of December 31, 2017.",
+   "prose_after": "The following is a reconciliation of the level 3 Assets:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Beginning Balance as of January 1, 2018",
+     "$",
+     "80,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on (level 3) asset September 30, 2018",
+     "",
+     "175,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ending Balance as of September 30, 2018",
+     "$",
+     "255,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 403,
+    "end_line": 412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The following is a reconciliation of the level 3 Assets:",
+   "prose_after": "Business Segments\nThe Company operates in one segment and therefore segment information is not presented.\nAdvertising, Marketing and Promotional Costs\nAdvertising, marketing and promotional expenses are expensed as incurred and are included in selling, general and administrative expenses on the accompanying statement of operations. For the nine months ended September 30, 2018 and September 30, 2017, advertising, marketing and promotion expense was $261 and $489, respectively.\nProperty and equipment\nProperty and equipment consists of furniture and office equipment and is stated at cost less accumulated depreciation. Depreciation is determined by using the straight-line method for furniture and office equipment, over the estimated useful lives of the related assets, generally three to five years.\nExpenditures for repairs and maintenance of equipment are charged to expense as incurred. Major replacements and betterments are capitalized and depreciated over the remaining useful lives of the related assets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Useful Lives",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Computer equipment & Software",
+     "3 yrs SL",
+     "$",
+     "5,358",
+     "$",
+     "5,358"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Website Software",
+     "3 yrs SL",
+     "",
+     "1,561",
+     "",
+     "-"
+    ],
+    [
+     "Furniture",
+     "3 yrs SL",
+     "",
+     "4,622",
+     "",
+     "4,622"
+    ],
+    [
+     "  Total",
+     "",
+     "",
+     "11,541",
+     "",
+     "9,980"
+    ],
+    [
+     "Less Accumulated Depreciation",
+     "",
+     "",
+     "7,910",
+     "",
+     "5,258"
+    ],
+    [
+     "  Property and Equipment, net",
+     "",
+     "$",
+     "3,631",
+     "$",
+     "4,722"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Advertising, Marketing and Promotional Costs\nAdvertising, marketing and promotional expenses are expensed as incurred and are included in selling, general and administrative expenses on the accompanying statement of operations. For the nine months ended September 30, 2018 and September 30, 2017, advertising, marketing and promotion expense was $261 and $489, respectively.\nProperty and equipment\nProperty and equipment consists of furniture and office equipment and is stated at cost less accumulated depreciation. Depreciation is determined by using the straight-line method for furniture and office equipment, over the estimated useful lives of the related assets, generally three to five years.\nExpenditures for repairs and maintenance of equipment are charged to expense as incurred. Major replacements and betterments are capitalized and depreciated over the remaining useful lives of the related assets.\nProperty and equipment as of September 30, 2018 and December 31, 2017 consisted of the following:",
+   "prose_after": "Depreciation expense for the nine months ended September 30, 2018 and 2017 totaled $2,652 and $2,728 respectively. Website additions during the nine months ended September 30, 2018 and 2017 were $1,561 and $0, respectively.\nReclassifications\nCertain 2017 amounts have been reclassified for comparative purposes to conform to the fiscal 2018 presentation. These reclassifications have no impact on the previously reported net loss.\nRecently Issued Accounting Pronouncements\nThe Company has evaluated all new accounting standards that are in effect and may impact its condensed consolidated financial statements and does not believe that there are any other new accounting standards that have been issued that might have a material impact on its financial position or results of operations.\nIn February 2016, the FASB issued ASU 2016-02, Leases, which will amend current lease accounting to require lessees to recognize\n(i) a lease liability, which is a lessee\u2019s obligation to make lease payments arising from a lease, measured on a discounted basis, and (ii) a right-of-use asset, which is an asset that represents the lessee\u2019s right to use, or control the use of, a specified asset for the lease term. ASU 2016-02 does not significantly change lease accounting requirements applicable to lessors; however, certain changes were made to align, where necessary, lessor accounting with the lessee accounting model. This standard will be effective for fiscal years beginning after December 15, 2018, including interim periods within those fiscal years. After reviewing of this ASU we have determined it will have no impact on our results of operations, cash flows or financial condition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of",
+     "Average",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants",
+     "Exercise Price",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2017",
+     "",
+     "2,920,000",
+     "",
+     "$",
+     "2.62"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "(220,000)",
+     "",
+     "",
+     "2.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2018",
+     "",
+     "2,700,000",
+     "",
+     "$",
+     "2.83"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 490,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "On September 17, 2015, the Company issued an aggregate of 220,000 shares of common stock at $0.50 per unit to investors. In connection with the purchases, the Company issued three-year warrants to purchase an aggregate of 220,000 shares of common stock at an exercise price of $2.00 per share. These warrants expired on September 17, 2018.\nDuring 2015, the Company issued 100,000 warrants as part of a convertible note offering. The fair value of the warrants was $19,965. The warrants expire December 23, 2020.\nIn conjunction with the Newell Investment Agreement (see Note 8), the company issued warrants to purchase 2,000,000 shares of the Company\u2019s common stock at an exercise price of $3.50 per share expiring on March 23, 2019.\nOn September 30, 2016, The Company\u2019s CEO loaned the Company $120,000 in addition to paying interest at 10%, the Company issued 600,000 warrants at an exercise price of $1.00 per share expiring on September 30, 2021.\nThe following table summarizes warrants outstanding as of September 30, 2018 and the related changes during the periods are presented below.",
+   "prose_after": "Note 5 \u2013 Related Party Transactions\nThe Company\u2019s CEO earned $10,000 per month. The following compensation was recorded within general and administrative expenses\n\u2013 related parties on the statements of operations: $90,000 and $90,000 for the nine months ended September 30, 2018 and 2017, respectively. As of September 30, 2018, $456,659 of compensation was unpaid and was included in accounts payable \u2013 related parties on the balance sheet.\nAs of September 30, 2018, $5,000 of the rent expense was unpaid and is included in accounts payable-related parties on the balance sheet.\nOn September 30, 2016, the CEO loaned $120,000 as a convertible note payable to the Company at an interest rate of 10%, due on October 1, 2017. In addition, the Company issued 600,000 warrants at an execution price of $1.00 which expire on September 30, 2021. See Note 7. The note is currently in default and has an accrued interest balance of $24,000.\nAs of September 30, 2018, the CEO and Company\u2019s controlled by the CEO have loaned the Company a total of $680,539 in addition to the convertible note discussed above. The loans carry an interest rate of 8% and mature one year and one day from the date of the loan. The Company accrued interest of $46,993 on the loans. $284,489 of these loans are in default as of September 30, 2018.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 507,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "85,270",
+     "",
+     "$",
+     "7,355",
+     ""
+    ],
+    [
+     "Working capital (deficiency)",
+     "$",
+     "(2,166,087)",
+     "",
+     "$",
+     "(1,609,368)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "General and administrative expenses\nGeneral and administrative expenses were $181,275 and $188,076 for the nine months ended September 30, 2018 and 2017, respectively, a decrease of $6,801, or 4%. The decrease in cost was a result of lower rent.\nGeneral and administrative expenses were $61,736 and $59,306 for the three months ended September 30, 2018 and 2017, respectively, an increase of $2,430, or 4%. The increase in cost was due to an increase in consulting fees.\nInterest expense\nInterest expense for the nine months ended September 30, 2018 and 2017 was $89,636 and $275,307, respectively, the decrease is attributable to a reduction in the amortization of debt discounts into interest expense.\nInterest expense for the three months ended September 30, 2018 and 2017 was $30,835 and $60,808, respectively, which was attributable to a reduction in the amortization of debt discounts into interest expense.\nLiquidity and Capital Resources\nWe measure our liquidity in a number of ways, including the following:",
+   "prose_after": "Availability of Additional Funds\nExcept for the monthly consulting fee to our CEO and Chairman of the Board and the month-to-month lease of our office space, as described elsewhere in this Quarterly Report, we currently do not have any material commitments for capital expenditures. We are actively pursuing new client relationships. Even if we were to add a new client(s), due to our current lack of a diversified client base, there could be temporary imbalances between cash receipts and cash operating expenditures, which means that we may need additional capital. The engagement revenues associated with most client engagements will self-fund the in-house and sub-contractor services we need in order to supply products and services to our clients.\nAs of September 30, 2018, the Company had a working capital deficiency of $2,166,087. The Company used cash in operations of $318,774. The Company has raised $398,250 in debt financing from related parties during the nine months ended September 30, 2018. In addition, the Company is working to manage its current liabilities while it continues to make changes in operations to further improve its cash flow and liquidity position. Based upon subsequent debt financing and the Company\u2019s current cash flow projections, management believes the Company will have sufficient capital resources to meet projected cash flow requirements for the next twelve months.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 302 of 2002*"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 302 of 2002*"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document*"
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document*"
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document*"
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document*"
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document*"
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 764,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "On September 30, 2016, the CEO loaned $120,000 as a convertible note payable to the Company at an interest rate of 10%, due on October 1, 2017. In addition, the Company issued 600,000 warrants at an execution price of $1.00 which expire on October 1, 2019. (See Note 6). $24,000 in interest has been accrued as of June30, 2018. The loan is in default as of September 30, 2018.\nAs of September 30, 2018, the CEO and Company\u2019s controlled by the CEO have loaned the company a total of $680,539, in addition to a convertible debenture of $120,000. With the exception of the convertible debenture, whose interest rate is 10%, the loans carry an interest rate of 8% and mature one year and one day from the date of the loan. $284,489 of these loans plus the $120,000 convertible debenture are in default as of September 30, 2018. The company has accrued interest on the loans of $46,993, as of September 30, 2018.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNone.\nItem 6. Exhibits",
+   "prose_after": "*Filed herewith\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 749,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BALANCE LABS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 8, 2018",
+     "By:",
+     "/s/ Michael D. Farkas"
+    ],
+    [
+     "",
+     "",
+     "Michael D. Farkas"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer and Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "BALANCE LABS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 787,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "*Filed herewith\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 797,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1585 @@
+{
+ "accession": "0001137171-10-000233",
+ "cik": "0001457435",
+ "form": "10-K",
+ "filing_date": "2010-04-15",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "zentric10ka04152010.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     ""
+    ],
+    [
+     "(State or other jurisdiction of  Incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [
+    "Nevada"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2009\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File No. 333-140236\nZENTRIC, INC.\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "Unit C2, 802 Southdown Road,\nMississauga, Ontario, Canada, L5J 2Y4\n(Address of Principal Executive Offices)\n(416) 245-8000\n(Issuer\u2019s telephone number)\n1310 Contour Drive\nMississauga, Ontario, Canada, L5H 1B2\n(Former name, address and fiscal year, if changed since last report)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act [ ] Yes [X] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Web Development",
+     "",
+     "$",
+     "10,000.00"
+    ],
+    [
+     "Legal/Accounting",
+     "",
+     "$",
+     "15,000.00"
+    ],
+    [
+     "Upgraded Computer systems",
+     "",
+     "$",
+     "12,500.00"
+    ],
+    [
+     "Telecommunications/DSL",
+     "",
+     "$",
+     "900.00"
+    ],
+    [
+     "Employee recruitment and training",
+     "",
+     "$",
+     "30,000.00"
+    ],
+    [
+     "General Administrative",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising",
+     "",
+     "$",
+     "50,000.00"
+    ],
+    [
+     "Automotive",
+     "",
+     "$",
+     "10,000.00"
+    ],
+    [
+     "Deprecation expense",
+     "",
+     "$",
+     "1,270.00"
+    ],
+    [
+     "Employee benefits",
+     "",
+     "$",
+     "1,500.00"
+    ],
+    [
+     "Entertainment",
+     "",
+     "$",
+     "9,000.00"
+    ],
+    [
+     "Insurance",
+     "",
+     "$",
+     "8,000.00"
+    ],
+    [
+     "Office salaries",
+     "",
+     "$",
+     "180,000.00"
+    ],
+    [
+     "Office supplies",
+     "",
+     "$",
+     "7,000.00"
+    ],
+    [
+     "Professional expense",
+     "",
+     "$",
+     "8,000.00"
+    ],
+    [
+     "Rent",
+     "",
+     "$",
+     "30,000.00"
+    ],
+    [
+     "Repairs & Maintenance",
+     "",
+     "$",
+     "1,500.00"
+    ],
+    [
+     "Taxes",
+     "",
+     "$",
+     "6,250.00"
+    ],
+    [
+     "Telephone",
+     "",
+     "$",
+     "6,000.00"
+    ],
+    [
+     "Travel",
+     "",
+     "$",
+     "50,000.00"
+    ],
+    [
+     "Utilities",
+     "",
+     "$",
+     "4,000.00"
+    ],
+    [
+     "Total General Administrative",
+     "",
+     "$",
+     "372,520.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "$",
+     "440,920.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 510,
+    "end_line": 538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On July 27, 2009 the Company entered into a Loan Agreement with Lucilla Ho wherein she agreed to loan the Company $20,000 and she will receive 20,000 shares of the Company\u2019s common stock. Such shares shall be restricted in accordance with Rule 144 of the Securities Act of 1933. A copy of the Loan Agreement is attached as exhibit 10.3.\nOn August 7, 2009 the Company entered into a Loan Agreement with 1456146 Ontario Limited of which Fred Lai is the principal. The 1456146 Ontario Limited agreed to loan the Company $50,000 and 1456146 Ontario Limited will receive 100,000 shares of the Company\u2019s common stock. Such shares shall be restricted in accordance with Rule 144 of the Securities Act of 1933. A copy of the Loan Agreement is attached as exhibit 10.4.\nOn August 15, 2009 the Company entered into a Loan Agreement with Ricky Wu wherein he agreed to loan the Company $20,000 and he will receive 40,000 shares of the Company's common stock. Such shares shall be restricted in accordance with Rule 144 of the Securities Act of 1933. A copy of the Loan Agreement is attached as exhibit 10.5.\nWe anticipate that our operational, general and administrative expenses for the next 12 months will total $440,920.00. The estimated breakdown is as follows:",
+   "prose_after": "We will not generate any revenues in the next twelve months and we will be required to raise additional capital by issuing equity or debt securities in exchange for cash in order to continue as a going concern. We can not assure you that any financing can be obtained or, if obtained, that it will be on reasonable terms. Without realization of additional capital, it would be unlikely for us to continue as a going concern.\nGoing Concern Consideration\nOur independent auditors included an explanatory paragraph in their report on the financial statements included herein regarding concerns about our ability to continue as a going concern. Our financial statements contain additional note disclosures describing the circumstances that lead to this disclosure by our independent auditors.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot applicable.\nItem 8. Financial Statements.\nZENTRIC, INC. (A DEVELOPMENT STAGE COMPANY)",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "31 December 2009",
+     "",
+     "",
+     "",
+     "31 December 2008",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "3,215"
+    ],
+    [
+     "    Prepaid Expense",
+     "",
+     "",
+     "4,767",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "  Total Assets",
+     "",
+     "$",
+     "4,767",
+     "",
+     "",
+     "$",
+     "3,215"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' (DEFICIT) EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from shareholder",
+     "",
+     "$",
+     "31,565",
+     "",
+     "",
+     "$",
+     "6,000"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "",
+     "6,560",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Note payable, net discount",
+     "",
+     "",
+     "88,950",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "127,075",
+     "",
+     "",
+     "",
+     "6,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' (Deficit) Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock: $0.001 par value, 400,000,000 common shares authorized, 49,128,000 and 48,718,000 common share outstanding as of December 31, 2009 and 2008, respectively",
+     "",
+     "",
+     "49,128",
+     "",
+     "",
+     "",
+     "48,718"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "(21,263)",
+     "",
+     "",
+     "",
+     "(26,503)"
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "",
+     "(150,173)",
+     "",
+     "",
+     "",
+     "(25,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Stockholders' (Deficit) Equity",
+     "",
+     "",
+     "(122,308)",
+     "",
+     "",
+     "",
+     "(2,785"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Liabilities and Stockholders' (Deficit) Equity",
+     "",
+     "$",
+     "4,767",
+     "",
+     "",
+     "$",
+     "3,215"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 600,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Zentric, Inc., Inc. December 31, 2009 and 2008 and the results of its operations and cash flows for the period described above in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company suffered a net loss from operations and has a net capital deficiency, which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans regarding those matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ M&K CPAS, PLLC\nwww.mkacpas.com\nHouston, Texas\nApril 15, 2010\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 637,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended 31 December 2009",
+     "",
+     "",
+     "For The Period From Inception (July 21, 2008) to 31 December 2008",
+     "",
+     "For The Period From Inception (July 21, 2008) to 31 December 2009",
+     ""
+    ],
+    [
+     "REVENUE",
+     "",
+     "$",
+     "-",
+     "",
+     "$                          -",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Consulting and sub-contracting",
+     "",
+     "",
+     "69,000",
+     "",
+     "15,000",
+     "",
+     "",
+     "84,000"
+    ],
+    [
+     "Office and General",
+     "",
+     "",
+     "9,209",
+     "",
+     "-",
+     "",
+     "",
+     "9,209"
+    ],
+    [
+     "  Professional fees",
+     "",
+     "",
+     "39,484",
+     "",
+     "9,500",
+     "",
+     "",
+     "48,984"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "7,480",
+     "",
+     "420",
+     "",
+     "",
+     "7,900"
+    ],
+    [
+     "  Bank charges",
+     "",
+     "",
+     "-",
+     "",
+     "80",
+     "",
+     "",
+     "80"
+    ],
+    [
+     "",
+     "",
+     "",
+     "125,173",
+     "",
+     "25,000",
+     "",
+     "",
+     "150,173"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET LOSS",
+     "",
+     "$",
+     "(125,173)",
+     "",
+     "$               (25,000)",
+     "",
+     "$",
+     "(150,173"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LOSS PER WEIGHTED NUMBER OF SHARES OUTSTANDING - BASIC AND DILUTED",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$                      0.00",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING - BASIC AND DILUTED",
+     "",
+     "",
+     "48,804,291",
+     "",
+     "46,509,227",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 643,
+    "end_line": 669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "July 21, 2008",
+     "July 21, 2008"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Date of Inception)",
+     "(Date of Inception)"
+    ],
+    [
+     "",
+     "",
+     "Year Ended",
+     "Through",
+     "Through"
+    ],
+    [
+     "",
+     "",
+     "31 December",
+     "December 31",
+     "December 31"
+    ],
+    [
+     "",
+     "",
+     "2009",
+     "2008",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(125,173)",
+     "$        (25,000)",
+     "$        (150,173)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "2,500",
+     "15,000",
+     "17,500"
+    ],
+    [
+     "Interest payable \u2013 related party loans",
+     "",
+     "4,848",
+     "-",
+     "4,848"
+    ],
+    [
+     "Imputed interest on advance from shareholder",
+     "",
+     "1,550",
+     "420",
+     "1,970"
+    ],
+    [
+     "Amortization on note discount",
+     "",
+     "550",
+     "-",
+     "550"
+    ],
+    [
+     "Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid Expense",
+     "",
+     "(4,767)",
+     "",
+     "(4,767)"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "1,712",
+     "-",
+     "1,712"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities",
+     "",
+     "(118,780)",
+     "(9,580)",
+     "(128,360)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "-",
+     "6,795",
+     "6,795"
+    ],
+    [
+     "Advances from related party",
+     "",
+     "25,565",
+     "6,000",
+     "31,565"
+    ],
+    [
+     "Borrowings on debt \u2013 related party",
+     "",
+     "90,000",
+     "-",
+     "90,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by financing activities",
+     "",
+     "115,565",
+     "12,795",
+     "128,360"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Decrease) Increase in Cash",
+     "",
+     "(3,215)",
+     "3,215",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, beginning of year",
+     "",
+     "3,215",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, end of year",
+     "$",
+     "-",
+     "$             3,215",
+     "$                 -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 678,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD FROM INCEPTION (July 21, 2008) TO 31 DECEMBER 2009",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 674,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional\n\n\n\nPaid-In",
+     "",
+     "",
+     "Earnings (Deficit) Accumulated\n\n\n\nDuring the",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Development Stage",
+     "",
+     "",
+     "Stockholders' Equity",
+     ""
+    ],
+    [
+     "  Common shares issued at inception (July 21, 2008)",
+     "",
+     "40,000,000",
+     "",
+     "$",
+     "40,000",
+     "",
+     "$",
+     "(40,000)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "  Common shares issued for cash",
+     "",
+     "2,718,000",
+     "",
+     "",
+     "2,718",
+     "",
+     "",
+     "4,077",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,795"
+    ],
+    [
+     "  Common shares issued for services",
+     "",
+     "6,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "9,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,000"
+    ],
+    [
+     "  Imputed interest on advance from shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "420",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "420"
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "(25,000)"
+    ],
+    [
+     "  Balance, 31 December 2008",
+     "",
+     "48,718,000",
+     "",
+     "",
+     "48,718",
+     "",
+     "",
+     "(26,503)",
+     "",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "(2,785)"
+    ],
+    [
+     "  Common shares issued for services",
+     "",
+     "250,000",
+     "",
+     "$",
+     "250",
+     "",
+     "$",
+     "2,250",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,500"
+    ],
+    [
+     "  Common shares issued for consideration",
+     "",
+     "160,000",
+     "",
+     "",
+     "160",
+     "",
+     "",
+     "1,440",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,600"
+    ],
+    [
+     "  Imputed interest on advance from shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,550",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,550"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(125,173)",
+     "",
+     "",
+     "(125,173)"
+    ],
+    [
+     "  Balance, 31 December 2009",
+     "",
+     "49,128,000",
+     "",
+     "",
+     "49,128",
+     "",
+     "",
+     "(21,263)",
+     "",
+     "",
+     "(150,173)",
+     "",
+     "",
+     "(122,308,)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 727,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD FROM INCEPTION (July 21, 2008) TO 31 DECEMBER 2009",
+   "prose_after": "1. ORGANIZATION AND BASIS OF PRESENTATION\nZentric, Inc. (the \"Company\"), was incorporated on July 21, 2008, under the laws of the State of Nevada as an early stage product and services company that provides microclimate systems to specialty markets, who have a need to protect and preserve rare and/or valuable items.\n2. GOING CONCERN\nThe accompanying financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America with the assumption that the Company will be able to realize its assets and discharge its liabilities in the normal course of business. The Company has had limited revenues and has an accumulated deficit which raises substantial doubt about the Company's ability to continue as a going concern. The financial statements do not include any adjustments to the amounts and classifications of assets and liabilities that might be necessary should the Company be unable to continue as a going concern.\nThe Company's ability to continue as a going concern is also contingent upon its ability to complete certain capital formation activities and generate working capital operations in the future. Management's plan in this regard is to secure additional funds through equity financing activities, and from loans made by the Company's stockholder.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 721,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "2008"
+    ],
+    [
+     "Deferred Tax Asset arising from Net Operating Loss Carry-forwards",
+     "$ 52,560",
+     "$ 8,750"
+    ],
+    [
+     "Valuation allowance",
+     "(52,560)",
+     "(8,750)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$           -",
+     "$           -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 946,
+    "end_line": 956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company accounts for income taxes in accordance with ASC 740-10, which requires use of the liability method. ASC 740-10-25 provides that deferred tax assets and liabilities are recorded based on differences between the tax bases of assets and liabilities and their carrying amount for financial purposes, referred to as temporary differences.\nAs of December 31, 2009, there were no differences between financial reporting and tax bases of assets and liabilities. The Company will have tax losses available to be applied against future years\u2019 income as result of the losses incurred. However, due to the losses incurred in the period and expected future operating results, management determined that it is more likely than not that the deferred tax asset resulting from the tax losses available for carryforward will not be realized through the reduction of future income tax payments. Accordingly a 100% valuation allowance has been recorded for deferred income tax assets. The net loss carryforward was $125,173 and $25,000 for the years ended December 31, 2008 and December 31, 2009 respectively.\nThe deferred tax asset for December 31, 2009 and December 31, 2008 is as follows:",
+   "prose_after": "10. SUBSEQUENT EVENTS\nThere were no events that took place subsequent to December 31, 2009 that in the opinion of management warrant further disclosures.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone\nItem 9A. Controls and Procedures.\nWe maintain disclosure controls and procedures that are designed to ensure that information required to be disclosed in our reports made pursuant to the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). is recorded, processed, summarized and reported within the timelines specified in the Securities and Exchange Commission\u2019s rules and forms, and that such information is accumulated and communicated to our management, including our Chief Executive Officer and Principal Financial Officer, as appropriate, to allow timely decisions regarding required disclosure. In designing and evaluating the disclosure controls and procedures, management recognized that any controls and procedures, no matter how well designed and operated, can only provide reasonable assurance of achieving the desired control objectives, and in reaching a reasonable level of assurance, management necessarily was required to apply its judgment in evaluating the cost-benefit relationship of possible controls and procedures.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions and Offices Held"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kwok Kwong Chan",
+     "53",
+     "Director/Secretary"
+    ],
+    [
+     "Jeff Mak",
+     "54",
+     "President/CEO/CFO/Secretary/Director/Treasurer, Principal Executive Officer, Principal Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1037,
+    "end_line": 1044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "Controls and Procedures."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of the company\u2019s independent registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the company\u2019s registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit the company to provide only management\u2019s report.\nThere were no changes in our internal controls over financial reporting (as such term is defined in Rule 13a-15(f) under the Exchange Act) that occurred during our fiscal year ended December 31, 2009, that have materially affected, or are reasonably likely to materially affect, our internal controls over financial reporting. In the estimation of our senior management, none of the following changes in the composition of management have materially affected, or are reasonably likely to materially affect, our internal controls over financial reporting:\nItem 9B. Other Information\nNone.\nPART II\nOTHER INFORMATION\nItem 10. Directors, Executive Officers, Promoters and Control Persons\nDirectors and Executive Officers\nSet forth below are the names, ages and present principal occupations or employment, and material occupations, positions, offices or employments for the past five years of our current directors and executive officers.",
+   "prose_after": "BUSINESS EXPERIENCE\nSet forth below is the name of our director and officer, all positions and offices held with us , the period during which he has served as such, and the business experience during at least the last five years:\nJEFF MAK was appointed as our President, Chief Executive Officer, Chief Financial officer and a member of the Board of Directors as of July 23, 2008. Mr. Mak brings several years of experience in the design and technology industry. He was a founder and director of Logicsys Technologies, Inc a once publicly traded company on the TSX. He was also, president and founder of Eastgate Innovations, Inc. a product design and research and development company which owns several original patents and has licensed to several other companies. Mr. Mak was previously co-founder and director of Peceptek Inc. for 6 years since January 2002 to February 2008.\nKWOK KWON CHAN was appointed as a member of the Board of Directors on August 25, 2008. Mr. Chan has over 35 years of experience with electronics industry at varies positions, including product design and top level manufacturing management up to 400 employees. Mr. Chan was officially trained by National Taiwan University with Bachelor degree of electrical engineering which is certified as North America equivalent. Mr. Chan also was trained and successfully completed Diploma in Business Management which is certified as North America equivalent also. Mr. Chan\u2019s experiences not only supported him on product design but also on full scale business management too.",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1035,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Title Of Class",
+     "Amount and Nature of Beneficial Ownership",
+     "Percent of Class"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Jeff Mak",
+     "Common",
+     "20,000,000",
+     "40.7%"
+    ],
+    [
+     "Mr. Kwok Kwong Chan",
+     "Common",
+     "1,500,000",
+     "3.05%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Officers as a Group (2 person)",
+     "Common",
+     "21,500,000",
+     "43.8%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1101,
+    "end_line": 1110
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table lists, as of April 9, 2010, the number of shares of common stock of our Company that are beneficially owned by (i) each person or entity known to our Company to be the beneficial owner of more than 5% of the outstanding common stock; (ii) each officer and director of our Company; and (iii) all officers and directors as a group. Information relating to beneficial ownership of common stock by our principal shareholders and management is based upon information furnished by each person using \u201cbeneficial ownership\u201d concepts under the rules of the Securities and Exchange Commission. Under these rules, a person is deemed to be a beneficial owner of a security if that person has or shares voting power, which includes the power to vote or direct the voting of the security, or investment power, which includes the power to vote or direct the voting of the security. The person is also deemed to be a beneficial owner of any security of which that person has a right to acquire beneficial ownership within 60 days. Under the Securities and Exchange Commission rules, more than one person may be deemed to be a beneficial owner of the same securities, and a person may be deemed to be a beneficial owner of securities as to which he or she may not have any pecuniary beneficial interest. Except as noted below, each person has sole voting and investment power.\nThe percentages below are calculated based on 49,128,000 shares of our common stock issued and outstanding as of April 9, 2010. We do not have any outstanding options, warrants or other securities exercisable for or convertible into shares of our common stock. Unless otherwise indicated, the address of each person listed is c/o Zentric, Inc., Unit C2, 802 Southdown Road, Mississauga, Ontario, L5J Canada.",
+   "prose_after": "Changes in Control\nThere are no arrangements which may result in a change in control of the Company.\nItem 13. Certain Relationships and Related Transactions\nOther than the transactions discussed below, we have not entered into any transaction nor are there any proposed transactions in which our Director, executive officer, stockholder or any member of the immediate family of the foregoing had or is to have a direct or indirect material interest.\nSince Mr. Jeff Mak became our sole officer and a director, he has advanced funds for professional fees and general expenses in the amount of $25,565 and $6,000 as of December 31, 2009 and 2008, respectively.\nItem 14. Principal Accounting Fees and Services.\nAudit Fees\nThe aggregate fees billed for professional services rendered by the Company\u2019s principal accountant for the audit of the Company\u2019s annual financial statements for the fiscal years ended December 31, 2009 and 2008 were $3,000 and $3,200 respectively.\nAudit-Related Fees\nThe Company incurred no fees during the last two fiscal years for assurance and related services by the Company\u2019s principal accountant that were reasonably related to the performance of the audit or review of the registrant\u2019s financial statements and are not reported under Item 9(e)(1) of Schedule A.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2425 @@
+{
+ "accession": "0001079974-13-000529",
+ "cik": "0001453883",
+ "form": "10-Q",
+ "filing_date": "2013-08-19",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bulk10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "26-1244643"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(IRS Employer File Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly period ended June 30, 2013\n[] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 333-168328\nBulk Storage Software, Inc.\n(Exact Name of Small Business Issuer as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10790 Glengate Loop",
+     ""
+    ],
+    [
+     "Highlands Ranch, Colorado",
+     "80130"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(zip code)"
+    ]
+   ],
+   "caption_stack": [
+    "10790 Glengate Loop"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(303)-862-6857\n(Registrant's telephone number, including area code)\nIndicate by check mark whether the registrant: (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports); and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T(Section 232.405 of this chapter) during the preceding 12 months(or such shorter period that the registrant was required to submit and post such files. Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmall reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I  FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements for the period ended June 30, 2013",
+     ""
+    ],
+    [
+     "Balance Sheet (Unaudited)",
+     "4"
+    ],
+    [
+     "Statements of Operations (Unaudited)",
+     "5"
+    ],
+    [
+     "Statements of Cash Flows (Unaudited)",
+     "7"
+    ],
+    [
+     "Notes to Financial Statements",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis and Plan of Operation",
+     "9"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "13"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "13"
+    ],
+    [
+     "Item 4T. Controls and Procedures",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II  OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "14"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "14"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "14"
+    ],
+    [
+     "Item 4. Submission of Matters to a Vote of Security Holders",
+     "14"
+    ],
+    [
+     "Item 5. Other Information",
+     "14"
+    ],
+    [
+     "Item 6. Exhibits",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "16"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I  FINANCIAL INFORMATION",
+    "Item 1. Financial Statements for the period ended June 30, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 54,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T(Section 232.405 of this chapter) during the preceding 12 months(or such shorter period that the registrant was required to submit and post such files. Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmall reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                                                Accelerated filer [ ]\nNon-accelerated filer   [ ] (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) Yes [ ] No [X]\nAs of August 19, 2013, registrant had outstanding 22,033,080 shares of the registrant's common stock.\nFORM 10-Q\nBULK STORAGE SOFTWARE, INC.\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nReferences in this document to \"us,\" \"we,\" or \"Company\" refer to Bulk Storage Software, Inc.\nITEM 1. FINANCIAL STATEMENTS\nBULK STORAGE SOFTWARE, INC.\nCONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\nQuarter Ended March 31, 2013\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nReferences in this document to \"us,\" \"we,\" or \"Company\" refer to Bulk Storage Software, Inc.\nITEM 1. FINANCIAL STATEMENTS\nBULK STORAGE SOFTWARE, INC.\nCONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\nQuarter Ended March 31, 2013\nTABLE OF CONTENTS",
+   "prose_after": "Bulk Storage Software, Inc. ( A Development Stage Company ) Balance Sheet",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 111,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "240",
+     "",
+     "$",
+     "240",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "240",
+     "",
+     "$",
+     "240",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "11,788",
+     "",
+     "$",
+     "3,754",
+     ""
+    ],
+    [
+     "Interest Payable",
+     "",
+     "11,627",
+     "",
+     "",
+     "8,434",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "61,300",
+     "",
+     "",
+     "52,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "84,715",
+     "",
+     "",
+     "64,688",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHAREHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $.10 per share;  Authorized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1,000,000 shares; issued and outstanding -0- shares.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, par value $.001 per share;  Authorized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "150,000,000 shares; issued and outstanding 22,033,080 shares.",
+     "",
+     "22,033",
+     "",
+     "",
+     "22,033",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital paid in excess of par value",
+     "",
+     "51,967",
+     "",
+     "",
+     "43,167",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(158,475)",
+     "",
+     "",
+     "(129,648)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL SHAREHOLDERS' DEFICIT",
+     "",
+     "(84,475)",
+     "",
+     "",
+     "(64,448)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "$",
+     "240",
+     "",
+     "$",
+     "240",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Unaudited"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 116,
+    "end_line": 161
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Bulk Storage Software, Inc. ( A Development Stage Company ) Balance Sheet",
+   "prose_after": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 163,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Unaudited",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months\n\nEnded",
+     "",
+     "",
+     "Three Months\n\nEnded",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GENERAL & ADMINISTRATIVE EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounting",
+     "",
+     "500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Legal",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Office",
+     "",
+     "1,670",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock Transfer Fees",
+     "",
+     "297",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total General and Administrative Expenses",
+     "",
+     "2,467",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(2,467)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(5,493)",
+     "",
+     "",
+     "(1,517)",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "(8,800)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain from debt release",
+     "",
+     "-",
+     "",
+     "",
+     "42,479",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(14,293)",
+     "",
+     "",
+     "40,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(16,760)",
+     "",
+     "$",
+     "40,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic Earnings (Loss) Per Share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wgt Ave Common Shares Outstanding",
+     "",
+     "22,033,080",
+     "",
+     "",
+     "22,033,080",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 168,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 165,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 216,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "October 15,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Unaudited",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months\n\nEnded",
+     "",
+     "",
+     "Nine Months\n\nEnded",
+     "",
+     "",
+     "(inception)\n\nthrough",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GENERAL & ADMINISTRATIVE EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounting",
+     "",
+     "5,250",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "20,460",
+     ""
+    ],
+    [
+     "Consulting",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "64,385",
+     ""
+    ],
+    [
+     "Legal",
+     "",
+     "-",
+     "",
+     "",
+     "20,500",
+     "",
+     "",
+     "20,500",
+     ""
+    ],
+    [
+     "Office",
+     "",
+     "6,590",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,739",
+     ""
+    ],
+    [
+     "Stock Transfer Fees",
+     "",
+     "594",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "16,064",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total General and Administrative Expenses",
+     "",
+     "12,434",
+     "",
+     "",
+     "25,500",
+     "",
+     "",
+     "131,148",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) from operations",
+     "",
+     "(12,434)",
+     "",
+     "",
+     "(25,500)",
+     "",
+     "",
+     "(131,148)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(7,593)",
+     "",
+     "",
+     "(3,439)",
+     "",
+     "",
+     "(23,506)",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "(8,800)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(46,300)",
+     ""
+    ],
+    [
+     "Gain from debt release",
+     "",
+     "-",
+     "",
+     "",
+     "42,479",
+     "",
+     "",
+     "42,479",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(16,393)",
+     "",
+     "",
+     "39,040",
+     "",
+     "",
+     "(27,327)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(28,827)",
+     "",
+     "$",
+     "13,540",
+     "",
+     "$",
+     "(158,475)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic Earnings (Loss) Per Share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wgt Ave Common Shares Outstanding",
+     "",
+     "22,033,080",
+     "",
+     "",
+     "22,033,080",
+     "",
+     "",
+     "22,033,080",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "October 15,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 221,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 271,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "October 15,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Unaudited",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months\n\nEnded",
+     "",
+     "",
+     "Nine Months\n\nEnded",
+     "",
+     "",
+     "(inception)\n\nthrough",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "$",
+     "(28,827)",
+     "",
+     "$",
+     "13,540",
+     "",
+     "$",
+     "(158,475)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile decrease in net assets to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "21,885",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain from debt relief",
+     "",
+     "",
+     "",
+     "",
+     "(42,479)",
+     "",
+     "",
+     "(35,000)",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "8,800",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "46,300",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "8,034",
+     "",
+     "",
+     "(12,000)",
+     "",
+     "",
+     "11,788",
+     ""
+    ],
+    [
+     "Increase in interest payable",
+     "",
+     "3,193",
+     "",
+     "",
+     "3,439",
+     "",
+     "",
+     "11,627",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "(8,800)",
+     "",
+     "",
+     "(37,500)",
+     "",
+     "",
+     "(101,875)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "8,800",
+     "",
+     "",
+     "37,500",
+     "",
+     "",
+     "96,300",
+     ""
+    ],
+    [
+     "Issuance of common stock, not of issuance costs of $20,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "8,800",
+     "",
+     "",
+     "37,500",
+     "",
+     "",
+     "102,115",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "240",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "240",
+     "",
+     "",
+     "250",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "240",
+     "",
+     "$",
+     "250",
+     "",
+     "$",
+     "240",
+     ""
+    ],
+    [
+     "Supplemental information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "October 15,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 276,
+    "end_line": 327
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage Software, Inc. ( A Development Stage Company ) Statement of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of the unaudited financial statements.\nBulk Storage, Inc.\nNotes To the Unaudited Financial Statements\nFor The Nine Month Period Ended June 30, 2013\nNote 1 - Unaudited Financial Information\nThe unaudited financial information included for the nine month interim period ended June 30, 2013 was taken from the books and records without audit. However, such information reflects all adjustments, consisting only of normal recurring adjustments, which in the opinion of management are necessary to reflect properly the results of the interim periods presented. The results of operations for the nine month period ended June 30, 2013 are not necessarily indicative of the results expected for the fiscal year ended September 30, 2013.\nNote 2 \u2013 Notes Payable\nThe Company at June 30, 2013 and September 30, 2012 had outstanding notes payable for $61,300 and $52,500 respectively to related party shareholders, unsecured, bearing an interest rate at 8% and 2% per annum and due on demand. Interest expense under the notes for the three month and nine month periods ended June 30, 2013 and 2012 was $5,493, $1,517 and $7,593 and $3,439 respectively. Accrued interest at June 30, 2013 and September 30, 2012 was $11,627 and $8,434 respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 273,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1*",
+     "Articles of Incorporation"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2*",
+     "Bylaws"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of CEO/CFO pursuant to Sec. 302"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of CEO/CFO pursuant to Sec. 906"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Statements"
+    }
+   },
+   "prose_before": "ITEM 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS\nNone.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS AND REPORTS ON FORM 8-K\nExhibits\nThe following financial information is filed as part of this report:\n(a) (1) FINANCIAL STATEMENTS\n(2) SCHEDULES\n(3) EXHIBITS. The following exhibits required by Item 601 to be filed herewith are incorporated by reference to previously filed documents:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 599,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Statements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Previously filed with Form S-1 Registration Statement, July 26, 2010\nSIGNATURES\nIn accordance with Section 12 of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on August 19, 2013.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Bulk Storage Software, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Geoffrey Gibbs"
+    ],
+    [
+     "",
+     "",
+     "Geoffrey Gibbs"
+    ],
+    [
+     "",
+     "",
+     "President, Secretary  and Treasurer\n\n(principal executive officer and principal financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Bulk Storage Software, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 623,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Statements"
+    }
+   },
+   "prose_before": "* Previously filed with Form S-1 Registration Statement, July 26, 2010\nSIGNATURES\nIn accordance with Section 12 of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on August 19, 2013.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following person on behalf of the Registrant and in the capacity and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: August 19, 2013",
+     "By:",
+     "/s/ Geoffrey Gibbs"
+    ],
+    [
+     "",
+     "",
+     "Geoffrey Gibbs"
+    ],
+    [
+     "",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 636,
+    "end_line": 642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Financial Statements"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following person on behalf of the Registrant and in the capacity and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

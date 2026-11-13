@@ -1,0 +1,7375 @@
+{
+ "accession": "0001019687-12-001021",
+ "cik": "0001083712",
+ "form": "10-K",
+ "filing_date": "2012-03-21",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "webmediabrands_10k-123111.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "06-1542480"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "50 Washington Street, Suite 912\n\nNorwalk, Connecticut",
+     "06854"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15 (D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2011\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission file number: 000-26393\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "(203) 662-2800\n(Registrant\u2019s telephone number, including area code)\nSecurities registered under Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock $.01 par value",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(203) 662-2800\n(Registrant\u2019s telephone number, including area code)\nSecurities registered under Section 12(b) of the Act:",
+   "prose_after": "Securities registered under Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "13"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "13"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "13"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "13"
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "14"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "14"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "22"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "43"
+    ],
+    [
+     "Item 9A .",
+     "Controls and Procedures",
+     "43"
+    ],
+    [
+     "Item 9B.",
+     "Other information",
+     "43"
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers of the Registrant",
+     "44"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "44"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management",
+     "44"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions",
+     "44"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "44"
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits",
+     "45"
+    ],
+    [
+     "Signatures",
+     "",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 108
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Exchange Act Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of voting and non-voting common stock held by non-affiliates of the registrant as of June 30, 2011, based upon the last sale price of such common stock on that date as reported by the Nasdaq National Market was $30,499,425.\nThe number of shares of the outstanding registrant\u2019s Common Stock as of March 15, 2012 was 41,593,473.\nInformation required by Part III of this Form 10-K, to the extent not set forth herein, is incorporated by reference to the registrant\u2019s definitive proxy statement for its 2012 annual meeting of stockholders, which will be filed pursuant to Regulation 14A under the Securities Exchange Act of 1934 within 120 days after the end of the fiscal year to which this Form 10-K relates.\nAnnual Report on Form 10-K\nTable of Contents",
+   "prose_after": "\u201cSafe Harbor\u201d Statement under the Private Securities Litigation Reform Act of 1995: Statements in this Form 10-K that are not historical facts are \u201cforward-looking statements\u201d pursuant to the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. Such forward-looking statements involve risks and uncertainties that could cause actual results to differ materially from those described in the forward-looking statements. The potential risks and uncertainties address a variety of subjects including, for example: the competitive environment in which WebMediaBrands competes; the unpredictability of WebMediaBrands\u2019s future revenues, expenses, cash flows and stock price; WebMediaBrands\u2019s ability to integrate acquired businesses, products and personnel into its existing businesses; WebMediaBrands\u2019s ability to protect its intellectual property; and WebMediaBrands\u2019s dependence on other companies posting job listings on its Websites. For a more detailed discussion of such risks and uncertainties, refer to Item 1A. The forward-looking statements included herein are made as of the date of this Form 10-K, and WebMediaBrands assumes no obligation to update the forward-looking statements after the date hereof.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 73,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "10,000Words",
+     "AllTwitter",
+     "FishbowlLA",
+     "MediaJobsDaily",
+     "TVNewser",
+     ""
+    ],
+    [
+     "",
+     "AgencySpy",
+     "eBookNewser",
+     "FishbowlNY",
+     "PRNewser",
+     "TVSpy",
+     ""
+    ],
+    [
+     "",
+     "AllFacebook",
+     "FishbowlDC",
+     "GalleyCat",
+     "SocialTimes",
+     "UnBeige",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 123,
+    "end_line": 128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "\u201cSafe Harbor\u201d Statement under the Private Securities Litigation Reform Act of 1995: Statements in this Form 10-K that are not historical facts are \u201cforward-looking statements\u201d pursuant to the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. Such forward-looking statements involve risks and uncertainties that could cause actual results to differ materially from those described in the forward-looking statements. The potential risks and uncertainties address a variety of subjects including, for example: the competitive environment in which WebMediaBrands competes; the unpredictability of WebMediaBrands\u2019s future revenues, expenses, cash flows and stock price; WebMediaBrands\u2019s ability to integrate acquired businesses, products and personnel into its existing businesses; WebMediaBrands\u2019s ability to protect its intellectual property; and WebMediaBrands\u2019s dependence on other companies posting job listings on its Websites. For a more detailed discussion of such risks and uncertainties, refer to Item 1A. The forward-looking statements included herein are made as of the date of this Form 10-K, and WebMediaBrands assumes no obligation to update the forward-looking statements after the date hereof.\nPart I\nITEM 1. BUSINESS\nOverview\nWebMediaBrands is an Internet media company that provides content, education and career services to social media, traditional media and creative professionals through a portfolio of vertical online properties, communities and trade shows. Our online business includes:\n\u25cf mediabistro.com, a leading blog network providing content, education, community resources and career resources about major media industry verticals including new media, social media, Facebook, TV news, advertising, public relations, publishing, design and mobile that includes the following:",
+   "prose_after": "Our mediabistro.com business also includes an industry-leading job board for media and creative professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a leading network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AppData",
+     "Inside Mobile Apps",
+     "Inside Virtual Goods",
+     ""
+    ],
+    [
+     "",
+     "Inside Facebook",
+     "Inside Social Games",
+     "The Facebook Marketing Bible",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 132,
+    "end_line": 136
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Our mediabistro.com business also includes an industry-leading job board for media and creative professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a leading network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "prose_after": "\u25cf SemanticWeb.com, a leading blog providing content, education, community resources and career resources on the commercialization and application of Semantic Technologies, Linked Data and Big Data.\n\u25cf Community, membership and e-commerce offerings including a freelance listing service, a marketplace for designing and purchasing logos (stocklogos.com) and premium membership services.\nOur education business features online and in-person courses and online conferences, including our Social Media Marketing Boot Camps, for media and creative professionals. Online education conferences are large-scale programs that offer attendees the opportunity to learn in a dynamic online setting with live weekly instruction via webcast, daily forum discussions within an online classroom, homework assignments, and small group interaction where students receive one-on-one guidance and instruction from an advisor.\nOur trade shows include, among others, the Semantic Tech and Business Conference, Inside Social Apps, Social Gaming Summit and AllFacebook Marketing Expo.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Locations",
+     "Square\n\nFeet",
+     "Termination Date",
+     "Use"
+    ],
+    [
+     "Leased and Occupied",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Norwalk, CT",
+     "6,600",
+     "October 2013",
+     "Administrative and IT"
+    ],
+    [
+     "New York, NY",
+     "18,750",
+     "May 2013",
+     "Sales, editorial and IT"
+    ],
+    [
+     "San Francisco, CA",
+     "1,014",
+     "December 2012",
+     "Editorial, research, and IT"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES"
+    },
+    "note": null
+   },
+   "prose_before": "The information technology and Internet industries are characterized by rapid technological change, which could require frequent and costly technological improvements and, if we fail to continually improve our content offerings and services, we could cease to be competitive.\nRapid technological developments, evolving industry standards and user demands, and frequent new product introductions and enhancements characterize the market for Internet products and services. These market characteristics are exacerbated by the emerging nature of the market and the fact that many companies are expected to introduce new Internet products and services in the near future. Our future success and competitive edge will depend on our ability to continually improve our content offerings and services. In addition, the widespread adoption of developing multimedia-enabling technologies could require fundamental and costly changes in our technology and could fundamentally affect the nature, viability and measurability of Internet-based advertising, which could harm our advertising revenues.\nITEM 1B. UNRESOLVED STAFF COMMENTS\nNone\nITEM 2. PROPERTIES\nThe following table sets forth a list of our current office locations as of December 31, 2011:",
+   "prose_after": "We believe that the general condition of our leased real estate is good and that our facilities are suitable for the purposes for which they are being used. We believe that our current facilities will be adequate to meet our needs for the foreseeable future.\nITEM 3. LEGAL PROCEEDINGS\nNone\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock began trading publicly on the Nasdaq Stock Market on June 25, 1999, under the symbol \u201cINTM\u201d. In September 2002, effective with the change in the name of the company to Jupitermedia Corporation, our ticker symbol was changed to \u201cJUPM\u201d. In February 2009, effective with the change in the name of the company to WebMediaBrands, our ticker symbol was changed from \u201cJUPM\u201d to \u201cWEBM.\u201d The following table sets forth for the periods indicated the high and low sale prices of our common stock.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Year ended December 31, 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.47",
+     "$",
+     "0.82"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "1.21",
+     "$",
+     "0.85"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.92",
+     "$",
+     "0.62"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "1.97",
+     "$",
+     "0.65"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.95",
+     "$",
+     "1.11"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "1.89",
+     "$",
+     "1.16"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.38",
+     "$",
+     "0.59"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.76",
+     "$",
+     "0.36"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ending December 31, 2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter (through March  15, 2012)",
+     "$",
+     "1.40",
+     "$",
+     "0.42"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 458,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We believe that the general condition of our leased real estate is good and that our facilities are suitable for the purposes for which they are being used. We believe that our current facilities will be adequate to meet our needs for the foreseeable future.\nITEM 3. LEGAL PROCEEDINGS\nNone\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock began trading publicly on the Nasdaq Stock Market on June 25, 1999, under the symbol \u201cINTM\u201d. In September 2002, effective with the change in the name of the company to Jupitermedia Corporation, our ticker symbol was changed to \u201cJUPM\u201d. In February 2009, effective with the change in the name of the company to WebMediaBrands, our ticker symbol was changed from \u201cJUPM\u201d to \u201cWEBM.\u201d The following table sets forth for the periods indicated the high and low sale prices of our common stock.",
+   "prose_after": "As of March 15, 2012, there were 61 holders of record of our common stock, although we believe that the number of beneficial owners of our common stock is substantially higher.\nDIVIDEND POLICY\nWe have never declared or paid a cash dividend and do not anticipate doing so in the foreseeable future. We expect to retain earnings to finance the expansion and development of our business. Any determination to pay dividends in the future will be at the discretion of our board of directors and will depend upon our financial condition, results of operations and capital requirements.\nRECENT PURCHASES OF SECURITIES\nFrom inception through December 31, 2011, we have repurchased 835,000 shares of our common stock pursuant to publicly announced repurchase plans as follows:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Total # of shares purchased",
+     "Average price paid per share"
+    ],
+    [
+     "September 2002",
+     "65,000",
+     "$1.63"
+    ],
+    [
+     "October 2011",
+     "770,000",
+     "$0.51"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "As of March 15, 2012, there were 61 holders of record of our common stock, although we believe that the number of beneficial owners of our common stock is substantially higher.\nDIVIDEND POLICY\nWe have never declared or paid a cash dividend and do not anticipate doing so in the foreseeable future. We expect to retain earnings to finance the expansion and development of our business. Any determination to pay dividends in the future will be at the discretion of our board of directors and will depend upon our financial condition, results of operations and capital requirements.\nRECENT PURCHASES OF SECURITIES\nFrom inception through December 31, 2011, we have repurchased 835,000 shares of our common stock pursuant to publicly announced repurchase plans as follows:",
+   "prose_after": "EQUITY COMPENSATION PLAN INFORMATION",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be\n\nissued upon exercise of\n\noutstanding options, warrants\n\nand rights",
+     "Weighted-\n\naverage exercise\n\nprice of outstanding\n\noptions, warrants\n\nand rights",
+     "",
+     "Number of securities\n\nremaining available\n\nfor future issuance under equity\n\ncompensation plans\n\n(excluding securities\n\nreflected in column (a))"
+    ],
+    [
+     "",
+     "(a)",
+     "(b)",
+     "",
+     "(c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "6,994,169",
+     "$",
+     "0.92",
+     "1,454,144"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "6,994,169",
+     "$",
+     "0.92",
+     "1,454,144"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 497,
+    "end_line": 517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "EQUITY COMPENSATION PLAN INFORMATION",
+   "prose_after": "ITEM 6. SELECTED FINANCIAL DATA\nAs a \u201csmaller reporting company\u201d under Item 10 of Regulation S-K, we are not required to provide the information under this item.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nOverview\nWebMediaBrands is an Internet media company that provides content, education and career services to social media, traditional media and creative professionals through a portfolio of vertical online properties, communities and trade shows. Our online business includes:\n\u25cf mediabistro.com, a blog network providing content, education, community resources and career resources about major media industry verticals including new media, social media, Facebook, TV news, advertising, public relations, publishing, design and mobile that includes the following:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "10,000Words",
+     "AllTwitter",
+     "FishbowlLA",
+     "MediaJobsDaily",
+     "TVNewser",
+     ""
+    ],
+    [
+     "",
+     "AgencySpy",
+     "eBookNewser",
+     "FishbowlNY",
+     "PRNewser",
+     "TVSpy",
+     ""
+    ],
+    [
+     "",
+     "AllFacebook",
+     "FishbowlDC",
+     "GalleyCat",
+     "SocialTimes",
+     "UnBeige",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 532,
+    "end_line": 537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 6. SELECTED FINANCIAL DATA\nAs a \u201csmaller reporting company\u201d under Item 10 of Regulation S-K, we are not required to provide the information under this item.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nOverview\nWebMediaBrands is an Internet media company that provides content, education and career services to social media, traditional media and creative professionals through a portfolio of vertical online properties, communities and trade shows. Our online business includes:\n\u25cf mediabistro.com, a blog network providing content, education, community resources and career resources about major media industry verticals including new media, social media, Facebook, TV news, advertising, public relations, publishing, design and mobile that includes the following:",
+   "prose_after": "Our mediabistro.com business also includes an industry-leading job board for media and business professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AppData",
+     "Inside Mobile Apps",
+     "Inside Virtual Goods",
+     ""
+    ],
+    [
+     "",
+     "Inside Facebook",
+     "Inside Social Games",
+     "The Facebook Marketing Bible",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 541,
+    "end_line": 545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our mediabistro.com business also includes an industry-leading job board for media and business professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "prose_after": "\u25cf SemanticWeb.com, a blog providing content, education, community resources and career resources on the commercialization and application of Semantic Technologies, Linked Data and Big Data.\n\u25cf Community, membership and e-commerce offerings including a freelance listing service, a marketplace for designing and purchasing logos (stocklogos.com) and premium membership services.\nOur education business features online and in-person courses and online conferences, including our Social Media Marketing Boot Camps for media and creative professionals. Online education conferences are large-scale programs that offer attendees the opportunity to learn in a dynamic online setting with live weekly instruction via webcast, daily forum discussions within an online classroom, homework assignments, and small group interaction where students receive one-on-one guidance and instruction from an advisor.\nOur trade shows include, among others, the Semantic Tech and Business Conference, Inside Social Apps, Social Gaming Summit and AllFacebook Marketing Expo.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "2011 vs. 2010",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Online job postings",
+     "$",
+     "4,263",
+     "$",
+     "3,605",
+     "$",
+     "658",
+     "18",
+     "%"
+    ],
+    [
+     "Advertising",
+     "",
+     "2,339",
+     "",
+     "1,432",
+     "",
+     "907",
+     "63",
+     ""
+    ],
+    [
+     "Education",
+     "",
+     "2,000",
+     "",
+     "1,692",
+     "",
+     "308",
+     "18",
+     ""
+    ],
+    [
+     "Trade shows",
+     "",
+     "1,849",
+     "",
+     "1,387",
+     "",
+     "462",
+     "33",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,016",
+     "",
+     "871",
+     "",
+     "145",
+     "17",
+     ""
+    ],
+    [
+     "Research",
+     "",
+     "962",
+     "",
+     "\u2014",
+     "",
+     "962",
+     "100",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "12,429",
+     "$",
+     "8,987",
+     "$",
+     "3,442",
+     "38",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Revenues were $12.4 million for the year ended December 31, 2011 and $9.0 million for the year ended December 31, 2010, representing an increase of 38%. This change was primarily due to the acquisition of Inside Network along with continued organic growth of online job postings, advertising revenues, trade show revenues and education revenues. The acquisition of Inside Network contributed $1.5 million to our revenues during the year ended December 31, 2011, primarily from research and advertising. Research revenue relates to Inside Network\u2019s original market research and data services including Appdata, Inside Virtual Goods and the Facebook Marketing Bible.\nThe organic growth in online job postings was mainly due to an improving economy and the growth in advertising revenues was primarily due to the growth in both page views and in the number of unique visitors to our Websites, specifically on AllFacebook.com and SocialTimes.com. We also ran our Semantic Tech and Business conferences for the first time during 2011, which contributed to the increase in trade show revenues. In addition, the increase in education revenue was primarily due to the introduction of our online conferences, which included our Social Media Marketing Boot Camps.\nThe following table sets forth, for the periods indicated, a year-over-year comparison of our revenues by components (dollars in thousands):",
+   "prose_after": "Cost of revenues\nCost of revenues primarily consists of payroll and benefits costs for technology and editorial personnel, freelance costs, communications infrastructure and trade show and education operations. Cost of revenues excludes depreciation and amortization. Cost of revenues was $7.2 million for the year ended December 31, 2011 and $5.8 million for the year ended December 31, 2010, representing an increase of 24%. This increase was partially due to the acquisition of Inside Network, which added $567,000 to cost of revenues during the year ended December 31, 2011, including $87,000 in stock-based compensation. The remaining increase was primarily due to increases in trade show costs of $415,000, mainly due to the Semantic Tech and Business conferences, as well as increases in employee-related costs of $180,000 and in editorial freelance costs of $111,000 as we continued to expand our development of blog content, including in the areas of social media, social networks, social gaming and virtual goods.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2011 vs. 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "86",
+     "",
+     "$",
+     "244",
+     "",
+     "$",
+     "(158)",
+     "",
+     "(65)",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(657)",
+     "",
+     "$",
+     "(808)",
+     "",
+     "$",
+     "151",
+     "",
+     "19",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 639,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "During the year ended December 31, 2011, in conjunction with our annual impairment test, we identified indicators that our goodwill was impaired. These indicators included a decline in our stock price. As a result, for the year ended December 31, 2011, we recorded a non-cash impairment charge of $8.3 million to reduce the carrying amount of goodwill to fair value.\nOther loss, net\nOther loss was $9,000 during the year ended December 31, 2011 and was primarily related to foreign currency transaction losses. Other loss of $73,000 during the year ended December 31, 2010 was due primarily to the loss on the sale of our building and land in Peoria, Illinois, partially offset by the gain on sale of an investment in a portfolio company of one of our former venture funds that was previously impaired along with net foreign currency transaction gains. See note 9 to the consolidated financial statements included in Item 8 of this Form 10-K for additional disclosures related to the sale of this property.\nInterest income and interest expense\nThe following table sets forth, for the periods indicated, a year-over-year comparison of our interest income and interest expense (dollars in thousands):",
+   "prose_after": "Interest expense during the years ended December 31, 2011 and 2010 relates primarily to costs associated with our loans from a related party. See Related Party Transactions below for a description of the loans. The decrease in interest income is primarily due to a lower cash carrying value during the year ended December 31, 2011.\nBenefit for income taxes\nWe recorded an income tax benefit of $403,000 and $749,000 during the years ended December 31, 2011 and 2010, respectively. During the year ended December 31, 2011, the income tax benefit consisted primarily of a $444,000 income tax benefit, which was due to the release of valuation allowance against deferred income tax assets as a result of additional deferred income tax liabilities that we recorded as part of our acquisition of Inside Network. This income tax benefit was partially offset by $34,000 of additional income tax expense for tax amortization on indefinite lived assets and $7,000 of additional income tax expense for uncertain tax positions. During the year ended December 31, 2010, the income tax benefit consisted primarily of a $769,000 income tax benefit for the reduction in deferred income tax liabilities, which was primarily due to the sale of our building and land in Peoria, Illinois. This income tax benefit was partially offset by $20,000 of additional income tax expense for uncertain tax positions.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 610,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2011 vs. 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Year Ended December 31:",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Operating cash flows",
+     "$",
+     "(1,843)",
+     "",
+     "$",
+     "(3,825)",
+     "",
+     "$",
+     "1,982",
+     "",
+     "52",
+     "%"
+    ],
+    [
+     "Investing cash flows",
+     "$",
+     "(9,119)",
+     "",
+     "$",
+     "1,731",
+     "",
+     "$",
+     "(10,850)",
+     "",
+     "(627)",
+     "%"
+    ],
+    [
+     "Financing cash flows",
+     "$",
+     "1,430",
+     "",
+     "$",
+     "47",
+     "",
+     "$",
+     "1,383",
+     "",
+     "2,943",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "3,438",
+     "",
+     "$",
+     "12,970",
+     "",
+     "$",
+     "(9,532)",
+     "",
+     "(73)",
+     "%"
+    ],
+    [
+     "Working capital",
+     "$",
+     "1,794",
+     "",
+     "$",
+     "10,565",
+     "",
+     "$",
+     "(8,771)",
+     "",
+     "(83)",
+     "%"
+    ],
+    [
+     "Loan from related party",
+     "$",
+     "7,647",
+     "",
+     "$",
+     "5,947",
+     "",
+     "$",
+     "1,700",
+     "",
+     "29",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "2011 vs. 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Based on current projections, management believes that it is more likely than not that we will have insufficient taxable income to allow recognition of its deferred tax assets. Accordingly, we established a valuation allowance against deferred income tax assets to the extent that deductible temporary differences cannot be offset by taxable temporary differences. To the extent that the net book value of indefinite lived assets exceeds the net tax value of indefinite lived assets, an additional tax provision will be incurred as the assets are amortized.\nThe total amount of unrecognized tax benefits was $85,000 as of December 31, 2011 and 2010, all of which would affect the effective tax rate, if recognized, as of December 31, 2011.\nAt December 31, 2011, we had deferred income tax assets associated with federal and state net operating loss (\u201cNOL\u201d) carryforwards of $25.9 million. Realization of the deferred tax assets is dependent on generating sufficient taxable income in future years. We have established an additional valuation allowance of $1.4 million against the deferred income tax assets attributable to NOL carryforwards during 2011.\nLiquidity and Capital Resources\nThe following table sets forth, for the periods indicated, a year-over-year comparison of the key components of our liquidity and capital resources (dollars in thousands):",
+   "prose_after": "Since inception, we have funded operations through various means, including public offerings of our common stock, the sales of our Events, Research, Online images and Internet.com businesses, credit agreements and cash flows from operating activities.\nOperating activities. Cash used in operating activities decreased during 2011 compared to 2010 due primarily to reduced losses from continuing operations.\nInvesting activities. The amounts of cash used in investing activities vary in correlation to the number and cost of the acquisitions consummated. Net cash used in investing activities during 2011 related primarily to the acquisition of Inside Network. Net cash provided by investing activities during 2010 related primarily to net proceeds from the sale of our Peoria, Illinois building and land along with the anniversary payment from the sale of our Internet.com business.\nFinancing activities. Cash provided by financing activities during 2011 relates primarily to our borrowings from a related party partially offset by the purchase of common stock pursuant to our repurchase plan. Cash provided by financing activities during 2010 related primarily to stock option exercises offset by repayments of borrowings to a related party.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 657,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2011 and 2010",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2011 and 2010",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity for the Years Ended December 31, 2011 and 2010",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2011 and 2010",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 792,
+    "end_line": 807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Allowance for Doubtful Accounts. We estimate our allowance for doubtful accounts based on historical losses as a percentage of revenue, existing economic conditions, and specific account analysis of at-risk customers. Historical losses and existing economic conditions may not be indicative of future losses, and the impact of economic conditions on each of our customers is difficult to estimate. Should future uncollectible amounts not reflect our current estimates, we would be required to charge off our uncollectible accounts through an entry to bad debt expense included in general and administrative expense in our consolidated statement of operations. Our allowances for doubtful accounts at December 31, 2011 and 2010 were $11,000 and $10,000, respectively. Historically, the difference between our estimates and actual results has not been material.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nAs a \u201csmaller reporting company\u201d under Item 10 of Regulation S-K, we are not required to provide the information under this item.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nIndex to Consolidated Financial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nWe have audited the accompanying consolidated balance sheets of WebMediaBrands Inc. and Subsidiaries (the \u201cCompany\u201d) as of December 31, 2011 and 2010, and the related consolidated statements of operations, changes in stockholders\u2019 equity and cash flows for each of the two years in the period ended December 31, 2011. These consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2011",
+     "",
+     "",
+     "December 31,\n\n2010",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "3,438",
+     "",
+     "$",
+     "12,970",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowances of $11 and $10, respectively",
+     "",
+     "489",
+     "",
+     "",
+     "581",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "575",
+     "",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "4,502",
+     "",
+     "",
+     "14,463",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "477",
+     "",
+     "",
+     "728",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "2,626",
+     "",
+     "",
+     "1,535",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "15,116",
+     "",
+     "",
+     "10,261",
+     ""
+    ],
+    [
+     "Investments and other assets",
+     "",
+     "1,146",
+     "",
+     "",
+     "1,005",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "23,867",
+     "",
+     "$",
+     "27,992",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "367",
+     "",
+     "$",
+     "1,210",
+     ""
+    ],
+    [
+     "Accrued payroll and related expenses",
+     "",
+     "391",
+     "",
+     "",
+     "424",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "662",
+     "",
+     "",
+     "1,447",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "1,288",
+     "",
+     "",
+     "817",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,708",
+     "",
+     "",
+     "3,898",
+     ""
+    ],
+    [
+     "Loan from related party",
+     "",
+     "7,647",
+     "",
+     "",
+     "5,947",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "22",
+     "",
+     "",
+     "19",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "444",
+     "",
+     "",
+     "410",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "60",
+     "",
+     "",
+     "57",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "10,881",
+     "",
+     "",
+     "10,331",
+     ""
+    ],
+    [
+     "Commitments and contingencies (see note 13)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.01 par value, 4,000,000 shares authorized, no shares issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value, 75,000,000 shares authorized, 42,545,702 and 37,986,851 shares issued and 41,710,702 and 37,921,851 shares outstanding at December 31, 2011 and 2010, respectively",
+     "",
+     "425",
+     "",
+     "",
+     "380",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "288,672",
+     "",
+     "",
+     "281,087",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(275,615)",
+     "",
+     "",
+     "(263,700)",
+     ""
+    ],
+    [
+     "Treasury stock, 835,000 and 65,000 shares, at cost at December 31, 2011 and 2010, respectively",
+     "",
+     "(496)",
+     "",
+     "",
+     "(106)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "12,986",
+     "",
+     "",
+     "17,661",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "23,867",
+     "",
+     "$",
+     "27,992",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of WebMediaBrands Inc. and Subsidiaries as of December 31, 2011 and 2010 and the results of their operations and their cash flows for each of the two years in the period ended December 31, 2011, in conformity with U.S. generally accepted accounting principles.\n/s/ Rothstein Kass\nRoseland, New Jersey\nMarch 21, 2012\nConsolidated Balance Sheets\nDecember 31, 2011 and 2010\n(in thousands, except share and per share amounts)",
+   "prose_after": "See notes to consolidated financial statements.\nConsolidated Statements of Operations\nFor the Years Ended December 31, 2011 and 2010\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "12,429",
+     "",
+     "$",
+     "8,987",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "7,154",
+     "",
+     "",
+     "5,787",
+     ""
+    ],
+    [
+     "Advertising, promotion and selling",
+     "",
+     "2,088",
+     "",
+     "",
+     "1,828",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "5,475",
+     "",
+     "",
+     "5,578",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "319",
+     "",
+     "",
+     "438",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "513",
+     "",
+     "",
+     "191",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "8,289",
+     "",
+     "",
+     "319",
+     ""
+    ],
+    [
+     "Contingent acquisition consideration",
+     "",
+     "329",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "24,167",
+     "",
+     "",
+     "14,141",
+     ""
+    ],
+    [
+     "Operating loss from continuing operations",
+     "",
+     "(11,738)",
+     "",
+     "",
+     "(5,154)",
+     ""
+    ],
+    [
+     "Other loss, net",
+     "",
+     "(9)",
+     "",
+     "",
+     "(73)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "86",
+     "",
+     "",
+     "244",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(657)",
+     "",
+     "",
+     "(808)",
+     ""
+    ],
+    [
+     "Loss from continuing operations before income taxes",
+     "",
+     "(12,318)",
+     "",
+     "",
+     "(5,791)",
+     ""
+    ],
+    [
+     "Benefit for income taxes",
+     "",
+     "(403)",
+     "",
+     "",
+     "(749)",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(11,915)",
+     "",
+     "",
+     "(5,042)",
+     ""
+    ],
+    [
+     "Income from discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Gain on sale of discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,016",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,915)",
+     "",
+     "$",
+     "(3,020)",
+     ""
+    ],
+    [
+     "Income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.05",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.05",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "Weighted average shares used in computing income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "40,730",
+     "",
+     "",
+     "37,518",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "40,730",
+     "",
+     "",
+     "37,518",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See notes to consolidated financial statements.\nConsolidated Statements of Operations\nFor the Years Ended December 31, 2011 and 2010\n(in thousands, except per share data)",
+   "prose_after": "See notes to consolidated financial statements.\nConsolidated Statements of Changes in Stockholders\u2019 Equity\nFor the Years Ended December 31, 2011 and 2010\n(in thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional\n\nPaid-In\n\nCapital",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "Treasury\n\nStock",
+     "",
+     "",
+     "Accumulated\n\nOther\n\nComprehensive\n\nIncome (Loss)",
+     "",
+     "",
+     "Total\n\nStockholders\u2019\n\nEquity",
+     "",
+     "",
+     "Total\n\nComprehensive\n\nIncome (Loss)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2010",
+     "",
+     "37,060,723",
+     "$",
+     "371",
+     "$",
+     "280,556",
+     "$",
+     "(260,680)",
+     "",
+     "$",
+     "(106)",
+     "",
+     "$",
+     "27",
+     "",
+     "$",
+     "20,168",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "926,128",
+     "",
+     "9",
+     "",
+     "297",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "306",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation, net of forfeitures",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "211",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "211",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Consultant options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "23",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(14)",
+     "",
+     "",
+     "(14)",
+     "",
+     "",
+     "(14)",
+     ""
+    ],
+    [
+     "Reclassification adjustment for loss included in net loss related to foreign currency translation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(13)",
+     "",
+     "",
+     "(13)",
+     "",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,020)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,020)",
+     "",
+     "",
+     "(3,020)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "",
+     "37,986,851",
+     "",
+     "380",
+     "",
+     "281,087",
+     "",
+     "(263,700)",
+     "",
+     "",
+     "(106)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,661",
+     "",
+     "$",
+     "(3,047)",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "488,954",
+     "",
+     "5",
+     "",
+     "141",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "146",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation, net of forfeitures",
+     "",
+     "187,642",
+     "",
+     "2",
+     "",
+     "989",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "991",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Consultant options",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shares issued in connection with the acquisition of  Inside Network",
+     "",
+     "3,882,255",
+     "",
+     "38",
+     "",
+     "6,445",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,483",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(390)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(390)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,915)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,915)",
+     "",
+     "$",
+     "(11,915)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2011",
+     "",
+     "42,545,702",
+     "$",
+     "425",
+     "$",
+     "288,672",
+     "$",
+     "(275,615)",
+     "",
+     "$",
+     "(496)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "12,986",
+     "",
+     "$",
+     "(11,915)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See notes to consolidated financial statements.\nConsolidated Statements of Changes in Stockholders\u2019 Equity\nFor the Years Ended December 31, 2011 and 2010\n(in thousands, except share amounts)",
+   "prose_after": "See notes to consolidated financial statements.\nConsolidated Statements of Cash Flows\nFor the Years Ended December 31, 2011 and 2010\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 953,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,915)",
+     "",
+     "$",
+     "(3,020)",
+     ""
+    ],
+    [
+     "Less: Income from discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Less: Gain on sale of discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,016",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(11,915)",
+     "",
+     "",
+     "(5,042)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "8,289",
+     "",
+     "",
+     "319",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "832",
+     "",
+     "",
+     "629",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "991",
+     "",
+     "",
+     "211",
+     ""
+    ],
+    [
+     "Provision for losses on accounts receivable",
+     "",
+     "15",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, net",
+     "",
+     "(2)",
+     "",
+     "",
+     "154",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "28",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "(410)",
+     "",
+     "",
+     "(769)",
+     ""
+    ],
+    [
+     "Changes in current assets and liabilities (net of businesses acquired):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "135",
+     "",
+     "",
+     "(80)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "660",
+     "",
+     "",
+     "1,961",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses and other liabilities",
+     "",
+     "(702)",
+     "",
+     "",
+     "(1,079)",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "236",
+     "",
+     "",
+     "(211)",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,843)",
+     "",
+     "",
+     "(3,825)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(57)",
+     "",
+     "",
+     "(78)",
+     ""
+    ],
+    [
+     "Acquisitions of businesses, assets and other",
+     "",
+     "(9,062)",
+     "",
+     "",
+     "(1,437)",
+     ""
+    ],
+    [
+     "Proceeds from sale of discontinued operations, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,700",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,546",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "(9,119)",
+     "",
+     "",
+     "1,731",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings from related party",
+     "",
+     "1,750",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "(390)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Debt issuance costs",
+     "",
+     "(26)",
+     "",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Repayment of borrowings from related party",
+     "",
+     "(50)",
+     "",
+     "",
+     "(250)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "146",
+     "",
+     "",
+     "306",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,430",
+     "",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "Effect of exchange rates on cash",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(9,532)",
+     "",
+     "",
+     "(2,042)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "12,970",
+     "",
+     "",
+     "15,012",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "3,438",
+     "",
+     "$",
+     "12,970",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash refund of income taxes",
+     "$",
+     "393",
+     "",
+     "$",
+     "2,080",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "629",
+     "",
+     "$",
+     "785",
+     ""
+    ],
+    [
+     "Non-cash investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions of long-lived assets",
+     "$",
+     "9",
+     "",
+     "$",
+     "17",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1010,
+    "end_line": 1072
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See notes to consolidated financial statements.\nConsolidated Statements of Cash Flows\nFor the Years Ended December 31, 2011 and 2010\n(in thousands)",
+   "prose_after": "The following schedule represents cash paid, common stock issued and liabilities assumed for the acquisition of Inside Network, Inc. (see note 3):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of assets acquired",
+     "$",
+     "15,162",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Cash paid",
+     "",
+     "(7,455)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Common stock issued",
+     "",
+     "(6,483)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total liabilities assumed",
+     "$",
+     "1,224",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The following schedule represents cash paid, common stock issued and liabilities assumed for the acquisition of Inside Network, Inc. (see note 3):",
+   "prose_after": "See notes to consolidated financial statements.\nNotes to Consolidated Financial Statements\nFor the Years Ended December 31, 2011 and 2010\n1. THE COMPANY\nWebMediaBrands Inc. (\u201cWebMediaBrands\u201d or the \u201cCompany\u201d) is an Internet media company that provides content, education and career services to social media, traditional media and creative professionals through a portfolio of vertical online properties, communities and trade shows. The Company\u2019s online business includes:\n\u25cf mediabistro.com, a blog network providing content, education, community resources and career resources about major media industry verticals including new media, social media, Facebook, TV news, advertising, public relations, publishing, design and mobile that includes the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "10,000Words",
+     "eBookNewser",
+     "GalleyCat",
+     "TVNewser",
+     ""
+    ],
+    [
+     "",
+     "AgencySpy",
+     "FishbowlDC",
+     "MediaJobsDaily",
+     "TVSpy",
+     ""
+    ],
+    [
+     "",
+     "AllFacebook",
+     "FishbowlLA",
+     "PRNewser",
+     "UnBeige",
+     ""
+    ],
+    [
+     "",
+     "AllTwitter",
+     "FishbowlNY",
+     "SocialTimes",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1099,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "THE COMPANY"
+    }
+   },
+   "prose_before": "See notes to consolidated financial statements.\nNotes to Consolidated Financial Statements\nFor the Years Ended December 31, 2011 and 2010\n1. THE COMPANY\nWebMediaBrands Inc. (\u201cWebMediaBrands\u201d or the \u201cCompany\u201d) is an Internet media company that provides content, education and career services to social media, traditional media and creative professionals through a portfolio of vertical online properties, communities and trade shows. The Company\u2019s online business includes:\n\u25cf mediabistro.com, a blog network providing content, education, community resources and career resources about major media industry verticals including new media, social media, Facebook, TV news, advertising, public relations, publishing, design and mobile that includes the following:",
+   "prose_after": "The mediabistro.com business also includes an industry-leading job board for media and creative professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "AppData",
+     "Inside Mobile Apps",
+     "Inside Virtual Goods",
+     ""
+    ],
+    [
+     "",
+     "Inside Facebook",
+     "Inside Social Games",
+     "The Facebook Marketing Bible",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "THE COMPANY"
+    }
+   },
+   "prose_before": "The mediabistro.com business also includes an industry-leading job board for media and creative professionals focusing on job categories such as social media, new media, publishing, public relations/marketing, advertising, sales, design, web development, television and more;\n\u25cf InsideNetwork.com, a network of online properties dedicated to providing original market research, data services, news, events and job listings on the Facebook platform, on social gaming and on mobile applications ecosystems that includes the following:",
+   "prose_after": "\u25cf SemanticWeb.com, a blog providing content, education, community resources and career resources on the commercialization and application of Semantic Technologies, Linked Data and Big Data.\n\u25cf Community, membership and e-commerce offerings including a freelance listing service, a marketplace for designing and purchasing logos, (stocklogos.com) and premium membership services.\nThe Company\u2019s education business features online and in-person courses and online conferences for media and creative professionals. Online education conferences are large-scale offerings that offer attendees the opportunity to learn in a dynamic online setting with live weekly instruction via webcast, daily forum discussions within an online classroom, homework assignments, and small group interaction where students receive one-on-one guidance and instruction from an advisor.\nThe Company\u2019s trade shows include, among others, the Semantic Tech and Business Conference, Inside Social Apps, Social Gaming Summit and AllFacebook Marketing Expo.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "Valuations based on quoted prices for identical assets and liabilities in active markets."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2",
+     "Valuations based on observable inputs other than quoted prices included in Level 1, such as quoted prices for similar assets and liabilities in active markets, quoted prices for identical or similar assets and liabilities in markets that are not active, or other inputs that are observable or can be corroborated by observable market data."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3",
+     "Valuations based on unobservable inputs reflecting the Company\u2019s own assumptions, consistent with reasonably available assumptions made by other market participants."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1153,
+    "end_line": 1162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Financial instruments. The carrying amounts of financial instruments such as cash and cash equivalents, accounts receivable and accounts payable approximate their fair values due to their short-term maturities. WebMediaBrands pays a fixed interest rate of 3.4% and 3.1% on its long-term debt with its Chief Executive Officer Alan M. Meckler. See note 10 for information regarding this related party transaction.\nFair value measurements. Certain assets and liabilities of WebMediaBrands are required to be recorded at fair value. Fair value is determined based on the exchange price that would be received for an asset or paid to transfer a liability in an orderly transaction between market participants. The fair value of cash and cash equivalents, accounts receivable, debt and accounts payable approximate their carrying values. The Company also has other assets or liabilities that it records at the fair value, such as its long-lived assets held and used, long-lived assets held for sale, goodwill and other intangible assets. The three-tier value hierarchy, which prioritizes the inputs used in the valuation methodologies, is as follows:",
+   "prose_after": "Allowance for doubtful accounts. WebMediaBrands estimates its allowance for doubtful accounts based on historical losses as a percentage of revenue, existing economic conditions, and specific account analysis of at-risk customers. Historical losses and existing economic conditions might not be indicative of future losses, and the impact of economic conditions on each of its customers is difficult to estimate. Should future uncollectible amounts exceed its current estimates, WebMediaBrands would be required to charge off its uncollectible accounts through an entry to bad debt expense included in general and administrative expense in its consolidated statement of operations.\nProperty and equipment. The Company records property and equipment at cost or their estimated fair value at the date of acquisition if acquired during a business combination, and depreciates them over their estimated useful lives. The Company depreciates computer equipment and software by the straight-line method over estimated useful lives of three years. The Company depreciates furniture, fixtures and equipment by the straight-line method over estimated useful lives ranging from five to ten years. The Company amortizes leasehold improvements over the shorter of their useful lives or the lease term. Amortization of leasehold improvements is included in depreciation expense.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1130,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1164,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash and cash equivalents",
+     "$",
+     "661"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "58"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "3"
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "122"
+    ],
+    [
+     "Website development costs",
+     "",
+     "230"
+    ],
+    [
+     "Customer relationships",
+     "",
+     "430"
+    ],
+    [
+     "Copyrights and trademarks",
+     "",
+     "480"
+    ],
+    [
+     "Goodwill",
+     "",
+     "13,178"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "15,162"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "25"
+    ],
+    [
+     "Accrued payroll and related expenses",
+     "",
+     "271"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "247"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "237"
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "444"
+    ],
+    [
+     "Total liabilities assumed",
+     "",
+     "1,224"
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "13,938"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1213,
+    "end_line": 1236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "Of the 4,183,130 shares of the Company's common stock issued as part of the purchase price for Inside Network's capital stock, the Company issued an aggregate of 3,882,255 unregistered shares of the Company's common stock to Eric Eldon and Justin Smith. These shares are subject to registration rights that required the Company to file for registration of these shares with the Securities and Exchange Commission. In connection with the indemnification obligations of Inside Network's stockholders under the stock purchase agreement, a portion of the purchase price the Company paid is subject to an escrow agreement.\nOf the 4,183,130 shares of the Company's common stock issued as part of the purchase price for Inside Network's capital stock, 300,875 shares were subject to restricted stock purchase agreements by and between the Company and each of five Inside Network stockholders who were also employees of Inside Network at the time of the acquisition. The shares subject to the restricted stock purchase agreements were issued under the Company's 2008 Stock Incentive Plan and are subject to vesting. Each restricted stock purchase agreement includes customary representations, warranties and covenants and customary indemnification obligations.\nThe Company allocated the total purchase price to the assets and liabilities based on their respective fair values. The following table summarizes the final purchase price allocation of the acquisition of Inside Network (in thousands):",
+   "prose_after": "Intangible assets and goodwill include the final allocation of the purchase price relating to the acquisition of Inside Network. The intangible assets subject to amortization are being amortized on a straight-line basis over periods ranging from five to seven years. The goodwill associated with the acquisition of Inside Network is not deductible for tax purposes.\nThe acquisition of Inside Network strengthens WebMediaBrands\u2019s position in covering the Facebook, social gaming and mobile applications ecosystems. The acquisition of Inside Network further diversifies the Company\u2019s revenue sources since a significant percentage of Inside Network\u2019s revenue is generated from market research and data services. WebMediaBrands believes that the acquisition of Inside Network will augment its editorial coverage of social media, its online education offerings and its online job board presence in the social media space. These factors led the Company to allocate a significant portion of the purchase price of Inside Network to goodwill.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1210,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "13,425",
+     "",
+     "$",
+     "10,584",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,843)",
+     "",
+     "$",
+     "(2,572)",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1243,
+    "end_line": 1254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "The acquisition of Inside Network strengthens WebMediaBrands\u2019s position in covering the Facebook, social gaming and mobile applications ecosystems. The acquisition of Inside Network further diversifies the Company\u2019s revenue sources since a significant percentage of Inside Network\u2019s revenue is generated from market research and data services. WebMediaBrands believes that the acquisition of Inside Network will augment its editorial coverage of social media, its online education offerings and its online job board presence in the social media space. These factors led the Company to allocate a significant portion of the purchase price of Inside Network to goodwill.\nUnaudited pro forma information below presents results of operations as if the acquisition of Inside Network had occurred on the first day of the periods presented. The unaudited pro forma information is not necessarily indicative of the results of operations for the combined companies had these events occurred at the beginning of the periods presented, nor is it indicative of future results (in thousands, except per share amounts):",
+   "prose_after": "WebMediaBrands also made one acquisition in the amount of $1.1 million during the year ended December 31, 2010.\n4. COMPUTATION OF INCOME (LOSS) PER SHARE\nBasic income (loss) per share is computed using the weighted average number of common shares outstanding during the period. Dilutive income (loss) per share is computed using the weighted average number of common and dilutive common equivalent shares outstanding during the period. Common equivalent shares consist of the incremental common shares that may be issued upon the exercise of stock options. Common equivalent shares are excluded from the calculation if their effect is anti-dilutive.\nComputations of basic and diluted income (loss) per share for the years ended December 31, 2011 and 2010 are as follows (in thousands, except per share amounts):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1210,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(11,915)",
+     "",
+     "$",
+     "(5,042)",
+     ""
+    ],
+    [
+     "Income from discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Gain on sale of discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,016",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(11,915)",
+     "",
+     "$",
+     "(3,020)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average common shares outstanding",
+     "",
+     "40,730",
+     "",
+     "",
+     "37,518",
+     ""
+    ],
+    [
+     "Effect of dilutive stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total basic weighted average common shares and dilutive stock options",
+     "",
+     "40,730",
+     "",
+     "",
+     "37,518",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.05",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.05",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(0.29)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1265,
+    "end_line": 1298
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "WebMediaBrands also made one acquisition in the amount of $1.1 million during the year ended December 31, 2010.\n4. COMPUTATION OF INCOME (LOSS) PER SHARE\nBasic income (loss) per share is computed using the weighted average number of common shares outstanding during the period. Dilutive income (loss) per share is computed using the weighted average number of common and dilutive common equivalent shares outstanding during the period. Common equivalent shares consist of the incremental common shares that may be issued upon the exercise of stock options. Common equivalent shares are excluded from the calculation if their effect is anti-dilutive.\nComputations of basic and diluted income (loss) per share for the years ended December 31, 2011 and 2010 are as follows (in thousands, except per share amounts):",
+   "prose_after": "The following table summarizes the number of outstanding stock options excluded from the calculation of diluted loss per share for the periods presented because the result would have been anti-dilutive (in thousands, except weighted average exercise price):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Number of anti-dilutive stock options",
+     "",
+     "6,994",
+     "",
+     "5,174"
+    ],
+    [
+     "Weighted average exercise price",
+     "$",
+     "0.92",
+     "$",
+     "1.02"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "The following table summarizes the number of outstanding stock options excluded from the calculation of diluted loss per share for the periods presented because the result would have been anti-dilutive (in thousands, except weighted average exercise price):",
+   "prose_after": "5. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment and software",
+     "$",
+     "664",
+     "",
+     "$",
+     "905",
+     ""
+    ],
+    [
+     "Furniture, fixtures and equipment",
+     "",
+     "238",
+     "",
+     "",
+     "418",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "925",
+     "",
+     "",
+     "961",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,827",
+     "",
+     "",
+     "2,284",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(1,350)",
+     "",
+     "",
+     "(1,556)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "477",
+     "",
+     "$",
+     "728",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1316,
+    "end_line": 1331
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "5. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following (in thousands):",
+   "prose_after": "6. INTANGIBLE ASSETS AND GOODWILL\nAmortized Intangible Assets\nThe following table sets forth the intangible assets that are subject to amortization, including the related accumulated amortization (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Accumulated\n\nAmortization",
+     "",
+     "",
+     "Net Carrying\n\nValue",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "804",
+     "$",
+     "(239)",
+     "",
+     "$",
+     "565"
+    ],
+    [
+     "Copyrights and trademarks",
+     "",
+     "534",
+     "",
+     "(79)",
+     "",
+     "",
+     "455"
+    ],
+    [
+     "Website development costs",
+     "",
+     "567",
+     "",
+     "(174)",
+     "",
+     "",
+     "393"
+    ],
+    [
+     "Content development costs",
+     "",
+     "165",
+     "",
+     "(142)",
+     "",
+     "",
+     "23"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "109",
+     "",
+     "(88)",
+     "",
+     "",
+     "21"
+    ],
+    [
+     "Total",
+     "$",
+     "2,179",
+     "$",
+     "(722)",
+     "",
+     "$",
+     "1,457"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1340,
+    "end_line": 1356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "6. INTANGIBLE ASSETS AND GOODWILL\nAmortized Intangible Assets\nThe following table sets forth the intangible assets that are subject to amortization, including the related accumulated amortization (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1404,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Accumulated\n\nAmortization",
+     "",
+     "",
+     "Net Carrying\n\nValue",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "187",
+     "$",
+     "(62)",
+     "",
+     "$",
+     "125"
+    ],
+    [
+     "Copyrights and trademarks",
+     "",
+     "39",
+     "",
+     "(7)",
+     "",
+     "",
+     "32"
+    ],
+    [
+     "Website development costs",
+     "",
+     "238",
+     "",
+     "(36)",
+     "",
+     "",
+     "202"
+    ],
+    [
+     "Content development costs",
+     "",
+     "160",
+     "",
+     "(77)",
+     "",
+     "",
+     "83"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "53",
+     "",
+     "(27)",
+     "",
+     "",
+     "26"
+    ],
+    [
+     "Total",
+     "$",
+     "677",
+     "$",
+     "(209)",
+     "",
+     "$",
+     "468"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1357,
+    "end_line": 1373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company amortizes intangible assets that are subject to amortization on a straight-line basis over their expected useful lives. The Company amortizes website development costs, copyrights and trademarks, and customer relationships over three to seven years and content development costs over a two-year period. The Company amortizes non-compete agreements over the period of the agreements, typically from one to three years. Estimated amortization expense for intangible assets subject to amortization is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1404,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31:",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "511"
+    ],
+    [
+     "2013",
+     "",
+     "313"
+    ],
+    [
+     "2014",
+     "",
+     "223"
+    ],
+    [
+     "2015",
+     "",
+     "203"
+    ],
+    [
+     "2016",
+     "",
+     "121"
+    ],
+    [
+     "Thereafter",
+     "",
+     "86"
+    ],
+    [
+     "",
+     "$",
+     "1,457"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1376,
+    "end_line": 1388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "The Company amortizes intangible assets that are subject to amortization on a straight-line basis over their expected useful lives. The Company amortizes website development costs, copyrights and trademarks, and customer relationships over three to seven years and content development costs over a two-year period. The Company amortizes non-compete agreements over the period of the agreements, typically from one to three years. Estimated amortization expense for intangible assets subject to amortization is as follows (in thousands):",
+   "prose_after": "Unamortized Intangible Assets and Goodwill\nDuring the year ended December 31, 2011, in conjunction with WebMediaBrands\u2019s annual impairment test, the Company identified indicators that its goodwill was impaired. These indicators included a decline in its stock price. As a result, the Company recorded a non-cash impairment charge of $8.3 million related to the write-down of goodwill. This impairment charge is not tax deductible because the acquisitions that gave rise to most of the carrying value of the Company\u2019s goodwill were structured as stock transactions.\nThe fair value of goodwill is the residual fair value after allocating the total fair value of a reporting unit to its other assets, net of liabilities. The Company estimated the total fair value of each reporting unit using a combination of a discounted cash flow model (present value of future cash flows) and two market approach models (a multiple of various metrics based on comparable businesses and market transactions).\nThe following table sets forth the intangible assets that are not subject to amortization (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1404,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Domain names",
+     "$",
+     "1,169",
+     "$",
+     "1,067"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1397,
+    "end_line": 1404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2011, in conjunction with WebMediaBrands\u2019s annual impairment test, the Company identified indicators that its goodwill was impaired. These indicators included a decline in its stock price. As a result, the Company recorded a non-cash impairment charge of $8.3 million related to the write-down of goodwill. This impairment charge is not tax deductible because the acquisitions that gave rise to most of the carrying value of the Company\u2019s goodwill were structured as stock transactions.\nThe fair value of goodwill is the residual fair value after allocating the total fair value of a reporting unit to its other assets, net of liabilities. The Company estimated the total fair value of each reporting unit using a combination of a discounted cash flow model (present value of future cash flows) and two market approach models (a multiple of various metrics based on comparable businesses and market transactions).\nThe following table sets forth the intangible assets that are not subject to amortization (in thousands):",
+   "prose_after": "The changes in the carrying amount of goodwill for each of the two years in the period ended December 31, 2011 are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1404,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2010",
+     "$",
+     "9,495",
+     ""
+    ],
+    [
+     "Goodwill acquired during year",
+     "",
+     "1,125",
+     ""
+    ],
+    [
+     "Purchase accounting adjustments",
+     "",
+     "(359)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2010",
+     "",
+     "10,261",
+     ""
+    ],
+    [
+     "Goodwill acquired during year",
+     "",
+     "13,483",
+     ""
+    ],
+    [
+     "Purchase accounting adjustments",
+     "",
+     "(339)",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "(8,289)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2011",
+     "$",
+     "15,116",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1409,
+    "end_line": 1422
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "The changes in the carrying amount of goodwill for each of the two years in the period ended December 31, 2011 are as follows (in thousands):",
+   "prose_after": "Goodwill acquired during the year ended December 31, 2011 primarily relates to the Company\u2019s acquisition of Inside Network. Purchase accounting adjustments during the year ended December 31, 2011 primarily relate to adjustments made in finalizing the purchase price of the Semantic Tech and Business Conference and SemanticUniverse blog.\n7. ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES\nAccrued expenses and other current liabilities consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1406,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1453,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Customer overpayments",
+     "$",
+     "211",
+     "$",
+     "274"
+    ],
+    [
+     "Accrued professional fees",
+     "",
+     "151",
+     "",
+     "103"
+    ],
+    [
+     "Accrued property and capital taxes",
+     "",
+     "48",
+     "",
+     "72"
+    ],
+    [
+     "Other",
+     "",
+     "252",
+     "",
+     "303"
+    ],
+    [
+     "Accrued acquisition contingencies",
+     "",
+     "\u2014",
+     "",
+     "695"
+    ],
+    [
+     "Total",
+     "$",
+     "662",
+     "$",
+     "1,447"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1429,
+    "end_line": 1443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES"
+    }
+   },
+   "prose_before": "Goodwill acquired during the year ended December 31, 2011 primarily relates to the Company\u2019s acquisition of Inside Network. Purchase accounting adjustments during the year ended December 31, 2011 primarily relate to adjustments made in finalizing the purchase price of the Semantic Tech and Business Conference and SemanticUniverse blog.\n7. ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES\nAccrued expenses and other current liabilities consist of the following (in thousands):",
+   "prose_after": "8. SEGMENT INFORMATION\nSegment information is presented in accordance with ASC Topic 280, \u201cSegment Reporting\u201d. ASC Topic 280 is typically based on a management approach that designates the internal organization used for making operating decisions and assessing performance. Operating segments are defined as business areas or lines of an enterprise about which financial information is available and evaluated on a regular basis by the chief operating decision-makers, or decision-making groups, in deciding how to allocate capital and other resources to such lines of business. The Company operates in one reportable segment. The Company is affected by seasonality as customers generally post more job listings during the first calendar quarter and fewer job listings during the fourth calendar quarter. Also, advertisers generally place fewer advertisements during the first and third calendar quarters of each year, which together with fluctuations in online job postings, directly affect our business. The Company\u2019s results will also be impacted by the number and type of education courses offered and by the number and size of trade shows held in each quarter. In addition, there may be fluctuations as trade shows held in one period in the current year may be held in a different period in future years.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1406,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1453,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "(12,318)",
+     "",
+     "$",
+     "(5,791)",
+     ""
+    ],
+    [
+     "Foreign",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss from continuing operations before taxes",
+     "$",
+     "(12,318)",
+     "",
+     "$",
+     "(5,791)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1492,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Interest expense on the 2009 Meckler Loan and 2011 Meckler Loan was $624,000 and $781,000 during the years ended December 31, 2011 and 2010, respectively. There are no future minimum principal payments due under the 2009 Meckler Loan and the 2011 Meckler Loan for the years ended December 31, 2012 and 2013. There are future minimum payments due to Mr. Meckler for the 2009 Meckler Loan and the 2011 Meckler Loan in the amount of $189,000 for the year ended December 31, 2014; $419,000 for the year ended December 31, 2015; and $7.0 million for the year ended December 31, 2016.\n11. STOCKHOLDERS\u2019 EQUITY\nWebMediaBrands is authorized to issue up to 4,000,000 shares of preferred stock, $.01 par value. The Board of Directors has the authority, without further vote or action by the stockholders, to issue the undesignated shares of preferred stock in one or more series and to fix all rights, qualifications, preferences, limitations and restrictions of each series, including dividend rights, voting rights, terms of redemption, redemption prices, liquidation preferences and the number of shares constituting any series or the designation of such series.\n12. INCOME TAXES\nWebMediaBrands\u2019s income tax benefit for each of the years presented is determined in accordance with ASC Topic 740, \u201cIncome Taxes\u201d.\nLoss from continuing operations before income taxes is attributable to the following tax jurisdictions (in thousands):",
+   "prose_after": "The components of the income tax benefit as shown in the consolidated statements of operations are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1528,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Current income tax provision (benefit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "3",
+     "",
+     "$",
+     "(40)",
+     ""
+    ],
+    [
+     "State and local",
+     "",
+     "4",
+     "",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "Total current income tax provision (benefit)",
+     "",
+     "7",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Deferred income tax benefit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "(362)",
+     "",
+     "",
+     "(674)",
+     ""
+    ],
+    [
+     "State and local",
+     "",
+     "(48)",
+     "",
+     "",
+     "(95)",
+     ""
+    ],
+    [
+     "Total deferred income tax benefit",
+     "",
+     "(410)",
+     "",
+     "",
+     "(769)",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "$",
+     "(403)",
+     "",
+     "$",
+     "(749)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1507,
+    "end_line": 1528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of the income tax benefit as shown in the consolidated statements of operations are as follows (in thousands):",
+   "prose_after": "A summary of WebMediaBrands\u2019s deferred income tax assets and liabilities as of December 31, 2011 and 2010 is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1528,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "25,949",
+     "",
+     "$",
+     "25,131",
+     ""
+    ],
+    [
+     "Capital loss carryforward",
+     "",
+     "44,579",
+     "",
+     "",
+     "44,579",
+     ""
+    ],
+    [
+     "Amortization and impairment of goodwill and long-lived assets",
+     "",
+     "823",
+     "",
+     "",
+     "1,249",
+     ""
+    ],
+    [
+     "Depreciation of property and equipment",
+     "",
+     "176",
+     "",
+     "",
+     "150",
+     ""
+    ],
+    [
+     "Reserves recorded for financial reporting purposes",
+     "",
+     "23",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "4,564",
+     "",
+     "",
+     "4,378",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "969",
+     "",
+     "",
+     "969",
+     ""
+    ],
+    [
+     "Total deferred income tax assets",
+     "",
+     "77,083",
+     "",
+     "",
+     "76,469",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(77,083)",
+     "",
+     "",
+     "(76,469)",
+     ""
+    ],
+    [
+     "Net deferred income tax assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred income tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "(444)",
+     "",
+     "",
+     "(410)",
+     ""
+    ],
+    [
+     "Total deferred income tax liabilities",
+     "",
+     "(444)",
+     "",
+     "",
+     "(410)",
+     ""
+    ],
+    [
+     "Net deferred income tax liabilities",
+     "$",
+     "(444)",
+     "",
+     "$",
+     "(410)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1533,
+    "end_line": 1560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A summary of WebMediaBrands\u2019s deferred income tax assets and liabilities as of December 31, 2011 and 2010 is as follows (in thousands):",
+   "prose_after": "WebMediaBrands recorded an income tax benefit of $403,000 and $749,000 during the years ended December 31, 2011 and 2010 respectively. During the year ended December 31, 2011, the income tax benefit consisted primarily of a $444,000 income tax benefit, which was due to the release of valuation allowance against the Company\u2019s deferred income tax assets as a result of additional deferred income tax liabilities that were recorded as part of the acquisition of Inside Network. This income tax benefit was partially offset by $34,000 of additional tax expense for tax amortization on indefinite lived assets and $7,000 of additional income tax expense for uncertain tax positions. During the year ended December 31, 2010, the income tax benefit consisted primarily of a $769,000 income tax benefit for the reduction in deferred income tax liabilities, which was primarily due to the sale of the Company\u2019s building and land in Peoria, Illinois. This income tax benefit was partially offset by $20,000 of additional income tax expense for uncertain tax positions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1586,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Deferred\n\nIncome\n\nTax Assets",
+     "",
+     "Net\n\nOperating\n\nLoss Carry\n\nForwards",
+     ""
+    ],
+    [
+     "United States (Federal), expiring between 2024 and 2030",
+     "$",
+     "21,694",
+     "$",
+     "63,677"
+    ],
+    [
+     "United States (State), expiring between 2012 and 2030",
+     "",
+     "4,255",
+     "",
+     "76,972"
+    ],
+    [
+     "Total",
+     "$",
+     "25,949",
+     "$",
+     "140,649"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1569,
+    "end_line": 1584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Based on current projections, management believes that it is more likely than not that WebMediaBrands will have insufficient taxable income to allow recognition of its deferred tax assets. Accordingly, a valuation allowance has been established against deferred income tax assets to the extent that deductible temporary differences cannot be offset by taxable temporary differences. To the extent that the net book value of indefinite lived assets exceeds the net tax value of indefinite lived assets, an additional tax provision will be incurred as the assets are amortized for income tax purposes.\nAt December 31, 2011, WebMediaBrands had deferred income tax assets associated with net operating loss (\u201cNOL\u201d) carryforwards of $25.9 million. Realization of the deferred tax assets is dependent on generating sufficient taxable income in future years. WebMediaBrands established an additional valuation allowance of $1.4 million against the deferred income tax assets attributable to NOL carryforwards during 2011.\nWebMediaBrands\u2019s deferred income tax assets at December 31, 2011 with respect to NOLs expire as follows (in thousands):",
+   "prose_after": "Additionally, WebMediaBrands has capital loss carryforwards of $122.0 million, which will expire by 2014. Based on current projections, management believes that it is more likely than not that WebMediaBrands will have insufficient capital gain income to allow recognition of these carryforwards. Accordingly, a valuation allowance has been established against the deferred tax asset.\nA reconciliation setting forth the difference between the amount of taxes computed at WebMediaBrands\u2019s effective income tax rate and the U.S. federal statutory income tax rate is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1586,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense based on federal statutory rate",
+     "$",
+     "(4,188)",
+     "",
+     "$",
+     "(1,962)",
+     ""
+    ],
+    [
+     "State and local tax expense, net of U.S. federal income tax",
+     "",
+     "(197)",
+     "",
+     "",
+     "(263)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "614",
+     "",
+     "",
+     "1,400",
+     ""
+    ],
+    [
+     "Non-deductible expenses",
+     "",
+     "2,874",
+     "",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "494",
+     "",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(403)",
+     "",
+     "$",
+     "(749)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1591,
+    "end_line": 1606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Additionally, WebMediaBrands has capital loss carryforwards of $122.0 million, which will expire by 2014. Based on current projections, management believes that it is more likely than not that WebMediaBrands will have insufficient capital gain income to allow recognition of these carryforwards. Accordingly, a valuation allowance has been established against the deferred tax asset.\nA reconciliation setting forth the difference between the amount of taxes computed at WebMediaBrands\u2019s effective income tax rate and the U.S. federal statutory income tax rate is as follows (in thousands):",
+   "prose_after": "Non-deductible expenses during the year ended December 31, 2011 relate primarily to impairment of non-deductible goodwill.\nWebMediaBrands remains open for examination by the Internal Revenue Service (\u201cIRS\u201d) for 2006, 2008 and subsequent years. With limited exceptions, the Company is no longer subject to state and local or non-U.S. income tax audits by taxing authorities for years prior to 2007. In addition, for years prior to 2007 in which NOLs were generated, the tax authorities could adjust the NOL carryovers up to the amount of the NOL carryover.\nAs of December 31, 2011, the amount of accrued income tax-related interest and penalties included in accrued expenses and other current liabilities and other long-term liabilities was $37,000 and $8,000, respectively. As of December 31, 2010, the amount of accrued income tax-related interest and penalties included in accrued expenses and other current liabilities and other long term liabilities in the consolidated balance sheet was $30,000 and $8,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1643,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "1,043"
+    ],
+    [
+     "2013",
+     "",
+     "436"
+    ],
+    [
+     "2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "2015",
+     "",
+     "\u2014"
+    ],
+    [
+     "2016 and thereafter",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total minimum payments",
+     "$",
+     "1,479"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1623,
+    "end_line": 1635
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "It is reasonably possible that a reduction in a range up to $130,000 of unrecognized income tax benefits, including income tax-related interest and penalties, may occur within the next 12 months as a result of projected resolutions of worldwide tax disputes and expiration of statute of limitations.\nThe total amount of unrecognized tax benefits was $85,000 as of December 31, 2011 and December 31, 2010, all of which would affect the effective tax rate, if recognized, as of December 31, 2011.\n13. COMMITMENTS AND CONTINGENCIES\nWebMediaBrands has entered into operating leases for each of its office facilities. Generally under the lease agreements, WebMediaBrands is obligated to pay a proportionate share of all operating costs for these premises. Rent expense for leased facilities was $780,000 and $762,000 for the years ended December 31, 2011 and 2010, respectively, and was net of sublease income of $267,000 and $108,000 during the years ended December 31, 2011 and 2010, respectively.\nFuture annual minimum lease payments under all operating leases are as follows (in thousands):",
+   "prose_after": "There are no minimum rentals to be received in the future under noncancelable subleases as of December 31, 2011.\nWebMediaBrands is subject to legal proceedings and claims that arise in the ordinary course of its business. In the opinion of management, the amount of ultimate liability with respect to active legal proceedings will not materially affect the financial statements of WebMediaBrands.\n14. EMPLOYEE BENEFIT PLAN\nWebMediaBrands has a defined contribution plan, which qualifies under Section 401(k) of the Internal Revenue Code for employees meeting certain service requirements. WebMediaBrands may also make contributions each year for the benefit of all eligible employees under the plan. There were no discretionary contributions to the plan for the years ended December 31, 2011 and 2010.\n15. STOCK INCENTIVE PLAN\nIn April 1999, WebMediaBrands established the WebMediaBrands 1999 Stock Incentive Plan (Amended and Restated as of March 5, 2008) (the \u201c1999 Plan\u201d) under which WebMediaBrands may issue qualified incentive or nonqualified stock options to employees, including officers, consultants and directors. The exercise price of the options granted under the 1999 Plan will not be less than the fair market value of the shares of WebMediaBrands\u2019s common stock on the date of grant. In June 2006, the 1999 Plan was amended to increase the number of shares of WebMediaBrands common stock and options to purchase shares of WebMediaBrands common stock available for issuance thereunder to 12,000,000 shares.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1643,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.16",
+     "%",
+     "",
+     "1.04",
+     "%"
+    ],
+    [
+     "Expected life (in years)",
+     "",
+     "5.61",
+     "",
+     "",
+     "3.78",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "96",
+     "%",
+     "",
+     "109",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1658,
+    "end_line": 1668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "At the Annual Meeting of Stockholders of WebMediaBrands in June 2008, WebMediaBrands\u2019s stockholders approved the WebMediaBrands 2008 Stock Incentive Plan (the \u201c2008 Plan\u201d). The 2008 Plan, along with the form of Incentive Stock Option Agreement and the form of Nonqualified Stock Option Agreement were previously approved and adopted by WebMediaBrands\u2019s Board in April 2008. The Compensation Committee of the Board administers the 2008 Plan, which allows for the grant of incentive stock options, nonqualified stock options, restricted stock, performance-based awards and other stock-based awards.\nSubject to antidilution adjustments, 1,454,144 shares of WebMediaBrands common stock may be issued under the 2008 Plan and 6,994,169 shares of common stock underly outstanding awards granted under the 1999 Plan and 2008 Plan as of December 31, 2011. These shares will be available for grants following any expiration, cancellation, forfeiture, cash settlement, or other termination of such awards.\nStock options granted prior to September 2010, have a five-year term. Options issued for the remainder of 2010 and through 2011 have a 10-year term. Stock option grants generally vest equally on each of the first three anniversaries of their respective grant dates. WebMediaBrands issues new shares of common stock upon the exercise of stock options.\nThe fair value of each option grant is estimated on the date of grant using the Black-Scholes option pricing model with the following assumptions used for grants during the periods presented:",
+   "prose_after": "The expected stock price volatility is based on the historical volatility of WebMediaBrands\u2019s common stock. The risk-free interest rate is based on the implied yield available on U.S. Treasury zero-coupon issues with an equivalent remaining term. As discussed above, WebMediaBrands had previously issued stock options with a five-year life. The Company calculated the expected term for these stock options using historical data. However, during the third quarter of 2010, the Company began issuing stock options with a 10-year life and as a result, the Company calculated the expected term using the simplified method.\nThe weighted-average grant date fair value of options granted during the years ended December, 31 2011 and 2010 was $0.57 for both years. The total intrinsic value of options exercised during the years ended December 31, 2011 and 2010, was $568,000 and $637,000, respectively.\nThe following table summarizes nonvested option activity for the year ended December 31, 2011:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Weighted Average\n\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding nonvested shares at December 31, 2010",
+     "",
+     "1,947,747",
+     "",
+     "$",
+     "0.78"
+    ],
+    [
+     "Granted",
+     "",
+     "2,628,737",
+     "",
+     "$",
+     "0.76"
+    ],
+    [
+     "Vested",
+     "",
+     "(1,729,884)",
+     "",
+     "$",
+     "0.70"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(254,987)",
+     "",
+     "$",
+     "1.04"
+    ],
+    [
+     "Outstanding nonvested shares at December 31, 2011",
+     "",
+     "2,591,613",
+     "",
+     "$",
+     "0.78"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1675,
+    "end_line": 1688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "The expected stock price volatility is based on the historical volatility of WebMediaBrands\u2019s common stock. The risk-free interest rate is based on the implied yield available on U.S. Treasury zero-coupon issues with an equivalent remaining term. As discussed above, WebMediaBrands had previously issued stock options with a five-year life. The Company calculated the expected term for these stock options using historical data. However, during the third quarter of 2010, the Company began issuing stock options with a 10-year life and as a result, the Company calculated the expected term using the simplified method.\nThe weighted-average grant date fair value of options granted during the years ended December, 31 2011 and 2010 was $0.57 for both years. The total intrinsic value of options exercised during the years ended December 31, 2011 and 2010, was $568,000 and $637,000, respectively.\nThe following table summarizes nonvested option activity for the year ended December 31, 2011:",
+   "prose_after": "The following table summarizes option activity during the year ended December 31, 2011:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     "",
+     "Weighted\n\nAverage\n\nRemaining\n\nContractual\n\nTerm (years)",
+     "Aggregate\n\nIntrinsic Value\n\n(in thousands)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2010",
+     "5,173,911",
+     "",
+     "$",
+     "1.00",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "2,628,737",
+     "",
+     "$",
+     "0.76",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(488,954)",
+     "",
+     "$",
+     "0.30",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited or expired",
+     "(319,525)",
+     "",
+     "$",
+     "1.83",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2010",
+     "6,994,169",
+     "",
+     "$",
+     "0.92",
+     "5.96",
+     "$",
+     "290"
+    ],
+    [
+     "Vested and expected to vest at December 31, 2011",
+     "6,672,995",
+     "",
+     "$",
+     "0.93",
+     "5.79",
+     "$",
+     "290"
+    ],
+    [
+     "Exercisable at December 31, 2011",
+     "4,402,856",
+     "",
+     "$",
+     "1.01",
+     "4.42",
+     "$",
+     "290"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1693,
+    "end_line": 1716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "The following table summarizes option activity during the year ended December 31, 2011:",
+   "prose_after": "The aggregate intrinsic value in the table above is before income taxes, based on WebMediaBrands\u2019s closing stock price of $0.48 as of December 30, 2011.\nThe following table summarizes restricted stock activity during the year ended December 31, 2011:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1690,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Weighted Average\n\nGrant Date Fair Value",
+     ""
+    ],
+    [
+     "Outstanding nonvested shares at December 31, 2010",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "300,875",
+     "",
+     "$",
+     "1.67"
+    ],
+    [
+     "Vested",
+     "",
+     "(54,997)",
+     "",
+     "$",
+     "1.67"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(113,233)",
+     "",
+     "$",
+     "1.67"
+    ],
+    [
+     "Outstanding nonvested shares at December 31, 2011",
+     "",
+     "132,645",
+     "",
+     "$",
+     "1.67"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1721,
+    "end_line": 1735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "The aggregate intrinsic value in the table above is before income taxes, based on WebMediaBrands\u2019s closing stock price of $0.48 as of December 30, 2011.\nThe following table summarizes restricted stock activity during the year ended December 31, 2011:",
+   "prose_after": "Total employee stock-based compensation is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1690,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Stock options for employees",
+     "$",
+     "886",
+     "$",
+     "211"
+    ],
+    [
+     "Restricted stock for employees",
+     "",
+     "105",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total employee stock based compensation",
+     "$",
+     "991",
+     "$",
+     "211"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1738,
+    "end_line": 1749
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "Total employee stock-based compensation is as follows (in thousands):",
+   "prose_after": "Stock-based compensation increased additional paid-in capital by $991,000 during the year ended December 31, 2011. WebMediaBrands received $146,000 and $306,000 from the exercise of stock options during the years ended December 31, 2011 and 2010, respectively. As of December 31, 2011, there was $1.5 million of total unrecognized compensation costs related to nonvested stock-based compensation. The company expects to amortize these costs over a weighted-average period of 19 months.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE\nNone\nITEM 9A. CONTROLS AND PROCEDURES\nDisclosure Controls and Procedures. The Company conducted an evaluation of the effectiveness of the design and operation of our disclosure controls and procedures, as defined in Rule 13a-15(e) and 15d-15(e) of the Securities Exchange Act of 1934, as amended (\u201cExchange Act\u201d) under the supervision and with the participation of its management including the Company\u2019s Chief Executive Officer (\u201cCEO\u201d) and Chief Financial Officer (\u201cCFO\u201d), or persons performing similar functions, as appropriate to allow timely decisions regarding required disclosure.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1690,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description of Document",
+     "Registrant\u2019s\n\nForm",
+     "Dated",
+     "Exhibit\n\nNumber",
+     "Filed\n\nHerewith"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Registrant\u2019s Amended and Restated Certificate of Incorporation, as amended.",
+     "Form 10-Q",
+     "05/14/10",
+     "3.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Registrant\u2019s Amended and Restated Bylaws, as amended.",
+     "Form 8-K",
+     "12/14/07",
+     "3.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Specimen Stock Certificate for the Registrant\u2019s Common Stock.",
+     "Form S-1/A",
+     "05/19/99",
+     "4.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Indemnification Agreement entered into between the Registrant and each of its directors and executive officers.",
+     "Form S-1/A",
+     "05/19/99",
+     "10.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "Agreement and Plan of Merger, dated as of July 17, 2007, by and among Jupitermedia Corporation, a Delaware corporation, Mediabistro Acquisition Subsidiary, Inc., a Delaware corporation and a wholly-owned subsidiary of Jupitermedia Corporation, Mediabistro.com Inc., a Delaware corporation and Laurel Touby, as agent for the security holders of the Company.",
+     "Form 8-K",
+     "07/20/07",
+     "10.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.17\u2020",
+     "Registrant\u2019s 1999 Stock Incentive Plan (Amended and Restated as of March 5, 2008).",
+     "Form 8-K",
+     "03/07/08",
+     "10.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.18\u2020",
+     "Registrant\u2019s 1999 Stock Incentive Plan Form of Incentive Stock Option Agreement.",
+     "Form 10-Q",
+     "05/12/08",
+     "10.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.19\u2020",
+     "Registrant\u2019s 1999 Stock Incentive Plan Form of Nonqualified Stock Option Agreement.",
+     "Form 10-Q",
+     "05/12/08",
+     "10.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.21\u2020",
+     "Cash Bonus Plan Agreement, dated as of January 1, 2007, by and among the Registrant and Alan M. Meckler.",
+     "Form 10-Q",
+     "05/12/08",
+     "10.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.23\u2020",
+     "Cash Bonus Plan Agreement, dated as of March 7, 2008, by and among the Registrant and Alan M. Meckler.",
+     "Form 10-Q",
+     "05/12/08",
+     "10.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.25\u2020",
+     "Registrant\u2019s 2008 Stock Incentive Plan.",
+     "Form 8-K",
+     "06/09/08",
+     "10.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.26\u2020",
+     "Registrant\u2019s 2008 Stock Incentive Plan Form of Incentive Stock Option Agreement.",
+     "Form 8-K",
+     "06/09/08",
+     "10.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1814,
+    "end_line": 1847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "Information with respect to this Item is incorporated herein by reference to WebMediaBrands\u2019s Proxy Statement for its Annual Meeting of Stockholders to be held in 2012.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nInformation with respect to this Item is incorporated herein by reference to WebMediaBrands\u2019s Proxy Statement for its Annual Meeting of Stockholders to be held in 2012.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\nINDEX TO EXHIBITS\n(a) Documents filed as part of this report.\n(1) Financial Statements: See WebMediaBrands Inc.\u2014Index to Consolidated Financial Statements at Item 8 of this report.\n(3) Exhibits\nThe following is a list of exhibits filed as part of this Report on Form 10-K. Where so indicated by footnote, exhibits, which were previously filed, are incorporated by reference. For exhibits incorporated by reference, the location of the exhibit in the previous filing is indicated parenthetically except for in those situations where the exhibit number was the same as set forth below.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1847,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.27\u2020",
+     "Registrant\u2019s 2008 Stock Incentive Plan Form of Nonqualified Stock Option Agreement.",
+     "Form 8-K",
+     "06/09/08",
+     "10.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.28\u2020",
+     "Severance Agreement between Registrant and Donald J. O\u2019Neill, dated as of July 21, 2008.",
+     "Form 10-Q",
+     "08/11/08",
+     "10.13",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.43",
+     "Promissory Note, dated May 29, 2009, by WebMediaBrands Inc. and Mediabistro.com Inc. to Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.44",
+     "Security Agreement, dated as of May 29, 2009, by and between WebMediaBrands Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.45",
+     "Intellectual Property Security Agreement, dated as of May 29, 2009, by and between WebMediaBrands Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.46",
+     "Pledge Agreement, dated as of May 29, 2009, by WebMediaBrands Inc. in favor of Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.47",
+     "Form of Blocked Account Control Agreement by and among the WebMediaBrands Inc., Alan M. Meckler and a depositary bank.",
+     "Form 8-K",
+     "06/04/09",
+     "10.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.48",
+     "Security Agreement, dated as of May 29, 2009, by and between Mediabistro.com Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.49",
+     "Intellectual Property Security Agreement, dated as of May 29, 2009, by and between Mediabistro.com Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "06/04/09",
+     "10.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.50",
+     "Form of Blocked Account Control Agreement by and among Mediabistro.com Inc., Alan M. Meckler and a depositary bank.",
+     "Form 8-K",
+     "06/04/09",
+     "10.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.52",
+     "Settlement and Release Agreement dated March 23, 2010, by WebMediaBrands Inc. and Getty Images, Inc.",
+     "Form 8-K",
+     "03/23/10",
+     "10.31",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.53",
+     "Note Modification Agreement effective as of September 1, 2010, by and among WebMediaBrands Inc., Mediabistro.com Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "09/01/10",
+     "10.53",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.54",
+     "Purchase and Sale Agreement for Commercial Real Estate by Agreement for Warranty Deed dated October 11, 2010, by and between WebMediaBrands Inc. and Samaritan Ministries International.",
+     "Form 10-K",
+     "03/8/11",
+     "10.51",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.54.1",
+     "Amendment to Purchase and Sale Agreement for Commercial Real Estate dated November 29, 2010, by and between WebMediaBrands Inc. and Samaritan Ministries International",
+     "Form 10-K",
+     "03/8/11",
+     "10.54.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.55",
+     "Stock Purchase Agreement dated May 11, 2011, by and among WebMediaBrands Inc., certain Stockholders of Inside Network, Inc. and Justin L. Smith as Stockholder Representative.",
+     "Form 8-K",
+     "05/17/11",
+     "10.55",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.56",
+     "Form of Restricted Stock Purchase Agreement by and between WebMediaBrands Inc. and certain Stockholders of Inside Network, Inc.",
+     "Form 8-K",
+     "05/17/11",
+     "10.56",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1850,
+    "end_line": 1886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1849,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1886,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.57\u2020",
+     "Employment Agreement dated May 11, 2011, by and between WebMediaBrands Inc. and Justin L. Smith.",
+     "Form 8-K",
+     "05/17/11",
+     "10.57",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.58",
+     "Nominating Agreement dated May 11, 2011, by and between WebMediaBrands Inc. and Justin L. Smith.",
+     "Form 8-K",
+     "05/17/11",
+     "10.58",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.59",
+     "Support Agreement dated May 11, 2011, by and between Justin L. Smith and Alan M. Meckler.",
+     "Form 8-K",
+     "05/17/11",
+     "10.59",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.60",
+     "Promissory Note, dated November 14, 2011, issued by WebMediaBrands Inc., Mediabistro.com, Inc., and Inside Network Inc. to Alan M. Meckler.",
+     "Form 8-K",
+     "11/17/11",
+     "10.60",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.61",
+     "Security Agreement, dated as of November 14, 2011, by and between WebMediaBrands Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "11/17/11",
+     "10.61",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.62",
+     "Intellectual Property Security Agreement, dated as of November 14, 2011, by and between WebMediaBrands Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "11/17/11",
+     "10.62",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.63",
+     "Pledge Agreement, dated as of November 14, 2011, by WebMediaBrands Inc. in favor of Alan M. Meckler.",
+     "Form 8-K",
+     "11/17/11",
+     "10.63",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.64",
+     "Security Agreement, dated as of November 14, 2011, by and between Inside Network Inc. and Alan M. Meckler.",
+     "Form 8-K",
+     "11/17/11",
+     "10.64",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.65",
+     "Note Modification Agreement, dated as of November 14, 2011, by and between WebMediaBrands Inc., Mediabistro.com Inc., and Alan M. Meckler",
+     "Form 8-K",
+     "11/17/11",
+     "10.65",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant.",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Rothstein Kass",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/15d-14(a) Certification.",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/15d-14(a) Certification.",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "101.SCH",
+     "XBRL Schema Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "101.CAL",
+     "XBRL Calculation Linkbase Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "101.DEF",
+     "XBRL Definition Linkbase Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "101.LAB",
+     "XBRL Label Linkbase Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "101.PRE",
+     "XLBR Presentation Linkbase Document",
+     "",
+     "",
+     "",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2020",
+     "Compensatory plans and arrangements for executives and others",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1889,
+    "end_line": 1930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1888,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 53,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "WebMediaBrands Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 21, 2012",
+     "By:",
+     "/S/ ALAN M. MECKLER",
+     ""
+    ],
+    [
+     "",
+     "Name:",
+     "Alan M. Meckler",
+     ""
+    ],
+    [
+     "",
+     "Title:",
+     "Chairman and Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WebMediaBrands Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1937,
+    "end_line": 1945
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1932,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1982,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 53,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 54,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/S/ ALAN M. MECKLER",
+     "Chairman of the Board, Chief Executive Officer and Director",
+     "March 21, 2012"
+    ],
+    [
+     "Alan M. Meckler",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/ DONALD J. O\u2019NEILL",
+     "Vice President and Chief Financial Officer (Principal Financial",
+     "March 21, 2012"
+    ],
+    [
+     "Donald J. O\u2019Neill",
+     "Officer and Chief Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/  GILBERT F. BACH",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "Gilbert F. Bach",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/  MICHAEL J. DAVIES",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "Michael J. Davies",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/   WAYNE A. MARTINO",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "Wayne A. Martino",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/  JOHN R. PATRICK",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "John R. Patrick",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/  WILLIAM A. SHUTZER",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "William A. Shutzer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/ JUSTIN L. SMITH",
+     "Director",
+     "March 21, 2012"
+    ],
+    [
+     "Justin L. Smith",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1948,
+    "end_line": 1981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1932,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1982,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 54,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

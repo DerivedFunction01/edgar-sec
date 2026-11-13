@@ -1,0 +1,4585 @@
+{
+ "accession": "0001493152-26-046747",
+ "cik": "0001873213",
+ "form": "10-K",
+ "filing_date": "2026-10-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "38-4179726"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor The Fiscal Year Ended July 31, 2026\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number 000-56644\nBIRDIE WIN CORPORATION\n(Exact name of registrant issuer as specified in its charter)",
+   "prose_after": "0000\nUnit 8, 6/F, Wayson Commercial Building, 28 Connaught Road West, Hong Kong\nAddress of principal executive offices, including zip code\n(+86) 13824472731\nRegistrant\u2019s phone number, including area code\nSecurities registered pursuant to Section 12(b) of the Securities Exchange Act: None\nSecurities registered pursuant to Section 12(g) of the Securities Exchange Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding at July 31, 2026"
+    ],
+    [
+     "Common Stock, $0.001 par value",
+     "6,720,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter.\nNot applicable.\nAPPLICABLE ONLY TO REGISTRANTS INVOLVED IN BANKRUPTCY PROCEEDINGS DURING THE PRECEDING FIVE YEARS\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court.\nN/A\nAPPLICABLE ONLY TO CORPORATE REGISTRANTS\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date.",
+   "prose_after": "DOCUMENTS INCORPORATED BY REFERENCE\nNo documents are incorporated by reference.\nFORM 10-K\nFor the Fiscal Year Ended July 31, 2026\nIndex",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page #"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4-7"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "8"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Description of property",
+     "8"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters",
+     "9"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "9"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "12"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "12"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "12"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "12"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "15"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "17"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "18"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transaction, Director Independence",
+     "18"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "20"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "21"
+    ]
+   ],
+   "caption_stack": [
+    "Page #",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 108,
+    "end_line": 147
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "DOCUMENTS INCORPORATED BY REFERENCE\nNo documents are incorporated by reference.\nFORM 10-K\nFor the Fiscal Year Ended July 31, 2026\nIndex",
+   "prose_after": "2\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements. These forward-looking statements are not historical facts but rather are based on current expectations, estimates and projections. We may use words such as \u201canticipate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cbelieve,\u201d \u201cforesee,\u201d \u201cestimate\u201d and variations of these words and similar expressions to identify forward-looking statements. These statements are not guarantee of future performance and are subject to certain risks, uncertainties and other factors, some of which are beyond our control, are difficult to predict and could cause actual results to differ materially from those expressed or forecasted. These risks and uncertainties include the following:\n\u25cf The availability and adequacy of our cash flow to meet our requirements;\n\u25cf Economic, competitive, demographic, business and other conditions in our local and regional markets;\n\u25cf Changes or developments in laws, regulations or taxes in our industry;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 100,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions and Offices"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shiyong Zhao",
+     "46",
+     "Chief Executive Officer, President, Secretary, Chairman"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Yunyuan Chen",
+     "52",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Yidong Bao",
+     "43",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fengjun Wang",
+     "54",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company\u2019s registered independent public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered independent public accounting firm pursuant to rules of the Securities and Exchange Commission that permit the Company to provide only management\u2019s report in this Annual Report on Form 10-K.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nSet forth below are the present directors and executive officers of the Company. Note that there are no other persons who have been nominated or chosen to become directors nor are there any other persons who have been chosen to become executive officers. There are no arrangements or understandings between any of the directors, officers and other persons pursuant to which such person was selected as a director or an officer. Directors are elected to serve until the next annual meeting of stockholders and until their successors have been elected and have qualified. Officers are appointed to serve until the meeting of the board of directors following the next annual meeting of stockholders and until their successors have been elected and qualified.",
+   "prose_after": "Shiyong Zhao - Chief Executive Officer, President, Secretary, Chairman\nShiyong Zhao worked for Distributed Storage Research Center of China Development Research Institute, as Director in Guangdong and Hong Kong from 2017 to 2024, and is Managing Director of Maitian Digital Technology Group Co., Ltd. Shiyong Zhao holds a Master\u2019s Degree in Business Administration awarded by Tsinghua University in 2020.\nShiyong Zhao currently acts as the President, Chief Executive Officer, Secretary, and Chairman of Birdie Win Corporation, specializing in business growth, profitable growth and marketing.\nYunyuan Chen \u2013 Chief Financial Officer\nYunyuan Chen worked for Zhaoqing Guangrong Investment Management Co., Ltd. as Director in Guangdong and Hong Kong from 2007 to 2010, worked for Hong Kong Tims Investment Ltd as Director from 2011 to 2015, and is Managing Director of Shenzhen Qianhai Rongjian Fund Management Co., Ltd. Yunyuan Chen holds a Master\u2019s Degree in Business Administration awarded by Sun Yat-Sen University in 2006.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and\n\n\n\nprincipal position\n\n\n\n(a)",
+     "Year ended\n\n\n\nJuly 31\n\n\n\n(b)",
+     "Salary\n\n\n\n($) (c)",
+     "",
+     "Bonus\n\n\n\n($) (d)",
+     "",
+     "Stock\n\n\n\nCompensation\n\n\n\n($) (e)",
+     "",
+     "Option\n\n\n\nAwards\n\n\n\n($) (f)",
+     "",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation\n\n\n\n($) (g)",
+     "",
+     "Nonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings\n\n\n\n($) (h)",
+     "",
+     "All Other\n\n\n\nCompensation\n\n\n\n($) (i)",
+     "",
+     "Total\n\n\n\n($) (j)",
+     ""
+    ],
+    [
+     "Shiyong Zhao (1), Chief Executive Officer, President, Secretary, Chairman",
+     "2026",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Yunyuan Chen (2), Chief Financial Officer",
+     "2026",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Yidong Bao (3), Director",
+     "2026",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Fengjun Wang (4), Director",
+     "2026",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Shiyong Zhao (1), Chief Executive Officer, President, Secretary, Chairman",
+     "2025",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "360,000 common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "9,000"
+    ],
+    [
+     "Yunyuan Chen (2), Chief Financial Officer",
+     "2025",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Yidong Bao (3), Director",
+     "2025",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "300,000 common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "7,500"
+    ],
+    [
+     "Fengjun Wang (4), Director",
+     "2025",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "300,000 common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "7,500"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 620,
+    "end_line": 650
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "SECTION 16(A) BENEFICIAL OWNERSHIP REPORTING COMPLIANCE\nSection 16(a) of the Securities Exchange Act requires our executive officers and directors, and persons who own more than 10% of our common stock, to file reports regarding ownership of, and transactions in, our securities with the Securities and Exchange Commission and to provide us with copies of those filings. Based solely on our review of the copies of such forms furnished to us and written representations by our officers and directors regarding their compliance with applicable reporting requirements under Section 16(a) of the Exchange Act, we believe that all Section 16(a) filing requirements for our executive officers, directors and 10% stockholders were met during the year ended July 31, 2026.\nITEM 11. EXECUTIVE COMPENSATION\nMANAGEMENT COMPENSATION\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our Executive Officer for the fiscal years ended July 31, 2026 and 2025:\nSummary Compensation Table",
+   "prose_after": "(1) Shiyong Zhao has served as President, Chief Executive Officer, Secretary, and Chairman since March 04, 2025. Prior to that date, Yunyuan Chen served as President, Chief Executive Officer, Secretary, Treasurer, and Director from July 18, 2024 to March 04, 2025.\n(2) Yunyuan Chen served as President, Chief Executive Officer from July 18, 2024 to March 04, 2025. On March 04, 2025, Yunyuan Chen resigned from her positions as the Company\u2019s President and Chief Executive Officer. On June 05, 2025, Yunyuan Chen resigned from her positions as Director. Ms Chen will remain the Treasurer of the Company.\n(3) Yidong Bao has served as Director since March 04, 2025.\n(4) Fengjun Wang has served as Director since March 04, 2025.\nStock Option Grants\nWe have not granted any stock options to our executive officers since our incorporation.\nEmployment Agreements\nDuring the year ended July 31, 2025, the Company issued an aggregated of 960,000 shares of its common stock at $0.025 per share, totaling $24,000, as consideration for consulting services provided by three newly appointed directors , Shiyong Zhao, Yidong Bao, and Fengjun Wang.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of\n\n\n\nBeneficial Owner",
+     "Shares of\n\n\n\nCommon\n\n\n\nStock\n\n\n\nBeneficially\n\n\n\nOwned",
+     "",
+     "Common\n\n\n\nStock Voting\n\n\n\nPercentage\n\n\n\nBeneficially\n\n\n\nOwned",
+     "",
+     "",
+     "Voting\n\n\n\nShares of\n\n\n\nPreferred\n\n\n\nStock",
+     "",
+     "Preferred\n\n\n\nStock Voting\n\n\n\nPercentage\n\n\n\nBeneficially\n\n\n\nOwned",
+     "",
+     "Total Voting\n\n\n\nPercentage\n\n\n\nBeneficially\n\n\n\nOwned",
+     "",
+     ""
+    ],
+    [
+     "Executive Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shiyong Zhao\n\n\n\nPresident, Secretary, Chief Executive Officer, and Chairman",
+     "",
+     "2,700,000",
+     "",
+     "40.2",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "40.2",
+     "%"
+    ],
+    [
+     "Yunyuan Chen (1)\n\n\n\n Chief Financial Officer",
+     "",
+     "10,000",
+     "",
+     "0.1",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "0.1",
+     "%"
+    ],
+    [
+     "Yidong Bao\n\n\n\nDirector",
+     "",
+     "300,000",
+     "",
+     "4.5",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4.5",
+     "%"
+    ],
+    [
+     "Fengjun Wang\n\n\n\nDirector",
+     "",
+     "300,000",
+     "",
+     "4.5",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4.5",
+     "%"
+    ],
+    [
+     "5% or Greater Shareholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 687,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The Board of Directors may grant incentive bonuses to our executive officer and/or future executive officers in its sole discretion, if the Board of Directors believes such bonuses are in the Company\u2019s best interest, after analyzing our current business objectives and growth, if any, and the amount of revenue we are able to generate each month, which revenue is a direct result of the actions and ability of such executives.\nLong-term, Stock Based Compensation\nIn order to attract, retain and motivate executive talent necessary to support the Company\u2019s long-term business strategy we may award our executive and any future executives with long-term, stock-based compensation in the future, at the sole discretion of our Board of Directors, which we do not currently have any immediate plans to award.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nAs of July 31, 2026, the Company has 6,720,000 shares of common stock issued and outstanding, which number of issued and outstanding shares of common stock have been used throughout this report.",
+   "prose_after": "*Officers and or Directors who may hold a 5% or greater controlling interest in the Company are included above, but only under the subtitle, \u201cExecutive Officers and Directors\u201d.\n(1) Yunyuan Chen is a controlling director/shareholder of TOPP Holdings Group Ltd and owns 100% of the issued and outstanding shares of TOPP Holdings Group Ltd, therefore, the table above includes the share ownership of TOPP Holdings Group Ltd with Yunyuan Chen.\nBeneficial ownership has been determined in accordance with Rule 13d-3 under the Exchange Act. Under this rule, certain shares may be deemed to be beneficially owned by more than one person (if, for example, persons share the power to vote or the power to dispose of the shares). In addition, shares are deemed to be beneficially owned by a person if the person has the right to acquire shares (for example, upon exercise of an option or warrant) within 60 days of the date as of which the information is provided. In computing the percentage ownership of any person, the amount of shares is deemed to include the amount of shares beneficially owned by such person by reason of such acquisition rights. As a result, the percentage of outstanding shares of any person as shown in the following table does not necessarily reflect the person\u2019s actual voting power at any particular date.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ACCOUNTING FEES AND SERVICES",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "12,500",
+     "$",
+     "12,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 747,
+    "end_line": 753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "Given our small size and limited financial resources, we have not adopted formal policies and procedures for the review, approval or ratification of transactions, such as those described above, with our executive officer(s), Director(s) and significant stockholders. We intend to establish formal policies and procedures in the future, once we have sufficient resources and have appointed additional Directors, so that such transactions will be subject to the review, approval or ratification of our Board of Directors, or an appropriate committee thereof. On a moving forward basis, our Directors will continue to approve any related party transaction.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nAudit Fees\nThe following table sets forth the aggregate fees billed to the Company by its independent registered public accounting firms for the fiscal years ended July 31, 2026 and 2025. We have engaged JP Centurion & Partners PLT as our independent registered public accounting firm since July 01, 2021.",
+   "prose_after": "The category of \u201cAudit fees\u201d includes fees for our annual audit, quarterly reviews and services rendered in connection with regulatory filings with the SEC, such as the issuance of comfort letters and consents.\nAll of the professional services rendered by principal accountants for the audit of our annual financial statements that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for last two fiscal years were approved by our board of directors.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements\nThe following are filed as part of this report:\nFinancial Statements\nThe following financial statements of Birdie Win Corporation and Report of Independent Registered Public Accounting Firm are presented in the \u201cF\u201d pages of this Report:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Audited Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF OPERATIONS AND COMPREHENSIVE LOSS",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF CASH FLOWS",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO FINANCIAL STATEMENTS",
+     "F-7 \u2013 F-13"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Audited Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 771,
+    "end_line": 788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The category of \u201cAudit fees\u201d includes fees for our annual audit, quarterly reviews and services rendered in connection with regulatory filings with the SEC, such as the issuance of comfort letters and consents.\nAll of the professional services rendered by principal accountants for the audit of our annual financial statements that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for last two fiscal years were approved by our board of directors.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements\nThe following are filed as part of this report:\nFinancial Statements\nThe following financial statements of Birdie Win Corporation and Report of Independent Registered Public Accounting Firm are presented in the \u201cF\u201d pages of this Report:",
+   "prose_after": "(b) Exhibits\nThe following exhibits are filed herewith:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "",
+     "Rule 13(a)-14(a)/15(d)-14(a) Certification of principal executive officer, principal financial officer*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Section 1350 Certification of principal executive officer, principal financial officer and principal accounting officer*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "101.DEF*",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "101.LAB*",
+     "",
+     "Inline XBRL Taxonomy Extension Labels Linkbase"
+    ],
+    [
+     "101.PRE*",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "104*",
+     "",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 793,
+    "end_line": 806
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(b) Exhibits\nThe following exhibits are filed herewith:",
+   "prose_after": "*Filed herewith\nITEM 16. FORM 10-K SUMMARY\nAs permitted, the registrant has elected not to supply a summary of information required by Form 10-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Birdie Win Corporation",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 13, 2026",
+     "By:",
+     "/s/ Shiyong Zhao"
+    ],
+    [
+     "",
+     "",
+     "Shiyong Zhao"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, President, Secretary,"
+    ],
+    [
+     "",
+     "",
+     "and Chairman"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: October 13, 2026",
+     "By:",
+     "/s/ Yunyuan Chen"
+    ],
+    [
+     "",
+     "",
+     "Yunyuan Chen"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial"
+    ],
+    [
+     "",
+     "",
+     "Officer, Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Birdie Win Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "*Filed herewith\nITEM 16. FORM 10-K SUMMARY\nAs permitted, the registrant has elected not to supply a summary of information required by Form 10-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant, and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Shiyong Zhao",
+     "Chief Executive Officer, President, Secretary, Chairman",
+     ""
+    ],
+    [
+     "Shiyong Zhao",
+     "(Principal Executive Officer)",
+     "October 13, 2026"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yunyuan Chen",
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "Yunyuan Chen",
+     "(Principal Financial Officer and Principal Accounting Officer)",
+     "October 13, 2026"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yidong Bao",
+     "Director",
+     ""
+    ],
+    [
+     "Yidong Bao",
+     "(Board Director)",
+     "October 13, 2026"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Fengjun Wang",
+     "Director",
+     ""
+    ],
+    [
+     "Fengjun Wang",
+     "(Board Director)",
+     "October 13, 2026"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 838,
+    "end_line": 858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant, and in the capacities and on the dates indicated:",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Audited Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM (PCAOB ID: 6723)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF OPERATIONS AND COMPREHENSIVE LOSS",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF CASH FLOWS",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO FINANCIAL STATEMENTS",
+     "F-7 \u2013 F-13"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Audited Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 863,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nThe Board of Directors and Stockholders\nof Birdie Win Corporation\nUnit 8, 6/F, Wayson Commercial Building\n28 Connaught Road West\nHong Kong\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Birdie Win Corporation (the \u2018Company\u2019) as of July 31, 2026 and 2025, and the related statement of operations and comprehensive loss, statement of changes in stockholders\u2019 equity, and statement of cash flows for each of the years in the two-year period ended July 31, 2026, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of July 31, 2026 and 2025, and the results of its operations and its cash flows for each of the years in the two-year period ended July 31, 2026, in conformity with accounting principles generally accepted in the United States of America.\nSubstantial Doubt About the Entity\u2019s Ability to Continue as a Going Concern",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 880,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "As of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31, 2026",
+     "",
+     "",
+     "July 31, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,820",
+     "",
+     "$",
+     "2,171",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepayment (including $nil and $14,000 of prepayments to related party as of July 31, 2026 and July 31, 2025 respectively)",
+     "",
+     "4,474",
+     "",
+     "",
+     "17,399",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "10,294",
+     "",
+     "",
+     "19,570",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non - current asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Plant and equipment, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total non - current asset",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "10,294",
+     "",
+     "$",
+     "19,570",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "5,200",
+     "",
+     "$",
+     "5,200",
+     ""
+    ],
+    [
+     "Amount owing to director",
+     "",
+     "18,198",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "23,398",
+     "",
+     "",
+     "5,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "23,398",
+     "",
+     "$",
+     "5,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock \u2013 Par value $ 0.001; Authorized: 75,000,000 shares; Issued and outstanding: 6,720,000 shares as of July 31, 2026 and July 31, 2025, respectively",
+     "$",
+     "6,720",
+     "",
+     "$",
+     "6,720",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "82,845",
+     "",
+     "",
+     "82,845",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(102,669)",
+     "",
+     "",
+     "(75,195)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "$",
+     "(13,104)",
+     "",
+     "$",
+     "14,370",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "10,294",
+     "",
+     "$",
+     "19,570",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Critical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the Board of Directors (Those Charged with Governance) and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgements. We determined that there are no critical audit matters .\n/s/ JP Centurion & Partners PLT\nJP Centurion & Partners PLT (PCAOB ID: 6723)\nWe have served as the Company\u2019s auditor since 2021.\nKuala Lumpur, Malaysia\nOctober 13, 2026\nItem 1. Financial Statements\nBALANCE SHEETS\nAS OF JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 931,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended July 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "30,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses (including $14,000 and $10,000 of general and administrative expenses to related party for the years ended July 31, 2026 and 2025, respectively)",
+     "",
+     "47,474",
+     "",
+     "",
+     "47,162",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "137",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "47,474",
+     "",
+     "",
+     "47,299",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(27,474)",
+     "",
+     "",
+     "(17,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(27,474)",
+     "",
+     "",
+     "(17,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share \u2013 basic and diluted",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of ordinary shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "6,720,000",
+     "",
+     "",
+     "6,162,411",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 992,
+    "end_line": 1023
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 988,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1025,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "paid in capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2024",
+     "",
+     "5,760,000",
+     "",
+     "5,760",
+     "",
+     "51,840",
+     "",
+     "(57,896)",
+     "",
+     "",
+     "(296)",
+     ""
+    ],
+    [
+     "Net loss for the year 2025",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(17,299)",
+     "",
+     "",
+     "(17,299)",
+     ""
+    ],
+    [
+     "Debt forgiveness",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "7,965",
+     "",
+     "",
+     "",
+     "",
+     "7,965",
+     ""
+    ],
+    [
+     "Share issuance^",
+     "",
+     "960,000",
+     "",
+     "960",
+     "",
+     "23,040",
+     "",
+     "-",
+     "",
+     "",
+     "24,000",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2025",
+     "",
+     "6,720,000",
+     "",
+     "6,720",
+     "",
+     "82,845",
+     "",
+     "(75,195)",
+     "",
+     "",
+     "14,370",
+     ""
+    ],
+    [
+     "Net loss for the year 2026",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(27,474)",
+     "",
+     "",
+     "(27,474)",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2026",
+     "",
+     "6,720,000",
+     "",
+     "6,720",
+     "",
+     "82,845",
+     "",
+     "(102,669)",
+     "",
+     "",
+     "(13,104)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1035,
+    "end_line": 1054
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1031,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "^",
+     "960,000 shares of common stock were issued to 3 new directors."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1055,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1031,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(27,474)",
+     "",
+     "$",
+     "(17,299)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "137",
+     ""
+    ],
+    [
+     "Stock based compensation - consulting services",
+     "",
+     "14,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepayment",
+     "",
+     "(1,075)",
+     "",
+     "",
+     "7,513",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "(210)",
+     ""
+    ],
+    [
+     "Other payable",
+     "",
+     "-",
+     "",
+     "",
+     "185",
+     ""
+    ],
+    [
+     "Net cash (used in)/provided by operating activities",
+     "",
+     "(14,549)",
+     "",
+     "",
+     "326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by investing activity",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advances from directors",
+     "",
+     "18,198",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activity",
+     "",
+     "18,198",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "3,649",
+     "",
+     "",
+     "326",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "2,171",
+     "",
+     "",
+     "1,845",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "5,820",
+     "",
+     "$",
+     "2,171",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Non-Cash Investing and Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for service provider",
+     "$",
+     "-",
+     "",
+     "$",
+     "24,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1070,
+    "end_line": 1111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED JULY 31, 2026 AND 2025\n(CURRENCY EXPRESSED IN UNITED STATES DOLLARS (\u201cUS$\u201d), EXCEPT FOR NUMBER OF SHARES)\n1. ORGANIZATION AND BUSINESS BACKGROUND\nBirdie Win Corporation, a Nevada corporation (\u201cthe Company\u201d) was incorporated under the laws of the State of Nevada on April 16, 2021.\nBirdie Win Corporation is headquartered in Hong Kong. We provide financial literacy seminar services to Hong Kong individuals and families. Our mission is to improve the financial well-being of our clients.\nThe Company\u2019s executive office is located at Unit 8, 6/F, Wayson Commercial Building, 28 Connaught Road West, Hong Kong.\nOn April 16, 2021, Mr. Chee Yong Yee (\u201cMr. Yee\u201d) was appointed as President, Secretary, Treasurer and a member of our Board of Directors. Mr. Yee also served as Chief Executive Officer of the Company.\nOn April 16, 2021, the Company issued 3,600,000 shares of restricted common stock, with a par value of $0.001 per share, to Mr. Chee Yong Yee in consideration of $3,600. The $3,600 in proceeds went to the Company to be used as working capital.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1066,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Classification",
+     "Useful Life"
+    ],
+    [
+     "Computer and software",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Accounts receivable are recognized and carried at the original invoice amount less an allowance for any uncollectible amounts. An estimate for doubtful accounts receivable is made when collection of the full amount is no longer probable. Bad debts are written off as identified.\nThe Company adopted ASU 2016-13, Financial Instruments - Credit Losses (Topic 326): Measurement of Credit Losses on Financial Instruments, using the modified retrospective method. Expected credit losses are recorded as general and administrative expenses on the statements of operations and comprehensive loss. The receivable balances are written off when they are deemed uncollectible. The Company accrued allowance for credit losses of nil for the year ended July 31, 2026.\nPlant and Equipment\nPlant and equipment are stated at cost less accumulated depreciation and impairment. Depreciation of plant, equipment and software are calculated on the straight-line method over their estimated useful lives or lease terms generally as follows:\nSCHEDULE OF ESTIMATED USEFUL LIFE",
+   "prose_after": "Revenue Recognition\nRevenue is generated through provision of Personal Financial Literacy Seminar (PFL Seminar) services to customer. Revenue is recognized when a customer obtains control of promised goods or services and is recognized in an amount that reflects the consideration that the Company expects to receive in exchange for those goods or services. In addition, the standard requires disclosure of the nature, amount, timing, and uncertainty of revenue and cash flows arising from contracts with customers. The amount of revenue that is recorded reflects the consideration that the Company expects to receive in exchange for those goods and services. The Company applies the following five-step model in order to determine this amount:\n(i) identification of the promised goods and services in the contract;\n(ii) determination of whether the promised goods and services are performance obligations, including whether they are distinct in the context of the contract;\n(iii) measurement of the transaction price, including the constraint on variable consideration;",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2026\n\n\n\n(Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "-",
+     "$",
+     "10,000",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "",
+     "-",
+     "",
+     "(10,000)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1256,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "In May 2025, the FASB issued ASU 2025-04 Compensation - Stock Compensation (Topic 718) and Revenue from Contracts with Customers (Topic 606): Clarifications to Share-Based Consideration Payable to a Customer (\u201cASU 2025-04\u201d) which clarifies the guidance on the accounting for share-based payment awards that are granted by an entity as consideration payable to its customer, with the intent to reduce diversity in practice and improve existing guidance by revising the definition of a \u201cperformance condition\u201d and eliminating a forfeiture policy election for service conditions associated with share-based consideration payable to a customer. It also clarifies the guidance in Topic 606 on the variable consideration constraint does not apply to share-based consideration payable to a customer \u201cregardless of whether an award\u2019s grant date has occurred\u201d. ASU 2025-04 will be effective for the annual periods beginning after December 15, 2026, with early adoption permitted.\nThe Company does not believe ASU 2025-04 will have a material impact on its financial position, results of operations or financial statement disclosure\n3. ACCOUNTS RECEIVABLE\nSCHEDULE OF ACCOUNTS RECEIVABLE",
+   "prose_after": "The amount due from trade receivable is subject to normal trade credit term.\n4. PREPAYMENT\nSCHEDULE OF PREPAYMENT",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2026\n\n\n\n(Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "$",
+     "4,474",
+     "$",
+     "17,399"
+    ],
+    [
+     "Total",
+     "$",
+     "4,474",
+     "$",
+     "17,399"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1277,
+    "end_line": 1290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PREPAYMENT"
+    }
+   },
+   "prose_before": "The amount due from trade receivable is subject to normal trade credit term.\n4. PREPAYMENT\nSCHEDULE OF PREPAYMENT",
+   "prose_after": "As of July 31, 2026 and July 31, 2025, amount of $nil and $14,000 of consulting services from related parties - directors.\n5. PLANT AND EQUIPMENT\nPlant and equipment consisted of the following as of July 31, 2026 and July 31, 2025:\nSCHEDULE OF PLANT AND EQUIPMENT",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2026\n\n\n\n(Audited)",
+     "",
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer and software",
+     "$",
+     "2,231",
+     "",
+     "$",
+     "2,231",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(2,231)",
+     "",
+     "",
+     "(2,231)",
+     ""
+    ],
+    [
+     "Plant and equipment, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1299,
+    "end_line": 1313
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "As of July 31, 2026 and July 31, 2025, amount of $nil and $14,000 of consulting services from related parties - directors.\n5. PLANT AND EQUIPMENT\nPlant and equipment consisted of the following as of July 31, 2026 and July 31, 2025:\nSCHEDULE OF PLANT AND EQUIPMENT",
+   "prose_after": "Depreciation expense for the years ended July 31, 2026 and July 31, 2025 was $nil and $137 respectively.\n6. ACCRUED LIABILITIES\nSCHEDULE OF ACCRUED LIABILITIES",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2026\n\n\n\n(Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "5,200",
+     "$",
+     "5,200"
+    ],
+    [
+     "Total",
+     "$",
+     "5,200",
+     "$",
+     "5,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1320,
+    "end_line": 1333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "Depreciation expense for the years ended July 31, 2026 and July 31, 2025 was $nil and $137 respectively.\n6. ACCRUED LIABILITIES\nSCHEDULE OF ACCRUED LIABILITIES",
+   "prose_after": "Accrued expenses for the years ended July 31, 2026 and July 31, 2025 consist of accrued audit fees and stock and registrar fee.\n7. AMOUNT OWING TO DIRECTOR\nAs of July 31, 2026 , the director of the Company, Yidong Bao advanced $18,198 to the Company, which is unsecured and non-interest bearing and is repayable on demand.\n8. SHAREHOLDERS\u2019 EQUITY\nThe Company has 75,000,000 shares of common stock authorized.\nDuring the year ended July 31, 2024, the Company issued an aggregated of 200,000 shares of its common stock at $0.025 per share for aggregate gross proceeds of $5,000. The Company also issued an aggregated of 520,000 shares of its common stock at $0.025 per share for two service providers for consideration of $13,000.\nOn March 24, 2025, a Stock Purchase Agreement was entered into between TOPP Holdings Group Ltd (the \u201cSeller\u201d), whose controlling person is Yunyuan Chen, and Shiyong Zhao (the \u201cPurchaser\u201d), wherein the Purchaser purchased 2,640,000 shares of Common Shares from the Seller, par value $0.001 per share (the \u201cShares\u201d), of Birdie Win Corporation, a Nevada corporation (the \u201cCompany\u201d). As a result, the Purchaser became an approximately 44.6% holder of the voting rights of the issued and outstanding shares of the Company, on a fully-diluted basis.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended\n\n\n\nJuly 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Tax jurisdictions from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "(27,474)",
+     "",
+     "$",
+     "(17,299)",
+     ""
+    ],
+    [
+     "- Foreign, representing:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Hong Kong",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "$",
+     "(27,474)",
+     "",
+     "$",
+     "(17,299)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended\n\n\n\nJuly 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1360,
+    "end_line": 1375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "During the year ended July 31, 2025, the Company issued an aggregated of 960,000 shares of its common stock at $0.025 per share, totaling $24,000, as consideration for consulting services provided by three newly appointed directors, Shiyong Zhao, Yidong Bao, and Fengjun Wang. Of this amount, $960, representing the par value of $0.001 per share, was classified as common stock, and the remaining $23,040 was recorded as Additional Paid-In Capital.\nDuring the year ended July 31, 2025, Additional Paid-In Capital increased by $7,965, reflecting the forgiveness of related-party loans by a former director - Mr. Zonghan Wu and the Company\u2019s Chief Financial Officer - Ms. Yunyuan Chen.\nAs of July 31, 2026, the Company has 6,720,000 shares of common stock issued and outstanding. There are no shares of preferred stock authorized.\n9. INCOME TAX\nThe loss from operation before income taxes of the Company for the year ended July 31, 2026 and 2025 were comprised of the following:\nSCHEDULE OF LOSS FROM OPERATION BEFORE INCOME TAXES",
+   "prose_after": "Provision for income taxes consisted of the following:\nSCHEDULE OF PROVISION FOR INCOME TAXES",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended\n\n\n\nJuly 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2026",
+     "",
+     "2025"
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "\u2013 Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "\u2013 Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "\u2013 Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax payable:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "\u2013 Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "\u2013 Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended\n\n\n\nJuly 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1380,
+    "end_line": 1407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "Provision for income taxes consisted of the following:\nSCHEDULE OF PROVISION FOR INCOME TAXES",
+   "prose_after": "The reconciliation of the federal statutory income tax amount and rate to the Company\u2019s effective tax rate for the years ended July 31, 2026 and 2025 is as follows:\nSCHEDULE OF RECONCILIATION OF INCOME TAXES EXPENSES",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "$",
+     "(27,474)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(17,299)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "$",
+     "(5,770)",
+     "",
+     "",
+     "21",
+     "%",
+     "$",
+     "(3,633)",
+     "",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "State and local income tax, net of federal income tax effect",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in valuation allowances",
+     "$",
+     "5,770",
+     "",
+     "",
+     "(21",
+     "%)",
+     "$",
+     "3,633",
+     "",
+     "",
+     "(21",
+     "%)"
+    ],
+    [
+     "Foreign tax effects:",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "- Changes in valuation allowances",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "- Foreign rate difference",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax expense and effective tax rate",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1412,
+    "end_line": 1430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "The reconciliation of the federal statutory income tax amount and rate to the Company\u2019s effective tax rate for the years ended July 31, 2026 and 2025 is as follows:\nSCHEDULE OF RECONCILIATION OF INCOME TAXES EXPENSES",
+   "prose_after": "United States of America\nThe Company is registered in the State of Nevada and is subject to United States of America tax law. As of July 31, 2026 , the operations in the United States of America incurred $102,669 of cumulative net operating losses (NOL\u2019s) which can be carried forward carried forward indefinitely to offset taxable income in the future. The Company has provided for a full valuation allowance of approximately $21,560 against the deferred tax assets on the expected future tax benefits from the net operating loss carryforwards as the management believes it is more likely than not that these assets will not be realized in the future.\nThe following table sets forth the significant components of the aggregate deferred tax assets of the Company as of July 31, 2026 and July 31, 2025:\nSCHEDULE OF AGGREGATE DEFERRED TAX ASSETS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "As of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31, 2026",
+     "",
+     "",
+     "July 31, 2025",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2013 United States of America",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "15,791",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(21,560)",
+     "",
+     "",
+     "(15,791)",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1439,
+    "end_line": 1452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "United States of America\nThe Company is registered in the State of Nevada and is subject to United States of America tax law. As of July 31, 2026 , the operations in the United States of America incurred $102,669 of cumulative net operating losses (NOL\u2019s) which can be carried forward carried forward indefinitely to offset taxable income in the future. The Company has provided for a full valuation allowance of approximately $21,560 against the deferred tax assets on the expected future tax benefits from the net operating loss carryforwards as the management believes it is more likely than not that these assets will not be realized in the future.\nThe following table sets forth the significant components of the aggregate deferred tax assets of the Company as of July 31, 2026 and July 31, 2025:\nSCHEDULE OF AGGREGATE DEFERRED TAX ASSETS",
+   "prose_after": "Management believes that it is more likely than not that the deferred tax assets will not be fully realizable in the future. Accordingly, the Company provided for a full valuation allowance against its deferred tax assets of $21,560 as of July 31, 2026.\n10. RELATED PARTY TRANSACTIONS\nOn February 1, 2025, loans totaling $7,965 previously due to Zonghan Wu, a former director of the Company prior to Yunyuan Chen, and Yunyuan Chen, the Company\u2019s former director, were forgiven.\nOn March 1, 2025, the company has entered into an agreement with 3 new directors for a term of 12 months by providing consultant services. The Company issued an aggregated of 960,000 shares of its common stock at $0.025 per share, totaling $24,000, as consideration for consulting services provided by three newly appointed directors. This issuance represents a non-cash issuance of common stock for services.\nDuring the year ended July 31, 2026, director Yidong Bao advanced an aggregate of $18,198 to the Company. The amount remains outstanding as of July 31, 2026. Mr. Bao has indicated that he does not currently intend to request repayment of the outstanding balance.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years ended July 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "Revenue",
+     "",
+     "",
+     "",
+     "Percentage of\n\n\n\nRevenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accounts receivable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "$",
+     "5,000",
+     "$",
+     "-",
+     "",
+     "25",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Customer B",
+     "$",
+     "5,000",
+     "$",
+     "-",
+     "",
+     "25",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Customer C",
+     "$",
+     "5,000",
+     "$",
+     "-",
+     "",
+     "25",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Customer D",
+     "$",
+     "5,000",
+     "$",
+     "-",
+     "",
+     "25",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Customer E",
+     "",
+     "-",
+     "",
+     "30,000",
+     "",
+     "-",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "20,000",
+     "$",
+     "30,000",
+     "",
+     "100",
+     "%",
+     "",
+     "100",
+     "%",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1477,
+    "end_line": 1496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "CONCENTRATION OF RISK"
+    }
+   },
+   "prose_before": "During the year ended July 31, 2026, director Yidong Bao advanced an aggregate of $18,198 to the Company. The amount remains outstanding as of July 31, 2026. Mr. Bao has indicated that he does not currently intend to request repayment of the outstanding balance.\nThe Company initially recorded the $24,000 as a prepayment for consulting services and recognized the related consulting service expense over the service period. For the years ended July 31, 2026 and 2025, the Company recognized consulting service expense of $14,000 and $10,000, respectively. As of July 31, 2026 and 2025, the remaining prepayment balance was $nil and $14,000, respectively.\n11. CONCENTRATION OF RISK\nCustomer Concentration\nFor the year ended July 31, 2026, there were four customers who accounted for 100% of the Company\u2019s revenues.\nFor the year ended July 31, 2025, there was one customer who accounted for 100% of the Company\u2019s revenues.\nThe customer who accounted for 100% of the Company\u2019s revenues and its outstanding receivable balance at period-end is presented below:\nSCHEDULE OF REVENUES AND OUTSTANDING RECEIVABLE",
+   "prose_after": "12. SEGMENT REPORTING\nASC 280, \u201cSegment Reporting\u201d establishes standards for reporting information about operating segments on a basis consistent with the Company\u2019s internal organization structure as well as information about services categories, business segments and major customers in financial statements. The Company has single reportable segment based on business unit, financial services business and one reportable segment based on Hong Kong.\nIn accordance with the \u201cSegment Reporting\u201d Topic of the ASC, the Company\u2019s chief operating decision maker has been identified as the Chief Executive Officer and President, who reviews operating results to make decisions about allocating resources and assessing performance for the entire Company. Existing guidance, which is based on a management approach to segment reporting, establishes requirements to report selected segment information quarterly and to report annually entity-wide disclosures about products and services, major customers, and the countries in which the entity holds material assets and reports revenue. All material operating units qualify for aggregation under \u201cSegment Reporting\u201d due to their similar customer base and similarities in economic characteristics; nature of products and services; and procurement, manufacturing and distribution processes.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended July 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Business Unit",
+     "Financial Services\n\n\n\nBusiness\n\n\n\n(Literacy Seminar)",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "20,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(47,474)",
+     "",
+     "",
+     "(47,474)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(27,474)",
+     "",
+     "",
+     "(27,474)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "10,294",
+     "",
+     "$",
+     "10,294",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended July 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1505,
+    "end_line": 1526
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "ASC 280, \u201cSegment Reporting\u201d establishes standards for reporting information about operating segments on a basis consistent with the Company\u2019s internal organization structure as well as information about services categories, business segments and major customers in financial statements. The Company has single reportable segment based on business unit, financial services business and one reportable segment based on Hong Kong.\nIn accordance with the \u201cSegment Reporting\u201d Topic of the ASC, the Company\u2019s chief operating decision maker has been identified as the Chief Executive Officer and President, who reviews operating results to make decisions about allocating resources and assessing performance for the entire Company. Existing guidance, which is based on a management approach to segment reporting, establishes requirements to report selected segment information quarterly and to report annually entity-wide disclosures about products and services, major customers, and the countries in which the entity holds material assets and reports revenue. All material operating units qualify for aggregation under \u201cSegment Reporting\u201d due to their similar customer base and similarities in economic characteristics; nature of products and services; and procurement, manufacturing and distribution processes.\nSCHEDULE OF SEGMENT REPORTING",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended July 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Business Unit",
+     "Financial Services\n\n\n\nBusiness (Literacy Seminar)",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "30,000",
+     "",
+     "$",
+     "30,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(47,299)",
+     "",
+     "",
+     "(47,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(17,299)",
+     "",
+     "",
+     "(17,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "19,570",
+     "",
+     "$",
+     "19,570",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended July 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1527,
+    "end_line": 1546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\n\n\nJuly 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Country",
+     "Hong Kong",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "20,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(47,474)",
+     "",
+     "",
+     "(47,474)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(27,474)",
+     "",
+     "",
+     "(27,474)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "10,294",
+     "",
+     "$",
+     "10,294",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended\n\n\n\nJuly 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1547,
+    "end_line": 1566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\n\n\nJuly 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Country",
+     "Hong Kong",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "30,000",
+     "",
+     "$",
+     "30,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(47,299)",
+     "",
+     "",
+     "(47,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(17,299)",
+     "",
+     "",
+     "(17,299)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "19,570",
+     "",
+     "$",
+     "19,570",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended\n\n\n\nJuly 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1567,
+    "end_line": 1586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "13. SUBSEQUENT EVENTS\nIn accordance with ASC Topic 855, \u201cSubsequent Events\u201d, which establishes general standards of accounting for and disclosure of events that occur after the balance sheet date but before financial statements are issued, the Company has evaluated all events or transactions that occurred after July 31, 2026 up through the date the Company presented these audited financial statements. During the period, the Company did not have any material recognizable subsequent events.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "accession": "0001549727-13-000173",
+ "cik": "0001450015",
+ "form": "10-Q/A",
+ "filing_date": "2013-09-16",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cgloform10qamendmentjune3020.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "333-156457",
+     "04-3626788"
+    ],
+    [
+     "(Commission File Number)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q/A\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 for the quarterly period ended June 30, 2013\n[ ]. TRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) OF THE EXCHANGE ACT\nFor the transition period from ___________ to _____________\nChina Global Media, Inc.\n(Exact name of small business issuer as specified in its charter)\nNevada\n(State or other jurisdiction of incorporation)",
+   "prose_after": "25-26F Wanxiang Enterprise Building,\nNo.70 Station North Road,\nChangsha, Hunan Province,\nChina, Postal Code: 410001 (Address of Principal Executive Office)\n+86-731-89970899\n(Issuer\u2019s Telephone Number)\nCopy of Communications To:\nBernard & Yam, LLP\n401 Broadway Suite 1708\nNew York, NY 10013",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

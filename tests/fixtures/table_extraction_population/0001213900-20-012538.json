@@ -1,0 +1,5386 @@
+{
+ "accession": "0001213900-20-012538",
+ "cik": "0000790652",
+ "form": "10-Q",
+ "filing_date": "2020-05-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0320_imagingdiagnos.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "22-2671269"
+    ],
+    [
+     "(State of Incorporation)",
+     "(IRS Employer Ident. No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1291-B  NW 65th Place, Fort Lauderdale, FL",
+     "33309"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n[Mark One]\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2020\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____to______\nCommission file number: 000-26028\nIMAGING DIAGNOSTIC SYSTEMS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number:\n(954) 581-9800\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number:\n(954) 581-9800\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non- accelerated filer, a smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part I - Financial Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "    Balance Sheets \u2013 March 31, 2020 (Unaudited) and June 30, 2019",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Operations \u2013 (Unaudited) Three and Nine months ended March 31, 2020 and 2019",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Statements of Changes in Stockholders\u2019 Deficit \u2013 (Unaudited) Three and Nine months ended March 31, 2020 and 2019",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "    Statements of Cash Flows - (Unaudited) Nine months ended March 31, 2020 and 2019",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to (Unaudited) Financial Statements",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Financial Condition and Results",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II - Other Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "(Removed and Reserved)",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non- accelerated filer, a smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer        [ ]  Accelerated filer        [ ]  Smaller reporting company        [X]\nNon-accelerated filer          [ ]                              Emerging growth company        [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.) Yes [ ] No [X]\nThe number of shares outstanding of the issuer\u2019s common stock as of May 15, 2020: 122,876,549 shares of common stock, no par value.\nIMAGING DIAGNOSTIC SYSTEMS, INC.",
+   "prose_after": "i\nItem 1. Financial Statements\nBalance Sheets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "June 30, 2019",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash",
+     "$",
+     "34,743",
+     "",
+     "$",
+     "44,615",
+     ""
+    ],
+    [
+     "    Accounts receivable, related party, net of allowance",
+     "",
+     "-",
+     "",
+     "",
+     "7,700",
+     ""
+    ],
+    [
+     "    Due from related party, net of allowance",
+     "",
+     "-",
+     "",
+     "",
+     "11,965",
+     ""
+    ],
+    [
+     "    Employee advances",
+     "",
+     "5,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Prepaid expenses",
+     "",
+     "11,226",
+     "",
+     "",
+     "11,566",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "50,969",
+     "",
+     "",
+     "75,846",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property and equipment, net",
+     "",
+     "14,876",
+     "",
+     "",
+     "19,391",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating lease right-of-use assets",
+     "",
+     "84,906",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total assets",
+     "$",
+     "150,751",
+     "",
+     "$",
+     "95,237",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses",
+     "$",
+     "241,866",
+     "",
+     "$",
+     "34,943",
+     ""
+    ],
+    [
+     "    Accrued payroll taxes and penalties",
+     "",
+     "314,019",
+     "",
+     "",
+     "314,019",
+     ""
+    ],
+    [
+     "    Promissory notes, related party",
+     "",
+     "520,000",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "    Current portion of operating lease liabilities",
+     "",
+     "73,978",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "1,149,863",
+     "",
+     "",
+     "548,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Long-term liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Operating lease liabilities",
+     "",
+     "11,250",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities",
+     "",
+     "1,161,113",
+     "",
+     "",
+     "548,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Commitment and Contingencies (Note 16)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Temporary equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Convertible Preferred Series L",
+     "",
+     "393,463",
+     "",
+     "",
+     "379,914",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total temporary equity",
+     "",
+     "393,463",
+     "",
+     "",
+     "379,914",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stockholders\u2019 Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stock, no par, 2,000,000 authorized Convertible preferred stock, Series M, 600 designated 0 shares issued and outstanding at March 31, 2020 and June 30, 2019",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock, no par value, 500,000,000 authorized, 122,876,549 and 122,621,646 shares issued and outstanding March 31, 2020 and June 30, 2019, respectively",
+     "",
+     "132,540,145",
+     "",
+     "",
+     "132,228,967",
+     ""
+    ],
+    [
+     "    Accumulated Deficit",
+     "",
+     "(133,943,970)",
+     "",
+     "",
+     "(133,062,606)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total stockholders\u2019 deficit",
+     "",
+     "(1,403,825)",
+     "",
+     "",
+     "(833,639)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities and stockholders\u2019 deficit",
+     "$",
+     "150,751",
+     "",
+     "$",
+     "95,237",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "i\nItem 1. Financial Statements\nBalance Sheets",
+   "prose_after": "See accompanying notes to the unaudited financial statements\nStatements of Operations\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 110,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "March 31, 2019",
+     "",
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "March 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales, related party",
+     "$",
+     "-",
+     "",
+     "$",
+     "12,715",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "161,781",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "12,715",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "161,781",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "-",
+     "",
+     "",
+     "7,442",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "72,176",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "-",
+     "",
+     "",
+     "5,273",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "89,605",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "46,395",
+     "",
+     "",
+     "110,286",
+     "",
+     "",
+     "214,739",
+     "",
+     "",
+     "407,030",
+     ""
+    ],
+    [
+     "  Salaries and wages",
+     "",
+     "68,779",
+     "",
+     "",
+     "141,605",
+     "",
+     "",
+     "210,781",
+     "",
+     "",
+     "422,131",
+     ""
+    ],
+    [
+     "  Research and development",
+     "",
+     "6,709",
+     "",
+     "",
+     "7,595",
+     "",
+     "",
+     "23,849",
+     "",
+     "",
+     "57,063",
+     ""
+    ],
+    [
+     "  Sales and marketing",
+     "",
+     "19,776",
+     "",
+     "",
+     "225",
+     "",
+     "",
+     "20,081",
+     "",
+     "",
+     "843",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "621",
+     "",
+     "",
+     "1,947",
+     "",
+     "",
+     "4,515",
+     "",
+     "",
+     "5,840",
+     ""
+    ],
+    [
+     "  Consulting expenses (including share-based compensation)",
+     "",
+     "175,979",
+     "",
+     "",
+     "125,954",
+     "",
+     "",
+     "351,678",
+     "",
+     "",
+     "348,070",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "318,259",
+     "",
+     "",
+     "387,612",
+     "",
+     "",
+     "825,643",
+     "",
+     "",
+     "1,240,977",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "",
+     "(318,259)",
+     "",
+     "",
+     "(382,339)",
+     "",
+     "",
+     "(825,643)",
+     "",
+     "",
+     "(1,151,372)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "4",
+     "",
+     "",
+     "77",
+     "",
+     "",
+     "17",
+     "",
+     "",
+     "99",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "-",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "27,943",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(17,112)",
+     "",
+     "",
+     "(14,795)",
+     "",
+     "",
+     "(42,189)",
+     "",
+     "",
+     "(31,767)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(17,108)",
+     "",
+     "",
+     "(14,643)",
+     "",
+     "",
+     "(42,172)",
+     "",
+     "",
+     "(3,725)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(335,367)",
+     "",
+     "",
+     "(396,982)",
+     "",
+     "",
+     "(867,815)",
+     "",
+     "",
+     "(1,155,097)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "",
+     "(4,475)",
+     "",
+     "",
+     "(4,438)",
+     "",
+     "",
+     "(13,549)",
+     "",
+     "",
+     "(13,512)",
+     ""
+    ],
+    [
+     "Net Loss Available to Common Stockholders",
+     "",
+     "(339,842)",
+     "",
+     "",
+     "(401,420)",
+     "",
+     "",
+     "(881,364)",
+     "",
+     "",
+     "(1,168,609)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic and diluted",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic and diluted",
+     "",
+     "122,758,901",
+     "",
+     "",
+     "121,964,130",
+     "",
+     "",
+     "122,732,306",
+     "",
+     "",
+     "108,930,341",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 189,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements\nStatements of Operations\n(unaudited)",
+   "prose_after": "See accompanying notes to the unaudited financial statements\nStatements of Changes in Stockholders\u2019 Deficit\nFor the three and nine months ended March 31, 2020 and 2019\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "Subscription",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Deposits",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2019",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "122,621,646",
+     "",
+     "$",
+     "132,228,967",
+     "$",
+     "-",
+     "",
+     "$",
+     "(133,062,606)",
+     "",
+     "$",
+     "(833,639)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,537)",
+     "",
+     "",
+     "(4,537)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(255,040)",
+     "",
+     "",
+     "(255,040)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2019",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "122,621,646",
+     "",
+     "$",
+     "132,228,967",
+     "$",
+     "-",
+     "",
+     "$",
+     "(133,322,183)",
+     "",
+     "$",
+     "(1,093,216)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,537)",
+     "",
+     "",
+     "(4,537)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares Issued for Cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "137,255",
+     "",
+     "",
+     "70,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "60,699",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "60,699",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(277,408)",
+     "",
+     "",
+     "(277,408)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "122,758,901",
+     "",
+     "$",
+     "132,359,666",
+     "$",
+     "-",
+     "",
+     "$",
+     "(133,604,128)",
+     "",
+     "$",
+     "(1,244,462)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,475)",
+     "",
+     "",
+     "(4,475)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares Issued for Cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "117,648",
+     "",
+     "",
+     "60,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "60,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock option expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "120,479",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "120,479",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(335,367)",
+     "",
+     "",
+     "(335,367)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2020",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "122,876,549",
+     "",
+     "$",
+     "132,540,145",
+     "$",
+     "-",
+     "",
+     "$",
+     "(133,943,970)",
+     "",
+     "$",
+     "(1,403,825)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2018",
+     "",
+     "591",
+     "",
+     "$",
+     "7,589,173",
+     "",
+     "",
+     "33,597,241",
+     "",
+     "$",
+     "125,108,179",
+     "$",
+     "-",
+     "",
+     "$",
+     "(133,064,117)",
+     "",
+     "$",
+     "(366,765)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion Viable Series M Cv Preferred to common stock",
+     "",
+     "(591)",
+     "",
+     "",
+     "(5,910,000)",
+     "",
+     "",
+     "87,044,089",
+     "",
+     "",
+     "5,910,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustment to correct number of common shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(80)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series M CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "(1,679,173)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "1,679,173",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,537)",
+     "",
+     "",
+     "(4,537)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(401,139)",
+     "",
+     "",
+     "(401,139)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2018",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "120,641,250",
+     "",
+     "$",
+     "131,018,179",
+     "$",
+     "-",
+     "",
+     "$",
+     "(131,790,620)",
+     "",
+     "$",
+     "(772,441)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,537)",
+     "",
+     "",
+     "(4,537)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustment to correct number of common shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares Issued for Cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "294,117",
+     "",
+     "",
+     "150,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subscription Deposit Received",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "50,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(356,976)",
+     "",
+     "",
+     "(356,976)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "120,935,373",
+     "",
+     "$",
+     "131,168,179",
+     "$",
+     "50,000",
+     "",
+     "$",
+     "(132,152,133)",
+     "",
+     "$",
+     "(933,954)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cummulative Dividend on Series L CV Preferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,438)",
+     "",
+     "",
+     "(4,438)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares Issued for Cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,490,195",
+     "",
+     "",
+     "760,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "760,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subscription deposit converted to common stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "98,039",
+     "",
+     "",
+     "50,000",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "26,705",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "26,705",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(396,982)",
+     "",
+     "",
+     "(396,982)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2019",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "122,523,607",
+     "",
+     "$",
+     "132,004,884",
+     "$",
+     "-",
+     "",
+     "$",
+     "(132,553,553)",
+     "",
+     "$",
+     "(548,669)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 251,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements\nStatements of Changes in Stockholders\u2019 Deficit\nFor the three and nine months ended March 31, 2020 and 2019\n(unaudited)",
+   "prose_after": "See accompanying notes to the unaudited financial statements\nStatements of Cash Flows\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended",
+     "",
+     "",
+     "Nine months ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "March 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(867,815)",
+     "",
+     "$",
+     "(1,155,097)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "4,515",
+     "",
+     "",
+     "5,840",
+     ""
+    ],
+    [
+     "  Stock option expense",
+     "",
+     "181,178",
+     "",
+     "",
+     "26,705",
+     ""
+    ],
+    [
+     "  Bad debt expense",
+     "",
+     "19,665",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities and stockholders deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  (Increase) decrease in due from related party, net of allowance",
+     "",
+     "-",
+     "",
+     "",
+     "27,153",
+     ""
+    ],
+    [
+     "  (Increase) decrease in employee advances",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  (Increase) decrease in royalty receivable",
+     "",
+     "-",
+     "",
+     "",
+     "21,753",
+     ""
+    ],
+    [
+     "  (Increase) decrease in other receivables, net of allowance",
+     "",
+     "-",
+     "",
+     "",
+     "(11,115)",
+     ""
+    ],
+    [
+     "  (Increase) decrease in prepaid expenses",
+     "",
+     "340",
+     "",
+     "",
+     "(4,233)",
+     ""
+    ],
+    [
+     "  Increase (decrease) in accounts payable and accrued expenses",
+     "",
+     "206,923",
+     "",
+     "",
+     "(40,487)",
+     ""
+    ],
+    [
+     "  Change in right of use asset/lease obligation, net",
+     "",
+     "322",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Total adjustments",
+     "",
+     "407,943",
+     "",
+     "",
+     "25,616",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash used in operating activities",
+     "",
+     "(459,872)",
+     "",
+     "",
+     "(1,129,481)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from promissory notes, related party",
+     "",
+     "320,000",
+     "",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "  Proceeds from issuance of common stock",
+     "",
+     "130,000",
+     "",
+     "",
+     "960,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash provided by financing activities",
+     "",
+     "450,000",
+     "",
+     "",
+     "960,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(9,872)",
+     "",
+     "",
+     "(169,481)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "44,615",
+     "",
+     "",
+     "271,540",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "34,743",
+     "",
+     "$",
+     "102,059",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "$",
+     "40,068",
+     "",
+     "$",
+     "31,767",
+     ""
+    ],
+    [
+     "  Cash paid for taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 347,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the unaudited financial statements\nStatements of Cash Flows\n(unaudited)",
+   "prose_after": "See accompanying notes to the unaudited financial statements\nIMAGING DIAGNOSTIC SYSTEMS, INC\n(1) ORGANIZATION AND NATURE OF BUSINESS\nImaging Diagnostic Systems, Inc. (the \u201cCompany\u201d or \u201cIDSI\u201d) is a medical technology company that has developed a new, non-invasive CT scanner called CTLM\u00ae that uses a laser beam in place of ionizing X-ray for breast imaging. This technology is called Diffuse Optical Tomography. The CTLM\u00ae will provide an adjunctive imaging modality to other methods of imaging the breast such as X-ray mammography, MRI and ultrasound.\n(2) GOING CONCERN AND MANAGEMENT\u2019S PLANS\nThe accompanying financial statements are prepared assuming the Company will continue as a going concern. As of March 31, 2020, the Company had an accumulated deficit of $133,943,970, a stockholders\u2019 deficit of $1,403,825 and a working capital deficiency of $1,098,894. For the nine months ended March 31, 2020, net loss totaled $867,815. The net cash used in operating activities for the nine months ended March 31, 2020 totaled $459,872. These matters raise substantial doubt about the Company\u2019s ability to continue as a going concern for a period of twelve months from the date these financial statements are issued. The ability of the Company to continue as a going concern is dependent upon increasing sales and obtaining additional capital and financing. While the Company believes in the viability of its strategy to increase sales volume and in its ability to raise additional funds, there can be no assurances to that effect. The Company received from the Chinese FDA (\u201cCFDA\u201d) marketing clearance for the CTLM\u00ae effective November 16, 2018 to November 15, 2023, as disclosed in the Company\u2019s Form 8-K filing on December 11, 2018. However, there can be no assurance that we will obtain U.S. Food and Drug Administration (\u201cFDA\u201d) marketing or other new international marketing clearances, that the CTLM\u00ae will achieve market acceptance or that sufficient revenues will be generated from sales of the CTLM\u00ae in China or elsewhere to allow us to operate profitably. If our majority shareholder Viable International Investments, LLC (\u201cViable\u201d) fails to continue funding, the Company would be materially adversely affected and may have to cease operations due to a lack of funding. These matters affect the Company\u2019s liquidity profile, and management\u2019s plans in those regards are discussed in the paragraphs that follow.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 341,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the nine months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "March 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Sales-parts, related party",
+     "$",
+     "-",
+     "$",
+     "161,781"
+    ],
+    [
+     "Net sales",
+     "$",
+     "-",
+     "$",
+     "161,781"
+    ]
+   ],
+   "caption_stack": [
+    "For the nine months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 554,
+    "end_line": 565
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "As of July 1, 2018, the Company adopted Revenue from Contracts with Customers (Topic 606) (\u201cASC 606\u201d). The new guidance sets forth a new five-step revenue recognition model which replaces the prior revenue recognition guidance in its entirety and is intended to eliminate numerous industry-specific pieces of revenue recognition guidance that have historically existed in U.S. GAAP. The underlying principle of the new standard is that a business or other organization will recognize revenue to depict the transfer of promised goods or services to customers in an amount that reflects what it expects to receive in exchange for the goods or services. The standard also requires more detailed disclosures and provides additional guidance for transactions that were not addressed completely in the prior accounting guidance. The Company adopted the standard using the modified retrospective method and the adoption did not have a material impact on its financial statements. The comparative information has not been restated and continues to be reported under the accounting standards in effect for those periods.\n(4) REVENUE (Continued)\nInformation about the Company\u2019s net sales by reporting segment for the nine months ended March 31, 2020 and 2019 is as follows:",
+   "prose_after": "All sales-parts, related party are sales to a customer located in China.\n(5) DUE FROM RELATED PARTY\nOn March 22, 2018, the Board of Directors approved the execution of two agreements with Xi\u2019an of China, an affiliated Company of IDSI. The agreements are a Know How Transfer Contract and a CTLM Know How Confidentiality Agreement. The contract, having a term of 20 years, stipulates that Xi\u2019an will pay IDSI a know how transfer fee of 25% of revenue for CTLM product sales in their territory. The Company also sells inventory parts or acquires parts from third parties on behalf of Xi\u2019an. For the nine months ended March 31, 2020 and 2019, such sales totaled $0 and $161,781, respectively. As of March 31, 2020 and June 30, 2019, the Company has receivables from related parties, net of allowance of $0 and $7,700, respectively as a result of sales of inventory parts or acquisition of parts from third parties on behalf of Xi\u2019an. Xi\u2019an and Viable have common ownership hence these transactions are considered related party transactions. During the three months ended March 31, 2020, the Company decided to reserve the full amount of the receivable of $7,700 due to its age as well as the current COVID-19 crisis.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "June 30, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials consisting of purchased parts, components and supplies",
+     "$",
+     "369,452",
+     "",
+     "$",
+     "369,747",
+     ""
+    ],
+    [
+     "Work-in process including units undergoing final inspection and testing",
+     "",
+     "52,500",
+     "",
+     "",
+     "52,500",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Total Inventory",
+     "$",
+     "436,952",
+     "",
+     "$",
+     "437,247",
+     ""
+    ],
+    [
+     "Inventory Reserve",
+     "",
+     "(436,952)",
+     "",
+     "",
+     "(437,247)",
+     ""
+    ],
+    [
+     "Net Inventory",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "Additionally, as of March 31, 2020 and June 30, 2019, the Company has amounts due from related parties, net of allowance of $0 and $11,965, respectively. The majority of the amount due is $11,115 due from Xi\u2019an. This was for product that was purchased by Xi\u2019an that IDSI paid for. Xi\u2019an will reimburse IDSI for the amounts paid on their behalf. During the three months ended March 31, 2020, the Company decided to reserve the full amount of the amount due from related parties of $11,965 due to its age as well as the current COVID-19 crisis.\n(6) ROYALTY RECEIVABLE\nOn June 16, 2006, the Company entered into a Royalty Agreement with Bioscan Inc. whereby the Company established a licensing relationship with Bioscan which granted Bioscan an exclusive sublicensable, royalty-bearing license to make, use, offer for sale, import and otherwise develop and commercialize products in its territory. Bioscan Inc. was subsequently purchased by TriFoil Imaging. During the nine months ended March 31, 2020 and 2019, there was no royalty income. As of March 31, 2020 and June 30, 2019, the Company had a royalty receivable balance of $0 and $0, respectively.\n(7) INVENTORIES\nInventories consisted of the following:",
+   "prose_after": "Due to the age of the inventory, lack of demand for parts and lack of sales the Company wrote off all inventory during the year ended June 30, 2017 and has booked a reserve for the entire value of its inventory as of March 31. 2020 and June 30, 2019. For the nine months ended March 31, 2020, reduction of inventory represents physical count adjustments.\n(8) PROPERTY AND EQUIPMENT\nThe following is a summary of property and equipment, less accumulated depreciation:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "",
+     "June 30, 2019",
+     "",
+     "",
+     "Useful life"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture and Fixtures",
+     "$",
+     "261,011",
+     "",
+     "$",
+     "261,011",
+     "",
+     "5 years"
+    ],
+    [
+     "Computers and Equipment",
+     "",
+     "370,704",
+     "",
+     "",
+     "370,704",
+     "",
+     "5 years"
+    ],
+    [
+     "Third Party Software",
+     "",
+     "10,291",
+     "",
+     "",
+     "10,291",
+     "",
+     "5 years"
+    ],
+    [
+     "Clinical Equipment",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     "",
+     "5 years"
+    ],
+    [
+     "Total Property & Equipment",
+     "$",
+     "657,006",
+     "",
+     "$",
+     "657,006",
+     "",
+     ""
+    ],
+    [
+     "  Less: accumulated depreciation",
+     "",
+     "(642,130)",
+     "",
+     "",
+     "(637,615)",
+     "",
+     ""
+    ],
+    [
+     "Total Property & Equipment - Net",
+     "$",
+     "14,876",
+     "",
+     "$",
+     "19,391",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 620
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "Due to the age of the inventory, lack of demand for parts and lack of sales the Company wrote off all inventory during the year ended June 30, 2017 and has booked a reserve for the entire value of its inventory as of March 31. 2020 and June 30, 2019. For the nine months ended March 31, 2020, reduction of inventory represents physical count adjustments.\n(8) PROPERTY AND EQUIPMENT\nThe following is a summary of property and equipment, less accumulated depreciation:",
+   "prose_after": "Depreciation expense for the nine months ended March 31, 2020 and 2019 was $4,515 and $5,840 respectively.\n(9) ACCOUNTS PAYABLE AND ACCRUED EXPENSES\nAs of March 31, 2020 and June 30, 2019, accounts payable and accrued expenses totaled $241,866 and $34,943, respectively, which consists of accounts payable of $232,970 and $27,912 and other accrued expenses of $8,896 and $7,031, respectively.\n(10) ACCRUED PAYROLL TAXES AND PENALTIES\nAs of March 31, 2020 and June 30, 2019, the Company owed the IRS $314,019 and $314,019, respectively. Accrued payroll taxes represent outstanding interest and penalties based on prior management\u2019s failure to pay payroll taxes commencing with the quarter ending March 31, 2010. As part of new management\u2019s restructuring plan, the Company received funds from an accredited investor to be able to make a payment to pay off the payroll tax portion of the amount owed to the IRS. The Company engaged tax counsel to manage the settlement and payment. On June 27, 2018, the IRS provided counsel with a payoff calculation table indicating that the balance of taxes due was $381,224. On June 29, 2018, Viable International Investments LLC provided a bank check in that amount to counsel and they sent the check to the IRS with a letter requesting penalty and interest abatement. The amount due at March 31, 2020 of $314,019 represents the interest and penalties. The Company has formally asked the IRS to abate all remaining interest and penalties of $314,019. The Company had a telephone conference on April 18, 2019 with the office of appeals and is waiting for further communications from the appeals officer.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Noteholder",
+     "Interest Rate",
+     "",
+     "",
+     "Maturity Date",
+     "March 31, 2020",
+     "",
+     "June 30, 2019",
+     ""
+    ],
+    [
+     "Related Party Notes:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erhfort, LLC",
+     "",
+     "15",
+     "%",
+     "9/30/20",
+     "$",
+     "100,000",
+     "$",
+     "100,000"
+    ],
+    [
+     "Erhfort, LLC",
+     "",
+     "15",
+     "%",
+     "9/30/20",
+     "",
+     "100,000",
+     "",
+     "100,000"
+    ],
+    [
+     "JM One Holdings, LLC",
+     "",
+     "15",
+     "%",
+     "8/31/20",
+     "",
+     "20,000",
+     "",
+     "-"
+    ],
+    [
+     "Erhfort, LLC",
+     "",
+     "15",
+     "%",
+     "9/30/20",
+     "",
+     "100,000",
+     "",
+     "-"
+    ],
+    [
+     "Erhfort, LLC",
+     "",
+     "15",
+     "%",
+     "9/30/20",
+     "",
+     "100,000",
+     "",
+     "-"
+    ],
+    [
+     "Erhfort, LLC",
+     "",
+     "15",
+     "%",
+     "9/30/20",
+     "",
+     "100,000",
+     "",
+     "-"
+    ],
+    [
+     "Total Related Party Notes",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "520,000",
+     "$",
+     "200,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 637,
+    "end_line": 651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "As of March 31, 2020 and June 30, 2019, the Company owed the IRS $314,019 and $314,019, respectively. Accrued payroll taxes represent outstanding interest and penalties based on prior management\u2019s failure to pay payroll taxes commencing with the quarter ending March 31, 2010. As part of new management\u2019s restructuring plan, the Company received funds from an accredited investor to be able to make a payment to pay off the payroll tax portion of the amount owed to the IRS. The Company engaged tax counsel to manage the settlement and payment. On June 27, 2018, the IRS provided counsel with a payoff calculation table indicating that the balance of taxes due was $381,224. On June 29, 2018, Viable International Investments LLC provided a bank check in that amount to counsel and they sent the check to the IRS with a letter requesting penalty and interest abatement. The amount due at March 31, 2020 of $314,019 represents the interest and penalties. The Company has formally asked the IRS to abate all remaining interest and penalties of $314,019. The Company had a telephone conference on April 18, 2019 with the office of appeals and is waiting for further communications from the appeals officer.\n(11) PROMISSORY NOTES \u2013 RELATED PARTY\nThe following table is a summary of the outstanding note balances as of March 31, 2020 and June 30, 2019.",
+   "prose_after": "Each of Erhfort, LLC and JM One Holdings, LLC owns Company common stock directly or indirectly. Hence these debts are considered related party debt.\n(11) PROMISSORY NOTES \u2013 RELATED PARTY (Continued)\nDuring the nine months ended March 31, 2020, the Company received loan proceeds of $300,000 from Erhfort, LLC and $20,000 from JM One Holdings, LLC, both of which are related parties. The loans from Erhfort have an annual interest rate of 15% and interest is being accrued and paid monthly. The loan from JM One Holdings, LLC will accrue interest monthly at an annual rate of 15%, but interest will not be paid until maturity. The maturity dates for all loans with original maturity dates prior to September 30, 2020 from Erhfort were extended to September 30, 2020.\n(12) LEASES\nIn February 2016, the FASB issued Accounting Standards Update 2016-02 (ASU 2016-02), Leases (Topic 842). ASU 2016-02 requires lessees to recognize a right-of-use (ROU) asset and lease liability in the balance sheet for all leases, including operating leases, with terms of more than twelve months. Recognition, measurement, and presentation of expenses and cash flows from a lease by a lessee have not significantly changed from previous guidance. The amendments also require qualitative disclosures along with specific quantitative disclosures. We adopted this guidance using the cumulative-effect adjustment method on July 1, 2019, meaning we did not restate prior periods. Current year financial information is presented under the guidance in topic 842, while prior year information will continue to be presented under Topic 840. Adoption of the standard resulted in the recognition of an operating ROU asset and lease liability of approximately $147,000.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 654,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "76,662"
+    ],
+    [
+     "  Total lease expense",
+     "$",
+     "76,662"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "March 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 678,
+    "end_line": 687
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "ROU assets represent our right to use an underlying asset for the lease term and lease liabilities represent our obligation to make lease payments arising from the lease. Operating lease ROU assets and liabilities are recognized at commencement date based on the present value of lease payments over the lease term. As most of our leases do not provide an implicit rate, we use our incremental borrowing rate based on the information available at commencement date in determining the present value of lease payments. We use the implicit rate when readily determinable. The operating lease ROU asset also includes any lease payments made and excludes lease incentives. Our lease terms may include options to extend or terminate the lease when it is reasonably certain that we will exercise that option. Lease expense for lease payments is recognized on a straight-line basis over the lease term.\nWe have lease agreements with lease and non-lease components, which are generally accounted for separately. For certain equipment leases, such as vehicles, we account for the lease and non-lease components as a single lease component. Additionally, for certain equipment leases, we apply a portfolio approach to effectively account for the operating lease ROU assets and liabilities.\n(12) LEASES (Continued)\nOur leases have remaining lease terms of 9 to 22 months as of March 31, 2020.\nThe components of lease expense were as follows:",
+   "prose_after": "Supplemental cash flow information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2020",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in measurement of lease liabilities",
+     "",
+     ""
+    ],
+    [
+     "  Operating cash flows from operating leases",
+     "$",
+     "76,339"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new lease obligation",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "$",
+     "147,291"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "March 31, 2020",
+    "Cash paid for amounts included in measurement of lease liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "Supplemental cash flow information related to leases was as follows:",
+   "prose_after": "Supplemental balance sheet information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating lease right-of-use assets",
+     "$",
+     "84,906",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current portion of operating lease liability",
+     "",
+     "73,978",
+     ""
+    ],
+    [
+     "  Operating lease liability, net of current portion",
+     "",
+     "11,250",
+     ""
+    ],
+    [
+     "  Total operating lease liability",
+     "$",
+     "85,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "",
+     "1.04 Years",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Discount Rate",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "",
+     "15",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2020",
+    "Operating leases"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "Supplemental balance sheet information related to leases was as follows:",
+   "prose_after": "(12) LEASES (Continued)\nAs of March 31, 2020, maturities of lease liabilities were as follows:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating",
+     "",
+     ""
+    ],
+    [
+     "Years Ended June 30,",
+     "Leases",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "25,661",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "58,546",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "8,427",
+     ""
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "92,634",
+     ""
+    ],
+    [
+     "Less: amounts representing interest",
+     "",
+     "(7,406)",
+     ""
+    ],
+    [
+     "Present value of capital lease liabilities",
+     "$",
+     "85,228",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Operating"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 729,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "(12) LEASES (Continued)\nAs of March 31, 2020, maturities of lease liabilities were as follows:",
+   "prose_after": "(13) CONVERTIBLE PREFERRED STOCK\nThe following schedule reflects the number of shares of preferred stock that have been issued, converted and are outstanding as of March 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Security",
+     "Date Issued",
+     "No. of Shares",
+     "",
+     "Amount",
+     "",
+     "Date of Conversion",
+     "No. of Shares Converted",
+     "",
+     "Amount Converted",
+     "",
+     "Balance\n\n\n\n3/31/2020",
+     "",
+     ""
+    ],
+    [
+     "Series M Cv Pfd",
+     "8/1/2014",
+     "",
+     "250",
+     "$",
+     "2,500,000",
+     "4/18/2017",
+     "",
+     "6",
+     "$",
+     "60,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "11/21/2017",
+     "",
+     "3",
+     "",
+     "30,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8/7/2018",
+     "",
+     "241",
+     "",
+     "2,410,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series M Cv Pfd",
+     "8/31/2015",
+     "",
+     "200",
+     "",
+     "2,000,000",
+     "8/7/2018",
+     "",
+     "200",
+     "",
+     "2,000,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series M Cv Pfd",
+     "4/22/2016",
+     "",
+     "150",
+     "",
+     "1,500,000",
+     "8/7/2018",
+     "",
+     "150",
+     "",
+     "1,500,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Series M Cv Pfd",
+     "",
+     "",
+     "600",
+     "$",
+     "6,000,000",
+     "",
+     "",
+     "600",
+     "$",
+     "6,000,000",
+     "$",
+     "-0",
+     "-"
+    ],
+    [
+     "Dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-0",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total redemption value",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "0",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series L Cv Pfd",
+     "2/10/2010",
+     "",
+     "35",
+     "$",
+     "350,000",
+     "1/6/2011",
+     "",
+     "15",
+     "$",
+     "150,000",
+     "$",
+     "200,000",
+     ""
+    ],
+    [
+     "Dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "193,463",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total redemption value",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "393,463",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 773
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "(13) CONVERTIBLE PREFERRED STOCK\nThe following schedule reflects the number of shares of preferred stock that have been issued, converted and are outstanding as of March 31, 2020:",
+   "prose_after": "Series L Convertible Preferred Stock\nOn March 31, 2010, a private investor converted a $350,000 short-term promissory note into 35 shares of Series L Convertible Preferred Stock. The original purchase price/stated value is $10,000 per share and dividends accrue at an annual rate of 9%. The preferred stock is convertible into 474 shares of common stock for each share of preferred stock. On January 6, 2011, the private investor converted 15 shares of Series L Convertible Preferred Stock representing a principal value of $150,000. After the conversion, the private investor held 20 shares representing a principal value of $200,000. The remaining principal value of $200,000 is presented on the balance sheet as temporary equity, as the holder has the option to redeem for cash at any time. At March 31, 2020 and June 30, 2019, the balance of cumulative dividends owed to the investor which is included in redemption value was $193,463 and $179,914, respectively. The total presented on the balance sheet as temporary equity is $393,463 as of March 31, 2020 and $379,914 as of June 30, 2019.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nMarch 31, 2020",
+     "",
+     "",
+     "As of\n\n\n\nJune 30, 2019",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "23 to 24.00",
+     "%",
+     "",
+     "24.00",
+     "%"
+    ],
+    [
+     "Expected term",
+     "",
+     "4 to 5 Years",
+     "",
+     "",
+     "5 Years",
+     ""
+    ],
+    [
+     "Risk-Free interest rate",
+     "",
+     "1.55 to 2.49",
+     "%",
+     "",
+     "2.49",
+     "%"
+    ],
+    [
+     "Forfeiture rate",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Expected dividend rate",
+     "",
+     "0.00",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "On January 1, 2017, the Board granted options to purchase a total of 7,364,136 shares, all with an exercise price and fair value of $0.20 per share. Options were granted to nine employees to purchase 5,498,555 shares and to six consultants to purchase 1,865,581 shares. On January 1, 2018, the Board granted options to purchase 5,000,000 shares all with an exercise price and fair value of $0.20 per share to four consultants. On May 1, 2018, the Board granted an option to purchase 500,000 shares with an exercise price and fair value of $0.20 per share to an additional consultant. On January 1, 2019, the Board granted options to purchase 2,040,000 shares all with an exercise price of $.20 and fair value of $.51 per share to five consultants. On May 1, 2019, the Board granted an option to purchase 360,000 shares with an exercise price of $.20 and fair value of $.51 per share to a consultant. On November 1, 2019, the Board granted an option to purchase 2,000,000 shares with an exercise price of $.51 and fair value of $.51 per share to a consultant. On March 1, 2020, the Board granted an option to purchase 98,188 shares with an exercise price of $.51 and fair value of $.51 to an employee.\nIn computing the impact of stock option grants, the fair value of each option is estimated on the date of grant based on the Black-Scholes options-pricing model utilizing certain assumptions for a risk-free interest rate; volatility of a comparable company; and expected remaining lives of the awards. The assumptions used in calculating the fair value of share-based payment awards represent management\u2019s best estimates, but these estimates involve inherent uncertainties and the application of management judgment. As a result, if factors change and the Company uses different assumptions, the Company\u2019s stock-based compensation expense could be materially different in the future.\nIn addition, the Company is required to estimate the expected forfeiture rate and only recognize expense for those shares expected to vest. The Company cannot assess its forfeiture rate at this time.\n(15) STOCK OPTIONS (Continued)",
+   "prose_after": "The following table summarizes information about all of the stock options granted, exercised and cancelled under the 2016 Plan at March 31, 2020 and June 30, 2019:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employees/Consultants",
+     "Options",
+     "",
+     "",
+     "Wtd. Avg.\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2018",
+     "",
+     "11,636,777",
+     "",
+     "$",
+     "0.20"
+    ],
+    [
+     "Granted",
+     "",
+     "2,400,000",
+     "",
+     "$",
+     "0.20"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(589,132)",
+     "",
+     "$",
+     "0.20"
+    ],
+    [
+     "Outstanding at June 30, 2019",
+     "",
+     "13,447,645",
+     "",
+     "$",
+     "0.20"
+    ],
+    [
+     "Granted",
+     "",
+     "2,098,188",
+     "",
+     "$",
+     "0.51"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(450,000)",
+     "",
+     "$",
+     "0.20"
+    ],
+    [
+     "Outstanding at March 31, 2020",
+     "",
+     "15,095,833",
+     "",
+     "$",
+     "0.24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 832,
+    "end_line": 850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "The following table summarizes information about all of the stock options granted, exercised and cancelled under the 2016 Plan at March 31, 2020 and June 30, 2019:",
+   "prose_after": "The following table summarizes information about vested and unvested options under the 2016 Plan at March 31, 2020 and June 30, 2019:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employees/Consultants",
+     "Unvested",
+     "",
+     "",
+     "Vested",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2018",
+     "",
+     "6,825,181",
+     "",
+     "",
+     "4,811,596",
+     "",
+     "11,636,777",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,800,000",
+     "",
+     "",
+     "600,000",
+     "",
+     "2,400,000",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "(2,305,527)",
+     "",
+     "",
+     "2,305,527",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cancelled",
+     "",
+     "(589,132)",
+     "",
+     "",
+     "-",
+     "",
+     "(589,132)",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2019",
+     "",
+     "5,730,522",
+     "",
+     "",
+     "7,717,123",
+     "",
+     "13,447,645",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,598,188",
+     "",
+     "",
+     "500,000",
+     "",
+     "2,098,188",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "(2,665,526)",
+     "",
+     "",
+     "2,665,526",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cancelled",
+     "",
+     "(450,000)",
+     "",
+     "",
+     "-",
+     "",
+     "(450,000)",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2020",
+     "",
+     "4,213,183",
+     "",
+     "",
+     "10,882,649",
+     "",
+     "15,095,833",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "The following table summarizes information about vested and unvested options under the 2016 Plan at March 31, 2020 and June 30, 2019:",
+   "prose_after": "Unvested options will be expensed under the Black-Scholes options-pricing model when they vest. As of March 31, 2020, the remaining options to be expensed when vested over the next two and a half years are estimated to be $517,513.\nAt March 31, 2020, the Company has issued options pursuant to six different stock option plans, the most recent being the 2016 Plan. The previous five plans through and including the 2012 Non-Statutory Plan have a remaining total of options vested and exercisable to purchase 13 shares at exercise prices from a high of $13,500 to a low of $350 per share. The tables below summarize information about these five plans:\n(15) STOCK OPTIONS (Continued)",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Employees/Consultants",
+     "Options",
+     "",
+     "",
+     "Wtd. Avg.\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2018",
+     "",
+     "13",
+     "",
+     "$",
+     "1,210"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(.31)",
+     "",
+     "$",
+     "6,083"
+    ],
+    [
+     "Outstanding at June 30, 2019",
+     "",
+     "13",
+     "",
+     "$",
+     "976"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Outstanding at March 31, 2020",
+     "",
+     "13",
+     "",
+     "$",
+     "976"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "Unvested options will be expensed under the Black-Scholes options-pricing model when they vest. As of March 31, 2020, the remaining options to be expensed when vested over the next two and a half years are estimated to be $517,513.\nAt March 31, 2020, the Company has issued options pursuant to six different stock option plans, the most recent being the 2016 Plan. The previous five plans through and including the 2012 Non-Statutory Plan have a remaining total of options vested and exercisable to purchase 13 shares at exercise prices from a high of $13,500 to a low of $350 per share. The tables below summarize information about these five plans:\n(15) STOCK OPTIONS (Continued)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Vested & Exercisable Stock Options",
+     "March 31, 2020",
+     "",
+     "June 30, 2019",
+     ""
+    ],
+    [
+     "Employee 2016 Equity Plan",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Director 2016 Equity Plan",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Employee Other Plans",
+     "",
+     "13",
+     "",
+     "13"
+    ],
+    [
+     "Directors and Consultants Other Plans",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "",
+     "13",
+     "",
+     "13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 901,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Controls and Procedures                                                                                                31"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The Company\u2019s common stock, symbol IMDS, was quoted on OTCmarkets.com Pink until September 25, 2014 at which time IDSI\u2019s registration was revoked by the Securities and Exchange Commission (SEC) for failure to timely file its Quarterly and Annual Reports. The last quoted price was $0.1. Because the Company was de-registered and OTC markets did not provide a quote for IMDS, there is no public market for the Company\u2019s shares. Given the exercise prices adjusted for the reverse split, it is highly unlikely that any employee holding pre-2016 Plan options will exercise them. The Company has sufficient authorized shares available for all outstanding option; however, if exercised, the shares will be issued with a restrictive legend because the Company was not an SEC reporting company until October 2018. Further, given its recent return to SEC reporting status, the Company is unable to file an S-8 Registration Statement to register shares issued because of option exercise pursuant to various stock option agreements.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: May 15, 2020",
+     "Imaging Diagnostic Systems, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ David Fong"
+    ],
+    [
+     "",
+     "",
+     "David Fong"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(PRINCIPAL ACCOUNTING OFFICER)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Item 3. Defaults Upon Senior Securities.\nNone\nItem 4. (Mine Safety Disclosures)\nNot Applicable\nItem 5. Other Information\nNone\nItem 6. Exhibits\n31.1 Certification by Chief Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2 Certification by Chief Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1 Certification by Chief Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2 Certification by Chief Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1172,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5969 @@
+{
+ "accession": "0001493152-24-045890",
+ "cik": "0001789192",
+ "form": "10-Q",
+ "filing_date": "2024-11-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "26-4684680"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2024\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to ____________\nCommission File No. 001-40403\nN2OFF, INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HaPardes 134 (Meshek Sander)",
+     ""
+    ],
+    [
+     "Neve Yarak, Israel",
+     "4994500"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "HaPardes 134 (Meshek Sander)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(347) 468 9583"
+    ],
+    [
+     "(Registrant\u2019s telephone number, including area code)"
+    ]
+   ],
+   "caption_stack": [
+    "(347) 468 9583",
+    "(Registrant\u2019s telephone number, including area code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.0001 per share",
+     "NITO",
+     "The Nasdaq Capital Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Forward-Looking Statements",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Interim Financial Statements (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Interim Balance Sheets (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Interim Statements of Comprehensive Loss (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Interim Statements of Stockholders\u2019 Equity (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Interim Statements of Cash Flows (unaudited)",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Interim Financial Statements",
+     "10-22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Control and Procedures",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "35"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n[ ]  Large accelerated filer  [ ]  Accelerated filer\n[X]  Non-accelerated filer    [X]  Smaller reporting company\n[X]  Emerging growth company\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of November 14, 2024, the registrant had 11,408,237 shares of common stock outstanding.\nQuarterly Report on Form 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nCertain information set forth in this Quarterly Report on Form 10-Q (the \u201cQuarterly Report\u201d) including in Item 2, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and elsewhere herein may address or relate to future events and expectations and as such constitutes \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995 (set forth in Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). Statements which are not historical reflect our current expectations and projections about our future results, performance, liquidity, financial condition, prospects and opportunities and are based upon information currently available to us and our management and their interpretation of what is believed to be significant factors affecting our business, including many assumptions regarding future events. Such forward-looking statements include statements regarding, among other things:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "2,749,851",
+     "",
+     "",
+     "4,447,003",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "23,130",
+     "",
+     "",
+     "31,171",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful account of $44,549 and $64,031 as of September 30, 2024 and December 31, 2023, respectively.",
+     "",
+     "154,185",
+     "",
+     "",
+     "107,007",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "50,914",
+     "",
+     "",
+     "121,513",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "351,972",
+     "",
+     "",
+     "719,389",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "41,085",
+     "",
+     "",
+     "39,538",
+     ""
+    ],
+    [
+     "Total Current assets",
+     "",
+     "3,371,137",
+     "",
+     "",
+     "5,465,621",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term prepaid expenses",
+     "",
+     "153,008",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Right-of-use asset arising from operating lease",
+     "",
+     "17,318",
+     "",
+     "",
+     "56,568",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "51,322",
+     "",
+     "",
+     "66,581",
+     ""
+    ],
+    [
+     "Investment in nonconsolidated affiliate (Note 3)",
+     "",
+     "1,001,625",
+     "",
+     "",
+     "1,655,461",
+     ""
+    ],
+    [
+     "Long term loans (Note 4)",
+     "",
+     "438,846",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Solar PV joint venture project (Note 4)",
+     "",
+     "788,341",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "5,821,597",
+     "",
+     "",
+     "7,244,231",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "32,842",
+     "",
+     "",
+     "43,539",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "484,592",
+     "",
+     "",
+     "734,933",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "517,434",
+     "",
+     "",
+     "778,472",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "1,330",
+     "",
+     "",
+     "7,181",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "518,764",
+     "",
+     "",
+     "785,653",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $ 0.0001 par value (\u201cCommon Stock\u201d):\n495,000,000 shares authorized as of September 30, 2024 and December 31, 2023; issued and outstanding 9,580,515 and 2,955,490 shares as of September 30, 2024 and December 31, 2023, respectively.",
+     "",
+     "958",
+     "",
+     "",
+     "296",
+     ""
+    ],
+    [
+     "Preferred stock, $ 0.0001 par value (\u201cPreferred Stock\u201d):\n5,000,000 shares authorized as of September 30, 2024 and December 31, 2023; no shares issued and outstanding as of September 30, 2024 and December 31, 2023.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "38,646,023",
+     "",
+     "",
+     "35,866,223",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(26,275)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(33,180,457)",
+     "",
+     "",
+     "(29,360,235)",
+     ""
+    ],
+    [
+     "Total Company\u2019s stockholders\u2019 equity",
+     "",
+     "5,440,249",
+     "",
+     "",
+     "6,480,009",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "",
+     "(137,416)",
+     "",
+     "",
+     "(21,431)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "5,302,833",
+     "",
+     "",
+     "6,458,578",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "5,821,597",
+     "",
+     "",
+     "7,244,231",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": null
+   },
+   "prose_before": "These statements are only predictions and involve known and unknown risks, uncertainties and other factors. Readers are urged to carefully review and consider the various disclosures made by us in this Quarterly Report and in our other reports filed with the Securities and Exchange Commission (the \u201cSEC\u201d). We undertake no obligation to update or revise forward-looking statements to reflect changed assumptions, the occurrence of unanticipated events or changes in future operating results over time except as required by law. We believe that our assumptions are based upon reasonable data derived from and known about our business and operations. No assurances are made that actual results of operations or the results of our future activities will not differ materially from our assumptions.\nOn March 19, 2024, we changed our name from \u201cSave Foods, Inc.\u201d to \u201cN2OFF, Inc.\u201d. Accordingly, all such references in this Quarterly Report have been changed to reflect our new name. In connection with such name change, on the same date, we changed our trading symbol from \u201cSVFD\u201d to \u201cNITO\u201d.\nAs used in this Quarterly Report and unless otherwise indicated, the terms \u201cN2OFF,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d or \u201cour Company\u201d refer to N2OFF, Inc., Save Foods Ltd., our 98.48% owned subsidiary, and NTWO OFF Ltd., our 60% owned subsidiary.\nUnless noted otherwise, all references to the number of shares of common stock, stock option and per share information in this Quarterly Report reflect the 1:7 reverse stock split of our common stock that became effective on October 5, 2023.\nItem 1. Financial Statements\nUNAUDITED CONDENSED CONSOLIDATED INTERIM BALANCE SHEETS\n(U.S. dollars except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF COMPREHENSIVE LOSS\n(U.S. dollars except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues from sales of products",
+     "",
+     "69,481",
+     "",
+     "",
+     "157,618",
+     "",
+     "",
+     "9,104",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "(110,523)",
+     "",
+     "",
+     "(70,229)",
+     "",
+     "",
+     "(76,761)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "(41,042)",
+     "",
+     "",
+     "87,389",
+     "",
+     "",
+     "(67,657)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "",
+     "(249,966)",
+     "",
+     "",
+     "(1,828,970)",
+     "",
+     "",
+     "(122,410)",
+     "",
+     "",
+     "(1,693,205)",
+     ""
+    ],
+    [
+     "Selling and marketing expenses",
+     "",
+     "(179,094)",
+     "",
+     "",
+     "(217,907)",
+     "",
+     "",
+     "(64,815)",
+     "",
+     "",
+     "(60,462)",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(2,844,967)",
+     "",
+     "",
+     "(3,481,408)",
+     "",
+     "",
+     "(1,294,913)",
+     "",
+     "",
+     "(1,103,257)",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(3,315,069)",
+     "",
+     "",
+     "(5,440,896)",
+     "",
+     "",
+     "(1,549,795)",
+     "",
+     "",
+     "(2,856,924)",
+     ""
+    ],
+    [
+     "Financing income (expenses), net",
+     "",
+     "(117,335)",
+     "",
+     "",
+     "43,666",
+     "",
+     "",
+     "(41,215)",
+     "",
+     "",
+     "10,579",
+     ""
+    ],
+    [
+     "Other income, net (Note 5(1))",
+     "",
+     "353,033",
+     "",
+     "",
+     "12,294",
+     "",
+     "",
+     "247,808",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in fair value of an investment in an associate measured under the fair value option (Notes 3)",
+     "",
+     "(856,836)",
+     "",
+     "",
+     "(87,576)",
+     "",
+     "",
+     "(970,505)",
+     "",
+     "",
+     "(189,683)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(3,936,207)",
+     "",
+     "",
+     "(5,472,512)",
+     "",
+     "",
+     "(2,313,707)",
+     "",
+     "",
+     "(3,036,028)",
+     ""
+    ],
+    [
+     "Less: net loss attributable to non-controlling interests",
+     "",
+     "115,985",
+     "",
+     "",
+     "683,733",
+     "",
+     "",
+     "50,497",
+     "",
+     "",
+     "670,432",
+     ""
+    ],
+    [
+     "Net loss attributable to the Company\u2019s stockholders\u2019 equity",
+     "",
+     "(3,820,222)",
+     "",
+     "",
+     "(4,788,779)",
+     "",
+     "",
+     "(2,263,210)",
+     "",
+     "",
+     "(2,365,596)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share (basic and diluted)",
+     "",
+     "(0.94)",
+     "",
+     "",
+     "(4.69)",
+     "",
+     "",
+     "(0.39)",
+     "",
+     "",
+     "(1.78)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number of shares of Common Stock outstanding",
+     "",
+     "4,069,690",
+     "",
+     "",
+     "1,020,339",
+     "(*)",
+     "",
+     "5,820,287",
+     "",
+     "",
+     "1,331,070",
+     "(*)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 227,
+    "end_line": 263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF COMPREHENSIVE LOSS\n(U.S. dollars except share and per share data)",
+   "prose_after": "(*) Adjusted to reflect one (1) for seven (7) reverse stock split in October 2023 (see note 1B).\nThe accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(U.S. dollars, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 268,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of shares",
+     "",
+     "Amount",
+     "",
+     "Additional paid-in capital",
+     "",
+     "Foreign currency translation adjustments",
+     "",
+     "",
+     "Accumulated deficit",
+     "",
+     "",
+     "Total Company\u2019s stockholders\u2019 equity",
+     "",
+     "",
+     "Non-controlling interests",
+     "",
+     "",
+     "Total equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE AT DECEMBER 31, 2023",
+     "",
+     "2,955,490",
+     "",
+     "296",
+     "",
+     "35,866,223",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(29,360,235)",
+     "",
+     "",
+     "6,480,009",
+     "",
+     "",
+     "(21,431)",
+     "",
+     "",
+     "6,458,578",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for standby equity purchase agreement II",
+     "",
+     "28,333",
+     "",
+     "3",
+     "",
+     "39,947",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,950",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,950",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "4,794",
+     "",
+     "-",
+     "",
+     "23,738",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "23,738",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "23,738",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(769,564)",
+     "",
+     "",
+     "(769,564)",
+     "",
+     "",
+     "(52,794)",
+     "",
+     "",
+     "(822,358)",
+     ""
+    ],
+    [
+     "BALANCE AT MARCH 31, 2024",
+     "",
+     "2,988,617",
+     "",
+     "299",
+     "",
+     "35,929,908",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(30,129,799)",
+     "",
+     "",
+     "5,774,133",
+     "",
+     "",
+     "(74,225)",
+     "",
+     "",
+     "5,699,908",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for standby equity purchase agreement II",
+     "",
+     "1,142,480",
+     "",
+     "114",
+     "",
+     "936,980",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "937,094",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "937,094",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "30,000",
+     "",
+     "3",
+     "",
+     "48,811",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "48,814",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "48,814",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(787,448)",
+     "",
+     "",
+     "(787,448)",
+     "",
+     "",
+     "(12,694)",
+     "",
+     "",
+     "(800,142)",
+     ""
+    ],
+    [
+     "BALANCE AT JUNE 30, 2024",
+     "",
+     "4,161,097",
+     "",
+     "416",
+     "",
+     "36,915,699",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(30,917,247)",
+     "",
+     "",
+     "5,972,593",
+     "",
+     "",
+     "(86,919)",
+     "",
+     "",
+     "5,885,674",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for standby equity purchase agreement II",
+     "",
+     "3,718,132",
+     "",
+     "372",
+     "",
+     "1,245,826",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,246,198",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,246,198",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "1,701,286",
+     "",
+     "170",
+     "",
+     "484,498",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "484,668",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "484,668",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(2,263,210)",
+     "",
+     "",
+     "(2,263,210)",
+     "",
+     "",
+     "(50,497)",
+     "",
+     "",
+     "(2,313,707)",
+     ""
+    ],
+    [
+     "BALANCE AT SEPTEMBER 30, 2024",
+     "",
+     "9,580,515",
+     "",
+     "958",
+     "",
+     "38,646,023",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(33,180,457)",
+     "",
+     "",
+     "5,440,249",
+     "",
+     "",
+     "(137,416)",
+     "",
+     "",
+     "5,302,833",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 274,
+    "end_line": 302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": null
+   },
+   "prose_before": "(*) Adjusted to reflect one (1) for seven (7) reverse stock split in October 2023 (see note 1B).\nThe accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(U.S. dollars, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(U.S. dollars, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 268,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 305,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of shares (*)",
+     "",
+     "Amount",
+     "",
+     "Additional paid-in capital",
+     "",
+     "",
+     "Foreign currency translation adjustments",
+     "",
+     "",
+     "Accumulated deficit",
+     "",
+     "",
+     "Total Company\u2019s stockholders\u2019 equity",
+     "",
+     "",
+     "Non-controlling interests",
+     "",
+     "",
+     "Total equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE AT DECEMBER 31, 2022",
+     "",
+     "688,272",
+     "",
+     "69",
+     "",
+     "28,710,412",
+     "",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(22,837,827)",
+     "",
+     "",
+     "5,846,379",
+     "",
+     "",
+     "(109,038)",
+     "",
+     "",
+     "5,737,341",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "6,288",
+     "",
+     "1",
+     "",
+     "67,613",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "67,614",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "67,614",
+     ""
+    ],
+    [
+     "Share based compensation to employees and directors",
+     "",
+     "142,860",
+     "",
+     "14",
+     "",
+     "691,005",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "691,019",
+     "",
+     "",
+     "201",
+     "",
+     "",
+     "691,220",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,713,678)",
+     "",
+     "",
+     "(1,713,678)",
+     "",
+     "",
+     "(7,871)",
+     "",
+     "",
+     "(1,721,549)",
+     ""
+    ],
+    [
+     "BALANCE AT MARCH 31, 2023",
+     "",
+     "837,420",
+     "",
+     "84",
+     "",
+     "29,469,030",
+     "",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(24,551,505)",
+     "",
+     "",
+     "4,891,334",
+     "",
+     "",
+     "(116,708)",
+     "",
+     "",
+     "4,774,626",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for exchange agreement",
+     "",
+     "166,340",
+     "",
+     "17",
+     "",
+     "826,688",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "826,705",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "826,705",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "135,926",
+     "",
+     "14",
+     "",
+     "670,226",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "670,240",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "670,240",
+     ""
+    ],
+    [
+     "Share based compensation to employees and directors",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,699",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,699",
+     "",
+     "",
+     "88",
+     "",
+     "",
+     "5,787",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(709,505)",
+     "",
+     "",
+     "(709,505)",
+     "",
+     "",
+     "(5,430)",
+     "",
+     "",
+     "(714,935)",
+     ""
+    ],
+    [
+     "BALANCE AT JUNE 30, 2023",
+     "",
+     "1,139,686",
+     "",
+     "115",
+     "",
+     "30,971,643",
+     "",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(25,261,010)",
+     "",
+     "",
+     "5,684,473",
+     "",
+     "",
+     "(122,050)",
+     "",
+     "",
+     "5,562,423",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for exchange agreement",
+     "",
+     "223,008",
+     "",
+     "22",
+     "",
+     "997,002",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "997,024",
+     "",
+     "",
+     "664,683",
+     "",
+     "",
+     "1,661,707",
+     ""
+    ],
+    [
+     "Issuance of shares to services providers",
+     "",
+     "56,640",
+     "",
+     "6",
+     "",
+     "302,817",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "302,823",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "302,823",
+     ""
+    ],
+    [
+     "Share based compensation to employees and directors",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,857",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,857",
+     "",
+     "",
+     "60",
+     "",
+     "",
+     "3,917",
+     ""
+    ],
+    [
+     "Issuance of shares for standby equity purchase agreement I",
+     "",
+     "26,224",
+     "",
+     "3",
+     "",
+     "122,985",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "122,988",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "122,988",
+     ""
+    ],
+    [
+     "Transactions with non-controlling interests",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(160,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(160,000)",
+     "",
+     "",
+     "160,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,365,596)",
+     "",
+     "",
+     "(2,365,596)",
+     "",
+     "",
+     "(670,432)",
+     "",
+     "",
+     "(3,036,028)",
+     ""
+    ],
+    [
+     "BALANCE AT SEPTEMBER 30, 2023",
+     "",
+     "1,445,558",
+     "",
+     "146",
+     "",
+     "32,238,304",
+     "",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(27,626,606)",
+     "",
+     "",
+     "4,585,569",
+     "",
+     "",
+     "32,261",
+     "",
+     "",
+     "4,617,830",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 311,
+    "end_line": 343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(U.S. dollars, except share and per share data)",
+   "prose_after": "(*) Adjusted to reflect one (1) for seven (7) reverse stock split in October 2023 (see note 1B).\nThe accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CASH FLOWS\n(U.S. dollars except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 305,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss for the period",
+     "",
+     "(3,936,207)",
+     "",
+     "",
+     "(5,472,512)",
+     ""
+    ],
+    [
+     "Adjustments required to reconcile net loss for the period to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "14,957",
+     "",
+     "",
+     "35,564",
+     ""
+    ],
+    [
+     "Issuance of shares to employees and services providers",
+     "",
+     "557,220",
+     "",
+     "",
+     "1,243,160",
+     ""
+    ],
+    [
+     "Non- cash expenses in the Yaaran purchase transaction",
+     "",
+     "-",
+     "",
+     "",
+     "1,661,707",
+     ""
+    ],
+    [
+     "Share based compensation to employees and directors",
+     "",
+     "-",
+     "",
+     "",
+     "18,164",
+     ""
+    ],
+    [
+     "Loss (gain) from sales of property and equipment",
+     "",
+     "189",
+     "",
+     "",
+     "(12,294)",
+     ""
+    ],
+    [
+     "Gain from standby equity purchase agreement II (Note 5(1))",
+     "",
+     "(353,221)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Expenses from standby equity purchase agreement II and promissory note (Note 5(1))",
+     "",
+     "147,019",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in fair value of investment in nonconsolidated affiliate",
+     "",
+     "856,836",
+     "",
+     "",
+     "87,576",
+     ""
+    ],
+    [
+     "Change in FV of long term loan",
+     "",
+     "(32,381)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income from solar project",
+     "",
+     "(24,648)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exchange rate differences on operating leases",
+     "",
+     "5,505",
+     "",
+     "",
+     "1,039",
+     ""
+    ],
+    [
+     "Decrease (increase) in accounts receivable, net",
+     "",
+     "(47,178)",
+     "",
+     "",
+     "146,831",
+     ""
+    ],
+    [
+     "Decrease (increase) in inventory",
+     "",
+     "70,599",
+     "",
+     "",
+     "(9,058)",
+     ""
+    ],
+    [
+     "Decrease in prepaid expenses and other current assets",
+     "",
+     "153,774",
+     "",
+     "",
+     "122,936",
+     ""
+    ],
+    [
+     "Decrease in accounts payable",
+     "",
+     "(4,664)",
+     "",
+     "",
+     "(12,470)",
+     ""
+    ],
+    [
+     "Decrease in other liabilities",
+     "",
+     "(330,480)",
+     "",
+     "",
+     "(65,027)",
+     ""
+    ],
+    [
+     "Change in operating lease asset",
+     "",
+     "39,250",
+     "",
+     "",
+     "48,940",
+     ""
+    ],
+    [
+     "Change in operating lease liability",
+     "",
+     "(43,718)",
+     "",
+     "",
+     "(53,425)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(2,927,148)",
+     "",
+     "",
+     "(2,258,869)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in nonconsolidated affiliate",
+     "",
+     "(203,000)",
+     "",
+     "",
+     "(1,542,348)",
+     ""
+    ],
+    [
+     "Long term loan",
+     "",
+     "(406,465)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Solar PV joint venture project",
+     "",
+     "(763,693)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of property and equipment",
+     "",
+     "114",
+     "",
+     "",
+     "22,789",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,373,044)",
+     "",
+     "",
+     "(1,519,559)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds on account of shares",
+     "",
+     "131,220",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from promissory note",
+     "",
+     "1,455,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments of promissory note",
+     "",
+     "(1,542,931)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from standby equity purchase agreement, net",
+     "",
+     "2,557,743",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,601,032",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "",
+     "(6,033)",
+     "",
+     "",
+     "8,486",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DECREASE IN CASH, CASH EQUIVALENTS AND RESTRICTED CASH",
+     "",
+     "(1,705,193)",
+     "",
+     "",
+     "(3,769,942)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, CASH EQUIVALENTS AND RESTRICTED CASH AT BEGINNING OF YEAR",
+     "",
+     "4,478,174",
+     "",
+     "",
+     "5,750,771",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, CASH EQUIVALENTS AND RESTRICTED CASH AT END OF PERIOD",
+     "",
+     "2,772,981",
+     "",
+     "",
+     "1,980,829",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non cash transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in nonconsolidated affiliate (see Note 3)",
+     "",
+     "-",
+     "",
+     "",
+     "826,705",
+     ""
+    ],
+    [
+     "Issuance of shares for future services",
+     "",
+     "-",
+     "",
+     "",
+     "603,262",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 354,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": null
+   },
+   "prose_before": "(*) Adjusted to reflect one (1) for seven (7) reverse stock split in October 2023 (see note 1B).\nThe accompanying notes are an integral part of the condensed consolidated interim financial statements.\nUNAUDITED CONDENSED CONSOLIDATED INTERIM STATEMENTS OF CASH FLOWS\n(U.S. dollars except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of the condensed consolidated interim financial statements\nNOTE 1 \u2013 GENERAL\nA. Operations\nN2OFF, Inc. (formerly Save Foods, Inc) (the \u201cCompany\u201d) was incorporated on April 1, 2009, under the laws of the State of Delaware.\nOn November 6, 2023, the Company entered into an Agreement and Plan of Merger (the \u201cMerger Agreement\u201d) with N2OFF, Inc., a newly formed Nevada corporation and its wholly owned subsidiary (the \u201cSurviving Corporation\u201d), pursuant to which, on the same date, the Company, as parent in this transaction, merged with and into the Surviving Corporation (the \u201cReincorporation Merger\u201d). The Reincorporation Merger was approved by the Company\u2019s stockholders on October 2, 2023 and became effective on The Nasdaq Capital Market on November 10, 2023. Upon the consummation of the Reincorporation Merger, the Company ceased its legal existence as a Delaware corporation, and the Surviving Corporation continued Company\u2019s business as the surviving corporation. On February 8, 2024, the Company\u2019s stockholders approved the Company\u2019s name change to \u201cN2OFF, Inc.\u201d which became effective on The Nasdaq Capital Market on March 19, 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "US$",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in Plantify",
+     "",
+     "314,235",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "314,235"
+    ],
+    [
+     "Credit Facility",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "98,879",
+     "",
+     "98,879"
+    ],
+    [
+     "Convertible loans to Plantify",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "588,511",
+     "",
+     "588,511"
+    ],
+    [
+     "Convertible loans to Solterra",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "438,846",
+     "",
+     "438,846"
+    ],
+    [
+     "Solar PV joint venture project",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "788,341",
+     "",
+     "788,341"
+    ],
+    [
+     "Total assets",
+     "",
+     "314,235",
+     "",
+     "-",
+     "",
+     "1,914,577",
+     "",
+     "2,228,812"
+    ]
+   ],
+   "caption_stack": [
+    "As of September 30, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "Level 3: Unobservable inputs for the asset or liability that are supported by little or no market activity, and that are significant to the fair values.\nFair value measurements are required to be disclosed by the level within the fair value hierarchy in which the fair value measurements in their entirety fall. Fair value measurements using significant unobservable inputs (in level 3 measurements) are subject to expanded disclosure requirements including a reconciliation of the beginning and ending balances, separately presenting changes during the period attributable to the following: (i) total gains or losses for the period (realized and unrealized), (ii) segregating those gains or losses included in earnings, and (iii) a description of where those gains or losses included in earning are reported in the statement of operations.\nThe Company\u2019s financial assets that are measured at fair value on a recurring basis by level within the fair value hierarchy are as follows:\nSCHEDULE OF FAIR VALUE ASSETS ON RECURRING BASIS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "US$",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in Plantify",
+     "",
+     "641,561",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "641,561"
+    ],
+    [
+     "Convertible loan",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,013,900",
+     "",
+     "1,013,900"
+    ],
+    [
+     "Total assets",
+     "",
+     "641,561",
+     "",
+     "-",
+     "",
+     "1,013,900",
+     "",
+     "1,655,461"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Fair value (continued)\nThe following table presents the changes in fair value of the level 1 assets for the period December 31, 2023 through September 30, 2024:\nSCHEDULE OF CHANGES IN FAIR VALUE OF ASSETS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Changes in Fair value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "US$",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "",
+     "641,561",
+     ""
+    ],
+    [
+     "Changes in fair value",
+     "",
+     "(327,326)",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2024",
+     "",
+     "314,235",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Changes in Fair value",
+    "US$",
+    "Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "Fair value (continued)\nThe following table presents the changes in fair value of the level 1 assets for the period December 31, 2023 through September 30, 2024:\nSCHEDULE OF CHANGES IN FAIR VALUE OF ASSETS",
+   "prose_after": "The following table presents the changes in fair value of the level 3 assets for the period December 31, 2023 through September 30, 2024:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Changes in Fair value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "US$",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "",
+     "1,013,900",
+     ""
+    ],
+    [
+     "Credit facility to Plantify",
+     "",
+     "203,000",
+     ""
+    ],
+    [
+     "Loan Granted",
+     "",
+     "406,465",
+     ""
+    ],
+    [
+     "Solar project",
+     "",
+     "763,693",
+     ""
+    ],
+    [
+     "Changes in fair value",
+     "",
+     "(472,481)",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2024",
+     "",
+     "1,914,577",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Changes in Fair value",
+    "US$",
+    "Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES AND BASIS OF PRESENTATION"
+    }
+   },
+   "prose_before": "The following table presents the changes in fair value of the level 3 assets for the period December 31, 2023 through September 30, 2024:",
+   "prose_after": "Accounting Standards Updates Issued, but Not Adopted\nSegment Reporting: In November 2023, the FASB issued ASU 2023-07, Segment Reporting (Topic 280): Improvements to Reportable Segment Disclosures. These amendments require, among other things, that a public entity that has a single reportable segment provide all the disclosures required by the amendments in this ASU and all existing segment disclosures in Topic 208. This ASU is effective for fiscal years beginning after December 15, 2023, and interim periods within fiscal years beginning after December 15, 2024. Early adoption is permitted. A public entity should apply the amendments retrospectively to all periods presented in the financial statements.\nIncome Taxes: In December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures. The amendments in this ASU add specific requirements for income tax disclosures to improve transparency and decision usefulness. The guidance in ASU 2023-09 requires that public business entities disclose specific categories in the income tax rate reconciliation and provide additional qualitative information for reconciling items that meet a quantitative threshold. In addition, the amendments in ASU 2023-09 require that all entities disclose the amount of income taxes paid disaggregated by federal, state, and foreign taxes and disaggregated by individual jurisdictions. The ASU also includes other disclosure amendments related to the disaggregation of income tax expense between federal, state and foreign taxes. For public business entities, the amendments in this update are effective for annual periods beginning after December 15, 2024. Early adoption is permitted for annual financial statements that have not yet been issued or made available for issuance. The amendments in this update should be applied on a prospective basis and retrospective application is permitted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of the conversion feature",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility (%)",
+     "",
+     "135.70",
+     "%"
+    ],
+    [
+     "Risk-free interest rate (%)",
+     "",
+     "5.08",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Contractual term (years) (*)",
+     "",
+     "0.25",
+     ""
+    ],
+    [
+     "Conversion price (Canadian dollars)",
+     "",
+     "(US$0.04) C$0.054",
+     ""
+    ],
+    [
+     "Underlying share price (Canadian dollars)",
+     "",
+     "(US$0.01) C$0.01",
+     ""
+    ],
+    [
+     "Fair value (U.S. dollars)",
+     "$",
+     "900",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INVESTMENT IN NONCONSOLIDATED AFFILIATE"
+    }
+   },
+   "prose_before": "The Company determined that it has a significant influence over Plantify and such investment is accounted for under the equity method of accounting. At the initial recognition of the equity investment, the Company elected the fair value option where subsequent changes in fair value are recognized in earnings. If the fair value option is applied to an investment that would otherwise be accounted for under the equity method, the Company applies it to all its financial interests in the same entity (equity and debt, including guarantees) that are eligible items.\nThe equity investment in common shares of Plantify is classified within Level 1 in the fair value hierarchy as the valuation can be obtained from real time quotes in active markets, and is measured based on Plantify\u2019s closing stock price and prevailing foreign exchange rate at each balance sheet date and the changes in fair value are reflected in gain (loss) on equity investments, net in the consolidated statement of income.\nAs of December 31, 2024, the Company estimated the fair value of the conversion feature loan using the Black-Scholes option pricing model with assistance of a third-party appraiser. The assumptions used to perform the calculations are detailed below:\nNOTE 3 \u2013 INVESTMENT IN NONCONSOLIDATED AFFILIATE (continued)\nFair value of the conversion feature as of December 31, 2023:\nSCHEDULE OF FAIR VALUE CONVERSION",
+   "prose_after": "As of September 30, 2024, the Company estimated the value of the conversion feature as 0.\nThe Company estimated the fair value of the Debenture and Credit Facility as of September 30, 2024, using the Option Pricing Method (\u201cOPM\u201d) with the assistance of a third party appraiser. The OPM framework involves making assumptions for the equity value, expected time to liquidity, volatility and risk-free rate and is utilized to allocate value to the various classes of securities and loans of Plantify, including the Company\u2019s Debenture and Credit Facility. The equity fair value was calculated based on Plantify\u2019s quotes in active market as of September 30, 2024. The assumptions used to perform the calculations are detailed below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of the conversion feature",
+     "September 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility (%)",
+     "",
+     "106.6",
+     "%"
+    ],
+    [
+     "Risk-free interest rate (%)",
+     "",
+     "3.0",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Contractual term (years)",
+     "",
+     "1.5",
+     ""
+    ],
+    [
+     "Plantify\u2019s fair value (U.S. dollars)",
+     "$",
+     "1,427,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INVESTMENT IN NONCONSOLIDATED AFFILIATE"
+    }
+   },
+   "prose_before": "As of September 30, 2024, the Company estimated the value of the conversion feature as 0.\nThe Company estimated the fair value of the Debenture and Credit Facility as of September 30, 2024, using the Option Pricing Method (\u201cOPM\u201d) with the assistance of a third party appraiser. The OPM framework involves making assumptions for the equity value, expected time to liquidity, volatility and risk-free rate and is utilized to allocate value to the various classes of securities and loans of Plantify, including the Company\u2019s Debenture and Credit Facility. The equity fair value was calculated based on Plantify\u2019s quotes in active market as of September 30, 2024. The assumptions used to perform the calculations are detailed below:",
+   "prose_after": "For the nine and three months ended September 30, 2024, the Company recorded changes in fair value of an investment in an associate measured of $856,836 and $970,505, respectively under the fair value option of comprehensive loss.\nThe following tables present Plantify\u2019s summarized financial information.\nSCHEDULE OF EQUITY INVESTMENT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended \n\n\n\nSeptember 30, 2024",
+     "",
+     "",
+     "Three months ended\n\n\n\nSeptember 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "357,000",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Gross loss",
+     "",
+     "(186,000)",
+     "",
+     "",
+     "(63,000)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(1,920,000)",
+     "",
+     "",
+     "(367,000)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 670,
+    "end_line": 680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INVESTMENT IN NONCONSOLIDATED AFFILIATE"
+    }
+   },
+   "prose_before": "For the nine and three months ended September 30, 2024, the Company recorded changes in fair value of an investment in an associate measured of $856,836 and $970,505, respectively under the fair value option of comprehensive loss.\nThe following tables present Plantify\u2019s summarized financial information.\nSCHEDULE OF EQUITY INVESTMENT",
+   "prose_after": "NOTE 4 \u2013 EVENTS DURING THE PERIOD\n1. On June 30, 2024, the Company entered into a Loan Agreement (the \u201cLoan Agreement\u201d) with Solterra Renewable Energy Ltd. (\u201cSolterra\u201d) and certain other lenders (collectively, the \u201cLenders\u201d) pursuant to which the Lenders committed to loan Solterra the aggregate principal amount of \u20ac 500,000 (approximately $541,541) (\u20ac 375,000 (approximately $406,156) of which was committed by the Company) with interest accruing on the principal at the rate of 7% per annum, to be paid annually beginning June 30, 2025. In the event the loan is not converted or repaid in full within 9 months from the closing date of the merger currently expected to occur with AI Conversation Systems Ltd., an Israeli company, then the interest rate shall increase from 7% to 12% per year. On July 8, 2024, the Company transferred \u20ac375,000 (approximately $406,156). The Company estimated the fair value of the Loan Agreement using a third-party appraiser by discounting the principal and interest at a discount rate of market interest for similar loans. The interest rate was determined, among other things, based on the other similar loans granted to Solterra, at 23.6% as of September 30, 2024. The Company calculated the Loan Agreement at $438,846 as of September 30, 2024. The Company\u2019s chairman of the board of directors is also a shareholder and director of AI Conversation Systems Ltd., that may merge with Solterra.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "",
+     "27,518",
+     "",
+     "23.69"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding at September 30, 2024",
+     "",
+     "27,518",
+     "",
+     "23.69"
+    ],
+    [
+     "Number of options exercisable at September 30, 2024",
+     "",
+     "27,518",
+     "",
+     "23.69"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 745,
+    "end_line": 759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "5. On August 21, 2024 the Company issued a one-time bonus of 10,000 shares of common stock to a director of Save Foods Ltd. in connection with his departure from Save Foods Ltd. The shares were estimated at $2,850 based on the share price of the common stock on date of termination agreement.\n6. On September 9, 2024, the Board of directors of the Company approved the issuance of an equity grant to executive officers and consultants amounting to a total of 1,690,000 shares of common stock, par value $0.0001. The Company estimated the value of the shares issued at $463,905 based on the share price of the date of the board resolution. The value of the shares issued was recorded as share base compensation expenses during the nine months ended September 30, 2024.\n7. During the nine months ended September 30, 2024, the Company recorded share based compensation expenses in General and Administrative expenses in the amount of $256,699 related to shares issued by the Company to service providers during the year ended December 31, 2023.\nNOTE 6 \u2013 STOCK OPTIONS\nThe following table presents the Company\u2019s stock option activity for employees and directors of the Company for the nine months ended September 30, 2024:\nSCHEDULE OF STOCK OPTION ACTIVITY",
+   "prose_after": "The aggregate intrinsic value of the awards outstanding as of September 30, 2024 was $0. These amounts represent the total intrinsic value, based on the Company\u2019s stock price of $0.25 as of September 30, 2024, less the weighted exercise price. This represents the potential amount received by the option holders had all option holders exercised their options as of that date.\nCosts incurred in respect of stock-options compensation for employees and directors, for the nine months ended September 30, 2024 and 2023 were $0 and $18,164, respectively and $0 and $3,917, for the three months ended September 30, 2024 and 2023, respectively.\nNOTE 7 \u2013 RELATED PARTIES\nSCHEDULE OF TRANSACTIONS AND BALANCES WITH RELATED PARTIES\nA. Transactions and balances with related parties",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "General and administrative expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors\u2019 compensation",
+     "",
+     "273,874",
+     "",
+     "317,502"
+    ],
+    [
+     "Salaries and fees to officers",
+     "",
+     "518,379",
+     "",
+     "798,663"
+    ],
+    [
+     "",
+     "",
+     "(*) 792,253",
+     "",
+     "(*) 1,116,165"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(*) of which share based compensation",
+     "",
+     "175,680",
+     "",
+     "497,905"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and fees to officers",
+     "",
+     "-",
+     "",
+     "33,417"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and fees to officers",
+     "",
+     "-",
+     "",
+     "33,417"
+    ]
+   ],
+   "caption_stack": [
+    "Nine months ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 RELATED PARTIES"
+    }
+   },
+   "prose_before": "The aggregate intrinsic value of the awards outstanding as of September 30, 2024 was $0. These amounts represent the total intrinsic value, based on the Company\u2019s stock price of $0.25 as of September 30, 2024, less the weighted exercise price. This represents the potential amount received by the option holders had all option holders exercised their options as of that date.\nCosts incurred in respect of stock-options compensation for employees and directors, for the nine months ended September 30, 2024 and 2023 were $0 and $18,164, respectively and $0 and $3,917, for the three months ended September 30, 2024 and 2023, respectively.\nNOTE 7 \u2013 RELATED PARTIES\nSCHEDULE OF TRANSACTIONS AND BALANCES WITH RELATED PARTIES\nA. Transactions and balances with related parties",
+   "prose_after": "(*) of which share based compensation\nB. Balances with related parties and officers:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30,",
+     "",
+     "As of December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other accounts payables",
+     "",
+     "86,669",
+     "",
+     "139,117"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 804
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 RELATED PARTIES"
+    }
+   },
+   "prose_before": "(*) of which share based compensation\nB. Balances with related parties and officers:",
+   "prose_after": "NOTE 8 \u2013 SEGMENT REPORTING\nA. Information about reported segment profit or loss and assets\nThe Company has two reportable segments: (i) Pathogen prevention and prolong shelf life, and (ii) the N2O emissions Global warming solutions. The Pathogen prevention operating segment consists of Save Food Ltd. and the Global warming solutions operating segment consists of NTWO OFF Ltd.\nInformation related to the operations of the Company\u2019s reportable operating segments is set forth below:\nSCHEDULE OF INFORMATION RELATED TO OPERATIONS OF REPORTABLE OPERATING SEGMENTS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pathogen prevention",
+     "",
+     "",
+     "Global warming solutions",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Nine months ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "69,481",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "69,481",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(830,372)",
+     "",
+     "",
+     "(250,698)",
+     "",
+     "",
+     "(1,081,070)",
+     ""
+    ],
+    [
+     "Unallocated amounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unallocated costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,223,999)",
+     ""
+    ],
+    [
+     "Total operating loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,315,069)",
+     ""
+    ],
+    [
+     "Financing expenses, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(117,335)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "353,033",
+     ""
+    ],
+    [
+     "Changes in fair value of an investment in an associate measured under the fair value option",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(856,836)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,936,207)",
+     ""
+    ],
+    [
+     "Three months ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "9,104",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,104",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(355,811)",
+     "",
+     "",
+     "(113,948)",
+     "",
+     "",
+     "(469,759)",
+     ""
+    ],
+    [
+     "Unallocated amounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unallocated costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,080,036)",
+     ""
+    ],
+    [
+     "Total operating loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,549,795)",
+     ""
+    ],
+    [
+     "Financing expenses, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(41,215)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "247,808",
+     ""
+    ],
+    [
+     "Changes in fair value of an investment in an associate measured under the fair value option",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(970,505)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,313,707)",
+     ""
+    ],
+    [
+     "Nine months ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "157,618",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "157,618",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(915,374)",
+     "",
+     "",
+     "(1,675,505)",
+     "",
+     "",
+     "(2,590,879)",
+     ""
+    ],
+    [
+     "Unallocated amounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unallocated costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,850,017)",
+     ""
+    ],
+    [
+     "Total operating loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,440,896)",
+     ""
+    ],
+    [
+     "Financing income, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "43,666",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12,294",
+     ""
+    ],
+    [
+     "Changes in fair value of an investment in an associate measured under the fair value option",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(87,576)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,472,512)",
+     ""
+    ],
+    [
+     "Three months ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(303,487)",
+     "",
+     "",
+     "(1,675,505)",
+     "",
+     "",
+     "(1,978,992)",
+     ""
+    ],
+    [
+     "Unallocated amounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unallocated costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(877,932)",
+     ""
+    ],
+    [
+     "Total operating loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,856,924)",
+     ""
+    ],
+    [
+     "Financing income, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,579",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in fair value of an investment in an associate measured under the fair value option",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(189,683)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,036,028)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "NOTE 8 \u2013 SEGMENT REPORTING\nA. Information about reported segment profit or loss and assets\nThe Company has two reportable segments: (i) Pathogen prevention and prolong shelf life, and (ii) the N2O emissions Global warming solutions. The Pathogen prevention operating segment consists of Save Food Ltd. and the Global warming solutions operating segment consists of NTWO OFF Ltd.\nInformation related to the operations of the Company\u2019s reportable operating segments is set forth below:\nSCHEDULE OF INFORMATION RELATED TO OPERATIONS OF REPORTABLE OPERATING SEGMENTS",
+   "prose_after": "B. Information on sales by geographic distribution:\nSales are attributed to geographic distribution based on the location of the customer.\nSCHEDULE OF INFORMATION ON SALES BY GEOGRAPHIC DISTRIBUTION",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Israel",
+     "",
+     "27,629",
+     "",
+     "5,221",
+     "",
+     "8,326",
+     "",
+     "-"
+    ],
+    [
+     "United States",
+     "",
+     "39,752",
+     "",
+     "41,554",
+     "",
+     "778",
+     "",
+     "-"
+    ],
+    [
+     "Mexico",
+     "",
+     "-",
+     "",
+     "109,824",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Peru",
+     "",
+     "2,100",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Turkey",
+     "",
+     "-",
+     "",
+     "1,019",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Revenues from sales",
+     "",
+     "69,481",
+     "",
+     "157,618",
+     "",
+     "9,104",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "B. Information on sales by geographic distribution:\nSales are attributed to geographic distribution based on the location of the customer.\nSCHEDULE OF INFORMATION ON SALES BY GEOGRAPHIC DISTRIBUTION",
+   "prose_after": "C. Sales to single customers exceeding 10% of sales (US$):\nSCHEDULE OF SALES TO CUSTOMERS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended September 30,",
+     "",
+     "",
+     "",
+     "Three months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "-",
+     "",
+     "109,824",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Customer B",
+     "",
+     "38,974",
+     "",
+     "41,554",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Customer C",
+     "",
+     "16,946",
+     "",
+     "-",
+     "",
+     "3,911",
+     "",
+     "-"
+    ],
+    [
+     "Revenues from sales",
+     "",
+     "55,920",
+     "",
+     "151,378",
+     "",
+     "3,911",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 908,
+    "end_line": 920
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "C. Sales to single customers exceeding 10% of sales (US$):\nSCHEDULE OF SALES TO CUSTOMERS",
+   "prose_after": "D. Information on Long-Lived Assets - Property, Plant and Equipment and ROU assets by geographic areas:\nThe following table presents the locations of the Company\u2019s long-lived assets as of September 30, 2024 and December 31, 2023:\nSCHEDULE OF INFORMATION ON LONG LIVED ASSETS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30,",
+     "",
+     "As of December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Israel",
+     "",
+     "53,555",
+     "",
+     "102,103"
+    ],
+    [
+     "United States",
+     "",
+     "15,085",
+     "",
+     "21,046"
+    ],
+    [
+     "Property, plant and equipment and ROU assets",
+     "",
+     "68,640",
+     "",
+     "123,149"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Interim Financial Statements (unaudited)                           5"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "D. Information on Long-Lived Assets - Property, Plant and Equipment and ROU assets by geographic areas:\nThe following table presents the locations of the Company\u2019s long-lived assets as of September 30, 2024 and December 31, 2023:\nSCHEDULE OF INFORMATION ON LONG LIVED ASSETS",
+   "prose_after": "NOTE 9 \u2013 SUBSEQUENT EVENTS\n1. During October 2024, the Company issued 1,777,722 shares of common stock to the Investor pursuant to the terms of the SEPA II for consideration of $577,002. Following such issuance the Company issued the Investor an aggregate of 6,666,667 shares of common stock under the SEPA II agreement which is the maximum allowed to be issued under the Company\u2019s resale registration statement on Form S-1/A effective February 6, 2024. See also Note 5(1).\n2. On October 1, 2024, the Company entered into a facility agreement with L.I.A. Pure Capital Ltd. (the \u201cLender\u201d) for financing of up to EUR 6,000,000 (the \u201cPure Capital Credit Facility\u201d), EUR 2,000,000 of which may be used to finance one project in Germany, and the remaining EUR 4,000,000 for any other projects subject to pre-approval by the Lender.\nInterest under the Pure Capital Credit Facility will accrue at the rate of 7% per annum and is payable in advance by the Company and deducted from each drawdown for a period of twenty-four months.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. dollars in thousands, except share and per share data",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues from sales of products",
+     "",
+     "69,481",
+     "",
+     "",
+     "157,618",
+     "",
+     "",
+     "9,104",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "(110,523)",
+     "",
+     "",
+     "(70,229)",
+     "",
+     "",
+     "(76,761)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "(41,042)",
+     "",
+     "",
+     "87,389",
+     "",
+     "",
+     "(67,657)",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1014,
+    "end_line": 1028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "If we do not have sufficient authorized and unreserved shares of common stock to cover the exercise of the Warrant, we will be required to obtain stockholder approval within sixty days to increase its authorized shares. If we cannot deliver the required common stock upon exercise, the Lender will be entitled to demand cash compensation based on the Black Scholes Value of the Warrant.\nThe Lender is entitled to certain purchase rights with respect to Warrant Shares which the Lender could have acquired upon the exercise of the Warrant. We may not enter into a fundamental transaction, as described in the Warrant, unless the successor entity assumes our obligations under the Warrant. The Lender may also request that we buy back the Warrant calculated using a Black Scholes option pricing model in cash.\nPursuant to the Facility Agreement, we must file a resale registration statement with SEC within 75 days of the date of the Facility Agreement to register the Warrant Shares and must use reasonable efforts to have the registration statement declared effective by the SEC within 90 days of filing.\nResults of Operations\nRevenues and Cost of Revenues\nOur total revenues consist of the sale of products and our cost of revenues consists of cost of products.\nThe following table sets forth our revenues and costs of revenues:",
+   "prose_after": "Operating Expenses\nOur operating expenses consist of three components \u2014 research and development expenses, selling and marketing expenses and general and administrative expenses.\nResearch and Development Expenses\nOur research and development expenses consist primarily of professional fees and other related research and development expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "Three Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. dollars in thousands",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Salaries and related expenses",
+     "",
+     "-",
+     "",
+     "67, 042",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Professional fees",
+     "",
+     "247,347",
+     "",
+     "39,078",
+     "",
+     "121,060",
+     "",
+     "7,056"
+    ],
+    [
+     "Laboratory and field tests",
+     "",
+     "-",
+     "",
+     "1,762",
+     "",
+     "-",
+     "",
+     "939"
+    ],
+    [
+     "Depreciation",
+     "",
+     "1,499",
+     "",
+     "10,695",
+     "",
+     "449",
+     "",
+     "2,419"
+    ],
+    [
+     "Other expenses",
+     "",
+     "_1,120_",
+     "",
+     "1,710,393",
+     "",
+     "901",
+     "",
+     "1,682,791"
+    ],
+    [
+     "Total",
+     "",
+     "249,966",
+     "",
+     "1,828,970",
+     "",
+     "122,410",
+     "",
+     "1,693,205"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1037,
+    "end_line": 1053
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Operating Expenses\nOur operating expenses consist of three components \u2014 research and development expenses, selling and marketing expenses and general and administrative expenses.\nResearch and Development Expenses\nOur research and development expenses consist primarily of professional fees and other related research and development expenses.",
+   "prose_after": "Selling and Marketing Expenses\nSelling and marketing expenses consist primarily of salaries and related expenses, professional fees, transport and storage and other expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "Three Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. dollars in thousands",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Salaries and related expenses",
+     "",
+     "64,813",
+     "",
+     "134,333",
+     "",
+     "17,609",
+     "",
+     "42,841"
+    ],
+    [
+     "Professional fees",
+     "",
+     "37,418",
+     "",
+     "23,711",
+     "",
+     "18,718",
+     "",
+     "7,500"
+    ],
+    [
+     "Commissions",
+     "",
+     "-",
+     "",
+     "9,204",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Travel",
+     "",
+     "20,267",
+     "",
+     "13,543",
+     "",
+     "12,837",
+     "",
+     "5,361"
+    ],
+    [
+     "Transport and storage",
+     "",
+     "36,558",
+     "",
+     "24,968",
+     "",
+     "9,562",
+     "",
+     "3,216"
+    ],
+    [
+     "Other expenses",
+     "",
+     "20,038",
+     "",
+     "12,148",
+     "",
+     "6,089",
+     "",
+     "1,544"
+    ],
+    [
+     "Total",
+     "",
+     "179,094",
+     "",
+     "217,907",
+     "",
+     "64,815",
+     "",
+     "60,462"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Selling and Marketing Expenses\nSelling and marketing expenses consist primarily of salaries and related expenses, professional fees, transport and storage and other expenses.",
+   "prose_after": "General and Administrative Expenses\nGeneral and administrative expenses consist primarily of professional services, share based compensation, salaries, insurance and other non-personnel related expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "Three Months Ended\n\n\n\n\n\nSeptember 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. dollars in thousands",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Professional services",
+     "",
+     "1,792,054",
+     "",
+     "1,495,576",
+     "",
+     "678,241",
+     "",
+     "505,609"
+    ],
+    [
+     "Share based compensation",
+     "",
+     "813,919",
+     "",
+     "1,375,675",
+     "",
+     "553,432",
+     "",
+     "431,588"
+    ],
+    [
+     "Salaries and related expenses",
+     "",
+     "34,248",
+     "",
+     "193,308",
+     "",
+     "-",
+     "",
+     "63,670"
+    ],
+    [
+     "Insurance",
+     "",
+     "124,237",
+     "",
+     "191,365",
+     "",
+     "38,922",
+     "",
+     "54,125"
+    ],
+    [
+     "Other expenses",
+     "",
+     "80,509",
+     "",
+     "225,484",
+     "",
+     "24,318",
+     "",
+     "48,265"
+    ],
+    [
+     "Total",
+     "",
+     "2,844,967",
+     "",
+     "3,481,408",
+     "",
+     "1,294,913",
+     "",
+     "1,103,257"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1081,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "General and Administrative Expenses\nGeneral and administrative expenses consist primarily of professional services, share based compensation, salaries, insurance and other non-personnel related expenses.",
+   "prose_after": "Three months ended September 30, 2024 compared to three months ended September 30, 2023\nRevenues\nRevenues for the three months ended September 30, 2024 were $9,104 compared to $0 during the three months ended September 30, 2023.\nCost of Sales\nCost of sales consists primarily of salaries, materials, and overhead costs of manufacturing our products. Cost of sales for the three months ended September 30, 2024 was $76,761, compared to cost of sales of $0 for the three months ended September 30, 2023. The increase is mainly a result of a one-time inventory write-off in South Africa.\nGross Profit (loss)\nGross loss for the three months ended September 30, 2024 was $67,657, compared to a gross profit of $0 for the three months ended September 30, 2023. The increase is mainly a result of a one-time inventory write-off in South Africa.\nResearch and Development Expenses\nResearch and development expenses consist of consulting fees, service providers\u2019 costs, related materials and overhead expenses. Research and development expenses for the three months ended September 30, 2024 were $122,410, a decrease of $1,570,795, or 93%, compared to research and development expenses of $1,693,205 for the three months ended September 30, 2023. The decrease is mainly attributable to a decrease in Save Foods Ltd.\u2019s expenses as a result of the implementation of certain cost reduction measures, including a reduction in Save Foods Ltd.\u2019s research and development budget in light of prevailing macroeconomic conditions and the shift of our focus to the commercialization of our solutions and converting recently completed pilots into paying customers. Additionally, certain results of our operations relating to Save Foods Ltd., were offset by an increase in professional fees associated with NTWO OFF Ltd.\u2019s research and development activities.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(2,927,148)",
+     "",
+     "",
+     "(2,258,869)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,373,044)",
+     "",
+     "",
+     "(1,519,559)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,601,032",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents and restricted cash",
+     "",
+     "(6,033)",
+     "",
+     "",
+     "8,486",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in cash and cash equivalents",
+     "",
+     "(1,705,193)",
+     "",
+     "",
+     "(3,769,942)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1189,
+    "end_line": 1206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In connection with and subject to the satisfaction of certain conditions set forth in the standby equity purchase agreement, upon our request, the Investor will pre advance to us up to $3,000,000 of the $20,000,000 commitment amount (a \u201cPre-Advance\u201d), with each Pre-Advance to be evidenced by a promissory note issued at a 3% discount to the principal amount equal to each such note. Each note accrues interest on the outstanding principal balance at the rate of 8% per annum. The Company is required to pay, on a monthly basis, one tenth of the outstanding principal amount of each note, together with accrued and unpaid interest, either (i) in cash or (ii) by submitting an advance notice pursuant to the purchase agreement and selling the Investor shares of our common stock, or any combination thereof as determined by us. The initial payment is due 60 days after the issuance of a note, and every 30 days thereafter. Unless otherwise agreed to by the Investor, any funds received by us pursuant to the purchase agreement for the sale of shares will first be used to satisfy any payments due under an outstanding note. As of September 30, 2024, the note was repaid and extinguished.\nOn April 4, 2024, the Company issued the Investor an additional promissory note in the principal amount of $1,500,000 for proceeds of $1,455,000, reflecting an original issue discount of 3%.\nOn October 1, 2024, we entered into the Facility Agreement for financing of up to EUR 6,000,000, as described above.\nThe table below presents our cash flows for the periods indicated:",
+   "prose_after": "Going Concern\nSince our incorporation, we incurred losses from operations and net cash outflows from operating activities as disclosed in the consolidated statements of operations and cash flows. As of September 30, 2024, we had an accumulated deficit of approximately $33 million, and we expect to incur losses for the foreseeable future. We have financed our operations mainly through financing from various investors and have limited revenue from our products and therefore are dependent upon external sources to finance our operations. There can be no assurance that we will succeed in obtaining the necessary financing to continue our operations. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern through at least twelve months from the date of this Quarterly Report.\nWe believe that our existing capital resources will be sufficient to support our operating plan through the third quarter of 2025; however, there can be no assurance of this. We will need to raise additional capital to support our operations through the issuance of debt, equity, or a combination thereof. There can be no assurance that we will be successful in raising additional capital on favorable terms, or at all.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1207,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description"
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.INS*",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted in Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1308,
+    "end_line": 1328
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On July 25, 2024, we issued 1,286 shares of common stock to a consultant for services provided to us.\nOn August 21, 2024, we issued 10,000 shares of common stock to a former director for services provided to our subsidiary Save Foods Ltd.\nThe above issuances did not involve any underwriters, underwriting discounts or commissions or any public offering and we believe are exempt from the registration requirements of the Securities Act by virtue of Section 4(2) thereof as transactions not involving a public offering.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosure\nNot applicable.\nItem 5. Other Information\nDuring the three months ended September 30, 2024, none of the Company\u2019s directors or officers adopted or terminated any contract, instruction, or written plan for the purchase or sale of our securities intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) under the Exchange Act or any non-Rule 10b5-1 trading arrangements as defined in Item 408(a) of Regulation S-K.\nItem 6. Exhibits.",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1305,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1332,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 14, 2024",
+     "N2OFF, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ David Palach"
+    ],
+    [
+     "",
+     "Name:",
+     "David Palach"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 14, 2024",
+     "By:",
+     "/s/ Lital Barda"
+    ],
+    [
+     "",
+     "Name:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "Title:",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1337,
+    "end_line": 1351
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1332,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5144 @@
+{
+ "accession": "0000950170-22-016143",
+ "cik": "0001579428",
+ "form": "10-Q",
+ "filing_date": "2022-08-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "axsm-20220630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n",
+     "45-4241907\n\n"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)\n\n",
+     "(I.R.S. Employer Identification No.)\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission File Number 001-37635\nAXSOME THERAPEUTICS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "22 Cortlandt Street\n\n16th Floor\n\nNew York, New York\n\n",
+     "10007\n\n"
+    ],
+    [
+     "(Address of principal executive offices)\n\n",
+     "(Zip Code)\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (212) 332-3241\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class:\n\n",
+     "Trading Symbol(s)\n\n",
+     "Name of each exchange on which registered:\n\n"
+    ],
+    [
+     "Common Stock, Par Value $0.0001 Per Share\n\n",
+     "AXSM\n\n",
+     "The Nasdaq Global Market\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 68
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.:\nLarge accelerated filer  [X]  Accelerated Filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "There were 40,304,124 shares of the registrant\u2019s common stock, $0.0001 par value, outstanding as of August 1, 2022.\nQUARTERLY REPORT ON FORM 10-Q\nFOR THE QUARTER ENDED JUNE 30, 2022\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     " ",
+     "Page\n\n"
+    ],
+    [
+     "CAUTIONARY NOTE REGARDING FORWARD LOOKING STATEMENTS\n\n",
+     "",
+     "3\n\n"
+    ],
+    [
+     "PART I \u2014 FINANCIAL INFORMATION\n\n",
+     "",
+     " "
+    ],
+    [
+     "ITEM 1\n\n",
+     "Financial Statements\n\n",
+     "4\n\n"
+    ],
+    [
+     "ITEM 2\n\n",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n",
+     "30\n\n"
+    ],
+    [
+     "ITEM 3\n\n",
+     "Quantitative and Qualitative Disclosure About Market Risk\n\n",
+     "43\n\n"
+    ],
+    [
+     "ITEM 4\n\n",
+     "Controls and Procedures\n\n",
+     "43\n\n"
+    ],
+    [
+     "PART II \u2014 OTHER INFORMATION\n\n",
+     "",
+     " "
+    ],
+    [
+     "ITEM 1\n\n",
+     "Legal Proceedings\n\n",
+     "44\n\n"
+    ],
+    [
+     "ITEM 1A\n\n",
+     "Risk Factors\n\n",
+     "44\n\n"
+    ],
+    [
+     "ITEM 6\n\n",
+     "Exhibits\n\n",
+     "99\n\n"
+    ],
+    [
+     "Signatures\n\n",
+     " ",
+     "100\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "There were 40,304,124 shares of the registrant\u2019s common stock, $0.0001 par value, outstanding as of August 1, 2022.\nQUARTERLY REPORT ON FORM 10-Q\nFOR THE QUARTER ENDED JUNE 30, 2022\nTABLE OF CONTENTS",
+   "prose_after": "2\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nCertain matters discussed in this report, including matters discussed under the caption \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d may constitute forward-looking statements for purposes of the Securities Act of 1933, as amended, or the Securities Act, and the Securities Exchange Act of 1934, as amended, or the Exchange Act, and involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from the future results, performance or achievements expressed or implied by such forward-looking statements. The words \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cmay,\u201d \u201cexpect\u201d and similar expressions are generally intended to identify forward-looking statements. Our actual results may differ materially from the results anticipated in these forward-looking statements due to a variety of factors, including, without limitation, those discussed under the captions \u201cRisk Factors,\u201d \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and elsewhere in this report, as well as other factors which may be identified from time to time in our other filings with the Securities and Exchange Commission, or the SEC, or in the documents where such forward-looking statements appear. All written or oral forward-looking statements attributable to us are expressly qualified in their entirety by these cautionary statements. Such forward-looking statements include, but are not limited to, statements about:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     " ",
+     "December 31,\n\n",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "(Unaudited)\n\n",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Assets\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Current assets:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Cash and cash equivalents\n\n",
+     "$",
+     "73,394,640\n\n",
+     "",
+     "$",
+     "86,472,854\n\n",
+     ""
+    ],
+    [
+     "Accounts receivables, net\n\n",
+     "",
+     "16,167,927\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Inventories, net\n\n",
+     "",
+     "10,323,746\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Prepaid and other current assets\n\n",
+     "",
+     "4,091,369\n\n",
+     "",
+     "",
+     "45,286\n\n",
+     ""
+    ],
+    [
+     "Total current assets\n\n",
+     "",
+     "103,977,682\n\n",
+     "",
+     "",
+     "86,518,140\n\n",
+     ""
+    ],
+    [
+     "Equipment, net\n\n",
+     "",
+     "634,611\n\n",
+     "",
+     "",
+     "283,846\n\n",
+     ""
+    ],
+    [
+     "Right-of-use asset - operating lease\n\n",
+     "",
+     "667,582\n\n",
+     "",
+     "",
+     "660,162\n\n",
+     ""
+    ],
+    [
+     "Goodwill\n\n",
+     "",
+     "11,897,407\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Intangible asset, net\n\n",
+     "",
+     "62,874,350\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Other assets\n\n",
+     "",
+     "507,464\n\n",
+     "",
+     "",
+     "322,910\n\n",
+     ""
+    ],
+    [
+     "Total assets\n\n",
+     "$",
+     "180,559,096\n\n",
+     "",
+     "$",
+     "87,785,058\n\n",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Current liabilities:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Accounts payable\n\n",
+     "$",
+     "19,430,961\n\n",
+     "",
+     "$",
+     "13,149,329\n\n",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities\n\n",
+     "",
+     "16,480,322\n\n",
+     "",
+     "",
+     "9,295,180\n\n",
+     ""
+    ],
+    [
+     "Operating lease liability, current portion\n\n",
+     "",
+     "709,120\n\n",
+     "",
+     "",
+     "620,675\n\n",
+     ""
+    ],
+    [
+     "Contingent consideration, current\n\n",
+     "",
+     "5,950,000\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Total current liabilities\n\n",
+     "",
+     "42,570,403\n\n",
+     "",
+     "",
+     "23,065,184\n\n",
+     ""
+    ],
+    [
+     "Contingent consideration, non-current\n\n",
+     "",
+     "29,330,407\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Loan payable, long-term\n\n",
+     "",
+     "93,458,824\n\n",
+     "",
+     "",
+     "49,089,522\n\n",
+     ""
+    ],
+    [
+     "Total liabilities\n\n",
+     "",
+     "165,359,634\n\n",
+     "",
+     "",
+     "72,154,706\n\n",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Preferred stock, $0.0001 par value per share (10,000,000 shares authorized, none issued and outstanding at June 30, 2022 and December 31, 2021, respectively)\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value per share (150,000,000 shares authorized, 39,914,411 and 37,816,794 shares issued and outstanding at June 30, 2022 and December 31, 2021, respectively)\n\n",
+     "",
+     "3,991\n\n",
+     "",
+     "",
+     "3,782\n\n",
+     ""
+    ],
+    [
+     "Additional paid-in capital\n\n",
+     "",
+     "505,465,383\n\n",
+     "",
+     "",
+     "424,825,655\n\n",
+     ""
+    ],
+    [
+     "Accumulated deficit\n\n",
+     "",
+     "(490,269,912)",
+     "",
+     "",
+     "(409,199,085)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity\n\n",
+     "",
+     "15,199,462\n\n",
+     "",
+     "",
+     "15,630,352\n\n",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity\n\n",
+     "$",
+     "180,559,096\n\n",
+     "",
+     "$",
+     "87,785,058\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022our stock price and its volatility;\n\u2022our ability to attract and retain key personnel;\n\u2022the performance of our third-party manufacturers;\n\u2022our expectations for future capital requirements; and\n\u2022our ability to successfully implement our strategy.\nThe forward-looking statements contained in this report reflect our views and assumptions only as of the date that this report is signed. Except as required by law, we assume no responsibility for updating any forward-looking statements.\nWe qualify all of our forward-looking statements by these cautionary statements. In addition, with respect to all of our forward-looking statements, we claim the protection of the safe harbor for forward-looking statements contained in the Private Securities Litigation Reform Act of 1995.\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 157,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Three Months\n\n",
+     "",
+     "",
+     "",
+     "",
+     " ",
+     "Six Months Ended\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Revenues:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Product sales, net\n\n",
+     "$",
+     "8,819,786\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "8,819,786\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Operating expenses:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Cost of product sales (excluding amortization and depreciation)\n\n",
+     "",
+     "982,836\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "982,836\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "",
+     "15,792,202\n\n",
+     "",
+     "",
+     "14,503,326\n\n",
+     "",
+     "",
+     "28,377,343\n\n",
+     "",
+     "",
+     "31,099,014\n\n",
+     ""
+    ],
+    [
+     "Selling, general and administrative\n\n",
+     "",
+     "31,160,140\n\n",
+     "",
+     "",
+     "16,344,361\n\n",
+     "",
+     "",
+     "56,863,871\n\n",
+     "",
+     "",
+     "27,592,734\n\n",
+     ""
+    ],
+    [
+     "Gain in fair value of contingent consideration\n\n",
+     "",
+     "(860,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(860,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Intangible asset amortization\n\n",
+     "",
+     "925,650\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "925,650\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "48,000,828\n\n",
+     "",
+     "",
+     "30,847,687\n\n",
+     "",
+     "",
+     "86,289,700\n\n",
+     "",
+     "",
+     "58,691,748\n\n",
+     ""
+    ],
+    [
+     "Loss from operations\n\n",
+     "",
+     "(39,181,042)",
+     "",
+     "",
+     "(30,847,687)",
+     "",
+     "",
+     "(77,469,914)",
+     "",
+     "",
+     "(58,691,748)",
+     ""
+    ],
+    [
+     "Interest income (expense)\n\n",
+     "",
+     "(2,257,474)",
+     "",
+     "",
+     "(1,436,522)",
+     "",
+     "",
+     "(3,600,913)",
+     "",
+     "",
+     "(2,852,431)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(41,438,516)",
+     "",
+     "$",
+     "(32,284,209)",
+     "",
+     "$",
+     "(81,070,827)",
+     "",
+     "$",
+     "(61,544,179)",
+     ""
+    ],
+    [
+     "Net loss per common share, basic and diluted\n\n",
+     "$",
+     "(1.06)",
+     "",
+     "$",
+     "(0.86)",
+     "",
+     "$",
+     "(2.09)",
+     "",
+     "$",
+     "(1.64)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding, basic and diluted\n\n",
+     "",
+     "39,081,100\n\n",
+     "",
+     "",
+     "37,595,069\n\n",
+     "",
+     "",
+     "38,704,227\n\n",
+     "",
+     "",
+     "37,512,716\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 249,
+    "end_line": 293
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 247,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 296,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Common stock\n\n",
+     "",
+     "",
+     "",
+     "Additional\n\n",
+     "",
+     " ",
+     "Accumulated\n\n",
+     "",
+     " ",
+     "Total\nstockholders\u2019\n\n",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "Shares\n\n",
+     "",
+     "Amount\n\n",
+     "",
+     "paid-in capital\n\n",
+     "",
+     " ",
+     "deficit\n\n",
+     "",
+     " ",
+     "equity\n\n",
+     "",
+     " "
+    ],
+    [
+     "Balance at December 31, 2020\n\n",
+     "",
+     "37,374,088\n\n",
+     "",
+     "3,737\n\n",
+     "",
+     "392,585,265\n\n",
+     "",
+     "",
+     "(278,796,093)",
+     "",
+     "",
+     "113,792,909\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "3,731,097\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "3,731,097\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of options\n\n",
+     "",
+     "94,000\n\n",
+     "",
+     "10\n\n",
+     "",
+     "1,913,289\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,913,299\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon vesting of RSUs\n\n",
+     "",
+     "1,917\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon financing\n\n",
+     "",
+     "93,877\n\n",
+     "",
+     "9\n\n",
+     "",
+     "6,115,855\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "6,115,864\n\n",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(29,259,970)",
+     "",
+     "",
+     "(29,259,970)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2021\n\n",
+     "",
+     "37,563,882\n\n",
+     "",
+     "3,756\n\n",
+     "",
+     "404,345,506\n\n",
+     "",
+     "",
+     "(308,056,063)",
+     "",
+     "",
+     "96,293,199\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "5,456,242\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "5,456,242\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of options\n\n",
+     "",
+     "68,503\n\n",
+     "",
+     "7\n\n",
+     "",
+     "958,888\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "958,895\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon vesting of RSUs\n\n",
+     "",
+     "144\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of warrants upon debt financing\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon financing\n\n",
+     "",
+     "16,419\n\n",
+     "",
+     "2\n\n",
+     "",
+     "1,096,501\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "1,096,503\n\n",
+     ""
+    ],
+    [
+     "Shares tendered for withholding taxes\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "(84,010)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(84,010)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(32,284,209)",
+     "",
+     "",
+     "(32,284,209)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2021\n\n",
+     "",
+     "37,648,948\n\n",
+     "",
+     "3,765\n\n",
+     "",
+     "411,773,127\n\n",
+     "",
+     "",
+     "(340,340,272)",
+     "",
+     "",
+     "71,436,620\n\n",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021\n\n",
+     "",
+     "37,816,794\n\n",
+     "",
+     "3,782\n\n",
+     "",
+     "424,825,655\n\n",
+     "",
+     "",
+     "(409,199,085)",
+     "",
+     "",
+     "15,630,352\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "7,598,329\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "7,598,329\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of options\n\n",
+     "",
+     "18,015\n\n",
+     "",
+     "2\n\n",
+     "",
+     "181,635\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "181,637\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon vesting of RSUs\n\n",
+     "",
+     "4,555\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon financing\n\n",
+     "",
+     "1,044,081\n\n",
+     "",
+     "104\n\n",
+     "",
+     "31,008,497\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "31,008,601\n\n",
+     ""
+    ],
+    [
+     "Shares tendered for withholding taxes\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "(88,594)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(88,594)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(39,632,311)",
+     "",
+     "",
+     "(39,632,311)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2022\n\n",
+     "",
+     "38,883,445\n\n",
+     "",
+     "3,888\n\n",
+     "",
+     "463,525,522\n\n",
+     "",
+     "",
+     "(448,831,396)",
+     "",
+     "",
+     "14,698,014\n\n",
+     ""
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "10,161,678\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "10,161,678\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon exercise of options\n\n",
+     "",
+     "6,691\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "176,412\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "176,412\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon vesting of RSUs\n\n",
+     "",
+     "1,122\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Issuance of common stock upon financing\n\n",
+     "",
+     "1,023,153\n\n",
+     "",
+     "103\n\n",
+     "",
+     "30,794,544\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "30,794,647\n\n",
+     ""
+    ],
+    [
+     "Issuance of warrants upon debt financing\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "826,153\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "826,153\n\n",
+     ""
+    ],
+    [
+     "Shares tendered for withholding taxes\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "(18,926)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(18,926)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(41,438,516)",
+     "",
+     "",
+     "(41,438,516)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022\n\n",
+     "",
+     "39,914,411\n\n",
+     "",
+     "3,991\n\n",
+     "",
+     "505,465,383\n\n",
+     "",
+     "",
+     "(490,269,912)",
+     "",
+     "",
+     "15,199,462\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 302,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 300,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Cash flows from operating activities\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(81,070,827)",
+     "",
+     "$",
+     "(61,544,179)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Stock-based compensation expense\n\n",
+     "",
+     "17,760,007\n\n",
+     "",
+     "",
+     "9,187,339\n\n",
+     ""
+    ],
+    [
+     "Amortization of intangible asset\n\n",
+     "",
+     "925,650\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Amortization of debt discount\n\n",
+     "",
+     "683,022\n\n",
+     "",
+     "",
+     "560,752\n\n",
+     ""
+    ],
+    [
+     "Depreciation\n\n",
+     "",
+     "104,430\n\n",
+     "",
+     "",
+     "18,075\n\n",
+     ""
+    ],
+    [
+     "Gain in fair value of contingent consideration\n\n",
+     "",
+     "(860,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Amortization of operating lease right-of-use asset\n\n",
+     "",
+     "553,960\n\n",
+     "",
+     "",
+     "530,437\n\n",
+     ""
+    ],
+    [
+     "Change in operating lease liability\n\n",
+     "",
+     "(472,935)",
+     "",
+     "",
+     "(631,591)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Accounts receivable, net\n\n",
+     "",
+     "(16,167,927)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Inventories, net\n\n",
+     "",
+     "277,254\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets\n\n",
+     "",
+     "(1,204,490)",
+     "",
+     "",
+     "(287,431)",
+     ""
+    ],
+    [
+     "Accounts payable\n\n",
+     "",
+     "6,281,632\n\n",
+     "",
+     "",
+     "(1,892,026)",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities\n\n",
+     "",
+     "7,185,142\n\n",
+     "",
+     "",
+     "1,449,582\n\n",
+     ""
+    ],
+    [
+     "Other assets\n\n",
+     "",
+     "(184,554)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Net cash used in operating activities\n\n",
+     "",
+     "(66,189,636)",
+     "",
+     "",
+     "(52,609,042)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Purchases of equipment\n\n",
+     "",
+     "(455,195)",
+     "",
+     "",
+     "(48,872)",
+     ""
+    ],
+    [
+     "Cash paid for business combination\n\n",
+     "",
+     "(53,000,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Net cash used in investing activities\n\n",
+     "",
+     "(53,455,195)",
+     "",
+     "",
+     "(48,872)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Proceeds from draw down of debt\n\n",
+     "",
+     "45,000,000\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Payment of debt issuance costs\n\n",
+     "",
+     "(487,160)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock upon financing, net\n\n",
+     "",
+     "61,803,248\n\n",
+     "",
+     "",
+     "7,212,367\n\n",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock upon exercise of options\n\n",
+     "",
+     "358,049\n\n",
+     "",
+     "",
+     "2,872,194\n\n",
+     ""
+    ],
+    [
+     "Payments of tax withholdings on stock award\n\n",
+     "",
+     "(107,520)",
+     "",
+     "",
+     "(84,010)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities\n\n",
+     "",
+     "106,566,617\n\n",
+     "",
+     "",
+     "10,000,551\n\n",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash\n\n",
+     "",
+     "(13,078,214)",
+     "",
+     "",
+     "(42,657,363)",
+     ""
+    ],
+    [
+     "Cash at beginning of period\n\n",
+     "",
+     "86,472,854\n\n",
+     "",
+     "",
+     "183,876,453\n\n",
+     ""
+    ],
+    [
+     "Cash at end of period\n\n",
+     "$",
+     "73,394,640\n\n",
+     "",
+     "$",
+     "141,219,090\n\n",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Interest paid\n\n",
+     "$",
+     "2,586,375\n\n",
+     "",
+     "$",
+     "2,312,917\n\n",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset obtained in exchange for operating lease liability\n\n",
+     "",
+     "561,380\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Supplemental non-cash investing activities:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Fair value of contingent consideration in a business combination\n\n",
+     "",
+     "35,280,407\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 390,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nNotes to Consolidated Financial Statements (Unaudited)\nNote 1. Nature of Business and Basis of Presentation\nAxsome Therapeutics, Inc. (\u201cAxsome\u201d or the \u201cCompany\u201d) is a biopharmaceutical company developing and delivering novel therapies for central nervous system (\u201cCNS\u201d) conditions that have limited treatment options. By focusing on this therapeutic area, the Company is addressing significant and growing markets where current treatment options are limited or inadequate. The Company was incorporated on January 12, 2012 in the State of Delaware. The Company\u2019s CNS portfolio includes four product candidates, AXS-05, AXS-07, AXS-12, and AXS-14, which are being developed for multiple indications. In May 2022, the Company acquired the U.S. rights to Sunosi\u00ae from Jazz Pharmaceuticals (\"Jazz\"), a product approved by FDA and marketed in the U.S. to improve wakefulness in adult patients with EDS associated with narcolepsy or obstructive sleep apnea, and also recently approved in Europe in January 2020 by the European Commission. The Company aims to become a fully integrated biopharmaceutical company that develops and commercializes differentiated therapies that expand the treatment options available to caregivers and improve the lives of patients living with CNS disorders. The Company refers herein to its four product candidates and Sunosi, collectively, as the Company\u2019s products.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 388,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash at settlement\n\n",
+     "$",
+     "53,000,000\n\n"
+    ],
+    [
+     "Fair value of contingent consideration\n\n",
+     "",
+     "36,140,407\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "89,140,407\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 686,
+    "end_line": 696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Business Combination"
+    }
+   },
+   "prose_before": "Under the terms of the Asset Purchase Agreement, the Company received from Jazz worldwide commercial, development, manufacturing, and intellectual property rights to Sunosi, except for certain Asian markets. Jazz received from the Company a total upfront payment of $53 million. In addition, Jazz will receive a high single-digit royalty on the Company's U.S. net sales of Sunosi in the current indication, and a mid single-digit royalty on the Company's U.S. net sales of Sunosi in future indications. The Company also assumed the commitments of Jazz to SK Biopharmaceuticals (\u201cSK)\u201d and Aerial Biopharma (\u201cAerial\u201d). SK is the originator of Sunosi and retains rights in 12 Asian markets, including China, Korea, and Japan. In 2014, Jazz acquired from Aerial worldwide rights to Sunosi excluding those Asian markets as stated previously. The assumed commitments to SK and Aerial include single-digit tiered royalties based on the Company's sales of Sunosi, and additionally, the Company is committed to pay up to $165 million based on revenue milestones and $1 million based on development milestones. The Company financed the transaction via its existing $300 million term loan facility with Hercules Capital, Inc.\nIn conjunction with the Acquisition, the Company incurred approximately $0.5 million in transaction costs, which were expensed as selling, general, and administrative expense in the consolidated statement of operations during the six months ended June 30, 2022.\nOur Consolidated Statement of Operations for the three and six months ended June 30, 2022, include $8.8 million of Product sales and $4.6 million of Net Loss associated with the result of operations of Sunosi from the acquisition date to June 30, 2022.\nPreliminary purchase consideration consisted of the following:",
+   "prose_after": "The preliminary allocation of the fair value of the Sunosi acquisition is shown in table below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "Estimated fair value\n\n",
+     "",
+     " "
+    ],
+    [
+     "Inventory\n\n",
+     "$",
+     "10,601,000\n\n",
+     ""
+    ],
+    [
+     "Other current assets\n\n",
+     "",
+     "3,551,000\n\n",
+     ""
+    ],
+    [
+     "Developed technology\n\n",
+     "",
+     "63,800,000\n\n",
+     ""
+    ],
+    [
+     "Goodwill\n\n",
+     "",
+     "11,897,407\n\n",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities\n\n",
+     "",
+     "(709,000)",
+     ""
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "89,140,407\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Estimated fair value"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Business Combination"
+    }
+   },
+   "prose_before": "The preliminary allocation of the fair value of the Sunosi acquisition is shown in table below:",
+   "prose_after": "The above allocation of the purchase price is based upon certain preliminary valuations and other analyses that have not been finalized as of the date of this filing. As such, the purchase price amount and allocations for this transaction are preliminary estimates including developed technology, goodwill and contingent consideration, which may be subject to change within the measurement period.\nThe net assets were recorded at their estimated fair value. In valuing acquired assets and liabilities, fair value estimates were based primarily on future expected cash flows, market rate assumptions for contractual obligations, and appropriate discount rates.\nInventories acquired included raw materials, work in process and finished goods for Sunosi. Inventories were recorded at their estimated fair values categorized as Level 3. The fair value of finished goods was determined based on the estimated selling price, net of selling costs and a margin on the selling activities. The fair value of work in process was determined based on estimated selling price, net of selling costs and costs to complete the manufacturing, and a margin on the selling and",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "Six Months Ended\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     " ",
+     "June 30,\n\n",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net revenues\n\n",
+     "$",
+     "32,848,000\n\n",
+     "",
+     "$",
+     "21,328,000\n\n",
+     ""
+    ],
+    [
+     "Net Loss\n\n",
+     "",
+     "(108,332,000)",
+     "",
+     "",
+     "(169,365,000)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Business Combination"
+    }
+   },
+   "prose_before": "Intangible assets include acquired developed technology. The fair value of the acquired developed technology asset was determined by applying the income approach, which recognizes that the fair value of an asset is premised upon the expected receipt of future economic benefits such as earnings and cash inflows based on current sales projections and estimated direct costs, using a discount rate of 43.5 % that reflects the return requirements of the market. This intangible asset is being amortized over an estimated useful life of 10 years.\nGoodwill is considered an indefinite-lived asset and relates primarily to intangible assets that do not qualify for separate recognition, such as the assembled workforce and synergies between the entities. Goodwill of $ 11.9 million was established as a result of the Acquisition. The Company expects that the entire amount of the purchase price allocated to goodwill will be deductible for U.S. income tax purposes over a 15-year period.\nAccrued expense and other current liabilities acquired were the Company's assumed sales returns liability for Sunosi after the transaction close date related to Jazz sales prior to the Initial Closing\nPro Forma Consolidated Financial Information\nThe following unaudited pro forma summary presents consolidated information of the Company, including Sunosi, as if the business combination had occurred on January 1, 2021, the earliest period presented herein:",
+   "prose_after": "These pro forma results are illustrative only and not indicative of the actual results of operations that would have been achieved nor are they indicative of future results of operations.\nNote 4. Goodwill\nGoodwill of $11.9 million was recorded in connection with the Sunosi acquisition as described in Note 3 Business Combination. The Company will perform an annual impairment test unless condition exist where an interim impairment analysis is necessary.\nThe following table provides the Company\u2019s goodwill as of June 30, 2022. There was no goodwill impairment during six months ended June 30, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Goodwill\n\n",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "Goodwill from Sunosi Acquisition\n\n",
+     "",
+     "11,897,407\n\n"
+    ],
+    [
+     "Goodwill impairment\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "Balance at June 30, 2022\n\n",
+     "$",
+     "11,897,407\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Goodwill"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 762,
+    "end_line": 776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Goodwill"
+    }
+   },
+   "prose_before": "These pro forma results are illustrative only and not indicative of the actual results of operations that would have been achieved nor are they indicative of future results of operations.\nNote 4. Goodwill\nGoodwill of $11.9 million was recorded in connection with the Sunosi acquisition as described in Note 3 Business Combination. The Company will perform an annual impairment test unless condition exist where an interim impairment analysis is necessary.\nThe following table provides the Company\u2019s goodwill as of June 30, 2022. There was no goodwill impairment during six months ended June 30, 2022.",
+   "prose_after": "Note 5. Intangible Asset\nThe gross carrying amount and net book value of our intangible asset are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Estimated fair value\n\n",
+     "",
+     " ",
+     "Remaining Weighted-Average Useful Life\n\n"
+    ],
+    [
+     "Balance at December 31, 2021\n\n",
+     "$",
+     "\u2014\n\n",
+     "",
+     " "
+    ],
+    [
+     "Gross Carrying Amount\n\n",
+     "",
+     "63,800,000\n\n",
+     "",
+     "10-years\n\n"
+    ],
+    [
+     "Accumulated Amortization\n\n",
+     "",
+     "(925,650)",
+     "",
+     " "
+    ],
+    [
+     "Net Book Value at June 30, 2022\n\n",
+     "$",
+     "62,874,350\n\n",
+     "",
+     " "
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Intangible Asset"
+    }
+   },
+   "prose_before": "Note 5. Intangible Asset\nThe gross carrying amount and net book value of our intangible asset are as follows:",
+   "prose_after": "Based on finite-lived intangible assets recorded as of June 30, 2022, and assuming the underlying assets will not be impaired and that we will not change the expected lives of the assets, future amortization expenses were estimated as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Estimated Amortization Expense\n\n",
+     ""
+    ],
+    [
+     "2022\n\n",
+     "",
+     "3,213,578\n\n"
+    ],
+    [
+     "2023\n\n",
+     "",
+     "6,374,760\n\n"
+    ],
+    [
+     "2024\n\n",
+     "",
+     "6,392,226\n\n"
+    ],
+    [
+     "2025\n\n",
+     "",
+     "6,374,760\n\n"
+    ],
+    [
+     "2026\n\n",
+     "",
+     "6,374,760\n\n"
+    ],
+    [
+     "Thereafter\n\n",
+     "",
+     "34,144,266\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "62,874,350\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated Amortization Expense"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Intangible Asset"
+    }
+   },
+   "prose_before": "Based on finite-lived intangible assets recorded as of June 30, 2022, and assuming the underlying assets will not be impaired and that we will not change the expected lives of the assets, future amortization expenses were estimated as follows:",
+   "prose_after": "Note 6. Fair Value of Financial Instruments\nIn connection with the Sunosi acquisition, we pay a royalty on net sales of Sunosi. The discounted cash flow method used to value this contingent consideration includes inputs of not readily observable market data, which are Level 3 inputs. As of the May 9, 2022 acquisition date, the contingent consideration had a fair value of $36.1 million. The fair value of the contingent consideration was $35.3 million as of June 30, 2022 and is reflected as current accrued contingent consideration of $6.0 million and non-current contingent consideration liability of $29.3 million in the consolidated balance sheet.\nThe fair value of financial instruments measured on a recurring basis is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "May 9, 2022\n\n",
+     "Level 1\n\n",
+     "",
+     "Level 2\n\n",
+     "",
+     "Level 3\n\n",
+     "",
+     "Total\n\n",
+     ""
+    ],
+    [
+     "Liabilities:\n\n",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " "
+    ],
+    [
+     "Contingent consideration\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "36,140,407\n\n",
+     "$\n\n",
+     "36,140,407\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "Note 6. Fair Value of Financial Instruments\nIn connection with the Sunosi acquisition, we pay a royalty on net sales of Sunosi. The discounted cash flow method used to value this contingent consideration includes inputs of not readily observable market data, which are Level 3 inputs. As of the May 9, 2022 acquisition date, the contingent consideration had a fair value of $36.1 million. The fair value of the contingent consideration was $35.3 million as of June 30, 2022 and is reflected as current accrued contingent consideration of $6.0 million and non-current contingent consideration liability of $29.3 million in the consolidated balance sheet.\nThe fair value of financial instruments measured on a recurring basis is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "June 30, 2022\n\n",
+     "Level 1\n\n",
+     "",
+     "Level 2\n\n",
+     "",
+     "Level 3\n\n",
+     "",
+     "Total\n\n",
+     ""
+    ],
+    [
+     "Liabilities:\n\n",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " ",
+     " "
+    ],
+    [
+     "Contingent consideration\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "35,280,407\n\n",
+     "$\n\n",
+     "35,280,407\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "\u2014\n\n",
+     "$\n\n",
+     "35,280,407\n\n",
+     "$\n\n",
+     "35,280,407\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 836,
+    "end_line": 848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The fair value of the contingent consideration was remeasured at June 30, 2022. The fair value of the financial instruments as of June 30, 2022 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Contingent Consideration\n\n",
+     "",
+     " "
+    ],
+    [
+     "Balance at December 31, 2021\n\n",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Initial estimate\n\n",
+     "",
+     "36,140,407\n\n",
+     ""
+    ],
+    [
+     "Gain in fair value of contingent consideration\n\n",
+     "",
+     "(860,000)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022\n\n",
+     "$",
+     "35,280,407\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Contingent Consideration"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "The fair value of the contingent consideration was remeasured at June 30, 2022. The fair value of the financial instruments as of June 30, 2022 is as follows:",
+   "prose_after": "The recurring Level 3 fair value measurements of contingent consideration for which a liability is recorded include the following significant unobservable inputs:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "fair_value",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     " ",
+     " ",
+     "As of June 30, 2022\n\n",
+     "As of May 9, 2022\n\n"
+    ],
+    [
+     "\n\n",
+     "Valuation Methodology\n\n",
+     "Significant Unobservable Input\n\n",
+     "Weighted Average (range, if applicable)\n\n",
+     "Weighted Average (range, if applicable)\n\n"
+    ],
+    [
+     "Contingent Consideration\n\n",
+     "Probability weighted income approach\n\n",
+     "Discount rate\n\n",
+     "13.2%\n\n",
+     "11.7%\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "Revenue Discount rate\n\n",
+     "20.9%\n\n",
+     "20.8%\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 868,
+    "end_line": 881
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "The recurring Level 3 fair value measurements of contingent consideration for which a liability is recorded include the following significant unobservable inputs:",
+   "prose_after": "The fair value measurement of the contingent consideration is sensitive to the change in discount rate. As of June 30, 2022, if the discount rate increases or decreases by approximately 1%, the fair value of the contingent consideration would range\nfrom $33.6 million to $37.0 million. As of June 30, 2022, if the revenue discount rate increases or decreases by approximately 1%, the fair value of the contingent consideration would range from $34.1 million to $36.6 million.\nNote 7. Inventory\nInventory consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "June 30,\n2022\n\n",
+     ""
+    ],
+    [
+     "Raw materials\n\n",
+     "$",
+     "1,307,000\n\n"
+    ],
+    [
+     "Work in process\n\n",
+     "",
+     "8,430,000\n\n"
+    ],
+    [
+     "Finished goods\n\n",
+     "",
+     "586,746\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "10,323,746\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,\n2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 892,
+    "end_line": 908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "The fair value measurement of the contingent consideration is sensitive to the change in discount rate. As of June 30, 2022, if the discount rate increases or decreases by approximately 1%, the fair value of the contingent consideration would range\nfrom $33.6 million to $37.0 million. As of June 30, 2022, if the revenue discount rate increases or decreases by approximately 1%, the fair value of the contingent consideration would range from $34.1 million to $36.6 million.\nNote 7. Inventory\nInventory consists of the following:",
+   "prose_after": "As of June 30, 2022, inventories included $1.1 million related to the purchase accounting inventory fair value step-up on inventory acquired in the Sunosi Acquisition for the U.S. Territory.\nNote 8. Accrued Expenses and Other Current Liabilities\nAt June 30, 2022 and December 31, 2021 accrued expenses and other current liabilities consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "June 30,\n2022\n\n",
+     "",
+     "December 31,\n2021\n\n",
+     ""
+    ],
+    [
+     "Accrued research and development\n\n",
+     "$",
+     "2,792,715\n\n",
+     "$",
+     "2,416,897\n\n"
+    ],
+    [
+     "Accrued compensation\n\n",
+     "",
+     "3,871,439\n\n",
+     "",
+     "4,050,236\n\n"
+    ],
+    [
+     "Accrued selling, general and administrative\n\n",
+     "",
+     "3,496,776\n\n",
+     "",
+     "2,442,700\n\n"
+    ],
+    [
+     "Accrued sales discounts, rebates and allowances\n\n",
+     "",
+     "4,816,205\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "Accrued royalties\n\n",
+     "",
+     "705,583\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "Accrued interest\n\n",
+     "",
+     "797,604\n\n",
+     "",
+     "385,347\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "16,480,322\n\n",
+     "$",
+     "9,295,180\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 915,
+    "end_line": 937
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "As of June 30, 2022, inventories included $1.1 million related to the purchase accounting inventory fair value step-up on inventory acquired in the Sunosi Acquisition for the U.S. Territory.\nNote 8. Accrued Expenses and Other Current Liabilities\nAt June 30, 2022 and December 31, 2021 accrued expenses and other current liabilities consisted of the following:",
+   "prose_after": "Note 9. Loan and Security Agreement\nHercules Capital, Inc.\nSecond Amendment to the Loan Agreement\nOn March 27, 2022, in connection with the Acquisition (as described above), the Company entered into a Second Amendment to the Loan and Security Agreement (the \u201cSecond Amendment\u201d) with Hercules Capital, Inc., or Hercules. The Second Amendment closed on May 9, 2022 concurrently with the closing of the Acquisition.\nThe Second Amendment amends the terms of that certain Loan and Security Agreement, dated as of September 25, 2020 (as amended by the First Amendment to the Loan and Security Agreement, dated of October 14, 2021) (the \u201cLoan Agreement\u201d). The changes in the Term Loan Advances (as defined in the Loan Agreement) amounts and dates are as follows: (i) increasing the Tranche 1 (as defined in the Loan Agreement) from $60.0 million to $95.0 million, whereby $45.0 million was drawn upon the Second Amendment closing date (ii) changing the Tranche 2 Advances to three sub-tranches of $35.0 million, $35.0 million and $30.0 million, respectively, for a same total value of $100.0 million, upon Approval of AXS-05 (iii) changing the Tranche 3 Advance to two sub-tranches of $15.0 million and $5.0 million, respectively, for the same total value of $20.0 million, upon Approval of AXS-07 (iv) decreasing the Tranche 4 Advance from $55.0 million to $50.0 million, available upon achievement of certain combined sales and outstanding debt criteria and (v) decreasing the Tranche 5 Advance from $75.0 million to $35.0 million, subject to the approval from Hercules. The outstanding balance of the debt bears interest at a floating rate based on the greater of (a) 8.95% or (b) US WSJ Prime + 5.70%) to not exceed 10.70%.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 938,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Three Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     "",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     ""
+    ],
+    [
+     "Interest Expense\n\n",
+     "$",
+     "1,874,674\n\n",
+     "$",
+     "1,156,458\n\n",
+     "$",
+     "2,998,632\n\n",
+     "$",
+     "2,300,208\n\n"
+    ],
+    [
+     "Amortization of final payment fee\n\n",
+     "",
+     "160,179\n\n",
+     "",
+     "149,281\n\n",
+     "",
+     "258,039\n\n",
+     "",
+     "292,870\n\n"
+    ],
+    [
+     "Amortization of debt discount related issuance costs and warrants\n\n",
+     "",
+     "299,486\n\n",
+     "",
+     "132,508\n\n",
+     "",
+     "424,983\n\n",
+     "",
+     "267,882\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 973,
+    "end_line": 987
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Loan and Security Agreement"
+    }
+   },
+   "prose_before": "The Company may, at its option prepay the term loans in full or in part, subject to a prepayment penalty equal to (i) 2.0% of the principal amount prepaid if the prepayment occurs prior to the first anniversary of the First Amendment Closing Date, (ii) 1.5% of the principal amount prepaid if the prepayment occurs on or after the first anniversary and prior to the second anniversary of the First Amendment Closing Date, and (iii) 1.0% of the principal amount prepaid if the prepayment occurs on or after the second anniversary and prior to the third anniversary of the First Amendment Closing Date. These percentages are unchanged from the First Amendment to the Loan Agreement.\nThe Company evaluated whether the Hercules Term Loan entered into in March 2022 represented a debt modification or extinguishment in accordance with ASC 470-50, Debt \u2013 Modifications and Extinguishments. As the present value of the cash flows under the terms of the Second Amendment to the Hercules Agreement is less than 10% different from the remaining cash flows under the terms of the First amendment, the Second Amendment was accounted for as a debt modification. The unamortized balance of debt discount costs incurred in connection with those loans and additional debt discount costs incurred in connection with entry into the Hercules Second Amendment to the Loan Agreement, are being amortized through maturity in October 2026 utilizing the effective interest rate method.\nLoan Interest Expense and Amortization\nThe interest expense, amortization expense for the final payment fee and debt discount related to the issuance costs and warrants for our debt is as follows:",
+   "prose_after": "The outstanding debt and unamortized debt discount balances are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "June 30,\n2022\n\n",
+     "",
+     " ",
+     "December 31,\n2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Total Outstanding Debt\n\n",
+     "$",
+     "95,000,000\n\n",
+     "",
+     "$",
+     "50,000,000\n\n",
+     ""
+    ],
+    [
+     "Add: accreted liability of final payment fee\n\n",
+     "",
+     "952,722\n\n",
+     "",
+     "",
+     "706,407\n\n",
+     ""
+    ],
+    [
+     "Less: unamortized debt discount, long-term\n\n",
+     "",
+     "(2,493,898)",
+     "",
+     "",
+     "(1,616,885)",
+     ""
+    ],
+    [
+     "Less: current portion of long-term debt\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Loan payable, long-term\n\n",
+     "$",
+     "93,458,824\n\n",
+     "",
+     "$",
+     "49,089,522\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 990,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Loan and Security Agreement"
+    }
+   },
+   "prose_before": "The outstanding debt and unamortized debt discount balances are as follows:",
+   "prose_after": "Scheduled Principal Payments on Outstanding Debt, as of June 30, 2022, are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "2023\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "2024\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "2025\n\n",
+     "",
+     "15,202,884\n\n"
+    ],
+    [
+     "2026\n\n",
+     "",
+     "79,797,116\n\n"
+    ],
+    [
+     "Total principal payments outstanding\n\n",
+     "$",
+     "95,000,000\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Loan and Security Agreement"
+    }
+   },
+   "prose_before": "Scheduled Principal Payments on Outstanding Debt, as of June 30, 2022, are as follows:",
+   "prose_after": "The Company was in compliance with all covenants and requirements of its financing arrangements as of and during the six months ended June 30, 2022.\nNote 10. Net Loss per Common Share\nThe following table sets forth the computation of basic and diluted net loss per common share:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Three Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " ",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Basic and diluted net loss per common share:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(41,438,516)",
+     "",
+     "$",
+     "(32,284,209)",
+     "",
+     "$",
+     "(81,070,827)",
+     "",
+     "$",
+     "(61,544,179)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding\u2014basic\n   and diluted\n\n",
+     "",
+     "39,081,100\n\n",
+     "",
+     "",
+     "37,595,069\n\n",
+     "",
+     "",
+     "38,704,227\n\n",
+     "",
+     "",
+     "37,512,716\n\n",
+     ""
+    ],
+    [
+     "Net loss per common share\u2014basic and diluted\n\n",
+     "$",
+     "(1.06)",
+     "",
+     "$",
+     "(0.86)",
+     "",
+     "$",
+     "(2.09)",
+     "",
+     "$",
+     "(1.64)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1034,
+    "end_line": 1053
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "The Company was in compliance with all covenants and requirements of its financing arrangements as of and during the six months ended June 30, 2022.\nNote 10. Net Loss per Common Share\nThe following table sets forth the computation of basic and diluted net loss per common share:",
+   "prose_after": "The following potentially dilutive securities outstanding at June 30, 2022 and 2021 have been excluded from the computation of diluted weighted average shares outstanding, as they would be anti-dilutive:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     ""
+    ],
+    [
+     "Stock options\n\n",
+     "",
+     "6,522,561\n\n",
+     "",
+     "4,461,985\n\n"
+    ],
+    [
+     "Restricted stock units\n\n",
+     "",
+     "713,311\n\n",
+     "",
+     "309,126\n\n"
+    ],
+    [
+     "Warrants\n\n",
+     "",
+     "50,796\n\n",
+     "",
+     "15,541\n\n"
+    ],
+    [
+     "Total\n\n",
+     "",
+     "7,286,668\n\n",
+     "",
+     "4,786,652\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1056,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "The following potentially dilutive securities outstanding at June 30, 2022 and 2021 have been excluded from the computation of diluted weighted average shares outstanding, as they would be anti-dilutive:",
+   "prose_after": "Note 11. Commitments and Contingencies\nOperating Leases\nFor the three and six months ended June 30, 2022 and 2021, the Company had the following operating lease expense:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     " ",
+     "Three Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     " ",
+     "Statement of Operations Location\n\n",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     "",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     ""
+    ],
+    [
+     "Operating lease expense\n\n",
+     "General and administrative\n\n",
+     "",
+     "290,769\n\n",
+     "",
+     "286,923\n\n",
+     "",
+     "581,538\n\n",
+     "",
+     "573,846\n\n"
+    ],
+    [
+     "Total operating lease expense\n\n",
+     " ",
+     "",
+     "290,769\n\n",
+     "",
+     "286,923\n\n",
+     "",
+     "581,538\n\n",
+     "",
+     "573,846\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1082,
+    "end_line": 1096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Note 11. Commitments and Contingencies\nOperating Leases\nFor the three and six months ended June 30, 2022 and 2021, the Company had the following operating lease expense:",
+   "prose_after": "Future minimum lease payments of the Company\u2019s operating leases as of June 30, 2022 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022\n\n",
+     "$",
+     "615,000\n\n",
+     ""
+    ],
+    [
+     "2023\n\n",
+     "",
+     "105,000\n\n",
+     ""
+    ],
+    [
+     "2024\n\n",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "2025\n\n",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Thereafter\n\n",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Total lease payments\n\n",
+     "",
+     "720,000\n\n",
+     ""
+    ],
+    [
+     "Less imputed interest\n\n",
+     "",
+     "(10,880)",
+     ""
+    ],
+    [
+     "Present value of operating lease liabilities\n\n",
+     "$",
+     "709,120\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1099,
+    "end_line": 1120
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Future minimum lease payments of the Company\u2019s operating leases as of June 30, 2022 were as follows:",
+   "prose_after": "In January 2022, the Company entered into an agreement to extend the lease of 22 Cortlandt Street for a term of six months from August 1, 2022 through January 31, 2023. As of June 30, 2022, the remaining lease term for our operating lease was 0.6 years with a discount rate of 6.0%. The interest rate implicit in lease contracts is typically not readily determinable and as such, the Company uses its incremental borrowing rate based on the information available at the lease commencement date, which represents an internally developed rate that would be incurred to borrow, on a collateralized basis, over a similar term, an amount equal to the lease payments in a similar economic environment.\nNote 12. Stockholders\u2019 Equity\nCapital Structure\nIn December 2019, the Company entered into the December 2019 Sales Agreement with SVB Leerink, pursuant to which the Company may sell up to $80 million in shares of the Company\u2019s common stock from time to time through SVB Leerink, acting as the Company\u2019s sales agent, in one or more at-the-market offerings utilizing the 2019 Shelf Registration Statement. SVB Leerink is entitled to receive a commission of 3.0% of the gross proceeds for any shares sold under the December 2019 Sales Agreement. The December 2019 Sales Agreement was replaced by the March 2022 Sales Agreement (see below).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Number\nof shares\n\n",
+     "",
+     " ",
+     "Weighted\naverage\nexercise price\n\n",
+     "",
+     "Weighted\naverage\ncontractual\nterm\n\n",
+     "",
+     "Aggregate\nintrinsic\nvalue\n\n",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021\n\n",
+     "",
+     "5,090,377\n\n",
+     "",
+     "$",
+     "28.89\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "1,590,426\n\n",
+     "",
+     "",
+     "31.62\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Exercised\n\n",
+     "",
+     "(24,706)",
+     "",
+     "",
+     "14.49\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(111,376)",
+     "",
+     "",
+     "41.51\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Expired\n\n",
+     "",
+     "(22,160)",
+     "",
+     "",
+     "46.50\n\n",
+     " ",
+     "",
+     " ",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2022\n\n",
+     "",
+     "6,522,561\n\n",
+     "",
+     "$",
+     "28.98\n\n",
+     "",
+     "7.5\n\n",
+     "$",
+     "95,081,479\n\n"
+    ],
+    [
+     "Vested and expected to vest at June 30, 2022\n\n",
+     "",
+     "6,522,561\n\n",
+     "",
+     "$",
+     "28.98\n\n",
+     "",
+     "7.5\n\n",
+     "$",
+     "95,081,479\n\n"
+    ],
+    [
+     "Exercisable at June 30, 2022\n\n",
+     "",
+     "3,170,564\n\n",
+     "",
+     "$",
+     "17.70\n\n",
+     "",
+     "5.8\n\n",
+     "$",
+     "76,800,643\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1152,
+    "end_line": 1180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "On December 5, 2019, the Company filed an automatic shelf registration statement (\u201c2019 Shelf Registration\u201d) with the Securities and Exchange Commission (\u201cSEC\u201d) for the issuance of common stock, preferred stock, warrants, rights, debt securities and units. It became effective upon filing with the SEC and is currently the Company\u2019s only active shelf registration. Through the date of this report, the Company has issued common stock of approximately $292.9 million pursuant to such shelf registration statement.\nUnder SEC rules, the 2019 Shelf Registration Statement allows for the potential future offer and sale by the Company, from time to time, in one or more public offerings, of an indeterminate amount of the Company\u2019s common stock, preferred stock, debt securities, and units at indeterminate prices. At the time any of the securities covered by the 2019 Shelf Registration Statement are offered for sale, a prospectus supplement will be prepared and filed with the SEC containing specific information about the terms of any such offering.\nEquity Incentive Plans\nThere were 3,341,813 shares available for the issuance of stock options or stock-based awards under the Company\u2019s 2015 Omnibus Incentive Compensation Plan at June 30, 2022.\nStock Options\nThe following table sets forth the stock option activity for the six months ended June 30, 2022:",
+   "prose_after": "The fair value of each stock option grant is estimated on the date of grant using the Black-Scholes option pricing model. The expected term of the Company\u2019s stock options has been determined utilizing the \u201csimplified\u201d method as described in the SEC\u2019s Staff Accounting Bulletin No. 107 relating to stock-based compensation. The simplified method was chosen because the Company has limited historical option exercise experience due to its short operating history. The risk-free interest rate is based on the U.S. Treasury yield in effect at the time of grant for a period approximately equal to the expected term of the award. Expected dividend yield is based on the fact that the Company has never paid cash dividends and does not expect to pay any cash dividends in the foreseeable future. Expected volatility is based on historical volatilities of similar entities within the Company\u2019s industry which were commensurate with the Company\u2019s expected term assumption.\nThe weighted average grant date fair value of options granted was $23.70 per option for the six months ended June 30, 2022. As of June 30, 2022, there was $90.3 million of total unrecognized compensation cost related to non-vested stock options which is expected to be recognized over a weighted average period of 3.1 years. These amounts do not include 6,169 options outstanding as of June 30, 2022, which are performance-based and vest upon the achievement of certain corporate milestones. Stock\u2011based compensation will be measured and recorded if and when it is probable that the milestone will occur.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "Number\nof shares\n\n",
+     "",
+     " ",
+     "Weighted\naverage\ngrant date\nfair value\n\n",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021\n\n",
+     "",
+     "302,764\n\n",
+     "",
+     "$",
+     "42.93\n\n"
+    ],
+    [
+     "Granted\n\n",
+     "",
+     "482,793\n\n",
+     "",
+     "",
+     "23.85\n\n"
+    ],
+    [
+     "Vested\n\n",
+     "",
+     "(63,330)",
+     "",
+     "",
+     "42.19\n\n"
+    ],
+    [
+     "Forfeited\n\n",
+     "",
+     "(8,916)",
+     "",
+     "",
+     "40.51\n\n"
+    ],
+    [
+     "Outstanding at June 30, 2022\n\n",
+     "",
+     "713,311\n\n",
+     "",
+     "$",
+     "30.12\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1192,
+    "end_line": 1212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "The weighted average grant date fair value of options granted was $23.70 per option for the six months ended June 30, 2022. As of June 30, 2022, there was $90.3 million of total unrecognized compensation cost related to non-vested stock options which is expected to be recognized over a weighted average period of 3.1 years. These amounts do not include 6,169 options outstanding as of June 30, 2022, which are performance-based and vest upon the achievement of certain corporate milestones. Stock\u2011based compensation will be measured and recorded if and when it is probable that the milestone will occur.\nRestricted Stock Units\nIn 2020, the Company began granting RSUs covering an equal number of its shares of common stock to employees. The fair value of RSUs is determined on the date of the grant based on the market price of its shares of common stock as of that date. The fair value of the RSUs is recognized as an expense ratably over the vesting period of four years. As of June 30, 2022, total compensation cost not yet recognized related to unvested RSUs was $19.2 million, which is expected to be recognized over a weighted-average period of 3.3 years.\nThe following table sets forth the RSU activity for the six months ended June 30, 2022:",
+   "prose_after": "Stock-based compensation expense recognized for the three and six months ended June 30, 2022 and 2021 was allocated as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\n\n",
+     "Three Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\n\n",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     "",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "$",
+     "2,679,848\n\n",
+     "$",
+     "2,302,504\n\n",
+     "$",
+     "4,489,325\n\n",
+     "$",
+     "3,836,899\n\n"
+    ],
+    [
+     "General and administrative\n\n",
+     "",
+     "7,481,830\n\n",
+     "",
+     "3,153,738\n\n",
+     "",
+     "13,270,682\n\n",
+     "",
+     "5,350,440\n\n"
+    ],
+    [
+     "Total\n\n",
+     "$",
+     "10,161,678\n\n",
+     "$",
+     "5,456,242\n\n",
+     "$",
+     "17,760,007\n\n",
+     "$",
+     "9,187,339\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1215,
+    "end_line": 1231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "Stock-based compensation expense recognized for the three and six months ended June 30, 2022 and 2021 was allocated as follows:",
+   "prose_after": "Warrants\nThe following table summarizes warrant activity for the six months ended June 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     " ",
+     "",
+     "Weighted\n\n",
+     ""
+    ],
+    [
+     " ",
+     " ",
+     "",
+     "average\n\n",
+     ""
+    ],
+    [
+     " ",
+     "Warrants\n\n",
+     "",
+     "exercise price\n\n",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021\n\n",
+     "",
+     "15,541\n\n",
+     "$",
+     "80.43\n\n"
+    ],
+    [
+     "Issued\n\n",
+     "",
+     "35,255\n\n",
+     "",
+     "31.91\n\n"
+    ],
+    [
+     "Exercised\n\n",
+     "",
+     "\u2014\n\n",
+     "",
+     "\u2014\n\n"
+    ],
+    [
+     "Outstanding at June 30, 2022\n\n",
+     "",
+     "50,796\n\n",
+     "$",
+     "46.75\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1236,
+    "end_line": 1255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "Warrants\nThe following table summarizes warrant activity for the six months ended June 30, 2022:",
+   "prose_after": "Outstanding Warrants\nIn connection with the entry into the Second Amendment, Hercules received warrants to purchase an aggregate 35,255 shares of the Company\u2019s common stock at an exercise price of $31.91 per share (\"2022 warrants\") and in connection with the first advance of the 2020 Term Loan, Hercules received warrants to purchase an aggregate 15,541 shares of the Company\u2019s common stock at an exercise price of $80.43 per share (\"2020 warrants\").\nBoth the 2022 warrants and 2020 warrants were priced using the volume weighted average price of the Company\u2019s common stock over the ten-day trading period immediately preceding the initial closing, subject to certain limited adjustments as specified in the warrant. The warrants are exercisable for seven years from the date of issuance. The warrants were classified as a component of stockholders\u2019 equity. The relative fair value of the warrants of approximately $0.8 million for the 2022 warrants and $0.9 million for the 2020 warrants at the time of issuance, which was determined using the Black-Scholes option-pricing model, was recorded as additional paid-in capital and reduced the carrying value of the debt. The discount on the debt is being amortized to interest expense over the term of the debt utilizing the effective interest rate method.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Three Months Ended\n\n",
+     "",
+     "",
+     "",
+     "Six Months Ended\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     "",
+     "June 30,\n\n",
+     "",
+     "",
+     ""
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     "",
+     "2022\n\n",
+     "",
+     "2021\n\n",
+     ""
+    ],
+    [
+     "Sunosi\n\n",
+     "$",
+     "964,353\n\n",
+     "$",
+     "\u2014\n\n",
+     "$",
+     "964,353\n\n",
+     "$",
+     "\u2014\n\n"
+    ],
+    [
+     "AXS-05\n\n",
+     "",
+     "6,483,993\n\n",
+     "",
+     "2,184,776\n\n",
+     "",
+     "12,514,433\n\n",
+     "",
+     "12,228,922\n\n"
+    ],
+    [
+     "AXS-07\n\n",
+     "",
+     "2,202,943\n\n",
+     "",
+     "7,290,067\n\n",
+     "",
+     "4,349,430\n\n",
+     "",
+     "9,821,616\n\n"
+    ],
+    [
+     "AXS-12\n\n",
+     "",
+     "1,641,781\n\n",
+     "",
+     "819,569\n\n",
+     "",
+     "3,523,317\n\n",
+     "",
+     "1,553,427\n\n"
+    ],
+    [
+     "AXS-14\n\n",
+     "",
+     "703,102\n\n",
+     "",
+     "4,039\n\n",
+     "",
+     "944,449\n\n",
+     "",
+     "4,039\n\n"
+    ],
+    [
+     "Other research and development\n\n",
+     "",
+     "1,116,182\n\n",
+     "",
+     "1,902,371\n\n",
+     "",
+     "1,592,036\n\n",
+     "",
+     "3,654,111\n\n"
+    ],
+    [
+     "Stock-based compensation\n\n",
+     "",
+     "2,679,848\n\n",
+     "",
+     "2,302,504\n\n",
+     "",
+     "4,489,325\n\n",
+     "",
+     "3,836,899\n\n"
+    ],
+    [
+     "Total research and development expenses\n\n",
+     "$",
+     "15,792,202\n\n",
+     "$",
+     "14,503,326\n\n",
+     "$",
+     "28,377,343\n\n",
+     "$",
+     "31,099,014\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1375,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Royalty Agreements"
+    }
+   },
+   "prose_before": "Management considers many factors in developing the estimates and assumptions that are used in the preparation of these financial statements. Management must apply significant judgment in this process. In addition, other factors may affect estimates, including expected business and operational changes, sensitivity and volatility associated with the assumptions used in developing estimates, and whether historical trends are expected to be representative of future trends. The estimation process often may yield a range of potentially reasonable estimates of the ultimate future outcomes and management must select an amount that falls within that range of reasonable estimates. This process may result in actual results differing materially from those estimated amounts used in the preparation of the financial statements if these results differ from historical experience, or other assumptions do not turn out to be substantially accurate, even if such assumptions are reasonable when made.\nThe following table summarizes our research and development expenses for our primary products for the three and six months ended June 30, 2022 and 2021:",
+   "prose_after": "During the six months ended June 30 2021, the category \"Other research and development expenses\" primarily consisted of employee salaries and benefits, facilities, and overhead costs. Beginning July 2021, employee salaries and benefits were allocated to specific products.\nSelling, general and administrative expenses\nSelling, general and administrative expenses primarily consist of salaries and related costs for personnel in executive, commercial, finance, and operational functions, including stock-based compensation and travel expenses. Also included in general and administrative expenses are pre-commercialization costs, facility-related costs, insurance expense, professional fees for legal and accounting services, and patent filing and prosecution costs. Selling, general and administrative expenses are expensed when incurred.\nInterest income (expense)\nInterest income (expense) primarily consists of cash interest and non-cash costs related to our term loans (see \u201cLiquidity and Capital Resources\u201d below for a further discussion). We amortize these costs over the term of our debt agreements as interest expense in our consolidated statement of operations. Interest income (expense) also includes interest income earned on cash.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1368,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1414,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Three Months\n\n",
+     "",
+     "",
+     "",
+     "",
+     " ",
+     "Six Months Ended\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " ",
+     "June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Revenues:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Product sales, net\n\n",
+     "$",
+     "8,819,786\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     "",
+     "$",
+     "8,819,786\n\n",
+     "",
+     "$",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Operating expenses:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Cost of product sales (excluding amortization and depreciation)\n\n",
+     "",
+     "982,836\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "982,836\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Research and development\n\n",
+     "",
+     "15,792,202\n\n",
+     "",
+     "",
+     "14,503,326\n\n",
+     "",
+     "",
+     "28,377,343\n\n",
+     "",
+     "",
+     "31,099,014\n\n",
+     ""
+    ],
+    [
+     "Selling, general and administrative\n\n",
+     "",
+     "31,160,140\n\n",
+     "",
+     "",
+     "16,344,361\n\n",
+     "",
+     "",
+     "56,863,871\n\n",
+     "",
+     "",
+     "27,592,734\n\n",
+     ""
+    ],
+    [
+     "Gain in fair value of contingent consideration\n\n",
+     "",
+     "(860,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "(860,000)",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Intangible asset amortization\n\n",
+     "",
+     "925,650\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     "",
+     "",
+     "925,650\n\n",
+     "",
+     "",
+     "\u2014\n\n",
+     ""
+    ],
+    [
+     "Total operating expenses\n\n",
+     "",
+     "48,000,828\n\n",
+     "",
+     "",
+     "30,847,687\n\n",
+     "",
+     "",
+     "86,289,700\n\n",
+     "",
+     "",
+     "58,691,748\n\n",
+     ""
+    ],
+    [
+     "Loss from operations\n\n",
+     "",
+     "(39,181,042)",
+     "",
+     "",
+     "(30,847,687)",
+     "",
+     "",
+     "(77,469,914)",
+     "",
+     "",
+     "(58,691,748)",
+     ""
+    ],
+    [
+     "Interest income (expense)\n\n",
+     "",
+     "(2,257,474)",
+     "",
+     "",
+     "(1,436,522)",
+     "",
+     "",
+     "(3,600,913)",
+     "",
+     "",
+     "(2,852,431)",
+     ""
+    ],
+    [
+     "Net loss\n\n",
+     "$",
+     "(41,438,516)",
+     "",
+     "$",
+     "(32,284,209)",
+     "",
+     "$",
+     "(81,070,827)",
+     "",
+     "$",
+     "(61,544,179)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1426,
+    "end_line": 1464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Royalty Agreements"
+    }
+   },
+   "prose_before": "This discussion and analysis of our financial condition and results of operations is based on our consolidated financial statements, which have been prepared in accordance with generally accepted accounting principles in the United States of America, or U.S. GAAP. The preparation of these consolidated financial statements requires us to make estimates and assumptions that affect the reported amounts of assets and liabilities, disclosure of contingent assets and liabilities at the date of the consolidated financial statements and the reported amounts of expenses during the reported period. In accordance with GAAP, we base our estimates on historical experience and on various other assumptions that we believe are reasonable under the circumstances. Actual results may differ from these estimates under different assumptions or conditions.\nThere have been material changes to our critical accounting policies since the beginning of our fiscal year. We believe that our most critical accounting policies are those relating to variable consideration associated with revenue recognition, business combinations and contingent consideration. Our critical accounting policies are described in the notes to the consolidated financial statements appearing elsewhere in this Quarterly Report on Form 10-Q.\nResults of Operations\nThe following table summarizes our results of operations for the periods indicated:",
+   "prose_after": "Comparison of the three months ended June 30, 2022 and 2021\nProduct sales, net. We acquired the U.S. rights to Sunosi from Jazz on May 9, 2022. We sold Sunosi in the United States through a single 3PL. The 3PL distributes the product to wholesale distributors with whom we have entered into formal distribution agreements.\nCost of product sales. In connection with the Sunosi acquisition, we acquired inventory which was sold through our 3PL as described above. This also includes the royalty expense to SK and Aerial.\nResearch and Development Expenses. Our research and development expenses for the three months ended June 30, 2022 were $15.8 million, compared to $14.5 million for the three months ended June 30, 2021, an increase of $1.3 million. The increase was driven by expenses related to personnel expense and ongoing clinical trial costs.\nSelling, general and administrative Expenses. Our selling, general and administrative expenses for the three months ended June 30, 2022 were $31.2 million, compared to $16.3 million for the three months ended June 30, 2021, an increase of $14.9 million. The increase was primarily related to pre-commercial activities, commercial activities for the Sunosi acquisition, personnel expense, along with an increase in non-cash stock compensation expense.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1421,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1481,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "Six Months Ended June 30,\n\n",
+     "",
+     "",
+     "",
+     "",
+     " "
+    ],
+    [
+     " ",
+     "2022\n\n",
+     "",
+     " ",
+     "2021\n\n",
+     "",
+     " "
+    ],
+    [
+     "Net cash (used in) provided by:\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Operating activities\n\n",
+     "$",
+     "(66,189,636)",
+     "",
+     "$",
+     "(52,609,042)",
+     ""
+    ],
+    [
+     "Investing activities\n\n",
+     "",
+     "(53,455,195)",
+     "",
+     "",
+     "(48,872)",
+     ""
+    ],
+    [
+     "Financing activities\n\n",
+     "",
+     "106,566,617\n\n",
+     "",
+     "",
+     "10,000,551\n\n",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash\n\n",
+     "$",
+     "(13,078,214)",
+     "",
+     "$",
+     "(42,657,363)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1521,
+    "end_line": 1541
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Royalty Agreements"
+    }
+   },
+   "prose_before": "In the future, we may conduct additional offerings of one or more of the securities covered by the 2019 Shelf Registration Statement in such amounts, prices and terms to be announced when and if the securities are offered. At the time any of our securities covered by the 2019 Shelf Registration Statement are offered for sale, a prospectus supplement will be prepared and filed with the SEC containing specific information about the terms of any such offering.\nWe believe that our current available cash, along with the remaining committed capital from the $300 million term loan facility, is sufficient to fund anticipated operations into 2024, based on the current operating plan, which includes the potential launch of AXS-05 in MDD and the commercialization of Sunosi. Because the process of commercializing products and evaluating product candidates in clinical trials is costly and the timing of progress in these trials is uncertain, it is possible that the assumptions upon which we have based this estimate may prove to be wrong, and we could use our capital resources sooner than we currently expect.\nCash Flows\nThe following table summarizes our primary sources and uses of cash for the periods indicated:",
+   "prose_after": "Operating Activities. Cash used in operating activities for the six months ended June 30, 2022 was $66.2 million as compared to $52.6 million for the six months ended June 30, 2021. The increase of $13.6 million in net cash used was mainly due to the commercialization activities.\nInvesting Activities. Cash used in investing activities for the six months ended June 30, 2022 was $53.5 million and was less than $0.1 million for the six months ended June 30, 2021. The increase was due to the Sunosi acquisition for $53 million.\nFinancing Activities. Cash provided by financing activities was $106.6 million for the six months ended June 30, 2022, which included net proceeds from Tranche 1B related to the Second Amendment of the Loan and Security Agreement with Hercules of $45.0 million along with the purchase of 152,487 shares of our common stock for a total consideration of $5.0 million by Hercules, the sale of common stock through our Sales Agreement with SVB Securities of $56.8 million and proceeds from the issuance of common stock upon exercise of employee stock options of $0.4 million. Cash provided by financing activities was $10.0 million for the six months ended June 30, 2021, which included net proceeds from the sale of common stock through our Sales Agreement with SVB Securities of $7.2 million and proceeds from the issuance of common stock upon exercise of employee stock options of $2.9 million, offset by cash paid out related to tax withholdings on stock awards of $0.08 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1542,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\nNumber\n\n",
+     "Description\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "10.1**\n\n",
+     "Form of Warrant Agreement, dated as of May 9, 2022, between Axsome Therapeutics, Inc. and Hercules Capital, Inc. \n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "10.2**\n\n",
+     "Share Transfer Agreement, dated as of May 9, 2022, by and between Axsome Therapeutics, Inc., Hercules Capital, Inc., Hercules Private Global Venture Growth Fund I L.P., and Hercules Private Credit Fund I L.P. \n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "31.1**\n\n",
+     "Certification of Principal Executive Officer pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "31.2**\n\n",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "32.1**\n\n",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. \u00a71350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith).\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "32.2**\n\n",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. \u00a71350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith).\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.INS\n\n",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.SCH\n\n",
+     "Inline XBRL Taxonomy Extension Schema Document\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.CAL\n\n",
+     "Inline XBRL Taxonomy Extension Calculation Database Document\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.DEF\n\n",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.LAB\n\n",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "101.PRE\n\n",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document\n\n"
+    ],
+    [
+     " ",
+     " "
+    ],
+    [
+     "104\n\n",
+     "Cover Page Interactive Data File (formatted as inline XBRL with applicable taxonomy extension information contained in Exhibits 101.)\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2901,
+    "end_line": 2935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Royalty Agreements"
+    }
+   },
+   "prose_before": "Any person or entity purchasing or otherwise acquiring any interest in shares of our capital stock shall be deemed to have notice of and to have consented to the provisions of our amended and restated certificate of incorporation described above. This choice of forum provision may limit a stockholder\u2019s ability to bring a claim in a judicial forum that it finds favorable for disputes with us or our directors, officers, or other employees or agents, which may discourage such lawsuits against us and our directors, officers, employees, and agents. Further, this choice of forum provision does not preclude or contract the scope of exclusive federal or concurrent jurisdiction for any actions brought under the Securities Act or the Exchange Act. Section 27 of the Exchange Act creates exclusive federal jurisdiction over all suits brought to enforce any duty or liability created by the Exchange Act or the rules and regulations thereunder. As a result, the exclusive forum provision will not apply to suits brought to enforce any duty or liability created by the Exchange Act or any other claim for which the federal courts have exclusive jurisdiction. In addition, Section 22 of the Securities Act creates concurrent jurisdiction for federal and state courts over all suits brought to enforce any duty or liability created by the Securities Act or the rules and regulations thereunder. As a result, the exclusive forum provision will not apply to suits brought to enforce any duty or liability created by the Securities Act or any other claim for which the federal and state courts have concurrent jurisdiction. Accordingly, our exclusive forum provision will not relieve us of our duties to comply with the federal securities laws and the rules and regulations thereunder, and our stockholders will not be deemed to have waived our compliance with these laws, rules and regulations.\nIf a court were to find these provisions of our amended and restated certificate of incorporation inapplicable to, or unenforceable in respect of, one or more of the specified types of actions or proceedings, we may incur additional costs associated with resolving such matters in other jurisdictions, which could adversely affect our business, financial condition, and results of operations. Even if we are successful in defending against these claims, litigation could result in substantial costs and be a distraction to management and other employees.\nItem 6. Exhibits.\nThe exhibits filed as part of this Quarterly Report on Form 10-Q are set forth on the Exhibit Index, which is incorporated herein by reference.\nINDEX OF EXHIBITS",
+   "prose_after": "**Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2894,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 98
+    },
+    "after": {
+     "line": 2938,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 99
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     " ",
+     "AXSOME THERAPEUTICS, INC.\n\n",
+     ""
+    ],
+    [
+     " ",
+     " ",
+     " "
+    ],
+    [
+     "Date: August 9, 2022\n\n",
+     "By\n\n",
+     "/s/ Herriot Tabuteau, M.D.\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "Herriot Tabuteau, M.D.\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "President and Chief Executive Officer\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "(Principal Executive Officer)\n\n"
+    ],
+    [
+     " ",
+     " ",
+     " "
+    ],
+    [
+     " ",
+     " ",
+     " "
+    ],
+    [
+     "Date: August 9, 2022 \n\n",
+     "By\n\n",
+     "/s/ Nick Pizzie\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "Nick Pizzie\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "Chief Financial Officer\n\n"
+    ],
+    [
+     " ",
+     " ",
+     "(Principal Financial and Accounting Officer)\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "AXSOME THERAPEUTICS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2943,
+    "end_line": 2965
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Royalty Agreements"
+    }
+   },
+   "prose_before": "**Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2938,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 99
+    },
+    "after": {
+     "line": 2966,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 100
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4471 @@
+{
+ "accession": "0001144204-11-022553",
+ "cik": "0001451598",
+ "form": "10-K",
+ "filing_date": "2011-04-15",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v218805_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "26-1359430"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\nIdentification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "95 Morton Street, Ground Floor\n\nNew York, New York 10014\n\n(Address of principal executive offices)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(212) 268-0220\n\n(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2010\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________________ to _________________\nCommission File Number: 000-53640\nTHWAPR, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Sections 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 15,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     "Number"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "DESCRIPTION OF THE BUSINESS",
+     "1"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "8"
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "13"
+    ],
+    [
+     "ITEM 2.",
+     "DESCRIPTION OF PROPERTY",
+     "14"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEDINGS",
+     "14"
+    ],
+    [
+     "ITEM 4.",
+     "SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERES AND PURCHASE OF EQUITY SECURITIES",
+     "15"
+    ],
+    [
+     "ITEM 6.",
+     "SELECTED FINANCIAL DATA",
+     "15"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESRESULTS OF OPERATIONS",
+     "15"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "18"
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS",
+     "18"
+    ],
+    [
+     "",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL MATTERS",
+     "18"
+    ],
+    [
+     "ITEM 9.",
+     "FINANCIAL MATTERS",
+     "18"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "18"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS, PROMOTORS AND CORPORATE GOVERNANCE",
+     "20"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "21"
+    ],
+    [
+     "ITEM 12.",
+     "RELATED STOCKHOLDER MATTERS",
+     "23"
+    ],
+    [
+     "",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE",
+     "24"
+    ],
+    [
+     "ITEM 13.",
+     "INDEPENDENCE",
+     "24"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Number",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definitions of \u201clarger accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nThe number of shares outstanding of the registrant\u2019s common stock at April 15, 2011 was 53,619,128.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nINDEX",
+   "prose_after": "ii\nPART I\nITEM 1. DESCRIPTION OF THE BUSINESS\nGeneral\nThe primary purpose of the Company is to develop systems, applications and software that allow users and brands to share pictures and video to mobile phone users regardless of device, platform or carrier. Additionally the company expects to enable users to easily capture and share pictures and videos on their phones with other mobile and desktop users and in to social networks. The Company plans to derive revenues from banner and video advertising on its mobile and desktop websites and from mobile media messaging fees from brand sponsors and content owners. The company also plans to sell premium services to users and brands via subscriptions and other fees. In December 2009, the Company launched a public beta test of its service. The Company launched the service in 2010 but to date has not generated any meaningful revenues and will not generate such revenues until a significant number of users and brands have signed up for and are using the service. The product for \u201cbrands\u201d has recently launched and is expected to reach full revenue potential with the additional of a robust sales and marketing effort and team as part of new funding requirements and use of funds. This service was launched under the name of Thwapr, a trademark owned by the Company.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 30, 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended:",
+     "Common Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "March 31, 2010",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "June 30, 2010",
+     "$",
+     "1.48",
+     "$",
+     "0.87"
+    ],
+    [
+     "September 30, 2010",
+     "$",
+     "1.70",
+     "$",
+     "1.48"
+    ],
+    [
+     "December 31, 2010",
+     "$",
+     "1.83",
+     "$",
+     "1.72"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 30, 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND PURCHASE OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s corporate office is located at 95 Morton Street, Ground Floor, New York, NY 10014. We currently rent approximately 3,000 square feet on a month-to-month basis and are currently negotiating a new six month term for the space for approximately $8,000 per month. Additionally, we lease 340 square feet of office space at 1515 Hope Street, Suite 203, South Pasadena, CA 91030. This office is leased at month rent of $595 through June 30, 2011.\nITEM 3. LEGAL PROCEDINGS\nNone.\nITEM 4. SUBMISSION OF A MATTER TO A VOTE OF SECURITY HOLDERS\nNone.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND PURCHASE OF EQUITY SECURITIES\nSince April 21, 2010 our common stock is currently quoted on the over-the-counter bulletin board under the symbol \"THWI.OB\". The following table sets forth the range of high and low bid prices for our common stock during the periods indicated. The prices set forth below represent inter-dealer prices, which do not include retail mark-ups and markdowns, or any commission to the broker-dealer, and may not necessarily represent actual transactions.",
+   "prose_after": "As of April 15, 2010, there were approximately 53 record holders of our common stock, which does not include common stock held in \"nominee\" or \"street\" name.\nDIVIDENDS\nWe have never declared or paid a cash dividend on our common stock and do not anticipate declaring or paying cash dividends to shareholders in the foreseeable future.\nITEM 6. SELECTED FINANCIAL DATA\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion and analysis compares our results of operations for the year ended December 31, 2010 to the same period in 2009. This discussion and analysis should be read in conjunction with the consolidated financial statements and notes thereto.\nCAUTIONARY STATEMENT CONCERNING FORWARD-LOOKING STATEMENTS\nThis Report on Form 10-K contains forward-looking statements, including, without limitation, statements concerning our possible or assumed future results of operations. These statements are preceded by, followed by or include the words \"believes,\" \"could,\" \"expects,\" \"intends\" \"anticipates,\" or similar expressions. Our actual results could differ materially from those anticipated in the forward-looking statements for many reasons including, but not limited to, product and service demand and acceptance, changes in technology, ability to raise capital, the availability of appropriate acquisition candidates and/or business partnerships, economic conditions, the impact of competition and pricing, capacity and supply constraints or difficulties, government regulation and other risks described in this report. Although we believe the expectations reflected in the forward-looking statements are reasonable, they relate only to events as of the date on which the statements are made, and our future results, levels of activity, performance or achievements may not meet these expectations. We do not intend to update any of the forward-looking statements after the date of this document to conform these statements to actual results or to changes in our expectations, except as required by law.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "POSITION WITH COMPANY",
+     "YEAR BECAME DIRECTOR",
+     "AGE"
+    ],
+    [
+     "Bruce Goldstein",
+     "Director, CEO and President",
+     "2010",
+     "62"
+    ],
+    [
+     "Barry Hall",
+     "Director, Chief Financial Officer and Secretary",
+     "2010",
+     "62"
+    ],
+    [
+     "Robert Rosenblatt",
+     "Director",
+     "2010",
+     "53"
+    ],
+    [
+     "Leonard Dreyer",
+     "Director",
+     "2010",
+     "67"
+    ],
+    [
+     "Bernadine A. Santistevan*",
+     "Director",
+     "2010",
+     "45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 644,
+    "end_line": 653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTIORS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "ii) We have not achieved the optimal level of segregation of duties relative to key financial reporting functions. The deficiency in our internal control is related to a lack of segregation of duties due to the size of the accounting department and the lack of experienced accountants due to the limited financial resources of the Company. We continue to actively search for additional capital in order to be in position to add the necessary staff to address this material weakness. We are also assessing how we can improve our internal control over financial reporting with the current number of employees in an effort to remediate this lack of segregation of duties.\niii) We did not perform an entity level risk assessment to evaluate the implication of relevant risks on financial reporting, including the impact of potential fraud related risks and the risks related to non-routine transactions, if any, on our internal control over financial reporting. Lack of an entity-level risk assessment constituted an internal control design deficiency which resulted in more than a remote likelihood that a material error would not have been prevented or detected, and constituted a material weakness.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, PROMOTIORS AND CORPORATE GOVERNANCE\nEXECUTIVE OFFICERS AND DIRECTORS\nThe following table sets forth certain information concerning our directors and executive officers as of December 31, 2010:",
+   "prose_after": "The terms of the Board of Directors will expire at the next annual meeting of stockholders. Our officers are elected by the Board of Directors and hold office at the will of the Board.\n*Ms. Santistevan resigned from the Board of Directors on April 14, 2011 for personal reasons.\nBACKGROUND EXPERIENCE OF DIRECTORS AND OFFICERS\nBruce Goldstein. Since November 2008, Mr. Goldstein has served as the Chief Executive Officer of Thwapr. Prior to becoming CEO, Mr. Goldstein served as the acting President of Thwapr from March 2007 to November 2008. Mr. Goldstein has been a director of Thwapr since March 2007. Mr. Goldstein was appointed CEO pursuant to an agreement between Universal Management, Inc. and Thwapr dated November 2008. Mr. Goldstein concurrently serves as the President and CEO of Universal Management, Inc., where he has served for the past five years.\nBarry Hall. Since November 2008, Mr. Hall has served as the Chief Financial Officer of Thwapr. Mr. Hall had served as acting CFO of Thwapr from March 2007 to November 2008. Since March 2007, Mr. Hall has been a director of Thwapr. Mr. Hall was appointed CFO pursuant to a shareholder\u2019s agreement between Carlaris, Inc. (\u201cCarlaris\u201d) and Thwapr, dated November 2008. Mr. Hall concurrently serves as the President of Carlaris, which provides consulting services to Thwapr pursuant to a consulting agreement between Carlaris and Thwapr, dated April 1, 2009. Since May 2007, Mr. Hall has served as the President of Hall Manor, Inc., a California based management and financial consulting firm. From July 2004 until September 2006, Mr. Hall was the President and CFO of Trestle Holdings, Inc., a medical imaging device company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUMMARY COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and\n\nPrincipal",
+     "Year",
+     "Salary\n\n($)",
+     "",
+     "Bonus\n\n($)",
+     "",
+     "Stock\n\nAwards\n\n($)",
+     "",
+     "Option\n\nAwards\n\n($)",
+     "",
+     "Non-Equity\n\nIncentive\n\nPlan\n\nCompensation\n\n($)",
+     "",
+     "Non-qualified\n\nDeferred\n\nCompensation\n\nEarnings\n\n($)",
+     "",
+     "All Other\n\nCompen-\n\nsation\n\n($) (1)",
+     "",
+     "Total\n\n($)",
+     ""
+    ],
+    [
+     "Bruce Goldstein",
+     "2010",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "$",
+     "240,000",
+     "$",
+     "240,000"
+    ],
+    [
+     "Chief Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Barry Hall",
+     "2010",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "",
+     "\u2013\u2013",
+     "$",
+     "180,000",
+     "$",
+     "180,000"
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SUMMARY COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 698,
+    "end_line": 718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act, as amended, requires our executive officers, directors and persons who beneficially own more than 10% of our common stock to file reports of their beneficial ownership and changes in ownership (Forms 3, 4 and 5, and any amendment thereto) with the SEC. Executive officers, directors, and greater-than-ten percent holders are required to furnish us with copies of all Section 16(a) forms they file. Based on our review of the activity of our officers and directors for the fiscal year ended December 31, 2010, we believe Forms 3, 4 or 5 were timely filed.\nCODE OF ETHICS\nWe have adopted a Code of Ethics that applies to our principal executive officer and principal financial officer. A copy of the Code of Ethics is available on our website at http://corp.thwapr.com/codeofethics.aspx. We intend to disclose any amendment or waiver to the Code of Ethics on our website at http://corp.thwapr.com/codeofethics.aspx. We will provide to any person without charge, upon written request to our above address, a copy of such code of ethics.\nITEM 11. EXECUTIVE COMPENSATION\nCompensation of Executives\nThe following table shows for the fiscal year ended December 31, 2010 certain compensation information for our principal executive officer, principal financial officer. Other than our principal executive and principal financial officers serving during fiscal year 2010, we had no other reportable executive officers for the period.",
+   "prose_after": "(1) All Other Compensation consists solely of payments made to Executive Officers for consulting work.\nCompensation of Directors\nIn accordance with a compensation plan adopted by the Board in May 2010, all Independent Directors are compensated as follows\n\u00b7 Upon joining the Board Independent Directors are awarded One-time stock option grant of 500,000 on the date of election or appointment to the Board, at the prior day\u2019s closing market bid price on a formal offer is made to join the Board, vesting quarterly over three years.\n\u00b7 Annually, each Independent Director 300,000 stock options on the first business day of each fiscal year, at prior day\u2019s closing market bid price on the day of grant, vesting 25% at the end of each fiscal quarter.\n\u00b7 Board Members receive cash compensation of $500 for every meeting attended in person and $250 for every meeting attended telephonically.\n\u00b7 A Committee Chairperson is awarded 150,000 stock options granted at the inception of such member\u2019s tenure and 25,000 stock options granted on the first business day of each fiscal year served. Such grants will be made at prior day\u2019s closing market bid price on the day of grant, and will vest 25% at the end of each fiscal quarter.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\nPrincipal\n\nPosition",
+     "Stock\n\nOptions\n\nAwarded",
+     "",
+     "Exercise\n\nPrice ($)",
+     "",
+     "Number of\n\nOptions\n\nExercisable",
+     "",
+     "Option\n\nExpiration\n\nDate",
+     "Cash\n\nCompensation\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Rosenblatt",
+     "",
+     "1,500,000",
+     "$",
+     "0.42",
+     "",
+     "250,000",
+     "5/19/2015",
+     "$",
+     "625.00"
+    ],
+    [
+     "",
+     "",
+     "120,000",
+     "$",
+     "1.78",
+     "",
+     "-",
+     "11/12/2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leonard Dreyer",
+     "",
+     "1,500,000",
+     "$",
+     "0.42",
+     "",
+     "250,000",
+     "5/19/2015",
+     "$",
+     "625.00"
+    ],
+    [
+     "",
+     "",
+     "150,000",
+     "$",
+     "1.78",
+     "",
+     "-",
+     "11/12/2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bernadine A. Santistevan",
+     "",
+     "1,500,000",
+     "$",
+     "0.42",
+     "",
+     "250,000",
+     "5/19/2015",
+     "$",
+     "500.00"
+    ],
+    [
+     "",
+     "",
+     "150,000",
+     "$",
+     "1.78",
+     "",
+     "-",
+     "11/12/2015",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 741,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 Board Members receive cash compensation of $500 for every meeting attended in person and $250 for every meeting attended telephonically.\n\u00b7 A Committee Chairperson is awarded 150,000 stock options granted at the inception of such member\u2019s tenure and 25,000 stock options granted on the first business day of each fiscal year served. Such grants will be made at prior day\u2019s closing market bid price on the day of grant, and will vest 25% at the end of each fiscal quarter.\n\u00b7 A Committee member is awarded 60,000 stock options granted at the inception of such member\u2019s tenure and 10,000 stock options granted on the first business day of each fiscal year served. Such grants will be made at prior day\u2019s closing market bid price the time of grant, and will vest 25% at the end of each quarter.\n\u00b7 Committee members receive $250 for every committee meeting attended and $125 if attended by phone.\nThe following table shows options awarded and cash compensation for Independent Directors for the year ended December 31, 2010. All cash compensation was outstanding at December 31, 2010.",
+   "prose_after": "ITEM 12. SERCURITY OWNERSHIP OF CERTAN BENEFICIAL OWNERS AND MANAGEMENT\nThe Company two classes of stock outstanding; common stock and convertible preferred stock. The following table sets forth certain information as of April 15, 2011 with respect to the beneficial ownership of our the Company assuming for (i) each director and officer, (ii) all of our directors and officers as a group, and (iii) each person known to us to own beneficially five percent (5%) or more of the outstanding shares of our common stock. As of April 15, 2011, there would be 360,216,428 shares of common stock outstanding, after giving effect to the exercise of 1,500,000 warrants and the conversion of 47,061,636 shares of convertible preferred stock at a conversion ratio of 6.5-for-1.\nTo our knowledge, except as indicated in the footnotes to this table or pursuant to applicable community property laws, the persons named in the table have sole voting and investment power with respect to the shares of stock indicated.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of\n\nBeneficial Owner(1)",
+     "Shares Beneficially\n\nOwned",
+     "",
+     "",
+     "Percentage Beneficially\n\nOwned",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bruce Goldstein, Director, President and Chief Executive Officer\n\n95 Morton St., Ground Floor\n\nNew York, New York 10014",
+     "",
+     "25,071,423",
+     "(2)",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Barry Hall, Director and Chief Financial Officer\n\n95 Morton St., Ground Floor\n\nNew York, New York 10014",
+     "",
+     "25,071,423",
+     "(2)",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Rosenblatt, Director\n\n95 Morton St., Ground Floor\n\nNew York, New York 10014",
+     "",
+     "650,000",
+     "(4)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leonard Dreyer, Director\n\n95 Morton St., Ground Floor\n\nNew York, New York 10014",
+     "",
+     "668,750",
+     "(5)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Officers and Directors as a Group",
+     "",
+     "51,461,596",
+     "",
+     "",
+     "14.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "* less than 1.0%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SNK Capital Trust\n\n2nd Floor, International Bazaar\n\nPO Box N-8198\n\nBay Street, Nassau\n\nBahamas",
+     "",
+     "222,329,250",
+     "(3)",
+     "",
+     "62.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 767,
+    "end_line": 815
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SERCURITY OWNERSHIP OF CERTAN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 12. SERCURITY OWNERSHIP OF CERTAN BENEFICIAL OWNERS AND MANAGEMENT\nThe Company two classes of stock outstanding; common stock and convertible preferred stock. The following table sets forth certain information as of April 15, 2011 with respect to the beneficial ownership of our the Company assuming for (i) each director and officer, (ii) all of our directors and officers as a group, and (iii) each person known to us to own beneficially five percent (5%) or more of the outstanding shares of our common stock. As of April 15, 2011, there would be 360,216,428 shares of common stock outstanding, after giving effect to the exercise of 1,500,000 warrants and the conversion of 47,061,636 shares of convertible preferred stock at a conversion ratio of 6.5-for-1.\nTo our knowledge, except as indicated in the footnotes to this table or pursuant to applicable community property laws, the persons named in the table have sole voting and investment power with respect to the shares of stock indicated.",
+   "prose_after": "(1) Beneficial ownership has not been determined in accordance with Rule 13d-3 under the Exchange Act. Pursuant to the rules of the SEC, shares of common stock which an individual or group has a right to acquire within 60 days pursuant to the exercise of options or warrants are deemed to be outstanding for the purpose of computing the percentage ownership of such individual or group, but are not deemed to be beneficially owned and outstanding for the purpose of computing the percentage ownership of any other person shown in the table. Instead, the table shows includes the ownership that would occur if all preferred stock were convertible currently.\n(2) Represent 3,857,500 shares of convertible preferred stock convertible to common stock at a ratio of 6.5-for-1 after July 20, 2012.\n(3) Represents 34,204,500 shares of convertible preferred stock convertible to common stock at a ratio of 6.5-for-1 after July 20, 2012.\n(4) Represents 500,000 Warrants convertible to common stock at a price of $0.42 per share, 60,000 Warrants to purchase common stock at a price of $1.78 and 90,000 Warrants to purchase common stock at a price of $0.32, all within 60 days of the date of this Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Share Exchange Agreement, dated March 5, 2010 (incorporated by reference to Exhibit 2.1 of the Registrant\u2019s Current Report on Form 8-K filed on March 9, 2010)."
+    ],
+    [
+     "2.2",
+     "Exchange Offer Agreement dated July 20, 2010 (incorporated by reference to Exhibit 2 of the Registrant\u2019s Current Report on Form 8-K filed on July 21, 2010)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of the Registrant, dated November 2, 2007, including amendments (incorporated by reference to Exhibit 3.1 of the Registrant\u2019s Current Report on Form 8-K filed on April 2, 2010)."
+    ],
+    [
+     "3.1(a)",
+     "Amendment to Articles of Incorporation (incorporated by reference to Exhibit 3.1(a) of the Registrant\u2019s Current Report on Form 8-K filed on April 21, 2010)."
+    ],
+    [
+     "3.1(b)\n\n \n\n3.1(c)",
+     "Certificate of Designation of Series A Preferred Stock (incorporated by reference to Exhibit 3.1 of the Registrant\u2019s Current Report on Form 8-K filed on July 21, 2010).\n\nCertificate of Designation of Series A Preferred Stock (incorporated by reference to Exhibit 3.1 of the Registrant\u2019s Current Report on Form 8-K filed on March 25, 2011)."
+    ],
+    [
+     "3.2",
+     "By-laws of the Registrant, dated November 2, 2007 (incorporated by reference to Exhibit 3.2 of Registrant\u2019s Registration Statement on Form S-1 filed on February 9, 2009)."
+    ],
+    [
+     "4.1",
+     "Form of Stock Specimen (incorporated by reference to Exhibit 4.1 of Registrant\u2019s Registration Statement on Form S-1 filed on February 9, 2009)."
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer and Principal Accounting Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer and Principal Accounting Officer pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 854,
+    "end_line": 878
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "For the fiscal years ended December 31, 2010 and 2009, the aggregate fees billed for professional services rendered by Rose, Snyder and Jacobs (independent auditors) for the audits of the Company\u2019s annual financial statements and the reviews of its financial statements included in the Company's quarterly reports and filings under the Securities Act of 1933 totaled approximately $51,110 and $28,700 respectively.\nAudit-Related Fees\nFor the fiscal years ended December 31, 2010 and 2009 there were no fees billed for professional services rendered by the Company\u2019s independent auditors for audit-related fees, which include assistance with responding to SEC comment letters, consents, and procedures performed relating to potential acquisitions.\nTax Fees\nFor the years ended December 31, 2010 and 2009, there were no fees billed for the preparation of corporate tax returns.\nAudit Committee \u2013 Pre-Approval\nThe fees for the audit of the financial statements for the year ended December 31, 2010 by Rose, Snyder & Jacobs as detailed above, were pre-approved by the Audit Committee and all work of said firm was performed solely by their permanent employees.\nITEM 15. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "THWAPR, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: April 15, 2011",
+     "/s/ Bruce Goldstein"
+    ],
+    [
+     "",
+     "Name:  Bruce Goldstein"
+    ],
+    [
+     "",
+     "Title:  President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:  April 15, 2011",
+     "/s/ Barry Hall"
+    ],
+    [
+     "",
+     "Name:  Barry Hall"
+    ],
+    [
+     "",
+     "Title:  Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:  April 15, 2011",
+     "/s/ Robert Rosenblatt"
+    ],
+    [
+     "",
+     "Name:  Robert Rosenblatt"
+    ],
+    [
+     "",
+     "Title:  Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:  April 15, 2011",
+     "/s/ Leonard Dreyer"
+    ],
+    [
+     "",
+     "Name:  Leonard Dreyer"
+    ],
+    [
+     "",
+     "Title:  Director"
+    ]
+   ],
+   "caption_stack": [
+    "THWAPR, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 885,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "THWAPR, INC.\nCONTENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 880,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF STOCKHOLDERS' DEFICIT",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO FINANCIAL STATEMENTS",
+     "F-6-F-15"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 917,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "THWAPR, INC.\nCONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Audit Committee\nThwapr, Inc.\nWe have audited the accompanying balance sheets of Thwapr, Inc. (a development stage Company) (the \u201cCompany\u201d) as of December 31, 2010 and 2009, and the related statements of operations, stockholders\u2019 equity (deficit) and cash flows for the years then ended, and for the period from March 14, 2007 (date of inception) through December 31, 2010. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,637",
+     "",
+     "$",
+     "23,820",
+     ""
+    ],
+    [
+     "Accounts Receivable, net of allowance for doubtful accounts of $0 at December 31, 2010",
+     "",
+     "1,992",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid Expenses",
+     "",
+     "21,782",
+     "",
+     "",
+     "3,348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "29,411",
+     "",
+     "",
+     "27,168",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, NET",
+     "",
+     "25,240",
+     "",
+     "",
+     "31,661",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "54,651",
+     "",
+     "$",
+     "58,829",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "309,270",
+     "",
+     "$",
+     "124,513",
+     ""
+    ],
+    [
+     "Convertible notes due to stockholders",
+     "",
+     "80,479",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amount payable to stockholders",
+     "",
+     "206,526",
+     "",
+     "",
+     "32,370",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "596,275",
+     "",
+     "",
+     "156,883",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible note, less discount of $19,792 and $24,792 at December 31, 2010 and December 31, 2009, respectively",
+     "",
+     "5,208",
+     "",
+     "",
+     "208",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "30,605",
+     "",
+     "",
+     "26,800",
+     ""
+    ],
+    [
+     "TOTAL LONG-TERM LIABILITIES",
+     "",
+     "35,813",
+     "",
+     "",
+     "27,008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES, Note 5",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred, $.0001 par value; 50,000,000 shares authorized; 47,061,636 and -0- shares issued and outstanding",
+     "",
+     "4,706",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.0003 par value; 300,000,000 shares authorized; 52,035,795 shares issued and outstanding at December 31, 2010 (2009 shares include 15,729,212 preferred shares and 711,200 common shares of Thwapr Delaware)",
+     "",
+     "1,983",
+     "",
+     "",
+     "1,644",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "15,918,546",
+     "",
+     "",
+     "3,694,190",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(16,502,673)",
+     "",
+     "",
+     "(3,820,896)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS' DEFICIT",
+     "",
+     "(577,438)",
+     "",
+     "",
+     "(125,062)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "54,651",
+     "",
+     "$",
+     "58,829",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 1014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Thwapr, Inc. as of December 31, 2010 and 2009, and the results of its operations and cash flows for the years then ended, and for the period from March 14, 2007 through December 31, 2010, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has sustained operating losses, continues to use cash in its operating activities and has negative working capital at December 31, 2010. These conditions raise substantial doubt about the Company's ability to continue as a going concern. Management's plans regarding those matters also are described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nRose, Snyder & Jacobs\nA Corporation of Public Accountants\nEncino, California\nApril 15, 2011\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nBALANCE SHEETS",
+   "prose_after": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\nYEARS ENDED DECEMBER 31, 2010 AND 2009 AND THE PERIOD FROM\nMARCH 14, 2007 (DATE OF INCEPTION) THROUGH DECEMBER 31, 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 14, 2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Date of Inception)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "December 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "4,492",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "4,492",
+     ""
+    ],
+    [
+     "COST OF SALES",
+     "",
+     "16,271",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "16,271",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS LOSS",
+     "",
+     "(11,779)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(11,779)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product Development",
+     "",
+     "6,813,126",
+     "",
+     "",
+     "724,021",
+     "",
+     "",
+     "7,916,673",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "5,840,382",
+     "",
+     "",
+     "1,748,118",
+     "",
+     "",
+     "8,554,540",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "12,653,508",
+     "",
+     "",
+     "2,472,139",
+     "",
+     "",
+     "16,471,213",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(12,665,287)",
+     "",
+     "",
+     "(2,472,139)",
+     "",
+     "",
+     "(16,482,992)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "83",
+     "",
+     "",
+     "105",
+     "",
+     "",
+     "188",
+     ""
+    ],
+    [
+     "Change in Derivative Liability",
+     "",
+     "(3,805)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,805)",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(7,979)",
+     "",
+     "",
+     "(3,296)",
+     "",
+     "",
+     "(11,275)",
+     ""
+    ],
+    [
+     "Other Expense",
+     "",
+     "(4,789)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4,789)",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSE)",
+     "",
+     "(16,490)",
+     "",
+     "",
+     "(3,191)",
+     "",
+     "",
+     "(19,681)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(12,681,777)",
+     "",
+     "$",
+     "(2,475,330)",
+     "",
+     "$",
+     "(16,502,673)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted (loss) per share",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.09)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares",
+     "",
+     "170,120,629",
+     "",
+     "",
+     "27,063,114",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 14, 2007"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1027,
+    "end_line": 1071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\nYEARS ENDED DECEMBER 31, 2010 AND 2009 AND THE PERIOD FROM\nMARCH 14, 2007 (DATE OF INCEPTION) THROUGH DECEMBER 31, 2010",
+   "prose_after": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2010 AND 2009 AND THE PERIOD FROM\nMARCH 14, 2007 (DATE OF INCEPTION) THROUGH JUNE 30, 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 14, 2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Date of Inception)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "December 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOW FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(12,681,777)",
+     "",
+     "$",
+     "(2,475,330)",
+     "",
+     "$",
+     "(16,502,673)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "10,219,941",
+     "",
+     "",
+     "612,298",
+     "",
+     "",
+     "10,832,239",
+     ""
+    ],
+    [
+     "Amortization of note discount",
+     "",
+     "5,000",
+     "",
+     "",
+     "208",
+     "",
+     "",
+     "5,208",
+     ""
+    ],
+    [
+     "Change in Derivative Liability",
+     "",
+     "3,805",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,805",
+     ""
+    ],
+    [
+     "Depreciation Expense",
+     "",
+     "12,836",
+     "",
+     "",
+     "5,315",
+     "",
+     "",
+     "18,151",
+     ""
+    ],
+    [
+     "Loss on Disposal of Fixed Assets",
+     "",
+     "4,789",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,789",
+     ""
+    ],
+    [
+     "(Increase) decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "(1,992)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,991)",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "-",
+     "",
+     "",
+     "900",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid Expense",
+     "",
+     "(18,433)",
+     "",
+     "",
+     "(3,348)",
+     "",
+     "",
+     "(21,782)",
+     ""
+    ],
+    [
+     "Increase (decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "187,736",
+     "",
+     "",
+     "51,091",
+     "",
+     "",
+     "314,049",
+     ""
+    ],
+    [
+     "Accounts payable to shareholders",
+     "",
+     "174,157",
+     "",
+     "",
+     "(18,754)",
+     "",
+     "",
+     "206,527",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(2,093,938)",
+     "",
+     "",
+     "(1,827,620)",
+     "",
+     "",
+     "(5,141,678)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(11,205)",
+     "",
+     "",
+     "(36,976)",
+     "",
+     "",
+     "(48,181)",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(11,205)",
+     "",
+     "",
+     "(36,976)",
+     "",
+     "",
+     "(48,181)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOW FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from convertible notes",
+     "",
+     "-",
+     "",
+     "",
+     "25,000",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Convertible notes due to stockholders",
+     "",
+     "77,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "77,500",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock, net",
+     "",
+     "2,009,460",
+     "",
+     "",
+     "1,863,060",
+     "",
+     "",
+     "5,092,996",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "2,086,960",
+     "",
+     "",
+     "1,888,060",
+     "",
+     "",
+     "5,195,496",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "(18,183)",
+     "",
+     "",
+     "23,464",
+     "",
+     "",
+     "5,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF THE PERIOD",
+     "",
+     "23,820",
+     "",
+     "",
+     "356",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "5,637",
+     "",
+     "$",
+     "23,820",
+     "",
+     "$",
+     "5,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTARY DISCLOSURE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes paid in cash",
+     "$",
+     "174",
+     "",
+     "$",
+     "936",
+     "",
+     "$",
+     "2,660",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 14, 2007"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1084,
+    "end_line": 1140
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2010 AND 2009 AND THE PERIOD FROM\nMARCH 14, 2007 (DATE OF INCEPTION) THROUGH JUNE 30, 2010",
+   "prose_after": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENT OF SHAREHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD MARCH 14, 2007 (DATE OF INCEPTION)\nTHROUGH DECEMBER 31, 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Convertible Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, MARCH 14, 2007 (Date of Inception)",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of stock to founders",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "12,857,136",
+     "",
+     "",
+     "429",
+     "",
+     "",
+     "(429)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of stock for cash ($.023 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "30,000,000",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "770,676",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "771,676",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(454,014)",
+     "",
+     "",
+     "(454,014)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "BALANCE, DECEMBER 31, 2007",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "42,857,136",
+     "",
+     "",
+     "1,429",
+     "",
+     "",
+     "770,247",
+     "",
+     "",
+     "(454,014)",
+     "",
+     "",
+     "317,662",
+     ""
+    ],
+    [
+     "Issuance for cash, ($0.33 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,350,000",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "448,755",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "448,800",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(891,552)",
+     "",
+     "",
+     "(891,552)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "BALANCE, DECEMBER 31, 2008",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "44,207,136",
+     "",
+     "",
+     "1,474",
+     "",
+     "",
+     "1,219,002",
+     "",
+     "",
+     "(1,345,566)",
+     "",
+     "",
+     "(125,090)",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.33 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,980,500",
+     "",
+     "",
+     "99",
+     "",
+     "",
+     "993,401",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "993,500",
+     ""
+    ],
+    [
+     "Conversion of common stock to preferred stock",
+     "",
+     "15,729,212",
+     "",
+     "",
+     "1,573",
+     "",
+     "",
+     "(47,187,636)",
+     "",
+     "",
+     "(1,573)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.41 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,133,600",
+     "",
+     "",
+     "71",
+     "",
+     "",
+     "869,489",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "869,560",
+     ""
+    ],
+    [
+     "Amortization of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "612,298",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "612,298",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,475,330)",
+     "",
+     "",
+     "(2,475,330)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "BALANCE, DECEMBER 31, 2009",
+     "",
+     "15,729,212",
+     "",
+     "",
+     "1,573",
+     "",
+     "",
+     "2,133,600",
+     "",
+     "",
+     "71",
+     "",
+     "",
+     "3,694,190",
+     "",
+     "",
+     "(3,820,896)",
+     "",
+     "",
+     "(125,062)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.42 per share)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,207,200",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "495,460",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "495,500",
+     ""
+    ],
+    [
+     "Conversion of preferred stock to common",
+     "",
+     "(15,729,212)",
+     "",
+     "",
+     "(1,573)",
+     "",
+     "",
+     "424,688,724",
+     "",
+     "",
+     "14,156",
+     "",
+     "",
+     "(12,583)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shares added due to reverse merger",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "43,829,262",
+     "",
+     "",
+     "1,461",
+     "",
+     "",
+     "(1,461)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.42 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "750,000",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "312,425",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "312,500",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.73 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "684,933",
+     "",
+     "",
+     "68",
+     "",
+     "",
+     "469,932",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "470,000",
+     ""
+    ],
+    [
+     "Issuance for cash ($0.83 per share)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "910,800",
+     "",
+     "",
+     "92",
+     "",
+     "",
+     "731,369",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "731,461",
+     ""
+    ],
+    [
+     "Conversion of common stock to preferred",
+     "",
+     "47,061,636",
+     "",
+     "",
+     "4,706",
+     "",
+     "",
+     "(423,554,724)",
+     "",
+     "",
+     "(14,118)",
+     "",
+     "",
+     "9,412",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,113,192",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7,113,192",
+     ""
+    ],
+    [
+     "Amortization of preferred stock issuance",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,468,749",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,468,749",
+     ""
+    ],
+    [
+     "Stocks issued for services",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,386,000",
+     "",
+     "",
+     "138",
+     "",
+     "",
+     "637,861",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "637,999",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(12,681,777)",
+     "",
+     "",
+     "(12,681,777)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, DECEMBER 31, 2010",
+     "",
+     "47,061,636",
+     "",
+     "$",
+     "4,706",
+     "",
+     "",
+     "52,035,795",
+     "",
+     "$",
+     "1,983",
+     "",
+     "$",
+     "15,918,546",
+     "",
+     "$",
+     "(16,502,673)",
+     "",
+     "$",
+     "(577,438)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1153,
+    "end_line": 1197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "See report of independent registered public accounting firm and notes to the financial statements.\nTHWAPR, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENT OF SHAREHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD MARCH 14, 2007 (DATE OF INCEPTION)\nTHROUGH DECEMBER 31, 2010",
+   "prose_after": "The above shares of common stock reflect a 3-for-1 stock split in February 2011.\nSee report of independent registered accounting firm and notes to the financial statements.\nNotes to Financial Statements\n1. ORGANIZATION AND BASIS OF PRESENTATION\nOrganization and Nature of Operations\nThwapr, Inc. (\u201cThwapr\u201d or the \u201cCompany\u201d) is a Nevada corporation which has developed a mobile video sharing platform that solves the problem of sending quality video content to and from mobile devices. Thwapr\u2019s systems, applications and software allow users and brands to share pictures and video to mobile phone users regardless of device, platform or carrier. Additionally, Thwapr expects to enable users to easily capture and share pictures and videos on their phones with other mobile and desktop users and into social networks. Thwapr plans to derive revenues from banner and video advertising on its mobile and desktop websites and from mobile media messaging fees from brand sponsors. Thwapr also plans to sell premium services to users and brands via subscriptions and other fees. In December 2009, Thwapr launched a public beta test of its service. Thwapr launched its service in late 2010 but to date has not generated any meaningful revenues and does not anticipate such revenues until such time that a significant number of users and brands have signed up for and are using the service. This service was launched under the name of Thwapr, a trademark it owns.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level I",
+     "",
+     "Level II",
+     "",
+     "Level III",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,637",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Derivative liability (conversion feature and warrants)",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "30,605"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1290,
+    "end_line": 1296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company measures its financial assets and liabilities at fair value. Fair value is defined as the price that would be received to sell an asset or paid to transfer a liability (i.e., exit price) in an orderly transaction between market participants at the measurement date. Additionally, the Company is required to provide disclosure and categorize assets and liabilities measured at fair value into one of three different levels depending on the assumptions (i.e., inputs) used in the valuation. Level 1 provides the most reliable measure of fair value while Level 3 generally requires significant management judgment. Financial assets and liabilities are classified in their entirety based on the lowest level of input significant to the fair value measurement. The fair value hierarchy is defined as follows:\n\u00b7 Level 1 \u2013 quoted prices in active markets for identical assets or liabilities,\n\u00b7 Level 2 \u2013 other significant observable inputs for the assets or liabilities through corroboration with market data at the measurement date,\n\u00b7 Level 3 \u2013 significant unobservable inputs that reflect management\u2019s best estimate of what market participants would use to price the assets or liabilities at the measurement date.\nThe following table summarizes fair value measurements by level at December 31, 2010 for assets and liabilities measured at fair value on a recurring basis:",
+   "prose_after": "The following table summarizes fair value measurements by level at December 31, 2009 for assets and liabilities measured at fair value on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1265,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1305,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level I",
+     "",
+     "Level II",
+     "",
+     "Level III",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "23,820",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Derivative liability (conversion feature and warrants)",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "26,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1299,
+    "end_line": 1305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following table summarizes fair value measurements by level at December 31, 2009 for assets and liabilities measured at fair value on a recurring basis:",
+   "prose_after": "The following table sets forth a summary of changes in the fair value of the Company\u2019s level 3 assets (conversion feature and warrants) for the year ended December 31, 2010.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1265,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1305,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3 Liabilities",
+     ""
+    ],
+    [
+     "",
+     "Derivative Liability",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2009",
+     "$",
+     "26,800"
+    ],
+    [
+     "Changes in value of Derivative Liability",
+     "",
+     "3,805"
+    ],
+    [
+     "Balance as of December 31, 2010",
+     "$",
+     "30,605"
+    ]
+   ],
+   "caption_stack": [
+    "Level 3 Liabilities",
+    "Derivative Liability"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1308,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The following table sets forth a summary of changes in the fair value of the Company\u2019s level 3 assets (conversion feature and warrants) for the year ended December 31, 2010.",
+   "prose_after": "The carrying amount of certain financial instruments, including cash and cash equivalents and accounts payable and accrued expenses, approximates fair value due to the relatively short maturity of such instruments.\nThe Company used the Black-Scholes option pricing model for estimating the fair value of the note conversion feature and the warrants with the following assumptions: expected life of 4 to 5 years; risk-free interest rate of 2.00%; dividend yield of 0%; and expected volatility of 200%.\nProduct Development\nProduct development costs are expensed as incurred. These costs primarily include the costs associated with the development and testing of video and picture sharing technology. During the years ended December 31, 2010 and 2009, product development costs amounted to $6,813,126 and $724,021, respectively.\nIncome Taxes\nThe Company accounts for income taxes under the liability method in accordance with FASB ASC 740-10. Under this standard, deferred income tax liabilities and assets are determined based on the difference between the financial statement and tax bases of assets and liabilities using the enacted tax rates expected to be in effect for the year in which the differences are expected to reverse. Deferred income tax assets are reduced by a valuation allowance when the Company is unable to make the determination that it is more likely than not that some portion or all of the deferred income tax asset will be realized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1305,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1332,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "$",
+     "37,815",
+     "",
+     "$",
+     "30,340",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "3,138",
+     "",
+     "",
+     "6,636",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "668",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "41,621",
+     "",
+     "",
+     "39,976",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(16,381)",
+     "",
+     "",
+     "(5,315)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "25,240",
+     "",
+     "$",
+     "31,661",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1337,
+    "end_line": 1350
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "The Company accounts for income taxes under the liability method in accordance with FASB ASC 740-10. Under this standard, deferred income tax liabilities and assets are determined based on the difference between the financial statement and tax bases of assets and liabilities using the enacted tax rates expected to be in effect for the year in which the differences are expected to reverse. Deferred income tax assets are reduced by a valuation allowance when the Company is unable to make the determination that it is more likely than not that some portion or all of the deferred income tax asset will be realized.\nEarnings (Loss) per Share\nThe Company utilizes FASB ASC 260. Basic earnings per share is computed by dividing income available to common stockholders by the weighted-average number of common shares outstanding. Diluted earnings per share is computed similar to basic earnings per share except that the denominator is increased to include the number of additional common shares that would have been outstanding if the potential common shares had been issued and if the additional common shares were dilutive. Common equivalent shares are excluded from the computation if their effect is anti-dilutive.\n3. PROPERTY AND EQUIPMENT\nProperty and equipment consists of the following:",
+   "prose_after": "Depreciation expense for the years ended December 31, 2010 and 2009 was $12,836 and $5,315, respectively.\n4. RELATED PARTY TRANSACTIONS\nPayment for Consulting Services\nCertain stockholders of the Company have provided and provide general management and technology services to the Company as Chairman, CEO, CFO, CTO, Vice President Product and In-house Counsel. Amounts paid to these stockholders were in lieu of salaries and represented compensation for services rendered as executives, directors and the attorney of the Company. During the years ended December 31, 2010 and 2009 the amounts incurred to these stockholders were $638,940 and $755,124, respectively. A balance of $166,023 remained unpaid at December 31, 2010.\n5. COMMITMENTS AND CONTINGENCIES\nLease Commitments\nThe company leases facilities in New York City and in Pasadena, California, which expire in March and June of 2011. Monthly rent is $8,000 and $595 for each facility respectively.\nCash Deposits\nThe Company maintains its cash at a financial institution. The account is insured by the Federal Deposit Insurance Corporation (\u201cFDIC\u201d) up to $250,000. On October 3, 2008, the FDIC temporarily increased its coverage from $100,000 to $250,000 per depositor through December 31, 2013. The Company\u2019s cash account, at times, may exceed federally insured limits.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1332,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1372,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk Free Interest Rate:",
+     "1.40%  - 3.86%"
+    ],
+    [
+     "Expected Life:",
+     "4 \u2013 9 years"
+    ],
+    [
+     "Expected Volatility:",
+     "200%"
+    ],
+    [
+     "Dividend Yield:",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1425,
+    "end_line": 1431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "CONVERTIBLE PROMISSORY NOTES"
+    }
+   },
+   "prose_before": "In addition to the warrants described above, the Company issued more warrants to Directors and Consultants to the Company. On February 16, 2010 the Company issued 3,000,000 warrants with and exercise price of $0.42 per share to a consultant to the Company. Such warrants vest quarter over a period of three years. On March 5, 2010 the Company issued 360,000 warrants with an exercise price of $0.42 per warrant to consultants to the Company. Such warrants vest quarterly over one year. On May 19, the Company issued 7,896,000 warrants to members of the Board of Directors and consultants to the Company with an exercise price of $0.42 per warrant. Such warrants vest quarterly over three years. On November 12, 2010 the Company issued 360,000 with an exercise price of $1.78 per warrant to members of the Board of Directors. Such warrants vest quarterly over one year. All warrants issued to members of the Board of Directors were done in accordance with the Company\u2019s Board Compensation Plan.\nOn September 27, 2010, the Company issued 1,666,666 shares of its convertible preferred stock to consultants to the Company in exchange for 1,047,916 of previously issued warrants to purchase the Company\u2019s common stock issued in May 2009. The preferred shares were previously returned to the Company by the former Chairman of the Company on August 15, 2010. One-fourth of the preferred shares vested to the consultants upon issuance. The remaining three-quarters of the shares vest to the consultants quarterly over the next three quarters as long as the consultants remain associated with the Company. For the year ended December 31, 2010, compensation expense related to the issuance of these shares was $2,468,742.\nThe Company used the Black-Scholes option pricing model for estimating the fair value of the warrants with the following assumptions:",
+   "prose_after": "The following table summarizes the changes in warrants outstanding and the related prices for the shares of the Company\u2019s common stock issued to employees and non-employees of the Company. These warrants were granted in lieu of cash compensation for services performed or as part of fundraising related to the sale of the Company\u2019s common stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1451,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nCommon Shares",
+     "",
+     "",
+     "Average Exercise\n\nPrice",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2008",
+     "",
+     "0",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "3,933,360",
+     "",
+     "",
+     "0.34"
+    ],
+    [
+     "Expired/cancelled",
+     "",
+     "(69,999)",
+     "",
+     "",
+     "0.33"
+    ],
+    [
+     "Exercised",
+     "",
+     "0",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2009",
+     "",
+     "3,863,361",
+     "",
+     "$",
+     "0.34"
+    ],
+    [
+     "Granted",
+     "",
+     "12,021,720",
+     "",
+     "",
+     "0.46"
+    ],
+    [
+     "Effect of 9:1 conversion from preferred to common",
+     "",
+     "29,200,008",
+     "",
+     "",
+     "0.33"
+    ],
+    [
+     "Expired/cancelled",
+     "",
+     "(8,406,249)",
+     "",
+     "",
+     "0.39"
+    ],
+    [
+     "Exercised",
+     "",
+     "0",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2010",
+     "",
+     "36,678,840",
+     "",
+     "$",
+     "0.36"
+    ],
+    [
+     "Exercisable at December 31, 2010",
+     "",
+     "32,328,837",
+     "",
+     "$",
+     "0.34"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1434,
+    "end_line": 1451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "CONVERTIBLE PROMISSORY NOTES"
+    }
+   },
+   "prose_before": "The following table summarizes the changes in warrants outstanding and the related prices for the shares of the Company\u2019s common stock issued to employees and non-employees of the Company. These warrants were granted in lieu of cash compensation for services performed or as part of fundraising related to the sale of the Company\u2019s common stock.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1451,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Awards Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "Awards Exercisable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise\n\nPrice",
+     "",
+     "Quantity",
+     "",
+     "Weighted\n\nAverage\n\nRemaining\n\nContractual\n\nLife",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Exercise\n\nPrice",
+     "",
+     "Quantity",
+     "",
+     "Weighted\n\nAverage\n\nRemaining\n\nContractual\n\nLife",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     ""
+    ],
+    [
+     "$",
+     "0.33",
+     "",
+     "29,885,010",
+     "8.25 years",
+     "$",
+     "0.33",
+     "$",
+     "0.33",
+     "",
+     "29,885,010",
+     "8.25 years",
+     "",
+     "$",
+     "0.33"
+    ],
+    [
+     "$",
+     "0.42",
+     "",
+     "6,373,830",
+     "4.60 years",
+     "$",
+     "0.42",
+     "$",
+     "0.42",
+     "",
+     "2,443,827",
+     "4.40 years",
+     "",
+     "$",
+     "0.42"
+    ],
+    [
+     "$",
+     "1.78",
+     "",
+     "420,000",
+     "4.90 years",
+     "$",
+     "1.78",
+     "",
+     "N/A",
+     "$",
+     "0",
+     "",
+     "N/A",
+     "$",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1452,
+    "end_line": 1469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "CONVERTIBLE PROMISSORY NOTES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Warrants to purchase 1,890,000 share of stock at $0.33 per share have no maturity date.\nCompensation expenses related to outstanding warrants for the years ended December 31, 2010 and 2009 were $7,113,192 and $612,298, respectively.\n10. SUBSEQUENT EVENTS\nOn February 4, 2011, the company effected a 3-for-1 forward stock split. As a result of the split the number of the Company\u2019s issued and outstanding common stock increase to 52,335,795, from 17,445,265. The 47,061,636 shares\nConvertible Preferred Stock were then convertible to 423,554,724 of common stock.\nOn February 28, 2011 all of the preferred shareholders signed an agreement whereby they accepted a modification in the conversion ratio of the preferred to common from 9-for-1 to 6.5-for-1 in exchange for removing the restriction that such shares could not be converted until the Company obtained at least 10,000,000 active registered users. On March 24, 2011 this modification was ratified by the Board of Directors of the Company. The effect of this modification was to reduce the amount of the common shares that that would be issued upon conversion to 305,900,634.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1451,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1483,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6681 @@
+{
+ "accession": "0001314727-21-000011",
+ "cik": "0001314727",
+ "form": "10-Q",
+ "filing_date": "2021-02-11",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "sono-20210102.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "03-0479476",
+     ""
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)",
+     ""
+    ],
+    [
+     "614 Chapala Street",
+     "Santa Barbara",
+     "CA",
+     "93101"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended January 2, 2021\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-38603\nSONOS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(805) 965-3001\nRegistrant's telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.001 par value",
+     "SONO",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(805) 965-3001\nRegistrant's telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "Condensed consolidated balance sheets",
+     "4"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of operations and comprehensive income",
+     "5"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of stockholders' equity",
+     "6"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of cash flows",
+     "7"
+    ],
+    [
+     "",
+     "Notes to condensed consolidated financial statements",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s discussion and analysis of financial condition and results of operations",
+     "21"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and qualitative disclosures about market risk",
+     "33"
+    ],
+    [
+     "Item 4.",
+     "Controls and procedures",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal proceedings",
+     "35"
+    ],
+    [
+     "Item 1A.",
+     "Risk factors",
+     "35"
+    ],
+    [
+     "Item 2.",
+     "Unregistered sales of equity securities and use of proceeds",
+     "51"
+    ],
+    [
+     "Item 6.",
+     "Exhibit index",
+     "52"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "53"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 60,
+    "end_line": 81
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [X]      Accelerated filer      [ ]\nNon-accelerated filer   [ ]  Smaller reporting company  [ ]\nEmerging growth company   [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of January 30, 2021, the registrant had 119,740,268 shares of common stock outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 5,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "SONOS, INC.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(unaudited, in thousands, except par values)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "October 3, 2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "677,834",
+     "$",
+     "407,100"
+    ],
+    [
+     "Restricted cash",
+     "198",
+     "",
+     "191",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowances",
+     "113,616",
+     "",
+     "54,935",
+     ""
+    ],
+    [
+     "Inventories",
+     "88,194",
+     "",
+     "180,830",
+     ""
+    ],
+    [
+     "Prepaids and other current assets",
+     "21,076",
+     "",
+     "17,321",
+     ""
+    ],
+    [
+     "Total current assets",
+     "900,918",
+     "",
+     "660,377",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "64,170",
+     "",
+     "60,784",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "41,462",
+     "",
+     "42,342",
+     ""
+    ],
+    [
+     "Goodwill",
+     "15,545",
+     "",
+     "15,545",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "25,975",
+     "",
+     "26,394",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "1,886",
+     "",
+     "1,800",
+     ""
+    ],
+    [
+     "Other noncurrent assets",
+     "16,904",
+     "",
+     "8,809",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,066,860",
+     "$",
+     "816,051"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "239,760",
+     "$",
+     "250,328"
+    ],
+    [
+     "Accrued expenses",
+     "96,433",
+     "",
+     "45,049",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "29,424",
+     "",
+     "44,517",
+     ""
+    ],
+    [
+     "Short-term debt",
+     "24,937",
+     "",
+     "6,667",
+     ""
+    ],
+    [
+     "Deferred revenue, current",
+     "16,382",
+     "",
+     "15,304",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "48,828",
+     "",
+     "31,150",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "455,764",
+     "",
+     "393,015",
+     ""
+    ],
+    [
+     "Operating lease liabilities, noncurrent",
+     "42,268",
+     "",
+     "50,360",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "\u2014",
+     "",
+     "18,251",
+     ""
+    ],
+    [
+     "Deferred revenue, noncurrent",
+     "52,459",
+     "",
+     "47,085",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "2,434",
+     "",
+     "2,434",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "3,726",
+     "",
+     "7,067",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "556,651",
+     "",
+     "518,212",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 7)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value",
+     "121",
+     "",
+     "114",
+     ""
+    ],
+    [
+     "Treasury stock",
+     "(26,004)",
+     "",
+     "(20,886)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "633,335",
+     "",
+     "548,993",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(96,200)",
+     "",
+     "(228,492)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(1,043)",
+     "",
+     "(1,890)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "510,209",
+     "",
+     "297,839",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,066,860",
+     "$",
+     "816,051"
+    ]
+   ],
+   "caption_stack": [
+    "SONOS, INC.",
+    "CONDENSED CONSOLIDATED BALANCE SHEETS",
+    "(unaudited, in thousands, except par values)",
+    "As of"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 86,
+    "end_line": 145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SONOS, INC.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(unaudited, in thousands, except share and per share amounts)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "645,584",
+     "$",
+     "562,083"
+    ],
+    [
+     "Cost of revenue",
+     "346,159",
+     "",
+     "334,463",
+     ""
+    ],
+    [
+     "Gross profit",
+     "299,425",
+     "",
+     "227,620",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "52,346",
+     "",
+     "52,526",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "74,453",
+     "",
+     "77,423",
+     ""
+    ],
+    [
+     "General and administrative",
+     "35,242",
+     "",
+     "30,209",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "162,041",
+     "",
+     "160,158",
+     ""
+    ],
+    [
+     "Operating income",
+     "137,384",
+     "",
+     "67,462",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "36",
+     "",
+     "998",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(265)",
+     "",
+     "(453)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "4,257",
+     "",
+     "4,424",
+     ""
+    ],
+    [
+     "Total other income (expense), net",
+     "4,028",
+     "",
+     "4,969",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "141,412",
+     "",
+     "72,431",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "9,120",
+     "",
+     "1,656",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "Diluted",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per share attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "1.14",
+     "$",
+     "0.65"
+    ],
+    [
+     "Diluted",
+     "$",
+     "1.01",
+     "$",
+     "0.60"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares used in computing net income per share attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "115,610,523",
+     "",
+     "108,984,683",
+     ""
+    ],
+    [
+     "Diluted",
+     "130,644,147",
+     "",
+     "118,415,968",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total comprehensive income",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "847",
+     "",
+     "(519)",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "133,139",
+     "$",
+     "70,256"
+    ]
+   ],
+   "caption_stack": [
+    "SONOS, INC.",
+    "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME",
+    "(unaudited, in thousands, except share and per share amounts)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 149,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 214,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "SONOS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(unaudited, in thousands, except share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended January 2, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 3, 2020",
+     "113,915,233",
+     "$",
+     "114",
+     "$",
+     "548,993",
+     "(1,571,138)",
+     "$",
+     "(20,886)",
+     "$",
+     "(228,492)",
+     "$",
+     "(1,890)",
+     "$",
+     "297,839"
+    ],
+    [
+     "Issuance of common stock pursuant to equity incentive plans",
+     "7,075,338",
+     "7",
+     "",
+     "69,498",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "69,505",
+     ""
+    ],
+    [
+     "Repurchase of common stock related to shares withheld for tax in connection with vesting of restricted stock unit awards (\"RSUs\")",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(307,980)",
+     "(5,118)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(5,118)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "14,844",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14,844",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "132,292",
+     "",
+     "\u2014",
+     "",
+     "132,292",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "847",
+     "",
+     "847",
+     ""
+    ],
+    [
+     "Balance at January 2, 2021",
+     "120,990,571",
+     "$",
+     "121",
+     "$",
+     "633,335",
+     "(1,879,118)",
+     "$",
+     "(26,004)",
+     "$",
+     "(96,200)",
+     "$",
+     "(1,043)",
+     "$",
+     "510,209"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended December 28, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 28, 2019",
+     "109,623,417",
+     "$",
+     "110",
+     "$",
+     "502,757",
+     "(1,020,775)",
+     "$",
+     "(13,498)",
+     "$",
+     "(208,377)",
+     "$",
+     "(64)",
+     "$",
+     "280,928"
+    ],
+    [
+     "Issuance of common stock pursuant to equity incentive plans",
+     "1,561,696",
+     "1",
+     "",
+     "7,968",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,969",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(372,149)",
+     "(5,078)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(5,078)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "13,204",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "13,204",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "70,775",
+     "",
+     "\u2014",
+     "",
+     "70,775",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(519)",
+     "",
+     "(519)",
+     ""
+    ],
+    [
+     "Balance at December 28, 2019",
+     "111,185,113",
+     "$",
+     "111",
+     "$",
+     "523,929",
+     "(1,392,924)",
+     "$",
+     "(18,576)",
+     "$",
+     "(137,602)",
+     "$",
+     "(583)",
+     "$",
+     "367,279"
+    ]
+   ],
+   "caption_stack": [
+    "SONOS, INC.",
+    "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+    "(unaudited, in thousands, except share amounts)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 215,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 214,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SONOS, INC.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(unaudited, in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "7,982",
+     "",
+     "9,105",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "14,844",
+     "",
+     "13,204",
+     ""
+    ],
+    [
+     "Other",
+     "(1,050)",
+     "",
+     "1,471",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "12",
+     "",
+     "51",
+     ""
+    ],
+    [
+     "Foreign currency transaction gain",
+     "(1,633)",
+     "",
+     "(1,924)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "(56,650)",
+     "",
+     "(31,411)",
+     ""
+    ],
+    [
+     "Inventories",
+     "93,495",
+     "",
+     "107,343",
+     ""
+    ],
+    [
+     "Other assets",
+     "(7,330)",
+     "",
+     "(11,853)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "33,271",
+     "",
+     "(39,416)",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "(15,481)",
+     "",
+     "(14,568)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "5,633",
+     "",
+     "4,879",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "9,128",
+     "",
+     "11,184",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "214,513",
+     "",
+     "118,840",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment, intangible and other assets",
+     "(11,333)",
+     "",
+     "(15,914)",
+     ""
+    ],
+    [
+     "Cash paid for acquisition, net of acquired cash",
+     "\u2014",
+     "",
+     "(35,622)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(11,333)",
+     "",
+     "(51,536)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayments of borrowings",
+     "\u2014",
+     "",
+     "(1,667)",
+     ""
+    ],
+    [
+     "Payments for repurchase of common stock",
+     "\u2014",
+     "",
+     "(5,078)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of common stock options",
+     "69,505",
+     "",
+     "7,969",
+     ""
+    ],
+    [
+     "Payments for repurchase of common stock related to shares withheld for tax in connection with vesting of restricted stock units",
+     "(5,118)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "64,387",
+     "",
+     "1,224",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash, cash equivalents and restricted cash",
+     "3,174",
+     "",
+     "1,254",
+     ""
+    ],
+    [
+     "Net increase in cash, cash equivalents and restricted cash",
+     "270,741",
+     "",
+     "69,782",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "407,291",
+     "",
+     "338,820",
+     ""
+    ],
+    [
+     "End of period",
+     "$",
+     "678,032",
+     "$",
+     "408,602"
+    ],
+    [
+     "Supplemental disclosure",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "166",
+     "$",
+     "472"
+    ],
+    [
+     "Cash paid for taxes, net of refunds",
+     "$",
+     "2,672",
+     "$",
+     "517"
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "$",
+     "8,102",
+     "$",
+     "4,304"
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment in accounts payable and accrued expenses",
+     "$",
+     "7,814",
+     "$",
+     "7,908"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "$",
+     "1,509",
+     "$",
+     "74,683"
+    ]
+   ],
+   "caption_stack": [
+    "SONOS, INC.",
+    "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "(unaudited, in thousands)",
+    "Three Months Ended"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 261,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n1. Business Overview and Basis of Presentation\nDescription of business\nSonos, Inc. and its wholly owned subsidiaries (collectively, \u201cSonos,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus\u201d or \u201cour\u201d) designs, develops, manufactures, and sells audio products and services. The Sonos sound system provides customers with an immersive listening experience created by the design of its speakers and components, a proprietary software platform, and the ability to stream content from a variety of sources over the customer\u2019s wireless network or over Bluetooth.\nThe Company\u2019s products are sold through third-party physical retailers, including custom installers of home audio systems, select e-commerce retailers, and its website sonos.com. The Company\u2019s products are distributed in over 50 countries through its wholly owned subsidiaries: Sonos Europe B.V. in the Netherlands, Beijing Sonos Technology Co. Ltd. in China, Sonos Japan GK in Japan, and Sonos Australia Pty Ltd. in Australia.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (cash equivalents)",
+     "$",
+     "391,388",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "391,388"
+    ]
+   ],
+   "caption_stack": [
+    "January 2, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 378,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "In December 2019, the FASB issued ASU No. 2019-12, Income Taxes (Topic 740): Simplifying the Accounting for Income Taxes. This standard simplifies the accounting for income taxes by removing certain exceptions to the general principles in Accounting Standards Codification Topic 740 (\"ASC 740\") as well as by improving consistent application of the topic by clarifying and amending existing guidance. This standard is effective for the Company in the first quarter of fiscal 2022, with early adoption permitted. The Company is currently evaluating the timing of adoption and impact on the Company's consolidated financial statements.\n3. Fair Value Measurements\nThe carrying values of the Company\u2019s financial instruments, including accounts receivable and accounts payable, approximate their fair values due to the short period of time to maturity or repayment. The carrying values of the Company\u2019s long-term debt approximate their fair values as of January 2, 2021 and October 3, 2020 as the debt carries a variable rate or market rates that approximate those currently available to the Company.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nThe following table summarizes fair value measurements by level for the assets measured at fair value on a recurring basis as of January 2, 2021 and October 3, 2020:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 3, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (cash equivalents)",
+     "$",
+     "281,380",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "281,380"
+    ]
+   ],
+   "caption_stack": [
+    "October 3, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 387,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "4. Revenue and Geographic Information\nDisaggregation of revenue\nRevenue by geographical region includes the applicable service revenue for software upgrades and cloud-based services attributable to each region and is based on ship-to address, as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Americas",
+     "$",
+     "367,239",
+     "$",
+     "303,194"
+    ],
+    [
+     "Europe, Middle East and Africa (\u201cEMEA\u201d)",
+     "240,007",
+     "",
+     "212,738",
+     ""
+    ],
+    [
+     "Asia Pacific (\u201cAPAC\u201d)",
+     "38,338",
+     "",
+     "46,151",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "645,584",
+     "$",
+     "562,083"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue and Geographic Information"
+    }
+   },
+   "prose_before": "4. Revenue and Geographic Information\nDisaggregation of revenue\nRevenue by geographical region includes the applicable service revenue for software upgrades and cloud-based services attributable to each region and is based on ship-to address, as follows:",
+   "prose_after": "Revenue is attributed to individual countries based on ship-to address and includes the applicable service revenue for software upgrades and cloud-based services attributable to each country. Revenue by significant countries is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "330,896",
+     "$",
+     "277,273"
+    ],
+    [
+     "Germany",
+     "58,145",
+     "",
+     "58,988",
+     ""
+    ],
+    [
+     "Other countries",
+     "256,543",
+     "",
+     "225,822",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "645,584",
+     "$",
+     "562,083"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 419,
+    "end_line": 433
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue and Geographic Information"
+    }
+   },
+   "prose_before": "Revenue is attributed to individual countries based on ship-to address and includes the applicable service revenue for software upgrades and cloud-based services attributable to each country. Revenue by significant countries is as follows:",
+   "prose_after": "Revenue by product category includes the applicable service revenue for software upgrades and cloud-based services attributable to each product category. Revenue by major product category is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sonos speakers",
+     "$",
+     "527,516",
+     "$",
+     "466,677"
+    ],
+    [
+     "Sonos system products",
+     "97,759",
+     "",
+     "61,521",
+     ""
+    ],
+    [
+     "Partner products and other revenue",
+     "20,309",
+     "",
+     "33,885",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "645,584",
+     "$",
+     "562,083"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue and Geographic Information"
+    }
+   },
+   "prose_before": "Revenue by product category includes the applicable service revenue for software upgrades and cloud-based services attributable to each product category. Revenue by major product category is as follows:",
+   "prose_after": "5. Balance Sheet Components\nAccounts receivable, net of allowances\nAccounts receivable, net of allowances, consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "October 3, 2020",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "164,912",
+     "$",
+     "73,757"
+    ],
+    [
+     "Allowance for credit losses",
+     "(1,538)",
+     "",
+     "(1,307)",
+     ""
+    ],
+    [
+     "Allowance for sales incentives",
+     "(49,758)",
+     "",
+     "(17,515)",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowances",
+     "$",
+     "113,616",
+     "$",
+     "54,935"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 459,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "5. Balance Sheet Components\nAccounts receivable, net of allowances\nAccounts receivable, net of allowances, consist of the following:",
+   "prose_after": "Inventories, net\nInventories consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "October 3, 2020",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "79,213",
+     "$",
+     "172,184"
+    ],
+    [
+     "Component parts",
+     "8,981",
+     "",
+     "8,646",
+     ""
+    ],
+    [
+     "Inventories",
+     "$",
+     "88,194",
+     "$",
+     "180,830"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 475,
+    "end_line": 485
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Inventories, net\nInventories consist of the following:",
+   "prose_after": "The Company writes down inventory as a result of excess and obsolete inventories, or when it believes that the net realizable value of inventories is less than the carrying value.\nIntangible assets\nThe following table reflects the changes in the net carrying amount of the components of intangible assets associated with the Company's acquisition activity:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Value",
+     "",
+     "Weighted-Average Remaining Life"
+    ],
+    [
+     "(In thousands, except weighted-average remaining life)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Technology",
+     "$",
+     "7,875",
+     "$",
+     "(2,018)",
+     "$",
+     "5,857",
+     "3.31"
+    ],
+    [
+     "Other",
+     "39",
+     "",
+     "(21)",
+     "",
+     "18",
+     "",
+     "0.92"
+    ],
+    [
+     "Total finite-lived intangible assets",
+     "7,914",
+     "",
+     "(2,039)",
+     "",
+     "5,875",
+     "",
+     "3.30"
+    ],
+    [
+     "In-process research and development and other intangible assets not subject to amortization",
+     "20,100",
+     "",
+     "\u2014",
+     "",
+     "20,100",
+     "",
+     ""
+    ],
+    [
+     "Total intangible assets",
+     "$",
+     "28,014",
+     "$",
+     "(2,039)",
+     "$",
+     "25,975",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "January 2, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "The Company writes down inventory as a result of excess and obsolete inventories, or when it believes that the net realizable value of inventories is less than the carrying value.\nIntangible assets\nThe following table reflects the changes in the net carrying amount of the components of intangible assets associated with the Company's acquisition activity:",
+   "prose_after": "The following table summarizes estimated future amortization expense of the Company's intangible assets as of January 2, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal years ending",
+     "Future Amortization Expense",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Remainder of fiscal 2021",
+     "$",
+     "1,478"
+    ],
+    [
+     "2022",
+     "1,955",
+     ""
+    ],
+    [
+     "2023",
+     "1,253",
+     ""
+    ],
+    [
+     "2024",
+     "1,020",
+     ""
+    ],
+    [
+     "2025",
+     "169",
+     ""
+    ],
+    [
+     "2026 and thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total future amortization expense",
+     "$",
+     "5,875"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 513,
+    "end_line": 527
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "The following table summarizes estimated future amortization expense of the Company's intangible assets as of January 2, 2021:",
+   "prose_after": "Accrued expenses\nAccrued expenses consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "October 3, 2020",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued advertising and marketing",
+     "$",
+     "26,681",
+     "$",
+     "10,609"
+    ],
+    [
+     "Accrued taxes",
+     "20,300",
+     "",
+     "6,252",
+     ""
+    ],
+    [
+     "Accrued inventory",
+     "12,130",
+     "",
+     "2,843",
+     ""
+    ],
+    [
+     "Accrued manufacturing, logistics and product development",
+     "17,765",
+     "",
+     "9,753",
+     ""
+    ],
+    [
+     "Accrued general and administrative expenses",
+     "10,935",
+     "",
+     "10,068",
+     ""
+    ],
+    [
+     "Other accrued payables",
+     "8,622",
+     "",
+     "5,524",
+     ""
+    ],
+    [
+     "Total accrued expenses",
+     "$",
+     "96,433",
+     "$",
+     "45,049"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 532,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Accrued expenses\nAccrued expenses consist of the following:",
+   "prose_after": "Deferred revenue\nAmounts invoiced in advance of revenue recognition are recorded as deferred revenue on the condensed consolidated balance sheets. Deferred revenue primarily relates to revenue allocated to unspecified software upgrades and cloud-based services.\nThe following table presents the changes in the Company\u2019s deferred revenue for the three months ended January 2, 2021 and December 28, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue, beginning of period",
+     "$",
+     "62,389",
+     "$",
+     "56,449"
+    ],
+    [
+     "Recognition of revenue included in beginning of period deferred revenue",
+     "(3,357)",
+     "",
+     "(3,238)",
+     ""
+    ],
+    [
+     "Revenue deferred, net of revenue recognized on contracts in the respective period",
+     "9,809",
+     "",
+     "8,435",
+     ""
+    ],
+    [
+     "Deferred revenue, end of period",
+     "$",
+     "68,841",
+     "$",
+     "61,646"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 553,
+    "end_line": 565
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Deferred revenue\nAmounts invoiced in advance of revenue recognition are recorded as deferred revenue on the condensed consolidated balance sheets. Deferred revenue primarily relates to revenue allocated to unspecified software upgrades and cloud-based services.\nThe following table presents the changes in the Company\u2019s deferred revenue for the three months ended January 2, 2021 and December 28, 2019:",
+   "prose_after": "The Company expects the following recognition of deferred revenue as of January 2, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the fiscal years ending",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2025 and Beyond",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue expected to be recognized",
+     "$",
+     "12,488",
+     "$",
+     "14,772",
+     "$",
+     "12,844",
+     "$",
+     "10,793",
+     "$",
+     "17,944",
+     "$",
+     "68,841"
+    ]
+   ],
+   "caption_stack": [
+    "For the fiscal years ending"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "The Company expects the following recognition of deferred revenue as of January 2, 2021:",
+   "prose_after": "Other current liabilities\nOther current liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "October 3, 2020",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserve for returns",
+     "$",
+     "23,723",
+     "$",
+     "14,195"
+    ],
+    [
+     "Short-term operating lease liabilities",
+     "10,831",
+     "",
+     "10,910",
+     ""
+    ],
+    [
+     "Product warranty liability",
+     "6,446",
+     "",
+     "3,628",
+     ""
+    ],
+    [
+     "Other",
+     "7,828",
+     "",
+     "2,417",
+     ""
+    ],
+    [
+     "Total other current liabilities",
+     "$",
+     "48,828",
+     "$",
+     "31,150"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "Other current liabilities\nOther current liabilities consist of the following:",
+   "prose_after": "The following table presents the changes in the Company\u2019s warranty liability for the three months ended January 2, 2021 and December 28, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warranty liability, beginning of period",
+     "$",
+     "3,628",
+     "$",
+     "3,254"
+    ],
+    [
+     "Provision for warranties issued during the period",
+     "6,277",
+     "",
+     "5,080",
+     ""
+    ],
+    [
+     "Settlements of warranty claims during the period",
+     "(3,459)",
+     "",
+     "(2,633)",
+     ""
+    ],
+    [
+     "Warranty liability, end of period",
+     "$",
+     "6,446",
+     "$",
+     "5,701"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 598,
+    "end_line": 610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Balance Sheet Components"
+    }
+   },
+   "prose_before": "The following table presents the changes in the Company\u2019s warranty liability for the three months ended January 2, 2021 and December 28, 2019:",
+   "prose_after": "6. Debt\nThe Company's debt obligations consist of the Secured Credit Facility with J.P. Morgan Chase Bank, N.A. (the \u201cCredit Facility\u201d) and the J.P. Morgan Chase Bank, N.A. Secured Term Loan (the \"Term Loan\").\nThe Company\u2019s short- and long-term debt obligations as of January 2, 2021 and October 3, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "",
+     "October 3, 2020",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Term loan (1)",
+     "2.4",
+     "%",
+     "$",
+     "25,000",
+     "2.4 %",
+     "$",
+     "25,000"
+    ],
+    [
+     "Unamortized debt issuance costs (2)",
+     "",
+     "",
+     "(63)",
+     "",
+     "",
+     "(82)",
+     ""
+    ],
+    [
+     "Total indebtedness",
+     "",
+     "",
+     "24,937",
+     "",
+     "",
+     "24,918",
+     ""
+    ],
+    [
+     "Less short-term portion",
+     "",
+     "",
+     "(24,937)",
+     "",
+     "",
+     "(6,667)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "18,251"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 630
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "6. Debt\nThe Company's debt obligations consist of the Secured Credit Facility with J.P. Morgan Chase Bank, N.A. (the \u201cCredit Facility\u201d) and the J.P. Morgan Chase Bank, N.A. Secured Term Loan (the \"Term Loan\").\nThe Company\u2019s short- and long-term debt obligations as of January 2, 2021 and October 3, 2020 were as follows:",
+   "prose_after": "(1)Due in October 2021 and bears interest at a variable rate equal to an adjusted LIBOR plus 2.25%, payable quarterly. Subsequent to the first quarter of fiscal 2021, the Company repaid all of its outstanding principal balance. For more information, refer to Note 14. Subsequent Event.\n(2)Debt issuance costs are recorded as a debt discount and recorded as interest expense over the term of the agreement.\nThe Credit Facility allows the Company to borrow up to $80.0 million, restricted to the value of the borrowing base, which is based on the value of inventory and accounts receivable and is subject to quarterly redetermination. The Credit Facility matures in October 2021 and may be drawn as Commercial Bank Floating Rate Loans (at the higher of prime rate or adjusted LIBOR plus 2.50%) or Eurocurrency Loans (at LIBOR plus an applicable margin). As of both January 2, 2021 and October 3, 2020, the Company did not have any outstanding borrowings and had $0.1 million and $0.5 million, respectively, in undrawn letters of credit that reduce the availability under the Credit Facility.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "Weighted-Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(In years)",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Outstanding at October 3, 2020",
+     "28,422,940",
+     "$",
+     "12.03",
+     "5.6",
+     "$",
+     "99,053"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(6,173,671)",
+     "11.26",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(311,443)",
+     "14.16",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 2, 2021",
+     "21,937,826",
+     "$",
+     "12.21",
+     "5.5",
+     "$",
+     "245,191"
+    ],
+    [
+     "At January 2, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable",
+     "18,512,188",
+     "$",
+     "11.78",
+     "5.1",
+     "$",
+     "214,871"
+    ],
+    [
+     "Options vested and expected to vest",
+     "21,533,731",
+     "$",
+     "12.17",
+     "5.5",
+     "$",
+     "241,587"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "In July 2018, the Board adopted the 2018 Equity Incentive Plan (the \u201c2018 Plan\u201d). The 2018 Plan became effective in connection with the Company's initial public offering (\"IPO\"). The number of shares reserved for issuance under the 2018 Plan increase automatically on January 1 of each year beginning in 2019 and continuing through 2028 by a number of shares of common stock equal to the lesser of (x) 5% of the total outstanding shares of the Company\u2019s common stock and common stock equivalents as of the immediately preceding December 31 (rounded to the nearest whole share) and (y) a number of shares determined by the Company's board of directors (the \"Board\").\nStock options\nPursuant to the 2018 Plan, the Company issues stock options to employees and directors. The fair value of the stock options is based on the Company\u2019s closing stock price on the trading day immediately prior to the date of grant. The option price, number of shares, and grant date are determined at the discretion of the Board. For so long\nas the option holder performs services for the Company, the options generally vest over 48 months, on a monthly or quarterly basis, with certain options subject to an initial annual cliff vest, and are exercisable for a period not to exceed ten years from the date of grant.\nThe summary of the Company\u2019s stock option activity is as follows:",
+   "prose_after": "As of January 2, 2021 and October 3, 2020, the Company had $13.7 million and $16.9 million, respectively, of unrecognized stock-based compensation expense related to stock options, which is expected to be recognized over a weighted-average period of 1.4 and 1.5 years, respectively.\nRestricted stock units (\"RSU\")\nPursuant to the 2018 Plan, the Company issues RSUs to employees and directors. The fair value of RSUs is based on the Company's closing stock price on the trading day immediately preceding the date of grant. RSUs typically have an initial annual cliff vest, and then vest quarterly over the service period, which is generally four years. The summary of the Company\u2019s unvested RSU activity is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Units",
+     "Weighted-Average Grant Date Fair Value",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Unvested at October 3, 2020",
+     "11,647,951",
+     "$",
+     "10.50",
+     "$",
+     "180,543"
+    ],
+    [
+     "Granted",
+     "2,501,828",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "(901,667)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(251,801)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unvested at January 2, 2021",
+     "12,996,311",
+     "$",
+     "11.64",
+     "$",
+     "303,984"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "As of January 2, 2021 and October 3, 2020, the Company had $13.7 million and $16.9 million, respectively, of unrecognized stock-based compensation expense related to stock options, which is expected to be recognized over a weighted-average period of 1.4 and 1.5 years, respectively.\nRestricted stock units (\"RSU\")\nPursuant to the 2018 Plan, the Company issues RSUs to employees and directors. The fair value of RSUs is based on the Company's closing stock price on the trading day immediately preceding the date of grant. RSUs typically have an initial annual cliff vest, and then vest quarterly over the service period, which is generally four years. The summary of the Company\u2019s unvested RSU activity is as follows:",
+   "prose_after": "As of January 2, 2021 and October 3, 2020, the Company had $113.4 million and $92.4 million of unrecognized stock-based compensation expense related to RSUs, which is expected to be recognized over a weighted-average period of 3.1 and 3.0 years, respectively.\nPerformance stock units (\"PSU\")\nPursuant to the 2018 Plan, the Company has issued and may issue certain PSUs that vest on the satisfaction of service and performance conditions. The Company estimates the fair value of PSUs on the grant date and recognizes compensation expense in the period it becomes probable that performance conditions will be achieved. On a quarterly basis, the Company re-evaluates the assumption of the probability that performance conditions will be satisfied and revises its estimates as appropriate as new or updated information becomes available. The summary of the Company\u2019s unvested PSU activity is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 679,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Units",
+     "Weighted-Average Grant Date Fair Value",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "Unvested at October 3, 2020",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "158,521",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unvested at January 2, 2021",
+     "158,521",
+     "$",
+     "22.81",
+     "$",
+     "3,708"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 730,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "As of January 2, 2021 and October 3, 2020, the Company had $113.4 million and $92.4 million of unrecognized stock-based compensation expense related to RSUs, which is expected to be recognized over a weighted-average period of 3.1 and 3.0 years, respectively.\nPerformance stock units (\"PSU\")\nPursuant to the 2018 Plan, the Company has issued and may issue certain PSUs that vest on the satisfaction of service and performance conditions. The Company estimates the fair value of PSUs on the grant date and recognizes compensation expense in the period it becomes probable that performance conditions will be achieved. On a quarterly basis, the Company re-evaluates the assumption of the probability that performance conditions will be satisfied and revises its estimates as appropriate as new or updated information becomes available. The summary of the Company\u2019s unvested PSU activity is as follows:",
+   "prose_after": "As of January 2, 2021, the Company had $4.2 million of unrecognized stock-based compensation expense related to PSUs, which is expected to be recognized over a weighted-average period of 1.9 years.\nStock-based compensation\nTotal stock-based compensation expense by functional category was as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "214",
+     "$",
+     "282"
+    ],
+    [
+     "Research and development",
+     "6,258",
+     "",
+     "5,116",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "3,408",
+     "",
+     "3,541",
+     ""
+    ],
+    [
+     "General and administrative",
+     "4,964",
+     "",
+     "4,265",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "14,844",
+     "$",
+     "13,204"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock-based Compensation"
+    }
+   },
+   "prose_before": "As of January 2, 2021, the Company had $4.2 million of unrecognized stock-based compensation expense related to PSUs, which is expected to be recognized over a weighted-average period of 1.9 years.\nStock-based compensation\nTotal stock-based compensation expense by functional category was as follows:",
+   "prose_after": "10. Income Taxes\nThe Company\u2019s tax provision and the resulting effective tax rate for interim periods is determined based upon its estimated annual effective tax rate, adjusted for the effect of discrete items arising in that quarter. The impact of such inclusions could result in a higher or lower effective tax rate during a quarter, based upon the mix and timing of actual earnings or losses versus annual projections. In each quarter, the Company updates its estimate of the annual effective tax rate, and if the estimated annual tax rate changes, a cumulative adjustment is made in that quarter.\nThe Company recorded a provision for incomes taxes of $9.1 million and $1.7 million for the three months ended January 2, 2021 and December 28, 2019, respectively, related to foreign and U.S. federal and state income taxes. For the three months ended January 2. 2021 the Company's tax provision includes a discrete benefit of $10.2 million for U.S. share based compensation. For the three months ended December 28, 2019, the Company calculated its U.S. income tax provision using the discrete method as though the interim year to date period was an annual period. The application of the estimated annual effective tax rate (\"AETR\") method generally required by ASC 740 was impractical for the U.S. interim tax provision for the three months ended December 28, 2019 given that normal deviations in the projected pre-tax net income (loss) in the U.S. could have resulted in a disproportionate and unreliable effective tax rate under the AETR method.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands, except share and per share data)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to common stockholders - basic and diluted",
+     "$",
+     "132,292",
+     "$",
+     "70,775"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares of common stock\u2014basic",
+     "115,610,523",
+     "",
+     "108,984,683",
+     ""
+    ],
+    [
+     "Effect of potentially dilutive stock options",
+     "8,105,916",
+     "",
+     "6,751,412",
+     ""
+    ],
+    [
+     "Effect of RSUs",
+     "6,927,708",
+     "",
+     "2,679,873",
+     ""
+    ],
+    [
+     "Weighted-average shares of common stock\u2014diluted",
+     "130,644,147",
+     "",
+     "118,415,968",
+     ""
+    ],
+    [
+     "Net income per share attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "1.14",
+     "$",
+     "0.65"
+    ],
+    [
+     "Diluted",
+     "$",
+     "1.01",
+     "$",
+     "0.60"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 782,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Net Income Per Share Attributable to Common Stockholders"
+    }
+   },
+   "prose_before": "For the three months ended January 2, 2021, the Company maintained a full valuation allowance on its deferred tax assets in the U.S. and the Netherlands due to its history of operating losses. It is possible that within the next 12 months there may be sufficient positive evidence to release a portion or all of the valuation allowance. Release of the valuation allowance in the U.S. and the Netherlands would result in a benefit to income tax expense for the period the release is recorded, which could have a material impact on net earnings. The timing and amount of the potential valuation allowance release are subject to significant management judgment, as well as prospective earnings in the U.S. and the Netherlands.\n11. Net Income Per Share Attributable to Common Stockholders\nBasic net income attributable to common stockholders per share is calculated by dividing net income attributable to common stockholders by the weighted-average number of shares of common stock outstanding less shares subject to repurchase. Diluted net income per share attributable to common stockholders adjusts the basic net income per share attributable to common stockholders and the weighted-average number of shares of common stock outstanding for the potentially dilutive impact of stock awards, using the treasury stock method.\nThe following table sets forth the computation of the Company\u2019s basic and diluted net income per share attributable to common stockholders:",
+   "prose_after": "The following potentially dilutive shares were excluded from the computation of diluted net income per share attributable to common stockholders because including them would have been antidilutive:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "December 28, 2019"
+    ],
+    [
+     "Stock options to purchase common stock",
+     "17,074,467",
+     "29,628,623"
+    ],
+    [
+     "Restricted stock units",
+     "5,489,890",
+     "4,278,556"
+    ],
+    [
+     "Total",
+     "22,564,357",
+     "33,907,179"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Net Income Per Share Attributable to Common Stockholders"
+    }
+   },
+   "prose_before": "The following potentially dilutive shares were excluded from the computation of diluted net income per share attributable to common stockholders because including them would have been antidilutive:",
+   "prose_after": "12. Restructuring Plan\nOn June 23, 2020, the Company initiated a restructuring plan as part of its efforts to reduce operating expenses and preserve liquidity due to the uncertainty and challenges stemming from the COVID-19 pandemic (the \"2020 restructuring plan\"). As part of the 2020 restructuring plan, the Company eliminated approximately 12% of its global headcount and closed its New York retail store and six satellite offices in order to better align resources to provide further operating flexibility and more efficiently position the business for its long-term\nstrategy. Activities under the 2020 restructuring plan were substantially completed in the first quarter of fiscal 2021.\nTotal pre-tax restructuring and related costs under the 2020 restructuring plan were $26.4 million, which was incurred in fiscal 2020. For the assets deemed to be impaired as part of the 2020 restructuring, the Company estimated fair value using an income-approach based on management\u2019s forecast of future cash flows expected to be derived from the property. In the first quarter of fiscal 2021, the Company negotiated the early termination of a facility lease that was part of the 2020 restructuring and recorded a gain of $2.8 million, representing the difference between the related operating lease liability and previously accrued restructuring expenses versus the early termination payment. The gain was recognized as a credit in sales and marketing expenses on the condensed consolidated statements of operations and comprehensive income. The cash paid related to the settlement of the lease liability as part of the early termination is included within \"Cash paid for amounts included in the measurement of lease liabilities\" within the supplemental disclosure on the condensed consolidated statements of cash flows. The remaining restructuring and related costs incurred in the first quarter of fiscal 2021 were nominal.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Costs incurred in the three months ended January 2, 2021",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Employee related costs",
+     "$",
+     "190"
+    ],
+    [
+     "Gain on early termination of facility lease",
+     "(2,801)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(2,611)"
+    ]
+   ],
+   "caption_stack": [
+    "Costs incurred in the three months ended January 2, 2021",
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 827,
+    "end_line": 838
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring Plan"
+    }
+   },
+   "prose_before": "Total pre-tax restructuring and related costs under the 2020 restructuring plan were $26.4 million, which was incurred in fiscal 2020. For the assets deemed to be impaired as part of the 2020 restructuring, the Company estimated fair value using an income-approach based on management\u2019s forecast of future cash flows expected to be derived from the property. In the first quarter of fiscal 2021, the Company negotiated the early termination of a facility lease that was part of the 2020 restructuring and recorded a gain of $2.8 million, representing the difference between the related operating lease liability and previously accrued restructuring expenses versus the early termination payment. The gain was recognized as a credit in sales and marketing expenses on the condensed consolidated statements of operations and comprehensive income. The cash paid related to the settlement of the lease liability as part of the early termination is included within \"Cash paid for amounts included in the measurement of lease liabilities\" within the supplemental disclosure on the condensed consolidated statements of cash flows. The remaining restructuring and related costs incurred in the first quarter of fiscal 2021 were nominal.",
+   "prose_after": "The following table represents the restructuring and related costs recorded in the Company's condensed consolidated statements of operations and comprehensive income:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "25"
+    ],
+    [
+     "Sales and marketing",
+     "(2,636)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(2,611)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "January 2, 2021",
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 841,
+    "end_line": 853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring Plan"
+    }
+   },
+   "prose_before": "The following table represents the restructuring and related costs recorded in the Company's condensed consolidated statements of operations and comprehensive income:",
+   "prose_after": "The following table summarizes the Company's restructuring activities recorded in accrued expenses and accrued compensation within the condensed consolidated balance sheets:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Employee Related Costs",
+     "",
+     "Other Restructuring Costs",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at October 3, 2020",
+     "$",
+     "1,620",
+     "$",
+     "2,971",
+     "$",
+     "4,591"
+    ],
+    [
+     "Restructuring charges",
+     "190",
+     "",
+     "(556)",
+     "",
+     "(366)",
+     ""
+    ],
+    [
+     "Cash paid",
+     "(1,224)",
+     "",
+     "(1,928)",
+     "",
+     "(3,152)",
+     ""
+    ],
+    [
+     "Balance at January 2, 2021",
+     "$",
+     "586",
+     "$",
+     "487",
+     "$",
+     "1,073"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 856,
+    "end_line": 867
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Restructuring Plan"
+    }
+   },
+   "prose_before": "The following table summarizes the Company's restructuring activities recorded in accrued expenses and accrued compensation within the condensed consolidated balance sheets:",
+   "prose_after": "These costs required the Company to make certain judgments and estimates regarding the amount and timing of the 2020 restructuring plan and related impairment charges or recoveries. The estimated liability could change subsequent to its recognition as part of the 2020 restructuring plan, requiring adjustments to the expense and liability recorded. On a quarterly basis, the Company conducts an evaluation of the related liabilities and expenses and revises its assumptions and estimates as appropriate as new or updated information becomes available.\n13. Retirement Plans\nThe Company has a defined contribution 401(k) plan (the \"401(k) Plan\") for the Company\u2019s U.S.-based employees, as well as various defined contribution plans for its international employees. Eligible U.S. employees may contribute up to 100% of their annual compensation under the 401(k) plan, but are limited to the maximum annual dollar amount allowable under the Internal Revenue Code of 1986, as amended (the \"Code\"). The Company matches contributions towards the 401(k) Plan and international defined contribution plans. The Company's matching contributions totaled $1.7 million and $1.6 million for the three months ended January 2, 2021 and December 28, 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 02, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "645,584",
+     "",
+     "$",
+     "562,083",
+     ""
+    ],
+    [
+     "Products sold",
+     "2,649",
+     "",
+     "",
+     "2,940",
+     "",
+     ""
+    ],
+    [
+     "Adjusted EBITDA(1)",
+     "$",
+     "166,265",
+     "",
+     "$",
+     "93,219",
+     ""
+    ],
+    [
+     "Adjusted EBITDA margin(1)",
+     "25.8",
+     "",
+     "%",
+     "16.6",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 919,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "We believe our existing cash and cash equivalent balances, cash flow from operations, and committed credit lines are sufficient to meet our long-term working capital and capital expenditure needs. As of January 2, 2021, we had cash and cash equivalents of $677.8 million, and an undrawn revolving credit facility of $80.0 million.\nWhile the situation caused by COVID-19 is unprecedented and dynamic, we have considered its impact when developing our estimates and assumptions. Actual results and outcomes may differ from our estimates and assumptions. For additional information of risks related to COVID-19, refer to Part II, Item 1A. Risk factors.\nKey Metrics\nIn addition to the measures presented in our condensed consolidated financial statements, we use the following key metrics to evaluate our business, measure our performance, identify trends affecting our business and assist us in making strategic decisions. Our key metrics are total revenue, products sold, adjusted EBITDA and adjusted EBITDA margin. The most directly comparable financial measure calculated under U.S. GAAP for adjusted EBITDA is net income (loss). In the three months ended January 2, 2021 and December 28, 2019, we had net income of $132.3 million and $70.8 million, respectively.",
+   "prose_after": "(1)For additional information regarding adjusted EBITDA and adjusted EBITDA margin (which are non-GAAP financial measures), including reconciliations of net income, to adjusted EBITDA, see the sections titled \u201cAdjusted EBITDA and adjusted EBITDA margin\u201d and \"Non-GAAP financial measures\u201d below.\nProducts Sold\nProducts sold represents the number of products that are sold during a period, net of returns, and includes the sale of products in the Sonos speakers and Sonos system products categories, as well as module units sold through our partnerships with IKEA and Sonance from our Partner products and other revenue category. Products sold excludes accessories, which have not materially contributed to our revenue historically. Growth rates between products sold and revenue are not perfectly correlated because our revenue is affected by other variables, such as the mix of products sold during the period, promotional discount activity and the introduction of new products that may have higher or lower than average selling prices.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 914,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "132,292",
+     "",
+     "$",
+     "70,775",
+     ""
+    ],
+    [
+     "Add (deduct):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "7,982",
+     "",
+     "",
+     "9,105",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "14,844",
+     "",
+     "",
+     "13,204",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "(36)",
+     "",
+     "",
+     "(998)",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "265",
+     "",
+     "",
+     "453",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "(4,257)",
+     "",
+     "",
+     "(4,424)",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "9,120",
+     "",
+     "",
+     "1,656",
+     "",
+     ""
+    ],
+    [
+     "Restructuring and related expenses (Note 12)",
+     "(2,611)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Legal and transaction related costs (1)",
+     "8,666",
+     "",
+     "",
+     "3,448",
+     "",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "166,265",
+     "",
+     "$",
+     "93,219",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "645,584",
+     "",
+     "$",
+     "562,083",
+     ""
+    ],
+    [
+     "Adjusted EBITDA margin",
+     "25.8",
+     "",
+     "%",
+     "16.6",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 995
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "\u2022do not reflect the effect of foreign currency exchange gains or losses, which is included in other income (expense), net;\n\u2022do not reflect the provision for or benefit from income tax that may result in payments that reduce cash available to us;\n\u2022do not reflect non-recurring expenses and other items that are not considered representative of our underlying operating performance which reduce cash available to us; and\n\u2022may not be comparable to similar non-GAAP financial measures used by other companies, because the expenses and other items that we exclude in our calculation of these non-GAAP financial measures may differ from the expenses and other items, if any, that other companies may exclude from these non-GAAP financial measures when they report their operating results.\nBecause of these limitations, these non-GAAP financial measures should be considered along with other operating and financial performance measures presented in accordance with U.S. GAAP.\nThe following table presents a reconciliation of net income to adjusted EBITDA:",
+   "prose_after": "(1)Legal and transaction-related costs consist of expenses related to our intellectual property (\"IP\") litigation against Alphabet and Google as well as legal and transaction costs associated with our acquisition activity, which we consider non-recurring expenses and do not consider representative of our underlying operating performance.\nFactors Affecting Performance\nNew product introductions. Since 2005, we have released a number of products in multiple audio categories. We intend to introduce new products that appeal to a broad set of consumers, as well as bring our differentiated listening platform and experience to all the places and spaces where our customers listen to the breadth of audio content available, including inside and outside their homes.\nSeasonality. Historically, we have experienced the highest levels of revenue in the first fiscal quarter of the year coinciding with the holiday shopping season and our promotional activities.\nChannel strategy. We are focused on reaching and converting prospective customers through third-party retail stores, e-commerce retailers, custom installers of home audio systems, and our website sonos.com. We are investing in our e-commerce capabilities and in-app experience to drive direct sales. Sales through our direct-to-consumer channel, primarily through sonos.com, increased in the three months ended January 2, 2021 compared to the three months ended December 28, 2019. We believe the growth of our own e-commerce channel will continue to be important to supporting our overall growth and profitability as consumers continue the shift from physical to online sales channels. Our physical retail distribution relies on third-party retailers. While we seek to increase sales through our direct-to-consumer sales channel, we expect that our future sales will continue to be substantially dependent on our third-party retailers. We will continue to seek retail partners that can deliver differentiated in-store experiences to support customer demand for product demonstrations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 02, 2021",
+     "",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Dollars in thousands)",
+     "$",
+     "",
+     "%",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "645,584",
+     "100.0",
+     "%",
+     "$",
+     "562,083",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of revenue (1)",
+     "346,159",
+     "",
+     "53.6",
+     "",
+     "334,463",
+     "",
+     "59.5",
+     ""
+    ],
+    [
+     "Gross profit",
+     "299,425",
+     "",
+     "46.4",
+     "",
+     "227,620",
+     "",
+     "40.5",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development (1)",
+     "52,346",
+     "",
+     "8.1",
+     "",
+     "52,526",
+     "",
+     "9.3",
+     ""
+    ],
+    [
+     "Sales and marketing(1)",
+     "74,453",
+     "",
+     "11.5",
+     "",
+     "77,423",
+     "",
+     "13.8",
+     ""
+    ],
+    [
+     "General and administrative (1)",
+     "35,242",
+     "",
+     "5.5",
+     "",
+     "30,209",
+     "",
+     "5.4",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "162,041",
+     "",
+     "25.1",
+     "",
+     "160,158",
+     "",
+     "28.5",
+     ""
+    ],
+    [
+     "Operating income",
+     "137,384",
+     "",
+     "21.3",
+     "",
+     "67,462",
+     "",
+     "12.0",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "36",
+     "",
+     "\u2014",
+     "",
+     "998",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(265)",
+     "",
+     "\u2014",
+     "",
+     "(453)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "4,257",
+     "",
+     "0.7",
+     "",
+     "4,424",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Total other income (expense), net",
+     "4,028",
+     "",
+     "0.6",
+     "",
+     "4,969",
+     "",
+     "0.9",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "141,412",
+     "",
+     "21.9",
+     "",
+     "72,431",
+     "",
+     "12.9",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "9,120",
+     "",
+     "1.4",
+     "",
+     "1,656",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "132,292",
+     "20.5",
+     "%",
+     "$",
+     "70,775",
+     "12.6",
+     "%"
+    ],
+    [
+     "Adjusted EBITDA (2)",
+     "$",
+     "166,265",
+     "25.8",
+     "%",
+     "$",
+     "93,219",
+     "16.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1055,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. A valuation allowance is provided when it is more likely than not that the deferred tax assets will not be realized. We have established a full valuation allowance to offset our U.S. and certain foreign net deferred tax assets due to the uncertainty of realizing future tax benefits from our net operating loss carryforwards and other deferred tax assets. It is possible that within the next 12 months there may be sufficient positive evidence to release a portion or all of the valuation allowance. Release of the valuation allowance in the U.S. and the Netherlands would result in a benefit to income tax expense for the period the release is recorded, which could have a material impact on net earnings. The timing and amount of the potential valuation allowance release are subject to significant management judgment, as well as prospective earnings in the U.S. and in the Netherlands.\nResults of Operations\nThe following table sets forth our condensed consolidated results of operations for the periods indicated. The period-to-period comparison of financial results is not necessarily indicative of financial results to be achieved in future periods.",
+   "prose_after": "(1)Amounts include stock-based compensation expense as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1050,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 02, 2021",
+     "",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "$",
+     "",
+     "%",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "214",
+     "\u2014",
+     "%",
+     "$",
+     "282",
+     "0.1",
+     "%"
+    ],
+    [
+     "Research and development",
+     "6,258",
+     "",
+     "1.0",
+     "",
+     "5,116",
+     "",
+     "0.9",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "3,408",
+     "",
+     "0.5",
+     "",
+     "3,541",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "General and administrative",
+     "4,964",
+     "",
+     "0.8",
+     "",
+     "4,265",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "14,844",
+     "2.3",
+     "%",
+     "$",
+     "13,204",
+     "2.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "(1)Amounts include stock-based compensation expense as follows:",
+   "prose_after": "(2) Adjusted EBITDA is a financial measure that is not calculated in accordance with U.S. GAAP. See the sections titled \u201cAdjusted EBITDA and adjusted EBITDA margin\u201d and \u201cNon-GAAP financial measures\u201d above.\nComparison of the Three Months Ended January 2, 2021 and December 28, 2019\nRevenue\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1050,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sonos speakers",
+     "$",
+     "527,516",
+     "$",
+     "466,677",
+     "$",
+     "60,839",
+     "13.0",
+     "%"
+    ],
+    [
+     "Sonos system products",
+     "97,759",
+     "",
+     "61,521",
+     "",
+     "36,238",
+     "",
+     "58.9",
+     "%"
+    ],
+    [
+     "Partner products and other revenue",
+     "20,309",
+     "",
+     "33,885",
+     "",
+     "(13,576)",
+     "",
+     "(40.1)",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "645,584",
+     "$",
+     "562,083",
+     "$",
+     "83,501",
+     "14.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1118,
+    "end_line": 1132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "(2) Adjusted EBITDA is a financial measure that is not calculated in accordance with U.S. GAAP. See the sections titled \u201cAdjusted EBITDA and adjusted EBITDA margin\u201d and \u201cNon-GAAP financial measures\u201d above.\nComparison of the Three Months Ended January 2, 2021 and December 28, 2019\nRevenue\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "Total revenue increased 14.9% for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. The growth was driven by strong overall demand for our higher-priced products, partially offset by the continuing impact of constrained product availability due to industry-wide supply chain challenges.\nSonos speakers revenue represented 81.7% of total revenue for the three months ended January 2, 2021. The category increased 13.0% compared to the three months ended December 28, 2019 led by the continued success of Arc and Move. Sonos system products represented 15.1% of total revenue for the three months ended January 2, 2021 and increased 58.9% compared to the three months ended December 28, 2019. The increase was driven by the continued success of Sonos AMP and Port. Partner products and other revenue represented 3.1% of total revenue for the three months ended January 2, 2021 and decreased by 40.1% compared to the three months ended December 28, 2019. This decline was driven by IKEA as the retailer slowed ordering modules given lighter foot traffic in stores and modified retail experience due to COVID-19 and as a result of cyclical product launches in this business model.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "December 28, 2019",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "(products sold units in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total products sold",
+     "2,649",
+     "2,940",
+     "(291)",
+     "(9.9)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1141,
+    "end_line": 1149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Sonos speakers revenue represented 81.7% of total revenue for the three months ended January 2, 2021. The category increased 13.0% compared to the three months ended December 28, 2019 led by the continued success of Arc and Move. Sonos system products represented 15.1% of total revenue for the three months ended January 2, 2021 and increased 58.9% compared to the three months ended December 28, 2019. The increase was driven by the continued success of Sonos AMP and Port. Partner products and other revenue represented 3.1% of total revenue for the three months ended January 2, 2021 and decreased by 40.1% compared to the three months ended December 28, 2019. This decline was driven by IKEA as the retailer slowed ordering modules given lighter foot traffic in stores and modified retail experience due to COVID-19 and as a result of cyclical product launches in this business model.\nRevenue for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 increased 21.1% in the Americas, increased 12.8% in EMEA, and decreased 16.9% in APAC due to the recognition of IKEA-related revenue in that region which declined compared to the three months ended December 28, 2019.\nIn constant currency U.S. dollars, total revenue increased by 11.6% for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. We calculate constant currency growth percentages by translating our prior-period financial results using the current period average currency exchange rates and comparing these amounts to our current period reported results.",
+   "prose_after": "The volume of products sold decreased for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 driven by a decrease in the partner products and other revenue category, due to the decline in sales by IKEA. The volume of products decreased while revenue increased primarily due to product mix as there was a shift to higher-priced products for the three months ended January 2, 2021 compared to the three months ended December 28, 2019.\nCost of Revenue and Gross Profit\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "346,159",
+     "",
+     "$",
+     "334,463",
+     "",
+     "$",
+     "11,696",
+     "3.5",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "299,425",
+     "",
+     "$",
+     "227,620",
+     "",
+     "$",
+     "71,805",
+     "31.5",
+     "%"
+    ],
+    [
+     "Gross margin",
+     "46.4",
+     "",
+     "%",
+     "40.5",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1168
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "The volume of products sold decreased for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 driven by a decrease in the partner products and other revenue category, due to the decline in sales by IKEA. The volume of products decreased while revenue increased primarily due to product mix as there was a shift to higher-priced products for the three months ended January 2, 2021 compared to the three months ended December 28, 2019.\nCost of Revenue and Gross Profit\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "The increase in cost of revenue for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 is driven by the increase in revenue, as well as expedited air freight shipping and an overall increase in shipping costs incurred as related to industry-wide supply chain dynamics, partially offset by a reduction in tariff expenses resulting from our exemption from tariffs during the quarter, recognition of $4.5 million in refunds from tariffs paid in prior periods, as well as product and material cost savings associated with successful cost negotiations.\nGross margin increased 590 basis points for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. The increase was primarily due to a reduction in tariff expenses resulting from our exemption from tariffs during the quarter and our recognition of $4.5 million in refunds from tariffs paid in prior periods. Excluding the net effects of tariffs in both periods, gross margin would have been 45.9%, an increase of 190 basis points, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This improvement was driven by a shift into higher margin products and channels, as well as product and material cost savings associated with successful cost negotiations. The increase was partially offset by increased shipping costs incurred related to broader industry-wide supply chain dynamics. We calculate gross margin excluding the effects of tariffs by removing the net impact of tariffs imposed on goods imported from China to the U.S. from gross profit divided by total revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "52,346",
+     "",
+     "$",
+     "52,526",
+     "",
+     "$",
+     "(180)",
+     "(0.3)",
+     "%"
+    ],
+    [
+     "Percentage of revenue",
+     "8.1",
+     "",
+     "%",
+     "9.3",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1177,
+    "end_line": 1187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Gross margin increased 590 basis points for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. The increase was primarily due to a reduction in tariff expenses resulting from our exemption from tariffs during the quarter and our recognition of $4.5 million in refunds from tariffs paid in prior periods. Excluding the net effects of tariffs in both periods, gross margin would have been 45.9%, an increase of 190 basis points, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This improvement was driven by a shift into higher margin products and channels, as well as product and material cost savings associated with successful cost negotiations. The increase was partially offset by increased shipping costs incurred related to broader industry-wide supply chain dynamics. We calculate gross margin excluding the effects of tariffs by removing the net impact of tariffs imposed on goods imported from China to the U.S. from gross profit divided by total revenue.\nResearch and Development\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "Research and development expenses decreased $0.2 million, or 0.3%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This decrease was led by a decrease in product development expenses related to the costs of diversifying our manufacturing into Malaysia in the prior year, partially offset by higher personnel-related expenses due to higher bonus and stock-based compensation.\nSales and Marketing\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "$",
+     "74,453",
+     "",
+     "$",
+     "77,423",
+     "",
+     "$",
+     "(2,970)",
+     "(3.8)",
+     "%"
+    ],
+    [
+     "Percentage of revenue",
+     "11.5",
+     "",
+     "%",
+     "13.8",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1195,
+    "end_line": 1205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Research and development expenses decreased $0.2 million, or 0.3%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This decrease was led by a decrease in product development expenses related to the costs of diversifying our manufacturing into Malaysia in the prior year, partially offset by higher personnel-related expenses due to higher bonus and stock-based compensation.\nSales and Marketing\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "Sales and marketing expenses decreased $3.0 million, or 3.8%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This decrease was primarily due to cost savings associated with the 2020 restructuring plan of $6.3 million. This decrease was partially offset by a $3.6 million increase in marketing expenses.\nGeneral and Administrative\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "December 28, 2019",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "35,242",
+     "",
+     "$",
+     "30,209",
+     "",
+     "$",
+     "5,033",
+     "16.7",
+     "%"
+    ],
+    [
+     "Percentage of revenue",
+     "5.5",
+     "",
+     "%",
+     "5.4",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1212,
+    "end_line": 1222
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Sales and marketing expenses decreased $3.0 million, or 3.8%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019. This decrease was primarily due to cost savings associated with the 2020 restructuring plan of $6.3 million. This decrease was partially offset by a $3.6 million increase in marketing expenses.\nGeneral and Administrative\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "General and administrative expenses increased $5.0 million, or 16.7%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 primarily due to an increase of $8.7 million in legal fees paid in connection with our IP litigation, partially offset by various other general and administrative costs such as savings associated with global travel restrictions and work-from-home policies due to COVID-19.\nInterest Income, Interest Expense and Other Income, Net\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "36",
+     "$",
+     "998",
+     "$",
+     "(962)",
+     "(96.4)",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(265)",
+     "$",
+     "(453)",
+     "$",
+     "188",
+     "(41.5)",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "$",
+     "4,257",
+     "$",
+     "4,424",
+     "$",
+     "(167)",
+     "(3.8)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1229,
+    "end_line": 1240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "General and administrative expenses increased $5.0 million, or 16.7%, for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 primarily due to an increase of $8.7 million in legal fees paid in connection with our IP litigation, partially offset by various other general and administrative costs such as savings associated with global travel restrictions and work-from-home policies due to COVID-19.\nInterest Income, Interest Expense and Other Income, Net\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "Interest income for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 decreased due to lower yields in our cash and cash equivalents. Interest expense for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 decreased primarily due to a lower principal balance. The decrease in other income, net for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 was due to foreign currency exchange losses.\nProvision for Income Taxes\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     "",
+     "$",
+     "",
+     "%"
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "9,120",
+     "$",
+     "1,656",
+     "$",
+     "7,464",
+     "*"
+    ],
+    [
+     "* not meaningful",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1248,
+    "end_line": 1258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Interest income for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 decreased due to lower yields in our cash and cash equivalents. Interest expense for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 decreased primarily due to a lower principal balance. The decrease in other income, net for the three months ended January 2, 2021 compared to the three months ended December 28, 2019 was due to foreign currency exchange losses.\nProvision for Income Taxes\nComparison of the three months ended January 2, 2021 and December 28, 2019",
+   "prose_after": "The provision for income taxes increased from $1.7 million for the three months ended December 28, 2019 to $9.1 million for the three months ended January 2, 2021.\nFor the three months ended January 2, 2021, we recorded a provision for incomes taxes of $3.5 million for certain profitable foreign entities and $15.8 million for U.S. federal and state income for a total provision of $19.3 million before discrete items. This was offset by a discrete income tax benefit of $10.2 million resulting from U.S. share-based compensation.\nFor the three-months ended December 28, 2019, we recorded a provision for income taxes of $0.5 million for certain profitable foreign entities and $1.8 million for U.S. state income tax for a total provision of $2.3 million before discrete items. This was offset by a discrete income tax benefit of approximately $0.6 million as a result of a favorable release of uncertain tax positions in the U.S. coinciding with the issuance of the Base Erosion and Anti-Abuse Tax Regulations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "",
+     "",
+     "October 3, 2020",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Term Loan (1)",
+     "2.4",
+     "%",
+     "$",
+     "25,000",
+     "2.4 %",
+     "$",
+     "25,000"
+    ],
+    [
+     "Unamortized debt issuance costs (2)",
+     "",
+     "",
+     "(63)",
+     "",
+     "",
+     "(82)",
+     ""
+    ],
+    [
+     "Total indebtedness",
+     "",
+     "",
+     "24,937",
+     "",
+     "",
+     "24,918",
+     ""
+    ],
+    [
+     "Less short-term portion",
+     "",
+     "",
+     "(24,937)",
+     "",
+     "",
+     "(6,667)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "18,251"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1280,
+    "end_line": 1295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "We believe our existing cash and cash equivalent balances, cash flows from operations and committed credit lines will be sufficient to meet our long-term working capital and capital expenditure needs for at least the next 12 months. Our future capital requirements may vary materially from those currently planned and will depend on many factors, including our rate of revenue growth, the timing and extent of spending on research and development efforts and other business initiatives, our planned sales and marketing activities, the timing of new product introductions, market acceptance of our products and overall economic conditions. To the extent that current and anticipated sources of liquidity are insufficient to fund our future business activities and requirements, we may be required to seek additional equity or debt financing. The sale of additional equity would result in increased dilution to our stockholders. The incurrence of additional debt financing would result in increased debt\nservice obligations and the instruments governing such debt could provide for operating and financing covenants that would restrict our operations.\nDebt Obligations\nOur debt obligations consist of the Credit Facility, the Term Loan and debt acquired in our acquisition of Snips. Our short- and long-term debt obligations as of January 2, 2021 and October 3, 2020 were as follows:",
+   "prose_after": "(1)Due in October 2021, bears interest at a variable rate equal to an adjusted LIBOR plus 2.25%, payable quarterly.\n(2)Debt issuance costs are recorded as a debt discount and recorded as interest expense over the term of the agreement.\nThe Credit Facility allows us to borrow up to $80.0 million restricted to the value of the borrowing base which is based on the value of our inventory and accounts receivable and is subject to quarterly redetermination. The Credit Facility matures in October 2021 and may be drawn as Commercial Bank Floating Rate Loans (at the higher of prime rate or adjusted LIBOR plus 2.50%) or Eurocurrency Loans (at LIBOR plus an applicable margin). As of both January 2, 2021 and October 3, 2020, we did not have any outstanding borrowings and had $0.1 million and $0.5 million, respectively, in undrawn letters of credit that reduce the availability under the Credit Facility.\nDebt obligations under the Credit Facility and the Term Loan require that we maintain a consolidated fixed charge ratio of at least 1.0, restrict distribution of dividends unless certain conditions are met, such as having a fixed charge ratio of at least 1.15, and require financial statement reporting and delivery of borrowing base certificates. As of January 2, 2021 and October 3, 2020, we were in compliance with all financial covenants. The Credit Facility and the Term Loan are collateralized by eligible inventory and accounts receivable, as well as our intellectual property including patents and trademarks.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1329,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "January 2, 2021",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "214,513",
+     "$",
+     "118,840"
+    ],
+    [
+     "Investing activities",
+     "(11,333)",
+     "",
+     "(51,536)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "64,387",
+     "",
+     "1,224",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes",
+     "3,174",
+     "",
+     "1,254",
+     ""
+    ],
+    [
+     "Net increase in cash, cash equivalents and restricted cash",
+     "$",
+     "270,741",
+     "$",
+     "69,782"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1308,
+    "end_line": 1324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "The Credit Facility allows us to borrow up to $80.0 million restricted to the value of the borrowing base which is based on the value of our inventory and accounts receivable and is subject to quarterly redetermination. The Credit Facility matures in October 2021 and may be drawn as Commercial Bank Floating Rate Loans (at the higher of prime rate or adjusted LIBOR plus 2.50%) or Eurocurrency Loans (at LIBOR plus an applicable margin). As of both January 2, 2021 and October 3, 2020, we did not have any outstanding borrowings and had $0.1 million and $0.5 million, respectively, in undrawn letters of credit that reduce the availability under the Credit Facility.\nDebt obligations under the Credit Facility and the Term Loan require that we maintain a consolidated fixed charge ratio of at least 1.0, restrict distribution of dividends unless certain conditions are met, such as having a fixed charge ratio of at least 1.15, and require financial statement reporting and delivery of borrowing base certificates. As of January 2, 2021 and October 3, 2020, we were in compliance with all financial covenants. The Credit Facility and the Term Loan are collateralized by eligible inventory and accounts receivable, as well as our intellectual property including patents and trademarks.\nCash Flows\nThe following table summarizes our cash flows for the periods indicated:",
+   "prose_after": "Cash flows from operating activities\nNet cash provided by operating activities of $214.5 million for the three months ended January 2, 2021 consisted of net income of $132.3 million, non-cash adjustments of $20.2 million and a net increase in cash related to changes in operating assets and liabilities of $62.1 million. Non-cash adjustments primarily consisted of\nstock-based compensation expense of $14.8 million, depreciation and amortization of $8.0 million, partially offset by foreign currency transaction gain and other non-cash adjustments. The net increase in cash related to operating assets and liabilities was primarily due to a decrease in inventory of $93.5 million due to the continuing impact of constrained product availability due to industry-wide supply chain challenges; accounts payable and accrued expenses increased $33.3 million primarily due to an increase in accrued marketing expenses, partially offset by decrease in accounts payable due to decrease in inventory; an increase in other liabilities of $9.1 million; and an increase in deferred revenue of $5.6 million. The increase in operating assets and liabilities was partially offset by an increase in accounts receivable of $56.7 million due to seasonality; a decrease in accrued compensation of $15.5 million primarily due to the payment of bonuses in the first quarter of fiscal 2021; as well as an increase in other assets of $7.3 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1329,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit number",
+     "Exhibit title",
+     "Incorporated by reference",
+     "",
+     "",
+     "",
+     "Filed or furnished herewith"
+    ],
+    [
+     "",
+     "",
+     "Form",
+     "File no.",
+     "Exhibit",
+     "Filing date",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Performance Share Award Agreement under 2018 Equity Incentive Plan",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rules 13a-14(a) and Rule 15d-14(a) of the Exchange Act",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rules 13a-14(a) and Rule 15d-14(a) of the Exchange Act",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(b) of the Exchange Act and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(b) of the Exchange Act and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101",
+     "The following financial statements from the Company's Quarterly Report on Form 10-Q for the quarter ended January 2, 2021, formatted in Inline XBRL: (i) Condensed consolidated balance sheets, (ii) Condensed consolidated statements of operations and comprehensive income, (iv) Condensed consolidated statements of stockholders' equity, (v) Condensed consolidated statements of cash flows and (vi) Notes to condensed consolidated financial statements, tagged as blocks of text and including detailed tags",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1733,
+    "end_line": 1755
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibit Index"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "weaknesses in internal control over financial reporting. Completion of remediation does not provide assurance that our remediation or other controls will continue to operate properly. If we are unable to maintain effective internal control over financial reporting or disclosure controls and procedures, our ability to record, process and report financial information accurately, and to prepare consolidated financial statements within required time periods could be adversely affected, which could subject us to litigation or investigations requiring management resources and payment of legal and other expenses, negatively affect investor confidence in our consolidated financial statements and adversely impact our stock price.\nItem 2. Unregistered Sales of Equity Securities and Use of proceeds\nRecent Sales of Unregistered Securities\nNone.\nIssuer Purchases of Equity Securities\nOn November 17, 2020, the Board of Directors authorized a common stock repurchase program of up to $50.0 million. No shares of the Company's stock were repurchased under this program during the three months ended January 2, 2021. See Note 8. Stockholders\u2019 Equity for further information.\nItem 6. Exhibit Index",
+   "prose_after": "*The certifications furnished in Exhibits 32.1 and 32.2 hereto are deemed to accompany this Form 10-Q and are not deemed \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, nor shall they be deemed incorporated by reference into any filing under the Securities Act or the Exchange Act.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Quarterly Report on Form 10-Q to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1730,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1758,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Sonos, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: February 10, 2021",
+     "By:",
+     "/s/ Patrick Spence"
+    ],
+    [
+     "",
+     "",
+     "Patrick Spence"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "Date: February 10, 2021",
+     "By:",
+     "/s/ Brittany Bagley"
+    ],
+    [
+     "",
+     "",
+     "Brittany Bagley"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Sonos, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1763,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibit Index"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "*The certifications furnished in Exhibits 32.1 and 32.2 hereto are deemed to accompany this Form 10-Q and are not deemed \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, nor shall they be deemed incorporated by reference into any filing under the Securities Act or the Exchange Act.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Quarterly Report on Form 10-Q to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1758,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1778,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2633 @@
+{
+ "accession": "0001493152-19-017753",
+ "cik": "0001745931",
+ "form": "10-Q",
+ "filing_date": "2019-11-15",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "83-1365356"
+    ],
+    [
+     "(State or other jurisdiction",
+     "I.R.S. Employer"
+    ],
+    [
+     "of incorporation)",
+     "Identification Number"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Mark One)\n[X] QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2019\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT\nOF 1934\nFor the transition period from to\nCommission file number 000-55738\nJS BEAUTY LAND NETWORK TECHNOLOGY INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "No. 99, Taihu Road, Yancheng, Jiangsu Province, China\n(Address of principal executive offices)\n778-888-2886\n(Registrant\u2019s telephone number, including area code)\nSecurities to be registered under Section 12(g) of the Act:\nCommon stock, par value $0.001 per share\n(Title of class)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes\n[X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large accelerated filer",
+     "[  ]",
+     "Accelerated filer",
+     "[  ]"
+    ],
+    [
+     "Non-accelerated filer",
+     "[  ] (Do not check if a smaller reporting company)",
+     "Smaller reporting company",
+     "[X]"
+    ],
+    [
+     "",
+     "",
+     "Emerging growth company",
+     "[  ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 61
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Address of principal executive offices)\n778-888-2886\n(Registrant\u2019s telephone number, including area code)\nSecurities to be registered under Section 12(g) of the Act:\nCommon stock, par value $0.001 per share\n(Title of class)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes\n[X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "prose_after": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock as of the latest practicable date.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding at November 15, 2019"
+    ],
+    [
+     "Common Stock, par value $0.001",
+     "2,136,428"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 75
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock as of the latest practicable date.",
+   "prose_after": "Documents incorporated by reference: None\nCONDENSED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Condensed Balance Sheets as of September 30, 2019 (unaudited) and December 31, 2018 (audited)",
+     "3"
+    ],
+    [
+     "Condensed Statements of Operations for the three months and nine ended September 30, 2019 (unaudited)",
+     "4"
+    ],
+    [
+     "Condensed Statements of Cash Flows for the nine months ended September 30, 2019 (unaudited)",
+     "5"
+    ],
+    [
+     "Condensed Statement of Stockholders\u2019 Equity for the three and nine months ended September 30, 2019 (unaudited)",
+     "6"
+    ],
+    [
+     "Notes to Condensed Financial Statements (unaudited)",
+     "7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 80,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Documents incorporated by reference: None\nCONDENSED FINANCIAL STATEMENTS",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEET",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nSeptember 30, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "80,926",
+     "",
+     "$",
+     "130,747",
+     ""
+    ],
+    [
+     "  Prepaid expense",
+     "",
+     "24,728",
+     "",
+     "",
+     "6,706",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "50,288",
+     "",
+     "",
+     "6,261",
+     ""
+    ],
+    [
+     "  Other Receivable",
+     "",
+     "187",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "156,129",
+     "",
+     "",
+     "143,714",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expense-long term",
+     "",
+     "679,658",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Property And Equipment, Net",
+     "",
+     "8,976",
+     "",
+     "",
+     "11,081",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "844,763",
+     "",
+     "$",
+     "154,795",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accrued liabilities",
+     "$",
+     "13,990",
+     "",
+     "$",
+     "14,546",
+     ""
+    ],
+    [
+     "  Due to related party",
+     "",
+     "80,174",
+     "",
+     "",
+     "73,900",
+     ""
+    ],
+    [
+     "  Tax payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Other payable",
+     "",
+     "124,245",
+     "",
+     "",
+     "66,214",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "218,409",
+     "",
+     "",
+     "154,660",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.001 par value 10,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  none issued and outstanding at September 30, 2019 and December 31, 2018",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value, 100,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  2,136,428 and 1,371,428 shares issued and outstanding at September 30, 2019 and December 31, 2018",
+     "",
+     "2,136",
+     "",
+     "",
+     "1,371",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Additional paid in capital",
+     "",
+     "890,772",
+     "",
+     "",
+     "123,020",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(253,240)",
+     "",
+     "",
+     "(127,616)",
+     ""
+    ],
+    [
+     "  Accumulated other comprehensive income",
+     "",
+     "(12,155)",
+     "",
+     "",
+     "3,795",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total JS Beauty Land Network Technology Inc.\u2019 Equity",
+     "$",
+     "627,513",
+     "",
+     "",
+     "570",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non-controlling interest",
+     "",
+     "(1,159)",
+     "",
+     "",
+     "(435)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total Stockholders\u2019 Equity",
+     "",
+     "626,354",
+     "",
+     "",
+     "135",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "844,763",
+     "",
+     "$",
+     "154,795",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 92,
+    "end_line": 150
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEET",
+   "prose_after": "The accompanying notes are an integral part of these unaudited financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF OPERATIONS AND COMPREHENSIVE INCOME\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Nine Months ended September 30,",
+     "",
+     "",
+     "For the Period from May 8, 2018 (Inception) to September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "26,577",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "40,418",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of Revenues",
+     "",
+     "7,658",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "11,687",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "18,919",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "28,731",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "34,948",
+     "",
+     "",
+     "54,635",
+     "",
+     "",
+     "151,626",
+     "",
+     "",
+     "86,010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "",
+     "(16,029)",
+     "",
+     "",
+     "(54,635)",
+     "",
+     "",
+     "(122,895)",
+     "",
+     "",
+     "(86,010)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "80",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "330",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(1,224)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,661)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "7",
+     ""
+    ],
+    [
+     "Other income - related parties",
+     "",
+     "-",
+     "",
+     "",
+     "69",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "69",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(1,144)",
+     "",
+     "",
+     "76",
+     "",
+     "",
+     "(3,331)",
+     "",
+     "",
+     "76",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(17,173)",
+     "",
+     "",
+     "(54,559)",
+     "",
+     "",
+     "(126,226)",
+     "",
+     "",
+     "(85,934)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Tax Expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(17,173)",
+     "",
+     "$",
+     "(54,559)",
+     "",
+     "$",
+     "(126,226)",
+     "",
+     "$",
+     "(85,934)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: net loss attributable to non-controlling interest",
+     "",
+     "(124)",
+     "",
+     "",
+     "(466)",
+     "",
+     "",
+     "(602)",
+     "",
+     "",
+     "(466)",
+     ""
+    ],
+    [
+     "Net loss attributable to JS Beauty Land Network Technology Inc.",
+     "",
+     "(17,049)",
+     "",
+     "",
+     "(54,093)",
+     "",
+     "",
+     "(125,624)",
+     "",
+     "",
+     "(85,468)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain",
+     "",
+     "(31,473)",
+     "",
+     "",
+     "4,493",
+     "",
+     "",
+     "(15,950)",
+     "",
+     "",
+     "4,493",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Comprehensive Loss Attributable to JS Beauty Land Network Technology Inc.",
+     "$",
+     "(48,522)",
+     "",
+     "$",
+     "(49,600)",
+     "",
+     "$",
+     "(141,574)",
+     "",
+     "$",
+     "(80,975)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share - basic and diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.05)",
+     "",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.13)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average shares-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  basic and diluted",
+     "",
+     "2,136,428",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "1,718,901",
+     "",
+     "",
+     "641,379",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 159,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF OPERATIONS AND COMPREHENSIVE INCOME\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine Months ended September 30,",
+     "",
+     "",
+     "For the Period from May 8, 2018 (Inception) to September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(126,226)",
+     "",
+     "$",
+     "(85,934)",
+     ""
+    ],
+    [
+     "  Non-cash adjustment to reconcile net loss to net cash:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation",
+     "",
+     "1,753",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Imputed interest expense",
+     "",
+     "3,661",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Changes in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Prepaid expense",
+     "",
+     "(18,724)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Other Receivable",
+     "",
+     "(195)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "(46,102)",
+     "",
+     "",
+     "(6,910)",
+     ""
+    ],
+    [
+     "    Prepaid expense-long term",
+     "",
+     "(707,874)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued liabilities",
+     "",
+     "(557)",
+     "",
+     "",
+     "6,800",
+     ""
+    ],
+    [
+     "    Due to a related party",
+     "",
+     "9,406",
+     "",
+     "",
+     "80,778",
+     ""
+    ],
+    [
+     "    Other payable",
+     "",
+     "58,031",
+     "",
+     "",
+     "26,875",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET CASH PROVIDED BY OPERATING ACTIVITIES",
+     "",
+     "(826,828)",
+     "",
+     "",
+     "21,609",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Purchase of plant and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(17,813)",
+     ""
+    ],
+    [
+     "    Proceeds from disposal of plant and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "891",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET CASH UESED IN INVESTING ACTIVITIES",
+     "",
+     "-",
+     "",
+     "",
+     "(16,922)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Proceeds from shares to be issued",
+     "",
+     "-",
+     "",
+     "",
+     "118,957",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of shares",
+     "",
+     "765,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "765,000",
+     "",
+     "",
+     "119,957",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "(61,828)",
+     "",
+     "",
+     "124,644",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EFFECT OF EXCHANGE RATE ON CASH AND CASH EQUIVALENTS",
+     "",
+     "12,007",
+     "",
+     "",
+     "1,952",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Balance, Beginning of Period",
+     "",
+     "130,747",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Balance, End of Period",
+     "$",
+     "80,926",
+     "",
+     "$",
+     "126,596",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for income tax",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 223,
+    "end_line": 281
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF CASH FLOWS\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited financial statements.\nSTATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFOR THE QUARTER ENDED SEPTEMBER 30, 2019 AND 2018\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 284,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Income",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2018",
+     "",
+     "1,371,428",
+     "$",
+     "1,371",
+     "$",
+     "123,020",
+     "$",
+     "(127,616)",
+     "",
+     "$",
+     "3,795",
+     "",
+     "$",
+     "(435)",
+     "",
+     "$",
+     "135",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed interest expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,517",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,517",
+     ""
+    ],
+    [
+     "Share issuance for cash",
+     "",
+     "765,000",
+     "",
+     "765",
+     "",
+     "764,235",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "765,000",
+     ""
+    ],
+    [
+     "Shares to be issued",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(125,624)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(602)",
+     "",
+     "",
+     "(126,226)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(15,950)",
+     "",
+     "",
+     "(122)",
+     "",
+     "",
+     "(16,072)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2019",
+     "",
+     "2,136,428",
+     "$",
+     "2,136",
+     "$",
+     "890,772",
+     "$",
+     "(253,240)",
+     "",
+     "$",
+     "(12,155)",
+     "",
+     "$",
+     "(1,159)",
+     "",
+     "$",
+     "626,354",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance May 8, 2018 (Inception)",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed interest expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Share issuance for cash",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Shares to be issued",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(85,468)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(466)",
+     "",
+     "",
+     "(85,468)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "4,493",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "4,538",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of September 30, 2018",
+     "",
+     "1,000,000",
+     "$",
+     "1,000",
+     "$",
+     "-",
+     "$",
+     "(85,468)",
+     "",
+     "$",
+     "4,493",
+     "",
+     "$",
+     "(421)",
+     "",
+     "$",
+     "(79,930)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 292,
+    "end_line": 322
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited financial statements.\nSTATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFOR THE QUARTER ENDED SEPTEMBER 30, 2019 AND 2018\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited financial statements.\nJS BEAUTY LAND NETWORK TECHNOLOGY INC. AND SUBSIDIARY\nNotes to Unaudited Financial Statements\nNOTE 1 - NATURE OF OPERATIONS AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nNATURE OF OPERATIONS\nJS Beauty Land Network Technology Inc. (the \u201cCompany\u201d or \u201cJS\u201d or \u201cWe\u2019 or \u201cUs\u201d) is a Nevada corporation incorporated on May 8, 2018. The Company was formed as a US corporation to use as a vehicle for raising equity both in the United States and abroad.\nOn August 6, 2018, the Company and an unrelated party established a subsidiary company, Jiangsu Meiyunmei Technology Inc. (\u201cMYM\u201d), in China. The Company owns 99% of the common shares of MYM. MYM\u2019s business plan is to operate jewelry manufacturing facilities and retailers in China, particularly dealing in fine emerald and jade jewelry. MYM intends to offer jewelry both in a retail setting and through online channels. MYM intends to target high-end jewelry consumers and investors and collectors of fine jade jewelry. In the longer term, MYM intends to operate a franchising business for retail sales of fine jewelry. MYM started jewelry retail sales in November 2018.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 284,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Items",
+     "Useful life"
+    ],
+    [
+     "Office equipment",
+     "3\u20135 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 369,
+    "end_line": 374
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "NATURE OF OPERATIONS AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "CASH AND CASH EQUIVALENTS\nCash and cash equivalents include cash on hand and on deposit at banking institutions as well as all highly liquid short-term investments with original maturities of 90 days or less. Cash and cash equivalents amounted to $80,926 and $130,747 as of September 30, 2019 and December 31, 2018, respectively.\nINVENTORIES\nInventories are stated at the lower of cost or net realizable value. Costs include the cost of purchasing of finished goods. The cost of inventories is calculated using the weighted average method. Any excess of the cost over the net realizable value of each item of inventories is recognized as a provision for diminution in the value of inventories.\nNet realizable value is the estimated selling price in the normal course of business less any costs to complete and sell products.\nPROPERTY, PLANT AND EQUIPMENT\nProperty and equipment are stated at cost. The straight-line depreciation method is used to compute depreciation over the estimated useful lives of the assets, as follows:",
+   "prose_after": "Expenditures for maintenance and repairs, which do not materially extend the useful lives of the assets, are charged to expense as incurred. Expenditures for major renewals and betterments which substantially extend the useful life of assets are capitalized. The cost and related accumulated depreciation of assets retired or sold are removed from the respective accounts, and any gain or loss is recognized in the statement of income in other income and expenses.\nCONCENTRATION OF RISK\nThe Company incurs expense transactions that are denominated in RMB. A portion of the Company\u2019s subsidiary\u2019s assets and liabilities are denominated in RMB. RMB is not freely convertible into foreign currencies. In the PRC, certain foreign exchange transactions are required by law to be transacted only by authorized financial institutions at exchange rates set by the People\u2019s Bank of China (\u201cPBOC\u201d). Remittances in currencies other than RMB by the Company in China must be processed through the PBOC or other China foreign exchange regulatory bodies that require certain supporting documentation in order to affect the remittance.",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 401,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Line Item",
+     "9/30/19",
+     "",
+     "",
+     "9/30/18",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     "",
+     "Percentage Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "26,577",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "26,577",
+     "",
+     "",
+     "Inf.",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "34,948",
+     "",
+     "",
+     "54,635",
+     "",
+     "",
+     "(19,687)",
+     "",
+     "",
+     "(36.0)",
+     "%"
+    ],
+    [
+     "Net loss",
+     "",
+     "(17,173)",
+     "",
+     "",
+     "(54,559)",
+     "",
+     "",
+     "(37,386)",
+     "",
+     "",
+     "(68.5)",
+     "%"
+    ],
+    [
+     "Loss per share of common stock",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.05)",
+     "",
+     "",
+     "(0.04)",
+     "",
+     "",
+     "(85)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The company was formed on May 8, 2018, with no capital. Thereafter, the Company issued 1,000,000 shares of founder\u2019s capital to Faxian Qian at $0.001 per share for an aggregate of $1,000. In August and September 2018, the Company sold an additional 371,428 at investors in China for prices ranging from $0.25 per share to $0.50 per share for aggregate proceeds of $118,957. In May 2019, the Company sold 765,000 shares of common stock at $1.0 per share for total of $765,000 to 44 unrelated parties.\nDuring fiscal year 2019, the Company will clearly require additional funding for ongoing operations. There is no guarantee that we will be able to raise any additional capital and have no current arrangements for any such financing.\nResults of Operations\nThree Months Ended September 30, 2019 Compared to September 30, 2018\nThe following table summarizes the results of our operations during the three months ended September 30, 2019 and 2018, respectively, and provides information regarding the dollar and percentage increase or (decrease) from the current three-month period to the prior three-month period:",
+   "prose_after": "We recorded a net loss of $17,173 for the three months ended September 30, 2019 as compared with a net loss of $54,559 for the three months ended September 30, 2018 due primarily to an increase in revenues and a decrease in general and administrative expense.\nNine Months Ended September 30, 2019\nThe following table summarizes the results of our operations during the nine months ended September 30, 2019. There is no comparable data for the nine months ended September 30, 2018:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Line Item",
+     "9/30/19",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "40,418",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "151,626",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(126,226)",
+     ""
+    ],
+    [
+     "Loss per share of common stock",
+     "",
+     "(0.07)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We recorded a net loss of $17,173 for the three months ended September 30, 2019 as compared with a net loss of $54,559 for the three months ended September 30, 2018 due primarily to an increase in revenues and a decrease in general and administrative expense.\nNine Months Ended September 30, 2019\nThe following table summarizes the results of our operations during the nine months ended September 30, 2019. There is no comparable data for the nine months ended September 30, 2018:",
+   "prose_after": "We recorded a net loss of $126,226 for the nine months ended September 30, 2019. There is no comparable data for the nine months ended September 30, 2018.\nLiquidity and Capital Resources\nAs of September 30, 2019, we had total assets of $844,763, a negative working capital of $62,280 and an accumulated stockholders\u2019 deficit of $253,240. Our operating activities used $826,828 in cash for the nine-month period ending September 30, 2019. Our revenues were $26,577 in the three-month period ending September 30, 2019. There is no comparative data for any prior periods.\nManagement believes that the Company\u2019s cash on hand will be sufficient to fund all Company obligations and commitments for the next twelve months. Historically, we have depended on loans from our principal shareholders and their affiliated companies to provide us with working capital as required. There is no guarantee that such funding will be available when required and there can be no assurance that our stockholders, or any of them, will continue making loans or advances to us in the future.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "JS BEAUTY LAND NETWORK TECHNOLOGY INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Faxian Qian"
+    ],
+    [
+     "Title:",
+     "Chief Executive Officer, President, Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "JS BEAUTY LAND NETWORK TECHNOLOGY INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "During the quarter covered by this Report, there have not been any material changes to the procedures by which security holders may recommend nominees to the Board of Directors.\nITEM 6. EXHIBITS\n(a) Exhibits\n31.1 Certification of Principal Executive Officer filed pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2 Certification of Principal Financial Officer filed pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1 Certification of Principal Executive Officer and Principal Financial Officer furnished pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS XBRL Instance Document 101.SCH XBRL Taxonomy Extension Schema Document 101.CAL XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF XBRL Taxonomy Extension definition Linkbase Document 101.LAB XBRL Taxonomy Extension Label Linkbase Document 101.PRE XBRL Taxonomy Extension Presentation Linkbase Document\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Dated: November 15, 2019",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

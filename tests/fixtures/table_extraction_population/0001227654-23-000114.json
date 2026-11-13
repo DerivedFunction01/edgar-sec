@@ -1,0 +1,6626 @@
+{
+ "accession": "0001227654-23-000114",
+ "cik": "0001227654",
+ "form": "10-Q",
+ "filing_date": "2023-05-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cmp-20230331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "36-3972986"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2023\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________________ to __________________________\nCommission File Number 001-31921\nCompass Minerals International, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "9900 West 109th Street\nSuite 100\nOverland Park, KS 66210\n(913) 344-9200\n(Address of principal executive offices, zip code and telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, $0.01 par value",
+     "CMP",
+     "The New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "9900 West 109th Street\nSuite 100\nOverland Park, KS 66210\n(913) 344-9200\n(Address of principal executive offices, zip code and telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934\nduring the preceding 12 months (or for such shorter period that the registrant was required to file such\nreports), and (2) has been subject to such filing requirements for the past 90 days.                Yes         [X]                       No         [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of\nRegulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that\nthe registrant was required to submit such files)                                      Yes           [X]                             No           [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PART I. FINANCIAL INFORMATION",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of March 31, 2023 (unaudited) and September 30, 2022",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the three and six months ended March 31, 2023 and 2022 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Loss for the three and six months ended March 31, 2023 and 2022 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Equity for the three and six months ended March 31, 2023 and 2022 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the six months ended March 31, 2023 and 2022 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "43"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "company\nEmerging  [ ]\ngrowth company\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial      [ ]\naccounting standards provided pursuant to Section 13(a) of the Exchange Act.\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).  Yes  [ ]  No  [X]\nThe number of shares outstanding of the registrant\u2019s common stock, $0.01 par value per share, as of May 5, 2023, was 41,139,343 shares.\nTABLE OF CONTENTS",
+   "prose_after": "1\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONSOLIDATED BALANCE SHEETS\n(in millions, except share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "249.7",
+     "$",
+     "46.1"
+    ],
+    [
+     "Receivables, less allowance for doubtful accounts of $3.1 at March 31, 2023 and $3.4 at September 30, 2022",
+     "159.7",
+     "",
+     "167.2",
+     ""
+    ],
+    [
+     "Inventories",
+     "261.7",
+     "",
+     "304.4",
+     ""
+    ],
+    [
+     "Other",
+     "29.7",
+     "",
+     "44.3",
+     ""
+    ],
+    [
+     "Total current assets",
+     "700.8",
+     "",
+     "562.0",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "782.6",
+     "",
+     "776.6",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "44.9",
+     "",
+     "45.4",
+     ""
+    ],
+    [
+     "Goodwill",
+     "56.9",
+     "",
+     "56.4",
+     ""
+    ],
+    [
+     "Equity method investments",
+     "44.3",
+     "",
+     "46.6",
+     ""
+    ],
+    [
+     "Other",
+     "155.2",
+     "",
+     "156.5",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,784.7",
+     "$",
+     "1,643.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Accounts payable",
+     "114.9",
+     "",
+     "114.7",
+     ""
+    ],
+    [
+     "Accrued salaries and wages",
+     "18.7",
+     "",
+     "22.2",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "51.1",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "14.1",
+     "",
+     "14.1",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "77.2",
+     "",
+     "81.1",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "276.0",
+     "",
+     "233.1",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "825.7",
+     "",
+     "947.6",
+     ""
+    ],
+    [
+     "Deferred income taxes, net",
+     "60.7",
+     "",
+     "63.4",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "136.9",
+     "",
+     "143.0",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 10)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock: $0.01 par value, 200,000,000 authorized shares; 42,197,964 issued shares at March 31, 2023 and 35,367,264 issued shares at September 30, 2022",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "406.2",
+     "",
+     "152.1",
+     ""
+    ],
+    [
+     "Treasury stock, at cost \u2014 1,058,621 shares at March 31, 2023 and 1,196,300 shares at September 30, 2022",
+     "(8.6)",
+     "",
+     "(7.3)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "192.0",
+     "",
+     "226.5",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(104.6)",
+     "",
+     "(115.3)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "485.4",
+     "",
+     "256.4",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,784.7",
+     "$",
+     "1,643.5"
+    ]
+   ],
+   "caption_stack": [
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 127,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "1\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONSOLIDATED BALANCE SHEETS\n(in millions, except share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited, in millions, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "411.1",
+     "$",
+     "448.5",
+     "$",
+     "763.5",
+     "$",
+     "780.0"
+    ],
+    [
+     "Shipping and handling cost",
+     "130.1",
+     "",
+     "160.1",
+     "",
+     "237.5",
+     "",
+     "255.8",
+     ""
+    ],
+    [
+     "Product cost",
+     "195.8",
+     "",
+     "223.8",
+     "",
+     "370.8",
+     "",
+     "399.7",
+     ""
+    ],
+    [
+     "Gross profit",
+     "85.2",
+     "",
+     "64.6",
+     "",
+     "155.2",
+     "",
+     "124.5",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "37.3",
+     "",
+     "44.6",
+     "",
+     "79.4",
+     "",
+     "84.1",
+     ""
+    ],
+    [
+     "Operating earnings",
+     "47.9",
+     "",
+     "20.0",
+     "",
+     "75.8",
+     "",
+     "40.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "(1.9)",
+     "",
+     "\u2014",
+     "",
+     "(3.0)",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "14.2",
+     "",
+     "13.9",
+     "",
+     "28.1",
+     "",
+     "27.8",
+     ""
+    ],
+    [
+     "(Gain) loss on foreign exchange",
+     "(0.2)",
+     "",
+     "3.0",
+     "",
+     "2.3",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Net loss in equity investee",
+     "1.4",
+     "",
+     "1.7",
+     "",
+     "2.3",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "0.9",
+     "",
+     "\u2014",
+     "",
+     "1.0",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Earnings from continuing operations before income taxes",
+     "33.5",
+     "",
+     "1.4",
+     "",
+     "45.1",
+     "",
+     "8.1",
+     ""
+    ],
+    [
+     "Income tax expense from continuing operations",
+     "55.1",
+     "",
+     "30.4",
+     "",
+     "67.0",
+     "",
+     "29.2",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "(21.6)",
+     "",
+     "(29.0)",
+     "",
+     "(21.9)",
+     "",
+     "(21.1)",
+     ""
+    ],
+    [
+     "Net earnings from discontinued operations",
+     "\u2014",
+     "",
+     "16.9",
+     "",
+     "\u2014",
+     "",
+     "11.4",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21.6)",
+     "$",
+     "(12.1)",
+     "$",
+     "(21.9)",
+     "$",
+     "(9.7)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net loss from continuing operations per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.85)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.62)"
+    ],
+    [
+     "Basic net earnings from discontinued operations per common share",
+     "\u2014",
+     "",
+     "0.49",
+     "",
+     "\u2014",
+     "",
+     "0.33",
+     ""
+    ],
+    [
+     "Basic net loss per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.36)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.29)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net loss from continuing operations per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.85)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.62)"
+    ],
+    [
+     "Diluted net earnings from discontinued operations per common share",
+     "\u2014",
+     "",
+     "0.49",
+     "",
+     "\u2014",
+     "",
+     "0.33",
+     ""
+    ],
+    [
+     "Diluted net loss per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.36)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.29)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average common shares outstanding (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "41,110",
+     "",
+     "34,103",
+     "",
+     "40,423",
+     "",
+     "34,081",
+     ""
+    ],
+    [
+     "Diluted",
+     "41,110",
+     "",
+     "34,113",
+     "",
+     "40,423",
+     "",
+     "34,100",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 185,
+    "end_line": 229
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited, in millions, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(Unaudited, in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 232,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21.6)",
+     "$",
+     "(12.1)",
+     "$",
+     "(21.9)",
+     "$",
+     "(9.7)"
+    ],
+    [
+     "Other comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain from change in pension obligations, net of tax of $0.0 for the three and six months ended March 31, 2023 and 2022",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Unrealized (loss) gain on cash flow hedges, net of tax of $0.0 and $(0.3) for the three and six months ended March 31, 2023, respectively, and $0.4 for both the three and six months ended March 31, 2022",
+     "(1.1)",
+     "",
+     "1.0",
+     "",
+     "(3.9)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Cumulative translation adjustment",
+     "2.8",
+     "",
+     "10.7",
+     "",
+     "14.5",
+     "",
+     "6.9",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(19.9)",
+     "$",
+     "(0.3)",
+     "$",
+     "(11.2)",
+     "$",
+     "(3.6)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 238,
+    "end_line": 254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(Unaudited, in millions)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFor the three and six months ended March 31, 2023 and 2022\n(Unaudited, in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 232,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Treasury Stock",
+     "",
+     "Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive (Loss) Income",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022",
+     "$",
+     "0.4",
+     "$",
+     "152.1",
+     "$",
+     "(7.3)",
+     "$",
+     "226.5",
+     "$",
+     "(115.3)",
+     "$",
+     "256.4"
+    ],
+    [
+     "Comprehensive (loss) income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.3)",
+     "",
+     "9.0",
+     "",
+     "8.7",
+     ""
+    ],
+    [
+     "Dividends on common stock ($0.15 per share)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6.3)",
+     "",
+     "\u2014",
+     "",
+     "(6.3)",
+     ""
+    ],
+    [
+     "Private placement of common stock",
+     "\u2014",
+     "",
+     "240.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "240.7",
+     ""
+    ],
+    [
+     "Shares issued for stock units, net of shares withheld for taxes",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "",
+     "10.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10.6",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "$",
+     "0.4",
+     "$",
+     "403.4",
+     "$",
+     "(7.6)",
+     "$",
+     "219.9",
+     "$",
+     "(106.3)",
+     "$",
+     "509.8"
+    ],
+    [
+     "Comprehensive (loss) income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(21.6)",
+     "",
+     "1.7",
+     "",
+     "(19.9)",
+     ""
+    ],
+    [
+     "Dividends on common stock ($0.15 per share)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6.3)",
+     "",
+     "\u2014",
+     "",
+     "(6.3)",
+     ""
+    ],
+    [
+     "Shares issued for stock units, net of shares withheld for taxes",
+     "\u2014",
+     "",
+     "(0.3)",
+     "",
+     "(1.0)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.3)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "",
+     "3.1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.1",
+     ""
+    ],
+    [
+     "Balance, March 31, 2023",
+     "$",
+     "0.4",
+     "$",
+     "406.2",
+     "$",
+     "(8.6)",
+     "$",
+     "192.0",
+     "$",
+     "(104.6)",
+     "$",
+     "485.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 265,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFor the three and six months ended March 31, 2023 and 2022\n(Unaudited, in millions)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Treasury Stock",
+     "",
+     "Retained Earnings",
+     "",
+     "Accumulated Other Comprehensive (Loss) Income",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance, September 30, 2021",
+     "$",
+     "0.4",
+     "$",
+     "136.3",
+     "$",
+     "(5.5)",
+     "$",
+     "272.4",
+     "$",
+     "(110.5)",
+     "$",
+     "293.1"
+    ],
+    [
+     "Comprehensive income (loss)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.4",
+     "",
+     "(5.7)",
+     "",
+     "(3.3)",
+     ""
+    ],
+    [
+     "Dividends on common stock ($0.15 per share)",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "(5.2)",
+     "",
+     "\u2014",
+     "",
+     "(5.3)",
+     ""
+    ],
+    [
+     "Stock options exercised, net of shares withheld for taxes",
+     "\u2014",
+     "",
+     "0.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "",
+     "3.3",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "$",
+     "0.4",
+     "$",
+     "139.7",
+     "$",
+     "(5.5)",
+     "$",
+     "269.6",
+     "$",
+     "(116.2)",
+     "$",
+     "288.0"
+    ],
+    [
+     "Comprehensive (loss) income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(12.1)",
+     "",
+     "11.8",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "Dividends on common stock ($0.15 per share)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(5.2)",
+     "",
+     "\u2014",
+     "",
+     "(5.2)",
+     ""
+    ],
+    [
+     "Shares issued for stock units, net of shares withheld for taxes",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "(0.4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "",
+     "4.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4.5",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "$",
+     "0.4",
+     "$",
+     "144.1",
+     "$",
+     "(5.9)",
+     "$",
+     "252.3",
+     "$",
+     "(104.4)",
+     "$",
+     "286.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 288,
+    "end_line": 309
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited, in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21.9)",
+     "$",
+     "(9.7)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash flows provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "48.4",
+     "",
+     "56.2",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "1.5",
+     "",
+     "1.5",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "13.7",
+     "",
+     "7.8",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "(4.2)",
+     "",
+     "16.2",
+     ""
+    ],
+    [
+     "Unrealized foreign exchange loss (gain)",
+     "2.3",
+     "",
+     "(15.2)",
+     ""
+    ],
+    [
+     "Loss on impairment of long-lived assets",
+     "\u2014",
+     "",
+     "24.7",
+     ""
+    ],
+    [
+     "Net loss in equity investees",
+     "2.3",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Other, net",
+     "2.4",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables",
+     "8.9",
+     "",
+     "(63.7)",
+     ""
+    ],
+    [
+     "Inventories",
+     "44.1",
+     "",
+     "108.9",
+     ""
+    ],
+    [
+     "Other assets",
+     "18.4",
+     "",
+     "(9.0)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses and other current liabilities",
+     "35.6",
+     "",
+     "25.9",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "(7.6)",
+     "",
+     "(0.8)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "143.9",
+     "",
+     "145.9",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(43.7)",
+     "",
+     "(43.5)",
+     ""
+    ],
+    [
+     "Investments in equity method investees",
+     "\u2014",
+     "",
+     "(46.3)",
+     ""
+    ],
+    [
+     "Other, net",
+     "(0.3)",
+     "",
+     "1.4",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(44.0)",
+     "",
+     "(88.4)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from revolving credit facility borrowings",
+     "16.7",
+     "",
+     "221.3",
+     ""
+    ],
+    [
+     "Principal payments on revolving credit facility borrowings",
+     "(168.2)",
+     "",
+     "(280.7)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of long-term debt",
+     "37.5",
+     "",
+     "50.8",
+     ""
+    ],
+    [
+     "Principal payments on long-term debt",
+     "(9.1)",
+     "",
+     "(5.9)",
+     ""
+    ],
+    [
+     "Net proceeds from private placement of common stock",
+     "240.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "(12.6)",
+     "",
+     "(10.5)",
+     ""
+    ],
+    [
+     "Proceeds from stock options exercised",
+     "\u2014",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Shares withheld to satisfy employee tax obligations",
+     "(1.6)",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Other, net",
+     "(0.5)",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "102.9",
+     "",
+     "(25.9)",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "0.8",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "203.6",
+     "",
+     "34.0",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of the year",
+     "46.1",
+     "",
+     "21.0",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "249.7",
+     "",
+     "55.0",
+     ""
+    ],
+    [
+     "Less: cash and cash equivalents included in current assets held for sale",
+     "\u2014",
+     "",
+     "(10.1)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents of continuing operations, end of period",
+     "$",
+     "249.7",
+     "$",
+     "44.9"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 318,
+    "end_line": 373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited, in millions)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid, net of amounts capitalized",
+     "$",
+     "26.5",
+     "$",
+     "26.7"
+    ],
+    [
+     "Income taxes paid, net of refunds",
+     "$",
+     "14.0",
+     "$",
+     "13.1"
+    ]
+   ],
+   "caption_stack": [
+    "Supplemental cash flow information:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 374,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\n1. Accounting Policies and Basis of Presentation:\nCompass Minerals International, Inc. (\u201cCMI\u201d), through its subsidiaries (collectively, the \u201cCompany\u201d), is a leading global provider of essential minerals focused on safely delivering where and when it matters to help solve nature\u2019s challenges for customers and communities. The Company\u2019s salt products help keep roadways safe during winter weather and are used in numerous other consumer, industrial, chemical and agricultural applications. Its plant nutrition business is the leading North American producer of sulfate of potash (\u201cSOP\u201d), which is used in the production of specialty fertilizers for high-value crops and turf and helps improve the quality and yield of crops, while supporting sustainable agriculture. The Company\u2019s principal products are salt, consisting of sodium chloride and magnesium chloride, and SOP. Additionally, the Company is pursuing development of a sustainable lithium brine resource to support the North American battery market and is a minority owner of Fortress North America, LLC (\u201cFortress\u201d), a next-generation fire retardant company (See Note 7, for a discussion of the subsequent acquisition of the remaining Fortress ownership interests). The Company\u2019s production sites are located in the United States (\u201cU.S.\u201d), Canada and the United Kingdom (\u201cU.K.\u201d). The Company also provides records management services to businesses located in the U.K. Except where otherwise noted, references to North America include only the continental U.S. and Canada, and references to the U.K. include only England, Scotland and Wales. References to \u201cCompass Minerals,\u201d \u201cour,\u201d \u201cus\u201d and \u201cwe\u201d refer to CMI and its consolidated subsidiaries.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 312,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Sales",
+     "",
+     "$",
+     "24.3",
+     "",
+     "$",
+     "46.7"
+    ],
+    [
+     "Shipping and handling cost",
+     "",
+     "1.3",
+     "",
+     "",
+     "2.5",
+     ""
+    ],
+    [
+     "Product cost",
+     "",
+     "14.4",
+     "",
+     "",
+     "25.3",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "8.6",
+     "",
+     "",
+     "18.9",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "1.4",
+     "",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "Operating earnings",
+     "",
+     "7.2",
+     "",
+     "",
+     "15.9",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "0.1",
+     "",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Gain on foreign exchange",
+     "",
+     "(20.4)",
+     "",
+     "",
+     "(17.3)",
+     ""
+    ],
+    [
+     "Net loss on adjustment to fair value less estimated costs to sell",
+     "",
+     "16.3",
+     "",
+     "",
+     "24.7",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "(0.3)",
+     "",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Earnings from discontinued operations before income taxes",
+     "",
+     "11.5",
+     "",
+     "",
+     "8.9",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "(5.4)",
+     "",
+     "",
+     "(2.5)",
+     ""
+    ],
+    [
+     "Net earnings from discontinued operations",
+     "",
+     "$",
+     "16.9",
+     "",
+     "$",
+     "11.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "On April 20, 2022, the Company completed the sale of its South America chemicals business to a subsidiary of Cape Acquisitions LLC. Upon closing of the all-cash sale, the Company received gross proceeds of approximately $51.5 million based on exchange rates at the time of receipt, including a post-closing adjustment and compensation of $6.4 million for cash on hand that transferred to the buyer. The Company also paid fees of $2.4 million related to this sale. The Company recognized a loss recovery of $1.6 million during the three months ended June 30, 2022, an incremental loss from the sale of $23.1 million during the nine months ended June 30, 2022 and released $49.5 million from accumulated currency translation adjustment (\u201cCTA\u201d). The sale included all of the Company\u2019s remaining operations in Brazil, concluding its previously announced plan to exit the South American market.\nIn measuring the assets and liabilities held for sale at fair value less estimated costs to sell, the Company completed an impairment analysis when its Board of Directors committed to a plan to sell the Specialty Businesses and the Company updated the analysis each quarter until each of the Specialty Businesses were sold.\nThe information below sets forth selected financial information related to the operating results of the Specialty Businesses classified as discontinued operations. The Specialty Businesses\u2019 revenue and expenses have been reclassified to net earnings from discontinued operations in prior periods. The Consolidated Statements of Operations present the revenue and expenses that were reclassified from the specified line items to discontinued operations.\nThe following table represents summarized Consolidated Statements of Operations information of discontinued operations (in millions):",
+   "prose_after": "The significant components included in the Company\u2019s Consolidated Statements of Cash Flows for discontinued operations are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended March 31,",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Loss on impairment of long-lived assets",
+     "$",
+     "24.7"
+    ],
+    [
+     "Capital expenditures",
+     "(1.2)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended March 31,",
+    "2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 461,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The significant components included in the Company\u2019s Consolidated Statements of Cash Flows for discontinued operations are as follows (in millions):",
+   "prose_after": "3. Revenues:\nNature of Products and Services\nThe Company\u2019s Salt segment products include salt and magnesium chloride for use in road deicing and dust control, food processing, water softening, and agricultural and industrial applications. The Company\u2019s Plant Nutrition segment produces and markets SOP in various grades worldwide to distributors and retailers of crop inputs, as well as growers and for industrial uses. In the U.K., the Company operates a records management business utilizing excavated areas of its Winsford salt mine with one other location in London, England.\nIdentifying the Contract\nThe Company accounts for a customer contract when there is approval and commitment from both parties, the rights of the parties and payment terms are identified, the contract has commercial substance and collectability of consideration is probable.\nIdentifying the Performance Obligations\nAt contract inception, the Company assesses the goods and services it has promised to its customers and identifies a performance obligation for each promise to transfer to the customer a distinct good or service (or bundle of goods or services). Determining whether products and services are considered distinct performance obligations that should be accounted for separately or aggregated together may require significant judgment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "203.8",
+     "$",
+     "251.6"
+    ],
+    [
+     "Raw materials and supplies",
+     "57.9",
+     "",
+     "52.8",
+     ""
+    ],
+    [
+     "Total inventories",
+     "$",
+     "261.7",
+     "$",
+     "304.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The customer contract states the final terms of the sale, including the description, quantity and price of each product or service purchased. Payment is typically due in full within 30 days of delivery. The Company does not adjust the consideration for the effects of a significant financing component if the Company expects, at contract inception, that the period between when the good or service is transferred to the customer and when the customer pays for that good or service will be one year or less.\nRefunds, Returns and Warranties\nThe Company\u2019s products are generally not sold with a right of return and the Company does not generally provide credits or incentives, which may be required to be accounted for as variable consideration when estimating the amount of revenue to be recognized. The Company uses historical experience to estimate accruals for refunds due to manufacturing or other defects.\nSee Note 11 for disaggregation of sales by segment, type and geographical region.\n4. Inventories:\nInventories consist of the following (in millions):",
+   "prose_after": "5. Property, Plant and Equipment, Net:\nProperty, plant and equipment, net, consists of the following (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 485,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Land, buildings and structures, and leasehold improvements",
+     "$",
+     "545.4",
+     "$",
+     "534.8"
+    ],
+    [
+     "Machinery and equipment",
+     "1,071.1",
+     "",
+     "1,026.3",
+     ""
+    ],
+    [
+     "Office furniture and equipment",
+     "58.6",
+     "",
+     "56.8",
+     ""
+    ],
+    [
+     "Mineral interests",
+     "169.1",
+     "",
+     "167.1",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "57.2",
+     "",
+     "64.3",
+     ""
+    ],
+    [
+     "",
+     "1,901.4",
+     "",
+     "1,849.3",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and depletion",
+     "(1,118.8)",
+     "",
+     "(1,072.7)",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "$",
+     "782.6",
+     "$",
+     "776.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "5. Property, Plant and Equipment, Net:\nProperty, plant and equipment, net, consists of the following (in millions):",
+   "prose_after": "6. Goodwill and Intangible Assets, Net:\nAmounts related to the Company\u2019s amortization of intangible assets are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Aggregate amortization expense",
+     "$",
+     "0.4",
+     "$",
+     "0.4",
+     "$",
+     "0.8",
+     "$",
+     "0.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "6. Goodwill and Intangible Assets, Net:\nAmounts related to the Company\u2019s amortization of intangible assets are as follows (in millions):",
+   "prose_after": "Amounts related to the Company\u2019s goodwill are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Plant Nutrition",
+     "$",
+     "51.0",
+     "$",
+     "50.9"
+    ],
+    [
+     "Other",
+     "5.9",
+     "",
+     "5.5",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "56.9",
+     "$",
+     "56.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Amounts related to the Company\u2019s goodwill are as follows (in millions):",
+   "prose_after": "The change in goodwill between September 30, 2022, and March 31, 2023 was due to the impact from translating foreign-denominated amounts to U.S. dollars. As of March 31, 2023, there were no indicators necessitating an interim impairment test of the Company\u2019s reporting units based on the Company\u2019s review of operating performance, among other factors, for the relevant reporting units.\n7. Equity Method Investments:\nThe Company uses the equity method of accounting for equity securities when it has significant influence or when it has more than a minor ownership interest or more than minor influence over an investee\u2019s operations but does not have a controlling financial interest. Initial investments are recorded at cost (including certain transaction costs) and are adjusted by the Company\u2019s share of the investees\u2019 undistributed earnings and losses. The Company may recognize its share of an investee\u2019s earnings on a lag if an investee\u2019s financial results are not available in a timely manner.\nFor certain of the Company's equity method investments, such as investments where the capital structure of the equity investment results in different liquidation rights and priorities than what is reflected by the underlying percentage ownership interests, the Company's proportionate share of net earnings is accounted for using the Hypothetical Liquidation at Book Value (\"HLBV\") methodology available under the equity method of accounting. When applying HLBV, the Company determines the amount that would be received if the investee were to liquidate all of its assets and distribute the resulting cash to the investors based on contractually defined liquidation priorities, assuming the net assets were liquidated at their net book value.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "4.875% Senior Notes due July 2024",
+     "$",
+     "250.0",
+     "$",
+     "250.0"
+    ],
+    [
+     "Term Loan due January 2025",
+     "16.9",
+     "",
+     "16.9",
+     ""
+    ],
+    [
+     "Revolving Credit Facility due January 2025",
+     "\u2014",
+     "",
+     "151.5",
+     ""
+    ],
+    [
+     "6.75% Senior Notes due December 2027",
+     "500.0",
+     "",
+     "500.0",
+     ""
+    ],
+    [
+     "AR Securitization Facility expires June 2025",
+     "65.9",
+     "",
+     "37.5",
+     ""
+    ],
+    [
+     "",
+     "832.8",
+     "",
+     "955.9",
+     ""
+    ],
+    [
+     "Less unamortized debt issuance costs",
+     "(7.1)",
+     "",
+     "(8.3)",
+     ""
+    ],
+    [
+     "Total debt",
+     "825.7",
+     "",
+     "947.6",
+     ""
+    ],
+    [
+     "Less current portion",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "825.7",
+     "$",
+     "947.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The Company expects that it will be required by local regulations to provide security for additional interest on the above unresolved disputed amounts and for any future reassessments issued by these Canadian tax authorities in the form of cash, letters of credit, performance bonds, asset liens or other arrangements agreeable with the tax authorities until the disputes are resolved.\nThe Company expects that the ultimate outcome of these matters will not have a material impact on its results of operations or financial condition. However, the Company can provide no assurance as to the ultimate outcome of these matters, and the impact could be material if they are not resolved in the Company\u2019s favor. As of March 31, 2023, the Company believes it has adequately reserved for these reassessments.\nAdditionally, the Company has other uncertain tax positions as well as assessments and disputed positions with taxing authorities in its various jurisdictions, which are consistent with those matters disclosed in the Company\u2019s Annual Report on Form 10-K for the annual period ended September 30, 2022.\n9. Long-Term Debt:\nLong-term debt consists of the following (in millions):",
+   "prose_after": "As of March 31, 2023, the term loan and revolving credit facility under the Company\u2019s credit agreement entered into on November 26, 2019 (as amended, the \u201c2019 Credit Agreement\u201d) were secured by substantially all existing and future U.S. assets of the Company, the Goderich mine in Ontario, Canada and capital stock of certain subsidiaries. As of March 31, 2023, the weighted average interest rate on all borrowings outstanding under the term loan under the Credit Agreement was approximately 6.9%.\nThe Company is in compliance as of March 31, 2023 with its debt covenants under the Credit Agreement and its AR Securitization Facility. Pursuant to the terms of the second amendment to the Credit Agreement the maximum allowed consolidated total net leverage ratio (as defined and calculated under the terms of the Credit Agreement and discussed further below) was 5.0x for the quarter ended March 31, 2023, which steps down to 4.75x in the quarter ending March 31, 2024, and to 4.5x for the fiscal quarter ended June 30, 2024 and thereafter. The consolidated total net leverage ratio represents the ratio of (a) consolidated total net debt to (b) consolidated adjusted earnings before interest, taxes, depreciation and amortization (\u201cEBITDA\u201d). Consolidated total net debt includes the aggregate principal amount of total debt, net of unrestricted cash not to exceed $50.0 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 642,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2023",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)(b)(c)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "360.5",
+     "$",
+     "47.7",
+     "$",
+     "2.9",
+     "$",
+     "411.1"
+    ],
+    [
+     "Intersegment sales",
+     "\u2014",
+     "",
+     "1.4",
+     "",
+     "(1.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shipping and handling cost",
+     "124.0",
+     "",
+     "6.1",
+     "",
+     "\u2014",
+     "",
+     "130.1",
+     ""
+    ],
+    [
+     "Operating earnings (loss)(b)(c)",
+     "73.1",
+     "",
+     "(0.7)",
+     "",
+     "(24.5)",
+     "",
+     "47.9",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "14.8",
+     "",
+     "8.1",
+     "",
+     "1.6",
+     "",
+     "24.5",
+     ""
+    ],
+    [
+     "Total assets (as of end of period)",
+     "924.1",
+     "",
+     "472.7",
+     "",
+     "387.9",
+     "",
+     "1,784.7",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 680,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "The Company\u2019s reportable segments are strategic business units that offer different products and services, and each business requires different technology and marketing strategies. In connection with the executed business disposals discussed in Note 1 and Note 2, the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q.\nFor the three and six months ended March 31, 2023 and 2022, the Company has presented two reportable segments in its Consolidated Financial Statements: Salt and Plant Nutrition. The Salt segment produces and markets salt, consisting of sodium chloride and magnesium chloride, for use in road deicing for winter roadway safety and for dust control, food processing, water softening and other consumer, agricultural and industrial applications. The Plant Nutrition segment produces and markets various grades of SOP.\nSegment information is as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2022",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)(b)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "391.3",
+     "$",
+     "54.3",
+     "$",
+     "2.9",
+     "$",
+     "448.5"
+    ],
+    [
+     "Intersegment sales",
+     "\u2014",
+     "",
+     "0.7",
+     "",
+     "(0.7)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shipping and handling cost",
+     "153.4",
+     "",
+     "6.7",
+     "",
+     "\u2014",
+     "",
+     "160.1",
+     ""
+    ],
+    [
+     "Operating earnings (loss)(b)",
+     "49.3",
+     "",
+     "4.4",
+     "",
+     "(33.7)",
+     "",
+     "20.0",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "16.2",
+     "",
+     "8.8",
+     "",
+     "2.9",
+     "",
+     "27.9",
+     ""
+    ],
+    [
+     "Total assets (as of end of period)",
+     "925.4",
+     "",
+     "444.4",
+     "",
+     "266.4",
+     "",
+     "1,636.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2023",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)(b)(c)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "668.6",
+     "$",
+     "89.3",
+     "$",
+     "5.6",
+     "$",
+     "763.5"
+    ],
+    [
+     "Intersegment sales",
+     "\u2014",
+     "",
+     "4.3",
+     "",
+     "(4.3)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shipping and handling cost",
+     "226.7",
+     "",
+     "10.8",
+     "",
+     "\u2014",
+     "",
+     "237.5",
+     ""
+    ],
+    [
+     "Operating earnings (loss)(b)(c)",
+     "120.2",
+     "",
+     "10.3",
+     "",
+     "(54.7)",
+     "",
+     "75.8",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "28.7",
+     "",
+     "16.4",
+     "",
+     "3.3",
+     "",
+     "48.4",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2022",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)(b)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "665.2",
+     "$",
+     "108.9",
+     "$",
+     "5.9",
+     "$",
+     "780.0"
+    ],
+    [
+     "Intersegment sales",
+     "\u2014",
+     "",
+     "3.1",
+     "",
+     "(3.1)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shipping and handling cost",
+     "241.8",
+     "",
+     "14.0",
+     "",
+     "\u2014",
+     "",
+     "255.8",
+     ""
+    ],
+    [
+     "Operating earnings (loss)(b)",
+     "88.7",
+     "",
+     "13.9",
+     "",
+     "(62.2)",
+     "",
+     "40.4",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "32.4",
+     "",
+     "17.6",
+     "",
+     "6.2",
+     "",
+     "56.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 723,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Disaggregated revenue by product type is as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2023",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Highway Deicing Salt",
+     "$",
+     "273.7",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "273.7"
+    ],
+    [
+     "Consumer & Industrial Salt",
+     "86.8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "86.8",
+     ""
+    ],
+    [
+     "SOP",
+     "\u2014",
+     "",
+     "49.1",
+     "",
+     "\u2014",
+     "",
+     "49.1",
+     ""
+    ],
+    [
+     "Eliminations & Other",
+     "\u2014",
+     "",
+     "(1.4)",
+     "",
+     "2.9",
+     "",
+     "1.5",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "360.5",
+     "$",
+     "47.7",
+     "$",
+     "2.9",
+     "$",
+     "411.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "Disaggregated revenue by product type is as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2022",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Highway Deicing Salt",
+     "$",
+     "300.1",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "300.1"
+    ],
+    [
+     "Consumer & Industrial Salt",
+     "91.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "91.2",
+     ""
+    ],
+    [
+     "SOP",
+     "\u2014",
+     "",
+     "55.0",
+     "",
+     "\u2014",
+     "",
+     "55.0",
+     ""
+    ],
+    [
+     "Eliminations & Other",
+     "\u2014",
+     "",
+     "(0.7)",
+     "",
+     "2.9",
+     "",
+     "2.2",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "391.3",
+     "$",
+     "54.3",
+     "$",
+     "2.9",
+     "$",
+     "448.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2023",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Highway Deicing Salt",
+     "$",
+     "464.0",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "464.0"
+    ],
+    [
+     "Consumer & Industrial Salt",
+     "204.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "204.6",
+     ""
+    ],
+    [
+     "SOP",
+     "\u2014",
+     "",
+     "93.6",
+     "",
+     "\u2014",
+     "",
+     "93.6",
+     ""
+    ],
+    [
+     "Eliminations & Other",
+     "\u2014",
+     "",
+     "(4.3)",
+     "",
+     "5.6",
+     "",
+     "1.3",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "668.6",
+     "$",
+     "89.3",
+     "$",
+     "5.6",
+     "$",
+     "763.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 766,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2022",
+     "Salt",
+     "",
+     "Plant Nutrition",
+     "",
+     "Corporate & Other(a)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Highway Deicing Salt",
+     "$",
+     "463.8",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "463.8"
+    ],
+    [
+     "Consumer & Industrial Salt",
+     "201.4",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "201.4",
+     ""
+    ],
+    [
+     "SOP",
+     "\u2014",
+     "",
+     "112.0",
+     "",
+     "\u2014",
+     "",
+     "112.0",
+     ""
+    ],
+    [
+     "Eliminations & Other",
+     "\u2014",
+     "",
+     "(3.1)",
+     "",
+     "5.9",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Sales to external customers",
+     "$",
+     "665.2",
+     "$",
+     "108.9",
+     "$",
+     "5.9",
+     "$",
+     "780.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 782,
+    "end_line": 795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(a)Corporate and Other includes corporate entities, records management operations, equity method investments, lithium development costs and other incidental operations and eliminations. Operating earnings (loss) for corporate and other includes indirect corporate overhead, including costs for general corporate governance and oversight, lithium-related expenses, as well as costs for the human resources, information technology, legal and finance functions.\n(b)Corporate operating results for the three and six months ended March 31, 2023 include net reimbursements related to the settled SEC investigation of $0.4 million and $0.1 million, respectively. Corporate operating results for the three and six months ended March 31, 2022 include executive transition costs of $0.5 million and $3.8 million, respectively, and a contingent loss accrual and costs related to the SEC investigation of $13.6 million and $16.7 million, respectively. Refer to Note 10 for more information regarding the SEC investigation.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "United States(a)",
+     "$",
+     "283.1",
+     "$",
+     "327.8",
+     "$",
+     "531.3",
+     "$",
+     "549.1"
+    ],
+    [
+     "Canada",
+     "101.0",
+     "",
+     "104.5",
+     "",
+     "188.6",
+     "",
+     "193.9",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "23.2",
+     "",
+     "15.6",
+     "",
+     "37.3",
+     "",
+     "35.4",
+     ""
+    ],
+    [
+     "Other",
+     "3.8",
+     "",
+     "0.6",
+     "",
+     "6.3",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "411.1",
+     "$",
+     "448.5",
+     "$",
+     "763.5",
+     "$",
+     "780.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "(a)Corporate and Other includes corporate entities, records management operations, equity method investments, lithium development costs and other incidental operations and eliminations. Operating earnings (loss) for corporate and other includes indirect corporate overhead, including costs for general corporate governance and oversight, lithium-related expenses, as well as costs for the human resources, information technology, legal and finance functions.\n(b)Corporate operating results for the three and six months ended March 31, 2023 include net reimbursements related to the settled SEC investigation of $0.4 million and $0.1 million, respectively. Corporate operating results for the three and six months ended March 31, 2022 include executive transition costs of $0.5 million and $3.8 million, respectively, and a contingent loss accrual and costs related to the SEC investigation of $13.6 million and $16.7 million, respectively. Refer to Note 10 for more information regarding the SEC investigation.\n(c)In April 2023, the Company took initial steps to align its cost structure to its current business needs. These initiatives resulted in restructuring charges of $3.3 million, which impacted Corporate operating results for the three and six months ended March 31, 2023.\nThe Company\u2019s revenue by geographic area is as follows (in millions):",
+   "prose_after": "(a)United States sales exclude product sold to foreign customers at U.S. ports.\n12. Stockholders\u2019 Equity and Equity Instruments:\nIn May 2020, the Company\u2019s stockholders approved the 2020 Incentive Award Plan (as amended, the \u201c2020 Plan\u201d), which authorized the issuance of 2,977,933 shares of Company common stock. In February 2022, the Company\u2019s stockholders approved an amendment to the 2020 Plan authorizing an additional 750,000 shares of Company stock. Since the date the 2020 Plan was approved, the Company ceased issuing equity awards under the 2015 Incentive Award Plan (as amended, the \u201c2015 Plan\u201d). Since the approval of the 2015 Plan in May 2015, the Company ceased issuing equity awards under the 2005 Incentive Award Plan (as amended, the \u201c2005 Plan\u201d). The 2005 Plan, the 2015 Plan and the 2020 Plan allow for grants of equity awards to executive officers, other employees and directors, including restricted stock units (\u201cRSUs\u201d), performance stock units (\u201cPSUs\u201d), stock options and deferred stock units.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Stock Options",
+     "",
+     "",
+     "RSUs",
+     "",
+     "",
+     "PSUs(a)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "Weighted-average exercise price",
+     "",
+     "Number",
+     "Weighted-average fair value",
+     "",
+     "Number",
+     "Weighted-average fair value",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2022",
+     "774,580",
+     "$",
+     "60.68",
+     "208,735",
+     "$",
+     "63.02",
+     "331,359",
+     "$",
+     "71.51"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "",
+     "238,075",
+     "38.29",
+     "",
+     "183,974",
+     "68.33",
+     ""
+    ],
+    [
+     "Exercised(b)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Released from restriction(b)",
+     "\u2014",
+     "\u2014",
+     "",
+     "(122,645)",
+     "61.80",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cancelled/expired",
+     "(24,962)",
+     "62.53",
+     "",
+     "(12,501)",
+     "46.86",
+     "",
+     "(109,276)",
+     "66.69",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2023",
+     "749,618",
+     "$",
+     "60.61",
+     "311,664",
+     "$",
+     "45.26",
+     "406,057",
+     "$",
+     "71.37"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 871
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "During the six months ended March 31, 2023, the Company reissued the following number of shares from treasury stock: 115,123 shares related to the release of RSUs which vested and 58,287 shares related to stock payments. In fiscal 2022, the Company issued 117,390 net shares from treasury stock. The Company withheld a total of 35,731 shares with a fair value of $1.6 million related to the vesting of RSUs, PSUs, and stock payments during the six months ended March 31, 2023. The fair value of the shares was valued at the closing price at the vesting date and represent the employee tax withholding for the employee\u2019s compensation. The Company recognized tax expense of $0.7 million from its equity compensation awards during the six months ended March 31, 2023. During the six months ended March 31, 2023 and 2022, the Company recorded $14.1 million and $9.2 million (includes $0.4 million and $1.4 million paid in cash), respectively, of compensation expense pursuant to its stock-based compensation plans. No amounts have been capitalized.\nThe following table summarizes stock-based compensation activity during the six months ended March 31, 2023:",
+   "prose_after": "(a)Until the performance period is completed, PSUs are included in the table at the target level at their grant date and at that level represent one share of common stock per PSU.\n(b)Common stock issued for exercised options and for vested and earned RSUs and PSUs was issued from treasury stock.\nAccumulated Other Comprehensive Loss (\u201cAOCL\u201d)\nThe Company\u2019s comprehensive income (loss) is comprised of net earnings (loss), net amortization of the unrealized loss of the pension obligation, the change in the unrealized gain in other postretirement benefits, the change in the unrealized gain (loss) on natural gas and foreign currency cash flow hedges and CTA. The components of and changes in AOCL are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2023(a)",
+     "Gains and (Losses) on Cash Flow Hedges",
+     "",
+     "Defined Benefit Pension",
+     "",
+     "Other Post-Employment Benefits",
+     "",
+     "Foreign Currency",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(4.4)",
+     "$",
+     "(2.6)",
+     "$",
+     "1.3",
+     "$",
+     "(100.6)",
+     "$",
+     "(106.3)"
+    ],
+    [
+     "Other comprehensive (loss) income before reclassifications(b)",
+     "(1.8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.8",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Amounts reclassified from AOCL",
+     "0.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.7",
+     ""
+    ],
+    [
+     "Net current period other comprehensive (loss) income",
+     "(1.1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.8",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "(5.5)",
+     "$",
+     "(2.6)",
+     "$",
+     "1.3",
+     "$",
+     "(97.8)",
+     "$",
+     "(104.6)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "(a)Until the performance period is completed, PSUs are included in the table at the target level at their grant date and at that level represent one share of common stock per PSU.\n(b)Common stock issued for exercised options and for vested and earned RSUs and PSUs was issued from treasury stock.\nAccumulated Other Comprehensive Loss (\u201cAOCL\u201d)\nThe Company\u2019s comprehensive income (loss) is comprised of net earnings (loss), net amortization of the unrealized loss of the pension obligation, the change in the unrealized gain in other postretirement benefits, the change in the unrealized gain (loss) on natural gas and foreign currency cash flow hedges and CTA. The components of and changes in AOCL are as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Three Months Ended March 31, 2022(a)",
+     "Gains and (Losses) on Cash Flow Hedges",
+     "",
+     "Defined Benefit Pension",
+     "",
+     "Foreign Currency",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "1.1",
+     "$",
+     "(5.3)",
+     "$",
+     "(112.0)",
+     "$",
+     "(116.2)"
+    ],
+    [
+     "Other comprehensive income before reclassifications(b)",
+     "1.6",
+     "",
+     "\u2014",
+     "",
+     "10.7",
+     "",
+     "12.3",
+     ""
+    ],
+    [
+     "Amounts reclassified from AOCL",
+     "(0.6)",
+     "",
+     "0.1",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Net current period other comprehensive income",
+     "1.0",
+     "",
+     "0.1",
+     "",
+     "10.7",
+     "",
+     "11.8",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "2.1",
+     "$",
+     "(5.2)",
+     "$",
+     "(101.3)",
+     "$",
+     "(104.4)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 895,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 53,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2023(a)",
+     "Gains and (Losses) on Cash Flow Hedges",
+     "",
+     "Defined Benefit Pension",
+     "",
+     "Other Post-Employment Benefits",
+     "",
+     "Foreign Currency",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(1.6)",
+     "$",
+     "(2.7)",
+     "$",
+     "1.3",
+     "$",
+     "(112.3)",
+     "$",
+     "(115.3)"
+    ],
+    [
+     "Other comprehensive (loss) income before reclassifications(b)",
+     "(4.2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14.5",
+     "",
+     "10.3",
+     ""
+    ],
+    [
+     "Amounts reclassified from AOCL",
+     "0.3",
+     "",
+     "0.1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Net current period other comprehensive (loss) income",
+     "(3.9)",
+     "",
+     "0.1",
+     "",
+     "\u2014",
+     "",
+     "14.5",
+     "",
+     "10.7",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "(5.5)",
+     "$",
+     "(2.6)",
+     "$",
+     "1.3",
+     "$",
+     "(97.8)",
+     "$",
+     "(104.6)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 910,
+    "end_line": 924
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 53,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 55,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Six Months Ended March 31, 2022(a)",
+     "Gains and (Losses) on Cash Flow Hedges",
+     "",
+     "Defined Benefit Pension",
+     "",
+     "Foreign Currency",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "3.1",
+     "$",
+     "(5.4)",
+     "$",
+     "(108.2)",
+     "$",
+     "(110.5)"
+    ],
+    [
+     "Other comprehensive income before reclassifications(b)",
+     "0.7",
+     "",
+     "\u2014",
+     "",
+     "6.9",
+     "",
+     "7.6",
+     ""
+    ],
+    [
+     "Amounts reclassified from AOCL",
+     "(1.7)",
+     "",
+     "0.2",
+     "",
+     "\u2014",
+     "",
+     "(1.5)",
+     ""
+    ],
+    [
+     "Net current period other comprehensive (loss) income",
+     "(1.0)",
+     "",
+     "0.2",
+     "",
+     "6.9",
+     "",
+     "6.1",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "2.1",
+     "$",
+     "(5.2)",
+     "$",
+     "(101.3)",
+     "$",
+     "(104.4)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 941
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(a)With the exception of the CTA, for which no tax effect is recorded, the changes in the components of AOCL presented in the tables above are reflected net of applicable income taxes.\n(b)The Company recorded foreign exchange (loss) of $(0.1) million and $(1.4) million in the three and six months ended March 31, 2023, respectively, and $(1.9) million and $(0.7) million in the three and six months ended March 31, 2022, respectively, in AOCL related to intercompany notes which were deemed to be of a long-term investment nature.\nThe amounts reclassified from AOCL to expense (income) for the three and six months ended March 31, 2023 and 2022, are shown below (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 55,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 56,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Amount Reclassified from AOCL",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Line Item Impacted in the Consolidated Statements of Operations"
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Loss (Gain) on cash flow hedges:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural gas instruments",
+     "$",
+     "1.0",
+     "$",
+     "(0.9)",
+     "$",
+     "0.5",
+     "$",
+     "(2.3)",
+     "Product cost"
+    ],
+    [
+     "Income tax expense",
+     "(0.3)",
+     "",
+     "0.3",
+     "",
+     "(0.2)",
+     "",
+     "0.6",
+     "",
+     ""
+    ],
+    [
+     "Reclassifications, net of income taxes",
+     "0.7",
+     "",
+     "(0.6)",
+     "",
+     "0.3",
+     "",
+     "(1.7)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of defined benefit pension:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of loss",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "0.2",
+     "",
+     "Product cost"
+    ],
+    [
+     "Income tax benefit",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Reclassifications, net of income taxes",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "0.2",
+     "",
+     ""
+    ],
+    [
+     "Amortization of other post-employment benefits:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "Product cost"
+    ],
+    [
+     "Income tax benefit",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Reclassifications, net of income taxes",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total reclassifications, net of income taxes",
+     "$",
+     "0.7",
+     "$",
+     "(0.5)",
+     "$",
+     "0.4",
+     "$",
+     "(1.5)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Amount Reclassified from AOCL"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "(a)With the exception of the CTA, for which no tax effect is recorded, the changes in the components of AOCL presented in the tables above are reflected net of applicable income taxes.\n(b)The Company recorded foreign exchange (loss) of $(0.1) million and $(1.4) million in the three and six months ended March 31, 2023, respectively, and $(1.9) million and $(0.7) million in the three and six months ended March 31, 2022, respectively, in AOCL related to intercompany notes which were deemed to be of a long-term investment nature.\nThe amounts reclassified from AOCL to expense (income) for the three and six months ended March 31, 2023 and 2022, are shown below (in millions):",
+   "prose_after": "13. Derivative Financial Instruments:\nThe Company is subject to various types of market risks, including interest rate risk, foreign currency exchange rate transaction and translation risk and commodity pricing risk. Management may take actions to mitigate the exposure to these types of risks, including entering into forward purchase contracts and other financial instruments. The Company manages a portion of its commodity pricing risks and foreign currency exchange rate risks by using derivative instruments. From time to time, the Company may enter into foreign exchange contracts to mitigate foreign exchange risk. The Company does not seek to engage in trading activities or take speculative positions with any financial instrument arrangement. The Company has entered into natural gas derivative instruments and foreign currency derivative instruments with counterparties it views as creditworthy. However, the Company does attempt to mitigate its counterparty credit risk exposures by, among other things, entering into master netting agreements with some of these counterparties. The Company records derivative financial instruments as either assets or liabilities at fair value in its Consolidated Balance Sheets. The assets and liabilities recorded as of March 31, 2023 and September 30, 2022 were not material.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 56,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 58,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Asset Derivatives",
+     "",
+     "",
+     "Liability Derivatives",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheet Location",
+     "March 31, 2023",
+     "",
+     "Consolidated Balance Sheet Location",
+     "March 31, 2023",
+     ""
+    ],
+    [
+     "Derivatives designated as hedging instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity contracts",
+     "Other current assets",
+     "$",
+     "0.7",
+     "Accrued expenses and other current liabilities",
+     "$",
+     "5.6"
+    ],
+    [
+     "Commodity contracts",
+     "Other assets",
+     "\u2014",
+     "",
+     "Other noncurrent liabilities",
+     "0.6",
+     ""
+    ],
+    [
+     "Total derivatives designated as hedging instruments",
+     "",
+     "0.7",
+     "",
+     "",
+     "6.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives not designated as hedging instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity contracts",
+     "Other current assets",
+     "\u2014",
+     "",
+     "Accrued expenses and other current liabilities",
+     "0.5",
+     ""
+    ],
+    [
+     "Total derivatives not designated as hedging instruments",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Total derivatives(a)",
+     "",
+     "$",
+     "0.7",
+     "",
+     "$",
+     "6.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 995,
+    "end_line": 1017
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "On March 1, 2023, the Company de-designated its natural gas cash flow hedges related to its Ogden, Utah production facility as the Company did not believe these hedges were probable of being highly effective in the second fiscal quarter of 2023. Beginning March 1, 2023, the change in the derivative was and will be recorded in other expense, net in the Consolidated Statements of Operations. Since the transactions are still probable of occurring, previously recognized amounts in AOCL of $0.5 million will remain in AOCL until the underlying forecasted transaction occurs. The Company recognized $0.5 million of expense in other expense, net on the Consolidated Statements of Operations during the three months ended March 31, 2023. Following the de-designation, these natural gas economic hedging instruments will be recorded at fair value through earnings unless re-designated or until settlement. Substantially all other natural gas derivative instruments held by the Company as of March 31, 2023 and September 30, 2022 qualified and were designated as cash flow hedges. As of March 31, 2023, the Company expects to reclassify from AOCL to earnings during the next twelve months $4.9 million of net losses on derivative instruments related to its natural gas hedges. Refer to Note 14 for the estimated fair value of the Company\u2019s natural gas derivative instruments as of March 31, 2023 and September 30, 2022.\nThe following tables present the fair value of the Company\u2019s derivatives (in millions):",
+   "prose_after": "(a)The Company has master netting agreements with its commodity hedge counterparties and accordingly has netted in its Consolidated Balance Sheets $0.7 million of its commodity contracts that are in receivable positions against its contracts in payable positions.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 58,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 60,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Asset Derivatives",
+     "",
+     "",
+     "Liability Derivatives",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheet Location",
+     "September 30, 2022",
+     "",
+     "Consolidated Balance Sheet Location",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Derivatives designated as hedging instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity contracts",
+     "Other current assets",
+     "$",
+     "2.7",
+     "Accrued expenses and other current liabilities",
+     "$",
+     "3.3"
+    ],
+    [
+     "Commodity contracts",
+     "Other assets",
+     "0.2",
+     "",
+     "Other noncurrent liabilities",
+     "0.7",
+     ""
+    ],
+    [
+     "Total derivatives designated as hedging instruments(a)",
+     "",
+     "$",
+     "2.9",
+     "",
+     "$",
+     "4.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1022,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "(a)The Company has master netting agreements with its commodity hedge counterparties and accordingly has netted in its Consolidated Balance Sheets $0.7 million of its commodity contracts that are in receivable positions against its contracts in payable positions.",
+   "prose_after": "(a)The Company has master netting agreements with its commodity hedge counterparties and accordingly has netted in its Consolidated Balance Sheets $2.9 million of its commodity contracts that are in receivable positions against its contracts in payable positions.\n14. Fair Value Measurements:\nThe Company\u2019s financial instruments are measured and reported at their estimated fair values. Fair value is the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction. When available, the Company uses quoted prices in active markets to determine the fair values for its financial instruments (Level 1 inputs) or, absent quoted market prices, observable market-corroborated inputs over the term of the financial instruments (Level 2 inputs). The Company does not have any unobservable inputs that are not corroborated by market inputs (Level 3 inputs).\nThe Company holds marketable securities associated with its defined contribution and pre-tax savings plans, which are valued based on readily available quoted market prices. The Company utilizes derivative instruments to manage its risk of changes in natural gas prices and foreign exchange rates (see Note 13). The fair values of the natural gas and foreign currency derivative instruments are determined using market data of forward prices for all of the Company\u2019s contracts.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 60,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 61,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "Level One",
+     "",
+     "Level Two",
+     "",
+     "Level Three",
+     ""
+    ],
+    [
+     "Asset Class:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mutual fund investments in a non-qualified savings plan(a)",
+     "$",
+     "2.5",
+     "$",
+     "2.5",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2.5",
+     "$",
+     "2.5",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liability Class:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives designated as hedging instruments - natural gas instruments, net",
+     "$",
+     "(5.5)",
+     "$",
+     "\u2014",
+     "$",
+     "(5.5)",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Derivatives not designated as hedging instruments - natural gas instruments, net",
+     "(0.5)",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Liabilities related to non-qualified savings plan",
+     "(2.5)",
+     "",
+     "(2.5)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "(8.5)",
+     "$",
+     "(2.5)",
+     "$",
+     "(6.0)",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1064
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "The Company\u2019s financial instruments are measured and reported at their estimated fair values. Fair value is the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction. When available, the Company uses quoted prices in active markets to determine the fair values for its financial instruments (Level 1 inputs) or, absent quoted market prices, observable market-corroborated inputs over the term of the financial instruments (Level 2 inputs). The Company does not have any unobservable inputs that are not corroborated by market inputs (Level 3 inputs).\nThe Company holds marketable securities associated with its defined contribution and pre-tax savings plans, which are valued based on readily available quoted market prices. The Company utilizes derivative instruments to manage its risk of changes in natural gas prices and foreign exchange rates (see Note 13). The fair values of the natural gas and foreign currency derivative instruments are determined using market data of forward prices for all of the Company\u2019s contracts.\nThe estimated fair values for each type of instrument are presented below (in millions):",
+   "prose_after": "(a)Includes mutual fund investments of approximately 25% in common stock of large-cap U.S. companies, 5% in common stock of small to mid-cap U.S. companies, 10% in international companies, 15% in bond funds, 5% in short-term investments and 40% in blended funds.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 61,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 62,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "Level One",
+     "",
+     "Level Two",
+     "",
+     "Level Three",
+     ""
+    ],
+    [
+     "Asset Class:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mutual fund investments in a non-qualified savings plan(a)",
+     "$",
+     "1.8",
+     "$",
+     "1.8",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1.8",
+     "$",
+     "1.8",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liability Class:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives \u2013 natural gas instruments, net",
+     "$",
+     "(1.1)",
+     "$",
+     "\u2014",
+     "$",
+     "(1.1)",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liabilities related to non-qualified savings plan",
+     "(1.8)",
+     "",
+     "(1.8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "(2.9)",
+     "$",
+     "(1.8)",
+     "$",
+     "(1.1)",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "(a)Includes mutual fund investments of approximately 25% in common stock of large-cap U.S. companies, 5% in common stock of small to mid-cap U.S. companies, 10% in international companies, 15% in bond funds, 5% in short-term investments and 40% in blended funds.",
+   "prose_after": "(a)Includes mutual fund investments of approximately 30% in the common stock of large-cap U.S. companies, 5% in the common stock of small to mid-cap U.S. companies, 10% in the common stock of international companies, 15% in bond funds, 5% in short-term investments and 35% in blended funds.\nCash and cash equivalents, receivables (net of allowance for doubtful accounts) and accounts payable are carried at cost, which approximates fair value due to their liquid and short-term nature. The Company\u2019s investments related to its nonqualified retirement plan of $2.5 million at March 31, 2023 and $1.8 million at September 30, 2022, are stated at fair value based on quoted market prices. As of March 31, 2023 and September 30, 2022, the estimated fair value of the Company\u2019s fixed-rate 4.875% Senior Notes due July 2024, based on available trading information (Level 2), totaled $237.4 million and $235.9 million, respectively, compared with the aggregate principal amount at maturity of $250.0 million. As of March 31, 2023 and September 30, 2022, the estimated fair value of the Company\u2019s fixed-rate 6.75% Senior Notes due December 2027, based on available trading information (Level 2), totaled $472.5 million and $468.9 million, respectively, compared with the aggregate principal amount at maturity of $500.0 million. The fair value at March 31, 2023 and September 30, 2022 of amounts outstanding under the Company\u2019s term loans and revolving credit facility, based upon available bid information received from the Company\u2019s lender (Level 2), totaled approximately $16.7 million and $158.5 million, respectively, compared with the aggregate principal amount at maturity of $16.9 million and $168.4 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 62,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 64,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(21.6)",
+     "$",
+     "(29.0)",
+     "$",
+     "(21.9)",
+     "$",
+     "(21.1)"
+    ],
+    [
+     "Less: net earnings allocated to participating securities(a)",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "(0.2)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations available to common stockholders",
+     "(21.7)",
+     "",
+     "(29.0)",
+     "",
+     "(22.1)",
+     "",
+     "(21.2)",
+     ""
+    ],
+    [
+     "Net earnings from discontinued operations available to common stockholders",
+     "\u2014",
+     "",
+     "16.9",
+     "",
+     "\u2014",
+     "",
+     "11.4",
+     ""
+    ],
+    [
+     "Net loss available to common stockholders",
+     "$",
+     "(21.7)",
+     "$",
+     "(12.1)",
+     "$",
+     "(22.1)",
+     "$",
+     "(9.8)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average common shares outstanding, shares for basic earnings per share",
+     "41,110",
+     "",
+     "34,103",
+     "",
+     "40,423",
+     "",
+     "34,081",
+     ""
+    ],
+    [
+     "Weighted-average awards outstanding(b)",
+     "\u2014",
+     "",
+     "10",
+     "",
+     "\u2014",
+     "",
+     "19",
+     ""
+    ],
+    [
+     "Shares for diluted earnings per share",
+     "41,110",
+     "",
+     "34,113",
+     "",
+     "40,423",
+     "",
+     "34,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net loss from continuing operations per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.85)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.62)"
+    ],
+    [
+     "Basic net earnings from discontinued operations per common share",
+     "\u2014",
+     "",
+     "0.49",
+     "",
+     "\u2014",
+     "",
+     "0.33",
+     ""
+    ],
+    [
+     "Basic net loss per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.36)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.29)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net loss from continuing operations per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.85)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.62)"
+    ],
+    [
+     "Diluted net earnings from discontinued operations per common share",
+     "\u2014",
+     "",
+     "0.49",
+     "",
+     "\u2014",
+     "",
+     "0.33",
+     ""
+    ],
+    [
+     "Diluted net loss per common share",
+     "$",
+     "(0.53)",
+     "$",
+     "(0.36)",
+     "$",
+     "(0.55)",
+     "$",
+     "(0.29)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1095,
+    "end_line": 1130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "Cash and cash equivalents, receivables (net of allowance for doubtful accounts) and accounts payable are carried at cost, which approximates fair value due to their liquid and short-term nature. The Company\u2019s investments related to its nonqualified retirement plan of $2.5 million at March 31, 2023 and $1.8 million at September 30, 2022, are stated at fair value based on quoted market prices. As of March 31, 2023 and September 30, 2022, the estimated fair value of the Company\u2019s fixed-rate 4.875% Senior Notes due July 2024, based on available trading information (Level 2), totaled $237.4 million and $235.9 million, respectively, compared with the aggregate principal amount at maturity of $250.0 million. As of March 31, 2023 and September 30, 2022, the estimated fair value of the Company\u2019s fixed-rate 6.75% Senior Notes due December 2027, based on available trading information (Level 2), totaled $472.5 million and $468.9 million, respectively, compared with the aggregate principal amount at maturity of $500.0 million. The fair value at March 31, 2023 and September 30, 2022 of amounts outstanding under the Company\u2019s term loans and revolving credit facility, based upon available bid information received from the Company\u2019s lender (Level 2), totaled approximately $16.7 million and $158.5 million, respectively, compared with the aggregate principal amount at maturity of $16.9 million and $168.4 million, respectively.\n15. Earnings per Share:\nThe Company calculates earnings per share using the two-class method. The two-class method requires allocating the Company\u2019s net earnings to both common shares and participating securities. The following table sets forth the computation of basic and diluted earnings per common share (in millions, except for share and per-share data):",
+   "prose_after": "(a)Weighted participating securities include RSUs and PSUs that receive non-forfeitable dividends and consist of 439,000 and 477,000 weighted participating securities for the three and six months ended March 31, 2023, respectively and 407,000 and 419,000 weighted participating securities for the three and six months ended March 31, 2022, respectively.\n(b)For the calculation of diluted net earnings (loss) per share, the Company uses the more dilutive of either the treasury stock method or the two-class method to determine the weighted-average number of outstanding common shares. In addition, the Company had 1,193,000 and 1,275,000 weighted-average equity awards outstanding for the three and six months ended March 31, 2023, respectively, and 1,125,000 and 1,115,000 weighted-average equity awards outstanding for the three and six months ended March 31, 2022, respectively that were anti-dilutive.\n16. Related Party Transactions:\nAs discussed in Note 12, on October 18, 2022, KII, through its KM&T subsidiary, purchased common stock representing an ownership interest of approximately 17% of the outstanding common stock of the Company. As part of the Stock Purchase Agreement, KM&T appointed two members to the Company\u2019s board of directors, effective November 13, 2022. In addition, the companies continue to explore value creation opportunities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1087,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 64,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 73,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "QTD 2023",
+     "",
+     "QTD 2022",
+     "",
+     "YTD 2023",
+     "",
+     "YTD 2022",
+     ""
+    ],
+    [
+     "Salt Sales (in millions)",
+     "$",
+     "360.5",
+     "$",
+     "391.3",
+     "$",
+     "668.6",
+     "$",
+     "665.2"
+    ],
+    [
+     "Salt Operating Earnings (in millions)",
+     "$",
+     "73.1",
+     "$",
+     "49.3",
+     "$",
+     "120.2",
+     "$",
+     "88.7"
+    ],
+    [
+     "Salt Sales Volumes (thousands of tons)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Highway deicing",
+     "3,915",
+     "",
+     "4,815",
+     "",
+     "6,816",
+     "",
+     "7,622",
+     ""
+    ],
+    [
+     "Consumer and industrial",
+     "488",
+     "",
+     "516",
+     "",
+     "1,108",
+     "",
+     "1,149",
+     ""
+    ],
+    [
+     "Total tons sold",
+     "4,403",
+     "",
+     "5,331",
+     "",
+     "7,924",
+     "",
+     "8,771",
+     ""
+    ],
+    [
+     "Average Salt Sales Price (per ton)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Highway deicing",
+     "$",
+     "69.90",
+     "$",
+     "62.31",
+     "$",
+     "68.07",
+     "$",
+     "60.85"
+    ],
+    [
+     "Consumer and industrial",
+     "$",
+     "177.77",
+     "$",
+     "176.86",
+     "$",
+     "184.63",
+     "$",
+     "175.28"
+    ],
+    [
+     "Combined",
+     "$",
+     "81.87",
+     "$",
+     "73.39",
+     "$",
+     "84.37",
+     "$",
+     "75.84"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "\u2022The net earnings from our discontinued operations for the six months ended March 31, 2022 includes the results of the South America Chemicals business prior to the April 20, 2022 sale date.\n\u2022The prior period results of the South America chemicals business includes a foreign currency exchange rate gain of $17.3 million offset by an impairment loss of $24.7 million to record the net assets of the South America business at its fair value less cost to sell. Refer to Item 1, Note 2 to the Consolidated Financial Statements for additional details.\nOperating Segment Performance\nThe following financial results represent consolidated financial information with respect to the operations of our Salt and Plant Nutrition segments. The results of operations of the records management business and other incidental revenues, include sales of $2.9 million for the each of three months ended March 31, 2023 and 2022, and $5.6 million and $5.9 million for the six months ended March 31, 2023 and 2022, respectively. These revenues are not material to our consolidated financial results and are not included in the following operating segment financial data.\nSalt\nTHREE AND SIX MONTHS ENDED MARCH 31",
+   "prose_after": "Commentary: Three Months Ended March 31, 2023 Compared to Three Months Ended March 31, 2022\n\u2022Salt sales decreased 8%, or $30.8 million, primarily due to lower sales volumes, partially offset by higher average sales prices.\n\u2022Salt sales volumes decreased 17%, or 928,000 tons, reducing sales by approximately $61.0 million. Highway deicing sales volumes decreased 19%, reflecting the lower sales commitment volumes in North America which were partially offset by higher U.K. sales volumes in the second quarter of 2023. Consumer and industrial sales volumes decreased 5% due to lower deicing volumes.\n\u2022Average sales prices increased 12% partially offsetting the volume decline by approximately $30.2 million with increases in both highway and consumer and industrial average sales prices.\n\u2022Highway deicing average sales price increased 12% across all product categories as we have sought to improve our sales commitment portfolio to restore profitability and offset the impact of inflation on costs.\n\u2022Salt operating earnings increased 48%, or $23.8 million, primarily due to higher average sales prices and lower logistics costs in our C&I business, which were partially offset by higher SG&A costs. We incurred restructuring costs related to our cost savings initiatives of approximately $1.0 million during the period related to the Salt segment which contributed to the decline in Salt segment operating earnings.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 73,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 75,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "QTD 2023",
+     "",
+     "QTD 2022",
+     "",
+     "YTD 2023",
+     "",
+     "YTD 2022",
+     ""
+    ],
+    [
+     "Plant Nutrition Sales (in millions)",
+     "$",
+     "47.7",
+     "$",
+     "54.3",
+     "$",
+     "89.3",
+     "$",
+     "108.9"
+    ],
+    [
+     "Plant Nutrition Operating (Loss) Earnings (in millions)",
+     "$",
+     "(0.7)",
+     "$",
+     "4.4",
+     "$",
+     "10.3",
+     "$",
+     "13.9"
+    ],
+    [
+     "Plant Nutrition Sales Volumes (thousands of tons)",
+     "60",
+     "",
+     "74",
+     "",
+     "105",
+     "",
+     "157",
+     ""
+    ],
+    [
+     "Plant Nutrition Average Sales Price (per ton)",
+     "$",
+     "796",
+     "$",
+     "736",
+     "$",
+     "851",
+     "$",
+     "696"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1392,
+    "end_line": 1402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "\u2022Highway deicing average sales prices increased 12% due to higher North American highway deicing contract prices for the 2023 winter season. Consumer and industrial average sales prices increased 5% primarily due to higher sales prices primarily in response to the recent inflationary environment.\n\u2022Salt sales volumes decreased 10% reducing sales by approximately $56.2 million. Highway deicing sales volumes decreased 11% primarily as a result of a decrease in North American sales commitments. Consumer and industrial sales volumes decreased 4% due to a decrease in deicing sales volumes.\n\u2022Salt operating earnings increased 36%, or $31.5 million, due primarily to higher average sales prices for both highway and consumer and industrial products, which were partially offset by higher per-unit product and logistics costs and restructuring costs recognized in the current period. Lower sales volumes compared to the prior period partially offset the increase in operating earnings.\nPlant Nutrition\nTHREE AND SIX MONTHS ENDED MARCH 31",
+   "prose_after": "Commentary: Three Months Ended March 31, 2023 Compared to Three Months Ended March 31, 2022\n\u2022Plant Nutrition sales decreased 12%, or $6.6 million due to lower sales volumes, which were partially offset by higher average sales prices.\n\u2022Plant Nutrition sales volumes were lower year over year due to lower demand due to a combination of flooding conditions in California and uncertainty about future fertilizer prices causing users to cancel or delay purchases. The decline in sales volumes decreased sales by approximately $10.3 million.\n\u2022Plant Nutrition average sales prices increased 8%, which contributed approximately $3.7 million to partially offset the volume decline. Average sales prices increased from the prior period due to global supply and demand dynamics for fertilizer products which resulted in steadily increasing prices throughout fiscal 2022, which have subsequently declined from the peak.\n\u2022Plant Nutrition operating earnings decreased $5.1 million to an operating loss of $0.7 million primarily due to higher per-unit product costs driven by lower production volumes at our Ogden facility as well as higher energy, other input costs and costs of approximately $1.6 million related to a small fire at the Ogden facility, and proportionately fewer sales to more profitable regions, which were partially offset by higher average sales prices.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1419,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 75,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 80,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "SIX MONTHS ENDED MARCH 31, 2023",
+     "SIX MONTHS ENDED MARCH 31, 2022"
+    ],
+    [
+     "Operating Activities:",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities were $143.9 million",
+     "Net cash provided by operating activities were $145.9 million"
+    ],
+    [
+     "\u00bb Net losses were $21.9 million.",
+     "\u00bb Net losses were $9.7 million."
+    ],
+    [
+     "\u00bb Non-cash depreciation and amortization expense was $48.4 million.",
+     "\u00bb Non-cash depreciation and amortization expense was $56.2 million."
+    ],
+    [
+     "\u00bb Non-cash stock-based compensation expense was $13.7 million.",
+     "\u00bb Non-cash stock-based compensation expense was $7.8 million."
+    ],
+    [
+     "\u00bb Working capital items were a source of operating cash flows of $99.4 million.",
+     "\u00bb Working capital items were a source of operating cash flows of $61.3 million."
+    ],
+    [
+     "\u00bb Non-cash net loss in equity investees was $2.3 million.",
+     "\u00bb Non-cash net loss in equity investees was $2.1 million."
+    ],
+    [
+     "Investing Activities:",
+     ""
+    ],
+    [
+     "Net cash flows used in investing activities were $44.0 million",
+     "Net cash flows used in investing activities were $88.4 million"
+    ],
+    [
+     "\u00bb Net cash flows used in investing activities included $43.7 million of capital expenditures.",
+     "\u00bb Net cash flows used in investing activities included equity method investments of $46.3 million."
+    ],
+    [
+     "",
+     "\u00bb Included $43.5 million of capital expenditures."
+    ],
+    [
+     "Financing Activities:",
+     ""
+    ],
+    [
+     "Net cash flows provided by financing activities were $102.9 million",
+     "Net cash flows used in financing activities were $25.9 million"
+    ],
+    [
+     "\u00bb Included net payments on our debt of $123.1 million.",
+     "\u00bb Included net payments on our debt of $14.5 million."
+    ],
+    [
+     "\u00bb Included net proceeds from private placement of common stock of $240.7 million.",
+     "\u00bb Included the payment of dividends of $10.5 million."
+    ],
+    [
+     "\u00bb Included the payment of dividends of $12.6 million.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "In connection with our strategy to strengthen and grow our essential minerals businesses, during the first and second quarters of fiscal 2022, we made $45 million equity investments in Fortress, building upon a previous $5 million investment. As of March 31, 2023, we have invested $50 million in Fortress in exchange for an ownership interest of approximately 45%. Fortress is a development stage company that is expected to achieve commercialization of its magnesium chloride-based fire-retardant products to help combat wildfires during fiscal 2023.\nOn May 5, 2023, we acquired the remaining 55% interest in Fortress consisting of an initial cash payment of approximately $26 million, approximately $28 million to be paid in cash and/or Compass Minerals common stock upon the achievement of certain performance measures, and a cash earn-out based on volumes of Fortress fire retardant products sold over a 10-year period. Building upon the previous 45% minority ownership stake in Fortress, the transaction provides us full ownership of all Fortress assets, contracts, and intellectual property.\nThe table below provides a summary of our cash flows by category, including cash flows from discontinued operations:",
+   "prose_after": "As mentioned above, our Salt segment\u2019s business is seasonal and our Salt segment results and working capital needs are heavily impacted by the severity and timing of the winter weather, which generally occurs from December through March of each year. Customers tend to replenish their inventory prior to the start of the winter season and following snow events, consequently the number and timing of snow events during the winter season will impact the amount of our accounts receivable and inventory at\nthe end of each quarter. Our cash flows during the six months ended March 31 of each year reflect the seasonal decrease in inventory due to the end of the winter season and a decrease in accounts receivable as winter season sales are collected.\nOther Matters\nSee Item 1, Notes 8 and 10 of our Consolidated Financial Statements for a discussion regarding labor, environmental and litigation matters.\nReconciliation of Net Loss from Continuing Operations to EBITDA and Adjusted EBITDA\nManagement uses a variety of measures to evaluate our performance. While our consolidated financial statements, taken as a whole, provide an understanding of our overall results of operations, financial condition and cash flows, we analyze components of the consolidated financial statements to identify certain trends and evaluate specific performance areas. In addition to using U.S. GAAP financial measures, such as gross profit, net earnings and cash flows generated by operating activities, management uses EBITDA and Adjusted EBITDA. We have presented Adjusted EBITDA for both continuing operations and consolidated including discontinued operations for comparability purposes (see Item 1, Note 2 to our Consolidated Financial Statements for a discussion of discontinued operations). Both EBITDA and Adjusted EBITDA are non-GAAP financial measures used to evaluate the operating performance of our core business operations because our resource allocation, financing methods, cost of capital and income tax positions are managed at a corporate level, apart from the activities of the operating segments, and our operating facilities are located in different taxing jurisdictions, which can cause considerable variation in net earnings. We also use EBITDA and Adjusted EBITDA to assess our operating performance and return on capital against other companies, and to evaluate potential acquisitions or other capital projects. EBITDA and Adjusted EBITDA are not calculated under U.S. GAAP and should not be considered in isolation or as a substitute for net earnings, cash flows or other financial data prepared in accordance with U.S. GAAP or as a measure of our overall profitability or liquidity.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1483,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 80,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 83,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "Six Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(21.6)",
+     "$",
+     "(29.0)",
+     "$",
+     "(21.9)",
+     "$",
+     "(21.1)"
+    ],
+    [
+     "Interest expense",
+     "14.2",
+     "",
+     "13.9",
+     "",
+     "28.1",
+     "",
+     "27.8",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "55.1",
+     "",
+     "30.4",
+     "",
+     "67.0",
+     "",
+     "29.2",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "24.5",
+     "",
+     "27.9",
+     "",
+     "48.4",
+     "",
+     "56.2",
+     ""
+    ],
+    [
+     "EBITDA from continuing operations",
+     "72.2",
+     "",
+     "43.2",
+     "",
+     "121.6",
+     "",
+     "92.1",
+     ""
+    ],
+    [
+     "Adjustments to EBITDA from continuing operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation - non cash",
+     "3.1",
+     "",
+     "4.5",
+     "",
+     "13.7",
+     "",
+     "7.7",
+     ""
+    ],
+    [
+     "Interest income",
+     "(1.9)",
+     "",
+     "\u2014",
+     "",
+     "(3.0)",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "(Gain) loss on foreign exchange",
+     "(0.2)",
+     "",
+     "3.0",
+     "",
+     "2.3",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Executive transition costs(a)",
+     "\u2014",
+     "",
+     "0.5",
+     "",
+     "\u2014",
+     "",
+     "4.3",
+     ""
+    ],
+    [
+     "Restructuring charges(b)",
+     "3.7",
+     "",
+     "\u2014",
+     "",
+     "3.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued loss and legal costs related to SEC investigation(c)",
+     "(0.4)",
+     "",
+     "13.6",
+     "",
+     "(0.1)",
+     "",
+     "16.7",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "0.9",
+     "",
+     "\u2014",
+     "",
+     "1.0",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Adjusted EBITDA from continuing operations",
+     "77.4",
+     "",
+     "64.8",
+     "",
+     "139.2",
+     "",
+     "123.2",
+     ""
+    ],
+    [
+     "Adjusted EBITDA from discontinued operations",
+     "\u2014",
+     "",
+     "7.3",
+     "",
+     "\u2014",
+     "",
+     "15.9",
+     ""
+    ],
+    [
+     "Adjusted EBITDA including discontinued operations",
+     "$",
+     "77.4",
+     "$",
+     "72.1",
+     "$",
+     "139.2",
+     "$",
+     "139.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1543,
+    "end_line": 1570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "EBITDA and Adjusted EBITDA exclude interest expense, income taxes and depreciation and amortization, each of which are an essential element of our cost structure and cannot be eliminated. Furthermore, Adjusted EBITDA excludes other cash and non-cash items, including stock-based compensation, interest income, (gain) loss on foreign exchange, other (income) expense, net and other infrequent items that management does not consider indicative of normal operations. Other infrequent items, such as executive transition costs and restructuring charges, involve distinct initiatives that are not reflective of future operations and affect the comparability of our operational results across reporting periods. Our borrowings are a significant component of our capital structure and interest expense is a continuing cost of debt. We are also required to pay income taxes, a required and ongoing consequence of our operations. We have a significant investment in capital assets and depreciation and amortization reflect the utilization of those assets in order to generate revenues. Our employees are vital to our operations and we utilize various stock-based awards to compensate and incentivize our employees. Consequently, any measure that excludes these elements has material limitations. While EBITDA and Adjusted EBITDA are frequently used as measures of operating performance, these terms are not necessarily comparable to similarly titled measures of other companies due to the potential inconsistencies in the method of calculation.\nThe calculation of EBITDA and Adjusted EBITDA as used by management is set forth in the table below (in millions):",
+   "prose_after": "(a)We incurred severance and other costs related to executive transition.\n(b)We incurred severance and related charges related to a reduction of its workforce.\n(c)We recognized costs, net of reimbursements, related to the settled SEC investigation.\nRecent Accounting Pronouncements\nSee Part 1, Note 1 of our Consolidated Financial Statements for a discussion of recent accounting pronouncements.\nEffects of Currency Fluctuations and Inflation\nOur operations outside of the U.S. are conducted primarily in Canada and the U.K. Therefore, our results of operations are subject to both currency transaction risk and currency translation risk. We incur currency transaction risk whenever we or one of our subsidiaries enters into either a purchase or sales transaction using a currency other than the local currency of the transacting entity. With respect to currency translation risk, our financial condition and results of operations are measured and recorded in the relevant local currency and then translated into U.S. dollars for inclusion in our historical consolidated financial statements. Exchange rates between these currencies and the U.S. dollar have fluctuated significantly from time to time and may do so in the future. The majority of revenues and costs are denominated in U.S. dollars, with Canadian dollars and British pounds sterling also being significant. Significant changes in the value of the Canadian dollar or British pound sterling relative to the U.S. dollar could have a material adverse effect on our financial condition and our ability to meet interest and principal payments on U.S. dollar-denominated debt, including borrowings under our senior secured credit facilities.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1587,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 83,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 88,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit Description"
+    ],
+    [
+     "10.1",
+     "Amendment and Restatement Agreement to the Credit Agreement, dated as of May 5, 2023, by and among Compass Minerals International, Inc., Compass Minerals Canada Corp., Compass Minerals UK Limited, the Lenders party thereto and JPMorgan Chase Bank, N.A., as Administrative Agent (incorporated by reference to Exhibit 10.1 to Compass Minerals International, Inc.\u2019s Current Report on Form 8-K filed on May 5, 2023)."
+    ],
+    [
+     "31.1*",
+     "Section 302 Certifications of Kevin S. Crutchfield, President and Chief Executive Officer."
+    ],
+    [
+     "31.2*",
+     "Section 302 Certifications of Lorin Crenshaw, Chief Financial Officer."
+    ],
+    [
+     "32**",
+     "Certification Pursuant to 18 U.S.C. \u00a71350 of Kevin S. Crutchfield, President and Chief Executive Officer, and Lorin Crenshaw, Chief Financial Officer."
+    ],
+    [
+     "95*",
+     "Mine Safety Disclosures."
+    ],
+    [
+     "101**",
+     "The following financial statements from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended March 31, 2023, formatted in Inline Extensible Business Reporting Language (iXBRL): (i) Consolidated Balance Sheets, (ii) Consolidated Statements of Operations, (iii) Consolidated Statements of Comprehensive Loss, (iv) Consolidated Statements of Stockholders\u2019 Equity, (v) Consolidated Statements of Cash Flows, and (vi) the Notes to the Consolidated Financial Statements."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (contained in Exhibit 101)."
+    ],
+    [
+     "*    Filed herewith",
+     ""
+    ],
+    [
+     "**    Furnished herewith",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1679,
+    "end_line": 1696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "The issuance of the shares was exempt from registration pursuant to the exemption for transactions by an issuer not involving any public offering under Section 4(a)(2) of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d). The Investor\nrepresented to the Company that it is an \u201caccredited investor\u201d as defined in Rule 501 of the Securities Act and that the shares are being acquired solely for investment and with no intention to distribute, and appropriate legends will be affixed to any certificates evidencing any shares.\nPerella Weinberg Partners LP acted as sole financial advisor to Compass Minerals in the transaction and Cleary Gottlieb Steen & Hamilton LLP acted as our legal advisor. Jones Day acted as legal advisor for KM&T.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nInformation concerning mine safety violations or other regulatory matters required by Section 1503(a) of the Dodd-Frank Wall Street Reform and Consumer Protection Act and Item 104 of Regulation S-K is included in Exhibit 95 to this Quarterly Report on Form 10-Q.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1659,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1697,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 88,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 90,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "COMPASS MINERALS INTERNATIONAL, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2023",
+     "By:",
+     "/s/ Lorin Crenshaw"
+    ],
+    [
+     "",
+     "",
+     "Lorin Crenshaw"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "COMPASS MINERALS INTERNATIONAL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1703,
+    "end_line": 1712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": ", the Company has identified two reportable segments. The Specialty Businesses that comprised the Company\u2019s former Plant Nutrition South America reportable segment and the North America micronutrient product business previously reported within the former Plant Nutrition North America reportable segment were classified as discontinued operations for all periods presented in its consolidated financial statements in this Quarterly Report on Form 10-Q."
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1697,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 90,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

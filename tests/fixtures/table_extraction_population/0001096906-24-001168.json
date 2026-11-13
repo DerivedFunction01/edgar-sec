@@ -1,0 +1,3385 @@
+{
+ "accession": "0001096906-24-001168",
+ "cik": "0001485029",
+ "form": "10-K",
+ "filing_date": "2024-05-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "nahd-20231231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New Asia Holdings, Inc.",
+     ""
+    ],
+    [
+     "(Exact name of registrant as specified in its charter)",
+     ""
+    ],
+    [
+     "Nevada",
+     "45-0460095"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "80 Tras Street #01-03, Singapore\n\n\n\n079019",
+     ""
+    ],
+    [
+     "(Address of principal executive offices) (Zip code)",
+     ""
+    ],
+    [
+     "+65 6820-8885",
+     ""
+    ],
+    [
+     "(Registrant's telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "New Asia Holdings, Inc.",
+    "(Exact name of registrant as specified in its charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2023\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________ to _____________\nCommission File No. 000-55410",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, $0.001 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (Sec. 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Classes of Common Stock",
+     "Shares Outstanding"
+    ],
+    [
+     "Common Stock, $0.001 par value",
+     "75,288,667"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 83
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-af\ufb01liates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant's most recently completed second \ufb01scal quarter. As of June 30, 2023, the aggregate market value was $2,298,904.\nThe number of shares outstanding of each of the issuer's classes of common stock, as of May 16, 2024, is as follows:",
+   "prose_after": "DOCUMENTS INCORPORATED BY REFERENCE\nNone.\nNew Asia Holdings, Inc.\nAnnual Report on Form 10-K\nFor the Fiscal Year Ended December 31, 2023\nTABLE OF CONTENTS\nPART I",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "21"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "21"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "22"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "23"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "24"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "25"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "31"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "31"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "31"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "Item 9C.",
+     "Disclosures Regarding Foreign Jurisdictions that Prevent Inspections",
+     "32"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "33"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "35"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "37"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "38"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "40"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "41"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "42"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 98,
+    "end_line": 149
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "DOCUMENTS INCORPORATED BY REFERENCE\nNone.\nNew Asia Holdings, Inc.\nAnnual Report on Form 10-K\nFor the Fiscal Year Ended December 31, 2023\nTABLE OF CONTENTS\nPART I",
+   "prose_after": "Special Note Regarding Forward-Looking Statements\nCertain statements contained in this Annual Report on Form 10-K, including, without limitation, statements containing the words \"believes\", \"anticipates\", \"expects\" and words of similar import, constitute forward-looking statements. Such forward-looking statements involve known and unknown risks, uncertainties and other factors that may cause the actual results, performance or achievements of the registrant, or industry results, to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. Such factors include, among others, the following: international, national and local general economic and market conditions: demographic changes; the ability of the registrant to sustain, manage or forecast its growth; the ability of the registrant to successfully make and integrate acquisitions; raw material costs and availability; new product development and introduction; existing government regulations and changes in, or the failure to comply with, government regulations; adverse publicity; competition; the loss of significant customers or suppliers; fluctuations and difficulty in forecasting operating results; changes in business strategy or development plans; business disruptions; the ability to attract and retain qualified personnel; the ability to protect technology; and other factors referenced in this and previous filings.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fund",
+     "MQ X1",
+     "MQ Y1",
+     "MQ Z1 @ 2%"
+    ],
+    [
+     "Number of Trades",
+     "272",
+     "112",
+     "376"
+    ],
+    [
+     "Sharpe Ratio",
+     "3.3",
+     "2.9",
+     "2.44"
+    ],
+    [
+     "Profit Factor",
+     "2.5",
+     "3.46",
+     "1.99"
+    ],
+    [
+     "Return/DD",
+     "26.09",
+     "16.69",
+     "16.71"
+    ],
+    [
+     "Winning (%)",
+     "59.93%",
+     "64.29%",
+     "75%"
+    ],
+    [
+     "Drawdown (%)",
+     "29.34%",
+     "62.99%",
+     "2.57%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 190,
+    "end_line": 200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "MQL licensed its proprietary trainable, trading algorithms. NAML, in turn, offered these proprietary, trainable, algorithm trading software solutions to broker-dealers, banks, funds and other clients based on a SaaS licensing and delivery model, with sub-licensed users availing themselves of service-based contractual arrangements. NAML was required to pay MQL royalty fees equal to 20% of the trading profits achieved by the SaaS contract agreements that NAML executed with its clients. The targeted geographic market was Asia, with an initial emphasis on Singapore, Hong Kong, Indonesia, and Australia. From 2015 to 2017, NAML grew its retail assets under management (\u201cAUM\u201d) from zero to approximately $2.5 million.\nIn conjunction with the expansion into the regulated fund and bank model, NAML decided to ask its clients to redeem the AUM and as of September 30, 2017, trading on the AUM was terminated. Specifically, and to support NAML\u2019s decision to expand into the regulated fund and bank model, the Series Z (Multi-Asset Currency and Gold) were redeveloped into the following products:\n\u20227.42.31\n\u20227.43.315\n\u20227.43.325\nThe three primary competitive advantages associated with the above trading algorithms are rates of return, efficiency and safety.",
+   "prose_after": "The backend programming associated with the MQ X1 and the MQ Y1 are driven by mean reversion whereas the backend of the MQ Z1 is driven by momentum and trend following. All the algorithms incorporate currency flows and are designed to reduce positions when trends become adverse.\nIn January 2017, NAML, the Company\u2019s exclusive licensee, entered into an agreement with Ferrell Asset Management Pte Ltd (\u201cFAMPL\u201d), a wholly owned subsidiary of Ferrell Financial Group. Ferrell Financial Group, which started as an exempt fund manager in 2004, holds a Capital Markets Services License issued by the Monetary Authority of Singapore (the \u201cMAS\u201d) for the provision of fund management services to individuals who are accredited investors (\u201cAccredited Investors\u201d) as defined in Section 4A(1)(a)(i) of the Securities and Futures Act (Chapter 289) of Singapore. Ferrell Financial Group is an Asia-focused financial services group dedicated to serving the investment and wealth management needs of family offices and private individuals globally. As an independent, privately held group, Ferrell Financial Group forms strategic partnerships with financial institutions and other relevant organizations to provide customized portfolio solutions for its clients.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Closing Bid Prices(1)",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "Low"
+    ],
+    [
+     "Year Ending December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended March 31, 2024",
+     "$0.11",
+     "$0.11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended December 31, 2023",
+     "0.107",
+     "0.107"
+    ],
+    [
+     "Quarter Ended September 30, 2023",
+     "0.673",
+     "0.673"
+    ],
+    [
+     "Quarter Ended June 30, 2023",
+     "0.165",
+     "0.165"
+    ],
+    [
+     "Quarter Ended March 31, 2023",
+     "$0.3184",
+     "$0.3184"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended December 31, 2022",
+     "0.3398",
+     "0.2900"
+    ],
+    [
+     "Quarter Ended September 30, 2022",
+     "0.0615",
+     "0.0615"
+    ],
+    [
+     "Quarter Ending June 30, 2022",
+     "0.0610",
+     "0.0610"
+    ],
+    [
+     "Quarter Ended March 31, 2022",
+     "$0.065",
+     "$0.065"
+    ]
+   ],
+   "caption_stack": [
+    "Closing Bid Prices(1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 702
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "The Company currently maintains a mailing address at 80 Tras Street #01-03, Singapore and a U.S. office at 15615 Alton Parkway, Suite 450, Irvine CA 92618. The Company pays a monthly lease payment of approximately $3,900 per month for the Singapore office and services and $195 per month for the U.S. office.\nITEM 3. LEGAL PROCEEDINGS.\nThe Company is not a party to any pending legal proceedings, and no such proceedings are known to be contemplated.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nOur common stock is quoted on the OTCQB tier of the OTC Markets. The OTC Market is a network of security dealers who buy and sell stock. The dealers are connected by a computer network that provides information on current \"bids\" and \"asks\", as well as volume information. Our common stock is quoted on the OTCQB under the symbol, \u201cNAHD.\u201d\nThe following table sets forth the high and low closing bid prices for the periods indicated for the Company's common stock.",
+   "prose_after": "(1)Bids represent inter\u2212dealer prices, without retail mark-up, markdown or commissions, and may not represent actual transactions. Accordingly, these quotations may or may not necessarily represent actual transactions.\nOn May 15, 2024, the closing price for our common stock on the OTCQB was $0.11 per share. Because there were no shares traded on May 15, 2024, and generally, the volume of shares quoted on the OTC Markets is insignificant, the closing price quoted does not represent a reliable indication of the fair market value of these shares.\nApproximate Number of Holders of Our Common Stock\nAs of May 15, 2024, there were approximately 304 holders of record of our common stock. The number of record holders does not include beneficial owners of common stock whose shares are held in the names of banks, brokers, nominees or other fiduciaries.\nCommon Stock\nThe Company's Articles of Incorporation authorize the issuance of 4,000,000,000 shares of common stock, par value of $0.001 per share (\"Common Stock\"). Each record holder of Common Stock is entitled to one vote for each share held on all matters properly submitted to the stockholders for their vote. The Company's Articles of Incorporation do not permit for cumulative voting for the election of directors. As of December 31, 2023, we had 75,288,667 shares of our Common Stock issued and outstanding.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 716,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ITEM 6.",
+     "RESERVED"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "The Global Crypto Equity Purchase Agreement terminated on September 18, 2021 since no additional shares were purchased under the Global Crypto Share Purchase Agreement.\nOn September 21, 2020, the Company entered into an Equity Purchase Agreement (the \u201cENJU Equity Purchase Agreement\u201d) with ENJU Planning Pte Ltd. (the \u201cSubscriber\u201d). Pursuant to the terms of the Equity Purchase Agreement, the Company agreed to sell to the Subscriber, and the Subscriber agreed to purchase, 1,000,000 restricted shares of the Company\u2019s common stock at purchase price of $0.20 per share, for an aggregate purchase price of $200,000 (the \u201cShare Purchase\u201d). The purchase price was received by the Company on October 8, 2020.\nTransfer Agent\nOur independent stock transfer agent is Pacific Stock Transfer. The transfer agent\u2019s address is 6725 Via Austi Pkwy #300, Las Vegas, NV 89119, United States. The transfer agent\u2019s telephone number is (800) 785-7782, and its fax number is (702) 433-1979. Pacific Stock Transfer\u2019s website is located at www.pacificstocktransfer.com.",
+   "prose_after": "ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.\nForward-Looking Statements\nThis Management's Discussion and Analysis contains forward-looking statements that involve future events, our future performance and our expected future operations and actions. In some cases, you can identify forward-looking statements by the use of words such as \"may\", \"will\", \"should\", \"anticipate\", \"believe\", \"expect\", \"plan\", \"future\", \"intend\", \"could\", \"estimate\", \"predict\", \"hope\", \"potential\", \"continue\", or the negative of these terms or other similar expressions. These forward-looking statements are only our predictions and involve numerous assumptions, risks and uncertainties. Our actual results or actions may differ materially from these forward-looking statements for many reasons, including, but not limited to, the matters discussed in this report under the caption \"Risk Factors\". We urge you not to place undue reliance on these forward-looking statements, which speak only as of the date of this report. We undertake no obligation to publicly update any forward-looking statements, whether as a result of new information, future events or otherwise.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 716,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 741,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$1,883",
+     "",
+     "$9,833"
+    ],
+    [
+     "",
+     "Receivable -Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Prepaid Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "13,750",
+     "",
+     "13,035"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,633",
+     "",
+     "22,868"
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Deposit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "195",
+     "",
+     "195"
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "195",
+     "",
+     "195"
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$15,828",
+     "",
+     "$23,063"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts Payable and Accrued Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$57,483",
+     "",
+     "$248,797"
+    ],
+    [
+     "",
+     "Accounts Payable - Related Party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "272,343",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Advance From Shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,028,704",
+     "",
+     "945,704"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,358,530",
+     "",
+     "1,194,501"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,358,530",
+     "",
+     "1,194,501"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock, $0.001 par value, 400,000,000 shares authorized, 0 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common Stock, $0.001 par value, 4,000,000,000 shares authorized, shares issued 75,288,667 and outstanding at December 31, 2023 and December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "75,289",
+     "",
+     "75,289"
+    ],
+    [
+     "",
+     "Additional Paid In Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "11,416,188",
+     "",
+     "11,399,713"
+    ],
+    [
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(12,833,573)",
+     "",
+     "(12,646,034)"
+    ],
+    [
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(606)",
+     "",
+     "(406)"
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,342,702)",
+     "",
+     "(1,171,438)"
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$15,828",
+     "",
+     "$23,063"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 806,
+    "end_line": 848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "On September 18, 2020, the Company entered into that certain Equity Purchase Agreement (the \u201cGlobal Crypto Equity Purchase Agreement\u201d) between the Company and Global Crypto Offering Exchange Ltd. (\u201cGlobal Crypto\u201d). Pursuant to the terms of the Global Crypto Equity Purchase Agreement, the Company agreed to sell to Global Crypto, and Global Crypto agreed to purchase, an aggregate of 50,000,000 restricted shares of the Company\u2019s common stock at a per share purchase price of $0.01, for an aggregate purchase price of $500,000 (the \u201cShare Purchase\u201d). The Global Crypto Equity Purchase Agreement provides that the Share Purchase will be effected in 10 separate blocks (each, a \u201cBlock\u201d and collectively, \u201cBlocks\u201d), with the first Block closing on September 18, 2020. In the first Block, Global Crypto purchased 2,000,000 shares for an aggregate purchase price of $20,000. The parties to the Global Crypto Equity Purchase Agreement agreed that each of the remaining nine Blocks will close within 12 months of September 18, 2020.\nThe Global Crypto Equity Purchase Agreement terminated on September 18, 2021, since no additional shares were be purchased under the Global Crypto Equity Purchase Agreement.\nOn September 21, 2020, the Company entered into an Equity Purchase Agreement (the \u201cENJU Equity Purchase Agreement\u201d) with ENJU Planning Pte Ltd. (the \u201cSubscriber\u201d). Pursuant to the terms of the Equity Purchase Agreement, the Company agreed to sell to the Subscriber, and the Subscriber agreed to purchase, 1,000,000 restricted shares of the Company\u2019s common stock at purchase price of $0.20 per share, for an aggregate purchase price of $200,000 (the \u201cShare Purchase\u201d). The purchase price was received by the Company on October 8, 2020.\nResults of Operations.\nThe following table provides selected financial data about us for the fiscal years ended December 31, 2023 and December 31, 2022. For detailed financial information, see the audited Financial Statements included in this annual report on Form 10-K.",
+   "prose_after": "Twelve Months Ended December 31, 2023, Compared to Twelve Months Ended December 31, 2022\nDuring fiscal years 2023 and 2022, we generated no revenues. In addition, we have a history of losses. The lack of revenues in fiscal 2023 resulted from the dissolution of the Company\u2019s wholly-owned subsidiary MQL and the cessation of all activities related to the Algorithms and in 2022 revenues resulted from the inability of the Company\u2019s licensee, New Asia Momentum, to secure new sub-licensees for the Company\u2019s products after the return of the AUM associated with the Feuris Fund A activities in 2019, which resulted due to the risk profiles required by these regulated funds and banks reflects a lower level of risk, which resulted in significantly reduced frequency of trading activities which then led to the closure of the Feuris Fund A by Momentum as of September 30, 2019 and the return of the $ 6.67 million AUM to clients. The Company also effectively terminated all activities related to the licensing of its Algorithm products in the Fourth Quarter of 2022 and dissolved MQL in February 2023. The Company is currently in discussions on the development of new business initiatives as described previously.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "AGE",
+     "POSITION"
+    ],
+    [
+     "Lin Kok Peng",
+     "52",
+     "Chief Executive Officer, Chief Financial Officer, Chairman of the Board, and Director"
+    ],
+    [
+     "Allister Lim Wee Sing",
+     "50",
+     "Director, resigned as Director on March 3, 2023"
+    ],
+    [
+     "Jose A. Capote",
+     "63",
+     "Vice President and Secretary, appointed as Director on March 3, 2023."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 968,
+    "end_line": 975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the fourth quarter of our fiscal year ended December 31, 2023, that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDirectors and Executive Officers\nThe following sets forth the name and position of each of our current executive officers and directors.",
+   "prose_after": "Lin Kok Peng\nSince 2005, Dr. Lin has been an entrepreneur and a managing director of several property investment and construction interior consultancy firms. He leads over 10 companies and has over 10 years of experience in property, construction and investments. Dr. Lin brings strategic focus, vision and excellent judgment to his companies. With more than 10 years of experience across a wide variety of industries, he is able to make a significant impact on the profitability and growth of his companies. Dr. Lin lead his first start up business (Free Space Intent) from a small construction interior consultancy firm to currently one of the largest construction interior consultancy firms in Singapore. Since 2014, Dr. Lin has served as Managing Director of Rock Capital Limited. Since 2012, he has served as Director of Goldin Shipping Pte Ltd and Managing Director of Klin Capital Resources Pte Ltd.\nDr. Lin holds a Master degree in Business Administration from De Lasalle University, and a Ph.D. from Camden University in Kuala Lumpur.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 995,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name &\n\n\n\nPrincipal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Change in Pension Value and Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)"
+    ],
+    [
+     "Lin Kok Peng,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chief Executive Officer and Chief Financial Officer",
+     "2023",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ],
+    [
+     "",
+     "2022",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jose A. Capote",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vice President and Secretary",
+     "2023",
+     "18,000",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "18,000"
+    ],
+    [
+     "",
+     "2022",
+     "18,000",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "-0-",
+     "$",
+     "18,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1066
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Company's Board of Directors has adopted a Code of Ethics which applies to its principal executive officer and principal financial officer. A copy of the Code of Ethics is available in print without charge to any person who sends a request to the office of the Secretary of the Company at 80 Tras Street #01-03, Singapore, 079019.\nITEM 11. EXECUTIVE COMPENSATION\nManagement of the Company requires approximately four (4) hours per calendar week. Accordingly, no officer or director has received any compensation from the Company, except for Mr. Capote who was to receive $18,000 in each of the years ended December 31, 2023 and 2022. Until the Company secures additional SaaS contracts, implements expected new business solutions as described above, and begins to accrue revenues, it is not anticipated that any officer, other than Mr. Capote, or any director will receive compensation from the Company other than reimbursement for out-of-pocket expenses incurred on behalf of the Company. See Certain Relationships and Related Transactions.\nThe Company has no stock option, retirement, pension, or profit-sharing programs for the benefit of directors, officers or other employees, but the Board of Directors may recommend adoption of one or more such programs in the future.\n2023 SUMMARY COMPENSATION TABLE",
+   "prose_after": "The Company has no other Executive Compensation issues which would require the inclusion of other mandated table disclosures.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSecurity Ownership of Certain Beneficial Owners and Management\nThe following table sets forth, as of May 15, 2024, the number of shares of Common Stock owned of record and beneficially by executive officers, directors and persons who hold 5% or more of the outstanding Common Stock of the Company. Also included are the shares held by all executive officers and directors as a group.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Amount and Nature of Beneficial Ownership (1)",
+     "Percent of Class (2)"
+    ],
+    [
+     "Named Executive Officers and Directors:",
+     "",
+     ""
+    ],
+    [
+     "Lin Kok Peng",
+     "41,945,908",
+     "55.71%"
+    ],
+    [
+     "Jose A. Capote",
+     "759,084",
+     "1.01%"
+    ],
+    [
+     "Allister Lim Wee Sing",
+     "\u2014",
+     "0.0%"
+    ],
+    [
+     "All officers and directors as a group (3 persons)",
+     "42,704,992",
+     "56.72%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other 5% Stockholders:",
+     "",
+     ""
+    ],
+    [
+     "Anthony Ng Zi Qin",
+     "10,716,900",
+     "14.29%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1076,
+    "end_line": 1089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has no other Executive Compensation issues which would require the inclusion of other mandated table disclosures.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSecurity Ownership of Certain Beneficial Owners and Management\nThe following table sets forth, as of May 15, 2024, the number of shares of Common Stock owned of record and beneficially by executive officers, directors and persons who hold 5% or more of the outstanding Common Stock of the Company. Also included are the shares held by all executive officers and directors as a group.",
+   "prose_after": "*Less than 1%\n(1)On May 15, 2024, there were 75,288,667 shares of our common stock outstanding and no shares of Preferred Stock issued and outstanding. In determining the percent of common stock owned by a person on May 15, 2024: (a) the numerator is the number of shares of common stock beneficially owned by the person, including shares the beneficial ownership of which may be acquired within 60 days upon the exercise of options or warrants or conversion of convertible securities, and (b) the denominator is the total of (i) the 75,288,667 shares of common stock outstanding on May 15, 2024, and (ii) any shares of common stock which the person has the right to acquire within 60 days upon the exercise of options or warrants or conversion of convertible securities. Neither the numerator nor the denominator includes shares which may be issued upon the exercise of any other options or warrants or the conversion of any other convertible securities. As of May15, 2024, we have no outstanding stock warrants or outstanding stock options.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "16,000",
+     "$",
+     "-"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "TOTAL",
+     "$",
+     "16,000",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "On November 10, 2017, the Company and Anthony Ng Zi Qin entered into the Second MQL Addendum, pursuant to which the parties agreed that the Company would issue an aggregate of 3,339,900 shares in satisfaction of the shortfall in the value of the shares issued pursuant to the MQL Agreement, as amended. On December 12, 2017, the common stocks restricted shares were issued. As a result of this transaction, Anthony Ng Qin became a 14.89% shareholder. Thereby he is deemed a related party with significant influence. Also, this transaction created a cancellation of contingency of $5,158,387 that was recorded as a capital transaction for the year ended December 31, 2017. On December 12, 2017, there was positive change in the common share price occurred because of the stock price increase as of December 12, 2017. The Company recorded a gain in change of fair value $1,220,919.\nThe Company has two directors, including Lin Kok Peng, who is the Chief Executive Officer and controlling shareholder of the Company, and Jose A Capote, as of March 3, 2023 upon the resignation of Allister Lim Wee Sing. Mr. Lim was the only director that qualifies as an independent director, as defined in Rule 5605(a)(2) of the NASDAQ Listing Rules.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nIndependent Registered Public Accounting Firm's Fees\nAggregate fees for professional services rendered for the Company by TAAD, LLP, the Company\u2019s independent registered public accounting firm, and MaloneBailey, LLP, the Company\u2019s former independent registered public accounting firm, for the fiscal years ended December 31, 2023 and 2022 were as follows:\nTAAD, LLP:",
+   "prose_after": "MaloneBailey, LLP:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1176,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "10,300",
+     "$",
+     "31,500"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "TOTAL",
+     "$",
+     "10,300",
+     "$",
+     "31,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "MaloneBailey, LLP:",
+   "prose_after": "Audit Fees. Audit fees consisted of the fees billed for professional services rendered for the audit of our annual financial statements and the reviews of the financial statements included in our Quarterly Reports on Form 10-Q.\nAudit-related Fees. During the 2023 and 2022 fiscal years, our independent registered public accountants did not provide any assurance and related services that are reasonably related to the performance of the audit or review of our financial statements that are not reported under the caption \u201cAudit Fees\u201d above. Therefore, there were no audit-related fees billed or paid during the 2023 and 2022 fiscal years.\nTax Fees. Tax fees consists of fees billed for professional services rendered for tax compliance, tax advice and tax planning. Included in such tax fees were fees for preparation of our tax returns and consultancy and advice on other tax planning matters. As our independent registered public accountants did not provide any services to us for tax compliance, tax advice and tax planning during the fiscal years ended December 31, 2023 and 2022, no tax fees were billed or paid during those fiscal years.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1176,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Sale and Purchase Agreement in Respect to the entire issued and paid up share capital of MAGDALLEN QUANT PTE LTD (1)."
+    ],
+    [
+     "2.2",
+     "Addendum to Magdallen Quant Pte Ltd Share and Purchase Agreement, dated August 19, 2016 between New Asia Holdings, Inc. and Anthony Ng Zi Qin (2)."
+    ],
+    [
+     "2.3",
+     "Addendum to Magdallen Quant Pte Ltd Share and Purchase Agreement, dated November 10th, 2017 between New Asia Holdings Inc and Anthony Ng Zi Qin (3)"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (4)"
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment (4)"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment (5)"
+    ],
+    [
+     "3.4",
+     "Certificate of Designation, Series \"A\" Preferred Stock (6)"
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment (6)"
+    ],
+    [
+     "3.6",
+     "Certificate of Amendment to the registrant\u2019s articles of incorporation, as amended, as filed with the Nevada Secretary of State on July 8, 2020 (7)."
+    ],
+    [
+     "3.7",
+     "Certificate of Amendment to the registrant\u2019s articles of incorporation, as amended, as filed with the Nevada Secretary of State on July 8, 2020 (incorporated by reference to Exhibit 3.1 to the registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on July 13, 2020)."
+    ],
+    [
+     "3.8",
+     "Bylaws (3)"
+    ],
+    [
+     "4.1",
+     "Description of registrant\u2019s securities registered pursuant to Section 12 of the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "10.1",
+     "Agreement on Advances dated as of August 14, 2020 by and between the registrant and New Asia Holdings Ltd. (8)"
+    ],
+    [
+     "10.2",
+     "Equity Purchase Agreement, dated September 18, 2020, between New Asia Holdings Inc. and Global Crypto Offering Exchange Ltd. (9)"
+    ],
+    [
+     "10.3",
+     "Equity Purchase Agreement, dated September 21, 2020, between New Asia Holdings Inc. and ENJU Planning Pte Ltd. (10)"
+    ],
+    [
+     "10.4",
+     "Exchange Agreement, dated April 16, 2024, by and among the Company, Olenox and the Shareholder (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on April 22, 2024)."
+    ],
+    [
+     "31.1*",
+     "Certifications of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certifications of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer and Chief Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1196,
+    "end_line": 1240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The Company's principal accountant did not engage any other persons or firms other than the principal accountant's full-time, permanent employees.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\n(a)The following documents are filed as part of this Annual Report on Form 10-K:\n1.Financial statements\nSee index to financial statements and supporting schedules on page F-1 of this Annual Report on Form 10-K.\n2.Financial statement schedules\nFinancial statement schedules have been omitted since they are either not required, not applicable, or the information is otherwise included.\n3.Exhibits\nThe following exhibits are filed as part of this Annual Report on Form 10-K or are incorporated by reference:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1176,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104*",
+     "Cover page interactive data file (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1242,
+    "end_line": 1251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "_____________\n(1)Incorporated by reference to Exhibit 2.1 to the registrant\u2019s current report on Form 8-K filed with the Securities and Exchange Commission on September 1, 2015.\n(2)Incorporated by reference to Exhibit 10.1 to the registrant\u2019s quarterly report on Form 10-Q filed with the Securities and Exchange Commission on November 21, 2016.\n(3)Incorporated by reference to Exhibit 10.1 to the registrant\u2019s quarterly report on Form 10-Q filed with the Securities and Exchange Commission on November 20, 2017.\n(4)Incorporated by reference to the relevant exhibit to the Registration Statement on Form S-1 filed with the Securities and Exchange Commission on April 8, 2010.\n(5)Incorporated by reference to the relevant exhibit to Form 8-K filed with the Securities and Exchange Commission on December 14, 2011.\n(6)Incorporated by reference to the relevant exhibit to Form 8-K filed with the Securities and Exchange Commission on December 14, 2011.\n(7)Incorporated by reference to the relevant exhibit to Form 8-K filed with the Securities and Exchange Commission on February 17, 2015.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "New Asia Holdings, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Lin Kok Peng"
+    ],
+    [
+     "",
+     "",
+     "Lin Kok Peng"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "New Asia Holdings, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "(11)Incorporated by reference to Exhibit 10.1 to the registrant\u2019s current report on Form 8-K filed with the Securities and Exchange Commission on October 16, 2020.\n*Filed herewith.\n**Furnished herewith.\n(b) The exhibits filed with this Annual Report on Form 10-K are listed under Item 15(a)(3), immediately above.\n(c) None.\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nIn accordance with section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: May 16, 2024",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1319,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Lin Kok Peng",
+     "",
+     "Chief Executive Officer, Chief Financial Officer, Chairman of the Board and Director (principal executive officer, principal financial officer and principal accounting officer)",
+     "May 16, 2024"
+    ],
+    [
+     "Lin Kok Peng",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jose A. Capote",
+     "",
+     "Vice President, Corporate Secretary and Director",
+     "May 16, 2024"
+    ],
+    [
+     "Jose A. Capote",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1306,
+    "end_line": 1319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1319,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Registered Independent Certified Public Accounting Firm (PCAOB ID 5854)",
+     "F-2"
+    ],
+    [
+     "Report of Registered Independent Certified Public Accounting Firm (PCAOB ID 206)",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders' Deficit for the years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1323,
+    "end_line": 1344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "To the Board of Directors and\nStockholders of New Asia Holdings, Inc.\nWe have audited the accompanying balance sheet of New Asia Holdings, Inc. (the Company) as of December 31,\n2023, and the related statement of income, comprehensive income, stockholders\u2019 equity, and cash flows for the year ended December 31, 2023, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023, and the results of its operations and its cash flows for the year ended December 31, 2023, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Matter\nThe accompanying financial statements have been prepared under the assumption that the Company will continue as a going concern. However, as detailed in Note 2 to the financial statements, the Company has experienced recurring losses from operations and possesses a net capital deficiency, which raises substantial doubt about its ability to continue as a going concern. Management's plans regarding these issues are also outlined in Note 2. The financial statements do not incorporate any adjustments that may arise from the resolution of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1321,
+     "token": "REPEATING_HEADER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$1,883",
+     "",
+     "$9,833"
+    ],
+    [
+     "",
+     "Receivable -Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Prepaid Expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "13,750",
+     "",
+     "13,035"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,633",
+     "",
+     "22,868"
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Deposit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "195",
+     "",
+     "195"
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "195",
+     "",
+     "195"
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$15,828",
+     "",
+     "$23,063"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts Payable and Accrued Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$57,483",
+     "",
+     "$248,797"
+    ],
+    [
+     "",
+     "Accounts Payable - Related Party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "272,343",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Advance From Shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,028,704",
+     "",
+     "945,704"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,358,530",
+     "",
+     "1,194,501"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,358,530",
+     "",
+     "1,194,501"
+    ],
+    [
+     "Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock, $0.001 par value, 400,000,000 shares authorized, 0 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common Stock, $0.001 par value, 4,000,000,000 shares authorized, shares issued 75,288,667 and outstanding at December 31, 2023 and December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "75,289",
+     "",
+     "75,289"
+    ],
+    [
+     "",
+     "Additional Paid In Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "11,416,188",
+     "",
+     "11,399,713"
+    ],
+    [
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(12,833,573)",
+     "",
+     "(12,646,034)"
+    ],
+    [
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(606)",
+     "",
+     "(406)"
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,342,702)",
+     "",
+     "(1,171,438)"
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$15,828",
+     "",
+     "$23,063"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1416,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ MaloneBailey, LLP\nwww.malonebailey.com\nWe have served as the Company's auditor since 2016. In July 2023, we became the predecessor auditor.\nShenzhen, China\nMay 15, 2023\nNEW ASIA HOLDINGS, INC. CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1460,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     "For the Year Ended"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "December 31, 2022"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Professional Fees",
+     "",
+     "",
+     "",
+     "$94,373",
+     "$50,381"
+    ],
+    [
+     "",
+     "Outside Service",
+     "",
+     "",
+     "",
+     "33,716",
+     "34,900"
+    ],
+    [
+     "",
+     "General & Administrative expenses",
+     "",
+     "",
+     "",
+     "66,950",
+     "68,789"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expense",
+     "",
+     "",
+     "",
+     "",
+     "195,039",
+     "154,070"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "",
+     "",
+     "(195,039)",
+     "(154,070)"
+    ],
+    [
+     "Other Income - Reimbursement",
+     "",
+     "",
+     "",
+     "",
+     "7,500",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "",
+     "",
+     "",
+     "(187,539)",
+     "(154,070)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "(187,539)",
+     "($154,070)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "(200)",
+     "(177)"
+    ],
+    [
+     "Total Comprehensive loss",
+     "",
+     "",
+     "",
+     "",
+     "$(187,739)",
+     "$(154,247)"
+    ],
+    [
+     "Net Loss per common share-basic and fully diluted",
+     "",
+     "",
+     "",
+     "",
+     "$(0.00)",
+     "$(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding-basic and diluted",
+     "",
+     "",
+     "",
+     "",
+     "75,288,667",
+     "75,288,667"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1466,
+    "end_line": 1501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2023 AND 2022",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1503,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid In",
+     "",
+     "Accumulated Other",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Capital",
+     "Accumulated Deficit",
+     "Comprehensive ( Loss)",
+     "Total"
+    ],
+    [
+     "Balance, December 31, 2021",
+     "75,288,667",
+     "$75,289",
+     "$11,399,713",
+     "$(12,491,964)",
+     "$(229)",
+     "$(1,017,191)"
+    ],
+    [
+     "Foreign Currency Translation Adjustment",
+     "",
+     "",
+     "",
+     "",
+     "(177)",
+     "(177)"
+    ],
+    [
+     "Net loss for the period ended December 31, 2022",
+     "",
+     "",
+     "",
+     "(154,070)",
+     "",
+     "(154,070)"
+    ],
+    [
+     "Balance, December 31, 2022",
+     "75,288,667",
+     "$75,289",
+     "$11,399,713",
+     "$(12,646,034)",
+     "$(406)",
+     "$(1,171,438)"
+    ],
+    [
+     "Settlement of liabilities with a related party",
+     "",
+     "",
+     "16,475",
+     "",
+     "",
+     "16,475"
+    ],
+    [
+     "Foreign Currency Translation Adjustment",
+     "",
+     "",
+     "",
+     "",
+     "(200)",
+     "(200)"
+    ],
+    [
+     "Net loss for the period ended December 31, 2023",
+     "",
+     "",
+     "",
+     "(187,539)",
+     "",
+     "(187,539)"
+    ],
+    [
+     "Balance, December 31, 2023",
+     "75,288,667",
+     "$75,289",
+     "$11,416,188",
+     "$(12,833,573)",
+     "$(606)",
+     "$(1,342,702)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1511,
+    "end_line": 1528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2023 AND 2022",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1505,
+     "token": "REPEATING_HEADER",
+     "id": 59,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     "For the Year Ended"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "December 31, 2022"
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "$(187,539)",
+     "$(154,070)"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Prepaid expenses",
+     "",
+     "",
+     "(715)",
+     "1,098"
+    ],
+    [
+     "",
+     "Accounts Payable and Accrued Liabilities",
+     "",
+     "",
+     "36,522",
+     "75,842"
+    ],
+    [
+     "",
+     "Accounts Payable Related Party",
+     "",
+     "",
+     "60,982",
+     "-"
+    ],
+    [
+     "",
+     "Net cash used by operating activities",
+     "",
+     "",
+     "(90,750)",
+     "(77,130)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Advance from shareholder",
+     "",
+     "",
+     "83,000",
+     "32,500"
+    ],
+    [
+     "",
+     "Repayment to shareholder",
+     "",
+     "",
+     "-",
+     "(3,248)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "",
+     "83,000",
+     "29,252"
+    ],
+    [
+     "Effect of exchange rate on cash",
+     "",
+     "",
+     "",
+     "(200)",
+     "(177)"
+    ],
+    [
+     "Net decrease in cash",
+     "",
+     "",
+     "",
+     "(7,950)",
+     "(48,055)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "",
+     "",
+     "",
+     "9,833",
+     "57,888"
+    ],
+    [
+     "Cash at end of year",
+     "",
+     "",
+     "",
+     "$1,883",
+     "$9,833"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest paid",
+     "",
+     "",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "Taxes paid",
+     "",
+     "",
+     "$-",
+     "$800"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash transactions",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Settlement of liabilities with a related party",
+     "",
+     "",
+     "$16,475",
+     "$-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1536,
+    "end_line": 1583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nFor the years ended December 31, 2023, and 2022\nNote 1: Organization and Summary of Significant Accounting Policies\nOrganization\nNew Asia Holdings, Inc. (previously known as DM Products, Inc., Midwest E.S.W.T. Corp, and Effective Sport Nutrition Corporation) (the \u201cCompany,\u201d \u201cwe\u201d or \u201cour\u201d) was incorporated in the State of Nevada on March 1, 2001. In December 2014, the Company underwent a change in control where approximately 90% of the issued and outstanding shares of common stock of the Company were acquired by New Asia Holdings, Ltd. (wholly owned by Lin Kok Peng, Ph.D., the Company\u2019s Chief Executive Officer, Chief Financial Officer and Chairman of the Board) (\u201cNAHL\u201d). As a result, Lin Kok Peng is the effective principal stockholder of the Company.\nWe offer trading software solutions to clients on the basis of a \u201cSoftware as a Service (SaaS)\u201d licensing and delivery model with licensed users availing themselves of service-based contractual arrangements. In addition, and consistent with the requirements of the United States federal securities laws, we may utilize our in-house proprietary neural trading models to trade our own funds, thus providing added value to our shareholders.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1532,
+     "token": "REPEATING_HEADER",
+     "id": 61,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1585,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Federal income tax benefit attributable to:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operations",
+     "$187,539",
+     "",
+     "$154,070"
+    ],
+    [
+     "Less: valuation allowance",
+     "(187,539)",
+     "",
+     "(154,070)"
+    ],
+    [
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1671,
+    "end_line": 1680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The 2017 Act reduces the corporate tax rate from 35% to 21% for tax years beginning after December 31, 2017. For net operating losses (NOLs) arising after December 31, 2017, the 2017 Act limits a taxpayer\u2019s ability to utilize NOL carryforwards to 80% of taxable income. In addition, NOLs arising after 2017 can be carried forward indefinitely, but carryback is generally prohibited. NOLs generated in tax years beginning before January 1, 2018, will not be subject to the taxable income limitation. The 2017 Act would generally eliminate the carryback of all NOLs arising in a tax year ending after 2017 and instead would permit all such NOLs to be carried forward indefinitely.\nThe 2020 CARES Act provides for a carryback of any NOLs arising in a taxable year beginning after December 31, 2017, and before January 1, 2021, to each of the five taxable years preceding the taxable year in which the loss arises (carryback period). As a result of that amendment, taxpayers take into account such NOLs in the earliest taxable year in the carryback period, carrying forward unused amounts to each succeeding taxable year. The CARES Act does not have a material impact to the Company\u2019s financial position or result of operations.\nThe provision for federal income tax consists of the following for the twelve months ended:",
+   "prose_after": "The cumulative tax effect at the expected rate of 21% of significant items comprising our net deferred tax amount is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1654,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1692,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "December 31, 2022"
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$2,670,892",
+     "$2,631,509"
+    ],
+    [
+     "Less: valuation allowance",
+     "(2,670,892)",
+     "(2,631,509)"
+    ],
+    [
+     "Net deferred tax asset",
+     "$-",
+     "$-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1683,
+    "end_line": 1692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The cumulative tax effect at the expected rate of 21% of significant items comprising our net deferred tax amount is as follows:",
+   "prose_after": "NOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nFor the years ended December 31, 2023, and 2022\nDue to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards of $ million for federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, the net operating loss carry forwards may be limited to use in future years.\nAs of December 31, 2023, in accordance with the Internal Revenue Service (\u201cIRS\u201d) Assessment Statute of Limitations, the IRS has the ability to audit or assess the Company\u2019s tax returns on the basis of the following schedule::",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1654,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1692,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "End of IRS Assessment Statute of Limitations"
+    ],
+    [
+     "2020",
+     "Oct 15, 2024"
+    ],
+    [
+     "2021",
+     "Oct 15, 2025"
+    ],
+    [
+     "2022",
+     "Oct 15, 2026"
+    ],
+    [
+     "2023",
+     "Oct 15, 2027"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1702,
+    "end_line": 1715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "NOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nFor the years ended December 31, 2023, and 2022\nDue to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards of $ million for federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, the net operating loss carry forwards may be limited to use in future years.\nAs of December 31, 2023, in accordance with the Internal Revenue Service (\u201cIRS\u201d) Assessment Statute of Limitations, the IRS has the ability to audit or assess the Company\u2019s tax returns on the basis of the following schedule::",
+   "prose_after": "Note 4: Common Stock\nOn July 8, 2020, the Company filed a Certificate of Amendment (the \u201cAmendment\u201d) to the Company\u2019s articles of incorporation, as amended, with the Secretary of State of the State of Nevada. The Amendment had the effect of increasing the number of authorized shares of the Company\u2019s common stock from 400,000,000 to 4,000,000,000 and the number of authorized shares of the Company\u2019s preferred stock from 30,000,000 to 400,000,000. As of July 8, 2020, the Company has authorized 4,400,000,000 shares of capital stock, consisting of 4,000,000,000 shares, par value $0.001 per share, of common stock, and 400,000,000 shares, par value $0.001 per share, of \u201cblank check\u201d preferred stock. The Company had 75,288,667 shares of common stock and no shares of preferred stock issued and outstanding as of December 31, 2023 and December 31, 2022.\nOn September 16, 2020, the Company entered into an Equity Purchase Agreement (the \u201cGlobal Crypto Equity Purchase Agreement\u201d) with Global Crypto Offering Exchange Ltd. (\u201cGlobal Crypto\u201d). Pursuant to the terms of the Global Crypto Equity Purchase Agreement, the Company agreed to sell to Global Crypto, and Global Crypto agreed to purchase, an aggregate of 50,000,000 restricted shares of the Company\u2019s common stock at purchase price of $0.01 per share, for an aggregate purchase price of $500,000 (the \u201cShare Purchase\u201d). The Global Crypto Equity Purchase Agreement provides that the Share Purchase will be effected in 10 separate blocks (each, a \u201cBlock\u201d and collectively, \u201cBlocks\u201d), with the first Block closing on September 18, 2020. In the first Block, Global Crypto purchased 2,000,000 shares for an aggregate purchase price of $20,000. The parties to the Global Crypto Equity Purchase Agreement agreed that each of the remaining nine Blocks will close within 12 months of September 18, 2020.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1697,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

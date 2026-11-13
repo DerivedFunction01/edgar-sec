@@ -1,0 +1,5642 @@
+{
+ "accession": "0001558370-16-006537",
+ "cik": "0000907045",
+ "form": "10-K",
+ "filing_date": "2016-06-29",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ind2-20160331x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "13-3646846"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1225 17th Street, Denver, Colorado",
+     "",
+     "80202"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2016\n[ ][ ]\n\uf031TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number 0-13782\nINDEPENDENCE TAX CREDIT PLUS L.P. II\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code (303) 927-5000\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nTitle of Class\nLimited Partnership Interests and Beneficial Assignment Certificates\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes \uf031 No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes \uf031 No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No \uf031\nIndicate by checkmark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No \uf031",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 5,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "7"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "8"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "8"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "11"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "12"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets",
+     "16"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations",
+     "17"
+    ],
+    [
+     "",
+     "Consolidated Statements of Changes in Partners\u2019 (Deficit) Equity",
+     "18"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows",
+     "19"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "20"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "29"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "29"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Director, Executive Officers, and Corporate Governance",
+     "30"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "30"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "31"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Directors Independence",
+     "31"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "35"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer or a smaller reporting company. See definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]                                              Accelerated filer [ ]\nNon-accelerated filer [ ] (Do not check if a smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes \uf031 No [X]\nThe approximate aggregate book value of the voting and non-voting common equity held by non-affiliates of the Registrant as of September 30, 2015 was ($17,546,000) based on Limited Partner equity (deficit) as of such date.\nRegistrant\u2019s voting and non-voting common equity is not publicly traded.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTable of Contents",
+   "prose_after": "PART I\nItem 1. Business.\nGeneral\nIndependence Tax Credit Plus L.P. II (the \u201cPartnership\u201d) is a limited partnership which was formed under the laws of the State of Delaware on February 11, 1992. The general partner of the Partnership is Related Independence Associates L.P., a Delaware limited partnership (the \u201cGeneral Partner\u201d). The general partner of the General Partner is Independence Associates GP LLC, a Delaware limited liability company. Centerline Holding Company (\u201cCenterline\u201d) was the ultimate parent of Centerline Affordable Housing Advisors LLC (\u201cCAHA\u201d), the sole member of the Manager of the General Partner. On April 15, 2015, Alden Torch Financial, LLC, a newly formed Delaware limited liability company (\u201cATF\u201d), became the indirect owner of 100% of the equity interest in Centerline. Since April 15, 2015, ATF has been the ultimate parent and indirect owner of 100% of the equity interests in CAHA.\nOn January 19, 1993, the Partnership commenced a public offering (the \u201cOffering\u201d) of Beneficial Assignment Certificates (\u201cBACs\u201d) representing assignments of limited partnership interests in the Partnership (\u201cLimited Partnership Interests\u201d). The Partnership received $58,928,000 of gross proceeds from the Offering (the \u201cGross Proceeds\u201d) from 3,475 investors (\u201cBACs holders\u201d). The Offering was terminated on April 7, 1994.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Location",
+     "",
+     "% of Units Occupied at May 1,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Number of Units)",
+     "Date Acquired",
+     "2016",
+     "2015",
+     "2014",
+     "2013",
+     "2012"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lincoln Renaissance",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reading, PA (52)",
+     "April 1993",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United Germano-Millgate Limited Partnership",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chicago, IL (350)",
+     "October 1993",
+     "(d)",
+     "(d)",
+     "(d)",
+     "(d)",
+     "95 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mansion Court Associates",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Philadelphia, PA (30)",
+     "November 1993",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derby Run Associates, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hampton, VA (160)",
+     "February 1994",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Renaissance Plaza \u201893 Associates, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Baltimore, MD (95)",
+     "February 1994",
+     "94 %",
+     "99 %",
+     "93 %",
+     "96 %",
+     "91 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tasker Village Associates",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Philadelphia, PA (28)",
+     "May 1994",
+     "(a)",
+     "(a)",
+     "(a)",
+     "(a)",
+     "(a)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Martha Bryant Manor, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA (77)",
+     "September 1994",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Colden Oaks Limited Partnership",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA (38)",
+     "September 1994",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brynview Terrace, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA (8)",
+     "September 1994",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NLEDC, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA (43)",
+     "September 1994",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Creative Choice Homes VI, Ltd.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Miami, FL (102)",
+     "September 1994",
+     "(a)",
+     "(a)",
+     "(a)",
+     "(a)",
+     "(a)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "P&P Homes for the Elderly, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, CA (107)",
+     "September 1994",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)",
+     "(b)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Clear Horizons Limited Partnership",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shreveport, LA (84)",
+     "December 1994",
+     "(e)",
+     "(e)",
+     "(e)",
+     "(e)",
+     "99 %"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Neptune Venture, L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Neptune Township, NJ (99)",
+     "April 1995",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Affordable Greene Associates L.P.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "New York, NY (41)",
+     "April 1995",
+     "(d)",
+     "(d)",
+     "(d)",
+     "(d)",
+     "100 %"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 183,
+    "end_line": 234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The Partnership is subject to the risks incidental to potential losses arising from the management and ownership of improved real estate. The Partnership can also be affected by poor economic conditions. The Partnership had originally acquired interests in fifteen Local Partnerships, all of which have been, or were, consolidated for accounting purposes. As of March 31, 2016, the Partnership has sold its limited partnership interests in thirteen Local Partnerships and one Local Partnership sold its property and the related assets and liabilities. There can be no assurance as to when the Partnership will dispose of its last remaining investment or the amount of proceeds which may be received. The Partnership\u2019s investment in the last remaining Local Partnership represents 98.99% of the partnership interest in such Local Partnership. Set forth below is a schedule of the Local Partnerships including certain information concerning their respective Apartment Complexes (the \u201cLocal Partnership Schedule\u201d). Further information concerning these Local Partnerships and their Properties, including any encumbrances affecting the Properties, may be found in Schedule III to the financial statements which are included herein.\nLocal Partnership Schedule",
+   "prose_after": "(a) The Partnership\u2019s limited partnership interest was sold during the fiscal year ended March 31, 2010 (see Note 10 in Item 8).\n(b) The Partnership\u2019s limited partnership interest was sold during the fiscal year ended March 31, 2011 (see Note 10 in Item 8).\n(c) The Partnership\u2019s limited partnership interest was sold during the fiscal year ended March 31, 2012 (see Note 10 in Item 8).\n(d) The Partnership\u2019s limited partnership interest was sold during the fiscal year ended March 31, 2013 (see Note 10 in Item 8).\n(e) The property and the related assets and liabilities were sold during the fiscal year ended March 31, 2013 (see Note 10 in Item 8).\nAll leases are generally for periods not exceeding one to two years and no tenant occupies more than 10% of the total rentable square footage in any single Apartment Complex.\nRents from commercial tenants (to which average rental per square foot applies) comprise less than 5% of the rental revenues of the Partnership. Maximum allowable rents for the residential units are determined annually by HUD.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 234,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Sequential Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(a) 1.",
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firms",
+     "13-15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets at March 31, 2016 and 2015",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the Years Ended March 31, 2016 and 2015",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Changes in Partners\u2019 (Deficit) Equity for the Years Ended March 31, 2016 and 2015",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Years Ended March 31, 2016 and 2015",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "20"
+    ]
+   ],
+   "caption_stack": [
+    "Sequential Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 421,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "General and administrative for related parties expenses increased approximately $37,000 for the year ended March 31, 2016 as compared to the corresponding year ended March 31, 2015, primarily due to an increase in overhead expenses allocated from CAHA.\nOperating expenses decreased approximately $8,000 for the year ended March 31, 2016 as compared to the corresponding year ended March 31, 2015, primarily due to an overall decrease in utility expenses at the remaining Local Partnership.\nProperty tax expense decreased approximately $9,000 for the year ended March 31, 2016 as compared to the corresponding year ended March 31, 2015 due to a reduction in the assessed value of the building causing a decrease in property taxes at the remaining Local Partnership.\nDuring the years ended March 31, 2016 and 2015, the Partnership did not record any depreciation and amortization primarily due to property and equipment being fully depreciated at the end of the year ended March 31, 2014.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk.\nNot applicable.\nItem 8. Financial Statements and Supplementary Data.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Partners of\nIndependence Tax Credit Plus L.P. II and Subsidiaries\n(A Delaware Limited Partnership)\nWe have audited the accompanying consolidated balance sheets of Independence Tax Credit Plus L.P. II and Subsidiaries (A Delaware Limited Partnership) as of March 31, 2016 and 2015, and the related consolidated statements of operations, changes in partners\u2019 (deficit) equity, and cash flows for the years ended March 31, 2016 and 2015 (the 2015 and 2014 Fiscal Years), respectively. Our responsibility is to express an opinion on these consolidated financial statements based on our audits. We did not audit the financial statements for the subsidiary partnership (Fiscal Years 2015 and 2014) subsidiary partnerships whose losses aggregated $278,562 and $267,505 for the years ended March 31, 2016 and 2015, and whose assets constituted 22% and 19% of the Partnership\u2019s assets at March 31, 2016 and 2015, presented in the accompanying consolidated financial statements. The financial statements of the subsidiary partnership (2015 and 2014 Fiscal Years) was audited by other auditors whose reports thereon have been furnished to us and our opinion expressed herein, insofar as it relates to the amounts included for this subsidiary partnership, is based solely upon the reports of the other auditors.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ CohnReznick LLP",
+     ""
+    ],
+    [
+     "Chicago, Illinois",
+     "Taxpayer Identification Number:"
+    ],
+    [
+     "February 28, 2016",
+     "22-1478099"
+    ],
+    [
+     "Lead Auditor: Nelson Gomez, CPA",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ CohnReznick LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Our audit was conducted for the purpose of forming an opinion on the financial statements as a whole. The accompanying supplementary information on pages 22 to 35 is presented for purposes of additional analysis as required by the Audit Guide issued by the Maryland Department of Housing and Community Development and is not a required part of the financial statements. Such information is the responsibility of management and was derived from and relates directly to the underlying accounting and other records used to prepare the financial statements. The information has been subjected to the auditing procedures applied in the audit of the financial statements and certain additional procedures, including comparing and reconciling such information directly to the underlying accounting and other records used to prepare the financial statements or to the financial statements themselves, and other additional procedures in accordance with auditing standards generally accepted in the United States of America. In our opinion, the information is fairly stated in all material respects in relation to the financial statements as a whole.\nOther Reporting Required by Government Auditing Standards\nIn accordance with Government Auditing Standards, we have also issued our report dated February 18, 2016, on our consideration of Renaissance Plaza 93 Associates, L.P.'s internal control over financial reporting and on our tests of its compliance with certain provisions of laws, regulations, contracts, and grant agreements and other matters. The purpose of that report is to describe the scope of our testing of internal control over financial reporting and compliance and the results of that testing, and not to provide an opinion on internal control over financial reporting or on compliance. That report is an integral part of an audit performed in accordance with Government Auditing Standards in considering Renaissance Plaza 93 Associates, L.P.\u2019s internal control over financial reporting and compliance.",
+   "prose_after": "[COHNREZNICK LLP LETTERHEAD]\nReport of Independent Registered Public Accounting Firm\nTo the Partners\nRenaissance Plaza 93 Associates, L.P.\nReport on the Financial Statements\nWe have audited the accompanying financial statements of Renaissance Plaza 93 Associates, L.P., which comprise the balance sheet as of December 31, 2014 and the related statements of operations, partner\u2019s equity (deficit) and cash flows for the year then ended, and the related notes to the financial statements.\nManagement's Responsibility for the Financial Statements\nManagement is responsible for the preparation and fair presentation of these financial statements in accordance with accounting principles generally accepted in the United States of America; this includes the design, implementation, and maintenance of internal control relevant to the preparation and fair presentation of financial statements that are free from material misstatement, whether due to fraud or error.\nAuditor's Responsibility\nOur responsibility is to express an opinion on these financial statements based on our audit. We conducted our audit in accordance with auditing standards generally accepted in the United States of America as established by the Auditing Standards Board (United States), the standards of the Public Company Accounting Oversight Board (United States), and the standards applicable to financial audits contained in Government Auditing Standards, issued by the Comptroller General of the United States. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free from material misstatement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ CohnReznick LLP",
+     ""
+    ],
+    [
+     "Chicago, Illinois",
+     "Taxpayer Identification Number:"
+    ],
+    [
+     "February 24, 2015",
+     "22-1478099"
+    ],
+    [
+     "Lead Auditor: Nelson Gomez, CPA",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ CohnReznick LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Our audit was conducted for the purpose of forming an opinion on the financial statements as a whole. The accompanying supplementary information on pages 22 to 35 is presented for purposes of additional analysis as required by the Audit Guide issued by the Maryland Department of Housing and Community Development and is not a required part of the financial statements. Such information is the responsibility of management and was derived from and relates directly to the underlying accounting and other records used to prepare the financial statements. The information has been subjected to the auditing procedures applied in the audit of the financial statements and certain additional procedures, including comparing and reconciling such information directly to the underlying accounting and other records used to prepare the financial statements or to the financial statements themselves, and other additional procedures in accordance with auditing standards generally accepted in the United States of America. In our opinion, the information is fairly stated in all material respects in relation to the financial statements as a whole.\nOther Reporting Required by Government Auditing Standards\nIn accordance with Government Auditing Standards, we have also issued our report dated February 24, 2015, on our consideration of Renaissance Plaza 93 Associates, L.P.'s internal control over financial reporting and on our tests of its compliance with certain provisions of laws, regulations, contracts, and grant agreements and other matters. The purpose of that report is to describe the scope of our testing of internal control over financial reporting and compliance and the results of that testing, and not to provide an opinion on internal control over financial reporting or on compliance. That report is an integral part of an audit performed in accordance with Government Auditing Standards in considering Renaissance Plaza 93 Associates, L.P.\u2019s internal control over financial reporting and compliance.",
+   "prose_after": "INDEPENDENCE TAX CREDIT PLUS L.P. II\nAND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 556,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents (Notes 2, 3 and 11)",
+     "$",
+     "1,943,788",
+     "$",
+     "2,309,123"
+    ],
+    [
+     "Cash held in escrow (Notes 3 and 5)",
+     "",
+     "318,460",
+     "",
+     "299,490"
+    ],
+    [
+     "Deferred costs (Note 6)",
+     "",
+     "\u2014",
+     "",
+     "8,426"
+    ],
+    [
+     "Other assets",
+     "",
+     "65,719",
+     "",
+     "61,170"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "2,327,967",
+     "$",
+     "2,678,209"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND PARTNERS\u2019 (DEFICIT) EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage notes payable (Note 7)",
+     "$",
+     "6,661,104",
+     "$",
+     "6,679,503"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "110,742",
+     "",
+     "103,619"
+    ],
+    [
+     "Security deposit payable",
+     "",
+     "53,164",
+     "",
+     "57,435"
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "8,303,028",
+     "",
+     "7,989,688"
+    ],
+    [
+     "Due to local general partners and affiliates (Note 8)",
+     "",
+     "125,699",
+     "",
+     "125,766"
+    ],
+    [
+     "Due to general partner and affiliates (Note 8)",
+     "",
+     "1,941,586",
+     "",
+     "1,966,858"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "17,195,323",
+     "",
+     "16,922,869"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 7, 8 and 11)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Limited partners (58,928 BACs issued and outstanding)",
+     "",
+     "(17,884,591)",
+     "",
+     "(17,302,450)"
+    ],
+    [
+     "General partner",
+     "",
+     "3,585,301",
+     "",
+     "3,591,181"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Independence Tax Credit Plus L.P. II total",
+     "",
+     "(14,299,290)",
+     "",
+     "(13,711,269)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interests",
+     "",
+     "(568,066)",
+     "",
+     "(533,391)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total partners\u2019 (deficit) equity",
+     "",
+     "(14,867,356)",
+     "",
+     "(14,244,660)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners\u2019 (deficit) equity",
+     "$",
+     "2,327,967",
+     "$",
+     "2,678,209"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 564,
+    "end_line": 613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "INDEPENDENCE TAX CREDIT PLUS L.P. II\nAND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 556,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 614,
+     "token": "REPEATING_FOOTER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental income",
+     "$",
+     "820,528",
+     "$",
+     "837,887"
+    ],
+    [
+     "Other income",
+     "",
+     "28,412",
+     "",
+     "29,619"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "848,940",
+     "",
+     "867,506"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "399,081",
+     "",
+     "336,228"
+    ],
+    [
+     "General and administrative-related parties (Note 8)",
+     "",
+     "192,160",
+     "",
+     "155,542"
+    ],
+    [
+     "Repairs and maintenance",
+     "",
+     "196,065",
+     "",
+     "197,249"
+    ],
+    [
+     "Operating",
+     "",
+     "138,737",
+     "",
+     "146,645"
+    ],
+    [
+     "Taxes",
+     "",
+     "55,821",
+     "",
+     "64,479"
+    ],
+    [
+     "Insurance",
+     "",
+     "35,220",
+     "",
+     "36,847"
+    ],
+    [
+     "Financial, principally interest",
+     "",
+     "422,691",
+     "",
+     "423,829"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,439,775",
+     "",
+     "1,360,819"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(590,835)",
+     "",
+     "(493,313)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to noncontrolling interests",
+     "",
+     "2,814",
+     "",
+     "2,702"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Independence Tax Credit Plus L.P. II",
+     "$",
+     "(588,021)",
+     "$",
+     "(490,611)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss  \u2013 limited partners",
+     "$",
+     "(582,141)",
+     "$",
+     "(485,705)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of BACs outstanding",
+     "",
+     "58,928",
+     "",
+     "58,928"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per weighted average BAC",
+     "$",
+     "(9.88)",
+     "$",
+     "(8.24)"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 667
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CHANGES IN PARTNERS' (DEFICIT) EQUITY",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 618,
+     "token": "REPEATING_HEADER",
+     "id": 21,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 668,
+     "token": "REPEATING_FOOTER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Limited",
+     "",
+     "General",
+     "",
+     "Noncontrolling",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Partners",
+     "",
+     "Partner",
+     "",
+     "Interests",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) equity \u2013 April 1, 2014",
+     "$",
+     "(13,733,253)",
+     "$",
+     "(16,816,745)",
+     "$",
+     "3,596,087",
+     "$",
+     "(512,595)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(493,313)",
+     "",
+     "(485,705)",
+     "",
+     "(4,906)",
+     "",
+     "(2,702)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "(18,094)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(18,094)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) equity \u2013 March 31, 2015",
+     "",
+     "(14,244,660)",
+     "",
+     "(17,302,450)",
+     "",
+     "3,591,181",
+     "",
+     "(533,391)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(590,835)",
+     "",
+     "(582,141)",
+     "",
+     "(5,880)",
+     "",
+     "(2,814)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "(31,861)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(31,861)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) equity \u2013 March 31, 2016",
+     "$",
+     "(14,867,356)",
+     "$",
+     "(17,884,591)",
+     "$",
+     "3,585,301",
+     "$",
+     "(568,066)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 676,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CHANGES IN PARTNERS' (DEFICIT) EQUITY",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 699,
+     "token": "REPEATING_FOOTER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(590,835)",
+     "$",
+     "(493,313)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "7,123",
+     "",
+     "(5,780)"
+    ],
+    [
+     "(Decrease) increase in security deposit payable",
+     "",
+     "(4,271)",
+     "",
+     "230"
+    ],
+    [
+     "Increase in accrued interest payable",
+     "",
+     "313,340",
+     "",
+     "354,640"
+    ],
+    [
+     "Decrease (increase) in cash held in escrow",
+     "",
+     "17,894",
+     "",
+     "(8,864)"
+    ],
+    [
+     "Decrease (increase) in other assets",
+     "",
+     "3,877",
+     "",
+     "(871)"
+    ],
+    [
+     "Decrease in due to local general partners and affiliates",
+     "",
+     "(67)",
+     "",
+     "(202)"
+    ],
+    [
+     "(Decrease) increase in due to general partner and affiliates",
+     "",
+     "(25,272)",
+     "",
+     "96,367"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total adjustments",
+     "",
+     "312,624",
+     "",
+     "435,520"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(278,211)",
+     "",
+     "(57,793)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in cash held in escrow",
+     "",
+     "(36,864)",
+     "",
+     "(18,885)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(36,864)",
+     "",
+     "(18,885)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments of mortgage notes",
+     "",
+     "(18,399)",
+     "",
+     "(17,266)"
+    ],
+    [
+     "Distributions to noncontrolling interest",
+     "",
+     "(31,861)",
+     "",
+     "(18,094)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(50,260)",
+     "",
+     "(35,360)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(365,335)",
+     "",
+     "(112,038)"
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "2,309,123",
+     "",
+     "2,421,161"
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "1,943,788",
+     "$",
+     "2,309,123"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flows information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for interest",
+     "$",
+     "109,351",
+     "$",
+     "69,192"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTE 1 \u2013 General\nIndependence Tax Credit Plus L.P. II (a Delaware limited partnership) (the \u201cPartnership\u201d) was organized on February 11, 1992 and commenced its public offering on January 19, 1993. The general partner of the Partnership is Related Independence Associates L.P. a Delaware limited partnership (the \u201cGeneral Partner\u201d). The general partner of the General Partner is Independence Associates GP LLC., a Delaware limited liability company. Centerline Holding Company (\u201cCenterline\u201d) was the ultimate parent of Centerline Affordable Housing Advisors LLC (\u201cCAHA\u201d), the sole member of the Manager of the General Partner. On April 15, 2015, Alden Torch Financial, LLC, a newly formed Delaware limited liability company (\u201cATF\u201d), became the indirect owner of 100% of the equity interest in Centerline. Since April 15, 2015, ATF has been the ultimate parent and indirect owner of 100% of the equity interests in CAHA.\nThe Partnership\u2019s business is primarily to invest in other partnerships (\u201cLocal Partnerships,\u201d \u201csubsidiaries\u201d or \u201csubsidiary partnerships\u201d) owning leveraged apartment complexes that are eligible for the low-income housing tax credit (\u201cTax Credit\u201d) enacted in the Tax Reform Act of 1986, some of which may have been eligible for the historic rehabilitation tax credit.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 703,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 758,
+     "token": "REPEATING_FOOTER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "39",
+     "$",
+     "47"
+    ],
+    [
+     "Other",
+     "",
+     "28,373",
+     "",
+     "29,572"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other revenue",
+     "$",
+     "28,412",
+     "$",
+     "29,619"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 812,
+    "end_line": 825
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "At the time management commits to a plan to dispose of a specific asset, said asset is adjusted to the lower of carrying amount or fair value less costs to sell. These assets are classified as property and equipment-held for sale and are not depreciated. Property and equipment that are held for sale are included in discontinued operations. There are no assets classified as property and equipment-held for sale at March 31, 2016.\ne) Revenue Recognition\nRental income is earned primarily under standard residential operating leases and is typically due the first day of each month, but can vary by property due to the terms of the tenant leases. Rental income is recognized when earned and charged to tenants\u2019 accounts receivable if not received by the due date. Rental payments received in advance of the due date are deferred until earned. Rental subsidies are recognized as rental income during the month in which it is earned.\nOther revenues are recorded when earned and consist of the following items: Interest income earned on cash and cash equivalent balances and cash held in escrow balances, income from forfeited security deposits, late charges, laundry and vending income and other rental related items.\nOther revenues from operations include the following amounts at both the Partnership and Local Partnership level:",
+   "prose_after": "f) Income Taxes\nThe Partnership is not required to provide for, or pay, any federal income taxes. Net income or loss generated by the Partnership is passed through to the partners and is required to be reported by them. The Partnership may be subject to state and local taxes in jurisdictions in which it operates. For income tax purposes, the Partnership has a fiscal year ending December 31 (See Note 9).\nThe Partnership\u2019s management have analyzed the Partnership\u2019s tax positions and concluded that no liability for unrecognized tax benefits should be recorded for positions taken on returns filed for open tax years. As of and during the year ended March 31, 2016, the Partnership did not have a liability for any unrecognized tax benefits or related interest and penalties. Such related interest and penalties, if any, would be included in general and administrative expense.\nThe Partnership relies on a 2% safe harbor established by an Internal Revenue Service (\u201cIRS\u201d) regulation to avoid being characterized as a \u201cpublicly-traded partnership\u201d that is taxed as a corporation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 798,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 840,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "At March 31, 2016",
+     "",
+     "",
+     "",
+     "At March 31, 2015",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying",
+     "",
+     "",
+     "",
+     "Carrying",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "Fair Value",
+     "",
+     "Amount",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage notes",
+     "$",
+     "6,661,104",
+     "$",
+     "3,433,088",
+     "$",
+     "6,679,503",
+     "$",
+     "3,267,996"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 894,
+    "end_line": 904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Fair Value of Financial Instruments"
+    }
+   },
+   "prose_before": "The Partnership has categorized the fair value of financial assets and liabilities based upon the fair value hierarchy specified by ASC Topic 820, Fair Value Measurements (\u201cASC 820\u201d). This standard defines fair value, provides guidance for measuring fair value and requires certain disclosures. This standard does not require any new fair value measurements, but discusses valuation techniques, such as the market approach (comparable market prices), the income approach (present value of future income or cash flow), and the cost approach (cost to replace the service capacity of an asset or replacement cost). This standard provides for a fair value hierarchy that prioritizes the inputs to valuation techniques used to measure fair value into three broad levels. The following is a brief description of those three levels:\nLevel 1:Observable inputs such as quoted prices (unadjusted) in active markets for identical assets or liabilities.\nLevel 2:Inputs other than quoted prices that are observable for the asset or liability, either directly or indirectly. These include quoted prices for similar assets or liabilities in active markets and quoted prices for identical or similar assets or liabilities in markets that are not active.\nLevel 3:Unobservable inputs that reflect the Partnership\u2019s own assumptions.\nThe estimated fair value of mortgage notes payable has been determined using available market information or other appropriate valuation methodologies. However, considerable judgment is required in interpreting market data to develop estimates of fair value. Consequently, the estimates are not necessarily indicative of the amounts that could be realized or would be paid in a current market exchange.",
+   "prose_after": "Fair value for the mortgage notes have been estimated using Level 3 inputs.\nFor the mortgage notes, fair value is calculated using present value cash flow models based on a discount rate. It was determined that the Tender Option Bond market, through which these bonds have been securitized in the past, continued to see a dramatic slowdown with limited liquidity and significantly reduced transaction levels. To assist in valuing these notes, the Partnership held separate discussions with various third party investment banks who are leaders in the municipal bond business. The discussions produced assumptions that were based on market conditions as well as the credit quality of the underlying property partnerships, which held the mortgage notes, to determine what discount rates to utilize.\nDue to General Partner and Affiliates and Due to/from Local General Partners and Affiliates\nManagement believes it is not practical to estimate the fair value of due to General Partner and affiliates and due to/from Local General Partners and affiliates because market information on such obligations is not currently available.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 880,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Estimated"
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "Useful Lives"
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "(Years)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "686,616",
+     "$",
+     "686,616",
+     "\u2014"
+    ],
+    [
+     "Building and improvements",
+     "",
+     "4,862,007",
+     "",
+     "4,862,007",
+     "10-40"
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "69,885",
+     "",
+     "69,885",
+     "5-10"
+    ],
+    [
+     "",
+     "",
+     "5,618,508",
+     "",
+     "5,618,508",
+     ""
+    ],
+    [
+     "Less:  Accumulated depreciation",
+     "",
+     "(5,618,508)",
+     "",
+     "(5,618,508)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Estimated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 917,
+    "end_line": 935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Property and Equipment"
+    }
+   },
+   "prose_before": "For the mortgage notes, fair value is calculated using present value cash flow models based on a discount rate. It was determined that the Tender Option Bond market, through which these bonds have been securitized in the past, continued to see a dramatic slowdown with limited liquidity and significantly reduced transaction levels. To assist in valuing these notes, the Partnership held separate discussions with various third party investment banks who are leaders in the municipal bond business. The discussions produced assumptions that were based on market conditions as well as the credit quality of the underlying property partnerships, which held the mortgage notes, to determine what discount rates to utilize.\nDue to General Partner and Affiliates and Due to/from Local General Partners and Affiliates\nManagement believes it is not practical to estimate the fair value of due to General Partner and affiliates and due to/from Local General Partners and affiliates because market information on such obligations is not currently available.\nNOTE 4 \u2013 Property and Equipment\nThe components of property and equipment from operations and their estimated useful lives are as follows:",
+   "prose_after": "Original acquisition costs totaling $4,369,919, of which $3,501,977 was paid to the General Partner, are included in the cost of property and equipment.\nDepreciation expense for the years ended March 31, 2015 and 2014 amounted to $0 and $0, respectively.\nNOTE 5 \u2013 Cash Held in Escrow\nCash held in escrow from operations consists of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 880,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Real estate taxes, insurance and other",
+     "$",
+     "48,826",
+     "$",
+     "61,838"
+    ],
+    [
+     "Reserve for replacements",
+     "",
+     "213,933",
+     "",
+     "177,069"
+    ],
+    [
+     "Tenant security deposits",
+     "",
+     "55,701",
+     "",
+     "60,583"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total cash held in escrow",
+     "$",
+     "318,460",
+     "$",
+     "299,490"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Cash Held in Escrow"
+    }
+   },
+   "prose_before": "Original acquisition costs totaling $4,369,919, of which $3,501,977 was paid to the General Partner, are included in the cost of property and equipment.\nDepreciation expense for the years ended March 31, 2015 and 2014 amounted to $0 and $0, respectively.\nNOTE 5 \u2013 Cash Held in Escrow\nCash held in escrow from operations consists of the following:",
+   "prose_after": "NOTE 6 \u2013 Deferred Costs\nThe components of deferred costs are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 938,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 988,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "Period"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "$",
+     "\u2014",
+     "$",
+     "8,426",
+     "various"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deferred costs",
+     "$",
+     "\u2014",
+     "$",
+     "8,426",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 967,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Deferred Costs"
+    }
+   },
+   "prose_before": "NOTE 6 \u2013 Deferred Costs\nThe components of deferred costs are as follows:",
+   "prose_after": "NOTE 7 \u2013 Mortgage Notes Payable\nThe remaining mortgage note from operations is payable in aggregate monthly installments of approximately $2,000, including principal and interest, at rates ranging from 6.22% to 6.33% per annum through the year 2024. The remaining subsidiary partnership\u2019s mortgage note payable is collateralized by its land and buildings, and is without further recourse to the Partnership.\nAccrued interest payable as of March 31, 2016 and 2015 was $8,303,028 and $7,989,688, respectively. Interest accrues on the mortgage loan, which include primary and secondary loans. The remaining secondary loan has a provision such that interest is accrued but not payable until a future date. The Partnership anticipates the payment of accrued interest on the secondary loan (which makes up the majority of the accrued interest payable amount which have been accumulating since the Partnership\u2019s investment in the remaining Local Partnership) will be made from future refinancing or sales proceeds of such Local Partnership or through assumption by the buyer upon sale of the Partnership interest in such Local Partnership.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 938,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 988,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2016",
+     "$",
+     "16,988"
+    ],
+    [
+     "2017",
+     "",
+     "18,076"
+    ],
+    [
+     "2018",
+     "",
+     "19,233"
+    ],
+    [
+     "2019",
+     "",
+     "20,464"
+    ],
+    [
+     "2020",
+     "",
+     "21,773"
+    ],
+    [
+     "Thereafter",
+     "",
+     "6,564,570"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "6,661,104"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 994,
+    "end_line": 1009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Mortgage Notes Payable"
+    }
+   },
+   "prose_before": "Accrued interest payable as of March 31, 2016 and 2015 was $8,303,028 and $7,989,688, respectively. Interest accrues on the mortgage loan, which include primary and secondary loans. The remaining secondary loan has a provision such that interest is accrued but not payable until a future date. The Partnership anticipates the payment of accrued interest on the secondary loan (which makes up the majority of the accrued interest payable amount which have been accumulating since the Partnership\u2019s investment in the remaining Local Partnership) will be made from future refinancing or sales proceeds of such Local Partnership or through assumption by the buyer upon sale of the Partnership interest in such Local Partnership.\nThe mortgage agreements generally require monthly deposits to replacement reserves and escrow accounts for real estate taxes, hazard insurance and mortgage insurance and other (see Note 5). Monthly deposits of approximately $3,000 from operations were made for replacement reserves.\nAnnual principal payment requirements for mortgage notes from operations payable by the subsidiary partnership for each of the next five calendar years and thereafter are as follows:",
+   "prose_after": "NOTE 8 \u2013 Related Party Transactions\nAn affiliate of the General Partner has a .01% interest as a special limited partner in the remaining subsidiary partnership.\nA) Other Related Party Expenses\nThe costs incurred to related parties from operations for the years ended March 31, 2016 and 2015 were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 990,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partnership management fees (a)",
+     "$",
+     "67,000",
+     "$",
+     "67,000"
+    ],
+    [
+     "Expense reimbursement (b)",
+     "",
+     "62,576",
+     "",
+     "24,367"
+    ],
+    [
+     "Local administrative fee (c)",
+     "",
+     "5,000",
+     "",
+     "5,000"
+    ],
+    [
+     "Total general and administrative - General Partner",
+     "",
+     "134,576",
+     "",
+     "96,367"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property management fees incurred to affiliates of the subsidiary partnerships\u2019 general partners",
+     "",
+     "57,584",
+     "",
+     "59,175"
+    ],
+    [
+     "Total general and administrative-related parties",
+     "$",
+     "192,160",
+     "$",
+     "155,542"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1018,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "NOTE 8 \u2013 Related Party Transactions\nAn affiliate of the General Partner has a .01% interest as a special limited partner in the remaining subsidiary partnership.\nA) Other Related Party Expenses\nThe costs incurred to related parties from operations for the years ended March 31, 2016 and 2015 were as follows:",
+   "prose_after": "(a) The General Partner is entitled to receive a partnership management fee, after payment of all Partnership expenses, which together with the annual local administrative fees will not exceed a maximum of 0.5% per annum of invested assets (as defined in the Partnership Agreement), for administering the affairs of the Partnership. Subject to the foregoing limitation, the partnership management fee will be determined by the General Partner in its sole discretion based upon its review of the Partnership\u2019s investments. Unpaid partnership management fees for any year will be accrued without interest and will be payable from working capital reserves or to the extent of available funds after the Partnership has made distributions to the limited partners of sale or refinancing proceeds equal to their original capital contributions plus a 10% priority return thereon (to the extent not theretofore paid out of cash flow). Partnership management fees owed to the General Partner amounting to approximately $1,847,000 and $1,847,000 were accrued and unpaid as of March 31, 2016 and 2015, respectively, and are included in the line item Due to general partners and affiliates in the consolidated balance sheets. Current year partnership management fees may be paid out of operating reserves or refinancing and sales proceeds. As such, the General Partner cannot demand payment of the deferred fees except as noted above.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 990,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Construction costs payable",
+     "$",
+     "120,000",
+     "$",
+     "120,000"
+    ],
+    [
+     "Management and other operating advances",
+     "",
+     "5,699",
+     "",
+     "5,766"
+    ],
+    [
+     "",
+     "$",
+     "125,699",
+     "$",
+     "125,766"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1063
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "(b) The Partnership reimburses the General Partner and its affiliates for actual Partnership operating expenses incurred by the General Partner and its affiliates on the Partnership\u2019s behalf. The amount of reimbursement from the Partnership is limited by the provisions of the Partnership Agreement. Another affiliate of the General Partner performs asset monitoring for the Partnership. These services include site visits and evaluations of the subsidiary partnerships\u2019 performance. Expense reimbursements and asset monitoring fees owed to the General Partner and its affiliates amounting to approximately $0 and $30,000 were accrued and unpaid as of March 31, 2016 and 2015, respectively. The General Partner does not intend to demand payment of the deferred payables beyond the Partnership\u2019s ability to pay them. The Partnership anticipates that these will be paid, if at all, from working capital reserves or future sales proceeds.\n(c) Independence SLP L.P., a special limited partner of the subsidiary partnerships, is entitled to receive a local administrative fee of up to $5,000 per year from the remaining subsidiary partnership. Local administrative fees owed to Independence SLP L.P. amounting to approximately $95,000 and $90,000 were accrued and unpaid as of March 31, 2016 and 2015, respectively. These fees have been deferred in certain cases and the Partnership anticipates that they will be paid, if at all, from working capital reserves or future sales proceeds.\nB) Due to Local General Partners and Affiliates\nDue to local general partners and affiliates at March 31, 2016 and 2015 consists of the following:",
+   "prose_after": "NOTE 9 \u2013 Taxable Net Income\nA reconciliation of the consolidated financial statement net (loss) income to the taxable net (loss) income for the Partnership and its consolidated subsidiaries is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1043,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated financial statement net (loss) income",
+     "$",
+     "(588,021)",
+     "$",
+     "(490,611)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Differences between depreciation and amortization expense recorded for financial reporting purposes and the accelerated costs recovery system utilized for income tax purposes",
+     "",
+     "(453,679)",
+     "",
+     "(453,430)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense, including related party accruals for financial reporting not deductible for tax purposes until paid",
+     "",
+     "(47,281)",
+     "",
+     "31,437"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income as shown on the income tax return for the calendar year ended",
+     "$",
+     "(1,088,981)",
+     "$",
+     "(912,604)"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1068,
+    "end_line": 1085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Taxable Net Income"
+    }
+   },
+   "prose_before": "NOTE 9 \u2013 Taxable Net Income\nA reconciliation of the consolidated financial statement net (loss) income to the taxable net (loss) income for the Partnership and its consolidated subsidiaries is as follows:",
+   "prose_after": "No provision for income taxes related to the operations of the Partnership has been included in the accompanying consolidated financial statements because, as a partnership, it is not subject to federal or material state income taxes and the tax effect of its activities accrues to the BACs holders. Net income for financial statement purposes may differ significantly from taxable income reportable to BACs holders as a result of differences between the tax bases and financial reporting bases of assets and liabilities and the taxable income allocation requirements under its Partnership Agreement. In the event of an examination of the Partnership\u2019s tax return, the tax liability of the partners could be changed if an adjustment in the Partnership\u2019s income is ultimately sustained by the taxing authorities. At March 31, 2016, the tax basis net assets exceeded the financial statement net assets by approximately $3,150,000 due to depreciation differences, impairments of property and equipment, and related party accruals.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1043,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[X])",
+     "Liquidity"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1100,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "No provision for income taxes related to the operations of the Partnership has been included in the accompanying consolidated financial statements because, as a partnership, it is not subject to federal or material state income taxes and the tax effect of its activities accrues to the BACs holders. Net income for financial statement purposes may differ significantly from taxable income reportable to BACs holders as a result of differences between the tax bases and financial reporting bases of assets and liabilities and the taxable income allocation requirements under its Partnership Agreement. In the event of an examination of the Partnership\u2019s tax return, the tax liability of the partners could be changed if an adjustment in the Partnership\u2019s income is ultimately sustained by the taxing authorities. At March 31, 2016, the tax basis net assets exceeded the financial statement net assets by approximately $3,150,000 due to depreciation differences, impairments of property and equipment, and related party accruals.\nNOTE 10 \u2013 Sale of Properties\nThe Partnership is in the process of disposing of its last remaining investment. As of March 31, 2016, the Partnership has sold its limited partnership interests in thirteen Local Partnerships and one Local Partnership sold its property and the related assets and liabilities. The Partnership is expecting to dispose of its last remaining investment within the next year; however, there can be no assurance as to when the Partnership will dispose of its last remaining investment or the amount of proceeds which may be received. However, based on the historical operating results of the remaining Local Partnership\nand the current economic conditions, the proceeds from such sales received by the Partnership will not be sufficient to return to the limited partners their original investments.\nNOTE 11 \u2013 Commitments and Contingencies",
+   "prose_after": "At March 31, 2016, the Partnership\u2019s liabilities exceeded assets by $14,867,356 and for the year then ended, the partnership had net loss of $(590,835). These factors raise doubt about the Partnership\u2019s ability to continue as a going concern. As discussed in Note 8, partnership management fees of approximately $1,847,000 will be payable out of sales or refinancing proceeds only to the extent of available funds after payments of all other Partnership liabilities have been made and after the Limited Partners have received a 10% return on their capital contributions. As such, the General Partner cannot demand payment of these deferred fees beyond the Partnership\u2019s ability to pay them. In addition, where the Partnership has unpaid partnership management fees related to sold properties, such management fees are written off and recorded as capital contributions.\nThe entire mortgage payable balance of $6,661,104 and the accrued interest payable balance of $8,303,028 are of a nonrecourse nature and secured by the remaining property. The Partnership is currently in the process of disposing of its last remaining investment. Historically, the mortgage notes and accrued interest thereon have been assumed by the buyer in instances of sales of the Partnership\u2019s interest or have been paid off from sales proceeds in instances of sales of the property. In most instances when the Partnership\u2019s interest was sold and liabilities were assumed, the Partnership recognized a gain from the sale. The Partnership owns the limited partner interest in its last remaining investment, and as such has no financial responsibility to fund operating losses incurred by the Local Partnership. The maximum loss the Partnership would incur is its net investment in such Local Partnership.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1094,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark B. Hattier",
+     "",
+     "Chief Financial Offer"
+    ],
+    [
+     "Alan T. Fair",
+     "",
+     "President (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1170,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Centerline Holding Company (\u201cCenterline\u201d) was the ultimate parent of Centerline Affordable Housing Advisors LLC (\u201cCAHA\u201d), the sole member of the Manager of the General Partner. On April 15, 2015, Alden Torch Financial, LLC, a newly formed Delaware limited liability company (\u201cATF\u201d), became the indirect owner of 100% of the equity interest in Centerline. Since April 15, 2015, ATF has been the ultimate parent and indirect owner of 100% of the equity interests in CAHA. The Partnership has not adopted a separate code of ethics because the Partnership has no directors or executive officers. However, ATF, which controls the General Partner, has adopted a code of ethics. To obtain a copy free of charge of ATF\u2019s code of ethics, send a written request to: Alden Torch Financial, Attn: Legal Department-Code of Ethics, 1225 17th Street, Suite 1400, Denver, CO 80202.\nCertain information concerning the directors and executive officers of IAGL, is set forth below. The General Partner is also the general partner of Independence Tax Credit Plus L.P.",
+   "prose_after": "MARK B. HATTIER, is the Chief Financial Officer of IAGL and Alden Torch Financial LLC. Prior to joining ATF, Mr. Hattier was a Senior Managing Director of HCP Pacific Asset Management LLC. Mr. Hattier has over 24 years of experience in the structured finance and affordable housing industries. Prior to joining Hunt, Mr. Hattier was a Vice President of various subsidiaries of Capmark Financial Group Inc. From 2007 - 2012, Mr. Hattier was responsible for the negotiation with counterparties in the restructuring and settlement of claims and liabilities related to Capmark\u2019s low-income housing tax credit (\u201cLIHTC\u201d) transactions. Mr. Hattier structured and supervised the sale of Capmark\u2019s LIHTC business assets and the resolution of \u201ctotal return swap\u201d and other derivatives claims. From 1999 \u2013 2007, Mr. Hattier managed Capmark\u2019s proprietary tax-exempt bond and related derivatives portfolios, which included a substantial sub-portfolio of affordable housing bonds. From 1989 \u2013 1993 and 1993 \u2013 1999, Mr. Hattier was a Vice President , in the municipal finance departments of investment banks Howard, Weil, Labouisse, Friedrichs Inc. and Stephens Inc., respectively. Mr. Hattier\u2019s focus was structured finance and asset backed finance. Mr. Hattier received his A.B. in Economics from Harvard College. Mr. Hattier earned and maintains the designations \u201cChartered Financial Analyst\u201d and \u201cFinancial Risk Manager.\u201d",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1158,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Name and Address of",
+     "Amount and Nature of",
+     "",
+     "Percentage",
+     ""
+    ],
+    [
+     "Title of Class",
+     "Beneficial Ownership",
+     "Beneficial Ownership",
+     "",
+     "of Class",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partnership Interest in the Partnership",
+     "Related Independence",
+     "$",
+     "1,000 capital contribution \u2013",
+     "100",
+     "%"
+    ],
+    [
+     "",
+     "Associates L.P.",
+     "",
+     "directly owned",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1225 17th Street",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Denver, Colorado 80202",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1194,
+    "end_line": 1204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Partnership has no officers or directors. The Partnership does not pay or accrue any fees, salaries or other forms of compensation to directors or officers of the General Partner for their services. However, under the terms of the Partnership Agreement, the Partnership has entered into certain arrangements with the General Partner and its affiliates, which provide for compensation to be paid to the General Partner and its affiliates. Such arrangements include (but are not limited to) agreements to pay an annual partnership management fee, nonrecurring Acquisition Fees, a nonaccountable Acquisition Expense allowance and an accountable expense reimbursement. In addition, the General Partner is entitled to a subordinated interest in Cash from Sales or Financings and a 1% interest in Net Income, Net Loss, Distributions of Adjusted Cash from Operations and Cash from Sales or Financings. Certain directors and officers of the General Partner receive compensation from the General Partner and its affiliates for services performed for various affiliated entities which may include services performed for the Partnership. The maximum annual partnership management fee paid to the General Partner is 0.5% of invested assets. See Note 8 in Item 8 above, which is incorporated herein by reference.\nTabular information concerning salaries, bonuses and other types of compensation payable to executive officers has not been included in this annual report. As noted above, the Partnership has no executive officers. The levels of compensation\npayable to the General Partner and/or its affiliates is limited by the terms of the Partnership Agreement and may not be increased therefrom on a discretionary basis. See Note 8 in Item 8 above, which is incorporated herein by reference.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+   "prose_after": "Independence SLP L.P., a limited partnership whose general partner is the general partner of the General Partner of the Partnership and which acts as the special limited partner of each Local Partnership, holds a .01% limited partnership interest in each Local Partnership. See Note 8 in Item 8 above, which information is incorporated herein by reference thereto.\nExcept as set forth below, no person is known by the Partnership to be the beneficial owner of more than 5% of the Limited Partnership Interests and neither the General Partner nor any executive officer of the General Partner owns any Limited Partnership Interests. The following table sets forth the number of BACs beneficially owned, as of June 24, 2016, by (i) each BACs holder known to the Partnership to be a beneficial owner of more than 5% of the BACs, (ii) each director and executive officer of the general partner of the General Partner and (iii) the directors and executive officers of the general partner of the General Partner as a group. Unless otherwise noted, all BACs are owned directly with sole voting and dispositive powers.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1233,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount and Nature of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner (1)",
+     "Beneficial Ownership",
+     "",
+     "Percentage of Class",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lehigh Tax Credit Partners, Inc.",
+     "4,453.20",
+     "(2)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "J. Michael Fried",
+     "4,453.20",
+     "(2) (3)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alan P. Hirmes",
+     "4,453.20",
+     "(2) (3)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stuart J. Boesky",
+     "4,453.20",
+     "(2) (3)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marc D. Schnitzer",
+     "4,453.20",
+     "(2) (3)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denise L. Kiley",
+     "4,453.20",
+     "(2) (3)",
+     "7.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark B. Hattier",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alan T. Fair",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All executive officers of the general partner of the Related",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partner as a group (two persons)",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Amount and Nature of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1209,
+    "end_line": 1233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Independence SLP L.P., a limited partnership whose general partner is the general partner of the General Partner of the Partnership and which acts as the special limited partner of each Local Partnership, holds a .01% limited partnership interest in each Local Partnership. See Note 8 in Item 8 above, which information is incorporated herein by reference thereto.\nExcept as set forth below, no person is known by the Partnership to be the beneficial owner of more than 5% of the Limited Partnership Interests and neither the General Partner nor any executive officer of the General Partner owns any Limited Partnership Interests. The following table sets forth the number of BACs beneficially owned, as of June 24, 2016, by (i) each BACs holder known to the Partnership to be a beneficial owner of more than 5% of the BACs, (ii) each director and executive officer of the general partner of the General Partner and (iii) the directors and executive officers of the general partner of the General Partner as a group. Unless otherwise noted, all BACs are owned directly with sole voting and dispositive powers.",
+   "prose_after": "(1) The address for each of the persons in the table is 1225 17th Street, Denver, Colorado 80202.\n(2) Information derived from Schedule 13D filed by Lehigh Tax Credit Partners L.L.C. (\u201cLehigh I\u201d) and Lehigh Tax Credit Partners, Inc., (the \u201cManaging Member\u201d) on June 10, 1997 with the Securities and Exchange Commission (the \u201cCommission\u201d). All of such BACs represent BACs owned directly by Lehigh I and Lehigh Tax Credit Partners II, L.L.C. (\u201cLehigh II\u201d), for which the Managing Member serves as managing member. As of May 12, 2016, Lehigh I held 2,213.60 BACs and Lehigh II held 2,239.60 BACs.\n(3) Only owns an economic interest in the Managing Member.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nThe Partnership has and will continue to have certain relationships with the General Partner and its affiliates, as discussed in Item 11 and also Note 8 in Item 8 above, which are incorporated herein by reference thereto. However, there have been no direct financial transactions between the Partnership and the directors and officers of the General Partner.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1233,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Sequential Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(a) 1.",
+     "Consolidated Financial Statements.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firm",
+     "13-15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets at March 31, 2016 and 2015",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the Years Ended March 31, 2016 and 2015",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Changes in Partners\u2019 Capital (Deficit) for the Years Ended March 31, 2016 and 2015",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Years Ended March 31, 2016 and 2015",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(a) 2.",
+     "Condensed  Financial Statement Schedules.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firm",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Schedule I - Condensed Financial Information of Registrant",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Schedule III - Real Estate and Accumulated Depreciation",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "All other schedules have been omitted because they are not required or because the required information is contained in the consolidated financial statements or notes thereto.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(a) 3.",
+     "Exhibits.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(3A)",
+     "Agreement of Limited Partnership of Independence Tax Credit Plus L.P. II as adopted on February 11, 1992*",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(3B)",
+     "Form of Amended and Restated Agreement of Limited Partnership of Independence Tax Credit Plus L.P. II, attached to the Prospectus as Exhibit A**",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(3C)",
+     "Certificate of Limited Partnership of Independence Tax Credit Plus L.P. II as filed on February 11, 1992*",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(10A)",
+     "Form of Subscription Agreement attached to the Prospectus as Exhibit B**",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(10B)",
+     "Escrow Agreement between Independence Tax Credit Plus L.P. II and Bankers Trust Company*",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(10C)",
+     "Form of Purchase and Sales Agreement pertaining to the Partnership\u2019s acquisition of Local Partnership Interests*",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(10D)",
+     "Form of Amended and Restated Agreement of Limited Partnership of Local Partnerships*",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(21)",
+     "Subsidiaries of the Registrant",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(31.1)+",
+     "Certification Pursuant to Rule 13a-14(a) or Rule 15d-14(a)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(31.2) +",
+     "Certification Pursuant to Rule 13a-14(a) or Rule 15d-14(a)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(32.1) +",
+     "Certification Pursuant to Section 1350 of Title 18 of the United States Code (18 U.S.C. 1350)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(32.2) +\n\n\n\n \n\n\n\n101+",
+     "Certification Pursuant to Section 1350 of Title 18 of the United States Code (18 U.S.C. 1350)\n\n\n\n \n\n\n\nThe following items from this annual Report on Form of 10-K formatted in Extensible Business Reporting Language:\n\n\n\n(i) Consolidated Balance Sheet, (ii) Consolidated Statement of Operations, (iii) Consolidated Statement of Changes in\n\n\n\nPartners\u2019 (Deficit) Capital, (iv) Consolidated Statement of Cash Flows, (v) Notes to the Consolidated Financial\n\n\n\nStatements, (vii) Financial Statement Schedule (3), and (viii) Financial Statement Schedule (1).",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Sequential Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1272,
+    "end_line": 1335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The aggregate fees billed by Raich Ende Malter & Co LLP and its affiliates for professional services rendered for the audit of the Partnership\u2019s annual consolidated financial statements for the years ended March 31, 2016 and 2015 and for the reviews of the consolidated financial statements included in the Partnership\u2019s quarterly reports on Form 10-Q for those years were $65,000 and $65,000, respectively.\nAudit \u2013 Related Fees\nNone.\nTax Fees\nNone.\nAll Other Fees\nNone.\nThe Partnership is not required to have, and does not have, a stand-alone audit committee.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1266,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "*Incorporated herein as an exhibit by reference to exhibits filed with Post-Effective Amendment No. 4 to the Registration Statement on Form S-11 (Registration No. 33-37704)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "**Incorporated herein as an exhibit by reference to exhibits filed with Post-Effective Amendment No. 8 to the Registration Statement on Form S-11 (Registration No. 33-37704)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "+Filed herewith.",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "*Incorporated herein as an exhibit by reference to exhibits filed with Post-Effective Amendment No. 4 to the Registration Statement on Form S-11 (Registration No. 33-37704)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1336,
+    "end_line": 1343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Subsidiaries of the Registrant (Exhibit 21).",
+     "Jurisdiction of Organization"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Renaissance Plaza \u201893 Associates, L.P.",
+     "MD"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1346,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n(Registrant)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "By:",
+     "RELATED INDEPENDENCE ASSOCIATES L.P.,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "General Partner",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "By:",
+     "INDEPENDENCE ASSOCIATES GP LLC,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "General Partner",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "By:",
+     "CENTERLINE MANAGER LLC,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Manager",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "By:",
+     "CENTERLINE AFFORDABLE HOUSING ADVISORS LLC,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Sole Member",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "By:",
+     "CENTERLINE CAPITAL GROUP LLC,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Sole Member",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "June 29, 2016",
+     "",
+     "",
+     "",
+     "By:",
+     "/s/ Mark B. Hattier"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Mark B. Hattier"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "June 29, 2016",
+     "",
+     "",
+     "",
+     "By:",
+     "/s/ Alan T. Fair"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Alan T. Fair"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "President (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1363,
+    "end_line": 1389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\n(Registrant)",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1390,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mark B. Hattier",
+     "",
+     "Chief Financial Officer of\n\n\n\nCenterline Capital Group LLC",
+     "",
+     "June 29, 2016"
+    ],
+    [
+     "Mark B. Hattier",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alan T. Fair",
+     "",
+     "President (Principal Executive Officer) of Centerline Capital Group LLC",
+     "",
+     "June 29, 2016"
+    ],
+    [
+     "Alan T. Fair",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Partners of\nIndependence Tax Credit Plus L.P. II and Subsidiaries\n(A Delaware Limited Partnership)\nIn connection with our audits of the consolidated financial statements of Independence Tax Credit Plus L.P. II and Subsidiaries (A Delaware Limited Partnership) included in this Form 10-K as presented in our opinion dated June 29, 2016 on page 13, and based on the reports of other auditors, we have also audited supporting Schedule I for the 2016 and 2015 Fiscal Years and Schedule III at March 31, 2016 and 2015. In our opinion, and based on the reports of the other auditors, these schedules present fairly, when read in conjunction with the related consolidated financial statements, the financial data required to be set forth therein.\n/s/ RAICH ENDE & MALTER CO. LLP\nRAICH ENDE & MALTER CO. LLP\nNew York, New York\nJune 29, 2016\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIP)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1390,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,811,968",
+     "$",
+     "2,148,999"
+    ],
+    [
+     "Other assets",
+     "",
+     "11,775",
+     "",
+     "17,714"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,823,743",
+     "$",
+     "2,166,713"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND PARTNERS' CAPITAL",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due to general partner and affiliates",
+     "$",
+     "1,846,586",
+     "$",
+     "1,876,858"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "55,000",
+     "",
+     "55,429"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,901,586",
+     "",
+     "1,932,287"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 capital",
+     "",
+     "(77,843)",
+     "",
+     "234,426"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners\u2019 capital",
+     "$",
+     "1,823,743",
+     "$",
+     "2,166,713"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1437,
+    "end_line": 1465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Independence Tax Credit Plus L.P. II and Subsidiaries\n(A Delaware Limited Partnership)\nIn connection with our audits of the consolidated financial statements of Independence Tax Credit Plus L.P. II and Subsidiaries (A Delaware Limited Partnership) included in this Form 10-K as presented in our opinion dated June 29, 2016 on page 13, and based on the reports of other auditors, we have also audited supporting Schedule I for the 2016 and 2015 Fiscal Years and Schedule III at March 31, 2016 and 2015. In our opinion, and based on the reports of the other auditors, these schedules present fairly, when read in conjunction with the related consolidated financial statements, the financial data required to be set forth therein.\n/s/ RAICH ENDE & MALTER CO. LLP\nRAICH ENDE & MALTER CO. LLP\nNew York, New York\nJune 29, 2016\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIP)\nCONDENSED BALANCE SHEETS\nASSETS",
+   "prose_after": "Investments in Subsidiary Partnerships are recorded in accordance with the equity method of accounting, wherein the investments are not reduced below zero. Accordingly, partners\u2019 capital on the consolidated balance sheets will differ from partners\u2019 capital shown above.\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIPS)\nCONDENSED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1429,
+     "token": "REPEATING_HEADER",
+     "id": 61,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1468,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Administrative and management",
+     "$",
+     "129,576",
+     "$",
+     "134,440"
+    ],
+    [
+     "Administrative and management-related parties",
+     "",
+     "182,697",
+     "",
+     "91,368"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "312,273",
+     "",
+     "225,808"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(312,273)",
+     "",
+     "(225,808)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(312,273)",
+     "$",
+     "(225,808)"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1476,
+    "end_line": 1496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Investments in Subsidiary Partnerships are recorded in accordance with the equity method of accounting, wherein the investments are not reduced below zero. Accordingly, partners\u2019 capital on the consolidated balance sheets will differ from partners\u2019 capital shown above.\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIPS)\nCONDENSED STATEMENTS OF OPERATIONS",
+   "prose_after": "INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIPS)\nCONDENSED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1470,
+     "token": "REPEATING_HEADER",
+     "id": 63,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(312,273)",
+     "$",
+     "(225,808)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease (increase) in assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "5,945",
+     "",
+     "(5,941)"
+    ],
+    [
+     "(Decrease) increase in liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due to general partners and affiliates",
+     "",
+     "(30,272)",
+     "",
+     "91,367"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "(431)",
+     "",
+     "10,429"
+    ],
+    [
+     "Total adjustments",
+     "",
+     "(24,758)",
+     "",
+     "95,855"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(337,031)",
+     "",
+     "(129,953)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(337,031)",
+     "",
+     "(129,953)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "2,148,999",
+     "",
+     "2,278,952"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "1,811,968",
+     "$",
+     "2,148,999"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1507,
+    "end_line": 1538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS\n(NOT INCLUDING CONSOLIDATED SUBSIDIARY PARTNERSHIPS)\nCONDENSED STATEMENTS OF CASH FLOWS",
+   "prose_after": "SCHEDULE III\nREAL ESTATE AND ACCUMULATED DEPRECIATION\nPartnership Property Pledged as Collateral\nMARCH 31, 2016",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1499,
+     "token": "REPEATING_HEADER",
+     "id": 65,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Initial Cost to Partnership",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Gross Amount at which Carried at Close of Period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Life on which"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Capitalized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Depreciation in"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Subsequent to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year of",
+     "",
+     "Latest Income"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Buildings and",
+     "",
+     "Acquisition:",
+     "",
+     "",
+     "",
+     "Buildings and",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "Construction/",
+     "Date",
+     "Statements is"
+    ],
+    [
+     "Description",
+     "Encumbrances",
+     "",
+     "Land",
+     "",
+     "Improvements",
+     "",
+     "Improvements",
+     "",
+     "Land",
+     "",
+     "Improvements",
+     "",
+     "Total",
+     "",
+     "Depreciation",
+     "",
+     "Renovation",
+     "Acquired",
+     "Computed *"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apartment Complexes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Renaissance Plaza Assoc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Baltimore, MD",
+     "$",
+     "6,661,104",
+     "$",
+     "684,255",
+     "$",
+     "9,840,170",
+     "$",
+     "(4,905,917)",
+     "$",
+     "686,616",
+     "$",
+     "4,931,892",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "1994-95",
+     "Feb. 1994",
+     "27.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "6,661,104",
+     "$",
+     "684,255",
+     "$",
+     "9,840,170",
+     "$",
+     "(4,905,917)",
+     "$",
+     "686,616",
+     "$",
+     "4,931,892",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1551,
+    "end_line": 1571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "SCHEDULE III\nREAL ESTATE AND ACCUMULATED DEPRECIATION\nPartnership Property Pledged as Collateral\nMARCH 31, 2016",
+   "prose_after": "* Depreciation is computed using primarily the straight-line method over the estimated useful lives determined by the Partnership date of acquisition.\nSCHEDULE III\nREAL ESTATE AND ACCUMULATED DEPRECIATION\nPartnership Property Pledged as Collateral\nMARCH 31, 2016\n(continued)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1541,
+     "token": "REPEATING_HEADER",
+     "id": 67,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1571,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost of Property and Equipment",
+     "",
+     "",
+     "",
+     "Accumulated Depreciation",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508"
+    ],
+    [
+     "Additions during period:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at close of period",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508",
+     "$",
+     "5,618,508"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1588,
+    "end_line": 1605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "* Depreciation is computed using primarily the straight-line method over the estimated useful lives determined by the Partnership date of acquisition.\nSCHEDULE III\nREAL ESTATE AND ACCUMULATED DEPRECIATION\nPartnership Property Pledged as Collateral\nMARCH 31, 2016\n(continued)",
+   "prose_after": "At the time the Local Partnerships were acquired by Independence Tax Credit Plus II Limited Partnership, the entire purchase price paid by Independence Tax Credit Plus II Limited Partnership was pushed down to the Local Partnerships as property and equipment with an offsetting credit to capital. Since the projects were in the construction phase at the time of acquisition, the capital accounts were insignificant at the time of purchase. Therefore, there are no material differences between the original cost basis for tax and GAAP.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1576,
+     "token": "REPEATING_HEADER",
+     "id": 70,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1608,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

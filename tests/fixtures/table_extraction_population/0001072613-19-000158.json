@@ -1,0 +1,5728 @@
+{
+ "accession": "0001072613-19-000158",
+ "cik": "0000887396",
+ "form": "10-K",
+ "filing_date": "2019-04-01",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k_18305.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "001-16653",
+     "73-1238709"
+    ],
+    [
+     "(State or Other Jurisdiction",
+     "(Commission",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of Incorporation or Organization)",
+     "File Number)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "_________________\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2018\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to _____________\n_________________\nEMPIRE PETROLEUM CORPORATION\n(Exact name of registrant as specified in its charter)\n_________________",
+   "prose_after": "1203 East 33rd Street, Suite 250, Tulsa, OK 74105 (Address of Principal Executive Offices) (Zip Code)\n(539) 444-8002 (Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class: NONE\nName of each exchange on which registered: N/A\nSecurities registered pursuant to 12(g) of the Act:\nTitle of each class: Common Stock, $0.001 par value\nName of each exchange on which registered: OTCQB\n_________________\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ITEM NUMBER AND CAPTION",
+     "",
+     "PAGE NO."
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "7"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "7"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "7"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "8"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "8"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "16"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "16"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "16"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "17"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "18"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "19"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "20"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "22"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "22"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "23"
+    ],
+    [
+     "",
+     "Signatures",
+     "24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer  [ ]  Non-accelerated filer  [ ]  Smaller reporting company  [X]\nEmerging growth company  [ ]                        (Do not check if a smaller reporting company)\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates, based upon the average bid and asked prices of the registrant's Common Stock on the last business day of the registrant's most recently completed fiscal quarter was $3,122,210.\nThe number of shares of the registrant's common stock, $0.001 par value, outstanding as of April 1, 2019 was 18,792,277.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nITEM 1. BUSINESS.\nBackground\nEmpire Petroleum Corporation, a Delaware corporation, was incorporated in the State of Utah in August 1983 under the name Chambers Energy Corporation and domesticated in Delaware in March 1985 under the name Americomm Corporation. The name was changed to Americomm Resources Corporation in July 1995. On May 29, 2001, Americomm Resources Corporation acquired Empire Petroleum Corporation, which became a wholly owned subsidiary of Americomm Resources Corporation. On August 15, 2001, Americomm Resources Corporation and Empire Petroleum Corporation merged and the resulting entity's name was changed to Empire Petroleum Corporation. Empire Petroleum Corporation has two wholly owned subsidiaries, Empire Louisiana LLC (\"Empire Louisiana\") and Empire North Dakota LLC (\"Empire North Dakota\"). The consolidated financial statements of Empire Petroleum Corporation and subsidiaries (\"Empire\", the \"Company\", \"we\") include the accounts of the Company and its wholly owned subsidiaries.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Oil",
+     "",
+     "Natural Gas",
+     ""
+    ],
+    [
+     "",
+     "(Mbbl)",
+     "",
+     "(MMcf)",
+     ""
+    ],
+    [
+     "Proved developed",
+     "",
+     "268.98",
+     "",
+     "887.29"
+    ],
+    [
+     "Proved undeveloped\n\nProved behind pipe",
+     "",
+     "293.42\n\n91.15",
+     "",
+     "0\n\n0"
+    ],
+    [
+     "Proved shut in",
+     "",
+     "7.49",
+     "",
+     "0"
+    ],
+    [
+     "Total Proved",
+     "",
+     "661.04",
+     "",
+     "887.29"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 164,
+    "end_line": 177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "The oil and natural gas industry in the areas in which we operate is highly competitive. We encounter strong competition from numerous parties, ranging generally from small independent producers to major integrated companies. We primarily encounter significant competition in acquiring properties. At higher commodity prices, we also face competition in contracting for drilling, pressure pumping and workover equipment and securing trained personnel. Many of these competitors have financial, technical and personnel resources substantially larger than ours. As a result, our competitors may be able to pay more for desirable properties, or to evaluate, bid for and purchase a greater number of properties or prospects than our financial or personnel resources will permit.\nIn addition to competition for drilling, pressure pumping and workover equipment, we are also affected by the availability of related equipment and materials. The oil and natural gas industry periodically experiences shortages of drilling and workover rigs, equipment, pipe, materials and personnel, which can delay drilling, workover and exploration activities and cause significant price increases. We are unable to predict the timing or duration of any such shortages.\nOil and Natural Gas Reserves\nThe estimates of our proved reserves at December 31, 2018, all of which were located in the United States, were based on evaluations prepared by an independent petroleum engineering firm. Reserves were estimated in accordance with guidelines established by the SEC and the Financial Accounting Standards Board (the \"FASB\").\nThe following table represents the Company's oil and natural gas reserves at December 31, 2018.",
+   "prose_after": "Investment in Masterson West II\nOn December 22, 2016, the Company entered into a subscription and contribution agreement with Masterson West, LLC (\"Masterson West\") (the \"Contribution Agreement\") relating to the newly formed Masterson West II, LLC, a Texas limited liability company (\"Masterson West II\"). Pursuant to the Contribution Agreement, among other things, (a) at the initial closing, the Company agreed to contribute 2,000,000 shares of its common stock, par value $0.001 per share (the \"Common Stock\"), to Masterson West II, along with an additional 38,000,000 shares of Common Stock and (b) at the final closing, Masterson West had an obligation to contribute certain oil and gas properties (the \"Contributed Properties\") to Masterson West II in exchange for the Company contributing cash of not less than $9,000,000 and up to $18,000,000 to Masterson West II. The final closing was scheduled to occur no later than April 1, 2017. Also on December 22, 2016, the Company entered into a limited liability agreement of Masterson West II with Masterson West (the \"LLC Agreement\"). On February 18, 2017, Gary C. Adams, the majority owner of Masterson West unexpectedly passed away. As a result of this development, the transactions were not consummated. On December 1, 2018, the Company and Masterson West agreed to terminate and unwind the Contribution Agreement in a manner as if the parties had never entered into the Contribution Agreement. As a result of the Termination Agreement, in 2018 the Company has reversed its $300,000 investment in Masterson West II and the related common stock subscription and paid in capital.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 150,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 185,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2018",
+     ""
+    ],
+    [
+     "Production and operating data:",
+     "",
+     ""
+    ],
+    [
+     "Net production volumes:",
+     "",
+     ""
+    ],
+    [
+     "Oil (Bbl)",
+     "",
+     "4,284"
+    ],
+    [
+     "Natural gas (Mcf)",
+     "",
+     "12,111"
+    ],
+    [
+     "Total (Boe)",
+     "",
+     "6,302"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average price per unit:",
+     "",
+     ""
+    ],
+    [
+     "Oil (a)",
+     "$",
+     "70.29"
+    ],
+    [
+     "Natural gas (a)",
+     "$",
+     "3.05"
+    ],
+    [
+     "Total (Boe)",
+     "$",
+     "52.89"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating costs and expenses per Boe:",
+     "",
+     ""
+    ],
+    [
+     "Oil and natural gas production",
+     "$",
+     "18.45"
+    ],
+    [
+     "Production and ad valorem taxes",
+     "$",
+     "3.36"
+    ],
+    [
+     "Depreciation, depletion, amortization and accretion",
+     "$",
+     "2.77"
+    ],
+    [
+     "General & administrative",
+     "$",
+     "194.63"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2018",
+    "Production and operating data:",
+    "Net production volumes:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 222,
+    "end_line": 244
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "PROPERTIES."
+    },
+    "note": null
+   },
+   "prose_before": "On November 29, 2017, the Company issued warrants to purchase 500,000 shares of Common Stock at $0.15 per share, and 2,500,000 shares of Common Stock at $0.25 per share, to Anthony Kamin as consideration for his service on the Board of Directors. For the years ended December 31, 2018 and 2017, the Company paid Mr. Morrisett $156,400 and $54,700 respectively, for services rendered. The Company paid Mr. Pritchard $156,400 and $10,000 in 2018 and 2017 respectively for services rendered as Chief Executive Officer. For the years ended December 31, 2018 and 2017, Mr. Pritchard's firm was paid $24,200 and $56,764 respectively, for professional services. On November 29, 2017, the Company issued warrants to purchase 500,000 shares of Common Stock at $0.25 per share to each of Mr. Pritchard and Mr. Morrisett for services rendered to the Company.\nITEM 1A. RISK FACTORS.\nNot applicable.\nITEM 1B. UNRESOLVED STAFF COMMENTS.\nNone.\nITEM 2. PROPERTIES.\nIn 2018, the Company, through its subsidiary, Empire Louisiana, LLC, purchased oil and natural gas properties in three transactions in St. Landry and Beauregard parishes in Louisiana. The acquisitions added approximately 3,082 developed and undeveloped acres to the Company's portfolio.\nThe following table sets forth a summary of our production and operating data for the years ended December 31, 2018. The Company had no production prior to August, 2018 and the table only includes information for the portion of 2018 in which the Company owned the properties. Because of normal production declines, increased or decreased drilling activities, fluctuations in commodity prices and the effects of acquisitions or divestitures, the historical information presented below should not be interpreted as being indicative of future results.",
+   "prose_after": "(a) Includes the effect of net cash receipts (payments on) derivatives.\nAt December 31, 2018 the Company has 9 gross and 8.1 net productive wells.\nThe Company has no wells in process as of December 31, 2018 and had no drilling activity during the year.\nThe Company has no delivery commitments for oil or natural gas.\nITEM 3. LEGAL PROCEEDINGS.\nAs of December 31, 2018, the Company was not subject to any legal proceedings.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 206,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter",
+     "High",
+     "Low"
+    ],
+    [
+     "03/31/17",
+     "$0.51",
+     "$0.15"
+    ],
+    [
+     "06/30/17",
+     "$0.17",
+     "$0.06"
+    ],
+    [
+     "09/30/17",
+     "$0.25",
+     "$0.04"
+    ],
+    [
+     "12/31/17",
+     "$0.25",
+     "$0.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 274,
+    "end_line": 282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 3. LEGAL PROCEEDINGS.\nAs of December 31, 2018, the Company was not subject to any legal proceedings.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nThe Company's Common Stock is traded on the OTCQB under the symbol \"EMPR\".\nThe following table sets forth the high and low bid information for the Company's common stock during the time periods indicated.\nYear ended December 31, 2017:",
+   "prose_after": "Year ended December 31, 2018:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter",
+     "High",
+     "Low"
+    ],
+    [
+     "03/31/18",
+     "$0.30",
+     "$0.10"
+    ],
+    [
+     "06/30/18",
+     "$0.25",
+     "$0.11"
+    ],
+    [
+     "09/30/18",
+     "$0.40",
+     "$0.13"
+    ],
+    [
+     "12/31/18",
+     "$0.25",
+     "$0.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 285,
+    "end_line": 293
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Year ended December 31, 2018:",
+   "prose_after": "Quotations reflect inter-dealer prices, without retail mark-up, markdown or commission and may not represent actual transactions.\nAt December 31, 2018, there were approximately 200 stockholders of record of the Company's Common Stock.\nDividends\nThe Company has never paid cash dividends on its Common Stock. The Company intends to retain future earnings for use in its business and, therefore, does not anticipate paying cash dividends on its Common Stock in the foreseeable future.\nITEM 6. SELECTED FINANCIAL DATA.\nNot applicable.\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.\nCautionary Note Regarding Forward-Looking Statements.\nAll statements, other than statements of historical fact, contained in this report are forward-looking statements. Forward-looking statements generally are accompanied by words such as \"anticipate,\" \"believe,\" \"estimate,\" \"expect,\" \"may,\" \"might,\" \"potential,\" \"project\" or similar statements.\nAlthough the Company believes that the expectations reflected in such forward-looking statements are reasonable, no assurance can be given that such expectations will prove to be correct. Factors that could cause results to differ materially from the results discussed in such forward-looking statements include:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Thomas Pritchard",
+     "57",
+     "Director and Chief Executive Officer"
+    ],
+    [
+     "Michael R. Morrisett",
+     "55",
+     "Director and President"
+    ],
+    [
+     "Anthony N. Kamin",
+     "58",
+     "Director and Chairman of the Board"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 602,
+    "end_line": 609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company's independent registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the Company's independent registered public accounting firm pursuant to rules of the SEC, which only require management's report in this annual report.\nChanges on Internal Control over Financial Reporting\nThere was no change in the Company's internal control over financial reporting identified in connection with the Company's evaluation of disclosure controls and procedures which occurred during the Company's last fiscal quarter (the fourth fiscal quarter in the case of an annual report) that has materially affected or that is reasonably likely to materially affect the Company's internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nThe following lists the directors and executive officers of the Company:",
+   "prose_after": "__________________________________\nDirectors hold office until their successors are elected by the stockholders of the Company and qualified. Executive officers serve at the pleasure of the Board of Directors.\nThomas Pritchard\nTommy Pritchard co-founded Pritchard Griffin Advisors (\"PGA\") in 2015 to serve the unique investment banking needs of the energy sector, including upstream, midstream, downstream and renewables. Prior to PGA, he formed Pritchard Energy Advisors, LLC in 2014. From 2012 to 2014, Mr. Pritchard served as Managing Director of the Energy Investment Banking division of Imperial Capital. Prior to this role, Mr. Pritchard served as CEO and Managing Director of Pritchard Capital Partners, which he founded in 2001 and later sold majority ownership in 2011. Over a period of ten years, Pritchard Capital Partners participated in raising over $15 billion in capital for firms in the oil and gas industry and provided trading and research services annually to over 150 energy companies. In 1997, Mr. Pritchard co-founded Offshore Tool and Energy, Inc., an oilfield services company that was sold in 2001. He began his professional career in 1984 with Drexel Burnham Lambert, and later held key roles at Bear Stearns, Jefferies and Johnson Rice. Mr. Pritchard earned his undergraduate degree in Geology from Washington and Lee University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of Late Reports",
+     "Number of Transactions Not\n\nReported on a Timely Basis",
+     "Number of Reports Not Filed"
+    ],
+    [
+     "Michael R. Morrisett",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "Puckett Land Company",
+     "2",
+     "4",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 643,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Securities Exchange Act of 1934, as amended, requires the Company's directors, executive officers, and persons who beneficially own more than 10 percent of a registered class of the Company's equity securities, to file with the SEC initial reports of ownership and reports of changes in ownership of Common Stock and other equity securities of the Company.\nOfficers, directors and greater than ten percent stockholders are required by SEC regulation to furnish the Company with copies of all Section 16(a) forms they file.\nBased solely on review of the copies of such reports furnished to the Company and any written representations that in other reports were required during the year ended December 31, 2018, to the Company's knowledge, all Section 16(a) filing requirements applicable to its officers, directors and greater than 10% beneficial owners during the year ended December 31, 2018 were complied with on a timely basis, except as follows:",
+   "prose_after": "ITEM 11. EXECUTIVE COMPENSATION.\nThe Board of Directors does not have a Compensation Committee.\nExecutive Compensation\nDuring 2017, the Company paid Mr. Morrisett $54,700 for services rendered. For the year ended December 31, 2018, the Company paid Mr. Morrisett $156,400 for services rendered. In addition, for the year ended December 31, 2017 but before his appointment as Chief Executive Officer, Mr. Pritchard's firm was paid $56,764 for professional services. For the years ended December 31, 2018 and 2017, the Company paid Mr. Pritchard $156,400 and $10,000 respectively, for services rendered as Chief Executive Officer. In November 2017, the Company issued warrants to management to purchase 1,000,000 shares of common stock of the Company; the warrants were valued at $117,900.\nDirector Compensation\nIn November 2017, the Company issued warrants to board members to purchase 3,500,000 shares of common stock of the Company; the warrants were valued at $354,800.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "(b)",
+     "(c)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Number of securities"
+    ],
+    [
+     "",
+     "",
+     "",
+     "remaining available"
+    ],
+    [
+     "",
+     "",
+     "",
+     "for future"
+    ],
+    [
+     "",
+     "Number of securities",
+     "",
+     "issuance under"
+    ],
+    [
+     "",
+     "to be issued upon",
+     "Weighted-average",
+     "equity compensation"
+    ],
+    [
+     "",
+     "exercise of",
+     "exercise price of",
+     "plans (excluding"
+    ],
+    [
+     "",
+     "outstanding options",
+     "outstanding options",
+     "securities reflected"
+    ],
+    [
+     "Plan Category",
+     "and rights",
+     "and rights",
+     "in column (a)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans",
+     "",
+     "",
+     ""
+    ],
+    [
+     "approved by security",
+     "",
+     "",
+     ""
+    ],
+    [
+     "holders",
+     "4,167",
+     "$3.12",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans",
+     "",
+     "",
+     ""
+    ],
+    [
+     "not approved by security",
+     "",
+     "",
+     ""
+    ],
+    [
+     "holders",
+     "N/A",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "4,167",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 676,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "In November 2017, the Company issued warrants to board members to purchase 3,500,000 shares of common stock of the Company; the warrants were valued at $354,800.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nSecurities Authorized for Issuance under Equity Compensation Plans\nAs of December 31, 2018, the Company had no equity incentive plans under which equity securities were authorized for issuance to the Company's directors, officers, employees and other persons who performed substantial services for or on behalf of the Company. At the Company's 2006 Annual Meeting of Stockholders, the stockholders approved the \"2006 Stock Incentive Plan\", which authorizes granting up to 5,000,000 options for up to 5,000,000 shares of the Company's Common Stock. The Plan terminated on June 5, 2016 at the end of its contractual life.\nThe following table provides certain information relating to the 1995 Stock Option Plan and the 2006 Stock Incentive Plan as of December 31, 2018, adjusted for the 2013 reverse stock split:",
+   "prose_after": "Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth information regarding the beneficial ownership of our Common Stock as of April 1, 2019 for:\n* each person who is known to own beneficially more than 5% of our outstanding Common Stock;\n* each of our executive officers and directors; and\n* all executive officers and directors as a group.\nThe percentage of beneficial ownership for the following table is based on 18,792,277 shares of Common Stock outstanding as of April 1, 2019.\nUnless otherwise indicated below, to the Company's knowledge, all persons and entities listed below have sole voting and investment power over their shares of Common Stock.\nSecurity Ownership of Certain Beneficial Owners",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount and nature of",
+     ""
+    ],
+    [
+     "Name and address of beneficial owner",
+     "beneficial ownership",
+     "Percent of class (1)"
+    ],
+    [
+     "J. C. Whorton, Jr.",
+     "1,673,128",
+     "8.90%"
+    ],
+    [
+     "6657 S. High Drive",
+     "",
+     ""
+    ],
+    [
+     "Morrison, CO 80465",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Puckett Land Company\n\n5460 S. Quebec St., Suite 250\n\nGreenwood Village, CO 80111",
+     "10,000,000 (2)",
+     "42.03%"
+    ],
+    [
+     "James Alan Schoonover\n\n1770 County Road H2\n\nWhite Bear Lake, Minnesota 55110",
+     "1,000,000 (3)",
+     "5.23%"
+    ]
+   ],
+   "caption_stack": [
+    "Amount and nature of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth information regarding the beneficial ownership of our Common Stock as of April 1, 2019 for:\n* each person who is known to own beneficially more than 5% of our outstanding Common Stock;\n* each of our executive officers and directors; and\n* all executive officers and directors as a group.\nThe percentage of beneficial ownership for the following table is based on 18,792,277 shares of Common Stock outstanding as of April 1, 2019.\nUnless otherwise indicated below, to the Company's knowledge, all persons and entities listed below have sole voting and investment power over their shares of Common Stock.\nSecurity Ownership of Certain Beneficial Owners",
+   "prose_after": "(1) The percentage ownership for each person is calculated in accordance with the rules of the SEC, which provide that any shares a person is deemed to beneficially own by virtue of having a right to acquire shares upon the conversion of options or other rights are considered outstanding solely for purposes of calculating such person's percentage ownership.\n(2) The total includes 5,000,000 shares of common stock issuable upon the exercise of warrants at $0.15 per share.\n(3) The total includes 333,333 shares of common stock issuable upon the exercise of warrants at $0.15 per share.\nSecurity Ownership of Management",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount and nature of",
+     ""
+    ],
+    [
+     "Name and address of beneficial owner",
+     "beneficial ownership",
+     "Percent of class (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael R. Morrisett",
+     "2,193,128 (2)",
+     "11.37%"
+    ],
+    [
+     "Director and President",
+     "",
+     ""
+    ],
+    [
+     "1203 E. 33rd Street, Suite 250",
+     "",
+     ""
+    ],
+    [
+     "Tulsa, Oklahoma 74105",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony Kamin",
+     "4,664,304 (3)",
+     "20.72%"
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ],
+    [
+     "1203 E. 33rd Street, Suite 250",
+     "",
+     ""
+    ],
+    [
+     "Tulsa, Oklahoma 74105",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas Pritchard\n\nDirector and Chief Executive Officer",
+     "500,000 (4)",
+     "2.59%"
+    ],
+    [
+     "1203 E. 33rd Street, Suite 250",
+     "",
+     ""
+    ],
+    [
+     "Tulsa, Oklahoma 74105",
+     "",
+     ""
+    ],
+    [
+     "All current directors and executive officers as a group (3 persons)",
+     "7,357,432 (5)",
+     "31.29%"
+    ]
+   ],
+   "caption_stack": [
+    "Amount and nature of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 746,
+    "end_line": 768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) The percentage ownership for each person is calculated in accordance with the rules of the SEC, which provide that any shares a person is deemed to beneficially own by virtue of having a right to acquire shares upon the conversion of options or other rights are considered outstanding solely for purposes of calculating such person's percentage ownership.\n(2) The total includes 5,000,000 shares of common stock issuable upon the exercise of warrants at $0.15 per share.\n(3) The total includes 333,333 shares of common stock issuable upon the exercise of warrants at $0.15 per share.\nSecurity Ownership of Management",
+   "prose_after": "(1) The percentage ownership for each person is calculated in accordance with the rules of the SEC, which provide that any shares a person is deemed to beneficially own by virtue of having a right to acquire shares upon the conversion of options or other rights are considered outstanding solely for purposes of calculating such person's percentage ownership.\n(2) The total includes 500,000 shares of common stock issuable upon the exercise of a warrant at an exercise price of $0.25 per share.\n(3) The total includes 823,333 shares of common stock issuable upon the exercise of a warrant at $0.15 per share and 2,500,000 shares of common stock issuable upon the exercise of a warrant at an exercise price of $0.25 per share. The total also includes a convertible note in the amount of $40,000 which is convertible at $0.10 per share.\n(4) The total includes 500,000 shares of common stock issuable upon the exercise of a warrant at $0.25 per share.\n(5) The total includes 3,323,333 shares of common stock issuable upon the exercise of warrants and 400,000 shares issuable upon conversion of a convertible note.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "Fiscal 2018 Fees",
+     "Fiscal 2017 Fees"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$62,500",
+     "$32,250"
+    ],
+    [
+     "Audit - Related Fees (2)",
+     "44,000",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "0",
+     "0"
+    ],
+    [
+     "All Other Fees (3)",
+     "0",
+     "0"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Fees",
+     "$106,500",
+     "$32,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 790,
+    "end_line": 801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "(4) The total includes 500,000 shares of common stock issuable upon the exercise of a warrant at $0.25 per share.\n(5) The total includes 3,323,333 shares of common stock issuable upon the exercise of warrants and 400,000 shares issuable upon conversion of a convertible note.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE.\nDirector Independence\nBecause of the small size of the Company's Board of Directors, the Company has not established any committees. Rather, the entire Board acts as, and performs the same functions as, the audit committee, compensation committee and nominating committee, as necessary. Mr. Morrisett is not considered \"independent\" within the meaning of Rule 5605(a)(2) of the NASDAQ listing standards.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe following is a summary of the fees billed or to be billed to the Company by HoganTaylor LLP, the Company's independent registered public accounting firm, for professional services rendered for the fiscal years ended December 31, 2018 and December 31, 2017:",
+   "prose_after": "(1) Audit Fees consist of aggregate fees billed for professional services rendered for the audit of the Company's annual financial statements and review of the interim financial statements included in quarterly reports or services that are normally provided by the independent registered public accounting firm in connection with statutory and regulatory filings or engagements for the years ended December 31, 2018 and December 31, 2017, respectively.\n(2) Audit-Related fees consist of aggregate fees billed for assurance and related services that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \"Audit Fees.\"\n(3) All Other Fees consist of aggregate fees billed for products and services provided by HoganTaylor LLP, other than those disclosed above.\nThe entire Board of Directors of the Company is responsible for the appointment, compensation and oversight of the work of the independent registered public accounting firm and approves in advance any services to be performed by the independent registered public accounting firm, whether audit-related or not. The entire Board of Directors reviews each proposed engagement to determine whether the provision of services is compatible with maintaining the independence of the independent registered public accounting firm. All of the fees shown above were pre-approved by the entire Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Purchase and Sale Agreement dated as of July 12, 2018, by and between Exodus Energy, Inc. and Empire Louisiana LLC (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated July 13, 2018 filed on July 19, 2018)."
+    ],
+    [
+     "2.2",
+     "Purchase and Sale Agreement dated as of July 23, 2018, by and between Cardinal Exploration and Production Company and Empire Louisiana LLC (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated July 23, 2018 filed on July 25, 2018)."
+    ],
+    [
+     "2.3",
+     "Assignment, Bill of Sale and Conveyance by and between Empire Louisiana LLC and Riviera Upstream, LLC dated October 25, 2018 (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated October 29, 2018 filed on November 2, 2018)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of the Company, as amended (incorporated herein by reference to Exhibit 3.1 of the Company's Form 10-QSB for the period ended September 30, 1995, which was filed November 6, 1995)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Certificate of Incorporation (incorporated herein by reference to Exhibit 3.1 to the Company's Form 8-K dated May 31, 2012, which was filed on June 1, 2012)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Bylaws of the Company (incorporated herein by reference to Exhibit 3.2 of the Company's Form 10-QSB for the period ended March 31, 1998, which was filed May 15, 1998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Securities Purchase Agreement dated as of August 28, 2018 by and between Empire Petroleum Corporation and Puckett Land Company (incorporated herein by reference to Exhibit 10.1 of the Company's Form 8-K dated August 28, 2018 filed on September 4, 2018)."
+    ],
+    [
+     "4.2",
+     "Common Share Warrant Certificate dated as of August 28, 2018 issued by Empire Petroleum Corporation (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated August 28, 2018 filed on September 4, 2018)."
+    ],
+    [
+     "4.3",
+     "Form of Securities Purchase Agreement entered into between Empire Petroleum Corporation and six accredited investors (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "4.4",
+     "Form of Common Share Warrant Certificate entered into by and between Empire Petroleum Corporation and six accredited investors (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "10.1",
+     "1995 Stock Option Plan (incorporated herein by reference to Appendix A of the Company's Form DEFS 14A dated June 13, 1995, which was filed June 14, 1995)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Stock Option Agreement (incorporated herein by reference to Exhibit 10(g) of the Company's Form 10-KSB for the year ended December 31, 1995, which was filed March 29, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "2006 Stock Incentive Plan (incorporated herein by reference to Exhibit A to the Company's 2006 Proxy Statement on Schedule 14A dated May 10, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Form of Non-qualified Stock Option Agreement (incorporated herein by reference to Exhibit 10.2 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Non-qualified Stock Option Agreement for Non-employee Directors (incorporated herein by reference to Exhibit 10.3 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Restricted Stock Award Agreement (incorporated herein by reference to Exhibit 10.4 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "10.7",
+     "Senior Revolver Loan Agreement dated as of September 20, 2018 by and between Empire Louisiana, LLC and CrossFirst Bank (incorporated herein by reference to Exhibit 10.1 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a \u2013 14(a)/15d \u2013 14(a) Certification of Thomas Pritchard, Chief Executive Officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a \u2013 14(a)/15d \u2013 14(a) Certification of Michael R. Morrisett, principal financial officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certification of Thomas Pritchard, Chief Executive Officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Section 1350 Certification of Michael R. Morrisett, principal financial officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "Financial Statements for XBRL format (submitted herewith)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Audit-Related fees consist of aggregate fees billed for assurance and related services that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \"Audit Fees.\"\n(3) All Other Fees consist of aggregate fees billed for products and services provided by HoganTaylor LLP, other than those disclosed above.\nThe entire Board of Directors of the Company is responsible for the appointment, compensation and oversight of the work of the independent registered public accounting firm and approves in advance any services to be performed by the independent registered public accounting firm, whether audit-related or not. The entire Board of Directors reviews each proposed engagement to determine whether the provision of services is compatible with maintaining the independence of the independent registered public accounting firm. All of the fees shown above were pre-approved by the entire Board of Directors.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\n(a) (1) Financial Statements\nThe financial statements under this item are included in Item 8 of Part II.\n(2) Schedules\nNONE\n(3) Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Empire Petroleum Corporation",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 1, 2019",
+     "By:",
+     "/s/ Michael R. Morrisett",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name: Michael R. Morrisett",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Title: President",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Empire Petroleum Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 885,
+    "end_line": 893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Thomas Pritchard",
+     "Director and Chief Executive Officer",
+     "April 1, 2019"
+    ],
+    [
+     "THOMAS PRITCHARD",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael R. Morrisett",
+     "Director and President",
+     "April 1, 2019"
+    ],
+    [
+     "MICHAEL R. MORRISETT",
+     "(principal financial officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Anthony J. Kamin",
+     "Director",
+     "April 1, 2019"
+    ],
+    [
+     "ANTHONY J. KAMIN",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Purchase and Sale Agreement dated as of July 12, 2018, by and between Exodus Energy, Inc. and Empire Louisiana LLC (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated July 13, 2018 filed on July 19, 2018)."
+    ],
+    [
+     "2.2",
+     "Purchase and Sale Agreement dated as of July 23, 2018, by and between Cardinal Exploration and Production Company and Empire Louisiana LLC (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated July 23, 2018 filed on July 25, 2018)."
+    ],
+    [
+     "2.3",
+     "Assignment, Bill of Sale and Conveyance by and between Empire Louisiana LLC and Riviera Upstream, LLC dated October 25, 2018 (incorporated herein by reference to Exhibit 2.1 of the Company's Form 8-K dated October 29, 2018 filed on November 2, 2018)."
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of the Company, as amended (incorporated herein by reference to Exhibit 3.1 of the Company's Form 10-QSB for the period ended September 30, 1995, which was filed November 6, 1995)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Certificate of Incorporation (incorporated herein by reference to Exhibit 3.1 to the Company's Form 8-K dated May 31, 2012, which was filed on June 1, 2012)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Bylaws of the Company (incorporated herein by reference to Exhibit 3.2 of the Company's Form 10-QSB for the period ended March 31, 1998, which was filed May 15, 1998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Securities Purchase Agreement dated as of August 28, 2018 by and between Empire Petroleum Corporation and Puckett Land Company (incorporated herein by reference to Exhibit 10.1 of the Company's Form 8-K dated August 28, 2018 filed on September 4, 2018)."
+    ],
+    [
+     "4.2",
+     "Common Share Warrant Certificate dated as of August 28, 2018 issued by Empire Petroleum Corporation (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated August 28, 2018 filed on September 4, 2018)."
+    ],
+    [
+     "4.3",
+     "Form of Securities Purchase Agreement entered into between Empire Petroleum Corporation and six accredited investors (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "4.4",
+     "Form of Common Share Warrant Certificate entered into by and between Empire Petroleum Corporation and six accredited investors (incorporated herein by reference to Exhibit 10.2 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "10.1",
+     "1995 Stock Option Plan (incorporated herein by reference to Appendix A of the Company's Form DEFS 14A dated June 13, 1995, which was filed June 14, 1995)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Stock Option Agreement (incorporated herein by reference to Exhibit 10(g) of the Company's Form 10-KSB for the year ended December 31, 1995, which was filed March 29, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "2006 Stock Incentive Plan (incorporated herein by reference to Exhibit A to the Company's 2006 Proxy Statement on Schedule 14A dated May 10, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Form of Non-qualified Stock Option Agreement (incorporated herein by reference to Exhibit 10.2 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Non-qualified Stock Option Agreement for Non-employee Directors (incorporated herein by reference to Exhibit 10.3 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Restricted Stock Award Agreement (incorporated herein by reference to Exhibit 10.4 to the Company's Form 8-K dated June 5, 2006, which was filed on June 9, 2006)."
+    ],
+    [
+     "10.7",
+     "Senior Revolver Loan Agreement dated as of September 20, 2018 by and between Empire Louisiana, LLC and CrossFirst Bank (incorporated herein by reference to Exhibit 10.1 of the Company's Form 8-K dated September 20, 2018 filed on September 25, 2018)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Rule 13a \u2013 14(a)/15d \u2013 14(a) Certification of Thomas Pritchard, Chief Executive Officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Rule 13a \u2013 14(a)/15d \u2013 14(a) Certification of Michael R. Morrisett, principal financial officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 1350 Certification of Thomas Pritchard, Chief Executive Officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Section 1350 Certification of Michael R. Morrisett, principal financial officer (submitted herewith)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "Financial Statements for XBRL format (submitted herewith)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 916,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "CONSOLIDATED FINANCIAL STATEMENTS\nCONTENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 970,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2018 and 2017",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2018 and 2017",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders' Equity (Deficit) for the years ended December 31, 2018 and 2017",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2018 and 2017",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 978,
+    "end_line": 994
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED FINANCIAL STATEMENTS\nCONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Empire Petroleum Corporation and subsidiary (the Company) as of December 31, 2018 and 2017, and the related consolidated statements of operations, changes in stockholders' equity (deficit) and cash flows for the years then ended, and the related notes to the consolidated financial statements (collectively, the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2018 and 2017, and the results of their operations and their cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company has incurred significant losses since inception. The Company's ability to continue as a going concern is dependent upon the existence, discovery, and development of economically recoverable oil and gas reserves and is dependent upon the Company obtaining necessary financing to carry out its exploration and development program. This raises substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters also are described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "84,631",
+     "",
+     "$",
+     "77,780",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "124,577",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Unrealized gain on derivative instruments",
+     "",
+     "113,081",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaids",
+     "",
+     "45,214",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "367,503",
+     "",
+     "",
+     "77,780",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and natural gas properties, successful efforts",
+     "",
+     "1,645,297",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and depletion",
+     "",
+     "(15,527)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,629,770",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Investment in Masterson West II",
+     "",
+     "0",
+     "",
+     "",
+     "300,000",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,997,273",
+     "",
+     "$",
+     "377,780",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "320,749",
+     "",
+     "$",
+     "64,964",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "141,033",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Current portion of long term notes payable",
+     "",
+     "279,204",
+     "",
+     "",
+     "137,256",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "740,986",
+     "",
+     "",
+     "202,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term notes payable",
+     "",
+     "1,175,820",
+     "",
+     "",
+     "47,366",
+     ""
+    ],
+    [
+     "Asset retirement obligations",
+     "",
+     "230,650",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "2,147,456",
+     "",
+     "",
+     "249,586",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock - $.001 par value 150,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17,345,609 and 8,803,942 shares issued and outstanding, respectively",
+     "",
+     "17,345",
+     "",
+     "",
+     "8,803",
+     ""
+    ],
+    [
+     "Common stock subscribed not yet issued (0 and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3,225,000 shares at December 31, 2018 and 2017, respectively)",
+     "",
+     "0",
+     "",
+     "",
+     "3,225",
+     ""
+    ],
+    [
+     "Stock subscription receivable",
+     "",
+     "0",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "16,960,818",
+     "",
+     "",
+     "16,232,381",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(17,128,346)",
+     "",
+     "",
+     "(16,111,215)",
+     ""
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "",
+     "(150,183)",
+     "",
+     "",
+     "128,194",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity (deficit)",
+     "$",
+     "1,997,273",
+     "",
+     "$",
+     "377,780",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ HoganTaylor LLP\nWe have served as the Company's auditor since 2003.\nTulsa, Oklahoma\nApril 1, 2019\nCONSOLIDATED BALANCE SHEETS\nDECEMBER 31, 2018 AND 2017",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1083,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": null,
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas sales",
+     "$",
+     "352,374",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Unrealized gain on derivatives",
+     "",
+     "113,081",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "",
+     "465,455",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating",
+     "",
+     "116,288",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Taxes \u2013 production",
+     "",
+     "21,194",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "",
+     "15,527",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Accretion of asset retirement obligation",
+     "",
+     "1,929",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,226,465",
+     "",
+     "",
+     "757,069",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,381,403",
+     "",
+     "",
+     "757,069",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(915,948)",
+     "",
+     "",
+     "(757,069)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income and (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(101,183)",
+     "",
+     "",
+     "(72,998)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,017,131)",
+     "",
+     "$",
+     "(830,067)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "share, basic and diluted",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "Weighted average number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and diluted",
+     "",
+     "13,150,325",
+     "",
+     "",
+     "10,859,070",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1091,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "See accompanying notes to consolidated financial statement\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1129,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Common Stock\n\nSubscribed, not\n\nyet issued",
+     "",
+     "Stock Subscription Receivable",
+     "",
+     "",
+     "Additional Paid in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances December 31, 2016",
+     "",
+     "8,710,609",
+     "",
+     "8,710",
+     "",
+     "2,000",
+     "",
+     "0",
+     "",
+     "",
+     "15,571,819",
+     "",
+     "(15,281,148)",
+     "",
+     "",
+     "301,381",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(830,067)",
+     "",
+     "",
+     "(830,067)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares, options, warrants and conversion features issued",
+     "",
+     "93,333",
+     "",
+     "93",
+     "",
+     "1,225",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "660,562",
+     "",
+     "0",
+     "",
+     "",
+     "656,880",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances December 31, 2017",
+     "",
+     "8,803,942",
+     "$",
+     "8,803",
+     "$",
+     "3,225",
+     "$",
+     "(5,000)",
+     "",
+     "$",
+     "16,232,381",
+     "$",
+     "(16,111,215)",
+     "",
+     "$",
+     "128,194",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statement\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY (DEFICIT)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,017,131)",
+     "",
+     "",
+     "(1,017,131)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Termination of Masterson West",
+     "",
+     "",
+     "",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "",
+     "",
+     "(298,000)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(300,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares, options, and warrants issued",
+     "8,541,667",
+     "",
+     "8,542",
+     "",
+     "(1,225)",
+     "",
+     "",
+     "5,000",
+     "",
+     "1,026,437",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "1,038,754",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances December 31, 2017",
+     "17,345,609",
+     "$",
+     "17,345",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "$",
+     "16,960,818",
+     "",
+     "$",
+     "(17,128,346)",
+     "",
+     "$",
+     "(150,183)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1168
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": null,
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,017,131)",
+     "",
+     "$",
+     "(830,067)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of options and warrants granted",
+     "",
+     "251,255",
+     "",
+     "",
+     "472,700",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "",
+     "15,527",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Amortization of warrant value and conversion feature on convertible notes",
+     "",
+     "69,580",
+     "",
+     "",
+     "60,064",
+     ""
+    ],
+    [
+     "Unrealized gain on derivatives",
+     "",
+     "(113,081)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Accretion of asset retirement obligation",
+     "",
+     "1,929",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(124,577)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Prepaids",
+     "",
+     "(45,214)",
+     "",
+     "",
+     "14,000",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "255,785",
+     "",
+     "",
+     "47,340",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "141,033",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(564,894)",
+     "",
+     "",
+     "(235,963)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in oil and gas properties",
+     "",
+     "(916,575)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from long term debt",
+     "",
+     "1,200,820",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Proceeds from convertible notes issued",
+     "",
+     "0",
+     "",
+     "",
+     "127,500",
+     ""
+    ],
+    [
+     "Proceeds from stock issuance",
+     "",
+     "287,500",
+     "",
+     "",
+     "117,500",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,488,320",
+     "",
+     "",
+     "245,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "6,851",
+     "",
+     "",
+     "9,037",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Beginning of year",
+     "",
+     "77,780",
+     "",
+     "",
+     "68,743",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - End of year",
+     "$",
+     "84,631",
+     "",
+     "$",
+     "77,780",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "12,703",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock subscribed in exchange for investment",
+     "$",
+     "0",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Common stock options issued for outstanding payables",
+     "$",
+     "0",
+     "",
+     "$",
+     "4,894",
+     ""
+    ],
+    [
+     "Common stock issued for acquisition of property assets",
+     "$",
+     "500,000",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Termination of Masterson West II transaction",
+     "$",
+     "300,000",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Noncash additions to asset retirement obligations",
+     "$",
+     "228,721",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1177,
+    "end_line": 1236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2018 and 2017\nGeneral:\nOn July 20, 2001, Americomm Resources Corporation merged with its wholly-owned subsidiary, Empire Petroleum Corporation, and simultaneously changed the name of the corporation to Empire Petroleum Corporation . Both the merger and name change were effective as of August 15, 2001. Americomm Resources Corporation was originally incorporated in the State of Utah on the 22nd day of August 1983, as Chambers Energy Corporation. On the 7th day of March 1985, the state of incorporation was changed to Delaware by means of a merger with Americomm Corporation, a Delaware corporation formed for the purpose of effecting the said change. In July 1995, its name was changed to Americomm Resources Corporation. Empire Petroleum Corporation has two wholly owned subsidiaries, Empire Louisiana, LLC and Empire North Dakota, LLC. Empire Petroleum Corporation and subsidiaries (\"Empire\" or the \"Company\"). consolidate the financial statements of these entities and material intercompany balances and transactions have been eliminated. Empire North Dakota was formed in late 2018 and had no assets, liabilities or activity as of December 31, 2018.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "REPEATING_HEADER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1237,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": null,
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved producing wells",
+     "$",
+     "584,461",
+     ""
+    ],
+    [
+     "Proved undeveloped",
+     "",
+     "547,882",
+     ""
+    ],
+    [
+     "Lease and well equipment",
+     "",
+     "284,233",
+     ""
+    ],
+    [
+     "Asset retirement obligation",
+     "",
+     "228,721",
+     ""
+    ],
+    [
+     "Gross capitalized costs",
+     "",
+     "1,645,297",
+     ""
+    ],
+    [
+     "Depreciation, Depletion and Amortization",
+     "",
+     "(15,527)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net capitalized costs",
+     "$",
+     "1,629,770",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1332,
+    "end_line": 1348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "In November 2018, the FASB issued ASU No. 2018-18, \"Collaborative Arrangements (Topic 808): Clarifying the Interaction between Topic 808 and Topic 606,\" (\"ASU 2018-18\") which, among other things, clarifies that (i) certain transactions between collaborative arrangement participants should be accounted for as revenue under Topic 606 when the collaborative arrangement participant is a customer in the context of a unit of account, (ii) adds unit-of-account guidance in Topic 808 to align with the guidance in Topic 606 and (iii) requires that in a transaction with a collaborative arrangement participant that is not directly related to sales to third parties, presenting the transaction together with revenue recognized under Topic 606 is precluded if the collaborative arrangement participant is not a customer. ASU 2018-18 is effective for fiscal years beginning after December 15, 2019, and interim periods within those fiscal years and early adoption is permitted. The amendments in this update should be applied retrospectively to the date of initial application of Topic 606. An entity should recognize the cumulative effect of initially applying the amendments as an adjustment to the opening balance of retained earnings of the later of the earliest annual period presented and the annual period that includes the date of the entity's initial application of Topic 606. The Company is currently assessing the effect that ASU 2018-18 will have on its financial position, results of operations and disclosures. Management has reviewed the new standard in conjunction with its current practices and believes that it will not have a material impact on the financial statements.\n3. Property:\nIn 2018, the Company, through its subsidiary, Empire Louisiana, LLC, purchased oil and natural gas properties in St. Landry and Beauregard parishes in Louisiana (see Footnote 5).\nThe aggregate capitalized costs of oil and natural gas properties as of December 31, 2018 are as follows:",
+   "prose_after": "4. Investment in Masterson West II, LLC\nOn December 22, 2016, the Company entered into a subscription and contribution agreement with Masterson West, LLC (\"Masterson West\") (the \"Contribution Agreement\") relating to the newly formed Masterson West II, LLC, a Texas limited liability company (\"Masterson West II\"). Pursuant to the Contribution Agreement, among other things, (a) at the initial closing, the Company agreed to contribute 2,000,000 shares of its common stock, par value $0.001 per share (the \"Common Stock\"), to Masterson West II, along with an additional 38,000,000 shares of Common Stock and (b) at the final closing, Masterson West had an obligation to contribute certain oil and gas properties (the \"Contributed Properties\") to Masterson West II in exchange for the Company contributing cash of not less than $9,000,000 and up to $18,000,000 to Masterson West II. The final closing was scheduled to occur no later than April 1, 2017. Also on December 22, 2016, the Company entered into a limited liability agreement of Masterson West II with Masterson West (the \"LLC Agreement\"). On February 18, 2017, Gary C. Adams, the majority owner of Masterson West unexpectedly passed away. As a result of this development, the transactions were not consummated. On December 1, 2018, the Company and Masterson West agreed to terminate and unwind the Contribution Agreement in a manner as if the parties had never entered into the Contribution Agreement. As a result of the Termination Agreement, in 2018 the Company has reversed its $300,000 investment in Masterson West II and the related common stock subscription and paid in capital.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Cardinal",
+     "",
+     "Exodus",
+     "",
+     "Riviera",
+     ""
+    ],
+    [
+     "Fair Value of Assets Acquired",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "57,061",
+     "",
+     "143,807",
+     "",
+     "50,335"
+    ],
+    [
+     "Oil and natural gas properties",
+     "(a)",
+     "",
+     "377,747",
+     "",
+     "1,059,296",
+     "",
+     "208,254"
+    ],
+    [
+     "Total Assets Acquired",
+     "",
+     "$",
+     "434,808",
+     "",
+     "1,203,103",
+     "",
+     "258,589"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value of liabilities Assumed",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 trade",
+     "",
+     "",
+     "28,026",
+     "",
+     "134,104",
+     "",
+     "8,607"
+    ],
+    [
+     "Asset retirement obligations",
+     "",
+     "",
+     "83,782",
+     "",
+     "99,957",
+     "",
+     "44,982"
+    ],
+    [
+     "Total Liabilities Assumed",
+     "",
+     "$",
+     "111,808",
+     "",
+     "234,061",
+     "",
+     "53,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1401
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisitions of oil and gas properties"
+    }
+   },
+   "prose_before": "The oil and gas properties include 1,500 gross developed and undeveloped acres and eight wells currently producing approximately 135 barrels of oil equivalent (BOE) per day. The Company's working interests in the wells range from 50% to 90%.\nRiviera Upstream Acquisition\nOn October 29, 2018, the Company purchased oil and natural gas properties from Riviera Upstream, LLC formerly known as Linn Energy Holdings, LLC (\"Riviera\") for a purchase price of $205,000. Post close adjustments reduced the total purchase price to $163,273. The effective date of the transaction was October 1, 2018.\nThe oil and gas properties purchased included non-operated working interest in four producing wells and two salt water disposal wells in which the Company already owned and operated interest.\nBOE Per Day\nAll of the Company's producing properties are located in Louisiana and, as of December 31, 2018, such properties were producing approximately 100 net barrels of oil equivalent (BOE) per day.\nThe following table sets forth the Company's preliminary purchase price allocations:",
+   "prose_after": "(a) The Cardinal acquisition was of oil producing properties only.\nThe fair values of assets acquired and liabilities assumed were based on the following key inputs:\nOil and natural gas properties\nThe fair value of proved oil and natural gas properties was measured using valuation techniques that convert the future cash flows to a single discounted amount. Significant inputs to the valuation of proved oil and natural gas properties include estimates of: (i) recoverable reserves; (ii) production rates; (iii) future operating and development costs; (iv) future commodity prices; and (v) a market-based weighted average costs of capital. The Company utilized a combination of the New York Mercantile Exchange (\"NYMEX\") strip pricing and consensus pricing to value the reserves, then applied various discount rates depending on the classification of reserves and other risk characteristics. Management utilized the assistance of a third-party valuation expert to estimate the value of the oil and natural gas properties acquired.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1403,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas sales",
+     "$",
+     "952,121",
+     "",
+     "$",
+     "1,059,992",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(899,100)",
+     "",
+     "",
+     "(789,852)",
+     ""
+    ],
+    [
+     "Earnings per share, basic and diluted",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.05)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1423,
+    "end_line": 1434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisitions of oil and gas properties"
+    }
+   },
+   "prose_before": "The unaudited financial information in the table below summarizes the combined results of operations of the Company, the Exodus assets acquired, the Cardinal assets acquired, and the Riviera assets acquired for the years ended December 31, 2018 and 2017 on a pro forma basis, as though the companies had been combined as of January 1, 2017. The unaudited pro forma earnings for the years ending December 31, 2018 and 2017 were adjusted to include $19,300 and $34,803 of depreciation, depletion, and amortization, respectively. Incremental interest expense of $29,498 and $58,997 was included for the years ended December 31, 2018 and 2017, respectively, as if the Senior Revolver Loan Agreement used to help fund the acquisition had been entered into on January 1, 2017. Earnings per share were adjusted to include the additional 1,978,810 shares of the Company's common stock issued to help fund the acquisitions as if those shares had been issued on January 1, 2017. The unaudited pro forma information is provided for informational purposes only and does not purport to be indicative of the Company's combined results of operations which would actually have been obtained had the acquisitions taken place on January 1, 2017, nor should it be taken as indicative of the Company's future consolidated results of operations.",
+   "prose_after": "6. Asset retirement obligations\nThe Company's asset retirement obligations represent the estimated present value of the estimated cash flows the Company will incur to plug, abandon and remediate its producing properties at the end of their productive lives, in accordance with applicable state laws. Market risk premiums associated with asset retirement obligations are estimated to represent a component of the Company's credit-adjusted risk-free rate that is utilized in the calculations of asset retirement obligations.\nThe Company's asset retirement obligation transactions during the years ended December 31, 2018 are summarized in the table below. There were no asset retirement obligations in 2017.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1403,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended December 31, 2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligations, beginning of period",
+     "$",
+     "0"
+    ],
+    [
+     "Liabilities assumed in acquisitions",
+     "",
+     "228,721"
+    ],
+    [
+     "Accretion expense",
+     "",
+     "1,929"
+    ],
+    [
+     "Asset retirement obligation, end of period",
+     "$",
+     "230,650"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1442,
+    "end_line": 1453
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Asset retirement obligations"
+    }
+   },
+   "prose_before": "6. Asset retirement obligations\nThe Company's asset retirement obligations represent the estimated present value of the estimated cash flows the Company will incur to plug, abandon and remediate its producing properties at the end of their productive lives, in accordance with applicable state laws. Market risk premiums associated with asset retirement obligations are estimated to represent a component of the Company's credit-adjusted risk-free rate that is utilized in the calculations of asset retirement obligations.\nThe Company's asset retirement obligation transactions during the years ended December 31, 2018 are summarized in the table below. There were no asset retirement obligations in 2017.",
+   "prose_after": "7. Derivative Financial Instruments\nThe Company uses derivative financial instruments to manage its exposure to commodity price fluctuations. Commodity derivative instruments are used to reduce the effect of volatility of price changes on the oil and gas the Company produces and sells. The Company's derivative financial instruments consist of oil and natural gas swaps.\nThe Company does not enter into derivative financial instruments for speculative or trading purposes.\nThe Company does not designate its derivative instruments to qualify for hedge accounting. Accordingly, the Company reflects changes in the fair value of its derivative instruments in its consolidated statements of operations as they occur. Unrealized gains and losses related to the swap contracts are recognized and recorded as an asset or liability on the Company's balance sheet.\nThe following table summarized the amounts reported in earnings, as a component of operating expenses, related to the commodity derivative instruments for the years ended December 31, 2018 and 2017:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Gain (loss) on derivatives:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil derivatives",
+     "",
+     "125,902",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Natural gas derivatives",
+     "",
+     "(8,105)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "117,797",
+     "",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1464,
+    "end_line": 1477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Derivative Financial Instruments"
+    }
+   },
+   "prose_before": "The Company uses derivative financial instruments to manage its exposure to commodity price fluctuations. Commodity derivative instruments are used to reduce the effect of volatility of price changes on the oil and gas the Company produces and sells. The Company's derivative financial instruments consist of oil and natural gas swaps.\nThe Company does not enter into derivative financial instruments for speculative or trading purposes.\nThe Company does not designate its derivative instruments to qualify for hedge accounting. Accordingly, the Company reflects changes in the fair value of its derivative instruments in its consolidated statements of operations as they occur. Unrealized gains and losses related to the swap contracts are recognized and recorded as an asset or liability on the Company's balance sheet.\nThe following table summarized the amounts reported in earnings, as a component of operating expenses, related to the commodity derivative instruments for the years ended December 31, 2018 and 2017:",
+   "prose_after": "The following represents the Company's net cash receipts from (payments on) derivatives for the years ended December 31, 2018 and 2017:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Net cash receipts from (payments on) derivatives:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil derivatives",
+     "",
+     "16,629",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Natural gas derivatives",
+     "",
+     "(11,913)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "4,716",
+     "",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1480,
+    "end_line": 1493
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Derivative Financial Instruments"
+    }
+   },
+   "prose_before": "The following represents the Company's net cash receipts from (payments on) derivatives for the years ended December 31, 2018 and 2017:",
+   "prose_after": "The following table sets forth the Company's outstanding derivative contracts at December 31, 2018. All of the Company's derivatives are expected to settle by October 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "First quarter",
+     "",
+     "Second quarter",
+     "",
+     "Third quarter",
+     "",
+     "Fourth quarter",
+     ""
+    ],
+    [
+     "Oil Swaps:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Volume (Bbl)",
+     "",
+     "1,767",
+     "",
+     "1,767",
+     "",
+     "1,767",
+     "",
+     "589"
+    ],
+    [
+     "Price per Bbl",
+     "$",
+     "65.85",
+     "$",
+     "65.85",
+     "$",
+     "65.85",
+     "$",
+     "65.85"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural Gas Swaps:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Volume (Bbl)",
+     "",
+     "1,138",
+     "",
+     "1,138",
+     "",
+     "1,138",
+     "",
+     "\u2014"
+    ],
+    [
+     "Price per Bbl",
+     "$",
+     "2.875",
+     "$",
+     "2.875",
+     "$",
+     "2.875",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1496,
+    "end_line": 1508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Derivative Financial Instruments"
+    }
+   },
+   "prose_before": "The following table sets forth the Company's outstanding derivative contracts at December 31, 2018. All of the Company's derivatives are expected to settle by October 31, 2019:",
+   "prose_after": "8. Notes Payable\nIn July and August, 2018, the Company entered into two unsecured note agreements totaling $25,000 with Mr. Anthony Kamin, who is also a member of the Company's Board of Directors. The notes are payable on demand and accrue interest at 8% interest. Both notes are outstanding at December 31, 2018.\nOn September 20, 2018 the Company entered into a Senior Revolver Loan Agreement (\"the Agreement\") with CrossFirst Bank (\"CrossFirst\"). The initial revolver commitment amount is $1,350,000 and the maximum amount that can be advanced under the Agreement is $5,000,000 and includes interest at Wall Street Journal Prime plus 150 basis points (7% as of December 31, 2018). The Agreement matures on September 20, 2020. Collateral for the loan is a lien on all of the assets of the Company's wholly owned subsidiary, Empire Louisiana, and a first priority mortgage lien, pledge of and security interest in not less than 80% of Empire Louisiana's producing oil, gas and other leasehold and mineral interests in Louisiana. The Agreement requires Empire Louisiana, beginning December 31, 2018 to maintain certain covenants including an EBITDAX to interest expense of at least 3:1 and funded debt to EBITDAX of 4:1 on a trailing twelve month basis. As of December 31, 2018, the Company has $1,175,820 outstanding under the Agreement (See Note 17). The Company was not in compliance with certain financial covenants at December 31, 2018. As a part of the First Amendment to the Agreement in conjunction with the Energy Quest II, LLC acquisition (Note 17), the covenants were modified on a retrospective basis.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1434,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1508,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Current",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Notes Outstanding",
+     "$",
+     "260,000",
+     "",
+     "$",
+     "260,000",
+     "",
+     "$",
+     "260,000",
+     ""
+    ],
+    [
+     "Debt Issue Costs \u2013 Warrants and Conversion Feature",
+     "",
+     "(5,796)",
+     "",
+     "",
+     "(5,796)",
+     "",
+     "",
+     "(75,378)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Notes Outstanding, Net",
+     "$",
+     "254,204",
+     "",
+     "$",
+     "254,204",
+     "",
+     "$",
+     "184,622",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1533,
+    "end_line": 1545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Senior Unsecured Convertible Promissory Notes"
+    }
+   },
+   "prose_before": "On December 31, 2018 the Company and investors for all of the Senior Unsecured Convertible Promissory Notes entered into amended agreements whereby the maturity dates for the notes maturing December 31, 2018 were extended to December 31, 2019, the conversion feature of the notes was modified from $0.15 per share of common stock to $0.10 per share. Additionally, the Warrant Certificates to purchase shares of common stock of the Company, which were issued as a part of the original agreements, were repriced from $0.25 per share to $0.15 per share. The value allocated to the Warrant Certificates modification was the fair value determined using the Black-Scholes option valuation with the following assumptions: no dividend yield, expected annual volatility of 167%, risk free interest rate of 2.63% and an expected useful life of 12 months. The change in fair value of the Warrant Certificates as a result of the modifications of $139,985 was allocated to Paid in Capital and included as an expense in 2018. The Notes conversion features were equivalent to their intrinsic value at the date of modification. The remaining Debt Issue Costs from the original notes which matured at December 31, 2019 of $5,798 will be amortized as interest expense over the remaining life of the Notes.\nThe following table reflects the changes in long term debt during the years ended December 31, 2018 and 2017, respectively:",
+   "prose_after": "10. Capital Stock:\nDuring December 2016, the Company issued $132,500 of senior unsecured convertible promissory notes (\"Convertible Notes\") due December 31, 2018 to several accredited investors, See Note 5. The Convertible Notes, as modified, are convertible at the option of the holder into Common Stock at $0.10 per share. Each investor was also issued a warrant certificate, pursuant to which such investor could acquire one share of Common Stock at $0.15 per share for each $0.15 invested in the applicable Convertible Note until December 31, 2019.\nDuring January 2017 the Company issued $62,500 of senior unsecured convertible promissory notes (\"Convertible Notes\") due December 31, 2018 to several accredited investors, See Note 5. The Convertible Notes, as modified, are convertible at the option of the holder into Common Stock at $0.10 per share. Each investor was also issued a warrant certificate, pursuant to which such investor could acquire one share of Common Stock at $0.15 per share for each $0.15 invested in the applicable Convertible Note until December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1557,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Weighted Average",
+     ""
+    ],
+    [
+     "",
+     "Options",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at End of Year 2016",
+     "",
+     "1,154,167",
+     "$",
+     ".21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "0",
+     "$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled or Exercised",
+     "",
+     "0",
+     "$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at End of Year 2017",
+     "",
+     "1,154,167",
+     "$",
+     "0.21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "0",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "1,150,000",
+     "",
+     ".21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at End of Year 2018",
+     "",
+     "4,167",
+     "",
+     "3.12"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Senior Unsecured Convertible Promissory Notes"
+    }
+   },
+   "prose_before": "At the Company's 2006 Annual Meeting of Stockholders, the stockholders approved the 2006 Stock Incentive Plan (the \"Plan\"). The Plan permits the issuance of stock options, restricted stock awards, and performance shares to employees, officers, directors, and consultants of the Company. Initially, and until such time as the Board creates a Compensation Committee, the Board of Directors will administer the Plan. The total number of shares of common stock that may be issued pursuant to awards under the Plan is 5,000,000. Under the Plan, no participant may receive awards of stock options that cover, in the aggregate, more than 500,000 shares of common stock in any fiscal year. Under the terms of the Plan, no additional options could be granted after the tenth anniversary of the Plan, which occurred on June 5, 2016.\nThe Company expenses the cost of options granted over the vesting period of the option based on the grant-date fair value of the award. Option fair values are estimated at the grant date using the Black-Scholes option valuation model. The Black-Scholes option valuation model was developed for use in estimating the fair value of traded options, which have no vesting restrictions and are fully transferable. For purposes of determining the expected life of the options, the Company utilizes the Simplified Method as defined in Staff Accounting Bulletin No. 107 issued by the Securities and Exchange Commission. In addition, the Black-Scholes option valuation model requires the input of other highly subjective assumptions including stock price volatility.\nA summary of the Company's Incentive Plan as of December 31, 2018 and changes during the year is presented below:",
+   "prose_after": "The following table summarizes information about stock options outstanding at December 31, 2018:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "Options Exercisable",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "Weighted",
+     "",
+     "Weighted"
+    ],
+    [
+     "Range of",
+     "Number",
+     "Remaining",
+     "Average",
+     "Number",
+     "Average"
+    ],
+    [
+     "Exercise",
+     "Outstanding",
+     "Contractual",
+     "Exercise",
+     "Exercisable",
+     "Exercise"
+    ],
+    [
+     "Prices",
+     "at 12/31/18",
+     "Life",
+     "Price",
+     "at 12/31/17",
+     "Price"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$3.12",
+     "4,167",
+     "1.69 years",
+     "$3.12",
+     "4,167",
+     "$3.12"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1610,
+    "end_line": 1622
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Senior Unsecured Convertible Promissory Notes"
+    }
+   },
+   "prose_before": "The following table summarizes information about stock options outstanding at December 31, 2018:",
+   "prose_after": "12. Income Taxes:\nThe provision for income taxes differs from the amount obtained by applying the applicable Federal income tax rate of 21% and 34% at year ends 2018 and 2017, respectively to income before income taxes. The difference relates to the following items:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Statutory tax rate",
+     "",
+     "21%",
+     "",
+     "",
+     "34%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected tax benefit",
+     "$",
+     "(214,000)",
+     "",
+     "$",
+     "(280,000)",
+     ""
+    ],
+    [
+     "Nondeductible expenses",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "214,000",
+     "",
+     "",
+     "280,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax provision (benefit) as reported",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1627,
+    "end_line": 1642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Senior Unsecured Convertible Promissory Notes"
+    }
+   },
+   "prose_before": "12. Income Taxes:\nThe provision for income taxes differs from the amount obtained by applying the applicable Federal income tax rate of 21% and 34% at year ends 2018 and 2017, respectively to income before income taxes. The difference relates to the following items:",
+   "prose_after": "The components of deferred income taxes at December 31, are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss carry-forwards",
+     "$",
+     "2,278,000",
+     "",
+     "$",
+     "2,065,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,278,000)",
+     "",
+     "",
+     "(2,065,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred taxes",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1645,
+    "end_line": 1656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Senior Unsecured Convertible Promissory Notes"
+    }
+   },
+   "prose_before": "The components of deferred income taxes at December 31, are as follows:",
+   "prose_after": "At December 31, 2018, the Company has accumulated net operating loss carryforwards totaling approximately $10,800,000 which begin to expire if not utilized starting in 2018.\nOn December 22, 2017 H.R. 1, originally known as the Tax Cuts and Jobs Act, (the \"Tax Act\") was enacted. Among the significant changes to the U.S. Internal Revenue Code, the Tax Act lowers the U.S. federal corporate income tax rate (\"Federal Tax Rate\") from 35% to 21% effective January 1, 2018. The Company must re-measure its net deferred tax assets and liabilities using the Federal Tax Rate that will apply when these amounts are expected to reverse. Accordingly, the Company utilized a 21% tax rate to evaluate its net deferred taxes for the periods ended December 31, 2018 and 2017.\nUtilization of the Company's loss carryforwards is dependent on realizing taxable income. Deferred tax assets for these carryforwards have been reduced by a valuation allowance up to an amount equal to estimated deferred tax liability.\nThe Company is no longer subject to income tax examinations by tax authorities for years before 2014. The Company is not currently the subject of any income tax examinations by any tax authorities.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil\n\n(MBbls)",
+     "",
+     "",
+     "Natural Gas\n\n(MMcf)",
+     "",
+     ""
+    ],
+    [
+     "Proved developed reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of year",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of minerals in place",
+     "",
+     "274",
+     "",
+     "",
+     "903",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(5)",
+     "",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "End of year",
+     "",
+     "269",
+     "",
+     "",
+     "887",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved developed",
+     "",
+     "269",
+     "",
+     "",
+     "887",
+     ""
+    ],
+    [
+     "Proved undeveloped",
+     "",
+     "293",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proved behind pipe",
+     "",
+     "91",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proved shut in",
+     "",
+     "7",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "661",
+     "",
+     "",
+     "887",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,",
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1712,
+    "end_line": 1738
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "The following reserve estimates present the Company's estimate of the proven natural gas and oil reserves and net cash flow of the Properties, in accordance with the guidelines established by the Securities and Exchange Commission. The Company emphasizes that reserve estimates are inherently imprecise and that estimates of new discoveries are more imprecise than those of producing natural gas and oil properties. Accordingly, the estimates are expected to change as future information becomes available. All the oil and natural gas reserves are located in Louisiana.\nReserve Quantity Information\nProved oil and natural gas reserves are those quantities of oil and gas, which by analysis of geoscience and engineering data, can be estimated with reasonable certainty to be economically producible from a given date forward, from known reservoirs, and under existing economic conditions, operating methods, and government regulations. Proved developed reserves are proved reserves that can be expected to be recovered through existing wells with existing equipment and operating methods or in which the cost of the required equipment is relatively minor compared to the cost of a new well. Proved undeveloped reserves are proved reserves that are expected to be recovered from new wells on undrilled acreage, or from existing wells where a relatively major expenditures is required for recompletion. Below are the net quantities of net proved developed and undeveloped reserves of the Properties:",
+   "prose_after": "Standardized Measure of Discounted Future Net Cash Flows Relating to Oil and Natural Gas Reserves\nThe standardized measure of discounted future net cash flows relating to oil and natural gas reserves and associated changes in standard measure amounts were prepared in accordance with the provision of Financial Accounting Standard Board ASC 932-235-555. Future cash inflows were computed by applying average prices of oil and natural gas for the last 12 months to estimated future production. Future production and development costs were computed by estimating the expenditures to be incurred in developing the oil and natural gas reserves at the end of the year, based on year end costs and assuming continuation of existing economic conditions. Future net cash flows are discounted at the rate of 10% annually to derive the standardized measure of discounted cash flows. Actual future cash inflows may vary considerably, and the standardized measure does not necessarily represent the fair value of the acquired properties' oil and natural gas reserves. Standard measure amounts are:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1700,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Future cash inflows",
+     "$",
+     "47,918,610",
+     ""
+    ],
+    [
+     "Future production costs",
+     "",
+     "(15,083,190)",
+     ""
+    ],
+    [
+     "Future development costs",
+     "",
+     "(4,221,540)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Future net cash flows",
+     "",
+     "28,613,880",
+     ""
+    ],
+    [
+     "10% annual discount for timing of cash flows",
+     "",
+     "(15,636,260)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized Measure",
+     "$",
+     "12,977,620",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1744,
+    "end_line": 1759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "Standardized Measure of Discounted Future Net Cash Flows Relating to Oil and Natural Gas Reserves\nThe standardized measure of discounted future net cash flows relating to oil and natural gas reserves and associated changes in standard measure amounts were prepared in accordance with the provision of Financial Accounting Standard Board ASC 932-235-555. Future cash inflows were computed by applying average prices of oil and natural gas for the last 12 months to estimated future production. Future production and development costs were computed by estimating the expenditures to be incurred in developing the oil and natural gas reserves at the end of the year, based on year end costs and assuming continuation of existing economic conditions. Future net cash flows are discounted at the rate of 10% annually to derive the standardized measure of discounted cash flows. Actual future cash inflows may vary considerably, and the standardized measure does not necessarily represent the fair value of the acquired properties' oil and natural gas reserves. Standard measure amounts are:",
+   "prose_after": "The 12-month average prices were adjusted to reflect applicable transportation and quality differentials on a well-by-well basis to arrive at realized sales prices used to estimate the properties' reserves. The prices for the properties' reserves were as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Representative NYMEX prices:",
+     "",
+     ""
+    ],
+    [
+     "Natural gas (MMBtu)",
+     "$",
+     "2.84"
+    ],
+    [
+     "Oil (Bbl)",
+     "$",
+     "68.74"
+    ]
+   ],
+   "caption_stack": [
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1762,
+    "end_line": 1770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "The 12-month average prices were adjusted to reflect applicable transportation and quality differentials on a well-by-well basis to arrive at realized sales prices used to estimate the properties' reserves. The prices for the properties' reserves were as follows:",
+   "prose_after": "Changes in the Standardized Measure of Discounted Future Net Cash Flows at 10% per annum are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure \u2013 beginning of year",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of oil and gas production",
+     "",
+     "(195,803)",
+     ""
+    ],
+    [
+     "Purchase of minerals in place",
+     "",
+     "13,173,423",
+     ""
+    ],
+    [
+     "Change in standardized measure",
+     "",
+     "12,977,620",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure \u2013 end of year",
+     "$",
+     "12,977,620",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1773,
+    "end_line": 1788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "Changes in the Standardized Measure of Discounted Future Net Cash Flows at 10% per annum are as follows:",
+   "prose_after": "Estimates of economically recoverable natural gas and oil reserves and of future net revenues are based upon a number of variable factors and assumptions, all of which are to some degree subjective and may vary considerably from actual results. Therefore, actual production, revenues, development and operating expenditures may not occur as estimated. The reserve data are estimates only, are subject to many uncertainties, and are based on data gained from production histories and on assumptions as to geologic formations and other matters. Actual quantities of natural gas and oil may differ materially from the amounts estimated.\nCapitalization of Oil and Gas Properties\nEmpire has not incurred and capitalized exploratory well costs for properties pending the determination of proved status, exploratory well costs reclassified to wells or exploratory well costs that were charged to expense.\nThe aggregate capitalized costs of oil and gas properties are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved producing wells",
+     "$",
+     "584,461",
+     ""
+    ],
+    [
+     "Proved undeveloped",
+     "",
+     "547,882",
+     ""
+    ],
+    [
+     "Lease and well equipment",
+     "",
+     "284,233",
+     ""
+    ],
+    [
+     "Asset retirement obligation",
+     "",
+     "228,721",
+     ""
+    ],
+    [
+     "Gross capitalized costs",
+     "",
+     "1,645,297",
+     ""
+    ],
+    [
+     "Depreciation, Depletion and Amortization",
+     "",
+     "(15,527)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net capitalized costs",
+     "$",
+     "1,629,770",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property acquisition cost",
+     "$",
+     "1,645,297",
+     ""
+    ],
+    [
+     "Exploration cost",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Development cost",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total gross capitalized costs",
+     "$",
+     "1,645,297",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1798,
+    "end_line": 1821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Concentrations"
+    }
+   },
+   "prose_before": "Estimates of economically recoverable natural gas and oil reserves and of future net revenues are based upon a number of variable factors and assumptions, all of which are to some degree subjective and may vary considerably from actual results. Therefore, actual production, revenues, development and operating expenditures may not occur as estimated. The reserve data are estimates only, are subject to many uncertainties, and are based on data gained from production histories and on assumptions as to geologic formations and other matters. Actual quantities of natural gas and oil may differ materially from the amounts estimated.\nCapitalization of Oil and Gas Properties\nEmpire has not incurred and capitalized exploratory well costs for properties pending the determination of proved status, exploratory well costs reclassified to wells or exploratory well costs that were charged to expense.\nThe aggregate capitalized costs of oil and gas properties are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1822,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

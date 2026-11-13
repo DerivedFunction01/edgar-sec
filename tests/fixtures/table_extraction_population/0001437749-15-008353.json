@@ -1,0 +1,2562 @@
+{
+ "accession": "0001437749-15-008353",
+ "cik": "0001123979",
+ "form": "10-Q",
+ "filing_date": "2015-04-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "snmx20150331_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware (State or other jurisdiction of incorporation or organization)",
+     "33-0843840 (I.R.S. Employer Identification No.)"
+    ],
+    [
+     "4767 Nexus Centre Drive San Diego, California 92121 (Address of principal executive offices) (Zip code)",
+     "(858) 646-8300 (Registrant\u2019s telephone number, including area code)"
+    ],
+    [
+     "(Former name, former address and former fiscal year, if changed since last report)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2015\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 000-50791\nSENOMYX, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarger accelerated filer [ ]      Accelerated filer [X]\nNon-accelerated filer [ ]    Smaller reporting company [ ]\nIndicate by check mark whether registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 45,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Unaudited Condensed Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Balance Sheets as of March 31, 2015 and December 31, 2014",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Statements of Operations and Comprehensive Loss for the Three Months Ended March 31, 2015 and 2014",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Statements of Cash Flows for the Three Months Ended March 31, 2015 and 2014",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited Condensed Financial Statements",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "32"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 51,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarger accelerated filer [ ]      Accelerated filer [X]\nNon-accelerated filer [ ]    Smaller reporting company [ ]\nIndicate by check mark whether registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\nTotal shares of common stock outstanding as of the close of business on April 23, 2015: 43,811,563\nFORM 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nBALANCE SHEETS\n(In thousands, except for share and per share data)\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 45,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,382",
+     "",
+     "$",
+     "3,961",
+     ""
+    ],
+    [
+     "Short-term investments available-for-sale",
+     "",
+     "18,471",
+     "",
+     "",
+     "22,630",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "1,320",
+     "",
+     "",
+     "2,276",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "2,678",
+     "",
+     "",
+     "2,319",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "741",
+     "",
+     "",
+     "993",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "28,592",
+     "",
+     "",
+     "32,179",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term investments available-for-sale",
+     "",
+     "1,249",
+     "",
+     "",
+     "2,147",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "3,749",
+     "",
+     "",
+     "3,835",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "33,590",
+     "",
+     "$",
+     "38,161",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses and other current liabilities",
+     "$",
+     "3,747",
+     "",
+     "$",
+     "5,903",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "",
+     "\u2014",
+     "",
+     "",
+     "354",
+     ""
+    ],
+    [
+     "Leasehold incentive obligation",
+     "",
+     "219",
+     "",
+     "",
+     "987",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "5,135",
+     "",
+     "",
+     "5,135",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "9,101",
+     "",
+     "",
+     "12,379",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "",
+     "1,028",
+     "",
+     "",
+     "516",
+     ""
+    ],
+    [
+     "Leasehold incentive obligation",
+     "",
+     "1,737",
+     "",
+     "",
+     "1,152",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "347",
+     "",
+     "",
+     "556",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.001 par value; 7,500,000 shares authorized; no shares issued or outstanding at March 31, 2015 (unaudited) and December 31, 2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $.001 par value; 120,000,000 shares authorized at March 31, 2015 (unaudited) and December 31, 2014; 43,727,564 and 43,370,309 shares issued and outstanding at March 31, 2015 (unaudited) and December 31, 2014, respectively.",
+     "",
+     "44",
+     "",
+     "",
+     "43",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "280,739",
+     "",
+     "",
+     "278,362",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(259,406)",
+     "",
+     "",
+     "(254,837)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "21,377",
+     "",
+     "",
+     "23,558",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "33,590",
+     "",
+     "$",
+     "38,161",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 143
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED FINANCIAL STATEMENTS\nBALANCE SHEETS\n(In thousands, except for share and per share data)\n(Unaudited)",
+   "prose_after": "STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(In thousands, except share and per share data)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 85,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 144,
+     "token": "REPEATING_FOOTER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Development revenues",
+     "$",
+     "4,349",
+     "",
+     "$",
+     "6,800",
+     ""
+    ],
+    [
+     "Commercial revenues",
+     "",
+     "657",
+     "",
+     "",
+     "1,404",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "5,006",
+     "",
+     "",
+     "8,204",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of commercial revenues",
+     "",
+     "84",
+     "",
+     "",
+     "101",
+     ""
+    ],
+    [
+     "Research, development and patents",
+     "",
+     "6,403",
+     "",
+     "",
+     "7,017",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "3,096",
+     "",
+     "",
+     "3,102",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "9,583",
+     "",
+     "",
+     "10,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(4,577)",
+     "",
+     "",
+     "(2,016)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "8",
+     "",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(4,569)",
+     "",
+     "",
+     "(2,008)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on investments",
+     "",
+     "10",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(4,559)",
+     "",
+     "$",
+     "(2,007)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.05)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares used in calculating net loss per share, basic and diluted",
+     "",
+     "43,499,650",
+     "",
+     "",
+     "41,466,762",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 154,
+    "end_line": 196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(In thousands, except share and per share data)\n(Unaudited)",
+   "prose_after": "STATEMENTS OF CASH FLOWS\n(In thousands)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 197,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,569)",
+     "",
+     "$",
+     "(2,008)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "445",
+     "",
+     "",
+     "592",
+     ""
+    ],
+    [
+     "Accretion of premium on available-for-sale securities",
+     "",
+     "42",
+     "",
+     "",
+     "49",
+     ""
+    ],
+    [
+     "Amortization of leasehold incentive obligation",
+     "",
+     "(183)",
+     "",
+     "",
+     "(247)",
+     ""
+    ],
+    [
+     "Stock-based compensation for employees and non-employee directors",
+     "",
+     "1,377",
+     "",
+     "",
+     "1,366",
+     ""
+    ],
+    [
+     "Stock-based compensation for non-employees",
+     "",
+     "1",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "956",
+     "",
+     "",
+     "(894)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(1,019)",
+     "",
+     "",
+     "(496)",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "251",
+     "",
+     "",
+     "54",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses and other current liabilities",
+     "",
+     "(1,484)",
+     "",
+     "",
+     "(3,137)",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "(209)",
+     "",
+     "",
+     "(1,168)",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "",
+     "158",
+     "",
+     "",
+     "(51)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,234)",
+     "",
+     "",
+     "(5,923)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(371)",
+     "",
+     "",
+     "(14)",
+     ""
+    ],
+    [
+     "Maturities of available-for-sale securities",
+     "",
+     "5,029",
+     "",
+     "",
+     "2,990",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "4,658",
+     "",
+     "",
+     "2,976",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock, net of issuance costs",
+     "",
+     "997",
+     "",
+     "",
+     "4,603",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "997",
+     "",
+     "",
+     "4,603",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "1,421",
+     "",
+     "",
+     "1,656",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "3,961",
+     "",
+     "",
+     "11,201",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "5,382",
+     "",
+     "$",
+     "12,857",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of inventories included in accounts payable, accrued expenses and other current liabilities at period end",
+     "$",
+     "102",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchases of property and equipment included in accounts payable, accrued expenses and other current liabilities at period end",
+     "$",
+     "81",
+     "",
+     "$",
+     "139",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 207,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "STATEMENTS OF CASH FLOWS\n(In thousands)\n(Unaudited)",
+   "prose_after": "NOTES TO FINANCIAL STATEMENTS\n(Unaudited)\n1. Organization and Summary of Significant Accounting Policies\nOrganization and Business\nSenomyx, Inc. (\u201cwe\u201d, \u201cus\u201d or \u201cour\u201d) was incorporated in Delaware in September 1998 and commenced operations in January 1999. We use proprietary taste receptor technologies to discover, develop and commercialize innovative flavor ingredients for the packaged food, beverage and ingredient supply industries to improve the nutritional profile of their products and generate cost of goods savings while maintaining or improving taste. Our current programs focus on the development and commercialization of sweet, savory and salt flavor ingredients, bitter blockers and cooling agents.\nWe currently have product discovery, development and commercialization collaborations with four of the world\u2019s leading packaged food, beverage and ingredient companies: Ajinomoto Co., Inc., Firmenich SA, Nestl\u00e9 SA and PepsiCo, Inc. Our collaboration agreements generally provide for license fees, research and development funding, reimbursement of certain costs, development milestone payments based upon our achievement of research or development goals and, in the event of commercialization, commercial milestone payments, minimum periodic royalties and royalties on sales of products incorporating our flavor ingredients. We also sell certain flavor ingredients directly to flavor companies for inclusion in a flavor system for re-sale to food and beverage companies.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 199,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 256,
+     "token": "REPEATING_FOOTER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Research, development and patents",
+     "$",
+     "594",
+     "$",
+     "622"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "784",
+     "",
+     "761"
+    ],
+    [
+     "",
+     "$",
+     "1,378",
+     "$",
+     "1,383"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 339,
+    "end_line": 350
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Research and development costs, including those incurred in relation to our collaboration agreements, are expensed in the period incurred. Research and development costs primarily consist of salaries and related expenses for personnel, facilities and depreciation, research and development supplies, licenses and outside services. Such research and development costs totaled $5.9 million and $6.3 million for the three months ended March 31, 2015 and 2014, respectively.\nCosts related to filing and pursuing patent applications are expensed as incurred, as recoverability of such expenditures is uncertain. We include all external costs related to the filing of patents on developments in Research, Development and Patents expenses. Such patent-related expenses totaled $465,000 and $690,000 for the three months ended March 31, 2015 and 2014, respectively.\nStock-Based Compensation\nTotal stock-based compensation expenses recognized for the three months ended March 31, 2015 and 2014 was comprised as follows (in thousands):",
+   "prose_after": "At March 31, 2015, total unrecognized estimated compensation expenses related to non-vested stock options granted prior to that date was $10.3 million, which is expected to be recognized over a weighted average period of 2.3 years.\nNet Loss Per Share\nBasic earnings per share (\u201cEPS\u201d) is calculated by dividing the net loss by the weighted average number of common shares outstanding for the period, without consideration for common stock equivalents. Diluted EPS is computed by dividing the net income or loss by the weighted average number of common share equivalents outstanding for the period determined using the treasury-stock method. Dilutive common share equivalents include the dilutive effect of in-the-money shares, which is calculated based on the average share price for each period using the treasury stock method. Under the treasury stock method, the exercise price of a share, the amount of compensation cost, if any, for future service that we have not yet recognized, and the amount of estimated tax benefits that would be recorded in paid-in capital, if any, when the share is exercised are assumed to be used to repurchase shares in the current period. For purposes of this calculation, common stock subject to repurchase by us, convertible preferred stock, options, and warrants are considered to be common stock equivalents and are only included in the calculation of diluted earnings per share when their effect is dilutive.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss (in thousands)",
+     "$",
+     "(4,569)",
+     "",
+     "$",
+     "(2,008)",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares",
+     "",
+     "43,499,650",
+     "",
+     "",
+     "41,466,762",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.05)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding antidilutive securities not included in diluted net loss per share calculation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options to purchase common stock",
+     "",
+     "11,872,594",
+     "",
+     "",
+     "12,198,066",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 359,
+    "end_line": 376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Basic earnings per share (\u201cEPS\u201d) is calculated by dividing the net loss by the weighted average number of common shares outstanding for the period, without consideration for common stock equivalents. Diluted EPS is computed by dividing the net income or loss by the weighted average number of common share equivalents outstanding for the period determined using the treasury-stock method. Dilutive common share equivalents include the dilutive effect of in-the-money shares, which is calculated based on the average share price for each period using the treasury stock method. Under the treasury stock method, the exercise price of a share, the amount of compensation cost, if any, for future service that we have not yet recognized, and the amount of estimated tax benefits that would be recorded in paid-in capital, if any, when the share is exercised are assumed to be used to repurchase shares in the current period. For purposes of this calculation, common stock subject to repurchase by us, convertible preferred stock, options, and warrants are considered to be common stock equivalents and are only included in the calculation of diluted earnings per share when their effect is dilutive.\nThe following table sets forth the computation of basic and diluted net loss per share for the respective periods.",
+   "prose_after": "Comprehensive Income (Loss)\nThe Comprehensive Income Topic of the FASB ASC requires that all components of comprehensive income (loss), including net income (loss), be reported in the financial statements in the period in which they are recognized. Comprehensive income (loss) is defined as the change in equity during a period from transactions and other events and circumstances from non-owner sources. Our accumulated other comprehensive income as of March 31, 2015 and December 31, 2014 consisted of unrealized gains or losses on investments available-for-sale and is reported in stockholders\u2019 equity.\n2. Balance Sheet Details\nInvestments Available-for-Sale\nThe following is a summary of investments available-for-sale at March 31, 2015 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Unrealized Gain",
+     "",
+     "Unrealized Loss",
+     "",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "United States Treasuries",
+     "$",
+     "1,500",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,500"
+    ],
+    [
+     "United States government agency bonds",
+     "",
+     "13,509",
+     "",
+     "2",
+     "",
+     "(2)",
+     "",
+     "",
+     "13,509"
+    ],
+    [
+     "Corporate bonds",
+     "",
+     "4,711",
+     "",
+     "1",
+     "",
+     "(1)",
+     "",
+     "",
+     "4,711"
+    ],
+    [
+     "",
+     "$",
+     "19,720",
+     "$",
+     "3",
+     "$",
+     "(3)",
+     "",
+     "$",
+     "19,720"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Balance Sheet Details"
+    }
+   },
+   "prose_before": "Comprehensive Income (Loss)\nThe Comprehensive Income Topic of the FASB ASC requires that all components of comprehensive income (loss), including net income (loss), be reported in the financial statements in the period in which they are recognized. Comprehensive income (loss) is defined as the change in equity during a period from transactions and other events and circumstances from non-owner sources. Our accumulated other comprehensive income as of March 31, 2015 and December 31, 2014 consisted of unrealized gains or losses on investments available-for-sale and is reported in stockholders\u2019 equity.\n2. Balance Sheet Details\nInvestments Available-for-Sale\nThe following is a summary of investments available-for-sale at March 31, 2015 (in thousands):",
+   "prose_after": "The following is a summary of investments available-for-sale at December 31, 2014 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Unrealized Gain",
+     "",
+     "Unrealized Loss",
+     "",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "United States Treasuries",
+     "$",
+     "1,500",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,500"
+    ],
+    [
+     "United States government agency bonds",
+     "",
+     "16,341",
+     "",
+     "\u2014",
+     "",
+     "(6)",
+     "",
+     "",
+     "16,335"
+    ],
+    [
+     "Corporate bonds",
+     "",
+     "6,946",
+     "",
+     "\u2014",
+     "",
+     "(4)",
+     "",
+     "",
+     "6,942"
+    ],
+    [
+     "",
+     "$",
+     "24,787",
+     "$",
+     "\u2014",
+     "$",
+     "(10)",
+     "",
+     "$",
+     "24,777"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Balance Sheet Details"
+    }
+   },
+   "prose_before": "The following is a summary of investments available-for-sale at December 31, 2014 (in thousands):",
+   "prose_after": "Investments we consider to be temporarily impaired at March 31, 2015 were as follows (in thousands, except for number of investments):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Less than 12 Months of Temporary Impairment",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Number of\n\n\n\ninvestments",
+     "",
+     "Estimated Fair\n\n\n\nValue",
+     "",
+     "Unrealized\n\n\n\nLosses",
+     "",
+     ""
+    ],
+    [
+     "United States government agency bonds",
+     "",
+     "5",
+     "$",
+     "5,643",
+     "$",
+     "(2)",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "",
+     "1",
+     "",
+     "1,252",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "6",
+     "$",
+     "6,895",
+     "$",
+     "(3)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Less than 12 Months of Temporary Impairment"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 416,
+    "end_line": 429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Balance Sheet Details"
+    }
+   },
+   "prose_before": "Investments we consider to be temporarily impaired at March 31, 2015 were as follows (in thousands, except for number of investments):",
+   "prose_after": "We believe that the decline in value of these securities is temporary and primarily related to the change in market interest rates since purchase and that it is more likely than not that we will be able to hold these securities to maturity. Therefore we anticipate full recovery of their amortized cost basis at maturity.\nGross realized gains and losses on available-for-sale securities were immaterial during the three months ended March 31, 2015 and 2014. As of March 31, 2015, we held $18.5 million of available-for-sale securities with maturity dates within one year and $1.2 million with maturity dates over one year and less than two years.\n3. Fair Value Disclosures\nThe following table presents information about our financial assets and financial liabilities measured at fair value on a recurring basis as of March 31, 2015, and indicates the fair value hierarchy of the valuation techniques utilized by us to determine such fair value. In general, fair values determined by Level 1 inputs utilize quoted prices (unadjusted) in active markets for identical assets or liabilities that we have the ability to access. We classify money market funds and United States Treasuries as Level 1 assets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurement at Reporting Date Using",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Balance as of\n\n\n\nMarch 31, 2015",
+     "",
+     "Quoted Prices in\n\n\n\nActive Markets\n\n\n\nfor Identical\n\n\n\nAssets (Level 1)",
+     "",
+     "Significant Other\n\n\n\nObservable Inputs (Level 2)",
+     "",
+     "Significant\n\n\n\nUnobservable\n\n\n\nInputs (Level 3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial instruments owned:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "4,351",
+     "$",
+     "4,351",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "United States Treasuries",
+     "",
+     "1,500",
+     "",
+     "1,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "United States government agency bonds",
+     "",
+     "13,509",
+     "",
+     "\u2014",
+     "",
+     "13,509",
+     "",
+     "\u2014"
+    ],
+    [
+     "Corporate bonds",
+     "",
+     "4,711",
+     "",
+     "\u2014",
+     "",
+     "4,711",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "24,071",
+     "$",
+     "5,851",
+     "$",
+     "18,220",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurement at Reporting Date Using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 445,
+    "end_line": 466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Disclosures"
+    }
+   },
+   "prose_before": "Fair values determined by Level 2 inputs utilize inputs other than quoted prices included in Level 1 that are observable for the asset or liability, either directly or indirectly. Level 2 inputs include quoted prices for similar assets and liabilities in active markets, and inputs other than quoted prices that are observable for the asset or liability, such as interest rates and yield curves that are observable at commonly quoted intervals. We obtain the fair value of Level 2 financial instruments from a third-party professional pricing service using quoted market prices for identical or comparable instruments. Our professional pricing service gathers market prices from a variety of industry standard data providers, security master files from large financial institutions and other third-party sources. The service uses these multiple prices as inputs into a distribution-curve based algorithm to determine a fair value. We then validate the quoted fair values provided by the professional pricing service by comparing the service\u2019s assessment of the fair values of our Level 2 investment portfolio balance against the fair values of our Level 2 investment portfolio balance provided by our investment managers. We classify United States government agency securities and corporate note holdings as Level 2 assets. There were no transfers between Level 1 and Level 2 during the three months ended March 31, 2015 or 2014.\nLevel 3 inputs are unobservable inputs for the asset or liability, and include situations where there is little, if any, market activity for the asset or liability. In certain cases, the inputs used to measure fair value may fall into different levels of the fair value hierarchy. In such cases, the level in the fair value hierarchy within which the fair value measurement in its entirety falls has been determined based on the lowest level input that is significant to the fair value measurement in its entirety. Our assessment of the significance of a particular input to the fair value measurement in its entirety requires judgment, and considers factors specific to the asset or liability. We do not hold any Level 3 assets.\nAssets that have recurring measurements are shown below (in thousands):",
+   "prose_after": "4. Product Discovery, Development and Commercialization Collaborations\nNo substantive milestones were earned during the three months ended March 31, 2015. During the three months ended March 31, 2014, we earned two substantive development milestones totaling $1.3 million related to our sweet taste program.\n5. Commitments\nLeases and Loans\nIn February 2015, we amended the lease agreement for our laboratory and office facility in San Diego, California. The amended lease expires on February 28, 2024, a seven-year extension of the previous lease period. The amended lease provides for certain rent-free periods beginning in 2015 and an annual 1% rent increase during the extended lease period. The amended lease is classified as an operating lease. Rent expense is recorded on a straight-line basis considering the deferred rent balance as of the lease amendment and rental payments from the lease amendment date through the extended term of the lease, including all rent-free periods and annual rent increases. The amortization periods for the leasehold incentive obligation and the related tenant improvements have been adjusted to the extended term of the lease.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Salaries and personnel",
+     "$",
+     "3,311",
+     "$",
+     "3,307"
+    ],
+    [
+     "Facilities and depreciation",
+     "",
+     "1,172",
+     "",
+     "1,260"
+    ],
+    [
+     "Non-cash stock-based compensation",
+     "",
+     "594",
+     "",
+     "622"
+    ],
+    [
+     "Patents and licensing",
+     "",
+     "561",
+     "",
+     "780"
+    ],
+    [
+     "Research and development supplies",
+     "",
+     "335",
+     "",
+     "507"
+    ],
+    [
+     "Outside services",
+     "",
+     "207",
+     "",
+     "303"
+    ],
+    [
+     "Miscellaneous",
+     "",
+     "223",
+     "",
+     "238"
+    ],
+    [
+     "",
+     "$",
+     "6,403",
+     "$",
+     "7,017"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 524,
+    "end_line": 540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "Research and development payments, upfront fees, development milestones, royalty revenues and cost reimbursements under our material collaborations with Firmenich and PepsiCo accounted for approximately 84% and 85% of total revenues for the three months ended March 31, 2015 and 2014, respectively.\nCost of Commercial Revenues\nOur costs of commercial revenues were $84,000 and $101,000 for the three months ended March 31, 2015 and 2014, respectively. The decrease was primarily due to reduced royalties payable under our third-party licensing agreements, partially offset by increased costs of goods sold from higher direct sales in the 2015 period.\nResearch, Development and Patents Expenses\nOur research, development and patents expenses (including stock-based compensation expenses charged to research and development) were $6.4 million and $7.0 million for the three months ended March 31, 2015 and 2014, respectively. A comparison of research, development and patents expenses by category is as follows (in thousands):",
+   "prose_after": "Patents and Licensing. Our patents and licensing expenses decreased from $780,000 for the first quarter of 2014 to $561,000 for the first quarter of 2015 due to the timing of patent filings and associated legal expenses.\nResearch and Development Supplies. Our expenses for supplies used in research and development were $335,000 and $507,000 for the three months ended March 31, 2015 and 2014, respectively. The $172,000 decrease was due to decreased purchases of compounds and a decrease in supplies used in high-throughput screening.\nSelling, General and Administrative Expenses\nOur selling, general and administrative expenses (including stock-based compensation expenses charged to selling, general and administrative) were $3.1 million for each of the three months ended March 31, 2015 and 2014.\nLiquidity and Capital Resources\nSince our inception, we have financed our business primarily through our product discovery and development collaborations, private and public placements of stock, royalties and interest income. As of March 31, 2015, we had received $236 million in non-refundable license fees, research and development payments, cost reimbursements and milestone payments from our collaboration agreements. In addition, we had received $206 million in proceeds from the sales of common and preferred stock, $22 million in royalties and commercial payments and $13 million in interest income.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Payments Due by Period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Less than\n\n\n\n1 year",
+     "",
+     "1-3 years",
+     "",
+     "4-5 years",
+     "",
+     "After 5 years",
+     ""
+    ],
+    [
+     "Operating leases",
+     "$",
+     "23,666",
+     "$",
+     "1,337",
+     "$",
+     "4,968",
+     "$",
+     "5,764",
+     "$",
+     "11,597"
+    ],
+    [
+     "License payments",
+     "",
+     "197",
+     "",
+     "197",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "23,863",
+     "$",
+     "1,534",
+     "$",
+     "4,968",
+     "$",
+     "5,764",
+     "$",
+     "11,597"
+    ]
+   ],
+   "caption_stack": [
+    "Payments Due by Period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "Investing activities provided cash of $4.7 million and $3.0 million for the three months ended March 31, 2015 and 2014, respectively. The increase in cash provided by investing activities in the 2015 period reflects higher maturities of available-for-sale securities.\nFinancing Activities\nFinancing activities provided cash of $1.0 million and $4.6 million for the three months ended March 31, 2015 and 2014, respectively. The $3.6 million decrease in cash provided by financing activities reflects decreased proceeds from the issuance of common stock from the exercise of stock options, attributable to the higher price of our common stock in the first three months of 2014 compared to the first three months of 2015.\nIn February 2015, we amended the lease agreement for our laboratory and office facility in San Diego, California. The amended lease expires on February 28, 2024, a seven-year extension of the previous lease period. The amended lease provides for certain rent-free periods beginning in 2015 and an annual 1% rent increase during the extended lease period.\nAs of March 31, 2015, future minimum payments due under our contractual obligations are as follows (in thousands):",
+   "prose_after": "As of March 31, 2015, we had no long-term debt obligations.\nOur license agreement with the University of California calls for annual maintenance fees, which commenced in 2006, or royalties or service revenues on sales of any products developed using technologies licensed under the agreement. Royalties are calculated as a percentage of applicable sales and are included in cost of commercial revenues. The agreement specifies minimum annual royalty payments which commenced in 2014 and continue through the expiration of the last to expire patent licensed under the agreement. Royalties paid under the agreement in 2014 exceeded the minimum annual royalty.\nOur future capital uses and requirements depend on numerous forward-looking factors. These factors may include, but are not limited to, the following:\n\u25cf our ability to generate flavor ingredient sales under our direct sales program;\n\u25cf our ability to maintain product discovery, development and commercialization collaborations;\n\u25cf the rate of progress and cost of research and development activities;",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description of Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation as currently in effect (filed as Exhibit 3.1 to Registration Statement File No. 333-113998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws as currently in effect (filed as Exhibit 3.2 to our Current Report on Form 8-K filed with the SEC on December 20, 2007)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Common Stock Certificate (filed as Exhibit 4.1 to Registration Statement File No. 333-113998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of John Poyhonen, Chief Executive Officer, pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Antony Rogers, Chief Financial Officer, pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification of John Poyhonen, Chief Executive Officer, and Antony Rogers, Chief Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following financial statements from the Senomyx, Inc. Quarterly Report on Form 10-Q for the quarter ended March 31, 2015, formatted in eXtensible Business Reporting Language (XBRL): (i) condensed balance sheets, (ii) condensed statements of operations, (iii) condensed statements of cash flows, and (iv) notes to condensed financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 916,
+    "end_line": 939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "\u25cf prohibit stockholder action by written consent, thereby requiring all stockholder actions to be taken at a meeting of our stockholders; and\n\u25cf establish advance notice requirements for nominations for election to the board of directors or for proposing matters that can be acted upon at stockholder meetings.\nIn addition, the requirements of Section 203 of the Delaware General Corporation Law may discourage, delay or prevent a third party from acquiring us.\nWe have never paid cash dividends on our capital stock and we do not anticipate paying dividends in the foreseeable future.\nWe have paid no cash dividends on any of our classes of capital stock to date, and we currently intend to retain our future earnings, if any, to fund the development and growth of our business. In addition, the terms of any future debt or credit facility may preclude us from paying any dividends. As a result, capital appreciation, if any, of our common stock will be your sole source of potential gain for the foreseeable future.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 909,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Senomyx, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 30, 2015",
+     "By:",
+     "/S/ JOHN POYHONEN"
+    ],
+    [
+     "",
+     "",
+     "John Poyhonen\n\n\n\nPresident, Chief Executive Officer and Director\n\n\n\n(on behalf of the registrant and as the registrant\u2019s Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/S/ ANTONY ROGERS"
+    ],
+    [
+     "",
+     "",
+     "Antony Rogers\n\n\n\nSenior Vice President and Chief Financial Officer\n\n\n\n(on behalf of the registrant and as the registrant\u2019s Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Senomyx, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

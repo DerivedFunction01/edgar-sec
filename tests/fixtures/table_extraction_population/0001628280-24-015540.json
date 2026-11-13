@@ -1,0 +1,6808 @@
+{
+ "accession": "0001628280-24-015540",
+ "cik": "0001844971",
+ "form": "10-K",
+ "filing_date": "2024-04-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gree-20231231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "86-1746728"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "135 Rennell Drive, 3rd Floor Fairfield, CT",
+     "06890"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM                    TO\nCommission File Number 001-40808\n________________________________\nGreenidge Generation Holdings Inc.\n(Exact name of Registrant as specified in its Charter)\n________________________________",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (315) 536-2359\n________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock, $0.0001 par value",
+     "GREE",
+     "The Nasdaq Global Select Market"
+    ],
+    [
+     "8.50% Senior Notes due 2026",
+     "GREEL",
+     "The Nasdaq Global Select Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 52
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (315) 536-2359\n________________________________\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "7"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "21"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "50"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "50"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "51"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "51"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "52"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "53"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "54"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "54"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "73"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "73"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "73"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "73"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "74"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "74"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "75"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "75"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "75"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "75"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "75"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "76"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "80"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 123
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Based on the closing sale price of $2.82 of the Registrant's Class A common stock (giving effect to the Registrant's 1-for-10 reverse stock split on May 16, 2023) on the Nasdaq Global Select Market on June 30, 2023, the last business day of the Registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of the voting common equity held by nonaffiliates of the Registrant was $12,143,320.\nAs of April 5, 2024, the Registrant had 7,052,784 shares of class A common stock, $0.0001 par value per share, outstanding and 2,733,394 shares of class B common stock, $0.0001 par value per share, outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Registrant\u2019s definitive proxy statement for its 2024 Annual Meeting of Stockholders are incorporated by reference in Part III of this Annual Report on Form 10-K where indicated. The Registrant's definitive proxy statement will be filed with the Securities and Exchange Commission within 120 days after December 31, 2023.\nTable of Contents",
+   "prose_after": "2\nUnless otherwise indicated or the context otherwise requires, all references in this annual report on Form 10-K (this \u201cAnnual Report\u201d) to the \u201cCompany,\u201d \u201cGreenidge,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d and similar terms refer to Greenidge Generation Holdings Inc., together with its consolidated subsidiaries. All share and per share data in this Annual Report have been retroactively adjusted to reflect the one-for-ten reverse stock split that we effected on our class A common stock, par value $0.0001 per share (\u201cClass A common stock\u201d) and our class B common stock, par value $0.0001 per share (\u201cClass B common stock\u201d), on May 16, 2023.\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis report includes certain statements that may constitute \"forward-looking statements\" within the meaning of Section 27A of the Securities Act of 1933, as amended (the \"Securities Act\") and Section 21E of the Securities Exchange Act of 1934, as amended (the \"Exchange Act\"). All statements other than statements of historical fact are forward-looking statements for purposes of federal and state securities laws. These forward-looking statements involve uncertainties that could significantly affect our financial or operating results. These forward-looking statements may be identified by terms such as \"anticipate,\" \"believe,\" \"continue,\" \"foresee,\" \"expect,\" \"intend,\" \"plan,\" \"may,\" \"will,\" \"would,\" \"could\" and \"should\" and the negative of these terms or other similar expressions. Forward-looking statements are based on current beliefs and assumptions that are subject to risks and uncertainties and are not guarantees of future performance. Forward-looking statements in this document include, among other things, statements regarding our business plan, business strategy and operations in the future. In addition, all statements that address operating performance and future performance, events or developments that are expected or anticipated to occur in the future, including statements relating to creating value for stockholders are forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 125,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "70,388",
+     "",
+     "$",
+     "89,979",
+     "",
+     "$",
+     "(19,591)",
+     "(22)",
+     "%"
+    ],
+    [
+     "Cost of revenue (exclusive of depreciation and amortization shown below)",
+     "51,005",
+     "",
+     "",
+     "61,552",
+     "",
+     "",
+     "(10,547)",
+     "",
+     "(17)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "26,167",
+     "",
+     "",
+     "35,233",
+     "",
+     "",
+     "(9,066)",
+     "",
+     "(26)",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "13,602",
+     "",
+     "",
+     "35,136",
+     "",
+     "",
+     "(21,534)",
+     "",
+     "(61)",
+     "%"
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "",
+     "(1,780)",
+     "",
+     "",
+     "(8,123)",
+     "",
+     "456",
+     "%"
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "",
+     "176,307",
+     "",
+     "",
+     "(172,307)",
+     "",
+     "(98)",
+     "%"
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "",
+     "16,694",
+     "",
+     "",
+     "(14,285)",
+     "",
+     "(86)",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "(16,892)",
+     "",
+     "",
+     "(233,163)",
+     "",
+     "",
+     "216,271",
+     "",
+     "(93)",
+     "%"
+    ],
+    [
+     "Other (expense) income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(12,659)",
+     "",
+     "",
+     "(21,575)",
+     "",
+     "",
+     "8,916",
+     "",
+     "(41)",
+     "%"
+    ],
+    [
+     "Gain (loss) on sale of digital assets",
+     "512",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "527",
+     "",
+     "(3513)",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "\u2014",
+     "",
+     "",
+     "14",
+     "",
+     "",
+     "(14)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total other expense, net",
+     "(12,147)",
+     "",
+     "",
+     "(21,576)",
+     "",
+     "",
+     "9,429",
+     "",
+     "(44)",
+     "%"
+    ],
+    [
+     "Loss from continuing operations before taxes",
+     "(29,039)",
+     "",
+     "",
+     "(254,739)",
+     "",
+     "",
+     "225,700",
+     "",
+     "(89)",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "-",
+     "",
+     "",
+     "15,002",
+     "",
+     "",
+     "(15,002)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(29,039)",
+     "",
+     "$",
+     "(269,741)",
+     "",
+     "$",
+     "240,702",
+     "(89)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted Amounts (a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted operating (loss) income from continuing operations",
+     "$",
+     "(16,305)",
+     "",
+     "$",
+     "(38,898)",
+     "",
+     "$",
+     "22,593",
+     "(58)",
+     "%"
+    ],
+    [
+     "Adjusted operating margin from continuing operations",
+     "(23.2)",
+     "",
+     "%",
+     "(43.2)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted net (loss) income from continuing operations",
+     "$",
+     "(28,452)",
+     "",
+     "$",
+     "(60,421)",
+     "",
+     "$",
+     "31,969",
+     "(53)",
+     "%"
+    ],
+    [
+     "Other Financial Data (a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EBITDA (loss) from continuing operations",
+     "$",
+     "(2,778)",
+     "",
+     "$",
+     "(198,028)",
+     "",
+     "$",
+     "195,250",
+     "(99)",
+     "%"
+    ],
+    [
+     "as a percent of revenues",
+     "(3.9)",
+     "",
+     "%",
+     "(220.1)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted EBITDA (loss) from continuing operations",
+     "$",
+     "153",
+     "",
+     "$",
+     "(1,127)",
+     "",
+     "$",
+     "1,280",
+     "(114)",
+     "%"
+    ],
+    [
+     "as a percent of revenues",
+     "0.2",
+     "",
+     "%",
+     "(1.3)",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1496,
+    "end_line": 1532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The Company is actively pursuing the acquisition of additional properties with access to low-cost power and appropriate size to allow for efficient expansion of AI/GPU data centers and/or bitcoin mining facilities, such as the Columbus Property. The growth of AI and HPC will provide significant demand for development of future data centers utilizing large amounts of energy. We currently have significant infrastructure on hand to reduce the cost of site development for various future projects. All current and future properties will be simultaneously evaluated for internal development or outright sales.\nThe Company is in the process of purchasing GPUs for a pilot program related to the rental of computing power for AI and HPC. We are utilizing the pilot program to ensure our investments in the AI/GPU data center space efficiently utilize capital to align with the anticipated growth and demand for our offerings.\nThe Company is continuing to develop and market its EPCM services in order to provide greater short-term growth. We believe feedback from previous and current clients has shown that we offer a superior product with respect to the development of bitcoin mining facilities.\nWe will also continue to evaluate the benefits of finding accretive acquisitions, specifically in the bitcoin mining sector.\nResults from Continuing Operations\nThe following table sets forth key components of our results from continuing operations during the years ended December 31, 2023 and 2022.",
+   "prose_after": "a)Adjusted Amounts and Other Financial Data are non-GAAP performance measures. A reconciliation of reported amounts to adjusted amounts can be found in the \"Non-GAAP Measures and Reconciliations\" section of this Management's Discussion and Analysis of Financial Condition and Results of Operations (\"MD&A\").\nKey Metrics\nThe following table provides a summary of key metrics related to the years ended December 31, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1491,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1535,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands, except $ per MWh and average bitcoin price",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "24,238",
+     "",
+     "$",
+     "73,809",
+     "",
+     "$",
+     "(49,571)",
+     "(67)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "39,478",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "39,478",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "6,672",
+     "",
+     "",
+     "16,170",
+     "",
+     "",
+     "(9,498)",
+     "",
+     "(59)",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "70,388",
+     "",
+     "$",
+     "89,979",
+     "",
+     "$",
+     "(19,591)",
+     "(22)",
+     "%"
+    ],
+    [
+     "Components of revenue as % of total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "34",
+     "",
+     "%",
+     "82",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Datacenter hosting",
+     "57",
+     "",
+     "%",
+     "N/A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "9",
+     "",
+     "%",
+     "18",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "100",
+     "",
+     "%",
+     "100",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MWh",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "232,496",
+     "",
+     "",
+     "514,332",
+     "",
+     "",
+     "(281,836)",
+     "",
+     "(55)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "568,147",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "568,147",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "133,446",
+     "",
+     "",
+     "143,919",
+     "",
+     "",
+     "(10,473)",
+     "",
+     "(7)",
+     "%"
+    ],
+    [
+     "Revenue per MWh",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "104",
+     "",
+     "$",
+     "144",
+     "",
+     "$",
+     "(40)",
+     "(28)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "$",
+     "69",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "69",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "$",
+     "50",
+     "",
+     "$",
+     "112",
+     "",
+     "$",
+     "(62)",
+     "(55)",
+     "%"
+    ],
+    [
+     "Cost of revenue (exclusive of depreciation and amortization)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "15,051",
+     "",
+     "$",
+     "47,195",
+     "",
+     "$",
+     "(32,144)",
+     "(68)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "$",
+     "29,695",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "29,695",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "$",
+     "6,259",
+     "",
+     "$",
+     "14,357",
+     "",
+     "$",
+     "(8,098)",
+     "(56)",
+     "%"
+    ],
+    [
+     "Cost of revenue per MWh (exclusive of depreciation and amortization)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "65",
+     "",
+     "$",
+     "92",
+     "",
+     "$",
+     "(27)",
+     "(29)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "$",
+     "52",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "52",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "$",
+     "47",
+     "",
+     "$",
+     "100",
+     "",
+     "$",
+     "(53)",
+     "(53)",
+     "%"
+    ],
+    [
+     "Cryptocurrency Mining Metrics",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bitcoins produced:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "891",
+     "",
+     "",
+     "2,731",
+     "",
+     "",
+     "(1,840)",
+     "",
+     "(67)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "2,047",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,047",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Total Bitcoins produced",
+     "2,938",
+     "",
+     "",
+     "2,731",
+     "",
+     "",
+     "207",
+     "",
+     "8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average bitcoin price",
+     "28,788",
+     "",
+     "",
+     "28,237",
+     "",
+     "",
+     "551",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Average active hash rate (EH/s) Company-owned miners",
+     "914,539",
+     "",
+     "",
+     "1,767,603",
+     "",
+     "",
+     "(853,064)",
+     "",
+     "(48)",
+     "%"
+    ],
+    [
+     "Average active hash rate (EH/s) Hosted miners",
+     "2,204,794",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,204,794",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Average difficulty (in trillions of hash)",
+     "52.0 T",
+     "",
+     "",
+     "30.4 T",
+     "",
+     "",
+     "21.6 T",
+     "",
+     "71",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1540,
+    "end_line": 1586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "a)Adjusted Amounts and Other Financial Data are non-GAAP performance measures. A reconciliation of reported amounts to adjusted amounts can be found in the \"Non-GAAP Measures and Reconciliations\" section of this Management's Discussion and Analysis of Financial Condition and Results of Operations (\"MD&A\").\nKey Metrics\nThe following table provides a summary of key metrics related to the years ended December 31, 2023 and 2022.",
+   "prose_after": "Revenue per MWh for datacenter hosting, cryptocurrency mining and power and capacity are used by management to consider the extent to which we may generate electricity to either produce cryptocurrency or sell power to the New York wholesale power market. Cost of revenue (excluding depreciation) per MWh represents a measure of the cost of natural gas, emissions credits, payroll and benefits and other direct production costs associated with the MWh's produced to generate the respective revenue category for each MWh utilized. Depreciation expense is excluded from the cost of revenue (exclusive of depreciation) per MWh metric; therefore, not all cost of revenues for datacenter hosting, cryptocurrency mining and power and capacity are fully reflected. To the extent any other cryptocurrency datacenters are public or may go public, the cost of revenue (exclusive of depreciation) per MWh metric may not be comparable because some competitors may include depreciation in their cost of revenue figures.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1535,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1587,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "15,051",
+     "",
+     "$",
+     "47,195",
+     "",
+     "$",
+     "(32,144)",
+     "(68)",
+     "%"
+    ],
+    [
+     "Datacenter hosting",
+     "29,695",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29,695",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "6,259",
+     "",
+     "",
+     "14,357",
+     "",
+     "",
+     "(8,098)",
+     "",
+     "(56)",
+     "%"
+    ],
+    [
+     "Total cost of revenue (exclusive of depreciation and amortization)",
+     "$",
+     "51,005",
+     "",
+     "$",
+     "61,552",
+     "",
+     "$",
+     "(10,547)",
+     "(17)",
+     "%"
+    ],
+    [
+     "As a percentage of total revenue",
+     "72.5",
+     "",
+     "%",
+     "68.4",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1621,
+    "end_line": 1633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "revenue of $39.5 million during 2023, for which there was no revenue in 2022. We managed approximately 2.2 EH/s of average active hash rate in our hosting services, of which produced approximately 2,047 bitcoins.\nPower and capacity revenue\nPower and capacity revenue at our New York Facility is earned when we sell capacity and energy and ancillary services to the wholesale power grid managed by the NYISO. Through these sales, we earn revenue in three streams, including: (1) power revenue received based on the hourly price of power, (2) capacity revenue for committing to sell power to the NYISO when dispatched and (3) other ancillary service revenue received as compensation for the provision of operating reserves.\nOur power and capacity revenue decreased $9.5 million, or 59%, to $6.7 million in 2023. We estimate that lower power and capacity sales volume due to our increased behind-the-meter consumption and lower average power and capacity prices caused revenue decreases of approximately 7% and 52%, respectively.\nCost of Revenue",
+   "prose_after": "Total cost of revenue, exclusive of depreciation, decreased $10.5 million, or 17%, to $51.0 million during the year-ended December 31, 2023 as compared to the prior year period. Total cost of revenue, exclusive of depreciation, decreased approximately 40% due to lower natural gas input costs at the New York facility, as the average cost of natural gas per dekatherm was approximately 68% lower than the prior year. Total cost of revenue, exclusive of depreciation, also decreased 2% due to electricity costs. These decreases were partially offset by a 13% increase in emissions expense, and an increase in costs by approximately 12% due to monthly hosting fees paid to third parties for hosting company owned miners, which was a cost that did not occur in the prior year period when all company owned miners were hashing at company owned sites.\nThe significant portions of Cost of revenue are allocated between datacenter hosting, cryptocurrency mining and power and capacity based on MWh used by each. Power and capacity Cost of revenue also declined due to lower sales volume, while MWh utilized by cryptocurrency mining declined due a larger portion of mining capacity used for Hosting during 2023. Costs paid to third party hosting sites are all allocated to cryptocurrency mining.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Adjusted operating loss from continuing operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss from continuing operations",
+     "$",
+     "(16,892)",
+     "",
+     "$",
+     "(233,163)",
+     "",
+     "$",
+     "216,271",
+     "(93)",
+     "%"
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "",
+     "176,307",
+     "",
+     "",
+     "(172,307)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "",
+     "16,694",
+     "",
+     "",
+     "(14,285)",
+     "",
+     "(86)",
+     "%"
+    ],
+    [
+     "Expansion costs",
+     "\u2014",
+     "",
+     "",
+     "2,315",
+     "",
+     "",
+     "(2,315)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Restructuring",
+     "4,081",
+     "",
+     "",
+     "729",
+     "",
+     "",
+     "3,352",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "",
+     "(1,780)",
+     "",
+     "",
+     "(8,123)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Adjusted operating loss from continuing operations",
+     "$",
+     "(16,305)",
+     "",
+     "$",
+     "(38,898)",
+     "",
+     "$",
+     "22,593",
+     "(58)",
+     "%"
+    ],
+    [
+     "Adjusted operating margin",
+     "(23.2",
+     "",
+     "%)",
+     "(43.2",
+     "",
+     "%)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted net loss from continuing operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(29,039)",
+     "",
+     "$",
+     "(269,741)",
+     "",
+     "$",
+     "240,702",
+     "(89)",
+     "%"
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "",
+     "176,307",
+     "",
+     "",
+     "(172,307)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "",
+     "16,694",
+     "",
+     "",
+     "(14,285)",
+     "",
+     "(86)",
+     "%"
+    ],
+    [
+     "Expansion costs",
+     "\u2014",
+     "",
+     "",
+     "2,315",
+     "",
+     "",
+     "(2,315)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Restructuring",
+     "4,081",
+     "",
+     "",
+     "729",
+     "",
+     "",
+     "3,352",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "",
+     "(1,780)",
+     "",
+     "",
+     "(8,123)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Tax charge for valuation allowance",
+     "\u2014",
+     "",
+     "",
+     "15,055",
+     "",
+     "",
+     "(15,055)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Adjusted net loss from continuing operations",
+     "$",
+     "(28,452)",
+     "",
+     "$",
+     "(60,421)",
+     "",
+     "$",
+     "31,969",
+     "(53)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EBITDA and Adjusted EBITDA (loss) from continuing operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(29,039)",
+     "",
+     "$",
+     "(269,741)",
+     "",
+     "$",
+     "240,702",
+     "(89)",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "\u2014",
+     "",
+     "",
+     "15,002",
+     "",
+     "",
+     "(15,002)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Interest expense, net",
+     "12,659",
+     "",
+     "",
+     "21,575",
+     "",
+     "",
+     "(8,916)",
+     "",
+     "(41)",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "13,602",
+     "",
+     "",
+     "35,136",
+     "",
+     "",
+     "(21,534)",
+     "",
+     "(61)",
+     "%"
+    ],
+    [
+     "EBITDA from continuing operations",
+     "(2,778)",
+     "",
+     "",
+     "(198,028)",
+     "",
+     "",
+     "195,250",
+     "",
+     "(99)",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "2,344",
+     "",
+     "",
+     "2,636",
+     "",
+     "",
+     "(292)",
+     "",
+     "(11)",
+     "%"
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "",
+     "176,307",
+     "",
+     "",
+     "(172,307)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "",
+     "16,694",
+     "",
+     "",
+     "(14,285)",
+     "",
+     "(86)",
+     "%"
+    ],
+    [
+     "Expansion costs",
+     "\u2014",
+     "",
+     "",
+     "2,315",
+     "",
+     "",
+     "(2,315)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Restructuring",
+     "4,081",
+     "",
+     "",
+     "729",
+     "",
+     "",
+     "3,352",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "",
+     "(1,780)",
+     "",
+     "",
+     "(8,123)",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Adjusted EBITDA (loss) from continuing operations",
+     "$",
+     "153",
+     "",
+     "$",
+     "(1,127)",
+     "",
+     "$",
+     "1,280",
+     "(114)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1716,
+    "end_line": 1761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Because of these limitations, Adjusted operating loss from continuing operations, Adjusted net loss from continuing operations, EBITDA from continuing operations and Adjusted EBITDA from continuing operations should not be considered in isolation or as a substitute for performance measures calculated in accordance with U.S. GAAP. We compensate for these limitations by relying primarily on our U.S. GAAP results and using Adjusted loss from continuing operations, Adjusted net loss from continuing operations, EBITDA from continuing operations and Adjusted EBITDA from continuing operations on a supplemental basis. You should review the reconciliations of Operating loss from continuing operations to Adjusted operating loss from continuing operations, Net loss from continuing operations to Adjusted net loss from continuing operations, Net loss from continuing operations to EBITDA from continuing operations and Adjusted EBITDA from continuing operations below and not rely on any single financial measure to evaluate our business. The reported amounts in the table below are from our Consolidated Statements of Operations and Comprehensive Loss in our Consolidated Financial Statements included in this Annual Report.",
+   "prose_after": "Liquidity and Capital Resources\nOn December 31, 2023, we had cash and cash equivalents of $13.3 million. To date, we have primarily relied on debt and equity financing to fund our operations, including meeting ongoing working capital needs. Our management took certain actions during 2023 and during the first quarter of 2024 to improve the Company's liquidity.\nAs discussed in Item 1, \"Business\u2014Corporate History and Structure,\" we entered into a debt restructuring agreement with our primary lender, NYDIG. We restructured our debt by transferring ownership of miners, previously secured by the MEFAs, under the Purchase Agreement along with the rights to credits and coupons to NYDIG and reduced our debt and accrued interest balance with NYDIG from $75.8 million to $17.3 million.\nWe also entered into the NYDIG Hosting Agreement with NYDIG affiliates. The terms of the NYDIG Hosting Agreement require NYDIG affiliates to pay a hosting fee that covers the cost of power and direct costs associated with management of the mining facilities as well as a gross profit-sharing arrangement. This allows us to participate in the upside should bitcoin prices rise, but reduces our downside risk of bitcoin price deterioration and cost increases related to natural gas.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1762,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "$ in thousands",
+     "Total",
+     "",
+     "2024",
+     "",
+     "2025-2026",
+     "",
+     "2027-2028",
+     "",
+     "Thereafter",
+     ""
+    ],
+    [
+     "Debt payments",
+     "$",
+     "90,611",
+     "$",
+     "6,137",
+     "$",
+     "84,474",
+     "$",
+     "\u2014",
+     "$",
+     "\u2013"
+    ],
+    [
+     "Leases",
+     "111",
+     "",
+     "111",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Environmental obligations",
+     "$",
+     "30,229",
+     "$",
+     "363",
+     "$",
+     "10,940",
+     "$",
+     "10,923",
+     "$",
+     "8,003"
+    ],
+    [
+     "Natural gas transportation",
+     "12,798",
+     "",
+     "1,896",
+     "",
+     "3,792",
+     "",
+     "3,792",
+     "",
+     "3,318",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "133,749",
+     "$",
+     "8,507",
+     "$",
+     "99,206",
+     "$",
+     "14,715",
+     "$",
+     "11,321"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1821,
+    "end_line": 1832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our operating cash flows generated by mining, hosting, and power are affected by several factors including the price of bitcoin, bitcoin mining difficulty, and the costs of electricity, natural gas, and emissions credits. While bitcoin prices began to recover during 2023 from the significant declines experienced in 2022, and have continued to rise in the first quarter of 2024, management cannot predict the future price of bitcoin, nor can we predict the volatility of energy costs. While the Company continues to work to implement options to improve liquidity, we can provide no assurance that these efforts will be successful and our liquidity could be negatively impacted by factors outside of our control, in particular, significant decreases in the price of bitcoin, regulatory changes concerning cryptocurrency, increases in energy costs or other macroeconomic conditions and other matters identified in Item 1A, \"Risk Factors\" in this Annual Report.\nGiven this uncertainty regarding our financial condition over the next 12 months from the date these financial statements were issued, we have concluded that there is substantial doubt about our ability to continue as a going concern for a\nreasonable period of time. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nContractual Obligations and Commitments\nThe following table summarizes our contractual obligations and other commitments as of December 31, 2023, and the years in which these obligations are due:",
+   "prose_after": "The debt payments included in the table above include the principal and interest amounts due. The lease payments include fixed monthly rental payments and exclude any variable payments. Environmental obligations are based on estimates subject to various assumptions including, but not limited to, closure and post-closure cost estimates, timing of expenditures, escalation factors, and requirements of granted permits. Additional adjustments to the environment liability may occur periodically due to potential changes in remediation requirements regarding coal combustion residuals which may lead to material changes in estimates and assumptions.\nSummary of Cash Flow\nThe following table provides information about our net cash flow for the years ended December 31, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1814,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 1863,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net cash used by operating activities from continuing operations",
+     "$",
+     "(12,155)",
+     "$",
+     "(14,485)"
+    ],
+    [
+     "Net cash used for investing activities from continuing operations",
+     "(6,031)",
+     "",
+     "(121,354)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities from continuing operations",
+     "13,772",
+     "",
+     "62,137",
+     ""
+    ],
+    [
+     "Increase in cash and cash equivalents from discontinued operations",
+     "2,509",
+     "",
+     "6,320",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "(1,905)",
+     "",
+     "(67,382)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "15,217",
+     "",
+     "82,599",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "13,312",
+     "$",
+     "15,217"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1839,
+    "end_line": 1854
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The debt payments included in the table above include the principal and interest amounts due. The lease payments include fixed monthly rental payments and exclude any variable payments. Environmental obligations are based on estimates subject to various assumptions including, but not limited to, closure and post-closure cost estimates, timing of expenditures, escalation factors, and requirements of granted permits. Additional adjustments to the environment liability may occur periodically due to potential changes in remediation requirements regarding coal combustion residuals which may lead to material changes in estimates and assumptions.\nSummary of Cash Flow\nThe following table provides information about our net cash flow for the years ended December 31, 2023 and 2022.",
+   "prose_after": "Operating Activities\nNet cash used for operating activities from continuing operations was $12.2 million for the year ended December 31, 2023, as compared to cash used for operating activities from continuing operations of $14.5 million for the year ended December 31, 2022. During the year ended 2023, payments made for prepaid expenses and accrued expenses were offset by an increase in accounts payable, the collection of an accounts receivable balance, which was caused by higher sales of power due to a cold streak at the end of December 2022, and the collection of a security deposit associated with the Hosting Agreements.\nInvesting Activities\nNet cash used for investing activities from continuing operations was $6.0 million for the year ended December 31, 2023, as compared to $121.4 million for the year ended December 31, 2022. For the year ended December 31, 2023, purchases of and deposits for property and equipment were $13.0 million in 2023 as compared to $133.0 million in 2022, as the Company was expanding its mining fleet in 2022. During 2023, the Company sold miners and coupons and credits redeemable to a manufacturer of bitcoin miners for proceeds of $7.0 million.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1814,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 1863,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Deficit for the years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2019,
+    "end_line": 2028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe information required by this Item will be included in the 2024 Proxy Statement, and is incorporated herein by reference.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nThe information required by this Item will be included in the 2024 Proxy Statement, and is incorporated herein by reference.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nThe information required by this Item will be included in the 2024 Proxy Statement, and is incorporated herein by reference.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.\n(a)The following documents are filed as part of this Annual Report on Form 10-K:\n1.Consolidated Financial Statements",
+   "prose_after": "2.Consolidated Financial Statement Schedules\nAll schedules have been omitted because they are not applicable, not required or the information is included elsewhere in the Consolidated Financial Statements or Notes thereto.\n3.Exhibits\nThe exhibits listed in the following Exhibit Index are filed or furnished with or incorporated by reference in this Annual Report.\nEXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2011,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "2.1+",
+     "Agreement and Plan of Merger, dated as of March 19, 2021, among Greenidge Generation Holdings Inc., Support.com, Inc. and GGH Merger Sub, Inc. (incorporated by reference to Annex A to the proxy statement/prospectus forming part of the Registration Statement on Form S-4 filed on May 4, 2021)."
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of Greenidge Generation Holdings Inc., dated September 6, 2022 (incorporated by reference to Exhibit 3.1 to the Registration Statement on Form S-8 filed on October 31, 2022)."
+    ],
+    [
+     "3.1A",
+     "Certificate of Amendment to the Second Amended and Restated Certificate of Incorporation of Greenidge Generation Holdings Inc., effective May 16, 2023 (incorporated by reference to Exhibit 3.1 to the Current Report on Form 8-K filed on May 5, 2023)."
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Greenidge Generation Holdings Inc. (incorporated by reference to Exhibit 3.2 to the Registration Statement on Form S-4 filed on July 16, 2021)."
+    ],
+    [
+     "4.1",
+     "Indenture dated as of October 13, 2021 between Greenidge Generation Holdings Inc. and Wilmington Savings Fund Society, FSB, as trustee (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed on October 13, 2021)."
+    ],
+    [
+     "4.2",
+     "First Supplemental Indenture dated as of October 13, 2021 between Greenidge Generation Holdings Inc. and Wilmington Savings Fund Society, FSB, as trustee (incorporated by reference to Exhibit 4.2 to the Current Report on Form 8-K filed on October 13, 2021)."
+    ],
+    [
+     "4.3",
+     "Form of 8.50% Senior Note due 2026 (included as Exhibit A to Exhibit 4.2 above)."
+    ],
+    [
+     "4.4",
+     "Stock Purchase Warrant, dated September 14, 2021 (incorporated by reference to Exhibit 4.4 to the Quarterly Report on Form 10-Q filed on November 15, 2021)."
+    ],
+    [
+     "4.5",
+     "Form of Registration Rights Agreement, dated January 29, 2021 (incorporated by reference to Exhibit 4.1 to the Registration Statement on Form S-4 filed on May 4, 2021)."
+    ],
+    [
+     "4.5A",
+     "Form of Right of First Refusal and Co-Sale Agreement, dated January 29, 2021 (incorporated by reference to Exhibit 4.2 to the Registration Statement on Form S-4 filed on May 4, 2021)."
+    ],
+    [
+     "4.5B",
+     "Form of Registration Compliance Agreement dated September 1, 2021 (incorporated by reference to Exhibit 4.4 to the Registration Statement on Form S-1 filed on September 1, 2021)."
+    ],
+    [
+     "4.5C",
+     "Investor Agreement by and between 210 Capital, LLC and Greenidge Generation Holdings Inc. filed on September 9, 2021 (incorporated by reference to Exhibit 4.5 to the Registration Statement on Form S-1/A filed on September 14, 2021)."
+    ],
+    [
+     "4.6*",
+     "Description of Registrant's Securities."
+    ],
+    [
+     "10.1+",
+     "Purchase and Sale Agreement, dated October 21, 2021, between LSC Communications MCL LLC and 300 Jones Road LLC. (incorporated by reference to Exhibit 10.8 to the Registration Statement on Form S-1 filed on December 1, 2021)."
+    ],
+    [
+     "10.2\u2020",
+     "Greenidge Generation Holdings Inc. 2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.1 to the Registration Statement on Form S-1/A filed on September 14, 2021)."
+    ],
+    [
+     "10.2A\u2020",
+     "Greenidge Generation Holdings Inc. Amended and Restated 2021 Equity Incentive Plan (incorporated by reference to Exhibit 99.1 to the Registration Statement on Form S-8 filed on May 26, 2023)."
+    ],
+    [
+     "10.3\u2020",
+     "Form of Stock Option Agreement for Greenidge Generation Holdings Inc. 2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.2 to the Registration Statement on Form S-4 filed on May 4, 2021)."
+    ],
+    [
+     "10.4\u2020",
+     "Form of Restricted Stock Award Agreement for Greenidge Generation Holdings Inc. 2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.3 to the Registration Statement on Form S-4 filed on May 4, 2021)."
+    ],
+    [
+     "10.5\u2020",
+     "Form of Restricted Stock Unit Award Agreement for the Greenidge Generation Holdings Inc. 2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.7 to the Quarterly Report on Form 10-Q filed on November 15, 2021)."
+    ],
+    [
+     "10.6\u2020",
+     "Executive Employment Agreement, dated November 12, 2021, between Greenidge Generation Holdings Inc. and Robert Loughran (incorporated by reference to Exhibit 10.3 to the Quarterly Report on Form 10-Q filed on November 15, 2021)."
+    ],
+    [
+     "10.7",
+     "Agreement between Greenidge Generation and Empire Pipeline Inc. (incorporated by reference to Exhibit 10.7 to the Registration Statement on Form S-4/A filed on June 25, 2021)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2040,
+    "end_line": 2083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "2.Consolidated Financial Statement Schedules\nAll schedules have been omitted because they are not applicable, not required or the information is included elsewhere in the Consolidated Financial Statements or Notes thereto.\n3.Exhibits\nThe exhibits listed in the following Exhibit Index are filed or furnished with or incorporated by reference in this Annual Report.\nEXHIBIT INDEX",
+   "prose_after": "10.8 Purchase Agreement, dated as of September 15, 2021, between Greenidge Generation Holdings Inc. and B. Riley Principal Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on September 15, 2021). 10.9 Form of Indemnification Agreement with Directors and Officers of Greenidge Generation Holdings Inc. (incorporated by reference to Exhibit 10.6 to the Quarterly Report on Form 10-Q filed on November 15, 2021). 10.10\u2020 Executive Employment Agreement, dated November 15, 2021, between Greenidge Generation Holdings Inc. and Terence Burke (incorporated by reference to Exhibit 10.12 to the Annual Report on Form 10-K filed on March 31, 2022). 10.11\u2020 Letter Agreement, dated December 28, 2021, between Greenidge Generation Holdings Inc. and Jeffrey Kirt (incorporated by reference to Exhibit 10.14 to the Annual Report on Form 10-K filed on March 31, 2022). 10.12 Bridge Promissory Note, dated March 18, 2022, by Greenidge Generation Holdings Inc., as borrower, in favor of B. Riley Commercial Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on March 24, 2022). 10.13 Master Equipment Finance Agreement, dated as of March 21, 2022, by and among GTX Gen 1 Collateral LLC, GNY Collateral LLC, GSC Collateral LLC, Greenidge Generation Holdings, Inc., each guarantor party thereto, and NYDIG ABL LLC, as lender, servicer and collateral agent (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on March 24, 2022). 10.14 Purchase Agreement, dated as of April 7, 2022, between Greenidge Generation Holdings Inc. and B. Riley Principal Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on April 8, 2022). 10.15 Registration Rights Agreement, dated as of April 7, 2022, between Greenidge Generation Holdings Inc. and B. Riley Principal Capital, LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on April 8, 2022). 10.16 Amendment No. 1 to Common Stock Purchase Agreement, dated as of April 13, 2022, between Greenidge Generation Holdings Inc. and B. Riley Principal Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on April 14, 2022). 10.17 Amended and Restated Bridge Promissory Note, dated August 10, 2022, by Greenidge Generation Holdings Inc., as borrower, in favor of B. Riley Commercial Capital, LLC (incorporated by reference to Exhibit 10.6 to the Quarterly Report on Form 10-Q filed on August 15, 2022). 10.18\u2020 Executive Employment Agreement, dated as of August 15, 2022, by and between Greenidge Generation Holdings Inc. and Dale Irwin (incorporated by reference to Exhibit 10.7 to the Quarterly Report on Form 10-Q filed on August 15, 2022). 10.19 At Market Issuance Sales Agreement, dated September 19, 2022, by and among Greenidge Generation Holdings Inc., B. Riley Securities, Inc. and Northland Securities, Inc. (incorporated by reference to Exhibit 1.1 to the Registration Statement on Form S-3 filed on September 19, 2022). 10.20 Amendment No. 1 to At Market Issuance Sales Agreement, dated October 3, 2022, by and among Greenidge Generation Holdings Inc., B. Riley Securities, Inc. and Northland Securities, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on October 4, 2022). 10.21 Debt Settlement Agreement, dated as of January 30, 2023, by and among Greenidge Generation Holdings Inc., Greenidge Generation LLC, the other Subsidiaries of Greenidge Generation Holdings Inc., and NYDIG ABL LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on January 31, 2023). 10.22 Senior Secured Loan Agreement, dated as of January 30, 2023, by and among Greenidge Generation Holdings Inc., Greenidge Generation LLC, the Guarantors from time to time party thereto, the Lenders from time to time party thereto, and NYDIG ABL LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on January 31, 2023). 10.23 Membership Interest and Asset Purchase Agreement, dated January 30, 2023, by and among NYDIG ABL LLC, Greenidge Generation Holdings, Inc., Greenidge Generation LLC, GSC Collateral LLC, and GNY Collateral LLC (incorporated by reference to Exhibit 10.3 to the Current Report on Form 8-K filed on January 31, 2023). 10.24 Form of Hosting Services Agreement, dated as of January 30, 2023, between Greenidge South Carolina LLC and separate NYDIG subsidiaries (incorporated by reference to Exhibit 10.4 to the Company\u2019s Form 8-K filed on January 31, 2023). 10.25 Board Observation Rights Letter, dated as of January 30, 2023, between Greenidge Generation Holding, Inc. and NYDIG ABL LLC (incorporated by reference to Exhibit 10.5 of the Current Report on Form 8-K filed on January 31, 2023).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 2084,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 77
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "10.45",
+     "Common Stock Purchase Warrant, dated February 14, 2024, issued by Greenidge Generation Holdings Inc. to Armistice Capital Master Fund Ltd. (incorporated by reference to Exhibit 10.3 to the Current Report on Form 8-K filed on February 16, 2024)."
+    ],
+    [
+     "10.46*",
+     "Commercial Purchase and Sale Agreement, dated March 6, 2024, by and between Greenidge Mississippi LLC and Janesville, LLC."
+    ],
+    [
+     "16.1",
+     "Letter of Armanino LLP, dated May 12, 2023, to the SEC regarding statements included in Form 8-K (incorporated by reference to Exhibit 16.1 to the Current Report on Form 8-K filed on May 12, 2023)."
+    ],
+    [
+     "19.1*",
+     "Insider Trading Policy of Greenidge Generation Holdings Inc."
+    ],
+    [
+     "21.1*",
+     "Subsidiaries of Greenidge Generation Holdings Inc."
+    ],
+    [
+     "23.1*",
+     "Consent of MaloneBailey LLP."
+    ],
+    [
+     "23.2*",
+     "Consent of Armanino LLP."
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "97.1*",
+     "Policy for the Recovery of Erroneously Awarded Compensation."
+    ],
+    [
+     "99.1",
+     "Unaudited Pro Forma Financial Information for the South Carolina Facility Sale (incorporated by reference to Exhibit 99.1 to the Quarterly Report on Form 10-Q filed on November 14, 2023)."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2091,
+    "end_line": 2118
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "10.26 Consent and Amendment No. 1 to Amended and Restated Bridge Promissory Note, dated as of January 30, 2023, between Greenidge Generation Holdings Inc. and B. Riley Commercial Capital, LLC (incorporated by reference to Exhibit 10.6 to the Current Report on Form 8-K filed on January 31, 2023). 10.27\u2020 Offer Letter, dated October 7, 2022, between Greenidge Generation Holdings Inc. and David Anderson (incorporated by reference to Exhibit 10.27 to the Annual Report on Form 10-K filed on March 31, 2023). 10.28\u2020 Offer Letter, dated October 7, 2022, between Greenidge Generation Holdings Inc. and Scott MacKenzie (incorporated by reference to Exhibit 10.28 to the Annual Report on Form 10-K filed on March 31, 2023). 10.29\u2020 Form of Stock Option Inducement Award Agreement (incorporated by reference to Exhibit 99.1 to the Registration Statement on Form S-8 filed on October 31, 2022). 10.30\u2020 Letter Agreement, dated October 10, 2022, between Greenidge Generation Holdings Inc. and Jeffrey Kirt (incorporated by reference to Exhibit 10.30 to the Annual Report on Form 10-K filed on March 31, 2023). 10.31 Amendment No. 2 to Senior Secured Loan Agreement, dated as of August 21, 2023, by and among Greenidge Generation Holdings Inc., Greenidge Generation LLC, the guarantors and lenders party to the Senior Secured Loan Agreement, and NYDIG ABL LLC, as administrative and collateral agent (incorporated by reference to Exhibit 10.7 to the Current Report on Form 8-K filed on August 23, 2023). 10.32 Amendment No. 4 to Amended and Restated Bridge Promissory Note, dated as of August 21, 2023, by and among Greenidge Generation Holdings Inc., NYDIG ABL LLC, and the Guarantors identified therein (incorporated by reference to Exhibit 10.8 to the Current Report on Form 8-K filed on August 23, 2023). 10.33 Asset Purchase Agreement (the \u201cAPA\u201d), dated November 9, 2023, by and among (i) NYDIG ABL LLC (\"NYDIG\"), (ii) SC 1 Mining Site LLC, an Affiliate of NYDIG, (iii) Greenidge Generation Holdings Inc. (\"Holdings\"), (iv) Greenidge South Carolina, LLC, a wholly-owned direct subsidiary of Holdings (\"Property Seller Parent\"), (v) 300 Jones Road LLC, a wholly-owned indirect subsidiary of Property Seller Parent, and (vi) each of the wholly-owned direct and indirect Subsidiaries of Holdings listed on Annex I thereto (incorporated by reference to Exhibit 10.8 of the Quarterly Report on Form 10-Q filed on November 14, 2023). 10.34 Real Estate Purchase and Sale Agreement dated November 9, 2023, by and among (i) SC 1 Mining Site LLC, (ii) Greenidge Generation Holdings Inc. (\"Holdings\"), (iii) Greenidge South Carolina LLC, a wholly-owned direct Subsidiary of Holdings (\"Property Seller Parent\"), (iv) 300 Jones Road LLC, a wholly-owned indirect Subsidiary of Property Seller Parent, and (v) each of the wholly-owned direct and indirect Subsidiaries of Holdings listed on Annex I of the APA (incorporated by reference to Exhibit 10.9 to the Quarterly Report Form 10-Q filed on November 14, 2023). 10.35 Transition Services Agreement, dated November 9, 2023, by and between SC 1 Mining Site LLC and Greenidge Generation Holdings Inc. (incorporated by reference to Exhibit 10.10 to the Quarterly Report on Form 10-Q filed on November 14, 2023). 10.36 Hosting Order Termination Agreement, dated November 9, 2023, between Greenidge South Carolina LLC, and SC 1 Mining LLC (incorporated by reference to Exhibit 10.11 to the Quarterly Report on Form 10-Q filed on November 14, 2023). 10.37*\u2020 Offer Letter, effective October 11, 2023, between Greenidge Generation Holdings Inc. and Christian Mulvihill. 10.38*\u2020 Offer Letter, dated November 16, 2023, between Greenidge Generation Holdings Inc. and Jordan Kovler. 10.39 Master Services Agreement, dated December 11, 2023, by and between Greenidge Generation Holdings Inc. and Infinite Reality, Inc. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on December 12, 2023). 10.40 Equity Exchange Agreement, dated December 11, 2023, by and between Greenidge Generation Holdings Inc. and Infinite Reality, Inc. (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on December 12, 2023). 10.41 Stock Purchase Warrant, dated December 11, 2023, issued by Greenidge Generation Holdings Inc. to Infinite Reality, Inc. (incorporated by reference to Exhibit 10.3 to the Current Report on Form 8-K filed on December 12, 2023). 10.42 Warrant to Purchase Shares of Common Stock, dated December 11, 2023, issued by Infinite Reality, Inc. to Greenidge Generation Holdings Inc. (incorporated by reference to Exhibit 10.4 to the Current Report on Form 8-K filed on December 12, 2023). 10.43 Securities Purchase Agreement, dated February 12, 2024, by and between Greenidge Generation Holdings Inc. and Armistice Capital Master Fund Ltd. (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on February 16, 2024). 10.44 Pre-Funded Common Stock Purchase Warrant, dated February 14, 2024, issued by Greenidge Generation Holdings Inc. to Armistice Capital Master Fund Ltd. (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on February 16, 2024).",
+   "prose_after": "_______________\n* Filed herewith ** The certifications furnished in Exhibits 32.1 and 32.2 hereto are deemed to accompany this Annual Report and will not be deemed \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and are not to be incorporated by reference into any of the Registrant\u2019s filings under the Securities Act of 1933, as amended or the Securities Exchange Act of 1934, as amended, irrespective of general incorporation language contained in any such filing.\n+ Certain schedules and exhibits have been omitted pursuant to Item 601(a)(5) or Item 601(b)(2) of Regulation S-K. The Registrant hereby undertakes to furnish copies of the omitted schedule or exhibit upon request by the Securities and Exchange Commission. \u2020 Management contract or compensatory plan or arrangement.\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2090,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 2132,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "GREENIDGE GENERATION HOLDINGS INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 9, 2024",
+     "By:",
+     "/s/ Jordan Kovler"
+    ],
+    [
+     "",
+     "",
+     "Jordan Kovler"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "GREENIDGE GENERATION HOLDINGS INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2133,
+    "end_line": 2141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith ** The certifications furnished in Exhibits 32.1 and 32.2 hereto are deemed to accompany this Annual Report and will not be deemed \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and are not to be incorporated by reference into any of the Registrant\u2019s filings under the Securities Act of 1933, as amended or the Securities Exchange Act of 1934, as amended, irrespective of general incorporation language contained in any such filing.\n+ Certain schedules and exhibits have been omitted pursuant to Item 601(a)(5) or Item 601(b)(2) of Regulation S-K. The Registrant hereby undertakes to furnish copies of the omitted schedule or exhibit upon request by the Securities and Exchange Commission. \u2020 Management contract or compensatory plan or arrangement.\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nEach person whose signature appears below constitutes and appoints Jordan Kovler and Christian Mulvihill, and each one of them, as his or her true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for him or her and in their name, place, and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents or any of them, or his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2132,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 2146,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Jordan Kovler",
+     "Chief Executive Officer (Principal Executive Officer and Director)",
+     "April 9, 2024"
+    ],
+    [
+     "Jordan Kovler",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Christian Mulvihill",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)",
+     "April 9, 2024"
+    ],
+    [
+     "Christian Mulvihill",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Anderson",
+     "Chairman of the Board of Directors",
+     "April 9, 2024"
+    ],
+    [
+     "David Anderson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Andrew M. Bursky",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Andrew M. Bursky",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Timothy Fazio",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Timothy Fazio",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Filippelli",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "David Filippelli",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jerome Lay",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Jerome Lay",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Timothy Lowe",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Timothy Lowe",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Neuscheler",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Michael Neuscheler",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ George (Ted) Rogers",
+     "Vice Chairman of the Board of Directors",
+     "April 9, 2024"
+    ],
+    [
+     "George (Ted) Rogers",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Daniel Rothaupt",
+     "Director",
+     "April 9, 2024"
+    ],
+    [
+     "Daniel Rothaupt",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2149,
+    "end_line": 2196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Each person whose signature appears below constitutes and appoints Jordan Kovler and Christian Mulvihill, and each one of them, as his or her true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for him or her and in their name, place, and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents or any of them, or his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2146,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 2197,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 82
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID: 206)",
+     "F-2"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID:32)",
+     "F-3"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the Years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit for the Years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years ended December 31, 2023 and 2022",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2200,
+    "end_line": 2209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and Board of Directors of\nGreenidge Generation Holdings Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of Greenidge Generation Holdings Inc. and its subsidiaries (collectively, the \u201cCompany\u201d) as of December 31, 2023, and the related consolidated statements of operations and comprehensive loss, stockholders\u2019 deficit, and cash flows for the year then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023, and the results of their operations and their cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Matter\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations and generated negative cash flows from operations that raises substantial doubt about its ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2197,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 2209,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, including restricted cash",
+     "$",
+     "13,312",
+     "$",
+     "15,217"
+    ],
+    [
+     "Digital assets",
+     "347",
+     "",
+     "348",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "358",
+     "",
+     "2,696",
+     ""
+    ],
+    [
+     "Prepaid expenses and current other assets",
+     "3,864",
+     "",
+     "6,266",
+     ""
+    ],
+    [
+     "Emissions and carbon offset credits",
+     "5,694",
+     "",
+     "1,260",
+     ""
+    ],
+    [
+     "Income tax receivable",
+     "857",
+     "",
+     "798",
+     ""
+    ],
+    [
+     "Current assets held for sale",
+     "\u2014",
+     "",
+     "6,473",
+     ""
+    ],
+    [
+     "Total current assets",
+     "24,432",
+     "",
+     "33,058",
+     ""
+    ],
+    [
+     "LONG-TERM ASSETS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "45,095",
+     "",
+     "130,417",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "1,652",
+     "",
+     "292",
+     ""
+    ],
+    [
+     "Total assets",
+     "71,179",
+     "",
+     "163,767",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "3,495",
+     "",
+     "9,608",
+     ""
+    ],
+    [
+     "Accrued emissions expense",
+     "10,520",
+     "",
+     "6,052",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "6,116",
+     "",
+     "11,327",
+     ""
+    ],
+    [
+     "Short-term environmental liability",
+     "363",
+     "",
+     "600",
+     ""
+    ],
+    [
+     "Long-term debt, current portion",
+     "\u2014",
+     "",
+     "67,161",
+     ""
+    ],
+    [
+     "Current liabilities held for sale",
+     "483",
+     "",
+     "3,974",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "20,977",
+     "",
+     "98,722",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion and deferred financing fees",
+     "68,710",
+     "",
+     "84,585",
+     ""
+    ],
+    [
+     "Environmental liabilities",
+     "29,866",
+     "",
+     "27,400",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "2,650",
+     "",
+     "107",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "122,203",
+     "",
+     "210,814",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (NOTE 10)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.0001, 20,000,000 shares authorized, none outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, par value $0.0001, 500,000,000 shares authorized, 9,131,252 and 4,625,278 1 shares issued and outstanding as of December 31, 2023 and 2022, respectively",
+     "1",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cumulative translation adjustment",
+     "(345)",
+     "",
+     "(357)",
+     ""
+    ],
+    [
+     "Additional paid-in capital 1",
+     "319,992",
+     "",
+     "293,774",
+     ""
+    ],
+    [
+     "Common stock subscription receivable",
+     "(698)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(369,974)",
+     "",
+     "(340,464)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "(51,024)",
+     "",
+     "(47,047)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "$",
+     "71,179",
+     "$",
+     "163,767"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2280,
+    "end_line": 2332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit of the consolidated financial statements included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Armanino LLP\nArmanino LLP\nDallas, Texas\nMarch 31, 2023, except for the effects of the reverse stock split discussed in Notes 1 and 6 to the consolidated financial statements, as to which the date is April 9, 2024.\nWe have served as the Company's auditor since 2021. In 2023, we became the predecessor auditor.\nGREENIDGE GENERATION HOLDINGS INC. CONSOLIDATED BALANCE SHEETS (Dollars amounts in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2277,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2336,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "REVENUE:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining, net",
+     "$",
+     "24,238",
+     "$",
+     "73,809"
+    ],
+    [
+     "Datacenter hosting",
+     "39,478",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Power and capacity",
+     "6,672",
+     "",
+     "16,170",
+     ""
+    ],
+    [
+     "Total revenue",
+     "70,388",
+     "",
+     "89,979",
+     ""
+    ],
+    [
+     "OPERATING COSTS AND EXPENSES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue - cryptocurrency mining (exclusive of depreciation and amortization)",
+     "15,051",
+     "",
+     "47,195",
+     ""
+    ],
+    [
+     "Cost of revenue - datacenter hosting (exclusive of depreciation and amortization)",
+     "29,695",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cost of revenue - power and capacity (exclusive of depreciation and amortization)",
+     "6,259",
+     "",
+     "14,357",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "26,167",
+     "",
+     "35,233",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "13,602",
+     "",
+     "35,136",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "(1,780)",
+     ""
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "176,307",
+     ""
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "16,694",
+     ""
+    ],
+    [
+     "Total operating costs and expenses",
+     "87,280",
+     "",
+     "323,142",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "(16,892)",
+     "",
+     "(233,163)",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE), NET:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(12,659)",
+     "",
+     "(21,575)",
+     ""
+    ],
+    [
+     "Gain (loss) on sale of digital assets",
+     "512",
+     "",
+     "(15)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "\u2014",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Total other expense, net",
+     "(12,147)",
+     "",
+     "(21,576)",
+     ""
+    ],
+    [
+     "Loss from continuing operations before taxes",
+     "(29,039)",
+     "",
+     "(254,739)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "\u2014",
+     "",
+     "15,002",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "(29,039)",
+     "",
+     "(269,741)",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "(471)",
+     "",
+     "(1,327)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(29,510)",
+     "$",
+     "(271,068)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "(29,510)",
+     "",
+     "(271,068)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "12",
+     "",
+     "(357)",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "(29,498)",
+     "",
+     "(271,425)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share from continuing operations, basic and diluted 1",
+     "$",
+     "(4.36)",
+     "$",
+     "(63.66)"
+    ],
+    [
+     "Loss per share from discontinued operations, basic and diluted 1",
+     "(0.07)",
+     "",
+     "(0.31)",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted 1",
+     "$",
+     "(4.43)",
+     "$",
+     "(63.97)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding, basic and diluted 1",
+     "6,660",
+     "",
+     "4,237",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2342,
+    "end_line": 2397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\n(in thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\n(in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2336,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2401,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock 1",
+     "",
+     "",
+     "Additional Paid-In Capital 1",
+     "",
+     "Subscription Receivable",
+     "",
+     "Cumulative Translation Adjustment",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "4,086,534",
+     "$",
+     "\u2014",
+     "$",
+     "281,819",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "(69,396)",
+     "$",
+     "212,423"
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,636",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,636",
+     ""
+    ],
+    [
+     "Issuance of shares, net of issuance costs",
+     "489,576",
+     "\u2014",
+     "",
+     "9,532",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "9,532",
+     ""
+    ],
+    [
+     "Restricted shares award issuance, net of withholdings",
+     "48,938",
+     "\u2014",
+     "",
+     "(227)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(227)",
+     ""
+    ],
+    [
+     "Proceeds from stock options exercised",
+     "230",
+     "\u2014",
+     "",
+     "14",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(357)",
+     "",
+     "\u2014",
+     "",
+     "(357)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(271,068)",
+     "",
+     "(271,068)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "4,625,278",
+     "\u2014",
+     "",
+     "293,774",
+     "",
+     "\u2014",
+     "",
+     "(357)",
+     "",
+     "(340,464)",
+     "",
+     "(47,047)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,344",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,344",
+     ""
+    ],
+    [
+     "Issuance of shares, net of issuance costs",
+     "4,144,419",
+     "1",
+     "",
+     "21,528",
+     "",
+     "(698)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20,831",
+     ""
+    ],
+    [
+     "Reverse stock split fractional share adjustment",
+     "34,538",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Restricted shares award issuance, net of withholdings",
+     "13,684",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issuance of shares for amendment fee associated with debt modification (Note 6)",
+     "133,333",
+     "\u2014",
+     "",
+     "1,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Shares issued in connection with equity exchange agreement",
+     "180,000",
+     "\u2014",
+     "",
+     "869",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "869",
+     ""
+    ],
+    [
+     "Issuance of warrants in connection with equity exchange agreement",
+     "\u2014",
+     "\u2014",
+     "",
+     "477",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "477",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12",
+     "",
+     "\u2014",
+     "",
+     "12",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(29,510)",
+     "",
+     "(29,510)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "9,131,252",
+     "$",
+     "1",
+     "$",
+     "319,992",
+     "$",
+     "(698)",
+     "$",
+     "(345)",
+     "$",
+     "(369,974)",
+     "$",
+     "(51,024)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2408,
+    "end_line": 2438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 DEFICIT\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS (in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2401,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES FROM CONTINUING OPERATIONS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(29,510)",
+     "$",
+     "(271,068)"
+    ],
+    [
+     "Loss from discontinued operations",
+     "(471)",
+     "",
+     "(1,327)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "(29,039)",
+     "",
+     "(269,741)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss from continuing operations to net cash flow from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "13,602",
+     "",
+     "35,136",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "\u2014",
+     "",
+     "15,055",
+     ""
+    ],
+    [
+     "Impairment of long-lived assets",
+     "4,000",
+     "",
+     "176,307",
+     ""
+    ],
+    [
+     "Other non-cash affecting net income",
+     "\u2014",
+     "",
+     "2,097",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "2,611",
+     "",
+     "3,946",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "591",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "2,344",
+     "",
+     "2,636",
+     ""
+    ],
+    [
+     "Remeasurement of environmental liability",
+     "2,409",
+     "",
+     "16,694",
+     ""
+    ],
+    [
+     "Professional fees paid in common stock",
+     "250",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(9,903)",
+     "",
+     "(1,780)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "2,338",
+     "",
+     "(2,459)",
+     ""
+    ],
+    [
+     "Digital Assets",
+     "1",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Emissions and carbon offset credits",
+     "(4,434)",
+     "",
+     "1,101",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "2,829",
+     "",
+     "1,218",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(2,748)",
+     "",
+     "(48)",
+     ""
+    ],
+    [
+     "Accrued emissions expense",
+     "4,468",
+     "",
+     "3,418",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "(3,407)",
+     "",
+     "4,644",
+     ""
+    ],
+    [
+     "Income taxes payable and receivable",
+     "(59)",
+     "",
+     "(3,142)",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "2,543",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "(551)",
+     "",
+     "433",
+     ""
+    ],
+    [
+     "Net cash flow used for by operating activities from continuing operations",
+     "(12,155)",
+     "",
+     "(14,485)",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES FROM CONTINUING OPERATIONS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of and deposits for property and equipment",
+     "(13,015)",
+     "",
+     "(132,950)",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "6,984",
+     "",
+     "11,100",
+     ""
+    ],
+    [
+     "Proceeds from sale of short term investments",
+     "\u2014",
+     "",
+     "496",
+     ""
+    ],
+    [
+     "Net cash flow used for investing activities from continuing operations",
+     "(6,031)",
+     "",
+     "(121,354)",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES FROM CONTINUING OPERATIONS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock, net of issuance costs",
+     "20,581",
+     "",
+     "9,531",
+     ""
+    ],
+    [
+     "Proceeds from stock options exercised",
+     "\u2014",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Restricted stock unit awards settled in cash for taxes",
+     "\u2014",
+     "",
+     "(227)",
+     ""
+    ],
+    [
+     "Proceeds from debt, net of issuance costs",
+     "\u2014",
+     "",
+     "107,105",
+     ""
+    ],
+    [
+     "Principal payments on debt",
+     "(6,809)",
+     "",
+     "(53,923)",
+     ""
+    ],
+    [
+     "Repayments of finance lease obligations",
+     "\u2014",
+     "",
+     "(363)",
+     ""
+    ],
+    [
+     "Net cash flow provided by financing activities from continuing operations",
+     "13,772",
+     "",
+     "62,137",
+     ""
+    ],
+    [
+     "Discontinued Operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash flow from operating activities of discontinued operations",
+     "(816)",
+     "",
+     "6,320",
+     ""
+    ],
+    [
+     "Net cash flow from investing activities of discontinued operations",
+     "3,325",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase in cash and cash equivalents from discontinued operations",
+     "2,509",
+     "",
+     "6,320",
+     ""
+    ],
+    [
+     "CHANGE IN CASH, CASH EQUIVALENTS AND RESTRICTED CASH",
+     "(1,905)",
+     "",
+     "(67,382)",
+     ""
+    ],
+    [
+     "CASH, CASH EQUIVALENTS AND RESTRICTED CASH - beginning of year",
+     "15,217",
+     "",
+     "82,599",
+     ""
+    ],
+    [
+     "CASH, CASH EQUIVALENTS AND RESTRICTED CASH - end of year",
+     "$",
+     "13,312",
+     "$",
+     "15,217"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2446,
+    "end_line": 2509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n1 Retroactively adjusted for the effects of the Reverse Stock Split (see Note 1 \u2014 Organization and Description of Business)\nGREENIDGE GENERATION HOLDINGS INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS (in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nGREENIDGE GENERATION HOLDINGS INC. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. ORGANIZATION AND DESCRIPTION OF BUSINESS\nGreenidge Generation Holdings Inc. (\"Greenidge\") and its subsidiaries (collectively, the \"Company\") owns and operates a vertically integrated cryptocurrency datacenter and power generation company. The Company owns and operates a facility in the Town of Torrey, New York (the \"New York Facility\") and owned and operated a facility in Spartanburg, South Carolina (the \"South Carolina Facility\"). The Company generates revenue in U.S. dollars by providing hosting, power and technical support services to third-party owned bitcoin mining equipment and generates revenue in the form of bitcoin as rewards and transaction fees for supporting the global bitcoin network with application-specific integrated circuit computers (\"ASICs\" or \"miners\") owned by the Company, which may be operated at the Company's sites or at third-party hosting sites through short-term hosting agreements. The Company also owns and operates a 106 megawatt (\"MW\") power facility that is connected to the New York Independent System Operator (\"NYISO\") power grid. In addition to the electricity used \"behind the meter\" by the New York datacenter, the Company sells electricity to the NYISO at all times when its power plant is running and increases or decreases the amount of electricity sold based on prevailing prices in the wholesale electricity market and demand for electricity.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2442,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 2510,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Digital Assets at December 31, 2022",
+     "348"
+    ],
+    [
+     "Revenues from digital asset production",
+     "24,238"
+    ],
+    [
+     "Sale of digital assets",
+     "(24,239)"
+    ],
+    [
+     "Digital Assets at December 31, 2023",
+     "347"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2609,
+    "end_line": 2616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company performs an analysis each period to identify whether events or changes in circumstances, principally decreases in the quoted prices on active exchanges, indicate that it is more likely than not that its digital assets are impaired. Digital assets are considered impaired if the carrying value is greater than the lowest intraday quoted prices at any time during the period. For quoted prices of bitcoin, the Company uses daily exchange data from its principal market. Subsequent reversal of impairment losses is not permitted. There were no impairments recorded during 2023. During the year ended December 31, 2022, the Company assessed its digital assets for impairment, and recorded an impairment of $0.1 million which is included in Other income, net on the Consolidated Statements of Operations and Comprehensive Loss. As of December 31, 2023 and 2022, the Company\u2019s digital assets consisted of 8.71 and 31.4 bitcoins, respectively. Bitcoins held as of December 31, 2023 were liquidated and remitted to the Company in early January 2024 as part of its ordinary operations.\nThe Company considers the conversion of digital assets into U.S. dollars as a part of its normal operating activities and includes the impact of that conversion in Net cash flow used by operating activities from continuing operations on the Consolidated Statements of Cash Flows. The Company\u2019s Bitcoin is sold on a daily basis after it is earned and that any difference in fair value and the amount of consideration received is recognized as a gain or loss on sale of digital assets. The earned bitcoin is exchanged for U.S. dollars.",
+   "prose_after": "Accounts Receivable\nThe Company provides credit in the normal course of business to its power customer, the NYISO, and hosting customer, NYDIG. The NYISO makes payments, depending on the type of revenue, within seven days of usage or seven days of month end. The NYDIG Hosting Agreement requires advance payment for estimated hosting services. The balance based on actual results is due upon receipt. There are currently no accounts receivable associated with cryptocurrency mining revenues. We have not experienced any historic credit losses with our power or hosting customers and therefore, we determined that no allowance for doubtful accounts is required for the years ended December 31, 2023 and 2022.\nEmissions Expense and Credits\nThe Company participates in the Regional Greenhouse Gas Initiative (\"RGGI\"), which requires, by law, that the Company remit credits to offset 50% of the Company\u2019s annual emission expense in the following year, for each of the years in the three year control period (January 1, 2021 to December 31, 2023). In March 2024, the Company settled the emissions allowance for the control period. The Company recognizes expense on a per ton basis, where one ton is equal to one RGGI credit.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2592,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2620,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Asset Class",
+     "Estimated Useful Lives"
+    ],
+    [
+     "Plant infrastructure",
+     "10 years"
+    ],
+    [
+     "Miners",
+     "3 years"
+    ],
+    [
+     "Miner facility infrastructure",
+     "10 years"
+    ],
+    [
+     "Equipment",
+     "5 years"
+    ],
+    [
+     "Software",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2631,
+    "end_line": 2640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The RGGI credits are recorded on a first in, first out (\"FIFO\") basis. The Company incurred emissions expense of $6.5 million and $4.5 million for the years ended December 31, 2023 and 2022, respectively, which was allocated between cost of revenue - cryptocurrency mining, cost of revenue - datacenter hosting and cost of revenue - power and capacity, based on the relative percentage of MWh consumed for each, in the accompanying Consolidated Statements of Operations and Comprehensive Loss.\nProperty and Equipment, net\nProperty and equipment are stated at cost, net of accumulated depreciation. Depreciation is calculated using the straight-line method over the estimated useful lives of the Company\u2019s depreciable assets, as noted in the table below. Construction in process is comprised of assets which have not been placed into service and is not depreciated until the related assets are complete and ready for their intended use, at which time the cost is transferred to the appropriate property and equipment class. Land and miner deposits are not depreciated. Repairs and maintenance costs are expensed as incurred. See Note 4, \"Property and Equipment, Net\" for additional information.",
+   "prose_after": "Valuation of Long-Lived Assets\nThe Company reviews its long-lived assets for impairment whenever events or changes in circumstances indicate that the carrying amount of the assets may not be fully recoverable. To determine recoverability of a long-lived asset, management evaluates whether the estimated future undiscounted net cash flows, based on prevailing market conditions, from the asset are less than its carrying amount. If impairment is indicated, the long-lived asset is written down to fair value. The Company recognized a noncash impairment charge of $4.0 million and $176.3 million for the years ended December 31, 2023 and 2022, respectively. See Note 4, \"Property and Equipment, Net\" for additional information.\nInvestments in Equity Securities\nThe Company owns common shares in a private company. The Company does not have control and does not have the ability to exercise significant influence over operating and financial policies of this entity. The investment does not have a readily determinable fair value and thus the investment is measured at cost less impairment, if any, plus or minus changes resulting from observable price changes in orderly transactions for identical or similar investments. Investments in equity securities are a component of Other long-term assets and gains (losses) on equity securities are recorded in Other income (expense) on the Consolidated Statements of Operations and Comprehensive Loss.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2620,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2652,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "\u2014",
+     "$",
+     "3,996"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "47",
+     "",
+     "1,253",
+     ""
+    ],
+    [
+     "Current assets held for sale",
+     "47",
+     "",
+     "5,249",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "\u2014",
+     "",
+     "743",
+     ""
+    ],
+    [
+     "Other assets",
+     "454",
+     "",
+     "481",
+     ""
+    ],
+    [
+     "Long-term assets held for sale",
+     "454",
+     "",
+     "1,224",
+     ""
+    ],
+    [
+     "Loss on classification to held for sale",
+     "(501)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Assets held for sale",
+     "\u2014",
+     "",
+     "6,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "21",
+     "",
+     "191",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "462",
+     "",
+     "3,351",
+     ""
+    ],
+    [
+     "Current liabilities held for sale",
+     "483",
+     "",
+     "3,542",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "\u2014",
+     "",
+     "432",
+     ""
+    ],
+    [
+     "Long-term liabilities held for sale",
+     "\u2014",
+     "",
+     "432",
+     ""
+    ],
+    [
+     "Liabilities held for sale",
+     "483",
+     "",
+     "3,974",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2791,
+    "end_line": 2825
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "DISCONTINUED OPERATIONS"
+    }
+   },
+   "prose_before": "The contract for Support.com's largest customer was not renewed upon expiration on December 31, 2022. As a result of this material change in the business, management and the Board of Directors made the determination to consider various alternatives for Support.com, including the disposition of assets. As of December 31, 2022, the Company classified the Support.com business as held for sale and discontinued operations in these consolidated financial statements as a result of its strategic shift to strictly focus on its cryptocurrency datacenter and power generation operations.\nIn January 2023, Greenidge completed the sale of a portion of the assets of Support.com for net proceeds of approximately $2.6 million. In June 2023, the Company entered into a purchase and sale agreement with third parties in order to sell certain remaining assets and liabilities, including the transfer of remaining customer contracts, for net proceeds of approximately $0.8 million. The Company has ended all Support.com operations as of December 31, 2023; therefore, the remaining assets and liabilities of Support.com have been presented as current at December 31, 2023 and December 31, 2022. The remaining assets and liabilities consist primarily of remaining prepaid expenses and refundable deposits, payables and accrued expenses associated with the closing of operations and foreign tax liabilities.\nMajor classes of assets and liabilities consist of the following:",
+   "prose_after": "Financial results from discontinued operations consist of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2780,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2825,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "4,223",
+     "$",
+     "31,464"
+    ],
+    [
+     "Cost of revenue - services and other (exclusive of depreciation and amortization)",
+     "(4,436)",
+     "",
+     "(14,791)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "\u2014",
+     "",
+     "(1,298)",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "(3,388)",
+     "",
+     "(9,852)",
+     ""
+    ],
+    [
+     "Merger and other costs",
+     "(684)",
+     "",
+     "(1,343)",
+     ""
+    ],
+    [
+     "Gain on asset disposal",
+     "4,162",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss on assets classified as held for sale",
+     "(501)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Goodwill and intangibles asset impairment charge",
+     "\u2014",
+     "",
+     "(5,672)",
+     ""
+    ],
+    [
+     "Other (loss) income, net",
+     "(179)",
+     "",
+     "353",
+     ""
+    ],
+    [
+     "Pretax loss of discontinued operations",
+     "(803)",
+     "",
+     "(1,139)",
+     ""
+    ],
+    [
+     "(Benefit) Provision for income taxes",
+     "(332)",
+     "",
+     "188",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "$",
+     "(471)",
+     "$",
+     "(1,327)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2828,
+    "end_line": 2848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "DISCONTINUED OPERATIONS"
+    }
+   },
+   "prose_before": "Financial results from discontinued operations consist of the following:",
+   "prose_after": "The Company\u2019s effective income tax rate from discontinued operations for the years ended December 31, 2023 and 2022 was 0% and (16.5)%, respectively, primarily due to goodwill impairment and nondeductible transaction costs.\n4. PROPERTY AND EQUIPMENT, NET\nProperty and equipment, net consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2825,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2880,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "$ in thousands",
+     "Estimated Useful Lives",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Plant infrastructure",
+     "10 years",
+     "$",
+     "1,367",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Miners",
+     "3 years",
+     "32,195",
+     "",
+     "81,979",
+     ""
+    ],
+    [
+     "Miner facility infrastructure",
+     "10 years",
+     "8,154",
+     "",
+     "14,203",
+     ""
+    ],
+    [
+     "Land",
+     "N/A",
+     "7,679",
+     "",
+     "8,460",
+     ""
+    ],
+    [
+     "Equipment",
+     "5 years",
+     "45",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Construction in process",
+     "N/A",
+     "6,229",
+     "",
+     "18,349",
+     ""
+    ],
+    [
+     "Miner deposits",
+     "N/A",
+     "\u2014",
+     "",
+     "7,381",
+     ""
+    ],
+    [
+     "",
+     "",
+     "55,669",
+     "",
+     "130,417",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(10,574)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "45,095",
+     "$",
+     "130,417"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2855,
+    "end_line": 2872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT, NET"
+    }
+   },
+   "prose_before": "The Company\u2019s effective income tax rate from discontinued operations for the years ended December 31, 2023 and 2022 was 0% and (16.5)%, respectively, primarily due to goodwill impairment and nondeductible transaction costs.\n4. PROPERTY AND EQUIPMENT, NET\nProperty and equipment, net consisted of the following:",
+   "prose_after": "Total depreciation expense was $13.6 million and $35.1 million for the years ended December 31, 2023 and 2022, respectively.\nOn January 30, 2023, Greenidge entered into an agreement regarding its 2021 and 2022 Master Equipment Finance Agreements with NYDIG. During the year ended December 31, 2023, the Company transferred ownership of bitcoin mining equipment with net book value of $50.0 million and miner deposits of $7.4 million that remained accrued to Greenidge for previous purchases of mining equipment with a bitcoin miner manufacturer and the related debt was canceled pursuant to a debt settlement agreement entered into with NYDIG. There was no gain or loss recognized on the sales of these assets. The Company recognized a gain on the sale of assets of $1.2 million, which relates to the sale of bitcoin miner manufacturer coupons that were transferred as part of the debt restructuring agreement with NYDIG.\nImpairment\nThe Company reviews its long-lived assets for impairment whenever events or changes in circumstances indicate that the carrying amount of the assets may not be fully recoverable. To determine recoverability of a long-lived asset, management evaluates whether the estimated future undiscounted net cash flows, based on prevailing market conditions, from the asset are less than its carrying amount. If impairment is indicated, the long-lived asset is written down to fair value.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2825,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2880,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "$ in thousands",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "5,000"
+    ],
+    [
+     "Plant Infrastructure",
+     "25,985",
+     ""
+    ],
+    [
+     "Miners",
+     "95,945",
+     ""
+    ],
+    [
+     "Miner Facility Infrastructure",
+     "17,811",
+     ""
+    ],
+    [
+     "Equipment",
+     "190",
+     ""
+    ],
+    [
+     "Software",
+     "70",
+     ""
+    ],
+    [
+     "Coal ash impoundment",
+     "925",
+     ""
+    ],
+    [
+     "Construction in process",
+     "30,381",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "176,307"
+    ]
+   ],
+   "caption_stack": [
+    "$ in thousands"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 2889,
+    "end_line": 2902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT, NET"
+    }
+   },
+   "prose_before": "The Company is evaluating future uses of the remaining real estate assets in South Carolina, which includes the land and the original building which was classified as construction in process as it was not used in cryptocurrency mining. The impairment assessment was performed using a market approach. An impairment charge of $4 million was recorded for the year ended December 31, 2023, which is the remaining value of the building which was determined to no longer be recoverable.\nDuring the year ended December 31, 2022, as a result of the significant reduction in the price of bitcoin and increased energy prices during 2022, the Company's results of operations, as well as income expectations, were negatively impacted resulting in the recognition of noncash impairment charges of $176.3 million to reduce the net book value of the long-lived assets to fair value.\nFair value was determined utilizing the market approach, relying on the guideline public company method. Our guideline public company method incorporates revenue and hash rate multiples from other publicly traded companies with operations and other characteristics similar to Greenidge.\nThe table below provides a summary of the impairment by category of asset for the year ended December 31, 2022:",
+   "prose_after": "Sale of South Carolina Facility\nAs described in Note 1, on November 9, 2023, the Company closed the sale of the South Carolina Facility to complete the deleveraging transaction with NYDIG. In exchange for the sale to NYDIG of the upgraded 44 MW South Carolina mining facilities and the subdivided real estate of approximately 22 acres of land, the Company received total consideration of $28 million, as follows:\n\u2022The Senior Secured Loan with NYDIG with remaining principal of $17.7 million was extinguished;\n\u2022The B. Riley Commercial Secured Promissory Note with remaining principal of $4.1 million, which NYDIG purchased from B. Riley Commercial on July 20, 2023 at par was extinguished;\n\u2022A cash payment of approximately $4.5 million, and\n\u2022The Company also received bonus payments earned of approximately $1.6 million as a result of the completion of the expansion of the upgraded mining facility and the facility's uptime performance.\nThe Company recognized a gain on the sale of the South Carolina Facility of $8.2 million.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2880,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2920,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "$ in thousands",
+     "",
+     "",
+     "",
+     "",
+     "As of:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note",
+     "Loan Date",
+     "Maturity Date",
+     "Interest Rate",
+     "",
+     "Initial Financing",
+     "December 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Equipment Financings:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "A - D",
+     "May 2021",
+     "October 2023",
+     "15.0",
+     "%",
+     "15,724",
+     "\u2014",
+     "",
+     "10,478",
+     ""
+    ],
+    [
+     "E",
+     "July 2021",
+     "January 2023",
+     "17.0",
+     "%",
+     "4,457",
+     "\u2014",
+     "",
+     "495",
+     ""
+    ],
+    [
+     "F",
+     "March 2022",
+     "April 2024",
+     "13.0",
+     "%",
+     "81,375",
+     "\u2014",
+     "",
+     "63,890",
+     ""
+    ],
+    [
+     "Senior Unsecured Notes",
+     "October 2021/December 2021",
+     "October 2026",
+     "8.5",
+     "%",
+     "72,200",
+     "72,200",
+     "",
+     "72,200",
+     ""
+    ],
+    [
+     "Secured Promissory Note",
+     "March 2022",
+     "June 2023",
+     "7.5",
+     "%",
+     "26,500",
+     "\u2014",
+     "",
+     "10,430",
+     ""
+    ],
+    [
+     "Total Debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "72,200",
+     "",
+     "157,493",
+     ""
+    ],
+    [
+     "Less: Debt discount and issue costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,490)",
+     "",
+     "(5,747)",
+     ""
+    ],
+    [
+     "Total debt at book value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "68,710",
+     "",
+     "151,746",
+     ""
+    ],
+    [
+     "Less: Current portion",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(67,161)",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "68,710",
+     "$",
+     "84,585"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "$ in thousands",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "$",
+     "\u2014"
+    ],
+    [
+     "2025",
+     "\u2014",
+     ""
+    ],
+    [
+     "2026",
+     "72,200",
+     ""
+    ],
+    [
+     "2027",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "72,200"
+    ]
+   ],
+   "caption_stack": [
+    "$ in thousands"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 2995,
+    "end_line": 3006
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "The Company may redeem the Senior Notes for cash in whole or in part at any time (i) on or after October 31, 2023 and prior to October 31, 2024, at a price equal to 102% of their principal amount, plus accrued and unpaid interest to, but excluding, the date of redemption, (ii) on or after October 31, 2024 and prior to October 31, 2025, at a price equal to 101% of their principal amount, plus accrued and unpaid interest to, but excluding, the date of redemption, and (iii) on or after October 31, 2025 and prior to maturity, at a price equal to 100% of their principal amount, plus accrued and unpaid interest to, but excluding, the date of redemption. In addition, the Company may redeem the Senior Notes, in whole, but not in part, at any time at its option, at a redemption price equal to 100.5% of the principal amount plus accrued and unpaid interest to, but not including, the date of redemption, upon the occurrence of certain change of control events.\nMinimum Future Principal Payments\nMinimum future principal payments on debt as of December 31, 2023 were as follows based on the terms of the debt at that date:",
+   "prose_after": "Fair Value Disclosure\nThe notional value and estimated fair value of the Company's debt totaled $72.2 million and $29.3 million, respectively at December 31, 2023 and $157.5 million and $88.5 million, respectively at December 31, 2022. The notional value does not include unamortized discounts and debt issuance costs of $3.5 million and $5.7 million at December 31, 2023 and 2022, respectively. The estimated fair value of the Bonds Payable, representing the fair value of the Company's 8.50% Senior Notes due October 2026, was measured using quoted market prices at the reporting date. Such instruments were valued using Level 1 inputs. For the Equipment Financings and Secured Promissory Note, the Company believes the notional values approximate their fair values.\n6. STOCKHOLDERS\u2019 EQUITY\nCommon Stock\nOn April 11, 2023, the stockholders approved a reverse stock split of the Company's issued and outstanding Class A common stock, par value $0.0001 per share and Class B common stock, par value $0.0001 per share, such that every ten (10) outstanding shares of Class A common stock would be combined and reclassified into one (1) share of Class A common stock and every ten (10) outstanding shares of Class B common stock would be combined and reclassified into one (1) share of Class B common stock. On the effective date specified in the Certificate of Amendment, every holder of outstanding shares of common stock was entitled to receive, subject to the treatment of fractional shares described in the Certificate of Amendment, one share of Class A common stock or Class B common stock, as applicable, in exchange for ten shares of Class A common stock or Class B common stock, as applicable, held by such holder (the \u201cReverse Stock Split\u201d). The Reverse Stock Split became effective on May 16, 2023.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2990,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 3026,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "172.64",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "1.00",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "5.14",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "2023"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(29,039)",
+     "$",
+     "(269,741)"
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "(471)",
+     "",
+     "(1,327)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(29,510)",
+     "$",
+     "(271,068)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average shares outstanding",
+     "6,660",
+     "",
+     "4,237",
+     ""
+    ],
+    [
+     "Effect of dilutive securities",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Diluted weighted average shares outstanding",
+     "6,660",
+     "",
+     "4,237",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share from continuing operations, basic and diluted",
+     "$",
+     "(4.36)",
+     "$",
+     "(63.66)"
+    ],
+    [
+     "Loss per share from discontinued operations, basic and diluted",
+     "(0.07)",
+     "",
+     "(0.31)",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(4.43)",
+     "$",
+     "(63.97)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3062,
+    "end_line": 3087
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "LOSS PER SHARE"
+    }
+   },
+   "prose_before": "Expected volatility        172.64 %\nExpected term (years)          1.00\nRisk-free interest rate      5.14 %\nExpected dividend yield         \u2014 %\n</TABLE>\nOther\nIn May 2023, Greenidge issued 54,348 unregistered shares of its Class A common stock with a fair value of $0.3 million to a vendor as payment for services provided. The issuance of these shares is presented in Issuance of shares, net of issuance costs on the Consolidated Statements of Stockholders' Deficit.\n7. LOSS PER SHARE\nThe Company calculates basic net loss per share by dividing the net loss by the weighted average number of shares of common stock outstanding for the period. The diluted net loss per share is computed by assuming the exercise, settlement, and vesting of all potential dilutive common stock equivalents outstanding for the period using the treasury stock method. The following table sets forth a reconciliation of the numerator and denominator used to compute basic and diluted net loss per share of common stock (In thousands, except per share data):",
+   "prose_after": "For the years ended December 31, 2023 and 2022, because the Company was in a loss position, basic net loss per share is the same as diluted net loss per share, as the inclusion of the potential common shares would have been anti-dilutive.\nThe following table sets forth potential shares of common stock that are not included in the diluted net loss per share calculation above because to do so would be anti-dilutive for the period indicated (In thousands):",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3046,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 2023
+    },
+    "after": {
+     "line": 3101,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Anti-dilutive securities",
+     "December 31, 2023",
+     "December 31, 2022"
+    ],
+    [
+     "Restricted stock awards",
+     "9",
+     "25"
+    ],
+    [
+     "Common shares issuable upon exercise of stock options",
+     "459",
+     "364"
+    ],
+    [
+     "Common shares issuable upon exercise of warrants",
+     "180",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "648",
+     "389"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3092,
+    "end_line": 3101
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "LOSS PER SHARE"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2023 and 2022, because the Company was in a loss position, basic net loss per share is the same as diluted net loss per share, as the inclusion of the potential common shares would have been anti-dilutive.\nThe following table sets forth potential shares of common stock that are not included in the diluted net loss per share calculation above because to do so would be anti-dilutive for the period indicated (In thousands):",
+   "prose_after": "8. EQUITY BASED COMPENSATION\nEquity Incentive Plans\nIn February 2021, Greenidge adopted an equity incentive plan and reserved 383,111 shares of Class A common stock for issuance under the plan (the \u201c2021 Equity Plan\u201d), applicable to employees and non-employee directors. In April 2023, the stockholders approved an amendment and restatement of the 2021 Equity Plan to increase the maximum aggregate number of shares of Class A common stock that may be issued for all purposes under the Plan by 500,000 shares of Class A common stock from 383,111 to 883,111 shares of Class A common stock and to remove the counting of shares of Class A common stock granted in connection with awards other than stock options and stock appreciation rights against the total number of shares available under the Plan as two shares of Class A common stock for every one share of Class A common stock granted in connection with such award. For the year ended December 31, 2023, no additional shares had been granted under the 2021 Equity Plan. In October 2022, the Company registered 307,684 shares of Class A common stock, outside of the 2021 Equity Plan, that were reserved for issuance upon the vesting and exercise of non-qualified stock option inducement grants.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3046,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 2023
+    },
+    "after": {
+     "line": 3101,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "RSUs",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Unvested at December 31, 2022",
+     "24,729",
+     "$",
+     "68.80"
+    ],
+    [
+     "Granted",
+     "33,418",
+     "$",
+     "5.30"
+    ],
+    [
+     "Vested",
+     "(48,548)",
+     "$",
+     "26.30"
+    ],
+    [
+     "Forfeited",
+     "(483)",
+     "$",
+     "61.24"
+    ],
+    [
+     "Unvested at December 31, 2023",
+     "9,116",
+     "$",
+     "62.99"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Options",
+     "Weighted Average Exercise Price Per Share",
+     "",
+     "Weighted Average Remaining Contractual Life (in years)",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2022",
+     "364,185",
+     "$",
+     "20.46",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "100,000",
+     "$",
+     "4.94",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(5,203)",
+     "$",
+     "62.62",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2023",
+     "458,982",
+     "$",
+     "16.59",
+     "8.8",
+     "$",
+     "177"
+    ],
+    [
+     "Exercisable as of December 31, 2023",
+     "150,012",
+     "$",
+     "27.76",
+     "8.2",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3135,
+    "end_line": 3146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "EQUITY BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The value of RSU grants is measured based on their fair market value on the date of grant and amortized over their requisite service periods. The fair market value of the awards granted totaled $0.2 million and $0.7 million during the years ended December 31, 2023 and 2022, respectively. There was $0.1 million of total unrecognized compensation cost related to unvested restricted stock rights as of December 31, 2023, which is expected to be recognized over a remaining weighted-average vesting period of less than 1 year.\nCommon Stock Options\nDuring the year ended December 31, 2023, the Company awarded 100,000 options that vest over a three-year period at a rate of 33.3% per year and are subject to forfeiture restrictions which lapse over time. These were issued from the Inducement Grants registered in October 2022. Options granted to officers and employees expire ten years after the date of grant.\nThe Company\u2019s stock options activity for the year ended December 31, 2023 is summarized below:",
+   "prose_after": "The value of common stock option grants is measured based on their fair market value on the date of grant and amortized over their requisite service periods. During the year ended December 31, 2023 and 2022, the fair market value of the awards granted totaled $0.5 million and $3.1 million, respectively. As of December 31, 2023, there was $2.4 million of total unrecognized compensation cost related to unvested options, which is expected to be recognized over a remaining weighted-average vesting period of approximately 2.1 years.\nWe determine the fair value of each grant using the Black-Scholes-Merton option pricing model. The weighted average assumptions relating to the valuation of stock options granted for the year ended December 31, 2023 and 2022 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3128,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 3179,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Weighted average exercise price of options granted",
+     "$",
+     "4.94",
+     "",
+     "$",
+     "1.32",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "211",
+     "",
+     "%",
+     "89",
+     "",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "10.0",
+     "",
+     "",
+     "6.0",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "4.5",
+     "",
+     "%",
+     "4.1",
+     "",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "0.0",
+     "",
+     "%",
+     "0.0",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3151,
+    "end_line": 3160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "EQUITY BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The value of common stock option grants is measured based on their fair market value on the date of grant and amortized over their requisite service periods. During the year ended December 31, 2023 and 2022, the fair market value of the awards granted totaled $0.5 million and $3.1 million, respectively. As of December 31, 2023, there was $2.4 million of total unrecognized compensation cost related to unvested options, which is expected to be recognized over a remaining weighted-average vesting period of approximately 2.1 years.\nWe determine the fair value of each grant using the Black-Scholes-Merton option pricing model. The weighted average assumptions relating to the valuation of stock options granted for the year ended December 31, 2023 and 2022 were as follows:",
+   "prose_after": "Stock-based Compensation\nThe Company recognized stock-based compensation expense of $2.3 million and $2.6 million during the years ended December 31, 2023 and 2022, respectively. Stock-based compensation expense is included in selling, general and administrative expenses in the accompanying Consolidated Statements of Operations and Comprehensive Loss.\n9. INCOME TAXES\nThe components of loss from continuing operations before the provision for income taxes are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3128,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 3179,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "(29,039)",
+     "$",
+     "(254,739)"
+    ],
+    [
+     "Foreign",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(29,039)",
+     "$",
+     "(254,739)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3169,
+    "end_line": 3179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Stock-based Compensation\nThe Company recognized stock-based compensation expense of $2.3 million and $2.6 million during the years ended December 31, 2023 and 2022, respectively. Stock-based compensation expense is included in selling, general and administrative expenses in the accompanying Consolidated Statements of Operations and Comprehensive Loss.\n9. INCOME TAXES\nThe components of loss from continuing operations before the provision for income taxes are as follows:",
+   "prose_after": "The components of the provision for income taxes from continuing operations consist of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3128,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 3179,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Current tax provision:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State",
+     "\u2014",
+     "",
+     "(53)",
+     ""
+    ],
+    [
+     "Foreign",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current tax (benefit) provision",
+     "\u2014",
+     "",
+     "(53)",
+     ""
+    ],
+    [
+     "Deferred tax provision:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "\u2014",
+     "",
+     "11,771",
+     ""
+    ],
+    [
+     "State",
+     "\u2014",
+     "",
+     "3,284",
+     ""
+    ],
+    [
+     "Foreign",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total deferred tax provision",
+     "\u2014",
+     "",
+     "15,055",
+     ""
+    ],
+    [
+     "Total provision for income taxes",
+     "$",
+     "\u2014",
+     "$",
+     "15,002"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3182,
+    "end_line": 3202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of the provision for income taxes from continuing operations consist of the following:",
+   "prose_after": "A reconciliation of the amounts at U.S. federal statutory tax rate to the Company\u2019s effective tax rate for continuing operations is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3179,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 3221,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "(Benefit) provision at federal statutory rate",
+     "$",
+     "(6,248)",
+     "$",
+     "(53,495)"
+    ],
+    [
+     "State income taxes, net of federal tax benefits",
+     "\u2014",
+     "",
+     "2,553",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "(13,002)",
+     "",
+     "65,395",
+     ""
+    ],
+    [
+     "Other, net",
+     "19,250",
+     "",
+     "549",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "\u2014",
+     "$",
+     "15,002"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3205,
+    "end_line": 3217
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation of the amounts at U.S. federal statutory tax rate to the Company\u2019s effective tax rate for continuing operations is as follows:",
+   "prose_after": "The Company\u2019s effective tax rate of 0% for the year ended December 31, 2023 was lower than the U.S. federal statutory income tax rate of 21% primarily due to a change in the valuation allowance and state taxes.\nThe Company\u2019s effective tax rate of (5.9)% for the year ended December 31, 2022 was higher than the U.S. federal statutory income tax rate 21% primarily due to the impact of state taxes.\nDeferred income taxes are provided for the tax effect of temporary differences between the financial reporting basis and the tax basis of assets and liabilities. Significant components of the Company\u2019s deferred tax assets (liabilities) are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3179,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 3221,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "40,132",
+     "$",
+     "58,008"
+    ],
+    [
+     "Intangibles",
+     "960",
+     "",
+     "1,674",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "740",
+     "",
+     "462",
+     ""
+    ],
+    [
+     "Capitalized costs",
+     "7,484",
+     "",
+     "8,794",
+     ""
+    ],
+    [
+     "Interest Expense Limitation Carryforward",
+     "7,035",
+     "",
+     "4,653",
+     ""
+    ],
+    [
+     "Environmental liabilities",
+     "4,492",
+     "",
+     "4,538",
+     ""
+    ],
+    [
+     "Fixed Assets",
+     "7,449",
+     "",
+     "3,672",
+     ""
+    ],
+    [
+     "Other",
+     "3,908",
+     "",
+     "3,401",
+     ""
+    ],
+    [
+     "Gross deferred tax assets",
+     "72,200",
+     "",
+     "85,202",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "(72,200)",
+     "",
+     "(85,202)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in partnership",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total net deferred tax assets",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3224,
+    "end_line": 3253
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company\u2019s effective tax rate of 0% for the year ended December 31, 2023 was lower than the U.S. federal statutory income tax rate of 21% primarily due to a change in the valuation allowance and state taxes.\nThe Company\u2019s effective tax rate of (5.9)% for the year ended December 31, 2022 was higher than the U.S. federal statutory income tax rate 21% primarily due to the impact of state taxes.\nDeferred income taxes are provided for the tax effect of temporary differences between the financial reporting basis and the tax basis of assets and liabilities. Significant components of the Company\u2019s deferred tax assets (liabilities) are as follows:",
+   "prose_after": "As of December 31, 2023, the Company had net operating loss carryforwards (\"NOL\") of approximately $147.1 million for U.S. federal income purposes, of which $1.4 million begins to expire in 2024. The Company also had net operating loss carryforwards for state income tax purposes of approximately $183.5 million, which begin to expire in 2024. U.S. Federal NOLs incurred in or after 2018 have an indefinite carryforward period, which can be offset by 80% of future taxable income in any given year.\nOf the total federal NOLs, $60.8 million were acquired with Support.com, Inc. in 2021 and are subject to Section 382 limitation. Utilization of the Company's net operating loss and tax credit carryforwards can become subject to a substantial annual limitation due to the ownership change limitations provided by Section 382 and 383 of the Internal Revenue Code and similar state provisions. Such an annual limitation could result in the expiration or elimination of the net operating loss and tax credit carryforwards before utilization. The Company has performed an analysis of its changes in ownership under Section 382 of the Internal Revenue Code. Management currently believes that the Section 382 limitation will limit utilization of certain acquired net operating loss and tax credit carryforwards of Support.com and may defer the realization of the tax benefit associated with the acquired tax attributes from Support.com. The Company has ended all Support.com operations as of December 31, 2023; therefore, the remaining assets and liabilities of Support.com are presented as current at December 31, 2023 and 2022. The remaining assets and liabilities consist primarily of remaining receivables and refundable deposits, payables and accrued expenses associated with the closing of operations and foreign tax liabilities.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3221,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 3259,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Prepaid insurance",
+     "$",
+     "2,818",
+     "$",
+     "3,822"
+    ],
+    [
+     "Electric deposits",
+     "\u2014",
+     "",
+     "1,400",
+     ""
+    ],
+    [
+     "Warrant Asset",
+     "477",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other prepaid expenses",
+     "569",
+     "",
+     "1,044",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "$",
+     "3,864",
+     "$",
+     "6,266"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3314,
+    "end_line": 3326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUPPLEMENTAL BALANCE SHEET AND CASH FLOW INFORMATION"
+    }
+   },
+   "prose_before": "For the Company's self-mining operations, Greenidge considers its mining pool operators to be its customers. Greenidge has historically used a limited number of pool operators that have operated under contracts with a one-day term, which allows Greenidge the option to change pool operators at any time. Revenue from one of the Company\u2019s pool operator customers accounted for approximately 33% and 70% of total revenue for the year ended December 31, 2023, and 2022, respectively.\nThe Company has one major power customer, NYISO, that accounted for 9% and 18% of its revenue for the years ended December 31, 2023 and 2022, respectively.\nThe Company has one natural gas vendor that accounted for approximately 27% and 62% of cost of revenue for the years ended December 31, 2023 and 2022, respectively.\nThe Company has one major provider of hosting services for its self-mining operation that accounted for approximately 18% of cost of revenue for the year ended December 31, 2023. There were no hosting services for the self-mining operation for the year ended December 31, 2022.\n13. SUPPLEMENTAL BALANCE SHEET AND CASH FLOW INFORMATION\nThe following table provides additional details of Prepaid expenses and other assets:",
+   "prose_after": "Warrant Asset: Fair value measurements of warrant assets of private companies are priced based on a Black-Scholes-Merton option pricing model to estimate the asset value by using stated strike prices, option expiration dates, risk-free rates and option volatility assumptions. The warrant asset was initially measured at fair value of consideration given, in this case the fair value of the warrant issued by the Company. There were no changes in observable inputs from the date the warrant was received through December 31, 2023. The Company classifies warrant assets within Level 3 of the fair value hierarchy.\nThe Company had the following noncash investing and financing activities:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3309,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "F",
+     "page_number": 32
+    },
+    "after": {
+     "line": 3353,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$ in thousands",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Property and equipment purchases in accounts payable",
+     "$",
+     "813",
+     "$",
+     "6,676"
+    ],
+    [
+     "Common stock issued for amendment fee to lender",
+     "$",
+     "1,000",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Subscription receivable in exchange for issuance of common stock",
+     "$",
+     "698",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exchange of assets for reduction in debt",
+     "$",
+     "71,755",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exchange of coupons for reduction in debt",
+     "$",
+     "1,152",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exchange of equipment deposits for reduction in debt",
+     "$",
+     "7,381",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Accrued interest added to debt principal",
+     "$",
+     "1,212",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Common stock issued in exchange for equity interest",
+     "$",
+     "869",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Warrant issued in exchange for warrant asset",
+     "$",
+     "477",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3331,
+    "end_line": 3345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUPPLEMENTAL BALANCE SHEET AND CASH FLOW INFORMATION"
+    }
+   },
+   "prose_before": "Warrant Asset: Fair value measurements of warrant assets of private companies are priced based on a Black-Scholes-Merton option pricing model to estimate the asset value by using stated strike prices, option expiration dates, risk-free rates and option volatility assumptions. The warrant asset was initially measured at fair value of consideration given, in this case the fair value of the warrant issued by the Company. There were no changes in observable inputs from the date the warrant was received through December 31, 2023. The Company classifies warrant assets within Level 3 of the fair value hierarchy.\nThe Company had the following noncash investing and financing activities:",
+   "prose_after": "Under the contract with its hosting provider, the Company is required to maintain cash in a restricted account sufficient to cover earned but unpaid hosting services. At December 31, 2023, this account had $1.2 million of cash designated for payment of such services.\n14. SUBSEQUENT EVENTS\nArmistice Capital Agreement\nOn February 12, 2024, the Company entered into a securities purchase agreement (the \u201cSPA\u201d) with Armistice Capital Master Fund Ltd. (\u201cArmistice\u201d). Pursuant to the SPA, Armistice purchased (i) 450,300 shares (the \u201cShares\u201d) of the Company\u2019s Class A common stock, and (ii) a pre-funded Class A common stock purchase warrant (the \u201cPre-Funded Warrant\u201d) for 810,205 shares of the Company\u2019s Class A common stock (the \u201cPre-Funded Warrant Shares\u201d). The per share purchase price of the Shares and the Pre-Funded Warrant Shares was $4.76, resulting in aggregate gross proceeds of $6.0 million, and after giving effect to the exercise price of $0.0001 per Pre-Funded Warrant Share, the Company received net proceeds of $6.0 million. The Pre-Funded Warrant has an initial exercise date of February 14, 2024 and gives Armistice the right to acquire the Pre-Funded Warrant Shares, subject to limitations and conditions as set forth in the Pre-Funded Warrant, until it is exercised in full. In addition, the Company issued to Armistice a five (5) year Class A common stock purchase warrant entitling Armistice, commencing on August 14, 2024, to acquire up to 1,260,505 shares of the Company\u2019s Class A common stock from time to time at an exercise price of $5.25 per share (the \u201cWarrant Shares\u201d).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3309,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "F",
+     "page_number": 32
+    },
+    "after": {
+     "line": 3353,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "F",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

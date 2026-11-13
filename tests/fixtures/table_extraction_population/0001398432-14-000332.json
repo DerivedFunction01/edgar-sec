@@ -1,0 +1,4647 @@
+{
+ "accession": "0001398432-14-000332",
+ "cik": "0001442711",
+ "form": "10-Q",
+ "filing_date": "2014-09-02",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cypw20140630_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "",
+     "26-0519058"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "",
+     "Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "601 NE 26th Ct",
+     "",
+     ""
+    ],
+    [
+     "Pompano Beach, Florida",
+     "",
+     "33064"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2014\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 000-54449\nCyclone Power Technologies, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(954) 943-8721\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 51,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets as of June 30, 2014 (unaudited) and December 31, 2013 (audited)",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the six and three months ended June 30, 2014 and 2013 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the six months ended June 30, 2014 and 2013 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures about Market Risk",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults upon Senior Securities",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 57,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]   Non-accelerated filer [ ]    Smaller reporting company [X]\n(Do not check if a smaller\nreporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of August 10, 2014, there were 552,913,309 shares of the registrant\u2019s common stock issued and outstanding.\nQUARTERLY REPORT ON FORM 10-Q\nINDEX",
+   "prose_after": "1\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 51,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2014",
+     "",
+     "",
+     "December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "42,937",
+     "",
+     "$",
+     "17,363",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "505,028",
+     "",
+     "",
+     "489,420",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "32,851",
+     "",
+     "",
+     "55,020",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "580,816",
+     "",
+     "",
+     "561,803",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture, fixtures, and equipment",
+     "",
+     "502,562",
+     "",
+     "",
+     "502,562",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(141,444)",
+     "",
+     "",
+     "(125,799)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "361,118",
+     "",
+     "",
+     "376,763",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents, trademarks and copyrights",
+     "",
+     "581,788",
+     "",
+     "",
+     "571,178",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "(215,334)",
+     "",
+     "",
+     "(196,410)",
+     ""
+    ],
+    [
+     "Net patents, trademarks and copyrights",
+     "",
+     "366,454",
+     "",
+     "",
+     "374,768",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "2,762",
+     "",
+     "",
+     "2,762",
+     ""
+    ],
+    [
+     "Total other assets",
+     "",
+     "369,216",
+     "",
+     "",
+     "377,530",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,311,150",
+     "",
+     "$",
+     "1,316,096",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "825,113",
+     "",
+     "$",
+     "682,692",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses-related parties",
+     "",
+     "539,754",
+     "",
+     "",
+     "1,965,596",
+     ""
+    ],
+    [
+     "Notes and other loans payable-current portion",
+     "",
+     "204,814",
+     "",
+     "",
+     "729,905",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "",
+     "622,298",
+     "",
+     "",
+     "484,796",
+     ""
+    ],
+    [
+     "Notes and other loans payable-related parties",
+     "",
+     "785,004",
+     "",
+     "",
+     "775,120",
+     ""
+    ],
+    [
+     "Value of shares loaned by stockholder",
+     "",
+     "-",
+     "",
+     "",
+     "1,496,217",
+     ""
+    ],
+    [
+     "Capitalized lease obligations-current portion",
+     "",
+     "4,947",
+     "",
+     "",
+     "6,161",
+     ""
+    ],
+    [
+     "Deferred revenue and license deposits",
+     "",
+     "416,441",
+     "",
+     "",
+     "416,186",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "3,398,371",
+     "",
+     "",
+     "6,556,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized lease obligations-net of current portion",
+     "",
+     "18,282",
+     "",
+     "",
+     "20,550",
+     ""
+    ],
+    [
+     "Notes and other loans payable-net of current portion",
+     "",
+     "239,383",
+     "",
+     "",
+     "30,997",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "257,665",
+     "",
+     "",
+     "51,547",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "3,656,036",
+     "",
+     "",
+     "6,608,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series B preferred stock, $.0001 par value, 1,000 shares authorized, 1,000 shares issued and outstanding at March 31, 2014 and December 31, 2013, respectively.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $.0001 par value, 900,000,000 shares authorized, 434,907,974 and 272,679,942 shares issued and outstanding at June 30, 2014 and December 31, 2013 respectively.",
+     "",
+     "43,490",
+     "",
+     "",
+     "27,268",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "52,041,414",
+     "",
+     "",
+     "48,644,132",
+     ""
+    ],
+    [
+     "Treasury Stock, 3,000,000 and 40,405,420 shares, at June 30, 2014 and December 31, 2013 respectively, at cost.",
+     "",
+     "(210,000)",
+     "",
+     "",
+     "(1,706,217)",
+     ""
+    ],
+    [
+     "Prepaid expenses with common stock",
+     "",
+     "(271,126)",
+     "",
+     "",
+     "(595,980)",
+     ""
+    ],
+    [
+     "Stock subscription receivable",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "(6,000)",
+     ""
+    ],
+    [
+     "Accumulated deficit (inclusive of non-cash derivative losses of $31,815,613 and other losses of $22,855,027 at June 30, 2014 and non-cash derivative losses of $31,033,299 and other losses of $21,440,971 at December 31, 2013)",
+     "",
+     "(54,670,640)",
+     "",
+     "",
+     "(52,474,270)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit-Cyclone Power Technologies Inc.",
+     "",
+     "(3,072,862)",
+     "",
+     "",
+     "(6,111,067)",
+     ""
+    ],
+    [
+     "Non controlling interest in consolidated subsidiaries",
+     "",
+     "727,976",
+     "",
+     "",
+     "818,943",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(2,344,886)",
+     "",
+     "",
+     "(5,292,124)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficit",
+     "$",
+     "1,311,150",
+     "",
+     "$",
+     "1,316,096",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 184
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "140,527",
+     "",
+     "$",
+     "502,882",
+     "",
+     "$",
+     "140,527",
+     "",
+     "$",
+     "251,441",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST OF GOODS SOLD",
+     "",
+     "85,877",
+     "",
+     "",
+     "295,422",
+     "",
+     "",
+     "58,877",
+     "",
+     "",
+     "129,946",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "54,650",
+     "",
+     "",
+     "207,460",
+     "",
+     "",
+     "81,650",
+     "",
+     "",
+     "121,495",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and promotion",
+     "",
+     "13,170",
+     "",
+     "",
+     "1,007",
+     "",
+     "",
+     "5,565",
+     "",
+     "",
+     "(6,189)",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "980,516",
+     "",
+     "",
+     "875,651",
+     "",
+     "",
+     "542,777",
+     "",
+     "",
+     "454,922",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "316,817",
+     "",
+     "",
+     "370,771",
+     "",
+     "",
+     "192,637",
+     "",
+     "",
+     "120,221",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,310,503",
+     "",
+     "",
+     "1,247,429",
+     "",
+     "",
+     "740,979",
+     "",
+     "",
+     "568,954",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(1,255,853)",
+     "",
+     "",
+     "(1,039,969)",
+     "",
+     "",
+     "(659,329)",
+     "",
+     "",
+     "(447,459)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER (EXPENSE) INCOME",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "-",
+     "",
+     "",
+     "22,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "22,000",
+     ""
+    ],
+    [
+     "Derivative (expense) -notes payable",
+     "",
+     "(179,509)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(124,351)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest (expense)",
+     "",
+     "(851,975)",
+     "",
+     "",
+     "(231,124)",
+     "",
+     "",
+     "(406,624)",
+     "",
+     "",
+     "(154,748)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other (expense)",
+     "",
+     "(1,031,484)",
+     "",
+     "",
+     "(209,124)",
+     "",
+     "",
+     "(530,975)",
+     "",
+     "",
+     "(132,748)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(2,287,337)",
+     "",
+     "",
+     "(1,249,093)",
+     "",
+     "",
+     "(1,190,304)",
+     "",
+     "",
+     "(580,207)",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,287,337)",
+     "",
+     "$",
+     "(1,249,093)",
+     "",
+     "$",
+     "(1,190,304)",
+     "",
+     "$",
+     "(580,207)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share, basic and diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding, basic and diluted",
+     "",
+     "291,288,247",
+     "",
+     "",
+     "241,654,166",
+     "",
+     "",
+     "353,877,991",
+     "",
+     "",
+     "245,301,043",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 193,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,287,337)",
+     "",
+     "$",
+     "(1,249,093)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "34,569",
+     "",
+     "",
+     "32,580",
+     ""
+    ],
+    [
+     "Issuance of restricted common stock, options and warrants for services",
+     "",
+     "109,759",
+     "",
+     "",
+     "329,040",
+     ""
+    ],
+    [
+     "Warrants issued pursuant to repayment of debt in common stock",
+     "",
+     "-",
+     "",
+     "",
+     "114,296",
+     ""
+    ],
+    [
+     "Gain on debt conversion via common stock -net",
+     "",
+     "-",
+     "",
+     "",
+     "(22,000)",
+     ""
+    ],
+    [
+     "Loss from derivative liability-notes payable",
+     "",
+     "179,509",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of derivative debt discount",
+     "",
+     "602,805",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Original issue discount paid with stock",
+     "",
+     "10,714",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of prepaid expenses via common stock and warrants",
+     "",
+     "324,854",
+     "",
+     "",
+     "52,860",
+     ""
+    ],
+    [
+     "Amortization of original issue discount",
+     "",
+     "37,385",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in inventory",
+     "",
+     "(15,608)",
+     "",
+     "",
+     "134,889",
+     ""
+    ],
+    [
+     "Increase in other current assets",
+     "",
+     "22,169",
+     "",
+     "",
+     "31,823",
+     ""
+    ],
+    [
+     "Increase in other assets",
+     "",
+     "-",
+     "",
+     "",
+     "(958)",
+     ""
+    ],
+    [
+     "Increase in accounts payable and accrued expenses",
+     "",
+     "300,091",
+     "",
+     "",
+     "103,230",
+     ""
+    ],
+    [
+     "Increase in accounts payable and accrued expenses-related parties",
+     "",
+     "199,232",
+     "",
+     "",
+     "175,407",
+     ""
+    ],
+    [
+     "Increase in deferred revenue and deposits",
+     "",
+     "255",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "(481,603)",
+     "",
+     "",
+     "(297,926)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenditures incurred for patents, trademarks and copyrights",
+     "",
+     "(10,610)",
+     "",
+     "",
+     "(2,470)",
+     ""
+    ],
+    [
+     "Expenditures for property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(10,703)",
+     ""
+    ],
+    [
+     "Net cash used by investing activities",
+     "",
+     "(10,610)",
+     "",
+     "",
+     "(13,173)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of capitalized lease obligations",
+     "",
+     "(3,482)",
+     "",
+     "",
+     "(2,253)",
+     ""
+    ],
+    [
+     "Proceeds from notes and loans payable",
+     "",
+     "440,000",
+     "",
+     "",
+     "420,000",
+     ""
+    ],
+    [
+     "Repayment of notes and loans payable",
+     "",
+     "(38,615)",
+     "",
+     "",
+     "(161,922)",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock, net of direct offering costs",
+     "",
+     "110,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Increase in related party notes and loans payable-net",
+     "",
+     "9,884",
+     "",
+     "",
+     "8,063",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "517,787",
+     "",
+     "",
+     "363,888",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "25,574",
+     "",
+     "",
+     "52,789",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "17,363",
+     "",
+     "",
+     "14,888",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "42,937",
+     "",
+     "$",
+     "67,677",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of interest in cash",
+     "$",
+     "38,084",
+     "",
+     "$",
+     "19,444",
+     ""
+    ],
+    [
+     "NON CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of 20,313,416 shares of Common stock for deferred officers' salaries",
+     "$",
+     "668,312",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of 2,050,000 shares of Common stock for accrued expenses",
+     "$",
+     "93,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of 117,424,952 shares of Common stock for debt repayment",
+     "$",
+     "740,872",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of 3,190,859 shares of Common stock for debt interest",
+     "$",
+     "25,507",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Value of shares repaid to stockholder",
+     "$",
+     "1,496,217",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Forgiveness of deferred officers' salaries",
+     "$",
+     "956,762",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of 675,000 shares of Common stock for repayment of related party payables",
+     "$",
+     "-",
+     "",
+     "$",
+     "54,000",
+     ""
+    ],
+    [
+     "Issuance of 412,500 shares of Common stock for accrued expenses",
+     "$",
+     "-",
+     "",
+     "$",
+     "33,875",
+     ""
+    ],
+    [
+     "Issuance of 2,998,149 shares of Common stock for debt repayment",
+     "$",
+     "-",
+     "",
+     "$",
+     "259,074",
+     ""
+    ],
+    [
+     "Issuance of 170,895 shares of Common stock for payment of debt interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "13,421",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 249,
+    "end_line": 328
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements\nNOTES TO THE CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 ORGANIZATIONAL AND SIGNIFICANT ACCOUNTING POLICIES\nA. ORGANIZATION AND OPERATIONS\nCyclone Power Technologies, Inc. (the \u201cCompany\u201d) is the successor entity to the business of Cyclone Technologies LLLP (the \u201cLLLP\u201d), a limited liability limited partnership formed in Florida in June 2004. The LLLP was the original developer and intellectual property holder of the Cyclone engine technology. The Company is primarily a research and development engineering company whose main purpose is to develop, commercialize, market and license its Cyclone engine technology.\nIn 2010, the Company established a subsidiary, Cyclone-WHE LLC (the \u201cWHE Subsidiary\u201d), to market the waste heat recovery systems for all Cyclone engine models. As of June 30, 2014 the Company had a 73.72% controlling interest in the WHE Subsidiary, which in May 2014, redomiciled to Delaware as a corporation named WHE Generation Corp. In 2012, the Company established Cyclone Performance LLC (\u201cCyclone Performance\u201d) f/k/a Cyclone-TeamSteam USA, LLC. The purpose of Cyclone Performance is to build, test and run a vehicle utilizing the Company\u2019s engine. As of June 30, 2014, the company had a 95% controlling interest in Cyclone Performance.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 247,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "\u2014",
+     "Inputs are quoted prices in active markets for identical assets or liabilities as of the reporting date."
+    ],
+    [
+     "Level 2",
+     "\u2014",
+     "Inputs other than quoted prices included within Level 1 that are observable for the asset or liability, either directly or indirectly, as of the reporting date."
+    ],
+    [
+     "Level 3",
+     "\u2014",
+     "Unobservable inputs for the asset or liability that reflect management\u2019s own assumptions about the assumptions that market participants would use in pricing the asset or liability as of the reporting date."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 385,
+    "end_line": 391
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATIONAL AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "ASC 820, \u201cFair Value Measurements and Disclosures\u201d requires disclosures of information about the fair value of certain financial instruments for which it is practicable to estimate the value. The carrying amounts reported in the balance sheet for cash, accounts payable and accrued expenses, and loans payable approximate their fair market value based on the short-term maturity of these instruments. Fair value is defined as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. Inputs refer broadly to the assumptions that market participants would use in pricing the asset or liability, including assumptions about risk. Inputs may be observable or unobservable. Observable inputs are based on market data obtained from sources independent of the Company. Unobservable inputs reflect the Company\u2019s own assumptions based on the best information available in the circumstances. The fair value hierarchy prioritizes the inputs used to measure fair value into three broad levels. The three levels of the fair value hierarchy are defined as follows:",
+   "prose_after": "The summary of fair values and changing values of financial instruments as of January 1, 2014 (beginning of period) and June 30, 2014 (end of period) is as follows:",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Instrument",
+     "Beginning\n\n\n\nof Period",
+     "",
+     "Change",
+     "",
+     "End of\n\n\n\nPeriod",
+     "",
+     "Level",
+     "",
+     "Valuation\n\n\n\nMethodology"
+    ],
+    [
+     "Derivative liabilities",
+     "$",
+     "484,796",
+     "$",
+     "137,502",
+     "$",
+     "622,298",
+     "",
+     "3",
+     "Stochastic Process\n\n\n\nForecasting Model"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 394,
+    "end_line": 404
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATIONAL AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The summary of fair values and changing values of financial instruments as of January 1, 2014 (beginning of period) and June 30, 2014 (end of period) is as follows:",
+   "prose_after": "Please refer to Note 16 for disclosure and assumptions used to calculate the fair value of the derivative liabilities.\nJ. RESEARCH AND DEVELOPMENT\nResearch and development activities for product development are expensed as incurred. Costs for the six months ended June 30, 2014 and 2013 were $316,817 and $370,771, respectively.\nK. STOCK BASED COMPENSATION\nThe Company applies the fair value method of ASC 718, \u201cShare Based Payment\u201d, in accounting for its stock based compensation. This standard states that compensation cost is measured at the grant date based on the value of the award and is recognized over the service period, which is usually the vesting period. The Company values stock based compensation at the market price for the Company\u2019s common stock as of the date in which the obligation for payment of services is incurred.\nL. COMMON STOCK OPTIONS AND PURCHASE WARRANTS\nThe Company accounts for common stock options and purchase warrants at fair value in accordance with ASC 815-40, \u201cDerivatives and Hedging\u201d. The Black-Scholes option pricing valuation method is used to determine fair value of these warrants consistent with ASC 718, \u201cShare Based Payment\u201d. Use of this method requires that the Company make assumptions regarding stock volatility, dividend yields, expected term of the warrants and risk-free interest rates.",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years",
+     ""
+    ],
+    [
+     "Display equipment for trade shows",
+     "",
+     "3"
+    ],
+    [
+     "Leasehold improvements and furniture and fixtures",
+     "",
+     "10 - 15"
+    ],
+    [
+     "Shop equipment",
+     "",
+     "7"
+    ],
+    [
+     "Computers",
+     "",
+     "3"
+    ]
+   ],
+   "caption_stack": [
+    "Years"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 ORGANIZATIONAL AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company accounts for common stock options and purchase warrants at fair value in accordance with ASC 815-40, \u201cDerivatives and Hedging\u201d. The Black-Scholes option pricing valuation method is used to determine fair value of these warrants consistent with ASC 718, \u201cShare Based Payment\u201d. Use of this method requires that the Company make assumptions regarding stock volatility, dividend yields, expected term of the warrants and risk-free interest rates.\nThe Company accounts for transactions in which services are received from non-employees in exchange for equity instruments based on the fair value of the equity instruments exchanged, in accordance with ASC 505-50, \u201cEquity Based payments to Non-employees\u201d.\nM. ORIGINAL ISSUE DEBT DISCOUNT\nThe original issue discount (OID) related to notes payable is amortized by the effective interest method over the repayment period of the notes. The unamortized OID is represented as a reduction of the amount of the notes payable.\nN. PROPERTY AND EQUIPMENT\nProperty and equipment are recorded at cost. Depreciation is computed on the straight-line method, based on the estimated useful lives of the assets as follows:",
+   "prose_after": "Expenditures for maintenance and repairs are charged to operations as incurred.\nO. IMPAIRMENT OF LONG LIVED ASSETS\nThe Company continually evaluates the carrying value of intangible assets and other long lived assets to determine whether there are any impairment losses. If indicators of impairment are present and future cash flows are not expected to be sufficient to recover the assets\u2019 carrying amount, an impairment loss would be charged to expense in the period identified. To date, the Company has not recognized any impairment charges.\nP. RECLASSIFICATIONS\nCertain balances presented previously have been reclassified to conform to the financial statement presentation adopted for this year.\nQ. RECENT ACCOUNTING PRONOUNCEMENTS\nIn 2014, the FASB issued an Accounting Standard Update (\u201cASU\u201d) 2014-15 \u201cPresentation of Financial Statements-Going Concern (Subtopic 205-40) , ASU 2014-12 \u201cCompensation-Stock Compensation\u201d (Topic 718) , ASU 2014-09 \u201c Revenue from Contracts with Customers\u201d (Topic 606), ASU 2014-03 Derivatives and Hedging (Topic 815) Accounting for Certain Receive-Variable, Pay Fixed Interest Rate Swaps-Simplified Hedge Account Approach, and ASU 2014-02 Intangibles-Goodwill and Other (Topic 350). Management believes that these standards will not materially impact our financial statements.",
+   "structured_location": {
+    "item": null,
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     "",
+     "December 31,\n\n\n\n2013",
+     "",
+     ""
+    ],
+    [
+     "Engine material and parts",
+     "$",
+     "321,422",
+     "",
+     "$",
+     "316,513",
+     ""
+    ],
+    [
+     "Labor",
+     "",
+     "243,944",
+     "",
+     "",
+     "237,311",
+     ""
+    ],
+    [
+     "Applied overhead",
+     "",
+     "39,662",
+     "",
+     "",
+     "35,596",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "605,028",
+     "",
+     "",
+     "589,420",
+     ""
+    ],
+    [
+     "Inventory valuation reserve",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "(100,000)",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "$",
+     "505,028",
+     "",
+     "$",
+     "489,420",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 474,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 INVENTORY, NET"
+    }
+   },
+   "prose_before": "As shown in the accompanying condensed consolidated financial statements, the Company incurred substantial operating and other losses of approximately $2.3 million for the six months ended June 30, 2014, and $3.8 million for the year ended December 31, 2013 The cumulative deficit since inception is approximately $54.7 million, which is comprised of $22.9 million attributable to actual operating losses (which were paid in cash, stock for services and other equity instruments) and other expenses, and $31.8 million in non-cash derivative liability accounting which was a result of the conversion of the Company\u2019s Series A Convertible Preferred Stock in 2011, the retirement of a common stock purchase warrant in 2012, and the change in fair value of derivatives associated with notes payable for the year ended December 31, 2013 and the six months ended June 30, 2014. The Company has a working capital deficit at June 30, 2014 of approximately $2.8 million. There is no guarantee whether the Company will be able to generate enough revenue and/or raise capital to support its operations. This raises substantial doubt about the Company\u2019s ability to continue as a going concern. The ability of the Company to continue as a going concern is dependent on management\u2019s plans which include implementation of its business model to generate revenue from development contracts, licenses and product sales, and continuing to raise funds through debt or equity raises. The Company will also likely continue to rely upon related-party debt or equity financing.\nThe condensed consolidated financial statements do not include any adjustments that might result from the outcome of these uncertainties. The Company is currently raising working capital to fund its operations via private placements of common stock and debt, advance contract payments (deferred revenue), and advances from and deferred payments to related parties.\nNOTE 3 \u2013 INVENTORY, NET\nInventory, net consists of:",
+   "prose_after": "NOTE 4 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consists of the following:",
+   "structured_location": {
+    "item": null,
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 457,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     "",
+     "December 31,\n\n\n\n2013",
+     "",
+     ""
+    ],
+    [
+     "Display equipment for trade shows",
+     "$",
+     "9,648",
+     "",
+     "$",
+     "9,648",
+     ""
+    ],
+    [
+     "Leasehold improvements and furniture and fixtures",
+     "",
+     "94,572",
+     "",
+     "",
+     "94,572",
+     ""
+    ],
+    [
+     "Equipment and computers",
+     "",
+     "398,342",
+     "",
+     "",
+     "398,342",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "502,562",
+     "",
+     "",
+     "502,562",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(141,444)",
+     "",
+     "",
+     "(125,799)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "$",
+     "361,118",
+     "",
+     "$",
+     "376,763",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "NOTE 4 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consists of the following:",
+   "prose_after": "Depreciation expense for the six months ended June 30, 2014 and 2013 was $15,645 and $13,165, respectively.\nNOTE 5 \u2013 PATENTS, TRADEMARKS AND COPYRIGHTS\nPatents, trademarks and copyrights consist of legal fees paid to file and perfect these claims. The net balances as of June 30, 2014 and December 31, 2013 were $366,454 and $374,768, respectively. For the six months ended June 30, 2014 and for the year ended December 31, 2013, the Company capitalized $10,610 and $ 6,920, respectively, of expenditures related to these assets. As of June 30, 2014, the Company had 33 patents issued on its technology both in the U.S. and internationally, and six trademarks in the U.S.\nPatents, trademarks and copyrights are amortized over the life of the intellectual property which is 15 years. Amortization expense for the six months ended June 30, 2014 and 2013 was $18,924 and $19,415, respectively.\nNOTE 6 \u2013 NOTES AND OTHER LOANS PAYABLE\nA. NON-RELATED PARTIES\nA summary of non-related party notes and other loans payable is as follows:",
+   "structured_location": {
+    "item": null,
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     "",
+     "",
+     "December 31,\n\n\n\n2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12% senior secured note payable, plus 6% redemption premium, collateralized by all assets of the Company, monthly payments commencing December 2013 through September 2014.",
+     "",
+     "$",
+     "87,033",
+     "",
+     "",
+     "$",
+     "361,767",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "6-12% uncollateralized demand notes payable.",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "",
+     "127,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12% convertible notes payable, net of derivative discounts of $80,067 and $48,851 at June 30, 2014 and December 31, 2013, respectively, maturing at various dates from November 2013 through June 2016 (A)",
+     "",
+     "",
+     "95,522",
+     "",
+     "",
+     "",
+     "139,769",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% convertible note payable, net of discount of $1,328 and $115,585 at June 30, 2014 and December 31, 2014, respectively, monthly payments commencing in December 2014 through July 2015 (B)",
+     "",
+     "",
+     "26,953",
+     "",
+     "",
+     "",
+     "74,344",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% convertible notes payable, net of discount of $66,306 and $58,279 at June 30, 2014 and December 31, 2013, respectively, maturing at various dates from November 2015 through February 2016 (C)",
+     "",
+     "",
+     "44,694",
+     "",
+     "",
+     "",
+     "15,634",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% convertible notes payable, net of discount of $45,033 and $55,109 at June 30, 2014 and December 31, 2013, respectively, maturing at various dates from December 2015 through January 2016 (D)",
+     "",
+     "",
+     "38,467",
+     "",
+     "",
+     "",
+     "10,891",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "6% convertible notes payable, net of discount of $99,300 and $89,003 at June 30, 2014 and December 31, 2013, respectively, maturing at various dates from December 2016 through February 2017 ( E )",
+     "",
+     "",
+     "60,700",
+     "",
+     "",
+     "",
+     "30,997",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% convertible note payable, net of discount of $60,170 at June 30, 2014, maturing at various dates through June 2015 ( F )",
+     "",
+     "",
+     "24,830",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12% convertible notes payable, net of discount of $64,002 at June 30, 2014, maturing at various dates from July 2014 through November 2014 ( G )",
+     "",
+     "",
+     "45,998",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total non related party notes \u2013net of discount",
+     "",
+     "",
+     "444,197",
+     "",
+     "",
+     "",
+     "760,902",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less-Current Portion",
+     "",
+     "",
+     "204,814",
+     "",
+     "",
+     "",
+     "729,905",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total non-current non related party notes \u2013net of discount (accrued interest is included in accrued expenses)",
+     "",
+     "$",
+     "239,383",
+     "",
+     "",
+     "$",
+     "30,997",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 523,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 NOTES AND OTHER LOANS PAYABLE"
+    }
+   },
+   "prose_before": "Depreciation expense for the six months ended June 30, 2014 and 2013 was $15,645 and $13,165, respectively.\nNOTE 5 \u2013 PATENTS, TRADEMARKS AND COPYRIGHTS\nPatents, trademarks and copyrights consist of legal fees paid to file and perfect these claims. The net balances as of June 30, 2014 and December 31, 2013 were $366,454 and $374,768, respectively. For the six months ended June 30, 2014 and for the year ended December 31, 2013, the Company capitalized $10,610 and $ 6,920, respectively, of expenditures related to these assets. As of June 30, 2014, the Company had 33 patents issued on its technology both in the U.S. and internationally, and six trademarks in the U.S.\nPatents, trademarks and copyrights are amortized over the life of the intellectual property which is 15 years. Amortization expense for the six months ended June 30, 2014 and 2013 was $18,924 and $19,415, respectively.\nNOTE 6 \u2013 NOTES AND OTHER LOANS PAYABLE\nA. NON-RELATED PARTIES\nA summary of non-related party notes and other loans payable is as follows:",
+   "prose_after": "(A) Notes issued net of 10% original discount ($23,387 unamortized at June 30, 2014) along with additional discount from derivative liabilities ($56,680 unamortized at June 30, 2014). At June 30, 2014, the Company held 179,262,267 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.\n(B) Note issued net of original discount of $26,250 (fully amortized at June 30, 2014) along with stock purchase warrants whose value at issuance of $34,680 has been carried as a discount against the note (fully amortized at June 30, 2014) and an additional discount from derivative liabilities of $89,370 ($1,328 unamortized at June 30, 2014).\n(C) Notes issued net of discount from derivative liabilities ($66,306 unamortized at June 30, 2014). At June 30, 2014, the Company held 27,456,377 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.\n(D) Notes issued net of discount from derivative liabilities ($45,033 unamortized at June 30, 2014). At June 30, 2014, the Company held 12,106,895 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     "December 31,\n\n\n\n2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "6% demand loans per Operations Agreement with Schoell Marine Inc., a company owned by Cyclone\u2019s Chairman and controlling shareholder (A)",
+     "$",
+     "416,785",
+     "$",
+     "424,285"
+    ],
+    [
+     "6% non-collateralized loans from officer and shareholder, payable on demand. The original principal balances were $157,101.",
+     "",
+     "80,251",
+     "",
+     "85,364"
+    ],
+    [
+     "12% non-collateralized loans from officer and shareholder, payable on demand",
+     "",
+     "10,000",
+     "",
+     "11,000"
+    ],
+    [
+     "Accrued Interest",
+     "",
+     "277,968",
+     "",
+     "254,471"
+    ],
+    [
+     "Total current related party notes, inclusive of accrued interest",
+     "$",
+     "785,004",
+     "$",
+     "775,120"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 591
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 NOTES AND OTHER LOANS PAYABLE"
+    }
+   },
+   "prose_before": "(D) Notes issued net of discount from derivative liabilities ($45,033 unamortized at June 30, 2014). At June 30, 2014, the Company held 12,106,895 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.\n(E) Notes issued net of 10% original discount ($18,430 unamortized at June 30, 2014) along with additional discount from derivative liabilities ($80,870 unamortized at June 30, 2014). At June 30, 2014, the Company held 132,910,889 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.\n(F) Notes issued net of discount from derivative liabilities ($60,170 unamortized at June 30, 2014). At June 30, 2014, the Company held 57,109,930 shares in reserve to cover the potential conversion of this note into common stock pursuant to debt covenants.\n(G) Notes issued net of discount from derivative liabilities ($64,002 unamortized at June 30, 2014).\nB. RELATED PARTIES\nA summary of related party notes and other loans payable is as follows:",
+   "prose_after": "(A) This note arose from services and salaries incurred by Schoell Marine on behalf of the Company. Schoell Marine also owns the building that is leased to the Company. The Schoell Marine note bears an interest rate of 6% and repayments occur as cash flow of the Company permits. The note was secured by a UCC-1 filing on the Company\u2019s patents and patent applications, which expired and has not been renewed. For the six months ended June 30, 2014 and for the year ended December 31, 2013, $7,500 and $500 of principal was paid on the note balance.\nDuring the last quarter of 2013, the Company\u2019s Chairman and co-founder loaned approximately 37.4 million shares of Company common stock, valued at approximately $1.5 million, as reserve treasury shares pursuant to various debt covenants. These shares have been presented as value of shares loaned by stockholder in the accompanying consolidated balance sheets. These shares were returned to the Chairman in March 2014.\nNOTE 7 \u2013 RELATED PARTY TRANSACTIONS",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "a-",
+     "Issued 2,050,000 shares of restricted common stock valued at $ 93,000 for payment of liabilities, 5,950,000 shares of restricted common stock valued at $98,175 for services, and 4,722,365 shares of common stock pursuant to a cashless warrants conversion."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 619
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "Included in accounts payable and accrued expenses - related parties as of June 30, 2014 and December 31, 2013 are $476,962 and $1,910,073, respectively, of accrued and deferred officers\u2019 salaries compensation which may be paid as funds are available. These are non-interest bearing and due on demand. In January 2014, four of the Company\u2019s executive management converted $668,312 in deferred salary into 20,313,461 shares of restricted common stock, and forgave $956,762 in deferred salary as contributed capital. This forgiveness of deferred salary was recorded as additional paid in capital in the accompanying condensed consolidated balance sheet at June 30, 2014.\nNOTE 8 \u2013 PREFERRED STOCK\nThe Series B Preferred Stock is majority voting stock and is held by the two co-founders of the Company. Ownership of the Series B Preferred Stock shares assures the holders thereof a 51% voting control over the common stock of the Company. The 1,000 Series B Preferred Stock shares are convertible on a one-for-one basis with the common stock in the instance the Company is merged, sold or otherwise dissolved.\nNOTE 9 \u2013 STOCK TRANSACTIONS\nDuring the six months ended June 30, 2014, the Company:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "b-",
+     "Amortized (based on vesting) $9,755 of common stock options for employee services and issued 357,142 shares of restricted common stock valued at $10,714 in advance payment of debt interest."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "c-",
+     "Sold 5,500,000 shares of restricted common stock for $110,000 and issued 2,719,298 shares of restricted common stock pursuant to a price guarantee for common stock sold in the prior year."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 630
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "d-",
+     "Issued 120,615,811 shares of common stock valued at $766,379 as repayment of debt and related interest expense."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "e-",
+     "Issued 20,313,416 shares of restricted common stock to four of the Company\u2019s executive management as a conversion of $668,312 in deferred salary and forgave $956,762 of deferred salary as contributed capital."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 639
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 10 \u2013 STOCK OPTIONS AND WARRANTS\nA. COMMON STOCK OPTIONS\nPer the employment contracts with certain officers, the company issued 450,000 common stock options, valued at $2,044 (pursuant to the Black Scholes valuation model) ) that are exercisable into shares of common stock at exercise prices of $0.0045 and with a maturity life of 10 years. For the six months ended June 30, 2014, the amortization of stock options was $9,755 and the unamortized balance was $1,533.\nTo improve the common stock position of the Company and help limit dilution, effective with the second quarter of 2013, the four corporate officers unanimously agreed to waive their rights to 2.4 million common stock options (600,000 per quarter collectively) contractually due them through April 2014. In lieu of issuing additional options to these officers and all other employees through the end of the year, the Company re-priced 4,185,000 million vested options held by the officers and employees that were priced at a minimum of $0.15 per share ($0.20 average) to $0.10 per share. The result was a non-cash charge of approximately $52,000. The remaining contractual life of the options was not changed.",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number\n\n\n\nOutstanding",
+     "",
+     "Weighted Avg.\n\n\n\nExercise Price",
+     "",
+     "Weighted Avg.\n\n\n\nRemaining\n\n\n\nContractual Life\n\n\n\n(Years)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2013",
+     "",
+     "9,740,000",
+     "$",
+     "0.129",
+     "",
+     "6.5"
+    ],
+    [
+     "Options issued",
+     "",
+     "450,000",
+     "",
+     "0.005",
+     "",
+     "10.0"
+    ],
+    [
+     "Options exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options cancelled",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance, June 30, 2014",
+     "",
+     "10,190,000",
+     "$",
+     "0.133",
+     "",
+     "6.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 667
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "Per the employment contracts with certain officers, the company issued 450,000 common stock options, valued at $2,044 (pursuant to the Black Scholes valuation model) ) that are exercisable into shares of common stock at exercise prices of $0.0045 and with a maturity life of 10 years. For the six months ended June 30, 2014, the amortization of stock options was $9,755 and the unamortized balance was $1,533.\nTo improve the common stock position of the Company and help limit dilution, effective with the second quarter of 2013, the four corporate officers unanimously agreed to waive their rights to 2.4 million common stock options (600,000 per quarter collectively) contractually due them through April 2014. In lieu of issuing additional options to these officers and all other employees through the end of the year, the Company re-priced 4,185,000 million vested options held by the officers and employees that were priced at a minimum of $0.15 per share ($0.20 average) to $0.10 per share. The result was a non-cash charge of approximately $52,000. The remaining contractual life of the options was not changed.\nA summary of the common stock options for the period from December 31, 2013 through June 30, 2014 follows:",
+   "prose_after": "The vested and exercisable options at period end follows:",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exercisable/\n\n\n\nVested\n\n\n\nOptions\n\n\n\nOutstanding",
+     "",
+     "Weighted\n\n\n\nAvg.\n\n\n\nExercise Price",
+     "",
+     "Weighted\n\n\n\nAvg.\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (Years)",
+     ""
+    ],
+    [
+     "Balance June 30, 2014",
+     "",
+     "9,740,000",
+     "$",
+     ".129",
+     "",
+     "6.5"
+    ],
+    [
+     "Additional vesting by June 30, 2014",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 670,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "The vested and exercisable options at period end follows:",
+   "prose_after": "The fair value of new stock options, re-priced stock options, new purchase warrants and re-priced purchase warrants granted using the Black-Scholes option pricing model was calculated using the following assumptions:",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended\n\n\n\nJune 30, 2014",
+     "",
+     "Year Ended\n\n\n\nDecember 31, 2013",
+     ""
+    ],
+    [
+     "Risk free interest rate",
+     "",
+     ".67 % - 1.32%",
+     "",
+     ".51% - 1.41%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "43 % - 69%",
+     "",
+     "34% -107%"
+    ],
+    [
+     "Expected term",
+     "",
+     "2-4",
+     "",
+     "1-5"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "0 %",
+     "",
+     "0%"
+    ],
+    [
+     "Average value per options and warrants",
+     "",
+     "$.004 - $ .02",
+     "",
+     "$.01 - $.06"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 699
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "The fair value of new stock options, re-priced stock options, new purchase warrants and re-priced purchase warrants granted using the Black-Scholes option pricing model was calculated using the following assumptions:",
+   "prose_after": "Expected volatility is based on historical volatility of the Company\u2019s common stock price. Short Term U.S. Treasury rates were utilized at the risk free interest rate. The expected term of the options and warrants was calculated using the alternative simplified method newly codified as ASC 718 \u201cAccounting for Stock Based Compensation,\u201d which defined the expected life as the average of the contractual term of the options and warrants and the weighted average vesting period for all issuances.\nB. COMMON STOCK WARRANTS\nDuring the six months ended June 30, 2014, the Company:",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "a-",
+     "Re-priced 625,000 common stock warrants to $.0114 (valued at $10,821) pursuant to a price guarantee from the 2013 sale of common stock to unaffiliated third parties."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "b-",
+     "Issued 2,838,051 common stock warrants and re-priced 565,625 common stock warrants, both to $.0114 (valued at $43,280) pursuant to a price guarantee from a 2013 debt agreement.\n\n\n\nNo other terms of these common stock warrants were revised."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "c-",
+     "Issued 4,722,365 aggregate shares of common stock in a cashless exercise of 9,037,230 warrants."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "d-",
+     "Cancelled 892,501 common stock warrants with an average exercise price of $0.27 per share that expired."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "Expected volatility is based on historical volatility of the Company\u2019s common stock price. Short Term U.S. Treasury rates were utilized at the risk free interest rate. The expected term of the options and warrants was calculated using the alternative simplified method newly codified as ASC 718 \u201cAccounting for Stock Based Compensation,\u201d which defined the expected life as the average of the contractual term of the options and warrants and the weighted average vesting period for all issuances.\nB. COMMON STOCK WARRANTS\nDuring the six months ended June 30, 2014, the Company:",
+   "prose_after": "A summary of outstanding vested warrant activity for the period from December 31, 2013 to June 30, 2014 follows:",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number\n\n\n\nOutstanding",
+     "",
+     "",
+     "Weighted Average\n\n\n\nExercise Price",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (Years)",
+     ""
+    ],
+    [
+     "Common Stock Warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2013",
+     "",
+     "16,097,798",
+     "",
+     "$",
+     "0.057",
+     "",
+     "",
+     "2.85"
+    ],
+    [
+     "Warrants exercised-cashless",
+     "",
+     "(9,037,230)",
+     "",
+     "",
+     "(0.017)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants issued",
+     "",
+     "2,838,048",
+     "",
+     "",
+     "0.114",
+     "",
+     "",
+     "3.92"
+    ],
+    [
+     "Warrants expired",
+     "",
+     "(892,501)",
+     "",
+     "",
+     "(0.267)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants re-priced:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled \u2013 old",
+     "",
+     "(1,190,625)",
+     "",
+     "",
+     "(0.020)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Re-Priced",
+     "",
+     "1,190,625",
+     "",
+     "",
+     "0.114",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2014",
+     "",
+     "9,006,115",
+     "",
+     "$",
+     "0.098",
+     "",
+     "",
+     "2.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 744
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK OPTIONS AND WARRANTS"
+    }
+   },
+   "prose_before": "A summary of outstanding vested warrant activity for the period from December 31, 2013 to June 30, 2014 follows:",
+   "prose_after": "All warrants were vested and exercisable as of the date issued.\nNOTE 11 \u2013 INCOME TAXES\nA reconciliation of the differences between the effective income tax rates and the statutory federal tax rates for the six months ended June 30, 2014 and 2013 are as follows:",
+   "structured_location": {
+    "item": null,
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\n\n\nJune 30,\n\n\n\n2014",
+     "",
+     "Amount",
+     "",
+     "",
+     "Six months ended\n\n\n\nJune 30,\n\n\n\n2013",
+     "",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit at U.S. statutory rate",
+     "",
+     "34%",
+     "$",
+     "464,958",
+     "",
+     "",
+     "34%",
+     "$",
+     "377,941",
+     ""
+    ],
+    [
+     "State taxes, net of federal benefit",
+     "",
+     "4",
+     "",
+     "54,701",
+     "",
+     "",
+     "4",
+     "",
+     "44,464",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(38)",
+     "",
+     "(519,659)",
+     "",
+     "",
+     "(38)",
+     "",
+     "(422,405)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-%",
+     "$",
+     "-",
+     "",
+     "",
+     "-%",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "All warrants were vested and exercisable as of the date issued.\nNOTE 11 \u2013 INCOME TAXES\nA reconciliation of the differences between the effective income tax rates and the statutory federal tax rates for the six months ended June 30, 2014 and 2013 are as follows:",
+   "prose_after": "The tax effect of temporary differences that give rise to significant portions of the deferred tax assets and liabilities at June 30, 2014 and December 31, 2013 consisted of the following:",
+   "structured_location": {
+    "item": null,
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Deferred Tax Assets",
+     "June 30,\n\n\n\n2014",
+     "",
+     "",
+     "December 31,\n\n\n\n2013",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Loss Carry-forward",
+     "$",
+     "8,518,868",
+     "",
+     "$",
+     "7,946,959",
+     ""
+    ],
+    [
+     "Deferred Tax Liabilities \u2013 Accrued Officers\u2019 Salaries",
+     "",
+     "(260,538)",
+     "",
+     "",
+     "(440,135)",
+     ""
+    ],
+    [
+     "Net Deferred Tax Assets",
+     "",
+     "8,258,330",
+     "",
+     "",
+     "7,506,824",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(8,258,330)",
+     "",
+     "",
+     "(7,506,824)",
+     ""
+    ],
+    [
+     "Total Net Deferred Tax Assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 783
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effect of temporary differences that give rise to significant portions of the deferred tax assets and liabilities at June 30, 2014 and December 31, 2013 consisted of the following:",
+   "prose_after": "As of June 30, 2014, the Company had a net operating loss carry forward for income tax reporting purposes of approximately $18.7 million that may be offset against future taxable income through 2029. Current tax laws limit the amount of loss available to be offset against future taxable income when a substantial change in ownership occurs. Therefore, the amount available to offset future taxable income may be limited. No tax asset has been reported in the financial statements because the Company believes there is a 50% or greater chance the carry forwards will expire unused. Accordingly, the potential tax benefits of the loss carry forwards are offset by a valuation allowance of the same amount.\nNOTE 12 \u2013LEASE OBLIGATIONS\nA. CAPITALIZED LEASE OBLIGATIONS\nIn September 2012, the Company acquired $21,310 of equipment via capitalized lease obligations at an interest rate of 12.5%. In December 2013, the Company acquired $8,408 of equipment via capitalized lease obligations at an interest rate of 15.5%. Total lease payments made for the six months ended June 30, 2014 were $3,482. The balance of capitalized lease obligations payable at June 30, 2014 was $23,229. Future lease payments are:",
+   "structured_location": {
+    "item": null,
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2014",
+     "$",
+     "2,679"
+    ],
+    [
+     "2015",
+     "",
+     "5,801"
+    ],
+    [
+     "2016",
+     "",
+     "6,620"
+    ],
+    [
+     "2017",
+     "",
+     "6,079"
+    ],
+    [
+     "2018",
+     "",
+     "2,050"
+    ],
+    [
+     "",
+     "$",
+     "23,229"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 792,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013LEASE OBLIGATIONS"
+    }
+   },
+   "prose_before": "As of June 30, 2014, the Company had a net operating loss carry forward for income tax reporting purposes of approximately $18.7 million that may be offset against future taxable income through 2029. Current tax laws limit the amount of loss available to be offset against future taxable income when a substantial change in ownership occurs. Therefore, the amount available to offset future taxable income may be limited. No tax asset has been reported in the financial statements because the Company believes there is a 50% or greater chance the carry forwards will expire unused. Accordingly, the potential tax benefits of the loss carry forwards are offset by a valuation allowance of the same amount.\nNOTE 12 \u2013LEASE OBLIGATIONS\nA. CAPITALIZED LEASE OBLIGATIONS\nIn September 2012, the Company acquired $21,310 of equipment via capitalized lease obligations at an interest rate of 12.5%. In December 2013, the Company acquired $8,408 of equipment via capitalized lease obligations at an interest rate of 15.5%. Total lease payments made for the six months ended June 30, 2014 were $3,482. The balance of capitalized lease obligations payable at June 30, 2014 was $23,229. Future lease payments are:",
+   "prose_after": "B. LEASE ON ADDITIONAL FACILITIES\nIn July 2011, the Company signed a one-year lease (with extensions) for an additional 2,000 square feet. Effective July 2013, the Company renewed this lease for one year, at an annual rate of $ 17,304 or $8.65/s.f, terminating in June 2014, and was again extended to December 31, 2014. The lease expense for the six months ended June 30, 2014 and 2013 was $8,652 and $8,904, respectively.\nCommencing January 2014, the WHE Generation Corp. accrued $1,000 in monthly rent (inclusive of utilities, taxes and shared office assistance) to Precision CNC as part of the joint facility / manufacturing arrangement. Effective July 2014 through the start of the manufacturing phase, rent is to increase to $2,500 per month. The manufacturing phase commencement and rent is to be determined by the parties.\nNOTE 13 \u2013 COMMITMENTS AND CONTINGENCIES\nThe Company has employment agreements with Harry Schoell, Chairman and CTO (previously, CEO), at $150,000 per year and Frankie Fruge, COO, at $120,000 per year; (collectively, the \u201cExecutives\u201d). These agreements provide for a term of three (3) years from their Effective Date (July 2007 with automatically renewing successive one year periods starting on the end of the second anniversary of the Effective Date. If the Executive is terminated \u201cwithout cause\u201d or pursuant to a \u201cchange in control\u201d of the Company, as both defined in the respective agreements, the Executive shall be entitled to (i) any unpaid Base Salary accrued through the effective date of termination, (ii) the Executive\u2019s Base Salary at the rate prevailing at such termination through 12 months from the date of termination or the end of his Term then in effect, whichever is longer, and (iii) any performance bonus that would otherwise be payable to the Executive were he/she not terminated, during the 12 months following his or her termination.",
+   "structured_location": {
+    "item": null,
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended\n\n\n\nJune 30, 2014",
+     "",
+     "Year Ended\n\n\n\nDec. 31, 2013",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "114% - 234%",
+     "",
+     "87% - 171%"
+    ],
+    [
+     "Risk Free Rate",
+     "",
+     ".03% - .99%",
+     "",
+     ".1% - 1.75%"
+    ],
+    [
+     "Expected Term (years)",
+     "",
+     "0 - 4",
+     "",
+     "0 - 3"
+    ],
+    [
+     "Dividend Rate",
+     "",
+     "0%",
+     "",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 DERIVATIVE FINANCIAL INSTRUMENTS"
+    }
+   },
+   "prose_before": "The Company recorded derivative liabilities of $656,574 and $456,681 with a discount offset against the underlying loan, during the six months ended June 30, 2014 and for the year ended December 31, 2013, respectively.\nIn the six months ended June 30, 2014, the Company recorded a $602,805 non-cash charge to interest expense (reflective of debt discount amortization), an increase of $698,578 in additional paid in capital pursuant to conversion of convertible notes to common stock, and $179,509 of derivative loss related to adjusting the derivative liability to fair value. At June 30, 2014, the derivative related fair value of debt and warrants were $555,753 and $66,549, respectively..\nThe Company calculates the estimated fair values of the liabilities for derivative instruments at each quarter-end using the BSM option pricing model and Monte Carlo simulations. Volatility, expected term and risk free interest rates used to estimate the fair value of derivative liabilities are indicated in the table below. The volatility was based on historical volatility, the expected term is equal to the remaining term of the debt and the risk free rate is based upon rates for treasury securities with the same term.",
+   "prose_after": "NOTE 17 \u2013 SUBSEQUENT EVENTS\nIn the third quarter of 2014, the Company engaged in the following transactions:",
+   "structured_location": {
+    "item": null,
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 826,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "a-",
+     "The Company issued approximately 17.4 million shares of common stock in conversion of approximately $310,000 in convertible debt and interest."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 856,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "NOTE 17 \u2013 SUBSEQUENT EVENTS\nIn the third quarter of 2014, the Company engaged in the following transactions:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 826,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "b-",
+     "On July 17, 2014 (the \u201cEffective Date\u201d), the Company signed a Separation Agreement (the \u201cAgreement\u201d) with its 74% owned subsidiary, WHE Generation, Corp. (\u201cWHE GEN\u201d). The details of that Agreement are provided in the subsequent Item 2: Management\u2019s Discussion and Analysis and Plan of Operation. Prior to the Separation Agreement, the maturity of various non related party notes payable were extended."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "In connection with the Agreement, the Company and WHE GEN also amended its 2010 License Agreement (the \u201cLicense\u201d) to provide the Company with on-going 5% royalties from WHE GEN\u2019s sale of engines utilizing the licensed technology. This License is 20 years with two 10-year extensions. It is worldwide in territory and exclusive for the specific applications of stationary waste heat recovery (WHR) and waste-to-power (WtP)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 869
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 826,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Pursuant to these transactions, Christopher Nelson resigned as President of Cyclone to assume the position of Chief Executive Officer of WHE GEN. The Company\u2019s Board appointed Frankie Fruge as his replacement. Joel Mayersohn also resigned as a Director of the Company to become a Director of WHE GEN."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "c-",
+     "The Company, through WHE GEN, issued $350,000 in Convertible Promissory Notes, maturing in 12 months at 6% annualized interest and convertible into shares of common stock of WHE GEN at a price of $.12 per share."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "On July 30, 2014, WHE GEN completed its $350,000 Seed Round offering, and paid to TCA Global Master Credit Fund LP, the Company\u2019s senior secured creditor, approximately $78,000 to fully retire that debenture and release all of the Company\u2019s assets from its security interest. WHE GEN also paid to the Company an additional $24,000 in reimbursements."
+    ]
+   ],
+   "caption_stack": [
+    "Pursuant to these transactions, Christopher Nelson resigned as President of Cyclone to assume the position of Chief Executive Officer of WHE GEN. The Company\u2019s Board appointed Frankie Fruge as his replacement. Joel Mayersohn also resigned as a Director of the Company to become a Director of WHE GEN."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 881
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "d-",
+     "The Company added three new independent members to its Board of Directors."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 882,
+    "end_line": 885
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "e-",
+     "Subsequent to the end of the second quarter of 2014, the Company\u2019s common stock trades as CYPW.PK."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 886,
+    "end_line": 889
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nForward Looking Statements\nThis report contains forward-looking statements. We have based these forward-looking statements largely on our current expectations and projections about future events and financial trends affecting the financial condition of our business. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including, among other things:\n\u25cf the ability to successfully complete development and commercialization of our technology;\n\u25cf changes in existing and potential relationships with collaborative partners;\n\u25cf the ability to retain certain members of management;\n\u25cf our expectations regarding general and administrative expenses;\n\u25cf our expectations regarding cash availability and balances, capital requirements, anticipated revenue and expenses, including infrastructure and patent expenditures;\n\u25cf other factors detailed from time to time in filings with the SEC.",
+   "structured_location": {
+    "item": null,
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the President (Principal Executive Officer), as required by Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer, as required by Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of the President (Chief Executive Officer), as required by Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Certification of the Chief Financial Officer, as required by Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance"
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation"
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition"
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Labels"
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1048,
+    "end_line": 1066
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nIn the second quarter of 2014 the Company issued:\n\u25cf An aggregate of 98,064,296 shares of common stock to 7 investment funds in connection with the conversion of approximately $468,000 in principal and interest on several separate convertible promissory notes. These securities were offered pursuant to an exemption under Section 4(2) of the Securities Act and Regulation D thereunder. The debt holders had previously completed Accredited Investor Questionnaires and Subscription Agreements, and received a copy of the Company\u2019s Annual Report in connection with the issuance.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "The certification attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of Cyclone Power Technologies, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Quarterly Report on Form 10-Q, irrespective of any general incorporation language contained in such filing.\n* Information is furnished and not filed or a part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1033,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cyclone Power Technologies, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "September 2, 2014",
+     "/s/ Frankie Fruge"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Frankie Fruge"
+    ],
+    [
+     "",
+     "President"
+    ],
+    [
+     "",
+     "(Principal executive officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "September 2, 2014",
+     "/s/ Bruce Schames."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Bruce Schames"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Cyclone Power Technologies, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The certification attached as Exhibits 32.1 and 32.2 that accompany this Quarterly Report on Form 10-Q are not deemed filed with the Securities and Exchange Commission and are not to be incorporated by reference into any filing of Cyclone Power Technologies, Inc. under the Securities Act of 1933, as amended, or the Securities Exchange Act of 1934, as amended, whether made before or after the date of this Quarterly Report on Form 10-Q, irrespective of any general incorporation language contained in such filing.\n* Information is furnished and not filed or a part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1033,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

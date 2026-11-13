@@ -1,0 +1,2491 @@
+{
+ "accession": "0001803914-22-000020",
+ "cik": "0001803914",
+ "form": "10-K/A",
+ "filing_date": "2022-04-22",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ply-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "37-1958714"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Amendment No.1)\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from to\nCommission File Number 001-39312\nPLBY GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "10960 Wilshire Blvd., Suite 2200\nLos Angeles, California 90024\n(310) 424-1800\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.0001 par value per share",
+     "PLBY",
+     "Nasdaq Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "10960 Wilshire Blvd., Suite 2200\nLos Angeles, California 90024\n(310) 424-1800\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Explanatory Note",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "5"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "5"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "11"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "25"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "28"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "32"
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "32"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "36"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "37"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 80,
+    "end_line": 98
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act): Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant as of June 30, 2021, the last business day of the registrant's most recently completed second fiscal quarter, was approximately $812 million based upon the closing price reported for such date on the Nasdaq Global Market. As of April 11, 2022, there were 45,221,175 shares of the registrant's common stock outstanding.\nAuditor Name: BDO USA, LLP Auditor Location: Los Angeles, CA Auditor Firm ID: 243\nTABLE OF CONTENTS\nAMENDMENT NO. 1 TO PLBY GROUP, INC.'S ANNUAL REPORT ON FORM 10-K/A\nFOR THE YEAR ENDED DECEMBER 31, 2021",
+   "prose_after": "EXPLANATORY NOTE\nOn March 16, 2022, PLBY Group, Inc. (\u201cPLBY,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d) filed our Annual Report on Form 10-K for the fiscal year ended December 31, 2021 (the \u201cOriginal Form 10-K\u201d). The Original Form 10-K omitted Part III, Items 10 (Directors, Executive Officers and Corporate Governance), 11 (Executive Compensation), 12 (Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters), 13 (Certain Relationships and Related Transactions, and Director Independence) and 14 (Principal Accountant Fees and Services) in reliance on General Instruction G(3) to Form 10-K, which provides that such information may be either incorporated by reference from the registrant\u2019s definitive proxy statement or included in an amendment to Form 10-K, in either case filed with the Securities and Exchange Commission (the \u201cSEC\u201d) not later than 120 days after the end of the fiscal year.\nThis Amendment No. 1 to Form 10-K (this \u201cAmendment\u201d) is being filed solely to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Ben Kohn",
+     "48",
+     "Chief Executive Officer, President, and Director"
+    ],
+    [
+     "Lance Barton",
+     "43",
+     "Chief Financial Officer"
+    ],
+    [
+     "Florus Beuting",
+     "46",
+     "Chief Accounting Officer"
+    ],
+    [
+     "Chris Riley",
+     "54",
+     "General Counsel and Secretary"
+    ],
+    [
+     "Suhail Rizvi",
+     "56",
+     "Chairman of the Board"
+    ],
+    [
+     "Tracey Edmonds",
+     "54",
+     "Director"
+    ],
+    [
+     "Juliana F. Hill",
+     "53",
+     "Director"
+    ],
+    [
+     "James Yaffe",
+     "61",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 120,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022amend Part III, Items 10, 11, 12, 13 and 14 of the Original Form 10-K to include the information required by such Items;\n\u2022delete the reference on the cover of the Original Form 10-K to the incorporation by reference of portions of our proxy statement into Part III of the Original Form 10-K; and\n\u2022include new certifications of our principal executive officer and principal financial officer as exhibits to this Amendment under Item 15 of Part IV hereof, pursuant to Rule 12b-15 under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d).\nThis Amendment does not otherwise change or update any of the disclosures set forth in the Original Form 10-K and does not otherwise reflect any events occurring after the filing of the Original Form 10-K. Capitalized terms used but not otherwise defined herein shall have the respective meanings ascribed to such terms in the Original Form 10-K.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table provide information regarding our executive officers and directors:",
+   "prose_after": "Ben Kohn has served as the Chief Executive Officer, President and a director of the Company since the Closing of the Business Combination in March 2021 and prior to that was the Chief Executive Officer, President and Chairman of Playboy Enterprises, Inc. since January 2018, was its interim CEO from May 2016 to December 2017, and served on the Board of Directors of Playboy since March 2011. From 2004 to December 2018, Mr. Kohn served as a Managing Partner at the private equity firm Rizvi Traverse where he led the successful buyouts of major media and entertainment companies, including taking Playboy private in 2011. Prior to that, Mr. Kohn was a Vice President at Angelo, Gordon & Co., where he focused on private equity and special situations, from 1998 to 2003. Mr. Kohn started his career at Cowen & Company, where he was an Analyst in the Mergers and Acquisitions group from 1996 to 1998. Mr. Kohn also serves on the Board of Directors for the performance rights organization, SESAC. He received a Bachelor of Science degree in management from Tulane University and a Master of Business Administration degree from Columbia University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)",
+     "Stock Awards ($) (2)",
+     "All Other Compensation ($)(3)",
+     "Total ($)"
+    ],
+    [
+     "Suhail Rizvi",
+     "\u2014",
+     "1,083,577",
+     "606,866",
+     "1,690,443"
+    ],
+    [
+     "Tracey Edmonds",
+     "\u2014",
+     "1,083,577",
+     "\u2014",
+     "1,083,577"
+    ],
+    [
+     "James Yaffe",
+     "\u2014",
+     "1,083,577",
+     "\u2014",
+     "1,083,577"
+    ],
+    [
+     "Suying Liu(1)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 280,
+    "end_line": 288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022an annual grant of equity with a fair market value as of the date of grant of $200,000, comprised of RSUs vesting on the earlier of the first anniversary date of the grant date or the date of the Company\u2019s next regular annual meeting of stockholders following the grant date, subject to the non-employee director\u2019s continued service on the Board through such vesting date; and\n\u2022an initial grant of equity on the date of a person\u2019s initial appointment as a non-employee director with a fair market value as of the date of grant of $200,000, which vests in three equal installments on each of the first three anniversaries of the grant date, in each case subject to the non-employee director\u2019s continued service on the Board through the applicable vesting date.\nNon-employee directors are also required to retain ownership of at least 25% of the shares of common stock awarded to them and maintain such ownership until their departure from the Board.\nDirector Compensation Table\nThe following table sets forth information concerning the compensation paid to our directors who are not named executive officers during the year ended December 31, 2021. The compensation received by Mr. Kohn as an employee of our company is presented in \u201cExecutive Compensation\u2014Summary Compensation Table.\u201d",
+   "prose_after": "____________________________\n(1) Mr. Liu resigned as a director effective August 9, 2021, and his replacement was not appointed until March 2022.\n(2) The amounts in these columns reflect the aggregate grant date fair value of RSU awards, calculated in accordance with FASB ASC Topic 718.\n(3) The amount in this column for Suhail Rizvi\u2019s 2021 compensation includes imputed compensation related to his use of our corporate aircraft. Mr. Rizvi was permitted reasonable personal use of our corporate aircraft in 2021 pursuant to a time-sharing agreement between Mr. Rizvi and us. Such agreement allows him to reimburse us for the incremental cost of his personal use of our corporate aircraft consistent with Federal Aviation Administration regulations. For purposes of valuing such incremental cost, we calculate incremental cost using a method that takes into account all variable costs, such as fuel, crew travel expenses, landing and parking fees and plane repositioning costs, less, in the case of Mr. Rizvi, any reimbursement received by us pursuant to the time-sharing agreement. Since we use our aircraft primarily for business travel, we do not include as part of incremental cost the fixed costs that do not change based on usage, such as pilot costs, the purchase or leasing costs of our aircraft and the cost of maintenance. The incremental cost, if any, of travel by Mr. Rizvi\u2019s guests when accompanying him is included. Mr. Rizvi is responsible for the payment of any tax on any income imputed to him as a result of personal use of corporate aircraft and we do not provide him with income tax gross-up payments.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 275,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Leaf Group Ltd.",
+     "Inter Parfums Inc."
+    ],
+    [
+     "SciPlay Corp.",
+     "Funko, Inc."
+    ],
+    [
+     "Yeti Holdings, Inc.",
+     "ZAGG Inc."
+    ],
+    [
+     "Oxford Industries Inc.",
+     "e.l.f. Beauty, Inc."
+    ],
+    [
+     "Glu Mobile Inc.",
+     "iMedia Brands, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 363,
+    "end_line": 370
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "No executive officer participated directly in the final determinations regarding his or her own compensation package or was present during such determinations.\nThe Compensation Committee meets regularly in executive session. Our Chief Executive Officer is not present during Compensation Committee deliberations or votes on his compensation and shall recuse himself from sessions of the Board where it acts on his compensation.\nPeer Group\nWe analyze market data for executive compensation periodically using the most relevant published survey sources, information available from public filings, and input from our compensation consultants. Our Compensation Committee requested that Semler Brossy perform a review of our peer group, considering appropriateness of the current peer companies and potential additions based on similarity in market capitalization size and industry. Based on those considerations and Semler Brossy\u2019s review, our most recent peer group for executive compensation consists of the following companies:",
+   "prose_after": "We use the peer group as a general reference. In addition to the peer group, we also rely on the knowledge and experience of our Compensation Committee members and our management in determining the appropriate compensation for our executive officers.\nElements of Executive Compensation\nOur current compensation program generally consists of the following components:\n\u2022base salary;\n\u2022annual bonuses;\n\u2022equity-based awards; and\n\u2022other benefits.\nWe combine these elements to formulate compensation packages that provide competitive pay, reward achievement of financial, operational, and strategic objectives, and align the interests of our executive officers with those of our stockholders. The overall use and weight of each compensation element is based on our subjective determination of the importance of each element in meeting our overall objectives, including motivating executive officers with an owner\u2019s mentality.\nBase Salary\nThe Compensation Committee determines base salaries of our executive officers, which are subject to review annually. The Compensation Committee may adjust executive officer base salaries, from time to time, to reflect changes in market conditions or other factors, and subject to the terms of any employment agreements.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "2021 Base Salary"
+    ],
+    [
+     "Ben Kohn",
+     "$850,000"
+    ],
+    [
+     "Lance Barton",
+     "$500,000"
+    ],
+    [
+     "Chris Riley",
+     "$400,000"
+    ],
+    [
+     "Florus Beuting",
+     "$325,000"
+    ],
+    [
+     "David Israel(1)",
+     "$402,127"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 394,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "We combine these elements to formulate compensation packages that provide competitive pay, reward achievement of financial, operational, and strategic objectives, and align the interests of our executive officers with those of our stockholders. The overall use and weight of each compensation element is based on our subjective determination of the importance of each element in meeting our overall objectives, including motivating executive officers with an owner\u2019s mentality.\nBase Salary\nThe Compensation Committee determines base salaries of our executive officers, which are subject to review annually. The Compensation Committee may adjust executive officer base salaries, from time to time, to reflect changes in market conditions or other factors, and subject to the terms of any employment agreements.\nThe table below sets forth information regarding the year-end base salary amounts for 2021 for our named executive officers. Except for David Israel, the base salaries of all our named executive officers were established in 2021 pursuant to employment agreements (or amendments thereto) entered into with the Company in 2021.",
+   "prose_after": "__________\n(1) David Israel served as our Chief Financial Officer & Chief Operating Officer through February 28, 2021. Commencing March 1, 2021, David Israel assumed the role of President, Sexual Wellness Operations, and Lance Barton assumed the role of Chief Financial Officer. As of March 1, 2021, we did not have a Chief Operating Officer position. As of August 2, 2021, Mr. Israel transitioned from the role of President, Sexual Wellness Operations to serving as an advisor to our Chief Executive Officer.\nAnnual Bonuses\nThe Company uses annual cash incentive bonuses for executive officers to tie a portion of their compensation to financial and operational objectives achievable within the applicable fiscal year. Each year, the Compensation Committee will select the performance targets, target amounts, target award opportunities and other term and conditions of annual cash bonuses for the executive officers, subject to the terms of any employment agreement. Following the end of each year, the Compensation Committee will determine the extent to which the performance targets were achieved and the amount of the award that is payable to the executive officers. See note 2 to the \u201cSummary Compensation Table\" below for additional details for bonuses paid to each named executive officer.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 393,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 426,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fiscal Year",
+     "Salary ($)",
+     "Bonus ($)",
+     "Stock Awards ($)",
+     "Option Awards ($)(1)",
+     "Non-Equity Incentive Plan Compensation ($) (2)",
+     "All Other Compensation ($)(3)",
+     "Total ($)"
+    ],
+    [
+     "Ben Kohn Chief Executive Officer & President",
+     "2021",
+     "866,662",
+     "\u2014",
+     "24,184,426",
+     "4,467,102",
+     "2,850,000",
+     "402,000",
+     "32,770,190"
+    ],
+    [
+     "",
+     "2020",
+     "998,950",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "1,000,000",
+     "6,000",
+     "2,004,950"
+    ],
+    [
+     "",
+     "2019",
+     "1,000,720",
+     "\u2014",
+     "3,739,512",
+     "1,613,770",
+     "1,425,829",
+     "10,000",
+     "7,789,831"
+    ],
+    [
+     "Lance Barton Chief Financial Officer",
+     "2021",
+     "411,962",
+     "\u2014",
+     "15,555,997",
+     "1,763,786",
+     "250,000",
+     "2,000",
+     "17,983,745"
+    ],
+    [
+     "",
+     "2020",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "2019",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Chris Riley General Counsel and Secretary",
+     "2021",
+     "392,046",
+     "\u2014",
+     "5,004,402",
+     "433,957",
+     "500,000",
+     "8,300",
+     "6,338,705"
+    ],
+    [
+     "",
+     "2020",
+     "346,065",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "175,000",
+     "10,000",
+     "531,065"
+    ],
+    [
+     "",
+     "2019",
+     "312,500",
+     "\u2014",
+     "\u2014",
+     "252,728",
+     "202,000",
+     "10,000",
+     "777,228"
+    ],
+    [
+     "Florus Beuting Chief Accounting Officer",
+     "2021",
+     "287,959",
+     "110,000",
+     "1,447,019",
+     "366,254",
+     "\u2014",
+     "4,425",
+     "2,215,657"
+    ],
+    [
+     "",
+     "2020",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "2019",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "David Israel Former Chief Financial Officer & Former Chief Operating Officer(4)",
+     "2021",
+     "414,646",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "350,000",
+     "10,885",
+     "775,531"
+    ],
+    [
+     "",
+     "2020",
+     "498,000",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "250,000",
+     "10,000",
+     "758,000"
+    ],
+    [
+     "",
+     "2019",
+     "481,000",
+     "\u2014",
+     "747,690",
+     "336,723",
+     "293,000",
+     "10,000",
+     "1,868,413"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 489,
+    "end_line": 514
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "This report of the Compensation Committee is required by the SEC and, in accordance with the SEC\u2019s rules, will not be deemed to be part of or incorporated by reference by any general statement incorporating by reference into any filing under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), or under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), except to the extent that we specifically incorporate this information by reference, and will not otherwise be deemed \u201csoliciting material\u201d or \u201cfiled\u201d under either the Securities Act or the Exchange Act.\nThe compensation committee has reviewed and discussed the compensation discussion and analysis included in this Annual Report on Form 10-K/A with management and, based on such review and discussions, the compensation committee recommended to the Board that the compensation discussion and analysis be included in this Annual Report on Form 10-K/A.\nPLBY GROUP, INC. Compensation Committee,\nTracey Edmonds (Chair)\nJuliana F. Hill\nJames Yaffe\nSummary Compensation Table",
+   "prose_after": "______________________\n(1) The amounts in these columns reflect the aggregate grant date fair value of restricted stock unit (or RSU) awards, performance-based restricted stock unit (or PSU) awards and option awards, in each case calculated in accordance with FASB ASC Topic 718.\n(2) The cash bonus amounts payable to each named executive officer for 2021 and 2020 performance were paid in cash in the first quarter of 2022 and 2021, respectively. The Committee determined not to provide performance-based cash bonuses to the named executive officers for 2021; however, Mr. Beuting did receive a cash bonus for 2021 that was paid in 2022 and is reflected in the \"Bonus\" column. The 2021 amounts for Messrs. Kohn, Barton and Riley includes cash bonuses in relation to the Business Combination which were paid in February 2021 following the completion of the Business Combination. The 2019 amount includes expense for the position of the 2019 bonus settled in RSUs.\n(3) The amount in this column represents Playboy\u2019s matching contributions to the named executive officer\u2019s 401(k) plan account and work from home stipend. In addition, the amount in this column for Ben Kohn\u2019s 2021 compensation includes $0.18 million of imputed compensation related to personal security services provided to Mr. Kohn (representing the incremental cost to us for the personal security services provided to him) and $0.22 million of imputed compensation related to his use of our corporate aircraft. Mr. Kohn was permitted reasonable personal use of our corporate aircraft in 2021 pursuant to a time-sharing agreement between Mr. Kohn and us. Such agreement allows him to reimburse us for the incremental cost of his personal use of our corporate aircraft consistent with Federal Aviation Administration regulations. For purposes of valuing such incremental cost, we calculate incremental cost using a method that takes into account all variable costs, such as fuel, crew travel expenses, landing and parking fees and plane repositioning costs, less, in the case of Mr. Kohn, any reimbursement received by us pursuant to the time-sharing agreement. Since we use our aircraft primarily for business travel, we do not include as part of incremental cost the fixed costs that do not change based on usage, such as pilot costs, the purchase or leasing costs of our aircraft and the cost of maintenance. The incremental cost, if any, of travel by Mr. Kohn\u2019s guests when accompanying him is included. Mr. Kohn is responsible for the payment of any tax on any income imputed to him as a result of personal use of corporate aircraft and we do not provide him with income tax gross-up payments.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Estimated Future Payouts Under Non-Equity Incentive Plan Awards",
+     "",
+     "",
+     "",
+     "",
+     "Estimated Future Payouts Under Equity Incentive Plan Awards",
+     "",
+     "",
+     "All Other Stock Awards: Number of Shares of Stock or Units (#)",
+     "All Other Option Awards: Number of Shares Underlying Options (#)",
+     "Exercise or Base Price of Option Awards ($/sh)",
+     "Grant Date Fair Value of Stock and Option Awards (3)"
+    ],
+    [
+     "Name(4)",
+     "Grant Date (1)",
+     "Type of Award",
+     "Threshold ($)",
+     "Target ($)",
+     "Maximum ($)",
+     "Threshold (#)",
+     "Target (2) (#)",
+     "Maximum (#)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ben Kohn",
+     "1/31/2021",
+     "NSO",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "965,944",
+     "10.52",
+     "4,467,102"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "PSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "1,056,375",
+     "\u2014",
+     "",
+     "",
+     "",
+     "21,645,124"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "RSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "90,431",
+     "",
+     "",
+     "2,539,302"
+    ],
+    [
+     "Lance Barton",
+     "10/29/2021",
+     "NSO",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "148,342",
+     "28.08",
+     "1,763,786"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "PSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "528,187",
+     "\u2014",
+     "",
+     "",
+     "",
+     "10,822,552"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "RSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "168,570",
+     "",
+     "",
+     "4,733,446"
+    ],
+    [
+     "Chris Riley",
+     "10/29/2021",
+     "NSO",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "36,590",
+     "28.08",
+     "433,957"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "PSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "190,147",
+     "\u2014",
+     "",
+     "",
+     "",
+     "3,896,112"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "RSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "39,469",
+     "",
+     "",
+     "1,108,290"
+    ],
+    [
+     "Florus Beuting",
+     "10/29/2021",
+     "NSO",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "30,219",
+     "28.08",
+     "366,254"
+    ],
+    [
+     "",
+     "10/29/2021",
+     "RSU",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "51,532",
+     "",
+     "",
+     "1,447,019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 530,
+    "end_line": 550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "(3) The amount in this column represents Playboy\u2019s matching contributions to the named executive officer\u2019s 401(k) plan account and work from home stipend. In addition, the amount in this column for Ben Kohn\u2019s 2021 compensation includes $0.18 million of imputed compensation related to personal security services provided to Mr. Kohn (representing the incremental cost to us for the personal security services provided to him) and $0.22 million of imputed compensation related to his use of our corporate aircraft. Mr. Kohn was permitted reasonable personal use of our corporate aircraft in 2021 pursuant to a time-sharing agreement between Mr. Kohn and us. Such agreement allows him to reimburse us for the incremental cost of his personal use of our corporate aircraft consistent with Federal Aviation Administration regulations. For purposes of valuing such incremental cost, we calculate incremental cost using a method that takes into account all variable costs, such as fuel, crew travel expenses, landing and parking fees and plane repositioning costs, less, in the case of Mr. Kohn, any reimbursement received by us pursuant to the time-sharing agreement. Since we use our aircraft primarily for business travel, we do not include as part of incremental cost the fixed costs that do not change based on usage, such as pilot costs, the purchase or leasing costs of our aircraft and the cost of maintenance. The incremental cost, if any, of travel by Mr. Kohn\u2019s guests when accompanying him is included. Mr. Kohn is responsible for the payment of any tax on any income imputed to him as a result of personal use of corporate aircraft and we do not provide him with income tax gross-up payments.\n(4) Mr. Israel served as our Chief Financial Officer & Chief Operating Officer through February 28, 2021. Commencing March 1, 2021, Mr. Israel assumed the role of President, Sexual Wellness Operations, and Lance Barton assumed the role of Chief Financial Officer. As of March 1, 2021, we did not have a Chief Operating Officer position. As of August 2, 2021, Mr. Israel transitioned from the role of President, Sexual Wellness Operations to serving as an advisor to our Chief Executive Officer.\n2021 Grants of Plan-Based Awards Table\nThe following table presents, for each of the named executive officers, information concerning each grant of an equity award made during the year ended December 31, 2021. This information supplements the information about these awards set forth in the 2021 Summary Compensation Table.",
+   "prose_after": "______________________\n(1) The vesting schedule for each award is set for in the \u201cOutstanding Equity Awards at 2021 Fiscal Year-End\u201d table below.\n(2) The shares underlying PSUs vest in 25% increments upon achievement of certain 30-day volume-weighted average price milestones for a share of our common stock.\n(3) In accordance with SEC requirements, these amounts reflect the aggregate grant date fair value based upon achievement of the target performance goal, excluding the effect of estimated forfeitures. The amounts reported do not reflect compensation actually received by the named executive officers.\n(4) Mr. Israel was not granted any equity awards during the year ended December 31, 2021.\nOutstanding Equity Awards at 2021 Fiscal Year-End\nThe following table presents, for each of the named executive officers, information regarding outstanding stock options (\u201cNSOs\u201d), RSUs and PSUs held as of December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "Type of Award",
+     "Number of Securities Underlying Unexercised Option (#) Exercisable",
+     "Number of Securities Underlying Unexercised Option (#) UnExercisable",
+     "Option Exercise Price ($)",
+     "Option Expiration Date",
+     "",
+     "Number of Shares or Units of Stock That Have Not Vested (#)",
+     "Market Value of Shares or Units of Stock That Have Not Vested ($)(\u00b9)"
+    ],
+    [
+     "Ben Kohn",
+     "03/20/19",
+     "NSO",
+     "948,322",
+     "",
+     "3.35",
+     "3/20/29",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/31/21",
+     "NSO",
+     "",
+     "965,944",
+     "10.52",
+     "1/31/31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/29/21",
+     "PSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "264,094",
+     "7,035,464"
+    ],
+    [
+     "",
+     "10/29/21",
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "90,431",
+     "2,409,082"
+    ],
+    [
+     "Lance Barton",
+     "10/29/21",
+     "NSO",
+     "",
+     "148,342",
+     "28.08",
+     "10/29/31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/29/21",
+     "PSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "132,047",
+     "3,517,732"
+    ],
+    [
+     "",
+     "10/29/21",
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "168,570",
+     "4,490,705"
+    ],
+    [
+     "Chris Riley",
+     "03/20/19",
+     "NSO",
+     "134,570",
+     "",
+     "3.35",
+     "3/20/29",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/29/21",
+     "NSO",
+     "",
+     "36,590",
+     "28.08",
+     "10/29/31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/29/21",
+     "PSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "47,537",
+     "1,266,386"
+    ],
+    [
+     "",
+     "10/29/21",
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "39,469",
+     "1,051,454"
+    ],
+    [
+     "Florus Beuting",
+     "10/29/21",
+     "NSO",
+     "",
+     "30,219",
+     "28.08",
+     "10/29/31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/29/21",
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "51,532",
+     "1,372,812"
+    ],
+    [
+     "David Israel",
+     "03/20/19",
+     "NSO",
+     "189,610",
+     "",
+     "3.35",
+     "3/20/29",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 591
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "______________________\n(1) The vesting schedule for each award is set for in the \u201cOutstanding Equity Awards at 2021 Fiscal Year-End\u201d table below.\n(2) The shares underlying PSUs vest in 25% increments upon achievement of certain 30-day volume-weighted average price milestones for a share of our common stock.\n(3) In accordance with SEC requirements, these amounts reflect the aggregate grant date fair value based upon achievement of the target performance goal, excluding the effect of estimated forfeitures. The amounts reported do not reflect compensation actually received by the named executive officers.\n(4) Mr. Israel was not granted any equity awards during the year ended December 31, 2021.\nOutstanding Equity Awards at 2021 Fiscal Year-End\nThe following table presents, for each of the named executive officers, information regarding outstanding stock options (\u201cNSOs\u201d), RSUs and PSUs held as of December 31, 2021.",
+   "prose_after": "__________\n(1) Amounts in this column reflect the aggregate fair market value of the RSUs and PSUs, on December 31, 2021, based on the fair market value per share on such date of $26.64.\nOption Exercises and Stock Vested\nThe following table presents, for each of the named executive officers, the number of shares of our common stock acquired upon exercise of options and the number of shares of our common stock underlying PSUs and RSUs which vested during 2021 and the aggregate value realized upon the exercise of options and vesting of PSUs and RSUs.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "Stock Awards",
+     ""
+    ],
+    [
+     "Name(6)",
+     "Type of Award",
+     "Number of Shares Acquired Upon Exercise (#)",
+     "Value Realized Upon Exercise ($)",
+     "Number of Shares Acquired Upon Vesting (#)",
+     "Value Realized Upon Vesting ($)(\u00b9)"
+    ],
+    [
+     "Ben Kohn(2)",
+     "PSU",
+     "",
+     "",
+     "792,281",
+     "22,247,251"
+    ],
+    [
+     "",
+     "RSU",
+     "",
+     "",
+     "1,082,950",
+     "14,446,553"
+    ],
+    [
+     "Lance Barton(3)",
+     "PSU",
+     "",
+     "",
+     "396,140",
+     "11,123,611"
+    ],
+    [
+     "Chris Riley(4)",
+     "PSU",
+     "",
+     "",
+     "142,610",
+     "4,004,489"
+    ],
+    [
+     "",
+     "RSU",
+     "",
+     "",
+     "5,233",
+     "69,808"
+    ],
+    [
+     "David Israel(5)",
+     "RSU",
+     "",
+     "",
+     "219,532",
+     "2,928,557"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "__________\n(1) Amounts in this column reflect the aggregate fair market value of the RSUs and PSUs, on December 31, 2021, based on the fair market value per share on such date of $26.64.\nOption Exercises and Stock Vested\nThe following table presents, for each of the named executive officers, the number of shares of our common stock acquired upon exercise of options and the number of shares of our common stock underlying PSUs and RSUs which vested during 2021 and the aggregate value realized upon the exercise of options and vesting of PSUs and RSUs.",
+   "prose_after": "_________\n(1) The aggregate value realized upon the vesting of shares underlying PSUs and RSUs represents the aggregate market price of the shares of our common stock on the date of vesting.\n(2) Mr. Kohn\u2019s PSU shares vested on October 29, 2021, and the closing price of our common stock on that date was $28.08 per share. Mr. Kohn\u2019s legacy Playboy RSUs were assumed by the Company in connection with the Business Combination and were fully vested upon the consummation of the Business Combination. All of such RSUs are to be settled in 2022 in accordance with the terms of the Merger Agreement. For Playboy grants which were assumed by the Company and fully vested upon the completion of the Merger on February 10, 2021, the value is calculated using the $13.34 per share closing price of our common stock on such date.\n(3) Mr. Barton\u2019s PSU shares vested on October 29, 2021, and the closing price of our common stock on that date was $28.08 per share.\n(4) Mr. Riley\u2019s PSU shares vested on October 29, 2021, and the closing price of our common stock on that date was $28.08 per share. Mr. Riley\u2019s legacy Playboy RSUs were assumed by the Company in connection with the Business Combination and were fully vested upon the consummation of the Business Combination. All of such RSUs are to be settled in 2022 in accordance with the terms of the Merger Agreement. For Playboy grants which were assumed by the Company and fully vested upon the completion of the Merger on February 10, 2021, the value is calculated using the $13.34 per share closing price of our common stock on such date.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Type of Payment(1)",
+     "Termination for Death or Disability ($)(2)",
+     "Termination for Cause or Without Good Reason ($)",
+     "Termination Without Cause or for Good Reason Absent a Change in Control ($)(3)",
+     "Termination Without Cause or for Good Reason in Connection with a Change in Control ($)(3)"
+    ],
+    [
+     "Ben Kohn Chief Executive Officer & President",
+     "Cash Severance",
+     "1,700,000",
+     "\u2014",
+     "4,675,000",
+     "5,525,000"
+    ],
+    [
+     "",
+     "Equity Severance",
+     "\u2014",
+     "\u2014",
+     "17,980,099",
+     "25,015,563"
+    ],
+    [
+     "",
+     "Other Benefits",
+     "\u2014",
+     "\u2014",
+     "63,055",
+     "63,055"
+    ],
+    [
+     "Lance Barton Chief Financial Officer",
+     "Cash Severance",
+     "300,000",
+     "\u2014",
+     "1,050,685",
+     "1,075,685"
+    ],
+    [
+     "",
+     "Equity Severance",
+     "\u2014",
+     "\u2014",
+     "6,678,749",
+     "10,196,481"
+    ],
+    [
+     "",
+     "Other Benefits",
+     "\u2014",
+     "\u2014",
+     "63,005",
+     "63,005"
+    ],
+    [
+     "Chris Riley General Counsel and Secretary",
+     "Cash Severance",
+     "320,000",
+     "\u2014",
+     "1,040,000",
+     "1,140,000"
+    ],
+    [
+     "",
+     "Equity Severance",
+     "\u2014",
+     "\u2014",
+     "1,592,254",
+     "2,858,640"
+    ],
+    [
+     "",
+     "Other Benefits",
+     "\u2014",
+     "\u2014",
+     "59,275",
+     "59,275"
+    ],
+    [
+     "Florus Beuting Chief Accounting Officer",
+     "Cash Severance",
+     "\u2014",
+     "\u2014",
+     "162,500",
+     "162,500"
+    ],
+    [
+     "",
+     "Equity Severance",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "Other Benefits",
+     "\u2014",
+     "\u2014",
+     "21,018",
+     "21,018"
+    ],
+    [
+     "David Israel Former Chief Financial Officer & Former Chief Operating Officer",
+     "Cash Severance",
+     "\u2014",
+     "\u2014",
+     "586,208",
+     "586,208"
+    ],
+    [
+     "",
+     "Equity Severance",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "Other Benefits",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 634,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Mr. Israel\u2019s legacy Playboy RSUs were assumed by the Company in connection with the Business Combination and were fully vested upon the consummation of the Business Combination. All of such RSUs were settled in 2022 in accordance with the terms of the Merger Agreement. For Playboy grants which were assumed by the Company and fully vested upon the completion of the Merger on February 10, 2021, the value is calculated using the $13.34 per share closing price of our common stock on such date.\n(6) Mr. Beuting did not have any vested equity awards during the year ended December 31, 2021.\nEstimate of Potential Payments Upon Termination or Change in Control\nThe amounts estimated in the table below assume that the relevant triggering event (a termination of employment or change in control, as applicable) occurred on December 31, 2021 and are based on the terms of the applicable employment agreements and equity award agreements that were in effect on that date. The table assumes that any equity awards that vest in connection with the applicable triggering event that are subject to performance conditions are earned at the target level of performance within the applicable period except as may be noted otherwise, and values equity awards based on the closing price of a share of our common stock on December 31, 2021 of $26.64.",
+   "prose_after": "_____________________\n(1) The \u201cOther Benefits\u201d rows reflect the cost of COBRA coverage. The \u201cCash Severance\u201d rows includes executive's annual target bonus and most recent pro-rated bonus where applicable. Pro-rated bonus assumes maximum bonus payout based on number of days the named executive was employed during the fiscal year in which the date of termination occurred.\n(2) Assumes death or disability as of December 31, 2021 and maximum bonus payout.\n(3) Equity severance in this columns reflects the acceleration of equity grants that vest after December 31, 2021.\nEmployment Agreements\nKohn Option Grant and Employment Agreement\nOn January 31, 2021, Playboy granted Ben Kohn an option to purchase 172,393 shares of Playboy common stock at an exercise price of $58.89 per share (the \u201cPre-Closing Option\u201d), which has been assumed by the Company in connection with the closing of the Business Combination and converted into an option to purchase 965,944 shares of common stock of the Company at an exercise price of $10.52 per share in accordance with the conversion mechanics for other outstanding options described in the Merger Agreement. The Pre-Closing Option will generally vest as follows, subject to Mr. Kohn\u2019s continued employment or service as a director through the applicable vesting date: 1/3 on the first anniversary of the closing of the Business Combination and ratably in 24 monthly installments thereafter.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 674,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owners(1)",
+     "Number of Shares of Company Common Stock",
+     "% of Outstanding Shares",
+     ""
+    ],
+    [
+     "5% Holders",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rizvi Traverse Management, LLC(2)",
+     "10,766,082",
+     "23.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive Officers and Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ben Kohn(3)",
+     "2,998,709",
+     "6.3",
+     "%"
+    ],
+    [
+     "Lance Barton(4)",
+     "309,998",
+     "*",
+     ""
+    ],
+    [
+     "Chris Riley(5)",
+     "243,443",
+     "*",
+     ""
+    ],
+    [
+     "Florus Beuting(6)",
+     "17,916",
+     "*",
+     ""
+    ],
+    [
+     "Suhail Rizvi(2)(7)",
+     "10,766,082",
+     "23.8",
+     "%"
+    ],
+    [
+     "Tracey Edmonds(8)",
+     "6,874",
+     "*",
+     ""
+    ],
+    [
+     "Juliana F. Hill",
+     "\u2014",
+     "*",
+     ""
+    ],
+    [
+     "James Yaffe(9)",
+     "21,867",
+     "*",
+     ""
+    ],
+    [
+     "All Executive Officers and Directors of the Company as a group (8 individuals)",
+     "14,364,889",
+     "29.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 773,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022all executive officers and directors of the Company as a group.\nBeneficial ownership is determined according to the rules of the SEC, which generally provide that a person has beneficial ownership of a security if he, she or it possesses sole or shared voting or investment power over that security, including options and warrants that are currently exercisable or exercisable within 60 days of April 11, 2022. Company stock issuable upon exercise of options and warrants currently exercisable or exercisable within 60 days of April 11, 2022 are deemed outstanding solely for purposes of calculating the percentage of total voting power of the beneficial owner thereof.\nThe beneficial ownership of our common stock is based on 45,221,175 shares of our common stock issued and outstanding as of April 11, 2022.\nUnless otherwise indicated, the Company believes that each person named in the table below has sole voting and investment power with respect to all shares of common stock beneficially owned by them.",
+   "prose_after": "*Less than 1%.\n(1)Unless otherwise noted, the business address of each of the following entities or individuals is 10960 Wilshire Blvd., Suite 2200, Los Angeles California 90024.\n(2)Represents 7,069,064 shares of common stock held by Rizvi Opportunistic Equity Fund II, L.P. (\"ROEF II\"), 279,128 shares of common stock held by Rizvi Traverse Partners II, LLC (\"RTP II\"), 3,344,588 shares of common stock held by other funds (the \"funds\") controlled by Rizvi Traverse Management, LLC (\"Rizvi Traverse\"), 51,434 shares of common stock held by other entities controlled by Mr. Suhail Rizvi, and 21,868 shares in respect of RSUs held by Mr. Rizvi which have vested or are scheduled to vest within 60 days of April 11, 2022. Does not include 15,625 unvested RSUs held by Mr. Rizvi as they do not vest within 60 days of April 11, 2022. Rizvi Traverse GP II, LLC (\"RT GP II\") is the general partner of ROEF II. Rizvi Traverse Management II, LLC (\"RTM II\") is the manager of RTP II. Mr. Suhail Rizvi is a manager of RT GP II and RTM II. Mr. Rizvi and Mr. John Giampetroni are the managers of Rizvi Traverse. Each of RT GP II, RTM II, and Rizvi Traverse may be deemed to be the beneficial owner of the shares of common stock beneficially owned by such entities, but each disclaims beneficial ownership of such shares, except to the extent of any pecuniary interest therein. Each of Rizvi Traverse and Messrs. Rizvi and Giampetroni may be deemed to be the beneficial owner of the shares of common stock beneficially owned by Rizvi Traverse, but each disclaims beneficial ownership of such shares, except to the extent of any pecuniary interest therein. The address of Rizvi Traverse and its affiliates, including Messrs. Rizvi and Giampetroni, is c/o Rizvi Traverse Management, LLC, 801 Northpoint Parkway, Suite 129, West Palm Beach, FL 33407.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 798,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights (a)(\u00b9)",
+     "Weighted average exercise price of outstanding options, warrants and rights (b)(\u00b2)",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a)) (c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "7,804,392",
+     "$7.77",
+     "2,064,147"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "7,804,392",
+     "",
+     "2,064,147"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "(7)Mr. Rizvi, a member of the Company\u2019s Board, is a manager of Rizvi Traverse. Mr. Rizvi disclaims beneficial ownership of all shares held by Rizvi Traverse referred to in footnote (2) above, except to the extent of any pecuniary interest therein.\n(8)Consists of 4,997 shares of common stock and 1,877 shares of common stock that Ms. Edmonds has the right to acquire as of April 11, 2022 upon the settlement of RSUs within 60 days of April 11, 2022. Does not include 15,627 shares of common stock issuable upon the settlement of RSUs that will occur more than 60 days from April 11, 2022.\n(9)Consists of 19,990 shares of common stock and 1,877 shares of common stock that Mr. Yaffe has the right to acquire as of April 11, 2022 upon the settlement of RSUs within 60 days of April 11, 2022. Does not include 15,627 shares of common stock issuable upon the settlement of RSUs that will occur more than 60 days from April 11, 2022.\nEquity Compensation Plan Information\nThe following table provides information as of December 31, 2021 with respect to the shares of the Company\u2019s common stock that may be issued under its 2018 and 2021 equity plans.",
+   "prose_after": "(1) Consists of 2,133,179 vested restricted stock units not yet settled, 1,331,031 vested performance-based restricted stock units not yet settled, 585,075 unvested and outstanding restricted stock units, 544,036 unvested and outstanding performance-based restricted stock units and 3,211,071 issued and outstanding options to purchase 3,211,071 shares of Company common stock, all of which were granted under our 2018 Plan and 2021 Plan.\n(2) Excludes restricted stock units and performance-based restricted stock units.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nManagement Services Agreement\nOn January 9, 2011, Playboy entered into a Management Services Agreement, between Icon Acquisition Holding, Inc. and RTM-ICON LLC, an affiliate of RT-ICON Holdings LLC. Based on the terms of such agreement, management fees were $1.3 million per calendar year. Playboy recorded management fees and reimbursable costs of approximately $0.3 million, $1.0 million and $1.0 million for the years ended December 31, 2021, 2020 and 2019, respectively. The Management Services Agreement was terminated effective upon the Closing of the Business Combination.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "1,392,000",
+     "$",
+     "696,000"
+    ],
+    [
+     "Tax Fees(2)",
+     "25,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,417,000",
+     "$",
+     "696,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 915
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "of the Original Form 10-K to include the information required by such Items;"
+    },
+    "note": null
+   },
+   "prose_before": "The policy requires that, in determining whether to approve, ratify or reject a related person transaction, the Company\u2019s Audit Committee, or other independent body of the Board, must consider, in light of known circumstances, whether the transaction is in, or is not inconsistent with, the Company\u2019s best interests and those of the Company\u2019s stockholders, as the Company\u2019s Audit Committee, or other independent body of the Board, determines in the good faith exercise of its discretion.\nItem 14. Principal Accounting Fees and Services\nThe following table presents fees billed for professional audit services and other services rendered to us by our independent registered public accounting firm for the years ended December 31, 2021 and 2020. BDO USA, LLP (\"BDO\") has served as our independent registered public accounting firm for the fiscal year ended December 31, 2021. Prior to the completion of the Business Combination, the independent registered public accounting firm of Playboy (the accounting acquirer in the Business Combination) for the fiscal year ended December 31, 2020 was Prager Metis CPAs LLP (\"Prager\").",
+   "prose_after": "(1) Audit fees consist of fees billed for professional services rendered for the audit of our year-end consolidated financial statements, reviews of our quarterly interim financial statements, services in connection with the acquisition audits, and services that are normally provided by our independent registered public accounting firm in connection with statutory and regulatory filings.\n(2) Tax fees consist of fees billed for professional services relating to an Internal Revenue Code Section 382 study.\nPre-Approval of Audit and Non-Audit Services\nThe charter for our Audit Committee requires that the Audit Committee pre-approve all audit services to be provided to us, whether provided by our principal auditor or other firms, and all other services (review, attest and non-audit) to be provided to us by our independent registered public accounting firm, other than de minimis non-audit services approved in accordance with applicable SEC rules.\nSince the completion of the Business Combination, all BDO and Prager services and fees have been pre-approved by the Audit Committee. Prior to the Business Combination, all of the services listed in the table above provided to Playboy were approved by Playboy in accordance with its policies and practices then in effect.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1*",
+     "Agreement and Plan of Merger, dated as of September 30, 2020, by and among Mountain Crest Acquisition Corp, MCAC Merger Sub Inc., Suying Liu and Playboy Enterprises, Inc. (incorporated by reference to Annex A to MCAC\u2019s Preliminary Proxy Statement file with the SEC on November 9, 2020)."
+    ],
+    [
+     "2.2*",
+     "Share Purchase Agreement, dated June 28, 2021, by and among PLBY Group, Inc., PLBY Australia Pty Ltd, Honey Birdette (Aust) Pty Limited, the sellers party thereto, and Ray Itaoui, as the sellers\u2019 representative (incorporated by reference to Exhibit 2.1 of PLBY\u2019s Current Report on Form 8-K filed with the SEC on June 29, 2021)"
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of PLBY Group, Inc. (incorporated by reference to Exhibit 3.1 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of PLBY Group, Inc. (incorporated by reference to Exhibit 3.2 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)"
+    ],
+    [
+     "4.1",
+     "Description of registered securities."
+    ],
+    [
+     "10.1",
+     "Form of Subscription Agreement, dated as of September 30, 2020, by and among Mountain Crest Acquisition Corp and certain institutional and accredited investors (incorporated by reference to Exhibit 10.1 of MCAC\u2019s Current Report on Form 8-K filed with the SEC on October 1, 2020)."
+    ],
+    [
+     "10.2",
+     "Form of Registration Rights Agreement, dated as of September 30, 2020, by and among Mountain Crest Acquisition Corp and certain institutional and accredited investors (incorporated by reference to Exhibit 10.2 of MCAC\u2019s Current Report on Form 8-K filed with the SEC on October 1, 2020)."
+    ],
+    [
+     "10.3",
+     "Form of Support Agreement, dated as of September 30, 2020, by and among Playboy Enterprises, Inc., officers and directors of Mountain Crest Acquisition Corp, Sunlight Global Investment LLC, Suying Liu and Dong Liu (incorporated by reference to Exhibit 10.3 of MCAC\u2019s Current Report on Form 8-K filed with the SEC on October 1, 2020)."
+    ],
+    [
+     "10.4",
+     "Amended and Restated Registration Rights Agreement, dated as of February 10, 2021, by and among PLBY Group, Inc., Suying Liu, Dong Liu, Nelson Haight, Todd Milbourn, Wenhua Zhang, RT-ICON Holdings LLC, and each of the other shareholders of Playboy Enterprises, Inc. whose names are listed on Exhibit A thereto (incorporated by reference to Exhibit 10.4 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.5",
+     "Investor Rights Agreement, dated as of February 10, 2021, by and among PLBY Group, Inc. and RT-ICON Holdings LLC (incorporated by reference to Exhibit 10.5 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.6",
+     "Form of Lock-Up Agreement (incorporated by reference to Exhibit 10.6 of MCAC\u2019s Current Report on Form 8-K filed with the SEC on October 1, 2020)."
+    ],
+    [
+     "10.7",
+     "Voting Agreement, dated as of February 10, 2021, by and among PLBY Group, Inc., RT-ICON Holdings LLC and Drawbridge Special Opportunities Fund LP (incorporated by reference to Exhibit 10.7 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.8\u2020",
+     "PLBY Group, Inc. 2021 Equity and Incentive Compensation Plan (incorporated by reference to Exhibit 10.8 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.9",
+     "Letter Agreement, dated June 4, 2020 by and between MCAC and Sunlight Global Investment LLC (incorporated by reference to Exhibit 10.6 of MCAC\u2019s Form 8-K filed with the SEC on October 1, 2020)."
+    ],
+    [
+     "10.10",
+     "Investment Management Trust Agreement, dated June 4, 2020 by and between MCAC and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 10.2 of MCAC\u2019s Form 8-K filed with the SEC on June 10, 2020)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 939,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The charter for our Audit Committee requires that the Audit Committee pre-approve all audit services to be provided to us, whether provided by our principal auditor or other firms, and all other services (review, attest and non-audit) to be provided to us by our independent registered public accounting firm, other than de minimis non-audit services approved in accordance with applicable SEC rules.\nSince the completion of the Business Combination, all BDO and Prager services and fees have been pre-approved by the Audit Committee. Prior to the Business Combination, all of the services listed in the table above provided to Playboy were approved by Playboy in accordance with its policies and practices then in effect.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) Financial statements (see Index to Consolidated Financial Statements in Part II, Item 8 of the Original Form 10-K).\n(b) Consolidated Financial Statement Schedules. All schedules are omitted for the reason that the information is included in the consolidated financial statements or the notes thereto or that they are not required or are not applicable.\n(c) Exhibits: The exhibits listed in the Exhibit Index below are filed or incorporated by reference as part of this Annual Report on Form 10-K/A.\nExhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "10.11",
+     "Consent to Merger Transaction and Wavier to Credit Agreement, dated as of December 31, 2020, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., and Yandy Enterprises LLC (f/k/a Y Acquisition Co. LLC), DBD Credit Funding LLC, as Administrative Agent, and the Lenders whose signatories are affixed hereto (incorporated by reference to Exhibit 10.30 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.12",
+     "Agreement, dated January 10, 2021, by and between Playboy Enterprises, Inc. and CAA Brand Management, LLC (incorporated by reference to Exhibit 10.12 of PLBY\u2019s Form S-1 (333-255585) filed with the SEC on April 28, 2021)."
+    ],
+    [
+     "10.13",
+     "Form of Unit Purchase Option between MCAC and Chardan Capital Markets, LLC (incorporated by reference to Exhibit 4.5 of MCAC\u2019s Registration Statement on Form S-1 (333-238320) filed with the SEC on May 15, 2020)."
+    ],
+    [
+     "10.14",
+     "Stock Purchase Agreement, dated September 30, 2020, by and among Sunlight Global Investment LLC, Suying Liu and Playboy Enterprises, Inc. (incorporated by reference to Exhibit 10.12 of MCAC\u2019s Form S-1/A filed with the SEC on February 4, 2021)."
+    ],
+    [
+     "10.15",
+     "Credit Agreement, dated as of June 24, 2014, by and among Products Licensing LLC, DBD Credit Funding LLC, administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.9 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.16",
+     "First Amendment to the Credit Agreement, dated as of June 7, 2016, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.10 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.17",
+     "Second Amendment to the Credit Agreement, dated as of August 29, 2016, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.11 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.18",
+     "Third Amendment to the Credit Agreement, dated as of July 20, 2017, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.12 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.19",
+     "Fourth Amendment to the Credit Agreement, dated as of April 12, 2018, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.13 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.20",
+     "Fifth Amendment to the Credit Agreement, dated as of June 14, 2018, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.14 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.21",
+     "Sixth Amendment to the Credit Agreement, dated as of August 13, 2018, by and among Products Licensing LLC, DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.15 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.22",
+     "Seventh Amendment and Joinder to the Credit Agreement, dated as of December 24, 2018, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.16 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.23",
+     "Eighth Amendment to the Credit Agreement, dated as of March 15, 2019, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.17 of PLBY\u2019s Form 8-K filed with the SEC on February 17, 2021)."
+    ],
+    [
+     "10.24",
+     "Ninth Amendment and Joinder to the Credit Agreement, dated as of December 31, 2019, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., Y Acquisition Co. LLC, China Products Licensing, LLC., DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.18 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.25",
+     "Tenth Amendment to the Credit Agreement, dated as of March 27, 2020, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., Y Acquisition Co. LLC, China Products Licensing, LLC, Yandy Enterprises LLC., DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.19 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.26",
+     "Eleventh Amendment to the Credit Agreement and Waiver, dated as of January 4, 2021, by and among Products Licensing LLC, Playboy Enterprises International, Inc., Playboy Enterprises, Inc., Y Acquisition Co. LLC, China Products Licensing, LLC, Yandy Enterprises LLC., DBD Credit Funding LLC, as administrative agent, and the lenders party thereto (incorporated by reference to Exhibit 10.20 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.27",
+     "Commercial-Industrial Triple Net Lease, dated as of August 26, 2020, by and between Yandy Enterprises, LLC and 67 VB Owner, LP (incorporated by reference to Exhibit 10.21 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 1016
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1017,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "10.28\u2020",
+     "Offer Letter, dated as of December 20, 2012, by and between Playboy Enterprises, Inc. and David Israel, as amended on February 8, 2021 (incorporated by reference to Exhibit 10.22 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.29\u2020",
+     "Employment Agreement, dated as of January 31, 2021, by and between Playboy Enterprises, Inc. and Ben Kohn (as assumed by PLBY Group, Inc.) (incorporated by reference to Exhibit 10.23 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.30\u2020",
+     "Employment Agreement, dated as of February 10, 2021, by and between Playboy Enterprises, Inc. and Chris Riley (as assumed by PLBY Group, Inc.) (incorporated by reference to Exhibit 10.24 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.31\u2020",
+     "Offer Letter, dated as of January 23, 2021, by and between Playboy Enterprises, Inc. and Florus Beuting, as amended on February 8, 2021 (incorporated by reference to Exhibit 10.25 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.32\u2020",
+     "Form of Indemnification Agreement, by and between PLBY Group, Inc. and each of its directors and executive officers (incorporated by reference to Exhibit 10.26 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.33\u2020",
+     "PLBY Group, Inc. Non-Employee Director Compensation Policy, effective February 10, 2021 (incorporated by reference to Exhibit 10.27 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.34+",
+     "Product License Agreement, effective as of December 6, 2019, by and between Playboy Enterprises International, Inc. and New Handong Investment (Guangdong) Co., Ltd (incorporated by reference to Exhibit 10.28 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.35+",
+     "First Amendment, effective as of June 18, 2020, to the Product License Agreement, effective as of December 6, 2019, by and between Playboy Enterprises International, Inc. and New Handong Investment (Guangdong) Co., Ltd (incorporated by reference to Exhibit 10.29 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.36\u2020",
+     "Employment Agreement, dated February 11, 2021, between PLBY Group, Inc. and Lance Barton (incorporated by reference to Exhibit 10.31 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.37\u2020",
+     "Form of Option/RSU Acknowledgement and Lock-up Agreement (incorporated by reference to Exhibit 10.32 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.38\u2020",
+     "Playboy Enterprises, Inc. 2018 Equity Incentive Plan (incorporated by reference to Exhibit 10.33 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.39\u2020",
+     "Form of Stock Option Award Agreement under Playboy Enterprises, Inc. 2018 Equity Incentive Plan (incorporated by reference to Exhibit 10.34 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "10.40*+",
+     "Form of Aircraft Purchase Agreement, dated as of April 1, 2021 (incorporated by reference to Exhibit 10.1 of PLBY\u2019s Form 8-K filed with the SEC on April 7, 2021)."
+    ],
+    [
+     "10.41",
+     "Letter Agreement, dated July 22, 2020, by and between MCAC and Craig-Hallum Capital Group LLC (incorporated by reference to Exhibit 10.41 of PLBY\u2019s Form S-1 (333-255585) filed with the SEC on April 28, 2021)."
+    ],
+    [
+     "10.42",
+     "Joinder Agreement, dated September 30, 2020, by and among MCAC, Craig-Hallum Capital Group LLC and Roth Capital Partners LLC (incorporated by reference to Exhibit 10.42 of PLBY\u2019s Form S-1 (333-255585) filed with the SEC on April 28, 2021)."
+    ],
+    [
+     "10.43",
+     "Credit and Guaranty Agreement, dated as of May 25, 2021, entered into by and among Playboy Enterprises, Inc., the Company and certain subsidiaries of the Company, the lenders party thereto, and Acquiom Agency Services LLC (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the SEC on May 25, 2021)."
+    ],
+    [
+     "10.44",
+     "Pledge and Security Agreement, dated as of May 25, 2021, entered into by and among Playboy Enterprises, Inc., the Company and certain subsidiaries of the Company, and Acquiom Agency Services LLC (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the SEC on May 25, 2021)."
+    ],
+    [
+     "10.45",
+     "Amendment No. 1 to Credit and Guaranty Agreement, dated as of August 11, 2021, by and among PLBY, Playboy Enterprises, Inc., each guarantor party thereto, the lenders party thereto, and Acquiom Agency Services LLC, as the administrative agent and the collateral agent (incorporated by reference to Exhibit 10.1 of PLBY\u2019s Form 8-K filed with the SEC on August 11, 2021)."
+    ],
+    [
+     "10.46*",
+     "Stock Purchase Agreement, dated January 31, 2021, by and between Playboy Enterprises, Inc. and TLA Acquisition Corp. (incorporated by reference to Exhibit 10.15 of PLBY' s Form 10-Q filed with the SEC on May 13, 2021)."
+    ],
+    [
+     "10.47*",
+     "Agreement and Plan of Merger, dated October 15, 2021, by and among PLBY Group, Inc., PB Global Merger Sub Inc., GlowUp Digital Inc. and Michael Dow, solely as representative of the stockholders of GlowUp Digital Inc. (incorporated by reference to Exhibit 10.1 of PLBY's Form 8-K filed with the SEC on October 18, 2021)."
+    ],
+    [
+     "10.48",
+     "Form of Stock Option Award Agreement under PLBY Group, Inc. 2021 Equity and Incentive Compensation Plan (incorporated by reference to Exhibit 10.48 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1018,
+    "end_line": 1063
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1017,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "10.49",
+     "Form of Employee Restricted Stock Unit Award Agreement under PLBY Group, Inc. 2021 Equity and Incentive Compensation Plan (incorporated by reference to Exhibit 10.49 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "10.50",
+     "Form of Non-Employee Restricted Stock Unit Award Agreement under PLBY Group, Inc. 2021 Equity and Incentive Compensation Plan (incorporated by reference to Exhibit 10.50 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "10.51",
+     "Form of Performance-Based Restricted Stock Unit Award Agreement under PLBY Group, Inc. 2021 Equity and Incentive Compensation Plan (incorporated by reference to Exhibit 10.51 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "14.1",
+     "Code of Conduct and Ethics, adopted by PLBY Group, Inc.\u2019s board of directors on February 10, 2021 (incorporated by reference to Exhibit 14.1 of PLBY\u2019s Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "16.1",
+     "Letter from Marcum LLP to the SEC, dated as of February 16, 2021 (incorporated by reference to Exhibit 16.1 of PLBY's Form 8-K filed with the SEC on February 16, 2021)."
+    ],
+    [
+     "16.2",
+     "Letter from Prager Metis CPAs LLP to the SEC, dated as of July 9, 2021 (incorporated by reference to Exhibit 16.1 of PLBY's Form 8-K filed with the SEC on July 9, 2021)."
+    ],
+    [
+     "21.1",
+     "List of subsidiaries of PLBY Group, Inc. (incorporated by reference to Exhibit 21.1 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "23.1",
+     "Consent of Prager Metis CPAs LLP (incorporated by reference to Exhibit 23.1 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "23.2",
+     "Consent of BDO LLP (incorporated by reference to Exhibit 23.2 of PLBY's Form 10-K filed with the SEC on March 16, 2022)."
+    ],
+    [
+     "24.1",
+     "Power of Attorney (included on the signature page of the Original Form 10-K)."
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, with respect to the Original Form 10-K."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, with respect to the Original Form 10-K."
+    ],
+    [
+     "31.3",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, with respect to this Amendment."
+    ],
+    [
+     "31.4",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, with respect to this Amendment."
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, with respect to the Original Form 10-K."
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, with respect to the Original Form 10-K."
+    ],
+    [
+     "32.3",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, with respect to this Amendment."
+    ],
+    [
+     "32.4",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, with respect to this Amendment."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "*Schedules and exhibits to this agreement have been omitted pursuant to Item 601(b)(2) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.\n\u2020Management contract or compensation plan or arrangement.\n+ Certain confidential portions (indicated by brackets and asterisks) have been omitted from this exhibit pursuant to Item 601(b)(2) or 601(b)(10) of Regulation S-K, as applicable. The Company agrees to furnish to the SEC a copy of any omitted portions of the exhibit upon request.\n^ This certification is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (Exchange Act), or otherwise subject to the liability of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Act of 1934, the registrant has duly caused this Amendment No. 1 on Form 10-K/A to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PLBY GROUP, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 22, 2022",
+     "By:",
+     "/s/ Ben Kohn"
+    ],
+    [
+     "",
+     "Name:",
+     "Ben Kohn"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer and President (Principal executive officer)"
+    ]
+   ],
+   "caption_stack": [
+    "PLBY GROUP, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1135
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "*Schedules and exhibits to this agreement have been omitted pursuant to Item 601(b)(2) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.\n\u2020Management contract or compensation plan or arrangement.\n+ Certain confidential portions (indicated by brackets and asterisks) have been omitted from this exhibit pursuant to Item 601(b)(2) or 601(b)(10) of Regulation S-K, as applicable. The Company agrees to furnish to the SEC a copy of any omitted portions of the exhibit upon request.\n^ This certification is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (Exchange Act), or otherwise subject to the liability of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Act of 1934, the registrant has duly caused this Amendment No. 1 on Form 10-K/A to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1136,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

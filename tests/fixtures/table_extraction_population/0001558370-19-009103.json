@@ -1,0 +1,6604 @@
+{
+ "accession": "0001558370-19-009103",
+ "cik": "0001035983",
+ "form": "10-Q",
+ "filing_date": "2019-10-24",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "fix-20190930x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware (State or other jurisdiction of Incorporation or Organization)",
+     "76-0526487 (I.R.S. Employer Identification No.)"
+    ],
+    [
+     "675 Bering Drive Suite 400 Houston, Texas 77057 (Address of Principal Executive Offices) (Zip Code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-Q\n(Mark One)\n[X]       QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2019\nOR\n[ ]       TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 1-13011\nCOMFORT SYSTEMS USA, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (713) 830-9600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.01 par value",
+     "FIX",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (713) 830-9600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No \u25fb\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No \u25fb\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Part I\u2014Financial Information",
+     "1"
+    ],
+    [
+     "Item 1\u2014Financial Statements",
+     "1"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "1"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "2"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "3"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "5"
+    ],
+    [
+     "Condensed Notes to Consolidated Financial Statements",
+     "6"
+    ],
+    [
+     "Item 2\u2014Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 3\u2014Quantitative and Qualitative Disclosures about Market Risk",
+     "33"
+    ],
+    [
+     "Item 4\u2014Controls and Procedures",
+     "34"
+    ],
+    [
+     "Part II\u2014Other Information",
+     "34"
+    ],
+    [
+     "Item 1\u2014Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 1A\u2014Risk Factors",
+     "34"
+    ],
+    [
+     "Item 2\u2014Unregistered Sales of Equity Securities and Use of Proceeds",
+     "35"
+    ],
+    [
+     "Item 6\u2014Exhibits",
+     "36"
+    ],
+    [
+     "Signatures",
+     "37"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 55,
+    "end_line": 75
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [X]  Accelerated filer \u25fb  Non-accelerated filer \u25fb  Smaller reporting company [ ]  Emerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u25fb\nIndicate by check mark whether the registrant is a shell company (as defined in Exchange Act Rule 12b-2). Yes [ ] No [X]\nThe number of shares outstanding of the issuer\u2019s common stock as of October 18, 2019 was 36,675,927 (excluding treasury shares of 4,447,438).\nINDEX TO FORM 10-Q\nFOR THE QUARTER ENDED SEPTEMBER 30, 2019",
+   "prose_after": "PART I\u2014FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONSOLIDATED BALANCE SHEETS\n(In Thousands, Except Share Amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "40,363",
+     "$",
+     "45,620"
+    ],
+    [
+     "Billed accounts receivable, less allowance for doubtful accounts of $6,526 and $5,898, respectively",
+     "",
+     "607,061",
+     "",
+     "481,366"
+    ],
+    [
+     "Unbilled accounts receivable",
+     "",
+     "49,926",
+     "",
+     "37,180"
+    ],
+    [
+     "Other receivables",
+     "",
+     "25,476",
+     "",
+     "16,361"
+    ],
+    [
+     "Inventories",
+     "",
+     "12,667",
+     "",
+     "12,416"
+    ],
+    [
+     "Prepaid expenses and other",
+     "",
+     "8,788",
+     "",
+     "6,544"
+    ],
+    [
+     "Costs and estimated earnings in excess of billings",
+     "",
+     "6,121",
+     "",
+     "10,213"
+    ],
+    [
+     "Total current assets",
+     "",
+     "750,402",
+     "",
+     "609,700"
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, NET",
+     "",
+     "108,129",
+     "",
+     "99,618"
+    ],
+    [
+     "LEASE RIGHT-OF-USE ASSET",
+     "",
+     "84,281",
+     "",
+     "\u2014"
+    ],
+    [
+     "GOODWILL",
+     "",
+     "332,200",
+     "",
+     "235,182"
+    ],
+    [
+     "IDENTIFIABLE INTANGIBLE ASSETS, NET",
+     "",
+     "166,736",
+     "",
+     "95,275"
+    ],
+    [
+     "DEFERRED TAX ASSETS",
+     "",
+     "20,254",
+     "",
+     "17,634"
+    ],
+    [
+     "OTHER NONCURRENT ASSETS",
+     "",
+     "5,458",
+     "",
+     "5,155"
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,467,460",
+     "$",
+     "1,062,564"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "$",
+     "13,847",
+     "$",
+     "3,279"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "176,624",
+     "",
+     "176,167"
+    ],
+    [
+     "Accrued compensation and benefits",
+     "",
+     "100,390",
+     "",
+     "87,388"
+    ],
+    [
+     "Billings in excess of costs and estimated earnings",
+     "",
+     "167,097",
+     "",
+     "130,986"
+    ],
+    [
+     "Accrued self-insurance",
+     "",
+     "40,750",
+     "",
+     "36,386"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "79,024",
+     "",
+     "32,852"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "577,732",
+     "",
+     "467,058"
+    ],
+    [
+     "LONG-TERM DEBT",
+     "",
+     "228,167",
+     "",
+     "73,639"
+    ],
+    [
+     "LEASE LIABILITIES",
+     "",
+     "73,213",
+     "",
+     "\u2014"
+    ],
+    [
+     "DEFERRED TAX LIABILITIES",
+     "",
+     "1,387",
+     "",
+     "1,387"
+    ],
+    [
+     "OTHER LONG-TERM LIABILITIES",
+     "",
+     "29,331",
+     "",
+     "22,433"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "909,830",
+     "",
+     "564,517"
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.01 par, 5,000,000 shares authorized, none issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $.01 par, 102,969,912 shares authorized, 41,123,365 and 41,123,365 shares issued, respectively",
+     "",
+     "411",
+     "",
+     "411"
+    ],
+    [
+     "Treasury stock, at cost, 4,447,438 and 4,229,653 shares, respectively",
+     "",
+     "(101,243)",
+     "",
+     "(87,747)"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "320,157",
+     "",
+     "316,479"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "338,305",
+     "",
+     "268,904"
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "557,630",
+     "",
+     "498,047"
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,467,460",
+     "$",
+     "1,062,564"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 140
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I\u2014FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONSOLIDATED BALANCE SHEETS\n(In Thousands, Except Share Amounts)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In Thousands, Except Per Share Data)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "706,918",
+     "$",
+     "594,536",
+     "$",
+     "1,895,693",
+     "$",
+     "1,594,520"
+    ],
+    [
+     "COST OF SERVICES",
+     "",
+     "564,216",
+     "",
+     "466,668",
+     "",
+     "1,526,310",
+     "",
+     "1,266,416"
+    ],
+    [
+     "Gross profit",
+     "",
+     "142,702",
+     "",
+     "127,868",
+     "",
+     "369,383",
+     "",
+     "328,104"
+    ],
+    [
+     "SELLING, GENERAL AND ADMINISTRATIVE EXPENSES",
+     "",
+     "90,006",
+     "",
+     "75,297",
+     "",
+     "253,417",
+     "",
+     "216,528"
+    ],
+    [
+     "GAIN ON SALE OF ASSETS",
+     "",
+     "(708)",
+     "",
+     "(219)",
+     "",
+     "(1,119)",
+     "",
+     "(630)"
+    ],
+    [
+     "Operating income",
+     "",
+     "53,404",
+     "",
+     "52,790",
+     "",
+     "117,085",
+     "",
+     "112,206"
+    ],
+    [
+     "OTHER INCOME (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "82",
+     "",
+     "25",
+     "",
+     "174",
+     "",
+     "53"
+    ],
+    [
+     "Interest expense",
+     "",
+     "(2,779)",
+     "",
+     "(1,152)",
+     "",
+     "(6,891)",
+     "",
+     "(2,601)"
+    ],
+    [
+     "Changes in the fair value of contingent earn-out obligations",
+     "",
+     "(2,004)",
+     "",
+     "434",
+     "",
+     "(3,924)",
+     "",
+     "493"
+    ],
+    [
+     "Other",
+     "",
+     "3",
+     "",
+     "39",
+     "",
+     "167",
+     "",
+     "4,062"
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(4,698)",
+     "",
+     "(654)",
+     "",
+     "(10,474)",
+     "",
+     "2,007"
+    ],
+    [
+     "INCOME BEFORE INCOME TAXES",
+     "",
+     "48,706",
+     "",
+     "52,136",
+     "",
+     "106,611",
+     "",
+     "114,213"
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "12,473",
+     "",
+     "13,595",
+     "",
+     "26,339",
+     "",
+     "26,466"
+    ],
+    [
+     "NET INCOME",
+     "$",
+     "36,233",
+     "$",
+     "38,541",
+     "$",
+     "80,272",
+     "$",
+     "87,747"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME PER SHARE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.98",
+     "$",
+     "1.03",
+     "$",
+     "2.18",
+     "$",
+     "2.36"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.98",
+     "$",
+     "1.02",
+     "$",
+     "2.16",
+     "$",
+     "2.33"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHARES USED IN COMPUTING INCOME PER SHARE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "36,805",
+     "",
+     "37,294",
+     "",
+     "36,891",
+     "",
+     "37,236"
+    ],
+    [
+     "Diluted",
+     "",
+     "37,051",
+     "",
+     "37,667",
+     "",
+     "37,170",
+     "",
+     "37,634"
+    ],
+    [
+     "DIVIDENDS PER SHARE",
+     "$",
+     "0.100",
+     "$",
+     "0.085",
+     "$",
+     "0.295",
+     "$",
+     "0.240"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 151,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In Thousands, Except Per Share Data)\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In Thousands, Except Share Amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Retained",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Earnings",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "BALANCE AT DECEMBER 31, 2017",
+     "41,123,365",
+     "$",
+     "411",
+     "(3,936,291)",
+     "$",
+     "(63,519)",
+     "$",
+     "312,784",
+     "$",
+     "168,269",
+     "$",
+     "417,945"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,659",
+     "",
+     "16,659"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "19,124",
+     "",
+     "326",
+     "",
+     "(88)",
+     "",
+     "\u2014",
+     "",
+     "238"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "52,306",
+     "",
+     "892",
+     "",
+     "1,331",
+     "",
+     "\u2014",
+     "",
+     "2,223"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(19,921)",
+     "",
+     "(846)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(846)"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,880",
+     "",
+     "\u2014",
+     "",
+     "1,880"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,786)",
+     "",
+     "(2,786)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(150,481)",
+     "",
+     "(6,175)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,175)"
+    ],
+    [
+     "BALANCE AT MARCH 31, 2018 (unaudited)",
+     "41,123,365",
+     "",
+     "411",
+     "(4,035,263)",
+     "",
+     "(69,323)",
+     "",
+     "315,907",
+     "",
+     "182,142",
+     "",
+     "429,138"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "32,547",
+     "",
+     "32,547"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "112,616",
+     "",
+     "1,949",
+     "",
+     "(29)",
+     "",
+     "\u2014",
+     "",
+     "1,920"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "77,263",
+     "",
+     "1,335",
+     "",
+     "(1,335)",
+     "",
+     "\u2014",
+     "",
+     "(0)"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(17,046)",
+     "",
+     "(693)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(693)"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,692",
+     "",
+     "\u2014",
+     "",
+     "1,692"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,974)",
+     "",
+     "(2,974)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(15,326)",
+     "",
+     "(654)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(654)"
+    ],
+    [
+     "BALANCE AT JUNE 30, 2018 (unaudited)",
+     "41,123,365",
+     "",
+     "411",
+     "(3,877,756)",
+     "",
+     "(67,386)",
+     "",
+     "316,235",
+     "",
+     "211,715",
+     "",
+     "460,975"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,541",
+     "",
+     "38,541"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "60,135",
+     "",
+     "1,046",
+     "",
+     "(305)",
+     "",
+     "\u2014",
+     "",
+     "741"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "424",
+     "",
+     "\u2014",
+     "",
+     "424"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,170)",
+     "",
+     "(3,170)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(85,222)",
+     "",
+     "(4,744)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,744)"
+    ],
+    [
+     "BALANCE AT SEPTEMBER 30, 2018 (unaudited)",
+     "41,123,365",
+     "$",
+     "411",
+     "(3,902,843)",
+     "$",
+     "(71,084)",
+     "$",
+     "316,354",
+     "$",
+     "247,086",
+     "$",
+     "492,767"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 202,
+    "end_line": 244
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In Thousands, Except Share Amounts)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In Thousands, Except Share Amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Retained",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Earnings",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "BALANCE AT DECEMBER 31, 2018",
+     "41,123,365",
+     "$",
+     "411",
+     "(4,229,653)",
+     "$",
+     "(87,747)",
+     "$",
+     "316,479",
+     "$",
+     "268,904",
+     "$",
+     "498,047"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "19,866",
+     "",
+     "19,866"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "41,103",
+     "",
+     "861",
+     "",
+     "(61)",
+     "",
+     "\u2014",
+     "",
+     "800"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "38,539",
+     "",
+     "817",
+     "",
+     "1,189",
+     "",
+     "\u2014",
+     "",
+     "2,006"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(15,013)",
+     "",
+     "(781)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(781)"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,084",
+     "",
+     "\u2014",
+     "",
+     "2,084"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,506)",
+     "",
+     "(3,506)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(67,394)",
+     "",
+     "(3,321)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,321)"
+    ],
+    [
+     "BALANCE AT MARCH 31, 2019 (unaudited)",
+     "41,123,365",
+     "",
+     "411",
+     "(4,232,418)",
+     "",
+     "(90,171)",
+     "",
+     "319,691",
+     "",
+     "285,264",
+     "",
+     "515,195"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,173",
+     "",
+     "24,173"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "1,408",
+     "",
+     "31",
+     "",
+     "(11)",
+     "",
+     "\u2014",
+     "",
+     "20"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "69,067",
+     "",
+     "1,486",
+     "",
+     "(1,486)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(13,573)",
+     "",
+     "(717)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(717)"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,685",
+     "",
+     "\u2014",
+     "",
+     "1,685"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,692)",
+     "",
+     "(3,692)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(93,468)",
+     "",
+     "(4,576)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,576)"
+    ],
+    [
+     "BALANCE AT JUNE 30, 2019 (unaudited)",
+     "41,123,365",
+     "",
+     "411",
+     "(4,268,984)",
+     "",
+     "(93,947)",
+     "",
+     "319,879",
+     "",
+     "305,745",
+     "",
+     "532,088"
+    ],
+    [
+     "Net income (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "36,233",
+     "",
+     "36,233"
+    ],
+    [
+     "Issuance of Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for options exercised (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "5,426",
+     "",
+     "124",
+     "",
+     "57",
+     "",
+     "\u2014",
+     "",
+     "181"
+    ],
+    [
+     "Issuance of restricted stock & performance stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Shares received in lieu of tax withholding payment on vested restricted stock (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Stock-based compensation (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "221",
+     "",
+     "\u2014",
+     "",
+     "221"
+    ],
+    [
+     "Dividends (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,673)",
+     "",
+     "(3,673)"
+    ],
+    [
+     "Share repurchase (unaudited)",
+     "\u2014",
+     "",
+     "\u2014",
+     "(183,880)",
+     "",
+     "(7,420)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,420)"
+    ],
+    [
+     "BALANCE AT SEPTEMBER 30, 2019 (unaudited)",
+     "41,123,365",
+     "$",
+     "411",
+     "(4,447,438)",
+     "$",
+     "(101,243)",
+     "$",
+     "320,157",
+     "$",
+     "338,305",
+     "$",
+     "557,630"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In Thousands, Except Share Amounts)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(In Thousands)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "80,272",
+     "$",
+     "87,747"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of identifiable intangible assets",
+     "",
+     "20,221",
+     "",
+     "14,102"
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "18,222",
+     "",
+     "16,630"
+    ],
+    [
+     "Change in right-of-use assets",
+     "",
+     "10,552",
+     "",
+     "\u2014"
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "2,093",
+     "",
+     "2,905"
+    ],
+    [
+     "Deferred tax provision (benefit)",
+     "",
+     "(2,620)",
+     "",
+     "5,520"
+    ],
+    [
+     "Amortization of debt financing costs",
+     "",
+     "287",
+     "",
+     "288"
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "(1,119)",
+     "",
+     "(630)"
+    ],
+    [
+     "Changes in the fair value of contingent earn-out obligations",
+     "",
+     "3,924",
+     "",
+     "(493)"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "4,861",
+     "",
+     "6,021"
+    ],
+    [
+     "Changes in operating assets and liabilities, net of effects of acquisitions and divestitures\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables, net",
+     "",
+     "(31,647)",
+     "",
+     "(80,726)"
+    ],
+    [
+     "Inventories",
+     "",
+     "(248)",
+     "",
+     "(1,917)"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(4,625)",
+     "",
+     "3,085"
+    ],
+    [
+     "Costs and estimated earnings in excess of billings and unbilled accounts receivable",
+     "",
+     "(2,081)",
+     "",
+     "(18,328)"
+    ],
+    [
+     "Other noncurrent assets",
+     "",
+     "(544)",
+     "",
+     "(199)"
+    ],
+    [
+     "Increase (decrease) in\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "6,635",
+     "",
+     "19,537"
+    ],
+    [
+     "Billings in excess of costs and estimated earnings",
+     "",
+     "4,555",
+     "",
+     "17,682"
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "(9,023)",
+     "",
+     "(3,222)"
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "99,715",
+     "",
+     "68,002"
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(22,641)",
+     "",
+     "(22,059)"
+    ],
+    [
+     "Proceeds from sales of property and equipment",
+     "",
+     "1,447",
+     "",
+     "1,077"
+    ],
+    [
+     "Proceeds from sale of business",
+     "",
+     "1,611",
+     "",
+     "\u2014"
+    ],
+    [
+     "Cash paid for acquisitions, net of cash acquired",
+     "",
+     "(196,470)",
+     "",
+     "(65,287)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(216,053)",
+     "",
+     "(86,269)"
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from revolving line of credit",
+     "",
+     "320,000",
+     "",
+     "104,000"
+    ],
+    [
+     "Payments on revolving line of credit",
+     "",
+     "(177,000)",
+     "",
+     "(79,000)"
+    ],
+    [
+     "Payments on other debt",
+     "",
+     "(3,254)",
+     "",
+     "(1,094)"
+    ],
+    [
+     "Debt financing costs",
+     "",
+     "\u2014",
+     "",
+     "(844)"
+    ],
+    [
+     "Payments of dividends to stockholders",
+     "",
+     "(10,871)",
+     "",
+     "(8,930)"
+    ],
+    [
+     "Share repurchase",
+     "",
+     "(15,317)",
+     "",
+     "(11,573)"
+    ],
+    [
+     "Shares received in lieu of tax withholding",
+     "",
+     "(1,498)",
+     "",
+     "(1,540)"
+    ],
+    [
+     "Proceeds from exercise of options",
+     "",
+     "1,001",
+     "",
+     "2,899"
+    ],
+    [
+     "Deferred acquisition payments",
+     "",
+     "(637)",
+     "",
+     "(750)"
+    ],
+    [
+     "Payments for contingent consideration arrangements",
+     "",
+     "(1,343)",
+     "",
+     "(2,195)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "111,081",
+     "",
+     "973"
+    ],
+    [
+     "NET DECREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "(5,257)",
+     "",
+     "(17,294)"
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, beginning of period",
+     "",
+     "45,620",
+     "",
+     "36,542"
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, end of period",
+     "$",
+     "40,363",
+     "$",
+     "19,248"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 306,
+    "end_line": 367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(In Thousands)\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONDENSED NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nSeptember 30, 2019\n(Unaudited)\n1. Business and Organization\nComfort Systems USA, Inc., a Delaware corporation, provides comprehensive mechanical and electrical contracting services, which principally includes heating, ventilation and air conditioning (\u201cHVAC\u201d), plumbing, electrical, piping and controls, as well as off-site construction, monitoring and fire protection. We install, maintain, repair and replace products and systems throughout the United States. The terms \u201cComfort Systems,\u201d \u201cwe,\u201d \u201cus,\u201d or the \u201cCompany,\u201d refer to Comfort Systems USA, Inc. or Comfort Systems USA, Inc. and its consolidated subsidiaries, as appropriate in the context.\n2. Summary of Significant Accounting Policies\nBasis of Presentation\nThese interim statements should be read in conjunction with the historical Consolidated Financial Statements and related notes of Comfort Systems included in the Annual Report on Form 10-K as filed with the Securities and Exchange Commission (\u201cSEC\u201d) for the year ended December 31, 2018 (the \u201cForm 10-K\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 370,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by Service Provided",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HVAC and Plumbing",
+     "$",
+     "545,088",
+     "77.1",
+     "%",
+     "$",
+     "540,733",
+     "91.0",
+     "%",
+     "$",
+     "1,531,331",
+     "80.8",
+     "%",
+     "$",
+     "1,448,761",
+     "90.9",
+     "%"
+    ],
+    [
+     "Electrical Services",
+     "",
+     "116,902",
+     "16.5",
+     "%",
+     "",
+     "1,611",
+     "0.3",
+     "%",
+     "",
+     "218,061",
+     "11.5",
+     "%",
+     "",
+     "1,611",
+     "0.1",
+     "%"
+    ],
+    [
+     "Building Automation Control Systems",
+     "",
+     "24,540",
+     "3.5",
+     "%",
+     "",
+     "25,822",
+     "4.3",
+     "%",
+     "",
+     "73,816",
+     "3.9",
+     "%",
+     "",
+     "72,128",
+     "4.5",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "20,388",
+     "2.9",
+     "%",
+     "",
+     "26,370",
+     "4.4",
+     "%",
+     "",
+     "72,485",
+     "3.8",
+     "%",
+     "",
+     "72,020",
+     "4.5",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "706,918",
+     "100.0",
+     "%",
+     "$",
+     "594,536",
+     "100.0",
+     "%",
+     "$",
+     "1,895,693",
+     "100.0",
+     "%",
+     "$",
+     "1,594,520",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by Type of Customer",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Industrial",
+     "$",
+     "222,156",
+     "31.4",
+     "%",
+     "$",
+     "184,174",
+     "31.0",
+     "%",
+     "$",
+     "588,818",
+     "31.1",
+     "%",
+     "$",
+     "398,351",
+     "25.0",
+     "%"
+    ],
+    [
+     "Education",
+     "",
+     "125,836",
+     "17.8",
+     "%",
+     "",
+     "115,202",
+     "19.4",
+     "%",
+     "",
+     "292,799",
+     "15.4",
+     "%",
+     "",
+     "312,852",
+     "19.6",
+     "%"
+    ],
+    [
+     "Office Buildings",
+     "",
+     "83,271",
+     "11.8",
+     "%",
+     "",
+     "75,871",
+     "12.8",
+     "%",
+     "",
+     "254,966",
+     "13.5",
+     "%",
+     "",
+     "224,300",
+     "14.1",
+     "%"
+    ],
+    [
+     "Healthcare",
+     "",
+     "126,909",
+     "18.0",
+     "%",
+     "",
+     "79,424",
+     "13.3",
+     "%",
+     "",
+     "306,810",
+     "16.2",
+     "%",
+     "",
+     "214,537",
+     "13.4",
+     "%"
+    ],
+    [
+     "Government",
+     "",
+     "41,502",
+     "5.9",
+     "%",
+     "",
+     "32,633",
+     "5.5",
+     "%",
+     "",
+     "118,224",
+     "6.2",
+     "%",
+     "",
+     "106,065",
+     "6.6",
+     "%"
+    ],
+    [
+     "Retail, Restaurants and Entertainment",
+     "",
+     "67,141",
+     "9.5",
+     "%",
+     "",
+     "60,908",
+     "10.2",
+     "%",
+     "",
+     "184,618",
+     "9.7",
+     "%",
+     "",
+     "169,899",
+     "10.7",
+     "%"
+    ],
+    [
+     "Multi-Family and Residential",
+     "",
+     "24,121",
+     "3.4",
+     "%",
+     "",
+     "33,903",
+     "5.7",
+     "%",
+     "",
+     "83,417",
+     "4.4",
+     "%",
+     "",
+     "102,995",
+     "6.5",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "15,982",
+     "2.2",
+     "%",
+     "",
+     "12,421",
+     "2.1",
+     "%",
+     "",
+     "66,041",
+     "3.5",
+     "%",
+     "",
+     "65,521",
+     "4.1",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "706,918",
+     "100.0",
+     "%",
+     "$",
+     "594,536",
+     "100.0",
+     "%",
+     "$",
+     "1,895,693",
+     "100.0",
+     "%",
+     "$",
+     "1,594,520",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 460,
+    "end_line": 489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Prior to implementing ASC 606 on January 1, 2018, our methods for recognizing revenue were very similar to our current method under ASC 606. We used the actual cost as a percent of total expected cost at completion to estimate our percentage complete on fixed price jobs, a mark-up of costs for jobs in which revenue was based on time and materials incurred and elapsed time for those service maintenance contracts in which the full cost to provide the services cannot be reasonably estimated. Furthermore, our process for allocating transaction price to performance obligations is also substantially similar to prior years in which, in most cases, a contract is one performance obligation. In those cases in which a contract is determined to have more than one performance obligation, the contract price is allocated to each performance obligation based on its standalone sales price.\nIn the first nine months of 2018 and 2019, net revenue recognized from our performance obligations satisfied in previous periods was not material.\nDisaggregation of Revenue\nOur consolidated 2019 revenue was derived from contracts to provide service activities in the mechanical and electrical services segments we serve. Refer to Note 9 \u2013 Segment Information for additional information on our reportable segments. We disaggregate our revenue from contracts with customers by activity, customer type and contract type, as we believe it best depicts how the nature, amount, timing and uncertainty of our revenue and cash flows are affected by economic factors. See details in the following tables (dollars in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 447,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by Activity Type",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "New Construction",
+     "$",
+     "312,279",
+     "44.2",
+     "%",
+     "$",
+     "227,715",
+     "38.3",
+     "%",
+     "$",
+     "827,718",
+     "43.7",
+     "%",
+     "$",
+     "606,208",
+     "38.0",
+     "%"
+    ],
+    [
+     "Existing Building Construction",
+     "",
+     "224,125",
+     "31.6",
+     "%",
+     "",
+     "216,010",
+     "36.3",
+     "%",
+     "",
+     "605,819",
+     "31.9",
+     "%",
+     "",
+     "572,808",
+     "35.9",
+     "%"
+    ],
+    [
+     "Service Projects",
+     "",
+     "62,668",
+     "8.9",
+     "%",
+     "",
+     "56,557",
+     "9.5",
+     "%",
+     "",
+     "171,860",
+     "9.1",
+     "%",
+     "",
+     "150,890",
+     "9.5",
+     "%"
+    ],
+    [
+     "Service Calls, Maintenance and Monitoring",
+     "",
+     "107,846",
+     "15.3",
+     "%",
+     "",
+     "94,254",
+     "15.9",
+     "%",
+     "",
+     "290,296",
+     "15.3",
+     "%",
+     "",
+     "264,614",
+     "16.6",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "706,918",
+     "100.0",
+     "%",
+     "$",
+     "594,536",
+     "100.0",
+     "%",
+     "$",
+     "1,895,693",
+     "100.0",
+     "%",
+     "$",
+     "1,594,520",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Accounts Receivable\nAccounts Receivable include amounts from work completed in which we have billed or have an unconditional right to bill our customers. The amounts due are stated at their net estimated realizable value. We maintain an allowance for doubtful accounts to provide for the estimated amount of receivables that will not be collected. The allowance is based upon an assessment of customer creditworthiness, historical payment experience, the age of outstanding receivables and collateral to the extent applicable.\nContract Assets and Liabilities\nContract assets include unbilled amounts typically resulting from sales under long term contracts when the cost to cost method of revenue recognition is used, revenue recognized exceeds the amount billed to the customer and right to payment is conditional, subject to completing a milestone, such as a phase of the project. Contract assets are generally classified as current.\nContract liabilities consist of advance payments and billings in excess of revenue recognized. Our contract assets and liabilities are reported in a net position on a contract by contract basis at the end of each reporting period. We classify advance payments and billings in excess of revenue recognized as current. It is very unusual for us to have advanced payments with a term of greater than one year; therefore, our contract assets are usually all current. If we have advanced payments with a term greater than one year, the noncurrent portion of advanced payments would be included in other long-term liabilities in our consolidated Balance Sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Contract",
+     "",
+     "Contract",
+     "",
+     "Contract",
+     "",
+     "Contract",
+     ""
+    ],
+    [
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "10,213",
+     "$",
+     "130,986",
+     "$",
+     "30,116",
+     "$",
+     "106,005"
+    ],
+    [
+     "Change due to acquisitions / disposals",
+     "",
+     "6,573",
+     "",
+     "31,556",
+     "",
+     "2,833",
+     "",
+     "8,195"
+    ],
+    [
+     "Change due to conditional versus unconditional",
+     "",
+     "(10,665)",
+     "",
+     "\u2014",
+     "",
+     "6,244",
+     "",
+     "\u2014"
+    ],
+    [
+     "Reclassified to unbilled accounts receivable",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(28,980)",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in timing for performance obligation to be satisfied",
+     "",
+     "\u2014",
+     "",
+     "4,555",
+     "",
+     "\u2014",
+     "",
+     "16,786"
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "6,121",
+     "$",
+     "167,097",
+     "$",
+     "10,213",
+     "$",
+     "130,986"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 517,
+    "end_line": 533
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Contract assets include unbilled amounts typically resulting from sales under long term contracts when the cost to cost method of revenue recognition is used, revenue recognized exceeds the amount billed to the customer and right to payment is conditional, subject to completing a milestone, such as a phase of the project. Contract assets are generally classified as current.\nContract liabilities consist of advance payments and billings in excess of revenue recognized. Our contract assets and liabilities are reported in a net position on a contract by contract basis at the end of each reporting period. We classify advance payments and billings in excess of revenue recognized as current. It is very unusual for us to have advanced payments with a term of greater than one year; therefore, our contract assets are usually all current. If we have advanced payments with a term greater than one year, the noncurrent portion of advanced payments would be included in other long-term liabilities in our consolidated Balance Sheets.\nThe following table presents the changes in contract assets and contract liabilities (in thousands):",
+   "prose_after": "In the first nine months of 2019 and 2018, we recognized revenue of $123.3 million and $99.8 million related to our contract liabilities at January 1, 2019 and January 1, 2018, respectively.\nWe did not have any impairment losses recognized on our receivables or contract assets in the first nine months of 2019 and 2018.\nRemaining Performance Obligations\nRemaining construction performance obligations represent the remaining transaction price of firm orders for which work has not been performed and excludes unexercised contract options. As of September 30, 2019, the aggregate amount of the transaction price allocated to remaining performance obligations was $1.61 billion. The Company expects to recognize revenue on approximately 80-85% of the remaining performance obligations over the\nnext 12 months, with the remaining recognized thereafter. Our service maintenance agreements are generally one-year renewable agreements. We have adopted the practical expedient that allows us to not include service maintenance contracts one year or less, therefore we do not report unfulfilled performance obligations for service maintenance agreements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2019",
+     ""
+    ],
+    [
+     "Lease right-of-use assets",
+     "$",
+     "84,281"
+    ],
+    [
+     "Lease liabilities:",
+     "",
+     ""
+    ],
+    [
+     "  Other current liabilities",
+     "",
+     "13,549"
+    ],
+    [
+     "  Long-term lease liabilities",
+     "",
+     "73,213"
+    ],
+    [
+     "Total lease liabilities",
+     "$",
+     "86,762"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "A majority of the Company\u2019s real property leases are with individuals or entities with whom we have no other business relationship. However, in certain instances the Company enters into real property leases with current or former employees. Rent paid to related parties for the three months ended September 30, 2019 and 2018 was approximately $0.7 million and $1.3 million, respectively. Rent paid to related parties for the nine months ended September 30, 2019 and 2018 was approximately $2.7 million and $3.5 million, respectively.\nIf we decide to cancel or terminate a lease before the end of its term, we would typically owe the lessor the remaining lease payments under the term of the lease. Our lease agreements do not contain any material residual value guarantees or material restrictive covenants. On rare occasions we rent or sublease certain real estate assets that we no longer use to third parties.\nThe following table summarizes the lease asset and liabilities included in the consolidated Balance Sheet as follows (in thousands):",
+   "prose_after": "The maturities of lease liabilities are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31\u2014",
+     "",
+     ""
+    ],
+    [
+     "2019 (excluding the nine months ended September 30, 2019)",
+     "$",
+     "4,326"
+    ],
+    [
+     "2020",
+     "",
+     "16,288"
+    ],
+    [
+     "2021",
+     "",
+     "14,477"
+    ],
+    [
+     "2022",
+     "",
+     "12,291"
+    ],
+    [
+     "2023",
+     "",
+     "10,328"
+    ],
+    [
+     "Thereafter",
+     "",
+     "44,617"
+    ],
+    [
+     "Total Lease Payments",
+     "",
+     "102,327"
+    ],
+    [
+     "Less\u2014Present Value Discount",
+     "",
+     "(15,565)"
+    ],
+    [
+     "Present Value of Lease Liabilities",
+     "$",
+     "86,762"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending December 31\u2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The maturities of lease liabilities are as follows (in thousands):",
+   "prose_after": "Supplemental information related to leases was as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "Nine Months Ended",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2019",
+     "",
+     "September 30, 2019",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "$",
+     "6,466",
+     "$",
+     "18,426"
+    ],
+    [
+     "Lease right-of-use assets obtained in exchange for lease liabilities",
+     "$",
+     "7,050",
+     "$",
+     "10,768"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 590,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Supplemental information related to leases was as follows (in thousands):",
+   "prose_after": "Income Taxes\nWe conduct business throughout the United States in virtually all fifty states. Our effective tax rate changes based upon our relative profitability, or lack thereof, in states with varying tax rates and rules. In addition, discrete items, such as tax law changes, judgments and legal structures, can impact our effective tax rate. These items can also include the tax treatment for impairment of goodwill and other intangible assets, changes in fair value of acquisition-related assets and liabilities, tax reserves for uncertain tax positions, accounting for losses associated with underperforming operations and noncontrolling interests.\nIn the third quarter of 2019, we filed an amended federal return for 2015 to claim the credit for increasing research activities (\u201cR&D tax credits\u201d) and recorded a $4.6 million tax benefit that was fully offset by an increase in unrecognized tax benefits. We previously filed an amended federal return for 2014 to claim R&D tax credits during 2018 and recorded a $2.7 million tax benefit that was also fully offset by an increase in unrecognized tax benefits. These tax benefits were fully offset by increases in unrecognized tax benefits due to the uncertainty of the outcome from examinations opened by the Internal Revenue Service (the \u201cIRS\u201d). As a result, the R&D tax credits claimed have had no impact on our effective tax rates.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements at September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "40,363",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "40,363"
+    ],
+    [
+     "Life insurance\u2014cash surrender value",
+     "$",
+     "\u2014",
+     "$",
+     "3,758",
+     "$",
+     "\u2014",
+     "$",
+     "3,758"
+    ],
+    [
+     "Contingent earn-out obligations",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "29,430",
+     "$",
+     "29,430"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value Measurements at December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "45,620",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "45,620"
+    ],
+    [
+     "Life insurance\u2014cash surrender value",
+     "$",
+     "\u2014",
+     "$",
+     "3,252",
+     "$",
+     "\u2014",
+     "$",
+     "3,252"
+    ],
+    [
+     "Contingent earn-out obligations",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "7,375",
+     "$",
+     "7,375"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at September 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Our financial instruments consist of cash and cash equivalents, accounts receivable, other receivables, accounts payable, life insurance policies, notes to former owners, leases and a revolving credit facility. We believe that the carrying values of these instruments on the accompanying Balance Sheets approximate their fair values.\n3. Fair Value Measurements\nWe classify and disclose assets and liabilities carried at fair value in one of the following three categories:\n\u25cf Level 1\u2014quoted prices in active markets for identical assets and liabilities;\n\u25cf Level 2\u2014observable market-based inputs or unobservable inputs that are corroborated by market data; and\n\u25cf Level 3\u2014significant unobservable inputs in which little or no market data exists, therefore requiring an entity to develop its own assumptions.\nThe following table summarizes the fair values, and levels within the fair value hierarchy in which the fair value measurements fall, for assets and liabilities measured on a recurring basis as of September 30, 2019 and December 31, 2018 (in thousands):",
+   "prose_after": "Cash and cash equivalents consist primarily of highly rated money market funds at a variety of well-known institutions with original maturities of three months or less. The original cost of these assets approximates fair value due to their short-term maturity. The carrying value of our borrowings associated with the Revolving Credit Facility approximate its fair value due to the variable rate on such debt.\nWe have life insurance policies covering 66 employees with a combined face value of $51.1 million. The policies are invested in several investment vehicles, and the fair value measurement of the cash surrender balance associated with these policies is determined using Level 2 inputs within the fair value hierarchy and will vary with investment performance. The cash surrender value of these policies was $3.8 million as of September 30, 2019 and $3.3 million as of December 31, 2018. These assets are included in \u201cOther Noncurrent Assets\u201d in our consolidated Balance Sheets.\nWe value contingent earn-out obligations using a probability weighted discounted cash flow method. This fair value measurement is based on significant unobservable inputs in the market and thus represents a Level 3 measurement within the fair value hierarchy. This analysis reflects the contractual terms of the purchase agreements (e.g., minimum and maximum payments, length of earn-out periods, manner of calculating any amounts due, etc.) and utilizes assumptions with regard to future cash flows, probabilities of achieving such future cash flows and a discount rate. The contingent earn-out obligations are measured at fair value each reporting period, and changes in estimates of fair value are recognized in earnings.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance at beginning of year",
+     "$",
+     "7,375"
+    ],
+    [
+     "Issuances",
+     "",
+     "19,500"
+    ],
+    [
+     "Settlements",
+     "",
+     "(1,369)"
+    ],
+    [
+     "Adjustments to fair value",
+     "",
+     "3,924"
+    ],
+    [
+     "Balance at September 30, 2019",
+     "$",
+     "29,430"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 653,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "We have life insurance policies covering 66 employees with a combined face value of $51.1 million. The policies are invested in several investment vehicles, and the fair value measurement of the cash surrender balance associated with these policies is determined using Level 2 inputs within the fair value hierarchy and will vary with investment performance. The cash surrender value of these policies was $3.8 million as of September 30, 2019 and $3.3 million as of December 31, 2018. These assets are included in \u201cOther Noncurrent Assets\u201d in our consolidated Balance Sheets.\nWe value contingent earn-out obligations using a probability weighted discounted cash flow method. This fair value measurement is based on significant unobservable inputs in the market and thus represents a Level 3 measurement within the fair value hierarchy. This analysis reflects the contractual terms of the purchase agreements (e.g., minimum and maximum payments, length of earn-out periods, manner of calculating any amounts due, etc.) and utilizes assumptions with regard to future cash flows, probabilities of achieving such future cash flows and a discount rate. The contingent earn-out obligations are measured at fair value each reporting period, and changes in estimates of fair value are recognized in earnings.\nThe table below presents a reconciliation of the fair value of our contingent earn-out obligations that use significant unobservable inputs (Level 3) (in thousands):",
+   "prose_after": "We measure certain assets at fair value on a nonrecurring basis. These assets are recognized at fair value when they are deemed to be other-than-temporarily impaired. We did not recognize any impairments in the current quarter on those assets required to be measured at fair value on a nonrecurring basis.\n4. Acquisitions\nWalker Acquisition\nOn April 1, 2019, we acquired all of the issued and outstanding equity interests of Walker TX Holding Company, LLC and each of its wholly owned subsidiaries (collectively \u201cWalker\u201d). Walker is a full-service electrical contracting and network infrastructure engineering business serving commercial and industrial clients with headquarters in Irving, Texas and operations throughout the state of Texas. As a result of the acquisition, Walker is a wholly owned subsidiary of the Company reported in our electrical services segment. Revenue attributable to Walker was $203.1 million for the six months from the acquisition date.\nThe following summarizes the acquisition date fair value of consideration transferred and the acquisition date fair value of the identifiable assets acquired and liabilities assumed, including an amount for goodwill (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration transferred:",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid at closing",
+     "$",
+     "178,000"
+    ],
+    [
+     "  Advance to former owners",
+     "",
+     "20,500"
+    ],
+    [
+     "  Working capital adjustment",
+     "",
+     "(7,594)"
+    ],
+    [
+     "  Notes issued to former owners",
+     "",
+     "25,000"
+    ],
+    [
+     "  Tax equalization payment",
+     "",
+     "202"
+    ],
+    [
+     "  Estimated fair value of contingent earn-out payments",
+     "",
+     "19,500"
+    ],
+    [
+     "",
+     "$",
+     "235,608"
+    ],
+    [
+     "Recognized amounts of identifiable assets acquired and liabilities assumed:",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "4,850"
+    ],
+    [
+     "  Billed and unbilled accounts receivable",
+     "",
+     "92,309"
+    ],
+    [
+     "  Other current assets",
+     "",
+     "8,587"
+    ],
+    [
+     "  Other long-term assets",
+     "",
+     "53"
+    ],
+    [
+     "  Property and equipment",
+     "",
+     "4,970"
+    ],
+    [
+     "  Goodwill",
+     "",
+     "96,439"
+    ],
+    [
+     "  Identifiable intangible assets",
+     "",
+     "90,200"
+    ],
+    [
+     "  Lease right-of-use asset",
+     "",
+     "10,495"
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(20,220)"
+    ],
+    [
+     "  Accrued compensation and benefits",
+     "",
+     "(974)"
+    ],
+    [
+     "  Billings in excess of costs and estimated earnings",
+     "",
+     "(31,553)"
+    ],
+    [
+     "  Other current liabilities",
+     "",
+     "(11,278)"
+    ],
+    [
+     "  Long-term lease liabilities",
+     "",
+     "(8,270)"
+    ],
+    [
+     "",
+     "$",
+     "235,608"
+    ]
+   ],
+   "caption_stack": [
+    "Consideration transferred:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 703
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisitions"
+    }
+   },
+   "prose_before": "We measure certain assets at fair value on a nonrecurring basis. These assets are recognized at fair value when they are deemed to be other-than-temporarily impaired. We did not recognize any impairments in the current quarter on those assets required to be measured at fair value on a nonrecurring basis.\n4. Acquisitions\nWalker Acquisition\nOn April 1, 2019, we acquired all of the issued and outstanding equity interests of Walker TX Holding Company, LLC and each of its wholly owned subsidiaries (collectively \u201cWalker\u201d). Walker is a full-service electrical contracting and network infrastructure engineering business serving commercial and industrial clients with headquarters in Irving, Texas and operations throughout the state of Texas. As a result of the acquisition, Walker is a wholly owned subsidiary of the Company reported in our electrical services segment. Revenue attributable to Walker was $203.1 million for the six months from the acquisition date.\nThe following summarizes the acquisition date fair value of consideration transferred and the acquisition date fair value of the identifiable assets acquired and liabilities assumed, including an amount for goodwill (in thousands):",
+   "prose_after": "The allocation of the purchase price to the assets acquired and liabilities assumed is preliminary and, therefore, subject to change pending the completion of the final valuation of intangible assets and accrued liabilities. Goodwill represents the future economic benefits arising from other assets acquired that could not be individually identified and separately recognized. All of the goodwill recognized as a result of this transaction is tax deductible.\nIn estimating the fair value of the acquired intangible assets, we utilized the valuation methodology determined to be the most appropriate for the individual intangible asset. In order to estimate the fair value of the backlog and customer relationships, we utilized an excess earnings methodology, which consisted of the projected cash flows attributable to these assets discounted to present value using a risk-adjusted discount rate that represented the required rate of return. The trade name value was determined based on the relief-from-royalty method, which applies a royalty rate to the revenue stream attributable to this asset, and the resulting royalty payment is tax effected and discounted to present value. Some of the more significant estimates and assumptions inherent in determining the fair value of the identifiable intangible assets are associated with forecasting cash flows and profitability, which represent Level 3 inputs.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Valuation Method",
+     "Estimated Useful Life",
+     "",
+     "Estimated Fair Value"
+    ],
+    [
+     "Backlog",
+     "Excess earnings",
+     "2 years",
+     "$",
+     "4,600"
+    ],
+    [
+     "Trade Names",
+     "Relief-from-royalty",
+     "25 years",
+     "",
+     "32,600"
+    ],
+    [
+     "Customer Relationships",
+     "Excess earnings",
+     "10 years",
+     "",
+     "53,000"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "$",
+     "90,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisitions"
+    }
+   },
+   "prose_before": "In estimating the fair value of the acquired intangible assets, we utilized the valuation methodology determined to be the most appropriate for the individual intangible asset. In order to estimate the fair value of the backlog and customer relationships, we utilized an excess earnings methodology, which consisted of the projected cash flows attributable to these assets discounted to present value using a risk-adjusted discount rate that represented the required rate of return. The trade name value was determined based on the relief-from-royalty method, which applies a royalty rate to the revenue stream attributable to this asset, and the resulting royalty payment is tax effected and discounted to present value. Some of the more significant estimates and assumptions inherent in determining the fair value of the identifiable intangible assets are associated with forecasting cash flows and profitability, which represent Level 3 inputs.\nThe primary assumptions used were generally based upon the present value of anticipated cash flows discounted at rates ranging from 8.5%-11.5%. Estimated years of projected earnings generally follow the range of estimated remaining useful lives for each intangible asset class.\nThe acquired intangible assets include the following (dollars in thousands):",
+   "prose_after": "The contingent earn-out obligation is associated with the achievement of specified earnings milestones over a five year period, and the range of estimated milestone payments is from $1 million to $11 million (undiscounted). We determined the initial fair value of the contingent earn-out obligation based on the Monte Carlo Simulation method, which represents a Level 3 measurement. Cash flows were discounted using a 10.2% discount rate, which we believe is appropriate and representative of a market participant assumption. Subsequent to the acquisition date, we will measure the contingent earn-out obligation at fair value each reporting period. Future changes in the estimated fair value of the contingent payments will be recognized immediately in earnings.\nPro Forma Impact of the Acquisition\nThe following unaudited pro forma information presents the consolidated results of the Company and Walker for the three and nine months ended September 30, 2019 and 2018, with adjustments to give effect to pro forma events that are directly attributable to the acquisition and have a continuing impact. The unaudited pro forma information is presented for illustrative purposes only and is not necessarily indicative of the results of operations of future periods or the results of operations that actually would have been realized had the entities been a single company during the periods presented or the results that the company will experience after the acquisition. The unaudited pro forma information does not give effect to the potential impact of current financial conditions, regulatory matters or any operating efficiencies that may be associated with the acquisition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "706,918",
+     "$",
+     "707,199",
+     "$",
+     "1,984,054",
+     "$",
+     "1,885,757"
+    ],
+    [
+     "Pre-tax income",
+     "$",
+     "49,718",
+     "$",
+     "51,374",
+     "$",
+     "106,223",
+     "$",
+     "116,754"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 732,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisitions"
+    }
+   },
+   "prose_before": "The following unaudited pro forma information presents the consolidated results of the Company and Walker for the three and nine months ended September 30, 2019 and 2018, with adjustments to give effect to pro forma events that are directly attributable to the acquisition and have a continuing impact. The unaudited pro forma information is presented for illustrative purposes only and is not necessarily indicative of the results of operations of future periods or the results of operations that actually would have been realized had the entities been a single company during the periods presented or the results that the company will experience after the acquisition. The unaudited pro forma information does not give effect to the potential impact of current financial conditions, regulatory matters or any operating efficiencies that may be associated with the acquisition.\nThe unaudited pro forma consolidated results of operations, assuming the acquisition had occurred on January 1, 2018, are as follows (in thousands):",
+   "prose_after": "Other Acquisitions\nIn addition to the Walker acquisition, we completed one acquisition in the first quarter of 2019 and one acquisition in the second quarter of 2019 with a total purchase price of $2.6 million for the nine months ended September 30, 2019. We completed two acquisitions in the first quarter of 2018, three acquisitions in the second quarter of 2018 and two acquisitions in the third quarter of 2018. One acquisition completed in the third quarter of 2018 reports as a separate operating location and the remainder were \u201ctucked-in\u201d with existing operations. Our consolidated Balance Sheet includes preliminary allocations of the purchase price to the assets acquired and liabilities assumed pending the completion of the final valuation of intangible assets and accrued liabilities.\nThe results of operations of acquisitions are included in our consolidated financial statements from their respective acquisition dates. Our consolidated Balance Sheet includes preliminary allocations of the purchase price to the assets acquired and liabilities assumed for the applicable acquisitions pending the completion of the final valuation of intangible assets and accrued liabilities. Excluding the Walker acquisition, the acquisitions completed in the current and prior year were not material, individually or in the aggregate. Additional contingent purchase price (\u201cearn-out\u201d) has",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Mechanical Services",
+     "",
+     "Electrical Services",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Segment",
+     "",
+     "Segment",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at December 31, 2017",
+     "$",
+     "200,584",
+     "$",
+     "\u2014",
+     "$",
+     "200,584"
+    ],
+    [
+     "Additions (See Note 4)",
+     "",
+     "34,598",
+     "",
+     "\u2014",
+     "",
+     "34,598"
+    ],
+    [
+     "Impairment adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance at December 31, 2018",
+     "",
+     "235,182",
+     "",
+     "\u2014",
+     "",
+     "235,182"
+    ],
+    [
+     "Additions (See Note 4)",
+     "",
+     "579",
+     "",
+     "96,439",
+     "",
+     "97,018"
+    ],
+    [
+     "Impact of segment reorganization",
+     "",
+     "(1,101)",
+     "",
+     "1,101",
+     "",
+     "\u2014"
+    ],
+    [
+     "Impairment adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance at September 30, 2019",
+     "$",
+     "234,660",
+     "$",
+     "97,540",
+     "$",
+     "332,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 756,
+    "end_line": 773
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Goodwill and Identifiable Intangible Assets, Net"
+    }
+   },
+   "prose_before": "The results of operations of acquisitions are included in our consolidated financial statements from their respective acquisition dates. Our consolidated Balance Sheet includes preliminary allocations of the purchase price to the assets acquired and liabilities assumed for the applicable acquisitions pending the completion of the final valuation of intangible assets and accrued liabilities. Excluding the Walker acquisition, the acquisitions completed in the current and prior year were not material, individually or in the aggregate. Additional contingent purchase price (\u201cearn-out\u201d) has\nbeen or will be paid if certain acquisitions achieve predetermined profitability targets. Such earn-outs, which are not subject to the continued employment of the sellers, are estimated as of the purchase date and included as part of the consideration paid for the acquisition. If we have an earn-out for which continued employment is a condition to receive payment, then the earn-out is recorded as compensation expense over the period earned.\n5. Goodwill and Identifiable Intangible Assets, Net\nGoodwill\nThe changes in the carrying amount of goodwill are as follows (in thousands):",
+   "prose_after": "Identifiable Intangible Assets, Net\nIdentifiable intangible assets consist of the following (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated",
+     "September 30, 2019",
+     "",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Useful Lives",
+     "Gross Book",
+     "",
+     "Accumulated",
+     "",
+     "Gross Book",
+     "",
+     "Accumulated",
+     ""
+    ],
+    [
+     "",
+     "in Years",
+     "Value",
+     "",
+     "Amortization",
+     "",
+     "Value",
+     "",
+     "Amortization",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "1 - 15",
+     "$",
+     "182,963",
+     "$",
+     "(75,455)",
+     "$",
+     "128,480",
+     "$",
+     "(60,731)"
+    ],
+    [
+     "Backlog",
+     "1 - 2",
+     "",
+     "13,700",
+     "",
+     "(11,906)",
+     "",
+     "9,100",
+     "",
+     "(8,260)"
+    ],
+    [
+     "Tradenames",
+     "2 - 25",
+     "",
+     "71,995",
+     "",
+     "(14,561)",
+     "",
+     "39,395",
+     "",
+     "(12,709)"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "268,658",
+     "$",
+     "(101,922)",
+     "$",
+     "176,975",
+     "$",
+     "(81,700)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 778,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Goodwill and Identifiable Intangible Assets, Net"
+    }
+   },
+   "prose_before": "Identifiable Intangible Assets, Net\nIdentifiable intangible assets consist of the following (dollars in thousands):",
+   "prose_after": "The amounts attributable to customer relationships and tradenames are amortized to \u201cSelling, General and Administrative Expenses\u201d based upon the estimated consumption of their economic benefits, or a straight-line method over periods from one to twenty-five years if the pattern of economic benefit cannot otherwise be reliably estimated. The amounts attributable to backlog are being amortized to \u201cCost of Services\u201d on a proportionate method over the remaining backlog period. Amortization expense for the three- and nine-months ended September 30, 2019 was $7.2 million and $20.2 million, respectively. Amortization expense for the three- and nine-months ended September 30, 2018 was $5.3 million and $14.1 million, respectively.\nAt September 30, 2019, future amortization expense of identifiable intangible assets is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31\u2014",
+     "",
+     ""
+    ],
+    [
+     "2019 (remainder of the year)",
+     "$",
+     "6,844"
+    ],
+    [
+     "2020",
+     "",
+     "23,213"
+    ],
+    [
+     "2021",
+     "",
+     "19,158"
+    ],
+    [
+     "2022",
+     "",
+     "16,536"
+    ],
+    [
+     "2023",
+     "",
+     "15,082"
+    ],
+    [
+     "Thereafter",
+     "",
+     "85,903"
+    ],
+    [
+     "Total",
+     "$",
+     "166,736"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31\u2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Goodwill and Identifiable Intangible Assets, Net"
+    }
+   },
+   "prose_before": "The amounts attributable to customer relationships and tradenames are amortized to \u201cSelling, General and Administrative Expenses\u201d based upon the estimated consumption of their economic benefits, or a straight-line method over periods from one to twenty-five years if the pattern of economic benefit cannot otherwise be reliably estimated. The amounts attributable to backlog are being amortized to \u201cCost of Services\u201d on a proportionate method over the remaining backlog period. Amortization expense for the three- and nine-months ended September 30, 2019 was $7.2 million and $20.2 million, respectively. Amortization expense for the three- and nine-months ended September 30, 2018 was $5.3 million and $14.1 million, respectively.\nAt September 30, 2019, future amortization expense of identifiable intangible assets is as follows (in thousands):",
+   "prose_after": "6. Debt Obligations\nDebt obligations consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 747,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Revolving credit facility",
+     "$",
+     "193,000",
+     "$",
+     "50,000"
+    ],
+    [
+     "Notes to former owners",
+     "",
+     "48,983",
+     "",
+     "26,813"
+    ],
+    [
+     "Other debt",
+     "",
+     "31",
+     "",
+     "105"
+    ],
+    [
+     "Total debt",
+     "",
+     "242,014",
+     "",
+     "76,918"
+    ],
+    [
+     "Less\u2014current portion",
+     "",
+     "(13,847)",
+     "",
+     "(3,279)"
+    ],
+    [
+     "Total long-term portion of debt",
+     "$",
+     "228,167",
+     "$",
+     "73,639"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Debt Obligations"
+    }
+   },
+   "prose_before": "6. Debt Obligations\nDebt obligations consist of the following (in thousands):",
+   "prose_after": "Revolving Credit Facility\nIn April 2018, we amended our senior credit facility (the \u201cFacility\u201d) provided by a syndicate of banks, increasing our borrowing capacity from $325.0 million to $400.0 million, with a $100 million accordion option. The Facility, which is available for borrowings and letters of credit, expires in April 2023 and is secured by a first lien on substantially all of our personal property, except for assets related to projects subject to surety bonds and assets held by certain unrestricted subsidiaries, and a second lien on our assets related to projects subject to surety bonds. As of September 30, 2019, we had $193.0 million of outstanding borrowings, $33.6 million in letters of credit outstanding and $173.4 million of credit available.\nThere are two interest rate options for borrowings under the Facility, the Base Rate Loan Option and the Eurodollar Rate Loan Option. These rates are floating rates determined by the broad financial markets, meaning they can and do move up and down from time to time. Additional margins are then added to these two rates.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Consolidated Total Indebtedness to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Credit Facility Adjusted EBITDA",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Less than 1.00",
+     "",
+     "1.00 to 1.75",
+     "",
+     "1.75 to 2.50",
+     "",
+     "2.50 or greater",
+     ""
+    ],
+    [
+     "Additional Per Annum Interest Margin Added Under:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Base Rate Loan Option",
+     "0.25",
+     "%",
+     "0.50",
+     "%",
+     "0.75",
+     "%",
+     "1.00",
+     "%"
+    ],
+    [
+     "Eurodollar Rate Loan Option",
+     "1.25",
+     "%",
+     "1.50",
+     "%",
+     "1.75",
+     "%",
+     "2.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Consolidated Total Indebtedness to",
+    "Credit Facility Adjusted EBITDA"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Debt Obligations"
+    }
+   },
+   "prose_before": "In April 2018, we amended our senior credit facility (the \u201cFacility\u201d) provided by a syndicate of banks, increasing our borrowing capacity from $325.0 million to $400.0 million, with a $100 million accordion option. The Facility, which is available for borrowings and letters of credit, expires in April 2023 and is secured by a first lien on substantially all of our personal property, except for assets related to projects subject to surety bonds and assets held by certain unrestricted subsidiaries, and a second lien on our assets related to projects subject to surety bonds. As of September 30, 2019, we had $193.0 million of outstanding borrowings, $33.6 million in letters of credit outstanding and $173.4 million of credit available.\nThere are two interest rate options for borrowings under the Facility, the Base Rate Loan Option and the Eurodollar Rate Loan Option. These rates are floating rates determined by the broad financial markets, meaning they can and do move up and down from time to time. Additional margins are then added to these two rates.\nThe following is a summary of the additional margins:",
+   "prose_after": "The weighted average interest rate applicable to the borrowings under the Facility was approximately 3.6% as of September 30, 2019.\nCertain of our vendors require letters of credit to ensure reimbursement for amounts they are disbursing on our behalf, such as to beneficiaries under our self-funded insurance programs. We have also occasionally used letters of credit to guarantee performance under our contracts and to ensure payment to our subcontractors and vendors under those contracts. Our lenders issue such letters of credit through the Facility. We have never had a claim made against a letter of credit that resulted in payments by a lender or by us and believe such a claim is unlikely in the foreseeable future. The letter of credit fees range from 1.25% to 2.00% per annum, based on the ratio of Consolidated Total Indebtedness to Credit Facility Adjusted EBITDA, as defined in the credit agreement.\nCommitment fees are payable on the portion of the revolving loan capacity not in use for borrowings or letters of credit at any given time. These fees range from 0.20% to 0.35% per annum, based on the ratio of Consolidated Total Indebtedness to Credit Facility Adjusted EBITDA, as defined in the credit agreement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "Nine Months Ended",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "September 30,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "2018",
+     "2019",
+     "2018"
+    ],
+    [
+     "Common shares outstanding, end of period",
+     "36,676",
+     "37,221",
+     "36,676",
+     "37,221"
+    ],
+    [
+     "Effect of using weighted average common shares outstanding",
+     "129",
+     "73",
+     "215",
+     "15"
+    ],
+    [
+     "Shares used in computing earnings per share\u2014basic",
+     "36,805",
+     "37,294",
+     "36,891",
+     "37,236"
+    ],
+    [
+     "Effect of shares issuable under stock option plans based on the treasury stock method",
+     "181",
+     "280",
+     "211",
+     "294"
+    ],
+    [
+     "Effect of restricted and contingently issuable shares",
+     "65",
+     "93",
+     "68",
+     "104"
+    ],
+    [
+     "Shares used in computing earnings per share\u2014diluted",
+     "37,051",
+     "37,667",
+     "37,170",
+     "37,634"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 907,
+    "end_line": 923
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Basic earnings per share (\u201cEPS\u201d) is computed by dividing net income by the weighted average number of shares of common stock outstanding during the year. Diluted EPS is computed considering the dilutive effect of stock options, restricted stock, restricted stock units and performance stock units. The vesting of unvested, contingently issuable performance stock units is based on the achievement of certain earnings per share targets and total shareholder return. These shares are considered contingently issuable shares for purposes of calculating diluted earnings per share. These shares are not included in the diluted earnings per share denominator until the performance criteria are met, if it is assumed that the end of the reporting period was the end of the contingency period.\nUnvested restricted stock, restricted stock units and performance stock units are included in diluted earnings per share, weighted outstanding until the shares and units vest. Upon vesting, the vested restricted stock, restricted stock units and performance stock units are included in basic earnings per share weighted outstanding from the vesting date.\nThere were less than 0.1 million anti-dilutive stock options excluded from the calculation of diluted EPS for the three and nine months ended September 30, 2019 and 2018, respectively.\nThe following table reconciles the number of shares outstanding with the number of shares used in computing basic and diluted earnings per share for each of the periods presented (in thousands):",
+   "prose_after": "Share Repurchase Program\nOn March 29, 2007, our Board of Directors (the \u201cBoard\u201d) approved a stock repurchase program to acquire up to 1.0 million shares of our outstanding common stock. Subsequently, the Board has from time to time increased the number of shares that may be acquired under the program and approved extensions of the program. On August 10, 2018, the Board approved an extension to the program by increasing the shares authorized for repurchase by 0.7 million shares. Since the inception of the repurchase program, the Board has approved 8.8 million shares to be repurchased. As of September 30, 2019, we have repurchased a cumulative total of 8.5 million shares at an average price of $17.38 per share under the repurchase program.\nThe share repurchases will be made from time to time at our discretion in the open market or privately negotiated transactions as permitted by securities laws and other legal requirements, and subject to market conditions and other factors. The Board may modify, suspend, extend or terminate the program at any time. During the nine months ended September 30, 2019, we repurchased 0.3 million shares for approximately $15.3 million at an average price of $44.43 per share.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 900,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 944,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mechanical Services",
+     "",
+     "Electrical Services",
+     "",
+     "",
+     "Corporate & Eliminations",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "590,016",
+     "$",
+     "116,902",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "706,918"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "128,501",
+     "$",
+     "14,201",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "142,702"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 934,
+    "end_line": 943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "On March 29, 2007, our Board of Directors (the \u201cBoard\u201d) approved a stock repurchase program to acquire up to 1.0 million shares of our outstanding common stock. Subsequently, the Board has from time to time increased the number of shares that may be acquired under the program and approved extensions of the program. On August 10, 2018, the Board approved an extension to the program by increasing the shares authorized for repurchase by 0.7 million shares. Since the inception of the repurchase program, the Board has approved 8.8 million shares to be repurchased. As of September 30, 2019, we have repurchased a cumulative total of 8.5 million shares at an average price of $17.38 per share under the repurchase program.\nThe share repurchases will be made from time to time at our discretion in the open market or privately negotiated transactions as permitted by securities laws and other legal requirements, and subject to market conditions and other factors. The Board may modify, suspend, extend or terminate the program at any time. During the nine months ended September 30, 2019, we repurchased 0.3 million shares for approximately $15.3 million at an average price of $44.43 per share.\n9. Segment Information\nOur activities are within the mechanical services industry and the electrical services industry, which represent our two reportable segments. Each of our 35 operating locations represents an operating segment, and these segments have been aggregated into two reportable segments, as the operating locations meet all of the aggregation criteria. The following table presents information about our reportable segments (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 900,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 944,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mechanical Services",
+     "",
+     "Electrical Services",
+     "",
+     "",
+     "Corporate & Eliminations",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "592,925",
+     "$",
+     "1,611",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "594,536"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "127,669",
+     "$",
+     "199",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "127,868"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mechanical Services",
+     "",
+     "Electrical Services",
+     "",
+     "",
+     "Corporate & Eliminations",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,677,632",
+     "$",
+     "218,061",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "1,895,693"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "344,632",
+     "$",
+     "24,751",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "369,383"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mechanical Services",
+     "",
+     "Electrical Services",
+     "",
+     "",
+     "Corporate & Eliminations",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,592,909",
+     "$",
+     "1,611",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "1,594,520"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "327,905",
+     "$",
+     "199",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "328,104"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis should be read in conjunction with our historical Consolidated Financial Statements and related notes included elsewhere in this Form 10-Q and the Annual Report on Form 10-K filed with the Securities and Exchange Commission for the year ended December 31, 2018 (the \u201cForm 10-K\u201d). This discussion contains \u201cforward-looking statements\u201d regarding our business and industry within the meaning of the Private Securities Litigation Reform Act of 1995. These statements are based on our current plans and expectations and involve risks and uncertainties that could cause our actual future activities and results of operations to be materially different from those set forth in the forward-looking statements. Important factors that could cause actual results to differ include risks set forth in \u201cItem 1A. Risk Factors\u201d included in our Form 10-K. We undertake no obligation to revise or publicly release the results of any revision to these forward-looking statements, except as required by law. Given these risks and uncertainties, readers are cautioned not to place undue reliance on such forward-looking statements. The terms \u201cComfort Systems,\u201d \u201cwe,\u201d \u201cus,\u201d or the \u201cCompany,\u201d refer to Comfort Systems USA, Inc. or Comfort Systems USA, Inc. and its consolidated subsidiaries, as appropriate in the context.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 944,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Contract",
+     ""
+    ],
+    [
+     "",
+     "No. of",
+     "Price Value",
+     ""
+    ],
+    [
+     "Contract Price of Project",
+     "Projects",
+     "(millions)",
+     ""
+    ],
+    [
+     "Under $1 million",
+     "5,278",
+     "$",
+     "730.6"
+    ],
+    [
+     "$1 million - $5 million",
+     "598",
+     "",
+     "1,306.8"
+    ],
+    [
+     "$5 million - $10 million",
+     "103",
+     "",
+     "739.6"
+    ],
+    [
+     "$10 million - $15 million",
+     "36",
+     "",
+     "439.8"
+    ],
+    [
+     "Greater than $15 million",
+     "46",
+     "",
+     "1,331.3"
+    ],
+    [
+     "Total",
+     "6,061",
+     "$",
+     "4,548.1"
+    ]
+   ],
+   "caption_stack": [
+    "Aggregate",
+    "Contract"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 999,
+    "end_line": 1014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "As of September 30, 2019 we had 6,061 projects in process. Our average project takes six to nine months to complete, with an average contract price of approximately $750,000. Our projects generally require working capital funding of equipment and labor costs. Customer payments on periodic billings generally do not recover these costs until late in the job. Our average project duration, together with typical retention terms as discussed above, generally allow us to complete the realization of revenue and earnings in cash within one year. We have what we consider to be a well-diversified distribution of revenue across end-use sectors that we believe reduces our exposure to negative developments in any given sector. Because of the integral nature of our services to most buildings, we have the legal right in almost all cases to attach liens to buildings or related funding sources when we have not been fully paid for installing systems, except with respect to some government buildings. The service work that we do, which is discussed further below, usually does not give rise to lien rights.\nA stratification of projects in progress as of September 30, 2019, by contract price, is as follows:",
+   "prose_after": "In addition to project work, approximately 15.3% of our revenue represents maintenance and repair service on already installed HVAC, electrical, and controls systems. This kind of work usually takes from a few hours to a few days to perform. Prices to the customer are based on the equipment and materials used in the service as well as technician labor time. We usually bill the customer for service work when it is complete, typically with payment terms of up to thirty days. We also provide maintenance and repair service under ongoing contracts. Under these contracts, we are paid regular monthly or quarterly amounts and provide specified service based on customer requirements. These agreements typically are for one or more years and frequently contain thirty- to sixty-day cancellation notice periods.\nA relatively small portion of our revenue comes from national and regional account customers. These customers typically have multiple sites and contract with us to perform maintenance and repair service. These contracts may also provide for us to perform new or replacement systems installation. We operate a national call center to dispatch technicians to sites requiring service. We perform the majority of this work with our own employees, with the balance being subcontracted to third parties that meet our performance qualifications.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 990,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "706,918",
+     "100.0",
+     "%",
+     "$",
+     "594,536",
+     "100.0",
+     "%",
+     "$",
+     "1,895,693",
+     "100.0",
+     "%",
+     "$",
+     "1,594,520",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of services",
+     "",
+     "564,216",
+     "79.8",
+     "%",
+     "",
+     "466,668",
+     "78.5",
+     "%",
+     "",
+     "1,526,310",
+     "80.5",
+     "%",
+     "",
+     "1,266,416",
+     "79.4",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "142,702",
+     "20.2",
+     "%",
+     "",
+     "127,868",
+     "21.5",
+     "%",
+     "",
+     "369,383",
+     "19.5",
+     "%",
+     "",
+     "328,104",
+     "20.6",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "90,006",
+     "12.7",
+     "%",
+     "",
+     "75,297",
+     "12.7",
+     "%",
+     "",
+     "253,417",
+     "13.4",
+     "%",
+     "",
+     "216,528",
+     "13.6",
+     "%"
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "(708)",
+     "(0.1)",
+     "%",
+     "",
+     "(219)",
+     "\u2014",
+     "",
+     "",
+     "(1,119)",
+     "(0.1)",
+     "%",
+     "",
+     "(630)",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating income",
+     "",
+     "53,404",
+     "7.6",
+     "%",
+     "",
+     "52,790",
+     "8.9",
+     "%",
+     "",
+     "117,085",
+     "6.2",
+     "%",
+     "",
+     "112,206",
+     "7.0",
+     "%"
+    ],
+    [
+     "Interest income",
+     "",
+     "82",
+     "\u2014",
+     "",
+     "",
+     "25",
+     "\u2014",
+     "",
+     "",
+     "174",
+     "\u2014",
+     "",
+     "",
+     "53",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(2,779)",
+     "(0.4)",
+     "%",
+     "",
+     "(1,152)",
+     "(0.2)",
+     "%",
+     "",
+     "(6,891)",
+     "(0.4)",
+     "%",
+     "",
+     "(2,601)",
+     "(0.2)",
+     "%"
+    ],
+    [
+     "Changes in the fair value of contingent earn-out obligations",
+     "",
+     "(2,004)",
+     "(0.3)",
+     "%",
+     "",
+     "434",
+     "0.1",
+     "%",
+     "",
+     "(3,924)",
+     "(0.2)",
+     "%",
+     "",
+     "493",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "3",
+     "\u2014",
+     "",
+     "",
+     "39",
+     "\u2014",
+     "",
+     "",
+     "167",
+     "\u2014",
+     "",
+     "",
+     "4,062",
+     "0.3",
+     "%"
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "48,706",
+     "6.9",
+     "%",
+     "",
+     "52,136",
+     "8.8",
+     "%",
+     "",
+     "106,611",
+     "5.6",
+     "%",
+     "",
+     "114,213",
+     "7.2",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "12,473",
+     "",
+     "",
+     "",
+     "13,595",
+     "",
+     "",
+     "",
+     "26,339",
+     "",
+     "",
+     "",
+     "26,466",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "36,233",
+     "5.1",
+     "%",
+     "$",
+     "38,541",
+     "6.5",
+     "%",
+     "$",
+     "80,272",
+     "4.2",
+     "%",
+     "$",
+     "87,747",
+     "5.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1049,
+    "end_line": 1073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Historically, the construction industry has been highly cyclical. As a result, our volume of business, particularly in new construction projects and renovation, may be adversely affected by declines in new installation and replacement projects in various geographic regions of the United States during periods of economic weakness.\nThe mechanical and electrical contracting industries are subject to seasonal variations. The demand for new installation and replacement is generally lower during the winter months (the first quarter of the year) due to reduced construction activity during inclement weather and less use of air conditioning during the colder months. Demand for our services is generally higher in the second and third calendar quarters due to increased construction activity and increased use of air conditioning during the warmer months. Accordingly, we expect our revenue and operating results generally will be lower in the first calendar quarter.\nResults of Operations (dollars in thousands):",
+   "prose_after": "We had 36 operating locations as of December 31, 2018. In the first quarter of 2019, we combined two operating locations into one. In the second quarter of 2019, we completed the acquisition of Walker, which reports as a separate operating location. In the third quarter of 2019, we sold the majority of the assets and ongoing business of our California operation. As of September 30, 2019, we had 35 operating locations. Acquisitions are included in our results of operations from the respective acquisition date. The same-store comparison from 2019 to 2018, as described below, excludes six months of results for the Indiana acquisition, which was acquired July 1, 2018 as well as six months of results for Walker, which was acquired April 1, 2019. An operating location is included in the same-store comparison on the first day it has comparable prior year operating data, except for immaterial acquisitions that were absorbed and integrated, or \u201ctucked-in\u201d, with existing operations.\nRevenue\u2014Revenue for the third quarter of 2019 increased $112.4 million, or 18.9%, to $706.9 million compared to the same period in 2018. The increase included an 18.6% increase related to the Walker acquisition and a 0.3% increase in revenue related to same-store activity.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1078,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mechanical Services",
+     "$",
+     "590,016",
+     "83.5",
+     "%",
+     "$",
+     "592,925",
+     "99.7",
+     "%"
+    ],
+    [
+     "Electrical Services",
+     "",
+     "116,902",
+     "16.5",
+     "%",
+     "",
+     "1,611",
+     "0.3",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "706,918",
+     "100.0",
+     "%",
+     "$",
+     "594,536",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1081,
+    "end_line": 1093
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "We had 36 operating locations as of December 31, 2018. In the first quarter of 2019, we combined two operating locations into one. In the second quarter of 2019, we completed the acquisition of Walker, which reports as a separate operating location. In the third quarter of 2019, we sold the majority of the assets and ongoing business of our California operation. As of September 30, 2019, we had 35 operating locations. Acquisitions are included in our results of operations from the respective acquisition date. The same-store comparison from 2019 to 2018, as described below, excludes six months of results for the Indiana acquisition, which was acquired July 1, 2018 as well as six months of results for Walker, which was acquired April 1, 2019. An operating location is included in the same-store comparison on the first day it has comparable prior year operating data, except for immaterial acquisitions that were absorbed and integrated, or \u201ctucked-in\u201d, with existing operations.\nRevenue\u2014Revenue for the third quarter of 2019 increased $112.4 million, or 18.9%, to $706.9 million compared to the same period in 2018. The increase included an 18.6% increase related to the Walker acquisition and a 0.3% increase in revenue related to same-store activity.\nThe following table presents our operating segment revenue (in thousands, except percentages):",
+   "prose_after": "Revenue for our Mechanical services segment decreased $2.9 million, or 0.5%, to $590.0 million for the third quarter of 2019 compared to the same period in 2018. Same-store revenue decreased primarily due to a decrease in activity at one of our Virginia operations ($11.1 million) and our North Carolina operation ($9.3 million), as well as the sale of the majority of the assets and ongoing business of our California operation in the third quarter of 2019 ($3.8 million). This decrease was partially offset by an increase in activity at one of our Texas operations ($12.4 million) and one of our Florida operations ($7.4 million).\nRevenue for our Electrical services segment increased $115.3 million to $116.9 million for the third quarter of 2019 compared to the same period in 2018. The increase related to the acquisition of Walker in April 2019 as well as a smaller acquisition completed in the third quarter of 2018.\nRevenue for the first nine months of 2019 increased $301.2 million, or 18.9%, to $1.90 billion compared to the same period in 2018. The increase included a 16.1% increase related to the Indiana and Walker acquisitions and a 2.8% increase in revenue related to same-store activity.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1078,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mechanical Services",
+     "$",
+     "1,677,632",
+     "88.5",
+     "%",
+     "$",
+     "1,592,909",
+     "99.9",
+     "%"
+    ],
+    [
+     "Electrical Services",
+     "",
+     "218,061",
+     "11.5",
+     "%",
+     "",
+     "1,611",
+     "0.1",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "1,895,693",
+     "100.0",
+     "%",
+     "$",
+     "1,594,520",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1114
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Revenue for our Mechanical services segment decreased $2.9 million, or 0.5%, to $590.0 million for the third quarter of 2019 compared to the same period in 2018. Same-store revenue decreased primarily due to a decrease in activity at one of our Virginia operations ($11.1 million) and our North Carolina operation ($9.3 million), as well as the sale of the majority of the assets and ongoing business of our California operation in the third quarter of 2019 ($3.8 million). This decrease was partially offset by an increase in activity at one of our Texas operations ($12.4 million) and one of our Florida operations ($7.4 million).\nRevenue for our Electrical services segment increased $115.3 million to $116.9 million for the third quarter of 2019 compared to the same period in 2018. The increase related to the acquisition of Walker in April 2019 as well as a smaller acquisition completed in the third quarter of 2018.\nRevenue for the first nine months of 2019 increased $301.2 million, or 18.9%, to $1.90 billion compared to the same period in 2018. The increase included a 16.1% increase related to the Indiana and Walker acquisitions and a 2.8% increase in revenue related to same-store activity.\nThe following table presents our operating segment revenue (in thousands, except percentages):",
+   "prose_after": "Revenue for our Mechanical services segment increased $84.7 million, or 5.3%, to $1.7 billion for the first nine months of 2019 compared to the same period in 2018. Of this increase, $53.8 million was attributable to the Indiana acquisition. The same-store revenue increase included an increase in activity at one of our Florida operations ($21.8 million), our Alabama operation ($12.0 million) and one of our Texas operations ($10.4 million). This increase was offset by a decrease in activity at one of our Maryland operations ($17.1 million) and the sale of the majority of the assets and ongoing business of our California operation in the third quarter of 2019 ($9.7 million).\nRevenue for our Electrical services segment increased $216.5 million to $218.1 million for the first nine months of 2019 compared to the same period in 2018. The increase related to the acquisition of Walker in April 2019 as well as a smaller acquisition completed in the third quarter of 2018.\nBacklog reflects revenue still to be recognized under contracted or committed installation and replacement project work. Project work generally lasts less than one year. Service agreement revenue and service work and short duration projects, which are generally billed as performed, do not flow through backlog. Accordingly, backlog represents only a portion of our revenue for any given future period, and it represents revenue that is likely to be reflected in our operating results over the next six to twelve months. As a result, we believe the predictive value of backlog information is limited to indications of general revenue direction over the near term, and should not be interpreted as indicative of ongoing revenue performance over several quarters.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1078,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SG&A",
+     "$",
+     "90,006",
+     "$",
+     "75,297",
+     "$",
+     "253,417",
+     "$",
+     "216,528"
+    ],
+    [
+     "Less: SG&A from companies acquired",
+     "",
+     "(7,803)",
+     "",
+     "\u2014",
+     "",
+     "(18,854)",
+     "",
+     "\u2014"
+    ],
+    [
+     "Less: Amortization expense",
+     "",
+     "(6,065)",
+     "",
+     "(4,384)",
+     "",
+     "(16,575)",
+     "",
+     "(12,315)"
+    ],
+    [
+     "Same-store SG&A, excluding amortization expense",
+     "$",
+     "76,138",
+     "$",
+     "70,913",
+     "$",
+     "217,988",
+     "$",
+     "204,213"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "SG&A increased $36.9 million, or 17.0%, to $253.4 million for the first nine months of 2019 as compared to 2018. On a same-store basis, excluding amortization expense, SG&A increased $13.8 million, or 6.7%. This increase is primarily due to the increase in revenue compared to the prior year period, investments made in personnel due to the growth we have experienced in recent years ($8.6 million), and an increase in professional fees in 2019 ($2.7 million, of which approximately $1.3 million relates to tax planning costs). Amortization expense increased $4.3 million during the period primarily as a result of the Walker and Indiana acquisitions. As a percentage of revenue, SG&A decreased from 13.6% in 2018 to 13.4% in 2019 primarily due to the acquisition of Walker, which has lower SG&A as a percentage of revenue.\nWe have included same-store SG&A, excluding amortization, because we believe it is an effective measure of comparative results of operations. However, same-store SG&A, excluding amortization, is not considered under generally accepted accounting principles to be a primary measure of an entity\u2019s financial results, and accordingly, should not be considered an alternative to SG&A as shown in our consolidated statements of operations.",
+   "prose_after": "Interest Expense\u2014Interest expense increased $1.6 million, or 141.2%, to $2.8 million for the third quarter of 2019 as compared to the same period in 2018. Interest expense increased $4.3 million for the first nine months of 2019 as compared to the same period in 2018. The increase reflects the increased borrowings on the revolving credit facility and notes to former owners as a result of our recent acquisitions.\nChanges in the Fair Value of Contingent Earn-out Obligations\u2014The contingent earn-out obligations are measured at fair value each reporting period, and changes in estimates of fair value are recognized in earnings. Expense from changes in the fair value of contingent earn-out obligations for the third quarter of 2019 increased $2.4 million as compared to the same period in 2018. Expense from changes in the fair value of contingent earn-out obligations for the first nine months of 2019 increased $4.4 million from income of $0.5 million in the same period in 2018. This increase in expense was primarily the result of increasing our obligation related to the BCH acquisition due to results being higher than previously forecasted.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1136,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by (used in):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "99,715",
+     "$",
+     "68,002"
+    ],
+    [
+     "Investing activities",
+     "",
+     "(216,053)",
+     "",
+     "(86,269)"
+    ],
+    [
+     "Financing activities",
+     "",
+     "111,081",
+     "",
+     "973"
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "(5,257)",
+     "$",
+     "(17,294)"
+    ],
+    [
+     "Free cash flow:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by operating activities",
+     "$",
+     "99,715",
+     "$",
+     "68,002"
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(22,641)",
+     "",
+     "(22,059)"
+    ],
+    [
+     "Proceeds from sales of property and equipment",
+     "",
+     "1,447",
+     "",
+     "1,077"
+    ],
+    [
+     "Free cash flow",
+     "$",
+     "78,521",
+     "$",
+     "47,020"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1169,
+    "end_line": 1191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Provision for Income Taxes\u2014Our provision for income taxes for the nine months ended September 30, 2019 was $26.3 million with an effective tax rate of 24.7% as compared to a provision for income taxes of $26.5 million with an effective tax rate of 23.2% for the same period in 2018. The effective tax rate for 2019 was higher than the 21% federal statutory rate primarily due to net state income taxes (4.4%) and nondeductible expenses (1.7%) partially offset by benefits from the filing, and expected filing, of amended returns to claim the energy efficient commercial buildings deduction (the \u201c179D deduction\u201d) allocated to us (1.9%) and deductions for stock-based compensation (0.4%). The effective tax rate for 2018 was higher than the 21% federal statutory rate primarily due to net state income taxes (4.5%) and nondeductible expenses (1.1%) partially offset by a decrease in unrecognized tax benefits from the filing of a federal income tax automatic accounting method change application (2.4%) and deductions for stock-based compensation (1.0%).\nWe currently estimate our effective tax rate for the full year 2019 will be between 24% and 27%, which includes the benefits of the 179D deduction. Starting in 2020, we expect our effective tax rate will be between 25% and 30%.\nOutlook\nIndustry conditions improved during the three-year period from 2016 to 2018 and we currently expect that strong activity will continue during 2019 and for the first half of 2020. Our emphasis for 2019 and 2020 is on cost discipline and efficient project performance, labor force development, and investing in growth, particularly in service and small projects. Based on our backlog, and in light of economic conditions, we are optimistic that revenue and net earnings for the fourth quarter of 2019 and during 2020 will continue at the favorable levels that we have experienced since the start of 2018.\nLiquidity and Capital Resources (in thousands):",
+   "prose_after": "Cash Flow\nOur business does not require significant amounts of investment in long-term fixed assets. The substantial majority of the capital used in our business is working capital that funds our costs of labor and installed equipment deployed in project work until our customer pays us. Customary terms in our industry allow customers to withhold a small portion of the contract price until after we have completed the work, typically for six months. Amounts withheld under this practice are known as retention or retainage. Our average project duration, together with typical retention terms, generally allow us to complete the realization of revenue and earnings in cash within one year.\nCash Provided by Operating Activities\u2014Cash flow from operations is primarily influenced by demand for our services and operating margins but can also be influenced by working capital needs associated with the various types of services that we provide. In particular, working capital needs may increase when we commence large volumes of work under circumstances where project costs, primarily associated with labor, equipment and subcontractors, are required to be paid before the receivables resulting from the work performed are billed and collected. Working capital needs are generally higher during the late winter and spring months as we prepare and plan for the increased project demand when favorable weather conditions exist in the summer and fall months. Conversely, working capital assets are typically converted to cash during the late summer and fall months as project completion is underway. These seasonal trends are sometimes offset by changes in the timing of major projects, which can be impacted by the weather, project delays or accelerations and other economic factors that may affect customer spending.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Total Number of Shares",
+     "Maximum Number of"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Purchased as Part of",
+     "Shares that May Yet Be"
+    ],
+    [
+     "",
+     "Total Number of",
+     "Average Price",
+     "",
+     "Publicly Announced Plans",
+     "Purchased Under the Plans"
+    ],
+    [
+     "Period",
+     "Shares Purchased",
+     "Paid Per Share",
+     "",
+     "or Programs (1)",
+     "or Programs"
+    ],
+    [
+     "July 1 - July 31",
+     "29,000",
+     "$",
+     "43.16",
+     "8,388,289",
+     "395,120"
+    ],
+    [
+     "August 1 - August 31",
+     "141,957",
+     "$",
+     "39.97",
+     "8,530,246",
+     "253,163"
+    ],
+    [
+     "September 1 - September 30",
+     "12,923",
+     "$",
+     "38.19",
+     "8,543,169",
+     "240,240"
+    ],
+    [
+     "",
+     "183,880",
+     "$",
+     "40.35",
+     "8,543,169",
+     "240,240"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1321,
+    "end_line": 1334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "On March 29, 2007, our Board of Directors (the \u201cBoard\u201d) approved a stock repurchase program to acquire up to 1.0 million shares of our outstanding common stock. Subsequently, the Board has from time to time increased the number of shares that may be acquired under the program and approved extensions of the program. On August 10, 2018, the Board approved an extension to the program by increasing the shares authorized for repurchase by 0.7 million shares. Since the inception of the repurchase program, the Board has approved 8.8 million shares to be repurchased. As of September 30, 2019, we have repurchased a cumulative total of 8.5 million shares at an average price of $17.38 per share under the repurchase program.\nThe share repurchases will be made from time to time at our discretion in the open market or privately negotiated transactions, as permitted by securities laws and other legal requirements, and subject to market conditions and other factors. The Board may modify, suspend, extend or terminate the program at any time. During the nine months ended September 30, 2019, we repurchased 0.3 million shares for approximately $15.3 million at an average price of $44.43 per share.\nDuring the quarter ended September 30, 2019, we purchased our common shares in the following amounts at the following average prices:",
+   "prose_after": "Under our 2012 Equity Incentive Plan and 2017 Omnibus Incentive Plan, employees may elect to have us withhold common shares to satisfy statutory federal, state and local tax withholding obligations arising on the vesting of restricted stock awards and exercise of options. When we withhold these shares, we are required to remit to the appropriate taxing authorities the market price of the shares withheld, which could be deemed a purchase of the common shares by us on the date of withholding.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference to the Exhibit Indicated Below and to the Filing with the Commission Indicated Below",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Description of Exhibits",
+     "Exhibit Number",
+     "Filing or File Number"
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of the Registrant",
+     "3.1",
+     "333-24021"
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment dated May 21, 1998",
+     "3.2",
+     "1998 Form 10-K"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment dated July 9, 2003",
+     "3.3",
+     "2003 Form 10-K"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment dated May 20, 2016",
+     "3.1",
+     "May 20, 2016\n\nForm 8-K"
+    ],
+    [
+     "3.5",
+     "Amended and Restated Bylaws of Comfort Systems USA, Inc.",
+     "3.1",
+     "March 25, 2016\n\nForm 8-K"
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document \u2013 The instance document does not appear in the interactive data file because its XBRL tags are embedded within the inline XBRL document",
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document",
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (the cover page XBRL tags are embedded in the Inline XBRL document)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference to the Exhibit Indicated Below and to the Filing with the Commission Indicated Below"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1340,
+    "end_line": 1369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Under our 2012 Equity Incentive Plan and 2017 Omnibus Incentive Plan, employees may elect to have us withhold common shares to satisfy statutory federal, state and local tax withholding obligations arising on the vesting of restricted stock awards and exercise of options. When we withhold these shares, we are required to remit to the appropriate taxing authorities the market price of the shares withheld, which could be deemed a purchase of the common shares by us on the date of withholding.\nItem 6. Exhibits",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1374,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Comfort Systems USA, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 24, 2019",
+     "By:",
+     "/s/ Brian E. Lane"
+    ],
+    [
+     "",
+     "",
+     "Brian E. Lane"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 24, 2019",
+     "By:",
+     "/s/ William George"
+    ],
+    [
+     "",
+     "",
+     "William George"
+    ],
+    [
+     "",
+     "",
+     "Executive Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 24, 2019",
+     "By:",
+     "/s/ Julie S. Shaeff"
+    ],
+    [
+     "",
+     "",
+     "Julie S. Shaeff"
+    ],
+    [
+     "",
+     "",
+     "Senior Vice President and Chief Accounting Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Comfort Systems USA, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1379,
+    "end_line": 1397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1374,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1398,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

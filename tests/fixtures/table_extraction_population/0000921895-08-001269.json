@@ -1,0 +1,1520 @@
+{
+ "accession": "0000921895-08-001269",
+ "cik": "0000065358",
+ "form": "10-K/A",
+ "filing_date": "2008-04-29",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10ka01196_12312007.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UNITED CAPITAL CORP.",
+     ""
+    ],
+    [
+     "(Exact name of registrant as specified in its charter)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Delaware",
+     "04-2294493"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. employer identification no.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "9 Park Place, Great Neck, New York",
+     "11021"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [
+    "UNITED CAPITAL CORP.",
+    "(Exact name of registrant as specified in its charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K/A\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2007\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________________ to ____________________________________\nCommission file number 1-10104",
+   "prose_after": "Issuer\u2019s telephone number, including area code: 516-466-6464\nSecurities registered under Section 12(b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, $.10 par value",
+     "American Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Issuer\u2019s telephone number, including area code: 516-466-6464\nSecurities registered under Section 12(b) of the Exchange Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Exchange Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K/A or any amendment to this Form 10-K/A. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Principal Occupation",
+     "Age"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "A.F. Petrocelli",
+     "Chairman of the Board, President and Chief Executive Officer",
+     "64"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael T. Lamoretti",
+     "Vice President \u2013 Real Estate Operations",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard M. Lorber *",
+     "President and Chief Executive Officer of Vector Group Ltd.",
+     "59"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert M. Mann *",
+     "Private Investor \u2013 Apparel Industry",
+     "66"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony J. Miceli",
+     "Vice President, Chief Financial Officer and Secretary",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arnold S. Penner *",
+     "Self-employed real estate investor and broker",
+     "71"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Weinbaum",
+     "Vice President \u2013 Real Estate Operations",
+     "41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K/A or any amendment to this Form 10-K/A. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe aggregate market value of the shares of the voting stock held by nonaffiliates of the registrant as of June 30, 2007 was approximately $55,964,000.\nThe number of shares of the Registrant\u2019s $.10 par value common stock outstanding as of April 24, 2008 was 8,266,286.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nAs of April 24, 2008, the executive officers and directors of United Capital Corp. (\u201cwe,\u201d \u201cour\u201d or the \u201cCompany\u201d) are as follows:",
+   "prose_after": "_______________\n* Independent Director under rules established by the American Stock Exchange. The Company is a \u201cControlled\u201d company under such rules in that Mr. Petrocelli owns more than 50% of the outstanding Common Stock of the Company.\nA.F. PETROCELLI, has been Chairman of the Board and Chief Executive Officer of the Company since December, 1987, President of the Company since June, 1991 and from June, 1983 to March, 1989 and a Director of the Company since June, 1981. Mr. Petrocelli was Chairman of the Board of Directors, President and Chief Executive Officer of Prime Hospitality Corp. (\u201cPrime\u201d), a New York Stock Exchange listed company from 1998 until its sale to an affiliate of The Blackstone Group in October 2004. Mr. Petrocelli is also a director of Nathan\u2019s Famous, Inc. (\u201cNathan\u2019s\u201d).\nMICHAEL\nT. LAMORETTI, has been a Director of the Company since April, 2005 and has been a Vice President in the Company\u2019s real estate operations since 1994. Mr. Lamoretti is a son-in-law of Mr. Petrocelli. Mr. Lamoretti is a member of the Real Estate Board of New York, the International Council of Shopping Centers and a member of the board of the Great Neck Plaza Management Council.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 111,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "All Other Compensation (1)",
+     "",
+     "",
+     "Total (2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "A.F. Petrocelli\n\nChairman of the Board, President and Chief Executive Officer",
+     "",
+     "2007\n\n 2006",
+     "$",
+     "800,000\n\n800,000",
+     "$",
+     "750,000\n\n 750,000",
+     "$",
+     "77,889\n\n74,597",
+     "$",
+     "1,627,889 1,624,597"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael T. Lamoretti\n\nVice President \u2013 Real Estate Operations",
+     "",
+     "2007\n\n2006",
+     "",
+     "235,000\n\n225,000",
+     "",
+     "140,000\n\n110,000",
+     "",
+     "53,510\n\n51,178",
+     "",
+     "428,510\n\n386,178"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony J. Miceli\n\nVice President and Chief Financial Officer",
+     "",
+     "2007\n\n2006",
+     "",
+     "260,000\n\n250,000",
+     "",
+     "140,000\n\n130,000",
+     "",
+     "18,126\n\n14,774",
+     "",
+     "418,126\n\n394,774"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Weinbaum\n\nVice President \u2013 Real Estate Operations",
+     "",
+     "2007\n\n2006",
+     "",
+     "235,000\n\n225,000",
+     "",
+     "140,000\n\n110,000",
+     "",
+     "57,348\n\n54,117",
+     "",
+     "432,348\n\n389,117"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 162(m) of the Internal Revenue Code of 1986, as amended (the \u201cCode\u201d), prohibits a publicly held corporation, such as the Company, from claiming a deduction on its federal income tax return for compensation in excess of $1 million paid for a given fiscal year to the Chief Executive Officer (or person acting in that capacity) at the close of the corporation\u2019s fiscal year and the four most highly compensated officers of the corporation, other than the chief executive officer, at the end of the corporation\u2019s fiscal year. The $1 million compensation deduction limitation does not apply to \u201cperformance-based compensation.\u201d The Company believes that the bonus received by Mr. Petrocelli in 2008 for services rendered during 2007 is \u201cperformance-based\u201d since the Company\u2019s revenues exceeded $50 million for the year ended December 31, 2007, which is the performance criterion the Company is required to achieve in order for the Chief Executive Officer to be eligible to receive a bonus, as approved at the Company\u2019s 2003 Annual Meeting of Stockholders. In addition, the Company believes that any compensation received by executive officers in connection with the exercise of options granted under the Plan or the Joint Plan qualifies as \u201cperformance-based compensation.\u201d\nTermination or Change in Control\nThe only NEO that the Company has an employment contract with is Mr. Petrocelli. In the event of a change of control of the Company, as defined in the Employment Agreement, the Company shall pay Mr. Petrocelli a lump sum severance payment equal to three years salary at his current rate and purchase outstanding options owned by Mr. Petrocelli. The aggregate intrinsic value of the outstanding options owned by Mr. Petrocelli as of December 31, 2007 was $43,524,000, which represents the difference between the Company\u2019s closing stock price on such date ($24.00) and the exercise price of each option, multiplied by the number of \u201cin-the-money\u201d options.\nSUMMARY COMPENSATION TABLE\nThe following table sets forth compensation, including costs paid by the Company related to certain perquisites, to the NEOs with respect to the fiscal year ended December 31, 2007.",
+   "prose_after": "_______________\n(1) This column includes the total amount of all perquisites paid by the Company during 2007 and 2006 for our NEOs. These amounts include the following (individually greater than $25,000 or 10% of the total amount of the perquisites received): (1) total automobile lease payments made by the Company of $38,688, $14,360, $16,998 and $12,902 in 2007 and $35,672, $12,570, $13,431 and $13,448 in 2006 for Messrs. Petrocelli, Lamoretti, Miceli and Weinbaum, respectively; and (2) club membership dues of $39,201, $36,417 and $41,238 in 2007 and $38,925, $35,045 and $37,106 in 2006 for Messrs. Petrocelli, Lamoretti and Weinbaum, respectively. In addition, the Company has a proportionate interest in a corporate aircraft that is available for use by the executive officers of the Company. The total cost of the proportionate interest in the corporate aircraft was approximately $329,000 and $382,000 during 2007 and 2006, respectively.\n(2) The values in this table were determined using the aggregate incremental cost to the Company and could differ substantially from those used for income tax purposes.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 172,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 212,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Securities Underlying",
+     "",
+     "",
+     "",
+     "Option",
+     "",
+     "Option"
+    ],
+    [
+     "",
+     "Unexercised Options",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Expiration"
+    ],
+    [
+     "Name",
+     "Exercisable",
+     "",
+     "Unexercisable",
+     "",
+     "Price",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "A.F. Petrocelli",
+     "",
+     "600,000",
+     "",
+     "\u2014",
+     "$",
+     "11.44",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "600,000",
+     "",
+     "\u2014",
+     "",
+     "7.03",
+     "7/14/2009"
+    ],
+    [
+     "",
+     "",
+     "600,000",
+     "",
+     "\u2014",
+     "",
+     "6.53",
+     "6/07/2010"
+    ],
+    [
+     "",
+     "",
+     "600,000",
+     "",
+     "\u2014",
+     "",
+     "11.93",
+     "6/12/2011"
+    ],
+    [
+     "",
+     "",
+     "600,000",
+     "",
+     "\u2014",
+     "",
+     "12.20",
+     "6/11/2012"
+    ],
+    [
+     "",
+     "",
+     "454,000",
+     "",
+     "\u2014",
+     "",
+     "21.80",
+     "6/10/2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael T. Lamoretti",
+     "",
+     "42,000",
+     "",
+     "\u2014",
+     "$",
+     "11.44",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "60,000",
+     "",
+     "\u2014",
+     "",
+     "7.03",
+     "7/14/2009"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "11.93",
+     "6/12/2011"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "12.20",
+     "6/11/2012"
+    ],
+    [
+     "",
+     "",
+     "68,000",
+     "",
+     "\u2014",
+     "",
+     "21.80",
+     "6/10/2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony J. Miceli",
+     "",
+     "4,000",
+     "",
+     "\u2014",
+     "$",
+     "12.58",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "56,000",
+     "",
+     "\u2014",
+     "",
+     "11.44",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "11.93",
+     "6/12/2011"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "12.20",
+     "6/11/2012"
+    ],
+    [
+     "",
+     "",
+     "68,000",
+     "",
+     "\u2014",
+     "",
+     "21.80",
+     "6/10/2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Weinbaum",
+     "",
+     "18,000",
+     "",
+     "\u2014",
+     "$",
+     "12.58",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "42,000",
+     "",
+     "\u2014",
+     "",
+     "11.44",
+     "6/09/2008"
+    ],
+    [
+     "",
+     "",
+     "60,000",
+     "",
+     "\u2014",
+     "",
+     "7.03",
+     "7/14/2009"
+    ],
+    [
+     "",
+     "",
+     "20,000",
+     "",
+     "\u2014",
+     "",
+     "6.53",
+     "6/07/2010"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "11.93",
+     "6/12/2011"
+    ],
+    [
+     "",
+     "",
+     "66,000",
+     "",
+     "\u2014",
+     "",
+     "12.20",
+     "6/11/2012"
+    ],
+    [
+     "",
+     "",
+     "68,000",
+     "",
+     "\u2014",
+     "",
+     "21.80",
+     "6/10/2013"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 219,
+    "end_line": 256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) This column includes the total amount of all perquisites paid by the Company during 2007 and 2006 for our NEOs. These amounts include the following (individually greater than $25,000 or 10% of the total amount of the perquisites received): (1) total automobile lease payments made by the Company of $38,688, $14,360, $16,998 and $12,902 in 2007 and $35,672, $12,570, $13,431 and $13,448 in 2006 for Messrs. Petrocelli, Lamoretti, Miceli and Weinbaum, respectively; and (2) club membership dues of $39,201, $36,417 and $41,238 in 2007 and $38,925, $35,045 and $37,106 in 2006 for Messrs. Petrocelli, Lamoretti and Weinbaum, respectively. In addition, the Company has a proportionate interest in a corporate aircraft that is available for use by the executive officers of the Company. The total cost of the proportionate interest in the corporate aircraft was approximately $329,000 and $382,000 during 2007 and 2006, respectively.\n(2) The values in this table were determined using the aggregate incremental cost to the Company and could differ substantially from those used for income tax purposes.\nGrant of Equity Awards\nThe Company did not grant any stock options in the fiscal year ended December 31, 2007 to any employees, including the NEOs.\nOutstanding Equity Awards at Year-End\nThe following table sets forth information regarding the outstanding options that have been granted to our NEOs under the Plan and the Joint Plan, but remain unexercised or unvested as of December 31, 2007.",
+   "prose_after": "Retirement Benefits\nThe Company has a noncontributory defined benefit pension plan (the \u201cPension Plan\u201d) that covers substantially all full-time employees including the NEOs of the Company. The Company contributed $700,000 to the Pension Plan for the year ended December 31, 2007. The Pension Plan provides defined benefits based on years of service and compensation level. Each of our NEOs are fully-vested in the Pension Plan.\nThe Company also has a Supplemental Retirement and Death Benefit Program (the \u201cSupplemental Program\u201d) which was terminated over ten years ago. All participants at that time retained their benefits under the plan. Messrs. Petrocelli and Miceli are included in this group. Under the Supplemental Program, participants, upon death or reaching a normal retirement age of 65, receive a supplemental benefit, as defined, in equal quarterly installments over a ten year period, as stated in the plan. Retirement benefits are proportionally reduced for early retirement at the age of 55 or thereafter.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 214,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 264,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash",
+     ""
+    ],
+    [
+     "Howard M. Lorber",
+     "$",
+     "12,500"
+    ],
+    [
+     "Robert M. Mann",
+     "",
+     "10,500"
+    ],
+    [
+     "Arnold S. Penner",
+     "",
+     "12,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 271,
+    "end_line": 278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Company also has a Supplemental Retirement and Death Benefit Program (the \u201cSupplemental Program\u201d) which was terminated over ten years ago. All participants at that time retained their benefits under the plan. Messrs. Petrocelli and Miceli are included in this group. Under the Supplemental Program, participants, upon death or reaching a normal retirement age of 65, receive a supplemental benefit, as defined, in equal quarterly installments over a ten year period, as stated in the plan. Retirement benefits are proportionally reduced for early retirement at the age of 55 or thereafter.\nThe Company provides most non-union employees a 401(k) Plan, which is a tax-qualified retirement savings plan under Section 401(k) of the Code. Eligible employees, who are 21 years of age and over, can participate on the first day of the calendar quarter following the date they have completed six months of service with the Company. Historically, the Company has not made matching contributions.\nDirector Compensation\nDirectors of the Company who are not officers of the Company are entitled to receive compensation for serving as directors in the amount of $6,000 per annum and $500 per Board meeting and Committee meeting attended. The following table reflects all compensation earned and paid to the non-employee directors of the Company during the 2007 calendar year for services rendered to the Company:",
+   "prose_after": "The aggregate number of outstanding stock options held by each independent, non-employee director as of December 31, 2007 was 118,000, 100,000 and 118,000 for Messrs. Lorber, Mann and Penner, respectively. No director was granted any stock options, stock awards or received any other compensation from the Company in the fiscal year ended December 31, 2007.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth information concerning ownership of the Company\u2019s Common Stock, as of April 24, 2008, by each person known to be the beneficial owner of more than five percent of the Common Stock, each director and by all directors and executive officers of the Company as a group:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Shares Beneficially Owned",
+     "",
+     "",
+     "Percentage of Class (9)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "A.F. Petrocelli\n\n9 Park Place\n\nGreat Neck, NY 11021",
+     "",
+     "8,969,448",
+     "(1)(2)",
+     "",
+     "76.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beverly Petrocelli\n\nc/o 9 Park Place\n\nGreat Neck, NY 11021",
+     "",
+     "8,969,448",
+     "(2)",
+     "",
+     "76.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anthony J. Miceli",
+     "",
+     "263,900",
+     "(3)",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael T. Lamoretti",
+     "",
+     "302,000",
+     "(4)",
+     "",
+     "3.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Weinbaum",
+     "",
+     "346,036",
+     "(5)",
+     "",
+     "4.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard M. Lorber",
+     "",
+     "218,000",
+     "(6)",
+     "",
+     "2.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert M. Mann",
+     "",
+     "101,400",
+     "(7)",
+     "",
+     "1.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arnold S. Penner",
+     "",
+     "118,000",
+     "(8)",
+     "",
+     "1.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All executive officers and directors as a group (7 persons)",
+     "",
+     "10,318,784",
+     "(1)(3)(4)(5)(6)(7)(8)(9)",
+     "",
+     "79.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 285,
+    "end_line": 315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The aggregate number of outstanding stock options held by each independent, non-employee director as of December 31, 2007 was 118,000, 100,000 and 118,000 for Messrs. Lorber, Mann and Penner, respectively. No director was granted any stock options, stock awards or received any other compensation from the Company in the fiscal year ended December 31, 2007.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth information concerning ownership of the Company\u2019s Common Stock, as of April 24, 2008, by each person known to be the beneficial owner of more than five percent of the Common Stock, each director and by all directors and executive officers of the Company as a group:",
+   "prose_after": "_______________\n(1) Mr. Petrocelli owns directly 4,515,448 shares of Common Stock and presently exercisable options to purchase 3,454,000 shares of Common Stock. Also includes 1,000,000 shares held by Mrs. Petrocelli, the wife of Mr. Petrocelli. Such shares may be deemed to be beneficially owned by Mr. Petrocelli. Does not include shares held by the adult children or grandchildren of Mr. Petrocelli. Mr. Petrocelli disclaims beneficial ownership of the shares held by his wife, adult children and grandchildren.\n(2) Mrs. Petrocelli is the wife of Mr. Petrocelli. Includes 1,000,000 shares of Common Stock held by Mrs. Petrocelli, 7,969,448 shares held by Mr. Petrocelli (which includes presently exercisable options to purchase 3,454,000 shares of Common Stock). Such shares may be deemed to be beneficially owned by Mrs. Petrocelli. Mrs. Petrocelli disclaims beneficial ownership of all shares held by Mr. Petrocelli. Does not include shares held by the adult children or grandchildren of Mrs. Petrocelli. Mrs. Petrocelli disclaims beneficial ownership of the shares held by her adult children and grandchildren.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2007",
+     "",
+     "",
+     "",
+     "2006",
+     ""
+    ],
+    [
+     "",
+     "Holtz",
+     "",
+     "GGK/RSM",
+     "",
+     "GGK/RSM",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "76,000",
+     "$",
+     "25,000",
+     "$",
+     "93,000"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "25,000",
+     "",
+     "16,000",
+     "",
+     "22,000"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "95,000",
+     "",
+     "5,000",
+     "",
+     "124,000"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "(i) The Company engaged Holtz as its new independent accountants effective November 13, 2007. During the two most recent fiscal years and through November 13, 2007, the Company has not consulted with Holtz concerning the Company\u2019s financial statements, including the application of accounting principles to a specified transaction (proposed or completed) or the type of audit opinion that might be rendered on the Company\u2019s financial statements or any matter that was either the subject of a \u201cdisagreement\u201d or \u201creportable event\u201d (as such terms are defined in Item 304 of Regulation S-K) with the previous independent accountants.\nGGK had a continuing relationship with RSM McGladrey, Inc. (\u201cRSM\u201d) from which it leased auditing staff who were full-time, permanent employees of RSM and through which its partners provided non-audit services. GGK has no full-time employees and therefore, none of the audit services performed were provided by permanent full-time employees of GGK. GGK manages and supervises the audit and audit staff, and is exclusively responsible for the opinion rendered in connection with its examination.\nThe aggregate fees billed to or accrued by the Company by Holtz, GGK and RSM for services performed for the years ended December 31, 2007 and 2006 are as follows:",
+   "prose_after": "Audit Fees\nThe aggregate audit fees for the years ended December 31, 2007 and 2006 were primarily related to the audit of the Company\u2019s annual financial statements and review of those financial statements included in the Company\u2019s quarterly reports on Form 10-Q.\nAudit Related Fees\nAudit related fees for the years ended December 31, 2007 and 2006 were primarily incurred in connection with the audits of the Company\u2019s employee benefit plans. In addition, during the year ended December 31, 2007, the Company incurred additional audit related fees related to the consent of prior auditors to the inclusion of its opinion in the Company\u2019s annual financial statements.\nTax Fees\nTax fees for the years ended December 31, 2007 and 2006 were primarily related to tax and other related services. For the year ended December 31, 2006, tax fees, which do not include Financial Information System Design and Implementation fees, have been provided by RSM.\nAll Other Fees\nThe Company did not engage Holtz, GGK or RSM to provide any other services during the fiscal years ended December 31, 2007 and 2006.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a)",
+     "(1)",
+     "Consolidated Financial Statements.  The required Financial Statements were previously filed on this Form 10-K."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The aggregate audit fees for the years ended December 31, 2007 and 2006 were primarily related to the audit of the Company\u2019s annual financial statements and review of those financial statements included in the Company\u2019s quarterly reports on Form 10-Q.\nAudit Related Fees\nAudit related fees for the years ended December 31, 2007 and 2006 were primarily incurred in connection with the audits of the Company\u2019s employee benefit plans. In addition, during the year ended December 31, 2007, the Company incurred additional audit related fees related to the consent of prior auditors to the inclusion of its opinion in the Company\u2019s annual financial statements.\nTax Fees\nTax fees for the years ended December 31, 2007 and 2006 were primarily related to tax and other related services. For the year ended December 31, 2006, tax fees, which do not include Financial Information System Design and Implementation fees, have been provided by RSM.\nAll Other Fees\nThe Company did not engage Holtz, GGK or RSM to provide any other services during the fiscal years ended December 31, 2007 and 2006.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "(b) Exhibits\n3.1 Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to exhibit 3.1 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 1993). 3.2 Amendment to the Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to Exhibit 3.2 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 2003). 3.3 By-laws of the Company (incorporated by reference to exhibit 3.2 filed with the Company\u2019s report on Form 8-K dated April 14, 2005).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "10.1",
+     "Incentive and Non-Qualified Stock Option Plan of the Company, as amended (incorporated by reference to exhibit 10.1 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 2000)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.2",
+     "Additional amendment to Incentive and Non-Qualified Stock Option Plan of the Company (incorporated by reference to exhibit 4.2 filed with the Company\u2019s report on Form S-8 dated August 23, 2002)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.3",
+     "1988 Joint Incentive and Non-Qualified Stock Option Plan, as amended (incorporated by reference to exhibit 10.2 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 1998)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.4",
+     "Amended and Restated Employment Agreement dated as of November 17, 2003 by and between the Company and A. F. Petrocelli (incorporated by reference to exhibit 10.4 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 2003)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "14.",
+     "Code of Business Conduct and Ethics (incorporated by reference to exhibit 14 filed with the Company\u2019s report on Form 10-Q for the quarter ended June 30, 2006)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "**",
+     "21.",
+     "Subsidiaries of the Company."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "**",
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm \u2013 Holtz Rubenstein Reminick LLP."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "**",
+     "23.2",
+     "Consent of Independent Registered Public Accounting Firm \u2013 Goldstein Golub Kessler LLP."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "31.1",
+     "Certification of the Chief Executive Officer pursuant to Rule 13a-15(e) and 15d-15(e)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "31.2",
+     "Certification of the Chief Financial Officer pursuant to Rule 13a-15(e) and 15d-15(e)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "32.1",
+     "Certification of the Chief Executive Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "32.2",
+     "Certification of the Chief Financial Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 459
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(b) Exhibits\n3.1 Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to exhibit 3.1 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 1993). 3.2 Amendment to the Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to Exhibit 3.2 filed with the Company\u2019s report on Form 10-K for the fiscal year ended December 31, 2003). 3.3 By-laws of the Company (incorporated by reference to exhibit 3.2 filed with the Company\u2019s report on Form 8-K dated April 14, 2005).",
+   "prose_after": "* Filed herewith\n** Previously filed on the Company\u2019s Report on Form 10-K for the fiscal year ended December 31, 2007.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "UNITED CAPITAL CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Anthony J. Miceli"
+    ],
+    [
+     "",
+     "",
+     "Anthony J. Miceli, Vice President\n\nand Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "UNITED CAPITAL CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith\n** Previously filed on the Company\u2019s Report on Form 10-K for the fiscal year ended December 31, 2007.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Dated: April 25, 2008",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

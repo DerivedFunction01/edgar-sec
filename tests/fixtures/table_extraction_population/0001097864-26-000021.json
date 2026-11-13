@@ -1,0 +1,8422 @@
+{
+ "accession": "0001097864-26-000021",
+ "cik": "0001097864",
+ "form": "10-Q",
+ "filing_date": "2026-11-02",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "on-20261002.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "36-3840979"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended October 2, 2026\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to (Commission File Number) 001-39317\nON SEMICONDUCTOR CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "5701 N. Pima Road\nScottsdale, AZ 85250\n(602) 244-6600\n(Address, zip code and telephone number, including area code, of principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "ON",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "5701 N. Pima Road\nScottsdale, AZ 85250\n(602) 244-6600\n(Address, zip code and telephone number, including area code, of principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Item 1. Financial Statements (unaudited)",
+     "4"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "4"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Income",
+     "5"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity",
+     "6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "8"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "9"
+    ],
+    [
+     "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "30"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "41"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 75
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge Accelerated filer  [X]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe number of shares of the issuer's common stock outstanding at October 28, 2026 was 389,284,489.\nON SEMICONDUCTOR CORPORATION FORM 10-Q\nTABLE OF CONTENTS\nPart I: Financial Information",
+   "prose_after": "Part II: Other Information",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Item 1. Legal Proceedings",
+     "42"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "42"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "46"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "47"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "47"
+    ],
+    [
+     "Item 5. Other Information",
+     "47"
+    ],
+    [
+     "Item 6. Exhibits",
+     "48"
+    ],
+    [
+     "Signatures",
+     "49"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Part II: Other Information",
+   "prose_after": "(See the glossary of selected terms immediately following this table of contents for definitions of certain abbreviated terms.)\nFORM 10-Q\nGLOSSARY OF SELECTED ABBREVIATED TERMS*",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Abbreviated Term",
+     "Defined Term"
+    ],
+    [
+     "0% Notes",
+     "0% Convertible Senior Notes due 2027"
+    ],
+    [
+     "2031 0% Notes",
+     "0% Convertible Senior Notes due 2031"
+    ],
+    [
+     "0.50% Notes",
+     "0.50% Convertible Senior Notes due 2029"
+    ],
+    [
+     "3.875% Notes",
+     "3.875% Senior Notes due 2028"
+    ],
+    [
+     "ADAS",
+     "Advanced driver-assistance systems"
+    ],
+    [
+     "AI",
+     "Artificial Intelligence"
+    ],
+    [
+     "Amended and Restated SIP",
+     "ON Semiconductor Corporation Amended and Restated Stock Incentive Plan, as amended"
+    ],
+    [
+     "ASU",
+     "Accounting Standards Update"
+    ],
+    [
+     "Commission or SEC",
+     "Securities and Exchange Commission"
+    ],
+    [
+     "Credit Agreement",
+     "Credit agreement, dated as of June 22, 2023, by and among the Company, as borrower, the several lenders party thereto, JPMorgan Chase Bank, N.A., as administrative agent, and certain other parties, providing for the Revolving Credit Facility"
+    ],
+    [
+     "ESPP",
+     "ON Semiconductor Corporation 2000 Employee Stock Purchase Plan, as amended"
+    ],
+    [
+     "HSR Act",
+     "Hart-Scott-Rodino Antitrust Improvement Act of 1976, as amended"
+    ],
+    [
+     "Exchange Act",
+     "Securities Exchange Act of 1934, as amended"
+    ],
+    [
+     "IP",
+     "Intellectual property"
+    ],
+    [
+     "IRS",
+     "United States Internal Revenue Service"
+    ],
+    [
+     "IT",
+     "Information Technology"
+    ],
+    [
+     "Revolving Credit Facility",
+     "A $1.5 billion senior revolving credit facility created pursuant to the Credit Agreement"
+    ],
+    [
+     "ROU",
+     "Right-of-use"
+    ],
+    [
+     "RSU",
+     "Restricted stock unit"
+    ],
+    [
+     "SiC",
+     "Silicon carbide"
+    ],
+    [
+     "Securities Act",
+     "Securities Act of 1933, as amended"
+    ],
+    [
+     "U.S. or United States",
+     "United States of America"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 123
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(See the glossary of selected terms immediately following this table of contents for definitions of certain abbreviated terms.)\nFORM 10-Q\nGLOSSARY OF SELECTED ABBREVIATED TERMS*",
+   "prose_after": "* Terms used, but not defined, within the body of the Form 10-Q are defined in this Glossary.\nPART I: FINANCIAL INFORMATION\nItem 1. Financial Statements (unaudited)\nCONSOLIDATED BALANCE SHEETS\n(in millions, except share and per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 125,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "4,157.7",
+     "$",
+     "2,147.6"
+    ],
+    [
+     "Short-term investments",
+     "210.0",
+     "",
+     "400.0",
+     ""
+    ],
+    [
+     "Receivables, net",
+     "917.4",
+     "",
+     "908.0",
+     ""
+    ],
+    [
+     "Inventories",
+     "2,069.7",
+     "",
+     "1,989.6",
+     ""
+    ],
+    [
+     "Assets held-for-sale",
+     "26.2",
+     "",
+     "25.0",
+     ""
+    ],
+    [
+     "Other current assets",
+     "464.3",
+     "",
+     "352.9",
+     ""
+    ],
+    [
+     "Total current assets",
+     "7,845.3",
+     "",
+     "5,823.1",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "2,823.7",
+     "",
+     "3,369.0",
+     ""
+    ],
+    [
+     "Goodwill",
+     "1,686.5",
+     "",
+     "1,679.9",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "317.7",
+     "",
+     "343.9",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "1,018.1",
+     "",
+     "929.1",
+     ""
+    ],
+    [
+     "ROU financing lease assets",
+     "\u2014",
+     "",
+     "23.1",
+     ""
+    ],
+    [
+     "Other assets",
+     "240.0",
+     "",
+     "356.0",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "13,931.3",
+     "$",
+     "12,524.1"
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "549.5",
+     "$",
+     "572.3"
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "858.3",
+     "",
+     "714.9",
+     ""
+    ],
+    [
+     "Current portion of financing lease liabilities",
+     "0.6",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "802.8",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "2,211.2",
+     "",
+     "1,287.7",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "3,660.2",
+     "",
+     "2,980.5",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "46.4",
+     "",
+     "41.7",
+     ""
+    ],
+    [
+     "Long-term financing lease liabilities",
+     "22.3",
+     "",
+     "23.8",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "409.8",
+     "",
+     "498.5",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "6,349.9",
+     "",
+     "4,832.2",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 10)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ON Semiconductor Corporation stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock ($0.01 par value, 1,250,000,000 shares authorized, 627,260,040 and 624,962,201 issued, 389,258,454 and 396,740,551 outstanding, respectively)",
+     "6.3",
+     "",
+     "6.2",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "5,676.5",
+     "",
+     "5,538.6",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(57.6)",
+     "",
+     "(55.5)",
+     ""
+    ],
+    [
+     "Accumulated earnings",
+     "8,749.2",
+     "",
+     "8,241.9",
+     ""
+    ],
+    [
+     "Less: Treasury stock, at cost: 238,001,586 and 228,221,650 shares, respectively",
+     "(6,813.3)",
+     "",
+     "(6,057.9)",
+     ""
+    ],
+    [
+     "Total ON Semiconductor Corporation stockholders\u2019 equity",
+     "7,561.1",
+     "",
+     "7,673.3",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "20.3",
+     "",
+     "18.6",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "7,581.4",
+     "",
+     "7,691.9",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "13,931.3",
+     "$",
+     "12,524.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 138,
+    "end_line": 191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "* Terms used, but not defined, within the body of the Form 10-Q are defined in this Glossary.\nPART I: FINANCIAL INFORMATION\nItem 1. Financial Statements (unaudited)\nCONSOLIDATED BALANCE SHEETS\n(in millions, except share and per share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\n(in millions, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 136,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 192,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,722.3",
+     "$",
+     "1,550.9",
+     "$",
+     "4,839.1",
+     "$",
+     "4,465.3"
+    ],
+    [
+     "Cost of revenue",
+     "1,009.3",
+     "",
+     "963.7",
+     "",
+     "2,926.7",
+     "",
+     "3,032.4",
+     ""
+    ],
+    [
+     "Gross profit",
+     "713.0",
+     "",
+     "587.2",
+     "",
+     "1,912.4",
+     "",
+     "1,432.9",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "145.0",
+     "",
+     "141.9",
+     "",
+     "430.1",
+     "",
+     "449.8",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "66.8",
+     "",
+     "62.8",
+     "",
+     "193.1",
+     "",
+     "194.4",
+     ""
+    ],
+    [
+     "General and administrative",
+     "107.8",
+     "",
+     "87.3",
+     "",
+     "299.1",
+     "",
+     "262.9",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "10.5",
+     "",
+     "11.2",
+     "",
+     "31.5",
+     "",
+     "33.6",
+     ""
+    ],
+    [
+     "Restructuring, asset impairments and other, net",
+     "4.6",
+     "",
+     "19.6",
+     "",
+     "375.1",
+     "",
+     "608.1",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "334.7",
+     "",
+     "322.8",
+     "",
+     "1,328.9",
+     "",
+     "1,548.8",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "378.3",
+     "",
+     "264.4",
+     "",
+     "583.5",
+     "",
+     "(115.9)",
+     ""
+    ],
+    [
+     "Other income (expense), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(13.9)",
+     "",
+     "(17.7)",
+     "",
+     "(40.3)",
+     "",
+     "(53.6)",
+     ""
+    ],
+    [
+     "Interest income",
+     "17.3",
+     "",
+     "22.7",
+     "",
+     "52.4",
+     "",
+     "74.5",
+     ""
+    ],
+    [
+     "Other income",
+     "17.6",
+     "",
+     "3.6",
+     "",
+     "30.0",
+     "",
+     "9.2",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "21.0",
+     "",
+     "8.6",
+     "",
+     "42.1",
+     "",
+     "30.1",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "399.3",
+     "",
+     "273.0",
+     "",
+     "625.6",
+     "",
+     "(85.8)",
+     ""
+    ],
+    [
+     "Income tax (provision) benefit",
+     "(84.9)",
+     "",
+     "(17.7)",
+     "",
+     "(116.6)",
+     "",
+     "27.6",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "314.4",
+     "",
+     "255.3",
+     "",
+     "509.0",
+     "",
+     "(58.2)",
+     ""
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "(0.5)",
+     "",
+     "(0.3)",
+     "",
+     "(1.7)",
+     "",
+     "(2.6)",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to ON Semiconductor Corporation",
+     "$",
+     "313.9",
+     "$",
+     "255.0",
+     "$",
+     "507.3",
+     "$",
+     "(60.8)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per share of common stock attributable to ON Semiconductor Corporation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.81",
+     "$",
+     "0.63",
+     "$",
+     "1.30",
+     "$",
+     "(0.15)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.79",
+     "$",
+     "0.63",
+     "$",
+     "1.27",
+     "$",
+     "(0.15)"
+    ],
+    [
+     "Weighted-average shares of common stock outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "389.3",
+     "",
+     "406.9",
+     "",
+     "391.2",
+     "",
+     "414.3",
+     ""
+    ],
+    [
+     "Diluted",
+     "397.3",
+     "",
+     "408.0",
+     "",
+     "400.0",
+     "",
+     "414.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "314.4",
+     "$",
+     "255.3",
+     "$",
+     "509.0",
+     "$",
+     "(58.2)"
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "0.8",
+     "",
+     "(0.9)",
+     "",
+     "(0.4)",
+     "",
+     "1.9",
+     ""
+    ],
+    [
+     "Effects of cash flow hedges and other adjustments",
+     "8.7",
+     "",
+     "(3.1)",
+     "",
+     "(1.7)",
+     "",
+     "6.1",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "9.5",
+     "",
+     "(4.0)",
+     "",
+     "(2.1)",
+     "",
+     "8.0",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "323.9",
+     "",
+     "251.3",
+     "",
+     "506.9",
+     "",
+     "(50.2)",
+     ""
+    ],
+    [
+     "Comprehensive income attributable to non-controlling interest",
+     "(0.5)",
+     "",
+     "(0.3)",
+     "",
+     "(1.7)",
+     "",
+     "(2.6)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to ON Semiconductor Corporation",
+     "$",
+     "323.4",
+     "$",
+     "251.0",
+     "$",
+     "505.2",
+     "$",
+     "(52.8)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 202,
+    "end_line": 263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\n(in millions, except per share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY\n(in millions, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 264,
+     "token": "REPEATING_FOOTER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Non-Controlling Interest",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of shares",
+     "At Par Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Earnings",
+     "",
+     "Number of shares",
+     "At Cost",
+     "",
+     "",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at July 3, 2026",
+     "626,960,841",
+     "$",
+     "6.3",
+     "$",
+     "5,632.8",
+     "$",
+     "(67.1)",
+     "$",
+     "8,435.3",
+     "(237,669,842)",
+     "$",
+     "(6,788.6)",
+     "$",
+     "19.8",
+     "$",
+     "7,238.5"
+    ],
+    [
+     "Shares issued pursuant to the ESPP",
+     "100,324",
+     "\u2014",
+     "",
+     "6.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6.6",
+     ""
+    ],
+    [
+     "RSUs released and stock grant awards issued",
+     "198,875",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of tax withholding for RSUs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(59,612)",
+     "(4.8)",
+     "",
+     "\u2014",
+     "",
+     "(4.8)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "37.1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "37.1",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(272,132)",
+     "(19.9)",
+     "",
+     "\u2014",
+     "",
+     "(19.9)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "9.5",
+     "",
+     "313.9",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "0.5",
+     "",
+     "323.9",
+     ""
+    ],
+    [
+     "Balance at October 2, 2026",
+     "627,260,040",
+     "$",
+     "6.3",
+     "$",
+     "5,676.5",
+     "$",
+     "(57.6)",
+     "$",
+     "8,749.2",
+     "(238,001,586)",
+     "$",
+     "(6,813.3)",
+     "$",
+     "20.3",
+     "$",
+     "7,581.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2025",
+     "624,962,201",
+     "$",
+     "6.2",
+     "$",
+     "5,538.6",
+     "$",
+     "(55.5)",
+     "$",
+     "8,241.9",
+     "(228,221,650)",
+     "$",
+     "(6,057.9)",
+     "$",
+     "18.6",
+     "$",
+     "7,691.9"
+    ],
+    [
+     "Shares issued pursuant to the ESPP",
+     "347,170",
+     "\u2014",
+     "",
+     "18.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "18.6",
+     ""
+    ],
+    [
+     "RSUs released and stock grant awards issued",
+     "1,950,669",
+     "0.1",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrants and bond hedges, net - 2031 0% Notes",
+     "\u2014",
+     "\u2014",
+     "",
+     "(70.8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(70.8)",
+     ""
+    ],
+    [
+     "Tax impact of warrants and bond hedges, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "78.4",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "78.4",
+     ""
+    ],
+    [
+     "Payment of tax withholding for RSUs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(660,264)",
+     "(52.2)",
+     "",
+     "\u2014",
+     "",
+     "(52.2)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "111.8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "111.8",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(9,119,672)",
+     "(703.2)",
+     "",
+     "\u2014",
+     "",
+     "(703.2)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.1)",
+     "",
+     "507.3",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1.7",
+     "",
+     "506.9",
+     ""
+    ],
+    [
+     "Balance at October 2, 2026",
+     "627,260,040",
+     "$",
+     "6.3",
+     "$",
+     "5,676.5",
+     "$",
+     "(57.6)",
+     "$",
+     "8,749.2",
+     "(238,001,586)",
+     "$",
+     "(6,813.3)",
+     "$",
+     "20.3",
+     "$",
+     "7,581.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 274,
+    "end_line": 305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY\n(in millions, except share data)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 272,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 306,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Non-Controlling Interest",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of shares",
+     "At Par Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Earnings",
+     "",
+     "Number of shares",
+     "At Cost",
+     "",
+     "",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at July 4, 2025",
+     "624,436,148",
+     "$",
+     "6.2",
+     "$",
+     "5,451.1",
+     "$",
+     "(50.4)",
+     "$",
+     "7,805.1",
+     "(213,231,935)",
+     "$",
+     "(5,271.2)",
+     "$",
+     "20.4",
+     "$",
+     "7,961.2"
+    ],
+    [
+     "Shares issued pursuant to the ESPP",
+     "142,069",
+     "\u2014",
+     "",
+     "6.0",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6.0",
+     ""
+    ],
+    [
+     "RSUs released and stock grant awards issued",
+     "150,716",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of tax withholding for RSUs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(46,927)",
+     "(2.4)",
+     "",
+     "\u2014",
+     "",
+     "(2.4)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "38.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38.2",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,133,386)",
+     "(328.2)",
+     "",
+     "\u2014",
+     "",
+     "(328.2)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4.0)",
+     "",
+     "255.0",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "0.3",
+     "",
+     "251.3",
+     ""
+    ],
+    [
+     "Balance at October 3, 2025",
+     "624,728,933",
+     "$",
+     "6.2",
+     "$",
+     "5,495.3",
+     "$",
+     "(54.4)",
+     "$",
+     "8,060.1",
+     "(219,412,248)",
+     "$",
+     "(5,601.8)",
+     "$",
+     "20.7",
+     "$",
+     "7,926.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024",
+     "622,655,553",
+     "$",
+     "6.2",
+     "$",
+     "5,372.2",
+     "$",
+     "(62.4)",
+     "$",
+     "8,120.9",
+     "(199,700,380)",
+     "$",
+     "(4,640.5)",
+     "$",
+     "18.1",
+     "$",
+     "8,814.5"
+    ],
+    [
+     "Shares issued pursuant to the ESPP",
+     "450,951",
+     "\u2014",
+     "",
+     "16.6",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16.6",
+     ""
+    ],
+    [
+     "RSUs released and stock grant awards issued",
+     "1,622,426",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Partial settlement - 0% Notes",
+     "2",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Partial settlement of warrants - 0% Notes",
+     "1",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of tax withholding for RSUs",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(565,552)",
+     "(27.5)",
+     "",
+     "\u2014",
+     "",
+     "(27.5)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "106.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "106.5",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(19,146,316)",
+     "(933.8)",
+     "",
+     "\u2014",
+     "",
+     "(933.8)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8.0",
+     "",
+     "(60.8)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "2.6",
+     "",
+     "(50.2)",
+     ""
+    ],
+    [
+     "Balance at October 3, 2025",
+     "624,728,933",
+     "$",
+     "6.2",
+     "$",
+     "5,495.3",
+     "$",
+     "(54.4)",
+     "$",
+     "8,060.1",
+     "(219,412,248)",
+     "$",
+     "(5,601.8)",
+     "$",
+     "20.7",
+     "$",
+     "7,926.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 307,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 306,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 339,
+     "token": "REPEATING_FOOTER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "509.0",
+     "$",
+     "(58.2)"
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "563.0",
+     "",
+     "471.1",
+     ""
+    ],
+    [
+     "Gain on sale or disposal of fixed assets",
+     "(4.2)",
+     "",
+     "(7.1)",
+     ""
+    ],
+    [
+     "Gain on divestiture of a business",
+     "(3.1)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Amortization of debt discount and issuance costs",
+     "11.0",
+     "",
+     "8.6",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "111.8",
+     "",
+     "106.5",
+     ""
+    ],
+    [
+     "Non-cash asset impairment charges",
+     "166.6",
+     "",
+     "487.9",
+     ""
+    ],
+    [
+     "Change in deferred tax balances",
+     "(17.2)",
+     "",
+     "(113.1)",
+     ""
+    ],
+    [
+     "Other",
+     "(3.5)",
+     "",
+     "1.2",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities (exclusive of acquisitions and divestiture):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables",
+     "(29.6)",
+     "",
+     "119.4",
+     ""
+    ],
+    [
+     "Inventories",
+     "(85.0)",
+     "",
+     "214.7",
+     ""
+    ],
+    [
+     "Other assets",
+     "(59.2)",
+     "",
+     "(1.7)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(24.4)",
+     "",
+     "95.4",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "129.3",
+     "",
+     "(62.4)",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "(49.3)",
+     "",
+     "(57.0)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "1,215.2",
+     "",
+     "1,205.3",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments for acquisition of property, plant and equipment",
+     "(84.0)",
+     "",
+     "(272.1)",
+     ""
+    ],
+    [
+     "Proceeds from sale of property, plant and equipment",
+     "17.1",
+     "",
+     "6.8",
+     ""
+    ],
+    [
+     "Proceeds related to divestiture of businesses, net of cash transferred",
+     "31.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of short-term investments",
+     "(760.0)",
+     "",
+     "(800.0)",
+     ""
+    ],
+    [
+     "Proceeds from the maturity of short-term investments",
+     "950.0",
+     "",
+     "700.0",
+     ""
+    ],
+    [
+     "Payments for acquisition of a business, net of cash acquired",
+     "(13.0)",
+     "",
+     "(117.5)",
+     ""
+    ],
+    [
+     "Other",
+     "2.9",
+     "",
+     "(5.0)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "144.7",
+     "",
+     "(487.8)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds for the issuance of common stock under the ESPP",
+     "18.6",
+     "",
+     "16.6",
+     ""
+    ],
+    [
+     "Payment of tax withholding for RSUs",
+     "(52.0)",
+     "",
+     "(27.5)",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "(710.4)",
+     "",
+     "(927.4)",
+     ""
+    ],
+    [
+     "Issuance and borrowings under debt agreements",
+     "1,473.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Reimbursement of debt issuance and other financing costs",
+     "3.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of debt issuance and other financing costs",
+     "(4.2)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repayment of borrowings under debt agreements",
+     "(0.2)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment for purchase of bond hedges",
+     "(351.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from issuance of warrants",
+     "281.0",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of financing lease obligations",
+     "(0.3)",
+     "",
+     "(1.2)",
+     ""
+    ],
+    [
+     "Payments related to prior business acquisitions",
+     "(7.5)",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "650.5",
+     "",
+     "(939.9)",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash, cash equivalents and restricted cash",
+     "(0.3)",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents and restricted cash",
+     "2,010.1",
+     "",
+     "(219.4)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of period (Note 6)",
+     "2,149.0",
+     "",
+     "2,693.4",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of period (Note 6)",
+     "$",
+     "4,159.1",
+     "$",
+     "2,474.0"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 349,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in millions)",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote 1: Background and Basis of Presentation\nON Semiconductor Corporation (\"onsemi,\" \"we,\" \"us,\" \"our,\" or the \"Company\"), with its wholly and majority-owned subsidiaries, operates under the onsemiTM brand. The Company is organized into three operating and reportable segments: the Power Solutions Group (\"PSG\"), the Analog and Mixed-Signal Group (\"AMG\") and the Intelligent Sensing Group (\"ISG\").\nThe Company's fiscal calendar year begins on January 1 and ends on December 31, with each fiscal quarter containing a thirteen-week accounting period. The quarters ended October 2, 2026 and October 3, 2025 each contained 91 days. The nine months ended October 2, 2026 and October 3, 2025 contained 275 days and 276 days, respectively.\nThe accompanying unaudited financial statements as of and for the quarter and nine months ended October 2, 2026 have been prepared following generally accepted accounting principles in the United States of America (\"GAAP\") for interim financial reporting and the rules and regulations of the SEC for interim reporting. Accordingly, the unaudited financial statements do not include all of the information and footnotes required by GAAP for audited financial statements. The balance sheet as of December 31, 2025 was derived from the Company's audited financial statements but does not include all disclosures required by GAAP for annual financial statements. In management's opinion, the interim information contains all adjustments, which include normal recurring adjustments necessary for a fair statement of the results for the interim periods. The footnote disclosures related to the interim financial information contained herein are also unaudited. Such financial information should be read in conjunction with the consolidated financial statements and related notes thereto for the year ended December 31, 2025, included in the Company's Annual Report on Form 10-K for the year ended December 31, 2025, which was filed with the SEC on February 9, 2026 (the \"2025 Form 10-K\"). Certain reclassifications within revenue disaggregation by end-markets have been made to prior period amounts to conform to current period presentation. See Note 2: ''Segments and Revenue'' for additional information.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 410,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "For the quarter ended October 2, 2026:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from external customers",
+     "$",
+     "889.9",
+     "$",
+     "597.3",
+     "$",
+     "235.1",
+     "$",
+     "1,722.3"
+    ],
+    [
+     "Cost of revenue",
+     "550.2",
+     "",
+     "297.6",
+     "",
+     "161.5",
+     "",
+     "1,009.3",
+     ""
+    ],
+    [
+     "Segment gross profit",
+     "$",
+     "339.7",
+     "$",
+     "299.7",
+     "$",
+     "73.6",
+     "$",
+     "713.0"
+    ],
+    [
+     "For the quarter ended October 3, 2025:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from external customers",
+     "$",
+     "737.6",
+     "$",
+     "583.3",
+     "$",
+     "230.0",
+     "$",
+     "1,550.9"
+    ],
+    [
+     "Cost of revenue",
+     "527.4",
+     "",
+     "287.2",
+     "",
+     "149.1",
+     "",
+     "963.7",
+     ""
+    ],
+    [
+     "Segment gross profit",
+     "$",
+     "210.2",
+     "$",
+     "296.1",
+     "$",
+     "80.9",
+     "$",
+     "587.2"
+    ],
+    [
+     "For the nine months ended October 2, 2026:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from external customers",
+     "$",
+     "2,455.5",
+     "$",
+     "1,683.4",
+     "$",
+     "700.2",
+     "$",
+     "4,839.1"
+    ],
+    [
+     "Cost of revenue",
+     "1,685.1",
+     "",
+     "802.9",
+     "",
+     "438.7",
+     "",
+     "2,926.7",
+     ""
+    ],
+    [
+     "Segment gross profit",
+     "$",
+     "770.4",
+     "$",
+     "880.5",
+     "$",
+     "261.5",
+     "$",
+     "1,912.4"
+    ],
+    [
+     "For the nine months ended October 3, 2025:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from external customers",
+     "$",
+     "2,080.9",
+     "$",
+     "1,705.6",
+     "$",
+     "678.8",
+     "$",
+     "4,465.3"
+    ],
+    [
+     "Cost of revenue",
+     "1,566.7",
+     "",
+     "826.8",
+     "",
+     "638.9",
+     "",
+     "3,032.4",
+     ""
+    ],
+    [
+     "Segment gross profit",
+     "$",
+     "514.2",
+     "$",
+     "878.8",
+     "$",
+     "39.9",
+     "$",
+     "1,432.9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 452,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Segments and Revenue"
+    }
+   },
+   "prose_before": "The parties\u2019 HSR notifications were filed with the Federal Trade Commission (\"FTC\") and Department of Justice (\"DOJ\") on July 17, 2026. On August 12, 2026, the FTC granted early termination of the applicable waiting period under the HSR Act with respect to the Merger. The Company continues to advance the remaining required regulatory filings and currently expects to obtain all necessary approvals or waivers in order to close the Merger in mid-2027.\nNote 2: Segments and Revenue\nSegments\nThe Company is organized into three operating and reportable segments consisting of PSG, AMG and ISG. These segments represent management's view of the business for which separate financial information is available and evaluated regularly by the Chief Operating Decision Maker (\"CODM\"), who is the Company\u2019s Chief Executive Officer. The CODM uses segment gross profit for evaluating product pricing, factory utilization, allocation of capital and the assessment of segment profitability.\nRevenue and gross profit for the operating and reportable segments were as follows (in millions):",
+   "prose_after": "The Company had one customer, a distributor, whose revenue accounted for approximately 15% and 12% of total revenue for the quarters ended October 2, 2026 and October 3, 2025, respectively, and approximately 14% and 13% of the total revenue for the nine months ended October 2, 2026 and October 3, 2025, respectively, across all reportable segments. One customer, a distributor, accounted for approximately 11% and 10% of the Company's accounts receivable balance as of October 2, 2026 and December 31, 2025, respectively.\nRevenue for the operating and reportable segments disaggregated into geographic locations based on sales billed from the respective country and sales channel was as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended October 2, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Geographic Location:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "308.3",
+     "$",
+     "203.7",
+     "$",
+     "55.8",
+     "$",
+     "567.8"
+    ],
+    [
+     "Singapore",
+     "267.0",
+     "",
+     "143.2",
+     "",
+     "26.7",
+     "",
+     "436.9",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "156.1",
+     "",
+     "95.3",
+     "",
+     "65.3",
+     "",
+     "316.7",
+     ""
+    ],
+    [
+     "United States",
+     "127.5",
+     "",
+     "124.3",
+     "",
+     "42.5",
+     "",
+     "294.3",
+     ""
+    ],
+    [
+     "Other",
+     "31.0",
+     "",
+     "30.8",
+     "",
+     "44.8",
+     "",
+     "106.6",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "889.9",
+     "$",
+     "597.3",
+     "$",
+     "235.1",
+     "$",
+     "1,722.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales Channel:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributors",
+     "$",
+     "598.5",
+     "$",
+     "348.4",
+     "$",
+     "111.7",
+     "$",
+     "1,058.6"
+    ],
+    [
+     "Direct customers",
+     "291.4",
+     "",
+     "248.9",
+     "",
+     "123.4",
+     "",
+     "663.7",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "889.9",
+     "$",
+     "597.3",
+     "$",
+     "235.1",
+     "$",
+     "1,722.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended October 2, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Geographic Location:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "773.6",
+     "$",
+     "478.6",
+     "$",
+     "128.7",
+     "$",
+     "1,380.9"
+    ],
+    [
+     "Singapore",
+     "665.8",
+     "",
+     "389.4",
+     "",
+     "90.3",
+     "",
+     "1,145.5",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "522.1",
+     "",
+     "316.7",
+     "",
+     "224.0",
+     "",
+     "1,062.8",
+     ""
+    ],
+    [
+     "United States",
+     "382.9",
+     "",
+     "406.1",
+     "",
+     "102.4",
+     "",
+     "891.4",
+     ""
+    ],
+    [
+     "Other",
+     "111.1",
+     "",
+     "92.6",
+     "",
+     "154.8",
+     "",
+     "358.5",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,455.5",
+     "$",
+     "1,683.4",
+     "$",
+     "700.2",
+     "$",
+     "4,839.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales Channel:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributors",
+     "$",
+     "1,575.3",
+     "$",
+     "900.6",
+     "$",
+     "346.2",
+     "$",
+     "2,822.1"
+    ],
+    [
+     "Direct customers",
+     "880.2",
+     "",
+     "782.8",
+     "",
+     "354.0",
+     "",
+     "2,017.0",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,455.5",
+     "$",
+     "1,683.4",
+     "$",
+     "700.2",
+     "$",
+     "4,839.1"
+    ]
+   ],
+   "caption_stack": [
+    "Quarter Ended October 2, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Segments and Revenue"
+    }
+   },
+   "prose_before": "The Company had one customer, a distributor, whose revenue accounted for approximately 15% and 12% of total revenue for the quarters ended October 2, 2026 and October 3, 2025, respectively, and approximately 14% and 13% of the total revenue for the nine months ended October 2, 2026 and October 3, 2025, respectively, across all reportable segments. One customer, a distributor, accounted for approximately 11% and 10% of the Company's accounts receivable balance as of October 2, 2026 and December 31, 2025, respectively.\nRevenue for the operating and reportable segments disaggregated into geographic locations based on sales billed from the respective country and sales channel was as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended October 3, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Geographic Location:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "225.4",
+     "$",
+     "161.1",
+     "$",
+     "38.4",
+     "$",
+     "424.9"
+    ],
+    [
+     "Singapore",
+     "177.7",
+     "",
+     "122.1",
+     "",
+     "20.3",
+     "",
+     "320.1",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "135.2",
+     "",
+     "104.3",
+     "",
+     "75.5",
+     "",
+     "315.0",
+     ""
+    ],
+    [
+     "United States",
+     "140.8",
+     "",
+     "164.6",
+     "",
+     "35.1",
+     "",
+     "340.5",
+     ""
+    ],
+    [
+     "Other",
+     "58.5",
+     "",
+     "31.2",
+     "",
+     "60.7",
+     "",
+     "150.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "737.6",
+     "$",
+     "583.3",
+     "$",
+     "230.0",
+     "$",
+     "1,550.9"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales Channel:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributors",
+     "$",
+     "455.2",
+     "$",
+     "322.0",
+     "$",
+     "118.2",
+     "$",
+     "895.4"
+    ],
+    [
+     "Direct customers",
+     "282.4",
+     "",
+     "261.3",
+     "",
+     "111.8",
+     "",
+     "655.5",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "737.6",
+     "$",
+     "583.3",
+     "$",
+     "230.0",
+     "$",
+     "1,550.9"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended October 3, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Geographic Location:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "591.8",
+     "$",
+     "462.4",
+     "$",
+     "154.1",
+     "$",
+     "1,208.3"
+    ],
+    [
+     "Singapore",
+     "502.2",
+     "",
+     "357.3",
+     "",
+     "61.3",
+     "",
+     "920.8",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "446.1",
+     "",
+     "329.6",
+     "",
+     "234.2",
+     "",
+     "1,009.9",
+     ""
+    ],
+    [
+     "United States",
+     "376.8",
+     "",
+     "441.1",
+     "",
+     "93.1",
+     "",
+     "911.0",
+     ""
+    ],
+    [
+     "Other",
+     "164.0",
+     "",
+     "115.2",
+     "",
+     "136.1",
+     "",
+     "415.3",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,080.9",
+     "$",
+     "1,705.6",
+     "$",
+     "678.8",
+     "$",
+     "4,465.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales Channel:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributors",
+     "$",
+     "1,229.7",
+     "$",
+     "901.4",
+     "$",
+     "313.0",
+     "$",
+     "2,444.1"
+    ],
+    [
+     "Direct customers",
+     "851.2",
+     "",
+     "804.2",
+     "",
+     "365.8",
+     "",
+     "2,021.2",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,080.9",
+     "$",
+     "1,705.6",
+     "$",
+     "678.8",
+     "$",
+     "4,465.3"
+    ]
+   ],
+   "caption_stack": [
+    "Quarter Ended October 3, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 533,
+    "end_line": 576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Segments and Revenue"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company operates in various geographic locations. Sales to external customers have little correlation to where products are manufactured or the location of the end-customer. It is, therefore, not meaningful to present operating profit by geographical location.\nRevenue\nThe Company's revenue is derived primarily from product sales and to a much lesser extent from product development agreements and non-recurring engineering (\"NRE\") arrangements. For each of the quarters and nine months ended October 2, 2026 and October 3, 2025, revenue recognized from product sales as a percentage of total revenue was approximately 100% and 99%, respectively, and revenue recognized from product development agreements and NRE arrangements was an immaterial amount and 1%, respectively.\nRevenue disaggregated by end-markets and product technologies was as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "End-Markets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Automotive",
+     "$",
+     "776.7",
+     "$",
+     "787.3",
+     "$",
+     "2,355.3",
+     "$",
+     "2,282.4"
+    ],
+    [
+     "Industrial",
+     "466.8",
+     "",
+     "426.3",
+     "",
+     "1,306.5",
+     "",
+     "1,232.5",
+     ""
+    ],
+    [
+     "AI data center",
+     "180.2",
+     "",
+     "65.6",
+     "",
+     "413.2",
+     "",
+     "179.0",
+     ""
+    ],
+    [
+     "Other*",
+     "298.6",
+     "",
+     "271.7",
+     "",
+     "764.1",
+     "",
+     "771.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,722.3",
+     "$",
+     "1,550.9",
+     "$",
+     "4,839.1",
+     "$",
+     "4,465.3"
+    ],
+    [
+     "* Other includes the end-markets of computing, consumer, networking, communications, etc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product Technologies:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intelligent power",
+     "$",
+     "918.8",
+     "$",
+     "792.8",
+     "$",
+     "2,531.1",
+     "$",
+     "2,243.1"
+    ],
+    [
+     "Intelligent sensing",
+     "296.2",
+     "",
+     "284.0",
+     "",
+     "873.5",
+     "",
+     "859.8",
+     ""
+    ],
+    [
+     "Other",
+     "507.3",
+     "",
+     "474.1",
+     "",
+     "1,434.5",
+     "",
+     "1,362.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,722.3",
+     "$",
+     "1,550.9",
+     "$",
+     "4,839.1",
+     "$",
+     "4,465.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Segments and Revenue"
+    }
+   },
+   "prose_before": "The Company operates in various geographic locations. Sales to external customers have little correlation to where products are manufactured or the location of the end-customer. It is, therefore, not meaningful to present operating profit by geographical location.\nRevenue\nThe Company's revenue is derived primarily from product sales and to a much lesser extent from product development agreements and non-recurring engineering (\"NRE\") arrangements. For each of the quarters and nine months ended October 2, 2026 and October 3, 2025, revenue recognized from product sales as a percentage of total revenue was approximately 100% and 99%, respectively, and revenue recognized from product development agreements and NRE arrangements was an immaterial amount and 1%, respectively.\nRevenue disaggregated by end-markets and product technologies was as follows (in millions):",
+   "prose_after": "Revenue by end-markets and product technologies is determined using known customer applications and other available information. For certain sales, primarily to distributors, when the ultimate application is not known at the time of sale, these are estimated based on historical trends and other relevant factors.\nRemaining Performance Obligations\nA portion of the Company's orders are firm commitments that are non-cancellable, including certain orders or contracts with a duration of less than one year. Certain of the Company's customer contracts are multi-year agreements that include committed amounts (\"Long-term Supply Agreements\" or \"LTSAs\") for which the remaining performance obligations as of October 2, 2026 were approximately $5.5 billion (excluding the remaining performance obligations for contracts having a duration of one year or less). If products are shipped according to the terms of these contracts, the Company expects to recognize approximately 39% of this amount as revenue over the next 12 months. Total revenue estimates are based on negotiated contract prices and demand quantities, and could be influenced by risks and uncertainties, including manufacturing or supply chain constraints, modifications to customer agreements, and regulatory changes, among other factors. The timing, pricing or amounts of products delivered under LTSAs may be modified or canceled in certain circumstances, and the actual revenue recognized for the remaining performance obligations in future periods may significantly differ from current estimates.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Contract assets included in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other current assets",
+     "$",
+     "41.7",
+     "$",
+     "47.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract liabilities included in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "$",
+     "40.8",
+     "$",
+     "51.8"
+    ],
+    [
+     "Other long-term liabilities",
+     "27.8",
+     "",
+     "69.8",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "68.6",
+     "$",
+     "121.6"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 625,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Segments and Revenue"
+    }
+   },
+   "prose_before": "A portion of the Company's orders are firm commitments that are non-cancellable, including certain orders or contracts with a duration of less than one year. Certain of the Company's customer contracts are multi-year agreements that include committed amounts (\"Long-term Supply Agreements\" or \"LTSAs\") for which the remaining performance obligations as of October 2, 2026 were approximately $5.5 billion (excluding the remaining performance obligations for contracts having a duration of one year or less). If products are shipped according to the terms of these contracts, the Company expects to recognize approximately 39% of this amount as revenue over the next 12 months. Total revenue estimates are based on negotiated contract prices and demand quantities, and could be influenced by risks and uncertainties, including manufacturing or supply chain constraints, modifications to customer agreements, and regulatory changes, among other factors. The timing, pricing or amounts of products delivered under LTSAs may be modified or canceled in certain circumstances, and the actual revenue recognized for the remaining performance obligations in future periods may significantly differ from current estimates.\nCertain LTSAs include non-cancellable capacity payments from the customer, which are generally due within 30 days of the agreement. These payments reserve production availability or are prepayments for the same purpose and are not recognized as revenue until the performance obligations are satisfied. Payments received in advance of the satisfaction of performance obligations are recorded as contract liabilities. The Company fulfilled certain performance obligations and recognized revenue of $7.5 million and $42.0 million for each of the quarters ended October 2, 2026 and October 3, 2025, respectively, and $35.8 million and $90.4 million for the nine months ended October 2, 2026 and October 3, 2025, respectively, related to contract liabilities outstanding as of the end of each respective prior year.\nContract Balances\nContract assets and contract liabilities were as follows (in millions):",
+   "prose_after": "Note 3: Recent Accounting Pronouncements and Other Developments\nPending Adoption\nIncome Statement (Subtopic 220-40): Reporting Comprehensive Income - Expense Disaggregation Disclosures (\"ASU 2024-03\")\nIn November 2024, the FASB issued ASU 2024-03, which requires public business entities to expand disclosures about specific expense categories. The amendments in this ASU require a public entity to disclose, in tabular format, in the notes to the financial statements, specific information about certain costs and expenses. Although the ASU does not change the expense captions an entity presents on the face of the statement of operations, it requires disaggregation of certain expense captions into specified categories. For public business entities, the provisions of ASU 2024-03 are effective for fiscal years beginning after December 15, 2026. Early adoption is permitted. Management is currently evaluating the requirements under this new standard.\nIntangibles - Goodwill and Other - Internal-Use Software (Subtopic 350-40): Targeted Improvements to the Accounting for Internal-Use Software (\"ASU 2025-06\")",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restructuring",
+     "",
+     "Asset Impairments",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "For the quarter ended October 2, 2026:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2026 Manufacturing Realignment Program",
+     "$",
+     "1.5",
+     "$",
+     "3.3",
+     "$",
+     "(0.2)",
+     "$",
+     "4.6"
+    ],
+    [
+     "Total",
+     "$",
+     "1.5",
+     "$",
+     "3.3",
+     "$",
+     "(0.2)",
+     "$",
+     "4.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restructuring",
+     "",
+     "Asset Impairments",
+     "",
+     "Other Charges",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "For the quarter ended October 3, 2025:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2025 Manufacturing Realignment Program",
+     "$",
+     "2.8",
+     "$",
+     "15.8",
+     "$",
+     "1.0",
+     "$",
+     "19.6"
+    ],
+    [
+     "Total",
+     "$",
+     "2.8",
+     "$",
+     "15.8",
+     "$",
+     "1.0",
+     "$",
+     "19.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Restructuring, Asset Impairments and Other, Net"
+    }
+   },
+   "prose_before": "On July 3, 2026, the Company entered into a definitive agreement to sell a manufacturing facility in the Philippines for $25 million in cash, subject to customary closing adjustments and conditions. The transaction closed on October 2, 2026 and the Company received net cash proceeds of $24.2 million after customary closing adjustments. The Company recorded a gain on divestiture of approximately $3.1 million within Other income in the accompanying Consolidated Statement of Operations, after writing off the carrying value of the net assets disposed, net of cash transferred, of $24.3 million.\nOn July 7, 2026, the Company entered into a definitive agreement to sell its manufacturing facility in Mountain Top, PA for $40 million in cash, subject to customary closing adjustments and conditions, and received a $10 million deposit. The Company will continue operating the facility through 2027 to support the transition of production to other manufacturing sites, with the sale and transfer of ownership expected by the end of 2027. As of October 2, 2026, the facility did not meet the criteria for classification as held-for-sale, and accordingly, the Company continues to account for these assets as held-and-used.\nNote 5: Restructuring, Asset Impairments and Other, Net\nDetails of restructuring, asset impairments and other, net were as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 662,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Restructuring",
+     "",
+     "Asset Impairments",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "For the nine months ended October 2, 2026:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2026 Manufacturing Realignment Program",
+     "$",
+     "24.2",
+     "$",
+     "166.6",
+     "$",
+     "184.3",
+     "$",
+     "375.1"
+    ],
+    [
+     "Total",
+     "$",
+     "24.2",
+     "$",
+     "166.6",
+     "$",
+     "184.3",
+     "$",
+     "375.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restructuring",
+     "",
+     "Asset Impairments",
+     "",
+     "Other Charges",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "For the nine months ended October 3, 2025:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2025 Manufacturing Realignment Program",
+     "$",
+     "65.9",
+     "$",
+     "487.9",
+     "$",
+     "51.5",
+     "$",
+     "605.3"
+    ],
+    [
+     "2024 Business Realignment",
+     "0.7",
+     "",
+     "\u2014",
+     "",
+     "2.1",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "66.6",
+     "$",
+     "487.9",
+     "$",
+     "53.6",
+     "$",
+     "608.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Restructuring, Asset Impairments and Other, Net"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "A summary of changes in the accrued restructuring balance by program was as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "Charges",
+     "",
+     "Usage",
+     "",
+     "October 2, 2026",
+     ""
+    ],
+    [
+     "2026 Manufacturing Realignment Program",
+     "$",
+     "\u2014",
+     "$",
+     "24.2",
+     "$",
+     "(21.8)",
+     "$",
+     "2.4"
+    ],
+    [
+     "2025 Manufacturing Realignment Program",
+     "2.7",
+     "",
+     "\u2014",
+     "",
+     "(2.0)",
+     "",
+     "0.7",
+     ""
+    ],
+    [
+     "Other",
+     "3.3",
+     "",
+     "\u2014",
+     "",
+     "(1.4)",
+     "",
+     "1.9",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6.0",
+     "$",
+     "24.2",
+     "$",
+     "(25.2)",
+     "$",
+     "5.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 730,
+    "end_line": 742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Restructuring, Asset Impairments and Other, Net"
+    }
+   },
+   "prose_before": "A summary of changes in the accrued restructuring balance by program was as follows (in millions):",
+   "prose_after": "The amounts recorded under the 2026 Manufacturing Realignment Program represent new restructuring activities that expand upon the Company\u2019s 2025 Manufacturing Realignment Program for actions and decisions taken in 2026.\n2026 Manufacturing Realignment Program\nDuring the quarter and nine months ended October 2, 2026, the Company continued to engage in additional restructuring and cost reduction initiatives under its previously disclosed multi\u2011year manufacturing realignment program to better align manufacturing capacity and capabilities with anticipated long\u2011term needs. These initiatives resulted in a reduction of global workforce, impairments of certain long-lived assets that met the held-for-sale criteria, and certain other charges primarily relating to the accelerated amortization and depreciation of assets for actions taken previously.\nRestructuring\nRestructuring charges include estimated severance payments and related benefit expenses for employees who were notified of their employment termination or terminated during the period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PSG",
+     "",
+     "AMG",
+     "",
+     "ISG",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balances as of December 31, 2025 (1)",
+     "$",
+     "703.9",
+     "$",
+     "851.7",
+     "$",
+     "124.3",
+     "$",
+     "1,679.9"
+    ],
+    [
+     "Addition related to business acquisition",
+     "\u2014",
+     "",
+     "7.7",
+     "",
+     "\u2014",
+     "",
+     "7.7",
+     ""
+    ],
+    [
+     "Divestiture of a business",
+     "$",
+     "(0.1)",
+     "$",
+     "(1.0)",
+     "$",
+     "\u2014",
+     "$",
+     "(1.1)"
+    ],
+    [
+     "Balances as of October 2, 2026 (1)",
+     "$",
+     "703.8",
+     "$",
+     "858.4",
+     "$",
+     "124.3",
+     "$",
+     "1,686.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "Other charges amounted to $(0.2) million and $184.3 million for the quarter and nine months ended October 2, 2026, respectively. Of the $184.3 million for the nine months ended October 2, 2026, $81.7 million and $54.8 million related to the accelerated depreciation and amortization of one lease in each of the Czech Republic and the United States, respectively, that were abandoned in connection with the 2025 and 2026 Manufacturing Realignment Programs. The identified assets were fully depreciated and amortized as of April 3, 2026.\nThe Company continues to evaluate for potential operating improvements and efficiencies.\nNote 6: Balance Sheet Information and Other Supplemental Disclosures\nGoodwill\nGoodwill is tested for impairment annually on the first day of the fourth quarter or more frequently if events or changes in circumstances would more likely-than-not reduce the fair value of a reporting unit below its carrying value.\nThe following table summarizes goodwill by operating and reportable segments (in millions):",
+   "prose_after": "(1)Net of accumulated goodwill impairment losses of $31.9 million in the PSG reportable segment and $748.9 million in the AMG reportable segment as of October 2, 2026 and December 31, 2025.\nInventories\nDetails of inventories were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Inventories:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "305.8",
+     "$",
+     "263.6"
+    ],
+    [
+     "Work in process",
+     "1,430.2",
+     "",
+     "1,388.9",
+     ""
+    ],
+    [
+     "Finished goods",
+     "333.7",
+     "",
+     "337.1",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,069.7",
+     "$",
+     "1,989.6"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 813
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "(1)Net of accumulated goodwill impairment losses of $31.9 million in the PSG reportable segment and $748.9 million in the AMG reportable segment as of October 2, 2026 and December 31, 2025.\nInventories\nDetails of inventories were as follows (in millions):",
+   "prose_after": "Defined Benefit Plans\nThe Company recognizes the aggregate amount of all over-funded plans as assets and the aggregate amount of all underfunded plans as liabilities in its financial statements. As of October 2, 2026, the net assets for the over-funded plans totaled $30.5 million. The total accrued pension liability for underfunded plans was $54.1 million, of which the current portion of $0.4 million was classified as Accrued expenses and other current liabilities. During the quarter and nine months ended October 2, 2026, the Company recognized an immaterial actuarial gain associated with the divestiture. As of December 31, 2025, the net funded status for all the plans was a liability of $26.4 million, of which the current portion of $1.5 million was classified as Accrued expenses and other current liabilities.\nThe components of the net periodic pension expense were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "1.2",
+     "$",
+     "1.1",
+     "$",
+     "3.2",
+     "$",
+     "3.3"
+    ],
+    [
+     "Interest cost",
+     "1.4",
+     "",
+     "1.4",
+     "",
+     "4.2",
+     "",
+     "4.1",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "(0.9)",
+     "",
+     "(1.2)",
+     "",
+     "(3.1)",
+     "",
+     "(3.6)",
+     ""
+    ],
+    [
+     "Curtailment losses",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.5",
+     ""
+    ],
+    [
+     "Actuarial gain",
+     "(0.6)",
+     "",
+     "\u2014",
+     "",
+     "(0.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1.1",
+     "$",
+     "1.3",
+     "$",
+     "3.7",
+     "$",
+     "5.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "Defined Benefit Plans\nThe Company recognizes the aggregate amount of all over-funded plans as assets and the aggregate amount of all underfunded plans as liabilities in its financial statements. As of October 2, 2026, the net assets for the over-funded plans totaled $30.5 million. The total accrued pension liability for underfunded plans was $54.1 million, of which the current portion of $0.4 million was classified as Accrued expenses and other current liabilities. During the quarter and nine months ended October 2, 2026, the Company recognized an immaterial actuarial gain associated with the divestiture. As of December 31, 2025, the net funded status for all the plans was a liability of $26.4 million, of which the current portion of $1.5 million was classified as Accrued expenses and other current liabilities.\nThe components of the net periodic pension expense were as follows (in millions):",
+   "prose_after": "Leases\nOperating lease arrangements are comprised primarily of real estate and equipment agreements. The components of lease expense (including accelerated amortization related to ROU asset abandonment discussed in Note 5) were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Operating lease",
+     "$",
+     "9.7",
+     "$",
+     "16.4",
+     "$",
+     "59.4",
+     "$",
+     "54.7"
+    ],
+    [
+     "Variable lease",
+     "1.4",
+     "",
+     "1.5",
+     "",
+     "4.7",
+     "",
+     "4.4",
+     ""
+    ],
+    [
+     "Short-term lease",
+     "0.5",
+     "",
+     "0.6",
+     "",
+     "1.3",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11.6",
+     "$",
+     "18.5",
+     "$",
+     "65.4",
+     "$",
+     "61.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 839,
+    "end_line": 851
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "Leases\nOperating lease arrangements are comprised primarily of real estate and equipment agreements. The components of lease expense (including accelerated amortization related to ROU asset abandonment discussed in Note 5) were as follows (in millions):",
+   "prose_after": "The operating lease liabilities and operating ROU assets recognized in the Consolidated Balance Sheets were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Operating lease liabilities included in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "$",
+     "27.8",
+     "$",
+     "33.9"
+    ],
+    [
+     "Other long-term liabilities",
+     "194.1",
+     "",
+     "214.5",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "221.9",
+     "$",
+     "248.4"
+    ],
+    [
+     "Operating ROU assets included in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "$",
+     "156.9",
+     "$",
+     "200.8"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 856,
+    "end_line": 872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "The operating lease liabilities and operating ROU assets recognized in the Consolidated Balance Sheets were as follows (in millions):",
+   "prose_after": "As of October 2, 2026, the weighted-average remaining lease terms were 9.6 years and 15.3 years, and the weighted-average discount rates were 5.2% and 5.8%, for operating leases and financing leases, respectively.\nSupplemental Disclosure of Cash Flow Information\nCertain of the cash and non-cash activities were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Non-cash investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures in accounts payable and other long-term liabilities",
+     "$",
+     "77.1",
+     "$",
+     "106.9"
+    ],
+    [
+     "Operating ROU assets obtained in exchange for lease liabilities",
+     "4.4",
+     "",
+     "14.2",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "36.7",
+     "$",
+     "53.2"
+    ],
+    [
+     "Income taxes",
+     "143.5",
+     "",
+     "103.9",
+     ""
+    ],
+    [
+     "Operating lease payments in operating cash flows",
+     "30.9",
+     "",
+     "45.2",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 879,
+    "end_line": 892
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "As of October 2, 2026, the weighted-average remaining lease terms were 9.6 years and 15.3 years, and the weighted-average discount rates were 5.2% and 5.8%, for operating leases and financing leases, respectively.\nSupplemental Disclosure of Cash Flow Information\nCertain of the cash and non-cash activities were as follows (in millions):",
+   "prose_after": "The following table shows a reconciliation of the captions in the Consolidated Balance Sheets to the Consolidated Statements of Cash Flows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     "",
+     "October 3, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "4,157.7",
+     "$",
+     "2,147.6",
+     "$",
+     "2,472.5",
+     "$",
+     "2,691.3"
+    ],
+    [
+     "Restricted cash (included in other current assets)",
+     "1.4",
+     "",
+     "1.4",
+     "",
+     "1.5",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash in Consolidated Statements of Cash Flows",
+     "$",
+     "4,159.1",
+     "$",
+     "2,149.0",
+     "$",
+     "2,474.0",
+     "$",
+     "2,693.4"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 894,
+    "end_line": 907
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Balance Sheet Information and Other Supplemental Disclosures"
+    }
+   },
+   "prose_before": "The following table shows a reconciliation of the captions in the Consolidated Balance Sheets to the Consolidated Statements of Cash Flows (in millions):",
+   "prose_after": "Note 7: Long-Term Debt\nLong-term debt consisted of the following (in millions, with annualized interest rates):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Revolving Credit Facility due 2028",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "0.50% Notes due 2029 (1)",
+     "1,500.0",
+     "",
+     "1,500.0",
+     ""
+    ],
+    [
+     "0% Notes due 2031",
+     "1,500.0",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "0% Notes due 2027",
+     "804.7",
+     "",
+     "804.9",
+     ""
+    ],
+    [
+     "3.875% Notes due 2028 (2)",
+     "700.0",
+     "",
+     "700.0",
+     ""
+    ],
+    [
+     "Gross long-term debt",
+     "4,504.7",
+     "",
+     "3,004.9",
+     ""
+    ],
+    [
+     "Less: Unamortized debt discount (3)",
+     "(1.7)",
+     "",
+     "(2.5)",
+     ""
+    ],
+    [
+     "Less: Unamortized debt issuance costs (4)",
+     "(40.0)",
+     "",
+     "(21.9)",
+     ""
+    ],
+    [
+     "Net long-term debt, including current maturities",
+     "4,463.0",
+     "",
+     "2,980.5",
+     ""
+    ],
+    [
+     "Less: Current maturities",
+     "(802.8)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net long-term debt",
+     "$",
+     "3,660.2",
+     "$",
+     "2,980.5"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "Note 7: Long-Term Debt\nLong-term debt consisted of the following (in millions, with annualized interest rates):",
+   "prose_after": "(1)Interest is payable on March 1 and September 1 of each year at 0.50% annually.\n(2)Interest is payable on March 1 and September 1 of each year at 3.875% annually.\n(3)Unamortized debt discount of $1.7 million and $2.5 million for the 3.875% Notes as of October 2, 2026 and December 31, 2025, respectively.\n(4)Unamortized debt issuance costs of $12.8 million and $16.5 million for the 0.50% Notes, $24.7 million and $0.0 million for the 2031 0% Notes, $1.9 million and $4.5 million for the 0% Notes and $0.6 million and $0.9 million for the 3.875% Notes, in each case as of October 2, 2026 and December 31, 2025, respectively.\nExpected maturities of gross long-term debt (including current portion - see section below on 0% Notes due 2027) as of October 2, 2026 were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Expected Maturities",
+     ""
+    ],
+    [
+     "Remainder of 2026",
+     "$",
+     "804.7"
+    ],
+    [
+     "2027",
+     "\u2014",
+     ""
+    ],
+    [
+     "2028",
+     "700.0",
+     ""
+    ],
+    [
+     "2029",
+     "1,500.0",
+     ""
+    ],
+    [
+     "2030",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "1,500.0",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "4,504.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 947,
+    "end_line": 960
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "(1)Interest is payable on March 1 and September 1 of each year at 0.50% annually.\n(2)Interest is payable on March 1 and September 1 of each year at 3.875% annually.\n(3)Unamortized debt discount of $1.7 million and $2.5 million for the 3.875% Notes as of October 2, 2026 and December 31, 2025, respectively.\n(4)Unamortized debt issuance costs of $12.8 million and $16.5 million for the 0.50% Notes, $24.7 million and $0.0 million for the 2031 0% Notes, $1.9 million and $4.5 million for the 0% Notes and $0.6 million and $0.9 million for the 3.875% Notes, in each case as of October 2, 2026 and December 31, 2025, respectively.\nExpected maturities of gross long-term debt (including current portion - see section below on 0% Notes due 2027) as of October 2, 2026 were as follows (in millions):",
+   "prose_after": "The Company was in compliance with its covenants under all debt agreements as of October 2, 2026, and expects to remain in compliance with all covenants over at least the next 12 months.\n0% Convertible Senior Notes due 2027\nAs of October 2, 2026, based on the maturity date of the 0% Notes, the $804.7 million remaining outstanding principal amount of the 0% Notes, net of unamortized issuance costs, was classified as a current portion of long-term debt. Additionally, pursuant to the indenture governing the 0% Notes, since the last reported sale price of the Company\u2019s common stock for at least 20 trading days during the period of 30 consecutive trading days ending on October 2, 2026 was greater than or equal to $68.86 (130% of the conversion price) on each applicable trading day, the holders have the right to surrender any portion of their 0% Notes (in minimum denominations of $1,000 in principal amount or an integral multiple thereof) for conversion during the calendar quarter ending December 31, 2026, and only during such calendar quarter.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Net income (loss) for diluted earnings per share of common stock",
+     "$",
+     "313.9",
+     "$",
+     "255.0",
+     "$",
+     "507.3",
+     "$",
+     "(60.8)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average shares of common stock outstanding",
+     "389.3",
+     "",
+     "406.9",
+     "",
+     "391.2",
+     "",
+     "414.3",
+     ""
+    ],
+    [
+     "Dilutive effect of share-based awards",
+     "1.8",
+     "",
+     "1.1",
+     "",
+     "2.0",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dilutive effect of convertible notes and warrants",
+     "6.2",
+     "",
+     "\u2014",
+     "",
+     "6.8",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Diluted weighted-average shares of common stock outstanding",
+     "397.3",
+     "",
+     "408.0",
+     "",
+     "400.0",
+     "",
+     "414.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per share of common stock attributable to ON Semiconductor Corporation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.81",
+     "$",
+     "0.63",
+     "$",
+     "1.30",
+     "$",
+     "(0.15)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.79",
+     "$",
+     "0.63",
+     "$",
+     "1.27",
+     "$",
+     "(0.15)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1018
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Earnings Per Share and Equity"
+    }
+   },
+   "prose_before": "At the same time, the Company sold warrants to certain financial institutions covering 9.3 million shares of its common stock at an initial strike price of $211.54 per share, which represents a 100.0% premium to the Company's stock price on May 6, 2026, subject to adjustment. The warrants expire on August 1, 2031, and the maximum number of shares that may be issued under the warrants is approximately 18.6 million shares. The Company received $281.0 million in proceeds from the sale of the warrants, which was recorded in stockholders\u2019 equity. The proceeds from the warrants partially offset the cost of the hedge transactions.\nThe Company also recorded a deferred tax asset of $78.4 million related to the tax effects of the hedge and warrant transactions, including the deductibility of the net cost. The Company recorded a deferred tax asset associated with the tax basis created by the note hedge and warrant transactions. The deferred tax effects were recorded within additional paid-in capital.\nNote 8: Earnings Per Share and Equity\nEarnings Per Share\nNet income per share of common stock for calculating basic and diluted earnings per share was calculated as follows (in millions, except per share data):",
+   "prose_after": "Basic income (loss) per share of common stock is computed by dividing net income (loss) for basic earnings by the weighted-average number of shares of common stock outstanding during the period. To calculate the diluted weighted-average shares of common stock outstanding, the treasury stock method has been applied to calculate the number of incremental shares from the assumed issuance of shares relating to RSUs. The excluded number of anti-dilutive share-based awards was 0.9 million and 1.0 million for the quarters ended October 2, 2026 and October 3, 2025, respectively, and 0.5 million and 2.2 million for the nine months ended October 2, 2026 and October 3, 2025, respectively, as the inclusion would have the effect of increasing the net income per common share attributable to the Company or decreasing the net loss per common share attributable to the Company.\nThe dilutive impacts related to the 0.50% Notes, the 0% Notes, and the 2031 0% Notes (collectively, the \"Convertible Notes\") have been calculated using the if-converted method for the quarters and nine months ended October 2, 2026 and October 3, 2025. The Convertible Notes are repayable in cash up to the par value and in cash or shares of common stock for the excess over par value. Prior to conversion, the convertible note hedges are not considered for purposes of the earnings per share calculations as their effect would be anti-dilutive. Upon conversion, the convertible note hedges are expected to offset the dilutive effect of the Convertible Notes when the stock price is above the applicable conversion price, as shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1029,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "0.50% Notes",
+     "$",
+     "103.87"
+    ],
+    [
+     "0% Notes",
+     "52.97",
+     ""
+    ],
+    [
+     "2031 0% Notes",
+     "161.30",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Earnings Per Share and Equity"
+    }
+   },
+   "prose_before": "Basic income (loss) per share of common stock is computed by dividing net income (loss) for basic earnings by the weighted-average number of shares of common stock outstanding during the period. To calculate the diluted weighted-average shares of common stock outstanding, the treasury stock method has been applied to calculate the number of incremental shares from the assumed issuance of shares relating to RSUs. The excluded number of anti-dilutive share-based awards was 0.9 million and 1.0 million for the quarters ended October 2, 2026 and October 3, 2025, respectively, and 0.5 million and 2.2 million for the nine months ended October 2, 2026 and October 3, 2025, respectively, as the inclusion would have the effect of increasing the net income per common share attributable to the Company or decreasing the net loss per common share attributable to the Company.\nThe dilutive impacts related to the 0.50% Notes, the 0% Notes, and the 2031 0% Notes (collectively, the \"Convertible Notes\") have been calculated using the if-converted method for the quarters and nine months ended October 2, 2026 and October 3, 2025. The Convertible Notes are repayable in cash up to the par value and in cash or shares of common stock for the excess over par value. Prior to conversion, the convertible note hedges are not considered for purposes of the earnings per share calculations as their effect would be anti-dilutive. Upon conversion, the convertible note hedges are expected to offset the dilutive effect of the Convertible Notes when the stock price is above the applicable conversion price, as shown below:",
+   "prose_after": "The dilutive impact of the warrants issued concurrently with the issuance of the Convertible Notes has been included in the calculation of diluted weighted-average common shares outstanding, if applicable. The warrants become dilutive when the stock price exceeds the applicable exercise price, as shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1029,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "0.50% Notes",
+     "$",
+     "156.78"
+    ],
+    [
+     "0% Notes",
+     "74.34",
+     ""
+    ],
+    [
+     "2031 0% Notes",
+     "211.54",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Earnings Per Share and Equity"
+    }
+   },
+   "prose_before": "The dilutive impact of the warrants issued concurrently with the issuance of the Convertible Notes has been included in the calculation of diluted weighted-average common shares outstanding, if applicable. The warrants become dilutive when the stock price exceeds the applicable exercise price, as shown below:",
+   "prose_after": "Equity\nShare Repurchase Program\nIn February 2023, the Board of Directors approved a share repurchase program (the \"Share Repurchase Program\") under which the Company could repurchase up to an aggregate of $3.0 billion (exclusive of fees, commissions and other expenses) of the Company's common stock through December 31, 2025. In November 2025, the Board of Directors approved a new Share Repurchase Program (the \"New Share Repurchase Program\") under which the Company may repurchase up to an aggregate of $6.0 billion (exclusive of fees, commissions and other expenses) of the Company's common stock through December 31, 2028.\nActivity under the New Share Repurchase Program and the Share Repurchase Program during the quarters and nine months ended October 2, 2026 and October 3, 2025, respectively, was as follows (in millions, except per share data):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1029,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Number of repurchased shares (1)",
+     "0.3",
+     "",
+     "6.1",
+     "",
+     "9.1",
+     "",
+     "19.1",
+     ""
+    ],
+    [
+     "Aggregate purchase price",
+     "$",
+     "19.9",
+     "$",
+     "325.0",
+     "$",
+     "697.4",
+     "$",
+     "925.0"
+    ],
+    [
+     "Fees, commissions and excise tax",
+     "\u2014",
+     "",
+     "3.2",
+     "",
+     "5.8",
+     "",
+     "8.8",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "19.9",
+     "$",
+     "328.2",
+     "$",
+     "703.2",
+     "$",
+     "933.8"
+    ],
+    [
+     "Weighted-average purchase price per share (2)",
+     "$",
+     "73.13",
+     "$",
+     "52.99",
+     "$",
+     "76.48",
+     "$",
+     "48.31"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1061
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Earnings Per Share and Equity"
+    }
+   },
+   "prose_before": "Equity\nShare Repurchase Program\nIn February 2023, the Board of Directors approved a share repurchase program (the \"Share Repurchase Program\") under which the Company could repurchase up to an aggregate of $3.0 billion (exclusive of fees, commissions and other expenses) of the Company's common stock through December 31, 2025. In November 2025, the Board of Directors approved a new Share Repurchase Program (the \"New Share Repurchase Program\") under which the Company may repurchase up to an aggregate of $6.0 billion (exclusive of fees, commissions and other expenses) of the Company's common stock through December 31, 2028.\nActivity under the New Share Repurchase Program and the Share Repurchase Program during the quarters and nine months ended October 2, 2026 and October 3, 2025, respectively, was as follows (in millions, except per share data):",
+   "prose_after": "(1) None of these shares had been reissued or retired as of October 2, 2026, but may be reissued later.\n(2) Exclusive of fees, commissions or other expenses.\nAs of October 2, 2026, the authorized amount remaining under the New Share Repurchase Program was approximately $5.3 billion.\nShares for Restricted Stock Units Tax Withholding\nThe amounts remitted for employee withholding taxes during the quarters ended October 2, 2026 and October 3, 2025 were $4.8 million and $2.4 million, respectively, for which the Company withheld 0.1 million and an immaterial number of shares of common stock, respectively, that were underlying the RSUs that vested. The amounts remitted for employee withholding taxes during the nine months ended October 2, 2026 and October 3, 2025 were $52.2 million and $27.5 million, respectively, for which the Company withheld 0.7 million and 0.6 million shares of common stock, respectively, that were underlying the RSUs that vested. This tax withholding activity is separate from the Share Repurchase Program and the New Share Repurchase Program.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1029,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "$",
+     "7.2",
+     "$",
+     "7.8",
+     "$",
+     "20.4",
+     "$",
+     "19.9"
+    ],
+    [
+     "Research and development",
+     "7.2",
+     "",
+     "7.3",
+     "",
+     "20.5",
+     "",
+     "19.9",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "4.8",
+     "",
+     "5.7",
+     "",
+     "14.7",
+     "",
+     "15.3",
+     ""
+    ],
+    [
+     "General and administrative",
+     "17.9",
+     "",
+     "17.4",
+     "",
+     "56.2",
+     "",
+     "51.4",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "37.1",
+     "",
+     "38.2",
+     "",
+     "111.8",
+     "",
+     "106.5",
+     ""
+    ],
+    [
+     "  Income tax benefit",
+     "(7.8)",
+     "",
+     "(8.0)",
+     "",
+     "(23.5)",
+     "",
+     "(22.4)",
+     ""
+    ],
+    [
+     "Share-based compensation expense, net of tax",
+     "$",
+     "29.3",
+     "$",
+     "30.2",
+     "$",
+     "88.3",
+     "$",
+     "84.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1082,
+    "end_line": 1098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "The amounts remitted for employee withholding taxes during the quarters ended October 2, 2026 and October 3, 2025 were $4.8 million and $2.4 million, respectively, for which the Company withheld 0.1 million and an immaterial number of shares of common stock, respectively, that were underlying the RSUs that vested. The amounts remitted for employee withholding taxes during the nine months ended October 2, 2026 and October 3, 2025 were $52.2 million and $27.5 million, respectively, for which the Company withheld 0.7 million and 0.6 million shares of common stock, respectively, that were underlying the RSUs that vested. This tax withholding activity is separate from the Share Repurchase Program and the New Share Repurchase Program.\nNon-Controlling Interest in Leshan-Phoenix Semiconductor Company Limited (\"Leshan\")\nThe results of Leshan have been consolidated in the Company's financial statements. The Leshan non-controlling interest balance was $20.3 million as of October 2, 2026 after including its $1.7 million share of earnings for the nine months ended October 2, 2026. As of December 31, 2025, the Leshan non-controlling interest balance was $18.6 million.\nNote 9: Share-Based Compensation\nTotal share-based compensation expense related to RSUs, stock grant awards and the ESPP was recorded within the Consolidated Statements of Operations and Comprehensive Income as follows (in millions):",
+   "prose_after": "As of October 2, 2026, the total unrecognized expected share-based compensation expense, net of estimated forfeitures, related to non-vested RSUs with service, performance and market conditions was $174.9 million, which is expected to be recognized over a weighted-average period of 1.6 years. Upon vesting of RSUs or stock grant awards or completion of a purchase under the ESPP, new shares of common stock are issued. The annualized pre-vesting forfeiture rate for RSUs was estimated to be 8% for each of the quarters ended October 2, 2026 and October 3, 2025.\nShares Available\nAs of October 2, 2026 and December 31, 2025, there was an aggregate of 26.6 million and 28.5 million shares of common stock, respectively, available for grant under the Amended and Restated SIP.\nRestricted Stock Units\nRSUs generally vest ratably over three years for awards with service conditions and over three or five years for awards with performance, service and market conditions, or a combination thereof, and are settled in shares of common stock upon vesting. A summary of the RSU transactions for the nine months ended October 2, 2026 was as follows (in millions, except per share data):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "Non-vested RSUs at December 31, 2025",
+     "5.0",
+     "$",
+     "57.99"
+    ],
+    [
+     "Granted",
+     "1.8",
+     "85.82",
+     ""
+    ],
+    [
+     "Achieved",
+     "0.1",
+     "52.88",
+     ""
+    ],
+    [
+     "Released",
+     "(2.0)",
+     "60.28",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(0.6)",
+     "61.64",
+     ""
+    ],
+    [
+     "Non-vested RSUs at October 2, 2026",
+     "4.3",
+     "68.11",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "As of October 2, 2026, the total unrecognized expected share-based compensation expense, net of estimated forfeitures, related to non-vested RSUs with service, performance and market conditions was $174.9 million, which is expected to be recognized over a weighted-average period of 1.6 years. Upon vesting of RSUs or stock grant awards or completion of a purchase under the ESPP, new shares of common stock are issued. The annualized pre-vesting forfeiture rate for RSUs was estimated to be 8% for each of the quarters ended October 2, 2026 and October 3, 2025.\nShares Available\nAs of October 2, 2026 and December 31, 2025, there was an aggregate of 26.6 million and 28.5 million shares of common stock, respectively, available for grant under the Amended and Restated SIP.\nRestricted Stock Units\nRSUs generally vest ratably over three years for awards with service conditions and over three or five years for awards with performance, service and market conditions, or a combination thereof, and are settled in shares of common stock upon vesting. A summary of the RSU transactions for the nine months ended October 2, 2026 was as follows (in millions, except per share data):",
+   "prose_after": "Note 10: Commitments and Contingencies\nEnvironmental Contingencies\nThe Company has encountered and dealt with a number of environmental issues over time relating to the various locations where it conducts its operations and has incurred certain costs related to clean-up activities and environmental remediation efforts. In certain instances, the Company has been indemnified for such costs, often from third parties who were the prior owners of such facilities. Any costs to the Company in connection with such environmental matters have generally not been, and based on the information available, are not expected to be material.\nFinancing Contingencies\nIn the ordinary course of business, the Company provides standby letters of credit or other guarantee instruments to certain parties initiated by either the Company or its subsidiaries, as required for transactions, including, but not limited to, material purchase commitments, agreements to mitigate collection risk, leases, utilities arrangements and/or customs guarantees. The Revolving Credit Facility includes $25.0 million available for the issuance of letters of credit, of which $1.9 million was outstanding as of October 2, 2026, which reduced the borrowing capacity under such facility. As of October 2, 2026, the Company also had outstanding guarantees and letters of credit outside of its Revolving Credit Facility totaling $6.9 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1076,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Contingent consideration included in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "$",
+     "41.7",
+     "$",
+     "48.3"
+    ],
+    [
+     "Other long-term liabilities",
+     "64.5",
+     "",
+     "61.6",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "106.2",
+     "$",
+     "109.9"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1182,
+    "end_line": 1195
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "In connection with the Vcore acquisition in 2025, the Company is required to pay additional cash consideration upon the receipt and acceptance of specified products and the achievement of certain revenue milestones. The maximum contingent cash consideration to be distributed is $144.0 million. Contingent consideration is classified as Level 3 within the fair value hierarchy. Key unobservable inputs included the probability of completing future product milestones, the probability of achieving revenue targets, the expected timing of payments, volatility and risk\u2011adjusted discount rates. The contingent liability for revenue milestones was valued using Monte Carlo simulations.\nThe contingent consideration, which will be settled in cash, has been allocated between accrued expenses and other long-term liabilities based on the expected timing of payments. Accordingly, it will be remeasured at fair value each reporting period, with changes recognized in the Consolidated Statements of Operations. The decrease in contingent consideration for the nine months ended October 2, 2026 was primarily due to payments made during the period. The fair value of the contingent consideration was as follows (in millions):",
+   "prose_after": "Fair Value of Long-Term Debt, including Current Portion\nThe carrying amounts and fair values of the Company's long-term borrowings were as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1176,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "",
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Amount",
+     "",
+     "Fair Value",
+     "",
+     "Carrying Amount",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Long-term debt, including current portion (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "0.50% Notes",
+     "$",
+     "1,487.2",
+     "$",
+     "1,659.0",
+     "$",
+     "1,483.5",
+     "$",
+     "1,424.2"
+    ],
+    [
+     "2031 0% Notes",
+     "1,475.3",
+     "",
+     "1,354.5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "0% Notes",
+     "802.8",
+     "",
+     "1,286.8",
+     "",
+     "800.4",
+     "",
+     "965.0",
+     ""
+    ],
+    [
+     "3.875% Notes",
+     "697.7",
+     "",
+     "675.1",
+     "",
+     "696.6",
+     "",
+     "684.2",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Fair Value of Long-Term Debt, including Current Portion\nThe carrying amounts and fair values of the Company's long-term borrowings were as follows (in millions):",
+   "prose_after": "(1) Carrying amounts shown are net of unamortized debt discount, if applicable, and unamortized debt issuance costs.\nFair values of the 0.50% Notes, 2031 0% Notes, 0% Notes and 3.875% Notes were estimated based on market prices in active markets (Level 1).\nNote 12: Financial Instruments\nForeign Currencies\nThe following summarizes the notional amounts and related fair values of the Company\u2019s foreign currency derivative instruments in U.S. dollars (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1176,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Notional or contractual amount",
+     "",
+     "Fair Value of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Assets (1)",
+     "",
+     "Liabilities (2)",
+     ""
+    ],
+    [
+     "As of October 2, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative instruments with hedge accounting designation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow hedges",
+     "$",
+     "444.1",
+     "$",
+     "8.4",
+     "$",
+     "6.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "8.4",
+     "$",
+     "6.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative instruments with hedge accounting designation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow hedges",
+     "$",
+     "386.7",
+     "$",
+     "0.3",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Derivative instruments without hedge accounting designation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Currency derivatives",
+     "190.5",
+     "",
+     "0.1",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "0.4",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1226,
+    "end_line": 1247
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Financial Instruments"
+    }
+   },
+   "prose_before": "(1) Carrying amounts shown are net of unamortized debt discount, if applicable, and unamortized debt issuance costs.\nFair values of the 0.50% Notes, 2031 0% Notes, 0% Notes and 3.875% Notes were estimated based on market prices in active markets (Level 1).\nNote 12: Financial Instruments\nForeign Currencies\nThe following summarizes the notional amounts and related fair values of the Company\u2019s foreign currency derivative instruments in U.S. dollars (in millions):",
+   "prose_after": "(1)Included in Other current assets.\n(2)Included in Accrued expenses and other current liabilities.\nCash flow hedges and currency derivatives are measured at fair value using a discounted cash flow model based on observable forward exchange rates and credit\u2011adjusted discount rates, and are classified as Level 2 fair value measurements. Gains and losses on cash flow hedges and currency derivatives were immaterial for the quarters and nine months ended October 2, 2026 and October 3, 2025.\nDerivative Instruments with Hedge Accounting Designation\nCash Flow Hedges\nThe Company maintains a foreign currency cash flow hedging program to reduce the risk that its U.S. dollar net cash outflows from procurement activities will be adversely affected by fluctuations in foreign currency exchange rates. The Company enters into forward contracts (principally Philippine peso, Korean won and Czech koruna) to hedge certain portions of forecasted cash flows denominated in foreign currencies. These contracts generally mature within 18 months and are designated as cash flow hedges for accounting purposes. The Company did not identify any ineffectiveness with respect to the notional amounts of the foreign currency forward contracts effective as of October 2, 2026.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Currency Translation Adjustments",
+     "",
+     "Effects of Cash Flow Hedges",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2025",
+     "$",
+     "(55.5)",
+     "$",
+     "\u2014",
+     "$",
+     "(55.5)"
+    ],
+    [
+     "Other comprehensive loss prior to reclassifications",
+     "(0.4)",
+     "",
+     "(2.1)",
+     "",
+     "(2.5)",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive loss",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Net current period other comprehensive loss (1)",
+     "(0.4)",
+     "",
+     "(1.7)",
+     "",
+     "(2.1)",
+     ""
+    ],
+    [
+     "Balance as of October 2, 2026",
+     "$",
+     "(55.9)",
+     "$",
+     "(1.7)",
+     "$",
+     "(57.6)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1288,
+    "end_line": 1302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Changes in Accumulated Other Comprehensive Loss"
+    }
+   },
+   "prose_before": "The Company recognizes interest and penalties accrued related to uncertain tax positions in tax expense in the Consolidated Statements of Operations and Comprehensive Income. The Company maintains a partial valuation allowance on certain U.S. state deferred tax assets and on certain foreign net operating losses and tax credits.\nAs of the end of the quarter, the Company was under examination by the IRS for the 2022 and 2023 tax years. Subsequent to quarter-end, the IRS notified the Company that it has completed its examination. Tax years prior to 2022 are generally not subject to examination by the IRS. For state tax returns, the Company is generally not subject to income tax examinations for tax years prior to 2020. With respect to jurisdictions outside the United States, the Company is generally not subject to examination for tax years prior to 2017.\nNote 14: Changes in Accumulated Other Comprehensive Loss\nAmounts comprising accumulated other comprehensive loss and reclassifications were as follows (in millions):",
+   "prose_after": "(1) Effects of cash flow hedges were net of tax impact of $0.5 million for the nine months ended October 2, 2026.\nNote 15: Subsequent Events\nOn October 5, 2026, the Company completed the acquisition of Silver Atena GmbH (\"Silver Atena\"). Silver Atena adds specialized systems engineering and application expertise that expands the Company\u2019s capabilities in developing system platforms and integrated customer solutions. The total purchase consideration was $52.2 million in cash, subject to customary purchase price adjustments. Due to the timing of the transaction, the Company has not yet completed the initial accounting for the business combination, including the determination of the acquisition-date fair values of the assets acquired and liabilities assumed. The related purchase accounting and required disclosures will be included in the Company\u2019s consolidated financial statements as of and for the year ended December 31, 2026.\nOn November 2, 2026, the Company entered into a definitive agreement to acquire Ferric, Inc., (\"Ferric\") which is expected to expand the Company\u2019s power management portfolio with advanced integrated voltage regulator technology designed to improve compute performance, energy efficiency and system footprint. The base purchase consideration is approximately $600.0 million in cash, subject to customary adjustments, with potential additional consideration of up to $175.0 million based on the achievement of specified revenue targets through 2029. The transaction is expected to close in the fourth quarter of 2026, subject to the satisfaction of customary closing conditions. Upon closing, assuming it takes place during the fourth quarter of 2026, the related purchase accounting and required disclosures will be included in the Company\u2019s consolidated financial statements as of and for the year ended December 31, 2026.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1311,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,722.3",
+     "$",
+     "1,550.9",
+     "$",
+     "171.4"
+    ],
+    [
+     "Cost of revenue",
+     "1,009.3",
+     "",
+     "963.7",
+     "",
+     "45.6",
+     ""
+    ],
+    [
+     "Gross profit",
+     "713.0",
+     "",
+     "587.2",
+     "",
+     "125.8",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "145.0",
+     "",
+     "141.9",
+     "",
+     "3.1",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "66.8",
+     "",
+     "62.8",
+     "",
+     "4.0",
+     ""
+    ],
+    [
+     "General and administrative",
+     "107.8",
+     "",
+     "87.3",
+     "",
+     "20.5",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "10.5",
+     "",
+     "11.2",
+     "",
+     "(0.7)",
+     ""
+    ],
+    [
+     "Restructuring, asset impairments and other, net",
+     "4.6",
+     "",
+     "19.6",
+     "",
+     "(15.0)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "334.7",
+     "",
+     "322.8",
+     "",
+     "11.9",
+     ""
+    ],
+    [
+     "Operating income",
+     "378.3",
+     "",
+     "264.4",
+     "",
+     "113.9",
+     ""
+    ],
+    [
+     "Other income (expense), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(13.9)",
+     "",
+     "(17.7)",
+     "",
+     "3.8",
+     ""
+    ],
+    [
+     "Interest income",
+     "17.3",
+     "",
+     "22.7",
+     "",
+     "(5.4)",
+     ""
+    ],
+    [
+     "Other income",
+     "17.6",
+     "",
+     "3.6",
+     "",
+     "14.0",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "21.0",
+     "",
+     "8.6",
+     "",
+     "12.4",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "399.3",
+     "",
+     "273.0",
+     "",
+     "126.3",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "(84.9)",
+     "",
+     "(17.7)",
+     "",
+     "(67.2)",
+     ""
+    ],
+    [
+     "Net income",
+     "314.4",
+     "",
+     "255.3",
+     "",
+     "59.1",
+     ""
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "(0.5)",
+     "",
+     "(0.3)",
+     "",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Net income attributable to ON Semiconductor Corporation",
+     "$",
+     "313.9",
+     "$",
+     "255.0",
+     "$",
+     "58.9"
+    ]
+   ],
+   "caption_stack": [
+    "Quarters Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1367,
+    "end_line": 1404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We expect to incur total severance costs and related benefit expenses of $26.0 million related to the termination of approximately 650 employees. Of this, approximately $1.5 million and $24.2 million was recognized during the quarter and nine months ended October 2, 2026, respectively. We also recorded non-cash impairment charges of $3.3 million and $166.6 million during the quarter and nine months ended October 2, 2026, respectively, related to previous investments in manufacturing equipment at certain manufacturing facilities pursuant to held-for-sale accounting guidance. Other charges were $(0.2) million and $184.3 million for the quarter and nine months ended October 2, 2026, respectively, related to contract termination costs and other facility exit activities during the quarter ended October 2, 2026 and accelerated depreciation of leasehold improvements and accelerated amortization of ROU assets that were abandoned in connection with the 2025 and 2026 Manufacturing Realignment Programs during the nine months ended October 2, 2026. The total of the aforementioned costs was included within Restructuring, Asset Impairments and Other, Net in the Consolidated Statement of Operations.\nFor additional information, see Note 5: ''Restructuring, Asset Impairments and Other, Net'' in the notes to our unaudited consolidated financial statements included elsewhere in this Form 10-Q.\nShare Repurchases\nDuring the quarter ended October 2, 2026, we repurchased approximately 0.3 million shares of common stock for an aggregate purchase price of $19.9 million. During the nine months ended October 2, 2026, we repurchased approximately 9.1 million shares of common stock for an aggregate purchase price of $703.2 million. For additional information, see Note 8: ''Earnings Per Share and Equity'' in the notes to our unaudited consolidated financial statements included elsewhere in this Form 10-Q.\nResults of Operations\nQuarter Ended October 2, 2026 compared to the Quarter Ended October 3, 2025\nThe following table summarizes certain information relating to our operating results that has been derived from our unaudited consolidated financial statements (in millions):",
+   "prose_after": "The following table summarizes certain information relating to our segment results (in millions):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1361,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended October 2, 2026",
+     "",
+     "As a % of Total",
+     "",
+     "Quarter Ended October 3, 2025",
+     "",
+     "As a % of Total",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "889.9",
+     "51.6",
+     "%",
+     "$",
+     "737.6",
+     "47.6",
+     "%",
+     "$",
+     "152.3"
+    ],
+    [
+     "AMG",
+     "597.3",
+     "",
+     "34.7",
+     "%",
+     "583.3",
+     "",
+     "37.6",
+     "%",
+     "14.0",
+     ""
+    ],
+    [
+     "ISG",
+     "235.1",
+     "",
+     "13.7",
+     "%",
+     "230.0",
+     "",
+     "14.8",
+     "%",
+     "5.1",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,722.3",
+     "100.0",
+     "%",
+     "$",
+     "1,550.9",
+     "100.0",
+     "%",
+     "$",
+     "171.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "550.2",
+     "54.5",
+     "%",
+     "$",
+     "527.4",
+     "54.7",
+     "%",
+     "$",
+     "22.8"
+    ],
+    [
+     "AMG",
+     "297.6",
+     "",
+     "29.5",
+     "%",
+     "287.2",
+     "",
+     "29.8",
+     "%",
+     "10.4",
+     ""
+    ],
+    [
+     "ISG",
+     "161.5",
+     "",
+     "16.0",
+     "%",
+     "149.1",
+     "",
+     "15.5",
+     "%",
+     "12.4",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,009.3",
+     "100.0",
+     "%",
+     "$",
+     "963.7",
+     "100.0",
+     "%",
+     "$",
+     "45.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit: (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "339.7",
+     "38.2",
+     "%",
+     "$",
+     "210.2",
+     "28.5",
+     "%",
+     "$",
+     "129.5"
+    ],
+    [
+     "AMG",
+     "299.7",
+     "",
+     "50.2",
+     "%",
+     "296.1",
+     "",
+     "50.8",
+     "%",
+     "3.6",
+     ""
+    ],
+    [
+     "ISG",
+     "73.6",
+     "",
+     "31.3",
+     "%",
+     "80.9",
+     "",
+     "35.2",
+     "%",
+     "(7.3)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "713.0",
+     "41.4",
+     "%",
+     "$",
+     "587.2",
+     "37.9",
+     "%",
+     "$",
+     "125.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1408,
+    "end_line": 1436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following table summarizes certain information relating to our segment results (in millions):",
+   "prose_after": "(1) Gross profit margin as a percentage of respective segment revenue balances.\nRevenue\nRevenue was $1,722.3 million and $1,550.9 million for the quarters ended October 2, 2026 and October 3, 2025, respectively, representing an increase of $171.4 million, or approximately 11%, year over year due to higher demand in the industrial, AI data center and other end-markets. The increase was partially offset by lower sales volume in the automotive end-market due to the reallocation of supply to the industrial and AI data center end-markets. We had one customer, a distributor, whose revenue accounted for approximately 15% and 12% of our total revenue for the quarters ended October 2, 2026 and October 3, 2025, respectively, across all reportable segments.\nRevenue from PSG\nRevenue from PSG increased by $152.3 million, or approximately 21%, for the quarter ended October 2, 2026 compared to the quarter ended October 3, 2025 due to higher demand. This was driven by an increase in revenue of $64.9 million, $71.3 million and $31.4 million in the industrial, AI data center and other end-markets, respectively, offset by a decrease of $15.3 million within the automotive end-market.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1455,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Quarter Ended October 2, 2026",
+     "",
+     "As a % of Total Revenue (1)",
+     "",
+     "Quarter Ended October 3, 2025",
+     "",
+     "As a % of Total Revenue (1)",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "567.8",
+     "33.0",
+     "%",
+     "$",
+     "424.9",
+     "27.4",
+     "%"
+    ],
+    [
+     "Singapore",
+     "436.9",
+     "",
+     "25.4",
+     "%",
+     "320.1",
+     "",
+     "20.6",
+     "%"
+    ],
+    [
+     "United Kingdom",
+     "316.7",
+     "",
+     "18.4",
+     "%",
+     "315.0",
+     "",
+     "20.3",
+     "%"
+    ],
+    [
+     "United States",
+     "294.3",
+     "",
+     "17.1",
+     "%",
+     "340.5",
+     "",
+     "22.0",
+     "%"
+    ],
+    [
+     "Other",
+     "106.6",
+     "",
+     "6.2",
+     "%",
+     "150.4",
+     "",
+     "9.7",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "1,722.3",
+     "",
+     "",
+     "$",
+     "1,550.9",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1460,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Revenue from PSG increased by $152.3 million, or approximately 21%, for the quarter ended October 2, 2026 compared to the quarter ended October 3, 2025 due to higher demand. This was driven by an increase in revenue of $64.9 million, $71.3 million and $31.4 million in the industrial, AI data center and other end-markets, respectively, offset by a decrease of $15.3 million within the automotive end-market.\nRevenue from AMG\nRevenue from AMG increased by $14.0 million, or approximately 2%, for the quarter ended October 2, 2026 compared to the quarter ended October 3, 2025, primarily driven by an increase of $18.4 million and $43.3 million in the automotive and AI data center end-markets, respectively, due to higher demand, offset by a decrease of $41.6 million and $6.1 million within the industrial and other end-markets, respectively.\nRevenue from ISG\nRevenue from ISG increased by $5.1 million, or approximately 2%, for the quarter ended October 2, 2026 compared to the quarter ended October 3, 2025 due to increased demand. This was driven by an increase in revenue of $17.2 million and $1.6 million in the industrial and other end-markets, respectively, offset by a decrease of $13.7 million in the automotive end-market.\nRevenue by Geographic Location\nRevenue by geographic location, based on sales billed from the respective country or region, was as follows (dollars in millions):",
+   "prose_after": "(1) Certain amounts may not total due to rounding of individual amounts.\nGross Profit and Gross Margin\nGross profit increased by $125.8 million, or approximately 21%, to $713.0 million for the quarter ended October 2, 2026 compared to $587.2 million for the quarter ended October 3, 2025 primarily due to higher revenue, improved manufacturing utilization and favorable product mix within certain business segments, partially offset by higher prices for certain manufacturing inputs.\nOur gross margin increased by 3.5 percentage points from 37.9% for the quarter ended October 3, 2025 to 41.4% for the quarter ended October 2, 2026. The increase was primarily due to improved manufacturing utilization and favorable product mix within certain business segments, partially offset by higher prices for certain manufacturing inputs.\nPSG gross profit increased by $129.5 million, primarily driven by higher revenue across all end\u2011markets and improved manufacturing utilization. PSG gross margin increased by 9.7 percentage points to 38.2% from 28.5%, primarily due to improved utilization and operating leverage on higher volumes along with favorable product mix during the quarter ended October 2, 2026.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1455,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1501,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 2, 2026",
+     "",
+     "October 3, 2025",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "4,839.1",
+     "$",
+     "4,465.3",
+     "$",
+     "373.8"
+    ],
+    [
+     "Cost of revenue",
+     "2,926.7",
+     "",
+     "3,032.4",
+     "",
+     "(105.7)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "1,912.4",
+     "",
+     "1,432.9",
+     "",
+     "479.5",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "430.1",
+     "",
+     "449.8",
+     "",
+     "(19.7)",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "193.1",
+     "",
+     "194.4",
+     "",
+     "(1.3)",
+     ""
+    ],
+    [
+     "General and administrative",
+     "299.1",
+     "",
+     "262.9",
+     "",
+     "36.2",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "31.5",
+     "",
+     "33.6",
+     "",
+     "(2.1)",
+     ""
+    ],
+    [
+     "Restructuring, asset impairments and other, net",
+     "375.1",
+     "",
+     "608.1",
+     "",
+     "(233.0)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "1,328.9",
+     "",
+     "1,548.8",
+     "",
+     "(219.9)",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "583.5",
+     "",
+     "(115.9)",
+     "",
+     "699.4",
+     ""
+    ],
+    [
+     "Other income (expense), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(40.3)",
+     "",
+     "(53.6)",
+     "",
+     "13.3",
+     ""
+    ],
+    [
+     "Interest income",
+     "52.4",
+     "",
+     "74.5",
+     "",
+     "(22.1)",
+     ""
+    ],
+    [
+     "Other income",
+     "30.0",
+     "",
+     "9.2",
+     "",
+     "20.8",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "42.1",
+     "",
+     "30.1",
+     "",
+     "12.0",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "625.6",
+     "",
+     "(85.8)",
+     "",
+     "711.4",
+     ""
+    ],
+    [
+     "Income tax (provision) benefit",
+     "(116.6)",
+     "",
+     "27.6",
+     "",
+     "(144.2)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "509.0",
+     "",
+     "(58.2)",
+     "",
+     "567.2",
+     ""
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "(1.7)",
+     "",
+     "(2.6)",
+     "",
+     "0.9",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to ON Semiconductor Corporation",
+     "$",
+     "507.3",
+     "$",
+     "(60.8)",
+     "$",
+     "568.1"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1531,
+    "end_line": 1568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We recorded an income tax provision of $84.9 million and $17.7 million for the quarters ended October 2, 2026 and October 3, 2025, respectively, representing effective tax rates of 21.3% and 6.5%, respectively. The increase in the effective tax rate for the quarter was primarily attributable to a discrete tax benefit recognized in 2025 in connection with a return-to-provision adjustment following the finalization of our 2024 U.S. federal income tax return. The discrete benefit had a greater impact on the 2025 effective tax rate due to the lower level of pre-tax income in that period.\nFor additional information, see Note 13: ''Income Taxes'' in the notes to the unaudited consolidated financial statements included elsewhere in this Form 10-Q.\nResults of Operations\nNine Months Ended October 2, 2026 compared to the Nine Months Ended October 3, 2025\nThe following table summarizes certain information relating to our operating results that has been derived from our unaudited consolidated financial statements (in millions):",
+   "prose_after": "The following table summarizes certain information relating to our segment results (in millions):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 2, 2026",
+     "",
+     "As a % of Total",
+     "",
+     "Nine Months Ended October 3, 2025",
+     "",
+     "As a % of Total",
+     "",
+     "Dollar Change",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "2,455.5",
+     "50.7",
+     "%",
+     "$",
+     "2,080.9",
+     "46.6",
+     "%",
+     "$",
+     "374.6"
+    ],
+    [
+     "AMG",
+     "1,683.4",
+     "",
+     "34.8",
+     "%",
+     "1,705.6",
+     "",
+     "38.2",
+     "%",
+     "(22.2)",
+     ""
+    ],
+    [
+     "ISG",
+     "700.2",
+     "",
+     "14.5",
+     "%",
+     "678.8",
+     "",
+     "15.2",
+     "%",
+     "21.4",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "4,839.1",
+     "100.0",
+     "%",
+     "$",
+     "4,465.3",
+     "100.0",
+     "%",
+     "$",
+     "373.8"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "1,685.1",
+     "57.6",
+     "%",
+     "$",
+     "1,566.7",
+     "51.7",
+     "%",
+     "$",
+     "118.4"
+    ],
+    [
+     "AMG",
+     "802.9",
+     "",
+     "27.4",
+     "%",
+     "826.8",
+     "",
+     "27.3",
+     "%",
+     "(23.9)",
+     ""
+    ],
+    [
+     "ISG",
+     "438.7",
+     "",
+     "15.0",
+     "%",
+     "638.9",
+     "",
+     "21.0",
+     "%",
+     "(200.2)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,926.7",
+     "100.0",
+     "%",
+     "$",
+     "3,032.4",
+     "100.0",
+     "%",
+     "$",
+     "(105.7)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit: (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PSG",
+     "$",
+     "770.4",
+     "31.4",
+     "%",
+     "$",
+     "514.2",
+     "24.7",
+     "%",
+     "$",
+     "256.2"
+    ],
+    [
+     "AMG",
+     "880.5",
+     "",
+     "52.3",
+     "%",
+     "878.8",
+     "",
+     "51.5",
+     "%",
+     "1.7",
+     ""
+    ],
+    [
+     "ISG",
+     "261.5",
+     "",
+     "37.3",
+     "%",
+     "39.9",
+     "",
+     "5.9",
+     "%",
+     "221.6",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,912.4",
+     "39.5",
+     "%",
+     "$",
+     "1,432.9",
+     "32.1",
+     "%",
+     "$",
+     "479.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1572,
+    "end_line": 1600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following table summarizes certain information relating to our segment results (in millions):",
+   "prose_after": "(1) Gross profit margin as a percentage of respective segment revenue balances.\nRevenue\nRevenue was $4,839.1 million and $4,465.3 million for the nine months ended October 2, 2026 and October 3, 2025, respectively, representing an increase of $373.8 million, or approximately 8%, year over year due to higher demand across substantially all end-markets. We had one customer, a distributor, whose revenue accounted for approximately 14% and 13% of our total revenue for the nine months ended October 2, 2026 and October 3, 2025, respectively, across all reportable segments.\nRevenue from PSG\nRevenue from PSG increased by $374.6 million, or approximately 18%, for the nine months ended October 2, 2026 compared to the nine months ended October 3, 2025 due to higher demand. This was driven by an increase in revenue of $82.3 million, $94.7 million, $153.6 million and $44.0 million in the automotive, industrial, AI data center and other end-markets, respectively.\nRevenue from AMG\nRevenue from AMG decreased by $22.2 million, or approximately 1%, for the nine months ended October 2, 2026 compared to the nine months ended October 3, 2025, primarily driven by a decrease in revenue of $48.1 million and $57.8 million in the industrial and other end-markets, respectively, primarily due to lower demand, offset by an increase of $3.1 million and $80.6 million in the automotive and AI data center end-markets, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 2, 2026",
+     "",
+     "As a % of Total Revenue (1)",
+     "",
+     "Nine Months Ended October 3, 2025",
+     "",
+     "As a % of Total Revenue (1)",
+     ""
+    ],
+    [
+     "Hong Kong",
+     "$",
+     "1,380.9",
+     "28.5",
+     "%",
+     "$",
+     "1,208.3",
+     "27.1",
+     "%"
+    ],
+    [
+     "Singapore",
+     "1,145.5",
+     "",
+     "23.7",
+     "%",
+     "920.8",
+     "",
+     "20.6",
+     "%"
+    ],
+    [
+     "United Kingdom",
+     "1,062.8",
+     "",
+     "22.0",
+     "%",
+     "1,009.9",
+     "",
+     "22.6",
+     "%"
+    ],
+    [
+     "United States",
+     "891.4",
+     "",
+     "18.4",
+     "%",
+     "911.0",
+     "",
+     "20.4",
+     "%"
+    ],
+    [
+     "Other",
+     "358.5",
+     "",
+     "7.4",
+     "%",
+     "415.3",
+     "",
+     "9.3",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "4,839.1",
+     "",
+     "",
+     "$",
+     "4,465.3",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1624,
+    "end_line": 1637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Revenue from PSG increased by $374.6 million, or approximately 18%, for the nine months ended October 2, 2026 compared to the nine months ended October 3, 2025 due to higher demand. This was driven by an increase in revenue of $82.3 million, $94.7 million, $153.6 million and $44.0 million in the automotive, industrial, AI data center and other end-markets, respectively.\nRevenue from AMG\nRevenue from AMG decreased by $22.2 million, or approximately 1%, for the nine months ended October 2, 2026 compared to the nine months ended October 3, 2025, primarily driven by a decrease in revenue of $48.1 million and $57.8 million in the industrial and other end-markets, respectively, primarily due to lower demand, offset by an increase of $3.1 million and $80.6 million in the automotive and AI data center end-markets, respectively.\nRevenue from ISG\nRevenue from ISG increased by $21.4 million, or approximately 3%, for the nine months ended October 2, 2026 compared to the nine months ended October 3, 2025 due to higher demand. This was driven by an increase in revenue of $27.4 million and $6.5 million in the industrial and other end-markets, offset by a decrease of $12.5 million in the automotive end-market.\nRevenue by Geographic Location\nRevenue by geographic location, based on sales billed from the respective country or region, was as follows (dollars in millions):",
+   "prose_after": "(1) Certain amounts may not total due to rounding of individual amounts.\nGross Profit and Gross Margin\nGross profit increased by $479.5 million, or approximately 33%, to $1,912.4 million for the nine months ended October 2, 2026 compared to $1,432.9 million for the nine months ended October 3, 2025 primarily due to the absence of $235.8 million of excess and obsolete inventory charges and lower write-offs of consumables and manufacturing supplies compared to the prior-year period, partially offset by higher prices for certain manufacturing inputs.\nOur gross margin increased by 7.4 percentage points from 32.1% for the nine months ended October 3, 2025 to 39.5% for the nine months ended October 2, 2026. The increase was primarily driven by the absence of the prior-year excess and obsolete inventory charges, lower write-offs of consumables and manufacturing supplies, improved manufacturing utilization and favorable product mix within certain business segments, partially offset by higher prices for certain manufacturing inputs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1660,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period (1)",
+     "Total Number of Shares Purchased",
+     "Average Price Paid per Share ($)",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "Approximate Dollar value of Shares that May Yet be Purchased Under the Plans or Programs (in millions) ($)",
+     ""
+    ],
+    [
+     "July 4, 2026 - July 31, 2026",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "5,322.4"
+    ],
+    [
+     "August 1, 2026 - August 28, 2026",
+     "155,504",
+     "73.16",
+     "",
+     "155,504",
+     "5,311.1",
+     ""
+    ],
+    [
+     "August 29, 2026 - October 2, 2026",
+     "116,628",
+     "73.13",
+     "",
+     "116,628",
+     "5,302.5",
+     ""
+    ],
+    [
+     "Total",
+     "272,132",
+     "$",
+     "73.15",
+     "272,132",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1878,
+    "end_line": 1891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Important factors that could cause our actual results to differ materially from those anticipated in the forward-looking statements are described under Part I, Item 1A \"Risk Factors\" in the 2025 Form 10-K, under Part II, Item 1A. \"Risk Factors\" and elsewhere in this Form 10-Q and from time to time in our other SEC reports. Readers are cautioned not to place undue reliance on forward-looking statements. We assume no obligation to update such information, which speaks only as of the date made, except as may be required by law. Investing in our securities involves a high degree of risk and uncertainty, and you should carefully consider the trends, risks and uncertainties described in the aforementioned reports and subsequent reports filed with or furnished to the SEC before making any investment decision with respect to our securities. The risk factors described in this Form 10-Q and in our 2025 Form 10-K are not all of the risks we may face. Other risks not presently known to us or that we currently believe are immaterial may materially affect our business. If any of the trends, risks or uncertainties actually occurs or continues, our business, financial condition or operating results could be materially adversely affected, the trading prices of our securities could decline and you could lose all or part of your investment. All forward-looking statements attributable to us or persons acting on our behalf are expressly qualified in their entirety by this cautionary statement.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nThe following table provides information regarding repurchases of our common stock during the quarter ended October 2, 2026:",
+   "prose_after": "(1) These time periods represent our fiscal month start and end dates for the third quarter of 2026.\nShares withheld to satisfy statutory tax withholding requirements related to the vesting of share-based awards are not issued or considered repurchases of our common stock under our New Share Repurchase Program and, therefore, are excluded from the table above.\nNew Share Repurchase Program\nIn November 2025, the Board of Directors approved a new Share Repurchase Program (the \"New Share Repurchase Program\") under which the Company may repurchase up to an aggregate of $6.0 billion of the Company's common stock (exclusive of fees, commissions and other expenses). Under the New Share Repurchase Program, which does not require the Company to\npurchase any minimum amount of common stock or at all, the Company may repurchase shares from January 1, 2026 through December 31, 2028. The New Share Repurchase Program may be modified, suspended or terminated by the Board of Directors at any time without prior notice.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1861,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1900,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Exhibit Description*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2.1",
+     "Amended and Restated Agreement and Plan of Merger, dated as of October 1, 2026, by and among ON Semiconductor Corporation, Sonic Acquisition Corp. and Synaptics Incorporated (incorporated by reference to Exhibit 2.1 to the Company's Current Report on Form 8-K dated October 1, 2026) \u2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10.1",
+     "$2,450,000,000 Senior Secured Term Loan Facilities Second Amended and Restated Commitment Letter, dated as of October 19, 2026, by and among ON Semiconductor Corporation, Morgan Stanley Senior Funding, Inc., JPMorgan Chase Bank, N.A. and other commitment parties party thereto (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.1",
+     "Certification by CEO pursuant to Rule 13(a)-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of Sarbanes-Oxley Act of 2002 (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.2",
+     "Certification by CFO pursuant to Rule 13(a)-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of Sarbanes-Oxley Act of 2002 (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "32",
+     "Certification by CEO and CFO pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (2)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.INS",
+     "XBRL Instance Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document (1)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "104",
+     "Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1923,
+    "end_line": 1955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We repurchased 0.3 million shares of the Company's common stock under the New Share Repurchase Program during the quarter ended October 2, 2026. As of October 2, 2026, the authorized amount remaining under the New Share Repurchase Program was approximately $5.3 billion.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nInsider Trading Arrangements\nDuring the quarter ended October 2, 2026, none of our directors or officers (as defined in Rule 16a-1(f) of the Exchange Act) adopted or terminated a \"Rule 10b5-1 trading arrangement\" or \"non-Rule 10b5-1 trading arrangement\" (as those terms are defined in Item 408 of Regulation S-K).\nItem 6. Exhibits\nEXHIBIT INDEX",
+   "prose_after": "* Reports filed under the Exchange Act (Form 10-K, Form 10-Q and Form 8-K) are filed under File No. 000-30419 and File No. 001-39317.\n(1) Filed herewith.\n(2) Furnished herewith. \u2020 Schedules have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The registrant hereby undertakes to furnish supplementally a copy of any omitted schedule upon request by the SEC.\nSIGNATURES\nPursuant to the requirements of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1919,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "ON SEMICONDUCTOR CORPORATION                       (Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "November 2, 2026",
+     "By:",
+     "/s/ THAD TRENT"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Thad Trent"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Executive Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Principal Financial and Accounting Officer and officer duly authorized to sign this report)"
+    ]
+   ],
+   "caption_stack": [
+    "ON SEMICONDUCTOR CORPORATION                       (Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1965,
+    "end_line": 1974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Reports filed under the Exchange Act (Form 10-K, Form 10-Q and Form 8-K) are filed under File No. 000-30419 and File No. 001-39317.\n(1) Filed herewith.\n(2) Furnished herewith. \u2020 Schedules have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The registrant hereby undertakes to furnish supplementally a copy of any omitted schedule upon request by the SEC.\nSIGNATURES\nPursuant to the requirements of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1960,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

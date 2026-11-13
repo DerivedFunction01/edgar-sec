@@ -1,0 +1,6040 @@
+{
+ "accession": "0001731122-21-001288",
+ "cik": "0001190370",
+ "form": "10-K",
+ "filing_date": "2021-08-04",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "e2992_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "03-0465528"
+    ],
+    [
+     "(State or other Jurisdiction of Incorporation or Organization)",
+     "",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "124 Cherry Street",
+     "",
+     "15223"
+    ],
+    [
+     "Pittsburgh, Pennsylvania (Address of Principal Executive Offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  Annual report under section 13 or 15(d) of the Securities Act of 1934.\nFor the fiscal year ended October 31, 2020\n[ ]  Transition report under section 13 or 15(d) of the Securities Act of 1934.\nFor the Transition period from _______ to ________.\nCommission file number: 000-51791\nInnovative Designs, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(412) 799-0350\n(Registrant\u2019s telephone number including area code)\nSecurities to be registered pursuant to Section 12(b) of the Exchange Act:\n________________",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Trading Symbol(s)",
+     "",
+     "Name of each exchange on which registered"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(412) 799-0350\n(Registrant\u2019s telephone number including area code)\nSecurities to be registered pursuant to Section 12(b) of the Exchange Act:\n________________",
+   "prose_after": "________________\nSecurities registered or to be registered pursuant to Section 12(g) of the Exchange Act:\n(Title of Class)\nCommon Stock, $.0001 par value per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to section 13 or Section 15 (d) of the Act.\n[ ] Yes [X] No\nCheck whether the issuer (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities and Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FY 2019",
+     "",
+     "Low",
+     "",
+     "",
+     "High",
+     ""
+    ],
+    [
+     "  Fourth Quarter",
+     "",
+     "$",
+     "0.15",
+     "",
+     "",
+     "0.45"
+    ],
+    [
+     "  Third Quarter",
+     "",
+     "$",
+     "0.13",
+     "",
+     "",
+     "0.50"
+    ],
+    [
+     "  Second Quarter",
+     "",
+     "$",
+     "0.09",
+     "",
+     "",
+     "0.31"
+    ],
+    [
+     "  First Quarter",
+     "",
+     "$",
+     "0.02",
+     "",
+     "",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 399,
+    "end_line": 407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY; RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "On November 23, 2020, the Company was informed that the FTC had filed a notice of appeal in regard to the case. The appeal is from the District Court\u2019s September 24, 2020, Order granting the Company\u2019s Motion for Judgment on Partial Findings Pursuant to Fed. R. Civ. P. 52(c) and subsequent Judgment in favor of the Company and from the District Court\u2019s February 14, 2020, striking Dr. David Yarbrough\u2019s expert testimony made on behalf of the FTC. The FTC filed its appeal and on March 24, 2021, the Company filed its answer and on July 22, 2021, the Company was informed that the United States Court of Appeals for the Third District affirmed the District Court\u2019s ruling in favor of the Company. The case number is No.20-3379.\nITEM 4. REMOVED AND RESERVED.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY; RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nBelow is the market information pertaining to the range of the high and low bid information of our common stock for each quarter for the last two fiscal years. Our common stock is quoted on the OTC Bulletin Board under the symbol IVDN. The quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FY 2018",
+     "",
+     "Low",
+     "",
+     "",
+     "High",
+     ""
+    ],
+    [
+     "  Fourth Quarter",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "0.40"
+    ],
+    [
+     "  Third Quarter",
+     "",
+     "$",
+     "0.27",
+     "",
+     "",
+     "0.44"
+    ],
+    [
+     "  Second Quarter",
+     "",
+     "$",
+     "0.34",
+     "",
+     "",
+     "0.75"
+    ],
+    [
+     "  First Quarter",
+     "",
+     "$",
+     "0.35",
+     "",
+     "",
+     "0.75"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 408,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY; RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "On August 2, 2021 the closing bid price was $0.34.\nThe source of the above data is www.otcmarkets.com.\nHolders\nAs of August 2, 2021, we had 204 holders of record of our common stock. We have one class of stock outstanding. We have no shares of our preferred stock outstanding.\nDividends\nWe have not declared any cash dividends on our stock since our inception and do not anticipate paying such dividends in the foreseeable future. We plan to retain any future earnings for use in our business. Any decisions as to future payment of dividends will depend on our earnings and financial position and such other factors as the Board of Directors deems relevant.\nRecent Sales of Unregistered Securities.\nDuring the fiscal year ended October 31, 2019, the Company sold 1,867,000 shares of common stock to nine investors for total proceeds of $264,040. The stock was issued between $0.08 and $0.17 per share. During the fiscal year ended October 31,2019, 550,000 shares of common stock were issued to one note holder for the extinguishment of a $50,000 note payable and $5,000 of accrued interest. This stock was issued at $0.10 per share. The Company issued 210,000 shares of common stock to three individuals for services valued at $35,500. The stock was issued between $0.15 and $0.20 per share. We believe that Section 4(2) of the Securities Act of 1933, as amended, was available because these transactions did not involve a public offering and there was no general solicitation or general advertising involved in these transactions. We placed legends on the stock certificates stating that the securities were not registered under the Securities Act and set for the restrictions on their transferability and sale.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "October 31,",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "Increase",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "Sales",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Sales",
+     "",
+     "",
+     "(Decrease)",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "202,253",
+     "",
+     "",
+     "100.00",
+     "%",
+     "$",
+     "215,975",
+     "",
+     "",
+     "100.00",
+     "%",
+     "$",
+     "(13,772)",
+     "",
+     "",
+     "-6.35",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cost of sales",
+     "",
+     "131,280",
+     "",
+     "",
+     "64.91",
+     "%",
+     "",
+     "126,645",
+     "",
+     "",
+     "58.64",
+     "%",
+     "",
+     "4,635",
+     "",
+     "",
+     "3.66",
+     "%"
+    ],
+    [
+     "  Selling, general and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  administrative expenses",
+     "",
+     "341,132",
+     "",
+     "",
+     "168.67",
+     "%",
+     "",
+     "577,060",
+     "",
+     "",
+     "267.19",
+     "%",
+     "",
+     "356,714",
+     "",
+     "",
+     "(40.88)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(270,159)",
+     "",
+     "",
+     "205.79",
+     "%",
+     "",
+     "(487,730)",
+     "",
+     "",
+     "285.76",
+     "%",
+     "",
+     "217,571",
+     "",
+     "",
+     "44.61",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME/(EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other income (expense)",
+     "",
+     "833",
+     "",
+     "",
+     ".41",
+     "%",
+     "",
+     "(14,601)",
+     "",
+     "",
+     "1",
+     "%",
+     "",
+     "15,434",
+     "",
+     "",
+     "(105.71)",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "",
+     "(11,417)",
+     "",
+     "",
+     "5.64",
+     "%",
+     "",
+     "(18,260)",
+     "",
+     "",
+     "8.45",
+     "%",
+     "",
+     "6,843",
+     "",
+     "",
+     "(37.48)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(280,743)",
+     "",
+     "",
+     "138.81",
+     "%",
+     "$",
+     "(520,591)",
+     "",
+     "",
+     "241.04",
+     "%",
+     "$",
+     "239,848",
+     "",
+     "",
+     "(47.07)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "30,830,276",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "28,708,18200",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share",
+     "$",
+     "(0.01)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 500,
+    "end_line": 531
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "Innovative Designs, Inc. (hereafter referred to as the \u201cCompany\u201d, \u201cwe\u201d or \u201cour\u201d) was formed on June 25, 2002. We market and sell cold weather clothing products called \u201cArctic Armor\u201d that are, except for our headwear, made from INSULTEX, a material with buoyancy, scent block and thermal resistant properties. We offer our House Wrap product line which is also made from INSULTEX. We obtain INSULTEX for our cold weather clothing products through a license agreement with the owner and manufacturer of the material. In December 2015, we took delivery of equipment capable of producing our own INSULTEX. We are currently seeking a facility where the equipment can be installed. We intend to use the INSULTEX from this equipment in the production of our House Wrap product and for the sale of INSULTEX to others.\nResults of Operations\nComparison of the fiscal year ended October 31, 2020, with the fiscal year ended October 31, 2019.\nThe following table shows a comparison of the results of operations between the fiscal years ended October 31, 2020 and October 31, 2019:",
+   "prose_after": "Results of Operations\nRevenues for the fiscal year ended October 31, 2020, were $202,253 compared to revenues of $215,975 for the comparable period ending October 31, 2019. House Wrap product revenue totaled $ 131,285 for the period compared to $80,469 for Fiscal Year ended October 31, 2019. Nearly all of the remaining revenues were derived from our Arctic Armor product line which totaled $70.968 for the period compared to revenues of $135,506 for the Fiscal Year ended October 31, 2019. The decrease in revenue is attributable to the FTC matter with regard to our House Wrap products as we did not advertise for this product line during the period. The decrease in revenue for our apparel product line is attributable to the fact that we are devoting significant portion of our limited resources to the FTC matter. Revenues are net of returns and discounts. We estimate that approximately sixty percent of our cold weather apparel products are sold to outdoor sportsmen, primarily those engaged in ice fishing.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 532,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Balance Sheets as of October 31, 2020 and 2019",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    Statements of Operations for the Years Ended October 31, 2020 and 2019",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Statements of Changes in Stockholders\u2019 Equity for the Years Ended October 31, 2020 and 2019",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Statements of Cash Flows for the Years Ended October 31, 2020 and 2019",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 579,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "Subsequent to the period in December 2020, the Company borrowed $200,000 from an individual. The note is secured by one of the Company\u2019s patent. The term of the loan is three years and the interest rate is 12% per annum. The loan is to be repaid in yearly installments with the first payment of $66,666.00 to be paid on the 180th day from the date of the loan. Thereafter, each installment will be due and payable one year from the date of the loan and each succeeding calendar until three years from the date of the loan year. On April 29, 2021, the Company issued a convertible promissory note in the principle amount of $50,000. The interest rate is 8% and the note matures in one year. The amount of the note may be converted into shares of the Company\u2019s Common Stock at the rate of one share for each $.50 of the outstanding amounts due and owning under the note.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURE ABOUT MARKET RISK.\nAs a smaller reporting company under SEC Regulation, we are not required to provide this information.\nITEM 8. FINANCIAL STATEMENTS.\nIndex to Financial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and\nBoard of Directors of Innovative Designs, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Innovative Designs, Inc. (the \u201cCompany\u201d) as of October 31, 2020 and 2019, the related statements of operations, changes in stockholders\u2019 equity, and cash flows for each of the two years in the period ended October 31, 2020, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of October 31, 2020 and 2019, and the results of its operations and its cash flows for each of the two years in the period ended October 31, 2020, in conformity with accounting principles generally accepted in the United States of America.\nSubstantial Doubt About the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company had net losses and negative cash flows for the years ended October 31, 2020 and an accumulated deficit at October 31, 2020. These factors raise substantial doubt about its ability to continue as a going concern for one year from the issuance of these financial statements. Management\u2019s plans are also described in Note 2. The financial statements do not include adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INNOVATIVE DESIGNS, INC."
+    ],
+    [
+     "BALANCE SHEETS"
+    ],
+    [
+     "OCTOBER 31, 2020 AND 2019"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE DESIGNS, INC.",
+    "BALANCE SHEETS",
+    "OCTOBER 31, 2020 AND 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 623,
+    "end_line": 628
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to fraud or error. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Boyle CPA, LLC\nWe have served as the Company\u2019s auditor since 2020\nBayville, NJ August 4, 2021",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "",
+     "$",
+     "48,009",
+     "",
+     "",
+     "$",
+     "34,525",
+     ""
+    ],
+    [
+     "  Accounts receivable - net of allowance for doubtful accounts of $5,860 and $10,409",
+     "",
+     "",
+     "19,900",
+     "",
+     "",
+     "",
+     "5,948",
+     ""
+    ],
+    [
+     "  Inventory - net of obsolete inventory reserve of $75,468",
+     "",
+     "",
+     "576,785",
+     "",
+     "",
+     "",
+     "636,459",
+     ""
+    ],
+    [
+     "  Current portion of right of use asset",
+     "",
+     "",
+     "38,775",
+     "",
+     "",
+     "",
+     "36,537",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "683,469",
+     "",
+     "",
+     "",
+     "713,469",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT - NET",
+     "",
+     "",
+     "65,187",
+     "",
+     "",
+     "",
+     "98,495",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Inventory on consignment",
+     "",
+     "",
+     "1,625",
+     "",
+     "",
+     "",
+     "1,625",
+     ""
+    ],
+    [
+     "  Deposits on inventory",
+     "",
+     "",
+     "57,330",
+     "",
+     "",
+     "",
+     "57,330",
+     ""
+    ],
+    [
+     "  Advance to employees",
+     "",
+     "",
+     "8,200",
+     "",
+     "",
+     "",
+     "8,200",
+     ""
+    ],
+    [
+     "  Right of use asset, net of current portion",
+     "",
+     "",
+     "40,962",
+     "",
+     "",
+     "",
+     "79,373",
+     ""
+    ],
+    [
+     "  Assets held for sale",
+     "",
+     "",
+     "600,000",
+     "",
+     "",
+     "",
+     "600,000",
+     ""
+    ],
+    [
+     "Total other assets",
+     "",
+     "",
+     "708,117",
+     "",
+     "",
+     "",
+     "746,528",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "1,456,773",
+     "",
+     "",
+     "$",
+     "1,558,492",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "$",
+     "270,792",
+     "",
+     "",
+     "$",
+     "258,099",
+     ""
+    ],
+    [
+     "  Current portion of notes payable",
+     "",
+     "",
+     "18,628",
+     "",
+     "",
+     "",
+     "19,168",
+     ""
+    ],
+    [
+     "  Current portion of lease liability",
+     "",
+     "",
+     "38,775",
+     "",
+     "",
+     "",
+     "36,537",
+     ""
+    ],
+    [
+     "  Accrued interest expense",
+     "",
+     "",
+     "15,747",
+     "",
+     "",
+     "",
+     "19,237",
+     ""
+    ],
+    [
+     "  Due to shareholders",
+     "",
+     "",
+     "102,200",
+     "",
+     "",
+     "",
+     "96,100",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "",
+     "14,553",
+     "",
+     "",
+     "",
+     "10,916",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "460,695",
+     "",
+     "",
+     "",
+     "440,057",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lease liability, net of current portion",
+     "",
+     "",
+     "40,962",
+     "",
+     "",
+     "",
+     "79,373",
+     ""
+    ],
+    [
+     "  Long-term portion of notes payable",
+     "",
+     "",
+     "107,193",
+     "",
+     "",
+     "",
+     "80,896",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "",
+     "",
+     "148,155",
+     "",
+     "",
+     "",
+     "160,269",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "",
+     "608,850",
+     "",
+     "",
+     "",
+     "600,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.0001 par value, 25,000,000 shares authorized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common stock, $0.0001 par value, 100,800,000 shares authorized, and 31,211,560 and 30,111,560 issued and outstanding",
+     "",
+     "",
+     "3,123",
+     "",
+     "",
+     "",
+     "3,013",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "",
+     "10,574,828",
+     "",
+     "",
+     "",
+     "10,404,438",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "",
+     "(9,730,028)",
+     "",
+     "",
+     "",
+     "(9,449,285)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "",
+     "847,923",
+     "",
+     "",
+     "",
+     "958,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "$",
+     "1,456,773",
+     "",
+     "",
+     "$",
+     "1,558,492",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INNOVATIVE DESIGNS, INC."
+    ],
+    [
+     "STATEMENTS OF OPERATIONS"
+    ],
+    [
+     "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE DESIGNS, INC.",
+    "STATEMENTS OF OPERATIONS",
+    "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES - NET",
+     "",
+     "$",
+     "202,253",
+     "",
+     "",
+     "$",
+     "215,975",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cost of sales",
+     "",
+     "",
+     "131,280",
+     "",
+     "",
+     "",
+     "126,645",
+     ""
+    ],
+    [
+     "  Selling, general and administrative expenses",
+     "",
+     "",
+     "341,132",
+     "",
+     "",
+     "",
+     "577,060",
+     ""
+    ],
+    [
+     "  Total Operating Expenses",
+     "",
+     "",
+     "472,412",
+     "",
+     "",
+     "",
+     "703,705",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LOSS FROM OPERATIONS",
+     "",
+     "",
+     "(270,159)",
+     "",
+     "",
+     "",
+     "(487,730)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other income",
+     "",
+     "",
+     "833",
+     "",
+     "",
+     "",
+     "3,685",
+     ""
+    ],
+    [
+     "  Other expense",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(18,286)",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "",
+     "(11,417)",
+     "",
+     "",
+     "",
+     "(18,260)",
+     ""
+    ],
+    [
+     "  Total other income (expense)",
+     "",
+     "",
+     "(10,584)",
+     "",
+     "",
+     "",
+     "(32,861)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "$",
+     "(280,743)",
+     "",
+     "",
+     "$",
+     "(520,591)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PER SHARE INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net Loss Per Common Share",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted Average Number of Common Shares Outstanding",
+     "",
+     "",
+     "30,830,276",
+     "",
+     "",
+     "",
+     "28,708,182",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 731
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 733,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INNOVATIVE DESIGNS, INC."
+    ],
+    [
+     "STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY"
+    ],
+    [
+     "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE DESIGNS, INC.",
+    "STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+    "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "To be Issued",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2018",
+     "",
+     "27,789,560",
+     "$",
+     "2,780",
+     "$",
+     "\u2014",
+     "$",
+     "10,106,731",
+     "$",
+     "(8,928,694)",
+     "",
+     "$",
+     "1,180,817",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "210,000",
+     "",
+     "21",
+     "",
+     "\u2014",
+     "",
+     "35,479",
+     "",
+     "\u2014",
+     "",
+     "",
+     "35,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for debt extinquishment",
+     "",
+     "550,000",
+     "",
+     "55",
+     "",
+     "\u2014",
+     "",
+     "54,945",
+     "",
+     "\u2014",
+     "",
+     "",
+     "55,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of stock",
+     "",
+     "1,562,000",
+     "",
+     "157",
+     "",
+     "\u2014",
+     "",
+     "207,283",
+     "",
+     "\u2014",
+     "",
+     "",
+     "207,440",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(520,591)",
+     "",
+     "",
+     "(520,591)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2019",
+     "",
+     "30,111,560",
+     "",
+     "3,013",
+     "",
+     "\u2014",
+     "",
+     "10,404,438",
+     "",
+     "(9,449,285)",
+     "",
+     "",
+     "958,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "150,000",
+     "",
+     "15",
+     "",
+     "",
+     "",
+     "26,985",
+     "",
+     "",
+     "",
+     "",
+     "27,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of stock",
+     "",
+     "950,000",
+     "",
+     "95",
+     "",
+     "\u2014",
+     "",
+     "143,405",
+     "",
+     "\u2014",
+     "",
+     "",
+     "143,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(280,743)",
+     "",
+     "",
+     "(280,743)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2020",
+     "",
+     "31,211,560",
+     "$",
+     "3,123",
+     "$",
+     "\u2014",
+     "$",
+     "10,574,828",
+     "$",
+     "(9,730,028)",
+     "",
+     "$",
+     "847,923",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these condensed financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 733,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 767,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INNOVATIVE DESIGNS, INC."
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS"
+    ],
+    [
+     "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE DESIGNS, INC.",
+    "STATEMENTS OF CASH FLOWS",
+    "FOR THE YEARS ENDED OCTOBER 31, 2020 AND 2019"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(280,743)",
+     "",
+     "",
+     "$",
+     "(520,591)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Allowance for doubtful accounts",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "10,409",
+     ""
+    ],
+    [
+     "  Impairment loss of deposits on inventory",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "17,000",
+     ""
+    ],
+    [
+     "  Common stock issued for services",
+     "",
+     "",
+     "27,000",
+     "",
+     "",
+     "",
+     "35,500",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "",
+     "",
+     "33,308",
+     "",
+     "",
+     "",
+     "33,037",
+     ""
+    ],
+    [
+     "(Increase) decrease from changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "",
+     "(13,952)",
+     "",
+     "",
+     "",
+     "(2,902)",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "",
+     "59,674",
+     "",
+     "",
+     "",
+     "84,803",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "11,669",
+     ""
+    ],
+    [
+     "  Right of use asset",
+     "",
+     "",
+     "36,173",
+     "",
+     "",
+     "",
+     "(115,910)",
+     ""
+    ],
+    [
+     "Increase (decrease) from changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "",
+     "12,254",
+     "",
+     "",
+     "",
+     "63,136",
+     ""
+    ],
+    [
+     "  Lease liability",
+     "",
+     "",
+     "(36,173)",
+     "",
+     "",
+     "",
+     "115,910",
+     ""
+    ],
+    [
+     "  Accrued interest expense",
+     "",
+     "",
+     "(3,490)",
+     "",
+     "",
+     "",
+     "(3,648)",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "",
+     "3,637",
+     "",
+     "",
+     "",
+     "5,141",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(162,312)",
+     "",
+     "",
+     "",
+     "(266,446)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Capital expenditures",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from sale of stock",
+     "",
+     "",
+     "143,500",
+     "",
+     "",
+     "",
+     "207,440",
+     ""
+    ],
+    [
+     "  Proceeds from shareholder advances",
+     "",
+     "",
+     "39,500",
+     "",
+     "",
+     "",
+     "47,600",
+     ""
+    ],
+    [
+     "  Payments on shareholder advances",
+     "",
+     "",
+     "(33,400)",
+     "",
+     "",
+     "",
+     "(46,850)",
+     ""
+    ],
+    [
+     "  Proceeds from note payable",
+     "",
+     "",
+     "33,652",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Payments on notes payable",
+     "",
+     "",
+     "(7,456)",
+     "",
+     "",
+     "",
+     "(19,422)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "175,796",
+     "",
+     "",
+     "",
+     "188,768",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash",
+     "",
+     "",
+     "13,484",
+     "",
+     "",
+     "",
+     "(77,678)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, BEGINNING OF YEAR",
+     "",
+     "",
+     "34,525",
+     "",
+     "",
+     "",
+     "112,203",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, END OF THE PERIOD",
+     "",
+     "$",
+     "48,009",
+     "",
+     "",
+     "$",
+     "34,525",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "",
+     "$",
+     "9,417",
+     "",
+     "",
+     "$",
+     "21,908",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for taxes",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these condensed financial statements.\nNOTES TO THE FINANCIAL STATEMENTS\nYears Ended October 31, 2020 and 2019\n1. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nNature of Operations - Innovative Designs, Inc. (the \u201cCompany\u201d), which was incorporated in the State of Delaware on June 25, 2002, markets cold weather recreational and industrial clothing products, as well as house wrap, which are made from INSULTEX, a low density foamed polyethylene, a material with buoyancy, scent block, and thermal resistant properties. Our clothing and housewrap is offered and sold by retailers, distributors, and companies throughout the United States and Canada.\nWe operate two reportable segments: Apparel and House Wrap. Our apparel segment offers a wide variety of extreme cold weather apparel and related items. Our House Wrap segment offers our INSULTEX House Wrap which has an R-value of 3 and an R-value of 6 and our own seam tape.\nBasis of Accounting - The financial statements are prepared using the accrual basis of accounting in which revenues are recognized when earned and expenses are recognized when incurred.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 767,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "$",
+     "221,835",
+     "",
+     "$",
+     "221,835"
+    ],
+    [
+     "Containers",
+     "",
+     "",
+     "14,900",
+     "",
+     "",
+     "14,900"
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "",
+     "11,083",
+     "",
+     "",
+     "11,083"
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "",
+     "4,806",
+     "",
+     "",
+     "4,806"
+    ],
+    [
+     "Automobile",
+     "",
+     "",
+     "9,121",
+     "",
+     "",
+     "9,121"
+    ],
+    [
+     "",
+     "",
+     "",
+     "261,745",
+     "",
+     "",
+     "261,745"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "",
+     "196,558",
+     "",
+     "",
+     "163,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment \u2013 net",
+     "",
+     "$",
+     "65,187",
+     "",
+     "$",
+     "98,495"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 916
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "These financial statements have been prepared on a going concern basis, which implies that the Company will continue to realize its assets and discharge its liabilities in the normal course of business. The Company had net losses of $280,743 and $520,591 and a negative cash flow from operations of $162,312 and $266,446 for the years ended October 31, 2020 and 2019, respectively. In addition, the Company has an accumulated deficit of $9,730,028. These factors raise substantial doubt regarding the Company\u2019s ability to continue as a going concern for a period of one year from the issuance of these financial statements. Managements plans include continued sales, sales of Company stock, and borrowings from private parties. These financial statements do not include any adjustments to the recoverability and classification of recorded asset amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.\n3. RIGHT OF USE ASSETS AND LEASE LIABILITIES\nDuring the quarter ended April 30, 2019, the Company implemented Accounting Standards Update 2016-02, leases. Under the new guidance, a lessee must be record a liability for lease payments (referred to as the lease liability) and an asset for the right to use the leased asset during the lease term (referred to as the right of use asset) for all leases, regardless of whether they are designated as finance or operating leases. This election requires the lessee to recognize lease expense on a straight-line basis over the lease term. The right of use assets and corresponding right of use liabilities have been recorded using the present value of the leases. See Notes 15 and 16 within the financial statement for additional disclosure on leases.\n4. PROPERTY AND EQUIPMENT\nProperty and equipment are summarized by major classifications as follows:",
+   "prose_after": "Depreciation expense for the fiscal years ended October 31, 2020 and 2019 was $33,308 and $33,037, respectively.\n5. BORROWINGS\nBorrowings at October 31, 2020 and 2019 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Due to Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable $8,000 - Roberta Riccelli, February 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Due June 17, 2012; interest is 10% for 120 days. Note was extended through a verbal agreement with no set maturity date.",
+     "",
+     "$",
+     "3,000",
+     "",
+     "$",
+     "3,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable $20,000 - Corinthian Development,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    January 15, 2013. Due May 15, 2013; payable on demand; interest is 10%; Note was extended through a verbal agreement with no set maturity date.",
+     "",
+     "",
+     "10,000",
+     "",
+     "",
+     "10,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable $25,000 - Sol & Tina Waxman Family",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Foundation, March 2015. Amended January 15, 2018 for $30,250; Due January 5, 2019; interest is 10%.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable $90,000 - Joseph Riccelli, Sr., May 2013.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Due November 22, 2013; interest is 10% for 180 days. Note was extended through a verbal agreement with no set maturity date.",
+     "",
+     "",
+     "8,400",
+     "",
+     "",
+     "8,400"
+    ],
+    [
+     "  Note Payable $4,500 - Joseph Riccelli, Sr., August 2019.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest is 10% for 180 days; No set maturity date.",
+     "",
+     "",
+     "4,500",
+     "",
+     "",
+     "4,500"
+    ],
+    [
+     "  Note Payable $36,500 - Joseph Riccelli, Sr., September 2019.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest is 10% for 180 days; No set maturity date.",
+     "",
+     "",
+     "36,500",
+     "",
+     "",
+     "36,500"
+    ],
+    [
+     "  Note Payable $3,000 - Joseph Riccelli, Sr., October 2019.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest is 10% for 180 days; No set maturity date.",
+     "",
+     "",
+     "3,000",
+     "",
+     "",
+     "3,000"
+    ],
+    [
+     "    Note Payable $38,000 - Joseph Riccelli, Sr., December 2019. Interest is 10% for 180 days; No set maturity date.",
+     "",
+     "",
+     "4,600",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable $50,000 - Lawrence Fraser, May 29, 2018.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Due June 1, 2019; interest is 10% annually. Note was extended through a verbal agreement with no set maturity date;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable $40,672 - Riccelli Properties, August 7, 2017.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Due February 7, 2018; interest is 10%. Note was extended through a verbal agreement with no set maturity date",
+     "",
+     "",
+     "32,200",
+     "",
+     "",
+     "32,200"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Due to Stockholders",
+     "",
+     "$",
+     "102,200",
+     "",
+     "$",
+     "96,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 924,
+    "end_line": 957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "Depreciation expense for the fiscal years ended October 31, 2020 and 2019 was $33,308 and $33,037, respectively.\n5. BORROWINGS\nBorrowings at October 31, 2020 and 2019 consisted of the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable \u2013 U.S. Small Business Administration.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    PPP Loan proceeds received on May 5, 2020",
+     "",
+     "",
+     "33,652",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - U.S. Small Business Administration.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Due July 2035; payable in monthly installments of $1,820 including interest at 2.9% annum.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "92,608",
+     "",
+     "$",
+     "100,064"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Borrowings",
+     "",
+     "",
+     "228,460",
+     "",
+     "",
+     "199,164"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less Due to Stockholders",
+     "",
+     "",
+     "102,200",
+     "",
+     "",
+     "99,100"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less Current Portion of Notes Payable",
+     "",
+     "",
+     "18,628",
+     "",
+     "",
+     "19,168"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Long Term Portion of Notes Payable",
+     "",
+     "$",
+     "107,632",
+     "",
+     "$",
+     "80,896"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 959,
+    "end_line": 982
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Maturities of long-term debt are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1006,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending",
+     "",
+     "",
+     "Notes",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 31",
+     "Stockholders",
+     "",
+     "Payable",
+     "",
+     "Amount Due",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "102,200",
+     "",
+     "18,628",
+     "",
+     "120,828"
+    ],
+    [
+     "2022",
+     "",
+     "",
+     "",
+     "19,739",
+     "",
+     "19,739"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "",
+     "20,319",
+     "",
+     "20,319"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "",
+     "20,916",
+     "",
+     "20,916"
+    ],
+    [
+     "2025 & thereafter",
+     "",
+     "",
+     "",
+     "46,658",
+     "",
+     "46,658"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "102,200",
+     "",
+     "126,260",
+     "",
+     "228,460"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 1000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "Maturities of long-term debt are as follows:",
+   "prose_after": "DUE TO STOCKHOLDERS\nIn February 2012, the Company entered into a note payable with Roberta Riccelli for $8,000. This loan was to be used to fund operations of the Company. This loan is due on demand, including interest at 10% for 120 days. This note was extended through a verbal agreement. The loan balance as of October 31, 2020 and 2019 was $3,000.\nIn January 2013, the Company entered into a note payable with Corinthian Development for $20,000. This loan was to be used to fund operations of the Company. This loan is due on demand, including interest at 10% with an original repayment date of May 2013. This note was extended through a verbal agreement. The loan balance at October 31, 2020 and 2019 was $10,000.\nIn May 2013, the Company entered into a note payable with its CEO, Joseph Riccelli, for $90,000. This loan was to be used to fund operations of the Company. This loan is due on demand, including interest at 10% with an original repayment date of November 2013. This note was extended through a verbal agreement. The loan balance at October 31, 2020 and 2019 was $8,400.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 957,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1006,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "",
+     "$",
+     "2,063,193",
+     "",
+     "",
+     "$",
+     "2,011,532",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net deferred tax assets before valuation allowance",
+     "",
+     "",
+     "2,063,193",
+     "",
+     "",
+     "",
+     "2,011,532",
+     ""
+    ],
+    [
+     "Less: Valuation allowance",
+     "",
+     "",
+     "(2,063,193)",
+     "",
+     "",
+     "",
+     "(2,011,532)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1044,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "In prior years, the Company incurred net operating losses and, accordingly, no provision for income taxes has been recorded. In addition, no benefit for income taxes has been recorded due to the uncertainty of the realization of any tax assets. For the 2019 tax year, fiscal year end October 31, 2020, the Company had net operating loss carryforwards of approximately $7,100,000 for tax purposes. The carryforwards are available to offset taxable income of future periods and begin to expire after the Company\u2019s 2037 tax year, fiscal year end October 31, 2038. Effective for tax years ending in 2019 or later, net operating losses cannot be carried back but can be carried forward to future tax years indefinitely. Realization of the deferred tax benefit related to the carryforward is dependent upon the Company generating sufficient taxable income in the future, against which the loss can be offset, which is not guaranteed.\nDeferred income taxes reflect the net tax effect of temporary differences between carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes, as well as tax benefits of net operating loss carryforwards. The significant components of the Company\u2019s deferred tax assets and liabilities relate to the following:",
+   "prose_after": "For financial reporting purposes, the Company has incurred losses in previous years. Based on the available objective evidence, including the Company\u2019s previous losses, management believes it is more likely than not that the net deferred tax assets will not be fully realizable. Accordingly, the Company provided for a full valuation allowance against its net deferred tax assets as of October 31, 2020 and 2019, respectively.\nThe effective income tax rate varied from the statutory Federal tax rate as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory rate",
+     "",
+     "",
+     "21",
+     "%",
+     "",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Effect of net operating losses",
+     "",
+     "",
+     "(21",
+     "%)",
+     "",
+     "",
+     "(21",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "For financial reporting purposes, the Company has incurred losses in previous years. Based on the available objective evidence, including the Company\u2019s previous losses, management believes it is more likely than not that the net deferred tax assets will not be fully realizable. Accordingly, the Company provided for a full valuation allowance against its net deferred tax assets as of October 31, 2020 and 2019, respectively.\nThe effective income tax rate varied from the statutory Federal tax rate as follows:",
+   "prose_after": "The Company\u2019s effective tax rate is lower than what would be expected if the federal statutory rate were applied to income (loss) before taxes, primarily due to net operating loss carryforwards.\n9. COMMITMENTS\nThe Company leases its executive offices/warehouse space from Frank Riccelli, a stockholder and brother of our Chief Executive Officer, for $3,500 per month. The lease is based on a verbal agreement with month to month terms. For the fiscal years ended October 31, 2020 and 2019 rent expense totaled $27,000 and $42,000, respectively.\n10. SEGMENT INFORMATION\nWe have organized our operations into two segments as discussed in Note 1 to the financial statements. We rely on an internal management reporting process that provides segment information for purposes of making financial decisions and allocating resources.\nThe following tables present our business segment information for the fiscal years ending October 31, 2020 and 2019:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1042,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apparel",
+     "",
+     "$",
+     "70,968",
+     "",
+     "$",
+     "135,506"
+    ],
+    [
+     "Housewrap",
+     "",
+     "",
+     "131,285",
+     "",
+     "",
+     "80,469"
+    ],
+    [
+     "Total Revenues",
+     "",
+     "$",
+     "202,253",
+     "",
+     "$",
+     "215,975"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Expenditures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apparel",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Housewrap",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apparel",
+     "",
+     "$",
+     "9,410",
+     "",
+     "$",
+     "9,410"
+    ],
+    [
+     "Housewrap",
+     "",
+     "",
+     "23,898",
+     "",
+     "",
+     "23,627"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "33,308",
+     "",
+     "$",
+     "33,037"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1088,
+    "end_line": 1113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "The Company\u2019s effective tax rate is lower than what would be expected if the federal statutory rate were applied to income (loss) before taxes, primarily due to net operating loss carryforwards.\n9. COMMITMENTS\nThe Company leases its executive offices/warehouse space from Frank Riccelli, a stockholder and brother of our Chief Executive Officer, for $3,500 per month. The lease is based on a verbal agreement with month to month terms. For the fiscal years ended October 31, 2020 and 2019 rent expense totaled $27,000 and $42,000, respectively.\n10. SEGMENT INFORMATION\nWe have organized our operations into two segments as discussed in Note 1 to the financial statements. We rely on an internal management reporting process that provides segment information for purposes of making financial decisions and allocating resources.\nThe following tables present our business segment information for the fiscal years ending October 31, 2020 and 2019:",
+   "prose_after": "11. COMMON STOCK\nDuring the fiscal year ended October 31, 2019, the Company sold 1,867,000 shares of common stock to nine investors for total proceeds of $264,040. The stock was issued between $0.08 and $0.17 per share. During the fiscal year ended October 31,2019, 550,000 shares of common stock were issued to one note holder for the extinguishment of a $50,000 note payable and $5,000 of accrued interest. This stock was issued at $0.10 per share. The Company issued 210,000 shares of common stock to three individuals for services valued at $35,500. The stock was issued between $0.15 and $0.20 per share. We believe that Section 4(2) of the Securities Act of 1933, as amended, was available because these transactions did not involve a public offering and there was no general solicitation or general advertising involved in these transactions. We placed legends on the stock certificates stating that the securities were not registered under the Securities Act and set for the restrictions on their transferability and sale.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1119,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total present value of right of use asset under lease agreement",
+     "",
+     "$",
+     "150,496",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of right of use asset",
+     "",
+     "",
+     "(79,759)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total right of use asset as of October 31, 2020",
+     "",
+     "$",
+     "79,737",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less current portion due within one year",
+     "",
+     "",
+     "38,775",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term right of use asset",
+     "",
+     "$",
+     "40,962",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1141,
+    "end_line": 1155
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "On July 22, 2021, the Registrant was informed that the United States Court of Appeals for the Third District affirmed the District Court\u2019s ruling in favor of the Registrant. The ruling was in connection with the Federal Trade Commission complaint filed against the Registrant in November 2016, alleging, among other matters, that the Registrant did not have substantiation for claims made by the Registrant regarding the R-value and energy efficiency of its INSULTIX House Wrap products.\n14. RIGHT OF USE ASSETS\nThe Company entered into a month to month verbal lease at the time the Company was formed that is classified as right of use asset and lease liability. The lease for the Company\u2019s office space is estimated to be through June 2022. In accordance with ASU 2016-02, the Company calculated the present value of the leases using the average commercial real estate interest rate of 5.50% at the commencement of the office lease. Applying the commercial rate, the Company calculated the present value of $ for the office lease as of October 31, 2020.\nAs of October 31, 2020, the right of use assets associated with future operating lease is as follows:",
+   "prose_after": "Total amortization expense related to the right of use assets under the verbal lease agreement was $36,173 and $22,174 for the years ended October 31, 2020 and 2019, respectively.\nFuture amortization of the right of use asset as of October 31, 2020 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1119,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021",
+     "",
+     "",
+     "38,775"
+    ],
+    [
+     "2022",
+     "",
+     "",
+     "40,962"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "79,737"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1161,
+    "end_line": 1168
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "Total amortization expense related to the right of use assets under the verbal lease agreement was $36,173 and $22,174 for the years ended October 31, 2020 and 2019, respectively.\nFuture amortization of the right of use asset as of October 31, 2020 is as follows:",
+   "prose_after": "15. LEASE LIABILITY\nAs disclosed in Note 14, the Company entered into a verbal lease for office space prior to the year ended October 31, 2020 that is classified as a right of use asset and lease liability.\nAs of October 31, 2020, the lease liability associated with future payments due under the verbal lease is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total present value of future lease payments",
+     "",
+     "$",
+     "150,496",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments made as of the year ended October 31, 2020",
+     "",
+     "",
+     "(79,759)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total right of use lease liabilities as of October 31, 2020",
+     "",
+     "$",
+     "79,737",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "15. LEASE LIABILITY\nAs disclosed in Note 14, the Company entered into a verbal lease for office space prior to the year ended October 31, 2020 that is classified as a right of use asset and lease liability.\nAs of October 31, 2020, the lease liability associated with future payments due under the verbal lease is as follows:",
+   "prose_after": "Total maturities of lease liability as of October 31, 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total future",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "minimum lease",
+     "",
+     "Present value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "payments",
+     "",
+     "discount",
+     "",
+     "lease liability",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "42,000",
+     "",
+     "3,225",
+     "",
+     "38,598"
+    ],
+    [
+     "2022",
+     "",
+     "42,000",
+     "",
+     "1,038",
+     "",
+     "40,775"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "84,000",
+     "$",
+     "4,263",
+     "$",
+     "79,737"
+    ]
+   ],
+   "caption_stack": [
+    "Total future"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1187,
+    "end_line": 1200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "Total maturities of lease liability as of October 31, 2020 are as follows:",
+   "prose_after": "16. SUBSEQUENT EVENTS\nSubsequent to the period in October 31, 2020, the Company borrowed $200,000 from an individual. The note is secured by one of the Company\u2019s patent. The term of the loan is three years and the interest rate is 12% per annum. The loan is to be repaid in yearly installments with the first payment of $66,666 to be paid on the 180th day from the date of the loan. Thereafter, each installment will be due and payable one year from the date of the loan and each succeeding calendar until three years from the date of the loan year.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS AND FINANCIAL DISCLOSURE.\nOn July 13, 2021, the Company dismissed Louis Plung & Company (\u201cLouis Plung\u201d). On the same day the Company\u2019s Board of Directors appointed Boyle CPA, LLC as the Company\u2019s auditors.\nITEM 9A. (T) CONTROLS AND PROCEDURES.\nDisclosure Controls and Procedures\nManagement of Innovative Designs, Inc. is responsible for maintaining disclosure controls and procedures that are designed to ensure that information required to be disclosed in the reports that the Company files or submits under the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d) is recorded, processed, summarized and reported within the time periods specified in the Securities and Exchange Commission\u2019s rules and forms. In addition, the disclosure controls and procedures must ensure that such information is accumulated and communicated to the Company\u2019s management, including its Chief Executive Officer/Chief Financial Officer, as appropriate, to allow timely decisions regarding required financial and other required disclosures.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1155,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Term"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Riccelli",
+     "71",
+     "Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Chairman",
+     "1 year"
+    ],
+    [
+     "Dean P. Kolocouris",
+     "51",
+     "Director",
+     "1 year"
+    ],
+    [
+     "Daniel P. Rains",
+     "69",
+     "Director",
+     "1 year"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1250,
+    "end_line": 1258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "\u25cf Representative with Financial Expertise \u2013 For the year ended October 31, 2019, the Company did not have an employee with the requisite knowledge and expertise to review the financial statements and disclosures at a sufficient level to monitor the financial statements and disclosures to the Company. All of our financial reporting is carried out by one individual and the use of an external accounting firm. This lack of accounting staff results in a lack of segregation of duties, timeliness in closing the books and records, delays in filing quarterly and annual financial information, numerous post-closing adjusting journal entries, and accounting technical expertise necessary for an effective system of internal control. Failure to have a representative with such knowledge and expertise amounts to a material weakness to the Company\u2019s internal controls over its financial reporting processes.\nThere have been no significant changes in our internal control over financial reporting during the fiscal year ended October 31, 2020 and 2019, or subsequent to October 31, 2020, that has materially affected or is reasonably likely to materially affect, our internal control over financial reporting, except as discussed above.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDirectors and Executive Officers\nOur executive officers are elected annually by our board of directors. A majority vote of the directors who are in office is required to fill vacancies on the board. Each director shall be elected for the term of one (1) year and until his successor is elected and qualified, or until his earlier resignation or removal. The directors named below will serve until the next annual meeting of our shareholders or until a successor is elected and has accepted the position.\nOur directors and executive officers are as follows:",
+   "prose_after": "Joseph Riccelli has been our Chief Executive Officer and Chairman of the Board since our inception in June 2002. Mr. Riccelli was the owner of Pittsburgh Foreign and Domestic, a sole proprietor car dealership located in Glenshaw, Pennsylvania. He attended Point Park College located in Pittsburgh, Pennsylvania from 1971 to 1972.\nDean P. Kolocouris has been one of our Directors since our inception in June 2002. From December 1996 to December, Mr. Kolocouris was a Loan Officer and Assistant Vice President at Eastern Savings Bank located in Pittsburgh, Pennsylvania. Since that time, he has been in private lending. In June 1993, Mr. Kolocouris received a bachelor\u2019s degree in Finance from Duquesne University located in Pittsburgh, Pennsylvania. Mr. Kolcouris has been in banking for over fifteen years and his knowledge of finance and business experience is helpful to the Company.\nDaniel P. Rains has been a director since March 2007. Mr. Rains is currently Vice President of business development at McCarl\u2019s, Inc., a mechanical contracting firm. He has held this position for over fifteen years. From 1981 through 1987, Mr. Rains was a professional football player for the Chicago Bears. He is a graduate of the University of Cincinnati. Mr. Rains has been in professional sports and in business for over twenty years. His experience and knowledge of these fields are helpful to the Company. As the Company enters the building construction market with its House Wrap product, Mr. Rains\u2019 experience in that industry will be especially helpful.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1239,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1269,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Riccelli",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CEO, Chairman",
+     "",
+     "2020",
+     "$",
+     "62,700",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "$",
+     "62,700"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Riccelli",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CEO, Chairman",
+     "",
+     "2019",
+     "$",
+     "62,700",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "$",
+     "62,700"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "We do not have either a nominating committee or a compensation committee. The basis for the Board of Directors to not have a nominating committee is the fact that our principal stockholder who is also our CEO and Chairman of the Board controls approximately thirty-four percent of the voting stock. And the Company has never held an Annual Meeting of stockholders. New board members are recommended to the Board by the Chairman of the Board.\nBoard of Directors Meetings\nDuring the last full fiscal year, there were no meetings of the Board of Directors.\nCode of Ethics\nWe have not, as yet, adopted a code of ethics. We have only one full time executive officer/ chief financial officer who also acts as our principal accounting officer. To date, our operations have been so minimal and our staff so small that we have not considered a formal standard relating to the conduct of our personnel.\nITEM 11. EXECUTIVE COMPENSATION.\nThe following Executive Compensation Chart highlights the terms of compensation for our Executives.",
+   "prose_after": "There are no employment agreements between us and our executive officer Joseph Riccelli. There are no change of control arrangements, either by means of a compensatory plan, agreement, or otherwise, involving our current or former executive officers. There are no automobile lease agreements or key man life insurance policies that are to the benefit of our executive officers, in which we would make such payments. There are no standard or other arrangements in which our directors are compensated for any services as a director, including any additional amounts payable for committee participation or special assignments. There are no other arrangements in which any of our directors were compensated during our last fiscal year for any service provided as a director.\nOther than Mr. Riccelli, who is our CEO, the Board of Directors considers the remaining Directors Messrs. Kolocouris and Rains to be independent directors.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1290,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1328,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Fees Paid or Paid in Cash ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Dean P. Kolocouris Kolocouris",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Daniel P. Rains Rains",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Joseph Riccelli Riccelli",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "Director Compensation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1313,
+    "end_line": 1327
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "There are no employment agreements between us and our executive officer Joseph Riccelli. There are no change of control arrangements, either by means of a compensatory plan, agreement, or otherwise, involving our current or former executive officers. There are no automobile lease agreements or key man life insurance policies that are to the benefit of our executive officers, in which we would make such payments. There are no standard or other arrangements in which our directors are compensated for any services as a director, including any additional amounts payable for committee participation or special assignments. There are no other arrangements in which any of our directors were compensated during our last fiscal year for any service provided as a director.\nOther than Mr. Riccelli, who is our CEO, the Board of Directors considers the remaining Directors Messrs. Kolocouris and Rains to be independent directors.",
+   "prose_after": "Securities Authorized for Issuance under Equity Compensation Plans.\nEquity Compensation Plan Information",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1290,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1328,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warranties and rights",
+     "",
+     "Weighted-average exercise price of outstanding options, warranties and rights",
+     "",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding those reflected in column (a))",
+     ""
+    ],
+    [
+     "",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "$",
+     "0",
+     "$",
+     "0.90",
+     "(1)",
+     "",
+     "400,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1333,
+    "end_line": 1342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "Securities Authorized for Issuance under Equity Compensation Plans.\nEquity Compensation Plan Information",
+   "prose_after": "(1) Weighted average price was based on market value of the shares on or about the date the service was performed. Market value of the price per share ranged from $1.90 to $0.76 per share over the period of time in which the various services were performed. Weighted average price was based on market value of the shares on or about the date the service was performed. Market value of the price per share ranged from $1.90 to $0.76 per share over the period of time in which the various services were performed.\n(2) All stock that has been issued by the Company out of the equity compensation plan was for the exchange of professional services. were sold for cash. No shares All stock that has been issued by the Company out of the equity compensation plan was for the exchange of professional services. were sold for cash. No shares\nUse of Proceeds from Registered Securities\nNot Applicable\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth the ownership as of August 2, 2021 (a) by each person known by us to be the beneficial owner of more than five percent (5%) of our outstanding common stock, and/or (b) by each of our directors, by all executive officers and our directors and executive officers as a group.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1328,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Security Ownership of Management",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Title of Class",
+     "Name and Address",
+     "",
+     "",
+     "Amount",
+     "Nature",
+     "Percent",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "Joseph Riccelli",
+     "",
+     "",
+     "7,390,000",
+     "Direct",
+     "23.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chairman of the Board",
+     "(1)",
+     "",
+     "451,478",
+     "Indirect",
+     "1.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "of Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "c/o Innovative Designs, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "124 Cherry St.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Pittsburgh, Pa 15223",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "Dean P. Kolocouris",
+     "",
+     "",
+     "92,000",
+     "Direct",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "c/o Innovative Designs, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "124 Cherry St.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Pittsburgh, Pa 15223",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "Daniel P. Rains",
+     "",
+     "",
+     "135,000",
+     "Direct",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "c/o Innovative Designs, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "124 Cherry St.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Pittsburgh, Pa 15223",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  All Directors and Executive Officers as a Group",
+     "",
+     "",
+     "8,073,000",
+     "",
+     "",
+     "24.5%",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Security Ownership of Management"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1357,
+    "end_line": 1386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "(2) All stock that has been issued by the Company out of the equity compensation plan was for the exchange of professional services. were sold for cash. No shares All stock that has been issued by the Company out of the equity compensation plan was for the exchange of professional services. were sold for cash. No shares\nUse of Proceeds from Registered Securities\nNot Applicable\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth the ownership as of August 2, 2021 (a) by each person known by us to be the beneficial owner of more than five percent (5%) of our outstanding common stock, and/or (b) by each of our directors, by all executive officers and our directors and executive officers as a group.\nTo the best of our knowledge, all persons named have sole voting and investment power with respect to such shares, except as otherwise noted. There are not any pending or anticipated arrangements that may cause a change in our control.",
+   "prose_after": "* Represents less than one percent.\n(1) Represents shares of common stock held in the Gino A. Riccelli Trust. The Trust is for a son of our Chief Financial Officer. Mr. Joseph Riccelli is the trustee of the trust.\nBy virtue of his stock ownership or control over our stock, Mr. Riccelli may be deemed to \u201ccontrol\u201d the Company.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS.\nOur officers and directors may encounter conflicts of interests between our business objectives and their own interests. We have not formulated a policy for the resolution of such conflicts. Future transactions or arrangements between or among our officers, directors and shareholders, and businesses they control, may result in conflicts of interest, and the conflicts may be resolved in favor of businesses that our officers or directors are affiliated, which may have an adverse effect on our revenues.\nOur officers and directors have the following conflicts of interests:\n\u25cf We lease our warehouse space from the brother of our Chief Executive Officer. We pay $3,500 per month for a total of $42,000 per year.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1397,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "3.1",
+     "Revised Certificate of Incorporation****"
+    ],
+    [
+     "",
+     "3.2",
+     "Bylaws*"
+    ],
+    [
+     "",
+     "4",
+     "Specimen Stock Certificate*"
+    ],
+    [
+     "",
+     "10.1",
+     "Exclusive License and Manufacturing Agreement by and between Ko-Myung Kim, Ketut Jaya and Innovative Designs, Inc. [Confidential Treatment Requested] **"
+    ],
+    [
+     "",
+     "10.2",
+     "Authorization dated April 1, 2008 by and between Jordan Outdoor Enterprises, Ltd and Innovative Designs, Inc.***"
+    ],
+    [
+     "",
+     "10.3",
+     "License Agreement effective May 30, 2005 by and between Haas outdoors, Inc. and Innovative Designs, Inc.***"
+    ],
+    [
+     "",
+     "10.4",
+     "Loan Authorization Agreement, dated July 12, 2005 between the U. S. Small Business Administration and Innovative Designs, Inc.***"
+    ],
+    [
+     "",
+     "10.6",
+     "Motor Vehicle Installment Sale Contract dated September 26, 2005. ***"
+    ],
+    [
+     "",
+     "10.7",
+     "Machinery Purchase Agreement *****"
+    ],
+    [
+     "",
+     "23.1",
+     "Consent of Boyle CPA, LLC"
+    ],
+    [
+     "",
+     "31.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "31.2",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "32.1",
+     "Certification Pursuant To 18 U.S.C. Section 1350, As Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "32.2",
+     "Certification Pursuant To 18 U.S.C. Section 1350, As Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "99",
+     "Test Results from Vartest Lab.*"
+    ],
+    [
+     "",
+     "100",
+     "Test Results from Texas Research Institute Austin, Inc.*"
+    ],
+    [
+     "",
+     "101",
+     "Interactive data files pursuant to Rule 405 of Regulation S-T: (i) the Statement of Operations for the years ended October 31, 2020 and 2019, (ii) the Balance Sheets at October 31, 2020 and 2019, (iii) the Statements of Cash Flows for the years ended October 31, 2020 and 2019 and (iv) the notes to the Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1427,
+    "end_line": 1450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nAudit Fees\nThe aggregate fees billed for the fiscal years ended October 31, 2020 and 2019 for professional services rendered by the principal accountant for the audit of our annual financial statements and review of the financial statements included in our Form 10-K or services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for these fiscal periods were as follows: (a) during fiscal year ended October 31, 2020 and 2019, our current auditors, Boyle CPA, LLC billed the Company $17,500 for professional services, respectively.\nAudit Related Fees\nNone.\nTax Fees\nNone.\nAll Other Fees\nNone.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.",
+   "prose_after": "* Previously filed as exhibits to Registration Statement on Form SB-2 filed on March 11, 2003\n** Previously filed as exhibit to Form 10-KSB filed on February 8, 2008\n*** Previously filed as exhibits to Form 10-K/A filed November 23, 2009\n**** Previously filed as exhibit to Form 10-K filed February 12, 2015\n***** Previously filed as exhibit to Form 10-K filed January 28, 2016\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1461,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INNOVATIVE DESIGNS, INC.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 4, 2021",
+     "by:",
+     "/s/ Joseph Riccelli"
+    ],
+    [
+     "",
+     "",
+     "Joseph Riccelli"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVATIVE DESIGNS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1466,
+    "end_line": 1476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "* Previously filed as exhibits to Registration Statement on Form SB-2 filed on March 11, 2003\n** Previously filed as exhibit to Form 10-KSB filed on February 8, 2008\n*** Previously filed as exhibits to Form 10-K/A filed November 23, 2009\n**** Previously filed as exhibit to Form 10-K filed February 12, 2015\n***** Previously filed as exhibit to Form 10-K filed January 28, 2016\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1461,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1499,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:",
+     "August 4, 2021",
+     "by:",
+     "/s/ Joseph Riccelli"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Joseph Riccelli"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Executive Officer,"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer, Principal"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Accounting Officer, and Chairman"
+    ],
+    [
+     "",
+     "",
+     "",
+     "of the Board of Directors"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "August 4, 2021",
+     "by:",
+     "/s/ Dean P. Kolocouris"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Dean P. Kolocouris"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "August 4, 2021",
+     "by:",
+     "/s/ Daniel Rains"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Daniel Rains"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1479,
+    "end_line": 1498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "within the financial statement for additional disclosure on leases."
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1461,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1499,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

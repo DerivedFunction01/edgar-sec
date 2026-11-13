@@ -1,0 +1,2411 @@
+{
+ "accession": "0001359948-16-000073",
+ "cik": "0001122342",
+ "form": "10-K/A",
+ "filing_date": "2016-05-02",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "afop_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "77-0554122"
+    ],
+    [
+     "(State or other jurisdiction of incorporation",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "or organization)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A Amendment No. 1\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n---  ----------------------------------------------------------------------------------------\nFor the fiscal year ended December 31, 2015\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________to___________\nCommission File Number: 0-318570\nALLIANCE FIBER OPTIC PRODUCTS, INC. (Exact name of registrant as specified in its charter)\n275 Gibraltar Drive, Sunnyvale, CA 94089 (Address of principal executive offices)",
+   "prose_after": "Issuer\u2019s telephone number: (408) 736-6900\nSecurities registered pursuant to Section 12(b) of the Act:\nSecurities registered pursuant to Section 12(g) of the Act: None",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on which registered",
+     ""
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "The Nasdaq Stock Market LLC",
+     ""
+    ],
+    [
+     "Series A Participating Preferred Stock Purchase Rights",
+     "The Nasdaq Stock Market LLC",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Issuer\u2019s telephone number: (408) 736-6900\nSecurities registered pursuant to Section 12(b) of the Act:\nSecurities registered pursuant to Section 12(g) of the Act: None",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes\n[X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and disclosure will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, and \u201dsmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item",
+     "",
+     "Description"
+    ],
+    [
+     "ITEM 10",
+     "",
+     "Directors, Executive Officers and Corporate Governance"
+    ],
+    [
+     "ITEM 11.",
+     "",
+     "Executive Compensation"
+    ],
+    [
+     "ITEM 12.",
+     "",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    ],
+    [
+     "ITEM 13.",
+     "",
+     "Certain Relationships and Related Transactions, and Director Independence"
+    ],
+    [
+     "ITEM 14.",
+     "",
+     "Principal Accounting Fees and Services"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 78
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [ ]  Accelerated filer [X]  Non-accelerated filer [ ]  Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates (based upon the closing sale price on The Nasdaq Global Market on June 30, 2015) was approximately $241,321,495.\nAs of March 2, 2016 there were 15,788,585 shares of Common Stock, $0.001 per share par value, outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nEXPLANATORY NOTE\nAlliance Fiber Optic Products, Inc. is filing this Amendment No. 1, (the \u201cAmended Report\u201d), to our Annual Report on Form 10-K for the fiscal year ended December 31, 2015, filed with the Securities and Exchange Commission, or the SEC, on March 11, 2016, (the \u201cOriginal Report\u201d) in order to add certain information required by the following items of Form 10-K:",
+   "prose_after": "We hereby amend Items 10, 11, 12, 13 and 14 of Part III of our Original Report by deleting the text of such Items 10, 11, 12, 13 and 14 in their entirety and replacing them with the information provided below under the respective headings. The Amended Report does not affect any other items in our Original Report. As a result of this amendment, we are also filing as exhibits to this Amended Report the certifications pursuant to section 302 of the Sarbanes-Oxley Act of 2002. Because no financial statements are contained in this Amended Report, we are not including certifications pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nExcept as otherwise expressly stated for the items amended in this Amended Report, this Amended Report continues to speak as of the date of the Original Report and we have not updated the disclosure contained herein to reflect events that have occurred since the filing of the Original Report. In addition, we have not updated the disclosure contained herein to reflect the impact of our proposed merger with a subsidiary of Corning Incorporated announced on April 7, 2016 on the compensation of our executive officers, including, without limitation, the vesting of equity awards. Accordingly, this Amended Report should be read in conjunction with our Original Report and our other filings made with the SEC subsequent to the filing of the Original Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "",
+     "8"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "10"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXHIBIT INDEX",
+     "",
+     "",
+     "",
+     "16"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "We hereby amend Items 10, 11, 12, 13 and 14 of Part III of our Original Report by deleting the text of such Items 10, 11, 12, 13 and 14 in their entirety and replacing them with the information provided below under the respective headings. The Amended Report does not affect any other items in our Original Report. As a result of this amendment, we are also filing as exhibits to this Amended Report the certifications pursuant to section 302 of the Sarbanes-Oxley Act of 2002. Because no financial statements are contained in this Amended Report, we are not including certifications pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nExcept as otherwise expressly stated for the items amended in this Amended Report, this Amended Report continues to speak as of the date of the Original Report and we have not updated the disclosure contained herein to reflect events that have occurred since the filing of the Original Report. In addition, we have not updated the disclosure contained herein to reflect the impact of our proposed merger with a subsidiary of Corning Incorporated announced on April 7, 2016 on the compensation of our executive officers, including, without limitation, the vesting of equity awards. Accordingly, this Amended Report should be read in conjunction with our Original Report and our other filings made with the SEC subsequent to the filing of the Original Report.\nAll references to the \u201cCompany, \u201cwe\u201d, \u201cus\u201d, or \u201cour\u201d mean Alliance Fiber Optic Products, Inc.\n***\ni\nALLIANCE FIBER OPTIC PRODUCTS, INC.\nTABLE OF CONTENTS\n2015 FORM 10-K/A",
+   "prose_after": "i\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nDirectors\nThe names of our directors, their ages as of March 30, 2016 and certain biographical information concerning the directors is set forth below.\nCLASS I\nPeter C. Chang, 58, has served as our Chairman of the Board, Chief Executive Officer and President since our formation in December 1995. From 1990 to 1995, Mr. Chang was Division Manager at Hon Hai Holding, a fiber optics company, and from 1988 to 1990 was a member of the technology staff at Lucent Bell Labs. Mr. Chang received a B.S. in Mechanical Engineering from National Taiwan University and an M.S. in Mechanical Engineering from Notre Dame University. We believe Mr. Chang\u2019s qualifications to serve on our Board of Directors (the \u201cBoard\u201d) include his extensive industry expertise and his experience as our Chief Executive Officer and President.\nRichard Black, 82, has served as a director since April 2003. Since March 2002, Mr. Black has served as the Chairman and Chief Executive Officer, director and majority owner of ECRM, Inc., a worldwide supplier of electronic laser imaging devices for the publishing and graphic arts industries. He also serves as President and Chief Executive Officer of CRON-ECRM LLC, a joint venture company supplying electronic laser imaging devices to North America publishing industries. From August 1983 to March 2002, Mr. Black served as the Chairman and director of ECRM, Inc. He served as President of Oak Technology Inc., a semiconductor company, from January 1998 to March 1999, as Vice Chairman from March 1999 to August 2003 and as a director from 1988 to 2003. Until July 2010, Mr. Black served as the Chairman of the board of directors of GSI Group Inc., a manufacturer of laser systems and precision motion components, and he served on the GSI Board since 1999. Mr. Black also serves on the board of Applied Optoelectronics, Inc. (NASDAQ: AAOI) and boards of several private and non-profit companies. In addition, from 2002 to 2007, Mr. Black served on the board of directors of Altigen Communications, Inc., a manufacturer of VoIP telephone systems and unified communications systems. Mr. Black holds a B.S. in Engineering from Texas A&M University and an M.B.A. from Harvard University. We believe Mr. Black\u2019s qualifications to serve on our Board include his operational and management expertise, his experience as both a director and chairman of the board of other public companies, and his finance skills.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "All Other",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Bonus",
+     "",
+     "Awards",
+     "",
+     "Compensation",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "($)(1)",
+     "",
+     "($)(2)",
+     "",
+     "($)(3)",
+     "",
+     "Total ($)"
+    ],
+    [
+     "Peter C. Chang",
+     "",
+     "2015",
+     "",
+     "302,692",
+     "",
+     "250,000",
+     "",
+     "2,210,400",
+     "",
+     "2,290",
+     "",
+     "2,765,382"
+    ],
+    [
+     "President and Chief Executive Officer",
+     "",
+     "2014",
+     "",
+     "292,650",
+     "",
+     "250,000",
+     "",
+     "\u2014",
+     "",
+     "2,290",
+     "",
+     "544,940"
+    ],
+    [
+     "",
+     "",
+     "2013",
+     "",
+     "279,538",
+     "",
+     "250,000",
+     "",
+     "1,130,400",
+     "",
+     "2,290",
+     "",
+     "1,662,228"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David A. Hubbard",
+     "",
+     "2015",
+     "",
+     "210,738",
+     "",
+     "130,000",
+     "",
+     "607,860",
+     "",
+     "9,213",
+     "",
+     "957,811"
+    ],
+    [
+     "Executive Vice President,",
+     "",
+     "2014",
+     "",
+     "199,531",
+     "",
+     "92,000",
+     "",
+     "\u2014",
+     "",
+     "8,890",
+     "",
+     "300,421"
+    ],
+    [
+     "Sales and Marketing",
+     "",
+     "2013",
+     "",
+     "189,458",
+     "",
+     "100,000",
+     "",
+     "548,670",
+     "",
+     "8,890",
+     "",
+     "847,018"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anita K. Ho",
+     "",
+     "2015",
+     "",
+     "104,462",
+     "",
+     "12,000",
+     "",
+     "\u2014",
+     "",
+     "4,505",
+     "",
+     "120,967"
+    ],
+    [
+     "Acting Chief Financial Officer",
+     "",
+     "2014",
+     "",
+     "95,980",
+     "",
+     "12,000",
+     "",
+     "\u2014",
+     "",
+     "4,505",
+     "",
+     "112,485"
+    ],
+    [
+     "",
+     "",
+     "2013",
+     "",
+     "123,644",
+     "",
+     "12,000",
+     "",
+     "71,130",
+     "",
+     "4,505",
+     "",
+     "211,279"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 209,
+    "end_line": 226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "The following report of the Executive Compensation Committee shall not be deemed to be \u201csoliciting material\u201d or \u201cfiled\u201d with the SEC or to be incorporated by reference into any other filing by Alliance Fiber Optic Products, Inc. under the Securities Act of 1933 or the Securities Exchange Act of 1934, except to the extent that we specifically incorporate it by reference into a document filed under those Acts.\nThe Executive Compensation Committee has reviewed and discussed the Compensation Discussion and Analysis set forth above with our management. Based on its review and those discussions, the Executive Compensation Committee recommended to the Board of Directors that the Compensation Discussion and Analysis be included in this Annual Report on Form 10-K, as amended, for the year ended December 31, 2015.\nExecutive Compensation Committee Ray Sun, Chairman Richard Black Gwong-Yih Lee\nSummary Compensation Table\nThe following table sets forth compensation information for the cash amounts and the value of other compensation paid to our Chief Executive Officer and our two other most highly compensated executive officers for the years indicated.",
+   "prose_after": "(1) Consists of amounts earned in the fiscal year.\n(2) Amount represents grant date fair value computed in accordance with Financial Accounting Standards Board Accounting Standards Codification No. 718, Compensation\u2014Stock Compensation (\u201cASC 718\u201d). The actual value recognized by the individual is based on the market price of our Common Stock on the vesting dates and may be higher or lower.\n(3) Consists of Company contributions to the 401(k) of each individual, a monthly automobile allowance for Mr. Hubbard, and the value of insurance premiums paid by the Company.\nGrants of Plan-based Awards \u2013 2015\nThe following table sets forth number of shares of Common Stock underlying option awards were granted in 2015.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "All Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Estimated Future",
+     "",
+     "",
+     "",
+     "All Other",
+     "",
+     "Option",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Payouts Under",
+     "",
+     "Estimated Future",
+     "",
+     "Stock Awards:",
+     "",
+     "Awards:",
+     "",
+     "Exercise or",
+     "",
+     "Grant Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Non-Equity",
+     "",
+     "Payouts Under",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "Base Price",
+     "",
+     "Fair Value"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Incentive Plan",
+     "",
+     "Equity Incentive",
+     "",
+     "Shares of",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "of Stock and"
+    ],
+    [
+     "",
+     "",
+     "Grant",
+     "",
+     "Awards",
+     "",
+     "Plan Awards",
+     "",
+     "Stock or",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "Option"
+    ],
+    [
+     "Name",
+     "",
+     "Date",
+     "",
+     "Maximum($)",
+     "",
+     "Maximum($)",
+     "",
+     "Units (#)",
+     "",
+     "Options (#)",
+     "",
+     "($/Sh)",
+     "",
+     "Awards($)(1)"
+    ],
+    [
+     "Peter C.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chang",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "04/02/2015",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "240,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,176,000"
+    ],
+    [
+     "David A.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hubbard",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "04/02/2015",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "62,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,078,800"
+    ]
+   ],
+   "caption_stack": [
+    "All Other"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 237,
+    "end_line": 254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Consists of amounts earned in the fiscal year.\n(2) Amount represents grant date fair value computed in accordance with Financial Accounting Standards Board Accounting Standards Codification No. 718, Compensation\u2014Stock Compensation (\u201cASC 718\u201d). The actual value recognized by the individual is based on the market price of our Common Stock on the vesting dates and may be higher or lower.\n(3) Consists of Company contributions to the 401(k) of each individual, a monthly automobile allowance for Mr. Hubbard, and the value of insurance premiums paid by the Company.\nGrants of Plan-based Awards \u2013 2015\nThe following table sets forth number of shares of Common Stock underlying option awards were granted in 2015.",
+   "prose_after": "(1) The amount reflects the aggregate grant date fair value of the awards computed in accordance with ASC 718, rather than the amounts paid to or realized by the named individual. There can be no assurance that awards will vest or will be exercised (in which case no value will be realized by the individual), or that the value upon exercise will approximate the aggregate grant date fair value. None of our named executive officers forfeited any awards in 2015.\nOutstanding Equity Awards at Fiscal Year-End \u2013 2015\nThe following table presents certain information concerning equity awards held by our named executive officers as of December 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Unexercised",
+     "",
+     "Unexercised",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "Options",
+     "",
+     "Option",
+     "",
+     "Option",
+     "",
+     "Number of Shares or Units",
+     "",
+     "",
+     "Market Value of Shares That"
+    ],
+    [
+     "",
+     "",
+     "Exercisable",
+     "",
+     "Unexercisable",
+     "",
+     "Exercise",
+     "",
+     "Expiration",
+     "",
+     "of Stock That Have Not",
+     "",
+     "",
+     "Have Not"
+    ],
+    [
+     "Name",
+     "",
+     "(#)",
+     "",
+     "(#)",
+     "",
+     "Price($)",
+     "",
+     "Date",
+     "",
+     "Vested(#)",
+     "",
+     "",
+     "Vested($)(1)"
+    ],
+    [
+     "Peter C. Chang",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "360,000",
+     "(2)",
+     "",
+     "5,457,600"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David A. Hubbard",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "62,000",
+     "(3)",
+     "",
+     "939,920"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anita K. Ho",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 261,
+    "end_line": 280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) The amount reflects the aggregate grant date fair value of the awards computed in accordance with ASC 718, rather than the amounts paid to or realized by the named individual. There can be no assurance that awards will vest or will be exercised (in which case no value will be realized by the individual), or that the value upon exercise will approximate the aggregate grant date fair value. None of our named executive officers forfeited any awards in 2015.\nOutstanding Equity Awards at Fiscal Year-End \u2013 2015\nThe following table presents certain information concerning equity awards held by our named executive officers as of December 31, 2015.",
+   "prose_after": "(1) Market value is based on the closing price of our Common Stock on December 31, 2015.\n(2) This includes: (i) RSUs granted on May 6, 2011 that vest over five years at a rate of 20 percent per year on each of May 1, 2012, 2013, 2014, 2015 and 2016; (ii) RSUs were granted on April 19, 2013 that vest over three years at a rate of one-third per year on each of May 1, 2014, 2015 and 2016; and (iii) RSUs were granted on April 2, 2015 that vest over four years at a rate of 25 percent per year on each of May 1, 2016, 2017, 2018 and 2019. The RSUs vest in full in the event of a change of control or termination due to death or involuntary discharge.\n(3) The RSUs were granted on April 2, 2015 and vest over two years at a rate of 50 percent per year on each of May 1, 2016 and 2017.\nOption Exercises and Stock Vested - 2015",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of Shares",
+     "",
+     "Value Realized",
+     "",
+     "Number of Shares",
+     "",
+     "Value Realized"
+    ],
+    [
+     "",
+     "",
+     "Acquired on",
+     "",
+     "on",
+     "",
+     "Acquired on",
+     "",
+     "on"
+    ],
+    [
+     "Name",
+     "",
+     "Exercise (#)",
+     "",
+     "Exercise ($)",
+     "",
+     "Vesting (#)",
+     "",
+     "Vesting ($)(1)"
+    ],
+    [
+     "Peter C. Chang",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "120,000",
+     "",
+     "2,210,400"
+    ],
+    [
+     "David A. Hubbard",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "33,000",
+     "",
+     "607,860"
+    ],
+    [
+     "Anita K. Ho",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,000",
+     "",
+     "55,260"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 289,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Market value is based on the closing price of our Common Stock on December 31, 2015.\n(2) This includes: (i) RSUs granted on May 6, 2011 that vest over five years at a rate of 20 percent per year on each of May 1, 2012, 2013, 2014, 2015 and 2016; (ii) RSUs were granted on April 19, 2013 that vest over three years at a rate of one-third per year on each of May 1, 2014, 2015 and 2016; and (iii) RSUs were granted on April 2, 2015 that vest over four years at a rate of 25 percent per year on each of May 1, 2016, 2017, 2018 and 2019. The RSUs vest in full in the event of a change of control or termination due to death or involuntary discharge.\n(3) The RSUs were granted on April 2, 2015 and vest over two years at a rate of 50 percent per year on each of May 1, 2016 and 2017.\nOption Exercises and Stock Vested - 2015",
+   "prose_after": "(1) Value realized is based on the fair market value of our Common Stock on the date of vesting.\nPotential Payments Upon Termination or Change-in-Control\nOther than the RSUs granted to Peter C. Chang, which vest in full in the event of a change in control, the Company has not entered into any contract, agreement or arrangement or adopted any plan that provides for payments to a named executive officer at, following, or in connection with any termination or change in control that are not available to all employees.\nCompensation Risk Assessment\nIn connection with its review of employee compensation and the compensation process, the Company has concluded that risks arising from its compensation policies and practices are not reasonably likely to have a material adverse effect on the Company.\n2015 Director Compensation\nThe following table sets forth cash amounts and the value of other compensation earned by the Company\u2019s non-employee directors during 2015:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fees Earned or",
+     "",
+     "Option Awards",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Paid in Cash ($)",
+     "",
+     "($)(1)(2)",
+     "",
+     "Total ($)"
+    ],
+    [
+     "Richard Black",
+     "",
+     "32,000",
+     "",
+     "220,320",
+     "",
+     "252,320"
+    ],
+    [
+     "Gwong-Yih Lee",
+     "",
+     "16,000",
+     "",
+     "163,320",
+     "",
+     "179,320"
+    ],
+    [
+     "Ray Sun",
+     "",
+     "24,000",
+     "",
+     "163,320",
+     "",
+     "187,320"
+    ],
+    [
+     "James Yeh",
+     "",
+     "24,000",
+     "",
+     "163,320",
+     "",
+     "187,320"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 315,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Value realized is based on the fair market value of our Common Stock on the date of vesting.\nPotential Payments Upon Termination or Change-in-Control\nOther than the RSUs granted to Peter C. Chang, which vest in full in the event of a change in control, the Company has not entered into any contract, agreement or arrangement or adopted any plan that provides for payments to a named executive officer at, following, or in connection with any termination or change in control that are not available to all employees.\nCompensation Risk Assessment\nIn connection with its review of employee compensation and the compensation process, the Company has concluded that risks arising from its compensation policies and practices are not reasonably likely to have a material adverse effect on the Company.\n2015 Director Compensation\nThe following table sets forth cash amounts and the value of other compensation earned by the Company\u2019s non-employee directors during 2015:",
+   "prose_after": "(1) Amounts represent grant date fair value computed in accordance with ASC 718. The actual value recognized by the individual is based on the market price of our Common Stock on the vesting dates and may be higher or lower than the amounts reflected herein. See the notes to our consolidated financial statements for a discussion of the assumptions made in determining these values.\n(2) The following table sets forth the aggregate number of shares of Common Stock underlying option awards outstanding at December 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Richard Black",
+     "",
+     "36,000"
+    ],
+    [
+     "Gwong-Yih Lee",
+     "",
+     "24,000"
+    ],
+    [
+     "Ray Sun",
+     "",
+     "30,000"
+    ],
+    [
+     "James Yeh",
+     "",
+     "21,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 328,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Amounts represent grant date fair value computed in accordance with ASC 718. The actual value recognized by the individual is based on the market price of our Common Stock on the vesting dates and may be higher or lower than the amounts reflected herein. See the notes to our consolidated financial statements for a discussion of the assumptions made in determining these values.\n(2) The following table sets forth the aggregate number of shares of Common Stock underlying option awards outstanding at December 31, 2015:",
+   "prose_after": "Effective January 1, 2015, the Company\u2019s non-employee directors receive an annual cash retainer of $16,000 for service on the Board and any committees other than the Audit Committee. The Chairman of the Audit Committee also receives an annual cash retainer of $16,000 and each member of the Audit Committee other than the Chairman also receives an annual cash retainer of $8,000 for service on the Audit Committee. All retainers are payable quarterly.\nDirectors who are not employees receive an initial grant of an option to purchase 12,000 shares of Common Stock at the fair market value of the Common Stock on the date of grant, which vests ratably over 36 months. This initial grant is made on the first business day following election to the Board. On the first business day following the third anniversary of a director\u2019s election to the Board, each non-employee director is entitled to receive an option to purchase 12,000 shares of Common Stock at the fair market value of the Common Stock on the date of grant, which option vests ratably over 36 months. The options granted to our outside directors have a per share exercise price equal to 100% of the fair market value of the underlying shares on the date of grant, have a term of 10 years and automatically become fully vested in the event of a change in control.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "Percentage of"
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     "Common Stock"
+    ],
+    [
+     "",
+     "",
+     "Beneficially",
+     "",
+     "Beneficially"
+    ],
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "",
+     "Owned",
+     "",
+     "Owned"
+    ],
+    [
+     "Directors and Named Executive Officers:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Peter C. Chang (2)",
+     "",
+     "1,454,640",
+     "",
+     "9.21%"
+    ],
+    [
+     "  Richard Black (3)",
+     "",
+     "52,000",
+     "",
+     "*"
+    ],
+    [
+     "  Gwong-Yih Lee (4)",
+     "",
+     "22,000",
+     "",
+     "*"
+    ],
+    [
+     "  Ray Sun (5)",
+     "",
+     "20,000",
+     "",
+     "*"
+    ],
+    [
+     "  James C. Yeh (6)",
+     "",
+     "231,000",
+     "",
+     "1.46"
+    ],
+    [
+     "  David A. Hubbard (7)",
+     "",
+     "63,954",
+     "",
+     "*"
+    ],
+    [
+     "5% Stockholder:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Foxconn Holding Limited (8)",
+     "",
+     "2,170,000",
+     "",
+     "13.74%"
+    ],
+    [
+     "All Directors and Executive Officers as a group (6 persons) (9)",
+     "",
+     "1,843,594",
+     "",
+     "11.47"
+    ]
+   ],
+   "caption_stack": [
+    "Number of",
+    "Shares of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 349,
+    "end_line": 368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth certain information as of March 28, 2016, as to shares of our Common Stock beneficially owned by: (1) each person who is known by the Company to beneficially own more than 5% of its Common Stock, (2) each of our directors, (3) each of our executive officers named in the Summary Compensation Table, and (4) all of our directors and executive officers as a group. Ownership information is based upon information furnished by the respective individuals or entities, as the case may be. Unless otherwise noted below, the address of each beneficial owner is c/o Alliance Fiber Optic Products, Inc., 275 Gibraltar Drive, Sunnyvale, California 94089. The percentage of Common Stock beneficially owned is based on 15,791,585 shares of Common Stock outstanding as of March 28, 2016. In addition, shares issuable pursuant to options which may be exercised and RSUs which vest within 60 days of March 28, 2016 are deemed to be issued and outstanding and have been treated as outstanding in calculating the percentage ownership of those individuals possessing such interest, but not for any other individuals. Thus, the number of shares considered to be outstanding for purposes of this table may vary depending on the individual\u2019s particular circumstances.",
+   "prose_after": "* Represents less than 1%.\n(1) To the Company\u2019s knowledge, except as otherwise disclosed, the persons named in the table have sole voting and investment power with respect to all shares of Common Stock shown as beneficially owned by them, subject to community property laws where applicable and the information contained in the notes to this table.\n(2) Includes 16,000 shares held in the name of Mr. Chang\u2019s minor children, 1,158,640 shares held in the name of the Chang Family LLC and 100,000 shares held in the name of the Peter and Mary Chang Foundation, of which Mr. Chang and his wife, Mary C. Chen, are the Managing Members. Also includes 180,000 shares underlying RSUs that vest within 60 days of March 28, 2016.\n(3) Includes options to purchase 16,000 shares of Common Stock exercisable within 60 days of March 28, 2016.\n(4) Includes 8,000 shares held in the name of the Lee Trust. Mr. Lee and his wife, Angela Lee, as trustees, have dispositive and voting power for the shares held by the Lee Trust. Also includes options to purchase 14,000 shares of Common Stock that are exercisable within 60 days of March 28, 2016.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "remaining available for",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of securities to",
+     "",
+     "",
+     "Weighted-average",
+     "",
+     "",
+     "future issuance under",
+     ""
+    ],
+    [
+     "",
+     "",
+     "be issued upon exercise",
+     "",
+     "",
+     "exercise price of",
+     "",
+     "",
+     "equity compensation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "of outstanding options,",
+     "",
+     "",
+     "outstanding options,",
+     "",
+     "",
+     "plans (excluding securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     "units and rights",
+     "",
+     "",
+     "units and rights",
+     "",
+     "",
+     "reflected in column (a))",
+     ""
+    ],
+    [
+     "Plan category",
+     "",
+     "(a)",
+     "",
+     "",
+     "(b)",
+     "",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "approved by security holders",
+     "",
+     "1,019,600",
+     "(1)",
+     "",
+     "$",
+     "9.71",
+     "",
+     "696,184",
+     "(2)"
+    ],
+    [
+     "Equity compensation plans not",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,019,600",
+     "",
+     "",
+     "$",
+     "9.71",
+     "",
+     "696,184",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Number of securities",
+    "remaining available for"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 390,
+    "end_line": 408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "(8) According to a Schedule 13G filed jointly on February 16, 2016 for the year ended December 31, 2015 by Hon Hai and Foxconn, each entity has shared voting and dispositive power over the shares. Foxconn is a subsidiary of Hon Hai. Hon Hai disclaims beneficial ownership of these shares. The principal business address for Hon Hai and Foxconn is 2 Tsu Yu Street, Tu Cheng City, Taipei Hsien, Taiwan, R.O.C. According to information provided by Hon Hai, the board of directors of Foxconn has dispositive power for the shares and has delegated voting power to Mr. The-Tsai Huang and Ms. Chiu-Lian Huang. As of the Record Date, and based on information filed with the Securities and Exchange Commission in March 2016, Foxconn and Hon Hai held 2,170,000 shares of Common Stock.\n(9) Includes options to purchase 61,000 shares of Common Stock that are exercisable within 60 days of March 28, 2016 and 211,000 shares underlying RSUs that vest within 60 days of March 28, 2016.\nEquity Compensation Plan Information\nSet forth in the table below is certain information regarding the Company\u2019s equity compensation plans as of December 31, 2015:",
+   "prose_after": "(1) Includes 571,600 shares issuable upon exercise of outstanding options and 448,000 shares issuable pursuant to unvested RSUs granted under the Stock Incentive Plan.\n(2) Includes:\n(i) 487,824 shares reserved for issuance under the Stock Incentive Plan. The number of shares reserved for issuance under the plan may be increased on the first day of the Company\u2019s fiscal year by the lesser of 680,000 shares, 5% of the fully diluted outstanding shares of the Company\u2019s common stock on that date or a lesser amount determined by the Board.\n(ii) 208,360 shares reserved for issuance under the ESPP. The ESPP permits eligible employees to contribute up to 20% of cash compensation up to 1,000 shares maximum toward the semi-annual purchase of the Company\u2019s common stock. The purchase price per share is 85% of the fair market value on the last trading day prior to the beginning of the six-month period at which an eligible employee is enrolled; or the fair market value on the last trading day of the month in which the six-month period expired, whichever is lower.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Executive Compensation Committee",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number of Members:",
+     "Three"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Members:",
+     "Mr. Sun (Chairman)"
+    ],
+    [
+     "",
+     "Mr. Black"
+    ],
+    [
+     "",
+     "Mr. Lee"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number of Meetings:",
+     "Two"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Functions:",
+     "The Executive Compensation Committee\u2019s primary functions are to assist the Board in meeting its responsibilities with regard to oversight and determination of executive compensation and to review and make recommendations to the Board with respect to major compensation plans, policies and programs of the Company. Other specific duties and responsibilities of the Executive Compensation Committee are to review and approve the compensation for the Chief Executive Officer and other executive officers of the Company, establish and modify the terms and conditions of employment of the Chief Executive Officer and other executive officers of the Company and administer the Company\u2019s stock plans and other compensation plans."
+    ]
+   ],
+   "caption_stack": [
+    "Executive Compensation Committee"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships and Related Transactions, and Director Independence"
+    },
+    "note": null
+   },
+   "prose_before": "The Board has determined that, except for Mr. Chang, all of the members of the Board are \u201cindependent directors\u201d within the meaning of Rule 5605 of The NASDAQ Stock Market and the rules of the SEC. Mr. Chang is not considered independent because he is employed by the Company as its President and Chief Executive Officer. For all of the non-employee directors, the Board considered their relationship and transactions with the Company as directors and as securityholders of the Company.\nThe Board is actively involved in the oversight of risks that could affect our business and operations, while management is responsible for day-to-day risk management. The Board administers this oversight function directly through the Board as a whole, as well as through the Audit and Nominating and Corporate Governance committees of the Board.\nThe Board has appointed an Executive Compensation Committee, an Audit Committee and a Nominating and Corporate Governance Committee. The Board has approved a charter for each of these committees. Copies of the charters of the Audit Committee, Nominating and Corporate Governance Committee and Executive Compensation Committee are available through our website at www.afop.com. The Board has also appointed a Non-Executive Compensation Committee.",
+   "prose_after": "Audit Committee",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 458,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number of Members:",
+     "Three"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Members:",
+     "Mr. Black (Chairman)"
+    ],
+    [
+     "",
+     "Mr. Sun"
+    ],
+    [
+     "",
+     "Mr. Yeh"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number of Meetings:",
+     "Four"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Functions:",
+     "The Audit Committee\u2019s primary functions are to assist the Board of Directors in fulfilling its oversight responsibilities relating to the Company\u2019s financial statements, system of internal controls, and auditing, accounting and financial reporting processes. Other specific duties and responsibilities of the Audit Committee are to appoint, compensate, evaluate and, when appropriate, replace the Company\u2019s independent auditors; review and pre-approve audit and permissible non-audit services; review the scope of the annual audit; monitor the independent auditors\u2019 relationship with the Company; and meet with the independent auditors and management to discuss and review the Company\u2019s financial statements, internal controls, and auditing, accounting and financial reporting processes. Mr. Black is the Audit Committee financial expert."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Nominating and Corporate Governance Committee",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number of Members:",
+     "Three"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Members:",
+     "Mr. Black (Chairman)"
+    ],
+    [
+     "",
+     "Mr. Sun"
+    ],
+    [
+     "",
+     "Mr. Yeh"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number of Meetings:",
+     "One"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Functions:",
+     "The Nominating and Corporate Governance Committee\u2019s primary functions are to identify qualified individuals to become members of the Board and determine the composition of the Board and its committees. Other specific duties and responsibilities are to recommend nominees to fill vacancies on the Board, review suggestions for candidates for membership on the Board, and monitor compliance with Board and Board committee membership criteria."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 462,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships and Related Transactions, and Director Independence"
+    },
+    "note": null
+   },
+   "prose_before": "Audit Committee",
+   "prose_after": "Non-Executive Compensation Committee\nMr. Chang currently serves as the sole member of the Non-Executive Compensation Committee. The Non-Executive Compensation Committee is a secondary committee responsible for granting and issuing awards under the 2000 Stock Incentive Plan, as amended and restated, to eligible employees, other than to members of the Board, to individuals designated by the Board as \u201cSection 16 officers,\u201d and to employees who hold the title of Vice President or above.\nDirector Nominations\nThe Board nominates a class of directors for election at each annual meeting of stockholders and elects new directors to fill vacancies when they arise. The Nominating and Corporate Governance Committee has the responsibility to identify, evaluate, recruit and recommend qualified candidates to the Board for nomination or election.\nThe Board has an objective that its membership is composed of experienced and dedicated individuals with a diversity of backgrounds, perspectives and skills. The Nominating and Corporate Governance Committee will select candidates for director based on their character, judgment, diversity of experience, business acumen, and ability to act on behalf of all stockholders. The Nominating and Corporate Governance Committee believes that nominees for director should have experience, such as experience in management or accounting and finance, or industry and technology knowledge, that may be useful to the Company and the Board, high personal and professional ethics, and the willingness and ability to devote sufficient time to effectively carry out his or her duties as a director. While diversity is among the qualifications that may be considered, the Committee does not have a formal diversity policy. The Nominating and Corporate Governance Committee believes it is appropriate for at least one, and, preferably, multiple, members of the Board to meet the criteria for an \u201caudit committee financial expert\u201d as defined by SEC rules, and for a majority of the members of the Board to meet the definition of \u201cindependent director\u201d under the rules of The NASDAQ Stock Market. The Nominating and Corporate Governance Committee also believes it is appropriate for certain key members of the Company\u2019s management to participate as members of the Board.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 458,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "",
+     "$",
+     "485,680",
+     "",
+     "$",
+     "365,932"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "485,680",
+     "",
+     "$",
+     "365,932"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 533
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Stockholder nominations must be made in accordance with the procedures outlined in, and include the information required by, the Company\u2019s Bylaws and must be addressed to: Secretary, Alliance Fiber Optic Products, Inc., 275 Gibraltar Drive, Sunnyvale, California 94089. You can obtain a copy of the Company\u2019s Bylaws by writing to the Secretary at this address.\nStockholder Communications with the Board of Directors\nIf you wish to communicate with the Board, you may send your communication in writing to: Secretary, Alliance Fiber Optic Products, Inc., 275 Gibraltar Drive, Sunnyvale, California 94089. You must include your name and address in the written communication and indicate whether you are a stockholder of the Company. The Secretary will review any communication received from a stockholder, and all material communications from stockholders will be forwarded to the appropriate director or directors or committee of the Board based on the subject matter.\nItem 14. Principal Accounting Fees and Services\nThe following table presents fees for professional audit services rendered by Marcum LLP for the audit of our financial statements for 2015 and 2014. No fees were billed for other services.",
+   "prose_after": "Pre-Approval Policies and Procedures\nIt is the Company\u2019s policy that all audit and non-audit services to be performed by the Company\u2019s registered public accountants be approved in advance by the Audit Committee. The Audit Committee pre-approved 100% of the audit fees incurred in the year ended December 31, 2015.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this report:\n(1) Exhibits\nSee the Exhibit Index, which follows the signature pages of this report and is incorporated herein by reference.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ALLIANCE FIBER OPTIC PRODUCTS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 2, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By",
+     "/s/ Peter C. Chang"
+    ],
+    [
+     "",
+     "",
+     "  Peter C. Chang"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ALLIANCE FIBER OPTIC PRODUCTS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 554,
+    "end_line": 563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pre-Approval Policies and Procedures\nIt is the Company\u2019s policy that all audit and non-audit services to be performed by the Company\u2019s registered public accountants be approved in advance by the Audit Committee. The Audit Committee pre-approved 100% of the audit fees incurred in the year ended December 31, 2015.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this report:\n(1) Exhibits\nSee the Exhibit Index, which follows the signature pages of this report and is incorporated herein by reference.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "",
+     "",
+     "Description of Document"
+    ],
+    [
+     "",
+     "31.1*",
+     "",
+     "",
+     "Rule 13a\u201314(a) Certification of Chief Executive Officer."
+    ],
+    [
+     "",
+     "31.2*",
+     "",
+     "",
+     "Rule 13a\u201314(a) Certification of Acting Chief Financial Officer."
+    ],
+    [
+     "",
+     "101.INS",
+     "",
+     "",
+     "XBRL Taxonomy Instance Document"
+    ],
+    [
+     "",
+     "101.SCH",
+     "",
+     "",
+     "XBRL Taxonomy Schema Document"
+    ],
+    [
+     "",
+     "101.PRE",
+     "",
+     "",
+     "XBRL Taxonomy Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "101.LAB",
+     "",
+     "",
+     "XBRL Taxonomy Label Linkbase Document"
+    ],
+    [
+     "",
+     "101.CAL",
+     "",
+     "",
+     "XBRL Taxonomy Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "101.DEF",
+     "",
+     "",
+     "XBRL Taxonomy Definition Linkbase document"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "____________________\n* Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 564,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

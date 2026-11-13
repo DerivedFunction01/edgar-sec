@@ -1,0 +1,5865 @@
+{
+ "accession": "0001493152-23-040947",
+ "cik": "0001901297",
+ "form": "10-Q",
+ "filing_date": "2023-11-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "83-2756695"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1580 Dell Avenue\n\n\n\nCampbell, CA",
+     "95008"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark one)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2023\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________.\nCommission File Number: 000-56380\nZRCN INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(408) 963-4550\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of September 30, 2023 (Unaudited) and March 31, 2023",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations and Comprehensive Income (Loss) for the three and six months ended September 30, 2023 and 2022 (Unaudited)",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Changes in Shareholders\u2019 Equity for the three and six months ended September 30, 2023 and 2022 (Unaudited)",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the six months ended September 30, 2023 and 2022 (Unaudited)",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Notes to the Unaudited Consolidated Financial Statements",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "",
+     "28"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Because some of these risks and uncertainties cannot be predicted or quantified and some are beyond our control, you should not rely on our forward-looking statements as predictions of future events. More information about potential risks and uncertainties that could affect our business and financial results is included in the section of this Annual Report titled \u201cRisk Factors\u201d and our other filings with the U.S. Securities and Exchange Commission (\u201cSEC\u201d), which are available on the SEC\u2019s web site at www.sec.gov. Moreover, we operate in a very competitive and rapidly changing environment; new risks and uncertainties may emerge from time to time, and it is not possible for us to predict all risks nor identify all uncertainties. The events and circumstances reflected in our forward-looking statements might not be achieved and actual results could differ materially from those projected in the forward-looking statements. Except as otherwise noted, all forward-looking statements are made as of the date we file this Report, and are based on information and estimates available to us at this time. Although we believe that the expectations reflected in our forward-looking statements are reasonable, we cannot guarantee future results, performance, or achievements. Except as required by law, we assume no obligation to update any of the statements in this Report whether as a result of any new information, future events, changed circumstances, or otherwise. You should read this Report with the understanding that our actual future results, performance, events, and circumstances might be materially different from what we expect.\nTable of Contents",
+   "prose_after": "PART I FINANCIAL INFORMATION\nITEM 1. Financial Statements.\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "(Audited)",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "243,118",
+     "$",
+     "29,015",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of approximately $13,000 and $10,000, respectively",
+     "",
+     "9,701,031",
+     "",
+     "7,524,428",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "14,583,185",
+     "",
+     "13,137,101",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "472,357",
+     "",
+     "551,050",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "24,999,691",
+     "",
+     "21,241,594",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "1,945,495",
+     "",
+     "1,779,615",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "855,628",
+     "",
+     "960,044",
+     ""
+    ],
+    [
+     "Federal tax deposit",
+     "",
+     "213,016",
+     "",
+     "134,600",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "767,387",
+     "",
+     "807,385",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "19,195",
+     "",
+     "19,195",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "28,800,412",
+     "$",
+     "24,942,433",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Line of credit",
+     "$",
+     "8,915,980",
+     "$",
+     "7,210,652",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "6,263,046",
+     "",
+     "3,881,323",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "2,284,709",
+     "",
+     "1,876,325",
+     ""
+    ],
+    [
+     "Notes payable, current portion",
+     "",
+     "327,500",
+     "",
+     "205,834",
+     ""
+    ],
+    [
+     "Operating lease liability, current",
+     "",
+     "191,042",
+     "",
+     "185,357",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "17,982,277",
+     "",
+     "13,359,491",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, net of current portion",
+     "",
+     "\u2014",
+     "",
+     "65,000",
+     ""
+    ],
+    [
+     "Operating lease liability, net of current portion",
+     "",
+     "691,594",
+     "",
+     "783,631",
+     ""
+    ],
+    [
+     "Notes payable to Stauss Family Administrative Trust",
+     "",
+     "667,230",
+     "",
+     "907,420",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "19,341,101",
+     "",
+     "15,115,542",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 12)",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock; at $0.0001 par value, 20,000,000 shares authorized, 9,948,272 and 500,000 shares issued and outstanding as of September 30, 2023 and March 31, 2023",
+     "",
+     "995",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "116,731",
+     "",
+     "16,010",
+     ""
+    ],
+    [
+     "Note receivable from stockholder",
+     "",
+     "\u2014",
+     "",
+     "(240,190)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "8,015,666",
+     "",
+     "8,629,509",
+     ""
+    ],
+    [
+     "Total equity attributable to ZRCN",
+     "",
+     "8,133,392",
+     "",
+     "8,405,379",
+     ""
+    ],
+    [
+     "Non-controlling interests in variable interest entities",
+     "",
+     "1,325,919",
+     "",
+     "1,421,512",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "9,459,311",
+     "",
+     "9,826,891",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "28,800,412",
+     "$",
+     "24,942,433",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 128,
+    "end_line": 185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PART I FINANCIAL INFORMATION\nITEM 1. Financial Statements.\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 124,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 188,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "9,261,868",
+     "",
+     "$",
+     "8,650,475",
+     "",
+     "$",
+     "15,828,758",
+     "",
+     "$",
+     "14,808,570",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "4,871,359",
+     "",
+     "",
+     "5,261,286",
+     "",
+     "",
+     "8,494,790",
+     "",
+     "",
+     "8,828,006",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "4,390,509",
+     "",
+     "",
+     "3,389,189",
+     "",
+     "",
+     "7,333,968",
+     "",
+     "",
+     "5,980,564",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,720,249",
+     "",
+     "",
+     "1,462,088",
+     "",
+     "",
+     "3,389,267",
+     "",
+     "",
+     "2,808,715",
+     ""
+    ],
+    [
+     "Marketing and selling",
+     "",
+     "1,034,913",
+     "",
+     "",
+     "1,160,456",
+     "",
+     "",
+     "2,175,397",
+     "",
+     "",
+     "2,128,732",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "503,742",
+     "",
+     "",
+     "500,017",
+     "",
+     "",
+     "988,257",
+     "",
+     "",
+     "947,079",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,258,904",
+     "",
+     "",
+     "3,122,561",
+     "",
+     "",
+     "6,552,921",
+     "",
+     "",
+     "5,884,526",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,131,605",
+     "",
+     "",
+     "266,628",
+     "",
+     "",
+     "781,047",
+     "",
+     "",
+     "96,038",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "175,453",
+     "",
+     "",
+     "102,196",
+     "",
+     "",
+     "332,769",
+     "",
+     "",
+     "162,904",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "10,481",
+     "",
+     "",
+     "6,744",
+     "",
+     "",
+     "19,435",
+     "",
+     "",
+     "13,569",
+     ""
+    ],
+    [
+     "(Gain) loss on foreign currency transactions",
+     "",
+     "(41,853)",
+     "",
+     "",
+     "(7,593)",
+     "",
+     "",
+     "6,762",
+     "",
+     "",
+     "3,269",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "",
+     "144,081",
+     "",
+     "",
+     "101,347",
+     "",
+     "",
+     "358,966",
+     "",
+     "",
+     "179,742",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "987,524",
+     "",
+     "",
+     "165,281",
+     "",
+     "",
+     "422,081",
+     "",
+     "",
+     "(83,704)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "(132,904)",
+     "",
+     "",
+     "(202,601)",
+     "",
+     "",
+     "(32,837)",
+     "",
+     "",
+     "(102,534)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "854,620",
+     "",
+     "$",
+     "149,803",
+     "",
+     "$",
+     "389,244",
+     "",
+     "$",
+     "(186,238)",
+     ""
+    ],
+    [
+     "Less: Net (loss) income attributable to non-controlling interests",
+     "",
+     "(12,837)",
+     "",
+     "",
+     "33,944",
+     "",
+     "",
+     "(95,593)",
+     "",
+     "",
+     "154,258",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to common stockholders",
+     "$",
+     "867,457",
+     "",
+     "$",
+     "115,859",
+     "",
+     "$",
+     "484,837",
+     "",
+     "$",
+     "(340,496)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "854,620",
+     "",
+     "$",
+     "149,803",
+     "",
+     "$",
+     "389,244",
+     "",
+     "$",
+     "(186,238)",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "",
+     "(16,074)",
+     "",
+     "",
+     "340",
+     "",
+     "",
+     "100,721",
+     "",
+     "",
+     "(3,714)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "",
+     "838,546",
+     "",
+     "",
+     "150,143",
+     "",
+     "",
+     "489,965",
+     "",
+     "",
+     "(189,952)",
+     ""
+    ],
+    [
+     "Less: Net (loss) income attributable to non-controlling interests",
+     "",
+     "(12,837)",
+     "",
+     "",
+     "33,944",
+     "",
+     "",
+     "(95,593)",
+     "",
+     "",
+     "154,258",
+     ""
+    ],
+    [
+     "Less: Other comprehensive income (loss) attributable to noncontrolling interest",
+     "",
+     "(16,074)",
+     "",
+     "",
+     "340",
+     "",
+     "",
+     "100,721",
+     "",
+     "",
+     "(3,714)",
+     ""
+    ],
+    [
+     "Comprehensive income (loss) attributable to ZRCN common stockholders",
+     "$",
+     "867,457",
+     "",
+     "$",
+     "115,859",
+     "",
+     "$",
+     "484,837",
+     "",
+     "$",
+     "(340,496)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "0.09",
+     "",
+     "",
+     "0.23",
+     "",
+     "",
+     "0.05",
+     "",
+     "",
+     "(0.68)",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "0.09",
+     "",
+     "",
+     "0.23",
+     "",
+     "",
+     "0.05",
+     "",
+     "",
+     "(0.68)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "9,948,272",
+     "",
+     "",
+     "500,000",
+     "",
+     "",
+     "9,192,410",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "9,986,882",
+     "",
+     "",
+     "500,000",
+     "",
+     "",
+     "9,231,020",
+     "",
+     "",
+     "500,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 194,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)",
+   "prose_after": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 192,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "",
+     "Note Receivable from",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Total Equity Attributable",
+     "",
+     "",
+     "Non-controlling",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Income",
+     "",
+     "",
+     "Stockholder",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "to ZRCN",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance - March 31, 2023",
+     "",
+     "500,000",
+     "$",
+     "50",
+     "$",
+     "16,010",
+     "",
+     "$",
+     "(240,190)",
+     "",
+     "$",
+     "8,629,509",
+     "",
+     "$",
+     "8,405,379",
+     "",
+     "$",
+     "1,421,512",
+     "",
+     "$",
+     "9,826,891",
+     ""
+    ],
+    [
+     "Merger with Harmony",
+     "",
+     "9,448,272",
+     "",
+     "945",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,098,680)",
+     "",
+     "",
+     "(1,097,735)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,097,735)",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "116,795",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "116,795",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "116,795",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(382,620)",
+     "",
+     "",
+     "(382,620)",
+     "",
+     "",
+     "(82,756)",
+     "",
+     "",
+     "(465,376)",
+     ""
+    ],
+    [
+     "Balance - June 30, 2023",
+     "",
+     "9,948,272",
+     "$",
+     "995",
+     "$",
+     "132,805",
+     "",
+     "$",
+     "(240,190)",
+     "",
+     "$",
+     "7,148,209",
+     "",
+     "$",
+     "7,041,819",
+     "",
+     "$",
+     "1,338,756",
+     "",
+     "$",
+     "8,380,575",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(16,074)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(16,074)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(16,074)",
+     ""
+    ],
+    [
+     "Repayment of Note Receivable from Stockholder",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "240,190",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "240,190",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "240,190",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "867,457",
+     "",
+     "",
+     "867,457",
+     "",
+     "",
+     "(12,837)",
+     "",
+     "",
+     "854,620",
+     ""
+    ],
+    [
+     "Balance - September 30, 2023",
+     "",
+     "9,948,272",
+     "$",
+     "995",
+     "$",
+     "116,731",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "8,015,666",
+     "",
+     "$",
+     "8,133,392",
+     "",
+     "$",
+     "1,325,919",
+     "",
+     "$",
+     "9,459,311",
+     ""
+    ],
+    [
+     "Balance - March 31, 2022",
+     "",
+     "500,000",
+     "$",
+     "50",
+     "$",
+     "4,565",
+     "",
+     "$",
+     "(211,390)",
+     "",
+     "$",
+     "9,520,102",
+     "",
+     "$",
+     "9,313,327",
+     "",
+     "$",
+     "1,188,643",
+     "",
+     "$",
+     "10,501,970",
+     ""
+    ],
+    [
+     "Stockholder distributions",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(223,021)",
+     "",
+     "",
+     "(223,021)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(223,021)",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(4,054)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,054)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,054)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(456,355)",
+     "",
+     "",
+     "(456,355)",
+     "",
+     "",
+     "120,314",
+     "",
+     "",
+     "(336,041)",
+     ""
+    ],
+    [
+     "Balance - June 30, 2022",
+     "",
+     "500,000",
+     "$",
+     "50",
+     "$",
+     "511",
+     "",
+     "$",
+     "(211,390)",
+     "",
+     "$",
+     "8,840,726",
+     "",
+     "$",
+     "8,629,897",
+     "",
+     "$",
+     "1,308,957",
+     "",
+     "$",
+     "9,938,854",
+     ""
+    ],
+    [
+     "Change in foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "340",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "340",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "340",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "115,859",
+     "",
+     "",
+     "115,859",
+     "",
+     "",
+     "33,944",
+     "",
+     "",
+     "149,803",
+     ""
+    ],
+    [
+     "Balance - September 30, 2022",
+     "",
+     "500,000",
+     "$",
+     "50",
+     "$",
+     "851",
+     "",
+     "$",
+     "(211,390)",
+     "",
+     "$",
+     "8,956,585",
+     "",
+     "$",
+     "8,746,096",
+     "",
+     "$",
+     "1,342,901",
+     "",
+     "$",
+     "10,088,997",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 264,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 262,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "389,244",
+     "",
+     "$",
+     "(186,238)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "283,957",
+     "",
+     "",
+     "520,275",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "40,050",
+     "",
+     "",
+     "44,611",
+     ""
+    ],
+    [
+     "Amortization of right-of-use assets",
+     "",
+     "104,416",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Impairment of intangible assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,995",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "3,657",
+     "",
+     "",
+     "(1,561)",
+     ""
+    ],
+    [
+     "Loss on foreign currency transactions",
+     "",
+     "6,762",
+     "",
+     "",
+     "3,269",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "(2,181,258)",
+     "",
+     "",
+     "(1,202,370)",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "(1,446,084)",
+     "",
+     "",
+     "266,286",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "81,186",
+     "",
+     "",
+     "590,836",
+     ""
+    ],
+    [
+     "Federal tax deposit",
+     "",
+     "(78,416)",
+     "",
+     "",
+     "(424,474)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,206,052",
+     "",
+     "",
+     "(186,617)",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "551,490",
+     "",
+     "",
+     "393,499",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(86,352)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(125,296)",
+     "",
+     "",
+     "(176,489)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of Harmony Merger, net of cash acquired",
+     "",
+     "(518,611)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Investment in intangible assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(79,938)",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(355,882)",
+     "",
+     "",
+     "(188,966)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(874,493)",
+     "",
+     "",
+     "(268,904)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of notes payable",
+     "",
+     "(175,834)",
+     "",
+     "",
+     "(205,000)",
+     ""
+    ],
+    [
+     "Repayment of debt assumed in Harmony Merger",
+     "",
+     "(317,144)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Distributions to stockholders",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(223,021)",
+     ""
+    ],
+    [
+     "Net borrowing on line of credit",
+     "",
+     "1,705,328",
+     "",
+     "",
+     "793,223",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,212,350",
+     "",
+     "",
+     "365,202",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate fluctuations on cash",
+     "",
+     "1,542",
+     "",
+     "",
+     "(6,901)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "214,103",
+     "",
+     "",
+     "(87,092)",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "29,015",
+     "",
+     "",
+     "266,276",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "243,118",
+     "",
+     "$",
+     "179,184",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "130,756",
+     "",
+     "$",
+     "94,247",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "78,416",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Noncash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued in connection with Harmony merger",
+     "$",
+     "18,900",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Fair value of Advisor Warrants issued to effectuate Harmony Merger",
+     "$",
+     "301,572",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Assets acquired in Harmony Merger",
+     "$",
+     "663",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Liabilities assumed in Harmony Merger",
+     "$",
+     "579,761",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Noncash settlement of Stauss note payable for settlement of note receivable from stockholder",
+     "$",
+     "240,190",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Six Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 301,
+    "end_line": 370
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying condensed notes are an integral part of these unaudited consolidated financial statements.\nCONDENSED NOTES TO THE UNAUDITED CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE SIX MONTHS ENDED SEPTEMBER 30, 2023 AND 2022\n1. Organization\nThe Business\nOn April 14, 2023 (the \u201cClosing Date\u201d), Zircon Corporation (\u201cZircon\u201d) effectuated a merger and reorganization with Harmony Energy Technologies, Inc. (\u201cHarmony\u201d), a Delaware Corporation, ZRCN Inc., a California corporation and a wholly owned subsidiary of Harmony (the \u201cMerger Sub\u201d); and Zircon. The merger leverages Zircon\u2019s sensor-based, ASIC (\u201cApplication-Specific Integrated Circuits\u201d) processor technology and patent portfolio, to accelerate growth in its product lines and global markets as a publicly traded company. The combination of Harmony and Zircon was effectuated through a merger (the \u201cMerger\u201d) of Merger Sub into Zircon. The separate existence of Merger Sub ceased, and Merger Sub was merged with and into Zircon (Zircon, as the surviving corporation following the Merger). Upon completion of the Merger, Harmony changed its name to ZRCN Inc. (\u201cZRCN\u201d or the \u201cCompany\u201d). While Harmony was the legal acquirer of Zircon in the Merger, the Merger is treated as a reverse recapitalization, whereby Zircon is deemed to be the accounting acquirer, and the historical financial statements of Zircon became the historical financial statements of Harmony (renamed ZRCN Inc.) upon the closing of the Merger. Under this method of accounting, Harmony was treated as the \u201cacquired\u201d company and Zircon is treated as the acquirer for financial reporting purposes.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "9,714,453",
+     "",
+     "$",
+     "7,534,193",
+     ""
+    ],
+    [
+     "Less allowance for doubtful accounts",
+     "",
+     "(13,422)",
+     "",
+     "",
+     "(9,765)",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "$",
+     "9,701,031",
+     "",
+     "$",
+     "7,524,428",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The carrying value of cash approximates fair value due to the short-term nature of the instruments. From time to time, the Company may be in the position of a \u201cbook overdraft\u201d in which outstanding checks exceed cash. The Company classifies book overdrafts in accounts payable within its condensed consolidated balance sheets, and classifies the change in accounts payable associated with book overdrafts as an operating activity within its unaudited condensed consolidated statements of cash flows. As of September 30, 2023, the book overdraft included within accounts payable was $788,783. As of March 31, 2023, the Company did not have any book overdrafts included within accounts payable.\nAccounts Receivable, Net\nThe Company provides credit without requiring collateral, in the normal course of business, to credit- worthy customers as determined by management\u2019s review of references and credit reports. Bad debts are charged against the allowance for doubtful accounts. The allowance is adjusted to provide a specific and general allowance for estimated uncollectible accounts, which is based on management\u2019s judgment. Balances that are still outstanding after management has used reasonable collection efforts are written off through a charge to the valuation allowance and a credit to accounts receivable. Based on management\u2019s assessment of the credit history with customers having outstanding balances and current relationships with them, management believes that losses on balances outstanding will not exceed the allowance.\nAccounts receivable consisted of the following:\nSchedule of Accounts Receivable",
+   "prose_after": "Activity related to the Company\u2019s allowance for doubtful accounts was as follows:\nSchedule of Allowance for Doubtful Accounts",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 498,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "$",
+     "9,765",
+     "$",
+     "115,129",
+     ""
+    ],
+    [
+     "Bad debt allowance",
+     "",
+     "3,657",
+     "",
+     "(1,561)",
+     ""
+    ],
+    [
+     "Write-offs",
+     "",
+     "\u2014",
+     "",
+     "(103,803)",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "$",
+     "13,422",
+     "$",
+     "9,765",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Activity related to the Company\u2019s allowance for doubtful accounts was as follows:\nSchedule of Allowance for Doubtful Accounts",
+   "prose_after": "Inventory, Net\nInventories, which consist primarily of raw materials and finished goods, are stated at the lower of cost or net realizable value. The Company states inventory cost utilizing the first-in, first-out (FIFO) method. Labor and overhead associated with inventory purchases are estimated and capitalized in inventory. The need for an allowance for inventory obsolescence is based on an evaluation of slow-moving or obsolete inventory. Obsolescence allowance was estimated at $453,425 and $487,830 as of September 30, 2023 and March 31, 2023.\nRevenue Recognition\nThe Company\u2019s revenues result from the sale of products and reflect the consideration to which the Company expects to be entitled. The Company records revenue based on a five-step model in accordance with ASC 606, Revenue from Contracts with Customers (\u201cASC 606\u201d). For its contracts with customers, the Company identifies the performance obligations (goods or services), determines the transaction price, allocates the contract transaction price to the performance obligations, and recognizes the revenue when (or as) the performance obligation is transferred to the customer. A good or service is transferred when (or as) the customer obtains control of that good or service. The Company satisfies its performance obligation and recognizes revenue at the time the customer obtains the rights to the product, which is generally when goods are shipped. As a result, the majority of the Company\u2019s revenue is recognized at a point in time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 498,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "217,184",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 532,
+    "end_line": 537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Income taxes are recorded in accordance with ASC 740, Income Taxes (\u201cASC 740\u201d), which provides for deferred taxes using an asset and liability approach. The Company recognizes deferred tax assets and liabilities for the expected future tax consequences of events that have been included in the financial statements or tax returns. Deferred tax assets and liabilities are determined based on the difference between the financial statement and tax basis of assets and liabilities using enacted tax rates in effect for the year in which the differences are expected to reverse. Valuation allowances are provided, if based upon the weight of available evidence, it is more likely than not that some or all of the deferred tax assets will not be realized. The Company accounts for uncertain tax positions in accordance with the provisions of ASC 740. When uncertain tax positions exist, the Company recognizes the tax benefit of tax positions to the extent that the benefit would more likely than not be realized assuming examination by the taxing authority. The determination as to whether the tax benefit will more likely than not be realized is based upon the technical merits of the tax position as well as consideration of the available facts and circumstances. Management believes estimates related to income tax uncertainties are appropriate based on current facts and circumstances. The Company\u2019s conclusions regarding uncertain tax positions may be subject to review and adjustment at a later date based upon ongoing analyses of tax laws, regulations and interpretations thereof, as well as, other factors. Any interest and penalties related to income tax matters are classified as a component of income tax expense.\nAs of April 14, 2023, the Zircon\u2019s election to be an S Corporation under the Internal Revenue Code was no longer in effect.\nNet Income (Loss) Per Share\nBasic net income (loss) per share of common stock is computed by dividing net gain or loss attributable to ZRCN by the weighted average number of shares of common stock outstanding for the period. Diluted loss per share excludes, when applicable, the potential impact of common stock warrant shares and other dilutive instruments because their effect would be anti-dilutive. Diluted gain per share, when applicable, includes the warrant shares because their effect would be dilutive. The Company had no dilutive instruments outstanding as of September 30, 2022. The dilutive securities outstanding are as follows:\nSchedule of Dilutive Securities Outstanding",
+   "prose_after": "Leases\nIn February 2016, the FASB issued a new accounting standard, ASC Topic 842, related to leases to increase transparency and comparability among organizations by requiring the recognition of right-of-use (\u201cROU\u201d) assets and lease liabilities on the balance sheet. Most significant among the changes in the standard is the recognition of ROU assets and lease liabilities by lessees for those leases classified as operating leases under previous U.S. GAAP. Under the new standard, disclosures are required to meet the objective of enabling users of financial statements to assess the amount, timing, and uncertainty of cash flows arising from leases. The Company adopted ASC Topic 842 effective April 1, 2022, using the modified retrospective transition approach as of the period of adoption.\nThe Company\u2019s lease arrangements relate primarily to office space, a vehicle, and office equipment. The Company\u2019s leases may include renewal options and rent escalation clauses. The Company is typically required to make fixed minimum rent payments relating to its right to use an underlying leased asset.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Recapitalization",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "26",
+     ""
+    ],
+    [
+     "Non-cash net working capital assumed from Harmony",
+     "",
+     "(579,125)",
+     ""
+    ],
+    [
+     "Less: cash transaction costs and advisory fees allocated to ZRCN equity",
+     "",
+     "(518,636)",
+     ""
+    ],
+    [
+     "Effect of Merger, net of transaction costs",
+     "$",
+     "(1,097,735)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Recapitalization"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 586,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Merger with Harmony Energy Technologies Corporation"
+    }
+   },
+   "prose_before": "Zircon agreed to pay the operating liabilities of Harmony, up to and including an aggregate of $179,762 through December 31, 2022, which amount included outstanding operating liabilities related to auditing fees, services fees, transfer agent fees, travel reimbursements and accrued and unpaid salaries as of such date; (iii) Harmony loans and notes outstanding totaling $576,881 were fully settled for $400,000, with $100,000 paid upon closing of the Acquisition and $75,000 being paid in four subsequent quarterly payments commencing on the last day of the first full calendar quarter following closing. As of September 30, 2023, the Company has repaid $249,644 to the creditors.\nZircon paid transaction costs of $518,636 for legal and advisory services and issued warrants to purchase an aggregate 217,184 shares of common stock to advisors who provided services to effectuate the Merger which had a fair value determined to be $301,572 and are included in the transaction costs and advisory fees allocated to ZRCN equity (refer to Note 11 for further detail regarding these warrants).\nThe following table reconciles the elements of the Merger to the unaudited consolidated statements of changes in stockholders\u2019 equity for the six months ended September 30, 2023:\nSchedule of Consolidated Statements of Changes in Stockholders Equity",
+   "prose_after": "The following table details the number of shares of common stock issued immediately following the consummation of the Merger:\nSchedule of Number of Shares of Common Stock",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     ""
+    ],
+    [
+     "Common stock of Harmony prior to Merger",
+     "",
+     "1,057,754"
+    ],
+    [
+     "Shares issued for Warrant Exchange Agreement",
+     "",
+     "25,284"
+    ],
+    [
+     "Common stock owned by Harmony\u2019s pre-Merger shareholders",
+     "",
+     "1,083,038"
+    ],
+    [
+     "Common stock issued in exchange for Zircon common stock",
+     "",
+     "8,865,234"
+    ],
+    [
+     "Total shares of common stock immediately after Merger",
+     "",
+     "9,948,272"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Merger with Harmony Energy Technologies Corporation"
+    }
+   },
+   "prose_before": "The following table details the number of shares of common stock issued immediately following the consummation of the Merger:\nSchedule of Number of Shares of Common Stock",
+   "prose_after": "Debt Settlement Agreement\nIn connection with the Merger, the Company entered into debt settlement agreements (the \u201cDebt Settlement Agreements\u201d) with certain third-party creditors of the Company under which the Company agreed to make certain payments over the next 12 months to the creditors in satisfaction of an aggregate of $400,000 which was owed to them. As of September 30, 2023, the Company has repaid $167,500 to the creditors. The remaining balance of $232,500 is recorded as a component of notes payable, current portion on the Company\u2019s balance sheet.\n5. Revenue\nDisaggregation of Revenue from Contracts with Customers\nRevenue disaggregated according to the timing of transfer of goods or services (e.g., at a point in time) for the three and six months ended September 30, 2023 and 2022, were as follows:\nSchedule of Revenue Disaggregated Transfer of Goods and Services",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Revenue generated per major product line",
+     "For the Three\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2023",
+     "",
+     "For the Three\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2022",
+     "",
+     "For the Six\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2023",
+     "",
+     "For the Six\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2022",
+     ""
+    ],
+    [
+     "Stud sensor edge",
+     "$",
+     "5,837,322",
+     "$",
+     "5,363,427",
+     "$",
+     "9,689,659",
+     "$",
+     "9,156,576"
+    ],
+    [
+     "Multifunctional scanners",
+     "",
+     "1,186,352",
+     "",
+     "1,341,140",
+     "",
+     "2,253,473",
+     "",
+     "2,037,461"
+    ],
+    [
+     "Stud sensor center",
+     "",
+     "1,354,703",
+     "",
+     "1,054,335",
+     "",
+     "2,447,040",
+     "",
+     "2,020,751"
+    ],
+    [
+     "Target control products",
+     "",
+     "463,090",
+     "",
+     "483,624",
+     "",
+     "778,471",
+     "",
+     "867,765"
+    ],
+    [
+     "Other",
+     "",
+     "420,401",
+     "",
+     "407,949",
+     "",
+     "660,115",
+     "",
+     "726,017"
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "9,261,868",
+     "$",
+     "8,650,475",
+     "$",
+     "15,828,758",
+     "$",
+     "14,808,570"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 628,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "Debt Settlement Agreement\nIn connection with the Merger, the Company entered into debt settlement agreements (the \u201cDebt Settlement Agreements\u201d) with certain third-party creditors of the Company under which the Company agreed to make certain payments over the next 12 months to the creditors in satisfaction of an aggregate of $400,000 which was owed to them. As of September 30, 2023, the Company has repaid $167,500 to the creditors. The remaining balance of $232,500 is recorded as a component of notes payable, current portion on the Company\u2019s balance sheet.\n5. Revenue\nDisaggregation of Revenue from Contracts with Customers\nRevenue disaggregated according to the timing of transfer of goods or services (e.g., at a point in time) for the three and six months ended September 30, 2023 and 2022, were as follows:\nSchedule of Revenue Disaggregated Transfer of Goods and Services",
+   "prose_after": "Revenue disaggregated according to the geographical location of customers for the for the three and six months ended September 30, 2023 and 2022, were as follows:\nSchedule of Revenue Disaggregated Geographical Location of Customers",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Revenue by geographic location of customers",
+     "For the Three\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2023",
+     "",
+     "For the Three\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2022",
+     "",
+     "For the Six\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2023",
+     "",
+     "For the Six\n\n\n\nMonths Ended\n\n\n\nSeptember 30,\n\n\n\n2022",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "8,510,546",
+     "$",
+     "7,947,955",
+     "$",
+     "14,225,839",
+     "$",
+     "13,200,902"
+    ],
+    [
+     "Canada",
+     "",
+     "358,681",
+     "",
+     "367,694",
+     "",
+     "784,154",
+     "",
+     "802,015"
+    ],
+    [
+     "Europe",
+     "",
+     "18,017",
+     "",
+     "85,458",
+     "",
+     "100,083",
+     "",
+     "210,511"
+    ],
+    [
+     "Japan",
+     "",
+     "151,735",
+     "",
+     "127,212",
+     "",
+     "429,258",
+     "",
+     "371,064"
+    ],
+    [
+     "UK",
+     "",
+     "19,577",
+     "",
+     "1,762",
+     "",
+     "19,577",
+     "",
+     "1,762"
+    ],
+    [
+     "Others",
+     "",
+     "203,312",
+     "",
+     "120,394",
+     "",
+     "269,847",
+     "",
+     "222,316"
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "9,261,868",
+     "$",
+     "8,650,475",
+     "$",
+     "15,828,758",
+     "$",
+     "14,808,570"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 670
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "Revenue disaggregated according to the geographical location of customers for the for the three and six months ended September 30, 2023 and 2022, were as follows:\nSchedule of Revenue Disaggregated Geographical Location of Customers",
+   "prose_after": "6. Inventory\nInventory consisted of the following:\nSchedule of Inventory",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "8,952,775",
+     "",
+     "$",
+     "6,646,408",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "3,667,659",
+     "",
+     "",
+     "5,031,007",
+     ""
+    ],
+    [
+     "Work in process",
+     "",
+     "2,416,176",
+     "",
+     "",
+     "1,947,516",
+     ""
+    ],
+    [
+     "Allowance for slow-moving and obsolete inventory",
+     "",
+     "(453,425)",
+     "",
+     "",
+     "(487,830)",
+     ""
+    ],
+    [
+     "Inventory net",
+     "$",
+     "14,583,185",
+     "",
+     "$",
+     "13,137,101",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "6. Inventory\nInventory consisted of the following:\nSchedule of Inventory",
+   "prose_after": "7. Property and Equipment\nProperty and equipment consisted of the following:\nSchedule of Plant and Equipment",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Manufacturing equipment",
+     "$",
+     "8,936,443",
+     "",
+     "$",
+     "8,694,039",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "",
+     "2,744,199",
+     "",
+     "",
+     "2,744,199",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "1,198,540",
+     "",
+     "",
+     "1,181,382",
+     ""
+    ],
+    [
+     "Furniture and office equipment",
+     "",
+     "937,594",
+     "",
+     "",
+     "923,381",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "274,380",
+     "",
+     "",
+     "273,499",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "",
+     "14,091,156",
+     "",
+     "",
+     "13,816,500",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "719,584",
+     "",
+     "",
+     "560,712",
+     ""
+    ],
+    [
+     "Property and equipment before accumulated depreciation and amortization",
+     "",
+     "14,810,740",
+     "",
+     "",
+     "14,377,212",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "(12,865,245)",
+     "",
+     "",
+     "(12,597,597)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "1,945,495",
+     "",
+     "$",
+     "1,779,615",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "7. Property and Equipment\nProperty and equipment consisted of the following:\nSchedule of Plant and Equipment",
+   "prose_after": "For the three and six months ended September 30, 2023, depreciation and amortization expense was $104,419, and $283,957, respectively. For the three and six months ended September 30, 2022, depreciation and amortization expense was $260,737 and $520,275, respectively.\nConstruction in progress consists of assets and technologies under development. The company starts depreciation once the assets are completed and placed in service.\n8. Intangible Assets\nAcquired identifiable intangible assets are valued at the acquisition date primarily by using a discounted cash flow method.\nThe company\u2019s intangible assets consisted of the following:\nSchedule of Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finite-lived intangible assets (1):",
+     "Intangibles, Gross",
+     "",
+     "Accumulated Amortization",
+     "",
+     "",
+     "Intangibles, Net",
+     "",
+     "Intangibles, Gross",
+     "",
+     "Accumulated Amortization",
+     "",
+     "",
+     "Intangibles, Net",
+     ""
+    ],
+    [
+     "Patents issued and pending",
+     "$",
+     "2,272,570",
+     "$",
+     "(1,577,130)",
+     "",
+     "$",
+     "695,440",
+     "$",
+     "2,272,278",
+     "$",
+     "(1,541,795)",
+     "",
+     "$",
+     "730,483"
+    ],
+    [
+     "Exclusivity rights and licenses",
+     "",
+     "167,542",
+     "",
+     "(95,595)",
+     "",
+     "",
+     "71,947",
+     "",
+     "167,542",
+     "",
+     "(90,640)",
+     "",
+     "",
+     "76,902"
+    ],
+    [
+     "Total finite-lived intangible assets",
+     "$",
+     "2,440,112",
+     "$",
+     "(1,672,725)",
+     "",
+     "$",
+     "767,387",
+     "$",
+     "2,439,820",
+     "$",
+     "(1,632,435)",
+     "",
+     "$",
+     "807,385"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 729,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "For the three and six months ended September 30, 2023, depreciation and amortization expense was $104,419, and $283,957, respectively. For the three and six months ended September 30, 2022, depreciation and amortization expense was $260,737 and $520,275, respectively.\nConstruction in progress consists of assets and technologies under development. The company starts depreciation once the assets are completed and placed in service.\n8. Intangible Assets\nAcquired identifiable intangible assets are valued at the acquisition date primarily by using a discounted cash flow method.\nThe company\u2019s intangible assets consisted of the following:\nSchedule of Intangible Assets",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Finite-lived intangible assets (1):",
+     "2023 Weighted\n\n\n\nAverage Life\n\n\n\nRemaining",
+     ""
+    ],
+    [
+     "Patents issued and pending",
+     "",
+     "14.8"
+    ],
+    [
+     "Exclusivity rights and licenses",
+     "",
+     "6.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 742,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Finite-lived intangible assets have estimated useful lives of five to fifteen years, and are being amortized to operating expenses on a straight-line basis.\nFor the three and six months ended September 30, 2023 the amortization expense of intangible assets amounted to $20,119, and $40,050, respectively. For the three and six months ended September 30, 2022 the amortization expense of intangible assets amounted to $22,362 and $44,611, respectively.\nThe Company evaluates intangible assets for impairment and writes off assets that are not used in any products.\nExpected future amortization expense of acquired finite-lived intangible assets as of September 30, 2023 is as follows:\nSchedule of Future Amortization Expense",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Years Ending March 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "Remainder of fiscal 2024",
+     "$",
+     "31,865"
+    ],
+    [
+     "2025",
+     "",
+     "66,846"
+    ],
+    [
+     "2026",
+     "",
+     "66,087"
+    ],
+    [
+     "2027",
+     "",
+     "65,972"
+    ],
+    [
+     "2028",
+     "",
+     "64,800"
+    ],
+    [
+     "Thereafter",
+     "",
+     "471,817"
+    ],
+    [
+     "Total",
+     "$",
+     "767,387"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 764,
+    "end_line": 777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "(1) Finite-lived intangible assets have estimated useful lives of five to fifteen years, and are being amortized to operating expenses on a straight-line basis.\nFor the three and six months ended September 30, 2023 the amortization expense of intangible assets amounted to $20,119, and $40,050, respectively. For the three and six months ended September 30, 2022 the amortization expense of intangible assets amounted to $22,362 and $44,611, respectively.\nThe Company evaluates intangible assets for impairment and writes off assets that are not used in any products.\nExpected future amortization expense of acquired finite-lived intangible assets as of September 30, 2023 is as follows:\nSchedule of Future Amortization Expense",
+   "prose_after": "9. Accrued Expenses\nAccrued expenses consisted of the following:\nSchedule of Accrued Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "March 31, 2023",
+     ""
+    ],
+    [
+     "Rebates",
+     "$",
+     "630,255",
+     "$",
+     "447,959"
+    ],
+    [
+     "Vacation",
+     "",
+     "425,799",
+     "",
+     "445,602"
+    ],
+    [
+     "Payroll and related",
+     "",
+     "321,512",
+     "",
+     "343,696"
+    ],
+    [
+     "Sales expense",
+     "",
+     "339,517",
+     "235,779",
+     ""
+    ],
+    [
+     "Professional services",
+     "",
+     "170,115",
+     "",
+     "193,853"
+    ],
+    [
+     "Advertising allowance",
+     "",
+     "279,734",
+     "",
+     "165,291"
+    ],
+    [
+     "Interest",
+     "",
+     "80,095",
+     "",
+     "29,960"
+    ],
+    [
+     "Accrued taxes",
+     "",
+     "37,682",
+     "",
+     "14,185"
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "2,284,709",
+     "$",
+     "1,876,325"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 784,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Accrued Expenses"
+    }
+   },
+   "prose_before": "9. Accrued Expenses\nAccrued expenses consisted of the following:\nSchedule of Accrued Liabilities",
+   "prose_after": "10. Debt\nLine of Credit\nThe company has a revolving line of credit with a bank, which allows borrowings up to $12,000,000 that expires in February 2024. As further defined in the agreement, borrowings bear interest at either a fixed rate for a fixed term (2.36% per annum in excess of Daily Simple SOFR) or variable rate (Reference Rate) selected by management which was 6.91% for $6,500,000 and 8.00% for $1,915,980 of outstanding borrowings on the line of credit balance at September 30, 2023. The line of credit is secured by substantially all of the company\u2019s assets. As of September 30, 2023, the company demonstrated that it was in compliance with or has obtained waivers for all applicable covenants of the loan agreement.\nWhile the line of credit has a maximum limit of $12,000,000, the formula basis allows the company to borrow up to 80% of eligible accounts receivable and 50% of eligible inventory. Using this formula, the company could borrow up to $11,709,745 against eligible assets as of September 30, 2023. As of September 30, 2023 the Company had borrowed $8,915,980, and had unused borrowing capacity of $2,793,765.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "March 31, 2023",
+     ""
+    ],
+    [
+     "SOFR",
+     "$",
+     "7,000,000",
+     "$",
+     "6,500,000"
+    ],
+    [
+     "Excess of SOFR",
+     "",
+     "1,915,980",
+     "",
+     "710,652"
+    ],
+    [
+     "Line of credit",
+     "$",
+     "8,915,980",
+     "$",
+     "7,210,652"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "(v) included a provision that required Zircon to reduce the amount set forth under the 2023 Note by twenty-five percent (25%) of the amount of net proceeds received by the Company from any sale of its capital stock in excess of the amount of funds disclosed in the offering to be specifically committed and applied to the project described therein (which shall not include any contingency line items), (vi) included a corporate guarantee under the Loan Agreement and the Notes by the Company, (vii) amended the minimum fixed charge coverage ratio to be less than 1.25 to 1.00 and (viii) added a new provision restricting payment and dividends by Zircon\nFor the three and six months ended September 30, 2023, interest expense on the line of credit totaled $140,343 and $300,659. For the three and six months ended September 30, 2022, interest expense on the line of credit totaled $41,811 and $124,095, respectively.\nThe components of the revolving line of credit consisted of the following:\nSchedule of Revolving Line of Credit",
+   "prose_after": "Notes payable - bank\nIn July 2018, the company entered into a term loan with a bank for $1,750,000. Under the agreement, the company pays approximately $29,000 in monthly principal payments plus interest. During the three months ended September 30, 2023, interest paid on the loan approximated $3,300. The note matures in August 2023 and is secured by the company\u2019s assets. Borrowings bear interest at either a fixed rate (3.5% per annum in excess of Secured Overnight Financing Rate (\u201c SOFR\u201d) rate) or variable rate (0.25% in excess of Reference Rate) as selected by management. The company executed an interest- rate swap agreement to convert the variable interest rate to 6.56% fixed interest rate for the full term of the note. The fair value of the interest-rate swap is not material to the financial statements for the three and six months ended September 30, 2023 and has not been recorded.\nIn September 2019, the company entered into a term loan with a bank for $300,000. Under the agreement, the company paid interest only from November 2019 through April 2020, and starting in May 2020, the company made monthly payments of $5,000 plus interest. During the three months ended September 30, 2023, interest paid on the loan approximated $4,000. The note originally matured in April 2025 and is secured by the company\u2019s assets. Subsequent to September 30, 2023, the Company and the bank entered into an agreement whereby the note would mature in February 2024 and the Company has reflected all amounts due as current. Borrowings bear interest at either a fixed rate (3.5% per annum in excess of SOFR rate) or variable rate (0.25% in excess of Reference Rate) as selected by management.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 2018\n\n\n\nNote",
+     "",
+     "",
+     "September 2019\n\n\n\nNote",
+     "",
+     "",
+     "Harmony Notes",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2023",
+     "$",
+     "145,834",
+     "",
+     "$",
+     "125,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "270,834",
+     ""
+    ],
+    [
+     "Issuances",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400,000",
+     "",
+     "",
+     "400,000",
+     ""
+    ],
+    [
+     "Repayments",
+     "",
+     "(87,500)",
+     "",
+     "",
+     "(15,000)",
+     "",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "(202,500)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2023",
+     "",
+     "58,334",
+     "",
+     "",
+     "110,000",
+     "",
+     "",
+     "300,000",
+     "",
+     "",
+     "468,334",
+     ""
+    ],
+    [
+     "Plus: accrued interest",
+     "",
+     "994",
+     "",
+     "",
+     "869",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,863",
+     ""
+    ],
+    [
+     "Total balance, June 30, 2023",
+     "",
+     "59,328",
+     "",
+     "",
+     "110,869",
+     "",
+     "",
+     "300,000",
+     "",
+     "",
+     "470,197",
+     ""
+    ],
+    [
+     "Plus: accrued interest",
+     "",
+     "(89)",
+     "",
+     "",
+     "607",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "519",
+     ""
+    ],
+    [
+     "Repayments",
+     "",
+     "(58,334)",
+     "",
+     "",
+     "(15,000)",
+     "",
+     "",
+     "(67,500)",
+     "",
+     "",
+     "(140,834)",
+     ""
+    ],
+    [
+     "Total balance, September 30, 2023",
+     "$",
+     "905",
+     "",
+     "$",
+     "96,476",
+     "",
+     "$",
+     "232,500",
+     "",
+     "$",
+     "329,881",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 845,
+    "end_line": 864
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "In September 2019, the company entered into a term loan with a bank for $300,000. Under the agreement, the company paid interest only from November 2019 through April 2020, and starting in May 2020, the company made monthly payments of $5,000 plus interest. During the three months ended September 30, 2023, interest paid on the loan approximated $4,000. The note originally matured in April 2025 and is secured by the company\u2019s assets. Subsequent to September 30, 2023, the Company and the bank entered into an agreement whereby the note would mature in February 2024 and the Company has reflected all amounts due as current. Borrowings bear interest at either a fixed rate (3.5% per annum in excess of SOFR rate) or variable rate (0.25% in excess of Reference Rate) as selected by management.\nFor the three and six months ended September 30, 2023, interest expense on notes payable with banks totaled $2,383 and $6,740, respectively. For the three and six months ended September 30, 2022, interest expense on notes payable with banks totaled $7,157 and $13,439, respectively.\nThe table below details the activity related to the Notes payable - bank:\nSchedule of Related to Notes Payable to Bank",
+   "prose_after": "Future scheduled maturities of notes payable - bank are as follows:\nSchedule of Maturities of Notes Payable to Bank",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Period Ending September 30,",
+     "Amount",
+     ""
+    ],
+    [
+     "Remainder of fiscal 2024",
+     "$",
+     "327,500"
+    ],
+    [
+     "Note payable",
+     "$",
+     "327,500"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, current portion",
+     "$",
+     "327,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 869,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Future scheduled maturities of notes payable - bank are as follows:\nSchedule of Maturities of Notes Payable to Bank",
+   "prose_after": "Notes payable to Stauss Family Administrative Trust\nThe Company has notes payable to the Stauss Family Administrative Trust to repay loans made to the company. Principal balance of $667,230 is due and payable in December 2024. Interest accrued at 5.5% per annum is paid quarterly and included in accrued expenses. The note is subordinated to the line of credit note payable to the bank and no payment is to be made on the note without prior approval from the bank. In the second quarter of 2023, a portion of the note payable to Stauss Family Administrative Trust was settled as a non cash transaction against the note receivable from stockholder for $240,190.\nFor the three and six months ended September 30, 2023 the interest expense on notes payable to the Stauss Family Administrative Trust totaled $12,754 and $25,370, respectively. For the three and six months ended September 30, 2022 the interest expense on notes payable to the Stauss Family Administrative Trust totaled $12,754 and $25,370, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Warrants",
+     "",
+     "Weighted Average\n\n\n\nRemaining Term",
+     "",
+     "Weighted Average\n\n\n\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding as of March 31, 2023",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issued",
+     "",
+     "217,184",
+     "",
+     "10.0",
+     "$",
+     "0.20"
+    ],
+    [
+     "Outstanding as of September 30, 2023",
+     "",
+     "217,184",
+     "",
+     "9.6",
+     "$",
+     "0.20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 899,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Warrants"
+    }
+   },
+   "prose_before": "Section 13(k) of the Exchange Act provides that it is unlawful for a company, such as ours, that has a class of securities registered under Section 12 of the Exchange Act to, directly or indirectly, including through any subsidiary, extend or maintain credit in the form of a personal loan to or for any director or executive officer of the company. In March 2022, Zircon Corporation, the Company\u2019s wholly-owned subsidiary, loaned our chief executive officer funds to pay certain tax obligations, which was still outstanding when we acquired Zircon in April 2023, which may have violated Section 13(k) of the Exchange Act as a result of the transition from private to public company accounting. The loan was repaid in August 2023 as soon as management became aware of the possible violation. The loan repayment was made by means of an offset to beneficial amounts of our chief executive officer in certain loans to the company to which offset he did not object. Issuers that are found to have violated Section 13(k) of the Exchange Act may be subject to civil sanctions, including injunctive remedies and monetary penalties, as well as criminal sanctions. In accordance with ASC 450, Contingencies, no amounts have been accrued for a loss contingency as it is not estimable as of September 30, 2023. The imposition of any of such sanctions on us could have a material adverse effect on our business, financial position, results of operations or cash flows.\n11. Warrants\nAt the closing of the Merger, the company issued certain consultants and advisors warrants to purchase an aggregate of 217,184 shares of Company common stock (the \u201cAdvisor Warrants\u201d). The Advisor Warrants are exercisable any time ten years from the date of issuance, have an exercise price of $0.20 per share (adjusted for reverse stock split, $0.01 prior), and are classified within equity. As these are penny warrants (prior to reverse stock split), the company determined the fair value of the Advisor Warrants of $301,572 using the intrinsic value method based on a stock price established in the Merger of $1.60 per share (adjusted for reverse stock split, $0.08 prior).\nThe following table provides the activity for all warrants for the three and six months ended September 30, 2023:\nSchedule of Warrants Activity",
+   "prose_after": "12. Commitments and Contingencies\nLegal Proceedings\nZRCN is engaged in procedures to protect its proprietary rights and has filed complaints with the Federal Trade Commission and the Customs and Border Patrol.\nZircon Corporation v. Stanley Black & Decker, Inc.\nZircon is Appellant from an adverse ruling by the International Trade Commission (\u201cITC\u201d) in an investigation before the ITC in which Zircon sought an injunction to prevent Stanley, Black & Decker, Inc. and its wholly owned subsidiary, Black & Decker (U.S.), Inc. (together \u201cSBD\u201d) from importing and selling in the United States certain products alleged by Zircon to infringe its patents. The appeal was initiated by Zircon following the ruling by the ITC overturning the decision by Judge Charles Bullock, Presiding Judge of the ITC issued on October 7, 2021, finding that three patents at issue in the investigation were both valid and practiced by Zircon and that SBD infringed Zircon\u2019s auto recalibration patent. The Commission found that while Zircon\u2019s auto recalibration patent met all objective requirements for validity, it reversed the Presiding Judge on the subjective requirement of non-obviousness. Zircon then timely appealed to the Federal Circuit Court of Appeal (\u201cFCCA\u201d) and is waiting for notice from the Court as to when the matter will be placed on its calendar for a de novo hearing. Zircon is also plaintiff in a Federal District Court action in the Northern District of California against SBD, which is on stay pending the disposition of the ITC matter in the FCCA. The ITC is not a forum for damages, only an exclusion order. However, a reversal of the ITC finding will enable Zircon to proceed with its damages action claim in the Northern District case. All charges in connection with the litigation versus SBD have been expensed to date and no damage claim has been filed against Zircon in this matter.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "$",
+     "855,628"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability, current",
+     "",
+     "191,042"
+    ],
+    [
+     "Noncurrent liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability, net of current portion",
+     "",
+     "691,594"
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "882,636"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2023",
+    "Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 951
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company\u2019s corporate headquarters in Campbell, California are leased from the trust of one of its former shareholders for approximately $19,195 per month under a lease expiring in December 2027. The lease requires the company to pay utilities, maintenance and real estate taxes. Rent expense was $57,581, and $115,167 for both the three month and six months September 30, 2023, and 2022, respectively.\nThe company leases office equipment through a lease that expires in June 2026 and requires monthly lease payments of $987 for a period of five years. The total lease expense for both the three month and six month September 30, 2023, and 2022 amounted to $2,961 and $5,922, respectively.\nThe company leases a vehicle through a lease that expires in July 2024 and requires monthly lease payments of $448 for a period of three years. The total lease expense for both the three month ended and six month ended September 30, 2023, and 2022 amounted to $1,344 and $2,688, respectively.\nSchedule of Operating Lease",
+   "prose_after": "The components of lease expense, which are included in selling, general and administrative expense, are as follows:\nSchedule of Components of Lease Expense",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Components of lease cost:",
+     "",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "104,416"
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "104,416"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2023",
+    "Components of lease cost:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 956,
+    "end_line": 965
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The components of lease expense, which are included in selling, general and administrative expense, are as follows:\nSchedule of Components of Lease Expense",
+   "prose_after": "Schedule of Weighted Average Remaining Lease Terms and Discount Rate",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term:",
+     "",
+     ""
+    ],
+    [
+     "Operating leases (in years)",
+     "",
+     "4.17"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2023",
+    "Weighted-average remaining lease term:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 968,
+    "end_line": 974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Schedule of Weighted Average Remaining Lease Terms and Discount Rate",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2023",
+     ""
+    ],
+    [
+     "Weighted-average remaining discount rate:",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "7.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2023",
+    "Weighted-average remaining discount rate:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 975,
+    "end_line": 981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Future minimum lease payment under non-cancellable lease as of September 30, 2023 are as follows:\nSchedule of Future Minimum Lease Payment Under Non-cancellable Lease",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maturities of lease liabilities",
+     "Operating Leases",
+     "",
+     ""
+    ],
+    [
+     "Year ending March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remainder of fiscal 2024",
+     "$",
+     "123,777",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "243,527",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "242,184",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "233,301",
+     ""
+    ],
+    [
+     "2028 and thereafter",
+     "",
+     "172,755",
+     ""
+    ],
+    [
+     "Total Minimum Lease Payments",
+     "",
+     "1,015,544",
+     ""
+    ],
+    [
+     "Less effects of discounting",
+     "",
+     "(132,908)",
+     ""
+    ],
+    [
+     "Present value of future minimum lease liabilities",
+     "",
+     "882,636",
+     ""
+    ],
+    [
+     "Less current portion of operating lease liability",
+     "",
+     "(191,042)",
+     ""
+    ],
+    [
+     "Operating lease liability, net of current portion",
+     "$",
+     "691,594",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 987,
+    "end_line": 1007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Future minimum lease payment under non-cancellable lease as of September 30, 2023 are as follows:\nSchedule of Future Minimum Lease Payment Under Non-cancellable Lease",
+   "prose_after": "13. Profit Sharing and 401(k) Plan\nThe company has a defined contribution profit sharing plan for all eligible employees. Contributions to the profit sharing plan are determined annually by the Board of Directors. There were no profit sharing contributions made during the three and six months ended September 30, 2023 and 2022.\nAll eligible employees are also allowed to participate in the company\u2019s 401(k) plan. The company\u2019s contributions to the plan are based on a specified percentage of each participant\u2019s eligible contribution, decided annually by the Board of Directors, as defined in the plan document. The company\u2019s contributions of $12,245 was accrued for the six months ended September 30, 2023. The company\u2019s contributions of $21,577 was accrued for the six months ended September 30, 2022. In May 2023, the company paid $48,978 to the plan for the plan year ended March 31, 2023 and in May 2022, the company paid $52,115 to the plan for the plan year ended March 31, 2022.\n14. Subsequent Events",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2023",
+     "",
+     "March 31, 2023",
+     ""
+    ],
+    [
+     "Assets",
+     "$",
+     "28,800,412",
+     "$",
+     "24,942,433"
+    ],
+    [
+     "Liabilities",
+     "$",
+     "19,341,101",
+     "$",
+     "15,115,542"
+    ],
+    [
+     "Equity",
+     "$",
+     "9,459,311",
+     "$",
+     "9,826,891"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1039,
+    "end_line": 1049
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following management discussion and analysis of the financial position and results of operations (\u201cMD&A\u201d) should be read in conjunction with the audited consolidated financial statements and related notes to the financial statements included elsewhere in this Report. This discussion contains forward-looking statements that relate to future events or our future financial performance. These statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, levels of activity, performance or achievements to be materially different from any future results, levels of activity, performance or achievements expressed or implied by these forward-looking statements. These risks and other factors include, among others, those listed under \u201cForward-Looking Statements\u201d and \u201cRisk Factors\u201d and those included elsewhere in this report.\nOVERVIEW\nZircon is a Silicon Valley-based company operating in Northern California since 1977. leveraging its proprietary sensor-based technology across a mix of global markets, including commercial and residential buildings, government infrastructure and building information modeling. Zircon is focused on creating new, technical solutions for global applications in the areas of home and workplace safety, project efficiency, and structural data analysis.\nZircon benefits from a multi-generational customer base of professional contractors and do-it-yourselfers who rely on Zircon\u2019s innovative and easy-to-use products to get the job done.\nRESULTS OF OPERATIONS\nDuring the quarter ended September 30, 2023, and the year, Zircon\u2019s selected financial information is the following. All the data are presented in United States dollars.\nFinancial Position Analysis\nThe information presented as of September 30 and for the past one (1) year represents the consolidated information of ZRCN Inc.",
+   "prose_after": "Assets\nThe total assets on September 30, 2023, were $28.8M compared to $24.9M on March 31, 2023, an increase of $3.8M. Cash increased by $0.2M. Accounts receivable increased by $2.4M and inventory increased by $1.4M. Net Property and Equipment increased by $0.2M and prepaid and other assets increased by $0.1M. Operating right of use assets, tax deposits and intangible assets decreased by $0.2M.\nLiabilities\nTotal liabilities on September 30, 2023, were $19.3M and $15.1M on March 31, 2023, an increase of $4.2M. During the period, the balance on the bank line of credit increased by $1.7M while accounts payable and accrued expenses increased by $2.8M. Notes payable and operating lease liabilities declined by $0.3M.\nEquity\nTotal equity on September 30, 2023, was $9.5M compared to $9.8M on March 31, 2023, a decrease of $0.3M.\nWhen an \u201cS\u201d Corporation, Zircon reported all its net income proportionally to each shareholder on an IRS form K-1. Each individual shareholder was then required to report the respective share of such income shown on such shareholder\u2019s K-1 and pay the related income taxes on such shareholder\u2019s individual tax return. Distributions to cover the resulting income taxes are made in the following calendar year. Zircon made such distributions to the shareholders for their respective tax payments on their allocated portion of the S corporation net income. Tax related distributions for fiscal 2021, income were made to Zircon\u2019s shareholders on their respective shares of net income in the amount of $223K in April 2022. Tax related distributions for fiscal 2022 net income were paid in October 2023 in the amount of $153K. Zircon has not yet prepared the tax returns for the fiscal year ending March 31, 2023. Zircon will also be required to make a tax related distribution to the March 31, 2023, \u201cS\u201d shareholders in April 2024.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "9,261,868",
+     "",
+     "$",
+     "8,650,475",
+     "",
+     "$",
+     "15,828,758",
+     "",
+     "$",
+     "14,808,570",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "4,871,359",
+     "",
+     "",
+     "5,261,286",
+     "",
+     "",
+     "8,494,790",
+     "",
+     "",
+     "8,828,006",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "4,390,509",
+     "",
+     "",
+     "3,389,189",
+     "",
+     "",
+     "7,333,968",
+     "",
+     "",
+     "5,980,564",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,720,249",
+     "",
+     "",
+     "1,462,088",
+     "",
+     "",
+     "3,389,267",
+     "",
+     "",
+     "2,808,715",
+     ""
+    ],
+    [
+     "Marketing and selling",
+     "",
+     "1,034,913",
+     "",
+     "",
+     "1,160,456",
+     "",
+     "",
+     "2,175,397",
+     "",
+     "",
+     "2,128,732",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "503,742",
+     "",
+     "",
+     "500,017",
+     "",
+     "",
+     "988,257",
+     "",
+     "",
+     "947,079",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,258,904",
+     "",
+     "",
+     "3,122,561",
+     "",
+     "",
+     "6,552,921",
+     "",
+     "",
+     "5,884,526",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,131,605",
+     "",
+     "",
+     "266,628",
+     "",
+     "",
+     "781,047",
+     "",
+     "",
+     "96,038",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "175,453",
+     "",
+     "",
+     "102,196",
+     "",
+     "",
+     "332,769",
+     "",
+     "",
+     "162,904",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "10,481",
+     "",
+     "",
+     "6,744",
+     "",
+     "",
+     "19,435",
+     "",
+     "",
+     "13,569",
+     ""
+    ],
+    [
+     "(Gain) loss on foreign currency transactions",
+     "",
+     "(41,853)",
+     "",
+     "",
+     "(7,593)",
+     "",
+     "",
+     "6,762",
+     "",
+     "",
+     "3,269",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "",
+     "144,081",
+     "",
+     "",
+     "101,347",
+     "",
+     "",
+     "358,966",
+     "",
+     "",
+     "179,742",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "987,524",
+     "",
+     "",
+     "165,281",
+     "",
+     "",
+     "422,081",
+     "",
+     "",
+     "(83,704)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "(132,904)",
+     "",
+     "",
+     "(202,601)",
+     "",
+     "",
+     "(32,837)",
+     "",
+     "",
+     "(102,534)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "854,620",
+     "",
+     "",
+     "149,803",
+     "",
+     "",
+     "389,244",
+     "",
+     "",
+     "(186,238)",
+     ""
+    ],
+    [
+     "Less: Net (loss) income attributable to non-controlling interests",
+     "",
+     "(12,837)",
+     "",
+     "",
+     "33,944",
+     "",
+     "",
+     "(95,593)",
+     "",
+     "",
+     "154,258",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to common stockholders",
+     "$",
+     "867,457",
+     "",
+     "$",
+     "115,589",
+     "",
+     "$",
+     "484,837",
+     "",
+     "$",
+     "(340,496)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "When an \u201cS\u201d Corporation, Zircon reported all its net income proportionally to each shareholder on an IRS form K-1. Each individual shareholder was then required to report the respective share of such income shown on such shareholder\u2019s K-1 and pay the related income taxes on such shareholder\u2019s individual tax return. Distributions to cover the resulting income taxes are made in the following calendar year. Zircon made such distributions to the shareholders for their respective tax payments on their allocated portion of the S corporation net income. Tax related distributions for fiscal 2021, income were made to Zircon\u2019s shareholders on their respective shares of net income in the amount of $223K in April 2022. Tax related distributions for fiscal 2022 net income were paid in October 2023 in the amount of $153K. Zircon has not yet prepared the tax returns for the fiscal year ending March 31, 2023. Zircon will also be required to make a tax related distribution to the March 31, 2023, \u201cS\u201d shareholders in April 2024.\nOperating Results Analysis",
+   "prose_after": "Sales revenue and gross margin\nZircon generated $9.3M in revenue during the quarter ended September 30, 2023. Zircon generated $8.7 in revenue during the quarter ended September 30, 2022, an increase of 7%. For the six-month period ended September 30, 2023, revenue increased to $15.8M from $14.8M, a 7% increase over the same period last year.\nResearch and development\nFor the quarters ended September 30, 2023 and 2022, Zircon incurred R&D expenditures of $504K and $500K respectively. For the six-month periods ending September 30, 2023 and 2022, spending was $988K and $ 947K, respectively including, the salaries of researchers and development materials. The difference of $41K between the corresponding periods is the result of the additional use of consulting services for product development.\nAdministrative expenses\nFor the quarters ended September 30, 2023, and 2022 respectively, total General & Administrative expenditures were $1.7M and $1.5M. For the six-month periods ending September 30, 2023 and 2022 total G & A spending was $3.4M and $2.8M respectively. Much of the increase is related to legal and consulting expenses related to completing the reverse merger.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Six Month Period Ended\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(125,296)",
+     "",
+     "$",
+     "(176,489)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "(874,493)",
+     "",
+     "",
+     "(268,904)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "1,212,350",
+     "",
+     "",
+     "365,202",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate fluctuation",
+     "",
+     "1,542",
+     "",
+     "",
+     "(6,901)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "$",
+     "214,103",
+     "",
+     "$",
+     "(87,092)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Six Month Period Ended\n\n\n\nSeptember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1147,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Zircon has notes payable to the Stauss Family Administrative Trust to repay loans made to Zircon. The principal balance of $667K is due and payable in December 2024. Interest accrued at 5.5% per annum is paid quarterly and included in accrued expenses. The note is subordinated to the line of credit payable to the bank and no payment is to be made on the note without prior approval from the bank.\nFor the three and six months ended September 30, 2023, the interest expense on notes payable to the Stauss Family Administrative Trust totaled $12,754 and $25,370, respectively. For the three and six months ended September 30, 2022, the interest expense on notes payable to the Stauss Family Administrative Trust totaled $12,754 and $25,370, respectively.\nComprehensive Income (Loss)\nComprehensive income (loss) of all periods presented is comprised primarily of net income (loss) and foreign currency translation adjustments. Foreign currency gains we $42K and $8K for the three and six months ended September 30, 2023. For the three and six months ended September 30, 2022, foreign currency losses were ($7K) and ($3K).\nCash Flow Analysis",
+   "prose_after": "Operating Activities\nDuring the six-month period ended September 30, 2023, Zircon consumed $0.1M in cash in support of operations. Depreciation and amortization added back $0.4M in cash. Increases in accounts receivable consumed $2.2M and an increase in inventory consumed $1.4M. Increases in accounts payable and changes in other current liabilities added $2.2M and $0.5M in cash respectively.\nInvesting Activities\nThe reverse merger with Harmony Energy consumed $519K of cash and the addition of PP&E consumed $356K.\nFinancing Activities\nOn January 23, 2023, Zircon renewed and amended its line of Credit with MUFG Union Bank. The collateral-based line of credit is secured by accounts receivable, inventory and other assets giving Zircon $12M in maximum borrowing capacity. As of September 30, 2023 the line balance was $8.9M, an increase of $1.7 from the year ending March 31, 2023.\nLiquidity, Capital Resources and Sources of Financing\nAs of September 30, 2023, the Company had $243,118 cash and working capital of $7,052,414. To date, ZRCN has been financed primarily through retained earnings and secured loans. The loans are secured by accounts receivable, inventory and fixed assets. The Company believes that it has sufficient liquidity to fund its operations and operating capital needs for the next 12 months as well as meet its obligations as they become due in 2023 and 2024.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Information on Outstanding Securities",
+     ""
+    ],
+    [
+     "Common shares issued and outstanding",
+     "9,948,272"
+    ],
+    [
+     "Potential issuance of common shares",
+     ""
+    ],
+    [
+     "Warrants",
+     "217,184"
+    ],
+    [
+     "Stock options",
+     "-"
+    ],
+    [
+     "Fully diluted shares",
+     "10,165,456"
+    ]
+   ],
+   "caption_stack": [
+    "Information on Outstanding Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1187,
+    "end_line": 1196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Financing Activities\nOn January 23, 2023, Zircon renewed and amended its line of Credit with MUFG Union Bank. The collateral-based line of credit is secured by accounts receivable, inventory and other assets giving Zircon $12M in maximum borrowing capacity. As of September 30, 2023 the line balance was $8.9M, an increase of $1.7 from the year ending March 31, 2023.\nLiquidity, Capital Resources and Sources of Financing\nAs of September 30, 2023, the Company had $243,118 cash and working capital of $7,052,414. To date, ZRCN has been financed primarily through retained earnings and secured loans. The loans are secured by accounts receivable, inventory and fixed assets. The Company believes that it has sufficient liquidity to fund its operations and operating capital needs for the next 12 months as well as meet its obligations as they become due in 2023 and 2024.\nInformation on Outstanding Securities\nThe following table sets out the number of common shares and warrants outstanding as of the date hereof:",
+   "prose_after": "Related Party Transactions",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Zircon is a member of a controlled group of companies and has revenue and cost-sharing activities with other members of the controlled group. Results of operations and financial condition may not represent amounts that would have been reported if Zircon operated as an unaffiliated entity."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Zircon has an exclusive manufacturing and technical assistance agreement with Zircon de Mexico S.A. de C.V. (the \u201cContractor\u201d), an entity which is owned by certain shareholders of Zircon. Under the terms of the agreement, Zircon provides materials, technical assistance, and expertise to the Contractor, and the Contractor assembles certain of Zircon\u2019s products."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "In September 2017, an affiliated company, Zircon Corporation Limited, was established in the United Kingdom to facilitate the sale of Zircon\u2019s products to European customers and operations began during the year ended March 31, 2019. The ownership structure of the affiliate is similar to the ownership of Zircon."
+    ]
+   ],
+   "caption_stack": [
+    "Zircon is a member of a controlled group of companies and has revenue and cost-sharing activities with other members of the controlled group. Results of operations and financial condition may not represent amounts that would have been reported if Zircon operated as an unaffiliated entity."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Related Party Transactions",
+   "prose_after": "Off-Balance Sheet Arrangements\nZRCN has no off-balance sheet arrangements.\nEstimates, Judgments and Assumptions\nZRCN prepares its financial statements in accordance with US GAAP, which require management to make estimates and assumptions that affect the amounts of its assets and liabilities, the information provided with regard to future assets and liabilities as well as the amounts of revenues and expenses for the relevant periods. Readers are invited to refer the Note 2 of the financial statements for the period ending September 30, 2023, for details.\nQUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nInterest Rate and Foreign Currency Risk\nInterest Rate Risk\nZRCN\u2019s exposure to changes in interest rates relates primarily to Zircon\u2019s cash, cash equivalents and outstanding debts.\nForeign Currency & Exchange Risk\nZRCN sources parts from foreign vendors and sells its products in various foreign markets around the world. Changes in foreign currency exchange for the purchase of components from vendors and the sale of products in foreign markets can have a material impact on the Company\u2019s results of operations and liquidity. The Company hedge or take other steps to mitigate the impact from foreign currency exchange rates, but there is no guarantee that these efforts will be successful in every instance.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1276,
+    "end_line": 1301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Information regarding the primary risks and uncertainties that could materially and adversely affect our future performance or could cause actual results to differ materially from those expressed or implied in our forward-looking statements, appears in Part I, Item 1A - \u201cRisk Factors\u201d of our 2023 Form 8K/A filed with the Securities and Exchange Commission on August 22, 2023. There have been no material changes from the risk factors set forth in our August 22, 2023, Form 8-K/A\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nWe have not made any sales of unregistered securities of our common stock during the period from April 1, 2023, through September 30, 2023.\nItem 3. Defaults Upon Senior Securities\nNot applicable.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nDuring the last fiscal quarter, none of our directors or officers (as defined in Rule 16a-1(f) of the Exchange Act) adopted, modified or terminated by any contract, instruction, or written plan for the purchase or sale of our securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) of the Exchange Act or any \u201cnon-Rule 10b5-1 trading arrangement.\u201d\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1302,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ZRCN INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 14, 2023",
+     "By:",
+     "/s/ John Stauss"
+    ],
+    [
+     "",
+     "Name:",
+     "John Stauss"
+    ],
+    [
+     "",
+     "Title:",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 14, 2023",
+     "By:",
+     "/s/ Ronald Bourque"
+    ],
+    [
+     "",
+     "Name:",
+     "Ronald Bourque"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [
+    "ZRCN INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1302,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

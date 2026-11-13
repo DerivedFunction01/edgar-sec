@@ -1,0 +1,4438 @@
+{
+ "accession": "0001640334-22-001851",
+ "cik": "0000894556",
+ "form": "10-Q",
+ "filing_date": "2022-08-22",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gevi_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wyoming",
+     "",
+     "87-0485313"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: June 30, 2022\nor\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission File Number: 033-55254-38\nGeneral Enterprise Ventures, Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1740H Del Range Blvd, Suite 166\n\nCheyenne, WY",
+     "",
+     "82009"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(800) 401-4535\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "21"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "22"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "22"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "22"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "22"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 85
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated Filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) YES [ ] NO [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n93,945,388 shares of common stock issued and outstanding as of August 19, 2022.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nGeneral Enterprise Ventures, Inc.\nConsolidated Balance Sheets\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "102,252",
+     "",
+     "$",
+     "5,469",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "114,413",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "216,665",
+     "",
+     "",
+     "5,469",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "4,195,353",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "",
+     "67,961",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Equipment, net",
+     "",
+     "2,572",
+     "",
+     "",
+     "291,438",
+     ""
+    ],
+    [
+     "Digital currency",
+     "",
+     "-",
+     "",
+     "",
+     "33,324",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "4,482,551",
+     "",
+     "$",
+     "330,231",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "15,133",
+     "",
+     "$",
+     "10,741",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "493,814",
+     "",
+     "",
+     "372,349",
+     ""
+    ],
+    [
+     "Operating lease liability - current portion",
+     "",
+     "9,977",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "518,924",
+     "",
+     "",
+     "383,090",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability",
+     "",
+     "57,984",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "576,908",
+     "",
+     "",
+     "383,090",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Series A Preferred Stock, par value $0.001, authorized 10,000,000 shares, 10,000,000 shares and 0 shares issued and outstanding",
+     "",
+     "10,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Convertible Series C Preferred Stock, par value $0.001, authorized 5,000,000 shares, 950,000 and 0 shares issued and outstanding, respectively",
+     "",
+     "950",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common Stock par value $0.001, authorized 1,000,000,000 shares, 93,945,388 and 22,945,388 shares issued and outstanding, respectively",
+     "",
+     "93,945",
+     "",
+     "",
+     "22,945",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "62,625,173",
+     "",
+     "",
+     "56,387,768",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(58,824,425)",
+     "",
+     "",
+     "(56,473,572)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "3,905,643",
+     "",
+     "",
+     "(52,859)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity (Deficit)",
+     "$",
+     "4,482,551",
+     "",
+     "$",
+     "330,231",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 98,
+    "end_line": 145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nGeneral Enterprise Ventures, Inc.\nConsolidated Balance Sheets\n(Unaudited)",
+   "prose_after": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "41,468",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "41,468",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administration",
+     "",
+     "78,111",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "80,706",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "135",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "135",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Management compensation",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "182,295",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "222,466",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "2,360,541",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,403,307",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(2,319,073)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,361,839)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "-",
+     "",
+     "",
+     "(524)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(524)",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "-",
+     "",
+     "",
+     "(524)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(524)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations before taxes",
+     "",
+     "(2,319,073)",
+     "",
+     "",
+     "(524)",
+     "",
+     "",
+     "(2,361,839)",
+     "",
+     "",
+     "(524)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(2,319,073)",
+     "",
+     "$",
+     "(524)",
+     "",
+     "$",
+     "(2,361,839)",
+     "",
+     "$",
+     "(524)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discontinued operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) from discontinued operations",
+     "$",
+     "-",
+     "",
+     "$",
+     "(63,203)",
+     "",
+     "$",
+     "13,016",
+     "",
+     "$",
+     "(63,203)",
+     ""
+    ],
+    [
+     "Loss on disposition of digital currency and digital currency assets",
+     "",
+     "(2,030)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,030)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss from discontinued operations, net of tax",
+     "$",
+     "(2,030)",
+     "",
+     "$",
+     "(63,203)",
+     "",
+     "$",
+     "10,986",
+     "",
+     "$",
+     "(63,203)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(2,321,103)",
+     "",
+     "$",
+     "(63,727)",
+     "",
+     "$",
+     "(2,350,853)",
+     "",
+     "$",
+     "(63,727)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations Per Common Share \u2013 Basic and Diluted",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Gain (loss) from discontinuing operations Per Common Share\u2013 Basic and Diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic and Diluted Weighted Average Number of Common Shares Outstanding",
+     "",
+     "37,055,278",
+     "",
+     "",
+     "22,945,388",
+     "",
+     "",
+     "30,039,311",
+     "",
+     "",
+     "22,945,388",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 156,
+    "end_line": 209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Change in Stockholders\u2019 Deficit\nFor the six months ended June 30, 2021",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 212,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Convertible Series A",
+     "",
+     "",
+     "",
+     "Convertible Series C",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total\n\nStockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock",
+     "",
+     "",
+     "",
+     "Preferred stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2020",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "22,945,388",
+     "$",
+     "22,945",
+     "$",
+     "56,336,299",
+     "$",
+     "(56,378,599)",
+     "",
+     "$",
+     "(9,355)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance - March 31, 2021",
+     "",
+     "10,000,000",
+     "",
+     "10,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "22,945,388",
+     "",
+     "22,945",
+     "",
+     "56,336,299",
+     "",
+     "(56,378,599)",
+     "",
+     "",
+     "(9,355)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(63,727)",
+     "",
+     "",
+     "(63,727)",
+     ""
+    ],
+    [
+     "Balance - June 30, 2021",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "22,945,388",
+     "$",
+     "22,945",
+     "$",
+     "56,336,299",
+     "$",
+     "(56,442,326)",
+     "",
+     "$",
+     "(73,082)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 222,
+    "end_line": 241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Change in Stockholders\u2019 Deficit\nFor the six months ended June 30, 2021",
+   "prose_after": "For the six months ended June 30, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Convertible Series A",
+     "",
+     "",
+     "",
+     "Convertible Series C",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total\n\nStockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock",
+     "",
+     "",
+     "",
+     "Preferred stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2021",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "22,945,388",
+     "$",
+     "22,945",
+     "$",
+     "56,387,768",
+     "",
+     "$",
+     "(56,473,572)",
+     "",
+     "$",
+     "(52,859)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt forgiveness - former related party",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "9,355",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,355",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(29,750)",
+     "",
+     "",
+     "(29,750)",
+     ""
+    ],
+    [
+     "Balance - March 31, 2022",
+     "",
+     "10,000,000",
+     "",
+     "10,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "22,945,388",
+     "",
+     "22,945",
+     "",
+     "56,397,123",
+     "",
+     "",
+     "(56,503,322)",
+     "",
+     "",
+     "(73,254)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for acquisition of Mighty Fire Breakers",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,199,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,200,000",
+     ""
+    ],
+    [
+     "Conversion of Convertible Series C Preferred stock of Common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "(50)",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "(950)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "70,000,000",
+     "",
+     "70,000",
+     "",
+     "2,030,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,100,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(2,321,103)",
+     "",
+     "",
+     "(2,321,103)",
+     ""
+    ],
+    [
+     "Balance - June 30, 2022",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "950,000",
+     "",
+     "$",
+     "950",
+     "",
+     "",
+     "93,945,388",
+     "$",
+     "93,945",
+     "$",
+     "62,625,173",
+     "",
+     "$",
+     "(58,824,425)",
+     "",
+     "$",
+     "3,905,643",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 244,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "For the six months ended June 30, 2022",
+   "prose_after": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,350,853)",
+     "",
+     "$",
+     "(63,727)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "2,100,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss on disposition of digital currency and digital currency assets",
+     "",
+     "2,029",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Impairment loss on digital assets",
+     "",
+     "6,125",
+     "",
+     "",
+     "52,976",
+     ""
+    ],
+    [
+     "Non-cash lease expense",
+     "",
+     "14,647",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "15,194",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(114,413)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Digital currency",
+     "",
+     "374",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Related party advances funding operating expense",
+     "",
+     "58,231",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "4,392",
+     "",
+     "",
+     "(1,767)",
+     ""
+    ],
+    [
+     "Fixed cash payments related to operating leases",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(274,274)",
+     "",
+     "",
+     "(12,518)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(2,707)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash proceeds from acquisition of Strategic Asset Holdings, LLC.",
+     "",
+     "-",
+     "",
+     "",
+     "14,075",
+     ""
+    ],
+    [
+     "Net Cash (Used in) Provided by Investing Activities",
+     "",
+     "(2,707)",
+     "",
+     "",
+     "14,075",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from loan - related party",
+     "",
+     "429,484",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayment of loan- related party",
+     "",
+     "(55,720)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from loan",
+     "",
+     "-",
+     "",
+     "",
+     "2,500",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "373,764",
+     "",
+     "",
+     "2,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in cash",
+     "",
+     "96,783",
+     "",
+     "",
+     "4,057",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "5,469",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "102,252",
+     "",
+     "$",
+     "4,057",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash Financing Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for services",
+     "$",
+     "70,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Preferred C Stock for acquistion of Mighty Fire Breakers",
+     "$",
+     "4,200,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued upon conversion of Preferred C stock",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Debt forgiveness - related party",
+     "$",
+     "9,355",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of note payable for acquisition of Strategic Asset Holdings, LLC.",
+     "$",
+     "-",
+     "",
+     "$",
+     "50,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 278,
+    "end_line": 342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "See the accompanying Notes, which are an integral part of these unaudited consolidated financial statements.\nNotes to Consolidated Financial Statements\nJune 30, 2022\nNote 1 \u2013 Nature of Operations and Going Concern\nGeneral Enterprise Ventures, Inc., (the \u201cCompany\u201d or \u201cGEVI\u201d), was originally incorporated under the laws of the State of Nevada on March 14, 1990.\nCorporate changes\nOn April 13th, 2022 General Enterprise Ventures, Inc. acquired MFB and all associated IP, in exchange for 1,000,000 Preferred C Shares and a 10% royalty on the gross sales before taxes of products sold under the MFB family of products. MFB has 19 patents centered around its CitroTech MFB 31 Technology for the prevention and spread of wildfires. Its core products can be used for lumber treatments for fire prevention. It has been widely tested and is currently in testing at 3 major us government agencies. When CitroTech Science is sprayed and applied it takes flammable fuels like dry native vegetation and wood and makes them noncombustible.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 276,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "lease_maturity",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred C stock",
+     "$",
+     "4,200,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired and liabilities assumed:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "$",
+     "4,195,353",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "81,967",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(77,320)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consideration:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 451,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Acquisition"
+    }
+   },
+   "prose_before": "There is currently no specific definitive guidance in GAAP or alternative accounting frameworks for the accounting for the production and mining of digital assets and management has exercised significant judgment in determining appropriate accounting treatment for the recognition of revenue for mining of digital assets. Management has examined various factors surrounding the substance of the Company\u2019s operations and the guidance in ASC 606, including identifying the transaction price, when performance obligations are satisfied, and collectability is reasonably assured being the completion and addition of a block to a blockchain and the award of a unit of digital currency to the Company. In the event authoritative guidance is enacted by the FASB, the Company may be required to change its policies which could result in a change in the Company\u2019s financial statements.\nNote 3 \u2013 Acquisition\nOn April 13th, 2022 General Enterprise Ventures, Inc. acquired MFB and all associated IP, in exchange for 1,000,000 Preferred C Shares and a 10% royalty on the gross sales before taxes of products sold under the MFB family of products. MFB has 19 patents centered around its CitroTech MFB 31 Technology for the prevention and spread of wildfires. Its core products can be used for lumber treatments for fire prevention. It has been widely tested and is currently in testing at 3 major us government agencies. When CitroTech Science is sprayed and applied it takes flammable fuels like dry native vegetation and wood and makes them noncombustible.\nThe following table summarizes the consideration paid for MFB and the amounts of the assets acquired and liabilities assumed at the acquisition date of April 13, 2022:",
+   "prose_after": "Note 4 \u2013 Discontinued operations\n(a) Crypto mining\nOn April 1, 2022, the Company implemented a plan to divest its crypto mining operations to focus its resources on the MFB acquisition (see note 3). The Company recognized a loss of $2,030 from the disposition of its crypto mining operations, which consisted of the relinquishment of the digital currency assets in exchange for settlement of the related party note payable associated with the acquisition of the equipment.\nThe following is a summary of the assets and liabilities of the Company\u2019s crypto mining operations as of April 1, 2022 and December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 1,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Digital currency",
+     "",
+     "26,825",
+     "",
+     "-"
+    ],
+    [
+     "Digital currency equipment, net",
+     "",
+     "276,379",
+     "",
+     "-"
+    ],
+    [
+     "Total assets from discontinued operations",
+     "$",
+     "303,204",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "301,175",
+     "",
+     "-"
+    ],
+    [
+     "Total liabilities from discontinued operations",
+     "$",
+     "301,175",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 473,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "Note 4 \u2013 Discontinued operations\n(a) Crypto mining\nOn April 1, 2022, the Company implemented a plan to divest its crypto mining operations to focus its resources on the MFB acquisition (see note 3). The Company recognized a loss of $2,030 from the disposition of its crypto mining operations, which consisted of the relinquishment of the digital currency assets in exchange for settlement of the related party note payable associated with the acquisition of the equipment.\nThe following is a summary of the assets and liabilities of the Company\u2019s crypto mining operations as of April 1, 2022 and December 31, 2021:",
+   "prose_after": "The following is a summary of discontinued operations for the period ended April 1, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "46,976",
+     "$",
+     "-"
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "27,835",
+     "",
+     "-"
+    ],
+    [
+     "Gross Profit",
+     "",
+     "19,141",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "6,125",
+     "",
+     "-"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "6,125",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "$",
+     "13,016",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "The following is a summary of discontinued operations for the period ended April 1, 2022 and 2021:",
+   "prose_after": "(b) Strategic Assets Holdings, LLC. (\u201cSAH\u201d)\nOn October 19, 2021, the Board of Directors approved the divesture of SAH. The separation was amicable, and no severance was determined to be owed to Mr. Jason Tucker or SAH. As result of divesture, the Company recognized $20,179 gain from disposition of SAH during the year ended December 31, 2021.\nThe following is a summary of the assets and liabilities of SAH as of October 19,2021 and December 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 19,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "81",
+     "",
+     "-"
+    ],
+    [
+     "Total assets from discontinued operations",
+     "$",
+     "81",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan payable",
+     "",
+     "20,260",
+     "",
+     "-"
+    ],
+    [
+     "Total liabilities from discontinued operations",
+     "$",
+     "20,260",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 518,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "(b) Strategic Assets Holdings, LLC. (\u201cSAH\u201d)\nOn October 19, 2021, the Board of Directors approved the divesture of SAH. The separation was amicable, and no severance was determined to be owed to Mr. Jason Tucker or SAH. As result of divesture, the Company recognized $20,179 gain from disposition of SAH during the year ended December 31, 2021.\nThe following is a summary of the assets and liabilities of SAH as of October 19,2021 and December 31, 2020:",
+   "prose_after": "The following is a summary of discontinued operations for the six months ended June 30, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administration",
+     "",
+     "-",
+     "",
+     "3,822",
+     ""
+    ],
+    [
+     "Management compensation",
+     "",
+     "-",
+     "",
+     "6,405",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "-",
+     "",
+     "52,976",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "-",
+     "",
+     "63,203",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "-",
+     "$",
+     "(63,203)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 535,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "The following is a summary of discontinued operations for the six months ended June 30, 2022 and 2021:",
+   "prose_after": "Note 5 \u2013 Inventory\nThe Company\u2019s inventory consists of raw materials. During the six months ended June 30, 2022 and 2021, the Company recorded cost of goods sold of $0 and $0 associated with the cost of inventories sold. The Company did not write-off any inventories as unsalable during the six months ended June 30, 2022 or 2021.\nNote 6 \u2013 Equipment, net\nAt June 30, 2022 and December 31, 2021, equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cost:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture and equipment",
+     "$",
+     "2,707",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Digital currency equipment",
+     "",
+     "-",
+     "",
+     "",
+     "301,175",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(135)",
+     "",
+     "",
+     "(9,737)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "2,572",
+     "",
+     "$",
+     "291,438",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 560,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Equipment, net"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Inventory\nThe Company\u2019s inventory consists of raw materials. During the six months ended June 30, 2022 and 2021, the Company recorded cost of goods sold of $0 and $0 associated with the cost of inventories sold. The Company did not write-off any inventories as unsalable during the six months ended June 30, 2022 or 2021.\nNote 6 \u2013 Equipment, net\nAt June 30, 2022 and December 31, 2021, equipment consisted of the following:",
+   "prose_after": "During the year ended December 31, 2021, the Company acquired digital asset machines with a cost of $301,175. The machines started in operation from November 1, 2021. On April 1, 2022, the Company sold digital asset machines with a net book value of $276,379 as part of the divestiture of the Company\u2019s digital asset operations (see note 4).\nDuring the six months ended June 30, 2022, the Company recorded depreciation of $15,194, of which $15,059 is included within the Company\u2019s income from discontinued operations (see note 4).\nNote 7 \u2013 Digital currencies intangible assets\nThe Company mined Crypto currencies with a total aggregate value of $46,976. The Company has accounted for these coins as indefinite life intangible assets. The Company recorded the mining of the coins as revenue from digital currency mining in its result of operations, along with cost of sales (electricity and deprotection of digital assets machines). During the six months ended June 30, 2022, the Company recorded impairment of $6,125 associated with the fair market value in excess of the cost. On April 1, 2022, the Company sold digital currency intangible assets with a net book value of $26,825 as part of the divestiture of the Company\u2019s digital asset operations (see note 4). The Company\u2019s digital currency assets consist of the following at June 30, 2022 and December 31,2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "Digital currencies held",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Opening balance",
+     "$",
+     "33,324",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Additional earned",
+     "",
+     "46,976",
+     "",
+     "",
+     "38,919",
+     ""
+    ],
+    [
+     "Remittance as operating cost",
+     "",
+     "(27)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayment of related party loan",
+     "",
+     "(47,323)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "(6,125)",
+     "",
+     "",
+     "(5,595)",
+     ""
+    ],
+    [
+     "Disposition",
+     "",
+     "(26,825)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "33,324",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Digital currencies intangible assets"
+    }
+   },
+   "prose_before": "During the six months ended June 30, 2022, the Company recorded depreciation of $15,194, of which $15,059 is included within the Company\u2019s income from discontinued operations (see note 4).\nNote 7 \u2013 Digital currencies intangible assets\nThe Company mined Crypto currencies with a total aggregate value of $46,976. The Company has accounted for these coins as indefinite life intangible assets. The Company recorded the mining of the coins as revenue from digital currency mining in its result of operations, along with cost of sales (electricity and deprotection of digital assets machines). During the six months ended June 30, 2022, the Company recorded impairment of $6,125 associated with the fair market value in excess of the cost. On April 1, 2022, the Company sold digital currency intangible assets with a net book value of $26,825 as part of the divestiture of the Company\u2019s digital asset operations (see note 4). The Company\u2019s digital currency assets consist of the following at June 30, 2022 and December 31,2021:",
+   "prose_after": "Note 8 \u2013 Intangible assets\nThe Company has capitalized the costs associated with acquiring the intellectual property of MFB (see note 3) at a value of $4,195,353 million and $0 as of June 30, 2022, and December 31, 2021, respectively.\nThe amount capitalized consisted of a portion of the fair value of 1,000,000 shares of Convertible Preferred C stock of $4,200,000. During the six months ended June 30, 2022, no additional costs met the criteria for capitalization as an intangible asset.\nNote 9 \u2013 Lease\nThe following summarizes right-of-use asset and lease information about the Company\u2019s operating lease as of June 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "6 months ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Lease cost",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "10,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other information",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for operating cash flows from operating leases",
+     "$",
+     "10,000",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained upon acquisition",
+     "$",
+     "81,967",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term \u2014 operating leases (year)",
+     "",
+     "1.17",
+     ""
+    ],
+    [
+     "Weighted-average discount rate \u2014 operating leases",
+     "",
+     "5.50",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "6 months ended",
+    "June 30,",
+    "2022",
+    "Lease cost"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 608,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Lease"
+    }
+   },
+   "prose_before": "Note 8 \u2013 Intangible assets\nThe Company has capitalized the costs associated with acquiring the intellectual property of MFB (see note 3) at a value of $4,195,353 million and $0 as of June 30, 2022, and December 31, 2021, respectively.\nThe amount capitalized consisted of a portion of the fair value of 1,000,000 shares of Convertible Preferred C stock of $4,200,000. During the six months ended June 30, 2022, no additional costs met the criteria for capitalization as an intangible asset.\nNote 9 \u2013 Lease\nThe following summarizes right-of-use asset and lease information about the Company\u2019s operating lease as of June 30, 2022:",
+   "prose_after": "Future minimum lease payments under the operating lease liability has the following non-cancellable lease payments as of June 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022 (excluding the six months ended June 30, 2022)",
+     "$",
+     "60,000",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "Less: Imputed interest",
+     "",
+     "(2,038)",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "67,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability - current",
+     "$",
+     "57,984",
+     ""
+    ],
+    [
+     "Operating lease liability - non-current",
+     "$",
+     "9,977",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total",
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Lease"
+    }
+   },
+   "prose_before": "Future minimum lease payments under the operating lease liability has the following non-cancellable lease payments as of June 30, 2022:",
+   "prose_after": "Note 10 \u2013 Stockholders\u2019 Equity\nPreferred shares\nThe Company\u2019s preferred shares consist of the following:\n\u00b7 10,000,000 authorized shares of Convertible Series A Preferred Stock, par value $0.001. The Series A Preferred Stock are convertible into common stock of the Corporation at a conversion rate of one thousand (1,000) shares of common stock and entitled to one thousand (1,000) votes of common stock for each share of Series A Preferred Stock. The holders of the Convertible Series A Preferred Stock shall not be entitled to receive dividends. Issued and outstanding Convertible Series A Preferred stock as of June 30, 2022, and December 31, 2021, were 10,000,000 and 0, respectively.\n\u00b7 5,000,000 authorized shares of non-voting Convertible Series C Preferred Stock, par value $0.001. The Series C Preferred Stock shares are convertible into common stock of the Corporation at a conversion rate of one (1) Preferred C share for twenty (20) shares of common stock. Issued and outstanding Convertible Series A Preferred stock as of June 30, 2022, and December 31, 2021, were 950,000 and 0, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restricted Shares",
+     "",
+     "Weighted-Average Grant Price",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "70,000,000",
+     "",
+     "0.03"
+    ],
+    [
+     "Vested",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance, June 30, 2022",
+     "",
+     "70,000,000",
+     "$",
+     "0.03"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended",
+    "June 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "The Company has authorized 1,000,000,000 shares of common stock with a par value of $0.001. Each common stock entitles the holder to one vote, in person or proxy, on any matter on which action of the stockholders of the corporation is sought. As of June 30, 2022, 70,000,000 shares issued to a member of the board of directors and President of the Company are restricted (the \u201cRestricted Shares\u201d) and shall be released only upon the Company achieving gross revenue in each of the calendar years ended December 31, 2023, 2024, 2025 and 2026, of not less than $100,000,000. The holder of the Restricted shares shall be entitled to vote but is not entitled to dividends or disposal. The Company valued the voting rights associated with the awards at $2,100,000 which is recorded as stock-based compensation during the six months ended June 30, 2022.\nCommon shares issued and outstanding as of June 30, 2022 and December 31, 2021 was 93,945,388 and 22,945,388 respectively.\nOn June 7, 2022, the holder of the Convertible Series C Preferred Stock converted 50,000 shares of the Company\u2019s Series C Preferred Stock into 1,000,000 shares of the Company\u2019s common shares.\nStock-based compensation\nOn June 13, 2022, the Company issued 70,000,000 Restricted Shares to a member of the board of directors and President of the Company. Set out below is a summary of the changes in the Restricted Shares during the six months ended June 30, 2022:",
+   "prose_after": "Note 11 \u2013 Related Party Transactions\nDuring the six months ended June 30, 2022, our former officer forgave $9,355 in accrued salary and the Company recognized it as additional paid-in-capital.\nDuring the six months ended June 30, 2022, a related party advanced to the Company an amount of $429,484 and paid $58,231 for operating expenses on behalf of the Company. The Company repaid $55,720 owing of the loan.\nDuring the six months ended June 30, 2022, as part of the Company\u2019s divestiture of its digital asset operations, a related party forgave loans payable of $301,175 in exchange for digital asset equipment with a net book value of $276,379 and digital currency intangible assets of $26,825, of which the Company recorded a loss on disposition of $2,030.\nAs of June 30, 2022 and December 31, 2021, the Company was obliged to related parties, for unsecured, non-interest-bearing demand loans with a balance of $445,966 and $372,349, respectively.\nNote 12 \u2013 Contingencies\nAs part of the consideration for the Company\u2019s acquisition of MFB (see note 4), the vendor will be entitled to a ten (10%) percent royalty on the gross sales before taxes of products sold under the MFB family of products, to be paid on or before the fifteenth (15th) day of the following month.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 704,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "41,468",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "41,468",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "2,360,541",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,360,541",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "-",
+     "",
+     "",
+     "524",
+     "",
+     "",
+     "(524)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(2,319,073)",
+     "",
+     "$",
+     "(524)",
+     "",
+     "$",
+     "2,402,009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "(63,203)",
+     "",
+     "",
+     "63,203",
+     ""
+    ],
+    [
+     "Gain on disposition of Strategic Holdings, LLC",
+     "",
+     "(2,030)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,030)",
+     ""
+    ],
+    [
+     "Net loss from discontinued operations",
+     "$",
+     "(2,030)",
+     "",
+     "$",
+     "(63,203)",
+     "",
+     "$",
+     "61,173",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,321,103)",
+     "",
+     "$",
+     "(63,727)",
+     "",
+     "$",
+     "(2,257,376)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 754,
+    "end_line": 776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition or Plan of Operation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "Current operations\nFully Integrated Services\nWe are a fully integrated technology company structured to provide mergers and acquisitions of new and available technology. Through our services, we incubate first-to-market products and help existing companies accelerate their product development within all regulatory requirements.\nEnvironmental Impact\nAt this time, there are no significant environmental impacts occurring from the services, products, or activities of General Enterprise Ventures.\nHuman Services\nThe Company currently employees, 2 people full-time and hosts several consultants, attorneys, and independent contractors that all perform tasks on behalf of the company.\nResults of Operations\nFor the three months ended June 30, 2022, compared to three months ended June 30, 2021\nThe following summary of our operations should be read in conjunction with our unaudited financial statements for the three months ended June 30, 2022 and 2021.",
+   "prose_after": "Revenue\nOur Company generated $41,468 and $0 revenue for the three months ended June 30, 2022 and 2021, respectively. The Company\u2019s revenue is associated with revenue from MFB which was acquired in April 2022.\nOperating Expenses\nFor the three months ended June 30, 2022, operating expenses consisted of management compensation of $2,100,000 associated with the issuance of 70,000,000 shares of common stock as compensation professional fees of $182,295, general and administrative expenses of $78,111 and depreciation of $135.\nOther expenses\nFor the three months ended June 30, 2021, the other expenses consisted of interest expense $524.\nDiscontinued operations\nDuring the three months ended June 30, 2022, loss on discontinued operations of $2,030 was the result of a loss on disposition of the Company\u2019s digital currency assets, including equipment and digital currency, against a note payable issued as consideration for the equipment when it was previously acquired. During the three months ended June 30, 2021, loss on discontinued operations of $63,203 was the result of the net loss incurred from the operations of Strategic Asset Holdings, which was divested in October 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "41,468",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "41,468",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "2,403,307",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,403,307",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "-",
+     "",
+     "",
+     "524",
+     "",
+     "",
+     "(524)",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(2,361,839)",
+     "",
+     "$",
+     "(524)",
+     "",
+     "$",
+     "2,444,775",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "(13,016)",
+     "",
+     "",
+     "63,203",
+     "",
+     "",
+     "(76,219)",
+     ""
+    ],
+    [
+     "Gain on disposition of Strategic Holdings, LLC",
+     "",
+     "2,030",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,030",
+     ""
+    ],
+    [
+     "Net loss from discontinued operations",
+     "$",
+     "10,986",
+     "",
+     "$",
+     "(63,203)",
+     "",
+     "$",
+     "74,189",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,350,853)",
+     "",
+     "$",
+     "(63,727)",
+     "",
+     "$",
+     "(2,287,126)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition or Plan of Operation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "For the three months ended June 30, 2021, the other expenses consisted of interest expense $524.\nDiscontinued operations\nDuring the three months ended June 30, 2022, loss on discontinued operations of $2,030 was the result of a loss on disposition of the Company\u2019s digital currency assets, including equipment and digital currency, against a note payable issued as consideration for the equipment when it was previously acquired. During the three months ended June 30, 2021, loss on discontinued operations of $63,203 was the result of the net loss incurred from the operations of Strategic Asset Holdings, which was divested in October 2021.\nNet Loss\nAs a result of the foregoing, we incurred a net loss of $2,321,103, for the three months ended June 30, 2022, compared to a net loss of $63,727 for the three months ended June 30, 2021.\nFor the six months ended June 30, 2022, compared to three months ended June 30, 2021\nThe following summary of our operations should be read in conjunction with our unaudited financial statements for the six months ended June 30, 2022 and 2021.",
+   "prose_after": "Revenue\nOur Company generated $41,468 and $0 revenue for the six months ended June 30, 2022 and 2021, respectively. The Company\u2019s revenue is associated with revenue from MFB which was acquired in April 2022.\nOperating Expenses\nFor the six months ended June 30, 2022, operating expenses consisted of management compensation of $2,100,000 associated with the issuance of 70,000,000 shares of common stock as compensation, professional fees of $222,466, general and administrative expenses of $80,706 and depreciation of $135.\nOther expenses\nFor the six months ended June 30, 2021, the other expenses consisted of interest expense $524.\nDiscontinued operations\nDuring the three months ended June 30, 2022, income from discontinued operations of $10,986 was the result of net income generated from the Company\u2019s crypto mining activities of $13,016 less a loss on disposition of the Company\u2019s digital currency assets of $2,030, which includes the disposition of equipment and digital currency, against a note payable issued as consideration for the equipment when it was previously acquired. During the three months ended June 30, 2021, loss on discontinued operations of $63,203 was the result of the net loss incurred from the operations of Strategic Asset Holdings, which was divested in October 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "102,252",
+     "",
+     "$",
+     "5,469",
+     "",
+     "$",
+     "96,783"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "$",
+     "216,665",
+     "",
+     "$",
+     "5,469",
+     "",
+     "$",
+     "211,196"
+    ],
+    [
+     "Current Liabilities",
+     "$",
+     "518,924",
+     "",
+     "$",
+     "383,090",
+     "",
+     "$",
+     "135,834"
+    ],
+    [
+     "Working Capital Deficiency",
+     "$",
+     "(302,259)",
+     "",
+     "$",
+     "(377,621)",
+     "",
+     "$",
+     "75,362"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 864
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition or Plan of Operation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "For the six months ended June 30, 2022, operating expenses consisted of management compensation of $2,100,000 associated with the issuance of 70,000,000 shares of common stock as compensation, professional fees of $222,466, general and administrative expenses of $80,706 and depreciation of $135.\nOther expenses\nFor the six months ended June 30, 2021, the other expenses consisted of interest expense $524.\nDiscontinued operations\nDuring the three months ended June 30, 2022, income from discontinued operations of $10,986 was the result of net income generated from the Company\u2019s crypto mining activities of $13,016 less a loss on disposition of the Company\u2019s digital currency assets of $2,030, which includes the disposition of equipment and digital currency, against a note payable issued as consideration for the equipment when it was previously acquired. During the three months ended June 30, 2021, loss on discontinued operations of $63,203 was the result of the net loss incurred from the operations of Strategic Asset Holdings, which was divested in October 2021.\nNet Loss\nAs a result of the foregoing, we incurred a net loss of $2,350,853, for the six months ended June 30, 2022, compared to a net loss of $63,727 for the six months ended June 30, 2021.\nLiquidity and Capital Resources",
+   "prose_after": "As of June 30, 2022, and December 31, 2021, we had $102,252 and $5,469 in cash, respectively.\nAs of June 30, 2022, and December 31, 2021, we had current assets of $216,665 and $5,469, current liabilities of $518,924 and $383,090, and our working capital deficiency were $302,259 and $377,621, respectively. The decrease in working capital deficiency of $75,362, was primarily the result of increases in cash on hand and inventory offset by increases in accounts payable and accrued liabilities, due to related party and current portion of operating lease liability.\nAs of June 30, 2022, and December 31, 2021, the current assets consisted of cash of $102,252 and $5,469, respectively and inventory of $114,413 and $0, respectively.\nAs of June 30, 2022, and December 31, 2021, the current liabilities consisted of accounts payable and accrued liabilities of $15,133 and $10,741, respectively, due to related parties of $493,814 and $372,349, respectively, and current portion of operating lease liability of $9,977 and $0, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 873,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "$",
+     "(274,274)",
+     "",
+     "$",
+     "(12,518)",
+     ""
+    ],
+    [
+     "Cash (used in) provided by investing activities",
+     "$",
+     "(2,707)",
+     "",
+     "$",
+     "14,075",
+     ""
+    ],
+    [
+     "Cash provided by financing activities",
+     "$",
+     "373,764",
+     "",
+     "$",
+     "2,500",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "$",
+     "96,783",
+     "",
+     "$",
+     "4,057",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 877,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition or Plan of Operation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "As of June 30, 2022, and December 31, 2021, we had $102,252 and $5,469 in cash, respectively.\nAs of June 30, 2022, and December 31, 2021, we had current assets of $216,665 and $5,469, current liabilities of $518,924 and $383,090, and our working capital deficiency were $302,259 and $377,621, respectively. The decrease in working capital deficiency of $75,362, was primarily the result of increases in cash on hand and inventory offset by increases in accounts payable and accrued liabilities, due to related party and current portion of operating lease liability.\nAs of June 30, 2022, and December 31, 2021, the current assets consisted of cash of $102,252 and $5,469, respectively and inventory of $114,413 and $0, respectively.\nAs of June 30, 2022, and December 31, 2021, the current liabilities consisted of accounts payable and accrued liabilities of $15,133 and $10,741, respectively, due to related parties of $493,814 and $372,349, respectively, and current portion of operating lease liability of $9,977 and $0, respectively.\nCash Flows",
+   "prose_after": "Cash Flows from Operating Activities\nFor the six months ended June 30, 2022, net cash flows used in operating activities were $274,274, which was the result of a net loss of $2,350,853, a non-cash adjustment of $114,413 for the change in inventory and fixed cash payments on operating leases of $10,000, offset by a management compensation of $2,100,000 associated with the issuance of 70,000,000 shares of common stock as compensation, loss on disposition of digital currency and digital currency assets of $2,029, impairment loss on digital assets of $6,125, non-cash lease expense of $14,647, depreciation of $15,194, related party advances funding operating expenses of $58,231, change in accounts payable and accrued liabilities of $4,392 and an increase in digital assets of $374.\nFor the six months ended June 30, 2021, net cash flows used in operating activities of $12,518 was the result of a net loss of $63,727 and an increase of $1,727 in accounts payable and accrued liabilities offset by an impairment loss on digital assets of $52,976.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 873,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 913,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1*",
+     "Description of Securities"
+    ],
+    [
+     "31.1*",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer and Chief Financial Officer"
+    ],
+    [
+     "32.1*",
+     "Section 1350 Certification of Chief Executive Officer and Chief Financial Officer"
+    ],
+    [
+     "101*",
+     "Inline XBRL Document Set for the condensed financial statements and accompanying notes in Part I, Item 1, \u201cFinancial Statements\u201d of this Quarterly Report on Form 10-Q."
+    ],
+    [
+     "104*",
+     "Inline XBRL for the cover page of this Quarterly Report on Form 10-Q, included in the Exhibit 101 Inline XBRL Document Set."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 973,
+    "end_line": 985
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "As a \u201csmaller reporting company,\u201d we are not required to provide the information required by this Item.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot Applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "prose_after": "________\n* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 990,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "General Enterprise Ventures, Inc.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: August 22, 2022",
+     "/s/ Joshua Ralston",
+     ""
+    ],
+    [
+     "",
+     "Joshua Ralston",
+     ""
+    ],
+    [
+     "",
+     "Chief Executive Officer and\n\nChief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "General Enterprise Ventures, Inc.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Contingencies"
+    }
+   },
+   "prose_before": "________\n* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 990,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

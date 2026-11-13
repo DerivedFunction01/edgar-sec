@@ -1,0 +1,7321 @@
+{
+ "accession": "0001144204-17-004183",
+ "cik": "0000740664",
+ "form": "10-K",
+ "filing_date": "2017-01-27",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v456943_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "88-0168936"
+    ],
+    [
+     "(State or other jurisdiction",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "of incorporation or organization)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "PURSUANT TO SECTIONS 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended October 31, 2016\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________\nto ________________.\nCommission File Number 0-13301\nRF INDUSTRIES, LTD.\n(Name of registrant as specified in its charter)",
+   "prose_after": "7610 Miramar Road, Bldg. 6000, San Diego, California 92126-4202\n(Address of principal executive offices) (Zip Code)\n(858) 549-6340\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nCommon Stock, $.01 par value.\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal 2016",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "November 1, 2015 - January 31, 2016",
+     "$",
+     "4.55",
+     "$",
+     "3.90"
+    ],
+    [
+     "February 1, 2016 - April 30, 2016",
+     "",
+     "4.35",
+     "",
+     "2.09"
+    ],
+    [
+     "May 1, 2016 - July 31, 2016",
+     "",
+     "2.54",
+     "",
+     "1.99"
+    ],
+    [
+     "August 1, 2016 - October 31, 2016",
+     "",
+     "2.45",
+     "",
+     "1.70"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal 2015",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "November 1, 2014 - January 31, 2015",
+     "$",
+     "4.85",
+     "$",
+     "4.03"
+    ],
+    [
+     "February 1, 2015 - April 30, 2015",
+     "",
+     "4.49",
+     "",
+     "4.00"
+    ],
+    [
+     "May 1, 2015 - July 31, 2015",
+     "",
+     "4.46",
+     "",
+     "3.89"
+    ],
+    [
+     "August 1, 2015 - October 31, 2015",
+     "",
+     "4.61",
+     "",
+     "3.95"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "(iii) The Rel-Tech Electronics Division leases an approximately 14,000 square feet facility located at 215 Pepe Farm Road #B-D, Milford, Connecticut. The lease for this facility expires in May 2017.\nThe aggregate monthly rental for all of the Company\u2019s facilities currently is approximately $52,000 per month, plus utilities, maintenance and insurance.\nITEM 3. LEGAL PROCEEDINGS\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nThe Company\u2019s Common Stock is listed and trades on the NASDAQ Global Market under the symbol \u201cRFIL.\u201d\nThe price range per share of common stock presented below represents the highest and lowest intraday sales prices for the Company\u2019s common stock on the NASDAQ during each quarter of the two most recent years.",
+   "prose_after": "Stockholders As of October 31, 2016, there were 196 holders of the Company\u2019s Common Stock according to the records of the Company\u2019s transfer agent, Continental Stock Transfer & Trust Company, New York, New York, not including holders who hold their stock in \u201cstreet name.\u201d\nDividends The Company paid dividends of $0.02, $0.02, $0.02 and $0.07 per share during the three months ended October 31, 2016, July 31, 2016, April 30, 2016 and January 31, 2016, respectively, for a total of $1.1 million. The Company paid a total of $2.4 million of dividends during the fiscal year ended October 31, 2015 in four quarterly dividend payments of $0.07 per share. Dividends are declared and paid from time to time at the discretion of the Board of Directors subject to applicable laws, and depend on a number of factors, including our financial condition, results of operations, capital requirements, plans for future acquisitions, contractual restrictions, general business conditions and other factors that our Board of Directors may deem relevant.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "A",
+     "",
+     "B",
+     "",
+     "C",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Number of Securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Remaining Available for",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Future Issuance Under",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Equity Compensation",
+     ""
+    ],
+    [
+     "",
+     "Number of Securities to",
+     "",
+     "Weighted Average",
+     "",
+     "Plans (Excluding",
+     ""
+    ],
+    [
+     "",
+     "be Issued Upon Exercise",
+     "",
+     "Exercise Price of",
+     "",
+     "Securities Reflected in",
+     ""
+    ],
+    [
+     "Plan Category",
+     "of Outstanding Options",
+     "",
+     "Outstanding Options ($)",
+     "",
+     "Column A)",
+     ""
+    ],
+    [
+     "  Equity Compensation Plans Approved by Stockholders (1)",
+     "",
+     "857,851",
+     "$",
+     "4.59",
+     "",
+     "800,411"
+    ],
+    [
+     "  Equity Compensation Plans Not Approved by Stockholders (2)",
+     "",
+     "150,000",
+     "$",
+     "1.09",
+     "",
+     "-"
+    ],
+    [
+     "  Total",
+     "",
+     "1,007,851",
+     "$",
+     "4.07",
+     "",
+     "800,411"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Dividends The Company paid dividends of $0.02, $0.02, $0.02 and $0.07 per share during the three months ended October 31, 2016, July 31, 2016, April 30, 2016 and January 31, 2016, respectively, for a total of $1.1 million. The Company paid a total of $2.4 million of dividends during the fiscal year ended October 31, 2015 in four quarterly dividend payments of $0.07 per share. Dividends are declared and paid from time to time at the discretion of the Board of Directors subject to applicable laws, and depend on a number of factors, including our financial condition, results of operations, capital requirements, plans for future acquisitions, contractual restrictions, general business conditions and other factors that our Board of Directors may deem relevant.\nRepurchase of Securities The Company did not repurchase any securities during the fiscal year October 31, 2016, and the previously announced repurchase program was terminated in September 2016.\nRecent Sales of Unregistered Securities There were no previously unreported sales of equity securities by the Company that were not registered under the Securities Act during fiscal 2016.\nEQUITY COMPENSATION PLAN INFORMATION\nThe following table provides information as of October 31, 2016 with respect to the shares of Company common stock that may be issued under the Company\u2019s existing equity compensation plans.",
+   "prose_after": "(1) Consists of options granted under the R.F. Industries, Ltd. (i) 2010 Stock Option Plan and (ii) 2000 Stock Option Plan. The 2000 Stock Option Plan has expired, and no additional options can be granted under this plan. Accordingly, all 800,411 shares remaining available for issuance represent shares under the 2010 Stock Option Plan.\n(2) Consists of options granted to five officers and/or key employees of the Company under employment agreements entered into by the Company with each of these officers and employees.\nITEM 6. SELECTED FINANCIAL DATA\nNot applicable to a \u201csmaller reporting company\u201d as defined in Item 10(f)(1) of SEC Regulation S-K.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nCRITICAL ACCOUNTING POLICIES AND ESTIMATES\nOur consolidated financial statements and related disclosures have been prepared in accordance with U.S. generally accepted accounting principles (\u201cGAAP\u201d). The preparation of these consolidated financial statements requires us to make significant estimates and judgments that affect the reported amounts of assets, liabilities, revenues, expenses and related disclosure of contingent assets and liabilities. We evaluate our estimates, including those related to bad debts, inventory reserves and contingencies on an ongoing basis. We base our estimates on historical experience and on various other assumptions that are believed to be appropriate under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities that are not readily apparent from other sources. Actual results may differ from these estimates under different assumptions or conditions.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "% Total Assets",
+     "",
+     "",
+     "Amount",
+     "",
+     "% Total Assets",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,258",
+     "",
+     "20.4",
+     "%",
+     "$",
+     "7,595",
+     "",
+     "23.5",
+     "%"
+    ],
+    [
+     "Current assets",
+     "",
+     "16,793",
+     "",
+     "65.0",
+     "%",
+     "",
+     "19,657",
+     "",
+     "60.9",
+     "%"
+    ],
+    [
+     "Current liabilities",
+     "",
+     "3,908",
+     "",
+     "15.1",
+     "%",
+     "",
+     "4,361",
+     "",
+     "13.5",
+     "%"
+    ],
+    [
+     "Working capital",
+     "",
+     "12,885",
+     "",
+     "49.9",
+     "%",
+     "",
+     "15,296",
+     "",
+     "47.4",
+     "%"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "828",
+     "",
+     "3.2",
+     "%",
+     "",
+     "921",
+     "",
+     "2.9",
+     "%"
+    ],
+    [
+     "Total assets",
+     "",
+     "25,837",
+     "",
+     "100.0",
+     "%",
+     "",
+     "32,252",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "21,392",
+     "",
+     "82.8",
+     "%",
+     "",
+     "26,371",
+     "",
+     "81.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 560,
+    "end_line": 574
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The Company experienced an annual net loss in the fiscal year ended October 31, 2016 of $4.1 million. The primary factor contributing to this net loss was a $2.8 million non-cash charge related to the impairment of the goodwill and tradename of the Company\u2019s Cables Unlimited subsidiary. However, other factors also contributed to the net loss, such as $256,000 of professional fees and expenses in connection with the business combination transaction that the Company considered, and then abandoned, in fiscal 2016, $171,000 of expenses incurred in connection with the implementation of a new enterprise resource planning (ERP) system that now integrates all of the Company\u2019s operations on the East Coast and in California, and the legal, accounting and other expenses related to the disposition of the Aviel division and the closure of the Bioconnect division.\nFinancial Condition\nThe following table presents certain key measures of financial condition as of October 31, 2016 and 2015 (in thousands, except percentages):",
+   "prose_after": "Liquidity and Capital Resources\nManagement believes that its existing current assets and the amount of cash it anticipates it will generate from current operations will be sufficient to fund the anticipated liquidity and capital resource needs of the Company for at least twelve months subsequent to October 31, 2016. Management believes that its existing assets and the cash it expects to generate from operations will be sufficient during the current fiscal year based on the following:\n\u00b7 As of October 31, 2016, the Company had cash and cash equivalents equal to $5.3 million.\n\u00b7 As of October 31, 2016, the Company had $16.8 million in current assets and $3.9 million in current liabilities.\n\u00b7 As of October 31, 2016, the Company had no outstanding indebtedness for borrowed funds.\nAs of October 31, 2016, the Company had a total of $5.3 million of cash and cash equivalents compared to a total of $7.6 million of cash and cash equivalents as of October 31, 2015. As of October 31, 2016, the Company had working capital of $12.9 million and a current ratio of approximately 4.3:1.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "% of Net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of Net",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Sales",
+     "",
+     "",
+     "Amount",
+     "",
+     "Sales",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "30,241",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "30,908",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "21,778",
+     "",
+     "",
+     "72",
+     "%",
+     "",
+     "20,446",
+     "",
+     "66",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "8,463",
+     "",
+     "",
+     "28",
+     "%",
+     "",
+     "10,462",
+     "",
+     "34",
+     "%"
+    ],
+    [
+     "Engineering expenses",
+     "",
+     "747",
+     "",
+     "",
+     "2",
+     "%",
+     "",
+     "775",
+     "",
+     "3",
+     "%"
+    ],
+    [
+     "Goodwill and other intangible asset impairment",
+     "",
+     "2,844",
+     "",
+     "",
+     "9",
+     "%",
+     "",
+     "-",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Selling and general expenses",
+     "",
+     "9,560",
+     "",
+     "",
+     "32",
+     "%",
+     "",
+     "8,888",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "(4,688)",
+     "",
+     "",
+     "-15",
+     "%",
+     "",
+     "799",
+     "",
+     "3",
+     "%"
+    ],
+    [
+     "Other income",
+     "",
+     "5",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "35",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Income (loss) from continuing operations before provision for income taxes",
+     "",
+     "(4,683)",
+     "",
+     "",
+     "-15",
+     "%",
+     "",
+     "834",
+     "",
+     "3",
+     "%"
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "",
+     "(652)",
+     "",
+     "",
+     "-2",
+     "%",
+     "",
+     "140",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Income (loss) from continuing operations",
+     "",
+     "(4,031)",
+     "",
+     "",
+     "-13",
+     "%",
+     "",
+     "694",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "",
+     "(58)",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "300",
+     "",
+     "1",
+     "%"
+    ],
+    [
+     "Consolidated net income (loss)",
+     "",
+     "(4,089)",
+     "",
+     "",
+     "-13",
+     "%",
+     "",
+     "994",
+     "",
+     "3",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 604,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "As part of its announced business plan, the Company may from time to time acquire other companies or product lines in the future in order to diversify its product and customer base. Any future acquisitions may require the Company to make cash payments, which payments may reduce the Company\u2019s future liquidity and capital resources.\nIn April 2014, the Company announced that it may repurchase up to 500,000 shares of the Company\u2019s common stock in open market transactions. No shares were repurchased during the year ended October 31, 2016, and the repurchase program was terminated in September 2016.\nDuring the year ended October 31, 2016, the Company paid a total of $1.1 million of dividends to its stockholders. In order to improve the Company\u2019s ability to acquire other companies or product lines in the future and to maintain a sufficient level of liquidity, for the fiscal quarter ended April 30, 2016 the Company reduced its quarterly dividend from $0.07 per share to $0.02 per share.\nResults of Operations\nThe following summarizes the key components of the results of operations for the fiscal years ended October 31, 2016 and 2015 (in thousands, except percentages).",
+   "prose_after": "Net sales of $30.2 million for the year ended October 31, 2016 (the \u201cfiscal 2016 year\u201d) decreased $700,000 or 2% when compared to net sales of $30.9 million for the year ended October 31, 2015 (the \u201cfiscal 2015 year\u201d) despite the additional net sales of generated from the Company\u2019s newly acquired Rel-Tech Electronics division. Rel-Tech, which was acquired in June 2015, contributed $6.8 million of net sales during the fiscal 2016 year, compared to only $3.1 million of net sales for the fiscal 2015 year. Excluding the net sales that were generated by newly acquired Rel-Tech, the aggregate net sales of the Company\u2019s other divisions decreased by $4.4 million or 16% during fiscal 2016 compared to fiscal 2015. The Company\u2019s \u201cCustom Cabling Manufacturing and Assembly\u201d segment generated $20.9 million of net sales for the fiscal 2016 and was the Company\u2019s largest operating segment. While net sales in the Custom Cabling Manufacturing and Assembly segment increased due to the acquisition of Rel-Tech, net sales at Comnet decreased $1.2 million or 12% for the fiscal 2016 compared to the fiscal 2015, while net sales at Cables Unlimited decreased $832,000 or 14% for the same period. The decrease in net sales at Comnet was due to the softening of demand for its telecommunications and data products, while the decline at Cables Unlimited was due to a continuing decline in the sale of Cables Unlimited\u2019s fiber optic products. For the fiscal 2016 year, the RF Connector and Cable Assembly segment had net sales of $9.4 million, a decline of $2.4 million or 20% from net sales of $11.7 million for the fiscal 2015 year. The Company believes that the decrease in net sales at the RF Connector and Cable Assembly segment is attributable to a continuing industry-wide softening of demand for RF cable and connector products. In addition, in December 2015, the Company sold the assets of the Aviel division, which further decreased net sales in the RF Connector and Cable Assembly segment (in the fiscal 2015 year, Aviel generated $884,000 of net sales).",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 634,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Director Since"
+    ],
+    [
+     "Joseph Benoit",
+     "62",
+     "2013"
+    ],
+    [
+     "Marvin H. Fink",
+     "80",
+     "2001"
+    ],
+    [
+     "Howard F. Hill",
+     "76",
+     "1979"
+    ],
+    [
+     "William Reynolds",
+     "81",
+     "2005"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risks that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nSet forth below is information regarding the Company\u2019s directors, including information furnished by them as to their principal occupations for the last five years, and their ages as of October 31, 2016. Other than Howard Hill, all of the Directors are \u201cindependent directors\u201d as defined by the listing standards of the NASDAQ Stock Market, and the Board of Directors has determined that such independent directors have no relationship with the Company that would interfere with the exercise of their independent judgment in carrying out the responsibilities of a director.",
+   "prose_after": "Joseph Benoit was appointed to the Board of Directors on April 8, 2013. Mr. Benoit retired from Union Bank in June 2012 after serving in various management and leadership roles for over 20 years. Managing over 100 Union Bank branch offices in Southern California and being the head of Business Banking were among his responsibilities. As an Executive Vice President, he also served as Union Bank\u2019s integration manager for FDIC assisted acquisitions. Mr. Benoit has a B.S. in Business Administration from San Diego State University and an MBA from National University. He is also a graduate of Pacific Coast Banking School and serves as a director on various non-profit boards.\nMarvin H. Fink is a retired executive. Mr. Fink most recently served as the Chief Executive Officer, President and Chairman of the Board of Recom Managed Systems, Inc. from October 2002 to March 2005. Prior thereto, Mr. Fink was President of Teledyne\u2019s Electronics Group. Mr. Fink was employed at Teledyne for 39 years. He holds a B.E.E. degree from the City College of New York, an M.S.E.E. degree from the University of Southern California and a J.D. degree from the University of San Fernando Valley. He is a member of the California Bar (inactive).",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 709,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)(6)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Howard F. Hill",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interim President and Chief Executive Officer",
+     "",
+     "2016",
+     "",
+     "-",
+     "",
+     "100,000",
+     "(1)",
+     "",
+     "-",
+     "",
+     "8,750",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "76,015",
+     "(2)",
+     "",
+     "184,765"
+    ],
+    [
+     "  and Director(1)",
+     "",
+     "2015",
+     "",
+     "114,000",
+     "",
+     "12,000",
+     "",
+     "",
+     "-",
+     "",
+     "4,020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "22,230",
+     "(2)",
+     "",
+     "152,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Johnny Walker",
+     "",
+     "2016",
+     "",
+     "202,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "90,191",
+     "(4)",
+     "",
+     "292,191"
+    ],
+    [
+     "  President and Chief Executive Officer (3)",
+     "",
+     "2015",
+     "",
+     "250,000",
+     "",
+     "25,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "19,231",
+     "(4)",
+     "",
+     "294,231"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark Turfler,",
+     "",
+     "2016",
+     "",
+     "170,000",
+     "",
+     "10,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "26,837",
+     "(5)",
+     "",
+     "206,837"
+    ],
+    [
+     "  Chief Financial Officer",
+     "",
+     "2015",
+     "",
+     "166,000",
+     "",
+     "17,500",
+     "",
+     "",
+     "-",
+     "",
+     "19,094",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "27,297",
+     "(5)",
+     "",
+     "229,891"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 779,
+    "end_line": 797
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Darren Clark was included in the Company\u2019s compensation disclosures as an executive officer of the Company for the fiscal years ended October 31, 2015 and 2014 because he was the President of Cables Unlimited, Inc. Since Cables Unlimited had been the Company\u2019s largest subsidiary, and at times the largest profit center, of the Company for several years, Mr. Clark provided a policy making function over a material portion of the Company\u2019s business. However, in fiscal 2015, the Company purchased Comnet Telecom Supply, Inc. and Rel-Tech Electronics, Inc. The operations and businesses of both Comnet and Rel-Tech overlap with the business of Cables Unlimited, and their operations are larger and more profitable than the operations of Cables Unlimited. As a result of the dilution of Mr. Clark\u2019s duties to the Company, commencing with the beginning of fiscal 2016, the Company no longer considered Mr. Clark to be an executive officer (as such term is defined under the rules of the Exchange Act) of the Company. The Company currently considers each of the presidents of Cables Unlimited, Comnet and Rel-Tech to be the principal operating officer of his respective subsidiary, but not an executive officer of the Company. Accordingly, Mr. Clark is no longer included as a Named Executive Officer in the following compensation disclosures.\nSummary Compensation Table",
+   "prose_after": "(1) In fiscal 2015, Howard F. Hill, then the Company\u2019s Chief Operating Officer until April 2015. Mr. Hill thereafter took a medical leave of absence. On April 7, 2016, Mr. Hill retired as an employee of the Company. In gratitude for his services to the Company for over 35 years, the Company\u2019s Board of Directors paid Mr. Hill $100,000 concurrently with his retirement. On October 31, 2016, Mr. Hill assumed the position of interim President and Chief Executive Officer of the Company.\n(2) Mr. Hill\u2019s \u201cOther Compensation\u201d consisted of $76,015 and $11,538 of accrued vacation in fiscal 2016 and 2015, respectively, and $0 and $10,692 for vehicle and apartment rental costs in fiscal 2016 and 2015, respectively. Because Mr. Hill does not live in San Diego, the Company had maintained an apartment in San Diego for Mr. Hill until his medical leave of absence began in April 2015. The compensation attributable to the use of a Company vehicle represents the value of his personal use of a Company vehicle.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Options (#) Exercisable",
+     "",
+     "Number of Securities Underlying Unexercised Options (#) Unexercisable",
+     "",
+     "Equity Incentive Plan Awards: Number of Securities Underlying Unexercised Unearned Options (#)",
+     "",
+     "",
+     "Option Exercise Price ($)",
+     "",
+     "Option Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard Hill",
+     "",
+     "2,666",
+     "",
+     "",
+     "",
+     "1,334",
+     "(1)",
+     "",
+     "5.88",
+     "04/11/19"
+    ],
+    [
+     "Howard Hill",
+     "",
+     "2,666",
+     "",
+     "",
+     "",
+     "1,334",
+     "(2)",
+     "",
+     "4.41",
+     "11/19/19"
+    ],
+    [
+     "Howard Hill",
+     "",
+     "8,733",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4.07",
+     "04/05/20"
+    ],
+    [
+     "Howard Hill",
+     "",
+     "33,744",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2.30",
+     "04/07/21"
+    ],
+    [
+     "Mark Turfler",
+     "",
+     "30,000",
+     "",
+     "",
+     "",
+     "70,000",
+     "(3)",
+     "",
+     "5.88",
+     "04/11/24"
+    ],
+    [
+     "Mark Turfler",
+     "",
+     "12,667",
+     "",
+     "",
+     "",
+     "6,333",
+     "(4)",
+     "",
+     "4.41",
+     "11/19/19"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Mr. Turfler\u2019s other compensation consisted of $15,383 and $13,077 of accrued vacation in fiscal 2016 and 2015, respectively, and $11,454 and $14,220 for vehicle costs.\n(6) The amounts in this column represent the aggregate fair value of the option awards recognized by the Company as an expense for financial reporting purposes. The fair value of these awards and the amounts expensed were determined in accordance with Financial Accounting Standards Board ASC Topic 718. The assumptions we use in calculating these amounts are discussed in Note 10, \u201cStock options,\u201d to the Consolidated Financial Statements.\n2016 Option Grants\nIn fiscal 2016, the Company granted options to purchase 33,744 shares of common stock to Howard Hill.\nHoldings of Previously Awarded Equity\nEquity awards held as of October 31, 2016 by each of our Named Executive Officers were issued under our 2010 Stock Incentive Plan. The following table sets forth outstanding equity awards held by our Named Executive Officers as of October 31, 2016:\nOutstanding Equity Awards As Of October 31, 2016",
+   "prose_after": "(1) Vests annually in three installments following grant on April 11, 2014.\n(2) Vests annually in three installments following grant on April 11, 2014.\n(3) Vests as to 10,000 shares annually following grant on October 6, 2014.\n(4) Vests as to 10,000 shares annually following grant on October 6, 2014.\nDuring the fiscal year ended October 31, 2016, the Company did not adjust or amend the exercise price of stock options awarded to the Named Executive Officers.\nEmployment Agreements-Change of Control Payments\nOn October 31, 2016, Howard Hill assumed the position of interim President and Chief Executive Officer of the Company. Mr. Hill agreed to serve as the interim President and Chief Executive Officer of the Company until a new President and Chief Executive Officer is hired, and further agreed to serve as the interim President and Chief Executive Officer without any compensation. Mr. Hill, who lives in the Los Angeles metropolitan area, will, however, be reimbursed for his travel expenses to the Company\u2019s headquarters in San Diego, California, and will be reimbursed for his lodging while in San Diego as the interim President and Chief Executive Officer. Mr. Hill will continue to serve on the Company\u2019s Board of Directors while serving as the unpaid interim President and Chief Executive Officer and will continue to be compensated for his services on the Board of Directors as a non-employee director.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards (1)(2)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Benoit",
+     "$",
+     "15,000",
+     "",
+     "-",
+     "$",
+     "15,000",
+     "$",
+     "-",
+     "$",
+     "30,000"
+    ],
+    [
+     "Darren Clark (3)",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Marvin H. Fink",
+     "$",
+     "15,000",
+     "",
+     "-",
+     "$",
+     "15,000",
+     "$",
+     "-",
+     "$",
+     "30,000"
+    ],
+    [
+     "Howard F. Hill",
+     "$",
+     "8,750",
+     "",
+     "-",
+     "$",
+     "8,750",
+     "$",
+     "-",
+     "$",
+     "17,500"
+    ],
+    [
+     "William Reynolds",
+     "$",
+     "15,000",
+     "",
+     "-",
+     "$",
+     "15,000",
+     "$",
+     "-",
+     "$",
+     "30,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 862,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "During 2016, the Company employed Mark Turfler as the Company\u2019s Chief Financial Officer under a one-year written employment agreement that expired on December 31, 2016. Under the foregoing employment agreement, Mr. Turfler was paid an annual base salary of $170,000 and was entitled to participate in the Company\u2019s pension, retirement, disability, insurance, medical service, or other employee benefit plan that were generally available to all employees of the Company. In addition, Mr. Turfler had the right to earn an annual bonus of up to forty percent (40%) of his base salary, subject to meeting certain qualitative targets. Although the employment agreement has not been renewed, Mr. Turfler continues to serve as the Company\u2019s Chief Financial Officer, on an at-will basis, on the same financial terms as were included in the expired written employment agreement.\nThe Company has no change of control payment agreements in effect.\nCompensation of Directors\nUnder the compensation policies adopted by the Compensation Committee, directors who also are officers and/or employees of the Company do not receive any compensation for serving on the Board. For the year ended October 31, 2016, non-employee directors (i.e. directors who are not employed by the Company as officers or employees) received $30,000, which amount is paid one-half in cash, and one-half through the grant of stock options to purchase shares of the Company\u2019s common stock.\nDIRECTOR COMPENSATION FOR FISCAL YEAR 2016",
+   "prose_after": "(1) This column represents the aggregate grant date fair value of option awards computed in accordance with FASB ASC Topic 718, excluding the effect of estimated forfeitures related to service-based vesting conditions. These amounts do not correspond to the actual value that will be recognized by the named directors from these awards.\n(2) On December 16, 2015, the Company granted five-year non-qualified options to purchase 17,064 shares of the Company\u2019s common stock to each of Mr. Marvin Fink (Chairman), Mr. William Reynolds and Joseph Benoit (Independent Directors) for their services as directors for the fiscal year ended October 31, 2016. The options have an exercise price of $4.42 per share. One April 7, 2016, we granted five-year non-qualified options to purchase 33,744 shares of the Company\u2019s common stock to Mr. Hill for his services as a director for April 7, 2016 through October 31, 2016.\n(3) Mr. Clark\u2019s term as a director expired on September 8, 2016, and he therefore no longer serves on the Board of Directors. Since Mr. Clark was, and is, the President of Cables Unlimited, Inc., he was not entitled to receive any compensation for serving on the Board.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 914,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Number of Shares (1)\n\n\n\nBeneficially Owned",
+     "",
+     "",
+     "Percentage Beneficially Owned",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard H. Hill 7610 Miramar Road, Ste. 6000 San Diego, CA 92126-4202",
+     "",
+     "294,032",
+     "(2)",
+     "",
+     "3.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marvin H. Fink 7610 Miramar Road, Ste. 6000 San Diego, CA 92126-4202",
+     "",
+     "76,868",
+     "(3)",
+     "",
+     "0.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "William Reynolds 7610 Miramar Road, Ste. 6000 San Diego, CA 92126-4202",
+     "",
+     "100,300",
+     "(4)",
+     "",
+     "1.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph Benoit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "7610 Miramar Road, Ste. 6000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "San Diego, CA 92126-4202",
+     "",
+     "63,542",
+     "(5)",
+     "",
+     "0.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark Turfler 7610 Miramar Road, Ste. 6000 San Diego, CA 92126-4202",
+     "",
+     "42,667",
+     "(6)",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Directors and Officers as a Group (5 Persons)",
+     "",
+     "574,409",
+     "(7)",
+     "",
+     "6.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hytek International, Ltd PO Box 10927 APO George Town Cayman Islands",
+     "",
+     "901,860",
+     "",
+     "",
+     "10.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Park Circle Company Jeffrey A. Legum 1829 Reisterstown Road, Suite 140, Baltimore, Maryland 21208.(8)",
+     "",
+     "441,803",
+     "",
+     "",
+     "5.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Renaissance Technologies LLC 800 Third Avenue\n\n\n\nNew York, New York 10022(9)",
+     "",
+     "683,600",
+     "",
+     "",
+     "7.7",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 884,
+    "end_line": 913
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The Board of Directors has increased the annual compensation to be paid to non-employee directors for the fiscal year ended October 31, 2017 from $30,000 to $50,000. Since Mr. Hill will not be compensated for his services as the Company\u2019s interim Chief Executive Officer, Mr. Hill is deemed to be a non-employee director. Accordingly, on November 8, 2016, the Board granted five-year non-qualified options to purchase 77,339 shares of the Company\u2019s common stock to each of Mr. Marvin Fink (Chairman), Mr. William Reynolds and Joseph Benoit (Independent Directors) in addition to Mr. Hill, for their services as directors for the fiscal year ended October 31, 2017. The options have an exercise price of $1.50 per share.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding the ownership of the Company\u2019s Common Stock as of January 20, 2017 for: (i) each director; (ii) the Company\u2019s Named Executive Officers; (iii) all executive officers and directors of the Company as a group; and (iv) all those known by the Company to be beneficial owners of more than 5% of the Common Stock. As of January 20, 2017, there were 8,835,483 shares of Common Stock issued and outstanding.",
+   "prose_after": "(1) Shares of Common Stock, which were not outstanding but which could be acquired upon exercise of an option within 60 days from the date of this filing, are considered outstanding for the purpose of computing the percentage of outstanding shares beneficially owned. However, such shares are not considered to be outstanding for any other purpose.\n(2) Includes 69,811 shares that Mr. Hill has the right to acquire upon exercise of options exercisable within 60 days.\n(3) Includes 73,868 shares that Mr. Fink has the right to acquire upon exercise of options exercisable within 60 days.\n(4) Includes 67,500 shares that Mr. Reynolds has the right to acquire upon exercise of options exercisable within 60 days.\n(5) Includes 63,542 shares that Mr. Benoit has the right to acquire upon exercise of options exercisable within 60 days.\n(6) Includes 42,667 shares, which Mr. Turfler has the right to acquire upon exercise of options exercisable within 60 days.\n(7) Includes 317,388 shares, which the directors and officers have the right to acquire upon exercise of options exercisable within 60 days.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 914,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "259,000",
+     "$",
+     "290,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "10,000",
+     "",
+     "10,000"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "269,000",
+     "$",
+     "300,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 944,
+    "end_line": 954
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "On June 15, 2011, the Company purchased Cables Unlimited, Inc., a New York corporation, from Darren Clark, the sole shareholder of Cables Unlimited, Inc. In connection with the purchase of Cables Unlimited, the Company entered into a five-year lease for the New York facilities from which Cables Unlimited conducts its operations. Cables Unlimited\u2019s monthly rent expense under the lease is $13,000 per month, plus payments of all utilities, janitorial expenses, routine maintenance costs, and costs of insurance for Cables Unlimited\u2019s business operations and equipment. During the fiscal year ended October 31, 2016, the Company paid the landlord a total of $156,000 under the lease. The owner and landlord of the facility is a company controlled by Darren Clark, the former owner of Cables Unlimited and the current President of this subsidiary of the Company.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nAudit Fees\nThe following is a summary of the fees billed to the Company by CohnReznick LLP for professional services rendered related to the fiscal years ended October 31, 2016 and 2015:",
+   "prose_after": "Audit Fees . Consists of fees billed and estimated for professional services rendered for the audit of the Company\u2019s annual financial statements and review of the interim financial statements included in quarterly reports and services that are normally provided by CohnReznick LLP in connection with statutory and regulatory filings or engagements.\nAudit-Related Fees . Consists of fees billed and estimates for assurance and related services that are reasonably related to the performance of the audit and review of the Company\u2019s financial statements and are not reported under \u201cAudit Fees.\u201d These services include professional services requested by the Company in connection with its preparation for compliance with Section 404 of the Sarbanes-Oxley Act of 2002, accounting consultations in connection with acquisitions and consultations concerning financial accounting and reporting standards. The Company did not incur audit-related fees during fiscal 2016 and 2015.\nAll Other fees . The Company used CohnReznick LLP in 2016 and 2015 to perform an audit of the Company\u2019s 401K plan.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 914,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets October 31, 2016 and 2015",
+     "F-3 - F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations Years Ended October 31, 2016 and 2015",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity Years Ended October 31, 2016 and 2015",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows Years Ended October 31, 2016 and 2015",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8 - F-22"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1108,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "(18) Previously filed as an exhibit to the Company\u2019s Form 8-K, dated June 5, 2015, which exhibit is hereby incorporated herein by reference.\n(19) Previously filed as an exhibit to the Company\u2019s Form 8-K, dated December 24, 2015, which exhibit is hereby incorporated herein by reference.\n(20) Previously filed as an exhibit to the Company\u2019s Form 10-K for the year ended October 31, 2015, which exhibit is hereby incorporated herein by reference.\n(21) Previously filed as an exhibit to the Company\u2019s Form 8-K, dated October 25, 2016, which exhibit is hereby incorporated herein by reference.\n(22) Previously filed as an exhibit to the Company\u2019s Form 8-K, dated May 1, 2014, which exhibit is hereby incorporated herein by reference.\nStockholders of the Company may obtain a copy of any exhibit referenced in this Annual Report on Form 10-K by writing to: Secretary, RF Industries, Ltd., 7610 Miramar Road, Bldg. 6000, San Diego, CA 92126. The written request must specify the stockholder\u2019s good faith representation that such stockholder is a stockholder of record of common stock of the Company.\nIndex",
+   "prose_after": "* * *\nReport of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of RF Industries, Ltd.\nWe have audited the accompanying consolidated balance sheets of RF Industries, Ltd. and Subsidiaries as of October 31, 2016 and 2015, and the related consolidated statements of operations, stockholders\u2019 equity and cash flows for the years then ended. RF Industries, Ltd. and Subsidiaries\u2019 management is responsible for these consolidated financial statements. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1104,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1126,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,258",
+     "$",
+     "7,595"
+    ],
+    [
+     "Trade accounts receivable, net of allowance for doubtful accounts of $62 and $59, respectively",
+     "",
+     "4,077",
+     "",
+     "3,980"
+    ],
+    [
+     "Inventories",
+     "",
+     "6,022",
+     "",
+     "6,928"
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,436",
+     "",
+     "728"
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "-",
+     "",
+     "426"
+    ],
+    [
+     "  TOTAL CURRENT ASSETS",
+     "",
+     "16,793",
+     "",
+     "19,657"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment and tooling",
+     "",
+     "3,203",
+     "",
+     "3,215"
+    ],
+    [
+     "Furniture and office equipment",
+     "",
+     "799",
+     "",
+     "936"
+    ],
+    [
+     "",
+     "",
+     "4,002",
+     "",
+     "4,151"
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "3,174",
+     "",
+     "3,230"
+    ],
+    [
+     "  Total property and equipment",
+     "",
+     "828",
+     "",
+     "921"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,219",
+     "",
+     "5,913"
+    ],
+    [
+     "Amortizable intangible assets, net",
+     "",
+     "3,619",
+     "",
+     "4,268"
+    ],
+    [
+     "Non-amortizable intangible assets",
+     "",
+     "1,237",
+     "",
+     "1,387"
+    ],
+    [
+     "Note receivable from stockholder",
+     "",
+     "-",
+     "",
+     "67"
+    ],
+    [
+     "Other assets",
+     "",
+     "141",
+     "",
+     "39"
+    ],
+    [
+     "  TOTAL ASSETS",
+     "$",
+     "25,837",
+     "$",
+     "32,252"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1150,
+    "end_line": 1183
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of RF Industries, Ltd. and Subsidiaries as of October 31, 2016 and 2015, and the results of their operations and their cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\n/s/ CohnReznick LLP\nSan Diego, California\nJanuary 27, 2017\nCONSOLIDATED BALANCE SHEETS\nOCTOBER 31, 2016 AND 2015",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS\nOCTOBER 31, 2016 AND 2015",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1148,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1183,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,138",
+     "$",
+     "1,493"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "2,770",
+     "",
+     "2,868"
+    ],
+    [
+     "  TOTAL CURRENT LIABILITIES",
+     "",
+     "3,908",
+     "",
+     "4,361"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "409",
+     "",
+     "1,143"
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "128",
+     "",
+     "377"
+    ],
+    [
+     "  TOTAL LIABILITIES",
+     "",
+     "4,445",
+     "",
+     "5,881"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock - authorized 20,000,000 shares of $0.01 par value; 8,835,483 and 8,713,664 shares issued and outstanding at October 31, 2016 and 2015, respectively",
+     "",
+     "88",
+     "",
+     "87"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "19,379",
+     "",
+     "19,129"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "1,925",
+     "",
+     "7,155"
+    ],
+    [
+     "  TOTAL STOCKHOLDERS' EQUITY",
+     "",
+     "21,392",
+     "",
+     "26,371"
+    ],
+    [
+     "  TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "$",
+     "25,837",
+     "$",
+     "32,252"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1191,
+    "end_line": 1221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS\nOCTOBER 31, 2016 AND 2015",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1189,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "30,241",
+     "",
+     "$",
+     "30,908"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "21,778",
+     "",
+     "",
+     "20,446"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "8,463",
+     "",
+     "",
+     "10,462"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Engineering",
+     "",
+     "747",
+     "",
+     "",
+     "775"
+    ],
+    [
+     "    Goodwill and other intangible asset impairment",
+     "",
+     "2,844",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "    Selling and general",
+     "",
+     "9,560",
+     "",
+     "",
+     "8,888"
+    ],
+    [
+     "Totals",
+     "",
+     "13,151",
+     "",
+     "",
+     "9,663"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "(4,688)",
+     "",
+     "",
+     "799"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "5",
+     "",
+     "",
+     "35"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from continuing operations before provision (benefit) for income taxes",
+     "",
+     "(4,683)",
+     "",
+     "",
+     "834"
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "",
+     "(652)",
+     "",
+     "",
+     "140"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from continuing operations",
+     "",
+     "(4,031)",
+     "",
+     "",
+     "694"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "",
+     "(58)",
+     "",
+     "",
+     "300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated net income (loss)",
+     "$",
+     "(4,089)",
+     "",
+     "$",
+     "994"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Continuing operations",
+     "$",
+     "(0.46)",
+     "",
+     "$",
+     "0.08"
+    ],
+    [
+     "    Discontinued operations",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "0.04"
+    ],
+    [
+     "    Net income (loss) per share",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "0.12"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Continuing operations",
+     "$",
+     "(0.46)",
+     "",
+     "$",
+     "0.08"
+    ],
+    [
+     "    Discontinued operations",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "0.03"
+    ],
+    [
+     "    Net income (loss) per share",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "0.11"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Basic",
+     "",
+     "8,786,510",
+     "",
+     "",
+     "8,494,111"
+    ],
+    [
+     "    Diluted",
+     "",
+     "8,786,510",
+     "",
+     "",
+     "8,862,217"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1228,
+    "end_line": 1286
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1226,
+     "token": "REPEATING_HEADER",
+     "id": 37,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, November 1, 2014",
+     "",
+     "8,255,979",
+     "",
+     "$",
+     "83",
+     "",
+     "$",
+     "17,230",
+     "",
+     "$",
+     "8,543",
+     "",
+     "$",
+     "25,856",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "154,837",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "327",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "328",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issuances for acquisition of Comnet and Rel-Tech",
+     "",
+     "302,848",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "1,257",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,260",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit from exercise of stock options",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "83",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "83",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "232",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "232",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,382)",
+     "",
+     "",
+     "(2,382)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "994",
+     "",
+     "",
+     "994",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 31, 2015",
+     "",
+     "8,713,664",
+     "",
+     "",
+     "87",
+     "",
+     "",
+     "19,129",
+     "",
+     "",
+     "7,155",
+     "",
+     "",
+     "26,371",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "",
+     "180,067",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "47",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "49",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit from exercise of stock options",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "154",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "154",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "206",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "206",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,141)",
+     "",
+     "",
+     "(1,141)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock purchased and retired",
+     "",
+     "(58,248)",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(157)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(158)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4,089)",
+     "",
+     "",
+     "(4,089)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 31, 2016",
+     "",
+     "8,835,483",
+     "",
+     "$",
+     "88",
+     "",
+     "$",
+     "19,379",
+     "",
+     "$",
+     "1,925",
+     "",
+     "$",
+     "21,392",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\n(In thousands, except share amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1291,
+     "token": "REPEATING_HEADER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1335,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated net income (loss)",
+     "$",
+     "(4,089)",
+     "",
+     "$",
+     "994",
+     ""
+    ],
+    [
+     "Adjustments to reconcile consolidated net income (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Bad debt expense",
+     "",
+     "9",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "  Accounts receivable write-off",
+     "",
+     "-",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "1,036",
+     "",
+     "",
+     "996",
+     ""
+    ],
+    [
+     "  Goodwill and other intangible asset impairment",
+     "",
+     "2,844",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Inventory write-downs",
+     "",
+     "168",
+     "",
+     "",
+     "170",
+     ""
+    ],
+    [
+     "  Gain (loss) on disposal of fixed assets",
+     "",
+     "68",
+     "",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "  Stock-based compensation expense",
+     "",
+     "206",
+     "",
+     "",
+     "232",
+     ""
+    ],
+    [
+     "  Deferred income taxes",
+     "",
+     "(307)",
+     "",
+     "",
+     "(164)",
+     ""
+    ],
+    [
+     "  Excess tax benefit from stock-based compensation",
+     "",
+     "(154)",
+     "",
+     "",
+     "(83)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Trade accounts receivable",
+     "",
+     "(107)",
+     "",
+     "",
+     "(400)",
+     ""
+    ],
+    [
+     "  Inventories",
+     "",
+     "417",
+     "",
+     "",
+     "(205)",
+     ""
+    ],
+    [
+     "  Other current assets",
+     "",
+     "(554)",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "  Other long-term assets",
+     "",
+     "(102)",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(355)",
+     "",
+     "",
+     "(354)",
+     ""
+    ],
+    [
+     "  Customer deposit",
+     "",
+     "-",
+     "",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "(98)",
+     "",
+     "",
+     "(451)",
+     ""
+    ],
+    [
+     "  Other long-term liabilities",
+     "",
+     "(249)",
+     "",
+     "",
+     "(569)",
+     ""
+    ],
+    [
+     "    Net cash provided by (used in) operating activities",
+     "",
+     "(1,267)",
+     "",
+     "",
+     "168",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Acquisition of businesses, net of cash acquired of $758",
+     "",
+     "-",
+     "",
+     "",
+     "(5,132)",
+     ""
+    ],
+    [
+     "  Proceeds from notes receivable from stockholder",
+     "",
+     "67",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from sale of fixed assets",
+     "",
+     "22",
+     "",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "  Proceeds from sale of inventory",
+     "",
+     "321",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Capital expenditures",
+     "",
+     "(384)",
+     "",
+     "",
+     "(204)",
+     ""
+    ],
+    [
+     "    Net cash provided by (used in) investing activities",
+     "",
+     "26",
+     "",
+     "",
+     "(5,320)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from exercise of stock options",
+     "",
+     "49",
+     "",
+     "",
+     "328",
+     ""
+    ],
+    [
+     "  Purchases of treasury stock",
+     "",
+     "(158)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Excess tax benefit from exercise of stock options",
+     "",
+     "154",
+     "",
+     "",
+     "83",
+     ""
+    ],
+    [
+     "  Dividends paid",
+     "",
+     "(1,141)",
+     "",
+     "",
+     "(2,382)",
+     ""
+    ],
+    [
+     "    Net cash used in financing activities",
+     "",
+     "(1,096)",
+     "",
+     "",
+     "(1,971)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(2,337)",
+     "",
+     "",
+     "(7,123)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "7,595",
+     "",
+     "",
+     "14,718",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "5,258",
+     "",
+     "$",
+     "7,595",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information \u2013 income taxes paid",
+     "$",
+     "208",
+     "",
+     "$",
+     "645",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of noncash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Retirement of treasury stock",
+     "$",
+     "157",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Stock issuance for acquisition of businesses (Comnet and Rel-Tech)",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,260",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote 1 - Business activities and summary of significant accounting policies\nBusiness activities\nRF Industries, Ltd., together with its three wholly-owned subsidiaries (collectively, hereinafter the \u201cCompany\u201d), primarily engages in the design, manufacture, and marketing of interconnect products and systems, including coaxial and specialty cables, fiber optic cables and connectors, and electrical and electronic specialty cables. For internal operating and reporting purposes, and for marketing purposes, as of the end of the fiscal year ended October 31, 2016 the Company classified its operations into the following four divisions/subsidiaries:\n(i) The Connector and Cable Assembly Division designs, manufactures and distributes coaxial connectors and cable assemblies that are integrated with coaxial connectors; (ii) Cables Unlimited, Inc., the subsidiary that manufactures custom and standard cable assemblies, complex hybrid fiber optic power solution cables, adapters, and electromechanical wiring harnesses for communication, computer, LAN, automotive and medical equipment; (iii) Comnet Telecom Supply, Inc., the subsidiary that manufactures and sells fiber optics cable, distinctive cabling technologies and custom patch cord assemblies, as well as other data center products; and",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1339,
+     "token": "REPEATING_HEADER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1408,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Amortizable intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non-compete agreements (estimated lives 3 - 5  years)",
+     "$",
+     "310",
+     "",
+     "$",
+     "310",
+     ""
+    ],
+    [
+     "  Accumulated amortization",
+     "",
+     "(273)",
+     "",
+     "",
+     "(212)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "37",
+     "",
+     "",
+     "98",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Customer relationships (estimated lives 7 - 15 years)",
+     "",
+     "5,099",
+     "",
+     "",
+     "5,099",
+     ""
+    ],
+    [
+     "  Accumulated amortization",
+     "",
+     "(1,644)",
+     "",
+     "",
+     "(1,101)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,455",
+     "",
+     "",
+     "3,998",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Backlog (estimated life 1  year)",
+     "",
+     "134",
+     "",
+     "",
+     "134",
+     ""
+    ],
+    [
+     "  Accumulated amortization",
+     "",
+     "(134)",
+     "",
+     "",
+     "(100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Patents (estimated life 14 years)",
+     "",
+     "142",
+     "",
+     "",
+     "142",
+     ""
+    ],
+    [
+     "  Accumulated amortization",
+     "",
+     "(15)",
+     "",
+     "",
+     "(4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "127",
+     "",
+     "",
+     "138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Totals",
+     "$",
+     "3,619",
+     "",
+     "$",
+     "4,268",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-amortizable intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Trademarks",
+     "$",
+     "1,237",
+     "",
+     "$",
+     "1,387",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1489,
+    "end_line": 1524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Business activities and summary of significant accounting policies"
+    }
+   },
+   "prose_before": "The purchase agreements for the Comnet and Rel-Tech acquisitions provide for earn-out payments of up to $1,360,000 and $800,000, respectively. The initial earn-out liability was valued at its fair value using the Monte Carlo simulation and is included as a component of the total purchase price. The earn-outs were and will continue to be revalued quarterly using a present value approach and any resulting increase or decrease will be recorded into selling and general expenses. Any changes in the assumed timing and amount of the probability of payment scenarios could impact the fair value. Significant judgment is employed in determining the appropriateness of the assumptions used in calculating the fair value of the earn-out as of the acquisition date. Accordingly, significant variances between actual and forecasted results or changes in the assumptions can materially impact the amount of contingent consideration expense we record in future periods. The Comnet and Rel-Tech acquisitions are more fully described in Note 2.\nIntangible assets\nIntangible assets consist of the following as of October 31 (in thousands):",
+   "prose_after": "Amortization expense for the years ended October 31, 2016 and 2015 was $649,000 and $598,000, respectively.\nImpairment to trademarks for the years ended October 31, 2016 and 2015 was $150,000 and $0, respectively.\nEstimated amortization expense related to finite lived intangible assets is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending",
+     "",
+     ""
+    ],
+    [
+     "October 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "$",
+     "589"
+    ],
+    [
+     "2018",
+     "",
+     "553"
+    ],
+    [
+     "2019",
+     "",
+     "553"
+    ],
+    [
+     "2020",
+     "",
+     "553"
+    ],
+    [
+     "2021",
+     "",
+     "413"
+    ],
+    [
+     "Thereafter",
+     "",
+     "958"
+    ],
+    [
+     "Total",
+     "$",
+     "3,619"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1531,
+    "end_line": 1546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Business activities and summary of significant accounting policies"
+    }
+   },
+   "prose_before": "Amortization expense for the years ended October 31, 2016 and 2015 was $649,000 and $598,000, respectively.\nImpairment to trademarks for the years ended October 31, 2016 and 2015 was $150,000 and $0, respectively.\nEstimated amortization expense related to finite lived intangible assets is as follows (in thousands):",
+   "prose_after": "Advertising\nThe Company expenses the cost of advertising and promotions as incurred. Advertising costs charged to operations were approximately $156,000 and $152,000 in 2016 and 2015, respectively.\nResearch and development\nResearch and development costs are expensed as incurred. The Company\u2019s research and development expenses relate to its engineering activities, which consist of the design and development of new products for specific customers, as well as the design and engineering of new or redesigned products for the industry in general. During the years ended October 31, 2016 and 2015, the Company recognized $747,000 and $775,000 in engineering expenses, respectively.\nIncome taxes\nThe Company accounts for income taxes under the asset and liability method, based on the income tax laws and rates in the jurisdictions in which operations are conducted and income is earned. This approach requires the recognition of deferred tax assets and liabilities for the expected future tax consequences of temporary differences between the carrying amounts and the tax bases of assets and liabilities. Developing the provision (benefit) for income taxes requires significant judgment and expertise in federal, international and state income tax laws, regulations and strategies, including the determination of deferred tax assets and liabilities and, if necessary, any valuation allowances that may be required for deferred tax assets. Valuation allowances are established when necessary to reduce deferred tax assets to the amount expected to be realized. Management\u2019s judgments and tax strategies are subject to audit by various taxing authorities.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1572,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Consolidated net income (loss) (A)",
+     "$",
+     "(4,089,000)",
+     "",
+     "$",
+     "994,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average shares outstanding for basic earnings (loss) per share (B)",
+     "",
+     "8,786,510",
+     "",
+     "",
+     "8,494,111"
+    ],
+    [
+     "  Add effects of potentially dilutive securities - assumed exercise of stock options",
+     "",
+     "-",
+     "",
+     "",
+     "368,106"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average shares outstanding for diluted earnings (loss) per share (C)",
+     "",
+     "8,786,510",
+     "",
+     "",
+     "8,862,217"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic earnings (loss) per share (A)/(B)",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "0.12"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Diluted earnings (loss) per share (A)/(C)",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1573,
+    "end_line": 1594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Business activities and summary of significant accounting policies"
+    }
+   },
+   "prose_before": "Earnings (loss) per share\nBasic earnings (loss) per share is calculated by dividing net income (loss) applicable to common stockholders by the weighted average number of common shares outstanding during the period. The calculation of diluted earnings (loss) per share is similar to that of basic earnings (loss) per share, except that the denominator is increased to include the number of additional common shares that would have been outstanding if all potentially dilutive common shares, principally those issuable upon the exercise of stock options, were issued and the treasury stock method had been applied during the period. The greatest number of shares potentially issuable by the Company upon the exercise of stock options in any period for the years ended October 31, 2016 and 2015, that were not included in the computation because they were anti-dilutive, totaled 824,441 and 792,386, respectively.\nThe following table summarizes the computation of basic and diluted earnings (loss) per share:",
+   "prose_after": "Recent accounting standards\nIn August 2016, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update (\u201cASU\u201d) No. 2016-15, Classification of Certain Cash Receipts and Cash Payments. The new standard will change the classification of certain cash payments and receipts within the cash flow statement. Specifically, payments for debt prepayment or debt extinguishment costs, including third-party costs, premiums paid, and other fees paid to lenders that are directly related to the debt prepayment or debt extinguishment, excluding accrued interest, will now be classified as financing activities. Previously, these payments were classified as operating expenses. The guidance is effective for fiscal years beginning after December 15, 2018, and interim periods within fiscal years beginning after December 15, 2019, with early adoption permitted, and will be applied retrospectively. The Company does not expect that the adoption of this new standard will have a material impact on its Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1572,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1606,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash consideration paid",
+     "$",
+     "2,100,000"
+    ],
+    [
+     "RF Industries, Ltd. common shares issued (50,467 shares)",
+     "",
+     "200,000"
+    ],
+    [
+     "Earn-out",
+     "",
+     "610,000"
+    ],
+    [
+     "Total purchase price",
+     "$",
+     "2,910,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1619,
+    "end_line": 1627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The acquisition was accounted for in accordance with the acquisition method of accounting. The acquired assets and assumed liabilities were recorded by the Company at their estimated fair values. The Company determined the estimated fair values with the assistance of appraisals or valuations performed by an independent third party specialist. Rel-Tech offers a full range of value-added services including product design, prototyping, stocking, bill of materials management, consignment and fulfillment programs. Rel-Tech provides engineered solutions to many leasing OEMs and markets its products to customers in commercial as well as military arenas. All assembly is performed at the Rel-Tech\u2019s facilities. These products and services supplement and enhance the existing markets of RF Industries without incurring substantially more costs than incurred in the purchase of Rel-Tech. These factors, among others, contributed to a purchase price in excess of the estimated fair value of Rel-Tech\u2019s net identifiable assets acquired and, as a result, we have recorded goodwill in connection with this acquisition. We do not expect the goodwill recorded to be deductible for income tax purposes.\nAlthough the closing occurred on June 5, 2015, the acquisition of Rel-Tech is deemed to have become effective for financial accounting purposes as of June 1, 2015. Accordingly, Rel-Tech\u2019s financial results have been included in the results of the Custom Cabling Manufacturing and Assembly segment since June 1, 2015.\nThe following table summarizes the components of the estimated purchase price at fair value at June 1, 2015:",
+   "prose_after": "The following table summarizes the final allocation of the estimated purchase price at fair value at June 1, 2015:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1606,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current assets",
+     "$",
+     "1,637,000",
+     ""
+    ],
+    [
+     "Fixed assets",
+     "",
+     "68,000",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "17,000",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "1,425,000",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "833,000",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "(489,000)",
+     ""
+    ],
+    [
+     "Non-interest bearing liabilities",
+     "",
+     "(581,000)",
+     ""
+    ],
+    [
+     "Net assets",
+     "$",
+     "2,910,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1630,
+    "end_line": 1642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The following table summarizes the final allocation of the estimated purchase price at fair value at June 1, 2015:",
+   "prose_after": "The results of Rel-Tech\u2019s operations subsequent to June 1, 2015 have been included in the Company\u2019s consolidated results of operations. All costs related to the acquisition of Rel-Tech have been expensed as incurred. For the periods ended October 31, 2016 and 2015, Rel-Tech contributed $6.8 million and $3.1 million of revenue, respectively.\nThe Company recognized a $154,000 charge to selling and general expenses as a result of the revaluation of the earn-out liability as it relates to the acquisition of Rel-Tech as of October 31, 2016. As of October 31, 2016, the Company has accrued $450,000 in earn-out accrual, of which $322,000 is in current liabilities and $128,000 is in long-term liabilities.\nThe following unaudited pro forma financial information presents the combined operating results of the Company and Rel-Tech as if the acquisition had occurred as of the beginning of the earliest period presented. Pro forma data is subject to various assumptions and estimates and is presented for informational purposes only. This pro forma data does not purport to represent or be indicative of the consolidated operating results that would have been reported had the transaction been completed as described herein, and the data should not be taken as indicative of future consolidated operating results.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1606,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31,",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "34,714,000"
+    ],
+    [
+     "Net income",
+     "",
+     "958,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "0.11"
+    ],
+    [
+     "  Diluted",
+     "$",
+     "0.11"
+    ]
+   ],
+   "caption_stack": [
+    "October 31,",
+    "2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The Company recognized a $154,000 charge to selling and general expenses as a result of the revaluation of the earn-out liability as it relates to the acquisition of Rel-Tech as of October 31, 2016. As of October 31, 2016, the Company has accrued $450,000 in earn-out accrual, of which $322,000 is in current liabilities and $128,000 is in long-term liabilities.\nThe following unaudited pro forma financial information presents the combined operating results of the Company and Rel-Tech as if the acquisition had occurred as of the beginning of the earliest period presented. Pro forma data is subject to various assumptions and estimates and is presented for informational purposes only. This pro forma data does not purport to represent or be indicative of the consolidated operating results that would have been reported had the transaction been completed as described herein, and the data should not be taken as indicative of future consolidated operating results.\nPro forma financial information is presented in the following table:",
+   "prose_after": "CompPro Product Line\nOn May 19, 2015, the Company purchased the CompPro braided product line (\u201cCompPro\u201d), including the intellectual property rights to that product line, for a total purchase price of $700,000 cash. CompPro utilizes a patented compression technology that offers revolutionary advantages for a water-tight connection, easier installation, and improved system reliability on braided cables. CompPro is used by wireless network operators, installers and distributors in North America and other parts of the world. Included in the purchase is inventory, designs, intellectual property rights and the rights to manufacture and sell CompPro products. Financial results for sales of the CompPro products are included in the results of the RF Connector and Cable Assembly segment beginning in the Company\u2019s fiscal quarter ended October 31, 2015.\nThe acquisition was accounted for in accordance with the acquisition method of accounting. The acquired assets were recorded by the Company at their estimated fair values. The Company determined the estimated fair values with the assistance of appraisals or valuations performed by an independent third party specialist. These above factors, among others, contributed to a purchase price in excess of the estimated fair value of CompPro\u2019s net identifiable assets acquired and, as a result, the Company recorded goodwill in connection with this transaction.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash consideration paid",
+     "$",
+     "700,000"
+    ],
+    [
+     "Total purchase price",
+     "$",
+     "700,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1676,
+    "end_line": 1682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The acquisition was accounted for in accordance with the acquisition method of accounting. The acquired assets were recorded by the Company at their estimated fair values. The Company determined the estimated fair values with the assistance of appraisals or valuations performed by an independent third party specialist. These above factors, among others, contributed to a purchase price in excess of the estimated fair value of CompPro\u2019s net identifiable assets acquired and, as a result, the Company recorded goodwill in connection with this transaction.\nGoodwill acquired was allocated to the Company\u2019s Connector and Cable Assembly segment as part of the purchase price allocation. The Company expects the goodwill recorded to be deductible for income tax purposes. Acquired amortizable intangible assets are being amortized on a straight-line basis over their estimated useful lives ranging from seven to fourteen years.\nThe following table summarizes the components of the estimated purchase price at fair value at May 19, 2015:",
+   "prose_after": "The following table summarizes the final allocation of the estimated purchase price at fair value at May 19, 2015:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current assets",
+     "$",
+     "186,300"
+    ],
+    [
+     "Fixed assets",
+     "",
+     "67,500"
+    ],
+    [
+     "Intangible assets",
+     "",
+     "321,200"
+    ],
+    [
+     "Goodwill",
+     "",
+     "125,000"
+    ],
+    [
+     "Net assets",
+     "$",
+     "700,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1685,
+    "end_line": 1694
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The following table summarizes the final allocation of the estimated purchase price at fair value at May 19, 2015:",
+   "prose_after": "The results of CompPro\u2019s operations subsequent to May 19, 2015 have been included in the Company\u2019s consolidated results of operations. All costs related to the acquisition of CompPro have been expensed as incurred.\nComnet Telecom Supply, Inc.\nThe Company purchased 100% of the issued and outstanding shares of Comnet from Robert Portera, the sole shareholder of Comnet. Comnet is a New Jersey based manufacturer and supplier of telecommunications and data products, including fiber optic cables, cabling technologies, custom patch cord assemblies, data center consoles and other data center equipment. Comnet is a New York corporation that was formed in 1993. For income tax purposes, both parties have agreed to make an election under Internal Revenue Code 338(h) (10). At the closing, RF Industries, Ltd. paid Mr. Portera $4,150,000 in cash and stock, and agreed to pay him up to an additional $1,360,000 in cash as an earn-out over the next two years if Comnet meets certain financial milestones. The purchase price paid at the closing consisted of $3,090,000 in cash (of which $300,000 was deposited into a bank escrow account for one year, which has since been subsequently released, as security for the seller\u2019s indemnification obligations under the stock purchase agreement) and 252,381 shares of RF Industries, Ltd.\u2019s unregistered common stock, which shares were valued at $1,060,000 based on a per share price of $4.20 (the volume weighted average price of the common stock during the five trading days before the closing date). Comnet will be operated as a stand-alone subsidiary for at least the next two years from the date of acquisition. The Company entered into a two-year employment agreement with Mr. Portera pursuant to which Mr. Portera has acted as the President of Comnet. Under the employment agreement, which expired on January 20, 2017, Mr. Portera received a base salary of $210,000 per year. Under the employment agreement, Mr. Portera was entitled to earn an annual bonus of up to 50% of his base salary. Since the acquisition of Comnet was effective for financial accounting purposes as of November 1, 2014 with an effective closing date of January 20, 2015, Comnet\u2019s financial results have been included in the results of the Custom Cabling Manufacturing and Assembly segment since November 1, 2014.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash consideration paid",
+     "$",
+     "3,090,000"
+    ],
+    [
+     "RF Industries, Ltd. common shares issued (252,381 shares)",
+     "",
+     "1,060,000"
+    ],
+    [
+     "Earn-out",
+     "",
+     "1,235,000"
+    ],
+    [
+     "Total purchase price",
+     "$",
+     "5,385,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1707,
+    "end_line": 1715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The acquisition was accounted for in accordance with the acquisition method of accounting. The acquired assets and assumed liabilities were recorded by the Company at their estimated fair values. The Company determined the estimated fair values with the assistance of appraisals or valuations performed by an independent third party specialist. The products manufactured and supplied by Comnet include fiber optic cables, cabling technologies, custom patch cord assemblies, data center consoles and other data center equipment. These products supplement and enhance the existing markets of RF Industries as well as tap into new data center markets that the Company would not have been able to enter without incurring substantially more costs than incurred in the purchase of Comnet. The capital and other resources required to enhance the Company\u2019s fiber optics market and enter the data center market would have greatly exceeded the purchase price of $4,150,000 (excluding the potential earn-out). These factors, among others, contributed to a purchase price in excess of the estimated fair value of Comnet\u2019s net identifiable assets acquired and, as a result, the Company recorded goodwill in connection with this transaction.\nGoodwill acquired was allocated to the Company\u2019s operating segment and Comnet reporting unit as part of the purchase price allocation. The Company expects the goodwill recorded to be deductible for income tax purposes. Acquired amortizable intangible assets are being amortized on a straight-line basis over their estimated useful lives ranging from three to eight years.\nThe following table summarizes the components of the estimated purchase price at fair value at November 1, 2014:",
+   "prose_after": "The following table summarizes the final allocation of the purchase price at fair value at November 1, 2014:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current assets",
+     "$",
+     "1,875,000",
+     ""
+    ],
+    [
+     "Fixed assets",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "2,910,000",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,879,000",
+     ""
+    ],
+    [
+     "Non-interest bearing liabilities",
+     "",
+     "(1,429,000)",
+     ""
+    ],
+    [
+     "Net assets",
+     "$",
+     "5,385,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1718,
+    "end_line": 1728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Business acquisitions"
+    }
+   },
+   "prose_before": "The following table summarizes the final allocation of the purchase price at fair value at November 1, 2014:",
+   "prose_after": "The results of Comnet\u2019s operations subsequent to November 1, 2014 have been included in the Company\u2019s consolidated results of operations. All costs related to the acquisition of Comnet have been expensed as incurred. For the periods ended October 31, 2016 and 2015, Comnet contributed $9.1 million and $10.3 million of revenue, respectively.\nThe Company recognized a $56,000 and $318,000 credit to selling and general expenses as a result of the revaluation of the earn-out liability as it relates to the acquisition of Comnet as of October 31, 2016 and 2015, respectively. As of October 31, 2016, the Company has accrued $385,000 in earn-out accrual, which is included in current liabilities.\nNote 3 - Discontinued operations\nDuring 2013, the Company sold its RF Neulink and RadioMobile divisions, which together had comprised the Company\u2019s RF Wireless segment. The divisions were sold pursuant to asset purchase agreements, whereby no purchase price was paid at the closing. Rather, the agreements stipulated royalty payments from each of the purchasers over a three-year period. For the years ended October 31, 2016 and 2015, the Company recognized approximately $57,000 and $93,000, respectively, of aggregate royalty income for RF Neulink and RadioMobile, which amounts have been included within discontinued operations.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalties",
+     "$",
+     "57",
+     "",
+     "$",
+     "93"
+    ],
+    [
+     "Bioconnect",
+     "",
+     "(148)",
+     "",
+     "",
+     "419"
+    ],
+    [
+     "Provision (benefit) for income taxes",
+     "",
+     "(33)",
+     "",
+     "",
+     "212"
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "$",
+     "(58)",
+     "",
+     "$",
+     "300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1741,
+    "end_line": 1752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Discontinued operations"
+    }
+   },
+   "prose_before": "During March 2016, the Company announced the shutdown of its Bioconnect division, which comprised the entire operations of the Medical Cabling and Interconnect segment. The closure is part of the Company\u2019s ongoing plan to close or dispose of underperforming divisions that are not part of the Company\u2019s core operations. For the year ended October 31, 2016, the Company recognized approximately $148,000 of loss for the Bioconnect division, which amounts have been included within discontinued operations. Included in the fiscal year 2016 loss, the Company recognized a $148,000 pretax write-down on Bioconnect division\u2019s inventory and fixed assets. For the year ended October 31, 2015, the Company recognized approximately $419,000 of income for the Bioconnect division.\nThe following summarized financial information related to the RF Neulink, RadioMobile and Bioconnect divisions is segregated from continuing operations and reported as discontinued operations for the years ended October 31, 2016 and 2015 (in thousands):",
+   "prose_after": "Note 4 - Concentrations of credit risk\nFinancial instruments which potentially subject the Company to concentrations of credit risk consist primarily of cash and cash equivalents and accounts receivable. The Company maintains its cash and cash equivalents with high-credit quality financial institutions. At October 31, 2016, the Company had cash and cash equivalent balances in excess of federally insured limits in the amount of approximately $3.9 million.\nOne customer accounted for approximately 15% and 18% of the Company\u2019s net sales for the fiscal year ended October 31, 2016 and 2015, respectively. At October 31, 2016 and 2015, this customer\u2019s accounts receivable balance accounted for approximately 20% and 17%, respectively, of the Company\u2019s total net accounts receivable balances. Although this customer has been an on-going major customer of the Company continuously during the past 15 years, the written agreements with this customer do not have any minimum purchase obligations and the customer could stop buying the Company\u2019s products at any time and for any reason. A reduction, delay or cancellation of orders from this customer or the loss of this customer could significantly reduce the Company\u2019s future revenues and profits.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials and supplies",
+     "$",
+     "2,642",
+     "$",
+     "2,671"
+    ],
+    [
+     "Work in process",
+     "",
+     "279",
+     "",
+     "270"
+    ],
+    [
+     "Finished goods",
+     "",
+     "3,101",
+     "",
+     "3,987"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "6,022",
+     "$",
+     "6,928"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1765,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories and major vendors"
+    }
+   },
+   "prose_before": "One customer accounted for approximately 15% and 18% of the Company\u2019s net sales for the fiscal year ended October 31, 2016 and 2015, respectively. At October 31, 2016 and 2015, this customer\u2019s accounts receivable balance accounted for approximately 20% and 17%, respectively, of the Company\u2019s total net accounts receivable balances. Although this customer has been an on-going major customer of the Company continuously during the past 15 years, the written agreements with this customer do not have any minimum purchase obligations and the customer could stop buying the Company\u2019s products at any time and for any reason. A reduction, delay or cancellation of orders from this customer or the loss of this customer could significantly reduce the Company\u2019s future revenues and profits.\nThere was no product line that was significant for the fiscal years ended October 31, 2016 and 2015.\nNote 5 - Inventories and major vendors\nInventories, consisting of materials, labor and manufacturing overhead, are stated at the lower of cost or market. Cost has been determined using the weighted average cost method. In June 2015, the Company acquired Rel-Tech, a company that valued its inventories using specific identification (last purchase price) on a FIFO basis. As of July 31, 2016, Rel-Tech values its inventory cost using the weighted average cost of accounting. Inventories consist of the following (in thousands):",
+   "prose_after": "Purchases of inventory from two major vendors during fiscal 2016 represented 9% and 6%, respectively, of total inventory purchases compared to two major vendors who represented 12% and 8%, respectively, of total inventory purchases in fiscal 2015. The Company has arrangements with these vendors to purchase product based on purchase orders periodically issued by the Company.\nNote 6 - Other current assets\nOther current assets consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid taxes",
+     "$",
+     "871",
+     "$",
+     "408"
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "347",
+     "",
+     "140"
+    ],
+    [
+     "Notes receivable, current portion",
+     "",
+     "83",
+     "",
+     "-"
+    ],
+    [
+     "Other",
+     "",
+     "135",
+     "",
+     "180"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "1,436",
+     "$",
+     "728"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1784,
+    "end_line": 1797
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Other current assets"
+    }
+   },
+   "prose_before": "Purchases of inventory from two major vendors during fiscal 2016 represented 9% and 6%, respectively, of total inventory purchases compared to two major vendors who represented 12% and 8%, respectively, of total inventory purchases in fiscal 2015. The Company has arrangements with these vendors to purchase product based on purchase orders periodically issued by the Company.\nNote 6 - Other current assets\nOther current assets consist of the following (in thousands):",
+   "prose_after": "Long-term portion of notes receivable of $104,000 is recorded in other assets as of October 31, 2016.\nNote 7 - Accrued expenses and other long-term liabilities\nAccrued expenses consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wages payable",
+     "$",
+     "941",
+     "$",
+     "978"
+    ],
+    [
+     "Accrued receipts",
+     "",
+     "578",
+     "",
+     "438"
+    ],
+    [
+     "Earn-out liability",
+     "",
+     "707",
+     "",
+     "1,150"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "544",
+     "",
+     "302"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "2,770",
+     "$",
+     "2,868"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1804,
+    "end_line": 1817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued expenses and other long-term liabilities"
+    }
+   },
+   "prose_before": "Long-term portion of notes receivable of $104,000 is recorded in other assets as of October 31, 2016.\nNote 7 - Accrued expenses and other long-term liabilities\nAccrued expenses consist of the following (in thousands):",
+   "prose_after": "Accrued receipts represent purchased inventory for which invoices have not been received.\nNon-current portion of earn-out liability of $128,000 is recorded in other long-term liabilities as of October 31, 2016.\nNote 8 - Segment information\nThe Company aggregates operating divisions into operating segments which have similar economic characteristics primarily in the following areas: (1) the nature of the product and services; (2) the nature of the production process; (3) the type or class of customer for their products and services; (4) the methods used to distribute their products or services; and (5) if applicable, the nature of the regulatory environment. As of October 31, 2016, the Company had two segments - RF Connector and Cable Assembly and Custom Cabling Manufacturing based upon this evaluation.\nThe RF Connector and Cable Assembly segment is comprised of one division, while the Custom Cabling Manufacturing and Assembly segment comprised of three divisions. The four divisions that met the quantitative thresholds for segment reporting are Connector and Cable Assembly, Cables Unlimited, Comnet and Rel-Tech. The specific customers are different for each division; however, there is some overlapping of product sales to them. The methods used to distribute products are similar within each division aggregated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1854,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "29,257",
+     "$",
+     "29,732"
+    ],
+    [
+     "Foreign Countries:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Canada",
+     "",
+     "509",
+     "",
+     "362"
+    ],
+    [
+     "  Israel",
+     "",
+     "63",
+     "",
+     "296"
+    ],
+    [
+     "  Mexico",
+     "",
+     "234",
+     "",
+     "395"
+    ],
+    [
+     "  All Other",
+     "",
+     "178",
+     "",
+     "123"
+    ],
+    [
+     "",
+     "",
+     "984",
+     "",
+     "1,176"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "30,241",
+     "$",
+     "30,908"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1834,
+    "end_line": 1852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment information"
+    }
+   },
+   "prose_before": "Management identifies the Company\u2019s segments based on strategic business units that are, in turn, based along market lines. These strategic business units offer products and services to different markets in accordance with their customer base and product usage. For segment reporting purposes, the Connector and Cable Assembly division constitutes the RF Connector and Cable Assembly segment , the Cables Unlimited, Comnet and Rel-Tech division constitutes the Custom Cabling Manufacturing and segment.\nAs reviewed by the Company\u2019s chief operating decision maker, the Company evaluates the performance of each segment based on income or loss before income taxes. The Company charges depreciation and amortization directly to each division within the segment. Accounts receivable, inventory, property and equipment, goodwill and intangible assets are the only assets identified by segment. Except as discussed above, the accounting policies for segment reporting are the same for the Company as a whole.\nSubstantially all of the Company\u2019s operations are conducted in the United States; however, the Company derives a portion of its revenue from export sales. The Company attributes sales to geographic areas based on the location of the customers. The following table presents the sales of the Company by geographic area for the years ended October 31, 2016 and 2015 (in thousands):",
+   "prose_after": "Net sales, income (loss) from continuing operations before provision (benefit) for income taxes and other related segment information for the years ended October 31, 2016 and 2015 are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1799,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1854,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RF Connector",
+     "",
+     "",
+     "Custom Cabling",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "and",
+     "",
+     "",
+     "Manufacturing and",
+     "",
+     "",
+     "Manufacturing and",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cable Assembly",
+     "",
+     "",
+     "Assembly",
+     "",
+     "",
+     "Corporate",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "9,352",
+     "",
+     "$",
+     "20,889",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "30,241",
+     ""
+    ],
+    [
+     "Loss from continuing operations before provision (benefit) for income taxes",
+     "",
+     "(1,358)",
+     "",
+     "",
+     "(3,232)",
+     "",
+     "",
+     "(93)",
+     "",
+     "",
+     "(4,683)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "194",
+     "",
+     "",
+     "842",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,036",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "5,902",
+     "",
+     "",
+     "13,100",
+     "",
+     "",
+     "6,835",
+     "",
+     "",
+     "25,837",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "11,710",
+     "",
+     "$",
+     "19,198",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "30,908",
+     ""
+    ],
+    [
+     "Income (loss) from continuing operations before provision (benefit) for income taxes",
+     "",
+     "711",
+     "",
+     "",
+     "(234)",
+     "",
+     "",
+     "357",
+     "",
+     "",
+     "834",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "201",
+     "",
+     "",
+     "795",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "996",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "7,248",
+     "",
+     "",
+     "16,150",
+     "",
+     "",
+     "8,854",
+     "",
+     "",
+     "32,252",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1855,
+    "end_line": 1872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment information"
+    }
+   },
+   "prose_before": "Net sales, income (loss) from continuing operations before provision (benefit) for income taxes and other related segment information for the years ended October 31, 2016 and 2015 are as follows (in thousands):",
+   "prose_after": "Note 9 - Income tax provision\nThe provision (benefit) for income taxes for the fiscal years ended October 31, 2016 and 2015 consists of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1854,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Federal",
+     "$",
+     "(332)",
+     "",
+     "$",
+     "300",
+     ""
+    ],
+    [
+     "  State",
+     "",
+     "(13)",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(345)",
+     "",
+     "",
+     "304",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Federal",
+     "",
+     "(179)",
+     "",
+     "",
+     "(126)",
+     ""
+    ],
+    [
+     "  State",
+     "",
+     "(128)",
+     "",
+     "",
+     "(38)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(307)",
+     "",
+     "",
+     "(164)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(652)",
+     "",
+     "$",
+     "140",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1877,
+    "end_line": 1897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income tax provision"
+    }
+   },
+   "prose_before": "Note 9 - Income tax provision\nThe provision (benefit) for income taxes for the fiscal years ended October 31, 2016 and 2015 consists of the following (in thousands):",
+   "prose_after": "Income tax at the federal statutory rate is reconciled to the Company\u2019s actual net provision (benefit) for income taxes as follows (in thousands, except percentages):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1854,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "% of Pretax",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of Pretax",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Income",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Income",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes at federal statutory rate",
+     "$",
+     "(1,592)",
+     "",
+     "",
+     "34.0",
+     "%",
+     "$",
+     "287",
+     "",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "State tax provision, net of federal tax benefit",
+     "",
+     "(53)",
+     "",
+     "",
+     "1.1",
+     "%",
+     "",
+     "38",
+     "",
+     "",
+     "4.5",
+     "%"
+    ],
+    [
+     "Nondeductible differences:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Goodwill and other intangible asset impairment",
+     "",
+     "916",
+     "",
+     "",
+     "-19.6",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "  Rel-Tech earn-out",
+     "",
+     "52",
+     "",
+     "",
+     "-1.1",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "  Qualified domestic production activities deduction",
+     "",
+     "46",
+     "",
+     "",
+     "-1.0",
+     "%",
+     "",
+     "(36)",
+     "",
+     "",
+     "-4.3",
+     "%"
+    ],
+    [
+     "  ISO stock options",
+     "",
+     "43",
+     "",
+     "",
+     "-0.9",
+     "%",
+     "",
+     "50",
+     "",
+     "",
+     "6.0",
+     "%"
+    ],
+    [
+     "  Meals and entertainment",
+     "",
+     "29",
+     "",
+     "",
+     "-0.6",
+     "%",
+     "",
+     "31",
+     "",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "  Comnet book income",
+     "",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%",
+     "",
+     "(46)",
+     "",
+     "",
+     "-5.5",
+     "%"
+    ],
+    [
+     "  Transaction costs",
+     "",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%",
+     "",
+     "28",
+     "",
+     "",
+     "3.4",
+     "%"
+    ],
+    [
+     "  Temporary true-ups",
+     "",
+     "(3)",
+     "",
+     "",
+     "0.1",
+     "%",
+     "",
+     "(89)",
+     "",
+     "",
+     "-10.6",
+     "%"
+    ],
+    [
+     "  State tax refunds, net of federal expense",
+     "",
+     "(38)",
+     "",
+     "",
+     "0.8",
+     "%",
+     "",
+     "(66)",
+     "",
+     "",
+     "-7.9",
+     "%"
+    ],
+    [
+     "  R&D credits",
+     "",
+     "(46)",
+     "",
+     "",
+     "1.0",
+     "%",
+     "",
+     "(44)",
+     "",
+     "",
+     "-5.2",
+     "%"
+    ],
+    [
+     "  Other",
+     "",
+     "(6)",
+     "",
+     "",
+     "0.1",
+     "%",
+     "",
+     "(13)",
+     "",
+     "",
+     "-1.3",
+     "%"
+    ],
+    [
+     "",
+     "$",
+     "(652)",
+     "",
+     "",
+     "13.9",
+     "%",
+     "$",
+     "140",
+     "",
+     "",
+     "16.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1900,
+    "end_line": 1925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income tax provision"
+    }
+   },
+   "prose_before": "Income tax at the federal statutory rate is reconciled to the Company\u2019s actual net provision (benefit) for income taxes as follows (in thousands, except percentages):",
+   "prose_after": "The Company\u2019s total deferred tax assets and deferred tax liabilities at October 31, 2016 and 2015 are as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1854,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Reserves",
+     "$",
+     "216",
+     "",
+     "$",
+     "171",
+     ""
+    ],
+    [
+     "  Accrued vacation",
+     "",
+     "134",
+     "",
+     "",
+     "143",
+     ""
+    ],
+    [
+     "  Stock-based compensation awards",
+     "",
+     "159",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Uniform capitalization",
+     "",
+     "148",
+     "",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "  Other",
+     "",
+     "43",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "    Total deferred tax assets",
+     "",
+     "700",
+     "",
+     "",
+     "426",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stock-based compensation awards",
+     "",
+     "-",
+     "",
+     "",
+     "136",
+     ""
+    ],
+    [
+     "  Amortization / intangible assets",
+     "",
+     "(864)",
+     "",
+     "",
+     "(1,036)",
+     ""
+    ],
+    [
+     "  Depreciation / equipment and furnishings",
+     "",
+     "(211)",
+     "",
+     "",
+     "(247)",
+     ""
+    ],
+    [
+     "  Other",
+     "",
+     "(34)",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "    Total deferred tax liabilities",
+     "",
+     "(1,109)",
+     "",
+     "",
+     "(1,143)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total net deferred tax assets (liabilities)",
+     "$",
+     "(409)",
+     "",
+     "$",
+     "(717)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1928,
+    "end_line": 1954
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income tax provision"
+    }
+   },
+   "prose_before": "The Company\u2019s total deferred tax assets and deferred tax liabilities at October 31, 2016 and 2015 are as follows (in thousands):",
+   "prose_after": "Deferred income tax assets and liabilities are recorded for differences between the financial statement and tax basis of the assets and liabilities that will result in taxable or deductible amounts in the future based on enacted laws and rates applicable to the periods in which the differences are expected to affect taxable income. Valuation allowances are established when necessary to reduce deferred tax assets to the amount expected to be realized. The Company has evaluated the available evidence supporting the realization of its gross deferred tax assets, including the amount and timing of future taxable income, and has determined it is more likely than not that the assets will be realized in future tax years.\nThe Company had adopted the provisions of ASC 740-10, which clarifies the accounting for uncertain tax positions. ASC 740-10 requires that the Company recognize the impact of a tax position in the financial statements if the position is not more likely than not to be sustained upon examination based on the technical merits of the position. The Company\u2019s practice is to recognize interest and penalties related to income tax matters in income from continuing operations. The Company has no material unrecognized tax benefits as of October 31, 2016.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Weighted average volatility",
+     "",
+     "28.7",
+     "%",
+     "",
+     "52.2",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "2.4",
+     "%",
+     "",
+     "6.7",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "3.0",
+     "",
+     "",
+     "5.4",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.70",
+     "%",
+     "",
+     "1.17",
+     "%"
+    ],
+    [
+     "Weighted average fair value of options granted during the year",
+     "$",
+     "0.66",
+     "",
+     "$",
+     "1.09",
+     ""
+    ],
+    [
+     "Weighted average fair value of options vested during the year",
+     "$",
+     "4.36",
+     "",
+     "$",
+     "4.78",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1975,
+    "end_line": 1985
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Stock options"
+    }
+   },
+   "prose_before": "In May 2000, the Board of Directors adopted the Company\u2019s 2000 Stock Option Plan (the \u201c2000 Option Plan\u201d). Under the 2000 Option Plan, the Company was authorized to grant options to purchase shares of common stock to officers, directors, key employees and others providing services to the Company. The 2000 Option Plan expired in May 2010. At the time of expiration, the 2000 Plan had authorized the Company to grant options to purchase a total of 1,320,000 shares. Upon the expiration of the 2000 Plan, the Company was no longer able to grant any stock options to its employees, officers and directors. Accordingly, as of October 31, 2016, no shares are available for future grant under the 2000 Option Plan.\nOn March 9, 2010, the Company\u2019s Board of Directors adopted the RF Industries, Ltd. 2010 Stock Incentive Plan (the \u201c2010 Plan\u201d). In June 2010, the Company\u2019s stockholders approved the 2010 Plan by vote as required by NASDAQ. An aggregate of 1,000,000 shares of common stock was set aside and reserved for issuance under the 2010 Plan. The Company\u2019s shareholders approved the issuance of an additional 500,000 shares of common stock at its annual meeting held on September 5, 2014 and another 500,000 shares of common stock at its annual meeting held September 4, 2015. As of October 31, 2016, 914,821 shares of common stock were remaining for future grants of stock options under the 2010 Plan.\nAdditional disclosures related to stock option plans\nThe fair value of each option granted in 2016 and 2015 was estimated on the grant date using the Black-Scholes option pricing model with the following assumptions:",
+   "prose_after": "Expected volatilities are based on historical volatility of the Company\u2019s stock price and other factors. The Company used the historical method to calculate the expected life of the 2016 option grants. The expected life represents the period of time that options granted are expected to be outstanding. The risk-free rate is based on the U.S. Treasury rate with a maturity date corresponding to the options\u2019 expected life. The dividend yield is based upon the historical dividend yield.\nAdditional information regarding all of the Company's outstanding stock options at October 31, 2016 and 2015 and changes in outstanding stock options in 2016 and 2015 follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares or",
+     "",
+     "",
+     "Weighted",
+     "",
+     "Shares or",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "Price Per",
+     "",
+     "",
+     "Average",
+     "",
+     "Price Per",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "Share",
+     "",
+     "",
+     "Exercise Price",
+     "",
+     "Share",
+     "",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Options outstanding at beginning of year",
+     "",
+     "1,240,100",
+     "",
+     "$",
+     "3.64",
+     "",
+     "1,044,932",
+     "",
+     "$",
+     "3.27"
+    ],
+    [
+     "  Options granted",
+     "",
+     "104,936",
+     "",
+     "$",
+     "3.36",
+     "",
+     "396,039",
+     "",
+     "$",
+     "4.21"
+    ],
+    [
+     "  Options exercised",
+     "",
+     "(180,067)",
+     "",
+     "$",
+     "0.27",
+     "",
+     "(153,837)",
+     "",
+     "$",
+     "2.12"
+    ],
+    [
+     "  Options forfeited",
+     "",
+     "(157,118)",
+     "",
+     "$",
+     "4.53",
+     "",
+     "(47,034)",
+     "",
+     "$",
+     "5.11"
+    ],
+    [
+     "Options outstanding at end of year",
+     "",
+     "1,007,851",
+     "",
+     "$",
+     "4.07",
+     "",
+     "1,240,100",
+     "",
+     "$",
+     "3.27"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at end of year",
+     "",
+     "724,457",
+     "",
+     "$",
+     "3.93",
+     "",
+     "782,648",
+     "",
+     "$",
+     "3.02"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options vested and expected to vest at end of year",
+     "",
+     "1,002,522",
+     "",
+     "$",
+     "4.07",
+     "",
+     "1,233,543",
+     "",
+     "$",
+     "3.63"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Option price range at end of year",
+     "$",
+     "2.30 - $6.91",
+     "",
+     "",
+     "",
+     "$",
+     "0.05 - $6.91",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aggregate intrinsic value of options exercised during year",
+     "$",
+     "456,000",
+     "",
+     "",
+     "",
+     "$",
+     "363,000",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1990,
+    "end_line": 2017
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Stock options"
+    }
+   },
+   "prose_before": "Expected volatilities are based on historical volatility of the Company\u2019s stock price and other factors. The Company used the historical method to calculate the expected life of the 2016 option grants. The expected life represents the period of time that options granted are expected to be outstanding. The risk-free rate is based on the U.S. Treasury rate with a maturity date corresponding to the options\u2019 expected life. The dividend yield is based upon the historical dividend yield.\nAdditional information regarding all of the Company's outstanding stock options at October 31, 2016 and 2015 and changes in outstanding stock options in 2016 and 2015 follows:",
+   "prose_after": "Weighted average remaining contractual life of options outstanding as of October 31, 2016: 4.51 years\nWeighted average remaining contractual life of options exercisable as of October 31, 2016: 3.25 years\nWeighted average remaining contractual life of options vested and expected to vest as of October 31, 2016: 4.50 years\nAggregate intrinsic value of options outstanding at October 31, 2016: $99,000\nAggregate intrinsic value of options exercisable at October 31, 2016: $99,000\nAggregate intrinsic value of options vested and expected to vest at October 31, 2016: $99,000\nAs of October 31, 2016, $396,000 of expense with respect to nonvested share-based arrangements has yet to be recognized which is expected to be recognized over a weighted average period of 5.37 years.\nFor serving on the Board of Directors during the fiscal year ended October 31, 2016, non-employee directors received an annual fee of $30,000, which amount was paid one-half in cash and one-half through the grant of non-qualified stock options to purchase shares of the Company\u2019s common stock. For the year ended October 31, 2016, the Company granted each of its three non-employee directors options to purchase 17,064 shares. The number of stock option shares granted to each director was determined by dividing $15,000 by the fair value of a stock option grant using the Black-Scholes model ($0.87 per share). These options vest ratably over fiscal year 2016.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending",
+     "",
+     ""
+    ],
+    [
+     "October 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "$",
+     "443"
+    ],
+    [
+     "2018",
+     "",
+     "20"
+    ],
+    [
+     "2019",
+     "",
+     "20"
+    ],
+    [
+     "2020",
+     "",
+     "15"
+    ],
+    [
+     "2021",
+     "",
+     "2"
+    ],
+    [
+     "Total",
+     "$",
+     "500"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2060,
+    "end_line": 2074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "The Company paid dividends of $0.02, $0.02, $0.02 and $0.07 per share during the three months ended October, 31, 2016, July 31, 2016, April 30, 2016 and January 31, 2016, respectively, for a total of $1.1 million. The Company paid dividends of $0.07 per share during the three months ended October, 31, 2015, July 31, 2015, April 30, 2015 and January 31, 2015 for a total of $2.4 million.\nNote 14 - Commitments\nAs of October 31, 2016, the Company leases its facilities in San Diego, California, Yaphank, New York, Milford, Connecticut and East Brunswick, New Jersey under non-cancelable operating leases. Deferred rents, included in accrued expenses and other long-term liabilities, were $3,000 as of October 31, 2016 and $7,000 as of October 31, 2015. The San Diego lease also requires the payment of the Company's pro rata share of the real estate taxes and insurance, maintenance and other operating expenses related to the facilities.\nRent expense under all operating leases totaled approximately $628,000 and $685,000 in 2016 and 2015, respectively.\nMinimum lease payments under these non-cancelable operating leases in each of the years subsequent to October 31, 2016 are as follows (in thousands):",
+   "prose_after": "Note 15 - Line of credit\nFrom May 2015 until September 2016, the Company had a $5 million line of credit available to it from its bank. The Company did not use the line of credit and, effective September 8, 2016, the Company has terminated the line of credit. As of October 31, 2016, no amounts were outstanding under the line of credit.\nNote 16 - Stock repurchase program\nDuring April 2014, the Company announced that its Board of Directors authorized the repurchase of up to 500,000 shares of its common stock. The share repurchase program could be suspended or terminated at any time without prior notice. No shares were repurchased during the fiscal year October 31, 2016, and the repurchase program was terminated in September 2016.\nNote 17 - Subsequent events\nOn December 8, 2016, the Board of Directors of the Company declared a quarterly dividend of $0.02 per share that was paid on January 17, 2017 to shareholders of record on December 31, 2016.\nThe lease for the Company\u2019s headquarters in San Diego, California, was scheduled to expire on March 31, 2017, however on January 26, 2017 the term of the lease was extended until July 31, 2022, and the rental payments increased $2,596 per month, from $20,125 to $22,721 per month.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2074,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RF INDUSTRIES, LTD.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ Howard F. Hill"
+    ],
+    [
+     "",
+     "Howard F. Hill, Interim President and Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "RF INDUSTRIES, LTD."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2094,
+    "end_line": 2103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "During April 2014, the Company announced that its Board of Directors authorized the repurchase of up to 500,000 shares of its common stock. The share repurchase program could be suspended or terminated at any time without prior notice. No shares were repurchased during the fiscal year October 31, 2016, and the repurchase program was terminated in September 2016.\nNote 17 - Subsequent events\nOn December 8, 2016, the Board of Directors of the Company declared a quarterly dividend of $0.02 per share that was paid on January 17, 2017 to shareholders of record on December 31, 2016.\nThe lease for the Company\u2019s headquarters in San Diego, California, was scheduled to expire on March 31, 2017, however on January 26, 2017 the term of the lease was extended until July 31, 2022, and the rental payments increased $2,596 per month, from $20,125 to $22,721 per month.\nSIGNATURES\nIn accordance with Section 13 or 15\n(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2138,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ Howard F. Hill"
+    ],
+    [
+     "",
+     "Howard F. Hill,\n\n\n\nInterim President, Chief Executive Officer (Principal Executive Officer) and Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2106,
+    "end_line": 2116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2138,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ Mark Turfler"
+    ],
+    [
+     "",
+     "Mark Turfler, Chief Financial Officer\n\n\n\n(Principal Financial Officer and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ Marvin Fink"
+    ],
+    [
+     "",
+     "Marvin Fink, Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ William Reynolds"
+    ],
+    [
+     "",
+     "William Reynolds, Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: January 27, 2017",
+     "By:",
+     "/s/ Joseph Benoit"
+    ],
+    [
+     "",
+     "Joseph Benoit, Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2117,
+    "end_line": 2137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2138,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

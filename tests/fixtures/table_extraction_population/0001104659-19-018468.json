@@ -1,0 +1,2447 @@
+{
+ "accession": "0001104659-19-018468",
+ "cik": "0001163612",
+ "form": "10-K",
+ "filing_date": "2019-03-29",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a19-30040_110k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "COLORADO",
+     "84-1159783"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 21
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "United States SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2018\nCommission file number 0-49701\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Room 2, LG/F., Kai Wong Commercial Building 222 Queen\u2019s Road, Central, Hong Kong\n(Address of principal executive offices)\n(852) 3154-9370\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, with No Par Value\n(Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. YES [ ] NO [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "5"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "6"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "6"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "7"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "7"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "9"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "9"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "19"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "19"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "19"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "20"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "21"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "22"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "22"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "22"
+    ],
+    [
+     "Item 15.",
+     "Exhibits",
+     "23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYES [X] NO [ ]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average of the bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: US$211,293.\nNOTE: The aggregate market value was computed by multiplying the number of outstanding shares of the registrant\u2019s common stock, excluding those shares of record held by officers, directors and greater than five percent stockholders, by US$0.0063 per share.\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date: 99,963,615 shares of Common Stock with No Par Value, outstanding as at March 29, 2019.\nDocuments incorporated by reference: NONE.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nITEM 1. BUSINESS\n1.1 INTRODUCTION\nAll statements other than statements of historical fact presented in this annual report regarding our financial position and operating and strategic initiatives and addressing industry developments are forward-looking statements, where we or our management express(es) an expectation or belief as to future results. Such expectation or belief is expressed in good faith and believed to have a reasonable basis, but there can be no assurance that the statements of such expectation or belief will result or be achieved or accomplished. Actual results of operations may differ materially.\nOur principal executive office is located at Room 2, LG/F., Kai Wong Commercial Building, 222 Queen\u2019s Road, Central, Hong Kong, telephone (852) 3154-9370.\n1.2 THE CORPORATION AND ACQUISITION OF CTGH\nPacific Vegas Global Strategies, Inc. (the \u201cCompany\u201d or \u201cPVGS\u201d), formerly known as Goaltimer International, Inc., was incorporated in Colorado on December 19, 1990. Prior to the acquisition of Cyber Technology Group Holdings Ltd. (\u201cCTGH\u201d), the Company entered into and operated a business of development and sales of time and personal management products. The Company had discontinued such business and become a non-operating public shell since 1994, and remained as a shell company with its only activities of accruing loan interest on notes payable and looking for a merger candidate.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "QUARTER ENDED",
+     "",
+     "HIGH",
+     "",
+     "",
+     "L[ ]W",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 29, 2018",
+     "",
+     "US$",
+     "0.007",
+     "",
+     "US$",
+     "0.007",
+     ""
+    ],
+    [
+     "June 29, 2018",
+     "",
+     "US$",
+     "0.0063",
+     "",
+     "US$",
+     "0.0063",
+     ""
+    ],
+    [
+     "September 30, 2018",
+     "",
+     "US$",
+     "0.005",
+     "",
+     "US$",
+     "0.005",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "",
+     "US$",
+     "0.004",
+     "",
+     "US$",
+     "0.004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31, 2017",
+     "",
+     "US$",
+     "0.003",
+     "",
+     "US$",
+     "0.003",
+     ""
+    ],
+    [
+     "June 30, 2017",
+     "",
+     "US$",
+     "0.0069",
+     "",
+     "US$",
+     "0.0069",
+     ""
+    ],
+    [
+     "September 30, 2017",
+     "",
+     "US$",
+     "0.0068",
+     "",
+     "US$",
+     "0.0068",
+     ""
+    ],
+    [
+     "December 30, 2017",
+     "",
+     "US$",
+     "0.004",
+     "",
+     "US$",
+     "0.004",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 228,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "5.1 OUTSTANDING SHARES AND STOCKHOLDERS\nAs at December 31, 2018, there were 99,963,615 shares of PVGS common stock with no par value issued and outstanding, and there were approximately 1,150 beneficial holders of PVGS common stock.\n5.2 MARKET FOR PVGS COMMON STOCK\nOur common stock was traded publicly on the OTC Bulletin Board under the symbol \u201cPVEG.OB\u201d from January 8, 2003 until September 26, 2003, at which time it was moved from the OTC Bulletin Board to the OTC Non-Bulletin Board for failure to comply with certain reporting requirements (NASD Rule 6530). Our common stock has been since then traded on the Pink Sheets under the symbol \u201cPVEG.PK\u201d.\nThe nature of the market for common stocks trading on the Pink Sheets is generally limited, sporadic and highly volatile, and the absence of an active market may have an effect upon the high and low prices as reported. The following information sets forth the high and low last sale prices per share of our common stock for the periods indicated as reported by the Pink Sheets:",
+   "prose_after": "The quotations listed in this table reflect inter-dealer prices, without retail mark-ups, mark-downs, or commissions, and may not necessarily represent actual transactions.\n5.3 RELATED MATTERS\nThe Company has not declared or paid any dividends since its reorganization with CTGH in January 2003.\nThe Company did not sell any equity securities that were not registered under the Securities Act of 1933, as amended, and did not repurchase any of our equity securities, in the last three fiscal years.\nThere were no previously authorized equity compensation plans carried forward upon the Company\u2019s reorganization in January 2003, and there have been no equity compensation plans adopted and no equity securities issued for any equity compensation plans since the Company\u2019s reorganization in January 2003. As at December 31, 2018, there were no outstanding equity compensation plans, options or warrants to be exercised and no equity securities to be issued for such purposes.\nITEM 6. SELECTED FINANCIAL DATA",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 198,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Note",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "",
+     "(61,124)",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income tax",
+     "",
+     "",
+     "",
+     "(61,124)",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "4",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss and total comprehensive loss",
+     "",
+     "",
+     "",
+     "(61,124)",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share of common stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "5",
+     "",
+     "(0.00)",
+     "",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common stock outstanding",
+     "",
+     "",
+     "",
+     "99,963,615",
+     "",
+     "99,963,615",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 373,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audits of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ MOORE STEPHENS CPA LIMITED Moore Stephens CPA Limited Certified Public Accountants We have served as the Company\u2019s auditor since 2017. Hong Kong March 29, 2019\nStatements of Operations and Comprehensive L[ ]ss",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nBalance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "As of December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Note",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits and prepayments",
+     "",
+     "3",
+     "",
+     "10,000",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "",
+     "10,000",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "",
+     "",
+     "10,000",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due to a stockholder",
+     "",
+     "6",
+     "",
+     "696,849",
+     "",
+     "638,525",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "",
+     "16,600",
+     "",
+     "16,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "",
+     "713,449",
+     "",
+     "654,825",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "",
+     "713,449",
+     "",
+     "654,825",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "No par value, 500,000,000 shares of common stock as of December 31, 2018 and 2017",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued and outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "No par value, 99,963,615 shares of common stock as of December 31, 2018 and 2017",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "",
+     "2,500,000",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Accumulated losses",
+     "",
+     "",
+     "",
+     "(3,203,449)",
+     "",
+     "(3,142,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "(703,449)",
+     "",
+     "(642,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "10,000",
+     "",
+     "12,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nBalance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 408,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(61,124)",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "Adjustment to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in working capital:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits and prepayments",
+     "",
+     "2,500",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "300",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(58,324)",
+     "",
+     "(53,831)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from a stockholder",
+     "",
+     "58,324",
+     "",
+     "53,831",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash from financing activities",
+     "",
+     "58,324",
+     "",
+     "53,831",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of year",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatements [ ]f Changes in Stockholders\u2019 Deficit",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 465,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 509,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of shares",
+     "",
+     "Amount",
+     "",
+     "paid-in capital",
+     "",
+     "Accumulated losses",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of January 1, 2017",
+     "",
+     "99,963,615",
+     "",
+     "\u2014",
+     "",
+     "2,500,000",
+     "",
+     "(3,088,533)",
+     "",
+     "(588,533)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(53,792)",
+     "",
+     "(53,792)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2017",
+     "",
+     "99,963,615",
+     "",
+     "\u2014",
+     "",
+     "2,500,000",
+     "",
+     "(3,142,325)",
+     "",
+     "(642,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(61,124)",
+     "",
+     "(61,124)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2018",
+     "",
+     "99,963,615",
+     "",
+     "\u2014",
+     "",
+     "2,500,000",
+     "",
+     "(3,203,449)",
+     "",
+     "(703,449)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 515,
+    "end_line": 538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatements [ ]f Changes in Stockholders\u2019 Deficit",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\n1. ORGANIZATION AND PRINCIPAL ACTIVITIES\nPacific Vegas Global Strategies, Inc. (the \u201cCompany\u201d or \u201cPVGS\u201d), formerly known as Goaltimer International, Inc., was incorporated in Colorado on December 19, 1990.\nUpon the expiry of an International Gaming License granted by the government of the Commonwealth of Dominica on December 6, 2004, the Board of Directors of the Company resolved to cease the then business due to significant losses incurred. After the full discontinuance of such business in 2005, the Company became a shell company since January 1, 2006.\nThe Company has been in an inactive or non-operating status since December 6, 2004, and remained as a shell company with its only activities of incurring non-operating expenses.\n2. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\n(a) Basis of accounting\nThese financial statements are presented in United States dollars (\u201cUS$\u201d or \u201cUS dollars\u201d) and have been prepared in accordance with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred tax asset-",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "",
+     "800,862",
+     "",
+     "785,581",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(800,862)",
+     "",
+     "(785,581)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "As of the date that this annual report is filed, there are no recently issued accounting pronouncements whose adoption would have a material impact on the Company\u2019s financial statements.\n3. DEPOSITS AND PREPAYMENTS\nThe amount represents retainer fee paid in advance to the Company\u2019s lawyer.\n4. INCOME TAXES\nAt December 31, 2018 and 2017, the Company had an unused net operating loss carryforward of approximately $3,203,000 and $3,142,000, respectively, for income tax purposes, which expires between 2028 to indefinitely and between 2028 to 2037, respectively. At December 31, 2018 and 2017, these net operating losses carryforward may result in future income tax benefits of approximately $800,900; and $785,600, respectively, however, because realization is uncertain at this time, a valuation allowance in the same amount has been established. Deferred income taxes reflect the net effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes.\nSignificant components of the Company\u2019s deferred tax liabilities and assets of December 31, 2018 and 2017 are as follows:",
+   "prose_after": "Movement of valuation allowance:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "At the beginning of the year",
+     "",
+     "785,581",
+     "",
+     "772,133",
+     ""
+    ],
+    [
+     "Current year addition",
+     "",
+     "15,281",
+     "",
+     "13,448",
+     ""
+    ],
+    [
+     "At the end of the year",
+     "",
+     "800,862",
+     "",
+     "785,581",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 630,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Movement of valuation allowance:",
+   "prose_after": "A reconciliation of the income tax expense to the amount computed by applying the current statutory tax rate to the loss before income taxes in the consolidated statements of comprehensive loss is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. statutory income tax rate",
+     "",
+     "21",
+     "%",
+     "35",
+     "%"
+    ],
+    [
+     "State income tax rate",
+     "",
+     "4.6",
+     "",
+     "4.6",
+     ""
+    ],
+    [
+     "Valuation reduction",
+     "",
+     "(0.6)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Enacted tax reform on future tax rates",
+     "",
+     "\u2014",
+     "",
+     "(13)",
+     ""
+    ],
+    [
+     "Change in valuation allowance of deferred tax assets",
+     "",
+     "(25)",
+     "",
+     "(25)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "\u2014",
+     "%",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation of the income tax expense to the amount computed by applying the current statutory tax rate to the loss before income taxes in the consolidated statements of comprehensive loss is as follows:",
+   "prose_after": "As a result of the reduction of the corporate income tax rate from 35% to 21% due to the Tax Cuts and Jobs Act which was enacted on December 22, 2017, U.S. GAAP requires companies to remeasure their deferred tax assets and liabilities as of the date of enactment, with resulting tax effects accounted for in the period of enactment. (the change in deferred tax balances would have a corresponding change to valuation allowance thereby resulting in no income tax expense for the year).\n5. LOSS PER SHARE\nBasic loss per common share is calculated based on the weighted average number of common stock outstanding during each period presented.\nThe Company had no potential common stock instruments with a dilutive effect for any period presented and therefore basic and diluted earnings per share are the same.\n6. DUE TO A STOCKHOLDER\nThe amount due is unsecured, interest-free and repayable on demand.\n7. COMMITMENTS AND CONTINGENCIES\nThe Company is delinquent in filing its U.S. Federal tax returns and information forms for numerous years. Although for most of such years the Company incurred losses and would not owe taxes except for minimum fees to Colorado, the failure to file could result in interest and penalties imposed upon the Company which would have a material adverse effect upon the Company\u2019s financial condition. The Company has completed its delinquent filings through the DIIRSP for the past due U.S. Federal tax returns and information forms as per the 2012 Offshore Voluntary Disclosure Program. As of December 31, 2018, management does not foresee significant tax liabilities arising from the DIIRSP.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Office (1)",
+     "",
+     "Term Expires (2)"
+    ],
+    [
+     "Kwan Sin Yee",
+     "",
+     "66",
+     "",
+     "Director, Chief Executive Officer and Chief Financial Officer (3)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 726,
+    "end_line": 731
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "(c) Attestation report of the registered public accounting firm\nNot applicable.\n(d) Changes in internal control over financial reporting\nThere were no changes in our internal controls over financial reporting identified in connection with the evaluation that occurred during our fourth fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\n10.1 DIRECTORS AND EXECUTIVE OFFICERS\nInformation about our directors and executive officers during the year ended and as of December 31, 2018 is set forth as follows:",
+   "prose_after": "(1) The business address is Room 2, LG/F., Kai Wong Commercial Building, 222 Queen\u2019s Road, Central, Hong Kong.\n(2) The term of office of each officer is at the discretion of the sole director.\n(3) Appointed to serve as Director, Chief Executive Officer and Chief Financial Officer effective from August 23, 2007.\nKwan Sin Yee, Director, Chief Executive Officer and Chief Financial Officer of the Company, was the second largest major shareholder prior to acquiring 36,500,000 shares from Raymond Chou. Ms. Kwan, being a well connected and low profile investor, took over the control of the Company after the acquisition with the intention to re-organize by merging or acquisition.\nOther than the appointment of Ms. Kwan Sin Yee as Director, Chief Executive Officer and Chief Financial Officer on August 23, 2007, there was no other person nominated or chosen to any positions as directors or executive officers for the Company during the period covered by this report.\nNone of our existing director and/or executive officer holds any positions as director or officer in any other reporting companies.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 716,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Fiscal Year",
+     "",
+     "Basic Salary",
+     "",
+     "Bonus",
+     "",
+     "Options Granted",
+     "",
+     "Other Compensation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "US$",
+     "",
+     "US$",
+     "",
+     "US$",
+     "",
+     "US$",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kwan Sin Yee",
+     "",
+     "2018",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Chief Executive Officer & Chief Financial Officer)",
+     "",
+     "2017",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 772,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "Effective as of January 1, 2005, based upon a mutual agreement between the Company and our chief executive officer and chief financial officer, there has been no compensation or remuneration from the Company, whether in cash or in kind, awarded to, earned by and/or paid to our chief executive officer and chief financial officer for their services rendered in all capacities to the Company.\nThe following table, and its accompanying explanatory footnotes, presents the information of annual and long-term compensation, including all plan and non-plan compensation, whether in cash or non-cash, awarded to, earned by and/or paid to our chief executive officer and chief financial officer for her services rendered in all capacities to the Company for the last two fiscal years ended December 31, 2018 and 2017. Other than the compensation listed below, there has been no compensation from the Company, whether in cash or non-cash, by plan or non-plan, awarded to, earned by and/or paid to our executive officer.",
+   "prose_after": "11.2 SUMMARY OF OPTION GRANTS\nThere has been no grant of any stock options made to any executive officers or any employees of the Company in the last fifteen fiscal years since the Company\u2019s reorganization with CTGH in January 2003.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth the number of shares of our common stock owned beneficially as at December 31, 2018 by each person known by us to have owned beneficially more than five percent of such shares then outstanding, by each of our directors and officers and by all of our directors and officers as a group. This information gives effect to securities deemed outstanding pursuant to Rule 13d 3(d)(l) under the Securities Exchange Act of 1934, as amended. As to the knowledge of our management, no person owns beneficially more than five percent of the Company\u2019s outstanding shares of common stock as at December 31, 2018 except as set forth below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "",
+     "Amount and Nature [ ]f Beneficial Owner",
+     "",
+     "Percentage of Class Beneficially Owned",
+     ""
+    ],
+    [
+     "",
+     "",
+     "6,220,000",
+     "",
+     "6.22",
+     "%"
+    ],
+    [
+     "Raymond Chou (1)",
+     "",
+     "Common Stock",
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "42,200,000",
+     "",
+     "42.22",
+     "%"
+    ],
+    [
+     "Kwan Sin Yee (1)",
+     "",
+     "Common Stock",
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "",
+     "",
+     "48,420,000",
+     "",
+     "48.44",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "Common Stock",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 791,
+    "end_line": 805
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "11.2 SUMMARY OF OPTION GRANTS\nThere has been no grant of any stock options made to any executive officers or any employees of the Company in the last fifteen fiscal years since the Company\u2019s reorganization with CTGH in January 2003.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth the number of shares of our common stock owned beneficially as at December 31, 2018 by each person known by us to have owned beneficially more than five percent of such shares then outstanding, by each of our directors and officers and by all of our directors and officers as a group. This information gives effect to securities deemed outstanding pursuant to Rule 13d 3(d)(l) under the Securities Exchange Act of 1934, as amended. As to the knowledge of our management, no person owns beneficially more than five percent of the Company\u2019s outstanding shares of common stock as at December 31, 2018 except as set forth below.",
+   "prose_after": "(1) The business address is Room 2, LG/F., Kai Wong Commercial Building, 222 Queen\u2019s Road, Central, Hong Kong.\nOn August 23, 2007, pursuant to a Stock Purchase Agreement dated August 23, 2007 between Raymond Chou (\u201cChou\u201d) and Kwan Sin Yee (\u201cKwan\u201d), Kwan purchased 36,500,000 shares of the common stock of the Company from Chou for a purchase price of US$109,500. The 36,500,000 shares represented 36.5% of the total shares of the Company issued and outstanding on August 23, 2007. Kwan owns 42,200,000 shares, or 42.2% of the total shares of the Company issued and outstanding after the above-mentioned stock purchase transaction and on the date of this report.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nThere were no related party transactions other than the private financing by loans to us from our principal stockholder, who is also the sole director of the Company, during the last two fiscal years ended December 31, 2018 and 2017. All private loans from the principal stockholder to the Company were unsecured, interest free and not subject to fixed term of repayment.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit 31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a)"
+    ],
+    [
+     "Exhibit 31.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a)"
+    ],
+    [
+     "Exhibit 32.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(b) and 18 U.S.C. Section 1350"
+    ],
+    [
+     "Exhibit 32.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(b) and 18 U.S.C. Section 1350"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 838,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The aggregate fees billed for the fiscal year ended December 31, 2018 for professional services rendered by Moore Stephens for the audit of the Company\u2019s annual financial statements for the year ended December 31, 2018 and the review of the financial statements included in our quarterly reports on Form 10-Q for the year ended December 31, 2018 were US$14,800 and US$16,500, respectively.\n(2) Audit Related Fees. The Company did not pay any audit-related fees to Moore Stephens for both fiscal years 2018 and 2017.\n(3) Tax Fees. Moore Stephens did not provide any tax services to the Company in either of the fiscal years 2018 and 2017.\n(4) All Other Fees. Moore Stephens did not provide any other services to the Company in either of the fiscal years 2018 and 2017.\n(5) We do not currently have a separate audit committee. Rather, our sole director serves as the audit committee. Our sole director approved all of the services described in items (1), (2), (3) and (4) above.\nPART IV\nITEM 15. EXHIBITS\n(a) The following documents are filed as a part of this report\nThe financial statements as set forth in Item 8 hereof",
+   "prose_after": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nRegistrant",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:",
+     "March 29, 2019",
+     "By:",
+     "/s/ KWAN SIN YEE"
+    ],
+    [
+     "",
+     "",
+     "Kwan Sin Yee",
+     ""
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nRegistrant",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "TITLE",
+     "DATE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ KWAN SIN YEE",
+     "President, Chief Executive Officer, Secretary and Director",
+     "March 29, 2019"
+    ],
+    [
+     "Kwan Sin Yee",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ KWAN SIN YEE",
+     "Chief Financial Officer",
+     "March 29, 2019"
+    ],
+    [
+     "Kwan Sin Yee",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 864,
+    "end_line": 876
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  }
+ ]
+}

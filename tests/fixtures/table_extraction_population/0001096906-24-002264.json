@@ -1,0 +1,3315 @@
+{
+ "accession": "0001096906-24-002264",
+ "cik": "0001610718",
+ "form": "10-K",
+ "filing_date": "2024-12-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "odrs-20240930.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NEVADA (NV)",
+     "46-4854952"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nForm 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended September 30, 2024\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________ to _______________\nCommission file number 000-56301\nOUTDOOR SPECIALTY PRODUCTS, INC.\n(Exact name of registrant as specified in charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3842 Quail Hollow Drive, Salt Lake City, Utah",
+     "84109"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (801) 560-5184\nSecurities registered under Section 12(b) of the Act: None\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, $0.001 Par Value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "4"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "6"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "10"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "10"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "10"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "10"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "11"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "12"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "13"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "14"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "14"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "15"
+    ],
+    [
+     "Item 15.",
+     "Exhibit and Financial Statement Schedules",
+     "15"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "17"
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "18"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 157
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes [ ] No [ ]\n(APPLICABLE ONLY TO CORPORATE REGISTRANTS)\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\nAs of December 9, 2024, there were 5,284,318 shares of the issuer\u2019s common stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nList hereunder the following documents if incorporated by reference and the part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated: (1) Any annual report to security holders; (2) Any proxy or information statement; and (3) Any prospectus filed pursuant to Rule 424(b) or (c) under the Securities Act of 1933. The listed documents should be clearly described for identification purposes (e.g., annual report to security holders for fiscal year ended December 24, 1980).\nNone.\nTABLE OF CONTENTS TO ANNUAL REPORT ON FORM 10-K\nYEAR ENDED SEPTEMBER 30, 2024",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nCertain statements and information in this report on Form 10-K may constitute forward-looking statements. The words believe, may, potentially, estimate, continue, anticipate, intend, could, would, project, plan, expect, and similar expressions that convey uncertainty of future events or outcomes are intended to identify forward-looking statements. These statements involve known and unknown risks, uncertainties, and other important factors that may cause our actual results, performance, or achievements to be materially different from any future results, performances, or achievements expressed or implied by the forward-looking statements. These forward-looking statements include, but are not limited to, statements concerning the following:\n\u25cf our future financial and operating results;\n\u25cf our business strategy;\n\u25cf our intentions, expectations and beliefs regarding anticipated growth, market penetration and trends in our business;\n\u25cf the effects of market conditions on our stock price and operating results;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 157,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Price Range",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Period",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "Year Ending September 30, 2024",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.75"
+    ],
+    [
+     "Year Ended September 30, 2023:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "1.79",
+     "$",
+     "1.79"
+    ]
+   ],
+   "caption_stack": [
+    "Price Range"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 291,
+    "end_line": 307
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Our principal office is located at the residence of our President, Kirk Blosch, 3842 Quail Hollow Drive, Salt Lake City, UT 84109, and such space is provided to us on a rent-free basis. We believe our office facilities are sufficient for the foreseeable future.\nItem 3. Legal Proceedings.\nThe Company is not a party to any material legal proceedings, and to our knowledge, no such legal proceedings have been threatened against us.\nItem 4. Mine Safety Disclosures.\nNot Applicable.\nPart II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nOur common stock is currently quoted on the OTC PINK tier of the OTC Markets Group under the symbol \u201cODRS.\u201d However, quotations for the stock during the 2024 and 2023 years were limited and sporadic and there currently is no established trading market for our common stock.\nThe following table sets forth, for the periods indicated, the high and low bid prices per share of common stock as set forth in the OTC Market Report. The below quotations represent inter-dealer prices without retail mark-up, mark-down, or commission and may not necessarily represent actual transactions.",
+   "prose_after": "As of December 9, 2024, our shares of common stock were held by 68 stockholders of record as reported by our transfer agent.\nDividends\nHolders of our common stock are entitled to dividends when, as and if declared by our Board of Directors, out of funds legally available for the payment of dividends. We have never declared cash dividends on our common stock, and our Board of Directors does not anticipate paying cash dividends in the foreseeable future as it intends to retain any future earnings to finance the growth of our business. There are no restrictions in our articles of incorporation or bylaws that restrict us from declaring dividends.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nAs of the end of the latest fiscal year ended September 30, 2024, the only compensation plans (including individual compensation arrangements) under which our equity securities were authorized for issuance was our 2021 Stock Incentive Plan, adopted on February 8, 2021, which authorizes the issuance of up to 1,000,000 shares of our common stock in awards granted as incentive or non-statutory stock options, restricted stock units, stock appreciation rights, or restricted stock grants. The 10-year plan is administered by our Board of Directors. No awards have been made under the plan to date.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 290,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Index of Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6258)",
+     "F-2"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6580)",
+     "F-4"
+    ],
+    [
+     "Balance Sheets as of September 30, 2024 and 2023",
+     "F-6"
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2024 and 2023",
+     "F-7"
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficit for the Years Ended September 30, 2024 and 2023",
+     "F-8"
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2024 and 2023",
+     "F-9"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-10"
+    ]
+   ],
+   "caption_stack": [
+    "Index of Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 454
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Basic loss per share is computed by dividing net loss attributable to common shares by the weighted average number of common shares outstanding during the period. Diluted loss per share is computed by dividing net income attributable to common shares for the period by the weighted average number of common and potential common shares outstanding during the period. Potential common shares are included in the calculation of diluted net income per share, when they are present in the financial statements, to the extent such shares are dilutive. During the years\nended September 30, 2024 and 2023, the Company did not have any stock options, warrants, or other convertible or potentially-dilutive instruments issued and outstanding.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nNot Applicable. The Company is a \u201csmaller reporting company.\u201d\nItem 8. Financial Statements and Supplementary Data\nThe following financial statements are being filed with this report and are located immediately following the signature page.",
+   "prose_after": "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures\nDisclosure controls and procedures are designed to ensure that information required to be disclosed by us in reports filed or submitted under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and forms. Disclosure controls and procedures include, without limitation, controls and procedures designed to ensure that information required to be disclosed in reports filed or submitted under the Exchange Act is accumulated and communicated to management, including our principal executive officer and principal financial officer, or persons performing similar functions, as appropriate to allow for timely decisions regarding required disclosure. Due to inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Further, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that degree of compliance with the policies and procedures may deteriorate. Accordingly, even effective disclosure controls and procedures can only provide reasonable assurance of achieving their control objectives.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title"
+    ],
+    [
+     "Kirk Blosch",
+     "70",
+     "President, CEO, and Chairman"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Except as described below, there was no change in our internal control over financial reporting during the year ended September 30, 2024, that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting. During such year, in order to continue to address the material weaknesses in our internal control over financial reporting described in our annual report on Form 10-K for the year ended September 30, 2023, we engaged a certified public accountant to assist us with the preparation of our quarterly and annual financial statements, which we believe strengthened our procedures around complex accounting issues such as asset impairments and our guidelines for how to conduct and document the reviews of those complex topics. We believe these steps have remediated some of the previously identified material weaknesses in our internal control over financial reporting.\nItem 9B. Other Information\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections\nNot Applicable.\nPart III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth the names and ages of the members of our Board of Director and our executive officers and the positions held by each.",
+   "prose_after": "Kirk Blosch is the founder of the Company and has been its sole officer and director since its inception in 2014. Since 2008 he has been the owner and principal broker of B&B Real Estate Group LLC, a Salt Lake City, Utah, based real estate firm providing sales, consulting, and development services. Mr. Blosch has over 38 years of experience in evaluating business opportunities, creating business or development plans, funding various projects, and overseeing the construction and development of real estate projects. He received his Bachelor of Science degree in organizational communication from the University of Utah in 1976.\nFamily Relationships\nThere are no family relationships among our directors, executive officers or persons nominated or chosen to become directors or executive officers.\nBoard of Directors\nOur board of directors consists of one person, Kirk Blosch. Such person is not \u201cindependent\u201d within the meaning of Rule 5605(a)(2) of the NASDAQ Marketplace because he is an officer of the Company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Common Stock Beneficially Owned (1)",
+     "",
+     "Percentage of Common Stock Owned (1)",
+     "",
+     ""
+    ],
+    [
+     "Principal Stockholders",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ed Bailey (2)",
+     "",
+     "760,000",
+     "",
+     "14.4",
+     "%"
+    ],
+    [
+     "4685 S. Highland Dr. Salt Lake City, UT 84106",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kirk Blosch, President and Director (3)",
+     "",
+     "4,250,000",
+     "",
+     "80.4",
+     "%"
+    ],
+    [
+     "3842 Quail Hollow Drive Salt Lake City, UT 84109",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Director and Officer (1 person)",
+     "",
+     "4,250,000",
+     "",
+     "80.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Director Compensation\nWe did not pay our sole director any compensation for serving in his capacity as a director during the fiscal years ended September 30, 2024 and 2023.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth information regarding the beneficial ownership of our common stock as of December 9, 2024. The information in this table provides the ownership information for each person known by us to be the beneficial owner of more than 5% of our common stock, each of our directors, each of our executive officers, and our executive officers and directors as a group.\nBeneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to the shares. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares indicated as beneficially owned by them.",
+   "prose_after": "(1) Applicable percentage ownership is based on 5,284,318 shares of common stock outstanding as of December 9, 2024. Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and generally includes voting or investment power with respect to securities.\n(2) Amount reported here includes 750,000 shares held by Maven Strategic Partners, Inc. and 10,000 shares held by Maven Investments, LLC, which are entities owned and controlled by Ed Bailey.\n(3) Kirk Blosch is the only officer, employee, and director of the Company. He has full voting and investment control of the shares beneficially owned by him.\nItem 13. Certain Relationships and Related Transactions and Director Independence\nOn January 4, 2021, we entered into a revolving promissory note agreement with Kirk Blosch, our president and a principal stockholder, that, as amended through September 30, 2024, provided for total loans of up to $127,500 at an interest rate 3.5% per annum, which was repayable on or before December 31, 2024. We received proceeds under the revolving promissory note of $43,100 during the year ended September 30, 2024, resulting in principal balances of $126,621 and $83,521, with accrued interest of $8,237 and $4,444, at September 30, 2024 and 2023, respectively.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 538,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "12,000",
+     "$",
+     "10,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "12,000",
+     "$",
+     "10,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Article X of our Articles of Incorporation provides that we must pay expenses of officers and directors incurred in defending a civil or criminal action, suit or proceeding, involving alleged acts or omissions of such officer or director in his or her capacity as an officer or director as they are incurred and in advance of the final disposition of the action, suit or proceeding, upon receipt of an undertaking by or on behalf of the director or officer to repay the amount if it is ultimately determined by a court of competent jurisdiction that he or she is not entitled to be indemnified by us.\nInsofar as indemnification for liabilities arising under the Securities Act of 1933 (the \u201cAct\u201d) may be permitted to directors, officers and controlling persons of our company pursuant to the foregoing provisions, or otherwise, we have been advised that in the opinion of the Securities and Exchange Commission, such indemnification is against public policy as expressed in the Act and is, therefore, unenforceable.\nItem 14. Principal Accountant Fees and Services\nMAC Accounting Group & CPAs, LLP served as our independent registered public accounting firm for the fiscal year ended September 30, 2024 and GreenGrowth CPAs served as our independent registered public accounting firm for the fiscal year ended September 30, 2023.\nFees for services provided by our independent registered public accounting firms were as follows:",
+   "prose_after": "\u201cAudit Fees\u201d consisted of fees billed for services rendered for the audit of the Company\u2019s annual financial statements, review of financial statements included in the Company\u2019s quarterly reports on Form 10-Q, and other services normally provided in connection with statutory and regulatory filings. \u201cAudit-Related Fees\u201d consisted of fees billed for due diligence procedures in connection with acquisitions and divestitures and consultation regarding financial accounting and reporting matters. \u201cTax Fees\u201d consisted of fees billed for tax payment planning and tax preparation services. \u201cAll Other Fees\u201d consisted of fees billed for services in connection with legal matters and technical accounting research.\nThe Company\u2019s Board of Directors functions as its audit committee. It is the policy of the Company for all work performed by our principal accountant to be approved in advance by the Board of Directors. All of the services described above in this Item 14 were approved in advance by our Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Index of Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6258)",
+     "F-2"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6580)",
+     "F-4"
+    ],
+    [
+     "Balance Sheets as of September 30, 2024 and 2023",
+     "F-6"
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2024 and 2023",
+     "F-7"
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficit for the Years Ended September 30, 2024 and 2023",
+     "F-8"
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2024 and 2023",
+     "F-9"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-10"
+    ]
+   ],
+   "caption_stack": [
+    "Index of Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "\u201cAudit Fees\u201d consisted of fees billed for services rendered for the audit of the Company\u2019s annual financial statements, review of financial statements included in the Company\u2019s quarterly reports on Form 10-Q, and other services normally provided in connection with statutory and regulatory filings. \u201cAudit-Related Fees\u201d consisted of fees billed for due diligence procedures in connection with acquisitions and divestitures and consultation regarding financial accounting and reporting matters. \u201cTax Fees\u201d consisted of fees billed for tax payment planning and tax preparation services. \u201cAll Other Fees\u201d consisted of fees billed for services in connection with legal matters and technical accounting research.\nThe Company\u2019s Board of Directors functions as its audit committee. It is the policy of the Company for all work performed by our principal accountant to be approved in advance by the Board of Directors. All of the services described above in this Item 14 were approved in advance by our Board of Directors.\nItem 15. Exhibit and Financial Statement Schedules\n(a) List of all financial statements filed as part of this report.",
+   "prose_after": "(b) The following documents are included as exhibits to this report.\n(a) Exhibits",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "SEC Reference Number",
+     "Title of Document",
+     "Location"
+    ],
+    [
+     "3.1",
+     "3",
+     "Articles of Incorporation",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "3.2",
+     "3",
+     "Articles of Merger dated February 24, 2021",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "3.3",
+     "3",
+     "Bylaws",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "4.1",
+     "4",
+     "2021 Stock Incentive Plan",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "10.1",
+     "10",
+     "Merger Agreement dated February 24, 2021",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "10.2",
+     "10",
+     "Revolving Promissory Note Agreement with Kirk Blosch dated January 4, 2021",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "10.3",
+     "10",
+     "License and Royalty Agreement dated May 4, 2021",
+     "Incorporated by Reference(1)"
+    ],
+    [
+     "10.5",
+     "10",
+     "Revolving Promissory Note Agreement with Ed Bailey dated December 1, 2021",
+     "Incorporated by Reference(2)"
+    ],
+    [
+     "10.8",
+     "10",
+     "Fifth Amendment to Revolving Promissory Note Agreement with Kirk Blosch dated as of October 9, 2023",
+     "Incorporated by Reference(3)"
+    ],
+    [
+     "10.9",
+     "10",
+     "Fourth Amendment to Revolving Promissory Note Agreement with Ed Bailey dated as of October 9, 2023",
+     "Incorporated by Reference(3)"
+    ],
+    [
+     "21.1",
+     "21",
+     "Schedule of the Registrant\u2019s Subsidiaries",
+     "This Filing"
+    ],
+    [
+     "31.1",
+     "31",
+     "Section 302 Certification of Chief Executive and Chief Financial Officer",
+     "This Filing"
+    ],
+    [
+     "32.1",
+     "32",
+     "Section 1350 Certification of Chief Executive and Chief Financial Office",
+     "This Filing"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(b) The following documents are included as exhibits to this report.\n(a) Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Incorporated by reference to the Company\u2019s Registration Statement on Form 10-12G filed June 24, 2021.\n(2) Incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ending September 30, 2021, filed on December 29, 2021.\n(3) Incorporated by reference to the Company\u2019s Quarterly report on Form 10-Q for the quarter ending December 31, 2023, filed on February 9, 2024.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Outdoor Specialty Products, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: December 13, 2024",
+     "By",
+     "/s/ Kirk Blosch"
+    ],
+    [
+     "",
+     "",
+     "Kirk Blosch"
+    ],
+    [
+     "",
+     "",
+     "President, Secretary and Treasurer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Outdoor Specialty Products, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 691,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Incorporated by reference to the Company\u2019s Registration Statement on Form 10-12G filed June 24, 2021.\n(2) Incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the year ending September 30, 2021, filed on December 29, 2021.\n(3) Incorporated by reference to the Company\u2019s Quarterly report on Form 10-Q for the quarter ending December 31, 2023, filed on February 9, 2024.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: December 13, 2024",
+     "By",
+     "/s/ Kirk Blosch"
+    ],
+    [
+     "",
+     "",
+     "Kirk Blosch"
+    ],
+    [
+     "",
+     "",
+     "President, Secretary, Treasurer and Director"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Index to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6258)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6580)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of September 30, 2024 and 2023",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2024 and 2023",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Deficit for the Years Ended September 30, 2024 and 2023",
+     "F-8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2024 and 2023",
+     "F-9"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Index to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nBoard of Directors and Shareholders\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Outdoor Specialty Products, Inc. as of September 30, 2024, and the related statements of operations, stockholders\u2019 deficit, and cash flows for the year then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of Outdoor Specialty Products, Inc. as of September 30, 2024, and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the entity will continue as a going concern. As discussed in Note 7 to the financial statements, the entity does not generate sufficient revenue to generate net income, has a negative working capital, and has a limited operating history. These factors raise substantial doubt about its ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 7. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 710,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 735,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2024",
+     "",
+     "",
+     "September 30, 2023",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "560",
+     "",
+     "$",
+     "3,162",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "5,938",
+     "",
+     "",
+     "458",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "3,646",
+     "",
+     "",
+     "3,661",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "10,144",
+     "",
+     "",
+     "7,281",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "4,125",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Patents, net",
+     "",
+     "2,192",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "16,461",
+     "",
+     "$",
+     "7,281",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,310",
+     ""
+    ],
+    [
+     "Accrued interest \u2013 related party",
+     "",
+     "9,459",
+     "",
+     "",
+     "5,012",
+     ""
+    ],
+    [
+     "Line of credit \u2013 related party",
+     "",
+     "148,968",
+     "",
+     "",
+     "98,360",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "158,427",
+     "",
+     "",
+     "105,682",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value, 10,000,000 shares authorized, none issued and outstanding as of September 30, 2024 and 2023",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 190,000,000 shares authorized, 5,284,318 shares issued and outstanding as of September 30, 2024 and 2023",
+     "",
+     "5,285",
+     "",
+     "",
+     "5,285",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "99,232",
+     "",
+     "",
+     "99,232",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(246,483)",
+     "",
+     "",
+     "(202,918)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(141,966)",
+     "",
+     "",
+     "(98,401)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "16,461",
+     "",
+     "$",
+     "7,281",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Year Ended\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "$",
+     "163",
+     "",
+     "",
+     "$",
+     "546",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "",
+     "(976)",
+     ""
+    ],
+    [
+     "Gross Profit (Loss)",
+     "",
+     "",
+     "148",
+     "",
+     "",
+     "",
+     "(430)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "39,266",
+     "",
+     "",
+     "",
+     "43,118",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "",
+     "39,266",
+     "",
+     "",
+     "",
+     "43,118",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "",
+     "(39,118)",
+     "",
+     "",
+     "",
+     "(43,548)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense \u2013 related party",
+     "",
+     "",
+     "4,447",
+     "",
+     "",
+     "",
+     "2,924",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "",
+     "4,447",
+     "",
+     "",
+     "",
+     "2,924",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "",
+     "(43,565)",
+     "",
+     "",
+     "",
+     "(46,472)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "$",
+     "(43,565)",
+     "",
+     "",
+     "$",
+     "(46,472)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share of common stock - basic and diluted",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "",
+     "5,284,318",
+     "",
+     "",
+     "",
+     "5,284,318",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended\n\n\n\nSeptember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Accumulated deficit                                                                                                                              (246,483)           (202,918)\n------------------  ------------------\nTotal Stockholders\u2019 Deficit                                                                                                                      (141,966)            (98,401)\n------------------  ------------------\nTotal Liabilities and Stockholders\u2019 Deficit                                                                                                       $ 16,461             $ 7,281\n==================  ==================\n</TABLE>\nThe accompanying notes are an integral part of these audited financial statements.\nStatements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these audited financial statements.\nStatements of Changes in Stockholders\u2019 Deficit\nYears Ended September 30, 2024 and 2023",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 905,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stock- holders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022",
+     "",
+     "5,284,318",
+     "$",
+     "5,285",
+     "$",
+     "99,232",
+     "$",
+     "(156,446)",
+     "",
+     "$",
+     "(51,929)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(46,472)",
+     "",
+     "",
+     "(46,472)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2023",
+     "",
+     "5,284,318",
+     "$",
+     "5,285",
+     "$",
+     "99,232",
+     "$",
+     "(202,918)",
+     "",
+     "$",
+     "(98,401)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(43,565)",
+     "",
+     "",
+     "(43,565)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2024",
+     "",
+     "5,284,318",
+     "$",
+     "5,285",
+     "$",
+     "99,232",
+     "$",
+     "(246,483)",
+     "",
+     "$",
+     "(141,966)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these audited financial statements.\nStatements of Changes in Stockholders\u2019 Deficit\nYears Ended September 30, 2024 and 2023",
+   "prose_after": "The accompanying notes are an integral part of these audited financial statements.\nOUTDOOR SPECIALTY PRODUCTS, INC. Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 905,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(43,565)",
+     "",
+     "$",
+     "(46,472)",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Loss to Net Cash Used by Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "216",
+     "",
+     "",
+     "408",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "-",
+     "",
+     "",
+     "4,183",
+     ""
+    ],
+    [
+     "Changes in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in prepaid expense",
+     "",
+     "(5,480)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Decrease in inventory",
+     "",
+     "15",
+     "",
+     "",
+     "977",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "(2,310)",
+     "",
+     "",
+     "2,310",
+     ""
+    ],
+    [
+     "Increase in accrued interest \u2013 related party",
+     "",
+     "4,447",
+     "",
+     "",
+     "2,924",
+     ""
+    ],
+    [
+     "Net Cash Used by Operating Activities",
+     "",
+     "(46,677)",
+     "",
+     "",
+     "(35,670)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property, plant and equipment",
+     "",
+     "(4,278)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of patent",
+     "",
+     "(2,255)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash Used by Investing Activities",
+     "",
+     "(6,533)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from line of credit - related party",
+     "",
+     "50,608",
+     "",
+     "",
+     "37,591",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "50,608",
+     "",
+     "",
+     "37,591",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "(2,602)",
+     "",
+     "",
+     "1,921",
+     ""
+    ],
+    [
+     "Cash at Beginning of Period",
+     "",
+     "3,162",
+     "",
+     "",
+     "1,241",
+     ""
+    ],
+    [
+     "Cash at End of Period",
+     "$",
+     "560",
+     "",
+     "$",
+     "3,162",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid For:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended\n\n\n\nSeptember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these audited financial statements.\nOUTDOOR SPECIALTY PRODUCTS, INC. Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these audited financial statements.\nNotes to Financial Statements\nYears Ended September 30, 2024 and 2023\nNOTE 1 \u2013 Organization and Summary of Significant Accounting Policies\nOrganization \u2013 Outdoor Specialty Products, Inc. (the \u201cCompany\u201d) was incorporated in the State of Utah on January 31, 2014 and changed its domicile to the state of Nevada on February 24, 2021. The Company is in the business of developing and selling outdoor products. The Company has elected a September 30 fiscal year end.\nAccounting Estimates \u2013 The preparation of financial statements in conformity with generally accepted accounting principles in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Approximate net operating loss carryforward",
+     "$",
+     "45,820",
+     "$",
+     "48,559"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(45,820)",
+     "",
+     "(48,559)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Income Tax"
+    }
+   },
+   "prose_before": "Basic and Diluted Loss Per Share - Basic loss per share is computed by dividing net loss attributable to common shares by the weighted average number of common shares outstanding during the period. Diluted loss per share is computed by dividing net income attributable to common shares for the period by the weighted average number of common and potential common shares outstanding during the period. Potential common shares are included in the calculation of diluted net income per share, when they are present in the financial statements, to the extent such shares are dilutive. During the years ended September 30, 2024 and 2023, the Company did not have any stock options, warrants, or other convertible or potentially-dilutive instruments issued and outstanding.\nNOTE 2 \u2013 Income Tax\nDeferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss, and tax credit carry-forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax basis. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. The Company\u2019s corporate tax rate is 21%.\nDeferred tax asset and valuation allowance are as follows at September 30:",
+   "prose_after": "The components of income tax expense (benefit) are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1008,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current federal tax (21%)",
+     "$",
+     "(9,149)",
+     "$",
+     "(9,759)"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "9,149",
+     "",
+     "9,759"
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1037,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Income Tax"
+    }
+   },
+   "prose_before": "The components of income tax expense (benefit) are as follows:",
+   "prose_after": "Notes to Financial Statements\nYears Ended September 30, 2024 and 2023\nNOTE 2 \u2013 Income Tax (continued)\nAt September 30, 2024, the Company had net operating loss carryforwards of approximately $246,000 that may be offset against future taxable income as long as the \u201ccontinuity of ownership\u201d test is met. No tax benefit has been reported in the September 30, 2024 financial statements since the potential tax benefit is offset by a valuation allowance of the same amount. The years 2021-2024 are open to examination by the IRS. No reserves for uncertain tax positions have been recorded.\nThe Company adopted changes issued by FASB which prescribed a recognition threshold and measurement attribute for financial statement recognition and measurement of an uncertain tax position taken or expected to be taken in a tax return. Under the guidance, an uncertain income tax position must be recognized at the largest amount that is more-likely-than-not to be sustained upon audit by the relevant taxing authority.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1008,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw Materials",
+     "$",
+     "2,596",
+     "$",
+     "2,596"
+    ],
+    [
+     "Finished Goods",
+     "",
+     "1,050",
+     "",
+     "1,065"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Inventory",
+     "$",
+     "3,646",
+     "$",
+     "3,661"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Inventory"
+    }
+   },
+   "prose_before": "At September 30, 2024, the Company had net operating loss carryforwards of approximately $246,000 that may be offset against future taxable income as long as the \u201ccontinuity of ownership\u201d test is met. No tax benefit has been reported in the September 30, 2024 financial statements since the potential tax benefit is offset by a valuation allowance of the same amount. The years 2021-2024 are open to examination by the IRS. No reserves for uncertain tax positions have been recorded.\nThe Company adopted changes issued by FASB which prescribed a recognition threshold and measurement attribute for financial statement recognition and measurement of an uncertain tax position taken or expected to be taken in a tax return. Under the guidance, an uncertain income tax position must be recognized at the largest amount that is more-likely-than-not to be sustained upon audit by the relevant taxing authority.\nNOTE 3 \u2013 Inventory\nThe Company\u2019s inventory is broken out by finished goods and raw materials. The following is a summary of inventory as of September 30:",
+   "prose_after": "NOTE 4 \u2013 Long Lived Assets\nProperty, Plant, and Equipment\nThe following is a summary of property, plant, and equipment less accumulated depreciation as of September 30:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Molds",
+     "$",
+     "9,578",
+     "$",
+     "5,300"
+    ],
+    [
+     "Total property, plant and equipment",
+     "",
+     "9,578",
+     "",
+     "5,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(5,453)",
+     "",
+     "(5,300)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant, equipment, net",
+     "$",
+     "4,125",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1081,
+    "end_line": 1095
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Long Lived Assets"
+    }
+   },
+   "prose_before": "NOTE 4 \u2013 Long Lived Assets\nProperty, Plant, and Equipment\nThe following is a summary of property, plant, and equipment less accumulated depreciation as of September 30:",
+   "prose_after": "Depreciation expense for the year ended September 30, 2024 and 2023 was $153 and $0, respectively.\nNotes to Financial Statements\nYears Ended September 30, 2024 and 2023\nNOTE 4 \u2013 Long Lived Assets (continued)\nPatents\nThe following is a summary of patents less accumulated amortization as of September 30:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents",
+     "$",
+     "2,255",
+     "$",
+     "6,943"
+    ],
+    [
+     "Total patents",
+     "",
+     "2,255",
+     "",
+     "6,943"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(63)",
+     "",
+     "(2,760)"
+    ],
+    [
+     "Less: impairment expense",
+     "",
+     "-",
+     "",
+     "(4,183)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent, net",
+     "$",
+     "2,192",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Long Lived Assets"
+    }
+   },
+   "prose_before": "Depreciation expense for the year ended September 30, 2024 and 2023 was $153 and $0, respectively.\nNotes to Financial Statements\nYears Ended September 30, 2024 and 2023\nNOTE 4 \u2013 Long Lived Assets (continued)\nPatents\nThe following is a summary of patents less accumulated amortization as of September 30:",
+   "prose_after": "Amortization expense for the year ended September 30, 2024 and 2023 was $63 and $408, respectively.\nFuture amortization of patents are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "intangibles",
+    "aligned_family": "intangibles",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending September 30,",
+     "",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "150"
+    ],
+    [
+     "2026",
+     "",
+     "150"
+    ],
+    [
+     "2027",
+     "",
+     "150"
+    ],
+    [
+     "2028",
+     "",
+     "150"
+    ],
+    [
+     "2029",
+     "",
+     "150"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,442"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,192"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1129,
+    "end_line": 1143
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Long Lived Assets"
+    }
+   },
+   "prose_before": "Amortization expense for the year ended September 30, 2024 and 2023 was $63 and $408, respectively.\nFuture amortization of patents are as follows:",
+   "prose_after": "During the year ended September 30, 2024, the Company incurred costs of $2,255 related to the patent application for its new slow-sinking sinker product. The Company reviewed the patent for impairment and determined that no impairment loss has been incurred for the year ended September 30, 2024. The cost is being amortized over 15 years, which is the estimated legal life of the patent, and as of September 30, 2024 the weighted-average amortization period for the patent was approximately 14.6 years.\nDuring the year ended September 30, 2023, the Company wrote off the remaining net balance on the patent of $4,183 after it was determined an impairment existed in accordance with ASC 360 which requires that a company recognize an impairment loss if, and only if, the carrying amount of a long-lived asset (asset group) is not recoverable from the sum of the undiscounted cash flows expected to result from the use and eventual disposal of the asset (the \u201cRecoverable Amount\u201d).\nNotes to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss (numerator)",
+     "$",
+     "(43,565)",
+     "$",
+     "(46,472)"
+    ],
+    [
+     "Weighted average shares (denominator)",
+     "",
+     "5,284,318",
+     "",
+     "5,284,318"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 basic and diluted",
+     "$",
+     "(0.01)",
+     "$",
+     "(0.01)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1163,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Basic and Diluted Loss Per Share"
+    }
+   },
+   "prose_before": "During the year ending September 30, 2024, the Company amended the revolving promissory note agreement with its president and principal stockholder to extend the maturity date to December 31, 2024 and increase the maximum principal indebtedness to $127,500. The revolving promissory note bears interest at the rate of 3.5%. The Company received proceeds under the line of credit of $43,100 during the year ended September 30, 2024, resulting in balances of $126,621 and $83,521, with accrued interest of $8,237 and $4,444, at September 30, 2024 and 2023, respectively. Interest expense on the line of credit for the year ended September 30, 2024 was $3,793.\nAlso, during the year ended September 30, 2024, the Company amended the revolving promissory note agreement with another principal stockholder to extend the maturity date to December 31, 2024 and increase the maximum principal indebtedness to $22,500. The note bears interest at the rate of 3.5% per annum. The Company received proceeds under the line of credit of $7,508 during the year, resulting in balances of $22,347 and $14,839, with accrued interest of $1,222 and $568, at September 30, 2024 and 2023, respectively. Interest expense on the line of credit for the year ended September 30, 2024 was $654.\nNOTE 6 \u2013 Basic and Diluted Loss Per Share\nThe following table sets forth the computation of basic and diluted loss per share for the years ended September 30:",
+   "prose_after": "NOTE 7 \u2013 Going Concern\nThe accompanying financial statements have been prepared on a going concern basis, which contemplates the realization of assets and the satisfaction of liabilities in the normal course of business. As shown in the accompanying financial statements, the Company did not generate sufficient revenue to generate net income, has a negative working capital, and has a limited operating history. These factors, among others, indicate that there is substantial doubt that the Company will be able to continue as a going concern for a reasonable period of time.\nThe financial statements do not include any adjustments relating to the recoverability and classification of assets and liabilities that might be necessary should the Company be unable to continue as a going concern. The Company\u2019s continuation as a going concern is dependent upon its ability to generate sufficient cash flow to meet its obligations on a timely basis and ultimately to attain profitability. The Company intends to seek additional funding through additional stockholder loans and debt or equity offerings to fund its business plan. There is no assurance that the Company will be successful in raising additional funds.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

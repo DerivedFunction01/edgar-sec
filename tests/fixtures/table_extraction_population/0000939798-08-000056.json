@@ -1,0 +1,3489 @@
+{
+ "accession": "0000939798-08-000056",
+ "cik": "0001019216",
+ "form": "10-K/A",
+ "filing_date": "2008-12-22",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ifpgtenkajuneeight.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NEVADA",
+     "33-0903004"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K/A\n(Second Amendment to Form 10-K for the fiscal year ended June 30, 2008)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2008\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________ to ____________\nCommission File No. 000-33251\nINTERNATIONAL FOOD PRODUCTS GROUP, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "620 Newport Center Drive Suite 1100, Newport Beach, CA",
+     "92660"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number (949) 903-1792\nSecurities registered pursuant to Section 12(b) of the Act: none\nSecurities registered pursuant to Section 12 (g) of the Act: 600,000,000 common shares par value $0.001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant (l) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter",
+     "High",
+     "L[ ]w"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jul - Sep 2007",
+     ".013",
+     ".0057"
+    ],
+    [
+     "Oct - Dec 2007",
+     ".01",
+     ".002"
+    ],
+    [
+     "Jan - Mar 2008",
+     ".0065",
+     ".003"
+    ],
+    [
+     "Apr - Jun 2008",
+     ".04",
+     ".0031"
+    ],
+    [
+     "Jul - Sep 2006",
+     "0.05",
+     "0.02"
+    ],
+    [
+     "Oct - Dec 2006",
+     "0.03",
+     "0.01"
+    ],
+    [
+     "Jan -Mar 2007",
+     "0.03",
+     "0.01"
+    ],
+    [
+     "Apr - Jun 2007",
+     "0.02",
+     "0.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 103,
+    "end_line": 116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity and Related Stockholders Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Third party contractors produce and ship the products of IFPG. Accordingly, the only facilities utilized by IFPG are 500 square feet of office space located 620 Newport Center Drive Suite 1100, Newport Beach, California. IFPG occupies the space pursuant to a month to month lease. IFPG believes that if it should ever lose or not be able to renew the lease, it would not be difficult to obtain a comparable and satisfactory office location.\nItem 3. Legal Proceedings\nThe Company has stipulated to a judgment against the Company in favor of Flair Packaging in the amount of $130,000. The Company and Flair Packaging have not reached a satisfactory agreement on the payment terms.\nItem 4. Submission of Matters to a Vote of Security Holders\nThere were no matters submitted to a vote of the share holders during the fiscal year ended June 30, 2008\nPart II\nItem 5. Market for Registrant\u2019s Common Equity and Related Stockholders Matters and Issuer Purchases of Equity Securities\nMARKET INFORMATION\nThe common shares of the Company are listed on the OTC Bulletin Board under the symbol IFDGE.OB. Following is the high and low sales prices for each of the two years in the period ending June 30, 2008. The quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": ".\nAt October 1, 2008 there were approximately 250 record holders of IFPG's Common Stock.\nIFPG has not previously declared or paid any dividends on its common stock and does not anticipate declaring any dividends in the foreseeable future.\nThere are no restrictions in our articles of incorporation or bylaws that restrict us from declaring dividends. The Nevada Revised Statutes, however, do prohibit us from declaring dividends where, after giving effect to the distribution of the dividend:\n(1) We would not be able to pay our debts as they become due in the usual course of business; or\n(2) Our total assets would be less that the sum of our total liabilities.\nRecent Sales of Unregistered Securities\nDuring the year ended June 30, 2008, the Company issued restricted shares of common stock to nineteen individuals for various types of consulting services, satisfaction of debt and cash consideration. The shares were recorded at their fair value as of the date of issuance which ranged from $0.033 to $0.05. The transactions were transactions exempt from the registration requirements of section 5 of the Securities Act of 1933 pursuant to section 4(2) of the Act.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements of International Food Products Group, Inc.:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet, June 30, 2008 & 2007",
+     "9"
+    ],
+    [
+     "Statements of Operations For Each of the Two Years in the Period Ended June 30, 2008",
+     "10"
+    ],
+    [
+     "Statements of Shareholders' Deficit For Each of the Two Years in the Period Ended June 30, 2008",
+     "11"
+    ],
+    [
+     "Statements of Cash Flows For Each of the Two Years in the Period Ended June 30, 2008",
+     "12"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Many of these factors are beyond the Company\u2019s ability to control and predict. Investors are cautioned not to place undue reliance on forward-looking statements. The Company disclaims any intent or obligation to update its forward-looking statements, whether as a result of receiving new information, the occurrence of future events, or otherwise.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk and Supplementary Data.\nNot Required.\nItem 8. Financial Statements\nFinancial Statements\nJune 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\nIndex to the Financial Statements\nJune 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTHE BOARD OF INTERNATIONAL FOOD PRODUCTS GROUP, INC.\nWe have audited the accompanying consolidated balance sheet of International Food Products Group as of June 30, 2008, and 2007 and the related statements of operations, stockholders equity and cash flows for the years then ended. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform our audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 234,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 254,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,752",
+     "",
+     "$",
+     "1,870",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "1,386,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and deposits",
+     "",
+     "40,833",
+     "",
+     "",
+     "594,976",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,428,585",
+     "",
+     "",
+     "596,846",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,428,585",
+     "",
+     "$",
+     "596,846",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade accounts payable",
+     "$",
+     "1,572,382",
+     "",
+     "$",
+     "304,358",
+     ""
+    ],
+    [
+     "Accrued compensation costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "111,152",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable \u2013 related parties",
+     "",
+     "159,448",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Note payable \u2013 third party",
+     "",
+     "80,500",
+     "",
+     "",
+     "67,648",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "1,923,482",
+     "",
+     "",
+     "372,006",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock $.001 par value, 16,000,000 authorized and issued @.001 par value",
+     "",
+     "16,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock: $.001 par value; 500,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "481,968,501 & 414,363,501, issued",
+     "",
+     "481,969",
+     "",
+     "",
+     "414,364",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "10,492,545",
+     "",
+     "",
+     "9,966,550",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(11,485,411)",
+     "",
+     "",
+     "(10,156,074)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity (deficit)",
+     "",
+     "(494,897)",
+     "",
+     "",
+     "224,840",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 deficit",
+     "$",
+     "1,428,585",
+     "",
+     "$",
+     "596,846",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 284,
+    "end_line": 329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of International Food Products Group, Inc. as at June 30, 2008 and 2007 and the results of its\u2019 operations and its\u2019 stockholders equity and cash flows for the periods then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. The Company has suffered recurring losses from operations, has difficulties generating sufficient cash flow to meet its obligations and sustain its operations, and has a working capital deficit, that raise substantial doubt about its ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Gruber & Company, LLC\nGruber & Company, LLC\nSaint Louis, Missouri\nOctober 10, 2008\nBalance Sheet\nJune 30,",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Gross sales",
+     "$",
+     "1,386,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Less: returns, discounts and allowances",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "1,386,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "1,366,095",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "19,905",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "",
+     "297,110",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,041,674",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,338,784",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,318,879)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(10,458)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "",
+     "",
+     "",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "(10,458)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(1,329,337)",
+     "",
+     "",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,329,337)",
+     "",
+     "$",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Shares used in per-share calculation, basic and diluted",
+     "",
+     "453,537,501",
+     "",
+     "",
+     "348,094,751",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 339,
+    "end_line": 375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Shareholders' Deficit\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 377,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred",
+     "Common",
+     "",
+     "Common",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock",
+     "Shares",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2006",
+     "",
+     "",
+     "270,828,501",
+     "$",
+     "270,829",
+     "$",
+     "7,810,244",
+     "$",
+     "(8,971,415)",
+     "",
+     "$",
+     "(890,342)",
+     ""
+    ],
+    [
+     "Shares issued for cash",
+     "",
+     "",
+     "3,959,000",
+     "",
+     "3,959",
+     "",
+     "46,106",
+     "",
+     "-",
+     "",
+     "",
+     "50,065",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "",
+     "139,576,000",
+     "",
+     "139,576",
+     "",
+     "2,110,200",
+     "",
+     "-",
+     "",
+     "",
+     "2,249,776",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,184,659)",
+     "",
+     "",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2007",
+     "",
+     "",
+     "414 363 501",
+     "",
+     "414,364",
+     "",
+     "9,966,550",
+     "",
+     "(10,156,074)",
+     "",
+     "",
+     "224,840",
+     ""
+    ],
+    [
+     "Shares issued for cash",
+     "",
+     "",
+     "8,405,000",
+     "",
+     "8.405",
+     "",
+     "55,595",
+     "",
+     "-",
+     "",
+     "",
+     "64,000",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "",
+     "59,200,000",
+     "",
+     "59,200",
+     "",
+     "406,400",
+     "",
+     "",
+     "",
+     "",
+     "465,600",
+     ""
+    ],
+    [
+     "Preferred Stock issued",
+     "16,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "64,000",
+     "",
+     "",
+     "",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,329,337)",
+     "",
+     "",
+     "(1,329,337)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2008",
+     "16,000",
+     "",
+     "481,968,501",
+     "$",
+     "481,969",
+     "$",
+     "10,492,545",
+     "$",
+     "(11,485,411)",
+     "",
+     "$",
+     "(494,897)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 385,
+    "end_line": 406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Shareholders' Deficit\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 379,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,329,337)",
+     "",
+     "$",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest accrued on notes payable - related parties paid with shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services and debt",
+     "",
+     "545,600",
+     "",
+     "",
+     "2,249,776",
+     ""
+    ],
+    [
+     "Decrease (increase) in assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "(1,386,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "-",
+     "",
+     "",
+     "86,906",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "554,143",
+     "",
+     "",
+     "(593,427)",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase (decrease) in liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,268,024",
+     "",
+     "",
+     "(138,643)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued compensation costs",
+     "",
+     "-",
+     "",
+     "",
+     "(346,390)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "111,152",
+     "",
+     "",
+     "(84,948)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(236,418)",
+     ")",
+     "",
+     "(11,385)",
+     ""
+    ],
+    [
+     "Cash flows provided by (used in) investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in restricted cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 416,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by (used in) financing activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Related Party",
+     "$",
+     "159,448",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Payment on notes payable",
+     "",
+     "-",
+     "",
+     "(39,128)",
+     ""
+    ],
+    [
+     "Proceeds from notes payable",
+     "",
+     "12,852",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of shares of common stock",
+     "",
+     "64,000",
+     "",
+     "50,065",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "236,300",
+     "",
+     "10,937",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "(118)",
+     "",
+     "(448)",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "",
+     "1,870",
+     "",
+     "2,318",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "1,752",
+     "$",
+     "1,870",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Interest paid - third parties",
+     "$",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Schedule of Non-cash Investing and Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Issuance of shares in satisfaction of notes payable including accrued interest:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Notes payable - third parties",
+     "$",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 457,
+    "end_line": 494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Two Years in the Period Ended June 30, 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n1. Summary of Significant Accounting Policies\nRevenue Recognition\nProduct revenues are recognized upon shipment to the customers. Provisions for discounts and rebates to customers, estimated returns and allowances, and other adjustments are provided for in the same period the related revenues are recorded.\nPrinciples of Consolidation\nThe financial statements include the accounts of the Company and its wholly owned subsidiaries, Golden Choice Foods, Restaurant Holdings Group and Newport Digital Technology, Inc. All intercompany transactions have been eliminated in consolidation.\nCash\nThe Company has no requirement for compensating balances.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 496,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Equipment consisted of the following as of June 30, 2008:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "$",
+     "35,090",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "2,424",
+     ""
+    ],
+    [
+     "",
+     "",
+     "37,514",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(37,514)",
+     ""
+    ],
+    [
+     "Total equipment",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equipment consisted of the following as of June 30, 2008:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 613,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Equipment"
+    }
+   },
+   "prose_before": "In July 2006, the FASB issued Interpretation No. 48, Accounting for Uncertainty in Income Taxes \u2014 an interpretation of FASB Statement No. 109 (FIN 48). This interpretation clarifies the application of SFAS No. 109, Accounting for Income Taxes , by defining a criterion that an individual tax position must meet for any part of the benefit of that position to be recognized in an enterprise\u2019s financial statements and also provides guidance on measurement, derecognition, classification, interest and penalties, accounting in interim periods, disclosure and transition. FIN 48 is effective for fiscal years beginning after December 15, 2006, but earlier adoption is permitted. The Company is in the process of evaluating the impact of the application of the Interpretation to its financial statements.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n1. Summary of Significant Accounting Policies, Continued\nNew Accounting Pronouncements, Continued\nallocation of fixed production overheads to the costs of conversion be based on the normal capacity of the production facilities. The Company does not expect the adoption of this statement to have a material impact on its financial position, results of operations or cash flows.\n2. Equipment",
+   "prose_after": "Depreciation expense for the year ended June 30, 2007 was $0. Equipment was fully depreciated at June 30, 2006.\n3. Accounts Payable\nIncluded in Accounts Payable is a payable to a vendor of the Company who supplied packaging for the Company's products during the period from fiscal year 2000 through fiscal year 2002 and obtained a judgment in the California Superior Court against the Company for the amounts due for the products that were provided and court-awarded attorney\u2019s fees. This judgment awarded by the court to the vendor has been recorded, and a lien has been filed in the amount of $137,767.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n4. Notes Payable\n:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Note payable to related party who is an officer, director and major shareholder; the note is uncollateralized with interest. @10% due on demand, including interest",
+     "$",
+     "159,448"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable to a third party, uncollateralized with interest @10% due on demand, including interest",
+     "",
+     "80,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "Depreciation expense for the year ended June 30, 2007 was $0. Equipment was fully depreciated at June 30, 2006.\n3. Accounts Payable\nIncluded in Accounts Payable is a payable to a vendor of the Company who supplied packaging for the Company's products during the period from fiscal year 2000 through fiscal year 2002 and obtained a judgment in the California Superior Court against the Company for the amounts due for the products that were provided and court-awarded attorney\u2019s fees. This judgment awarded by the court to the vendor has been recorded, and a lien has been filed in the amount of $137,767.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n4. Notes Payable\n:",
+   "prose_after": "5. Deferred Income Taxes\nThe components of the provision for income taxes are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Current tax expense:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "State",
+     "$",
+     "-",
+     "$",
+     "1,175"
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "1,175"
+    ],
+    [
+     "Deferred tax expense:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "State",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "-",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total provision",
+     "$",
+     "-",
+     "$",
+     "1,175"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 670
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "5. Deferred Income Taxes\nThe components of the provision for income taxes are as follows:",
+   "prose_after": "As of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n5. Deferred Income Taxes, Continued\nSignificant components of the Company's deferred income tax assets and liabilities at June 30, 2008 and 2007 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "3,301,684",
+     "",
+     "$",
+     "2,063,191",
+     ""
+    ],
+    [
+     "Allowance and reserves",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred income tax asset",
+     "",
+     "3,301,684",
+     "",
+     "",
+     "2,063,191",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(3,301,684)",
+     "",
+     "",
+     "(2,063,191)",
+     ""
+    ],
+    [
+     "Net deferred income tax asset",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "As of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n5. Deferred Income Taxes, Continued\nSignificant components of the Company's deferred income tax assets and liabilities at June 30, 2008 and 2007 are as follows:",
+   "prose_after": "The Company, based upon its history of losses and management's assessment of when operations are anticipated to generate taxable income, has concluded that it is more likely than not that none of the net deferred income tax assets will be realized through future taxable earnings and has established a valuation allowance for them.\nReconciliation of the effective tax rate to the U.S. statutory rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit at U.S. statutory rate",
+     "",
+     "(34.0)",
+     "%",
+     "",
+     "(34.0.)",
+     "%"
+    ],
+    [
+     "State tax provision",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "29.9",
+     "",
+     "",
+     "24.9",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "4.0",
+     "",
+     "",
+     "12.2",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     ".1",
+     "%",
+     "",
+     "1.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "The Company, based upon its history of losses and management's assessment of when operations are anticipated to generate taxable income, has concluded that it is more likely than not that none of the net deferred income tax assets will be realized through future taxable earnings and has established a valuation allowance for them.\nReconciliation of the effective tax rate to the U.S. statutory rate is as follows:",
+   "prose_after": "The Company also has federal and state net operating loss carryforwards of approximately 11,000,000. The federal net operating loss carryforwards will begin to expire in the years 2018 ..\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n6. Commitments\nThe Company rents its corporate office on a month to month basis. .\n7. Going Concern -\nThe Company has incurred net losses for the year of $1,329,227. Managements plans include an acquisition of a food company which it believes will lead to profits, significant revenue and significant funding. No assurances can be given that the Company will be able to raise the capital required to implement its business plan. In addition even if the Company is able to achieve distribution of its products, there is no assurance that there will be sufficient sell-through of those products to warrant reorders, that reliable sources of products will be retained or that the company will be able to sustain levels of sales at prices that generate sufficient gross profit to cover expenses. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include any adjustments that might be necessary if the company is unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Balance, June 30, 2005",
+     "",
+     "16,650,000",
+     "$",
+     "0.133"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canceled",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance, June 30, 2006",
+     "",
+     "16,650,000",
+     "",
+     "0.133"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Canceled",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Balance, June 30, 2007",
+     "",
+     "16,650,000",
+     "$",
+     "0.133"
+    ],
+    [
+     "Exercisable at June 30, 2006",
+     "",
+     "16,650,000",
+     "$",
+     "0.133"
+    ],
+    [
+     "Exercisable at June 30, 2007",
+     "",
+     "16,650,000",
+     "$",
+     "0.133"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "The Company has incurred net losses for the year of $1,329,227. Managements plans include an acquisition of a food company which it believes will lead to profits, significant revenue and significant funding. No assurances can be given that the Company will be able to raise the capital required to implement its business plan. In addition even if the Company is able to achieve distribution of its products, there is no assurance that there will be sufficient sell-through of those products to warrant reorders, that reliable sources of products will be retained or that the company will be able to sustain levels of sales at prices that generate sufficient gross profit to cover expenses. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include any adjustments that might be necessary if the company is unable to continue as a going concern.\n8. Share-Based Compensation\nIn prior years, the Company granted options to its officers and certain consultants. No options were granted during either of the two years in the period ended June 30, 2008. The Company does not have a formal plan for granting options.\nThe following table summarizes information about stock options granted and outstanding at June 30, 2008. There were no changes during the years then ended June 30, 2008 and 20067 All options granted are fully vested at June 30, 2007 and are exercisable, upon proper notice, in whole or in part at any time. The options granted have contractual lives ranging from ten to sixteen years.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n8. Share-Based Compensation, Continued",
+   "prose_after": "Summary information about the Company's options outstanding all of which are exercisable at June 30, 2008:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Options Outstanding",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Weighted",
+     "",
+     ""
+    ],
+    [
+     "Average",
+     "",
+     "Average",
+     "",
+     ""
+    ],
+    [
+     "Option",
+     "",
+     "Remaining",
+     "",
+     "Average"
+    ],
+    [
+     "Exercise",
+     "Number",
+     "Contractual",
+     "",
+     "Exercise"
+    ],
+    [
+     "Price",
+     "Outstanding",
+     "Life",
+     "",
+     "Price"
+    ],
+    [
+     "$0.083",
+     "11,250,000",
+     "3.5",
+     "$",
+     "0.083"
+    ],
+    [
+     "$0.250",
+     "5,400,000",
+     "6.2",
+     "$",
+     "0.250"
+    ],
+    [
+     "",
+     "16,650,000",
+     "4.4",
+     "$",
+     "0.133"
+    ]
+   ],
+   "caption_stack": [
+    "Stock Options Outstanding",
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "Summary information about the Company's options outstanding all of which are exercisable at June 30, 2008:",
+   "prose_after": "The Company issues shares of its common stock to non employees in payment for services provided, and issued shares to employees in satisfaction of accrued compensation. The Company records the fair value of the shares issued to measure the cost of the transactions with both non employees and employees. The Company does not have a formal share based compensation plan.\nThe fair value of unrestricted shares is determined by the quoted market price at the measurement date of each issuance. The fair value of restricted shares is estimated at the measurement date of each issuance using the Black-Scholes Option Model that uses the assumptions noted in the following table. Expected volatilities are based on historical\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n8. Share-Based Compensation, Continued\nvolatility of the Company\u2019s common stock. The risk free rate is based on the U.S. Treasury yield curve in effect at the measurement date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Volatility",
+     "175% to 736%",
+     "",
+     "175% to 736%",
+     ""
+    ],
+    [
+     "Expected dividends",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Risk-free rate",
+     "2.18% to 3.66%",
+     "",
+     "2.18% to 3.66%",
+     ""
+    ],
+    [
+     "Expected life of the options",
+     "1.0 to 2.0 years",
+     "",
+     "1.0 to 2.0 years",
+     ""
+    ],
+    [
+     "A summary of share activity follows.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Shares issued to non employees for services:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of shares issued",
+     "",
+     "-",
+     "",
+     "52,018,996"
+    ],
+    [
+     "Estimated fair value",
+     "$",
+     "-",
+     "$",
+     "626,313"
+    ],
+    [
+     "Shares issued to employees in satisfaction of accrued payroll:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of shares issued",
+     "",
+     "-",
+     "",
+     "31,762,839"
+    ],
+    [
+     "Estimated fair value",
+     "$",
+     "-",
+     "$",
+     "345,879"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "The Company issues shares of its common stock to non employees in payment for services provided, and issued shares to employees in satisfaction of accrued compensation. The Company records the fair value of the shares issued to measure the cost of the transactions with both non employees and employees. The Company does not have a formal share based compensation plan.\nThe fair value of unrestricted shares is determined by the quoted market price at the measurement date of each issuance. The fair value of restricted shares is estimated at the measurement date of each issuance using the Black-Scholes Option Model that uses the assumptions noted in the following table. Expected volatilities are based on historical\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n8. Share-Based Compensation, Continued\nvolatility of the Company\u2019s common stock. The risk free rate is based on the U.S. Treasury yield curve in effect at the measurement date.",
+   "prose_after": "9. Loss Per Share\nBasic and diluted loss per common share have been computed by dividing the loss available to common shareholders by the weighted-average number of common shares..\nThe computations of basic and diluted loss per common share are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share, basic and diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss available to common shareholders",
+     "$",
+     "(1,329,337)",
+     "",
+     "$",
+     "(1,184,659)",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares - basic and diluted",
+     "",
+     "453,547,501",
+     "",
+     "",
+     "348,094,751",
+     ""
+    ],
+    [
+     "Loss per common share, basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "9. Loss Per Share\nBasic and diluted loss per common share have been computed by dividing the loss available to common shareholders by the weighted-average number of common shares..\nThe computations of basic and diluted loss per common share are as follows:",
+   "prose_after": "The effect of the potentially dilutive securities listed below was not included in the computation of diluted loss per share, because to do so would have been antidilutive for the two years presented.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n9. Loss Per Share, Continued\nCommon shares reserved for future issuance are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended June 30,",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "2007"
+    ],
+    [
+     "Shares of common stock issuable under:",
+     "",
+     ""
+    ],
+    [
+     "Employee stock options",
+     "15,150,000",
+     "15,150,000"
+    ],
+    [
+     "Nonemployee stock options",
+     "1,500,000",
+     "1,500,000"
+    ],
+    [
+     "Total shares of common stock issuable",
+     "16,650,000",
+     "16,650,000"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Loss Per Share"
+    }
+   },
+   "prose_before": "The effect of the potentially dilutive securities listed below was not included in the computation of diluted loss per share, because to do so would have been antidilutive for the two years presented.\nAs of June 30, 2008 and\nFor Each of the Two Years in the Period Ended June 30, 2008\n9. Loss Per Share, Continued\nCommon shares reserved for future issuance are as follows:",
+   "prose_after": "10. Discontinued Operations\nThe Company discontinued its 2007 operations as an importer of coffee and fine food products and hence has recognized a loss on these operations.\n11. Stock Transactions\nDuring the year ended June 30, 2008 the Company issued 67,605,000 shares of its common stock, 59,200,000 to consultants for services, and 8,405,000 for cash of $64,000 The shares were valued at their value at the date of issuance. The Company also issued 16,000,000 preferred shares to its President , a related party for accrued salary of $80,000.\n12. Limited Customers\nThe Company presently has one customer. A loss of this customer would have a material impact on the Company\u2019s ability to remain in business.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone\nItem 9A. Controls and Procedures.\nEvaluation of Disclosure Controls and Procedures",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 851,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u2212",
+     "Pertain to the maintenance of records that in reasonable detail accurately and fairly reflect the transactions and dispositions of the assets of the company;"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2212",
+     "Provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with accounting principles generally accepted in the United States of America and that receipts and expenditures of the company are being made only in accordance with authorizations of management and directors of the company; and"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\u2212",
+     "Provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use or disposition of the company\u2019s assets that could have a material effect on the financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 916
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9A",
+     "title": "Controls and Procedures."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Limited Customers"
+    }
+   },
+   "prose_before": "As of the end of the period covered by this report, we carried out an evaluation, under the supervision and with the participation of management, including our chief executive officer and principal financial officer, of the effectiveness of the design and operation of our disclosure controls and procedures. Based upon that evaluation, management concluded that our disclosure controls and procedures are effective as of June 30, 2008 to cause the information required to be disclosed by us in reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods prescribed by SEC, and that such information is accumulated and communicated to management, including our chief executive officer and principal financial officer, as appropriate, to allow timely decisions regarding required disclosure.\nEvaluation of and Report on Internal Control over Financial Reporting\nThe management of International Food Products Group. is responsible for establishing and maintaining adequate internal control over financial reporting. Internal control over financial reporting is defined in Rule 13a-15(f) or 15d-15(f) promulgated under the Securities Exchange Act of 1934 as a process designed by, or under the supervision of, the company\u2019s principal executive and principal financial officers and effected by the company\u2019s board of directors, management and other personnel, to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with accounting principles generally accepted in the United States of America and includes those policies and procedures that:",
+   "prose_after": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. All internal control systems, no matter how well designed, have inherent limitations. Therefore, even those systems determined to be effective can provide only reasonable assurance with respect to financial statement preparation and presentation. Because of the inherent limitations of internal control, there is a risk that material misstatements may not be prevented or detected on a timely basis by internal control over financial reporting. However, these inherent limitations are known features of the financial reporting process. Therefore, it is possible to design into the process safeguards to reduce, though not eliminate, this risk.",
+   "structured_location": {
+    "item": "ITEM 9A",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 953,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age Position (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Richard Damion",
+     "65"
+    ],
+    [
+     "Chairman, CEO, CFO, Secretary, Treasurer and Director since 1996",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Robert George",
+     "73"
+    ],
+    [
+     "Director since 2001",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 941,
+    "end_line": 951
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Limited Customers"
+    }
+   },
+   "prose_before": "Based on its assessment, management concluded that, as of june 30, 2008, the Company\u2019s internal control over financial reporting is effective based on those criteria.\nThis annual report does not include an attestation report of the Company\u2019s registered accounting firm regarding internal control over financial reporting. Management\u2019s report is not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission.\nChanges in Internal Control over Financial Reporting\nThere was no change in our internal controls over financial reporting identified in connection with the requisite evaluation that occurred during our last fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth the names, ages, and positions with IFPG for\neach of the directors and officers of IFPG.",
+   "prose_after": "(1) All executive officers are elected by the Board and hold office until the next Annual Meeting of shareholders and until their successors are elected and agree to serve.\nRichard Damion has been chairman of IFPG since it began operations in 1996. From 1992 through 1996 he was the president and CEO of Pacific Snax Corporation, a snack food company where he was in charge of general operations and product\ndevelopment.\nRobert George has been a director of the Company since August 2001. He was owner and operator of RGA, Inc., at one time the largest Health Food Brokerage company in America which he sold after 18 years. In 1999 he came out of retirement to become the Vice President of Sales and part owner of Dr Soy Nutrition, an Energy bar company that has Distribution in over 12,000 outlets in the U.S. including Wal-Mart, Sams Clubs and all U.S.Military Commissaries to name a few.\nNeither of our two directors is considered an independent director. The definition the Company uses to determine whether a director is independent is NASDAQ Rule 4200(a)(15). A copy of that rule is attached to this filing as Exhibit 99.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 887,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 953,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Number of late reports",
+     "Transactions not timely reported",
+     "Known failures to file a required form"
+    ],
+    [
+     "Richard Damion CEO",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Joseph R. Rodriguez, Jr., Former CFO",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Robert George, Director",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 967,
+    "end_line": 975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Limited Customers"
+    }
+   },
+   "prose_before": "Richard Damion has been chairman of IFPG since it began operations in 1996. From 1992 through 1996 he was the president and CEO of Pacific Snax Corporation, a snack food company where he was in charge of general operations and product\ndevelopment.\nRobert George has been a director of the Company since August 2001. He was owner and operator of RGA, Inc., at one time the largest Health Food Brokerage company in America which he sold after 18 years. In 1999 he came out of retirement to become the Vice President of Sales and part owner of Dr Soy Nutrition, an Energy bar company that has Distribution in over 12,000 outlets in the U.S. including Wal-Mart, Sams Clubs and all U.S.Military Commissaries to name a few.\nNeither of our two directors is considered an independent director. The definition the Company uses to determine whether a director is independent is NASDAQ Rule 4200(a)(15). A copy of that rule is attached to this filing as Exhibit 99.\nSection 16(A) Beneficial Ownership Reporting Compliance\nThe following persons have failed to file, on a timely basis, the identified reports required by Section 16(a) of the Exchange Act during the most recent fiscal year:",
+   "prose_after": "Item 11. Executive Compensation\nThe following table sets forth certain information as to our officers and directors.\nSummary Compensation Table",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Year",
+     "Salary ($)",
+     "Stock Awards ($)",
+     "Total ($)"
+    ],
+    [
+     "Richard Damion, CEO, CFO",
+     "2006\n\n2007\n\n2008",
+     "0\n\n0\n\n150,000",
+     "0\n\n0\n\n80,000",
+     "0\n\n0\n\n230,000"
+    ],
+    [
+     "Joseph R. Rodriguez, Jr.\n\nFormer CFO",
+     "2006\n\n2007\n\n2008",
+     "0\n\n0\n\n65,000",
+     "0\n\n0\n\n50,000",
+     "0\n\n0\n\n115,000"
+    ],
+    [
+     "Robert George\n\nDirector",
+     "2006\n\n2007\n\n2008",
+     "25,000\n\n25,000\n\n25,000",
+     "0\n\n3,000\n\n25,000",
+     "25,000\n\n28,000\n\n50,000"
+    ],
+    [
+     "Ketan Mehta\n\nFormer President",
+     "2007",
+     "250,000",
+     "1,232,500",
+     "1,482,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 1005
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Limited Customers"
+    }
+   },
+   "prose_before": "Item 11. Executive Compensation\nThe following table sets forth certain information as to our officers and directors.\nSummary Compensation Table",
+   "prose_after": "None of the stock awards to executives included unexercised options, stock that has not vested or equity incentive plan awards.\nItem 12. Security Ownership of Certain Beneficial Owners and Management\nThe following table provides the beneficial ownership of our common stock by each person known by us to beneficially own more than 5% of our common stock outstanding as of October 1, 2008 and by the officers and directors of IFPG as a group. Except as otherwise indicated, all shares are owned directly.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common",
+     "Percent of",
+     "Preferred",
+     "Percent of"
+    ],
+    [
+     "Name and Address",
+     "Shares",
+     "Class (1)",
+     "Shares",
+     "Class"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Richard Damion (2)",
+     "57,643,457",
+     "12%",
+     "16,000,000",
+     "100%"
+    ],
+    [
+     "620 Newport Center Drive, Suite 1100",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Newport Beach, CA 92660",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Joseph R. Rodriguez, Jr. (3)",
+     "48,814,574",
+     "10%",
+     "",
+     ""
+    ],
+    [
+     "620 Newport Center Drive, Suite 1100",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Newport Beach, CA 92660",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert George",
+     "12,384,998",
+     "2.6%",
+     "",
+     ""
+    ],
+    [
+     "620 Newport Center Drive, Suite 1100",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Newport Beach, CA 92660",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ketan Mehta",
+     "80,040,000",
+     "16.6%",
+     "",
+     ""
+    ],
+    [
+     "620 Newport Center Drive, Suite 1100",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All executive officers, directors, and outside individuals",
+     "198,883,029",
+     "41%",
+     "",
+     ""
+    ],
+    [
+     "as a group (four)",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1014,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Limited Customers"
+    }
+   },
+   "prose_before": "None of the stock awards to executives included unexercised options, stock that has not vested or equity incentive plan awards.\nItem 12. Security Ownership of Certain Beneficial Owners and Management\nThe following table provides the beneficial ownership of our common stock by each person known by us to beneficially own more than 5% of our common stock outstanding as of October 1, 2008 and by the officers and directors of IFPG as a group. Except as otherwise indicated, all shares are owned directly.",
+   "prose_after": "(1) All percentages are calculated by giving effect to the potential exercise of options held by the applicable person, entity or group, but without giving effect to the potential exercise of options held by any other person, entity or group.\n(2) Of the 8,718,351 common shares held by Mr. Damion, 6,718,351 shares are owned outright. The remaining 6,000,000 shares are shares which can be acquired by Mr. Damion through the exercise of options.\n(3) Of the 7,580,212 common shares held by Mr. Rodriguez, 5,580,212 shares are owned outright. The remaining 6,000,000 shares are shares which can be acquired by Mr. Rodriguez through the exercise of options.\nItem 13. Certain Relationships and Related Transactions\nThere have been no transactions by the company within last two years where either the company as an issuer, or a director, officer or shareholder of the company, had an indirect or direct interest except as follows:\n\u00b7 Receipt of stock compensation by the officers and directors of IFPG for the dollar amount set forth in the executive compensation table;",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1009,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1054,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

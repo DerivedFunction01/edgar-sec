@@ -1,0 +1,465 @@
+{
+ "accession": "0001140361-23-015232",
+ "cik": "0001607401",
+ "form": "10-K",
+ "filing_date": "2023-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "brhc10049646_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "04-3480392"
+    ],
+    [
+     "",
+     "04-3480392"
+    ],
+    [
+     "DELAWARE",
+     "54-1843973"
+    ],
+    [
+     "(State or other Jurisdiction of Incorporation)",
+     "(I.R.S. Employer Identification Nos.)"
+    ]
+   ],
+   "caption_stack": [
+    "04-3480392",
+    "04-3480392"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Central Index Key of issuing entity: 0001607401\nNAVIENT STUDENT LOAN TRUST 2014-1\n(Exact name of issuing entity as specified in its charter)\nCommission File Number of depositor: 333-190926\nCentral Index Key of depositor: 0000949114\nNAVIENT FUNDING, LLC\n(Exact name of depositor as specified in its charter)\nCentral Index Key of sponsor: 0001601725\nNAVIENT SOLUTIONS, LLC\n(Exact name of sponsor as specified in its charter)",
+   "prose_after": "c/o Deutsche Bank Trust Company Americas\n60 Wall Street, 27th Floor\nMailstop NYC 60-2720\nNew York, New York 10005\n(Address of principal executive offices of issuing entity)\n(703) 984-6890\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 5,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT",
+     "DESCRIPTION"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Indenture dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, which is incorporated by reference from Exhibit 4.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Indenture dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, which is incorporated by reference from Exhibit 4.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Servicing Agreement dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, and Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as servicer and as administrator, which is incorporated by reference from Exhibit 99.7 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Administration Agreement dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, Navient Funding, LLC, as depositor, and Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as servicer and as administrator, which is incorporated by reference from Exhibit 99.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Rule 13a-14(d)/15d-14(d) Certification (Section 302 Certification)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.1*",
+     "Report on Assessment of Compliance with Servicing Criteria concerning servicing activities of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.2*",
+     "Report on Assessment of Compliance with Servicing Criteria concerning servicing activities of Deutsche Bank National Trust Company, as Indenture Trustee, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.1*",
+     "Independent Accountants\u2019 Attestation Report concerning servicing activities of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.2*",
+     "Independent Accountants\u2019 Attestation Report concerning servicing activities of Deutsche Bank National Trust Company, as Indenture Trustee, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.1*",
+     "Statement of Compliance of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "* Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 225,
+    "end_line": 264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Navient Solutions, LLC, as the Servicer, Navient Solutions, LLC, as the Administrator and Deutsche Bank National Trust Company, as the Indenture Trustee (collectively, the \u201cServicing Parties\u201d) have each been identified by the Depositor as parties participating in the servicing function with respect to the asset pool held by the Issuing Entity. Each of the Servicing Parties has completed a report on assessment of compliance with the servicing criteria applicable to it (each a \u201cServicing Report\u201d), which Servicing Reports are attached as exhibits to this Form 10-K. Each of the Servicing Parties have provided an attestation report (each an \u201cAttestation Report\u201d) by one or more public accounting firms, which reports are also attached as exhibits to this Report. None of the Servicing Reports or Attestation Reports has identified any material instance of noncompliance with the servicing criteria as applicable to the respective Servicing Party. There have been no material instances of noncompliance with the servicing criteria for the period of this Report.\nItem 1123 of Regulation AB. Servicer Compliance Statement\nA Servicer Compliance Statement for each of Navient Solutions, LLC, as the Servicer, and Navient Solutions, LLC, as the Administrator, is included as an exhibit to this Report.\nPART IV\nItem 15. Exhibit and Financial Statement Schedules\n(a) List of Documents Filed as Part of this Annual Report on Form 10-K\n(1) Not applicable.\n(2) Not applicable.\n(3) See Item 15 (b) below.\n(b) Exhibits Required by Item 601 of Regulation S-K",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this report to be signed, on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: March 31, 2023",
+     "NAVIENT FUNDING, LLC, the Depositor for itself as Registrant\n\nand on behalf of Navient Student Loan Trust 2014-1",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ JOE FISHER",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Joe Fisher",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "President and Chief Financial Officer\n\n(Senior Securitization Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 271,
+    "end_line": 284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this report to be signed, on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "SUPPLEMENTAL INFORMATION TO BE FURNISHED WITH REPORTS FILED PURSUANT TO SECTION 15(d) OF THE ACT BY REGISTRANTS WHICH HAVE NOT REGISTERED SECURITIES PURSUANT TO SECTION 12 OF THE ACT.\nNo annual report, proxy statement, form of proxy or other proxy soliciting material has been sent to holders of the notes issued by the Issuing Entity during the period covered by this Annual Report on Form 10-K and the Registrant does not intend to furnish such materials subsequent to the filing of the report.\nINDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 289,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Indenture dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, which is incorporated by reference from Exhibit 4.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02.\n\nhttps://www.sec.gov/Archives/edgar/data/949114/000092963814000507/a60850_exhibit4-6.htm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Indenture dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, which is incorporated by reference from Exhibit 4.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02.\n\nhttps://www.sec.gov/Archives/edgar/data/949114/000092963814000507/a60850_exhibit4-6.htm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Servicing Agreement dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, and Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as servicer and as administrator, which is incorporated by reference from Exhibit 99.7 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02.\n\nhttps://www.sec.gov/Archives/edgar/data/949114/000092963814000507/a60850_exhibit99-7.htm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Administration Agreement dated as of May 29, 2014 among Navient Student Loan Trust 2014-1, Deutsche Bank National Trust Company, as indenture trustee, and Deutsche Bank Trust Company Americas, as eligible lender trustee, Navient Funding, LLC, as depositor, and Navient Solutions, Inc. (formerly, Navient Solutions, Inc.), as servicer and as administrator, which is incorporated by reference from Exhibit 99.6 of the Current Report on Form 8-K of the registrant, as filed with the Commission on May 29, 2014, with a file number of 333-190926-02.\n\nhttps://www.sec.gov/Archives/edgar/data/949114/000092963814000507/a60850_exhibit99-6.htm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Rule 13a-14(d)/15d-14(d) Certification (Section 302 Certification)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.1*",
+     "Report on Assessment of Compliance with Servicing Criteria concerning servicing activities of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.2*",
+     "Report on Assessment of Compliance with Servicing Criteria concerning servicing activities of Deutsche Bank National Trust Company, as Indenture Trustee, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.1*",
+     "Independent Accountants\u2019 Attestation Report concerning servicing activities of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.2*",
+     "Independent Accountants\u2019 Attestation Report concerning servicing activities of Deutsche Bank National Trust Company, as Indenture Trustee, as of and for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.1*",
+     "Statement of Compliance of Navient Solutions, LLC (formerly, Navient Solutions, Inc.), as Servicer and Administrator for the year ended December 31, 2022."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "* Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 293,
+    "end_line": 342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "SUPPLEMENTAL INFORMATION TO BE FURNISHED WITH REPORTS FILED PURSUANT TO SECTION 15(d) OF THE ACT BY REGISTRANTS WHICH HAVE NOT REGISTERED SECURITIES PURSUANT TO SECTION 12 OF THE ACT.\nNo annual report, proxy statement, form of proxy or other proxy soliciting material has been sent to holders of the notes issued by the Issuing Entity during the period covered by this Annual Report on Form 10-K and the Registrant does not intend to furnish such materials subsequent to the filing of the report.\nINDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 289,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 343,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,3376 @@
+{
+ "accession": "0001096906-13-001234",
+ "cik": "0000706698",
+ "form": "10-Q",
+ "filing_date": "2013-08-08",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "utahmed.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For quarter ended: June 30, 2013",
+     "Commission File No. 0-11178"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\nQuarterly Report Under Section 13 or 15(d) of The Securities Exchange Act of 1934",
+   "prose_after": "UTAH MEDICAL PRODUCTS, INC.\n(Exact name of Registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UTAH",
+     "87-0342734"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UTAH MEDICAL PRODUCTS, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "7043 South 300 West\nMidvale, Utah 84047\nAddress of principal executive offices\nRegistrant's telephone number: (801) 566-1200\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Sections 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and; (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [X]  Non-accelerated filer [ ]  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consolidated Condensed Balance Sheets as of June 30, 2013 and December 31, 2012",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consolidated Condensed Statements of Income for the  three and six months ended June 30, 2013 and June 30, 2012",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Consolidated Condensed Statements of Cash Flows for the six months ended June 30, 2013 and June 30, 2012",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Notes to Consolidated Condensed Financial Statements",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4.",
+     "Controls and Procedures",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Legal Proceedings",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 6.",
+     "Exhibits",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "16"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 79
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [X]  Non-accelerated filer [ ]  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock as of August 7, 2013: 3,735,000\nUTAH MEDICAL PRODUCTS, INC.\nINDEX TO FORM 10-Q",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 43,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.  Financial Statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED CONDENSED BALANCE SHEETS AS OF",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JUNE 30, 2013 AND DECEMBER 31, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "(audited)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "JUNE 30,\n\n2013",
+     "",
+     "",
+     "DECEMBER 31,\n\n2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "11,385",
+     "",
+     "$",
+     "8,871",
+     ""
+    ],
+    [
+     "Investments, available-for-sale",
+     "",
+     "51",
+     "",
+     "",
+     "42",
+     ""
+    ],
+    [
+     "Accounts & other receivables - net",
+     "",
+     "5,673",
+     "",
+     "",
+     "4,341",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "4,367",
+     "",
+     "",
+     "4,353",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "813",
+     "",
+     "",
+     "929",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "22,289",
+     "",
+     "",
+     "18,535",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment - net",
+     "",
+     "8,155",
+     "",
+     "",
+     "8,428",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "14,953",
+     "",
+     "",
+     "15,488",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other intangible assets",
+     "",
+     "38,731",
+     "",
+     "",
+     "41,242",
+     ""
+    ],
+    [
+     "Other intangible assets - accumulated amortization",
+     "",
+     "(7,699)",
+     "",
+     "",
+     "(6,758)",
+     ""
+    ],
+    [
+     "Other intangible assets - net",
+     "",
+     "31,031",
+     "",
+     "",
+     "34,484",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "$",
+     "76,429",
+     "",
+     "$",
+     "76,935",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "942",
+     "",
+     "$",
+     "1,000",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "3,831",
+     "",
+     "",
+     "2,821",
+     ""
+    ],
+    [
+     "Current portion of notes payable",
+     "",
+     "3,834",
+     "",
+     "",
+     "4,001",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "8,607",
+     "",
+     "",
+     "7,823",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "6,709",
+     "",
+     "",
+     "9,003",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liability - intangible assets",
+     "",
+     "7,583",
+     "",
+     "",
+     "7,889",
+     ""
+    ],
+    [
+     "Other long term liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "363",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "889",
+     "",
+     "",
+     "884",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "23,788",
+     "",
+     "",
+     "25,963",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock - $.01 par value; authorized - 5,000  shares; no shares issued or outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock - $.01 par value; authorized - 50,000 shares; issued - June 30, 2013, 3,728 shares and  December 31, 2012, 3,703 shares",
+     "",
+     "37",
+     "",
+     "",
+     "37",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(3,343)",
+     "",
+     "",
+     "(851)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "2,885",
+     "",
+     "",
+     "2,268",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "53,062",
+     "",
+     "",
+     "49,519",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "52,641",
+     "",
+     "",
+     "50,972",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "$",
+     "76,429",
+     "",
+     "$",
+     "76,935",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PART I - FINANCIAL INFORMATION",
+    "Item 1.  Financial Statements",
+    "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED CONDENSED BALANCE SHEETS AS OF",
+    "JUNE 30, 2013 AND DECEMBER 31, 2012",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 80,
+    "end_line": 146
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "see notes to consolidated condensed financial statements",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED CONDENSED STATEMENTS OF INCOME FOR THE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "THREE AND SIX MONTHS ENDED JUNE 30, 2013 AND JUNE 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share amounts - unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "10,002",
+     "",
+     "$",
+     "10,025",
+     "",
+     "$",
+     "20,376",
+     "",
+     "$",
+     "21,230",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "3,954",
+     "",
+     "",
+     "3,954",
+     "",
+     "",
+     "8,047",
+     "",
+     "",
+     "8,421",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,048",
+     "",
+     "",
+     "6,071",
+     "",
+     "",
+     "12,329",
+     "",
+     "",
+     "12,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "2,213",
+     "",
+     "",
+     "2,372",
+     "",
+     "",
+     "4,482",
+     "",
+     "",
+     "4,850",
+     ""
+    ],
+    [
+     "Research & development",
+     "",
+     "120",
+     "",
+     "",
+     "147",
+     "",
+     "",
+     "243",
+     "",
+     "",
+     "293",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "2,333",
+     "",
+     "",
+     "2,519",
+     "",
+     "",
+     "4,725",
+     "",
+     "",
+     "5,143",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "",
+     "3,715",
+     "",
+     "",
+     "3,552",
+     "",
+     "",
+     "7,605",
+     "",
+     "",
+     "7,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(89)",
+     "",
+     "",
+     "(122)",
+     "",
+     "",
+     "(191)",
+     "",
+     "",
+     "(300)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "",
+     "3,627",
+     "",
+     "",
+     "3,430",
+     "",
+     "",
+     "7,414",
+     "",
+     "",
+     "7,367",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "994",
+     "",
+     "",
+     "1,029",
+     "",
+     "",
+     "2,046",
+     "",
+     "",
+     "2,177",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,632",
+     "",
+     "$",
+     "2,401",
+     "",
+     "$",
+     "5,368",
+     "",
+     "$",
+     "5,190",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per common share (basic)",
+     "$",
+     "0.71",
+     "",
+     "$",
+     "0.65",
+     "",
+     "$",
+     "1.44",
+     "",
+     "$",
+     "1.42",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per common share (diluted)",
+     "$",
+     "0.70",
+     "",
+     "$",
+     "0.65",
+     "",
+     "$",
+     "1.43",
+     "",
+     "$",
+     "1.41",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares outstanding - basic",
+     "",
+     "3,725",
+     "",
+     "",
+     "3,678",
+     "",
+     "",
+     "3,718",
+     "",
+     "",
+     "3,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares outstanding - diluted",
+     "",
+     "3,770",
+     "",
+     "",
+     "3,711",
+     "",
+     "",
+     "3,764",
+     "",
+     "",
+     "3,694",
+     ""
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation net of taxes of  $0 in all periods",
+     "$",
+     "19",
+     "",
+     "$",
+     "(949)",
+     "",
+     "$",
+     "(2,497)",
+     "",
+     "$",
+     "244",
+     ""
+    ],
+    [
+     "Unrealized gain (loss) on investments net of taxes of $2, $(3), $4 and $3",
+     "",
+     "2",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "5",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Total comprehensive income",
+     "$",
+     "2,654",
+     "",
+     "$",
+     "1,447",
+     "",
+     "$",
+     "2,876",
+     "",
+     "$",
+     "5,438",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED CONDENSED STATEMENTS OF INCOME FOR THE",
+    "THREE AND SIX MONTHS ENDED JUNE 30, 2013 AND JUNE 30, 2012",
+    "(in thousands, except per share amounts - unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 151,
+    "end_line": 207
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "see notes to consolidated condensed financial statements",
+   "prose_after": "see notes to consolidated condensed financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 150,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED CONDENSED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FOR THE SIX MONTHS ENDED JUNE 30, 2013 AND JUNE 30, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands - unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Six Months Ended\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "5,368",
+     "",
+     "$",
+     "5,190",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "308",
+     "",
+     "",
+     "334",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "1,273",
+     "",
+     "",
+     "1,305",
+     ""
+    ],
+    [
+     "(Gain) loss on investments",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Provision for (recovery of) losses on accounts receivable",
+     "",
+     "(1)",
+     "",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "(Gain)/Loss on disposal of assets",
+     "",
+     "(1)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "(357)",
+     "",
+     "",
+     "(428)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "14",
+     "",
+     "",
+     "38",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable - trade",
+     "",
+     "(1,350)",
+     "",
+     "",
+     "(275)",
+     ""
+    ],
+    [
+     "Accrued interest and other receivables",
+     "",
+     "(128)",
+     "",
+     "",
+     "(89)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "8",
+     "",
+     "",
+     "183",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "145",
+     "",
+     "",
+     "62",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(17)",
+     "",
+     "",
+     "429",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "169",
+     "",
+     "",
+     "(170)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(50)",
+     "",
+     "",
+     "(50)",
+     ""
+    ],
+    [
+     "Other liability",
+     "",
+     "(339)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total adjustments",
+     "",
+     "(326)",
+     "",
+     "",
+     "1,347",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "5,042",
+     "",
+     "",
+     "6,537",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "(111)",
+     "",
+     "",
+     "(133)",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "(5)",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Purchases of investments",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from sale of investments",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(116)",
+     "",
+     "",
+     "(134)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock - options",
+     "",
+     "490",
+     "",
+     "",
+     "978",
+     ""
+    ],
+    [
+     "Common stock purchased and retired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payment of taxes for exchange of stock options",
+     "",
+     "(90)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Tax benefit attributable to exercise of stock options",
+     "",
+     "199",
+     "",
+     "",
+     "99",
+     ""
+    ],
+    [
+     "Repayment of notes payable",
+     "",
+     "(1,935)",
+     "",
+     "",
+     "(5,221)",
+     ""
+    ],
+    [
+     "Payment of dividends",
+     "",
+     "(911)",
+     "",
+     "",
+     "(878)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "(2,246)",
+     "",
+     "",
+     "(5,021)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "",
+     "(164)",
+     "",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH",
+     "",
+     "2,514",
+     "",
+     "",
+     "1,378",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "8,871",
+     "",
+     "",
+     "6,534",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "11,385",
+     "",
+     "$",
+     "7,913",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for income taxes",
+     "$",
+     "1,634",
+     "",
+     "$",
+     "2,021",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest",
+     "",
+     "235",
+     "",
+     "",
+     "360",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "UTAH MEDICAL PRODUCTS, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED CONDENSED STATEMENTS OF CASH FLOWS",
+    "FOR THE SIX MONTHS ENDED JUNE 30, 2013 AND JUNE 30, 2012",
+    "(in thousands - unaudited)",
+    "Six Months Ended\n\nJune 30,"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 212,
+    "end_line": 284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "see notes to consolidated condensed financial statements",
+   "prose_after": "see notes to consolidated condensed financial statements\nUTAH MEDICAL PRODUCTS, INC.\nNOTES TO CONSOLIDATED CONDENSED FINANCIAL STATEMENTS\n(unaudited)\n(1) The unaudited financial statements have been prepared in accordance with the instructions to Form 10-Q and do not include all of the information and note disclosures required by accounting principles generally accepted in the United States. These statements should be read in conjunction with the financial statements and notes included in the Utah Medical Products, Inc. (\"UTMD\" or \"the Company\") annual report on Form 10-K for the year ended December 31, 2012. In the opinion of management, the accompanying financial statements include all adjustments (consisting only of normal recurring adjustments) necessary to summarize fairly the Company's financial position and results of operations. Currency amounts are in thousands except per-share amounts and where noted.\n(2) Inventories at June 30, 2013 and December 31, 2012 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "1,487",
+     "$",
+     "1,630"
+    ],
+    [
+     "Work-in-process",
+     "",
+     "1,031",
+     "",
+     "938"
+    ],
+    [
+     "Raw materials",
+     "",
+     "1,849",
+     "",
+     "1,785"
+    ],
+    [
+     "Total",
+     "$",
+     "4,367",
+     "$",
+     "4,353"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 299,
+    "end_line": 311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "see notes to consolidated condensed financial statements\nUTAH MEDICAL PRODUCTS, INC.\nNOTES TO CONSOLIDATED CONDENSED FINANCIAL STATEMENTS\n(unaudited)\n(1) The unaudited financial statements have been prepared in accordance with the instructions to Form 10-Q and do not include all of the information and note disclosures required by accounting principles generally accepted in the United States. These statements should be read in conjunction with the financial statements and notes included in the Utah Medical Products, Inc. (\"UTMD\" or \"the Company\") annual report on Form 10-K for the year ended December 31, 2012. In the opinion of management, the accompanying financial statements include all adjustments (consisting only of normal recurring adjustments) necessary to summarize fairly the Company's financial position and results of operations. Currency amounts are in thousands except per-share amounts and where noted.\n(2) Inventories at June 30, 2013 and December 31, 2012 consisted of the following:",
+   "prose_after": "(3) Stock-Based Compensation. The Company has stock-based employee compensation plans which authorize the grant of stock options to eligible employees and directors. The Company accounts for stock compensation under FASB Accounting Standards Codification (\u201cASC\u201d) 718, Stock Compensation. This statement requires the Company to recognize compensation cost based on the grant date fair value of options granted to employees and directors. In the quarters ended June 30, 2013 and 2012, the Company recognized $7 and $18, respectively, in stock-based compensation cost. In the six months ended June 30, 2013 and 2012, the Company recognized $14 and $38, respectively, in stock-based compensation cost.\n(4) Notes payable. In March 2011, the Company obtained a $14,000 loan from JPMorgan Chase Bank, N.A. (Chase), to help finance the purchase of Femcare Group Ltd (Femcare) of the United Kingdom, and its subsidiaries. The terms and conditions of the loan require UTMD to a) repay the loan principal in equal monthly payments over 5 years, b) pay interest based on the 30-day LIBOR rate plus a margin starting at 2.80% and ranging from 2.00% to 3.75%, depending on the ratio of UTMD\u2019s funded debt to EBITDA (Leverage Ratio), c) pledge 65% of all foreign subsidiaries\u2019 stock, d) provide first priority liens on all domestic business assets, e) maintain UTMD\u2019s Interest Coverage Ratio at 1.15 to 1.00 or better, f) maintain UTMD\u2019s Tangible Net Worth (TNW) above a minimum threshold 20% below TNW at closing on March 18, and g) maintain UTMD\u2019s Leverage Ratio at 2.75 to 1.00 or less. UTMD is in compliance with all of the loan covenants at June 30, 2013. Based on UTMD\u2019s financial position, the bank\u2019s margin was 2.00% at June 30, 2013. The principal balance on this note at June 30, 2013 was $3,850.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 288,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 321,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "$",
+     "3",
+     "$",
+     "(183)",
+     ""
+    ],
+    [
+     "Realized loss from securities included in beginning balance",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross unrealized holding gains (losses), in equity securities",
+     "",
+     "4",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Deferred income taxes on unrealized holding (gain) loss",
+     "",
+     "(2)",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "$",
+     "5",
+     "$",
+     "(188)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 326,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Warranty Reserve. The Company\u2019s published warranty is: \u201cUTMD warrants its products to conform in all material respects to all published product specifications in effect on the date of shipment, and to be free from defects in material and workmanship for a period of thirty (30) days for supplies, or twenty-four (24) months for equipment, from date of shipment. During the warranty period UTMD shall, at its option, replace any products shown to UTMD's reasonable satisfaction to be defective at no expense to the Purchaser or refund the purchase price.\u201d\nUTMD maintains a warranty reserve to provide for estimated costs which are likely to occur. The amount of this reserve is adjusted, as required, to reflect its actual experience. Based on its analysis of historical warranty claims and its estimate that existing warranty obligations were immaterial, no warranty reserve was made at December 31, 2012 or June 30, 2013.\n(6) Investments. As of June 30, 2013, the Company\u2019s investments are in Citigroup (C). Changes in the unrealized holding gain on investment securities available-for-sale and reported as a separate component of accumulated other comprehensive income are as follows:",
+   "prose_after": "(7) Fair Value Measurements. The Company follows ASC 820, Fair Value Measurement to determine fair value of its financial assets. The following table provides financial assets carried at fair value measured as of June 30, 2013:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 323,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurements Using",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Total Fair Value\n\nat 6/30/2013",
+     "",
+     "Quoted Prices\n\nin Active Markets\n\nfor Identical Assets\n\n(Level 1)",
+     "",
+     "Significant Other\n\n Observable Inputs\n\n(Level 2)",
+     "",
+     "Significant\n\nUnobservable Inputs\n\n(Level 3 )",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equities",
+     "$",
+     "51",
+     "$",
+     "51",
+     "$",
+     "0",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements Using"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 341,
+    "end_line": 355
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(7) Fair Value Measurements. The Company follows ASC 820, Fair Value Measurement to determine fair value of its financial assets. The following table provides financial assets carried at fair value measured as of June 30, 2013:",
+   "prose_after": "(8) Subsequent Events. UTMD has evaluated subsequent events through the date the financial statements were issued, and concluded there were no other events or transactions during this period that required recognition or disclosure in its financial statements.\nItem 2. Management's Discussion and Analysis of Financial Condition and Results of Operations\nGeneral\nUTMD manufactures and markets a well-established range of specialty medical devices. The Company\u2019s Form 10-K Annual Report for the year ended December 31, 2012 provides a detailed description of products, technologies, markets, regulatory issues, business initiatives, resources and business risks, among other details, and should be read in conjunction with this report. Because of the relatively short span of time, results for any given three month period in comparison with a previous three month period may not be indicative of comparative results for the year as a whole. Currency amounts in the report are in thousands, except per-share amounts or where otherwise noted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 323,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     "",
+     "1H 2013",
+     "",
+     "1H 2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit Margin (gross profit/ sales):",
+     "60.5",
+     "%",
+     "60.6",
+     "%",
+     "60.5",
+     "%",
+     "60.3",
+     "%"
+    ],
+    [
+     "Operating Income Margin (operating profit/ sales):",
+     "37.1",
+     "%",
+     "35.4",
+     "%",
+     "37.3",
+     "%",
+     "36.1",
+     "%"
+    ],
+    [
+     "EBT Margin (profit before income taxes/ sales):",
+     "36.3",
+     "%",
+     "34.2",
+     "%",
+     "36.4",
+     "%",
+     "34.7",
+     "%"
+    ],
+    [
+     "Net Income Margin (profit after taxes/ sales):",
+     "26.3",
+     "%",
+     "24.0",
+     "%",
+     "26.3",
+     "%",
+     "24.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations\nGeneral\nUTMD manufactures and markets a well-established range of specialty medical devices. The Company\u2019s Form 10-K Annual Report for the year ended December 31, 2012 provides a detailed description of products, technologies, markets, regulatory issues, business initiatives, resources and business risks, among other details, and should be read in conjunction with this report. Because of the relatively short span of time, results for any given three month period in comparison with a previous three month period may not be indicative of comparative results for the year as a whole. Currency amounts in the report are in thousands, except per-share amounts or where otherwise noted.\nAnalysis of Results of Operations\na) Overview\nIn the second calendar quarter (2Q) and first half (1H) of 2013, gross profit margins were consistent with the same periods in the prior year while operating income, income before taxes and net income margins all improved, as follows:",
+   "prose_after": "UTMD\u2019s operating income margin (OPM) improved despite the new Medical Device Excise Tax (MDET), imposed as a component of the Patient Protection and Affordable Care Act (Obamacare). The MDET, levied as 2.3% of domestic sales of medical devices, is included in sales and marketing expenses.\nIn 2Q 2013, revenues and gross profits were consistent with those in 2Q 2012, while in 1H 2013, they were lower as a result of the previously reported distributor overstocking in 1Q 2012. Nevertheless, UTMD was able to improve its income before tax, net income and earnings per share in both 2Q 2013 and 1H 2013 periods compared to the same periods in 2012, as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     "change",
+     "",
+     "",
+     "",
+     "1H 2013",
+     "",
+     "1H 2012",
+     "change",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "10,002",
+     "$",
+     "10,025",
+     "",
+     "(0.2",
+     "%)",
+     "$",
+     "20,376",
+     "$",
+     "21,230",
+     "",
+     "(4.0",
+     "%)"
+    ],
+    [
+     "Gross Profit",
+     "",
+     "6,048",
+     "",
+     "6,071",
+     "",
+     "(0.4",
+     "%)",
+     "",
+     "12,329",
+     "",
+     "12,809",
+     "",
+     "(3.7",
+     "%)"
+    ],
+    [
+     "Operating Income",
+     "",
+     "3,715",
+     "",
+     "3,552",
+     "",
+     "4.6",
+     "%",
+     "",
+     "7,605",
+     "",
+     "7,667",
+     "",
+     "(0.8",
+     "%)"
+    ],
+    [
+     "Income Before Tax",
+     "",
+     "3,627",
+     "",
+     "3,430",
+     "",
+     "5.7",
+     "%",
+     "",
+     "7,414",
+     "",
+     "7,367",
+     "",
+     "0.6",
+     "%"
+    ],
+    [
+     "Net Income",
+     "",
+     "2,632",
+     "",
+     "2,401",
+     "",
+     "9.6",
+     "%",
+     "",
+     "5,368",
+     "",
+     "5,190",
+     "",
+     "3.4",
+     "%"
+    ],
+    [
+     "Earnings per Diluted Share",
+     "",
+     ".698",
+     "",
+     ".647",
+     "",
+     "7.9",
+     "%",
+     "",
+     "1.426",
+     "",
+     "1.405",
+     "",
+     "1.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "UTMD\u2019s operating income margin (OPM) improved despite the new Medical Device Excise Tax (MDET), imposed as a component of the Patient Protection and Affordable Care Act (Obamacare). The MDET, levied as 2.3% of domestic sales of medical devices, is included in sales and marketing expenses.\nIn 2Q 2013, revenues and gross profits were consistent with those in 2Q 2012, while in 1H 2013, they were lower as a result of the previously reported distributor overstocking in 1Q 2012. Nevertheless, UTMD was able to improve its income before tax, net income and earnings per share in both 2Q 2013 and 1H 2013 periods compared to the same periods in 2012, as follows:",
+   "prose_after": "Operating expenses were $2,333 (23.3% of sales) in 2Q 2013 compared to $2,519 (25.1% of sales) in 2Q 2012, and $4,725 (23.2% of sales) in 1H 2013 compared to $5,143 (24.2% of sales) in 1H 2012. Average quarterly operating expenses were $2,528 (24.3% of sales) in the full year of 2012.\nIncome before taxes (EBT) was $3,627 (36.3% of sales) in 2Q 2013 compared to $3,430 (34.2% of sales) in 2Q 2012, and was $7,414 (36.4% of sales) in 1H 2013 compared to $7,367 (34.7% of sales) in 1H 2012. Average quarterly EBT was $3,634 (35.0% of sales) in the full year of 2012. In addition to the improvement in OPM, 2Q and 1H 2013 EBT benefited from lower interest expense on lower loan principal balances.\nNet Income (NP) was $2,632 (26.3% of sales) in 2Q 2013 compared to $2,401 (24.0% of sales) in 2Q 2012, and $5,368 (26.3% of sales) in 1H 2013 compared to $5,190 (24.4% of sales) in 1H 2012. Average quarterly NP was $2,542 (24.5% of sales) in the full year of 2012. The improvement in UTMD\u2019s Net Income margin was leveraged by a lower consolidated income tax provision. The income tax provision rate was 27.4% in 2Q 2013 compared to 30.0% in 2Q 2012, and 27.6% in 1H 2013 compared to 29.6% in 1H 2012.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     "",
+     "1H 2013",
+     "",
+     "1H 2012"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Obstetrics",
+     "$",
+     "1,192",
+     "$",
+     "1,259",
+     "$",
+     "2,406",
+     "$",
+     "2,542"
+    ],
+    [
+     "Gynecology/ Electrosurgery/ Urology",
+     "",
+     "5,762",
+     "",
+     "5,411",
+     "",
+     "11,638",
+     "",
+     "12,066"
+    ],
+    [
+     "Neonatal",
+     "",
+     "1,319",
+     "",
+     "1,647",
+     "",
+     "2,861",
+     "",
+     "3,248"
+    ],
+    [
+     "Blood Pressure Monitoring and Accessories*",
+     "",
+     "1,729",
+     "",
+     "1,708",
+     "",
+     "3,471",
+     "",
+     "3,374"
+    ],
+    [
+     "Total:",
+     "$",
+     "10,002",
+     "$",
+     "10,025",
+     "$",
+     "20,376",
+     "$",
+     "21,230"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "UTMD\u2019s Ireland subsidiary\u2019s 2Q 2013 trade shipments (excludes intercompany sales), which are all in the \u201cinternational sales\u201d category, were $219 (26%) higher - 22% higher in EURO terms - compared to 2Q 2012, and in 1H 2013 were $288 (15%) higher - 14% higher in EURO terms - compared to 1H 2012.\nUTMD\u2019s Femcare UK subsidiary\u2019s 2Q 2013 trade shipments (excludes intercompany sales), some of which are included in the \u201cdomestic sales\u201d category, i.e. sales of the Filshie Clip System to COO, and the rest of which are included in the \u201cinternational sales\u201d category, were $159 (5%) higher - 8% higher in Great Britain Pounds (GBP) terms - compared to 2Q 2012, and in 1H 2013 were $695 (10%) lower - 8% lower in GBP terms - compared to 1H 2012.\nUTMD\u2019s Femcare Australia subsidiary\u2019s 2Q 2013 trade shipments, which are in the \u201cinternational sales\u201d category, $2 (0%) higher - 2% higher in Australia Dollar (AUD) terms - compared to 2Q 2012, and for 1H 2013 were $131 (8%) lower - 6% lower in AUD terms - compared to 1H 2012.\nThe following table provides USD sales amounts divided into general product categories for total sales and the subset of international sales:\nGlobal revenues by product category:",
+   "prose_after": "*includes molded components sold to OEM customers.\nInternational revenues by product category:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 470,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     "",
+     "1H 2013",
+     "",
+     "1H 2012"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Obstetrics",
+     "$",
+     "128",
+     "$",
+     "127",
+     "$",
+     "258",
+     "$",
+     "293"
+    ],
+    [
+     "Gynecology/ Electrosurgery/ Urology",
+     "",
+     "3,623",
+     "",
+     "3,813",
+     "",
+     "7,331",
+     "",
+     "7,737"
+    ],
+    [
+     "Neonatal",
+     "",
+     "277",
+     "",
+     "317",
+     "",
+     "659",
+     "",
+     "587"
+    ],
+    [
+     "Blood Pressure Monitoring and Accessories*",
+     "",
+     "1,113",
+     "",
+     "1,008",
+     "",
+     "2,255",
+     "",
+     "2,222"
+    ],
+    [
+     "Total:",
+     "$",
+     "5,141",
+     "$",
+     "5,265",
+     "$",
+     "10,503",
+     "$",
+     "10,839"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "*includes molded components sold to OEM customers.\nInternational revenues by product category:",
+   "prose_after": "*includes molded components sold to OEM customers.\nc) Gross Profit\nGross profits (GP) result from subtracting the cost of manufacturing products (direct materials, direct labor and manufacturing overhead), or the purchase price of finished products which are resold, from revenues. UTMD\u2019s gross profit margin (GPM) is gross profit as a percentage of revenues. In 2Q 2013, GP were $6,048 (60.5% GPM) compared to $6,071 (60.6% GPM) in 2Q 2012. In 1H 2013, GP were $12,329 (60.5% GPM) compared to $12,809 (60.3% GPM) in 1H 2012. The small changes in GPM in the various periods were due essentially to product mix differences.\nd) Operating Income\nOperating income is the profit remaining after subtracting operating expenses from GP. UTMD\u2019s operating profit margin (OPM) is its operating income divided by revenues. Operating income in 2Q 2013 was $3,715 (37.1% OPM) compared to $3,552 (35.4% OPM) in 2Q 2012. In 1H 2013, operating income was $7,605 (37.3% OPM) compared to $7,667 (36.1% OPM) in 1H 2012. A higher OPM with lower sales represents strong operational performance.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 470,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2Q 2013",
+     "",
+     "2Q 2012",
+     "",
+     "1H 2013",
+     "",
+     "1H 2012"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "S&M Expense",
+     "$",
+     "677",
+     "$",
+     "702",
+     "$",
+     "1,346",
+     "$",
+     "1,354"
+    ],
+    [
+     "R&D Expense",
+     "",
+     "120",
+     "",
+     "147",
+     "",
+     "243",
+     "",
+     "293"
+    ],
+    [
+     "G&A Expense",
+     "",
+     "1,536",
+     "",
+     "1,670",
+     "",
+     "3,136",
+     "",
+     "3,496"
+    ],
+    [
+     "Total Operating Expenses:",
+     "$",
+     "2,333",
+     "$",
+     "2,519",
+     "$",
+     "4,725",
+     "$",
+     "5,143"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated G&A expenses in 2Q 2013 were $1,536 (15.4% of sales) compared to $1,670 (16.7% of sales) in 2Q 2012, and were $3,136 (15.4% of sales) in 1H 2013 compared to $3,496 (16.5% of sales) in 1H 2012. The G&A expenses included $621 (6.2% of sales) in 2Q 2013 and $1,246 (6.1% of sales) in 1H 2013 of non-cash expense from the amortization of identifiable intangible assets (IIA) resulting from the Femcare acquisition, which were $639 (6.4% of sales) in 2Q 2012 and $1,274 (6.0% of sales) in 1H 2012. The differences were due to currency exchange, as the amortization of IIA of the Femcare acquisition is in constant GBP. In addition to the reduction in foreign operating expense due to a stronger USD, lower G&A expenses were primarily the result of 1) lower litigation expense in the U.S.; 2) lower UK expense from lower leases and rents compared to the prior year, and a foreign currency exchange gain on UK accounts receivable; and 3) lower variable expenses in Australia related to lower sales activity, lower fees negotiated in a service agreement and a reclassification of Australia freight expense included in G&A in 2012 to S&M expense in 2013.\nIn addition to litigation costs, G&A expenses include the cost of outside financial auditors and corporate governance activities relating to the implementation of SEC rules resulting from the Sarbanes-Oxley Act of 2002, as well as estimated stock-based compensation cost, a noncash expense. Option compensation expense included in G&A expenses was $7 in 2Q 2013 compared to $18 in 2Q 2012, and $14 in 1H 2013 compared to $38 in 1H 2012.\nOperating expense summary:",
+   "prose_after": "e) Non-operating income/ expense\nNon-operating income (NOI) includes income from rent of underutilized property, investment income and royalties received from licensing the Company\u2019s technology. Non-operating expense (NOE) includes loan interest and bank fees. UTMD\u2019s reported NOE is the net of its NOE and NOI. The net is a NOE because the amount of interest that UTMD has been paying on bank loans since the 2011 Femcare acquisition exceeds the sum of all of its NOI. (Net) NOE in 2Q 2013 was $89 compared to $122 in 2Q 2012, and was $191 in 1H 2013 compared to $300 in 1H 2012. The decreases were primarily due to lower interest expense on bank loans. In the absence of adding debt to help fund additional acquisitions that improve shareholder value, NOE will continue to decline as UTMD repays its current bank loans.\nf) Income Before Income Taxes\nIncome before taxes (EBT) results from subtracting NOE from operating income. EBT Margin (EBTM) is EBT divided by revenues. 2Q 2013 consolidated EBT was $3,627 (36.3% EBTM) compared to $3,430 (34.2% EBTM) in 2Q 2012. 1H 2013 consolidated EBT was $7,414 (36.4% EBTM) compared to $7,367 (34.7% EBTM) in 1H 2012. The EBT of UTMD Ltd. (Ireland) was \u20ac225 (27.0% EBTM) in 2Q 2013 compared to \u20ac157 (23.1% EBTM) in 2Q 2012, and was \u20ac452 (25.6% EBTM) in 1H 2013 compared to \u20ac279 (18.2% EBTM) in 1H 2012. The EBT of Femcare (Femcare-Nikomed, Ltd., UK and Femcare Australia) was \u00a31,028 (39.5% EBTM) in 2Q 2013 compared to \u00a3722 (30.0% EBTM) in 2Q 2012, and was \u00a32,058 (39.2% EBTM) in 1H 2013 compared to \u00a31,999 (35.3% EBTM) in 1H 2012.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit #",
+     "SEC Reference #",
+     "Title of Document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1",
+     "31",
+     "Certification of CEO pursuant to Rule 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2",
+     "31",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "32",
+     "Certification of CEO pursuant to 18 U.S.C. \u00a71350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4",
+     "32",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. \u00a71350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "5",
+     "101 ins",
+     "XBRL Instance"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "6",
+     "101.xsd",
+     "XBRL Schema"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "7",
+     "101.cal",
+     "XBRL Calculation"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "8",
+     "101.def",
+     "XBRL Definition"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "9",
+     "101.lab",
+     "XBRL Label"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10",
+     "101.pre",
+     "XBRL Presentation"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "While the debt will help positively leverage financial performance if UTMD maintains future performance consistent with 2012 performance, it could also negatively leverage financial performance if the Company is unable to maintain sales volume and profit margins in a competitive worldwide market for its medical devices.\nThe loss of one or more key employees could negatively affect UTMD performance:\nIn a small company with limited resources, the distraction or loss of key personnel at any point in time may be disruptive to performance. The Company\u2019s benefits programs, including the stock option plan approved by shareholders in May 2013, are key to recruiting and retaining talented employees. The rapid increase in UTMD\u2019s employee healthcare plan costs, as another example, may cause the Company to have to reduce coverages which in turn represents a risk to retaining key employees.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nUTMD did not purchase any of its own securities during 2Q 2013.\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchanges Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "UTAH MEDICAL PRODUCTS, INC."
+    ],
+    [
+     "",
+     "REGISTRANT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:         8/8/13",
+     "By:    /s/ Kevin L. Cornwell"
+    ],
+    [
+     "",
+     "Kevin L. Cornwell"
+    ],
+    [
+     "",
+     "CE[ ]"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:         8/8/13",
+     "By:   /s/ Paul O. Richins"
+    ],
+    [
+     "",
+     "Paul O. Richins"
+    ],
+    [
+     "",
+     "Principal Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "UTAH MEDICAL PRODUCTS, INC.",
+    "REGISTRANT"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchanges Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 649,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

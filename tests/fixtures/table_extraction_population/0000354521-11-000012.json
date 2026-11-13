@@ -1,0 +1,5943 @@
+{
+ "accession": "0000354521-11-000012",
+ "cik": "0000722833",
+ "form": "10-K",
+ "filing_date": "2011-04-01",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k_123110-cri3.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "52-1311532"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "11200 Rockville Pike",
+     ""
+    ],
+    [
+     "Rockville, MD",
+     "20852"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(ZIP Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2010\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________ to ____________\nCommission file number 0-11962\nCAPITAL REALTY INVESTORS-III\nLIMITED PARTNERSHIP\n(Exact Name of Issuer as Specified in its Charter)",
+   "prose_after": "(301) 468-9200\n(Issuer\u2019s Telephone Number, Including Area Code)\n_____________________\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of Registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "I-1"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "I-3"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "I-3"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "I-3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for the Registrant\u2019s Partnership Interests",
+     ""
+    ],
+    [
+     "",
+     "and Related Partnership Matters",
+     "II-1"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition",
+     ""
+    ],
+    [
+     "",
+     "and Results or Operations",
+     "II-2"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements",
+     "II-6"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants",
+     ""
+    ],
+    [
+     "",
+     "on Accounting and Financial Disclosure",
+     "II-6"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "II-7"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "II-8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors and Executive Officers of the Registrant",
+     "III-1"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "III-2"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management",
+     "III-2"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions",
+     "III-3"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "III-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statements",
+     "IV-1"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of Registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K [X]\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of Aaccelerated filer and large accelerated filer@ in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe units of limited partner interest of the Registrant are not traded in any market. Therefore, the units of limited partner interest had neither a market selling price nor an average bid or asked price.\nDOCUMENTS INCORPORATED BY REFERENCE\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\n2010 ANNUAL REPORT ON FORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nITEM 1. BUSINESS\nCapital Realty Investors-III Limited Partnership (the \u201cPartnership\u201d) is a limited partnership which was formed under the Maryland Revised Uniform Limited Partnership Act on June 27, 1983. On November 7, 1983, the Partnership commenced offering 60,000 units of additional limited partner interest through a public offering managed by Merrill Lynch, Pierce, Fenner and Smith, Incorporated. The Partnership closed the offering in January 1984 when it became fully subscribed. As of December 31, 2010, 118 units of limited partner interest had been abandoned.\nThe General Partners of the Partnership are C.R.I., Inc. (\u201cCRI\u201d), which is the Managing General Partner, and current and former shareholders of CRI. Services for the Partnership are performed by CRI, as the Partnership has no employees of its own.\nThe Partnership was formed to invest in real estate, which is the Partnership's principal business activity, by acquiring and holding limited partner interests in limited partnerships (\u201cLocal Partnerships\u201d). The Partnership originally made investments in 37 Local Partnerships. As of December 31, 2010, the Partnership retained investments in four Local Partnerships. Each of these Local Partnerships owns either a federal or state government-assisted apartment complex, which provides housing principally to the elderly and/or to individuals and families of low or moderate income, or a conventionally financed apartment complex. The original objectives of these investments, not necessarily in order of importance, were to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Location\n\nof Apartment Complex",
+     "Mortgage\n\nPayable at\n\n12/31/10 (2)",
+     "Financed and/or Insured\n\nand/or Subsidized Under",
+     "Number of\n\nRental\n\nUnits",
+     "Units\n\nAuthorized for\n\nLow Income\n\nSubsidies",
+     "Expiration\n\n[ ]f\n\nHAP Contract"
+    ],
+    [
+     "Meadow Lanes Apts.\n\nHolland, MI",
+     "$       555,031",
+     "Michigan State Housing\n\nDevelopment Authority/\n\nSection 236 of the\n\nNational Housing Act (NHA)",
+     "118",
+     "0",
+     "--"
+    ],
+    [
+     "Monterey/Hillcrest\n\nWaukesha, WI",
+     "12,595,238",
+     "Section 221(d)(4) of the\n\nNHA/ Federal Housing\n\nAdministration",
+     "300",
+     "60",
+     "04/23/24 (3)"
+    ],
+    [
+     "Villa Mirage I\n\nRancho Mirage, CA",
+     "985,265",
+     "California Housing Finance\n\nAgency (CHFA)/Section 8",
+     "50",
+     "50",
+     "12/19/11 (3)(4)"
+    ],
+    [
+     "Villa Mirage II\n\nRancho Mirage, CA",
+     "905,715",
+     "CHFA/Section 8",
+     "48",
+     "48",
+     "12/14/15"
+    ],
+    [
+     "Totals (4 Properties)",
+     "$15,041,249",
+     "",
+     "516",
+     "158",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 143,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "As a result of its investment in the Local Partnerships, the Partnership became the principal limited partner in 31 (four remaining as of December 31, 2010) Local Partnerships. As a limited partner, the Partnership's legal liability for obligations of the Local Partnerships is limited to its investment. In another six (zero remaining as of December 31, 2010) Local Partnerships, the Partnership invested as a limited partner in intermediary partnerships which, in turn, invested as general partners in the Local Partnerships. The local general partners and affiliates of the Managing General Partner may operate other apartment complexes which may be in competition for eligible tenants with the Local Partnerships' apartment complexes.\nA schedule of the apartment complexes owned by Local Partnerships in which the Partnership has an investment as of December 31, 2010, follows.\nSCHEDULE OF APARTMENT COMPLEXES OWNED BY LOCAL PARTNERSHIPS\nIN WHICH CAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nHAS AN INVESTMENT (1)",
+   "prose_after": "(continued)\nITEM 1. BUSINESS - Continued\nSCHEDULE OF APARTMENT COMPLEXES OWNED BY LOCAL PARTNERSHIPS\nIN WHICH CAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nHAS AN INVESTMENT (1) - Continued",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 129,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Location\n\nof Apartment Complex",
+     "Units Occupied As\n\nPercentage of Total Units\n\nAs of December 31,",
+     "",
+     "",
+     "",
+     "",
+     "Average Effective Annual\n\nRental Per Unit\n\nfor the Years Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "2009",
+     "2008",
+     "2007",
+     "2006",
+     "2010",
+     "2009",
+     "2008",
+     "2007",
+     "2006"
+    ],
+    [
+     "Meadow Lanes Apts.\n\nHolland, MI",
+     "91%",
+     "86%",
+     "85%",
+     "89%",
+     "82%",
+     "$ 6,475",
+     "$ 6,085",
+     "$ 5,995",
+     "$ 6,194",
+     "$ 6,302"
+    ],
+    [
+     "Monterey/Hillcrest\n\nWaukesha, WI",
+     "91%",
+     "85%",
+     "89%",
+     "91%",
+     "91%",
+     "9,428",
+     "8,725",
+     "8,982",
+     "8,816",
+     "8,785"
+    ],
+    [
+     "Villa Mirage I\n\nRancho Mirage, CA",
+     "97%",
+     "94%",
+     "100%",
+     "97%",
+     "100%",
+     "11,291",
+     "10,051",
+     "10,413",
+     "10,157",
+     "10,106"
+    ],
+    [
+     "Villa Mirage II\n\nRancho Mirage, CA",
+     "95%",
+     "98%",
+     "100%",
+     "95%",
+     "98%",
+     "10,313",
+     "10,440",
+     "10,499",
+     "9,642",
+     "10,083"
+    ],
+    [
+     "Totals (4 Properties) (5)",
+     "92%",
+     "91%",
+     "94%",
+     "93%",
+     "93%",
+     "$ 9,377",
+     "$ 8,825",
+     "$ 8,972",
+     "$ 8,702",
+     "$ 8,819"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 192,
+    "end_line": 223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "(continued)\nITEM 1. BUSINESS - Continued\nSCHEDULE OF APARTMENT COMPLEXES OWNED BY LOCAL PARTNERSHIPS\nIN WHICH CAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nHAS AN INVESTMENT (1) - Continued",
+   "prose_after": "(1) All properties are multifamily housing complexes. No single tenant rents 10% or more of the rentable square footage. Residential leases are typically one year or less in length, with varying expiration dates, and substantially all rentable space is for residential purposes.\n(2) The amounts provided are the balances of first mortgage loans payable by the Local Partnerships as of December 31, 2010.\n(3) The Section 8 HAP contract expiration date reflects an extension from the original expiration date, in accordance with Federal legislation.\n(4) It is anticipated that the Local Partnership will extend its Section 8 HAP contract for a one-year period at its expiration.\n(5) The totals for the percentage of units occupied and the average effective annual rental per unit are based on a simple average.\nITEM 2. PROPERTIES\nThrough its ownership of limited partner interests in Local Partnerships, the Partnership indirectly holds an interest in the real estate owned by the Local Partnerships. See Part I, Item 1, for information concerning these properties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 182,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "No distributions were paid in the years 2009 and 2008."
+    ]
+   ],
+   "caption_stack": [
+    "No distributions were paid in the years 2009 and 2008."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 263,
+    "end_line": 266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR THE REGISTRANT'S PARTNERSHIP INTERESTS"
+    },
+    "note": null
+   },
+   "prose_before": "(a) There is no established market for the purchase and sale of units of additional limited partner interest (Units) in the Partnership, although various informal secondary market services may exist. Due to the limited markets, however, investors may be unable to sell or otherwise dispose of their Units.\nOn or about July 10, 2009, Peachtree Partners (Peachtree) initiated an unregistered tender offer to purchase up to 4.9% of the outstanding Units in the Partnership at a price of $50 per Unit. The offer expired on or about August 10, 2009. Peachtree is not affiliated with the Partnership or the Managing General Partner. The price offered was determined solely at the discretion of Peachtree and did not necessarily represent the fair market value of each Unit.\nIn response to the Peachtree tender offer, on July 30, 2009, the Managing General Partner issued a press release. In the press release, the Managing General Partner recommended that Limited Partners reject the Peachtree offer because it viewed the offer price as inadequate.\n(b) As of April 1, 2011 there were approximately 3,794 registered holders of Units in the Partnership.\n(c) On July 28, 2010, the Partnership paid a cash distribution of $898,230 ($15 per Unit) to the Limited Partners who were holders of record as of July 1, 2010.",
+   "prose_after": "II-1\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL\nCONDITION AND RESULTS OF OPERATIONS\nThe Partnership's Management's Discussion and Analysis of Financial Condition and Results of Operations section is based on the financial statements, and contains information that may be considered forward looking, including statements regarding the effect of governmental regulations. Actual results may differ materially from those described in the forward looking statements and will be affected by a variety of factors including national and local economic conditions, the general level of interest rates, governmental regulations affecting the Partnership and interpretations of those regulations, the competitive environment in which the Partnership operates, and the availability of working capital.\nCritical Accounting Policies\nThe Partnership has disclosed its selection and application of significant accounting policies in Note 1 of the notes to financial statements included in this annual report on Form 10-K at December 31, 2010. The Partnership accounts for its investments in partnerships (Local Partnerships) by the equity method because the Partnership is a limited partner in the Local Partnerships. As such the Partnership has no control over the selection and application of accounting policies, or the use of estimates, by the Local Partnerships. Environmental and operational trends, events and uncertainties that might affect the properties owned by the Local Partnerships would not necessarily have a significant impact on the Partnership\u2019s application of the equity method of accounting, since the equity method has been suspended for three Local Partnerships which have cumulative losses in excess of the amount of the Partnership\u2019s investments in those Local Partnerships. The Partnership reviews property assets for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset may not be fully recoverable. Recoverability is measured by a comparison of the carrying amount of an asset to the estimated undiscounted future net cash flows expected to be generated by the asset. If an asset were determined to be impaired, its basis would be adjusted to fair value through the recognition of an impairment loss.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Combined Rental\n\nRevenue",
+     "$4,652,197",
+     "",
+     "$4,339,145",
+     "",
+     "$4,426,527",
+     ""
+    ],
+    [
+     "Annual Percentage\n\nIncrease",
+     "",
+     "7.2%",
+     "",
+     "(2.0)%",
+     "",
+     "1.8%"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 384,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL"
+    },
+    "note": null
+   },
+   "prose_before": "For financial reporting purposes, the Partnership, as a limited partner in the Local Partnerships, does not record losses from the Local Partnerships in excess of its investment to the extent that the Partnership has no further obligation to advance funds or provide financing to the Local Partnerships. As a result, the Partnership's share of income from partnerships for the years ended December 31, 2010 and 2009, did not include losses of $0 and $395,418, respectively.\nII-5\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL\nCONDITION AND RESULTS OF OPERATIONS - Continued\nInflation\nInflation allows for increases in rental rates, usually offsetting any higher operating and replacement costs. Furthermore, inflation generally does not impact the fixed rate long-term financing under which the Partnership's real property investments were purchased. Future inflation could allow for appreciated values of the Local Partnerships' properties over an extended period of time as rental revenue and replacement values gradually increase.\nThe combined rental revenues for the Partnership\u2019s remaining properties for the three years ended December 31, 2010, 2009 and 2008 follow. Combined rental revenue amounts have been adjusted to reflect property sales and interests transferred in prior years.",
+   "prose_after": "ITEM 8. FINANCIAL STATEMENTS\nThe information required by this item is contained in Part IV.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS\nON ACCOUNTING AND FINANCIAL DISCLOSURE\nOn December 22, 2010, the Partnership dismissed Grant Thornton LLP (\u201cGrant Thornton\u201d) as the Partnership\u2019s independent registered public accounting firm. The decision to change accountants was approved by the Audit Committee of the Board of Directors of the Partnership.\nEffective as of December 23, 2010, the Audit Committee of the Partnership engaged Reznick Group, P.C. (\u201cReznick\u201d) as the Partnership\u2019s independent registered public accounting firm. The decision to engage Reznick was approved by the Audit Committee of the Board of Directors of the Partnership as of such date.\nDuring the years ended December 31, 2009 and 2008, and the subsequent interim period ended September 30, 2010, and through December 22, 2010, neither the Partnership nor anyone on its behalf has consulted with Reznick regarding either (i) the application of accounting principles to a specified transaction, either completed or proposed, or the type of audit opinion that might be rendered on the Partnership\u2019s financial statements; or (ii) any matter that was the subject of a disagreement (as that term is defined in Item 304(a)(1)(iv) of Regulation S-K and the related instructions to Item 304 of Regulation S-K) or a reportable event (as that term is defined in Item 304(a)(1)(v) of Regulation S-K).",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 372,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 413,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "% of Total"
+    ],
+    [
+     "",
+     "",
+     "Name and Address",
+     "Amount and Nature",
+     "Units Issued"
+    ],
+    [
+     "",
+     "",
+     "of Beneficial Owner",
+     "of Beneficial Ownership",
+     "and Outstanding"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Equity Resource",
+     "12,623 Units",
+     "21.08 %"
+    ],
+    [
+     "",
+     "",
+     "Investments, LLC",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "& Affiliates",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "44 Brattle Street",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Cambridge, MA 02138",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Peachtree Partners",
+     "3,912 Units",
+     "6.53 %"
+    ],
+    [
+     "",
+     "",
+     "& Affiliates",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "P. O. Box 47638",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Phoenix, AZ 85068",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "% of Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": null
+   },
+   "prose_before": "(d) Involvement in certain legal proceedings.\nSee Part I, Item 3, for information regarding legal proceedings.\nIII-1\nPART III\nITEM 11. EXECUTIVE COMPENSATION\n(a), (b), (c), (d), (e), (f), (g), and (h)\nThe Partnership has no officers or directors. However, in accordance with the Partnership Agreement, and as disclosed in the public offering, various kinds of compensation and fees were paid or are payable to the General Partners and their affiliates. Additional information required by this Item 11 is incorporated herein by reference to Notes 3 and 4 of the notes to financial statements contained in Part IV.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\n(a) Security ownership of certain beneficial owners.\nThe following table sets forth certain information concerning any person (including any \"group\") who is known by the Partnership to be the beneficial owner of more than five percent of the issued and outstanding units of additional limited partner interest (Units) at April 1, 2011.",
+   "prose_after": "(b) Security ownership of management.\nThe following table sets forth certain information concerning all Units beneficially owned, as of April 1, 2011, by each director and by all directors and officers as a group of the Managing General Partner of the Partnership.\nIII-2\nPART III\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT - Continued",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "% of Total"
+    ],
+    [
+     "",
+     "",
+     "Name of",
+     "Amount and Nature",
+     "Units Issued"
+    ],
+    [
+     "",
+     "",
+     "Beneficial Owner",
+     "of Beneficial Ownership",
+     "and Outstanding"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "William B. Dockser",
+     "None",
+     "0.0%"
+    ],
+    [
+     "",
+     "",
+     "H. William Willoughby",
+     "None",
+     "0.0%"
+    ],
+    [
+     "",
+     "",
+     "All Directors and Officers",
+     "None",
+     "0.0%"
+    ],
+    [
+     "",
+     "",
+     "as a Group (2 persons)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "% of Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": null
+   },
+   "prose_before": "(b) Security ownership of management.\nThe following table sets forth certain information concerning all Units beneficially owned, as of April 1, 2011, by each director and by all directors and officers as a group of the Managing General Partner of the Partnership.\nIII-2\nPART III\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT - Continued",
+   "prose_after": "(c) Changes in control.\nThere exists no arrangement known to the Partnership, the operation of which may, at a subsequent date, result in a change in control of the Partnership. There is a provision in the Limited Partnership Agreement which allows, under certain circumstances, the ability to change control.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS\n(a) and (b)\nTransactions with management and others.\nThe Partnership has no directors or officers. In addition, the Partnership has had no transactions with individual officers or directors of the Managing General Partner of the Partnership other than any indirect interest such officers and directors may have in the amounts paid to the Managing General Partner or its affiliates by virtue of their stock ownership in CRI. Item 11 of this report, which contains a discussion of the fees and other compensation paid or accrued by the Partnership to the General Partners or their affiliates, is incorporated herein by reference. Note 3 of the notes to financial statements contained in Part IV, which contains disclosure of related party transactions, is also incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 515,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 552,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "31,772",
+     "$",
+     "112,500"
+    ],
+    [
+     "Audit-related fees (2)",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "Tax fees (3)",
+     "",
+     "16,800",
+     "",
+     "16,000"
+    ],
+    [
+     "All other fees",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total billed",
+     "$",
+     "48,572",
+     "$",
+     "128,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The Partnership has no directors or officers. In addition, the Partnership has had no transactions with individual officers or directors of the Managing General Partner of the Partnership other than any indirect interest such officers and directors may have in the amounts paid to the Managing General Partner or its affiliates by virtue of their stock ownership in CRI. Item 11 of this report, which contains a discussion of the fees and other compensation paid or accrued by the Partnership to the General Partners or their affiliates, is incorporated herein by reference. Note 3 of the notes to financial statements contained in Part IV, which contains disclosure of related party transactions, is also incorporated herein by reference.\n(c) Certain business relationships.\nThe Partnership's response to Item 13(a) is incorporated herein by reference. In addition, the Partnership has no business relationship with entities of which the officers and directors of the Managing General Partner of the Partnership are officers, directors or equity owners other than as set forth in the Partnership's response to Item 13(a).\n(d) Transactions with promoters.\nNot applicable.\nIII-3\nPART III\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nFor the years ended December 31, 2010 and December 31, 2009, the Partnership incurred professional fees for the services of the Partnership\u2019s independent registered public accounting firm Grant Thornton as follows:",
+   "prose_after": "(1) Principally fees for the audit of the Partnership\u2019s annual financial statements the independent registered public accounting firm\u2019s review of the Partnership\u2019s quarterly financial statements, and services provided in connection with the Partnership\u2019s regulatory filings.\n(2) Principally fees for assurance and related services performed by the Partnership\u2019s independent registered public accounting firm that are reasonably related to the performance of the audit or review of the Partnership\u2019s financial statements.\n(3) Fees for preparation of Partnership federal and state tax returns.\nThe Partnership has no directors or officers. The Board of Directors of the Managing General Partner of the Partnership, serving as the Audit Committee, has approved in advance 100% of the fees paid to, and services provided by the Partnership\u2019s independent registered public accounting firm. Prior to approving the Partnership\u2019s independent registered public accounting firm providing any non-audit services, the Board of Directors of the Managing General Partner of the Partnership would assess whether the provision of those services would compromise the Partnership\u2019s independent registered public accounting firm independence.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exhibit No. 31.1 - Certification of Principal Executive Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No. 31.1 - Certification of Principal Executive Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "a. Definitive Proxy Statement. (Incorporated by reference to Registrant\u2019s Definitive Proxy Statement dated November 21, 2005.)\nExhibit No. 3 - Articles of Incorporation and bylaws\na. Certificate of Limited Partnership of Capital Realty Investors-III Limited Partnership. (Incorporated by reference to Exhibit No. 4 to Registrant's Registration Statement on Form S-11, as amended, dated October 24, 1983.)\nExhibit No. 4 - Instruments defining the rights of security holders, including indentures.\na. Amended Certificate and Limited Partnership Agreement of Capital Realty Investors-III Limited Partnership. (Incorporated by reference to Exhibit No. 4 to Registrant's Registration Statement on Form S-11, as amended, dated October 24, 1983.)\nIV-1\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENTS - Continued\nExhibit No. 10 - Material Contracts.\na. Management Services Agreement between CRI and Capital Realty Investors-III Limited Partnership. (Incorporated by reference to Exhibit No. 10(b) to Registrant's Registration Statement on Form S-11, as amended, dated October 24, 1983.)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exhibit No. 31.2 - Certification of Principal Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No. 31.2 - Certification of Principal Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Exhibit No. 32 -\n\n \n\nExhibit No. 99 -",
+     "Certification of Principal Executive Officer and Principal Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n\n \n\nAdditional Exhibits."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "a. Prospectus of the Partnership, dated November 7, 1983. (Incorporated by reference to Registrant's Registration Statement on Form S-11, as amended, dated October 24, 1983.)\nIV-2\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CAPITAL REALTY INVESTORS-III"
+    ],
+    [
+     "",
+     "LIMITED PARTNERSHIPS"
+    ],
+    [
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "April 1, 2011",
+     "By:        /s/ William B. Dockser"
+    ],
+    [
+     "DATE",
+     "William B. Dockser"
+    ],
+    [
+     "",
+     "Director, Chairman of the Board,"
+    ],
+    [
+     "",
+     "and Treasurer"
+    ],
+    [
+     "",
+     "Principal Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "CAPITAL REALTY INVESTORS-III",
+    "LIMITED PARTNERSHIPS",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 667,
+    "end_line": 679
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "a. Prospectus of the Partnership, dated November 7, 1983. (Incorporated by reference to Registrant's Registration Statement on Form S-11, as amended, dated October 24, 1983.)\nIV-2\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 661,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "April 1, 2011",
+     "By:        /s/ H. William Willoughby"
+    ],
+    [
+     "DATE",
+     "H. William Willoughby"
+    ],
+    [
+     "",
+     "Director, President, Secretary,"
+    ],
+    [
+     "",
+     "Principal Financial Officer and"
+    ],
+    [
+     "",
+     "Principal Accounting Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "IV-3\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nINDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 661,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements of Capital Realty Investors, Ltd.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "IV-5-6"
+    ],
+    [
+     "Balance Sheets as of December 31, 2010 and 2009",
+     "IV-7"
+    ],
+    [
+     "Statements of Operations for the Years Ended",
+     ""
+    ],
+    [
+     "December 31, 2010, 2009 and 2008",
+     "IV-8"
+    ],
+    [
+     "Statements of Changes in Partners\u2019 (Deficit) Capital for the Years Ended",
+     ""
+    ],
+    [
+     "December 31, 2010, 2009 and 2008",
+     "IV-9"
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended",
+     ""
+    ],
+    [
+     "December 31, 2010, 2009 and 2008",
+     "IV-10"
+    ],
+    [
+     "Notes to Financial Statements",
+     "IV-11"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 713
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "IV-3\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "IV-4\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nThe Partners\nCapital Realty Investors - III Limited Partnership\nWe have audited the accompanying balance sheet of Capital Realty Investors - III Limited Partnership (the Partnership) as of December 31, 2010 and the related statements of operations, changes in partners\u2019 (deficit) capital, and cash flows for the year then ended. These financial statements are the responsibility of the Partnership\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Partnership is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Partnership\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments in partnerships",
+     "$",
+     "2,836,317",
+     "$",
+     "2,620,011"
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "2,813,153",
+     "",
+     "4,442,208"
+    ],
+    [
+     "Acquisition fees, principally paid to related parties,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net of accumulated amortization of $70,990 and $68,419, respectively",
+     "",
+     "6,164",
+     "",
+     "8,736"
+    ],
+    [
+     "Property purchase costs,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net of accumulated amortization of $42,764 and $41,148, respectively",
+     "",
+     "5,718",
+     "",
+     "7,334"
+    ],
+    [
+     "Other assets",
+     "",
+     "14,446",
+     "",
+     "--"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "5,675,798",
+     "$",
+     "7,078,289"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Partnership is not required to have, nor were we engaged to perform an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Partnership\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Capital Realty Investors \u2013 III Limited Partnership as of December 31, 2009, and the results of its operations, changes in partners\u2019 (deficit) capital and its cash flows for each of the two years in the period ended December 31, 2009, in conformity with accounting principles generally accepted in the United States of America.\nAs described in Note 1 to the financial statements, the Partnership has received limited partner approval of the Partnership\u2019s plan to sell all of the Partnership\u2019s assets and dissolve the Partnership pursuant to a Plan of Liquidation and Dissolution. There can be no assurance that the Liquidation will be completed pursuant to the Plan of Liquidation and Dissolution.\n/s/ GRANT THORNTON LLP\nMcLean, Virginia\nMarch 25, 2010\nIV-6\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nBALANCE SHEETS\nASSETS",
+   "prose_after": "LIABILITIES AND PARTNERS' CAPITAL",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Due on investments in partnerships",
+     "$",
+     "119,544",
+     "",
+     "$",
+     "119,544",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "33,976",
+     "",
+     "",
+     "33,976",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "48,344",
+     "",
+     "",
+     "279,311",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "201,864",
+     "",
+     "",
+     "432,831",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners' deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital paid-in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Partners",
+     "",
+     "2,000",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Limited Partners",
+     "",
+     "60,001,500",
+     "",
+     "",
+     "60,001,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "60,003,500",
+     "",
+     "",
+     "60,003,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated distributions to partners",
+     "",
+     "(27,472,135)",
+     "",
+     "",
+     "(26,573,905)",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "(6,156,933)",
+     "",
+     "",
+     "(6,156,933)",
+     ""
+    ],
+    [
+     "Accumulated losses",
+     "",
+     "(20,900,498)",
+     "",
+     "",
+     "(20,627,204)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total partners' capital",
+     "",
+     "5,473,934",
+     "",
+     "",
+     "6,645,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners' capital",
+     "$",
+     "5,675,798",
+     "",
+     "$",
+     "7,078,289",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 789,
+    "end_line": 821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "LIABILITIES AND PARTNERS' CAPITAL",
+   "prose_after": "The accompanying notes are the integral part\nof these financial statements\nIV-7\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010        2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share of income (loss) from partnerships",
+     "$",
+     "214,155",
+     "",
+     "$",
+     "(40,353)",
+     "",
+     "$",
+     "59,468",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other revenue and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and other",
+     "",
+     "257,465",
+     "",
+     "",
+     "15,369",
+     "",
+     "",
+     "156,074",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "292,762",
+     "",
+     "",
+     "246,195",
+     "",
+     "",
+     "267,577",
+     ""
+    ],
+    [
+     "Management fee",
+     "",
+     "300,000",
+     "",
+     "",
+     "300,000",
+     "",
+     "",
+     "300,000",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "147,964",
+     "",
+     "",
+     "85,544",
+     "",
+     "",
+     "112,330",
+     ""
+    ],
+    [
+     "Amortization of deferred costs",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "744,914",
+     "",
+     "",
+     "635,927",
+     "",
+     "",
+     "684,095",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other revenue and expenses",
+     "",
+     "(487,449)",
+     "",
+     "",
+     "(620,558)",
+     "",
+     "",
+     "(528,021)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before impairment loss",
+     "",
+     "(273,294)",
+     "",
+     "",
+     "(660,911)",
+     "",
+     "",
+     "(468,553)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "(9,296)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(273,294)",
+     "",
+     "$",
+     "(660,911)",
+     "",
+     "$",
+     "(477,849)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss allocated to General Partners (1.51%)",
+     "$",
+     "(4,127)",
+     "",
+     "$",
+     "(9,980)",
+     "",
+     "$",
+     "(7,216)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss allocated to Initial and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Special Limited Partners (1.49%)",
+     "$",
+     "(4,072)",
+     "",
+     "$",
+     "(9,848)",
+     "",
+     "$",
+     "(7,120)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss allocated to Additional Limited Partners (97%)",
+     "$",
+     "(265,095)",
+     "",
+     "$",
+     "(641,083)",
+     "",
+     "$",
+     "(463,513)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per unit of Additional Limited Partner",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest based on 59,882 units outstanding",
+     "$",
+     "(4.43)",
+     "",
+     "$",
+     "(10.71)",
+     "",
+     "$",
+     "(7.74)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 884
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are the integral part\nof these financial statements\nIV-7\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are the integral part\nof these financial statements.\nIV-8\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF CHANGES IN PARTNERS' (DEFICIT) CAPITAL",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 888,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Initial and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Special",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General",
+     "",
+     "",
+     "Limited",
+     "",
+     "",
+     "Limited",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Partners",
+     "",
+     "",
+     "Partners",
+     "",
+     "",
+     "Partners",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) capital, January 1, 2008",
+     "$",
+     "(421,048)",
+     "",
+     "$",
+     "(416,077)",
+     "",
+     "$",
+     "8,621,343",
+     "",
+     "$",
+     "7,784,218",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(7,216)",
+     "",
+     "",
+     "(7,120)",
+     "",
+     "",
+     "(463,513)",
+     "",
+     "",
+     "(477,849)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) capital, December 31, 2008",
+     "",
+     "(428,264)",
+     "",
+     "",
+     "(423,197)",
+     "",
+     "",
+     "8,157,830",
+     "",
+     "",
+     "7,306,369",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(9,980)",
+     "",
+     "",
+     "(9,848)",
+     "",
+     "",
+     "(641,083)",
+     "",
+     "",
+     "(660,911)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 (deficit) capital, December 31, 2009",
+     "",
+     "(438,244)",
+     "",
+     "",
+     "(433,045)",
+     "",
+     "",
+     "7,516,747",
+     "",
+     "",
+     "6,645,458",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(4,127)",
+     "",
+     "",
+     "(4,072)",
+     "",
+     "",
+     "(265,095)",
+     "",
+     "",
+     "(273,294)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distribution of $15 per Unit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of Limited Partner Interest",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "(898,230)",
+     "",
+     "",
+     "(898,230)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partner\u2019s (deficit) capital, December 31, 2010",
+     "$",
+     "(442,371)",
+     "",
+     "$",
+     "(437,117)",
+     "",
+     "$",
+     "6,353,422",
+     "",
+     "$",
+     "5,473,934",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Initial and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 924
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are the integral part\nof these financial statements.\nIV-8\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF CHANGES IN PARTNERS' (DEFICIT) CAPITAL",
+   "prose_after": "The accompanying notes are the integral part\nof these financial statements.\nIV-9\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(273,294)",
+     "",
+     "$",
+     "(660,911)",
+     "",
+     "$",
+     "(477,849)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share of (income) loss from partnerships",
+     "",
+     "(214,155)",
+     "",
+     "",
+     "40,353",
+     "",
+     "",
+     "(59,468)",
+     ""
+    ],
+    [
+     "Amortization of deferred costs",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "9,296",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) Decrease in other assets",
+     "",
+     "(14,446)",
+     "",
+     "",
+     "5,645",
+     "",
+     "",
+     "18,390",
+     ""
+    ],
+    [
+     "Decrease in accounts payable and accrued expenses",
+     "",
+     "(230,967)",
+     "",
+     "",
+     "(59,888)",
+     "",
+     "",
+     "(101,533)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(728,674)",
+     "",
+     "",
+     "(670,613)",
+     "",
+     "",
+     "(606,976)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receipt of distributions from partnerships",
+     "",
+     "11,535",
+     "",
+     "",
+     "11,534",
+     "",
+     "",
+     "8,660",
+     ""
+    ],
+    [
+     "Advance to Local Partnership",
+     "",
+     "(13,686)",
+     "",
+     "",
+     "(127,980)",
+     "",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(2,151)",
+     "",
+     "",
+     "(116,446)",
+     "",
+     "",
+     "8,660",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions to Additional Limited Partners",
+     "",
+     "(898,230)",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(898,230)",
+     "",
+     "",
+     "(--",
+     ")",
+     "",
+     "(--",
+     ")"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(1,629,055)",
+     "",
+     "",
+     "(787,059)",
+     "",
+     "",
+     "(598,316)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "4,442,208",
+     "",
+     "",
+     "5,229,267",
+     "",
+     "",
+     "5,827,583",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "2,813,153",
+     "",
+     "$",
+     "4,442,208",
+     "",
+     "$",
+     "5,229,267",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 983
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are the integral part\nof these financial statements.\nIV-9\nCAPITAL REALTY INVESTORS-III LIMITED PARTNERSHIP\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are the integral part\nof these financial statements.\nIV-10\nCAPITAL REALTY INVEDSTORS-III LIMITED PARTNERSHIP\n1. ORGANIZATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\na. Organization\nCapital Realty Investors-III Limited Partnership (the Partnership) was formed under the Maryland Revised Uniform Limited Partnership Act on June 27, 1983, and shall continue until December 31, 2037, unless sooner dissolved in accordance with the terms of the Partnership Agreement. (See Note 1.k., below, for discussion of the Partnership\u2019s Plan of Liquidation and Dissolution.) The Partnership was formed to invest in real estate by acquiring and holding limited partner interests in limited partnerships (Local Partnerships) that own and operate federal or state government-assisted apartment properties, which provide housing principally to the elderly or to individuals and families of low or moderate income, or conventionally financed apartment properties, located throughout the United States.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "2",
+     "(a)",
+     "",
+     "2",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental property, at cost, net of accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "depreciation of $6,987,185, $17,673,702,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and $24,660,887, respectively",
+     "$",
+     "1,224,861",
+     "",
+     "$",
+     "2,359,509",
+     "",
+     "$",
+     "3,584,370",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "432,415",
+     "",
+     "",
+     "1,848,318",
+     "",
+     "",
+     "2,280,733",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "2,313,057",
+     "",
+     "",
+     "1,808,396",
+     "",
+     "",
+     "4,121,453",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,970,333",
+     "",
+     "$",
+     "6,016,223",
+     "",
+     "$",
+     "9,986,556",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage notes payable",
+     "$",
+     "1,540,296",
+     "",
+     "$",
+     "13,500,953",
+     "",
+     "$",
+     "15,041,249",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "456,912",
+     "",
+     "",
+     "1,559,852",
+     "",
+     "",
+     "2,016,764",
+     ""
+    ],
+    [
+     "Due to general partners",
+     "",
+     "1,152,735",
+     "",
+     "",
+     "1,425,266",
+     "",
+     "",
+     "2,578,001",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "3,149,943",
+     "",
+     "",
+     "16,486,071",
+     "",
+     "",
+     "19,636,014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners' capital (deficit)",
+     "",
+     "820,390",
+     "",
+     "",
+     "(10,469,848)",
+     "",
+     "",
+     "(9,649,458)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners' capital",
+     "$",
+     "3,970,333",
+     "",
+     "$",
+     "6,016,223",
+     "",
+     "$",
+     "9,986,556",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1191,
+    "end_line": 1222
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "On October 23, 2009, the Partnership advanced $56,680 to Pebble Valley Housing Partners Ltd. Partnership (Monterey/Hillcrest) for non-resident withholding taxes paid on behalf of the Partnership. On November 5, 2009, the Partnership advanced $2,000 to Monterey/Hillcrest for non-resident withholding taxes paid on behalf of the Partnership. On September 15, 2009, the Partnership advanced $3,000 to Monterey/Hillcrest for non-resident withholding taxes paid on behalf of the Partnership. On April 14, 2010, the Partnership advanced $13,686 to Monterey/Hillcrest for non-resident withholding taxes paid on behalf of the Partnership. For financial statement purposes, the advances were charged off by the Partnership as a result of losses at the Local Partnership level during prior years.\nIV-18\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nd. Summarized financial information\nCombined balance sheets and combined statements of operations for the four Local Partnerships in which the Partnership is invested as of December 31, 2010, follow. The information is presented separately for two Local Partnership which has investment basis (equity method), and for two Local Partnerships for which the Partnership\u2019s carrying value is zero (equity method suspended).\nCOMBINED BALANCE SHEETS\nDecember 31, 2010",
+   "prose_after": "(a) Meadow Lanes; Villa Mirage I\n(b) Monterey/Hillcrest; Villa Mirage II\nIV-19\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1179,
+     "token": "REPEATING_HEADER",
+     "id": 82,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1226,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "2",
+     "(a)",
+     "",
+     "2",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "$",
+     "1,328,622",
+     "",
+     "$",
+     "3,323,575",
+     "",
+     "$",
+     "4,652,197",
+     ""
+    ],
+    [
+     "Rental",
+     "",
+     "178,450",
+     "",
+     "",
+     "246,002",
+     "",
+     "",
+     "424,452",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,507,072",
+     "",
+     "",
+     "3,569,577",
+     "",
+     "",
+     "5,076,649",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "931,680",
+     "",
+     "",
+     "1,946,245",
+     "",
+     "",
+     "2,877,925",
+     ""
+    ],
+    [
+     "Operating and other",
+     "",
+     "52,286",
+     "",
+     "",
+     "818,623",
+     "",
+     "",
+     "870,909",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "245,455",
+     "",
+     "",
+     "636,013",
+     "",
+     "",
+     "881,468",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,229,421",
+     "",
+     "",
+     "3,400,881",
+     "",
+     "",
+     "4,630,302",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "277,651",
+     "",
+     "$",
+     "168,696",
+     "",
+     "$",
+     "446,347",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "11,535",
+     "",
+     "$",
+     "--",
+     "",
+     "$",
+     "11,535",
+     ""
+    ],
+    [
+     "Cash Distributions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash distribution recorded as reduction of",
+     "$",
+     "11,535",
+     "",
+     "$",
+     "--",
+     "",
+     "$",
+     "11,535",
+     ""
+    ],
+    [
+     "investments in partnerships",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partnership\u2019s share of Local Partnership net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "income",
+     "",
+     "227,841",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "227,841",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances to Local Partnerships",
+     "",
+     "--",
+     "",
+     "",
+     "(13,686)",
+     "",
+     "",
+     "(13,686)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share of income from partnerships",
+     "$",
+     "227,841",
+     "",
+     "$",
+     "(13,686)",
+     "",
+     "$",
+     "214,155",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1238,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "(a) Meadow Lanes; Villa Mirage I\n(b) Monterey/Hillcrest; Villa Mirage II\nIV-19\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2010",
+   "prose_after": "IV-20\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCombined balance sheets and combined statements of operations for the four Local Partnerships in which the Partnership is invested as of December 31, 2009, follow. The information is presented separately for one Local Partnership which has investment basis (equity method), and for three Local Partnerships for which the Partnership\u2019s carrying value is zero (equity method suspended).\nCOMBINED BALANCE SHEETS\nDecember 31, 2009",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1230,
+     "token": "REPEATING_HEADER",
+     "id": 85,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1282,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "1",
+     "(a)",
+     "",
+     "3",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental property, at cost, net of accumulated depreciation of $3,858,076,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$19,998,718, and $23,856,794,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "respectively",
+     "$",
+     "1,360,934",
+     "",
+     "$",
+     "2,841,215",
+     "",
+     "$",
+     "4,202,149",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "168,760",
+     "",
+     "",
+     "2,108,943",
+     "",
+     "",
+     "2,277,703",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "1,834,673",
+     "",
+     "",
+     "1,878,352",
+     "",
+     "",
+     "3,713,025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,364,367",
+     "",
+     "$",
+     "6,828,510",
+     "",
+     "$",
+     "10,192,877",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage notes payable",
+     "$",
+     "693,193",
+     "",
+     "$",
+     "15,529,584",
+     "",
+     "$",
+     "16,222,777",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "43,018",
+     "",
+     "",
+     "1,510,240",
+     "",
+     "",
+     "1,553,258",
+     ""
+    ],
+    [
+     "Due to general partners",
+     "",
+     "--",
+     "",
+     "",
+     "2,500,877",
+     "",
+     "",
+     "2,500,877",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "736,211",
+     "",
+     "",
+     "19,540,701",
+     "",
+     "",
+     "20,276,912",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners' capital (deficit)",
+     "",
+     "2,628,156",
+     "",
+     "",
+     "(12,712,191)",
+     "",
+     "",
+     "(10,084,035)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners' capital",
+     "$",
+     "3,364,367",
+     "",
+     "$",
+     "6,828,510",
+     "",
+     "$",
+     "10,192,877",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1296,
+    "end_line": 1327
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "IV-20\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCombined balance sheets and combined statements of operations for the four Local Partnerships in which the Partnership is invested as of December 31, 2009, follow. The information is presented separately for one Local Partnership which has investment basis (equity method), and for three Local Partnerships for which the Partnership\u2019s carrying value is zero (equity method suspended).\nCOMBINED BALANCE SHEETS\nDecember 31, 2009",
+   "prose_after": "(a) Meadow Lanes\n(b) Monterey/Hillcrest; Villa Mirage I; Villa Mirage II\nIV-21\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2009",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1286,
+     "token": "REPEATING_HEADER",
+     "id": 88,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "1",
+     "(a)",
+     "",
+     "3",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental",
+     "$",
+     "718,064",
+     "",
+     "$",
+     "3,621,081",
+     "",
+     "$",
+     "4,339,145",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "131,747",
+     "",
+     "",
+     "218,378",
+     "",
+     "",
+     "350,125",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "849,811",
+     "",
+     "",
+     "3,839,459",
+     "",
+     "",
+     "4,689,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating and other",
+     "",
+     "599,096",
+     "",
+     "",
+     "2,394,794",
+     "",
+     "",
+     "2,993,890",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "(49,562)",
+     "",
+     "",
+     "986,173",
+     "",
+     "",
+     "936,611",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "210,862",
+     "",
+     "",
+     "858,954",
+     "",
+     "",
+     "1,069,816",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "760,396",
+     "",
+     "",
+     "4,239,921",
+     "",
+     "",
+     "5,000,317",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "89.415",
+     "",
+     "$",
+     "(400,462)",
+     "",
+     "$",
+     "(311,047)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Distributions",
+     "$",
+     "11,535",
+     "",
+     "$",
+     "--",
+     "",
+     "$",
+     "11,535",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash distribution recorded as reduction of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "investments in partnerships",
+     "$",
+     "11,535",
+     "",
+     "$",
+     "--",
+     "",
+     "$",
+     "11,535",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partnership\u2019s share of Local Partnership net\n\nincome",
+     "",
+     "87,627",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "87,627",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances to Local Partnerships",
+     "",
+     "--",
+     "",
+     "",
+     "(127,980)",
+     "",
+     "",
+     "(127,980)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share of income (loss) from partnerships",
+     "$",
+     "87,627",
+     "",
+     "$",
+     "(127,980)",
+     "",
+     "$",
+     "(40,353)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "(a) Meadow Lanes\n(b) Monterey/Hillcrest; Villa Mirage I; Villa Mirage II\nIV-21\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2009",
+   "prose_after": "IV-22\n2. INVESTMENTS IN PARTNERSHIPS \u2013 Continued\nCombined balance sheets and combined statements of operations for the four Local Partnerships in which the Partnership was invested as of December 31, 2008, follow. The information is presented separately for one Local Partnerships which has investment basis (equity method), and for three Local Partnerships for which the Partnership\u2019s carrying value is zero (equity method suspended).\nCOMBINED BALANCE SHEETS\nDecember 31, 2008",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1335,
+     "token": "REPEATING_HEADER",
+     "id": 91,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "1",
+     "(a)",
+     "",
+     "3",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental property, at cost, net of     accumulated depreciation of $3,691,830,\n\n$19,142,608, and $22,834,438,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "respectively",
+     "$",
+     "1,423,564",
+     "",
+     "$",
+     "3,633,812",
+     "",
+     "$",
+     "5,057,376",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "168,760",
+     "",
+     "",
+     "2,108,943",
+     "",
+     "",
+     "2,277,703",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "1,858,873",
+     "",
+     "",
+     "1,795,775",
+     "",
+     "",
+     "3,654,648",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,451,197",
+     "",
+     "$",
+     "7,538,530",
+     "",
+     "$",
+     "10,989,727",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mortgage notes payable",
+     "$",
+     "822,686",
+     "",
+     "$",
+     "16,022,288",
+     "",
+     "$",
+     "16,844,974",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "78,000",
+     "",
+     "",
+     "1,398,701",
+     "",
+     "",
+     "1,476,701",
+     ""
+    ],
+    [
+     "Due to general partners",
+     "",
+     "--",
+     "",
+     "",
+     "2,429,270",
+     "",
+     "",
+     "2,429,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "900,686",
+     "",
+     "",
+     "19,850,259",
+     "",
+     "",
+     "20,750,945",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 capital (deficit)",
+     "",
+     "2,550,511",
+     "",
+     "",
+     "(12,311,729)",
+     "",
+     "",
+     "(9,761,218)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and partners\u2019 capital\n\n(deficit)",
+     "$",
+     "3,451,197",
+     "",
+     "$",
+     "7,538,530",
+     "",
+     "$",
+     "10,989,727",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1402,
+    "end_line": 1437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "IV-22\n2. INVESTMENTS IN PARTNERSHIPS \u2013 Continued\nCombined balance sheets and combined statements of operations for the four Local Partnerships in which the Partnership was invested as of December 31, 2008, follow. The information is presented separately for one Local Partnerships which has investment basis (equity method), and for three Local Partnerships for which the Partnership\u2019s carrying value is zero (equity method suspended).\nCOMBINED BALANCE SHEETS\nDecember 31, 2008",
+   "prose_after": "IV-23\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2008",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1392,
+     "token": "REPEATING_HEADER",
+     "id": 94,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1437,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Method",
+     "",
+     "",
+     "Suspended",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Local Partnerships",
+     "",
+     "1",
+     "(a)",
+     "",
+     "3",
+     "(b)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental",
+     "$",
+     "707,396",
+     "",
+     "$",
+     "3,719,131",
+     "",
+     "$",
+     "4,426,527",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "129,588",
+     "",
+     "",
+     "215,564",
+     "",
+     "",
+     "345,152",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "836,984",
+     "",
+     "",
+     "3,934,695",
+     "",
+     "",
+     "4,771,679",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating and other",
+     "",
+     "636,645",
+     "",
+     "",
+     "2,415,147",
+     "",
+     "",
+     "3,051,792",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "(42,225)",
+     "",
+     "",
+     "1,014,252",
+     "",
+     "",
+     "972,027",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "191,368",
+     "",
+     "",
+     "848,625",
+     "",
+     "",
+     "1,039,993",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "785,788",
+     "",
+     "",
+     "4,278,024",
+     "",
+     "",
+     "5,063,812",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "51,196",
+     "",
+     "$",
+     "(343,329)",
+     "",
+     "$",
+     "(292,133)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash distributions",
+     "$",
+     "8,660",
+     "",
+     "$",
+     "--",
+     "",
+     "$",
+     "8,660",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share of income from partnerships",
+     "$",
+     "50,172",
+     "",
+     "$",
+     "9,296",
+     "",
+     "$",
+     "59,468",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1449,
+    "end_line": 1483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "IV-23\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nCOMBINED STATEMENTS OF OPERATIONS\nFor the year ended December 31, 2008",
+   "prose_after": "All of the cash distributions recorded as income are included in share of income from partnerships on the statements of operations for the respective years, and are recorded as cash receipts on the respective balance sheets. Cash distributions recorded as a reduction of the related investment are recorded as cash receipts on the respective balance sheets, and are recorded as a reduction of investments in partnerships, also on the respective balance sheets.\ne. Reconciliation of the Local Partnerships' financial statement income (loss)\nto taxable income\nFor federal income tax purposes, the Local Partnerships report on a basis whereby: (i) certain revenue and the related assets are recorded when received rather than when earned; (ii) certain costs are expensed when paid or incurred rather than capitalized and amortized over the period of benefit; and (iii) a shorter life is used to compute depreciation on the property as permitted by the Internal Revenue Code and the underlying regulations. These returns are subject to examination and, therefore, possible adjustment by the IRS.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1441,
+     "token": "REPEATING_HEADER",
+     "id": 97,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1491,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial statement net income (loss)",
+     "$",
+     "446,347",
+     "$",
+     "(311,047)",
+     "",
+     "$",
+     "(292,133)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Differences between financial statement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and tax depreciation, amortization,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and miscellaneous differences",
+     "",
+     "410,602",
+     "",
+     "756,313",
+     "",
+     "",
+     "814,671",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxable income",
+     "$",
+     "856,949",
+     "$",
+     "445,266",
+     "",
+     "$",
+     "522,538",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1501,
+    "end_line": 1518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "INVESTMENTS IN PARTNERSHIPS"
+    }
+   },
+   "prose_before": "All of the cash distributions recorded as income are included in share of income from partnerships on the statements of operations for the respective years, and are recorded as cash receipts on the respective balance sheets. Cash distributions recorded as a reduction of the related investment are recorded as cash receipts on the respective balance sheets, and are recorded as a reduction of investments in partnerships, also on the respective balance sheets.\ne. Reconciliation of the Local Partnerships' financial statement income (loss)\nto taxable income\nFor federal income tax purposes, the Local Partnerships report on a basis whereby: (i) certain revenue and the related assets are recorded when received rather than when earned; (ii) certain costs are expensed when paid or incurred rather than capitalized and amortized over the period of benefit; and (iii) a shorter life is used to compute depreciation on the property as permitted by the Internal Revenue Code and the underlying regulations. These returns are subject to examination and, therefore, possible adjustment by the IRS.\nIV-24\n2. INVESTMENTS IN PARTNERSHIPS - Continued\nA reconciliation of the Local Partnerships' financial statement net income (loss) reflected above to taxable income follows.",
+   "prose_after": "3. RELATED PARTY TRANSACTIONS\nIn accordance with the terms of the Partnership Agreement, the Partnership paid the Managing General Partner a fee for services in connection with the review, selection, evaluation, negotiation and acquisition of the original interests in the Local Partnerships. The fee amounted to $1,200,000, which is equal to two percent of the Additional Limited Partners' capital contributions to the Partnership. The acquisition fee was capitalized and is being amortized over a 30-year period using the straight-line method.\nIn accordance with the terms of the Partnership Agreement, the Partnership is obligated to reimburse the Managing General Partner or its affiliates for certain direct expenses and payroll expenses in connection with managing the Partnership. Payroll expenses are reimbursed at a factor of 1.75 times base salary. For the years ended December 31, 2010, 2009 and 2008, the Partnership paid $165,644, $170,006 and $186,833, respectively, to the Managing General Partner or its affiliates as direct reimbursement of expenses incurred on behalf of the Partnership. In addition, certain employees of the Managing General Partner provided legal and tax accounting services to the Partnership. These are reimbursed comparable to third party service charges. For the years ended December 31, 2010, 2009 and 2008, the Partnership paid $92,895, $37,412 and $46,125, respectively, to the Managing General Partner or its affiliates for these services. Such reimbursed expenses are included in the accompanying statements of operations as general and administrative expenses.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1495,
+     "token": "REPEATING_HEADER",
+     "id": 100,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1530,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial statement net loss",
+     "$",
+     "(273,294)",
+     "",
+     "$",
+     "(660,911)",
+     "",
+     "$",
+     "(477,849)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Differences between financial statement net income and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "taxable income related to the Partnership\u2019s equity in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "the Local Partnerships' income or losses and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "accrued expenses",
+     "",
+     "642,793",
+     "",
+     "",
+     "485,621",
+     "",
+     "",
+     "472,365",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Differences between financial statement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "gain and taxable gain from the sale or",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "transfer of properties",
+     "",
+     "(255,000)",
+     "",
+     "",
+     "--",
+     "",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs amortized over a shorter period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "for income tax purposes",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     "",
+     "",
+     "4,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxable income (loss)",
+     "$",
+     "118,687",
+     "",
+     "$",
+     "(171,102)",
+     "",
+     "$",
+     "(1,296)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1586,
+    "end_line": 1612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "RECONCILIATION OF THE PARTNERSHIP'S FINANCIAL STATEMENT NET"
+    }
+   },
+   "prose_before": "As defined in the Partnership Agreement, after the payment of distributions described in the previous paragraph, after the establishment of any reserves deemed necessary by the Managing General Partner and after payment of the Management Fee, the Partnership had no remaining cash available for distribution for the years ended December 31, 2010, 2009 and 2008. The Managing General Partner currently intends to retain all of the Partnership\u2019s remaining undistributed cash for operating cash reserves.\nIV-27\n5. RECONCILIATION OF THE PARTNERSHIP'S FINANCIAL STATEMENT NET\nLOSS TO TAXABLE INCOME (LOSS)\nFor federal income tax purposes, the Partnership reports on a basis whereby: (i) certain expenses are amortized rather than expensed when incurred; (ii) certain costs are amortized over a shorter period for tax purposes, as permitted by the Internal Revenue Code and underlying regulations, and (iii) certain costs are amortized over a longer period for tax purposes. The Partnership records its share of losses from its investments in limited partnerships for federal income tax purposes as reported on the Local Partnerships' federal income tax returns (see Note 2.e.), including losses in excess of related investment amounts. These returns are subject to examination and, therefore, possible adjustment by the IRS.\nA reconciliation of the Partnership's financial statement net loss to taxable income (loss) follows.",
+   "prose_after": "6. CASH CONCENTRATION RISK\nFinancial instruments that potentially subject the Partnership to concentrations of risk consist primarily of cash. The Partnership maintains four cash accounts with two banks. As of December 31, 2010, the uninsured portion of the cash balances was $0.\n# # #\nIV-28",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1576,
+     "token": "REPEATING_HEADER",
+     "id": 109,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1618,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

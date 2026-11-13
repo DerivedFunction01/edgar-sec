@@ -1,0 +1,1825 @@
+{
+ "accession": "0001564590-21-017104",
+ "cik": "0001829730",
+ "form": "10-K",
+ "filing_date": "2021-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "swbku-10k_20201231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Switchback II Corporation",
+     ""
+    ],
+    [
+     "(Exact Name of Registrant as Specified in its Charter)",
+     ""
+    ],
+    [
+     "Cayman Islands",
+     "98-1564143"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5949 Sherry Lane, Suite 1010\n\n\n\nDallas, Texas",
+     "75225"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Registrant\u2019s telephone number, including area code: (972) 514-9535",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Switchback II Corporation",
+    "(Exact Name of Registrant as Specified in its Charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-39863",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, each consisting of one Class A ordinary share and one-fifth of one warrant",
+     "SWBK.U",
+     "The New York Stock Exchange"
+    ],
+    [
+     "Class A ordinary shares, par value $0.0001 per share",
+     "SWBK",
+     "The New York Stock Exchange"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50 per share",
+     "SWBK.WS",
+     "The New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business.",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "18"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "50"
+    ],
+    [
+     "Item 2.",
+     "Properties.",
+     "50"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "50"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "50"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities.",
+     "51"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "55"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "56"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "57"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "57"
+    ],
+    [
+     "Item 9B.",
+     "Other Information.",
+     "57"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "58"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "66"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.",
+     "67"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "68"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "70"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules.",
+     "71"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nThe registrant\u2019s units, each consisting of one Class A ordinary share and one-fifth of one warrant, began trading on the New York Stock Exchange on January 8, 2021. Prior to that date, the registrant\u2019s units were not traded on any national securities exchange or in the over-the-counter market. Commencing March 1, 2021, holders of the units were permitted to elect to separately trade the Class A ordinary shares and public warrants included in the units.\nAs of March 31, 2021, 31,625,000 Class A ordinary shares, par value $0.0001 per share, and 7,906,250 Class B ordinary shares, par value $0.0001 per share, were issued and outstanding.\nDocuments Incorporated by Reference: None.\nTable of Contents",
+   "prose_after": "CERTAIN TERMS\nReferences to the \u201cCompany,\u201d \u201cSwitchback,\u201d \u201cour,\u201d \u201cus\u201d or \u201cwe\u201d refer to Switchback II Corporation, a blank check company incorporated on October 7, 2020 as a Cayman Islands exempted company and formed for the purpose of effecting a merger, amalgamation, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses, which we refer to throughout this Annual Report on Form 10-K as our \u201cinitial business combination.\u201d References to our \u201cSponsor\u201d refer to NGP Switchback II, LLC, a Delaware limited liability company. References to \u201cNGP\u201d are to NGP Energy Capital Management, L.L.C., an SEC-registered investment advisor that manages the NGP Funds. References to \u201cNGP Funds\u201d are to a family of energy-focused private equity investments funds advised by NGP, including NGP Natural Resources XII, L.P., a Delaware limited partnership (\u201cNGP XII\u201d). References to \u201cequity-linked securities\u201d are to any securities of the Company or any of our subsidiaries which are convertible into, or exchangeable or exercisable for, equity securities of the Company or such subsidiary, including any securities issued by the Company or any of our subsidiaries which are pledged to secure any obligation of any holder to purchase equity securities of the Company or any of our subsidiaries. References to the \u201cSEC\u201d are to the U.S. Securities and Exchange Commission. References to our \u201cPublic Offering\u201d refer to our initial public offering, which closed on January 12, 2021 (the \u201cClosing Date\u201d). References to \u201cpublic shares\u201d are to our Class A ordinary shares sold as part of the units in our Public Offering. References to \u201cpublic shareholders\u201d are to the holders of our public shares.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Balance Sheet as of December 31, 2020",
+     "F-2"
+    ],
+    [
+     "Statement of Operations for the period from October 7, 2020 (inception) through December 31, 2020",
+     "F-3"
+    ],
+    [
+     "Statement of Changes in Shareholders\u2019 Deficit for the period from October 7, 2020 (inception) through December 31, 2020",
+     "F-4"
+    ],
+    [
+     "Statement of Cash Flows for the period from October 7, 2020 (inception) through December 31, 2020",
+     "F-5"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1265,
+    "end_line": 1274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "As an \u201cemerging growth company,\u201d we are not required to, among other things, (i) provide an auditor\u2019s attestation report on our system of internal controls over financial reporting, (ii) provide all of the compensation disclosure that may be required of non-emerging growth public companies, (iii) comply with any requirement that may be adopted by the PCAOB regarding mandatory audit firm rotation or a supplement to the auditor\u2019s report providing additional information about the audit and the financial statements (auditor discussion and analysis), and (iv) disclose certain executive compensation related items such as the correlation between executive compensation and performance and comparisons of the CEO\u2019s compensation to median employee compensation. These exemptions will apply for a period of five years following the completion of our Public Offering or until we are no longer an \u201cemerging growth company,\u201d whichever is earlier.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nWe are a smaller reporting company as defined in Rule 12b-2 under the Exchange Act. As a result, pursuant to Item 305(e) of Regulation S-K, we are not required to provide the information required by this Item.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO FINANCIAL STATEMENTS\nPage No.",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Shareholder and the Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Switchback II Corporation (the \u201cCompany\u201d) as of December 31, 2020, the related statements of operations, changes in shareholder\u2019s equity and cash flows for the period from October 7, 2020 (inception) through December 31, 2020, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2020, and the results of its operations and its cash flows for the period from October 7, 2020 (inception) through December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (the \"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1258,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs associated with proposed public offering",
+     "$",
+     "313,667",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "313,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholder's Deficit:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "41,258",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "207,000",
+     ""
+    ],
+    [
+     "Note payable - related party",
+     "",
+     "74,992",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "323,250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 5)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder's Deficit:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preference shares, $0.0001 par value\u037e 5,000,000 shares authorized\u037e none issued and outstanding",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value; 500,000,000 shares authorized; none issued and outstanding",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class B ordinary shares, $0.0001 par value; 50,000,000 shares authorized; 7,906,250 shares issued and outstanding (1)(2)",
+     "",
+     "791",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "24,209",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(34,583)",
+     ""
+    ],
+    [
+     "Total shareholder's deficit",
+     "",
+     "(9,583)",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholder's Deficit",
+     "$",
+     "313,667",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ WithumSmith+Brown, PC\nWe have served as the Company's auditor since 2020.\nNew York, New York\nMarch 31, 2021\nBALANCE SHEET\nDecember 31, 2020",
+   "prose_after": "(1) This number includes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1301,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "General and administrative expenses",
+     "$",
+     "34,583",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(34,583)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding, basic and diluted (1)(2)",
+     "",
+     "6,875,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1349,
+    "end_line": 1361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "(1) This number includes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "prose_after": "(1) This number excludes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY (DEFICIT)\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Ordinary Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "Shareholder's",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance -  October 7, 2020 (inception)",
+     "",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Class B ordinary shares to Sponsor (1)(2)",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "7,906,250",
+     "",
+     "",
+     "",
+     "791",
+     "",
+     "",
+     "",
+     "24,209",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "(34,583)",
+     "",
+     "",
+     "",
+     "(34,583)",
+     ""
+    ],
+    [
+     "Balance -  December 31, 2020",
+     "",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "7,906,250",
+     "",
+     "",
+     "$",
+     "791",
+     "",
+     "",
+     "$",
+     "24,209",
+     "",
+     "",
+     "$",
+     "(34,583)",
+     "",
+     "",
+     "$",
+     "(9,583)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1373,
+    "end_line": 1388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "(1) This number excludes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY (DEFICIT)\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "prose_after": "(1) This number includes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1367,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1394,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(34,583)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses paid by Sponsor in exchange for issuance of Class B ordinary shares",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "4,583",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - beginning of the period",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash - ending of the period",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of noncash investing and financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs included in accounts payable",
+     "$",
+     "36,675",
+     ""
+    ],
+    [
+     "Deferred offering costs included in accrued expenses",
+     "$",
+     "202,000",
+     ""
+    ],
+    [
+     "Deferred offering costs included in note payable - related party",
+     "$",
+     "74,992",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash Flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1400,
+    "end_line": 1425
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "(1) This number includes up to 1,031,250 Class B ordinary shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter. On January 12, 2021, the underwriters exercised the over-allotment option, in full; thus, these shares are no longer subject to forfeiture (see Note 4 and 6).\n(2) On October 27, 2020, the Sponsor surrendered an aggregate of 718,750 Class B ordinary shares to the Company at no cost. On January 2021, the Company effected a share capitalization with respect to Class B ordinary shares of 718,750 shares thereof, resulting in an aggregate of 7,906,250 Class B ordinary shares outstanding. All shares and associated amounts have been retroactively restated to reflect the share capitalization (see Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFor the Period from October 7, 2020 (inception) through December 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1. DESCRIPTION OF ORGANIZATION, BUSINESS OPERATIONS AND BASIS OF PRESENTATION\nOrganization and General\nSwitchback II Corporation (the \"Company\") is a blank check company incorporated as a Cayman Islands exempted company on October 7, 2020. The Company was incorporated for the purpose of effecting a merger, amalgamation, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses or entities that the Company has not yet identified (\"Business Combination\").\nAs of December 31, 2020, the Company had not yet commenced operations. All activity for the period from October 7, 2020 (inception) through December 31, 2020 relates to the Company's formation and the initial public offering (the \u201cInitial Public Offering\u201d), which is described below. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income on cash and cash equivalents from the proceeds derived from the Initial Public Offering. The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1394,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1427,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Scott McNeill*",
+     "49",
+     "Co-Chief Executive Officer and Director"
+    ],
+    [
+     "Jim Mutrie*",
+     "48",
+     "Co-Chief Executive Officer and Director"
+    ],
+    [
+     "Chris Carter",
+     "42",
+     "Director"
+    ],
+    [
+     "Scott A. Gieselman",
+     "57",
+     "Director"
+    ],
+    [
+     "Sam Stoutner",
+     "34",
+     "Director"
+    ],
+    [
+     "Philip J. Deutch",
+     "56",
+     "Director"
+    ],
+    [
+     "Ray Kubis",
+     "67",
+     "Independent Director"
+    ],
+    [
+     "Precious Williams Owodunni",
+     "46",
+     "Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1666,
+    "end_line": 1678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As required by Rules 13a-15 and 15d-15 under the Exchange Act, our Chief Executive Officer and Chief Financial Officer carried out an evaluation of the effectiveness of the design and operation of our disclosure controls and procedures as of December 31, 2020. Based upon this evaluation, our Chief Executive Officer and Chief Financial Officer concluded that our disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Exchange Act) were effective.\nInternal Control over Financial Reporting\nThis Annual Report on Form 10-K does not include a report of management\u2019s assessment regarding internal control over financial reporting or an attestation report of the Company\u2019s registered public accounting firm due to a transition period established by rules of the SEC for newly public companies.\nDuring the most recently completed fiscal quarter, there has been no change in our internal control over financial reporting that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nOur current officers and directors are as follows:",
+   "prose_after": "* Denotes an executive officer.\nScott McNeill is one of our co-founders and has been our Co-Chief Executive Officer since December 2020 and a member of our board of directors since October 2020. Mr. McNeill co-founded and serves as co-Chief Executive Officer and a member of the board of directors of Switchback III. Mr. McNeill also co-founded and served as Chief Executive Officer, Chief Financial Officer and a director of Switchback I until the closing of its business combination with ChargePoint. Mr. McNeill served as Chief Financial Officer of RSP from April 2013 through the completion of its acquisition by Concho in July 2018. Mr. McNeill also served as a member of the board of directors of RSP from December 2013 through July 2018. Mr. McNeill joined RSP prior to its IPO in January 2014 and helped build the organization during its early growth phase while positioning it for its IPO. During Mr. McNeill\u2019s tenure at RSP, RSP executed over $13 billion in M&A transactions and approximately $7 billion of financings. Before joining RSP, Mr. McNeill served as a managing director in the energy investment banking group of Raymond James Financial, Inc., advising companies operating in the exploration and production, midstream, and energy service and equipment segments of the energy industry. Mr. McNeill holds a B.B.A from Baylor University and an M.B.A from the University of Texas at Austin and is a certified public accountant in the State of Texas.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1659,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1689,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "held in the Trust Account will be used to fund the redemption of our public shares, and the Private Placement Warrants will expire worthless. Furthermore, our initial shareholders have agreed not to transfer, assign or sell any Founder Shares held by them until one year after the date of the consummation of our initial business combination or earlier if, subsequent to our initial business combination, (i) the last sale price of our Class A ordinary shares equals or exceeds $12.00 per share (as adjusted for stock splits, stock dividends, reorganizations, recapitalizations and the like) for any 20 trading days within any 30-trading day period commencing at least 150 days after our initial business combination or (ii) we consummate a subsequent liquidation, merger, stock exchange or other similar transaction which results in all of our shareholders having the right to exchange their ordinary shares for cash, securities or other property. With certain limited exceptions, the Private Placement Warrants and the Class A ordinary shares underlying such warrants will not be transferable, assignable or saleable until 30 days after the completion of our initial business combination. Since our Sponsor and officers and directors directly or indirectly own ordinary shares and warrants, our officers and directors may have a conflict of interest in determining whether a particular target business is an appropriate business with which to effectuate our initial business combination."
+    ]
+   ],
+   "caption_stack": [
+    "held in the Trust Account will be used to fund the redemption of our public shares, and the Private Placement Warrants will expire worthless. Furthermore, our initial shareholders have agreed not to transfer, assign or sell any Founder Shares held by them until one year after the date of the consummation of our initial business combination or earlier if, subsequent to our initial business combination, (i) the last sale price of our Class A ordinary shares equals or exceeds $12.00 per share (as adjusted for stock splits, stock dividends, reorganizations, recapitalizations and the like) for any 20 trading days within any 30-trading day period commencing at least 150 days after our initial business combination or (ii) we consummate a subsequent liquidation, merger, stock exchange or other similar transaction which results in all of our shareholders having the right to exchange their ordinary shares for cash, securities or other property. With certain limited exceptions, the Private Placement Warrants and the Class A ordinary shares underlying such warrants will not be transferable, assignable or saleable until 30 days after the completion of our initial business combination. Since our Sponsor and officers and directors directly or indirectly own ordinary shares and warrants, our officers and directors may have a conflict of interest in determining whether a particular target business is an appropriate business with which to effectuate our initial business combination."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1832,
+    "end_line": 1843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u2022 None of our officers or directors is required to commit his or her full time to our affairs and, accordingly, may have conflicts of interest in allocating his or her time among various business activities.\n\u2022 In the course of their other business activities, our officers and directors may become aware of investment and business opportunities which may be appropriate for presentation to us as well as the other entities with which they are then affiliated. Our management may have conflicts of interest in determining to which entity a particular business opportunity should be presented.\n\u2022 Our initial shareholders have agreed to waive their redemption rights with respect to any Founder Shares and any public shares held by them in connection with the consummation of our initial business combination. Additionally, our initial shareholders have agreed to waive their redemption rights with respect to any Founder Shares held by them if we fail to consummate our initial business combination within 24 months after the closing of our Public Offering. If we do not complete our initial business combination within such applicable time period, the proceeds of the sale of the Private Placement Warrants",
+   "prose_after": "\u2022 Our officers and directors may have a conflict of interest with respect to evaluating a particular business combination if the retention or resignation of any such officers and directors was included by a target business as a condition to any agreement with respect to our initial business combination.\n\u2022 Our Sponsor, officers or directors may have a conflict of interest with respect to evaluating a business combination and financing arrangements as we may obtain loans from our Sponsor or an affiliate of our Sponsor or any of our officers or directors to finance transaction costs in connection with an intended initial business combination. Up to $1,500,000 of such loans may be convertible into warrants at a price of $1.50 per warrant at the option of the lender. Such warrants would be identical to the Private Placement Warrants, including as to exercise price, exercisability and exercise period.\nThe conflicts described above may not be resolved in our favor.\nIn general, officers and directors of a corporation incorporated under the laws of the State of Delaware are required to present business opportunities to a corporation if:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1831,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 1862,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Number of Shares Beneficially Owned",
+     "Approximate Percentage of Outstanding Ordinary Shares"
+    ],
+    [
+     "NGP Switchback II, LLC (our Sponsor)(2)(3)",
+     "7,826,250",
+     "19.8%"
+    ],
+    [
+     "Scott McNeill(3)",
+     "7,926,250",
+     "20.0%"
+    ],
+    [
+     "Jim Mutrie(3)",
+     "7,926,250",
+     "20.0%"
+    ],
+    [
+     "Chris Carter (4)",
+     "7,826,250",
+     "19.8%"
+    ],
+    [
+     "Scott Gieselman (4)",
+     "7,826,250",
+     "19.8%"
+    ],
+    [
+     "Sam Stoutner (4)",
+     "7,826,250",
+     "19.8%"
+    ],
+    [
+     "Philip J. Deutch",
+     "7,826,250",
+     "19.8%"
+    ],
+    [
+     "Ray Kubis",
+     "65,000",
+     "*"
+    ],
+    [
+     "Precious Williams Owodunni",
+     "45,000",
+     "*"
+    ],
+    [
+     "All directors and executive officers as a group (8 individuals)",
+     "8,036,250",
+     "20.6%"
+    ],
+    [
+     "Adage Capital Partners, L.P.(5)",
+     "2,250,000",
+     "7.1%"
+    ],
+    [
+     "Hayman Capital Management, L.P.(6)",
+     "2,114,748",
+     "6.7%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1900,
+    "end_line": 1917
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We do not intend to take any action to ensure that members of our management team maintain their positions with us after the consummation of our initial business combination, although it is possible that some or all of our officers and directors may negotiate employment or consulting arrangements to remain with us after our initial business combination. The existence or terms of any such employment or consulting arrangements to retain their positions with us may influence our management\u2019s motivation in identifying or selecting a target business, but we do not believe that the ability of our management to remain with us after the consummation of our initial business combination will be a determining factor in our decision to proceed with any potential business combination. We are not party to any agreements with our officers and directors that provide for benefits upon termination of employment.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.\nThe following table sets forth information regarding the beneficial ownership of our ordinary shares as of March 31, 2021 by:\n\u2022 each person known by us to be the beneficial owner of more than 5% of our outstanding ordinary shares;\n\u2022 each of our named executive officers and directors that beneficially owns ordinary shares; and\n\u2022 all our executive officers and directors as a group.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all ordinary shares beneficially owned by them. The following table does not reflect record or beneficial ownership of the Warrants or the Private Placement Warrants.",
+   "prose_after": "* Less than one percent.\n(1) This table is based on 39,531,250 ordinary shares outstanding at March 31, 2020, of which 31,625,000 were Class A ordinary shares and 7,906,250 were Class B ordinary shares. Unless otherwise noted, the business address of each of the entities, directors and executive officers in this table is 5949 Sherry Lane, Suite 1010, Dallas, TX 75225.\n(2) Interests shown consist solely of Founder Shares, classified as Class B ordinary shares. Such shares will automatically convert into Class A ordinary shares at the time of our initial business combination on a one-for-one basis, subject to adjustment.\n(3) NGP Switchback II, LLC is the record holder of the shares reported herein. Mr. McNeill is a manager and Co-Chief Executive Officer of NGP Switchback II, LLC. Mr. Mutrie is a manager and Co-Chief Executive Officer of NGP Switchback II, LLC. As such, Messrs. McNeill and Mutrie may be deemed to have beneficial ownership of the ordinary shares held directly by NGP Switchback II, LLC. Messrs. McNeill and Mutrie disclaim any such beneficial ownership of such securities. In addition, NGP XII US Holdings, L.P. indirectly owns a majority of the limited liability company interests of NGP Switchback II, LLC through its wholly-owned subsidiary, NGP ETP III Investments, LLC and NGP ETP III Investments, LLC\u2019s majority-owned subsidiary, NGP Energy Technology Partners III, LLC. NGP XII Holdings GP, L.L.C. is the sole general partner of NGP XII US Holdings, L.P., and NGP Natural Resources XII, L.P. is the sole member of NGP XII Holdings GP, L.L.C. G.F.W. Energy XII, L.P. is the sole general partner of NGP Natural Resources XII, L.P., and GFW XII, L.L.C. is the sole general partner of G.F.W. Energy XII, L.P. GFW XII, L.L.C. has delegated full power and authority to manage NGP XII US Holdings, L.P. to NGP Energy Capital Management, L.L.C. Chris Carter, Craig Glick and Jill Lampert serve on the Executive Committee of NGP Energy Capital Management, L.L.C. Accordingly, each of NGP XII US Holdings, L.P., NGP XII Holdings GP, L.L.C., NGP Natural Resources XII, L.P., G.F.W. Energy XII, L.P., GFW XII, L.L.C., NGP ETP III Investments, LLC, NGP Energy Capital Management, L.L.C., Chris Carter, Craig Glick and Jill Lampert may be deemed to have or share beneficial ownership of the ordinary shares held directly by NGP Switchback II, LLC.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1883,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 1924,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Memorandum and Articles of Association of Switchback II Corporation"
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 31, 2020)"
+    ],
+    [
+     "4.2",
+     "Specimen Class A Ordinary Shares Certificate (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 31, 2020)"
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.3 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 31, 2020)"
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated January 7, 2021, between Switchback II Corporation and Continental Stock Transfer & Trust Company, as warrant agent (incorporated by reference to Exhibit 4.4 to the Company\u2019s Current Report on Form 8-K (File No. 001-251487) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "4.5",
+     "Description of Securities of Switchback II Corporation"
+    ],
+    [
+     "10.1",
+     "Letter Agreement, dated January 7, 2021, among Switchback II Corporation, its officers and directors and NGP Switchback II, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K (File No. 001-39863) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "10.2",
+     "Investment Management Trust Agreement, dated January 7, 2021, between Switchback II Corporation and Continental Stock Transfer & Trust Company, as trustee (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K (File No. 001-39863) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "10.3",
+     "Registration Rights Agreement, dated January 7, 2021, among Switchback II Corporation, NGP Switchback II, LLC and certain other security holders named therein (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K (File No. 001-39863) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "10.4",
+     "Administrative Services Agreement, dated January 7, 2021, between Switchback II Corporation and NGP Switchback II, LLC (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K (File No. 001-39863) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "10.5",
+     "Promissory Note, dated October 8, 2020, issued to NGP Switchback II, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 18, 2020)"
+    ],
+    [
+     "10.7",
+     "Form of Indemnification Agreement (incorporated by reference to Exhibit 10.7 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 31, 2020)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2006,
+    "end_line": 2032
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Policy on Board Pre-Approval of Audit and Permissible Non-Audit Services of the Registered Public Accounting Firm\nThe audit committee is responsible for appointing, setting compensation and overseeing the work of our\nindependent registered public accounting firm. In recognition of this responsibility, the audit committee shall review\nand, in its sole discretion, pre-approve all audit and permitted non-audit services to be provided by our independent\nregistered public accounting firm as provided under the audit committee charter.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a) The following documents are filed as part of this Annual Report on Form 10-K:\nFinancial Statements: See \u201cIndex to Financial Statements\u201d at \u201cItem 8. Financial Statements and Supplementary Data\u201d herein.\n(b) Exhibits: The exhibits listed in the accompanying index to exhibits are filed or incorporated by reference as part of this Annual Report on Form 10-K.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1995,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 70
+    },
+    "after": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 71
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "10.8",
+     "Securities Purchase Agreement, dated October 8, 2020, between Switchback II Corporation and NGP Switchback II, LLC (incorporated by reference to Exhibit 10.5 to the Company\u2019s Registration Statement on Form S-1 (File No. 333-251487) filed with the SEC on December 18, 2020)"
+    ],
+    [
+     "10.9",
+     "Private Placement Warrants Purchase Agreement, dated January 7, 2021, between Switchback II Corporation and NGP Switchback II, LLC (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K (File No. 001-39863) filed with the SEC on January 12, 2021)"
+    ],
+    [
+     "24",
+     "Power of Attorney (included on signature page of this Annual Report on Form 10-K)"
+    ],
+    [
+     "31.1",
+     "Certification of Co-Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a)"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a)"
+    ],
+    [
+     "32.1",
+     "Certification of Co-Chief Executive Officer required by Rule 13a-14(b) or Rule 15d-14(b) and 18 U.S.C. 1350"
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer required by Rule 13a-14(b) or Rule 15d-14(b) and 18 U.S.C. 1350"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2034,
+    "end_line": 2047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2048,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/Jim Mutrie"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2055,
+    "end_line": 2059
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: March 31, 2021Jim Mutrie\nCo-Chief Executive Officer and Director\nPOWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Scott McNeill and Jim Mutrie and each or any one of them, his or her true and lawful attorney-in-fact and agent, with full power of substitution and resubstitution, for him or her and in his or her name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the United States Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or any of them, or their or his or her substitutes or substitute, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2053,
+     "token": "REPEATING_HEADER",
+     "id": 94,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/Jim Mutrie",
+     "Co-Chief Executive Officer and Director",
+     "March 31, 2021"
+    ],
+    [
+     "Jim Mutrie",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Scott McNeill",
+     "Co-Chief Executive Officer and Director",
+     "March 31, 2021"
+    ],
+    [
+     "Scott McNeill",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Chris Carter",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Chris Carter",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Philip J. Deutch",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Philip J. Deutch",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Scott Gieselman",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Scott Gieselman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Sam Stoutner",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Sam Stoutner",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Ray Kubis",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Ray Kubis",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/Precious W. Owodunni",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Precious W. Owodunni",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2070,
+    "end_line": 2105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Scott McNeill and Jim Mutrie and each or any one of them, his or her true and lawful attorney-in-fact and agent, with full power of substitution and resubstitution, for him or her and in his or her name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the United States Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or any of them, or their or his or her substitutes or substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Annual Report on Form 10-K has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2053,
+     "token": "REPEATING_HEADER",
+     "id": 94,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

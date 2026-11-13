@@ -1,0 +1,4202 @@
+{
+ "accession": "0000061398-22-000032",
+ "cik": "0000061398",
+ "form": "10-Q",
+ "filing_date": "2022-05-04",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tell-20220331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "FORM",
+     "10-Q"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 4,
+    "end_line": 9
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549",
+   "prose_after": "[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-5507\nTellurian Inc.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "",
+     "",
+     "06-0842255"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1201 Louisiana Street,",
+     "Suite 3100,",
+     "Houston,",
+     "TX",
+     "77002"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-5507\nTellurian Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(832) 962-4000\n(Registrant\u2019s telephone number, including area code)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "Trading symbol",
+     "Name of each exchange on which registered",
+     ""
+    ],
+    [
+     "Common stock, par value $0.01 per share",
+     "TELL",
+     "NYSE",
+     "American LLC"
+    ],
+    [
+     "8.25% Senior Notes due 2028",
+     "TELZ",
+     "NYSE",
+     "American LLC"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(g) of the Act:",
+     "",
+     "None",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(832) 962-4000\n(Registrant\u2019s telephone number, including area code)",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I \u2014 Financial Information (Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Financial Statements",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Balance Sheets",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Operations",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statement of Changes in Stockholders\u2019 Equity",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "Condensed Consolidated Statements of Cash Flows",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "",
+     "19"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "",
+     "19"
+    ],
+    [
+     "Part II \u2014 Other Information",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "",
+     "19"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "",
+     "19"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "",
+     "19"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "",
+     "19"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "Signatures",
+     "",
+     "21"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I \u2014 Financial Information (Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [X]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAs of April 25, 2022, there were 568,227,494 shares of common stock, $0.01 par value, issued and outstanding.\nTellurian Inc.\nTABLE OF CONTENTS",
+   "prose_after": "Cautionary Information About Forward-Looking Statements\nThe information in this report includes \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). All statements, other than statements of historical facts, that address activity, events, or developments with respect to our financial condition, results of operations, or economic performance that we expect, believe or anticipate will or may occur in the future, or that address plans and objectives of management for future operations, are forward-looking statements. The words \u201canticipate,\u201d \u201cassume,\u201d \u201cbelieve,\u201d \u201cbudget,\u201d \u201ccontemplate,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cforecast,\u201d \u201cinitial,\u201d \u201cintend,\u201d \u201clikely,\u201d \u201cmay,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cproposed,\u201d \u201cshould,\u201d \u201cwill,\u201d \u201cwould\u201d and similar terms, phrases, and expressions are intended to identify forward-looking statements. These forward-looking statements relate to, among other things:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Bcf",
+     "Billion cubic feet of natural gas"
+    ],
+    [
+     "DD&A",
+     "Depreciation, depletion and amortization"
+    ],
+    [
+     "DFC",
+     "Deferred financing costs"
+    ],
+    [
+     "EPC",
+     "Engineering, procurement and construction"
+    ],
+    [
+     "FID",
+     "Final investment decision as it pertains to the Driftwood Project"
+    ],
+    [
+     "GAAP",
+     "Generally accepted accounting principles in the U.S."
+    ],
+    [
+     "LNG",
+     "Liquefied natural gas"
+    ],
+    [
+     "LSTK",
+     "Lump sum turnkey"
+    ],
+    [
+     "Mtpa",
+     "Million tonnes per annum"
+    ],
+    [
+     "NYSE American",
+     "NYSE American LLC"
+    ],
+    [
+     "Phase 1",
+     "Plants one and two of the Driftwood terminal"
+    ],
+    [
+     "Train",
+     "An industrial facility comprised of a series of refrigerant compressor loops used to cool natural gas into LNG"
+    ],
+    [
+     "U.S.",
+     "United States"
+    ],
+    [
+     "USACE",
+     "U.S. Army Corps of Engineers"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 164,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2022our ability to maintain compliance with our debt arrangements;\n\u2022changes in competitive factors, including the development or expansion of LNG, pipeline and other projects that are competitive with ours;\n\u2022development risks, operational hazards and regulatory approvals;\n\u2022our ability to enter into and consummate planned financing and other transactions;\n\u2022risks related to pandemics or disease outbreaks;\n\u2022risks of potential impairment charges and reductions in our reserves; and\n\u2022risks and uncertainties associated with litigation matters.\nThe forward-looking statements in this report speak as of the date hereof. Although we may from time to time voluntarily update our prior forward-looking statements, we disclaim any commitment to do so except as required by securities laws.\nDEFINITIONS\nTo the extent applicable, and as used in this quarterly report, the terms listed below have the following meanings:",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TELLURIAN INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except share and per share amounts, unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "295,728",
+     "$",
+     "305,496"
+    ],
+    [
+     "Accounts receivable",
+     "14,666",
+     "",
+     "9,270",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "25,387",
+     "",
+     "12,952",
+     ""
+    ],
+    [
+     "Total current assets",
+     "335,781",
+     "",
+     "327,718",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "351,132",
+     "",
+     "150,545",
+     ""
+    ],
+    [
+     "Deferred engineering costs",
+     "\u2014",
+     "",
+     "110,025",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "45,293",
+     "",
+     "33,518",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "732,206",
+     "$",
+     "621,806"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "7,802",
+     "$",
+     "2,852"
+    ],
+    [
+     "Accrued and other liabilities",
+     "76,536",
+     "",
+     "85,946",
+     ""
+    ],
+    [
+     "Borrowings",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "84,338",
+     "",
+     "88,798",
+     ""
+    ],
+    [
+     "Long-term liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings",
+     "54,891",
+     "",
+     "53,687",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "68,322",
+     "",
+     "61,020",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "123,213",
+     "",
+     "114,707",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 par value, 100,000,000 authorized:\n6,123,782 and 6,123,782 shares outstanding, respectively",
+     "61",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value, 800,000,000 authorized:\n545,890,311 and 500,453,575 shares outstanding, respectively",
+     "5,229",
+     "",
+     "4,774",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "1,517,031",
+     "",
+     "1,344,526",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(997,666)",
+     "",
+     "(931,060)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "524,655",
+     "",
+     "418,301",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "732,206",
+     "$",
+     "621,806"
+    ]
+   ],
+   "caption_stack": [
+    "TELLURIAN INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED BALANCE SHEETS",
+    "(in thousands, except share and per share amounts, unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 185,
+    "end_line": 236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nITEM 1. CONDENSED CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "TELLURIAN INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share amounts, unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural gas sales",
+     "$",
+     "25,989",
+     "$",
+     "8,706"
+    ],
+    [
+     "LNG sales",
+     "120,951",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total revenue",
+     "146,940",
+     "",
+     "8,706",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating costs and expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "135,827",
+     "",
+     "2,406",
+     ""
+    ],
+    [
+     "Development expenses",
+     "17,665",
+     "",
+     "8,141",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "4,021",
+     "",
+     "2,652",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "32,325",
+     "",
+     "15,111",
+     ""
+    ],
+    [
+     "Total operating costs and expenses",
+     "189,838",
+     "",
+     "28,310",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(42,898)",
+     "",
+     "(19,604)",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(2,280)",
+     "",
+     "(5,892)",
+     ""
+    ],
+    [
+     "Gain on extinguishment of debt, net",
+     "\u2014",
+     "",
+     "1,574",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "(21,428)",
+     "",
+     "(3,063)",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(66,606)",
+     "",
+     "(26,985)",
+     ""
+    ],
+    [
+     "Income tax",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(66,606)",
+     "$",
+     "(26,985)"
+    ],
+    [
+     "Net loss per common share(1):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.14)",
+     "$",
+     "(0.08)"
+    ],
+    [
+     "Weighted-average shares outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "491,337",
+     "",
+     "356,676",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) The numerator for both basic and diluted loss per share is net loss. The denominator for both basic and diluted loss per share is the weighted-average shares outstanding during the period.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "TELLURIAN INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "(in thousands, except per share amounts, unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 240,
+    "end_line": 285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 288,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 5,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "TELLURIAN INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity, beginning balance",
+     "$",
+     "418,301",
+     "$",
+     "109,090"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock",
+     "61",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "4,774",
+     "",
+     "3,309",
+     ""
+    ],
+    [
+     "Common stock issuances",
+     "454",
+     "",
+     "387",
+     ""
+    ],
+    [
+     "Share-based compensation, net",
+     "1",
+     "",
+     "23",
+     ""
+    ],
+    [
+     "Warrant exercises",
+     "\u2014",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "Ending balance",
+     "5,229",
+     "",
+     "3,779",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "1,344,526",
+     "",
+     "922,042",
+     ""
+    ],
+    [
+     "Common stock issuances",
+     "171,204",
+     "",
+     "88,776",
+     ""
+    ],
+    [
+     "Share-based compensation, net",
+     "906",
+     "",
+     "2,656",
+     ""
+    ],
+    [
+     "Share-based payments",
+     "395",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrant exercises",
+     "\u2014",
+     "",
+     "8,117",
+     ""
+    ],
+    [
+     "Warrant cancellation",
+     "\u2014",
+     "",
+     "(218)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "1,517,031",
+     "",
+     "1,021,373",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "(931,060)",
+     "",
+     "(816,322)",
+     ""
+    ],
+    [
+     "Net loss",
+     "(66,606)",
+     "",
+     "(26,985)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "(997,666)",
+     "",
+     "(843,307)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity, ending balance",
+     "$",
+     "524,655",
+     "$",
+     "181,906"
+    ]
+   ],
+   "caption_stack": [
+    "TELLURIAN INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+    "(in thousands, unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 289,
+    "end_line": 334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 288,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 5,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "TELLURIAN INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(66,606)",
+     "$",
+     "(26,985)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "4,021",
+     "",
+     "2,652",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs, discounts and fees",
+     "61",
+     "",
+     "3,061",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "906",
+     "",
+     "1,571",
+     ""
+    ],
+    [
+     "Share-based payments",
+     "396",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest elected to be paid-in-kind",
+     "\u2014",
+     "",
+     "508",
+     ""
+    ],
+    [
+     "Unrealized loss on financial instruments not designated as hedges",
+     "20,262",
+     "",
+     "1,080",
+     ""
+    ],
+    [
+     "Net gain on extinguishment of debt",
+     "\u2014",
+     "",
+     "(1,574)",
+     ""
+    ],
+    [
+     "Other",
+     "231",
+     "",
+     "(80)",
+     ""
+    ],
+    [
+     "Net changes in working capital (Note 15)",
+     "(41,850)",
+     "",
+     "9,292",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(82,579)",
+     "",
+     "(10,475)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Development of natural gas properties",
+     "(25,305)",
+     "",
+     "(1,130)",
+     ""
+    ],
+    [
+     "Payment of LNG construction costs",
+     "(24,500)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Land purchases and land improvements",
+     "(19,064)",
+     "",
+     "(270)",
+     ""
+    ],
+    [
+     "Investment in unconsolidated entity",
+     "(6,089)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(74,958)",
+     "",
+     "(1,400)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from common stock issuances",
+     "176,974",
+     "",
+     "91,929",
+     ""
+    ],
+    [
+     "Equity issuance costs",
+     "(5,316)",
+     "",
+     "(2,766)",
+     ""
+    ],
+    [
+     "Borrowing proceeds",
+     "1,178",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Borrowing issuance costs",
+     "(35)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Borrowing principal repayments",
+     "\u2014",
+     "",
+     "(102,725)",
+     ""
+    ],
+    [
+     "Tax payments for net share settlement of equity awards (Note 15)",
+     "\u2014",
+     "",
+     "(2,305)",
+     ""
+    ],
+    [
+     "Proceeds from warrant exercises",
+     "\u2014",
+     "",
+     "8,177",
+     ""
+    ],
+    [
+     "Other",
+     "(32)",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "172,769",
+     "",
+     "(7,691)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents and restricted cash",
+     "15,232",
+     "",
+     "(19,566)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of period",
+     "307,274",
+     "",
+     "81,738",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of period",
+     "$",
+     "322,506",
+     "$",
+     "62,172"
+    ],
+    [
+     "Supplementary disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "1,057",
+     "$",
+     "2,116"
+    ]
+   ],
+   "caption_stack": [
+    "TELLURIAN INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "(in thousands, unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 338,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nNotes to Condensed Consolidated Financial Statements (unaudited)\nNOTE 1 \u2014 GENERAL\nThe terms \u201cwe,\u201d \u201cour,\u201d \u201cus,\u201d \u201cTellurian\u201d and the \u201cCompany\u201d as used in this report refer collectively to Tellurian Inc. and its subsidiaries unless the context suggests otherwise. These terms are used for convenience only and are not intended as a precise description of any separate legal entity associated with Tellurian Inc.\nNature of Operations\nTellurian is developing and plans to own and operate a portfolio of natural gas, LNG marketing, and infrastructure assets that includes an LNG terminal facility (the \u201cDriftwood terminal\u201d), an associated pipeline (the \u201cDriftwood pipeline\u201d), other related pipelines, and upstream natural gas assets. The Driftwood terminal and the Driftwood pipeline are collectively referred to as the \u201cDriftwood Project.\u201d\nBasis of Presentation\nThe accompanying unaudited Condensed Consolidated Financial Statements have been prepared in accordance with GAAP for interim financial information and with Rule 10-01 of Regulation S-X. Accordingly, they do not include all of the information and footnotes required by GAAP for complete financial statements and should be read in conjunction with the consolidated financial statements and accompanying notes included in our Annual Report on Form 10-K for the year ended December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "$",
+     "413",
+     "$",
+     "605"
+    ],
+    [
+     "Deposits",
+     "21,897",
+     "",
+     "3,589",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "3,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Derivative asset, net current",
+     "\u2014",
+     "",
+     "8,693",
+     ""
+    ],
+    [
+     "Other current assets",
+     "77",
+     "",
+     "65",
+     ""
+    ],
+    [
+     "Total prepaid expenses and other current assets",
+     "$",
+     "25,387",
+     "$",
+     "12,952"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 426,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 PREPAID EXPENSES AND OTHER CURRENT ASSETS"
+    }
+   },
+   "prose_before": "Our Condensed Consolidated Financial Statements have been prepared in accordance with GAAP, which contemplates the realization of assets and satisfaction of liabilities in the normal course of business as well as the Company\u2019s ability to continue as a going concern. As of the date of the Condensed Consolidated Financial Statements, we have generated losses and negative cash flows from operations, and have an accumulated deficit. We have not yet established an ongoing source of revenues that is sufficient to cover our future operating costs and obligations as they become due during the twelve months following the issuance of the Condensed Consolidated Financial Statements.\nThe Company has sufficient cash on hand and available liquidity to satisfy its obligations and fund its working capital needs for at least twelve months following the date of issuance of the Condensed Consolidated Financial Statements. The Company has the ability to generate additional proceeds from various other potential financing transactions. We are currently focused on the financing and construction of the Driftwood terminal.\nNOTE 2 \u2014 PREPAID EXPENSES AND OTHER CURRENT ASSETS\nThe components of prepaid expenses and other current assets consist of the following (in thousands):",
+   "prose_after": "Deposits\nMargin deposits posted with a third-party financial institution related to our financial instrument contracts were approximately $20.2 million and $2.1 million as of March 31, 2022 and December 31, 2021, respectively.\nRestricted Cash\nRestricted cash as of March 31, 2022, represents funds held in escrow under the terms of an agreement to purchase land for the Driftwood Project.\nNOTE 3 \u2014 PROPERTY, PLANT AND EQUIPMENT\nThe components of property, plant and equipment consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Upstream natural gas assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved properties",
+     "$",
+     "117,336",
+     "$",
+     "96,297"
+    ],
+    [
+     "Wells in progress",
+     "25,497",
+     "",
+     "17,653",
+     ""
+    ],
+    [
+     "Accumulated DD&A",
+     "(52,539)",
+     "",
+     "(48,638)",
+     ""
+    ],
+    [
+     "Total upstream natural gas assets, net",
+     "90,294",
+     "",
+     "65,312",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Driftwood Project",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land and land improvements",
+     "50,950",
+     "",
+     "25,222",
+     ""
+    ],
+    [
+     "Driftwood terminal construction in progress",
+     "148,930",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Finance lease assets, net of accumulated DD&A",
+     "57,589",
+     "",
+     "57,883",
+     ""
+    ],
+    [
+     "Buildings and other assets, net of accumulated DD&A",
+     "363",
+     "",
+     "371",
+     ""
+    ],
+    [
+     "Total Driftwood Project, net",
+     "257,832",
+     "",
+     "83,476",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets and other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leasehold improvements and other assets",
+     "4,443",
+     "",
+     "3,104",
+     ""
+    ],
+    [
+     "Accumulated DD&A",
+     "(1,437)",
+     "",
+     "(1,347)",
+     ""
+    ],
+    [
+     "Total fixed assets and other, net",
+     "3,006",
+     "",
+     "1,757",
+     ""
+    ],
+    [
+     "Total property, plant and equipment, net",
+     "$",
+     "351,132",
+     "$",
+     "150,545"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 454,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 PROPERTY, PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Deposits\nMargin deposits posted with a third-party financial institution related to our financial instrument contracts were approximately $20.2 million and $2.1 million as of March 31, 2022 and December 31, 2021, respectively.\nRestricted Cash\nRestricted cash as of March 31, 2022, represents funds held in escrow under the terms of an agreement to purchase land for the Driftwood Project.\nNOTE 3 \u2014 PROPERTY, PLANT AND EQUIPMENT\nThe components of property, plant and equipment consist of the following (in thousands):",
+   "prose_after": "Land\nWe own land in Louisiana intended for the construction of the Driftwood Project. During the three months ended March 31, 2022, we acquired land essential for the construction of the Driftwood Project at a total cost of $19.0 million, inclusive of capitalized land purchase options of approximately $5.5 million.\nDriftwood Terminal Construction in Progress\nDuring the year ended December 31, 2021, the Company initiated certain owner construction activities necessary to proceed under our LSTK EPC agreement with Bechtel Energy Inc., formerly known as Bechtel Oil, Gas and Chemicals, Inc. (\u201cBechtel\u201d), for Phase 1 of the Driftwood terminal dated as of November 10, 2017 (the \u201cPhase 1 EPC Agreement\u201d). On March 24, 2022, the Company issued a limited notice to proceed to Bechtel under the Phase 1 EPC Agreement to commence construction of Phase 1 of the Driftwood terminal on April 4, 2022. As the Company commenced construction activities, Deferred engineering costs and Permitting Costs of approximately $110.0 million and $13.4 million, respectively, were transferred to construction in progress as of March 31, 2022. The Company capitalizes all directly identifiable project costs as construction in progress until the constructed assets are placed in service.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Land lease and purchase options",
+     "$",
+     "799",
+     "$",
+     "6,368"
+    ],
+    [
+     "Permitting costs",
+     "\u2014",
+     "",
+     "13,408",
+     ""
+    ],
+    [
+     "Right of use asset \u2014 operating leases",
+     "13,437",
+     "",
+     "10,166",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "23,778",
+     "",
+     "1,778",
+     ""
+    ],
+    [
+     "Investment in unconsolidated entity",
+     "6,089",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "1,190",
+     "",
+     "1,798",
+     ""
+    ],
+    [
+     "Total other non-current assets",
+     "$",
+     "45,293",
+     "$",
+     "33,518"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 OTHER NON-CURRENT ASSETS"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2021, the Company initiated certain owner construction activities necessary to proceed under our LSTK EPC agreement with Bechtel Energy Inc., formerly known as Bechtel Oil, Gas and Chemicals, Inc. (\u201cBechtel\u201d), for Phase 1 of the Driftwood terminal dated as of November 10, 2017 (the \u201cPhase 1 EPC Agreement\u201d). On March 24, 2022, the Company issued a limited notice to proceed to Bechtel under the Phase 1 EPC Agreement to commence construction of Phase 1 of the Driftwood terminal on April 4, 2022. As the Company commenced construction activities, Deferred engineering costs and Permitting Costs of approximately $110.0 million and $13.4 million, respectively, were transferred to construction in progress as of March 31, 2022. The Company capitalizes all directly identifiable project costs as construction in progress until the constructed assets are placed in service.\nNOTE 4 \u2014 DEFERRED ENGINEERING COSTS\nDeferred engineering costs related to the planned construction of the Driftwood terminal were transferred to construction in progress upon issuing the limited notice to proceed to Bechtel in March 2022. See Note 3, Property, Plant and Equipment, for further information.\nNOTE 5 \u2014 OTHER NON-CURRENT ASSETS\nOther non-current assets consist of the following (in thousands):",
+   "prose_after": "Land Lease and Purchase Options\nWe hold lease and purchase option agreements (the \u201cOptions\u201d) for certain tracts of land and associated river frontage. Upon exercise of the Options, the leases are subject to maximum terms of 50 years (inclusive of various renewals, at the option of the Company). Costs of the Options will be amortized over the life of the lease once obtained, or capitalized into the cost of land if purchased. During the three months ended March 31, 2022, we capitalized land purchase options of approximately $5.5 million related to purchases for the Driftwood Project. Land purchase options held by the Company as of March 31, 2022 are related to the Driftwood pipeline.\nPermitting Costs\nPermitting costs primarily represented the purchase of wetland credits in connection with our permit application to the USACE in 2017 and 2018. These wetland credits were transferred to construction in progress upon issuing the limited notice to proceed in March 2022 to Bechtel. See Note 3, Property, Plant and Equipment, for further information. These wetland credits will be applied to our permit in accordance with the Clean Water Act and the Rivers and Harbors Act, which require us to mitigate the potential impact to Louisiana wetlands that might be caused by the construction of the Driftwood Project.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Natural gas financial instruments:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized (loss) gain",
+     "$",
+     "(715)",
+     "$",
+     "426"
+    ],
+    [
+     "Unrealized loss",
+     "15,101",
+     "",
+     "1,080",
+     ""
+    ],
+    [
+     "LNG financial futures:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized gain",
+     "3,532",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized loss",
+     "5,161",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 546,
+    "end_line": 558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 FINANCIAL INSTRUMENTS"
+    }
+   },
+   "prose_before": "On February 24, 2022, the Company purchased 1.5 million ordinary shares of an unaffiliated entity engaged in renewable energy services for a total cost of approximately $6.1 million. This investment does not provide the Company with a controlling financial interest in or significant influence over the operating or financial decisions of the unaffiliated entity. The Company\u2019s investment was recorded at cost.\nNOTE 6 \u2014 FINANCIAL INSTRUMENTS\nNatural Gas Financial Instruments\nDuring the fourth quarter of 2021, we entered into natural gas financial instruments to economically hedge the commodity price exposure of a portion of our natural gas production. The Company\u2019s open positions as of March 31, 2022, had notional volumes of 9.2 Bcf, with maturities extending through March 2023.\nLNG Financial Futures\nDuring the three months ended December 31, 2021, we entered into LNG financial future contracts to reduce our exposure to commodity price fluctuations, and to achieve more predictable cash flows relative to two LNG cargos that we were committed to purchase from and sell to unrelated third-party LNG merchants in the normal course of business in January and April 2022. As of March 31, 2022, there were no open LNG financial futures positions.\nThe following table summarizes the effect of the Company\u2019s financial instruments on the Condensed Consolidated Statements of Operations (in thousands):",
+   "prose_after": "The following table presents the classification of the Company\u2019s financial derivative assets and liabilities that are required to be measured at fair value on a recurring basis on the Company\u2019s Condensed Consolidated Balance Sheets (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LNG financial futures",
+     "\u2014",
+     "",
+     "$",
+     "8,693"
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural gas financial instruments",
+     "$",
+     "15,101",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 561,
+    "end_line": 570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 FINANCIAL INSTRUMENTS"
+    }
+   },
+   "prose_before": "The following table presents the classification of the Company\u2019s financial derivative assets and liabilities that are required to be measured at fair value on a recurring basis on the Company\u2019s Condensed Consolidated Balance Sheets (in thousands):",
+   "prose_after": "The Company\u2019s natural gas and LNG financial instruments are valued using quoted prices in active exchange markets as of the balance sheet date and are classified as Level 1 within the fair value hierarchy.\nNOTE 7 \u2014 ACCRUED AND OTHER LIABILITIES\nThe components of accrued and other liabilities consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Upstream accrued liabilities",
+     "$",
+     "32,535",
+     "$",
+     "26,421"
+    ],
+    [
+     "Payroll and compensation",
+     "14,525",
+     "",
+     "50,243",
+     ""
+    ],
+    [
+     "Accrued taxes",
+     "498",
+     "",
+     "991",
+     ""
+    ],
+    [
+     "Driftwood Project development activities",
+     "5,163",
+     "",
+     "435",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "2,499",
+     "",
+     "2,279",
+     ""
+    ],
+    [
+     "Current derivative liability",
+     "15,101",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts payable due to related parties",
+     "175",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "6,040",
+     "",
+     "5,577",
+     ""
+    ],
+    [
+     "Total accrued and other liabilities",
+     "$",
+     "76,536",
+     "$",
+     "85,946"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 ACCRUED AND OTHER LIABILITIES"
+    }
+   },
+   "prose_before": "The Company\u2019s natural gas and LNG financial instruments are valued using quoted prices in active exchange markets as of the balance sheet date and are classified as Level 1 within the fair value hierarchy.\nNOTE 7 \u2014 ACCRUED AND OTHER LIABILITIES\nThe components of accrued and other liabilities consist of the following (in thousands):",
+   "prose_after": "Accounts payable due to related parties\nThe Company entered into a one-year independent contractor agreement with Mr. Martin Houston, who serves as Vice Chairman and Director of the Company\u2019s Board of Directors, effective January 1, 2022. Pursuant to the terms and conditions of this agreement, the Company will pay Mr. Houston a monthly fee of $50.0 thousand plus approved expenses. As of March 31, 2022, a balance of approximately $175.0 thousand was owed to Mr. Houston for contractor service fees and expenses.\nNOTE 8 \u2014 BORROWINGS\nThe following tables summarize the Company\u2019s borrowings as of March 31, 2022, and December 31, 2021 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Principal repayment obligation",
+     "",
+     "Unamortized debt issuance costs and discounts",
+     "",
+     "Carrying value",
+     ""
+    ],
+    [
+     "Senior Notes due 2028",
+     "$",
+     "57,678",
+     "$",
+     "(2,787)",
+     "$",
+     "54,891"
+    ],
+    [
+     "Total borrowings",
+     "$",
+     "57,678",
+     "$",
+     "(2,787)",
+     "$",
+     "54,891"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 604,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 BORROWINGS"
+    }
+   },
+   "prose_before": "Accounts payable due to related parties\nThe Company entered into a one-year independent contractor agreement with Mr. Martin Houston, who serves as Vice Chairman and Director of the Company\u2019s Board of Directors, effective January 1, 2022. Pursuant to the terms and conditions of this agreement, the Company will pay Mr. Houston a monthly fee of $50.0 thousand plus approved expenses. As of March 31, 2022, a balance of approximately $175.0 thousand was owed to Mr. Houston for contractor service fees and expenses.\nNOTE 8 \u2014 BORROWINGS\nThe following tables summarize the Company\u2019s borrowings as of March 31, 2022, and December 31, 2021 (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Principal repayment obligation",
+     "",
+     "Unamortized debt issuance costs and discounts",
+     "",
+     "Carrying value",
+     ""
+    ],
+    [
+     "Senior Notes due 2028",
+     "$",
+     "56,500",
+     "$",
+     "(2,813)",
+     "$",
+     "53,687"
+    ],
+    [
+     "Total borrowings",
+     "$",
+     "56,500",
+     "$",
+     "(2,813)",
+     "$",
+     "53,687"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 BORROWINGS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Senior Notes due 2028\nOn November 10, 2021, we sold in a registered public offering $50.0 million aggregate principal amount of 8.25% Senior Notes due November 30, 2028 (the \u201cSenior Notes\u201d). Net proceeds from the Senior Notes were approximately $47.5 million after deducting fees. The underwriter was granted an option to purchase up to an additional $7.5 million of the Senior Notes within 30 days. On December 7, 2021, the underwriter exercised the option and purchased an additional $6.5 million of the Senior Notes resulting in net proceeds of approximately $6.2 million after deducting fees. The Senior Notes have quarterly interest payments due on January 31, April 30, July 31, and October 31 of each year and on the maturity date.\nAt-the-Market Debt Offering Program\nOn December 17, 2021, we entered into an at-the-market debt offering program under which the Company may offer and sell from time to time on the NYSE American up to an aggregate principal amount of $200.0 million of additional Senior Notes. For the three months ended March 31, 2022, we sold approximately $1.2 million aggregate principal amount of additional Senior Notes for total proceeds of approximately $1.1 million after fees and commissions under our at-the-market debt offering program. See Note 16, Subsequent Events, for further information.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Tracking Units (in thousands)",
+     "Price per Tracking Unit",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Granted",
+     "19,309",
+     "$",
+     "3.09"
+    ],
+    [
+     "Vested",
+     "(6,436)",
+     "3.38",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(76)",
+     "2.70",
+     ""
+    ],
+    [
+     "Unvested balance at March 31, 2022",
+     "12,797",
+     "$",
+     "5.30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 INCENTIVE COMPENSATION PROGRAM"
+    }
+   },
+   "prose_before": "On November 18, 2021, the Company\u2019s Board of Directors approved the adoption of the Tellurian Incentive Compensation Program (the \u201cIncentive Compensation Program\u201d or \u201cICP\u201d). The ICP allows the Company to award short-term and long-term performance and service-based incentive compensation to full-time employees of the Company. ICP awards may be earned with respect to each calendar year and are determined based on guidelines established by the Compensation Committee of the Board of Directors, as administrator of the ICP.\nLong-term incentive awards\nLong-term incentive (\u201cLTI\u201d) awards under the ICP were granted in January 2022 in the form of \u201ctracking units,\u201d at the discretion of the Company\u2019s Board of Directors (the \u201c2021 LTI Award\u201d). Each such tracking unit has a value equal to one share of Tellurian common stock and entitles the grantee to receive, upon vesting, a cash payment equal to the closing price of our common stock on the trading day prior to the vesting date. These tracking units will vest in three equal tranches at grant date, and the first and second anniversaries of the grant date. Non-vested tracking unit awards as of March 31, 2022 and awards granted during the period were as follows:",
+   "prose_after": "We recognize compensation expense for awards with graded vesting schedules over the requisite service periods for each separately vesting portion of the award as if each award was in substance multiple awards. Compensation expense for the first tranche of the 2021 LTI Award that vested at the grant date was recognized over the performance period when it was probable that the performance condition was achieved. Compensation expense for the second and third tranches of the 2021 LTI Award is recognized on a straight-line basis over the requisite service period. Compensation expense for unvested tracking units is subsequently adjusted each reporting period to reflect the estimated payout levels based on changes in the Company\u2019s stock price and actual forfeitures. For the three months ended March 31, 2022, we recognized approximately $12.7 million in compensation expense for the second and third tranches of the 2021 LTI Award.\nNOTE 13 \u2014 INCOME TAXES\nDue to our cumulative loss position, historical net operating losses (\u201cNOLs\u201d), and other available evidence related to our ability to generate taxable income, we have recorded a full valuation allowance against our net deferred tax assets as of March 31, 2022 and December 31, 2021. Accordingly, we have not recorded a provision for federal, state or foreign income taxes during the three months ended March 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Leases",
+     "Consolidated Balance Sheets Classification",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating",
+     "Other non-current assets",
+     "$",
+     "13,437",
+     "$",
+     "10,166"
+    ],
+    [
+     "Finance",
+     "Property, plant and equipment, net",
+     "57,589",
+     "",
+     "57,883",
+     ""
+    ],
+    [
+     "Total leased assets",
+     "",
+     "$",
+     "71,026",
+     "$",
+     "68,049"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating",
+     "Accrued and other liabilities",
+     "$",
+     "2,365",
+     "$",
+     "2,147"
+    ],
+    [
+     "Finance",
+     "Accrued and other liabilities",
+     "134",
+     "",
+     "132",
+     ""
+    ],
+    [
+     "Non-Current",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating",
+     "Other non-current liabilities",
+     "12,553",
+     "",
+     "9,563",
+     ""
+    ],
+    [
+     "Finance",
+     "Other non-current liabilities",
+     "50,068",
+     "",
+     "50,103",
+     ""
+    ],
+    [
+     "Total leased liabilities",
+     "",
+     "$",
+     "65,120",
+     "$",
+     "61,945"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 731,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 LEASES"
+    }
+   },
+   "prose_before": "NOTE 14 \u2014 LEASES\nOur land leases are classified as finance leases and include one or more options to extend the lease term for up to 40 years, as well as to terminate the lease within five years, at our sole discretion. We are reasonably certain that those options will be exercised, and that our termination rights will not be exercised, and we have, therefore, included those assumptions within our right of use assets and corresponding lease liabilities. Our office space leases are classified as operating leases and include one or more options to extend the lease term up to 10 years, at our sole discretion. As we are not reasonably certain that those options will be exercised, none are recognized as part of our right of use assets and lease liabilities. As none of our leases provide an implicit rate, we have determined our own discount rate.\nThe following table shows the classification and location of our right-of-use assets and lease liabilities on our Consolidated Balance Sheets (in thousands):",
+   "prose_after": "Lease costs recognized in our Consolidated Statements of Operations is summarized as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease Costs",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "685",
+     "$",
+     "724"
+    ],
+    [
+     "Finance lease cost",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of lease assets",
+     "294",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "Interest on lease liabilities",
+     "994",
+     "",
+     "456",
+     ""
+    ],
+    [
+     "Finance lease cost",
+     "$",
+     "1,288",
+     "$",
+     "556"
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "1,973",
+     "$",
+     "1,280"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 LEASES"
+    }
+   },
+   "prose_before": "Lease costs recognized in our Consolidated Statements of Operations is summarized as follows (in thousands):",
+   "prose_after": "Other information about lease amounts recognized in our Consolidated Financial Statements is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Lease term and discount rate",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (years)",
+     "",
+     ""
+    ],
+    [
+     "Operating lease",
+     "5.2",
+     ""
+    ],
+    [
+     "Finance lease",
+     "49.2",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     ""
+    ],
+    [
+     "Operating lease",
+     "6.1",
+     "%"
+    ],
+    [
+     "Finance lease",
+     "9.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022",
+    "Lease term and discount rate",
+    "Weighted average remaining lease term (years)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 774,
+    "end_line": 785
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 LEASES"
+    }
+   },
+   "prose_before": "Other information about lease amounts recognized in our Consolidated Financial Statements is as follows:",
+   "prose_after": "The following table includes other quantitative information for our operating and finance leases (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "743",
+     "$",
+     "724"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 790,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 LEASES"
+    }
+   },
+   "prose_before": "The following table includes other quantitative information for our operating and finance leases (in thousands):",
+   "prose_after": "The table below presents a maturity analysis of our lease liability on an undiscounted basis and reconciles those amounts to the present value of the lease liability as of March 31, 2022 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating",
+     "",
+     "Finance",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "2,350",
+     "$",
+     "3,083"
+    ],
+    [
+     "2023",
+     "3,316",
+     "",
+     "4,111",
+     ""
+    ],
+    [
+     "2024",
+     "3,359",
+     "",
+     "4,111",
+     ""
+    ],
+    [
+     "2025",
+     "3,401",
+     "",
+     "4,111",
+     ""
+    ],
+    [
+     "2026",
+     "3,423",
+     "",
+     "4,111",
+     ""
+    ],
+    [
+     "After 2026",
+     "1,633",
+     "",
+     "182,222",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "$",
+     "17,482",
+     "$",
+     "201,749"
+    ],
+    [
+     "Less: discount",
+     "2,564",
+     "",
+     "151,547",
+     ""
+    ],
+    [
+     "Present value of lease liability",
+     "$",
+     "14,918",
+     "$",
+     "50,202"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 820
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 LEASES"
+    }
+   },
+   "prose_before": "The table below presents a maturity analysis of our lease liability on an undiscounted basis and reconciles those amounts to the present value of the lease liability as of March 31, 2022 (in thousands):",
+   "prose_after": "NOTE 15 \u2014 ADDITIONAL CASH FLOW INFORMATION\nThe following table provides information regarding the net changes in working capital (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "(5,396)",
+     "$",
+     "916"
+    ],
+    [
+     "Prepaid expenses and other current assets 1",
+     "(14,595)",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "4,950",
+     "",
+     "1,674",
+     ""
+    ],
+    [
+     "Accounts payable due to related parties",
+     "175",
+     "",
+     "(460)",
+     ""
+    ],
+    [
+     "Accrued liabilities 1",
+     "(27,810)",
+     "",
+     "7,669",
+     ""
+    ],
+    [
+     "Other, net",
+     "826",
+     "",
+     "(512)",
+     ""
+    ],
+    [
+     "Net changes in working capital",
+     "$",
+     "(41,850)",
+     "$",
+     "9,292"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 840
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 ADDITIONAL CASH FLOW INFORMATION"
+    }
+   },
+   "prose_before": "NOTE 15 \u2014 ADDITIONAL CASH FLOW INFORMATION\nThe following table provides information regarding the net changes in working capital (in thousands):",
+   "prose_after": "1 Excludes changes in the Company\u2019s derivative assets and liabilities.\nThe following table provides supplemental disclosure of cash flow information (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021"
+    ],
+    [
+     "Non-cash accruals of property, plant and equipment and other non-current assets",
+     "$",
+     "10,931",
+     "(356)"
+    ],
+    [
+     "Non-cash settlement of withholding taxes associated with the 2019 bonus and vesting of certain awards",
+     "\u2014",
+     "",
+     "2,305"
+    ],
+    [
+     "Non-cash settlement of the 2019 bonus",
+     "\u2014",
+     "",
+     "3,258"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 845,
+    "end_line": 854
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 ADDITIONAL CASH FLOW INFORMATION"
+    }
+   },
+   "prose_before": "1 Excludes changes in the Company\u2019s derivative assets and liabilities.\nThe following table provides supplemental disclosure of cash flow information (in thousands):",
+   "prose_after": "The following table provides a reconciliation of cash, cash equivalents, and restricted cash reported within the Condensed Consolidated Balance Sheets that sum to the total of such amounts shown in the Condensed Consolidated Statements of Cash Flows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "295,728",
+     "$",
+     "58,729"
+    ],
+    [
+     "Current restricted cash",
+     "3,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-current restricted cash",
+     "23,778",
+     "",
+     "3,443",
+     ""
+    ],
+    [
+     "Total cash, cash equivalents and restricted cash shown in the statements of cash flows",
+     "$",
+     "322,506",
+     "$",
+     "62,172"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 871
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONDENSED CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 ADDITIONAL CASH FLOW INFORMATION"
+    }
+   },
+   "prose_before": "The following table provides a reconciliation of cash, cash equivalents, and restricted cash reported within the Condensed Consolidated Balance Sheets that sum to the total of such amounts shown in the Condensed Consolidated Statements of Cash Flows (in thousands):",
+   "prose_after": "NOTE 16 \u2014 SUBSEQUENT EVENTS\nAt-the-Market Programs\nSubsequent to March 31, 2022, and through the date of this filing, we sold approximately 22.3 million shares of common stock for total proceeds of approximately $128.1 million, net of approximately $4.0 million in fees and commissions, under our at-the-market equity offering programs. We did not sell any Senior Notes under the at-the-market debt offering program. On April 7, 2022, the Company increased the maximum aggregate sales proceeds of one of our at-the-market equity offering programs from $200.0 million to $400.0 million. As of the date of this filing, we have remaining availability to raise aggregate gross sales proceeds of approximately $522.6 million under our at-the-market debt and equity offering programs.\nManagement's Discussion and Analysis of Financial Condition and Results of Operations\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nIntroduction\nThe following discussion and analysis presents management\u2019s view of our business, financial condition and overall performance and should be read in conjunction with our Condensed Consolidated Financial Statements and the accompanying notes. This information is intended to provide investors with an understanding of our past development activities, current financial condition and outlook for the future organized as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "$",
+     "(82,579)",
+     "$",
+     "(10,475)"
+    ],
+    [
+     "Cash used in investing activities",
+     "(74,958)",
+     "",
+     "(1,400)",
+     ""
+    ],
+    [
+     "Cash provided by (used in) financing activities",
+     "172,769",
+     "",
+     "(7,691)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents and restricted cash",
+     "15,232",
+     "",
+     "(19,566)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, beginning of the period",
+     "307,274",
+     "",
+     "81,738",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash, end of the period",
+     "$",
+     "322,506",
+     "$",
+     "62,172"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net working capital",
+     "$",
+     "251,443",
+     "$",
+     "1,282"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 938,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We consider all highly liquid investments with an original maturity of three months or less to be cash equivalents. We are currently funding our operations, development activities and general working capital needs through our cash on hand. Our current capital resources consist of approximately $295.7 million of cash and cash equivalents as of March 31, 2022. We currently maintain at-the-market debt and equity offering programs pursuant to which we sell our Senior Notes and common stock from time to time. As of the date of this filing, we have remaining availability to raise aggregate gross sales proceeds of approximately $522.6 million under these programs.\nAs of March 31, 2022, we had total indebtedness of $57.7 million, none of which is scheduled to be repaid within the next twelve months. We also had contractual obligations associated with our finance and operating leases totaling $219.2 million, of which $7.3 million is scheduled to be paid within the next twelve months.\nThe Company has sufficient cash on hand and available liquidity to satisfy its obligations and fund its working capital needs for at least twelve months following the date of issuance of the consolidated financial statements. The Company has the ability to generate additional proceeds from various other potential financing transactions. We are currently focused on the financing and construction of the Driftwood terminal.\nSources and Uses of Cash\nThe following table summarizes the sources and uses of our cash and cash equivalents and costs and expenses for the periods presented (in thousands):",
+   "prose_after": "Cash used in operating activities for the three months ended March 31, 2022 increased by approximately $72.1 million due to an overall increase in disbursements in the normal course of business.\nCash used in investing activities for the three months ended March 31, 2022 increased by approximately $73.6 million compared to the same period in 2021 primarily related to increased natural gas development activities of $25.3 million, land purchases and land improvements of $19.1 million, the payment of LNG construction costs of $24.5 million and an investment of $6.1 million in an unconsolidated entity, as compared to the same period in 2021.\nCash provided by (used in) financing activities for the three months ended March 31, 2022 increased by approximately $180.5 million compared to the same period in 2021. This increase is primarily due to approximately $171.7 million in net proceeds from equity issuances as compared to $89.2 million in the prior period as well as approximately $102.7 million in principal repayments of our borrowings in the prior period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 922,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 970,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "146,940",
+     "$",
+     "8,706"
+    ],
+    [
+     "Cost of sales",
+     "135,827",
+     "",
+     "2,406",
+     ""
+    ],
+    [
+     "Development expenses",
+     "17,665",
+     "",
+     "8,141",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "4,021",
+     "",
+     "2,652",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "32,325",
+     "",
+     "15,111",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(42,898)",
+     "",
+     "(19,604)",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(2,280)",
+     "",
+     "(5,892)",
+     ""
+    ],
+    [
+     "Gain on extinguishment of debt, net",
+     "\u2014",
+     "",
+     "1,574",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "(21,428)",
+     "",
+     "(3,063)",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(66,606)",
+     "$",
+     "(26,985)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 988,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We anticipate funding our more immediate liquidity requirements relative to the commencement of construction of the Driftwood terminal, natural gas development costs, and general and administrative expenses through the use of cash on hand, proceeds from operations, and proceeds from completed and future issuances of securities by us. Investments in the construction of the Driftwood terminal and natural gas development may be significant in 2022, but the size of those investments will depend on, among other things, commodity prices, Driftwood Project financing developments and other liquidity considerations, and our continuing analysis of strategic risks and opportunities. Consistent with our overall financing strategy, the Company has considered, and in some cases discussed with investors, various potential financing transactions, including issuances of debt, equity and equity-linked securities or similar transactions, to support its short- and medium-term capital requirements. The Company will continue to evaluate its cash needs and business outlook, and it may execute one or more transactions of this type in the future.\nResults of Operations\nThe following table summarizes revenue, costs and expenses for the periods presented (in thousands):",
+   "prose_after": "Our consolidated Net loss was approximately $66.6 million for the three months ended March 31, 2022, compared to a Net loss of approximately $27.0 million during the same period in 2021. The increase in net loss of approximately $39.6 million is primarily a result of the following:\n\u2022Increase of approximately $138.2 million in Total revenue compared to the same period in 2021 attributable to a $17.3 million increase in Natural gas sales revenues as a result of increased realized natural gas prices and production volumes and a $121.0 million increase in LNG sales revenues from the sale of an LNG cargo in January 2022.\n\u2022Increase of approximately $133.4 million in Cost of sales primarily attributable to the purchase of an LNG cargo in January 2022.\n\u2022Increase of approximately $9.5 million in Development expenses primarily attributable to a $5.1 million increase in compensation expenses and a $4.4 million increase in professional services, engineering services and other development expenses associated with the Driftwood Project.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1021,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "1.1",
+     "Amendment to Distribution Agreement, dated as of April 7, 2022, by and between Tellurian Inc. and T.R. Winston & Company, LLC (incorporated by reference to Exhibit 1.2 to the Company\u2019s Current Report on Form 8-K filed on April 7, 2022)"
+    ],
+    [
+     "10.1\u2020",
+     "Form of Omnibus Amendment to Outstanding Restricted Stock Agreement under Tellurian Inc. Amended and Restated 2016 Omnibus Incentive Compensation Plan, effective as of January 6, 2022 (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on January 6, 2022)"
+    ],
+    [
+     "10.2\u2020",
+     "Form of Omnibus Amendment to Outstanding Restricted Stock Agreement under Tellurian Investments Inc. 2016 Omnibus Incentive Plan, effective as of January 6, 2022 (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on January 6, 2022)"
+    ],
+    [
+     "10.3\u2020",
+     "Tellurian Inc. Incentive Compensation Program, effective as of November 18, 2021 (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on January 6, 2022)"
+    ],
+    [
+     "10.4\u2020",
+     "Form Long Term Incentive Award Agreement under the Tellurian Inc. Incentive Compensation Program (U.S. Selected Senior Management) (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed on January 6, 2022)"
+    ],
+    [
+     "10.5\u2020",
+     "Tellurian Inc. Executive Severance Plan, effective as of January 6, 2022 (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed on January 6, 2022)"
+    ],
+    [
+     "10.6\u2020\u2020*",
+     "Change Order CO-007, dated as of March 24, 2022, to the Lump Sum Turnkey Agreement for the Engineering, Procurement and Construction of the Driftwood LNG Phase 1 Liquefaction Facility, dated as of November 10, 2017, by and between Driftwood LNG LLC and Bechtel Oil, Gas and Chemicals, Inc."
+    ],
+    [
+     "10.7\u2020\u2020*",
+     "Change Order CO-008, dated as of March 30, 2022, to the Lump Sum Turnkey Agreement for the Engineering, Procurement and Construction of the Driftwood LNG Phase 1 Liquefaction Facility, dated as of November 10, 2017, by and between Driftwood LNG LLC and Bechtel Oil, Gas and Chemicals, Inc."
+    ],
+    [
+     "10.8*",
+     "Independent Contractor Agreement, dated as of March 30, 2022, by and between Tellurian Inc. and Martin Houston"
+    ],
+    [
+     "31.1*",
+     "Certification by Chief Executive Officer required by Rule 13a-14(a) and 15d-14(a) under the Exchange Act"
+    ],
+    [
+     "31.2*",
+     "Certification by Chief Financial Officer required by Rule 13a-14(a) and 15d-14(a) under the Exchange Act"
+    ],
+    [
+     "32.1**",
+     "Certification by Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certification by Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "The cover page from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended March 31, 2022, formatted in Inline XBRL"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1066,
+    "end_line": 1098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 1A. RISK FACTORS\nThere have been no material changes to the risk factors disclosed in Part I, Item 1A, of our Annual Report on Form 10-K for the fiscal year ended December 31, 2021.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nRecent Sales of Unregistered Securities\nNone that occurred during the three months ended March 31, 2022.\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers\nNone that occurred during the three months ended March 31, 2022.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "* Filed herewith.\n** Furnished herewith. \u2020 Management contract or compensatory plan or arrangement. \u2020\u2020 Portions of this exhibit have been omitted in accordance with Item 601(b)(2) or 601(b)(10) of Regulation S-K. The omitted information is not material and would likely cause competitive harm to the registrant if publicly disclosed. The registrant hereby agrees to furnish supplementally an unredacted copy of this exhibit to the Securities and Exchange Commission upon request.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "TELLURIAN INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "May 4, 2022",
+     "By:",
+     "/s/ L. Kian Granmayeh"
+    ],
+    [
+     "",
+     "",
+     "",
+     "L. Kian Granmayeh"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(as Principal Financial Officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Tellurian Inc."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "May 4, 2022",
+     "By:",
+     "/s/ Khaled A. Sharafeldin"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Khaled A. Sharafeldin"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Accounting Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(as Principal Accounting Officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Tellurian Inc."
+    ]
+   ],
+   "caption_stack": [
+    "TELLURIAN INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1107,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith. \u2020 Management contract or compensatory plan or arrangement. \u2020\u2020 Portions of this exhibit have been omitted in accordance with Item 601(b)(2) or 601(b)(10) of Regulation S-K. The omitted information is not material and would likely cause competitive harm to the registrant if publicly disclosed. The registrant hereby agrees to furnish supplementally an unredacted copy of this exhibit to the Securities and Exchange Commission upon request.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1125,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

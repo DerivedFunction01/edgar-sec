@@ -1,0 +1,796 @@
+{
+ "accession": "0001565220-13-000008",
+ "cik": "0001565220",
+ "form": "10-Q",
+ "filing_date": "2013-08-29",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10qalphala.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada\n\n\n\n(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "",
+     "5122\n\n\n\nPrimary Standard Industrial\n\n\n\nClassification Code Number"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 Form 10-Q\nMark One\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended July 31, 2013\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to _______\nCommission File No. 333-187669\nALPHALA CORP.",
+   "prose_after": "68-0682594\nIRS Employer Identification Number\nDarzinu 22 linija, 10 Majas\nRiga, Latvia LV-1063\nTel. (702) 605-0519\n(Issuer\u2019s telephone number)\nIndicate by checkmark whether the issuer: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filed, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by checkmark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding as of August 29, 2013"
+    ],
+    [
+     "Common Stock, $0.001",
+     "8,360,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 61
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by checkmark whether the issuer: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filed, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by checkmark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nApplicable Only to Issuer Involved in Bankruptcy Proceedings During the Preceding Five Years.\nN/A\nIndicate by checkmark whether the issuer has filed all documents and reports required to be filed by Section 12, 13 and 15(d) of the Securities Exchange Act of 1934 after the distribution of securities under a plan confirmed by a court. Yes [ ] No [ ]\nApplicable Only to Corporate Registrants\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the most practicable date:",
+   "prose_after": "ALPHALA CORP.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Financial Statements",
+     "4"
+    ],
+    [
+     "",
+     "Balance Sheets",
+     "4"
+    ],
+    [
+     "",
+     "Statements of Operations",
+     "5"
+    ],
+    [
+     "",
+     "Statements of Cash Flows",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "7"
+    ],
+    [
+     "ITEM 2",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "ITEM 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "11"
+    ],
+    [
+     "ITEM 4",
+     "Controls and Procedures",
+     "11"
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     "12"
+    ],
+    [
+     "ITEM 1",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "ITEM 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "12"
+    ],
+    [
+     "ITEM 3",
+     "Defaults Upon Senior Securities",
+     "12"
+    ],
+    [
+     "ITEM 4",
+     "Mine Safety Disclosures",
+     "12"
+    ],
+    [
+     "ITEM 5",
+     "Other Information",
+     "12"
+    ],
+    [
+     "ITEM 6",
+     "Exhibits",
+     "13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 83
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "ALPHALA CORP.",
+   "prose_after": "3\nPART I .FINANCIAL INFORMATION\nITEM 1.FINANCIAL STATEMENTS\n<TABLE>\nALPHALA CORP.\n(A DEVELOPMENT STAGE COMPANY)\nBALANCE SHEETS\nJuly 31, 2013  January 31, 2013\n-------------  ----------------\nASSETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nBALANCE SHEETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "July 31, 2013",
+     "January 31, 2013"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "$      13,142",
+     "$      31,560"
+    ],
+    [
+     "",
+     "Prepaid expenses",
+     "6,333",
+     "-"
+    ],
+    [
+     "",
+     "Total current assets",
+     "19,475",
+     "31,560"
+    ],
+    [
+     "Total assets",
+     "",
+     "$      19,475",
+     "$      31,560"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Loan from shareholder",
+     "$         200",
+     "$         200"
+    ],
+    [
+     "",
+     "Income taxes payable",
+     "88",
+     "352"
+    ],
+    [
+     "",
+     "Total current liabilities",
+     "288",
+     "552"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "288",
+     "552"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock, $0.001 par value, 75,000,000 shares authorized;",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  8,360,000 shares issued and outstanding",
+     "8,360",
+     "8,360"
+    ],
+    [
+     "",
+     "Additional paid-in-capital",
+     "21,240",
+     "21,240"
+    ],
+    [
+     "",
+     "Retained Earnings",
+     "(10,413)",
+     "1,408"
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "19,187",
+     "31,008"
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "$      19,475",
+     "$     31,560"
+    ]
+   ],
+   "caption_stack": [
+    "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nBALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nSTATEMENTS OF OPERATIONS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended July 31, 2013",
+     "Six months ended July 31, 2013",
+     "For the period from inception (February 9, 2012) to July 31, 2013"
+    ],
+    [
+     "Revenues",
+     "$         -",
+     "$        -",
+     "$       2,475"
+    ],
+    [
+     "Gross profit",
+     "-",
+     "-",
+     "2,475"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "4,572",
+     "11,821",
+     "12,800"
+    ],
+    [
+     "Total operating expenses",
+     "4,572",
+     "11,821",
+     "12,800"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) from operations",
+     "(4,572)",
+     "(11,821)",
+     "(10,325)"
+    ],
+    [
+     "Provision for corporate income taxes",
+     "-",
+     "-",
+     "88"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "(4,572)",
+     "(11,821)",
+     "(10,413)"
+    ],
+    [
+     "Loss per share \u2013 Basic and Diluted",
+     "(0.00)",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Weighted Average Shares-Basic and Diluted",
+     "8,360,000",
+     "8,360,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nSTATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 136,
+    "end_line": 167
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "8,360,000 shares issued and outstanding                              8,360             8,360\nAdditional paid-in-capital                                            21,240            21,240\nRetained Earnings                                                   (10,413)             1,408\n-------------  ----------------\nTotal stockholders\u2019 equity                                            19,187            31,008\n-------------  ----------------\nTotal liabilities and stockholders\u2019 equity                     $      19,475      $     31,560\n=============  ================\n</TABLE>\nThe accompanying notes are an integral part of these financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 134,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nSTATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Six months ended July 31, 2013",
+     "For the period from inception (February 9, 2012) to July 31, 2013"
+    ],
+    [
+     "Operating Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net income (loss)",
+     "$     (11,821)",
+     "$     (10,413)"
+    ],
+    [
+     "",
+     "Decrease (Increase) in Operating Assets:\n\n\n\nPrepaid Expenses",
+     "(6,333)",
+     "(6,333)"
+    ],
+    [
+     "",
+     "Increase (Decrease) in Operating Liabilities:\n\n\n\nIncome tax payable",
+     "(264)",
+     "88"
+    ],
+    [
+     "",
+     "Net cash used in operating activities",
+     "(18,418)",
+     "(16,658)"
+    ],
+    [
+     "Financing Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Proceeds from issuance of common stock",
+     "-",
+     "29,600"
+    ],
+    [
+     "",
+     "Proceeds from loan from shareholder",
+     "-",
+     "200"
+    ],
+    [
+     "",
+     "Net cash provided by financing activities",
+     "-",
+     "29,800"
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "(18,418)",
+     "13,142"
+    ],
+    [
+     "Cash at beginning of the period",
+     "",
+     "31,560",
+     "-"
+    ],
+    [
+     "Cash at end of the period",
+     "",
+     "$     13,142",
+     "13,142"
+    ],
+    [
+     "",
+     "Supplemental cash flow information:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash paid for:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest",
+     "$          -",
+     "  $          -"
+    ],
+    [
+     "",
+     "Taxes",
+     "$          -",
+     "  $          -"
+    ]
+   ],
+   "caption_stack": [
+    "ALPHALA CORP.\n\n\n\n(A DEVELOPMENT STAGE COMPANY)\n\n\n\nSTATEMENTS OF CASH FLOWS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 172,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nALPHALA CORP.\n(A DEVELOPMENT STAGE COMPANY)\nNOTES TO THE FINANCIAL STATEMENTS\nJULY 31, 2013\nNOTE 1 - ORGANIZATION AND BUSINESS OPERATIONS\nOrganization and Description of Business\nALPHALA CORP. (the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada on February 9, 2012 and plan to commence operation in the distribution of teeth whitening products. The Company is in the development stage as defined under Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) 915-205 \"Development-Stage Entities.\u201d For the period from inception on February 9, 2012 through July 31, 2013 the Company has accumulated losses of $10,413.\nNOTE 2 - SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 214,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ALPHALA CORP."
+    ],
+    [
+     "Dated: August 29, 2013",
+     "By: /s/ Irina Petrzhikovskaya"
+    ],
+    [
+     "",
+     "Irina Petrzhikovskaya, President and Chief Executive Officer and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ALPHALA CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 410,
+    "end_line": 415
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "No report required.\nITEM 6. EXHIBITS\nExhibits:\n31.1\nCertification of Chief Executive Officer and Chief Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act\n32.1\nCertification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act.\n101 Interactive data files pursuant to Rule 405 of Regulation S-T.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

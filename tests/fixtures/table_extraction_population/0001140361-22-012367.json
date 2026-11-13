@@ -1,0 +1,2509 @@
+{
+ "accession": "0001140361-22-012367",
+ "cik": "0001850529",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "brhc10035706_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-2016556"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-41152\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "3282 Northside Pkwy\n\nSuite 275"
+    ],
+    [
+     "Atlanta, GA 30327"
+    ],
+    [
+     "(Address of principal executive offices and zip code)"
+    ]
+   ],
+   "caption_stack": [
+    "3282 Northside Pkwy\n\nSuite 275",
+    "Atlanta, GA 30327",
+    "(Address of principal executive offices and zip code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (470) 355-1944\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbols",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, each consisting of one share of Class A common stock, $0.0001 par value per share, and one-half of one redeemable warrant",
+     "HMA.U",
+     "The New York Stock Exchange"
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "HMA",
+     "The New York Stock Exchange"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50 per share",
+     "HMA.WS",
+     "The New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 52
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (470) 355-1944\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. YES [ ] NO [X]\nIndicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. YES [ ] NO [X]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). YES [X] NO [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PCAOB ID Number: 688",
+     "Auditor Name: Marcum LLP",
+     "Auditor Location: New York, New York"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 84
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by the check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [X] NO [ ]\nAs of December 31, 2021, the last business day of the registrant\u2019s most recently completed fiscal quarter, the registrant\u2019s shares of Class A common stock, par value $0.0001 per share, were not publicly traded. Accordingly, there was no market value for the registrant\u2019s Class A common stock on such date.\nAs of March 31, 2022, there were 19,246,931 shares of Class A common stock, par value $0.0001 per share, and 4,811,732 shares of Class B common stock, par value $0.0001 per share, issued and outstanding.",
+   "prose_after": "Documents Incorporated by Reference: None.\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     "3"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "25"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "53"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "53"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "53"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "53"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "54"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "54"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "55"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "55"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "58"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "58"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "59"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "59"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "59"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "60"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "60"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "68"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "70"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "71"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "73"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "74"
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "74"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "76"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "POWERS OF ATTORNEY",
+     "",
+     "76"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 90,
+    "end_line": 127
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Documents Incorporated by Reference: None.\nTABLE OF CONTENTS",
+   "prose_after": "Unless otherwise stated in this Annual Report on Form 10-K (this \u201cReport\u201d), references to:\n\u2022 \u201camended and restated certificate of incorporation\u201d are to our amended and restated certificate of incorporation;\n\u2022 \u201ccommon stock\u201d are to our Class A common stock and our Class B common stock;\n\u2022 \u201ccompany\u201d or \u201cour company\u201d are to Heartland Media Acquisition Corp., a Delaware corporation;\n\u2022 \u201cfounder shares\u201d are to shares of our Class B common stock initially purchased by our sponsor in a private placement prior to our initial public offering and the shares of our Class A common stock issued upon the automatic conversion thereof at the time of our initial business combination as provided herein;\n\u2022 \u201cinitial stockholders\u201d are to our sponsor and the other holders (if any) of our founder shares prior to our initial public offering;\n\u2022 \u201cmanagement,\u201d our \u201cmanagement team\u201d or our \u201cteam\u201d are to our officers and directors, and \u201cdirectors\u201d are to our current directors;\n\u2022 \u201cprivate placement warrants\u201d are to the warrants to be issued to our sponsor in a private placement simultaneously with the closing of our initial public offering;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Public offering price",
+     "",
+     "$10.00"
+    ],
+    [
+     "Type of transaction",
+     "Whether stockholder\n\napproval is required",
+     ""
+    ],
+    [
+     "Purchase of assets",
+     "No",
+     ""
+    ],
+    [
+     "Purchase of stock of target not involving a merger with the company",
+     "No",
+     ""
+    ],
+    [
+     "Merger of target into a subsidiary of the company",
+     "No",
+     ""
+    ],
+    [
+     "Merger of the company with a target",
+     "Yes",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "We cannot assure you that any of our key personnel will remain in senior management or advisory positions with the combined company. The determination as to whether any of our key personnel will remain with the combined company will be made at the time of our initial business combination.\nFollowing our initial business combination, we may seek to recruit additional managers to supplement the incumbent management of the target business. We cannot assure you that we will have the ability to recruit additional managers, or that additional managers will have the requisite skills, knowledge or experience necessary to enhance the incumbent management.\nStockholders May Not Have the Ability to Approve our Initial Business Combination\nWe may conduct redemptions without a stockholder vote pursuant to the tender offer rules of the SEC. However, we will seek stockholder approval if it is required by applicable law or stock exchange rules, or we may decide to seek stockholder approval for business or other reasons. Presented in the table below is a graphic explanation of the types of initial business combinations we may consider and whether stockholder approval is currently required under Delaware law for each such transaction.",
+   "prose_after": "Under the rules of the NYSE, stockholder approval would be required for our initial business combination if, for example:\n\u2022 we issue shares of common stock that will be equal to or in excess of 20% of the number of shares of Class A common stock then outstanding (other than in a public offering);\n\u2022 any of our directors, officers or substantial stockholders (as defined by the rules of the NYSE) has a 5% or greater interest (or such persons collectively have a 10% or greater interest), directly or indirectly, in the target business or assets to be acquired or otherwise and the present or potential issuance of common stock could result in an increase in outstanding shares of common stock or voting power of 5% or more; or\n\u2022 the issuance or potential issuance of common stock will result in our undergoing a change of control.\nThe decision as to whether we will seek stockholder approval of a proposed business combination or conduct a tender offer will be made by us, solely in our discretion, and will be based on business and other reasons, which include a variety of factors, including, but not limited to:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Redemptions in connection with\n\nour initial business combination",
+     "Other permitted purchases of\n\npublic shares by our affiliates",
+     "Redemptions if we fail to\n\ncomplete an initial business\n\ncombination"
+    ],
+    [
+     "Calculation of redemption price",
+     "Redemptions at the time of our initial business combination may be made pursuant to a tender offer or in connection with a stockholder vote. The redemption price will be the same whether we conduct redemptions pursuant to a tender offer or in connection with a stockholder vote. In either case, our public stockholders may redeem their public shares for cash equal to the aggregate amount then on deposit in the trust account, as of two business days prior to the consummation of the initial business combination (which is initially anticipated to be $10.25 per share), including interest earned on the funds held in the trust account (net of taxes payable), divided by",
+     "If we seek stockholder approval of our initial business combination, our sponsor, directors, officers, advisors or any of their affiliates may purchase shares in privately negotiated transactions or in the open market either prior to or following the completion of our initial business combination. Such purchases will be restricted except to the extent such purchases are able to be made in compliance with Rule 10b-18, which is a safe harbor from liability for manipulation under Section 9(a)(2) and Rule 10b-5 of the Exchange Act. None of the funds in the trust account will be used to purchase shares in such transactions.",
+     "If we have not completed our initial business combination within 18 months from the closing of our IPO or up to 21 months from the closing of our IPO at the election of the Company, subject to certain conditions, including the deposit of $1,924,693.10 (or $0.10 per unit) into the trust account, we will redeem all public shares at a per-share price, payable in cash, equal to the aggregate amount then on deposit in the trust account (which is initially anticipated to be $10.25 per share), including interest earned on the funds held in the trust account (net of taxes payable and less up to $100,000 of interest to pay dissolution expenses), divided by the number of then outstanding public"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 600,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 prior to our initial business combination, we may not issue additional shares of capital stock that would entitle the holders thereof to (1) receive funds from the trust account or (2) vote as a class with our public shares (a) on any initial business combination or (b) to approve an amendment to our amended and restated certificate of incorporation to (x) extend the time we have to consummate a business combination beyond 18 months from the closing of our IPO or up to 21 months from the closing of our IPO at the election of the Company, subject to certain conditions, including the deposit of $1,924,693.10 (or $0.10 per unit) into the trust account, or (y) amend the foregoing provisions.\nThese provisions cannot be amended without the approval of holders of at least 65% of our outstanding common stock. In the event we seek stockholder approval in connection with our initial business combination, our amended and restated certificate of incorporation provides that we may consummate our initial business combination only if approved by a majority of the shares of common stock voted by our stockholders at a duly held stockholders meeting.\nComparison of Redemption or Purchase Prices in Connection with our Initial Business Combination and if we Fail to Complete our Initial Business Combination\nThe following table compares the redemptions and other permitted purchases of public shares that may take place in connection with the completion of our initial business combination and if we have not completed our initial business combination within 18 months from the closing of our IPO or during any Extension Period.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "the number of then outstanding public shares, subject to the limitation that we will only redeem public shares so long as (after such redemptions) our net tangible assets will be at least $5,000,001, either prior to or upon consummation of an initial business combination, after payment of the deferred underwriting commission, and any limitations (including but not limited to cash requirements) agreed to in connection with the negotiation of terms of a proposed business combination.",
+     "",
+     "shares."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impact to remaining stockholders",
+     "The redemptions in connection with our initial business combination will reduce the book value per share for our remaining stockholders, who will bear the burden of the deferred underwriting commissions and interest withdrawn in order to pay taxes (to the extent not paid from amounts accrued as interest on the funds held in the trust account).",
+     "If the permitted purchases described above are made, there will be no impact to our remaining stockholders because the purchase price would not be paid by us.",
+     "The redemption of our public shares if we fail to complete our initial business combination will reduce the book value per share for the shares held by our initial stockholders, who will be our only remaining stockholders after such redemptions."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Competition\nIn identifying, evaluating and selecting a target business for our initial business combination, we may encounter intense competition from other entities having a business objective similar to ours, including other blank check companies, private equity groups and leveraged buyout funds, public companies and operating businesses seeking strategic acquisitions. Many of these entities are well established and have extensive experience identifying and effecting business combinations directly or through affiliates. Moreover, many of these competitors possess greater financial, technical, human and other resources than us. Our ability to acquire larger target businesses will be limited by our available financial resources. This inherent limitation gives others an advantage in pursuing the acquisition of a target business. Furthermore, our obligation to pay cash in connection with our public stockholders who exercise their redemption rights may reduce the resources available to us for our initial business combination and our outstanding warrants, and the future dilution they potentially represent, may not be viewed favorably by certain target businesses. Either of these factors may place us at a competitive disadvantage in successfully negotiating an initial business combination.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 660,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title"
+    ],
+    [
+     "Robert S. Prather, Jr.",
+     "77",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "Shawn Pack",
+     "52",
+     "Chief Financial Officer"
+    ],
+    [
+     "Salvatore Muoio",
+     "62",
+     "Director"
+    ],
+    [
+     "Steven T. Shapiro",
+     "54",
+     "Director"
+    ],
+    [
+     "Alan J. Weber",
+     "73",
+     "Director"
+    ],
+    [
+     "John Zieser",
+     "62",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1476,
+    "end_line": 1486
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "This report does not include a report of management\u2019s assessment regarding internal control over financial reporting or an attestation report of our registered public accounting firm due to a transition period established by the rules of the SEC for newly public companies.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) of the Exchange Act) during the most recent fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors and Executive Officers",
+   "prose_after": "Our directors and executive officers are as follows:\nMr. Robert S. Prather Jr., our Chief Executive Officer and one of our directors since March 2021, has extensive experience in the media, entertainment and sports industry. Mr. Prather and a partner acquired control of Gray, a public company, in late 1993. During his tenure, he helped grow the market capitalization of Gray from approximately $52 million to more than $400 million. He was instrumental in increasing Gray\u2019s EBITDA from approximately $6 million at the beginning of his tenure to approximately $176 million during his final full year, representing a CAGR of approximately 20%. Through strategic and transformative acquisitions, Mr. Prather helped Gray increase the number of television stations it owned from three to 30, as well as increase the number of newspapers owned from one to five. Mr. Prather anticipated the eventual decline of the newspaper industry, and in December 2005 Gray spun off five newspapers and one wireless business to a separate public company. Gray operated 22 number one ranked television stations and stations in 17 college towns and eight state capitals. Mr. Prather also served as CEO and a Director of Bull Run Corporation, a sports and affinity marketing management company, from 1992 until its merger into Triple Crown Media, Inc in December 2005. During his time at Gray, Mr. Prather and his partner also acquired Host Communications, a college sports marketing business which became a wholly owned subsidiary of Bull Run. Host Communications provided sports marketing and productions services to a number of collegiate conferences and universities. After successfully growing Host Communications, the business was sold in 2007 to IMG, led by Ted Forstmann, for $74 million. Following his tenure at Gray, Mr. Prather formed Heartland Media in 2013 and partnered with MSouth Equity Partners to help grow the business. Under Mr. Prather\u2019s leadership, Heartland Media acquired its first television station in 2013, and from 2014 to 2017 it acquired 10 additional television stations for total consideration of $220 million. Mr. Prather grew Heartland Media\u2019s cash flow to approximately $29 million in 2019. Mr. Prather led the sale of 11 television stations by Heartland Media in February 2020 for $305 million cash. Mr. Prather also currently serves as the Chief Executive Officer and President of Allen Media Broadcasting, LLC.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1468,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1492,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Individual",
+     "Entity Name",
+     "Entity\u2019s business",
+     "Affiliation"
+    ],
+    [
+     "Robert S. Prather Jr.",
+     "Heartland Media, LLC",
+     "Media",
+     "President and CEO"
+    ],
+    [
+     "",
+     "GAMCO Investors, Inc.",
+     "Investment management",
+     "Director"
+    ],
+    [
+     "",
+     "Ryman Hospitality Properties, Inc.",
+     "Real estate",
+     "Director"
+    ],
+    [
+     "",
+     "Allen Media Broadcasting, LLC",
+     "Media",
+     "President and CEO"
+    ],
+    [
+     "Shawn Pack",
+     "Heartland Media, LLC\n\nAETC, Inc. (WABE)",
+     "Media\n\nMedia",
+     "Chief Financial Officer\n\nChief Financial Officer"
+    ],
+    [
+     "Salvatore Muoio",
+     "S. Muoio & Co. LLC",
+     "Investment management",
+     "Managing Member and Chief Investment Officer"
+    ],
+    [
+     "",
+     "CIBL, Inc.",
+     "Communications",
+     "Director"
+    ],
+    [
+     "",
+     "LICT Corp.",
+     "Communications",
+     "Director"
+    ],
+    [
+     "Steven T. Shapiro",
+     "GoldenTree Asset Management",
+     "Investment management",
+     "Partner and Portfolio Manager"
+    ],
+    [
+     "",
+     "FS Credit Income Fund",
+     "Investment management",
+     "Director"
+    ],
+    [
+     "Alan J. Weber",
+     "Weber Group LLC\n\n Street Diligence, Inc.",
+     "Investment management\n\n Communications Fintech",
+     "Chief Executive Officer\n\n Director"
+    ],
+    [
+     "John Zieser",
+     "IPC Media Pension Trustee Limited",
+     "Pension fund",
+     "Director"
+    ],
+    [
+     "",
+     "JSZ Holdings, LLC",
+     "Private Equity and Venture Capital",
+     "Founder"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1623,
+    "end_line": 1644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Each of our officers and directors presently has, and any of them in the future may have additional, fiduciary or contractual obligations to at least one other entity pursuant to which such officer or director is or will be required to present a business combination opportunity to such entity. In addition, our sponsor, officers and directors may participate in the formation of, or become an officer or director of, other blank check companies similar to ours during the period in which we are seeking an initial business combination, which may have acquisition objectives that are similar to ours. Accordingly, as a result of multiple business affiliations, our officers and directors have similar legal obligations relating to presenting business opportunities meeting the above listed criteria to multiple entities, and if any of our officers or directors becomes aware of a business combination opportunity which is suitable for an entity to which he or she has then-current fiduciary or contractual obligations, he or she will honor these obligations to present such business combination opportunity to such entity, and only present it to us if such entity rejects the opportunity. We do not believe, however, that the fiduciary duties or contractual obligations of our officers or directors will materially affect our ability to complete our initial business combination. Our amended and restated certificate of incorporation provides that, prior to the consummation of our initial business combination, we renounce our interest in any corporate opportunity offered to any director or officer unless such opportunity is expressly offered to such person solely in his or her capacity as a director or officer of our company and such opportunity is one we are legally and contractually permitted to undertake and would otherwise be reasonable for us to pursue and the director or officer is permitted to refer that opportunity to us without violating any legal obligation. Our officers and directors would continue to be subject to all other fiduciary duties owed to us and our stockholders and no other waivers of their respective fiduciary obligations have been provided to any such officers and directors. We do not have any plan for any waiver of the fiduciary duties of our officers and directors post-business combination.\nBelow is a table summarizing the entities to which our officers and directors currently have fiduciary duties or contractual obligations that may present a conflict of interest:",
+   "prose_after": "Potential investors should also be aware of the following other potential conflicts of interest:\n\u2022 None of our officers or directors is required to commit his or her full time to our affairs and, accordingly, may have conflicts of interest in allocating his or her time among various business activities. We do not intend to have any full-time employees prior to the completion of our initial business combination. In addition, our officers and directors are engaged in several other business endeavors for which they may be entitled to substantial compensation and are not required to contribute any specific number of hours per week to our affairs.\n\u2022 In the course of their other business activities, our officers and directors may become aware of investment and business opportunities that may be appropriate for presentation to us as well as the other entities with which they are affiliated, including other blank check companies similar to ours during the period in which we are seeking an initial business combination, which may have acquisition objectives that are similar to ours. Our management may have conflicts of interest in determining to which entity a particular business opportunity should be presented.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1652,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Beneficially\n\nOwned",
+     "",
+     "Approximate\n\nPercentage\n\nof Issued and\n\nOutstanding Class A Common Stock",
+     "",
+     "Beneficially\n\nOwned",
+     "Approximate\n\nPercentage\n\nof Issued and\n\nOutstanding Class B\n\nCommon Stock",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Heartland Sponsor LLC (2)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "4,811,732(2)",
+     "100",
+     "%"
+    ],
+    [
+     "Robert S. Prather, Jr. (2)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "4,811,732(2)",
+     "100",
+     "%"
+    ],
+    [
+     "Shawn Pack (3)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Salvatore Muoio (3)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Steven T. Shapiro (3)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Alan Weber (3)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "John Zieser (3)",
+     "\u2500",
+     "",
+     "\u2500%",
+     "",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Other 5% Beneficial Owners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apollo Management (4)",
+     "",
+     "1,700,000",
+     "8.8",
+     "%",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Sculptor Capital (5)",
+     "",
+     "1,195,901",
+     "6.2",
+     "%",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "Linden Advisors (6)",
+     "",
+     "1,000,000",
+     "5.2",
+     "%",
+     "\u2500",
+     "\u2500%",
+     ""
+    ],
+    [
+     "All directors and officers as a group (6 individuals)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,811,732",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1712,
+    "end_line": 1739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nWe have no compensation plans under which equity securities are authorized for issuance.\nThe following table sets forth information regarding the beneficial ownership of our common stock as of the date of this annual report, by:\n\u2022 each person known by us to be the beneficial owner of more than 5% of our outstanding shares of common stock;\n\u2022 each of our executive officers and directors; and\n\u2022 all our executive officers and directors as a group.\nAs of the date of this annual report, we had 19,246,931 shares of Class A common stock and 4,811,732 shares of Class B common stock, issued and outstanding.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all shares of common stock beneficially owned by them. The following table does not reflect record or beneficial ownership of the private placement warrants as these warrants are not exercisable within 60 days of the date of this annual report.",
+   "prose_after": "* Less than one percent.\n(1) Unless otherwise noted, the business address of each of our stockholders is c/o Heartland Media Acquisition Corp., 3282 Northside Pkwy, Suite 275, Atlanta, GA 30327.\n(2) Represents shares held by our sponsor. Each of our officers and directors is a member of our sponsor. The shares held by our sponsor are beneficially owned by Mr. Prather, our Chief Executive Officer and the managing member of our sponsor, who has voting and dispositive power over the shares held by our sponsor.\n(3) Does not include any shares held by our sponsor. This individual is a member of our sponsor, as described in footnote 2.\n(4) Based solely upon the Schedule 13G filed by Apollo Management Holdings GP, LLC and certain other reporting persons filing therewith (collectively, \u201cApollo\u201d) on February 1, 2022. The address of Apollo is 9 W. 57th Street, 43rd Floor, New York, New York 10019.\n(5) Based solely upon the Schedule 13G filed by Sculptor Capital LP and certain other reporting persons filing therewith (collectively, \u201cSculptor\u201d) on January 28, 2022. The address of Sculptor is 9 W. 57th Street, 39th Floor, New York, New York 10019.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 69
+    },
+    "after": {
+     "line": 1739,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1.1",
+     "Underwriting Agreement, dated January 20, 2022, by and among the Company and BofA Securities, Inc. and Moelis & Company LLC, as representatives of the several underwriters (incorporated by reference to Exhibit 1.1 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference from Exhibit 3.1 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "3.2",
+     "Bylaws (incorporated by reference to Exhibit 3.3 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "4.2",
+     "Specimen Class A Common Stock Certificate (incorporated by reference to Exhibit 4.2 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate (included in Exhibit 4.4) (incorporated by reference to Exhibit 4.3 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated January 20, 2022, by and between the Company and Continental Stock Transfer & Trust Company, as warrant agent (incorporated by reference from Exhibit 4.1 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "4.5*",
+     "Description of the Company\u2019s securities"
+    ],
+    [
+     "10.1",
+     "Letter Agreement, dated January 20, 2022, by and among the Company, its executive officers, its directors, Heartland Sponsor LLC and Moelis & Company LLC (incorporated by reference from Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "10.2",
+     "Investment Management Trust Agreement, dated January 20, 2022, by and between the Company and Continental Stock Transfer & Trust Company, as trustee (incorporated by reference from Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "10.3",
+     "Registration Rights Agreement, dated January 20, 2022, by and among the Company, Heartland Sponsor LLC and the other holders party thereto (incorporated by reference from Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "10.4",
+     "Private Placement Warrants Purchase Agreement, dated January 20, 2022, by and between the Company and Heartland Sponsor LLC (incorporated by reference from Exhibit 10.4 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ],
+    [
+     "10.5",
+     "Administrative Services Agreement, dated January 20, 2022, by and between the Company and Heartland Media, LLC (incorporated by reference from Exhibit 10.5 of the Company\u2019s Current Report on Form 8-K filed on January 25, 2022)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1838,
+    "end_line": 1868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Our audit committee was formed upon the consummation of our IPO. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) The following documents are filed as part of this annual report on Form 10-K:\n1. Financial Statements: See \u201cIndex to Financial Statements\u201d in the accompanying financial statements.\n(b) Financial Statement Schedules. All schedules are omitted for the reason that the information is included in the financial statements or the notes thereto or that they are not required or are not applicable.\n(c) Exhibits: The following exhibits are filed with this report. Exhibits which are incorporated herein by reference can be obtained from the SEC\u2019s website at sec.gov.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 1868,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.6",
+     "Securities Subscription Agreement, dated March 3, 2021, by and between the Company and Heartland Sponsor LLC (incorporated by reference from Exhibit 10.5 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "10.7",
+     "Form of Indemnity Agreement (incorporated by reference from Exhibit 10.7 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "10.8",
+     "Promissory Note, dated March 3, 2021, issued to Heartland Sponsor LLC (incorporated by reference from Exhibit 10.1 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "10.9",
+     "Amendment to Promissory Note, dated January 14, 2022, issued to Heartland Sponsor LLC (incorporated by reference from Exhibit 10.10 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "10.10",
+     "Share Forfeiture Notice, dated October 27, 2021 (incorporated by reference from Exhibit 10.9 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "10.11",
+     "Share Forfeiture Notice, dated January 14, 2022 (incorporated by reference from Exhibit 10.11 of the Company\u2019s Registration Statement on Form S-1 (File No. 333-261374) initially filed on November 26, 2021)"
+    ],
+    [
+     "24*",
+     "Power of Attorney (included on signature page of this annual report)"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1870,
+    "end_line": 1891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\n** Furnished.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this annual report to be signed on its behalf by the undersigned, thereunto duly authorized, in New York City, New York, on the 31st day of March, 2022.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1868,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 1899,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "HEARTLAND MEDIA ACQUISITION CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Robert S. Prather, Jr."
+    ],
+    [
+     "",
+     "",
+     "Name: Robert S. Prather, Jr."
+    ],
+    [
+     "",
+     "",
+     "Title: Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "HEARTLAND MEDIA ACQUISITION CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1905,
+    "end_line": 1913
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\n** Furnished.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this annual report to be signed on its behalf by the undersigned, thereunto duly authorized, in New York City, New York, on the 31st day of March, 2022.",
+   "prose_after": "POWERS OF ATTORNEY\nKNOW ALL BY THESE PRESENTS, that each of the undersigned constitutes and appoints each of Robert S. Prather, Jr. and Shawn Pack, each acting alone, his or her true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for such person and in his or her name, place and stead, in any and all capacities, to sign this annual report on Form 10-K (including amendments thereto), and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, each acting alone, full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming that any such attorney-in-fact and agent, or his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1899,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1948,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert S. Prather, Jr.",
+     "Chief Executive Officer and Director",
+     "March 31, 2022"
+    ],
+    [
+     "Robert S. Prather, Jr.",
+     "(Principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Shawn Pack",
+     "Chief Financial Officer",
+     "March 31, 2022"
+    ],
+    [
+     "Shawn Pack",
+     "(Principal financial and accounting officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Salvatore Muoio",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Salvatore Muoio",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Steven T. Shapiro",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Steven T. Shapiro",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alan J. Weber",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Alan J. Weber",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John Zieser",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "John Zieser",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1920,
+    "end_line": 1948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "KNOW ALL BY THESE PRESENTS, that each of the undersigned constitutes and appoints each of Robert S. Prather, Jr. and Shawn Pack, each acting alone, his or her true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for such person and in his or her name, place and stead, in any and all capacities, to sign this annual report on Form 10-K (including amendments thereto), and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, each acting alone, full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as he or she might or could do in person, hereby ratifying and confirming that any such attorney-in-fact and agent, or his or her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this annual report has been signed below by the following persons in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1899,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1948,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB Firm ID Number 688)",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Balance Sheet",
+     "F-3"
+    ],
+    [
+     "Statement of Operations",
+     "F-4"
+    ],
+    [
+     "Statement of Changes in Stockholder\u2019s Equity",
+     "F-5"
+    ],
+    [
+     "Statement of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1954,
+    "end_line": 1963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Heartland Media Acquisition Corp.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Heartland Media Acquisition Corp. (the \u201cCompany\u201d) as of December 31, 2021, the related statements of operations, changes in stockholder\u2019s equity and cash flows for the period from February 10, 2021 (inception) through December 31, 2021, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021, and the results of its operations and its cash flows for the period from February 10, 2021 (inception) through December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1950,
+     "token": "REPEATING_HEADER",
+     "id": 83,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1963,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "25,722",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "26,800",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "52,522",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "719,111",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "771,633",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholder\u2019s Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued offering costs and expenses",
+     "$",
+     "674,229",
+     ""
+    ],
+    [
+     "Promissory note \u2013 related party",
+     "",
+     "86,414",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "760,643",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 6)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value, 2,500,000 shares authorized; no shares issued or outstanding",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 250,000,000 shares authorized; none issued and outstanding",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 25,000,000 shares authorized; 5,031,250 shares issued and outstanding (1)",
+     "",
+     "503",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "24,497",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(14,010)",
+     ""
+    ],
+    [
+     "Total stockholder\u2019s equity",
+     "",
+     "10,990",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholder\u2019s Equity",
+     "$",
+     "771,633",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Assets",
+    "Current assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1995,
+    "end_line": 2028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Marcum llp\nMarcum llp\nWe have served as the Company\u2019s auditor since 2021.\nMarch 31, 2022\nBALANCE SHEET\nDECEMBER 31, 2021",
+   "prose_after": "(1) Includes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of the financial statement.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1989,
+     "token": "REPEATING_HEADER",
+     "id": 86,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Formation and operating costs",
+     "$",
+     "14,010",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(14,010)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding(1)",
+     "",
+     "4,375,000",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common stock",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2040,
+    "end_line": 2050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of the financial statement.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "(1) Excludes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDER\u2019S EQUITY\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2034,
+     "token": "REPEATING_HEADER",
+     "id": 88,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2054,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class B\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "Additional\n\nPaid-In\n\nCapital",
+     "",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "",
+     "Stockholder\u2019s\n\nEquity",
+     ""
+    ],
+    [
+     "",
+     "Shares(1)",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of February 10, 2021 (inception)",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "",
+     "\u2014",
+     "$",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B common stock issued to Sponsor",
+     "5,031,250",
+     "",
+     "503",
+     "",
+     "",
+     "24,497",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(14,010)",
+     "",
+     "",
+     "(14,010)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "5,031,250",
+     "$",
+     "503",
+     "$",
+     "",
+     "24,497",
+     "$",
+     "",
+     "(14,010)",
+     "",
+     "$",
+     "10,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2062,
+    "end_line": 2077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Excludes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDER\u2019S EQUITY\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "(1) Includes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2056,
+     "token": "REPEATING_HEADER",
+     "id": 90,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2081,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(14,010)",
+     ""
+    ],
+    [
+     "Changes in current assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(26,800)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "40,532",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(278)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of Class B common stock to Sponsor",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Proceeds from issuance of promissory note to related party",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "26,000",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "25,722",
+     ""
+    ],
+    [
+     "Cash, beginning of the period",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash, end of the period",
+     "$",
+     "25,722",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs paid by Sponsor under the promissory note",
+     "$",
+     "85,414",
+     ""
+    ],
+    [
+     "Deferred offering costs in accrued offering costs and expenses",
+     "$",
+     "633,697",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash flows from operating activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2089,
+    "end_line": 2115
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes up to 656,250 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters. As a result of the underwriters\u2019 election to partially exercise their over-allotment option on February 3, 2022, 436,732 shares of Class B common stock are no longer subject to forfeiture (See Note 5).\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM FEBRUARY 10, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nDECEMBER 31, 2021\nNote 1\u2014Organization and Business Operations\nHeartland Media Acquisition Corp. (the \u201cCompany\u201d) is a blank check company incorporated as a Delaware corporation on February 10, 2021. The Company was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses or entities (the \u201cBusiness Combination\u201d). The Company has not selected any specific target business and the Company has not, nor has anyone on its behalf, initiated any substantive discussions, directly or indirectly, with any target business regarding a Business Combination with the Company.\nAs of December 31, 2021, the Company had not commenced any operations. All activity for the period from February 10, 2021 (inception) through December 31, 2021 relates to the Company\u2019s formation and the Initial Public Offering (as defined below). The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income on cash and cash equivalents from the proceeds derived from the IPO (as defined below). The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2083,
+     "token": "REPEATING_HEADER",
+     "id": 92,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2117,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "2,703",
+     ""
+    ],
+    [
+     "Startup costs",
+     "",
+     "239",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "2,942",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,942)",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2021",
+    "Deferred tax assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2365,
+    "end_line": 2379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013Income Tax"
+    }
+   },
+   "prose_before": "The shares of Class B common stock will automatically convert into shares of Class A common stock at the time of the initial Business Combination on a one-for-one basis, subject to adjustment for stock splits, stock dividends, reorganizations, recapitalizations and the like, and subject to further adjustment, as provided herein. In the case that additional shares of Class A common stock, or equity-linked securities (as described herein), are issued or deemed issued in excess of the amount issued in the IPO and related to the closing of the initial Business Combination, the ratio at which shares of Class B common stock shall convert into shares of Class A common stock will be adjusted (unless the holders of a majority of the outstanding shares of Class B common stock agree to waive such adjustment with respect to any such issuance or deemed issuance) so that the number of shares of Class A common stock issuable upon conversion of all shares of Class B common stock will equal, in the aggregate, on an as-converted basis, 20% of the aggregate number of all shares of common stock outstanding upon the completion of the IPO, plus the aggregate number of shares of Class A common stock and equity-linked securities issued or deemed issued in connection with the initial Business Combination (net of the number of shares of Class A common stock redeemed in connection with the initial Business Combination), excluding any shares or equity-linked securities issued, or to be issued, to any seller in the initial Business Combination and any Private Placement Warrants issued to the Sponsor, an affiliate of the Sponsor or any of the Company\u2019s officers or director.\nNote 9\u2013Income Tax\nThe Company\u2019s net deferred tax assets as of December 31, 2021 are as follows:",
+   "prose_after": "The income tax provision for the period from February 10, 2021 (inception) through December 31, 2021 consists of the following:\n<TABLE>\nDecember 31,\n------------\nFederal\nCurrent                                 $ \u2014\nDeferred                            (2,942)\nState and Local\nCurrent                                   \u2014\nDeferred                                  \u2014",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2359,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2384,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 2021
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "(2,942)",
+     ""
+    ],
+    [
+     "State and Local",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "2,942",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2021",
+    "Federal"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "-21.0",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2404,
+    "end_line": 2414
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013Income Tax"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the period from February 10, 2021 (inception) through December 31, 2021, the change in the valuation allowance was $2,942.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate as of December 31, 2021 is as follows:",
+   "prose_after": "The effective tax rate differs from the statutory tax rate of 21% for the period from February 10, 2021 (inception) through December 31, 2021, due to the valuation allowance recorded on the Company\u2019s net operating losses. The Company files income tax returns in the U.S. federal jurisdiction and is subject to examination by the various taxing authorities. The Company\u2019s tax return for the period from February 10, 2021 (inception) through December 31, 2021 remains open and subject to examination.\nNote 10\u2014Subsequent Events\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the financial statements were issued. Based upon this review, other than described below, the Company did not identify any subsequent events that would have required adjustment or disclosure in the financial statements.\nThe registration statement for the Company\u2019s IPO was declared effective on January 20, 2022.\nOn January 25, 2022, the Company consummated its IPO and associated Private Placement (see Note 3 and Note 4).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2384,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 2021
+    },
+    "after": {
+     "line": 2428,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

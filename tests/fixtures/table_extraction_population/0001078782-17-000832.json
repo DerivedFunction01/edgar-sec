@@ -1,0 +1,3280 @@
+{
+ "accession": "0001078782-17-000832",
+ "cik": "0001419051",
+ "form": "10-K",
+ "filing_date": "2017-06-07",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k123116_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "45-1226465"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "________________\nFORM 10-K\n[X] . ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2016\nOR . TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 000-54554\n_______________________________\nTherapeutic Solutions International, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "4093 Oceanside Boulevard, Suite B\nOceanside, California 92056\n(Address of principal executive offices, including zip code)\n(760) 295-7208\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nTitle of class Common Stock, $0.001 par value per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE NO"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "BUSINESS",
+     "5"
+    ],
+    [
+     "ITEM 1A",
+     "RISK FACTORS",
+     "10"
+    ],
+    [
+     "ITEM 1B",
+     "UNRESOLVED STAFF COMMENTS",
+     "14"
+    ],
+    [
+     "7ITEM 2",
+     "PROPERTIES",
+     "14"
+    ],
+    [
+     "ITEM 3",
+     "LEGAL PROCEEDINGS",
+     "14"
+    ],
+    [
+     "ITEM 4",
+     "MINE SAFETY DISCLOSURES",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "15"
+    ],
+    [
+     "ITEM 6",
+     "SELECTED FINANCIAL DATA",
+     "17"
+    ],
+    [
+     "ITEM 7",
+     "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "17"
+    ],
+    [
+     "ITEM 7A",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "18"
+    ],
+    [
+     "ITEM 8",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "18"
+    ],
+    [
+     "ITEM 9",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "18"
+    ],
+    [
+     "ITEM 9A",
+     "CONTROLS AND PROCEDURES",
+     "18"
+    ],
+    [
+     "ITEM 9B",
+     "OTHER INFORMATION",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "20"
+    ],
+    [
+     "ITEM 11",
+     "EXECUTIVE COMPENSATION",
+     "23"
+    ],
+    [
+     "ITEM 12",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "24"
+    ],
+    [
+     "ITEM 13",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "24"
+    ],
+    [
+     "ITEM 14",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE NO",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 121
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer .     .                Accelerated filer .     .\n---------------------------------------------  -----------------------------\nNon-accelerated filer . .                      Smaller reporting company [X] .\n(Do not check if a smaller reporting company)\n---------------------------------------------  -----------------------------\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes . . No [X] .\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates was $1,107,627 based on a closing price of $0.005 as of June 30, 2016.\nAs of June 7, 2017, 777,251,000 shares of the registrant\u2019s common stock, par value of $0.001 per share, were outstanding.\nINDEX\nTHERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+   "prose_after": "3\nPART I.\nFORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of federal securities laws, which are subject to a number of risks and uncertainties. All statements that are not historical facts are forward-looking statements, including statements about our business strategy, uncertainty regarding our future operating results and our profitability, anticipated sources of funds and all plans, objectives, expectations and intentions and any statements regarding future potential revenue, gross margins and our prospects for 2017 and thereafter. These statements may appear in a number of places and can be identified by the use of forward-looking terminology such as \"may,\" \"will,\" \"should,\" \"expect,\" \"plan,\" \"anticipate,\" \"believe,\" \"estimate,\" \"predict,\" \"future,\" \"intend,\" or \"certain\" or the negative of these terms or other variations or comparable terminology, or by discussions of strategy.\nThe following factors are among those that may cause actual results to differ materially from our forward-looking statements:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High",
+     "Low"
+    ],
+    [
+     "December 31, 2016",
+     "$0.007",
+     "$0.002"
+    ],
+    [
+     "September 30, 2016",
+     "$0.01",
+     "$0.004"
+    ],
+    [
+     "June 30, 2016",
+     "$0.012",
+     "$0.003"
+    ],
+    [
+     "March 31, 2016",
+     "$0.007",
+     "$0.002"
+    ],
+    [
+     "December 31, 2015",
+     "$0.011",
+     "$0.003"
+    ],
+    [
+     "September 30, 2015",
+     "$0.023",
+     "$0.003"
+    ],
+    [
+     "June 30, 2015",
+     "$0.004",
+     "$0.002"
+    ],
+    [
+     "March 31, 2015",
+     "$0.006",
+     "$0.001"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "From time to time, claims are made against us in the ordinary course of business, which could result in litigation. Claims and associated litigation are subject to inherent uncertainties and unfavorable outcomes could occur, such as monetary damages, fines, penalties or injunctions prohibiting us from selling one or more products or engaging in other activities. The occurrence of an unfavorable outcome in any specific period could have a material adverse effect on our results of operations for that period or future periods.\nHowever, as of the date of this report, management believes the outcome of currently identified potential claims and lawsuits will not have a material adverse effect on our financial condition or results of operations.\nITEM 4 - MINE SAFETY DISCLOSURES.\nNo disclosure required.\nPART II\nITEM 5 - MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nOur stock is now traded in OTC Markets under the stock symbol TSOI, which results in a very illiquid and limited market for our common stock. As of the date of Annual Report on Form 10-K there are approximately 164 stockholders of record of our common stock.\nThe following table sets forth the quarterly high and low closing sales prices for our common stock from January 1, 2015 through December 31, 2016.",
+   "prose_after": "Dividends\nWe did not declare or pay dividends during 2015 to 2016.\nIssuances of Unregistered Securities\nOn March 27, 2015, we issued 20,000,000 shares of common stock, valued at $.0025 per share, for an investment in the Company\u2019s Private Placement.\nOn February 27, 2015, we issued 2,000,000 shares of common stock, valued at $.0025 per share, for consulting services.\nOn April 1, 2015, we issued 10,000,000 shares of common stock, valued at $.0025 per share, for consulting services.\nOn April 17, 2015, we issued 20,000,000 shares of common stock, valued at $.0025 per share, for an investment in the Company\u2019s Private Placement.\nOn June 1, 2015, we issued 3,000,000 shares of common stock, valued at $.0026 per share, for consulting services.\nOn June 1, 2015, we issued 7,000,000 shares of common stock, valued at $.0025 per share, for legal services\nOn June 8, 2015, we issued 1,000,000 shares of common stock, valued at $.0025 per share, for an investment in the Company\u2019s Private Placement.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Director",
+     "Age"
+    ],
+    [
+     "Timothy G. Dixon",
+     "58"
+    ],
+    [
+     "Gerry B. Berg",
+     "70"
+    ],
+    [
+     "Dr. Thomas E. Ichim",
+     "40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 812,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "(3)\nWe have ineffective controls over the period end financial disclosure and reporting process caused by insufficient accounting staff; and\nChanges in Internal Control Over Financial Reporting\nNo substantial changes in our internal control over financial reporting occurred during 2016 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting, except that we have increased our use of external accounting services, adopted policies to improve timely reviews by management and coordination with accounting consultants, and engaged corporate and securities legal counsel with better capabilities than our previous provider's.\nITEM 9B - OTHER INFORMATION.\nNone\nPART III\nITEM 10 - DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nThe Company\u2019s executive officers and directors and their respective ages as of December 31, 2016 are as follows:\nDirectors:",
+   "prose_after": "Executive Officers:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 846,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Officer",
+     "Age",
+     "Office"
+    ],
+    [
+     "Timothy G. Dixon",
+     "58",
+     "President & CEO"
+    ],
+    [
+     "Gerry B. Berg",
+     "70",
+     "Vice President & CFO"
+    ],
+    [
+     "Hong Ma",
+     "47",
+     "Chief Science Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 822,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "Executive Officers:",
+   "prose_after": "The term of office for each director is one year, or until the next annual meeting of the stockholders.\n*Thomas E. Ichim, Ph.D was appointed to the Board of Directors on January 22, 2016.\nBiographical Information\nTimothy G. Dixon\nMr. Dixon currently serves as Chief Executive Officer, President, and Chairman of Therapeutic Solutions International, Inc. Mr. Dixon also serves as President and Chairman of OmniBiome, Inc., President and Chairman of Emvolio, Inc., and President and Chairman of SandBox Dental Labs, Inc. Mr. Dixon previously served as the President of TMD Courses, Inc. from 2006 to 2012 and; as the President of Splint Decisions Inc. from 2010 to 2011. Mr. Dixon has attended hundreds of hours of continuing medical/dental education throughout the years and has produced many educational DVD\u2019s used by dental professionals worldwide on the subject of parafunctional control, migraine prevention, therapeutic Botox injections, migraine pathophysiology, dental sleep medicine, and other therapeutic protocols. Mr. Dixon also has extensive experience in dealing with corporate compliance matters with the U.S. Food and Drug Administration, (FDA) as well as many international regulatory bodies.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 846,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock Awards\n\n\n\n($)",
+     "Option Awards\n\n\n\n($)",
+     "Nonequity Incentive Plan Compensation\n\n\n\n($)",
+     "All Other Compensation\n\n\n\n($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Timothy G. Dixon",
+     "2016",
+     "98,400 (1)",
+     "-",
+     "67,500",
+     "-",
+     "-",
+     "-",
+     "165,900"
+    ],
+    [
+     "President and CEO",
+     "2015",
+     "25,500",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "25,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gerry B. Berg",
+     "2016",
+     "97,700 (2)",
+     "-",
+     "67,500",
+     "-",
+     "-",
+     "-",
+     "165,200"
+    ],
+    [
+     "Vice President, Chief Financial Officer",
+     "2015",
+     "25,500",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "25,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 953
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "To our knowledge, based solely on a review of the copies of such reports furnished to us during the fiscal year ended December 31, 2016, all Section 16(a) filing requirements applicable to our officers, directors and greater than 10% beneficial owners were complied with.\nCode of Ethics\nWe have adopted a Code of Ethics for our principal executive and financial officers. Our Code of Ethics was filed as an Exhibit to our Annual Report on Form 10-K for fiscal year 2010. We hereby undertake to provide a copy of this Code of Ethics to any person, without charge, upon request. Requests for a copy of this Code of Ethics may be made in writing addressed to: Therapeutic Solutions International, Inc., 4093 Oceanside Blvd, Suite B, Oceanside, California 92056, Attn: Corporate Secretary.\nITEM 11 - EXECUTIVE COMPENSATION.\nSummary Compensation Table\nThe following table summarizes the compensation paid, with respect to years ended December 31, 2016 and 2015 for services rendered to us in all capacities, to each person who served as an executive officer of the Company.",
+   "prose_after": "(1) $65,400 has been accrued and unpaid as of December 31, 2016\n(2) $64,700 has been accrued and unpaid as of December 31, 2016\nOutstanding Equity Awards\nNone\nEmployment Agreements\nWe do not have any employment agreements as of December 31, 2016.\nDirector Compensation\nWhen our employees serve on our Board of Directors, we do not give them any additional compensation in respect of such Board service. Directors currently serve without compensation.\nITEM 12 - SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth, as of December 31, 2016, information regarding the ownership of the Company\u2019s outstanding shares of common stock by (i) each person known to management to own, beneficially or of record, more than 5% of the outstanding shares of our common stock, (ii) each director of the Company, (iii) each executive officer of the Company, and (iv) all directors and executive officers as a group. As of June 7, 2017, a total of 777,751,000 shares of our common stock were outstanding.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owners",
+     "Amount and Nature of Beneficial Ownership",
+     "Percent of Shares Outstanding",
+     ""
+    ],
+    [
+     "Timothy G. Dixon (1)",
+     "121,475,671",
+     "15.63",
+     "%"
+    ],
+    [
+     "Gerry B. Berg (2)",
+     "107,750,000",
+     "13.86",
+     "%"
+    ],
+    [
+     "Thomas E. Ichim (3)*",
+     "44,500,000",
+     "5.73",
+     "%"
+    ],
+    [
+     "Robert F. Graham",
+     "102,500,000",
+     "13.19",
+     "%"
+    ],
+    [
+     "John Peck, Jr.",
+     "162,500,000",
+     "20.91",
+     "%"
+    ],
+    [
+     "All directors and executive officers as a group (3 persons) (1)(2)(3)",
+     "273,725,671",
+     "35.22",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 976,
+    "end_line": 987
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) $65,400 has been accrued and unpaid as of December 31, 2016\n(2) $64,700 has been accrued and unpaid as of December 31, 2016\nOutstanding Equity Awards\nNone\nEmployment Agreements\nWe do not have any employment agreements as of December 31, 2016.\nDirector Compensation\nWhen our employees serve on our Board of Directors, we do not give them any additional compensation in respect of such Board service. Directors currently serve without compensation.\nITEM 12 - SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth, as of December 31, 2016, information regarding the ownership of the Company\u2019s outstanding shares of common stock by (i) each person known to management to own, beneficially or of record, more than 5% of the outstanding shares of our common stock, (ii) each director of the Company, (iii) each executive officer of the Company, and (iv) all directors and executive officers as a group. As of June 7, 2017, a total of 777,751,000 shares of our common stock were outstanding.",
+   "prose_after": "*Dr. Ichim was appointed to the Board of Directors on January 22, 2016.\n(1)\nUnder SEC rules (i) a person is deemed to be the beneficial owner of shares if that person has, either alone or with others, the power to vote or dispose of those shares. The persons named in the table have sole voting and dispositive power with respect to all shares shown as beneficially owned by them, subject to community property laws where applicable.\nITEM 13 - CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nOur Board of Directors currently consists of three directors, two of whom are officers of the Company. As of December 31, 2016 we disclose that we had no independent directors. Thomas E. Ichim, Ph.D was appointed to the Board of Directors on January 22, 2016 and currently serves as CEO of Emvolio, Inc.\nIn general, it is our policy to submit all proposed related party transactions (those of the kind and size that may require disclosure under Regulation S-K, Item 404) to the Board of Directors for approval. The Board of Directors only approves those transactions that are on terms comparable to, or more beneficial to us than, those that could be obtained in arm\u2019s length dealings with an unrelated third party. Examples of related party transactions covered by our policy are transactions in which any of the following individuals has or will have a direct or indirect material interest: any of our directors or executive officers, any person who is known to us to be the beneficial owner of more than 5% of our common stock, and any immediate family member of one of our directors or executive officers or person known to us to be the beneficial owner of more than 5% of our common stock.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1008,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-2"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders' Deficit",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1040
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The aggregate fees billed to us by our principal accountants, PLS CPA, A Professional Corporation, for auditing and accounting services for 2015 was $24,000 (inclusive of the review of the quarterly reports on Form 10-Q).\nAudit-Related Fees, Tax Fees and All Other Fees\nThere were no fees billed to us by our principal accountant for fiscal year 2016 and 2015 for assurance and related services (audit-related fees), tax services or other products and services.\nAudit Committee Matters\nWe do not have an audit committee.\nPART IV\nITEM 15 - EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.\n(a)\nThe following documents have been filed as a part of this Annual Report on Form 10-K.\nFinancial Statements",
+   "prose_after": "Financial Statement Schedules.\nAll schedules are omitted because they are not applicable or not required or because the required information is included in the Financial Statements or the Notes thereto.\nExhibits.\nThe following exhibits are filed as part of, or incorporated by reference into, this Annual Report on Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1041,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT\n\n\n\nNUMBER",
+     "DESCRIPTION"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation"
+    ],
+    [
+     "3.1.1",
+     "Certificate of Merger, filed February 22, 2011"
+    ],
+    [
+     "3.1.2",
+     "Certificate of Amendment to Articles of Incorporation filed October 15, 2012 (incorporated herein by reference to Form 8-K, filed on October 17, 2012)"
+    ],
+    [
+     "3.2",
+     "Bylaws (incorporated herein by reference to Form SB-2, filed on November 21, 2007)"
+    ],
+    [
+     "3.2.1",
+     "Bylaws amendments adopted August 22, 2012, August 24, 2012 and September 26, 2012"
+    ],
+    [
+     "10.1",
+     "2009 Stock Incentive Plan (as amended on August 31, 2011) (incorporated herein by reference to Form 10-K, filed on October 31, 2012)"
+    ],
+    [
+     "10.2",
+     "Common Stock Share Exchange Agreement dated November 16, 2010 (incorporated herein by reference to Exhibit E to Regulation 14C information statement filed on February 15, 2011)"
+    ],
+    [
+     "10.3",
+     "Exclusive License Agreement between Boyd Research, Inc. and us, dated April 1, 2011 (incorporated herein by reference to Form 10-K, filed on October 31, 2012)"
+    ],
+    [
+     "10.4",
+     "Investor Relations Consulting Agreement, between us and Constellation Asset Advisors, Inc., dated June 17, 2011 (incorporated herein by reference to Form 10-K, filed on October 31, 2012)"
+    ],
+    [
+     "10.5",
+     "Employment Agreement between Timothy Dixon and us, dated November 15, 2011 (incorporated herein by reference to Form 10-K, filed on October 31, 2012)"
+    ],
+    [
+     "10.6",
+     "Employment Agreement between Gerry Berg and us, dated November 15, 2011 (incorporated herein by reference to Form 10-K, filed on October 31, 2012)"
+    ],
+    [
+     "10.7",
+     "Master Dispute Resolution Agreement, by and among us, James P. Boyd, Boyd Research, Inc., TMD Courses, Inc., Timothy G. Dixon and Gerry B. Berg, dated August 24, 2012 (incorporated herein by reference to Exhibit 10.1 to Form 8-K filed August 30, 2012)"
+    ],
+    [
+     "10.8",
+     "License Agreement, by and among us, Boyd Research, Inc. and TMD Courses, Inc., dated August 24, 2012 (incorporated herein by reference to Exhibit 10.2 to Form 8-K filed August 30, 2012)"
+    ],
+    [
+     "10.9",
+     "Escrow Agreement, by and among us and James P. Boyd and Chicago Title Company (as escrow agent), dated August 24, 2012 (incorporated herein by reference to Exhibit 10.3 to Form 8-K filed August 30, 2012)"
+    ],
+    [
+     "10.10",
+     "Voting Agreement, by and between us and James P. Boyd, dated August 24, 2012 (incorporated herein by reference to Exhibit 10.4 to Form 8-K filed August 30, 2012)"
+    ],
+    [
+     "10.11",
+     "License Agreement, by and among us, Innovative Supplements, Inc. and Robert F. Graham, dated December 9, 2014 (incorporated herein by reference to Form 8-K filed December 10, 2014)"
+    ],
+    [
+     "10.12",
+     "License Agreement, by us and OmniBiome, Inc., a wholly owned subsidiary, dated November 18, 2015, 2015 (incorporated herein by reference to Form 8-K filed November 18, 2015)"
+    ],
+    [
+     "10.13",
+     "License Agreement, by us and OmniBiome, Inc., a wholly owned subsidiary, dated December 4, 2015, 2015 (incorporated herein by reference to Form 8-K filed December 8, 2015)"
+    ],
+    [
+     "10.14",
+     "License Agreement, by us and MolecuVax, Inc., a wholly owned subsidiary, dated February 5, 2016, 2015 (incorporated herein by reference to Form 8-K filed February 8, 2015)"
+    ],
+    [
+     "31.1",
+     "Rule 13a-14(a)/Section 302 Certification of Principal Executive Officer"
+    ],
+    [
+     "31.2",
+     "Rule 13a-14(a)/Section 302 Certification of Principal Financial Officer"
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350/Rule 13a-14(b)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1053,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Financial Statement Schedules.\nAll schedules are omitted because they are not applicable or not required or because the required information is included in the Financial Statements or the Notes thereto.\nExhibits.\nThe following exhibits are filed as part of, or incorporated by reference into, this Annual Report on Form 10-K:",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: June 7, 2017",
+     "By: /s/ Timothy G. Dixon"
+    ],
+    [
+     "",
+     "Timothy G. Dixon"
+    ],
+    [
+     "",
+     "Chief Executive Officer and President"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: June 7, 2017",
+     "/s/ Timothy G. Dixon"
+    ],
+    [
+     "",
+     "Timothy G. Dixon"
+    ],
+    [
+     "",
+     "Chief Executive Officer, President and Director\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: June 7, 2017",
+     "/s/ Gerry B. Berg"
+    ],
+    [
+     "",
+     "Gerry B. Berg"
+    ],
+    [
+     "",
+     "Vice President, Chief Financial Officer and Director\n\n\n\n(Principal Financial and Accounting Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: June 7, 2017",
+     "/s/ Thomas E. Ichim"
+    ],
+    [
+     "",
+     "Thomas E. Ichim"
+    ],
+    [
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [
+    "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1097,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Shareholders\nWe have audited the accompanying consolidated balance sheet of Therapeutic Solutions International, Inc. and subsidiaries as of December 31, 2016, and the related consolidated statements of operations, changes in shareholders' deficit, and cash flows for the year then ended. These financial statements are the responsibility of the company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1093,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1125,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash and cash equivalents",
+     "$",
+     "21,910",
+     "",
+     "$",
+     "2,183"
+    ],
+    [
+     "",
+     "Accounts receivable, net",
+     "",
+     "-",
+     "",
+     "",
+     "2,184"
+    ],
+    [
+     "",
+     "Inventory",
+     "",
+     "36,435",
+     "",
+     "",
+     "29,675"
+    ],
+    [
+     "",
+     "Prepaid expenses and other current assets",
+     "",
+     "14,304",
+     "",
+     "",
+     "213,446"
+    ],
+    [
+     "",
+     "Total current assets",
+     "",
+     "72,649",
+     "",
+     "",
+     "247,488"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "32,226",
+     "",
+     "",
+     "12,476"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "104,875",
+     "",
+     "$",
+     "259,964"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable",
+     "$",
+     "327,592",
+     "",
+     "$",
+     "277,342"
+    ],
+    [
+     "",
+     "Accrued expenses and other current liabilities",
+     "",
+     "135,164",
+     "",
+     "",
+     "4,412"
+    ],
+    [
+     "",
+     "Notes payable-related parties, current portion",
+     "",
+     "221,451",
+     "",
+     "",
+     "207,238"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "684,207",
+     "",
+     "",
+     "488,992"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable- related parties, less current portion",
+     "",
+     "",
+     "75,500",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock, $ 0.001 par value; 5,000,000 shares authorized",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common stock, $ 0.001 par value; 990,000,000 shares authorized;\n\n\n\n740,251,000 and 541,000,000 shares issued and outstanding at December 31, 2016 and 2015, respectively.",
+     "",
+     "740,251",
+     "",
+     "",
+     "541,000"
+    ],
+    [
+     "",
+     "Additional paid-in capital",
+     "",
+     "2,878,111",
+     "",
+     "",
+     "2,440,709"
+    ],
+    [
+     "",
+     "Accumulated deficit",
+     "",
+     "(4,273,194)",
+     "",
+     "",
+     "(3,210,737)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders' deficit",
+     "",
+     "",
+     "(654,832)",
+     "",
+     "",
+     "(229,028)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders' deficit",
+     "",
+     "$",
+     "104,875",
+     "",
+     "$",
+     "259,964"
+    ]
+   ],
+   "caption_stack": [
+    "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+    "Consolidated Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1183,
+    "end_line": 1233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the consolidated financial positions of Therapeutic Solutions International, Inc. as of December 31, 2015 and 2014, and the consolidated results of its operations and its cash flows for the years then ended in conformity with U.S. generally accepted accounting principles.\nThe consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the consolidated financial statements, the Company\u2019s recurring losses over past years and working capital deficits raise substantial doubt about its ability to continue as a going concern. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ PLS CPA\n____________________________\nPLS CPA, A Professional Corp.\nOctober 31, 2016\nSan Diego, CA 92111\nRegistered with the Public Company Accounting Oversight Board",
+   "prose_after": "See accompanying notes to consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1181,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended\n\n\n\nDecember 31,\n\n\n\n2016",
+     "",
+     "",
+     "For the Year Ended\n\n\n\nDecember 31,\n\n\n\n2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "",
+     "",
+     "$",
+     "5,009",
+     "",
+     "$",
+     "1,911"
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "",
+     "",
+     "1,606",
+     "",
+     "",
+     "3,193"
+    ],
+    [
+     "Gross Profit",
+     "",
+     "",
+     "",
+     "3,403",
+     "",
+     "",
+     "(1,282)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General and administrative",
+     "",
+     "",
+     "120,625",
+     "",
+     "",
+     "69,487"
+    ],
+    [
+     "",
+     "Salaries, wages, and related costs",
+     "",
+     "",
+     "355,244",
+     "",
+     "",
+     "266,286"
+    ],
+    [
+     "",
+     "Selling expenses",
+     "",
+     "",
+     "1,508",
+     "",
+     "",
+     "3,894"
+    ],
+    [
+     "",
+     "Consulting fees",
+     "",
+     "",
+     "356,250",
+     "",
+     "",
+     "185,700"
+    ],
+    [
+     "",
+     "Legal and professional fees",
+     "",
+     "",
+     "200,957",
+     "",
+     "",
+     "40,420"
+    ],
+    [
+     "",
+     "Research and development",
+     "",
+     "",
+     "10,990",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Total operating expenses",
+     "",
+     "",
+     "1,045,574",
+     "",
+     "",
+     "565,787"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "",
+     "(1,042,171)",
+     "",
+     "",
+     "(567,069)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest expense",
+     "",
+     "",
+     "(20,286)",
+     "",
+     "",
+     "(5,550)"
+    ],
+    [
+     "",
+     "Total other income (expense)",
+     "",
+     "",
+     "(20,286)",
+     "",
+     "",
+     "(5,550)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "",
+     "$",
+     "(1,062,457)",
+     "",
+     "$",
+     "(572,619)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from discontinued operations",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(13,822)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "$",
+     "(1,062,457)",
+     "",
+     "$",
+     "(586,441)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013\n\n\n\nbasic and diluted",
+     "",
+     "",
+     "",
+     "668,115,789",
+     "",
+     "",
+     "461,967,123"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+    "Consolidated Statements of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1237,
+    "end_line": 1294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Therapeutic Solutions International, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Shareholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Years Ended December 31, 2016 and 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common\n\n\n\nStock\n\n\n\nShares",
+     "",
+     "",
+     "Common Stock Amount",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2015",
+     "400,000,000",
+     "",
+     "$",
+     "400,000",
+     "",
+     "$",
+     "2,093,009",
+     "",
+     "$",
+     "(2,624,296)",
+     "",
+     "$",
+     "(131,287)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "60,000,000",
+     "",
+     "",
+     "60,000",
+     "",
+     "",
+     "226,200",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "286,200"
+    ],
+    [
+     "Common stock issued",
+     "81,000,000",
+     "",
+     "",
+     "81,000",
+     "",
+     "",
+     "121,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "202,500"
+    ],
+    [
+     "Net Loss",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(586,441)",
+     "",
+     "",
+     "(586,441)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2015",
+     "541,000,000",
+     "",
+     "$",
+     "541,000",
+     "",
+     "$",
+     "2,440,709",
+     "",
+     "$",
+     "(3,210,737)",
+     "",
+     "$",
+     "(229,028)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "68,500,000",
+     "",
+     "",
+     "68,500",
+     "",
+     "",
+     "219,800",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "288,300"
+    ],
+    [
+     "Common stock issued in exchange for a license agreement",
+     "5,451,000",
+     "",
+     "",
+     "5,451",
+     "",
+     "",
+     "10,902",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "16,353"
+    ],
+    [
+     "Common stock issued",
+     "125,300,000",
+     "",
+     "",
+     "125,300",
+     "",
+     "",
+     "206,700",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "332,000"
+    ],
+    [
+     "Net Loss",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,062,457)",
+     "",
+     "",
+     "(1,062,457)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2016",
+     "740,251,000",
+     "",
+     "$",
+     "740,251",
+     "",
+     "$",
+     "2,878,111",
+     "",
+     "$",
+     "(4,273,194)",
+     "",
+     "$",
+     "(654,832)"
+    ]
+   ],
+   "caption_stack": [
+    "Therapeutic Solutions International, Inc.",
+    "Consolidated Statements of Changes in Shareholders' Deficit",
+    "For the Years Ended December 31, 2016 and 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1296,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See accompanying notes to consolidated financial statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "For the Year Ended December 31, 2016",
+     "",
+     "",
+     "For the Year Ended December 31, 2015",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "$",
+     "(1,062,457)",
+     "",
+     "$",
+     "(586,441)"
+    ],
+    [
+     "",
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Stock based compensation to consultants",
+     "",
+     "288,300",
+     "",
+     "",
+     "286,200"
+    ],
+    [
+     "",
+     "",
+     "Shares issued for license agreement",
+     "",
+     "16,353",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Accrued interest, notes payable - related parties",
+     "",
+     "16,244",
+     "",
+     "",
+     "1,147"
+    ],
+    [
+     "",
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Inventory",
+     "",
+     "(6,759)",
+     "",
+     "",
+     "(29,675)"
+    ],
+    [
+     "",
+     "",
+     "Accounts receivable",
+     "",
+     "2,184",
+     "",
+     "",
+     "(2,184)"
+    ],
+    [
+     "",
+     "",
+     "Prepaid expenses and other current assets",
+     "",
+     "199,142",
+     "",
+     "",
+     "(74,428)"
+    ],
+    [
+     "",
+     "",
+     "Other assets",
+     "",
+     "(19,750)",
+     "",
+     "",
+     "(15)"
+    ],
+    [
+     "",
+     "",
+     "Accounts payable",
+     "",
+     "50,250",
+     "",
+     "",
+     "(13,212)"
+    ],
+    [
+     "",
+     "",
+     "Accrued expenses and other current liabilities",
+     "",
+     "130,752",
+     "",
+     "",
+     "(287)"
+    ],
+    [
+     "",
+     "",
+     "Cash used in operating activities-continuing operations",
+     "",
+     "(385,741)",
+     "",
+     "",
+     "(418,895)"
+    ],
+    [
+     "",
+     "",
+     "Cash provided by operating activities-discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "46,844"
+    ],
+    [
+     "",
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(385,741)",
+     "",
+     "",
+     "(372,051)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Proceeds from issuance of common stock",
+     "",
+     "332,000",
+     "",
+     "",
+     "202,500"
+    ],
+    [
+     "",
+     "",
+     "Proceeds from notes payable - related parties",
+     "",
+     "76,000",
+     "",
+     "",
+     "168,840"
+    ],
+    [
+     "",
+     "",
+     "Repayments of notes payable - related parties",
+     "",
+     "(2,532)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "",
+     "405,468",
+     "",
+     "",
+     "371,340"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Net increase (decrease) in cash",
+     "",
+     "19,727",
+     "",
+     "",
+     "(711)"
+    ],
+    [
+     "",
+     "",
+     "Cash at beginning of period",
+     "",
+     "2,183",
+     "",
+     "",
+     "2,894"
+    ],
+    [
+     "",
+     "",
+     "Cash at end of period",
+     "$",
+     "21,910",
+     "",
+     "$",
+     "2,183"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash paid for interest",
+     "",
+     "$",
+     "4,040",
+     "",
+     "$",
+     "3,213"
+    ],
+    [
+     "",
+     "Cash paid for income taxes",
+     "",
+     "$",
+     "800",
+     "",
+     "$",
+     "800"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+    "Consolidated Statements of Cash Flows"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1333,
+    "end_line": 1382
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements",
+   "prose_after": "Note 1 \u2013 Nature of Business\nTherapeutic Solutions International, Inc. (\u201cTSI\u201d or the \u201cCompany\u201d) was organized August 6, 2007 under the name Friendly Auto Dealers, Inc., under the laws of the State of Nevada. In the first quarter of 2011 the Company changed its name from Friendly Auto Dealers, Inc. to Therapeutic Solutions International, Inc., and acquired Splint Decisions, Inc., a California corporation.\nCurrently the Company is focused on immune modulation for the treatment of several specific diseases. Immune modulation refers to the ability to upregulate (make more active) or downregulate (make less active) one\u2019s immune system.\nActivating one\u2019s immune system is now an accepted method to treat certain cancers, reduce recovery time from viral or bacterial infections and to prevent illness. Additionally, inhibiting one\u2019s immune system is vital for reducing inflammation, autoimmune disorders and allergic reactions.\nNutraceutical Division \u2013 TSI has been producing high quality nutraceuticals. Its flagship product, ProJuvenol\u00ae, is a proprietary mixture containing pterostilbene \u2013 one of the most potent antioxidants known. TSI filed a patent application for ProJuvenol\u00ae on 07-08-2015 titled: \u201cAugmentation of Oncology Immunotherapies by Pterostilbene Containing Compositions\u201d. In addition we recently introduced a line of \u201concologist friendly nutraceuticals\u201d in liposome formula. These include CoQ10, Curcumin, Glutathione, and Vitamin-C in 16oz bottles.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1331,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "December 31, 2015"
+    ],
+    [
+     "Computer Hardware",
+     "$",
+     "10,747",
+     "$",
+     "10,747"
+    ],
+    [
+     "Office Furniture and Equipment",
+     "",
+     "3,639",
+     "",
+     "3,639"
+    ],
+    [
+     "Shipping and Other Equipment",
+     "",
+     "1,575",
+     "",
+     "1,575"
+    ],
+    [
+     "Total",
+     "",
+     "15,961",
+     "",
+     "15,961"
+    ],
+    [
+     "Accumulated Depreciation",
+     "",
+     "(15,961)",
+     "",
+     "(15,961)"
+    ],
+    [
+     "Property and Equipment, net",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Fixed assets"
+    }
+   },
+   "prose_before": "In August 2014, the FASB issued ASU 2014-15, Presentation of Financial Statements - Going Concern (Subtopic 205-40): Disclosure of Uncertainties about an Entity\u2019s Ability to Continue as a Going Concern. The new standard requires management to assess, at each annual and interim reporting period, an entity\u2019s ability to continue as a going concern within one year after the date that the financial statements are issued and to provide related footnote disclosures. ASU 2014-15 is effective for the Company for the year ending December 31, 2016. Based on its adoption of ASU 2014-15, management determined that there is substantial doubt regarding the company\u2019s ability to continue as a growing concern within one year after the issuance of the financial statements (see Note 1).\nIn May 2014, the FASB issued ASU 2014-09, Revenue from Contracts with Customers (Topic 606). The new standard is based on the principle that revenue should be recognized to depict the transfer of promised goods or services to customers in an amount that reflects the consideration to which the entity expects to be entitled in exchange for those goods or services. ASU 2014-09 will be effective for the Company in the first quarter of 2018 and allows for full retrospective or a modified retrospective adoption approach. The adoption of this standard is not expected to have a material impact on the Company\u2019s financial position or results of operations\nNote 3 \u2013 Restricted Cash\nOther non-current asset is a $10,000 certificate of deposit with an annual interest rate of 0.6%. This certificate matures on June 17, 2017, and is used as collateral for a Company credit card, pursuant to a security agreement dated June 20, 2011.\nNote 4 \u2013 Fixed assets\nFixed assets consist of the following:",
+   "prose_after": "Note 5 \u2013 Notes payable-related parties\nNotes payable-related parties consist of:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1448,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2016",
+     "",
+     "2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Scientific Advisory Board Member, unsecured, including interest at 10% per annum, with a maturity date of December 31, 2017",
+     "",
+     "$",
+     "14,721",
+     "$",
+     "13,574"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three notes payable \u2013 Chief Executive Officer, unsecured, including interest at 8%, 10% and 10% per annum, respectively, with maturity dates of December 31, 2017.",
+     "",
+     "",
+     "120,330",
+     "",
+     "113,664"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Chief Financial Officer,\n\n\n\nunsecured, including interest at 8% per annum, with a maturity date of December 31, 2017.",
+     "",
+     "",
+     "86,400",
+     "",
+     "80,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "221,451",
+     "",
+     "207,238"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Business Advisory Board Member, unsecured, including interest at 8% per annum, convertible into common stock at $.005, with a maturity date of May 29, 2018.",
+     "",
+     "",
+     "75,500",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "296,951",
+     "$",
+     "207,238"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1472,
+    "end_line": 1494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Notes payable-related parties"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Notes payable-related parties\nNotes payable-related parties consist of:",
+   "prose_after": "Note 6 \u2013 Equity\nPreferred Stock\nThe Company is authorized to issue 5,000,000 shares of $.001 par value preferred stock. The Company has not issued any preferred stock.\nCommon Stock\nDuring the years ended December 31, 2016 and 2015, the Company issued common stock, in several separate transactions, in exchange for various third party services. The shares issued were valued by the Company at their estimated fair market value.\nNote 7 \u2013 Related Party Transactions\nAs of December 31, 2016, the Company accrued officers salary of $130,100 as of December 31, 2016.\nOn January 22, 2016, we issued 2,500,000 shares of common stock, valued at $.0035 per share to a director of the Company for services.\nOn February 26, 2016, we issued 1,000,000 shares of common stock, valued at $.0025 per share to a director of the Company for services.\nOn March 7, 2016, we issued 10,000,000 shares of common stock, valued at $.0025 per share to a director of the Company for services.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1448,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected income tax at statutory rate",
+     "$",
+     "(360,963)",
+     "",
+     "$",
+     "(263,898)"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "1,437",
+     "",
+     "",
+     "88,616"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "359,526",
+     "",
+     "",
+     "175,282"
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1534,
+    "end_line": 1545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "On September 16, 2016, we issued 12,500,000 shares of common stock, valued at $.004 per share, for an investment in the Company\u2019s Private Placement.\nOn October 18, 2016, we issued 40,000,000 shares valued at $.0045 to the officers and directors of the Company for services.\nOn March 21, 2016, we issued 100,800,000 shares of common stock, valued at $.0025 per share, for an investment in the Company\u2019s Private Placement.\nOn November 11, 2016, we issued a six month convertible note in the amount of $75,000 with an annual interest rate of 8% to a related party.\nNote 8 \u2013 Income Taxes\nThe Company has net operating losses carried forward of approximately $3.3 million and $2.3 million as of December 31, 2016 and 2015, respectively, available to offset taxable income in future years which expire beginning in fiscal 2031.\nThe Company is subject to United States federal and state income taxes at an approximate rate of 45%. The reconciliation of the provision for income taxes at the United States federal statutory rate compared to the Company\u2019s income tax expense as reported is as follows:",
+   "prose_after": "The significant components of deferred income tax assets and liabilities at December 31, 2016 and 2015 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carry-forward",
+     "$",
+     "1,262,691",
+     "",
+     "$",
+     "1,021,679"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(1,262,691)",
+     "",
+     "",
+     "(1,021,679)"
+    ],
+    [
+     "Net deferred income tax asset",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1548,
+    "end_line": 1558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "The significant components of deferred income tax assets and liabilities at December 31, 2016 and 2015 are as follows:",
+   "prose_after": "The valuation allowance has been established to offset the Companys net deferred tax assets, as realization of such assets is not considered to be more likely than not due to Companys history of losses and uncertainties regarding the Companys ability to generate future taxable income sufficient to realize the benefit of these deferred tax assets.\nPursuant to Section 382 of the Internal Revenue Code (the \u201cCode\u201d), annual use of the Companys NOL carryforwards may be limited in the event a cumulative change in ownership of 50% of certain shareholders occurs within a three year period. An ownership change may limit the amount of NOL carryforwards that can be utilized annually to offset future taxable income and tax. In general, an \u201cownership change\u201d as defined by Section 382 of the Code results from a transaction or series of transactions over a three year period resulting in an ownership change of more than 50 percentage points of the outstanding stock of a company by certain shareholders.\nAs of December 31, 2016 and December 31, 2015, the Company does not have any unrecognized tax benefits. The Company does not anticipate a significant increase in the unrecognized tax benefits over the next 12 months. The Companys policy is to recognize interest expense and penalties related to income matters as a component of the income tax provision. As of December 31, 2016 and December 31, 2015, the Company did not have any tax related accrued interest and penalties on its balance sheet or on its statement of operations.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Year Ended December 31, 2016",
+     "",
+     "",
+     "For the Year Ended December 31, 2015"
+    ],
+    [
+     "Bad debt",
+     "$",
+     "-",
+     "",
+     "$",
+     "(9,770)"
+    ],
+    [
+     "Obsolete Inventory",
+     "",
+     "-",
+     "",
+     "",
+     "(4,052)"
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(13,822)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1578,
+    "end_line": 1588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Discontinued Operation"
+    }
+   },
+   "prose_before": "As of December 31, 2016 and December 31, 2015, the Company does not have any unrecognized tax benefits. The Company does not anticipate a significant increase in the unrecognized tax benefits over the next 12 months. The Companys policy is to recognize interest expense and penalties related to income matters as a component of the income tax provision. As of December 31, 2016 and December 31, 2015, the Company did not have any tax related accrued interest and penalties on its balance sheet or on its statement of operations.\nNote 9 \u2013 Legal Proceedings\nFrom time to time, claims are made against us in the ordinary course of business, which could result in litigation. Claims and associated litigation are subject to inherent uncertainties and unfavorable outcomes could occur, such as monetary damages, fines, penalties or injunctions prohibiting us from selling one or more products or engaging in other activities. The occurrence of an unfavorable outcome in any specific period could have a material adverse effect on our results of operations for that period or future periods.\nHowever, as of the date of this report, management believes the outcome of currently identified potential claims and lawsuits will not have a material adverse effect on our financial condition or results of operations.\nNote 10 \u2013 Discontinued Operation\nThe following are the summarized results of discontinued operations for the years ended December 31, 2016 and 2015.",
+   "prose_after": "Note 11 \u2013 Subsequent Events\nOn January 17, 2017, we issued 12,500,000 shares of common stock, valued at $0.004 per share, for an investment in the Company\u2019s Private Placement to a related party.\nOn March 2, 2017, we issued 12,500,000 shares of common stock, valued at $0.004 per share, for an investment in the Company\u2019s Private Placement to a related party.\nOn April 3, 2017, we issued 1,000,000 shares of common stock, valued at $.0067 per share for consulting services.\nOn April 20, 2017, we issued a six month convertible note in the amount of $100,000 with an annual interest rate of 10% to a related party.\nOn May 8, 2017, we issued 10,000,000 shares of common stock, valued at $.008 per share, for legal services and 1,000,000 shares of common stock, valued at $0.004 per share, for an investment in the Company\u2019s Private Placement.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1560,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1600,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

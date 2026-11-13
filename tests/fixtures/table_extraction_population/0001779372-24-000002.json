@@ -1,0 +1,5398 @@
+{
+ "accession": "0001779372-24-000002",
+ "cik": "0001779372",
+ "form": "10-K",
+ "filing_date": "2024-03-20",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "beat-20231231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "47-4881450"
+    ],
+    [
+     "State or Other Jurisdiction of Incorporation or Organization",
+     "I.R.S. Employer Identification No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2118 Walsh Avenue, Suite 210 Santa Clara, CA",
+     "95050"
+    ],
+    [
+     "Address of Principal Executive Offices",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission File Number: 001-41060\nHEARTBEAM, INC.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "(408) 899-4443\nRegistrant\u2019s Telephone Number, Including Area Code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock",
+     "BEAT",
+     "NASDAQ"
+    ],
+    [
+     "Warrants",
+     "BEATW",
+     "NASDAQ"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(408) 899-4443\nRegistrant\u2019s Telephone Number, Including Area Code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part I",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "5"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "23"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "38"
+    ],
+    [
+     "Item 1C. Cybersecurity",
+     "38"
+    ],
+    [
+     "Item 2. Properties",
+     "39"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "39"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "39"
+    ],
+    [
+     "Part II",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "40"
+    ],
+    [
+     "Item 6. RESERVED",
+     "42"
+    ],
+    [
+     "Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "42"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "49"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "49"
+    ],
+    [
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosures",
+     "49"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "49"
+    ],
+    [
+     "Item 9B. Other Information",
+     "50"
+    ],
+    [
+     "Item 9C. Disclosure Regarding Foreign Jurisdiction that Prevent Inspections.",
+     "50"
+    ],
+    [
+     "Part III",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "51"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "57"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters",
+     "61"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "63"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "63"
+    ],
+    [
+     "Part IV",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "65"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "67"
+    ],
+    [
+     "Signatures",
+     "68"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Patent Type",
+     "Application No. Pat. No.",
+     "Status",
+     "Predicted Expiration",
+     "Title Summary"
+    ],
+    [
+     "Utility (US)",
+     "15/096,159 US 10,433,744",
+     "Issued",
+     "Sep 15, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "15/632,155 US 10,117,592",
+     "Issued",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "17/092,152 US 11,877,853",
+     "Issued",
+     "Jun 2, 2037",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "17/202,299 US 11,071,490",
+     "Issued",
+     "Apr 11, 2036",
+     "ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (CN)",
+     "201680030550.5",
+     "Published",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (DE)",
+     "16777474.4 DE 602016073016.2",
+     "Issued",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (FR)",
+     "16777474.4 FR 3280326",
+     "Issued",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (GB)",
+     "16777474.4 GB 3280326",
+     "Issued",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (NL)",
+     "16777474.4 NL 3280326",
+     "Issued",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (EU)",
+     "22174820.5",
+     "Pending",
+     "Apr 11, 2036",
+     "MOBILE THREE-LEAD CARDIAC MONITORING DEVICE AND METHOD FOR AUTOMATED DIAGNOSTICS Methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (EU)",
+     "198948150",
+     "Pending",
+     "Nov 18, 2039",
+     "HAND HELD DEVICE FOR AUTOMATIC CARDIAC RISK AND DIAGNOSTIC ASSESSMENT Method and apparatus for performing automatic cardiac diagnosis."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 294,
+    "end_line": 321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "HeartBeam has 13 issued and allowed U.S. patents (U.S. 10,433,744, U.S. 10,117,592, U.S. 11,071,490, U.S. 11,419,538, U.S. 11,445,963, U.S. 11,701,049, U.S. 11,529,085, U.S. 10,980,433, U.S. 11,412,972, U.S. 11,234,658, U.S. 11,793,444, U.S. 11,877,853, and allowed U.S. patent application no. 18/068,481), and nine pending U.S applications. Outside of the U.S., HeartBeam has four issued patents in Germany, France, Netherlands and United Kingdom and fourteen pending applications in Canada, China, the European Union, Japan, South Korea and Australia. HeartBeam has two pending Patent Cooperation Treaty applications. The issued patents are predicted to expire between April 11, 2036 and April 21, 2042.\nOur issued and pending U.S. patent applications cover compact VECG systems for remote detection and/or diagnosis of acute myocardial infarction (\u201cAMI\u201d). Outside of the U.S., the pending EU, Australian (\u201cAU\u201d), Japanese (\u201cJP\u201d) and Chinese (\u201cCN\u201d) patent applications correspond to the pending and issued US cases. The pending PCT applications cover methods and apparatuses for automatic cardiac diagnosis as well as compact systems including retractable electrodes.\nThe following table sets forth a brief description of issued and pending patents, including their respective titles:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Utility (US)",
+     "17/296,669 US 11,701,049",
+     "Issued",
+     "Nov 18, 2039",
+     "HAND HELD DEVICE FOR AUTOMATIC CARDIAC RISK AND DIAGNOSTIC ASSESSMENT Method and apparatus for performing automatic cardiac diagnosis."
+    ],
+    [
+     "Utility (US)",
+     "18,324,111",
+     "Pending",
+     "Nov 18, 2039",
+     "HAND HELD DEVICE FOR AUTOMATIC CARDIAC RISK AND DIAGNOSTIC ASSESSMENT Method and apparatus for performing automatic cardiac diagnosis."
+    ],
+    [
+     "Utility (US)",
+     "17/443,456 US 11,793,444",
+     "Issued",
+     "Apr 11, 2036",
+     "ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Adhesive patch methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "17/570,368 US 11,419,538",
+     "Issued",
+     "Apr 11, 2036",
+     "ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Adhesive patch methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "18/363685",
+     "Issued",
+     "Apr 11, 2036",
+     "ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Adhesive patch methods and apparatuses for remote and detection and/or diagnosis of acute myocardial infarction (AMI)."
+    ],
+    [
+     "Utility (US)",
+     "17/609,014",
+     "Pending",
+     "May 20, 2040",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 323,
+    "end_line": 337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Utility (AU)",
+     "2020275409",
+     "Pending",
+     "May 20, 2040",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (CA)",
+     "3137669",
+     "Pending",
+     "May 20, 2040",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (EU)",
+     "208063123",
+     "Pending",
+     "May 20, 2040",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (JP)",
+     "2021568329",
+     "Pending",
+     "May 20, 2040",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (EU)",
+     "2189294203",
+     "Pending",
+     "Nov 12, 2041",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE WITH HYBRID ELECTRODE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (EU)",
+     "18/252803",
+     "Pending",
+     "Nov 12, 2041",
+     "COMPACT MOBILE THREE-LEAD CARDIAC MONITORING DEVICE WITH HYBRID ELECTRODE Compact, mobile three-lead cardiac monitoring devices for remote detection and/or diagnosis of cardiac events."
+    ],
+    [
+     "Utility (CA)",
+     "3204059",
+     "Pending",
+     "Jan 4, 2042",
+     "AMBULATORY ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Cardiac monitoring patch devices (e.g., an ECG patch for 12-lead detection) for remote detection and/or diagnosis of cardiac events (e.g., acute myocardial infarction)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 337,
+    "end_line": 353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Utility (CN)",
+     "2022800141214",
+     "Pending",
+     "Jan 4, 2042",
+     "AMBULATORY ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Cardiac monitoring patch devices (e.g., an ECG patch for 12-lead detection) for remote detection and/or diagnosis of cardiac events (e.g., acute myocardial infarction)."
+    ],
+    [
+     "Utility (EP)",
+     "227348299",
+     "Pending",
+     "Jan 4, 2042",
+     "AMBULATORY ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Cardiac monitoring patch devices (e.g., an ECG patch for 12-lead detection) for remote detection and/or diagnosis of cardiac events (e.g., acute myocardial infarction)."
+    ],
+    [
+     "Utility (JP)",
+     "202340687",
+     "Pending",
+     "Jan 4, 2042",
+     "AMBULATORY ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Cardiac monitoring patch devices (e.g., an ECG patch for 12-lead detection) for remote detection and/or diagnosis of cardiac events (e.g., acute myocardial infarction)."
+    ],
+    [
+     "Utility (US)",
+     "18260318",
+     "Pending",
+     "Jan 4, 2042",
+     "AMBULATORY ELECTROCARDIOGRAM PATCH DEVICES AND METHODS Cardiac monitoring patch devices (e.g., an ECG patch for 12-lead detection) for remote detection and/or diagnosis of cardiac events (e.g., acute myocardial infarction)."
+    ],
+    [
+     "Utility (US)",
+     "17/494,806 US 11,445,963",
+     "Issued",
+     "Oct 5, 2041",
+     "METHOD AND APPARATUS FOR RECONSTRUCTING ELECTROCARDIOGRAM (ECG) DATA Synthesizing (generating) 12L ECG dataset from 3-lead ECG data."
+    ],
+    [
+     "Utility (US)",
+     "17/948099",
+     "Pending",
+     "Oct 5, 2041",
+     "METHOD AND APPARATUS FOR RECONSTRUCTING ELECTROCARDIOGRAM (ECG) DATA Synthesizing (generating) 12-lead ECG dataset from 3-lead ECG data."
+    ],
+    [
+     "Utility (PCT)",
+     "PCTUS2022 077601",
+     "Pending",
+     "May 5, 2024",
+     "METHOD AND APPARATUS FOR RECONSTRUCTING ELECTROCARDIOGRAM (ECG) DATA Synthesizing (generating) 12-lead ECG dataset from 3-lead ECG data."
+    ],
+    [
+     "Utility (US)",
+     "17/726,497 US 11,529,085",
+     "Issued",
+     "Apr 21, 2042",
+     "APPARATUS FOR GENERATING AN ELECTROCARDIOGRAM Wrist-worn device can be taken off of the wrist and held against the chest to detect three orthogonal cardiac leads, and methods of using a wrist-worn device to detect the three orthogonal cardiac leads."
+    ],
+    [
+     "Utility (US)",
+     "18/068481",
+     "Allowed",
+     "Apr 21, 2042",
+     "APPARATUS FOR GENERATING AN ELECTROCARDIOGRAM Wrist-worn device can be taken off of the wrist and held against the chest to detect three orthogonal cardiac leads, and methods of using a wrist-worn device to detect the three orthogonal cardiac leads."
+    ],
+    [
+     "Utility (PCT)",
+     "PCT/US2023 065918",
+     "Published",
+     "Oct 5, 2041",
+     "APPARATUS FOR GENERATING AN ELECTROCARDIOGRAM Wrist-worn device can be taken off of the wrist and held against the chest to detect three orthogonal cardiac leads, and methods of using a wrist-worn device to detect the three orthogonal cardiac leads."
+    ],
+    [
+     "Utility (US)",
+     "16/362,527 US 10,980,433",
+     "Issued",
+     "Oct 12, 2038",
+     "HEALTH MONITORING AND GUIDANCE Methods, systems and software for the determination of stress states utilizing PPG sensors."
+    ],
+    [
+     "Utility (US)",
+     "16/368,568 US 11,412,972",
+     "Issued",
+     "Apr 19, 2040",
+     "DETECTION OF ATRIAL FIBRILLATION Methods and software for determining atrial fibrillation utilizing PPG sensors."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 355,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Utility (US)",
+     "16/368,571 US 11,234,658",
+     "Issued",
+     "Apr 5, 2039",
+     "PHOTOPLETHYSMOGRAM DATA ANALYSIS AND PRESENTATION Methods, systems and software for the creation of ECG-type waveforms from PPG sensor data."
+    ],
+    [
+     "Utility (US)",
+     "17/887160",
+     "Published",
+     "Mar 28, 2038",
+     "DETECTION OF ATRIAL FIBRILLATION Methods and software for determining atrial fibrillation utilizing PPG sensors."
+    ],
+    [
+     "Utility (US)",
+     "18/516,793",
+     "Pending",
+     "Mar 28, 2039",
+     "HEARTBEAT DETECTION Wearable devices to detect PPG data for detection of heartrate."
+    ],
+    [
+     "Utility (EP)",
+     "EP 19724961.8",
+     "Published",
+     "Mar 28, 2039",
+     "PHOTOPLETHYSMOGRAM DATA ANALYSIS AND PRESENTATION Methods, systems and software for the creation of ECG-type waveforms from PPG sensor data."
+    ],
+    [
+     "Utility (KR)",
+     "KR 10-2020-7031103",
+     "Published",
+     "Mar 28, 2039",
+     "PHOTOPLETHYSMOGRAM DATA ANALYSIS AND PRESENTATION Methods, systems and software for the creation of ECG-type waveforms from PPG sensor data."
+    ],
+    [
+     "Utility (US)",
+     "18/595,410",
+     "Pending",
+     "Mar, 4, 2044",
+     "METHODS AND APPARATUSES FOR ELECTROMYOGRAPHY NOISE ELIMINATION FROM ELECTROCARDIOGRAM SIGNALS BY ITERATIVE REGENERATION Methods and systems, including software, for reducing or eliminating noise from ECG signals."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 383,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "We have entered, and generally plan to continue to enter into, non-disclosure, confidentiality and intellectual property assignment agreements with all new employees as a condition of employment. In addition, we intend to generally enter into confidentiality and non-disclosure agreements with consultants, manufacturers\u2019 representatives, distributors, suppliers, and others to attempt to limit access to, use and disclosure of our proprietary information. There can be no assurance, however, that these agreements will provide meaningful protection or adequate remedies for our trade secrets in the event of unauthorized use or disclosure of such information.\nThe ownership of all filed patents is assigned to HeartBeam, Inc.\nResearch and Development\nIn our quest to redefine the landscape of digital health through our innovative, user-friendly ambulatory VECG solutions, our primary objective remains steadfast: to deliver high medical value through products that are always with the patient, assisting physicians in monitoring and diagnosing cardiac disease in patients. We believe that our success in developing initial products, underscored by our emphasis on user-friendly solutions, will set a solid foundation for our future endeavors.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$ Change",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "8,516",
+     "$",
+     "7,354",
+     "$",
+     "1,162",
+     "16",
+     "%"
+    ],
+    [
+     "Research and development",
+     "6,798",
+     "",
+     "5,677",
+     "",
+     "1,121",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "15,314",
+     "",
+     "13,031",
+     "",
+     "2,283",
+     "",
+     "18",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(15,314)",
+     "",
+     "(13,031)",
+     "",
+     "(2,283)",
+     "",
+     "18",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "675",
+     "",
+     "69",
+     "",
+     "606",
+     "",
+     "878",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(14,639)",
+     "$",
+     "(12,962)",
+     "$",
+     "(1,677)",
+     "13",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1204,
+    "end_line": 1227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On April 20, 2023, we entered into a Placement Agency Agreement with Public Ventures, LLC to consummate an offering of 16,666,666 shares of Common Stock at an offering price of $1.50 per share, which closed in accordance with the subscription agreement dated May 2, 2023. The Company received $23.2 million in net proceeds from the offering after deducting placement agent discounts and commission and other estimated offering expenses. In addition, the subscription agreement granted 1,666,666 placement agent warrants as part of this transaction.\nOn May 2, 2023, we completed a Registered Direct Offering of 1,000,000 shares of our common stock at an offering price of $1.50 per share. We received net proceeds of $1.1 million after deducting financial advisory and legal fees as well as other estimated offering expenses.\nResults of operations for the years ended December 31, 2023 and 2022\nThe following table summarizes our results of operations for the periods presented on our statement of operations data. The year over year comparison of results of operations is not necessarily indicative of results of operations for future periods.",
+   "prose_after": "Summary of Statements of Operations for the year ended December 31, 2023 compared with the year ended December 31, 2022:\nGeneral and administrative expenses (\u201cG&A\u201d) are largely related to personnel and professional services. G&A expense increased $1.2 million or 16% when compared to the same period in 2022. The $1.2 million increase is primarily related to non-cash stock-based compensation expense amounting to $1.6 million associated with additional awards granted since December 31, 2022, primarily offset by costs associated with our commercial team during the year ended December 31, 2022, and lower investor relation costs, marketing costs and legal costs incurred in this year compared to the prior year.\nResearch and development expenses (\u201cR&D\u201d) are primarily from software development and hardware related to our credit-card sized collection device for HeartBeam AIMIGo. R&D expense increased $1.1 million or 20% when compared with the same period in 2022. The $1.0 million increase is primarily due to non-cash stock-based compensation expense amounting to $0.5 million associated with additional awards granted since December 31, 2022 as well as the increase in headcount and professional services supporting the FDA clearance process, primarily offset by completion of the initial development costs of the AIMIGo platform when compared to December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1199,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "2022",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "16,189",
+     "$",
+     "3,594"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1249,
+    "end_line": 1255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Other income is primarily interest income. The increase is primarily related to our increased cash balance coupled with higher interest rates following the $26.5 million financing in May 2023.\nLiquidity and Capital Resources\nOur cash requirements are and will continue to be, dependent upon a variety of factors. We expect to continue devoting significant capital resources to R&D and following FDA clearance of our AIMIGo device, our commercialization go to market strategies.\nAs of December 31, 2023, we had approximately $16.2 million in cash and cash equivalents, an increase of $12.6 million from $3.6 million as of December 31, 2022.\nDuring the year ended December 31, 2023, we raised $24.8 million is primarily the issuance of common stock from the secondary financing in May 2023.\nBased on its current business plan assumptions and expected cash burn rate, the Company believes that the existing cash is insufficient to fund operations for the next twelve months following the issuance of these financial statements. These factors raise substantial doubt regarding the Company\u2019s ability to continue as a going concern.\nOur cash is as follows (in thousands):",
+   "prose_after": "Cash flows for the year ended December 31, 2023 and 2022 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(12,093)",
+     "$",
+     "(9,948)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(256)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "24,994",
+     "",
+     "350",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1258,
+    "end_line": 1266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Cash flows for the year ended December 31, 2023 and 2022 (in thousands):",
+   "prose_after": "Operating Activities:\nNet cash used in our operating activities of $12.1 million during the year ended December 31, 2023, is primarily due to our net loss of $14.6 million less $3.2 million in stock-based compensation expense and $0.7 million of net changes from changes in operating assets and liabilities.\nNet cash used in our operating activities of $9.9 million during the year ended December 31, 2022, is primarily due to our net loss of $12.9 million less $1.1 million in stock-based compensation expense and $1.9 million from changes in operating assets and liabilities.\nInvesting Activities:\nNet cash used in investing activities during the year ended December 31, 2023, of $0.3 million, is primarily due to the purchase of property and equipment.\nFinancing Activities:\nDuring the year ended December 31, 2023, net cash provided by financing activities of $24.9 million, is primarily the issuance of common stock from the secondary financing in May 2023.\nDuring the year ended December 31, 2022, net cash provided by financing activities of $0.3 million, is primarily from the issuance of common stock under the February Stock Purchase Agreement.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1244,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1291,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "NAME",
+     "AGE",
+     "POSITION"
+    ],
+    [
+     "Richard Ferrari",
+     "70",
+     "Executive Chairman of the Board of Directors"
+    ],
+    [
+     "Branislav Vajdic, PhD",
+     "69",
+     "Chief Executive Officer, Director"
+    ],
+    [
+     "George A. de Urioste",
+     "68",
+     "Director"
+    ],
+    [
+     "Marga Ortigas-Wedekind",
+     "62",
+     "Director"
+    ],
+    [
+     "Willem Elfrink",
+     "71",
+     "Director"
+    ],
+    [
+     "Mark Strome",
+     "66",
+     "Director"
+    ],
+    [
+     "Kenneth Nelson",
+     "48",
+     "Director"
+    ],
+    [
+     "Michael Jaff",
+     "65",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1360,
+    "end_line": 1373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "There were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) identified in connection with the evaluation required by Rule 13a-15(d) and 15d-15(d) of the Exchange Act that occurred during the fourth quarter of the year ended December 31, 2023 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone\nItem 9C. Disclosure Regarding Foreign Jurisdiction that Prevent Inspections.\nNot applicable\nPart III\nItem 10. Directors, Executive Officers and Corporate Governance\nInformation About our Executive Officers and Directors\nOur business and affairs are organized under the direction of our board of directors, which currently consists of five members.\nThe following table sets forth certain information with respect to the current directors of our Company:",
+   "prose_after": "Richard Ferrari - Executive Chairman of the Board of Directors\nMr. Richard Ferrari, 70, joined our Board in 2019 and was appointed Executive Director of the Board of Directors in June 2021. Mr. Ferrari combines over 40 years of experience in Medical Device Start-ups as CEO, and entrepreneur. Also Mr. Ferrari is co-founder of De Novo Ventures which has $650M under management and has been Managing Director since 2000. Mr. Ferrari has also co-founded 6 more companies, two of which have been successful IPO\u2019s and subsequent acquisitions, CTS one of the companies he co-founded was the fastest start-up to an IPO in the last 22 years in the medical device industry. Mr. Ferrari most recently from 2018 to 2021 was Chairman and CEO of PQ Bypass which was recently acquired by Endologix. Mr. Ferrari sits on the board of Pulmonx, a public company and is the Chairman of the Compensation Committee. Additionally, Mr. Ferrari is Executive Chairman of Tenon Medical, Vice-Chairman of ABS Interventional, Executive Chairman of Medlumics, and holds board positions with several other medical device start-ups. Mr. Ferrari has an undergraduate degree from Ashland University and an MBA from University of South Florida.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1349,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Board Diversity Matrix (As of December 31, 2023)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Number of Directors",
+     "8",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Female",
+     "Male",
+     "Non-Binary",
+     "Did Not Disclose Gender"
+    ],
+    [
+     "Part I: Gender Identity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors",
+     "1",
+     "7",
+     "0",
+     "0"
+    ],
+    [
+     "Part II: Demographic Background",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "African American or Black",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alaskan Native or Native American",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asian",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hispanic or Latinx",
+     "",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Native Hawaiian or Pacific Islander",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "White",
+     "",
+     "6",
+     "",
+     ""
+    ],
+    [
+     "Two or More Races or Ethnicities",
+     "1",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LGBTQ",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Did Not Disclose Demographic Background",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Board Diversity Matrix (As of December 31, 2023)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1433,
+    "end_line": 1466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Dr. Jaff, age 65, is currently Chief Medical Officer and Vice President of Clinical Affairs, Technology and Innovation of the Peripheral Interventions division at Boston Scientific Corporation. Previously, Dr. Jaff was a professor of medicine at Harvard Medical School and served as President of Newton-Wellesley Hospital. Prior to that, Dr. Jaff was the inaugural Paul and Phyllis Fireman Endowed Chair of Vascular Medicine and Medical Director of the Fireman Vascular Center at the Massachusetts General Hospital. Dr. is a recognized expert in all aspects of vascular medicine and is the founder of VasCore, the Vascular Ultrasound Core Laboratory. Dr. Jaff has published over 300 peer-reviewed publications and 10 textbooks and is the Past-President of the Society for Vascular Medicine. Dr. Jaff received a B.S. from Dickinson College, a D.O. from Kirksville College of Osteopathic Medicine, a Business degree from Harvard Business School and an honorary Doctorate of Arts from Harvard Medical School.\nWe believe that Mr. Jaff is qualified to serve on our board of directors because of his experience in leadership and management roles in the field of medicine, as well as his experience as a member in the healthcare industry.\nThere are no agreements or understandings for any of our executive officers or directors to resign at the request of another person and no officer or director is acting on behalf of nor will any of them act at the direction of any other person.\nDirectors are elected to serve until their successors are duly qualified and elected.\nBoard Diversity\nThe table below provides information relating to certain voluntary self-identified characteristics of our directors. Each of the categories listed in the table below has the meaning as set forth in NASDAQ Rule 5605(f).",
+   "prose_after": "Director Independence\nThe Board has affirmatively determined that seven of the directors are \u201cindependent directors\u201d under NASDAQ Listing Rule 5605(a)(2) and the related rules of the U.S. Securities and Exchange Commission (the \u201cSEC\u201d). In making this determination, our Board considered the current and prior relationships that each non-employee director has with the Company and all other facts and circumstances our Board deemed relevant in determining their independence, including the beneficial ownership of our capital stock by each non-employee director. The Company\u2019s independent directors conduct executive sessions at regularly scheduled meetings as required by NASDAQ Listing Rule 5605(b)(2).\nFamily Relationships\nThere are no family relationships among any of our directors and executive officers.\nBoard Leadership Structure\nThe Board does not have an express policy regarding the separation of the roles of Chief Executive Officer (\u201cCEO\u201d) and Board Chairman, as the Board believes it is in the best interests of the Company to make that determination based on the position and direction of the Company and the membership of the Board. Currently, Dr. Branislav Vajdic serves as the Company\u2019s CEO and Richard Ferrari serves as the Chairman of the Board. The Board believes that its current leadership structure best serves the objectives of the Board\u2019s oversight of management; the ability of the Board to carry out its roles and responsibilities on behalf of the stockholders; and the Company\u2019s overall corporate governance. The Board also believes that the current separation of the Chairman and CEO roles allows the CEO to focus his time and energy on operating and managing the Company and leverages the experience and perspectives of the Chairman.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1483,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)(1,2)",
+     "",
+     "Stock Awards ($)(3)",
+     "",
+     "Option Awards ($)(3)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Branislav Vajdic, PhD (1)",
+     "2023",
+     "$",
+     "428,000",
+     "$",
+     "192,600",
+     "$",
+     "\u2014",
+     "$",
+     "2,630,143",
+     "$",
+     "\u2014",
+     "$",
+     "3,250,743"
+    ],
+    [
+     "Chief Executive Officer (2)",
+     "2022",
+     "$",
+     "428,000",
+     "$",
+     "203,642",
+     "$",
+     "\u2014",
+     "$",
+     "387,720",
+     "$",
+     "\u2014",
+     "$",
+     "1,019,362"
+    ],
+    [
+     "Robert Eno(1)",
+     "2023",
+     "$",
+     "345,000",
+     "$",
+     "102,970",
+     "$",
+     "\u2014",
+     "$",
+     "2,086,639",
+     "$",
+     "\u2014",
+     "$",
+     "2,534,609"
+    ],
+    [
+     "President and Chief Business Officer",
+     "2022",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Kenneth Persen(1)",
+     "2023",
+     "$",
+     "300,000",
+     "$",
+     "78,780",
+     "$",
+     "\u2014",
+     "$",
+     "1,033,930",
+     "$",
+     "\u2014",
+     "$",
+     "1,412,710"
+    ],
+    [
+     "Chief Technology Officer(2)",
+     "2022",
+     "$",
+     "125,000",
+     "$",
+     "32,413",
+     "$",
+     "\u2014",
+     "$",
+     "152,800",
+     "$",
+     "\u2014",
+     "$",
+     "310,213"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1607,
+    "end_line": 1619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the Company\u2019s insider trading policy, the Company prohibits all directors, officers and employees of the Company (collectively, \u201cTeam Members\u201d), as well as their spouses, minor children, other persons living in their household and entities over which they exercise control, from engaging in the following transactions involving Company\u2019s securities without the advance unanimous written approval from members of the compliance committee designated by the Board:\n\u2022Hedging. Team Members may not enter into hedging or monetization transactions or similar arrangements with respect to the Company\u2019s securities.\n\u2022Short sales. Team Members may not sell the Company\u2019s securities short;\n\u2022Options trading. Team Members may not buy or sell puts or calls or other derivative securities on the Company\u2019s securities; and\n\u2022Trading on margin. Team Members may not hold the Company\u2019s securities in a margin account or pledge the Company\u2019s securities as collateral for a loan.\nItem 11. Executive Compensation\nSummary Compensation Table\nThe following table sets forth information concerning all cash and non-cash compensation awarded to, earned by or paid to our Named Executive Officers (\u201cNEOs\u201d) for services rendered in all capacities during the noted periods. The fiscal years ended December 31, 2023 and December 31, 2022 are indicated below:",
+   "prose_after": "1.Cash bonuses awarded to the Chief Executive Officer, President and Chief Business Officer, Chief Financial Officer and Chief Technology Officer in 2023 were paid early 2024.\n2.In 2022 the Board of Directors ratified the Compensation Committee approval of cash bonuses to its Chief Executive Officer, Chief Financial Officer and Chief Technology Officer based on the Company\u2019s achievements of the performance metrics as defined in the bonus plan. The Bonuses were paid in the second quarter of 2023.\n3.Represents the full grant date fair value of the stock award or option grant, as applicable, calculated in accordance with FASB ASC Topic 718. Our policy and assumptions made in the valuation of share-based payments are contained in Note 5 to our December 31, 2023 financial statements. The value of stock awards presented in the Summary Compensation Table reflects the grant date fair value of the awards and does not correspond to the actual value that will be recognized by the named executive officers.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1606,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1638,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Options Exercisable (#)",
+     "Number of Securities Underlying Unexercised Options Unexercisable (#)",
+     "Option Exercise Price ($)",
+     "",
+     "Option Expiration Date",
+     "Equity: Unearned Shares, Units or Other Rights That Have Not Vested (#)",
+     "Plan Awards: Market or Payout Value of Unearned Shares, Units or Other Rights That Have Not Vested ($)",
+     ""
+    ],
+    [
+     "Branislav Vajdic, PhD(1)",
+     "26,532",
+     "769,468",
+     "$",
+     "2.90",
+     "08/02/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(2)",
+     "23,219",
+     "374,781",
+     "$",
+     "2.08",
+     "05/14/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(3)",
+     "172,019",
+     "186,981",
+     "$",
+     "1.30",
+     "06/14/2032",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Robert Eno(4)",
+     "11,900",
+     "345,100",
+     "$",
+     "2.90",
+     "08/02/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(5)",
+     "10,444",
+     "168,556",
+     "$",
+     "2.08",
+     "05/14/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(6)",
+     "\u2014",
+     "240,000",
+     "$",
+     "4.47",
+     "01/18/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(7)",
+     "4,699",
+     "4,301",
+     "$",
+     "4.25",
+     "11/12/2031",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(8)",
+     "36,363",
+     "\u2014",
+     "$",
+     "0.28",
+     "11/01/2030",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Kenneth Persen(9)",
+     "8,400",
+     "243,600",
+     "$",
+     "2.90",
+     "08/02/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(10)",
+     "9,856",
+     "159,144",
+     "$",
+     "2.08",
+     "05/14/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(11)",
+     "\u2014",
+     "60,000",
+     "$",
+     "2.50",
+     "03/21/2033",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "(12)",
+     "26,668",
+     "53,332",
+     "$",
+     "1.91",
+     "09/17/2032",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1647,
+    "end_line": 1669
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "On August 2, 2022 we entered into an employment agreement with Mr. Persen as its Chief Technology Officer (\u201c2022 Persen Agreement\u201d), Mr. Persen will receive an annual salary of $300,000, commencing on August 2, 2022 and was awarded 80,000 stock options. The stock option will vest as to 25% on the 1-year anniversary of the vesting commencement date, and the remainder will vest monthly thereafter on the same day of the month as the vesting commencement date until fully vested. During 2023 Mr. Persen was awarded a total of 481,000 options, of these stock options, 421,000 will vest as follows: Sixty percent (60%) are milestone based vesting on FDA clearance for marketing of HeartBeam\u2019s synthesized 12L product and the remaining forty percent (40%) are time based vesting monthly over 48 months, and the remaining 60,000 will vest as to 25% on the 1-year anniversary of the vesting commencement date, and the remainder will vest monthly thereafter on the same day of the month as the vesting commencement date until fully vested. Mr. Persen will be eligible to receive an annual bonus up to 30% of his annual compensation, subject to adjustment on an annual basis, based upon his performance and overall progress of the Company. Pursuant to the 2022 Persen Agreement, at the Board of Directors meeting held on August 21, 2023, Mr. Persen\u2019s annual eligible bonus was increased to 35% effective January 1, 2023.\n2023 Outstanding Equity Awards at Fiscal Year-End\nThe following table sets forth certain information with respect to the value of all equity awards that were outstanding at December 31, 2023:",
+   "prose_after": "1.Dr. Vajdic was awarded 796,000 options on August 2, 2023, these options are scheduled to vest sixty percent (60%) upon FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and remainder forty percent (40%) one forty-eighth (1/48th) shall vest on each one-month anniversary of the vesting commencement date.\n2.Dr. Vajdic was awarded 398,000 options on May 14, 2023, these options are scheduled to vest sixty percent (60%) upon FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and remainder forty percent (40%) one forty-eighth (1/48th) shall vest on each one-month anniversary of the vesting commencement date.\n3.Dr. Vajdic was awarded 359,000 options on June 15, 2022, these options are scheduled to vest over 4 years with 25% vesting on January 1, 2023 and the remainder vesting and exercisable monthly thereafter.\n4.Mr. Eno was awarded 357,000 options on August 2, 2023, these options are scheduled to vest sixty percent (60%) upon FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and remainder forty percent (40%) one forty-eighth (1/48th) shall vest on each one-month anniversary of the vesting commencement date.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1638,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Option Awards",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares Acquired on Vesting (#)",
+     "Value Realized on Exercise ($)(1)",
+     ""
+    ],
+    [
+     "Branislav Vajdic, PhD",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Robert Eno",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Kenneth Persen",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1699,
+    "end_line": 1710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "9.Mr. Persen was awarded 252,000 options on August 2, 2023, these options are scheduled to vest sixty percent (60%) upon FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and remainder forty percent (40%) one forty-eighth (1/48th) shall vest on each one-month anniversary of the vesting commencement date.\n10.Mr. Persen was awarded 169,000 options on May 14, 2023, these options are scheduled to vest sixty percent (60%) upon FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and remainder forty percent (40%) one forty-eighth (1/48th) shall vest on each one-month anniversary of the vesting commencement date.\n11.Mr. Persen was awarded 60,000 options on March 21, 2023, these options are scheduled to vest over 4 years with 25% vesting on January 18, 2024 and the remainder vesting and exercisable monthly thereafter.\n12.Mr. Persen was awarded 80,000 options on September 17, 2022, these options are scheduled to vest over 4 years with 25% vesting on January 18, 2024 and the remainder vesting and exercisable monthly thereafter.\nOptions Exercised and Stock Vested\nThe following table summarizes, with respect to our named executive officers, all options that were exercised on stock that was vested during fiscal 2023:",
+   "prose_after": "1.Based on the closing market price of our Common Stock as reported on the NASDAQ Capital Market on December 31, 2023.\nDIRECTOR COMPENSATION\nDirectors who are also employees of the Company do not receive any separate compensation in connection with their Board service, and we pay cash fees to our non-employee directors. Prior to 2022, our non-employee directors received a non-qualified initial stock option award upon joining the Board, which vest monthly over a four-year period, beginning on the date of the director\u2019s election to the Board.\nOn June 15, 2022, the Board of Directors approved a plan for the annual cash compensation of directors effective January 1, 2022:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Board",
+     "",
+     "Audit Committee",
+     "",
+     "Other Committees",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chair",
+     "$",
+     "120,000",
+     "$",
+     "25,000",
+     "$",
+     "15,000"
+    ],
+    [
+     "Member",
+     "$",
+     "40,000",
+     "$",
+     "10,000",
+     "$",
+     "10,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1719,
+    "end_line": 1727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "1.Based on the closing market price of our Common Stock as reported on the NASDAQ Capital Market on December 31, 2023.\nDIRECTOR COMPENSATION\nDirectors who are also employees of the Company do not receive any separate compensation in connection with their Board service, and we pay cash fees to our non-employee directors. Prior to 2022, our non-employee directors received a non-qualified initial stock option award upon joining the Board, which vest monthly over a four-year period, beginning on the date of the director\u2019s election to the Board.\nOn June 15, 2022, the Board of Directors approved a plan for the annual cash compensation of directors effective January 1, 2022:",
+   "prose_after": "The following table presents the total compensation for each person who served as a non-employee member of our board of directors and received compensation for such service during the fiscal year ended December 31, 2023. Other than as set forth in the table and described more fully below:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)(1)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Stock Awards($)(2)(3)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Richard Ferrari",
+     "$",
+     "138,587",
+     "$",
+     "\u2014",
+     "$",
+     "100,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "238,587"
+    ],
+    [
+     "George de Urioste",
+     "$",
+     "77,500",
+     "$",
+     "\u2014",
+     "$",
+     "75,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "152,500"
+    ],
+    [
+     "Marga Ortigas-Wedekind",
+     "$",
+     "65,000",
+     "$",
+     "\u2014",
+     "$",
+     "75,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "140,000"
+    ],
+    [
+     "Willem Elfrink",
+     "$",
+     "65,639",
+     "$",
+     "\u2014",
+     "$",
+     "75,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "140,639"
+    ],
+    [
+     "Mark Strome",
+     "$",
+     "29,722",
+     "",
+     "",
+     "$",
+     "75,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "104,722"
+    ],
+    [
+     "Kenneth Nelson",
+     "$",
+     "27,595",
+     "",
+     "",
+     "$",
+     "75,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "102,595"
+    ],
+    [
+     "Michael Jaff(3)",
+     "$",
+     "18,651",
+     "",
+     "",
+     "$",
+     "130,000",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "148,651"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1731,
+    "end_line": 1743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "The following table presents the total compensation for each person who served as a non-employee member of our board of directors and received compensation for such service during the fiscal year ended December 31, 2023. Other than as set forth in the table and described more fully below:",
+   "prose_after": "1.Represents director fees paid for nine months period to each of Messrs Ferrari, de Urioste, Elfrink, Strome, Nelson, Jaff and Mmes Ortigas-Wedekind. Fees for three months ended December 31, 2023 is accrued and paid early 2024.\n2.The annual RSU grants to Messrs Ferrari, de Urioste, Elfrink, Strome, Nelson and Mmes Ortigas-Wedekind occur at each Annual Stockholder Meeting, vesting in full at the following annual meeting. The dollars convert to shares based on the FMV at the date of grant.\n3.The RSU awarded to Dr. Jaff will vest in equal annual installments over three years on the day following the annual shareholders\u2019 meeting in 2024, 2025 and 2026. The dollars convert to shares based on the FMV at the date of grant.\nItem 12. Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters\nThe following table sets forth certain information regarding the Company\u2019s Common Stock, beneficially owned as of December 31, 2023 by:\n\u2022each person known to the Company to beneficially own more than 5% of its Common Stock,",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Shares Beneficially Owned",
+     "%",
+     ""
+    ],
+    [
+     "Richard Ferrari(1)",
+     "291,458",
+     "1.10",
+     "%"
+    ],
+    [
+     "Branislav Vajdic. PhD(2)",
+     "1,203,019",
+     "4.52",
+     "%"
+    ],
+    [
+     "George A. de Urioste(3)",
+     "39,671",
+     "*",
+     ""
+    ],
+    [
+     "Marga Ortigas-Wedekind(4)",
+     "119,496",
+     "*",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1762,
+    "end_line": 1771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "The Company calculated beneficial ownership according to Rule 13d-3 of the Securities Exchange Act of 1934, as amended as of that date. Shares of the Company\u2019s Common Stock issuable upon exercise of options or warrants or conversion of notes that are exercisable or convertible within 60 days after December 31, 2023 are included as beneficially owned by the holder, but not deemed outstanding for computing the percentage of any other stockholder for Percentage of Common Stock Beneficially Owned. For each individual and group included in the table below, percentage ownership is calculated by dividing the number of shares beneficially owned by such person or group by the sum of the 26,329,032 shares of Common Stock outstanding at December 31, 2023, plus the number of shares of Common Stock that such person or group had the right to acquire on or within 60 days after December 31, 2023. Beneficial ownership generally includes voting and dispositive power with respect to securities. Unless otherwise indicated below, the persons and entities named in the table have sole voting and sole dispositive power with respect to all shares beneficially owned.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Willem Pieter Elfrink(5)",
+     "457,658",
+     "1.73",
+     "%"
+    ],
+    [
+     "Mark Strome(6)",
+     "3,150,000",
+     "11.96",
+     "%"
+    ],
+    [
+     "Kenneth Nelson(7)",
+     "70,001",
+     "*",
+     ""
+    ],
+    [
+     "Michael Jaff MD(8)",
+     "\u2014",
+     "*",
+     ""
+    ],
+    [
+     "Richard Brounstein(9)",
+     "207,106",
+     "*",
+     ""
+    ],
+    [
+     "Robert Eno (10)",
+     "137,714",
+     "*",
+     ""
+    ],
+    [
+     "Kenneth Persen(11)",
+     "55,274",
+     "*",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (11 persons)",
+     "5,731,397",
+     "21.05",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public Ventures(12)\n9454 Wilshire Blvd., Suite 600 Beverly Hills, CA 90212",
+     "2,624,910",
+     "9.41",
+     "%"
+    ],
+    [
+     "Andrew Schwartzberg(13)\n1135 Rivas Canyon Road Pacific Palisades, CA 90272",
+     "1,899,536",
+     "7.21",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1773,
+    "end_line": 1788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "____________\n* Less than 1 percent ownership\n1.Includes (i) 65,653 shares acquired from the conversion of 2015 Convertible Notes. (ii) 73,529 shares acquired from the vesting of RSUs and (iii) 152,276 options exercisable within 60 days after December 31, 2023. Does not include 56,814 unvested stock options and 39,948 unvested RSUs.\n2.Includes (i) 794,545 shares acquired as founders equity, (ii) 115,559 shares acquired from the conversion of 2015 Convertible Notes, (iii) 256,628 options exercisable within 60 days after December 31, 2023, (iv) 1,287 shares acquired from the exercise of warrants acquired from the short-term loan investment program and (v) 35,000 BEATW exercisable warrants. Does not include 1,296,373 unvested stock options.\n3.Includes (i) 12,168 shares acquired from the vesting of RSUs and (ii) 27,503 options exercisable within 60 days after December 31, 2023. Does not include 16,497 unvested stock options and 23,961 unvested RSUs.\n4.Includes (i) 9,000 shares and 9,000 BEATW warrants purchased November 11, 2021, (ii) 7,824 shares acquired from the conversion of 2015 Convertible Notes, (iii) 55,147 shares acquired from the vesting of RSUs and (iv) 38,525 options exercisable within 60 days after December 31, 2023. Does not include 5,110 unvested stock options and 23,961 unvested RSUs.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1815,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "142,200",
+     "$",
+     "126,000"
+    ],
+    [
+     "Audit Related Fees (2)",
+     "45,342",
+     "",
+     "12,722",
+     ""
+    ],
+    [
+     "Tax Fees",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "187,542",
+     "$",
+     "138,722"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1834,
+    "end_line": 1843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Based on the Audit Committee's evaluation and determination that Marcum LLP (\u201cMarcum\u201d) is independent, our Audit Committee has retained the firm of Marcum as our independent registered public accounting firm for fiscal year 2023. In making this determination, the Company is requesting its stockholders to ratify the appointment of Marcum at its next Annual Stockholder Meeting. In the event the stockholders fail to ratify the appointment, the Audit Committee will consider in its direction to select other auditors for the subsequent year. Even if the selection is ratified, the Audit Committee, in its discretion, may select a new independent registered public accounting firm at any time during the year if it feels that such a change would be in the best interest of the Company and its stockholders. Representatives of Marcum will be present at the 2024 Annual Stockholders' Meeting and will have the opportunity to make a statement and be available to answer questions.\nFees to Independent Registered Public Accounting Firm.\nThe merger of Marcum and Friedman LLP (\u201cFriedman\u201d) was effective as September 1, 2022. The following table sets forth the fees that the Company was billed by Friedman and Marcum in 2022 and Marcum in 2023, our independent registered public accountants for fiscal years 2023 and 2022:",
+   "prose_after": "1.Audit fees relate to professional services rendered in connection with the audit of the Company's annual financial statements, quarterly review of financial statements and audit services provided in connection with other statutory and regulatory filings.\n2.Fees related to services provided for registration statements during the first half of 2023 and the fourth quarter of 2022.\nPolicy on Audit Committee Pre-Approval of Fees\nThe Audit Committee must pre-approve all services to be performed for us by our independent registered public accounting firm. Pre-approval is granted usually at regularly scheduled meetings of the Audit Committee. If unanticipated items arise between regularly scheduled meetings of the Audit Committee, the Audit Committee has delegated authority to the chairman of the Audit Committee to pre-approve services, in which case the chairman communicates such pre-approval to the full Audit Committee at its next meeting. The Audit Committee also may approve the additional unanticipated services by either convening a special meeting or acting by unanimous written consent.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1815,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 1846,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     "Filed or Furnished Herewith"
+    ],
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Form",
+     "Exhibit",
+     "Filing Date",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation filed with the State of Delaware on June 11, 2015",
+     "S-1",
+     "3.1",
+     "09/07/2021",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws",
+     "S-1",
+     "3.2",
+     "09/07/2021",
+     ""
+    ],
+    [
+     "3.3",
+     "Amendment to Articles of Incorporation filed with the State of Delaware on September 27, 2021",
+     "S-1",
+     "3.3",
+     "09/07/2021",
+     ""
+    ],
+    [
+     "3.4",
+     "Second Amended and Restated Articles of Incorporation dated November 15, 2022",
+     "S-1",
+     "3.4",
+     "02/10/2023",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Representative\u2019s Warrant",
+     "S-1/A",
+     "4.13",
+     "11/09/2021",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Warrant Agency Agreement",
+     "S-1/A",
+     "4.14",
+     "11/09/2021",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Placement Agent\u2019s Warrant",
+     "S-1/A",
+     "4.13",
+     "04/17/2023",
+     ""
+    ],
+    [
+     "10.1",
+     "Employment Agreement with Branislav Vajdic \u2020",
+     "S-1/A",
+     "10.1",
+     "10/12/2021",
+     ""
+    ],
+    [
+     "10.2",
+     "Employment Agreement with Richard Brounstein \u2020",
+     "S-1/A",
+     "10.2",
+     "10/12/2021",
+     ""
+    ],
+    [
+     "10.3",
+     "Employment Agreement with Jon Hunt \u2020",
+     "S-1/A",
+     "10.3",
+     "10/12/2021",
+     ""
+    ],
+    [
+     "10.4",
+     "Employment Agreement with Alan Baumel \u2020",
+     "8-K",
+     "10.1",
+     "10/12/2021",
+     ""
+    ],
+    [
+     "10.5",
+     "Employment Agreement with Ken Persen \u2020",
+     "8-K",
+     "10.2",
+     "08/08/2022",
+     ""
+    ],
+    [
+     "10.6",
+     "Employment Agreement with Robert Eno \u2020",
+     "8-K",
+     "10.2",
+     "01/24/2023",
+     ""
+    ],
+    [
+     "10.7",
+     "Stock Purchase Agreement, dated February 18, 2022 by and between HeartBeam, Inc. and the Purchaser with the Form of Warrant",
+     "8-K",
+     "10.1",
+     "02/22/2022",
+     ""
+    ],
+    [
+     "10.8",
+     "Form of Professional Services Agreement between Triple Ring and HeartBeam, Inc. dated March 7, 2022",
+     "8-K",
+     "10.1",
+     "03/10/2022",
+     ""
+    ],
+    [
+     "10.9",
+     "Partnership Agreement between HeartBeam, Inc. and LIVMOR, Inc. dated January 31, 2022",
+     "8-K",
+     "10.1",
+     "02/02/2022",
+     ""
+    ],
+    [
+     "10.10",
+     "Supplemental Agreement between HeartBeam, Inc. and LIVMOR, Inc. dated August 2, 2022",
+     "8-K",
+     "10.1",
+     "08/08/2022",
+     ""
+    ],
+    [
+     "10.11",
+     "Sales Agreement by and between HeartBeam, Inc. and A.G.P./Alliance Global Partners, dated February 1, 2023",
+     "8-K",
+     "10.1",
+     "02/02/2023",
+     ""
+    ],
+    [
+     "10.12",
+     "Securities Purchase Agreement dated February 28, 2023 between HeartBeam Inc. and Investors",
+     "8-K",
+     "10.1",
+     "03/03/2023",
+     ""
+    ],
+    [
+     "10.13",
+     "Note Purchase Agreement dated February 28, 2023 between HeartBeam Inc. and Investors",
+     "8-K",
+     "10.1",
+     "03/03/2023",
+     ""
+    ],
+    [
+     "10.14",
+     "First Amendment to Securities Purchase Agreement dated March 7, 2023 to the Securities Purchase Agreement dated February 28, 2023 between HeartBeam, Inc. and Investors",
+     "8-K",
+     "10.1",
+     "03/09/2023",
+     ""
+    ],
+    [
+     "10.15",
+     "First Amendment to Note Purchase Agreement dated March 7, 2023 to the Note Purchase Agreement dated February 28, 2023 between HeartBeam, Inc. and Investors",
+     "8-K",
+     "10.2",
+     "03/09/2023",
+     ""
+    ],
+    [
+     "10.16",
+     "Form of Subscription Agreement",
+     "S-1/A",
+     "10.16",
+     "04/10/2023",
+     ""
+    ],
+    [
+     "10.17",
+     "Form of Escrow Agreement for the Offering",
+     "S-1/A",
+     "10.17",
+     "04/10/2023",
+     ""
+    ],
+    [
+     "10.18",
+     "Form of Securities Purchase Agreement dated as of May 2, 2023 between HeartBeam, Inc. and Investor",
+     "8-K",
+     "10.1",
+     "05/05/2023",
+     ""
+    ],
+    [
+     "10.19",
+     "2022 Equity Incentive Plan",
+     "8-K",
+     "10.1",
+     "06/16/2022",
+     ""
+    ],
+    [
+     "10.20",
+     "First Amendment to the HeartBeam, Inc. 2022 Equity Incentive Plan",
+     "8-K",
+     "10.1",
+     "07/11/2023",
+     ""
+    ],
+    [
+     "14.1",
+     "Code of Business and Ethics",
+     "10-K",
+     "14.1",
+     "03/16/2023",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Marcum LLP Independent Registered Public Accounting Firm",
+     "",
+     "",
+     "",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1858,
+    "end_line": 1895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "1.Audit fees relate to professional services rendered in connection with the audit of the Company's annual financial statements, quarterly review of financial statements and audit services provided in connection with other statutory and regulatory filings.\n2.Fees related to services provided for registration statements during the first half of 2023 and the fourth quarter of 2022.\nPolicy on Audit Committee Pre-Approval of Fees\nThe Audit Committee must pre-approve all services to be performed for us by our independent registered public accounting firm. Pre-approval is granted usually at regularly scheduled meetings of the Audit Committee. If unanticipated items arise between regularly scheduled meetings of the Audit Committee, the Audit Committee has delegated authority to the chairman of the Audit Committee to pre-approve services, in which case the chairman communicates such pre-approval to the full Audit Committee at its next meeting. The Audit Committee also may approve the additional unanticipated services by either convening a special meeting or acting by unanimous written consent.\nPart IV\nItem 15. Exhibits and Financial Statement Schedules",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1853,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "24.1",
+     "Power of Attorney *",
+     "X"
+    ],
+    [
+     "31.1",
+     "Certification Required by Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "X"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 #",
+     "X"
+    ],
+    [
+     "97.1",
+     "HeartBeam, Inc. Compensation Recovery Policy",
+     "X"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document+",
+     "X"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document+",
+     "X"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document+",
+     "X"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document+",
+     "X"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document+",
+     "X"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document+",
+     "X"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File - The cover page iXBRL tags are embedded within the inline XBRL document.",
+     "X"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2020",
+     "Management or compensatory plan or arrangement.",
+     ""
+    ],
+    [
+     "#",
+     "This certification is being furnished and shall not be deemed \u201cfiled\u201d with the SEC for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, and shall not be deemed to be incorporated by reference into any filing under the Securities Act or the Exchange Act, except to the extent that the registrant specifically incorporates it by reference.",
+     ""
+    ],
+    [
+     "+",
+     "Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files in Exhibit 101 hereto are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities and Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1897,
+    "end_line": 1919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Item 16. Form 10-K Summary\nNone\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1920,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 4,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "HEARTBEAM, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Branislav Vajdic"
+    ],
+    [
+     "",
+     "Name:",
+     "Branislav Vajdic"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "Dated: March 20, 2024",
+     "",
+     "(Principal Executive and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "HEARTBEAM, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1930,
+    "end_line": 1939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Item 16. Form 10-K Summary\nNone\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below hereby constitutes and appoints Branislav Vajdic his attorney-in-fact, with the power of substitution, for him in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that said attorney-in-fact may do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard Ferrari",
+     "Executive Chairman",
+     "March 20, 2024"
+    ],
+    [
+     "Richard Ferrari",
+     "",
+     ""
+    ],
+    [
+     "/s/ George de Urioste",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "George de Urioste",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marga Ortigas-Wedekind",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "Marga Ortigas-Wedekind",
+     "",
+     ""
+    ],
+    [
+     "/s/ Willem Elfrink",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "Willem Elfrink",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mark Strome",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "Mark Strome",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kenneth Nelson",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "Kenneth Nelson",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Jaff",
+     "Director",
+     "March 20, 2024"
+    ],
+    [
+     "Michael Jaff",
+     "",
+     ""
+    ],
+    [
+     "/s/ Branislav Vajdic",
+     "Chief Executive Officer",
+     "March 20, 2024"
+    ],
+    [
+     "Branislav Vajdic",
+     "(Principal Executive and Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1946,
+    "end_line": 1975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below hereby constitutes and appoints Branislav Vajdic his attorney-in-fact, with the power of substitution, for him in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that said attorney-in-fact may do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "Contents",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firms (PCAOB ID No: 688)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Changes in Stockholders\u2019 Equity for the years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1978,
+    "end_line": 1993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Contents",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nHeartBeam Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of HeartBeam, Inc. (the \u201cCompany\u201d) as of December 31, 2023 and 2022, the related statements of operations, stockholders\u2019 equity and cash flows for each of the two years in the period ended December 31, 2023, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023 and 2022, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2023, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph \u2013 Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As more fully described in Note 2, the Company has a significant working capital deficiency, has incurred significant losses and needs to raise additional funds to meet its obligations and sustain its operations. These conditions raise substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1993,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "16,189",
+     "$",
+     "3,594"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "636",
+     "",
+     "445",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "$",
+     "16,825",
+     "$",
+     "4,039"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "256",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other assets",
+     "50",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "17,131",
+     "$",
+     "4,039"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses (includes related party $2 and $2, respectively)",
+     "1,194",
+     "",
+     "1,665",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "1,194",
+     "",
+     "1,665",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments (Note 7)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock - $0.0001 par value; 10,000,000 shares authorized; 0 shares outstanding at December 31, 2023 and 2022",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock - $0.0001 par value; 100,000,000 shares authorized; 26,329,032 and 8,009,743 shares issued and outstanding at December 31, 2023 and 2022",
+     "3",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "52,759",
+     "",
+     "24,559",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(36,825)",
+     "",
+     "(22,186)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "$",
+     "15,937",
+     "$",
+     "2,374"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "17,131",
+     "$",
+     "4,039"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2029,
+    "end_line": 2068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Marcum LLP\nWe have served as the Company\u2019s auditor since 2020\nEast Hanover, New Jersey\nMarch 20, 2024\nBalance Sheets\n(In thousands, except share data)",
+   "prose_after": "See accompanying notes to the financial statements\nStatements of Operations\n(In thousands, except share and per share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2023,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 2070,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "8,516",
+     "$",
+     "7,354"
+    ],
+    [
+     "Research and development",
+     "6,798",
+     "",
+     "5,677",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "15,314",
+     "",
+     "13,031",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(15,314)",
+     "",
+     "(13,031)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "675",
+     "",
+     "66",
+     ""
+    ],
+    [
+     "Other income",
+     "\u2014",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Total other income",
+     "675",
+     "",
+     "69",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "(14,639)",
+     "",
+     "(12,962)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(14,639)",
+     "$",
+     "(12,962)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.72)",
+     "$",
+     "(1.59)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding, basic and diluted",
+     "20,333,280",
+     "",
+     "8,168,516",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2076,
+    "end_line": 2111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatements of Operations\n(In thousands, except share and per share data)",
+   "prose_after": "See accompanying notes to the financial statements\nStatement of Changes in Stockholders\u2019 Equity\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2070,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Total Stockholders' Equity (Deficit)",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2021",
+     "7,809,912",
+     "$",
+     "1",
+     "$",
+     "22,633",
+     "$",
+     "(9,224)",
+     "$",
+     "13,410"
+    ],
+    [
+     "Stock based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "1,120",
+     "",
+     "\u2014",
+     "",
+     "1,120",
+     ""
+    ],
+    [
+     "Stock issuance upon vesting and exercise of stock options",
+     "38,806",
+     "\u2014",
+     "",
+     "2",
+     "",
+     "\u2014",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Stock issuance upon vesting of restricted stock units",
+     "25,000",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Sale of Common Stock & Warrants",
+     "136,025",
+     "\u2014",
+     "",
+     "804",
+     "",
+     "\u2014",
+     "",
+     "804",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(12,962)",
+     "",
+     "(12,962)",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2022",
+     "8,009,743",
+     "$",
+     "1",
+     "$",
+     "24,559",
+     "$",
+     "(22,186)",
+     "$",
+     "2,374"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,208",
+     "",
+     "\u2014",
+     "",
+     "3,208",
+     ""
+    ],
+    [
+     "Sale of Common Stock, net of issuance costs",
+     "17,872,955",
+     "2",
+     "",
+     "24,762",
+     "",
+     "\u2014",
+     "",
+     "24,764",
+     ""
+    ],
+    [
+     "Stock issuance upon exercise of stock options",
+     "180,072",
+     "\u2014",
+     "",
+     "214",
+     "",
+     "\u2014",
+     "",
+     "214",
+     ""
+    ],
+    [
+     "Stock issuance upon vesting of restricted stock units",
+     "258,970",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock Issuance upon exercise of warrants",
+     "7,292",
+     "\u2014",
+     "",
+     "16",
+     "",
+     "\u2014",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(14,639)",
+     "",
+     "(14,639)",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2023",
+     "26,329,032",
+     "3",
+     "",
+     "52,759",
+     "",
+     "(36,825)",
+     "",
+     "15,937",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2119,
+    "end_line": 2144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatement of Changes in Stockholders\u2019 Equity\n(In thousands, except share data)",
+   "prose_after": "See accompanying notes to the financial statements\nStatements of Cash Flows\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2113,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2146,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(14,639)",
+     "$",
+     "(12,962)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "3,208",
+     "",
+     "1,120",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "(191)",
+     "",
+     "361",
+     ""
+    ],
+    [
+     "Accounts payable, accrued expenses and other current liabilities",
+     "(471)",
+     "",
+     "1,533",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(12,093)",
+     "",
+     "(9,948)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(256)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(256)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of equity, net of issuance costs",
+     "24,764",
+     "",
+     "348",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "214",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Proceeds from exercise of warrants",
+     "16",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "24,994",
+     "",
+     "350",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and restricted cash",
+     "12,645",
+     "",
+     "(9,598)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash - beginning of the year",
+     "3,594",
+     "",
+     "13,192",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash - at end of the year",
+     "$",
+     "16,239",
+     "$",
+     "3,594"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest paid",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Non-cash Flow Information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock and warrants to settle accrued expenses",
+     "$",
+     "\u2014",
+     "$",
+     "456"
+    ],
+    [
+     "Reconciliation of cash, cash equivalents and restricted cash:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "16,189",
+     "$",
+     "3,594"
+    ],
+    [
+     "Restricted cash (included in other assets)",
+     "$",
+     "50",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total cash, cash equivalents and restricted cash",
+     "$",
+     "16,239",
+     "$",
+     "3,594"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2152,
+    "end_line": 2203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatements of Cash Flows\n(In thousands)",
+   "prose_after": "See accompanying notes to the financial statements\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1 \u2013 ORGANIZATION AND OPERATIONS\nHeartBeam, Inc. (\u201cHeartBeam\u201d or the \u201cCompany\u201d) is a medical technology company primarily focusing on developing and commercializing higher resolution ambulatory Electrocardiogram (\u201cECG\u201d) solutions that enable the detection and monitoring of cardiac disease outside a healthcare facility setting. The Company\u2019s ability to develop higher resolution ECG solutions is achieved through the development of the Company\u2019s proprietary and patented Vector Electrocardiography (\u201cVECG\u201d) technology platform. HeartBeam\u2019s VECG is capable of developing three-dimensional (3D) images of cardiac electrical activity by displaying the spatial locations of ECG waveforms that demonstrated in early studies to deliver equal or superior diagnostic capability than traditional hospital-based ECG systems.\nThe Company has validated this novel technology and is seeking U.S. Food and Drug Administration (\u201cFDA\u201d) clearance of its initial telehealth products during 2024.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2146,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2205,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "2022"
+    ],
+    [
+     "Stock options (excluding exercisable penny stock options)",
+     "5,915,851",
+     "2,020,819"
+    ],
+    [
+     "Restricted stock units",
+     "217,881",
+     "253,970"
+    ],
+    [
+     "Warrants",
+     "5,152,397",
+     "3,908,276"
+    ],
+    [
+     "Total",
+     "11,286,129",
+     "6,183,065"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2307,
+    "end_line": 2319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Diluted net loss per share is computed by giving effect to all potential shares of common stock, including stock options and warrants to the extent dilutive. Basic net loss per share was the same as diluted net loss per share for the years ended December 31, 2023 and 2022 as the inclusion of all potential common shares outstanding would have an anti-dilutive effect.\nAs of December 31, 2022, the penny warrants issued during 2019 have been excluded from the net loss per common share calculation following treatment of contingently issuable shares as there are circumstances under which these shares would not be issued and therefore not exercisable. These warrants expired as unissued in February 2023.\nIn accordance with ASC 260-10-45-13, exercisable penny options are included in the calculation of weighted average basic and diluted earnings per share. As of December 31, 2023, and 2022, 176,674 and 175,958 penny options have been included in the calculation of weighted average basic and diluted earnings per share.\nThe following is a summary of awards outstanding as of December 31, 2023 and 2022, which are not included in the computation of basic and diluted weighted average shares:",
+   "prose_after": "RECENTLY ISSUED ACCOUNTING STANDARDS\nNot Yet Adopted as of December 31, 2023:\nIn November 2023, the Financial Standards Accounting Board (FASB) issued Accounting Standards Update (ASU) 2023-07 \"Segment Reporting (Topic 280): Improvements to Reportable Segment Disclosures\" which expands annual and interim disclosure requirements for reportable segments, primarily through enhanced disclosures about significant segment expenses. ASU 2023-07 is effective for our annual periods beginning January 1, 2024, and for interim periods beginning January 1, 2025, with early adoption permitted. We do not expect that the updated standard will have a rather significant impact on our financial statement disclosures\nIn December 2023, the FASB issued ASU 2023-09 \"Income Taxes (Topics 740): Improvements to Income Tax Disclosures\" to expand the disclosure requirements for income taxes, specifically related to the rate reconciliation and income taxes paid. ASU 2023-09 is effective for our annual periods beginning January 1, 2025, with early adoption",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2290,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2327,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of shares",
+     "",
+     "Weighted average exercise price",
+     "",
+     "Weighted average remaining life (years)",
+     "Aggregate intrinsic value (in thousands)",
+     ""
+    ],
+    [
+     "Outstanding and exercisable - December 31, 2021",
+     "3,777,549",
+     "",
+     "$",
+     "5.42",
+     "4.45",
+     "$",
+     "1,259"
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issued",
+     "130,727",
+     "",
+     "$",
+     "5.72",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Outstanding - December 31, 2022",
+     "3,908,276",
+     "",
+     "$",
+     "5.42",
+     "3.47",
+     "$",
+     "2,020"
+    ],
+    [
+     "Issued",
+     "1,666,666",
+     "",
+     "1.88",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Exercised",
+     "(11,638)",
+     "0",
+     "2.75",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Expired",
+     "(410,907)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Outstanding and exercisable - December 31, 2023",
+     "5,152,397",
+     "",
+     "$",
+     "4.71",
+     "3.35",
+     "$",
+     "792"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2374,
+    "end_line": 2389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "During 2019, milestone warrants were issued to certain executives totaling 407,272 warrants (\u201cPenny Warrants\u201d). These warrants were valued on the date of grant at $0.0003 to vest upon meeting certain milestones. These warrants expired unissued in February 2023.\nOn January 14, 2022, the Company issued 72,727 warrants based on performance metrics achieved in 2021 to purchase 72,727 shares of common stock at an exercise price of $5.50 per share, with an expiration of five years from the date of issuance.\nOn February 28, 2022, the Company issued 58,000 warrants to purchase 58,000 shares of common stock at an exercise price of $6.00 per share.\nOn May 2, 2023 the Company issued 1,666,666 placement agent warrants to purchase shares of Common Stock sold in the offering, with an exercise price of $1.875 per share and are exercisable for five years from the date of issuance.\nDuring the year ended December 31, 2023, 11,638 warrants were exercised, of which 5,817 were exercised in the form of a cashless exercise utilizing 4,346 warrants which resulted in the net issuance of 1,471 common shares. The remaining 5,821 warrants were exercised for cash for approximately $16,000.\nA summary of the outstanding warrants as of December 31, 2023 and 2022 is as follows:",
+   "prose_after": "NOTE 5 \u2013 STOCK-BASED COMPENSATION\nIn 2015, the Company\u2019s Board of Directors approved the HeartBeam, Inc. 2015 Equity Incentive Plan (\"2015 Plan\"), to attract and retain the best available personnel for positions of substantial responsibility, to provide additional incentive to employees, directors, and consultants, and to promote the success of the Company\u2019s business. The 2015 Plan provides for the grant of stock options and RSU\u2019s to purchase common stock of which 1,636,362 were authorized by the board of which 970,704 are outstanding as of December 31, 2023. The 2015 Plan was terminated upon shareholder approval of the 2022 Equity Incentive Plan (\u201c2022 Equity Plan\u201d) whereby no new awards can be issued under the 2015 Plan.\nThe Company\u2019s shareholders approved the 2022 Equity Plan at the annual meeting of stockholders held on June 15, 2022, pursuant to which 1,900,000 shares of common stock were authorized for issuance. Under the 2022 Equity Plan, the number of shares available for issuance will be increased on the first day of each fiscal year beginning with the 2023 fiscal year, in an amount equal to the lesser of 3,800,000 shares, five percent (5%) of the total number of shares of all classes of common stock of the Company outstanding on the last day of the immediately preceding fiscal year, and a lesser number of shares determined by the administrator. On January 1, 2023 400,487 shares, equivalent to five percent (5%) of common stock outstanding were added to the shares available for issuance under the 2022 Equity Plan. Also see Note 9- Subsequent event section below.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2371,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of options outstanding",
+     "Weighted average exercise price",
+     "",
+     "Average remaining contractual life (in years)",
+     "Aggregate intrinsic value (in thousands) (*)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding \u2013 December 31, 2021",
+     "1,105,938",
+     "$",
+     "2.03",
+     "8.8",
+     "$",
+     "1,535"
+    ],
+    [
+     "Options granted",
+     "1,251,000",
+     "1.70",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeitures",
+     "(121,334)",
+     "2.98",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercised",
+     "(38,806)",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding \u2013 December 31, 2022",
+     "2,196,798",
+     "$",
+     "1.76",
+     "8.7",
+     "$",
+     "6,770"
+    ],
+    [
+     "Options granted",
+     "4,363,800",
+     "2.42",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeitures",
+     "(288,001)",
+     "2.48",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercised",
+     "(180,072)",
+     "1.19",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding \u2013 December 31, 2023",
+     "6,092,525",
+     "2.22",
+     "",
+     "8.7",
+     "$",
+     "2,945"
+    ],
+    [
+     "Exercisable \u2013 December 31, 2023",
+     "1,212,312",
+     "$",
+     "1.78",
+     "7.4",
+     "$",
+     "1,203"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2408,
+    "end_line": 2428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The 2022 Equity Plan includes a provision to add-back any cancelled options from the 2015 Plan up to 1,372,816 shares. As of December 31, 2023, there are 252,856 shares from the 2015 Plan that are included in the 849,171 shares available for issuance under the 2022 Equity Plan.\nDuring 2023, the Company granted 2,208,000 options to various executives and employees. Sixty percent (60%) of these options vest based on FDA Clearance for marketing of HeartBeam\u2019s synthesized 12L product and the remaining forty percent (40%) vest monthly over a period of 48 months. The Company calculated the fair value for each of these grants using the Black-Scholes option pricing model and it is expensed based on management\u2019s probability assessment of FDA clearance. The 60% milestone options are issued and outstanding as of December 31, 2023.\nThe Company received proceeds of $0.2 million from the exercise of stock options during the year ended December 31, 2023 and a de minimis amount during the year ended December 31, 2022.\nSTOCK OPTIONS\nThe following is a summary of stock option activity during the years ended December 31, 2023 and 2022:",
+   "prose_after": "(*) Intrinsic value is based on the fair market value of the Company's common stock.\nThe Company estimates the fair values of stock options using the Black-Scholes option-pricing model on the date of grant. For the years ended December 31, 2023 and 2022, the assumptions used in the Black-Scholes option pricing model, which was used to estimate the grant date fair value per option, were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2445,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Weighted-average Black-Scholes option pricing model assumptions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Volatility",
+     "110.23% - 117.62%",
+     "",
+     "107.25% - 111.06%",
+     ""
+    ],
+    [
+     "Expected term (in years)",
+     "5.85 - 6.07",
+     "",
+     "5.62 - 5.94",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "3.54% - 4.77%",
+     "",
+     "1.47% - 3.17%",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Weighted average grant date fair value per share",
+     "$1.75 - 3.38",
+     "",
+     "$1.08 - 3.34",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2433,
+    "end_line": 2445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "(*) Intrinsic value is based on the fair market value of the Company's common stock.\nThe Company estimates the fair values of stock options using the Black-Scholes option-pricing model on the date of grant. For the years ended December 31, 2023 and 2022, the assumptions used in the Black-Scholes option pricing model, which was used to estimate the grant date fair value per option, were as follows:",
+   "prose_after": "RESTRICTED STOCK UNITS\nThe following is a summary of RSUs award activity:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2445,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "Weighted Average Grant Date Fair Value",
+     "",
+     "Number of Shares",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Non-vested at beginning of the year",
+     "253,970",
+     "$",
+     "1.47",
+     "30,000",
+     "$",
+     "3.20"
+    ],
+    [
+     "Shares granted",
+     "222,881",
+     "3.11",
+     "",
+     "248,970",
+     "1.36",
+     ""
+    ],
+    [
+     "Shares vested",
+     "(258,970)",
+     "1.48",
+     "",
+     "(25,000)",
+     "2.46",
+     ""
+    ],
+    [
+     "Non-vested at end of year",
+     "217,881",
+     "$",
+     "3.12",
+     "253,970",
+     "$",
+     "1.47"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2450,
+    "end_line": 2463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "RESTRICTED STOCK UNITS\nThe following is a summary of RSUs award activity:",
+   "prose_after": "STOCK BASED COMPENSATION\nThe following is a summary of stock-based compensation expense:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2445,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2499,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "General and administration",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options",
+     "$",
+     "2,069,556",
+     "$",
+     "657,368"
+    ],
+    [
+     "RSUs",
+     "488,971",
+     "",
+     "235,035",
+     ""
+    ],
+    [
+     "Total general and administration",
+     "2,558,527",
+     "",
+     "892,403",
+     ""
+    ],
+    [
+     "R&D",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options",
+     "629,092",
+     "",
+     "213,813",
+     ""
+    ],
+    [
+     "RSUs",
+     "20,457",
+     "",
+     "13,601",
+     ""
+    ],
+    [
+     "Total R&D",
+     "649,549",
+     "",
+     "227,414",
+     ""
+    ],
+    [
+     "Total stock based compensation",
+     "$",
+     "3,208,076",
+     "$",
+     "1,119,817"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2468,
+    "end_line": 2487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "STOCK BASED COMPENSATION\nThe following is a summary of stock-based compensation expense:",
+   "prose_after": "As of December 31, 2023 total compensation cost not yet recognized related to unvested stock options and unvested RSUs was approximately $8.1 million and $0.4 million, respectively, which is expected to be recognized over a weighted-average period of 2.66 years and 1.2 years, respectively.\nNOTE 6 \u2013 RELATED PARTY TRANSACTIONS\nDuring the course of business, the Company obtains accounting services from CTRLCFO, a firm in which the Company\u2019s former Chief Financial Officer has significant influence. The Company incurred accounting fees from these firms of approximately $20,000 and $21,000 during the years ended December 31, 2023 and 2022, respectively. As of December 31, 2023 and 2022, the Company had balances due to these firms amounting to approximately $2,000.\nNOTE 7 \u2013 COMMITMENTS\nLease Obligations\nIn May 2019, the Company entered into a month to month lease agreement for our headquarters. The agreement is for an undefined term and can be cancelled at any time, given one month\u2019s notice by either party. The Company\u2019s monthly rent expense associated with this agreement is approximately $1,440. The Company\u2019s month to month headquarters lease is in the name of the Company\u2019s Chief Executive Officer, and the cost is reimbursed monthly.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2445,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2499,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computed \u201cexpected\u201d tax benefit",
+     "(3,074,000)",
+     "21.00",
+     "%",
+     "(2,722,000)",
+     "21.00",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (reduction) in income taxes resulting from):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State tax, net of federal benefit",
+     "\u2014",
+     "\u2014",
+     "%",
+     "(1,024,900)",
+     "7.95",
+     "%"
+    ],
+    [
+     "Permanent items",
+     "(80,500)",
+     "0.55",
+     "%",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "221,200",
+     "(1.51)",
+     "%",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development credits",
+     "(241,800)",
+     "1.65",
+     "%",
+     "(224,100)",
+     "1.70",
+     "%"
+    ],
+    [
+     "Other",
+     "130,600",
+     "(0.89)",
+     "%",
+     "(2,000)",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "3,044,500",
+     "(20.80)",
+     "%",
+     "3,973,000",
+     "(30.65)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "\u2014",
+     "\u2014",
+     "%",
+     "\u2014",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2522,
+    "end_line": 2540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "has been recognized as R&D expense. In February 2023, the Company acquired LIVMOR\u2019s Halo+\u2122 Atrial Fibrillation Detection System, the world\u2019s first FDA-cleared (K201208) prescription wearable for continuous cardiac rhythm monitoring, comprising of intellectual property, including 3 issued United States patents.\nProfessional Services Agreement\nIn March 2022, the Company entered into a professional services agreement with Triple Ring Technologies, Inc. (\u201cTRT\u201d), a co-development company, to assist in the design and development of the Company\u2019s telehealth complete solution 3D vector ECG collection device for remote heart attack or MI monitoring. This agreement was followed by several amendments. The agreement with Triple Ring includes a commitment totaling $1.7 million.\nAs of December 31, 2023 the Company has a remaining commitment of $0.4 million.\nNOTE 8 - INCOME TAX\nIncome tax expense attributable to pretax loss from continuing operations differed from the amounts computed by applying the U.S. federal income tax rate of 21% to pretax loss from continuing operations as a result of the following:",
+   "prose_after": "The tax effects of temporary differences that give rise to significant portions of the deferred tax assets and liabilities are presented below as of December 31:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2517,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2569,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Deferred tax assets (liabilities):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "5,799,000",
+     "$",
+     "4,115,800"
+    ],
+    [
+     "Research and development credits",
+     "619,000",
+     "",
+     "377,200",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "647,000",
+     "",
+     "349,900",
+     ""
+    ],
+    [
+     "Sec. 174",
+     "2,027,200",
+     "",
+     "1,032,700",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "172,100",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "9,092,200",
+     "",
+     "6,047,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "(9,092,200)",
+     "",
+     "(6,047,700)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Deferred Tax Assets",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2543,
+    "end_line": 2561
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant portions of the deferred tax assets and liabilities are presented below as of December 31:",
+   "prose_after": "Realization of deferred tax assets is dependent upon future earnings, if any, the timing and amount of which are uncertain. Accordingly, the net deferred tax assets have been fully offset by a valuation allowance. The valuation allowance increased by approximately $3,044,500 for the period ended December 31, 2023.\nAs of December 31, 2023, the Company had federal and state net operating loss (\u201cNOL\u201d) carryforwards of approximately $21,496,500 and $18,394,200, respectively. The federal NOL carryforwards consist of $2,405,400 generated prior to 2018 which will begin to expire in 2035, however, are able to offset 100% of taxable income and $19,091,000 generated after December 31, 2017 that will carryforward indefinitely but will be subject to 80% taxable income limitation beginning tax years after December 31, 2021 as provided by the Coronavirus Aid, Relief, and Economic Security (\u201cCARES\u201d) Act (PL 116-136).\nThe Company has federal R&D credit carryforwards of approximately $617,000 which will begin to expire in 2041 and state R&D credit carryforwards of approximately $338,400 which do not expire.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2517,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2569,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

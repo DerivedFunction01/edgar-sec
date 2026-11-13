@@ -1,0 +1,4271 @@
+{
+ "accession": "0001839882-22-030611",
+ "cik": "0001341726",
+ "form": "10-K",
+ "filing_date": "2022-12-29",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gspe-10k_093022.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "16-1689008"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer I.D. No.)"
+    ],
+    [
+     "incorporation or organization)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: September 30, 2022\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___ to ___\nCommission File No. 000-51638\nGULFSLOPE ENERGY, INC.\n(Exact name of the issuer as specified in its charter)",
+   "prose_after": "1000 Main St., Suite 2300\nHouston, Texas 77002\n(Address of Principal Executive Offices)\n(281) 918-4100\n(Registrant\u2019s Telephone Number)\nSecurities registered pursuant to Section 12(b) of the Exchange Act: None\nSecurities registered pursuant to Section 12(g) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.001",
+     "GSPE",
+     "OTCPK"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1000 Main St., Suite 2300\nHouston, Texas 77002\n(Address of Principal Executive Offices)\n(281) 918-4100\n(Registrant\u2019s Telephone Number)\nSecurities registered pursuant to Section 12(b) of the Exchange Act: None\nSecurities registered pursuant to Section 12(g) of the Exchange Act:",
+   "prose_after": "Indicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No\u2612\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "",
+     "Outstanding as of December 27, 2022"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     "",
+     "1,268,240,346"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting stock held by non-affiliates was $10,763,549 based on 768,824,959 shares held by non-affiliates. These computations are based upon the closing sales price of $0.0140 for the common stock of the Company on the OTCPK of the Financial Industry Regulatory Authority, Inc. (\u201cFINRA\u201d) on March 31, 2022.\nIndicate the number of shares outstanding of each of the Registrant\u2019s classes of common equity, as of the latest practicable date:",
+   "prose_after": "Documents incorporated by reference: None\nTABLE OF CONTENTS\n<TABLE>\nPART 1\nCautionary Statement Regarding Forward-Looking Statements                                                           3\nITEM 1.   Business                                                                                                            3\nITEM 1A.  Risk Factors                                                                                                        9\nITEM 1B.  Unresolved Staff Comments                                                                                          19\nITEM 2.   Properties                                                                                                         19\nITEM 3.   Legal Proceedings                                                                                                  19",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART 1",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cautionary Statement Regarding Forward-Looking Statements",
+     "3"
+    ],
+    [
+     "ITEM 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "ITEM 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "ITEM 1B.",
+     "Unresolved Staff Comments",
+     "19"
+    ],
+    [
+     "ITEM 2.",
+     "Properties",
+     "19"
+    ],
+    [
+     "ITEM 3.",
+     "Legal Proceedings",
+     "19"
+    ],
+    [
+     "ITEM 4.",
+     "Mine Safety Disclosures",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "21"
+    ],
+    [
+     "ITEM 6.",
+     "Selected Financial Data",
+     "21"
+    ],
+    [
+     "ITEM 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "21"
+    ],
+    [
+     "ITEM 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "24"
+    ],
+    [
+     "ITEM 8.",
+     "Financial Statements and Supplementary Data",
+     "25"
+    ],
+    [
+     "ITEM 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "39"
+    ],
+    [
+     "ITEM 9A.",
+     "Controls and Procedures",
+     "39"
+    ],
+    [
+     "ITEM 9B.",
+     "Other Information",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "40"
+    ],
+    [
+     "ITEM 11.",
+     "Executive Compensation",
+     "41"
+    ],
+    [
+     "ITEM 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "42"
+    ],
+    [
+     "ITEM 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "43"
+    ],
+    [
+     "ITEM 14.",
+     "Principal Accounting Fees and Services",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "Exhibits and Financial Statements Schedules",
+     "44"
+    ],
+    [
+     "ITEM 16.",
+     "Form 10-K Summary",
+     "45"
+    ],
+    [
+     "",
+     "Signatures",
+     "46"
+    ]
+   ],
+   "caption_stack": [
+    "PART 1"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Plan category",
+     "Number of securities to \n\n\n\nbe issued upon exercise\n\n\n\nof outstanding stock options(1)",
+     "",
+     "Weighted average\n\n\n\nexercise price of \n\n\n\noutstanding stock options",
+     "",
+     "Number of securities \n\n\n\nremaining available for\n\n\n\nfuture issuance under equity\n\n\n\ncompensation plans(2)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "146,000,000",
+     "$",
+     "0.0444",
+     "",
+     "19,970,000"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "146,000,000",
+     "",
+     "",
+     "",
+     "19,970,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 600,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Our common stock, $0.001 par value per share, is quoted on the OTC Markets (Pink Marketplace Tier) under the symbol \u201cGSPE.\u201d Shares of our common stock have historically been thinly traded. As a result, our stock price as quoted by the OTC Markets may not reflect an actual or perceived value.\nHolders\nThe number of record holders of the Company\u2019s common stock, as of December 27, 2022, is approximately 190.\nDividends\nThe Company has not declared any dividends with respect to its common stock and does not intend to declare any dividends in the foreseeable future. The future dividend policy of the Company cannot be ascertained with any certainty. There are no material restrictions limiting the Company\u2019s ability to pay cash dividends on its common stock.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nThe following table sets forth information with respect to the equity compensation plans available to directors, officers, certain employees and certain consultants of the Company at September 30, 2022.",
+   "prose_after": "(1) This column reflects the maximum number of shares of our common stock subject to stock option awards granted as Inducement Shares or under the 2014 and 2018 Omnibus Incentive Plans vested and unvested.\n(2) This column reflects the total number of shares of our common stock remaining available for issuance under the 2014 and 2018 Omnibus Incentive Plans.\nRecent Sales of Unregistered Securities\nNone.\nITEM 6. SELECTED FINANCIAL DATA\nNot required for smaller reporting companies.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe following discussion highlights the principal factors that have affected our financial condition and results of operations as well as our liquidity and capital resources for the periods described. This discussion contains forward-looking statements. Please see \u201cForward-Looking Statements\u201d above for a discussion of the uncertainties, risks and assumptions associated with these forward-looking statements. The following discussion and analysis of our financial condition and results of operations is based on our consolidated financial statements, which have been prepared on the accrual basis of accounting, whereby revenues are recognized when earned, and expenses are recognized when incurred. You should read this management\u2019s discussion and analysis of our financial condition and results of operations in conjunction with our historical financial statements included elsewhere in this Annual Report. Our future results could differ materially from our historical results due to a variety of factors, many of which are out of our control.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of September 30, 2022, and 2021",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2022, and 2021",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Stockholders\u2019 Equity (Deficit) for the Years Ended September 30, 2022, and 2021",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2022, and 2021",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 715,
+    "end_line": 730
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In August 2020, the FASB issued ASU No. 2020-06, Accounting for Convertible Instruments and Contracts in an Entity\u2019s Own Equity (ASU 2020-06), which simplifies the accounting for certain financial instruments with characteristics of liabilities and equity, including convertible instruments and contracts in an entity\u2019s own equity. Additionally, ASU 2020-06 requires the application of the if-converted method to calculate the impact of convertible instruments on diluted earnings per share (EPS), which is consistent with the Company\u2019s accounting treatment under the current standard. ASU 2020-06 is effective for fiscal years beginning after December 15, 2021, with early adoption permitted for fiscal years beginning after December 15, 2020. ASU No. 2020-06 can be adopted on either a fully retrospective or modified retrospective basis. The adoption of ASU 2020-06 is not expected to have a material impact on the Company\u2019s financial statements or disclosures.\nThe Company has evaluated all other recent accounting pronouncements and believes either they are not applicable or that none of them will have a significant effect on the Company\u2019s financial statements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nNot required for smaller reporting companies.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nTABLE OF CONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of GulfSlope Energy\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of GulfSlope Energy, Inc. (the \u201cCompany\u201d) as of September 30, 2022 and 2021, and the related statements of operations, stockholders\u2019 equity (deficit), and cash flows for each of the years in the two-year period ended September 30, 2022 and 2021, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of September 30, 2022 and 2021, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Uncertainty\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As described in Note 2 to the financial statements, the Company has a net capital deficiency, and further losses are anticipated in developing the Company\u2019s business, which raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 711,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "135,381",
+     "",
+     "$",
+     "1,517,522",
+     ""
+    ],
+    [
+     "Accounts Receivable, Net",
+     "",
+     "12,925",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Prepaid Expenses and Other Current Assets",
+     "",
+     "33,004",
+     "",
+     "",
+     "54,398",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "181,310",
+     "",
+     "",
+     "1,571,920",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "848",
+     "",
+     "",
+     "1,845",
+     ""
+    ],
+    [
+     "Oil and Natural Gas Properties, Full Cost Method of Accounting, Unproved Properties",
+     "",
+     "5,288,915",
+     "",
+     "",
+     "12,124,720",
+     ""
+    ],
+    [
+     "Total Non-Current Assets",
+     "",
+     "5,289,763",
+     "",
+     "",
+     "12,126,565",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "5,471,073",
+     "",
+     "$",
+     "13,698,485",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "135,391",
+     "",
+     "$",
+     "52,814",
+     ""
+    ],
+    [
+     "Related Party Payable",
+     "",
+     "404,469",
+     "",
+     "",
+     "404,469",
+     ""
+    ],
+    [
+     "Related Party Accrued Interest Payable",
+     "",
+     "3,401,489",
+     "",
+     "",
+     "2,961,689",
+     ""
+    ],
+    [
+     "Accrued Interest Payable",
+     "",
+     "138,020",
+     "",
+     "",
+     "115,860",
+     ""
+    ],
+    [
+     "Accrued Liabilities and Other Payables",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loans from Related Parties",
+     "",
+     "8,725,500",
+     "",
+     "",
+     "8,725,500",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Convertible Notes Payable, net of discount",
+     "",
+     "227,000",
+     "",
+     "",
+     "176,663",
+     ""
+    ],
+    [
+     "Derivative Financial Instruments",
+     "",
+     "959,222",
+     "",
+     "",
+     "1,201,656",
+     ""
+    ],
+    [
+     "Current Portion of Operating Lease Liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "13,991,091",
+     "",
+     "",
+     "13,638,651",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "13,991,091",
+     "",
+     "",
+     "13,638,651",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 11)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock; par value ($0.001); Authorized 50,000,000 shares, none issued or outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common Stock; par value ($0.001); Authorized 3,000,000,000 as of September 30, 2022 and 1,500,000,000 as of September 30, 2021; issued and outstanding 1,268,240,346, as of September 30, 2022 and 2021, respectively",
+     "",
+     "1,268,240",
+     "",
+     "",
+     "1,268,240",
+     ""
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "59,116,487",
+     "",
+     "",
+     "58,999,585",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(68,904,745)",
+     "",
+     "",
+     "(60,207,991)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity (Deficit)",
+     "",
+     "(8,520,018)",
+     "",
+     "",
+     "59,834",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "5,471,073",
+     "",
+     "$",
+     "13,698,485",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 854
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "- Management uses the services of a third party consultant to compute the estimates of fair value. We performed an investigation into the experience, background and credentials of the third party specialist and found that the consultant possessed the appropriate competencies and experience to provide fair value services.\n- The Company uses the Monte Carlo simulation model which takes into consideration stock price volatility, the current common stock price as of the balance sheet date, discount rates as well as other relevant assumptions that would be appropriate to estimate fair value as determined by a third party market participant.\n- We confirmed our understanding and tested each underlying assumption to ensure they are correct.\n- We independently reperformed the computations of the fair value estimates taking into consideration the appropriateness of the fair value model and underlying assumptions used and concluded the estimates where appropriate.\n/s/ Pannell Kerr Forster of Texas, P.C.\nWe served as the Company\u2019s auditor since November 2019.\nFirm Id : 342\nHouston, Texas\nDecember 29, 2022\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years ended\n\n\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment of Oil and Natural Gas Properties",
+     "",
+     "6,893,226",
+     "",
+     "",
+     "396,273",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "1,463,538",
+     "",
+     "",
+     "1,505,270",
+     ""
+    ],
+    [
+     "Net Loss from Operations",
+     "",
+     "(8,356,764)",
+     "",
+     "",
+     "(1,901,543)",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on Disposal of Property and Equipment",
+     "",
+     "15,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(512,297)",
+     "",
+     "",
+     "(553,997)",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,085",
+     ""
+    ],
+    [
+     "Gain/(Loss) on Debt Extinguishment",
+     "",
+     "(85,127)",
+     "",
+     "",
+     "405,502",
+     ""
+    ],
+    [
+     "Gain/(Loss) on Derivative Financial Instrument",
+     "",
+     "242,434",
+     "",
+     "",
+     "(177,366)",
+     ""
+    ],
+    [
+     "Net Loss Before Income Taxes",
+     "",
+     "(8,696,754)",
+     "",
+     "",
+     "(2,226,319)",
+     ""
+    ],
+    [
+     "Income Taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(8,696,754)",
+     "",
+     "$",
+     "(2,226,319)",
+     ""
+    ],
+    [
+     "Loss Per Share \u2013 Basic and Diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding \u2013 Basic and Diluted",
+     "",
+     "1,268,240,346",
+     "",
+     "",
+     "1,267,808,839",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended\n\n\n\nSeptember 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY (Deficit)\nFor the Years Ended September 30, 2022 and 2021",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Shares",
+     "",
+     "Common Amount",
+     "",
+     "Additional Paid-In Capital Shares to Be Issued",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Net Stockholders\u2019 Equity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2020",
+     "",
+     "1,250,740,346",
+     "$",
+     "1,250,740",
+     "$",
+     "105,000",
+     "",
+     "$",
+     "58,728,308",
+     "$",
+     "(57,981,672)",
+     "",
+     "$",
+     "2,102,376",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "96,875",
+     "",
+     "\u2014",
+     "",
+     "",
+     "96,875",
+     ""
+    ],
+    [
+     "Common stock issued to extinguish accrued interest",
+     "",
+     "17,500,000",
+     "",
+     "17,500",
+     "",
+     "(105,000)",
+     "",
+     "",
+     "87,500",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrants issued for debt extension",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "86,902",
+     "",
+     "\u2014",
+     "",
+     "",
+     "86,902",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(2,226,319)",
+     "",
+     "",
+     "(2,226,319)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2021",
+     "",
+     "1,268,240,346",
+     "$",
+     "1,268,240",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "58,999,585",
+     "$",
+     "(60,207,991)",
+     "",
+     "$",
+     "59,834",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "31,775",
+     "",
+     "\u2014",
+     "",
+     "",
+     "31,775",
+     ""
+    ],
+    [
+     "Extension of Warrants in Conjunction with Extension of Debt Maturity",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "85,127",
+     "",
+     "\u2014",
+     "",
+     "",
+     "85,127",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(8,696,754)",
+     "",
+     "",
+     "(8,696,754)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2022",
+     "",
+     "1,268,240,346",
+     "$",
+     "1,268,240",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "59,116,487",
+     "$",
+     "(68,904,745)",
+     "",
+     "$",
+     "(8,520,018)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 900,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY (Deficit)\nFor the Years Ended September 30, 2022 and 2021",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(8,696,754)",
+     "",
+     "$",
+     "(2,226,319)",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Loss to Cash Used in Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment of Oil and Natural Gas Properties",
+     "",
+     "6,893,226",
+     "",
+     "",
+     "396,273",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "996",
+     "",
+     "",
+     "6,667",
+     ""
+    ],
+    [
+     "Debt Discount Amortization",
+     "",
+     "50,337",
+     "",
+     "",
+     "91,369",
+     ""
+    ],
+    [
+     "Loss on Warrant Extension to Extend Debt Maturity",
+     "",
+     "85,127",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss (Gain) on Debt Extinguishment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(405,502)",
+     ""
+    ],
+    [
+     "Stock Based Compensation",
+     "",
+     "31,775",
+     "",
+     "",
+     "96,875",
+     ""
+    ],
+    [
+     "(Gain) on Disposal of Property and Equipment",
+     "",
+     "(15,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Gain) Loss on Derivative Financial Instruments",
+     "",
+     "(242,434)",
+     "",
+     "",
+     "177,366",
+     ""
+    ],
+    [
+     "Changes in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Accounts Receivable",
+     "",
+     "(12,925)",
+     "",
+     "",
+     "37,233",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Prepaid Expenses and Other Current Assets",
+     "",
+     "(3,392)",
+     "",
+     "",
+     "29,732",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Accounts Payable",
+     "",
+     "50,619",
+     "",
+     "",
+     "(206,856)",
+     ""
+    ],
+    [
+     "Decrease in Related Party Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(13,516)",
+     ""
+    ],
+    [
+     "Increase in Accrued Interest Payable",
+     "",
+     "461,960",
+     "",
+     "",
+     "462,203",
+     ""
+    ],
+    [
+     "Decrease in Deferred Credit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,307)",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(1,396,465)",
+     "",
+     "",
+     "(1,561,782)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Disposal of Property and Equipment",
+     "",
+     "15,000",
+     "",
+     "",
+     "133,108",
+     ""
+    ],
+    [
+     "Refund of Security Deposit",
+     "",
+     "24,785",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Insurance Proceeds Received Related to Oil and Natural Gas Properties",
+     "",
+     "\u2014",
+     "",
+     "",
+     "223,650",
+     ""
+    ],
+    [
+     "Investments in Oil and Natural Gas Properties",
+     "",
+     "(25,461)",
+     "",
+     "",
+     "(145,180)",
+     ""
+    ],
+    [
+     "Purchases of Property and Equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,165)",
+     ""
+    ],
+    [
+     "Net Cash Provided by Investing Activities",
+     "",
+     "14,324",
+     "",
+     "",
+     "209,413",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments on Notes Payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(320,527)",
+     ""
+    ],
+    [
+     "Net Cash Used in Financing Activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(320,527)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Decrease in Cash",
+     "",
+     "(1,382,141)",
+     "",
+     "",
+     "(1,672,896)",
+     ""
+    ],
+    [
+     "Beginning Cash Balance",
+     "",
+     "1,517,522",
+     "",
+     "",
+     "3,190,418",
+     ""
+    ],
+    [
+     "Ending Cash Balance",
+     "$",
+     "135,381",
+     "",
+     "$",
+     "1,517,522",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Schedule of Cash Flow Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Interest, Net of Capitalized Amounts",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "424",
+     ""
+    ],
+    [
+     "Non-Cash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock Issued to Extinguish Accrued Interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,500",
+     ""
+    ],
+    [
+     "Warrants Issued to extend maturity of debt instrument",
+     "",
+     "\u2014",
+     "",
+     "",
+     "86,902",
+     ""
+    ],
+    [
+     "Reduction in Derivative Liability due to Loan Payment in Full",
+     "",
+     "\u2014",
+     "",
+     "",
+     "46,621",
+     ""
+    ],
+    [
+     "Accrued PPP Loan Interest Forgiven",
+     "",
+     "\u2014",
+     "",
+     "",
+     "662",
+     ""
+    ],
+    [
+     "Purchase of Capital Expenditures",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Included in Accounts Payable",
+     "",
+     "31,960",
+     "",
+     "",
+     "2,960",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 925,
+    "end_line": 985
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part to these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part to these financial statements.\nNotes to the Financial Statements\nNOTE 1 \u2013 ORGANIZATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\n(a) Organization\nGulfSlope Energy, Inc. (the \u201cCompany\u201d or \u201cGulfSlope\u201d) is an independent oil and natural gas exploration company whose interests are concentrated in the United States Gulf of Mexico federal waters offshore Louisiana. The Company has leased one federal Outer Continental Shelf block (referred to as \u201cprospect,\u201d \u201cportfolio\u201d or \u201cleases\u201d) and licensed three-dimensional (3-D) seismic data in its area of concentration.\n(b) Basis of Presentation\nThe accompanying financial statements have been prepared in accordance with accounting principles generally accepted in the United States (\u201cGAAP\u201d) and the instructions to Form 10-K and Regulation S-X published by the US Securities and Exchange Commission (the \u201cSEC\u201d). The accompanying financial statements include the accounts of the Company.\n(c) Cash\nThe Company considers all short-term highly liquid investments with an original maturity at the date of purchase of three months or less to be cash equivalents. There were no cash equivalents at September 30, 2022 and 2021, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 988,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Office equipment and computers",
+     "$",
+     "68,565",
+     "",
+     "$",
+     "135,254",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,280",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,680",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "68,565",
+     "",
+     "",
+     "159,214",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(67,716)",
+     "",
+     "",
+     "(157,369)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "$",
+     "849",
+     "",
+     "$",
+     "1,845",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1089,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "As of September 30, 2022, the Company\u2019s oil and natural gas properties consisted of unproved properties, capitalized exploration costs and no proved reserves. During the years ended September 30, 2022, and 2021, the Company capitalized approximately $0.03 million and $0.15 million to oil and gas properties. Nil and approximately $0.01 million of general and administrative expenses, respectively, were capitalized to oil and natural gas properties for the years ended September 30, 2022, and 2021.\nDuring the twelve months ended September 30, 2022, the Company incurred impairment charges of approximately $6.9 million, resulting from the relinquishment or expiration of oil and natural gas leases and the impairment of the Tau well costs. For the twelve months ended September 30, 2021, impairment charges were approximately $0.4 million resulting from the relinquishment or expiration of oil and natural gas leases.\nNOTE 4 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consist of the following at September 30, 2022 and 2021:",
+   "prose_after": "Depreciation is computed on a straight-line basis over the estimated useful lives of the assets, which were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Life"
+    ],
+    [
+     "Office equipment and computers",
+     "3 years"
+    ],
+    [
+     "Furniture and fixtures",
+     "5 years"
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of 5 years or related lease term"
+    ]
+   ],
+   "caption_stack": [
+    "Life"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1114
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Depreciation is computed on a straight-line basis over the estimated useful lives of the assets, which were as follows:",
+   "prose_after": "Depreciation expense was $996 and $6,667 for the years ended September 30, 2022, and 2021, respectively.\nNOTE 5 \u2013 INCOME TAXES\nThe provision for income taxes consists of the following for the years ended September 30, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "FEDERAL",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "STATE",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "TOTAL PROVISION",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1121,
+    "end_line": 1134
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "Depreciation expense was $996 and $6,667 for the years ended September 30, 2022, and 2021, respectively.\nNOTE 5 \u2013 INCOME TAXES\nThe provision for income taxes consists of the following for the years ended September 30, 2022 and 2021:",
+   "prose_after": "The difference between the actual income tax provision versus tax computed at the statutory rate is as follows for the years ended September 30, 2022, and 2021, respectively:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Expected provision (based on statutory rate of 21%)",
+     "$",
+     "(1,826,318)",
+     "",
+     "$",
+     "(467,527)",
+     ""
+    ],
+    [
+     "Effect of:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in valuation allowance",
+     "",
+     "1,913,189",
+     "",
+     "",
+     "(661,812)",
+     ""
+    ],
+    [
+     "Non-Allowable (income) expenses",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Prior year true-ups to return and other, net",
+     "",
+     "(86,871)",
+     "",
+     "",
+     "1,129,339",
+     ""
+    ],
+    [
+     "Total actual provision",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The difference between the actual income tax provision versus tax computed at the statutory rate is as follows for the years ended September 30, 2022, and 2021, respectively:",
+   "prose_after": "The Company does not have any material uncertain tax positions. The Company\u2019s policy is to recognize interest and penalties accrued related to unrecognized tax benefits as a component of income tax expense (benefit). For the years ended September 30, 2022, and 2021, the Company did not recognize any interest or penalties, nor did we have any interest or penalties accrued as of September 30, 2022 and 2021 relating to unrecognized benefits. Deferred income tax assets and liabilities at September 30, 2022 and 2021, respectively, consist of the following:\nSchedule of deferred income tax assets and liabilities",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DEFERRED TAX ASSETS (LIABILITIES)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating losses",
+     "$",
+     "14,224,953",
+     "",
+     "$",
+     "13,028,326",
+     ""
+    ],
+    [
+     "Exploration costs",
+     "",
+     "(858,133)",
+     "",
+     "",
+     "(1,299,327)",
+     ""
+    ],
+    [
+     "Oil and natural gas leases",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,337,094",
+     ""
+    ],
+    [
+     "IDC",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,559,306)",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "693,218",
+     "",
+     "",
+     "686,545",
+     ""
+    ],
+    [
+     "Accrued interest and expenses not paid",
+     "",
+     "729,098",
+     "",
+     "",
+     "632,087",
+     ""
+    ],
+    [
+     "Derivative financial instrument",
+     "",
+     "201,432",
+     "",
+     "",
+     "252,348",
+     ""
+    ],
+    [
+     "Differences in book/tax depreciation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(387)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "14,990,568",
+     "",
+     "",
+     "13,077,380",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(14,990,568)",
+     "",
+     "",
+     "(13,077,380)",
+     ""
+    ],
+    [
+     "NET DEFERRED TAXES",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1155,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company does not have any material uncertain tax positions. The Company\u2019s policy is to recognize interest and penalties accrued related to unrecognized tax benefits as a component of income tax expense (benefit). For the years ended September 30, 2022, and 2021, the Company did not recognize any interest or penalties, nor did we have any interest or penalties accrued as of September 30, 2022 and 2021 relating to unrecognized benefits. Deferred income tax assets and liabilities at September 30, 2022 and 2021, respectively, consist of the following:\nSchedule of deferred income tax assets and liabilities",
+   "prose_after": "The Company\u2019s valuation allowance increased $1,913,189 during the year ended September 30, 2022 and decreased $661,812 during the year ended September 30, 2021.\nAt September 30, 2022, the Company had approximately $67.7 million of net operating losses (\u201cNOL\u201d), approximately $0.1 million of which will expire from 2024 to 2031, approximately $33.2 million of which will expire from 2032 to 2038, and approximately $34.4 million of which can be carried forward indefinitely. $33.4 million of the Company\u2019s NOLs are allowable as a deduction against 100 percent of future taxable income since they were generated prior to the effective date of limitations imposed by the Tax Cut and Jobs Act (TCJA) of 2017 and Coronavirus Aid, Relief, and Economic Security Act (CARES) of 2020. $34.4 million of the Company\u2019s NOLs are allowable as a deduction against 80 percent of future taxable income.\nThe tax years ended September 30, 2019 through 2022 are open for examination for federal income tax purposes and by other major taxing jurisdictions to which we are subject.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes",
+     "",
+     "Discount",
+     "",
+     "Notes, Net of Discount",
+     "",
+     "Notes",
+     "",
+     "Discount",
+     "",
+     "",
+     "Notes Net of Discount",
+     ""
+    ],
+    [
+     "Bridge Financing Notes",
+     "$",
+     "227,000",
+     "$",
+     "\u2014",
+     "$",
+     "227,000",
+     "$",
+     "227,000",
+     "$",
+     "(50,337)",
+     "",
+     "$",
+     "176,663"
+    ],
+    [
+     "Total",
+     "$",
+     "227,000",
+     "$",
+     "\u2014",
+     "$",
+     "227,000",
+     "$",
+     "227,000",
+     "$",
+     "(50,337)",
+     "",
+     "$",
+     "176,663"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1193,
+    "end_line": 1203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "During April 2013 through September 2017, the Company entered into convertible promissory notes whereby it borrowed a total of $8,675,500 from John Seitz, the chief executive officer (\u201cCEO\u201d). The notes are due on demand, bear interest at the rate of 5% per annum, and $5,300,000 of the notes are convertible into shares of common stock at a conversion price equal to $0.12 per share of common stock (the then offering price of shares of common stock to unaffiliated investors). As of September 30, 2022, and 2021, the total amount owed to John Seitz is $8,675,500. This amount is included in loans from related parties within the condensed balance sheets. There was approximately $3.4 million and $2.96 million, respectively, of unpaid interest associated with these loans included in accrued interest payable within the balance sheet as of September 30, 2022, and 2021.\nOn November 15, 2016, a family member of the CEO entered into a $50,000 convertible promissory note with associated warrants under the same terms received by other investors (see Note 7).\nDomenica Seitz CPA, who is related to the CEO, has provided accounting services to the Company, as a consultant and beginning October 2020 as an employee. During the years ended September 30, 2022 and 2021, the services provided were valued at approximately $67,000 and $75,000, respectively. The amount owed to this related party totals approximately $346,000 as of September 30, 2022 and 2021, respectively. The Company has accrued these amounts, and they have been reflected in related party payable in the September 30, 2022, and 2021 financial statements.\nNOTE 7 \u2013 CONVERTIBLE NOTES PAYABLE\nThe Company\u2019s convertible promissory notes consisted of the following as of September 30, 2022 and 2021.",
+   "prose_after": "Bridge Financing Notes\nBetween June and November 2016, the Company issued eleven convertible promissory notes (\u201cBridge Financing Notes\u201d) with associated warrants in a private placement to accredited investors for total gross proceeds of $837,000, including $222,000 from related parties. These notes had a maturity of one year (which has been extended each year at maturity, with current maturity of April 30, 2024), an annual interest rate of 8% and can be converted at the option of the holder at a conversion price of $0.025 per share. In addition, the convertible notes will automatically convert if a qualified equity financing of at least $3.0 million occurs before maturity and such mandatory conversion price will equal the effective price per share paid in the qualified equity financing. The remaining note balance as of September 30, 2022 and 2021 was $277,000, including $50,000 from related parties, with remaining unamortized debt discounts of nil and approximately $50,000, respectively. For the year ended September 30, 2022, the two-year loan and warrant extension resulted in loss on extinguishment of debt of approximately $85,000. For the years ended September 30, 2022 and 2021, debt discount amortization was approximately $50,000 and $48,000, respectively. Accrued interest as of September 30, 2022, and 2021 related to these notes was approximately $138,000 and $116,000, respectively. As noted above, the maturity date related to these notes was extended to April 30, 2024. In consideration for the extension of the notes, the Company extended the term of the related warrants until April 30, 2024 and recognized approximately $85,000 of loss on extinguishment of debt when the incremental fair value pre modification was compared to post modification and the incremental value of the modified warrants was over 10% of the old note and as such the warrants were expensed immediately.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "Unadjusted quoted prices in active markets that are accessible at the measurement date for identical, unrestricted assets or liabilities. GulfSlope considers active markets as those in which transactions for the assets or liabilities occur in sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ],
+    [
+     "Level 2:",
+     "Quoted prices in markets that are not active, or inputs which are observable, either directly or indirectly, for substantially the full term of the asset or liability. This category includes those derivative instruments that GulfSlope values using observable market data. Substantially all of these inputs are observable in the marketplace throughout the term of the derivative instrument, can be derived from observable data, or are supported by observable levels at which transactions are executed in the marketplace. Instruments in this category include non-exchange traded derivative financial instruments as well as long-term incentive plan liabilities calculated using the Black-Scholes model to estimate the fair value as of the measurement date."
+    ],
+    [
+     "Level 3:",
+     "Measured based on prices or valuation models that require inputs that are both significant to the fair value measurement and less observable from objective sources (i.e. supported by little or no market activity)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1217,
+    "end_line": 1232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Fair Value Measurement"
+    }
+   },
+   "prose_before": "Between June and November 2016, the Company issued eleven convertible promissory notes (\u201cBridge Financing Notes\u201d) with associated warrants in a private placement to accredited investors for total gross proceeds of $837,000, including $222,000 from related parties. These notes had a maturity of one year (which has been extended each year at maturity, with current maturity of April 30, 2024), an annual interest rate of 8% and can be converted at the option of the holder at a conversion price of $0.025 per share. In addition, the convertible notes will automatically convert if a qualified equity financing of at least $3.0 million occurs before maturity and such mandatory conversion price will equal the effective price per share paid in the qualified equity financing. The remaining note balance as of September 30, 2022 and 2021 was $277,000, including $50,000 from related parties, with remaining unamortized debt discounts of nil and approximately $50,000, respectively. For the year ended September 30, 2022, the two-year loan and warrant extension resulted in loss on extinguishment of debt of approximately $85,000. For the years ended September 30, 2022 and 2021, debt discount amortization was approximately $50,000 and $48,000, respectively. Accrued interest as of September 30, 2022, and 2021 related to these notes was approximately $138,000 and $116,000, respectively. As noted above, the maturity date related to these notes was extended to April 30, 2024. In consideration for the extension of the notes, the Company extended the term of the related warrants until April 30, 2024 and recognized approximately $85,000 of loss on extinguishment of debt when the incremental fair value pre modification was compared to post modification and the incremental value of the modified warrants was over 10% of the old note and as such the warrants were expensed immediately.\nJune 2019 Convertible Debenture\nIn November 2020, the Company made a $300,000 payment in full to satisfy the remaining balance of the convertible debenture and a gain on extinguishment of debt was recognized in the amount of $35,678. Debt discount amortization for the year ended September 30, 2021 was approximately $44,000.\nNOTE 8 \u2013 Fair Value Measurement\nFair value is defined as the price that would be received upon the sale of an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. Fair value measurements are classified and disclosed in one of the following categories:",
+   "prose_after": "As required by ASC 820-10, financial assets and liabilities are classified based on the lowest level of input that is significant to the fair value measurement. The Company\u2019s assessment of the significance of a particular input to the fair value measurement requires judgement and may affect the valuation of the fair value of assets and liabilities and their placement within the fair value hierarchy levels.\nFair Value on a Recurring Basis\nThe following table sets forth by level within the fair value hierarchy the Company\u2019s derivative financial instruments that were accounted for at fair value on a recurring basis as of September 30, 2022, and 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quoted Prices in Active Markets for Identical Assets",
+     "",
+     "Significant Other Observable Inputs",
+     "",
+     "",
+     "Significant Unobservable Inputs",
+     "",
+     "Total Carrying",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "",
+     "(Level 3)",
+     "",
+     "Value as of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative Financial Instrument at 9-30-21",
+     "$",
+     "\u2014",
+     "$",
+     "(1,201,656)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(1,201,656)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative Financial Instrument at 9-30-22",
+     "$",
+     "\u2014",
+     "$",
+     "(959,222)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(959,222)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1239,
+    "end_line": 1250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Fair Value Measurement"
+    }
+   },
+   "prose_before": "As required by ASC 820-10, financial assets and liabilities are classified based on the lowest level of input that is significant to the fair value measurement. The Company\u2019s assessment of the significance of a particular input to the fair value measurement requires judgement and may affect the valuation of the fair value of assets and liabilities and their placement within the fair value hierarchy levels.\nFair Value on a Recurring Basis\nThe following table sets forth by level within the fair value hierarchy the Company\u2019s derivative financial instruments that were accounted for at fair value on a recurring basis as of September 30, 2022, and 2021:",
+   "prose_after": "The change in derivative financial instruments for the twelve months ended September 30, 2022 and 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "September 30, 2020 balance",
+     "$",
+     "(1,070,551)",
+     ""
+    ],
+    [
+     "Derivative instruments converted/extinguished",
+     "",
+     "46,261",
+     ""
+    ],
+    [
+     "Change in fair value",
+     "",
+     "(177,366)",
+     ""
+    ],
+    [
+     "September 30, 2021 balance",
+     "",
+     "(1,201,656)",
+     ""
+    ],
+    [
+     "Derivative instruments converted/extinguished",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value",
+     "",
+     "242,434",
+     ""
+    ],
+    [
+     "September 30, 2022 balance",
+     "$",
+     "(959,222)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1253,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Fair Value Measurement"
+    }
+   },
+   "prose_before": "The change in derivative financial instruments for the twelve months ended September 30, 2022 and 2021 is as follows:",
+   "prose_after": "Non-recurring fair value assessments include impaired oil and natural gas property assessments and stock-based compensation. During the years ended September 30, 2022 and 2021, the Company recorded an impairment charge of approximately $6.9 million and $0.4 million, respectively and approximately $32,000 and $97,000 of stock-based compensation expense, respectively.\nNOTE 9 \u2013 COMMON STOCK/PAID IN CAPITAL\nYear Ended September 30, 2021\nIn October 2020, the Company issued approximately 17.5 million common shares with a fair value of approximately $0.1 million related to the extinguishment of the Delek Note. Such shares were reflected on the September 30, 2020 balance sheet as additional paid in capital \u2013 shares to be issued.\nWarrants\nThe warrants related to Bridge Financing Notes totaling 12,465,001 were extended during the year ended September 30, 2021 to mature on April 30, 2022 and at maturity during the year ended September 30, 2022 were extended again to mature on April 2024.\nThe following table summarizes the Company\u2019s warrant activity during the twelve months ended September 30, 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Warrants",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (In years)",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2020",
+     "",
+     "78,005,281",
+     "$",
+     "0.04",
+     "",
+     "2.75"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Expired",
+     "",
+     "2,027,780",
+     "$",
+     "0.15",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2021",
+     "",
+     "75,977,500",
+     "$",
+     "0.04",
+     "",
+     "1.96"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Expired",
+     "",
+     "11,312,500",
+     "",
+     "0.09",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2022",
+     "",
+     "64,665,000",
+     "$",
+     "0.03",
+     "",
+     "1.64"
+    ],
+    [
+     "Exercisable at September 30, 2022",
+     "",
+     "64,665,000",
+     "$",
+     "0.03",
+     "",
+     "1.64"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1286,
+    "end_line": 1306
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 COMMON STOCK/PAID IN CAPITAL"
+    }
+   },
+   "prose_before": "Non-recurring fair value assessments include impaired oil and natural gas property assessments and stock-based compensation. During the years ended September 30, 2022 and 2021, the Company recorded an impairment charge of approximately $6.9 million and $0.4 million, respectively and approximately $32,000 and $97,000 of stock-based compensation expense, respectively.\nNOTE 9 \u2013 COMMON STOCK/PAID IN CAPITAL\nYear Ended September 30, 2021\nIn October 2020, the Company issued approximately 17.5 million common shares with a fair value of approximately $0.1 million related to the extinguishment of the Delek Note. Such shares were reflected on the September 30, 2020 balance sheet as additional paid in capital \u2013 shares to be issued.\nWarrants\nThe warrants related to Bridge Financing Notes totaling 12,465,001 were extended during the year ended September 30, 2021 to mature on April 30, 2022 and at maturity during the year ended September 30, 2022 were extended again to mature on April 2024.\nThe following table summarizes the Company\u2019s warrant activity during the twelve months ended September 30, 2022 and 2021:",
+   "prose_after": "A summary of all outstanding warrants at September 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date Issued",
+     "Exercise Price",
+     "",
+     "",
+     "Number Outstanding",
+     "",
+     "",
+     "Remaining Contractual Life (Years)",
+     "",
+     ""
+    ],
+    [
+     "Various 2016",
+     "$",
+     "0.03",
+     "",
+     "",
+     "11,541,667",
+     "",
+     "",
+     "1.56",
+     ""
+    ],
+    [
+     "Various 2018",
+     "$",
+     "0.10",
+     "",
+     "",
+     "923,333",
+     "",
+     "",
+     "1.56",
+     ""
+    ],
+    [
+     "October 2017",
+     "$",
+     "0.10",
+     "",
+     "",
+     "1,100,000",
+     "",
+     "",
+     "0.04",
+     ""
+    ],
+    [
+     "December 2017",
+     "$",
+     "0.10",
+     "",
+     "",
+     "1,100,000",
+     "",
+     "",
+     "0.21",
+     ""
+    ],
+    [
+     "June 2019",
+     "$",
+     "0.04",
+     "",
+     "",
+     "50,000,000",
+     "",
+     "",
+     "1.73",
+     ""
+    ],
+    [
+     "",
+     "",
+     "TOTAL",
+     "",
+     "",
+     "64,665,000",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 COMMON STOCK/PAID IN CAPITAL"
+    }
+   },
+   "prose_before": "A summary of all outstanding warrants at September 30, 2022:",
+   "prose_after": "NOTE 10 \u2013 STOCK-BASED COMPENSATION\nStock-based compensation cost is measured at the grant date, based on the estimated fair value of the award using the Black Scholes option pricing model, and is recognized over the vesting period. The Company recognized approximately $32,000 and $97,000 in stock-based compensation expense for the years ended September 30, 2022, and 2021, respectively. None of these costs were capitalized to unproved properties for the years ended September 30, 2022 and 2021, respectively. During the years ended September 30, 2022, and 2021, nil and 41.5 million options were granted at an exercise price of $0.004 with a vesting schedule of 50% six months and 50% one year after grant. The fair value of the options computed using Black Scholes was approximately $129,000.\nThe following table summarizes the Company\u2019s stock option activity during the year ended September 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted\n\n\n\nAverage Exercise Price",
+     "",
+     "Weighted Average\n\n\n\nRemaining Contractual Term (In years)",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2021",
+     "",
+     "146,000,000",
+     "$",
+     "0.0444",
+     "",
+     "3.8"
+    ],
+    [
+     "Vested and expected to vest",
+     "",
+     "146,000,000",
+     "$",
+     "0.0444",
+     "",
+     "3.8"
+    ],
+    [
+     "Exercisable at September 30, 2022",
+     "",
+     "146,000,000",
+     "$",
+     "0.0444",
+     "",
+     "2.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1333,
+    "end_line": 1347
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "NOTE 10 \u2013 STOCK-BASED COMPENSATION\nStock-based compensation cost is measured at the grant date, based on the estimated fair value of the award using the Black Scholes option pricing model, and is recognized over the vesting period. The Company recognized approximately $32,000 and $97,000 in stock-based compensation expense for the years ended September 30, 2022, and 2021, respectively. None of these costs were capitalized to unproved properties for the years ended September 30, 2022 and 2021, respectively. During the years ended September 30, 2022, and 2021, nil and 41.5 million options were granted at an exercise price of $0.004 with a vesting schedule of 50% six months and 50% one year after grant. The fair value of the options computed using Black Scholes was approximately $129,000.\nThe following table summarizes the Company\u2019s stock option activity during the year ended September 30, 2022:",
+   "prose_after": "As of September 30, 2022, there was no unrecognized stock-based compensation expense.\nNOTE 11 \u2013 COMMITMENTS AND CONTINGENCIES\nFrom time to time, the Company may become involved in litigation relating to claims arising out of its operations in the normal course of business. No legal proceedings, government actions, administrative actions, investigations or claims are currently pending against us or involve the Company.\nIn July 2018, the Company entered into a 39 month lease for approximately 5,000 square feet of office space in 4 Houston Center in downtown Houston. Annual base rent was approximately $94,000 for the first 18 months, increasing to approximately $97,000 and $99,000 respectively during the remaining term of the lease. The lease term ended on September 30, 2021, and the Company entered into a twelve-month lease that could be terminated with at least 30 days prior written notice. The lease was terminated in August 2022 and the company made alternative arrangements and entered into a new month to month lease.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title"
+    ],
+    [
+     "John N. Seitz",
+     "70",
+     "Chairman, Chief Executive Officer"
+    ],
+    [
+     "John H. Malanga",
+     "55",
+     "Chief Financial Officer"
+    ],
+    [
+     "Charles G. Hughes",
+     "65",
+     "Vice President, Land"
+    ],
+    [
+     "Richard S. Langdon",
+     "72",
+     "Director"
+    ],
+    [
+     "Paul L. Morris",
+     "80",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1400,
+    "end_line": 1409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our management, with the participation of our Chief Executive Officer and our Chief Financial Officer evaluated the effectiveness of our internal control over financial reporting as of September 30, 2022. In making this assessment, management used the criteria established by the Committee of Sponsoring Organizations of the Treadway Commission (\u201cCOSO\u201d) in Internal Control \u2013 Integrated Framework (2013 Framework). Based on this evaluation, our management concluded that, as of September 30, 2022, our internal control over financial reporting was effective.\nThis Annual Report does not include an attestation report of our registered public accounting firm regarding our internal control over financial reporting due to an exemption established by the SEC for smaller reporting companies.\nChanges in Internal Control Over Financial Reporting\nThere were no changes in our internal controls over financial reporting identified in management\u2019s evaluation pursuant to Rules 13a-15(d) or 15d-15(d) of the Exchange Act during the fourth quarter of 2022 that materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNot Applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nIdentification of Directors and Executive Officers\nOur executive officers and directors and their respective ages, positions and biographical information are set forth below.",
+   "prose_after": "John\nN. Seitz. Mr. Seitz has served as the Company\u2019s chief executive officer and chairman of the board and director since May 31, 2013 and served as a consultant to the Company from March 2013 through May 2013. Prior to joining the Company, Mr. Seitz held positions of increasing responsibility at Anadarko Petroleum Corporation (NYSE: APC), serving most recently as a director and as president and chief executive officer until 2003. Mr. Seitz serves on the board of directors of Sheridan Production Partners (private oil & gas producer, U.S. onshore). Mr. Seitz is a Certified Professional Geological Scientist from the American Institute of Professional Geologists and a licensed professional geoscientist with the State of Texas. Mr. Seitz has also served as a trustee for the American Geological Institute Foundation. In 2000, the Houston Geological Society honored Mr. Seitz as a \u201cLegend in Wildcatting,\u201d and he is a member of the All American Wildcatters. Mr. Seitz holds a Bachelor of Science degree in Geology from the University of Pittsburgh, a Master of Science degree in Geology from Rensselaer Polytechnic Institute and has completed the Advanced Management Program at the Wharton School.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "Stock Option Awards",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "John N. Seitz(1)",
+     "",
+     "2022",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "CEO",
+     "",
+     "2021",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John H. Malanga",
+     "",
+     "2022",
+     "",
+     "126,160",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "126,160"
+    ],
+    [
+     "CFO",
+     "",
+     "2021",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "34,100",
+     "",
+     "\u2014",
+     "",
+     "184,100"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1451,
+    "end_line": 1463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We have adopted a written code of ethics and whistleblower policy (the \u201cCode of Ethics\u201d) that applies to our principal executive officer, principal financial officer, principal accounting officer or controller, and persons performing similar functions. We believe that the Code of Ethics is reasonably designed to deter wrongdoing and promote honest and ethical conduct; provide full, fair, accurate, timely and understandable disclosure in public reports; comply with applicable laws; ensure prompt internal reporting of code violations; and provide accountability for adherence to the code. A copy of our Code of Ethics was previously filed as an exhibit to our Annual Report on Form 10-K for the fiscal year ended 2012 and can be found at www.sec.gov. Our Code of Ethics can also be found on our website at www.gulfslope.com. A copy of the Code of Ethics will be provided to any person, without charge, upon request to the Secretary at 1000 Main St., Suite 2300, Houston, Texas 77002.\nInvolvement in Certain Legal Proceedings\nThere are currently no material pending legal proceedings to which the Company is a party or of which any of its property is the subject, in which any of the above referenced directors or officers is a party adverse to the Company or has a material interest adverse to the Company. Furthermore, during the past ten years, none of the Company\u2019s officers or directors described above were involved in any legal proceedings that are material to an evaluation of the ability or integrity of such directors and officers.\nITEM 11. EXECUTIVE COMPENSATION\nCompensation to Officers of the Company\nThe following tables contain compensation data for our named executive officers for the fiscal years ended September 30, 2022, and 2021:",
+   "prose_after": "(1) Mr. Seitz is not currently receiving or accruing any compensation as of the date of this Annual Report.\nEmployment and Consulting Arrangements\nNot applicable.\nCompensation Policies and Practices as they Relate to the Company\u2019s Risk Management\nNot applicable.\nDirector Compensation\nIn January of 2017, the Company\u2019s nonemployee directors were each awarded 2,500,000 stock options for the Company\u2019s stock at an exercise price of $0.0278 per share, 50% vested in January 2017 and 50% vested in January of 2018. The stock options will expire in January 2024. In June of 2018, the Company\u2019s nonemployee directors were each awarded 4,500,000 stock options for the Company\u2019s stock at an exercise price of $0.075 per share, 1.5 million vested in June 2018, and 1.5 million vested in June 2019 and 1.5 million vested in June 2020. The stock options will expire in December 2025. In January 2021, the Company\u2019s nonemployee directors were each awarded 5,000,000 stock options for the Company\u2019s stock at an exercise price of $0.004 per share, 2.5 million vested in July 2021, and 2.5 million vested in January 2022. The stock options will expire in December 2025.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1470,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Named Executives Officers and Directors",
+     "",
+     "Beneficially Owned\n\n\n\nShares of Common Stock",
+     "",
+     "",
+     "Percentage of Beneficially\n\n\n\nOwned Common Stock",
+     "",
+     ""
+    ],
+    [
+     "John N. Seitz (1)",
+     "",
+     "",
+     "261,955,676",
+     "",
+     "",
+     "20.7",
+     "%"
+    ],
+    [
+     "John H. Malanga (3)",
+     "",
+     "",
+     "46,666,667",
+     "",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Richard S. Langdon (4)",
+     "",
+     "",
+     "12,916,667",
+     "",
+     "",
+     "1.0",
+     "%"
+    ],
+    [
+     "Paul L. Morris (2) (4)",
+     "",
+     "",
+     "14,228,038",
+     "",
+     "",
+     "1.1",
+     "%"
+    ],
+    [
+     "All Executive Officers & Directors",
+     "",
+     "",
+     "333,767,048",
+     "",
+     "",
+     "26.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Greater than 5% Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Delek GOM Investments LLC",
+     "",
+     "",
+     "294,018,459",
+     "",
+     "",
+     "23.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1494,
+    "end_line": 1517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Unless otherwise stated, beneficial ownership has been determined in accordance with Rule 13d-3 under the Exchange Act. Under this rule, certain shares may be deemed to be beneficially owned by more than one person (if, for example, persons share the power to vote or the power to dispose of the shares). In addition, shares are deemed to be beneficially owned by a person if the person has the right to acquire shares (for example, upon exercise of an option or warrant) within 60 days of the date as of which the information is provided. In computing the percentage ownership of any person or group of persons, the number of shares beneficially owned by such person or group of persons is deemed to include the number of shares beneficially owned by such person or the members of such group by reason of such acquisition rights, and the total number of shares outstanding is also deemed to include such shares (but not shares subject to similar acquisition rights held by any other person or group) for purposes of that calculation. As a result, the percentage of outstanding shares of any person as shown in the following table does not necessarily reflect the person\u2019s actual voting power at any particular date. To our knowledge, except as indicated in the footnotes to this table and pursuant to applicable community property laws, the persons named in the table have sole voting and investment power with respect to all shares of common stock shown as beneficially owned by them. The address for each of the beneficial owners is the Company\u2019s address.",
+   "prose_after": "(1) Includes 44,166,667 shares of common stock underlying the convertible demand note in the principal amount of $5.3 million and 18,203,453 shares underlying the convertible accrued interest in the amount of $2,184,414.\n(2) Includes 61,371 shares of common stock held by the Morris Family Limited Partnership LP, a partnership of which an entity controlled by Mr. Morris is the general partner and 2,500,000 stock options awarded in January 2017, one-half vested in January of 2017 and one-half vested in January 2018. Includes 4,500,000 stock options awarded in June 2018, one-third vested in June of 2018, one-third vested in June 2019 and one-third vested in June 2020. Includes 5,000,000 stock options awarded in January 2021, one-half vested in July of 2021, one-half vested in January 2022.\n(3) Includes 15,000,000 stock options awarded in January 2017, one-half vested in January of 2017 and one-half vested in January 2018. Includes 18,000,000 stock options awarded in June 2018, one-third vested in June of 2018, one-third vested in June 2019 and one-third vested in June 2020. Includes 11,000,000 stock options awarded in January 2021, one-half vested in July of 2021, one-half vested in January 2022.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1470,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1520,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "94,206",
+     ""
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "70,145",
+     ""
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "15,275",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1541,
+    "end_line": 1554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "For purposes of determining director independence, we have applied the NYSE MKT standards for independence. The OTC Markets, on which shares of our common stock are quoted, does not have any director independence requirements. The NYSE MKT definition of independent director means a person other than an executive officer or employee of the Company or any other individual having a relationship which, in the opinion of the Board of Directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\nThe members of the Audit and Compliance Committee, the Compensation Committee, and the Corporate Governance and Nominating Committee are Messrs. Morris and Langdon, each, of whom, is independent.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nAudit Fees and Services\nFor the fiscal years ended September 30, 2022 and 2021 professional services were performed by Pannell Kerr Forster of Texas, P.C. The aggregate fees billed by PKF of Texas for the fiscal year ended September 30, 2022, were as follows:",
+   "prose_after": "(1) Audit services include fees for professional services rendered only for the audit of the Company\u2019s annual financial statements for the fiscal year ended September 30, 2021.\n(2) Audit-related services primarily include fees for assurance and related services by our principal accountants that are reasonably related to the performance of the review of our financial statements for the quarterly periods December 31, 2021, March 31, 2022 and June 30, 2022.\n(3) Tax services include fees for assistance with tax preparation and compliance during the year ended September 30, 2022.\nAudit Committee Pre-Approval Policies and Procedures\nThe Audit and Compliance Committee has adopted policies and procedures that will require the Company to obtain the Committee\u2019s pre-approval of all audit and permissible non-audit services to be provided by the Company\u2019s independent registered public accounting firm. The Committee pre-approved 100% of the non-audit services provided to the Company by PKF of Texas.\nPART IV",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1520,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1563,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page(s)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of September 30, 2022 and 2021",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years Ended September 30, 2022 and 2021",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended September 30, 2022 and 2021",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended September 30, 2022 and 2021",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "32 - 39"
+    ]
+   ],
+   "caption_stack": [
+    "Page(s)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1571,
+    "end_line": 1586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Audit services include fees for professional services rendered only for the audit of the Company\u2019s annual financial statements for the fiscal year ended September 30, 2021.\n(2) Audit-related services primarily include fees for assurance and related services by our principal accountants that are reasonably related to the performance of the review of our financial statements for the quarterly periods December 31, 2021, March 31, 2022 and June 30, 2022.\n(3) Tax services include fees for assistance with tax preparation and compliance during the year ended September 30, 2022.\nAudit Committee Pre-Approval Policies and Procedures\nThe Audit and Compliance Committee has adopted policies and procedures that will require the Company to obtain the Committee\u2019s pre-approval of all audit and permissible non-audit services to be provided by the Company\u2019s independent registered public accounting firm. The Committee pre-approved 100% of the non-audit services provided to the Company by PKF of Texas.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\n(a)\n(1) Financial Statements (included under Item 8):",
+   "prose_after": "(3) Exhibits. The following exhibits are filed as part of this Annual Report:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1563,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of GulfSlope Energy, Inc., dated effective September 30, 2022 incorporated by reference to Exhibit 3.1 of the Company\u2019s Form 8-K filed October 4, 2022"
+    ],
+    [
+     "3.2",
+     "Bylaws of GulfSlope Energy, Inc., incorporated by reference to Exhibit 3.2 of the Company\u2019s Form 10-Q for the quarter ended June 30, 2014"
+    ],
+    [
+     "4.1",
+     "Common Stock Specimen, incorporated by reference to Exhibit 4.1 of the Company\u2019s Form 10-K for the fiscal year ended September 30, 2012"
+    ],
+    [
+     "10.1(3)",
+     "Form of Restricted Stock Agreement, incorporated by reference to Exhibit 10.1 of the Company\u2019s Form 10-K for the fiscal year ended September 30, 2014"
+    ],
+    [
+     "10.2(3)",
+     "Form of Indemnification Agreement, incorporated by reference to Exhibit 10.1 of Form 8-K filed October 31, 2013"
+    ],
+    [
+     "10.3",
+     "Form of Convertible Promissory Note between the Company and John N. Seitz, incorporated by reference to Exhibit 10.4 of Form 8-K filed October 31, 2013"
+    ],
+    [
+     "10.5(3)",
+     "GulfSlope Energy, Inc. 2014 Omnibus Incentive Plan dated effective May 24, 2014, incorporated by reference to Exhibit 10.1 of Form 8-K filed May 30, 2014"
+    ],
+    [
+     "14.1",
+     "Code of Ethics, incorporated by reference to Exhibit 14.1 of the Company\u2019s Form 10-K for the fiscal year ended September 30, 2012"
+    ],
+    [
+     "23.1(1)",
+     "Consent of Independent Registered Public Accounting Firm"
+    ],
+    [
+     "31.1(1)",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2(1)",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1(1)",
+     "Certification of Principal Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2(1)",
+     "Certification of Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document   Documents"
+    ],
+    [
+     "101.SCH",
+     "XBRL Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1589,
+    "end_line": 1614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) Exhibits. The following exhibits are filed as part of this Annual Report:",
+   "prose_after": "(1) Filed herewith.\n(2) Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files on Exhibit 101 hereto are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities and Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections.\n(3) Management contract or compensatory plan or arrangement required to be filed as an exhibit hereto pursuant to Item 15(b).\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1563,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "GulfSlope Energy, Inc. (Registrant)",
+     "",
+     ""
+    ],
+    [
+     "Date: December 29, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ John N. Seitz",
+     ""
+    ],
+    [
+     "",
+     "",
+     "John N. Seitz",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Chairman",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GulfSlope Energy, Inc. (Registrant)",
+    "Date: December 29, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1629,
+    "end_line": 1637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Filed herewith.\n(2) Pursuant to Rule 406T of Regulation S-T, the Interactive Data Files on Exhibit 101 hereto are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities and Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections.\n(3) Management contract or compensatory plan or arrangement required to be filed as an exhibit hereto pursuant to Item 15(b).\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1624,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1661,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John N. Seitz",
+     "Chief Executive Officer and Chairman",
+     "December 29, 2022"
+    ],
+    [
+     "John N. Seitz",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John H. Malanga",
+     "Chief Financial Officer",
+     "December 29, 2022"
+    ],
+    [
+     "John H. Malanga",
+     "(Principal Financial Officer)",
+     ""
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard S. Langdon",
+     "Director",
+     "December 29, 2022"
+    ],
+    [
+     "Richard S. Langdon",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paul L. Morris",
+     "Director",
+     "December 29, 2022"
+    ],
+    [
+     "Paul L. Morris",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1640,
+    "end_line": 1660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1624,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1661,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

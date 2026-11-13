@@ -1,0 +1,5458 @@
+{
+ "accession": "0001469299-10-000148",
+ "cik": "0001321516",
+ "form": "10-K",
+ "filing_date": "2010-05-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "forgehouseform10k123109.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada\n\n(State or Other Jurisdiction\n\nof Incorporation or Organization)",
+     "",
+     "",
+     "20-1904354\n\n(I.R.S. Employer\n\nIdentification No.)",
+     ""
+    ],
+    [
+     "1906 Berkeley Avenue, Los Angeles, CA\n\n(Address and telephone number of Principal Executive Offices)",
+     "",
+     "90026\n\n(Zip Code)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark one)\n[ ]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934.\nFor the fiscal year ended December 31, 2009\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934.\nFor the transition period from                    to\nCommission File No: 000-51465\nFORGEHOUSE, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(323) 868-2002\n(Issuer\u2019s Telephone Number, Including Area Code)\nSecurities registered under Section 12(b) of the Exchange Act: None\nSecurities registered under Section 12(g) of the Exchange Act: Common Stock, $0.001 par value\nIndicate by check mark if the registrant is a well-known seasonal issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business.",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Properties.",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders.",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchase of Equity Securities.",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis or Plan of Operation.",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures.",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B",
+     "Other Information.",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services.",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules.",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "53"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 124
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K.\n[ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a small reporting company.\nLarge accelerated filer [ ] Accelerated filer [ ]\nNon-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of May 14, 2010 was $5,425,000.\nThe number of shares outstanding of the registrant\u2019s common stock as of May 14, 2010 was 29,500,000.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. Business.\nGeneral\nForgeHouse, Inc. (\u201cwe,\u201d \u201cour,\u201d \u201cus,\u201d or the \u201cCompany\u201d), is a corporation that was formed in Nevada on November 19, 2004. Our principal place of business is located at 1906 Berkeley Avenue, Los Angeles, California 90026. Between January 31, 2008, and December 16, 2009, we were solely engaged in the business of developing and selling physical security industry application and software (the \u201cPrior Business\u201d). We supplemented that business on that date with the acquisition of Northern Future Energy Corp., a Nevada corporation engaged in the oil and gas business. We have since discontinued our Prior Business and in December 2009, our management changed.\nBusiness\nWe were engaged in the Prior Business, primarily directly, but also through a wholly-owned subsidiary, ForgeHouse, LLC, a Georgia limited liability company (\u201cFH LLC\u201d). As of December 29, 2009, we sold all of the property and assets associated with the Prior Business and, as of December 31, 2009, we sold all of our membership interests in FH LLC. In connection with such transactions, the directors and officers holding office at that time resigned and Philip Mann was elected to our board of directors and appointed our Assistant Secretary.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 124,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Bid",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Year ended December 31, 2009:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.25",
+     "$",
+     "0.25"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "0.25",
+     "",
+     "0.07"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "0.08",
+     "",
+     "0.04"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "0.05",
+     "",
+     "0.02"
+    ],
+    [
+     "Year ended December 31, 2008:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "",
+     "1.60",
+     "",
+     "1.10"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "1.97",
+     "",
+     "1.30"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "1.25",
+     "",
+     "0.55"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "0.55",
+     "",
+     "0.25"
+    ]
+   ],
+   "caption_stack": [
+    "Bid"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 353,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "We are not currently a party to any material legal proceedings.\nItem 4. Submission of Matters to a Vote of Security Holders.\nNo matter was submitted to a vote of security holders, through the solicitation of proxies or otherwise, during the fourth quarter of the fiscal year covered by this Annual Report.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities.\nOur common stock, par value $.001, has been quoted on the OTC Bulletin Board under the symbol \u201cFOHE\u201d since November 7, 2005, and, prior to that, under the symbol \u201cMBTL\u201d since January 5, 2006; however, our common stock did not commence virtually any trading until subsequent to our acquisition of FH LLC on January 31, 2008. The following table sets forth the high and low bid prices for our common stock for the periods indicated, as reported by Pink OTC Markets, Inc. Such quotations reflect inter-dealer prices, without retail mark-up, mark-down or commissions, and may not necessarily represent actual transactions.",
+   "prose_after": "On May 14, 2010, we had approximately 10 stockholders of record.\nWe have never declared or paid any cash dividends on our common stock. For the foreseeable future, we expect to retain any earnings to finance the operation and expansion of our business.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nTHE FOLLOWING PRESENTATION OF OUR MANAGEMENT\u2019S DISCUSSION AND ANALYSIS SHOULD BE READ IN CONJUNCTION WITH THE FINANCIAL STATEMENTS AND OTHER FINANCIAL INFORMATION INCLUDED ELSEWHERE IN THIS REPORT.\nThe independent registered public accounting firm\u2019s report on our financial statements as of December 31, 2009, and for each of the years in the two-year period then ended, includes a \u201cgoing concern\u201d explanatory paragraph that describes substantial doubt about our ability to continue as a going concern. Management\u2019s plans in regard to the factors prompting the explanatory paragraph are discussed below and also in Note 2 to the financial statements.\nThe following discussion of the financial condition and results of operation of the Company should be read in conjunction with the financial statements and the notes to those statements included herein. This discussion includes forward-looking statements that involve risk and uncertainties. Actual results may differ materially from those anticipated in the forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 346,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance Sheets as of December 31, 2009 and 2008                             18"
+    ]
+   ],
+   "caption_stack": [
+    "Balance Sheets as of December 31, 2009 and 2008                             18"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "At December 31, 2009, we had cash of $66,000, which cash balance represented an increase of $66,000 in comparison with our cash balance at December 31, 2008. We have no currently planned material commitments for capital expenditures; however, we will need operating capital to continue our current business operations, although presently have no alternative source of operating capital. Although we are considering various debt or equity financings, there can be no assurance that any financing will be available to us on terms acceptable to us or at the time that we would require such financing, or at all. Failure to obtain any such financing will result in our inability to effectuate our business plan. As of the date of this Annual Report, we have not entered into any agreements and have not received any commitments to obtain any such financing.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements at December 31, 2009.\nItem 8. Financial Statements and Supplementary Data.\nOur financial statements required to be included in Item 8 are set forth in the Index to Financial Statements set forth on page F-1 of this Annual Report.\nIndex to the Financial Statements\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nFinancial Statements of ForgeHouse, Inc. (a Nevada Corporation):\nReport of the Registered Independent Public Accounting Firm 17",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Statements of Operations for Each of the Years Ended December 31, 2009 and 2008                 19"
+    ]
+   ],
+   "caption_stack": [
+    "Statements of Operations for Each of the Years Ended December 31, 2009 and 2008                 19"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 433,
+    "end_line": 436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Statements of Cash Flows for Each of the Years Ended December 31, 2009 and 2008              22"
+    ]
+   ],
+   "caption_stack": [
+    "Statements of Cash Flows for Each of the Years Ended December 31, 2009 and 2008              22"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Notes to the Financial Statements 24\nIndex to the Financial Statements\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of ForgeHouse, Inc.\nWe have audited the accompanying balance sheets of ForgeHouse, Inc as of December 31, 2009 and 2008 and the related statements of operations, stockholders\u2019 deficit, and cash flows for each of the years in the two-year period ended December 31, 2009. ForgeHouse, Inc.\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2009",
+     "",
+     "As of December 31, 2008",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "66,126",
+     "",
+     "-"
+    ],
+    [
+     "  Current assets of discontinued operation",
+     "",
+     "-",
+     "$",
+     "91,551"
+    ],
+    [
+     "    Total current assets",
+     "",
+     "66,126",
+     "",
+     "91,551"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and Gas interests",
+     "",
+     "22,180",
+     "",
+     "-"
+    ],
+    [
+     "Long term assets of discontinued operation",
+     "",
+     "-",
+     "",
+     "71,667"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "88,936",
+     "$",
+     "163,218"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 497
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of ForgeHouse, Inc. as of December 31, 2009 and 2008 and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2009 in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As shown in the financial statements, the Company has no revenue from continuing operations and has an accumulated deficit of $6,982,902 at December 31, 2009. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nKelly & Company\nCosta Mesa, California\nMay 14, 2010\nBalance Sheets\nDecember 31, 2009 and 2008\nASSETS",
+   "prose_after": "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued expenses",
+     "$",
+     "29,036",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Notes payable and accrued interest",
+     "",
+     "56,130",
+     "",
+     "$",
+     "51,131",
+     ""
+    ],
+    [
+     "  Dividend payable",
+     "",
+     "73,938",
+     "",
+     "",
+     "73,938",
+     ""
+    ],
+    [
+     "  Current liabilities of discontinued operation",
+     "",
+     "-",
+     "",
+     "",
+     "2,674,327",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "159,104",
+     "",
+     "",
+     "2,799,396",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (note 7)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, par value $0.001 with 10,000,000 shares authorized",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred stock, par value $0.001, 2,000,000 shares authorized,\n\n       2,000,000 shares issued and outstanding. Senior as to all other equity instruments,\n\n       voting and with a dividend rate of 4% of the stated liquidation preference amount\n\n       of $2,000,000 convertible on a one for one basis into common stock",
+     "$",
+     "2,000",
+     "",
+     "$",
+     "2,000",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value, 100,000,000 shares authorized, 29,500,000 and 28,289,834 shares issued and outstanding",
+     "",
+     "29,500",
+     "",
+     "",
+     "28,290",
+     ""
+    ],
+    [
+     "  Additional paid in capital",
+     "",
+     "6,881,234",
+     "",
+     "",
+     "4,441,799",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(6,982,902)",
+     "",
+     "",
+     "(7,108,267)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "$",
+     "(70,168)",
+     "",
+     "$",
+     "(2,636,178)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "$",
+     "88,936",
+     "",
+     "$",
+     "163,218",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Current liabilities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 500,
+    "end_line": 530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Payroll related expenses",
+     "",
+     "2,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "5,627",
+     "",
+     "",
+     "76,189",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "73,210",
+     "",
+     "",
+     "57,947",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "",
+     "81,337",
+     "",
+     "",
+     "134,136",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(81,337)",
+     "",
+     "",
+     "(134,136)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "5,000",
+     "",
+     "",
+     "1,130",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations before extraordinary item",
+     "",
+     "(86,337)",
+     "",
+     "",
+     "(135,266)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discontinued operation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss from operations of discontinued OneVision business",
+     "",
+     "1,120,884",
+     "",
+     "",
+     "2,718,387",
+     ""
+    ],
+    [
+     "  Income tax (benefit)",
+     "",
+     "(453,070)",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "  Loss on discontinued operation",
+     "",
+     "667,814",
+     "",
+     "",
+     "2,719,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before extraordinary item",
+     "",
+     "(754,151)",
+     "",
+     "",
+     "(2,854,453)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on restructurings of debt, net of income tax",
+     "",
+     "879,156",
+     "",
+     "",
+     "365,834",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "125,365",
+     "",
+     "$",
+     "(2,488,619)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 532,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 575,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Income (loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share from continuing operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Loss per share from discontinued operation:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.10)",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.10",
+     ""
+    ],
+    [
+     "Per share effect of gain on restructurings of debt, net of income tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "Net income (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.09)",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.09)",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "",
+     "28,723,862",
+     "",
+     "",
+     "27,059,045",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "32,366,810",
+     "",
+     "",
+     "28,746,327",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Income (loss per share:",
+    "Loss per share from continuing operations:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Operations\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Members' Deficit\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 577,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Additional\n\nPaid In\n\nCapital",
+     "",
+     "",
+     "ForgeHouse Accumulated\n\nDeficit",
+     "",
+     "",
+     "VIE\n\nAccumulated\n\nDeficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2007",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "15,000,000",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "1,248,978",
+     "",
+     "",
+     "(4,619,648)",
+     "",
+     "",
+     "(69,358)",
+     "",
+     "",
+     "(3,425,028)",
+     ""
+    ],
+    [
+     "  Sale of preferred A shares",
+     "",
+     "2,000,000",
+     "",
+     "2,000",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,098,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "21,000,000",
+     ""
+    ],
+    [
+     "  Shares issued in the recapitalization of the Company",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "13,000,000",
+     "",
+     "",
+     "13,000",
+     "",
+     "",
+     "(243,290)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(230,290)",
+     ""
+    ],
+    [
+     "  Disposition of VIE at the time of the recapitalization of the Company",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(73,302)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "69,358",
+     "",
+     "",
+     "(3,944)",
+     ""
+    ],
+    [
+     "  Common shares issued for debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "45,812",
+     "",
+     "",
+     "46",
+     "",
+     "",
+     "45,754",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "45,800",
+     ""
+    ],
+    [
+     "  Common shares issued for cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "244,022",
+     "",
+     "",
+     "244",
+     "",
+     "",
+     "290,144",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "290,388",
+     ""
+    ],
+    [
+     "  Company expenses paid by corporate officers",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,420",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,420",
+     ""
+    ],
+    [
+     "  Stock based charges",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,148,033",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,148,033",
+     ""
+    ],
+    [
+     "  Dividend declared",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(73,938)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(73,938)",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,488,619)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,488,619)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2008",
+     "",
+     "2,000,000",
+     "$",
+     "2,000",
+     "",
+     "28,289,834",
+     "",
+     "",
+     "28,290",
+     "",
+     "$",
+     "4,441,799",
+     "",
+     "$",
+     "(7,108,267)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(2,636,178",
+     ""
+    ],
+    [
+     "  Acquisition of an operating subsidiary for common shares",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,000,000",
+     "",
+     "",
+     "12,000",
+     "",
+     "",
+     "63,332",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Sale of discontinued operation to related parties",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,789,834)",
+     "",
+     "",
+     "(10,790)",
+     "",
+     "",
+     "1,912,787",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Stock based charges",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "398,316",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Company expenses paid by common shareholder",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "62,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "125,365",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2009",
+     "",
+     "2,000,000",
+     "$",
+     "2,000",
+     "",
+     "29,500,000",
+     "",
+     "$",
+     "29,500",
+     ")",
+     "$",
+     "6,881,234",
+     "",
+     "$",
+     "(6,982,902)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "70,168",
+     ")"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 614,
+    "end_line": 648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Members' Deficit\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss)",
+     "$",
+     "125,365",
+     "",
+     "$",
+     "(2,488,619)",
+     ""
+    ],
+    [
+     "  Gain on debt restructure",
+     "",
+     "879,516",
+     "",
+     "",
+     "365,834",
+     ""
+    ],
+    [
+     "  Loss from discontinued operation",
+     "",
+     "(667,814)",
+     "",
+     "",
+     "(2,719,187)",
+     ""
+    ],
+    [
+     "    Loss from continuing operations",
+     "",
+     "(86,337)",
+     "",
+     "",
+     "(135,266)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net income (loss) to net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Amortization of stock based charges",
+     "",
+     "398,316",
+     "",
+     "",
+     "1,148,033",
+     ""
+    ],
+    [
+     "    Expenses paid by shareholder",
+     "",
+     "62,000",
+     "",
+     "",
+     "1,420",
+     ""
+    ],
+    [
+     "    Increase (decrease) in liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable - trade",
+     "",
+     "15,932",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued interest on debt",
+     "",
+     "4,999",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash from (used in) operating activities - continuing operations",
+     "",
+     "606,612",
+     "",
+     "",
+     "(1,339,166)",
+     ""
+    ],
+    [
+     "Cash used in operating activities - discontinued operation",
+     "",
+     "(609,112)",
+     "",
+     "",
+     "(321,820)",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "(2,500)",
+     "",
+     "",
+     "(1,660,986)",
+     ""
+    ],
+    [
+     "Cash flows from (used in) investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Acquisition of operating subsidiary",
+     "",
+     "68,626",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Recapitalization of Milk Bottle Cards Inc. - reverse merger",
+     "",
+     "-",
+     "",
+     "",
+     "(8,860)",
+     ""
+    ],
+    [
+     "Cash from (used in) investing activities - continuing operations",
+     "",
+     "68,626",
+     "",
+     "",
+     "(8,860)",
+     ""
+    ],
+    [
+     "Cash from (used in) investing activities - discontinued operation",
+     "",
+     "-",
+     "",
+     "",
+     "(20,050)",
+     ""
+    ],
+    [
+     "Cash from (used in) investing activities",
+     "",
+     "68,626",
+     "",
+     "",
+     "(28,910)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "  Proceeds from sale of preferred A stock",
+     "",
+     "-",
+     "",
+     "",
+     "2,100,000",
+     ""
+    ],
+    [
+     "  Issuance of common shares for cash",
+     "",
+     "-",
+     "",
+     "",
+     "290,388",
+     ""
+    ],
+    [
+     "  Purchase and retirement of stock",
+     "",
+     "-",
+     "",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "  Dissolution of variable interset entity",
+     "",
+     "-",
+     "",
+     "",
+     "(73,302)",
+     ""
+    ],
+    [
+     "Cash from financing activities - continuing operations",
+     "",
+     "-",
+     "",
+     "",
+     "2,317,086",
+     ""
+    ],
+    [
+     "Cash used in financing activities - discontinued operation",
+     "",
+     "-",
+     "",
+     "",
+     "(627,190)",
+     ""
+    ],
+    [
+     "Cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "1,689,896",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "66,126",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "66,126",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 656,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Years Ended December 31, 2009 and 2008\nSupplemental Disclosure of Cash Flow Information",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Cash paid during the fiscal years for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "$",
+     "-",
+     "$",
+     "368,571"
+    ],
+    [
+     "  Income Taxes",
+     "$",
+     "-",
+     "$",
+     "800"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 721,
+    "end_line": 730
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nStatements of Cash Flows\nFor Each of the Years Ended December 31, 2009 and 2008\nSupplemental Disclosure of Cash Flow Information",
+   "prose_after": "Non-Cash Investing and Financing Transactions",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Purchase of Northern Future Energy Corp with shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchased cash",
+     "$",
+     "68,626",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Oil and gas interests",
+     "$",
+     "22,810",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "$",
+     "(13,104)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock",
+     "$",
+     "(12,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  APIC",
+     "$",
+     "(66,332)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of assets and transfer of liabilities to Enforce Global, LLC:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current assets of discontinued operation",
+     "$",
+     "(206,904)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Long-term assets of discontinued operation",
+     "$",
+     "(27,566)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Current liabilities of discontinued operation",
+     "$",
+     "2,136,467",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock",
+     "$",
+     "10,790",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  APIC",
+     "$",
+     "(1,912,787)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dividend on Series A preferred stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Dividend payable",
+     "$",
+     "-",
+     "",
+     "$",
+     "73,938",
+     ""
+    ],
+    [
+     "  Dividend",
+     "$",
+     "-",
+     "",
+     "$",
+     "(73,938)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Purchase of Northern Future Energy Corp with shares:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Non-Cash Investing and Financing Transactions",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\n1. Description of the Company's Business\nBasis of Presentation and Nature of Operations\nForgeHouse, Inc. (the Company, we, or our) was incorporated under the laws of the state of Nevada in 2004. The Company engaged in the development and ongoing enhancement to OneVision\u00ae, its proprietary software system, and its sale, until December 2009. The OneVision\u00ae system is a web based application that offers a virtual command and control system for certain private industry and governmental compliance, physical security and maintenance applications. In December 2009, the Company sold its assets and liabilities associated with the OneVision\u00ae software to Enforce Global LLC, a Georgia Company owned by certain of the Company's former officers who were significant shareholders. The former officers resigned their positions held with the Company on December 29, 2009 (Note 2). Earlier in December 2009, the Company acquired Northern Future Energy Corporation (NFEC), a Nevada energy exploration company with oil and gas interests in Alaska (Note 4). At December 31, 2009, the Company balance sheet is comprised of the assets and liabilities of NFECs oil and gas operations. The Company's statement of operations for the years ended December 31, 2009 and 2008 presents general and administrative expenses unrelated to OneVision\u00ae's operating results and expenses of NFEC from the date of acquisition through the end of the year. Operating results of the discontinued OneVision\u00ae subsidiary are presented as a single line item (Discontinued Operation) for the years ending December 31, 2009 and 2008.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 29,\n\n2009",
+     "",
+     "December 31,\n\n2008",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "73,805",
+     "$",
+     "1,705"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "96,476",
+     "",
+     "80,168"
+    ],
+    [
+     "Inventory",
+     "",
+     "34,657",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid insurance",
+     "",
+     "1,967",
+     "",
+     "9,678"
+    ],
+    [
+     "    Current assets of discontinued operation",
+     "",
+     "206,905",
+     "",
+     "91,551"
+    ],
+    [
+     "Equipment, net of accumulated depreciation of $47,894 and $37,739",
+     "",
+     "15,277",
+     "",
+     "24,711"
+    ],
+    [
+     "Software development costs, net of accumulated amortization of $164,667 and $130,000",
+     "",
+     "8,667",
+     "",
+     "43,333"
+    ],
+    [
+     "Deposits",
+     "",
+     "3,623",
+     "",
+     "3,623"
+    ],
+    [
+     "    Total assets of discontinued operation",
+     "$",
+     "234,472",
+     "$",
+     "163,218"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable in default",
+     "",
+     "-",
+     "$",
+     "1,400,000"
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "740,049",
+     "",
+     "908,121"
+    ],
+    [
+     "Related party payable",
+     "",
+     "53,087",
+     "",
+     "29,067"
+    ],
+    [
+     "Accrued payroll and related expenses",
+     "",
+     "731,825",
+     "",
+     "255,611"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "7,939",
+     "",
+     "27,510"
+    ],
+    [
+     "Capital lease",
+     "",
+     "-",
+     "",
+     "4,398"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "168,570",
+     "",
+     "49,621"
+    ],
+    [
+     "Note payable",
+     "",
+     "415,000",
+     "",
+     "-"
+    ],
+    [
+     "    Total liabilities of discontinued operation",
+     "",
+     "2,116,470",
+     "",
+     "2,674,328"
+    ],
+    [
+     "  Net liability of discontinued operation",
+     "$",
+     "1,881,998",
+     "$",
+     "2,511,110"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 786,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operation"
+    }
+   },
+   "prose_before": "On December 29, 2009, the Company entered into an asset purchase agreement with Enforce Global Solutions, LLC (Enforce), a Georgia limited liability company owned by certain of the Company's former officers, who were also significant shareholders. Under the agreement, Enforce bought all of the assets of the OneVision business, including the intellectual properties, and assumed all of the OneVision liabilities. The purchase resulted in a sale by the Company of a net liability of $1,881,998. As consideration for the transaction, the former officers delivered to us all of the shares they owned in the Company; a total of 10,789,834 shares of our common stock. The Company has recorded those shares as received into treasury and cancelled. Simultaneously with the close of the asset purchase agreement, all of the other OneVision employees of the Company resigned. The operating results of the OneVision business are presented as a discontinued operation.\nThe following is a summary of the net liabilities sold, as of December 31, 2008 and as finally reported on the closing date of December 29, 2009:",
+   "prose_after": "As of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nThe accompanying table illustrates the reporting of the discontinued operation on the face of the Statements of Operations for the years ended December 31, 2009 and 2008:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year\n\nEnded December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Service contract revenue",
+     "$",
+     "371,501",
+     "",
+     "$",
+     "219,556",
+     ""
+    ],
+    [
+     "  Product revenue",
+     "",
+     "212,012",
+     "",
+     "",
+     "82,830",
+     ""
+    ],
+    [
+     "    Net revenues",
+     "",
+     "583,513",
+     "",
+     "",
+     "302,386",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Costs of revenues",
+     "",
+     "269,897",
+     "",
+     "",
+     "96,701",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "174,509",
+     "",
+     "",
+     "222,396",
+     ""
+    ],
+    [
+     "  Software and development costs",
+     "",
+     "15,435",
+     "",
+     "",
+     "131,147",
+     ""
+    ],
+    [
+     "  Payroll related expenses",
+     "",
+     "625,319",
+     "",
+     "",
+     "861,448",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "44,822",
+     "",
+     "",
+     "44,264",
+     ""
+    ],
+    [
+     "  Stock based charges",
+     "",
+     "398,313",
+     "",
+     "",
+     "1,148,034",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "73,651",
+     "",
+     "",
+     "338,077",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "106,166",
+     "",
+     "",
+     "178,237",
+     ""
+    ],
+    [
+     "  Other expense (income)",
+     "",
+     "(3,717)",
+     "",
+     "",
+     "469",
+     ""
+    ],
+    [
+     "Loss from discontinued operation before taxes",
+     "",
+     "(1,120,882)",
+     "",
+     "",
+     "(2,718,387)",
+     ""
+    ],
+    [
+     "  Income tax (benefit)",
+     "",
+     "(453,070)",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Loss from discontinued operation",
+     "$",
+     "(667,812",
+     "",
+     "$",
+     "(2,719,187)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year\n\nEnded December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 829,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operation"
+    }
+   },
+   "prose_before": "As of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nThe accompanying table illustrates the reporting of the discontinued operation on the face of the Statements of Operations for the years ended December 31, 2009 and 2008:",
+   "prose_after": "3. Summary of Significant Accounting Policies\nRecent Accounting Pronouncements\nIn June 2009, the FASB issued SFAS No. 168, \u201cThe FASB Accounting Standards Codification and the Hierarchy of Generally Accepted Accounting Principles - a replacement of FASB Statement No. 162,\u201d and also issued Accounting Standards No. 2009-01, \u201cGenerally Accepted Accounting Principles\u201d (ASC Topic 105-10), which establishes the FASB Accounting Standards Codification (the \u201cCodification\u201d or \u201cASC\u201d) as the official single source of authoritative U.S. generally accepted accounting principles (\u201cGAAP\u201d). All guidance contained in the Codification carries an equal level of authority. All existing accounting standards are superseded. All other accounting guidance not included in the Codification will be considered non-authoritative. The Codification also includes all relevant SEC guidance organized using the same topical structure in separate sections within\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements At December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Cash & Equivalents",
+     "$",
+     "66,126",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "66,126"
+    ],
+    [
+     "",
+     "Escrowed Funds",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Cash, Cash Equivalents and Escrowed Funds",
+     "$",
+     "66,126",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "66,126"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements At December 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 944,
+    "end_line": 954
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Level 1: Quoted prices (unadjusted) in active markets that are accessible at the measurement date for assets or liabilities. The fair value hierarchy gives the highest priority to Level 1 inputs.\nLevel 2: Observable prices that are based on inputs not quoted on active markets, but corroborated by market data.\nLevel 3: Unobservable inputs are used when little or no market data is available. The fair value hierarchy gives the lowest priority to Level 3 inputs.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nIn determining fair value, we utilize valuation techniques that maximize the use of observable inputs and minimize the use of unobservable inputs to the extent possible as well as the consideration of counterparty credit risk in its assessment of fair value.\nThe adoption of this statement did not have a material impact on our results of operations and financial condition. The carrying values of our cash, cash equivalents and marketable securities, carried at fair value as of December 31, 2009, are classified in the table below in one of the three categories described above:",
+   "prose_after": "Basic and Diluted Earnings (Loss) Per Share\nBasic net earnings (loss) per common share is computed by dividing net income (loss) applicable to common shareholders by the weighted-average number of common shares outstanding during the period. Diluted net earnings (loss) per common share is determined using the weighted-average number of common shares outstanding during the period, adjusted for the dilutive effect of common stock equivalents, consisting of shares that might be issued upon exercise of warrants to purchase common shares. In periods where losses are reported, the weighted-average number of common shares outstanding excludes common stock equivalents, because their inclusion would be anti-dilutive.\nUpon resignation of certain of the Company's officers and the OneVision employees (Note 2), employee options to purchase 1,652,000 shares of the Company's common stock were terminated. As of December 31, 2009, the Company had issued and outstanding common stock equivalents comprised of common stock warrants and convertible preferred stock that could have been converted into 4,000,000 shares of common stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 16,\n\n2009",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "$",
+     "68,626"
+    ],
+    [
+     "",
+     "    Total current assets",
+     "$",
+     "68,626"
+    ],
+    [
+     "",
+     "Oil and gas interest",
+     "",
+     "22,810"
+    ],
+    [
+     "",
+     "  Total assets",
+     "",
+     "91,436"
+    ],
+    [
+     "",
+     "Accrued expenses",
+     "",
+     "13,104"
+    ],
+    [
+     "",
+     "  Total liabilities",
+     "",
+     "13,104"
+    ],
+    [
+     "",
+     "Net asset at acquisition",
+     "$",
+     "78,332"
+    ]
+   ],
+   "caption_stack": [
+    "December 16,\n\n2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1001,
+    "end_line": 1018
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition of Operating Subsidiary"
+    }
+   },
+   "prose_before": "Deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets, including tax loss and credit carryforwards, and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date. Deferred income tax expense represents the change during the period in the deferred tax assets and deferred tax liabilities. The components of the deferred tax assets and liabilities are individually classified as current and non-current based on their characteristics. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\n4. Acquisition of Operating Subsidiary\nOn December 16, 2009, the Company acquired Northern Future Energy Corporation (NFEC), an oil and gas Company. Under the terms of the purchase agreement, the Company issued 12,000,000 shares of the Company's common stock in exchange for all outstanding equity of NFEC. NFEC was incorporated under the laws of the State of Nevada on October 22, 2009. On November 20, 2009, NFEC acquired an 87.5% net revenue interest in a certain oil and gas lease in the state of Alaska. NFEC is an exploration stage company involved in the oil and gas exploration business.\nThe following table summarizes the estimated fair values of the assets acquired and liabilities assumed at the date of acquisition. The purchase price allocation herein is based on management\u2019s assessment of the fair value of both the assets acquired and liabilities assumed.",
+   "prose_after": "The following (unaudited) pro forma consolidated results of operations have been prepared as if the acquisition of NFEC had occurred at January 1, 2009:\nF-16\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 989,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1020,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "As Reported",
+     "",
+     "",
+     "NFEC",
+     "",
+     "",
+     "Pro Forma",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Payroll related expenses",
+     "$",
+     "2,500",
+     "",
+     "$",
+     "2,500",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "General and administrative",
+     "",
+     "5,627",
+     "",
+     "",
+     "64",
+     "",
+     "",
+     "5,691",
+     ""
+    ],
+    [
+     "",
+     "Professional fees",
+     "",
+     "73,210",
+     "",
+     "",
+     "19,104",
+     "",
+     "",
+     "92,314",
+     ""
+    ],
+    [
+     "",
+     "  Total operating expenses",
+     "",
+     "81,337",
+     "",
+     "",
+     "21,668",
+     "",
+     "",
+     "103,005",
+     ""
+    ],
+    [
+     "",
+     "Loss from operations",
+     "",
+     "(81,337)",
+     "",
+     "",
+     "(21,668)",
+     "",
+     "",
+     "(103,005)",
+     ""
+    ],
+    [
+     "",
+     "  Interest expense",
+     "",
+     "5,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "Loss from continuing operations",
+     "",
+     "(86,337)",
+     "",
+     "",
+     "(21,668)",
+     "",
+     "",
+     "(108,005)",
+     ""
+    ],
+    [
+     "",
+     "Loss on discontinued operation",
+     "",
+     "667,814",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "667,814",
+     ""
+    ],
+    [
+     "",
+     "Loss before an extraordinary item",
+     "",
+     "(754,151)",
+     "",
+     "",
+     "(21,668)",
+     "",
+     "",
+     "(775,819)",
+     ""
+    ],
+    [
+     "",
+     "Gain on restructuring of debt, net",
+     "",
+     "879,516",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "879,516",
+     ""
+    ],
+    [
+     "",
+     "Net income",
+     "$",
+     "125,365",
+     "",
+     "",
+     "(21,668)",
+     "",
+     "$",
+     "103,697",
+     ""
+    ],
+    [
+     "",
+     "Loss per share from continuing operations, basic and diluted",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "Loss per share from discontinued operation, basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ],
+    [
+     "",
+     "Per share effect of gain on restructurings of debt, net of income tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Basic",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "",
+     "  Diluted",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "",
+     "Net income (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Basic",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "  Diluted",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1028,
+    "end_line": 1062
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition of Operating Subsidiary"
+    }
+   },
+   "prose_before": "The following (unaudited) pro forma consolidated results of operations have been prepared as if the acquisition of NFEC had occurred at January 1, 2009:\nF-16\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The pro forma information is presented for informational purposes only and is not necessarily indicative of the results of operations that actually would have been achieved had the acquisition been consummated as of that time, nor is it intended to be a projection of future results.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\n5. Oil and Gas Interests\nOn December 16, 2009, the Company acquired Northern Future Energy Corporation, which owned an oil and gas lease in Anchorage, Alaska, with a fair value of $22,810. Production on the properties has not commenced and there can be no assurance that any hydrocarbons will be economically recoverable, if at all; however, pre-production activities, such as a multi-phase exploration program of trenching, sampling, geophysical surveys and test drilling have commenced.\n6. Debt\nDebt is comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1064,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2009",
+     "",
+     "December 31,\n\n2008",
+     ""
+    ],
+    [
+     "",
+     "Two $25,000 unsecured demand notes,\n\ninterest is payable upon demand of payment of the principal,\n\nbear interst at a rate of 10% per annum.",
+     "$",
+     "50,000",
+     "$",
+     "50,000"
+    ],
+    [
+     "",
+     "Short Term Notes payable",
+     "$",
+     "50,000",
+     "$",
+     "50,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "The pro forma information is presented for informational purposes only and is not necessarily indicative of the results of operations that actually would have been achieved had the acquisition been consummated as of that time, nor is it intended to be a projection of future results.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\n5. Oil and Gas Interests\nOn December 16, 2009, the Company acquired Northern Future Energy Corporation, which owned an oil and gas lease in Anchorage, Alaska, with a fair value of $22,810. Production on the properties has not commenced and there can be no assurance that any hydrocarbons will be economically recoverable, if at all; however, pre-production activities, such as a multi-phase exploration program of trenching, sampling, geophysical surveys and test drilling have commenced.\n6. Debt\nDebt is comprised of the following:",
+   "prose_after": "Short Term Bridge Financing\nIn October 2008, the Company obtained short term financing from an investor group in the form of two $25,000 demand notes. The loans were necessary to sustain the ongoing operations of the Company. The loans are unsecured and interest is payable upon demand of payment of the principal. The loans are still outstanding at December 31, 2009 and bear interest at a rate of 10% per annum.\nExtraordinary Item - Debt Restructurings\nOn September 30, 2009, the Company entered into a Debt Forgiveness Agreement with Insurance Medical Group Limited (f/k/a After All Limited), Bryan Irving, and Ian Morl, pursuant to which $785,000 (plus accrued and unpaid interest and any penalties of $80,141) of the Company's outstanding obligations in favor of Arngrove Group Holdings were forgiven and all $200,000 (plus accrued and unpaid interest and any penalties of $23,418) of the Company's outstanding obligations in favor of After All Group, Limited, was forgiven. Gain on these two debt restructurings was a gross of $1,088,559 for the year ended December 31, 2009.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1066,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (Years)",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2007",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,877,000",
+     "",
+     "",
+     "1.00",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(225,000)",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2008",
+     "",
+     "1,652,000",
+     "",
+     "",
+     "1.00",
+     "",
+     "6.3",
+     "$",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(1,652,000)",
+     "",
+     "",
+     "1.00",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercisable at December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1200,
+    "end_line": 1217
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Equity Transactions"
+    }
+   },
+   "prose_before": "In June 2008, the Company issued 244,022 shares of the Company\u2019s common stock to eight individuals for cash proceeds of $290,388, which is $1.19 per share. The share price represented a 30% discount to the 10-trading-day volume weighted average closing price of the common stock, with May 29, 2008, as the 10th trading day. As stipulated in the restructured Arngrove note payable agreement that was then in effect, the Company was required to remit 20% of all funds raised to Arngrove to be applied first to the then outstanding principal balance of the note payable and second to any interest accrued thereon.\nShares Issued in Satisfaction of Accounts Payable \u2013 Trade\nIn June 2008, the Company issued 45,812 shares of the Company\u2019s common stock to two individuals for satisfaction of $45,800 of accounts payable \u2013 trade of the discontinued operation.\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nOptions Activity\nA summary of the option activity as of December 31, 2009 and 2008, and changes during the period then ended is presented below:",
+   "prose_after": "On January 31, 2008, the Company granted options to purchase 251,000 shares of its common stock to the Company's Chief Executive Officer immediately following the Exchange Agreement as a condition for entering his employment agreement. The options have an exercise price of $1.00, vest immediately and expire 10 years from the grant date. The Company also granted options to purchase 90,000 shares of its common stock to the Company's Chief Operating Officer immediately following the Exchange Agreement as a condition for entering his employment agreement. The options have an exercise price of $1.10, vest immediately and expire 5 years from the grant date.\nOn January 31, 2008, the Company granted options to purchase 186,000 shares of its common stock to the Company's Chief Operating Officer immediately following the Exchange Agreement as a condition for entering his employment agreement. The options have an exercise price of $1.00, vest immediately and expire 10 years from the grant date.\nF-23",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "2.78 to 3.83%",
+     ""
+    ],
+    [
+     "Expected volatility of common stock",
+     "92%",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "$0.00",
+     ""
+    ],
+    [
+     "Expected life of options",
+     "5-10 years",
+     ""
+    ],
+    [
+     "Weighted average fair market value of options granted",
+     "$1.13",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1237,
+    "end_line": 1244
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Equity Transactions"
+    }
+   },
+   "prose_before": "On January 31, 2008, the Company granted options to purchase 225,000 shares of its common stock to each of two employees for past services immediately following Exchange Agreement. The options have an exercise price of $1.00, vest evenly on each of the first three anniversaries of the grant date and expire 5 years from the grant date.\nOn February 15, 2008, the Company granted options to purchase 350,000 shares of its common stock to the Company's Chief Financial Officer for entering his employment agreement. The options have an exercise price of $1.00, 50,000 vest immediately, and the remaining 300,000 vest evenly on each of the first three anniversaries of the grant date and expire 5 years from the grant date. The Company also granted options to purchase 400,000 shares of its common stock to the Company's Chief Financial Officer for entering his employment agreement. The options have an exercise price of $1.00 and vest evenly on each of the first three anniversaries of the grant date and expire 10 years from the grant date.\nThe assumptions used in the Black-Scholes option pricing model for the stock options granted during the year ended December 31, 2008 were as follows:",
+   "prose_after": "Warrant Activity\nA summary of the warrant activity as of December 31, 2009 and 2008, and changes during the period then ended is presented below:\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1223,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1248,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2008",
+     "",
+     "2,000,000",
+     "$",
+     "1.00"
+    ],
+    [
+     "  Issued",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "  Exercised",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2009",
+     "",
+     "2,000,000",
+     "$",
+     "1.00"
+    ],
+    [
+     "Exercisable, December 31, 2009",
+     "",
+     "2,000,000",
+     "$",
+     "1.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1256,
+    "end_line": 1268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Equity Transactions"
+    }
+   },
+   "prose_before": "Warrant Activity\nA summary of the warrant activity as of December 31, 2009 and 2008, and changes during the period then ended is presented below:\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "On January 31, 2008, the Company sold 2,000,000 units, with each unit consisting of one share of the Company's Series A Convertible Preferred stock and one warrant to purchase a share of the Company's common stock. The warrants have an exercise price of $1.00 and expire 2 years from the grant date.\nShares Reserved for Future Issuance\nThe Company has reserved shares for future issuance upon exercise of outstanding and conversion of preferred stock as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Warrants",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Conversion of Preferred stock",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Reserved shares At December 31, 2009",
+     "4,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1275,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Equity Transactions"
+    }
+   },
+   "prose_before": "On January 31, 2008, the Company sold 2,000,000 units, with each unit consisting of one share of the Company's Series A Convertible Preferred stock and one warrant to purchase a share of the Company's common stock. The warrants have an exercise price of $1.00 and expire 2 years from the grant date.\nShares Reserved for Future Issuance\nThe Company has reserved shares for future issuance upon exercise of outstanding and conversion of preferred stock as follows:",
+   "prose_after": "9. Deferred Income Taxes\nThe gain on debt restructuring resulted in unexpected income for the year ended December 31, 2009. The Company utilized $178,052 of the net operating loss carryforwards from 2008 to offset 2009 income tax. The Company did not record any deferred income tax provisions for the year ended December 31, 2008. As a result of the sale of the discontinued subsidiary, the Company has not recorded any deferred income tax provision at December 31, 2009. Significant components of the Company's deferred income tax assets at December 31, 2009 and 2008 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "875,194",
+     "",
+     "$",
+     "1,398,875",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(875,194)",
+     "",
+     "",
+     "(1,398,875)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "9. Deferred Income Taxes\nThe gain on debt restructuring resulted in unexpected income for the year ended December 31, 2009. The Company utilized $178,052 of the net operating loss carryforwards from 2008 to offset 2009 income tax. The Company did not record any deferred income tax provisions for the year ended December 31, 2008. As a result of the sale of the discontinued subsidiary, the Company has not recorded any deferred income tax provision at December 31, 2009. Significant components of the Company's deferred income tax assets at December 31, 2009 and 2008 are as follows:",
+   "prose_after": "As of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nReconciliation of the effective tax rate to the U.S. statutory rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit at U.S. statutory rate",
+     "",
+     "(34.0)",
+     "%",
+     "",
+     "(34.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "As of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008\nReconciliation of the effective tax rate to the U.S. statutory rate is as follows:",
+   "prose_after": "The Company has federal net operating loss carryforwards of $875,194. The federal net operating loss carryforwards will begin to expire in 2028. Based upon the disposal of the discontinued operation, exploration stage of the new venture and management's assessment of when operations are anticipated to generate taxable income, the Company has concluded that it is more likely than not that the net deferred income tax assets will not be realized through future taxable earnings and, accordingly, has established a full valuation allowance for them. The valuation allowance decreased by $523,681 during the year ended December 31, 2009 as a result of the current year\u2019s net earnings.\n10. Earnings (Loss) Per Share\nBasic and diluted loss before extraordinary item is computed using the weighted-average number of common shares outstanding. Since there was a loss before extraordinary item in each period presented, the effect of potentially dilutive common shares is not considered as their effect would be anti-dilutive. Basic net earnings per share is computed using the weighted-average number of common shares outstanding. The dilutive effect of potential common shares outstanding is included in diluted net earnings per share. The computations of basic and diluted loss before extraordinary item and basic net earnings (loss) per share and diluted net earnings (loss) per share for the years ended December 31, 2009 and 2008 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss before extraordinary item",
+     "$",
+     "(754,151)",
+     "",
+     "$",
+     "(2,854,453)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "125,365",
+     "",
+     "$",
+     "(2,488,619)",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average shares",
+     "",
+     "28,723,862",
+     "",
+     "",
+     "27,059,045",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock options and warrants",
+     "",
+     "3,642,948",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Convertible preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Dilutive potential common shares",
+     "",
+     "32,366,810",
+     "",
+     "",
+     "27,059,045",
+     ""
+    ],
+    [
+     "Loss per share before extraordinary item:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "Net earnings (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.09)",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.09)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1330,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "The Company has federal net operating loss carryforwards of $875,194. The federal net operating loss carryforwards will begin to expire in 2028. Based upon the disposal of the discontinued operation, exploration stage of the new venture and management's assessment of when operations are anticipated to generate taxable income, the Company has concluded that it is more likely than not that the net deferred income tax assets will not be realized through future taxable earnings and, accordingly, has established a full valuation allowance for them. The valuation allowance decreased by $523,681 during the year ended December 31, 2009 as a result of the current year\u2019s net earnings.\n10. Earnings (Loss) Per Share\nBasic and diluted loss before extraordinary item is computed using the weighted-average number of common shares outstanding. Since there was a loss before extraordinary item in each period presented, the effect of potentially dilutive common shares is not considered as their effect would be anti-dilutive. Basic net earnings per share is computed using the weighted-average number of common shares outstanding. The dilutive effect of potential common shares outstanding is included in diluted net earnings per share. The computations of basic and diluted loss before extraordinary item and basic net earnings (loss) per share and diluted net earnings (loss) per share for the years ended December 31, 2009 and 2008 are as follows:\nF-26\nAs of December 31, 2009 and 2008 and\nFor Each of the Years Ended December 31, 2009 and 2008",
+   "prose_after": "The following table sets forth potential shares of common stock that are not included in the diluted loss per share because to do so would be anti-dilutive since the Company reported losses in certain reporting periods:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Options to purchase shares of common stock",
+     "",
+     "-",
+     "",
+     "1,877,000"
+    ],
+    [
+     "Warrants to purchase shares of common stock",
+     "",
+     "-",
+     "",
+     "2,000,000"
+    ],
+    [
+     "Convertible preferred stock",
+     "",
+     "-",
+     "",
+     "2,000,000"
+    ],
+    [
+     "Total",
+     "",
+     "-",
+     "",
+     "5,877,000"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1360,
+    "end_line": 1371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "The following table sets forth potential shares of common stock that are not included in the diluted loss per share because to do so would be anti-dilutive since the Company reported losses in certain reporting periods:",
+   "prose_after": "Item 9. Changes In and Disagreements With Accountants on Accounting and Financial Disclosure.\nThere have been no disagreements in the applicable period.\nItem 9A(T). Controls and Procedures.\nWe maintain disclosure controls and procedures that are designed to ensure that information required to be disclosed in our Exchange Act reports is recorded, processed, summarized and reported within the time periods specified under the SEC\u2019s rules and forms, and that such information is accumulated and communicated to our management, including our Principal Executive Officer and our Principal Financial Officer, as appropriate, to allow timely decisions regarding required disclosures. Our management, including our Principal Executive Officer and Principal Financial Officer, does not expect that our disclosure controls or procedures will prevent all error and all fraud. A control system, no matter how well conceived and operated, can provide only reasonable, not absolute assurance that the objectives of the control system are met. Further, the benefits of controls must be considered relative to their costs. Because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that all control issues and instances of fraud, if any, within us have been detected.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "Christian Negri",
+     "",
+     "41",
+     "",
+     "President, Treasurer, Secretary, and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1400,
+    "end_line": 1405
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "Our Principal Executive Officer and Principal Financial Officer conducted a review to evaluate the effectiveness of the design and operation of our disclosure controls and procedures as of the end of the period covered by this Annual Report. Based on the foregoing, we concluded that our disclosure controls and procedures were effective at the reasonable assurance level.\nThere has been no change in internal controls during the most recent fiscal year that has materially affected, or is reasonably likely to materially affect, our internal controls over financial reporting.\nThis Annual Report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to temporary rules of the SEC that permit us to provide only management\u2019s report in this Annual Report.\nItem 9B. Other Information.\nThere is no other information required to be disclosed during the fourth quarter of the fiscal year covered by this Annual Report.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nThe following table sets forth information concerning current executive officers and directors as of May 14, 2010:",
+   "prose_after": "Christian Mann was appointed as President, Treasurer, and Secretary and as a member of the board of directors, effective March 12, 2010. From 2004 to the present, Mr. Negri has been involved in the real estate industry and has possessed a California Real Estate salesperson license since 2004. Mr. Negri is not an officer or director of any other reporting company.\nOur directors are elected by the stockholders to a term of one year and serve until their successor is elected and qualified. Officers are elected by the Board to a term of one year and serve until their successor is duly elected and qualified, or until they are removed from office. There are no family relationships between our directors and executive officers.\nOur Board has not had an audit committee, compensation committee, or nominating committee because, due to the Board\u2019s composition and our relatively limited operations, the Board was able to effectively manage the issues normally considered by such committees.\nBoard Meetings",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1393,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name & Principal Position",
+     "Year",
+     "Salary\n\n($)",
+     "Bonus\n\n($)",
+     "Stock Awards ($)",
+     "Option Awards ($)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "All Other Compensation ($)",
+     "Total\n\n($)"
+    ],
+    [
+     "John Britchford-Steel, CEO",
+     "2009",
+     "21,000",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "21,000"
+    ],
+    [
+     "",
+     "2008",
+     "109,417",
+     "None",
+     "None",
+     "395,849",
+     "None",
+     "None",
+     "None",
+     "505,266"
+    ],
+    [
+     "",
+     "2007",
+     "130,000",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "8,282",
+     "130,000"
+    ],
+    [
+     "Jose M. Alonso, COO",
+     "2009",
+     "21,000",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "21,000"
+    ],
+    [
+     "",
+     "2008",
+     "109,417",
+     "None",
+     "None",
+     "217,248",
+     "None",
+     "None",
+     "None",
+     "326,665"
+    ],
+    [
+     "",
+     "2007",
+     "130,000",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "130,000"
+    ],
+    [
+     "Jorge Vargas, CFO",
+     "2009",
+     "21,000",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "None",
+     "21,000"
+    ],
+    [
+     "",
+     "2008",
+     "94,500",
+     "None",
+     "None",
+     "281,253",
+     "None",
+     "None",
+     "None",
+     "375,753"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "Section 16(a) of the Exchange Act requires officers, directors and persons who own more than 10% of any class of our securities registered under Section 12(g) of the Exchange Act to file reports of ownership and changes in ownership with the SEC. Officers, directors and greater than 10% stockholders are required by SEC regulation to furnish us with copies of all Section 16(a) forms they file.\nBased solely on its review of copies of such reports, management believes that there was compliance with all filing requirements of Section 16(a) applicable to our officers, directors, and 10% shareholders during the year ended December 31, 2008.\nItem 11. Executive Compensation.\nThe Company does not currently compensate its directors in cash for their service as members of the board of directors. However, the Company does reimburse its directors for reasonable expenses in connection with attendance at board meetings.\nThe following table sets forth certain annual and long-term compensation paid to the Company\u2019s former Chief Executive Officer and executive officers, each of whom resigned December 29, 2010.\nSummary Compensation Table",
+   "prose_after": "Philip Mann, our Assistant Secretary as of December 31. 2009, did not receive any compensation during our fiscal year then ended. Christian Negri, our current President, Treasurer, and Secretary, was not an executive officer during such fiscal year.\nEmployment and Consulting Agreements\nThere are no employment contracts or consulting agreements with our current directors or officers.\nCompensation Policy\nThe Board will review and determine the compensation provided to our executive officer, including stock compensation. In addition, the Board will review and make recommendations on stock compensation arrangements for all of our employees.\nOur executive compensation policy is designed to enable it to attract, motivate and retain highly qualified executive officers. The key components of the compensation program will be:\n\u00b7 base salary;\n\u00b7 annual incentive bonus awards; and\n\u00b7 stock options or other awards under the 2008 Incentive Plan.\nIn arriving at specific levels of compensation for executive officers, the Board will rely on:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1445,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and address of\n\nbeneficial owner",
+     "Amount and\n\nnature of\n\nbeneficial ownership",
+     "Percent ofclass (1)"
+    ],
+    [
+     "Common Stock",
+     "Christian Negri (sole director and named executive officer) (2)",
+     "12,000,000",
+     "40.68%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred Stock",
+     "Christian Negri (sole director and named executive officer) (2)",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred Stock",
+     "Meriel Development, Inc. (3)",
+     "380,952",
+     "19.05%"
+    ],
+    [
+     "Series A Convertible Preferred Stock",
+     "Cat Brokerage AG (4)",
+     "571,429",
+     "28.57%"
+    ],
+    [
+     "Series A Convertible Preferred Stock",
+     "Hillside Provident Trust (5)",
+     "1,047,619",
+     "52.38%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "The following table sets forth certain information regarding the shares of common stock beneficially owned or deemed to be beneficially owned as of May 14, 2010, by: (i) each person whom we know beneficially owns more than 5% of our common stock, (ii) our current directors, (iii) our current executive officers, and (iv) all of our directors and executive officers as a group.\nExcept as indicated by the footnotes below, management believes, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all shares of our common stock that they beneficially own, subject to applicable community property laws.\nIn computing the number of shares of common stock beneficially owned by a person and the percentage ownership of that person, we deemed outstanding shares of common stock subject to options or warrants held by that person that are currently exercisable or exercisable within 60 days of April 15, 2010. We did not deem these shares outstanding, however, for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "(1) Based on 29,500,000 shares of common stock and 2,000,000 shares of Series A Convertible Preferred Stock, as applicable, issued and outstanding as of May 14, 2010.\n(2) 502 East John Street, Carson City, Nevada 89706.\n(3) Jasmine Court, 35A Regent Street, Belize City, Belize.\n(4) Gutenbergstrasse 10, 8027 Zurich, Switzerland.\n(5) Suite 500, 280 Nelson St., Vancouver, BC, Canada V6B 2E2.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nChristian Negri is our President, Treasurer, and Secretary and serves as our sole director.\nIn connection with the acquisition of Northern Future Energy Corp., we issued to Christian Negri, the former beneficial owner thereof, 12,000,000 restricted shares of our common stock. Christian Negri is the President, Treasurer, Secretary, and the sole director of the Company. The issuance was made in reliance on Rule 506 of Regulation D, as promulgated by the Securities and Exchange Commission under the Securities Act of 1933. We believe that the exemption was available because (i) no advertising or general solicitation was employed in offering the securities, (ii) the issuance of securities was made to one person, who was an accredited individual, (iii) transfer of the securities was restricted in accordance with the requirements of the Securities Act, (iv) the issuee was financially sophisticated or advised by someone who had the requisite acumen, and (v) the issuee was provided with the applicable disclosure materials or access thereto.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1510,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "30,000",
+     "$",
+     "50,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Related Fees (1)",
+     "$",
+     "18,000",
+     "$",
+     "29,865"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "48,000",
+     "$",
+     "79,865"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1555,
+    "end_line": 1572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "In connection with the acquisition of Northern Future Energy Corp., we issued to Christian Negri, the former beneficial owner thereof, 12,000,000 restricted shares of our common stock. Christian Negri is the President, Treasurer, Secretary, and the sole director of the Company. The issuance was made in reliance on Rule 506 of Regulation D, as promulgated by the Securities and Exchange Commission under the Securities Act of 1933. We believe that the exemption was available because (i) no advertising or general solicitation was employed in offering the securities, (ii) the issuance of securities was made to one person, who was an accredited individual, (iii) transfer of the securities was restricted in accordance with the requirements of the Securities Act, (iv) the issuee was financially sophisticated or advised by someone who had the requisite acumen, and (v) the issuee was provided with the applicable disclosure materials or access thereto.\nItem 14. Principal Accountant Fees and Services.\nFor the years ended December 31, 2009 and 2008, Kelly & Co. (\u201cKelly\u201d) audited our financial statements and provided tax return and tax related services.\nThe aggregate fees billed for professional services by Kelly for the years ended December 31, 2009, and 2008, were as follows:",
+   "prose_after": "(1) First, Second, and Third quarter review fees for our 2009 fiscal year and Third quarter review for our 2008 fiscal year.\nIt is the Board\u2019s policy and procedure to approve in advance all audit engagement fees and terms and all permitted non-audit services provided by our registered public accounting firm. We believe that all audit engagement fees and terms and permitted non-audit services provided by our registered public accounting firm described in the above table were approved in advance by our Board.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Financial Statements.\nIncluded under Item 8.\n(b) Exhibits required by Item 601.\nExhibit Description of Exhibit\n2.1 Agreement and Plan of Exchange by and among Milk Bottle Cards, Inc., and certain members of ForgeHouse, LLC, dated January 31, 2008 (incorporated by reference to Exhibit 2.1 of the Company\u2019s Current Report on Form 8-K, filed February 7, 2008).\n2.2 Capital Interest Purchase Agreement, by and among the Company and Paul Grootendorst, Bryan Irving, Brooks Mileson, and Ian Morl, dated January 31, 2008 (incorporated by reference to Exhibit 2.2 of the Company\u2019s Current Report on Form 8-K, filed February 7, 2008).",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1576,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FORGEHOUSE, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/  CHRISTIAN NEGRI"
+    ],
+    [
+     "",
+     "",
+     "Christian Negri"
+    ],
+    [
+     "",
+     "",
+     "President (Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     "/s/  CHRISTIAN NEGRI"
+    ],
+    [
+     "",
+     "",
+     "Christian Negri"
+    ],
+    [
+     "",
+     "",
+     "Treasurer (Principal Financial & Accounting Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Date:  May 14, 2010"
+    ]
+   ],
+   "caption_stack": [
+    "FORGEHOUSE, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1663,
+    "end_line": 1677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "10.13 Employment Agreement with Jorge Vargas, dated as of February 15, 2008 (incorporated by reference to Exhibit 10.13 of the Company\u2019s Quarterly Report on Form 10-QSB, filed May 20, 2008).\n10.14 Service and Software License Agreement, dated April 15, 2007, by and between the Company and Securitas Security Services USA, Inc. (incorporated by reference to Exhibit 10.14 of the Company\u2019s Quarterly Report on Form 10-QSB, filed May 20, 2008).\n10.15 Office Lease Agreement, by and between the Company and Wolff Atlanta Portfolio, LLC (incorporated by reference to Exhibit 10.15 of the Company\u2019s Quarterly Report on Form 10-QSB, filed May 20, 2008).\n21.1 NFE Acquisition Corp.\n31.1* Certification of President and Treasurer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1* Certification of President and Treasurer pursuant to 18 U.S.C. \u00a7 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n* Filed herewith.\n** To be filed by amendment.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1658,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ CHRISTIAN NEGRI",
+     "President, Treasurer, Secretary, and Director",
+     "",
+     "May 14, 2010"
+    ],
+    [
+     "Christian Negri",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1680,
+    "end_line": 1688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1658,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1688,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description of Exhibit"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1693,
+    "end_line": 1696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Deferred Income Taxes"
+    }
+   },
+   "prose_before": "INDEX TO EXHIBITS",
+   "prose_after": "2.5 Asset Purchase Agreement by and between Enforce Global Solutions, LLC and ForgeHouse, Inc., dated as of December 29, 2009.\n2.6 Membership Interest Purchase Agreement by and between the Company and John Britchford-Steel, dated as of December 31, 2009.\n31.1 Certification of President and Treasurer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 Certification of President and Treasurer pursuant to 18 U.S.C. \u00a7 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1690,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1705,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

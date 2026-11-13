@@ -1,0 +1,416 @@
+{
+ "accession": "0001393905-19-000232",
+ "cik": "0001358654",
+ "form": "10-K/A",
+ "filing_date": "2019-07-18",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rmes_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "20-2138504"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended January 31, 2019\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________ to ________________\nCommission File Number 000-52055\nRED METAL RESOURCES LTD.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "278 Bay Street, Suite 102, Thunder Bay, ON P7B 1R8\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code: (807) 345-7384\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on\n\n\n\nwhich each is registered"
+    ],
+    [
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "278 Bay Street, Suite 102, Thunder Bay, ON P7B 1R8\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code: (807) 345-7384\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, $0.001 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports); and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class of security",
+     "Name and address of beneficial owner",
+     "Number of shares\n\n\n\nbeneficially owned",
+     "Percentage of\n\n\n\ncommon stock"
+    ],
+    [
+     "Security Ownership of Management",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Caitlin Jeffs\n\n\n\n1158 Russell Street, Unit D,\n\n\n\nThunder Bay, ON P7B 5N2",
+     "1,691,909",
+     "4.51%"
+    ],
+    [
+     "Common stock",
+     "Michael Thompson\n\n\n\n1158 Russell Street, Unit D,\n\n\n\nThunder Bay, ON P7B 5N2",
+     "86,191",
+     "0.23%"
+    ],
+    [
+     "Common stock",
+     "Fladgate Exploration Consulting Corp.(a)\n\n\n\n1158 Russell Street, Unit D,\n\n\n\nThunder Bay, ON P7B 5N2",
+     "330,087",
+     "0.88%"
+    ],
+    [
+     "Common stock",
+     "Joao (John) da Costa\n\n\n\n789 West Pender Street, Unit 810\n\n\n\nVancouver, BC V6C 1H2",
+     "743,691",
+     "1.98%"
+    ],
+    [
+     "Common stock",
+     "Jeffrey Cocks\n\n\n\n2543 Nuttal Drive\n\n\n\nNanoose Bay, BC V9P 9B4",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "Common stock",
+     "Cody McFarlane\n\n\n\nPunta Nogales 1324, House 19\n\n\n\nSantiago, Chile",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "",
+     "All officers and directors as a group",
+     "2,851,878",
+     "7.60%"
+    ],
+    [
+     "Security Ownership of Certain Beneficial Owners (more than 5%)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "Diane Bjola(b)\n\n\n\n85 Norquay Rd.\n\n\n\nVictoria, BC V9B 1V1",
+     "5,000,000",
+     "12.50%"
+    ],
+    [
+     "Common stock",
+     "Richard N. Jeffs\n\n\n\n11750 Fairtide Road\n\n\n\nLadysmith, BC V9G 1K5",
+     "7,716,184",
+     "20.57%"
+    ],
+    [
+     "Common stock",
+     "Robert Andjelic\n\n\n\nPO Box 69\n\n\n\nMillarville, AB T0L 1K0",
+     "2,500,000",
+     "6.67%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": null
+   },
+   "prose_before": "No other changes have been made to the Form 10-K and, other than as set forth in this Amendment No. 1, the information contained in the Original Filing remains unchanged. Pursuant to Rule 12b-15 under the Securities Exchange Act of 1934, as amended, this Amendment No. 1 also includes updated certifications by our Chief Executive Officer and our Chief Financial Officer. This Amendment No. 1 speaks as of the original filing date of the Form 10-K, does not reflect events that may have occurred subsequent to the original filing date, and does not modify or update in any way any other disclosures made in the original filing of the Form 10-K.\nITEM 12: SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nTable 21 presents, as of May 14, 2019, information regarding the beneficial ownership of our common stock with respect to each of our executive officers, each of our directors, each person known by us to own beneficially more than 5% of the common stock, and all of our directors and executive officers as a group. Beneficial ownership is determined under the rules of the Securities and Exchange Commission and generally includes voting or investment power over securities. Each individual or entity named has sole investment and voting power with respect to the shares of common stock indicated as beneficially owned by them, subject to community property laws, where applicable, except where otherwise noted. As of May 14, 2019, there were 37,504,588 shares of our common stock issued and outstanding.\nTable 21: Security ownership",
+   "prose_after": "(a)Fladgate Exploration Consulting Corporation is controlled by Caitlin Jeffs and Michael Thompson.\n(b)5,000,000 shares listed as being beneficially held by Mrs. Bjola include warrants to purchase up to 2,500,000 shares of our common stock at an exercise price of $0.1875 per share, subject to acceleration right as more fully described in the Recent Issuances of Unregistered Securities section under Item 5 of this Annual Report.\nITEM 15: EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 151,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "31.1",
+     "Certification pursuant to Rule 13a-14(a) and 15d-14(a)"
+    ],
+    [
+     "31.2",
+     "Certification pursuant to Rule 13a-14(a) and 15d-14(a)"
+    ],
+    [
+     "32.1",
+     "Certification pursuant to Section 1350 of Title 18 of the United States Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 154,
+    "end_line": 164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "(a)Fladgate Exploration Consulting Corporation is controlled by Caitlin Jeffs and Michael Thompson.\n(b)5,000,000 shares listed as being beneficially held by Mrs. Bjola include warrants to purchase up to 2,500,000 shares of our common stock at an exercise price of $0.1875 per share, subject to acceleration right as more fully described in the Recent Issuances of Unregistered Securities section under Item 5 of this Annual Report.\nITEM 15: EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nDated: July 18, 2019",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 151,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RED METAL RESOURCES LTD.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Caitlin Jeffs"
+    ],
+    [
+     "",
+     "",
+     "Caitlin Jeffs, Chief Executive Officer (Principal Executive Officer), and President"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Joao (John) da Costa"
+    ],
+    [
+     "",
+     "",
+     "Joao (John) da Costa, Chief Financial Officer (Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "RED METAL RESOURCES LTD."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 171,
+    "end_line": 182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nDated: July 18, 2019",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 182,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

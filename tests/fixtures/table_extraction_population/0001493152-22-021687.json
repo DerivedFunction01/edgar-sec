@@ -1,0 +1,3169 @@
+{
+ "accession": "0001493152-22-021687",
+ "cik": "0001598924",
+ "form": "10-Q",
+ "filing_date": "2022-08-09",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the quarterly period ended",
+     "June 30, 2022"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 14
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "or\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________________ to _____________________",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Commission File Number",
+     "000-55326"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "or\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________________ to _____________________",
+   "prose_after": "IMAGE CHAIN GROUP LIMITED, INC.\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "46-4333787"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "IMAGE CHAIN GROUP LIMITED, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No. 6, 6-1, 6-2, Jalan BS 10/6, Taman Bukit Serdang, 43300 Seri Kembangan, Selangor, Malaysia",
+     "N/A"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(852) 3188-2700\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name on each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 52,
+    "end_line": 58
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(852) 3188-2700\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] YES [ ] NO\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\n[X] YES [ ] NO\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     "3"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "11"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "11"
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     "12"
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "12"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "12"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "12"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "12"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "12"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act)\n[ ] YES [X] NO\nAPPLICABLE ONLY TO CORPORATE ISSUERS\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n533,539,882 common shares issued and outstanding as of August 9, 2022.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nINDEX TO UNAUDITED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CONTENTS",
+     "",
+     "PAGES"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "F-1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+     "",
+     "F-2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "F-3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS",
+     "",
+     "F-5 - F-10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 126
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nINDEX TO UNAUDITED FINANCIAL STATEMENTS",
+   "prose_after": "Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "-",
+     "",
+     "",
+     "24,205",
+     ""
+    ],
+    [
+     "Total Current assets",
+     "",
+     "-",
+     "",
+     "",
+     "24,205",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "24,205",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities and other payables",
+     "$",
+     "85,232",
+     "",
+     "$",
+     "8,006",
+     ""
+    ],
+    [
+     "Due to related party",
+     "",
+     "731,273",
+     "",
+     "",
+     "731,273",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "816,505",
+     "",
+     "",
+     "739,279",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "816,505",
+     "",
+     "",
+     "739,279",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $0.001 par value, 50,000 shares authorized, issued and outstanding",
+     "",
+     "50",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 2,000,000,000 shares authorized, 533,539,882 and 533,539,882 issued as of June 30, 2022 and December 31, 2021, respectively",
+     "",
+     "533,540",
+     "",
+     "",
+     "533,540",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "8,198,075",
+     "",
+     "",
+     "8,198,075",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(9,548,170)",
+     "",
+     "",
+     "(9,446,739)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(816,505)",
+     "",
+     "",
+     "(715,074)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "-",
+     "",
+     "$",
+     "24,205",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 131,
+    "end_line": 167
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheets",
+   "prose_after": "Consolidated Statements of Operations and Comprehensive Loss\nFor the period ended June 30, 2022 and 2021\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "49,173",
+     "",
+     "",
+     "48,408",
+     "",
+     "",
+     "101,431",
+     "",
+     "",
+     "98,330",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "$",
+     "49,173",
+     "",
+     "$",
+     "48,408",
+     "",
+     "$",
+     "101,431",
+     "",
+     "$",
+     "98,330",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss Before Income Taxes",
+     "",
+     "(49,173)",
+     "",
+     "",
+     "(48,408)",
+     "",
+     "",
+     "(101,431)",
+     "",
+     "",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss from continuing operations",
+     "$",
+     "(49,173)",
+     "",
+     "$",
+     "(48,408)",
+     "",
+     "$",
+     "(101,431)",
+     "",
+     "$",
+     "(98,330)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Comprehensive Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Comprehensive Loss",
+     "$",
+     "(49,173)",
+     "",
+     "$",
+     "(48,408)",
+     "",
+     "$",
+     "(101,431)",
+     "",
+     "$",
+     "(98,330)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic and Diluted Weighted Average Common Shares Outstanding",
+     "",
+     "533,539,882",
+     "",
+     "",
+     "508,539,882",
+     "",
+     "",
+     "533,539,882",
+     "",
+     "",
+     "508,539,882",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 208
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations and Comprehensive Loss\nFor the period ended June 30, 2022 and 2021\n(Unaudited)",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 1
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional\n\n\n\nPaid in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Accumulated\n\n\n\nother\n\n\n\ncomprehensive",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "Total\n\n\n\nStockholders\u2019\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "loss",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "508,339,882",
+     "$",
+     "508,540",
+     "$",
+     "8,124,365",
+     "$",
+     "(9,442,657)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(809,702)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(49,922)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(49,922)",
+     ""
+    ],
+    [
+     "Balance, March 31, 2021",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "508,339,882",
+     "$",
+     "508,540",
+     "$",
+     "8,124,365",
+     "$",
+     "(9,492,579)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(859,624)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(48,408)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(48,408)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2021",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "508,339,882",
+     "$",
+     "508,540",
+     "$",
+     "8,124,365",
+     "$",
+     "(9,540,987)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(908,032)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "533,339,882",
+     "$",
+     "533,540",
+     "$",
+     "8,198,075",
+     "$",
+     "(9,446,739)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(715,074)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(52,258)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(52,258)",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "533,339,882",
+     "$",
+     "533,540",
+     "$",
+     "8,198,075",
+     "$",
+     "(9,498,997)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(767,332)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(49,173)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(49,173)",
+     ""
+    ],
+    [
+     "Balance, June 30, 2022",
+     "",
+     "50,000",
+     "$",
+     "50",
+     "",
+     "533,339,882",
+     "$",
+     "533,540",
+     "$",
+     "8,198,075",
+     "$",
+     "(9,548,170)",
+     "",
+     "$",
+     "-",
+     "",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "(816,505)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 215,
+    "end_line": 246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity (Deficit)\n(Unaudited)",
+   "prose_after": "Consolidated Statements of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(101,431)",
+     "",
+     "$",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses paid by related party",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "24,205",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accrued liabilities and other payables",
+     "",
+     "77,226",
+     "",
+     "",
+     "98,330",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign currency translation on cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease of cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2013beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2013end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the six months ended",
+    "June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows\n(Unaudited)",
+   "prose_after": "Notes to Unaudited Consolidated Financial Statements\n1. THE COMPANY AND PRINCIPAL BUSINESS ACTIVITIES\nBusiness\nImage Chain Group Limited, Inc. (formerly Have Gun Will Travel Entertainment, Inc.) (\u201cICGL\u201d or the \u201cCompany\u201d) was incorporated under the laws of Nevada on December 18, 2013. From inception through the date of the Share Exchange as defined below, the Company was an emerging forward-thinking full-service television pre-production company dedicated to the creation of original concepts and programming with a bold and innovative edge in the reality television space for sale, option and licensure to independent producers, cable television networks, syndication companies, and other entities. On June 11, 2015, the Company amended its Articles of Incorporation with the State of Nevada in order to change its name to Image Chain Group Limited, Inc. and to increase the authorized shares of common stock from 70,000,000 to 400,000,000 (the \u201cAmendments\u201d). The name change was undertaken in order to more closely align with the operations of the Company\u2019s wholly-owned subsidiary, Fortune Delight Holdings Group Ltd (\u201cFDHG\u201d). The increase in authorized shares was undertaken to allow the Company to utilize the newly available shares to raise capital. The board of directors and the stockholders of the Company approved the Amendments on May 8, 2015.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Company",
+     "Place of\n\n\n\nincorporation",
+     "Attributable\n\n\n\nequity interest %",
+     "",
+     "Authorized\n\n\n\ncapital"
+    ],
+    [
+     "Image P2P Trading Group Limited (\u201cImage P2P\u201d)",
+     "British Virgin Islands",
+     "",
+     "100",
+     "USD 50,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 330,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The accompanying interim unaudited condensed consolidated financial statements have been prepared in accordance with generally accepted accounting principles for interim financial information and in accordance with the instructions to Form 10-Q and Article 8 of Regulation S-X. In our opinion, all adjustments (consisting of normal recurring adjustments) considered necessary for a fair presentation have been included. Operating results for the six months ended June 30, 2022 are not necessarily indicative of the results that may be expected for the year ending December 31, 2022. Notes to the unaudited interim condensed consolidated financial statements that would substantially duplicate the disclosures contained in the audited consolidated financial statements for fiscal year 2021 have been omitted. This report should be read in conjunction with the audited consolidated financial statements and the footnotes thereto for the fiscal year ended December 31, 2021 included in the Company\u2019s Form 10-K as filed with the Securities and Exchange Commission on June 30, 2022.\nPrinciples of consolidation\nThe consolidated financial statements include the accounts of the Company and its subsidiaries. All significant inter-company accounts and transactions have been eliminated. The consolidated financial statements include 100% of assets, liabilities, and net income or loss of those wholly-owned subsidiaries.\nThe Company\u2019s subsidiaries are listed as follows:\nSUMMARY OF IDENTITIES OF CONSOLIDATED SUBSIDIARIES",
+   "prose_after": "Use of estimates\nIn preparing these consolidated financial statements, management makes estimates and assumptions that affect the reported amounts of assets and liabilities in the balance sheet and revenues and expenses during the periods reported. Actual results may differ from these estimates.\nIncome taxes\nIncome taxes are determined in accordance with the provisions of ASC 740, \u201cIncome Taxes\u201d (\u201cASC 740\u201d). Under this method, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax basis. Deferred tax assets and liabilities are measured using enacted income tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. Any effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 309,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 350,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payable to My Project Group Limited",
+     "$",
+     "83,427",
+     "$",
+     "-"
+    ],
+    [
+     "Accrued other expenses",
+     "",
+     "1,805",
+     "",
+     "8,006"
+    ],
+    [
+     "Total accrued liabilities and other payables",
+     "$",
+     "85,232",
+     "$",
+     "8,006"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 413,
+    "end_line": 424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "ACCRUED LIABILITIES AND OTHER PAYABLES"
+    }
+   },
+   "prose_before": "As of June 30, 2022, the Company had an accumulated deficit of $9,548,170 and net loss of $101,431 and net cash used in operations of $0 for the period ended June 30, 2022. Losses have principally occurred as a result of the substantial resources required for professional fees and general and administrative expenses associated with our operations. The continuation of the Company as a going concern through December 31, 2022 is dependent upon the continued financial support from its stockholders or external financing. Management believes the existing stockholders will provide the additional cash to meet with the Company\u2019s obligations as they become due. However, there is no assurance that the Company will be successful in securing sufficient funds to sustain the operations.\nThese conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. These financial statements do not include any adjustments to reflect the possible future effect on the recoverability and classification of assets or the amounts and classifications of liabilities that may result from the outcome of these uncertainties. The Company may raise additional capital through the sale of its equity securities, or through borrowings from financial institutions and related parties. Management believes that the actions presently being taken to obtain additional funding and implement its strategic plan provides the opportunity for the Company to continue as a going concern.\n4. ACCRUED LIABILITIES AND OTHER PAYABLES\nAccrued liabilities and other payables consisted of the following as of June 30, 2022 and December 31, 2021:\nSCHEDULE OF ACCRUED LIABILITIES AND OTHER PAYABLES",
+   "prose_after": "Effective from January 1, 2021, the Company entered into service agreement with My Project Group Limited under which monthly compensation of $15,000 will be charged to the Company against provision of various consultancy services related to company accounting and filing services.\n5. INCOME TAXES\nThe Company operates in the United States and its wholly-owned subsidiaries operate in British Virgin Islands (\u201cBVI\u201d) and files tax returns in these jurisdictions.\nLoss from continuing operations before income tax expense (benefit) is as follows:\nSCHEDULE OF LOSS FROM CONTINUING OPERATIONS BEFORE INCOME TAX EXPENSE (BENEFIT)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Periods Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Loss attributed to United States",
+     "$",
+     "(101,431)",
+     "",
+     "$",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Loss attributed to foreign operations",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "$",
+     "(101,431)",
+     "",
+     "$",
+     "(98,330)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Periods Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 435,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Effective from January 1, 2021, the Company entered into service agreement with My Project Group Limited under which monthly compensation of $15,000 will be charged to the Company against provision of various consultancy services related to company accounting and filing services.\n5. INCOME TAXES\nThe Company operates in the United States and its wholly-owned subsidiaries operate in British Virgin Islands (\u201cBVI\u201d) and files tax returns in these jurisdictions.\nLoss from continuing operations before income tax expense (benefit) is as follows:\nSCHEDULE OF LOSS FROM CONTINUING OPERATIONS BEFORE INCOME TAX EXPENSE (BENEFIT)",
+   "prose_after": "The expense (benefit) for income taxes from continuing operations consists of the following components:\nUnited States of America\nThe Tax Act reduces the U.S. statutory corporate tax rate from 35% to 21% for our tax years beginning in 2018, which resulted in the re-measurement of the federal portion of our deferred tax assets from the 35% to 21% tax rate. The Company is registered in the State of Nevada and is subject to United States of America tax law. As of June 30, 2022, the operations in the United States of America incurred $3,702,241 of cumulative net operating losses (NOL\u2019s) which can be carried forward to offset future taxable income. The NOL carryforwards begin to expire in 2041, if unutilized. The Company has provided for a full valuation allowance of approximately $777,471 against the deferred tax assets on the expected future tax benefits from the net operating loss carryforwards as the management believes it is more likely than not that these assets will not be realized in the future.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NOL carryforwards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "777,471",
+     "",
+     "$",
+     "756,170",
+     ""
+    ],
+    [
+     "Foreign operations",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(777,471)",
+     "",
+     "",
+     "(756,170)",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 462,
+    "end_line": 477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Tax Act reduces the U.S. statutory corporate tax rate from 35% to 21% for our tax years beginning in 2018, which resulted in the re-measurement of the federal portion of our deferred tax assets from the 35% to 21% tax rate. The Company is registered in the State of Nevada and is subject to United States of America tax law. As of June 30, 2022, the operations in the United States of America incurred $3,702,241 of cumulative net operating losses (NOL\u2019s) which can be carried forward to offset future taxable income. The NOL carryforwards begin to expire in 2041, if unutilized. The Company has provided for a full valuation allowance of approximately $777,471 against the deferred tax assets on the expected future tax benefits from the net operating loss carryforwards as the management believes it is more likely than not that these assets will not be realized in the future.\nBritish Virgin Islands\nUnder the laws of British Virgin Islands, the Company is not subject to income taxes.\nThe following table sets forth the significant components of the aggregate deferred tax assets of the Company as of June 30, 2022 and December 31, 2021:\nSCHEDULE OF DEFERRED TAX ASSETS",
+   "prose_after": "Management believes that it is more likely than not that the deferred tax assets will not be fully realizable in the future. Accordingly, the Company provided for a full valuation allowance against its deferred tax assets of $777,471 as of June 30, 2022. For the period ended June 30, 2022, the valuation allowance increased by $21,301, primarily relating to net operating loss carryforwards.\nThe Company\u2019s tax returns are subject to examination by United States tax authorities beginning with the year ended December 31, 2013.\n6. RELATED PARTY TRANSACTIONS\nRelated parties\u2019 relationships are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "David Po",
+     "Director and a shareholder of the Company"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 486,
+    "end_line": 489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Management believes that it is more likely than not that the deferred tax assets will not be fully realizable in the future. Accordingly, the Company provided for a full valuation allowance against its deferred tax assets of $777,471 as of June 30, 2022. For the period ended June 30, 2022, the valuation allowance increased by $21,301, primarily relating to net operating loss carryforwards.\nThe Company\u2019s tax returns are subject to examination by United States tax authorities beginning with the year ended December 31, 2013.\n6. RELATED PARTY TRANSACTIONS\nRelated parties\u2019 relationships are as follows:",
+   "prose_after": "During the period ended June 30, 2022, the Company did not have transaction with David Po. Amounts due to Mr. Po as of June 30, 2022 and December 31, 2021, were $731,273.\nThe owing to Mr. Po consists of working capital advances and borrowings. These amounts are due on demand and are non-interest bearing.\n7. STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nPreferred Stock\nThe Company is authorized to issue 50,000 shares, with a stated par value of $0.001 per share with such powers, preferences, rights and restrictions which shall be determined by the Corporation\u2019s Board of Directors in its sole discretion, and which designations and issuances shall not require the approval of the shareholders of the Corporation.\nDuring the six months ended June 30, 2022, there were no issuances of Preferred Stock.\nAs of June 30, 2022 and December 31, 2021, 50,000 shares of preferred stock were issued and outstanding.\nCommon Stock\nThe Company is authorized to issue 2,000,000,000 shares of common stock at a par value of $0.001.\nDuring the six months ended June 30, 2022, there were no issuances of Common Stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of and for the period ended\n\n\n\nJune 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Malaysia",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(101,431)",
+     "",
+     "",
+     "(101,431)",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital expenditures for long-lived assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of and for the period ended\n\n\n\nJune 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "During the six months ended June 30, 2022, there were no issuances of Preferred Stock.\nAs of June 30, 2022 and December 31, 2021, 50,000 shares of preferred stock were issued and outstanding.\nCommon Stock\nThe Company is authorized to issue 2,000,000,000 shares of common stock at a par value of $0.001.\nDuring the six months ended June 30, 2022, there were no issuances of Common Stock.\nAs of June 30, 2022 and December 31, 2021, 533,539,882 shares of common stock were issued and outstanding.\n8. SEGMENT INFORMATION\nASC 280, \u201cSegment Reporting\u201d establishes standards for reporting information about operating segments on a basis consistent with the Company\u2019s internal organization structure as well as information about services categories, business segments and major customers in financial statements. The Company has one reportable segment in term of geography.\nBy geography\nSCHEDULE OF SEGMENT REPORTING",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of and for the period ended\n\n\n\nJune 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Malaysia",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(98,330)",
+     "",
+     "",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital expenditures for long-lived assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of and for the period ended\n\n\n\nJune 30, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 536,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "9. SUBSEQUENT EVENTS\nThe Company has evaluated subsequent events through the date which the financial statements were available to be issued. All subsequent events requiring recognition as of June 30, 2022 have been incorporated into these financial statements and there are no subsequent events that require disclosure in accordance with FASB ASC Topic 855, \u201cSubsequent Events.\u201d\n10. SIGNIFICANT EVENTS\nDuring the fiscal year, the World Health Organization declared the Coronavirus (COVID-19) outbreak to be a pandemic, which has caused severe global social and economic disruptions and uncertainties, including markets where the Company operates.\nThe Company considers this outbreak as non-adjusting-events. The consequences brought about by Covid-19 continue to evolve and whilst the Company actively monitoring and managing its operations to respond to these changes, the Company does not consider it practicable to provide any quantitative estimate on the potential impact it may have on the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 561,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "49,173",
+     "",
+     "",
+     "48,408",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "49,173",
+     "",
+     "",
+     "48,408",
+     ""
+    ],
+    [
+     "Loss Before Income Taxes",
+     "",
+     "(49,173)",
+     "",
+     "",
+     "(48,408)",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(49,173)",
+     "",
+     "",
+     "(48,408)",
+     ""
+    ],
+    [
+     "Other Comprehensive Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Comprehensive loss",
+     "",
+     "(49,173)",
+     "",
+     "",
+     "(48,408)",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic and Diluted Weighted Average Common Shares Outstanding",
+     "",
+     "508,539,882",
+     "",
+     "",
+     "508,539,882",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 667,
+    "end_line": 687
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SIGNIFICANT EVENTS"
+    }
+   },
+   "prose_before": "Kuala Lumpur transition from Phase 1 to Phase 2 of the National Recovery Plan effective on September 10, 2021.\nOn 8 March 2022, the Prime Minister of Malaysia announced that Malaysia will commence its transition to the endemic phase and reopen its borders from 1 April 2022. After two years of battling the COVID-19 pandemic, Malaysians are starting to return to their normal lifestyle, albeit under the new normal by adhering to standard operating procedures such as the mask mandate.\nOn April 28, 2022. the Ministry announced the relaxation of all standard operating procedures (SOPs) starting 1 May \u2014 including quarantine updates for COVID-positive cases, doing away with MySejahtera, and more.\nDuring the MCO, CMCO, RMCO and FMCO period, we have minimized the operations and have stopped to seek new business opportunities with established business entities for merger with or acquisition of a target business. We expect the business activities will be resumed gradually.\nResults of Operations\nThree months ended June 30, 2022 compared to three months ended June 30, 2021.",
+   "prose_after": "Operating Expenses\nOur general and administrative expenses increased from $48,408 for the three months ended June 30, 2021 to $49,173 for the three months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nNet Loss\nOur net loss increased from $48,408 for the three months ended June 30, 2021 to $49,173 for the three months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nSix months ended June 30, 2022 compared to six months ended June 30, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "101,431",
+     "",
+     "",
+     "98,330",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "101,431",
+     "",
+     "",
+     "98,330",
+     ""
+    ],
+    [
+     "Loss Before Income Taxes",
+     "",
+     "(101,431)",
+     "",
+     "",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(101,431)",
+     "",
+     "",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Other Comprehensive Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Comprehensive loss",
+     "",
+     "(101,431)",
+     "",
+     "",
+     "(98,330)",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic and Diluted Weighted Average Common Shares Outstanding",
+     "",
+     "508,539,882",
+     "",
+     "",
+     "508,539,882",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SIGNIFICANT EVENTS"
+    }
+   },
+   "prose_before": "Operating Expenses\nOur general and administrative expenses increased from $48,408 for the three months ended June 30, 2021 to $49,173 for the three months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nNet Loss\nOur net loss increased from $48,408 for the three months ended June 30, 2021 to $49,173 for the three months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nSix months ended June 30, 2022 compared to six months ended June 30, 2021.",
+   "prose_after": "Operating Expenses\nOur general and administrative expenses increased from $98,330 for the six months ended June 30, 2021 to $101,431 for the six months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nNet Loss\nOur net loss increased from $98,330 for the six months ended June 30, 2021 to $101,431 for the six months ended June 30, 2022. The increase was mainly attributed to the consulting fee in the current year.\nLiquidity and Capital Resources\nSince the inception of the Company, we have incurred significant net losses and negative cash flows from operations. During the six months ended June 30, 2022 and the six months ended June 30, 2021, we had net losses of $101,431 and $98,330, respectively. As of June 30, 2022, we had an accumulated deficit of $9,548,170. As discussed in our financial statements for the six months ended June 30, 2022, these factors raise substantial doubt about our ability to continue as a going concern.\nTo date, we have financed our operations principally through borrowings from our related parties. Depending on our future operational results, we may need to conduct one or more equity or debt financings within the next 12 months.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\n\n\nJune 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Cash flows from investing activities",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Cash flows from financing activities",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 744,
+    "end_line": 755
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SIGNIFICANT EVENTS"
+    }
+   },
+   "prose_before": "To date, we have financed our operations principally through borrowings from our related parties. Depending on our future operational results, we may need to conduct one or more equity or debt financings within the next 12 months.\nWe could potentially need our available financial resources sooner than we currently expect, and we may incur additional indebtedness to meet future financing needs. Adequate additional funding may not be available to us on acceptable terms or at all. In addition, although we anticipate being able to obtain additional financing through non-dilutive means, we may be unable to do so. Our failure to raise capital as and when needed could have significant negative consequences for our business, financial condition and results of operations. Our future capital requirements and the adequacy of available funds will depend on many factors, many of which are beyond our control.\nRelated Party Loans\nSee \u201cRelated Party Transactions\u201d in Note 6 of Notes to the Financial Statements. These unsecured loans do not bear interest or fixed dates for repayment.\nCash flows\nThe following table summarizes our cash flows for the periods presented:",
+   "prose_after": "Operating Activities\nNet cash provided by operating activities for the six months ended June 30, 2022 and 2021 were $0.\nInvesting Activities\nNet cash used in investing activities for the six months ended June 30, 2022 and 2021 were $0.\nFinancing Activities\nNet cash provided by financing activities for the six months ended June 30, 2022 and 2021 were $0.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, and capital expenditures or capital resources that are material to stockholders.\nGOING CONCERN\nThese financial statements have been prepared assuming that Company will continue as a going concern. As of June 30, 2022, the Company had accumulated deficits of $9,548,170 due to substantial losses. There was substantial doubt regarding the Company\u2019s ability to continue as going concern as of June 30, 2022. Refer to Note 3. GOING CONCERN of the accompanying notes to the condensed financial statements.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(31)",
+     "",
+     "Rule 13a-14 (d)/15d-14d) Certifications"
+    ],
+    [
+     "31.1*",
+     "",
+     "Section 302 Certification by the Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer"
+    ],
+    [
+     "(32)",
+     "",
+     "Section 1350 Certifications"
+    ],
+    [
+     "32.1*",
+     "",
+     "Section 906 Certification by the Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer"
+    ],
+    [
+     "101",
+     "",
+     "Interactive Data File"
+    ],
+    [
+     "101.INS**",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH**",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL**",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF**",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB**",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE**",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SIGNIFICANT EVENTS"
+    }
+   },
+   "prose_before": "As a \u201csmaller reporting company\u201d, we are not required to provide the information required by this Item.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot Applicable.\nItem 5. Other Information\nNot Applicable.\nItem 6. Exhibits",
+   "prose_after": "* Filed herewith.\n** XBRL Information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 804,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "IMAGE CHAIN GROUP LIMITED, INC."
+    ],
+    [
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated: August 9, 2022",
+     "/s/ Chiea Kah Szen"
+    ],
+    [
+     "",
+     "Chiea Kah Szen"
+    ],
+    [
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "(Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "IMAGE CHAIN GROUP LIMITED, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 871
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SIGNIFICANT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** XBRL Information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

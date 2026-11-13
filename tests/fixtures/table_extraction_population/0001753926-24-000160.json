@@ -1,0 +1,5556 @@
+{
+ "accession": "0001753926-24-000160",
+ "cik": "0001318268",
+ "form": "10-K",
+ "filing_date": "2024-01-25",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "g083886_10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "85-2151785"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "United states SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  Annual report pursuant to section 13 Or 15(d) of the securities exchange act of 1934\nFor the fiscal year ended December 31, 2022\n[ ]  transition report pursuant to section 13 Or 15(d) of the securities exchange act of 1934\nFor the transition period from ___________ to___________\nCommission file number 000-51302\nMadison Technologies Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2500 Westchester Avenue, Purchase, NY",
+     "10577"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (212) 257-4193\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon stock - $0.001 par value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nNote",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "15"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "15"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "17"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "19"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "19"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "24"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "25"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "25"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "28"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "31"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Holders and Management and Related Stockholder Matters",
+     "32"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "33"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "33"
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "34"
+    ],
+    [
+     "Items 16.",
+     "Form 10-K Summary",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "38"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 125
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "State the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked prices of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter.\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates as of June 30, 2022 was $37,565,946, based on 453,694,998 shares of common stock, par value $0.001 per share (\u201cCommon Stock\u201d), outstanding and held by non-affiliates on such date and a closing price of our Common Stock equal to $0.828 per share on such date. Shares of Common Stock held by each director, each officer and each person who owns 10% or more of the outstanding Common Stock have been excluded from this calculation in that such persons may be deemed to be affiliates. Such determination of affiliate status is not necessarily conclusive.\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common shares, as of the latest practicable date.\nThe registrant had 1,603,095,243 shares of Common Stock outstanding as of January 23, 2024.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "i\npart I\nItem 1. Business.\nSummary\nMadison Technologies Inc. (\u201cMadison\u201d or the \u201cCompany\u201d or \u201cwe\u201d or \u201cus\u201d or \u201cour\u201d) is a Nevada corporation that was incorporated on June 15, 1998.\nMadison Technologies Inc. is seeking to create, develop and launch BlockchainTV (\u201cBCTV\u201d), the first-to-market 24/7 television broadcast and streaming communications network designed to bring the most up-to-date cryptocurrency information and entertainment to the masses in the U.S. and around the world.\nWe believe there is an information void in the blockchain global community where there is no credible, reliable and unbiased source for the most up-to-date information. We created BCTV to fill that void with a live broadcast network and distribution platform to deliver unbiased information in the global blockchain marketplace. We intend for BCTV to engage with viewers by bringing experts, entrepreneurs and entertainment programming into their living rooms and on their devices with a focus on unpacking trends, separating fact from fiction and providing insight into the volatile global marketplace.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "High and Low Prices of the Common Stock",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Period Ended",
+     "High",
+     "",
+     "Low",
+     "",
+     "Source"
+    ],
+    [
+     "September 30, 2023",
+     "$",
+     "0.0017",
+     "$",
+     "0.002",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "June 30, 2023",
+     "$",
+     "0.0042",
+     "$",
+     "0.0012",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "March 31, 2023",
+     "$",
+     "0.0174",
+     "$",
+     "0.0016",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "December 31, 2022",
+     "$",
+     "0.031",
+     "$",
+     "0.003",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "September 30, 2022",
+     "$",
+     "0.110",
+     "$",
+     "0.000",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "June 30, 2022",
+     "$",
+     "0.218",
+     "$",
+     "0.067",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "March 31, 2022",
+     "$",
+     "0.250",
+     "$",
+     "0.050",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "December 31, 2021",
+     "$",
+     "0.310",
+     "$",
+     "0.034",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "September 30, 2021",
+     "$",
+     "0.777",
+     "$",
+     "0.130",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "June 30, 2021",
+     "$",
+     "1.070",
+     "$",
+     "0.300",
+     "OTC Markets Group Inc."
+    ],
+    [
+     "March 31, 2021",
+     "$",
+     "0.940",
+     "$",
+     "0.190",
+     "OTC Markets Group Inc."
+    ]
+   ],
+   "caption_stack": [
+    "High and Low Prices of the Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Item 4. Mine Safety Disclosures.\nNot Applicable.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\n(a) Market Information\nOur Common Stock was quoted on the Pink Open Market maintained by the OTC Markets Group Inc. (the \u201cOTC\u201d) under the symbol \u201cMDEX\u201d from April 26, 2006 to July 14, 2023 and is now quoted on the Expert Market operated by the OTC since July 17, 2023. Quotations of Expert Market securities are restricted from public viewing. It is our objective that the Common Stock once again be quoted on the Pink Open Market, but there is no assurance that we will be successful in such regard. The following table lists the high and low prices of our Common Stock for each of our fiscal quarters for the last two fiscal years and for the interim period ended September 30, 2023. The price information was obtained from the OTC and reflects inter-dealer prices, without retail mark-up, mark-down or commission, and may not represent actual transactions.",
+   "prose_after": "(b) Holders of Record\nWe have approximately 52 holders of record of our Common Stock as of December 31, 2022, according to a shareholders list provided by Madison\u2019s transfer agent as of that date. The number of registered shareholders does not include any estimate by us of the number of beneficial owners of Common Stock held in street name. The transfer agent for our Common Stock is Pacific Stock Transfer Company, 6725 Via Austi Pkwy, Suite 300, Las Vegas, Nevada 89119 and its telephone number is (800) 785-7782.\n(c) Dividends\nWe have declared no dividends on our Common Stock, and we are not subject to any restrictions that limit our ability to pay dividends on our shares of Common Stock. Dividends are declared at the sole discretion of our Board of Directors and we do not plan to pay dividends in the future.\n(d) Securities Authorized for Issuance under Equity Compensation Plans\nAs of December 31, 2022, we have not adopted an equity compensation plan.\n(e) Recent Sales of Unregistered Securities",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "$",
+     "126,331",
+     "",
+     "$",
+     "942,713",
+     ""
+    ],
+    [
+     "Property, equipment and right-of-use assets",
+     "",
+     "1,440,937",
+     "",
+     "",
+     "2,887,328",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "10,159,063",
+     "",
+     "",
+     "12,029,646",
+     ""
+    ],
+    [
+     "",
+     "",
+     "11,726,331",
+     "",
+     "",
+     "15,859,687",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "",
+     "1,118,174",
+     "",
+     "",
+     "508,779",
+     ""
+    ],
+    [
+     "Lease liability obligations",
+     "",
+     "1,464,728",
+     "",
+     "",
+     "1,468,495",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,582,902",
+     "",
+     "",
+     "21,977,274",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Revenues",
+     "",
+     "1,920,612",
+     "",
+     "",
+     "1,243,655",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "(509,867)",
+     "",
+     "",
+     "(531,899)",
+     ""
+    ],
+    [
+     "Television operation",
+     "",
+     "(344,260)",
+     "",
+     "",
+     "(267,193)",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "(323,484)",
+     "",
+     "",
+     "(180,210)",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "(1,178,043)",
+     "",
+     "",
+     "(1,652,095)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "175,695",
+     "",
+     "",
+     "(292,704)",
+     ""
+    ],
+    [
+     "Loss on asset disposals",
+     "",
+     "(52,668)",
+     "",
+     "",
+     "(1,737,847)",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "(3,008,013)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "(3,671,407)",
+     "",
+     "$",
+     "(3,418,293)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Net cash provided by financing activities of $1,752,000 came primarily from proceeds from subordinated loans entered into during the year ended December 31, 2022, compared to $20,982,000 of cash provided by financing activities during the year ended December 31, 2021, which consisted primarily of the proceeds from the Arena financing in February 2021, share subscriptions received, but not issued, for our Series G convertible Preferred Stock, par value $0.001 per share (the \u201cSeries G Preferred Stock\u201d), and proceeds from subordinated loans.\nDiscontinued Operations\nIn the fourth quarter of 2022, management at that time determined that Sovryn\u2019s television broadcast business was not an efficient use of our resources to develop and launch BCTV, our core business, and sought to exit Sovryn\u2019s business and reduce Madison\u2019s senior debt it incurred in connection with acquiring Sovryn\u2019s assets and creating its business. As a result, Sovryn is recognized as a discontinued operation in the accompanying consolidated financial statements. The previous year\u2019s assets, liabilities and expenses have been similarly classified for comparative purposes. The following is a summary of Sovryn for the years ended December 31, 2022 and 2021:",
+   "prose_after": "Purchase of Significant Equipment\nAs of December 31, 2022, we had no intention to purchase any significant equipment during the next twelve months.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements including arrangements that would affect our liquidity, capital resources, market risk support and credit risk support or other benefits.\nMaterial Commitments for Capital Expenditures\nWe had no contingencies or long-term commitments at December 31, 2022.\nGoing Concern\nThe independent auditors\u2019 reports accompanying our December 31, 2022 and 2021 consolidated financial statements in this Annual Report contain an explanatory paragraph expressing substantial doubt about our ability to continue as a going concern. Such consolidated financial statements have been prepared assuming that we will continue as a going concern, which contemplates that we will realize our assets and satisfy our liabilities and commitments in the ordinary course of business.\nTransactions with Related Parties",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 752,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Independent Auditor\u2019s Report (PCAOB ID#: 5041)",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED FINANCIAL STATEMENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Deficit",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We have certain financial instruments that are derivatives or contain embedded derivatives. We evaluate all of our financial instruments to determine if those contracts or any potential embedded components of those contracts qualify as derivatives to be separately accounted for in accordance with ASC 810-10-05-4 and 815-40. This accounting treatment requires that the carrying amount of any derivatives be recorded at fair value at issuance and marked-to-market at each balance sheet date. In the event that the fair value is recorded as a liability, as is the case with us, the change in the fair value during the period is recorded as either other income or expense. Upon conversion, exercise or repayment, the respective derivative liability is marked to fair value at the conversion, repayment or exercise date and then the related fair value amount is reclassified to other income or expense as part of gain or loss on extinguishment.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nWe are a smaller reporting company as defined by Rule 12b-2 of the Exchange Act and are not required to provide the information required under this item.\nItem 8. Financial Statements and Supplementary Data.\nDECEMBER 31, 2022 AND 2021\nTABLE OF Contents",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the shareholders and the board of directors of Madison Technologies Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Madison Technologies Inc. (the \u201cCompany\u201d) as of December 31, 2022 and 2021, the related statement of operations, stockholders\u2019 equity (deficit), and cash flows for the year then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021, and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States.\nSubstantial Doubt about the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company\u2019s significant operating losses raise substantial doubt about its ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 795,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 816,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ BF Borgers CPA PC",
+     ""
+    ],
+    [
+     "BF Borgers CPA PC",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since March 28, 2022",
+     ""
+    ],
+    [
+     "PCAOB ID 5041",
+     ""
+    ],
+    [
+     "Lakewood, CO",
+     ""
+    ],
+    [
+     "January 24, 2024",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ BF Borgers CPA PC",
+    "BF Borgers CPA PC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 843,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or are required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved especially challenging, subjective, or complex judgments.\nWe determined that there are no critical audit matters.",
+   "prose_after": "CONSOLIDATED Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 816,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,\n\n\n\n2022",
+     "",
+     "",
+     "For the Year Ended December 31,\n\n\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "729",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "12,722",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Note receivables",
+     "",
+     "\u2014",
+     "",
+     "",
+     "738,878",
+     ""
+    ],
+    [
+     "Assets from discontinued operations",
+     "",
+     "11,726,332",
+     "",
+     "",
+     "15,859,685",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "11,739,054",
+     "",
+     "",
+     "16,599,292",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "167,000",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "100",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "11,739,154",
+     "",
+     "$",
+     "16,766,392",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "741,399",
+     "",
+     "$",
+     "283,024",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "4,429,329",
+     "",
+     "",
+     "3,464,529",
+     ""
+    ],
+    [
+     "Promissory notes",
+     "",
+     "936,112",
+     "",
+     "",
+     "491,741",
+     ""
+    ],
+    [
+     "Convertible notes",
+     "",
+     "1,883,295",
+     "",
+     "",
+     "850,000",
+     ""
+    ],
+    [
+     "Interest payable on senior secured notes",
+     "",
+     "3,300,000",
+     "",
+     "",
+     "453,750",
+     ""
+    ],
+    [
+     "Senior secured notes, net of discount",
+     "",
+     "14,599,240",
+     "",
+     "",
+     "12,919,392",
+     ""
+    ],
+    [
+     "Liabilities from discontinued operations",
+     "",
+     "2,582,902",
+     "",
+     "",
+     "1,977,273",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "28,472,277",
+     "",
+     "",
+     "20,439,709",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Shares - Series C, $0.001 par value; 2%, stated value $100 per share 10,000 shares designated, 0 issued and outstanding, December 31, 2022 and 2021, respectively;",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred Shares - Series D, $0.001 par value; convertible, stated value $3.32 per share, 230,000 shares designated, 155,000 shares issued and outstanding, December 31, 2022 and 2021, respectively; 75,000 converted",
+     "",
+     "155",
+     "",
+     "",
+     "155",
+     ""
+    ],
+    [
+     "Preferred Shares - Series E, $0.001 par value; convertible, stated value $1,000 per share, 1,000 shares designated, 0 issued and outstanding, December 31, 2022 and 2021, respectively; 1,000 shares exchanged for Series E-1",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred Shares - Series E-1, $0.001 par value; convertible, stated value $0.87 per share, 1,152,500 shares designated, 1,152,500 and 0 shares issued and outstanding, December 31, 2022 and 2021, respectively;",
+     "",
+     "1,153",
+     "",
+     "",
+     "1,153",
+     ""
+    ],
+    [
+     "Preferred Shares - Series F, $0.001 par value; convertible, stated value $1 per share, 1,000 shares designated, 0 issued and outstanding, December 31, 2022 and 2021, respectively; 1,000 shares converted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred Shares - Series G, $0.001 par value; convertible, stated value $1,000 per share, 4,600 shares designated, 0 issued and outstanding, December 31, 2022 and 2021, respectively; 4,600 shares converted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred Shares \u2013 Series H, $0.001 par value; convertible, stated value $1 per share, 39,895 shares designated, 39,895 issued and outstanding, December 31, 2022 and 2021, respectively",
+     "",
+     "40",
+     "",
+     "",
+     "40",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Shares \u2013 50,000,000 shares authorized, $0.001 par value Preferred Shares - Series A, $0.001 par value; 3%, stated value $100 per share, 100,000 shares designated, 0 shares issued and outstanding, December 31, 2022 and 2021, respectively",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred Shares - Series B, $0.001 par value; 100 shares designated, 100 shares issued and outstanding, December 31, 2022 and 2021, respectively",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common Shares - $0.001 par value; 6,000,000,000 shares authorized, 1,603,095,243 shares issued and outstanding, December 31, 2022 and 2021, respectively",
+     "",
+     "1,603,095",
+     "",
+     "",
+     "1,599,095",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "10,549,265",
+     "",
+     "",
+     "10,473,261",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(28,886,831)",
+     "",
+     "",
+     "(15,747,021)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(16,734,471)",
+     "",
+     "",
+     "(3,674,665)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 deficit",
+     "$",
+     "11,739,154",
+     "",
+     "$",
+     "16,766,392",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 856,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED Balance Sheets",
+   "prose_after": "See the accompanying Notes to the Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year",
+     "",
+     "",
+     "For the Year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n\n\n2022",
+     "",
+     "",
+     "December 31,\n\n\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "629,619",
+     "",
+     "",
+     "8,478",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "1,910,039",
+     "",
+     "",
+     "411,447",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "818,279",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-lived assets impairment loss",
+     "",
+     "197,427",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Goodwill impairment loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,224,962",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,555,364",
+     "",
+     "",
+     "4,644,887",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before other expense",
+     "",
+     "(3,555,364)",
+     "",
+     "",
+     "(4,644,887)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(5,952,153)",
+     "",
+     "",
+     "(5,260,417)",
+     ""
+    ],
+    [
+     "Gain on debt extinguishment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "9,126,294",
+     ""
+    ],
+    [
+     "Loss from debt derivative",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10,065,713)",
+     ""
+    ],
+    [
+     "Loss from change in value of warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,008)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "39,114",
+     "",
+     "",
+     "6,445",
+     ""
+    ],
+    [
+     "Total non-operating expense",
+     "",
+     "(5,913,039)",
+     "",
+     "",
+     "(6,199,399)",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "",
+     "(9,468,403)",
+     "",
+     "",
+     "(10,844,286)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "(3,671,407)",
+     "",
+     "",
+     "(3,418,293)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss and comprehensive loss",
+     "$",
+     "(13,139,810)",
+     "",
+     "$",
+     "(14,262,579)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share-Basic and diluted",
+     "$",
+     "(0.008)",
+     "",
+     "$",
+     "(0.040)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average number of shares of common stock outstanding",
+     "",
+     "1,599,829,313",
+     "",
+     "",
+     "352,843,639",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes to the Consolidated Financial Statements.\nCONSOLIDATED STATEMENTS of Operations",
+   "prose_after": "See the accompanying Notes to the Consolidated Financial Statements.\nCONSOLIDATED Statements of stockholders\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Year Ended December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "Preferred",
+     "",
+     "Paid In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "1,599,095,027",
+     "$",
+     "1,599,095",
+     "$",
+     "1,348",
+     "$",
+     "10,473,261",
+     "$",
+     "(15,747,021)",
+     "",
+     "$",
+     "(3,674,665)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of convertible note into Common Stock",
+     "",
+     "4,000,216",
+     "",
+     "4,000",
+     "",
+     "\u2014",
+     "",
+     "76,004",
+     "",
+     "\u2014",
+     "",
+     "",
+     "80,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(13,139,810)",
+     "",
+     "",
+     "(13,139,810)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "1,599,095,027",
+     "$",
+     "1,603,095",
+     "$",
+     "1,348",
+     "$",
+     "10,549,265",
+     "$",
+     "(28,886,831)",
+     "",
+     "$",
+     "(16,734,471)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 987,
+    "end_line": 1003
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes to the Consolidated Financial Statements.\nCONSOLIDATED Statements of stockholders\u2019 DEFICIT",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Year Ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred",
+     "",
+     "",
+     "Paid In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "23,472,565",
+     "",
+     "$",
+     "23,472",
+     "",
+     "$",
+     "93",
+     "",
+     "$",
+     "1,302,977",
+     "",
+     "$",
+     "(1,484,442)",
+     "",
+     "$",
+     "(157,900)",
+     ""
+    ],
+    [
+     "Cancellation of Series A Preferred",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(93)",
+     "",
+     "",
+     "93",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Conversion of debt to Series D Preferred",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "230",
+     "",
+     "",
+     "667,984",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "668,214",
+     ""
+    ],
+    [
+     "Series E Preferred issued for acquisition of assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "4,225,061",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,225,062",
+     ""
+    ],
+    [
+     "Series F Preferred issued for convertible note",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "230,030",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "230,031",
+     ""
+    ],
+    [
+     "Equity portion of debts issued and extinguished",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,023,855",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,023,855",
+     ""
+    ],
+    [
+     "Common issued for Series B Preferred transfer",
+     "",
+     "1,500,000",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,500)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Series E Preferred exchanged for Series E-1 Preferred",
+     "",
+     "1,091,388,889",
+     "",
+     "",
+     "1,091,389",
+     "",
+     "",
+     "1,152",
+     "",
+     "",
+     "(1,092,541)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Conversion of Series F Preferred into Common Stock",
+     "",
+     "192,073,017",
+     "",
+     "",
+     "192,073",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(192,072)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Sale of Series G Preferred and conversion into Common Stock",
+     "",
+     "255,555,556",
+     "",
+     "",
+     "255,556",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,344,444",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,600,000",
+     ""
+    ],
+    [
+     "Common Stock exchanged for Series H Preferred",
+     "",
+     "(39,895,000)",
+     "",
+     "",
+     "(39,895)",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "39,855",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Conversion of Series D",
+     "",
+     "75,000,000",
+     "",
+     "",
+     "75,000",
+     "",
+     "",
+     "(75)",
+     "",
+     "",
+     "(74,925)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(14,262,579)",
+     "",
+     "",
+     "(14,262,579)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "1,599,095,027",
+     "",
+     "$",
+     "1,599,095",
+     "",
+     "$",
+     "1,348",
+     "",
+     "$",
+     "10,473,261",
+     "",
+     "$",
+     "(15,747,021)",
+     "",
+     "$",
+     "(3,674,665)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1004,
+    "end_line": 1028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See the accompanying Notes to the Consolidated Financial Statements.\nconsolidated Statements of cash flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 983,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the",
+     "",
+     "",
+     "For the",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations for the period",
+     "$",
+     "(9,468,403)",
+     "",
+     "$",
+     "(10,844,286)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortized interest",
+     "",
+     "2,428,313",
+     "",
+     "",
+     "2,694,914",
+     ""
+    ],
+    [
+     "  Bad debt expense",
+     "",
+     "725,561",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Fair value of Warrant issued for services",
+     "",
+     "9,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Loss on disposal of CZJ License",
+     "",
+     "\u2014",
+     "",
+     "",
+     "437,125",
+     ""
+    ],
+    [
+     "  Losses from impairment of long-lived assets and goodwill",
+     "",
+     "167,000",
+     "",
+     "",
+     "4,224,962",
+     ""
+    ],
+    [
+     "Changes in non-cash working capital items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "595",
+     "",
+     "",
+     "17,183",
+     ""
+    ],
+    [
+     "  Accounts payable and accruals",
+     "",
+     "471,380",
+     "",
+     "",
+     "220,754",
+     ""
+    ],
+    [
+     "  Interest payable",
+     "",
+     "2,846,250",
+     "",
+     "",
+     "453,750",
+     ""
+    ],
+    [
+     "  Interest receivable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,812)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(2,820,304)",
+     "",
+     "",
+     "(2,802,410)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of intangible assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(167,000)",
+     ""
+    ],
+    [
+     "Funds advanced for note receivable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(718,750)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(885,750)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from convertible and promissory notes sold",
+     "",
+     "1,752,000",
+     "",
+     "",
+     "16,730,000",
+     ""
+    ],
+    [
+     "  Proceeds from sales of Series G Preferred Stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,600,000",
+     ""
+    ],
+    [
+     "  Repayment of convertible note",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(350,000)",
+     ""
+    ],
+    [
+     "  Net cash provided by financing activities",
+     "",
+     "1,752,000",
+     "",
+     "",
+     "20,980,000",
+     ""
+    ],
+    [
+     "Cash flows from continuing operations",
+     "",
+     "(1,068,304)",
+     "",
+     "",
+     "17,291,840",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from discontinued operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net cash provided by (used in) operating activities",
+     "",
+     "1,082,088",
+     "",
+     "",
+     "(2,204,652)",
+     ""
+    ],
+    [
+     "  Net cash used in investing activities",
+     "",
+     "(14,513)",
+     "",
+     "",
+     "(15,095,950)",
+     ""
+    ],
+    [
+     "Cash flows from discontinued operations",
+     "",
+     "1,067,575",
+     "",
+     "",
+     "(17,300,602)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash",
+     "",
+     "(729)",
+     "",
+     "",
+     "(8,762)",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "",
+     "729",
+     "",
+     "",
+     "9,491",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "729",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "453,750",
+     "",
+     "$",
+     "1,139,292",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1034,
+    "end_line": 1085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See the accompanying Notes to the Consolidated Financial Statements.\nconsolidated Statements of cash flows",
+   "prose_after": "During the year ended December 31, 2021 and 2022, the following transactions did not involve cash:\n(a) Demand notes, convertible notes and interest with a carrying value of $668,214 were exchanged for 230,000 preferred shares of Series D.\n(b) $1,463,936 in operating leases for equipment were capitalized and leases payable of the same amount were recorded.\n(c) 1,000 shares of Series E Preferred Stock were issued by the Company in exchange for 100% of the common shares of Sovryn Holdings Inc. The shares were valued at $4,225,062 and goodwill of $4,224,962 was recorded and subsequently impaired. $100 of common shares were eliminated upon consolidation.\n(d) 1,000 shares of Series E Preferred Stock were exchanged for 1,152,500 shares of Series E-1 Preferred Stock and 1,091,388,889 shares of Common Stock.\n(e) Convertible notes and interest with a carrying value of $80,004 were converted into 4,000,216 shares of Common Stock.\nSee the accompanying Notes to the Consolidated Financial Statements\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1 \u2014 Observable inputs that reflect unadjusted quoted prices for identical assets or liabilities traded in active markets."
+    ],
+    [
+     "",
+     "Level 2 \u2014 Observable inputs other than quoted prices in active markets for identical assets and liabilities, quoted prices for identical or similar assets or liabilities in inactive markets, or other inputs that are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities"
+    ],
+    [
+     "",
+     "Level 3\u2014inputs are generally unobservable and typically reflect management\u2019s estimates of assumptions that market participants would use in pricing the asset or liability. The fair values are therefore determined using model-based techniques, including option pricing models and discounted cash flow models."
+    ]
+   ],
+   "caption_stack": [
+    "Level 1 \u2014 Observable inputs that reflect unadjusted quoted prices for identical assets or liabilities traded in active markets.",
+    "Level 2 \u2014 Observable inputs other than quoted prices in active markets for identical assets and liabilities, quoted prices for identical or similar assets or liabilities in inactive markets, or other inputs that are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities",
+    "Level 3\u2014inputs are generally unobservable and typically reflect management\u2019s estimates of assumptions that market participants would use in pricing the asset or liability. The fair values are therefore determined using model-based techniques, including option pricing models and discounted cash flow models."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1183,
+    "end_line": 1190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Fair value measurements\nWe follow the guidelines in ASC Topic 820 \u201cFair Value Measurements and Disclosures\u201d. Fair value is defined as the price that would be received from selling an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. When determining the fair value measurements for assets and liabilities, which are required to be recorded at fair value, we consider the principal or most advantageous market in which we would transact and the market-based risk measurements or assumptions that market participants would use in pricing the asset or liability, such as inherent risk, transfer restrictions and credit risk.\nWe apply the following fair value hierarchy, which prioritizes the inputs used to measure fair value into three levels and bases the categorization within the hierarchy upon the lowest level of input that is available and significant to the fair value measurement. All financial instruments approximate their fair value.",
+   "prose_after": "Convertible Notes with Fixed Rate Conversion Options\nWe may enter into convertible notes, some of which contain, predominantly, fixed rate conversion features, whereby the outstanding principal and accrued interest may be converted by the holder, into common shares at a fixed discount to the market price of the common stock at the time of conversion. This results in a fair value of the convertible note being equal to a fixed monetary amount. We record the convertible note liability at its fixed monetary amount by measuring and recording a premium, as applicable, on the note date with a charge to interest expense in accordance with ASC 480 - \u201cDistinguishing Liabilities from Equity\u201d.\nAdvertising and promotion costs\nWe follow ASC 720 \u201cAdvertising Costs\u201d and expenses costs as incurred.\nStock-based compensation\nWe follow the guideline under ASC 718, \u201cStock Compensation\u201d. The standard provides that for all stock-based compensation plans, including employee stock options, restricted stock, employee stock purchase plans and stock appreciation rights, which requires that all share-based payments to both employees and directors be recognized in the income statement based on their fair values. For non-employees stock-based compensation, We apply ASC 505 Equity-Based Payments to Non-employees. This standard provides that all stock-based compensation related to non-employees be measured at the fair value of the consideration received or the fair value of the equity instruments issued, whichever can be most reliably be measured or determinable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1180,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n\n\n2022",
+     "",
+     "December 30,\n\n\n\n2021",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "246,173,016",
+     "",
+     "192,573,017"
+    ],
+    [
+     "Convertible Preferred Stock",
+     "",
+     "1,665,451,580",
+     "",
+     "1,665,451,580"
+    ],
+    [
+     "Convertible debt",
+     "",
+     "1,148,500,170",
+     "",
+     "866,192,064"
+    ],
+    [
+     "Total",
+     "",
+     "3,060,124,766",
+     "",
+     "2,724,216,661"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1215,
+    "end_line": 1229
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Basic loss per share is calculated by dividing the loss attributable to stockholders by the weighted-average number of shares outstanding for the period. Diluted loss per share reflects the potential dilution that could occur if securities or other contracts to issue common stock were exercised or converted into common stock or resulted in the issuance of common stock that shared in our earnings (loss). Diluted loss per share is computed by dividing the loss available to stockholders by the weighted average number of shares outstanding for the period and dilutive potential shares outstanding unless such dilutive potential shares would result in anti-dilution. As of December 31, 2022 and 2021, no options were outstanding and 246,173,016 and 192,573,017 warrants were outstanding and exercisable, respectively. Additionally, as of December 31, 2022 and 2021, the outstanding principal balance, including accrued interest of the third-party convertible debt, totaled $22,154,828 and $17,365,033, respectively, and was convertible into 1,148,500,170 and 866,192,064 shares of Common Stock, respectively. We issued shares of Preferred Stock that may be converted into our Common Stock. Of the outstanding shares of Preferred Stock as of December 31, 2022 and 2021, as applicable, Series A Preferred Stock was convertible into 318,056,580 shares of Common Stock. Series D Preferred Stock was convertible into 155,000,000 shares of Common Stock, Series E-1 Preferred Stock was convertible into 1,152,500,000 shares of Common Stock and Series H Preferred Stock was convertible into 39,895,000 shares of Common Stock. The total potentially dilutive shares calculated are 3,060,124,766 and 2,724,216,661 as of December 31, 2022 and 2021, respectively. It should be noted that contractually the limitations on the third-party notes (and the related warrants) limit the number of shares converted into either 4.99% or 9.99% of the then outstanding shares. As of December 31, 2022, and 2021, potentially dilutive securities consisted of the following:\nSchedule of Potentially Dilutive Securities",
+   "prose_after": "Business Combinations\nIn accordance with ASC 805-10, \u201cBusiness Combinations\u201d, we account for all business combinations using the acquisition method of accounting. Under this method, assets and liabilities, including any remaining non-controlling interests, are recognized at fair value at the date of acquisition. The excess of the purchase price over the fair value of assets acquired, net of liabilities assumed, and non-controlling interests is recognized as goodwill. Certain adjustments to the assessed fair values of the assets, liabilities, or non-controlling interests made subsequent to the acquisition date, but within the measurement period, which is up to one year, are recorded as adjustments to goodwill. Any adjustments subsequent to the measurement period are recorded in income. Any cost or equity method interest that we hold in the acquired company prior to the acquisition is re-measured to fair value at acquisition with a resulting gain or loss recognized in income for the difference between fair value and the existing book value. Results of operations of the acquired entity are included in our results from the date of the acquisition onward and include amortization expense arising from acquired tangible and intangible assets.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Secured note \u2013 Top Dog Productions Inc.",
+     "$",
+     "\u2014",
+     "$",
+     "468,750"
+    ],
+    [
+     "Convertible note \u2013 ZA Group Inc.",
+     "",
+     "\u2014",
+     "",
+     "250,000"
+    ],
+    [
+     "Advances in escrow and prepaid expenses",
+     "",
+     "\u2014",
+     "",
+     "24,042"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "\u2014",
+     "",
+     "6,811"
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "749,603"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Notes Receivable"
+    }
+   },
+   "prose_before": "We adopt new pronouncements relating to generally accepted accounting principles applicable to us as they are issued, which may be in advance of their effective date.\nIn May 2021, the FASB issued ASU 2021-04, Earnings Per Share (Topic 260), Debt-Modifications and Extinguishments (Subtopic 470-50), Compensation-Stock Compensation (Topic 718), and Derivatives and Hedging-Contracts in Entity\u2019s Own Equity (Subtopic 815-40). The new ASU addresses issuer\u2019s accounting for certain modifications or exchanges of freestanding equity-classified written call options. This amendment is effective for all entities, for fiscal years beginning after December 15, 2021, including interim periods within those fiscal years. Early adoption is permitted. We are currently evaluating the impact this new guidance will have on its financial statements\nWe do not believe that any other recently issued but not yet effective accounting pronouncements, if adopted, would have a material effect on the accompanying consolidated financial statements.\nNote 4 Notes Receivable\nSchedule of Notes Receivable",
+   "prose_after": "On September 9, 2021, we received a secured promissory note with Top Dog Productions Inc. We agreed to lend an aggregate principal sum of up to $2,000,000 that accrues at a rate of 5% per annum. As of December 31, 2022, we advanced $527,624 and accrued $26,510 in interest receivable. Based on management\u2019s assessment of the collectability of the principal and interest, we recognized an allowance for the entire amount and included the charge in bad debt expense for the year ended December 31, 2022.\nOn November 15, 2021, we received a $250,000 convertible promissory note with ZA Group Inc. for the sale of our wholly owned subsidiary, CZJ License Inc. The note accrues at a rate of 5% per annum. The principal and accrued interest of the note receivable will be due and payable on November 5, 2023. At any time after 180 days following the date of the note receivable, we may convert all or any part of the outstanding and unpaid amount of the note into fully paid and non-assessable shares of common stock of ZA Group Inc. at a fixed conversion price of $0.005 per share. As of December 31, 2022, based on management\u2019s assessments of the collectability of the principal and $14,145 in accrued interest receivable and the value of ZA Group, Inc. common stock, we recognized an allowance for the $64,145 principal and interest and included the charge in bad debt expense for the year ended December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "371,987",
+     "$",
+     "232,491"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "174,078",
+     "",
+     "35,000"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "195,334",
+     "",
+     "15,033"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "741,399",
+     "$",
+     "283,024"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1296,
+    "end_line": 1307
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accounts Payable and Accrued Liabilities"
+    }
+   },
+   "prose_before": "Due to a sustained decline in the market capitalization of our Common Stock during the fourth quarter of 2021, we performed an interim goodwill impairment test. Management considered that, along with other possible factors affecting the assessment of our operations for the purposes of performing a goodwill impairment assessment, including management assumptions about expected future revenue forecasts and discount rates, changes in the overall economy, trends in the stock price, estimated control premium, other operating conditions, and the effect of changes in estimates and assumptions that could materially affect the determination of fair value and goodwill. As a result of the significant decline in the current market capitalization despite any of the other positive factors contemplated and relatively little change in our ongoing business operations, the outcome of this goodwill impairment test resulted in a charge for the impairment of goodwill of $4,224,962 recorded in the consolidated financial statements for the year ended December 31, 2021.\nNote 7 Accounts Payable and Accrued Liabilities\nAccounts payable and accrued liabilities as of December 31, 2022 and December 31, 2021 are summarized below:\nSchedule of Accounts Payable and Accrued Liabilities",
+   "prose_after": "Note 8 Derivative Liability\nWe incur a derivative liability when we issue warrants in connection with the sale of notes payable. Management has determined that the daily closing price of our Common Stock is not a reliable factor for determining the value of the warrants and corresponding derivative liability on the basis that\n(i) the average daily volume of our Common Stock traded is approximately $1,000, (ii) for approximately two months during 2022 and as of the date of this Annual Report on form 10-K, our Common Stock is listed on the OTC Expert Market that limits visibility of our Common Stock to investors, and (iii) the share price is exceptionally volatile in its thinly traded status. Valuation methods such at Black-Scholes rely on daily closing prices and their volatility. As a better representation of value, management is using a share price of $0.018 per share to determine the derivative liability from the issuance of such warrants, which was the per share price used in connection with the issuance of 255,555,556 shares of Common Stock issued upon conversion of the Series G Preferred Stock on November 2, 2021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Balance at January 1",
+     "$",
+     "3,464,529",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liability for Warrants issued",
+     "",
+     "964,800",
+     "",
+     "3,464,529"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31",
+     "$",
+     "4,429,329",
+     "$",
+     "3,464,529"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1317,
+    "end_line": 1328
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Derivative Liability"
+    }
+   },
+   "prose_before": "We incur a derivative liability when we issue warrants in connection with the sale of notes payable. Management has determined that the daily closing price of our Common Stock is not a reliable factor for determining the value of the warrants and corresponding derivative liability on the basis that\n(i) the average daily volume of our Common Stock traded is approximately $1,000, (ii) for approximately two months during 2022 and as of the date of this Annual Report on form 10-K, our Common Stock is listed on the OTC Expert Market that limits visibility of our Common Stock to investors, and (iii) the share price is exceptionally volatile in its thinly traded status. Valuation methods such at Black-Scholes rely on daily closing prices and their volatility. As a better representation of value, management is using a share price of $0.018 per share to determine the derivative liability from the issuance of such warrants, which was the per share price used in connection with the issuance of 255,555,556 shares of Common Stock issued upon conversion of the Series G Preferred Stock on November 2, 2021.\nFor the years ended December 31, 2022 and 2021, our derivative liability was as follows:\nSchedule of Derivative Liability",
+   "prose_after": "In the years ended December 31, 2022 and 2021, we issued warrants to purchase up to 53,600,000 and 192,573,016 shares of Common Stock, respectively.\nNote 9 Securities Exchange Agreements\nSovRyn Holdings, Inc\nWe entered into a securities exchange agreement on February 16, 2021 with Sovryn to acquire 100% of the shares of Sovryn in exchange for (i) Jeffrey Canouse, our CEO at the time, transferring 100 shares of our Series B Preferred Stock to a designee of Sovryn and (ii) 1,000 shares of Series E Preferred Stock. Upon the effectiveness of an amendment to our Articles of Incorporation to increase our authorized common stock from 500,000,000 shares to 6,000,000,000 shares, all shares of Series E Preferred Stock issued to the shareholders were exchanged for 1,152,500 shares of our Series E-1 Preferred Stock and 1,091,388,889 shares of our Common Stock. The Series E Preferred Stock votes on an as-converted basis with our Common Stock prior to their conversion. The Series E Preferred Stock represented approximately 59% of the fully diluted shares of our Common Stock immediately after such shares were issued. The valuation for the Preferred Series E shares was determined to be $4,225,062 based on the market value of our shares we exchanged at the date the transaction. The transaction was recorded as an asset purchase and we recorded goodwill of $4,224,962, which was based on the market value of such shares exchanged at the date of the transaction.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 1",
+     "(a)",
+     "$",
+     "1,050,000",
+     "$",
+     "850,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 2",
+     "(b)",
+     "",
+     "250,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 3",
+     "(c)",
+     "",
+     "208,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 4",
+     "(d)",
+     "",
+     "550,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 5",
+     "(e)",
+     "",
+     "192,500",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series 6",
+     "(f)",
+     "",
+     "55,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "Principal outstanding total",
+     "",
+     "",
+     "2,305,500",
+     "",
+     "850,000"
+    ],
+    [
+     "Less discount",
+     "",
+     "",
+     "426,094",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal outstanding, net",
+     "",
+     "$",
+     "1,879,406",
+     "$",
+     "850,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1353,
+    "end_line": 1376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Convertible Notes Payable"
+    }
+   },
+   "prose_before": "On January 14, 2022, we issued an unsecured $150,000 note payable with $15,000 in fees payable upon its April 5, 2022 maturity date, which we treated as deferred financing fees and amortized over the term of the note. The obligation is subordinate to the Notes we issued to the Investors. As of December 31, 2022, $135,000 in note principal is outstanding. We have not yet repaid the noteholder and are in default.\nOn April 27, 2022, we issued a $125,000 unsecured note payable that has a $12,500 original issue discount and matures on December 31, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 2,500,000 shares of our Common Stock at $0.025 per share that is exercisable starting September 15, 2022 and until April 15, 2024. We estimate the total value of such warrants to be $45,000, based on a $0.018 price per share of our Common Stock that we treat as a debt discount and amortize over the term of the note. As of December 31, 2022, $125,000 in note principal is outstanding. We have not yet repaid the noteholder and are in default.\nNote 11 Convertible Notes Payable\nOur convertible notes payable, all of which are liabilities as of the years ended December 31, 2022 and 2021, are as follows:\nSchedule of Convertible Notes Payable",
+   "prose_after": "(a) Series 1: We issued a total of $1,050,000 in subordinated convertible notes that bear interest at 6% per annum, mature on December 31, 2022 and may be converted at the noteholder\u2019s option at any time into shares of our Common Stock at a fixed price of $0.021 per share. We have not yet repaid the noteholders and are in default.\n(b) Series 2: On January 6, 2022, we issued to one of our shareholders a $250,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 6,250,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022 and ending July 1, 2024. We estimate the value of the warrant to be $112,500, based on a $0.018 price per share of our Common Stock that is treated as a debt discount to be amortized over the term of the note. We have not yet repaid the noteholder and are in default.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1380,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "On January 14, 2022, we issued to one of our shareholders a $25,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 600,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022 and ending July 1, 2024. We estimate the value of the warrant to be $10,800, based on a $0.018 price per share of our Common Stock that we treated as a debt discount to be amortized over the term of the note. In May 2022, we repaid the note.\n\n\n\n \n\n\n\nOn February 17, 2022, we issued a $50,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 1,250,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022, and ending July 1, 2024. We estimate the value of the warrant to be $22,500, based on a $0.018 price per share of our Common Stock that we treat as a debt discount that we amortized over the term of the note. In April 2022, we repaid the note."
+    ]
+   ],
+   "caption_stack": [
+    "On January 14, 2022, we issued to one of our shareholders a $25,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 600,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022 and ending July 1, 2024. We estimate the value of the warrant to be $10,800, based on a $0.018 price per share of our Common Stock that we treated as a debt discount to be amortized over the term of the note. In May 2022, we repaid the note.\n\n\n\n \n\n\n\nOn February 17, 2022, we issued a $50,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 1,250,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022, and ending July 1, 2024. We estimate the value of the warrant to be $22,500, based on a $0.018 price per share of our Common Stock that we treat as a debt discount that we amortized over the term of the note. In April 2022, we repaid the note."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1381,
+    "end_line": 1392
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Convertible Notes Payable"
+    }
+   },
+   "prose_before": "(a) Series 1: We issued a total of $1,050,000 in subordinated convertible notes that bear interest at 6% per annum, mature on December 31, 2022 and may be converted at the noteholder\u2019s option at any time into shares of our Common Stock at a fixed price of $0.021 per share. We have not yet repaid the noteholders and are in default.\n(b) Series 2: On January 6, 2022, we issued to one of our shareholders a $250,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with such issuance, we issued the noteholder a warrant to purchase up to 6,250,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022 and ending July 1, 2024. We estimate the value of the warrant to be $112,500, based on a $0.018 price per share of our Common Stock that is treated as a debt discount to be amortized over the term of the note. We have not yet repaid the noteholder and are in default.",
+   "prose_after": "(c) Series 3: On February 15, 2022, we issued two $137,500 unsecured convertible notes payable bearing an 11.25% interest rate per annum that mature on February 23, 2023 and have a $15,000 original issue discount. In connection with such issuances, we issued the noteholders warrants to purchase up to 2,500,000 shares of our Common Stock at $0.10 per share that are exercisable at any time until February 11, 2027. We estimate the total value of the warrants to be $90,000, based on a $0.018 price per share of our Common Stock that we treat as a debt discount and amortize over the terms of the notes along with the deferred financing fees. The notes\u2019 principal and interest may be converted into our Common Stock at $0.02 per share. On October 25, 2022, the noteholder converted $67,000 and $13,004 of note principal and interest, respectively. We have not yet repaid the noteholders their outstanding principal and interest and are in default.\n(d) Series 4: On May 5, 2022, we issued a shareholder a convertible subordinate note totaling $110,000 that accrues interest at 12% per annum and matures on May 5, 2023. The note may be converted into shares of our Common Stock at $0.02 per share. In connection with such issuance, we issued the noteholder a warrant to purchase up to 5,000,000 shares of our Common Stock at $0.02 per share. We have not yet repaid the noteholders and are in default. On June 24, 2022, we issued a convertible subordinate note totaling $110,000 that accrues interest at 12% per annum and matures on May 5, 2023. The note may be converted into shares of our Common Stock at $0.02 per share. In connection with such issuance, we issued the noteholder a warrant to purchase up to 5,000,000 shares of our Common Stock at $0.02 per share. We have not yet repaid the noteholders and are in default.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1380,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "On February 17, 2021, we entered into a securities purchase agreement with funds affiliated with Arena Investors, LP (the \u201cInvestors\u201d) pursuant to which it issued two convertible notes having an aggregate principal amount of $16,500,000 for an aggregate purchase price of $15,000,000 (collectively, the \u201cNotes\u201d). The Notes are secured by a blanket lien on all of the Company\u2019s assets and the shares of our Common Stock and Preferred Stock (the \u201cPledged Assets\u201d) held by Philip Falcone, FFO1 2021 Irrevocable Trust, FFO2 2021 Irrevocable Trust and Korr Value LP (the \u201cPledgers\u201d), which shares may be voted by the Investors in the event of default.\n\n\n\n \n\n\n\nIn connection with the issuance of the Notes, we issued to the Investors warrants to purchase an aggregate of 192,073,017 shares of our Common Stock (collectively, the \u201cWarrants\u201d) and 1,000 shares of Series F Preferred Stock that convert into 192,073,017 shares of our Common Stock (the \u201cSeries F Preferred Stock\u201d). Such warrants and Series F Preferred Stock were each valued at $864,000 based on a $0.0045 price per share of our Common Stock and treated as a debt discount this is amortized over the term of the Notes."
+    ]
+   ],
+   "caption_stack": [
+    "On February 17, 2021, we entered into a securities purchase agreement with funds affiliated with Arena Investors, LP (the \u201cInvestors\u201d) pursuant to which it issued two convertible notes having an aggregate principal amount of $16,500,000 for an aggregate purchase price of $15,000,000 (collectively, the \u201cNotes\u201d). The Notes are secured by a blanket lien on all of the Company\u2019s assets and the shares of our Common Stock and Preferred Stock (the \u201cPledged Assets\u201d) held by Philip Falcone, FFO1 2021 Irrevocable Trust, FFO2 2021 Irrevocable Trust and Korr Value LP (the \u201cPledgers\u201d), which shares may be voted by the Investors in the event of default.\n\n\n\n \n\n\n\nIn connection with the issuance of the Notes, we issued to the Investors warrants to purchase an aggregate of 192,073,017 shares of our Common Stock (collectively, the \u201cWarrants\u201d) and 1,000 shares of Series F Preferred Stock that convert into 192,073,017 shares of our Common Stock (the \u201cSeries F Preferred Stock\u201d). Such warrants and Series F Preferred Stock were each valued at $864,000 based on a $0.0045 price per share of our Common Stock and treated as a debt discount this is amortized over the term of the Notes."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1403,
+    "end_line": 1413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Senior Secured Notes"
+    }
+   },
+   "prose_before": "(f) Series 6: On September 16, 2022, we issued a $55,000 note payable that has a $5,000 original issue discount and matures on September 16, 2023 and bears interest at 12% per annum. The note may be converted into shares of our Common Stock at the lesser of $0.001 per share or at a 50% discount to the lowest closing price of our Common Stock within the past twenty days prior to a conversion. As of December 31, 2022, $55,000 in note principal is outstanding. We have not yet repaid the noteholders and are in default.\nOn February 17, 2022, we issued a $50,000 unsecured note payable that bears interest at 12% per annum and matures on April 6, 2022. In connection with the note sale, we issued the noteholder a Warrant to purchase 1,250,000 shares of our Common Stock at $0.021 per share at any time starting July 1, 2022 and ending July 1, 2024. We estimate the value of the Warrant to be $22,500, based on a $0.018 price per share of our Common Stock that we treat as a debt discount that we amortized over the term of the note. In April 2022, we repaid the note.\nNote 12 Senior Secured Notes",
+   "prose_after": "The Notes have a term of thirty-six months and mature on February 17, 2024, unless earlier converted. The Notes accrue interest at a rate of 11% per annum, subject to increase to 20% per annum upon default. Interest is payable in cash on a quarterly basis beginning on March 31, 2021. Notwithstanding the above, at our election, any interest payable on an applicable payment date may be paid in registered shares of our Common Stock in an amount equal (A) the amount of the interest payment due on such date, divided by (B) an amount equal to 80% of the average volume-weighted average price of our Common Stock for the five (5) days immediately preceding the date of conversion. At December 31, 2022 and December 31, 2021 accrued and unpaid interest was $3,300,000 and $453,750, respectively.\nOn September 24, 2021, the Company and the Investors amended the Notes and related closing documents, by executing the Limited Waiver and First Amendment the closing documents. Such amendment also waived specified events of default. The Notes were henceforth convertible at any time, at the holder\u2019s option, into shares of our Common Stock at a price of $0.02 per share, subject to an event of default adjustment. Notwithstanding the foregoing, at any time during the continuance of any event of default, the conversion price in effect equals the alternate conversion price provided in the Notes. If at any time the conversion price as determined for any conversion would be less than the par share value of the Common Stock, then at the sole discretion of the Holder, such conversion price equals such par value for such conversion and the conversion amount for such conversion may be increased to include Additional Principal (defined as such additional amount to be added to the principal amount of the Note to the extent necessary to cause the number of conversion shares issuable upon such conversion to equal the same number of conversion shares as would have been issued had the conversion price not been adjusted by the holder thereof to the par value price, subject to certain beneficial ownership limitations (with a maximum ownership limit of 9.99%). The conversion price was also subject to adjustment due to certain events, including stock dividends, stock splits and in connection with our issuance of our Common Stock or common stock equivalents at an effective price per share lower than the conversion price then in effect. We did not have a right to redeem the Notes.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1415,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Principal",
+     "$",
+     "16,500,000",
+     "$",
+     "16,500,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less discount",
+     "",
+     "1,900,760",
+     "",
+     "3,580,608"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal, net of discount",
+     "$",
+     "14,599,240",
+     "$",
+     "12,919,392"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1428,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Senior Secured Notes"
+    }
+   },
+   "prose_before": "The Series F Preferred Stock has no voting rights and converts into 4.9% of our issued and outstanding shares of our Common Stock on a fully diluted basis upon the date on which stockholder approval for such issuance is obtained. The Series F Preferred Stock was subsequently converted and 192,073,017 shares of Common Stock, which were issued on October 11, 2021.\nOn October 27, 2022, the Agent for the Investors notified us that certain events of default have occurred and were continuing under the Investor Notes. On November 21, 2022, we, the Investors and the Agent entered into a Forbearance Agreement, pursuant to which, among other things, we acknowledged the outstanding principal balances of the Investor Notes, that we have an obligation for interest, including default interest, fees and expenses in connection with the Investor Notes, that we have no rights of offset, defenses, claims or counterclaims with respect to our obligations and pursuant to a side letter, dated as of November 21, 2022, we agreed to achieve certain milestones by the dates as set forth therein. The Forbearance Agreement expired on December 30, 2022.\nAs of December 31, 2022 and 2021, the outstanding liability for our Senior Secured Notes is as follows:\nSchedule of senior secured Notes",
+   "prose_after": "As of December 31, 2022 and 2021, accrued interest payable on such senior secured Notes is $3,300,000 and $453,750, respectively, with interest accruing at a default rate of 20% per annum in 2022 and at 11% per annum in 2021.\nNote 13 Related Party\nWe entered into a consulting agreement with Zenna Consulting Group, Inc. (\u201cZenna Consulting\u201d), a corporation affiliated with Warren Zenna, who served as a Board member at such time, to provide oversight of marketing and communications services. The agreement commenced March 1, 2021 and ended on July 31, 2021. We paid Zenna Consulting $0 and $57,000 fees in the years ended December 31, 2022 and 2021, respectively. On March 1, 2022, we issued a warrant to Mr. Zenna to purchase up to 500,000 shares of our Common Stock at $0.025 per share at any time beginning September 1, 2022 and ending September 1, 2026. We estimate the value such warrant to be approximately $9,000, based on the $0.018 market price per share of our Common Stock on March 1, 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1415,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Weighted- Average Remaining Contractual Term (Years)",
+     "",
+     "Weighted- Average Grant-Date Fair Value",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding and exercisable at December 31, 2020",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issued",
+     "",
+     "192,573,017",
+     "",
+     "0.020",
+     "",
+     "4.13",
+     "",
+     "872,588",
+     "",
+     "3,464,529"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding and exercisable at December 31, 2021",
+     "",
+     "192,573,017",
+     "$",
+     "0.020",
+     "",
+     "4.13",
+     "",
+     "872,588",
+     "$",
+     "3,464,529"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1561,
+    "end_line": 1572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Shareholders\u2019 Equity"
+    }
+   },
+   "prose_before": "On February 17, 2021, we issued warrants to purchase up to 192,073,017 shares of Common Stock to Arena that are exercisable for a five-year period from the date of issuance and, based on an amendment made on September 24, 2021, such warrants may be converted into Common Stock at $0.02 per share, subject to a maximum ownership limit of 9.99%. The exercise price is subject to adjustment due to stock dividends, stock splits and recapitalizations and other events. We valued such warrants at $864,000 based on a value of $0.0045 per share for our Common Stock at the time.\nOn December 28, 2021, we issued a promissory note payable and issued warrants to purchase up to 500,000 shares of Common Stock. Each such warrant is exercisable at $0.025 per share and expires on December 31, 2023. We valued such warrants at $9,000 based on a value of $0.018 per share for our Common Stock at the time.\nSuch warrants issued are loan incentives. The value was allocated to the warrants based on fair value on the date of the grant as determined using the Black-Scholes option pricing model. At December 31, 2022 and 2021, the Warrant transactions are summarized below:",
+   "prose_after": "For the year ended December 31, 2022, a summary of our warrant activity is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1538,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1572,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Weighted- Average Remaining Contractual Term (Years)",
+     "",
+     "Weighted- Average Grant- Date Fair Value",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding and exercisable at January 1, 2022",
+     "",
+     "192,573,017",
+     "$",
+     "0.020",
+     "",
+     "4.13",
+     "$",
+     "872,588",
+     "$",
+     "3,464,529"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Issued",
+     "",
+     "53,600,000",
+     "$",
+     "0.024",
+     "",
+     "4.83",
+     "",
+     "102,001",
+     "$",
+     "964,800"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding and exercisable at December 31, 2022",
+     "",
+     "246,173,016",
+     "$",
+     "0.021",
+     "",
+     "3. 69",
+     "$",
+     "399,783",
+     "$",
+     "4,431,114"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1575,
+    "end_line": 1589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Shareholders\u2019 Equity"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2022, a summary of our warrant activity is as follows:",
+   "prose_after": "Note 16 Discontinued Operations\nIn the fourth quarter of 2022, management at that time determined that Sovryn\u2019s television broadcast business was not an efficient use of our resources to develop and launch BCTV, our core business, and management sought to exit Sovryn\u2019s business and pay down Madison\u2019s senior debt associated with acquiring Sovryn\u2019s assets and creating its business. As a result, Sovryn is recognized as a discontinued operation in the accompanying financial statements. The previous year\u2019s assets, liabilities and expenses have been similarly classified for comparative purposes. The following is a summary of Sovryn for the years ended December 31, 2022 and 2021:\nSchedule of Previous Year Assets Liabilities and Expenses",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1572,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "$",
+     "126,331",
+     "",
+     "$",
+     "942,713",
+     ""
+    ],
+    [
+     "Property, equipment and right-of-use assets",
+     "",
+     "1,440,937",
+     "",
+     "",
+     "2,887,328",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "10,159,063",
+     "",
+     "",
+     "12,029,646",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "11,726,331",
+     "",
+     "",
+     "15,859,687",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "",
+     "1,118,174",
+     "",
+     "",
+     "508,779",
+     ""
+    ],
+    [
+     "Lease liability obligations",
+     "",
+     "1,464,728",
+     "",
+     "",
+     "1,468,495",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "2,582,902",
+     "",
+     "",
+     "21,977,274",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Revenues",
+     "",
+     "1,920,612",
+     "",
+     "",
+     "1,243,655",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "(509,868)",
+     "",
+     "",
+     "(531,899)",
+     ""
+    ],
+    [
+     "Television operation",
+     "",
+     "(344,260)",
+     "",
+     "",
+     "(267,193)",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "(323,484)",
+     "",
+     "",
+     "(180,210)",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "(1,178,043)",
+     "",
+     "",
+     "(1,652,095)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "175,695",
+     "",
+     "",
+     "(292,704)",
+     ""
+    ],
+    [
+     "Loss on asset disposals",
+     "",
+     "(52,668)",
+     "",
+     "",
+     "(1,737,847)",
+     ""
+    ],
+    [
+     "Impairment loss",
+     "",
+     "(3,008,013)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "(3,671,408)",
+     "",
+     "$",
+     "(3,418,293)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1596,
+    "end_line": 1626
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "Note 16 Discontinued Operations\nIn the fourth quarter of 2022, management at that time determined that Sovryn\u2019s television broadcast business was not an efficient use of our resources to develop and launch BCTV, our core business, and management sought to exit Sovryn\u2019s business and pay down Madison\u2019s senior debt associated with acquiring Sovryn\u2019s assets and creating its business. As a result, Sovryn is recognized as a discontinued operation in the accompanying financial statements. The previous year\u2019s assets, liabilities and expenses have been similarly classified for comparative purposes. The following is a summary of Sovryn for the years ended December 31, 2022 and 2021:\nSchedule of Previous Year Assets Liabilities and Expenses",
+   "prose_after": "On February 16, 2021, we cancelled all of the outstanding shares of Series A Preferred Stock and offered their holders option agreements to purchase up to 300,000 shares of CZJ License, Inc., our wholly owned subsidiary at the time, at an option price of $10 per share. The option agreements are exercisable for a period of one year from the date of issuance and were not exercised.\nOn November 15, 2021, we entered into a purchase and sale agreement with ZA Group Inc. to sell CZJ License Inc. for $250,000. At the closing of such transaction, ZA Group Inc. delivered a convertible promissory note with a principal amount equal to the purchase price. The interest rate on the note was 5% per annum and matures on November 5, 2023. The note may be converted, from time to time, after 180 days from the issuance date of the note into common stock of ZA Group Inc, at a fixed conversion price of $0.005 per share, subject to a beneficiary ownership limitation of not more than 4.99% of the outstanding shares of common stock of ZA Group Inc.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1572,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "\u2014",
+     "",
+     "74,760"
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "\u2014",
+     "",
+     "190,857"
+    ],
+    [
+     "Professional fees",
+     "",
+     "\u2014",
+     "",
+     "213,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "\u2014",
+     "$",
+     "479,117"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1635,
+    "end_line": 1653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "On November 15, 2021, we entered into a purchase and sale agreement with ZA Group Inc. to sell CZJ License Inc. for $250,000. At the closing of such transaction, ZA Group Inc. delivered a convertible promissory note with a principal amount equal to the purchase price. The interest rate on the note was 5% per annum and matures on November 5, 2023. The note may be converted, from time to time, after 180 days from the issuance date of the note into common stock of ZA Group Inc, at a fixed conversion price of $0.005 per share, subject to a beneficiary ownership limitation of not more than 4.99% of the outstanding shares of common stock of ZA Group Inc.\nAt November 15, 2021, CZJ License Inc.\u2019s accounts were eliminated from the consolidated financial statements. All expenses incurred by CZJ License Inc. up to November 15, 2021 have been disclosed as discontinued operations. The previous year\u2019s assets, liabilities and expenses have been similarly classified for comparative purposes.\nSchedule of Previous Year Assets Liabilities and Expenses",
+   "prose_after": "Note 18 Income Taxes\nIncome tax recovery differs from that which would be expected from applying the effective tax rates to the net income (loss) as follows:\nSchedule of Income Tax Expense",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1693,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(13,139,810)",
+     "",
+     "$",
+     "(14,262,579)",
+     ""
+    ],
+    [
+     "Statutory and effective tax rates",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Income taxes expenses (recovery) at the effective rate",
+     "$",
+     "(2,759,360)",
+     "",
+     "$",
+     "(2,995,142)",
+     ""
+    ],
+    [
+     "Effect of change in tax rates",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "2,759,360",
+     "",
+     "",
+     "2,995,142",
+     ""
+    ],
+    [
+     "Income tax expense and income tax liability",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1660,
+    "end_line": 1674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Note 18 Income Taxes\nIncome tax recovery differs from that which would be expected from applying the effective tax rates to the net income (loss) as follows:\nSchedule of Income Tax Expense",
+   "prose_after": "As at December 31, 2021 the tax effect of the temporary timing differences that give rise to significant components of deferred income tax asset are noted below. A valuation allowance has been recorded as management believes it is more likely than not that the deferred income tax asset will not be realized.\nSchedule of Deferred Income Tax Asset",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1693,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Tax loss carried forward",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "$",
+     "2,759,360",
+     "",
+     "$",
+     "2,995,142",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,759,360)",
+     "",
+     "",
+     "(2,995,142)",
+     ""
+    ],
+    [
+     "Deferred taxes recognized",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1679,
+    "end_line": 1691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "As at December 31, 2021 the tax effect of the temporary timing differences that give rise to significant components of deferred income tax asset are noted below. A valuation allowance has been recorded as management believes it is more likely than not that the deferred income tax asset will not be realized.\nSchedule of Deferred Income Tax Asset",
+   "prose_after": "Tax losses of approximately $25 million will expire in 2039 and 2040.\nNote 19 Subsequent Events\nOn January 10, 2023, we issued two unsecured convertible subordinate notes totaling $220,000 that accrue interest at 12% per annum and mature in January 10, 2024 and have a $20,000 total original issue discount. The notes may be converted into shares of our Common Stock at $0.02 per share, subject to a beneficial ownership limitation of 4.99%. In connection with one of the notes sold, we issued the noteholder a warrant to purchase up to 40,000,000 shares of our Common Stock at $0.02 per share starting January 10, 2023 and ending January 10, 2030.\nOn January 28, 2023, the agent (the \u201cAgent\u201d) for the Investors delivered a notice to us (the \u201cAcceleration Notice\u201d) stating that the Agent and the Investors (a) elected to cause the outstanding principal amount of the Notes, plus accrued but unpaid interest, liquidated damages and other amounts owing in respect thereof, to become immediately due and payable in cash, (b) intended to commence legal action to collect any or all of the amounts due under the Notes, and (c) sought the appointment of a receiver or trustee as a means of realizing proceeds on their collateral.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1693,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "On September 16, 2022, we issued a $55,000 convertible note with a $5,000 original issue discount, which matured on September 16, 2023 and bore interest at 12% per annum. The note may be converted into shares of our Common Stock at the lesser of $0.001 per share or at a 50% discount to the lowest closing price of our Common Stock within the past twenty days prior to a conversion. As of December 31, 2022, $55,000 in principal under such note was outstanding."
+    ],
+    [
+     ""
+    ],
+    [
+     "On December 2, 2022, we issued a $220,000 note with a $20,000 original issue discount, which matured on October 14, 2023 and bore interest at 12% per annum. In connection with such issuance, we issued the noteholder a warrant to purchase up to 10,000,000 shares of our Common Stock at $0.02 per share, which is exercisable upon issuance until May 5, 2029. As of December 31, 2022, $220,000 in principal under such note was outstanding."
+    ]
+   ],
+   "caption_stack": [
+    "On September 16, 2022, we issued a $55,000 convertible note with a $5,000 original issue discount, which matured on September 16, 2023 and bore interest at 12% per annum. The note may be converted into shares of our Common Stock at the lesser of $0.001 per share or at a 50% discount to the lowest closing price of our Common Stock within the past twenty days prior to a conversion. As of December 31, 2022, $55,000 in principal under such note was outstanding."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1768,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "On October 14, 2022, we issued a $110,000 note with a $10,000 original issue discount, which matured on October 14, 2023 and bore interest at 12% per annum. In connection with such issuance, we issued the noteholder a warrant to purchase up to 5,000,000 shares of our Common Stock at $0.02 per share, which is exercisable upon issuance until May 5, 2029. As of December 31, 2022, $110,000 in principal under such note was outstanding.\nOn October 27, 2022, the Agent for the Investors notified us that certain events of default have occurred and are continuing under the Investors\u2019 Notes. On November 21, 2022, we, the Investors and the Agent entered into a Forbearance Agreement, pursuant to which, among other things, we acknowledged the outstanding principal balances of the Investor Notes, that we have an obligation for interest, including default interest, fees and expenses in connection with the Investor Notes, that we have no rights of offset, defenses, claims or counterclaims with respect to our obligations and pursuant to a side letter, dated as of November 21, 2022, we agreed to achieve certain milestones by the dates as set forth therein. The Forbearance Agreement expired on December 30, 2022.",
+   "prose_after": "During the fourth quarter ended December 31, 2022, events of default were triggered due to non-payment of outstanding promissory notes resulting in approximately $3.5 million, including accrued interest, default interest and late fees, becoming due and payable to such holders. Additionally, during such period, Sovryn triggered an event of default under a television station asset lease due to nonpayment, resulting in the lessor having the right to lease the television station asset to a third party and hold Sovryn liable for any deficiency. The FCC license used to operate the television station was subsequently foreclosed upon by the Investors and Sovryn no longer operates the television station.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers, and Corporate Governance.\n(a) Identify Directors and Executive Officers\nMr. Amon, currently the sole member of the Board of Directors, holds office until (i) the next annual meeting of the stockholders, (ii) his successor has been duly elected and qualified, or (iii) his resignation.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1784,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a) Name and principal position",
+     "(b)\nYear",
+     "(c)\nSalary ($)",
+     "(d)\nBonus ($)",
+     "(e)\nStock Awards ($)",
+     "(f)\nOption Awards ($)",
+     "(g)\nNon- Equity Incentive Plan ($)",
+     "(h)\nNon-qualified Deferred Compensation Earnings ($)",
+     "(i)\nAll other compensation ($)",
+     "(j)\nTotal ($) (1)(2)",
+     ""
+    ],
+    [
+     "Philip A. Falcone,\n\n\n\nFormer Chief Executive Officer",
+     "2022",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Henry Turner,\n\n\n\nFormer Chief Technology Officer and Former Chief Operating Officer",
+     "2022",
+     "98,077",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "98,077",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "98,077",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "98,077",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jeffrey Canouse, Former \n\n\n\nChief Executive Officer, Former Chief Compliance Officer and Former Director",
+     "2022",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "49,200",
+     "49,200",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "nil",
+     "49,200",
+     "49,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1875,
+    "end_line": 1899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We have no financial expert. Management believes the cost related to retaining a financial expert at this time is prohibitive and has determined that the cost of hiring a financial expert to act as a director and to be a member of an audit committee or otherwise perform audit committee functions outweighs the benefits of having a financial expert.\n(j) Insider Trading Policy\nWe intend to have our Board of Directors adopt an insider trading policy to promote compliance with federal and state securities laws that prohibit certain persons who are aware of material nonpublic information about a company from (i) trading in securities of that company, or (ii) providing material nonpublic information to other persons who may trade on the basis of that information.\nWe have not yet adopted an insider trading policy because we have just recently reshaped our Board of Directors that would advise on such policies in connection with the Change of Control.\nItem 11. Executive Compensation.\nMadison has paid the following compensation to its named executive officers during its fiscal years ended December 31, 2022 and 2021.\nsummary compensation table",
+   "prose_after": "(1) On February 15, 2021, we entered into a Consultant Agreement with GreenRock LLC, to retain Mr. Falcone, its Managing Member, to serve as a consultant to us and advise on all matters typically considered and decided upon by executive management and our board of directors, and additionally to serve as Chairman of the Board of Directors and Chief Executive Officer. We compensated GreenRock LLC $925,972 and $315,000 for its services provided in 2022 and 2021, respectively.\nWe have structured our compensation with the following objectives in mind:\n\u25cf offer competitive compensation to attract and retain highly qualified leaders to guide and govern;\n\u25cf recognize the substantial investment of time and expertise necessary for the employees to discharge their duties; and\n\u25cf ensure that compensation is easy to understand and is regarded positively by our shareholders and employees.\nOur executive compensation framework is designed to continue to align and promote the alignment of pay and performance to the benefit of our shareholders.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1868,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Shares Beneficially Owned",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Series B Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Series E-1 Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% Total Voting",
+     "",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner",
+     "Shares",
+     "",
+     "",
+     "%(1)",
+     "",
+     "",
+     "Shares",
+     "",
+     "%(2)",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "%(3)",
+     "",
+     "",
+     "Power(4)",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arena Investors, LP (5)",
+     "",
+     "2,347,661,906",
+     "(3)",
+     "",
+     "85.2",
+     "%",
+     "",
+     "100",
+     "",
+     "100",
+     "%",
+     "",
+     "1,152,500",
+     ")",
+     "",
+     "100",
+     "%",
+     "",
+     "90.2",
+     "%"
+    ],
+    [
+     "Directors and Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas Amon, Chief Executive Officer, Chief Financial Officer and Sole Director(6)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Philip Falcone, Former Chief Executive Officer and Former Director(7)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Henry Turner, Former Chief Technology Officer and Former Chief Operating Officer(8)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Jeffrey Canouse, Former Chief Compliance Officer",
+     "",
+     "7,677,000",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Directors and Executive Officers as a Group (4 persons)",
+     "",
+     "",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "*",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Shares Beneficially Owned"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1939,
+    "end_line": 1955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Holders and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Beneficial ownership is determined according to the rules of the SEC and generally means that a person has beneficial ownership of a security if he, she or it possesses sole or shared voting or investment power of that security, including securities that are exercisable for shares of Common Stock, Series B Preferred Stock or Series E-1 Preferred Stock within sixty (60) days of January 23, 2024. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the holders named in the table below have sole voting and investment power with respect to all shares of Common Stock, Series B Preferred Stock or Series E-1 Preferred Stock shown that they beneficially own, subject to community property laws where applicable.\nFor purposes of computing the percentage of outstanding shares of our Common Stock, Series B Preferred Stock and Series E-1 Preferred Stock held by each holder or group of holders named above, any shares of Common Stock, Series B Preferred Stock or Series E-1 Preferred Stock that such holder or holders have the right to acquire within sixty (60) days of January 23, 2024 is deemed to be outstanding, but is not deemed to be outstanding for the purpose of computing the percentage ownership of any other holder. The inclusion herein of any shares of Common Stock, Series B Preferred Stock or Series E-1 Preferred Stock listed as beneficially owned does not constitute an admission of beneficial ownership. Unless otherwise identified, the address of each beneficial owner listed in the table below is c/o Madison Technologies Inc., 2500 Westchester Avenue, Purchase, New York 10577.",
+   "prose_after": "* Less than 1%\n(1) Based on 1,603,095,243 shares of Common Stock issued and outstanding as of January 23, 2024.\n(2) The 100 shares of Series B Preferred Stock are not convertible, however such shares enable the holder thereof to cast a number of votes equal to 51% of all voting shares of each class of the Company\u2019s capital stock, including but not limited to, the shares of Common Stock and of the Series E-1 Preferred Stock.\n(3) Each share of Series E-1 Preferred Stock converts into 1,000 shares of Common Stock and votes with the shares of Common Stock on an as-converted to Common Stock basis. Although conversions of such shares of Series E-1 Preferred Stock have not yet occurred, the Series E-1 Certificate requires the shares of Series E-1 Preferred Stock to automatically convert two years from the date of their initial issuance, which occurred in September 2021. Accordingly, such shares of Series E-1 Preferred Stock are considered converted for purposes of the number of shares of Common Stock owned and percentage ownership.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1968,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(a)",
+     "Articles of Incorporation (filed as Exhibit 3.1 to the Registration Statement on Form 10-SB, filed by the Company with the SEC on May 4, 2005 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(b)",
+     "Certificate of Amendment to the Articles of Incorporation, dated May 28, 2004 (filed as Exhibit 3.1 to the Registration Statement on Form 10-SB, filed by the Company with the SEC on May 4, 2005 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(c)",
+     "Certificate of Amendment to the Articles of Incorporation, dated June 14, 2004 (filed as Exhibit 3.1 to the Registration Statement on Form 10-SB, filed by the Company with the SEC on May 4, 2005 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(d)",
+     "Certificate of Amendment to the Articles of Incorporation, dated March 9, 2015 (filed as Exhibit 3.3 to the Current Report on Form 8-K, filed by the Company with the SEC on March 11, 2015 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(e)",
+     "Certificate of Amendment to the Articles of Incorporation, dated July 28, 2020 (filed as Exhibit 10.2 to the Current Report on Form 8-K, filed by the Company with the SEC on August 7, 2020 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(f)*",
+     "Certificate of Amendment to the Articles of Incorporation, dated September 16, 2021."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(g)",
+     "Certificate of Designation for the Series A 3% Convertible Preferred Stock, dated July 28, 2020 (filed as Exhibit 10.3 to the Current Report on Form 8-K, filed by the Company with the SEC on August 7, 2020 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(h)",
+     "Certificate of Designation for the Series B Super Voting Preferred Stock, dated July 28, 2020 (filed as Exhibit 10.3 to the Current Report on Form 8-K, filed by the Company with the SEC Commission on August 7, 2020 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(i)",
+     "Certificate of Designation for the Series C 2% Convertible Preferred Stock, dated February 11, 2021 (filed as Exhibit 3.7 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(j)",
+     "Certificate of Designation for the Series D Convertible Preferred Stock, dated March 26, 2021 (filed as Exhibit 3.8 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(k)",
+     "Certificate of Designation for the Series E Convertible Preferred Stock, dated March 26, 2021 (filed as Exhibit 3.9 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(l)",
+     "Certificate of Amendment to the Certificate of Designation for the Series E Convertible Preferred Stock, dated September 16, 2021 (filed as Exhibit 3.13 to the Registration Statement filed by the Company with the SEC on September 28, 2021 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(m)",
+     "Certificate of Designation for the Series E-1 Convertible Preferred Stock, dated September 16, 2021 (filed as Exhibit 3.17 to Amendment No. 1 to Registration Statement filed by the Company with the SEC on October 8, 2021 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(n)",
+     "Certificate of Designation for the Series F Convertible Preferred Stock, dated March 26, 2021 (filed as Exhibit 3.1 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(i)(o)",
+     "Certificate of Amendment to the Certificate of Designation for the Series F Preferred Stock, dated September 16, 2021 (filed as Exhibit 3.14 to the Registration Statement filed by the Company with the SEC on September 28, 2021 and incorporated herein by reference)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2044,
+    "end_line": 2092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Given the fact that we currently have only one director, as well as our limited financial resources and operational state, our sole director must serve in the role of an audit committee. Our sole director pre-approves all audit and permissible non-audit services. These services may include audit services, audit-related services, tax services and other services. Our sole director approves these services on a case-by-case basis.\nItem 15. Exhibits, Financial Statement Schedules.\n(a). Financial Statements\nOur consolidated financial statements have been included in Item 8 above.\n(b). Financial Statement Schedules\nAll schedules for which provision is made in Regulation S-X are either not required to be included herein under the related instructions or are inapplicable or the related information is included in the footnotes to the applicable financial statement and, therefore, have been omitted from this Item 15.\n(c). Exhibits\nAll exhibits required to be filed with this Annual Report are listed below and have been filed with this Annual Report or incorporated by reference herein.",
+   "prose_after": "3.1(i)(p) Certificate of Designation for the Series G Convertible Preferred Stock, dated March 26, 2021 (filed as Exhibit 3.11 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference). 3.1(i)(q) Certificate of Amendment to the Certificate of Designation for the Series G Convertible Preferred Stock, dated August 19, 2021 (filed as Exhibit 3.12 to the Registration Statement filed by the Company with the SEC on September 28, 2021 and incorporated herein by reference). 3.1(i)(r) Certificate of Amendment to the Certificate of Designation for the Series G Convertible Preferred Stock, dated September 16, 2021 (filed as Exhibit 3.15 to the Registration Statement filed by the Company with the SEC on September 28, 2021 and incorporated herein by reference). 3.1(i)(s)* Certificate of Designation for the Series H Convertible Preferred Stock, dated November 9, 2021. 3.1(ii)* Amended and Restated By-Laws. 4.1 Form of Original Issue Discount Senior Secured Convertible Promissory Note issued in the February 2021 Private Placement (filed as Exhibit 4.1 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference). 4.2 Form of Warrant issued in the February 2021 Private Placement (filed as Exhibit 4.2 to the Annual Report on Form 10-K, filed by the Company with the SEC on August 26, 2022 and incorporated herein by reference). 4.3* 12% Subordinated Note, dated December 28, 2021, in favor of Z4 Mgmt., LLC. 4.4* Form of February 2022 Warrant. 4.5* Form of February 2022 Convertible Promissory Note. 4.6* Warrant, dated March 1, 2022, issued to Warren Zenna. 4.7* Description of Registrant\u2019s Securities. 10.1 Acquisition Agreement, dated July 17, 2020, by and among Madison Technologies Inc. and Luxurie Legs, LLC (filed as Exhibit 2.1 to the Current Report on Form 8-K, filed by the Company with the SEC on July 17, 2020 and incorporated herein by reference). 10.2 Acquisition Agreement dated September 25, 2020, by and among Madison Technologies Inc. and Posto Del Sole, Inc. (filed as Exhibit 10.17 to Amendment No. 1 to Registration Statement filed by the Company with the SEC on December 7, 2020, and incorporated herein by reference). 10.3 Share Exchange Agreement dated February 16, 2021, by and among Madison Technologies Inc., SovRyn Holdings, Inc and the shareholders of SovRyn Holdings, Inc (filed as Exhibit 2.3 to the Annual Report on Form 10-K/A, filed by the Company with the SEC on June 23, 2021 and incorporated herein by reference). 10.4 Asset Purchase Agreement, dated February 17, 2021, by and between SovRyn Holdings, Inc, NJR TV III CA OPCO, LLC and NRJ TV III CA LICENSE CO., LLC (filed as Exhibit 2.1 to the Current Report on Form 8-K, filed by the Company with the SEC on April 23, 2021 and incorporated herein by reference).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2021,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 2093,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.DEF",
+     "XBRL Taxonomy Definition Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Label Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Presentation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Cover Page Data (formatted as inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2104,
+    "end_line": 2113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "10.19* Consulting Proposal Agreement, by and between SovRyn Holdings, Inc and Zenna Consulting Group, dated March 3, 2021. 10.20* Partial Strict Forbearance Agreement, dated February 1, 2023. 10.21* Restructuring Agreement, dated February 1, 2023, by and between Madison Technologies Inc., SovRyn Holdings, Inc, Secured Partners and Arena Investors, LP. 10.22* Local Marketing Agreement, dated February 1, 2023, by and between SovRyn Holdings, Inc and Station Break Operating, LLC. 10.23* Security Agreement, dated February 17, 2021, by and between Madison Technologies Inc., its subsidiaries, certain secured parties and Arena Investors, LP. 10.24* Limited Guaranty Agreement, dated February 17, 2021, by and among Phillip Falcone, Kenneth Orr, FFO 1 2021 Irrevocable Trust, FFO 2 2021 Irrevocable Trust and KORR Value, LP in favor of Arena Investors, LP. 10.25* Limited Guarantor Pledge Agreement, dated February 17, 2021, by and among Phillip Falcone, FFO 1 2021 Irrevocable Trust, FFO 2 2021 Irrevocable Trust and KORR Value, LP in favor of Arena Investors, LP. 10.26* First Amendment to Limited Guarantor Pledge Agreement, dated September 24, 2021, by and among Phillip Falcone, FFO 1 2021 Irrevocable Trust, FFO 2 2021 Irrevocable Trust, KORR Value, LP and Arena Investors, LP. 10.27* Guaranty Agreement, dated February 17, 2021, by and among SovRyn Holdings, Inc, Arena Special Opportunities Fund, LP and Arena Special Opportunities Partners I, LP. 14.1 Code of Ethics (filed as Exhibit 14 to the Annual Report on Form 10-K, filed by the Company with the SEC on March 31, 2010 and incorporated herein by reference). 16.1 Letter from K. R. Margetson Ltd., dated April 29, 2022 (filed as Exhibit 10.1 to the Current Report on Form 8-K, filed by the Company with the SEC on September 15, 2021 and incorporated herein by reference). 21.1* List of Subsidiaries. 31.1* Certification of the Principal Executive Officer and the Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 32.1* Certification of the Principal Executive Officer and the Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002\n101.INS XBRL Instance Document 101.SCH XBRL Taxonomy Schema 101.CAL XBRL Taxonomy Calculation Linkbase",
+   "prose_after": "* Filed herewith\nIn accordance with SEC Release 33-8238, the certifications furnished in Exhibit 32 hereto are deemed to be furnished with this Annual Report and will not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, except to the extent that the registrant specifically incorporates it by reference.\nItem 16. Form 10-K Summary\nNone.\nSignatures\nIn accordance with the requirements of Section 13 or Section 15(d) of the Securities Exchange Act of 1934, Madison Technologies Inc. has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2103,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Madison Technologies Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: January 25, 2024",
+     "By:",
+     "/s/ Thomas Amon"
+    ],
+    [
+     "",
+     "",
+     "Name: Thomas Amon"
+    ],
+    [
+     "",
+     "",
+     "Title: Chief Executive Officer and Chief Financial Officer\n\n\n\n(Principal Executive Officer and Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Madison Technologies Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2127,
+    "end_line": 2137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith\nIn accordance with SEC Release 33-8238, the certifications furnished in Exhibit 32 hereto are deemed to be furnished with this Annual Report and will not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, except to the extent that the registrant specifically incorporates it by reference.\nItem 16. Form 10-K Summary\nNone.\nSignatures\nIn accordance with the requirements of Section 13 or Section 15(d) of the Securities Exchange Act of 1934, Madison Technologies Inc. has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of Madison Technologies Inc. and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2149,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: January 25, 2024",
+     "By:",
+     "/s/ Thomas Amon"
+    ],
+    [
+     "",
+     "",
+     "Name: Thomas Amon"
+    ],
+    [
+     "",
+     "",
+     "Title: Chief Executive Officer, Chief Financial Officer, and Sole Director \n\n\n\n(Principal Executive Officer and Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2140,
+    "end_line": 2148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of Madison Technologies Inc. and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2149,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

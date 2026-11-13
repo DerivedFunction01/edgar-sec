@@ -1,0 +1,3379 @@
+{
+ "accession": "0001520138-22-000452",
+ "cik": "0001594114",
+ "form": "10-K",
+ "filing_date": "2022-10-11",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "zhrh-20220630_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "99-0369270"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "50 West Liberty St. Suite 880, Reno, NV",
+     "89501"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2022\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______ to _______\nCommission file number 333-192874\nZHRH CORPORATION (Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code 775-322-0626\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code 775-322-0626\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [ ] Yes [X] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [ ] Yes [X] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE NO."
+    ],
+    [
+     "PART I",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business.",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "14"
+    ],
+    [
+     "Item 2.",
+     "Properties.",
+     "14"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "15"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "16"
+    ],
+    [
+     "Item 6.",
+     "[Reserved].",
+     "17"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "17"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "26"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "26"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.",
+     "26"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures.",
+     "27"
+    ],
+    [
+     "Item 9B.",
+     "Other Information.",
+     "28"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "29"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "31"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "36"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "37"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services.",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules.",
+     "44"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary.",
+     "47"
+    ],
+    [
+     "",
+     "Signatures.",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE NO."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 76,
+    "end_line": 114
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act.) [X] Yes [ ] No\nThe number of shares outstanding of the registrant\u2019s common stock, $0.001 par value per share, as of October 11, 2022, was 75,000,000 shares. No market value has been computed, based upon the fact that no active trading market has been established to date, and accordingly no price information is available to make such calculation.\nDOCUMENTS INCORPORATED BY REFERENCE \u2014 NONE\nTABLE OF CONTENTS\nFORM 10-K",
+   "prose_after": "-i-\nPart I\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nInformation contained in this annual report on Form 10-K contains \u201cforward-looking statements.\u201d These forward-looking statements are contained principally in the sections titled \u201cBusiness,\u201d and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d and are generally identifiable by use of the words \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cbelieve,\u201d \u201cintend\u201d or \u201cproject\u201d or the negative of these words or other variations on these words or comparable terminology. The forward-looking statements herein represent our expectations, beliefs, plans, intentions or strategies concerning future events, including, but not limited to our future financial performance; the continuation of historical trends; the sufficiency of our resources in funding our operations; our intention to engage in mergers and acquisitions; and our liquidity and capital needs. Our forward-looking statements are based on assumptions that may be incorrect, and there can be no assurance that any projections or other expectations included in any forward-looking statements will come to pass. Moreover, our forward-looking statements are subject to various known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from future results, performance or achievements expressed or implied by any forward-looking statements. These risks, uncertainties and other factors include but are not limited to: the risks of limited management, labor and financial resources; our ability to establish and maintain adequate internal controls; our ability to develop and maintain a market in our securities; and our ability obtain financing, if and when needed, on terms that are acceptable. Except as required by applicable laws, we undertake no obligation to update publicly any forward-looking statements for any reason, even if new information becomes available or other events occur in the future.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position/Title"
+    ],
+    [
+     "Jean-Michel Doublet",
+     "61",
+     "Director, Chief Executive Officer"
+    ],
+    [
+     "Lionel Therond",
+     "62",
+     "Director, Chief Financial Officer"
+    ],
+    [
+     "Brett Lovegrove",
+     "62",
+     "Chairman of the Board of Directors"
+    ],
+    [
+     "James Purnell Bond",
+     "73",
+     "Director"
+    ],
+    [
+     "Aymar de Lencquesaing",
+     "63",
+     "Director"
+    ],
+    [
+     "Cindy Zhongye Li",
+     "54",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "On December 11, 2020, Custodian appointed David Lazar as the Company\u2019s Chief Executive Officer, President, Secretary, Chief Financial Officer, Chief Executive Officer and Chairman of the Board of Directors. On April 13, 2021, Mr. David Lazar, who was the Company\u2019s then sole officer and director, submitted his resignation from all positions with the Company and appointed Brett Lovegrove as the sole director and officer of the Company. On October 4, 2021, the Board of Directors of the Company increased the size of the Board by two persons and appointed each James Purnell Bond and Aymar de Lencquesaing as directors of the Company effective as of October 4, 2021. On October 25, 2021, Mr. Brett Lovegrove, who has served as the sole director and officer of the Company since April 13, 2021, resigned from all officer positions with the Company effective on the same date. On October 25, 2021, the Board of Directors of the Company took the following actions: (i) appointed Mr. Jean-Michel Doublet as the Company\u2019s Chief Executive Officer, (ii) appointed Mr. Lionel Therond as the Company\u2019s Chief Financial Officer and (iii) appointed Mr. Brett Lovegrove as the Chairman of the Board, all effective on the same date. On March 9, 2022, the Board of Directors (the \u201cBoard\u201d) of the Company increased the size of the Board by three (3) persons and appointed each Jean-Michel Doublet, Lionel Therond, and Cindy Zhongye Li, as directors of the Company effective as of March 9, 2022. Mr. Therond is currently the Company\u2019s Chief Financial Officer, and Mr. Doublet is currently the Company\u2019s Chief Executive Officer.",
+   "prose_after": "Mr. Jean-Michel Doublet, age 61, was appointed as the Company\u2019s Chief Executive Officer on October 25, 2021 and as a member of the Company\u2019s Board of Directors on March 9, 2022. Mr. Doublet is the co-founder and has served as the Chief Executive Officer of Blue Oak starting from 2016 and continues to serve in such capacity to date. Mr. Doublet is a board member of Wentworth Africa Foundation, a UK registered charity that is active in East Africa. From January 2008 to January 2016, Mr. Doublet served as the founding partner at Clermont Energy Partners. Mr. Doublet received his degree in Engineering from the Institut National Agronomique in 1983 and received his Master\u2019s Degree in Economics at Stanford. In 1988, Mr. Doublet became a PhD. Candidate in economics at UC Berkeley.\nMr. Lionel Therond, age 62, was appointed as the Company\u2019s Chief Financial Officer on October 25, 2021 and as a member of the Company\u2019s Board of Directors on March 9, 2022. Mr. Therond is the co-founder and has served as a director of Blue Oak starting from 2016 and continues to serve in such capacity to date. From April 2011 to September 2016, Mr. Therond served as a Managing Director at Standard Bank. Mr. Therond serves as Chief Financial Officer of ADM Energy PLC since August 2020 to the present. Mr. Therond received his degree in Engineering Geology and Geophysics from ENSG Nancy in France in 1983 and his MBA in Finance in 1995 from INSEAD in France.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Brett Lovegrove(1)",
+     "2021",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "David Lazar(2)",
+     "2021",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Jean-Michele Doublet(3)",
+     "2021",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Lionel Therond(4)",
+     "2021",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Director Independence\nWe do not have any independent directors, as such term is defined in the listing standards of The NASDAQ Stock Market, at this time. The Company is not quoted on any exchange that requires director independence requirements.\nCode of Ethics\nWe have not yet adopted a code of ethics that applies to all of our employees, officers and directors, including those officers responsible for financial reporting. We expect that we will adopt a code of ethics in the near future.\nFamily Relationships\nNone.\nInvolvement in Certain Legal Proceedings\nNo executive officer, member of the board of directors or control person of our Company has been involved in any legal proceeding listed in Item 401(f) of Regulation S-K in the past 10 years.\nItem 11. Executive Compensation.\n2022 Summary Compensation Table",
+   "prose_after": "(1) Mr. Brett Lovegrove previously served as the sole director and officer of the Company since April 13, 2021 until October 25, 2021. Mr. Lovegrove has served as the Chairman of the Company\u2019s Board of Directors since October 25, 2021.\n(2) David Lazar served as the Company\u2019s Chief Executive Officer, President, Secretary, Chief Financial Officer, Chief Executive Officer and Chairman of the Board of Directors from December 11, 2020 to April 13, 2021.\n(3) Mr. Jean-Michel Doublet, was appointed as the Company\u2019s Chief Executive Officer on October 25, 2021 and as a member of the Company\u2019s Board of Directors on March 9, 2022.\n(4) Mr. Lionel Therond, was appointed as the Company\u2019s Chief Financial Officer on October 25, 2021 and as a member of the Company\u2019s Board of Directors on March 9, 2022.\nEmployment Agreements\nThe Company is not a party to any employment agreements at this time.\nOutstanding Equity Awards at Fiscal Year-End\nThere were no outstanding equity awards at the 2022 fiscal year-end.\nCompensation Plans",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 849,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner:",
+     "Amount and\n\n\n\nNature of\n\n\n\nBeneficial Ownership",
+     "",
+     "Percent of Class",
+     "",
+     ""
+    ],
+    [
+     "Directors and Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jean-Michel Doublet",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lionel Therond",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Brett Lovegrove",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "James Purnell Bond",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Aymar de Lencquesaing",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cindy Zhongye Li",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "All officers and directors as a group (6 persons)",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "More than 5% Holders",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Calgary Thunder Bay Limited(2)",
+     "",
+     "71,260,000",
+     "",
+     "95.01",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 959,
+    "end_line": 977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "At October 11, 2022 we had 75,000,000 shares of our common stock issued and outstanding. The following table sets forth information regarding the beneficial ownership of our common stock as of October 11, 2022 by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our common stock;\n\u25cf each of our directors;\n\u25cf each of our named executive officers; and\n\u25cf our executive officers and directors as a group.\nUnless otherwise indicated, the business address of each person listed is in care of the Company, at 50 West Liberty St. Suite 880, Reno, NV 89501. The percentages in the table have been calculated on the basis of treating as outstanding for a particular person, all shares of our common stock outstanding on that date and all shares of our common stock issuable to that holder in the event of exercise of outstanding rights or conversion privileges owned by that person at that date which are exercisable within 60 days of that date. Except as otherwise indicated, the persons listed below have sole voting and investment power with respect to all shares of our common stock owned by them, except to the extent that power may be shared with a spouse.",
+   "prose_after": "(2) Xuejiao Fang is the 100% owner of Calgary Thunder Bay Limited and has the power to vote and dispose of the shares held by Calgary Thunder Bay Limited.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nWe do not have a written policy for the review, approval or ratification of transactions with related parties or conflicted transactions.\nOn December 16, 2020, as a result of a receivership in Clark County, Nevada, Case Number: A-20-816621-B, Custodian Ventures LLC (the \u201cCustodian\u201d) was appointed receiver of the Company. On that same date, the Custodian appointed David Lazar as the Company\u2019s Chief Executive Officer, President, Secretary, Chief Financial Officer, Chief Executive Officer and Chairman of the Board of Directors. On May 10, 2021 the Court entered an Order terminating the receivership.\nDuring the fiscal year July 01, 2020 thru April 06, 2021, David Lazar, paid $26,195 of expenses related transfer agent, state registration fees and legal fees on behalf of the Company. On March 09, 2021, the Company issued 71,260,000 shares of common stock issued at par value of $0.001, as repayment of debt owed to the Custodian in the amount of $18,355. On April 12, 2021, Custodian Ventures forgave all amounts owing to them by the Company in the amount of $5,801. As of June 30, 2022 and June 30, 2021, a total of $0 and $5,179, remains outstanding to Custodian Ventures, LLC, respectively.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fees",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "15,000",
+     "$",
+     "15,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "15,000",
+     "$",
+     "15,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Following the closing of the ZHRH Transaction, for each calendar quarter thereafter during which Mr. Therond continues to serve as a director of the Company, the Company will grant Mr. Therond a restricted stock award of shares of the Company\u2019s common stock having a fair market value (as determined by the Board or a committee thereof, but in any case without the involvement of Mr. Therond) as of the last day of each such calendar quarter of $20,000 (each, a \u201cQuarterly Grant\u201d). Each Quarterly Grant shall vest, if at all, on the one-year anniversary of the applicable grant date, and, once vested, shall be subject to no additional contractual lock-in period. In the event that Mr. Therond ceases to serve as a director of the Company for any reason, any Quarterly Grant which has not vested at such time will be automatically forfeited.\nDuring the fiscal year ended June 30, 2022, the Company paid its largest shareholder, Calgary Thunder Bay Limited, $5,100 for consulting fees for translation of Chinese documents to English.\nItem 14. Principal Accountant Fees and Services.\nThe following table sets forth the fees billed or to be billed to our Company for the years ended June 30, 2022 and June 30, 2021 for professional services rendered by BF Borgers CPA PC (\u201cBorgers\u201d) our independent registered public accounting firm which was engaged by the Company in such capacity on May 24, 2021.",
+   "prose_after": "Audit Fees\nAudit fees to Borgers were for professional services rendered for the audit of our annual financial statements for the years ended June 30, 2022 and 2021.\nAudit-Related Fees\nDuring 2022 and 2021, Borgers did not provide any assurance and related services that are reasonably related to the performance of the audit or review or our financial statements that are not reported under the caption \u201cAudit Fees\u201d above.\nTax Fees\nAs Borgers did not provide any services to us for tax compliance, tax advice and tax planning during 2022 and 2021, no tax fees were billed or paid during those fiscal years.\nAll Other Fees\nBorgers did not provide any products and services not disclosed in the table above during 2022 and 2021. As a result, there were no other fees billed or paid during 2022 and 2021.\nPART IV\nITEM 15. Exhibit And Financial Statement Schedules.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at June 30, 2022, and 2021",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended June 30, 2022, and 2021",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended June 30, 2022, and 2021",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended June 30, 2022, and 2021",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Audit-Related Fees\nDuring 2022 and 2021, Borgers did not provide any assurance and related services that are reasonably related to the performance of the audit or review or our financial statements that are not reported under the caption \u201cAudit Fees\u201d above.\nTax Fees\nAs Borgers did not provide any services to us for tax compliance, tax advice and tax planning during 2022 and 2021, no tax fees were billed or paid during those fiscal years.\nAll Other Fees\nBorgers did not provide any products and services not disclosed in the table above during 2022 and 2021. As a result, there were no other fees billed or paid during 2022 and 2021.\nPART IV\nITEM 15. Exhibit And Financial Statement Schedules.\n(a) Financial Statements.\nIndex to the Consolidated Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the shareholders and the board of directors of ZHRH Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of ZHRH Corporation as of June 30, 2022 and 2021, the related statements of operations, stockholders' equity (deficit), and cash flows for the years then ended, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of June 30, 2022 and 2021, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States.\nSubstantial Doubt about the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations and has a significant accumulated deficit. In addition, the Company continues to experience negative cash flows from operations. These factors raise substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "180,079",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "180,079",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "180,079",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "126,135",
+     "",
+     "$",
+     "60,664",
+     ""
+    ],
+    [
+     "Related parties loan payable",
+     "",
+     "228,382",
+     "",
+     "",
+     "108,020",
+     ""
+    ],
+    [
+     "Convertible note, net of discount",
+     "",
+     "284,545",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock payable",
+     "",
+     "148,603",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "933,119",
+     "",
+     "",
+     "168,684",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "933,119",
+     "",
+     "",
+     "168,684",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS & CONTINGENCIES",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, no par value; 75,000,000 shares authorized, 75,000,000 shares issued and outstanding, respectively",
+     "",
+     "75,000",
+     "",
+     "",
+     "75,000",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "(15,115)",
+     "",
+     "",
+     "(20,916)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(812,925)",
+     "",
+     "",
+     "(222,768)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "(753,041)",
+     "",
+     "",
+     "(168,684)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "180,079",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1161,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\nCritical Audit Matter\nCritical audit matters are matters arising from the current-period audit of the financial statements that were communicated or required to be communicated to the audit committee and that (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments.\nWe determined that there are no critical audit matters.\n/S/ BF Borgers CPA PC\nBF Borgers CPA PC (PCAOB ID 5041)\nWe have served as the Company's auditor since 2021\nLakewood, CO\nOctober 11, 2022\nBalance Sheets",
+   "prose_after": "See accompanying notes to the financial statements\nStatements of Operations and Comprehensive Income",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1159,
+     "token": "REPEATING_HEADER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting fees",
+     "",
+     "293,811",
+     "",
+     "",
+     "95,001",
+     ""
+    ],
+    [
+     "Audit and Accounting fees",
+     "",
+     "115,200",
+     "",
+     "",
+     "44,000",
+     ""
+    ],
+    [
+     "Legal fees",
+     "",
+     "151,131",
+     "",
+     "",
+     "34,304",
+     ""
+    ],
+    [
+     "Transfer agent fees",
+     "",
+     "16,115",
+     "",
+     "",
+     "7,238",
+     ""
+    ],
+    [
+     "Registration fees",
+     "",
+     "798",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "301",
+     "",
+     "",
+     "218",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "578,086",
+     "",
+     "",
+     "180,761",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from operation",
+     "",
+     "(578,086)",
+     "",
+     "",
+     "(180,761)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "10,437",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(12,071)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other income (expenses)",
+     "",
+     "(12,071)",
+     "",
+     "",
+     "10,437",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before tax",
+     "",
+     "(590,157)",
+     "",
+     "",
+     "(170,324)",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(590,170)",
+     "",
+     "$",
+     "(170,324)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Earning per share Basic",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "75,000,000",
+     "",
+     "",
+     "19,358,630",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1207,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatements of Operations and Comprehensive Income",
+   "prose_after": "See accompanying notes to the financial statements\nStatements of Stockholders\u2019 Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1205,
+     "token": "REPEATING_HEADER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1254,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid In",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital Deficiency",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Stockholders\u2019 Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance - June 30, 2020",
+     "",
+     "3,740,000",
+     "$",
+     "3,740",
+     "$",
+     "31,989",
+     "",
+     "$",
+     "(52,444)",
+     "",
+     "$",
+     "(16,715)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shares issued to related party",
+     "",
+     "71,260,000",
+     "",
+     "71,260",
+     "",
+     "(52,905)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "18,355",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "(170,324)",
+     "",
+     "",
+     "(170,324)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - June 30, 2021",
+     "",
+     "75,000,000",
+     "$",
+     "75,000",
+     "$",
+     "(20,916)",
+     "",
+     "$",
+     "(222,768)",
+     "",
+     "$",
+     "(168,684)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of related party debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,801",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,801",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "(590,157)",
+     "",
+     "",
+     "(590,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - June 30, 2022",
+     "",
+     "75,000,000.00",
+     "$",
+     "75,000.00",
+     "$",
+     "(15,115)",
+     "",
+     "$",
+     "(812,925)",
+     "",
+     "$",
+     "(753,041)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1260,
+    "end_line": 1284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatements of Stockholders\u2019 Equity (Deficit)",
+   "prose_after": "See accompanying notes to the financial statements\nStatements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1258,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1286,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(590,170)",
+     "",
+     "",
+     "(170,324)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "(10,437)",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "148,603",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase/(decrease) in accruals and other payables",
+     "",
+     "65,470",
+     "",
+     "",
+     "59,565",
+     ""
+    ],
+    [
+     "Increase/(decrease) in related party payables",
+     "",
+     "126,163",
+     "",
+     "",
+     "121,196",
+     ""
+    ],
+    [
+     "Net cash used in operating activities from continuing operations",
+     "",
+     "(249,921)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash (used in) from operating activities from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(249,921)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Convertible note",
+     "",
+     "430,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payments on related party debt",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "430,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "180,079",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Effect of foreign currency translation on cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2013beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2013end of period",
+     "",
+     "180,079",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Less cash and cash equivalents of discontinued operations\u2013end of period",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents of continuing operations\u2013end of period",
+     "$",
+     "180,079",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash Financing and Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock as settlement of related debt",
+     "",
+     "-",
+     "",
+     "",
+     "(18,355)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1292,
+    "end_line": 1337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements\nStatements of Cash Flows",
+   "prose_after": "See accompanying notes to the financial statements\nNotes to Financial Statements\nFor the years ended June 30, 2022 and 2021\nNote 1 \u2013 Organization and basis of accounting\nBasis of Presentation and Organization\nKetdarina Corp. was incorporated under the laws of the State of Nevada on July 13, 2011. Until November 19, 2014, we were in the business of wholesale of bedding products to industrial, commercial and institutional retailers, and other professional business users, or to other wholesalers and related subordinated services.\nOn November 19, 2014, as reported in our Form 8-K which was filed with the Securities and Exchange Commission on November 28, 2014, the previous principal shareholders: (a) sold their shares to Western Highlands Minerals, Ltd., a Vietnamese corporation \u201cWHM\u201d);\n(b) resigned as our management and appointed WHM\u2019s designees as new management, (c) took over the inactive bedding business from us, and (d) cancelled all previous debt which we owed to them.\nSince the change of control in 2014, although engaging in ongoing discussions at that time, WHM and its designees did not enter into any agreements or understandings by which the Company would acquire any assets or a business.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1290,
+     "token": "REPEATING_HEADER",
+     "id": 54,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Convertible notes",
+     "",
+     ""
+    ],
+    [
+     "Carrying value of Convertible Notes at July 01, 2021",
+     "$",
+     "-"
+    ],
+    [
+     "New principal",
+     "",
+     "430,000"
+    ],
+    [
+     "Total principal",
+     "",
+     "430,000"
+    ],
+    [
+     "Less: conversion of principal",
+     "",
+     "-"
+    ],
+    [
+     "Less: deferred financing fees",
+     "",
+     "-"
+    ],
+    [
+     "Add: amortization of deferred financing fees",
+     "",
+     "-"
+    ],
+    [
+     "Carrying value of Convertible Notes at June 30, 2022",
+     "$",
+     "430,000"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of Convertible notes"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1437,
+    "end_line": 1450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Convertible notes"
+    }
+   },
+   "prose_before": "On March 07, 2022, the Company received $30,000 in exchange for a promissory convertible note in the amount of $30,000 from an unrelated third party. The note matures on December 31, 2022 after the issuance date and bears a 10% interest rate. The note is convertible at any time based on the indebtedness of such conversion divided by the value per share of common stock as determined based on a company valuation of $30,000,000. The will be at a current fixed price of $0.40 Due to these provisions, this convertible notes not qualify for derivative accounting under ASC 815-15, Derivatives and Hedging.\nOn June 01, 2022, the Company amended the January 24, 2022, to cancel the common stock share purchase equal to $200,000 in exchange for a $200,000 convertible note. On that same date, the Company received $200,000 in exchange for a June 01, 2022 promissory convertible note in the amount of $200,000 from an unrelated third party. The note matures on December 31, 2022 after the issuance date and bears a 10% interest rate. The note is convertible at any time based on the indebtedness of such conversion divided by the value per share of common stock as determined based on a company valuation of $30,000,000. The will be at a current fixed price of $0.40 Due to these provisions, this convertible notes not qualify for derivative accounting under ASC 815-15, Derivatives and Hedging.\nA summary of value changes to the notes for the fiscal year ended June 30, 2022 is as follows:",
+   "prose_after": "Note 7 \u2013 Income Taxes\nThe Company provides for income taxes under FASB ASC 740, Accounting for Income Taxes. FASB ASC 740 requires the use of an asset and liability approach in accounting for income taxes. Deferred tax assets and liabilities are recorded based on the differences between the financial statement and tax bases of assets and liabilities and the tax rates in effect currently.\nFASB ASC 740 requires the reduction of deferred tax assets by a valuation allowance, if, based on the weight of available evidence, it is more likely than not that some or all of the deferred tax assets will not be realized. In the Company\u2019s opinion, it is uncertain whether they will generate sufficient taxable income in the future to fully utilize the net deferred tax asset. Accordingly, a valuation allowance equal to the deferred tax asset has been recorded. The cumulative deferred tax asset for the years June 30, 2022 and 2021 is $267,769 and $170,324, respectively, which is calculated by multiplying the estimated tax rate by the cumulative net operating loss (NOL) adjusted for the following items:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1456,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Deferred Tax Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the period ended June 30,",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Book loss for the year",
+     "$",
+     "(170,324)",
+     "",
+     "$",
+     "(170,324)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Temporary difference:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expense",
+     "",
+     "114,064",
+     "",
+     "",
+     "59,565",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "12,071",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax loss for the year",
+     "",
+     "(464,023)",
+     "",
+     "",
+     "(110,759)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Estimated effective tax rate",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Deferred tax asset",
+     "$",
+     "97,445",
+     "",
+     "$",
+     "23,259",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of Deferred Tax Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1458,
+    "end_line": 1476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "The Company provides for income taxes under FASB ASC 740, Accounting for Income Taxes. FASB ASC 740 requires the use of an asset and liability approach in accounting for income taxes. Deferred tax assets and liabilities are recorded based on the differences between the financial statement and tax bases of assets and liabilities and the tax rates in effect currently.\nFASB ASC 740 requires the reduction of deferred tax assets by a valuation allowance, if, based on the weight of available evidence, it is more likely than not that some or all of the deferred tax assets will not be realized. In the Company\u2019s opinion, it is uncertain whether they will generate sufficient taxable income in the future to fully utilize the net deferred tax asset. Accordingly, a valuation allowance equal to the deferred tax asset has been recorded. The cumulative deferred tax asset for the years June 30, 2022 and 2021 is $267,769 and $170,324, respectively, which is calculated by multiplying the estimated tax rate by the cumulative net operating loss (NOL) adjusted for the following items:",
+   "prose_after": "Details of valuation allowance for the last two years are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1456,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Valuation Allowance",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the period ended June 30,",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Balances at the beginning of the year",
+     "$",
+     "24,577",
+     "$",
+     "1,318"
+    ],
+    [
+     "Additions",
+     "",
+     "97,445",
+     "",
+     "23,259"
+    ],
+    [
+     "Deductions",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Balance at the end of the Year",
+     "$",
+     "122,022",
+     "$",
+     "24,577"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of Valuation Allowance"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1479,
+    "end_line": 1490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "Details of valuation allowance for the last two years are as follows:",
+   "prose_after": "Uncertain Tax Positions\nUnrecognized income tax benefits represent income tax positions taken on income tax returns but not yet recognized in the financial statements. If recognized, substantially all of the unrecognized tax benefits for the Company\u2019s fiscal years ended June 30, 2022 and 2021 would affect the effective income tax rate. There were no unrecognized income tax benefits as of June 30, 2022 and 2021.\nThe Company recognizes the interest and penalties accrued related to unrecognized tax benefits in income tax expense. The Company did not recognize any expenses any interest and penalties as of June 30, 2021 and 2020, respectively.\nNote 8 \u2013 Commitments and Contingencies\nDirector Agreement with Aymar de Lencqusaing, Brett Lovegrove, Cindy Li, James P. Bond, Jean-Michel Doublet and Lionel Therond\nOn March 9, 2022, the Company entered into a Director Agreement with Aymar de Lencqusaing, Brett Lovegrove, Cindy Li, James P Bond, Jean-Michel Doublet and Lionel Therond. Pursuant to each Director Agreement, each director agreed to perform the duties of a director in accordance with the terms of the Director Agreement with a time commitment of 8-10 days per month, with 4 Board meetings per year. The Director Agreement\u2019s term starts on March 9, 2022 and terminates upon the earlier of the following to occur: (i) removal of the individual as a director of the Company upon proper shareholder action in accordance with the Company\u2019s articles, bylaws and applicable law (ii)Individuals resignation as a director of the Company (iii) individuals death or (iv) failure of the shareholders of the Company to re-elect the individual at the Company\u2019s annual shareholder meeting or any special meeting of the shareholders called for the purpose of electing directors.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1456,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Discontinued Operations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Total current assets",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment, net",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Assets of discontinued operations",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Loan from director",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Liabilities of discontinued operations",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (liabilities) assets of discontinued operations",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of Discontinued Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1523,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "\u25cf Following the closing of the ZHRH Transaction, for each calendar quarter thereafter during which each individual continues to serve as a director of the Company, the Company will grant each director a restricted stock award of shares of the Company\u2019s common stock having a fair market value (as determined by the Board or a committee thereof, but in any case without the involvement of Mr. Lovegrove) as of the last day of each such calendar quarter of $20,000 (each, a \u201cQuarterly Grant\u201d). Each Quarterly Grant shall vest, if at all, on the one-year anniversary of the applicable grant date, and, once vested, shall be subject to no additional contractual lock-in period. In the event that a director ceases to serve as a director of the Company for any reason, any Quarterly Grant which has not vested at such time will be automatically forfeited.\nNote 9 \u2013 Discontinued operations\nOn November 19, 2014, the previous principal shareholders: (a) sold their shares to Western Highlands Minerals, Ltd., a Vietnamese corporation \u201cWHM\u201d) and/or Mr. Phap Bui as representative; (b) resigned as management and appointed WHM\u2019s designees as new management,\n(c) took over the inactive bedding business from the previous principal shareholders, and (d) cancelled all previous debt which was owed to them.\nSince that change of control, although engaging in ongoing discussions, WHM and its designees did not enter into any agreements or understandings by which the Company would acquire any assets or a business.\nThe major classes of assets and liabilities of the Company at June 30, 2022 are as follows:",
+   "prose_after": "Note 8 \u2013 Subsequent Events\nIn accordance with ASC 855 the Company\u2019s management reviewed all material events through the date these financial statements were available to be issued, there was only one material subsequent event.\nItem 15. Exhibit and Financial Statement Schedules.\n(b) The following exhibits are filed as a part of this Annual Report on Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1504,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1553,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of the Company. (Incorporated by reference to Exhibit 3.1 of the Company\u2019s Form 10-K filed with the Securities and Exchange Commission on September 21, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Articles of Incorporation of the Company. (Incorporated by reference to Exhibit 3.1 of the Company\u2019s Form 10-K filed with the Securities and Exchange Commission on September 21, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Amended and Restated Bylaws of the Company. (Incorporated by reference to Exhibit 3.1 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on October 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1\u2020",
+     "ZHRH- Blue Oak Advisory Second Agreement dated October 24, 2021. (Incorporated by reference to Exhibit 10.1 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Note Purchase Agreement with James Purnell Bond dated March 7, 2022. (Incorporated by reference to Exhibit 10.1 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Form of Convertibles Promissory Note issued to James Purnell Bond dated March 7, 2022. (Incorporated by reference to Exhibit 10.2 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Form of Escrow Agreement with James Purnell Bond dated March 7, 2022. (Incorporated by reference to Exhibit 10.3 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Securities Purchase Agreement with Badon Partners SAS and Calgary Thunder Bay Limited dated January 24, 2022. (Incorporated by reference to Exhibit 10.4 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Convertibles Promissory Note issued to Badon Partners SAS and Calgary Thunder Bay Limited dated January 24, 2022. (Incorporated by reference to Exhibit 10.5 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Form of Escrow Agreement with Badon Partners SAS dated January 24, 2022. (Incorporated by reference to Exhibit 10.6 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 9, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8\u2020",
+     "Director Agreement with Aymar de Lencquesaing dated March 9, 2022. (Incorporated by reference to Exhibit 10.1 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9\u2020",
+     "Director Agreement with Brett Lovegrove dated March 9, 2022. (Incorporated by reference to Exhibit 10.2 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10\u2020",
+     "Director Agreement with Cindy Li dated March 9, 2022. (Incorporated by reference to Exhibit 10.3 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11\u2020",
+     "Director Agreement with James P. Bond dated March 9, 2022. (Incorporated by reference to Exhibit 10.4 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1564,
+    "end_line": 1609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "Note 8 \u2013 Subsequent Events\nIn accordance with ASC 855 the Company\u2019s management reviewed all material events through the date these financial statements were available to be issued, there was only one material subsequent event.\nItem 15. Exhibit and Financial Statement Schedules.\n(b) The following exhibits are filed as a part of this Annual Report on Form 10-K:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1558,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1610,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.12\u2020",
+     "Director Agreement with Jean-Michel Doublet dated March 9, 2022. (Incorporated by reference to Exhibit 10.5 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13\u2020",
+     "Director Agreement with Lionel Therond dated March 9, 2022. (Incorporated by reference to Exhibit 10.6 of the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Exchange Act Rule 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Chief Financial Officer pursuant to Exchange Act Rule 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of the Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document).*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101).*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1612,
+    "end_line": 1641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit And Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith. \u2020 Includes management contracts and compensation plans and arrangements.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ZHRH CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ Jean-Michel Doublet"
+    ],
+    [
+     "",
+     "",
+     "Jean-Michel Doublet"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(principal executive officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ Lionel Therond"
+    ],
+    [
+     "",
+     "",
+     "Lionel Therond"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(principal financials and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "ZHRH CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1656,
+    "end_line": 1671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "* Filed herewith. \u2020 Includes management contracts and compensation plans and arrangements.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ Jean-Michel Doublet"
+    ],
+    [
+     "",
+     "",
+     "Jean-Michel Doublet"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ Lionel Therond"
+    ],
+    [
+     "",
+     "",
+     "Lionel Therond"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1674,
+    "end_line": 1685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ James Purnell Bond"
+    ],
+    [
+     "",
+     "",
+     "James Purnell Bond"
+    ],
+    [
+     "",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: October 11, 2022",
+     "By:",
+     "/s/ Aymar de Lencquesaing"
+    ],
+    [
+     "",
+     "",
+     "Aymar de Lencquesaing"
+    ],
+    [
+     "",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1686,
+    "end_line": 1697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Discontinued operations"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

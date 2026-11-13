@@ -1,0 +1,4431 @@
+{
+ "accession": "0001437749-22-006291",
+ "cik": "0001713832",
+ "form": "10-K",
+ "filing_date": "2022-03-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "hyre20211130_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-2480487"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "915 Wilshire Blvd, Suite 1950",
+     ""
+    ],
+    [
+     "Los Angeles, CA",
+     "90017"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark one)\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2021\nOr\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from __________ to __________\nCommission file number 001-38561\nHyreCar Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (888) 688-6769\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, par value $0.00001 per share",
+     "HYRE",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (888) 688-6769\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TABLE OF CONTENTS",
+     "Page Number"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Forward Looking Statements",
+     "-ii-"
+    ],
+    [
+     "PART I",
+     "",
+     "-1-"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "-1-"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "-8-"
+    ],
+    [
+     "Item 1B.",
+     "Staff Comments",
+     "-20-"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "-20-"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "-20-"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "-20-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     "-21-"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "-21-"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "-21-"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "-22-"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "-31-"
+    ],
+    [
+     "Item 8.",
+     "Consolidated Financial Statements and Supplementary Data",
+     "-32-"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "-32-"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "-32-"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "-32-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "-33-"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "-33-"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "-33-"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "-33-"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "-33-"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "-33-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "-34-"
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Consolidated Financial Statements Schedules",
+     "-34-"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "-34-"
+    ],
+    [
+     "",
+     "Signatures",
+     "-35-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 114
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant was $438,510,793 as of June 30, 2021, the last business day of the registrant's most recently completed second quarter based on the closing price of the common stock on the Nasdaq Capital Market. Solely for purposes of this disclosure, shares of common stock held by executive officers and directors of the registrant as of such date have been excluded because such persons may be deemed to be affiliates. This determination of executive officers and directors as affiliates is not necessarily a conclusive determination for any other purposes.\n21,761,283 shares of common stock were issued and outstanding as of March 14, 2022.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Registrant\u2019s definitive proxy statement relating to its 2022 annual meeting of stockholders (the \u201c2022 Proxy Statement\u201d) are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. The 2022 Proxy Statement will be filed with the Securities and Exchange Commission (the \u201cSEC\u201d) within 120 days after the end of the fiscal year to which this report relates.",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements which are made pursuant to the safe harbor provisions of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These statements may be identified by such forward-looking terminology as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinue\u201d or the negative of these terms or other comparable terminology. Our forward-looking statements are based on a series of expectations, assumptions, estimates and projections about our company, are not guarantees of future results or performance and involve substantial risks and uncertainty. We may not actually achieve the plans, intentions or expectations disclosed in these forward-looking statements. Actual results or events could differ materially from the plans, intentions and expectations disclosed in these forward-looking statements. Our business and our forward-looking statements involve substantial known and unknown risks and uncertainties, including the risks and uncertainties inherent in our statements regarding:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Markets",
+     "Nationwide",
+     "30 States",
+     "10 Cities for Lyft, 11 States for Uber",
+     "10 Cities"
+    ],
+    [
+     "Rental Length and Age Requirement",
+     "2-Day Minimum / 21+",
+     "7-Day Minimum / 25+",
+     "7-Day Minimum / 25+",
+     "1-Hour Minimum / 21+"
+    ],
+    [
+     "Service Limitation",
+     "No Limits",
+     "Uber Only",
+     "Lyft and Uber Only",
+     "Uber Only"
+    ],
+    [
+     "Deposit",
+     "$0\n\n\n\n($99 in CA/NV/AZ)",
+     "$200",
+     "$200",
+     "$150"
+    ],
+    [
+     "Payments accepted",
+     "Credit, Debit, Prepaid",
+     "Credit or Credit check required",
+     "Credit or Credit check required",
+     "Credit only"
+    ],
+    [
+     "All-In Estimated Cost Range*",
+     "$320-$400",
+     "$300-$330",
+     "$320-$450",
+     "$400-$500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "3. Flexibility: The ability to use the same car for both rideshare companies plus food and other deliveries is an important reason why many drivers choose our platform. Coupled with a comprehensive protection program that includes insurance, drivers are attracted to this unique service not offered by our competition.\nAmong vehicle solutions for ride-sharing rentals, are Avis, Hertz, Getaround and HyreCar. These car rental companies are similar in one way: they operate in the U.S. and provide cars drivers to rent and drive on the Uber or Lyft platform. However, their business models vary widely.\nHertz (OTC:HTZGQ) and Fair.com (\u201cFair\u201d) were competitors with vehicle supply partnerships with Uber, but both experienced hardships in 2020. Hertz declared bankruptcy mid-year and following Uber\u2019s spring 2019 initial public offering, Fair was offering promotional weekly rates to Uber drivers, which presented a competitive threat in certain marketing, particularly in California. The partnership ended in February 2020 when Uber announced it was ending this \u201cFair Go\u201d partnership, and as a result Fair has exited the weekly rental business.\nA high level comparative analysis of markets, pricing limitations and age requirements are as follows for a sample of key competitors:",
+   "prose_after": "* Includes insurance, weekly cost assumes 1,000 miles driven per week, assumes maximum 12-hour rental per day\nOur Strengths\nUsing our website platform or mobile applications (iOS and Android), vehicle Owners can post their cars to our marketplace and Drivers can browse car inventory prior to rental. Once a Driver finds a car, he or she creates a profile, enters his or her personal information and credentials (including, address, city, state, a copy of applicable state issued driver\u2019s license, Uber or Lyft credentials and social security number) and submits a credit card for payment. We then perform a criminal background check, DMV driving record check, Homeland Security Watch-list and Sex Offender database check. HyreCar\u2019s screening criteria is stricter than Uber and Lyft\u2019s background check and we are focused on maintaining a safe user experience and seek to ensure that all transactions between owners and drivers are processed through a secure web platform. We believe the attraction and vetting of qualified gig economy drivers is a primary reason why commercial automobile businesses around the country utilize the Company's platform.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 182,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Daily Gross Revenue Example",
+     "",
+     "",
+     "Daily Net (GAAP) Revenue Example",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "National Average Daily Rental Rate",
+     "$",
+     "38.00",
+     "HyreCar Owner Fee (~23% Average)",
+     "$",
+     "9.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Driver Fee",
+     "$",
+     "6.00",
+     "HyreCar Driver Fee (~15% Average)",
+     "$",
+     "6.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daily Insurance Fee",
+     "$",
+     "15.00",
+     "Insurance Fee (100% of fee)",
+     "$",
+     "15.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daily Gross Billing Paid by Driver",
+     "$",
+     "59.00",
+     "Daily Average Net Revenue",
+     "$",
+     "30.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 277,
+    "end_line": 291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "We generate revenue by taking a fee out of each rental processed on our platform. Each rental transaction represents a Driver renting a car from an Owner. Drivers pay a daily rental rate set by the Car Owner, plus a 10%-20% HyreCar Driver Fee and direct daily insurance costs. Owners receive their daily rental rate minus a 15-30% HyreCar Owner Fee. For example, as of December 31, 2021, the average daily rental rate of a HyreCar vehicle nationally is approximately $38.00 (\u201cDaily Rental Rate\u201d), plus a 10%-20% HyreCar Driver fee ($6) and daily direct insurance fee of $15.00, totaling $59 in total daily gross billings is paid by the Driver via a card transaction. On average approximately 77% of the daily rental or $30 is transferred to the Owner via our merchant processing partner. HyreCar earns revenues from the two revenue share fees and the insurance totaling approximately $30 per day. Accordingly, the GAAP reportable revenue recognized by HyreCar is $29 in this example transaction, as detailed in the following table:",
+   "prose_after": "Gross billings is an important measure by which we evaluate and manage our business. We define gross billings as the amount billed to Drivers, without any adjustments for amounts paid to Owners or refunds. It is important to note that gross billings is a non-GAAP measure and as such, is not recorded in our financial statements as revenue. However, we use gross billings to assess our business growth, scale of operations and our ability to generate gross billings is strongly correlated to our ability to generate revenues. Gross billings may also be used to calculate net revenue margin, defined as the company\u2019s GAAP reportable revenue over gross billings. Using the definition of net revenue margin and the example above, HyreCar\u2019s net revenue margin is equal to approximately 49% for the full-year ended December 31, 2021 ($35,716,031 HyreCar\u2019s GAAP revenue over $73,344,808 Total Gross Billings) and about 51% for the fourth quarter of 2021. A breakout of revenue components is provided in the section of this Annual Report on Form 10-K titled \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and the footnotes to our audited consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 272,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Revenue (GAAP reported revenue)",
+     "$",
+     "35,716,031",
+     "$",
+     "25,231,741"
+    ],
+    [
+     "Add: Refunds and rebates",
+     "",
+     "2,613,980",
+     "",
+     "1,967,668"
+    ],
+    [
+     "Add: Owner payments (not recorded in consolidated financial statements)",
+     "",
+     "35,014,797",
+     "",
+     "28,562,508"
+    ],
+    [
+     "Gross billings (non-GAAP measure not recorded in consolidated financial statements)",
+     "$",
+     "73,344,808",
+     "$",
+     "55,761,917"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 704,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Net Loss. Net loss for the year ended December 31, 2021 was $25,953,717 as compared to a net loss for the year ended December 31, 2020 of $15,220,901. The increase in net loss was primarily driven by the higher operating costs and non-cash stock-based compensation expense described above, partially offset by the higher net revenue recognized during the year ended December 31, 2021.\nNon-GAAP Financial Measures\nGross Billings\nWe believe gross billings is an important measure by which we evaluate and manage our business. We define gross billings as the amount billed to Drivers, without any adjustments for amounts paid to Owners or refunds. Gross billings include transactions from both our revenues recorded on a net and a gross basis. It is important to note that gross billings is a non-GAAP measure and as such, is not recorded in our consolidated financial statements as revenue. However, we use gross billings to assess our business growth, scale of operations and our ability to generate gross billings is strongly correlated to our ability to generate revenues. Gross billings may also be used to calculate net revenue margin, defined as the company\u2019s GAAP reportable revenue over gross billings.\nThe table below sets forth a reconciliation of our GAAP reported revenues to gross billings for the years ended December 31, 2021 and 2020:",
+   "prose_after": "Adjusted EBITDA\nAdjusted EBITDA is a key performance measure that our management uses to assess our operating performance and the operating leverage in our business. Because Adjusted EBITDA facilitates internal comparisons of our historical operating performance on a more consistent basis, we use this measure for business planning purposes. We expect Adjusted EBITDA will increase over the long term as we continue to scale our business and achieve greater efficiencies in our operating expenses.\nWe calculate Adjusted EBITDA as net loss, adjusted to exclude:\n\u25cf other income (expense), net;\n\u25cf provision for income taxes;\n\u25cf depreciation and amortization;\n\u25cf stock-based compensation expense;\n\u25cf payroll tax expense related to stock-based compensation expense; and\n\u25cf changes to the liabilities for insurance required by regulatory agencies attributable to historical periods.\nFor more information regarding the limitations of Adjusted EBITDA and a reconciliation of net loss to Adjusted EBITDA, see the section titled \u201cReconciliation of Non-GAAP Financial Measures.\u201d",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "Year Ended December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(25,953,717)",
+     "",
+     "$",
+     "(15,220,901)",
+     ""
+    ],
+    [
+     "Adjusted to exclude the following:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "",
+     "(2,024,048)",
+     "",
+     "",
+     "(32,588)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "526",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "77,035",
+     "",
+     "",
+     "76,834",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "8,176,941",
+     "",
+     "",
+     "3,303,211",
+     ""
+    ],
+    [
+     "Payroll tax expense related to stock-based compensation expense",
+     "",
+     "227,263",
+     "",
+     "",
+     "77,303",
+     ""
+    ],
+    [
+     "Changes to the liabilities for insurance reserves",
+     "",
+     "217,151",
+     "",
+     "",
+     "780,147",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "(19,278,849)",
+     "",
+     "$",
+     "(11,015,194)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We use Adjusted EBITDA in conjunction with GAAP measures as part of our overall assessment of our performance, including the preparation of our annual operating budget and quarterly forecasts, to evaluate the effectiveness of our business strategies, and to communicate with our board of directors concerning our financial performance. Our definitions may differ from the definitions used by other companies and therefore comparability may be limited. In addition, other companies may not publish these or similar metrics. Furthermore, these measures have certain limitations in that they do not include the impact of certain expenses that are reflected in our consolidated statements of operations that are necessary to run our business. Thus, our Adjusted EBITDA should be considered in addition to, not as substitutes for, or in isolation from, measures prepared in accordance with GAAP.\nWe compensate for these limitations by providing a reconciliation of Adjusted EBITDA to the related GAAP financial measures, revenue and net loss, respectively. We encourage investors and others to review our financial information in its entirety, not to rely on any single financial measure and to view Adjusted EBITDA in conjunction with their respective related GAAP financial measures.\nThe following table provides a reconciliation of net loss to Adjusted EBITDA for the years ended December 31, 2021 and 2020:",
+   "prose_after": "Liquidity and Capital Resources\nAs of December 31, 2021, our principal sources of liquidity were cash and cash equivalents of $11,499,136 compared to $4,923,515 as of December 31, 2020. Cash and cash equivalents consisted of money market deposit accounts denominated in U.S. dollars. We also had additional Restricted Cash balances of $3,248,271 as of December 31, 2021 which relates to amounts held in a restricted bank account at Cogent Bank as collateral for the amount pledged by the Company to secure a revolving line of credit made by Cogent Bank to AmeriDrive, as well as escrow accounts held for our insurance claims processing partner to pay out claims. Cash, cash equivalents and restricted cash altogether totaled $14,747,407 as of December 31, 2021.\nIn July 2019, we received net proceeds of $11,321,250 upon the completion of our secondary public offering. Further, in February 2021, we received net proceeds of $27.6 million upon the completion an underwritten public offering of an aggregate of 2,530,000 million shares of common stock at a public offering price of $11.75 per share, after deducting underwriting discounts and commissions and estimated offering expenses.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "Year Ended December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Insurance and administration fees",
+     "$",
+     "18,603,759",
+     "",
+     "$",
+     "12,819,157",
+     ""
+    ],
+    [
+     "Transaction fees",
+     "",
+     "15,808,972",
+     "",
+     "",
+     "11,391,090",
+     ""
+    ],
+    [
+     "Other fees",
+     "",
+     "1,662,170",
+     "",
+     "",
+     "1,441,012",
+     ""
+    ],
+    [
+     "Incentives and rebates",
+     "",
+     "(358,870)",
+     "",
+     "",
+     "(419,518)",
+     ""
+    ],
+    [
+     "Net revenue",
+     "$",
+     "35,716,031",
+     "",
+     "$",
+     "25,231,741",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In applying the guidance of ASC 606, the Company 1) identifies the contract with the customer 2) identifies the performance obligations in the contract 3) determines the transaction price 4) determines if an allocation of that transaction price is required to the performance obligations in the contract and 5) recognizes revenue when or as the companies satisfies a performance obligation.\nRefunds may occur when the driver returns the owner vehicle early based on the terms of the original contract or cancels the rental prior to completing the exchange. In limited circumstances, the Company provides contingent consideration in the form of a rebate that is redeemable only if the customer completes a specific level of transaction over a specific time period. In such cases, the rebate or refund obligation is recognized as a reduction of revenues. The Company defers revenue in all instances when the earnings process is not yet complete.\nThe following is a breakout of revenue components by subcategory for the years ended December 31, 2021 and 2020.",
+   "prose_after": "Principal Agent Considerations\nThe Company evaluates our service offerings to determine if we are acting as the principal or as an agent, which we consider in determining if revenue should be reported gross or net. One of our primary revenue sources is a transaction fee made from a confirmed booking of a vehicle on our platform. Key indicators that we evaluate to reach this determination include:\n\u25cf the terms and conditions of our contracts;\n\u25cf whether we are paid a fixed percentage of the arrangement\u2019s consideration or a fixed fee for each transaction;\n\u25cf the party which sets the pricing with the end-user, has the credit risk and provides customer support; and\n\u25cf the party responsible for delivery/fulfillment of the product or service to the end consumer.\nWe have determined that we act as the agent in the transaction for vehicle bookings, as we are not the primarily obligor of the arrangement and receive a fixed percentage of the transaction. Therefore, revenue is recognized on a net basis.\nFor other fees such as insurance, referrals, motor vehicle records (application fees), and dealer subscription we have determined revenue should be recorded on a gross basis. In such arrangements, the Company sets pricing, has risk of economic loss, has certain credit risk, provides support services related to these transactions, and has decision making ability about service providers used .",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 850,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-2"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-3"
+    ],
+    [
+     "Consolidated Statement of Stockholders' Equity (Deficit)",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 937
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "The information required by this Item is incorporated herein by reference to the information that will be contained in our 2022 Proxy Statement, which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this Item is incorporated herein by reference to the information that will be contained in our 2022 Proxy Statement, which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nItem 14. Principal Accounting Fees and Services\nThe information required by this Item is incorporated herein by reference to the information that will be contained in our 2022 Proxy Statement which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nPART IV\nItem 15. Exhibits, Consolidated Financial Statements Schedules\n(a) The following documents are filed as part of this report:\n(1) Consolidated Financial Statements:",
+   "prose_after": "(2) Consolidated Financial Statement Schedules:\nAll consolidated financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(3) Exhibits.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 920,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 986,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "4.1",
+     "Description of Securities Registered Under Section 12 of the Exchange Act"
+    ],
+    [
+     "4.2",
+     "Specimen Stock Certificate evidencing the shares of common stock (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "10.1+",
+     "Employment Agreement between the Company and Joseph Furnari (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "10.2+",
+     "Employment Agreement between the Company and Michael Furnari (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "10.3+",
+     "Employment Agreement between the Company and Scott Brogi (incorporated by reference to the Registrant\u2019s Current Report on Form 8-K, dated October 2, 2018)"
+    ],
+    [
+     "10.4+",
+     "Employment Agreement between the Company and Henry Park (incorporated by reference to the Registrant\u2019s Current Report on Form 8-K, dated October 30, 2018)"
+    ],
+    [
+     "10.5",
+     "2016 Equity Incentive Plan and forms of award agreements thereunder (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1/A (File No. 333-225157)"
+    ],
+    [
+     "10.6",
+     "2018 Equity Incentive Plan and forms of award agreements thereunder (incorporated by reference to the Registrant\u2019s Registration Statement on Form S-8 (File No. 333-229222)"
+    ],
+    [
+     "10.7",
+     "2021 Equity Incentive Plan and forms of award agreements (incorporated by reference to Exhibit 10.1 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on August 10, 2021)"
+    ],
+    [
+     "10.8",
+     "Equity Offering Sales Agreement, dated November 9, 2021, by and among the Company, D.A. Davidson & Co. (incorporated by reference to Exhibit 1.1. to the Registrant\u2019s Current Report on Form 8-K filed on November 9, 2021)"
+    ],
+    [
+     "10.9",
+     "Employment Agreement between the Company and Serge De Bock"
+    ],
+    [
+     "23.1",
+     "Consent of dbbmckennon, independent registered public accounting firm"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the Instance Document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (Embedded within the Inline XBRL document and included in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 944,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Consolidated Financial Statement Schedules:\nAll consolidated financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(3) Exhibits.",
+   "prose_after": "+ Indicates a management contract or any compensatory plan, contract or arrangement\nItem 16. Form 10-K Summary\nNot applicable.\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and the Board of Directors of HyreCar Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of HyreCar Inc. and subsidiary (the \u201cCompany\u201d) as of December 31, 2021 and 2020, the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021 and 2020, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s consolidated financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 920,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 986,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent",
+     "$",
+     "11,499,136",
+     "",
+     "$",
+     "4,923,515",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "3,248,271",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "162,586",
+     "",
+     "",
+     "109,366",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "-",
+     "",
+     "",
+     "33,164",
+     ""
+    ],
+    [
+     "Insurance and security deposits",
+     "",
+     "95,000",
+     "",
+     "",
+     "749,454",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,061,520",
+     "",
+     "",
+     "313,812",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "16,066,513",
+     "",
+     "",
+     "6,129,311",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "5,265",
+     "",
+     "",
+     "8,425",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "372,592",
+     "",
+     "",
+     "80,031",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "-",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "16,444,370",
+     "",
+     "$",
+     "6,312,767",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "5,567,233",
+     "",
+     "$",
+     "2,275,559",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "2,877,438",
+     "",
+     "",
+     "4,359,348",
+     ""
+    ],
+    [
+     "Insurance reserve",
+     "",
+     "2,330,190",
+     "",
+     "",
+     "2,113,039",
+     ""
+    ],
+    [
+     "Note payable, current portion",
+     "",
+     "-",
+     "",
+     "",
+     "1,554,548",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "52,192",
+     "",
+     "",
+     "76,059",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "10,827,053",
+     "",
+     "",
+     "10,378,553",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable, net of current portion",
+     "",
+     "-",
+     "",
+     "",
+     "444,627",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "10,827,053",
+     "",
+     "",
+     "10,823,180",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 3)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, 15,000,000 shares authorized, par value $0.00001, 0 shares issued and outstanding as of December 31, 2021 and 2020, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, 50,000,000 shares authorized, par value $0.00001, 21,609,409 and 17,741,713 shares issued and outstanding as of December 31, 2021 and 2020, respectively",
+     "",
+     "216",
+     "",
+     "",
+     "177",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "75,806,853",
+     "",
+     "",
+     "39,725,445",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(70,189,752)",
+     "",
+     "",
+     "(44,236,035)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity (deficit)",
+     "",
+     "5,617,317",
+     "",
+     "",
+     "(4,510,413)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity (deficit)",
+     "$",
+     "16,444,370",
+     "",
+     "$",
+     "6,312,767",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1016,
+    "end_line": 1067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ dbbmckennon\n3501\nWe have served as the Company\u2019s auditor since 2016.\nSan Diego, California\nMarch 15, 2022\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "Year Ended December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "35,716,031",
+     "",
+     "$",
+     "25,231,741",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "25,942,684",
+     "",
+     "",
+     "16,961,450",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "9,773,347",
+     "",
+     "",
+     "8,270,291",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "21,944,369",
+     "",
+     "",
+     "12,332,147",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "10,012,937",
+     "",
+     "",
+     "8,141,675",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,793,280",
+     "",
+     "",
+     "3,049,158",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "37,750,586",
+     "",
+     "",
+     "23,522,980",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(27,977,239)",
+     "",
+     "",
+     "(15,252,689)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest (income) expense",
+     "",
+     "(12,139)",
+     "",
+     "",
+     "24,299",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "(2,011,909)",
+     "",
+     "",
+     "(56,887)",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "",
+     "(2,024,048)",
+     "",
+     "",
+     "(32,588)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(25,953,191)",
+     "",
+     "",
+     "(15,220,101)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "526",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(25,953,717)",
+     "",
+     "$",
+     "(15,220,901)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding - basic and diluted",
+     "",
+     "20,635,940",
+     "",
+     "",
+     "17,557,868",
+     ""
+    ],
+    [
+     "Weighted average net loss per share - basic and diluted",
+     "$",
+     "(1.26)",
+     "",
+     "$",
+     "(0.87)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1072,
+    "end_line": 1111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 1112,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Subscription Receivable - Related",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Parties",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity (Deficit)",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "16,393,171",
+     "$",
+     "164",
+     "$",
+     "35,857,835",
+     "",
+     "$",
+     "(7,447)",
+     "",
+     "$",
+     "(29,015,134)",
+     "",
+     "$",
+     "6,835,418",
+     ""
+    ],
+    [
+     "Stock option compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "329,092",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "329,092",
+     ""
+    ],
+    [
+     "Stock option compensation modification",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "822,500",
+     "",
+     "8",
+     "",
+     "1,434,124",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,434,132",
+     ""
+    ],
+    [
+     "Restricted stock unit compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,053,698",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,053,698",
+     ""
+    ],
+    [
+     "Stock options exercised for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "82,894",
+     "",
+     "1",
+     "",
+     "104,034",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "104,035",
+     ""
+    ],
+    [
+     "Stock option exercised - cashless",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,645",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shares issued for vested restricted stock units",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,925",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shares issued for legal services and settlement of payables and accrued liabilities",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "254,535",
+     "",
+     "2",
+     "",
+     "567,611",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "567,613",
+     ""
+    ],
+    [
+     "Shares issued for settlements",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "84,431",
+     "",
+     "1",
+     "",
+     "233,852",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "233,853",
+     ""
+    ],
+    [
+     "Warrants exercised \u2013 cashless",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,612",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "60,000",
+     "",
+     "1",
+     "",
+     "145,199",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "145,200",
+     ""
+    ],
+    [
+     "Subscription receivable relieved",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,447",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,447",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(15,220,901)",
+     "",
+     "",
+     "(15,220,901)",
+     ""
+    ],
+    [
+     "December 31, 2020",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "17,741,713",
+     "$",
+     "177",
+     "$",
+     "39,725,445",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(44,236,035)",
+     "",
+     "$",
+     "(4,510,413)",
+     ""
+    ],
+    [
+     "Stock option compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11,402",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "11,402",
+     ""
+    ],
+    [
+     "Restricted stock unit compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,820,709",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,820,709",
+     ""
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "148,872",
+     "",
+     "1",
+     "",
+     "178,771",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "178,772",
+     ""
+    ],
+    [
+     "Shares issued for vested restricted stock units",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "996,245",
+     "",
+     "10",
+     "",
+     "(10)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrants exercised for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "48,803",
+     "",
+     "1",
+     "",
+     "124,539",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "124,540",
+     ""
+    ],
+    [
+     "Warrants exercised - cashless",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "121,111",
+     "",
+     "1",
+     "",
+     "(1)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,530,000",
+     "",
+     "25",
+     "",
+     "29,727,475",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29,727,500",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,126,306)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,126,306)",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22,665",
+     "",
+     "1",
+     "",
+     "344,829",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "344,830",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,953,717)",
+     "",
+     "",
+     "(25,953,717)",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "21,609,409",
+     "$",
+     "216",
+     "$",
+     "75,806,853",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(70,189,752)",
+     "",
+     "$",
+     "5,617,317",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1116,
+    "end_line": 1152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1112,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "",
+     "Year Ended December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(25,953,717)",
+     "",
+     "$",
+     "(15,220,901)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "77,034",
+     "",
+     "",
+     "76,834",
+     ""
+    ],
+    [
+     "Relief of related party advance",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9,629)",
+     ""
+    ],
+    [
+     "Write-off of subscription receivable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,447",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "8,176,941",
+     "",
+     "",
+     "3,303,211",
+     ""
+    ],
+    [
+     "Provision for losses on accounts receivable",
+     "",
+     "50,079",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain from PPP Loan Forgiveness",
+     "",
+     "(1,994,175)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(103,299)",
+     "",
+     "",
+     "(24,686)",
+     ""
+    ],
+    [
+     "Insurance deposit",
+     "",
+     "654,454",
+     "",
+     "",
+     "(749,454)",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "219,534",
+     "",
+     "",
+     "63,613",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,452,596",
+     "",
+     "",
+     "407,300",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "(1,481,910)",
+     "",
+     "",
+     "3,550,163",
+     ""
+    ],
+    [
+     "Insurance reserve",
+     "",
+     "217,151",
+     "",
+     "",
+     "780,147",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "(23,867)",
+     "",
+     "",
+     "11,251",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(17,709,179)",
+     "",
+     "",
+     "(7,804,704)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment and intangibles",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,247)",
+     ""
+    ],
+    [
+     "Capitalization of internally developed software",
+     "",
+     "(366,435)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(366,435)",
+     "",
+     "",
+     "(2,247)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "29,727,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from exercise of warrants",
+     "",
+     "124,540",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "178,772",
+     "",
+     "",
+     "107,316",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "(2,126,306)",
+     "",
+     "",
+     "(33,165)",
+     ""
+    ],
+    [
+     "Proceeds from note payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,004,175",
+     ""
+    ],
+    [
+     "Principal repayment of note payable",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "27,899,506",
+     "",
+     "",
+     "2,073,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash, cash equivalents and restricted cash",
+     "",
+     "9,823,892",
+     "",
+     "",
+     "(5,733,625)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash - beginning of period",
+     "",
+     "4,923,515",
+     "",
+     "",
+     "10,657,140",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash - end of period",
+     "$",
+     "14,747,407",
+     "",
+     "$",
+     "4,923,515",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reconciliation of cash, cash equivalents and restricted cash to the consolidated balance sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "11,499,136",
+     "",
+     "$",
+     "4,923,515",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "3,248,271",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total cash, and cash equivalents and restricted cash to the consolidated balance sheets",
+     "$",
+     "14,747,407",
+     "",
+     "$",
+     "4,923,515",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "11,329",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "526",
+     "",
+     "$",
+     "800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain from PPP Loan Forgiveness",
+     "$",
+     "1,994,175",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Related-party advances relieved",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "9,629",
+     ""
+    ],
+    [
+     "Subscription receivable written-off",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "7,447",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 NATURE OF OPERATIONS\nHyreCar Inc. (which may be referred to as \u201cHyreCar,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus\u201d or \u201cour\u201d) was incorporated on November 24, 2014 (\u201cInception\u201d) in the State of Delaware. The Company\u2019s headquarters is located in Los Angeles, California. The Company operates a web-based marketplace that allows car and fleet owners to rent their cars to Uber, Lyft and other gig economy service drivers safely, securely and reliably. The consolidated financial statements of HyreCar Inc. are prepared in accordance with accounting principles generally accepted in the United States of America (\u201cU.S. GAAP\u201d).\nStrategic Partnership, 2021 Public Offering, Uber Agreement and At The Market Facility\nOn January 28, 2021, the Company announced a new and expanded strategic partnership with AmeriDrive Holdings (\u201c AmeriDrive\u201d) intended to create a national network of vehicle supply and fleet maintenance operations. In connection therewith, the Company entered into a Collateral Pledge Agreement (\u201c Agreement\u201d) with Cogent Bank assigning all right, title and interest in a Company deposit account of $750,000 plus 5% fees to secure a revolving line of credit made by the bank to AmeriDrive. The restricted deposit account was expanded to a $1,500,000 pledge during the quarter ended September 30, 2021 resulting from a greater revolving line of credit for AmeriDrive under the same terms. Further on November 4, 2021, the Company expanded its partnership with Cogent and AmeriDrive in an effort to help drive additional car supply to the Company\u2019s platform. As part of the agreement, the Company agreed to increase the collateral held by Cogent bank by $1,500,000 (now $3,000,000 in total) in exchange for a credit line increase to expand AmeriDrive's vehicle fleet contributed exclusively to the Company platform.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Insurance and administration fees",
+     "$",
+     "18,603,759",
+     "",
+     "$",
+     "12,819,157",
+     ""
+    ],
+    [
+     "Transaction fees",
+     "",
+     "15,808,972",
+     "",
+     "",
+     "11,391,090",
+     ""
+    ],
+    [
+     "Other fees",
+     "",
+     "1,662,170",
+     "",
+     "",
+     "1,441,012",
+     ""
+    ],
+    [
+     "Incentives and rebates",
+     "",
+     "(358,870)",
+     "",
+     "",
+     "(419,518)",
+     ""
+    ],
+    [
+     "Net revenue",
+     "$",
+     "35,716,031",
+     "",
+     "$",
+     "25,231,741",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1335,
+    "end_line": 1346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "In applying the guidance of ASC 606, the Company 1) identifies the contract with the customer 2) identifies the performance obligations in the contract 3) determines the transaction price 4) determines if an allocation of that transaction price is required to the performance obligations in the contract and 5) recognizes revenue when or as the Company satisfies a performance obligation.\nRefunds may occur when the driver returns the owner vehicle early based on the terms of the original contract or cancels the rental prior to completing the exchange. In limited circumstances, the Company provides contingent consideration in the form of a rebate that is redeemable only if the customer completes a specific level of transaction over a specific time period. In such cases, the rebate or refund obligation is recognized as a reduction of revenues. The Company defers revenue in all instances when the earnings process is not yet complete.\nThe following is a breakout of revenue components by subcategory for the years ended December 31, 2021 and 2020.",
+   "prose_after": "Principal Agent Considerations\nThe Company evaluates our service offerings to determine if we are acting as the principal or as an agent, which we consider in determining if revenue should be reported gross or net. One of our primary revenue source is a transaction fee made from a confirmed booking of a vehicle on our platform. Key indicators that we evaluate to reach this determination include:\n\u25cf the terms and conditions of our contracts;\n\u25cf whether we are paid a fixed percentage of the arrangement\u2019s consideration or a fixed fee for each transaction;\n\u25cf the party which sets the pricing with the end-user, has the credit risk and provides customer support; and\n\u25cf the party responsible for delivery/fulfilment of the product or service to the end consumer.\nWe have determined we act as the agent in the transaction for vehicle bookings (Transaction Fees), as we are not the primary obligor of the arrangement and receive a fixed percentage of the transaction. Therefore, revenue is recognized on a net basis.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "Year Ended December 31, 2020",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "5,614,679",
+     "$",
+     "2,532,311"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "1,335,160",
+     "",
+     "383,388"
+    ],
+    [
+     "Research and development",
+     "$",
+     "1,227,102",
+     "$",
+     "387,512"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1381,
+    "end_line": 1388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "We incur research and development costs during the process of researching and developing our technologies and future offerings. Our research and development costs consist primarily of non-capitalized development and maintenance costs. We expense these costs as incurred unless such costs qualify for capitalization under applicable guidance. During 2021, the Company capitalized $366,435 in expenditures related to the development of a vehicle verification software that was internally developed. This project will validate the authenticity and quality of vehicles on the platform and will significantly reduce on-fleeting time and increase fleet quality standards to overall increase the owner/driver experience on the platform .\nStock-Based Compensation\nThe Company accounts for stock awards issued under ASC 718, Compensation \u2013 Stock Compensation. Under ASC 718, stock-based compensation cost is measured at the grant date, based on the estimated fair value of the award. Stock-based compensation is recognized as expense over the employee\u2019s requisite vesting period and over the non-employee's period of providing goods or services. The fair value of each stock option or warrant award is estimated on the date of grant using the Black-Scholes option valuation model. Restricted shares are measured based on the fair market value of the underlying stock on the grant date.\nStock-based compensation is included in operating expenses in the consolidated statements of operations as follows:",
+   "prose_after": "Income Taxes\nThe Company applies ASC 740, Income Taxes (\u201cASC 740\u201d). Deferred income taxes are recognized for the tax consequences in future years of differences between the tax bases of assets and liabilities and their consolidated financial statements reported amounts at each period end, based on enacted tax laws and statutory tax rates applicable to the periods in which the differences are expected to affect taxable income. Valuation allowances are established, when necessary, to reduce deferred tax assets to the amount expected to be realized. The provision for income taxes represents the tax expense for the period, if any, and the change during the period in deferred tax assets and liabilities. At December 31, 2021 and 2020, the Company has established a full allowance against all deferred tax assets.\nASC 740 also provides criteria for the recognition, measurement, presentation and disclosure of uncertain tax positions. A tax benefit from an uncertain position is recognized only if it is \u201cmore likely than not\u201d that the position is sustainable upon examination by the relevant taxing authority based on its technical merit.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "Payment (in $1,000s)"
+    ],
+    [
+     "2022",
+     "$ 281"
+    ],
+    [
+     "2023",
+     "289"
+    ],
+    [
+     "2024",
+     "298"
+    ],
+    [
+     "2025",
+     "230"
+    ],
+    [
+     "Total",
+     "$ 1,098"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1427,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "Other\nIn November 2021, the Company entered into a lease in Los Angeles, California commencing January 1, 2022, with the ability to occupy the facility in January 2022. The lease term is 48 months from the commencement date. The lease required a deposit of $25,563. Per the lease agreement, the monthly rate will range from $23,394 to $25,563 a month prior to discounts and abatements that may apply. The Company also rents office furniture and incurs ancillary fees for building services and shared expenses. In accordance with ASC 842 mentioned above, the Company will record a Right to Use asset account and Lease Liability account for $997,109 as of January 1, 2022 (the present value of the lease payments) and those accounts will be amortized over the 48 month period of the lease agreement. Rent expense for the years ended December 31, 2021 and 2020 was $177,786 and $274,280, respectively. As of December 31, 2021, future lease payments under the non-cancellable operating lease are as follows:",
+   "prose_after": "We connect drivers and vehicle owners in many tax jurisdictions throughout the United States. After the Supreme Court of the United States decision in South Dakota v. Wayfair Inc. (Wayfair) in June 2018, states commenced enacting laws that would require certain online sellers to collect sales and use tax despite not having a physical presence in the buyer\u2019s state. In response to Wayfair, or otherwise, states or local governments may adopt, or begin to enforce, laws requiring us to calculate, collect, and remit taxes on sales in their jurisdictions. A successful assertion by one or more states requiring us to collect taxes could result in tax liabilities, including taxes on past sales, as well as penalties and interest. Based on our analysis of certain state regulations on peer-to-peer activities, we do not believe risk of loss is probable on historical revenue activities. We continuously monitor state regulations as it relates to peer-to-peer vehicle rental activities and will implement required collection and remittance procedures if and when we believe we would become subject to such regulations.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Accrued payables",
+     "$",
+     "1,737,473",
+     "$",
+     "747,361"
+    ],
+    [
+     "Insurance premium",
+     "",
+     "333,493",
+     "",
+     "3,243,509"
+    ],
+    [
+     "Driver deposits",
+     "",
+     "336,787",
+     "",
+     "168,855"
+    ],
+    [
+     "Deferred rent",
+     "",
+     "\u2014",
+     "",
+     "46,261"
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "417,493",
+     "",
+     "77,303"
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "52,192",
+     "",
+     "76,059"
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "2,877,438",
+     "$",
+     "4,359,348"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 DEBT AND LIABILITIES"
+    }
+   },
+   "prose_before": "We connect drivers and vehicle owners in many tax jurisdictions throughout the United States. After the Supreme Court of the United States decision in South Dakota v. Wayfair Inc. (Wayfair) in June 2018, states commenced enacting laws that would require certain online sellers to collect sales and use tax despite not having a physical presence in the buyer\u2019s state. In response to Wayfair, or otherwise, states or local governments may adopt, or begin to enforce, laws requiring us to calculate, collect, and remit taxes on sales in their jurisdictions. A successful assertion by one or more states requiring us to collect taxes could result in tax liabilities, including taxes on past sales, as well as penalties and interest. Based on our analysis of certain state regulations on peer-to-peer activities, we do not believe risk of loss is probable on historical revenue activities. We continuously monitor state regulations as it relates to peer-to-peer vehicle rental activities and will implement required collection and remittance procedures if and when we believe we would become subject to such regulations.\nNOTE 4 \u2013 DEBT AND LIABILITIES\nAccrued Liabilities\nA summary of accrued liabilities for the years ended December 31, 2021 and 2020 is as follows:",
+   "prose_after": "Notes Payable\nOn April 13, 2020, the Company entered into a loan with JPMorgan Chase Bank, N.A. as the lender (\u201cLender\u201d) in an aggregate principal amount of $2,004,175 pursuant to the Paycheck Protection Program (\"PPP\") under the Coronavirus Aid, Relief, and Economic Security (CARES) Act. On October 28, 2021, the full amount of the PPP Loan was forgiven by the Small Business Administration.\nNOTE 5 \u2013 STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nPreferred Stock\nThe Company is authorized to issue 15,000,000 shares of preferred stock, $0.00001 par value per share. No preferred shares are issued and outstanding as of December 31, 2021.\nCommon Stock\nThe Company is authorized to issue 50,000,000 shares of common stock, $0.00001 par value per share.\nPublic Offering\nOn February 4, 2021, the Company closed a public offering of a total of 2,530,000 shares of Company common stock. The net proceeds to the Company from the 2021 offering was approximately $27.6 million, after deducting the underwriting discounts and commissions and offering expenses payable by the Company.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1465,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of shares",
+     "",
+     "",
+     "Weighted average exercise price",
+     "",
+     "Weighted average remaining contractual life (years)",
+     "",
+     "Aggregate Intrinsic value",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2019",
+     "",
+     "2,253,206",
+     "",
+     "$",
+     "2.60",
+     "",
+     "8.19",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(85,939)",
+     "",
+     "",
+     "1.28",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "(1,514,627)",
+     "",
+     "",
+     "3.38",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2020",
+     "",
+     "652,640",
+     "",
+     "$",
+     "0.91",
+     "",
+     "6.38",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(148,872)",
+     "",
+     "",
+     "1.20",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2021",
+     "",
+     "503,768",
+     "",
+     "$",
+     "0.83",
+     "",
+     "5.33",
+     "$",
+     "1,954,882"
+    ],
+    [
+     "Vested and expected to vest at December 31, 2021",
+     "",
+     "503,768",
+     "",
+     "$",
+     "0.83",
+     "",
+     "5.33",
+     "$",
+     "1,954,882"
+    ],
+    [
+     "Exercisable as of December 31, 2021",
+     "",
+     "503,768",
+     "",
+     "$",
+     "0.83",
+     "",
+     "5.33",
+     "$",
+     "1,954,882"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1490,
+    "end_line": 1511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "In 2018, the Board of Directors adopted the HyreCar Inc. 2018 Incentive Plan (the \u201c2018 Plan\u201d). The 2018 Plan provides for the grant of equity awards in various forms, including stock options, restricted stock, stock appreciation rights and restricted stock units. Up to 3,000,000 shares of common stock may be issued pursuant to awards granted under the 2018 Plan, with the share reserve number subject to increase in future periods. No increase was made during the year ended December 31, 2021. The 2018 Plan is administered by the Board of Directors, and expires ten years after adoption, unless terminated earlier by the Board.\nIn the second quarter of 2021, the Board of Directors adopted the HyreCar Inc. 2021 Incentive Plan (the \"2021 Plan\"). The 2021 Plan provides for the grant of equity awards in various forms, including stock options, restricted stock, stock appreciation rights and restricted stock units. Three million shares of common stock were initially reserved for issuance under the 2021 Plan, with the share reserve number subject to increases that occur starting in 2024. The 2021 Plan is administered by the Board of Directors, and expires ten years after adoption, unless terminated earlier by the Board. As of December 31, 2021, the Company has not utilized the 2021 Plan for any equity award grants.\nA summary of our stock option activity for the years ended December 31, 2021 and 2020, is as follows:",
+   "prose_after": "The aggregate intrinsic value is calculated as the difference between the exercise price of the underlying awards and the closing stock price of $4.71 of common stock on December 31, 2021.\nThere were no stock options granted during the year ended December 31, 2021. The total intrinsic value of options exercised during the years ended December 31, 2021 and 2020 was $2,382,955 and $210,055 respectively. When options are exercised, the Company's policy is to issue previously unissued shares of common stock to satisfy share option exercises. The total fair value of options vested for the years ended December 31, 2021 and 2020 was $19,325 and $83,774, respectively.\nThe Company estimates the fair value of stock options that contain service and/or performance conditions using the Black-Scholes option pricing model. There were no options granted during year ended December 31, 2021 and 2020.\nThe Company recognizes stock option forfeitures as they occur. The risk-free interest rate assumption for options granted is based upon observed interest rates on the United States government securities appropriate for the expected term of the Company\u2019s stock options.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1487,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1521,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of shares",
+     "",
+     "",
+     "Weighted average grant date fair value per share",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2019",
+     "",
+     "303,150",
+     "",
+     "$",
+     "3.58"
+    ],
+    [
+     "Granted",
+     "",
+     "606,500",
+     "",
+     "",
+     "5.94"
+    ],
+    [
+     "Exercised",
+     "",
+     "(284,648)",
+     "",
+     "",
+     "3.64"
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "(109,650)",
+     "",
+     "",
+     "3.05"
+    ],
+    [
+     "Unvested as of December 31, 2020",
+     "",
+     "515,352",
+     "",
+     "$",
+     "6.12"
+    ],
+    [
+     "Granted",
+     "",
+     "1,119,323",
+     "",
+     "",
+     "11.68"
+    ],
+    [
+     "Vested",
+     "",
+     "(756,846)",
+     "",
+     "",
+     "9.71"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(108,343)",
+     "",
+     "",
+     "8.03"
+    ],
+    [
+     "Unvested as of December 31, 2021",
+     "",
+     "769,486",
+     "",
+     "$",
+     "10.46"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1536,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Stock-based compensation expense for stock options for the years ended December 31, 2021 and 2020 was $11,402 and $1,742,705, respectively. Included in stock-based compensation expense for the year ended December 31, 2020 was additional expense of $1,434,132 pertaining to a modification. On April 29, 2020, the Compensation Committee of the Board of Directors approved an exchange (the \u201cExchange\u201d) of grants under the 2018 Plan previously made to executive officers and directors of the Company (the \u201cGrantees\u201d). Pursuant to the Exchange, the Grantees agreed to the cancellation of options to purchase an aggregate of 1,487,500 shares of the Company\u2019s common stock under the 2018 Plan in exchange for the issuance of an aggregate of 822,500 shares of fully vested restricted stock under the 2018 Plan.\nThe Exchange was a cancellation of stock options with a concurrent replacement award and was accounted for as a modification. As there was no future service or performance conditions associated with the replacement award, compensation cost was fully recognized during the year ended December 31, 2020.\nAs of December 31, 2021, there is no remaining stock-based compensation expense as all options are fully vested.\nRestricted Stock Units and Shares Issued for Services and Other\nA summary of activity with our restricted stock units (\"RSUs\") for the year ended December 31, 2021, is as follows:",
+   "prose_after": "The weighted-average grant date fair value of RSUs granted for the years ended December 31, 2021 and 2020 was $11.68 and $5.94, respectively. The total fair market value of RSUs that vested for the years ended December 31, 2021 and 2020 was $7,345,734 and $1,036,070, respectively.\nDuring the year ended December 31, 2021, the Company granted 466,266 and 415,000 RSUs to employees and executives, respectively, of which a large portion vested upon issuance while the remaining generally vest over four years. Additionally, for the year ended December 31, 2021, the Company granted 206,068 RSUs to Board members, of which 50% vested on grant date and the remaining 50% vest over the next four quarters following the date of grant. The total fair market value of these shares as of grant date was $2,524,333 based on the closing price of the Company's stock as of grant date.\nDuring the year ended December 31, 2021, the Company granted 31,989 RSUs to consultants in exchange for legal and research and development services, which vested on the grant date and had a total fair value of $381,564 based on the closing price of the Company\u2019s stock on grant date.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1521,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1563,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of shares",
+     "",
+     "",
+     "Weighted average exercise price",
+     "",
+     "Weighted average remaining contractual life (years)",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2019",
+     "",
+     "500,739",
+     "",
+     "$",
+     "3.71",
+     "",
+     "2.68"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "(15,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding as of December 31, 2020",
+     "",
+     "485,739",
+     "",
+     "$",
+     "3.63",
+     "",
+     "1.65"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "(309,252)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited or expired",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding as of December 31, 2021",
+     "",
+     "176,487",
+     "",
+     "$",
+     "2.13",
+     "",
+     "0.35"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1568,
+    "end_line": 1586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Stock-based compensation related to restricted stock units for the years ended December 31, 2021 and 2020 was $8,165,539 and $1,070,936, respectively. As of December 31, 2021, unrecognized compensation expense related to the unvested restricted stock units is $7,133,264 and is expected to be recognized over approximately 2.6 years.\nDuring the year ended December 31, 2020, the Company granted 314,535 shares of common stock in exchange for legal and consulting services and the Company recognized stock-based compensation of $255,717 based on the closing price of the Company\u2019s common stock on the date of grant. During the year ended December 31, 2021, the Company also issued 78,431 shares of common stock as legal settlement to Nathaniel Farber, a founder of the Company pursuant to Case No. CGC-18-571257 pertaining to the buyback of the Claimant Founders\u2019 stock at the time of the IPO. Stock-based compensation of $213,332 was recognized during the year ended December 31, 2020, based on the closing price of the Company\u2019s common stock on the date of issue.\nWarrants\nA summary of activity with our warrants for the years ended December 31, 2021 and 2020, is as follows:",
+   "prose_after": "During the year ended December 31, 2021 a warrant holder exercised 309,252 warrants in a cashless exercises, which resulted in the issuance of 121,111 shares of common stock.\nAs of December 31, 2021 and 2020, all warrants granted as of such dates were vested.\nNOTE 6 \u2013 RELATED PARTY TRANSACTIONS\nInsurance\nThe president of the Company\u2019s primary insurance broker through June 2020 is also a minority stockholder and holder of warrants. As of December 31, 2021 and 2020, the Company had outstanding balances to the insurer totaling $0 and $0, included in accounts payable or accrued liabilities, respectively. During the year ended December 31, 2021 and 2020, the Company paid the insurer approximately $0 and $2,514,743, respectively. On June 15, 2020, the Company completed moving its primary and excess automobile insurance liability programs over to an insurance provider and is no longer using the related party broker.\nNOTE 7 \u2013 INCOME TAXES\nFor the years ended December 31, 2021 and 2020, the Company did not record a current or deferred income tax expense or benefit due to current and historical losses incurred by the Company. The Company\u2019s losses before income taxes consist solely of losses from domestic operations.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1563,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1592,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Statutory US Federal tax rate",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Permanent differences:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State income taxes, net of Federal benefit",
+     "",
+     "8.8",
+     "%",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "Stock compensation",
+     "",
+     "-0.4",
+     "%",
+     "",
+     "-0.3",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "-0.1",
+     "%",
+     "",
+     "-0.1",
+     "%"
+    ],
+    [
+     "Temporary differences",
+     "",
+     "-7.9",
+     "%",
+     "",
+     "-8.1",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "-21.4",
+     "%",
+     "",
+     "-19.6",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1607,
+    "end_line": 1621
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "On March 27, 2020, the United States enacted the Coronavirus Aid, Relief, and Economic Security Act (\u201cCARES Act\u201d). The Cares Act includes provisions relating to refundable payroll tax credits, deferment of the employer portion of certain payroll taxes, net operating loss carryback periods, alternative minimum tax credit refunds, modifications to the net interest deduction limitations and technical corrections to tax depreciation methods for qualified improvement property. The CARES Act also established a Paycheck Protection Program whereby certain small businesses are eligible for a loan to fund payroll expenses, rent, and related costs.\nThe Company considered the provisions under the CARES Act and elected not to take advantage of the provisions of CARES Act as the effect of such provisions was not expected to have a material impact on the Company\u2019s results of operations, cash flows and financial statements.\nA reconciliation of income tax expense (benefit) computed at the statutory federal income tax rate to income taxes as reflected in the financial statements is as follows:",
+   "prose_after": "The components of our deferred tax assets (liabilities) for federal and state income taxes consisted of the following as of December 31, 2021 and 2020:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1592,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$",
+     "15,321,000",
+     "",
+     "$",
+     "8,990,000",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "2,193,000",
+     "",
+     "",
+     "1,395,000",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "(279,000)",
+     "",
+     "",
+     "501,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(17,235,000)",
+     "",
+     "",
+     "(10,886,000)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1624,
+    "end_line": 1636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of our deferred tax assets (liabilities) for federal and state income taxes consisted of the following as of December 31, 2021 and 2020:",
+   "prose_after": "Management has considered the Company\u2019s history of cumulative net losses and estimated future operating activity and has concluded that it is more likely than not that the Company will not realize the benefits of its U.S. federal and state deferred tax assets. Accordingly, a full valuation allowance has been established against deferred tax assets as of December 31, 2021 and 2020, respectively. The Company reevaluates the positive and negative evidence at each reporting period. The Company\u2019s valuation allowance increased during 2021 by approximately $6.3 million primarily due to the generation of net operating loss carryforwards and stock based compensation.\nAs of December 31, 2021 and 2020, the Company had U.S. federal net operating loss carryforwards of $51.3 million and $32.1 million, respectively, which may be available to offset future income tax liabilities. The 2017 Tax Cuts and Jobs Act (\u201c TCJA\u201d) will generally allow losses incurred after 2017 to be carried over indefinitely, but will generally limit the net operating loss deduction to the lesser of the net operating loss carryover or 80% of a corporation\u2019s taxable income (subject to Section 382 of the Internal Revenue Code of 1986, as amended). Also, there will be no carryback for losses incurred after 2017. Losses incurred prior to 2018 will generally be deductible to the extent of the lesser of a corporation\u2019s net operating loss carryover or 100% of a corporation\u2019s taxable income and be available for twenty years from the period the loss was generated. As of December 31, 2021 and 2020, the Company also had similar amounts of U.S. state net operating loss carryforwards, which may be available to offset future income tax liabilities and expire at various dates through 2040.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1592,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "HYRECAR INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Joseph Furnari"
+    ],
+    [
+     "",
+     "",
+     "Joseph Furnari"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Serge De Bock"
+    ],
+    [
+     "",
+     "",
+     "Serge De Bock"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "HYRECAR INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1653,
+    "end_line": 1666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On August 27, 2021, a putative securities class action complaint captioned Baron v. Hyrecar Inc. et al., Case No. 21-cv-06918, was filed in the United States District Court for the Central District of California against the Company; its Chief Executive Officer, Joseph Furnari; and its former Chief Financial Officer, Robert Scott Brogi. This action is described in Note 3. Subsequent to December 31, 2021, Lead Plaintiff filed an opposition on January 10, 2022 and the Defendants filed a reply on January 18, 2022. On February 16, 2022, the Court granted defendants\u2019 motion to dismiss on the basis that Lead Plaintiff failed to adequately plead any of defendants\u2019 statements were materially false or misleading. Because the Court ruled that Plaintiff did not sufficiently plead falsity, the Court did not address the additional arguments regarding scienter at the time. The Court permitted Lead Plaintiff leave to amend its complaint. The next amended complaint, if any, must be filed no later than March 21, 2022. Should Lead Plaintiff file another amended complaint, the Company and individual defendants anticipate filing another motion to dismiss the claims. The Company believes that the allegations in this lawsuit are without merit and will continue to vigorously defend against them.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized on this 15 th day of March 2022.",
+   "prose_after": "Pursuant to the requirements of the Securities Act of 1934, this annual report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joseph Furnari",
+     "Chief Executive Officer and Director",
+     "March 15 , 2022"
+    ],
+    [
+     "Joseph Furnari",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Serge De Bock",
+     "Chief Financial Officer",
+     "March 15 , 2022"
+    ],
+    [
+     "Serge De Bock",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Grace Mellis",
+     "Director",
+     "March 15 , 2022"
+    ],
+    [
+     "Grace Mellis",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brooke Skinner Ricketts",
+     "Director",
+     "March 15 , 2022"
+    ],
+    [
+     "Brooke Skinner Ricketts",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Root",
+     "Director",
+     "March 15 , 2022"
+    ],
+    [
+     "Michael Root",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jayaprakash Vijayan",
+     "Director",
+     "March 15 , 2022"
+    ],
+    [
+     "Jayaprakash Vijayan",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1669,
+    "end_line": 1697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Act of 1934, this annual report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

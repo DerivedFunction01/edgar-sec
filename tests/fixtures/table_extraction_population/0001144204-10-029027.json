@@ -1,0 +1,2813 @@
+{
+ "accession": "0001144204-10-029027",
+ "cik": "0001366540",
+ "form": "10-Q",
+ "filing_date": "2010-05-19",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v185906_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[ ]",
+     "TRANSACTION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 17
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, DC 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended February 28, 2010\nOR",
+   "prose_after": "For the transition period from ___________________________ to ___________________________\nCommission file number: 000-52063\nGRACE 3, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 23,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "20-3708559"
+    ],
+    [
+     "(State of Other Jurisdiction of Incorporation or\n\nOrganization)",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "735 Broad Street, Suite 400\n\nChattanooga, TN",
+     "37402"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the transition period from ___________________________ to ___________________________\nCommission file number: 000-52063\nGRACE 3, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(423) 265-5062\n(Registrant\u2019s Telephone Number, Including Area Code)\nN/A\n(Former Name, Former Address and Former Fiscal Year, If Changed Since Last Report)\nCopies to:\nThe Sourlis Law Firm\nVirginia\nK. Sourlis, Esq.\n214 Broad Street\nRed Bank, New Jersey 07701",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 23,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 41,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Plan of  Operations",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4T.",
+     "Controls and Procedures",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sale of Equity Securities and Use of Proceeds",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "13"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date.\nAs of May 19, 2010, there were 100,000 shares of common stock outstanding and no shares of preferred stock outstanding.\nGRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nINDEX\nFebruary 28, 2010\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. Financial Statements.\nGRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nBALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "February 28, 2010",
+     "",
+     "",
+     "5/31/2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,000",
+     "",
+     "",
+     "4,500",
+     ""
+    ],
+    [
+     "Due to shareholder",
+     "",
+     "34,616",
+     "",
+     "",
+     "16,075",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "35,616",
+     "",
+     "",
+     "20,575",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitment and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity (deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock $.0001 par value, authorized 10,000,000 shares, none issued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.0001 par value, authorized 100,000,000 shares 100,000 issued and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding",
+     "",
+     "10",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "9,784",
+     "",
+     "",
+     "9,784",
+     ""
+    ],
+    [
+     "Deficit accumulated during the developmental stage",
+     "",
+     "(45,410)",
+     "",
+     "",
+     "(30,369)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity (deficit)",
+     "",
+     "(35,616)",
+     "",
+     "",
+     "(20,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 133,
+    "end_line": 172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PART I\nItem 1. Financial Statements.\nGRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nBALANCE SHEETS",
+   "prose_after": "GRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD OCTOBER 27, 2005 (INCEPTION) TO FEBRUARY 28, 2010\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 172,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "During the",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Development",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Stage",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance-October 27, 2005",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common shares",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "90",
+     "",
+     "-",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(100)",
+     "",
+     "",
+     "(100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 02, 2006(1)",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "90",
+     "",
+     "(100)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital contributions-shareholder",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,694",
+     "",
+     "-",
+     "",
+     "",
+     "2,694",
+     ""
+    ],
+    [
+     "Net(loss)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(5,194)",
+     "",
+     "",
+     "(5,194)",
+     ""
+    ],
+    [
+     "Balance, May 31, 2007",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "2,784",
+     "",
+     "(5,294)",
+     "",
+     "",
+     "(2,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions-shareholder",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "5,000",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Net(loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,500)",
+     "",
+     "",
+     "(4,500)",
+     ""
+    ],
+    [
+     "Balance, May 31, 2008",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "7,784",
+     "",
+     "(9,794)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions-shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,000",
+     "",
+     "",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Net(loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(20,575)",
+     "",
+     "",
+     "(20,575)",
+     ""
+    ],
+    [
+     "Balance, May 31, 2009",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "9,784",
+     "",
+     "(30,369)",
+     "",
+     "",
+     "(20,575)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions-shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net(loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(15,041)",
+     "",
+     "",
+     "(15,041)",
+     ""
+    ],
+    [
+     "Balance, February 28, 2010",
+     "",
+     "100,000",
+     "$",
+     "10",
+     "$",
+     "9,784",
+     "$",
+     "(45,410)",
+     "",
+     "$",
+     "(35,616)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deficit",
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 185,
+    "end_line": 223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "GRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY (DEFICIT)\nFOR THE PERIOD OCTOBER 27, 2005 (INCEPTION) TO FEBRUARY 28, 2010\n(Unaudited)",
+   "prose_after": "(1) Restated for comparison purposes\nThe financial information presented herein has been prepared by management without audit by independent certified public accountants.\nThe accompanying notes should be read in conjunction with the financial statements.\nGRACE 3, INC.\nA DEVELEOPMENT STAGE COMPANY\nSTATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 184,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 229,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three",
+     "",
+     "",
+     "For the three",
+     "",
+     "",
+     "For the nine",
+     "",
+     ""
+    ],
+    [
+     "",
+     "months ended",
+     "",
+     "",
+     "months ended",
+     "",
+     "",
+     "months ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 28, 2010",
+     "",
+     "",
+     "February 28, 2009",
+     "",
+     "",
+     "February 28, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "653",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "15,041",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(653)",
+     "",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "(15,041)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares Outstanding (basic and fully diluted)",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted (loss) per common share",
+     "$",
+     "(0.01)",
+     "",
+     "",
+     "(0.06)",
+     "",
+     "",
+     "(0.15)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 238,
+    "end_line": 263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Restated for comparison purposes\nThe financial information presented herein has been prepared by management without audit by independent certified public accountants.\nThe accompanying notes should be read in conjunction with the financial statements.\nGRACE 3, INC.\nA DEVELEOPMENT STAGE COMPANY\nSTATEMENT OF OPERATIONS",
+   "prose_after": "GRACE 3, INC.\nA DEVELEOPMENT STAGE COMPANY\nSTATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 263,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the period",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the nine",
+     "",
+     "",
+     "October 27, 2005",
+     "",
+     ""
+    ],
+    [
+     "",
+     "months ended",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 28, 2009",
+     "",
+     "",
+     "February 28, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expense",
+     "",
+     "16,500",
+     "",
+     "",
+     "45,410",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(16,500)",
+     "",
+     "",
+     "(45,410)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares Outstanding (basic and fully diluted)",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted (loss) per common share",
+     "$",
+     "(0.17)",
+     "",
+     "$",
+     "(0.45)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 272,
+    "end_line": 298
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "GRACE 3, INC.\nA DEVELEOPMENT STAGE COMPANY\nSTATEMENT OF OPERATIONS",
+   "prose_after": "The financial information presented herein has been prepared by management without audit by independent certified public accountants.\nThe accompanying notes should be read in conjunction with the financial statements.\nGRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 271,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three",
+     "",
+     "",
+     "For the three",
+     "",
+     "",
+     "For the nine",
+     "",
+     ""
+    ],
+    [
+     "",
+     "months ended",
+     "",
+     "",
+     "months ended",
+     "",
+     "",
+     "months ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 28, 2010",
+     "",
+     "",
+     "February 28, 2009",
+     "",
+     "",
+     "February 28, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "$",
+     "(653)",
+     "",
+     "$",
+     "(6,000)",
+     "",
+     "$",
+     "(15,041)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in prepaid expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "(6,025)",
+     "",
+     "",
+     "3,250",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) operating activities",
+     "",
+     "(6,678)",
+     "",
+     "",
+     "(2,750)",
+     "",
+     "",
+     "(18,541)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from shareholders loan",
+     "",
+     "6,678",
+     "",
+     "",
+     "2,750",
+     "",
+     "",
+     "18,541",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from additional capital contributions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "6,678",
+     "",
+     "",
+     "2,750",
+     "",
+     "",
+     "18,541",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash-beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash-end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 311,
+    "end_line": 353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The financial information presented herein has been prepared by management without audit by independent certified public accountants.\nThe accompanying notes should be read in conjunction with the financial statements.\nGRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENT OF CASH FLOWS",
+   "prose_after": "GRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 353,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the period",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the nine",
+     "",
+     "",
+     "October 27, 2005",
+     "",
+     ""
+    ],
+    [
+     "",
+     "months ended",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "February 28, 2009",
+     "",
+     "",
+     "February 28, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "$",
+     "(16,500)",
+     "",
+     "$",
+     "(45,410)",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in prepaid expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "4,000",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) operating activities",
+     "",
+     "(12,500)",
+     "",
+     "",
+     "(48,910)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from shareholders loan",
+     "",
+     "10,500",
+     "",
+     "",
+     "39,116",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Proceeds from additional capital contributions",
+     "",
+     "2,000",
+     "",
+     "",
+     "9,784",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "12,500",
+     "",
+     "",
+     "48,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "12,500",
+     "",
+     "",
+     "48,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash-beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash-end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 362,
+    "end_line": 411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "GRACE 3, INC.\nA DEVELOPMENT STAGE COMPANY\nSTATEMENT OF CASH FLOWS",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nForward-Looking Statements\nThis Report contains statements that we believe are, or may be considered to be, \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. All statements other than statements of historical fact included in this Report regarding the prospects of our industry or our prospects, plans, financial position or business strategy, may constitute forward-looking statements. In addition, forward-looking statements generally can be identified by the use of forward-looking words such as \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201cforesee,\u201d \u201cproject,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cplans,\u201d \u201cforecasts,\u201d \u201ccontinue\u201d or \u201ccould\u201d or the negatives of these terms or variations of them or similar terms. Furthermore, such forward-looking statements may be included in various filings that we make with the SEC or press releases or oral statements made by or with the approval of one of our authorized executive officers. Although we believe that the expectations reflected in these forward-looking statements are reasonable, we cannot assure you that these expectations will prove to be correct. These forward-looking statements are subject to certain known and unknown risks and uncertainties, as well as assumptions that could cause actual results to differ materially from those reflected in these forward-looking statements. Readers are cautioned not to place undue reliance on any forward-looking statements contained herein, which reflect management\u2019s opinions only as of the date hereof. Except as required by law, we undertake no obligation to revise or publicly release the results of any revision to any forward-looking statements. You are advised, however, to consult any additional disclosures we make in our reports to the SEC. All subsequent written and oral forward-looking statements attributable to us or persons acting on our behalf are expressly qualified in their entirety by the cautionary statements contained in this Report.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 361,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine Months Ended\n\nFebruary 28",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Period from\n\nOctober 27,\n\n2005 to\n\nFebruary 28",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Net Cash (Used In) Operating  Activities",
+     "$",
+     "(18,541)",
+     "",
+     "$",
+     "(12,500)",
+     "",
+     "$",
+     "(48,910)",
+     ""
+    ],
+    [
+     "Investing Activities",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Net Cash Provided from Financing Activities",
+     "$",
+     "18,541",
+     "",
+     "$",
+     "12,500",
+     "",
+     "$",
+     "48.910",
+     ""
+    ],
+    [
+     "Net Effect on Cash",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 485,
+    "end_line": 501
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "General and Administrative Expenses. For the nine months ended February 28, 2010 and February 28, 2009, the Company had general and administrative expenses of $15,041 and $16,500, respectively. From the Company\u2019s date of inception (October 27, 2005) to February 28, 2010, the Company had general and administrative expenses of $45,410. These expenses were due to legal, accounting, audit and other professional service fees incurred in relation to the filing of the Company\u2019s Registration Statement on Form 10-SB filed on June 19, 2006 and annual and quarterly reports filed since the effectiveness of such registration statement.\nLiquidity and Capital Resources\nAt February 28, 2010, the Company had $0 in total assets. At May 31, 2009, the Company had $0 in total assets. The Company\u2019s current liabilities at February 28, 2010 and at May 31, 2009, totaled $35,616 and $20,575, respectively, comprised of accounts payable and advances/loans from shareholders\u2019.\nThe following is a summary of the Company's cash flows from operating, investing, and financing activities:\nFor the Nine Months Ended February 28, 2010and February 28, 2009 and\nThe Period from Inception (October 27, 2005) to February 28, 2010",
+   "prose_after": "The Company has no assets and has generated no revenues since inception. The Company is also dependent upon the receipt of capital investment or other financing to fund its ongoing operations and to execute its business plan of seeking a combination with a private operating company. If continued funding and capital resources are unavailable at reasonable terms, the Company may not be able to implement its plan of operations.\nAt February 28, 2010, the Company had no capital resources to fund administrative expenses pending acquisition of an operating company. The Company has not realized any revenues from operations since inception, and its plan of operation for the next twelve months is to locate a suitable acquisition or merger candidate and consummate a business combination. There is substantial doubt that we will continue as a going concern. The Company may need additional cash advances from its stockholder or loans from other parties to pay for operating expenses until the Company consummates a merger or business combination with a privately-held operating company. Although it is currently anticipated that the Company can satisfy its cash requirements with additional cash advances or loans from other parties, if needed, for at least the next twelve months, the Company can provide no assurance that it can continue to satisfy its cash requirements for such period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 472,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*3.1",
+     "Certificate of Incorporation, as filed with the Delaware Secretary of State on October 27, 2005."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*3.2",
+     "Bylaws"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by Douglas A. Dyer, the Principal Executive Officer and Principal Financial Officer of Grace 3, Inc., pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification by Douglas A. Dyer, the Principal Executive Officer and Principal Financial Officer of Grace 3, Inc., pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 575,
+    "end_line": 589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "N/A.\nItem 2. Unregistered Sale of Equity Securities and Use of Proceeds.\nOn October 27, 2005, the Company issued 100,000 shares of common stock for total consideration of $100 to the sole shareholder of the Company under the exemption from registration afforded the Company under Section 4(2) of the Securities Act of 1933, as amended due to the fact that the issuance did not involve a public offering of securities.\nItem 3. Defaults Upon Senior Securities.\nNone.\nItem 4. Submission of Matters to a Vote of Security Holders.\nNone.\nItem 5. Other Information.\nNone\nItem 6. Exhibits.",
+   "prose_after": "* Filed as an exhibit to the Company\u2019s Registration Statement on Form 10-SB (File No. 000-52061), as filed with the Securities and Exchange Commission on June 19, 2006, and incorporated herein by this reference.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 572,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated:  May ______ 2010",
+     "GRACE 3, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By: /s/ DOUGLAS A. DYER"
+    ],
+    [
+     "",
+     "Douglas A. Dyer"
+    ],
+    [
+     "",
+     "President"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed as an exhibit to the Company\u2019s Registration Statement on Form 10-SB (File No. 000-52061), as filed with the Securities and Exchange Commission on June 19, 2006, and incorporated herein by this reference.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 572,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

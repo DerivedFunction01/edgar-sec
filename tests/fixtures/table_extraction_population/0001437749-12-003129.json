@@ -1,0 +1,6891 @@
+{
+ "accession": "0001437749-12-003129",
+ "cik": "0000724941",
+ "form": "10-K",
+ "filing_date": "2012-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "merisel_10k-123111.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "01-17156",
+     "95-4172359"
+    ],
+    [
+     "(State or other jurisdiction of  incorporation)",
+     "(Commission File Number)",
+     "(I. R. S. Employer identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "127 W. 30th Street, 5th Floor",
+     "",
+     "10001"
+    ],
+    [
+     "New York, NY",
+     "",
+     "(Zip Code)"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "PURSUANT TO SECTIONS 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2011\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____ to _____\nCommission file number 0-17156\nMERISEL, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant's telephone number, including area code: (212) 594-4800\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, $0.01 Par Value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYES [ ] NO [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. YES [ ] NO [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). YES [X] NO [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "8"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "9"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "10"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "11"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "13"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "21"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "44"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "44"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "47"
+    ],
+    [
+     "",
+     "Information Regarding Directors",
+     "47"
+    ],
+    [
+     "",
+     "Arrangements for Nomination of Directors and Changes in Procedures",
+     "49"
+    ],
+    [
+     "",
+     "Information Regarding Executive Officers",
+     "49"
+    ],
+    [
+     "",
+     "Certain Legal Proceedings",
+     "50"
+    ],
+    [
+     "",
+     "Section 16(a) Beneficial Ownership Reporting Compliance",
+     "50"
+    ],
+    [
+     "",
+     "Code of Business Conduct",
+     "50"
+    ],
+    [
+     "",
+     "Audit Committee",
+     "50"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "51"
+    ],
+    [
+     "",
+     "Executive Compensation Tables",
+     "51"
+    ],
+    [
+     "",
+     "Executive Employment, Termination and Change of Control Arrangements",
+     "52"
+    ],
+    [
+     "",
+     "Compensation of Directors",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "56"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "57"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "59"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits",
+     "61"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non accelerated filer, or a smaller reporting company. See definition of \u201caccelerated filer and large accelerated filer\u201d in Rule 12b-2 of the Exchange Act. [ ] LARGE ACCELERATED FILER, [ ] ACCELERATED FILER [ ] NON-ACCELERATED FILER, [X] SMALLER REPORTING COMPANY\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act. YES [ ] NO [X]\nAs of June 30, 2011, the aggregate market value of voting stock held by non-affiliates of the registrant based on the last sales price as reported by the National Quotation Bureau was $2,547,000 (2,214,784 shares at a closing price of $1.15).\nAs of March 30, 2012, the registrant had 7,214,784 shares of Common Stock outstanding.\nRDGPreambleEnd\nTABLE OF CONTENTS",
+   "prose_after": "ii\nSPECIAL NOTE REGARDING FORWARD-LOOKING INFORMATION\nCertain statements contained in this Annual Report on Form 10-K, including without limitation, statements containing the words \u201cbelieves,\u201d \u201canticipates,\u201d \u201cexpects,\u201d \u201cwill,\u201d \u201cestimates,\u201d \u201cplans,\u201d \u201cintends\u201d and similar expressions, constitute \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934. We intend these forward-looking statements to be covered by the safe harbor provisions for forward-looking statements contained in the Private Securities Litigation Reform Act of 1995 and they are included for purposes of complying with these safe harbor provisions. These forward-looking statements reflect current views about the plans, strategies and prospects of Merisel, Inc. (the \u201cCompany\u201d), and are based upon information currently available to the Company and current assumptions. These forward-looking statements involve known and unknown risks, uncertainties and other factors, which may cause actual results, performance or achievements of the Company to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Location",
+     "Square Feet\n\n(approx.)",
+     "Owned\n\nLeased",
+     "Purpose",
+     "Lease\n\nExpiration Date",
+     "Division"
+    ],
+    [
+     "New York, NY",
+     "25,000",
+     "Leased",
+     "General Offices",
+     "Month to Month",
+     "Corporate"
+    ],
+    [
+     "New York, NY",
+     "56,000(1)",
+     "Leased",
+     "Operating Facility",
+     "December 2014",
+     "Color Edge/ Fuel"
+    ],
+    [
+     "New York, NY",
+     "25,000(1)",
+     "Leased",
+     "Operating Facility",
+     "April 2013",
+     "Comp 24"
+    ],
+    [
+     "Carlstadt, NJ",
+     "77,000",
+     "Leased",
+     "Operating Facility",
+     "December 2021",
+     "Color Edge"
+    ],
+    [
+     "Burbank, CA",
+     "65,000",
+     "Leased",
+     "General Offices, Operating Facility",
+     "July 2012",
+     "Crush Creative/ Comp24"
+    ],
+    [
+     "Burbank, CA",
+     "10,000",
+     "Leased",
+     "Operating Facility",
+     "July 2012",
+     "Crush Creative"
+    ],
+    [
+     "Atlanta, GA",
+     "20,000",
+     "Leased",
+     "General Offices, Operating Facility",
+     "May 2012",
+     "Comp24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 312,
+    "end_line": 333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties."
+    },
+    "note": null
+   },
+   "prose_before": "The Company is subject to the reporting requirements under the Securities Exchange Act of 1934. The Company files with, or furnishes to, the SEC annual reports on Form 10-K, quarterly reports on Form 10-Q, current reports on Form 8-K, and amendments to those reports and proxy statements. These filings are available free of charge on the Company\u2019s website, http://www.merisel.com, shortly after they are filed with, or furnished to, the SEC.\nThe SEC maintains an Internet website, http://www.sec.gov, that contains reports, proxy and information statements and other information regarding issuers.\nItem 1A. Risk Factors\nOmitted pursuant to smaller reporting company requirements.\nItem 1B. Unresolved Staff Comments\nNone\nItem 2. Properties.\nThe Company\u2019s headquarters and primary production facility are located in New York, New York, where the Company leases a 106,000 square-foot multi-story facility. On March 28, 2012, the Company entered into a Termination Letter for its New York, New York manufacturing space and a new ten-year lease for a new office floor in the same building, which transactions are described in Item 9B of this Annual Report. The Company currently leases the following offices and operating facilities:",
+   "prose_after": "(1) Subject to the Termination Letter dated March 28, 2012 described in Item 9B of this Annual Report.\nItem 3. Legal Proceedings\nLitigation Arising from the Saints Capital Granite, L.P. Proposal\nRichard N. Frank v. Bradley J. Hoecker, Kenneth B. Sawyer, Terry A. Tevis, Donald R. Uzzi, Joseph Yang, Saints Capital Granite, L.P., Saints Capital Granite, LLC, and Merisel, Inc., Supreme Court of the State of New York, County of New York, Index No. 650083/2012, dated January 11, 2012;\nDavid L. Kahn v. Donald R. Uzzi, Bradley J. Hoecker, Kenneth B. Sawyer, Terry A. Tevis, Joseph Yang, Merisel, Inc., Saints Capital Granite, L.P., and Saints Capital Granite, LLC, Delaware Court of Chancery, Case No. 7179, dated January 18, 2012;\nHoward Schwartz v. Donald R. Uzzi, Bradley J. Hoecker, Kenneth B. Sawyer, Terry A. Tevis, Joseph Yang, Merisel, Inc. and Saints Capital Granite, L.P., Delaware Court of Chancery, Case No. 7200, dated January 31, 2012; and\nRichard Tremblay v. Donald R. Uzzi, Bradley J. Hoecker, Kenneth B. Sawyer, Terry A. Tevis, Joseph Yang, Merisel, Inc., Saints Capital Granite, L.P., and Saints Capital Granite, LLC, Delaware Court of Chancery, Case 7212, dated February 3, 2012.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 307,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 335,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year 2010",
+     "High",
+     "L[ ]w",
+     "Fiscal Year 2011",
+     "High",
+     "L[ ]w"
+    ],
+    [
+     "First quarter",
+     "$.55",
+     "$.40",
+     "First quarter",
+     "$1.20",
+     "$.12"
+    ],
+    [
+     "Second quarter",
+     ".61",
+     ".25",
+     "Second quarter",
+     "1.35",
+     "1.04"
+    ],
+    [
+     "Third quarter",
+     ".30",
+     ".12",
+     "Third quarter",
+     "1.25",
+     ".67"
+    ],
+    [
+     "Fourth quarter",
+     ".28",
+     ".12",
+     "Fourth quarter",
+     "1.20",
+     ".45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 384,
+    "end_line": 392
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "The Company is involved in certain legal proceedings arising in the ordinary course of business. None of these proceedings is expected to have a material impact on the Company\u2019s financial condition or results of operations. The Company has evaluated its potential exposure and has established reserves for potential losses arising out of such proceedings, if necessary. There can be no assurance that the Company\u2019s accruals will fully cover any possible exposure. For each of the above cases, the Company has not accrued for payment because the amount of loss is not currently probable and/or estimable.\nItem 4. Mine Safety Disclosures\nNone\nPART II\nItem 5. Market for the Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nThe Company's common stock trades on the National Quotation Bureau (commonly known as the \u201cPink Sheets\u201d) under the symbol \u201cMSEL.PK\u201d. The following table sets forth, for the period indicated, the quarterly high and low per share sales prices for the common stock.",
+   "prose_after": "As of March 30, 2012, there were 511 record holders of the Company\u2019s common stock. This number does not include beneficial owners of the Company\u2019s common stock who hold shares in nominee or \u201cstreet\u201d name accounts through brokers.\nMerisel has never declared or paid dividends on its common stock. Merisel anticipates that it will retain its earnings in the foreseeable future to finance the expansion of its business and, therefore, does not anticipate paying dividends on the common stock. In addition, the Company\u2019s credit facility and the Certificate of Designation governing its Series A Preferred Stock contain restrictions on the ability of the Company to pay cash dividends on its common stock.\nFor information pertaining to the Company\u2019s equity compensation, see \u201cItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\u201d\nPurchase of Merisel Equity Securities\nThe Company did not repurchase any shares of Merisel common stock during the years ended December 31, 2011. Since the inception of the Company\u2019s first share repurchase program in July 2001 and through December 31, 2011, the Company has repurchased 1,238,887 shares of Merisel common stock for a total purchase price of $1,944,000.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 377,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date Share Repurchase Programs were Publicly Announced",
+     "Approximate Dollar Value Authorized to be Repurchased",
+     ""
+    ],
+    [
+     "July 3, 2001",
+     "$",
+     "1,000,000"
+    ],
+    [
+     "September 1, 2004",
+     "",
+     "1,000,000"
+    ],
+    [
+     "August 14, 2006*",
+     "",
+     "2,000,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total dollar value of shares authorized to be repurchased as of  December 31, 2011",
+     "$",
+     "4,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 407,
+    "end_line": 419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Merisel has never declared or paid dividends on its common stock. Merisel anticipates that it will retain its earnings in the foreseeable future to finance the expansion of its business and, therefore, does not anticipate paying dividends on the common stock. In addition, the Company\u2019s credit facility and the Certificate of Designation governing its Series A Preferred Stock contain restrictions on the ability of the Company to pay cash dividends on its common stock.\nFor information pertaining to the Company\u2019s equity compensation, see \u201cItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\u201d\nPurchase of Merisel Equity Securities\nThe Company did not repurchase any shares of Merisel common stock during the years ended December 31, 2011. Since the inception of the Company\u2019s first share repurchase program in July 2001 and through December 31, 2011, the Company has repurchased 1,238,887 shares of Merisel common stock for a total purchase price of $1,944,000.\nThe Board has authorized the repurchase of shares of Merisel common stock as follows:",
+   "prose_after": "All share repurchase programs are authorized in dollar values of shares as of date of purchase. Unless terminated by resolution of our Board, each share repurchase program expires when we have repurchased the full dollar amount of shares authorized for repurchase thereunder. Although the Company\u2019s July 3, 2001, and September 1, 2004, programs have not been formally terminated, the Board has relied upon the August 14, 2006, program for the Company\u2019s repurchases since that date. The Company\u2019s agreement with PNC dated August 13, 2010, does not allow for the repurchase of common stock.\n*Amended as of July 23, 2008, to include privately negotiated transactions to purchase shares as well as open market transactions.\nItem 6. Selected Financial Data\nOmitted pursuant to smaller reporting company requirements.\nItem 7. Management's Discussion and Analysis of Financial Condition and Results of Operations.\nAll amounts are stated in thousands except per share amounts.\nFor an understanding of the significant factors that influenced the Company\u2019s performance during the past three years, the following discussion and analysis should be read in conjunction with the consolidated financial statements and the related notes included elsewhere in this report.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 400,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Analysis of Cash Flows",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by operating activities",
+     "$",
+     "3,904",
+     "",
+     "$",
+     "3,632",
+     "",
+     "$",
+     "769",
+     ""
+    ],
+    [
+     "Cash flows used in investing activities",
+     "",
+     "(2,346)",
+     "",
+     "",
+     "(850)",
+     "",
+     "",
+     "(1,986)",
+     ""
+    ],
+    [
+     "Cash flows used in financing activities",
+     "",
+     "(729)",
+     "",
+     "",
+     "(973)",
+     "",
+     "",
+     "(9,389)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "829",
+     "",
+     "$",
+     "1,809",
+     "",
+     "$",
+     "(10,606)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 540,
+    "end_line": 550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Income Taxes \u2013 As of December 31, 2010 and December 31, 2009, the Company has placed a full valuation allowance on its net deferred tax assets. The valuation allowance on the Company\u2019s net deferred tax assets is reviewed quarterly and will be maintained until sufficient positive evidence exists to support the reversal of all or a portion of the valuation allowance. In addition, until such time that the Company determines it is more likely than not that it will generate sufficient taxable income to realize all or a portion of its deferred tax assets, income tax benefits associated with future period losses, if any, will be fully reserved and income taxes associated with future period income will offset such reserve. The Company recorded an income tax benefit of $126 for the year end December 31, 2010 due primarily to federal income tax refunds of AMT tax paid during 2006 to 2008. The Company recorded income tax expense of $39,861 for the year ended December 31, 2009. During the year ended December 31, 2009, the Company increased its valuation allowance on its deferred tax assets to 100% of the asset and recorded deferred tax expense in the amount of $39,936. Income tax expense for the year ended December 31, 2010 is recorded at an effective tax rate of (12.2%) as compared to (142.8%) for the year ended December 31, 2009.\nNet Loss - As a result of the above items, the Company had net income of $1,161 for the year ended December 31, 2010, compared to a loss of $(67,779) for the year ended December 31, 2009.\nLiquidity and Capital Resources\nCash Flow Activity for 2009, 2010 and 2011",
+   "prose_after": "Net cash provided by operating activities was $769 during the year ended December 31, 2011. The primary source of cash was transfers of $2,232 of restricted cash to unrestricted related to transferring letters of credit required by our New York real estate leases to our PNC credit facility. The Company\u2019s old letters of credit required cash security deposits, which are not required by PNC. This increase was offset by an increase in prepaid and other assets of $1,960 related primarily to legal and professional fees from the origination of the Series A Preferred Stock. These fees will be amortized over the six year life of the instrument.\nNet cash provided by operating activities was $3,632 during the year ended December 31, 2010. The primary source of cash was net income of $1,161 which includes non-cash depreciation and amortization of $3,648, and an increase in accrued liabilities of $2,214, partially offset by an increase of $1,681 in accounts receivable and a decrease in accounts payable of $934.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page No"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "22"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "23"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "24"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit)",
+     "25"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "26"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "Page No"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The PNC Agreement requires that all customer receivables collected shall be deposited by the Company into a lockbox account controlled by PNC. All funds deposited into the lockbox will immediately be used to pay down the Facility. Additionally, the PNC agreement contains provisions that allow PNC to accelerate the scheduled maturities of the Facility for conditions that are not objectively determinable. As such, the Company has classified the PNC balance as a current liability.\nManagement believes that, with the Company\u2019s cash balances, anticipated cash balances and PNC Facility, it has sufficient liquidity for the next twelve months. However, the Company\u2019s operating cash flow can be impacted by macroeconomic factors outside of its control.\nFor the year ended December 31, 2011, the Company spent approximately $1,986 in capital expenditures including $1,073 which was financed with a capital lease. The total 2012 expenditures are expected to be similar.\nItem 8. Financial Statements and Supplementary Data.\nMERISEL, INC. AND SUBSIDIARIES\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "(All other items on this report are inapplicable)\nReport of Independent Registered Public Accounting Firm\nBoard of Directors and Stockholders\nMerisel, Inc.\nNew York, NY\nWe have audited the accompanying consolidated balance sheets of Merisel, Inc. and Subsidiaries (the \u201cCompany\u201d) as of December 31, 2011 and 2010 and the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for each of the three years in the period ended December 31, 2011. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, audits of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 621,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "12,390",
+     "",
+     "$",
+     "1,784",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance of $201 and $288, respectively",
+     "",
+     "14,033",
+     "",
+     "",
+     "14,765",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "1,853",
+     "",
+     "",
+     "2,136",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "1,025",
+     "",
+     "",
+     "2,046",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "29,301",
+     "",
+     "",
+     "20,731",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "5,711",
+     "",
+     "",
+     "5,660",
+     ""
+    ],
+    [
+     "Restricted funds",
+     "",
+     "2,232",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Trademarks",
+     "",
+     "6,190",
+     "",
+     "",
+     "6,190",
+     ""
+    ],
+    [
+     "Other intangible assets, net",
+     "",
+     "2,982",
+     "",
+     "",
+     "2,555",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "408",
+     "",
+     "",
+     "1,102",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "46,824",
+     "",
+     "$",
+     "36,238",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES, TEMPORARY EQUITY, AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "4,440",
+     "",
+     "$",
+     "5,464",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "7,374",
+     "",
+     "",
+     "5,081",
+     ""
+    ],
+    [
+     "Capital lease obligations, current maturities",
+     "",
+     "286",
+     "",
+     "",
+     "544",
+     ""
+    ],
+    [
+     "Revolving credit agreement",
+     "",
+     "8,016",
+     "",
+     "",
+     "2,477",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "20,116",
+     "",
+     "",
+     "13,566",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital lease obligations, less current maturities",
+     "",
+     "503",
+     "",
+     "",
+     "897",
+     ""
+    ],
+    [
+     "Mandatorily redeemable series A preferred stock, $.01 par value, authorized 360,000 shares; 0 and 147,030 shares issued and outstanding, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "12,673",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "492",
+     "",
+     "",
+     "1,090",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "21,111",
+     "",
+     "",
+     "28,226",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Temporary equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible preferred stock, $.01 par value, authorized 600,000 shares; 339,375 and 0 shares issued and outstanding, respectively",
+     "",
+     "34,616",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value; authorized 30,000,000 shares; 8,453,671 shares issued and 7,214,784 shares outstanding",
+     "",
+     "84",
+     "",
+     "",
+     "84",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "265,836",
+     "",
+     "",
+     "285,202",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(272,879)",
+     "",
+     "",
+     "(275,330)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 1,238,887 shares repurchased",
+     "",
+     "(1,944)",
+     "",
+     "",
+     "(1,944)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "",
+     "(8,903)",
+     "",
+     "",
+     "8,012",
+     ""
+    ],
+    [
+     "Total liabilities, temporary equity, and stockholders' equity (deficit)",
+     "$",
+     "46,824",
+     "",
+     "$",
+     "36,238",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, audits of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of the Company at December 31, 2011 and 2010, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2011 in conformity with accounting principles generally accepted in the United States.\n/s/ BDO USA, LLP\nNew York, NY\nMarch 30, 2012\nRDGXBRLParseBegin\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 714,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "62,066",
+     "",
+     "$",
+     "71,946",
+     "",
+     "$",
+     "69,652",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "41,240",
+     "",
+     "",
+     "41,672",
+     "",
+     "",
+     "41,839",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "20,826",
+     "",
+     "",
+     "30,274",
+     "",
+     "",
+     "27,813",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "30,097",
+     "",
+     "",
+     "28,810",
+     "",
+     "",
+     "27,957",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible impairment",
+     "",
+     "18,343",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "",
+     "(27,614)",
+     "",
+     "",
+     "1,464",
+     "",
+     "",
+     "(144)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(400)",
+     "",
+     "",
+     "(493)",
+     "",
+     "",
+     "(2,393)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "96",
+     "",
+     "",
+     "64",
+     "",
+     "",
+     "60",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before (benefit) provision for income tax",
+     "",
+     "(27,918)",
+     "",
+     "",
+     "1,035",
+     "",
+     "",
+     "(2,477)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (benefit) provision",
+     "",
+     "39,861",
+     "",
+     "",
+     "(126)",
+     "",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(67,779)",
+     "",
+     "$",
+     "1,161",
+     "",
+     "$",
+     "(2,451)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "",
+     "2,436",
+     "",
+     "",
+     "2,636",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss available to common stockholders",
+     "$",
+     "(70,215)",
+     "",
+     "$",
+     "(1,475)",
+     "",
+     "$",
+     "(2,451)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share (basic and diluted):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss available to common stockholders",
+     "$",
+     "(9.75)",
+     "",
+     "$",
+     "(0.20)",
+     "",
+     "$",
+     "(0.34)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "7,202",
+     "",
+     "",
+     "7,214",
+     "",
+     "",
+     "7,215",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "7,202",
+     "",
+     "",
+     "7,214",
+     "",
+     "",
+     "7,215",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 723,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share amounts)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 716,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional\n\nPaid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2009",
+     "",
+     "289,653",
+     "",
+     "$",
+     "29,544",
+     "",
+     "",
+     "8,473,503",
+     "",
+     "$",
+     "85",
+     "",
+     "$",
+     "270,713",
+     "",
+     "$",
+     "(206,261)",
+     "",
+     "",
+     "(1,088,181)",
+     "",
+     "$",
+     "(1,808)",
+     "",
+     "$",
+     "92,273",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulation of convertible preferred stock dividend",
+     "",
+     "",
+     "",
+     "",
+     "2,436",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,436)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issue of preferred stock",
+     "",
+     "23,878",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Reclassification of preferred stock to temporary equity",
+     "",
+     "(313,531)",
+     "",
+     "",
+     "(31,980)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(31,980)",
+     ""
+    ],
+    [
+     "Cancellation of restricted stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(19,832)",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(150,706)",
+     "",
+     "",
+     "(136)",
+     "",
+     "",
+     "(136)",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "190",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "190",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(67,779)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(67,779)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,453,671",
+     "",
+     "$",
+     "84",
+     "",
+     "$",
+     "268,468",
+     "",
+     "$",
+     "(274,040)",
+     "",
+     "",
+     "(1,238,887)",
+     "",
+     "$",
+     "(1,944)",
+     "",
+     "$",
+     "(7,432)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulation of convertible preferred stock dividend",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,636)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,636)",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,161",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,161",
+     ""
+    ],
+    [
+     "Balance at December 31, 2010",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,453,671",
+     "",
+     "$",
+     "84",
+     "",
+     "$",
+     "265,836",
+     "",
+     "$",
+     "(272,879)",
+     "",
+     "",
+     "(1,238,887)",
+     "",
+     "$",
+     "(1,944)",
+     "",
+     "$",
+     "(8,903)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemption of Convertible Preferred Stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancellation of Preferred Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "34,616",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "34,616",
+     ""
+    ],
+    [
+     "Cash paid in Redemption",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,500)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "Issuance of Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(11,750)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(11,750)",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,451)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,451)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2011",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,453,671",
+     "",
+     "$",
+     "84",
+     "",
+     "",
+     "285,202",
+     "",
+     "",
+     "(275,330)",
+     "",
+     "",
+     "(1,238,887)",
+     "",
+     "$",
+     "(1,944)",
+     "",
+     "$",
+     "8,012",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 820
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)\n(In thousands, except share data)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(67,779)",
+     "",
+     "$",
+     "1,161",
+     "",
+     "$",
+     "(2,451)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile income (loss)  from operations to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "190",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred occupancy costs",
+     "",
+     "(40)",
+     "",
+     "",
+     "(178)",
+     "",
+     "",
+     "46",
+     ""
+    ],
+    [
+     "Bad debt provision (recovery)",
+     "",
+     "571",
+     "",
+     "",
+     "104",
+     "",
+     "",
+     "74",
+     ""
+    ],
+    [
+     "Deferred income taxes (credit)",
+     "",
+     "39,936",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of discount on preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "220",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "245",
+     ""
+    ],
+    [
+     "Restricted funds",
+     "",
+     "729",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,232",
+     ""
+    ],
+    [
+     "Intangible impairment",
+     "",
+     "18,343",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on sale of equipment",
+     "",
+     "(19)",
+     "",
+     "",
+     "(139)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "5,251",
+     "",
+     "",
+     "3,648",
+     "",
+     "",
+     "2,756",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "4,570",
+     "",
+     "",
+     "(1,681)",
+     "",
+     "",
+     "(806)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "1,562",
+     "",
+     "",
+     "(147)",
+     "",
+     "",
+     "(283)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "299",
+     "",
+     "",
+     "(420)",
+     "",
+     "",
+     "(1,960)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "589",
+     "",
+     "",
+     "(934)",
+     "",
+     "",
+     "1,024",
+     ""
+    ],
+    [
+     "Accrued and other liabilities",
+     "",
+     "(298)",
+     "",
+     "",
+     "2,214",
+     "",
+     "",
+     "(328)",
+     ""
+    ],
+    [
+     "Net cash  provided by  operating activities",
+     "",
+     "3,904",
+     "",
+     "",
+     "3,632",
+     "",
+     "",
+     "769",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition earn out payments and purchase price adjustments",
+     "",
+     "(275)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "(2,071)",
+     "",
+     "",
+     "(850)",
+     "",
+     "",
+     "(1,986)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(2,346)",
+     "",
+     "",
+     "(850)",
+     "",
+     "",
+     "(1,986)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital lease payments",
+     "",
+     "(178)",
+     "",
+     "",
+     "(274)",
+     "",
+     "",
+     "(350)",
+     ""
+    ],
+    [
+     "Installment note repayments",
+     "",
+     "(500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Revolving credit agreement drawdown (repayment)",
+     "",
+     "85",
+     "",
+     "",
+     "(8,715)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Borrowings (repayment) on new credit agreement",
+     "",
+     "-",
+     "",
+     "",
+     "8,016",
+     "",
+     "",
+     "(5,539)",
+     ""
+    ],
+    [
+     "Redemption of preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,500)",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "(136)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(729)",
+     "",
+     "",
+     "(973)",
+     "",
+     "",
+     "(9,389)",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS",
+     "",
+     "829",
+     "",
+     "",
+     "1,809",
+     "",
+     "",
+     "(10,606)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, BEGINNING OF YEAR",
+     "",
+     "9,752",
+     "",
+     "",
+     "10,581",
+     "",
+     "",
+     "12,390",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF  PERIOD YEAR",
+     "$",
+     "10,581",
+     "",
+     "$",
+     "12,390",
+     "",
+     "$",
+     "1,784",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 900,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "427",
+     "$",
+     "426",
+     "$",
+     "1,008"
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "$",
+     "170",
+     "$",
+     "118"
+    ],
+    [
+     "Noncash activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment Purchases Financed through Capital Leases",
+     "$",
+     "1,110",
+     "$",
+     "45",
+     "$",
+     "1,073"
+    ],
+    [
+     "Equipment Purchases Financed through Accounts Payable and Trade-in",
+     "$",
+     "975",
+     "$",
+     "710",
+     "$",
+     "-"
+    ],
+    [
+     "Preferred dividend accumulated",
+     "$",
+     "2,436",
+     "$",
+     "2,636",
+     "$",
+     "-"
+    ],
+    [
+     "Extinguishment of convertible preferred stock",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "19,366"
+    ]
+   ],
+   "caption_stack": [
+    "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+    "Cash paid during the year for:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 898
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nMERISEL, INC. AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2009, 2010, and 2011\n(In thousands, except per share data)\n1. Description of Business and Basis of Presentation\nGeneral\u2014 Merisel, Inc. (\u201cMerisel\u201d, or the \u201cCompany\u201d) was founded in 1980 as Softsel Computer Products, Inc., was incorporated in Delaware in 1987 and changed its name to Merisel, Inc. in 1990 in connection with the acquisition of Microamerica, Inc. The Company operated as a full-line computer distributor through 2000 and as a software licensing distributor through August 2004, when the remaining operations were sold.\nThe Company and its subsidiaries currently operate in the visual communications services business. It entered that business beginning March 2005 through a series of acquisitions, which continued through 2006. These acquisitions include Color Edge, Inc. and Color Edge Visual, Inc. (together \u201cColor Edge\u201d), Comp 24, LLC (\u201cComp 24\u201d); Crush Creative, Inc. (\u201cCrush\u201d); Dennis Curtin Studios, Inc. (\u201cDCS\u201d); Advertising Props, Inc. (\u201cAdProps\u201d); and Fuel Digital, Inc. (\u201cFuel\u201d). The acquisitions of the Company\u2019s seven operating entities are referred to below as \u201cAcquisitions.\u201d The Company\u2019s financial statements are on a consolidated basis.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 900,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Acquired Value",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Carrying Value",
+     "",
+     "Weighted Average Amortization Period",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "3,799",
+     "$",
+     "1,363",
+     "$",
+     "2,436",
+     "",
+     "16"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "4,087",
+     "",
+     "4,072",
+     "",
+     "15",
+     "",
+     "5"
+    ],
+    [
+     "Trade know how",
+     "",
+     "1,341",
+     "",
+     "810",
+     "",
+     "531",
+     "",
+     "8"
+    ],
+    [
+     "Definite lived intangibles",
+     "$",
+     "9,227",
+     "$",
+     "6,245",
+     "$",
+     "2,982",
+     "",
+     "13.0"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2010"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1060
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Goodwill and Intangibles"
+    }
+   },
+   "prose_before": "At December 31, 2010, the Company has restricted funds totaling $2,232. The funds represent collateral for Letters of Credit (\u201cLOC\u201d) for the security deposits on the Company\u2019s real estate leases. Approximately $1,500 of the deposits were held in a single premium deferred annuity and the remaining funds were held in certificates of deposit that have original maturities of up to one year. In the fourth quarter of 2011, the Company transferred the LOC to their PNC credit facility (see Note 9), which allows up to $3,000 in letters of credit. LOC under the PNC facility do not require a collateral deposit, but instead limit the amount the Company can borrow under the facility. At December 31, 2011, the Company was using $1,850 in LOC under the PNC facility. At December 31, 2011, the Company did not have any restricted cash.\n4. Goodwill and Intangibles\nAs of December 31, 2010 and 2011, the acquired intangible assets related to the acquisitions of Color Edge, Comp 24, Crush, DCS, AdProps, and Fuel. Intangible assets, resulting primarily from these acquisitions accounted for under the purchase method of accounting, consist of the following (in thousands):\nDefinite Lived Intangible Assets",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1034,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Acquired Value",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Carrying Value",
+     "",
+     "Weighted Average Amortization Period",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "3,799",
+     "$",
+     "1,608",
+     "$",
+     "2,191",
+     "",
+     "16"
+    ],
+    [
+     "Trade know how",
+     "",
+     "1,341",
+     "",
+     "977",
+     "",
+     "364",
+     "",
+     "8"
+    ],
+    [
+     "Definite lived intangibles",
+     "$",
+     "5,140",
+     "$",
+     "2,585",
+     "$",
+     "2,555",
+     "",
+     "13.0"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Goodwill and Intangibles"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Amortization expense is calculated on a straight line basis over the estimated useful life of the asset. The expense related to definite-lived intangible assets was $1,481, $666, and $427 for the years ended December 31, 2009, 2010, and 2011, respectively.\nEstimated amortization expense on an annual basis for the succeeding five years is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "413"
+    ],
+    [
+     "2013",
+     "",
+     "378"
+    ],
+    [
+     "2014",
+     "",
+     "308"
+    ],
+    [
+     "2015",
+     "",
+     "245"
+    ],
+    [
+     "2016",
+     "",
+     "245"
+    ],
+    [
+     "Thereafter",
+     "",
+     "966"
+    ],
+    [
+     "",
+     "$",
+     "2,555"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31,",
+    "Amount"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Goodwill and Intangibles"
+    }
+   },
+   "prose_before": "Amortization expense is calculated on a straight line basis over the estimated useful life of the asset. The expense related to definite-lived intangible assets was $1,481, $666, and $427 for the years ended December 31, 2009, 2010, and 2011, respectively.\nEstimated amortization expense on an annual basis for the succeeding five years is as follows:",
+   "prose_after": "Indefinite Lived Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2010 and 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Acquired Value",
+     "",
+     "Current Year\n\nImpairment Charge",
+     "",
+     "Cumulative\n\nImpairment Charges",
+     "",
+     "Carrying Value",
+     ""
+    ],
+    [
+     "Trademark",
+     "$",
+     "10,609",
+     "$",
+     "-",
+     "$",
+     "4,419",
+     "$",
+     "6,190"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2010 and 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1097,
+    "end_line": 1107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Goodwill and Intangibles"
+    }
+   },
+   "prose_before": "Indefinite Lived Intangible Assets",
+   "prose_after": "In accordance with FASB ASC 350, the Company tests for goodwill impairment at least annually. The Company uses a measurement date of December 31. As a result of the annual impairment analysis, the Company recorded a non-cash goodwill impairment charge of $13,924 for the year ended December 31, 2009. The impairment was primarily attributable to weaker than expected financial performance and higher discount rates in both of the Company\u2019s reporting units resulting in lower projected cash flows utilized in the discounted cash flow analysis. As of December 31, 2010 and 2011, the entire balance of goodwill was written off for the impaired reporting units.\nThe Company also performed the annual impairment test for indefinite-lived trademarks during the respective fourth fiscal quarters. The trademark impairment valuation is determined using the relief from royalty method. As a result of the impairment analysis for the year ended December 31, 2009, the Company recorded trademark impairment charges of $4,419 as a result of decreases in projected revenues and royalty rates for certain trademarks. There was no impairment charge for the years ended December 31, 2010 and 2011.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "1,319",
+     "",
+     "$",
+     "1,339",
+     ""
+    ],
+    [
+     "Work-in-progress",
+     "",
+     "537",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Reserve for obsolescence",
+     "",
+     "(3)",
+     "",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "$",
+     "1,853",
+     "",
+     "$",
+     "2,136",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1118,
+    "end_line": 1130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "In accordance with FASB ASC 350, the Company tests for goodwill impairment at least annually. The Company uses a measurement date of December 31. As a result of the annual impairment analysis, the Company recorded a non-cash goodwill impairment charge of $13,924 for the year ended December 31, 2009. The impairment was primarily attributable to weaker than expected financial performance and higher discount rates in both of the Company\u2019s reporting units resulting in lower projected cash flows utilized in the discounted cash flow analysis. As of December 31, 2010 and 2011, the entire balance of goodwill was written off for the impaired reporting units.\nThe Company also performed the annual impairment test for indefinite-lived trademarks during the respective fourth fiscal quarters. The trademark impairment valuation is determined using the relief from royalty method. As a result of the impairment analysis for the year ended December 31, 2009, the Company recorded trademark impairment charges of $4,419 as a result of decreases in projected revenues and royalty rates for certain trademarks. There was no impairment charge for the years ended December 31, 2010 and 2011.\n5. Inventories\nInventories consist of the following (in thousands):",
+   "prose_after": "6. Property and Equipment\nAt December 31, 2010 and 2011, property and equipment consists of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1172,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment under capitalized leases",
+     "$",
+     "1,818",
+     "",
+     "$",
+     "2,132",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "14,258",
+     "",
+     "",
+     "15,793",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "867",
+     "",
+     "",
+     "717",
+     ""
+    ],
+    [
+     "Automobiles",
+     "",
+     "104",
+     "",
+     "",
+     "124",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "2,897",
+     "",
+     "",
+     "3,356",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "19,944",
+     "",
+     "",
+     "22,122",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "(14,233)",
+     "",
+     "",
+     "(16,462)",
+     ""
+    ],
+    [
+     "Net book value",
+     "$",
+     "5,711",
+     "",
+     "$",
+     "5,660",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1135,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "6. Property and Equipment\nAt December 31, 2010 and 2011, property and equipment consists of the following (in thousands):",
+   "prose_after": ".\nDepreciation and amortization expense related to property and equipment (including capitalized leases) was $3,770, $2,982, and $2,329 for the years ended December 31, 2009, 2010, and 2011 respectively. Equipment as of December 31, 2010 and 2011 included $1,818 and $2,132, respectively under capital lease agreements. Accumulated depreciation and amortization relating to those assets under capital leases totaled $135 and $530 as of December 31, 2010 and 2011, respectively.\n7. Accrued Expenses\nAccrued expenses consist of the following at December 31 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1172,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation and other benefit accruals",
+     "$",
+     "4,241",
+     "$",
+     "2,066"
+    ],
+    [
+     "Accrued interest on Series A Preferred Stock",
+     "",
+     "-",
+     "",
+     "434"
+    ],
+    [
+     "Other accruals",
+     "",
+     "3,133",
+     "",
+     "2,581"
+    ],
+    [
+     "Total accrued liabilities",
+     "$",
+     "7,374",
+     "$",
+     "5,081"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued Expenses"
+    }
+   },
+   "prose_before": ".\nDepreciation and amortization expense related to property and equipment (including capitalized leases) was $3,770, $2,982, and $2,329 for the years ended December 31, 2009, 2010, and 2011 respectively. Equipment as of December 31, 2010 and 2011 included $1,818 and $2,132, respectively under capital lease agreements. Accumulated depreciation and amortization relating to those assets under capital leases totaled $135 and $530 as of December 31, 2010 and 2011, respectively.\n7. Accrued Expenses\nAccrued expenses consist of the following at December 31 (in thousands):",
+   "prose_after": "8. Income Taxes\nDeferred income tax assets and liabilities were comprised of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1172,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "93,273",
+     "",
+     "$",
+     "7,872",
+     ""
+    ],
+    [
+     "Allowance for doubtful  accounts",
+     "",
+     "86",
+     "",
+     "",
+     "123",
+     ""
+    ],
+    [
+     "Depreciable assets",
+     "",
+     "1,495",
+     "",
+     "",
+     "1,236",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "5,771",
+     "",
+     "",
+     "5,269",
+     ""
+    ],
+    [
+     "Other intangible assets",
+     "",
+     "1,589",
+     "",
+     "",
+     "1,408",
+     ""
+    ],
+    [
+     "Trademarks",
+     "",
+     "134",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred vacation and bonus",
+     "",
+     "669",
+     "",
+     "",
+     "164",
+     ""
+    ],
+    [
+     "Deferred occupancy costs",
+     "",
+     "211",
+     "",
+     "",
+     "230",
+     ""
+    ],
+    [
+     "Inventory uniform capitalization",
+     "",
+     "261",
+     "",
+     "",
+     "339",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "637",
+     "",
+     "",
+     "637",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "20",
+     "",
+     "",
+     "162",
+     ""
+    ],
+    [
+     "Total deferred tax asset",
+     "$",
+     "104,146",
+     "",
+     "$",
+     "17,440",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liability:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trademark",
+     "",
+     "-",
+     "",
+     "",
+     "(169)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "104,146",
+     "",
+     "",
+     "17,271",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(104,146)",
+     "",
+     "",
+     "(17,271)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1179,
+    "end_line": 1211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "8. Income Taxes\nDeferred income tax assets and liabilities were comprised of the following (in thousands):",
+   "prose_after": "Under Section 382 of the Internal Revenue Code of 1986, as amended, the Company\u2019s use of its federal net operating loss (\u201cNOL\u201d) carryforwards may be limited if the Company has experienced an ownership change, as defined in Section 382. In 1997 the Company experienced an ownership change for Federal income tax purposes, resulting in an annual limitation on the Company\u2019s ability to utilize its net operating loss carryforwards to offset future taxable income. The annual limitation was determined by multiplying the value of the Company\u2019s equity before the change by the long-term tax exempt rate as defined by the Internal Revenue Service. As a result of the transaction, the restricted net operating loss was subject to an annual limitation of $7,476. The Company adjusted its deferred tax asset to reflect the estimated limitation.\nOn March 21, 2011, Phoenix Acquisition Company II, L.L.C. (\u201cPhoenix\u201d), the holder of 5,000,000 shares or 69.3% of the Company\u2019s outstanding common stock along with its parent entity Stonington Capital Appreciation 1994 Fund, L.P. (the \u201cFund\u201d), and certain of their affiliates (collectively, \u201cStonington\u201d) completed the transfer of all 5,000,000 shares of common stock to Saints Capital VI, L.P. (\u201cSaints\u201d). This transaction constitutes a change of control as defined in Section 382 and resulted in an additional limitation in its ability to utilize its net operating loss carryforward as well as the ability to use certain unrealized built-in losses. As a result of this change of control, the net operating losses and unrealized built-in losses are subject to an annual limitation of $698. The Company adjusted its deferred tax asset to reflect the estimated limitation as of March 31, 2011. At December 31, 2011, the Company had available U.S. Federal net operating loss carryforwards of $17,388 which expire at various dates beginning December 31, 2012. As of December 31, 2011, $13,963 of the net operating loss carryforwards is restricted as a result of the ownership change and the remaining amount of $3,425 is not restricted.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1219,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "(75)",
+     "",
+     "$",
+     "(126)",
+     "",
+     "$",
+     "(26)",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "(11,803)",
+     "",
+     "",
+     "1,182",
+     "",
+     "",
+     "86,875",
+     ""
+    ],
+    [
+     "Net Change in Valuation Allowance",
+     "",
+     "51,739",
+     "",
+     "",
+     "(1,182)",
+     "",
+     "",
+     "(86,875)",
+     ""
+    ],
+    [
+     "Total provision (benefit)",
+     "$",
+     "39,861",
+     "",
+     "$",
+     "(126)",
+     "",
+     "$",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The above is further comprised of  the",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "following:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "-",
+     "",
+     "$",
+     "(369)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(75)",
+     "",
+     "",
+     "243",
+     "",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "Total current provision (benefit)",
+     "$",
+     "(75)",
+     "",
+     "$",
+     "(126)",
+     "",
+     "$",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax expense (benefit), net of change in valuation allowance:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "42,627",
+     "",
+     "$",
+     "(723)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(2,691)",
+     "",
+     "",
+     "723",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred provision (benefit)",
+     "$",
+     "39,936",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1224,
+    "end_line": 1254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Income taxes are accounted for under the asset and liability method. Under this method, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases and operating loss and tax credit carryforwards. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences are expected to become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment.\nAt December 31, 2009, after weighing both the positive and negative evidence of realizing the deferred tax asset, management determined that, based on the weight of all available evidence, it is more likely than not that the Company will not realize its deferred tax assets. The most influential weighted negative evidence considered was two consecutive years of current taxable losses and uncertainty as to when taxable profit can be predicated in the future due to current economic environment. As such, the Company placed a full valuation allowance on its net deferred tax assets and recorded deferred tax expense of $39,936 for the year ended December 31, 2009. At December 31, 2010 and 2011, based on consecutive years of taxable losses the Company determined that it should keep a full valuation allowance on its net deferred tax assets.\nThe provision (benefit) for income taxes consisted of the following (in thousands):",
+   "prose_after": "The major elements contributing to the difference between the federal statutory tax rate and the effective tax rate on income from continuing operations are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory rate",
+     "",
+     "35.0",
+     "%",
+     "",
+     "35.0",
+     "%",
+     "",
+     "35.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(185.3)",
+     "",
+     "",
+     "(114.2)",
+     "",
+     "",
+     "3,574.8",
+     ""
+    ],
+    [
+     "Change in NOL limitation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,573.3)",
+     ""
+    ],
+    [
+     "Prior year true-ups",
+     "",
+     "0.1",
+     "",
+     "",
+     "35.6",
+     "",
+     "",
+     "(.6)",
+     ""
+    ],
+    [
+     "State and local income taxes",
+     "",
+     "7.7",
+     "",
+     "",
+     "24.5",
+     "",
+     "",
+     "(0.9)",
+     ""
+    ],
+    [
+     "Certain non-deductible expenses and other",
+     "",
+     "(0.3)",
+     "",
+     "",
+     "6.9",
+     "",
+     "",
+     "(-",
+     ")"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(33.9)",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "(142.8",
+     "%)",
+     "",
+     "(12.2",
+     "%)",
+     "",
+     "1.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1257,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The major elements contributing to the difference between the federal statutory tax rate and the effective tax rate on income from continuing operations are as follows:",
+   "prose_after": "9. Debt\nDebt is classified on the balance sheet as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1221,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2010",
+     "",
+     "December 31, 2011",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital lease obligations",
+     "$",
+     "286",
+     "$",
+     "544"
+    ],
+    [
+     "Revolving credit agreement",
+     "",
+     "8,016",
+     "",
+     "2,477"
+    ],
+    [
+     "",
+     "",
+     "8,302",
+     "",
+     "3,021"
+    ],
+    [
+     "Non-current:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital lease obligations",
+     "",
+     "503",
+     "",
+     "897"
+    ],
+    [
+     "Mandatorily redeemable preferred stock",
+     "",
+     "-",
+     "",
+     "12,673"
+    ],
+    [
+     "",
+     "",
+     "503",
+     "",
+     "13,570"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "8,805",
+     "$",
+     "16,591"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1280,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "9. Debt\nDebt is classified on the balance sheet as follows:",
+   "prose_after": "Mandatorily Redeemable Preferred Stock\nOn February 4, 2011, the Company issued 140,000 shares of a Series A Preferred Stock, par value $.01 per share, at an original issue price of $100 per share. The Series A Preferred was issued to Stonington as part of the consideration given in the redemption of all 346,163 outstanding shares of the Company\u2019s Convertible Preferred Stock (see Note 10). On March 21, 2011, Stonington completed the sale of all Series A Preferred to Saints in conjunction with the Stock Purchase Agreement dated February 18, 2011.\nThe Series A Preferred must be redeemed by the Company on or before February 4, 2017 and may be redeemed by the Company, in whole or in part, at any time after February 4, 2013, in each case at a price of $100 per share, plus any accrued but unpaid dividends. Based on the guidance in ASC 480, \u201cDistinguishing Liabilities from Equity,\u201d the Company has classified the Series A Preferred as a liability because it is mandatorily redeemable on February 4, 2017. Accordingly, the Company records the dividends as interest expense over the life of the Series A Preferred.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Weighted\n\nAverage\n\nExer. Price",
+     "",
+     "Shares",
+     "",
+     "Weighted\n\nAverage\n\nExer. Price",
+     "",
+     "Shares",
+     "",
+     "Weighted\n\nAverage\n\nExer. Price",
+     ""
+    ],
+    [
+     "Outstanding at beginning of year",
+     "",
+     "300,000",
+     "",
+     "8.33",
+     "",
+     "300,000",
+     "",
+     "8.33",
+     "",
+     "300,000",
+     "",
+     "8.33"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A"
+    ],
+    [
+     "Canceled",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A",
+     "",
+     "-",
+     "",
+     "N/A"
+    ],
+    [
+     "Outstanding at end of year",
+     "",
+     "300,000",
+     "",
+     "8.33",
+     "",
+     "300,000",
+     "",
+     "8.33",
+     "",
+     "300,000",
+     "",
+     "8.33"
+    ],
+    [
+     "Options exercisable at year end",
+     "",
+     "300,000",
+     "",
+     "",
+     "",
+     "300,000",
+     "",
+     "",
+     "",
+     "300,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average fair value  at date of grant of options  granted during the year",
+     "",
+     "N/A",
+     "",
+     "",
+     "",
+     "N/A",
+     "",
+     "",
+     "",
+     "N/A",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1388,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "On December 19, 1997, the Company\u2019s stockholders approved the Merisel Inc. 1997 Stock Award and Incentive Plan (the \u201c1997 Plan\u201d). On December 3, 2008, the Company\u2019s stockholders approved the Merisel, Inc. 2008 Stock Award and Incentive Plan (the \u201c2008 Plan\u201d). Under both the 1997 Plan and the 2008 Plan, incentive stock options and nonqualified stock options as well as other stock-based awards may be granted to employees, directors, and consultants. The 1997 Plan authorized the issuance of an aggregate of 800,000 shares of Common Stock less the number of shares of Common Stock that remain subject to outstanding option grants under any of the Company\u2019s other stock-based incentive plans for employees after December 19, 1997 and are not either canceled in exchange for options granted under the 1997 Plan or forfeited. The 2008 Plan authorized the issuance of an aggregate of 500,000 shares of Common Stock, less the same limit for outstanding options. At December 31, 2011, 51,839 shares were available for grant under the 1997 Plan, and 500,000 shares were available for grant under the 2008 Plan. The grantees, terms of the grant (including option prices and vesting provisions), dates of grant and number of shares granted under the plans are determined primarily by the Board of Directors or the committee authorized by the Board of Directors to administer such plans, although incentive stock options are granted at prices which are no less than the fair market value of the Company's Common Stock at the date of grant.\nStock Options\nThe Company awarded 300,000 stock options to its Chief Executive Officer in November 2004 under the 1997 Plan. There have been no stock options granted since November 2004 grant through December 31, 2011. There was no related compensation expense for the years ended December 31, 2009, 2010, and 2011. As of December 31, 2011, 300,000 options remain outstanding under the 1997 Plan.\nThe following summarizes the aggregate activity in all of the Company\u2019s plans for the three years ended December 31, 2011:",
+   "prose_after": "There is no total intrinsic value of options outstanding or exercisable at December 31, 2011.\nRestricted Stock Grants\nOn December 13, 2006, the Company awarded 185,500 shares of restricted stock to key officers and employees under the 1997 Plan. Compensation expense, measured by the fair value at the grant date of the Company\u2019s common stock issuable in respect of the units, was recorded over the related three-year vesting period starting in December 2006. Compensation expense was $180 for the year ended December 31, 2009. There was no expense for the years ended December 31, 2010 and 2011.\nDuring 2007, the Company awarded 17,500 shares of restricted stock to key officers and employees under the 1997 Plan. Compensation expense, measured by the fair value at the grant date of the Company\u2019s common stock issuable in respect of the units, will be recorded over the related three-year vesting period. Compensation expense was $10 and $4 for the years ended December 31, 2009 and 2010, respectively. There was no expense for the year ended December 31, 2011.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1385,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "2009",
+     "",
+     "2010",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "7,202",
+     "",
+     "7,214",
+     "",
+     "7,215"
+    ],
+    [
+     "Diluted",
+     "",
+     "7,202",
+     "",
+     "7,214",
+     "",
+     "7,215"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1433,
+    "end_line": 1441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "The Company calculates earnings (loss) per share (\u201cEPS\u201d) in accordance with FASB ASC 260-10 (FAS No. 128, \u201cEarnings Per Share\u201d). Basic earnings (loss) per share is calculated using the average number of common shares outstanding. Diluted earnings (loss) per share is computed on the basis of the average number of common shares outstanding plus the effect of dilutive outstanding stock options using the \u201ctreasury stock\u201d method. Diluted earnings (loss) per common share for 2009 and 2010 do not include the effects of 45,104 and 1,017 shares of restricted stock as the effect of their inclusion would be anti-dilutive. As of January 1 2011, all shares of restricted stock were fully vested, as such there was no share exclusion to the common share calculation for 2011. The convertible preferred stock and stock options are anti-dilutive, and as such, are excluded from diluted earnings per share calculations.\nThe following tables reconcile the weighted average shares used in the computation of basic and diluted EPS and income available to common stockholders for the income statement periods presented herein (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1463,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "$",
+     "(67,779)",
+     "",
+     "$",
+     "1,161",
+     "",
+     "$",
+     "(2,451)",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "",
+     "2,436",
+     "",
+     "",
+     "2,636",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss available to common stockholders",
+     "$",
+     "(70,215)",
+     "",
+     "$",
+     "(1,475)",
+     "",
+     "$",
+     "(2,451)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1442,
+    "end_line": 1451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "14. Subsequent Events\nThe Company currently leases the 1st through 5th floors at its New York City (\u201cNYC\u201d) location. During the month of January, 2012 the Company relocated and consolidated its NYC manufacturing and production operations to Carlstadt, New Jersey. Various creative services, sales, marketing and admin activities remain in the NYC location.\nOn March 28, 2012, the Company completed negotiations with its NYC landlord to terminate its current leases for the 1st through 4th floors (\u201cTermination Agreement\u201d) and entered into a new lease to move its remaining activities to the 8th floor in the same building.\nUnder the terms of the Termination Agreement, the Company agreed to (i) continue to pay rent at its current annual rate, as well as, certain related charges under the current leases through December 31, 2012, (ii) pay a one-time settlement payment of $125 to satisfy its restoration obligations and other disputed charges under the current leases upon execution of the agreement, and (iii), make an additional single payment termination fee of $850 on December 31, 2012.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1463,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nominee",
+     "Votes For",
+     "Votes Withheld"
+    ],
+    [
+     "Kenneth B. Sawyer",
+     "5,558,338",
+     "222,585"
+    ],
+    [
+     "Terry A. Tevis",
+     "5,574,940",
+     "205,983"
+    ],
+    [
+     "Joseph Yang",
+     "5,558,328",
+     "222,595"
+    ],
+    [
+     "Bradley J. Hoecker",
+     "5,584,906",
+     "196,017"
+    ],
+    [
+     "Donald R. Uzzi",
+     "5,568,294",
+     "212,629"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1500,
+    "end_line": 1509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Our management is responsible for establishing and maintaining adequate internal control over financial reporting, as defined in Exchange Act Rules 13a-15(f) and 15d-15(f). Our internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. Under the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer, we conducted an evaluation of the effectiveness of our internal control over financial reporting as of December 31, 2011 based on the criteria established in Internal Control \u2014 Integrated Framework and additional guidance provided by Internal Control over Financial Reporting \u2013 Guidance for Smaller Public Companies as issued by the Committee of Sponsoring Organizations of the Treadway Commission.\nBased on the results of this evaluation, we concluded that our internal control over financial reporting was effective as of December 31, 2011.\nThis annual report does not include an attestation report of our independent registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by our independent registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit us to provide only management's report in this annual report.\nItem 9B. Other Information.\nSubmission of Matters to a Vote of Security Holders\nThe Company convened its 2011 Annual Meeting of Stockholders on December 14, 2011.\nThe following matters were submitted to a vote of security holders at the annual meeting:\n1. Election of nominees as directors to the Board of Directors. Each of the nominees listed below was elected for a one-year term by the vote count set forth next to his name:",
+   "prose_after": "2. The stockholders also voted upon and approved a proposal to ratify the appointment of BDO USA, LLP as the Company\u2019s independent registered public accounting firm for 2011. The vote on the proposal was as follows:",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "F[ ][ ]",
+     "Against",
+     "Abstentions",
+     "Broker Non-Votes"
+    ],
+    [
+     "6,606,966",
+     "75,485",
+     "7,291",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1512,
+    "end_line": 1517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "2. The stockholders also voted upon and approved a proposal to ratify the appointment of BDO USA, LLP as the Company\u2019s independent registered public accounting firm for 2011. The vote on the proposal was as follows:",
+   "prose_after": "Entry into Material Definitive Agreement; Termination of a Material Definitive Agreement\nOn March 28, 2012 Merisel entered into a 10-year lease (the \u201cNew Lease\u201d) with 132 West 31st Street Property Investors II, LLC (\u201cLandlord\u201d), a Delaware limited liability company, which is the owner of the building located at 132 West 31st Street (also known as 127 West 30th Street and 31 Penn Plaza), New York, New York (the \u201cBuilding\u201d) where the Company and its predecessors have maintained its offices and production facilities since 1998. Landlord is an affiliate of Savanna Real Estate Fund, a New York based real estate investment entity which acquired the Building in September 2011. Pursuant to the New Lease, the Company agreed to lease approximately 27,109 rentable square feet (the \u201cNew Premises\u201d), constituting the entire 8th floor of the Building at a fixed rent ranging from $1,138,578 for the year beginning January 1, 2013, with annual increases of 2% plus a $4.00 per square foot increase beginning on January 1, 2018, reaching $1,478,080.72 in year 10. In addition to fixed rent, the Company is responsible for its pro-rata share of increases in real estate taxes plus electric and miscellaneous additional charges.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Donald R. Uzzi (1)",
+     "59",
+     "Chairman of the Board, Chief Executive Officer and President"
+    ],
+    [
+     "Victor L. Cisario",
+     "50",
+     "Executive Vice President, Chief Financial Officer, and Corporate Secretary"
+    ],
+    [
+     "Michael A. Berman",
+     "53",
+     "Chief Client Officer"
+    ],
+    [
+     "Bradley J. Hoecker (2) (3)",
+     "50",
+     "Director"
+    ],
+    [
+     "Kenneth B. Sawyer (1)",
+     "47",
+     "Director"
+    ],
+    [
+     "Terry A. Tevis  (1) (2) (3)",
+     "70",
+     "Director"
+    ],
+    [
+     "Joseph Yang (2)",
+     "53",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1540,
+    "end_line": 1550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "As described in the Company\u2019s Current Report on Form 8-K filed on March 25, 2011, Stonington Capital Appreciation 1994 Fund, L.P. and certain of its affiliates (together, \u201cStonington\u201d) completed the transfer of a majority of the Company\u2019s shares to Saints Capital VI, L.P., an affiliate of Saints Capital LLC (together with their affiliates, \u201cSaints\u201d). In connection with the closing of the transaction, Albert J. Fitzgibbons III and Bradley J. Hoecker resigned from the Company\u2019s Board of Directors effective March 21, 2011, and Edward A. Grant, Ronald P. Badie and Lawrence J. Schoenberg, who were not affiliated with Stonington, resigned effective March 23, 2011. On the same date, Kenneth B. Sawyer and Joseph Yang were elected to the Board as nominees of Saints, and Bradley J. Hoecker and Terri A. Tevis were elected as independent directors. .\nThe following table sets forth the names, ages as of March 30, 2012 and positions of those individuals who currently serve as executive officers and directors of the Company.",
+   "prose_after": "(1) Member of Nominating Committee.\n(2) Member of Compensation Committee.\n(3) Member of Audit Committee.\nFor each director of the Company, the following sets forth the name, age as of March 30, 2012, principal occupation for at least the past five years and the names of any other public companies for which the director served in directorship capacity in the last five years:\nDonald R. Uzzi, 59, has served as Chief Executive Officer and President since November 2004 and as a member of the Board of Directors since December 2004. He was elected Chairman of the Board of Directors in April 2005. From December 2002 to November 2004, Mr. Uzzi provided consulting services for various companies on marketing, corporate strategy and communications. From July 1999 to December 2002, Mr. Uzzi was Senior Vice President of Electronic Data Systems Corporation. From July 1998 to July 1999, Mr. Uzzi was a principal officer of Lighthouse Investment Group. From August 1996 to April 1998, Mr. Uzzi served as Executive Vice President at Sunbeam Corporation. Prior to 1996, Mr. Uzzi held the position of President of the Gatorade North America division of Quaker Oats. Mr. Uzzi brings to the Board extensive experience in management, marketing, and operations.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1556,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\nPrincipal Position",
+     "Year",
+     "Salary\n\n($) (1)",
+     "Bonus\n\n($) (1)",
+     "Stock Awards\n\n($) (2)",
+     "Option Awards\n\n($)",
+     "Non-Equity Incentive\n\nPlan Compensation\n\n($)",
+     "Non-Qualified\n\nDeferred\n\nCompensation\n\nEarnings ($)",
+     "All Other\n\nCompensation\n\n($)",
+     "Total\n\n($)"
+    ],
+    [
+     "Donald R. Uzzi\n\n  Chief Executive\n\n    Officer and\n\n    President",
+     "2010\n\n2011",
+     "360,000\n\n450,000",
+     "666,800\n\n25,000",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "-\n\n-",
+     "1,026,800\n\n475,000"
+    ],
+    [
+     "Victor L. Cisario\n\n   Executive Vice\n\n    President and Chief\n\n    Financial Officer",
+     "2010\n\n2011",
+     "202,500\n\n300,000",
+     ",239,400\n\n15,000",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "-\n\n-",
+     "441,900\n\n315,000"
+    ],
+    [
+     "Michael A. Berman\n\n  Executive Vice\n\n    President and Chief\n\n    Client Officer",
+     "2010\n\n2011",
+     "11,700\n\n300,000",
+     "239,400\n\n-",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "--\n\n--",
+     "207,700 (3),\n\n                      -",
+     "458,800\n\n300,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1617,
+    "end_line": 1648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Company has adopted a Code of Business Conduct, which also includes the code of ethics that applies to the Company\u2019s finance professionals as required by SEC rules and regulations. The Code of Business Conduct can be found on the Company\u2019s website www.merisel.com.\nAudit Committee\nThe Board of Directors maintains an Audit Committee that is currently comprised of Mr. Hoecker, who chairs the Committee, and Mr. Tevis. The Board of Directors has determined that Messrs. Hoecker and Tevis are both independent Directors as defined by the SEC and NASDAQ. Messrs. Grant and Shoenberg, who were the Audit Committee\u2019s \u201caudit committee financial experts,\u201d resigned from the Board on March 21, 2011. The Audit Committee has not appointed a new \u201caudit committee financial expert,\u201d as defined by SEC rules. The Board has determined that Messrs. Hoecker and Tevis possess appropriate experience in financial matters for a company the size of Merisel.\nItem 11. Executive Compensation\nSummary of Executive Compensation 2010-2011\nThe following table sets forth the compensation of the Company\u2019s Chief Executive Officer and each of the other two most highly compensated executive officers for services in all capacities to the Company in 2010 and 2011, except as otherwise indicated.",
+   "prose_after": "(1) The dollar amount represents the amounts recognized in 2010 and 2011 on the accrual basis.\n(2) No stock awards were made in 2010 or 2011. Amounts recognized for financial reporting purposes for those years were reported in the Company\u2019s Form 10-K..\n(3) On December 17, 2010, Mr. Berman officially joined the Company as its Chief Client Officer after serving as a consultant for the Company since November 2009. Mr. Berman\u2019s Other Compensation for2010 consisted of management consulting fees.\nNarrative to Summary Compensation Table\nNo stock option or non-equity incentive awards were made to the named executive officers in 2010 or 2011. For 2010, Mr. Uzzi and Mr. Cisario agreed to a ten percent decrease of their annual salaries, consistent with a Company-wide salary decrease. The performance bonus awards listed in the above table for 2010 and 2011 were paid in the spring of 2011 and 2012, respectively.\nOutstanding Equity Awards at December 31, 2011",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1658,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions (#)\n\nExercisable",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions (#)\n\nUnexercisable",
+     "Equity Incentive\n\nPlan Awards:\n\nNumber of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nUnearned\n\nOptions (#)",
+     "Option\n\nExercise\n\nPrice\n\n($)",
+     "Option\n\nExpiration\n\nDate",
+     "Number of\n\nShares or\n\nUnits of\n\n Stock That\n\n Have Not\n\nVested\n\n(#)",
+     "Market Value of Shares or Units of Stock That Have Not Yet Vested\n\n($)",
+     "Equity Incentive\n\nPlan Awards:\n\number of\n\nUnearned\n\nShares, Units or Other Rights That Have Not Vested\n\n(#)",
+     "Equity Incentive\n\nPlan Awards:\n\nMarket or\n\nPayout Value of Unearned Shares, Units or Other\n\nRights That\n\nHave Not\n\nVested\n\n($)"
+    ],
+    [
+     "Donald R.Uzzi",
+     "100,000\n\n100,000\n\n100,000",
+     "-\n\n-\n\n-",
+     "-\n\n-\n\n-",
+     "5.00\n\n8.00\n\n12.00",
+     "11/22/2014\n\n11/22/2014\n\n11/22/2014",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Victor L. Cisario",
+     "-",
+     "-",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Michael A. Berman",
+     "-",
+     "-",
+     "-",
+     "-",
+     "",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1663,
+    "end_line": 1694
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) The dollar amount represents the amounts recognized in 2010 and 2011 on the accrual basis.\n(2) No stock awards were made in 2010 or 2011. Amounts recognized for financial reporting purposes for those years were reported in the Company\u2019s Form 10-K..\n(3) On December 17, 2010, Mr. Berman officially joined the Company as its Chief Client Officer after serving as a consultant for the Company since November 2009. Mr. Berman\u2019s Other Compensation for2010 consisted of management consulting fees.\nNarrative to Summary Compensation Table\nNo stock option or non-equity incentive awards were made to the named executive officers in 2010 or 2011. For 2010, Mr. Uzzi and Mr. Cisario agreed to a ten percent decrease of their annual salaries, consistent with a Company-wide salary decrease. The performance bonus awards listed in the above table for 2010 and 2011 were paid in the spring of 2011 and 2012, respectively.\nOutstanding Equity Awards at December 31, 2011",
+   "prose_after": "Pension Benefits\nThe Company does not offer pension benefits to its executive officers.\nNon-qualified Defined Contribution and other Nonqualified Deferred Compensation Plans\nThe Company does not offer non-qualified contribution or other deferred compensation plans to its executive officers.\nExecutive Employment, Termination and Change of Control Arrangements\nCEO Compensation, Termination and Change of Control Arrangements\nDonald R. Uzzi serves as the Chief Executive Officer and President of the Company pursuant to an employment agreement dated November 22, 2004, as amended in March 2006, January 2008, June 2009 and December 2010. Mr. Uzzi\u2019s base salary pursuant to his agreement was $400,000 in 2010; effective as of January 1, 2011, his base salary is $450,000 per year. The base salary increases to $500,000 upon an attainment by the Company of earnings before taxes of at least $15,000,000 on a rolling four-quarter basis. Mr. Uzzi also is eligible for an annual bonus with a target level of 100% of his base salary, to be awarded based on such criteria as may be determined by the Board of Directors or the Compensation Committee. Such criteria may include a combination of the achievement by the Company of specified financial performance goals as well as achievement by Mr. Uzzi of specified performance targets. The decision as to whether to award an annual bonus is in the sole discretion of the Board of Directors or the Compensation Committee. For calendar year 2010, Mr. Uzzi received an annual bonus award of $666,800. For calendar year 2011, Mr. Uzzi received an annual bonus award of $25,000. In the first quarter of 2012, Mr. Uzzi\u2019s vested 100,000 stock options with an exercise price of $12.00 per share were cancelled and replaced with a new grant of vested 100,000 stock options with an exercise price of $1.35 per share and an expiration date of November 22, 2016.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1660,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1708,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)(1)",
+     "Stock Awards\n\n($)",
+     "Option Awards\n\n($)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "Nonqualified Deferred Compensation Earnings  ($)",
+     "All Other Compensation ($)",
+     "Total ($)"
+    ],
+    [
+     "Edward A. Grant",
+     "$107,627",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$107,627"
+    ],
+    [
+     "Lawrence J. Schoenberg",
+     "$105,727",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$105,727"
+    ],
+    [
+     "Ronald P. Badie",
+     "$113,722",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$113,721"
+    ],
+    [
+     "Albert J. Fitzgibbons III",
+     "$50,848",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$50,848"
+    ],
+    [
+     "Bradley J. Hoecker",
+     "$94,166",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "$94,166"
+    ],
+    [
+     "Terry A. Tevis",
+     "$35,014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$35,014"
+    ],
+    [
+     "Ken B. Sawyer",
+     "$26,111",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$26,111"
+    ],
+    [
+     "Joseph Yang",
+     "$26,111",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$26,111"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1727,
+    "end_line": 1750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Michael A. Berman serves as Merisel\u2019s Chief Client Officer pursuant to an employment agreement dated December 17, 2010. Mr. Berman\u2019s employment agreement provides for a base salary of $202,500 per year through December 31, 2010 and $300,000 beginning January 1, 2011, and an annual target cash bonus equal to 40% of the base salary, with such potential bonus to be determined by Merisel\u2019s Board of Directors or its Compensation Committee in its sole discretion. Mr. Berman\u2019s employment with the Company is at will, provided that he is entitled to receive (i) a severance payment in the amount equal to six months of base salary if the Company terminates him without \u201ccause\u201d (as defined in the employment agreement) and (ii) a severance payment in the amount equal to 12 months of base salary if the Company terminates him without cause within one year following a change of control. The employment agreement also includes customary confidentiality, non-compete and non-solicitation provisions. For calendar year 2010, Mr. Berman received an annual bonus award of $239,400. In the first quarter of 2012, Mr. Berman received an award of 50,000 stock options with an exercise price of $1.35 per share, vesting in four equal annual installments.\nCompensation of Directors\nThe following table sets forth, for the year ended December 31, 2011, information relating to the compensation of each director of the Company who served during the fiscal year and who was not a named executive officer. Compensation received or accrued by Donald R. Uzzi, Chief Executive Officer and President of the Company and Chairman of the Board of Directors, is fully reflected in the tables above.",
+   "prose_after": "(1) Includes $25,200 cash payments to non-employee Directors Badie, Grant and Schoenberg and the $6,348 cash payments to Directors Fitzgibbons and Hoecker upon \u201cChange of Control.\u201d These amounts were paid in cash in March 2011 and related to the cash grant in lieu of restricted stock granted in December 2010.\nNarrative to Director Compensation Table\nThe above table lists compensation paid to (i) former directors Edward A. Grant, Lawrence J. Schoenberg and Ronald P. Badie, who resigned from the Company\u2019s Board effective March 23, 2011, and Albert J. Fitzgibbons III and Bradley J. Hoecker, who resigned from the Company\u2019s Board effective March 21, 2011, and (ii) current directors Kenneth B. Sawyer and Joseph Yang, who were nominated by Saints, and Bradley J. Hoecker, who was re-elected to the Company\u2019s Board as independent director along with Terry A. Tevis on March 23, 2011.\nAll cash and stock awards described in the above table were paid to the Company\u2019s non-employee directors pursuant to the Company\u2019s compensation plan for non-employee directors, which was first adopted by the Board of Directors in 2005 (the \u201cOld Compensation Plan\u201d). On April 27, 2011, the Board of Directors approved a new compensation plan for the non-employee directors (the \u201cNew Compensation Plan\u201d).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1722,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1758,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Beneficially\n\n Owned",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Saints Capital Granite, L.P. (1)",
+     "",
+     "5,000,000",
+     "",
+     "66.54",
+     "%"
+    ],
+    [
+     "475 Sansome Street, Suite 1850",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "San Francisco, CA 94111",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bradley J. Hoecker",
+     "",
+     "18,714",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Kenneth B. Sawyer (2)",
+     "",
+     "-",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Terry A. Tevis",
+     "",
+     "-",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Joseph Yang",
+     "",
+     "-",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Donald R. Uzzi (3)",
+     "",
+     "530,000",
+     "",
+     "7.05",
+     "%"
+    ],
+    [
+     "Victor L. Cisario (4)",
+     "",
+     "25,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Michael A. Berman (5)",
+     "",
+     "12,500",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All Directors and Executive Officers as a Group",
+     "",
+     "586,214",
+     "",
+     "7.35",
+     "%"
+    ],
+    [
+     "(7 Persons)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Shares Beneficially\n\n Owned"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1785,
+    "end_line": 1807
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Other than the foregoing provisions, the Company does not have a uniform policy or agreement concerning payments to directors upon their departure from the Board.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth certain information as of March 30, 2012, as to shares of our common stock beneficially owned by: (i) each person (including any \u201cgroup\u201d as that term is used in Section 13(d)(3) of the Exchange Act) known by us to be the beneficial owner of more than 5% of our common stock, (ii) each of our current directors, our Chief Executive Officer and the named executive officers (as defined in Item 402 (m)(2)(ii) of Regulation S-K) and (iii) all of our directors and executive officers as a group.\nWe have determined beneficial ownership in accordance with the rules of the SEC. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all shares of our common stock that they beneficially own.",
+   "prose_after": "*Represents less than 1%\n(1) As disclosed in a Schedule 13D/A filed May 20, 2011, Saints Capital Granite, L.P. owns directly 5,000,000 shares of Common Stock, and Saints Capital Granite, LLC, in its capacity as the general partner of Saints Capital Granite, L.P., may be deemed to be the beneficial owner of 5,000,000 shares of Common Stock of the Company, representing approximately 69.3% of the shares of Common Stock outstanding. Each of Saints Capital Granite, L.P. and Saints Capital Granite, LLC may be deemed to be the beneficial owner (with sole voting and dispositive power) of 5,000,000 shares of Common Stock representing approximately 69.3% of the shares of Common Stock outstanding.\n(2) Mr. Sawyer is a managing member of Saints Capital Granite, LLC, and may therefore be deemed to beneficially own 5,000,000 shares of common stock beneficially owned by Saints Capital Granite, L.P. Mr. Sawyer disclaims such beneficial ownership and the information set forth in the table above solely reflects beneficial ownership of Mr. Sawyer in his individual capacity.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1778,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1819,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of securities\n\nto be issued upon exercise of outstanding options,\n\nwarrants and rights",
+     "Weighted-average\n\nexercise price of outstanding options, warrants\n\nand rights",
+     "Number of securities remaining available for future issuance under equity compensation\n\nplans (1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by the stockholders",
+     "300,000 (2)",
+     "$8.33",
+     "551,839 (3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1834,
+    "end_line": 1844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "As disclosed in the Company\u2019s Current Report on Form 8-K filed on March 25, 2011, on March 21, 2011, Phoenix Acquisition Company II, L.LC. (\u201cPhoenix\u201d), an affiliate of Stonington, completed the transfer of all of the common stock and Series A Preferred Stock of Merisel held by Phoenix, which together constituted all of the Company\u2019s securities owned or controlled by Stonington, to Saints Capital VI, L.P., for a sale price of $14,500,000. The transaction was completed pursuant to the Stock Purchase Agreement dated February 18, 2011 between Phoenix and Saints Capital VI, L.P. and constitutes a \u201cchange of control\u201d of Merisel from Phoenix and its affiliates to Saints Capital VI, L.P. effective March 21, 2011.\nOn May 11, 2011, Saints Capital VI, L.P. made capital contributions of 140,000 shares of Series A Preferred Stock and 5,000,000 shares of Common Stock of the Company to Saints Capital Granite, L.P., an entity with different beneficial ownership which is also affiliated with Saints. That transfer may constitute a change of control effective May 11, 2011.\nAs of the date of this filing, Saints Capital Granite, L.P. holds all of the Company\u2019s Series A Preferred Stock and approximately 69% of the Company\u2019s outstanding common stock.\nEquity Compensation Plan Information\nThe following table provides information regarding the shares of common stock authorized for issuance under the Company\u2019s equity compensation plans as of December 31, 2011:",
+   "prose_after": "1. Excludes shares reflected in the first column.\n2. Represents outstanding options granted under the Company\u2019s 1997 Stock Award and Incentive Plan.\n3. Represents 51,839 shares available for issuance under the 1997 Stock Award and Incentive Plan and 500,000 shares available for issuance under the 2008 Stock Award and Incentive Plan.\nItem 13. Certain Relationships and Related Transactions and Director Independence\nThere are no family relationships among any of the executive officers and directors of the Company.\nThe Company enters into indemnity agreements (the \u201cIndemnity Agreements\u201d) with each of its directors, executive officers, and certain other officers, effective in each case upon their election or appointment as a director or officer of the Company. Donald Uzzi, Victor L. Cisario, Michael A. Berman, Kenneth B. Sawyer, Joseph Yang, Terry A. Tevis, Bradley J. Hoecker and Fiona Gould are all parties to such agreements, as are the Company\u2019s former officers and directors who served in these capacities. The Indemnity Agreements provide that the Company will indemnify each party (the \u201cIndemnitee\u201d) against expenses and damages in connection with claims relating to the Indemnitee\u2019s service to the Company, to the fullest extent permitted by the Company\u2019s bylaws and the Delaware General Corporation Law.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1821,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Parent",
+     "Basis of Control and Relevant Period",
+     "Immediate Parent",
+     "Percentage of Voting Securities Owned or Other Basis of Control"
+    ],
+    [
+     "Phoenix Acquisition Company II, L.L.C.",
+     "Ownership/control of common stock constituting up to 69% of outstanding shares December 1997-March 21, 2011",
+     "Stonington Capital Appreciation 1994 Fund, L.P.",
+     "100%"
+    ],
+    [
+     "Saints Capital VI, L.P.",
+     "Ownership/control of common stock constituting 69% of outstanding shares   March 21, 2011- May 11, 2011",
+     "Saints Capital VI, LLC",
+     "General Partner"
+    ],
+    [
+     "Saints Capital Granite, L.P.",
+     "Ownership/control of common stock constituting 69% of outstanding shares effective  May 11, 2011",
+     "Saints Capital Granite, LLC",
+     "General Partner"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1869,
+    "end_line": 1884
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships and Related Transactions and Director Independence"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Mr. Hoecker also acted as Stonington\u2019s representative in connection with the February 18, 2011 Stock Purchase Agreement under which Phoenix sold its entire equity interest in the Company to Saints for $14.5 million (see \u201cChange of Control\u201d on page 21). That transaction required no action by the Company\u2019s Board of Directors.\nCertain members of the Company\u2019s Board of Directors serve on boards of other public and private companies, which were under the control of Stonington or its affiliates during the periods prior to March 21, 2011 or under the control of Saints or its affiliates subsequent to that date. During such respective periods, these entities may be considered to be under \u201ccommon control\u201d with the Company.\nThe following table lists all \u201cparents\u201d of the Company showing the basis of control and as to each parent, the period for which it could be considered a \u201cparent,\u201d the basis of its control during such period and the percentage of voting securities owned or other basis of control by its immediate parent, if any.",
+   "prose_after": "Policy on Related Person Transactions\nThe Company recognizes that transactions between the Company or its subsidiaries and any of its directors or executive officers can present potential or actual conflicts of interest. Accordingly, as a general matter, it is the Company\u2019s preference to avoid such transactions. Nevertheless, the Company recognizes that there are circumstances where such transactions may be in, or not inconsistent with, the best interest of the Company. Therefore, it is the Company\u2019s policy that the Company\u2019s Audit Committee review, and if appropriate, approve or ratify any such transactions.\nItem 14. Principal Accountant Fees and Services\nThe following table presents fees billed for professional audit services rendered by BDO USA, LLP (\u201cBDO\u201d), the Company\u2019s current principal accounting firm, for the audit of the Company\u2019s annual financial statements for 2010 and 2011, review of the quarterly financial statements for 2010 and 2011. There were no fees billed for other services in 2010 and 2011.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1860,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1888,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2010",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Audit fees",
+     "",
+     "244,000",
+     "",
+     "235,000"
+    ],
+    [
+     "Audit-related fees (1)",
+     "",
+     "55,000",
+     "",
+     "55,000"
+    ],
+    [
+     "Total",
+     "",
+     "299,000",
+     "",
+     "290,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Policy on Related Person Transactions\nThe Company recognizes that transactions between the Company or its subsidiaries and any of its directors or executive officers can present potential or actual conflicts of interest. Accordingly, as a general matter, it is the Company\u2019s preference to avoid such transactions. Nevertheless, the Company recognizes that there are circumstances where such transactions may be in, or not inconsistent with, the best interest of the Company. Therefore, it is the Company\u2019s policy that the Company\u2019s Audit Committee review, and if appropriate, approve or ratify any such transactions.\nItem 14. Principal Accountant Fees and Services\nThe following table presents fees billed for professional audit services rendered by BDO USA, LLP (\u201cBDO\u201d), the Company\u2019s current principal accounting firm, for the audit of the Company\u2019s annual financial statements for 2010 and 2011, review of the quarterly financial statements for 2010 and 2011. There were no fees billed for other services in 2010 and 2011.",
+   "prose_after": "(1) The 2010 billings relate to the 2009 audit of the employee benefit plan and various consulting services. The 2011 billings relate to the 2010 audit of the employee benefit plan and various consulting services.\nIn accordance with existing Audit Committee policy and the requirements of the Sarbanes-Oxley Act, all services to be provided by BDO are subject to pre-approval by the Audit Committee. This includes audit services, audit-related services, tax services and other services. In some cases, pre-approval is provided by the full Audit Committee for up to a year, and relates to a particular category or group of services and is subject to a specific budget. Until his resignation on March 23, 2011, the Audit Committee had delegated authority to Mr. Edward A. Grant to pre-approve additional services, which then was to be communicated to the full Audit Committee. Effective March 24, 2011, Bradley J. Hoecker became the individual delegated to pre-approve additional services, with the responsibility of then communicating his decision to the full Audit Committee. All of the fees listed above have been approved by the Audit Committee.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1930,
+     "token": "PAGE_BREAK",
+     "id": 123,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MERISEL, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:  March 30, 2012",
+     "By:",
+     "/s/ Donald R. Uzzi",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Donald R. Uzzi",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Title: Chairman, Chief Executive Officer and President",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "MERISEL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1937,
+    "end_line": 1945
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u00b7 Report of Independent Registered Public Accounting Firm.\n\u00b7 Consolidated Balance Sheets at December 31, 2010 and 2011.\n\u00b7 Consolidated Statements of Operations for each of the three years in the period ended December 31, 2011.\n\u00b7 Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit) for each of the three years in the period ended December 31, 2011.\n\u00b7 Consolidated Statements of Cash Flows for each of the three years in the period ended December 31, 2011.\n\u00b7 Notes to Consolidated Financial Statements.\n2. Exhibits:\nThe exhibits listed on the accompanying Index of Exhibits are filed as part of this report.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Index of Exhibits",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1932,
+     "token": "PAGE_BREAK",
+     "id": 124,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1945,
+     "token": "PAGE_BREAK",
+     "id": 125,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description",
+     "Method of Filing"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation of Merisel, Inc., as amended.",
+     "Filed as Exhibit 3.1 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2005. **"
+    ],
+    [
+     "3.2",
+     "Bylaws of Merisel, Inc., as amended.",
+     "Filed as Exhibit 3.2 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2005. **"
+    ],
+    [
+     "4.1",
+     "Certificate of Designation of Convertible Preferred Stock of Merisel, Inc., dated June 9, 2000.",
+     "Filed as Exhibit 99.2 to the Company\u2019s Current Report on Form 8-K dated June 9, 2000. **"
+    ],
+    [
+     "4.2",
+     "Certificate of Designation of Series A Preferred Stock, dated February 4, 2011.",
+     "Filed as Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 7, 2011. **"
+    ],
+    [
+     "*10.1",
+     "Merisel, Inc. 1997 Stock Award and Incentive Plan.",
+     "Filed as Annex II to the Company\u2019s Schedule 14A dated October 6, 1997. **"
+    ],
+    [
+     "*10.2",
+     "Form of Nonqualified Stock Option Agreement under the Merisel, Inc. 1997 Stock Award and Incentive Plan.",
+     "Filed as Exhibit 10.7 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 1997. **"
+    ],
+    [
+     "*10.3",
+     "Employment Agreement dated November 22, 2004 between Merisel, Inc. and Donald R. Uzzi.",
+     "Filed as Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on November 24, 2004. **"
+    ],
+    [
+     "*10.4",
+     "Amendment to Employment Agreement dated November 22, 2004 between Merisel, Inc. and Donald R. Uzzi.",
+     "Filed as Exhibit 10.1 to the Company\u2019s current report on Form 8-K filed with the SEC on March 9, 2006.**"
+    ],
+    [
+     "*10.5",
+     "Form of Indemnity Agreement entered into between Merisel, Inc. and each of its Directors and certain Officers.",
+     "Filed as Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on March 9, 2006.**"
+    ],
+    [
+     "*10.6",
+     "1997 Merisel Inc. Stock Award and Incentive Plan Form of Restricted Stock Agreement for Executives and Key Employees.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 19, 2006. **"
+    ],
+    [
+     "*10.7",
+     "Amendment to 1997 Merisel Inc. Stock Award and Incentive Plan Form of Restricted Stock Agreement for Directors.",
+     "Filed as Exhibit 10.50 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2007. **"
+    ],
+    [
+     "*10.8",
+     "Amendment No. 2 to Employment Agreement, dated January 18, 2009, between Merisel, Inc. and Donald R. Uzzi.",
+     "Filed as Exhibit 10.51 to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2007. **"
+    ],
+    [
+     "*10.9",
+     "Merisel, Inc. 2008 Stock Award and Incentive Plan.",
+     "Filed as Annex A to the Company\u2019s Schedule 14A dated November 7, 2008. **"
+    ],
+    [
+     "*10.10",
+     "Employment Agreement dated May 6, 2009 by and between Merisel, Inc. and Victor L. Cisario.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on June 12, 2009.**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1950,
+    "end_line": 1981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Index of Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1947,
+     "token": "PAGE_BREAK",
+     "id": 126,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1981,
+     "token": "PAGE_BREAK",
+     "id": 127,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*10.11",
+     "Amendment #3 to Employment Agreement, dated June 29, 2009 by and between Merisel, Inc. and Donald R. Uzzi.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on September 30, 2009.**"
+    ],
+    [
+     "10.12",
+     "Revolving Credit and Security Agreement dated as of August 13, 2010 by and among Merisel, Inc., Merisel Americas, Inc., Color Edge LLC, Color Edge Visual LLC, Comp 24 LLC, Crush Creative LLC, Dennis Curtin Studios, LLC, MADP, LLC, Advertising Props, Inc., Fuel Digital, LLC, and PNC Bank, National Association.",
+     "Filed as Exhibit 10.20 to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended June 30, 2010. **"
+    ],
+    [
+     "10.13",
+     "Pledge Agreement dated as of August 13, 2010 by and between and PNC Bank, National Association.",
+     "Filed as Exhibit 10.21 to the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended June 30, 2010. **"
+    ],
+    [
+     "*10.14",
+     "Employment Agreement, dated as of December 17, 2010, by and between Merisel, Inc. and Michael A. Berman.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 23, 2010. **"
+    ],
+    [
+     "*10.15",
+     "Amendment #4 to Employment Agreement, dated as of December 22, 2010, by and between Merisel, Inc. and Donald R. Uzzi.",
+     "Filed as Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 23, 2010. **"
+    ],
+    [
+     "*10.16",
+     "Amendment to Employment Agreement, dated as of December 22, 2010, by and between Merisel, Inc. and Victor L. Cisario.",
+     "Filed as Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 23, 2010.  **"
+    ],
+    [
+     "10.17",
+     "Redemption Agreement, between Merisel, Inc. and Phoenix Acquisition Company II, L.L.C., dated as of January 19, 2011.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 19, 2011. **"
+    ],
+    [
+     "10.18",
+     "Consent, Waiver and Amendment No. 1 to Revolving Credit and Security Agreement, between Merisel, Inc. and each of its subsidiaries as Borrowers and PNC Bank, National Association, as Lender, dated February 3, 2011.",
+     "Filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 7, 2011. **"
+    ],
+    [
+     "10.19",
+     "Registration Rights Agreement, between Merisel, Inc. and Phoenix Acquisition Company II, L.L.C., dated February 4, 2011.",
+     "Filed as Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 7, 2011. **"
+    ],
+    [
+     "10.20",
+     "Amendment No. 2 to Stock and Note Purchase Agreement, dated February 4, 2011.",
+     "Filed as Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 7, 2011. **"
+    ],
+    [
+     "10.21",
+     "Lease Agreement, dated June 20, 2011, between SPI 190 JONY, LLC, as landlord, and Merisel Americas, Inc., as tenant, for the premises located at 190 Jony Drive, Carlstadt, New Jersey.",
+     "Filed herewith."
+    ],
+    [
+     "10.22",
+     "Agreement of Lease, dated March 28, 2012, between 132 West 31st Street Building Investors II, LLC, as landlord, and Merisel, Inc., as tenant, for the 8th floor located at 132 West 31st Street, New York, NY (aka 127 West 30th Street).",
+     "Filed herewith."
+    ],
+    [
+     "10.23",
+     "Termination Letters, dated March 28, 2012, between 132 West 31st Street Building Investors II, LLC, as landlord, and Merisel, Inc., as tenant.",
+     "Filed herewith."
+    ],
+    [
+     "14.1",
+     "Code of Business Conduct.",
+     "Filed as exhibit 99.2 to the Company\u2019s\n\nAnnual Report on Form 10-K for the year\n\nended December 31, 2002.**"
+    ],
+    [
+     "21",
+     "Subsidiaries of the Registrant",
+     "Filed herewith."
+    ],
+    [
+     "23",
+     "Consent of Independent Registered Public Accounting Firm",
+     "Filed herewith."
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "Filed herewith."
+    ],
+    [
+     "31.2",
+     "Certification of the Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "Filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1984,
+    "end_line": 2028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 128,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 2028,
+     "token": "PAGE_BREAK",
+     "id": 129,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "32",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350.",
+     "Filed herewith."
+    ],
+    [
+     "99.1",
+     "Press Release dated March 30, 2012",
+     "Filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2031,
+    "end_line": 2035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2030,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS***",
+     "XBRL Instance",
+     "Filed herewith"
+    ],
+    [
+     "101.SCH***",
+     "XBRL Taxonomy Extension Schema",
+     "Filed herewith"
+    ],
+    [
+     "101.CAL***",
+     "XBRL Taxonomy Extension Calculation",
+     "Filed herewith"
+    ],
+    [
+     "101.DEF***",
+     "XBRL Taxonomy Extension Definition",
+     "Filed herewith"
+    ],
+    [
+     "101.LAB***",
+     "XBRL Taxonomy Extension Labels",
+     "Filed herewith"
+    ],
+    [
+     "101.PRE***",
+     "XBRL Taxonomy Extension Presentation",
+     "Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2036,
+    "end_line": 2044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Management contract or executive compensation plan or arrangement.\n** Incorporated by reference.\n*** XBRL information is furnished and not filed or a part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2030,
+     "token": "PAGE_BREAK",
+     "id": 130,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 131,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

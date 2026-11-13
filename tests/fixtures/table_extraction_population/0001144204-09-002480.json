@@ -1,0 +1,2425 @@
+{
+ "accession": "0001144204-09-002480",
+ "cik": "0000064647",
+ "form": "10-Q",
+ "filing_date": "2009-01-20",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v137323_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New Jersey",
+     "22-1937826"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "incorporation or organization",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES ACT OF 1934\nFor the quarterly period ended November 30, 2008\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number 000-07405\nMEDISCIENCE TECHNOLOGY CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "77 Ridgeland Road",
+     ""
+    ],
+    [
+     "Henrietta, New York",
+     "14623"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "77 Ridgeland Road"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(585) 413-9080\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such short period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, and accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                    Accelerated filer [ ]\nNon-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-c of the Act).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "PART 1.",
+     "Financial Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheet as of November 30, 2008 (Unaudited) and February 29, 2008 (Audited)",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Operations for the Nine and Three Months Ended November 30, 2008 (Unaudited) and November 30, 2007 (Unaudited)",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Changes in Stockholders\u2019 Deficit for the Nine Months Ended November 30, 2008 (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Cash Flows for the Nine Months Ended November 30, 2008 (Unaudited) and November 30, 2007 (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "5-12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis",
+     "13-14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4T.",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART 11.",
+     "Other Information",
+     "16-17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit Index",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibits",
+     "20-22"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 108
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, and accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                    Accelerated filer [ ]\nNon-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-c of the Act).\nYes [ ] No [X]\nAs of January 15, 2009, there were outstanding 70,932,406 shares of the registrant\u2019s common stock, $.01 par value.\nNOVEMBER 30, 2008\nINDEX",
+   "prose_after": "CONSOLIDATED BALANCE SHEET",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 108,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "November 30,\n\n2008\n\n(Unaudited)",
+     "",
+     "",
+     "February 29,\n\n2008\n\n(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents",
+     "$",
+     "113,506",
+     "",
+     "$",
+     "123,582",
+     ""
+    ],
+    [
+     "Prepaid Expenses and Other Current Assets",
+     "",
+     "23,734",
+     "",
+     "",
+     "60,943",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "137,240",
+     "",
+     "",
+     "184,525",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY PLANT AND EQUIPMENT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net of Accumulated Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "345",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS - Security Deposit",
+     "",
+     "1,800",
+     "",
+     "",
+     "1,800",
+     ""
+    ],
+    [
+     "- Deferred Costs",
+     "",
+     "138,252",
+     "",
+     "",
+     "279,189",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "277,292",
+     "",
+     "$",
+     "465,859",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Debt, Net of Discount of $254,365 and $268,970",
+     "$",
+     "1,402,135",
+     "",
+     "$",
+     "849,030",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "",
+     "72,066",
+     "",
+     "",
+     "128,647",
+     ""
+    ],
+    [
+     "Accrued Liabilities",
+     "",
+     "4,052,033",
+     "",
+     "",
+     "3,798,221",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "5,526,234",
+     "",
+     "",
+     "4,775,898",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred Stock, $.01 Par Value, 50,000 Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized; Issued and Outstanding -0- Shares November 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2008; -0- Shares February 29, 2008",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common Stock $.01Par Value, Authorized 199,950,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares; Issued and Outstanding Shares - 70,932,406 Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "November 30, 2008; 67,250,989 Shares - February 29, 2008",
+     "",
+     "709,324",
+     "",
+     "",
+     "672,510",
+     ""
+    ],
+    [
+     "Additonal Paid-in Capital",
+     "",
+     "27,116,504",
+     "",
+     "",
+     "26,394,562",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(33,074,770)",
+     "",
+     "",
+     "(31,377,111)",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(5,248,942)",
+     "",
+     "",
+     "(4,130,039)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "$",
+     "277,292",
+     "",
+     "$",
+     "465,859",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 164
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEET",
+   "prose_after": "See Notes to Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF OPERATIONS\nFOR THE NINE AND THREE MONTHS ENDED NOVEMBER 30, 2008 AND 2007\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 108,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "NINE MONTHS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "THREE MONTHS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "General and Administrative Expense",
+     "",
+     "870,700",
+     "",
+     "",
+     "908,286",
+     "",
+     "",
+     "434,249",
+     "",
+     "",
+     "300,823",
+     ""
+    ],
+    [
+     "Product Development Expense",
+     "",
+     "136,999",
+     "",
+     "",
+     "626,179",
+     "",
+     "",
+     "47,242",
+     "",
+     "",
+     "278,342",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "1,007,699",
+     "",
+     "",
+     "1,534,465",
+     "",
+     "",
+     "481,491",
+     "",
+     "",
+     "579,165",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "4,203",
+     "",
+     "",
+     "8,555",
+     "",
+     "",
+     "951",
+     "",
+     "",
+     "3,264",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(141,058)",
+     "",
+     "",
+     "(57,312)",
+     "",
+     "",
+     "(50,573)",
+     "",
+     "",
+     "(29,919)",
+     ""
+    ],
+    [
+     "Accretion of Interest on Convertible Debt",
+     "",
+     "(553,105)",
+     "",
+     "",
+     "(550,371)",
+     "",
+     "",
+     "(170,199)",
+     "",
+     "",
+     "(298,659)",
+     ""
+    ],
+    [
+     "Total Other Income and Expense",
+     "",
+     "(689,960)",
+     "",
+     "",
+     "(599,128)",
+     "",
+     "",
+     "(219,821)",
+     "",
+     "",
+     "(325,314)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,697,659)",
+     "",
+     "$",
+     "(2,133,593)",
+     "",
+     "$",
+     "(701,312)",
+     "",
+     "$",
+     "(904,479)",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss Per Common Share",
+     "$",
+     "(0.025)",
+     "",
+     "$",
+     "(0.032)",
+     "",
+     "$",
+     "(0.010)",
+     "",
+     "$",
+     "(0.014)",
+     ""
+    ],
+    [
+     "Weighted Average Common Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding",
+     "",
+     "67,660,035",
+     "",
+     "",
+     "65,499,607",
+     "",
+     "",
+     "68,478,128",
+     "",
+     "",
+     "66,064,274",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 204
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See Notes to Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF OPERATIONS\nFOR THE NINE AND THREE MONTHS ENDED NOVEMBER 30, 2008 AND 2007\n(UNAUDITED)",
+   "prose_after": "See Notes to Consolidated Financial Statements.\nMEDISCIENCE TECHNOLOGY CORP. AND SUBSIDIARIES\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE NINE MONTHS ENDED NOVEMBER 30, 2008\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 206,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Additional     \n\nPaid-In Capital",
+     "",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, FEBRUARY 29, 2008",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "67,250,989",
+     "$",
+     "672,510",
+     "$",
+     "26,394,562",
+     "",
+     "$",
+     "(31,377,111)",
+     ""
+    ],
+    [
+     "Discount on Debt Due to Beneficial Conversion Option",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "538,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Stock Anti-Dilution Rights",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "534,907",
+     "",
+     "5,349",
+     "",
+     "(5,349)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Stock for Services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,146,510",
+     "",
+     "31,465",
+     "",
+     "188,791",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,697,659)",
+     ""
+    ],
+    [
+     "BALANCE, NOVEMBER 30, 2008",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "70,932,406",
+     "$",
+     "709,324",
+     "$",
+     "27,116,504",
+     "",
+     "$",
+     "(33,074,770)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 217,
+    "end_line": 233
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See Notes to Consolidated Financial Statements.\nMEDISCIENCE TECHNOLOGY CORP. AND SUBSIDIARIES\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE NINE MONTHS ENDED NOVEMBER 30, 2008\n(UNAUDITED)",
+   "prose_after": "See Notes to Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS\nFOR THE NINE MONTHS ENDED NOVEMBER 30, 2008 AND 2007\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 208,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 235,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Loss to Net Cash Used In",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,697,659)",
+     "",
+     "$",
+     "(2,133,593)",
+     ""
+    ],
+    [
+     "Accretion of Interest on Convertible Debt",
+     "",
+     "553,105",
+     "",
+     "",
+     "550,371",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "345",
+     "",
+     "",
+     "708",
+     ""
+    ],
+    [
+     "Common Stock Issued for Services",
+     "",
+     "220,256",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of Prepaid Financing Charges",
+     "",
+     "-",
+     "",
+     "",
+     "45,317",
+     ""
+    ],
+    [
+     "Amortization of Deferred Costs",
+     "",
+     "140,937",
+     "",
+     "",
+     "406,656",
+     ""
+    ],
+    [
+     "Subtotal",
+     "",
+     "(783,016)",
+     "",
+     "",
+     "(1,130,541)",
+     ""
+    ],
+    [
+     "Changes in Assets and Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in Prepaid Expense and Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "37,209",
+     "",
+     "",
+     "34,971",
+     ""
+    ],
+    [
+     "(Decrease) Increase in Accounts Payable",
+     "",
+     "(56,581)",
+     "",
+     "",
+     "20,336",
+     ""
+    ],
+    [
+     "Increase in Accrued Liabilities",
+     "",
+     "253,812",
+     "",
+     "",
+     "97,106",
+     ""
+    ],
+    [
+     "Net Cash Used for Operating Activities",
+     "",
+     "(548,576)",
+     "",
+     "",
+     "(978,128)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Issuance of Common Stock",
+     "",
+     "-",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Proceeds from Issuance of Convertible Debt",
+     "",
+     "538,500",
+     "",
+     "",
+     "925,000",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "538,500",
+     "",
+     "",
+     "1,025,000",
+     ""
+    ],
+    [
+     "INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS",
+     "",
+     "(10,076)",
+     "",
+     "",
+     "46,872",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning Balance",
+     "",
+     "123,582",
+     "",
+     "",
+     "138,508",
+     ""
+    ],
+    [
+     "Ending Balance",
+     "$",
+     "113,506",
+     "",
+     "$",
+     "185,380",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL SCHEDULE OF NON-CASH FINANCING",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock Issued for Future Services",
+     "$",
+     "-",
+     "",
+     "$",
+     "60,000",
+     ""
+    ],
+    [
+     "Common Stock Issued for Anti-Diluting Rights",
+     "$",
+     "5,349",
+     "",
+     "$",
+     "3,360",
+     ""
+    ],
+    [
+     "Discount on Debt Due to Beneficial Conversion Option",
+     "$",
+     "538,500",
+     "",
+     "$",
+     "925,000",
+     ""
+    ],
+    [
+     "Warrants Issued for Prepaid Financing Charges",
+     "$",
+     "-",
+     "",
+     "$",
+     "91,650",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 290
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "See Notes to Consolidated Financial Statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS\nFOR THE NINE MONTHS ENDED NOVEMBER 30, 2008 AND 2007\n(UNAUDITED)",
+   "prose_after": "See Notes to Consolidated Financial Statements.\nNotes to Consolidated Financial Statements\n(Unaudited)\n1. Management Plans and Going Concern Matters\nMediscience Technology Corp. and Subsidiaries (the \u201cCompany\u201d) has no revenues, incurred significant losses from operations, has an accumulated deficit and a highly leveraged position that raises substantial doubt about the Company\u2019s ability to continue as a going concern. The consolidated financial statements do not include any adjustments relating to recoverability and classification of recorded asset amounts or the amount and classification of liabilities that might be necessary should the Company be unable to continue as a going concern. The Company expects to incur substantial expenditures to further the development and commercialization of its products. The Company intends to seek additional financing through private placements or other financing alternatives, and may also seek to sell the Company or its technology. There can be no assurance that continued financings will be available to the Company or that, if available, the amounts will be sufficient or that the terms will be acceptable to the Company.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Three Months Ending",
+     "February 28, 2009",
+     "$",
+     "37,705"
+    ],
+    [
+     "Year Ending",
+     "February 28, 2010",
+     "",
+     "100,547"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 355,
+    "end_line": 359
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Deferred Costs"
+    }
+   },
+   "prose_before": "In June 2008, the FASB issued FSP EITF 03-6-1, Determining Whether Instruments Granted in Share-Based Payment Transactions are Participating Securities. This FSP provides that unvested share-based payment awards that contain nonforfeitable rights to dividends or dividend equivalents (whether paid or unpaid) are participating securities and shall be included in the computation of earnings per share pursuant to the two-class method. The Company does not currently have any share-based awards that would qualify as participating securities. Therefore, application of this FSP is not expected to have an effect on the Company\u2019s financial reporting.\nIn May 2008, the FASB issued FASB Staff Position (FSP) APB 14-1, Accounting for Convertible Debt That May Be Settled in Cash Upon Conversion (Including Partial Cash Settlement) (\u201cFSP 14-1\u201d). FSP 14-1 will be effective for financial statements issued for fiscal years beginning after December 15, 2008. The FSP includes guidance that convertible debt instruments that may be settled in cash upon conversion should be separated between the liability and equity components, with each component being accounted for in a manner that will reflect the entity\u2019s nonconvertible debt borrowing rate when interest costs are recognized in subsequent periods. However, because our existing convertible debt instruments are settled only in stock upon maturity, this guidance will not apply, and as a result will not have an impact on the financial statements.\n4. Deferred Costs\nExpected future amortization of all deferred costs is as follows:",
+   "prose_after": "5. Convertible Debt\nOn January 10, 2007, the Company commenced a Private Placement Offering for $2,000,000 of 12% convertible promissory notes (the \u201cNotes\u201d) in amounts of not less than $25,000. The Notes shall be due and payable, together with accrued and unpaid interest, on the earlier of April 15, 2008 for the first $1,000,000 tranche and April 15, 2009 for the second $1,000,000 tranche (of which $656,500 has been raised as of November 30, 2008) or three months after the completion of a secondary offering of the shares of BioScopix. Holders of the Notes may convert the note into (i) cash in the amount of the principal and accrued and unpaid interest due and a warrant exercisable until April 15, 2009 to purchase shares of BioScopix in an amount equal to 50% of the principal of the Notes at an exercise price of 120% of the five day volume weighted average preceding the effective date of a secondary offering of BioScopix or (ii) shares of BioScopix at a price equal to 50% of the secondary offering price of the BioScopix shares of common stock in an amount equal to the principal and accrued and unpaid interest due on the Notes. In accordance with EITF 00-27 under option (ii), the carrying value of the Notes was reduced by the intrinsic value of the beneficial conversion option resulting in a carrying value of $0. On January 29, 2008, the Notes were modified to provide for two additional options. In addition to options (i) and (ii), holders of the Notes may now also convert the notes into (iii) BioScopix stock with a NINE month lockup in the amount of principal and accrued interest and receive 50% warrant coverage at 75% of the BioScopix stock secondary offering price and (iv) combination of alternatives (ii) and (iii). The additional options did not require an adjustment to the value of the Notes. As of November 30, 2008 and February 29, 2008, $1,656,500 and $1,118,000 of the Notes have been issued with related discounts of $1,656,500 and $1,118,000, respectively. The Notes will be accreted to their maturity value over the term of the Notes. Accretion of discount on convertible debt amounted to $553,105 and $170,199 for the nine and three months ended November 30, 2008 and $550,371 and $298,659 for the nine and three months ended November 30, 2007.",
+   "structured_location": {
+    "item": null,
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 350,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "November 30, 2008",
+     "",
+     "February 29, 2008",
+     ""
+    ],
+    [
+     "Legal and Professional Fees",
+     "$",
+     "160,326",
+     "$",
+     "228,382"
+    ],
+    [
+     "Consulting and University Fees",
+     "",
+     "1,440,615",
+     "",
+     "1,440,615"
+    ],
+    [
+     "Salaries and Wages",
+     "",
+     "2,132,557",
+     "",
+     "1,949,758"
+    ],
+    [
+     "Accrued Interest",
+     "",
+     "226,300",
+     "",
+     "87,231"
+    ],
+    [
+     "Other",
+     "",
+     "92,235",
+     "",
+     "92,235"
+    ],
+    [
+     "Total",
+     "$",
+     "4,052,033",
+     "$",
+     "3,798,221"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 380,
+    "end_line": 392
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "Effective April 15, 2008, the first $1,000,000 tranche of the Notes were in default. Under the terms of the Notes, in the event of default, the entire principal and unpaid accrued interest is immediately due and payable. The January 29, 2008 modification of the Notes provided two additional options to the Note holders as compensation for the delay of the secondary offering which is expected to take place prior to April 15, 2009. As of January 10, 2009, there have been no demands for repayment by the Note holders.\n6. Related Party Transactions\nLegal services rendered by Mr. Katevatis, Chairman amounted to $38,139 for the nine months ended November 30, 2008 and $37,500 for the nine months ended November 30, 2007. These amounts are recorded in general and administrative expense.\nAs part of Mr. Katevatis\u2019 employment agreement, the Company pays property taxes and certain operating expenses on the home of Mr. Katevatis in lieu of rent, since the Company\u2019s operations are located in Mr. Katevatis\u2019 home. Expenses recognized were $17,294 and $15,306 for the nine months ended November 30, 2008 and 2007, respectively.\n7. Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "prose_after": "Included in legal and professional fees as of November 30, 2008 and February 29, 2008 is $36,901 and $75,958 respectively, for legal services rendered by Mr. Katevatis (Note 6).\nIncluded in Consulting and University Fees as of November 30, 2008 and February 29, 2008 is $1,397,019 and $1,397,019, respectively, owed to Dr. Alfano, a principal stockholder with respect to his expired consulting agreement.\nIncluded in salaries and wages as of November 30, 2008 and February 29, 2008 is $2,110,286 and $1,938,758 respectively, owed to Mr. Katevatis, Chairman of the Board, with respect to his employment agreement.\nIncluded in salaries and wages as of November 30, 2008 and February 29, 2008 is $4,000 and $11,000, respectively, owed to Mr. Benick, Chief Financial Officer, with respect to his employment agreement.\nIncluded in salaries and wages as of November 30, 2008 is $9,135 owed to Mr. Kamal K. Sarbadhikari, incoming Chief Executive Officer, with respect to his employment agreement.\nIncluded in salaries and wages as of November 30, 2008 is $9,135 owed to Mr. Jose Mir, incoming Chief Technology Officer, with respect to his employment agreement.",
+   "structured_location": {
+    "item": null,
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 375,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Price Range",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding, February 29, 2008",
+     "",
+     "300,000",
+     "$",
+     "1.00",
+     "$",
+     "1.00"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, November 30, 2008",
+     "",
+     "300,000",
+     "$",
+     "1.00",
+     "$",
+     "1.00"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 435,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock Options and Warrants"
+    }
+   },
+   "prose_before": "During March 2006, the company issued 500,000 restricted shares of its common stock with a value of $80,000 to a consulting company in exchange for services to be rendered over a period of approximately three years. The transaction was recognized based on the fair value of the shares issued. These services will consist of ongoing consultation in the construction of eight CD-Ratiometer units. During the quarter ended August 31, 2007, the consulting agreement with Alfanix was cancelled. The Company has requested the return of the 500,000 shares of common stock of Mediscience. Mediscience will then return the 10,000 shares of common stock to Alfanix. All unamortized costs associated with the above transaction have been expensed in the quarter ended August 31, 2007. The Company has placed a stop order and requested the 500,000 shares be returned by Dr. Alfano for cancellation.\nDuring May 2007, the Company issued 600,000 restricted shares of its common stock with a value of $60,000 to a medical consultant in exchange for services to be rendered over a period of one year. These services will consist of development and commercialization. The transaction was recognized based on the fair value of shares issued.\nCommon Stock Issued for Services\nDuring November 2008, the Company issued 3,146,510 restricted shares of its common stock with a value of $220,256 to a group of financial consultants in exchange for professional services and funding raising efforts, as per their agreement. The transaction was recognized based on the fair market value of the shares issued (the closing price of the Company\u2019s common stock on the date of issuance).\n9. Stock Options and Warrants\nStock Options\nActivity related to stock options during the nine months ended November 30, 2008 is as follows:",
+   "prose_after": "Stock Warrants\nActivity related to stock warrants during the nine months ended November 30, 2008 is as follows:",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Exercise",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "Available",
+     "",
+     "Price Range",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding, February 29, 2008",
+     "",
+     "3,999,332",
+     "$",
+     "0.10 - $ 3.00",
+     "$",
+     "0.90"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, November 30, 2008",
+     "",
+     "3,999,332",
+     "$",
+     "0.10 - $ 3.00",
+     "$",
+     "0.90"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 455,
+    "end_line": 468
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock Options and Warrants"
+    }
+   },
+   "prose_before": "Stock Warrants\nActivity related to stock warrants during the nine months ended November 30, 2008 is as follows:",
+   "prose_after": "10. Income Taxes\nThere is no income tax benefit for the losses for the nine months ended November 30, 2008 and November 30, 2007 because the Company has determined that the realization of the net deferred tax asset is not assured. The Company has created a valuation allowance for the entire amount of such. There was no change in unrecognized tax benefits during the period ended November 30, 2008 and there was no accrual for uncertain tax positions as of November 30, 2008.\n11. Significant and Subsequent Event\nOn November 5, 2008, Mediscience Technology Corp., a New Jersey corporation (\u201cMediscience\u201d) entered into an agreement and plan of reorganization (the \u201cMerger Agreement\u201d) with SensiVida Acquisition Corp., a Delaware corporation and wholly-owned subsidiary of Mediscience (\u201cMerger Sub\u201d), and SensiVida Medical Systems, Inc., a Delaware corporation (\u201cSensiVida\u201d), pursuant to which Merger Sub will be merged into SensiVida (the \u201cMerger\u201d). After completion of the Merger, it is anticipated that SensiVida will be merged with and into Mediscience with the name of the surviving corporation being SensiVida Technologies, Inc.",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00d8",
+     "Determining accruals and contingencies;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 537,
+    "end_line": 540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Managements Discussion and Analysis of Financial Condition and Results of Operation"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "Our ability to continue our operations is largely dependent upon obtaining regulatory approval for the commercialization of our cancer detection technology. There can be no assurance as to whether or when the various requisite government approvals will be obtained or the terms or scope of these approvals, if granted. We intend to defray the costs of obtaining regulatory approval for the commercialization of such technology by the establishment of clinical trial arrangements with medical institutions. We intend to continue to pursue the establishment of co-promotional arrangements for the marketing, distribution and commercial exploitation of its cancer detection technology. Such arrangements, if established, may include up-front payments, sharing of sales revenues after deduction of certain expenses, and/or product development funding. Our management anticipates that substantial resources will be committed to a continuation of our research and development efforts and to finance government regulatory applications. While management believes that we will obtain sufficient funds to satisfy our liquidity and capital resources needs for the short term from the private placement of our securities and short term borrowings, no assurances can be given that additional funding or capital from other sources, such as co-promotion arrangements, will be obtained on a satisfactory basis, if at all. In the absence of the availability of financing on a timely basis, we may be forced to materially curtail or cease our operations. Our operating and capital requirements, as described above, may change depending upon several factors, including: (i) results of research and development activities; (ii) competitive and technological developments; (iii) the timing and cost of obtaining required regulatory approvals for our products; (iv) the amount of resources which we devote to clinical evaluation and the establishment of marketing and sales capabilities; and (v) our success in entering into, and cash flows derived from, co-promotion arrangements.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that is material to investors.\nCritical Accounting Policies\nThe preparation of financial statements requires management to make estimates and assumptions that affect amounts reported herein. The most significant of these involve the use of estimates. In each situation, management is required to make estimates about the effects of matters or future events that are inherently uncertain.\nThe financial statements are prepared in conformity with accounting principles generally accepted in the United States of America, and, as such, include amounts based on informed estimates and judgments of management, such as:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00d8",
+     "Valuing options and other equity instruments;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 541,
+    "end_line": 544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Managements Discussion and Analysis of Financial Condition and Results of Operation"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00d8",
+     "Reviewing the realization/recoverability of deferred costs resulting from the issuance of common stock to acquire certain consulting services to be rendered in future periods."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Managements Discussion and Analysis of Financial Condition and Results of Operation"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u00d8",
+     "Deferred tax valuation allowance."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 552
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Managements Discussion and Analysis of Financial Condition and Results of Operation"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company used what it believes are reasonable assumptions where applicable, established valuation techniques in making its estimates. Actual results could differ from those estimates.\nItem 3. Quantitative and Qualitative Disclosures About Market Risk\nNot Applicable\nItem 4T. Controls and Procedures\n(a) Evaluation of Disclosure Controls and Procedures\nAs of January 14, 2009, our board of directors carried out an evaluation of the effectiveness of the design and operation of our \u201cdisclosure controls and procedures\u201d (as defined in Rules 13a-15(e) and 15d-15(e) of the Securities exchange Act of 1934, as amended (the Exchange Act\u201d)) under the supervision and with the participation of our management, including Peter Katevatis, Chairman. Based upon that evaluation, Mr. Peter Katevatis concluded that our disclosure controls and procedures are not effective based on material weaknesses identified by management as described in Management\u2019s Report on Internal Control over Financial Reporting set forth in Item 9A of our Annual Report on Form 10-K for the period ended February 29, 2008.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "During November 2008, the company issued 3,146,510 restricted shares of its common stock with a value of $220,256 to a group of financial consultants in exchange for professional services and funding raising efforts as per their agreement.  The transaction was recognized based on the fair market value of the shares issued (the closing price of the Company\u2019s common stock on the date of issuance)."
+    ]
+   ],
+   "caption_stack": [
+    "During November 2008, the company issued 3,146,510 restricted shares of its common stock with a value of $220,256 to a group of financial consultants in exchange for professional services and funding raising efforts as per their agreement.  The transaction was recognized based on the fair market value of the shares issued (the closing price of the Company\u2019s common stock on the date of issuance)."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 589,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "Disclosure controls and procedures are controls and other procedures that are designed to ensure that information required to be disclosed in our reports filed or submitted under the Exchange Act are recorded, processed, summarized and reported, within the time periods specified in the Securities and Exchange Commission\u2019s (the \u201cSEC\u201d) rules and forms.\nDisclosure controls and procedures include, without limitation, controls and procedures designed to ensure that information required to be disclosed in our reports filed under the Exchange Act is accumulated and communicated to management to allow timely decisions regarding required disclosure.\n(b) Change in Internal Control over Financial Reporting\nNo change in our internal control over financial reporting occurred during our most recent fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nPART II - OTHER INFORMATION\nItem 1. Legal Proceedings\nNone\nItem 1A. Risk Factors\nNot Applicable\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+   "prose_after": "Item 3. Defaults Upon Senior Securities\nEffective April 15, 2008, the first $1,000,000 tranche of the Company\u2019s 12% convertible promissory notes (the \u201cNotes\u201d) were in default. Under the terms of the Notes, in the event of default, the entire principal and unpaid accrued interest is immediately due and payable. The January 29, 2008 modification of the Notes provided two additional options to the Note holders as compensation for the delay of the secondary offering which is expected to take place prior to April 15, 2009. As of January 10, 2009, there have been no demands for repayment by the Note holders.\nItem 4. Submission of Matters to a Vote of Security Holders\nNone\nItem 5. Other Information\nNone\nItem 6. Exhibits\n2.1 Agreement and Plan of Merger of BioScopix, Inc., a Delaware corporation, into MediScience Technology Corp., a New Jersey corporation, dated as of November 5, 2008.\n2.2 Agreement and Plan of Reorganization by and Among BioScopix, Inc., a New Jersey corporation (successor by merger to MediScience Technology Corp.), SensiVida Acquisition Corp., a Delaware corporation, and SensiVida Medical Systems, Inc., a Delaware corporation, dated as of November 5, 2008.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MEDISCIENCE TECHNOLOGY CORP."
+    ],
+    [
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "January 16, 2009",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Peter Katevatis"
+    ],
+    [
+     "",
+     "Peter Katevatis"
+    ],
+    [
+     "",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "January 16, 2009",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Frank D. Benick"
+    ],
+    [
+     "",
+     "Frank D. Benick, CPA, CVA"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "Principal Financial and Accounting Officer"
+    ]
+   ],
+   "caption_stack": [
+    "MEDISCIENCE TECHNOLOGY CORP.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Significant and Subsequent Event"
+    }
+   },
+   "prose_before": "2.1 Agreement and Plan of Merger of BioScopix, Inc., a Delaware corporation, into MediScience Technology Corp., a New Jersey corporation, dated as of November 5, 2008.\n2.2 Agreement and Plan of Reorganization by and Among BioScopix, Inc., a New Jersey corporation (successor by merger to MediScience Technology Corp.), SensiVida Acquisition Corp., a Delaware corporation, and SensiVida Medical Systems, Inc., a Delaware corporation, dated as of November 5, 2008.\n31.1 Certification of the Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a)\n31.2 Certification of the Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a)\n32 Certification of the Chief Executive Officer and Chief Financial Officer required by Rule 13a-14(b) or Rule 15d-14(b) and 18 U.S.C. 1350\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 622,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

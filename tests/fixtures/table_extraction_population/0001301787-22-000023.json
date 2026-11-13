@@ -1,0 +1,4539 @@
+{
+ "accession": "0001301787-22-000023",
+ "cik": "0001301787",
+ "form": "10-Q",
+ "filing_date": "2022-05-03",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bxc-20220402.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "77-0627356"
+    ],
+    [
+     "(State of Incorporation)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1950 Spectrum Circle, Suite 300",
+     "",
+     ""
+    ],
+    [
+     "Marietta",
+     "GA",
+     "30067"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended April 2, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 001-32383\nBlueLinx Holdings Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "(770) 953-7000\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name or former address, if changed since last report.)\nSecurities registered pursuant to Section 12(b) of the Act:\n<TABLE>\nTitle of each class            Trading Symbol(s)  Name of each exchange on which registered\nCommon Stock, par value $0.01 per share         BXC                  New York Stock Exchange\n</TABLE>\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Large Accelerated Filer",
+     "\u2610",
+     "Accelerated Filer",
+     "\u2611",
+     "Non-accelerated Filer",
+     "\u2610",
+     "Smaller Reporting Company",
+     "\u2610"
+    ],
+    [
+     "Emerging Growth Company",
+     "\u2610",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements \u2014 BlueLinx Holdings Inc. (Unaudited)",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations and Comprehensive Income",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Balance Sheets",
+     "2"
+    ],
+    [
+     "Condensed Consolidated Statements of Stockholders' Equity",
+     "3"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows",
+     "4"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     "5"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "27"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "28"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "28"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "29"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "29"
+    ],
+    [
+     "Item 5. Other Information",
+     "29"
+    ],
+    [
+     "Item 6. Exhibits",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signature",
+     "31"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 90
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge Accelerated Filer  [ ]  Accelerated Filer  [X]  Non-accelerated Filer  [ ]  Smaller Reporting Company  [ ]\nEmerging Growth Company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of April 29, 2022, there were 9,657,958 shares of BlueLinx Holdings Inc. common stock, par value $0.01, outstanding.\nForm 10-Q\nFor the Quarterly Period Ended April 2, 2022\nINDEX",
+   "prose_after": "i\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND\nCOMPREHENSIVE INCOME\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "1,302,305",
+     "$",
+     "1,025,469"
+    ],
+    [
+     "Cost of sales",
+     "1,011,254",
+     "",
+     "845,077",
+     ""
+    ],
+    [
+     "Gross profit",
+     "291,051",
+     "",
+     "180,392",
+     ""
+    ],
+    [
+     "Operating expenses (income):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative",
+     "91,289",
+     "",
+     "75,560",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "6,746",
+     "",
+     "7,465",
+     ""
+    ],
+    [
+     "Amortization of deferred gains on real estate",
+     "(984)",
+     "",
+     "(984)",
+     ""
+    ],
+    [
+     "Gains from sales of property",
+     "\u2014",
+     "",
+     "(1,287)",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "838",
+     "",
+     "112",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "97,889",
+     "",
+     "80,866",
+     ""
+    ],
+    [
+     "Operating income",
+     "193,162",
+     "",
+     "99,526",
+     ""
+    ],
+    [
+     "Non-operating expenses (income):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "11,293",
+     "",
+     "16,234",
+     ""
+    ],
+    [
+     "Other expense (income), net",
+     "1,138",
+     "",
+     "(314)",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "180,731",
+     "",
+     "83,606",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "47,322",
+     "",
+     "21,746",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "133,409",
+     "$",
+     "61,860"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per share",
+     "$",
+     "13.72",
+     "$",
+     "6.53"
+    ],
+    [
+     "Diluted income per share",
+     "$",
+     "13.19",
+     "$",
+     "6.28"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "133,409",
+     "$",
+     "61,860"
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of unrecognized pension gain, net of tax",
+     "156",
+     "",
+     "239",
+     ""
+    ],
+    [
+     "Other",
+     "20",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Total other comprehensive income",
+     "176",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "133,585",
+     "$",
+     "62,110"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS AND\nCOMPREHENSIVE INCOME\n(In thousands, except per share data)",
+   "prose_after": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 152,
+     "token": "REPEATING_FOOTER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "January 1, 2022",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "74,438",
+     "$",
+     "85,203"
+    ],
+    [
+     "Receivables, less allowances of $4,965 and $4,024, respectively",
+     "497,056",
+     "",
+     "339,637",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "562,555",
+     "",
+     "488,458",
+     ""
+    ],
+    [
+     "Other current assets",
+     "32,470",
+     "",
+     "31,869",
+     ""
+    ],
+    [
+     "Total current assets",
+     "1,166,519",
+     "",
+     "945,167",
+     ""
+    ],
+    [
+     "Property and equipment, at cost",
+     "319,732",
+     "",
+     "318,253",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(141,768)",
+     "",
+     "(137,099)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "177,964",
+     "",
+     "181,154",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "47,330",
+     "",
+     "49,568",
+     ""
+    ],
+    [
+     "Goodwill",
+     "47,772",
+     "",
+     "47,772",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "12,519",
+     "",
+     "13,603",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "62,279",
+     "",
+     "60,285",
+     ""
+    ],
+    [
+     "Other non-current assets",
+     "19,822",
+     "",
+     "19,905",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,534,205",
+     "$",
+     "1,317,454"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "230,072",
+     "$",
+     "180,000"
+    ],
+    [
+     "Accrued compensation",
+     "13,714",
+     "",
+     "22,363",
+     ""
+    ],
+    [
+     "Taxes payable",
+     "53,195",
+     "",
+     "6,138",
+     ""
+    ],
+    [
+     "Finance lease liabilities - short-term",
+     "7,264",
+     "",
+     "7,864",
+     ""
+    ],
+    [
+     "Operating lease liabilities - short-term",
+     "5,723",
+     "",
+     "5,145",
+     ""
+    ],
+    [
+     "Real estate deferred gains - short-term",
+     "3,935",
+     "",
+     "3,934",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "22,503",
+     "",
+     "18,347",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "336,406",
+     "",
+     "243,791",
+     ""
+    ],
+    [
+     "Non-current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of debt issuance costs of $4,565 and $4,701, respectively",
+     "291,534",
+     "",
+     "291,271",
+     ""
+    ],
+    [
+     "Finance lease liabilities - long-term",
+     "264,676",
+     "",
+     "266,853",
+     ""
+    ],
+    [
+     "Operating lease liabilities - long-term",
+     "41,698",
+     "",
+     "44,526",
+     ""
+    ],
+    [
+     "Real estate deferred gains - long-term",
+     "73,255",
+     "",
+     "74,206",
+     ""
+    ],
+    [
+     "Pension benefit obligation",
+     "10,813",
+     "",
+     "11,605",
+     ""
+    ],
+    [
+     "Other non-current liabilities",
+     "23,647",
+     "",
+     "21,953",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,042,029",
+     "",
+     "954,205",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.01 par value, 20,000,000 shares authorized,      9,651,000 and 9,725,760 outstanding on April 2, 2022, and January 1, 2022, respectively",
+     "96",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "263,428",
+     "",
+     "268,085",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(29,184)",
+     "",
+     "(29,360)",
+     ""
+    ],
+    [
+     "Accumulated stockholders\u2019 equity",
+     "257,836",
+     "",
+     "124,427",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "492,176",
+     "",
+     "363,249",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "1,534,205",
+     "$",
+     "1,317,454"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 162,
+    "end_line": 221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 160,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 222,
+     "token": "REPEATING_FOOTER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Accumulated Equity",
+     "",
+     "Stockholders\u2019 Equity Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2022",
+     "9,726",
+     "$",
+     "97",
+     "$",
+     "268,085",
+     "$",
+     "(29,360)",
+     "$",
+     "124,427",
+     "$",
+     "363,249"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "133,409",
+     "",
+     "133,409",
+     ""
+    ],
+    [
+     "Impact of pension plan, net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "156",
+     "",
+     "\u2014",
+     "",
+     "156",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "11",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,162",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,162",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(5)",
+     "\u2014",
+     "",
+     "(393)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(393)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(81)",
+     "(1)",
+     "",
+     "(6,426)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,427)",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20",
+     "",
+     "\u2014",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Balance, April 2, 2022",
+     "9,651",
+     "96",
+     "",
+     "263,428",
+     "",
+     "(29,184)",
+     "",
+     "257,836",
+     "",
+     "492,176",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 232,
+    "end_line": 250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\n(In thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 230,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "REPEATING_FOOTER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Stockholders\u2019 Equity Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 2, 2021",
+     "9,463",
+     "$",
+     "95",
+     "$",
+     "266,695",
+     "$",
+     "(35,992)",
+     "$",
+     "(171,706)",
+     "$",
+     "59,092"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "61,860",
+     "",
+     "61,860",
+     ""
+    ],
+    [
+     "Impact of pension plan, net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "239",
+     "",
+     "\u2014",
+     "",
+     "239",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "8",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation related to share-based grants",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,410",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,410",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(3)",
+     "\u2014",
+     "",
+     "(99)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(99)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11",
+     "",
+     "\u2014",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Balance, April 3, 2021",
+     "9,468",
+     "95",
+     "",
+     "268,006",
+     "",
+     "(35,742)",
+     "",
+     "(109,846)",
+     "",
+     "122,513",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 251,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 230,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "REPEATING_FOOTER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "133,409",
+     "$",
+     "61,860"
+    ],
+    [
+     "Adjustments to reconcile net income to cash provided by (used in) operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "6,746",
+     "",
+     "7,465",
+     ""
+    ],
+    [
+     "Amortization of debt discount and issuance costs",
+     "263",
+     "",
+     "603",
+     ""
+    ],
+    [
+     "Adjustments to debt issuance costs associated with term loan",
+     "\u2014",
+     "",
+     "5,791",
+     ""
+    ],
+    [
+     "Gains from sales of property",
+     "\u2014",
+     "",
+     "(1,287)",
+     ""
+    ],
+    [
+     "Deferred income tax",
+     "(1,994)",
+     "",
+     "(3,896)",
+     ""
+    ],
+    [
+     "Amortization of deferred gains from real estate",
+     "(984)",
+     "",
+     "(984)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "2,162",
+     "",
+     "1,410",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(157,419)",
+     "",
+     "(125,172)",
+     ""
+    ],
+    [
+     "Inventories",
+     "(74,097)",
+     "",
+     "(34,315)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "50,072",
+     "",
+     "53,812",
+     ""
+    ],
+    [
+     "Taxes payable",
+     "47,057",
+     "",
+     "25,799",
+     ""
+    ],
+    [
+     "Other current assets",
+     "(601)",
+     "",
+     "(448)",
+     ""
+    ],
+    [
+     "Other assets and liabilities",
+     "(2,377)",
+     "",
+     "(15,246)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "2,237",
+     "",
+     "(24,608)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "49",
+     "",
+     "1,810",
+     ""
+    ],
+    [
+     "Property and equipment investments",
+     "(2,509)",
+     "",
+     "(1,122)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "(2,460)",
+     "",
+     "688",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings on revolving credit facilities",
+     "\u2014",
+     "",
+     "262,210",
+     ""
+    ],
+    [
+     "Repayments on revolving credit facilities",
+     "\u2014",
+     "",
+     "(191,943)",
+     ""
+    ],
+    [
+     "Repayments on term loan",
+     "\u2014",
+     "",
+     "(43,204)",
+     ""
+    ],
+    [
+     "Common stock repurchase and retirement",
+     "(6,427)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Debt financing costs",
+     "\u2014",
+     "",
+     "(861)",
+     ""
+    ],
+    [
+     "Repurchase of shares to satisfy employee tax withholdings",
+     "(393)",
+     "",
+     "(56)",
+     ""
+    ],
+    [
+     "Principal payments on finance lease liabilities",
+     "(3,722)",
+     "",
+     "(2,129)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(10,542)",
+     "",
+     "24,017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "(10,765)",
+     "",
+     "97",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "85,203",
+     "",
+     "82",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "74,438",
+     "$",
+     "179"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the period",
+     "6,387",
+     "",
+     "9,971",
+     ""
+    ],
+    [
+     "Taxes paid during the period",
+     "2,350",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash transactions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment acquired under finance leases",
+     "\u2014",
+     "",
+     "10,211",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 280,
+    "end_line": 338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nApril 2, 2022\n1. Basis of Presentation and Summary of Significant Accounting Policies\nBasis of Presentation\nThe accompanying unaudited interim condensed consolidated financial statements include the accounts of BlueLinx Holdings Inc. and its wholly owned subsidiaries (the \u201cCompany\u201d). We derived the condensed consolidated balance sheet at April 2, 2022, from the audited consolidated financial statements included in our Annual Report on Form 10-K for the fiscal year ended January 1, 2022 (the \u201cFiscal 2021 Form 10-K\u201d), as filed with the Securities and Exchange Commission (\u201cSEC\u201d) on February 22, 2022. In the opinion of our management, the condensed consolidated financial statements reflect all adjustments, which are of a normal recurring nature, necessary for a fair presentation of our statements of operations and comprehensive income for the three months ended April 2, 2022, and April 3, 2021, our balance sheets at April 2, 2022, and January 1, 2022, our statements of stockholders\u2019 equity for the three months ended April 2, 2022, and April 3, 2021, and our statements of cash flows for the three months ended April 2, 2022, and April 3, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 278,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 339,
+     "token": "REPEATING_FOOTER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Intangible Asset",
+     "Weighted Average Remaining Useful Lives (Years)",
+     "Gross Carrying Amounts",
+     "",
+     "Accumulated Amortization(1)",
+     "",
+     "Net Carrying Amounts",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "8",
+     "$",
+     "25,500",
+     "$",
+     "(13,061)",
+     "$",
+     "12,439"
+    ],
+    [
+     "Noncompete agreements",
+     "\u2014",
+     "8,254",
+     "",
+     "(8,174)",
+     "",
+     "80",
+     ""
+    ],
+    [
+     "Trade names",
+     "\u2014",
+     "6,826",
+     "",
+     "(6,826)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "40,580",
+     "$",
+     "(28,061)",
+     "$",
+     "12,519"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Goodwill and Other Intangible Assets"
+    }
+   },
+   "prose_before": "Goodwill is not subject to amortization but must be tested for impairment at least annually. This test requires us to assign goodwill to a reporting unit and to determine if the fair value of the reporting unit\u2019s goodwill is less than its carrying amount. We evaluate goodwill for impairment during the fourth quarter of each fiscal year. In addition, we will evaluate the carrying value for impairment between annual impairment tests if an event occurs or circumstances change that would indicate the carrying amount may be impaired. Such events and indicators may include, without limitation, significant declines in the industries in which our products are used, significant changes in capital market conditions, and significant changes in our market capitalization. No such indicators were present during the first quarter of fiscal 2022. Our one reporting unit has a fair value that exceeds its carrying value as of April 2, 2022.\nDefinite-Lived Intangible Assets\nOn April 2, 2022, the gross carrying amounts, accumulated amortization, and net carrying amounts of our definite-lived intangible assets were as follows:",
+   "prose_after": "(1) Intangible assets, except customer relationships, are amortized on a straight-line basis. Customer relationships are amortized on a double declining balance method.\nAmortization Expense\nAmortization expense for our definite-lived intangible assets was $1.1 million and $1.8 million for the three-month periods ended April 2, 2022, and April 3, 2021, respectively.\nEstimated amortization expense for definite-lived intangible assets for the remaining portion of 2022 and the next five fiscal years is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Fiscal Year",
+     "Estimated Amortization",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "1,632"
+    ],
+    [
+     "2023",
+     "1,807",
+     ""
+    ],
+    [
+     "2024",
+     "1,505",
+     ""
+    ],
+    [
+     "2025",
+     "1,423",
+     ""
+    ],
+    [
+     "2026",
+     "1,423",
+     ""
+    ],
+    [
+     "2027",
+     "1,423",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 418,
+    "end_line": 429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Goodwill and Other Intangible Assets"
+    }
+   },
+   "prose_before": "(1) Intangible assets, except customer relationships, are amortized on a straight-line basis. Customer relationships are amortized on a double declining balance method.\nAmortization Expense\nAmortization expense for our definite-lived intangible assets was $1.1 million and $1.8 million for the three-month periods ended April 2, 2022, and April 3, 2021, respectively.\nEstimated amortization expense for definite-lived intangible assets for the remaining portion of 2022 and the next five fiscal years is as follows:",
+   "prose_after": "4. Revenue Recognition\nWe recognize revenue when the following criteria are met: (1) Contract with the customer has been identified; (2) Performance obligations in the contract have been identified; (3) Transaction price has been determined; (4) Transaction price has been allocated to the performance obligations; and (5) When (or as) performance obligations are satisfied.\nContracts with our customers are generally in the form of standard terms and conditions of sale. From time to time, we may enter into specific contracts, which may affect delivery terms. Performance obligations in our contracts generally consist solely of delivery of goods. For all sales channel types, consisting of warehouse, direct, and reload sales, we typically satisfy our performance obligations upon shipment. Our customer payment terms are typical for our industry, and may vary by the type and location of our customer and the products or services offered. The term between invoicing and when payment is due is not deemed to be significant by us. For certain sales channels and/or products, our standard terms of payment may be as early as ten days.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product type",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "767,907",
+     "$",
+     "563,060"
+    ],
+    [
+     "Structural products",
+     "534,398",
+     "",
+     "462,409",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "1,302,305",
+     "$",
+     "1,025,469"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 445,
+    "end_line": 457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "In addition, we provide inventory to certain customers through pre-arranged agreements on a consignment basis. Customer consigned inventory is maintained and stored by certain customers; however, ownership and risk of loss remain with us.\nAll revenues recognized are net of trade allowances (i.e., rebates), cash discounts, and sales returns. Cash discounts and sales returns are estimated using historical experience. Trade allowances are based on the estimated obligations and historical experience. Adjustments to earnings resulting from revisions to estimates on discounts and returns have been insignificant for\neach of the reported periods. Certain customers may receive cash-based incentives or credits, which are accounted for as variable consideration. We estimate these amounts based on the expected amount to be provided to customers and reduce revenues recognized. We believe that there will not be significant changes to our estimates of variable consideration.\nThe following table presents our revenues disaggregated by revenue source. Sales and usage-based taxes are excluded from revenues.",
+   "prose_after": "The following table presents our revenues disaggregated by sales channel. Warehouse sales are delivered from our warehouses. Reload sales are similar to warehouse sales but are shipped from warehouses, most of which are operated by third-parties, where we store owned products to enhance our operating efficiencies. This channel is employed primarily to service strategic customers that would be less economical to service from our warehouses, and to distribute large volumes of imported products from port facilities. Direct sales are shipped from the manufacturer to the customer without our taking physical possession of the inventory and, as a result, typically generate lower margins than our warehouse and reload distribution channels. This distribution channel requires the lowest amount of committed capital and fixed costs. Sales and usage-based taxes are excluded from revenues.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales channel",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warehouse and reload",
+     "$",
+     "1,077,946",
+     "$",
+     "849,419"
+    ],
+    [
+     "Direct",
+     "246,652",
+     "",
+     "191,130",
+     ""
+    ],
+    [
+     "Customer discounts and rebates",
+     "(22,293)",
+     "",
+     "(15,080)",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "1,302,305",
+     "$",
+     "1,025,469"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 460,
+    "end_line": 473
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "The following table presents our revenues disaggregated by sales channel. Warehouse sales are delivered from our warehouses. Reload sales are similar to warehouse sales but are shipped from warehouses, most of which are operated by third-parties, where we store owned products to enhance our operating efficiencies. This channel is employed primarily to service strategic customers that would be less economical to service from our warehouses, and to distribute large volumes of imported products from port facilities. Direct sales are shipped from the manufacturer to the customer without our taking physical possession of the inventory and, as a result, typically generate lower margins than our warehouse and reload distribution channels. This distribution channel requires the lowest amount of committed capital and fixed costs. Sales and usage-based taxes are excluded from revenues.",
+   "prose_after": "5. Assets Held for Sale\nAs of April 2, 2022, and January 1, 2022, the net book value of total assets classified as \u201cheld for sale\u201d was $3.0 million and $2.6 million, respectively, and was included in other current assets in our condensed consolidated balance sheets. The book value of total liabilities classified as \u201cheld for sale\u201d as of April 2, 2022, and January 1, 2022, was $2.1 million and $1.9 million, respectively, and was included in other current liabilities in our condensed consolidated balance sheets.\nAssets classified as \u201cheld for sale\u201d as of April 2, 2022, consisted of fixed assets, at net book value, and current assets, including raw material and work in process inventory, affiliated with one of our business locations in the Midwest. Liabilities classified as \u201cheld for sale\u201d included current liabilities, such as accounts payable, directly associated with those assets held for sale that will be transferred with the assets held for sale. We plan to sell these assets and transfer these liabilities within the next 12 months.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "January 1, 2022",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Senior secured notes (1)",
+     "$",
+     "300,000",
+     "$",
+     "300,000"
+    ],
+    [
+     "Revolving credit facility (2)",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Term loan facility (3)",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Finance lease obligations (4)",
+     "271,940",
+     "",
+     "274,717",
+     ""
+    ],
+    [
+     "",
+     "571,940",
+     "",
+     "574,717",
+     ""
+    ],
+    [
+     "Unamortized debt issuance costs",
+     "(4,565)",
+     "",
+     "(4,701)",
+     ""
+    ],
+    [
+     "Unamortized bond discount costs",
+     "(3,901)",
+     "",
+     "(4,028)",
+     ""
+    ],
+    [
+     "",
+     "563,474",
+     "",
+     "565,988",
+     ""
+    ],
+    [
+     "Less: current maturities of long-term debt",
+     "7,264",
+     "",
+     "7,864",
+     ""
+    ],
+    [
+     "Long-term debt, net of current maturities",
+     "$",
+     "556,210",
+     "$",
+     "558,124"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 485,
+    "end_line": 505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "As of April 2, 2022, and January 1, 2022, the net book value of total assets classified as \u201cheld for sale\u201d was $3.0 million and $2.6 million, respectively, and was included in other current assets in our condensed consolidated balance sheets. The book value of total liabilities classified as \u201cheld for sale\u201d as of April 2, 2022, and January 1, 2022, was $2.1 million and $1.9 million, respectively, and was included in other current liabilities in our condensed consolidated balance sheets.\nAssets classified as \u201cheld for sale\u201d as of April 2, 2022, consisted of fixed assets, at net book value, and current assets, including raw material and work in process inventory, affiliated with one of our business locations in the Midwest. Liabilities classified as \u201cheld for sale\u201d included current liabilities, such as accounts payable, directly associated with those assets held for sale that will be transferred with the assets held for sale. We plan to sell these assets and transfer these liabilities within the next 12 months.\n6. Long-Term Debt\nAs of April 2, 2022, and January 1, 2022, long-term debt consisted of the following:",
+   "prose_after": "(1)As of April 2, 2022 and January 1, 2022, our long-term debt was comprised of $300.0 million of senior secured notes issued in October 2021. These notes are presented under the \u201cLong-term debt\u201d caption of our condensed consolidated balance sheets at $291.5 million and $291.3 million at April 2, 2022, and January 1, 2022, respectively. This presentation is net of their discount of 3.9 million and 4.0 million and the combined carrying value of our debt issuance costs of 4.6 million and 4.7 million at April 2, 2022, and January 1, 2022, respectively. Our senior secured notes are presented in this table at their face value.\n(2) The average effective interest rate was zero percent and 2.4 percent for the quarters ended April 2, 2022, and April 3, 2021, respectively.\n(3) The average effective interest rate, exclusive of fees and prepayment premiums, was zero percent and 8.0 percent for the quarters ended April 2, 2022, and April 3, 2021, respectively.\n(4) Refer to Note 9, Leases, for interest rates associated with finance lease obligations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 526,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pension-related items",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost (1)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest cost on projected benefit obligation",
+     "606",
+     "",
+     "505",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "(1,177)",
+     "",
+     "(1,140)",
+     ""
+    ],
+    [
+     "Amortization of unrecognized gain",
+     "209",
+     "",
+     "321",
+     ""
+    ],
+    [
+     "Net periodic pension benefit",
+     "$",
+     "(362)",
+     "$",
+     "(314)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Net Periodic Pension Benefit"
+    }
+   },
+   "prose_before": "On April 2, 2021, we repaid the remaining outstanding principal balance of the term loan facility, and, as a result, as of January 1, 2022 and April 2, 2022, we had zero outstanding borrowings under the term loan facility, which has been extinguished. In connection with our repayment of the outstanding principal balance in full on April 2, 2021, we expensed $5.8 million of debt issuance costs that we were amortizing in connection with our former term loan facility. These costs are included within interest expense, net on the condensed consolidated statements of operations and reported separately as an adjustment to net income in our condensed consolidated statements of cash flows.\nAs the facility was paid in full as of April 2, 2021, our average effective interest rate under the facility, exclusive of fees and prepayment premiums, was zero percent for the quarter ended April 2, 2022. For the quarter ended April 3, 2021, our average effective interest rate under the facility, exclusive of fees and prepayment premiums, was approximately 8.0 percent.\nFinance Lease Obligations\nOur finance lease liabilities consist of leases related to equipment and vehicles, and real estate, with the majority of those finance leases related to real estate. For more information on our finance lease obligations, refer to Note 9, Leases.\n7. Net Periodic Pension Benefit\nThe following table shows the components of our net periodic pension benefit:",
+   "prose_after": "(1) Service cost is not a part of our net periodic pension benefit as our pension plan is frozen for all participants.\nThe net periodic pension benefit is included in other expense (income), net in our condensed consolidated statement of operations and comprehensive income.\n8. Stock Compensation\nDuring the three months ended April 2, 2022, and April 3, 2021, we incurred stock compensation expense of $2.2 million and $1.4 million, respectively. The increase in our stock compensation expense for the three-month period is primarily attributable to an increase in the number of awards granted, as well as the increase in the grant-date fair value, or the Company\u2019s stock price, of awards currently vesting compared to the prior year.\n9. Leases\nWe have operating and finance leases for certain of our distribution facilities, office space, land, mobile fleet, and equipment. Many of our leases are non-cancelable and typically have a defined initial lease term, and some provide options to renew at our election for specified periods of time. The majority of our leases have remaining lease terms of one to 15 years, some of which include one or more options to extend the leases for five years. Our leases generally provide for fixed annual rentals. Certain of our leases include provisions for escalating rent based on, among other things, contractually defined increases and/or changes in the Consumer Price Index (\u201cCPI\u201d). The known changes to lease payments are included in the lease liability at lease commencement. Unknown changes related to CPI are treated as variable lease payments and recognized in the period in which the obligation for those payments was incurred. In addition, a subset of our vehicle lease cost is considered variable. Some of our leases require us to pay taxes, insurance, and maintenance expenses associated with the leased assets. Our lease agreements do not contain any material residual value guarantees or material restrictive covenants.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 526,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "pension",
+    "aligned_family": "pension",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Lease assets and liabilities",
+     "",
+     "April 2, 2022",
+     "",
+     "January 1, 2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "Classification",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "Operating lease right-of-use assets",
+     "$",
+     "47,330",
+     "$",
+     "49,568"
+    ],
+    [
+     "Finance lease right-of-use assets (1)",
+     "Property and equipment, net",
+     "139,964",
+     "",
+     "143,851",
+     ""
+    ],
+    [
+     "Total lease right-of-use assets",
+     "",
+     "$",
+     "187,294",
+     "$",
+     "193,419"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "Operating lease liabilities - short term",
+     "$",
+     "5,723",
+     "$",
+     "5,145"
+    ],
+    [
+     "Finance lease liabilities",
+     "Finance lease liabilities - short term",
+     "7,264",
+     "",
+     "7,864",
+     ""
+    ],
+    [
+     "Non-current portion",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "Operating lease liabilities - long term",
+     "41,698",
+     "",
+     "44,526",
+     ""
+    ],
+    [
+     "Finance lease liabilities",
+     "Finance lease liabilities - long term",
+     "264,676",
+     "",
+     "266,853",
+     ""
+    ],
+    [
+     "Total lease liabilities",
+     "",
+     "$",
+     "319,361",
+     "$",
+     "324,388"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 581,
+    "end_line": 605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "We determine if an arrangement is a lease at inception and assess lease classification as either operating or finance at lease inception or modification. Operating lease right-of use (\u201cROU\u201d) assets and liabilities are presented separately on the condensed consolidated balance sheets. Finance lease ROU assets are included in property and equipment and the finance lease obligations are presented separately in the condensed consolidated balance sheets. When a lease does not provide an implicit interest rate, we use our incremental borrowing rate based on the information available at the commencement date in determining the present value of future payments. We have also made the accounting policy election to not separate lease components from non-lease components related to our mobile fleet asset class.\nFinance Lease Liabilities\nOur finance lease liabilities consist of leases related to equipment and vehicles, and real estate. As noted in the table below, a majority of our finance leases, formally known as capital leases, relate to real estate.\nThe following table presents our assets and liabilities related to our leases as of April 2, 2022 and January 1, 2022:",
+   "prose_after": "(1) Finance lease right-of-use assets are presented net of accumulated amortization of $77.5 million and $73.7 million as of April 2, 2022, and January 1, 2022, respectively.\nThe components of lease expense were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Components of lease expense",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost:",
+     "$",
+     "2,517",
+     "$",
+     "3,050"
+    ],
+    [
+     "Finance lease cost:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of right-of-use assets",
+     "$",
+     "3,710",
+     "$",
+     "3,986"
+    ],
+    [
+     "  Interest on lease liabilities",
+     "6,160",
+     "",
+     "6,157",
+     ""
+    ],
+    [
+     "Total finance lease costs",
+     "$",
+     "9,870",
+     "$",
+     "10,143"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 626
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "(1) Finance lease right-of-use assets are presented net of accumulated amortization of $77.5 million and $73.7 million as of April 2, 2022, and January 1, 2022, respectively.\nThe components of lease expense were as follows:",
+   "prose_after": "Supplemental cash flow information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow information",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating cash flows from operating leases",
+     "$",
+     "2,528",
+     "$",
+     "2,564"
+    ],
+    [
+     "  Operating cash flows from finance leases",
+     "6,160",
+     "",
+     "6,157",
+     ""
+    ],
+    [
+     "  Financing cash flows from finance leases",
+     "$",
+     "3,722",
+     "$",
+     "2,129"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for lease obligations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "  Finance leases",
+     "$",
+     "\u2014",
+     "$",
+     "10,211"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to leases was as follows:",
+   "prose_after": "Supplemental balance sheet information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance sheet information",
+     "April 2, 2022",
+     "",
+     "",
+     "January 1, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "$",
+     "217,415",
+     "",
+     "$",
+     "217,592",
+     ""
+    ],
+    [
+     "  Accumulated depreciation",
+     "(77,451)",
+     "",
+     "",
+     "(73,741)",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "139,964",
+     "",
+     "$",
+     "143,851",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term (in years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "10.51",
+     "",
+     "",
+     "10.75",
+     "",
+     ""
+    ],
+    [
+     "  Finance leases",
+     "14.95",
+     "",
+     "",
+     "15.06",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Discount Rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "8.96",
+     "",
+     "%",
+     "9.01",
+     "",
+     "%"
+    ],
+    [
+     "  Finance leases",
+     "9.49",
+     "",
+     "%",
+     "10.00",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Supplemental balance sheet information related to leases was as follows:",
+   "prose_after": "The major categories of our finance lease liabilities as of April 2, 2022 and January 1, 2022 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Category",
+     "April 2, 2022",
+     "",
+     "January 1, 2022",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment and vehicles",
+     "$",
+     "29,902",
+     "$",
+     "30,710"
+    ],
+    [
+     "Real estate",
+     "242,038",
+     "",
+     "244,007",
+     ""
+    ],
+    [
+     "Total finance leases",
+     "$",
+     "271,940",
+     "$",
+     "274,717"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 679
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "The major categories of our finance lease liabilities as of April 2, 2022 and January 1, 2022 are as follows:",
+   "prose_after": "As of April 2, 2022, maturities of lease liabilities were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal year",
+     "Operating leases",
+     "",
+     "Finance leases",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "7,601",
+     "$",
+     "22,918"
+    ],
+    [
+     "2023",
+     "9,020",
+     "",
+     "32,115",
+     ""
+    ],
+    [
+     "2024",
+     "8,215",
+     "",
+     "31,521",
+     ""
+    ],
+    [
+     "2025",
+     "8,152",
+     "",
+     "27,994",
+     ""
+    ],
+    [
+     "2026",
+     "5,859",
+     "",
+     "31,439",
+     ""
+    ],
+    [
+     "Thereafter",
+     "39,085",
+     "",
+     "348,149",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "$",
+     "77,932",
+     "$",
+     "494,136"
+    ],
+    [
+     "Less: imputed interest",
+     "(30,511)",
+     "",
+     "(222,196)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "47,421",
+     "$",
+     "271,940"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "As of April 2, 2022, maturities of lease liabilities were as follows:",
+   "prose_after": "On January 1, 2022, maturities of lease liabilities were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal year",
+     "Operating leases",
+     "",
+     "Finance leases",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "9,376",
+     "$",
+     "32,495"
+    ],
+    [
+     "2023",
+     "9,134",
+     "",
+     "32,115",
+     ""
+    ],
+    [
+     "2024",
+     "8,329",
+     "",
+     "31,521",
+     ""
+    ],
+    [
+     "2025",
+     "8,329",
+     "",
+     "27,994",
+     ""
+    ],
+    [
+     "2026",
+     "6,050",
+     "",
+     "31,439",
+     ""
+    ],
+    [
+     "Thereafter",
+     "40,711",
+     "",
+     "348,149",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "$",
+     "81,929",
+     "$",
+     "503,713"
+    ],
+    [
+     "Less: imputed interest",
+     "(32,258)",
+     "",
+     "(228,996)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "49,671",
+     "$",
+     "274,717"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 704,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "On January 1, 2022, maturities of lease liabilities were as follows:",
+   "prose_after": "10. Commitments and Contingencies\nEnvironmental and Legal Matters\nFrom time to time, we are involved in various proceedings incidental to our businesses, and we are subject to a variety of environmental and pollution control laws and regulations in all jurisdictions in which we operate. Although the ultimate outcome of these proceedings cannot be determined with certainty, based on presently available information management believes that adequate reserves have been established for probable losses with respect thereto and receivables have been recorded for expected receipts from settlements. Management further believes that, while the ultimate outcome of one or more of these matters could be material to our operating results in any given quarter, it will not have a materially adverse effect on our consolidated financial condition, our results of operations, or our cash flows.\nCollective Bargaining Agreements\nAs of April 2, 2022, we employed approximately 2,078 associates and less than one percent of our associates are employed on a part-time basis. Approximately 20 percent of our associates are represented by various local labor unions with terms and conditions of employment governed by Collective Bargaining Agreements (\u201cCBAs\u201d). Two CBAs covering approximately three percent of our associates are up for renewal in fiscal 2022, both of which we expect to renegotiate by the end of the year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Defined benefit pension plan, net of tax",
+     "",
+     "Other, net of tax",
+     "",
+     "Total Accumulated Other Comprehensive Loss",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2022, beginning balance, net of tax",
+     "$",
+     "(30,245)",
+     "$",
+     "885",
+     "$",
+     "(29,360)"
+    ],
+    [
+     "Other comprehensive income, net of tax",
+     "156",
+     "",
+     "20",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "April 2, 2022, ending balance, net of tax",
+     "$",
+     "(30,089)",
+     "$",
+     "905",
+     "$",
+     "(29,184)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Accumulated Other Comprehensive Loss"
+    }
+   },
+   "prose_before": "As of April 2, 2022, we employed approximately 2,078 associates and less than one percent of our associates are employed on a part-time basis. Approximately 20 percent of our associates are represented by various local labor unions with terms and conditions of employment governed by Collective Bargaining Agreements (\u201cCBAs\u201d). Two CBAs covering approximately three percent of our associates are up for renewal in fiscal 2022, both of which we expect to renegotiate by the end of the year.\n11. Accumulated Other Comprehensive Loss\nComprehensive income includes both net income and other comprehensive income. Other comprehensive income results from items deferred from recognition into our condensed consolidated statements of operations and comprehensive income. Accumulated other comprehensive loss is separately presented on our condensed consolidated balance sheets as part of stockholders\u2019 equity.\nThe changes in balances for each component of accumulated other comprehensive loss for the three months ended April 2, 2022, were as follows:",
+   "prose_after": "12. Income Taxes\nEffective Tax Rate\nOur effective tax rate for the three months ended April 2, 2022, and April 3, 2021, was 26.2 percent and 26.0 percent, respectively.\nOur effective tax rate for the three months ended April 2, 2022 and April 3, 2021 were impacted by the permanent addback of certain nondeductible expenses, including meals and entertainment and executive compensation, slightly offset by a benefit from the vesting of restricted stock units, which occurred during each period. Our effective tax rate for the three months ended April 3, 2021 also benefited from the partial release of our valuation allowance for state net operating loss carryforwards we anticipated being able to utilize based on our taxable income through the end of the first quarter of fiscal 2021.\nDeferred Tax Assets\nQuarterly, we assess the carrying value of our deferred tax assets for impairment by evaluating the weight of available evidence at the end of each fiscal quarter. In our evaluation of the weight of available evidence at the end of the current quarter, we considered the recent reported income in the current quarter, as well as the reported income for 2021 and 2020 and the reported losses for 2019, which resulted in a three-year cumulative income situation as positive evidence which carried substantial weight. While this was substantial, it was not the only evidence we evaluated. We also considered evidence related to the four sources of taxable income to determine whether such positive evidence outweighed the negative evidence. The evidence considered included:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "aoci",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share data)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "133,409",
+     "$",
+     "61,860"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding - basic",
+     "9,720",
+     "",
+     "9,466",
+     ""
+    ],
+    [
+     "Dilutive effect of share-based awards",
+     "393",
+     "",
+     "392",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding - diluted",
+     "10,113",
+     "",
+     "9,858",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per share",
+     "$",
+     "13.72",
+     "$",
+     "6.53"
+    ],
+    [
+     "Diluted income per share",
+     "$",
+     "13.19",
+     "$",
+     "6.28"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income per Share"
+    }
+   },
+   "prose_before": "\u2022taxable income in prior carryback years, if carryback is permitted under the tax law; and\n\u2022tax planning strategies.\nIn addition to the positive evidence discussed above, we considered as positive evidence forecasted taxable income, the detail scheduling of timing of the reversal of our deferred tax assets and liabilities, and the evidence from business and tax planning strategies. As of April 2, 2022, in our evaluation of the weight of available evidence, we concluded that our net deferred tax assets were not impaired.\n13. Income per Share\nWe calculate basic income per share by dividing net income by the weighted average number of common shares outstanding. We calculate diluted income per share using the treasury stock method, by dividing net income by the weighted average number of common shares outstanding plus the dilutive effect of outstanding share-based awards, including restricted stock units.\nThe reconciliation of basic net income and diluted net income per common share for the three-month periods ended April 2, 2022, and April 3, 2021, were as follows:",
+   "prose_after": "Approximately 3,000 and 113,000 weighted-average share-based awards were excluded from the computation of earnings per share assuming dilution during the three months ended April 2, 2022, and April 3, 2021, respectively, as the awards would have been anti-dilutive for the periods presented.\n14. Subsequent Event\nOn May 3, 2022, the Company announced that its Board of Directors has increased the Company\u2019s share repurchase authorization to $100.0 million, up $75.0 million from the previous program, and that it has entered into an Accelerated Share Repurchase agreement (\u201cASR\u201d) with Jeffries LLC to repurchase $60.0 million of the Company\u2019s common stock. The remaining $40.0 million of share repurchases are planned to be executed opportunistically in the open market with $6.4 million already completed in the current reporting period.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nAbout Our Business\nBlueLinx is a leading wholesale distributor of residential and commercial building products in the United States. We are a \u201ctwo-step\u201d distributor. Two-step distributors purchase products from manufacturers and distribute those products to dealers and other suppliers in local markets, who then sell those products to end users. We carry a broad portfolio of both branded and private-label stock keeping units (\u201cSKUs\u201d) across two principal product categories: specialty products and structural products. Specialty products include items such as engineered wood, industrial products, cedar, moulding, siding, metal products, and insulation. Structural products include items such as lumber, plywood, oriented strand board, rebar, and remesh. We also provide a wide range of value-added services and solutions aimed at relieving distribution and logistics challenges for our customers and suppliers, while enhancing their marketing and inventory management capabilities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "eps_reconciliation",
+    "aligned_family": "eps_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "First Quarter of Fiscal 2022",
+     "",
+     "% of Net Sales",
+     "First Quarter of Fiscal 2021",
+     "",
+     "% of Net Sales"
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "1,302,305",
+     "100.0%",
+     "$",
+     "1,025,469",
+     "100.0%"
+    ],
+    [
+     "Gross profit",
+     "291,051",
+     "",
+     "22.3%",
+     "180,392",
+     "",
+     "17.6%"
+    ],
+    [
+     "Selling, general, and administrative",
+     "91,289",
+     "",
+     "7.0%",
+     "75,560",
+     "",
+     "7.4%"
+    ],
+    [
+     "Depreciation and amortization",
+     "6,746",
+     "",
+     "0.5%",
+     "7,465",
+     "",
+     "0.7%"
+    ],
+    [
+     "Amortization of deferred gains on real estate",
+     "(984)",
+     "",
+     "(0.1)%",
+     "(984)",
+     "",
+     "(0.1)%"
+    ],
+    [
+     "Gains from sales of property",
+     "\u2014",
+     "",
+     "0.0%",
+     "(1,287)",
+     "",
+     "(0.1)%"
+    ],
+    [
+     "Other operating expenses",
+     "838",
+     "",
+     "0.1%",
+     "112",
+     "",
+     "\u2014%"
+    ],
+    [
+     "Operating income",
+     "193,162",
+     "",
+     "14.8%",
+     "99,526",
+     "",
+     "9.7%"
+    ],
+    [
+     "Interest expense, net",
+     "11,293",
+     "",
+     "0.9%",
+     "16,234",
+     "",
+     "1.6%"
+    ],
+    [
+     "Other expense (income), net",
+     "1,138",
+     "",
+     "0.1%",
+     "(314)",
+     "",
+     "(0.0)%"
+    ],
+    [
+     "Income before provision for income taxes",
+     "180,731",
+     "",
+     "13.9%",
+     "83,606",
+     "",
+     "8.2%"
+    ],
+    [
+     "Provision for income taxes",
+     "47,322",
+     "",
+     "3.6%",
+     "21,746",
+     "",
+     "2.1%"
+    ],
+    [
+     "Net income",
+     "$",
+     "133,409",
+     "10.2%",
+     "$",
+     "61,860",
+     "6.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 873,
+    "end_line": 895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "Our results of operations and financial performance are influenced by a variety of factors, including the following: pricing and product cost variability; volumes of product sold; competition; changes in the supply and/or demand for products that we distribute; the cyclical nature of the industry in which we operate; housing market conditions; consolidation among competitors, suppliers, and customers; disintermediation risk; loss of products or key suppliers and manufacturers; our dependence on international suppliers and manufacturers for certain products; potential acquisitions and the integration and completion of such acquisitions; business disruptions; effective inventory management relative to our sales volume or the prices of the products we produce; information technology security risks and business interruption risks; the ability to attract, train, and retain highly qualified associates and other key personnel while controlling related labor costs; exposure to product liability and other claims and legal proceedings related to our business and the products we distribute; natural disasters, catastrophes, fire, or other unexpected events; successful implementation of our strategy; wage increases or work stoppages by our union employees; costs imposed by federal, state, local, and other regulations; compliance costs associated with federal, state, and local environmental protection laws; the COVID-19 pandemic and other contagious illness outbreaks and their potential effects on our industry; regulations concerning mandatory COVID-19 vaccines; fluctuations in our operating results; our level of indebtedness and our ability to incur additional debt to fund future needs; the covenants of the instruments governing our indebtedness limiting the discretion of our management in operating the business; variable interest rate risk under certain indebtedness; the fact that we have consummated certain sale leaseback transactions with resulting long-term non-cancelable leases, many of which are or will be finance leases; the fact that we lease many of our distribution centers, and we would still be obligated under these leases even if we close a leased distribution center; inability to raise funds necessary to finance a required repurchase of our senior secured notes; inability to successfully execute the ASR; a lowering or withdrawal of debt ratings; changes in our product mix; increases in petroleum prices; shareholder activism; changes in insurance-related deductible/retention reserves based on actual loss experience; the possibility that the value of our deferred tax assets could become impaired; changes in our expected annual effective tax rate could be volatile; changes in actuarial assumptions for our pension plan; the costs and liabilities related to our participation in multi-employer pension plans could increase; the risk that our cash flows and capital resources may be insufficient to service our existing or future indebtedness; the possibility that we could be the subject of securities class action litigation due to stock price volatility; activities of activist shareholders; indebtedness terms that limit our ability to pay dividends on common stock; and changes in, or interpretation of, accounting principles.\nResults of Operations\nThe following table sets forth our results of operations for the first quarter of fiscal 2022 and fiscal 2021:",
+   "prose_after": "The following table sets forth net sales by product category for the three-month periods ending April 2, 2022, and April 3, 2021:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 868,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "",
+     "",
+     "April 3, 2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales by category",
+     "($ in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "767,907",
+     "59",
+     "%",
+     "$",
+     "563,060",
+     "55",
+     "%"
+    ],
+    [
+     "Structural products",
+     "534,398",
+     "",
+     "41",
+     "%",
+     "462,409",
+     "",
+     "45",
+     "%"
+    ],
+    [
+     "Net sales",
+     "$",
+     "1,302,305",
+     "100",
+     "%",
+     "$",
+     "1,025,469",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "The following table sets forth net sales by product category for the three-month periods ending April 2, 2022, and April 3, 2021:",
+   "prose_after": "The following table sets forth gross profit and gross margin percentages by product category for the three-month periods of fiscal 2022 and 2021:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 868,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "",
+     "April 3, 2021",
+     "",
+     ""
+    ],
+    [
+     "Gross profit $ by category",
+     "($ in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "$",
+     "184,099",
+     "",
+     "$",
+     "108,535",
+     ""
+    ],
+    [
+     "Structural products",
+     "106,952",
+     "",
+     "",
+     "71,857",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "291,051",
+     "",
+     "$",
+     "180,392",
+     ""
+    ],
+    [
+     "Gross margin percentage by category",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specialty products",
+     "24.0",
+     "",
+     "%",
+     "19.3",
+     "",
+     "%"
+    ],
+    [
+     "Structural products",
+     "20.0",
+     "",
+     "%",
+     "15.5",
+     "",
+     "%"
+    ],
+    [
+     "Total gross margin %",
+     "22.3",
+     "",
+     "%",
+     "17.6",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "The following table sets forth gross profit and gross margin percentages by product category for the three-month periods of fiscal 2022 and 2021:",
+   "prose_after": "First Quarter of Fiscal 2022 Compared to First Quarter of Fiscal 2021\nFor the first quarter of fiscal 2022, we generated net sales of $1.3 billion, an increase of $276.8 million when compared to the first quarter of fiscal 2021 and overall gross margin percentage increased from 17.6 percent to 22.3 percent year over year. Our first quarter net income was $133.4 million, or $13.19 per diluted share, versus $61.9 million, or $6.28 per diluted share, in the prior-year period. The continued robust demand for building products and increased wood-based commodity prices are the primary contributors to the increase in our overall profitability year over year.\nNet sales of specialty products, which includes products such as engineered wood, industrial products, cedar, moulding, siding, metal products and insulation, increased $204.8 million to $767.9 million in the first quarter of fiscal 2022. Continued strong demand for building products, along with continued supply constraints, contributed to multiple supplier-led price increases throughout the first quarter of fiscal 2022, resulting in improved revenue growth.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 868,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Selected financial information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 2, 2022",
+     "",
+     "January 1, 2022",
+     "",
+     "April 3, 2021",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "74,438",
+     "$",
+     "85,203",
+     "$",
+     "179"
+    ],
+    [
+     "Receivables, less allowance for doubtful accounts",
+     "497,056",
+     "",
+     "339,637",
+     "",
+     "418,815",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "562,555",
+     "",
+     "488,458",
+     "",
+     "376,423",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,134,049",
+     "$",
+     "913,298",
+     "$",
+     "795,417"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "230,072",
+     "$",
+     "180,000",
+     "$",
+     "218,975"
+    ],
+    [
+     "",
+     "$",
+     "230,072",
+     "$",
+     "180,000",
+     "$",
+     "218,975"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating working capital",
+     "$",
+     "903,977",
+     "$",
+     "733,298",
+     "$",
+     "576,442"
+    ]
+   ],
+   "caption_stack": [
+    "Selected financial information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1010,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "On August 23, 2021, we announced that our Board of Directors approved a stock repurchase program pursuant to which we may repurchase up to $25.0 million of our common stock. Under the program, we may repurchase our common stock at any time or from time to time, without prior notice, subject to prevailing market conditions and other considerations. Our repurchases may be made through a variety of methods, which may include open market purchases, privately negotiated transactions or pursuant to a trading plan that may be adopted in accordance with the Securities and Exchange Commission Rule 10b5-1. As of April 2, 2022, we have repurchased 81,331 shares for $6.4 million under this program and we have a remaining authorization amount of $18.6 million.\nOn May 3, 2022, we announced that our Board of Directors has increased our share repurchase authorization to $100.0 million, up $75.0 million from the previous program, and that we have entered into an Accelerated Share Repurchase agreement (\u201cASR\u201d) with Jeffries LLC to repurchase $60.0 million of our common stock.\nOperating Working Capital\nOperating working capital is an important measurement we use to determine the efficiencies of our operations and our ability to readily convert assets into cash. Operating working capital is defined as the sum of cash, receivables, and inventory, less accounts payable. Management of working capital helps us monitor our progress in meeting our goals to enhance working capital assets.",
+   "prose_after": "Operating working capital of $904.0 million as of April 2, 2022, compared to $733.3 million as of January 1, 2022, increased on a net basis by approximately $170.7 million. The increase in operating working capital is primarily driven by an increase in accounts receivable from our continued increase in net sales along with an increase in inventory, which continues to be affected by the inflationary environment for building materials. The net increase in current assets was offset by an increase in accounts payable, also affected by the inflationary environment for building products.\nOperating working capital of $904.0 million as of April 2, 2022, compared to $576.4 million as of April 3, 2021, increased by $327.5 million. The increase in operating working capital is primarily driven by an increase in inventory, which continues to be affected by the inflationary environment for building products, along with an increase in accounts receivable and cash from our continued increase in net sales. The net increase in current assets was offset by an increase in accounts payable, also affected by the inflationary environment for building products.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Purchased (1)",
+     "Average Price Paid per Share",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs (2)",
+     "Maximum Dollar Value of Shares that May Yet Be Purchased Under the Plans or Programs"
+    ],
+    [
+     "January 2 - February 5",
+     "3,328",
+     "74.78",
+     "\u2014",
+     "25,000,000"
+    ],
+    [
+     "February 6 - March 5",
+     "5,027",
+     "81.06",
+     "3,779",
+     "24,701,246"
+    ],
+    [
+     "March 6 - April 2",
+     "78,031",
+     "78.98",
+     "77,552",
+     "18,572,690"
+    ],
+    [
+     "Total",
+     "86,386",
+     "",
+     "81,331",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1182,
+    "end_line": 1194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "During the first quarter of fiscal 2022, there were no material changes to our legal proceedings as disclosed in our Annual Report on Form 10-K for the year ended January 1, 2022. Additionally, we are, and from time to time may be, a party to routine legal proceedings incidental to the operation of our business. The outcome of any pending or threatened proceedings is not expected to have a material adverse effect on our financial condition, operating results, or cash flows, based on our current understanding of the relevant facts. Legal expenses incurred related to these contingencies are generally expensed as incurred.\nITEM 1A. RISK FACTORS\nThere have been no material changes to the risk factors disclosed in Part I, \"Item 1A.Risk Factors\" in the Company\u2019s Annual Report on Form 10-K for the year ended January 1, 2022.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nThe following table presents our share repurchase activity for each month of the quarter ended April 2, 2022:",
+   "prose_after": "(1) Includes shares withheld by us in connection with tax withholding obligations of our employees upon vesting of such employees\u2019 restricted stock unit awards.\n(2) On August 23, 2021, we announced that our Board of Directors approved a stock repurchase program, with no expiration from the date of authorization, for the repurchase up to $25.0 million of our common stock. As of April 2, 2022, $18.6 million was available for repurchases under this program. The timing and amount of any repurchases under this program depend upon market conditions and may be made at any time or from time to time, without prior notice, through a variety of methods, which may include open market purchases, privately negotiated transactions or pursuant to a trading plan that may be adopted in accordance with the Securities and Exchange Commission Rule 10b5-1. On May 3, 2022, we announced that our Board of Directors has increased our share repurchase authorization to $100.0 million, up $75.0 million from the previous program, and that we have entered into an Accelerated Share Repurchase agreement (\u201cASR\u201d) with Jeffries LLC to repurchase $60.0 million of our common stock.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Description"
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "**",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "**",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.Def",
+     "",
+     "Definition Linkbase Document."
+    ],
+    [
+     "101.Pre",
+     "",
+     "Presentation Linkbase Document."
+    ],
+    [
+     "101.Lab",
+     "",
+     "Labels Linkbase Document."
+    ],
+    [
+     "101.Cal",
+     "",
+     "Calculation Linkbase Document."
+    ],
+    [
+     "101.Sch",
+     "",
+     "Schema Document."
+    ],
+    [
+     "101.Ins",
+     "",
+     "Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "104",
+     "",
+     "The cover page from this Quarterly Report on Form 10-Q for the quarter ended April 2, 2022, formatted in Inline XBRL."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "*",
+     "Filed herewith."
+    ],
+    [
+     "",
+     "**",
+     "Exhibit is being furnished and shall not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of that Section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "(2) On August 23, 2021, we announced that our Board of Directors approved a stock repurchase program, with no expiration from the date of authorization, for the repurchase up to $25.0 million of our common stock. As of April 2, 2022, $18.6 million was available for repurchases under this program. The timing and amount of any repurchases under this program depend upon market conditions and may be made at any time or from time to time, without prior notice, through a variety of methods, which may include open market purchases, privately negotiated transactions or pursuant to a trading plan that may be adopted in accordance with the Securities and Exchange Commission Rule 10b5-1. On May 3, 2022, we announced that our Board of Directors has increased our share repurchase authorization to $100.0 million, up $75.0 million from the previous program, and that we have entered into an Accelerated Share Repurchase agreement (\u201cASR\u201d) with Jeffries LLC to repurchase $60.0 million of our common stock.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "BlueLinx Holdings Inc."
+    ],
+    [
+     "",
+     "",
+     "(Registrant)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 3, 2022",
+     "By:",
+     "/s/ Kelly C. Janzen"
+    ],
+    [
+     "",
+     "",
+     "Kelly C. Janzen"
+    ],
+    [
+     "",
+     "",
+     "Senior Vice President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 3, 2022",
+     "By:",
+     "/s/ Adam K. Bowen"
+    ],
+    [
+     "",
+     "",
+     "Adam K. Bowen"
+    ],
+    [
+     "",
+     "",
+     "Vice President and Chief Accounting Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "BlueLinx Holdings Inc.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1239,
+    "end_line": 1256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Event"
+    }
+   },
+   "prose_before": "SIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5687 @@
+{
+ "accession": "0001493152-25-022052",
+ "cik": "0001785493",
+ "form": "10-K",
+ "filing_date": "2025-11-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "61-1907931"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED JULY 31, 2025\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM __________ TO __________\nCOMMISSION FILE NUMBER: 333-233778\nRHINO BITCOIN INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1200 Brickell Avenue #310\nMiami, FL 33131\n(Address of principal executive offices) (Zip Code)\n888-854-3824\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "6"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "6"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "7"
+    ],
+    [
+     "Item 6.",
+     "[Reserved.]",
+     "7"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "7"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk.",
+     "12"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "12"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "12"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "13"
+    ],
+    [
+     "Item 9B.",
+     "Other Information.",
+     "13"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "14"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "15"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "16"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationship and Related Transactions, and Director Independence",
+     "17"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibit and Financial Statement Schedules",
+     "18"
+    ],
+    [
+     "Item 16",
+     "Form 10-K Summary",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "19"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 114
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the common stock held by non-affiliates of the registrant, based upon the last sale price of the common stock of the registrant as of the last business day of its most recently completed second fiscal quarter was approximately $4.1 million.\nThe number of shares of registrant\u2019s common stock outstanding, as of November 11, 2025 was 74,191,114.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nItem 1. Business.\nExplanatory Note\nAs described below, on August 19, 2025, Rhino Bitcoin Inc. (formerly known as Phoenix Plus Corp.) (the \u201cCompany\u201d) acquired all of the outstanding capital stock of Rhino Digital Inc. (\u201cRhino Digital\u201d). The acquisition of Rhino Digital is treated as a reverse acquisition (the \u201cReverse Acquisition\u201d), and the business of Rhino Digital became the business of the Company. Concurrently with the closing of the Reverse Acquisition, all outstanding shares of the Company\u2019s wholly-owned subsidiary, Phoenix Plus Corp., a Labuan, Malaysia corporation (\u201cPhoenix Plus Labuan\u201d), were transferred to Mr. Lee Chong Chow, the Company\u2019s former chief executive officer. The financial statements and management\u2019s discussion and analysis included in this report cover the year ended July 31, 2025 and thus relate to the business of the Company prior to the Reverse Acquisition, except as otherwise indicated. Other disclosures in this report, including the business description, relate to the current operations of the Company, unless otherwise indicated, and thus relate to the business of Rhino Digital as the operating subsidiary of the Company.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of and for the year ended July 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year-end MYR: US$1 exchange rate",
+     "",
+     "4.25",
+     "",
+     "4.60"
+    ],
+    [
+     "Year-average MYR: US$1 exchange rate",
+     "",
+     "4.25",
+     "",
+     "4.70"
+    ],
+    [
+     "Year-end HK$: US$1 exchange rate",
+     "",
+     "7.85",
+     "",
+     "7.81"
+    ],
+    [
+     "Year-average HK$: US$1 exchange rate",
+     "",
+     "7.83",
+     "",
+     "7.81"
+    ]
+   ],
+   "caption_stack": [
+    "As of and for the year ended July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 378,
+    "end_line": 389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Conditions and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "The reporting currency of the Company is United States Dollars (\u201cUS$\u201d). The Company\u2019s subsidiary in Labuan and Hong Kong maintains its books and record in United States Dollars (\u201cUS$\u201d) respectively, while the Company\u2019s subsidiary in Malaysia maintains its books and record in Ringgit Malaysia (\u201cMYR\u201d). Ringgit Malaysia (\u201cMYR\u201d) is functional currency as being the primary currency of the economic environment in which the entity operates.\nIn general, for consolidation purposes, assets and liabilities of its subsidiary whose functional currency is not the US$ are translated into US$, in accordance with ASC Topic 830-30, \u201cTranslation of Financial Statement\u201d, using the exchange rate on the balance sheet date. Revenues and expenses are translated at average rates prevailing during the year. The gains and losses resulting from translation of financial statements of foreign subsidiary are recorded as a separate component of accumulated other comprehensive income within the statement of stockholders\u2019 equity.\nTranslation of amounts from MYR into US$1 and HK$ into US$1 has been made at the following exchange rates for the respective year:",
+   "prose_after": "Related parties\nParties, which can be a corporation or individual, are considered to be related if the Company has the ability, directly or indirectly, to control the other party or exercise significant influence over the other party in making financial and operating decisions. Companies are also considered to be related if they are subject to common control or common significant influence.\nFair value of financial instruments:\nThe carrying value of the Company\u2019s financial instruments: cash and cash equivalents, accounts payable and accrued liabilities, and amount due to a director approximate at their fair values because of the short-term nature of these financial instruments.\nThe Company also follows the guidance of the ASC Topic 820-10, \u201cFair Value Measurements and Disclosures\u201d (\u201cASC 820-10\u201d), with respect to financial assets and liabilities that are measured at fair value. ASC 820-10 establishes a three-tier fair value hierarchy that prioritizes the inputs used in measuring fair value as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 375,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name",
+     "Number of Shares\n\n\n\nBeneficially Owned",
+     "Percentage of shares\n\n\n\nbeneficially owned\n\n\n\nbefore offering"
+    ],
+    [
+     "Common Stock\n\n\n\nSeries A Preferred",
+     "Lyle Hauser",
+     "11,089,110 common (1)\n\n\n\n200,000 Series A Preferred (2)",
+     "14.4% (common)\n\n\n\n100% of Series A Preferred"
+    ],
+    [
+     "Common Stock\n\n\n\nSeries A Preferred",
+     "All officers and directors as a group (1 person)",
+     "11,089,110 common\n\n\n\n200,000 Series A Preferred",
+     "14.4% (common)\n\n\n\n100% (Series A Preferred)"
+    ],
+    [
+     "Common Stock(3)",
+     "Five Star Trust",
+     "8,000,000",
+     "10.8%"
+    ],
+    [
+     "Common Stock(4)",
+     "Panther Ice Trust",
+     "8,000,000",
+     "10.8%"
+    ],
+    [
+     "Common Stock(5)",
+     "SNX 504 Ltd.",
+     "6,250,521",
+     "8.4%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 537,
+    "end_line": 554
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth certain information regarding the ownership of common stock and Series A Preferred Stock as of November 11, 2025, by (i) each of our executive officers and directors, (ii) all of our directors and executive officers as a group, and\n(iii) any person or group as those terms are used in Section 13(d)(3) of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), believed by us to beneficially own more than 5% of our common stock. Unless otherwise indicated, all shares are owned directly and the indicated person has sole voting and investment power. The percentages listed are based upon 74,191,114 shares of common stock and 200,000 shares of Series A Preferred Stock issued and outstanding as of November 11, 2025. The outstanding shares of Series A Preferred Stock provide the holder with 51% of the total voting power of our stockholders. Except as otherwise set forth below, the address of each holder is c/o Rhino Bitcoin Inc., 1200 Brickell Avenue #310, Miami, FL 33131.",
+   "prose_after": "(1) Includes 10,000 shares held by The Vantage Group Ltd. (\u201cVantage\u201d), an entity owned by Mr. Hauser, 888,000 shares issuable upon conversion of 200,000 shares of Series A Preferred Stock held by Vantage, and 2,000,000 shares issuable upon exercise of options. Does not include shares held by Five Star Trust or Panther Trust, which Mr. Hauser\u2019s wife is the control person for. See footnotes 3 and 4.\n(2) Represents shares held by Vantage.\n(3 Rachel Ravich is the control person of the stockholder. The address of the stockholder is 4045 Sheridan Ave #345, Miami Beach, FL 33140. Ms. Ravich is Mr. Hauser\u2019s wife.\n(4) Rachel Ravich is the control person of the stockholder. The address of the stockholder is 4045 Sheridan Ave #345, Miami Beach, FL 33140. Ms. Ravich is Mr. Hauser\u2019s wife.\n(5) Lawrence John Sullivan is the control person of the stockholder. The address of the stockholder is Derry House, Greenaway Lane, Matlock DE4 2QB, United Kingdom.\nSecurities authorized for issuance under equity compensation plans",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     "Exhibit Description"
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation (incorporated by reference to Registration Statement on Form S-1 Amendment No.4 (File No. 333-233778) filed on December 20, 2019)"
+    ],
+    [
+     "3.2",
+     "",
+     "Certificate of Designation of Series A Preferred Stock (incorporated by reference to 8-K filed August 21, 2025)"
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Amendment to Articles of Incorporation (incorporated by reference to 8-K filed September 4, 2025)"
+    ],
+    [
+     "3.4",
+     "",
+     "Bylaws (incorporated by reference to Registration Statement on Form S-1 Amendment No.4 (File No. 333-233778) filed on December 20, 2019)"
+    ],
+    [
+     "10.1",
+     "",
+     "Agreement and Plan of Merger, dated August 5, 2025, among the Company, Rhino Merger Acquisition Sub, Inc., Rhino Digital Inc. and the Selling Shareholders named therein (incorporated by reference to 8-K filed August 7, 2025)"
+    ],
+    [
+     "10.2*",
+     "",
+     "Employment Agreement between Rhino Digital Inc. and Lyle Hauser (filed herewith)"
+    ],
+    [
+     "14",
+     "",
+     "Code of Ethics (filed herewith)"
+    ],
+    [
+     "21",
+     "",
+     "Subsidiaries (filed herewith)"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act (filed herewith)"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith)"
+    ],
+    [
+     "101",
+     "",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted in iXBRL, and included in exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Tax Fees\nWe did not incur fees for services rendered to us for tax compliance, tax advice, or tax planning by our principal accountant for the fiscal years ended July 31, 2025 and 2024.\nAll Other Fees\nWe did not incur any other fees to our principal accountant for the fiscal years ended July 31, 2025 and 2024.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(1) Financial statements.\nThe Phoenix Plus financial statements are included following the signature page beginning on page F-1.\n(2) Financial statement schedules: None.\n(3) Exhibits",
+   "prose_after": "* Indicates management contract or compensatory arrangement.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RHINO BITCOIN INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 13, 2025",
+     "By:",
+     "/s/ Lyle Hauser"
+    ],
+    [
+     "",
+     "",
+     "Lyle Hauser"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(principal executive, financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "RHINO BITCOIN INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 644,
+    "end_line": 653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "* Indicates management contract or compensatory arrangement.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lyle Hauser",
+     "Chief Executive Officer and director",
+     "November 13, 2025"
+    ],
+    [
+     "Lyle Hauser",
+     "(principal executive, financial and accounting officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 656,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2 \u2013 F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8 - F-23"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nThe Board of Directors and Stockholders\nof Phoenix Plus Corp. (now known as Rhino Bitcoin Inc.)\n1200 Brickell Avenue #310\nMiami, FL 33131\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Phoenix Plus Corp. (now known as Rhino Bitcoin Inc.) (the \u2018Company\u2019) as of July 31, 2025 and 2024, and the related statements of consolidated statements of operations and comprehensive loss, consolidated statements of changes in stockholders\u2019 equity, and consolidated statements of cash flows for each of the years in the two-year period ended July 31, 2025 and 2024, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of July 31, 2025 and 2024, and the results of its operations and its cash flows for each of the years in the two-year period ended July 31, 2025 and 2024, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Project activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "USD478,159",
+     "(100% of the Company\u2019s revenue)",
+     ""
+    ],
+    [
+     "Cost of sales:",
+     "USD411,231",
+     "(99.99% of the Company\u2019s cost of sales)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Project activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 737,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(a) Inquired management to obtain an understanding of the Company\u2019s process in evaluating the indication of impairment and fair value assessments;\n(b) Evaluated the Company\u2019s assessment of impairment by assessing the appropriateness of the valuation methodologies used;\n(c) Compared the Company\u2019s assessment to our expectation based on our knowledge;\n(d) Considered the adequacy of the disclosure in the financial statements in relation to the investments.\nThe investment is being impaired as to Phoenix Plus Corp. (now known as Rhino Bitcoin Inc.) through its solicitors, already file a winding up petition to the Court of Malaysia against its investment.\nRevenue recognition\nThe Company has determined that certain performance obligations in relation to project activities are satisfied over time and thus recognizes revenue from this activity over time.\nA significant proportion of the Company\u2019s revenues and profits are derived from project activities. For the financial year ended July 31, 2025, project revenue and cost of sales are as follows:",
+   "prose_after": "We identified revenue and cost of sales from project activities as an area requiring audit focus as significant management\u2019s judgement and estimates are involved in estimating the total project costs (which is used to determine gross profit margin of project activities undertaken by the Company). The amount of revenue and profit recognized from project activities are dependent on, amongst others, the extent of costs incurred to the total estimated costs of construction to derive the percentage-of-completion and the estimated total revenue for each of the respective projects.\nIn addressing this area of focus, we performed, amongst others, the following procedures:\n(a) Obtained an understanding of the processes and internal controls over the accuracy and timing of revenue recognized in the financial statements, including controls performed by management in estimating the total project costs, profit margin and progress of projects;\n(b) For individually significant projects, we read the contracts entered into with customers to obtain an understanding of the specific terms and conditions;",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 721,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "As of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31, 2025 (Audited)",
+     "",
+     "",
+     "July 31, 2024 (Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at banks",
+     "$",
+     "25,052",
+     "",
+     "$",
+     "434,351",
+     ""
+    ],
+    [
+     "Trade receivables, net of allowance for credit loss of $0 and $116,687 as of July 31, 2025 and July 31, 2024, respectively",
+     "",
+     "202,461",
+     "",
+     "",
+     "10,964",
+     ""
+    ],
+    [
+     "Retention sum receivables",
+     "",
+     "90,461",
+     "",
+     "",
+     "109,945",
+     ""
+    ],
+    [
+     "Other receivables, prepayments and deposits",
+     "",
+     "1,001,736",
+     "",
+     "",
+     "12,801",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "213,187",
+     "",
+     "",
+     "269,434",
+     ""
+    ],
+    [
+     "Deferred cost",
+     "",
+     "-",
+     "",
+     "",
+     "4,122",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "1,532,897",
+     "",
+     "",
+     "841,617",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "18,777",
+     "",
+     "",
+     "20,817",
+     ""
+    ],
+    [
+     "Lease right-of-use asset",
+     "",
+     "-",
+     "",
+     "",
+     "59,197",
+     ""
+    ],
+    [
+     "Equity method investment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total non-current assets",
+     "",
+     "18,777",
+     "",
+     "",
+     "80,014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "1,551,674",
+     "",
+     "",
+     "921,631",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities, non-current",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,553",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "31,553",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade payables",
+     "$",
+     "138,348",
+     "",
+     "$",
+     "81,466",
+     ""
+    ],
+    [
+     "Amount due to related company",
+     "",
+     "105,127",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Retention sum payables",
+     "",
+     "71,816",
+     "",
+     "",
+     "67,697",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "77,489",
+     "",
+     "",
+     "34,386",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current",
+     "",
+     "-",
+     "",
+     "",
+     "29,469",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "481",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "393,261",
+     "",
+     "",
+     "213,018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "393,261",
+     "",
+     "",
+     "244,571",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value, 200,000,000 shares authorized; None issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, 1,000,000,000 shares authorized 7,133,985 and 6,653,990 shares issued and outstanding as of July 31, 2025 and 2024 respectively",
+     "$",
+     "713",
+     "",
+     "$",
+     "665",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "4,237,787",
+     "",
+     "",
+     "3,277,835",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(34,292)",
+     "",
+     "",
+     "(14,009)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(3,045,795)",
+     "",
+     "",
+     "(2,587,431)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "1,158,413",
+     "",
+     "",
+     "677,060",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 FUND",
+     "",
+     "1,551,674",
+     "",
+     "",
+     "921,631",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 766,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(b) For individually significant projects, we read the contracts entered into with customers to obtain an understanding of the specific terms and conditions;\n(c) Evaluated the assumptions applied in estimating the total project costs for each project phase by examining documentary evidence such as letters of award issued to contractors to support the budgeted gross project cost. We also considered the historical accuracy of management\u2019s forecasts for the similar projects within the Company in evaluating the estimated total project costs;\n(d) Evaluated the determination of progress of projects by examining supporting evidence such as contractors\u2019 progress claims and suppliers\u2019 invoices.\nThe Company\u2019s disclosure on contract assets is included in Note 7 to the financial statements.\n/s/ JP CENTURION & PARTNERS PLT JP CENTURION & PARTNERS PLT We have served as the Company\u2019s auditor since 2022. JP Centurion & Partners PLT (PCAOB: 6723) Kuala Lumpur, Malaysia November 13, 2025\nCONSOLIDATED BALANCE SHEETS\nAS OF JULY 31, 2025 and 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 764,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 31, 2025\n\n\n\n(Audited)",
+     "",
+     "",
+     "July 31, 2024\n\n\n\n(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "478,159",
+     "",
+     "$",
+     "1,232,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "(411,361)",
+     "",
+     "",
+     "(1,284,930)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit / (loss)",
+     "",
+     "66,798",
+     "",
+     "",
+     "(52,604)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "57,491",
+     "",
+     "",
+     "3,692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses (Included management fee of $200,000 (2024: Nil) paid to a related party)",
+     "",
+     "(572,495)",
+     "",
+     "",
+     "(379,088)",
+     ""
+    ],
+    [
+     "Finance cost",
+     "",
+     "(9,317)",
+     "",
+     "",
+     "(4,830)",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "(360)",
+     "",
+     "",
+     "(4,951)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income tax",
+     "",
+     "(457,883)",
+     "",
+     "",
+     "(437,781)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "(481)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(458,364)",
+     "",
+     "$",
+     "(437,781)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Foreign currency translation loss",
+     "",
+     "(20,283)",
+     "",
+     "",
+     "(8,092)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(478,647)",
+     "",
+     "$",
+     "(445,873)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - Basic and diluted",
+     "",
+     "(0.0687)",
+     "",
+     "",
+     "(0.0658)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - Basic and diluted",
+     "",
+     "6,676,341",
+     "",
+     "",
+     "6,653,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 839,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 837,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 881,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "COMMON STOCKS *",
+     "",
+     "",
+     "",
+     "",
+     "ADDITIONAL PAID-IN CAPITAL",
+     "",
+     "ACCUMULATED OTHER COMPREHENSIVE LOSS",
+     "",
+     "",
+     "ACCUMULATED\n\n\n\nDEFICIT",
+     "",
+     "",
+     "TOTAL EQUITY",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of August 1, 2023",
+     "6,653,990",
+     "",
+     "$",
+     "665",
+     "$",
+     "3,277,835",
+     "$",
+     "(5,917)",
+     "",
+     "$",
+     "(2,149,650)",
+     "",
+     "$",
+     "1,122,933",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(437,781)",
+     "",
+     "",
+     "(437,781)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(8,092)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(8,092)",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2024",
+     "6,653,990",
+     "",
+     "$",
+     "665",
+     "$",
+     "3,277,835",
+     "$",
+     "(14,009)",
+     "",
+     "$",
+     "(2,587,431)",
+     "",
+     "$",
+     "677,060",
+     ""
+    ],
+    [
+     "Round down of fractional share upon reverse stock split",
+     "(5)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock issued-software acquisition on July 15, 2025 at $2 per shares",
+     "480,000",
+     "",
+     "$",
+     "48",
+     "$",
+     "959,952",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "960,000",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(458,364)",
+     "",
+     "",
+     "(458,364)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(20,283)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(20,283)",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2025",
+     "7,133,985",
+     "",
+     "$",
+     "713",
+     "$",
+     "4,237,787",
+     "$",
+     "(34,292)",
+     "",
+     "$",
+     "(3,045,795)",
+     "",
+     "$",
+     "1,158,413",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "* Common stock has been adjusted on a retroactive basis to reflect 1-for-50 reverse stock split effective on June 27, 2025.\nSee accompanying notes to consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d))",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended July 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year",
+     "$",
+     "(458,364)",
+     "",
+     "$",
+     "(437,781)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for credit losses",
+     "",
+     "-",
+     "",
+     "",
+     "24,827",
+     ""
+    ],
+    [
+     "Amortization of right-of-use assets",
+     "",
+     "25,393",
+     "",
+     "",
+     "26,099",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "5,677",
+     "",
+     "",
+     "2,896",
+     ""
+    ],
+    [
+     "Fixed assets written off",
+     "",
+     "907",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease assets written off",
+     "",
+     "(1,152)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "",
+     "(191,497)",
+     "",
+     "",
+     "(23,703)",
+     ""
+    ],
+    [
+     "Retention sum receivable",
+     "",
+     "19,484",
+     "",
+     "",
+     "(109,945)",
+     ""
+    ],
+    [
+     "Other receivables, prepayments and deposits",
+     "",
+     "(28,935)",
+     "",
+     "",
+     "2,192",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "56,247",
+     "",
+     "",
+     "(250,711)",
+     ""
+    ],
+    [
+     "Deferred cost",
+     "",
+     "4,122",
+     "",
+     "",
+     "(3,798)",
+     ""
+    ],
+    [
+     "Trade payable",
+     "",
+     "56,882",
+     "",
+     "",
+     "77,264",
+     ""
+    ],
+    [
+     "Retention sum payable",
+     "",
+     "4,119",
+     "",
+     "",
+     "67,697",
+     ""
+    ],
+    [
+     "Other payables and accrued liabilities",
+     "",
+     "43,103",
+     "",
+     "",
+     "(2,361)",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(29,115)",
+     "",
+     "",
+     "(25,795)",
+     ""
+    ],
+    [
+     "Amount due to related company",
+     "",
+     "105,127",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "481",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(387,521)",
+     "",
+     "",
+     "(653,119)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property, plant and equipment",
+     "$",
+     "(3,030)",
+     "",
+     "$",
+     "(13,967)",
+     ""
+    ],
+    [
+     "Net cash used in investing activity",
+     "",
+     "(3,030)",
+     "",
+     "",
+     "(13,967)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activity",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "$",
+     "(18,748)",
+     "",
+     "$",
+     "(6,602)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(409,299)",
+     "",
+     "",
+     "(673,688)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "434,351",
+     "",
+     "",
+     "1,108,039",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF YEAR",
+     "$",
+     "25,052",
+     "",
+     "$",
+     "434,351",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOWS INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for software acquisition",
+     "",
+     "960,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 926,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "* Common stock has been adjusted on a retroactive basis to reflect 1-for-50 reverse stock split effective on June 27, 2025.\nSee accompanying notes to consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d))",
+   "prose_after": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n1. DESCRIPTION OF BUSINESS AND ORGANIZATION\nPhoenix Plus Corp. (now known as Rhino Bitcoin Inc.) was incorporated on November 5, 2018 under the laws of the state of Nevada.\nThe Company, through its subsidiaries, engaged in providing technical consultancy on solar power system and consultancy on green energy solution, and also focused on the commercialization of a targeted portfolio of solar products (amorphous thin film solar panels and ancillary products) and technologies for a wide range of applications including electrical power production.\nOn March 18, 2019, the Company acquired 100% of the equity interests in Phoenix Plus Corp. (herein referred as the \u201cMalaysia Company\u201d), a private limited company incorporated in Labuan, Malaysia.\nOn July 25, 2019, Phoenix Plus Corp., a Malaysia Company, acquired Phoenix Plus International Limited (herein referred as the \u201cHong Kong Company\u201d), a private limited company incorporated in Hong Kong.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 924,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Company name",
+     "Place and date of incorporation",
+     "Particulars of issued capital",
+     "Principal activities",
+     "Proportional of ownership interest and voting power held"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1.",
+     "Phoenix Plus Corp.",
+     "Labuan / January 4, 2019",
+     "100 shares of ordinary share of US$1 each",
+     "Investment holding",
+     "100%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.",
+     "Phoenix Plus International Limited",
+     "Hong Kong / March 19, 2019",
+     "1 ordinary share of HK$1 each",
+     "Providing technical consultancy on solar power system and consultancy on green energy solution",
+     "100%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.",
+     "Phoenix Green Energy Sdn. Bhd.",
+     "Malaysia / May 17, 2022",
+     "1,200,000 shares of ordinary share of MYR1 each",
+     "Providing renewable energy turnkey solutions from engineering, procurement, construction and commissioning services",
+     "100%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1003,
+    "end_line": 1021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "DESCRIPTION OF BUSINESS AND ORGANIZATION"
+    }
+   },
+   "prose_before": "The Company, through its subsidiaries, engaged in providing technical consultancy on solar power system and consultancy on green energy solution, and also focused on the commercialization of a targeted portfolio of solar products (amorphous thin film solar panels and ancillary products) and technologies for a wide range of applications including electrical power production.\nOn March 18, 2019, the Company acquired 100% of the equity interests in Phoenix Plus Corp. (herein referred as the \u201cMalaysia Company\u201d), a private limited company incorporated in Labuan, Malaysia.\nOn July 25, 2019, Phoenix Plus Corp., a Malaysia Company, acquired Phoenix Plus International Limited (herein referred as the \u201cHong Kong Company\u201d), a private limited company incorporated in Hong Kong.\nOn May 17, 2022, the Company, through its Labuan incorporated subsidiary, Phoenix Plus Corp., subscribed 100% of the equity interests in Phoenix Green Energy Sdn. Bhd., a private limited company incorporated in Malaysia.\nThe Company, through its subsidiaries, mainly provides incubation and corporate development services to the clients. Details of the Company\u2019s subsidiaries:\nSCHEDULE OF DETAILS OF COMPANY\u2019S SUBSIDIARY",
+   "prose_after": "On August 19, 2025, the Company closed its previously disclosed agreement and plan of merger (the \u201cMerger Agreement\u201d) among the Company, Rhino Merger Acquisition Sub, Inc., a newly formed wholly-owned subsidiary of the Company (\u201cMerger Sub\u201d), Rhino Digital Inc. (\u201cRhino\u201d), and solely with respect to Section 9.1(d) of the Merger Agreement, the Selling Shareholders named therein.\nPursuant to the Merger Agreement, effective upon the closing thereof, (i) Merger Sub merged with and into Rhino, with Rhino surviving as the wholly-owned subsidiary of the Company, (ii) each share of common stock of Rhino converted into the right to receive two shares of common stock of the Company, (iii) the outstanding shares of Series A Preferred Stock of Rhino converted into an aggregate of 200,000 shares of newly created Series A Preferred Stock of the Company with substantially identical terms as the Rhino Series A Preferred Stock, (iv) convertible notes of Rhino converted into shares of common stock of the Company at a conversion price of $0.18 or $0.25, as applicable, (v) options to purchase shares of common stock of Rhino converted into options to purchase shares of common stock of the Company with the same aggregate exercise price, (vi) the sole officer and director of the Company (Lee Chong Chow) resigned and the sole officer and director of Rhino, Lyle Hauser was appointed as the chief executive officer, president, secretary and director of the Company, (vii) Rhino purchased from the Selling Shareholders an aggregate of 6,232,742 shares of common stock of the Company for an aggregate purchase price of $440,000 and returned such shares to the Company for cancellation. In accordance with the foregoing, the Company issued an aggregate of 73,289,871 shares of common stock to stockholders and note holders of Rhino. Concurrently with the closing of the Merger Agreement, all outstanding shares of the Company\u2019s wholly-owned subsidiary, Phoenix Plus Corp., a Labuan, Malaysia corporation (\u201cPhoenix Plus Labuan\u201d), were transferred to Mr. Lee.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": null,
+     "page_number": 7
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Classification",
+     "Estimated useful life"
+    ],
+    [
+     "Leasehold improvement",
+     "21 months"
+    ],
+    [
+     "Computer hardware and software",
+     "5 years"
+    ],
+    [
+     "Machinery",
+     "5 years"
+    ],
+    [
+     "Motor vehicle",
+     "5 years"
+    ],
+    [
+     "Tools and gauges",
+     "5 years"
+    ],
+    [
+     "Signage",
+     "5 years"
+    ],
+    [
+     "Furniture and fittings",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1084,
+    "end_line": 1095
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company applied judgements and assumptions that significantly affect the determination of the amount and timing of revenue recognized from contracts with customers for providing renewable energy turnkey solutions, including engineering, procurement, construction and commissioning (\u201cEPCC\u201d), solar PV installation services on our customers on engineering, equipment procurement and transportation, construction on solar plant. The Company measures the performance of service work done by comparing the actual costs incurred with the estimated total costs required to complete the services. Significant judgements are required to estimate the total contract costs to complete. In making these estimates, management relied on estimates and also on past experience of completed projects. A change in the estimates will directly affect the revenue to be recognized.\nCost of revenue\nCost of revenue includes the cost of services in providing consultancy services and installation services.\nCash and cash equivalents\nCash and cash equivalents are carried at cost and represent cash on hand, demand deposits placed with banks or other financial institutions and all highly liquid investments with an original maturity of three months or less as of the purchase date of such investments.\nProperty, plant and equipment\nProperty, plant and equipment are stated at cost less accumulated depreciation and accumulated impairment losses, if any. Depreciation is calculated on the straight-line basis over the following expected useful lives from the date on which they become fully operational:\nSCHEDULE OF PROPERTY PLANT AND EQUIPMENT ESTIMATED USEFUL LIFE",
+   "prose_after": "Expenditures for maintenance and repairs are expensed as incurred. The gain or loss on the disposal of property, plant and equipment is the difference between the net sales proceeds and the carrying amount of the relevant assets and is recognized in the Consolidated Statements of Operations and Comprehensive Loss.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nInvestment under equity method\nThe Company apply the equity method to account for investments it possesses the ability to exercise significant influence, but not control, over the operating and financial policies of the investee. The ability to exercise significant influence is presumed when the investor possesses more than 20% of the voting interests of the investee.\nIn applying the equity method, the Company records the investment at cost and subsequently increase or decrease the carrying amount of the investment by proportionate share of the net earnings or losses and other comprehensive income of the investee. The Company records dividends or other equity distributions as reductions in the carrying value of the investment.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1050,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of and for the year ended July 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year-end MYR: US$1 exchange rate",
+     "",
+     "4.25",
+     "",
+     "4.60"
+    ],
+    [
+     "Year-average MYR: US$1 exchange rate",
+     "",
+     "4.25",
+     "",
+     "4.70"
+    ],
+    [
+     "Year-end HK$: US$1 exchange rate",
+     "",
+     "7.85",
+     "",
+     "7.81"
+    ],
+    [
+     "Year-average HK$: US$1 exchange rate",
+     "",
+     "7.83",
+     "",
+     "7.81"
+    ]
+   ],
+   "caption_stack": [
+    "As of and for the year ended July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1142,
+    "end_line": 1153
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The reporting currency of the Company is United States Dollars (\u201cUS$\u201d). The Company\u2019s subsidiary in Labuan and Hong Kong maintains its books and record in United States Dollars (\u201cUS$\u201d) respectively, while the Company\u2019s subsidiary in Malaysia maintains its books and record in Ringgit Malaysia (\u201cMYR\u201d). Ringgit Malaysia (\u201cMYR\u201d) is functional currency as being the primary currency of the economic environment in which the entity operates.\nIn general, for consolidation purposes, assets and liabilities of its subsidiary whose functional currency is not the US$ are translated into US$, in accordance with ASC Topic 830-30, \u201cTranslation of Financial Statement\u201d, using the exchange rate on the balance sheet date. Revenues and expenses are translated at average rates prevailing during the year. The gains and losses resulting from translation of financial statements of foreign subsidiary are recorded as a separate component of accumulated other comprehensive income within the statement of stockholders\u2019 equity.\nTranslation of amounts from MYR into US$1 and HK$ into US$1 has been made at the following exchange rates for the respective years:\nSCHEDULE OF FOREIGN CURRENCY TRANSLATION",
+   "prose_after": "Related parties\nParties, which can be a corporation or individual, are considered to be related if the Company has the ability, directly or indirectly, to control the other party or exercise significant influence over the other party in making financial and operating decisions. Companies are also considered to be related if they are subject to common control or common significant influence.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nFair value of financial instruments:\nThe carrying value of the Company\u2019s financial instruments: cash and cash equivalents, prepayments, deposits, accounts payable and accrued liabilities and amount due to a director approximate at their fair values because of the short-term nature of these financial instruments.\nThe Company also follows the guidance of the ASC Topic 820-10, \u201cFair Value Measurements and Disclosures\u201d (\u201cASC 820-10\u201d), with respect to financial assets and liabilities that are measured at fair value. ASC 820-10 establishes a three-tier fair value hierarchy that prioritizes the inputs used in measuring fair value as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1157,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     "",
+     "",
+     "As of\n\n\n\nJuly 31, 2024\n\n\n\n(Audited)",
+     "",
+     ""
+    ],
+    [
+     "Leasehold improvement",
+     "$",
+     "-",
+     "",
+     "$",
+     "114,263",
+     ""
+    ],
+    [
+     "Computer hardware and software",
+     "",
+     "10,393",
+     "",
+     "",
+     "10,294",
+     ""
+    ],
+    [
+     "Machinery",
+     "",
+     "377",
+     "",
+     "",
+     "377",
+     ""
+    ],
+    [
+     "Motor vehicle",
+     "",
+     "11,304",
+     "",
+     "",
+     "11,304",
+     ""
+    ],
+    [
+     "Tools and gauges",
+     "",
+     "3,397",
+     "",
+     "",
+     "3,123",
+     ""
+    ],
+    [
+     "Furniture and fittings",
+     "",
+     "1,570",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "27,041",
+     "",
+     "",
+     "139,361",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(9,683)",
+     "",
+     "$",
+     "(118,450)",
+     ""
+    ],
+    [
+     "Effect of translation exchange",
+     "",
+     "1,419",
+     "",
+     "",
+     "(94)",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "$",
+     "18,777",
+     "",
+     "$",
+     "20,817",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1237,
+    "end_line": 1258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY, PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Between May 20, 2019 to July 25, 2019, the Company has issued 2,750,000 restricted common shares of the Company at $0.40 per share, for a total consideration of $1,100,000.\nOn July 9, 2021, the Company has issued 782,000 free trade common shares of the Company at a $1 per share for a total consideration of $782,000.\nOn June 27, 2025, the Company effected a one for fifty (1:50) reverse stock split, the number of shares of Common Stock outstanding was reduced from 332,699,500 to 6,653,990 shares. Furthermore, 5 shares were cancelled due to the elimination of participant fractional shares.\nOn July 15, 2025, the Company has issued 480,000 common shares of the Company at $2 per shares for software acquisition for a total consideration of $960,000.\nAs of July 31, 2025 and 2024, the Company has an issued and outstanding common share of 7,133,985 and 6,653,990 respectively.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n4. PROPERTY, PLANT AND EQUIPMENT\nProperty, plant and equipment as of July 31, 2025 and July 31, 2024 are summarized below:\nSCHEDULE OF PROPERTY, PLANT AND EQUIPMENT",
+   "prose_after": "These leasehold improvements include, but are not strictly limited to, preparing the interior of the office space for the Company\u2019s use, improving functionality, and purchasing new office equipment. The leasehold improvement has completed on September 2019.\nDepreciation expense for the year ended July 31, 2025 and July 31, 2024 was $5,677 and $2,896 respectively.\n5. EQUITY METHOD INVESTMENT\nSCHEDULE OF EQUITY METHOD INVESTMENT",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of July 31, 2025 (audited)",
+     "",
+     "",
+     "As of July 31, 2024 (audited)",
+     "",
+     ""
+    ],
+    [
+     "Investment, at cost",
+     "$",
+     "232,040",
+     "",
+     "$",
+     "232,040",
+     ""
+    ],
+    [
+     "Equity method loss",
+     "",
+     "(335)",
+     "",
+     "",
+     "(335)",
+     ""
+    ],
+    [
+     "Impairment loss on investment",
+     "",
+     "(231,705)",
+     "",
+     "",
+     "(231,705)",
+     ""
+    ],
+    [
+     "Equity method investment",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1267,
+    "end_line": 1277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "EQUITY METHOD INVESTMENT"
+    }
+   },
+   "prose_before": "These leasehold improvements include, but are not strictly limited to, preparing the interior of the office space for the Company\u2019s use, improving functionality, and purchasing new office equipment. The leasehold improvement has completed on September 2019.\nDepreciation expense for the year ended July 31, 2025 and July 31, 2024 was $5,677 and $2,896 respectively.\n5. EQUITY METHOD INVESTMENT\nSCHEDULE OF EQUITY METHOD INVESTMENT",
+   "prose_after": "The Company holds investment in business that is accounted for pursuant to the equity method due to the Company\u2019s ability to exert significant influence over decisions relating to its operating and financial affairs. Revenue and expenses of this investment are not consolidated into the Company\u2019s financial statements; rather, the proportionate share of the earnings/losses is reflected as equity method earnings/losses in statements of operations and comprehensive income/loss.\nAs of July 31, 2022, the Company holds 33.9% interest in Vettons City Angels Sdn. Bhd, a Malaysia corporation (hereinafter referred as \u201cVCASB\u201d). The Company accounted $335 of equity method loss of investment in VCASB for the year ended July 31, 2022.\nOn October 26, 2022, VCASB was served with a winding up petition, which the hearing of petition of the case was held on May 31, 2023 and the Malaysian court has given order that VCASB is to wind up under the provisions of the Companies Act Malaysia 2016.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025 (Audited)",
+     "",
+     "",
+     "As of\n\n\n\nJuly 31, 2024 (Audited)",
+     "",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "$",
+     "202,461",
+     "",
+     "$",
+     "127,651",
+     ""
+    ],
+    [
+     "Less: Allowance for credit losses",
+     "",
+     "(116,687)",
+     "",
+     "",
+     "(116,687)",
+     ""
+    ],
+    [
+     "Add: Reversal of allowance for credit losses",
+     "",
+     "116,687",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total trade receivables",
+     "$",
+     "202,461",
+     "",
+     "$",
+     "10,964",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1299,
+    "end_line": 1311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "TRADE RECEIVABLES"
+    }
+   },
+   "prose_before": "As of July 31, 2022, the Company holds 33.9% interest in Vettons City Angels Sdn. Bhd, a Malaysia corporation (hereinafter referred as \u201cVCASB\u201d). The Company accounted $335 of equity method loss of investment in VCASB for the year ended July 31, 2022.\nOn October 26, 2022, VCASB was served with a winding up petition, which the hearing of petition of the case was held on May 31, 2023 and the Malaysian court has given order that VCASB is to wind up under the provisions of the Companies Act Malaysia 2016.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nOn May 23, 2023, the Company\u2019s solicitor, Messrs. Amos Ho, Sew & Kiew, has delivered an affidavit on compliance of all provisions of Companies Winding UP Rules 1972 (Malaysia). On the same day, the Company\u2019s solicitor also delivered an affidavit to the local court to confirm serving of Memorandum of Advertisement and Gazetting to Registrar of Companies and Insolvency Department.\nThe Company also advertised the Winding Up Order in the newspaper NST and had it gazetted.\n6. TRADE RECEIVABLES\nTrade receivables consisted of the following at July 31, 2025 and July 31, 2024:\nSCHEDULE OF TRADE RECEIVABLES",
+   "prose_after": "7. CONTRACT ASSETS\nContract assets as of July 31, 2025 and July 31, 2024 are summarized below:\nSCHEDULE OF CONTRACT ASSETS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025 (Audited)",
+     "",
+     "",
+     "As of\n\n\n\nJuly 31, 2024 (Audited)",
+     "",
+     ""
+    ],
+    [
+     "Cost incurred",
+     "$",
+     "1,848,642",
+     "",
+     "$",
+     "1,321,934",
+     ""
+    ],
+    [
+     "Attributable profit/(loss)",
+     "",
+     "11,273",
+     "",
+     "",
+     "(45,312)",
+     ""
+    ],
+    [
+     "Contract assets, gross",
+     "",
+     "1,859,915",
+     "",
+     "",
+     "1,276,622",
+     ""
+    ],
+    [
+     "Progress billings",
+     "",
+     "(1,646,728)",
+     "",
+     "",
+     "(1,007,188)",
+     ""
+    ],
+    [
+     "Total contract assets",
+     "$",
+     "213,187",
+     "",
+     "$",
+     "269,434",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1318,
+    "end_line": 1332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "CONTRACT ASSETS"
+    }
+   },
+   "prose_before": "7. CONTRACT ASSETS\nContract assets as of July 31, 2025 and July 31, 2024 are summarized below:\nSCHEDULE OF CONTRACT ASSETS",
+   "prose_after": "8. OTHER RECEIVABLES, PREPAYMENTS AND DEPOSITS\nOther receivables, prepayments and deposits consisted of the following at July 31, 2025 and July 31, 2024.\nSCHEDULE OF OTHER RECEIVABLES PREPAYMENTS AND DEPOSITS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of July 31, 2025 (Audited)",
+     "",
+     "As of July 31, 2024 (Audited)",
+     ""
+    ],
+    [
+     "Other receivables",
+     "$",
+     "4,924",
+     "$",
+     "332"
+    ],
+    [
+     "Deposits",
+     "",
+     "32,345",
+     "",
+     "12,469"
+    ],
+    [
+     "Prepayments",
+     "",
+     "964,467",
+     "",
+     "-"
+    ],
+    [
+     "Total other receivables, prepayments and deposits",
+     "$",
+     "1,001,736",
+     "$",
+     "12,801"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1339,
+    "end_line": 1349
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "OTHER RECEIVABLES, PREPAYMENTS AND DEPOSITS"
+    }
+   },
+   "prose_before": "8. OTHER RECEIVABLES, PREPAYMENTS AND DEPOSITS\nOther receivables, prepayments and deposits consisted of the following at July 31, 2025 and July 31, 2024.\nSCHEDULE OF OTHER RECEIVABLES PREPAYMENTS AND DEPOSITS",
+   "prose_after": "The deposit amount of $30,247 (equivalent to MYR128,550) as a bank guarantee to CIMB Bank Berhad to undertake works for \u201cThe Design, Engineering, Procurement, Construction, Installation, Testing and Commissioning (EPCC) for Capacity Expansion of a Solar Photovoltaic (PV) Plant at Sungai Selangor Phase 2 Water Treatment Plant (the \u2018Project\u2019) \u2013 Package L6, Contract No. HSB/RE/32\u201d.\nThe prepayment amount of $960,000 mainly represents the consideration for the acquisition of software pursuant to the Software Purchase Agreement entered into with SunRay Equity Group Limited. As the software has not yet been placed into service and is not ready for use, the amount has been recorded as a prepayment as of July 31, 2025.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n9. DEFERRED COST\nFor service contracts where the performance obligation is not completed, deferred costs are recorded for any costs incurred in advance of the performance obligation.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025 (Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2024\n\n\n\n(Audited)",
+     ""
+    ],
+    [
+     "Trade payables",
+     "$",
+     "138,348",
+     "$",
+     "81,466"
+    ],
+    [
+     "Total trade payables",
+     "$",
+     "138,348",
+     "$",
+     "81,466"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1373,
+    "end_line": 1385
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "TRADE PAYABLES"
+    }
+   },
+   "prose_before": "The prepayment amount of $960,000 mainly represents the consideration for the acquisition of software pursuant to the Software Purchase Agreement entered into with SunRay Equity Group Limited. As the software has not yet been placed into service and is not ready for use, the amount has been recorded as a prepayment as of July 31, 2025.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n9. DEFERRED COST\nFor service contracts where the performance obligation is not completed, deferred costs are recorded for any costs incurred in advance of the performance obligation.\n10. AMOUNT DUE TO A RELATED PARTY\nAmount due to a related party is unsecured, interest free and has no fixed terms of repayment.\n11. TRADE PAYABLES\nTrade payables consisted of the following at July 31, 2025 and July 31, 2024:\nSCHEDULE OF TRADE PAYABLES",
+   "prose_after": "Lenggong Hydro Sdn. Bhd.\nOn February 20, 2024, a WRIT and Statement of Claim were sent to one of the Company\u2019s subsidiary, Phoenix Green Energy Sdn. Bhd. (hereinafter referred as \u201cPGESB\u201d), from one of PGESB\u2019s supplier, Lenggong Hydro Sdn. Bhd. (hereinafter referred as \u201cLHSB\u201d), demanding a claim of RM153,588.76. The claim is in relation to unpaid invoices for PGESB\u2019s Helio L3 Solar Project which took place in Selangor, Malaysia. According to the WRIT, an online case management review was scheduled on March 19, 2024. Due to unexpected circumstances, the Writ and Statement of Claim only came to PGESB\u2019s attention after March 19, 2024.\nUpon receiving the WRIT, PGESB have appointed Messrs. Andrew, Jye & Co. as solicitor on this matter.\nOn April 12, 2024, Messrs. Andrew, Jye & Co submitted on behalf of PGESB a written response to the court, seeking to set aside the judgment and initiate another round of case management. Additionally, on April 25, 2024, the solicitor delivered on-behalf PGESB a letter to LHSB\u2019s solicitor, proposing a settlement of MYR90,000.00 (\u201cProposed Settlement\u201d). As of June 12, PGESB are still awaiting response from LHSB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025 (Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2024\n\n\n\n(Audited)",
+     ""
+    ],
+    [
+     "Accrued audit fees",
+     "$",
+     "18,000",
+     "$",
+     "16,859"
+    ],
+    [
+     "Other payable and accrued liabilities",
+     "",
+     "59,489",
+     "",
+     "17,527"
+    ],
+    [
+     "Total other payables and accrued liabilities",
+     "$",
+     "77,489",
+     "$",
+     "34,386"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1404,
+    "end_line": 1417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "OTHER PAYABLES AND ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "On April 12, 2024, Messrs. Andrew, Jye & Co submitted on behalf of PGESB a written response to the court, seeking to set aside the judgment and initiate another round of case management. Additionally, on April 25, 2024, the solicitor delivered on-behalf PGESB a letter to LHSB\u2019s solicitor, proposing a settlement of MYR90,000.00 (\u201cProposed Settlement\u201d). As of June 12, PGESB are still awaiting response from LHSB.\nIn the event that LHSB reject the Proposed Settlement, both parties are required to serve Written Submission and Reply Submission by June 21, 2024 and July 5, 2024, respectively. A judgement are scheduled on July 24, 2024, which could be withdrawn with the acceptance of Proposed Settlement by LHSB prior to the date.\nOn August 27, 2024, LHSB\u2019s solicitor, on behalf of LHSB, confirmed acceptance of the proposed settlement, with payment due on or before September 6, 2024. PGESB made full payment of the proposed settlement on September 4, 2024. On September 6, 2024, the court was issued the notice of discontinuance.\n12. OTHER PAYABLES AND ACCRUED LIABILITIES\nOther payables and accrued liabilities consisted of the following at July 31, 2025 and July 31, 2024:\nSCHEDULE OF OTHER PAYABLES AND ACCRUED LIABILITIES",
+   "prose_after": "13. REVENUE\nFor the years ended July 31, 2025 and July 31, 2024, the Company has revenue arise from the following:\nSCHEDULE OF REVENUE",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31, 2025 (Audited)",
+     "",
+     "For the year ended July 31, 2024 (Audited)",
+     ""
+    ],
+    [
+     "Installation service",
+     "$",
+     "478,159",
+     "$",
+     "1,232,326"
+    ],
+    [
+     "Total revenue",
+     "$",
+     "478,159",
+     "$",
+     "1,232,326"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1424,
+    "end_line": 1432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "REVENUE"
+    }
+   },
+   "prose_before": "13. REVENUE\nFor the years ended July 31, 2025 and July 31, 2024, the Company has revenue arise from the following:\nSCHEDULE OF REVENUE",
+   "prose_after": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n14. INCOME TAXES\nFor the years ended July 31, 2025 and July 31, 2024, the local (United States) and foreign components of loss before income taxes were comprised of the following:\nSCHEDULE OF LOCAL AND FOREIGN COMPONENTS OF INCOME (LOSS) BEFORE INCOME TAX",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended July 31, 2025",
+     "",
+     "",
+     "Year ended July 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "Tax jurisdictions from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Local",
+     "$",
+     "(337,068)",
+     "",
+     "",
+     "(79,591)",
+     ""
+    ],
+    [
+     "Foreign, representing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Labuan",
+     "$",
+     "43,421",
+     "",
+     "",
+     "(9,803)",
+     ""
+    ],
+    [
+     "- Hong Kong",
+     "$",
+     "(18,325)",
+     "",
+     "",
+     "(20,829)",
+     ""
+    ],
+    [
+     "- Malaysia",
+     "",
+     "(145,911)",
+     "",
+     "",
+     "(327,558)",
+     ""
+    ],
+    [
+     "Loss before income tax",
+     "$",
+     "(457,883)",
+     "",
+     "",
+     "(437,781)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n14. INCOME TAXES\nFor the years ended July 31, 2025 and July 31, 2024, the local (United States) and foreign components of loss before income taxes were comprised of the following:\nSCHEDULE OF LOCAL AND FOREIGN COMPONENTS OF INCOME (LOSS) BEFORE INCOME TAX",
+   "prose_after": "The provision for income taxes consisted of the following:\nSCHEDULE OF PROVISION FOR INCOME TAX",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\n\n\nJuly 31, 2025",
+     "",
+     "Year ended\n\n\n\nJuly 31, 2024",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Local",
+     "$",
+     "481",
+     "$",
+     "-"
+    ],
+    [
+     "- Foreign",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Deferred:",
+     "$",
+     "",
+     "$",
+     ""
+    ],
+    [
+     "- Local",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "- Foreign",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "481",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The provision for income taxes consisted of the following:\nSCHEDULE OF PROVISION FOR INCOME TAX",
+   "prose_after": "The effective tax rate in the years presented is the result of the mix of income earned in various tax jurisdictions that apply a broad range of income tax rates. The Company has subsidiaries that operate in various countries: United States Labuan and Hong Kong that are subject to taxes in the jurisdictions in which they operate, as follows:\nUnited States of America\nThe Company is registered in the State of Nevada and is subject to the tax laws of the United States of America. As of July 31, 2025 the operations in the United States of America incurred $1,295,539 of cumulative net operating losses which can be carried forward indefinitely to offset a maximum of 80% future taxable income. The Company has provided for a full valuation allowance of $1,036,431 against the deferred tax assets on the expected future tax benefits from the net operating loss carryforwards as the management believes it is more likely than not that these assets will not be realized in the future.\nLabuan\nUnder the current laws of the Labuan, Phoenix Plus Corp.is governed under the Labuan Business Activity Act, 1990. The tax charge for such company is based on 3% of net audited profit.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of July 31, 2025",
+     "",
+     "",
+     "As of July 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Audited)",
+     "",
+     "",
+     "(Audited)",
+     ""
+    ],
+    [
+     "Gross lease payable",
+     "$",
+     "107,053",
+     "",
+     "$",
+     "107,053",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "",
+     "(9,359)",
+     "",
+     "",
+     "(9,359)",
+     ""
+    ],
+    [
+     "Initial recognition",
+     "$",
+     "97,694",
+     "",
+     "$",
+     "97,694",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1529
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASE RIGHT-OF-USE ASSET AND LEASE LIABILITIES"
+    }
+   },
+   "prose_before": "On June 3, 2023, Phoenix Plus International Limited and Phoenix Green Energy Sdn. Bhd. respectively entered into 2 two-years lease with landlord for renting office space, from August 1, 2023 to July 31, 2025, with an option to renew after the end of the tenancy agreement. Phoenix Plus International Limited and Phoenix Green Energy Sdn. Bhd. respectively recognized lease liabilities of approximately US$25,967 and US$60,850, with a corresponding right-of-use asset in the same amount based on the present value of the future minimum rental payments of the lease, with borrowing rate of 6.85% adopted from CIMB Bank Berhad\u2019s base lending rate as a reference for discount rate. The tenancy agreement entered into by Phoenix Plus International Limited and Phoenix Green Energy Sdn. Bhd. was early terminated on June 5, 2025.\nA single lease cost is recognized over the lease term on a generally straight-line basis. All cash payments of operating lease cost are classified within operating activities in the statement of cash flows.\nThe initial recognition of operating lease right and lease liability as follow:\nSCHEDULE OF INITIAL RECOGNITION OF OPERATING LEASE RIGHT AND LEASE LIABILITY",
+   "prose_after": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nAs of July 31, 2025 and July 31, 2024, operating lease right of use asset as follow:\nSCHEDULE OF OPERATING LEASE RIGHT OF USE ASSET",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of July 31, 2025",
+     "",
+     "",
+     "As of July 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Audited)",
+     "",
+     "",
+     "(Audited)",
+     ""
+    ],
+    [
+     "Initial recognition as of August 1, 2019",
+     "$",
+     "26,772",
+     "",
+     "$",
+     "26,772",
+     ""
+    ],
+    [
+     "Additional portion from July 31, 2020 to June 30, 2021",
+     "",
+     "2,719",
+     "",
+     "",
+     "2,719",
+     ""
+    ],
+    [
+     "Add: new lease addition from July 1, 2021 to June 30, 2024",
+     "",
+     "40,445",
+     "",
+     "",
+     "40,445",
+     ""
+    ],
+    [
+     "Add: new lease addition from June 1, 2022 to May 31, 2024",
+     "",
+     "9,343",
+     "",
+     "",
+     "9,343",
+     ""
+    ],
+    [
+     "Add: new lease addition from June 1, 2024 to July 31, 2024",
+     "",
+     "1,534",
+     "",
+     "",
+     "1,534",
+     ""
+    ],
+    [
+     "Add: new lease addition from August 1, 2024 to July 31, 2026",
+     "",
+     "86,817",
+     "",
+     "",
+     "86,817",
+     ""
+    ],
+    [
+     "Less: written off due to early termination",
+     "",
+     "(38,450)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "(133,319)",
+     "",
+     "",
+     "(105,299)",
+     ""
+    ],
+    [
+     "Foreign exchange translation loss",
+     "",
+     "4,139",
+     "",
+     "",
+     "(3,134)",
+     ""
+    ],
+    [
+     "Balance end of the year",
+     "$",
+     "-",
+     "",
+     "$",
+     "59,197",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1539,
+    "end_line": 1556
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASE RIGHT-OF-USE ASSET AND LEASE LIABILITIES"
+    }
+   },
+   "prose_before": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nAs of July 31, 2025 and July 31, 2024, operating lease right of use asset as follow:\nSCHEDULE OF OPERATING LEASE RIGHT OF USE ASSET",
+   "prose_after": "As of July 31, 2025 and July 31, 2024, operating lease liability as follow:\nSCHEDULE OF OPERATING LEASE LIABILITY",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of July 31, 2025",
+     "",
+     "",
+     "As of July 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Audited)",
+     "",
+     "",
+     "(Audited)",
+     ""
+    ],
+    [
+     "Initial recognition as of August 1, 2019",
+     "$",
+     "26,772",
+     "",
+     "$",
+     "26,772",
+     ""
+    ],
+    [
+     "Add: additional portion (increase of leasing fee)",
+     "",
+     "2,719",
+     "",
+     "",
+     "2,719",
+     ""
+    ],
+    [
+     "Add: new lease addition from July 1, 2021 to June 30, 2024",
+     "",
+     "40,445",
+     "",
+     "",
+     "40,445",
+     ""
+    ],
+    [
+     "Add: new lease addition from June 1, 2022 to May 31, 2024",
+     "",
+     "9,343",
+     "",
+     "",
+     "9,343",
+     ""
+    ],
+    [
+     "Add: new lease addition from June 1, 2024 to July 31, 2024",
+     "",
+     "1,534",
+     "",
+     "",
+     "1,534",
+     ""
+    ],
+    [
+     "Add: new lease addition from August 1, 2024 to July 31, 2026",
+     "",
+     "86,817",
+     "",
+     "",
+     "86,817",
+     ""
+    ],
+    [
+     "Less: gross repayment",
+     "",
+     "(139,955)",
+     "",
+     "",
+     "(110,167)",
+     ""
+    ],
+    [
+     "Less: written off due to early termination",
+     "",
+     "(39,601)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Add: imputed interest",
+     "",
+     "8,353",
+     "",
+     "",
+     "5,064",
+     ""
+    ],
+    [
+     "Foreign exchange translation gain",
+     "",
+     "3,573",
+     "",
+     "",
+     "(1,505)",
+     ""
+    ],
+    [
+     "Balance as of July 31, 2025",
+     "",
+     "-",
+     "",
+     "",
+     "61,022",
+     ""
+    ],
+    [
+     "Less: lease liability current portion",
+     "",
+     "-",
+     "",
+     "",
+     "(29,469)",
+     ""
+    ],
+    [
+     "Lease liability non-current portion",
+     "$",
+     "-",
+     "",
+     "$",
+     "31,553",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1561,
+    "end_line": 1582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASE RIGHT-OF-USE ASSET AND LEASE LIABILITIES"
+    }
+   },
+   "prose_before": "As of July 31, 2025 and July 31, 2024, operating lease liability as follow:\nSCHEDULE OF OPERATING LEASE LIABILITY",
+   "prose_after": "For the year ended July 31, 2025 and July 31, 2024, the amortization of the operating lease right of use asset are $25,393 and $26,099 respectively.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nOther information:\nSCHEDULE OF OTHER INFORMATION",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1529,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Audited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flow from operating lease",
+     "$",
+     "29,115",
+     "",
+     "$",
+     "25,795",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for operating lease liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Remaining lease term for operating lease (years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease 1",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease 2",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease 3",
+     "",
+     "-",
+     "",
+     "",
+     "2.25",
+     ""
+    ],
+    [
+     "Weighted average discount rate for operating lease",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease 1",
+     "",
+     "5.60",
+     "%",
+     "",
+     "5.60",
+     "%"
+    ],
+    [
+     "Lease 2",
+     "",
+     "5.56",
+     "%",
+     "",
+     "5.56",
+     "%"
+    ],
+    [
+     "Lease 3",
+     "",
+     "6.85",
+     "%",
+     "",
+     "6.85",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1594,
+    "end_line": 1613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASE RIGHT-OF-USE ASSET AND LEASE LIABILITIES"
+    }
+   },
+   "prose_before": "For the year ended July 31, 2025 and July 31, 2024, the amortization of the operating lease right of use asset are $25,393 and $26,099 respectively.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nOther information:\nSCHEDULE OF OTHER INFORMATION",
+   "prose_after": "Lease expenses were $2,905 and $4,830 for the year ended July 31, 2025 and July 31, 2024 respectively. The Company adopted ASC 842 on and after August 1, 2019.\n16. CONCENTRATION OF RISK\nThe Company is exposed to the following concentrations of risk:\nSCHEDULE OF CONCENTRATION OF RISK\n(a) Major customers\nFor the year ended July 31, 2025 and 2024, the customers who accounted for 10% or more of the Company\u2019s sales and its outstanding receivable balance at year-end are presented as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "Revenue",
+     "",
+     "",
+     "",
+     "Percentage of Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Trade Receivable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "$",
+     "400,465",
+     "$",
+     "-",
+     "",
+     "84",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "201,143",
+     "",
+     "-"
+    ],
+    [
+     "Customer B",
+     "",
+     "-",
+     "$",
+     "631,931",
+     "",
+     "-",
+     "",
+     "",
+     "51",
+     "%",
+     "",
+     "-",
+     "$",
+     "628"
+    ],
+    [
+     "Customer C",
+     "",
+     "-",
+     "$",
+     "581,406",
+     "",
+     "-",
+     "",
+     "",
+     "47",
+     "%",
+     "",
+     "-",
+     "$",
+     "7,183"
+    ],
+    [
+     "",
+     "$",
+     "400,465",
+     "$",
+     "1,213,337",
+     "",
+     "84",
+     "%",
+     "",
+     "98",
+     "%",
+     "$",
+     "201,143",
+     "$",
+     "7,811"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1626,
+    "end_line": 1641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "CONCENTRATION OF RISK"
+    }
+   },
+   "prose_before": "Lease expenses were $2,905 and $4,830 for the year ended July 31, 2025 and July 31, 2024 respectively. The Company adopted ASC 842 on and after August 1, 2019.\n16. CONCENTRATION OF RISK\nThe Company is exposed to the following concentrations of risk:\nSCHEDULE OF CONCENTRATION OF RISK\n(a) Major customers\nFor the year ended July 31, 2025 and 2024, the customers who accounted for 10% or more of the Company\u2019s sales and its outstanding receivable balance at year-end are presented as follows:",
+   "prose_after": "(b) Major vendors\nFor the year ended July 31, 2025 and 2024, the vendors who accounted for 10% or more of the Company\u2019s purchases and its outstanding payable balance at year-end are presented as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "",
+     "Cost of Revenue",
+     "",
+     "",
+     "",
+     "Percentage of Cost of Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Trade Payable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vendor A",
+     "$",
+     "94,757",
+     "",
+     "-",
+     "",
+     "23",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Vendor B",
+     "$",
+     "53,701",
+     "",
+     "-",
+     "",
+     "13",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "16,940",
+     "",
+     "-"
+    ],
+    [
+     "Vendor C",
+     "",
+     "-",
+     "$",
+     "132,442",
+     "",
+     "-",
+     "",
+     "",
+     "11",
+     "%",
+     "$",
+     "23,532",
+     "$",
+     "21,741"
+    ],
+    [
+     "Vendor D",
+     "",
+     "-",
+     "$",
+     "130,177",
+     "",
+     "-",
+     "",
+     "",
+     "11",
+     "%",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Vendor E",
+     "$",
+     "41,760",
+     "",
+     "-",
+     "",
+     "10",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "7,639",
+     "",
+     "-"
+    ],
+    [
+     "Vendor F",
+     "$",
+     "24,866",
+     "",
+     "-",
+     "",
+     "6",
+     "%",
+     "",
+     "-",
+     "",
+     "$",
+     "22,887",
+     "",
+     "-"
+    ],
+    [
+     "Vendor G",
+     "$",
+     "19,786",
+     "",
+     "-",
+     "",
+     "5",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "234,870",
+     "$",
+     "262,619",
+     "",
+     "57",
+     "%",
+     "",
+     "22",
+     "%",
+     "$",
+     "70,998",
+     "$",
+     "21,741"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended July 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1646,
+    "end_line": 1664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "CONCENTRATION OF RISK"
+    }
+   },
+   "prose_before": "(b) Major vendors\nFor the year ended July 31, 2025 and 2024, the vendors who accounted for 10% or more of the Company\u2019s purchases and its outstanding payable balance at year-end are presented as follows:",
+   "prose_after": "FOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n17. SEGMENT INFORMATION\nASC 280, \u201cSegment Reporting\u201d establishes standards for reporting information about operating segments on a basis consistent with the Company\u2019s internal organization structure as well as information about services categories, business segments and major customers in financial statements. In accordance with the \u201cSegment Reporting\u201d Topic of the ASC, the Company\u2019s chief operating decision maker has been identified as the Chief Executive Officer and President, who reviews operating results to make decisions about allocating resources and assessing performance for the entire Company. Existing guidance, which is based on a management approach to segment reporting, establishes requirements to report selected segment information quarterly and to report annually entity-wide disclosures about products and services, major customers, and the countries in which the entity holds material assets and reports revenue. All material operating units qualify for aggregation under \u201cSegment Reporting\u201d due to their similar customer base and similarities in economic characteristics; nature of products and services; and procurement, manufacturing and distribution processes.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "United States",
+     "",
+     "",
+     "Malaysia",
+     "",
+     "",
+     "Hong Kong",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "478,159",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "478,159",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "(411,361)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(411,361)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(337,068)",
+     "",
+     "",
+     "(102,971)",
+     "",
+     "",
+     "(18,325)",
+     "",
+     "",
+     "(458,364)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "962,582",
+     "",
+     "$",
+     "565,479",
+     "",
+     "$",
+     "23,613",
+     "",
+     "$",
+     "1,551,674",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended July 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1680,
+    "end_line": 1692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "ASC 280, \u201cSegment Reporting\u201d establishes standards for reporting information about operating segments on a basis consistent with the Company\u2019s internal organization structure as well as information about services categories, business segments and major customers in financial statements. In accordance with the \u201cSegment Reporting\u201d Topic of the ASC, the Company\u2019s chief operating decision maker has been identified as the Chief Executive Officer and President, who reviews operating results to make decisions about allocating resources and assessing performance for the entire Company. Existing guidance, which is based on a management approach to segment reporting, establishes requirements to report selected segment information quarterly and to report annually entity-wide disclosures about products and services, major customers, and the countries in which the entity holds material assets and reports revenue. All material operating units qualify for aggregation under \u201cSegment Reporting\u201d due to their similar customer base and similarities in economic characteristics; nature of products and services; and procurement, manufacturing and distribution processes.\nThe Company had no inter-segment sales for the periods presented. Summarized financial information concerning the Company\u2019s reportable segments is shown as below:\nBy Geography:\nSCHEDULE OF INTER-SEGMENT SALES",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 2024
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended July 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "United States",
+     "",
+     "",
+     "Malaysia",
+     "",
+     "",
+     "Hong Kong",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,232,326",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,232,326",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "-",
+     "",
+     "",
+     "(1,284,930)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,284,930)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(79,591)",
+     "",
+     "",
+     "(337,361)",
+     "",
+     "",
+     "(20,829)",
+     "",
+     "",
+     "(437,781)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "876,508",
+     "",
+     "$",
+     "45,123",
+     "",
+     "$",
+     "921,631",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended July 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1693,
+    "end_line": 1705
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "By Business unit:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 2024
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended July 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Business Unit",
+     "Solar Business",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "478,159",
+     "",
+     "$",
+     "478,159",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "(411,361)",
+     "",
+     "",
+     "(411,361)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "57,491",
+     "",
+     "",
+     "57,491",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(572,495)",
+     "",
+     "",
+     "(572,495)",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "(360)",
+     "",
+     "",
+     "(360)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(448,566)",
+     "",
+     "",
+     "(448,566)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,551,674",
+     "",
+     "$",
+     "1,551,674",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended July 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1708,
+    "end_line": 1728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "By Business unit:",
+   "prose_after": "<TABLE>\nFor the Year Ended July 31,\n------------------------------\nBy Business Unit           Solar Business           Total\n-----------------------------------  --------------  --------------\nRevenue                                 $ 1,232,326     $ 1,232,326\nCost of revenue                         (1,284,930)     (1,284,930)\nOther income                                  3,692           3,692\nGeneral and administrative expenses       (379,088)       (379,088)\nOther operating expenses                    (4,951)         (4,951)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1664,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 2024
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended July 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By Business Unit",
+     "Solar Business",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,232,326",
+     "",
+     "$",
+     "1,232,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "(1,284,930)",
+     "",
+     "",
+     "(1,284,930)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "3,692",
+     "",
+     "",
+     "3,692",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(379,088)",
+     "",
+     "",
+     "(379,088)",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "(4,951)",
+     "",
+     "",
+     "(4,951)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(432,951)",
+     "",
+     "",
+     "(432,951)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "921,631",
+     "",
+     "$",
+     "921,631",
+     ""
+    ],
+    [
+     "Capital expenditure",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended July 31, 2024"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 37,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Related Parties",
+     "Relationship to Us"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Radiance Holding Corp",
+     "Radiance Holding Corp is the 80.64% corporate shareholder of the Company, also an entity controlled by our Chief Executive Officer"
+    ],
+    [
+     "JGK Holding (Malaysia) Sdn. Bhd.",
+     "JGK Holding (Malaysia) Sdn. Bhd. is related company, an entity controlled by our Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1754,
+    "end_line": 1761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "RELATED PARTIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "General and administrative expenses       (379,088)       (379,088)\nOther operating expenses                    (4,951)         (4,951)\n--------------  --------------\nLoss from operations                      (432,951)       (432,951)\n==============  ==============\nTotal assets                              $ 921,631       $ 921,631\nCapital expenditure                             $ -             $ -\n</TABLE>\n18. RELATED PARTIES TRANSACTIONS\nMaterial Transactions with Related Parties",
+   "prose_after": "We carried out the following significant transactions with the related parties for the year ended July 31, 2025:\nSCHEDULE OF SIGNIFICANT TRANSACTION WITH RELATED PARTY",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 2024
+    },
+    "after": {
+     "line": 1782,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of\n\n\n\nJuly 31, 2025\n\n\n\n(Audited)",
+     "",
+     "As of\n\n\n\nJuly 31, 2024\n\n\n\n(Audited)",
+     ""
+    ],
+    [
+     "Transactions with related parties",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Radiance Holding Corp",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fee",
+     "$",
+     "200,000",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JGK Holding (Malaysia) Sdn. Bhd.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan interest",
+     "$",
+     "6,353",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1766,
+    "end_line": 1780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "RELATED PARTIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "We carried out the following significant transactions with the related parties for the year ended July 31, 2025:\nSCHEDULE OF SIGNIFICANT TRANSACTION WITH RELATED PARTY",
+   "prose_after": "The related party transactions mainly derived from the management fees associated with accounting and administrative work provided by related party as well as interest charges on working capital loans obtained from related party.\nFOR THE YEARS ENDED JULY 31, 2025 AND 2024\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\n19. SUBSEQUENT EVENTS\nOn August 19, 2025, the Company closed its previously disclosed agreement and plan of merger (the \u201cMerger Agreement\u201d) among the Company, Rhino Merger Acquisition Sub, Inc., a newly formed wholly-owned subsidiary of the Company (\u201cMerger Sub\u201d), Rhino Digital Inc. (\u201cRhino\u201d), and solely with respect to Section 9.1(d) of the Merger Agreement, the Selling Shareholders named therein.\nPursuant to the Merger Agreement, effective upon the closing thereof, (i) Merger Sub merged with and into Rhino, with Rhino surviving as the wholly-owned subsidiary of the Company, (ii) each share of common stock of Rhino converted into the right to receive two shares of common stock of the Company, (iii) the outstanding shares of Series A Preferred Stock of Rhino converted into an aggregate of 200,000 shares of newly created Series A Preferred Stock of the Company with substantially identical terms as the Rhino Series A Preferred Stock, (iv) convertible notes of Rhino converted into shares of common stock of the Company at a conversion price of $0.18 or $0.25, as applicable, (v) options to purchase shares of common stock of Rhino converted into options to purchase shares of common stock of the Company with the same aggregate exercise price, (vi) the sole officer and director of the Company (Lee Chong Chow) resigned and the sole officer and director of Rhino, Lyle Hauser was appointed as the chief executive officer, president, secretary and director of the Company, (vii) Rhino purchased from the Selling Shareholders an aggregate of 6,232,742 shares of common stock of the Company for an aggregate purchase price of $440,000 and returned such shares to the Company for cancellation. In accordance with the foregoing, the Company issued an aggregate of 73,295,981 shares of common stock to stockholders and note holders of Rhino. Concurrently with the closing of the Merger Agreement, all outstanding shares of the Company\u2019s wholly-owned subsidiary, Phoenix Plus Corp., a Labuan, Malaysia corporation (\u201cPhoenix Plus Labuan\u201d), were transferred to Mr. Lee.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1731,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 2024
+    },
+    "after": {
+     "line": 1782,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

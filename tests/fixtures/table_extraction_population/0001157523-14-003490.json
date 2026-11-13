@@ -1,0 +1,2473 @@
+{
+ "accession": "0001157523-14-003490",
+ "cik": "0001069308",
+ "form": "10-Q",
+ "filing_date": "2014-08-14",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a50920187.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Texas",
+     "2635 Technology Forest Blvd.\nThe Woodlands, Texas 77381",
+     "76-0333165"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(Address of principal executive",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or organization)",
+     "offices and zip code)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended June 30, 2014\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from to\nCommission File Number: 001-33004\nOpexa Therapeutics, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(281) 272-9331\nRegistrant\u2019s telephone number, including area code\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Balance Sheets as of June 30, 2014 and December 31, 2013",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Operations:\nFor the three and six months ended June 30, 2014 and 2013",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Changes in Stockholders\u2019 Equity:\nFor the six months ended June 30, 2014",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Consolidated Statements of Cash Flows:\nFor the six months ended June 30, 2014 and 2013",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited Consolidated Financial Statements",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 54,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                                                Accelerated filer   [ ]\nNon-accelerated filer   [ ] (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of August 1, 2014, there were 27,753,172 shares of the issuer\u2019s Common Stock outstanding.\nOPEXA THERAPEUTICS, INC.\nFor the Six Months Ended June 30, 2014\nINDEX",
+   "prose_after": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements.\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED BALANCE SHEETS\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "16,214,690",
+     "",
+     "$",
+     "23,644,542",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,481,526",
+     "",
+     "",
+     "1,122,576",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "17,696,216",
+     "",
+     "",
+     "24,767,118",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property & equipment, net of accumulated depreciation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of $1,905,854 and $1,718,477, respectively",
+     "",
+     "1,234,826",
+     "",
+     "",
+     "1,295,024",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "162,045",
+     "",
+     "",
+     "177,666",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "19,093,087",
+     "",
+     "$",
+     "26,239,808",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "835,570",
+     "",
+     "$",
+     "696,155",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "1,627,271",
+     "",
+     "",
+     "1,232,990",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "1,230,746",
+     "",
+     "",
+     "1,395,348",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "3,693,587",
+     "",
+     "",
+     "3,324,493",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue, net of current portion",
+     "",
+     "1,846,120",
+     "",
+     "",
+     "2,338,041",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "5,539,707",
+     "",
+     "",
+     "5,662,534",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, no par value, 10,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "none issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value, 100,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "27,661,675 and 27,546,058 shares issued and outstanding",
+     "",
+     "276,617",
+     "",
+     "",
+     "275,461",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "147,363,541",
+     "",
+     "",
+     "146,569,758",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(134,086,778)",
+     "",
+     "",
+     "(126,267,945)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "13,553,380",
+     "",
+     "",
+     "20,577,274",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "19,093,087",
+     "",
+     "$",
+     "26,239,808",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PART I - FINANCIAL INFORMATION\nItem 1. Financial Statements.\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED BALANCE SHEETS\n(Unaudited)",
+   "prose_after": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Option revenue",
+     "$",
+     "307,686",
+     "",
+     "$",
+     "348,837",
+     "",
+     "$",
+     "656,523",
+     "",
+     "$",
+     "568,937",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "3,409,210",
+     "",
+     "",
+     "2,223,030",
+     "",
+     "",
+     "6,220,349",
+     "",
+     "",
+     "3,844,396",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "967,367",
+     "",
+     "",
+     "750,605",
+     "",
+     "",
+     "2,070,247",
+     "",
+     "",
+     "1,853,040",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "98,658",
+     "",
+     "",
+     "88,898",
+     "",
+     "",
+     "194,244",
+     "",
+     "",
+     "167,209",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(4,167,549)",
+     "",
+     "",
+     "(2,713,696)",
+     "",
+     "",
+     "(7,828,317)",
+     "",
+     "",
+     "(5,295,708)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "4,290",
+     "",
+     "",
+     "3,066",
+     "",
+     "",
+     "9,484",
+     "",
+     "",
+     "4,940",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "37,910",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "-",
+     "",
+     "",
+     "(285,800)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,921,054)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,163,259)",
+     "",
+     "$",
+     "(2,996,430)",
+     "",
+     "$",
+     "(7,818,833)",
+     "",
+     "$",
+     "(7,173,912)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.37)",
+     "",
+     "$",
+     "(0.28)",
+     "",
+     "$",
+     "(0.94)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding - Basic and diluted",
+     "",
+     "27,661,675",
+     "",
+     "",
+     "7,991,559",
+     "",
+     "",
+     "27,623,358",
+     "",
+     "",
+     "7,617,409",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "prose_after": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 189,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Pa[ ]",
+     "",
+     "Paid in\n\nCapital",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2013",
+     "",
+     "27,546,058",
+     "$",
+     "275,461",
+     "$",
+     "146,569,758",
+     "$",
+     "(126,267,945)",
+     "",
+     "$",
+     "20,577,274",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "115,617",
+     "",
+     "1,156",
+     "",
+     "152,314",
+     "",
+     "\u2014",
+     "",
+     "",
+     "153,470",
+     ""
+    ],
+    [
+     "Shares subscribed under the at-the-market program",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "49,847",
+     "",
+     "\u2014",
+     "",
+     "",
+     "49,847",
+     ""
+    ],
+    [
+     "Option expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "591,622",
+     "",
+     "\u2014",
+     "",
+     "",
+     "591,622",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,818,833)",
+     "",
+     "",
+     "(7,818,833)",
+     ""
+    ],
+    [
+     "Balances at June 30, 2014",
+     "",
+     "27,661,675",
+     "$",
+     "276,617",
+     "$",
+     "147,363,541",
+     "$",
+     "(134,086,778)",
+     "",
+     "$",
+     "13,553,380",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 198,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(Unaudited)",
+   "prose_after": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 216,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(7,818,833)",
+     "",
+     "$",
+     "(7,173,912)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted stock issued to employees",
+     "",
+     "153,470",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of discount on notes payable due",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "to warrants and beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "",
+     "1,382,977",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "194,244",
+     "",
+     "",
+     "167,209",
+     ""
+    ],
+    [
+     "Amortization of debt financing costs",
+     "",
+     "-",
+     "",
+     "",
+     "98,964",
+     ""
+    ],
+    [
+     "Option and warrant expense",
+     "",
+     "591,622",
+     "",
+     "",
+     "714,871",
+     ""
+    ],
+    [
+     "Changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "(309,103)",
+     "",
+     "",
+     "(369,383)",
+     ""
+    ],
+    [
+     "Accounts payable - third parties and related parties",
+     "",
+     "132,591",
+     "",
+     "",
+     "635,368",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "394,281",
+     "",
+     "",
+     "637,636",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(656,523)",
+     "",
+     "",
+     "4,431,063",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "15,621",
+     "",
+     "",
+     "(96,064)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(7,302,630)",
+     "",
+     "",
+     "428,729",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property & equipment",
+     "",
+     "(127,222)",
+     "",
+     "",
+     "(22,894)",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "",
+     "",
+     "500,000",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "(127,222)",
+     "",
+     "",
+     "477,106",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock and warrants sold for cash, net of offering costs",
+     "",
+     "-",
+     "",
+     "",
+     "3,578,288",
+     ""
+    ],
+    [
+     "Proceeds from third party debt",
+     "",
+     "-",
+     "",
+     "",
+     "550,000",
+     ""
+    ],
+    [
+     "Proceeds from related party debt",
+     "",
+     "-",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Deferred financing and offering costs",
+     "",
+     "-",
+     "",
+     "",
+     "(147,847)",
+     ""
+    ],
+    [
+     "Repayment on related party notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "(100,000)",
+     ""
+    ],
+    [
+     "Repayments on notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "(450,000)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "3,530,441",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "(7,429,852)",
+     "",
+     "",
+     "4,436,276",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "23,644,542",
+     "",
+     "",
+     "592,004",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "16,214,690",
+     "",
+     "$",
+     "5,028,280",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 225,
+    "end_line": 274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 274,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "$",
+     "19,128"
+    ],
+    [
+     "NON-CASH TRANSACTIONS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of notes payable to common stock",
+     "",
+     "-",
+     "",
+     "1,000,000"
+    ],
+    [
+     "Discount on convertible notes relating to:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "-",
+     "",
+     "195,969"
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "141,829"
+    ],
+    [
+     "Unpaid additions to property and equipment",
+     "",
+     "6,825",
+     "",
+     "108,607"
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "49,847",
+     "",
+     "-"
+    ],
+    [
+     "Shares issued as deferred offering costs",
+     "",
+     "-",
+     "",
+     "1,234"
+    ]
+   ],
+   "caption_stack": [
+    "Cash paid for:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 277,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "See accompanying notes to unaudited consolidated financial statements\nOPEXA THERAPEUTICS, INC.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(unaudited)\nNote 1. Basis of Presentation\nThe accompanying interim unaudited consolidated financial statements of Opexa Therapeutics, Inc. (\u201cOpexa\u201d or the \u201cCompany\u201d) have been prepared in accordance with accounting principles generally accepted in the United States of America and the rules of the Securities and Exchange Commission (\u201cSEC\u201d) and should be read in conjunction with the audited financial statements and notes thereto contained in Opexa\u2019s latest Annual Report filed with the SEC on Form 10-K. In the opinion of management, all adjustments, consisting of normal recurring adjustments, necessary for a fair presentation of financial position and the results of operations for the interim periods presented have been reflected herein. The results of operations for interim periods are not necessarily indicative of the results to be expected for the full year. Notes to the financial statements that would substantially duplicate the disclosure contained in the audited financial statements for the most recent fiscal year as reported in Form 10-K have been omitted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 276,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 291,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "June 30, 2014",
+     "",
+     "Dec 31, 2013",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "$",
+     "670,041",
+     "$",
+     "315,014"
+    ],
+    [
+     "Subscriptions receivable",
+     "",
+     "49,847",
+     "",
+     "-"
+    ],
+    [
+     "Supplies inventory",
+     "",
+     "599,572",
+     "",
+     "673,044"
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "162,066",
+     "",
+     "134,518"
+    ],
+    [
+     "",
+     "$",
+     "1,481,526",
+     "$",
+     "1,122,576"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 330,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Other Current Assets"
+    }
+   },
+   "prose_before": "Cash and Cash Equivalents. Opexa considers all highly liquid investments with an original maturity of three months or less, when purchased, to be cash equivalents. Investments with maturities in excess of three months but less than one year are classified as short-term investments and are stated at fair market value.\nOpexa primarily maintains cash balances on deposit in accounts at a U.S.-based financial institution. The aggregate cash balance on deposit in these accounts is insured by the Federal Deposit Insurance Corporation up to $250,000. Opexa\u2019s cash balances on deposit in these accounts may, at times, exceed the federally insured limits. Opexa has not experienced any losses in such accounts.\nAt June 30, 2014, Opexa has approximately $15.5 million in a savings account. For the six months ended June 30, 2014, the savings account recognized an average market yield of 0.10%. Interest income of $9,484 was recognized for the six months ended June 30, 2014 in the consolidated statements of operations.\nNote 3. Other Current Assets\nOther current assets consisted of the following at June 30, 2014 and December 31, 2013:",
+   "prose_after": "Prepaid expenses at June 30, 2014 and December 31, 2013 include advance payments totaling $415,685 and $21,982, respectively, made to vendors and consultants for the conduct of the Phase IIb clinical trial in SPMS.\nPrepaid expenses at June 30, 2014 and December 31, 2013 also include costs incurred from third parties in connection with the Merck Agreement (see Note 2). As of June 30, 2014 and December 31, 2013, the remaining costs of $38,938 in connection with the Merck Agreement that are expected to be amortized over the upcoming 12-month period are capitalized and included in other current assets in the consolidated balance sheets. The remaining costs of $58,409 in connection with the Merck Agreement that are expected to be amortized beyond the upcoming 12-month period are capitalized and included in other long term assets in the consolidated balance sheets (see Note 4).\nSupplies inventory at June 30, 2014 and December 31, 2013 includes reagents and supplies that will be used to manufacture Tcelna and placebo product in Opexa\u2019s Phase IIb clinical study. Opexa expects to amortize these prepaid reagents and supplies to research and development costs in the consolidated statements of operations over the course of the clinical study.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 321,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 355,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nShares",
+     "",
+     "",
+     "Wtd. Avg.\n\nExercise Price",
+     "",
+     "Wtd. Avg.\n\nRemaining\n\nContract Term\n\n(# years)",
+     "",
+     "Intrinsic\n\nValue",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2014",
+     "",
+     "1,162,449",
+     "",
+     "$",
+     "4.30",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,350,440",
+     "",
+     "",
+     "1.82",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited and canceled",
+     "",
+     "(47,198)",
+     "",
+     "",
+     "3.40",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2014",
+     "",
+     "2,465,691",
+     "",
+     "$",
+     "2.96",
+     "",
+     "8.5",
+     "$",
+     "43,363"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at June 30, 2014",
+     "",
+     "828,235",
+     "",
+     "$",
+     "4.83",
+     "",
+     "6.7",
+     "$",
+     "41,848"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 383,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The 2010 Stock Incentive Plan (the \u201c2010 Plan\u201d) provides for the grant of equity incentive awards to employees, directors and consultants of Opexa in the form of incentive stock options or nonqualified stock options, as well as restricted stock, stock appreciation rights, restricted stock units and performance awards that may be settled in cash, stock or other property. The 2010 Plan is the successor to and continuation of Opexa\u2019s June 2004 Compensatory Stock Option Plan (the \u201c2004 Plan\u201d). A total of 625,000 shares of common stock are authorized to be issued for awards made under the 2010 Plan through September 2020, plus (i) the number of shares subject to stock options outstanding under the 2004 Plan that are forfeited or terminate prior to exercise and would otherwise be returned to the share reserves under the 2004 Plan and (ii) any reserved shares under the 2004 Plan that were not issued or subject to outstanding grants. In addition, shares subject to awards granted under the 2010 Plan that terminate or expire before being exercised or settled will become available for grant under the 2010 Plan. As of June 30, 2014, options to purchase an aggregate of 2,465,691 shares were issued and outstanding.\nOpexa accounts for share-based compensation, including options and nonvested shares, according to the provisions of FASB ASC 718, \u201cShare Based Payment.\u201d During the six months ended June 30, 2014, Opexa recognized option expense of $591,622. Unamortized stock compensation expense as of June 30, 2014 amounted to $1,783,965.\nStock Option Activity\nA summary of stock option activity for the six months ended June 30, 204 is presented below:",
+   "prose_after": "Employee Options:\nOption awards are granted with an exercise price equal to the market price of Opexa\u2019s stock at the date of issuance, generally have a ten-year life, and have various vesting dates that range from no vesting or partial vesting upon date of grant to full vesting on a specified date. Opexa estimates the fair value of stock options using the Black-Scholes option-pricing model and records the compensation expense ratably over the service period.\nDuring the six months ended June 30, 2014, performance-based options to purchase an aggregate of 510,125 shares at an exercise price of $1.82 were granted to senior management. These options have a term of ten years and vest 100% upon the earlier of achievement of a performance-based, strategic milestone objective or termination of employment without cause following a change of control. Fair value of $918,554 was calculated using the Black-Scholes option-pricing model. Variables used in the Black-Scholes option-pricing model for these options include (1) discount rate of 2.65%, (2) expected term of 10 years, (3) expected volatility of 172% and (4) zero expected dividends.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 420,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nShares",
+     "",
+     "Wtd. Avg.\n\nExercise Price",
+     "",
+     "Wtd. Avg.\n\nRemaining\n\nContract Term\n\n(# years)",
+     "",
+     "Intrinsic\n\nValue",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2014",
+     "",
+     "3,069,113",
+     "$",
+     "4.12",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited and canceled",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2014",
+     "",
+     "3,069,113",
+     "$",
+     "4.12",
+     "",
+     "2.7",
+     "$",
+     "186,750"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at June 30, 2014",
+     "",
+     "3,069,113",
+     "$",
+     "4.12",
+     "",
+     "2.7",
+     "$",
+     "186,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "During the six months ended June 30, 2014, options to purchase an aggregate of 120,440 shares at exercise prices ranging from $1.82 to $2.00 were granted to non-employee directors for service on Opexa\u2019s Board. Options to purchase an aggregate of 78,858 shares will expire on the earlier of 10 years or a change in control of the Company, with 50% of the shares vesting immediately and 50% vesting on December 31, 2014. Options to purchase an aggregate of 26,288 shares have terms of 10 years, with 50% of the shares vesting immediately and 50% vesting on February 28, 2015. An option to purchase 8,844 shares will expire on the earlier of 10 years or a change in control of the Company, with vesting in quarterly increments beginning on March 31, 2014. An option to purchase 6,450 shares will expire on the earlier of 10 years or a change in control of the Company, with vesting in three quarterly increments beginning June 30, 2014. Fair value of $211,097 was calculated using the Black-Scholes option-pricing model. Variables used in the Black-Scholes option-pricing model for these options include (1) discount rate range of 2.65% and 2.77%, (2) expected term of 5.25 years, (3) expected volatility range of 155% and 157% and (4) zero expected dividends.\nRestricted Stock\nSee Note 5 for a description of restricted stock awards made to employees and non-employee directors under the 2010 Plan during the six months ended June 30, 2014.\nWarrant Activity\nA summary of warrant activity for the six months ended June 30, 2014 is presented below:",
+   "prose_after": "Note 7. Subsequent events\nSubsequent to June 30, 2014 and through August 1, 2014, Opexa issued an aggregate of 91,497 shares of common stock under the ATM Agreement for gross and net proceeds of $152,687 and $148,103, respectively.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThe following discussion and analysis of our financial condition is as of June 30, 2014. Our results of operations and cash flows should be read in conjunction with our unaudited consolidated financial statements and notes thereto included elsewhere in this report and the audited financial statements and the notes thereto included in our Form 10-K for the year ended December 31, 2013.\nForward-Looking Statements\nThis Quarterly Report on Form 10-Q contains forward-looking statements which are made pursuant to the safe harbor provisions of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. Statements contained in this report, other than statements of historical fact, constitute \u201cforward-looking statements.\u201d The words \u201cexpects,\u201d \u201cbelieves,\u201d \u201chopes,\u201d \u201canticipates,\u201d \u201cestimates,\u201d \u201cmay,\u201d \u201ccould,\u201d \u201cintends,\u201d \u201cexploring,\u201d \u201cevaluating,\u201d \u201cprogressing,\u201d \u201cproceeding,\u201d and similar expressions are intended to identify forward-looking statements. These forward-looking statements do not constitute guarantees of future performance. Investors are cautioned that statements which are not strictly historical statements, including, without limitation, statements regarding current or future financial payments, returns, royalties, performance and position, management\u2019s strategy, plans and objectives for future operations, plans and objectives for product development (including for Tcelna (imilecleucel T)), plans and objectives for present and future clinical trials and results of such trials, plans and objectives for regulatory approval, litigation, intellectual property, product development, manufacturing plans and performance, and management\u2019s initiatives and strategies, constitute forward-looking statements. Such forward-looking statements are subject to a number of risks and uncertainties that could cause actual results to differ materially from those anticipated. These risks and uncertainties include, but are not limited to, those risks discussed in \u201cRisk Factors,\u201d as well as, without limitation, risks associated with:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 422,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit N[ ].",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "Form of Notice of Stock Option Grant and Stock Option Agreement for awards granted under the 2010 Stock Incentive Plan, as amended and restated."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101*",
+     "Financial statements from the Quarterly Report on Form 10-Q of the Company for the period ended June 30, 2014, formatted in Extensible Business Reporting Language (XBRL):  (i) Consolidated Balance Sheets; (ii) Consolidated Statements of Operations; (iii) Consolidated Statements of Changes in Stockholders' Equity; (iv) Consolidated Statements of Cash Flows; and (v) Notes to Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1113,
+    "end_line": 1131
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "In addition to general corporate purposes (including working capital, research and development and operational purposes), we currently intend to use our available cash to continue our ongoing Phase IIb clinical study of Tcelna in SPMS. We reached our enrollment target for the Abili-T trial in June 2014, and a total of 190 patients have been enrolled in this two-year study. We expect top-line data to be available in the second half of 2016. Our existing resources are not adequate to permit us to complete such study. We will need to secure significant additional resources to complete the trial and support our operations during the pendency of the trial.\nDepending on future developments and circumstances, we may use some of our available cash for other purposes which may have the potential to decrease the forecasted cash runway. Notwithstanding our current intention to use our available cash for further clinical studies of Tcelna, our management will have significant flexibility in using our current available cash. The actual amounts and timing of expenditures will vary significantly depending on a number of factors, including the amount and timing of cash used in our operations and our research and development efforts. Management\u2019s failure to use these funds effectively would have an adverse effect on the value of our common stock and could make it more difficult and costly to raise funds in the future.\nItem 6. Exhibits.",
+   "prose_after": "__________________\n* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "OPEXA THERAPEUTICS, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 14, 2014",
+     "",
+     "By:",
+     "/s/  Neil K. Warma"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Neil K. Warma\n\nPresident and Chief Executive Officer\n\n(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "OPEXA THERAPEUTICS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1142,
+    "end_line": 1153
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "__________________\n* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1137,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: August 14, 2014",
+     "By:",
+     "/s/  Karthik Radhakrishnan"
+    ],
+    [
+     "",
+     "",
+     "Karthik Radhakrishnan\n\nChief Financial Officer\n\n(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1154,
+    "end_line": 1163
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1137,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit N[ ].",
+     "  Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "Form of Notice of Stock Option Grant and Stock Option Agreement for awards granted under the 2010 Stock Incentive Plan, as amended and restated."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101*",
+     "Financial statements from the Quarterly Report on Form 10-Q of the Company for the period ended June 30, 2014, formatted in Extensible Business Reporting Language (XBRL):  (i) Consolidated Balance Sheets; (ii) Consolidated Statements of Operations; (iii) Consolidated Statements of Changes in Stockholders' Equity; (iv) Consolidated Statements of Cash Flows; and (v) Notes to Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1168,
+    "end_line": 1186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "__________________\n* Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

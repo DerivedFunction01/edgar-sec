@@ -1,0 +1,1543 @@
+{
+ "accession": "0001213900-10-000898",
+ "cik": "0001445193",
+ "form": "10-Q",
+ "filing_date": "2010-03-15",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0110_chinaadvmed.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "000-53418",
+     "75-3269052"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "(Commission File No.)",
+     "(IRS Employee Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\n_______________\nFORM 10-Q\n_______________\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended January 31, 2010\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______to______.\nCHINA ADVANCED MEDITECH, INC.\n(Exact name of registrant as specified in Charter)",
+   "prose_after": "Room 405, 4/F., Wing Ming Industrial Centre\n15 Cheung Yue Street, Cheung Sha Wan, Kowloon, Hong Kong\n(Address of Principal Executive Offices)\n_______________\n(852) 61218865\n(Issuer Telephone number)\n_______________\n(Former Name or Former Address if Changed Since Last Report)\nCheck whether the issuer (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the issuer was required to file such reports), and (2)has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition",
+     "13"
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "14"
+    ],
+    [
+     "Item 4T.",
+     "Control and Procedures",
+     "14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company filer. See definition of \u201caccelerated filer\u201d and \u201clarge accelerated filer\u201d in Rule 12b-2 of the Exchange Act (Check one):\nLarge Accelerated Filer [ ] Accelerated Filer [ ] Non-Accelerated Filer [ ] Smaller Reporting Company [X]\nIndicate by check mark whether the registrant is a shell company as defined in Rule 12b-2 of the Exchange Act.\nYes [X] No [ ]\nState the number of shares outstanding of each of the issuer\u2019s classes of common equity, as of March 11, 2010: 100,000 shares of Common Stock.\nFORM 10-Q\nJanuary 31, 2010\nINDEX\nPART I-- FINANCIAL INFORMATION",
+   "prose_after": "PART II-- OTHER INFORMATION",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 94,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "15"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "15"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "15"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "15"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "15"
+    ],
+    [
+     "Item 6.",
+     "Exhibits and Reports on Form 8-K",
+     "15"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "PART II-- OTHER INFORMATION",
+   "prose_after": "SIGNATURE\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nThe accompanying financial statements have been prepared in accordance with generally accepted accounting principles for interim financial information and in accordance with the instructions for Form 10-Q. Accordingly, they do not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements.\nIn the opinion of management, the financial statements contain all material adjustments, consisting only of normal recurring adjustments necessary to present fairly the financial condition, results of operations, and cash flows of the Company for the interim periods presented.\nThe results for the period ended January 31, 2010 are not necessarily indicative of the results of operations for the full year. These financial statements and related footnotes should be read in conjunction with the financial statements and footnotes thereto included in the Company\u2019s Form 10 filed with the Securities and Exchange Commission for the period ended January 31, 2010.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 94,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,\n\n2010",
+     "",
+     "",
+     "July 31,\n\n2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholder\u2019s Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "(3,372)",
+     "",
+     "$",
+     "(2,372)",
+     ""
+    ],
+    [
+     "Loan payable \u2013 related party",
+     "",
+     "(23,824)",
+     "",
+     "",
+     "(22,033)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(27,196)",
+     "",
+     "",
+     "(24,405)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock ( $0.00001 par value, 100,000,000 shares  authorized, none issued and outstanding)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock ( $0.00001 par value, 500,000,000 shares authorized, 100,000 shares issued and outstanding)",
+     "",
+     "1",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Deficit accumulated during development stage",
+     "",
+     "(27,197)",
+     "",
+     "",
+     "(24,406)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholder\u2019s Deficit",
+     "",
+     "(27,196)",
+     "",
+     "",
+     "(24,405)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholder\u2019s Deficit",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 113,
+    "end_line": 141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying financial statements have been prepared in accordance with generally accepted accounting principles for interim financial information and in accordance with the instructions for Form 10-Q. Accordingly, they do not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements.\nIn the opinion of management, the financial statements contain all material adjustments, consisting only of normal recurring adjustments necessary to present fairly the financial condition, results of operations, and cash flows of the Company for the interim periods presented.\nThe results for the period ended January 31, 2010 are not necessarily indicative of the results of operations for the full year. These financial statements and related footnotes should be read in conjunction with the financial statements and footnotes thereto included in the Company\u2019s Form 10 filed with the Securities and Exchange Commission for the period ended January 31, 2010.\nBalance Sheets",
+   "prose_after": "See accompanying notes to financial statements\nStatements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months\n\nEnded\n\nJanuary 31, 2010",
+     "",
+     "",
+     "Three Months\n\nEnded\n\nJanuary 31, 2009",
+     "",
+     "",
+     "Si[X]\n\n Months\n\nEnded\n\nJanuary 31, 2010",
+     "",
+     "",
+     "Si[X]\n\n Months\n\nEnded\n\nJanuary 31, 2009",
+     "",
+     "",
+     "Cumulative from July 11, 2008 (Inception) to January 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "2,278",
+     "",
+     "$",
+     "1,388",
+     "",
+     "$",
+     "2,792",
+     "",
+     "$",
+     "6,971",
+     "",
+     "$",
+     "27,197",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "(2,278)",
+     "",
+     "",
+     "(1,388)",
+     "",
+     "",
+     "(2,792)",
+     "",
+     "",
+     "(6,971)",
+     "",
+     "",
+     "(27,197)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(2,278)",
+     "",
+     "",
+     "(1,388)",
+     "",
+     "",
+     "(2,792)",
+     "",
+     "",
+     "(6,971)",
+     "",
+     "",
+     "(27,197)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 basic and diluted",
+     "",
+     "(0.02)",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.03)",
+     "",
+     "",
+     "(0.07)",
+     "",
+     "",
+     "(0.27)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "during the period \u2013 basic and diluted",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 149,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements\nStatements of Operations",
+   "prose_after": "See accompanying notes to financial statements\nStatement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 145,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 178,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months\n\nEnded\n\nJanuary 31, 2010",
+     "",
+     "",
+     "Three Months\n\nEnded\n\nJanuary 31, 2009",
+     "",
+     "",
+     "Si[X]\n\nMonths\n\nEnded\n\nJanuary 31, 2010",
+     "",
+     "",
+     "Si[X]\n\nMonths\n\nEnded\n\nJanuary 31, 2009",
+     "",
+     "",
+     "Cumulative from July\n\n11, 2008 (Inception)\n\nto January\n\n31, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,278)",
+     "",
+     "$",
+     "(1,388)",
+     "",
+     "$",
+     "(2,792)",
+     "",
+     "$",
+     "(6,971)",
+     "",
+     "$",
+     "(27,197)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock issued for compensation - founder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Decrease)/increase in accounts payable",
+     "",
+     "1,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "(6,250)",
+     "",
+     "",
+     "3,372",
+     ""
+    ],
+    [
+     "Net Cash Used In Operating Activities",
+     "",
+     "(1,278)",
+     "",
+     "",
+     "(1,388)",
+     "",
+     "",
+     "(1,792)",
+     "",
+     "",
+     "(13,221)",
+     "",
+     "",
+     "(23,824)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan payable - related party",
+     "",
+     "1,278",
+     "",
+     "",
+     "1,388",
+     "",
+     "",
+     "1,792",
+     "",
+     "",
+     "13,221",
+     "",
+     "",
+     "23,824",
+     ""
+    ],
+    [
+     "Net Cash Provided By Financing Activities",
+     "",
+     "1,278",
+     "",
+     "",
+     "1,388",
+     "",
+     "",
+     "1,792",
+     "",
+     "",
+     "13,221",
+     "",
+     "",
+     "23,824",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase in Cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Beginning of Period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - End of Period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 184,
+    "end_line": 221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to financial statements\nStatement of Cash Flows",
+   "prose_after": "See accompanying notes to financial statements\nNotes to Financial Statements\nJanuary 31, 2010\nNOTE 1 \u2013 Nature of Operations and Summary of Significant Accounting Policies\nNature of operations\nChina Advanced Meditech, Inc. (the \u201cCompany\u201d) is a Delaware corporation that was incorporated on July 11, 2008. The Company intends to effect a business combination with a Chinese based operating company.\nDevelopment stage\nThe Company's financial statements are presented as those of a development stage enterprise. Activities during the development stage primarily include related party debt financing and implementing the business plan.\nUse of estimates\nThe preparation of financial statements in conformity with generally accepted accounting principles in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 223,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross deferred tax assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "9,247",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "9,247",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(9,247)",
+     ""
+    ],
+    [
+     "Net deferred tax asset recorded",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Gross deferred tax assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 357,
+    "end_line": 367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "During the period ended January 31, 2010, the Company issued 100,000 shares of common stock to its founder, having a fair value of $1 ($0.00001/share), for pre-incorporation services.\nNote 5 Income Taxes\nSFAS 109 requires the recognition of deferred tax assets and liabilities for both the expected impact of differences between the financial statements and the tax basis of assets and liabilities, and for the expected future tax benefit to be derived from tax losses and tax credit carryforwards. SFAS 109 additionally requires the establishment of a valuation allowance to reflect the likelihood of realization of deferred tax assets.\nThe Company has a net operating loss carryforward for tax purposes totaling $27,197 at January 31, 2010, expiring through the year 2028. Internal Revenue Code Section 382 places a limitation on the amount of taxable income that can be offset by carryforwards after a change in control (generally greater than a 50% change in ownership). Temporary differences, which give rise to a net deferred tax asset, are as follows:\nSignificant deferred tax assets at January 31, 2010 are as follows:",
+   "prose_after": "The valuation allowance at October 31, 2009 was $8,473.The net change in valuation allowance during the period ended January 31, 2010, was an increase of $774. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred income tax assets will not be realized. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred income tax liabilities, projected future taxable income, and tax planning strategies in making this assessment. Based on consideration of these items, management has determined that enough uncertainty exists relative to the realization of the deferred income tax asset balances to warrant the application of a full valuation allowance as of January 31, 2010.\nNotes to Financial Statements\nJanuary 31, 2010\nThe actual tax benefit differs from the expected tax benefit for the period ended January 31, 2010 (computed by applying the U.S. Federal Corporate tax rate of 34% to income before taxes) as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expected tax expense (benefit) - Federal",
+     "$",
+     "(9,247)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "9,247",
+     ""
+    ],
+    [
+     "Actual tax expense (benefit)",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 379,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The valuation allowance at October 31, 2009 was $8,473.The net change in valuation allowance during the period ended January 31, 2010, was an increase of $774. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred income tax assets will not be realized. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred income tax liabilities, projected future taxable income, and tax planning strategies in making this assessment. Based on consideration of these items, management has determined that enough uncertainty exists relative to the realization of the deferred income tax asset balances to warrant the application of a full valuation allowance as of January 31, 2010.\nNotes to Financial Statements\nJanuary 31, 2010\nThe actual tax benefit differs from the expected tax benefit for the period ended January 31, 2010 (computed by applying the U.S. Federal Corporate tax rate of 34% to income before taxes) as follows:",
+   "prose_after": "ITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThe information contained in Item 2 contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. Actual results may materially differ from those projected in the forward-looking statements as a result of certain risks and uncertainties set forth in this report. Although management believes that the assumptions made and expectations reflected in the forward-looking statements are reasonable, there is no assurance that the underlying assumptions will, in fact, prove to be correct or that actual results will not be different from expectations expressed in this report.\nDescription of Business\nThe Company was incorporated in the State of Delaware on July 11, 2008 and maintains its principal executive office at Room 405, 4/F., Wing Ming Industrial Centre, 15 Cheung Yue Street, Cheung Sha Wan, Kowloon, Hong Kong. Since inception, the Company has been engaged in organizational efforts and obtaining initial financing. The Company was formed as a vehicle to pursue a business combination through the acquisition of, or merger with, an operating business. The Company filed a registration statement on Form 10-SB with the U.S. Securities and Exchange Commission (the \u201cSEC\u201d) on September 15, 2008, and since its effectiveness, the Company has focused its efforts to identify a possible business combination.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\nJanuary 31, 2010",
+     "",
+     "",
+     "Three\n\nMonths Ended\n\nJanuary 31, 2009",
+     "",
+     "",
+     "Cumulative\n\nFrom July 11, 2008\n\n(Inception)\n\nt[ ]\n\nJanuary 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "Net Cash (Used in) Operating Activities",
+     "$",
+     "(1,278)",
+     "",
+     "$",
+     "(1,388)",
+     "",
+     "$",
+     "(23,824)",
+     ""
+    ],
+    [
+     "Net Cash (Used in) Investing Activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "1,278",
+     "",
+     "",
+     "1,388",
+     "",
+     "",
+     "23,824",
+     ""
+    ],
+    [
+     "Net Increase in Cash and Cash Equivalents",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company, based on proposed business activities, is a \u201cblank check\u201d company. The SEC defines those companies as \"any development stage company that is issuing a penny stock, within the meaning of Section 3(a)(51) of the Securities Exchange Act 1934, as amended (the \u201cExchange Act\u201d), and that has no specific business plan or purpose, or has indicated that its business plan is to merge with an unidentified company or companies.\" Many states have enacted statutes, rules and regulations limiting the sale of securities of \"blank check\" companies in their respective jurisdictions. The Company is also a \u201cshell company,\u201d defined in Rule 12b-2 under the Exchange Act as a company with no or nominal assets (other than cash) and no or nominal operations. Management does not intend to undertake any efforts to cause a market to develop in our securities, either debt or equity, until we have successfully concluded a business combination. The Company intends to comply with the periodic reporting requirements of the Exchange Act for so long as we are subject to those requirements.\nThe Company was organized as a vehicle to investigate and, if such investigation warrants, acquire a target company or business seeking the perceived advantages of being a publicly held corporation. The Company\u2019s principal business objective for the next 12 months and beyond such time will be to achieve long-term growth potential through a combination with an operating business. The Company will not restrict its potential candidate target companies to any specific business, industry or geographical location and, thus, may acquire any type of business.\nLiquidity and Capital Resources\nAs of January 31, 2010, the Company\u2019s current liabilities totaled $27,196, comprised exclusively of monies due to stockholders. The following is a summary of the Company's cash flows provided by (used in) operating, investing, and financing activities:",
+   "prose_after": "The Company has no assets and has generated no revenues since inception. The Company is also dependent upon the receipt of capital investment or other financing to fund its ongoing operations and to execute its business plan of seeking a combination with a private operating company. In addition, the Company is dependent upon certain related parties to provide continued funding and capital resources. If continued funding and capital resources are unavailable at reasonable terms, the Company may not be able to implement its plan of operations.\nResults of Operation\nThe Company has not conducted any active operations since inception, except for its efforts to locate suitable acquisition candidates. No revenue has been generated by the Company from July 11, 2008 (Inception) to January 31, 2010. It is unlikely the Company will have any revenues unless it is able to effect an acquisition or merger with an operating company, of which there can be no assurance. It is management's assertion that these circumstances may hinder the Company's ability to continue as a going concern. The Company\u2019s plan of operation for the next twelve months shall be to continue its efforts to locate suitable acquisition candidates. For the period ended from July 11, 2008 (Inception) to January 31, 2010, the Company had a net loss of $27,197 comprised exclusively of legal, accounting, audit, and other professional service fees incurred in relation to the filling of the Company\u2019s Registration Statement on Form 10-SB and other related documents.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 388,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CHINA ADVANCED MEDITECH, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 11, 2010",
+     "By:",
+     "/s/ Wong Wa Kei Anthony"
+    ],
+    [
+     "",
+     "",
+     "Wong Wa Kei Anthony"
+    ],
+    [
+     "",
+     "",
+     "President, Secretary,\n\nChief Financial Officer and Director"
+    ]
+   ],
+   "caption_stack": [
+    "CHINA ADVANCED MEDITECH, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 500,
+    "end_line": 510
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits and Reports of Form 8-K."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Item 5. Other Information.\nNone\nItem 6. Exhibits and Reports of Form 8-K.\n(a) Exhibits\n31.1 Certifications pursuant to Section 302 of Sarbanes Oxley Act of 2002\n32.1 Certifications pursuant to Section 906 of Sarbanes Oxley Act of 2002\n(b) Reports of Form 8-K\nNone.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

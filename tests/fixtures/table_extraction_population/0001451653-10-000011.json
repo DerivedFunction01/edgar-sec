@@ -1,0 +1,4601 @@
+{
+ "accession": "0001451653-10-000011",
+ "cik": "0001451653",
+ "form": "10-K",
+ "filing_date": "2010-03-30",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "wps-10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "36-4645325"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or formation)",
+     "(I.R.S. employer identification number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2009\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission File No. 333-161454\nWPS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "525\nW. Allen Ave.\nUnit 9\nSan Dimas, California 91773\nEmail: nbdc@onebox.com\n(Address of principal executive offices)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Registrant\u2019s telephone number:",
+     "(909) 599-9415"
+    ],
+    [
+     "Registrant\u2019s facsimile number:",
+     "(626) 335-7750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "525\nW. Allen Ave.\nUnit 9\nSan Dimas, California 91773\nEmail: nbdc@onebox.com\n(Address of principal executive offices)",
+   "prose_after": "N/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered under Section 12(b) of the Exchange Act: None\nSecurities registered under Section 12(g) of the Exchange Act: None\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Description of Business.",
+     "4"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "",
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "9"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties",
+     "9"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings.",
+     "10"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders.",
+     "10"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "10"
+    ],
+    [
+     "",
+     "Item 6",
+     "Selected Financial Data",
+     "12"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation.",
+     "12"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "15"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.",
+     "24"
+    ],
+    [
+     "",
+     "Item 9AT.",
+     "Controls and Procedures.",
+     "24"
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other Information.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance with Section 16(a) of the Exchange Act.",
+     "25"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation.",
+     "27"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "27"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "28"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accountant Fees and Services.",
+     "29"
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits and Reports on Form 8-K",
+     "29"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 94,
+    "end_line": 129
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nState issuer\u2019s revenues for its most recent fiscal year: $\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter is $________.\nAs of the last business day of the Issuer\u2019s most recently completed fiscal year December 31, 2009, the aggregate market value of the voting and non-voting common equity held by non-affiliates was approximately $0.\nAs of December 31, 2009, \u00adthere were 2,150,000 shares of Common Stock, $0.001 par value per share, issued.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nTable of Contents",
+   "prose_after": "CERTIFICATIONS\nPART I\nFORWARD-LOOKING STATEMENTS\nCertain statements made in this Annual Report on Form 10-K are \u201cforward-looking statements\u201d (within the meaning of the Private Securities Litigation Reform Act of 1995) regarding the plans and objectives of management for future operations. Such statements involve known and unknown risks, uncertainties and other factors that may cause actual results, performance or achievements of the Registrant to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. The Registrant\u2019s plans and objectives are based, in part, on assumptions involving the continued expansion of business. Assumptions relating to the foregoing involve judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond the control of the Registrant. Although the Registrant believes its assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate and, therefore, there can be no assurance the forward-looking statements included in this Report will prove to be accurate. In light of the significant uncertainties inherent in the forward-looking statements included herein, the inclusion of such information should not be regarded as a representation by the Registrant or any other person that the objectives and plans of the Registrant will be achieved.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Line Item",
+     "12/31/2009\n\n(Audited)",
+     "",
+     "12/31/2008\n\n(Audited)",
+     "",
+     "Increase\n\n(Decrease)",
+     "",
+     "Percentage\n\nIncrease\n\n(Decrease)",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "2,675",
+     "$",
+     "0",
+     "$",
+     "2,675",
+     "",
+     "2,675%"
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "8,208",
+     "$",
+     "2,150",
+     "$",
+     "6,058",
+     "",
+     "382%"
+    ],
+    [
+     "Net (Loss)",
+     "$",
+     "(6,000)",
+     "$",
+     "(2,150)",
+     "$",
+     "3,850",
+     "",
+     "279%"
+    ],
+    [
+     "Loss Per Share of Common Stock",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In order to continue as a going concern and achieve a profitable level of operations, the Company will need, among other things, additional capital resources and developing a consistent source of revenues. The ability of the Company to continue as a going concern is dependent upon its ability to successfully accomplish its strategic business plan, become profitable and to be able to sustain such profitability. The accompanying financial statements do not include any adjustments that might be necessary if the Company is unable to continue as a going concern.\nManagement believes that the Company will require substantial cash infusion for the next twelve months to fund its operations. There is no guarantee that such cash infusion will be available.\nResults of Operations\nFiscal Year Ended December 31, 2009 Compared to December 31, 2008\nThe following table summarizes the results of our operations during the fiscal years ended December 31, 2009 and 2008, respectively, and provides information regarding the dollar and percentage increase or (decrease) from the current 12-month period to the prior 12-month period:",
+   "prose_after": "Assets. At December 31, 2009, we had $820 cash on hand. On December 31, 2008, we had $0 cash on hand. This minimal amount of cash on hand and nominal increase was due to limited revenue producing operations of the Company.\nTotal Current Liabilities. Our Total Current Liabilities increased to $6,531 on December 31, 2009 from $0 on December 31, 2008. This increase in Total Current Liabilities was due to increased business operations.\nRevenues. Our Revenues were $2,675 for the fiscal year ended December 31, 2009, an increase from $0 for the fiscal year ended December 31, 2008. This increase was due to additional start-up costs.\nOperating Expenses. Our Operating Expenses increased to $8,208 for the fiscal year ended December 31, 2009 from $2,150 for the fiscal year ended September 30, 2008. This increase in Operating Expenses was due to additional start-up costs and increased business activity.\nNet Loss. We recorded a Net Loss of $6,000 for the fiscal year ended December 31, 2009 as compared with a Net Loss of $2,150 for the fiscal year ended December 31, 2008. The increase in Net Losses was due to additional start-up costs and increased business activity.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 549,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WPS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "",
+     "$",
+     "820",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Current Assets",
+     "",
+     "",
+     "820",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "820",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable",
+     "",
+     "",
+     "$",
+     "1,725",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "Note payable related party",
+     "",
+     "",
+     "",
+     "4,806",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Current Liabilities",
+     "",
+     "",
+     "6,531",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total Liabilities",
+     "",
+     "",
+     "",
+     "6,531",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock; $0.001 par value, 5,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "authorized, no shares issued and outstanding",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common stock; 70,000,000 shares authorized,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "at $0.001 par value, 2,150,000 shares issued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "and outstanding, respectively",
+     "",
+     "",
+     "",
+     "2,150",
+     "",
+     "2,150"
+    ],
+    [
+     "",
+     "Additional paid-in capital",
+     "",
+     "",
+     "",
+     "289",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Deficit accumulated during the development stage",
+     "",
+     "",
+     "",
+     "(8,150)",
+     "",
+     "(2,150)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "(5,711)",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "TOTAL LIABILITIES AND STOCKHOLDERS'",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "EQUITY (DEFICIT)",
+     "",
+     "$",
+     "820",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WPS, INC.",
+    "(A Development Stage Company)",
+    "Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 582,
+    "end_line": 648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with auditing standards generally accepted in the United States of America. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.\nIn our opinion the financial statements referred to above present fairly, in all material respects, the financial position of WPS, Inc. as of December 31, 2009, and the results of their operations and their cash flows for the year then ended, in conformity with U.S. generally accepted accounting principles.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 3 to the financial statements, the Company has not yet established an ongoing source of revenue sufficient to cover its operating costs which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans concerning these matters are also described in Note 3. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nSADLER, GIBB AND ASSOCIATES, LLC\nSalt Lake City, UT\nMarch 26, 2010",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 581,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WPS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "From",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Inception on",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "November 17,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2008 Through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "2,675",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "2,675",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "COST OF SALES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "467",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "467"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS PROFIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,208",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,208",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General and  administrative",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8,208",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,150",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,358"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8,208",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,150",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,358"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,150)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,150)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "(2,150)",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "(8,150)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NUMBER OF COMMON SHARES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OUTSTANDING",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,150,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,481,111",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WPS, INC.",
+    "(A Development Stage Company)",
+    "Statements of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 581,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WPS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "During the",
+     "",
+     "Stockholders'",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Development",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Stage",
+     "",
+     "(Deficit)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at inception on November 17, 2008",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "at $0.001 per share",
+     "2,150,000",
+     "",
+     "2,150",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,150"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from inception on November 17, 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "through December 31, 2008",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,150)",
+     "",
+     "(2,150)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2008",
+     "2,150,000",
+     "",
+     "2,150",
+     "",
+     "-",
+     "",
+     "(2,150)",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contributed capital",
+     "-",
+     "",
+     "-",
+     "",
+     "289",
+     "",
+     "-",
+     "",
+     "289"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2009",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(6,000)",
+     "",
+     "(6,000)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2009",
+     "2,150,000",
+     "$",
+     "2,150",
+     "$",
+     "289",
+     "$",
+     "(8,150)",
+     "$",
+     "(5,711)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WPS, INC.",
+    "(A Development Stage Company)",
+    "Statements of Stockholders' Equity (Deficit)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WPS, INC.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "From",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Inception on",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "November 17,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "2008 Through",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "2008",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "",
+     "",
+     "",
+     "$",
+     "(6,000)",
+     "$",
+     "(2,150)",
+     "$",
+     "(8,150)"
+    ],
+    [
+     "",
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common stock issued for services",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "2,150",
+     "",
+     "2,150"
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Change in accounts payable",
+     "",
+     "",
+     "",
+     "1,725",
+     "",
+     "-",
+     "",
+     "1,725"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Net Cash Used in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Operating Activities",
+     "",
+     "",
+     "(4,275)",
+     "",
+     "-",
+     "",
+     "(4,275)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Contributed capital",
+     "",
+     "",
+     "",
+     "289",
+     "",
+     "-",
+     "",
+     "289"
+    ],
+    [
+     "",
+     "",
+     "Increase in note payable - related party",
+     "",
+     "",
+     "",
+     "4,806",
+     "",
+     "-",
+     "",
+     "4,806"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Net Cash Provided by",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Financing Activities",
+     "",
+     "",
+     "5,095",
+     "",
+     "-",
+     "",
+     "5,095"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "NET INCREASE IN CASH",
+     "",
+     "",
+     "",
+     "820",
+     "",
+     "-",
+     "",
+     "820"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "CASH AT END OF PERIOD",
+     "",
+     "",
+     "$",
+     "820",
+     "$",
+     "-",
+     "$",
+     "820"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH PAID FOR:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Income Taxes",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WPS, INC.",
+    "(A Development Stage Company)",
+    "Statements of Cash Flows"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 805
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "WPS, INC.\n(A Development Stage Company)\nNOTES TO FINANCIAL STATEMENTS\nDecember 31, 2009 and 2008\nNOTE 1 -SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nOrganization\nThe Company was incorporated under the laws of the State of Nevada on November 17, 2008 to provide competitively priced, premium quality commercial grade fasteners made from a variety of materials, including but not limited to steel, stainless steel, brass & nylon. The Company has not realized significant revenues to date and therefore is classified as a development stage company.\nAccounting Method\nThe financial statements are prepared using the accrual method of accounting. The Company has elected a December 31, year end.\nEstimates",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the\n\nYear Ended\n\nDecember 31,\n\n2009",
+     "For the\n\nYear Ended\n\nDecember 31,\n\n2008"
+    ],
+    [
+     "Loss (numerator)",
+     "$           (6,000)",
+     "$              (2,150)"
+    ],
+    [
+     "Shares (denominator)",
+     "2,150,0002",
+     "2222       221,481,1112"
+    ],
+    [
+     "Per share amount",
+     "$             (0.00)",
+     "$                (0.00)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company adopted SFAS No. 123-R effective January 1, 2006 using the modified prospective method. Under this transition method, stock compensation expense includes compensation expense for all stock-based compensation awards granted on or after January 1,2006, based on the grant-date fair value estimated in accordance with the provisions of SFAS No. 123-R.\nCash and Cash Equivalents\nCash and cash equivalents consist of commercial accounts and interest-bearing bank deposits and are carried at cost, which approximates current value. Items are considered to be cash equivalents if the original maturity is three months or less.\nBasic Loss per Share\nThe computation of basic loss per share of common stock is based on the weighted average number of shares outstanding during the period. The Company has no common stock equivalents outstanding as of December 31, 2009.\nWPS, INC.\n(A Development Stage Company)\nNOTES TO FINANCIAL STATEMENTS\nDecember 31, 2009 and 2008\nNOTE 1 -SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (CONTINUED)",
+   "prose_after": "Provision for Taxes\nDeferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carry forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.\nNet deferred tax assets consist of the following components as of December 31, 2009 and 2008:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2009",
+     "",
+     "2008"
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NOL carryover",
+     "$",
+     "2,340",
+     "$",
+     "-"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,340)",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 889,
+    "end_line": 900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Provision for Taxes\nDeferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carry forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.\nNet deferred tax assets consist of the following components as of December 31, 2009 and 2008:",
+   "prose_after": "The income tax provision differs from the amount of income tax determined by applying the U.S. federal and state income tax rates of 39% to pretax income from continuing operations for the years ended December 31, 2009 and 2008 due to the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2009",
+     "",
+     "2008"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Book Income",
+     "$",
+     "(2340)",
+     "$",
+     "(839)"
+    ],
+    [
+     "Contributed services",
+     "",
+     "-",
+     "",
+     "839"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "2,340",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 915
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The income tax provision differs from the amount of income tax determined by applying the U.S. federal and state income tax rates of 39% to pretax income from continuing operations for the years ended December 31, 2009 and 2008 due to the following:",
+   "prose_after": "At December 31, 2009, the Company had net operating loss carry forwards of $6,000 that may be offset against future taxable income through 2029. No tax benefit has been reported in the December 31, 2009 financial statements since the potential tax benefit is offset by a valuation allowance of the same amount.\nDue to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, net operating loss carry forwards may be limited as to use in future years.\nWPS, INC.\n(A Development Stage Company)\nNOTES TO FINANCIAL STATEMENTS\nDecember 31, 2009 and 2008\nNOTE 2 \u2013 RECENT ACCOUNTING PRONOUNCEMENTS\nIn May 2009, the FASB issued SFAS 165 (ASC 855-10) entitled \u201cSubsequent Events\u201d. Companies are now required to disclose the date through which subsequent events have been evaluated by management. Public entities (as defined) must conduct the evaluation as of the date the financial statements are issued, and provide disclosure that such date was used for this evaluation. SFAS 165 (ASC 855-10) provides that financial statements are considered \u201cissued\u201d when they are widely distributed for general use and reliance in a form and format that complies with GAAP. SFAS 165 (ASC 855-10) is effective for interim and annual periods ending after June 15, 2009 and must be applied prospectively. The adoption of SFAS 165 (ASC 855-10) during the quarter ended September 30, 2009 did not have a significant effect on the Company\u2019s financial statements as of that date or for the quarter or year-to-date period then ended. In connection with preparing the accompanying unaudited financial statements as of September 30, 2009 and for the quarter and nine month period ended September 30, 2009, management evaluated subsequent events through the date that such financial statements were issued (filed with the SEC).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NOTE 3 -",
+     "GOING CONCERN"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 RECENT ACCOUNTING PRONOUNCEMENTS"
+    }
+   },
+   "prose_before": "In June 2009, the FASB issued SFAS 168, The FASB Accounting Standards Codification and the Hierarchy of Generally Accepted Accounting Principles. (\u201cSFAS 168\u201d pr ASC 105-10) SFAS 168 (ASC 105-10) establishes the Codification as the sole source of authoritative accounting principles recognized by the FASB to be applied by all nongovernmental entities in the preparation of financial statements in conformity with GAAP. SFAS 168 (ASC 105-10) was prospectively effective for financial statements issued for fiscal years ending on or after September 15, 2009 and interim periods within those fiscal years. The adoption of SFAS 168 (ASC 105-10) on July 1, 2009 did not impact the Company\u2019s results of operations or financial condition. The Codification did not change GAAP, however, it did change the way GAAP is organized and presented. As a result, these changes impact how companies reference GAAP in their financial statements and in their significant accounting policies. The Company implemented the Codification in this Report by providing references to the Codification topics alongside references to the corresponding standards.\nWith the exception of the pronouncements noted above, no other accounting standards or interpretations issued or recently adopted are expected to have a material impact on the Company\u2019s financial position, operations or cash flows.",
+   "prose_after": "The Company's financial statements are prepared using generally accepted accounting principles in the United States of America applicable to a going concern which contemplates the realization of assets and liquidation of liabilities in the normal course of business. The Company has not yet established an ongoing source of revenues sufficient to cover its operating costs and allow it to continue as a going concern. The ability of the Company to continue as a going concern is dependent on the Company obtaining adequate capital to fund operating losses until it becomes profitable. If the Company is unable to obtain adequate capital, it could be forced to cease operations.\nIn order to continue as a going concern, the Company will need, among other things, additional capital resources. Management's plan is to obtain such resources for the Company by obtaining capital from management and significant shareholders sufficient to meet its minimal operating expenses and seeking equity and/or debt financing. However management cannot provide any assurances that the Company will be successful in accomplishing any of its plans.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Annual Compensation",
+     "",
+     "",
+     "",
+     "Long-Term Compensation",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and\n\nPrincipal Position",
+     "Year",
+     "Salary ($)",
+     "Bonus ($)",
+     "Other Annual Compensation ($)",
+     "Restricted Stock Awards ($)",
+     "Securities Underlying Options (#)",
+     "LTIP Payouts ($)",
+     "All Other Compensation ($)"
+    ],
+    [
+     "Guillermo Pina",
+     "2008",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Officer and Director",
+     "2009",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1090
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Section 16(a) of the Securities Exchange Act of 1934, as amended, requires the Company's executive officers and directors and persons who own more than 10% of a registered class of the Company's equity securities, to file with the Securities and Exchange Commission (hereinafter referred to as the \"Commission\") initial statements of beneficial ownership, reports of changes in ownership and annual reports concerning their ownership, of Common Stock and other equity securities of the Company on Forms 3, 4, and 5, respectively. Executive officers, directors and greater than 10% shareholders are required by Commission regulations to furnish the Company with copies of all Section 16(a) reports they file. To the Company's knowledge, all of the Company's executive officers, directors and greater than 10% beneficial owners of its Common Stock have complied with Section 16(a) filing requirements applicable to them during the Company's most recent fiscal year.\nItem 11. Executive Compensation\nDIRECTOR AND OFFICER COMPENSATION",
+   "prose_after": "We have not formulated plans as to the amounts of future cash compensation. Any additional personnel required would have salaries negotiated.\nNo past officer or director of the Company has received any compensation and none is due or payable. Our sole current officer and director, Guillermo Pina, does not receive any compensation for the services he renders to the Company, has not received compensation in the past, and is not accruing any compensation pursuant to any agreement with the Company. We currently have no formal written salary arrangement with our sole officer. Mr. Pina may receive a salary or other compensation for services that he provides to the Company in the future. No retirement, pension, profit sharing, stock option or insurance programs or other similar programs have been adopted by the Company for the benefit of the Company\u2019s employees.\nSignificant Employees\nWe have no significant employees other than our executive officers and directors named in this Annual Report.\nCommittees of the Board of Directors",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name of \n\nBeneficial Owner",
+     "Amount and Nature \n\nof Beneficial Owner",
+     "",
+     "Percent of Class(1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Guillermo Pina",
+     "",
+     "2,000,000",
+     "",
+     "93.02%"
+    ],
+    [
+     "Common Stock",
+     "President, CEO and Director\n\n \n\nNevada Business Development Corporation",
+     "",
+     "150,000",
+     "",
+     "6.98%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1121,
+    "end_line": 1133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our Board of Directors has not adopted a Code of Business Conduct and Ethics.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nSecurities Authorized for Issuance under Equity Compensation Plans\nThis section is not applicable.\nSecurity Ownership of Certain Beneficial Owners and Management\nThe following table sets forth certain information regarding the beneficial ownership of our Common Stock as of the date of this Annual Report by (i) each Named Executive Officer, (ii) each member of our Board of Directors, (iii) each person deemed to be the beneficial owner of more than five percent (5%) of any class of our common stock, and (iv) all of our executive officers and directors as a group. Unless otherwise indicated, each person named in the following table is assumed to have sole voting power and investment power with respect to all shares of our common stock listed as owned by such person. The address of each person is deemed to be the address of the issuer unless otherwise noted.",
+   "prose_after": "(1) The percentage of common stock held by each listed person is based on 2,150,000 shares of common stock issued and outstanding as of the date of this Annual Report. Pursuant to Rule 13d-3 promulgated under the Exchange Act, any securities not outstanding which are subject to warrants, rights or conversion privileges exercisable within 60 days are deemed to be outstanding for purposes of computing the percentage of outstanding securities of the class owned by such person but are not deemed to be outstanding for the purposes of computing the percentage of any other person.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nTransactions with Related Persons\nThere have been no transactions or any currently proposed transaction, in which the registrant was or is to be a participant and in which any related person had or will have a direct or indirect material interest.\nPromoters and Certain Control Persons\nThe Company has not utilized the services of a promoter at any time. The only control person is the founder and sole officer and director, Guillermo Pina.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "$",
+     "3,500",
+     "Offices of Arshad M. Farooq"
+    ],
+    [
+     "2008",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1164,
+    "end_line": 1168
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We intend to comply with all corporate governance measures relating to director independence as and when required. However, we may find it very difficult or be unable to attract and retain qualified officers, directors and members of board committees required to provide for our effective management as a result of Sarbanes-Oxley Act of 2002. The enactment of the Sarbanes-Oxley Act of 2002 has resulted in a series of rules and regulations by the SEC that increase responsibilities and liabilities of directors and executive officers. The perceived increased personal risk associated with these recent changes may make it more costly or deter qualified individuals from accepting these roles.\nItem 14. Principal Accountant Fees and Services\n(1) Audit Fees\nThe aggregate fees billed for each of the last two fiscal years for professional services rendered by the principal accountant for our audit of annual financial statements and review of financial statements included in our quarterly reports or services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years were:",
+   "prose_after": "(2) Audit-Related Fees\nThe aggregate fees billed in each of the last two fiscal years for assurance and related services by the principal accountants that are reasonably related to the performance of the audit or review of our financial statements and are not reported in the preceding paragraph:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "2008",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1173,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(2) Audit-Related Fees\nThe aggregate fees billed in each of the last two fiscal years for assurance and related services by the principal accountants that are reasonably related to the performance of the audit or review of our financial statements and are not reported in the preceding paragraph:",
+   "prose_after": "(3) Tax Fees\nThe aggregate fees billed in each of the last two fiscal years for professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning were:\n<TABLE>\n2009         $ 0\n2008         $ 0\n</TABLE>\n(4) All Other Fees\nThe aggregate fees billed in each of the last two fiscal years for the products and services provided by the principal accountant, other than the services reported in paragraphs (1), (2), and (3) was:\n<TABLE>\n2009         $ 0",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "2008",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1173,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(2) Audit-Related Fees\nThe aggregate fees billed in each of the last two fiscal years for assurance and related services by the principal accountants that are reasonably related to the performance of the audit or review of our financial statements and are not reported in the preceding paragraph:",
+   "prose_after": "(3) Tax Fees\nThe aggregate fees billed in each of the last two fiscal years for professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning were:\n<TABLE>\n2009         $ 0\n2008         $ 0\n</TABLE>\n(4) All Other Fees\nThe aggregate fees billed in each of the last two fiscal years for the products and services provided by the principal accountant, other than the services reported in paragraphs (1), (2), and (3) was:\n<TABLE>\n2009         $ 0",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "2008",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1173,
+    "end_line": 1177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(2) Audit-Related Fees\nThe aggregate fees billed in each of the last two fiscal years for assurance and related services by the principal accountants that are reasonably related to the performance of the audit or review of our financial statements and are not reported in the preceding paragraph:",
+   "prose_after": "(3) Tax Fees\nThe aggregate fees billed in each of the last two fiscal years for professional services rendered by the principal accountant for tax compliance, tax advice, and tax planning were:\n<TABLE>\n2009         $ 0\n2008         $ 0\n</TABLE>\n(4) All Other Fees\nThe aggregate fees billed in each of the last two fiscal years for the products and services provided by the principal accountant, other than the services reported in paragraphs (1), (2), and (3) was:\n<TABLE>\n2009         $ 0",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Financial Statements and Schedules",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "15"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2009 and 2008",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years Ended December 31, 2009 and December 31, 2008",
+     "17"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders' Equity for the Years Ended December 31, 2009 and December 31, 2008",
+     "18"
+    ],
+    [
+     "Statements of Cash Flows for the Year Ended December 31, 2009 and December 31, 2008",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1206,
+    "end_line": 1221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The aggregate fees billed in each of the last two fiscal years for the products and services provided by the principal accountant, other than the services reported in paragraphs (1), (2), and (3) was:\n<TABLE>\n2009         $ 0\n2008         $ 0\n</TABLE>\nThe percentage of hours expended on the principal accountant\u2019s engagement to audit our financial statements for the most recent fiscal year ended December 31, 2009 that were attributed to work performed by persons other than the principal accountant\u2019s full time permanent employees was 0%.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a)(1) Financial Statements\nThe following is a list of the Financial Statements required to be filed and included in Item 8 of Part II of this report:",
+   "prose_after": "(a)(2) Financial Statement Schedules\nSchedules not included herein are omitted because they are inapplicable, not required or because the required information is provided in the financial statements and notes thereto.\n(a)(3) Exhibits",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1228,
+    "end_line": 1237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(a)(2) Financial Statement Schedules\nSchedules not included herein are omitted because they are inapplicable, not required or because the required information is provided in the financial statements and notes thereto.\n(a)(3) Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "WPS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 29, 2010",
+     "By:",
+     "/s/ Guillermo Pina"
+    ],
+    [
+     "",
+     "",
+     "Guillermo Pina"
+    ],
+    [
+     "",
+     "",
+     "President, CEO and Director\n\n(Principal Executive Officer\n\nand Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "WPS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1242,
+    "end_line": 1254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Guillermo Pina",
+     "",
+     "March 29, 2010"
+    ],
+    [
+     "Guillermo Pina",
+     "",
+     ""
+    ],
+    [
+     "Principal Executive Officer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Guillermo Pina",
+     "",
+     "March 29, 2010"
+    ],
+    [
+     "Guillermo Pina",
+     "",
+     ""
+    ],
+    [
+     "Principal Financial Officer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Guillermo Pina",
+     "",
+     "March 29, 2010"
+    ],
+    [
+     "Guillermo Pina",
+     "",
+     ""
+    ],
+    [
+     "Principal Accounting Officer",
+     "",
+     ""
+    ],
+    [
+     "/s/ Guillermo Pina",
+     "",
+     "March 29, 2010"
+    ],
+    [
+     "Guillermo Pina",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1257,
+    "end_line": 1277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

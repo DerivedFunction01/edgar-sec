@@ -1,0 +1,7755 @@
+{
+ "accession": "0001262463-25-000080",
+ "cik": "0001342916",
+ "form": "10-K",
+ "filing_date": "2025-03-20",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "hnoi10312024k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nevada",
+     "20-2781289",
+     ""
+    ],
+    [
+     "",
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer",
+     ""
+    ],
+    [
+     "",
+     "incorporation or organization)",
+     "Identification No.)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "4115 Eastman Drive, Suite B\n\n\n\nMurrieta, California",
+     "92562",
+     ""
+    ],
+    [
+     "",
+     "(Address of principal executive offices)",
+     "(Zip Code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended October 31, 2024\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number: 000-56568\nHNO INTERNATIONAL, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(951) 305-8872\n(Registrant's telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(951) 305-8872\n(Registrant's telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: Common Stock, Par Value $0.001\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the issuer\n(1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the last 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "Page"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "19"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "20"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "20"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "20"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "20"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "24"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "27"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "27"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "28"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "28"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "28"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "29"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "29"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "31"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "32"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "33"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "35"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "36"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "38"
+    ],
+    [
+     "",
+     "Signatures",
+     "39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Praxair",
+     "Air Products and Chemicals",
+     "Linde"
+    ],
+    [
+     "Air Liquide",
+     "Messer Group",
+     "BOC"
+    ],
+    [
+     "Air Gas",
+     "Matheson Tri-gas",
+     "Advanced Gas Technologies"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 284,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Our growth strategy focuses on expanding our product offerings and target markets. This will be achieved through ongoing research and development to identify new opportunities, as well as strategic partnerships and collaborations with key players in our target markets.\nWe will target our products to businesses and communities that are looking to decarbonize. Our sales and marketing strategies will focus on building relationships with key players in our target markets, such as current users of industrial hydrogen, the emerging hydrogen refueling market, hydrogen vehicle manufacturers, engine service providers and diesel fleet operators.\nMarket Competition\nThe market is currently dominated by industrial gas producers using Steam Methane Reforming (\u201cSMR\u201d) which use carbon-based feedstock as the energy input for the hydrogen production. The result of these methods results in gray and black (residual carbon footprint. hydrogen production.\nOur Competition\nMajor competitors in the traditional hydrogen production market are represented by the following companies:",
+   "prose_after": "These and other current hydrogen producers will require significant investment in infrastructure for carbon capture technologies to meet the emerging requirements for clean energy generation.\nWe are focused on the production of green hydrogen, using renewable energy as the input power to produce green hydrogen with no carbon footprint. We are an innovator in this emergent marketplace. While we are a market leader, there are a few early competitors in green hydrogen, such as Nel, Plug Power, ITM Power, and Nikola.\nWe, alternatively, either team up or competes with these green hydrogen companies, depending on the specific market opportunity.\nOur Competitive Strengths\nOur competitive strengths include:\nFocus on Low-Cost Technologies: Our focus on integrating proven low-cost technologies sets us apart from competitors, as it allows us to offer our products at a more affordable price point.\nComprehensive Portfolio of Products: We offer a wide range of products including hydrogen cleaning equipment for engine service providers, hydrogen delivery systems for diesel engines, and green hydrogen production systems for various markets. This comprehensive portfolio of products sets us apart from competitors that focus on a limited range of products.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 269,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended October 31, 2024:",
+     "",
+     "High",
+     "",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First Quarter",
+     "",
+     "$",
+     "0.63",
+     "",
+     "$",
+     "0.52"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "$",
+     "1.08",
+     "",
+     "$",
+     "1.02"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "$",
+     "1.01",
+     "",
+     "$",
+     "0.95"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "$",
+     "1.20",
+     "",
+     "$",
+     "1.13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "From time to time, we may become involved in litigation relating to claims arising out of our operations in the normal course of business. We are not currently involved in any pending legal proceeding or litigation and, to the best of our knowledge, no governmental authority is contemplating any proceeding to which we are a party or to which any of our properties is subject, which would reasonably be likely to have a material adverse effect on our business, financial condition and operating results.\nITEM 4. MINE SAFETY DISCLOSURE.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket\nOur common stock currently trades on the OTC Markets Pink under the symbol \u201cHNOI.\u201d\nThe table below sets forth for the periods indicated the quarterly high and low bid prices as reported by OTC Markets. Limited trading volume has occurred during these periods. These quotations reflect inter-dealer prices, without retail mark-up, mark-down, or commission and may not necessarily represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended October 31, 2023:",
+     "",
+     "High",
+     "",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First Quarter",
+     "",
+     "$",
+     "1.82",
+     "",
+     "$",
+     "1.03"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "$",
+     "2.27",
+     "",
+     "$",
+     "1.21"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "$",
+     "15.00",
+     "",
+     "$",
+     "1.05"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "$",
+     "1.378",
+     "",
+     "$",
+     "1.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Holders of Our Common Stock\nAs of March 20, 2025, there were approximately 691 stockholders of record. Because shares of our Common Stock are held by depositaries, brokers and other nominees, the number of beneficial holders of our shares is substantially larger than the number of stockholders of record.\nDividends\nWe have not declared or paid dividends on shares of our common stock and we do not expect to declare or pay dividends on shares of our common stock for the foreseeable future. We intend to retain earnings, if any, to finance the development and expansion of our business. Our future dividend policy will be subject to the discretion of our board of directors and will depend upon our future earnings, if any, our financial condition, and other factors deemed relevant by the board.\nTransfer Agent\nThe transfer agent and registrar, for our common stock is Pacific Stock Transfer Co. The transfer agent\u2019s address is 6725 Via Austi Parkway, Suite 300, Las Vegas, NV 89119 and its telephone number is (702) 361-3033.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Name",
+     "Consideration",
+     "Securities",
+     "Exemption from Registration"
+    ],
+    [
+     "11/1/2023",
+     "Kieandra Chantay Nelson",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "11/14/2023",
+     "Seth Brendon Doherty",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Kevin Bens",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Debbie L Feggins",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Kenneth M Givens Jr",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Randy Andrell Moore",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Jason Charles Moseley",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Mary U Stephenson & Ralph B Stephenson, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Dennis Yelverton",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/15/2023",
+     "Patricia A Leal-Mack",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "11/16/2023",
+     "Darryl Eugene Leonard Jr",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/16/2023",
+     "Delroy Pryce",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "11/16/2023",
+     "Compton Andre Paul",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/16/2023",
+     "Alan B Phillips",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/17/2023",
+     "Michael John Mack",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/17/2023",
+     "Farah Chikita Stephens-Travis",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/18/2023",
+     "Patricia A Leal-Mack",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "11/19/2023",
+     "Brian Byrd",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "11/21/2023",
+     "Virginia Theresa Leonard",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/22/2023",
+     "Akim Ali Babil",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/22/2023",
+     "Heather Lorraine Anderson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/23/2023",
+     "Roctrepar, Incorporated",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "11/27/2023",
+     "Calvin Brown & Trina Noel Ericcson Brown, JTWROS",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "12/1/2023",
+     "Brown Empowerment LLC",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "12/4/2023",
+     "Kerry Troy Henry & Kedora Nekeisha Henry",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/5/2023",
+     "Jacqueline Annmarie Bogle & Kedora Nekeisha Henry, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/6/2023",
+     "Donald Ray Hendricks",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/6/2023",
+     "Tywan Donta Purnell",
+     "Cash",
+     "20,000",
+     "Regulation A"
+    ],
+    [
+     "12/6/2023",
+     "Karen Sue Lambert Mrs. & Lamar Gene Lambert Mr., JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/9/2023",
+     "Ayanna Flegler",
+     "Cash",
+     "8,000",
+     "Regulation A"
+    ],
+    [
+     "12/12/2023",
+     "Annjeanete Duncanson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/13/2023",
+     "Donelle Hoof",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/16/2023",
+     "Pamela E Gibson",
+     "Cash",
+     "5,000",
+     "Regulation A"
+    ],
+    [
+     "12/21/2023",
+     "PHL Investment Trust",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/25/2023",
+     "Keith Jones",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/26/2023",
+     "Iris Naomi Garcia",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/26/2023",
+     "Alvin Hampton Jr.",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/26/2023",
+     "Michele L. Moore",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/27/2023",
+     "Timothy Andrew Unke",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "12/31/2023",
+     "Myra Lynnette Neal",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "1/10/2024",
+     "Dawn Marie Reeves",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "1/11/2024",
+     "Christopher Anderson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "As of March 20, 2025, there were approximately 691 stockholders of record. Because shares of our Common Stock are held by depositaries, brokers and other nominees, the number of beneficial holders of our shares is substantially larger than the number of stockholders of record.\nDividends\nWe have not declared or paid dividends on shares of our common stock and we do not expect to declare or pay dividends on shares of our common stock for the foreseeable future. We intend to retain earnings, if any, to finance the development and expansion of our business. Our future dividend policy will be subject to the discretion of our board of directors and will depend upon our future earnings, if any, our financial condition, and other factors deemed relevant by the board.\nTransfer Agent\nThe transfer agent and registrar, for our common stock is Pacific Stock Transfer Co. The transfer agent\u2019s address is 6725 Via Austi Parkway, Suite 300, Las Vegas, NV 89119 and its telephone number is (702) 361-3033.\nSecurities Authorized for Issuance under Equity Compensation Plans\nNone.\nRecent Sales of Unregistered Securities\nThe following table includes all unregistered sales of securities made by us during the year ended October 31, 2024:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 767,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1/11/2024",
+     "Tywan Donta Purnell",
+     "Cash",
+     "30,000",
+     "Regulation A"
+    ],
+    [
+     "1/13/2024",
+     "Dominik Lee West",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "1/17/2024",
+     "Brian Fifer",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "1/20/2024",
+     "Keith Jones",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/1/2024",
+     "Raymond Williams Jr",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "2/15/2024",
+     "Michael Ledgister",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/15/2024",
+     "Sundaramoorthy Kanagarajan",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "2/16/2024",
+     "Ariel Benkadmiel McCullough",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/17/2024",
+     "Nathaniel Harris",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/22/2024",
+     "Venetria Nicole Davis",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/22/2024",
+     "Ariel Benkadmiel McCullough",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/25/2024",
+     "Cory Renaldo Brown",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/26/2024",
+     "Edward L Cryer & Shirley Neal, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "2/29/2024",
+     "Annie Priester",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "3/8/2024",
+     "Pamela Jean Harlan",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "3/12/2024",
+     "Patrick Earl Nixon & Janice Lynn Nixon, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/1/2024",
+     "Raymond Williams Jr",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/5/2024",
+     "Ani N Rooney",
+     "Cash",
+     "10,000",
+     "Regulation A"
+    ],
+    [
+     "4/5/2024",
+     "Farah Chikita Stephens-Travis",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/5/2024",
+     "Donte Small",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/6/2024",
+     "Jacqueline D Brooks",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "4/6/2024",
+     "Paul James Chatman",
+     "Cash",
+     "1,200",
+     "Regulation A"
+    ],
+    [
+     "4/6/2024",
+     "Roland Cyprian Roberts",
+     "Cash",
+     "5,000",
+     "Regulation A"
+    ],
+    [
+     "4/6/2024",
+     "Johnnie Edward Rozier Jr & Jacqueline Bazile Rozier, JTWROS",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "4/6/2024",
+     "Rachael Moore",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/7/2024",
+     "Samuel Austin Cutler",
+     "Cash",
+     "7,500",
+     "Regulation A"
+    ],
+    [
+     "4/7/2024",
+     "Scy Vincent Banks",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/8/2024",
+     "Antoinette Almeda Benton",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/9/2024",
+     "Jacklyn L Hagood",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/9/2024",
+     "Sabrina Jackson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/9/2024",
+     "Michelle Marie Cabrera",
+     "Cash",
+     "2,500",
+     "Regulation A"
+    ],
+    [
+     "4/11/2024",
+     "Willie Cal Brown",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/11/2024",
+     "LaVetta Dodd-Ivy",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/11/2024",
+     "Phillip McNeal & Janeen McNeal, JTWROS",
+     "Cash",
+     "1,200",
+     "Regulation A"
+    ],
+    [
+     "4/13/2024",
+     "Tangula Renee Hudson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/15/2024",
+     "Edward Joe Bentley III",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "4/15/2024",
+     "Nathaniel Harris",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/16/2024",
+     "Raymond Williams Jr.",
+     "Cash",
+     "7,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Kevin Bens",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Delhia M. Emanuel - Emanuel Soler Trust",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Neishana Morrison",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Roxanne Lolita Patterson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Wesley Bryant",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/17/2024",
+     "Sarita R Allen",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/18/2024",
+     "Patrick Earl Nixon & Janice Lynn Nixon, JTWROS",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/18/2024",
+     "Cynthia Dianne Walls",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/21/2024",
+     "Wesley Clifford Allen",
+     "Cash",
+     "5,000",
+     "Regulation A"
+    ],
+    [
+     "4/22/2024",
+     "Kevin Bens",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/22/2024",
+     "Vivian D Carlo & Delhia M. Emanuel, JTWROS",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/22/2024",
+     "Marion D Fulce & Dwight D Fulce, JTWROS",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "4/23/2024",
+     "Hortensia M. Emanuel Revocable Living Trust",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/24/2024",
+     "Alice Jones",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/25/2024",
+     "Omega Ashanti Dennis",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/25/2024",
+     "Sammie Lucille Love",
+     "Cash",
+     "1,250",
+     "Regulation A"
+    ],
+    [
+     "4/25/2024",
+     "Rickey Anthony Lumpkin & Bertha Lois Lumpkin, JTWROS",
+     "Cash",
+     "5,000",
+     "Regulation A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 881
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 767,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 882,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "4/25/2024",
+     "Clarence R Simmons",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/26/2024",
+     "Sabrina Jackson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/26/2024",
+     "Dixie Robinson Miss",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/26/2024",
+     "Laura Weida",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/27/2024",
+     "Dyland S Haile",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/27/2024",
+     "Antonio L. Jones",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Justin Albert Brannon",
+     "Cash",
+     "2,500",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Sonia Hansen",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Sara Hare",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Lorna Karen Haynes",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Michael Sanford King",
+     "Cash",
+     "2,500",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Edward G. McCurbin",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Christopher Norwood",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/28/2024",
+     "Darryl Christopher Wood",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Ezekiel Carter & Ruby J Carter, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Theresa Johnson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Niecole D Kelly",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Steven L Martin",
+     "Cash",
+     "2,500",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "John Moncure",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Randolph David Plunkett",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Joanne Simone Rollocks",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "4/29/2024",
+     "Antonio Renard Woodfin",
+     "Cash",
+     "10,000",
+     "Regulation A"
+    ],
+    [
+     "4/30/2024",
+     "Jefferson Davis Lewis III",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "4/30/2024",
+     "Ani N Rooney",
+     "Cash",
+     "40,000",
+     "Regulation A"
+    ],
+    [
+     "4/30/2024",
+     "Tonjia Lynn Stone",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Christopher Kirby & ANGELEA KIRBY, JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Ani N Rooney",
+     "Cash",
+     "40,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Jefferson Davis Lewis III",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Lorna Karen Haynes",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Charles W Smith",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Alice Jones",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Sarita R Allen",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Joanne Simone Rollocks",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Jarodrick Mixon",
+     "Cash",
+     "15,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Stevie Lavell Harris",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/1/24",
+     "Raymond Williams, Jr.",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Donte Small",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Johnny Smith",
+     "Cash",
+     "20,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Jacqueline Annmarie Bogle & Kedora Nekeisha Henry, JTWROS",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Michael Aquilizan Chai",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Kerry Troy Henry & Kedora Nekeisha Henry",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Dwayne M. Emmanuel",
+     "Cash",
+     "1,328",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Corey Darnelle Flowers",
+     "Cash",
+     "1,200",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Darrell Lee Goolsby",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Sonia Hansen",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/2/24",
+     "Thrillisa Nadia Morrison",
+     "Cash",
+     "4,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Christopher Alagie Jammeh",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Maurice Brown Jr",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Nathaniel Harris",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Hakim Johnson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Arielle Wallace",
+     "Cash",
+     "3,750",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Porshe Shenika Nicole Rice",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Ivory and Crystal Johnson JTWROS",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Tywan Donta Purnell",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Nathaniel B Beamon",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 996
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 882,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 997,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "5/3/24",
+     "Corneal Westbrooks",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Ibrahim D Balogun",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Gaylon White",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Jennifer Vicens",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Albert Earl Clay Sr & Rosa Ann Clay",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Shawndu Maurice McMillan",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Anne Wanjiku Jnoroge Mrs",
+     "Cash",
+     "10,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Kerry Troy Henry & Kedora Nekeisha Henry",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "5/3/24",
+     "Jordan Michael Woods",
+     "Cash",
+     "5,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Courtney Brown",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Melinda Christine Molina",
+     "Cash",
+     "2,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Yvonne Angela",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Anthony Zerante",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Carla Michelle Bronner",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Courtney-O'Niel Brown",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Anthony Pierre",
+     "Cash",
+     "1,500",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Cole Kala'Alohi Solomon",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Gunasekaran Seetharaman",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Sy Phan",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/6/24",
+     "Tangula Renee Hudson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/7/24",
+     "Edward Joe Bentley",
+     "Cash",
+     "3,000",
+     "Regulation A"
+    ],
+    [
+     "5/10/24",
+     "Theresa Johnson",
+     "Cash",
+     "1,000",
+     "Regulation A"
+    ],
+    [
+     "5/23/2024",
+     "Ausey Johnson",
+     "Cash",
+     "6,579",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/6/2024",
+     "Jose De Hoyos",
+     "Cash",
+     "78,182",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/7/2024",
+     "Pamela E. Gibson",
+     "Cash",
+     "36,364",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/7/2024",
+     "Johnny Smith",
+     "Cash",
+     "250,000",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/11/2024",
+     "Ronnie Taylor",
+     "Cash",
+     "36,364",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/14/2024",
+     "Antoninette Verna Richard",
+     "Cash",
+     "36,364",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/14/2024",
+     "Gordon E. Mosby",
+     "Cash",
+     "500,000",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/14/2024",
+     "Daryl Dewayne Branch",
+     "Cash",
+     "9,868",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/25/2024",
+     "Raymond Williams",
+     "Cash",
+     "6,579",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "6/20/2024",
+     "Calvin Brown",
+     "Cash",
+     "6,579",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "8/15/2024",
+     "Web Beeman",
+     "Cash",
+     "100,000",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "8/19/2024",
+     "Monica Allen",
+     "Cash",
+     "6,579",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "8/19/2024",
+     "Vindicated Phoenix Corp.",
+     "Cash",
+     "522,727",
+     "Rule 506 (b) of Regulation D"
+    ],
+    [
+     "9/12/2024",
+     "Vindicated Phoenix Corp.",
+     "Cash",
+     "666,667",
+     "Rule 506 (b) of Regulation D"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 998,
+    "end_line": 1073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AN ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "No sales commissions were paid in connection with any of the sales above.\nITEM 6. RESERVED\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThis discussion and analysis may include statements regarding our expectations with respect to our future performance, liquidity, and capital resources. Such statements, along with any other non-historical statements in the discussion, are forward-looking. These forward-looking statements are subject to numerous risks and uncertainties, including, but not limited to, factors listed in other documents we file with the Securities and Exchange Commission (the \"SEC''). We do not assume an obligation to update any forward-looking statements. Our actual results may differ materially from those contained in or implied by any of the forward-looking statements contained herein.\nOverview\nHNO focuses on systems engineering design, integration, and product development to generate green hydrogen-based clean energy solutions to help businesses and communities decarbonize in the near term.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 997,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Year Ended\n\n\n\nOctober 31,\n\n\n\n2024",
+     "",
+     "",
+     "",
+     "For the Year Ended\n\n\n\nOctober 31,\n\n\n\n2023",
+     "",
+     ""
+    ],
+    [
+     "Cash Used in Operating Activities",
+     "",
+     "",
+     "(1,802,678)",
+     "",
+     "",
+     "",
+     "(1,334,084)",
+     ""
+    ],
+    [
+     "Cash Provided by Financing Activities",
+     "",
+     "",
+     "2,002,612",
+     "",
+     "",
+     "",
+     "2,426,833",
+     ""
+    ],
+    [
+     "Cash Used in Investing Activities",
+     "",
+     "",
+     "(414,838)",
+     "",
+     "",
+     "",
+     "(908,699)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1130,
+    "end_line": 1141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Our cash balance of $20,255 as of October 31, 2024, combined with the current level of revenues, is insufficient to maintain operations. Therefore, we will need to raise additional funds in the near future to support our operations and growth plans. Our cash balance on October 31, 2023, was $235,159, reflecting a decrease of $214,904 over the year. This decrease is attributable to significant cash outflows related to operating and investing activities.\nWe have not been able to generate sufficient cash from operating activities to fund our ongoing operations and have relied primarily on raising capital through sales of common stock, Regulation A offerings, and related party loans.\nThe impact of existing or probable government regulations on our business remains uncertain. Due to the nature of our operations in hydrogen-based clean energy technologies, it is anticipated that government regulation may increase in the future, potentially requiring corrective actions or changes to our business model.\nThere are currently no external sources of liquidity available to us, other than potential equity financing or debt offerings. Failure to secure additional funding could have a material adverse effect on our financial condition and the results of our operations.\nCash Flow\nFor the Years Ended October 31, 2024 and 2023\nThe following table summarizes our cash flows for the periods indicated below:",
+   "prose_after": "Cash Used in Operating Activities\nDuring the year ended October 31, 2024, cash used in operating activities was $1,802,678. This reflects our net losses for the period, adjusted by non-cash charges such as depreciation and share-based compensation. Changes in working capital accounts also contributed to cash usage, primarily due to increases in accounts payable and decreases in payroll taxes and accrued interest payable.\nIn comparison, during the year ended October 31, 2023, cash used in operating activities was $1,334,084. The increase in cash usage in 2024 is attributable to higher operating expenses, including costs related to expanding operations, share based compensation and increased depreciation expenses.\nCash Provided by Financing Activities\nDuring the year ended October 31, 2024, cash provided by financing activities was $2,002,612. This primarily consisted of proceeds from related party advances totaling $960,585, along with $958,929 raised through the Company's Regulation A offering and proceeds from customer deposits.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\n\n\n\n(PCAOB ID #6968)",
+     "F-2"
+    ],
+    [
+     "Audited Balance Sheets",
+     "F-4"
+    ],
+    [
+     "Audited Statements of Operations and Comprehensive Income",
+     "F-5"
+    ],
+    [
+     "Audited Statement of Stockholders' Deficit",
+     "F-6"
+    ],
+    [
+     "Audited Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Audited Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The preparation of financial statements in accounting principles generally accepted in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. A change in managements\u2019 estimates or assumptions could have a material impact on our financial condition and results of operations during the period in which such changes occurred. Actual results could differ from those estimates. Our financial statements reflect all adjustments that management believes are necessary for the fair presentation of their financial condition and results of operations for the periods presented.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nNot applicable.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nThe financial statements and related notes are included as part of this Annual Report.\nHNO INTERNATIONAL, INC.\nINDEX\nOctober 31, 2024 and 2023",
+   "prose_after": "Certified Public Accountants and Advisors\nA PCAOB Registered Firm\n713-489-5635 bartoncpafirm.com Cypress, Texas\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nDonald Owens, Chairman of the Board of Directors\nand Stockholders of HNO International, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of HNO International, Inc. (the Company) as of October 31, 2024 and 2023, and the related statements of operations, stockholders\u2019 deficit, and cash flows for each of the years then ended, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of October 31, 2024 and 2023, and the results of its operations and its cash flows for each of the period ended, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1181,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HNO INTERNATIONAL, INC.\nBALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "October 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As Restated",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "20,255",
+     "",
+     "",
+     "$",
+     "235,159",
+     ""
+    ],
+    [
+     "Due from related party",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "56,392",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "20,255",
+     "",
+     "",
+     "",
+     "291,551",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "994,898",
+     "",
+     "",
+     "",
+     "767,938",
+     ""
+    ],
+    [
+     "Long term asset, net",
+     "",
+     "",
+     "112,026",
+     "",
+     "",
+     "",
+     "103,821",
+     ""
+    ],
+    [
+     "Right-of-use asset",
+     "",
+     "",
+     "121,805",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Security deposits",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Total Non-Current Assets",
+     "",
+     "",
+     "1,228,729",
+     "",
+     "",
+     "",
+     "971,759",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "1,248,984",
+     "",
+     "",
+     "$",
+     "1,263,310",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "138,029",
+     "",
+     "",
+     "",
+     "22,485",
+     ""
+    ],
+    [
+     "Accrued payroll",
+     "",
+     "",
+     "17,762",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accrued interest payable",
+     "",
+     "",
+     "28,845",
+     "",
+     "",
+     "",
+     "41,270",
+     ""
+    ],
+    [
+     "Lease liability",
+     "",
+     "",
+     "57,062",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payroll tax",
+     "",
+     "",
+     "2,838",
+     "",
+     "",
+     "",
+     "17,640",
+     ""
+    ],
+    [
+     "Advances, related party",
+     "",
+     "",
+     "960,585",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "",
+     "",
+     "99",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Notes payable, related party",
+     "",
+     "",
+     "785,000",
+     "",
+     "",
+     "",
+     "785,000",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "1,990,220",
+     "",
+     "",
+     "",
+     "866,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability",
+     "",
+     "",
+     "66,155",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Long term notes payable, related party",
+     "",
+     "",
+     "590,000",
+     "",
+     "",
+     "",
+     "590,000",
+     ""
+    ],
+    [
+     "Total Non-Current Liability",
+     "",
+     "",
+     "656,155",
+     "",
+     "",
+     "",
+     "590,000",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "2,646,375",
+     "",
+     "",
+     "",
+     "1,456,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.001 per share; 15,000,000 shares authorized",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Series A, par value $0.001 per share; 10,000,000 shares authorized; 5,000,000 and 5,000,000 shares issued and outstanding as of October 31, 2024 and October 31, 2023, respectively",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001 per share; 985,000,000 shares authorized; 419,437,865 and 419,341,584 shares issued and outstanding as of October 31, 2024 and October 31, 2023, respectively",
+     "",
+     "",
+     "419,438",
+     "",
+     "",
+     "",
+     "419,341",
+     ""
+    ],
+    [
+     "Common stock payable",
+     "",
+     "",
+     "15,250",
+     "",
+     "",
+     "",
+     "32,251",
+     ""
+    ],
+    [
+     "Common stock subscription receivable",
+     "",
+     "",
+     "(13,750)",
+     "",
+     "",
+     "",
+     "(23,750)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "42,502,997",
+     "",
+     "",
+     "",
+     "41,470,177",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(44,326,326)",
+     "",
+     "",
+     "",
+     "(42,096,104)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "",
+     "(1,397,391)",
+     "",
+     "",
+     "",
+     "(193,085)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "$",
+     "1,248,984",
+     "",
+     "",
+     "$",
+     "1,263,310",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "HNO INTERNATIONAL, INC.\nBALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1256,
+    "end_line": 1325
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "- Stock Compensation (\u201cASC 718\u201d). The Company does not adhere to a formal stock-based compensation plan; rather, it issues stock awards on a discretionary basis as part of compensation agreements with selected consultants and employees. Compensation for stock-based awards is recognized as a non-cash expense on the income statement. The expense associated with these awards is recorded based on the fair value on the date of grant, as determined using the Black-Scholes-Merton option-pricing model.\nThe valuation of stock-based compensation requires management to make significant estimates, particularly in determining the volatility of the company\u2019s stock price, the expected term of options, and the risk-free interest rate. These assumptions are subject to change and can materially impact the amount of compensation expense recognized.\nOther Matters\nAs described in Note 2, the Company identified misstatements with respect to certain accounting errors relating to the valuation of service stock issued, the termination of a patent agreement entered into on January 23, 2023 and the under accrual of accounts payable during the year ended October 31, 2023.\nWe have served as the Company\u2019s auditor since 2024.\n/S/ Barton CPA PLLC\nBarton CPA PLLC\nCypress, Texas\nMarch 20, 2025",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HNO INTERNATIONAL, INC.\nSTATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the year Ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "$",
+     "4,241",
+     "",
+     "",
+     "$",
+     "13,000",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "(3,688)",
+     "",
+     "",
+     "",
+     "(5,885)",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "",
+     "553",
+     "",
+     "",
+     "",
+     "7,115",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and marketing",
+     "",
+     "",
+     "7,408",
+     "",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "",
+     "1,937,633",
+     "",
+     "",
+     "",
+     "1,380,428",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "",
+     "",
+     "83,988",
+     "",
+     "",
+     "",
+     "489,800",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "179,672",
+     "",
+     "",
+     "",
+     "36,940",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "",
+     "2,208,701",
+     "",
+     "",
+     "",
+     "1,910,168",
+     ""
+    ],
+    [
+     "Other Income (Expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "5,501",
+     "",
+     "",
+     "",
+     "2,104",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(27,575)",
+     "",
+     "",
+     "",
+     "(26,545)",
+     ""
+    ],
+    [
+     "Total Other (Expenses)",
+     "",
+     "",
+     "(22,074)",
+     "",
+     "",
+     "",
+     "(24,441)",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "$",
+     "(2,230,222)",
+     "",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "$",
+     "(2,230,222)",
+     "",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "PER SHARE AMOUNTS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "",
+     "394,023,751",
+     "",
+     "",
+     "",
+     "352,447,298",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "HNO INTERNATIONAL, INC.\nSTATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1326,
+    "end_line": 1366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1366,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HNO INTERNATIONAL, INC.\nSTATEMENTS OF STOCKHOLDERS' DEFICIT For the year ended October 31, 2023, As Restated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Share Subscription",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Payable",
+     "",
+     "",
+     "Receivable",
+     "",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2022",
+     "",
+     "5,000,000",
+     "",
+     "5,000",
+     "",
+     "105,265,299",
+     "",
+     "",
+     "105,265",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "38,957,921",
+     "",
+     "(40,168,610)",
+     "",
+     "",
+     "(1,110,424)",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "290,000,000",
+     "",
+     "",
+     "290,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "290,000",
+     ""
+    ],
+    [
+     "Common stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,025,000",
+     "",
+     "",
+     "2,025",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "467,775",
+     "",
+     "\u2014",
+     "",
+     "",
+     "469,800",
+     ""
+    ],
+    [
+     "Common stock issued for settlement of debt",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "20,000,000",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Regulation A stock issuances",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,026,532",
+     "",
+     "",
+     "2,026",
+     "",
+     "",
+     "32,251",
+     "",
+     "",
+     "(13,750)",
+     "",
+     "",
+     "2,024,506",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,045,033",
+     ""
+    ],
+    [
+     "Commitment share issued",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,753",
+     "",
+     "",
+     "25",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "19,975",
+     "",
+     "\u2014",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Net loss for the year ended October 31, 2023",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(1,927,494)",
+     "",
+     "",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "Balance at October 31, 2023, Restated",
+     "",
+     "5,000,000",
+     "$",
+     "5,000",
+     "",
+     "419,341,584",
+     "",
+     "$",
+     "419,341",
+     "",
+     "$",
+     "32,251",
+     "",
+     "$",
+     "(23,750)",
+     "",
+     "$",
+     "41,470,177",
+     "$",
+     "(42,096,104)",
+     "",
+     "$",
+     "(193,085)",
+     ""
+    ],
+    [
+     "For the year ended October 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2023",
+     "",
+     "5,000,000",
+     "$",
+     "5,000",
+     "",
+     "419,341,584",
+     "",
+     "$",
+     "419,341",
+     "",
+     "$",
+     "32,251",
+     "",
+     "$",
+     "(23,750)",
+     "",
+     "$",
+     "41,470,177",
+     "$",
+     "(42,096,104)",
+     "",
+     "$",
+     "(193,085)",
+     ""
+    ],
+    [
+     "Regulation A stock issuances",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "433,429",
+     "",
+     "",
+     "434",
+     "",
+     "",
+     "(17,001)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "432,995",
+     "",
+     "\u2014",
+     "",
+     "",
+     "416,428",
+     ""
+    ],
+    [
+     "Regulation D stock issuances",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,262,852",
+     "",
+     "",
+     "2,263",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "523,237",
+     "",
+     "\u2014",
+     "",
+     "",
+     "525,500",
+     ""
+    ],
+    [
+     "Shares cancelled as per settlement agreement - Vivaris Capital",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(10,000,000)",
+     "",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,400,000",
+     "",
+     "",
+     "7,400",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "76,588",
+     "",
+     "\u2014",
+     "",
+     "",
+     "83,988",
+     ""
+    ],
+    [
+     "Net loss for the year ended October 31, 2024",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(2,230,222)",
+     "",
+     "",
+     "(2,230,222)",
+     ""
+    ],
+    [
+     "Balance at October 31, 2024",
+     "",
+     "5,000,000",
+     "$",
+     "5,000",
+     "",
+     "419,437,865",
+     "",
+     "$",
+     "419,438",
+     "",
+     "$",
+     "15,250",
+     "",
+     "$",
+     "(13,750)",
+     "",
+     "$",
+     "42,502,997",
+     "$",
+     "(44,326,326)",
+     "",
+     "$",
+     "(1,397,391)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "HNO INTERNATIONAL, INC.\nSTATEMENTS OF STOCKHOLDERS' DEFICIT For the year ended October 31, 2023, As Restated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1367,
+    "end_line": 1399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1366,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HNO INTERNATIONAL, INC.\nSTATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Year Ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(2,230,222)",
+     "",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "179,672",
+     "",
+     "",
+     "",
+     "36,940",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "",
+     "",
+     "83,988",
+     "",
+     "",
+     "",
+     "489,800",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in due from related party",
+     "",
+     "",
+     "56,392",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase in accounts payable",
+     "",
+     "",
+     "115,545",
+     "",
+     "",
+     "",
+     "22,485",
+     ""
+    ],
+    [
+     "Increase in accrued payroll",
+     "",
+     "",
+     "17,762",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase/(Decrease) in accrued interest payable",
+     "",
+     "",
+     "(12,425)",
+     "",
+     "",
+     "",
+     "26,545",
+     ""
+    ],
+    [
+     "Payments of lease liabilities",
+     "",
+     "",
+     "1,412",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Decrease) increase in payroll taxes",
+     "",
+     "",
+     "(14,802)",
+     "",
+     "",
+     "",
+     "17,640",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "",
+     "(1,802,678)",
+     "",
+     "",
+     "",
+     "(1,334,084)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related party advances",
+     "",
+     "",
+     "960,585",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from related party note payable",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "250,000",
+     ""
+    ],
+    [
+     "Proceeds from security deposits",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "",
+     "(93,200)",
+     ""
+    ],
+    [
+     "Proceeds from customer deposits",
+     "",
+     "",
+     "99",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock subscription payable",
+     "",
+     "",
+     "(17,001)",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "",
+     "958,929",
+     "",
+     "",
+     "",
+     "2,335,033",
+     ""
+    ],
+    [
+     "Repayment of related party note payable",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(65,000)",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "",
+     "2,002,612",
+     "",
+     "",
+     "",
+     "2,426,833",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "",
+     "(381,934)",
+     "",
+     "",
+     "",
+     "(804,878)",
+     ""
+    ],
+    [
+     "Purchase of long term asset",
+     "",
+     "",
+     "(32,904)",
+     "",
+     "",
+     "",
+     "(103,821)",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "",
+     "(414,838)",
+     "",
+     "",
+     "",
+     "(908,699)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "",
+     "(214,904)",
+     "",
+     "",
+     "",
+     "184,050",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "",
+     "235,159",
+     "",
+     "",
+     "",
+     "51,109",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "",
+     "$",
+     "20,255",
+     "",
+     "",
+     "$",
+     "235,159",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Interest and Income Taxes Paid:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the period",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes paid during the period",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure for Non-Cash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for conversion of debt",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "20,000",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "HNO INTERNATIONAL, INC.\nSTATEMENTS OF CASH FLOWS",
+    "For the Year Ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1400,
+    "end_line": 1459
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "HNO INTERNATIONAL, INC.\nNOTES TO FINANCIAL STATEMENTS\nOCTOBER 31, 2024\nNOTE 1 \u2013 ORGANIZATION AND BASIS OF ACCOUNTING\nOrganization\nHNO International, Inc. (the \u201cCompany\u201d) was incorporated in the State of Nevada on May 2, 2005 under the name American Bonanza Resources Limited. On August 4, 2009, the Company acquired Clenergen Corporation Limited (UK), a United Kingdom corporation (\u201cLimited\u201d), and succeeded to the business of Limited. Limited acquired the assets of Rootchange Limited, a biofuel and biomass research and development company, in April 2009. On March 19, 2009, the Company changes its name to Clenergen Corporation. On July 8, 2020, the Company changed its name to Excoin Ltd. and on August 31, 2021, the Company changed its name to HNO International, Inc. its current name.\nThe Company specializes in the design, integration, and development of green hydrogen-based clean energy technologies. With the Company\u2019s management having over 13 years of experience in the field of green hydrogen production, the Company is committed to providing scalable products that help businesses and communities decarbonize, reduce emissions, and cut operational costs. HNO stands for Hydrogen and Oxygen. The Company is at the forefront of developing innovative solutions, such as the Compact Hydrogen Refueling System (CHRS) and the Compact Hydrogen Production System (CHPS), which can be used to produce green hydrogen for various applications including fuel cell electric vehicles, hydrogen internal combustion engines, heating, and cooking. The CHPS is highly scalable, capable of producing 100-2,000 (or more) kilograms of hydrogen per day for commercial use in various applications. In addition, the Company develops energy systems that complement the zero-emissions EV infrastructure, reduce harmful emissions, and cut maintenance costs of commercial diesel fleets. By integrating components from leading industry partners, the Company aims to transition fossil fuels to cleaner alternatives and promote lower emissions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of restatement balance Sheet",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet as of October 31, 2023",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustment",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "235,159",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "235,159",
+     ""
+    ],
+    [
+     "Due from related party",
+     "$",
+     "56,392",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "56,392",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "$",
+     "291,551",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "291,551",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "767,938",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "767,938",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "$",
+     "79,324",
+     "",
+     "$",
+     "(79,324)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long term asset, net",
+     "$",
+     "103,821",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "103,821",
+     ""
+    ],
+    [
+     "Security deposits",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "100,000",
+     ""
+    ],
+    [
+     "Total Non-Current Assets",
+     "$",
+     "1,051,083",
+     "",
+     "$",
+     "(79,324)",
+     "",
+     "$",
+     "971,759",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "1,342,634",
+     "",
+     "$",
+     "(79,324)",
+     "",
+     "$",
+     "1,263,310",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "925",
+     "",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "22,485",
+     ""
+    ],
+    [
+     "  Accrued interest payable",
+     "$",
+     "41,270",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "41,270",
+     ""
+    ],
+    [
+     "Lease liability",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payroll tax",
+     "$",
+     "17,640",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "17,640",
+     ""
+    ],
+    [
+     "Advances, related party",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Notes payable, related party",
+     "$",
+     "785,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "785,000",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "$",
+     "844,835",
+     "",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "866,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Current Liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Long term notes payable, related party",
+     "$",
+     "590,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "590,000",
+     ""
+    ],
+    [
+     "Total Non-Current Liability",
+     "$",
+     "590,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "590,000",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "1,434,835",
+     "",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "1,456,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A, par value $0.001 per share",
+     "$",
+     "10,000",
+     "",
+     "$",
+     "(5,000)",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001 per share",
+     "$",
+     "419,341",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "419,341",
+     ""
+    ],
+    [
+     "Common stock payable",
+     "$",
+     "32,251",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "32,251",
+     ""
+    ],
+    [
+     "Common stock subscription receivable",
+     "$",
+     "(23,750)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(23,750)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "$",
+     "41,079,902",
+     "",
+     "$",
+     "390,275",
+     "",
+     "$",
+     "41,470,177",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "$",
+     "(41,609,945)",
+     "",
+     "$",
+     "(486,159)",
+     "",
+     "$",
+     "(42,096,104)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "$",
+     "(92,201)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(193,085)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "1,342,634",
+     "",
+     "$",
+     "79,324",
+     "",
+     "$",
+     "1,263,310",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of restatement balance Sheet"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1490,
+    "end_line": 1539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CORRECTION OF PREVIOUSLY ISSUED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "4. Termination of Patent Purchase Agreement: On March 13, 2025, the Company and Donald Owens mutually agreed to terminate the Patent Purchase Agreement as of January 24, 2023. As part of the termination, the patents were returned to Mr. Owens, and the 5,000,000 shares of Series A Preferred Stock were canceled. The $82,500 value previously reported in intangible assets and additional paid-in capital was reversed, resulting in a reduction in intangible assets. Additionally, the related amortization expense of $3,176 and the issuance of Series A Preferred Stock were removed from the financial statements. A copy of the Termination Agreement is attached to this Form 10-K as Exhibit 10.27 incorporated herein by reference.\n5. Expenses totaling $21,560, incurred during the fiscal year ended October 31, 2023, and paid subsequently, have been reclassified to accounts payable as of October 31, 2023. This adjustment ensures that financial obligations are accurately reported in the period in which they were incurred.\nImpact of the Restatement\nThe impact of the restatement on the financial statements for the affected period is presented below. In addition to the below, the related notes to the financial statements have also been adjusted as appropriate to reflect the impact of the restatements.\nThe impact of the restatement on the line items within the previously reported Audited Balance Sheet for the year ended October 31, 2023, previously filed is as follows:",
+   "prose_after": "The impact of the restatement on the line items within the previously reported Audited Statement of Operations for the year ended October 31, 2023, previously filed is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of statement of operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations for the year ended October 31, 2023",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustment",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "13,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "13,000",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "$",
+     "(5,885)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(5,885)",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "7,115",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "7,115",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and marketing",
+     "$",
+     "3,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,000",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "1,358,868",
+     "",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "1,380,428",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "$",
+     "22,025",
+     "",
+     "$",
+     "467,775",
+     "",
+     "$",
+     "489,800",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "$",
+     "40,116",
+     "",
+     "$",
+     "(3,176)",
+     "",
+     "$",
+     "36,940",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "$",
+     "1,424,009",
+     "",
+     "$",
+     "486,159",
+     "",
+     "$",
+     "1,910,168",
+     ""
+    ],
+    [
+     "Other Income (Expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "2,104",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "2,104",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(26,545)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "(26,545)",
+     ""
+    ],
+    [
+     "Total Other (Expenses)",
+     "$",
+     "(24,441)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "(24,441)",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "$",
+     "(1,441,335)",
+     "",
+     "$",
+     "(486,159)",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,441,335)",
+     "",
+     "$",
+     "(486,159)",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "PER SHARE AMOUNTS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "352,447,298",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "352,447,298",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of statement of operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1542,
+    "end_line": 1568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CORRECTION OF PREVIOUSLY ISSUED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "The impact of the restatement on the line items within the previously reported Audited Statement of Operations for the year ended October 31, 2023, previously filed is as follows:",
+   "prose_after": "The impact of the restatement on the line items within the previously reported Audited Statement of Changes in Stockholders\u2019 Deficit for the year ended October 31, 2023, previously filed is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of statement of changes in stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in Statement of Stockholders' Deficit for the year ended October 31, 2023",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustment",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Common stock based compensation",
+     "$",
+     "2,025",
+     "",
+     "$",
+     "467,775",
+     "",
+     "$",
+     "469,800",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "$",
+     "41,079,902",
+     "",
+     "$",
+     "390,275",
+     "",
+     "$",
+     "41,470,177",
+     ""
+    ],
+    [
+     "Series A preferred issued pursuant to patent agreement, shares",
+     "",
+     "10,000,000",
+     "",
+     "",
+     "(5,000,000)",
+     "",
+     "",
+     "5,000,000",
+     ""
+    ],
+    [
+     "Series A preferred issued pursuant to patent agreement, amount",
+     "$",
+     "10,000",
+     "",
+     "$",
+     "(5,000)",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Net loss for the year ended October 31, 2023",
+     "$",
+     "(1,441,335)",
+     "",
+     "$",
+     "(486,159)",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "Balance at October 31, 2023",
+     "$",
+     "(92,201)",
+     "",
+     "$",
+     "(100,884)",
+     "",
+     "$",
+     "(193,085)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of statement of changes in stockholders\u2019 deficit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1571,
+    "end_line": 1583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CORRECTION OF PREVIOUSLY ISSUED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "The impact of the restatement on the line items within the previously reported Audited Statement of Changes in Stockholders\u2019 Deficit for the year ended October 31, 2023, previously filed is as follows:",
+   "prose_after": "The impact of the restatement on the line items within the previously reported Audited Statement of Cash Flows for the year ended October 31, 2023, previously filed is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of statement of cash flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Cash Flows for the year ended October 31, 2023",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustment",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,441,335)",
+     "",
+     "$",
+     "(486,159)",
+     "",
+     "$",
+     "(1,927,494)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "$",
+     "40,116",
+     "",
+     "$",
+     "(3,176)",
+     "",
+     "$",
+     "36,940",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "$",
+     "22,025",
+     "",
+     "$",
+     "467,775",
+     "",
+     "$",
+     "489,800",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in due from related party",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase in accounts payable",
+     "$",
+     "925",
+     "",
+     "$",
+     "21,560",
+     "",
+     "$",
+     "22,485",
+     ""
+    ],
+    [
+     "Increase in accrued payroll",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Increase/(Decrease) in accrued interest payable",
+     "$",
+     "26,545",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "26,545",
+     ""
+    ],
+    [
+     "Payments of lease liabilities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Decrease) increase in payroll taxes",
+     "$",
+     "17,640",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "17,640",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "$",
+     "(1,334,084)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(1,334,084)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from related party advances",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from related party note payable",
+     "$",
+     "250,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "250,000",
+     ""
+    ],
+    [
+     "Proceeds from security deposits",
+     "$",
+     "(93,200)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(93,200)",
+     ""
+    ],
+    [
+     "Proceeds from customer deposits",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock subscription payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "$",
+     "2,335,033",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,335,033",
+     ""
+    ],
+    [
+     "Repayment of related party note payable",
+     "$",
+     "(65,000)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(65,000)",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "$",
+     "2,426,833",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,426,833",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "$",
+     "(804,878)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(804,878)",
+     ""
+    ],
+    [
+     "Purchase of long term asset",
+     "$",
+     "(103,821)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(103,821)",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "$",
+     "(908,699)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(908,699)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "$",
+     "184,050",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "184,050",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "$",
+     "51,109",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "51,109",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "235,159",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "235,159",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Interest and Income Taxes Paid:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the period",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes paid during the period",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure for Non-Cash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred stock issued pursuant to patent agreement",
+     "$",
+     "82,500",
+     "",
+     "$",
+     "(82,500)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock issued for conversion of debt",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "20,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of statement of cash flows"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1586,
+    "end_line": 1633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 CORRECTION OF PREVIOUSLY ISSUED FINANCIAL STATEMENTS"
+    }
+   },
+   "prose_before": "The impact of the restatement on the line items within the previously reported Audited Statement of Cash Flows for the year ended October 31, 2023, previously filed is as follows:",
+   "prose_after": "NOTE 3 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe accompanying financial statements have been prepared in accordance with generally accepted accounting principles in the United States of America (\u201cU.S. GAAP\u201d), and pursuant to the rules and regulations of the Securities and Exchange Commission (the \u201cSEC\u201d) and reflect all adjustments, consisting of normal recurring adjustments, which management believes are necessary to fairly present the financial position, results of operations and cash flows of the Company for the years ended October 31, 2024 and October 31, 2023.\nUse of Estimates\nThe preparation of the financial statements in conformity with generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amount of revenues and expenses during the reporting period. The management makes its best estimate of the outcome for these items based on information available when the financial statements are prepared.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of estimated useful lives",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Useful life"
+    ],
+    [
+     "Small equipment",
+     "",
+     "3 Years"
+    ],
+    [
+     "Large equipment",
+     "",
+     "7 Years"
+    ],
+    [
+     "Vehicles",
+     "",
+     "4 Years"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of estimated useful lives",
+    "Useful life"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1674,
+    "end_line": 1682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Number of shares of common stock outstanding plus the dilutive effect of shares issuable through the common stock equivalents. The weighted-average number of common shares outstanding excludes common stock equivalents because their inclusion would be anti-dilutive.\nProperty and Equipment\nProperty and equipment are carried at cost and, less accumulated depreciation. The cost of repairs and maintenance is expensed as incurred; major replacements and improvements are capitalized. When assets are retired or disposed of, the cost and accumulated depreciation are removed from the accounts, and any resulting gains or losses are included in income in the year of disposal. The Company examines the possibility of decreases in the value of property and equipment when events or changes in circumstances reflect the fact that their recorded value may not be recoverable.\nThe Company\u2019s property and equipment mainly consists of computer and laser equipment. Depreciation is computed using the straight-line method over the estimated useful lives of the assets.",
+   "prose_after": "Impairment of Long-Lived Assets\nThe Company reviews its long-lived assets for impairment whenever events or changes in circumstances indicate that the carrying amount of the assets may not be fully recoverable. To determine recoverability of a long-lived asset, management evaluates whether the estimated future undiscounted net cash flows from the asset are less than its carrying amount. If impairment is indicated, the long-lived asset would be written down to fair value. Fair value is determined by an evaluation of available price information at which assets could be bought or sold, including quoted market prices, if available, or the present value of the estimated future cash flows based on reasonable and supportable assumptions.\nLeases\nThe Company accounts for leases in accordance with ASC 842, Leases (\u201cASC 842\u201d). At contract inception, the Company determines if an arrangement is or contains a lease. Where the Company is the lessee, for each lease with a term greater than twelve months, the Company records a right-of-use asset and lease liability. A right-of-use asset represents the economic benefit conveyed to the Company by the right to use the underlying asset over the lease term. A lease liability represents the obligation to make lease payments arising from the use of the asset over the lease term. As most of the Company\u2019s leases do not provide an implicit interest rate, the lease liability is calculated at lease commencement as the present value of unpaid lease payments using the Company\u2019s estimated incremental borrowing rate. The incremental borrowing rate represents the rate of interest that the Company would have to pay to borrow an amount equal to the lease payments on a collateralized basis over a similar term and is determined using a portfolio approach based on information available at the commencement date of the lease. Leases with an initial expected term of 12 months or less are not recorded in the Balance Sheet and the related lease expense is recognized on a straight-line basis over the lease term.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1686,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of property and equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "October 31,\n\n\n\n2024",
+     "",
+     "",
+     "October 31,\n\n\n\n2023",
+     "",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "$",
+     "60,702",
+     "",
+     "$",
+     "60,702",
+     ""
+    ],
+    [
+     "Small equipment",
+     "",
+     "$",
+     "32,943",
+     "",
+     "$",
+     "8,879",
+     ""
+    ],
+    [
+     "Large equipment",
+     "",
+     "",
+     "1,093,166",
+     "",
+     "",
+     "735,297",
+     ""
+    ],
+    [
+     "Property and Equipment, Gross",
+     "",
+     "$",
+     "1,186,811",
+     "",
+     "$",
+     "804,878",
+     ""
+    ],
+    [
+     "  Less: Accumulated depreciation",
+     "",
+     "",
+     "(191,913)",
+     "",
+     "",
+     "(36,940)",
+     ""
+    ],
+    [
+     "Property and Equipment, Net",
+     "",
+     "$",
+     "994,898",
+     "",
+     "$",
+     "767,938",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of property and equipment"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1707,
+    "end_line": 1723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "For public companies, the amendments in this update are effective for fiscal years beginning after December 15, 2024, including interim periods within those fiscal years. For private companies, the amendments are effective for fiscal years beginning after December 15, 2025, and interim periods within fiscal years beginning after December 15, 2026. Early adoption is permitted. The Company is currently evaluating the impact of this accounting standard update on its financial statements and will continue to assess its potential effects as the adoption date approaches.\nNOTE 4 \u2013 GOING CONCERN\nOn October 31, 2024, we had an accumulated deficit of $44,326,326. We have not been able to generate sufficient cash from operating activities to fund our ongoing operations. We will be required to raise additional funds through public or private financing, additional collaborative relationships, or other arrangements until we are able to raise revenues to a point of positive cash flow. We are evaluating various options to further reduce our cash requirements to operate at a reduced rate, as well as options to raise additional funds, including obtaining loans and selling common stock. There is no guarantee that we will be able to generate enough revenue and/or raise capital to support operations.\nBased on the above factors, substantial doubt exists about our ability to continue as a going concern for one year from the issuance of these financial statements.\nNOTE 5 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "prose_after": "Depreciation expenses for the years ended October 31, 2024, and 2023 were $154,973 and $36,940, respectively.\nNOTE 6 \u2013 LEASES\nOperating leases\nThe Company has an operating lease agreement for office space in Murrieta, California, expiring on November 30, 2026.\nOn November 18, 2020, the Company entered into an operating lease with the landlord, Demarius Holdings, Inc., commencing on December 1, 2020, and ending on November 30, 2023, for the office spaces located at 41558 Eastman Drive, Suites B and C, Murrieta, California 92562. The monthly rent was $4,183. Both suites are approximately 2,088 square feet of space. The Company\u2019s principal executive office is located at 41558 Eastman Drive, Suite B, Murrieta, California 92562. Suite C is utilized for testing and research equipment.\nOn November 14, 2023, the lease for Suite B was extended for 36 months to November 30, 2026. The monthly rental amount for Suite B is $2,501 for the period from December 1, 2023, to November 30, 2024, with an increase to $2,573 for the period from December 1, 2024, to November 30, 2025, and an increase to $2,647 for the period from December 1, 2025, to November 30, 2026.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1686,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1723,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of remaining lease term",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year",
+     "",
+     "Operating Lease Payment",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "2025",
+     "",
+     "$",
+     "60,909"
+    ],
+    [
+     "2026 and above",
+     "",
+     "$",
+     "65,986"
+    ],
+    [
+     "Total Payments",
+     "",
+     "$",
+     "126,895"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of remaining lease term"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1748,
+    "end_line": 1757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 LEASES"
+    }
+   },
+   "prose_before": "As most of the Company\u2019s leases do not provide an implicit interest rate, the lease liability is calculated at lease commencement as the present value of unpaid lease payments using the Company\u2019s estimated incremental borrowing rate. The incremental borrowing rate represents the rate of interest that the Company would have to pay to borrow an amount equal to the lease payments on a collateralized basis over a similar term and is determined using a portfolio approach based on information available at the commencement date of the lease. As of October 31, 2024, the right-of-use asset was $121,805 and operating lease liabilities were $123,217. The operating lease liabilities consist of a current portion of $57,062 and a non-current portion of $66,155. The weighted average remaining lease term was 2.08 years and the weighted average discount rate was 4.14%.\nOperating Cash Flows Related to Leases\nDuring the year ended October 31, 2024, the Company made cash payments totaling $1,412 related to its operating leases. These payments are included in the Statement of Cash Flows under operating activities as \"Payments of lease liabilities.\"\nRemaining lease term as of October 31, 2024:",
+   "prose_after": "NOTE 7 \u2013 COMMON STOCK\nThe Company is authorized to issue 985,000,000 shares of common stock, par value $0.001.\nIncrease in Authorized Capital Stock\nOn January 4, 2023, the Board of Directors and a majority of the Company\u2019s stockholders approved the proposal to increase the number of shares of capital stock that the Company is authorized to issue to 1,000,000,000. On January 6, 2023, the Company filed a Certificate of Amendment to the Articles of Incorporation with the Secretary of State of Nevada to increase the total authorized capital from 510,000,000 shares to 1,000,000,000 shares consisting of 985,000,000 shares of common stock, par value $0.001, and 15,000,000 shares of preferred stock, par value $0.001.\nStock Issued\nDuring the quarter ended January 31, 2023, the Company entered into Stock Subscription Agreements with Donald Owens, the Company\u2019s Chairman of the Board of Directors, whereby the Company privately sold a total of 175,000,000 shares of its common stock for a cash purchase price of $175,000. Donald Owens was an \u201caccredited investor\u201d (under Rule 506 (b) of Regulation D under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d)). The $175,000 in proceeds from the sale of common stock will be used for operating capital. The shares were \u2018restricted securities\u2019 under Rule 144 of the Securities Act.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1723,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1765,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of amortization expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Useful Life (years)",
+     "",
+     "October 31, 2024",
+     "",
+     "",
+     "October 31, 2023",
+     ""
+    ],
+    [
+     "Long term asset",
+     "",
+     "5",
+     "$",
+     "136,725",
+     "",
+     "$",
+     "103,821"
+    ],
+    [
+     "Less: Accumulated amortization",
+     "",
+     "",
+     "",
+     "(24,699)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Long term asset, net",
+     "",
+     "",
+     "$",
+     "112,026",
+     "",
+     "$",
+     "103,821"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of amortization expense"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1904,
+    "end_line": 1915
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INTELLECTUAL PROPERTY: PROTOTYPE COMPACT HYDROGEN REFUELING STATION (CHRS)"
+    }
+   },
+   "prose_before": "On December 6, 2023, the SAFE was terminated as part of a Mutual Release Agreement between HNO International, Inc., and Varea, Inc. Under the terms of this Mutual Release Agreement, the intellectual property related to the prototype Compact Hydrogen Refueling Station (CHRS), developed with the funds provided under the SAFE, was retained by HNO International, Inc.\nThe balance of the SAFE on December 6, 2023, and October 31, 2023, was $136,725 and $103,821, respectively. Following the termination of the SAFE, the amount previously recorded under the SAFE was reclassified, and the intellectual property associated with the CHRS is now fully owned and recognized as a long-term intangible asset on HNO International, Inc.'s balance sheet. This long-term asset is solely the intellectual property associated with the CHRS and does not include any physical equipment.\nAmortization\nThe intellectual property associated with the CHRS is being amortized over a useful life of five 5 years, beginning on December 6, 2023. The amortization expense for the year ended October 31, 2024 is $24,699, recognizing the straight-line amortization of the asset over the remaining useful life.",
+   "prose_after": "NOTE 12 \u2013 TERMINATION OF PATENT AGREEMENT\nPatent Purchase Agreement\nOn January 24, 2023, the Company entered into a Patent Purchase Agreement with Donald Owens, the Company's Chairman of the Board of Directors, to acquire several patents related to hydrogen supplemental systems for on-demand hydrogen generation for internal combustion engines and a method and apparatus for increasing combustion efficiency and reducing particulate matter emissions in jet engines. In exchange for these patents, the Company issued 5,000,000 shares of its Series A Preferred Stock to Mr. Owens, valued at $82,500.\nTermination of Patent Purchase Agreement\nOn March 13, 2025, the Company and Donald Owens mutually agreed to terminate the Patent Purchase Agreement as of January 24, 2023. As part of the termination, the patents were returned to Mr. Owens, and the 5,000,000 shares of Series A Preferred Stock were canceled. See Note 2 \u2013 Correction of Previously Issued Financial Statements. A copy of the Termination Agreement is attached to this Form 10-K as Exhibit 10.27 incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1921,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Term in Office"
+    ],
+    [
+     "Donald Owens",
+     "71",
+     "President, Chief Executive Officer and Secretary",
+     "November 20, 2024 to present"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hossein Haririnia",
+     "71",
+     "Treasurer (who serves as our Principal Financial and Accounting Officer) and Director",
+     "Treasurer from August 22, 2022 to present\n\n\n\nDirector from December 22, 2022 to present"
+    ],
+    [
+     "Donald Owens",
+     "71",
+     "Chairman of the Board of Directors",
+     "April 30, 2021 to present"
+    ],
+    [
+     "William Parker",
+     "59",
+     "Director",
+     "December 22, 2022 to present"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2023,
+    "end_line": 2034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE.\nOur bylaws state the number of the directors of the Company shall be determined by resolution of the Board of Directors. The Board of Directors currently consists of three directors who are expected to hold office until our next meeting of the shareholders. Each director is elected at our annual meeting of shareholders and holds office until the next annual meeting of shareholders, or until his successor is elected and qualified, or his earlier death, resignation or removal. Officers are elected by and serve at the discretion of the Board of Directors.\nThe following table sets forth information regarding our executive officers, directors and significant employees, including their ages as of the date of this Report:\nThe names of our director and executive officers as of the date of this Report, their respective ages, positions, and biographies are set forth below. Our executive officers are appointed by, and serve at the discretion of, our board of directors.",
+   "prose_after": "Professional Experience\nThe biographies of each executive officer below contain information regarding the person\u2019s service as an executive officer, business experience, director positions held currently or at any time during the last five years, and information regarding involvement in certain legal or administrative proceedings, if applicable.\nA description of the principal occupation for the past five years and summary of the experience of the directors and officers of the Company is as follows:\nDonald Owens \u2013 CEO, President and Chairman of the Board of Directors\nDonald Owens founded HNO Green Fuels, Inc. on June 5, 2011, and has been serving as its Chairman and President from June 2011 to the present. As Chairman and President of HNO Green Fuels, Inc. Mr. Owens creating a customized hydrogen solution for reducing emissions in internal combustion engines and secured 19 US patents and 3 International Patents for this technology. HNO Green Fuels, Inc. is an affiliate of HNO International, Inc. Mr. Owens, appointed Chairman of the Board of Directors of HNO International, Inc. on April 30, 2021, continues to actively serve in this capacity.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2008,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2047,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "",
+     "Fees Earned or Paid in Cash\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Stock Awards\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Paul Mueller,\n\n\n\nFormer President, CEO and Secretary(1)(5)\n\n\n\nYear Ended October 31, 2024",
+     "",
+     "",
+     "121,000",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "121,000"
+    ],
+    [
+     "Year Ended October 31, 2023",
+     "",
+     "",
+     "125,000",
+     "",
+     "",
+     "",
+     "57,500",
+     "",
+     "",
+     "",
+     "182,500"
+    ],
+    [
+     "Hossein Haririnia,\n\n\n\nTreasurer and Director(1)(4)\n\n\n\nYear Ended October 31, 2024",
+     "",
+     "",
+     "189,750",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "189,750"
+    ],
+    [
+     "Year Ended October 31, 2023",
+     "",
+     "",
+     "170,500",
+     "",
+     "",
+     "",
+     "57,500",
+     "",
+     "",
+     "",
+     "228,000"
+    ],
+    [
+     "Donald Owens\n\n\n\nPresident, CEO, Secretary and Chairman of the Board of Directors (2)(3)(5)\n\n\n\nYear Ended October 31, 2024",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Year Ended October 31, 2023",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2091,
+    "end_line": 2121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Board oversees our business and considers the risks associated with our business strategy and decisions. The Board currently implements its risk oversight function as a whole. Each of the Board committees, when established, will also provide risk oversight in respect of its areas of concentration and reports material risks to the board for further consideration.\nCommittees\nOur board of directors has not yet established any committees.\nCode of Business Conduct and Ethics\nOur Board plans to adopt a written code of business conduct and ethics (the \u201cCode\u201d) that applies to our directors, officers and employees, including our principal executive officer, principal financial officer and principal accounting officer or controller, or persons performing similar functions. We intend to post on our website a current copy of the Code and all disclosures that are required by law in regard to any amendments to, or waivers from, any provision of the Code.\nITEM 11. EXECUTIVE COMPENSATION.\nThe table below summarizes all compensation paid to our named executive officers for the years ended October 31, 2024 and October 31, 2023.",
+   "prose_after": "(1) On August 22, 2022, we accepted the resignations from Wilhelm Cashen as the Company\u2019s President, Chief Executive Officer, Chief Financial Officer, Treasurer, Secretary and member of the Board of Directors. Effective on the same date to fill the vacancies created by Mr. Cashen\u2019s resignations, we appointed Paul Mueller as our President, Chief Executive Officer and Secretary. Also, on this date, Hossein Haririnia was appointed Treasurer (who serves as our Principal Financial and Accounting Officer).\n(2) On December 1, 2021, we accepted the resignation from Donald Owens as our President, Chief Executive Officer, Chief Financial Officer, Treasurer and Secretary.\n(3) On April 30, 2021, we accepted the resignation from Douglas Anderson as our President, Chief Executive Officer, Chief Financial Officer, Treasurer, Secretary and Chairman of the Board of Directors. Effective on the same date to fill the vacancies created by Mr. Anderson\u2019s resignations, we appointed Donald Owens as our President, Chief Executive Officer, Chief Financial Officer, Treasurer, Secretary and Chairman of the Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 2135,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash\n\n\n\n($)",
+     "Stock Awards\n\n\n\n($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "William Parker\n\n\n\nDirector\n\n\n\nYear Ended October 31, 2024",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Year Ended October 31, 2023",
+     "-",
+     "23,000",
+     "23,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2136,
+    "end_line": 2148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) On April 30, 2021, we accepted the resignation from Douglas Anderson as our President, Chief Executive Officer, Chief Financial Officer, Treasurer, Secretary and Chairman of the Board of Directors. Effective on the same date to fill the vacancies created by Mr. Anderson\u2019s resignations, we appointed Donald Owens as our President, Chief Executive Officer, Chief Financial Officer, Treasurer, Secretary and Chairman of the Board of Directors.\n(4) On December 22, 2022, the Board of Directors appointed Hossein Haririnia to the Board of Directors effective as of December 22, 2022.\n(5) On November 20, 2024, we accepted the resignation from Paul Mueller as our President, Chief Executive Officer and Secretary. Effective on the same date to fill the vacancies created by Mr. Mueller\u2019s resignation, the Company appointed Donald Owens, Chairman of the Board of Directors, as the Company\u2019s Chief Executive Officer, President and Secretary.\nDirector Compensation\nThe table below summarizes all compensation paid to our directors who are not also named executive officers for the years ended October 31, 2024 and October 31, 2023.",
+   "prose_after": "Equity Awards\nAs of October 31, 2024, there were no outstanding equity awards.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table sets forth certain information as of March 17, 2025, as to shares of our shares of common stock beneficially owned by: (1) each person who is known by us to own beneficially more than 5% of the 85,085,491 (79,725,491 common plus 5,000,000 series a preferred and 360,000 series b preferred) shares. The table includes preferred stock that is convertible into common stock and information as to the ownership of our stock by each of its directors, named executive officers, and executive officers and by the directors and executive officers as a group. There were no stock options outstanding as of March 19, 2025. Except as otherwise indicated, all shares are owned directly, and the persons named in the table have sole voting and investment power with respect to shares shown as beneficially owned by them.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2135,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2198,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address (1)",
+     "Number of Shares Beneficially Owned",
+     "Class",
+     "Percentage of Class (2)"
+    ],
+    [
+     "Officers and Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donald Owens\n\n\n\nCEO, President, Secretary and Chairman of the Board of Directors",
+     "30,000,000\n\n\n\n5,000,000\n\n\n\n245,000",
+     "Common Stock\n\n\n\nSeries A Preferred Stock\n\n\n\nSeries B Preferred Stock",
+     "37.76%\n\n\n\n100%\n\n\n\n68.00%"
+    ],
+    [
+     "Hossein Haririnia\n\n\n\nTreasurer (who serves as our Principal Financial and Accounting Officer) and Director",
+     "12,450,000\n\n\n\n-0-",
+     "Common Stock\n\n\n\nSeries A Preferred Stock",
+     "15.61%\n\n\n\n--"
+    ],
+    [
+     "William Parker\n\n\n\nDirector",
+     "7,100,000\n\n\n\n-0-",
+     "Common Stock\n\n\n\nSeries A Preferred Stock",
+     "8.9%\n\n\n\n--"
+    ],
+    [
+     "All Named Executive Officers, Executive Officers and Directors as a Group\n(3 persons)",
+     "49,550,000\n\n\n\n5,000,000\n\n\n\n245,000",
+     "Common Stock\n\n\n\nSeries A Preferred Stock\n\n\n\nSeries B Preferred Stock",
+     "62.27%\n\n\n\n100%\n\n\n\n68.00%"
+    ],
+    [
+     "5% Principal Stockholders",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HNO Green Fuels, Inc. (3)",
+     "-0-\n\n\n\n115,000",
+     "Common Stock\n\n\n\nSeries B Preferred Stock",
+     "--\n\n\n\n32.00%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2159,
+    "end_line": 2193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table sets forth certain information as of March 17, 2025, as to shares of our shares of common stock beneficially owned by: (1) each person who is known by us to own beneficially more than 5% of the 85,085,491 (79,725,491 common plus 5,000,000 series a preferred and 360,000 series b preferred) shares. The table includes preferred stock that is convertible into common stock and information as to the ownership of our stock by each of its directors, named executive officers, and executive officers and by the directors and executive officers as a group. There were no stock options outstanding as of March 19, 2025. Except as otherwise indicated, all shares are owned directly, and the persons named in the table have sole voting and investment power with respect to shares shown as beneficially owned by them.\nWe have determined beneficial ownership in accordance with the rules of the SEC. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all shares of common stock that they beneficially own, subject to applicable community property laws.",
+   "prose_after": "* Less than 1%\n(1) Unless otherwise noted, the address of the reporting person is c/o HNO International, Inc., 41558 Eastman Drive, Suite B, Murrieta, CA 92562.\n(2) Under Rule 13d-3 of the Exchange Act, a beneficial owner of a security includes any person who, directly or indirectly, through any contract, arrangement, understanding, relationship, or otherwise has or shares: (i) voting power, which includes the power to vote, or to direct the voting of shares; and (ii) investment power, which includes the power to dispose or direct the disposition of shares. Certain shares may be deemed to be beneficially owned by more than one person (if, for example, persons share the power to vote or the power to dispose of the shares). In addition, shares are deemed to be beneficially owned by a person if the person has the right to acquire the shares (for example, upon exercise of an option) within 60 days of the date as of which the information is provided. In computing the percentage ownership of any person, the amount of shares outstanding is deemed to include the number of shares beneficially owned by such person (and only such person) by reason of these acquisition rights. As a result, the percentage of outstanding shares of any person as shown in the above table does not necessarily reflect the person\u2019s actual ownership or voting power with respect to the number of shares of common stock actually outstanding on the date of this report.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2135,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2198,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$25,000",
+     "",
+     "$",
+     "85,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "",
+     "1,590",
+     "",
+     "",
+     "1,454"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "$ 26,590",
+     "",
+     "$",
+     "86,454"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2291,
+    "end_line": 2302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u00b7 the director or a family member of the director is employed as an executive officer of an entity where, at any time during the past three years, any of the executive officers of the company served on the compensation committee of such other entity; or\n\u00b7 the director or a family member of the director is a current partner of the Company\u2019s outside auditor, or at any time during the past three years was a partner or employee of the Company\u2019s outside auditor, and who worked on the company\u2019s audit.\nUnder such definitions, we have no independent directors. However, our Common Stock is not currently quoted or listed on any national exchange or interdealer quotation system with a requirement that a majority of our Board be independent and, therefore, we are not subject to any director independence requirements.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nFees related to services performed by Barton CPA and BF Borgers CPA PC for the years ended October 31, 2024 and 2023, respectively, were as follows:",
+   "prose_after": "Pre-Approval Policies\nThe Board's policy is to pre-approve all audit services and all non-audit services before they commence, including the fees and terms thereof, to be provided by our independent auditor. All of the services provided during the fiscal year ended October 31, 2024 were pre-approved. No audit, review or attest services were approved in accordance with Section 2-01(c)(7)(i)(C) of Regulation S-X during the fiscal year ended October 31, 2024.\nDuring the approval process, the Board considered the impact of the types of services and the related fees on the independence of the independent registered public accounting firm. The services and fees were deemed compatible with the maintenance of that firm's independence, including compliance with rules and regulations of the SEC. Throughout the year, the Board will review any revisions to the estimates of audit fees initially estimated for the engagement.\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\na. The following documents are filed as part of this annual report on Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2266,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 2309,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Form",
+     "File No.",
+     "Exhibit",
+     "Filing Date",
+     "Filed\n\n\n\nHerewith"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation filed May 2, 2005",
+     "S-1",
+     "333-275193",
+     "3.1",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment filed March 5, 2009",
+     "S-1",
+     "333-275193",
+     "3.2",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Change filed March 5, 2009",
+     "S-1",
+     "333-275193",
+     "3.3",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment filed April 8, 2010",
+     "S-1",
+     "333-275193",
+     "3.4",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment filed June 4, 2020",
+     "S-1",
+     "333-275193",
+     "3.5",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.6",
+     "Certificate of Amendment filed August 31, 2021",
+     "S-1",
+     "333-275193",
+     "3.6",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.7",
+     "Certificate of Amendment filed January 6, 2023",
+     "S-1",
+     "333-275193",
+     "3.7",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.8",
+     "Certificate of Designation (Series A Preferred Stock) filed October 14, 2019",
+     "S-1",
+     "333-275193",
+     "3.8",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.9",
+     "Amendment to Certificate of Designation (Series A Preferred Stock) filed November 10, 2021",
+     "S-1",
+     "333-275193",
+     "3.9",
+     "10/27/23",
+     ""
+    ],
+    [
+     "3.10",
+     "Amended and Restated Bylaws",
+     "1-A",
+     "024-12194",
+     "1A-2B",
+     "4/14/23",
+     ""
+    ],
+    [
+     "3.11",
+     "Certificate of Designation (Series B Preferred Stock) filed January 2, 2025",
+     "8-K",
+     "000-56568",
+     "3.1",
+     "1/3/25",
+     ""
+    ],
+    [
+     "10.1",
+     "Patent Purchase Agreement dated January 24, 2023",
+     "1-A",
+     "000-56568",
+     "1A-6",
+     "4/14/23",
+     ""
+    ],
+    [
+     "10.2",
+     "Purchase and Sale Agreement with TCF Elrod, LLC dated August 28, 2023",
+     "10-Q",
+     "000-56568",
+     "10.2",
+     "9/14/23",
+     ""
+    ],
+    [
+     "10.3",
+     "Equity Financing Agreement with GHS dated October 9, 2023",
+     "S-1/A",
+     "333-275193",
+     "10.3",
+     "10/27/23",
+     ""
+    ],
+    [
+     "10.4",
+     "Registration Rights Agreement with GHS dated October 9, 2023",
+     "S-1/A",
+     "333-275193",
+     "10.4",
+     "10/27/23",
+     ""
+    ],
+    [
+     "10.5",
+     "Promissory Note, dated December 1, 2021, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.5",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.6",
+     "Promissory Note, dated May 31, 2022, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.6",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.7",
+     "Promissory Note, dated September 29, 2022, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.7",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.8",
+     "Promissory Note, dated October 20, 2022, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.8",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.9",
+     "Promissory Note, dated March 1, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.9",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.10",
+     "Promissory Note, dated March 8, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.10",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.11",
+     "Promissory Note, dated March 23, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.11",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.12",
+     "Promissory Note, dated April 3, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.12",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.13",
+     "Promissory Note, dated April 13, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.13",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.14",
+     "Promissory Note, dated April 17, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "S-1/A",
+     "333-275193",
+     "10.14",
+     "12/19/23",
+     ""
+    ],
+    [
+     "10.15",
+     "Extension to Promissory Note, dated December 1, 2021, between HNO International, Inc. and HNO Green Fuels, Inc. - Executed January 17, 2024",
+     "8-K",
+     "000-56568",
+     "99.1",
+     "1/23/24",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2339,
+    "end_line": 2372
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Report of Independent Registered Public Accounting Firm\nAudited Balance Sheets on October 31, 2024 and 2023, as restated\nAudited Statements of Operations for the years ended October 31, 2024 and 2023, as restated\nAudited Statement of Stockholders' Deficit for the years ended October 31, 2024 and 2023, as restated\nAudited Statements of Cash Flows for the years ended October 31, 2024 and 2023, as restated\nNotes to Audited Financial Statements\n2. FINANCIAL STATEMENT SCHEDULES\nAll financial statement schedules have been omitted as they are not required, not applicable, or the required information is otherwise included.\n3. EXHIBITS\nThe exhibits listed below are filed with or incorporated by reference in this annual report on Form 10-K.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2334,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2373,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Form",
+     "File No.",
+     "Exhibit",
+     "Filing Date",
+     "Filed\n\n\n\nHerewith"
+    ],
+    [
+     "10.16",
+     "Extension to Promissory Note, dated September 29, 2022, between HNO International, Inc. and HNO Green Fuels, Inc. - Executed January 17, 2024",
+     "8-K",
+     "000-56568",
+     "99.2",
+     "1/23/24",
+     ""
+    ],
+    [
+     "10.17",
+     "Extension to Promissory Note, dated October 20, 2022, between HNO International, Inc. and HNO Green Fuels, Inc. - Executed January 17, 2024",
+     "8-K",
+     "000-56568",
+     "99.3",
+     "1/23/24",
+     ""
+    ],
+    [
+     "10.18",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued December 1, 2021, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.1",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.19",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued September 29, 2022, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.2",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.20",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued October 20, 2022, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.3",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.21",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued March 1, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.4",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.22",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued March 8, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.5",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.23",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued March 23, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.6",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.24",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued April 3, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.7",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.25",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued April 13, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.8",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.26",
+     "Extension to Promissory Note, dated December 19, 2024 for Note Issued April 17, 2023, between HNO International, Inc. and HNO Green Fuels, Inc.",
+     "8-K",
+     "000-56568",
+     "99.9",
+     "12/20/24",
+     ""
+    ],
+    [
+     "10.27",
+     "Termination Agreement, dated March 13, 2025, relating to the patent purchase agreement dated January 24, 2023",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted in Inline XBRL, and included in exhibit 101).",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2374,
+    "end_line": 2415
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Furnished, not filed.\nITEM 16. FORM 10-K SUMMARY.\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2373,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "HNO INTERNATIONAL, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Dated: March 20, 2025",
+     "By: /s/ Donald Owens\n\n\n\nName: Donald Owens\n\n\n\nTitle: President and Chief Executive Officer\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By: /s/ Hossein Haririnia\n\n\n\nName: Hossein Haririnia\n\n\n\nTitle: Treasurer\n\n\n\n(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "HNO INTERNATIONAL, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2427,
+    "end_line": 2446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Furnished, not filed.\nITEM 16. FORM 10-K SUMMARY.\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2466,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SIGNATURE",
+     "TITLE",
+     "DATE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By: /s/ Donald Owens\n\n\n\nDonald Owens",
+     "President, Chief Executive Officer and Chairman of the Board of Directors\n\n\n\n(Principal Executive Officer)",
+     "March 20, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By: /s/ Hossein Haririnia\n\n\n\nHossein Haririnia",
+     "Treasurer and Director\n\n\n\n(Principal Financial and Accounting Officer)",
+     "March 20, 2025"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By: /s/ William Parker\n\n\n\nWilliam Parker",
+     "Director",
+     "March 20, 2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2449,
+    "end_line": 2465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2466,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,7636 @@
+{
+ "accession": "0001104659-17-020418",
+ "cik": "0001393359",
+ "form": "10-K",
+ "filing_date": "2017-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a17-1096_110k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "30-0408280"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended: December 31, 2016\nor\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nCommission file number: 0-52505\nMAN FRM MANAGED FUTURES STRATEGIES LLC\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o FRM Investment Management (USA) LLC\n452 Fifth Avenue, 26th Floor\nNew York, New York 10018\n(Address of principal executive offices)\n(Zip Code)\n212-649-6600\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Units of Limited Liability Company Interest\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "41"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 128
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [X]            Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe Units of limited liability company interest of the registrant are not publicly traded. Accordingly, there is no aggregate market value for the registrant\u2019s outstanding equity that is readily determinable.\nAs of February 28, 2017 Units of limited liability company interest with an aggregate Net Asset Value of $110,083,755 were outstanding and held by non-affiliates.\nDocuments Incorporated by Reference\nThe registrant\u2019s 2016 Annual Report and Report of Independent Registered Public Accounting Firm, the annual report to security holders for the year ended December 31, 2016, is incorporated by reference into Part II, Item 8, and Part IV hereof and filed as an Exhibit herewith.\nMAN FRM MANAGED FUTURES STRATEGIES LLC\nANNUAL REPORT FOR 2016 ON FORM 10-K\nTable of Contents",
+   "prose_after": "PART I\nItem 1: Business\n(a) General Development of Business:\nMan FRM Managed Futures Strategies LLC (the \u201cFund\u201d), a Delaware limited liability company, is a managed futures fund of funds managed by FRM Investment Management (USA) LLC (the \u201cManager\u201d or \u201cFRM Investment Management\u201d). The Manager is registered as a commodity pool operator (\u201cCPO\u201d) and commodity trading advisor (\u201cCTA\u201d) with the Commodity Futures Trading Commission (\u201cCFTC\u201d) under the Commodity Exchange Act. The Manager is also registered as an investment adviser under the Investment Advisers Act of 1940. The Manager is an indirect wholly-owned subsidiary of Man Group plc. (As used herein \u201cMan Group\u201d refers to Man Group plc, the Manager and certain other affiliated entities of Man Group plc.) The Fund was organized under the Delaware Limited Liability Company Act in March 2007 and commenced operations in April 2007. The Fund is an investment company as defined by Accounting Standards Codification (\u201cASC\u201d) guidance. The Fund was previously known as \u201cSystematic Momentum FuturesAccess LLC\u201d through April 30, 2015.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 128,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Underlying Funds and Master Funds",
+     "",
+     "Trading Advisors to Master Fund"
+    ],
+    [
+     "Blakeney Delaware Feeder LLC (\u201cBlakeney\u201d)\nMF: Blakeney Fund Limited",
+     "",
+     "Winton Capital Management Limited*"
+    ],
+    [
+     "Campbell Delaware Feeder LLC (\u201cCampbell\u201d)\nMF: Campbell MAC Cayman Fund Limited",
+     "",
+     "Campbell & Company, LP*"
+    ],
+    [
+     "Carlisle Delaware Feeder LLC (\u201cCarlisle\u201d) ** MF: Carlisle Fund Limited",
+     "",
+     "Transtrend B.V."
+    ],
+    [
+     "CCP Core Macro Delaware Feeder LLC (\u201cCCP Core Macro\u201d)\nMF: CCP Core Macro Cayman Fund Limited",
+     "",
+     "Cantab Capital Partners LLP"
+    ],
+    [
+     "Quantica MF Delaware Feeder LLC (\u201cQuantica MF\u201d)\nMF: Quantica MF Cayman Fund Limited",
+     "",
+     "Quantica Capital AG"
+    ],
+    [
+     "Silver Delaware Feeder LLC (\u201cSilver\u201d)\nMF: Silver MAC Limited",
+     "",
+     "Lynx Asset Management AB*"
+    ],
+    [
+     "Century CAT MAC Delaware Feeder LLC *** MF: Century CAT MAC Cayman Fund Limited",
+     "",
+     "Crabel Capital Management, LLC*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 190,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "The Fund intends to rebalance among the Underlying Funds on a weekly basis based upon, among other things, capital flows into and out of the Fund, changes in the Manager\u2019s conviction on each Trading Advisor and changes in the expected risk contribution of a Trading Advisor to the Fund. In the process of rebalancing, the Fund\u2019s allocation to any Underlying Fund may range between 3% - 25% of the Fund\u2019s Net Asset Value.\nThe Fund is not required to be fully invested at all times. The Manager may elect to reserve a portion of the Fund\u2019s capital for future investment in Underlying Funds or to allocate less than all of the Fund\u2019s capital as a defensive measure. Capital not invested in Underlying Funds will generally be held at the custodian in cash, interest bearing accounts or cash equivalent money market instruments.\n(b) During 2016, the Fund invested in the following Underlying Funds which in turn invest in the referenced Master Funds (\u201cMF\u201d), which are advised, respectively, by the Trading Advisors as indicated below. The Fund currently invests in all of these Underlying Funds, other than Carlisle Delaware Feeder LLC as noted below.",
+   "prose_after": "* This Trading Advisor is registered under the Investment Advisers Act of 1940.\n** The Fund fully redeemed its investment in this Underlying Fund in April 2016.\n*** On March 21, 2016, added as an Underlying Fund.\n(c) As of April 30, 2015 the Fund fully redeemed its investment in the following FuturesAccess Portfolio Funds: Aspect FuturesAccess LLC; ML BlueTrend FuturesAccess LLC; John Locke FuturesAccess LLC; Lynx FuturesAccess LLC; ML Transtrend DTP Enhanced FuturesAccess LLC; Tudor Tensor FuturesAccess LLC; and ML Winton FuturesAccess LLC.\nEmployees\nThe Fund has no employees.\nCustodians and Brokers\nThe Bank of New York Mellon, New York, New York, acts as the Fund\u2019s custodian. Assets of the Underlying Funds and Master Funds are held in accounts in their names with banks, brokers and futures commission merchants located in the United States and England and Wales.\nMargin\nAnywhere from 10% to 50% of each Master Fund\u2019s assets is expected to be required for margin or collateral at any one time. This amount will vary among Master Funds and could be substantially higher or lower and there is no obligation to maintain required margin or collateral within these or any other specific ranges.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 182,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 206,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Charges",
+     "",
+     "Dollar Amount",
+     "",
+     "",
+     "% of Average Month-End Net Assets",
+     "",
+     "Dollar Amount",
+     "",
+     "",
+     "% of Average Month-End Net Assets",
+     "",
+     "Dollar Amount",
+     "",
+     "",
+     "% of Average Month-End Net Assets",
+     ""
+    ],
+    [
+     "Other Expenses",
+     "",
+     "$",
+     "1,559,790",
+     "",
+     "1.08",
+     "%",
+     "$",
+     "989,970",
+     "",
+     "0.51",
+     "%",
+     "$",
+     "678,568",
+     "",
+     "0.29",
+     "%"
+    ],
+    [
+     "Management or Sponsor Fees",
+     "",
+     "2,875,987",
+     "",
+     "",
+     "1.99",
+     "%",
+     "4,070,605",
+     "",
+     "",
+     "2.08",
+     "%",
+     "4,866,807",
+     "",
+     "",
+     "2.09",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "4,435,777",
+     "",
+     "3.07",
+     "%",
+     "$",
+     "5,060,575",
+     "",
+     "2.59",
+     "%",
+     "$",
+     "5,545,375",
+     "",
+     "2.38",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 241,
+    "end_line": 253
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "The Net Asset Value is calculated on the last calendar day of each month and/or last business day of each week and/or such other days as the Manager may determine in its sole discretion (\u201cValuation Day\u201d). The Net Asset Value of the Fund is equivalent to its total assets less its total liabilities as of any Valuation Day. Appreciation or depreciation in the Net Asset Value of the Fund is based upon appreciation or depreciation in the value of investments in the Underlying Funds that are held by the Fund, with appropriate adjustments for assets and liabilities of the Fund. The Fund\u2019s investments (including the Fund\u2019s investments through the Underlying Funds) will generally be valued in accordance with generally accepted accounting principles of the United States.\nDuring the period prior to the Manager Replacement, the Fund\u2019s net asset value as of any calculation date generally equaled the value of the Fund\u2019s interests in the FuturesAccess Portfolio Funds as of that date plus any other assets held by the Fund, minus accrued sponsor fees, any offering or operating costs and all other liabilities of the Fund.\nThe Fund\u2019s average month-end Net Asset Values during 2016, 2015 and 2014 equaled $144,557,725, $195,408,492 and $233,256,119, respectively.\nCharges\nThe following table summarizes the charges incurred by the Fund for the years ended December 31, 2016, 2015 and 2014.",
+   "prose_after": "Reference to management fees in the foregoing table refer to such fees paid to FRM Investment Management beginning May 2015 through December 2016 period. Reference to sponsor fees in the foregoing table refers to such fees paid to MLAI during 2014 and the January 2015 through April 2015 period. The foregoing table does not reflect: (i) the bid-ask spreads paid by the Master Funds and FuturesAccess Portfolio Funds on their forward trading; (ii) brokerage commissions or (iii) sales commissions payable in connection with the sales of Units of the Fund. Bid-ask spreads and brokerage commissions are components of the trading profit or loss of the Master Funds and FuturesAccess Portfolio Funds rather than a distinct expense item separable from the Master Funds\u2019 or FuturesAccess Portfolio Funds\u2019 trading accounts; they are netted against realized and unrealized trading gains or losses in determining trading profit or loss.\nAggregate sales commissions are not included in the table of charges because they are not an expense of the Fund, but rather were paid out of an investor\u2019s subscription proceeds and therefore reduce the amount invested in the Fund by the investor.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 223,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Recipient",
+     "",
+     "Nature of Payment",
+     "",
+     "Amount of Payment"
+    ],
+    [
+     "FRM Investment Management",
+     "",
+     "Management fee",
+     "",
+     "The Fund pays management fees (\u201cManagement Fees\u201d), monthly in arrears, in respect of the Net Asset Value of each Class of Units which are subject to a Management Fee. The Management Fee rate is 1/12 of: 1.5% for Class A Units; 2.5% for Class C Units; 1.1% for Class I Units; 2.5% for Class AA Units; 1.35% for Class II Units; and 0.6% for Class MM Units. Class D Units and Class M Units are not subject to a Management Fee.\n\n\n\n \n\n\n\nThe Management Fee is calculated prior to reduction for the Management Fee being calculated but after accrual of all other fees and expenses."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FRM Investment Management",
+     "",
+     "Risk management fee",
+     "",
+     "Each Underlying Fund pays the Manager a risk management fee (\u201cRisk Management Fee\u201d) equal to 0.5% per annum of the Trading Level of its related Master Fund, quarterly in arrears, and a pro rata share of any licensing fees for the use of any risk assessment tools provided by any third party which are used by the Manager in providing risk management services to the Master Fund. (\u201cTrading Level\u201d refers to the dollar amount communicated each month (or more frequently, as the case may be) by an Underlying Fund or its designee to a Trading Advisor of a Master Fund on the FRM Platform, based on an estimate of Net Asset Value of the Underlying Fund as of the beginning of the following month multiplied by a leverage factor, if applicable, which the Trading Advisor uses to manage the exposure of the Master Fund\u2019s portfolio.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 266,
+    "end_line": 285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Reference to management fees in the foregoing table refer to such fees paid to FRM Investment Management beginning May 2015 through December 2016 period. Reference to sponsor fees in the foregoing table refers to such fees paid to MLAI during 2014 and the January 2015 through April 2015 period. The foregoing table does not reflect: (i) the bid-ask spreads paid by the Master Funds and FuturesAccess Portfolio Funds on their forward trading; (ii) brokerage commissions or (iii) sales commissions payable in connection with the sales of Units of the Fund. Bid-ask spreads and brokerage commissions are components of the trading profit or loss of the Master Funds and FuturesAccess Portfolio Funds rather than a distinct expense item separable from the Master Funds\u2019 or FuturesAccess Portfolio Funds\u2019 trading accounts; they are netted against realized and unrealized trading gains or losses in determining trading profit or loss.\nAggregate sales commissions are not included in the table of charges because they are not an expense of the Fund, but rather were paid out of an investor\u2019s subscription proceeds and therefore reduce the amount invested in the Fund by the investor.\nWhile the Trading Advisors to the Master Funds in which the Fund invests do charge management fees and performance fees, these are not included in the table since such fees are not Fund expenses. However, such management fees and performance fees reduce the Net Asset Value of the Fund\u2019s underlying investment in each Master Fund. (Similarly with respect to the period prior to the Manager Replacement, the FuturesAccess Portfolio\nFunds\u2019 payment of trading advisor management fees and performance fees are not reflected as Fund expenses in the table.)\nDescription of Certain Current Charges",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Recipient",
+     "",
+     "Nature of Payment",
+     "",
+     "Amount of Payment"
+    ],
+    [
+     "Trading Advisors",
+     "",
+     "Asset-and/or performance-based compensation",
+     "",
+     "The Fund is subject to asset- and/or performance-based compensation payable to the Trading Advisors at the Master Fund level. Asset-based compensation generally ranges from 0.5% to 2.0% per annum of the Trading Level of the Underlying Funds\u2019 assets attributable to the Master Funds\u2019 investments, and performance-based compensation generally ranges from 10% to 25% of the net capital appreciation of the Master Funds\u2019 assets (paid monthly, quarterly, annually or bi-annually) on a \u201chigh water mark\u201d basis; that is, no performance-based compensation is payable until losses in previous periods have been recouped. However, the Fund may invest, indirectly, with Trading Advisors whose level or frequency of asset-based or performance-based compensation falls outside of these ranges.\n\n\n\n \n\n\n\nFor purposes of calculating performance-based compensation (i.e., incentive fees), \u201cnet appreciation\u201d in a Master Fund means the positive change in the net asset value of a Master Fund (above the high water mark) attributable to the Trading Advisor\u2019s trading activities on behalf of the Master Fund, and includes unrealized appreciation. Net appreciation is reduced by the Trading Advisor\u2019s management fee, but is not reduced by the Risk Management Fee. A Master Fund\u2019s net asset value is equal to the value of its assets less its liabilities, generally determined in accordance with generally accepted accounting principles in the United States.\n\n\n\n \n\n\n\nEach Master Fund calculates its incentive fees based on its individual performance. Moreover, incentive fees are calculated based on the Master Fund\u2019s overall investment experience, not the individual investment experience of any direct investor in the Master Fund, such as an Underlying Fund, or any member of the Fund (\u201cMember\u201d) as an indirect investor through the Fund. Consequently, the Fund could be subject to substantial incentive fees during periods when the Fund is incurring overall losses. Incentive fees generally crystallize upon net redemptions in accordance with the governing documents of the Master Funds."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 288,
+    "end_line": 313
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 314,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Recipient",
+     "",
+     "Nature of Payment",
+     "",
+     "Amount of Payment"
+    ],
+    [
+     "Placement Agents",
+     "",
+     "Sales Commissions",
+     "",
+     "The Manager may share a portion of its fees with one or more placement agents, which may include affiliated entities (including Man Investments Inc.), and the Fund may offer additional Classes subject to sales commissions as described in an offering document relating to such Class.\n\n\n\n \n\n\n\nSubscriptions for Class AA Units, Class II Units and Class MM Units sold through Merrill Lynch, Pierce, Fenner & Smith Incorporated (\u201cMLPF&S\u201d) are subject to upfront sales commissions of up to 3.0%, payable to MLPF&S. Upfront sales commissions are based on the net amount of each subscription (i.e., the total subscription amount after deduction of the upfront sales commission) and are added to, not deducted from, subscription amounts."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Various Parties",
+     "",
+     "Ongoing Operating and Offering Costs",
+     "",
+     "The Fund pays all of its ongoing operating costs, including, without limitation: ongoing offering fees and expenses; transaction costs; legal, accounting, audit and tax reporting and preparation fees and expenses; administrative, custody, transfer, subscription and redemption processing fees and expenses; regulatory, filing and printing fees; fees and expenses of the Fund\u2019s \u201ctax matters partner\u201d or \u201cpartnership representative\u201d and any extraordinary expenses. Operating costs are allocated pro rata among each Class of Units based on their respective Net Asset Values.\n\n\n\n \n\n\n\nThe Underlying Funds (inclusive of the Master Funds) bear all costs and expenses directly related to their respective investment programs, including brokerage commissions, custody fees and any withholding or transfer taxes. Each Underlying Fund also generally bears all of its overhead and operating costs, including accounting, audit, administration and legal expenses, costs of any litigation or investigation involving such Underlying Fund\u2019s activities, and costs associated with reporting and providing information to existing and prospective investors. The Fund, as an investor in the Underlying Funds, pays its allocable share of each Underlying Fund\u2019s operating costs and expenses."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 316,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Regulation\nUnder the Commodity Exchange Act (\u201cCEA\u201d), commodity exchanges and futures trading are subject to regulation by the CFTC. The National Futures Association (\u201cNFA\u201d), a \u201cregistered futures association\u201d under the CEA, is the only non-exchange self-regulatory organization for futures industry professionals. The CFTC has delegated to the NFA responsibility to the registration of \u201ccommodity trading advisors,\u201d \u201ccommodity pool operators,\u201d \u201cfutures commission merchants,\u201d \u201cintroducing brokers\u201d and their respective associated persons, and \u201cfloor brokers\u201d and \u201cfloor traders.\u201d The CEA requires commodity pool operators and commodity trading advisors, such as the Manager and the Trading Advisors, respectively, and commodity brokers or futures commission merchants to be registered and to comply with various reporting and record keeping requirements. The CFTC may suspend a commodity pool operator\u2019s or trading advisor\u2019s registration if the CFTC finds that the commodity pool operator\u2019s or trading advisor\u2019s trading practices tend to disrupt orderly market conditions or in other situations. In the event that the registration of the Manager as a CPO or the Trading Advisor as a CTA were terminated or suspended, the Manager would be unable to continue to manage the business of the Fund or the Trading Advisor would be unable to implement its Trading Program on behalf of the Fund.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 314,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 342,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Subscriptions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     "NAV (1)",
+     ""
+    ],
+    [
+     "11/14/2016",
+     "",
+     "$",
+     "245,000",
+     "",
+     "272,132",
+     "",
+     "0.9003",
+     ""
+    ],
+    [
+     "11/21/2016",
+     "",
+     "$",
+     "235,000",
+     "",
+     "260,850",
+     "",
+     "0.9009",
+     ""
+    ],
+    [
+     "12/12/2016",
+     "",
+     "$",
+     "80,000",
+     "",
+     "86,909",
+     "",
+     "0.9205",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Subscriptions"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2016, there were 1,906 holders of Units.\n(c) Dividends:\nThe Manager has not made and does not contemplate making any distributions on the Units.\n(d) Securities Authorized for Issuance Under Equity Compensation Plans:\nNot applicable.\n(e) Performance Graph\nNot applicable.\n(f) Recent Sales of Unregistered Securities:\n(a) Units are privately offered and sold to \u201caccredited investors\u201d (as defined in Rule 501(a) under the Securities Act) in reliance on the exemption from registration provided by Section 4(a)(2) of the Securities Act and Rule 506 thereunder. The selling agent of the Units is MLPF&S.\nCLASS AA",
+   "prose_after": "CLASS II",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Subscription",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Units",
+     "",
+     "NAV (1)",
+     ""
+    ],
+    [
+     "11/14/2016",
+     "",
+     "$",
+     "615,000",
+     "",
+     "666,017",
+     "",
+     "0.9234",
+     ""
+    ],
+    [
+     "11/21/2016",
+     "",
+     "$",
+     "2,580,000",
+     "",
+     "2,791,604",
+     "",
+     "0.9242",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Subscription"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 658
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "CLASS II",
+   "prose_after": "(1) Beginning of the period Net Asset Value\nSubscriptions for Class AA Units and Class II Units sold through MLPF&S are subject to upfront sales commissions of up to 3.0%, payable to MLPF&S.\nItem 5(b)\nNot applicable.\nItem 5(c)\nNot applicable.\nItem 6: Selected Financial Data\nThe following selected financial data has been derived from the financial statements of the Fund.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended",
+     "",
+     "",
+     "For the year ended",
+     "",
+     "",
+     "For the year ended",
+     "",
+     "",
+     "For the year ended",
+     "",
+     "",
+     "For the year ended",
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Trading gain (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized, net",
+     "",
+     "$",
+     "(7,369,110)",
+     "",
+     "$",
+     "31,061,059",
+     "",
+     "$",
+     "(10,091,962)",
+     "",
+     "$",
+     "(14,826,176)",
+     "",
+     "$",
+     "20,681,999",
+     ""
+    ],
+    [
+     "Change in unrealized, net",
+     "",
+     "3,152,181",
+     "",
+     "",
+     "(41,752,455)",
+     "",
+     "",
+     "43,753,405",
+     "",
+     "",
+     "8,923,985",
+     "",
+     "",
+     "(51,734,232)",
+     "",
+     ""
+    ],
+    [
+     "Total trading gain (loss)",
+     "",
+     "(4,216,929)",
+     "",
+     "",
+     "(10,691,396)",
+     "",
+     "",
+     "33,661,443",
+     "",
+     "",
+     "(5,902,191)",
+     "",
+     "",
+     "(31,052,233)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTMENT INCOME:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "275",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor/Management fees",
+     "",
+     "2,875,987",
+     "",
+     "",
+     "4,070,605",
+     "",
+     "",
+     "4,866,807",
+     "",
+     "",
+     "8,734,447",
+     "",
+     "",
+     "15,170,255",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,559,790",
+     "",
+     "",
+     "989,970",
+     "",
+     "",
+     "678,568",
+     "",
+     "",
+     "1,020,964",
+     "",
+     "",
+     "1,444,939",
+     "",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "4,435,777",
+     "",
+     "",
+     "5,060,575",
+     "",
+     "",
+     "5,545,375",
+     "",
+     "",
+     "9,755,411",
+     "",
+     "",
+     "16,615,194",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INVESTMENT INCOME (LOSS)",
+     "",
+     "(4,435,777)",
+     "",
+     "",
+     "(5,060,300)",
+     "",
+     "",
+     "(5,545,375)",
+     "",
+     "",
+     "(9,755,411)",
+     "",
+     "",
+     "(16,615,194)",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "",
+     "$",
+     "(8,652,706)",
+     "",
+     "$",
+     "(15,751,696)",
+     "",
+     "$",
+     "28,116,068",
+     "",
+     "$",
+     "(15,657,602)",
+     "",
+     "$",
+     "(47,667,427)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 676,
+    "end_line": 702
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Beginning of the period Net Asset Value\nSubscriptions for Class AA Units and Class II Units sold through MLPF&S are subject to upfront sales commissions of up to 3.0%, payable to MLPF&S.\nItem 5(b)\nNot applicable.\nItem 5(c)\nNot applicable.\nItem 6: Selected Financial Data\nThe following selected financial data has been derived from the financial statements of the Fund.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 729,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheet Data",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     "",
+     "December 31, 2013",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Member\u2019s Capital",
+     "",
+     "$",
+     "114,938,294",
+     "",
+     "$",
+     "160,781,732",
+     "",
+     "$",
+     "219,500,711",
+     "",
+     "$",
+     "297,282,028",
+     "",
+     "$",
+     "543,069,764",
+     ""
+    ],
+    [
+     "Net Asset Value per Class A Unit",
+     "",
+     "1.0385",
+     "",
+     "",
+     "1.1098",
+     "",
+     "",
+     "1.2045",
+     "",
+     "",
+     "1.0369",
+     "",
+     "",
+     "1.0689",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class C Unit",
+     "",
+     "0.9851",
+     "",
+     "",
+     "1.0633",
+     "",
+     "",
+     "1.1656",
+     "",
+     "",
+     "1.0135",
+     "",
+     "",
+     "1.0554",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class D Unit",
+     "",
+     "1.3421",
+     "",
+     "",
+     "1.4130",
+     "",
+     "",
+     "1.5105",
+     "",
+     "",
+     "1.2809",
+     "",
+     "",
+     "1.3008",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class I Unit",
+     "",
+     "1.1267",
+     "",
+     "",
+     "1.1993",
+     "",
+     "",
+     "1.2963",
+     "",
+     "",
+     "1.1115",
+     "",
+     "",
+     "1.1413",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class D1 Unit*",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1.1609",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class M Unit",
+     "",
+     "0.9915",
+     "",
+     "",
+     "1.0438",
+     "",
+     "",
+     "1.1158",
+     "",
+     "",
+     "0.9463",
+     "",
+     "",
+     "0.9610",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class AA Unit**",
+     "",
+     "0.9133",
+     "",
+     "",
+     "0.9858",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class II Unit***",
+     "",
+     "0.9382",
+     "",
+     "",
+     "1.0011",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Class MM Unit****",
+     "",
+     "0.9106",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Units liquidated as of December 31, 2013.\n** Units issued on November 16, 2015.\n*** Units issued on December 7, 2015.\n**** Units issued on January 25, 2016.\nItem 7: Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nOperational Overview\nThe following table is an allocation by sector as a percentage of net unrealized profits and losses on open positions for the Fund as a whole taking into account the positions at the Master Fund level.\nDecember 31, 2016",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 729,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percent Net",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Net Unrealized Profit",
+     "",
+     "",
+     "Unrealized Profit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Loss) on Open",
+     "",
+     "",
+     "(Loss) on Open",
+     ""
+    ],
+    [
+     "Commodity Industry Sector",
+     "",
+     "Positions",
+     "",
+     "",
+     "Positions",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "205,520",
+     "",
+     "12.35",
+     "%"
+    ],
+    [
+     "Energy",
+     "",
+     "383,320",
+     "",
+     "",
+     "23.04",
+     "%"
+    ],
+    [
+     "Interest Rates",
+     "",
+     "392,729",
+     "",
+     "",
+     "23.61",
+     "%"
+    ],
+    [
+     "Metals",
+     "",
+     "(199,975)",
+     "",
+     "",
+     "-12.02",
+     "%"
+    ],
+    [
+     "Stock Indices",
+     "",
+     "452,121",
+     "",
+     "",
+     "27.17",
+     "%"
+    ],
+    [
+     "Currencies - Future",
+     "",
+     "294,805",
+     "",
+     "",
+     "17.72",
+     "%"
+    ],
+    [
+     "Currencies - Forward",
+     "",
+     "135,304",
+     "",
+     "",
+     "8.13",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "1,663,824",
+     "",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Percent Net"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 746,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "* Units liquidated as of December 31, 2013.\n** Units issued on November 16, 2015.\n*** Units issued on December 7, 2015.\n**** Units issued on January 25, 2016.\nItem 7: Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nOperational Overview\nThe following table is an allocation by sector as a percentage of net unrealized profits and losses on open positions for the Fund as a whole taking into account the positions at the Master Fund level.\nDecember 31, 2016",
+   "prose_after": "Results of Operations/Performance Summary\nThis performance summary is an outline description of how the Fund performed in the past, not necessarily any indication of how it will perform in the future. In addition, the general causes to which certain price movements are attributed may or may not have caused such movements, but simply occurred at or about the same time.\nYear Ended December 31, 2016",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 729,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Total Trading Profit (Loss)",
+     "",
+     ""
+    ],
+    [
+     "Blakeney",
+     "",
+     "$",
+     "(15,627)",
+     ""
+    ],
+    [
+     "Campbell",
+     "",
+     "(3,135,990)",
+     "",
+     ""
+    ],
+    [
+     "Carlisle*",
+     "",
+     "713,644",
+     "",
+     ""
+    ],
+    [
+     "CCP Core Macro",
+     "",
+     "(425,212)",
+     "",
+     ""
+    ],
+    [
+     "Century CAT**",
+     "",
+     "(2,881,308)",
+     "",
+     ""
+    ],
+    [
+     "Quantica MF",
+     "",
+     "1,510,060",
+     "",
+     ""
+    ],
+    [
+     "Silver",
+     "",
+     "17,504",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "(4,216,929)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total Trading Profit (Loss)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 772,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Results of Operations/Performance Summary\nThis performance summary is an outline description of how the Fund performed in the past, not necessarily any indication of how it will perform in the future. In addition, the general causes to which certain price movements are attributed may or may not have caused such movements, but simply occurred at or about the same time.\nYear Ended December 31, 2016",
+   "prose_after": "* Underlying Fund was redeemed in April 2016.\n** Underlying Fund purchased in March 2016.\nThe Fund experienced a net trading loss for the year end December 31, 2016 of $4,216,929.\nReferences herein to the Fund\u2019s trading and portfolios refer to such trading and portfolios through the Master Funds generally.\nJanuary 1, 2016 to March 31, 2016\nThe start of the quarter was characterized by an overall risk-off sentiment as the Chinese equity market experienced extreme volatility with heavy sell-offs that hit the circuit breakers twice in a week, coupled with the continued decline in the energy market. Consequently, this led to raised uncertainty about policy actions from the central banks that remained throughout the quarter. Mid-quarter, the outlook for 2016 became even more complicated as markets also dealt with the marginal effect of negative rate policy in the Eurozone and Japan. However, Yellen\u2019s speech at the end of March maintained the dovish tone held throughout the quarter, leading the market to revise down the probability of a June rate hike. The portfolio however maintained a positive net-of-fees result year-to-date, despite the backdrop of uncertainty from central bank action.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Total Trading Profit (Loss)",
+     "",
+     ""
+    ],
+    [
+     "Aspect FuturesAccess LLC",
+     "",
+     "$",
+     "(509,070)",
+     ""
+    ],
+    [
+     "John Locke FuturesAccess LLC",
+     "",
+     "1,283,475",
+     "",
+     ""
+    ],
+    [
+     "Lynx FuturesAccess LLC",
+     "",
+     "714,472",
+     "",
+     ""
+    ],
+    [
+     "ML BlueTrend FuturesAccess LLC",
+     "",
+     "2,862,359",
+     "",
+     ""
+    ],
+    [
+     "ML Transtrend DTP Enhanced FuturesAccess LLC",
+     "",
+     "501,384",
+     "",
+     ""
+    ],
+    [
+     "Tudor Tensor FuturesAccess LLC",
+     "",
+     "1,341,872",
+     "",
+     ""
+    ],
+    [
+     "Winton FuturesAccess LLC",
+     "",
+     "407,901",
+     "",
+     ""
+    ],
+    [
+     "Blakeney Delaware Feeder LLC",
+     "",
+     "(465,478)",
+     "",
+     ""
+    ],
+    [
+     "Campbell Delaware Feeder LLC",
+     "",
+     "(1,672,727)",
+     "",
+     ""
+    ],
+    [
+     "Carlisle Delaware Feeder LLC",
+     "",
+     "(1,304,229)",
+     "",
+     ""
+    ],
+    [
+     "CCP Core Macro Delaware Feeder LLC",
+     "",
+     "(1,901,342)",
+     "",
+     ""
+    ],
+    [
+     "Quantica MF Delaware Feeder LLC",
+     "",
+     "(7,620,266)",
+     "",
+     ""
+    ],
+    [
+     "Silver Delaware Feeder LLC",
+     "",
+     "(4,329,747)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "(10,691,396)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total Trading Profit (Loss)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In FX, performance was positive in October as Trading Advisors drifted from roughly neutral to net long USD resulting in meaningful gains as the dollar rallied. However, FX detracted in November due to losses in long AUD, short GBP and long JPY. December saw gains from Trading Advisors\u2019 net long positions, accumulating gains as the dollar moved higher.\nIn terms of positioning, areas of risk concentration at year-end include equities, where Trading Advisors continue to be net long and FX, where they remain net long dollar. In equities, Trading Advisors are net long and most notably in the US and Europe. In FX, short EUR, short GBP and short JPY are among the biggest drivers of the net long USD bias. In commodities, Trading Advisors exhibit a slight net long bias overall which results from net long exposure to industrial metals, energy and livestock and net short exposure to precious metals, grains and softs.\nThe total risk of the portfolio (in VaR terms) decreased slightly relative to the end of December with this being driven by decreases in equities, commodities and FX.\nYear Ended December 31, 2015",
+   "prose_after": "The Fund experienced a net trading loss for the year end December 31, 2015 of $10,691,396.\nWith respect to the period prior to the Manager Replacement on May 1, 2015, references herein to the Fund\u2019s trading and portfolios refer to such trading and portfolios through the underlying FuturesAccess Portfolio Funds generally.\nWith respect to the period following the Manager Replacement (May 1, 2015 and after), references herein to the Fund\u2019s trading and portfolio refer to such trading and portfolios through the Master Funds generally.\nJanuary 1, 2015 to March 31, 2015\nIn equity indices, the Portfolio Funds came into the first quarter with long exposure, with positions across geographies. The largest exposures were in U.S. indices, based on recent trends. Equity markets saw some\ndivergence in the first three months of the year. U.S. markets had roughly flat returns, taking a break from the strong performance they had put in the previous two years as rate hikes approached, a strong U.S. dollar began to weigh on earnings, and the energy sector continued to struggle. On the other hand, European markets took off strongly as quantitative easing became a reality and a weaker currency buoyed earnings. Japanese equities also performed well due to similar reasons. The Portfolio Funds generally adjusted their portfolios, reducing allocations to U.S. indices and increasing their long positions in Europe and Asia. The asset class finished the first quarter with gains, driven primarily by rising equity prices in non-U.S. markets.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 855,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 898,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Total Trading Profit (Loss)",
+     "",
+     ""
+    ],
+    [
+     "Transtrend Fund",
+     "",
+     "$",
+     "6,109,429",
+     ""
+    ],
+    [
+     "Altis Fund",
+     "",
+     "(2,921,043)",
+     "",
+     ""
+    ],
+    [
+     "Winton Fund",
+     "",
+     "5,371,945",
+     "",
+     ""
+    ],
+    [
+     "Aspect Fund",
+     "",
+     "6,196,491",
+     "",
+     ""
+    ],
+    [
+     "John Locke Fund",
+     "",
+     "5,249,513",
+     "",
+     ""
+    ],
+    [
+     "BlueTrend Fund",
+     "",
+     "2,681,711",
+     "",
+     ""
+    ],
+    [
+     "Tudor Fund",
+     "",
+     "3,350,358",
+     "",
+     ""
+    ],
+    [
+     "Lynx Fund",
+     "",
+     "7,623,039",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "33,661,443",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total Trading Profit (Loss)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 958,
+    "end_line": 973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Commodities were the largest detractor at the start of the quarter, but were the largest contributor to performance in November. Energy and base metal sectors in particular ended the month significantly lower as commodities were weaker across the board. Gains coming from the energy sector at the end of the quarter resulted in commodities being the main driver of positive performance.\nIn terms of positioning, the overall net long exposure to equities remained low in the portfolio. The long position was almost halved during December, driven mostly by a reduction in long European and to some extent long US equity indices. In Fixed Income, the portfolio maintained a receiving position overall at a reduced level by quarter end. While the FX position continued to carry the largest risk in the portfolio, short exposure in Euro had been considerably reduced. In terms of positioning, the portfolio continues to be short commodities overall, though short exposure has been somewhat reduced in precious metals and agricultural softs.\nYear Ended December 31, 2014",
+   "prose_after": "The Fund experienced a net trading profit for the year ended December 31, 2014 of $33,661,443.\nReferences herein to the Fund\u2019s trading and portfolios refer to such trading and portfolios through the underlying FuturesAccess Portfolio Funds generally.\nIn equity indices, the Portfolio Funds came into the first quarter with long exposure, given the strong rally in global equity prices during 2013. Positioning was greatest in U.S. and European indices. The upward trend in equities did not continue in the first quarter. Markets quickly reversed in January, rallied back in February, then showed some v-shaped moves in March. They generally ended the quarter not far from where they began, but the reversals and choppiness proved costly to trend followers, making equity indices the worst performing asset class. Commodities also performed poorly in the first quarter. The Portfolio Funds had long positions in energies and industrial metals, but short positions in grains and precious metals coming into the first quarter. Commodities fell in January, rallied in February, and then fell again in March, exhibiting reversals and several directional shifts along the way. The largest losses were incurred in the energy sector. In currencies, the Portfolio Funds had mixed positioning coming into the first quarter. Long positions in European currencies like the euro, British pound and Swiss franc were balanced against short positions in the Japanese yen, Canadian dollar and Australian dollar. The downward trend in the Japanese yen continued for part of the quarter and the Portfolio Funds made money, but there were reversals in the remaining major currency positions, leading to small losses. In fixed income, the Portfolio Funds had long positioning in both interest rates and bonds. Fixed income proved to be the only profitable asset class. Yields generally moved lower over the course of the first quarter. The moves were not very large, but they benefited long positions. In summary, the first quarter saw reversals in several asset classes. Trends in equity indices, commodities and many currency markets were interrupted. With market moves going against positioning, the Portfolio Funds saw losses in those asset classes. Gains in fixed income markets only partially made up for the losses.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 954,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "12,744",
+     "",
+     "0.07",
+     "%",
+     "$",
+     "22,374",
+     "",
+     "$",
+     "18",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "46,641",
+     "",
+     "",
+     "0.26",
+     "%",
+     "174,690",
+     "",
+     "",
+     "2,562",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "210,744",
+     "",
+     "",
+     "1.17",
+     "%",
+     "528,998",
+     "",
+     "",
+     "24,197",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "37,571",
+     "",
+     "",
+     "0.21",
+     "%",
+     "87,266",
+     "",
+     "",
+     "2,447",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "82,482",
+     "",
+     "",
+     "0.46",
+     "%",
+     "166,220",
+     "",
+     "",
+     "2,307",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "122,083",
+     "",
+     "",
+     "0.68",
+     "%",
+     "322,947",
+     "",
+     "",
+     "55,215",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "512,264",
+     "",
+     "2.82",
+     "%",
+     "$",
+     "1,302,495",
+     "",
+     "$",
+     "86,745",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1075
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "Fund and adjusting based on the Underlying Fund\u2019s pro-rata ownership of the Master Fund. VaR of the Master Funds is based on a one day 99% Monte Carlo model VaR utilizing 1,000 simulations. The sector breakdown of VaR for each Master Fund is based on an incremental VaR calculated for each position that is aggregated across each of the sectors presented below.\nThere are various ways of calculating VaR, and each methodology will not yield the same result. Differences between VaR methodologies could be material as the underlying assumptions will vary.\nThe Underlying Funds\u2019 Trading Value at Risk in Different Market Sectors\nThe following information with respect to VaR is set forth in respect of the Underlying Funds separately, rather than for the Fund.\nThe following tables indicate the average, highest, and lowest trading VaR associated with the Underlying Funds and the FuturesAccess Portfolio Funds open positions by market category for the twelve month periods ended December 31, 2016 and 2015. For initial Underlying Fund investments made during the period, VaR is calculated starting from the commencement of the holding.\nBlakeney (1)",
+   "prose_after": "(1) Average capitalization of Blakeney is $18,051,204.\nCampbell (2)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1044,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "48,815",
+     "",
+     "0.28",
+     "%",
+     "$",
+     "115,750",
+     "",
+     "$",
+     "17,059",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "53,301",
+     "",
+     "",
+     "0.31",
+     "%",
+     "188,541",
+     "",
+     "",
+     "2,733",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "155,456",
+     "",
+     "",
+     "0.89",
+     "%",
+     "347,156",
+     "",
+     "",
+     "3,968",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "38,970",
+     "",
+     "",
+     "0.22",
+     "%",
+     "94,474",
+     "",
+     "",
+     "1,835",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "146,824",
+     "",
+     "",
+     "0.84",
+     "%",
+     "274,580",
+     "",
+     "",
+     "36,105",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "110,000",
+     "",
+     "",
+     "0.63",
+     "%",
+     "286,916",
+     "",
+     "",
+     "18,349",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "553,366",
+     "",
+     "3.19",
+     "%",
+     "$",
+     "1,307,417",
+     "",
+     "$",
+     "80,049",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Average capitalization of Blakeney is $18,051,204.\nCampbell (2)",
+   "prose_after": "(2) Average capitalization of Campbell is $17,388,161.\nCarlisle (3)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016 *",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "18,096",
+     "",
+     "0.22",
+     "%",
+     "$",
+     "31,053",
+     "",
+     "$",
+     "7,164",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "63,630",
+     "",
+     "",
+     "0.77",
+     "%",
+     "125,640",
+     "",
+     "",
+     "3,230",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "151,620",
+     "",
+     "",
+     "1.83",
+     "%",
+     "208,645",
+     "",
+     "",
+     "46,770",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "10,213",
+     "",
+     "",
+     "0.12",
+     "%",
+     "16,960",
+     "",
+     "",
+     "5,644",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "23,933",
+     "",
+     "",
+     "0.29",
+     "%",
+     "38,709",
+     "",
+     "",
+     "6,331",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "30,214",
+     "",
+     "",
+     "0.36",
+     "%",
+     "45,151",
+     "",
+     "",
+     "6,609",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "18,984",
+     "",
+     "",
+     "0.23",
+     "%",
+     "28,014",
+     "",
+     "",
+     "7,676",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "316,690",
+     "",
+     "3.82",
+     "%",
+     "$",
+     "494,172",
+     "",
+     "$",
+     "83,424",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016 *"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1104,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Average capitalization of Campbell is $17,388,161.\nCarlisle (3)",
+   "prose_after": "(3) Average capitalization of Carlisle is $8,306,779.\n* Carlisle redeemed April 2016.\nCentury CAT (4)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016 *",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "7,413",
+     "",
+     "0.05",
+     "%",
+     "$",
+     "14,616",
+     "",
+     "$",
+     "737",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "33,847",
+     "",
+     "",
+     "0.21",
+     "%",
+     "87,315",
+     "",
+     "",
+     "1,864",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "164,369",
+     "",
+     "",
+     "1.02",
+     "%",
+     "330,627",
+     "",
+     "",
+     "46,185",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "10,650",
+     "",
+     "",
+     "0.07",
+     "%",
+     "30,640",
+     "",
+     "",
+     "1,478",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "71,458",
+     "",
+     "",
+     "0.44",
+     "%",
+     "129,586",
+     "",
+     "",
+     "4,124",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "121,133",
+     "",
+     "",
+     "0.75",
+     "%",
+     "239,550",
+     "",
+     "",
+     "14,295",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "408,870",
+     "",
+     "2.53",
+     "%",
+     "$",
+     "832,334",
+     "",
+     "$",
+     "68,682",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016 *"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1129,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(3) Average capitalization of Carlisle is $8,306,779.\n* Carlisle redeemed April 2016.\nCentury CAT (4)",
+   "prose_after": "(4) Average capitalization of Century CAT is $16,184,457.\n* Century CAT commenced March 2016.\nCCP Core Macro (5)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "15,103",
+     "",
+     "0.13",
+     "%",
+     "$",
+     "50,815",
+     "",
+     "$",
+     "176",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "41,749",
+     "",
+     "",
+     "0.36",
+     "%",
+     "131,014",
+     "",
+     "",
+     "631",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "132,732",
+     "",
+     "",
+     "1.14",
+     "%",
+     "337,476",
+     "",
+     "",
+     "999",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "11,713",
+     "",
+     "",
+     "0.10",
+     "%",
+     "43,431",
+     "",
+     "",
+     "112",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "69,943",
+     "",
+     "",
+     "0.60",
+     "%",
+     "155,350",
+     "",
+     "",
+     "508",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "40,936",
+     "",
+     "",
+     "0.35",
+     "%",
+     "132,030",
+     "",
+     "",
+     "4,027",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "312,176",
+     "",
+     "2.70",
+     "%",
+     "$",
+     "850,117",
+     "",
+     "$",
+     "6,454",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1153,
+    "end_line": 1170
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(4) Average capitalization of Century CAT is $16,184,457.\n* Century CAT commenced March 2016.\nCCP Core Macro (5)",
+   "prose_after": "(5) Average capitalization of CCP Core Macro is $11,625,669.\nQuantica MF (6)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1170,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "20,780",
+     "",
+     "0.17",
+     "%",
+     "$",
+     "37,803",
+     "",
+     "$",
+     "7,614",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "42,300",
+     "",
+     "",
+     "0.36",
+     "%",
+     "305,453",
+     "",
+     "",
+     "546",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "174,985",
+     "",
+     "",
+     "1.47",
+     "%",
+     "529,812",
+     "",
+     "",
+     "2,598",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "47,759",
+     "",
+     "",
+     "0.40",
+     "%",
+     "105,016",
+     "",
+     "",
+     "8,447",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "82,179",
+     "",
+     "",
+     "0.69",
+     "%",
+     "215,773",
+     "",
+     "",
+     "1,658",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "37,888",
+     "",
+     "",
+     "0.32",
+     "%",
+     "122,438",
+     "",
+     "",
+     "4,963",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "405,891",
+     "",
+     "3.41",
+     "%",
+     "$",
+     "1,316,296",
+     "",
+     "$",
+     "25,826",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1175,
+    "end_line": 1192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Average capitalization of CCP Core Macro is $11,625,669.\nQuantica MF (6)",
+   "prose_after": "(6) Average capitalization of Quantica MF is $11,895,352.\nSilver (7)",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1170,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "20,551",
+     "",
+     "0.18",
+     "%",
+     "$",
+     "43,009",
+     "",
+     "$",
+     "3,634",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "63,277",
+     "",
+     "",
+     "0.55",
+     "%",
+     "280,212",
+     "",
+     "",
+     "13,217",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "133,607",
+     "",
+     "",
+     "1.16",
+     "%",
+     "489,756",
+     "",
+     "",
+     "4,719",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "52,650",
+     "",
+     "",
+     "0.46",
+     "%",
+     "110,685",
+     "",
+     "",
+     "48",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "111,907",
+     "",
+     "",
+     "0.97",
+     "%",
+     "237,984",
+     "",
+     "",
+     "7,696",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "125,946",
+     "",
+     "",
+     "1.10",
+     "%",
+     "303,401",
+     "",
+     "",
+     "31,931",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "507,938",
+     "",
+     "4.42",
+     "%",
+     "$",
+     "1,465,047",
+     "",
+     "$",
+     "61,245",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(6) Average capitalization of Quantica MF is $11,895,352.\nSilver (7)",
+   "prose_after": "(7) Average capitalization of Silver is $11,481,304.\nAspect DS (1) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1195,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "543,879",
+     "",
+     "2.24",
+     "%",
+     "$",
+     "720,573",
+     "",
+     "$",
+     "156,090",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "485,971",
+     "",
+     "",
+     "2.01",
+     "%",
+     "1,004,655",
+     "",
+     "",
+     "280,131",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "205,769",
+     "",
+     "",
+     "0.85",
+     "%",
+     "379,796",
+     "",
+     "",
+     "132,210",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "887,875",
+     "",
+     "",
+     "3.67",
+     "%",
+     "973,255",
+     "",
+     "",
+     "813,515",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "163,258",
+     "",
+     "",
+     "0.67",
+     "%",
+     "339,839",
+     "",
+     "",
+     "93,411",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "159,818",
+     "",
+     "",
+     "0.66",
+     "%",
+     "219,055",
+     "",
+     "",
+     "125,332",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "2,446,570",
+     "",
+     "10.10",
+     "%",
+     "$",
+     "3,637,173",
+     "",
+     "$",
+     "1,600,689",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1221,
+    "end_line": 1238
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(7) Average capitalization of Silver is $11,481,304.\nAspect DS (1) *",
+   "prose_after": "(1) Average capitalization of Aspect Class DS was $24,217,973.\n* Aspect redeemed as of April 30, 2015.\nBlueTrend DS (2) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1216,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "122,456",
+     "",
+     "0.34",
+     "%",
+     "$",
+     "384,364",
+     "",
+     "$",
+     "29,501",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "893,239",
+     "",
+     "",
+     "2.53",
+     "%",
+     "1,859,704",
+     "",
+     "",
+     "479,274",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "219,718",
+     "",
+     "",
+     "0.62",
+     "%",
+     "305,405",
+     "",
+     "",
+     "32,721",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "1,683,631",
+     "",
+     "",
+     "4.74",
+     "%",
+     "2,429,552",
+     "",
+     "",
+     "3,242",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "111,620",
+     "",
+     "",
+     "0.31",
+     "%",
+     "146,717",
+     "",
+     "",
+     "83,857",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "413,534",
+     "",
+     "",
+     "1.16",
+     "%",
+     "463,806",
+     "",
+     "",
+     "332,988",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "3,444,198",
+     "",
+     "9.70",
+     "%",
+     "$",
+     "5,589,548",
+     "",
+     "$",
+     "961,583",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1245,
+    "end_line": 1262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Average capitalization of Aspect Class DS was $24,217,973.\n* Aspect redeemed as of April 30, 2015.\nBlueTrend DS (2) *",
+   "prose_after": "(2) Average capitalization of BlueTrend Class DS was $35,498,838.\n* BlueTrend redeemed as of April 30, 2015.\nJohn Locke DS (3) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "1,189,626",
+     "",
+     "4.88",
+     "%",
+     "$",
+     "1,258,388",
+     "",
+     "$",
+     "1,052,845",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "38,559",
+     "",
+     "",
+     "0.16",
+     "%",
+     "40,787",
+     "",
+     "",
+     "34,125",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "220,250",
+     "",
+     "",
+     "0.90",
+     "%",
+     "232,981",
+     "",
+     "",
+     "194,926",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "1,723,369",
+     "",
+     "",
+     "7.07",
+     "%",
+     "1,822,982",
+     "",
+     "",
+     "1,525,219",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "262,751",
+     "",
+     "",
+     "1.08",
+     "%",
+     "277,938",
+     "",
+     "",
+     "232,540",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "241,105",
+     "",
+     "",
+     "0.99",
+     "%",
+     "255,041",
+     "",
+     "",
+     "213,383",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "3,675,660",
+     "",
+     "15.08",
+     "%",
+     "$",
+     "3,888,117",
+     "",
+     "$",
+     "3,253,038",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1271,
+    "end_line": 1288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Average capitalization of BlueTrend Class DS was $35,498,838.\n* BlueTrend redeemed as of April 30, 2015.\nJohn Locke DS (3) *",
+   "prose_after": "(3) Average capitalization of John Locke Class DS was $24,336,141.\n* John Locke redeemed as of April 30, 2015.\nLynx DS (4) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1267,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "807,721",
+     "",
+     "2.44",
+     "%",
+     "$",
+     "1,178,332",
+     "",
+     "$",
+     "11,089",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "69,933",
+     "",
+     "",
+     "0.21",
+     "%",
+     "85,323",
+     "",
+     "",
+     "58,253",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "249,568",
+     "",
+     "",
+     "0.75",
+     "%",
+     "349,352",
+     "",
+     "",
+     "43,665",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "2,109,893",
+     "",
+     "",
+     "6.39",
+     "%",
+     "2,979,873",
+     "",
+     "",
+     "297,054",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "213,437",
+     "",
+     "",
+     "0.64",
+     "%",
+     "289,286",
+     "",
+     "",
+     "63,272",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "623,944",
+     "",
+     "",
+     "1.88",
+     "%",
+     "1,111,938",
+     "",
+     "",
+     "414,656",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "4,074,496",
+     "",
+     "12.31",
+     "%",
+     "$",
+     "5,994,104",
+     "",
+     "$",
+     "887,989",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1295,
+    "end_line": 1312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(3) Average capitalization of John Locke Class DS was $24,336,141.\n* John Locke redeemed as of April 30, 2015.\nLynx DS (4) *",
+   "prose_after": "(4) Average capitalization of Lynx Class DS was $33,102,183.\n* Lynx redeemed as of April 30, 2015.\nTranstrend DS (5) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "1,719,219",
+     "",
+     "4.87",
+     "%",
+     "$",
+     "2,438,783",
+     "",
+     "$",
+     "241,557",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "298,297",
+     "",
+     "",
+     "0.84",
+     "%",
+     "702,840",
+     "",
+     "",
+     "150,284",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "275,614",
+     "",
+     "",
+     "0.78",
+     "%",
+     "301,361",
+     "",
+     "",
+     "245,525",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "1,583,766",
+     "",
+     "",
+     "4.49",
+     "%",
+     "1,950,399",
+     "",
+     "",
+     "1,028,515",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "116,112",
+     "",
+     "",
+     "0.33",
+     "%",
+     "281,383",
+     "",
+     "",
+     "56,107",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "758,297",
+     "",
+     "",
+     "2.15",
+     "%",
+     "887,668",
+     "",
+     "",
+     "618,065",
+     "",
+     ""
+    ],
+    [
+     "Others",
+     "",
+     "143,713",
+     "",
+     "",
+     "0.41",
+     "%",
+     "143,713",
+     "",
+     "",
+     "143,713",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "4,895,018",
+     "",
+     "13.87",
+     "%",
+     "$",
+     "6,706,147",
+     "",
+     "$",
+     "2,483,766",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1319,
+    "end_line": 1337
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(4) Average capitalization of Lynx Class DS was $33,102,183.\n* Lynx redeemed as of April 30, 2015.\nTranstrend DS (5) *",
+   "prose_after": "(5) Average capitalization of Transtrend Class DS was $35,315,715.\n* Transtrend redeemed as of April 30, 2015.\nTudor Tensor DS (6) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1312,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "447,314",
+     "",
+     "1.83",
+     "%",
+     "$",
+     "628,215",
+     "",
+     "$",
+     "567,932",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "250,250",
+     "",
+     "",
+     "1.03",
+     "%",
+     "351,455",
+     "",
+     "",
+     "317,730",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "8,935",
+     "",
+     "",
+     "0.04",
+     "%",
+     "12,548",
+     "",
+     "",
+     "11,344",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "278,368",
+     "",
+     "",
+     "1.14",
+     "%",
+     "390,945",
+     "",
+     "",
+     "353,431",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "1,258,617",
+     "",
+     "",
+     "5.16",
+     "%",
+     "1,571,426",
+     "",
+     "",
+     "558,800",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "123,826",
+     "",
+     "",
+     "0.51",
+     "%",
+     "173,904",
+     "",
+     "",
+     "157,216",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "2,367,310",
+     "",
+     "9.71",
+     "%",
+     "$",
+     "3,128,493",
+     "",
+     "$",
+     "1,966,453",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1346,
+    "end_line": 1363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Average capitalization of Transtrend Class DS was $35,315,715.\n* Transtrend redeemed as of April 30, 2015.\nTudor Tensor DS (6) *",
+   "prose_after": "(6) Average capitalization of Tudor Tensor Class DS was $24,390,855.\n* Tudor Tensor redeemed as of April 30, 2015.\nWinton DS (7) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "304,057",
+     "",
+     "0.69",
+     "%",
+     "$",
+     "419,487",
+     "",
+     "$",
+     "122,260",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "537,387",
+     "",
+     "",
+     "1.21",
+     "%",
+     "1,819,461",
+     "",
+     "",
+     "84,999",
+     "",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "305,886",
+     "",
+     "",
+     "0.69",
+     "%",
+     "668,557",
+     "",
+     "",
+     "142,914",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "1,528,473",
+     "",
+     "",
+     "3.45",
+     "%",
+     "2,163,220",
+     "",
+     "",
+     "472,487",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "380,153",
+     "",
+     "",
+     "0.86",
+     "%",
+     "459,897",
+     "",
+     "",
+     "308,843",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "197,131",
+     "",
+     "",
+     "0.45",
+     "%",
+     "263,266",
+     "",
+     "",
+     "101,960",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "3,253,087",
+     "",
+     "7.35",
+     "%",
+     "$",
+     "5,793,888",
+     "",
+     "$",
+     "1,233,463",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1370,
+    "end_line": 1387
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(6) Average capitalization of Tudor Tensor Class DS was $24,390,855.\n* Tudor Tensor redeemed as of April 30, 2015.\nWinton DS (7) *",
+   "prose_after": "(7) Average capitalization of Winton Class DS was $44,253,768.\n* Winton redeemed as of April 30, 2015.\nBlakeney (8) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "25,889",
+     "",
+     "0.13",
+     "%",
+     "$",
+     "59,615",
+     "",
+     "$",
+     "1 ,234",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "108,967",
+     "",
+     "",
+     "0.57",
+     "%",
+     "271,612",
+     "",
+     "",
+     "22,423",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "167,260",
+     "",
+     "",
+     "0.87",
+     "%",
+     "395,748",
+     "",
+     "",
+     "3,818",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "74,685",
+     "",
+     "",
+     "0.39",
+     "%",
+     "130,151",
+     "",
+     "",
+     "10,761",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "83,962",
+     "",
+     "",
+     "0.44",
+     "%",
+     "196,113",
+     "",
+     "",
+     "11,163",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "110,198",
+     "",
+     "",
+     "0.57",
+     "%",
+     "220,942",
+     "",
+     "",
+     "$",
+     "27,012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "570,961",
+     "",
+     "2.97",
+     "%",
+     "$",
+     "1,274,181",
+     "",
+     "$",
+     "76,411",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(7) Average capitalization of Winton Class DS was $44,253,768.\n* Winton redeemed as of April 30, 2015.\nBlakeney (8) *",
+   "prose_after": "(8) Average capitalization of Blakeney is $19,177,743.\n* Blakeney added in May 2015.\nCampbell (9) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1411,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "96,315",
+     "",
+     "0.42",
+     "%",
+     "$",
+     "266,226",
+     "",
+     "$",
+     "33,319",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "114,098",
+     "",
+     "",
+     "0.49",
+     "%",
+     "301,082",
+     "",
+     "",
+     "2,974",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "103,243",
+     "",
+     "",
+     "0.45",
+     "%",
+     "307,346",
+     "",
+     "",
+     "7,227",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "137,731",
+     "",
+     "",
+     "0.60",
+     "%",
+     "347,565",
+     "",
+     "",
+     "29,579",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "81,226",
+     "",
+     "",
+     "0.35",
+     "%",
+     "230,333",
+     "",
+     "",
+     "17,937",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "271,596",
+     "",
+     "",
+     "1.17",
+     "%",
+     "466,861",
+     "",
+     "",
+     "172,427",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "804,209",
+     "",
+     "3.48",
+     "%",
+     "$",
+     "1,919,413",
+     "",
+     "$",
+     "263,463",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1420,
+    "end_line": 1437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(8) Average capitalization of Blakeney is $19,177,743.\n* Blakeney added in May 2015.\nCampbell (9) *",
+   "prose_after": "(9) Average capitalization of Campbell is $23,118,588.\n* Campbell added in May 2015.\nCarlisle (10) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1416,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1437,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "58,256",
+     "",
+     "0.53",
+     "%",
+     "$",
+     "126,376",
+     "",
+     "$",
+     "27,208",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "112,200",
+     "",
+     "",
+     "1.02",
+     "%",
+     "336,117",
+     "",
+     "",
+     "17,709",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "108,208",
+     "",
+     "",
+     "0.99",
+     "%",
+     "237,959",
+     "",
+     "",
+     "19,488",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "71,570",
+     "",
+     "",
+     "0.65",
+     "%",
+     "147,925",
+     "",
+     "",
+     "1,467",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "109,314",
+     "",
+     "",
+     "1.00",
+     "%",
+     "382,069",
+     "",
+     "",
+     "1,972",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "62,477",
+     "",
+     "",
+     "0.57",
+     "%",
+     "131,880",
+     "",
+     "",
+     "5,533",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "34,932",
+     "",
+     "",
+     "0.32",
+     "%",
+     "86,143",
+     "",
+     "",
+     "13,327",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "556,957",
+     "",
+     "5.08",
+     "%",
+     "$",
+     "1,448,469",
+     "",
+     "$",
+     "86,704",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(9) Average capitalization of Campbell is $23,118,588.\n* Campbell added in May 2015.\nCarlisle (10) *",
+   "prose_after": "(10) Average capitalization of Carlisle is $10,981,988.\n* Carlisle added in May 2015.\nCCP Core Macro (11) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1437,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "11,581",
+     "",
+     "0.11",
+     "%",
+     "$",
+     "31,773",
+     "",
+     "$",
+     "331",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "43,150",
+     "",
+     "",
+     "0.40",
+     "%",
+     "129,654",
+     "",
+     "",
+     "7,043",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "80,378",
+     "",
+     "",
+     "0.74",
+     "%",
+     "212,453",
+     "",
+     "",
+     "5,762",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "18,598",
+     "",
+     "",
+     "0.17",
+     "%",
+     "35,026",
+     "",
+     "",
+     "2,210",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "124,038",
+     "",
+     "",
+     "1.14",
+     "%",
+     "304,273",
+     "",
+     "",
+     "26,181",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "58,167",
+     "",
+     "",
+     "0.53",
+     "%",
+     "83,455",
+     "",
+     "",
+     "22,855",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "335,912",
+     "",
+     "3.09",
+     "%",
+     "$",
+     "796,634",
+     "",
+     "$",
+     "64,382",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1469,
+    "end_line": 1486
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(10) Average capitalization of Carlisle is $10,981,988.\n* Carlisle added in May 2015.\nCCP Core Macro (11) *",
+   "prose_after": "(11) Average capitalization of CCP Core Macro is $10,921,094.\n* CCP Core Macro added in May 2015.\nQuantica MF(12) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "21,647",
+     "",
+     "0.11",
+     "%",
+     "$",
+     "43,912",
+     "",
+     "$",
+     "3,911",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "64,678",
+     "",
+     "",
+     "0.33",
+     "%",
+     "270,708",
+     "",
+     "",
+     "671",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "214,770",
+     "",
+     "",
+     "1.10",
+     "%",
+     "523,313",
+     "",
+     "",
+     "5,984",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "19,602",
+     "",
+     "",
+     "0.10",
+     "%",
+     "45,676",
+     "",
+     "",
+     "884",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "244,784",
+     "",
+     "",
+     "1.25",
+     "%",
+     "549,858",
+     "",
+     "",
+     "53,301",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "60,418",
+     "",
+     "",
+     "0.31",
+     "%",
+     "90,286",
+     "",
+     "",
+     "21,080",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "625,899",
+     "",
+     "3.20",
+     "%",
+     "$",
+     "1,523,753",
+     "",
+     "$",
+     "85,831",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1512
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(11) Average capitalization of CCP Core Macro is $10,921,094.\n* CCP Core Macro added in May 2015.\nQuantica MF(12) *",
+   "prose_after": "(12) Average capitalization of Quantica MF is $19,535,611.\n* Quantica MF added in May 2015.\nSilver (13) *",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1491,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "% of Average",
+     "",
+     "Highest Value",
+     "",
+     "",
+     "Lowest Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Value at Risk",
+     "",
+     "",
+     "Capitalization",
+     "",
+     "at Risk",
+     "",
+     "",
+     "at Risk",
+     "",
+     ""
+    ],
+    [
+     "Agricultural Commodities",
+     "",
+     "$",
+     "22,137",
+     "",
+     "0.12",
+     "%",
+     "$",
+     "62,644",
+     "",
+     "$",
+     "1,485",
+     ""
+    ],
+    [
+     "Energy",
+     "",
+     "117,368",
+     "",
+     "",
+     "0.66",
+     "%",
+     "372,089",
+     "",
+     "",
+     "5,284",
+     "",
+     ""
+    ],
+    [
+     "Interest Rates",
+     "",
+     "129,098",
+     "",
+     "",
+     "0.72",
+     "%",
+     "389,786",
+     "",
+     "",
+     "12,670",
+     "",
+     ""
+    ],
+    [
+     "Metals",
+     "",
+     "87,907",
+     "",
+     "",
+     "0.49",
+     "%",
+     "146,393",
+     "",
+     "",
+     "1,056",
+     "",
+     ""
+    ],
+    [
+     "Stock Indices",
+     "",
+     "208,450",
+     "",
+     "",
+     "1.16",
+     "%",
+     "490,107",
+     "",
+     "",
+     "4,997",
+     "",
+     ""
+    ],
+    [
+     "Currencies",
+     "",
+     "130,796",
+     "",
+     "",
+     "0.73",
+     "%",
+     "244,752",
+     "",
+     "",
+     "2,790",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "695,756",
+     "",
+     "3.88",
+     "%",
+     "$",
+     "1,705,771",
+     "",
+     "$",
+     "28,282",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risks"
+    },
+    "note": null
+   },
+   "prose_before": "(12) Average capitalization of Quantica MF is $19,535,611.\n* Quantica MF added in May 2015.\nSilver (13) *",
+   "prose_after": "(13) Average capitalization of Silver is $17,918,170.\n* Silver added in May 2015.\nMaterial Limitations on Value at Risk as an Assessment of Market Risk\nThe face value of the market sector instruments held by the Fund and the Underlying Funds are typically many times the applicable maintenance margin requirement (maintenance margin requirements generally ranging between approximately 1% and 10% of contract face value) as well as many times the capitalization of the Fund and the Underlying Funds. The magnitude of the Fund\u2019s and the Underlying Funds\u2019 open positions creates a \u201crisk of ruin\u201d not typically found in most other investment vehicles. Because of the size of their positions, certain market conditions \u2014 unusual, but historically recurring from time to time \u2014 could cause the Fund and the Underlying Funds to incur severe losses over a short period of time. The foregoing VaR table \u2014 as well as the past performance of the Fund and the Underlying Funds \u2014 gives no indication of this \u201crisk of ruin.\u201d",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1536,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fourth Quarter 2016",
+     "",
+     "",
+     "Third Quarter 2016",
+     "",
+     "",
+     "Second Quarter 2016",
+     "",
+     "",
+     "First Quarter 2016",
+     "",
+     "",
+     "Fourth Quarter 2015",
+     "",
+     "",
+     "Third Quarter 2015",
+     "",
+     "",
+     "Second Quarter 2015",
+     "",
+     "",
+     "First Quarter 2015",
+     "",
+     ""
+    ],
+    [
+     "Total Income (Loss)",
+     "",
+     "$",
+     "(6,820,880)",
+     "",
+     "$",
+     "(4,168,157)",
+     "",
+     "$",
+     "664,987",
+     "",
+     "$",
+     "6,107,121",
+     "",
+     "$",
+     "(2,832,502)",
+     "",
+     "$",
+     "(484,440)",
+     "",
+     "$",
+     "(22,496,802)",
+     "",
+     "$",
+     "15,122,62 3",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "989,667",
+     "",
+     "",
+     "1,198,101",
+     "",
+     "",
+     "1,037,548",
+     "",
+     "",
+     "1,210,461",
+     "",
+     "",
+     "1,137,206",
+     "",
+     "",
+     "1,261,473",
+     "",
+     "",
+     "1,320,333",
+     "",
+     "",
+     "1,341,563",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "$",
+     "(7,810,547)",
+     "",
+     "$",
+     "(5,366,258)",
+     "",
+     "$",
+     "(372,561)",
+     "",
+     "$",
+     "4,896,660",
+     "",
+     "$",
+     "(3,969,708)",
+     "",
+     "$",
+     "(1,745,913)",
+     "",
+     "$",
+     "(23,817,135)",
+     "",
+     "$",
+     "13,781,060",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss) per weighted average Unit(a)",
+     "",
+     "$",
+     "(0.0657)",
+     "",
+     "$",
+     "(0.0414)",
+     "",
+     "$",
+     "(0.0027)",
+     "",
+     "$",
+     "0.0339",
+     "",
+     "$",
+     "(0.0256)",
+     "",
+     "$",
+     "(0.0105)",
+     "",
+     "$",
+     "(0.1379)",
+     "",
+     "$",
+     "0.0764",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1567,
+    "end_line": 1578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Fund\u2019s primary market risk exposures as well as the strategies used and to be used by the Manager and the Trading Advisors of the Underlying Funds for managing such exposures are subject to numerous uncertainties, contingencies and risks, any one of which could cause the actual results of the risk controls for the Fund and for the trading conducted through Underlying Funds to differ materially from the objectives of such strategies. Government interventions, defaults and expropriations, illiquid markets, the emergence of dominant fundamental factors, political upheavals, changes in historical price relationships, an influx of new market participants, increased regulation and many other factors could result in material losses as well as in material changes to the risk exposures and the risk management strategies of the Fund. There can be no assurance that the Fund\u2019s risk management strategies will not change materially or that any such strategies will be effective in either the short- or long-term. Investors must be prepared to lose all or substantially all of the value of their investment in the Fund.\nQualitative Disclosures Regarding Means of Managing Risk Exposure\nEach Underlying Fund (inclusive of its related Master Fund) and its Trading Advisor are monitored by the Manager\u2019s investment team. This coverage is intended to provide that each Underlying Fund and its Trading Advisor are monitored by individuals who have an in-depth understanding of the Underlying Fund and its Trading Advisor, as well as knowledge of the market environment affecting that particular strategy.\nItem 8: Financial Statements and Supplementary Data\nThe following quarterly information is unaudited.",
+   "prose_after": "(a) The Net Income (Loss) per weighted average Unit is based on the weighted average of the total Units for each quarter.\nThe financial statements required by this Item are included in Exhibit 13.01.\nThe supplementary financial information (\u201cinformation about oil and gas producing activities\u201d) specified by Item 302(b) of Regulation S-K is not applicable.\nItem 9: Changes in and Disagreements With Accountants on Accounting and Financial Disclosure\nOn June 16, 2016, the Manager, on behalf of the Fund, dismissed PricewaterhouseCoopers LLP as the independent registered public accounting firm for the Fund. The Manager, on behalf of the Fund, appointed Ernst & Young Ltd. as the independent registered public accounting firm for the Fund, effective July 11, 2016.\nThere were no disagreements with the respective independent registered public accounting firms on accounting and financial disclosure.\nItem 9A: Controls and Procedures\nDisclosure Controls and Procedures\nFRM Investment Management\u2019s President and Principal Financial Officer, on behalf of the Fund, have evaluated the effectiveness of the design and operation of its disclosure controls and procedures (as defined in",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1555,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Michelle McCloskey",
+     "President"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Linzie Steinbach",
+     "Principal Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1637,
+    "end_line": 1642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "Based on its assessment the Fund\u2019s management concluded that at December 31, 2016, the Fund\u2019s internal control over financial reporting was effective.\nChanges in Internal Control over Financial Reporting\nNo change in internal control over financial reporting (in connection with Rule 13a-15 or Rule 15d-15 under the Securities Exchange Act) occurred during the quarter ended December 31, 2016 that has materially affected, or is reasonable likely to materially affect, the Fund\u2019s internal control over financial reporting.\nItem 9B: Other Information\nNot applicable.\nPART III\nItem 10: Directors, Executive Officers and Corporate Governance\n10(a) and 10(b) Identification of Directors and Executive Officers:\nThe Fund has no officers or directors and is managed by FRM Investment Management (USA) LLC, its Manager. Trading decisions are made by the Trading Advisors on behalf of the Master Funds.\nThe executive officers of the Manager with respect to the Fund and their respective business backgrounds are as follows:",
+   "prose_after": "Michelle McCloskey, President of the Manager, is Senior Managing Director at FRM, a member of Man Group\u2019s Executive Committee, President of FRM Investments (USA) LLC (\u201cFRM USA\u201d), an investment management entity which forms a part of FRM, President of FRM Investment Management GP (USA) LLC (formerly known as Pine Grove Asset Management GP LLC), an entity within FRM that principally serves as general partner to certain funds of funds managed by the Manager (\u201cFRM IM GP\u201d), and is based in New York. FRM USA was a member of the NFA and was registered with the CFTC as a commodity pool operator from August 31, 1987 to June 11, 2015, and was registered with the CFTC as a commodity trading advisor from November 6, 1989 to June 11, 2015. FRM USA was also formerly registered as an \u201cinvestment adviser\u201d with the SEC. FRM IM GP was registered with the CFTC as a commodity pool operator and a commodity trading advisor and was a member of the NFA from April 19, 2011 to June 11, 2015. Michelle has been registered as an associated person and listed as a principal of the Manager since February 18, 2015. Michelle was also registered as an associated person and listed as a principal of FRM USA from January 7, 2013 and November 2, 2011, respectively, to June 11, 2015. Michelle was registered as an associated person and listed as a principal of FRM IM GP from March 6, 2015 to June 11, 2015. Michelle has overall oversight of the Manager Research team as well as the Managed Account Lifecycle team at FRM, of which the Manager, FRM IM GP and FRM USA form a part. Prior to assuming her current role in February 2013, Michelle was Head of the Commodities and New Alternatives teams, within Hedge Fund Research of Man\u2019s Multi-Manager Business from June 2009 to July 2010, researching traditional commodities and new alternative hedge fund strategies including environmentally focused renewable energy and carbon trading strategies, and Head of Hedge Fund Research from July 2010 to February 2013, responsible for overseeing the qualitative investment process across all strategies on the manager research team. Michelle graduated magna cum laude with a BS in chemical engineering from Texas Tech University in Lubbock, Texas.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1633,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1665,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Designation",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.01",
+     "Amended and Restated Certificate of Formation of ML Systematic Momentum FuturesAccess LLC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 3.01:",
+     "Is incorporated by reference from Exhibit 3.01 contained in the registrants Report on Form 8-K filed on February 14, 2012."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.02",
+     "Amendment to Certificate of Formation of Systematic Momentum FuturesAccess LLC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 3.02:",
+     "Is incorporated by reference from Exhibit 3.01(i) contained in the registrant\u2019s Report on Form 8-K filed on May 7, 2015."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.03",
+     "Fifth Amended and Restated Limited Liability Company Operating Agreement of Man FRM Managed Futures Strategies LLC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 3.03",
+     "Is incorporated by reference from Exhibit 3.02 contained in the registrant\u2019s Report on Form 8-K, filed on August 25, 2015."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.01",
+     "2016 Annual Report and Reports of Independent Registered Public Accounting Firms"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.02",
+     "Financial Statements of Century CAT MAC Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.03",
+     "Financial Statements of Campbell Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.04",
+     "Financial Statements of Carlisle Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.05",
+     "Financial Statements of Quantica MF Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.06",
+     "Financial Statements of Silver Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.07",
+     "Financial Statements of Aspect FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.08",
+     "Financial Statements of ML BlueTrend FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.09",
+     "Financial Statements of John Locke FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.10",
+     "Financial Statements of Lynx FuturesAccess LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1799,
+    "end_line": 1835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "( ) Financial Statements of Silver Delaware Feeder LLC (Feeder Fund) and Silver MAC Limited (Master Fund) as of and for the years ending December 31, 2016 and, 2015 (audited)\n( ) Financial Statements of Aspect FuturesAccess LLC as of and for the years ending December 31, 2015 and 2014 (audited)\n( ) Financial Statements of BlueTrend FuturesAccess LLC as of and for the years ending December 2015 and 2014 (audited)\n( ) Financial Statements of John Locke FutureAccess LLC as of and for the year ending December 31, 2014 (audited)\n( ) Financial Statements of Lynx FuturesAccess LLC as of and for the year ending December 31, 2014 (audited)\n( ) Financial Statements of ML Transtrend DTP Enhanced FuturesAccess LLC as of and for the years ending December 31, 2015 and 2014 (audited)\n( ) Financial Statements of Tudor Tensor FuturesAccess LLC as of and for the year ending December 31, 2014 (audited)\n( ) Financial Statements of Winton FuturesAccess LLC as of and for the years ending December 31, 2015 and 2014 (audited)\n3. Exhibits: The following exhibits are incorporated by reference or are filed herewith to this Annual Report on Form 10-K:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1787,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1836,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "13.11",
+     "Financial Statements of ML Transtrend DTP Enhanced FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.12",
+     "Financial Statements of Tudor Tensor FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.13",
+     "Financial Statements of ML Winton FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Are filed herewith."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.01 and 31.02",
+     "Rule 13a-14(a)/15d-14(a) Certifications"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 31.01",
+     "Are filed herewith."
+    ],
+    [
+     "and 31.02:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.01 and 32.02",
+     "Section 1350 Certifications."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 32.01",
+     ""
+    ],
+    [
+     "and 32.02:",
+     "Are filed herewith."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following materials from the Fund\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2016 formatted in XBRL (Extensible Business Reporting Language): (i) Statements of Financial Condition (ii) Statements of Operations (iii) Statements of Changes in Members\u2019 Capital (iv) Financial Data Highlights and (v) Notes to Financial Statements, tagged as blocks of text."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "Is filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1838,
+    "end_line": 1863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or Section 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on March 29, 2017.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1836,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1864,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MAN FRM MANAGED FUTURES STRATEGIES LLC",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "FRM INVESTMENT MANAGEMENT (USA) LLC, Manager",
+     ""
+    ],
+    [
+     "By:",
+     "/s/Michelle McCloskey",
+     ""
+    ],
+    [
+     "Michelle McCloskey",
+     "",
+     ""
+    ],
+    [
+     "President",
+     "",
+     ""
+    ],
+    [
+     "(Principal Executive Officer)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "MAN FRM MANAGED FUTURES STRATEGIES LLC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1870,
+    "end_line": 1879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or Section 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on March 29, 2017.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1864,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michelle McCloskey",
+     "President",
+     "March 29,2017"
+    ],
+    [
+     "Michelle McCloskey",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Linzie Steinbach",
+     "Principal Financial Officer",
+     "March 29, 2017"
+    ],
+    [
+     "Linzie Steinbach",
+     "(Principal Financial Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1882,
+    "end_line": 1894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "MAN FRM MANAGED FUTURES STRATEGIES LLC\n2016 FORM 10-K\nINDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1864,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.01",
+     "2016 Annual Report and Report of Independent Registered Public Accounting Firms."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.02",
+     "Financial Statements of Century CAT MAC Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.03",
+     "Financial Statements of Campbell Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.04",
+     "Financial Statements of Carlisle Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.05",
+     "Financial Statements of Quantica MF Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.06",
+     "Financial Statements of Silver Delaware Feeder LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.07",
+     "Financial Statements of Aspect FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit13.08",
+     "Financial Statements of ML BlueTrend FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.09",
+     "Financial Statements of John Locke FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.10",
+     "Financial Statements of Lynx FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.11",
+     "Financial Statements of ML Transtrend DTP Enhanced FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.12",
+     "Financial Statements of Tudor Tensor FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 13.13",
+     "Financial Statements of ML Winton FuturesAccess LLC"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 31.01 and 31.02",
+     "Rule 13a - 14(a) / 15d - 14(a) Certifications"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 32.01 and 32.02",
+     "Sections 1350 Certifications"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "The following materials from the Fund\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2016 formatted in XBRL (Extensible Business Reporting Language): (i) Statements of Financial Condition (ii) Statements of Operations (iii) Statements of Changes in Members\u2019 Capital (iv) Financial Data Highlights and (v) Notes to Financial Statements, tagged as blocks of text."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1903,
+    "end_line": 1941
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "MAN FRM MANAGED FUTURES STRATEGIES LLC\n2016 FORM 10-K\nINDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1942,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

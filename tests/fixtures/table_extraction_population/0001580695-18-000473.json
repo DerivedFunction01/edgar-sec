@@ -1,0 +1,2492 @@
+{
+ "accession": "0001580695-18-000473",
+ "cik": "0001682265",
+ "form": "10-Q",
+ "filing_date": "2018-10-25",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rhis-10q_093018.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "47-2200506"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "incorporation or organization)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "12343 Hymeadow Drive, Suite 3-A \n\n\n\nAustin, Texas",
+     "78750"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal quarter ended September 30, 2018\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM _____________\nTO _____________\nCommission File Number 333-214274\nRELIANT HOLDINGS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (512) 407-2623\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets (unaudited)",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations (unaudited)",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]     Smaller reporting company [X]\nEmerging growth  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.\nYes [ ] No [X]\nState the number of shares of the issuer\u2019s common stock outstanding, as of the latest practicable date: 14,585,000 shares of common stock are issued and outstanding as of October 23, 2018.\nTABLE OF CONTENTS",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Balance Sheets\n(Unaudited)\n<TABLE>\nSeptember 30,     December 31,\n2018             2017\n---------------------  ------------\nASSETS\nCurrent Assets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "212,398",
+     "$",
+     "18,252",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "3,000",
+     "",
+     "570",
+     ""
+    ],
+    [
+     "  Federal income tax receivable",
+     "",
+     "10,000",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "  Earnings in excess of billings and estimated earnings on uncompleted contracts",
+     "",
+     "\u2014",
+     "",
+     "15,088",
+     ""
+    ],
+    [
+     "  Total current assets",
+     "",
+     "225,398",
+     "",
+     "43,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Equipment, net of accumulated depreciation of $19,118 and $14,037 September 30, 2018 and December 31, 2017, respectively",
+     "",
+     "15,808",
+     "",
+     "20,889",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "241,206",
+     "$",
+     "64,799",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "$",
+     "56,314",
+     "$",
+     "41,247",
+     ""
+    ],
+    [
+     "  Billings in excess of costs and estimated earnings on uncompleted contracts",
+     "",
+     "102,760",
+     "",
+     "36,461",
+     ""
+    ],
+    [
+     "  Current portion of note payable",
+     "",
+     "5,926",
+     "",
+     "5,736",
+     ""
+    ],
+    [
+     "  Due to related party",
+     "",
+     "5,000",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total current liabilities",
+     "",
+     "170,000",
+     "",
+     "88,444",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term note payable, net of current portion",
+     "",
+     "8,780",
+     "",
+     "13,248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Liabilities",
+     "",
+     "178,780",
+     "",
+     "101,692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, 70,000,000 shares authorized, $0.001 par value, 14,585,000 issued and outstanding as of September 30, 2018 and December 31, 2017",
+     "",
+     "14,585",
+     "",
+     "14,585",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "43,365",
+     "",
+     "43,365",
+     ""
+    ],
+    [
+     "Retained earnings (Accumulated deficit)",
+     "",
+     "4,476",
+     "",
+     "(94,843)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "62,426",
+     "",
+     "(36,893)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity (Deficit)",
+     "$",
+     "241,206",
+     "$",
+     "64,799",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the nine months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "438,977",
+     "",
+     "$",
+     "245,176",
+     "",
+     "$",
+     "1,093,763",
+     "",
+     "$",
+     "832,178",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "(287,232)",
+     "",
+     "",
+     "(183,620)",
+     "",
+     "",
+     "(725,895)",
+     "",
+     "",
+     "(574,847)",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "151,745",
+     "",
+     "",
+     "61,556",
+     "",
+     "",
+     "367,868",
+     "",
+     "",
+     "257,331",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "85,985",
+     "",
+     "",
+     "106,921",
+     "",
+     "",
+     "268,030",
+     "",
+     "",
+     "357,646",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "(85,985)",
+     "",
+     "",
+     "(106,921)",
+     "",
+     "",
+     "(268,030)",
+     "",
+     "",
+     "(357,646)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) From Operations",
+     "",
+     "65,760",
+     "",
+     "",
+     "(45,365)",
+     "",
+     "",
+     "99,838",
+     "",
+     "",
+     "(100,315)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income / (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest income",
+     "",
+     "18",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "39",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(170)",
+     "",
+     "",
+     "(162)",
+     "",
+     "",
+     "(558)",
+     "",
+     "",
+     "(741)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(152)",
+     "",
+     "",
+     "(155)",
+     "",
+     "",
+     "(519)",
+     "",
+     "",
+     "(731)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) before income taxes",
+     "",
+     "65,608",
+     "",
+     "",
+     "(45,520)",
+     "",
+     "",
+     "99,319",
+     "",
+     "",
+     "(101,046)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "65,608",
+     "",
+     "$",
+     "(45,520)",
+     "",
+     "$",
+     "99,319",
+     "",
+     "$",
+     "(101,046)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss) Per Share - Basic and Diluted",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.01",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Common Shares Outstanding",
+     "",
+     "14,585,000",
+     "",
+     "",
+     "14,585,000",
+     "",
+     "",
+     "14,585,000",
+     "",
+     "",
+     "14,585,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 162,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "----------------  ---------------\nTotal Stockholders' Equity (Deficit)                                                                                                                      62,426         (36,893)\n----------------  ---------------\nTotal Liabilities and Stockholders' Equity (Deficit)                                                                                                   $ 241,206         $ 64,799\n================  ===============\n</TABLE>\nThe accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Operations\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 156,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the nine months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss)",
+     "$",
+     "99,319",
+     "",
+     "$",
+     "(101,046)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation",
+     "",
+     "5,081",
+     "",
+     "",
+     "5,081",
+     ""
+    ],
+    [
+     "    Accounts receivable, related party converted to compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "13,181",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts receivable",
+     "",
+     "(2,430)",
+     "",
+     "",
+     "6,220",
+     ""
+    ],
+    [
+     "    Costs in excess of billings",
+     "",
+     "15,088",
+     "",
+     "",
+     "357",
+     ""
+    ],
+    [
+     "      Billings in excess of costs and estimated earnings on uncompleted contracts",
+     "",
+     "66,299",
+     "",
+     "",
+     "44,202",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued liabilities",
+     "",
+     "15,067",
+     "",
+     "",
+     "1,674",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Net Cash Provided by (Used In) Operating Activities",
+     "",
+     "198,424",
+     "",
+     "",
+     "(30,331)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Payments on note payable",
+     "",
+     "(4,278)",
+     "",
+     "",
+     "(4,096)",
+     ""
+    ],
+    [
+     "  Proceeds on related party advances",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "    Net Cash Provided By (Used In) Financing Activities",
+     "",
+     "(4,278)",
+     "",
+     "",
+     "904",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in Cash",
+     "",
+     "194,146",
+     "",
+     "",
+     "(29,427)",
+     ""
+    ],
+    [
+     "Cash - Beginning of Period",
+     "",
+     "18,252",
+     "",
+     "",
+     "42,673",
+     ""
+    ],
+    [
+     "Cash - End of Period",
+     "$",
+     "212,398",
+     "",
+     "$",
+     "13,246",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "956",
+     "",
+     "$",
+     "508",
+     ""
+    ],
+    [
+     "  Income taxes paid",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the nine months ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 215,
+    "end_line": 256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nConsolidated Statements of Cash Flows\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nNotes to the Consolidated Financial Statements\nFor the three and nine months ended September 30, 2018 and 2017\nNote 1. The Company and Summary of Significant Accounting Policies\nThe Company\nReliant Holdings, Inc. (the \u201cCompany\u201d) was formed as a Nevada corporation on May 19, 2014. On May 23, 2014, Reliant Holdings, Inc., along with Reliant Pools, Inc., formerly Reliant Pools, G.P., which was formed in September 2013 (\u201cReliant Pools\u201d) and the shareholders of Reliant Pools, entered into an Agreement for the Exchange of common stock whereby Reliant Pools, Inc. became a wholly-owned subsidiary of Reliant Holdings, Inc. Reliant Holdings, Inc. designs, and installs swimming pools. The Company is headquartered in Austin, Texas.\nBasis of Presentation\nThe financial statements are presented in accordance with accounting principles generally accepted in the United States of America (\u201cUS GAAP\u201d).\nThe consolidated financial statements and related disclosures as of September 30, 2018 are unaudited, pursuant to the rules and regulations of the United States Securities and Exchange Commission (\u201cSEC\u201d). Certain information and footnote disclosures normally included in financial statements prepared in accordance with US GAAP have been condensed or omitted pursuant to such rules and regulations. In our opinion, these unaudited financial statements include all adjustments (consisting only of normal recurring adjustments) necessary for the fair statement of the results for the interim periods. These unaudited financial statements should be read in conjunction with the audited financial statements of the Company for the years ended December 31, 2017 and 2016 included in our Annual Report on Form 10-K, filed with the SEC on April 13, 2018. The results of operations for the three and nine months ended September 30, 2018 are not necessarily indicative of the results to be expected for the full year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "2017"
+    ],
+    [
+     "Contract receivables",
+     "$",
+     "3,000",
+     "$",
+     "570"
+    ],
+    [
+     "Less: Allowance for doubtful accounts",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "$",
+     "3,000",
+     "$",
+     "570"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 290,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Accounts Receivable"
+    }
+   },
+   "prose_before": "The impact to our results is not material because the analysis of our contracts under the new revenue recognition standard supports the recognition of revenue over time under the cost-to-cost method of our construction contracts, which is consistent with our current revenue recognition model. Our construction contracts will continue to be recognized over time because of the continuous transfer of control to the customer as all of the work is performed at the customer\u2019s site and therefore, the customer controls the asset as it is being constructed. Under the new standard, the cost-to-cost measure of progress continues to best depict the transfer of control of assets to the customer, which occurs as we incur costs. In addition, the number of performance obligations under the new standard is not materially different from our contract segments under the existing standard. Lastly, the accounting for the estimate of variable consideration is not materially different compared to our current practice.\nNote 2. Accounts Receivable\nAccounts receivable consisted of the following:",
+   "prose_after": "The Company recognized bad debt expense of $0 and $0 respectively, during the nine months ended September 30, 2018 and 2017.\nNote 3. Contracts in Process\nThe net asset (liability) position for contracts in process consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Costs on uncompleted contracts",
+     "$",
+     "91,212",
+     "",
+     "$",
+     "56,032",
+     ""
+    ],
+    [
+     "Estimated earnings",
+     "",
+     "44,925",
+     "",
+     "",
+     "27,598",
+     ""
+    ],
+    [
+     "",
+     "",
+     "136,137",
+     "",
+     "",
+     "83,630",
+     ""
+    ],
+    [
+     "Less: Progress billings",
+     "",
+     "(238,897)",
+     "",
+     "",
+     "(105,003)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(102,760)",
+     "",
+     "$",
+     "(21,373)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 307,
+    "end_line": 320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Contracts in Process"
+    }
+   },
+   "prose_before": "The Company recognized bad debt expense of $0 and $0 respectively, during the nine months ended September 30, 2018 and 2017.\nNote 3. Contracts in Process\nThe net asset (liability) position for contracts in process consisted of the following:",
+   "prose_after": "The net asset (liability) position for contracts in process is included in the accompanying consolidated balance sheets as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Costs and estimated earnings in excess of billings on uncompleted contracts",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "15,088",
+     ""
+    ],
+    [
+     "Billings in excess of costs and estimated earnings on uncompleted contracts",
+     "",
+     "(102,760)",
+     "",
+     "",
+     "(36,461)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(102,760)",
+     "",
+     "$",
+     "(21,373)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 323,
+    "end_line": 333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Contracts in Process"
+    }
+   },
+   "prose_before": "The net asset (liability) position for contracts in process is included in the accompanying consolidated balance sheets as follows:",
+   "prose_after": "Note 4. Concentration of Risk\nThe Company had gross revenue of $1,093,763 and $832,178 for the nine months ended September 30, 2018 and 2017, respectively. The Company had 3 customers representing more than 10% of gross revenue, and combined 34% of revenue for the nine months ended September 30, 2018.\nNote 5. Commitments\nThe Company leases approximately 1,000 square feet of office space in Austin, Texas. The lease was to expire in September 2017 with a monthly rent of $1,695. On September 5, 2017 and effective on September 30, 2017, the Company extended its office space lease from October 1, 2017 to September 30, 2018. In connection with the extension, the Company agreed to a rental increase to $1,745 per month.\nLease expense was $16,805 and $15,857 for the nine months ended September 30, 2018 and 2017, respectively.\nEffective on September 14, 2018, the Company extended its office space lease from October 1, 2018 to September 30, 2019. In connection with the extension, the Company agreed to a rental increase to $1,795 per month.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "  Term note with a bank secured by truck, payable in monthly installments of $537, including interest at 4.35% through February 11, 2021",
+     "$",
+     "14,706",
+     "",
+     "$",
+     "18,985",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "",
+     "14,706",
+     "",
+     "",
+     "18,985",
+     ""
+    ],
+    [
+     "Less: current portion",
+     "",
+     "(5,926)",
+     "",
+     "",
+     "(5,736)",
+     ""
+    ],
+    [
+     "Long-term debt net of current portion",
+     "$",
+     "8,780",
+     "",
+     "$",
+     "13,248",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 353,
+    "end_line": 365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long Term Debt"
+    }
+   },
+   "prose_before": "The Company had gross revenue of $1,093,763 and $832,178 for the nine months ended September 30, 2018 and 2017, respectively. The Company had 3 customers representing more than 10% of gross revenue, and combined 34% of revenue for the nine months ended September 30, 2018.\nNote 5. Commitments\nThe Company leases approximately 1,000 square feet of office space in Austin, Texas. The lease was to expire in September 2017 with a monthly rent of $1,695. On September 5, 2017 and effective on September 30, 2017, the Company extended its office space lease from October 1, 2017 to September 30, 2018. In connection with the extension, the Company agreed to a rental increase to $1,745 per month.\nLease expense was $16,805 and $15,857 for the nine months ended September 30, 2018 and 2017, respectively.\nEffective on September 14, 2018, the Company extended its office space lease from October 1, 2018 to September 30, 2019. In connection with the extension, the Company agreed to a rental increase to $1,795 per month.\nNote 6. Related Party Transactions\nDuring the year ended December 31, 2017, Mr. Chavez advanced $5,000 to the Company. The advance is due on demand, unsecured and has no stated interest rate.\nNote 7. Long Term Debt",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING INFORMATION\nThis Report contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. In some cases, you can identify forward-looking statements by the following words: \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201congoing,\u201d \u201cplan,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d or the negative of these terms or other comparable terminology, although not all forward-looking statements contain these words. Forward-looking statements are not a guarantee of future performance or results, and will not necessarily be accurate indications of the times at, or by, which such performance or results will be achieved. Forward-looking statements are based on information available at the time the statements are made and involve known and unknown risks, uncertainties and other factors that may cause our results, levels of activity, performance or achievements to be materially different from the information expressed or implied by the forward-looking statements in this Report. These factors include:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 366,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Cost of Goods Sold Expense",
+     "For the Three Months Ended September 30, 2018",
+     "",
+     "For the Three Months Ended September 30, 2017",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     "",
+     ""
+    ],
+    [
+     "Cost of decking",
+     "$",
+     "35,239",
+     "$",
+     "36,717",
+     "$",
+     "(1,478)",
+     "",
+     "",
+     "(4.0",
+     "%)"
+    ],
+    [
+     "Plaster used in the construction of pools",
+     "",
+     "34,719",
+     "",
+     "\u2014",
+     "",
+     "34,719",
+     "",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Gunite used in the construction of pools",
+     "",
+     "31,494",
+     "",
+     "10,258",
+     "",
+     "21,236",
+     "",
+     "",
+     "207.0",
+     "%"
+    ],
+    [
+     "  Pool equipment used to filter and circulate the water used in our pools",
+     "",
+     "46,378",
+     "",
+     "32,799",
+     "",
+     "13,579",
+     "",
+     "",
+     "41.4",
+     "%"
+    ],
+    [
+     "  Masonry, stone and tile installed in and around our pools and coping expenses associated therewith",
+     "",
+     "54,014",
+     "",
+     "32,747",
+     "",
+     "21,267",
+     "",
+     "",
+     "64.9",
+     "%"
+    ],
+    [
+     "Excavation and steel expenses",
+     "",
+     "48,335",
+     "",
+     "19,555",
+     "",
+     "28,780",
+     "",
+     "",
+     "147.2",
+     "%"
+    ],
+    [
+     "Other, including labor",
+     "",
+     "37,053",
+     "",
+     "51,544",
+     "",
+     "(14,490)",
+     "",
+     "",
+     "(28.1",
+     "%)"
+    ],
+    [
+     "  Total",
+     "$",
+     "287,232",
+     "$",
+     "183,620",
+     "$",
+     "103,613",
+     "",
+     "",
+     "56.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 451,
+    "end_line": 469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long Term Debt"
+    }
+   },
+   "prose_before": "We had revenue of $438,977 for the three months ended September 30, 2018, compared to revenue of $245,176 for the three months ended September 30, 2017, an increase of $193,801 or 79% from the prior period. Revenue increased mainly due to larger pools being completed during the current period compared to the prior period. We completed 6 pools during the three months ended September 30, 2018 compared to completing 3 pools during the three months ended September 30, 2017. We recognize revenue based on the percentage that a job is complete rather than upon completion. As such total revenue recognized for each period may be different than the product of total completed pools during each period multiplied by the average pool contract price of each pool during such period, as the construction of certain pools may have started in one period and ended in another.\nWe had cost of goods sold of $287,232 for the three months ended September 30, 2018, compared to cost of goods sold of $183,620 for the three months ended September 30, 2017, an increase of $103,612 or 56% from the prior period, mainly due to the increase in revenues.\nCost of goods sold increased mainly the number of pools completed combined with the increase in steel cost. The expenses which attributed to the increase in cost of goods sold for the three months ended September 30, 2018, compared to the three months ended September 30, 2017, included:",
+   "prose_after": "Cost of goods sold represent our pool construction costs, including raw materials, outsourced labor, installed equipment, tile and coping expenses, excavation costs and permit expenses. We anticipate our cost of goods sold increasing in approximate proportion to increases in revenue and decreasing in approximate proportion to decreases in revenue, moving forward, as our cost of goods sold are factored into the price we charge for our pools and represent the cost of pool construction, the majority of which is not fixed and varies depending on the total number of pools and construction projects we complete during each period and the size and complexity of such projects. Labor costs associated with the cost of labor used in construction of pools decreased due to the general timing of plumbing and electrical services.\nWe had a gross margin of $151,745 for the three months ended September 30, 2018, compared to a gross margin of $61,556 for the three months ended September 30, 2017, an increase of $90,189 or 147% from the prior period due to the reasons described above. Gross margin as a percentage of revenue increased to 35% for the three months ended September 30, 2018, compared to 25% for the three months ended September 30, 2017. The increase in gross margin as a percentage of revenue was mainly due to the sale of more complex pools which result in an improved gross margin.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 446,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Cost of Goods Sold Expense",
+     "For the Nine Months Ended September 30, 2018",
+     "",
+     "For the Nine Months Ended September 30, 2017",
+     "",
+     "Increase / (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     "",
+     ""
+    ],
+    [
+     "Cost of decking",
+     "$",
+     "75,011",
+     "$",
+     "93,194",
+     "$",
+     "(18,183)",
+     "",
+     "",
+     "(19.5",
+     "%)"
+    ],
+    [
+     "Plaster used in the construction of pools",
+     "",
+     "64,861",
+     "",
+     "59,209",
+     "",
+     "5,652",
+     "",
+     "",
+     "9.5",
+     "%"
+    ],
+    [
+     "Gunite used in the construction of pools",
+     "",
+     "97,044",
+     "",
+     "60,821",
+     "",
+     "36,223",
+     "",
+     "",
+     "59.6",
+     "%"
+    ],
+    [
+     "  Pool equipment used to filter and circulate the water used in our pools",
+     "",
+     "115,201",
+     "",
+     "83,439",
+     "",
+     "31,762",
+     "",
+     "",
+     "38.1",
+     ""
+    ],
+    [
+     "  Masonry, stone and tile installed in and around our pools and coping expenses associated therewith",
+     "",
+     "116,274",
+     "",
+     "76,754",
+     "",
+     "39,520",
+     "",
+     "",
+     "51.5",
+     "%"
+    ],
+    [
+     "Excavation and steel expenses",
+     "",
+     "114,016",
+     "",
+     "92,969",
+     "",
+     "21,047",
+     "",
+     "",
+     "22.6",
+     "%"
+    ],
+    [
+     "Other, including labor",
+     "",
+     "143,488",
+     "",
+     "108,461",
+     "",
+     "35,027",
+     "",
+     "",
+     "32.3",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "725,895",
+     "$",
+     "574,847",
+     "$",
+     "151,048",
+     "",
+     "",
+     "26.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long Term Debt"
+    }
+   },
+   "prose_before": "We had revenue of $1,093,763 for the nine months ended September 30, 2018, compared to revenue of $832,178 for the nine months ended September 30, 2017, an increase of $261,585 or 31% from the prior period. Revenue increased mainly due to larger pools being completed during the current period compared to the prior period. We completed 12 pools (1 additional pool was substantially complete) during the nine months ended September 30, 2018 compared to completing 11 pools during the nine months ended September 30, 2017. We recognize revenue based on the percentage that a job is complete rather than upon completion. As such total revenue recognized for each period may be different than the product of total completed pools during each period multiplied by the average pool contract price of each pool during such period, as the construction of certain pools may have started in one period and ended in another.\nWe had cost of goods sold of $725,895 for the nine months ended September 30, 2018, compared to cost of goods sold of $574,847 for the nine months ended September 30, 2017, an increase of $151,048 or 26% from the prior period.\nCost of goods sold increased mainly due to the overall increase in pool count and complexity of the projects during the current period compared to the prior period. The expenses which attributed to the increase in cost of goods sold for the nine months ended September 30, 2018, compared to the nine months ended September 30, 2017, included:",
+   "prose_after": "Cost of goods sold represent our pool construction costs, including raw materials, outsourced labor, installed equipment, tile and coping expenses, excavation costs and permit expenses. We anticipate our cost of goods sold increasing in approximate proportion to increases in revenue and decreasing in approximate proportion to decreases in revenue, moving forward, as our cost of goods sold are factored into the price we charge for our pools and represent the cost of pool construction, the majority of which is not fixed and varies depending on the total number of pools and construction projects we complete during each period and the size and complexity of such projects. Labor costs associated with the cost of labor used in construction of pools increased due to the increased cost of plumbing and electrical services.\nWe had a gross margin of $367,868 for the nine months ended September 30, 2018, compared to a gross margin of $257,331 for the nine months ended September 30, 2017, an increase of $110,537 or 43% from the prior period due to the reasons described above. Gross margin as a percentage of revenue increased from 31% for the nine months ended September 30, 2017, to 34% for the nine months ended September 30, 2018, mainly due to higher margin projects completed in the current year.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "RELIANT HOLDINGS, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: October 25, 2018",
+     "By: /s/ Elijah May"
+    ],
+    [
+     "",
+     "Elijah May"
+    ],
+    [
+     "",
+     "Chief Executive Officer and President"
+    ],
+    [
+     "",
+     "(Principal Executive Officer and Principal Financial/Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "RELIANT HOLDINGS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 655,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long Term Debt"
+    }
+   },
+   "prose_before": "Item 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information.\nEffective on September 14, 2018, the Company extended its office space lease from October 1, 2018 to September 30, 2019. In connection with the extension, the Company agreed to a rental increase to $1,795 per month.\nItem 6. Exhibits\nSee the Exhibit Index following the signature page to this Quarterly Report on Form 10-Q for a list of exhibits filed or furnished with this report, which Exhibit Index is incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this Report to be signed on its behalf by the undersigned, hereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Description of Exhibit",
+     "Filed/ Furnished Herewith",
+     "Form",
+     "Exhibit",
+     "Filing Date/Period End Date",
+     "File Number"
+    ],
+    [
+     "2.1",
+     "Agreement for the Exchange of Common Stock dated May 23, 2014, by and between Reliant Holdings, Inc., Reliant Pools, Inc. and the shareholders of Reliant Pools, Inc.",
+     "",
+     "S-1",
+     "2.1",
+     "10/27/16",
+     "333-214274"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation as amended and restated",
+     "",
+     "S-1",
+     "3.1",
+     "10/27/16",
+     "333-214274"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws",
+     "",
+     "S-1",
+     "3.2",
+     "10/27/16",
+     "333-214274"
+    ],
+    [
+     "10.1",
+     "Standard Form of Construction Contract",
+     "",
+     "S-1",
+     "10.1",
+     "10/27/16",
+     "333-214274"
+    ],
+    [
+     "10.2",
+     "Voting Agreement, dated as of November 3, 2017, by and among Michael Chavez and Elijah May",
+     "",
+     "8-K",
+     "10.1",
+     "11/7/17",
+     "333-214274"
+    ],
+    [
+     "10.3",
+     "Lock-Up Agreement dated November 7, 2017, between Reliant Holdings, Inc. and the shareholders name therein",
+     "",
+     "8-K",
+     "10.2",
+     "11/7/17",
+     "333-214274"
+    ],
+    [
+     "14.1",
+     "Code of Ethics and Code of Conduct",
+     "",
+     "S-1",
+     "14.1",
+     "10/27/16",
+     "333-214274"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive and Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive and Principal Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "XBRL Instance Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "XBRL Taxonomy Extension Schema Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "X",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long Term Debt"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "* Filed herewith.\n** Furnished Herewith.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

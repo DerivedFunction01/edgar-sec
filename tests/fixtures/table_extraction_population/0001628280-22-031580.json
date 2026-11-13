@@ -1,0 +1,5281 @@
+{
+ "accession": "0001628280-22-031580",
+ "cik": "0001792781",
+ "form": "10-Q",
+ "filing_date": "2022-12-08",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "thi-20221029.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "84-3517567"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "18501 East San Jose Avenue City of Industry, California (Address of principal executive offices)",
+     "91748 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended October 29, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from to\nCommission File Number 001-40571\nTORRID HOLDINGS INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(626) 667-1002\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, par value $0.01 per share",
+     "CURV",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(626) 667-1002\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "Part I - Financial Information",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of October 29, 2022 and January 29, 2022",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations and Comprehensive Income (Loss) for the three and nine months ended October 29, 2022 and October 30, 2021",
+     "6"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Stockholders' Deficit for the nine months ended October 29, 2022 and October 30, 2021",
+     "7"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the nine months ended October 29, 2022 and October 30, 2021",
+     "9"
+    ],
+    [
+     "",
+     "Notes to Unaudited Condensed Consolidated Financial Statements",
+     "10"
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "28"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "36"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "36"
+    ],
+    [
+     "",
+     "Part II - Other Information",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "37"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "37"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "37"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "37"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "37"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "37"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "38"
+    ],
+    [
+     "Signatures",
+     "",
+     "39"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "Part I - Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 84
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [ ]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 7(a)(2)(B) of the Securities Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act): Yes [ ] No [X]\nAs of December 5, 2022, there were approximately 103,659,642 shares of the registrant's common stock outstanding.\nTable of Contents",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Quarterly Report on Form 10-Q contains forward-looking statements that are subject to risks and uncertainties. All statements other than statements of historical fact included in this Quarterly Report on Form 10-Q are forward-looking statements. Forward-looking statements give our current expectations and projections relating to our financial condition, results of operations, plans, objectives, future performance and business. You can identify forward-looking statements by the fact that they do not relate strictly to historical or current facts. These statements may include words such as \"anticipate,\" \"estimate,\" \"expect,\" \"project,\" \"plan,\" \"intend,\" \"believe,\" \"may,\" \"will,\" \"should,\" \"can have,\" \"likely\" and other words and terms of similar meaning (including their negative counterparts or other various or comparable terminology) in connection with any discussion of the timing or nature of future operating or financial performance or other events. For example, all statements we make relating to our estimated and projected costs, expenditures, cash flows, growth rates and financial results, our plans and objectives for future operations, growth or initiatives, strategies or the expected outcome or impact of pending or threatened litigation are forward-looking statements. These forward-looking statements are not guarantees of future performance, conditions or results, and involve a number of known and unknown risks, uncertainties, assumptions and other important factors, many of which are outside our control, that could cause actual results or outcomes to differ materially from those discussed in the forward-looking statements, including:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "18,559",
+     "$",
+     "29,025"
+    ],
+    [
+     "Restricted cash",
+     "318",
+     "",
+     "262",
+     ""
+    ],
+    [
+     "Inventory",
+     "199,877",
+     "",
+     "170,608",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "23,464",
+     "",
+     "14,686",
+     ""
+    ],
+    [
+     "Prepaid income taxes",
+     "1,153",
+     "",
+     "6,345",
+     ""
+    ],
+    [
+     "Total current assets",
+     "243,371",
+     "",
+     "220,926",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "115,745",
+     "",
+     "127,565",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "181,701",
+     "",
+     "209,637",
+     ""
+    ],
+    [
+     "Deposits and other noncurrent assets",
+     "10,234",
+     "",
+     "7,100",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "4,873",
+     "",
+     "4,873",
+     ""
+    ],
+    [
+     "Intangible asset",
+     "8,400",
+     "",
+     "8,400",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "564,324",
+     "$",
+     "578,501"
+    ],
+    [
+     "Liabilities and stockholders' deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "109,336",
+     "$",
+     "77,448"
+    ],
+    [
+     "Accrued and other current liabilities",
+     "102,085",
+     "",
+     "138,708",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "46,211",
+     "",
+     "45,716",
+     ""
+    ],
+    [
+     "Borrowings under credit facility",
+     "2,150",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Current portion of term loan",
+     "16,144",
+     "",
+     "20,519",
+     ""
+    ],
+    [
+     "Due to related parties",
+     "15,486",
+     "",
+     "14,622",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "3,093",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "294,505",
+     "",
+     "297,013",
+     ""
+    ],
+    [
+     "Noncurrent operating lease liabilities",
+     "176,721",
+     "",
+     "207,049",
+     ""
+    ],
+    [
+     "Term loan",
+     "308,733",
+     "",
+     "320,841",
+     ""
+    ],
+    [
+     "Deferred compensation",
+     "4,172",
+     "",
+     "6,873",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "9,277",
+     "",
+     "5,044",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "793,408",
+     "",
+     "836,820",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 15)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares: $0.01 par value; 1,000,000,000 shares authorized; 103,641,356 shares issued and outstanding at October 29, 2022; 107,857,625 shares issued and outstanding at January 29, 2022",
+     "1,036",
+     "",
+     "1,078",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "125,646",
+     "",
+     "118,286",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(355,362)",
+     "",
+     "(377,759)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive (loss) income",
+     "(404)",
+     "",
+     "76",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "(229,084)",
+     "",
+     "(258,319)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "$",
+     "564,324",
+     "$",
+     "578,501"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "We derive many of our forward-looking statements from our operating budgets and forecasts, which are based upon many detailed assumptions. While we believe that our assumptions are reasonable, we caution that it is very difficult to predict the impact of known factors, and, it is impossible for us to anticipate all factors that could affect our actual results. We caution you that the important factors referenced above may not contain all of the factors that are important to you. In addition, we cannot assure you that we will realize the results or developments we expect or anticipate or, even if substantially realized, that they will result in the consequences or affect us or our operations in the way we expect. The forward-looking statements included in this Quarterly Report on Form 10-Q are made only as of the date hereof. We undertake no obligation to publicly update or revise any forward-looking statement as a result of new information, future events or otherwise. Our forward-looking statements do not reflect the potential impact of any future acquisitions, mergers, dispositions, joint ventures or investments.\nInvestors and others should note that we may announce material information to our investors using our investor relations website (https://investors.torrid.com), SEC filings, press releases, public conference calls and webcasts. We use these channels, as well as social media, to communicate with our investors and the public about our company, our business and other issues. It is possible that the information that we post on social media could be deemed to be material information. We therefore encourage investors to visit these websites from time to time. The information contained on such websites and social media posts is not incorporated by reference into this filing. Further, our references to website URLs in this filing are intended to be inactive textual references only.\nPart I - Financial Information\nItem 1. Financial Statements (Unaudited)\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except share and per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\nAND COMPREHENSIVE INCOME (LOSS)\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 177,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 235,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 29, 2022",
+     "",
+     "Three Months Ended October 30, 2021",
+     "",
+     "Nine Months Ended October 29, 2022",
+     "",
+     "Nine Months Ended October 30, 2021",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "290,034",
+     "$",
+     "306,241",
+     "$",
+     "959,319",
+     "$",
+     "964,858"
+    ],
+    [
+     "Cost of goods sold",
+     "198,263",
+     "",
+     "181,094",
+     "",
+     "623,556",
+     "",
+     "545,059",
+     ""
+    ],
+    [
+     "Gross profit",
+     "91,771",
+     "",
+     "125,147",
+     "",
+     "335,763",
+     "",
+     "419,799",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "59,180",
+     "",
+     "66,399",
+     "",
+     "192,539",
+     "",
+     "355,353",
+     ""
+    ],
+    [
+     "Marketing expenses",
+     "12,638",
+     "",
+     "15,023",
+     "",
+     "44,114",
+     "",
+     "35,276",
+     ""
+    ],
+    [
+     "Income from operations",
+     "19,953",
+     "",
+     "43,725",
+     "",
+     "99,110",
+     "",
+     "29,170",
+     ""
+    ],
+    [
+     "Interest expense",
+     "8,390",
+     "",
+     "6,104",
+     "",
+     "21,351",
+     "",
+     "23,390",
+     ""
+    ],
+    [
+     "Interest income, net of other expense (income)",
+     "147",
+     "",
+     "(12)",
+     "",
+     "223",
+     "",
+     "(72)",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "11,416",
+     "",
+     "37,633",
+     "",
+     "77,536",
+     "",
+     "5,852",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "4,139",
+     "",
+     "96,535",
+     "",
+     "23,483",
+     "",
+     "13,042",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "7,277",
+     "$",
+     "(58,902)",
+     "$",
+     "54,053",
+     "$",
+     "(7,190)"
+    ],
+    [
+     "Comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "7,277",
+     "$",
+     "(58,902)",
+     "$",
+     "54,053",
+     "$",
+     "(7,190)"
+    ],
+    [
+     "Other comprehensive (loss) income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "(465)",
+     "",
+     "45",
+     "",
+     "(480)",
+     "",
+     "235",
+     ""
+    ],
+    [
+     "Total other comprehensive (loss) income",
+     "(465)",
+     "",
+     "45",
+     "",
+     "(480)",
+     "",
+     "235",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "$",
+     "6,812",
+     "$",
+     "(58,857)",
+     "$",
+     "53,573",
+     "$",
+     "(6,955)"
+    ],
+    [
+     "Net earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.07",
+     "$",
+     "(0.54)",
+     "$",
+     "0.52",
+     "$",
+     "(0.07)"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.07",
+     "$",
+     "(0.54)",
+     "$",
+     "0.52",
+     "$",
+     "(0.07)"
+    ],
+    [
+     "Weighted average number of shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "103,623",
+     "",
+     "110,078",
+     "",
+     "104,560",
+     "",
+     "110,031",
+     ""
+    ],
+    [
+     "Diluted",
+     "103,805",
+     "",
+     "110,078",
+     "",
+     "104,695",
+     "",
+     "110,031",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\nAND COMPREHENSIVE INCOME (LOSS)\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 241,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 285,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 29, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Shares",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Total Stockholders' Deficit",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 29, 2022",
+     "107,858",
+     "$",
+     "1,078",
+     "$",
+     "118,286",
+     "$",
+     "(377,759)",
+     "$",
+     "76",
+     "$",
+     "(258,319)"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24,066",
+     "",
+     "\u2014",
+     "",
+     "24,066",
+     ""
+    ],
+    [
+     "Issuance of common shares and withholding tax payments related to vesting of restricted stock awards",
+     "39",
+     "\u2014",
+     "",
+     "(178)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(178)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,480",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,480",
+     ""
+    ],
+    [
+     "Repurchase and retirement of common stock",
+     "(2,919)",
+     "(29)",
+     "",
+     "\u2014",
+     "",
+     "(22,836)",
+     "",
+     "\u2014",
+     "",
+     "(22,865)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(40)",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "Balance at April 30, 2022",
+     "104,978",
+     "1,049",
+     "",
+     "120,588",
+     "",
+     "(376,529)",
+     "",
+     "36",
+     "",
+     "(254,856)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22,710",
+     "",
+     "\u2014",
+     "",
+     "22,710",
+     ""
+    ],
+    [
+     "Issuance of common shares and withholding tax payments related to vesting of restricted stock awards and restricted stock units",
+     "74",
+     "1",
+     "",
+     "(227)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(226)",
+     ""
+    ],
+    [
+     "Issuance of common shares related to employee stock purchase plan",
+     "95",
+     "1",
+     "",
+     "350",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "351",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,175",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,175",
+     ""
+    ],
+    [
+     "Repurchase and retirement of common stock",
+     "(1,546)",
+     "(15)",
+     "",
+     "\u2014",
+     "",
+     "(8,820)",
+     "",
+     "\u2014",
+     "",
+     "(8,835)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "25",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Balance at July 30, 2022",
+     "103,601",
+     "1,036",
+     "",
+     "122,886",
+     "",
+     "(362,639)",
+     "",
+     "61",
+     "",
+     "(238,656)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,277",
+     "",
+     "\u2014",
+     "",
+     "7,277",
+     ""
+    ],
+    [
+     "Issuance of common shares and withholding tax payments related to vesting of restricted stock awards and restricted stock units",
+     "40",
+     "\u2014",
+     "",
+     "(153)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(153)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,913",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,913",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(465)",
+     "",
+     "(465)",
+     ""
+    ],
+    [
+     "Balance at October 29, 2022",
+     "103,641",
+     "$",
+     "1,036",
+     "$",
+     "125,646",
+     "$",
+     "(355,362)",
+     "$",
+     "(404)",
+     "$",
+     "(229,084)"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended October 29, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 291,
+    "end_line": 334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 289,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Shares",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Accumulated Other Comprehensive (Loss) Income",
+     "",
+     "Total Stockholders' Deficit",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 30, 2021",
+     "110,000",
+     "$",
+     "1,100",
+     "$",
+     "10,326",
+     "$",
+     "(74,591)",
+     "$",
+     "(8)",
+     "$",
+     "(63,173)"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12,925",
+     "",
+     "\u2014",
+     "",
+     "12,925",
+     ""
+    ],
+    [
+     "Capital contribution from Torrid Holding LLC for incentive units",
+     "\u2014",
+     "\u2014",
+     "",
+     "39,779",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "39,779",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "211",
+     "",
+     "211",
+     ""
+    ],
+    [
+     "Balance at May 1, 2021",
+     "110,000",
+     "1,100",
+     "",
+     "50,105",
+     "",
+     "(61,666)",
+     "",
+     "203",
+     "",
+     "(10,258)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,787",
+     "",
+     "\u2014",
+     "",
+     "38,787",
+     ""
+    ],
+    [
+     "Capital distribution to Torrid Holding LLC",
+     "\u2014",
+     "\u2014",
+     "",
+     "(50,105)",
+     "",
+     "(249,895)",
+     "",
+     "\u2014",
+     "",
+     "(300,000)",
+     ""
+    ],
+    [
+     "Capital contribution from Torrid Holding LLC for incentive units",
+     "\u2014",
+     "\u2014",
+     "",
+     "111,387",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "111,387",
+     ""
+    ],
+    [
+     "Issuance of common shares and withholding tax payments related to vesting of restricted stock awards and restricted stock units",
+     "56",
+     "1",
+     "",
+     "(1,111)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,110)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,622",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,622",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(21)",
+     "",
+     "(21)",
+     ""
+    ],
+    [
+     "Balance at July 31, 2021",
+     "110,056",
+     "1,101",
+     "",
+     "113,898",
+     "",
+     "(272,774)",
+     "",
+     "182",
+     "",
+     "(157,593)",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(58,902)",
+     "",
+     "\u2014",
+     "",
+     "(58,902)",
+     ""
+    ],
+    [
+     "Issuance of common shares and withholding tax payments related to vesting of restricted stock awards",
+     "35",
+     "\u2014",
+     "",
+     "(575)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(575)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,450",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,450",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "45",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Balance at October 30, 2021",
+     "110,091",
+     "$",
+     "1,101",
+     "$",
+     "115,773",
+     "$",
+     "(331,676)",
+     "$",
+     "227",
+     "$",
+     "(214,575)"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended October 30, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 343,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 341,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 29, 2022",
+     "",
+     "Nine Months Ended October 30, 2021",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "54,053",
+     "$",
+     "(7,190)"
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Write down of inventory",
+     "1,750",
+     "",
+     "510",
+     ""
+    ],
+    [
+     "Operating right-of-use assets amortization",
+     "31,209",
+     "",
+     "31,010",
+     ""
+    ],
+    [
+     "Depreciation and other amortization",
+     "28,120",
+     "",
+     "26,790",
+     ""
+    ],
+    [
+     "Write off of unamortized original issue discount and deferred financing costs for Amended Term Loan Credit Agreement",
+     "\u2014",
+     "",
+     "5,231",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "7,568",
+     "",
+     "157,238",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "\u2014",
+     "",
+     "1,534",
+     ""
+    ],
+    [
+     "Other",
+     "(603)",
+     "",
+     "106",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "(31,341)",
+     "",
+     "(53,347)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "(8,778)",
+     "",
+     "(2,448)",
+     ""
+    ],
+    [
+     "Prepaid income taxes",
+     "5,192",
+     "",
+     "(26,813)",
+     ""
+    ],
+    [
+     "Deposits and other noncurrent assets",
+     "(3,255)",
+     "",
+     "(3,152)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "31,447",
+     "",
+     "11,046",
+     ""
+    ],
+    [
+     "Accrued and other current liabilities",
+     "(35,824)",
+     "",
+     "29,986",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "(31,230)",
+     "",
+     "(36,945)",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "4,345",
+     "",
+     "189",
+     ""
+    ],
+    [
+     "Deferred compensation",
+     "(2,701)",
+     "",
+     "490",
+     ""
+    ],
+    [
+     "Due to related parties",
+     "864",
+     "",
+     "354",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "3,093",
+     "",
+     "(9,336)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "53,909",
+     "",
+     "125,253",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "(17,087)",
+     "",
+     "(11,342)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(17,087)",
+     "",
+     "(11,342)",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital distribution to Torrid Holding LLC",
+     "\u2014",
+     "",
+     "(300,000)",
+     ""
+    ],
+    [
+     "Proceeds from revolving credit facility",
+     "632,125",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Principal payments on revolving credit facility",
+     "(629,975)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred financing costs for revolving credit facility",
+     "\u2014",
+     "",
+     "(688)",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "(31,700)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Principal payments on New Term Loan Credit Agreement and repayment of Amended Term Loan Credit Agreement and related costs",
+     "(17,500)",
+     "",
+     "(212,775)",
+     ""
+    ],
+    [
+     "Proceeds from New Term Loan Credit Agreement, net of original issue discount and deferred financing costs",
+     "\u2014",
+     "",
+     "340,509",
+     ""
+    ],
+    [
+     "Proceeds from issuances under share-based compensation plans",
+     "613",
+     "",
+     "225",
+     ""
+    ],
+    [
+     "Withholding tax payments related to vesting of restricted stock units and awards",
+     "(558)",
+     "",
+     "(1,685)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(46,995)",
+     "",
+     "(174,414)",
+     ""
+    ],
+    [
+     "Effect of foreign currency exchange rate changes on cash, cash equivalents and restricted cash",
+     "(237)",
+     "",
+     "(601)",
+     ""
+    ],
+    [
+     "Decrease in cash, cash equivalents and restricted cash",
+     "(10,410)",
+     "",
+     "(61,104)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at beginning of period",
+     "29,287",
+     "",
+     "123,215",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at end of period",
+     "$",
+     "18,877",
+     "$",
+     "62,111"
+    ],
+    [
+     "SUPPLEMENTAL INFORMATION",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest related to the revolving credit facility and term loans",
+     "$",
+     "14,158",
+     "$",
+     "16,303"
+    ],
+    [
+     "Cash paid during the period for income taxes",
+     "$",
+     "15,219",
+     "$",
+     "47,133"
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NONCASH INVESTING AND FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment purchases included in accounts payable and accrued liabilities",
+     "$",
+     "3,355",
+     "$",
+     "4,496"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 390,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nNOTES TO UNAUDITED CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNote 1. Basis of Presentation and Description of the Business\nCorporate Structure\nTorrid Holdings Inc. is a Delaware corporation formed on October 29, 2019 and capitalized on February 20, 2020. Sycamore Partners Management, L.P. (\"Sycamore\") owns a majority of the voting power of Torrid Holdings Inc.'s outstanding common stock. Prior to the IPO (as defined below), Torrid Holdings Inc. was a wholly owned subsidiary of Torrid Holding LLC, which is majority-owned by investment funds managed by Sycamore. Torrid Parent Inc. is a Delaware corporation formed on June 4, 2019 and is a wholly owned subsidiary of Torrid Holdings Inc. Torrid Intermediate LLC, formerly known as Torrid Inc., is a Delaware limited liability company formed on June 18, 2019 and a wholly owned subsidiary of Torrid Parent Inc. Torrid LLC is a wholly owned subsidiary of Torrid Intermediate LLC. Substantially all of Torrid Holdings Inc.'s financial position, operations and cash flows are generated through its wholly owned indirect subsidiary, Torrid LLC.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 388,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Prepaid and other information technology expenses",
+     "8,903",
+     "",
+     "5,692",
+     ""
+    ],
+    [
+     "Prepaid advertising",
+     "894",
+     "",
+     "700",
+     ""
+    ],
+    [
+     "Prepaid casualty insurance",
+     "3,895",
+     "",
+     "3,050",
+     ""
+    ],
+    [
+     "Other",
+     "9,772",
+     "",
+     "5,244",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "$",
+     "23,464",
+     "$",
+     "14,686"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 537
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Prepaid Expenses and Other Current Assets"
+    }
+   },
+   "prose_before": "We have considered all recent accounting pronouncements and have concluded that there are no recent accounting pronouncements not yet adopted that are applicable to us, based on current information.\nNote 3. Inventory\nOur inventory is comprised solely of finished goods and is valued at the lower of moving average cost or net realizable value. We make certain assumptions regarding net realizable value in order to assess whether our inventory is recorded properly at the lower of cost or net realizable value. These assumptions are based on historical average selling price experience, current selling price information and estimated future selling price information. Physical inventory counts are conducted at least once during the year to determine actual inventory on hand and shrinkage. We accrue our estimated inventory shrinkage for the period between the last physical count and current balance sheet date.\nNote 4. Prepaid Expenses and Other Current Assets\nPrepaid expenses and other current assets consist of the following (in thousands):",
+   "prose_after": "Note 5. Property and Equipment\nProperty and equipment are summarized as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 517,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Property and equipment, at cost",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "$",
+     "172,724",
+     "$",
+     "168,084"
+    ],
+    [
+     "Furniture, fixtures and equipment",
+     "111,842",
+     "",
+     "108,261",
+     ""
+    ],
+    [
+     "Software and licenses",
+     "14,097",
+     "",
+     "15,356",
+     ""
+    ],
+    [
+     "Construction-in-progress",
+     "4,185",
+     "",
+     "4,743",
+     ""
+    ],
+    [
+     "",
+     "302,848",
+     "",
+     "296,444",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "(187,103)",
+     "",
+     "(168,879)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "115,745",
+     "$",
+     "127,565"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 542,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Note 5. Property and Equipment\nProperty and equipment are summarized as follows (in thousands):",
+   "prose_after": "We recorded depreciation expense related to our property and equipment in the amounts of $8.9 million and $27.0 million during the three- and nine-month periods ended October 29, 2022, respectively. We recorded depreciation expense related to our property and equipment in the amounts of $8.5 million and $25.6 million during the three- and nine-month periods ended October 30, 2021, respectively.\nWe group and evaluate long-lived assets for impairment at the individual store level, which is the lowest level at which individual cash flows can be identified. During the three- and nine-month periods ended October 29, 2022 and October 30, 2021, we did not recognize any impairment charges.\nNote 6. Implementation Costs Incurred in Cloud Computing Arrangements that are Service Contracts\nOur cloud computing arrangements that are service contracts primarily consist of arrangements with third party vendors for our internal use of their software applications that they host. We defer implementation costs incurred in relation to such arrangements, including costs for software application coding, configuration, integration and customization, while associated process reengineering, training, maintenance and data conversion costs are expensed. Subsequent implementation costs are deferred only to the extent that they constitute major enhancements. The short-term portion of deferred implementation costs are included in prepaid expenses and other current assets in the condensed consolidated balance sheets, while the long-term portion of deferred costs are included in deposits and other noncurrent assets. Amortized implementation costs incurred in cloud computing arrangements that are service contracts are recognized in selling, general and administrative expenses in the condensed consolidated statements of operations and comprehensive income (loss).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 517,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Internal use of third party hosted software, gross",
+     "$",
+     "16,464",
+     "$",
+     "11,877"
+    ],
+    [
+     "Less: Accumulated amortization",
+     "(5,916)",
+     "",
+     "(3,892)",
+     ""
+    ],
+    [
+     "Internal use of third party hosted software, net",
+     "$",
+     "10,548",
+     "$",
+     "7,985"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 578
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Implementation Costs Incurred in Cloud Computing Arrangements that are Service Contracts"
+    }
+   },
+   "prose_before": "Our cloud computing arrangements that are service contracts primarily consist of arrangements with third party vendors for our internal use of their software applications that they host. We defer implementation costs incurred in relation to such arrangements, including costs for software application coding, configuration, integration and customization, while associated process reengineering, training, maintenance and data conversion costs are expensed. Subsequent implementation costs are deferred only to the extent that they constitute major enhancements. The short-term portion of deferred implementation costs are included in prepaid expenses and other current assets in the condensed consolidated balance sheets, while the long-term portion of deferred costs are included in deposits and other noncurrent assets. Amortized implementation costs incurred in cloud computing arrangements that are service contracts are recognized in selling, general and administrative expenses in the condensed consolidated statements of operations and comprehensive income (loss).\nDeferred implementation costs incurred in cloud computing arrangements that are service contracts are summarized as follows (in thousands):",
+   "prose_after": "During the three- and nine-month periods ended October 29, 2022, we amortized approximately $0.9 million and $2.0 million, respectively, of implementation costs incurred in cloud computing arrangements that are service contracts. During the three- and nine-month periods ended October 30, 2021, we amortized approximately $0.4 million and $1.1 million, respectively, of implementation costs incurred in cloud computing arrangements that are service contracts.\nNote 7. Accrued and Other Current Liabilities\nAccrued and other current liabilities consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Accrued payroll and related expenses",
+     "$",
+     "15,203",
+     "$",
+     "31,194"
+    ],
+    [
+     "Accrued inventory-in-transit",
+     "15,279",
+     "",
+     "37,156",
+     ""
+    ],
+    [
+     "Accrued loyalty program",
+     "13,206",
+     "",
+     "13,481",
+     ""
+    ],
+    [
+     "Accrued sales return allowance",
+     "6,108",
+     "",
+     "4,347",
+     ""
+    ],
+    [
+     "Gift cards",
+     "8,394",
+     "",
+     "11,695",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "1,317",
+     "",
+     "2,879",
+     ""
+    ],
+    [
+     "Accrued sales and use tax",
+     "4,436",
+     "",
+     "4,136",
+     ""
+    ],
+    [
+     "Accrued freight",
+     "6,442",
+     "",
+     "6,048",
+     ""
+    ],
+    [
+     "Term loan interest payable",
+     "7,620",
+     "",
+     "1,762",
+     ""
+    ],
+    [
+     "Accrued marketing",
+     "4,978",
+     "",
+     "5,419",
+     ""
+    ],
+    [
+     "Accrued self-insurance liabilities",
+     "2,733",
+     "",
+     "2,891",
+     ""
+    ],
+    [
+     "Other",
+     "16,369",
+     "",
+     "17,700",
+     ""
+    ],
+    [
+     "Accrued and other current liabilities",
+     "$",
+     "102,085",
+     "$",
+     "138,708"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued and Other Current Liabilities"
+    }
+   },
+   "prose_before": "During the three- and nine-month periods ended October 29, 2022, we amortized approximately $0.9 million and $2.0 million, respectively, of implementation costs incurred in cloud computing arrangements that are service contracts. During the three- and nine-month periods ended October 30, 2021, we amortized approximately $0.4 million and $1.1 million, respectively, of implementation costs incurred in cloud computing arrangements that are service contracts.\nNote 7. Accrued and Other Current Liabilities\nAccrued and other current liabilities consist of the following (in thousands):",
+   "prose_after": "Note 8. Leases\nOur lease costs reflected in the tables below include minimum base rents, common area maintenance charges and heating, ventilation and air conditioning charges. We recognize such lease costs in the applicable expense category in either cost of goods sold, or selling, general and administrative expenses in the condensed consolidated statements of operations and comprehensive income (loss).\nOur lease costs during the three- and nine-month periods ended October 29, 2022 and October 30, 2021 consist of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Operating (fixed) lease cost",
+     "$",
+     "13,413",
+     "$",
+     "12,341",
+     "$",
+     "38,874",
+     "$",
+     "37,348"
+    ],
+    [
+     "Short-term lease cost",
+     "55",
+     "",
+     "20",
+     "",
+     "150",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Variable lease cost",
+     "4,557",
+     "",
+     "5,104",
+     "",
+     "13,411",
+     "",
+     "15,400",
+     ""
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "18,025",
+     "$",
+     "17,465",
+     "$",
+     "52,435",
+     "$",
+     "52,798"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Note 8. Leases\nOur lease costs reflected in the tables below include minimum base rents, common area maintenance charges and heating, ventilation and air conditioning charges. We recognize such lease costs in the applicable expense category in either cost of goods sold, or selling, general and administrative expenses in the condensed consolidated statements of operations and comprehensive income (loss).\nOur lease costs during the three- and nine-month periods ended October 29, 2022 and October 30, 2021 consist of the following (in thousands):",
+   "prose_after": "In response to the COVID-19 pandemic, the Financial Accounting Standards Board issued interpretive guidance in April 2020, which provides entities the option to elect to account for lease concessions as though the enforceable rights and obligations existed in the original lease terms. We elected this option; accordingly, we did not remeasure the lease liabilities or record a change to the right-of-use (\"ROU\") assets for any concessions we received for our retail store leases. Rather, deferred\nlease payments were recorded to operating lease liabilities until paid and lease concessions were recorded in the period they were negotiated or when the lower lease expense was paid.\nAs of the end of fiscal year 2021, we had received substantially all of the lease concessions negotiated in response to the COVID-19 pandemic and as a result, deferred fixed lease payments during the three- and nine-months ended October 29, 2022 were not material. We did not record any reduction to lease costs during the three- and nine-months ended October 29, 2022. During the three- and nine-month periods ended October 30, 2021 we recorded reductions to lease costs of $0.2 million and $1.2 million, respectively, as a result of negotiated lease concessions.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "",
+     "October 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows for operating leases",
+     "$",
+     "43,287",
+     "",
+     "$",
+     "43,663",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "$",
+     "12,458",
+     "",
+     "$",
+     "9,056",
+     ""
+    ],
+    [
+     "Decrease in right-of-use assets resulting from operating lease modifications or remeasurements",
+     "$",
+     "8,243",
+     "",
+     "$",
+     "3,106",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term - operating leases",
+     "6 years",
+     "",
+     "",
+     "6 years",
+     "",
+     ""
+    ],
+    [
+     "Weighted average discount rate - operating leases",
+     "6",
+     "",
+     "%",
+     "6",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 633,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "In response to the COVID-19 pandemic, the Financial Accounting Standards Board issued interpretive guidance in April 2020, which provides entities the option to elect to account for lease concessions as though the enforceable rights and obligations existed in the original lease terms. We elected this option; accordingly, we did not remeasure the lease liabilities or record a change to the right-of-use (\"ROU\") assets for any concessions we received for our retail store leases. Rather, deferred\nlease payments were recorded to operating lease liabilities until paid and lease concessions were recorded in the period they were negotiated or when the lower lease expense was paid.\nAs of the end of fiscal year 2021, we had received substantially all of the lease concessions negotiated in response to the COVID-19 pandemic and as a result, deferred fixed lease payments during the three- and nine-months ended October 29, 2022 were not material. We did not record any reduction to lease costs during the three- and nine-months ended October 29, 2022. During the three- and nine-month periods ended October 30, 2021 we recorded reductions to lease costs of $0.2 million and $1.2 million, respectively, as a result of negotiated lease concessions.\nOther supplementary information related to our leases is reflected in the table below (in thousands except lease term and discount rate data):",
+   "prose_after": "Note 9. Revenue Recognition\nWe recognize revenue when our performance obligations under the terms of a contract or an implied arrangement with a customer are satisfied, which is when the merchandise is transferred to the customer and the customer obtains control of it. The amount of revenue we recognize reflects the total consideration we expect to receive for the merchandise, which is the transaction price.\nOur revenue, disaggregated by product category, consists of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Apparel",
+     "$",
+     "255,404",
+     "$",
+     "277,276",
+     "$",
+     "857,884",
+     "$",
+     "889,369"
+    ],
+    [
+     "Non-apparel",
+     "34,630",
+     "",
+     "28,965",
+     "",
+     "101,435",
+     "",
+     "75,489",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "290,034",
+     "$",
+     "306,241",
+     "$",
+     "959,319",
+     "$",
+     "964,858"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "Note 9. Revenue Recognition\nWe recognize revenue when our performance obligations under the terms of a contract or an implied arrangement with a customer are satisfied, which is when the merchandise is transferred to the customer and the customer obtains control of it. The amount of revenue we recognize reflects the total consideration we expect to receive for the merchandise, which is the transaction price.\nOur revenue, disaggregated by product category, consists of the following (in thousands):",
+   "prose_after": "Amounts within Apparel include revenues earned from the sale of tops, bottoms, dresses, intimates, sleep wear, swim wear and outerwear. Amounts within Non-apparel include revenues earned from the sale of accessories, footwear and beauty.\nWe recognize a contract liability when we receive consideration from a customer before our performance obligations under the terms of a contract or an implied arrangement with the customer are satisfied. During the nine-month period ended October 29, 2022, we recognized revenue of approximately $10.8 million and $7.1 million related to our accrued loyalty program and gift cards, respectively, that existed at the beginning of fiscal year 2022. During the nine-month period ended October 30, 2021, we recognized revenue of approximately $10.1 million and $4.7 million related to our accrued loyalty program and gift cards, respectively, that existed at the beginning of fiscal year 2021.\nNote 10. Loyalty Program\nWe operate our loyalty program, Torrid Rewards, in all our stores and on www.torrid.com. Under this program, customers accumulate points based on purchase activity and qualifying non-purchase activity. Upon reaching a certain point level, customers can earn awards that may only be redeemed for merchandise. Unredeemed points typically expire after 13 months without additional purchase and qualifying non-purchase activity and unredeemed awards typically expire 45 days after issuance. We use historical redemption rates to estimate the value of future award redemptions and we recognize the estimated value of these future awards as a reduction of revenue in the condensed consolidated statements of operations and comprehensive income (loss) in the period the points are earned by the customer. As of the end of the third quarter of fiscal year",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "January 29, 2022",
+     ""
+    ],
+    [
+     "Existing ABL Facility, as amended",
+     "$",
+     "2,150",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Term loan",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "New Term Loan Credit Agreement",
+     "332,500",
+     "",
+     "350,000",
+     ""
+    ],
+    [
+     "Less: current portion of unamortized original issue discount and debt financing costs",
+     "(1,356)",
+     "",
+     "(1,356)",
+     ""
+    ],
+    [
+     "Less: noncurrent portion of unamortized original issue discount and debt financing costs",
+     "(6,267)",
+     "",
+     "(7,284)",
+     ""
+    ],
+    [
+     "Total term loan outstanding, net of unamortized original issue discount and debt financing costs",
+     "324,877",
+     "",
+     "341,360",
+     ""
+    ],
+    [
+     "Less: current portion of term loan, net of unamortized original issue discount and debt financing costs",
+     "(16,144)",
+     "",
+     "(20,519)",
+     ""
+    ],
+    [
+     "Total term loan, net of current portion and unamortized original issue discount and debt financing costs",
+     "$",
+     "308,733",
+     "$",
+     "320,841"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 715,
+    "end_line": 730
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Debt Financing Arrangements"
+    }
+   },
+   "prose_before": "In April 2020, we received a letter of support from Sycamore for up to $20.0 million of additional equity funding, which, if necessary and sufficient, would be provided to further prevent noncompliance with the financial covenants in the Amended Term Loan Credit Agreement (as defined in \"Note 12\u2014Debt Financing Arrangements\") through May 2021. In September 2020, we received an updated letter of support from Sycamore extending the equity funding commitment of up to $20.0 million, if necessary and sufficient, through January 2022. The letter of support was terminated as of May 6, 2021.\nIn March 2021, Hot Topic entered into a consulting services agreement with our then Chief Financial Officer, George Wehlitz, Jr., pursuant to which Hot Topic agreed to pay Mr. Wehlitz a consulting fee of $10,000 per month. The agreement was effective from January 3, 2021 and terminated on May 31, 2021.\nNote 12. Debt Financing Arrangements\nOur debt financing arrangements consist of the following (in thousands):",
+   "prose_after": "Fixed mandatory principal repayments due on the outstanding term loan are as follows as of the end of the third quarter of fiscal year 2022 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022",
+     "4,375",
+     ""
+    ],
+    [
+     "2023",
+     "17,500",
+     ""
+    ],
+    [
+     "2024",
+     "17,500",
+     ""
+    ],
+    [
+     "2025",
+     "17,500",
+     ""
+    ],
+    [
+     "2026",
+     "17,500",
+     ""
+    ],
+    [
+     "2027",
+     "17,500",
+     ""
+    ],
+    [
+     "2028",
+     "240,625",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "332,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 745
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Debt Financing Arrangements"
+    }
+   },
+   "prose_before": "Fixed mandatory principal repayments due on the outstanding term loan are as follows as of the end of the third quarter of fiscal year 2022 (in thousands):",
+   "prose_after": "New Term Loan Credit Agreement\nOn June 14, 2021, we entered into a term loan credit agreement (\"New Term Loan Credit Agreement\") among Bank of America, N.A., as agent, and the lenders party thereto.\nThe New Term Loan Credit Agreement provides for term loans in an initial aggregate amount of $350.0 million, which is recorded net of an original issue discount (\"OID\") of $3.5 million and has a maturity date of June 14, 2028. In connection with the New Term Loan Credit Agreement, we paid financing costs of approximately $6.0 million.\nThe elected interest rate on October 29, 2022 was approximately 9%.\nAs of the end of the third quarter of fiscal year 2022, we were compliant with our debt covenants under the New Term Loan Credit Agreement.\nAs of October 29, 2022, the fair value of the New Term Loan Credit Agreement was approximately $305.9 million. The fair value of the New Term Loan Credit Agreement is determined using current applicable rates for similar instruments as of the balance sheet date, a Level 2 measurement (as defined in \"Note 19\u2014Fair Value Measurements\").",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Restricted stock units",
+     "$",
+     "644",
+     "$",
+     "513",
+     "$",
+     "1,398",
+     "$",
+     "3,510"
+    ],
+    [
+     "Restricted stock awards",
+     "1,610",
+     "",
+     "1,658",
+     "",
+     "4,900",
+     "",
+     "2,211",
+     ""
+    ],
+    [
+     "Performance stock units",
+     "192",
+     "",
+     "\u2014",
+     "",
+     "302",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock options",
+     "351",
+     "",
+     "216",
+     "",
+     "714",
+     "",
+     "288",
+     ""
+    ],
+    [
+     "Employee stock purchase plan",
+     "116",
+     "",
+     "63",
+     "",
+     "254",
+     "",
+     "63",
+     ""
+    ],
+    [
+     "Remeasurement adjustments for incentive units",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "151,166",
+     ""
+    ],
+    [
+     "Share-based compensation before income taxes",
+     "2,913",
+     "",
+     "2,450",
+     "",
+     "7,568",
+     "",
+     "157,238",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "(153)",
+     "",
+     "(2)",
+     "",
+     "(120)",
+     "",
+     "(788)",
+     ""
+    ],
+    [
+     "Share-based compensation expense after income taxes",
+     "$",
+     "2,761",
+     "$",
+     "2,448",
+     "$",
+     "7,448",
+     "$",
+     "156,450"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 811,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "The amount of income taxes we pay is subject to ongoing audits by taxing authorities. Our estimate of the potential outcome of any uncertain tax issue is subject to our assessment of the relevant risks, facts and circumstances existing at the time. We believe that we have adequately provided for reasonably foreseeable outcomes related to these matters. However, our future results may include favorable or unfavorable adjustments to our estimated tax liabilities in the period the assessments are made or resolved, which may impact our effective tax rate. As of the end of the third quarter of fiscal year 2022, the total liability for income tax associated with unrecognized tax benefits, including interest and penalties, was $4.0 million ($3.5 million, net of federal benefit). As of the end of fiscal year 2021, the total liability for income tax associated with unrecognized tax benefits, including interest and penalties, was $4.0 million ($3.5 million, net of federal benefit). Our effective tax rate will be affected by any portion of this liability we may recognize.\nWe believe that it is reasonably possible that $0.3 million ($0.3 million net of federal benefit) of our liability for unrecognized tax benefits, of which the associated interest and penalties are not material, may be recognized in the next 12 months due to the expiration of statutes of limitations.\nIT Asset Purchase Agreement with Hot Topic\nIn connection with the IT Asset Purchase Agreement, we generated a tax amortizable basis of the $29.5 million purchase price, amortizable over three years commencing in fiscal year 2019. We recorded the $26.0 million variance between the $3.5 million net book value and $29.5 million tax amortizable basis of the information technology assets in equity, net of $6.7 million deferred tax.\nNote 14. Share-Based Compensation\nOur share-based compensation expense, by award type, consists of the following (in thousands):",
+   "prose_after": "On June 22, 2021, in connection with our IPO, the board of directors (\"Board\") adopted the Torrid Holdings Inc. 2021 Long-Term Incentive Plan (the \"2021 LTIP\"), for employees, consultants and directors. The 2021 LTIP provides for the grant of non-qualified stock options, stock appreciation rights, restricted stock, restricted stock units (\"RSUs\") including performance-based restricted stock units (\"PSUs\"), stock awards, dividend equivalents, other stock-based awards, cash awards and substitute awards intended to align the interests of service providers, with those of our shareholders. As of the end of the third quarter of fiscal year 2022, 10,687,500 shares were authorized for issuance under the 2021 LTIP.\nOn June 22, 2021, in connection with our IPO, the Board adopted the Torrid Holdings Inc. 2021 Employee Stock Purchase Plan (the \"ESPP\"), intended to qualify under Section 423 of the U.S. Internal Revenue Code of 1986, as amended, in order to provide all of our eligible employees with a further incentive towards ensuring our success and accomplishing our corporate goals. The ESPP allows eligible employees to contribute up to 15% of their base earnings towards purchases of common stock, subject to an annual maximum. The purchase price is 85% of the lower of (i) the fair market value of the stock on the date of enrollment and (ii) the fair market value of the stock on the last day of the related purchase period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 794,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "Weighted average grant date fair value per share",
+     ""
+    ],
+    [
+     "Nonvested, January 29, 2022",
+     "278",
+     "$",
+     "26.75"
+    ],
+    [
+     "Granted",
+     "1,265",
+     "$",
+     "5.24"
+    ],
+    [
+     "Vested",
+     "(65)",
+     "$",
+     "25.76"
+    ],
+    [
+     "Forfeited",
+     "(108)",
+     "$",
+     "21.08"
+    ],
+    [
+     "Nonvested, October 29, 2022",
+     "1,370",
+     "$",
+     "7.35"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 861,
+    "end_line": 872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "Pursuant to the agreements we entered into with certain members of our management, upon completion of the IPO, such employees received one-time grants of RSUs (\"IPO Awards\") in an aggregate amount equal to $5.7 million. 50% of the IPO Awards were fully vested on the date of grant, and the remaining 50% vest in equal installments on the first, second and third anniversaries of the date of our IPO. These members of our management must remain employed by us through each vesting date in order to vest in the applicable portions of their IPO Awards. Consequently, we recognized $2.8 million of share-based\ncompensation expense related to these IPO Awards upon the consummation of our IPO with the remainder recognized over the three-year vesting period.\nPSUs are awarded to certain employees, non-employee directors and consultants and entitle the grantee to receive shares of common stock based on the achievement of various company performance targets and market conditions. In general, PSUs vest in equal installments over a three year period subject to the achievement of the performance targets or market conditions.\nRSU activity, including IPO Awards and PSUs, under the 2021 LTIP consists of the following (in thousands except per share amounts):",
+   "prose_after": "As of the end of the third quarter of fiscal year 2022, unrecognized compensation expense related to unvested RSUs, including PSUs, was $8.9 million, which is expected to be recognized over a weighted average period of approximately 2.7 years.\nThe weighted average grant date fair value of PSUs granted during the nine months ended October 29, 2022 was $4.15 per share and was estimated at the grant date using a Monte Carlo simulation following a Geometric Brownian Motion with the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 854,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dividend yield",
+     "\u2014",
+     "",
+     "%"
+    ],
+    [
+     "Expected volatility(1)",
+     "70.7",
+     "",
+     "%"
+    ],
+    [
+     "Risk-free interest rate(2)",
+     "3.17",
+     "",
+     "%"
+    ],
+    [
+     "Expected term(3)",
+     "3.00 years",
+     "",
+     ""
+    ],
+    [
+     "Grant date fair value per share",
+     "$",
+     "4.15",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 876,
+    "end_line": 883
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "As of the end of the third quarter of fiscal year 2022, unrecognized compensation expense related to unvested RSUs, including PSUs, was $8.9 million, which is expected to be recognized over a weighted average period of approximately 2.7 years.\nThe weighted average grant date fair value of PSUs granted during the nine months ended October 29, 2022 was $4.15 per share and was estimated at the grant date using a Monte Carlo simulation following a Geometric Brownian Motion with the following weighted average assumptions:",
+   "prose_after": "(1) The expected volatility is estimated based on the historical volatility of a select peer group of similar publicly traded companies for a term that is consistent with the expected term of the PSUs.\n(2) The risk-free interest rates are based on the U.S. Treasury constant maturity interest rate whose term is consistent with the expected term of the PSUs.\n(3) The expected term of the PSUs represents the time period from the grant date and the full vesting date.\nRestricted Stock Awards\nRestricted stock awards are awarded to certain employees, non-employee directors and consultants, subject to the employee's continued employment or service as a director or consultant. Restricted stock awards vest over periods ranging from 2 to 4 years, subject to the employee's continued employment or service as an employee, non-employee director or consultant, as applicable, on each vesting date.\nRestricted stock award activity under the 2021 LTIP consists of the following (in thousands except per share amounts):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 854,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "Weighted average grant date fair value per share",
+     ""
+    ],
+    [
+     "Nonvested, January 29, 2022",
+     "532",
+     "$",
+     "27.00"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "(180)",
+     "$",
+     "27.00"
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Nonvested, October 29, 2022",
+     "352",
+     "$",
+     "27.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 897,
+    "end_line": 908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "(1) The expected volatility is estimated based on the historical volatility of a select peer group of similar publicly traded companies for a term that is consistent with the expected term of the PSUs.\n(2) The risk-free interest rates are based on the U.S. Treasury constant maturity interest rate whose term is consistent with the expected term of the PSUs.\n(3) The expected term of the PSUs represents the time period from the grant date and the full vesting date.\nRestricted Stock Awards\nRestricted stock awards are awarded to certain employees, non-employee directors and consultants, subject to the employee's continued employment or service as a director or consultant. Restricted stock awards vest over periods ranging from 2 to 4 years, subject to the employee's continued employment or service as an employee, non-employee director or consultant, as applicable, on each vesting date.\nRestricted stock award activity under the 2021 LTIP consists of the following (in thousands except per share amounts):",
+   "prose_after": "As of the end of the third quarter of fiscal year 2022, unrecognized compensation expense related to unvested restricted stock awards was $8.8 million, which is expected to be recognized over a weighted average period of approximately 1.6 years .\nStock Options\nStock options generally vest in equal installments each year over 4 years and generally expire 10 years from the grant date.\nStock option activity under the 2021 LTIP consists of the following (in thousands except per share and contractual life amounts):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "Weighted average exercise price per share",
+     "",
+     "Weighted average remaining contractual life (years)",
+     "Aggregate intrinsic value",
+     ""
+    ],
+    [
+     "Outstanding, January 29, 2022",
+     "337",
+     "$",
+     "21.03",
+     "9.4",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "1,244",
+     "$",
+     "5.94",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(156)",
+     "$",
+     "15.83",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, October 29, 2022",
+     "1,425",
+     "$",
+     "8.42",
+     "9.5",
+     "$",
+     "64"
+    ],
+    [
+     "Exercisable, October 29, 2022",
+     "59",
+     "$",
+     "21.12",
+     "8.2",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 917,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "As of the end of the third quarter of fiscal year 2022, unrecognized compensation expense related to unvested restricted stock awards was $8.8 million, which is expected to be recognized over a weighted average period of approximately 1.6 years .\nStock Options\nStock options generally vest in equal installments each year over 4 years and generally expire 10 years from the grant date.\nStock option activity under the 2021 LTIP consists of the following (in thousands except per share and contractual life amounts):",
+   "prose_after": "The weighted average grant date fair value of stock option awards granted during the nine months ended October 29, 2022, was $3.45 per option and was estimated at the grant date using the Black-Scholes option pricing model with the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dividend yield",
+     "\u2014",
+     "",
+     "%"
+    ],
+    [
+     "Expected volatility(1)",
+     "58.8",
+     "",
+     "%"
+    ],
+    [
+     "Risk-free interest rate(2)",
+     "2.98",
+     "",
+     "%"
+    ],
+    [
+     "Expected term(3)",
+     "6.25 years",
+     "",
+     ""
+    ],
+    [
+     "Grant date fair value per share",
+     "$",
+     "3.45",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 933,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Share-Based Compensation"
+    }
+   },
+   "prose_before": "The weighted average grant date fair value of stock option awards granted during the nine months ended October 29, 2022, was $3.45 per option and was estimated at the grant date using the Black-Scholes option pricing model with the following weighted average assumptions:",
+   "prose_after": "(1) The expected volatility is estimated based on the historical volatility of a select peer group of similar publicly traded companies for a term that is consistent with the expected term of the stock options.\n(2) The risk-free interest rates are based on the U.S. Treasury constant maturity interest rate whose term is consistent with the expected term of the stock options.\n(3) The expected term of the stock options represents the estimated period of time until exercise and is calculated using the simplified method.\nAs of the end of the third quarter of fiscal year 2022, unrecognized compensation expense related to unvested stock options was $5.6 million, which is expected to be recognized over a weighted average period of approximately 3.6 years.\nNote 15. Commitments and Contingencies\nLitigation\nIn November 2022, a class action complaint was filed against us in the U.S. District Court for the Central District of California, captioned Sandra Waswick v. Torrid Holdings Inc., et al. The complaint alleges that certain statements in our registration statement on Form S-1 related to our IPO were allegedly false and misleading. We believe that these allegations are without merit and intend to vigorously defend ourselves against these claims. We are currently unable to determine the probability of the outcome of this matter or the range of reasonably possible loss, if any.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Number of shares repurchased",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,464,367",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total cost",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "31,700",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Average per share cost including commissions",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "7.10",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 975,
+    "end_line": 984
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Share Repurchases"
+    }
+   },
+   "prose_before": "On June 22, 2021, Torrid's stockholder approved an amendment to Torrid's certificate of incorporation to (i) effect a 110,000-for-1 stock split of all shares of the issued and outstanding common stock, which was effected on June 22, 2021 and (ii) authorize 5.0 million shares of preferred stock. All share and per-share data in the financial statements and notes to the financial statements has been retroactively adjusted to reflect the stock split for all periods presented. The par value of the common stock was not adjusted as a result of the stock split.\nNote 17. Share Repurchases\nOn December 6, 2021, the Board authorized a new share repurchase program under which we may purchase up to $100.0 million of our outstanding common stock. Repurchases may be made from time to time, depending upon a variety of factors, including share price, corporate and regulatory requirements, and other market and business conditions, as determined by us. We may purchase shares of our common stock in the open market at current market prices at the time of purchase, in privately negotiated transactions, or by other means. The authorization does not, however, obligate us to acquire any particular amount of shares, and the share repurchase program may be suspended or terminated at any time at our discretion. As of October 29, 2022, we had approximately $44.9 million remaining under the share repurchase program.\nShare repurchase activity consists of the following (in thousands except share and per share amounts):",
+   "prose_after": "We have elected to retire shares repurchased to date. Shares retired become part of the pool of authorized but unissued shares. We have elected to record the purchase price of the retired shares in excess of par value, including transaction costs, directly as an increase in accumulated deficit.\nNote 18. Earnings Per Share\nBasic earnings per share is computed by dividing net income by the weighted average number of common shares outstanding for the period. Diluted earnings per share is applicable only in periods of net income and is computed by dividing net income by the weighted average number of common shares outstanding for the period, inclusive of potentially dilutive common share equivalents outstanding for the period. Periods of net loss require the diluted computation to be the same as the basic computation. During the three- and nine-month periods ended October 29, 2022, there were approximately 0.1 million potentially dilutive common share equivalents outstanding that were included in the computation of diluted earnings per share. During the three-month period ended October 29, 2022, there were approximately 1.0 million restricted stock awards and RSUs, including PSUs, and approximately 1.2 million stock options outstanding, which were excluded from the computation of diluted earnings per share as those awards would have been anti-dilutive or were PSUs with performance conditions that had not yet been achieved. During the nine-month period ended October 29, 2022, there were approximately 0.7 million restricted stock awards and RSUs, including PSUs, and approximately 0.8 million stock options outstanding, which were excluded from the computation of diluted earnings per share as those awards would have been anti-dilutive or were PSUs with performance conditions that had not yet been achieved. During the three- and nine-month periods ended October 30, 2021, there were no potentially dilutive common share equivalents outstanding. During the three- and nine-month periods ended October 30, 2021, there were approximately 0.9 million restricted stock awards and RSUs and approximately 0.3 million stock options outstanding, respectively, which were excluded from the computation of diluted earnings per share as those awards would have been anti-dilutive.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "Quoted Prices in Active Markets for Identical Items (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3)",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (cash equivalent)",
+     "$",
+     "37",
+     "$",
+     "37",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total assets",
+     "$",
+     "37",
+     "$",
+     "37",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred compensation plan liability (noncurrent)",
+     "$",
+     "4,172",
+     "$",
+     "\u2014",
+     "$",
+     "4,172",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "4,172",
+     "$",
+     "\u2014",
+     "$",
+     "4,172",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1006,
+    "end_line": 1021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Level 1: Quoted prices in active markets for identical assets or liabilities.\nLevel 2: Observable inputs, other than Level 1 prices, such as quoted prices for similar assets or liabilities in active markets; quoted prices for similar assets or liabilities in markets that are not active; or other inputs other than quoted prices that are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities, including interest rates and yield curves, and market corroborated inputs.\nLevel 3: Unobservable inputs for the asset or liability that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities. These are valued based on our estimates and assumptions that market participants would use in pricing the asset or liability.\nFinancial assets and liabilities measured at fair value on a recurring basis as of the end of the third quarter of fiscal year 2022 consisted of the following (in thousands):",
+   "prose_after": "Financial assets and liabilities measured at fair value on a recurring basis as of the end of fiscal year 2021 consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 29, 2022",
+     "",
+     "Quoted Prices in Active Markets for Identical Items (Level 1)",
+     "",
+     "Significant Other Observable Inputs (Level 2)",
+     "",
+     "Significant Unobservable Inputs (Level 3",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (cash equivalent)",
+     "$",
+     "11,411",
+     "$",
+     "11,411",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total assets",
+     "$",
+     "11,411",
+     "$",
+     "11,411",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred compensation plan liability (noncurrent)",
+     "$",
+     "6,873",
+     "$",
+     "\u2014",
+     "$",
+     "6,873",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "6,873",
+     "$",
+     "\u2014",
+     "$",
+     "6,873",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Financial assets and liabilities measured at fair value on a recurring basis as of the end of fiscal year 2021 consisted of the following (in thousands):",
+   "prose_after": "The fair value of our money market funds is based on quoted prices in active markets. The deferred compensation plan liability represents the amount that would be earned by participants if the funds were invested in securities traded in active markets. The fair value of the deferred compensation plan liability is determined based on quoted prices of similar assets that are traded in observable markets, or represents the cash withheld by participants prior to any investment activity.\nNote 20. Private Label Credit Card\nWe have an agreement with a third party, which is amended from time to time, to provide customers with private label credit cards (\"Credit Card Agreement\"). Each private label credit card bears the logo of the Torrid brand and can only be used at our store locations and on www.torrid.com. A third-party financing company is the sole owner of the accounts issued under the private label credit card program and absorbs the losses associated with non-payment by the private label card holders and a portion of any fraudulent usage of the accounts. Pursuant to the Credit Card Agreement, we receive marketing and promotional funds from the third-party financing company based on usage of the private label credit cards. These marketing and promotional funds are recorded as a reduction in selling, general and administrative expenses in the condensed consolidated statements of operations and comprehensive income (loss). During the three- and nine-month periods ended October 29, 2022, these funds amounted to $10.2 million and $27.6 million, respectively, related to these private label credit cards. During the three- and nine-month periods ended October 30, 2021, these funds amounted to $4.7 million and $14.0 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "October 29, 2022",
+     "October 30, 2021"
+    ],
+    [
+     "Number of stores (as of end of period)",
+     "629",
+     "619"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1069,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "Torrid is a direct-to-consumer brand of apparel, intimates and accessories in North America, targeting the 25- to 40-year- old woman who wears sizes 10 to 30. Torrid is focused on fit and offers high quality products across a broad assortment that includes tops, bottoms, denim, dresses, intimates, activewear, footwear and accessories. Our proprietary product offering delivers a superior fit for the curvy woman that makes her love the way she looks and feels. Our style is unapologetically youthful and sexy and we are maniacally focused on fit. We believe our customer values the appeal and versatility of our curated product assortment that helps her look her best for any occasion, including weekend, casual, work and dressy, all at accessible price points. Through our product and brand experience we connect with customers in a way that other brands, many of which treat plus-size customers as an after-thought, have not.\nKey Financial and Operating Metrics\nWe use the following metrics to assess the progress of our business, inform how we allocate our time and capital, and assess the near-term and longer-term performance of our business.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "",
+     "October 30, 2021",
+     "",
+     "",
+     "October 29, 2022",
+     "",
+     "",
+     "October 30, 2021",
+     "",
+     ""
+    ],
+    [
+     "Comparable sales",
+     "(8)",
+     "",
+     "%",
+     "14",
+     "",
+     "%",
+     "(3)",
+     "",
+     "%",
+     "42",
+     "",
+     "%"
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "7,277",
+     "",
+     "$",
+     "(58,902)",
+     "",
+     "$",
+     "54,053",
+     "",
+     "$",
+     "(7,190)",
+     ""
+    ],
+    [
+     "Adjusted EBITDA(A)",
+     "$",
+     "32,110",
+     "",
+     "$",
+     "55,178",
+     "",
+     "$",
+     "135,977",
+     "",
+     "$",
+     "217,406",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1086
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(A)Please refer to \"Results of Operations\" for a reconciliation of net income to Adjusted EBITDA.\nComparable Sales. We define comparable sales for any given period as the sales of our e-Commerce operations and stores that we have included in our comparable sales base during that period. We include a store in our comparable sales base after it has been open for 15 full fiscal months. If a store is closed during a fiscal year, it is only included in the computation of comparable sales for the full fiscal months in which it was open. The computation of comparable sales includes results from stores that were temporarily closed due to COVID-19. Partial fiscal months are excluded from the computation of comparable sales. Comparable sales allow us to evaluate how our unified commerce business is performing exclusive of the effects of new store openings. We apply current year foreign currency exchange rates to both current year and prior year comparable sales to remove the impact of foreign currency fluctuation and achieve a consistent basis for comparison.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "% of Net Sales",
+     "",
+     "October 30, 2021",
+     "",
+     "% of Net Sales",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "290,034",
+     "100.0",
+     "%",
+     "$",
+     "306,241",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "198,263",
+     "",
+     "68.4",
+     "%",
+     "181,094",
+     "",
+     "59.1",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "91,771",
+     "",
+     "31.6",
+     "%",
+     "125,147",
+     "",
+     "40.9",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "59,180",
+     "",
+     "20.4",
+     "%",
+     "66,399",
+     "",
+     "21.7",
+     "%"
+    ],
+    [
+     "Marketing expenses",
+     "12,638",
+     "",
+     "4.3",
+     "%",
+     "15,023",
+     "",
+     "4.9",
+     "%"
+    ],
+    [
+     "Income from operations",
+     "19,953",
+     "",
+     "6.9",
+     "%",
+     "43,725",
+     "",
+     "14.3",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "8,390",
+     "",
+     "2.9",
+     "%",
+     "6,104",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "Interest income, net of other expense (income)",
+     "147",
+     "",
+     "0.1",
+     "%",
+     "(12)",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Income before provision for income taxes",
+     "11,416",
+     "",
+     "3.9",
+     "%",
+     "37,633",
+     "",
+     "12.3",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "4,139",
+     "",
+     "1.4",
+     "%",
+     "96,535",
+     "",
+     "31.5",
+     "%"
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "7,277",
+     "2.5",
+     "%",
+     "$",
+     "(58,902)",
+     "(19.2)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1183
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "Marketing Expenses. We continue to make investments in marketing in an effort to grow and retain our active customer base and increase our brand awareness. Marketing expenses consist primarily of (i) targeted online performance marketing costs, such as retargeting, paid search/product listing advertising, and social media advertisements, (ii) store and brand marketing, public relations and photographic production designed to acquire, retain and remain connected to customers and (iii) payroll and benefits expenses associated with our marketing team.\nInterest Expense. Interest expense consists primarily of interest expense and other fees associated with our Existing ABL Facility, as amended and New Term Loan Credit Agreement.\nProvision for (Benefit from) Income Taxes. Our provision for (benefit from) income taxes primarily consists of an estimate of federal and state income taxes based on enacted federal and state tax rates, as adjusted for allowable credits, deductions and uncertain tax positions.\nResults of Operations\nThree-Months Ended October 29, 2022 Compared to Three-Months Ended October 30, 2021\nThe following table summarizes our consolidated results of operations for the periods indicated (dollars in thousands):",
+   "prose_after": "The following table provides a reconciliation of net income to Adjusted EBITDA for the periods presented (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1145,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "7,277",
+     "$",
+     "(58,902)"
+    ],
+    [
+     "Interest expense",
+     "8,390",
+     "",
+     "6,104",
+     ""
+    ],
+    [
+     "Interest income, net of other expense (income)",
+     "147",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "4,139",
+     "",
+     "96,535",
+     ""
+    ],
+    [
+     "Depreciation and amortization(A)",
+     "8,849",
+     "",
+     "8,482",
+     ""
+    ],
+    [
+     "Share-based compensation(B)",
+     "2,913",
+     "",
+     "2,450",
+     ""
+    ],
+    [
+     "Non-cash deductions and charges(C)",
+     "375",
+     "",
+     "306",
+     ""
+    ],
+    [
+     "Other expenses(D)",
+     "20",
+     "",
+     "215",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "32,110",
+     "$",
+     "55,178"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1186,
+    "end_line": 1203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "The following table provides a reconciliation of net income to Adjusted EBITDA for the periods presented (dollars in thousands):",
+   "prose_after": "(A)Depreciation and amortization excludes amortization of debt issuance costs and original issue discount that are reflected in interest expense.\n(B)Prior to the consummation of our IPO on July 6, 2021, share-based compensation was determined based on the remeasurement of our liability-classified incentive units.\n(C)Non-cash deductions and charges includes losses on property and equipment disposals and the net impact of non-cash rent expense.\n(D)Other expenses include IPO-related transaction fees and the reimbursement of certain management expenses, primarily for travel, incurred by Sycamore on our behalf, which are not considered to be part of our core business.\nNet Sales\nNet sales decreased $16.2 million, or 5.3%, to $290.0 million for the three months ended October 29, 2022, from $306.2 million for the three months ended October 30, 2021. This decrease was primarily driven by decreases in sales transactions and average sales transaction value relative to the three months ended October 30, 2021, as a result of increased promotional activity. The total number of stores we operate increased by 10 stores, or 1.6%, to 629 stores as of October 29, 2022, from 619 stores as of October 30, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1145,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1206,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "% of Net Sales",
+     "",
+     "October 30, 2021",
+     "",
+     "% of Net Sales",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "959,319",
+     "100.0",
+     "%",
+     "$",
+     "964,858",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "623,556",
+     "",
+     "65.0",
+     "%",
+     "$",
+     "545,059",
+     "56.5",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "335,763",
+     "",
+     "35.0",
+     "%",
+     "419,799",
+     "",
+     "43.5",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "192,539",
+     "",
+     "20.1",
+     "%",
+     "355,353",
+     "",
+     "36.9",
+     "%"
+    ],
+    [
+     "Marketing expenses",
+     "44,114",
+     "",
+     "4.6",
+     "%",
+     "35,276",
+     "",
+     "3.6",
+     "%"
+    ],
+    [
+     "Income from operations",
+     "99,110",
+     "",
+     "10.3",
+     "%",
+     "29,170",
+     "",
+     "3.0",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "21,351",
+     "",
+     "2.2",
+     "%",
+     "23,390",
+     "",
+     "2.4",
+     "%"
+    ],
+    [
+     "Interest income, net of other expense (income)",
+     "223",
+     "",
+     "0.0",
+     "%",
+     "(72)",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Income before provision for income taxes",
+     "77,536",
+     "",
+     "8.1",
+     "%",
+     "5,852",
+     "",
+     "0.6",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "23,483",
+     "",
+     "2.5",
+     "%",
+     "13,042",
+     "",
+     "1.3",
+     "%"
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "54,053",
+     "5.6",
+     "%",
+     "$",
+     "(7,190)",
+     "(0.7)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1244,
+    "end_line": 1267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "The provision for income taxes was $4.1 million for the three months ended October 29, 2022, compared to a provision for income taxes of $96.5 million for the three months ended October 30, 2021. Our effective tax rate was 36.3% for the three months ended October 29, 2022 and 256.5% for the three months ended October 30, 2021. The unconventional effective tax rate for the three months ended October 30, 2021 was primarily due to the increase in the amount of non-deductible items associated with share-based compensation, relative to income before provision for income taxes for the three months ended October 30, 2021. The increase in the amount of non-deductible items associated with share-based compensation during the three months ended October 30, 2021 was driven by a $111.4 million remeasurement adjustment related to the increase in the\nvalue of the incentive units as indicated by the Torrid Holding LLC equity value as of June 30, 2021, following the pricing of our IPO.\nNine Months Ended October 29, 2022 Compared to Nine Months Ended October 30, 2021\nThe following table summarizes our consolidated results of operations for the periods indicated (dollars in thousands):",
+   "prose_after": "The following table provides a reconciliation of net income to Adjusted EBITDA for the periods presented (dollars in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1237,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1296,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "54,053",
+     "$",
+     "(7,190)"
+    ],
+    [
+     "Interest expense",
+     "21,351",
+     "",
+     "23,390",
+     ""
+    ],
+    [
+     "Interest income, net of other expense (income)",
+     "223",
+     "",
+     "(72)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "23,483",
+     "",
+     "13,042",
+     ""
+    ],
+    [
+     "Depreciation and amortization(A)",
+     "26,981",
+     "",
+     "25,626",
+     ""
+    ],
+    [
+     "Share-based compensation(B)",
+     "7,568",
+     "",
+     "157,238",
+     ""
+    ],
+    [
+     "Non-cash deductions and charges(C)",
+     "2,310",
+     "",
+     "376",
+     ""
+    ],
+    [
+     "Other expenses(D)",
+     "8",
+     "",
+     "4,996",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "135,977",
+     "$",
+     "217,406"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1270,
+    "end_line": 1287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "The following table provides a reconciliation of net income to Adjusted EBITDA for the periods presented (dollars in thousands):",
+   "prose_after": "(A)Depreciation and amortization excludes amortization of debt issuance costs and original issue discount that are reflected in interest expense.\n(B)Prior to the consummation of our IPO on July 6, 2021, share-based compensation was determined based on the remeasurement of our liability-classified incentive units.\n(C)Non-cash deductions and charges includes losses on property and equipment disposals and the net impact of non-cash rent expense.\n(D)Other expenses include IPO-related transaction fees and the reimbursement of certain management expenses, primarily for travel, incurred by Sycamore on our behalf, which are not considered to be part of our core business.\nNet Sales\nNet sales decreased $5.5 million, or 0.6%, to $959.3 million for the nine months ended October 29, 2022, from $964.9 million for the nine months ended October 30, 2021. This decrease was primarily driven by decreases in sales transactions and average sales transaction value relative to the nine months ended October 30, 2021, as a result of increased promotional activity. The total number of stores we operate increased by 10 stores, or 1.6%, to 629 stores as of October 29, 2022, from 619 stores as of October 30, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1237,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1296,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 29, 2022",
+     "",
+     "October 30, 2021",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "53,909",
+     "$",
+     "125,253"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(17,087)",
+     "",
+     "(11,342)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(46,995)",
+     "",
+     "(174,414)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1334,
+    "end_line": 1343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "Our business relies on cash flows from operations as our primary source of liquidity. We do, however, have access to additional liquidity, if needed, through borrowings under our Existing ABL Facility, as amended. Availability under the Existing ABL Facility, as amended, as of the end of the third quarter of fiscal year 2022, was $140.5 million, which reflects borrowings of $2.2 million. Our primary cash needs are for merchandise inventories, payroll, rent for our stores, headquarters and distribution center, capital expenditures associated with opening new stores and updating existing stores, logistics and information technology. We also need cash to make discretionary repurchases of our common stock, and fund our interest and principal payments on the New Term Loan Credit Agreement. The most significant components of our working capital are cash and cash equivalents, merchandise inventories, prepaid expenses and other current assets, accounts payable, accrued and other current liabilities and operating lease liabilities. We believe that cash generated from operations and the availability of borrowings under our Existing ABL Facility, as amended, or other financing arrangements will be sufficient to meet working capital requirements and anticipated capital expenditures for at least the next 12 months. There can be no assurance, however, that our business will generate sufficient cash flows from operations or that future borrowings will be available under our Existing ABL Facility, as amended, or otherwise to enable us to service our indebtedness, or to make capital expenditures in the future. Our future operating performance and our ability to service or extend our indebtedness will be subject to future economic conditions and to financial, business and other factors, many of which are beyond our control.\nCash Flow Analysis\nA summary of operating, investing and financing activities are shown in the following table (dollars in thousands):",
+   "prose_after": "Net Cash Provided By Operating Activities\nOperating activities consist primarily of net income adjusted for non-cash items, including depreciation and amortization and share-based compensation, the effect of working capital changes and taxes paid.\nNet cash provided by operating activities during the nine months ended October 29, 2022 was $53.9 million compared to $125.3 million during the nine months ended October 30, 2021. The decrease in cash provided by operating activities during the nine months ended October 29, 2022 was primarily as a result of a decrease in share-based compensation expense added back to cash provided by operating activities as a non-cash adjustment and a decrease in accrued and other current liabilities, partially offset by the following activities during the nine months ended October 29, 2022: (i) an increase in net income, (ii) a decrease in prepaid income taxes, (iii) a decrease in inventory purchases and (iv) increases in accounts payable and income taxes payable. The decrease in share-based compensation expense during the nine months ended October 29, 2022 was due to an increase in Torrid Holding LLC's equity value during the nine months ended October 30, 2021. The decrease in accrued and other current liabilities was primarily as a result of decreases in accrued payroll and related expenses and accrued inventory-in-transit.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description",
+     "Incorporated by Reference",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Form",
+     "Filing Date",
+     "Exhibit"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of Torrid Holdings Inc., dated July 6, 2021.",
+     "8-K",
+     "July 6, 2021",
+     "3.1"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Torrid Holdings Inc., dated as of July 6, 2021.",
+     "8-K",
+     "July 6, 2021",
+     "3.2"
+    ],
+    [
+     "10.1+*",
+     "Separation Agreement by and between Kelly McGuire Diehl and Torrid Holdings Inc., dated as of November 22, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2*",
+     "Second Amendment to the Services Agreement between Torrid LLC and Hot Topic Inc., dated September 30, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3*",
+     "Third Amendment to the Services Agreement between Torrid LLC and Hot Topic Inc., dated December 1, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of the Principal Executive Officer pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of the Principal Financial Officer pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of the Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101*",
+     "Interactive Data Files (formatted in Inline XBRL)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data Files (Embedded within the Inline XBRL document and included in Exhibit 101)",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1419,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "On December 6, 2021, the Board authorized a new share repurchase program under which we may purchase up to $100.0 million of our outstanding common stock. Repurchases may be made from time to time, depending upon a variety of factors, including share price, corporate and regulatory requirements, and other market and business conditions, as determined by us. We may purchase shares of our common stock in the open market at current market prices at the time of purchase, in privately negotiated transactions, or by other means. The authorization does not, however, obligate us to acquire any particular amount of shares, and the share repurchase program may be suspended or terminated at any time at our discretion. During the three months ended October 29, 2022 we did not repurchase any shares of our common stock. As of October 29, 2022, we had approximately $44.9 million remaining under the share repurchase program.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits\nEXHIBIT INDEX",
+   "prose_after": "+ Indicates a management contract or compensatory plan or arrangement.\n* Filed herewith ** Furnished herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in City of Industry, California on December 8, 2022.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1414,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Torrid Holdings Inc.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Lisa Harper"
+    ],
+    [
+     "Name:",
+     "Lisa Harper"
+    ],
+    [
+     "Title:",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Tim Martin"
+    ],
+    [
+     "Name:",
+     "Tim Martin"
+    ],
+    [
+     "Title:",
+     "Chief Operating Officer and Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Torrid Holdings Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 22,
+     "label": "NOTE 22",
+     "title": "Employee Benefit Plan"
+    }
+   },
+   "prose_before": "+ Indicates a management contract or compensatory plan or arrangement.\n* Filed herewith ** Furnished herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in City of Industry, California on December 8, 2022.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 22
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1464,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

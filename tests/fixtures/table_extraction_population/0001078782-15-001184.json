@@ -1,0 +1,1802 @@
+{
+ "accession": "0001078782-15-001184",
+ "cik": "0000710782",
+ "form": "10-K",
+ "filing_date": "2015-07-29",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k043015_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "State of Delaware",
+     "",
+     "22-2335094"
+    ],
+    [
+     "(State or other jurisdiction of Incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] .ANNUAL REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED APRIL 30, 2015\n.TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 000 30432\nARBOR ENTECH CORPORATION (Name of Small business issuer in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2295 NW Corporate Blvd., Suite 230, Boca Raton, FL 33431"
+    ],
+    [
+     "(Address of principal executive offices) (Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "2295 NW Corporate Blvd., Suite 230, Boca Raton, FL 33431",
+    "(Address of principal executive offices) (Zip Code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Issuer\u2019s telephone number: (305) 466-6988\nNot applicable (Former name or former address, if changed since last report)\nCheck whether the issuer is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. .\nSecurities registered under Section 12(b) of the Exchange Act: none\nSecurities registered under Section 12(g) of the Exchange Act: Common Stock, par value $.001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes . No [X] .\nIndicate by check mark if the registrant is not required to file pursuant to Section 13 or Section 15(d) of the Act. Yes [X] . No .\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] . No .",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Part I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business.",
+     "4"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments.",
+     "6"
+    ],
+    [
+     "Item 2.",
+     "Description of Properties.",
+     "6"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "6"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "7"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "7"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "7"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "8"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "8"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.",
+     "9"
+    ],
+    [
+     "Item 9A(T)",
+     "Controls and Procedures.",
+     "9"
+    ],
+    [
+     "Item 9B",
+     "Other Information.",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "10"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "13"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "14"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence.",
+     "14"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services.",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules.",
+     "16"
+    ],
+    [
+     "Financial Statements",
+     "",
+     "F-1"
+    ]
+   ],
+   "caption_stack": [
+    "Part I"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents",
+     "$",
+     "264,422",
+     "$",
+     "272,087"
+    ],
+    [
+     "Due from Related Party",
+     "",
+     "-",
+     "",
+     "12,200"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "264,422",
+     "",
+     "284,287"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "264,422",
+     "$",
+     "284,287"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, $.001 Par Value; 1,000,000 Shares Authorized; None Issued and Outstanding;",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common Stock, $.001 Par Value; 100,000,000 Shares Authorized; 7,350,540 Shares Issued and Outstanding",
+     "",
+     "7,350",
+     "",
+     "7,350"
+    ],
+    [
+     "Additional Paid-In Capital",
+     "",
+     "2,372,640",
+     "",
+     "2,372,640"
+    ],
+    [
+     "Retained Deficit",
+     "",
+     "(2,115,568)",
+     "",
+     "(2,095,703)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "264,422",
+     "",
+     "284,287"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "264,422",
+     "$",
+     "284,287"
+    ]
+   ],
+   "caption_stack": [
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 326,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Arbor EnTech Corporation as of April 30, 2015 and 2014, and the results of its operations and cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\n/s/ Rosenberg Rich Baker Berman & Company\nSomerset, New Jersey\nJuly 29, 2015\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 322,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 366,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years Ended April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, General and Administrative Expenses",
+     "",
+     "20,130",
+     "",
+     "21,907"
+    ],
+    [
+     "",
+     "",
+     "20,130",
+     "",
+     "21,907"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(20,130)",
+     "",
+     "(21,907)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "",
+     "265",
+     "",
+     "290"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(19,865)",
+     "$",
+     "(21,617)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (Loss) Per Common Share \u2013 Basic and diluted",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "7,350,540",
+     "",
+     "7,350,540"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nYEARS ENDED APRIL 30, 2015 AND 2014",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 368,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 404,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Retained",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "(Deficit)",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 April 30, 2013",
+     "",
+     "7,350,540",
+     "$",
+     "7,350",
+     "$",
+     "2,372,640",
+     "$",
+     "(2,074,086)",
+     "$",
+     "305,904"
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(21,617)",
+     "",
+     "(21,617)"
+    ],
+    [
+     "Balance \u2013 April 30, 2014",
+     "",
+     "7,350,540",
+     "$",
+     "7,350",
+     "$",
+     "2,372,640",
+     "$",
+     "(2,095,703)",
+     "$",
+     "284,287"
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(19,865)",
+     "",
+     "(19,865)"
+    ],
+    [
+     "Balance \u2013 April 30, 2015",
+     "",
+     "7,350,540",
+     "$",
+     "7,350",
+     "$",
+     "2,372,640",
+     "$",
+     "(2,115,568)",
+     "$",
+     "264,422"
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nYEARS ENDED APRIL 30, 2015 AND 2014",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years Ended April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014"
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(19,865)",
+     "$",
+     "(21,617)"
+    ],
+    [
+     "Decrease in due from Related Party",
+     "",
+     "12,200",
+     "",
+     "(12,200)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(7,665)",
+     "",
+     "(33,817)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in Cash and Cash Equivalents",
+     "",
+     "(7,665)",
+     "",
+     "(33,817)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents \u2013 Beginning of Year",
+     "",
+     "272,087",
+     "",
+     "305,904"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents \u2013 End of Year",
+     "$",
+     "264,422",
+     "$",
+     "272,087"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Interest",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Cash Paid Income Taxes",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNOTE 1 - Nature of Business\nArbor EnTech Corporation (the \u201cCompany\u201d) is a Delaware corporation that engaged in the production and wholesale distribution of wood products for home use, principally fireplace wood and garden stakes. The Company\u2019s products were produced, packaged in and distributed from its facility in Little Marsh, Pennsylvania. The products were delivered by independent truckers to customer locations in the Northeastern United States. On September 22, 2003, the Company discontinued its wood products business. The Company is seeking other business opportunities.\nNOTE 2 - Summary of Significant Accounting Policies\nCash and Cash Equivalents\nThe Company considers all highly liquid short-term investments with a maturity of three months or less at time of purchase to be cash equivalents.\nUse of Estimates\nThe preparation of financial statements in conformity with U.S. generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 432,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Deferred Tax",
+     "",
+     "",
+     "",
+     "Deferred Tax",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     "",
+     "Assets",
+     "",
+     "Liabilities"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Loss Carryforwards",
+     "$",
+     "186,000",
+     "$",
+     "-",
+     "$",
+     "178,000",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "186,000",
+     "",
+     "-",
+     "",
+     "178,000",
+     "",
+     "-"
+    ],
+    [
+     "Less: Valuation Allowance",
+     "",
+     "186,000",
+     "",
+     "-",
+     "",
+     "178,000",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 510,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The fair value of the Company\u2019s financial instruments, which consist primarily of cash and cash equivalents and accounts payable and accrued liabilities, approximate their carrying amounts reported due to their short-term nature.\nConcentration of Credit Risk\nThe Company\u2019s financial instruments that are exposed to concentration of credit risk consist of cash and cash equivalents. At times, such amounts are in excess of the FDIC insurance limits.\nNOTE 3 - Income Taxes\nFor income tax purposes, the Company has available net operating loss carryforwards (\u201cNOL\u201d) at April 30, 2015 of approximately $421,000 expiring in various years from 2023 through 2033 to reduce future federal and state taxable income, if any. As management of the Company cannot determine that it is more likely than not that the Company will realize the benefit of the deferred tax asset, a valuation allowance equal to the net deferred tax asset has been established.\nThe tax effects of significant items comprising deferred income taxes are as follows:",
+   "prose_after": "The difference in the Federal Statutory Rate of 34% and the state rate of approximately 10% and the Company's effective tax rate of 0% is due to a net operating loss carryforward for federal and state taxes. The Company recorded an increase in the valuation allowance of approximately $8,000 for the year ended April 30, 2015.\nThe Company is no longer subject to examination by Federal or Pennsylvania State taxing authorities for years prior to April 30, 2011.\nNOTE 4 - Recent Accounting Pronouncements\nManagement does not believe there would have been a material effect on the accompanying financial statements had any recently issued, but not yet effective, accounting standards been adopted in the current period.\nNOTE 5 \u2013 Due From Related Party\nIn the fiscal year ended April 30, 2014, the Company mistakenly paid out on behalf of a related party $14,000 ($12,200 of which was owed at April 30, 2014), which was repaid by the related party to the Company subsequent to April 30, 2014.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosures.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 540,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brad Houtkin",
+     "",
+     "40",
+     "",
+     "President, Treasurer, Director(1)"
+    ],
+    [
+     "Michael Houtkin",
+     "",
+     "36",
+     "",
+     "Secretary and Director"
+    ],
+    [
+     "Sherry Houtkin",
+     "",
+     "64",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Due From Related Party"
+    }
+   },
+   "prose_before": "Based on our assessment of the effectiveness in internal control over financial reporting as of April 30, 2015, we concluded that our internal controls over financial reporting were effective.\nThis annual report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Our report was not subject to attestation by our registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this annual report.\nChanges in Internal control Over Financial Reporting.\nThere have been no changes in our internal control over financial reporting that occurred during the period covered by this report that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth certain information concerning our directors and executive officers:",
+   "prose_after": "(1)\nMr. Houtkin serves as our Principal Executive, Financing and Accounting Officer.\nEach director has been elected to serve until the next annual meeting of stockholders, or until his earlier resignation, removal from office, death or incapacity. Officers are elected by the directors at meetings called by the directors for such purpose.\nBrad Houtkin has been our President, Treasurer and a Director since December 15, 2008. Mr. Houtkin has also been COO of Houtkin Consulting, Inc., a real estate investment firm, since November, 2004. Prior to that, Mr. Houtkin was an executive officer of All Tech Investment Group, Inc., an investment firm.\nMichael Houtkin has been our Secretary and a Director since December 15, 2008. Mr. Houtkin understood that he would be appointed Secretary and Director when Brad Houtkin, his brother, acquired control of our common stock in December, 2008. Mr. Houtkin has been President of Plaza Promotions, a sales promotional company, since July 2008, and was Director of Sales for Plaza from July, 2004 until he became President.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 572,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Fiscal Year",
+     "",
+     "All Other Compensation",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brad Houtkin, CEO,",
+     "",
+     "2015",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "President, Treasurer(1)",
+     "",
+     "2014",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 701,
+    "end_line": 708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Due From Related Party"
+    }
+   },
+   "prose_before": "Procedures for Security Holders to Nominate Directors\nOur bylaws do not provide a procedure for Stockholders to nominate directors. The Board of Directors does not currently have a standing nominating committee. The Board of Directors currently has the responsibility of selecting individuals to be nominated for election to the Board of Directors. Qualifications considered by the Directors in nominating an individual may include, without limitation, independence, integrity, business experience, education, accounting and financial expertise, reputation, civic and community relationships and industry knowledge. In nominating an existing director for re-election to the Board of Directors, the Directors will consider and review an existing director\u2019s Board and Committee attendance, performance and length of service.\nItem 11. Executive Compensation\nSummary Compensation Table\nThe following table summarizes the compensation paid to our President (principal executive officer) and Treasurer (principal financial officer).",
+   "prose_after": "(1) Brad Houtkin became our CEO in December, 2008 in connection with acquiring control of our common stock.\nWe do not have any employment agreements or stock option or bonus plans with any of our executive officers and we do not have any employees. No compensation was paid to any executive officer with respect to fiscal 2015 or 2014.\nNarrative Compensation Disclosure\nNone of our executives are subject to employment contracts; however our President is eligible to receive bonuses at the discretion of the Board of Directors based on his contribution to the realization of our business objectives. No compensation was paid to any executive officer with respect to fiscal 2015 or 2014.\nThere were no outstanding equity awards at fiscal year-end. No grants of plan based awards were made in fiscal 2014. There were no option exercises and no stock awards vested, in each case during fiscal 2015 or 2014. We have no plan that provides for payments in connection with retirement. We have no deferred compensation plans.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "",
+     "Amount and Nature of Shares Beneficially Owned",
+     "",
+     "Percentage of Class(1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sherry Houtkin (2)\n\n\n\n3900 Island Blvd. Penthouse #4 Aventura, FL 33160",
+     "",
+     "3,395,000",
+     "",
+     "46.20%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brad Houtkin (3)\n\n\n\n 5584 East Leitner Drive Coral Springs Florida 33067",
+     "",
+     "6,799,000",
+     "",
+     "92.50%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael Houtkin",
+     "",
+     "-",
+     "",
+     "0.00%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and Executive officers as a group (3 persons)",
+     "",
+     "6,799,000",
+     "",
+     "92.50%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 747,
+    "end_line": 764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Due From Related Party"
+    }
+   },
+   "prose_before": "Stock options and equity compensation awards to our directors are at the discretion of the Board. During the past three years, no options or equity awards have been made to our directors.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following table sets forth information as of May 31, 2015, with respect to:\n\u00b7\nAny person known by us to own beneficially more than 5% of our common stock;\n\u00b7\nCommon stock beneficially owned by each of our officers and directors; and\n\u00b7\nThe amount of common stock beneficially owned by our officers and directors as a group.\n\u00b7",
+   "prose_after": "(1) Based upon information furnished by the persons listed. Except as otherwise noted, all persons have sole voting and investment power over the shares listed. A person is deemed, as of any date, to have \"beneficial ownership\" of any security that such person has the right to acquire within 60 days after such date. Based upon 7,350,540 shares of common stock issued and outstanding as of May 31, 2015.\n(2) Represents shares owned by Airmont Trust, Sherry Houtkin, Trustee, is co-trustee with her son, Brad Houtkin. Sherry Houtkin and Brad Houtkin share voting and investment control over these shares in their capacities as trustees.\n(3) Includes 3,395,000 shares owned by Airmont Trust of which Brad Houtkin is co-trustee with his mother, Sherry Houtkin. Sherry Houtkin and Brad Houtkin share voting and investment control over these shares in their capacities as trustees of the Airmont Trust. The remaining 3,404,000 shares are held of record by Mr. Houtkin.\nItem 13. Certain Relationships and Related Transactions, Director Independence.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014"
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "9,500",
+     "$",
+     "9,500"
+    ],
+    [
+     "Audit-Related fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees(2)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total fees",
+     "$",
+     "9,500",
+     "$",
+     "9,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Due From Related Party"
+    }
+   },
+   "prose_before": "(3) Includes 3,395,000 shares owned by Airmont Trust of which Brad Houtkin is co-trustee with his mother, Sherry Houtkin. Sherry Houtkin and Brad Houtkin share voting and investment control over these shares in their capacities as trustees of the Airmont Trust. The remaining 3,404,000 shares are held of record by Mr. Houtkin.\nItem 13. Certain Relationships and Related Transactions, Director Independence.\nFor the two years ended April 30, 2015, there have been no transactions between the Company and its officers and directors, except that in the year ended April 30, 2014, $14,000 (of which $12,200 was owed from a related party at April 30, 2014) was mistakenly paid out on behalf of a related party and repaid to the Company subsequent to April 30, 2014.\nSince each director of the Company is related to each other, an officer and/or principal stockholder of the Company, the Company lacks independent directors. See Item 10.\nItem 14. Principal Accountant Fees and Services.\nAudit Fees\nThe following table presents the aggregate fees of the principal accountants for professional services rendered for the audit of our annual financial statements and review of financial statements included in our Form 10-Q\u2019s for the years ended April 30:",
+   "prose_after": "No fees, other than those disclosed above, were paid to our independent auditors during the indicated fiscal years.\n(1) Audit and quarterly review fees were for audit work performed in the preparation of the financial statements to be included in our Form 10-K and review of the financial statements to be included in our Form 10-Q\u2019s filed with the Securities and Exchange Commission for the respective years.\n(2) There were no tax fees incurred for preparation of our tax returns for 2015 and 2014. Our Board of Directors is solely responsible for the nomination, approval, compensation, evaluation and discharge of the independent public accountants. The independent public accountants report directly to the Board and the Board is responsible for the resolution of disagreements between management and the independent public accountants. Consistent with the Securities and Exchange Commission requirements, the Board has adopted a policy to pre-approve all audit and permissible non-audit services provided by the independent public accountants. Accordingly, the Board pre-approved all services rendered by our independent public accountants. Our independent public accountants for the current fiscal year have been appointed by the Board.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brad Houtkin",
+     "",
+     "President, Treasurer and Director",
+     "",
+     "July 29, 2015"
+    ],
+    [
+     "Brad Houtkin",
+     "",
+     "(Principal Executive, Financial and Accounting Officer)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Houtkin",
+     "",
+     "Secretary and Director",
+     "",
+     "July 29, 2015"
+    ],
+    [
+     "Michael Houtkin",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Sherry Houtkin",
+     "",
+     "Director",
+     "",
+     "July 29, 2015"
+    ],
+    [
+     "Sherry Houtkin",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 849,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Due From Related Party"
+    }
+   },
+   "prose_before": "Arbor EnTech Statements of Operations - Years ended April 30, 2015 and 2014\nArbor EnTech Statements of Stockholders\u2019 Equity - Years ended April 30, 2015 and 2014\nArbor EnTech Statements of Cash Flows - Years ended April 30, 2015 and 2014\nNotes to Financial Statements\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: July 29, 2015\n/s/ Brad Houtkin\nBrad Houtkin, President\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 839,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

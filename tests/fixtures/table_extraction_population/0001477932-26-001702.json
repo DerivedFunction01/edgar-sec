@@ -1,0 +1,3882 @@
+{
+ "accession": "0001477932-26-001702",
+ "cik": "0001025771",
+ "form": "10-K",
+ "filing_date": "2026-03-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cpka_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "93-1216127"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 0-21609\nCHASE PACKAGING CORPORATION (Exact name of registrant as specified in its charter)",
+   "prose_after": "PO Box 126, Rumson, NJ 07760\n(Address of principal executive offices and zip code)\n(732) 741.1500\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, par value $.00001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15 (d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE NO"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "BUSINESS",
+     "4"
+    ],
+    [
+     "ITEM 1A",
+     "RISK FACTORS",
+     "4"
+    ],
+    [
+     "ITEM 1B",
+     "UNRESOLVED STAFF COMMENTS",
+     "4"
+    ],
+    [
+     "ITEM 2",
+     "PROPERTIES",
+     "4"
+    ],
+    [
+     "ITEM 3",
+     "LEGAL PROCEEDINGS",
+     "4"
+    ],
+    [
+     "ITEM 4",
+     "MINE SAFETY DISCLOSURES",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "5"
+    ],
+    [
+     "ITEM 6",
+     "SELECTED FINANCIAL DATA",
+     "5"
+    ],
+    [
+     "ITEM 7",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "6"
+    ],
+    [
+     "ITEM 7A",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "8"
+    ],
+    [
+     "ITEM 8",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "8"
+    ],
+    [
+     "ITEM 9",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "8"
+    ],
+    [
+     "ITEM 9A",
+     "CONTROLS AND PROCEDURES",
+     "8"
+    ],
+    [
+     "ITEM 9B",
+     "OTHER INFORMATION",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "10"
+    ],
+    [
+     "ITEM 11",
+     "EXECUTIVE COMPENSATION",
+     "12"
+    ],
+    [
+     "ITEM 12",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "13"
+    ],
+    [
+     "ITEM 13",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "14"
+    ],
+    [
+     "ITEM 14",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "15"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "16"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE NO",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nThe aggregate market value of voting and non-voting common equity held by non-affiliates as of June 30, 2025 was approximately $4,168,886 based upon 41,688,861 shares held by non-affiliates and the last reported sales price of $0.10 per share on such date.\nNumber of shares of common stock outstanding as of March 30, 2026: 61,882,172\nDocuments incorporated by reference\nListed below are documents, parts of which are incorporated herein by reference, and the part of this report into which the document is incorporated: None\nCHASE PACKAGING CORPORATION\nFORM 10-K\nFor the Fiscal Year ended December 31, 2025\nTABLE OF CONTENTS",
+   "prose_after": "2\nFORWARD-LOOKING STATEMENTS\nThis report contains forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934, and Section 27A of the Securities Act of 1933. Any statements contained in this report that are not statements of historical fact may be forward-looking statements. When we use the words \u201cintends,\u201d \u201cestimates,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinues,\u201d \u201canticipates,\u201d \u201cplans,\u201d \u201cexpects,\u201d \u201cbelieves,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cmay,\u201d \u201cwill\u201d or the negative of these terms or other comparable terminology, we are identifying forward-looking statements. Forward-looking statements involve risks and uncertainties, which may cause our actual results, performance or achievements to be materially different from those expressed or implied by forward-looking statements. These factors include our capital needs and our ability to find a suitable merger partner wishing to go public or a suitable private company to acquire to create investment value for the Company. Although we believe that the expectations reflected in the forward-looking statements are reasonable, we cannot guarantee future results, levels of activity, performance or achievements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025 Market Price",
+     "",
+     "",
+     "",
+     "2024 Market Price",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 31",
+     "$",
+     "0.100",
+     "$",
+     "0.036",
+     "$",
+     "0.600",
+     "$",
+     "0.002"
+    ],
+    [
+     "June 30",
+     "$",
+     "0.100",
+     "$",
+     "0.026",
+     "$",
+     "0.200",
+     "$",
+     "0.100"
+    ],
+    [
+     "September 30",
+     "$",
+     "0.100",
+     "$",
+     "0.016",
+     "$",
+     "0.198",
+     "$",
+     "0.033"
+    ],
+    [
+     "December 31",
+     "$",
+     "0.094",
+     "$",
+     "0.023",
+     "$",
+     "0.054",
+     "$",
+     "0.028"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 170,
+    "end_line": 181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "The Company neither rents nor owns any properties. The Company utilizes the office space and equipment of its management at no cost. The Company currently has no policy with respect to investment or interests in real estate, real estate mortgages, or securities of, or interests in, persons primarily engaged in real estate activities.\nITEM 3. LEGAL PROCEEDINGS.\nNone.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS, AND ISSUER PURCHASES OF EQUITY SECURITIES.\nThe Company\u2019s common stock is quoted on the OTC Pink Market under the symbol \u201cWHLT.\u201d Equiniti Trust Company, LLC, formerly American Stock Transfer and Trust Company, has determined that there were approximately 225 holders of record on December 31, 2025. Trading volume in the Company\u2019s securities has been nominal. The last reported high and low prices on December 31, 2025 were $0.094 and $0.094, respectively, and the last trade was $0.094.\nHigh and low closing stock prices for the Company\u2019s common stock in the years ended December 31, 2025 and 2024 are displayed in the following table:",
+   "prose_after": "The Company has never paid cash dividends on its shares of common stock and does not anticipate the payment of dividends on its shares of common stock in the foreseeable future.\nITEM 6. SELECTED FINANCIAL DATA.\nNot Applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION.\nResults of Operations\nFor the years ended December 31, 2025 and 2024\nRevenue\nThe Company had no operations and no revenue for the years ended December 31, 2025 and 2024 and its only income was from interest income on its short-term investments which are classified as cash and cash equivalents.\nOperating Expenses\nThe following table presents our total operating expenses for the years ended December 31, 2025 and 2024.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 160,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 188,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Audit and accounting fees",
+     "$",
+     "39,545",
+     "$",
+     "65,676"
+    ],
+    [
+     "Payroll expense",
+     "",
+     "20,707",
+     "",
+     "20,803"
+    ],
+    [
+     "Other general and administrative expense",
+     "",
+     "25,621",
+     "",
+     "18,408"
+    ],
+    [
+     "Total",
+     "$",
+     "86,623",
+     "$",
+     "104,887"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 204,
+    "end_line": 217
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has never paid cash dividends on its shares of common stock and does not anticipate the payment of dividends on its shares of common stock in the foreseeable future.\nITEM 6. SELECTED FINANCIAL DATA.\nNot Applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION.\nResults of Operations\nFor the years ended December 31, 2025 and 2024\nRevenue\nThe Company had no operations and no revenue for the years ended December 31, 2025 and 2024 and its only income was from interest income on its short-term investments which are classified as cash and cash equivalents.\nOperating Expenses\nThe following table presents our total operating expenses for the years ended December 31, 2025 and 2024.",
+   "prose_after": "Operating expenses consist mostly of audit and accounting fees and payroll. There were less operating expenses for the year ended December 31, 2025, mainly due to lower legal and professional fees incurred in 2025. Other general and administrative expenses are comprised of transfer agent and EDGAR filer services and other services. These expenses were directly related to the maintenance of the corporate entity and the preparation and filing of reports with the Securities and Exchange Commission.\nLoss from Operation\nThe Company incurred a loss from operations of $86,623 and $104,887 for the years ended December 31, 2025 and 2024, respectively.\nOther Income (Expense)\nThe following table presents our total Other Income (Expense) for the years ended December 31, 2025 and 2024.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 188,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "$",
+     "9,881",
+     "$",
+     "15,938"
+    ],
+    [
+     "Other Income (Expense), net",
+     "$",
+     "9,881",
+     "$",
+     "15,938"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 230,
+    "end_line": 241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "Operating expenses consist mostly of audit and accounting fees and payroll. There were less operating expenses for the year ended December 31, 2025, mainly due to lower legal and professional fees incurred in 2025. Other general and administrative expenses are comprised of transfer agent and EDGAR filer services and other services. These expenses were directly related to the maintenance of the corporate entity and the preparation and filing of reports with the Securities and Exchange Commission.\nLoss from Operation\nThe Company incurred a loss from operations of $86,623 and $104,887 for the years ended December 31, 2025 and 2024, respectively.\nOther Income (Expense)\nThe following table presents our total Other Income (Expense) for the years ended December 31, 2025 and 2024.",
+   "prose_after": "Other income decreased by $6,057 for the year ended December 31, 2025 as compared to the year ended December 31, 2024. The decrease was driven by less interest income in 2025 as compared to 2024 and lower interest rates.\nNet Loss\nThe Company had a net loss of $76,742 for the year ended December 31, 2025, compared with a net loss of $88,949 for the year ended December 31, 2024. The decrease in net loss was due to a decrease in professional fees.\nLosses per share for the years ended December 31, 2025 and 2024 were $(0.00) and $(0.00) per share, respectively, based on the weighted-average shares issued and outstanding.\nIt is anticipated that future operating expenses will decrease and then stabilize as the Company complies with its periodic reporting requirements; however, expenses may increase as the Company works to effect a business combination, although there can be no assurance that the Company will be successful in effecting a business combination.\nLiquidity and Capital Resources\nAt December 31, 2025 the Company had cash and cash equivalents of $221,966, consisting of funds in bank account and U.S. Treasury Money Market Funds. Management believes that its cash and cash equivalents are sufficient for its business activities for at least the next twelve months and for the costs of seeking an acquisition of an operating business.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "$",
+     "(75,744)",
+     "",
+     "$",
+     "(90,461)",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net Decrease in Cash and Cash Equivalents",
+     "$",
+     "(75,744)",
+     "",
+     "$",
+     "(90,461)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 260,
+    "end_line": 273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION."
+    },
+    "note": null
+   },
+   "prose_before": "Losses per share for the years ended December 31, 2025 and 2024 were $(0.00) and $(0.00) per share, respectively, based on the weighted-average shares issued and outstanding.\nIt is anticipated that future operating expenses will decrease and then stabilize as the Company complies with its periodic reporting requirements; however, expenses may increase as the Company works to effect a business combination, although there can be no assurance that the Company will be successful in effecting a business combination.\nLiquidity and Capital Resources\nAt December 31, 2025 the Company had cash and cash equivalents of $221,966, consisting of funds in bank account and U.S. Treasury Money Market Funds. Management believes that its cash and cash equivalents are sufficient for its business activities for at least the next twelve months and for the costs of seeking an acquisition of an operating business.\nThe following table provides detailed information about our net cash flow for all years presented in this Report.\nCash Flow",
+   "prose_after": "Net cash of $75,744 and $90,461 were used in operations during the year ended December 31, 2025 and 2024, respectively.\nThe use of cash of $75,744 used in operating activities for the year ended December 31, 2025, principally resulted from the net loss of $76,742 offset by change in accounts payable and accrued expenses of $998.\nNo cash flows were used in or provided by investing activities during the years ended December 31, 2025 and 2024.\nNew Accounting Pronouncements\nRefer to the discussion of recently adopted/issued accounting pronouncements under Part II, Item 8, Notes to Financial Statements, Note 3: Significant Accounting Policies.\nFactors Which May Affect Future Results\nFuture earnings of the Company are dependent on interest rates earned on the Company\u2019s invested balances and expenses incurred. The Company expects to incur significant expenses in connection with its objective of identifying a merger partner or acquiring an operating business.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name, Age, and Business Experience",
+     "Positions with Company"
+    ],
+    [
+     "William J. Barrett, 86\n\n \n\nSecretary of the Company since 2001, Director of the Company from 1996 to 1997, rejoined the Board of Directors in 2001; Director of Dawson Geophysical Company (formerly TGC Industries, Inc. (\u201cTGC\u201d)), a company engaged in the geophysical services industry, from 1980 to 2021; Secretary of TGC from 1986 to November 1997; President of W. J. Barrett Associates, Inc., a private merchant banking firm, since June 2009; President of Barrett-Gardner Associates, Inc., a private merchant banking firm, from November 2002 until June 2009; previously Senior Vice President of Janney Montgomery Scott LLC, an investment banking firm, from 1978 to 2002; Director, Executive Vice President, and Secretary of Supreme Industries, Inc. (\u201cSupreme\u201d), a manufacturer of specialized truck bodies, from 1979 through September 2017 when Supreme was acquired by Wabash National Corporation. Mr. Barrett brings to the Board keen business and financial judgment and an extraordinary understanding of the Company\u2019s business, history, and organization, as well as extensive leadership experience.",
+     "Lead Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Arthur J. Gajarsa, 85\n\n \n\nJoined the Board of Directors in 2025; Jurist in Residence at New Hampshire School of Law from 2012 to the present; Director of Supreme Industries, Inc. (\u201cSupreme\u201d), a manufacturer of specialized truck bodies, from 2012 through 2017; Senior Counsel at the law firm of Wilmer, Cutler, Pickering, Hale and Dorr from January of 2013 through 2024; Trustee of Rensselaer Polytechnic Institute since 1994, Chairman of the Board of Trustees from 2011 through 2017, Vice Chairman from 1998 to 2010 and presently Chair Emeritus; Director of Georgetown University Board of Directors from 1996 to 2008, and Chairman of the Audit Committee, the Law Committee, and a member of the Executive Committee from 2002 to 2008; U.S. Circuit Judge for the U.S. Court of Appeals for the Federal Circuit from 1997 to 2012. Prior to his judicial appointment, Judge Gajarsa served as Senior Partner of Joseph, Gajarsa, McDermott & Reiner, P.C., and previously served as Special Counsel to the Secretary of the Interior and Commissioner of Indian Affairs. He also worked at the Department of Commerce at the USPTO and worked as a systems analyst at the Department of Defense. Judge Gajarsa provides the Board insight and experience in the areas of legal compliance, corporate mergers and acquisitions, commercial litigation, international trade and intellectual property.",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "We regularly review our system of internal control over financial reporting.\nDuring the year ended December 31, 2025, there were no changes in our internal controls over financial reporting that have materially affected, or are reasonably likely to affect materially, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS.\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nBoard of Directors\nInformation concerning each member of Chase\u2019s Board of Directors is set forth below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 340,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 389,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Herbert M. Gardner, 86\n\n \n\nVice President of the Company since 2001, Director of the Company from 1996 to 1997 and rejoined the Board of Directors in 2001; Director of TGC Industries, Inc. (\u201cTGC\u201d), a company engaged in the geophysical services industry, from 1980 until February 2015 when Dawson Geophysical Company acquired TGC; Executive Vice President of Barrett-Gardner Associates, Inc., a private merchant banking firm, from November 2002 until June 2009; previously Senior Vice President of Janney Montgomery Scott LLC, an investment banking firm, from 1978 to 2002; Chairman of the Board of Supreme Industries, Inc. (\u201cSupreme\u201d), a manufacturer of specialized truck bodies, from 1979 through September 2017 when Wabash National Corporation acquired Supreme, Chief Executive Officer of Supreme from 1979 to January 2011, President of Supreme from June 1992 to February 2006; former Director of Nu-Horizons Electronics Corp., an electronics component distributor, from 1984 until January 2011; and former Director of MKTG, Inc., a marketing and sales promotion company from 1997 until January 2010. Mr. Gardner was selected to serve as a director of the Company because of his strong executive management skills, his business acumen, and his experience as chief executive officer of another public company.",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 376,
+    "end_line": 388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 340,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 389,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Matthew W. Long CPA, MBA, 64\n\n \n\nJoined the Board of Directors in 2019, Chairman of Ryker Holdings, Inc., a private electrical construction company, served as Chief Financial Officer of ARC American from August 2019 through December 2022, served as Interim Chief Financial Officer for Spartan Motors, Inc. a publicly traded manufacturer of specialty vehicles until their Chief Financial Officer returned from medical leave at the end of 2018. Mr. Long served as a member of Board of Directors of Skyline Corporation serving on the Audit and Compensation Committees in 2017 and 2018 until the company was acquired in 2018. Mr. Long served as Chief Financial Officer, Treasurer, and Assistant Secretary of Supreme Industries, Inc. a publicly-traded leading manufacturer of truck bodies and specialized commercial vehicles from April 2011 until the company was acquired in September 2017 where he played a critical role in improving the company\u2019s profitability.",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Mark C. Neilson, 67\n\n \n\nJoined the Board of Directors in 2019, Founder/Managing Partner of Accretive CFO Services of San Diego LLC, a financial consulting services firm since December 2010; part owner of REF007, LLC, a San Diego-based franchise of Executive Peer Groups since April 2020; Director of Supreme Industries, Inc. from May 2003 to September 2017; Director of SmokerCraft, Inc., a manufacturer of pontoon and fishing boats, since December 2010; Director of Earthway Products, Inc., a manufacturer of fertilizer spreaders from December 2016 to August 2023; and Director of PenChecks, Inc., a provider of retirement plan distribution services from July 2020 to August 2025. Mr. Neilson qualifies as an \u201caudit committee financial expert\u201d under guidelines of the Securities and Exchange Commission",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Wayne A. Whitener, 74\n\n \n\nJoined the Board of Directors in 2009. Mr. Whitener, was Director of Dawson Geophysical Company (formerly TGC Industries, Inc.), a company engaged in the geophysical services industry, from 1984 until retiring in 2019; Executive Vice Chairman of Dawson since February 2015 until retirement, President of Dawson from July 1986 until February 2015; and Chief Executive Officer of Dawson from 1999 until February 2015. As the principal executive officer of another public company, Mr. Whitener provides valuable insight and guidance on the issues of corporate strategy and risk management.",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 391,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Executive Officers\nThe following table sets forth certain information concerning the persons who serve as executive officers of the Company and who will continue to serve in such positions at the discretion of the Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 389,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ann C. W. Green",
+     "84",
+     "Principal Executive Officer, Chief Financial Officer and Assistant Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 421,
+    "end_line": 424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "Executive Officers\nThe following table sets forth certain information concerning the persons who serve as executive officers of the Company and who will continue to serve in such positions at the discretion of the Board of Directors.",
+   "prose_after": "Ms. Green has served as Chief Financial Officer and Assistant Secretary of the Company since 2001. She is Vice President of W. J. Barrett Associates, Inc., a private merchant banking firm. Ms. Green previously served for over 20 years as Assistant Secretary of each of Supreme Corporation, a specialized manufacturer of truck bodies, and Dawson Geophysical Company (formerly known as TGC Industries, Inc.), a company engaged in the geophysical services industry, and for 15 years as Assistant Vice President of Janney Montgomery Scott, LLC, an investment banking firm.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Securities Exchange Act of 1934, as amended, requires the Company\u2019s directors and executive officers, and persons who own more than 10% of the Company\u2019s common stock, par value $.00001 per share (the \u201cCommon Stock\u201c), to file with the SEC certain reports of beneficial ownership of Common Stock. Based solely on copies of such reports furnished to the Company and written representations that no other reports were required, the Company believes that all applicable Section 16(a) filing requirements were complied with by its directors, officers, and 10% shareholders during the last fiscal year.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 389,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "Stock\n\nAwards",
+     "",
+     "Option\n\nAwards",
+     "Non-Equity\n\nIncentive\n\nPlan Compensation ($)",
+     "Nonqualified\n\nDeferred Compensation\n\nEarnings ($)",
+     "All\n\nOther\n\nCompensation",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ann C.W. Green, Chief Financial Officer",
+     "2025",
+     "$",
+     "17,000",
+     "-0-",
+     "$",
+     "0",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "$",
+     "17,000"
+    ],
+    [
+     "",
+     "2024",
+     "$",
+     "17,000",
+     "-0-",
+     "$",
+     "0",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "$",
+     "17,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "The Board of Directors has not established a separate audit committee within the meaning of the Exchange Act. Instead, the entire Board acts as the audit committee and will continue to do so for the foreseeable future. The Board of Directors has determined that William J. Barrett qualifies as an audit committee financial expert. He is not an independent director.\nCode of Ethics\nThe Board of Directors has not adopted a code of ethics that applies to its executive officers. Since the Company is a development stage company with no operations and since only one of its executive officers receives compensation, the Board of Directors believes that a code of ethics is not necessary to deter wrongdoing and to promote honest and ethical conduct and accurate disclosure in the Company\u2019s public communications.\nITEM 11. EXECUTIVE COMPENSATION.\nThe Company\u2019s Board of Directors has agreed to pay the Company\u2019s Chief Financial Officer an annual salary of $17,000. Board members are reimbursed for out-of-pocket expenses incurred in connection with Company business and development. There were no equity awards at fiscal year-end.\nSummary Compensation Table",
+   "prose_after": "Director Compensation\nDirectors of the Company are not paid fees, but are reimbursed for expenses incurred in connection with attendance at meetings of the Board of Directors and out-of-pocket expenses incurred in connection with Company business and development.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Title of Class",
+     "Amount and\n\nNature of\n\nBeneficial\n\nOwnership",
+     "",
+     "",
+     "Approximate\n\nPercentage\n\nof Class (1)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "William J. Barrett\n\nPO Box 126, Rumson, NJ 07760",
+     "Common",
+     "",
+     "8,954,524",
+     "(2)(4)",
+     "",
+     "14.47",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Arthur J. Gajarsa\n\nPO Box 126, Rumson, NJ 07760",
+     "Common",
+     "",
+     "4,145,825",
+     "(4)",
+     "",
+     "6.70",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Herbert M. Gardner\n\nPO Box 126, Rumson, NJ 07760",
+     "Common",
+     "",
+     "5,842,683",
+     "(3)(4)",
+     "",
+     "9.44",
+     "%"
+    ],
+    [
+     "5,842,683",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Matthew W. Long\n\n25580 North Shore Dr., Elkhart, IN 46514",
+     "Common",
+     "",
+     "400,000",
+     "",
+     "",
+     "0.65",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mark C. Neilson\n\n7140 Calabria Court #B, San Diego, CA 92122",
+     "Common",
+     "",
+     "400,000",
+     "",
+     "",
+     "0.65",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wayne A. Whitener\n\n101 E. Park Blvd., Ste 955 Plano, TX 75074",
+     "Common",
+     "",
+     "472,738",
+     "",
+     "",
+     "0.76",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ann C. W. Green\n\nPO Box 126, Rumson, NJ 07760",
+     "Common",
+     "",
+     "1,557,541",
+     "(4)",
+     "",
+     "2.52",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors & officers as a group (7 persons)",
+     "Common",
+     "",
+     "21,773,311",
+     "(2)(3)(4)",
+     "",
+     "35.19",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 467,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "Director Compensation\nDirectors of the Company are not paid fees, but are reimbursed for expenses incurred in connection with attendance at meetings of the Board of Directors and out-of-pocket expenses incurred in connection with Company business and development.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.",
+   "prose_after": "(1) The percentage calculations have been made in accordance with Rule 13d-3(d)(1) promulgated under the Securities Exchange Act of 1934, as amended, based on number of shares outstanding plus the Common Stock underlying the warrants.\n(2) Includes 1,492,169 shares of Common Stock (includes the Common Stock underlying warrants) owned by William J. Barrett\u2019s wife. Mr. Barrett has disclaimed beneficial ownership of these shares.\n(3) Includes 804,826 shares of Common Stock (includes the Common Stock underlying warrants) owned by the Generation Skipping Marital Trust U/W/O Mary K. Gardner. Mr. Gardner has disclaimed beneficial ownership of these shares.\n(4) Includes the Common Stock underlying warrants held by the following directors and executive officers:",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Beneficial Owner",
+     "Number of\n\nCommon Shares\n\nUnderlying Warrants\n\nBeneficially Owned",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "William J. Barrett (1)",
+     "",
+     "245,500"
+    ],
+    [
+     "Arthur J. Gajarsa",
+     "",
+     "503,500"
+    ],
+    [
+     "Herbert M. Gardner (2)",
+     "",
+     "712,500"
+    ],
+    [
+     "Matthew W. Long",
+     "",
+     "-"
+    ],
+    [
+     "Mark C. Neilson",
+     "",
+     "-"
+    ],
+    [
+     "Wayne A. Whitener",
+     "",
+     "-"
+    ],
+    [
+     "Ann C. W. Green",
+     "",
+     "118,500"
+    ],
+    [
+     "Total",
+     "",
+     "1,580,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 514,
+    "end_line": 535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) The percentage calculations have been made in accordance with Rule 13d-3(d)(1) promulgated under the Securities Exchange Act of 1934, as amended, based on number of shares outstanding plus the Common Stock underlying the warrants.\n(2) Includes 1,492,169 shares of Common Stock (includes the Common Stock underlying warrants) owned by William J. Barrett\u2019s wife. Mr. Barrett has disclaimed beneficial ownership of these shares.\n(3) Includes 804,826 shares of Common Stock (includes the Common Stock underlying warrants) owned by the Generation Skipping Marital Trust U/W/O Mary K. Gardner. Mr. Gardner has disclaimed beneficial ownership of these shares.\n(4) Includes the Common Stock underlying warrants held by the following directors and executive officers:",
+   "prose_after": "_____________\n(1) Includes 167,000 shares of Common Stock underlying warrants held by the named person\u2019s spouse. Mr. Barrett has disclaimed beneficial ownership of the shares\n(2) Includes 89,000 shares of Common Stock underlying warrants held by the Generation Skipping Marital Trust U/W/O Mary K. Gardner. Mr. Gardner has disclaimed beneficial ownership of the shares.\nDepositories such as The Depository Trust Company (Cede & Company) as of March 14, 2025 held, in the aggregate, more than 5% of the then outstanding Common Stock voting shares. The Company understands that such depositories hold such shares for the benefit of various participating brokers, banks, and other institutions which are entitled to vote such shares according to the instructions of the beneficial owners thereof. The Company has no reason to believe that any of such beneficial owners hold more than 5% of the Company\u2019s outstanding voting securities.\nEQUITY COMPENSATION PLANS\nThere are no equity compensation plans which have been approved by the Company\u2019s stockholders.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal year ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "1. Audit fees",
+     "$",
+     "26,100",
+     "$",
+     "19,424"
+    ],
+    [
+     "2. Audit-related fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "3. Tax fees",
+     "",
+     "650",
+     "",
+     "600"
+    ],
+    [
+     "4. All other fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Totals",
+     "$",
+     "26,750",
+     "$",
+     "20,024"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 563,
+    "end_line": 577
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "The Common Stock is quoted on the over-the-counter market operated by OTCID Market, which does not impose any director independence requirements. Using the director independence requirements set forth in NASDAQ rule 5605(a)(2), the Company has four independent directors, Messrs. Arthur J. Gajarsa, Matthew W. Long, Mark C. Neilson and Wayne A. Whitener.\nTransactions and Relationships Involving Our Directors and Executive Officers\nThe Company did not engage in any transaction during the 2025 fiscal year, and does not currently propose to enter into any transaction, in which any related person had or will have a direct or indirect material interest in excess of $120,000.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe Company paid or accrued the following fees in the prior two fiscal years to Heaton & Company, PLLC (dba Pinnacle Accountancy Group of Utah), which has served as the Company\u2019s independent registered public accounting firm from January 2019 to October 16, 2023, and to GreenGrowth CPAs which has served as the Company\u2019s independent registered public accounting firm since October 17, 2023.",
+   "prose_after": "We have considered whether the provision of any non-audit services, currently or in the future, is compatible with our auditors maintaining its independence and have determined that these services do not compromise their independence.\n\u201cAudit Fees\u201d consisted of the fees billed for professional services rendered for the audit of our annual financial statements and the reviews of the financial statements included in our Forms 10-K and for any other services that were normally provided by our independent auditors in connection with our statutory and regulatory filings or engagements.\n\u201cTax Fees\u201d consisted of the fees billed by an outside accountancy firm for preparation of the Company\u2019s Corporate Income Tax Return.\nThe Board of Directors, which functions as the audit committee, makes reasonable inquiry as to the independence of the Company\u2019s independent registered public accounting firm based upon the considerations set forth in Rule 2-01 of Regulation S-X, including the examination of representation letters furnished by the independent registered public accounting firm.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a)",
+     "The following documents are filed as a part of this report:",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(1)",
+     "Financial Statements included in Item 8 above are filed as part of this annual report."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(2)",
+     "Financial Statement Schedules included in Item 8 herein:"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "All schedules for which provision is made in the applicable accounting regulations of the Securities and Exchange Commission are not required under the related instructions or are inapplicable and therefore, have been omitted."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(3)",
+     "Exhibits: The information required by this Item 15(a)(3) is set forth in the Index to Exhibits accompanying this Annual Report on Form 10-K."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "We have considered whether the provision of any non-audit services, currently or in the future, is compatible with our auditors maintaining its independence and have determined that these services do not compromise their independence.\n\u201cAudit Fees\u201d consisted of the fees billed for professional services rendered for the audit of our annual financial statements and the reviews of the financial statements included in our Forms 10-K and for any other services that were normally provided by our independent auditors in connection with our statutory and regulatory filings or engagements.\n\u201cTax Fees\u201d consisted of the fees billed by an outside accountancy firm for preparation of the Company\u2019s Corporate Income Tax Return.\nThe Board of Directors, which functions as the audit committee, makes reasonable inquiry as to the independence of the Company\u2019s independent registered public accounting firm based upon the considerations set forth in Rule 2-01 of Regulation S-X, including the examination of representation letters furnished by the independent registered public accounting firm.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Bylaws of the Company dated March 28, 2008, filed as Exhibit 3.1 to the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on April 3, 2008, and incorporated herein by reference ."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "State of Delaware Certificate of Incorporation and State of Delaware Certificate of Correction"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Warrant Agreement and Warrant Certificate dated as of September 7, 2007, filed as Exhibit 10.4 to the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on September 11, 2007, and incorporated herein by reference."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Amendment No. 2 to Warrant Agreement filed as Exhibit 10.1 to the Company\u2019s Form 10-Q for the quarterly period ended September 30, 2014, filed with the Securities and Exchange Commission on November 13, 2014, and incorporated herein by reference."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Amendment No. 3 to Warrant Agreement filed as Exhibit 10.1 to the Company\u2019s Form 10-Q for the quarterly period ended September 30, 2015, filed with the Securities and Exchange Commission on October 22, 2015, and incorporated herein by reference."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "_______________\n* filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 586,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CHASE PACKAGING CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Ann C. W. Green",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Ann C. W. Green",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Principal Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CHASE PACKAGING CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "_______________\n* filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Ann C.W. Green",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Ann C. W. Green",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer and Assistant Secretary",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive, Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ William J. Barrett",
+     ""
+    ],
+    [
+     "",
+     "",
+     "William J. Barrett",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Lead Director",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Arthur J. Gajarsa",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Arthur J. Gajarsa",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Herbert M. Gardner",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Herbert M. Gardner",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Matthew W. Long",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Matthew W. Long",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Mark C. Neilson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Mark C. Neilson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2026",
+     "By:",
+     "/s/ Wayne Whitener",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Wayne Whitener",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 663,
+    "end_line": 699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "FOR THE YEARS ENDED DECEMBER 31, 2025 AND 2024\n- INDEX TO FINANCIAL STATEMENTS -",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID: 6580)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Pages"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "FOR THE YEARS ENDED DECEMBER 31, 2025 AND 2024\n- INDEX TO FINANCIAL STATEMENTS -",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Shareholders\nof Chase Packaging Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Chase Packaging Corporation (the Company) as of December 31, 2025 and 2024, and the related statements of operations, stockholders\u2019 equity, and cash flows for the years then ended and the related notes collectively referred to as the financial statements.\nIn our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2025 and 2024, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "221,966",
+     "",
+     "$",
+     "297,710",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "221,966",
+     "",
+     "$",
+     "297,710",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "4,471",
+     "",
+     "$",
+     "3,473",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "4,471",
+     "",
+     "",
+     "3,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $1.00 par value; 4,000,000 authorized: Series A 10% Convertible preferred stock; 50,000 shares authorized; no shares issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.00001 par value 200,000,000 shares authorized; 62,379,759 shares issued as of December 31, 2025 and 2024 and 61,882,172 outstanding as of December 31, 2025 and 2024",
+     "",
+     "619",
+     "",
+     "",
+     "619",
+     ""
+    ],
+    [
+     "Treasury stock, $0.00001 par value 497,587 shares as of December 31, 2025 and 2024",
+     "",
+     "(49,759)",
+     "",
+     "",
+     "(49,759)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "8,839,367",
+     "",
+     "",
+     "8,839,367",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(8,572,732)",
+     "",
+     "",
+     "(8,495,990)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "217,495",
+     "",
+     "",
+     "294,237",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "221,966",
+     "",
+     "$",
+     "297,710",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 760,
+    "end_line": 797
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matter\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. We determined that there were no critical audit matters.\nMarch 27, 2026\nWe have served as the Company\u2019s auditor since 2023.\nLos Angeles, California\nPCAOB ID Number 6580\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expense",
+     "$",
+     "86,623",
+     "",
+     "$",
+     "104,887",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(86,623)",
+     "",
+     "",
+     "(104,887)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "9,881",
+     "",
+     "",
+     "15,938",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSE)",
+     "",
+     "9,881",
+     "",
+     "",
+     "15,938",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE INCOME TAXES",
+     "",
+     "(76,742)",
+     "",
+     "",
+     "(88,949)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(76,742)",
+     "",
+     "$",
+     "(88,949)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS PER COMMON SHARE \u2013 BASIC AND DILUTED",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE COMMON SHARES OUTSTANDING \u2013 BASIC AND DILUTED",
+     "",
+     "61,882,172",
+     "",
+     "",
+     "61,882,172",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2025 AND 2024",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "Additional\n\nPaid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "62,379,759",
+     "$",
+     "619",
+     "$",
+     "8,839,367",
+     "$",
+     "(8,407,041)",
+     "",
+     "",
+     "(497,587)",
+     "",
+     "$",
+     "(49,759)",
+     "",
+     "$",
+     "383,186",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2024",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(88,949)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(88,949)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024",
+     "",
+     "62,379,759",
+     "$",
+     "619",
+     "$",
+     "8,839,367",
+     "$",
+     "(8,495,990)",
+     "",
+     "",
+     "(497,587)",
+     "",
+     "$",
+     "(49,759)",
+     "",
+     "$",
+     "294,237",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2025",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(76,742)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(76,742)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2025",
+     "",
+     "62,379,759",
+     "$",
+     "619",
+     "$",
+     "8,839,367",
+     "$",
+     "(8,572,732)",
+     "",
+     "",
+     "(497,587)",
+     "",
+     "$",
+     "(49,759)",
+     "",
+     "$",
+     "217,495",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 840,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2025 AND 2024",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(76,742)",
+     "",
+     "$",
+     "(88,949)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "998",
+     "",
+     "",
+     "(1,512)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(75,744)",
+     "",
+     "",
+     "(90,461)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "(75,744)",
+     "",
+     "",
+     "(90,461)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, Beginning of Year",
+     "",
+     "297,710",
+     "",
+     "",
+     "388,171",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF YEAR",
+     "$",
+     "221,966",
+     "",
+     "$",
+     "297,710",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2025 AND 2024\nNOTE 1 - BASIS OF PRESENTATION:\nChase Packaging Corporation (\u201cthe Company\u201d), a Delaware Corporation, previously manufactured woven paper mesh for industrial applications and polypropylene mesh fabric bags for agricultural use, and distributed agricultural packaging manufactured by other companies. Management\u2019s plans for the Company include securing a merger or acquisition, raising additional capital, and other strategies designed to optimize shareholder value. However, no assurance can be given that management will be successful in its efforts. The failure to achieve these plans will have a material adverse effect on the Company\u2019s financial position, results of operations, and ability to continue as a going concern.\nNOTE 2 - LIQUIDITY:\nAt December 31, 2025 and 2024, the Company had cash and cash equivalents of $221,966 and $297,710, respectively, consisting of cash and U.S. Treasury Money Market Funds. Our net losses incurred for the years ended December 31, 2025 and 2024, amounted to $76,742 and $88,949, respectively, and we had working capital of $217,495 and $294,237 at December 31, 2025 and 2024, respectively. Management believes that its cash and cash equivalents are sufficient for its business activities for at least the next twelve months and for the costs of seeking an acquisition of an operating business.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 901,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets and valuation allowances consist of:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carry forwards",
+     "$",
+     "328,675",
+     "",
+     "$",
+     "309,675",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(328,675)",
+     "",
+     "",
+     "(309,675)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 957,
+    "end_line": 971
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES:"
+    }
+   },
+   "prose_before": "The Company has recorded a full valuation allowance on its net deferred tax assets and therefore any impact on the value of the Company\u2019s deferred tax assets will be offset by a change in the valuation allowance, which increased by $19,000 and $22,240 during the years ended December 31, 2025 and 2024, respectively.\nOur tax provision is determined using an estimate of our annual effective tax rate adjusted for discrete items, if any, that are taken into account in the relevant period. The 2025 and 2024 annual effective tax rate is estimated to be a combined 25%, respectively for the U.S. combined federal and state statutory tax rates. We review tax uncertainties in light of changing facts and circumstances and adjust them accordingly. As of December 31, 2025 and 2024, there were no tax contingencies or unrecognized tax positions recorded.\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities recognized for financial reporting, and the amounts recognized for income tax purposes. The significant components of deferred tax assets (at an approximate 25% effective tax rate) as of December 31, 2025 and 2024, respectively, are as follows:",
+   "prose_after": "The income tax provision differs from the amount of income tax determined by applying the combined U.S federal and state tax rate (25%) for the years ended December 31, 2025 and 2024 due to the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Book income",
+     "$",
+     "(19,000)",
+     "",
+     "$",
+     "(22,240)",
+     ""
+    ],
+    [
+     "Warrant modification expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "19,000",
+     "",
+     "",
+     "22,240",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 974,
+    "end_line": 987
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES:"
+    }
+   },
+   "prose_before": "The income tax provision differs from the amount of income tax determined by applying the combined U.S federal and state tax rate (25%) for the years ended December 31, 2025 and 2024 due to the following:",
+   "prose_after": "The Company has a net operating loss carry forward for federal and state tax purposes of approximately $1,314,700 and $1,238,800 as of December 31, 2025 and 2024, respectively, that is potentially available to offset future taxable income. The Act changes the rules on net operating loss carry forwards. The 20-year limitation was eliminated for losses incurred after January 1, 2018, giving the taxpayer the ability to carry forward losses indefinitely. However, net operating loss carry forward arising after January 1, 2018, will now be limited to 80 percent of taxable income.\nFor financial reporting purposes, no deferred tax asset was recognized because at December 31, 2025 and 2024, management estimates that it is more likely than not that substantially all of the net operating losses will expire unused. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences are deductible. The timing and manner in which we can utilize our net operating loss carry forward and future income tax deductions in any year may be limited by provisions of the Internal Revenue Code regarding the change in ownership of corporations. Such limitation may have an impact on the ultimate realization of the Company\u2019s carry forwards and future tax deductions. Section 382 of the Internal Revenue Code (\u201cSection 382\u201d) imposes limitations on a corporation\u2019s ability to utilize net operating losses if it experiences an \u201cownership change.\u201d In general terms, an ownership change may result from transactions increasing the ownership of certain stockholders in the stock of a corporation by more than 50 percentage points over a three-year period. Any unused annual limitation may be carried over to later years, and the amount of the limitation may under certain circumstances be increased by the built-in gains in assets held by us at the time of the change that are recognized in the five-year period after the change. Upon review of the ownership shifts, there has not been an ownership change as defined under Section 382.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Average risk-free interest rate",
+     "4.66",
+     "%"
+    ],
+    [
+     "Average expected life-years",
+     "3",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "182.19",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1004,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "WARRANTS AND PREFERRED STOCK:"
+    }
+   },
+   "prose_before": "For financial reporting purposes, no deferred tax asset was recognized because at December 31, 2025 and 2024, management estimates that it is more likely than not that substantially all of the net operating losses will expire unused. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences are deductible. The timing and manner in which we can utilize our net operating loss carry forward and future income tax deductions in any year may be limited by provisions of the Internal Revenue Code regarding the change in ownership of corporations. Such limitation may have an impact on the ultimate realization of the Company\u2019s carry forwards and future tax deductions. Section 382 of the Internal Revenue Code (\u201cSection 382\u201d) imposes limitations on a corporation\u2019s ability to utilize net operating losses if it experiences an \u201cownership change.\u201d In general terms, an ownership change may result from transactions increasing the ownership of certain stockholders in the stock of a corporation by more than 50 percentage points over a three-year period. Any unused annual limitation may be carried over to later years, and the amount of the limitation may under certain circumstances be increased by the built-in gains in assets held by us at the time of the change that are recognized in the five-year period after the change. Upon review of the ownership shifts, there has not been an ownership change as defined under Section 382.\nThe Company had no uncertain tax positions that would necessitate recording of a tax related liability.\nThe Company\u2019s tax returns for the years ended December 31, 2025 and 2024 are open for examination under Federal Statute of Limitations.\nNOTE 6 - WARRANTS AND PREFERRED STOCK:\nWarrants\n2023 Extension of Warrant Terms\nThe Company, acting by resolution of its Board of Directors, amended and extended the expiration date of its outstanding warrants to purchase up to 6,909,000 shares of common stock to March 7, 2026. The terms of the warrants, including the exercise price of $0.15 per share, remain in effect without modification. The warrants modification expense of $345,450 was recorded as the incremental value of the modified warrants over the unmodified warrants on the modification date. Assumptions used in the Black Scholes option-pricing model for these warrants were as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life (Years)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2024",
+     "",
+     "6,909,000",
+     "$",
+     "0.15",
+     "",
+     "1.18"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Extended",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited/expired",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding at December 31,2025",
+     "",
+     "6,909,000",
+     "$",
+     "0.15",
+     "",
+     "0.18"
+    ],
+    [
+     "Exercisable at December 31, 2025",
+     "",
+     "6,909,000",
+     "$",
+     "0.15",
+     "",
+     "0.18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "WARRANTS AND PREFERRED STOCK:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "As of December 31, 2025 and 2024, the average remaining contractual life of the outstanding warrants was 0.18 years and 1.18 years, respectively. The intrinsic value of the warrants at December 31, 2025 was $0. On February 23, 2026 the warrant expiration date was extended to March 7, 2029.\nSeries A 10% Convertible Preferred Stock\nThe Company has authorized 4,000,000 shares of Preferred Stock, of which 50,000 shares have been designated as Series A 10% Convertible Preferred Stock. As of December 31, 2025 and 2024, there was no preferred stock issued or outstanding.\nNOTE 7 - STOCKHOLDERS\u2019 EQUITY AND STOCK-BASED COMPENSATION:\nAt December 31, 2025 and 2024, the Company had 61,882,172 common shares outstanding. Also outstanding were warrants relating to 6,909,000 shares of common stock, all totaling 68,791,172 shares of common stock and all common stock equivalents, outstanding at December 31, 2025 and 2024.\nThe Company did not incur any stock-based compensation or issue common or preferred stock or any other equity instruments during the years ended December 31, 2025 and 2024.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Carrying\n\nAmount In\n\nBalance Sheet\n\nDecember 31,",
+     "",
+     "Fair Value\n\nDecember 31,",
+     "",
+     "Fair Value\n\nMeasurement Using",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2025",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury and government securities",
+     "$",
+     "220,465",
+     "$",
+     "220,465",
+     "$",
+     "220,465",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Money market funds",
+     "",
+     "1,501",
+     "",
+     "1,501",
+     "",
+     "1,501",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "221,966",
+     "$",
+     "221,966",
+     "$",
+     "221,966",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2024",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury and government securities",
+     "$",
+     "295,088",
+     "$",
+     "295,088",
+     "$",
+     "295,088",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Money market funds",
+     "",
+     "2,622",
+     "",
+     "2,622",
+     "",
+     "2,622",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "297,710",
+     "$",
+     "297,710",
+     "$",
+     "297,710",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1062,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FAIR VALUE MEASUREMENTS:"
+    }
+   },
+   "prose_before": "Except for those assets and liabilities which are required by authoritative accounting guidance to be recorded at fair value in the Company\u2019s balance sheets, the Company has elected not to record any other assets or liabilities at fair value, as permitted by ASC 820. No events occurred during the years ended December 31, 2025 or 2024 which would require adjustment to the recognized balances of assets or liabilities which are recorded at fair value on a nonrecurring basis.\nThe Company determines fair values for its investment assets as follows:\nCash equivalents at fair value - the Company\u2019s cash equivalents, at fair value, consist of money market funds - marked to market on reporting dates. The Company\u2019s money market funds are classified within Level 1 of the fair value hierarchy since they are valued using quoted market prices from an exchange.\nThe following tables provide information on those assets measured at fair value on a recurring basis as of December 31, 2025 and 2024, respectively:",
+   "prose_after": "NOTE 9 - COMMITMENTS AND CONTINGENCIES:\nThe Company\u2019s Board of Directors has agreed to pay the Company\u2019s Chief Financial Officer an annual salary of $17,000. No other officers or directors of the Company receive cash compensation other than reimbursement of out-of-pocket expenses incurred in connection with Company business and development.\nNOTE 10 - SUBSEQUENT EVENTS:\nThe Company has evaluated subsequent events from December 31, 2025 through the issuance date of these financial statements and, except as follows, there are no other subsequent events requiring disclosure.\nThe Company, acting by resolution of its Board of Directors, amended and extended the expiration date of its outstanding warrants to purchase up to 6,909,000 shares of common stock to March 7, 2029. The terms of the warrants, including the exercise price of $0.15 per share, remain in effect without modification.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

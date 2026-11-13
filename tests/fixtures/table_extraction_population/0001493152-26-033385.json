@@ -1,0 +1,6604 @@
+{
+ "accession": "0001493152-26-033385",
+ "cik": "0000788611",
+ "form": "10-Q",
+ "filing_date": "2026-07-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "nevada",
+     "27-1865814"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended May 31, 2026\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 001-38015\nNEXTTRIP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1560 Sawgrass Corporate Parkway, Suite 400\nSunrise, Florida 33323\n(Address of principal executive offices)\n(954) 526-9688\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "NTRP",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1560 Sawgrass Corporate Parkway, Suite 400\nSunrise, Florida 33323\n(Address of principal executive offices)\n(954) 526-9688\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated Filer          [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. FINANCIAL STATEMENTS",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "58"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. CONTROLS AND PROCEDURES",
+     "58"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "60"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. LEGAL PROCEEDINGS",
+     "60"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A. RISK FACTORS",
+     "60"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS.",
+     "60"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. DEFAULTS UPON SENIOR SECURITIES",
+     "62"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. MINE SAFETY DISCLOSURES",
+     "62"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 5. OTHER INFORMATION",
+     "62"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 6. EXHIBITS",
+     "62"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "63"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated Filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: As of July 14, 2026, the issuer had 14,919,927 shares of common stock outstanding, inclusive of 96,774 shares of common stock classified as mezzanine equity.\nFORM 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS.\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2026",
+     "",
+     "",
+     "February 28, 2026",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "803,490",
+     "",
+     "$",
+     "1,696,090",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "252,375",
+     "",
+     "",
+     "119,168",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "1,436,115",
+     "",
+     "",
+     "1,336,026",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,491,980",
+     "",
+     "",
+     "3,151,284",
+     ""
+    ],
+    [
+     "Non-Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "974",
+     "",
+     "",
+     "1,603",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "4,159,741",
+     "",
+     "",
+     "4,258,220",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "40,167",
+     "",
+     "",
+     "40,167",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,123,684",
+     "",
+     "",
+     "3,123,684",
+     ""
+    ],
+    [
+     "Equity investments",
+     "",
+     "2,502,000",
+     "",
+     "",
+     "2,502,000",
+     ""
+    ],
+    [
+     "Total Non-Current Assets",
+     "",
+     "9,826,566",
+     "",
+     "",
+     "9,925,674",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "12,318,546",
+     "",
+     "$",
+     "13,076,958",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "959,794",
+     "",
+     "$",
+     "725,541",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "953,574",
+     "",
+     "",
+     "748,103",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "848,526",
+     "",
+     "",
+     "1,655,990",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "30,000",
+     "",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "Contingent consideration",
+     "",
+     "190,000",
+     "",
+     "",
+     "180,000",
+     ""
+    ],
+    [
+     "Licensing & royalty payment obligations, current portion",
+     "",
+     "198,698",
+     "",
+     "",
+     "136,582",
+     ""
+    ],
+    [
+     "Note payable",
+     "",
+     "310,817",
+     "",
+     "",
+     "386,072",
+     ""
+    ],
+    [
+     "Notes payable - related parties",
+     "",
+     "600,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "4,091,409",
+     "",
+     "",
+     "3,912,288",
+     ""
+    ],
+    [
+     "Non-Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SBA EIDL loan",
+     "",
+     "97,994",
+     "",
+     "",
+     "98,179",
+     ""
+    ],
+    [
+     "Licensing & royalty payment obligations, net of current portion",
+     "",
+     "232,116",
+     "",
+     "",
+     "305,090",
+     ""
+    ],
+    [
+     "Line of Credit \u2013 related parties",
+     "",
+     "3,000,000",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ],
+    [
+     "Total Non-Current Liabilities",
+     "",
+     "3,330,110",
+     "",
+     "",
+     "3,403,269",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "7,421,519",
+     "",
+     "",
+     "7,315,557",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 13)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mezzanine Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, par value $0.001; 10,000,000 shares authorized; 408,421 and 0 shares issued and outstanding, respectively",
+     "",
+     "807,997",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common Stock, par value $0.001; 250,000,000 shares authorized; 96,774 and 96,774 shares issued and outstanding, respectively",
+     "",
+     "387,000",
+     "",
+     "",
+     "387,000",
+     ""
+    ],
+    [
+     "Total Mezzanine Equity",
+     "",
+     "1,194,997",
+     "",
+     "",
+     "387,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder\u2019s Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, par value $0.001; 10,000,000 shares authorized; 150,316 and 100,316 shares issued and outstanding, respectively",
+     "",
+     "151",
+     "",
+     "",
+     "101",
+     ""
+    ],
+    [
+     "Common Stock, par value $0.001; 250,000,000 shares authorized; 14,396,694 and 13,978,171 shares issued and outstanding, respectively",
+     "",
+     "14,398",
+     "",
+     "",
+     "13,979",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "57,430,060",
+     "",
+     "",
+     "55,957,740",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(53,742,579)",
+     "",
+     "",
+     "(50,597,419)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "3,702,030",
+     "",
+     "",
+     "5,374,401",
+     ""
+    ],
+    [
+     "Total Liabilities, Mezzanine and Stockholders\u2019 Equity",
+     "$",
+     "12,318,546",
+     "",
+     "$",
+     "13,076,958",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS.\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 108,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 182,
+     "token": "REPEATING_FOOTER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "1,451,735",
+     "",
+     "$",
+     "138,827",
+     ""
+    ],
+    [
+     "Cost of revenue (exclusive of depreciation and amortization, shown separately below)",
+     "",
+     "(1,243,636)",
+     "",
+     "",
+     "(99,921)",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "208,099",
+     "",
+     "",
+     "38,906",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and benefits",
+     "",
+     "907,401",
+     "",
+     "",
+     "696,914",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "(13,660)",
+     "",
+     "",
+     "138,325",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "34,626",
+     "",
+     "",
+     "30,588",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "134,848",
+     "",
+     "",
+     "90,035",
+     ""
+    ],
+    [
+     "Professional service fees",
+     "",
+     "1,286,371",
+     "",
+     "",
+     "1,149,476",
+     ""
+    ],
+    [
+     "Technology",
+     "",
+     "254,728",
+     "",
+     "",
+     "321,815",
+     ""
+    ],
+    [
+     "Organization costs",
+     "",
+     "50,104",
+     "",
+     "",
+     "1,999,670",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "336,669",
+     "",
+     "",
+     "206,650",
+     ""
+    ],
+    [
+     "Provision for credit loss",
+     "",
+     "65,561",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "65,204",
+     "",
+     "",
+     "45,170",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "3,121,852",
+     "",
+     "",
+     "4,678,643",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(2,913,753)",
+     "",
+     "",
+     "(4,639,737)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on extinguishment of liability",
+     "",
+     "-",
+     "",
+     "",
+     "(70,100)",
+     ""
+    ],
+    [
+     "Gain on derivative liability",
+     "",
+     "40,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income (expense), net",
+     "",
+     "(251,583)",
+     "",
+     "",
+     "(276,333)",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(133)",
+     "",
+     "",
+     "540,245",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(211,716)",
+     "",
+     "",
+     "193,812",
+     ""
+    ],
+    [
+     "Net loss before provision for income taxes",
+     "",
+     "(3,125,469)",
+     "",
+     "",
+     "(4,445,925)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss before share of net loss in equity method investee",
+     "",
+     "(3,125,469)",
+     "",
+     "",
+     "(4,445,925)",
+     ""
+    ],
+    [
+     "Share of net loss of equity method investee",
+     "",
+     "-",
+     "",
+     "",
+     "(11,307)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,125,469)",
+     "",
+     "$",
+     "(4,457,232)",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "(19,691)",
+     "",
+     "",
+     "(64,463)",
+     ""
+    ],
+    [
+     "Net Loss Applicable to Common Stockholders",
+     "$",
+     "(3,145,160)",
+     "",
+     "$",
+     "(4,521,695)",
+     ""
+    ],
+    [
+     "Basic and diluted loss per common share",
+     "$",
+     "(0.22)",
+     "",
+     "$",
+     "(0.68)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number of common shares",
+     "",
+     "14,316,703",
+     "",
+     "",
+     "6,585,197",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 190,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFor the Three Months Ended May 31, 2026, and May 31, 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 188,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 243,
+     "token": "REPEATING_FOOTER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares\n\n\n\nOutstanding",
+     "",
+     "Preferred\n\n\n\nStock",
+     "",
+     "Shares\n\n\n\nOutstanding",
+     "",
+     "Common\n\n\n\nStock",
+     "",
+     "Paid-in\n\n\n\nCapital",
+     "",
+     "",
+     "Accumulated\n\n\n\nDeficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balances, February 28, 2026",
+     "",
+     "100,316",
+     "$",
+     "101",
+     "",
+     "13,978,171",
+     "$",
+     "13,979",
+     "$",
+     "55,957,740",
+     "",
+     "$",
+     "(50,597,419)",
+     "",
+     "$",
+     "5,374,401",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(3,125,469)",
+     "",
+     "",
+     "(3,125,469)",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "10,688",
+     "",
+     "",
+     "(19,691)",
+     "",
+     "",
+     "(9,003)",
+     ""
+    ],
+    [
+     "Issuance of securities pursuant to private placements",
+     "",
+     "50,000",
+     "",
+     "50",
+     "",
+     "54,582",
+     "",
+     "54",
+     "",
+     "299,997",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "300,101",
+     ""
+    ],
+    [
+     "Issuance of common shares for third party services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "280,140",
+     "",
+     "281",
+     "",
+     "769,886",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "770,167",
+     ""
+    ],
+    [
+     "Issuance of investor warrants pursuant to preferred private placement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "132,990",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "132,990",
+     ""
+    ],
+    [
+     "Issuance of placement agent warrants pursuant to preferred private placement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "50,003",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,003",
+     ""
+    ],
+    [
+     "Issuance of securities for equity investments",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "70,000",
+     "",
+     "70",
+     "",
+     "227,430",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "227,500",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(5,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "13,801",
+     "",
+     "14",
+     "",
+     "(13,674)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(13,660)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, May 31, 2026",
+     "",
+     "150,316",
+     "$",
+     "151",
+     "",
+     "14,396,694",
+     "$",
+     "14,398",
+     "$",
+     "57,430,060",
+     "",
+     "$",
+     "(53,742,579)",
+     "",
+     "$",
+     "3,702,030",
+     ""
+    ],
+    [
+     "Balances, February 28, 2025",
+     "",
+     "3,106,616",
+     "$",
+     "3,107",
+     "",
+     "1,656,738",
+     "$",
+     "1,657",
+     "$",
+     "41,710,126",
+     "",
+     "$",
+     "(34,349,823)",
+     "",
+     "$",
+     "7,365,067",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(4,457,232)",
+     "",
+     "",
+     "(4,457,232)",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "45,643",
+     "",
+     "46",
+     "",
+     "64,417",
+     "",
+     "",
+     "(64,463)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred Shares Issued for FSA Travel, LLC acquisition",
+     "",
+     "282,258",
+     "",
+     "282",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "875,359",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "875,641",
+     ""
+    ],
+    [
+     "Issuance of common shares for Journy.tv asset acquisition",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "20,000",
+     "",
+     "20",
+     "",
+     "115,180",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "115,200",
+     ""
+    ],
+    [
+     "Issuance of common shares pursuant to reverse acquisition of Sigma",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,843,993",
+     "",
+     "5,844",
+     "",
+     "(5,844)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common shares for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "125,000",
+     "",
+     "125",
+     "",
+     "476,075",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "476,200",
+     ""
+    ],
+    [
+     "Warrants issued in connection with debt conversion",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "30,775",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "30,775",
+     ""
+    ],
+    [
+     "Warrants issued in connection with bridge loan financing",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "177,398",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "177,398",
+     ""
+    ],
+    [
+     "Issuance of securities for directors\u2019 services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,948,544",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,948,544",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "138,325",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "138,325",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, May 31, 2025",
+     "",
+     "3,388,874",
+     "",
+     "3,389",
+     "",
+     "7,691,374",
+     "",
+     "7,692",
+     "",
+     "45,530,355",
+     "",
+     "",
+     "(38,871,518)",
+     "",
+     "",
+     "6,669,918",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFor the Three Months Ended May 31, 2026, and May 31, 2025",
+   "prose_after": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 249,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 291,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "May 31, 2026",
+     "",
+     "",
+     "May 31, 2025",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss) \u2013 Continuing Operations",
+     "$",
+     "(3,125,469)",
+     "",
+     "$",
+     "(4,457,232)",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Income (Loss) to Net Cash Used in Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization \u2013 property and equipment and intangibles",
+     "",
+     "336,669",
+     "",
+     "",
+     "206,650",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "113,533",
+     "",
+     "",
+     "231,740",
+     ""
+    ],
+    [
+     "Provision for credit loss",
+     "",
+     "65,561",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on derivative liability",
+     "",
+     "(40,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shares issued for professional services",
+     "",
+     "552,952",
+     "",
+     "",
+     "694,912",
+     ""
+    ],
+    [
+     "Stock-based compensation - employees",
+     "",
+     "(13,660)",
+     "",
+     "",
+     "138,325",
+     ""
+    ],
+    [
+     "Stock-based compensation - directors",
+     "",
+     "-",
+     "",
+     "",
+     "1,948,544",
+     ""
+    ],
+    [
+     "Loss on extinguishment of liability",
+     "",
+     "-",
+     "",
+     "",
+     "70,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(133,207)",
+     "",
+     "",
+     "(87,554)",
+     ""
+    ],
+    [
+     "Related party receivable",
+     "",
+     "(65,561)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "344,626",
+     "",
+     "",
+     "183,327",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "439,724",
+     "",
+     "",
+     "(280,955)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(807,464)",
+     "",
+     "",
+     "210,728",
+     ""
+    ],
+    [
+     "Licensing & royalty payment obligations, current portion",
+     "",
+     "62,116",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Licensing & royalty payment obligations, net of current portion",
+     "",
+     "(72,974)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "SBA loan",
+     "",
+     "(185)",
+     "",
+     "",
+     "98,757",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(2,343,339)",
+     "",
+     "",
+     "(1,042,658)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized software development costs",
+     "",
+     "(237,561)",
+     "",
+     "",
+     "(81,503)",
+     ""
+    ],
+    [
+     "FSA Travel LLC acquisition",
+     "",
+     "-",
+     "",
+     "",
+     "(900,000)",
+     ""
+    ],
+    [
+     "JOURNY.tv asset purchase",
+     "",
+     "-",
+     "",
+     "",
+     "(300,000)",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(237,561)",
+     "",
+     "",
+     "(1,281,503)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of preferred shares",
+     "",
+     "150,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common shares",
+     "",
+     "150,100",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "(101,800)",
+     "",
+     "",
+     "192,700",
+     ""
+    ],
+    [
+     "Advances from related parties",
+     "",
+     "600,000",
+     "",
+     "",
+     "1,200,000",
+     ""
+    ],
+    [
+     "Proceeds from issuance of Mezzanine Equity",
+     "",
+     "1,015,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Offering Costs",
+     "",
+     "(125,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "1,688,300",
+     "",
+     "",
+     "1,392,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH FOR PERIOD",
+     "",
+     "(892,600)",
+     "",
+     "",
+     "(931,461)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "1,696,090",
+     "",
+     "",
+     "1,062,367",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "803,490",
+     "",
+     "$",
+     "130,906",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash Investing and Financing Activities Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of preferred shares pursuant to FSA Travel, LLC acquisition",
+     "$",
+     "-",
+     "",
+     "$",
+     "875,641",
+     ""
+    ],
+    [
+     "Issuance of common shares pursuant to JOURNY.tv asset purchase",
+     "$",
+     "-",
+     "",
+     "$",
+     "115,200",
+     ""
+    ],
+    [
+     "Issuance of common shares for third party services",
+     "$",
+     "770,167",
+     "",
+     "$",
+     "476,200",
+     ""
+    ],
+    [
+     "Issuance of common stock warrants in connection with private placement",
+     "$",
+     "50,003",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "$",
+     "19,691",
+     "",
+     "$",
+     "64,463",
+     ""
+    ],
+    [
+     "Disclosure of Cash Paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "26,381",
+     "",
+     "$",
+     "23,159",
+     ""
+    ],
+    [
+     "Income Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 299,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": null
+   },
+   "prose_before": "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO UNAUDITED CONDENSED FINANCIAL STATEMENTS\nMay 31, 2026\nNOTE 1 - Business Description and Going Concern\nSigma Additive Solutions, Inc. (\u201cSigma\u201d), the legal acquiror of NextTrip Holdings, Inc., was initially incorporated as Messidor Limited in Nevada on December 23, 1985, and changed its name to Framewaves Inc. in 2001. On September 27, 2010, the name was changed to Sigma Labs, Inc. On May 17, 2022, Sigma Labs, Inc. began doing business as Sigma Additive Solutions, and on August 9, 2022, changed its name to Sigma Additive Solutions, Inc.\nOn March 11, 2024, Sigma filed a Certificate of Amendment to its Amended and Restated Articles of Incorporation, as amended, with the Secretary of State of the State of Nevada, pursuant to which, effective as of 12:01 a.m. Pacific time on March 13, 2024, among other things, Sigma\u2019s corporate name was changed from Sigma Additive Solutions, Inc. to \u201cNextTrip, Inc.\u201d\nThe Company\u2019s corporate office is located at 1560 Sawgrass Corporate Parkway, Suite 400, Sunrise Florida 33323. The consolidated financial statements include the accounts of the Company\u2019s wholly-owned subsidiaries, NextTrip Holdings Inc. incorporated on October 22, 2015, Extraordinary Vacations USA, Inc., incorporated on June 24, 2002, Five Star Alliance, LLC, organized on March 9, 2018, and TA Pipeline, LLC, organized on July 1, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 370,
+     "token": "REPEATING_FOOTER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2026",
+     "",
+     "",
+     "Date of Issuance \u2013\n\n\n\nAugust 6, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value",
+     "",
+     "Input Level",
+     "Fair Value",
+     "",
+     "Input Level"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability \u2013 Put Option",
+     "$",
+     "30,000",
+     "Level 3",
+     "$",
+     "130,000",
+     "Level 3"
+    ],
+    [
+     "Contingent Consideration \u2013 TA Milestone Payment",
+     "$",
+     "190,000",
+     "Level 3",
+     "$",
+     "180,000",
+     "Level 3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 463,
+    "end_line": 474
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "In addition to the TA Closing Consideration, and as further consideration for the TA Acquisition, the Company is required to make an additional payment to the TA Members in the form of an earnout (the \u201cTA Milestone Payment\u201d), which shall be in an amount equal to five percent (5%) of the net revenues generated by TA during the 12 month period after the Closing Date (the \u201cMilestone Period\u201d), up to a maximum of $200,000. The TA Milestone Payment shall be paid to the TA Members within 10 days following completion of the Milestone Period and will be payable fifty percent (50%) in cash and fifty percent (50%) in restricted shares of Company common stock (the \u201cTA Milestone Shares\u201d. The TA Milestone Payment is classified as a liability pursuant to ASC 480 since the Company may be required to repurchase the TA Milestone Shares upon the occurrence of certain events outside the Company\u2019s control. As such. the TA Milestone Payment will be marked to market at each reporting period.\nThe fair values of the Put Option and the TA Milestone Payment measured on a recurring basis are as follows:\nSchedule of Fair Values of the Put Option and the TA Milestone Payment Measured On a Recurring Basis",
+   "prose_after": "The following table presents a reconciliation of the derivative liability measured at fair value on a recurring basis using significant unobservable input (Level 3):\nSchedule of Derivative Liability Measured at Fair Value On a Recurring Basis",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Put Option",
+     "",
+     "",
+     "TA Milestone\n\n\n\nPayment"
+    ],
+    [
+     "Fair Value on Issuance Date",
+     "$",
+     "130,000",
+     "",
+     "$",
+     "180,000"
+    ],
+    [
+     "Change in fair value",
+     "$",
+     "(100,000)",
+     "",
+     "",
+     "10,000"
+    ],
+    [
+     "Fair value on May 31, 2026",
+     "$",
+     "30,000",
+     "",
+     "$",
+     "190,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 480,
+    "end_line": 491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The following table presents a reconciliation of the derivative liability measured at fair value on a recurring basis using significant unobservable input (Level 3):\nSchedule of Derivative Liability Measured at Fair Value On a Recurring Basis",
+   "prose_after": "Helena Global Investment Opportunities 1 Ltd. Private Placement\nClassification of Redeemable Convertible Preferred Stock\nThe Company classifies its Series B Convertible Preferred Stock as mezzanine equity in accordance with ASC 480-10-S99-3A because the redemption obligation, while at a fixed date, is not unconditional from the Company\u2019s perspective. The holder retains the right to convert the Series B Preferred Stock into Common Stock at any time prior to the mandatory redemption date and the right to elect a one-time extension of the mandatory redemption date. As a result, whether redemption occurs (in cash) or is settled through conversion (in shares), and the timing of any such redemption, is outside the Company\u2019s sole control. The Series B Convertible Preferred Stock is presented between liabilities and stockholders\u2019 equity on the balance sheet.\nInitial Measurement\nProceeds from the issuance of the Series B Convertible Preferred Stock and detachable Investor Warrant are allocated to the two freestanding instruments using the relative fair value method pursuant to ASC 470-20-25-2. The portion of proceeds allocated to the Investor Warrant is credited to additional paid-in capital. The portion of proceeds allocated to the Series B Convertible Preferred Stock, net of debt issuance costs and original issue discount associated with issuance fee shares issued for no consideration, represents the initial carrying value of the mezzanine preferred.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "4,957,011",
+     "",
+     "3,112,772"
+    ],
+    [
+     "Stock Options",
+     "",
+     "1,114,825",
+     "",
+     "556,250"
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "565,311",
+     "",
+     "3,391,974"
+    ],
+    [
+     "Total Underlying Common Shares",
+     "",
+     "6,637,147",
+     "",
+     "7,060,996"
+    ]
+   ],
+   "caption_stack": [
+    "May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 541,
+    "end_line": 553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "In accordance with ASC 321-10-35-2, the Company holds certain investments in equity securities in which the Company does not have significant influence or control, and for which fair value is not readily determinable. These investments are primarily accounted for at cost, less any impairment. The carrying amount is periodically evaluated for impairment, and if necessary, an impairment loss is recognized in the statement of operations. These investments are not adjusted for unrealized gains or losses unless an impairment is identified.\nEquity in Earnings of Equity Method Investees\nThe Company\u2019s share of earnings or losses from equity method investees is recognized in the consolidated statement of operations within \u201cEquity in share of loss of equity method investees,\u201d net of any related income taxes.\nLoss Per Share \u2013 The computation of loss per share is based on the weighted average number of shares outstanding during the period in accordance with ASC Topic No. 260, \u201cEarnings Per Share.\u201d Shares underlying the Company\u2019s outstanding warrants, options and preferred stock were excluded due to the anti-dilutive effect they would have on the computation. At May 31, 2026 and 2025, the Company had the following common shares underlying these instruments:\nSchedule of Underlying Common Shares Excluded from Computation of Loss Per Share",
+   "prose_after": "The following table shows the amounts used in computing loss per share and the effect on net loss and the weighted average number of shares of dilutive potential common stock for the periods three months ended May 31, 2026, and 2025:\nSchedule of Amounts Used In Computing Loss Per Share and Effect On Net Loss and Weighted Average Number Of Shares",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,125,469)",
+     "",
+     "$",
+     "(4,457,232)",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "$",
+     "(19,691)",
+     "",
+     "$",
+     "(64,463)",
+     ""
+    ],
+    [
+     "Net loss applicable to common stockholders",
+     "$",
+     "(3,145,160)",
+     "",
+     "$",
+     "(4,521,695)",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding used in loss per share during the period (denominator)",
+     "",
+     "14,316,703",
+     "",
+     "",
+     "6,585,197",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 559,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The following table shows the amounts used in computing loss per share and the effect on net loss and the weighted average number of shares of dilutive potential common stock for the periods three months ended May 31, 2026, and 2025:\nSchedule of Amounts Used In Computing Loss Per Share and Effect On Net Loss and Weighted Average Number Of Shares",
+   "prose_after": "Dilutive loss per share was not presented, as the Company\u2019s outstanding common and preferred warrants, stock options and preferred stock common equivalent shares for the periods presented would have had an anti-dilutive effect. At May 31, 2026, the Company had outstanding warrants to purchase 4,957,011 shares of common stock; stock options exercisable for 1,114,825 shares of common stock; 150,000 shares of Series A preferred stock (\u201cSeries A Preferred\u201d), which could be converted into 150,000 shares of common stock, 408,421 shares of Series B Preferred Stock (\u201cSeries B Preferred\u201d) which could be converted into 411,689 shares of common stock, and 316 shares of Series E Preferred Stock (\u201cSeries E Preferred\u201d), which could be converted into 3,622 shares of common stock, resulting in a potential total additional 6,637,147 shares of common stock outstanding in the future.\nAccounting Estimates - The preparation of financial statements in conformity with GAAP requires management to make estimates and assumptions that affect certain reported amounts of assets and liabilities, the disclosures of contingent assets and liabilities at the date of the financial statements, and the reported amounts of revenues and expenses during the reporting period. Actual results could differ from those estimated by management. Significant accounting estimates that may materially change in the near future are impairment of long-lived assets, values of stock compensation awards and stock equivalents granted as offering costs, and allowance for bad debts.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration paid",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "500,000"
+    ],
+    [
+     "Series O Preferred stock",
+     "",
+     "500,000"
+    ],
+    [
+     "Earnout Payment",
+     "",
+     "800,000"
+    ],
+    [
+     "Fair value of Initial Purchase",
+     "",
+     "981,303"
+    ],
+    [
+     "Total consideration",
+     "$",
+     "2,781,303"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired and liabilities assumed",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "471,660"
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "13,460"
+    ],
+    [
+     "Intangibles",
+     "",
+     "960,000"
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,669,058"
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,114,178"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "12,474"
+    ],
+    [
+     "Due to FSA Unitholders",
+     "",
+     "221,481"
+    ],
+    [
+     "SBA Loan",
+     "",
+     "98,920"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "332,875"
+    ],
+    [
+     "Total net assets",
+     "$",
+     "2,781,303"
+    ]
+   ],
+   "caption_stack": [
+    "Consideration paid"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Acquisition of FSA Travel, LLC"
+    }
+   },
+   "prose_before": "Upon completion of the acquisition of the remaining 51% of FSA membership units, the acquisition of the remaining 51% interest together with the initial 49% interest acquired on February 6, 2025 was accounted for as a step acquisition (business combination) under ASC 805, Business Combinations, with the Company identified as the acquirer. A step acquisition occurs when a shareholder obtains control over an entity (that is considered a business) by acquiring an additional interest in that entity. Under step acquisition accounting, the acquirer\u2019s previously held equity interest is remeasured to its fair value as of the date in which control was obtained and included as part of the total consideration when determining goodwill. Given the short duration between the initial equity purchase of FSA (which was accounted for under the equity method of accounting) and the purchase of the remaining outstanding shares of FSA, it was determined that the book value of such equity method accounting equaled its fair value at the time control was obtained. In accordance with the acquisition method of accounting, the purchase price has been assigned to the assets acquired, and the liabilities assumed, based on their estimated fair value at the acquisition date. The Company did not incur any acquisition-related costs in connection with the acquisition.\nThe Company has completed the analysis to assign fair values to all assets acquired and liabilities assumed. The table below sets forth the consideration paid and the fair value of the assets acquired and liabilities assumed for the acquisition:\nSchedule of Preliminary Analysis To Assign Fair Values To All Assets Acquired And Liabilities Assumed",
+   "prose_after": "The fair value of the working capital items, including accounts receivable, other receivables, trade payables and deferred revenue, approximates their respective carrying values at the date in which control was obtained. Effective January 1, 2021, the Company has adopted ASU 2021-08, Accounting for Contract Assets and Contract Liabilities from Contracts with Customers, which created an exception to the recognition and measurement principles of ASC 805, Business Combinations, for the Company\u2019s contract assets and liabilities, including deferred revenue, essentially resulting in the carryover of the historical amounts determined in accordance with ASC 606, Revenue from Contracts with Customers, rather than fair value.\nThe fair value of the acquired tradename and acquired technology was determined using the relief from royalty method, which utilized projected financial information. The goodwill recognized in the acquisition primarily represents synergies with the existing operations of the Company, and the value of yet-to-be-acquired/developed customers, technology, assembled workforce, and any other assets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 664,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration paid",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "443,168"
+    ],
+    [
+     "Common stock",
+     "",
+     "387,000"
+    ],
+    [
+     "Fair value of TA Milestone Payment",
+     "",
+     "180,000"
+    ],
+    [
+     "Fair value of derivative liability",
+     "",
+     "130,000"
+    ],
+    [
+     "Total consideration",
+     "$",
+     "1,140,168"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired and liabilities assumed",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,444,457"
+    ],
+    [
+     "Intangibles",
+     "",
+     "910,000"
+    ],
+    [
+     "Goodwill",
+     "",
+     "286,824"
+    ],
+    [
+     "Total assets",
+     "$",
+     "2,641,281"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred merchant bookings",
+     "",
+     "1,501,113"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "1,501,113"
+    ],
+    [
+     "Total net assets",
+     "$",
+     "1,140,168"
+    ]
+   ],
+   "caption_stack": [
+    "Consideration paid"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Acquisition of TA Pipeline LLC"
+    }
+   },
+   "prose_before": "(i) the right to require the Company to repurchase from the TA Member all or any portion of their outstanding TA Acquisition Shares at the Base Price; (ii) the right to require the Company to issue to such TA Member that number of additional shares of Company common stock (the \u201cTop Up Shares\u201d) as is necessary to make the aggregate value of the number of TA Acquisition Shares specified in the notice (based on the Fair Market Value) equal to the original aggregate value of the number of TA Acquisition Shares specified in the notice (based on the Base Price); and (iii) the right to require the Company to pay to such TA Member, in cash, an amount equal to the product of (x) the number of TA Acquisition Shares specified in the notice and (y) the positive difference, if any, between the Base Price and the Fair Market Value. For purpose of the foregoing rights, the \u201cExercise Period\u201d means the three month period commencing upon the earlier of: (i) with respect to the TA Closing Shares, (x) the date that the TA Closing Shares first become eligible for public resale and (y) the first anniversary of the closing date; and (ii) with respect to the TA Milestone Shares, (x) the date that the TA Milestone Shares first become eligible for public resale and (y) the first anniversary of the closing date. Additionally, for purpose of the foregoing rights, \u201cFair Market Value\u201d means the volume weighted average price per share of the Company\u2019s common stock for the twenty consecutive trading days immediately preceding the notice date. During the Exercise Period, each of the TA Members shall be prohibited from engaging in certain transactions in the Company\u2019s stock, as more particularly set forth in the TA MIPA. The fair value of the Put Option was determined using the Black Scholes Pricing Model and will be marked to market at each reporting date.\nIn accordance with the acquisition method of accounting, the purchase price has been assigned to the assets acquired, and the liabilities assumed, based on their estimated fair value at the acquisition date. In connection with the acquisition, the Company incurred $25,855 in acquisition-related expenses, which were expensed as incurred. The Company has completed the analysis to assign fair values to all assets acquired and liabilities assumed. The table below sets forth the consideration paid and the fair value of the assets acquired and liabilities assumed for the acquisition:\nSchedule of Preliminary Analysis To Assign Fair Values To All Assets Acquired And Liabilities Assumed",
+   "prose_after": "The fair value of the working capital items, including cash and deferred merchant bookings, approximates their respective carrying values at the date on which control was obtained.\nThe fair value of the acquired tradename, acquired supplier agreements, and acquired travel agency agreements were determined using the relief from royalty method, with or without method and multi-period excess earnings method, respectively, which utilized projected financial information. The goodwill recognized in the acquisition primarily represents synergies with the existing operations of the Company, and the value of yet-to-be-acquired/developed customers, technology, assembled workforce, and any other assets.\nNOTE 7 \u2013 GoUSA TV Asset Purchase\nOn February 2, 2026, NextTrip, Inc. entered into an Asset Purchase Agreement with The Corporation for Travel Promotion, doing business as \u201cBrand USA\u201d (\u201cSeller\u201d), pursuant to which the Company agreed to purchase select content, brand rights, and distribution assets (collectively, the \u201cAssets\u201d) of GoUSA TV, a travel streaming platform originally launched to showcase destinations across the United States. GoUSA TV historically reached an estimated 200+ million viewers globally across connected TV, mobile applications, and digital platforms, including Samsung TV Plus, LG Channels, Titan OS, and TCL International.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2026",
+     "",
+     "",
+     "February 28, 2026",
+     "",
+     ""
+    ],
+    [
+     "Software Development",
+     "$",
+     "3,836,059",
+     "",
+     "$",
+     "3,736,917",
+     ""
+    ],
+    [
+     "Software Licenses",
+     "",
+     "362,000",
+     "",
+     "",
+     "362,000",
+     ""
+    ],
+    [
+     "Trademark",
+     "",
+     "6,283",
+     "",
+     "",
+     "6,283",
+     ""
+    ],
+    [
+     "FSA Travel, LLC Tradename",
+     "",
+     "280,000",
+     "",
+     "",
+     "280,000",
+     ""
+    ],
+    [
+     "FSA Software Agreements",
+     "",
+     "680,000",
+     "",
+     "",
+     "680,000",
+     ""
+    ],
+    [
+     "TA Pipeline, LLC Tradename",
+     "",
+     "160,000",
+     "",
+     "",
+     "160,000",
+     ""
+    ],
+    [
+     "TA Pipeline, LLC Supplier and Agency Agreements",
+     "",
+     "750,000",
+     "",
+     "",
+     "750,000",
+     ""
+    ],
+    [
+     "JOURNY.tv \u2013 Trade Name",
+     "",
+     "235,000",
+     "",
+     "",
+     "235,000",
+     ""
+    ],
+    [
+     "JOURNY.tv Distribution Agreements",
+     "",
+     "480,000",
+     "",
+     "",
+     "480,000",
+     ""
+    ],
+    [
+     "Journy.tv Production Costs",
+     "",
+     "138,418",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "GoUSA Content Episodes",
+     "",
+     "106,500",
+     "",
+     "",
+     "106,500",
+     ""
+    ],
+    [
+     "GoUSA Content IMAX",
+     "",
+     "74,500",
+     "",
+     "",
+     "74,500",
+     ""
+    ],
+    [
+     "GoUSA Distribution Agreements",
+     "",
+     "760,000",
+     "",
+     "",
+     "760,000",
+     ""
+    ],
+    [
+     "GoUSA Assembled Workforce",
+     "",
+     "54,000",
+     "",
+     "",
+     "54,000",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "7,922,760",
+     "",
+     "",
+     "7,685,200",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "(3,763,019)",
+     "",
+     "",
+     "(3,426,980)",
+     ""
+    ],
+    [
+     "Intangible assets, net of amortization",
+     "$",
+     "4,159,741",
+     "",
+     "$",
+     "4,258,220",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 734,
+    "end_line": 760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Intangible Assets"
+    }
+   },
+   "prose_before": "The aggregate consideration under the Purchase Agreement is $350,000 in cash plus restricted shares of the Company with a value of $350,000 based on the weighted average price of the shares for the twenty consecutive trading days ending on the trading day two trading days prior to closing. In addition, the Company will pay to Seller a royalty equal to 15% of the Company\u2019s gross advertising revenue from the exploitation of the acquired content rights during the three-year period beginning on the closing date. The Company has also agreed, for a three-year period beginning on closing, to pay a royalty of 1% for every $100,000 in destination booking revenue directly attributed to the acquired content, with a minimum quarterly payment of $30,000. Such minimum quarterly payments were recorded at their present value of $295,000 discounted using the Company\u2019s estimated cost of debt of 12.03%. The difference between the undiscounted payments and their present value will be recognized as interest expense using the effective interest method over the term of the license.\nThe GoUSA TV assets are being integrated into JOURNY.tv within the Media segment. GoUSA TV content serves as a U.S.-focused demand-generation layer within NextTrip\u2019s broader media-to-commerce ecosystem\nNOTE 8 \u2013 Intangible Assets\nIntangible assets as of May 31, 2026, and February 28, 2026 consisted of the following:\nSchedule of Intangible Assets",
+   "prose_after": "Amortization expense for the three months ended May 31, 2026, and 2025 was $336,040 and $206,021, respectively.\nDuring the three months ended May 31, 2026, and 2025, the Company did not record any impairment losses associated with the carrying value exceeding its recoverable amount.\nThe estimated aggregate amortization expense for each of the succeeding years ending February 28 is as follows:\nSchedule of Estimated Aggregate Amortization Expense",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2027 (Remaining)",
+     "$",
+     "881,725"
+    ],
+    [
+     "2028",
+     "",
+     "542,644"
+    ],
+    [
+     "2029",
+     "",
+     "422,752"
+    ],
+    [
+     "2030",
+     "",
+     "401,669"
+    ],
+    [
+     "2031",
+     "",
+     "399,894"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,267,213"
+    ],
+    [
+     "Total",
+     "$",
+     "3,915,897"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Intangible Assets"
+    }
+   },
+   "prose_before": "Amortization expense for the three months ended May 31, 2026, and 2025 was $336,040 and $206,021, respectively.\nDuring the three months ended May 31, 2026, and 2025, the Company did not record any impairment losses associated with the carrying value exceeding its recoverable amount.\nThe estimated aggregate amortization expense for each of the succeeding years ending February 28 is as follows:\nSchedule of Estimated Aggregate Amortization Expense",
+   "prose_after": "NOTE 9 \u2013 Goodwill\nReverse Acquisition of Sigma Additive Solutions, Inc.\nAs discussed in Note 1 \u2013 Business Description and Going Concern, the legal acquisition of NTH by the Company on December 29, 2023 was determined to be a reverse acquisition, with NTH as the accounting acquirer, using the acquisition method of accounting in accordance with ASC 805, Business Combinations. Under this method of accounting, the purchase price was allocated to the assets acquired and liabilities assumed based upon their estimated fair values at the date of consummation of the transaction.\nPursuant to ASC 350-20, the Company assigned its goodwill to reporting units and is required to test each reporting unit\u2019s goodwill for impairment at least on an annual basis and between annual tests if an event occurs or circumstances change that would more likely than not reduce the fair value of a reporting unit below its carrying amount. The goodwill resulting from the reverse acquisition is primarily attributable to NTH\u2019s objective to obtain access to public markets to provide funding wherewithal to fund business growth. NTH\u2019s benefit in paying for these synergies in the reverse acquisition transaction was to avoid the time and expense of organizing and executing an Initial Public Offering transaction. In the reverse acquisition, $1,167,805 of goodwill was allocated to the Company\u2019s Travel Products and Services reporting segment (its \u201cNTH Reporting Unit\u201d) under the acquisition method of accounting.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "Principal amount",
+     "$",
+     "199,100",
+     ""
+    ],
+    [
+     "Fair value at acquisition date",
+     "$",
+     "98,920",
+     ""
+    ],
+    [
+     "Remaining term",
+     "",
+     "302 months",
+     ""
+    ],
+    [
+     "Monthly payment",
+     "$",
+     "995",
+     ""
+    ],
+    [
+     "Effective interest rate",
+     "",
+     "12.03",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Long-Term Debt"
+    }
+   },
+   "prose_before": "As part of the acquisition of FSA on April 9, 2025, the Company assumed an SBA loan originally issued to FSA on December 4, 2020, with an initial principal amount of $50,500, bearing interest at 3.75% per annum. On October 4, 2021, FSA received a modification to the loan, which increased the principal amount to $199,100. The loan requires monthly payments of principal and interest of $995 and matures on December 4, 2050.\nIn accordance with ASC 805 \u2013 Business Combinations, the assumed loan was recognized at its acquisition-date fair value of $98,920, which reflects a market-based effective interest rate of approximately 12.03% per annum over the remaining term of 305 months. The difference between the face value of the debt and the fair value at the acquisition date was included in the allocation of purchase consideration and is reflected in goodwill.\nThe loan is measured at amortized cost subsequent to the acquisition date, and interest expense is recognized using the effective interest method based on the fair value of the liability at the acquisition date. The following table summarizes the loan terms as of the acquisition date:\nSchedule of Long Term Loan",
+   "prose_after": "As of May 31, 2026, the balance of the loan was $97,994.\nNOTE 12 - Related Party Transactions\nMonaco Investment Partners, II Line of Credit\nOn May 6, 2025, the Company entered into a Line of Credit Agreement (the \u201cMIP Line of Credit\u201d) with Monaco Investment Partners II, LP (\u201cMIP\u201d) providing the Company with a $3,000,000 revolving line of credit. The MIP Line of Credit allows the Company to request advances thereunder from time to time until May 31, 2027, the maturity date. Advances made under the MIP Line of Credit bear simple interest at a rate of 12% per annum, calculated from the date of each respective advance. Accrued interest shall be payable on a monthly basis, no later than the 10th day of the subsequent month. The full outstanding principal balance, together with any accrued and unpaid interest, shall be due and payable in full by the Company on the maturity date. The Company may, at its option, prepay any borrowings under the MIP Line of Credit, in whole or in part, at any time prior to the maturity date, without penalty. Mr. Monaco, the Chairman of our Board of Directors, controls MIP.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 806,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "3.89",
+     "%",
+     "",
+     "3.83%-4.06",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "136.86",
+     "%",
+     "",
+     "122.5%-139.7",
+     "%"
+    ],
+    [
+     "Expected life (in years)",
+     "",
+     "3.0",
+     "",
+     "",
+     "3.0-5.0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1055
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "The Company generally grants stock options to employees, consultants, and directors at exercise prices equal to the fair market value of the Company\u2019s common stock on the grant date, but not less than 100% of the fair market value. Stock options are typically granted throughout the year and generally vest over a period from one to three years of service and expire five years from the grant date, unless otherwise specified. The Company recognizes compensation expense for the fair value of the stock options over the vesting period for each stock option award.\nTotal stock-based compensation expense included in the statements of operations for the three months ended May 31, 2026 and 2025 was $(13,660) related to a common share issuance and $138,325 related to stock options, respectively.\nThe fair value of stock-based awards was estimated using the Black-Scholes model with the following weighted average assumptions for the three months ended May 31, 2026 and May 31, 2025.\nSchedule of Share Based Payments Award Stock Options Valuation Assumptions",
+   "prose_after": "Option activity for the three months ended May 31, 2026 and the year ended February 28, 2026 was as follows:\nSchedule of Stock Option Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice ($)",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (Yrs.)",
+     "",
+     "Aggregate\n\n\n\nIntrinsic\n\n\n\nValue ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding at February 28, 2025",
+     "",
+     "76,342",
+     "",
+     "",
+     "52.69",
+     "",
+     "1.60",
+     "",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "914,825",
+     "",
+     "",
+     "4.39",
+     "",
+     "2.28",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "(76,342)",
+     "",
+     "",
+     "52.69",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options outstanding at February 28, 2026",
+     "",
+     "914,825",
+     "",
+     "",
+     "4.39",
+     "",
+     "2.28",
+     "",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "200,000",
+     "",
+     "",
+     "2.64",
+     "",
+     "2.94",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options outstanding May 31, 2026",
+     "",
+     "1,114,825",
+     "",
+     "",
+     "4.08",
+     "",
+     "2.19",
+     "",
+     "-"
+    ],
+    [
+     "Options expected to vest in the future as of May 31, 2026",
+     "",
+     "175,000",
+     "",
+     "",
+     "2.64",
+     "",
+     "2.93",
+     "",
+     "-"
+    ],
+    [
+     "Options exercisable at May 31, 2026",
+     "",
+     "939,825",
+     "",
+     "",
+     "4.35",
+     "",
+     "2.05",
+     "",
+     "-"
+    ],
+    [
+     "Options vested, exercisable, and options expected to vest at May 31, 2026",
+     "",
+     "1,114,825",
+     "",
+     "",
+     "4.08",
+     "",
+     "2.19",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "Option activity for the three months ended May 31, 2026 and the year ended February 28, 2026 was as follows:\nSchedule of Stock Option Activity",
+   "prose_after": "The aggregate intrinsic value is calculated as the difference between the exercise price of the underlying awards and the market price of our common stock for those awards that have an exercise price below the market price of our common stock. At May 31, 2026, no options had an exercise price below the $2.18 closing price of our common stock as reported on The Nasdaq Capital Market.\nAt May 31, 2026, there was $358,973 unrecognized stock-based compensation expense related to unvested stock options.\nStock Appreciation Rights\nThe purposes of the 2020 Stock Appreciation Rights Plan (the \u201c2020 SAR Plan\u201d) are to: (i) enable the Company to attract and retain the types of employees, consultants, and directors (collectively, \u201cService Providers\u201d) who will contribute to the Company\u2019s long-range success; (ii) provide incentives that align the interests of Service Providers with those of the stockholders of the Company; and (iii) promote the success of the Company\u2019s business. The 2020 SAR Plan provides for incentive awards that are only in the form of stock appreciation rights payable in cash (\u201cSARs\u201d). No shares of common stock are reserved or will be issued pursuant to the 2020 SAR Plan.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1107,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SARs",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice ($)",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (Yrs.)",
+     "",
+     "Aggregate\n\n\n\nIntrinsic\n\n\n\nValue ($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SARs outstanding at February 28, 2025",
+     "",
+     "40,223",
+     "",
+     "",
+     "44.80",
+     "",
+     "1.99",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "(3,907)",
+     "",
+     "",
+     "52.60",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "SARs outstanding at February 28, 2026",
+     "",
+     "36,316",
+     "",
+     "",
+     "43.96",
+     "",
+     "1.17",
+     "",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "SARs outstanding May 31, 2026",
+     "",
+     "36,316",
+     "",
+     "",
+     "43.96",
+     "",
+     "0.91",
+     "",
+     "-"
+    ],
+    [
+     "SARs expected to vest in the future as of May 31, 2026",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "SARs exercisable at May 31, 2026",
+     "",
+     "36,316",
+     "",
+     "",
+     "43.96",
+     "",
+     "0.91",
+     "",
+     "-"
+    ],
+    [
+     "SARs vested, exercisable, and SARs expected to vest at May 31, 2026",
+     "",
+     "36,316",
+     "",
+     "",
+     "43.96",
+     "",
+     "0.91",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "SARs may be granted to any Service Provider. A SAR is the right to receive an amount equal to the Spread with respect to a share of the Company\u2019s common stock (a \u201cShare\u201d) upon the exercise of the SAR. The \u201cSpread\u201d is the difference between the exercise price per share specified in a SAR agreement on the date of grant and the fair market value per share on the date of exercise of the SAR. The exercise price per share will not be less than 100% of the fair market value of a Share on the date of grant of the SAR. The administrator of the 2020 SAR Plan will have the authority to, among other things, prescribe the terms and conditions of each SAR, including, without limitation, the exercise price and vesting provisions, and to specify the provisions of the SAR Agreement relating to such grant.\nOn March 26, 2025, under the terms of the 2020 SAR Plan, all outstanding unvested SARs became immediately vested and exercisable upon the change in control effected by the issuance of Contingent Shares pursuant to the Exchange Agreement entered into in connection with the NextTrip Acquisition.\nThe Company did not grant any SARs during the three months ended May 31, 2026 or May 31, 2025.\nThe Company recognizes compensation expense and a corresponding liability for the fair value of the SARs over the vesting period for each SAR award. The SARs are revalued at each reporting date in accordance with ASC 718 \u201cCompensation-Stock Compensation,\u201d and any changes in fair value are reflected in the Statement of Operations as of the applicable reporting date.\nSARs activity for the three months ended May 31, 2026 and the year ended February 28, 2026 was as follows:\nSchedule of Stock Option Activity",
+   "prose_after": "The aggregate intrinsic value is calculated as the difference between the exercise price of the underlying awards and the market price of our common stock for those awards that have an exercise price below the market price of our common stock. At May 31, 2026, no SARs had an exercise price below the $2.18 closing price of our common stock as reported on The Nasdaq Capital Market.\nAt May 31, 2026, there was no unrecognized stock-based compensation expense related to unvested SARs.\nWarrants\nThe fair value of warrants issued during the three months ended May 31, 2026 was estimated using the Black-Scholes model with the following assumptions.\nAssumptions:\nSchedule of Share Based Payments Award Stock Options Valuation Assumptions",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1107,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "3.54%-3.83",
+     "%",
+     "",
+     "3.9%-4.1",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "117.3%-119.4",
+     "%",
+     "",
+     "156.4%-160.5",
+     "%"
+    ],
+    [
+     "Expected life (in years)",
+     "",
+     "1.5-2.5",
+     "",
+     "",
+     "3.32-5.0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1157,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "The aggregate intrinsic value is calculated as the difference between the exercise price of the underlying awards and the market price of our common stock for those awards that have an exercise price below the market price of our common stock. At May 31, 2026, no SARs had an exercise price below the $2.18 closing price of our common stock as reported on The Nasdaq Capital Market.\nAt May 31, 2026, there was no unrecognized stock-based compensation expense related to unvested SARs.\nWarrants\nThe fair value of warrants issued during the three months ended May 31, 2026 was estimated using the Black-Scholes model with the following assumptions.\nAssumptions:\nSchedule of Share Based Payments Award Stock Options Valuation Assumptions",
+   "prose_after": "Warrant activity for the three months ended May 31, 2026 and the year ended February 28, 2026 was as follows:\nSchedule of Warranty Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1107,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Warrants",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice ($)",
+     "",
+     "Weighted Average\n\n\n\nRemaining\n\n\n\nContractual\n\n\n\nLife (Yrs.)",
+     ""
+    ],
+    [
+     "Warrants outstanding at February 28, 2025",
+     "",
+     "3,015,885",
+     "",
+     "",
+     "5.36",
+     "",
+     "3.84"
+    ],
+    [
+     "Granted",
+     "",
+     "1,998,104",
+     "",
+     "",
+     "3.34",
+     "",
+     "3.96"
+    ],
+    [
+     "Exercised",
+     "",
+     "(237,429)",
+     "",
+     "",
+     "3.02",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "(17,979)",
+     "",
+     "",
+     "128.32",
+     "",
+     "-"
+    ],
+    [
+     "Warrants outstanding at February 28, 2026",
+     "",
+     "4,758,581",
+     "",
+     "",
+     "4.15",
+     "",
+     "3.48"
+    ],
+    [
+     "Granted",
+     "",
+     "198,430",
+     "",
+     "",
+     "2.84",
+     "",
+     "4.31"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or cancelled",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Warrants outstanding at May 31, 2026",
+     "",
+     "4,957,011",
+     "",
+     "",
+     "4.10",
+     "",
+     "3.27"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "Warrant activity for the three months ended May 31, 2026 and the year ended February 28, 2026 was as follows:\nSchedule of Warranty Activity",
+   "prose_after": "NOTE 15 \u2013 Segment Information\nASC Topic 280, Segment Reporting, establishes standards for reporting information about operating segments. Operating segments are defined as components of a reporting entity, the operating results of which are reviewed regularly by the chief operating decision maker (\u201cCODM\u201d) to make decisions about resource allocation and to assess performance. Our CODM is our Chief Executive Officer.\nIn response to acquisitions and expanded business activities, during the third quarter of fiscal year 2026, our CODM requested changes in the information that he regularly reviews for purposes of allocating resources and assessing performance. As a result, we have updated our reporting and beginning in the third quarter of fiscal year 2026, we report our financial performance based on our new segments: \u201cTravel\u201d and \u201cMedia\u201d. Our Travel segment provides travelers with a full range of travel services through its NXT2.0 booking engine, which offers extensive inventory and a platform for curating personalized experiences and efficient trip planning and booking. In addition, Five Star Alliance provides luxury and cruise offerings, and TA Pipeline provides a group-travel agency platform for conferences, conventions, weddings, and affinity groups. Our Media segment consists of JOURNY.tv, (including GoUSA TV) a Connected TV Channel broadcast as Free Ad Supported Streaming TV (\u201cFAST\u201d) and Advertising Video on Demand (\u201cAVOD\u201d) that specializes in travel, adventure, and culture-focused content, and Travel Magazine, an online travel magazine that provides articles, tips, guides and inspiration for travelers. We leverage our media brands\u2014TravelMagazine.com and JOURNY.tv\u2014as strategic tools to generate travel bookings by integrating content, marketing, and booking technology as well as to generate advertising revenues for third-party content. Additional information regarding our operating segments can be found in the overview section of Item 2 of this Quarterly Report, entitled \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d Prior periods disclosed below have been recast to conform to these newly identified segments.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Media",
+     "",
+     "",
+     "Travel",
+     "",
+     "",
+     "Corporate",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "40,952",
+     "",
+     "$",
+     "1,410,783",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,451,735",
+     ""
+    ],
+    [
+     "Cost of revenue (exclusive of depreciation and amortization, shown separately below)",
+     "",
+     "-",
+     "",
+     "",
+     "(1,243,636)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,243,636)",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "40,952",
+     "",
+     "",
+     "167,147",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "208,099",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and benefits",
+     "",
+     "212,405",
+     "",
+     "",
+     "205,879",
+     "",
+     "",
+     "489,117",
+     "",
+     "",
+     "907,401",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(13,660)",
+     "",
+     "",
+     "(13,660)",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,751",
+     "",
+     "",
+     "10,761",
+     "",
+     "",
+     "22,114",
+     "",
+     "",
+     "34,626",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "102,687",
+     "",
+     "",
+     "32,161",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "134,848",
+     ""
+    ],
+    [
+     "Professional service fees",
+     "",
+     "250,290",
+     "",
+     "",
+     "32,805",
+     "",
+     "",
+     "1,003,276",
+     "",
+     "",
+     "1,286,371",
+     ""
+    ],
+    [
+     "Technology",
+     "",
+     "99,804",
+     "",
+     "",
+     "80,895",
+     "",
+     "",
+     "74,029",
+     "",
+     "",
+     "254,728",
+     ""
+    ],
+    [
+     "Organization costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,104",
+     "",
+     "",
+     "50,104",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "336,669",
+     "",
+     "",
+     "336,669",
+     ""
+    ],
+    [
+     "Provision for credit losses",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "65,561",
+     "",
+     "",
+     "65,561",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "30",
+     "",
+     "",
+     "19,592",
+     "",
+     "",
+     "45,582",
+     "",
+     "",
+     "65,204",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "666,967",
+     "",
+     "",
+     "382,093",
+     "",
+     "",
+     "2,072,792",
+     "",
+     "",
+     "3,121,852",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "$",
+     "(626,015)",
+     "",
+     "$",
+     "(214,946)",
+     "",
+     "$",
+     "(2,072,792)",
+     "",
+     "$",
+     "(2,913,753)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(133)",
+     ""
+    ],
+    [
+     "Gain (Loss) on extinguishment of liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on derivative liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "40,000",
+     ""
+    ],
+    [
+     "Interest income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(251,583)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(211,716)",
+     ""
+    ],
+    [
+     "Net loss before provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,125,469)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income loss before share of net income (loss) in equity method investee",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,125,469)",
+     ""
+    ],
+    [
+     "Share of net income (loss) of equity method investee",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,125,469)",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(19,691)",
+     ""
+    ],
+    [
+     "Net Loss Applicable to Common Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(3,145,160)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31, 2026"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Segment Information"
+    }
+   },
+   "prose_before": "Corporate includes unallocated corporate functions including finance and administration, technology, and corporate development. In addition, we record amortization of intangible assets and any related impairment, investor relations, stock-based compensation expense, legal and audit, directors\u2019 compensation and other items excluded from segment operating performance in Corporate. Such amounts are detailed in our segment reconciliation below.\nThe following tables present our segment information for the three months ended May 31, 2026. As a significant portion of our property and equipment is not allocated to our operating segments and depreciation and amortization is not included in our segment measure, we do not report the assets by segment as it would not be meaningful. We do not regularly provide such information to our chief operating decision maker.\nAll of our revenues are attributed to customers located in the United States; therefore, no revenues are reported from foreign geographic areas.\nSchedule of Segment Information",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Media",
+     "",
+     "",
+     "Travel",
+     "",
+     "",
+     "Corporate",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "138,827",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "138,827",
+     ""
+    ],
+    [
+     "Cost of revenue (exclusive of depreciation and amortization, shown separately below)",
+     "",
+     "-",
+     "",
+     "",
+     "(99,921)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(99,921)",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "-",
+     "",
+     "",
+     "38,906",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "38,906",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and benefits",
+     "",
+     "36,504",
+     "",
+     "",
+     "303,256",
+     "",
+     "",
+     "357,154",
+     "",
+     "",
+     "696,914",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "138,325",
+     "",
+     "",
+     "138,325",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "659",
+     "",
+     "",
+     "7,145",
+     "",
+     "",
+     "22,784",
+     "",
+     "",
+     "30,588",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "4,950",
+     "",
+     "",
+     "22,585",
+     "",
+     "",
+     "62,500",
+     "",
+     "",
+     "90,035",
+     ""
+    ],
+    [
+     "Professional service fees",
+     "",
+     "20,000",
+     "",
+     "",
+     "3,278",
+     "",
+     "",
+     "1,126,198",
+     "",
+     "",
+     "1,149,476",
+     ""
+    ],
+    [
+     "Technology",
+     "",
+     "129,956",
+     "",
+     "",
+     "100,635",
+     "",
+     "",
+     "91,224",
+     "",
+     "",
+     "321,815",
+     ""
+    ],
+    [
+     "Organization costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,999,670",
+     "",
+     "",
+     "1,999,670",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "206,650",
+     "",
+     "",
+     "206,650",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "-",
+     "",
+     "",
+     "835",
+     "",
+     "",
+     "44,335",
+     "",
+     "",
+     "45,170",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "192,069",
+     "",
+     "",
+     "437,734",
+     "",
+     "",
+     "4,048,840",
+     "",
+     "",
+     "4,678,643",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "$",
+     "(192,069)",
+     "",
+     "$",
+     "(398,828)",
+     "",
+     "$",
+     "(4,048,840)",
+     "",
+     "$",
+     "(4,639,737)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "540,245",
+     ""
+    ],
+    [
+     "Gain (Loss) on extinguishment of liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(70,100)",
+     ""
+    ],
+    [
+     "Gain on derivative liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(276,333)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "193,812",
+     ""
+    ],
+    [
+     "Net loss before provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,445,925)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss before share of net income (loss) in equity method investee",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,445,925)",
+     ""
+    ],
+    [
+     "Share of net income (loss) of equity method investee",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(11,307)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(4,457,232)",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(64,463)",
+     ""
+    ],
+    [
+     "Net Income (Loss) Applicable to Common Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(4,521,695)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1309
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "There were no intersegment revenues during the three months ended May 31, 2026 or May 31, 2025; all revenues presented are from external customers. The significant expense categories presented above for each reportable segment reconcile in full to each segment\u2019s measure of Operating Income (Loss); accordingly, there were no other segment items (as described in ASC 280-10-50-26A) for the three months ended May 31, 2026 or May 31, 2025. The \u201cOther expenses\u201d line presented within each segment comprises insurance, bank and payment-processing fees, and other individually immaterial operating costs.\nNOTE 16 - Subsequent Events\nThe Company\u2019s management has evaluated subsequent events after the balance sheet dated as of May 31, 2026 through July 15, 2026, the date of this report.\nYada Commerce Inc. Acquisition\nStock Purchase Agreement\nOn June 10, 2026 (the \u201cEffective Date\u201d), NextTrip, Inc. (the \u201cCompany\u201d) entered into a Stock Purchase Agreement (the \u201cPurchase Agreement\u201d) with Yada Commerce Inc (\u201cYada\u201d) and High Class Holdings LLC and Carbon Capital Corp, the shareholders of Yada (collectively, the \u201cFounding Shareholders\u201d) pursuant to which, subject to the terms and conditions set forth in the Purchase Agreement, the Company purchased from the Founding Shareholders 51% of the outstanding shares of Yada (the \u201cYada Shares\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1322,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Milestone Event",
+     "Date Earned",
+     "Contingent Shares",
+     "Status as of the date of this Report"
+    ],
+    [
+     "Launch of NTH\u2019s leisure travel booking platform by either (i) achieving $1,000,000 in cumulative sales under its historical \u201cphase 1\u201d business, or (ii) commencement of its marketing program under its enhanced \u201cphase 2\u201d business.",
+     "As of a date six months after the closing date",
+     "1,450,000 Contingent Shares",
+     "Achieved. Marketing program under \u201cphase 2\u201d has commenced."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Launch of NTH\u2019s group travel booking platform and signing of at least five (5) entities to use the Groups Platform.",
+     "As of a date nine months from the closing date (or earlier date six months after the closing date)",
+     "1,450,000 Contingent Shares",
+     "Achieved. Five groups have been contracted to use the Groups Platform."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Launch of NTH\u2019s Travel Agent Platform and signing up of at least 100 travel agents to the platform (which calculation includes individual agents of an agency that signs up on behalf of multiple agents).",
+     "As of a date 12 months from the closing date (or earlier date six months after the closing date)",
+     "1,450,000 Contingent Shares",
+     "Achieved. The company has signed up more than 175 travel agents to its Travel Agent Platform."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commercial launch of PayDlay technology in the NXT2.0 system.",
+     "As of a date 15 months after the closing date (or earlier date six months after the closing date)",
+     "1,650,000 Contingent Shares, less the Exchange Shares issued at the closing of the Acquisition",
+     "Achieved. PayDlay has been commercially launched."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1383,
+    "end_line": 1410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "On October 12, 2023, the Company (then known as Sigma) entered into a Share Exchange Agreement (the \u201cExchange Agreement\u201d) with NextTrip Holdings, Inc. (\u201cNTH\u201d), NextTrip Group, LLC (\u201cNTG\u201d), and William Kerby (the \u201cNTH Representative\u201d), pursuant to which the Company acquired NTH (the \u201cNextTrip Acquisition\u201d) in exchange for shares of our common stock, which we refer to as the Exchange Shares. The NextTrip Acquisition was consummated on December 29, 2023. As a result, NTH became a wholly-owned subsidiary of the Company.\nUpon the closing of the NextTrip Acquisition, the shareholders of NTG (collectively, the \u201cNTG Sellers\u201d), were issued a number of Exchange Shares equal to 19.99%, or 156,007 shares, of our issued and outstanding shares of common stock immediately prior to the closing. Under the Exchange Agreement, the NTG Sellers were entitled to receive additional shares of our common stock, referred to as the Contingent Shares, subject to NTH\u2019s achievement of future business milestones (the \u201cMilestone Events\u201d) specified in the Exchange Agreement as follows:",
+   "prose_after": "The Contingent Shares, together with the shares of our common stock issued at the closing, was not to exceed 6,000,000 shares of our common stock, or approximately 90.2% of our issued and outstanding shares of common stock immediately prior to closing.\nThe Exchange Agreement provided that William Kerby, the Chief Executive Officer and co-founder of NTH, was appointed as Chief Executive Officer of the Company and Donald P. Monaco was appointed as a director of the Company as of the closing of the NextTrip Acquisition. Additionally, pursuant to the Exchange Agreement, the NTH Representative (Mr. Kerby) shall be entitled to designate a replacement for one additional director of the Company upon achievement of each of the milestones under the Exchange Agreement (the \u201cBoard Appointment Rights\u201d).\nIn connection with the NextTrip Acquisition, the Company and Nasdaq determined that the issuance of Contingent Shares upon achievement of any one of the Milestone Events would result in a change in control of the Company under Nasdaq Listing Rule 5635(a). Pursuant to Nasdaq Listing Rule 5110(a), the Company was required to submit an initial listing application with Nasdaq and to obtain Nasdaq approval of the initial listing application prior to the issuance of the Contingent Shares.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1380,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1417,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by segment",
+     "2026",
+     "",
+     "2025",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Media",
+     "$",
+     "40,952",
+     "$",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Travel",
+     "",
+     "1,410,783",
+     "",
+     "138,827",
+     "",
+     "916",
+     "%"
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "1,451,735",
+     "$",
+     "138,827",
+     "",
+     "946",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1770,
+    "end_line": 1781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Additionally, in accordance with the Board Appointment Rights provided for in the Exchange Agreement, on July 14, 2025, the Company\u2019s Board of Directors appointed the NTH Appointees as directors, in each case effective July 28, 2025, at which time Salvatore Battinelli, Jacob Brunsberg, Dennis Duitch and Kent Summers resigned as directors of the Company. Stephen Kircher shall serve as a Class I director, with his initial term expiring at the Company\u2019s 2028 Annual Meeting of Stockholders; Jimmy Byrd shall serve as a Class II director, with his initial term expiring at the Company\u2019s 2026 Annual Meeting of Stockholders; and Ms. Diges and Mr. Jiang shall each serve as a Class III director, with their initial terms expiring at the Company\u2019s 2027 Annual Meeting of Stockholders. Each of NTH Appointees will serve as a director for the balance of their respective initial terms, and until his or her successor is elected and qualified, subject to his or her earlier death, resignation or removal. Additionally, effective July 28, 2025 and as amended on March 3, 2026, the Board appointed the NTH Appointees to serve on the following committees of the Board:\n\u25cf Audit Committee: Carmen Diges (Chair), Stephen Kircher and Jimmy Byrd\n\u25cf Compensation Committee: David Jiang (Chair), Stephen Kircher, Jimmy Byrd and Carmen Diges\n\u25cf Nominations & Governance Committee: Andy Kaplan (Chair), David Jiang, and Carmen Diges\nFacilities\nOur principal executive office is located at 1560 Sawgrass Corporate Parkway, Suite 400, Sunrise Florida 33323. The lease is on a month-to-month basis, and can be terminated by either party at any time.\nResults of Operations\nThree Months Ended May 31, 2026 Compared to the Three Months Ended May 31, 2025",
+   "prose_after": "The increase in revenue of $1,312,908, or 946% for the three months ended May 31, 2026 vs. May 31, 2025 was primarily due to group travel-related revenues and cruise bookings. In addition, our Media segment generated revenue from direct advertising sales and programmatic revenues.\nOur cost of revenue for the three months ended May 31, 2026 was $1,243,636, as compared to $99,921 for the same period in 2025, an increase of $1,143,715, or 1,145%. The increase was primarily attributable to the increase in sales from fiscal year 2026 as compared to fiscal year 2025.\nOur gross margin for the three months ended May 31, 2026 was 14%, as compared to 28% for the same period in 2025. The decline in gross margin was primarily driven by a shift in the type of revenue we received, as revenue from higher-margin agent (commission) travel bookings and direct advertising sales declined relative to merchant-of-record travel bookings.\nOur total operating expenses for the three months ended May 31, 2026 were $3,121,852, as compared to $4,678,643 for the same period in 2025, a decrease of $1,556,791, or 33%. The decrease was primarily attributable to stock options granted to former directors and other non-cash professional services expenses incurred during the first quarter of fiscal year 2026, as further discussed below. Total non-cash expenses, primarily consisting of stock-based compensation, stock options granted to former directors, common shares issued to third parties for services, and depreciation and amortization totaled $889,388, or 28% of our operating expenses for the three months ended May 31, 2026, and $2,980,746, or 64% of our operating expenses for the same period in 2025.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1751,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended May 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss by segment",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Media",
+     "$",
+     "(626,015)",
+     "",
+     "$",
+     "(192,069)",
+     "",
+     "",
+     "(226)",
+     "%"
+    ],
+    [
+     "Travel",
+     "",
+     "(214,946)",
+     "",
+     "",
+     "(398,828)",
+     "",
+     "",
+     "46",
+     "%"
+    ],
+    [
+     "Total segment operating loss",
+     "",
+     "(840,961)",
+     "",
+     "",
+     "(590,897)",
+     "",
+     "",
+     "(42)",
+     "%"
+    ],
+    [
+     "Corporate",
+     "",
+     "(2,072,792)",
+     "",
+     "",
+     "(4,048,840)",
+     "",
+     "",
+     "49",
+     "%"
+    ],
+    [
+     "Total Operating loss",
+     "$",
+     "(2,913,753)",
+     "",
+     "$",
+     "(4,639,737)",
+     "",
+     "",
+     "37",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended May 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1817,
+    "end_line": 1831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Other operating expenses were $65,204 for the three months ended May 31, 2026, as compared to $45,170 for the same period in 2025. The $20,034 increase, or 44%, was primarily due to increased merchant processing fees related to group travel.\nDuring the three months ended May 31, 2026, we realized net other expense of $211,716, as compared to net other income of $193,812 in the same period in 2025. The increase in net other expense of $405,528 was primarily due to $540,245 received from NextTrip Group, LLC in the first quarter of fiscal year 2026 related to the NextPlay Technologies settlement, partially offset by a decrease in interest expense, a decrease in loss on extinguishment of liability, and a gain on the revaluation of the derivative liability in the first quarter of fiscal year 2027.\nPreferred dividends for the three months ended May 31, 2026 were $19,691, as compared to $64,463, for the same period in 2025, a decrease of $44,772, or 69%. The decrease was due to dividends paid to the holders of shares of Series L and Series M Preferred stock in the first quarter of fiscal year 2026, which shares were converted to common shares in November 2025.",
+   "prose_after": "The decrease of $1,725,984, or 37% in operating loss in the first quarter of fiscal year 2027 as compared to fiscal year 2026 was primarily due to a decrease in corporate expenses of $1,901,048 as a result of stock based compensation issued to board members in the first quarter of fiscal year 2026. The increase in the operating loss of the Media segment of $358,946 is due to the start-up of operations and is primarily made up of contracted services in connection with our FAST channel. The decrease in operating loss for the Travel segment of $183,882 is due to the increased revenues from the Five Star Alliance and TA Pipeline acquisitions.\nThe decrease of $11,307 in the net loss on the share of net earnings from the equity method investment was due to losses incurred in FSA from March 1, 2025 through April 9, 2025 when the full acquisition was finalized.\nOur net loss applicable to common stockholders for the three months ended May 31, 2026, was $3,145,160, as compared to $4,521,695 for the same period in 2025, a decrease of $1,376,535, or 30%. The decrease was primarily attributable to a decrease in operating loss of $1,725,984, a decrease in preferred dividends of $44,772, and decrease in the loss on the 49% share of net earnings for the equity method investee of $11,307; partially offset by an increase in Other Expense of $405,528 due to a settlement agreement between NextTrip Group, LLC and the Company related to the NextPlay Technologies, Inc. promissory note receivable that resulted in other income in the previous year.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1804,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1838,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash Flow Analysis",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three Months ended May 31,",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "Change ($)",
+     "",
+     "",
+     "Change (%)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(2,343,339)",
+     "",
+     "",
+     "(1,042,658)",
+     "",
+     "",
+     "(1,300,681)",
+     "",
+     "",
+     "(125)",
+     "%"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(237,561)",
+     "",
+     "",
+     "(1,281,503)",
+     "",
+     "",
+     "1,043,942",
+     "",
+     "",
+     "81",
+     "%"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,688,300",
+     "",
+     "",
+     "1,392,700",
+     "",
+     "",
+     "295,600",
+     "",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "(892,600)",
+     "",
+     "",
+     "(931,461)",
+     "",
+     "",
+     "38,861",
+     "",
+     "",
+     "4",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Cash Flow Analysis"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1914,
+    "end_line": 1927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "P. Monaco Insurance Trust note, as amended, which matures on July 15, 2026 and the October 17, 2025 notes issued to two private investors (maturing November 17, 2026, as amended). The MIP Line of Credit has an outstanding principal balance of $3,000,000, with all principal and accrued interest due at the May 31, 2028 maturity date, as amended. Interest accrues at 12% per annum and is payable monthly. Additionally, the Series B Convertible Preferred shares are redeemable on August 30, 2026, in the amount of $1,164,447 unless such redemption is extended to December 31, 2026 at the option of the investor.\nWe have ongoing operating cash requirements for personnel, technology development, marketing, professional fees, and acquisition integration. Based on our current operating plan, we estimate that cash required to fund operations for the twelve months following May 31, 2026 will be approximately $5.5 million, which exceeds our cash balance at May 31, 2026. We do not have any material commitments for capital expenditures, and we do not have any material purchase obligations, take-or-pay contracts, or unconditional purchase obligations outside the ordinary course of business. We have no off-balance sheet arrangements (within the meaning of Item 303(b)(1)(ii) of Regulation S-K) that have, or are reasonably likely to have, a material current or future effect on our financial condition, results of operations, liquidity, capital expenditures, or capital resources.",
+   "prose_after": "Net Cash Used in Operating Activities\nNet cash used in operating activities totaled $2,343,339 during the three months ended May 31, 2026, compared to $1,042,658 during the same period in 2025, an increase of $1,300,681, or 125%. The operating cash outflow during the current period was driven by a net loss of $3,125,469 (before payment of preferred dividends), partially offset by non-cash charges of $949,494 and further increased by net changes in working capital of $167,364. Non-cash charges included depreciation and amortization of $336,669, amortization of debt discount of $113,533, and shares issued for professional services of $552,952, partially offset by a reversal of employee stock-based compensation of $13,660 and a gain on the derivative liability revaluation of $40,000. Changes in working capital primarily reflected a decrease in deferred revenue of $807,464 and an increase in accounts receivable of $133,207, partially offset by an increase in accounts payable and accrued expenses of $439,724 and a decrease in prepaid expenses of $344,626.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1902,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1936,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Recipient",
+     "Consideration",
+     "Shares",
+     "",
+     "Price",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "March 12, 2026",
+     "Marc Bern",
+     "Consulting services",
+     "",
+     "7,500",
+     "$",
+     "2.95",
+     "$",
+     "22,125"
+    ],
+    [
+     "March 14, 2026",
+     "ConsortiaX",
+     "Sales commission override",
+     "",
+     "4,640",
+     "$",
+     "2.50",
+     "$",
+     "11,600"
+    ],
+    [
+     "May 1, 2026",
+     "Pillow Hog Ventures, Inc.",
+     "IR consulting services",
+     "",
+     "25,000",
+     "$",
+     "2.75",
+     "$",
+     "68,750"
+    ],
+    [
+     "May 6, 2026",
+     "Steve Kazas",
+     "Private Placement",
+     "",
+     "36,400",
+     "$",
+     "2.75",
+     "$",
+     "100,100"
+    ],
+    [
+     "May 8, 2026",
+     "KCGM Asia LLC",
+     "Private Placement",
+     "",
+     "18,182",
+     "$",
+     "2.75",
+     "$",
+     "50,000"
+    ],
+    [
+     "May 13, 2026",
+     "Balencic Consulting",
+     "IR consulting services",
+     "",
+     "35,000",
+     "$",
+     "2.51",
+     "$",
+     "87,850"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "126,722",
+     "",
+     "",
+     "$",
+     "340,425"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "As of May 31, 2026, we had $803,490 in cash and a working capital deficit of $1,599,429. Our existing cash on hand and anticipated revenues are not sufficient to fund our anticipated operating costs. We will need to raise additional financing to fund our operations, maintain compliance with the Nasdaq continued listing requirements and implement our business plan. There is no assurance as to the amount and availability of any required future financing or the terms thereof. Such financing, if in the form of equity, may be highly dilutive to our existing stockholders and may otherwise include onerous terms. If in the form of debt, such financing may include covenants and repayment obligations which may be difficult to meet and that could adversely affect our business operations. We have no current understanding or arrangement to obtain any additional financing. To the extent that funds are not available to us, we may be required to delay, limit, or terminate our business operations and may lose our Nasdaq listing.\nIn light of the foregoing, there is substantial doubt about our ability to continue as a going concern for 12 months from the date of the filing of this Quarterly Report.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS.\nProceeds received from the issuance of unregistered common and preferred shares and associated warrants have been used for general working capital purposes.\nCommon Stock",
+   "prose_after": "Series A and Series B Convertible Preferred Stock",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1999,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Purchaser",
+     "Consideration",
+     "Shares",
+     "",
+     "Price",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "March 12, 2026",
+     "Marc Bern",
+     "Cash - Series A preferred, with Investment Warrants",
+     "",
+     "33,333",
+     "$",
+     "3.00",
+     "$",
+     "100,000"
+    ],
+    [
+     "April 15, 2026",
+     "KCGM Asia LLC",
+     "Cash - Series A preferred, with Investment Warrants",
+     "",
+     "16,667",
+     "$",
+     "3.00",
+     "$",
+     "50,000"
+    ],
+    [
+     "May 6, 2026",
+     "Helena Global Investment Opportunities 1 Ltd.",
+     "Cash - Series B preferred, with Investment Warrants",
+     "",
+     "408,421",
+     "$",
+     "2.755",
+     "$",
+     "1,125,200"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     "458,421",
+     "",
+     "",
+     "$",
+     "1,275,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2039,
+    "end_line": 2050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Series A and Series B Convertible Preferred Stock",
+   "prose_after": "Investment Warrants",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1999,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Grantee",
+     "Units",
+     "",
+     "Strike",
+     "",
+     "Expiration",
+     "Consideration"
+    ],
+    [
+     "March 12, 2026",
+     "Marc Bern",
+     "",
+     "33,333",
+     "$",
+     "3.00",
+     "Sep 12, 2029",
+     "Cash - Series A Preferred"
+    ],
+    [
+     "April 15, 2026",
+     "KCGM Asia LLC",
+     "",
+     "8,333",
+     "$",
+     "3.00",
+     "Oct 15, 2029",
+     "Cash - Series A Preferred"
+    ],
+    [
+     "May 6, 2026",
+     "Helena Global Investment Opportunities 1 Ltd.",
+     "",
+     "100,000",
+     "$",
+     "2.755",
+     "May 6, 2031",
+     "Cash \u2013 Series B Preferred"
+    ],
+    [
+     "May 6, 2026",
+     "Steve Kazas",
+     "",
+     "18,200",
+     "$",
+     "3.00",
+     "May 6, 2029",
+     "Cash \u2013 Common Shares"
+    ],
+    [
+     "May 8, 2026",
+     "KCGM Asia LLC",
+     "",
+     "9,091",
+     "$",
+     "3.00",
+     "May 8, 2029",
+     "Cash \u2013 Common Shares"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "168,957",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2054,
+    "end_line": 2065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Investment Warrants",
+   "prose_after": "Placement Agent Warrants",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Grantee",
+     "Units",
+     "",
+     "Strike",
+     "",
+     "Expiration",
+     "Consideration"
+    ],
+    [
+     "May 6, 2026",
+     "Craft Capital Management LLC designees",
+     "",
+     "29,473",
+     "$",
+     "2.755",
+     "May 6, 2031",
+     "Placement agent - Helena Financing (1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2068,
+    "end_line": 2073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Placement Agent Warrants",
+   "prose_after": "Stock Option",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "Grantee",
+     "Options",
+     "",
+     "Strike",
+     "",
+     "Expiration",
+     "",
+     "Consideration"
+    ],
+    [
+     "May 7, 2026",
+     "Next Media Management, Inc.",
+     "",
+     "200,000",
+     "$",
+     "2.64",
+     "",
+     "May 7, 2029",
+     "Consulting services for JOURNY.tv"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2076,
+    "end_line": 2081
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Stock Option",
+   "prose_after": "(1) The warrants issued on December 23, 2025 were issued to Craft Capital Management LLC designees, as placement agent, as partial compensation for placement agent services rendered in connection with the Company\u2019s Mayr 2026 private placement of securities to Helena Global Investment Opportunities 1 Ltd. (which financing was previously reported on a Current Report on Form 8-K). The Company also paid Craft Capital Management LLC. a cash placement agent fee equal to 8% of the gross proceeds of that financing.\nExemption from Registration\nThe securities described above were issued in reliance upon the exemptions from registration provided by Section 4(a)(2) of the Securities Act of 1933, as amended, and Rule 506(b) of Regulation D promulgated thereunder, as transactions by an issuer not involving a public offering, except that the stock option granted under the Company\u2019s 2023 Equity Incentive Plan was issued in reliance upon Rule 701 thereunder. No general solicitation or general advertising was used. Each recipient was an accredited investor or otherwise had access, through such recipient\u2019s relationship with the Company, to the type of information that would have been provided in a registration statement and represented an investment intent. Other than the cash placement agent fee described in note (1) above, no underwriting discounts or commissions were paid by the Company in connection with these issuances.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "Description"
+    ],
+    [
+     "3.1*",
+     "",
+     "Certificate of Designation of Series A Convertible Preferred Stock."
+    ],
+    [
+     "3.2",
+     "",
+     "Certificate of Designation of Series B Convertible Preferred Stock (Filed as Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed May 8, 2026, and incorporated herein by reference)."
+    ],
+    [
+     "4.1*",
+     "",
+     "Warrant between the Company and KC Global Media LLC, dated April 15, 2026."
+    ],
+    [
+     "4.2",
+     "",
+     "Form of Warrant between the Company and Helena Global Investment Opportunities 1 Ltd., dated May 8, 2026 (filed as Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on May 8, 2026, and incorporated herein by reference)."
+    ],
+    [
+     "4.3*",
+     "",
+     "Warrant between the Company and KC Global Media LLC, dated May 8, 2026."
+    ],
+    [
+     "10.1",
+     "",
+     "Unsecured Short-Term Promissory Note between the Company and The Donald P. Monaco Insurance Trust, dated March 26, 2026 (filed as Exhibit 10.26 to the Company\u2019s Annual Report on Form 10-K filed on May 29, 2026, and incorporated herein by reference)."
+    ],
+    [
+     "10.2*",
+     "",
+     "Securities Purchase Agreement between the Company and KC Global Media Asia, LLC dated April 15, 2026."
+    ],
+    [
+     "10.3",
+     "",
+     "Securities Purchase Agreement between the Company and Helena Global Investment Opportunities 1 Ltd., dated May 6, 2026 (filed as Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on May 8, 2026, and incorporated herein by reference)."
+    ],
+    [
+     "10.4*",
+     "",
+     "Securities Purchase Agreement between the Company and KC Global Media Asia, LLC dated May 8, 2026."
+    ],
+    [
+     "10.5",
+     "",
+     "Form of Pledge Agreement between William Kerby and Helena Global Investment Opportunities 1 Ltd., dated May 6, 2026 (filed as Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on May 8, 2026, and incorporated herein by reference)."
+    ],
+    [
+     "10.6*",
+     "",
+     "Amendment 8 to the March 26, 2026 Unsecured Short-Term Promissory Note between the Company and The Donald P. Monaco Insurance Trust, dated June 30, 2026."
+    ],
+    [
+     "31.1*",
+     "",
+     "Rule 13a-14(a) Certification of Principal Executive Officer, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2*",
+     "",
+     "Rule 13a-14(a) Certification of Principal Financial Officer, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1**",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.INS***",
+     "",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH***",
+     "",
+     "Inline XBRL Schema Document with Embedded Linkbase Documents."
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (the cover page interactive data file does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2105,
+    "end_line": 2135
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The securities described above were issued in reliance upon the exemptions from registration provided by Section 4(a)(2) of the Securities Act of 1933, as amended, and Rule 506(b) of Regulation D promulgated thereunder, as transactions by an issuer not involving a public offering, except that the stock option granted under the Company\u2019s 2023 Equity Incentive Plan was issued in reliance upon Rule 701 thereunder. No general solicitation or general advertising was used. Each recipient was an accredited investor or otherwise had access, through such recipient\u2019s relationship with the Company, to the type of information that would have been provided in a registration statement and represented an investment intent. Other than the cash placement agent fee described in note (1) above, no underwriting discounts or commissions were paid by the Company in connection with these issuances.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES.\nNot applicable.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nITEM 5. OTHER INFORMATION.\nRule 10b5-1 Trading Plans\nDuring the three months ended May 31, 2026, none of our directors or officers entered into, modified or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d that were intended to satisfy the affirmative defense conditions of Rule 10b5-1, in each case as defined in Item 408 of Regulation S-K.\nITEM 6. EXHIBITS.",
+   "prose_after": "* Filed herewith.\n** Furnished herewith and not \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended.\n*** The XBRL related information in Exhibit 101 shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to liability of that section and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 2140,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "NEXTTRIP, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 15, 2026",
+     "By:",
+     "/s/ William Kerby"
+    ],
+    [
+     "",
+     "",
+     "William Kerby"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer (Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "July 15, 2026",
+     "By:",
+     "/s/ Frank Orzechowski"
+    ],
+    [
+     "",
+     "",
+     "Frank Orzechowski"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer and Treasurer (Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "NEXTTRIP, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2145,
+    "end_line": 2158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith and not \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended.\n*** The XBRL related information in Exhibit 101 shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to liability of that section and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2140,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2159,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

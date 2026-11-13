@@ -1,0 +1,2733 @@
+{
+ "accession": "0001683168-18-002269",
+ "cik": "0001680689",
+ "form": "10-K",
+ "filing_date": "2018-08-13",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "boxxy_10k-043018.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada\n\n\n\n(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "5960\n\n\n\n(Primary Standard Industrial\n\n\n\nClassification Number)",
+     "32-0500871\n\n\n\n(IRS Employer\n\n\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 Form 10-K\nMark One\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended April 30, 2018\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to _______\nCommission File No. 333-213553\nBOXXY INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "WATTOVA 10\nOSTRAVA 70200\nCZECH REPUBLIC\n+420228881919\nboxxyinc@protonmail.com\n(Address and telephone number of principal executive offices)\nIndicate by checkmark whether the issuer:\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. (Check one)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding as of April 30, 2018"
+    ],
+    [
+     "Common Stock: $0.001",
+     "4,190,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 65
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer    [ ] (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by checkmark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nApplicable Only to Issuer Involved in Bankruptcy Proceedings During the Preceding Five Years.\nN/A\nIndicate by checkmark whether the issuer has filed all documents and reports required to be filed by Section 12, 13 and 15(d) of the Securities Exchange Act of 1934 after the distribution of securities under a plan confirmed by a court. Yes [ ] No [X]\nApplicable Only to Corporate Registrants\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the most practicable date:",
+   "prose_after": "TABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART 1",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business",
+     "3"
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "ITEM 2",
+     "Description of Property",
+     "4"
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "ITEM 4",
+     "Submission of Matters to a Vote of Security Holders",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Market for Common Equity and Related Stockholder Matters",
+     "5"
+    ],
+    [
+     "ITEM 6",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "ITEM 7",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "ITEM 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "8"
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements and Supplementary Data",
+     "9"
+    ],
+    [
+     "ITEM 9",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "21"
+    ],
+    [
+     "ITEM 9A (T)",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "Directors, Executive Officers, Promoters and Control Persons of the Company",
+     "22"
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation",
+     "22"
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "24"
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships and Related Transactions",
+     "24"
+    ],
+    [
+     "ITEM 14",
+     "Principal Accountant Fees and Services",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits",
+     "24"
+    ]
+   ],
+   "caption_stack": [
+    "PART 1"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "TABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nItem 1. Description of Business\nFORWARD-LOOKING STATEMENTS\nThis annual report contains forward-looking statements. These statements relate to future events or our future financial performance. These statements often can be identified by the use of terms such as \"may,\" \"will,\" \"expect,\" \"believe,\" \"anticipate,\" \"estimate,\" \"approximate\" or \"continue,\" or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management's best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Accounting Firm",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets as of April 30, 2018 and 2017",
+     "11"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations for the Years ended April 30, 2018 and 2017",
+     "12"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Stockholder\u2019s Deficit from April 19, 2017 (Inception) to April 30, 2018",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows for the Years ended April 30, 2018 and 2017",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Financial Statements",
+     "15"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this Annual Report, we do not have any off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that are material to investors.\nGOING CONCERN\nThe independent auditors' report accompanying our April 30, 2018 and April 30, 2017 financial statements contains an explanatory paragraph expressing substantial doubt about our ability to continue as a going concern. The financial statements have been prepared \"assuming that we will continue as a going concern,\" which contemplates that we will realize our assets and satisfy our liabilities and commitments in the ordinary course of business.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot applicable to smaller reporting companies.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO FINANCIAL STATEMENTS\nTABLE OF CONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 265,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "To:",
+     "The Board of Directors and Stockholders of Boxxy Inc.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 286,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+   "prose_after": "Opinion on the Financial Statements\nWe have audited the accompanying balance sheets of Boxxy Inc. (the Company) as of April 30, 2018 and 2017, and the related statements of operations, stockholders\u2019 equity, and cash flows for the each of the years in the two-years period then ended April 30, 2018, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of April 30, 2018 and 2017, and the results of its operations and its cash flows for each of the years in the two-years period ended April 30, 2018, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 4 to the financial statements, the Company had incurred substantial losses during the year, and has a working capital deficit, which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plan in regards to these matters are described in Note 4. These financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 314,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "April 30, 2018",
+     "",
+     "",
+     "April 30, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Restated)",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "1,494",
+     "",
+     "$",
+     "88",
+     ""
+    ],
+    [
+     "  Prepaid Expense",
+     "",
+     "10,814",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "12,308",
+     "",
+     "",
+     "248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "12,308",
+     "",
+     "$",
+     "248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "$",
+     "13,976",
+     "",
+     "$",
+     "3,500",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "504",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Director loan",
+     "",
+     "10,619",
+     "",
+     "",
+     "11,519",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "25,099",
+     "",
+     "",
+     "15,019",
+     ""
+    ],
+    [
+     "Loan Payable",
+     "",
+     "6,573",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "31,672",
+     "",
+     "",
+     "15,019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Common stock, par value $0.001; 75,000,000 shares authorized, 4,190,000 and 3,000,000 shares issued and outstanding respectively;",
+     "",
+     "4,190",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "  Additional paid in capital",
+     "",
+     "22,610",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Subscription receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(46,164)",
+     "",
+     "",
+     "(17,771)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(19,364)",
+     "",
+     "",
+     "(14,771)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "12,308",
+     "",
+     "$",
+     "248",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 318,
+    "end_line": 358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Jimmy P. Lee, CPA P.C.\nJimmy P. Lee, CPA P.C.\nFlushing, New York\nAugust 13, 2018\nWe have served as the Company\u2019s auditor since May 12, 2016\nBALANCE SHEETS",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENTS OF OPERATION",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 314,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 361,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended\n\n\n\nApril 30, 2018",
+     "",
+     "",
+     "For the Year ended\n\n\n\nApril 30, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Restated)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "22,317",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "50,710",
+     "",
+     "",
+     "13,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "50,710",
+     "",
+     "",
+     "13,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS FROM OPERATIONS",
+     "",
+     "(28,393)",
+     "",
+     "",
+     "(13,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(28,393)",
+     "",
+     "$",
+     "(13,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING: BASIC AND DILUTED",
+     "",
+     "3,965,632",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 365,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENTS OF OPERATION",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENT OF STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 361,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Additional\n\n\n\nPaid-in\n\n\n\nCapital",
+     "",
+     "Subscription Receivables",
+     "",
+     "",
+     "Deficit Accumulated during the Development Stage",
+     "",
+     "",
+     "Total Stockholders\u2019\n\n\n\nEquity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inception, April 2016",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued at $0.001 per share",
+     "3,000,000",
+     "",
+     "3,000",
+     "",
+     "\u2013",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for period",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "",
+     "(4,767)",
+     "",
+     "",
+     "(4,767)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2016",
+     "3,000,000",
+     "$",
+     "3,000",
+     "$",
+     "\u2013",
+     "$",
+     "(3,000)",
+     "",
+     "$",
+     "(4,767)",
+     "",
+     "$",
+     "(4,767)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued at $0.001 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(13,004)",
+     "",
+     "",
+     "(13,004)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2017 (Restated)",
+     "3,000,000",
+     "$",
+     "3,000",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "(17,771)",
+     "",
+     "$",
+     "(14,771)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued at $0.01 per share",
+     "1,190,000",
+     "",
+     "1,190",
+     "",
+     "22,610",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "23,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(28,393)",
+     "",
+     "",
+     "(28,393)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2018",
+     "4,190,000",
+     "$",
+     "4,190",
+     "$",
+     "22,610",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "(46,164)",
+     "",
+     "$",
+     "(19,364)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENT OF STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "See accompanying notes to the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended\n\n\n\nApril 30, 2018",
+     "",
+     "",
+     "For the Year ended\n\n\n\nApril 30, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Restated)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss for the period",
+     "$",
+     "(28,393)",
+     "",
+     "$",
+     "(13,004)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "10,476",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "504",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Prepaid Expense",
+     "",
+     "(10,654)",
+     "",
+     "",
+     "(160)",
+     ""
+    ],
+    [
+     "CASH FLOWS USED IN OPERATING ACTIVITIES",
+     "$",
+     "(28,067)",
+     "",
+     "$",
+     "(13,164)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from (Repayment to) director advances",
+     "",
+     "(900)",
+     "",
+     "",
+     "10,252",
+     ""
+    ],
+    [
+     "Capital stock issuance",
+     "",
+     "23,800",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Proceeds from borrowing",
+     "",
+     "6,573",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Subscription Receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "CASH FLOWS PROVIDED BY FINANCING ACTIVITIES",
+     "$",
+     "29,473",
+     "",
+     "$",
+     "13,252",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Increase for Period",
+     "$",
+     "1,406",
+     "",
+     "$",
+     "88",
+     ""
+    ],
+    [
+     "Cash at the beginning of Period",
+     "",
+     "88",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cash at end of Period",
+     "$",
+     "1,494",
+     "",
+     "$",
+     "88",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Income taxes paid",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "See accompanying notes to the financial statements.\nNOTES TO THE FINANCIAL STATEMENTS\nAPRIL 30, 2018 and 2017\nNOTE 1 \u2013 ORGANIZATION AND OPERATIONS\nBoxxy Inc. (the \u201cCompany\u201d) was incorporated in Nevada on April 19, 2017. We are a development stage company that intends to develop an online beauty sample subscription service. We will mail this box once per month. Generally, subscriber will receive the box with 6-8 samples and 1-2 bonus items. This samples maybe cosmetics, hair care, body care, face care, fragrances, nail polish, skin care, bath and body, treatments products, etc. We are not going to pay for the samples we are getting from our supplier partners. The Company may also earn a commission by acting as an agent between the buyer and seller for the customers referred to the seller from our website.\nNOTE 2 \u2013 RESTATEMENTS\nRestatement for the year ending April 30, 2017\nIn preparation of current period financial statements, the Company discovered omitted transactions on a newly opened bank account. Specifically, a deposit of $100 by the sole director and officer of the Company and bank charges of $12 were omitted during the year ended April 30, 2017.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Originally",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Reported",
+     "",
+     "",
+     "",
+     "Adjustment",
+     "",
+     "",
+     "Restated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "\u2013",
+     "",
+     "(a)",
+     "",
+     "88",
+     "",
+     "$",
+     "88",
+     ""
+    ],
+    [
+     "  Prepaid Expense",
+     "",
+     "160",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "160",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "160",
+     "",
+     "",
+     "",
+     "88",
+     "",
+     "",
+     "248",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "160",
+     "",
+     "",
+     "",
+     "88",
+     "",
+     "",
+     "248",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accrued Expense",
+     "",
+     "4,452",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Loan from director",
+     "",
+     "11,419",
+     "",
+     "(a)",
+     "",
+     "100",
+     "",
+     "",
+     "11,519",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "14,419",
+     "",
+     "",
+     "",
+     "100",
+     "",
+     "",
+     "14,519",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Common stock, par value $0.001; 75,000,000 shares authorized, 3,000,000 shares issued and outstanding, respectively;",
+     "",
+     "3,000",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Subscription receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(17,759)",
+     "",
+     "(a)",
+     "",
+     "(12)",
+     "",
+     "",
+     "(17,771)",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(14,759)",
+     "",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "160",
+     "",
+     "",
+     "",
+     "88",
+     "",
+     "$",
+     "248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2013",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "12,992",
+     "",
+     "(a)",
+     "",
+     "12",
+     "",
+     "",
+     "13,004",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "12,992",
+     "",
+     "",
+     "",
+     "12",
+     "",
+     "",
+     "13,004",
+     ""
+    ],
+    [
+     "Net loss from operations",
+     "",
+     "(12,992)",
+     "",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "(13,004)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(12,992)",
+     "",
+     "",
+     "",
+     "(12)",
+     "",
+     "$",
+     "(13,004)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Originally"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 506,
+    "end_line": 536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 RESTATEMENTS"
+    }
+   },
+   "prose_before": "Boxxy Inc. (the \u201cCompany\u201d) was incorporated in Nevada on April 19, 2017. We are a development stage company that intends to develop an online beauty sample subscription service. We will mail this box once per month. Generally, subscriber will receive the box with 6-8 samples and 1-2 bonus items. This samples maybe cosmetics, hair care, body care, face care, fragrances, nail polish, skin care, bath and body, treatments products, etc. We are not going to pay for the samples we are getting from our supplier partners. The Company may also earn a commission by acting as an agent between the buyer and seller for the customers referred to the seller from our website.\nNOTE 2 \u2013 RESTATEMENTS\nRestatement for the year ending April 30, 2017\nIn preparation of current period financial statements, the Company discovered omitted transactions on a newly opened bank account. Specifically, a deposit of $100 by the sole director and officer of the Company and bank charges of $12 were omitted during the year ended April 30, 2017.\nThe correction of this issue includes recording the $100 deposit by the sole director and officer of the Company as a Loan from director and the $12 bank charges as operating expenses.\nA summary of the changes to the financial statements originally reported is as follows:",
+   "prose_after": "______________________\n(a) To record $100 deposit by the sole director and officer of the Company as a Loan from director and the $12 bank charges as operating expenses.\nNOTE 3- SIGNIFICANT AND CRITICAL ACCOUNTING POLICIES AND PRACTICES\nBasis of Presentation\nThe financial statements of the Company have been prepared in accordance with generally accepted accounting principles in the United States of America (\u201cUS GAAP\u201d) and are presented in US dollars.\nDevelopment Stage Company\nThe Company is a development stage company as defined in ASC 915 \u201cDevelopment Stage Entities.\u201d. The Company is devoting substantially all of its efforts on establishing the business and its planned principal operations have not commenced. All losses accumulated since inception have been considered as part of the Company's development stage activities.\nThe Company has elected to adopt application of Accounting Standards Update No. 2014-10, Development Stage Entities (Topic 915): Elimination of Certain Financial Reporting Requirements. Upon adoption, the Company no longer presents or discloses inception-to-date information and other remaining disclosure requirements of Topic 915.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Tax benefit (expenses) at U.S. statutory rate",
+     "$",
+     "3,863",
+     "",
+     "$",
+     "6,042",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(3,863)",
+     "",
+     "",
+     "(6,042)",
+     ""
+    ],
+    [
+     "Tax benefit (expenses), net",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 655,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company has outstanding loan payable of $6,573 and $nil as of April 30, 2018 and 2017, respectively. The amounts are unsecured with a maturity date of April 15, 2020 and annual interest rate of 6%. Interest expenses were $nil and $nil for the years ended April 30, 2018 and 2017.\nNOTE 7 \u2013 STOCKHOLDER\u2019S EQUITY\nThe Company has 75,000,000, $0.001 par value shares of common stock authorized.\nAt April 30, 2017, the Company issued 3,000,000 shares of common stock to a director for subscription of $3,000 at $0.001 per share, the subscription was received in May 2017.\nFrom May 2017 to January 31, 2018, the Company issued 600,000 common shares at $0.02 per share for a total price of $12,000.\nIn August and September 2017, the Company issued 590,000 common shares at $0.02 per share for a total price of $11,800.\nAs of April 30, 2018, the Company had 4,190,000 shares issued and outstanding.\nNOTE 8 - INCOME TAXES\nThe reconciliation of income tax benefit (expenses) at the U.S. statutory rate of 21% and 34% for the period ended April 30 as follows:",
+   "prose_after": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets as of April 30 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "$",
+     "9,905",
+     "",
+     "$",
+     "4,401",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(9,905)",
+     "",
+     "",
+     "(4,401)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets as of April 30 are as follows:",
+   "prose_after": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "April 30,",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Balance-Beginning",
+     "$",
+     "6,042",
+     "$",
+     "1,621"
+    ],
+    [
+     "Increase/(Decrease) in Valuation allowance",
+     "",
+     "3,863",
+     "",
+     "4,401"
+    ],
+    [
+     "Balance-Ending",
+     "$",
+     "9,905",
+     "$",
+     "6,042"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to significant portions of the net deferred tax assets are as follows:",
+   "prose_after": "The Company has accumulated approximately $36,164 of net operating losses (\u201cNOL\u201d) carried forward to offset taxable income, if any, in future years which begin to expire in fiscal 2036. In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. Based on the assessment, management has established a full valuation allowance against all of the deferred tax asset relating to NOLs for every period because it is more likely than not that all of the deferred tax asset will not be realized.\nNOTE 9 - COMMITMENT & CONTINGENCIES\nThe Company does not own or lease any real or personal property and does not have any capital commitments.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Executive\n\n\n\nOfficer and/or Director",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "Andrejs Bekess",
+     "",
+     "32",
+     "President, Treasurer, Secretary and Director"
+    ],
+    [
+     "Wattova 10",
+     "",
+     "",
+     "(Principal Executive, Financial and Accounting Officer)"
+    ],
+    [
+     "Ostrava 70200",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Czech Republic",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters and Control Persons of the Company"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere has been no change in our internal control over financial reporting identified in connection with our evaluation we conducted of the effectiveness of our internal control over financial reporting as of April 30, 2018, that occurred during our fourth fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the SEC that permit the Company to provide only management\u2019s report in this annual report.\nPART III\nItem 10. Directors, Executive Officers, Promoters and Control Persons of the Company\nDIRECTORS AND EXECUTIVE OFFICERS\nThe name, address and position of our present officers and directors are set forth below:",
+   "prose_after": "Biographical Information and Background of officer and director\nAndejs Bekess has been our President, Secretary, Treasurer and sole Director since our incorporation on April 19, 2017. Prior, from May 2011 till January 2017, Mr. Bekess was the Chief Technical Officer at Latvian different e-commerce startup VOTO in Riga, Latvia. His responsibilities were research e-commerce trend and markets, developing web platform. He was responsible for website and client support service through the internet including invoicing, discounts and claims. He graduated from Riga Technical University in 2006 with a bachelor degree in Information Technology. From 2005 to 2010, Andejs Bekess worked as senior developer for e-commerce projects \u201cELKOR\u201d, \u201cELKO\u201d in Riga, Latvia. His responsibilities were managing Internet shop, CRM software and technical support activities and processes. He devotes approximately 20% of his time to our affairs.\nAUDIT COMMITTEE\nWe do not have an audit committee financial expert. We do not have an audit committee financial expert because we believe the cost related to retaining a financial expert at this time is prohibitive. Further, because we have no operations, at the present time, we believe the services of a financial expert are not warranted.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary (US$)",
+     "Bonus (US$)",
+     "Stock Awards (US$)",
+     "Option Awards (US$)",
+     "Non-Equity Incentive Plan Compensation (US$)",
+     "Nonqualified Deferred Compensation Earnings (US$)",
+     "All Other Compensation (US$)",
+     "Total (US$)"
+    ],
+    [
+     "Andrejs Bekess",
+     "2018",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "President",
+     "2017",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "",
+     "2017",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Treasurer",
+     "2017",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Andejs Bekess has been our President, Secretary, Treasurer and sole Director since our incorporation on April 19, 2017. Prior, from May 2011 till January 2017, Mr. Bekess was the Chief Technical Officer at Latvian different e-commerce startup VOTO in Riga, Latvia. His responsibilities were research e-commerce trend and markets, developing web platform. He was responsible for website and client support service through the internet including invoicing, discounts and claims. He graduated from Riga Technical University in 2006 with a bachelor degree in Information Technology. From 2005 to 2010, Andejs Bekess worked as senior developer for e-commerce projects \u201cELKOR\u201d, \u201cELKO\u201d in Riga, Latvia. His responsibilities were managing Internet shop, CRM software and technical support activities and processes. He devotes approximately 20% of his time to our affairs.\nAUDIT COMMITTEE\nWe do not have an audit committee financial expert. We do not have an audit committee financial expert because we believe the cost related to retaining a financial expert at this time is prohibitive. Further, because we have no operations, at the present time, we believe the services of a financial expert are not warranted.\nSIGNIFICANT EMPLOYEES\nWe have no employees other than our Treasurer and a sole director, Andrejs Bekess; he currently devotes approximately twenty hours per week to company matters. We intend to hire employees on an as needed basis.\nItem 11. Executive Compensation\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our President, and Secretary and all other executive officers (collectively, the \u201cNamed Executive Officers\u201d) from inception on April 19, 2017 until April 30, 2018.",
+   "prose_after": "SUMMARY COMPENSATION TABLE\nThere are no current employment agreements between the company and its sole officer. The compensation discussed herein addresses all compensation awarded to, earned by, or paid to our named executive officer. There are no other stock option plans, retirement, pension, or profit sharing plans for the benefit of our officers and directors other than as described herein.\nCHANGE OF CONTROL\nAs of April 30, 2018, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table provides certain information regarding the ownership of our common stock, as of April 30, 2018 and as of the date of the filing of this annual report by:\n\u2022 each of our executive officers;\n\u2022 each director;\n\u2022 each person known to us to own more than 5% of our outstanding common stock; and",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of\n\n\n\nBeneficial Owner",
+     "Amount and Nature of\n\n\n\nBeneficial Ownership",
+     "Percentage",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Andrejs Bekess Wattova 10 Ostrava 70200 Czech Republic",
+     "3,000,000 shares of common stock (direct)",
+     "",
+     "72%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "There are no current employment agreements between the company and its sole officer. The compensation discussed herein addresses all compensation awarded to, earned by, or paid to our named executive officer. There are no other stock option plans, retirement, pension, or profit sharing plans for the benefit of our officers and directors other than as described herein.\nCHANGE OF CONTROL\nAs of April 30, 2018, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table provides certain information regarding the ownership of our common stock, as of April 30, 2018 and as of the date of the filing of this annual report by:\n\u2022 each of our executive officers;\n\u2022 each director;\n\u2022 each person known to us to own more than 5% of our outstanding common stock; and\n\u2022 all of our executive officers and directors and as a group.",
+   "prose_after": "The percent of class is based on 4,190,000 shares of common stock issued and outstanding as of the date of this annual report.\nItem 13. Certain Relationships and Related Transactions\nDuring the year ended April 30, 2018, we had not entered into any transactions with our sole officer or director, or persons nominated for these positions, beneficial owners of 5% or more of our common stock, or family members of these persons wherein the amount involved in the transaction or a series of similar transactions exceeded the lesser of $120,000 or 1% of the average of our total assets for the last three fiscal years.\nItem 14. Principal Accountant Fees and Services\nDuring fiscal year ended April 30, 2018, we incurred approximately $6,500 for the year ended April 30, 2018 and $4,452 for the period ended April 30, 2017 in fees to our principal independent accountants for professional services rendered in connection with the audit of our financial statements and for the reviews of our financial statements.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BOXXY INC."
+    ],
+    [
+     "Dated: August 13, 2018",
+     "By: /s/ Andrejs Bekess"
+    ],
+    [
+     "",
+     "Andrejs Bekess, President and\n\n\n\nChief Executive Officer and\n\n\n\nChief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "BOXXY INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 838,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Item 14. Principal Accountant Fees and Services\nDuring fiscal year ended April 30, 2018, we incurred approximately $6,500 for the year ended April 30, 2018 and $4,452 for the period ended April 30, 2017 in fees to our principal independent accountants for professional services rendered in connection with the audit of our financial statements and for the reviews of our financial statements.\nPART IV\nItem 15. Exhibits\nThe following exhibits are filed as part of this Annual Report.\nExhibits:\n31.1 Certification of Chief Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act 31.2 Certification of Chief Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act 32.1 Certification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

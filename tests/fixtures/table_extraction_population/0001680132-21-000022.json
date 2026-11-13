@@ -1,0 +1,3834 @@
+{
+ "accession": "0001680132-21-000022",
+ "cik": "0001680132",
+ "form": "10-K",
+ "filing_date": "2021-09-07",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cannabis10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NV\n\n\n\n(State or Other Jurisdiction of Incorporation or Organization)",
+     "2600\n\n\n\n(Primary Standard Industrial Classification Code Number)",
+     "38-3993849\n\n\n\nI.R.S. Employer\n\n\n\nIdentification Number"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended May 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number: 333-213009\nCANNABIS SUISSE CORP.\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "6607 Clara St #270, Bell Gardens, CA 90201\nPhone: (502) 2082098\nE-mail: manage@cannabissuissecorp.com\n(Address, including zip code, and telephone number, Including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock",
+     "CSUI",
+     "OTC Markets"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "6607 Clara St #270, Bell Gardens, CA 90201\nPhone: (502) 2082098\nE-mail: manage@cannabissuissecorp.com\n(Address, including zip code, and telephone number, Including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered under Section 12(g) of the Exchange Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15 (d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business.",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "4"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Description of Property.",
+     "4"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "4"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "5"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data.",
+     "5"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "5"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "7"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "7"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "24"
+    ],
+    [
+     "Item 9A (T).",
+     "Controls and Procedures.",
+     "24"
+    ],
+    [
+     "Item 9B.",
+     "Other Information.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, Promoters and Control Persons of the Company.",
+     "25"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "27"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "28"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions.",
+     "28"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services.",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules.",
+     "28"
+    ],
+    [
+     "Item 16.",
+     "Form 10\u2013K Summary.",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201cnon-accelerated filer\u201d, \u201cemerging growth company\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated Filer          [ ]          Accelerated Filer          [ ]\nNon-accelerated Filer            [X]            Smaller reporting company  [X]\n(Do not check if a smaller reporting company)   Emerging growth company    [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: $0\nState the number of shares outstanding of each of the issuer's classes of common equity, as of the latest practicable date: 35,534,561 common shares issued and outstanding as of August 30, 2021.",
+   "prose_after": "3\nPART I\nForward-looking statements\nStatements made in this Form 10-K that are not historical or current facts are \"forward-looking statements\" made pursuant to the safe harbor provisions of Section 27A of the Securities Act of 1933 (the \"Act\") and Section 21E of the Securities Exchange Act of 1934. These statements often can be identified by the use of terms such as \"may,\" \"will,\" \"expect,\" \"believe,\" \"anticipate,\" \"estimate,\" \"approximate\" or \"continue,\" or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management's best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms",
+     "10"
+    ],
+    [
+     "Consolidated Balance Sheets as of May 31, 2021 and 2020",
+     "11"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the years ended May 31, 2021 and 2020",
+     "12"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit for the years ended May 31, 2021 and 2020",
+     "13"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended May 31, 2021 and 2020",
+     "14"
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "15"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 285,
+    "end_line": 294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The preparation of financial statements in accordance with accounting principles generally accepted in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. A change in managements\u2019 estimates or assumptions could have a material impact on our financial condition and results of operations during the period in which such changes occurred. Actual results could differ from those estimates. Our financial statements reflect all adjustments that management believes are necessary for the fair presentation of their financial condition and results of operations for the periods presented.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot applicable to smaller reporting companies.\nItem 8. Financial Statements and Supplementary Data\n\u0421ANNABIS SUISSE CORP.\nCONSOLIDATED FINANCIAL STATEMENTS\nYears Ended May 31, 2021 and 2020\nTable of Contents",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of Cannabis Suisse Corp.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Cannabis Suisse Corp. (the Company) as of May 31, 2021 and 2020, and the related consolidated statements of operations and comprehensive loss, changes in stockholders\u2019 deficit, and cash flows for the years then ended, and the related notes and schedules (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of May 31, 2021 and 2020, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 276,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "May 31,\n\n\n\n2021",
+     "",
+     "May 31,\n\n\n\n2020"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents",
+     "$",
+     "-",
+     "$",
+     "5"
+    ],
+    [
+     "Accounts Receivable, net",
+     "",
+     "-",
+     "",
+     "76,848"
+    ],
+    [
+     "Related Party Receivable",
+     "",
+     "-",
+     "",
+     "10,040"
+    ],
+    [
+     "Inventory, net",
+     "",
+     "1,734",
+     "",
+     "58,061"
+    ],
+    [
+     "Prepaid Expenses",
+     "",
+     "450",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid Taxes",
+     "",
+     "-",
+     "",
+     "12,069"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,184",
+     "",
+     "157,023"
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "4,383",
+     "",
+     "85,039"
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "VAT Tax Receivable",
+     "",
+     "-",
+     "",
+     "1,810"
+    ],
+    [
+     "Operating lease right of use asset",
+     "",
+     "-",
+     "",
+     "139,653"
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "-",
+     "",
+     "141,463"
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "6,567",
+     "$",
+     "383,525"
+    ],
+    [
+     "LIABILITIES & STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "-",
+     "$",
+     "108,973"
+    ],
+    [
+     "Accrued Expenses",
+     "",
+     "-",
+     "",
+     "18,478"
+    ],
+    [
+     "Accrued Wages",
+     "",
+     "101,620",
+     "",
+     "38,625"
+    ],
+    [
+     "Advances From Related Parties",
+     "",
+     "-",
+     "",
+     "415,470"
+    ],
+    [
+     "Bank Indebtedness",
+     "",
+     "-",
+     "",
+     "45,212"
+    ],
+    [
+     "Convertible Notes Payable, net of debt discount",
+     "",
+     "67,213",
+     "",
+     "-"
+    ],
+    [
+     "Derivative Liability",
+     "",
+     "25,228",
+     "",
+     "-"
+    ],
+    [
+     "Lease Liabilities - Short-term",
+     "",
+     "-",
+     "",
+     "70,859"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "194,061",
+     "",
+     "697,617"
+    ],
+    [
+     "Non-Current Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long Term Loan",
+     "",
+     "-",
+     "",
+     "3,622"
+    ],
+    [
+     "Lease Liabilities - Long-term",
+     "",
+     "-",
+     "",
+     "68,794"
+    ],
+    [
+     "Total Non-Current Liabilities",
+     "",
+     "-",
+     "",
+     "72,416"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "194,061",
+     "",
+     "770,033"
+    ],
+    [
+     "Commitments and Contingencies (Note 6)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.001; 20,000,000 shares authorized, 0 shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common stock, par value $0.001; 250,000,000 shares authorized, 34,500,000 shares issued and outstanding",
+     "",
+     "34,500",
+     "",
+     "34,500"
+    ],
+    [
+     "Additional Paid-In-Capital",
+     "",
+     "652,860",
+     "",
+     "51,695"
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "-",
+     "",
+     "(17,221)"
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(874,854)",
+     "",
+     "(455,482)"
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(187,494)",
+     "",
+     "(386,508)"
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "6,567",
+     "$",
+     "383,525"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 352,
+    "end_line": 408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "- Reviewed agreements for all relevant terms.\n- Reviewed the analysis and tested supporting documentation related to the accounting for the transaction.\n- Researched the accounting methods used by the Company to determine that the transaction was properly recorded.\nSubstantial Doubt about the Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 3, the Company has limited revenues and recurring losses as of May 31, 2021 and has not completed its efforts to establish a stabilized source of revenues to cover operating costs over an extended period of time. These factors, and the need for additional financing in order for the Company to meet its business plans, raise substantial doubt about the Company\u2019s ability to continue as a going concern. Our opinion is not modified with respect to that matter.\nWe have served as the Company\u2019s auditor since 2019. Tampa, Florida\nAugust 30, 2021\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended May 31, 2021",
+     "",
+     "For the year ended May 31, 2020"
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of goods from principal activity",
+     "$",
+     "36,945",
+     "$",
+     "182,675"
+    ],
+    [
+     "Sales of goods from secondary activity",
+     "",
+     "13,905",
+     "",
+     "60,064"
+    ],
+    [
+     "Total Revenues",
+     "",
+     "50,850",
+     "",
+     "242,739"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "102,648",
+     "",
+     "327,526"
+    ],
+    [
+     "Gross (Loss) Profit",
+     "",
+     "(51,798)",
+     "",
+     "(84,787)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "39,592",
+     "",
+     "72,074"
+    ],
+    [
+     "Depreciation",
+     "",
+     "9,649",
+     "",
+     "20,071"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "257,414",
+     "",
+     "174,384"
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "306,655",
+     "",
+     "266,529"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "(358,453)",
+     "",
+     "(351,316)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment expense",
+     "",
+     "-",
+     "",
+     "(37,912)"
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(60,344)",
+     "",
+     "-"
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "7,903",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE INCOME TAXES",
+     "",
+     "(410,894)",
+     "",
+     "(389,228)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(410,894)",
+     "$",
+     "(389,228)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive (loss) income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "(8,478)",
+     "",
+     "(17,221)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMPREHENSIVE LOSS",
+     "$",
+     "(419,372)",
+     "$",
+     "(406,449)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "$",
+     "(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING: BASIC AND DILUTED",
+     "",
+     "34,500,000",
+     "",
+     "35,541,096"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 415,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-In-Capital",
+     "Accumulated other comprehensive loss",
+     "Accumulated Deficit",
+     "Total Stockholders\u2019\n\n\n\nDeficit"
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance,\n\n\n\nMay 31, 2019",
+     "34,500,000",
+     "$   34,500",
+     "$     51,695",
+     "$                    -",
+     "$     (66,254)",
+     "$ 19,941"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "-",
+     "-",
+     "-",
+     "(17,221)",
+     "-",
+     "(17,221)"
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(389,228)",
+     "(389,228)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance,\n\n\n\nMay 31, 2020",
+     "34,500,000",
+     "$   34,500",
+     "$     51,695",
+     "$        (17,221)",
+     "$   (455,482)",
+     "$ (386,508)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Disposal of Subsidiary",
+     "-",
+     "-",
+     "511,165",
+     "17,378",
+     "-",
+     "528,543"
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "-",
+     "-",
+     "-",
+     "(157)",
+     "-",
+     "(157)"
+    ],
+    [
+     "Debt Discount",
+     "-",
+     "-",
+     "90,000",
+     "-",
+     "-",
+     "90,000"
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(419,372)",
+     "(419,372)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance,\n\n\n\nMay 31, 2021",
+     "34,500,000",
+     "$   34,500",
+     "$    652,860",
+     "$                    -",
+     "$   (874,854)",
+     "$ (187,494)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 467,
+    "end_line": 499
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nCANNABIS SUISSE CORP.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year ended\n\n\n\nMay 31, 2021",
+     "",
+     "Year ended\n\n\n\nMay 31, 2020"
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "(419,372)",
+     "$",
+     "(389,228)"
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "-",
+     "",
+     "20,071"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile Net Income to net cash used in operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "9,650",
+     "",
+     "-"
+    ],
+    [
+     "Provision for Doubtful Accounts",
+     "",
+     "78,827",
+     "",
+     "-"
+    ],
+    [
+     "Amortization Expense",
+     "",
+     "12,772",
+     "",
+     "-"
+    ],
+    [
+     "Debt Discount",
+     "",
+     "(62,787)",
+     "",
+     "-"
+    ],
+    [
+     "    Change in Fair Value of Derivative Liability",
+     "",
+     "25,228",
+     "",
+     "-"
+    ],
+    [
+     "  Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(1,979)",
+     "",
+     "(74,320)"
+    ],
+    [
+     "    Related party receivables",
+     "",
+     "8,422",
+     "",
+     "(10,040)"
+    ],
+    [
+     "    VAT tax receivable",
+     "",
+     "9,563",
+     "",
+     "(1,442)"
+    ],
+    [
+     "Inventory",
+     "",
+     "26,425",
+     "",
+     "18,268"
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(450)",
+     "",
+     "10,467"
+    ],
+    [
+     "Prepaid taxes",
+     "",
+     "-",
+     "",
+     "(12,069)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "30,100",
+     "",
+     "61,864"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "-",
+     "",
+     "11,064"
+    ],
+    [
+     "Accrued wages",
+     "",
+     "62,995",
+     "",
+     "38,625"
+    ],
+    [
+     "Net cash used in Operating Activities",
+     "",
+     "(130,606)",
+     "",
+     "(288,828)"
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from related parties",
+     "$",
+     "(20,414)",
+     "$",
+     "160,970"
+    ],
+    [
+     "    Bank indebtedness",
+     "",
+     "21,015",
+     "",
+     "45,212"
+    ],
+    [
+     "Convertible Notes Payable",
+     "",
+     "130,000",
+     "",
+     "-"
+    ],
+    [
+     "Net cash provided by (used in) Financing Activities",
+     "",
+     "130,601",
+     "",
+     "206,182"
+    ],
+    [
+     "Effect of exchange rate on cash",
+     "",
+     "-",
+     "",
+     "(1,530)"
+    ],
+    [
+     "Net cash increase (decrease) for period",
+     "$",
+     "(5)",
+     "$",
+     "(84,176)"
+    ],
+    [
+     "Cash at beginning of period",
+     "$",
+     "5",
+     "$",
+     "84,181"
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "-",
+     "$",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information on the cash flow",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right to use asset exchanged for operating lease liability",
+     "$",
+     "-",
+     "$",
+     "195,394"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements.\nCANNABIS SUISSE CORP.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these statements.\nNOTE 1 \u2013 ORGANIZATION AND NATURE OF BUSINESS\nThe Company is engaged in the business of production of OTC (over-the-counter) products - for example CBD oils, retail branded cigarettes and also some health-related supplements.\nDue to the COVID-19 pandemic, starting April 2020, the Company has been engaged in the selling of face masks and disinfectants in order to extend the number of available products and provide the customers with an opportunity to comply with the safety measures.\nNOTE 2 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of presentation and consolidation\nThe accompanying consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America, (GAAP). The Company\u2019s year-end is May 31. The consolidated financial statements include the accounts of the Company and its former wholly-owned subsidiary, Cannabis Suisse LLC, through the date of disposal (see Note 4). All significant inter-company accounts and transactions have been eliminated in consolidation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "May 31, 2021",
+     "",
+     "May 31, 2020"
+    ],
+    [
+     "Raw materials",
+     "$",
+     "1,734",
+     "$",
+     "26,768"
+    ],
+    [
+     "Finished goods",
+     "",
+     "-",
+     "",
+     "27,821"
+    ],
+    [
+     "Work in Process inventory",
+     "",
+     "-",
+     "",
+     "9,408"
+    ],
+    [
+     "Reserve for inventory",
+     "",
+     "-",
+     "",
+     "(5,936)"
+    ],
+    [
+     "Total Inventory, net",
+     "$",
+     "1,734",
+     "$",
+     "58,061"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Inventories are stated at the lower of cost or market. The Company had $1,734 and $58,061 in inventory as of May 31, 2021 and 2020, respectively. The Company also determines a reserve for excess and obsolete inventory based on historical usage, and projecting the year in which inventory will be consumed into a finished product. The valuation of inventories requires management to make significant assumptions, including the assessment of market value by inventory category considering historical usage, future usage and market demand for their products, and qualitative judgments related to discontinued, slow moving and obsolete inventories. The Company had $0 and $5,936 in reserve for excess and obsolete inventory as of May 31, 2021 and 2020, respectively.\nThe Company had $0 and $9,408 of work in progress (WIP) inventory as of May 31, 2021 and 2020, respectively. Cannabis plants in the growth process are recognized as WIP inventory.\nThe following table sets out a breakdown of the inventory by classes as of May 31, 2021 and 2020:",
+   "prose_after": "Property and equipment\nProperty and equipment are carried at cost less accumulated depreciation. Depreciation is provided over the assets\u2019 estimated useful lives, using the straight-line method. Estimated useful lives of the plant and equipment are as follows:\nEquipment, Furniture and fixtures 5-10 years\nOffice machines, IT equipment 5-10 years\nLeasehold Improvements 2-5 years\nThe cost and related accumulated depreciation of assets sold or otherwise retired are eliminated from the accounts and any gain or loss is included in the consolidated statements of operations and comprehensive loss. The cost of maintenance and repairs is charged to the consolidated statements of operations and comprehensive loss as incurred, whereas significant renewals and betterments are capitalized.\nImpairment\nWe evaluate the impairment of long-lived assets whenever events or changes in circumstances indicate that the carrying amount may not be recoverable. Our evaluation is based on an assessment of potential indicators of impairment, such as an adverse change in the business climate that could affect the value of an asset, current or forecasted operating or cash flow losses that demonstrate continuing losses associated with the use of an asset, and a current expectation that, more likely than not, an asset will be disposed of before the end of its previously estimated useful life. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to future undiscounted net cash flows expected to be generated by the asset. If such assets are considered to be impaired, the impairment to be recognized is measured by the amount by which the carrying amount of the assets exceeds the fair value of the assets. Assets to be disposed of are reported at the lower of the carrying amount or fair value less costs to sell.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "defined as observable inputs such as quoted prices in active markets;"
+    ],
+    [
+     "Level 2:",
+     "defined as inputs other than quoted prices in active markets that are either directly or indirectly observable; and"
+    ],
+    [
+     "Level 3:",
+     "defined as unobservable inputs in which little or no market data exists, therefore requiring an entity to develop its own assumptions."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 626,
+    "end_line": 631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "We evaluate the impairment of long-lived assets whenever events or changes in circumstances indicate that the carrying amount may not be recoverable. Our evaluation is based on an assessment of potential indicators of impairment, such as an adverse change in the business climate that could affect the value of an asset, current or forecasted operating or cash flow losses that demonstrate continuing losses associated with the use of an asset, and a current expectation that, more likely than not, an asset will be disposed of before the end of its previously estimated useful life. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to future undiscounted net cash flows expected to be generated by the asset. If such assets are considered to be impaired, the impairment to be recognized is measured by the amount by which the carrying amount of the assets exceeds the fair value of the assets. Assets to be disposed of are reported at the lower of the carrying amount or fair value less costs to sell.\nDuring the years ended May 31, 2021 and 2020, the Company recognized an impairment of intangibles in the amount of $0 and $37,912, respectively.\nFair Value of Financial Instruments\nAccounting Standards Codification (\u201cASC\u201d) 820 Fair Value Measurements and Disclosures establishes a three-tier fair value hierarchy, which prioritizes the inputs in measuring fair value. The hierarchy prioritizes the inputs into three levels based on the extent to which inputs used in measuring fair value are observable in the market.\nThese tiers include:",
+   "prose_after": "The carrying value of the Company\u2019s cash, other current assets, accounts payable, accrued expenses and advances from related parties approximates its fair value due to their short-term maturity. The Company has derivatives that are measured at level 3. The derivatives may require appropriate valuation adjustments that a market participant would require to arrive at fair value.\nDerivatives\nDerivative instruments are recognized in the Consolidated Financial Statements at fair value. Where the Company has entered into master netting agreements with counterparties, the derivative positions are netted by counterparties and are reported accordingly in other assets or other liabilities. Changes in the fair value of derivative instruments are recognized in earnings each period, unless the derivative is designated and qualifies as a cash flow or net investment hedge.\nIncome Taxes\nThe Company accounts for its income taxes in accordance with ASC 740, Income Taxes, which requires recognition of deferred tax assets and liabilities for future tax consequences attributable to differences between the financial statements carrying amounts of existing assets and liabilities and their respective tax bases and tax credits and carry forwards. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in operations in the period that includes the enactment date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 642,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Disposal of Assets:",
+     "",
+     ""
+    ],
+    [
+     "Related Party Receivable",
+     "$",
+     "1,618"
+    ],
+    [
+     "  Inventory",
+     "",
+     "29,902"
+    ],
+    [
+     "  Prepaid Taxes",
+     "",
+     "12,346"
+    ],
+    [
+     "Property and Equipment",
+     "",
+     "71,006"
+    ],
+    [
+     "VAT Tax Receivable",
+     "",
+     "4,316"
+    ],
+    [
+     "Operating lease right of use asset",
+     "",
+     "126,881"
+    ],
+    [
+     "Total Assets Transferred",
+     "$",
+     "246,069"
+    ]
+   ],
+   "caption_stack": [
+    "Disposal of Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "The impact of the COVID-19 pandemic has had, and is expected to continue to have, an adverse effect on our business and our financial results. COVID-19 pandemic has negatively affected global economy, disrupted consumer spending and global supply chains and created significant volatility and disruption of financial markets. The pandemic had and will continue to have an adverse effect on our business and financial performance. The extent of the impact of the COVID-19, including our ability to execute our business strategies as planned, will depend on future developments, including the duration and severity of the pandemic, which are uncertain and cannot be predicted. The COVID-19 pandemic could also adversely affect our liquidity and ability to access the capital markets. Uncertainty regarding the duration of the COVID-19 pandemic may adversely impact our ability to raise additional capital, or require additional capital.\nNOTE 4 - BUSINESS COMBINATION\nOn November 23, 2020, Cannabis Suisse Corp. (the \u201cTransferor\u201d), entered into an Asset Transfer Agreement with Cecillia Merige Jensen (the \u201cTransferee\u201d) and Cannabis Suisse LLC. In accordance with the terms of the Agreement, the Transferor transferred to the Transferee all its right, title and interest to one hundred percent (100%) of Cannabis Suisse LLC, including all its right, title and interest to one hundred percent (100%) of Grow Factory GmbH and the Transferee transferred and assigned to the Transferor 10,000,000 restricted shares of Cannabis Suisse Corp., free and clear of any and all liens and encumbrances. The above-mentioned Asset Transfer Agreement hereby revokes the effect of the Stock Transfer Agreement entered into with Cecillia Jensen on May 31, 2019, and the 10,000,000 shares were returned to the President of the Company to reinstate his ownership percentage pre-acquisition.",
+   "prose_after": "NOTE 5 \u2013 PROPERTY AND EQUIPMENT\nProperty and Equipment:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "May 31, 2021",
+     "",
+     "May 31, 2020"
+    ],
+    [
+     "Equipment",
+     "$",
+     "16,451",
+     "$",
+     "70,998"
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "-",
+     "",
+     "42,684"
+    ],
+    [
+     "Office machines, IT equipment",
+     "",
+     "-",
+     "",
+     "1,992"
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "8,354",
+     "",
+     "8,354"
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(20,422)",
+     "",
+     "(38,989)"
+    ],
+    [
+     "Net property and equipment",
+     "$",
+     "4,383",
+     "$",
+     "85,039"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "NOTE 5 \u2013 PROPERTY AND EQUIPMENT\nProperty and Equipment:",
+   "prose_after": "During the year ended May 31, 2021, $99,223 of property and equipment was disposed of under the Asset Transfer Agreement discussed in Note 1.\nFor the years ended May 31, 2021, and 2020 the Company recognized depreciation expense in the amount of $9,649 and $20,071, respectively.\nNOTE 6 \u2013 COMMITMENTS AND CONTINGENCIES\nThe Company implemented a new accounting policy according to the ASC 842, Leases, on June 1, 2019 on a modified retrospective basis and did not restate comparative periods. Under the new policy, the Company recognized a $214,153 lease liability as well as right-of-use asset for all leases (with the exception of short-term leases) at the commencement date. Lease liabilities are measured at present value of the sum of remaining rental payments, discounted at the incremental borrowing rate. A single lease cost is recognized over the lease term on a straight-line basis. All cash payments of operating lease cost are classified within operating activities in the consolidated statements of cash flows.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2021",
+     "",
+     "May 31, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use asset \u2013 operating leases",
+     "$",
+     "-",
+     "$",
+     "139,653"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease Liabilities - Short-term",
+     "$",
+     "-",
+     "$",
+     "70,859"
+    ],
+    [
+     "Lease Liabilities - Long-term",
+     "",
+     "-",
+     "",
+     "68,794"
+    ],
+    [
+     "Total Lease Liabilities",
+     "$",
+     "-",
+     "$",
+     "139,653"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 746
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "For the years ended May 31, 2021, and 2020 the Company recognized depreciation expense in the amount of $9,649 and $20,071, respectively.\nNOTE 6 \u2013 COMMITMENTS AND CONTINGENCIES\nThe Company implemented a new accounting policy according to the ASC 842, Leases, on June 1, 2019 on a modified retrospective basis and did not restate comparative periods. Under the new policy, the Company recognized a $214,153 lease liability as well as right-of-use asset for all leases (with the exception of short-term leases) at the commencement date. Lease liabilities are measured at present value of the sum of remaining rental payments, discounted at the incremental borrowing rate. A single lease cost is recognized over the lease term on a straight-line basis. All cash payments of operating lease cost are classified within operating activities in the consolidated statements of cash flows.\nThe rent expense for the years ended May 31, 2021 and 2020 was $38,397 and $83,426, respectively.\nAs of May 31, 2021 and 2020, the right-of use asset and lease liabilities are as follows:",
+   "prose_after": "Lease cost and other information",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended\n\n\n\nMay 31, 2021",
+     "",
+     "For the Year ended\n\n\n\nMay 31, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "-",
+     "$",
+     "74,926"
+    ],
+    [
+     "Weighted average remaining lease term - Operating leases (years)",
+     "",
+     "-",
+     "",
+     "2"
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "-%",
+     "",
+     "3%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 749,
+    "end_line": 759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "Lease cost and other information",
+   "prose_after": "NOTE 7 \u2013 RELATED/THIRD PARTY TRANSACTIONS\nThe Company\u2019s President has agreed to provide interest free advances, due on demand, to the Company up to $100,000. As of May 31, 2021 and 2020, Suneetha Nandana Silva Sudusinghe advanced to the Company $0 and $56,323, respectively. In addition, the Company\u2019s president has agreed to provide production space in Sri Lanka at no charge for the production of goods. The Company discontinued using the mentioned office space on March 1, 2020.\nNOTE 8 \u2013 CONVERTIBLE NOTES PAYABLE\nOn December 1, 2020 Suneetha Nandana Silva Sudusinghe assigned SAPA Investments, LLC $10,000 of his loan to Cannabis Suisse Corp. The Agreement contains a provision allows SAPA Investments, LLC to convert the loan to common stock at a 70%-discount to the market price at the time of conversion after a period of lockup of 30 days.\nThe original loan to Cannabis Suisse Corp. from Mr. Sudusinghe was pursuant to Loan Agreement dated March 1, 2016 and Verbal Agreement dated April 2, 2019.\nOn December 4, 2020 Suneetha Nandana Silva Sudusinghe assigned SAPA Group, LLC $10,000 of his loan to Cannabis Suisse Corp. The Agreement contains a provision allows SAPA Group, LLC to convert the loan to common stock at a 70%-discount to the market price at the time of conversion after a period of lockup of 30 days.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 719,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The financings giving rise to derivative financial instruments",
+     "Indexed Shares",
+     "",
+     "Fair Values",
+     ""
+    ],
+    [
+     "Embedded derivatives",
+     "",
+     "814,967",
+     "$",
+     "25,227"
+    ]
+   ],
+   "caption_stack": [
+    "May 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 804
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "On April 15, 2021 Suneetha Nandana Silva Sudusinghe assigned Noi Tech LLC $30,000 of his loan to Cannabis Suisse Corp. The Agreement contains a provision allows Noi Tech LLC to convert the loan to common stock at a 70%-discount to the market price at the time of conversion or at a fixed price of $0.01 per share.\nThe original loan to Cannabis Suisse Corp. from Mr. Sudusinghe was pursuant to Loan Agreement dated March 1, 2016 and Verbal Agreement dated April 2, 2019.\nThe Company\u2019s convertible promissory notes gave rise to derivative financial instruments. The notes embodied certain terms and conditions that were not clearly and closely related to the host debt agreement in terms of economic risks and characteristics. These terms and features consist of the embedded conversion option.\nThe following tables summarize the components of the Company\u2019s derivative liabilities and linked common shares as of May 31, 2021 and the amounts that were reflected in income related to derivatives for the period ended:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total",
+     "814,967",
+     "$",
+     "25,227"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 809
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following table summarizes the effects on the Company\u2019s gain (loss) associated with changes in the fair values of the derivative financial instruments by type of financing for the year ended May 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 768,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "The financings giving rise to derivative financial instruments and the gain (loss) effects:",
+     "",
+     "For the Year Ended\n\n\n\nMay 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Embedded derivatives",
+     "",
+     "$",
+     "7,904"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "7,904"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "The following table summarizes the effects on the Company\u2019s gain (loss) associated with changes in the fair values of the derivative financial instruments by type of financing for the year ended May 31, 2021:",
+   "prose_after": "Current accounting principles that are provided in ASC 815 - Derivatives and Hedging require derivative financial instruments to be classified in liabilities and carried at fair value with changes recorded in income. The Company has selected the Monte Carlo Simulation Model, which approximates the Monte Carlo Simulations, valuation technique to fair value the embedded derivative because it believes that this technique is reflective of all significant assumption types, and ranges of assumption inputs, that market participants would likely consider in transactions involving embedded derivatives. Such assumptions include, among other inputs, interest risk assumptions, credit risk assumptions and redemption behaviors in addition to traditional inputs for option models such as market trading volatility and risk-free rates. The Binomial Lattice Model technique is a level three valuation technique because it requires the development of significant internal assumptions in addition to observable market indicators. For instruments in which the time to expiration has expired, the Company has utilized the intrinsic value as the fair value. The intrinsic value is the difference between the quoted market price on the valuation date and the applicable conversion price.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 1, 2020"
+    ],
+    [
+     "Quoted market price on valuation date",
+     "$0.0615"
+    ],
+    [
+     "Effective contractual conversion rates",
+     "$0.044"
+    ],
+    [
+     "Contractual term to maturity",
+     "0.25 years"
+    ],
+    [
+     "Market volatility:",
+     ""
+    ],
+    [
+     "Volatility",
+     "299.09% - 479.35%"
+    ],
+    [
+     "Risk-adjusted interest rate",
+     "0.13%"
+    ]
+   ],
+   "caption_stack": [
+    "December 1, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 841
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "Current accounting principles that are provided in ASC 815 - Derivatives and Hedging require derivative financial instruments to be classified in liabilities and carried at fair value with changes recorded in income. The Company has selected the Monte Carlo Simulation Model, which approximates the Monte Carlo Simulations, valuation technique to fair value the embedded derivative because it believes that this technique is reflective of all significant assumption types, and ranges of assumption inputs, that market participants would likely consider in transactions involving embedded derivatives. Such assumptions include, among other inputs, interest risk assumptions, credit risk assumptions and redemption behaviors in addition to traditional inputs for option models such as market trading volatility and risk-free rates. The Binomial Lattice Model technique is a level three valuation technique because it requires the development of significant internal assumptions in addition to observable market indicators. For instruments in which the time to expiration has expired, the Company has utilized the intrinsic value as the fair value. The intrinsic value is the difference between the quoted market price on the valuation date and the applicable conversion price.\nSignificant inputs and results arising from the Monte Carlo Simulation process are as follows for the embedded derivatives that have been bifurcated from the convertible notes and classified in liabilities:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 4, 2020"
+    ],
+    [
+     "Quoted market price on valuation date",
+     "$0.0722"
+    ],
+    [
+     "Effective contractual conversion rates",
+     "$0.056"
+    ],
+    [
+     "Contractual term to maturity",
+     "0.25 years"
+    ],
+    [
+     "Market volatility:",
+     ""
+    ],
+    [
+     "Volatility",
+     "239.43% - 391.85%"
+    ],
+    [
+     "Risk-adjusted interest rate",
+     "0.13%"
+    ]
+   ],
+   "caption_stack": [
+    "December 4, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 842,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 7, 2020"
+    ]
+   ],
+   "caption_stack": [
+    "December 7, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 857
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quoted market price on valuation date",
+     "$0.06"
+    ],
+    [
+     "Effective contractual conversion rates",
+     "$0.0455"
+    ],
+    [
+     "Contractual term to maturity",
+     "0.25 years"
+    ],
+    [
+     "Market volatility:",
+     ""
+    ],
+    [
+     "Volatility",
+     "281.02% - 381.87%"
+    ],
+    [
+     "Risk-adjusted interest rate",
+     "0.12%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 858,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 10, 2020"
+    ],
+    [
+     "Quoted market price on valuation date",
+     "$0.0551"
+    ],
+    [
+     "Effective contractual conversion rates",
+     "$0.0419"
+    ],
+    [
+     "Contractual term to maturity",
+     "0.25 years"
+    ],
+    [
+     "Market volatility:",
+     ""
+    ],
+    [
+     "Volatility",
+     "196.85% - 382.99%"
+    ],
+    [
+     "Risk-adjusted interest rate",
+     "0.12%"
+    ]
+   ],
+   "caption_stack": [
+    "December 10, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 867,
+    "end_line": 877
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "May 31, 2021"
+    ],
+    [
+     "Quoted market price on valuation date",
+     "$0.07"
+    ],
+    [
+     "Effective contractual conversion rates",
+     "$0.0498"
+    ],
+    [
+     "Contractual term to maturity",
+     "0.25 years"
+    ],
+    [
+     "Market volatility:",
+     ""
+    ],
+    [
+     "Volatility",
+     "133.48% - 205.46%"
+    ],
+    [
+     "Risk-adjusted interest rate",
+     "0.05%"
+    ]
+   ],
+   "caption_stack": [
+    "May 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following table reflects the issuances of embedded derivatives and changes in fair value inputs and assumptions related to the embedded derivatives during the year ended May 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period Ended\n\n\n\nMay 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at beginning of period",
+     "$",
+     "-"
+    ],
+    [
+     "Issuances:",
+     "",
+     ""
+    ],
+    [
+     "Embedded derivatives",
+     "",
+     "33,131"
+    ],
+    [
+     "Changes in fair value inputs and assumptions reflected in income",
+     "",
+     "(7,904)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at end of period",
+     "$",
+     "25,227"
+    ]
+   ],
+   "caption_stack": [
+    "Period Ended\n\n\n\nMay 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 893,
+    "end_line": 908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "The following table reflects the issuances of embedded derivatives and changes in fair value inputs and assumptions related to the embedded derivatives during the year ended May 31, 2021.",
+   "prose_after": "NOTE 9 - BANK INDEBTEDNESS\nOn March 26, 2020, due to COVID-19 the Company's former Subsidiary, Cannabis Suisse LLC, entered into a loan agreement with a bank for CHF60,000. The loan carries an interest rate of 0.5% per year. The term of the loan is 5 years. The state acts as the guarantor for this loan. Accrued interest on this loan was $0 as of May 31, 2020.\nNOTE 10 - CONCENTRATION OF CREDIT RISK\nFinancial instruments that potentially subject the Company to concentration of credit risk consist principally of cash deposits. Accounts at each institution are insured by the Federal Deposit Insurance Corporation (\u201cFDIC\u201d) up to $250,000. The Company did not have cash in excess of FDIC insured limit as of May 31, 2021 and 2020.\nNOTE 11 \u2013 REPORTABLE SEGMENTS\nThe Company follows segment reporting in accordance with ASC Topic 280, Segment Reporting. As a result of the business combination with Cannabis Suisse LLC in May 2019, the Company has changed its operating segments to consist of the Cannabis Suisse LLC segment and the Cannabis Suisse Corp segment. After the Cannabis Suisse LLC business combination, the Company's CEO began assessing performance and allocating resources based on the financial information of these two reporting segments.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cannabis Suisse Corp",
+     "$",
+     "-",
+     "$",
+     "1,066"
+    ],
+    [
+     "Cannabis Suisse LLC",
+     "",
+     "50,850",
+     "",
+     "241,673"
+    ],
+    [
+     "  Total Revenue",
+     "$",
+     "50,850",
+     "$",
+     "242,739"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 REPORTABLE SEGMENTS"
+    }
+   },
+   "prose_before": "The Company follows segment reporting in accordance with ASC Topic 280, Segment Reporting. As a result of the business combination with Cannabis Suisse LLC in May 2019, the Company has changed its operating segments to consist of the Cannabis Suisse LLC segment and the Cannabis Suisse Corp segment. After the Cannabis Suisse LLC business combination, the Company's CEO began assessing performance and allocating resources based on the financial information of these two reporting segments.\nThe Cannabis Suisse LLC segment is involved in cannabis cultivation and distribution in Switzerland of recreational tobacco products and medical CBD oils. On November 23, 2020, Cannabis Suisse LLC and Cannabis Suisse Corp canceled their acquisition by Asset Transfer Agreement.\nCannabis Suisse Corp is engaged in the development of its business activities by conquering the USA market of CBD products since November 2020.\nNet revenue by reporting segment for the years ended May 31, 2021 and 2020, is as follows:",
+   "prose_after": "Gross profit by reporting segment for the years ended May 31, 2021 and 2020, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cannabis Suisse Corp",
+     "$",
+     "-",
+     "$",
+     "(263)"
+    ],
+    [
+     "Cannabis Suisse LLC",
+     "",
+     "(51,798)",
+     "",
+     "(84,524)"
+    ],
+    [
+     "  Total Gross (Loss) Profit",
+     "$",
+     "(51,798)",
+     "$",
+     "(84,787)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 REPORTABLE SEGMENTS"
+    }
+   },
+   "prose_before": "Gross profit by reporting segment for the years ended May 31, 2021 and 2020, is as follows:",
+   "prose_after": "Assets by reporting segment as of May 31, 2021 and 2020, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cannabis Suisse Corp",
+     "$",
+     "6,567",
+     "$",
+     "7,069"
+    ],
+    [
+     "Cannabis Suisse LLC",
+     "",
+     "-",
+     "",
+     "376,456"
+    ],
+    [
+     "  Total Assets",
+     "$",
+     "6,567",
+     "$",
+     "383,525"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 REPORTABLE SEGMENTS"
+    }
+   },
+   "prose_before": "Assets by reporting segment as of May 31, 2021 and 2020, is as follows:",
+   "prose_after": "NOTE 12 \u2013 INCOME TAXES\nThe Company adopted the provisions of uncertain tax positions as addressed in ASC 740-10-65-1. As a result of the implementation of ASC 740-10-65-1, the Company recognized no increase in the liability for unrecognized tax benefits.\nThe Company has no tax position at May 31, 2021 for which the ultimate deductibility is highly certain but for which there is uncertainty about the timing of such deductibility. The Company recognizes interest accrued related to unrecognized tax benefits in interest expense and penalties in operating expenses. No such interest or penalties were recognized during the period presented. The Company had no accruals for interest and penalties at May 31, 2021. The Company\u2019s utilization of any net operating loss carryforward may be unlikely as a result of its intended activities.\nThe valuation allowance at May 31, 2021 was $183,719. The net change in valuation allowance for the years ended May 31, 2021 and 2020 was $88,068 and $81,737, respectively. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred income tax assets will not be realized. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred income tax liabilities, projected future taxable income, and tax planning strategies in making this assessment.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "May 31, 2021",
+     "",
+     "May 31, 2020"
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "(874,854)",
+     "$",
+     "(455,482)"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "21 %",
+     "",
+     "21 %"
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "183,719",
+     "",
+     "95,651"
+    ],
+    [
+     "Less: Valuation allowance",
+     "",
+     "(183,719)",
+     "",
+     "(95,651)"
+    ],
+    [
+     "Net deferred asset",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 974,
+    "end_line": 986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The valuation allowance at May 31, 2021 was $183,719. The net change in valuation allowance for the years ended May 31, 2021 and 2020 was $88,068 and $81,737, respectively. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred income tax assets will not be realized. The ultimate realization of deferred income tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred income tax liabilities, projected future taxable income, and tax planning strategies in making this assessment.\nBased on consideration of these items, management has determined that enough uncertainty exists relative to the realization of the deferred income tax asset balances to warrant the application of a full valuation allowance as of May 31, 2021 and 2020. All tax years since inception remains open for examination only by taxing authorities of US Federal and state of Nevada.\nThe Company has a net operating loss carryforward for tax purposes totaling $874,854 at May 31, 2021, expiring through fiscal year 2036. There is a limitation on the amount of taxable income that can be offset by carryforwards after a change in control (generally greater than a 50% change in ownership).\nThe components of the Company\u2019s deferred tax asset and reconciliation of income taxes computed at the new statutory rate of 21% to the income tax amount recorded as of May 31, 2021 and 2020 are as follows:",
+   "prose_after": "The change in the valuation allowance during the years ended May 31, 2021 and 2020 was $88,068 and $81,737, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "May 31, 2021",
+     "",
+     "May 31, 2020"
+    ],
+    [
+     "Federal income tax benefit attributed to:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss from continuing operations",
+     "$",
+     "183,719",
+     "$",
+     "95,651"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(183,719)",
+     "",
+     "(95,651)"
+    ],
+    [
+     "Net benefit",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 991,
+    "end_line": 1000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The change in the valuation allowance during the years ended May 31, 2021 and 2020 was $88,068 and $81,737, respectively.",
+   "prose_after": "NOTE 13 \u2013 SUBSEQUENT EVENTS\nIn accordance with SFAS 165 (ASC 855), Subsequent Events the Company has analyzed its operations subsequent to May 31, 2021 to the date these consolidated financial statements were issued, and has determined that it does not have any other material subsequent events to disclose in these consolidated financial statements.\nItem 9. Changes In and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A(T) Controls and Procedures\nManagement\u2019s Report on Internal Controls over Financial Disclosure Controls and Procedures\nManagement is responsible for establishing and maintaining adequate internal control over financial reporting (as defined in Exchange Act Rule 13a-15(f)). The Company\u2019s internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with accounting principles generally accepted in the United States of America. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. Under the supervision and with the participation of management, including the Chief Executive Officer and Chief Financial Officer, the Company conducted an evaluation of the effectiveness of the Company\u2019s internal control over financial reporting as of May 31, 2021 using the criteria established in \u201cInternal Control - Integrated Framework (2013)\u201d issued by the Committee of Sponsoring Organizations of the Treadway Commission (\"COSO\").",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "Suneetha Nandana Silva Sudusinghe",
+     "51",
+     "President, Chief Executive Officer, Chief Financial Officer"
+    ],
+    [
+     "Alain Parrik",
+     "25",
+     "Chief Operating Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1055,
+    "end_line": 1061
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters and Control Persons of the Company"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere has been no change in the Company\u2019s internal control over financial reporting during the quarterly period covered by this report that has materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers, Promoters and Control Persons of the Company\nOfficers and Directors\nThe names and ages of our directors and executive officers are set forth below. Also included is their principal occupation(s).\nThe board of directors has no nominating, auditing or compensation committees.\nThe name, address, age and position of our present officers and directors are set forth below:",
+   "prose_after": "Mr. Sudusinghe worked as a business administrator at Reschen Tex LTD (textile company) from October 2015 to January 2016.\nMr. Parrik has worked in a field of social communications from March 2018 to January 2019. From January 2017 to February 2018, he was employed at Terchest, a language school in Estonia. From September 2015 to January 2017, Mr. Parrik worked as SMM specialist at PremodCan in Vanier, Canada.\nTerm of Office\nThe director is appointed to hold office until the next annual meeting of our stockholders or until his respective successor is elected and qualified, or until he resigns or is removed in accordance with the provisions of the Nevada Revised Statues. Our Director holds office until removed by the Board or until his resignation appoints our officer.\nFamily Relationships\nNone.\nInvolvement in Certain Legal Proceedings\nNo director, executive officer, significant employee or control person of the Company has been involved in any legal proceeding listed in Item 401(f) of Regulation S-K in the past 10 years.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1066,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary (US$)",
+     "Bonus (US$)",
+     "Stock Awards (US$)",
+     "Option Awards (US$)",
+     "Non-Equity Incentive Plan Compensation (US$)",
+     "Nonqualified Deferred Compensation Earnings (US$)",
+     "All Other Compensation (US$)",
+     "Total (US$)"
+    ],
+    [
+     "Suneetha Sudusinghe, President, CEO, CFO",
+     "2021",
+     "$36,620",
+     "$20,000",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$56,620"
+    ],
+    [
+     "",
+     "2020",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Alain Parrik, COO",
+     "2021",
+     "30,000",
+     "15,000",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "45,000"
+    ],
+    [
+     "",
+     "2020",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1104,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Each of our directors participates in the consideration of director nominees. In addition to nominees recommended by directors, our board will consider nominees recommended by shareholders if submitted in writing to our secretary. Our board believes that any candidate for director, whether recommended by shareholders or by the board, should be considered on the basis of all factors relevant to our needs and the credentials of the candidate at the time the candidate is proposed. Such factors include relevant business and industry experience and demonstrated character and judgment.\nItem 11. Executive Compensation\nThe following table sets forth the compensation paid by us for the year ended May 31, 2021 and 2020 for our executive officers. This information includes the dollar value of base salaries, bonus awards and number of stock options granted, and certain other compensation, if any. The compensation discussed addresses all compensation awarded to, earned by, or paid or named executive officers.\nEXECUTIVE COMPENSATION SUMMARY COMPENSATION TABLE",
+   "prose_after": "The pay examined in this delivers all remuneration recompensed to, earned by, or paid to our named official officers.\nThere are no other investment opportunity arranges, retirement, annuity, or benefit sharing arrangements for the advantage of our officers and chiefs other than as portrayed in this.\nLong-Term Incentive Plan Awards\nWe do not have any long-term incentive plans that provide compensation intended to serve as incentive for performance.\nIndemnification\nUnder our Articles of Incorporation and Bylaws of the corporation, we may indemnify an officer or director who is made a party to any proceeding, including a lawsuit, because of his position, if he acted in good faith and in a manner he reasonably believed to be in our best interest. We may advance expenses incurred in defending a proceeding. To the extent that the officer or director is successful on the merits in a proceeding as to which he is to be indemnified, we must indemnify him against all expenses incurred, including attorney\u2019s fees. With respect to a derivative action, indemnity may be made only for expenses actually and reasonably incurred in defending the proceeding, and if the officer or director is judged liable, only by a court order. The indemnification is intended to be to the fullest extent permitted by the laws of the State of Nevada. Regarding indemnification for liabilities arising under the Securities Act of 1933, which may be permitted to directors or officers under Nevada law, we are informed that, in the opinion of the Securities and Exchange Commission, indemnification is against public policy, as expressed in the Act and is, therefore, unenforceable.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1093,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1130,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of class",
+     "Name of Beneficial Owner",
+     "Amount and Nature of Beneficial Ownership",
+     "Percent of Common Stock"
+    ],
+    [
+     "Common Stock",
+     "Suneetha Sudusinghe",
+     "17,400,000",
+     "50.43%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1133,
+    "end_line": 1139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Under our Articles of Incorporation and Bylaws of the corporation, we may indemnify an officer or director who is made a party to any proceeding, including a lawsuit, because of his position, if he acted in good faith and in a manner he reasonably believed to be in our best interest. We may advance expenses incurred in defending a proceeding. To the extent that the officer or director is successful on the merits in a proceeding as to which he is to be indemnified, we must indemnify him against all expenses incurred, including attorney\u2019s fees. With respect to a derivative action, indemnity may be made only for expenses actually and reasonably incurred in defending the proceeding, and if the officer or director is judged liable, only by a court order. The indemnification is intended to be to the fullest extent permitted by the laws of the State of Nevada. Regarding indemnification for liabilities arising under the Securities Act of 1933, which may be permitted to directors or officers under Nevada law, we are informed that, in the opinion of the Securities and Exchange Commission, indemnification is against public policy, as expressed in the Act and is, therefore, unenforceable.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+   "prose_after": "Item 13. Certain Relationships and Related Transactions\nThe Company\u2019s president has verbally agreed to provide interest free advances, due on demand, to the Company up to $100,000. As of May 31, 2021 and 2020, the Company has drawn $0 and $56,323, respectively, of advances. In addition, the Company\u2019s president has agreed to provide production space in Sri Lanka at no charge for the production of goods. The Company discontinued using the mentioned office space since March 1, 2020.\nThe Company received $359,147 as advances from the Company\u2019s former secretary, Cecillia Jensen, as of May 31, 2020.\nThe Company received $0 and $3,622 as long-term loan as of May 31, 2021 and 2020, respectively. This loan is interest-free.\nThe Company's cash in amount of $10,040 as of May 31, 2020, was held by the Company's former Secretary.\nItem 14. Principal Accounting Fees and Services\nDuring fiscal year ended May 31, 2021, we incurred approximately $28,132 in fees to our principal independent accountants Accell Audit & Compliance, P.A. for professional services rendered in connection with annual audit and quarterly reviews.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1130,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a)",
+     "List of documents filed as part of this Report",
+     ""
+    ],
+    [
+     "",
+     "(1)",
+     "Financial Statements"
+    ],
+    [
+     "",
+     "",
+     "The financial statements are included under Item 8 of this Annual Report on Form 10-K."
+    ],
+    [
+     "",
+     "(2)",
+     "Financial Statements Schedules"
+    ],
+    [
+     "",
+     "",
+     "All schedules have been omitted because the required information is included in the financial statements included under Item 8 of this Annual Report on Form 10-K or the notes thereto, or because it is not required."
+    ],
+    [
+     "",
+     "(3)",
+     "Exhibits"
+    ],
+    [
+     "",
+     "",
+     "See exhibits listed under Part (b) below."
+    ],
+    [
+     "(b)",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Securities Exchange Act of 1934 Rule 13a-14(a) or 15d-14(a)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certifications pursuant to Securities Exchange Act of 1934 Rule 13a-14(b) or 15d-14(b) and 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes- Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company received $0 and $3,622 as long-term loan as of May 31, 2021 and 2020, respectively. This loan is interest-free.\nThe Company's cash in amount of $10,040 as of May 31, 2020, was held by the Company's former Secretary.\nItem 14. Principal Accounting Fees and Services\nDuring fiscal year ended May 31, 2021, we incurred approximately $28,132 in fees to our principal independent accountants Accell Audit & Compliance, P.A. for professional services rendered in connection with annual audit and quarterly reviews.\nDuring fiscal year ended May 31, 2020, we incurred approximately $21,000 in fees to our principal independent accountants Accell Audit & Compliance, P.A. and $2,000 to our former principal independent accountants Fruci & Associates II, PLLC for professional services rendered in connection with annual audit and quarterly reviews.\nDuring the fiscal years ended May 31, 2021 and 2020 we incurred no audited related fees, tax related fees, and $0 in all other fees.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules",
+   "prose_after": "Item 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of the Securities Act of 1933, the registrant has duly caused this Registration Statement to be signed on its behalf by the undersigned, thereunto duly authorized on September 7, 2021.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1130,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CANNABIS SUISSE CORP.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/",
+     "Suneetha Nandana Silva Sudusinghe",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Suneetha Nandana Silva Sudusinghe",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "President, Treasurer, Director\n\n\n\n(Principal Executive, Financial and Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CANNABIS SUISSE CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Item 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of the Securities Act of 1933, the registrant has duly caused this Registration Statement to be signed on its behalf by the undersigned, thereunto duly authorized on September 7, 2021.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

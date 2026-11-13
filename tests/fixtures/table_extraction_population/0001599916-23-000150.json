@@ -1,0 +1,2425 @@
+{
+ "accession": "0001599916-23-000150",
+ "cik": "0001702015",
+ "form": "10-K",
+ "filing_date": "2023-06-26",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ais10k_23o.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Delaware",
+     "36-4877329",
+     ""
+    ],
+    [
+     "",
+     "(State or other jurisdiction\n\n\n\nof incorporation or organization)",
+     "(I.R.S. Employer Identification No.)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2-41-7-336, Shinsakae\n\n\n\nNaka-ku Nagoya-shi, Aichi, Japan",
+     "460-0007",
+     ""
+    ],
+    [
+     "",
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934.\nFOR THE FISCAL YEAR ENDED March 31, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCOMMISSION FILE NUMBER: 000-55769\nAIS HOLDINGS GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities to be registered under Section 12(b) of the Act: None\nSecurities to be registered under Section 12(g) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 48,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which\n\n\n\nregistered"
+    ],
+    [
+     "Common Stock, $0.0001",
+     "",
+     "None, however quoted by the OTC Markets Group under the ticker \u201cAIDG\u201d"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities to be registered under Section 12(b) of the Act: None\nSecurities to be registered under Section 12(g) of the Exchange Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 48,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "Cautionary Note Concerning Forward-Looking Statements",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "4"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "4"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "4"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "4"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "5"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "5"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "5"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "F1-F9"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "6"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "6"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "7"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "8"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "9"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "9"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "10"
+    ],
+    [
+     "",
+     "Signatures",
+     "10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 119
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]    Accelerated filer  [ ]        Non-accelerated filer  [X]\nSmaller reporting company  [X]  Emerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n[ ] Yes [X] No\nAs of September 30, 2022, the last business day of the Registrant\u2019s second fiscal quarter, the aggregate market value of the voting common stock held by non-affiliates of the Registrant (without admitting that any person whose shares are not included in such calculation is an affiliate) was approximately $0.\nAs of June 26, 2023, there were 20,000,000 shares of the Registrant\u2019s common stock, par value $0.0001 per share, issued and outstanding.\nTABLE OF CONTENTS\nAIS HOLDINGS GROUP, INC.",
+   "prose_after": "Cautionary Note Concerning Forward-Looking Statements\nCertain statements and information in this Annual Report on Form 10-K for the year ended March 31, 2023 (the \u201cAnnual Report\u201d) may constitute \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), and the Private Securities Litigation Reform Act of 1995. All statements, other than statements of historical facts, which address activities, events, or developments that we expect or anticipate will or may occur in the future, including such things as future capital expenditures, commencement of business operations, business strategy, and other similar matters are forward-looking statements. In some cases, you can identify forward-looking statements by terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cpotential,\u201d or \u201ccontinue,\u201d or other comparable terminology. These forward-looking statements are based largely on our current expectations and assumptions and are subject to a number of risks and uncertainties, many of which are beyond our control. These statements are subject to many risks, uncertainties, and other important factors that could cause actual future results to differ materially from those expressed in the forward-looking statements. In light of these risks and uncertainties, all of the forward-looking statements made herein are qualified by these cautionary statements and there can be no assurance that the actual results or developments anticipated by us will be realized. We undertake no obligation to update or revise any of the forward-looking statements contained herein.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB FIRM ID 2738)",
+     "F2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss",
+     "F4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Deficit",
+     "F5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F7-F9"
+    ]
+   ],
+   "caption_stack": [
+    "Pages"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 331,
+    "end_line": 346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "For the year ended March 31, 2023, the Company has generated minimal income from operations, which raises substantial doubt about the Company\u2019s ability to continue as a going concern. The Company\u2019s management plans to engage in very limited activities without incurring any liabilities that must be satisfied in cash until a more stable source of funding is secured. The Company will offer noncash consideration and seek equity lines as a means of financing its operations. If the Company is unable to obtain revenue- producing contracts or financing, or if the revenue or financing it does obtain is insufficient to cover any operating losses it may incur, it may substantially curtail or terminate its operations or seek other business opportunities through strategic alliances, acquisitions or other arrangements that may dilute the interests of existing stockholders. These conditions and uncertainties raise substantial doubt as to the Company's ability to continue as a going concern. The financial statements do not include any adjustments that might be necessary if the Company is unable to continue as a going concern.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk.\nAs a \u201csmaller reporting company\u201d, we are not required to provide the information required by this Item.\nItem 8. Financial Statements and Supplementary Data.\nFINANCIAL STATEMENTS\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "- F1-\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Shareholders\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of AIS Holdings Group, Inc. (the Company) as of March 31, 2023 and 2022, and the related consolidated statements of operations and comprehensive loss, shareholders\u2019 deficit, and cash flows for each of the years in the two-year period ended March 31, 2023, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of March 31, 2023 and 2022, and the results of its operations and its cash flows for each of the years in the two-year period ended March 31, 2023 in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying consolidated financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 3 to the consolidated financial statements, the company has suffered a net loss from operations and has a capital deficiency, which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans regarding these matters are also described in Note 3. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 325,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "As of",
+     "",
+     "As of"
+    ],
+    [
+     "",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     "March 31, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash and cash equivalents",
+     "$",
+     "2,977",
+     "$",
+     "45,307"
+    ],
+    [
+     "",
+     "Accounts receivable, trade",
+     "",
+     "2,000",
+     "",
+     "3,600"
+    ],
+    [
+     "",
+     "Prepaid expenses",
+     "",
+     "975",
+     "",
+     "175"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "",
+     "5,952",
+     "",
+     "49,082"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Due to related party",
+     "$",
+     "75,576",
+     "$",
+     "70,794"
+    ],
+    [
+     "",
+     "Accrued receipts",
+     "",
+     "-",
+     "",
+     "45,372"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "",
+     "75,576",
+     "",
+     "116,166"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock ($0.0001 par value, 20,000,000 shares authorized;\n\n\n\n0 issued and outstanding as of  as of March 31, 2023 and 2022)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common stock ($0.0001 par value, 500,000,000 shares authorized,\n\n\n\n20,000,000 shares issued and outstanding as of March 31, 2023 and 2022)",
+     "",
+     "2,000",
+     "",
+     "2,000"
+    ],
+    [
+     "",
+     "Additional paid-in capital",
+     "",
+     "47,530",
+     "",
+     "42,230"
+    ],
+    [
+     "",
+     "Accumulated deficit",
+     "",
+     "(130,261)",
+     "",
+     "(117,268)"
+    ],
+    [
+     "",
+     "Accumulated other comprehensive loss",
+     "",
+     "11,107",
+     "",
+     "5,954"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "(69,624)",
+     "",
+     "(67,084)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND SHAREHOLDERS' DEFICIT",
+     "",
+     "$",
+     "5,952",
+     "$",
+     "49,082"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 396,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Going Concern\nAs discussed in Note 3 to the consolidated financial statements, the Company has a going concern due to a negative working capital and losses from operations which raises substantial doubt about its ability to continue as a going concern.\nAuditing management\u2019s evaluation of a going concern can be a significant judgment given the fact that the Company uses management estimates on future revenues and expenses, which are difficult to substantiate.\nTo evaluate the appropriateness of the going concern, we examined and evaluated the financial information along with management\u2019s plans to mitigate the going concern and management\u2019s disclosure on going concern.\n/s/ M&K CPAS, PLLC\nWe have served as the Company\u2019s auditor since 2017\nHouston, TX\nJune 26, 2023\n- F2-\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n- F3-\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "Year Ended"
+    ],
+    [
+     "",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     "March 31, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "$",
+     "53,283",
+     "$",
+     "44,700"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSE",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General and administrative expenses",
+     "",
+     "60,962",
+     "",
+     "66,222"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "",
+     "60,962",
+     "",
+     "66,222"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Other income",
+     "",
+     "-",
+     "",
+     "18,679"
+    ],
+    [
+     "",
+     "Interest expenses",
+     "",
+     "(5,314)",
+     "",
+     "(7,516)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "$",
+     "(12,993)",
+     "$",
+     "(10,359)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER COMPREHENSIVE INCOME",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Foreign currency translation adjustment",
+     "",
+     "5,153",
+     "",
+     "6,710"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL COMPREHENSIVE LOSS",
+     "",
+     "$",
+     "(7,840)",
+     "$",
+     "(3,649)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED NET LOSS PER COMMON SHARE",
+     "",
+     "$",
+     "(0.00)",
+     "$",
+     "(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON SHARES OUTSTANDING, BASIC AND DILUTED",
+     "",
+     "",
+     "20,000,000",
+     "",
+     "20,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n- F3-\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n- F4 -\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 442,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 487,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "ACCUMULATED",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "ADDITIONAL",
+     "",
+     "OTHER",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "COMMON STOCK",
+     "",
+     "",
+     "",
+     "PAID IN",
+     "",
+     "COMPREHENSIVE",
+     "",
+     "ACCUMULATED",
+     "",
+     "TOTAL"
+    ],
+    [
+     "",
+     "NUMBER",
+     "",
+     "AMOUNT",
+     "",
+     "CAPITAL",
+     "",
+     "INCOME (LOSS)",
+     "",
+     "DEFICIT",
+     "",
+     "DEFICIT"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - March 31, 2021",
+     "20,000,000",
+     "$",
+     "2,000",
+     "$",
+     "34,714",
+     "$",
+     "(756)",
+     "$",
+     "(106,909)",
+     "$",
+     "(70,951)"
+    ],
+    [
+     "Imputed Interests",
+     "-",
+     "",
+     "-",
+     "",
+     "7,516",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "7,516"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,359)",
+     "",
+     "(10,359)"
+    ],
+    [
+     "Foreign currency translation",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "6,710",
+     "",
+     "-",
+     "",
+     "6,710"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - March 31, 2022",
+     "20,000,000",
+     "$",
+     "2,000",
+     "$",
+     "42,230",
+     "$",
+     "5,954",
+     "$",
+     "(117,268)",
+     "$",
+     "(67,084)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed Interests",
+     "-",
+     "",
+     "-",
+     "",
+     "5,300",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,300"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(12,993)",
+     "",
+     "(12,993)"
+    ],
+    [
+     "Foreign currency translation",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,153",
+     "",
+     "-",
+     "",
+     "5,153"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - March 31, 2023",
+     "20,000,000",
+     "$",
+     "2,000",
+     "$",
+     "47,530",
+     "$",
+     "11,107",
+     "$",
+     "(130,261)",
+     "$",
+     "(69,624)"
+    ]
+   ],
+   "caption_stack": [
+    "ACCUMULATED"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n- F4 -\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS' DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n- F5 -\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 487,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "Year Ended"
+    ],
+    [
+     "",
+     "",
+     "",
+     "March 31, 2023",
+     "",
+     "March 31, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "$",
+     "(12,993)",
+     "$",
+     "(10,359)"
+    ],
+    [
+     "",
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Imputed interest",
+     "",
+     "5,300",
+     "",
+     "7,516"
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts receivable",
+     "",
+     "1,600",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Prepaid expenses",
+     "",
+     "(800)",
+     "",
+     "200"
+    ],
+    [
+     "",
+     "Accrued expenses",
+     "",
+     "-",
+     "",
+     "(2,981)"
+    ],
+    [
+     "",
+     "Accrued receipts",
+     "",
+     "(40,747)",
+     "",
+     "45,372"
+    ],
+    [
+     "",
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(47,640)",
+     "",
+     "39,748"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Proceeds from due to related party",
+     "",
+     "9,931",
+     "",
+     "8,584"
+    ],
+    [
+     "",
+     "Repayment of due to related party",
+     "",
+     "-",
+     "",
+     "(26,700)"
+    ],
+    [
+     "",
+     "Net cash provided by (used in) financing activities",
+     "",
+     "9,931",
+     "",
+     "(18,116)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net effect of exchange rate changes on cash",
+     "",
+     "",
+     "(4,621)",
+     "",
+     "(531)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash and Cash Equivalents",
+     "",
+     "$",
+     "(42,330)",
+     "$",
+     "22,163"
+    ],
+    [
+     "Cash and cash equivalents - beginning of period",
+     "",
+     "",
+     "45,307",
+     "",
+     "23,144"
+    ],
+    [
+     "Cash and cash equivalents - end of period",
+     "",
+     "$",
+     "2,977",
+     "$",
+     "45,307"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Income taxes paid",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 524,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n- F5 -\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n- F6 -\nNOTES TO FINANCIAL STATEMENTS\nMarch 31, 2023 AND 2022\nNOTE 1 - ORGANIZATION AND DESCRIPTION OF BUSINESS\nAIS Holdings Group, Inc., a Delaware corporation (\u201cthe Company\u201d) was incorporated under the laws of the State of Delaware on January 30, 2017 with the name Superb Acquisition, Inc. On September 20, 2017, we changed our name to AIS Holdings Group, Inc.\nOn June 18, 2017, Mr. Thomas DeNunzio, our now former officer and director, resigned as our Chief Executive Officer, Chief Financial Officer, President, Director, Secretary, and Treasurer. The resignation was not the result of any disagreement with us on any matter relating to our operations, policies or practices.\nOn June 18, 2017, Mr. Takehiro Abe was appointed as Chief Executive Officer, Chief Financial Officer, President, Director, Secretary, and Treasurer.\nOn April 1, 2018, the Company entered into an agreement with Trend Rich Global Limited to lease the Company\u2019s Software System package. The Software System Package is source code that can be expanded upon to create custom websites for clients in the digital currency industry.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "March 31, 2022"
+    ],
+    [
+     "Current JPY: US$1 exchange rate",
+     "132.79",
+     "121.66"
+    ],
+    [
+     "Average JPY: US$1 exchange rate",
+     "135.47",
+     "112.43"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": ""
+    }
+   },
+   "prose_before": "The Company maintains its books and record in its local currency, Japanese YEN (\u201cJPY\u201d), which is a functional currency as being the primary currency of the economic environment in which its operation is conducted. Transactions denominated in currencies other than the functional currency are translated into the functional currency at the exchange rates prevailing at the dates of the transaction. Monetary assets and liabilities denominated in currencies other than the functional currency are translated into the functional currency using the applicable exchange rates at the balance sheet dates. The resulting exchange differences are recorded in the statements of operations.\nThe reporting currency of the Company is the United States Dollars (\u201cUS$\u201d) and the accompanying consolidated financial statements have been expressed in US$. In accordance with ASC Topic 830-30, \u201cTranslation of Financial Statement\u201d, assets and liabilities of the Company whose functional currency is not US$ are translated into US$, using the exchange rate on the balance sheet date. Revenues and expenses are translated at average rates prevailing during the period. Shareholders\u2019 equity is translated at historical exchange rate at the time of transaction. The gains and losses resulting from translation of financial statements are recorded as a separate component of accumulated other comprehensive income within the statements of shareholders\u2019 equity.\nTranslation of amounts from the local currency of the Company into US$1 has been made at the following exchange rates:",
+   "prose_after": "Comprehensive Income or Loss\nASC Topic 220, \u201cComprehensive Income\u201d, establishes standards for reporting and display of comprehensive income or loss, its components and accumulated balances. Comprehensive income or loss as defined includes all changes in equity during a period from non-owner sources. Accumulated comprehensive income, as presented in the accompanying consolidated statements of shareholders\u2019 equity consists of changes in unrealized gains and losses on foreign currency translation.\nIncome Taxes\nThe Company accounts for income taxes under ASC 740, \u201cIncome Taxes.\u201d Under the asset and liability method of ASC 740, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statements carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period the enactment occurs. A valuation allowance is provided for certain deferred tax assets if it is more likely than not that the Company will not realize tax assets through future operations. No deferred tax assets or liabilities were recognized at March 31, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Company\u2019s assessable profit",
+     "",
+     ""
+    ],
+    [
+     "For the year ended March 31,",
+     "Up to JPY 4 million",
+     "Up to JPY 8 million",
+     "Over JPY 8 million"
+    ],
+    [
+     "2022",
+     "21.37%",
+     "23.37%",
+     "33.58%"
+    ],
+    [
+     "2023",
+     "21.37%",
+     "23.37%",
+     "33.58%"
+    ]
+   ],
+   "caption_stack": [
+    "Company\u2019s assessable profit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The financial statements do not include any adjustments relating to the recoverability and classification of recorded assets, or the amounts and classification of liabilities that might be necessary in the event that the Company cannot continue as a going concern.\nNOTE 4 - ACCRUED EXPENSES\nAccrued expenses totaled $0 as of March 31, 2023 as compared to March 31, 2022 which was $45,372.\nOn April 5, 2022, the Company refunded accrued receipt of $26,508 to one customer.\nNOTE 5 - INCOME TAXES\nThe Company conducts its major businesses in Japan and is subject to tax in this jurisdiction. As a result of its business activities, the Company files tax returns that are subject to examination by the local tax authority.\nJapan\nThe Company conducts its major businesses in Japan and is subject to tax in this jurisdiction. As a result of its business activities, the Company files tax returns that are subject to examination by the local tax authority.\nThe Company is subject to a number of income taxes, which, in aggregate, represent a statutory tax rate approximately as follows:",
+   "prose_after": "United States\nAIS Holdings Group, Inc., which acts as a holding company on a non-consolidated basis, does not plan to engage any business activities and current or future loss will be fully allowed. For the year ended March 31, 2023 and 2022, respectively, AIS Holdings Group, Inc., as a holding company registered in the state of Delaware, has incurred net loss and, therefore, has no tax liability. The net deferred tax asset generated by the loss carry forward has been fully reserved.\nThe Company has not recognized an income tax benefit for its operating losses generated based on uncertainties concerning its ability to generate taxable income in future periods. The tax benefit for the period presented is offset by a valuation allowance established against deferred tax assets arising from the net operating losses, the realization of which could not be considered more likely than not. In future periods, tax benefits and related deferred tax assets will be recognized when management considers realization of such amounts to be more likely than not. Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carryforwards for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, net operating loss carryforwards may be limited as to use in future years.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Deferred tax asset, generated from net operating loss at statutory rates",
+     "$",
+     "16,132",
+     "$",
+     "14,517"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(16,132)",
+     "",
+     "(14,517)"
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 734,
+    "end_line": 744
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "AIS Holdings Group, Inc., which acts as a holding company on a non-consolidated basis, does not plan to engage any business activities and current or future loss will be fully allowed. For the year ended March 31, 2023 and 2022, respectively, AIS Holdings Group, Inc., as a holding company registered in the state of Delaware, has incurred net loss and, therefore, has no tax liability. The net deferred tax asset generated by the loss carry forward has been fully reserved.\nThe Company has not recognized an income tax benefit for its operating losses generated based on uncertainties concerning its ability to generate taxable income in future periods. The tax benefit for the period presented is offset by a valuation allowance established against deferred tax assets arising from the net operating losses, the realization of which could not be considered more likely than not. In future periods, tax benefits and related deferred tax assets will be recognized when management considers realization of such amounts to be more likely than not. Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carryforwards for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, net operating loss carryforwards may be limited as to use in future years.",
+   "prose_after": "The reconciliation of the effective income tax rate to the federal statutory rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Federal income tax rate",
+     "21.0",
+     "%"
+    ],
+    [
+     "Increase in valuation allowance",
+     "(21.0",
+     "%)"
+    ],
+    [
+     "Effective income tax rate",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 747,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The reconciliation of the effective income tax rate to the federal statutory rate is as follows:",
+   "prose_after": "NOTE 6 - SHAREHOLDER EQUITY\nPreferred Stock\nThe authorized preferred stock of the Company consists of 20,000,000 shares with a par value of $0.0001. The Company had no shares of preferred stock issued and outstanding at March 31, 2023 and 2022.\nCommon Stock\nThe authorized common stock of the Company consists of 500,000,000 shares with a par value of $0.0001. There were 20,000,000 shares of common stock issued and outstanding at March 31, 2023 and 2022.\nThe Company did not have any potentially dilutive instruments as of March 31, 2023 and 2022 and thus anti-dilution issues are not applicable.\nAdditional paid-in capital\nFor the year ended March 31, 2023 and 2022, the Company had imputed interest of $5,300 and $7,516, respectively.\nNOTE 7\n- RELATED-PARTY TRANSACTIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "AGE",
+     "POSITION"
+    ],
+    [
+     "Takehiro Abe",
+     "40",
+     "Chief Executive Officer, Chief Financial Officer, President, Secretary, Treasurer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 875,
+    "end_line": 880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We will work as quickly as possible to implement these initiatives; however, the lack of adequate working capital and positive cash flow from operations will likely slow this implementation.\nChanges in Internal Control\nThere have been no changes in internal controls over the financial reporting that occurred during the fiscal fourth quarter, that have materially affected, or are reasonably likely to materially affect our internal controls over financial reporting.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the SEC that permit the Company to provide only management\u2019s report in this annual report.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nBiographical information regarding the Officers and Directors of the Company, who will continue to serve as Officers and Directors of the Company and AIS Japan Co., Ltd. (our wholly owned subsidiary) are provided below:",
+   "prose_after": "AIS JAPAN Co., Ltd.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 873,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "AGE",
+     "POSITION"
+    ],
+    [
+     "Takehiro Abe",
+     "40",
+     "President, Chief Executive Officer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "AIS JAPAN Co., Ltd.",
+   "prose_after": "Takehiro Abe\nMr. Takehiro Abe obtained his Masters of Engineering Degree from Nagoya University in 2007, specializing in micro-nano systems. In 2007 he took a job as a system engineer at Hitachi, Ltd. In 2009 he left Hitachi and started his own independent practice as an insurance agent selling insurance policies until 2015. In 2015, he incorporated LDSQUARE Co., Ltd. in Japan. Currently, as the president of LDSQUARE Co., Ltd., Mr. Abe provides institutional financial advisory services.\nOn April 1, 2016 he was appointed as the Chief Operating Officer and Director of White Fox Ventures, Inc., a Nevada Corporation. On August 12, 2016, he was appointed as Chief Financial Officer of White Fox Ventures, Inc. On June 20, 2017, he resigned as the Chief Operating Officer, Chief Financial Officer and Director of White Fox Ventures, Inc. The resignation was not the result of any material disagreements with the Company.\nCorporate Governance\nThe Company promotes accountability for adherence to honest and ethical conduct; endeavors to provide full, fair, accurate, timely and understandable disclosure in reports and documents that the Company files with the Securities and Exchange Commission (the \u201cSEC\u201d) and in other public communications made by the Company; and strives to be compliant with applicable governmental laws, rules and regulations. The Company has not formally adopted a written code of business conduct and ethics that governs the Company\u2019s employees, officers and Directors as the Company is not required to do so.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 873,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUMMARY COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and\n\n\n\nprincipal position",
+     "Year Ended March 31,",
+     "Salary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock\n\n\n\nAwards\n\n\n\n($)",
+     "Option\n\n\n\nAwards\n\n\n\n($)",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation\n\n\n\n($)",
+     "Nonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings ($)",
+     "All Other\n\n\n\nCompensation\n\n\n\n($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Takehiro Abe,\n\n\n\nSole Officer and Director",
+     "2022\n\n\n\n2023",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0",
+     "0\n\n\n\n0"
+    ]
+   ],
+   "caption_stack": [
+    "SUMMARY COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 965,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In 2023, we have not made any material changes to the procedures by which security holders may recommend nominees to our Board of Directors.\nFamily Relationships\nThere are no family relationships among our directors, executive officers or persons nominated to become executive officers or directors.\nInvolvement in Certain Legal Proceedings\nDuring the past ten (10) years, none of our directors, persons nominated to become directors, executive officers, promoters or control persons was involved in any of the legal proceedings listen in Item 401 (f) of Regulation S-K.\nArrangements\nThere are no arrangements or understandings between an executive officer, director or nominee and any other person pursuant to which he was or is to be selected as an executive officer or director.\nItem 11. Executive Compensation.\nThe table below summarizes all compensation awarded to, earned by, or paid to our named executive officer(s) and director(s) for the year ended March 31, 2022 and for the year ended March 31, 2023.",
+   "prose_after": "Option/SAR Grants in Last Fiscal Year\nNone.\nOutstanding Equity Awards at Fiscal Year-End\nNone.\nCompensation of Directors\nThe Company\u2019s sole officer and director received no compensation for services as director during the last two fiscal years.\nEquity Compensation Plan Information\nNot applicable.\nEmployment Agreements of our Sole Officer and Director\nNone.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Shares of Common Stock Beneficially Owned",
+     "Common Stock Voting Percentage Beneficially Owned",
+     "Voting Shares of Preferred Stock",
+     "Preferred Stock Voting Percentage Beneficially Owned",
+     "Total Voting Percentage Beneficially Owned"
+    ],
+    [
+     "Executive Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Takehiro Abe, Chief Executive Officer, Chief Financial Officer, President, Director, Secretary, and Treasurer\n\n\n\nAddress: 2-41-7-336, ShinsakaeNaka-ku Nagoya-shi, Aichi, Japan",
+     "18,200,000",
+     "91.00%",
+     "N/A",
+     "N/A",
+     "91.00%"
+    ],
+    [
+     "5% Shareholders",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "N/A",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1026,
+    "end_line": 1041
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Board of Directors may grant incentive bonuses to our executive officer and/or future executive officers in its sole discretion, if the Board of Directors believes such bonuses are in the Company\u2019s best interest, after analyzing our current business objectives and growth, if any, and the amount of revenue we are able to generate each month, which revenue is a direct result of the actions and ability of such executives.\nLong-term, Stock Based Compensation\nIn order to attract, retain and motivate executive talent necessary to support the Company\u2019s long-term business strategy we may award our executive and any future executives with long-term, stock-based compensation in the future, at the sole discretion of our Board of Directors, which we do not currently have any immediate plans to award.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nAs of the date of this report the Company has 20,000,000 shares of common stock and no shares of preferred stock issued and outstanding, which number of issued and outstanding shares of common stock and preferred stock have been used throughout this report.\n*The table below is as of March 31, 2023.",
+   "prose_after": "Beneficial ownership has been determined in accordance with Rule 13d-3 under the Exchange Act. Under this rule, certain shares may be deemed to be beneficially owned by more than one person (if, for example, persons share the power to vote or the power to dispose of the shares). In addition, shares are deemed to be beneficially owned by a person if the person has the right to acquire shares (for example, upon exercise of an option or warrant) within 60 days of the date as of which the information is provided. In computing the percentage ownership of any person, the amount of shares is deemed to include the amount of shares beneficially owned by such person by reason of such acquisition rights. As a result, the percentage of outstanding shares of any person as shown in the following table does not necessarily reflect the person\u2019s actual voting power at any particular date.\nItem 13. Certain Relationships and Related Transactions.\nAdditional paid-in capital\nFor the year ended March 31, 2023 and 2022, the Company had imputed interest of $5,300 and $7,516.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2023",
+     "2022"
+    ],
+    [
+     "Audit fees",
+     "M&K CPAS, PLLC",
+     "$26,650",
+     "$21,934"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Tax fees",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "All other fees",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$26,650",
+     "$21,934"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1066,
+    "end_line": 1077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company utilizes home office space and equipment of our management at no cost. Management estimates such amounts to be immaterial.\nReview, Approval and Ratification of Related Party Transactions\nGiven our small size and limited financial resources, we have not adopted formal policies and procedures for the review, approval or ratification of transactions, such as those described above, with our executive officer(s), Director(s) and significant stockholders. We intend to establish formal policies and procedures in the future, once we have sufficient resources and have appointed additional Directors, so that such transactions will be subject to the review, approval or ratification of our Board of Directors, or an appropriate committee thereof. On a moving forward basis, our Directors will continue to approve any related party transaction.\nItem 14. Principal Accounting Fees and Services.\nBelow is the aggregate amount of fees billed for professional services rendered by our principal accountants with respect to our last two fiscal years.",
+   "prose_after": "Board of Directors Pre-Approval Process, Policies and Procedures\nOur principal auditors have performed their audit procedures in accordance with pre-approved policies and procedures established by our sole director. Our principal auditors have informed our sole director of the scope and nature of each service provided. With respect to the provisions of services other than audit, review, or attest services, our principal accountants brought such services to the attention of our sole director prior to commencing such services.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Financial Statements\nFinancial statements for our Company are listed under Item 8 of this document.\n(b) Exhibits required by Item 601 of Regulation S-K.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.11",
+     "Amendment to Certificate of Incorporation (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "By-laws (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31",
+     "Certification of the Company\u2019s Principal Executive and Prinipal Financial Officer pursuant to the Securities Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification of the Company\u2019s Principal Executive and Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Board of Directors Pre-Approval Process, Policies and Procedures\nOur principal auditors have performed their audit procedures in accordance with pre-approved policies and procedures established by our sole director. Our principal auditors have informed our sole director of the scope and nature of each service provided. With respect to the provisions of services other than audit, review, or attest services, our principal accountants brought such services to the attention of our sole director prior to commencing such services.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) Financial Statements\nFinancial statements for our Company are listed under Item 8 of this document.\n(b) Exhibits required by Item 601 of Regulation S-K.",
+   "prose_after": "(1) Filed as an exhibit to the Company's Form 10 Registration Statement on Form 10-12G, as filed with the SEC on April 17, 2017, and incorporated herein by this reference.\n(2) Filed as an exhibit to the Company\u2019s Form 8-K filed with the SEC on September 14, 2017, and incorporated herein by this reference.\n(3) Filed herewith.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nAIS Holdings Group, Inc.\n(Registrant)\nBy: /s/ Takehiro Abe\nTakehiro Abe, Chief Executive Officer, Chief Financial Officer\nDated: June 26, 2023",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1149,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

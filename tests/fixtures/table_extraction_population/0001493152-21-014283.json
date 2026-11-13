@@ -1,0 +1,4661 @@
+{
+ "accession": "0001493152-21-014283",
+ "cik": "0001617351",
+ "form": "10-Q",
+ "filing_date": "2021-06-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "EIN 47-1549749"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(IRS Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-Q\nMark One\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended April 30, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to _______\nCommission File No. 333-198808\nMU YAN TECHNOLOGY GROUP CO., LIMITED\n(Formerly, Lepota Inc.)\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Room 1703B, Zhongzhou Building,\nNo. 3088, Jintian Road, Futian District\nShenzhen City, Guangdong Province\nPeople\u2019s Republic of China 518000\n(Address of principal executive offices)\n+86 0755 8325-7679\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the registrant has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "Fiscal Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "",
+     "July 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "616,108",
+     "",
+     "$",
+     "864,860",
+     ""
+    ],
+    [
+     "  Down payment to suppliers",
+     "$",
+     "192,049",
+     "",
+     "$",
+     "179,426",
+     ""
+    ],
+    [
+     "  Amount due from related parties",
+     "$",
+     "590,720",
+     "",
+     "$",
+     "1,073,761",
+     ""
+    ],
+    [
+     "  Other receivables",
+     "$",
+     "1,282,807",
+     "",
+     "$",
+     "93,067",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "3,866",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Inventory, net",
+     "$",
+     "193,079",
+     "",
+     "$",
+     "1,212,381",
+     ""
+    ],
+    [
+     "  Held for sale assets",
+     "$",
+     "2,241,424",
+     "",
+     "$",
+     "2,075,326",
+     ""
+    ],
+    [
+     "Total current assets",
+     "$",
+     "5,120,053",
+     "",
+     "$",
+     "5,498,821",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property, plant and equipment, net",
+     "$",
+     "337,321",
+     "",
+     "$",
+     "204,103",
+     ""
+    ],
+    [
+     "  Operating lease right-of-use assets",
+     "$",
+     "350,082",
+     "",
+     "$",
+     "515,589",
+     ""
+    ],
+    [
+     "Total non-current assets",
+     "$",
+     "687,403",
+     "",
+     "$",
+     "719,692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "5,807,456",
+     "",
+     "$",
+     "6,218,513",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "441,138",
+     "",
+     "$",
+     "307,415",
+     ""
+    ],
+    [
+     "  Advance from customers",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,539,343",
+     ""
+    ],
+    [
+     "  Other payables",
+     "$",
+     "159,688",
+     "",
+     "$",
+     "229,195",
+     ""
+    ],
+    [
+     "  Income tax payable",
+     "$",
+     "610,628",
+     "",
+     "$",
+     "440,323",
+     ""
+    ],
+    [
+     "  Current operating lease liabilities",
+     "$",
+     "298,558",
+     "",
+     "$",
+     "257,810",
+     ""
+    ],
+    [
+     "  Amount due to related parties",
+     "$",
+     "-",
+     "",
+     "$",
+     "64,645",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "1,510,012",
+     "",
+     "$",
+     "2,838,731",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Lease liabilities, non-current",
+     "$",
+     "51,524",
+     "",
+     "$",
+     "257,779",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "$",
+     "51,524",
+     "",
+     "$",
+     "257,779",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "1,561,536",
+     "",
+     "$",
+     "3,096,510",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock ($0.001 par value, 500,000,000 shares authorized, 307,430,000 shares issued and outstanding at April 30, 2021 and July 31, 2020, respectively)(1)",
+     "$",
+     "307,430",
+     "",
+     "$",
+     "307,430",
+     ""
+    ],
+    [
+     "  Additional paid-in capital(1)",
+     "$",
+     "(263,298)",
+     "",
+     "$",
+     "(263,298)",
+     ""
+    ],
+    [
+     "  Retained profits",
+     "$",
+     "3,430,592",
+     "",
+     "$",
+     "3,058,049",
+     ""
+    ],
+    [
+     "  Statutory reserve",
+     "",
+     "485,415",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Foreign currency translation reserve",
+     "$",
+     "285,781",
+     "",
+     "$",
+     "19,822",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "$",
+     "4,245,920",
+     "",
+     "$",
+     "3,122,003",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "5,807,456",
+     "",
+     "$",
+     "6,218,513",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [X]     Smaller reporting company [X]\nEmerging growth company [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act)\nYes [ ] No [X]\nAs of April 30, 2021, the registrant had 307,430,000 shares of common stock issued and outstanding.\nPART I\nItem 1. Financial statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\nAS OF THE PERIOD ENDED APRIL 30, 2021 AND THE YEAR ENDED JULY 31, 2020",
+   "prose_after": "(1) Par value of shares, additional paid-in capital and share data have been retroactively restated to give effect to the share exchange effected on August 12, 2020. See Note 1. \u201cDescription of the Business and Organization.\u201d\nSee accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF INCOME (LOSS) AND COMPREHENSIVE INCOME (LOSS)\nFOR THE THREE AND NINE MONTHS ENDED APRIL 30, 2021\nAND\nAPRIL 30, 2020\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 73,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine months ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "59,769",
+     "",
+     "$",
+     "1,709,292",
+     "",
+     "$",
+     "6,218,736",
+     "",
+     "$",
+     "4,798,863",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "$",
+     "(23,695)",
+     "",
+     "$",
+     "(556,013)",
+     "",
+     "$",
+     "(2,616,494)",
+     "",
+     "$",
+     "(1,752,534)",
+     ""
+    ],
+    [
+     "Taxes and surcharges",
+     "$",
+     "(414)",
+     "",
+     "$",
+     "(4,552)",
+     "",
+     "$",
+     "(51,888)",
+     "",
+     "$",
+     "(13,620)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "35,660",
+     "",
+     "$",
+     "1,148,727",
+     "",
+     "$",
+     "3,550,354",
+     "",
+     "$",
+     "3,032,709",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Selling and marketing expenses",
+     "$",
+     "(4,904)",
+     "",
+     "$",
+     "(186,885)",
+     "",
+     "$",
+     "(620,226)",
+     "",
+     "$",
+     "(479,265)",
+     ""
+    ],
+    [
+     "  General and administrative expenses",
+     "$",
+     "(465,150)",
+     "",
+     "$",
+     "(157,276)",
+     "",
+     "$",
+     "(1,280,283)",
+     "",
+     "$",
+     "(510,431)",
+     ""
+    ],
+    [
+     "  Research and development expenses",
+     "$",
+     "(74,509)",
+     "",
+     "$",
+     "(218,193)",
+     "",
+     "$",
+     "(244,985)",
+     "",
+     "$",
+     "(245,869)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "$",
+     "(544,563)",
+     "",
+     "$",
+     "(562,354)",
+     "",
+     "$",
+     "(2,145,494)",
+     "",
+     "$",
+     "(1,235,565)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Other expenses)/other income, net",
+     "$",
+     "(21,334)",
+     "",
+     "$",
+     "336,097",
+     "",
+     "$",
+     "(15,772)",
+     "",
+     "$",
+     "369,854",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss)/profit before tax",
+     "$",
+     "(530,237)",
+     "",
+     "$",
+     "922,470",
+     "",
+     "$",
+     "1,389,088",
+     "",
+     "$",
+     "2,166,998",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax",
+     "$",
+     "(11,141)",
+     "",
+     "$",
+     "(326,330)",
+     "",
+     "$",
+     "(531,130)",
+     "",
+     "$",
+     "(551,068)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)/profit",
+     "$",
+     "(541,378)",
+     "",
+     "$",
+     "596,140",
+     "",
+     "$",
+     "857,958",
+     "",
+     "$",
+     "1,615,930",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation differences",
+     "$",
+     "(22,405)",
+     "",
+     "$",
+     "(32,236)",
+     "",
+     "$",
+     "265,959",
+     "",
+     "$",
+     "(10,062)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total comprehensive (loss)/profit",
+     "$",
+     "(563,783)",
+     "",
+     "$",
+     "563,904",
+     "",
+     "$",
+     "1,123,917",
+     "",
+     "$",
+     "1,605,868",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share \u2013 basic and diluted(1)",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares \u2013 basic and diluted(1)",
+     "",
+     "307,430,000",
+     "",
+     "",
+     "307,430,000",
+     "",
+     "",
+     "307,430,000",
+     "",
+     "",
+     "307,430,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 157,
+    "end_line": 195
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Par value of shares, additional paid-in capital and share data have been retroactively restated to give effect to the share exchange effected on August 12, 2020. See Note 1. \u201cDescription of the Business and Organization.\u201d\nSee accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF INCOME (LOSS) AND COMPREHENSIVE INCOME (LOSS)\nFOR THE THREE AND NINE MONTHS ENDED APRIL 30, 2021\nAND\nAPRIL 30, 2020\n(Unaudited)",
+   "prose_after": "(1) Share and per share data have been retroactively restated to give effect to the share exchange effected on August 12, 2020. See Note 1. \u201cDescription of the Business and Organization.\u201d\nSee accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN EQUITY (DEFICIT)\nFOR THE NINE MONTHS ENDED APRIL 30, 2021 AND THE YEAR ENDED JULY 31, 2020\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 147,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "",
+     "",
+     "Foreign",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Paid-in Capital",
+     "",
+     "",
+     "Unrestricted",
+     "",
+     "",
+     "Statutory reserve",
+     "",
+     "Currency Reserves",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance at July 31, 2019",
+     "",
+     "307,430,000",
+     "$",
+     "307,430",
+     "$",
+     "(278,130)",
+     "",
+     "$",
+     "(36,650)",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "(7,350)",
+     ""
+    ],
+    [
+     "Asset and liabilities discharged by ex-shareholders",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "14,832",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "14,832",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "(10,062)",
+     "",
+     "$",
+     "(10,062)",
+     ""
+    ],
+    [
+     "Net profit",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,615,930",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,615,930",
+     ""
+    ],
+    [
+     "Balance at April 30, 2020",
+     "",
+     "307,430,000",
+     "$",
+     "307,430",
+     "$",
+     "(263,298)",
+     "",
+     "$",
+     "1,579,280",
+     "",
+     "$",
+     "-",
+     "$",
+     "(10,062)",
+     "",
+     "$",
+     "1,613,350",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at July 31, 2020",
+     "",
+     "307,430,000",
+     "$",
+     "307,430",
+     "$",
+     "(263,298)",
+     "",
+     "$",
+     "3,058,049",
+     "",
+     "$",
+     "-",
+     "$",
+     "19,822",
+     "",
+     "$",
+     "3,122,003",
+     ""
+    ],
+    [
+     "Movement of Statutory reserve",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "(485,415)",
+     "",
+     "$",
+     "485,415",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "265,959",
+     "",
+     "$",
+     "265,959",
+     ""
+    ],
+    [
+     "Net profit",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "857,958",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "857,958",
+     ""
+    ],
+    [
+     "Balance at April 31, 2021",
+     "",
+     "307,430,000",
+     "$",
+     "307,430",
+     "$",
+     "(263,298)",
+     "",
+     "$",
+     "3,430,592",
+     "",
+     "$",
+     "485,415",
+     "$",
+     "285,781",
+     "",
+     "$",
+     "4,245,920",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 210,
+    "end_line": 231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Share and per share data have been retroactively restated to give effect to the share exchange effected on August 12, 2020. See Note 1. \u201cDescription of the Business and Organization.\u201d\nSee accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN EQUITY (DEFICIT)\nFOR THE NINE MONTHS ENDED APRIL 30, 2021 AND THE YEAR ENDED JULY 31, 2020\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE NINE MONTHS ENDED APRIL 30, 2021\nAND\nTHE NINE MONTHS ENDED APRIL 30, 2020\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 204,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 234,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "",
+     "April 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "857,958",
+     "",
+     "$",
+     "1,615,930",
+     ""
+    ],
+    [
+     "Adjustments for:",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "$",
+     "55,799",
+     "",
+     "$",
+     "14,620",
+     ""
+    ],
+    [
+     "Operating profit before working capital changes:",
+     "$",
+     "913,757",
+     "",
+     "$",
+     "1,630,550",
+     ""
+    ],
+    [
+     "(Increase) decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "$",
+     "(3,783)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Tax Payable",
+     "$",
+     "132,173",
+     "",
+     "$",
+     "184,477",
+     ""
+    ],
+    [
+     "  Other receivables",
+     "$",
+     "(718,393)",
+     "",
+     "$",
+     "(57,167)",
+     ""
+    ],
+    [
+     "  Inventories",
+     "$",
+     "1,092,446",
+     "",
+     "$",
+     "(543,769)",
+     ""
+    ],
+    [
+     "  Held for sale assets",
+     "",
+     "-",
+     "",
+     "",
+     "(986,695)",
+     ""
+    ],
+    [
+     "  Accrued expense and other payables",
+     "$",
+     "(135,686)",
+     "",
+     "$",
+     "78,971",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "106,784",
+     "",
+     "$",
+     "654,171",
+     ""
+    ],
+    [
+     "  Down payment to suppliers",
+     "$",
+     "(455,107)",
+     "",
+     "$",
+     "(238,626)",
+     ""
+    ],
+    [
+     "  Advance from customers",
+     "$",
+     "(1,626,965)",
+     "",
+     "$",
+     "21,387",
+     ""
+    ],
+    [
+     "  Amount due to a related party",
+     "",
+     "-",
+     "",
+     "",
+     "85,766",
+     ""
+    ],
+    [
+     "  Amount due from related parties",
+     "$",
+     "556,802",
+     "",
+     "$",
+     "(213,868)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(137,972)",
+     "",
+     "$",
+     "615,197",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property, plant and equipment",
+     "$",
+     "(170,180)",
+     "",
+     "$",
+     "(227,244)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "$",
+     "(170,180)",
+     "",
+     "$",
+     "(227,244)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of common shares",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,148",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,148",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "$",
+     "59,400",
+     "",
+     "$",
+     "2,951",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "$",
+     "(248,752)",
+     "",
+     "$",
+     "396,052",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "$",
+     "864,860",
+     "",
+     "$",
+     "2,334",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF PERIOD",
+     "$",
+     "616,108",
+     "",
+     "$",
+     "398,386",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax paid",
+     "$",
+     "452,696",
+     "",
+     "$",
+     "366,591",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for operating lease liabilities",
+     "$",
+     "350,082",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 248,
+    "end_line": 290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE NINE MONTHS ENDED APRIL 30, 2021\nAND\nTHE NINE MONTHS ENDED APRIL 30, 2020\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nNOTES TO THE CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE NINE MONTHS ENDED APRIL 30, 2021\nAND\nTHE NINE MONTHS ENDED APRIL 30, 2020\n(UNAUDITED)\nNOTE\n1. DESCRIPTION OF THE BUSINESS AND ORGANIZATION\nMu Yan Technology Group Co., Limited, formerly Lepota Inc. (\u201cMYTG\u201d or the \u201cCompany\u201d), is a US holding company incorporated in Nevada on December 9, 2013. Our primary business originally was in the import of cosmetics into the Russian Federation and distribution of the products through shops and drugstores. However, since August 12, 2020, we have been engaged in the mobile advertisement backpack business. The Company\u2019s current address is Room 1703B, Zhongzhou Building, No. 3088, Jintian Road, Futian District, Shenzhen City, Guangdong Province, People\u2019s Republic of China 518000.\nOn February 18, 2020, as a result of a private transaction, 5,000,000 shares of our common stock (the \u201cShares\u201d) were transferred from Rene Lawrence to certain purchasers, including Zhao Lixin who became a 53.8% holder of the voting rights of the Company at the time. The consideration paid for the Shares, which represented 67.3% of the issued and outstanding share capital of the Company on a fully-diluted basis, was $257,160. The source of the cash consideration for the Shares was personal funds of the Purchasers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 293,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of and for the nine months ended April 30, 2021",
+     "",
+     "As of and for the nine months ended April 30, 2020",
+     ""
+    ],
+    [
+     "Period-end CNY\u00a5 : US$1 exchange rate",
+     "",
+     "6.47",
+     "",
+     "7.05"
+    ],
+    [
+     "Period-average CNY\u00a5 : US$1 exchange rate",
+     "",
+     "6.61",
+     "",
+     "7.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 351,
+    "end_line": 358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company\u2019s operations in the PRC are subject to special considerations and significant risks not typically associated with companies in North America and Western Europe. These include risks associated with, among others, the political, economic and legal environment and foreign currency exchange. The Company\u2019s results may be adversely affected by changes in the political and social conditions in the PRC and by changes in governmental policies with respect to laws and regulations, anti-inflationary measures, currency conversion, remittances abroad and rates and methods of taxation.\nForeign Currency Translation\nThe Company\u2019s reporting currency is the U.S. dollar and the functional currency is the Chinese Renminbi (\u201cRMB\u201d). All assets and liabilities are translated at exchange rates at the balance sheet date, revenue and expenses are translated at the average yearly exchange rates and equity is translated at historical exchange rates. Any translation adjustments resulting are not included in determining net income but are included in foreign exchange adjustment to other comprehensive income, a component of equity.\nTransactions in currencies other than the functional currencies during the period are converted into the applicable functional currencies at the applicable rates of exchange prevailing at the dates of the transactions. Exchange gains and losses are recognized in the statements of operations. The exchange rates utilized are as follows:",
+   "prose_after": "No representation is made that the RMB amounts could have been, or could be, converted into U.S. dollars at the rates used in translation.\nUse of Estimates\nThe preparation of condensed consolidated financial statements in conformity with US GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, related disclosures of contingent liabilities at the balance sheet date and revenue and expenses in the condensed consolidated financial statements and accompanying notes. Significant accounting estimates reflected in the Company\u2019s financial statements include the valuation allowance for deferred tax assets, economic lives and impairment of property, plant and equipment, allowance for doubtful accounts, etc. Actual results could differ from those estimates and such differences could affect the results of operations reported in future periods.\nFair Value Measurement\nAccounting Standards Codification (\u201cASC\u201d) 820 \u201cFair Value Measurements and Disclosures,\u201d which defines fair value, establishes a framework for measuring fair value and expands disclosures about fair value measurements. The statement clarifies that the exchange price is the price in an orderly transaction between market participants to sell the asset or transfer the liability in the market in which the reporting entity would transact for the asset or liability, that is, the principal or most advantageous market for the asset or liability. It also emphasizes that fair value is a market-based measurement, not an entity-specific measurement, and that market participant assumptions include assumptions about risk and effect of a restriction on the sale or use of an asset.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 379,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Motor vehicles",
+     "4 years"
+    ],
+    [
+     "Office equipment",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 407,
+    "end_line": 411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Inventories consist of raw materials and finished goods and are stated at the lower of cost, determined on a weighted average basis, or net realizable value. Net realizable value is the estimated selling price in the ordinary course of business less the estimated cost of completion and the estimated costs necessary to make the sale. When inventories are sold, their carrying amount is charged to expense in the period in which the revenue is recognized. Write-downs for declines in net realizable value or for losses of inventories are recognized as an expense in the period the impairment or loss occurs. The Company made no allowance for obsolete finished goods for the nine months ended April 30, 2021 and the year ended July 31, 2020.\nHeld for sale assets\nHeld for sale assets are stated at the lower of their cost or fair value less cost to sell. A gain is recognized for any subsequent increase in fair value less cost to sell, but recognized gains may not exceed the cumulative losses previously recognized.\nProperty, plant and equipment\nProperty, plant and equipment are carried at cost less accumulated depreciation. Depreciation is provided over the assets\u2019 estimated useful lives, using the straight-line method. Estimated useful lives of the property, plant and equipment are as follows:",
+   "prose_after": "The cost and related accumulated depreciation of assets sold or otherwise retired are eliminated from the accounts and any gain or loss is included in the statement of income. The cost of maintenance and repairs is charged to the statement of income as incurred, whereas significant renewals and betterments are capitalized.\nImpairment of long-lived assets\nThe Company reviews its long-lived assets for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset may no longer be recoverable. Whenever there is an indication showing a permanent decrease in the amount of property, plant and equipment, such as an evidence of obsolescence or physical damage of an asset or significant changes in the manner in which an asset is used or is expected to be used, the Company shall recognize loss on decrease in value of property, plant and equipment in the statement of income where the carrying amount of the asset is higher than the recoverable amount. The Company measures impairment by comparing the carrying value of the long-lived assets to the estimated undiscounted future cash flows expected to result from the use of the assets and their eventual disposition. If the sum of the expected undiscounted cash flow is less than the carrying amount of the assets, the Company would recognize an impairment loss based on the fair value of the assets. The Company did not record any impairment losses on long-lived assets during the nine months ended April 30, 2021 and the year ended July 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "July 31, 2020",
+     ""
+    ],
+    [
+     "Rental deposit",
+     "$",
+     "53,930",
+     "$",
+     "49,934"
+    ],
+    [
+     "Pending input VAT",
+     "$",
+     "59,894",
+     "$",
+     "17,378"
+    ],
+    [
+     "Prepaid legal service fee",
+     "$",
+     "21,000",
+     "$",
+     "-"
+    ],
+    [
+     "Advance for R&D service fee",
+     "",
+     "466,797",
+     "",
+     ""
+    ],
+    [
+     "Others",
+     "$",
+     "681,186",
+     "$",
+     "25,755"
+    ],
+    [
+     "Total",
+     "$",
+     "1,282,807",
+     "$",
+     "93,067"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "OTHER RECEIVABLES"
+    }
+   },
+   "prose_before": "In June 2016, the FASB issued ASU 2016-13, \u201cFinancial Instruments \u2014 Credit Losses (Topic 326), Measurement of Credit Losses on Financial Statements.\u201d This ASU requires a financial asset (or group of financial assets) measured at amortized cost basis to be presented at the net amount expected to be collected. The allowance for credit losses is a valuation account that is deducted from the amortized cost basis of the financial asset(s) to present the net carrying value at the amount expected to be collected on the financial asset. This Accounting Standards Update affects entities holding financial assets and net investment in leases that are not accounted for at fair value through net income. The amendments affect loans, debt securities, trade receivables, net investments in leases, off balance sheet credit exposures, reinsurance receivables and any other financial assets not excluded from the scope that have the contractual right to receive cash. For public business entities, the amendments in this Update are effective for fiscal years beginning after December 15, 2022, including interim periods within those fiscal years. All entities may adopt the amendments in this Update through a cumulative-effect adjustment to retained earnings as of the beginning of the first reporting period in which the guidance is effective (that is, a modified-retrospective approach). The Company is in the process of evaluating the impact of the adoption of this pronouncement on its financial statements.\nThe Company reviews new accounting standards as issued. Management has not identified any other new standards that it believes will have a significant impact on the Company\u2019s financial statements.\nNOTE\n3. OTHER RECEIVABLES\nOther receivables consisted of the following:",
+   "prose_after": "The Company leases an office and paid an amount equal to two months\u2019 rent as a security deposit.\nOn April 22, 2021, the Company prepaid $466,797 to the third party Shenzhen Rubao Technology Co., Ltd for R&D project on the packbag. The project is expected to be completed in December of 2021.\nOn April 29, 2021, the Company lend out $618,506 to the third party Shenzhen Kaishengwei Technology Co., Ltd without any interest or secured and the Company received the full amount at June 1, 2021.\nNOTE\n4. INVENTORIES\nInventories consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "July 31, 2020",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "95,990",
+     "$",
+     "520,972"
+    ],
+    [
+     "Finished goods",
+     "$",
+     "97,089",
+     "$",
+     "691,409"
+    ],
+    [
+     "Total inventories",
+     "$",
+     "193,079",
+     "$",
+     "1,212,381"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 524,
+    "end_line": 533
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "The Company leases an office and paid an amount equal to two months\u2019 rent as a security deposit.\nOn April 22, 2021, the Company prepaid $466,797 to the third party Shenzhen Rubao Technology Co., Ltd for R&D project on the packbag. The project is expected to be completed in December of 2021.\nOn April 29, 2021, the Company lend out $618,506 to the third party Shenzhen Kaishengwei Technology Co., Ltd without any interest or secured and the Company received the full amount at June 1, 2021.\nNOTE\n4. INVENTORIES\nInventories consist of the following:",
+   "prose_after": "There is no inventory allowance for the nine months ended April 30, 2021 and the year ended July 31, 2020.\nNOTE\n5. HELD FOR SALE ASSETS\nHeld for sale assets relate to IT servers acquired during the year ended July 31, 2020. Management plans to sell these IT servers by end of July 2021.\nNOTE\n6. DOWN PAYMENTS TO SUPPLIERS\nThe Company has made advances to third-party suppliers. These advances are down payments according to the purchase agreements made to expedite the delivery and preferential prices for the materials and the parts for the goods that the Company sells.\nNOTE\n7. PROPERTY, PLANT AND EQUIPMENT",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "",
+     "July 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Motor vehicles",
+     "$",
+     "377,341",
+     "",
+     "$",
+     "204,654",
+     ""
+    ],
+    [
+     "Office equipment",
+     "$",
+     "48,106",
+     "",
+     "$",
+     "28,252",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "$",
+     "(88,126)",
+     "",
+     "$",
+     "(28,803)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "337,321",
+     "",
+     "$",
+     "204,103",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 549,
+    "end_line": 559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "PROPERTY, PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "There is no inventory allowance for the nine months ended April 30, 2021 and the year ended July 31, 2020.\nNOTE\n5. HELD FOR SALE ASSETS\nHeld for sale assets relate to IT servers acquired during the year ended July 31, 2020. Management plans to sell these IT servers by end of July 2021.\nNOTE\n6. DOWN PAYMENTS TO SUPPLIERS\nThe Company has made advances to third-party suppliers. These advances are down payments according to the purchase agreements made to expedite the delivery and preferential prices for the materials and the parts for the goods that the Company sells.\nNOTE\n7. PROPERTY, PLANT AND EQUIPMENT",
+   "prose_after": "During the nine months ended April 30, 2021, the Company acquired 1 motor vehicle costing $156,309 and office equipment consisting of 4 notebook computers, costing an aggregate of $4,209, and 3 desktop computers, costing an aggregate of $1,880, and 1 digital camera, costing $2,085, and 10 cell phones, costing an aggregate of $9,419, for a total cost of $173,902. Depreciation expense for the nine months ended April 30, 2021 and nine months ended April 30, 2020 was $59,323 and $14,530, respectively.\nNOTE\n8. INCOME TAXES\nEnterprise income tax (\u201cEIT\u201d)\nThe Company was incorporated under the laws of the State of Nevada and is subject to the United States federal income tax. No provision for income taxes in the United States has been made as the Company had no United States taxable income for the nine months ended April 30, 2021 and the year ended July 31, 2020.\nThe Company operates in the PRC and files tax returns in PRC jurisdictions.\nThe Company\u2019s subsidiary formed in the Independent State of Samoa is not subject to tax on its income or capital gains. In addition, upon payment of dividends by the Company to its shareholders, no withholding tax is imposed.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the nine months ended April 30, 2021",
+     "",
+     "",
+     "For the year ended July 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "PRC statutory tax rate",
+     "",
+     "25",
+     "%",
+     "",
+     "25",
+     "%"
+    ],
+    [
+     "Expenses not deductible",
+     "",
+     "1",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "12",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "38",
+     "%",
+     "",
+     "25.2",
+     "%"
+    ],
+    [
+     "PRC statutory tax rate",
+     "",
+     "25",
+     "%",
+     "",
+     "25",
+     "%"
+    ],
+    [
+     "Computed expected (expenses)/benefits",
+     "$",
+     "347,272",
+     "",
+     "$",
+     "1,034,709",
+     ""
+    ],
+    [
+     "Expenses not deductible",
+     "$",
+     "12,468",
+     "",
+     "$",
+     "2,833",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "$",
+     "171,390",
+     "",
+     "$",
+     "6,596",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "531,130",
+     "",
+     "$",
+     "1,044,138",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The full realization of the tax benefit associated with a carry forward depends predominantly upon the Company\u2019s ability to generate taxable income during the carry forward period.\nIn assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. A valuation allowance is provided for deferred tax assets if it is more likely than not these items will either expire before the Company is able to realize their benefits, or that future deductibility is uncertain.\nThe reconciliation of income taxes computed at the PRC federal statutory tax rate applicable in the PRC, to income tax expenses are as follows:",
+   "prose_after": "Value added tax (\u201cVAT\u201d)\nPursuant to the Provisional Regulations on Value-Added Tax of the PRC and its implementation regulations, unless otherwise stipulated by relevant laws and regulations, any entity or individual engaged in the sales of goods, provision of processing, repairs and replacement services and importation of goods into China is generally required to pay a value-added tax, or VAT, for revenues generated from sales of products, while qualified input VAT paid on taxable purchases can be offset against such output VAT.\nAccording to the Announcement on Relevant Policies for Deepening Value-added Tax Reform jointly promulgated by the Chinese Ministry of Finance, the State Administration of Taxation and the General Administration of Customs, which became effective on April 1, 2019, the taxable goods previously subject to VAT rates of 16% and 10%, respectively, become subject to lower VAT rates of 13% and 9% respectively starting from April 1, 2019. Our sales of goods are subject to VAT rates of 13%.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Relationship",
+     "For the nine months ended April 30, 2021",
+     "",
+     "For the year ended July 31, 2020",
+     ""
+    ],
+    [
+     "Hang Zhou Huo Bao Bao AD and Media Co. Ltd.",
+     "Common shareholder of Winning Match Int\u2019l Co., Ltd which is one of the shareholders of Mu Yan Samoa",
+     "$",
+     "139,164",
+     "$",
+     "214,752"
+    ],
+    [
+     "Bang Bi Tuo (Shen Zhen) Technology Co., LTD.",
+     "Mr Zhao Lixin, CEO of this entity",
+     "$",
+     "451,556",
+     "$",
+     "859,008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "RELATED PARTIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "Pursuant to the Provisional Regulations on Value-Added Tax of the PRC and its implementation regulations, unless otherwise stipulated by relevant laws and regulations, any entity or individual engaged in the sales of goods, provision of processing, repairs and replacement services and importation of goods into China is generally required to pay a value-added tax, or VAT, for revenues generated from sales of products, while qualified input VAT paid on taxable purchases can be offset against such output VAT.\nAccording to the Announcement on Relevant Policies for Deepening Value-added Tax Reform jointly promulgated by the Chinese Ministry of Finance, the State Administration of Taxation and the General Administration of Customs, which became effective on April 1, 2019, the taxable goods previously subject to VAT rates of 16% and 10%, respectively, become subject to lower VAT rates of 13% and 9% respectively starting from April 1, 2019. Our sales of goods are subject to VAT rates of 13%.\nNOTE\n9. RELATED PARTIES TRANSACTIONS\nThe Company had the following balances with related parties:\n(a) Amount due from related parties",
+   "prose_after": "The balances with related parties are unsecured, non-interest bearing and repayable on demand.\n(b) Amount due to a related party",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the nine months ended April 30, 2021",
+     "",
+     "For the year ended July 31, 2020",
+     ""
+    ],
+    [
+     "Wang Zhen",
+     "He is one of the shareholders",
+     "$",
+     "-",
+     "$",
+     "64,645"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 630,
+    "end_line": 636
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "RELATED PARTIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "The balances with related parties are unsecured, non-interest bearing and repayable on demand.\n(b) Amount due to a related party",
+   "prose_after": "The balance with related party is unsecured, non-interest bearing and repayable on demand.\n(c) Transactions",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Trade in nature",
+     "For the nine months ended April 30, 2021",
+     "",
+     "For the year ended July 31, 2020",
+     ""
+    ],
+    [
+     "Purchase products from Hang Zhou Huo Bao Bao AD and Media Co. Ltd.",
+     "$",
+     "-",
+     "$",
+     "569,058"
+    ],
+    [
+     "Service provided by Hang Zhou Huo Bao Bao AD and Media Co. Ltd.",
+     "$",
+     "90,790",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash advance to related parties",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bang Bi Tuo (Shen Zhen) Technology Co., Ltd.",
+     "$",
+     "139,258",
+     "$",
+     "859,008"
+    ],
+    [
+     "Hang Zhou Huo Bao Bao AD and Media Co. Ltd.",
+     "$",
+     "-",
+     "$",
+     "214,752"
+    ],
+    [
+     "Wang Zhen",
+     "$",
+     "115,818",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment from related parties",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bang Bi Tuo (Shen Zhen) Technology Co., Ltd.",
+     "$",
+     "605,270",
+     "$",
+     "-"
+    ],
+    [
+     "Wang Zhen",
+     "$",
+     "115,818",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash advance from related parties",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wang Zhen",
+     "$",
+     "-",
+     "$",
+     "797,856"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment to related parties",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wang Zhen",
+     "$",
+     "64,645",
+     "$",
+     "733,614"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "RELATED PARTIES TRANSACTIONS"
+    }
+   },
+   "prose_before": "The balance with related party is unsecured, non-interest bearing and repayable on demand.\n(c) Transactions",
+   "prose_after": "NOTE\n10. RESERVES\nStatutory reserve\nIn accordance with the relevant laws and regulations of the PRC, the company established in the PRC is required to transfer 10% of its annual profit after taxation prepared in accordance with the accounting regulations of the PRC to the statutory reserve until the reserve balance reaches 50% of the company\u2019s paid-up capital. Such reserves may be used to offset accumulated losses or increase the registered capital of the company, subject to the approval from the PRC authorities, and are not available for dividend distribution to the shareholders. There is $485,415 and Nil reserve provided for the nine months ended April 30, 2021 and the year ended July 31, 2020, respectively.\nCurrency translation reserve\nThe currency translation reserve represents translation differences arising from translation of foreign currency financial statements into the Company\u2019s functional currency.\nNOTE\n11. LEASES\nIn February 2016, the FASB issued ASU 2016-02, \u201cLeases (Topic 842).\u201d The guidance supersedes existing guidance on accounting for leases with the main difference being that operating leases are to be recorded in the statement of financial position as right-of-use assets and lease liabilities, initially measured at the present value of the lease payments. For operating leases with a term of 12 months or less, a lessee is permitted to make an accounting policy election not to recognize lease assets and liabilities. For public business entities, the guidance is effective for fiscal years beginning after December 15, 2018, including interim periods within those fiscal years. Early application of the guidance is permitted. In transition, entities are required to recognize and measure leases at the beginning of the earliest period presented using a modified retrospective approach. Effective July 1, 2020, the Company adopted this standard, resulting in the recognition of right-of-use assets of $350,082 and operating lease liabilities of $350,082.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,2021",
+     "",
+     ""
+    ],
+    [
+     "Within 1 year",
+     "$",
+     "308,786",
+     ""
+    ],
+    [
+     "After 1 year but within 5 years",
+     "$",
+     "51,830",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "$",
+     "360,616",
+     ""
+    ],
+    [
+     "Less: imputed interest",
+     "$",
+     "(10,534)",
+     ""
+    ],
+    [
+     "Total lease obligations",
+     "$",
+     "350,082",
+     ""
+    ],
+    [
+     "Less: current obligations",
+     "$",
+     "(298,558)",
+     ""
+    ],
+    [
+     "Long-term lease obligations",
+     "$",
+     "51,524",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "April 30,2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 690,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The adoption of the new lease guidance did not have a material impact on the Company\u2019s results of operations or liquidity, but resulted in the recognition of operating lease liabilities and operating lease right-of-use assets on its balance sheets. Right-of-use (\u201cROU\u201d) assets represent the right to use an underlying asset for the lease term, and lease liabilities represent the obligation to make lease payments arising from the lease. ROU assets and liabilities are recognized at the lease commencement date based on the estimated present value of lease payments over the lease term. The Company has a lease for the office in Shenzhen, PRC, under an operating lease expiring in June 2022, which is classified as an operating lease. There are no residual value guarantees and no restrictions or covenants imposed by the lease. Rent expense for the nine months ended April 30, 2021 and the nine months ended April 30, 2020 were $218,578 and $Nil, respectively. Cash paid for the operating lease was included in the operating cash flows.\nThere are no residual value guarantees and no restrictions or covenants imposed by the lease. As of April 30, 2021, the Company has $350,082 of right-of-use assets, $298,558 in current operating lease liabilities and $51,524 in non-current operating lease liabilities.\nSignificant assumptions and judgments made as part of the adoption of this new lease standard include determining (i) whether a contract contains a lease, (ii) whether a contract involves an identified asset, and (iii) which party to the contract directs the use of the asset. The discount rates used to calculate the present value of lease payments were determined based on hypothetical borrowing rates available to the Company over terms similar to the lease terms.\nThe Company\u2019s future minimum payments under long-term non-cancelable operating leases are as follows:",
+   "prose_after": "Other information:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 672,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the nine months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30, 2021",
+     "",
+     "",
+     "April 30, 2020",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flow from operating lease",
+     "$",
+     "223,357",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for operating lease liabilities",
+     "$",
+     "350,082",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Remaining lease term for operating lease (years)",
+     "",
+     "1",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Weighted average discount rate for operating lease",
+     "",
+     "4.75",
+     "%",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "For the nine months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other information"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Other information:",
+   "prose_after": "NOTE\n12. CONSOLIDATED SEGMENT DATA\nSegment information is consistent with how chief operating decision maker reviews the businesses, makes investing and resource allocation decisions and assesses operating performance. The segment data presented reflects this segment structure. The Company reports financial and operating information in the following four segments:\n(a) Mobile advertisement backpack. Including manufacturing and distribution of backpacks;\n(b) Advertising services. Providing logistic services;\nSelected information in the segment structure is presented in the following tables:\nRevenues by segment for the three and nine months ended April 30, 2021 and 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended April 30,",
+     "",
+     "",
+     "",
+     "Nine months ended April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Mobile advertisement backpack",
+     "$",
+     "53,456",
+     "$",
+     "1,709,292",
+     "$",
+     "5,886,116",
+     "$",
+     "4,798,863"
+    ],
+    [
+     "Advertising services",
+     "$",
+     "6,313",
+     "$",
+     "-",
+     "$",
+     "332,620",
+     "$",
+     "-"
+    ],
+    [
+     "Total of reportable segments and consolidated revenue",
+     "$",
+     "59,769",
+     "$",
+     "1,709,292",
+     "$",
+     "6,218,736",
+     "$",
+     "4,798,863"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 734,
+    "end_line": 745
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other information"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "CONSOLIDATED SEGMENT DATA"
+    }
+   },
+   "prose_before": "NOTE\n12. CONSOLIDATED SEGMENT DATA\nSegment information is consistent with how chief operating decision maker reviews the businesses, makes investing and resource allocation decisions and assesses operating performance. The segment data presented reflects this segment structure. The Company reports financial and operating information in the following four segments:\n(a) Mobile advertisement backpack. Including manufacturing and distribution of backpacks;\n(b) Advertising services. Providing logistic services;\nSelected information in the segment structure is presented in the following tables:\nRevenues by segment for the three and nine months ended April 30, 2021 and 2020 are as follows:",
+   "prose_after": "Income from operations by segment for the three and nine months ended April 30, 2021 and 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Mobile advertisement backpack",
+     "$",
+     "31,982",
+     "",
+     "$",
+     "1,153,279",
+     "",
+     "$",
+     "3,342,794",
+     "",
+     "$",
+     "3,046,329",
+     ""
+    ],
+    [
+     "Advertising services",
+     "$",
+     "4,092",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "259,448",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total of reportable segments",
+     "$",
+     "36,074",
+     "",
+     "$",
+     "1,153,279",
+     "",
+     "$",
+     "3,602,242",
+     "",
+     "$",
+     "3,046,329",
+     ""
+    ],
+    [
+     "Reconciliation \u2013 Corporate",
+     "$",
+     "(566,311)",
+     "",
+     "$",
+     "(230,809)",
+     "",
+     "$",
+     "(2,213,154)",
+     "",
+     "$",
+     "(879,331)",
+     ""
+    ],
+    [
+     "Total consolidated profit(loss) from operations",
+     "$",
+     "(530,237)",
+     "",
+     "$",
+     "922,470",
+     "",
+     "$",
+     "1,389,088",
+     "",
+     "$",
+     "2,166,998",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 749,
+    "end_line": 764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other information"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "CONSOLIDATED SEGMENT DATA"
+    }
+   },
+   "prose_before": "Income from operations by segment for the three and nine months ended April 30, 2021 and 2020 are as follows:",
+   "prose_after": "Total assets by segment as at April 30, 2021 and July 31, 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total assets",
+     "April 30, 2021",
+     "",
+     "July 31, 2020",
+     ""
+    ],
+    [
+     "Mobile advertisement backpack",
+     "$",
+     "3,342,794",
+     "$",
+     "4,138,837"
+    ],
+    [
+     "Advertising services",
+     "",
+     "259,448",
+     "",
+     "-"
+    ],
+    [
+     "Total of reportable segments",
+     "$",
+     "3,602,242",
+     "$",
+     "4,138,837"
+    ],
+    [
+     "Reconciliation \u2013 Corporate",
+     "",
+     "2,205,214",
+     "",
+     "2,079,676"
+    ],
+    [
+     "Consolidated total assets",
+     "$",
+     "5,807,456",
+     "$",
+     "6,218,513"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 767,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other information"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "CONSOLIDATED SEGMENT DATA"
+    }
+   },
+   "prose_before": "Total assets by segment as at April 30, 2021 and July 31, 2020 are as follows:",
+   "prose_after": "NOTE\n13. SUBSEQUENT EVENTS\nNo subsequent events.\nItem 2. Management\u2019s discussion and analysis of financial condition and results of operation\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with our consolidated financial statements and the related notes included elsewhere in this report. Our consolidated financial statements have been prepared in accordance with U.S. GAAP. In addition, our consolidated financial statements and the financial data included in this Quarterly Report reflect our reorganization and have been prepared as if our current corporate structure had been in place throughout the relevant periods. The following discussion and analysis contain forward-looking statements that involve risks and uncertainties. Actual results could differ materially from those projected in the forward-looking statements.\nOverview\nThe Company was originally incorporated in Nevada under the name \u201cLepota Inc.\u201d on December 9, 2013. It maintains its principal executive offices at Room 1703B, Zhongzhou Building, No. 3088 Jintian Road, Futian District, Shenzhen City, Guangdong Province, People\u2019s Republic of China 518000. The Company was formed for the purpose of importing and distributing cosmetics into the Russian Federation.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase (decrease) in",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2021 compared to 2020",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In U.S. dollars, except for\n\n\n\npercentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue for mobile advertisement backpack",
+     "$",
+     "53,456",
+     "100.0",
+     "%",
+     "$",
+     "1,709,292",
+     "100.0",
+     "%",
+     "$",
+     "(1,655,836)",
+     "",
+     "(96.9)",
+     "%"
+    ],
+    [
+     "Inventory",
+     "$",
+     "21,474",
+     "40.2",
+     "%",
+     "$",
+     "556,013",
+     "32.5",
+     "%",
+     "$",
+     "(534,539)",
+     "",
+     "(96.1)",
+     "%"
+    ],
+    [
+     "Total cost of revenue for mobile advertisement backpack",
+     "$",
+     "21,474",
+     "40.2",
+     "%",
+     "$",
+     "556,013",
+     "32.5",
+     "%",
+     "$",
+     "(534,539)",
+     "",
+     "(96.1)",
+     "%"
+    ],
+    [
+     "Gross profit for mobile advertisement backpack",
+     "$",
+     "31,982",
+     "59.8",
+     "%",
+     "$",
+     "1,153,279",
+     "67.5",
+     "%",
+     "$",
+     "(1,121,297)",
+     "",
+     "(97.2)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue for advertising services",
+     "$",
+     "6,313",
+     "100.0",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "6,313",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Labor",
+     "$",
+     "1,709",
+     "27.1",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "1,709",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Marketing",
+     "$",
+     "512",
+     "8.1",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "512",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Total cost of revenue for advertising services",
+     "$",
+     "2,221",
+     "35.2",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "2,221",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Gross Profit for advertising services",
+     "$",
+     "4,092",
+     "64.8",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "4,092",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Total cost of revenue",
+     "$",
+     "23,695",
+     "39.6",
+     "%",
+     "$",
+     "556,013",
+     "32.5",
+     "%",
+     "$",
+     "(532,317)",
+     "",
+     "(95.7)",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "36,074",
+     "60.4",
+     "%",
+     "$",
+     "1,153,279",
+     "67.5",
+     "%",
+     "$",
+     "(1,117,206)",
+     "",
+     "(96.9)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 854
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Revenue generated from selling our mobile advertisement backpack contributed $53,456 and $1,709,292 to our total revenue for the three months ended April 30, 2021 and 2020, respectively. The decrease in revenue generated by mobile advertisement backpack sales resulted from a suspension of sales during the quarter while the Company worked on upgrading and updating the hardware and the software utilized in the mobile advertisement backpack. During the three months ended April 30, 2021, we sold 13 backpacks, whereas during the three months ended April 30, 2020, we sold 9,149. The hardware and software improvements are expected to be completed in July of 2021.\nRevenue generated from advertising services contributed $6,313 and $Nil to our total revenue for the three months ended April 30, 2021 and 2020, respectively. The increase in revenue from advertising services was due to the fact that the Company did not commence operations in this business segment until December 2020.\nTotal revenue for the three months ended April 30, 2021 and 2020 were $59,769 and $1,709,292, respectively.\nCost of Revenue",
+   "prose_after": "Cost of revenue for mobile advertisement backpack for the three months ended April 30, 2021 and 2020 was $21,474 and $556,013 respectively. The significant decrease in cost of revenue for our mobile advertisement backpack was due to the fact that the Company sold only 13 mobile advertisement backpacks during the three months ended April 30, 2021, compared to 9,149 mobile advertisement backpacks sold during the three months ended April 30, 2020 and, therefore, needed to purchase commensurately fewer components for assembly into backpacks.\nFor our mobile advertisement backpack business, we outsourced the assembly processes of our products to subcontractors, and we maintained stable relationships with them. We outsource our delivery services to two courier companies. Delivery fees are paid by the ultimate customers upon delivery of the products. We have not experienced difficulty in obtaining inventory for our business, and we believe we maintain good relationships with our suppliers.\nInventory costs for our mobile advertisement backpack business were 40.2% of our total mobile advertisement backpack business revenue in the three months ended April 30, 2021, compared with 32.5% in the three months ended April 30, 2020. The increased percentage was mainly due to an increase in the purchase cost of the inventory.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 822,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2021 compared to 2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     "",
+     "Amount of",
+     "",
+     "",
+     "% of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "Increase",
+     "",
+     "",
+     "Increase",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit for mobile advertisement backpack",
+     "$",
+     "31,982",
+     "",
+     "$",
+     "1,153,279",
+     "",
+     "$",
+     "(1,121,297)",
+     "",
+     "",
+     "(97)",
+     "%"
+    ],
+    [
+     "Gross Profit for advertising services",
+     "$",
+     "4,092",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "4,092",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Additional Tax",
+     "$",
+     "(415)",
+     "",
+     "$",
+     "(4,552)",
+     "",
+     "$",
+     "4,137",
+     "",
+     "",
+     "(91)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "35,659",
+     "",
+     "$",
+     "1,148,727",
+     "",
+     "$",
+     "(1,113,068)",
+     "",
+     "",
+     "(97)",
+     "%"
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and Marketing Expenses",
+     "$",
+     "(4,904)",
+     "",
+     "$",
+     "(186,885)",
+     "",
+     "$",
+     "181,981",
+     "",
+     "",
+     "(97)",
+     "%"
+    ],
+    [
+     "General and Administrative Expenses",
+     "$",
+     "(465,150)",
+     "",
+     "$",
+     "(157,276)",
+     "",
+     "$",
+     "(307,874)",
+     "",
+     "",
+     "196",
+     "%"
+    ],
+    [
+     "Research and Development Expenses",
+     "$",
+     "(74,509)",
+     "",
+     "$",
+     "(218,193)",
+     "",
+     "$",
+     "143,684",
+     ")",
+     "",
+     "(66",
+     "%"
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "(544,563)",
+     "",
+     "$",
+     "(562,354)",
+     "",
+     "$",
+     "17,791",
+     ")",
+     "",
+     "(3",
+     "%"
+    ],
+    [
+     "Other Income, net",
+     "$",
+     "(21,334)",
+     "",
+     "$",
+     "336,097",
+     "",
+     "$",
+     "(357,431)",
+     "",
+     "",
+     "(106)",
+     "%"
+    ],
+    [
+     "Income from Operations",
+     "$",
+     "(530,238)",
+     "",
+     "$",
+     "922,470",
+     "",
+     "$",
+     "(1,452,708)",
+     "",
+     "",
+     "(157)",
+     "%"
+    ],
+    [
+     "Revenue Related Tax",
+     "$",
+     "(11,141)",
+     "",
+     "$",
+     "(326,330)",
+     "",
+     "$",
+     "315,189",
+     "",
+     "",
+     "(97)",
+     "%"
+    ],
+    [
+     "Net Profit",
+     "$",
+     "(541,379)",
+     "",
+     "$",
+     "596,140",
+     "",
+     "$",
+     "(1,137,519)",
+     "",
+     "",
+     "(191)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 868,
+    "end_line": 893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Inventory costs for our mobile advertisement backpack business were 40.2% of our total mobile advertisement backpack business revenue in the three months ended April 30, 2021, compared with 32.5% in the three months ended April 30, 2020. The increased percentage was mainly due to an increase in the purchase cost of the inventory.\nCost of revenue for advertising services for the three months ended April 30, 2021 and 2020 was $2,221 and $Nil respectively. The increase in cost of revenue for advertising services reflects that the Company did not commence operations in this business segment until December 2020.\nTotal cost of revenue for the three months ended April 30, 2021 was $23,695 compared with the amount of $556,013 for the three months ended April 30, 2020. Total cost of revenue as a percentage for the three months ended April 30, 2021 was 39.6%, compared with 32.5% for the three months ended April 30, 2020. Gross profit for the three months ended April 30, 2021 was 60.4% compared with 67.5% for the three months ended April 30, 2020. The reasons for the decrease in the total cost of revenue as a percentage of the revenue for three months ended April 30, 2021, compared to the comparable period in the prior year are described above.\nNet Profit",
+   "prose_after": "Gross profit from our for mobile advertisement backpack for the three months ended April 30, 2021 and the three months ended April 30, 2020 was $31,982 and $1,153,279, respectively. The decrease in gross profit was primarily due to the reduction in revenue that resulted from reduced sales while the Company worked on upgrading and updating the hardware and the software utilized in the mobile advertisement backpack. Gross profit margin for the mobile advertisement backpack for the three months ended April 30, 2021 and the three months ended April 30, 2020 were 59.8% and 67.5%, respectively. Inventory decreased from December 2020 as sales were suspended during the quarter ended April 30, 2021, to work on upgrading and updating the hardware and the software utilized in the mobile advertisement backpack. Management believes that when the upgrades and updates are completed the Company`s dependence upon third party suppliers will decrease and unit savings in production will be realized.\nNet (loss) profit for the three months ended April 30, 2021 and the three months ended April 30, 2020 were $(541,379) and $596,140, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase (decrease) in\n\n\n\n2021 compared to",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In U.S. dollars, except for percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue for mobile advertisement backpack",
+     "$",
+     "5,886,116",
+     "100.0",
+     "%",
+     "$",
+     "4,798,863",
+     "100.0",
+     "%",
+     "$",
+     "1,087,253",
+     "22.7",
+     "%"
+    ],
+    [
+     "Inventory",
+     "$",
+     "2,543,322",
+     "43.2",
+     "%",
+     "$",
+     "1,752,534",
+     "36.5",
+     "%",
+     "$",
+     "790,788",
+     "45.1",
+     "%"
+    ],
+    [
+     "Total cost of revenue for mobile advertisement backpack",
+     "$",
+     "2,543,322",
+     "43.2",
+     "%",
+     "$",
+     "1,752,534",
+     "36.5",
+     "%",
+     "$",
+     "790,788",
+     "45.1",
+     "%"
+    ],
+    [
+     "Gross profit for mobile advertisement backpack",
+     "$",
+     "3,342,794",
+     "56.8",
+     "%",
+     "$",
+     "3,046,329",
+     "63.5",
+     "%",
+     "$",
+     "296,465",
+     "9.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue for advertising services",
+     "$",
+     "332,620",
+     "100.0",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "332,620",
+     "N/A",
+     ""
+    ],
+    [
+     "Labor",
+     "$",
+     "8,472",
+     "2.5",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "8,472",
+     "N/A",
+     ""
+    ],
+    [
+     "Marketing",
+     "$",
+     "64,700",
+     "19.5",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "64,700",
+     "N/A",
+     ""
+    ],
+    [
+     "Total cost of revenue for advertising services",
+     "$",
+     "73,172",
+     "22.0",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "73,172",
+     "N/A",
+     ""
+    ],
+    [
+     "Gross profit for advertising services",
+     "$",
+     "259,448",
+     "78.0",
+     "%",
+     "$",
+     "-",
+     "-",
+     "",
+     "$",
+     "259,448",
+     "N/A",
+     ""
+    ],
+    [
+     "Total cost of revenue",
+     "$",
+     "2,616,494",
+     "42.1",
+     "%",
+     "$",
+     "1,752,534",
+     "36.5",
+     "%",
+     "$",
+     "863,961",
+     "49.3",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "3,602,242",
+     "57.9",
+     "%",
+     "$",
+     "3,046,329",
+     "63.5",
+     "%",
+     "$",
+     "555,912",
+     "18.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 930,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Revenue generated from selling our mobile advertisement backpack contributed $5,886,116 and $4,798,863 to our total revenue for the nine months ended April 30, 2021 and 2020, respectively. The increase in mobile advertisement backpack revenue is due to the fact that the Company\u2019s operating subsidiary was not formed until September 30, 2019 and sold 9,149 backpacks between then and April 30, 2020, whereas it sold 15,252 backpacks during the nine months ended April 30, 2021. The hardware and software improvements are expected to be completed in July of 2021.\nRevenue generated from advertising services contributed $332,620 and $Nil to our total revenue for the nine months ended April 30, 2021 and 2020, respectively. The increase in revenue from advertising services was due to the fact that the Company did not commence operations in this business segment until December 2020.\nTotal revenue for the nine months ended April 30, 2021 and 2020 were $6,218,736 and $4,798,863, respectively.\nCost of Revenue",
+   "prose_after": "Cost of revenue for mobile advertisement backpack for the nine months ended April 30, 2021 and 2020 was $2,543,322 and $1,752,534 respectively. The significant increase in cost of revenue was a result of our having sold 15,252 mobile advertisement backpacks during the nine months ended April 30, 2021 compared to 9,149 backpacks having been sold during the nine months ended April 30, 2020.\nFor our mobile advertisement backpack business, we outsourced the assembly processes of our products to subcontractors, and we maintained stable relationships with them. We outsource our delivery services to two courier companies. Delivery fees are paid by the ultimate customers upon delivery of the products. We have not experienced difficulty in obtaining inventory for our business, and we believe we maintain good relationships with our suppliers.\nInventory costs for our mobile advertisement backpack business were 43.2% of our total mobile advertisement backpack business revenue in the nine months ended April 30, 2020, compared with 36.5% in the nine months ended April 30, 2020. The increased percentage was mainly due to a 50% reduction in the selling price of our mobile advertisement backpacks due to a promotion from September 2020 to November 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 927,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine months ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2021 compared to 2020",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "April 30,",
+     "",
+     "",
+     "Amount of",
+     "",
+     "",
+     "% of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "Increase",
+     "",
+     "",
+     "Increase",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit for mobile advertisement backpack",
+     "$",
+     "3,342,794",
+     "",
+     "$",
+     "3,046,329",
+     "",
+     "$",
+     "296,465",
+     "",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "Gross Profit for advertising services",
+     "$",
+     "259,448",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "259,448",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Additional Tax",
+     "$",
+     "(51,888)",
+     "",
+     "$",
+     "(13,620)",
+     "",
+     "$",
+     "(38,268)",
+     "",
+     "",
+     "281",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "3,550,354",
+     "",
+     "$",
+     "3,032,709",
+     "",
+     "$",
+     "517,645",
+     "",
+     "",
+     "17",
+     "%"
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and Marketing Expenses",
+     "$",
+     "(620,226)",
+     "",
+     "$",
+     "(479,265)",
+     "",
+     "$",
+     "(140,961)",
+     "",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "General and Administrative Expenses",
+     "$",
+     "(1,280,283)",
+     "",
+     "$",
+     "(510,431)",
+     "",
+     "$",
+     "(769,852)",
+     "",
+     "",
+     "151",
+     "%"
+    ],
+    [
+     "Research and Development Expenses",
+     "$",
+     "(244,985)",
+     "",
+     "$",
+     "(245,869)",
+     "",
+     "$",
+     "884",
+     "",
+     "",
+     "(0)",
+     "%"
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "(2,145,494)",
+     "",
+     "$",
+     "(1,235,565)",
+     "",
+     "$",
+     "(909,929)",
+     "",
+     "",
+     "74",
+     "%"
+    ],
+    [
+     "Other Income, net",
+     "$",
+     "(15,772)",
+     "",
+     "$",
+     "369,854",
+     "",
+     "$",
+     "(385,626)",
+     "",
+     "",
+     "(104)",
+     "%"
+    ],
+    [
+     "Income from Operations",
+     "$",
+     "1,389,088",
+     "",
+     "$",
+     "2,166,998",
+     "",
+     "$",
+     "(777,910)",
+     "",
+     "",
+     "(36)",
+     "%"
+    ],
+    [
+     "Revenue Related Tax",
+     "$",
+     "(531,130)",
+     "",
+     "$",
+     "(551,068)",
+     "",
+     "$",
+     "19,938",
+     "",
+     "",
+     "(4)",
+     "%"
+    ],
+    [
+     "Net Profit",
+     "$",
+     "857,958",
+     "",
+     "$",
+     "1,615,930",
+     "",
+     "$",
+     "(757,972)",
+     "",
+     "",
+     "(47)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 979,
+    "end_line": 1004
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Labor costs for our advertising services business for the nine months ended April 30, 2021 were $8,472 compared with $Nil for the nine months ended April 30, 2020. Labor costs for our service business accounted for 2.5% of our total service revenue for the nine months ended April 30, 2021, compared with Nil for the nine months ended April 30, 2020.\nMarketing costs for our advertising services business for the nine months ended April 30, 2021 were $64,700 compared with $Nil for the nine months ended April 30, 2020. Marketing costs for our service business accounted for 19.5% of our total service revenue for the nine months ended April 30, 2021, compared with Nil for the nine months ended April 30, 2020.\nTotal cost of revenue for the nine months ended April 30, 2021 was $2,616,494 compared with the amount of $1,752,534 for the nine months ended April 30, 2020. Total cost of revenue as a percentage for the nine months ended April 30, 2021 was 42.1%, compared with 36.5% for the nine months ended April 30, 2020. Gross profit for the nine months ended April 30, 2021 was 57.9% compared with 63.5% for the nine months ended April 30, 2020.\nNet Profit",
+   "prose_after": "Gross profit for mobile advertisement backpack for the nine months ended April 30, 2021 and the nine months ended April 30, 2020 were $3,342,794 and $3,046,329, respectively. Gross profit margin for our mobile advertisement backpack for the nine months ended April 30, 2021 and the nine months ended April 30, 2020 were 56.8% and 63.5% , respectively. The decrease in gross profit margin was principally due to a promotion in which the selling price of the backpacks was reduced by 50% from September 2020 to November 2020, and a further reduction in revenue that resulted from reduced sales while the Company worked on upgrading and updating the hardware and the software utilized in the mobile advertisement backpack. Management believes that when the upgrades and updates are completed the Company\u2019s dependence upon third party suppliers will decrease and unit savings in production will be realized.\nGross profit for advertising services for the nine months ended April 30, 2021 and the nine months ended April 30, 2020 were $259,448 and $Nil , respectively. Gross profit margin for advertising services for the nine months ended April 30, 2021 and the nine months ended April 30, 2020 were 78% and Nil , respectively. The increase in gross profit margin for advertising services was due to the fact that the Company did not commence sales in this business segment until December 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 966,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In U.S. Dollars)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by operating activities",
+     "$",
+     "(137,972)",
+     "",
+     "$",
+     "615,197",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,148",
+     ""
+    ],
+    [
+     "Net cash (used in) investing activities",
+     "$",
+     "(170,180)",
+     "",
+     "$",
+     "(227,244)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1043
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our general and administrative expenses for the nine months ended April 30, 2021 and 2020 were $1,280,283 and $510,431, respectively. General and administrative expenses consisted primarily of administrative payroll, office expense, depreciation charges and other office expenses that are not directly attributable to our revenues. The general and administrative expenses increase during the nine months ended April 30, 2021 was primarily attributable to business entertainment expense that is used to maintain business relationship with cooperative partners on mobile advertisement backpack while the Company worked on upgrading and updating the hardware and the software utilized in the mobile advertisement backpack.\nResearch and Development Expenses\nOur research and development expenses for the nine months ended April 30, 2021 and 2020 were $244,985 and $245,869, respectively. Research and development expenses consist primarily of researchers\u2019 payroll and IT services expenses.\nIncome Taxes\nIncome tax for the nine months ended April 30, 2021 and 2020 were $531,130 and $551,068, respectively.\nSummary of Cash Flows\nSummary cash flows information for the nine months ended April 30, 2021 and 2020 are as follow:",
+   "prose_after": "Net cash (used in) or provided by operating activities were $(137,972) and $615,197 for the nine months ended April 30, 2021 and 2020, respectively. The cash used in operating activities during the nine months ended April 30, 2021 was primarily attributable to other receivables inventories and advances from customers.\nNet cash used in investing activities during the nine months ended April 30, 2021 was $170,180, consisting entirely from the acquisition of property, plant and equipment. Net cash used in investing activities during the nine months ended April 30, 2020 was $227,244.\nNet cash provided by or used in financing activities during the nine months ended April 30, 2021 was $Nil. Net cash provided by financing activities during the nine months ended April 30, 2020 was $5,148 and was derived entirely from the sale of common shares.\nFinancial Condition, Liquidity and Capital Resources\nAs of April 30, 2021, we had cash on hand of $616,108, total current assets of $5,120,053 and current liabilities of $1,510,012. The Company had revenues of $6,218,736 and generated a net profit of $857,958 for the nine months ended April 30, 2021. We believe that our business can generate sufficient cash flows to support the growth of our business.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1070,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Chief Executive Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act"
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1134
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We are currently not involved in any litigation that we believe could have a material adverse effect on our financial condition or results of operations. There is no action, suit, proceeding, inquiry or investigation before or by any court, public board, government agency, self-regulatory organization or body pending or, to the knowledge of the executive officers of our Company, threatened against or affecting our Company, or our common stock, in which an adverse decision could have a material adverse effect.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nNone\nItem 3. Defaults Upon Senior Securities.\nNone\nItem 4. Mine Safety Disclosures.\nNot applicable\nItem 5. Other Information.\nNone\nItem 6. Exhibits.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: June 14, 2021",
+     "MU YAN TECHNOLOGY GROUP CO., LIMITED",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ ZHAO Lixin"
+    ],
+    [
+     "",
+     "",
+     "ZHAO Lixin, President"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: June 14, 2021",
+     "By:",
+     "/s/ FENG Wanning"
+    ],
+    [
+     "",
+     "",
+     "FENG Wanning, Treasurer and CFO"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1140,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1152,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

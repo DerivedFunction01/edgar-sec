@@ -1,0 +1,4516 @@
+{
+ "accession": "0001654954-23-004106",
+ "cik": "0001902794",
+ "form": "10-K",
+ "filing_date": "2023-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "mgol_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "87-3929852"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1515 SE 17th Street, Suite 121/#460596, Ft. Lauderdale, Fl",
+     "",
+     "33346"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______ to ________\nCommission file number: 001-41592\nMGO GLOBAL INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (347) 913-3316\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "common stock, par value $0.00001 per share",
+     "MGOL",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (347) 913-3316\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "6"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "20"
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "44"
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "44"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "44"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "44"
+    ],
+    [
+     "PART II",
+     "",
+     "44"
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "45"
+    ],
+    [
+     "ITEM 6.",
+     "[RESERVED]",
+     "46"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "46"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "53"
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "53"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "53"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "53"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "54"
+    ],
+    [
+     "ITEM 9C.",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "54"
+    ],
+    [
+     "PART III",
+     "",
+     "55"
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "55"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "62"
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "71"
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "72"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "73"
+    ],
+    [
+     "PART IV",
+     "",
+     "74"
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBIT AND FINANCIAL STATEMENT AND SUPPLEMENTAL SCHEDULES",
+     "74"
+    ],
+    [
+     "ITEM 16.",
+     "FORM 10-K SUMMARY",
+     "74"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "76"
+    ],
+    [
+     "",
+     "",
+     "77"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 108
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that require a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nThe registrant was not a public company as of the last business day of its most recently completed second fiscal quarter and, therefore, cannot calculate the aggregate market value of its voting and non-voting common equity held by non-affiliates as of such date.\nAs of March 30, 2023, there were 14,241,541 shares of common stock, par value $0.00001 per share, issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE: None.\nMGO GLOBAL INC.\nTABLE OF CONTENTS",
+   "prose_after": "2\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (\u201cAnnual Report\u201d) contains forward-looking statements. Statements made in this report that are not statements of historical fact, including statements about our beliefs and expectations, are forward-looking statements, and should be evaluated as such. Investors are cautioned that such forward-looking statements are based on our management\u2019s beliefs and assumptions and on information currently available to our management and involve risks and uncertainties. Forward-looking statements include statements regarding our plans, strategies, objectives, expectations and intentions, which are subject to change at any time at our discretion. Forward-looking statements include information concerning possible or assumed future results of operations, including descriptions of our business plan and strategies. Forward-looking statements include our assessment, from time to time of our competitive position, the industry environment, potential growth opportunities, the effects and events outside of our control, such as natural disasters, wars, epidemics or pandemics. Forward-looking statements often include words such as \u201canticipates,\u201d \u201cbelieves,\u201d \u201ccould,\u201d \u201cforecast,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201csuggest,\u201d \u201chopes,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplans,\u201d \u201cpotential,\u201d \u201cpredicts,\u201d \u201ctargets,\u201d \u201cprojects,\u201d \u201cprojections,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwill,\u201d \u201cwould\u201d or the negative of these terms or other similar expressions.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "$",
+     "1,048,012",
+     "",
+     "$",
+     "880,340",
+     "",
+     "$",
+     "167,672",
+     "",
+     "",
+     "19.05",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "337,631",
+     "",
+     "",
+     "392,407",
+     "",
+     "",
+     "(54,776)",
+     "",
+     "",
+     "-13.96",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "710,381",
+     "",
+     "",
+     "487,933",
+     "",
+     "",
+     "222,448",
+     "",
+     "",
+     "45.59",
+     "%"
+    ],
+    [
+     "Gross profit percentage",
+     "",
+     "67.78",
+     "%",
+     "",
+     "55.43",
+     "%",
+     "",
+     "12.36",
+     "%",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,349,346",
+     "",
+     "",
+     "1,407,192",
+     "",
+     "",
+     "1,942,154",
+     "",
+     "",
+     "138.02",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "",
+     "(2,638,965)",
+     "",
+     "",
+     "(919,259)",
+     "",
+     "",
+     "(1,719,706)",
+     "",
+     "",
+     "187.08",
+     "%"
+    ],
+    [
+     "Total other (income) expenses",
+     "",
+     "238,392",
+     "",
+     "",
+     "66,636",
+     "",
+     "",
+     "171,756",
+     "",
+     "",
+     "257.75",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,877,357)",
+     "",
+     "$",
+     "(985,895)",
+     "",
+     "$",
+     "(1,891,462)",
+     "",
+     "",
+     "191.85",
+     "%"
+    ],
+    [
+     "Less: net loss attributable to non-controlling interest",
+     "",
+     "(294,411)",
+     "",
+     "",
+     "(79,569)",
+     "",
+     "",
+     "(214,842)",
+     "",
+     "",
+     "270.01",
+     "%"
+    ],
+    [
+     "Net loss attributable to MGO stockholders",
+     "$",
+     "(2,582,946)",
+     "",
+     "$",
+     "(906,326)",
+     "",
+     "$",
+     "(1,676,620)",
+     "",
+     "",
+     "184.99",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Revenue transactions associated with the sale of The Messi Brand products, comprise a single performance obligation, which consists of the sale of products to customers either through direct wholesale or online sales through our website www.themessistore.com. We satisfy the performance obligation and record revenues when transfer of control to the customer has occurred, based on the terms of sale. A customer is considered to have control once they are able to direct the use and receive substantially all of the benefits of the product. Control is transferred to wholesale customers upon shipment or upon receipt, depending on the country of the sale and the agreement with the customer. Control transfers to online customers at the time upon shipment. The transaction price is determined based upon the invoiced sales price, less anticipated sales returns, discounts and miscellaneous claims from customers. Payment terms for wholesale transactions depend on the country of sale or agreement with the customer, and payment is generally required within 30 days or less of shipment to or receipt by the wholesale customer. Payment is due at the time of sale for online transactions.\nSegment Reporting\nIn accordance with ASC Topic 280, Segment Reporting (\u201cASC 280\u201d), we identify operating segments as components of an entity for which discrete financial information is available and is regularly reviewed by the chief operating decision maker in making decisions regarding resource allocation and performance assessment. The Company defines the term \u201cchief operating decision maker\u201d to be our chief executive officer. The Company has determined that it operates one reportable segment at this time, which is comprised of net revenues earned from selling a range of products offered under The Messi Brand to consumers and wholesale customers .\nResults of Operations\nYear Ended December 31, 2022 as Compared to Year Ended December 31, 2021\nThe following table provides certain selected financial information for the periods presented:",
+   "prose_after": "Revenues\nFor the 12 months ended December 31, 2022, net revenues climbed 19% to $1,048,012 as compared to $880,340 reported for the same 12-month period in the prior year. The increase stemmed from higher sales generated through The Messi Store ecommerce website and mobile app during the end-of-year holiday shopping season, coupled with global consumer demand for Messi-branded products fueled by Leo Messi\u2019s winning performance on the pitch at the 2022 FIFA World Cup games held in Qatar in November and December of 2022. In addition, 2022 revenues were modestly impacted by the launch of our wholesale channel in 2021, providing for the sale of The Messi Brand products in two Duty Free America retail stores located at the Uruguay-Brazil border. During the 12 months ended December 31, 2022, our wholesale channel generated revenues of $106,431, representing approximately 10% of our total 2022 revenues, compared to $101,769, or approximately 12% of total revenues in the prior year.\nCost of Goods Sold",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Maximiliano Ojeda",
+     "45",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "Virginia Hilfiger",
+     "58",
+     "Director and Chief Design Officer"
+    ],
+    [
+     "Julian Groves",
+     "50",
+     "Director and Chief Operating Officer"
+    ],
+    [
+     "Nicole Fernandez-McGovern(1) (2)",
+     "50",
+     "Independent Director"
+    ],
+    [
+     "Obie McKenzie (1) (2)",
+     "77",
+     "Independent Director"
+    ],
+    [
+     "Salima Popatia(2) (3)",
+     "46",
+     "Independent Director"
+    ],
+    [
+     "Paul Wahlgren(1) (3)",
+     "56",
+     "Independent Director"
+    ],
+    [
+     "Vincent Ottomanelli",
+     "56",
+     "Chief Financial Officer"
+    ],
+    [
+     "Matt Harward",
+     "53",
+     "Chief Marketing Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1258,
+    "end_line": 1271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include a report of management\u2019s assessment regarding internal control over financial reporting or an attestation report of our registered public accounting firm due to a transition period established by the rules of the SEC for newly public companies.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting, as defined in Rules 13a-15(t) and 15d-15(f) under the Exchange Act, during the year ended December 31, 2022 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNot applicable.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table and biographical summaries set forth information, including principal occupation and business experience about our directors and executive officers as of March 30, 2023:",
+   "prose_after": "(1) Member of the audit committee\n(2) Member of the compensation committee\n(3) Member of the nominating and corporate governance committee\nMaximiliano Ojeda, Co-Founder, Chairman and Chief Executive Officer \u2014 Mr. Ojeda is the co-founder of MGO Global and has served as our Chairman of the Board and Chief Executive Officer since the Company\u2019s inception in November 2021. An entrepreneur and international business executive, his career has largely focused on business development, contract negotiations, high-touch customer engagement and advanced technologies within the hospitality, U.S. real estate, land development and ecommerce industries.\nBorn in Argentina, Mr. Ojeda attended UADE Business School. He launched his professional career working in VIP client relations and management for luxury hoteliers in Argentina. He immigrated to the United States and, from January 2011 through 2017, he served as a real estate brokerage executive in New York City where he catered to high end clientele and led prolific land development projects first at Douglas Elliman Real Estate and then The Corcoran Group. It was through client relationships he established in the global real estate industry that led to his introduction to the Leo Messi organization and the subsequent formation of MGO in partnership with Virginia Hilfiger.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1250,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1286,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position(1)",
+     "Year",
+     "Salary\n\n($)",
+     "",
+     "",
+     "Bonus\n\n($)",
+     "",
+     "Stock\n\nAwards\n\n($)",
+     "",
+     "Option\n\nAwards\n\n($)",
+     "",
+     "All Other\n\nCompensation\n\n($)",
+     "",
+     "",
+     "Total\n\n($)",
+     ""
+    ],
+    [
+     "Maximiliano Ojeda,",
+     "2022",
+     "",
+     "118,750",
+     "(2)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "7,807",
+     "(3)",
+     "",
+     "126,557"
+    ],
+    [
+     "Chief Executive Officer",
+     "2021",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "75,000"
+    ],
+    [
+     "Virginia Hilfiger",
+     "2022",
+     "",
+     "103,750",
+     "(4)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "103,750"
+    ],
+    [
+     "Chief Design Officer",
+     "2021",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "75,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1446,
+    "end_line": 1458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Our Board has adopted a written code of business conduct and ethics (the \u201cCode\u201d) that applies to our directors, officers and employees, including our principal executive officer, principal financial officer and principal accounting officer or controller, or persons performing similar functions. Such Code addresses, among other things, honesty and ethical conduct, conflicts of interest, compliance with laws, regulations and policies, including disclosure requirements under the federal securities laws, and reporting of violations of the Code. Any person may obtain a copy of our Code of Ethics, without charge, by mailing a request to the Company at the address appearing on the front page of this annual Report on Form 10-K or by viewing it on our website found at www.mgoglobalinc.com.\nFamily Relationships\nThere are no family relationships among the officers and directors, nor are there any arrangements or understanding between any of the directors and officers of our Company or any other person pursuant to which any officer of director was or is to be selected as an officer or director.\nInvolvement in Certain Legal Proceedings\nDuring the last ten years, none of or officers, directors or control persons have been involved in any legal proceedings as described in Item 401(f) of Regulation S-K.\nITEM 11. EXECUTIVE COMPENSATION\nSummary Compensation Table\nThe following summary compensation table provides information concerning all cash and non-cash compensation that have been or will be awarded to, earned by or paid during our fiscal year ended December 31, 2022 and December 31, 2021 to our Chief Executive Officer (principal executive officer) and Chief Design Officer.. We refer to these individuals as our \u201cnamed executive officers\u201d (\u201cNEO\u201d).",
+   "prose_after": "(1) No executive officer earned more than $100,000 in fiscal year 2021.\n(2) Up until July 19, 2022, Mr. Ojeda's salary was $75,000 annually; as of July 19, 2022 his salary increased to $180,000. $34,000 in cash compensation was paid to Mr. Ojeda and the balance of $84,750 has been accrued through December 31, 2022.\n(3) Represents auto lease and car insurance payments made in respect of automobile used by Mr. Ojeda in 2022.\n(4) Up until July 19, 2022, Ms. Hilfiger's salary was $75,000 annually; as of July 19, 2022, her salary increased to $144,000. $16,500 in cash compensation was paid to Ms. Hilfiger and the balance of $87,250 has been accrued through December 31, 2022.\nEmployment Agreements\nWe have executed the following employment agreements and consulting agreements with our named executive officers. The material terms of each of those arrangements are summarized below. The summaries are not complete description of all provisions of the employment arrangements and are qualified in their entirety by reference to the written employment arrangements, each filed as an exhibit to this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 1470,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Annual Retainer for Board Membership",
+     "",
+     ""
+    ],
+    [
+     "Annual service for board of directors",
+     "$",
+     "35,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional Annual Retainer for Committee Membership",
+     "",
+     ""
+    ],
+    [
+     "Annual service as a member of the audit committee (other than chair)",
+     "$",
+     "7,500"
+    ],
+    [
+     "Annual service as chair of the audit committee",
+     "$",
+     "12,000"
+    ],
+    [
+     "Annual service a member of the compensation committee (other than chair)",
+     "$",
+     "5,000"
+    ],
+    [
+     "Annual service as chair of the compensation committee",
+     "$",
+     "10,000"
+    ],
+    [
+     "Annual service as member of the nominating and corporate governance committee (other than the chair)",
+     "$",
+     "4,000"
+    ],
+    [
+     "Annual service as chair of the nominating and corporate governance committee",
+     "$",
+     "8,000"
+    ]
+   ],
+   "caption_stack": [
+    "Annual Retainer for Board Membership"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1596,
+    "end_line": 1608
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Compensation Committee may grant incentive bonuses to our executive officers and/or future executive officers in its sole discretion, if the Compensation Committee believes such bonuses are in the Company\u2019s best interest, after analyzing our current business objectives and growth, if any, and the amount of revenue we are able to generate each month, which revenue is a direct result of the actions and ability of such executives.\nLong-Term, Stock-Based Compensation\nIn order to attract, retain and motivate executive talent necessary to support the Company\u2019s long-term business strategy, we may award our executives and any future executives with long-term, stock-based compensation in the future, at the sole discretion of our compensation committee.\nDirector Compensation\nWe did not pay any board of directors compensation during the fiscal year ending December 31, 2022.\nDirector Compensation Program\nDuring the 2022 fiscal year, we did not have a formal policy to compensate our independent directors and did not pay any cash compensation to any of our non-employee directors. In 2023, we intend to implement a formal policy pursuant to which our independent directors will be eligible to receive the following cash retainers and equity awards:",
+   "prose_after": "Our policy will provide that, upon initial election to our board of directors, each non-employee director will automatically be granted a restricted stock unit (\u201cRSU\u201d) grant with a value of $100,000, or the Initial Grant, based on the closing price of our common stock on the date of grant (or with respect to the initial grant to our initial non-employee directors, based on $5.00), to vest in equal annual installments over three years subject to continued service as a director through each applicable vesting date. Furthermore, on the date of each of our annual meeting of stockholders each non-employee director who will continue as a non-employee director following such meeting (other than any such director who received an Initial Grant within the immediately preceding three months) will be automatically granted an RSU grant with a value of $100,000, or the Annual Grant, based on the closing price of our common stock on the date of grant, to vest in full on the earlier of (i) the first anniversary of the grant date or (ii) our next annual meeting of stockholders, subject to continued service as a director through the applicable vesting date.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1574,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 69
+    },
+    "after": {
+     "line": 1609,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 70
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address\n\nof Beneficial Owner(1)",
+     "Title",
+     "Number",
+     "",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Officers and Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maximiliano Ojeda",
+     "Chief Executive Officer, Chairman",
+     "",
+     "3,965,610",
+     "(2)",
+     "",
+     "27.8",
+     "%"
+    ],
+    [
+     "Virginia Hilfiger",
+     "Director, Chief Design Officer",
+     "",
+     "3,965,610",
+     "(3)",
+     "",
+     "27.8",
+     "%"
+    ],
+    [
+     "Julian Groves",
+     "Director, Chief Operating Officer",
+     "",
+     "689,780",
+     "(4)",
+     "",
+     "4.8",
+     "%"
+    ],
+    [
+     "Vincent Ottomanelli",
+     "Chief Financial Officer",
+     "",
+     "40,000",
+     "(5)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Matt Harward",
+     "Chief Marketing Officer",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Salima Popatia",
+     "Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paul Wahlgren",
+     "Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nicole Fernandez-McGovern",
+     "Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Obie McKenzie",
+     "Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Officers and Directors as a Group (total of 9 persons)",
+     "",
+     "",
+     "8,661,000",
+     "",
+     "",
+     "60.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Beneficial Owners of a Class of Voting Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maximiliano Ojeda",
+     "",
+     "",
+     "3,965,610",
+     "",
+     "",
+     "27.8",
+     "%"
+    ],
+    [
+     "Virginia Hilfiger",
+     "",
+     "",
+     "3,965,610",
+     "",
+     "",
+     "27.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1633,
+    "end_line": 1655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "We have determined beneficial ownership in accordance with the rules and regulations of the SEC. These rules generally provide that a person is the beneficial owner of securities if such person has or shares the power to vote or direct the voting thereof, or to dispose or direct the disposition thereof or has the right to acquire such powers within 60 days. Shares of common stock subject to options that are currently exercisable or exercisable within 60 days of March 30, 2022 are deemed to be outstanding and beneficially owned by the person holding the options. Shares issuable pursuant to stock options or warrants are deemed outstanding for computing the percentage ownership of the person holding such options or warrants, but are not deemed outstanding for computing the percentage ownership of any other person. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below will have sole voting and investment power with respect to all shares of common stock that they will beneficially own, subject to applicable community property laws.\nOur calculation of the number of shares and percentage of beneficial ownership is based on 14,241,541 shares of common stock outstanding as of March 30, 2023.",
+   "prose_after": "* Less than 1%\n(1) Except as noted below, the address for all beneficial owners in the table above is c/o MGO Global Inc., 1515 SE 17th Street, Suite 121/#460596, Fort Lauderdale, Florida 33346.\n(2) Includes 394,000 shares of our common stock owned by MGOTEAM LLC of which Maximiliano Ojeda, our CEO, shares control over voting and disposition with Virginia Hilfiger\n(3) Includes 394,000 shares of our common stock owned by MGOTEAM LLC of which Virginia Hilfiger, our Chief Design Officer control over voting and disposition with Virginia Hilfiger\n(4) Includes 150,000 shares of our common stock that are beneficially owned by Globally Digital Ltd., a company owned and controlled by our Chief Operating Officer, Julian Groves. The address of Mr. Groves is c/o Globally Digital Ltd, 3 Hertford Avenue, East Sheen, London, SW14 8EF.\n(5) Consists of 40,000 shares of our common stock underlying vested options granted to Vincent Ottomanelli pursuant to the Ottomanelli Agreement.\nEquity Compensation Plan Information",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1631,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "52,500",
+     "$",
+     "15,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "16,750",
+     "",
+     "6,750"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "55,000",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "124,250",
+     "$",
+     "21,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1690,
+    "end_line": 1701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "During the year ended December 31, 2022 and 2021, related party imputed interest was $13,420 and $10,518, respectively. The imputed interest was recorded as interest expense and an increase in additional paid-in capital based on a rate of 12%.\nFor the year ended December 31, 2022 and 2021, the Company owed reimbursement of ecommerce expenses of $10,378 and $0 respectively, to Julian Groves, our Chief Operating Officer and Director.\nFor the year ended December 31, 2022 and 2021, the Company recorded $14,400 and $14,568 respectively, in month to month rent expense, to Virginia Hilfiger, our Chief Design Officer and Director.\nThe accounts payable owed to related parties as of December 31, 2022 and December 31, 2021 was $4,532 and $36,178, respectively.\nThe accrued payroll owed to our Chief Executive Officer, Chief Design Officer and Chief Operating Officer as of December 31, 2022 and December 2021 was $746,050 and $298,297, respectively.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following table reflects fees billed to our Company by our independent auditor, BF Borgers CPA PC, for the years ended December 31, 2022 and December 31, 2021:",
+   "prose_after": "In the above table, \u201caudit fees\u201d are fees billed for services provided related to the audit of our annual financial statements, quarterly reviews of our interim financial statements, and services normally provided by the independent accountant in connection with regulatory filings or engagements for those fiscal periods. \u201cAudit-related fees\u201d are fees not included in audit fees that are billed by the independent accountant for assurance and related services that are reasonably related to the performance of the audit or review of our financial statements. These audit-related fees also consist of the review of our registration statements filed with the SEC and related services normally provided in connection with regulatory filings or engagements. \u201cTax Fees\u201d are fees primarily for tax compliance in connection with filing US income tax returns. \u201cAll other fees\u201d are fees billed by the independent accountant for products and services not included in the foregoing categories.\nAudit Committee Pre-Approval Policies",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1*",
+     "Amended and Restated Certificate of Incorporation dated August 29, 2022"
+    ],
+    [
+     "3.2*",
+     "Amended and Restated Bylaws of MGO Global Inc.dated December 28, 2022"
+    ],
+    [
+     "4.1*",
+     "Form of Representative's Warrant in connection with the Company\u2019s initial public offering"
+    ],
+    [
+     "4.2*",
+     "Form of Warrant issued to investors in private placement"
+    ],
+    [
+     "4.3*",
+     "Form of Placement Agent Warrant issued in first private placement"
+    ],
+    [
+     "4.4*",
+     "Form of Placement Agent Warrant issued in second private placement"
+    ],
+    [
+     "10.1\u2020\u2020 *",
+     "Trademark License Agreement between MGOTEAM 1 LLC and Leo Messi Management SL dated November 20, 2021"
+    ],
+    [
+     "10.2\u2020 *",
+     "Form of 2022 Equity Incentive Plan"
+    ],
+    [
+     "10.3\u2020 *",
+     "Executive Employment Agreement between MGO Global Inc. and Maximiliano Ojeda dated July 19, 2022"
+    ],
+    [
+     "10.4\u2020 *",
+     "Executive Employment Agreement between MGO Global Inc. and Virginia Hilfiger dated July 19, 2022"
+    ],
+    [
+     "10.5\u2020 *",
+     "Executive Employment Agreement between MGO Global Inc. and Julian Groves dated July 19, 2022"
+    ],
+    [
+     "10.6\u2020 *",
+     "Executive Employment Agreement between MGO Global Inc. and Matt Harward dated October 13, 2022"
+    ],
+    [
+     "10.7\u2020 *",
+     "Amended and Restated Executive Employment Agreement between MGO Global Inc. and Maximiliano Ojeda dated October 13, 2022"
+    ],
+    [
+     "10.8\u2020 *",
+     "Amended and Restated Executive Employment Agreement between MGO Global Inc. and Virginia Hilfiger dated October 13, 2022"
+    ],
+    [
+     "10.9\u2020 *",
+     "Amended and Restated Executive Employment Agreement between MGO Global Inc. and Julian Groves dated October 13, 2022"
+    ],
+    [
+     "10.10\u2020 *",
+     "Amended and Restated Executive Employment Agreement between MGO Global Inc. and Matt Harward dated October 24, 2022"
+    ],
+    [
+     "10.11*",
+     "Form of Subscription Agreement for first private placement"
+    ],
+    [
+     "10.12*",
+     "Form of Subscription Agreement for second private placement"
+    ],
+    [
+     "10.13\u2020*",
+     "Consulting Services Agreement between MGO Global Inc. and Martin Scott dated December 6, 2022"
+    ],
+    [
+     "10.14\u2020*",
+     "Amended and Restated Independent Contractor Agreement between MGO Global Inc. and Vincent Ottomanelli dated December 2, 2022"
+    ],
+    [
+     "10.15*",
+     "Equity Joint Venture Contract dated August 29, 2019 among Shanghai Celebrity Import and Export Co., LTD. and MGOTEAM LLC"
+    ],
+    [
+     "10.16**",
+     "Letter of Intent for acquisition of certain assets of Stand Co, LLC by MGO Global Inc., dated March 13, 2023"
+    ],
+    [
+     "14.1*",
+     "Code of Ethics and Business Conduct"
+    ],
+    [
+     "21.1*",
+     "List of Subsidiaries"
+    ],
+    [
+     "99.1*",
+     "Audit Committee Charter"
+    ],
+    [
+     "99.2*",
+     "Compensation Committee Charter"
+    ],
+    [
+     "99.3*",
+     "Nominating and Corporate Governance Committee Charter"
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer pursuant to Rule 13a-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification of the Chief Financial Officer pursuant to Rule 13a-14(a) under the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1***",
+     "Certification of the Chief Executive Officer pursuant to Section 13(a) or 15(d) of the Securities Exchange Act of 1934, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2***",
+     "Certification of the Chief Financial Officer pursuant to Section 13(a) or 15(d) of the Securities Exchange Act of 1934, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1730,
+    "end_line": 1769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The charter of our Audit Committee provides that the duties and responsibilities of our Audit Committee include the pre-approval of all audit and non-audit services permitted by law or applicable SEC regulations (including fee and terms of engagement) to be performed by our external auditor.\nAll of the services provided above under the caption \u201cAudit-Related Fees\u201d were approved by our Board of Directors or by our Audit Committee pursuant to our Audit Committee\u2019s pre-approval policies.\nPART IV\nITEM 15. EXHIBIT AND FINANCIAL STATEMENT SCHEDULES\n(a) Financial Statements and Financial Statement Schedules are set forth under Part II, Item 8 of this report.\n(b) Exhibits\nSee the Exhibit Index immediately preceding the signature page of this Annual Report.\nITEM 16. Form 10-K Summary\nNone.\nEXHIBIT INDEX",
+   "prose_after": "* Incorporated by reference to the Company\u2019s Registration Statement on Form S-1 (No. 333-268484), filed with the SEC on December 30, 2022.\n\u2020 Executive compensation plan or arrangement.\n\u2020\u2020 portions were redacted.\n** Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed on March 17, 2023.\n*** Exhibits 32.1 and 32.2 are being furnished and shall not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, nor shall such exhibits be deemed to be incorporated by reference in any registration statement or other document filed under the Securities Act of 1933, as amended, or the Exchange Act, except as otherwise specifically stated in such filing.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1726,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MGO GLOBAL INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 31, 2023",
+     "By:",
+     "/s/ Maximiliano Ojeda"
+    ],
+    [
+     "",
+     "",
+     "Maximiliano Ojeda"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Chairman of the Board"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 31, 2023",
+     "By:",
+     "/s/ Vincent Ottomanelli"
+    ],
+    [
+     "",
+     "",
+     "Vincent Ottomanelli"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "MGO GLOBAL INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1786,
+    "end_line": 1799
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "* Incorporated by reference to the Company\u2019s Registration Statement on Form S-1 (No. 333-268484), filed with the SEC on December 30, 2022.\n\u2020 Executive compensation plan or arrangement.\n\u2020\u2020 portions were redacted.\n** Incorporated by reference to the Company\u2019s Current Report on Form 8-K filed on March 17, 2023.\n*** Exhibits 32.1 and 32.2 are being furnished and shall not be deemed to be \u201cfiled\u201d for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, nor shall such exhibits be deemed to be incorporated by reference in any registration statement or other document filed under the Securities Act of 1933, as amended, or the Exchange Act, except as otherwise specifically stated in such filing.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1837,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Maximiliano Ojeda",
+     "Chairman of the Board and Chief Executive Officer",
+     "March 31, 2023"
+    ],
+    [
+     "Maximiliano Ojeda",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Vincent Ottomanelli",
+     "Chief Financial Officer",
+     "March 31, 2023"
+    ],
+    [
+     "Vincent Ottomanelli",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Virginia Hilfiger",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Virginia Hilfiger",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Julian Groves",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Julian Groves",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nicole Fernandez-McGovern",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Nicole Fernandez-McGovern",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Obie McKenzie",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Obie McKenzie",
+     "",
+     ""
+    ],
+    [
+     "/s/ Salima Popatia",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Salima Popatia",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paul Wahlgren",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Paul Wahlgren",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1802,
+    "end_line": 1836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1837,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     "Page No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firm (PCAOB ID: 5041)",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2022 and 2021",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Loss for the Years Ended December 31, 2022 and 2021",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity for the Years Ended December 31, 2022 and 2021",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2022 and 2021",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1841,
+    "end_line": 1857
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and Board of Directors of MGO Global, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of MGO Global, Inc. (the \u201cCompany\u201d) as of December 31, 2022 and 2021, and the related statements of operations, stockholders\u2019 equity, and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021, and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s consolidated financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1837,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 77
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "As of December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "(Restated)",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "113,952",
+     "",
+     "$",
+     "87,922",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "101,837",
+     "",
+     "",
+     "3,285",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "7,864",
+     "",
+     "",
+     "9,339",
+     ""
+    ],
+    [
+     "Prepaid royalty expense",
+     "",
+     "147,769",
+     "",
+     "",
+     "401,330",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "69,546",
+     "",
+     "",
+     "68,406",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "440,968",
+     "",
+     "",
+     "570,282",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "440,968",
+     "",
+     "$",
+     "570,282",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders' equity (deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "648,129",
+     "",
+     "$",
+     "272,401",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "22,533",
+     "",
+     "",
+     "36,178",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "52,540",
+     "",
+     "",
+     "225,894",
+     ""
+    ],
+    [
+     "Accrued payroll",
+     "",
+     "746,050",
+     "",
+     "",
+     "298,297",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "13,634",
+     "",
+     "",
+     "13,634",
+     ""
+    ],
+    [
+     "Current portion of loan payable",
+     "",
+     "10,793",
+     "",
+     "",
+     "13,768",
+     ""
+    ],
+    [
+     "Loan payable - related parties",
+     "",
+     "123,850",
+     "",
+     "",
+     "103,270",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "1,617,529",
+     "",
+     "",
+     "963,442",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan payable",
+     "",
+     "\u2013",
+     "",
+     "",
+     "20,847",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,617,529",
+     "",
+     "",
+     "984,289",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.00001, authorized 20,000,000 shares; 11,689,230 and 9,593,000 shares issued and outstanding at December 31, 2022 and 2021, respectively",
+     "",
+     "117",
+     "",
+     "",
+     "96",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "4,963,340",
+     "",
+     "",
+     "2,866,558",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(5,796,636)",
+     "",
+     "",
+     "(3,213,690)",
+     ""
+    ],
+    [
+     "Total MGO stockholders' equity (deficit)",
+     "",
+     "(833,179)",
+     "",
+     "",
+     "(347,036)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "(361,382)",
+     "",
+     "",
+     "(66,971)",
+     ""
+    ],
+    [
+     "Total stockholder\u2019s deficit",
+     "",
+     "(1,194,561)",
+     "",
+     "",
+     "(414,007)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity (deficit)",
+     "$",
+     "440,968",
+     "",
+     "$",
+     "570,282",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1889,
+    "end_line": 1940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ BF Borgers CPA PC\nBF Borgers CPA PC\nServed as auditor since 2022\nLakewood, CO\nMarch 31, 2023\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1885,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "1,048,012",
+     "",
+     "$",
+     "880,340",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "337,631",
+     "",
+     "",
+     "392,407",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "710,381",
+     "",
+     "",
+     "487,933",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Royalty expenses",
+     "",
+     "1,273,105",
+     "",
+     "",
+     "180,246",
+     ""
+    ],
+    [
+     "Rent expense - related party",
+     "",
+     "15,026",
+     "",
+     "",
+     "14,568",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "509,853",
+     "",
+     "",
+     "5,670",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "1,402,106",
+     "",
+     "",
+     "745,554",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "3,349,346",
+     "",
+     "",
+     "1,407,192",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(2,638,965)",
+     "",
+     "",
+     "(919,259)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance charges",
+     "",
+     "236,231",
+     "",
+     "",
+     "103,987",
+     ""
+    ],
+    [
+     "PPP loan forgiveness",
+     "",
+     "-",
+     "",
+     "",
+     "(41,600)",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "",
+     "2,161",
+     "",
+     "",
+     "4,249",
+     ""
+    ],
+    [
+     "Total other (income) expenses",
+     "",
+     "238,392",
+     "",
+     "",
+     "66,636",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(2,877,357)",
+     "",
+     "",
+     "(985,895)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,877,357)",
+     "",
+     "$",
+     "(985,895)",
+     ""
+    ],
+    [
+     "Less: net loss attributable to non-controlling interest",
+     "",
+     "(294,411)",
+     "",
+     "",
+     "(79,569)",
+     ""
+    ],
+    [
+     "Net loss attributable to MGO stockholders",
+     "",
+     "(2,582,946)",
+     "",
+     "",
+     "(906,326)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "10,542,419",
+     "",
+     "",
+     "10,019,110",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share to MGO stockholders",
+     "$",
+     "(0.25)",
+     "",
+     "$",
+     "(0.09)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1944,
+    "end_line": 1993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1993,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total MGO",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stockholder's",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "Stockholder's",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Preferred Shares",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity",
+     "",
+     "",
+     "controlling",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(deficit)",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "(deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "8,818,000",
+     "$",
+     "88",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "2,022,515",
+     "",
+     "$",
+     "(2,307,364)",
+     "",
+     "$",
+     "(284,762)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(284,762)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share issuance for cash",
+     "",
+     "775,000",
+     "",
+     "8",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "659,092",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "659,100",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "659,100",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "132,814",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "132,814",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "132,814",
+     ""
+    ],
+    [
+     "Warrants issued for financing expenses",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "54,217",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "54,217",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "54,217",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "10,519",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,519",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,519",
+     ""
+    ],
+    [
+     "Sale of subsidiary as non-controlling interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(12,598)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(12,598)",
+     "",
+     "",
+     "12,598",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(906,326)",
+     "",
+     "",
+     "(906,326)",
+     "",
+     "",
+     "(79,569)",
+     "",
+     "",
+     "(985,895)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "9,593,000",
+     "$",
+     "96",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "2,866,559",
+     "",
+     "$",
+     "(3,213,690)",
+     "",
+     "$",
+     "(347,036)",
+     "",
+     "$",
+     "(66,971)",
+     "",
+     "$",
+     "(414,007)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share issuance for cash",
+     "",
+     "1,925,000",
+     "",
+     "19",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,712,545",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,705,928",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,712,564",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "",
+     "141,230",
+     "",
+     "1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "141,730",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "141,731",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "141,731",
+     ""
+    ],
+    [
+     "Stock issued to settle accounts payable",
+     "",
+     "30,000",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Capital contributions by founders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,400",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,400",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,400",
+     ""
+    ],
+    [
+     "Warrants issued for financing expenses",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "183,686",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "183,686",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "183,686",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "13,420",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "13,420",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "13,420",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(2,582,946)",
+     "",
+     "",
+     "(2,564,946)",
+     "",
+     "",
+     "(294,411)",
+     "",
+     "",
+     "(2,877,357)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "11,689,230",
+     "$",
+     "117",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "4,963,340",
+     "",
+     "$",
+     "(5,796,636)",
+     "",
+     "$",
+     "(815,179)",
+     "",
+     "$",
+     "(361,382)",
+     "",
+     "$",
+     "(1,194,561)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1999,
+    "end_line": 2030
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1993,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31, 2022",
+     "",
+     "",
+     "For the Years Ended December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,877,357)",
+     "",
+     "$",
+     "(985,895)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "13,420",
+     "",
+     "",
+     "10,519",
+     ""
+    ],
+    [
+     "Stock compensation expenses",
+     "",
+     "141,731",
+     "",
+     "",
+     "132,814",
+     ""
+    ],
+    [
+     "Warrants issued for financing expenses",
+     "",
+     "183,686",
+     "",
+     "",
+     "54,217",
+     ""
+    ],
+    [
+     "Stock issued to settle accounts payable",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loan forgiveness - PPP",
+     "",
+     "-",
+     "",
+     "",
+     "(41,600)",
+     ""
+    ],
+    [
+     "Net changes in operating assets & liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(98,552)",
+     "",
+     "",
+     "7,475",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(1,140)",
+     "",
+     "",
+     "130,078",
+     ""
+    ],
+    [
+     "Prepaid royalty expense",
+     "",
+     "253,561",
+     "",
+     "",
+     "(401,330)",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,475",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 related party",
+     "",
+     "(31,645)",
+     "",
+     "",
+     "26,633",
+     ""
+    ],
+    [
+     "Accrued payroll",
+     "",
+     "447,753",
+     "",
+     "",
+     "213,000",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "235,774",
+     "",
+     "",
+     "84,267",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,683,293)",
+     "",
+     "",
+     "(769,822)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash",
+     "",
+     "1,712,564",
+     "",
+     "",
+     "659,100",
+     ""
+    ],
+    [
+     "Proceeds from loans payable - related party",
+     "",
+     "45,556",
+     "",
+     "",
+     "72,877",
+     ""
+    ],
+    [
+     "Repayments of loans payable related party",
+     "",
+     "(24,976)",
+     "",
+     "",
+     "(25,500)",
+     ""
+    ],
+    [
+     "Repayment of loans payable",
+     "",
+     "(48,822)",
+     "",
+     "",
+     "(15,385)",
+     ""
+    ],
+    [
+     "Proceeds from loans payable",
+     "",
+     "25,000",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "1,709,323",
+     "",
+     "",
+     "39,542",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "26,030",
+     "",
+     "",
+     "(28,730)",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "87,922",
+     "",
+     "",
+     "116,652",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "113,952",
+     "",
+     "$",
+     "87,922",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2036,
+    "end_line": 2083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021\nNOTE 1 - ORGANIZATION AND OPERATIONS\nMGO Global, Inc. (\u201cMGO\u201d, \u201cwe\u201d, \u201cus\u201d, \u201cour\u201d, or the \u201cCompany\u201d) was formed on December 6, 2021, which operates through its subsidiary, MGOTEAM 1 LLC that designs, manufactures, licenses, distributes, advertises and sells a range of products under the soccer legend Lionel (\u2018Leo\u201d) Messi brand, \u201cThe Messi Brand\u201d. The Messi Brand is a premium lifestyle brand with a sporty edge; products are primarily marketed and sold on the Company\u2019s ecommerce site, found at www.themessistore.com.\nOn October 29, 2018, the Company entered into a Trademark License Agreement with Leo Messi Management SL (\u201cLMM\u201d). LMM granted the Company a worldwide non-exclusive license in order to use Leo Messi\u2019s Trademarks with the purpose of developing, manufacturing, trading and promoting The Messi Brand products.\nOn November 20, 2021, the Company entered into a Trademark License Agreement with LMM to have the worldwide license to use Leo Messi\u2019s Trademarks for the purpose of developing, manufacturing, marketing, and promoting The Messi Brand products. The Company is to pay LMM an amount of minimum guaranteed royalties totaling Four Million Euros (4,000,000 \u20ac), net of taxes with the last payment due on November 15, 2024.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2083,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "69,546",
+     "$",
+     "68,406"
+    ],
+    [
+     "Total",
+     "$",
+     "69,546",
+     "$",
+     "68,406"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2177,
+    "end_line": 2185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INVENTORY"
+    }
+   },
+   "prose_before": "Liquidity is the ability of a company to generate funds to support its current and future operations, satisfy its obligations, and otherwise operate on an ongoing basis. On December 31, 2022, the Company had a cash balance of $113,952 and working capital of $(1,176,561). The Company reported a net increase in cash for the year ended December 31, 2022 of $26,030. On January 18, 2023 the Company received proceeds from the sale of common stock of $7,239,855. The proceeds were used for working capital purposes, inventory, and operating expenses.\nOn January 18, 2023, the Company completed an initial public offering (\u201cIPO\u201d) and sold 1,725,000 shares of its common stock at a price to the public of $5.00 per share for gross proceeds of $8,625,000. The Company received net proceeds of $7,239,855 which is net of offering expenses of $1,385,145. Until such time that the Company implements its growth strategy, it expects to continue to generate operating losses in the foreseeable future, mostly due to corporate overhead and costs of being a public company. The Company believes that its existing working capital and its future cash flows from operating activities will provide sufficient cash to enable the Company to meet its operating needs and debt requirements for the next twelve months from the issuance date of this report.\nNOTE 4 \u2013 INVENTORY\nAs of December 31, 2022 and December 31, 2021, inventory amounted to $69,546 and $68,406, respectively.",
+   "prose_after": "NOTE 5 - JOINT VENTURE\nOn August 29, 2019, the Company entered into an Equity Joint Venture Contract with Shanghai Celebrity International Trading Co., Ltd (SCIT) and invested $500,000 as a 40% shareholder of the joint venture. The term of the agreement is for (20) twenty years commencing from the Establishment Date on August 29, 2019. Per the Equity Joint Venture Contract, SCIT is to engage in the sale and distribution of MGO Products and/or other commercial products within the Territory (PRC, Hong Kong S.A.R., Macau S.A.R., Taiwan, and Singapore). The Company will be responsible for formulating business strategy and SCIT will be responsible for assisting the joint venture to apply for and being granted all necessary approvals, permits, certificates, licenses required from the relevant government authorities. Per the preferred membership interest purchase agreement, MGO will receive $2 million from SCIT. As of December 31, 2021 the Company received $1,995,000 from SCIT for 12% of MGO LLC membership units. The Company was obligated and re-invested $500,000 from the proceeds of $2 million to this Joint Venture with SCIT.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2160,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 2191,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "275,551",
+     "",
+     "$",
+     "142,489"
+    ],
+    [
+     "Warehouse rent payable",
+     "",
+     "78,673",
+     "",
+     "",
+     "74,172"
+    ],
+    [
+     "Legal payable",
+     "",
+     "316,438",
+     "",
+     "",
+     "240,634"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "52,540",
+     "",
+     "",
+     "77,178"
+    ],
+    [
+     "Total accounts payable and accrued liabilities:",
+     "$",
+     "723,202",
+     "",
+     "$",
+     "534,473"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2198,
+    "end_line": 2210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 ACCOUNTS PAYABLE AND ACCRUED LIABILITIES (INCLUDING RELATED PARTIES)"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2022, 2021 and 2020, the Company did not receive any royalty from SCIT. Also, the Company initially recorded the $500,000 in the joint venture as equity investment since the Company only has 40% ownership, SCIT controlled the majority of the board, and the Company has no obligations to absorb the losses. As of December 31, 2020, the Company impaired the entire $500,000 investment in the joint venture because no business cooperation and communication exists between the Company and SCIT since 2020, despite the Company\u2019s unsuccessful efforts to locate and contact SCIT. We do not expect any resumption of the operations of the joint venture. The Company does not expect to receive any of the royalties from this joint venture. Nevertheless, the Company will continue to use all reasonable means and methods to locate the principal of SCIT, which, to date, have proven unsuccessful.\nNOTE 6 \u2013 ACCOUNTS PAYABLE AND ACCRUED LIABILITIES (INCLUDING RELATED PARTIES)\nAccounts payable and accrued liabilities were $592,564 and $498,295 as of December 31, 2022 and December 31, 2021, respectively. Accounts payable are mainly payables to vendors and accrued liabilities consists of mainly credit card payable and sales and VAT tax payable.",
+   "prose_after": "NOTE 7 \u2013 LOAN PAYABLE\nOn May 8, 2020, the Company received $41,600 of proceeds from a note payable issued under either the Small Business Administration \"the SBA\" Paycheck Protection Program (\"PPP\") under section 7(a)(36) of the Small Business Act or the SBA's Paycheck Protection Program Second Draw Loans under Section 7(a)(37) of the Small Business Act. The note matures in two years and bears interest at 1% per year. In April 2021 our PPP Loan was forgiven by the SBA in its entirety. The forgiveness was accounted for as other income which resulted in a gain of $41,600 recorded in our statement of operations.\nOn July 30, 2021, the Company entered into a loan with PayPal with an interest rate of 6.79% and principal balance of $25,000 and monthly payment of $560 over the term of the loan. This loan will mature on November 30, 2025. This loan principal and accrued interest have been paid off as of December 30, 2022.\nOn September 10, 2021, the Company entered into a loan with PayPal with an interest rate of 9.16% and principal balance of $25,000 and monthly payment of $588 over the term of the loan. This loan will mature on January 10, 2026. This loan principal and accrued interest have been paid off as of December 30, 2022.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2191,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2227,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Current portion of loans payable",
+     "$",
+     "10,793",
+     "$",
+     "-"
+    ],
+    [
+     "Non-current portion of loans payable",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2221,
+    "end_line": 2227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 LOAN PAYABLE"
+    }
+   },
+   "prose_before": "On July 30, 2021, the Company entered into a loan with PayPal with an interest rate of 6.79% and principal balance of $25,000 and monthly payment of $560 over the term of the loan. This loan will mature on November 30, 2025. This loan principal and accrued interest have been paid off as of December 30, 2022.\nOn September 10, 2021, the Company entered into a loan with PayPal with an interest rate of 9.16% and principal balance of $25,000 and monthly payment of $588 over the term of the loan. This loan will mature on January 10, 2026. This loan principal and accrued interest have been paid off as of December 30, 2022.\nOn May 25, 2022, the Company entered into a loan with PayPal with an interest rate of 6.51% and principal balance of $25,000 and monthly payment of $539 over the term of the loan. This loan will mature on May 25, 2023. The Company paid principal balance of $14,207 and incurred $2,513 interest during the year ended December 31, 2022. The balance as of December 31, 2022 of this loan was $10,793.",
+   "prose_after": "NOTE 8 \u2013 RELATED PARTY TRANSACTIONS\nThe Company borrowed $45,556 and paid $24,976 from our Chairman and CEO, Maximiliano Ojeda, for the year ended December 31, 2022. The Company borrowed from Mr. Ojeda $72,877 and paid $25,500 for the year ended December 31, 2021. This borrowing does not have a fixed maturity date or stated rate of interest. As of December 31, 2022 and December 31, 2021, the balance of loans payable to Mr. Ojeda is $123,850 and $103,270, respectively.\nDuring the years ended December 31, 2022 and 2021, related party imputed interest was $13,420 and $10,519, respectively. The imputed interest was recorded as interest expense and an increase in additional paid-in capital based on a rate of 12%.\nFor the years ended December 31, 2022 and 2021, the Company recorded $10,378 and $0 respectively, in e-commerce expenses paid directly by Julian Groves, our Chief Operating Officer and Director.\nFor the years ended December 31, 2022 and 2021, the Company recorded $14,400 and $14,568 respectively, in month-to- month rent expense paid directly by Virginia Hilfiger, our Chief Design Officer and Director.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2191,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2227,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nWarrants",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Weighted\n\nAverage\n\nRemaining\n\nContractual\n\nLife",
+     "",
+     "Aggregate\n\nIntrinsic\n\nValue",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2021",
+     "",
+     "54,250",
+     "$",
+     "1.00",
+     "",
+     "3.98",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issued",
+     "",
+     "883,750",
+     "",
+     "1.00",
+     "",
+     "4.74",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding, December 31, 2022",
+     "",
+     "938,000",
+     "$",
+     "1.00",
+     "",
+     "4.70",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable, December 31, 2022",
+     "",
+     "938,000",
+     "$",
+     "1.00",
+     "",
+     "4.70",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2262,
+    "end_line": 2283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCKHOLDERS\u2019 DEFICIT"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2022, the Company issued 141,230 shares to consultants for services at fair value of $141,731.\nFor the year ended December 31, 2022, the Company issued 30,000 shares to a consultant for services at fair value of $30,000.\nWarrants\nFor the year ended December 31, 2021, the Company issued a total of 54,250 five-year warrants to Boustead Securities, LLC, an investment banking firm, with an exercise price of $1.00 per share. Upon the issuance of the warrant as compensation for its services as an investment banker, the warrant was categorized as equity and the fair value of $54,217 was recorded as finance expense.\nFor the year ended December 31, 2022, the Company issued five-year warrants to purchase 883,750 shares of its common stock in a pre-IPO private placement with an exercise price of $1.00 per share. Upon the issuance of the warrants in connection with the private placement, the warrant was categorized as equity and the fair value of $183,686 was recorded as finance expense.\nThe following is a summary of warrant activity.",
+   "prose_after": "The Company utilizes the Black-Scholes model to value its warrants. The Company utilized the following assumptions:\n<TABLE>\nFor the year\nended\nDecember 31,\n2022\n-----------------\nExpected term                          5 years\nExpected average volatility       328% - 339 %\nExpected dividend yield                      -",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2296,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 2021
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Expected term",
+     "5 years",
+     "",
+     ""
+    ],
+    [
+     "Expected average volatility",
+     "328% - 339 %",
+     "",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "1.76% - 2.89 %",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Expected term",
+     "5 years",
+     "",
+     ""
+    ],
+    [
+     "Expected average volatility",
+     "",
+     "340",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.23",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the year",
+    "ended",
+    "December 31,",
+    "2022"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal year ending December 31,",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "1,069,000",
+     "(1,000,000\u20ac)"
+    ],
+    [
+     "2024",
+     "",
+     "1,603,500",
+     "(1,500,000\u20ac)"
+    ],
+    [
+     "Total",
+     "",
+     "2,672,500",
+     "(2,500,000\u20ac)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2314,
+    "end_line": 2322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013PREPAID ROYALTY EXPENSE"
+    }
+   },
+   "prose_before": "On October 29, 2018, the Company entered into a Trademark License Agreement with Leo Messi Management SL (LMM) to have the right to license the Licensed Mark. Both parties agreed to cancel the original Trademark License Agreement due to COVID-19 in 2021 and both parties were released from the obligations and responsibilities under the original Trademark License Agreement. The Company recorded the actual royalty expense paid on or before the new agreement in November 2021 since both parties agreed to waive the original payment schedule in the 2018 Trademark License agreement.\nOn November 20, 2021, the Company entered into a Trademark License Agreement with Leo Messi Management SL (LMM) to have the worldwide license to use Leo Messi\u2019s Trademarks for the purpose of developing, manufacturing, marketing, and promoting products under the Company\u2019s \u201cThe Messi Brand.\u201d The Company is to pay LMM a minimum guaranteed amount of royalties in installments, amounting to Four Million Euros (4,000,000 \u20ac), net of taxes, with the final payment due on November 15, 2024.\nThe Company recorded $1,273,105 and $180,246 royalty expense for the year ended December 31, 2022 and 2021, respectively. The prepaid expense as of December 31, 2022 and December 31, 2021 was $147,769 and $401,330, respectively.\nThe following table presents the future royalty payments of the Trademark License Agreement based on exchange rate as of December 31, 2022:",
+   "prose_after": "NOTE 11 \u2013 INCOME TAXES\nAt December 31, 2022 and 2021, the Company\u2019s deferred income tax assets and liabilities were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2361,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "632,385",
+     "",
+     "$",
+     "49,365",
+     ""
+    ],
+    [
+     "Total deferred tax asset",
+     "",
+     "632,385",
+     "",
+     "",
+     "49,365",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(632,385)",
+     "",
+     "",
+     "(49,365)",
+     ""
+    ],
+    [
+     "Total deferred tax asset",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net deferred tax asset (liabilities)",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2327,
+    "end_line": 2342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "NOTE 11 \u2013 INCOME TAXES\nAt December 31, 2022 and 2021, the Company\u2019s deferred income tax assets and liabilities were as follows:",
+   "prose_after": "A reconciliation between expected income taxes, computed at the federal income tax rate of 21% applied to the pretax accounting loss, and our blended state income tax rate of 5.5% in 2022 and 3.5% in 2021, and the income tax net expense included in the consolidated statements of operations for the year ended December 31, 2022, and 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2361,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Loss for the year",
+     "$",
+     "2,877,356",
+     "",
+     "$",
+     "289,291",
+     ""
+    ],
+    [
+     "Permanent difference and others",
+     "",
+     "(101,074)",
+     "",
+     "",
+     "(54,217)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "2,776,282",
+     "",
+     "",
+     "235,074",
+     ""
+    ],
+    [
+     "Income tax expense per books",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2345,
+    "end_line": 2355
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation between expected income taxes, computed at the federal income tax rate of 21% applied to the pretax accounting loss, and our blended state income tax rate of 5.5% in 2022 and 3.5% in 2021, and the income tax net expense included in the consolidated statements of operations for the year ended December 31, 2022, and 2021 is as follows:",
+   "prose_after": "The valuation allowance increased by $583,019 during the year ended December 31, 2022, as a result of the Company\u2019s net operating losses for the year ended December 31, 2022. The Company has net operating loss carryforwards of approximately $2,776,282 for both U.S. federal and state tax purposes as of December 31, 2022. Utilization of the net operating loss and tax credit carryforwards is subject to a substantial annual limitation due to the \u201cownership change\u201d limitations provided by Section 382 and 383 of the Internal Revenue Code of 1986, as amended, and other similar state provisions. Any annual limitation may result in the expiration of net operating loss and tax credit carryforwards before utilization.\nThe Company has not recorded any income tax expense or benefit in the consolidated statements of operations for the years ended December 31, 2022 and 2021, due to the benefit of net operating losses in these periods and the Company\u2019s change during 2021 to a C corporation from a limited liability company that was disregarded for federal and state income tax purposes.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2361,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Federal provision at statutory rate",
+     "$",
+     "(604,245)",
+     "",
+     "",
+     "21.0",
+     "%",
+     "$",
+     "(60,751)",
+     "",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "State income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Non-deductible expenses",
+     "",
+     "21,226",
+     "",
+     "(0.7%)",
+     "",
+     "",
+     "",
+     "11,386",
+     "",
+     "(4%)",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "583,019",
+     "",
+     "(20.3%)",
+     "",
+     "",
+     "",
+     "49,365",
+     "",
+     "(17%)",
+     "",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "$",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%",
+     "$",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2362,
+    "end_line": 2375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The valuation allowance increased by $583,019 during the year ended December 31, 2022, as a result of the Company\u2019s net operating losses for the year ended December 31, 2022. The Company has net operating loss carryforwards of approximately $2,776,282 for both U.S. federal and state tax purposes as of December 31, 2022. Utilization of the net operating loss and tax credit carryforwards is subject to a substantial annual limitation due to the \u201cownership change\u201d limitations provided by Section 382 and 383 of the Internal Revenue Code of 1986, as amended, and other similar state provisions. Any annual limitation may result in the expiration of net operating loss and tax credit carryforwards before utilization.\nThe Company has not recorded any income tax expense or benefit in the consolidated statements of operations for the years ended December 31, 2022 and 2021, due to the benefit of net operating losses in these periods and the Company\u2019s change during 2021 to a C corporation from a limited liability company that was disregarded for federal and state income tax purposes.\nThe reconciliation between the federal statutory income tax rate of 21% to the Company\u2019s effective tax for the periods presented is as follows:",
+   "prose_after": "The Company\u2019s effective tax rates differ from the federal statutory rate primarily due to the establishment of a valuation allowance.\nThe Company periodically evaluates the likelihood of the realization of deferred tax assets and adjusts the carrying amount of the deferred tax assets by the valuation allowance to the extent the future realization of the deferred tax assets is not judged to be more likely than not. The Company considers many factors when assessing the likelihood of future realization of its deferred tax assets, including its recent cumulative earnings experience by taxing jurisdiction, expectations of future taxable income or loss, the carryforward periods available to the Company for tax reporting purposes, and other relevant factors.\nFuture changes in the unrecognized tax benefit will have no impact on the effective tax rate due to the existence of the valuation allowance. The Company estimates that the unrecognized tax benefit will not change significantly within the next twelve months. The Company classifies income tax penalties and interest as part of general and administrative expense in its consolidated statements of operations. There were no interest or penalties accrued as of December 31, 2022 and 2021.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2361,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2393,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}
